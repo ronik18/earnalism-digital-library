@@ -4,24 +4,391 @@
   "title": "Earnalism private audiobook generation provenance",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "generation_job_id", "source_binding", "model_runtime", "voice", "generation_settings", "segments", "qa_evidence", "license_evidence", "storage_receipts", "release_state", "public_release_ready", "manifest_sha256"],
+  "required": [
+    "schema_version",
+    "generation_job_id",
+    "source_binding",
+    "model_runtime",
+    "voice",
+    "generation_settings",
+    "segments",
+    "qa_evidence",
+    "license_evidence",
+    "storage_receipts",
+    "release_state",
+    "public_release_ready",
+    "manifest_sha256",
+    "final_audio",
+    "audio_distribution_rights",
+    "full_title_human_qa_status"
+  ],
   "properties": {
-    "schema_version": {"const": "earnalism.audiobook_generation_provenance.v1"},
-    "generation_job_id": {"type": "string", "pattern": "^egj_[a-f0-9]{64}$"},
-    "source_binding": {"type": "object", "required": ["source_id", "source_sha256", "manuscript_sha256", "normalization"], "properties": {"source_id": {"type": "string"}, "source_url": {"type": "string"}, "source_sha256": {"$ref": "#/$defs/hash"}, "manuscript_sha256": {"$ref": "#/$defs/hash"}, "normalization": {"type": "string"}}},
-    "model_runtime": {"type": "object"},
-    "voice": {"type": "string", "minLength": 1},
-    "generation_settings": {"type": "object"},
-    "segments": {"type": "array", "items": {"type": "object", "required": ["generation_job_id", "segment_id", "text_sha256", "audio_sha256", "audio_size_bytes", "sync_measured"], "properties": {"generation_job_id": {"type": "string"}, "segment_id": {"type": "string"}, "text_sha256": {"$ref": "#/$defs/hash"}, "audio_sha256": {"$ref": "#/$defs/hash"}, "audio_size_bytes": {"type": "integer", "minimum": 1}, "sync_measured": {"type": "boolean"}}}},
-    "qa_evidence": {"type": "array", "items": {"$ref": "#/$defs/evidence"}},
-    "license_evidence": {"type": "array", "items": {"$ref": "#/$defs/evidence"}},
-    "storage_receipts": {"type": "array", "items": {"type": "object"}},
-    "release_state": {"const": "PRIVATE_CANDIDATE"},
-    "public_release_ready": {"const": false},
-    "manifest_sha256": {"$ref": "#/$defs/hash"}
+    "schema_version": {
+      "const": "earnalism.audiobook_generation_provenance.v1"
+    },
+    "generation_job_id": {
+      "type": "string",
+      "pattern": "^egj_[a-f0-9]{64}$"
+    },
+    "source_binding": {
+      "type": "object",
+      "required": [
+        "source_id",
+        "source_sha256",
+        "manuscript_sha256",
+        "normalization"
+      ],
+      "properties": {
+        "source_id": {
+          "type": "string"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "source_sha256": {
+          "$ref": "#/$defs/hash"
+        },
+        "manuscript_sha256": {
+          "$ref": "#/$defs/hash"
+        },
+        "normalization": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "model_runtime": {
+      "type": "object",
+      "required": [
+        "python",
+        "packages",
+        "pytorch",
+        "model"
+      ],
+      "properties": {
+        "python": {
+          "type": "string"
+        },
+        "packages": {
+          "type": "object"
+        },
+        "pytorch": {
+          "type": "object"
+        },
+        "model": {
+          "type": "object",
+          "required": [
+            "repo",
+            "revision",
+            "revision_immutable",
+            "artifact_sha256",
+            "pinning_ready"
+          ],
+          "properties": {
+            "repo": {
+              "const": "hexgrad/Kokoro-82M"
+            },
+            "revision": {
+              "type": "string"
+            },
+            "revision_immutable": {
+              "type": "boolean"
+            },
+            "artifact_sha256": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/hash"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "pinning_ready": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "voice": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generation_settings": {
+      "type": "object"
+    },
+    "segments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "generation_job_id",
+          "source_id",
+          "source_sha256",
+          "segment_id",
+          "input_text_sha256",
+          "text_sha256",
+          "audio_sha256",
+          "audio_size_bytes",
+          "output_filename",
+          "start_word",
+          "end_word",
+          "start_paragraph",
+          "end_paragraph",
+          "start_ms",
+          "end_ms",
+          "duration_ms",
+          "sync_measured",
+          "voice",
+          "model_repo",
+          "model_revision",
+          "speed",
+          "sample_rate"
+        ],
+        "properties": {
+          "generation_job_id": {
+            "type": "string",
+            "pattern": "^egj_[a-f0-9]{64}$"
+          },
+          "source_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_sha256": {
+            "$ref": "#/$defs/hash"
+          },
+          "segment_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "input_text_sha256": {
+            "$ref": "#/$defs/hash"
+          },
+          "text_sha256": {
+            "$ref": "#/$defs/hash"
+          },
+          "audio_sha256": {
+            "$ref": "#/$defs/hash"
+          },
+          "audio_size_bytes": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "output_filename": {
+            "type": "string",
+            "minLength": 1
+          },
+          "start_word": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "end_word": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "start_paragraph": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "end_paragraph": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "start_ms": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "end_ms": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "duration_ms": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "sync_measured": {
+            "type": "boolean"
+          },
+          "voice": {
+            "type": "string"
+          },
+          "model_repo": {
+            "const": "hexgrad/Kokoro-82M"
+          },
+          "model_revision": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{40,64}$"
+          },
+          "speed": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "sample_rate": {
+            "type": "integer",
+            "minimum": 8000
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "qa_evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
+    },
+    "license_evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
+    },
+    "storage_receipts": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "release_state": {
+      "const": "PRIVATE_CANDIDATE"
+    },
+    "public_release_ready": {
+      "const": false
+    },
+    "manifest_sha256": {
+      "$ref": "#/$defs/hash"
+    },
+    "final_audio": {
+      "$ref": "#/$defs/finalAudio"
+    },
+    "audio_distribution_rights": {
+      "const": "REVIEW_REQUIRED"
+    },
+    "full_title_human_qa_status": {
+      "const": "PENDING"
+    }
   },
   "$defs": {
-    "hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
-    "evidence": {"type": "object", "required": ["evidence_type", "path", "present", "decision"], "properties": {"evidence_type": {"type": "string"}, "path": {"type": "string"}, "present": {"type": "boolean"}, "sha256": {"anyOf": [{"$ref": "#/$defs/hash"}, {"type": "null"}]}, "decision": {"type": "string"}}}
+    "hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "evidence_type",
+        "path",
+        "present",
+        "decision"
+      ],
+      "properties": {
+        "evidence_type": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "present": {
+          "type": "boolean"
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/hash"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "decision": {
+          "enum": [
+            "PASS",
+            "PENDING",
+            "UNREVIEWED"
+          ]
+        },
+        "generation_job_id": {
+          "type": "string",
+          "pattern": "^egj_[a-f0-9]{64}$"
+        },
+        "manuscript_sha256": {
+          "$ref": "#/$defs/hash"
+        },
+        "final_audio_sha256": {
+          "$ref": "#/$defs/hash"
+        }
+      }
+    },
+    "finalAudio": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "generation_job_id",
+        "source_id",
+        "source_sha256",
+        "manuscript_sha256",
+        "audio_filename",
+        "audio_sha256",
+        "audio_size_bytes",
+        "duration_ms",
+        "voice",
+        "model_repo",
+        "model_revision",
+        "generation_settings"
+      ],
+      "properties": {
+        "generation_job_id": {
+          "type": "string",
+          "pattern": "^egj_[a-f0-9]{64}$"
+        },
+        "source_id": {
+          "type": "string"
+        },
+        "source_sha256": {
+          "$ref": "#/$defs/hash"
+        },
+        "manuscript_sha256": {
+          "$ref": "#/$defs/hash"
+        },
+        "audio_filename": {
+          "type": "string"
+        },
+        "audio_sha256": {
+          "$ref": "#/$defs/hash"
+        },
+        "audio_size_bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "duration_ms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "voice": {
+          "type": "string"
+        },
+        "model_repo": {
+          "const": "hexgrad/Kokoro-82M"
+        },
+        "model_revision": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40,64}$"
+        },
+        "generation_settings": {
+          "type": "object"
+        }
+      }
+    }
   }
 }

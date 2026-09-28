@@ -4,18 +4,130 @@
   "title": "Earnalism audio segment provenance",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "generation_job_id", "segment_id", "text_sha256", "audio_sha256", "audio_size_bytes", "start_word", "end_word", "start_paragraph", "end_paragraph", "start_ms", "end_ms", "sync_measured", "voice", "model_repo", "model_revision"],
+  "required": [
+    "schema_version",
+    "generation_job_id",
+    "source_id",
+    "source_sha256",
+    "segment_id",
+    "input_text_sha256",
+    "text_sha256",
+    "audio_sha256",
+    "audio_size_bytes",
+    "output_filename",
+    "start_word",
+    "end_word",
+    "start_paragraph",
+    "end_paragraph",
+    "start_ms",
+    "end_ms",
+    "duration_ms",
+    "sync_measured",
+    "voice",
+    "model_repo",
+    "model_revision",
+    "speed",
+    "sample_rate"
+  ],
   "properties": {
-    "schema_version": {"const": "earnalism.audiobook_segment_provenance.v1"},
-    "generation_job_id": {"type": "string", "pattern": "^egj_[a-f0-9]{64}$"},
-    "segment_id": {"type": "string", "minLength": 1},
-    "text_sha256": {"$ref": "#/$defs/hash"}, "audio_sha256": {"$ref": "#/$defs/hash"},
-    "audio_size_bytes": {"type": "integer", "minimum": 1},
-    "start_word": {"type": "integer", "minimum": 0}, "end_word": {"type": "integer", "minimum": 1},
-    "start_paragraph": {"type": "integer", "minimum": 0}, "end_paragraph": {"type": "integer", "minimum": 1},
-    "start_ms": {"type": ["integer", "null"], "minimum": 0}, "end_ms": {"type": ["integer", "null"], "minimum": 1},
-    "sync_measured": {"type": "boolean"}, "voice": {"type": "string"},
-    "model_repo": {"const": "hexgrad/Kokoro-82M"}, "model_revision": {"type": "string", "minLength": 40}
+    "schema_version": {
+      "const": "earnalism.audiobook_segment_provenance.v1"
+    },
+    "generation_job_id": {
+      "type": "string",
+      "pattern": "^egj_[a-f0-9]{64}$"
+    },
+    "segment_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "text_sha256": {
+      "$ref": "#/$defs/hash"
+    },
+    "audio_sha256": {
+      "$ref": "#/$defs/hash"
+    },
+    "audio_size_bytes": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "start_word": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "end_word": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "start_paragraph": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "end_paragraph": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "start_ms": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "end_ms": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "sync_measured": {
+      "type": "boolean"
+    },
+    "voice": {
+      "type": "string"
+    },
+    "model_repo": {
+      "const": "hexgrad/Kokoro-82M"
+    },
+    "model_revision": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40,64}$"
+    },
+    "source_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_sha256": {
+      "$ref": "#/$defs/hash"
+    },
+    "input_text_sha256": {
+      "$ref": "#/$defs/hash"
+    },
+    "output_filename": {
+      "type": "string",
+      "minLength": 1
+    },
+    "duration_ms": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "speed": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "sample_rate": {
+      "type": "integer",
+      "minimum": 8000
+    }
   },
-  "$defs": {"hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+  "$defs": {
+    "hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
 }

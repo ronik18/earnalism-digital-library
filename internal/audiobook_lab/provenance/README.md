@@ -72,3 +72,22 @@ Kokoro's explicit voice inventory in this implementation supports English
 only. Bengali remains fail-closed for Kokoro; Bengali audiobook work must use
 the campaign's approved provider/voice path or move to human narration or a
 licensed audio import packet.
+
+## Kokoro provenance-first private pipeline
+
+`colab/Earnalism_Audiobook_Pipeline.ipynb` now supports a separate, opt-in
+Project Gutenberg #269 private voice audition. It hashes exact source bytes and
+the deterministic normalized manuscript separately, records the immutable
+Kokoro snapshot and model tree hash, and inventories English voices from that
+snapshot's `.pt` assets. The audition manifest carries each audio hash and keeps
+model/voice license review and audio distribution rights at `REVIEW_REQUIRED`.
+
+Full-title generation remains blocked until both owner full-generation approval
+and a persisted owner voice selection bound to the audition manifest are present.
+The provenance pipeline is English-only; the Kokoro voice inventory does not
+claim Bengali support. Full-title human QA defaults to `PENDING`. Package-v2
+candidate creation accepts only the existing strict v2 package shape plus real,
+versioned storage receipt evidence; it cannot upload, fabricate object versions,
+or mark audio public. `OWNER_FULL_GENERATION_APPROVED`,
+`OWNER_PUBLIC_RELEASE_INTENT`, and `GO_LIVE_ENABLED` remain false in the
+notebook defaults.

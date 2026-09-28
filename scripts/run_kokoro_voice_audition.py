@@ -20,13 +20,17 @@ from audiobook_provenance import (
     capture_runtime,
     find_hf_model_snapshot,
     normalize_gutenberg_story,
+    OPEN_WINDOW_MANUSCRIPT_SHA256,
+    OPEN_WINDOW_SOURCE_SHA256,
+    require_source_binding,
     run_auditions,
     sha256_bytes,
+    snapshot_voice_inventory,
     source_binding,
 )
 
-EXPECTED_SOURCE_SHA256 = "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587"
-EXPECTED_MANUSCRIPT_SHA256 = "2d4aff5e3a7b238f7eaf2178242e21b55f09e3813f272194d7e8ff5eb937e1c8"
+EXPECTED_SOURCE_SHA256 = OPEN_WINDOW_SOURCE_SHA256
+EXPECTED_MANUSCRIPT_SHA256 = OPEN_WINDOW_MANUSCRIPT_SHA256
 SOURCE_URL = "https://www.gutenberg.org/cache/epub/269/pg269.txt"
 
 
@@ -44,12 +48,13 @@ def main() -> int:
 
     voices = args.voices or list(DEFAULT_VOICES)
     source_bytes = Path(args.source).read_bytes()
-    if sha256_bytes(source_bytes) != EXPECTED_SOURCE_SHA256:
-        raise SystemExit("Source SHA-256 does not match the checked-in Project Gutenberg #269 binding")
     text = normalize_gutenberg_story(source_bytes)
     binding = source_binding(source_bytes, text, SOURCE_URL)
-    if binding["manuscript_sha256"] != EXPECTED_MANUSCRIPT_SHA256:
-        raise SystemExit("Normalized manuscript SHA-256 does not match the checked-in canonical binding")
+    try:
+        require_source_binding(binding, expected_source_sha256=EXPECTED_SOURCE_SHA256,
+                               expected_manuscript_sha256=EXPECTED_MANUSCRIPT_SHA256)
+    except ValueError as exc:
+        raise SystemExit(str(exc)) from exc
 
     revision, snapshot = find_hf_model_snapshot()
     runtime = capture_runtime(model_revision=revision, model_path=snapshot)
@@ -60,6 +65,11 @@ def main() -> int:
 
     os.environ["HF_HUB_OFFLINE"] = "1"
     from kokoro import KPipeline
+
+    inventory = snapshot_voice_inventory(snapshot, "en")
+    available_voice_ids = [row["voice_id"] for row in inventory]
+    if any(voice not in available_voice_ids for voice in voices):
+        raise SystemExit("One or more requested audition voices are absent from the pinned snapshot")
 
     pipeline = KPipeline(lang_code="a", repo_id=str(snapshot), device="cuda")
 
@@ -85,6 +95,7 @@ def main() -> int:
         output_dir=args.output_dir, source_binding_data=binding,
         model_revision=revision, settings={"speed": args.speed, "sample_rate": args.sample_rate},
         synthesize=synthesize, runtime_provenance=runtime,
+        available_voices=available_voice_ids,
     )
     print(json.dumps({"result": "PRIVATE_AUDITION_COMPLETE", "voices": len(manifest["voices"]),
                       "source_sha256": binding["source_sha256"],
