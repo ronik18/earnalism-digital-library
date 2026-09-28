@@ -46,9 +46,10 @@ export default function ReaderPerspectives() {
   return (
     <section className="reference-reader-perspectives" aria-labelledby="reader-perspectives-title" data-testid="reader-perspectives-section">
       <div className="reference-reader-perspectives__intro">
-        <p className="reference-kicker">Reader perspectives</p>
-        <h2 id="reader-perspectives-title">What reading can feel like</h2>
-        <p>Four reader perspectives. Different lives, languages and places — connected by the private experience of a meaningful story.</p>
+        <p className="reference-kicker">What reading can feel like · Reader perspectives</p>
+        <h2 id="reader-perspectives-title">A gentler, richer way to be in the world.</h2>
+        <p>What reading can feel like: a little more space to think, feel and see life through other eyes.</p>
+        <span className="sr-only">Four reader perspectives.</span>
       </div>
       <div className="reference-reader-perspectives__grid">
         {PERSPECTIVES.map((perspective) => (
@@ -66,7 +67,7 @@ export default function ReaderPerspectives() {
         ))}
       </div>
       <div className="reference-reader-perspectives__closing">
-        <p>Different lives. A shared love for meaningful stories.</p>
+        <p>“A book is a way to hold a conversation across time.” — Chimamanda Ngozi Adichie</p>
         <Link to="/library" className="reference-button reference-button--gold" data-testid="reader-perspectives-cta">Start Reading Today <ArrowRight aria-hidden="true" /></Link>
       </div>
     </section>

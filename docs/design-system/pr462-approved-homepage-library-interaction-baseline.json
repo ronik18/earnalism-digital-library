@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.library-interaction-baseline.v1",
+  "surface": "library_interaction_surface",
+  "hash_algorithm": "sha256(file-sha256 plus two spaces plus relative path plus newline, sorted by relative path)",
+  "input_paths": [
+    "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+    "frontend/src/components/ReferencePublicPages.css",
+    "frontend/src/styles/library-paper-review.css",
+    "frontend/src/pages/Library.jsx"
+  ],
+  "reviewed_source": {
+    "commit": "6ee2d9ad611fd7b68e2c3c7613342b9d27c3adbe",
+    "tree": "65f63aa250062c9cb15a405d3764c1828d9b4d2f"
+  },
+  "previous_baseline": {
+    "record_path": "docs/design-system/pr457-reading-pass-home-library-interaction-baseline.json",
+    "reviewed_source_commit": "5f451b08e965f2ff6ce074909040e15859be8773",
+    "surface_sha256": "632659caafce47f36e3f4b19f2dfd966cef72b899cfd728e2ef8bc5c5c1c403f"
+  },
+  "authorized_surface_sha256": "38f492eb2f1798ffe476470ff78a0be3b580c7fb41f488db73e9ee92a14d6f76",
+  "reviewed_source_comparison": {
+    "changed_paths_within_input_set": [
+      "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+      "frontend/src/components/ReferencePublicPages.css"
+    ],
+    "unchanged_paths_within_input_set": [
+      "frontend/src/styles/library-paper-review.css",
+      "frontend/src/pages/Library.jsx"
+    ]
+  },
+  "owner_authorization": {
+    "reference": "DIRECT_OWNER_AUTHORIZATION_PR462_APPROVED_HOMEPAGE_MOCK",
+    "scope": "Apply the owner-approved PR462 homepage redesign while retaining the exact existing Library page and Library safety stylesheet. Preserve the approved H1 copy, Reading Pass truth and four-offer behavior, Reader safety, payments, entitlements, catalogue exposure, rights and audio-hidden state.",
+    "capture_is_not_expected_value_authority": true
+  },
+  "limitations": "This transition recognizes only the approved Home source snapshot. Exact source hashing, Library source equality, browser interaction, Reader safety and all independent release gates remain mandatory."
+}

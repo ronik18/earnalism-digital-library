@@ -19,3 +19,20 @@
 .reference-reader-perspectives__closing .reference-button svg{width:1rem;height:1rem}
 @media (min-width:768px) and (max-width:1279px){.reference-reader-perspectives__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:767px){.reference-reader-perspectives{padding-block:3rem}.reference-reader-perspectives__intro{margin-bottom:1.25rem}.reference-reader-perspectives__grid{grid-template-columns:1fr;max-width:34rem}.reference-reader-perspective__copy{min-height:0}.reference-reader-perspective figure img{aspect-ratio:16/10;object-position:center 25%}}
+
+/* Mock-aligned editorial treatment: portraits support the reading proposition
+   instead of competing with it. */
+.reference-reader-perspectives{padding-block:clamp(3.5rem,7vw,6rem);background:#f7efe3}
+.reference-reader-perspectives__intro{text-align:left;max-width:1344px;margin-bottom:2rem}
+.reference-reader-perspectives__intro h2{max-width:12ch;font-size:clamp(2.6rem,4vw,4.2rem);color:#35111d}
+.reference-reader-perspectives__intro>p:last-child{max-width:34rem;margin-left:0;color:#5e3d46}
+.reference-reader-perspectives__grid{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1344px;gap:.75rem}
+.reference-reader-perspective{border-color:rgba(113,42,61,.14);background:rgba(255,250,242,.82);box-shadow:0 .7rem 1.6rem rgba(76,42,34,.06)}
+.reference-reader-perspective figure img{aspect-ratio:16/8;opacity:.74;filter:saturate(.72);object-position:center 30%}
+.reference-reader-perspective__copy{min-height:13rem;padding:1rem 1.1rem}
+.reference-reader-perspective blockquote{font-size:clamp(1rem,1.25vw,1.2rem);line-height:1.4}
+.reference-reader-perspectives__closing{margin-top:2.5rem}
+.reference-reader-perspectives__closing p{max-width:44rem;font-family:var(--reference-display);font-size:1.25rem;color:#712a3d}
+@media (min-width:768px) and (max-width:1279px){.reference-reader-perspectives__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:767px){.reference-reader-perspectives__intro{text-align:center}.reference-reader-perspectives__intro>p:last-child{margin-inline:auto}.reference-reader-perspectives__grid{grid-template-columns:1fr 1fr}.reference-reader-perspective__copy{padding:.85rem}.reference-reader-perspective__label{font-size:.55rem}.reference-reader-perspective blockquote{font-size:1rem}.reference-reader-perspective__place{font-size:.75rem}}
+@media (max-width:420px){.reference-reader-perspectives__grid{grid-template-columns:1fr}}
