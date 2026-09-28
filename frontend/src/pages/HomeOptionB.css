@@ -564,6 +564,16 @@
   .layout--homepage-option-b [data-testid="site-footer"] > div:nth-of-type(2) > div { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
   .layout--homepage-option-b [data-testid="site-footer"] [data-testid="footer-contact"] { grid-column: 1 / -1; }
 }
+@media (max-width: 280px) {
+  .layout--homepage-option-b .premium-site-header--reference-home .premium-header-inner { width: calc(100% - 8px); gap: 4px; }
+  .layout--homepage-option-b .premium-site-header--reference-home .header-brand-cluster {
+    flex: 0 1 clamp(48px, calc(100vw - 112px), 112px);
+    width: clamp(48px, calc(100vw - 112px), 112px);
+    min-width: 48px;
+  }
+  .layout--homepage-option-b .premium-site-header--reference-home .brand-header-logo__custom { max-width: 100%; }
+  .layout--homepage-option-b .premium-site-header--reference-home [data-testid="mobile-menu-toggle"] { margin-right: 0; }
+}
 @media (max-width: 767px) {
   .home-reference-page[data-testid="home-page"] .reference-home { --home-option-b-gutter: 20px; }
   .home-reference-page[data-testid="home-page"] .reference-home__hero {

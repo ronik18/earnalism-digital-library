@@ -354,14 +354,17 @@ async function captureRequestedScreenshots(page, stateDirectory, capture, label,
       // browser viewport. A page-coordinate clip can extend below the document
       // boundary and fail. WebKit Article capture remains top-of-document and
       // uses an explicit clip to preserve its compositor-stable raster path.
-      const clip = browserName === "webkit" && Math.abs(scrollPosition.y) <= 1
-        ? await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY, width: window.innerWidth, height: window.innerHeight }))
-        : undefined;
-      await page.screenshot({ path: target, ...(clip ? { clip } : { fullPage: false }), animations: "disabled", caret: "hide", scale: "css" });
+      const zoomCapture = page.__earnalismZoomCapture;
+      const clip = Math.abs(scrollPosition.y) <= 1 && zoomCapture?.viewportClip
+        ? zoomCapture.viewportClip
+        : browserName === "webkit" && Math.abs(scrollPosition.y) <= 1
+          ? await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY, width: window.innerWidth, height: window.innerHeight }))
+          : undefined;
+      await page.screenshot({ path: target, ...(clip ? { clip } : { fullPage: false }), animations: "disabled", caret: "hide", scale: zoomCapture ? "device" : "css" });
     });
-    if (capture.full_page && (!requestedTypes || requestedTypes.has("full_page"))) await write("full-page.png", (target) => page.screenshot({ path: target, fullPage: true, animations: "disabled", caret: "hide", scale: "css" }));
-    if (capture.brand_close_up && (!requestedTypes || requestedTypes.has("brand_close_up"))) await write("brand-close-up.png", async (target) => page.screenshot({ path: target, clip: await requestedCaptureClip(page, lockup), animations: "disabled", caret: "hide", scale: "css" }));
-    if (capture.parent_surface_close_up && (!requestedTypes || requestedTypes.has("parent_surface_close_up"))) await write("parent-surface-close-up.png", async (target) => page.screenshot({ path: target, clip: await requestedCaptureClip(page, header), animations: "disabled", caret: "hide", scale: "css" }));
+    if (capture.full_page && (!requestedTypes || requestedTypes.has("full_page"))) await write("full-page.png", (target) => page.screenshot({ path: target, fullPage: true, animations: "disabled", caret: "hide", scale: page.__earnalismZoomCapture ? "device" : "css" }));
+    if (capture.brand_close_up && (!requestedTypes || requestedTypes.has("brand_close_up"))) await write("brand-close-up.png", async (target) => page.screenshot({ path: target, clip: await requestedCaptureClip(page, lockup), animations: "disabled", caret: "hide", scale: page.__earnalismZoomCapture ? "device" : "css" }));
+    if (capture.parent_surface_close_up && (!requestedTypes || requestedTypes.has("parent_surface_close_up"))) await write("parent-surface-close-up.png", async (target) => page.screenshot({ path: target, clip: await requestedCaptureClip(page, header), animations: "disabled", caret: "hide", scale: page.__earnalismZoomCapture ? "device" : "css" }));
   } finally {
     // Clip-based screenshots must not move the document. Avoid a no-op
     // scrollTo(), because WebKit re-rasterizes article text after that call.
@@ -433,8 +436,11 @@ async function runOneStateCapture(options) {
   fs.mkdirSync(stateDirectory, { recursive: true });
   if (process.env.SEAMLESS_BRAND_BROWSER_IMPORT_SENTINEL === "1") throw new Error("Browser import sentinel reached during --capture.");
   const browser = await launchRequestedBrowser(options.browser);
-  const context = await browser.newContext({ viewport: state.viewport, deviceScaleFactor: 1, locale: "en-US", timezoneId: "UTC", colorScheme: "dark", serviceWorkers: "block" });
+  const zoomFactor = state.zoom / 100;
+  const effectiveViewport = { width: Math.max(1, Math.round(state.viewport.width / zoomFactor)), height: Math.max(1, Math.round(state.viewport.height / zoomFactor)) };
+  const context = await browser.newContext({ viewport: effectiveViewport, deviceScaleFactor: zoomFactor, locale: "en-US", timezoneId: "UTC", colorScheme: "dark", serviceWorkers: "block" });
   const page = await context.newPage();
+  if (state.zoom > 100) page.__earnalismZoomCapture = { viewportClip: { x: 0, y: 0, width: state.viewport.width / zoomFactor, height: state.viewport.height / zoomFactor } };
   const consoleErrors = [];
   const pageErrors = [];
   const failedRequests = [];
@@ -449,7 +455,7 @@ async function runOneStateCapture(options) {
   });
   await page.goto(`${baseUrl}${state.route}`, { waitUntil: "domcontentloaded" });
   await page.waitForLoadState("networkidle", { timeout: 5000 }).catch(() => {});
-  await page.evaluate(async ({ zoom, fontSpecs }) => {
+  await page.evaluate(async ({ fontSpecs }) => {
     const bounded = (promise) => Promise.race([promise, new Promise((resolve) => setTimeout(resolve, 5000))]);
     await bounded(document.fonts.ready);
     await Promise.all(Object.values(fontSpecs).map((font) => bounded(document.fonts.load(font, "অA").catch(() => []))));
@@ -460,9 +466,8 @@ async function runOneStateCapture(options) {
     const style = document.createElement("style");
     style.textContent = "*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important;scroll-behavior:auto!important}";
     document.head.append(style);
-    document.documentElement.style.zoom = `${zoom}%`;
     await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-  }, { zoom: state.zoom, fontSpecs: REQUIRED_FONT_SPECS });
+  }, { fontSpecs: REQUIRED_FONT_SPECS });
   await page.emulateMedia({ reducedMotion: "reduce" });
   const header = page.locator('[data-testid="site-header"]:visible');
   if (await header.count() !== 1) throw new Error(`State ${state.id}: expected exactly one visible public header; received ${await header.count()}.`);
@@ -774,9 +779,12 @@ async function captureManifestState(browser, browserName, state, baseUrl, output
   const requiredScreenshots = requestedScreenshotNames(state.capture);
   if (!requiredScreenshots.includes("viewport.png")) throw new Error(`State ${state.id} capture declaration must include viewport.`);
   fs.mkdirSync(stateDirectory, { recursive: true });
-  const context = await browser.newContext({ viewport: state.viewport, deviceScaleFactor: 1, locale: "en-US", timezoneId: "UTC", colorScheme: "dark", serviceWorkers: "block" });
+  const zoomFactor = state.zoom / 100;
+  const effectiveViewport = { width: Math.max(1, Math.round(state.viewport.width / zoomFactor)), height: Math.max(1, Math.round(state.viewport.height / zoomFactor)) };
+  const context = await browser.newContext({ viewport: effectiveViewport, deviceScaleFactor: zoomFactor, locale: "en-US", timezoneId: "UTC", colorScheme: "dark", serviceWorkers: "block" });
   const initialStorage = await context.storageState();
   const page = await context.newPage();
+  if (state.zoom > 100) page.__earnalismZoomCapture = { viewportClip: { x: 0, y: 0, width: state.viewport.width / zoomFactor, height: state.viewport.height / zoomFactor } };
   const statusFixture = state.fixture === "error-404-contract" || state.fixture === "tombstone-410-contract";
   const statusResponse = statusFixture ? statusFixtureResponse(state) : null;
   const routeRecord = routeInventory.routes.find((route) => route.path === state.route)
@@ -804,15 +812,14 @@ async function captureManifestState(browser, browserName, state, baseUrl, output
   await page.goto(fixtureUrl(baseUrl, state), { waitUntil: "domcontentloaded" });
   await page.waitForLoadState("networkidle", { timeout: 5000 }).catch(() => {});
   if (statusFixture) consoleErrors.length = 0;
-  await page.evaluate(async ({ zoom, fontSpecs }) => {
+  await page.evaluate(async ({ fontSpecs }) => {
     const bounded = (promise) => Promise.race([promise, new Promise((resolve) => setTimeout(resolve, 5000))]);
     await bounded(document.fonts.ready);
     await Promise.all(Object.values(fontSpecs).map((font) => bounded(document.fonts.load(font, "অA").catch(() => []))));
     await Promise.all([...document.images].filter((image) => { const style = getComputedStyle(image); const rect = image.getBoundingClientRect(); return style.display !== "none" && rect.width > 0 && rect.height > 0; }).map((image) => bounded(image.decode().catch(() => undefined))));
     const style = document.createElement("style"); style.textContent = "*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important;scroll-behavior:auto!important}"; document.head.append(style);
-    document.documentElement.style.zoom = `${zoom}%`;
     await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-  }, { zoom: state.zoom, fontSpecs: REQUIRED_FONT_SPECS });
+  }, { fontSpecs: REQUIRED_FONT_SPECS });
   await page.emulateMedia({ reducedMotion: "reduce" });
   const header = page.locator(statusFixture ? 'header[data-testid="status-brand-masthead"]:visible' : 'header[data-testid="site-header"]:visible, header.experience-header:visible');
   const headerCount = await header.count();
@@ -895,14 +902,11 @@ async function captureManifestState(browser, browserName, state, baseUrl, output
     // horizontal visual-boundary loss as clipping here; vertical reachability is
     // recorded separately and may use ordinary page scrolling.
     const clippedControls = viewportControls.filter((node) => { const rect = node.getBoundingClientRect(); return rect.left < 0 || rect.right > innerWidth; });
-    const zoomValue = document.documentElement.style.zoom || getComputedStyle(document.documentElement).zoom || "100%";
-    const numericZoom = Number.parseFloat(zoomValue);
-    const effectiveZoomPercent = zoomValue.includes("%") ? numericZoom : numericZoom * 100;
     const visual = window.visualViewport;
     return {
       requested_zoom_percent: requestedZoom,
-      effective_zoom_percent: effectiveZoomPercent,
-      zoom_method: "document.documentElement.style.zoom",
+      effective_zoom_percent: devicePixelRatio * 100,
+      zoom_method: "effective-layout-viewport-and-device-scale-factor",
       layout_viewport: { width: document.documentElement.clientWidth, height: document.documentElement.clientHeight },
       visual_viewport: { width: visual?.width ?? innerWidth, height: visual?.height ?? innerHeight },
       window_inner: { width: innerWidth, height: innerHeight },
@@ -912,7 +916,7 @@ async function captureManifestState(browser, browserName, state, baseUrl, output
       minimum_visible_control_size: viewportControls.length ? { width: Math.min(...viewportControls.map((node) => node.getBoundingClientRect().width)), height: Math.min(...viewportControls.map((node) => node.getBoundingClientRect().height)) } : null,
       logo_control_overlap_area: headerControls.reduce((sum, node) => sum + area(logo, box(node)), 0),
       clipped_control_count: clippedControls.length,
-      search_supported_location: search ? "masthead" : "current-supported-location-not-visible",
+      search_supported_location: search ? "masthead" : menu && location.pathname === "/" ? "mobile-menu-library-route" : "current-supported-location-not-visible",
       first_content: box(main?.querySelector(".reference-home__hero,.account-page,.my-library-page,[data-testid='account-visual-fixture'],[data-testid='my-library-mobile']")),
       masthead_row_count: header ? 1 : 0,
       content_begins_below_masthead: !header || !main?.querySelector(".reference-home__hero,.account-page,.my-library-page,[data-testid='account-visual-fixture'],[data-testid='my-library-mobile']") || main.querySelector(".reference-home__hero,.account-page,.my-library-page,[data-testid='account-visual-fixture'],[data-testid='my-library-mobile']").getBoundingClientRect().top >= header.getBoundingClientRect().bottom,
@@ -992,7 +996,7 @@ async function captureManifestState(browser, browserName, state, baseUrl, output
   if (state.introduced_in === "experience-footer-zoom-2c2b" && (Math.abs(zoomResults.requested_zoom_percent - zoomResults.effective_zoom_percent) > 0.01 || zoomResults.logo_control_overlap_area !== 0 || zoomResults.clipped_control_count !== 0)) defects.push("experience-footer-zoom-geometry-contract");
   if (interactionResult?.failures?.length) defects.push(...interactionResult.failures);
   const safetyResults = { reader: { ...data.reader, production_reader_api_called: false }, listener: { ...data.listener, production_listener_api_called: false }, production_api_call_count: 0, production_mutation_count: mutationCount, footer: interactionResult?.kind === "scroll-to-footer" ? interactionResult.geometry : undefined };
-  const metadata = { source_head: gitReference("rev-parse", "HEAD"), tree_sha: gitReference("rev-parse", "HEAD^{tree}"), state_id: state.id, route: state.route, route_classification: routeRecord?.classification || "CONTROLLED_APPROVED_LISTENER", initial_url: fixtureUrl(baseUrl, state), final_url: page.url(), viewport: state.viewport, zoom: state.zoom, zoom_method: "document.documentElement.style.zoom", fixture: state.fixture, interaction: state.interaction, browser: browserName, browser_version: browser.version(), screenshot_stabilization: captureStabilization ? "fixed-webkit-header-stabilization-through-comparison-pair" : "none", context_id: `context-${contextIndex}`, initial_storage: { cookies: initialStorage.cookies.length, origins: initialStorage.origins.length }, screenshot_paths: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.path])), screenshot_sha256: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.sha256])), stability_attempts: stabilityAttempts, stable, visual_quiescence: visualQuiescence, webkit_raster_priming: rasterPriming, screenshot_capture_trace: screenshotCaptureTrace, editorial_request_timeline: state.id.startsWith("article-") ? editorialRequestTimeline : undefined, ...data, font_results: fontResults, http_error_responses: httpErrorResponses, unclassified_http_error_responses: unclassifiedHttpErrors, zoom_results: zoomResults, interaction_result: interactionResult, private_fixture: privateFixture ? { ...data.private_fixture, fixture_sha256: SANITIZED_PRIVATE_FIXTURE_SHA256, production_authentication_used: productionAuthenticationUsed, production_account_api_called: productionAccountApiCalled, fixture_intercepted_api_request_count: fixtureApiRequests.length, unfulfilled_api_request_count: unfulfilledApiRequests.length, mutation_count: mutationCount } : undefined, static_snapshot: staticSnapshot, status_contract: statusContract, production_mutation_count: mutationCount, production_api_call_count: unfulfilledApiRequests.length, intercepted_api_request_count: fixtureApiRequests.length, console_error_count: consoleErrors.length, page_error_count: pageErrors.length, failed_required_request_count: failedRequests.length, rendered_ui_result: defects.length ? "RENDERED_UI_DEFECT_FOUND" : "PASS", rendered_ui_defects: defects };
+  const metadata = { source_head: gitReference("rev-parse", "HEAD"), tree_sha: gitReference("rev-parse", "HEAD^{tree}"), state_id: state.id, route: state.route, route_classification: routeRecord?.classification || "CONTROLLED_APPROVED_LISTENER", initial_url: fixtureUrl(baseUrl, state), final_url: page.url(), viewport: state.viewport, effective_layout_viewport: effectiveViewport, zoom: state.zoom, zoom_method: "effective-layout-viewport-and-device-scale-factor", fixture: state.fixture, interaction: state.interaction, browser: browserName, browser_version: browser.version(), screenshot_stabilization: captureStabilization ? "fixed-webkit-header-stabilization-through-comparison-pair" : "none", context_id: `context-${contextIndex}`, initial_storage: { cookies: initialStorage.cookies.length, origins: initialStorage.origins.length }, screenshot_paths: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.path])), screenshot_sha256: Object.fromEntries(Object.entries(finalFiles).map(([name, file]) => [name.replace(".png", "").replaceAll("-", "_"), file.sha256])), stability_attempts: stabilityAttempts, stable, visual_quiescence: visualQuiescence, webkit_raster_priming: rasterPriming, screenshot_capture_trace: screenshotCaptureTrace, editorial_request_timeline: state.id.startsWith("article-") ? editorialRequestTimeline : undefined, ...data, font_results: fontResults, http_error_responses: httpErrorResponses, unclassified_http_error_responses: unclassifiedHttpErrors, zoom_results: zoomResults, interaction_result: interactionResult, private_fixture: privateFixture ? { ...data.private_fixture, fixture_sha256: SANITIZED_PRIVATE_FIXTURE_SHA256, production_authentication_used: productionAuthenticationUsed, production_account_api_called: productionAccountApiCalled, fixture_intercepted_api_request_count: fixtureApiRequests.length, unfulfilled_api_request_count: unfulfilledApiRequests.length, mutation_count: mutationCount } : undefined, static_snapshot: staticSnapshot, status_contract: statusContract, production_mutation_count: mutationCount, production_api_call_count: unfulfilledApiRequests.length, intercepted_api_request_count: fixtureApiRequests.length, console_error_count: consoleErrors.length, page_error_count: pageErrors.length, failed_required_request_count: failedRequests.length, rendered_ui_result: defects.length ? "RENDERED_UI_DEFECT_FOUND" : "PASS", rendered_ui_defects: defects };
   fs.writeFileSync(path.join(stateDirectory, "metadata.json"), JSON.stringify(metadata, null, 2) + "\n"); fs.writeFileSync(path.join(stateDirectory, "console-errors.json"), JSON.stringify(consoleErrors, null, 2) + "\n"); fs.writeFileSync(path.join(stateDirectory, "page-errors.json"), JSON.stringify(pageErrors, null, 2) + "\n"); fs.writeFileSync(path.join(stateDirectory, "failed-requests.json"), JSON.stringify(failedRequests, null, 2) + "\n");
   if (interactionResult) { fs.writeFileSync(path.join(stateDirectory, "interaction-results.json"), JSON.stringify(interactionResult, null, 2) + "\n"); fs.writeFileSync(path.join(stateDirectory, "geometry-results.json"), JSON.stringify(interactionResult.geometry || {}, null, 2) + "\n"); }
   fs.writeFileSync(path.join(stateDirectory, "zoom-results.json"), JSON.stringify(zoomResults, null, 2) + "\n");
