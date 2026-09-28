@@ -15,6 +15,7 @@ import {
   SlidersHorizontal,
   Sparkles,
   Eye,
+  Headphones,
   ShieldCheck,
   Focus,
   X,
@@ -27,6 +28,7 @@ import {
   canShowPreview,
   canShowStartReading,
   notifyUrl,
+  PUBLIC_AUDIO_EXPOSURE_ENABLED,
   PUBLIC_PAID_COMMERCE_ENABLED,
 } from "../lib/controlledLaunch";
 import { availabilityOfBook } from "../lib/libraryCatalog";
@@ -34,15 +36,17 @@ import BookCoverImage from "./BookCoverImage";
 import LibraryBrowseShelf from "./LibraryBrowseShelf";
 import LibraryReadingPassCard from "./LibraryReadingPassCard";
 import ReaderPerspectives from "./ReaderPerspectives";
+import HomepageListeningRoom from "./HomepageListeningRoom";
 import "./ReferencePublicPages.css";
 import "../styles/quiet-heritage.css";
 import "../styles/library-paper-review.css";
 import "../styles/home-compact-burgundy.css";
 
 const HOME_FEATURES = [
-  [BookOpen, "Curated classics", "and modern gems."],
-  [Leaf, "Bengali & English", "literature."],
-  [Users, "A community", "of thoughtful readers."],
+  [BookOpen, "Curated classics", "and modern gems"],
+  [Leaf, "Bengali & English", "literature"],
+  [Users, "A community", "of thoughtful readers"],
+  [Headphones, "Read or listen", "where available"],
 ];
 
 function titleFor(book) {
@@ -132,6 +136,7 @@ function ReferenceShelf({ books, className = "", label, testId, compact = false,
 
 export function ReferenceHomeSurface({ readingPasses = [], illustrativePasses = false }) {
   const passes = readingPasses.filter((pack) => pack && Number.isFinite(pack.minutes) && pack.minutes > 0 && Number.isFinite(pack.price_inr) && pack.price_inr >= 0).slice(0, 4);
+  const startingPrice = passes.length ? Math.min(...passes.map((pack) => pack.price_inr)) : null;
 
   return (
     <div className="reference-home" data-testid="home-reference-surface">
@@ -139,9 +144,10 @@ export function ReferenceHomeSurface({ readingPasses = [], illustrativePasses = 
         <div className="reference-home__hero-copy">
           <p className="reference-kicker">LITERATURE LIVES HERE</p>
           <h1 id="reference-home-title">A calmer place for<br />timeless reading.</h1>
-          <p className="reference-home__lede">Discover enduring works of Bengali and English literature across generations. Read, reflect, and reconnect with what truly matters.</p>
+          <p className="reference-home__lede">Discover enduring works of Bengali and English literature across generations. Read in stillness, or listen as stories travel with you through the day.</p>
           <div className="reference-home__cta-row">
             <Link to="/library" className="reference-button reference-button--burgundy" data-testid="home-reference-primary-cta">Explore the Library <ArrowRight aria-hidden="true" /></Link>
+            {PUBLIC_AUDIO_EXPOSURE_ENABLED && <Link to="/library?availability=approved-audiobook" className="reference-button reference-button--outline" data-testid="home-reference-listening-cta"><Headphones aria-hidden="true" />Enter the Listening Room <ArrowRight aria-hidden="true" /></Link>}
           </div>
         </div>
         <picture className="reference-home__hero-art">
@@ -158,39 +164,41 @@ export function ReferenceHomeSurface({ readingPasses = [], illustrativePasses = 
         <div className="reference-home__discovery-intro">
           <div>
             <p className="reference-kicker">A LIBRARY WITHOUT BORDERS</p>
-            <h2 id="home-discovery-title">Discover. Read. Belong.</h2>
+            <h2 id="home-discovery-title">Discover. Read. Listen. Belong.</h2>
           </div>
           <div className="reference-home__discovery-copy">
-            <p>From cherished Bengali classics to world literature, The Earnalism Digital Library brings timeless books to your screen. A space for curious minds, quiet moments, and a deeper connection to the written word.</p>
+            <p>From cherished Bengali classics to world literature, The Earnalism Digital Library brings timeless books to your screen — and, where available, into your ears. A space for curious minds, quiet moments, and a deeper connection to the written word.</p>
             <Link to="/library" className="reference-text-link">Explore all books <ArrowRight aria-hidden="true" /></Link>
           </div>
         </div>
         <div className="reference-home__discovery-grid" aria-label="Explore the library by collection">
           {[
-            ["Bengali Classics", "Timeless works that continue to inspire.", "/assets/home-option-b/bengali-classics.webp", "/library?language=bn&availability=reader-ready"],
-            ["English Classics", "Enduring voices from around the world.", "/assets/home-option-b/english-classics.webp", "/library?language=en"],
-            ["Modern Favourites", "Thoughtful reads for today and tomorrow.", "/assets/home-option-b/modern-favourites.webp", "/library"],
-            ["Curated Collections", "Handpicked reading lists for every mood.", "/assets/home-option-b/curated-collections.webp", "/library"],
+            ["Bengali Classics", <>Timeless works that continue<br />to inspire.</>, "/assets/home-option-b/bengali-classics.webp", "/library?language=bn&availability=reader-ready"],
+            ["English Classics", <>Enduring voices from around<br />the world.</>, "/assets/home-option-b/english-classics.webp", "/library?language=en"],
+            ["The Listening Room", <>Stories to hear in quiet moments,<br />on walks, and along the way.</>, "/assets/home-option-b/listening-room.webp", "/library?availability=approved-audiobook"],
+            ["Curated Collections", <>Handpicked reading lists<br />for every mood.</>, "/assets/home-option-b/curated-collections.webp", "/library"],
           ].map(([title, copy, image, href]) => (
             <Link className="reference-home__discovery-card" to={href} key={title}>
               <img src={image} alt="" loading="lazy" />
-              <span><h3>{title}</h3><small>{copy}</small><em>Explore <ArrowRight aria-hidden="true" /></em></span>
+              <span><h3>{title}</h3><small>{copy}</small><em>{title === "The Listening Room" ? "Explore audio" : "Explore"} <ArrowRight aria-hidden="true" /></em></span>
             </Link>
           ))}
         </div>
       </section>
 
       <ReaderPerspectives />
+      <HomepageListeningRoom />
 
       <section className="reference-home__pass" aria-labelledby="reference-pass-title">
         <div className="reference-home__pass-copy">
           <p className="reference-kicker">THE EARNALISM READING PASS</p>
           <h2 id="reference-pass-title">More books. A calmer you.</h2>
-          <p className="reference-home__pass-intro">{PUBLIC_PAID_COMMERCE_ENABLED ? `${PUBLIC_PREVIEW_COPY} Continue from page 4 with a Reading Pass.` : "The first 3 pages are free. Continue reading with a Reading Pass when purchases are available."}</p>
+          <p className="reference-home__pass-intro">{PUBLIC_PAID_COMMERCE_ENABLED ? `${PUBLIC_PREVIEW_COPY} Continue from page 4 with a Reading Pass${startingPrice === null ? "" : ` from ₹${startingPrice}`}. One-time purchase · unused time never expires.` : "The first 3 pages are free. Continue reading with a Reading Pass when purchases are available."}</p>
+          <p className="reference-home__pass-listening-note">Where a title includes an approved audiobook, your literary journey may continue in voice as well as on the page.</p>
           {PUBLIC_PAID_COMMERCE_ENABLED ? <ul>
-            <li><Clock3 aria-hidden="true" /><span><strong>Reading time stays yours</strong><small>{READING_TIME_COPY}</small></span></li>
-            <li><BookOpen aria-hidden="true" /><span><strong>Read on any device</strong><small>Book, phone or desktop.</small></span></li>
-            <li><ShieldCheck aria-hidden="true" /><span><strong>One wallet across eligible editions</strong><small>No subscription or autorenewal.</small></span></li>
+            <li><Clock3 aria-hidden="true" /><span><strong>Time that stays yours</strong><small>Unused Reading Pass time never expires.</small></span></li>
+            <li><BookOpen aria-hidden="true" /><span><strong>Read on any device</strong><small>Continue your books across supported screens.</small></span></li>
+            <li><Headphones aria-hidden="true" /><span><strong>Listen where available</strong><small>Selected titles may offer an approved listening experience.</small></span></li>
           </ul> : <ul>
             <li><BookOpen aria-hidden="true" />Preview the first 3 pages of released titles</li>
             <li><Clock3 aria-hidden="true" />A valid Reading Pass is required from page 4</li>

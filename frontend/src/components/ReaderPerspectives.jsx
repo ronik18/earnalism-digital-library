@@ -1,4 +1,4 @@
-import { BookOpen, Leaf, Sprout, Sun } from "lucide-react";
+import { BookOpen, Headphones, Leaf, Sprout, Sun } from "lucide-react";
 import "./ReaderPerspectives.css";
 
 const BENEFITS = [
@@ -11,6 +11,11 @@ const BENEFITS = [
     Icon: BookOpen,
     title: "A wider world",
     copy: "Meet new ideas, cultures and perspectives across time and place.",
+  },
+  {
+    Icon: Headphones,
+    title: "A story beside you",
+    copy: "Let literature travel with you — through walks, journeys, and quieter hours.",
   },
   {
     Icon: Sun,
@@ -59,9 +64,9 @@ export default function ReaderPerspectives() {
     <section className="reference-reader-perspectives" aria-labelledby="reader-perspectives-title" data-testid="reader-perspectives-section">
       <div className="reference-reader-perspectives__layout">
         <div className="reference-reader-perspectives__intro">
-          <p className="reference-kicker">WHAT READING CAN FEEL LIKE</p>
+          <p className="reference-kicker">WHAT READING — AND LISTENING — CAN FEEL LIKE</p>
           <h2 id="reader-perspectives-title">A gentler, richer way to be in the world.</h2>
-        <p>Reading slows us down. It gives us space to think, to feel, and to see life through other eyes. At The Earnalism Digital Library, we believe in the quiet power of books — to comfort, to challenge, and to keep us curiously human.</p>
+        <p>Reading slows us down. Listening does too, in its own tender way. At The Earnalism Digital Library, we believe in the quiet power of books — on the page and in the ear — to comfort, to challenge, and to keep us curiously human.</p>
         </div>
         <div className="reference-reader-perspectives__benefits" aria-label="What reading can bring">
           {BENEFITS.map(({ Icon, title, copy }) => (

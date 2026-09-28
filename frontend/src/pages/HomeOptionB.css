@@ -632,3 +632,71 @@
 @media (prefers-reduced-motion: reduce) {
   .home-reference-page[data-testid="home-page"] .reference-home__discovery-card { transition: none; }
 }
+
+/* Read and listen additions stay within Option B's existing editorial system. */
+.home-reference-page[data-testid="home-page"] .reference-feature-strip {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.home-reference-page[data-testid="home-page"] .reference-home__pass-listening-note {
+  max-width: 34rem;
+  margin: 10px 0 0;
+  color: color-mix(in srgb, var(--beige-50) 82%, transparent);
+  font: italic 400 13px/1.4 var(--font-display);
+}
+.home-reference-page[data-testid="home-page"] .reference-home__hero .reference-button--outline {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--burgundy-700);
+  border-radius: 4px;
+  padding: 0 16px;
+  color: var(--burgundy-800);
+  background: color-mix(in srgb, var(--beige-50) 92%, transparent);
+  font: 500 14px/1.2 var(--font-display);
+  text-decoration: none;
+}
+.home-reference-page[data-testid="home-page"] .reference-home__hero .reference-button--outline svg { width: 16px; height: 16px; }
+.home-reference-page[data-testid="home-page"] .reference-home__hero .reference-button--outline:focus-visible { outline: 3px solid var(--gold-500); outline-offset: 3px; }
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .home-reference-page[data-testid="home-page"] .reference-home__hero { min-height: 440px; }
+  .home-reference-page[data-testid="home-page"] .reference-feature-strip {
+    width: min(56%, 620px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 8px;
+  }
+  .home-reference-page[data-testid="home-page"] .reference-feature-strip article {
+    min-height: 44px;
+    padding-inline: 10px;
+  }
+  .home-reference-page[data-testid="home-page"] .reference-feature-strip article:nth-child(odd) { border-left: 0; }
+  .home-reference-page[data-testid="home-page"] .reference-home__discovery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .home-reference-page[data-testid="home-page"] .reference-reader-perspectives__benefits {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .home-reference-page[data-testid="home-page"] .reference-reader-perspectives__benefits article:nth-child(odd) { border-left: 0; }
+  .home-reference-page[data-testid="home-page"] .reference-reader-perspectives__benefits article:nth-child(n + 3) { border-top: 1px solid color-mix(in srgb, var(--burgundy-800) 18%, transparent); }
+}
+
+@media (min-width: 1280px) {
+  .home-reference-page[data-testid="home-page"] .reference-reader-perspectives__benefits {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .home-reference-page[data-testid="home-page"] .reference-feature-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 8px;
+    padding-block: 10px;
+  }
+  .home-reference-page[data-testid="home-page"] .reference-feature-strip article:nth-child(odd) { border-left: 0; }
+  .home-reference-page[data-testid="home-page"] .reference-feature-strip article:nth-child(n + 3) { border-top: 1px solid color-mix(in srgb, var(--burgundy-800) 18%, transparent); padding-top: 8px; }
+  .home-reference-page[data-testid="home-page"] .reference-reader-perspectives__benefits {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .home-reference-page[data-testid="home-page"] .reference-reader-perspectives__benefits article:nth-child(odd) { border-left: 0; }
+  .home-reference-page[data-testid="home-page"] .reference-reader-perspectives__benefits article:nth-child(n + 3) { border-top: 1px solid color-mix(in srgb, var(--burgundy-800) 18%, transparent); }
+  .home-reference-page[data-testid="home-page"] .reference-home__pass-listening-note { font-size: 12px; }
+}
