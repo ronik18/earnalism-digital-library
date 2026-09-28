@@ -5,6 +5,7 @@ import unittest
 from pathlib import Path
 
 from scripts.autonomy_worker import git_changed_files, load_codex_result, should_run_fixture_test
+from scripts.autonomy_scope import authorized_scope, forbidden_paths
 
 
 class CodexImplementationContractTests(unittest.TestCase):
@@ -26,6 +27,19 @@ class CodexImplementationContractTests(unittest.TestCase):
     def test_fixture_semantics_are_not_applied_to_generic_implementations(self):
         self.assertTrue(should_run_fixture_test("codex-implementation-fixture"))
         self.assertFalse(should_run_fixture_test("codex-implementation"))
+
+    def test_ordinary_product_files_are_allowed(self):
+        self.assertTrue(authorized_scope("frontend/src/styles/reading-passes.css"))
+        self.assertTrue(authorized_scope("frontend/src/pages/Pricing.test.jsx"))
+        self.assertTrue(authorized_scope("backend/server.py"))
+
+    def test_sensitive_surfaces_fail_closed(self):
+        denied = forbidden_paths([".github/workflows/x.yml", "backend/payments.py", "frontend/src/lib/entitlement.js"])
+        self.assertEqual(denied, [".github/workflows/x.yml", "backend/payments.py", "frontend/src/lib/entitlement.js"])
+
+    def test_catalogue_requires_explicit_authorization(self):
+        self.assertTrue(authorized_scope("backend/catalogue.py", "explicitly authorized catalogue work"))
+        self.assertFalse(authorized_scope("backend/catalogue.py"))
 
     def test_workflow_keeps_generic_and_fixture_paths_distinct(self):
         workflow = Path(".github/workflows/earnalism-autonomy-worker.yml").read_text()
