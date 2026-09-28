@@ -14,6 +14,7 @@ import {
   PR457_READING_PASS_HOME_LIBRARY_INTERACTION_BASELINE,
   PR462_APPROVED_HOMEPAGE_LIBRARY_INTERACTION_BASELINE,
   PR466_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE,
+  PR467_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE,
   compareLibraryInteractionBaseline,
   loadLibraryInteractionBaseline,
 } from "./lib/library_interaction_baseline.mjs";
@@ -105,10 +106,10 @@ test("the approved PR438 Reading Room transition matches the current Home source
   assert.equal(baseline.owner_authorization.capture_is_not_expected_value_authority, true);
 });
 
-test("the default runtime baseline resolves to the approved PR466 Option B transition", () => {
+test("the default runtime baseline resolves to the approved PR467 Option B transition", () => {
   const implicit = compareLibraryInteractionBaseline(root);
-  const explicit = compareLibraryInteractionBaseline(root, PR466_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
-  assert.equal(implicit.approval_source, PR466_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
+  const explicit = compareLibraryInteractionBaseline(root, PR467_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
+  assert.equal(implicit.approval_source, PR467_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
   assert.deepEqual(implicit, explicit);
 });
 
@@ -150,11 +151,29 @@ test("an unauthorized PR462 homepage baseline mutation fails closed", () => {
 
 test("the approved PR466 Option B homepage transition preserves the exact Library interaction baseline", () => {
   const baseline = loadLibraryInteractionBaseline(root, PR466_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
-  const comparison = compareLibraryInteractionBaseline(root, PR466_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
+  const comparison = compareLibraryInteractionBaseline(materializeReviewedSurface(PR466_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE), PR466_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
   assert.equal(comparison.previous_surface_sha256, "38f492eb2f1798ffe476470ff78a0be3b580c7fb41f488db73e9ee92a14d6f76");
   assert.equal(comparison.expected_surface_sha256, "0de6d2fe1388062cbfbf3c4e6569d0bc6bec13c8ffc31ee73c996d4791ba21e4");
   assert.equal(comparison.result, "PASS");
   assert.equal(baseline.owner_authorization.capture_is_not_expected_value_authority, true);
+});
+
+test("the approved PR467 Option B refinement preserves the exact Library interaction baseline", () => {
+  const baseline = loadLibraryInteractionBaseline(root, PR467_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
+  const comparison = compareLibraryInteractionBaseline(root, PR467_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
+  assert.equal(comparison.previous_surface_sha256, "0de6d2fe1388062cbfbf3c4e6569d0bc6bec13c8ffc31ee73c996d4791ba21e4");
+  assert.equal(comparison.expected_surface_sha256, "b043c3ca7f6031c035a472cfd534bab49a0d31647c1434e280df87bfd658350b");
+  assert.equal(comparison.result, "PASS");
+  assert.equal(baseline.owner_authorization.capture_is_not_expected_value_authority, true);
+});
+
+test("an unauthorized PR467 homepage baseline mutation fails closed", () => {
+  const temporary = materializeReviewedSurface(PR467_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
+  const record = path.join(temporary, PR467_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
+  const value = JSON.parse(read(record));
+  value.owner_authorization.reference = "UNAUTHORIZED";
+  write(record, value);
+  assert.throws(() => loadLibraryInteractionBaseline(temporary, PR467_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE));
 });
 
 test("an unauthorized PR466 homepage baseline mutation fails closed", () => {

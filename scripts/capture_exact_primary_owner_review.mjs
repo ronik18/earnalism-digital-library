@@ -225,12 +225,26 @@ async function capture(state, context, sessionFontLoad) {
   let navigation = null;
   let navigationClose = null;
   if (state.family === "navigation") {
-    try {
-      navigation = await openActualMobileMenu(page);
-      assertMobileMenuGeometry(navigation);
-    } catch (error) {
-      if (strict) throw error;
-      errors.push(`navigation-overlay:${error.message}`);
+    if (state.viewport.width >= 1024) {
+      navigation = await page.evaluate(() => ({
+        mode: "desktop-navigation",
+        navVisible: (() => { const node = document.querySelector(".premium-header-nav"); const box = node?.getBoundingClientRect(); return Boolean(node && getComputedStyle(node).display !== "none" && box.width > 0); })(),
+        mobileToggleCount: [...document.querySelectorAll('[data-testid="mobile-menu-toggle"]')].filter((node) => getComputedStyle(node).display !== "none" && node.getBoundingClientRect().width > 0).length,
+        dialogCount: document.querySelectorAll('[data-testid="mobile-menu"]').length,
+      }));
+      if (!navigation.navVisible || navigation.mobileToggleCount !== 0 || navigation.dialogCount !== 0) {
+        const message = `Desktop navigation contract failed: ${JSON.stringify(navigation)}`;
+        if (strict) throw new Error(message);
+        errors.push(`navigation-desktop:${message}`);
+      }
+    } else {
+      try {
+        navigation = await openActualMobileMenu(page);
+        assertMobileMenuGeometry(navigation);
+      } catch (error) {
+        if (strict) throw error;
+        errors.push(`navigation-overlay:${error.message}`);
+      }
     }
   }
   // React can insert a fixture cover after the initial document-image pass.
@@ -258,7 +272,7 @@ async function capture(state, context, sessionFontLoad) {
     h1: document.querySelector("h1")?.textContent?.trim() || "",
     geometry: required.map((selector) => { const node = document.querySelector(selector); if (!node) return { selector, present: false }; const r = node.getBoundingClientRect(); const s = getComputedStyle(node); return { selector, present: true, x: r.x, y: r.y, width: r.width, height: r.height, fontSize: s.fontSize, lineHeight: s.lineHeight }; }),
   }), selectors);
-  if (navigation) navigationClose = await closeActualMobileMenu(page);
+  if (navigation && navigation.mode !== "desktop-navigation") navigationClose = await closeActualMobileMenu(page);
   await page.close();
   const fixture = state.family === "profile"
     ? "sanitized-owner-review-user"
