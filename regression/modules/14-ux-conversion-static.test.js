@@ -220,12 +220,14 @@ describe("UX conversion static signals", () => {
   ].join("\n");
 
   test("homepage exposes approved bilingual library positioning and release-truth CTAs", () => {
-    // The approved Option B homepage is editorial and locally rendered. Its
-    // only live home-surface request is optional, release-safe listening data.
-    expect(home).toContain("fetchHomeListening");
+    // The approved Option B homepage is editorial and has no audiobook CTA or
+    // audio fetch until its layout includes an explicitly release-safe surface.
+    expect(home).not.toContain("fetchHomeListening");
     expect(home).not.toContain("fetchHomeHero");
     expect(homeSurfaces).toContain('fetchPublicSurface(`/home/listening?limit=${boundedLimit}`');
     expect(home).toContain("<ReferenceHomeSurface");
+    expect(home).not.toContain("Listen Now");
+    expect(home).not.toContain("Play audiobook");
     expect(editorialHomeSurface).toContain("A calmer place for<br />timeless reading.");
     expect(editorialHomeSurface).toContain('<h1 id="reference-home-title">A calmer place for<br />timeless reading.</h1>');
     expect(editorialHomeSurface).toContain("Explore the Library");
@@ -235,9 +237,9 @@ describe("UX conversion static signals", () => {
     expect(editorialHomeSurface).toContain("Modern Favourites");
     expect(editorialHomeSurface).toContain("Curated Collections");
     expect(editorialHomeSurface).toContain("<ReaderPerspectives />");
-    expect(editorialHomeSurface).toContain('PUBLIC_AUDIO_EXPOSURE_ENABLED && Array.isArray(listeningItems)');
-    expect(editorialHomeSurface).toContain(".filter((book) => audiobookReleaseState(book).releaseApproved)");
-    expect(editorialHomeSurface).toContain("{listeningBooks.length > 0 && <section");
+    expect(editorialHomeSurface).not.toContain("listeningItems");
+    expect(editorialHomeSurface).not.toContain("Listen Now");
+    expect(library).toContain("audiobookReleaseState(book).releaseApproved");
     expect(referencePublicPages).toContain("Enter the Library");
     expect(referencePublicPages).toContain("Discover listening");
     expect(referencePublicPages).toContain("Timeless Bengali and English classics.");
@@ -1225,7 +1227,9 @@ describe("UX conversion static signals", () => {
   });
 
   test("Bengali and Gothic discovery shelves preserve reader-safe browse paths", () => {
-    expect(home).toContain("<HomeShelfArchitecture");
+    expect(home).not.toContain("<HomeShelfArchitecture");
+    expect(editorialHomeSurface).toContain("Bengali Classics");
+    expect(editorialHomeSurface).toContain("Curated Collections");
     expect(homeShelfArchitecture).toContain("<CuratedShelfCollage");
     expect(homeCurationConfig).toContain("Bengali Life & Legacy");
     expect(homeCurationConfig).toContain("Gothic & the Uncanny");
@@ -1289,7 +1293,8 @@ describe("UX conversion static signals", () => {
   });
 
   test("future pipeline books do not show live CTAs", () => {
-    expect(home).toContain("<HomeShelfArchitecture");
+    expect(home).not.toContain("<HomeShelfArchitecture");
+    expect(editorialHomeSurface).not.toContain("Listen Now");
     expect(homeShelfArchitecture).toContain("<CuratedShelfCollage");
     expect(curatedShelfCollage).toContain("Browse the complete library");
     expect(curatedShelfCollage).not.toContain("Notify Me");

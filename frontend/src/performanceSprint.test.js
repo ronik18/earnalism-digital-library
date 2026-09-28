@@ -18,27 +18,27 @@ describe("Home performance sprint contract", () => {
     expect(snapshots).toContain('data-static-seo-snapshot="true"');
   });
 
-  test("keeps the noncritical Home shelf module and Reader CSS out of the initial route bundle", () => {
+  test("keeps the removed Home shelf and Reader CSS out of the homepage bundle", () => {
     const home = read("src/pages/Home.jsx");
     const globalStyles = read("src/index.css");
     const readerStyles = read("src/pages/ReaderRoute.css");
 
-    expect(home).toContain('lazy(() => import("../components/HomeShelfArchitecture"))');
+    expect(home).not.toContain("HomeShelfArchitecture");
     expect(home).not.toContain('lazy(() => import("../components/HomeListeningRoom"))');
-    expect(home).toContain("<DeferredMount");
+    expect(home).not.toContain("<DeferredMount");
     expect(globalStyles).not.toContain(".premium-reader {");
     expect(readerStyles).toContain(".premium-reader {");
   });
 
-  test("renders the editorial hero immediately and keeps optional listening data nonblocking", () => {
+  test("renders the editorial hero without loading optional audio discovery on Home", () => {
     const home = read("src/pages/Home.jsx");
     const surfaces = read("src/lib/homeSurfaces.js");
     const listening = read("src/components/HomeListeningRoom.jsx");
     const vercel = read("vercel.json");
 
-    expect(home).toContain("getHomeListeningSnapshot()");
-    expect(home).toContain("fetchHomeListening(controller.signal, 3)");
-    expect(home).toContain("if (!PUBLIC_AUDIO_EXPOSURE_ENABLED) return undefined;");
+    expect(home).not.toContain("getHomeListeningSnapshot()");
+    expect(home).not.toContain("fetchHomeListening(controller.signal, 3)");
+    expect(home).not.toContain("listeningItems");
     expect(home).not.toContain("fetchHomeHero(controller.signal)");
     expect(home).not.toContain("fetchHomeCuration(controller.signal)");
     expect(listening).toContain("fetchHomeListening(controller.signal, 3)");

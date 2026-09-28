@@ -3,36 +3,38 @@ import path from "path";
 
 const source = fs.readFileSync(path.join(process.cwd(), "src/pages/Home.jsx"), "utf8");
 
-describe("Home curated shelf integration", () => {
-  test("replaces the internal below-hero panels with the public shelf collage", () => {
-    expect(source).toContain("HomeShelfArchitecture");
-    expect(source).not.toContain("ComingSoonBoard");
-    expect(source).not.toContain("ApprovedAudiobookSpotlight");
-    expect(source).not.toContain("reference-pipeline-shelf");
-    expect(source).not.toMatch(/Release truth preserved|No unapproved audio|Reader-only editions live|release gates/i);
+describe("Option B homepage composition", () => {
+  test("mounts one editorial surface and removes obsolete homepage sections", () => {
+    expect(source).toContain("<ReferenceHomeSurface");
+    expect(source).not.toContain("HomeShelfArchitecture");
+    expect(source).not.toContain("home-quick-paths");
+    expect(source).not.toContain("reading-time-library-path");
+    expect(source).not.toContain("reference-home__legacy-content");
   });
 
-  test("keeps live hero and listening refreshes independent", () => {
-    expect(source).toContain("fetchHomeListening(controller.signal, 3)");
-    expect(source).toContain("listeningItems={listeningCuration.listening_rooms?.items");
-    expect(source).not.toContain("fetchHomeHero(controller.signal)");
-    expect(source).not.toContain("<HomeListeningRoom />");
-    expect(source).not.toContain("fetchHomeCuration(controller.signal)");
-    expect(source).not.toContain("homeCurationLoading");
+  test("keeps unsupported listening out of the homepage composition", () => {
+    const surface = fs.readFileSync(path.join(process.cwd(), "src/components/EditorialHomeLibrarySurfaces.jsx"), "utf8");
+    expect(source).not.toContain("fetchHomeListening");
+    expect(surface).not.toContain("reference-home__listening");
+    expect(surface).toContain("audiobookReleaseState(book)");
   });
 
-  test("removes the unreachable legacy hero instead of keeping a second visual architecture", () => {
-    expect(source).not.toContain("{false && (");
-    expect(source).not.toContain("reference-editorial-index");
-    expect(source).not.toContain("home_hero_start_reading");
+  test("places the four discovery cards before Reading Pass", () => {
+    const surface = fs.readFileSync(path.join(process.cwd(), "src/components/EditorialHomeLibrarySurfaces.jsx"), "utf8");
+    expect(surface).toContain("reference-home__discovery-grid");
+    expect(surface.indexOf("reference-home__discovery-grid")).toBeLessThan(surface.indexOf('section className="reference-home__pass"'));
+    expect(surface).toContain("<span><h3>{title}</h3><small>{copy}</small>");
   });
 
-  test("places three accurate discovery paths before monetization", () => {
-    expect(source).toContain("home-quick-paths");
-    expect(source).toContain("Enter the Bengali collection");
-    expect(source).toContain("Enter the English collection");
-    expect(source).toContain("Step into the listening room");
-    expect(source.indexOf("home-quick-paths")).toBeLessThan(source.indexOf("reading-time-library-path"));
+  test("uses one H1 and the requested section heading hierarchy", () => {
+    const surface = fs.readFileSync(path.join(process.cwd(), "src/components/EditorialHomeLibrarySurfaces.jsx"), "utf8");
+    const perspectives = fs.readFileSync(path.join(process.cwd(), "src/components/ReaderPerspectives.jsx"), "utf8");
+    expect(surface.match(/<h1 id="reference-home-title"/g)).toHaveLength(1);
+    expect(surface).toContain("A calmer place for<br />timeless reading.");
+    expect(surface).toContain("Discover. Read. Belong.");
+    expect(perspectives).toContain("A gentler, richer way to be in the world.");
+    expect(surface).toContain("More books. A calmer you.");
+    expect(source).toContain("Letters for thoughtful readers.");
   });
 
   test("uses the approved Option B hero with a single readable library CTA", () => {
@@ -44,12 +46,12 @@ describe("Home curated shelf integration", () => {
     expect(surface).toContain("Explore the Library");
     expect(surface).not.toContain("Come for a story.");
     expect(surface).not.toContain("earnalism-black-burgundy-reading-room.webp");
-    expect(surface).toContain("golden-hour-library-hero.webp");
+    expect(surface).toContain("/assets/home-option-b/hero-reading-room.webp");
   });
 
   test("reuses the validated Reading Circle form after the literary quote banner", () => {
-    expect(source).toContain("Literature is a map of the human heart.");
-    expect(source).toContain("Alice Walker");
+    expect(source).toContain("A good story has a gentle way of slowing a busy day.");
+    expect(source).toContain("A reflection from the reading room");
     expect(source).toContain("Letters for thoughtful readers.");
     expect(source).toContain("New arrivals, reading lists, essays and more");
     expect(source).toContain('data-testid="newsletter-card"');

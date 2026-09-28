@@ -8,7 +8,6 @@ import {
   Clock3,
   ChevronLeft,
   ChevronRight,
-  Headphones,
   Landmark,
   Leaf,
   Lock,
@@ -28,7 +27,6 @@ import {
   canShowPreview,
   canShowStartReading,
   notifyUrl,
-  PUBLIC_AUDIO_EXPOSURE_ENABLED,
   PUBLIC_PAID_COMMERCE_ENABLED,
 } from "../lib/controlledLaunch";
 import { availabilityOfBook } from "../lib/libraryCatalog";
@@ -42,9 +40,9 @@ import "../styles/library-paper-review.css";
 import "../styles/home-compact-burgundy.css";
 
 const HOME_FEATURES = [
-  [BookOpen, "Curated classics", "Timeless works and modern gems."],
-  [Leaf, "Bengali & English", "Literature across generations."],
-  [Users, "A community", "Thoughtful readers, everywhere."],
+  [BookOpen, "Curated classics", "and modern gems."],
+  [Leaf, "Bengali & English", "literature."],
+  [Users, "A community", "of thoughtful readers."],
 ];
 
 function titleFor(book) {
@@ -132,14 +130,8 @@ function ReferenceShelf({ books, className = "", label, testId, compact = false,
   );
 }
 
-export function ReferenceHomeSurface({ readingPasses = [], listeningItems = [], illustrativePasses = false }) {
+export function ReferenceHomeSurface({ readingPasses = [], illustrativePasses = false }) {
   const passes = readingPasses.filter((pack) => pack && Number.isFinite(pack.minutes) && pack.minutes > 0 && Number.isFinite(pack.price_inr) && pack.price_inr >= 0).slice(0, 4);
-  // Listening discovery comes from the public /home/listening contract. That
-  // contract carries release-safe metadata only; package and media details
-  // remain available solely after the Listener's authenticated authorization.
-  const listeningBooks = (PUBLIC_AUDIO_EXPOSURE_ENABLED && Array.isArray(listeningItems) ? listeningItems : [])
-    .filter((book) => audiobookReleaseState(book).releaseApproved)
-    .slice(0, 5);
 
   return (
     <div className="reference-home" data-testid="home-reference-surface">
@@ -153,7 +145,7 @@ export function ReferenceHomeSurface({ readingPasses = [], listeningItems = [], 
           </div>
         </div>
         <picture className="reference-home__hero-art">
-          <img src="/assets/hero/golden-hour-library-hero.webp" alt="" fetchPriority="high" decoding="async" />
+          <img src="/assets/home-option-b/hero-reading-room.webp" alt="" fetchPriority="high" decoding="async" />
         </picture>
         <section className="reference-feature-strip" aria-label="Earnalism reading room features">
           {HOME_FEATURES.map(([Icon, title, copy]) => (
@@ -162,22 +154,27 @@ export function ReferenceHomeSurface({ readingPasses = [], listeningItems = [], 
         </section>
       </section>
 
-      <section className="reference-home__journey" aria-label="Discover. Read. Belong.">
-        <SectionHeading
-          eyebrow="A LIBRARY WITHOUT BORDERS"
-          title="Discover. Read. Belong."
-          action={<Link to="/library" className="reference-text-link">Explore all books <ArrowRight aria-hidden="true" /></Link>}
-        ><p>From cherished Bengali classics to world literature, find a thoughtful place to begin.</p></SectionHeading>
+      <section className="reference-home__journey" aria-labelledby="home-discovery-title">
+        <div className="reference-home__discovery-intro">
+          <div>
+            <p className="reference-kicker">A LIBRARY WITHOUT BORDERS</p>
+            <h2 id="home-discovery-title">Discover. Read. Belong.</h2>
+          </div>
+          <div className="reference-home__discovery-copy">
+            <p>From cherished Bengali classics to world literature, The Earnalism Digital Library brings timeless books to your screen. A space for curious minds, quiet moments, and a deeper connection to the written word.</p>
+            <Link to="/library" className="reference-text-link">Explore all books <ArrowRight aria-hidden="true" /></Link>
+          </div>
+        </div>
         <div className="reference-home__discovery-grid" aria-label="Explore the library by collection">
           {[
-            ["Bengali Classics", "Timeless works that continue to inspire.", "/assets/shelves/bengali-classics.jpg", "/library?language=bn&availability=reader-ready"],
-            ["English Classics", "Enduring voices from around the world.", "/assets/shelves/literature.jpg", "/library?language=en"],
-            ["Modern Favourites", "Thoughtful reads for today and tomorrow.", "/assets/reference-derived/reader-castle-board-crop.png", "/library"],
-            ["Curated Collections", "Handpicked reading lists for every mood.", "/assets/reference-derived/commerce-chair-lamp-board-crop.png", "/library"],
+            ["Bengali Classics", "Timeless works that continue to inspire.", "/assets/home-option-b/bengali-classics.webp", "/library?language=bn&availability=reader-ready"],
+            ["English Classics", "Enduring voices from around the world.", "/assets/home-option-b/english-classics.webp", "/library?language=en"],
+            ["Modern Favourites", "Thoughtful reads for today and tomorrow.", "/assets/home-option-b/modern-favourites.webp", "/library"],
+            ["Curated Collections", "Handpicked reading lists for every mood.", "/assets/home-option-b/curated-collections.webp", "/library"],
           ].map(([title, copy, image, href]) => (
             <Link className="reference-home__discovery-card" to={href} key={title}>
               <img src={image} alt="" loading="lazy" />
-              <span><strong>{title}</strong><small>{copy}</small><em>Explore <ArrowRight aria-hidden="true" /></em></span>
+              <span><h3>{title}</h3><small>{copy}</small><em>Explore <ArrowRight aria-hidden="true" /></em></span>
             </Link>
           ))}
         </div>
@@ -187,18 +184,19 @@ export function ReferenceHomeSurface({ readingPasses = [], listeningItems = [], 
 
       <section className="reference-home__pass" aria-labelledby="reference-pass-title">
         <div className="reference-home__pass-copy">
-          <h2 id="reference-pass-title">{PUBLIC_PAID_COMMERCE_ENABLED ? "Make time for a good story." : "Reading Pass"}</h2>
-          <p className="reference-home__pass-intro">{PUBLIC_PAID_COMMERCE_ENABLED ? "With Reading Passes, you pay for reading time." : "The first 3 pages are free. Continue reading with a Reading Pass when purchases are available."}</p>
+          <p className="reference-kicker">THE EARNALISM READING PASS</p>
+          <h2 id="reference-pass-title">More books. A calmer you.</h2>
+          <p className="reference-home__pass-intro">{PUBLIC_PAID_COMMERCE_ENABLED ? `${PUBLIC_PREVIEW_COPY} Continue from page 4 with a Reading Pass.` : "The first 3 pages are free. Continue reading with a Reading Pass when purchases are available."}</p>
           {PUBLIC_PAID_COMMERCE_ENABLED ? <ul>
-            <li><Clock3 aria-hidden="true" />{READING_TIME_COPY}</li>
-            <li><BookOpen aria-hidden="true" />One wallet across eligible editions</li>
-            <li><ShieldCheck aria-hidden="true" />No subscription or autorenewal</li>
+            <li><Clock3 aria-hidden="true" /><span><strong>Reading time stays yours</strong><small>{READING_TIME_COPY}</small></span></li>
+            <li><BookOpen aria-hidden="true" /><span><strong>Read on any device</strong><small>Book, phone or desktop.</small></span></li>
+            <li><ShieldCheck aria-hidden="true" /><span><strong>One wallet across eligible editions</strong><small>No subscription or autorenewal.</small></span></li>
           </ul> : <ul>
             <li><BookOpen aria-hidden="true" />Preview the first 3 pages of released titles</li>
             <li><Clock3 aria-hidden="true" />A valid Reading Pass is required from page 4</li>
             <li><ShieldCheck aria-hidden="true" />Pass purchases are not available yet</li>
           </ul>}
-          <Link className="reference-button reference-button--gold" to={PUBLIC_PAID_COMMERCE_ENABLED ? "/pricing" : "/library"}>{PUBLIC_PAID_COMMERCE_ENABLED ? "Find your Reading Pass" : "Browse the Library"}</Link>
+          <Link className="reference-button reference-button--gold" to={PUBLIC_PAID_COMMERCE_ENABLED ? "/pricing" : "/library"}>{PUBLIC_PAID_COMMERCE_ENABLED ? "View Reading Pass Plans" : "Browse the Library"}</Link>
         </div>
         <div className="reference-home__pass-options">
           <div className="reference-home__pass-cards" aria-label={PUBLIC_PAID_COMMERCE_ENABLED ? "Reading Pass options" : "Reading access"}>
@@ -217,17 +215,6 @@ export function ReferenceHomeSurface({ readingPasses = [], listeningItems = [], 
           {PUBLIC_PAID_COMMERCE_ENABLED && illustrativePasses && <p className="reference-home__sample-note">Illustrative plans · Confirm current prices on Reading Passes.</p>}
         </div>
       </section>
-
-      {listeningBooks.length > 0 && <section className="reference-home__listening" aria-labelledby="reference-listening-title">
-        <SectionHeading
-          eyebrow="THE LISTENING ROOM"
-          title="Stories in voice, released with care."
-          action={<Link to="/library?availability=approved-audiobook" className="reference-text-link">Explore approved audiobooks <ArrowRight aria-hidden="true" /></Link>}
-        >
-          <p>Approved audiobooks require an active Reading Pass. Titles without approval show no listening action.</p>
-        </SectionHeading>
-        <ReferenceShelf books={listeningBooks} label="Approved audiobooks" />
-      </section>}
 
     </div>
   );

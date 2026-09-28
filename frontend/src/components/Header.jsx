@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useRef, useCallback } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import {
   Menu,
   X,
@@ -28,6 +28,14 @@ const NAV = [
   { to: "/about", label: "About" },
 ];
 
+const HOME_NAV = [
+  { to: "/library", label: "Books" },
+  { to: "/library?sort=author", label: "Authors" },
+  { to: "/library#library-collection", label: "Collections" },
+  { to: "/pricing", label: "Reading Pass" },
+  { to: "/about", label: "About" },
+];
+
 const SOCIAL_ICONS = {
   email: Mail,
   facebook: Facebook,
@@ -39,6 +47,8 @@ const SOCIAL_ICONS = {
 
 function isNavItemActive(item, location) {
   const pathname = location.pathname.replace(/\/+$/, "") || "/";
+  if (item.to.includes("sort=author")) return pathname === "/library" && new URLSearchParams(location.search).get("sort") === "author";
+  if (item.to.includes("#library-collection")) return pathname === "/library" && location.hash === "#library-collection";
   if (item.to === "/library") return pathname === "/library" && !location.search;
   if (item.to.includes("language=bn")) return pathname === "/library" && location.search.includes("language=bn");
   if (item.to.includes("language=en")) return pathname === "/library" && location.search.includes("language=en") && !location.search.includes("language=bn");
@@ -48,10 +58,12 @@ function isNavItemActive(item, location) {
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const menuRef = useRef(null);
   const menuToggleRef = useRef(null);
   const returnFocusToMenuToggle = useRef(false);
   const loc = useLocation();
+  const navigate = useNavigate();
   const { social } = useSettings();
   const { user } = useAuth();
   useEffect(() => { setOpen(false); }, [loc.pathname, loc.search]);
@@ -68,6 +80,7 @@ export default function Header() {
   const accountHref = isAuthed ? "/account" : "/login";
   const accountLabel = isAuthed ? "Account" : "Sign In";
   const usesDarkReferenceShell = loc.pathname === "/" || loc.pathname === "/pricing" || loc.pathname.startsWith("/book/");
+  const usesHomeOptionBShell = loc.pathname === "/";
   const usesLibraryReferenceShell = loc.pathname === "/library";
   const usesCommerceReferenceShell = loc.pathname === "/pricing";
   const usesProfileMobileShell = loc.pathname === "/account";
@@ -122,7 +135,7 @@ export default function Header() {
   }, [open, closeMenu]);
   return (
     <header
-      className={`sticky top-0 z-50 glass-header premium-site-header${usesDarkReferenceShell ? " premium-site-header--reference-public" : ""}${usesLibraryReferenceShell ? " premium-site-header--reference-library" : ""}${usesCommerceReferenceShell ? " premium-site-header--reference-commerce" : ""}${usesProfileMobileShell ? " premium-site-header--reference-profile" : ""}`}
+      className={`sticky top-0 z-50 glass-header premium-site-header${usesDarkReferenceShell ? " premium-site-header--reference-public" : ""}${usesHomeOptionBShell ? " premium-site-header--reference-home" : ""}${usesLibraryReferenceShell ? " premium-site-header--reference-library" : ""}${usesCommerceReferenceShell ? " premium-site-header--reference-commerce" : ""}${usesProfileMobileShell ? " premium-site-header--reference-profile" : ""}`}
       data-testid="site-header"
     >
       <div className="premium-header-inner max-w-[1536px] mx-auto px-5 sm:px-8 lg:px-10 h-[var(--site-header-height)] flex items-center justify-between gap-4">
@@ -136,7 +149,7 @@ export default function Header() {
           className="premium-header-nav hidden xl:flex items-center gap-4 2xl:gap-6"
           aria-label="Primary navigation"
         >
-          {NAV.map((n) => (
+          {(usesHomeOptionBShell ? HOME_NAV : NAV).map((n) => (
             <Link
               key={n.to || n.key}
               to={n.to}
@@ -147,9 +160,20 @@ export default function Header() {
               {n.label}
             </Link>
           ))}
-          <Link to="/library" className="reference-home-header-icon" aria-label="Search the library" data-testid="nav-search">
-            <Search size={20} strokeWidth={1.55} aria-hidden="true" />
-          </Link>
+          {usesHomeOptionBShell ? (
+            <form className="home-option-b-search" role="search" onSubmit={(event) => {
+              event.preventDefault();
+              const query = searchQuery.trim();
+              navigate(query ? `/library?q=${encodeURIComponent(query)}` : "/library");
+            }}>
+              <Search size={16} strokeWidth={1.6} aria-hidden="true" />
+              <input aria-label="Search books, authors, topics" placeholder="Search books, authors, topics..." value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} />
+            </form>
+          ) : (
+            <Link to="/library" className="reference-home-header-icon" aria-label="Search the library" data-testid="nav-search">
+              <Search size={20} strokeWidth={1.55} aria-hidden="true" />
+            </Link>
+          )}
           <NavLink
             to={accountHref}
             data-testid={isAuthed ? "nav-account" : "nav-sign-in"}
@@ -161,6 +185,10 @@ export default function Header() {
             <span>{accountLabel}</span>
           </NavLink>
         </nav>
+
+        {usesHomeOptionBShell && !isAuthed && (
+          <Link to="/signup" className="home-option-b-join" data-testid="nav-join">Join</Link>
+        )}
 
         <Link
           to="/library"
@@ -188,7 +216,7 @@ export default function Header() {
         <div ref={menuRef} id="mobile-menu" className="mobile-menu-overlay xl:hidden" data-testid="mobile-menu" role="dialog" aria-modal="true" aria-label="Primary navigation">
           <div className="mobile-menu-overlay__content">
             <button type="button" className="mobile-menu-overlay__close" onClick={() => closeMenu()} aria-label="Close menu"><X size={22} aria-hidden="true" /></button>
-            {NAV.map((n) => (
+            {(usesHomeOptionBShell ? HOME_NAV : NAV).map((n) => (
               <Link
                 key={n.to}
                 to={n.to}

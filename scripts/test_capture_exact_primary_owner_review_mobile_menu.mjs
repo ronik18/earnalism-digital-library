@@ -59,6 +59,13 @@ try {
     const page = await browser.newPage({ viewport });
     await installPublicFixture(page);
     await page.goto(`${baseUrl}/`, { waitUntil: "domcontentloaded" });
+    if (viewport.width >= 1024) {
+      const desktop = await page.evaluate(() => ({ navVisible: (() => { const node = document.querySelector(".premium-header-nav"); const box = node?.getBoundingClientRect(); return Boolean(node && getComputedStyle(node).display !== "none" && box.width > 0); })(), mobileToggleCount: [...document.querySelectorAll('[data-testid="mobile-menu-toggle"]')].filter((node) => getComputedStyle(node).display !== "none" && node.getBoundingClientRect().width > 0).length, dialogCount: document.querySelectorAll('[data-testid="mobile-menu"]').length }));
+      assert.deepEqual(desktop, { navVisible: true, mobileToggleCount: 0, dialogCount: 0 });
+      result.desktop.push({ width: viewport.width, ...desktop });
+      await page.close();
+      continue;
+    }
     const navigation = await openActualMobileMenu(page);
     const geometry = assertMobileMenuGeometry(navigation);
     assert.equal(navigation.header.backdropFilter, "none");
@@ -73,7 +80,7 @@ try {
   await installPublicFixture(routeAction);
   await routeAction.goto(`${baseUrl}/`, { waitUntil: "domcontentloaded" });
   await openActualMobileMenu(routeAction);
-  await routeAction.evaluate(() => window.__earnalismOwnerReviewDialog.querySelector('[data-testid="mobile-nav-library"]').click());
+  await routeAction.evaluate(() => window.__earnalismOwnerReviewDialog.querySelector('[data-testid="mobile-nav-books"], [data-testid="mobile-nav-library"]').click());
   await routeAction.waitForFunction(() => location.pathname === "/library" && document.querySelector('[data-testid="mobile-menu-toggle"]')?.getAttribute("aria-expanded") === "false" && !document.querySelector('[data-testid="mobile-menu"]'));
   await routeAction.goBack({ waitUntil: "domcontentloaded" });
   result.routeAction = await routeAction.evaluate(() => ({ route: location.pathname, menuClosed: !document.querySelector('[data-testid="mobile-menu"]') }));

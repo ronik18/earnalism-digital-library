@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.library-interaction-baseline.v1",
+  "surface": "library_interaction_surface",
+  "hash_algorithm": "sha256(file-sha256 plus two spaces plus relative path plus newline, sorted by relative path)",
+  "input_paths": [
+    "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+    "frontend/src/components/ReferencePublicPages.css",
+    "frontend/src/styles/library-paper-review.css",
+    "frontend/src/pages/Library.jsx"
+  ],
+  "reviewed_source": {
+    "commit": "4c922f8d993d8efdbc9dc9d3c56263841b5ee4b7",
+    "tree": "bdaf9f6acbafe23b9b888416eb0eb0908a01e7f8"
+  },
+  "previous_baseline": {
+    "record_path": "docs/design-system/pr466-approved-option-b-homepage-library-interaction-baseline.json",
+    "reviewed_source_commit": "f8290abcd0900fd2124247578ff0530bfdd8a4cc",
+    "surface_sha256": "0de6d2fe1388062cbfbf3c4e6569d0bc6bec13c8ffc31ee73c996d4791ba21e4"
+  },
+  "authorized_surface_sha256": "b043c3ca7f6031c035a472cfd534bab49a0d31647c1434e280df87bfd658350b",
+  "reviewed_source_comparison": {
+    "changed_paths_within_input_set": [
+      "frontend/src/components/EditorialHomeLibrarySurfaces.jsx"
+    ],
+    "unchanged_paths_within_input_set": [
+      "frontend/src/components/ReferencePublicPages.css",
+      "frontend/src/styles/library-paper-review.css",
+      "frontend/src/pages/Library.jsx"
+    ]
+  },
+  "owner_authorization": {
+    "reference": "DIRECT_OWNER_AUTHORIZATION_PR467_OPTION_B_HOMEPAGE_REFINEMENT",
+    "scope": "Apply the directly owner-requested Option B homepage refinement from the supplied design brief and mock while preserving all Library interactions and routes, the official Earnalism brand lockup, current Reading Pass offers and routes, newsletter submission, accessibility, and fail-closed audiobook exposure. Payments, entitlements, catalogue exposure, rights, and production state remain unchanged.",
+    "capture_is_not_expected_value_authority": true
+  },
+  "limitations": "This transition records only the directly owner-requested Option B homepage refinement. Exact source hashing, Library source equality, browser interaction, Reader safety, audio release truth, and all independent release gates remain mandatory."
+}

@@ -34,7 +34,7 @@ const states = [
   ["library-filter-mobile", "/library", 390, 844, "filter"], ["commerce-desktop", "/pricing", 1440, 1000, "commerce"],
   ["commerce-mobile", "/pricing", 390, 844, "commerce"], ["reading-pass-mobile", "/pricing", 390, 844, "commerce"],
   ["mobile-navigation", "/", 390, 844, "navigation"], ["mobile-navigation-320", "/", 320, 568, "navigation"], ["mobile-navigation-430", "/", 430, 932, "navigation"],
-  ["mobile-navigation-768", "/", 768, 1024, "navigation"], ["mobile-navigation-landscape", "/", 844, 390, "navigation"], ["mobile-navigation-1024", "/", 1024, 768, "navigation"], ["mobile-navigation-1279", "/", 1279, 800, "navigation"],
+  ["mobile-navigation-768", "/", 768, 1024, "navigation"], ["mobile-navigation-landscape", "/", 844, 390, "navigation"], ["desktop-navigation-1024", "/", 1024, 768, "navigation"], ["desktop-navigation-1279", "/", 1279, 800, "navigation"],
   ["book-detail-desktop", "/book/dracula", 1440, 1000, "book"],
   ["book-detail-mobile", "/book/dracula", 390, 844, "book"], ["reader-desktop", "/reader/dracula?visual-fixture=1", 1440, 1000, "reader"],
   ["reader-mobile", "/reader/dracula?visual-fixture=1", 390, 844, "reader"], ["listener-desktop", "/listener/a-ghost-story?visual-fixture=1", 1440, 1000, "listener"],
@@ -89,7 +89,22 @@ async function verify(state, context) {
   if (state.family === "filter") { await page.locator(".reference-filter-trigger").click(); await page.locator(".reference-library-drawer[role=dialog]").waitFor({ state: "visible", timeout: 10_000 }); }
   let navigation = null;
   let navigationClose = null;
-  if (state.family === "navigation") { navigation = await openActualMobileMenu(page); assertMobileMenuGeometry(navigation); navigationClose = await closeActualMobileMenu(page); }
+  if (state.family === "navigation") {
+    if (state.viewport.width >= 1024) {
+      navigation = await page.evaluate(() => {
+        const header = document.querySelector('header[data-testid="site-header"]');
+        const visible = (node) => { const style = getComputedStyle(node); return style.display !== "none" && style.visibility !== "hidden" && Number(style.opacity || "1") > 0; };
+        const desktopNav = header?.querySelector(".premium-header-nav");
+        const mobileToggle = header?.querySelector('[data-testid="mobile-menu-toggle"]');
+        return { desktopNavigationVisible: Boolean(desktopNav && visible(desktopNav)), mobileToggleVisible: Boolean(mobileToggle && visible(mobileToggle)) };
+      });
+      if (!navigation.desktopNavigationVisible || navigation.mobileToggleVisible) throw new Error(`Desktop navigation contract failed at ${state.viewport.width}px: ${JSON.stringify(navigation)}.`);
+    } else {
+      navigation = await openActualMobileMenu(page);
+      assertMobileMenuGeometry(navigation);
+      navigationClose = await closeActualMobileMenu(page);
+    }
+  }
   const result = await page.evaluate((required) => ({
     scrollWidth: document.documentElement.scrollWidth,
     clientWidth: document.documentElement.clientWidth,
