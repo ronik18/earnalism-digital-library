@@ -15,10 +15,9 @@ const evidence = JSON.parse(fs.readFileSync(path.join(process.cwd(), "src/data/p
 describe("Reference public page surfaces", () => {
   test("keeps listening controls behind release truth", () => {
     expect(source).toContain('import { audiobookReleaseState } from "../lib/audioReleaseSafety"');
-    expect(source).toContain("audiobookReleaseState(book).releaseApproved");
-    expect(source).toContain("Listening discovery comes from the public /home/listening contract");
-    expect(home).toContain("fetchHomeListening(controller.signal, 3)");
-    expect(source).toContain("Titles without approval show no listening action.");
+    expect(source).toContain("audio.releaseApproved");
+    expect(home).not.toContain("fetchHomeListening");
+    expect(home).not.toContain("Listen");
   });
 
   test("uses the approved canonical preview and non-recurring pass language", () => {
@@ -39,7 +38,6 @@ describe("Reference public page surfaces", () => {
     expect(homeLaunchStyles).toContain(".home-reference-page--no-commerce .reference-home__policy > p:nth-of-type(2)");
     expect(homeLaunchStyles).toContain(".home-reference-page--no-audio .reference-home__cta-row a[href=\"/library?availability=approved-audiobook\"]");
     expect(home).toContain("if (!PUBLIC_PAID_COMMERCE_ENABLED) return undefined;");
-    expect(home).toContain("if (!PUBLIC_AUDIO_EXPOSURE_ENABLED) return undefined;");
   });
 
   test("keeps Home discovery editorial and avoids a second dynamic catalogue shelf", () => {
@@ -48,7 +46,6 @@ describe("Reference public page surfaces", () => {
     }
     expect(source).not.toContain('api.get("/books"');
     expect(source).not.toContain("home-journey-shelf");
-    expect(source).toContain('to="/library?availability=approved-audiobook"');
   });
 
   test("binds offer presentation to current configured offer fields", () => {
@@ -85,7 +82,7 @@ describe("Reference public page surfaces", () => {
     expect(perspectives).toContain("A slower mind");
     expect(perspectives).toContain("A wider world");
     expect(perspectives).toContain("A more thoughtful you");
-    expect(perspectives).toContain("Explore four illustrative reader perspectives");
+    expect(perspectives).not.toContain("Explore four illustrative reader perspectives");
     for (const city of ["kolkata", "london", "chennai", "new-delhi"]) expect(perspectives).toContain(`${city}-reader.webp`);
     expect(perspectiveStyles).toContain(".reference-reader-perspectives__benefits");
     expect(perspectiveStyles).toContain(".reference-reader-perspectives__portraits img");
@@ -94,11 +91,15 @@ describe("Reference public page surfaces", () => {
 
   test("ships the Option B homepage hierarchy and keeps exact responsive offer breakpoints", () => {
     expect(source).toContain("A calmer place for<br />timeless reading.");
-    expect(source).toContain("golden-hour-library-hero.webp");
-    expect(source).toContain("PUBLIC_AUDIO_EXPOSURE_ENABLED && Array.isArray(listeningItems)");
+    expect(source).toContain("/assets/home-option-b/hero-reading-room.webp");
+    expect(source).toContain("/assets/home-option-b/bengali-classics.webp");
+    expect(source).toContain("/assets/home-option-b/english-classics.webp");
+    expect(source).toContain("/assets/home-option-b/modern-favourites.webp");
+    expect(source).toContain("/assets/home-option-b/curated-collections.webp");
+    expect(source).not.toContain("reference-home__listening");
     expect(home).toContain('import "./HomeOptionB.css"');
-    expect(optionBStyles).toContain("grid-template-columns: repeat(4, minmax(0, 1fr))");
-    expect(optionBStyles).toContain("grid-template-columns: repeat(2, minmax(0, 1fr))");
+    expect(optionBStyles).toContain("grid-template-columns: repeat(4,minmax(0,1fr))");
+    expect(optionBStyles).toContain("grid-template-columns: repeat(2,minmax(0,1fr))");
     expect(optionBStyles).toContain("grid-template-columns: 1fr");
   });
 
@@ -124,9 +125,9 @@ describe("Reference public page surfaces", () => {
   });
 
   test("keeps approved audiobook cards behind the public release gate", () => {
-    expect(source).toContain("PUBLIC_AUDIO_EXPOSURE_ENABLED && Array.isArray(listeningItems)");
-    expect(source).toContain("audiobookReleaseState(book).releaseApproved");
-    expect(source).toContain("Titles without approval show no listening action.");
+    expect(source).toContain("audio.releaseApproved");
+    expect(home).not.toContain("listeningItems");
+    expect(home).not.toContain("Listen");
   });
 
   test("keeps the controlled Library fallback reader-ready and audio-hidden", () => {

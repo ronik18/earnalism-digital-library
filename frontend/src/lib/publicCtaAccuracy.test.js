@@ -8,6 +8,7 @@ function source(relativePath) {
 describe("public CTA accuracy contract", () => {
   const header = source("src/components/Header.jsx");
   const home = source("src/pages/Home.jsx");
+  const homeSurfaces = source("src/components/EditorialHomeLibrarySurfaces.jsx");
   const hero = source("src/components/PremiumHero.jsx");
   const bookDetail = source("src/pages/BookDetail.jsx");
   const bookCard = source("src/components/BookCard.jsx");
@@ -35,12 +36,13 @@ describe("public CTA accuracy contract", () => {
   });
 
   test("home paths describe their exact language and release-gated destinations", () => {
-    expect(home).toContain('label: "Enter the Bengali collection"');
-    expect(home).toContain('to: "/library?language=bn&availability=reader-ready"');
-    expect(home).toContain('label: "Enter the English collection"');
-    expect(home).toContain('to: "/library?language=en"');
-    expect(home).toContain('label: "Step into the listening room"');
-    expect(home).toContain('to: "/library?availability=approved-audiobook"');
+    expect(homeSurfaces).toContain('"Bengali Classics", "Timeless works that continue to inspire."');
+    expect(homeSurfaces).toContain('"/library?language=bn&availability=reader-ready"');
+    expect(homeSurfaces).toContain('"English Classics", "Enduring voices from around the world."');
+    expect(homeSurfaces).toContain('"/library?language=en"');
+    expect(homeSurfaces).toContain('"Curated Collections", "Handpicked reading lists for every mood."');
+    expect(homeSurfaces).toContain('to="/library"');
+    expect(home).not.toMatch(/listen|listening room|play audiobook/i);
   });
 
   test("book detail has one truthful three-page CTA and minute-based pass language", () => {

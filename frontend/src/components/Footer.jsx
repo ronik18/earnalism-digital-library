@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ArrowUpRight, Mail } from "lucide-react";
 import FooterSocialLinks from "./FooterSocialLinks";
 import FooterWordmark from "./FooterWordmark";
@@ -9,6 +9,8 @@ const CONTACT_EMAIL = "sales@reoenterprise.org";
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const { pathname } = useLocation();
+  const isHomepage = pathname === "/";
   const { user } = useAuth();
   const { social } = useSettings();
   const accountHref = user && typeof user === "object" ? "/account" : "/login";
@@ -22,12 +24,25 @@ export default function Footer() {
           <div className="min-w-0 max-w-full" data-testid="footer-brand">
             <FooterWordmark />
             <p id="footer-brand-statement" className="mt-3 max-w-lg font-serif-display text-base leading-snug text-[#f6ead7] sm:text-lg">
-              Timeless Bengali and English literature, made beautiful for the way you read.
+              {isHomepage ? "Good books. A kinder tomorrow." : "Timeless Bengali and English literature, made beautiful for the way you read."}
             </p>
             <FooterSocialLinks links={social} />
           </div>
 
-          <nav className="min-w-0" aria-labelledby="footer-explore-heading">
+          {isHomepage ? <div className="home-footer-links" data-testid="footer-home-navigation">
+            <nav aria-labelledby="footer-explore-heading">
+              <div id="footer-explore-heading" className="overline mb-2.5">Books</div>
+              <ul><li><Link to="/library">Books</Link></li><li><Link to="/library?sort=author">Authors</Link></li><li><Link to="/library#library-collection">Collections</Link></li></ul>
+            </nav>
+            <nav aria-labelledby="footer-reading-heading">
+              <div id="footer-reading-heading" className="overline mb-2.5">Reading Pass</div>
+              <ul><li><Link to="/pricing">Reading Pass</Link></li><li><Link to="/about">About</Link></li><li><Link to="/journal">Blog</Link></li></ul>
+            </nav>
+            <nav aria-labelledby="footer-help-heading">
+              <div id="footer-help-heading" className="overline mb-2.5">Help</div>
+              <ul><li><Link to="/contact">Contact</Link></li><li><Link to="/privacy">Privacy</Link></li><li><Link to="/terms">Terms</Link></li><li><Link to="/copyright">Copyright</Link></li><li><Link to={accountHref}>{accountLabel}</Link></li></ul>
+            </nav>
+          </div> : <nav className="min-w-0" aria-labelledby="footer-explore-heading">
             <div id="footer-explore-heading" className="overline mb-2.5">Explore</div>
             <ul className="flex flex-wrap gap-2 text-sm text-[#cfb78f]">
               <li><Link to="/library" className="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-[#f0d78e] focus-visible:text-[#f0d78e] transition-colors">Library</Link></li>
@@ -39,11 +54,13 @@ export default function Footer() {
               <li><Link to="/copyright" className="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-[#f0d78e] focus-visible:text-[#f0d78e] transition-colors">Copyright</Link></li>
               <li><Link to={accountHref} className="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-[#f0d78e] focus-visible:text-[#f0d78e] transition-colors">{accountLabel}</Link></li>
             </ul>
-          </nav>
+          </nav>}
 
-          <div className="min-w-0 md:col-span-2 lg:col-span-1 rounded-2xl border border-[#dfb85a]/30 bg-[#35111d] px-4 py-2.5 sm:px-5 sm:py-4" data-testid="footer-contact">
-            <div className="overline mb-2">Library desk</div>
-            <p className="text-sm leading-5 text-[#cfb78f]">Rights, partnerships, or a title suggestion?</p>
+          <div className={`min-w-0 md:col-span-2 lg:col-span-1 rounded-2xl border border-[#dfb85a]/30 bg-[#35111d] px-4 py-2.5 sm:px-5 sm:py-4${isHomepage ? " footer-home-note" : ""}`} data-testid="footer-contact">
+            {isHomepage ? <p className="footer-home-note__quote">“A more thoughtful world is a brighter one.”</p> : <>
+              <div className="overline mb-2">Library desk</div>
+              <p className="text-sm leading-5 text-[#cfb78f]">Rights, partnerships, or a title suggestion?</p>
+            </>}
             <a
               href={`mailto:${CONTACT_EMAIL}`}
               className="mt-2 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-[#f0d78e] transition-colors hover:text-[#fff9ee] focus-visible:text-[#fff9ee]"

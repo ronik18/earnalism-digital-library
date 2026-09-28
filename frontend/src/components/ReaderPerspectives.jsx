@@ -61,7 +61,7 @@ export default function ReaderPerspectives() {
         <div className="reference-reader-perspectives__intro">
           <p className="reference-kicker">WHAT READING CAN FEEL LIKE</p>
           <h2 id="reader-perspectives-title">A gentler, richer way to be in the world.</h2>
-          <p>Reading slows us down. It gives us space to think, to feel, and to see life through other eyes. At The Earnalism Digital Library, we believe in the quiet power of books—to comfort, challenge, and keep us curiously human.</p>
+        <p>Reading slows us down. It gives us space to think, to feel, and to see life through other eyes. At The Earnalism Digital Library, we believe in the quiet power of books — to comfort, to challenge, and to keep us curiously human.</p>
         </div>
         <div className="reference-reader-perspectives__benefits" aria-label="What reading can bring">
           {BENEFITS.map(({ Icon, title, copy }) => (
@@ -83,17 +83,6 @@ export default function ReaderPerspectives() {
           <Leaf aria-hidden="true" />
         </div>
       </div>
-      <details className="reference-reader-perspectives__more">
-        <summary>Explore four illustrative reader perspectives</summary>
-        <div>
-          {PERSPECTIVES.map((perspective) => (
-            <blockquote lang={perspective.language} key={perspective.id}>
-              <p>“{perspective.quote}”</p>
-              <cite>{perspective.place}</cite>
-            </blockquote>
-          ))}
-        </div>
-      </details>
     </section>
   );
 }

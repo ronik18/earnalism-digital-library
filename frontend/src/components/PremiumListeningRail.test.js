@@ -26,9 +26,8 @@ describe("PremiumListeningRail Home contract", () => {
   test("keeps the retired listening rail out of the approved public home surface", () => {
     expect(home).toContain("<ReferenceHomeSurface");
     expect(home).not.toContain("<PremiumHero");
-    expect(home.indexOf("<ReferenceHomeSurface")).toBeLessThan(
-      home.indexOf("reference-home__legacy-content"),
-    );
+    expect(home).not.toContain("reference-home__legacy-content");
+    expect(home).not.toMatch(/listen|listening room|play audiobook/i);
   });
 
   test("derives audiobook links from the card slug instead of trusting a stale CTA URL", () => {

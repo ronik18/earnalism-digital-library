@@ -11,7 +11,8 @@ jest.mock("react-router-dom", () => {
   return {
     Link: link,
     NavLink: ({ className, ...props }) => link({ ...props, className: typeof className === "function" ? className({ isActive: false }) : className }),
-    useLocation: () => ({ pathname: "/", search: "" }),
+    useLocation: () => ({ pathname: "/", search: "", hash: "" }),
+    useNavigate: () => jest.fn(),
   };
 }, { virtual: true });
 
@@ -37,11 +38,15 @@ function renderHeader() {
 describe("owner-approved Header composition", () => {
   afterEach(() => { document.body.innerHTML = ""; });
 
-  test("renders the desktop logo, navigation, Search, and Sign In without a desktop Library CTA", () => {
+  test("renders the official logo, Option B navigation, search, Sign In, and Join", () => {
     const { container, cleanup } = renderHeader();
     expect(container.querySelector('[data-testid="brand-logo"] img')).not.toBeNull();
-    expect(container.querySelector('[data-testid="nav-search"]')).not.toBeNull();
+    expect(container.querySelector('.home-option-b-search input[aria-label="Search books, authors, topics"]')).not.toBeNull();
+    expect(container.querySelector('[data-testid="nav-books"]')?.getAttribute("href")).toBe("/library");
+    expect(container.querySelector('[data-testid="nav-authors"]')?.getAttribute("href")).toBe("/library?sort=author");
+    expect(container.querySelector('[data-testid="nav-collections"]')?.getAttribute("href")).toBe("/library#library-collection");
     expect(container.querySelector('[data-testid="nav-sign-in"]')).not.toBeNull();
+    expect(container.querySelector('[data-testid="nav-join"]')?.getAttribute("href")).toBe("/signup");
     expect(container.querySelector(".premium-header-nav")).not.toBeNull();
     expect(container.querySelector('[data-testid="header-cta-library"]')).toBeNull();
     expect(document.documentElement.scrollWidth).toBeLessThanOrEqual(document.documentElement.clientWidth);
