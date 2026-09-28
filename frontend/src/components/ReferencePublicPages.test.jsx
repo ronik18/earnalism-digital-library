@@ -1,7 +1,5 @@
 import fs from "fs";
 import path from "path";
-import { PILOT_COVER_SHELF } from "../data/pilotCoverShelf";
-import { canShowStartReading, PUBLIC_READER_RELEASED_SLUGS } from "../lib/controlledLaunch";
 
 const source = fs.readFileSync(path.join(process.cwd(), "src/components/EditorialHomeLibrarySurfaces.jsx"), "utf8");
 const commerce = fs.readFileSync(path.join(process.cwd(), "src/components/ReadingPassesSurface.jsx"), "utf8");
@@ -11,6 +9,7 @@ const styles = fs.readFileSync(path.join(process.cwd(), "src/components/Referenc
 const perspectives = fs.readFileSync(path.join(process.cwd(), "src/components/ReaderPerspectives.jsx"), "utf8");
 const perspectiveStyles = fs.readFileSync(path.join(process.cwd(), "src/components/ReaderPerspectives.css"), "utf8");
 const homeLaunchStyles = fs.readFileSync(path.join(process.cwd(), "src/styles/home-compact-burgundy.css"), "utf8");
+const optionBStyles = fs.readFileSync(path.join(process.cwd(), "src/pages/HomeOptionB.css"), "utf8");
 const evidence = JSON.parse(fs.readFileSync(path.join(process.cwd(), "src/data/publicEvidenceSnapshot.json"), "utf8"));
 
 describe("Reference public page surfaces", () => {
@@ -43,21 +42,13 @@ describe("Reference public page surfaces", () => {
     expect(home).toContain("if (!PUBLIC_AUDIO_EXPOSURE_ENABLED) return undefined;");
   });
 
-  test("keeps a cover-only Home shelf visible without treating bundled metadata as live access", () => {
-    expect(PILOT_COVER_SHELF.map((book) => book.slug)).toEqual([...PUBLIC_READER_RELEASED_SLUGS]);
-    for (const book of PILOT_COVER_SHELF) {
-      expect(book.cover_image_url).toMatch(/^https:\/\/(res\.cloudinary\.com|theearnalism\.com)\//);
-      expect(canShowStartReading(book)).toBe(false);
-      const controlledBook = JSON.parse(fs.readFileSync(path.join(process.cwd(), "..", "backend", "data", "controlled_publications", book.slug, "public_book.json"), "utf8"));
-      expect({ title: book.title, author: book.author, cover_image_url: book.cover_image_url }).toEqual({
-        title: controlledBook.title,
-        author: controlledBook.author,
-        cover_image_url: controlledBook.cover_image_url,
-      });
+  test("keeps Home discovery editorial and avoids a second dynamic catalogue shelf", () => {
+    for (const category of ["Bengali Classics", "English Classics", "Modern Favourites", "Curated Collections"]) {
+      expect(source).toContain(category);
     }
-    expect(source).toContain("liveShelfBooks.length ? liveShelfBooks : PILOT_COVER_SHELF");
-    expect(source).toContain('const href = discoveryOnly ? "/library"');
-    expect(source).toContain("discoveryOnly={discoveryOnlyShelf}");
+    expect(source).not.toContain('api.get("/books"');
+    expect(source).not.toContain("home-journey-shelf");
+    expect(source).toContain('to="/library?availability=approved-audiobook"');
   });
 
   test("binds offer presentation to current configured offer fields", () => {
@@ -86,20 +77,29 @@ describe("Reference public page surfaces", () => {
   });
 
   test("keeps illustrative reader perspectives distinct from customer testimonials", () => {
-    expect(source).toContain("Made for the love of reading");
     expect(home).toContain("<ReferenceHomeSurface");
-    expect(home).toContain("<ReaderPerspectives />");
+    expect(source).toContain("<ReaderPerspectives />");
+    expect(source.indexOf("<ReaderPerspectives />")).toBeLessThan(source.indexOf('<section className="reference-home__pass"'));
     expect(perspectives).not.toMatch(/ReaderTestimonialsSection|What Our Readers Say|REAL READERS|verified reader/);
-    expect(perspectives).toContain("What reading can feel like");
-    expect(perspectives).toContain("Reader perspectives</p>");
-    expect(perspectives).not.toContain("imagined with care");
-    expect(perspectives).toContain("Illustrative reader perspective");
-    expect(perspectives).toContain("Four reader perspectives.");
-    expect(perspectives).toContain('to="/library" className="reference-button reference-button--gold" data-testid="reader-perspectives-cta"');
+    expect(perspectives).toContain("WHAT READING CAN FEEL LIKE");
+    expect(perspectives).toContain("A slower mind");
+    expect(perspectives).toContain("A wider world");
+    expect(perspectives).toContain("A more thoughtful you");
+    expect(perspectives).toContain("Explore four illustrative reader perspectives");
     for (const city of ["kolkata", "london", "chennai", "new-delhi"]) expect(perspectives).toContain(`${city}-reader.webp`);
-    expect(perspectiveStyles).toContain(".reference-reader-perspectives__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))");
-    expect(perspectiveStyles).toContain(".reference-reader-perspectives__grid{grid-template-columns:repeat(2,minmax(0,1fr))");
-    expect(perspectiveStyles).toContain(".reference-reader-perspectives__grid{grid-template-columns:1fr");
+    expect(perspectiveStyles).toContain(".reference-reader-perspectives__benefits");
+    expect(perspectiveStyles).toContain(".reference-reader-perspectives__portraits img");
+    expect(perspectiveStyles).toContain("@media (max-width: 767px)");
+  });
+
+  test("ships the Option B homepage hierarchy and keeps exact responsive offer breakpoints", () => {
+    expect(source).toContain("A calmer place for<br />timeless reading.");
+    expect(source).toContain("golden-hour-library-hero.webp");
+    expect(source).toContain("PUBLIC_AUDIO_EXPOSURE_ENABLED && Array.isArray(listeningItems)");
+    expect(home).toContain('import "./HomeOptionB.css"');
+    expect(optionBStyles).toContain("grid-template-columns: repeat(4, minmax(0, 1fr))");
+    expect(optionBStyles).toContain("grid-template-columns: repeat(2, minmax(0, 1fr))");
+    expect(optionBStyles).toContain("grid-template-columns: 1fr");
   });
 
   test("uses the reviewed operational-facts fallback when public metrics are not eligible", () => {
@@ -123,23 +123,10 @@ describe("Reference public page surfaces", () => {
     expect(styles).not.toContain("background:var(--reference-paper);color:#1e2822");
   });
 
-  test("uses the release-safe Home curation snapshot when the catalogue is temporarily unavailable", () => {
-    expect(source).toContain("ReferenceHomeSurface({ curation, readingPasses = [], listeningItems = [], illustrativePasses = false })");
-    expect(source).toContain("curation?.hero?.featured_books");
-    expect(source).toContain("liveBooks.length ? liveBooks : curatedBooks.filter(isLive)");
-    expect(source).toContain("canShowPreview(book)");
-    expect(source).toContain("canShowStartReading(book)");
-    expect(source).toContain(">Details</Link>");
-  });
-
-  test("fits nine cover slots only at wide desktop without altering release eligibility", () => {
-    expect(homeLaunchStyles).toContain("@media (min-width: 1440px)");
-    expect(homeLaunchStyles).toContain("grid-auto-columns: calc((100% - 8 * 12px) / 9)");
-    expect(homeLaunchStyles).toContain("aspect-ratio: 2/3");
-    expect(homeLaunchStyles).toContain("object-fit: contain");
-    expect(source).toContain("books.filter(isLive)");
-    expect(source).not.toContain("books.length ? books : curatedBooks");
-    expect(source).toContain(".slice(0, 10)");
+  test("keeps approved audiobook cards behind the public release gate", () => {
+    expect(source).toContain("PUBLIC_AUDIO_EXPOSURE_ENABLED && Array.isArray(listeningItems)");
+    expect(source).toContain("audiobookReleaseState(book).releaseApproved");
+    expect(source).toContain("Titles without approval show no listening action.");
   });
 
   test("keeps the controlled Library fallback reader-ready and audio-hidden", () => {

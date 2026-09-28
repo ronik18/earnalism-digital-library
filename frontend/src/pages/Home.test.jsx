@@ -13,9 +13,9 @@ describe("Home curated shelf integration", () => {
   });
 
   test("keeps live hero and listening refreshes independent", () => {
-    expect(source).toContain("fetchHomeHero(controller.signal)");
     expect(source).toContain("fetchHomeListening(controller.signal, 3)");
     expect(source).toContain("listeningItems={listeningCuration.listening_rooms?.items");
+    expect(source).not.toContain("fetchHomeHero(controller.signal)");
     expect(source).not.toContain("<HomeListeningRoom />");
     expect(source).not.toContain("fetchHomeCuration(controller.signal)");
     expect(source).not.toContain("homeCurationLoading");
@@ -35,17 +35,30 @@ describe("Home curated shelf integration", () => {
     expect(source.indexOf("home-quick-paths")).toBeLessThan(source.indexOf("reading-time-library-path"));
   });
 
-  test("uses the Reading Circle as a private dispatch conversion close", () => {
-    expect(source).toContain("A private letter for readers who linger.");
-    expect(source).toContain("Beautiful new editions");
-    expect(source).toContain("Intimate listening rooms");
-    expect(source).toContain("Letters from the library");
-    expect(source).toContain("Share your name and email; we will write only when a story is worth opening together.");
+  test("uses the approved Option B hero with a single readable library CTA", () => {
+    const surface = fs.readFileSync(
+      path.join(process.cwd(), "src/components/EditorialHomeLibrarySurfaces.jsx"),
+      "utf8",
+    );
+    expect(surface).toContain("A calmer place for<br />timeless reading.");
+    expect(surface).toContain("Explore the Library");
+    expect(surface).not.toContain("Come for a story.");
+    expect(surface).not.toContain("earnalism-black-burgundy-reading-room.webp");
+    expect(surface).toContain("golden-hour-library-hero.webp");
+  });
+
+  test("reuses the validated Reading Circle form after the literary quote banner", () => {
+    expect(source).toContain("Literature is a map of the human heart.");
+    expect(source).toContain("Alice Walker");
+    expect(source).toContain("Letters for thoughtful readers.");
+    expect(source).toContain("New arrivals, reading lists, essays and more");
+    expect(source).toContain('data-testid="newsletter-card"');
     expect(source).toContain('id="newsletter-name"');
     expect(source).toContain('id="newsletter-email"');
     expect(source).toContain('aria-live="polite"');
-    expect(source).not.toContain("rights review");
-    expect(source).not.toContain("No audiobook or paid campaign is live from this form.");
+    expect(source).toContain('api.post("/newsletter", { name, email })');
+    expect(source).not.toContain("newly opened listening rooms");
+    expect(source).not.toContain("Intimate listening rooms");
   });
 
   test("leaves one shared social area in the site footer", () => {

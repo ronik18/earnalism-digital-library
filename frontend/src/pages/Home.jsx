@@ -17,17 +17,14 @@ import { api, formatError } from "../lib/api";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import { LIVE_APPROVED_SLUG, PUBLIC_AUDIO_EXPOSURE_ENABLED, PUBLIC_PAID_COMMERCE_ENABLED } from "../lib/controlledLaunch";
 import {
-  fetchHomeHero,
   fetchHomeListening,
-  getHomeHeroCache,
-  getHomeHeroSnapshot,
   getHomeListeningSnapshot,
 } from "../lib/homeSurfaces";
 import useSEO from "../hooks/useSEO";
 import { PUBLIC_PREVIEW_COPY } from "../lib/publicAccessCopy";
 import { availableReadingPasses } from "../lib/readingPassOffers";
 import { ReferenceHomeSurface } from "../components/EditorialHomeLibrarySurfaces";
-import ReaderPerspectives from "../components/ReaderPerspectives";
+import "./HomeOptionB.css";
 
 const HomeShelfArchitecture = lazy(() => import("../components/HomeShelfArchitecture"));
 
@@ -55,7 +52,7 @@ const QUICK_PATHS = [
   {
     eyebrow: "STORIES IN VOICE",
     title: "Immersive audiobooks",
-    description: "Soulful performances that let every chapter unfold around you.",
+    description: "Stories in voice, released with care.",
     label: "Step into the listening room",
     testId: "home-cta-listening-room",
     to: "/library?availability=approved-audiobook",
@@ -73,7 +70,6 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [newsletterStatus, setNewsletterStatus] = useState("");
-  const [heroCuration, setHeroCuration] = useState(() => getHomeHeroSnapshot());
   const [listeningCuration, setListeningCuration] = useState(() => getHomeListeningSnapshot());
   const [homePasses, setHomePasses] = useState([]);
 
@@ -85,11 +81,6 @@ export default function Home() {
     imageAlt: "Earnalism Bengali and English classics shelf artwork",
     canonicalPath: "/",
   });
-
-  useEffect(() => {
-    const cachedHero = getHomeHeroCache();
-    if (cachedHero) setHeroCuration(cachedHero);
-  }, []);
 
   useEffect(() => {
     if (!PUBLIC_AUDIO_EXPOSURE_ENABLED) return undefined;
@@ -136,37 +127,6 @@ export default function Home() {
     });
   }, []);
 
-  useEffect(() => {
-    const controller = new AbortController();
-    let idleHandle;
-    let timeoutHandle;
-
-    const refreshCuration = () => {
-      fetchHomeHero(controller.signal)
-        .then((payload) => {
-          startTransition(() => setHeroCuration(payload));
-        })
-        .catch((error) => {
-          if (error?.name === "CanceledError" || error?.name === "AbortError") return;
-          // Keep the bundled release snapshot visible if background revalidation fails.
-        });
-    };
-
-    if (typeof window.requestIdleCallback === "function") {
-      idleHandle = window.requestIdleCallback(refreshCuration, { timeout: 1200 });
-    } else {
-      timeoutHandle = window.setTimeout(refreshCuration, 250);
-    }
-
-    return () => {
-      controller.abort();
-      if (idleHandle !== undefined && typeof window.cancelIdleCallback === "function") {
-        window.cancelIdleCallback(idleHandle);
-      }
-      if (timeoutHandle !== undefined) window.clearTimeout(timeoutHandle);
-    };
-  }, []);
-
   const subscribe = async (event) => {
     event.preventDefault();
     track("newsletter_submit_attempt", { source: "reading_circle" });
@@ -193,11 +153,50 @@ export default function Home() {
   return (
     <div className={`home-reference-page${PUBLIC_PAID_COMMERCE_ENABLED ? "" : " home-reference-page--no-commerce"}${PUBLIC_AUDIO_EXPOSURE_ENABLED ? "" : " home-reference-page--no-audio"}`} data-testid="home-page">
       <ReferenceHomeSurface
-        curation={heroCuration}
         readingPasses={homePasses}
         listeningItems={listeningCuration.listening_rooms?.items || listeningCuration.selected_audiobooks || []}
       />
-      <ReaderPerspectives />
+      <section className="home-literary-quote" aria-label="A thought on literature">
+        <blockquote>“Literature is a map of the human heart.”</blockquote>
+        <p>— Alice Walker</p>
+      </section>
+      <section id="reading-circle" className="reading-circle home-reading-circle" aria-labelledby="reading-circle-title">
+        <div className="reading-circle__orbit" aria-hidden="true" />
+        <div className="reading-circle__inner">
+          <div className="reading-circle__story">
+            <div className="reading-circle__eyebrow">STAY IN TOUCH</div>
+            <h2 id="reading-circle-title">Letters for thoughtful readers.</h2>
+            <p className="reading-circle__description">
+              New arrivals, reading lists, essays and more—straight to your inbox.
+            </p>
+          </div>
+          <form onSubmit={subscribe} className="reading-dispatch" data-testid="newsletter-card" aria-describedby="newsletter-description newsletter-trust newsletter-status">
+            <div className="reading-dispatch__eyebrow">
+              <Mail size={15} strokeWidth={1.6} aria-hidden="true" /> THE READING CIRCLE
+            </div>
+            <h3 className="sr-only">Subscribe to letters for thoughtful readers</h3>
+            <p id="newsletter-description" className="reading-dispatch__description">
+              Share your name and email to receive occasional notes from the library.
+            </p>
+            <div className="reading-dispatch__fields">
+              <label className="reading-dispatch__field">
+                <span>Your name</span>
+                <input id="newsletter-name" required autoComplete="name" value={name} onChange={(event) => setName(event.target.value)} data-testid="newsletter-name" />
+              </label>
+              <label className="reading-dispatch__field">
+                <span>Email address</span>
+                <input id="newsletter-email" required type="email" inputMode="email" autoComplete="email" value={email} onChange={(event) => setEmail(event.target.value)} data-testid="newsletter-email" />
+              </label>
+            </div>
+            <button type="submit" disabled={submitting} className="reading-dispatch__submit" data-testid="newsletter-submit">
+              <span>{submitting ? "Subscribing..." : "SUBSCRIBE"}</span>
+              <ArrowRight size={16} strokeWidth={1.6} aria-hidden="true" />
+            </button>
+            <p id="newsletter-trust" className="reading-dispatch__trust">No spam. Just good reads.</p>
+            <div id="newsletter-status" className={`reading-dispatch__status ${newsletterStatus && !submitting ? "is-visible" : ""}`} aria-live="polite" role="status">{newsletterStatus}</div>
+          </form>
+        </div>
+      </section>
       <div className="reference-home__legacy-content" aria-hidden="true">
       <section className="home-quick-paths" aria-labelledby="home-quick-paths-title" data-testid="home-quick-paths">
         <div className="home-quick-paths__inner">
@@ -276,49 +275,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="reading-circle" className="reading-circle">
-        <div className="reading-circle__orbit" aria-hidden="true" />
-        <div className="reading-circle__inner">
-          <div className="reading-circle__story">
-            <div className="reading-circle__eyebrow">THE READING CIRCLE</div>
-            <h2>A private letter for readers who linger.</h2>
-            <p className="reading-circle__description">
-              Occasional notes on beautiful editions, newly opened listening rooms, and books worth carrying with you.
-            </p>
-            <ul className="reading-circle__signals" aria-label="Reading Circle notes">
-              <li>Beautiful new editions</li>
-              <li>Intimate listening rooms</li>
-              <li>Letters from the library</li>
-            </ul>
-          </div>
-          <form onSubmit={subscribe} className="reading-dispatch" data-testid="newsletter-card" aria-describedby="newsletter-description newsletter-trust newsletter-status">
-            <div className="reading-dispatch__seal" aria-hidden="true">E</div>
-            <div className="reading-dispatch__eyebrow">
-              <Mail size={15} strokeWidth={1.6} aria-hidden="true" /> PRIVATE DISPATCH
-            </div>
-            <h3>Join the circle.</h3>
-            <p id="newsletter-description" className="reading-dispatch__description">
-              Share your name and email; we will write only when a story is worth opening together.
-            </p>
-            <div className="reading-dispatch__fields">
-              <label className="reading-dispatch__field">
-                <span>Your name</span>
-                <input id="newsletter-name" required autoComplete="name" value={name} onChange={(event) => setName(event.target.value)} data-testid="newsletter-name" />
-              </label>
-              <label className="reading-dispatch__field">
-                <span>Email address</span>
-                <input id="newsletter-email" required type="email" inputMode="email" autoComplete="email" value={email} onChange={(event) => setEmail(event.target.value)} data-testid="newsletter-email" />
-              </label>
-            </div>
-            <button type="submit" disabled={submitting} className="reading-dispatch__submit" data-testid="newsletter-submit">
-              <span>{submitting ? "Joining the circle..." : "JOIN THE READING CIRCLE"}</span>
-              <ArrowRight size={16} strokeWidth={1.6} aria-hidden="true" />
-            </button>
-            <p id="newsletter-trust" className="reading-dispatch__trust">Occasional. Thoughtful. Made for readers who still believe a book can change the room.</p>
-            <div id="newsletter-status" className={`reading-dispatch__status ${newsletterStatus && !submitting ? "is-visible" : ""}`} aria-live="polite" role="status">{newsletterStatus}</div>
-          </form>
-        </div>
-      </section>
+
       </div>
     </div>
   );

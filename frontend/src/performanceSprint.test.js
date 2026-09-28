@@ -30,14 +30,16 @@ describe("Home performance sprint contract", () => {
     expect(readerStyles).toContain(".premium-reader {");
   });
 
-  test("splits anonymous hero and listening data without blocking the initial shell", () => {
+  test("renders the editorial hero immediately and keeps optional listening data nonblocking", () => {
     const home = read("src/pages/Home.jsx");
     const surfaces = read("src/lib/homeSurfaces.js");
     const listening = read("src/components/HomeListeningRoom.jsx");
     const vercel = read("vercel.json");
 
-    expect(home).toContain("getHomeHeroSnapshot()");
-    expect(home).toContain("fetchHomeHero(controller.signal)");
+    expect(home).toContain("getHomeListeningSnapshot()");
+    expect(home).toContain("fetchHomeListening(controller.signal, 3)");
+    expect(home).toContain("if (!PUBLIC_AUDIO_EXPOSURE_ENABLED) return undefined;");
+    expect(home).not.toContain("fetchHomeHero(controller.signal)");
     expect(home).not.toContain("fetchHomeCuration(controller.signal)");
     expect(listening).toContain("fetchHomeListening(controller.signal, 3)");
     expect(surfaces).toContain('credentials: "omit"');

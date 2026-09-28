@@ -10,6 +10,7 @@ import {
   ChevronRight,
   Headphones,
   Landmark,
+  Leaf,
   Lock,
   Search,
   SlidersHorizontal,
@@ -18,6 +19,7 @@ import {
   ShieldCheck,
   Focus,
   X,
+  Users,
 } from "lucide-react";
 import { api } from "../lib/api";
 import { PUBLIC_ACCESS_COPY, PUBLIC_PREVIEW_COPY, READING_TIME_COPY } from "../lib/publicAccessCopy";
@@ -26,30 +28,23 @@ import {
   canShowPreview,
   canShowStartReading,
   notifyUrl,
+  PUBLIC_AUDIO_EXPOSURE_ENABLED,
   PUBLIC_PAID_COMMERCE_ENABLED,
 } from "../lib/controlledLaunch";
 import { availabilityOfBook } from "../lib/libraryCatalog";
 import BookCoverImage from "./BookCoverImage";
 import LibraryBrowseShelf from "./LibraryBrowseShelf";
 import LibraryReadingPassCard from "./LibraryReadingPassCard";
-import { bookCoverImageSources } from "../lib/images";
-import { PILOT_COVER_SHELF } from "../data/pilotCoverShelf";
+import ReaderPerspectives from "./ReaderPerspectives";
 import "./ReferencePublicPages.css";
 import "../styles/quiet-heritage.css";
 import "../styles/library-paper-review.css";
 import "../styles/home-compact-burgundy.css";
 
 const HOME_FEATURES = [
-  [BookOpen, "Curated Classics", "Old favourites. New companions."],
-  [Sparkles, "Beautiful Editions", "Words given room to breathe."],
-  [Eye, "A Beginning on Us", "Read the first 3 pages free."],
-  [Focus, "Time to Linger", "A quiet space, one page at a time."],
-];
-
-const TRUST_FACTS = [
-  [BookOpen, "Meet your next favourite", "Return to a beloved classic, or meet a world you haven’t known."],
-  [Eye, "Begin with curiosity", "The first 3 pages are free. Let the words win you over."],
-  [Clock3, "Keep your own rhythm", "Reading time counts only while you read. No subscription."],
+  [BookOpen, "Curated classics", "Timeless works and modern gems."],
+  [Leaf, "Bengali & English", "Literature across generations."],
+  [Users, "A community", "Thoughtful readers, everywhere."],
 ];
 
 function titleFor(book) {
@@ -108,20 +103,6 @@ function HomeCoverTile({ book, priority, discoveryOnly = false }) {
   </article>;
 }
 
-function usePublicBooks() {
-  const [books, setBooks] = useState([]);
-
-  useEffect(() => {
-    const controller = new AbortController();
-    api.get("/books", { signal: controller.signal })
-      .then(({ data }) => setBooks(Array.isArray(data) ? data : []))
-      .catch(() => setBooks([]));
-    return () => controller.abort();
-  }, []);
-
-  return books;
-}
-
 function SectionHeading({ eyebrow, title, action, children }) {
   return (
     <div className="reference-section-heading">
@@ -151,27 +132,12 @@ function ReferenceShelf({ books, className = "", label, testId, compact = false,
   );
 }
 
-export function ReferenceHomeSurface({ curation, readingPasses = [], listeningItems = [], illustrativePasses = false }) {
-  const books = usePublicBooks();
-  const curatedBooks = useMemo(() => (
-    Array.isArray(curation?.hero?.featured_books) ? curation.hero.featured_books : []
-  ), [curation]);
-  const liveBooks = useMemo(() => books.filter(isLive), [books]);
-  // The Home route already carries a server-curated, release-safe shelf snapshot.
-  // Keep that visible during a transient catalogue failure instead of collapsing the
-  // reference shelf. These cards still use the same fail-closed CTA rules as live data.
-  const liveShelfBooks = (liveBooks.length ? liveBooks : curatedBooks.filter(isLive))
-    .filter((book) => { const cover = bookCoverImageSources(book); return cover.hasCover && !cover.isFallback; })
-    .slice(0, 10);
-  // The signed Reader catalogue is India-only. Keep the public editorial shelf
-  // visually complete elsewhere without treating bundled artwork as live access.
-  const shelfBooks = liveShelfBooks.length ? liveShelfBooks : PILOT_COVER_SHELF;
-  const discoveryOnlyShelf = liveShelfBooks.length === 0;
+export function ReferenceHomeSurface({ readingPasses = [], listeningItems = [], illustrativePasses = false }) {
   const passes = readingPasses.filter((pack) => pack && Number.isFinite(pack.minutes) && pack.minutes > 0 && Number.isFinite(pack.price_inr) && pack.price_inr >= 0).slice(0, 4);
   // Listening discovery comes from the public /home/listening contract. That
   // contract carries release-safe metadata only; package and media details
   // remain available solely after the Listener's authenticated authorization.
-  const listeningBooks = (Array.isArray(listeningItems) ? listeningItems : [])
+  const listeningBooks = (PUBLIC_AUDIO_EXPOSURE_ENABLED && Array.isArray(listeningItems) ? listeningItems : [])
     .filter((book) => audiobookReleaseState(book).releaseApproved)
     .slice(0, 5);
 
@@ -180,27 +146,20 @@ export function ReferenceHomeSurface({ curation, readingPasses = [], listeningIt
       <section className="reference-home__hero" aria-labelledby="reference-home-title">
         <div className="reference-home__hero-copy">
           <p className="reference-kicker">LITERATURE LIVES HERE</p>
-          <h1 id="reference-home-title">Come for a story.<br />Stay a little longer.</h1>
+          <h1 id="reference-home-title">A calmer place for<br />timeless reading.</h1>
           <p className="reference-home__lede">Discover enduring works of Bengali and English literature across generations. Read, reflect, and reconnect with what truly matters.</p>
           <div className="reference-home__cta-row">
-            <Link to="/library" className="reference-button reference-button--gold" data-testid="home-reference-primary-cta">Start Reading</Link>
-            <Link to="/pricing" className="reference-button reference-button--outline" data-testid="home-reference-secondary-cta">Explore Reading Passes</Link>
-          </div>
-          <div className="reference-home__policy" aria-label="Reading access details">
-            <p><BookOpen aria-hidden="true" /><span>{PUBLIC_PREVIEW_COPY}</span></p>
-            <p><ClockMark aria-hidden="true" /><span>{READING_TIME_COPY}</span></p>
-            <p><ShieldCheck aria-hidden="true" /><span>No subscription · unused time never expires</span></p>
+            <Link to="/library" className="reference-button reference-button--burgundy" data-testid="home-reference-primary-cta">Explore the Library <ArrowRight aria-hidden="true" /></Link>
           </div>
         </div>
         <picture className="reference-home__hero-art">
-          <img src="/assets/hero/earnalism-black-burgundy-reading-room.webp" alt="" fetchPriority="high" decoding="async" />
+          <img src="/assets/hero/golden-hour-library-hero.webp" alt="" fetchPriority="high" decoding="async" />
         </picture>
-      </section>
-
-      <section className="reference-feature-strip" aria-label="Earnalism reading room features">
-        {HOME_FEATURES.map(([Icon, title, copy]) => (
-          <article key={title}><Icon aria-hidden="true" /><div><strong>{title}</strong><span>{copy}</span></div></article>
-        ))}
+        <section className="reference-feature-strip" aria-label="Earnalism reading room features">
+          {HOME_FEATURES.map(([Icon, title, copy]) => (
+            <article key={title}><Icon aria-hidden="true" /><div><strong>{title}</strong><span>{copy}</span></div></article>
+          ))}
+        </section>
       </section>
 
       <section className="reference-home__journey" aria-label="Discover. Read. Belong.">
@@ -222,8 +181,9 @@ export function ReferenceHomeSurface({ curation, readingPasses = [], listeningIt
             </Link>
           ))}
         </div>
-        <ReferenceShelf books={shelfBooks} coversOnly discoveryOnly={discoveryOnlyShelf} label="Featured classics" className="reference-home__journey-shelf" data-testid="home-journey-shelf" />
       </section>
+
+      <ReaderPerspectives />
 
       <section className="reference-home__pass" aria-labelledby="reference-pass-title">
         <div className="reference-home__pass-copy">
@@ -269,10 +229,6 @@ export function ReferenceHomeSurface({ curation, readingPasses = [], listeningIt
         <ReferenceShelf books={listeningBooks} label="Approved audiobooks" />
       </section>}
 
-      <section className="reference-home__trust" aria-labelledby="reference-trust-title">
-        <h2 id="reference-trust-title">Made for the love of reading</h2>
-        <div>{TRUST_FACTS.map(([Icon, title, copy]) => <article key={title}><Icon aria-hidden="true" /><strong>{title}</strong><p>{copy}</p></article>)}</div>
-      </section>
     </div>
   );
 }

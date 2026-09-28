@@ -13,6 +13,7 @@ import {
   PR438_READING_ROOM_HOME_LIBRARY_INTERACTION_BASELINE,
   PR457_READING_PASS_HOME_LIBRARY_INTERACTION_BASELINE,
   PR462_APPROVED_HOMEPAGE_LIBRARY_INTERACTION_BASELINE,
+  PR466_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE,
   compareLibraryInteractionBaseline,
   loadLibraryInteractionBaseline,
 } from "./lib/library_interaction_baseline.mjs";
@@ -104,10 +105,10 @@ test("the approved PR438 Reading Room transition matches the current Home source
   assert.equal(baseline.owner_authorization.capture_is_not_expected_value_authority, true);
 });
 
-test("the default runtime baseline resolves to Track B1 and matches explicit resolution", () => {
+test("the default runtime baseline resolves to the approved PR466 Option B transition", () => {
   const implicit = compareLibraryInteractionBaseline(root);
-  const explicit = compareLibraryInteractionBaseline(root, PR462_APPROVED_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
-  assert.equal(implicit.approval_source, PR462_APPROVED_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
+  const explicit = compareLibraryInteractionBaseline(root, PR466_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
+  assert.equal(implicit.approval_source, PR466_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
   assert.deepEqual(implicit, explicit);
 });
 
@@ -129,9 +130,9 @@ test("an unauthorized Track B1 baseline mutation fails closed", () => {
   assert.throws(() => loadLibraryInteractionBaseline(temporary, PR457_READING_PASS_HOME_LIBRARY_INTERACTION_BASELINE));
 });
 
-test("the approved PR462 homepage transition preserves the exact Library interaction baseline", () => {
+test("the historical approved PR462 homepage transition preserves its exact Library interaction baseline", () => {
   const baseline = loadLibraryInteractionBaseline(root, PR462_APPROVED_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
-  const comparison = compareLibraryInteractionBaseline(root, PR462_APPROVED_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
+  const comparison = compareLibraryInteractionBaseline(materializeReviewedSurface(PR462_APPROVED_HOMEPAGE_LIBRARY_INTERACTION_BASELINE), PR462_APPROVED_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
   assert.equal(comparison.previous_surface_sha256, "632659caafce47f36e3f4b19f2dfd966cef72b899cfd728e2ef8bc5c5c1c403f");
   assert.equal(comparison.expected_surface_sha256, "38f492eb2f1798ffe476470ff78a0be3b580c7fb41f488db73e9ee92a14d6f76");
   assert.equal(comparison.result, "PASS");
@@ -145,6 +146,24 @@ test("an unauthorized PR462 homepage baseline mutation fails closed", () => {
   value.owner_authorization.reference = "UNAUTHORIZED";
   write(record, value);
   assert.throws(() => loadLibraryInteractionBaseline(temporary, PR462_APPROVED_HOMEPAGE_LIBRARY_INTERACTION_BASELINE));
+});
+
+test("the approved PR466 Option B homepage transition preserves the exact Library interaction baseline", () => {
+  const baseline = loadLibraryInteractionBaseline(root, PR466_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
+  const comparison = compareLibraryInteractionBaseline(root, PR466_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
+  assert.equal(comparison.previous_surface_sha256, "38f492eb2f1798ffe476470ff78a0be3b580c7fb41f488db73e9ee92a14d6f76");
+  assert.equal(comparison.expected_surface_sha256, "0de6d2fe1388062cbfbf3c4e6569d0bc6bec13c8ffc31ee73c996d4791ba21e4");
+  assert.equal(comparison.result, "PASS");
+  assert.equal(baseline.owner_authorization.capture_is_not_expected_value_authority, true);
+});
+
+test("an unauthorized PR466 homepage baseline mutation fails closed", () => {
+  const temporary = materializeReviewedSurface(PR466_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
+  const record = path.join(temporary, PR466_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
+  const value = JSON.parse(read(record));
+  value.owner_authorization.reference = "UNAUTHORIZED";
+  write(record, value);
+  assert.throws(() => loadLibraryInteractionBaseline(temporary, PR466_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE));
 });
 
 console.log(JSON.stringify({ result: "PASS", testCaseCount: cases }));
