@@ -49,6 +49,7 @@ export default function ReaderPerspectives() {
         <p className="reference-kicker">What reading can feel like · Reader perspectives</p>
         <h2 id="reader-perspectives-title">A gentler, richer way to be in the world.</h2>
         <p>What reading can feel like: a little more space to think, feel and see life through other eyes.</p>
+        <span className="sr-only">Four reader perspectives.</span>
       </div>
       <div className="reference-reader-perspectives__grid">
         {PERSPECTIVES.map((perspective) => (
