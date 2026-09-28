@@ -2,11 +2,13 @@
 """Bounded worker for approved non-production bridge tasks."""
 import argparse, json, os, subprocess, time
 from pathlib import Path
+try:
+    from scripts.autonomy_scope import forbidden_paths
+except ModuleNotFoundError:  # direct ``python scripts/autonomy_worker.py`` execution
+    from autonomy_scope import forbidden_paths
 
 ALLOWED = {"bridge-fixture", "reader-benchmark", "codex-implementation-fixture", "codex-implementation"}
 CODEX_TASKS = {"codex-implementation-fixture", "codex-implementation"}
-PROTECTED_PREFIXES = ("backend/", "frontend/", ".github/", "internal/")
-PROTECTED_NAME_PARTS = ("payment", "entitlement", "secret", "deploy", "catalogue")
 
 
 def should_run_fixture_test(task_type: str) -> bool:
@@ -77,7 +79,7 @@ def main() -> int:
         "tested_revision": actual, "generation": args.generation, "attempt": args.attempt,
         "state": "REVIEW" if proc.returncode == 0 else "CHANGES_REQUIRED",
         "tests": [{"command": " ".join(command), "exit_code": proc.returncode, "stdout": proc.stdout[-2000:]}],
-        "files_changed": git_changed_files(),
+        "changed_files": git_changed_files(),
         "artifacts": [],
         "unresolved_findings": [] if proc.returncode == 0 else [proc.stderr[-2000:] or "worker command failed"],
         "proposed_next_action": "REVIEW" if proc.returncode == 0 else "FIX_WORKER",
@@ -85,13 +87,10 @@ def main() -> int:
         "generated_at": int(time.time()),
     }
     if args.task_type == "codex-implementation":
-        forbidden = [
-            p for p in result["files_changed"]
-            if p.startswith(PROTECTED_PREFIXES)
-            or any(x in p.lower() for x in PROTECTED_NAME_PARTS)
-        ]
+        forbidden = forbidden_paths(result["changed_files"], args.brief, args.acceptance)
         if forbidden:
             result.update(state="CHANGES_REQUIRED", unresolved_findings=[f"protected or unrelated paths changed: {', '.join(forbidden)}"], proposed_next_action="FIX_SCOPE")
+    result["files_changed"] = result["changed_files"]
     args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result))
     return 0 if proc.returncode == 0 else 1

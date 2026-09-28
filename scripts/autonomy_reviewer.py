@@ -2,10 +2,12 @@
 """Independent reviewer for bounded worker evidence."""
 import argparse, json, subprocess, time
 from pathlib import Path
+try:
+    from scripts.autonomy_scope import forbidden_paths
+except ModuleNotFoundError:  # direct ``python scripts/autonomy_reviewer.py`` execution
+    from autonomy_scope import forbidden_paths
 
 CODEX_TASKS = {"codex-implementation-fixture", "codex-implementation"}
-PROTECTED_PREFIXES = ("backend/", "frontend/", ".github/", "internal/")
-PROTECTED_NAME_PARTS = ("payment", "entitlement", "secret", "deploy", "catalogue")
 
 def main() -> int:
     p = argparse.ArgumentParser()
@@ -32,12 +34,8 @@ def main() -> int:
             decision = "CHANGES_REQUIRED"
             findings = ["bounded Codex correction did not produce the required fixture implementation"]
     if a.task_type == "codex-implementation":
-        changed = worker.get("files_changed") or []
-        forbidden = [
-            p for p in changed
-            if p.startswith(PROTECTED_PREFIXES)
-            or any(x in p.lower() for x in PROTECTED_NAME_PARTS)
-        ]
+        changed = worker.get("changed_files") or worker.get("files_changed") or []
+        forbidden = forbidden_paths(changed)
         if forbidden:
             decision = "CHANGES_REQUIRED"
             findings = [f"protected or unrelated paths changed: {', '.join(forbidden)}"]
