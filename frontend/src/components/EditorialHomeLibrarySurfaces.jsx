@@ -179,8 +179,9 @@ export function ReferenceHomeSurface({ curation, readingPasses = [], listeningIt
     <div className="reference-home" data-testid="home-reference-surface">
       <section className="reference-home__hero" aria-labelledby="reference-home-title">
         <div className="reference-home__hero-copy">
-          <h1 id="reference-home-title">Come for a story.<br />Stay a little longer.</h1>
-          <p className="reference-home__lede">Bengali and English classics in a calm digital library.<br />Read the first 3 pages free, then continue with Reading Pass time.<br />Open a page. Let the day grow quiet.</p>
+          <p className="reference-kicker">LITERATURE LIVES HERE</p>
+          <h1 id="reference-home-title">A calmer place for timeless reading.</h1>
+          <p className="reference-home__lede">Discover enduring works of Bengali and English literature across generations. Read, reflect, and reconnect with what truly matters.</p>
           <div className="reference-home__cta-row">
             <Link to="/library" className="reference-button reference-button--gold" data-testid="home-reference-primary-cta">Start Reading</Link>
             <Link to="/pricing" className="reference-button reference-button--outline" data-testid="home-reference-secondary-cta">Explore Reading Passes</Link>
@@ -202,10 +203,25 @@ export function ReferenceHomeSurface({ curation, readingPasses = [], listeningIt
         ))}
       </section>
 
-      <section className="reference-home__journey" aria-label="Begin Your Journey">
+      <section className="reference-home__journey" aria-label="Discover. Read. Belong.">
         <SectionHeading
-          title="Begin Your Journey"
-        ><p>Which cover calls to you?</p></SectionHeading>
+          eyebrow="A LIBRARY WITHOUT BORDERS"
+          title="Discover. Read. Belong."
+          action={<Link to="/library" className="reference-text-link">Explore all books <ArrowRight aria-hidden="true" /></Link>}
+        ><p>From cherished Bengali classics to world literature, find a thoughtful place to begin.</p></SectionHeading>
+        <div className="reference-home__discovery-grid" aria-label="Explore the library by collection">
+          {[
+            ["Bengali Classics", "Timeless works that continue to inspire.", "/assets/shelves/bengali-classics.jpg", "/library?language=bn&availability=reader-ready"],
+            ["English Classics", "Enduring voices from around the world.", "/assets/shelves/literature.jpg", "/library?language=en"],
+            ["Modern Favourites", "Thoughtful reads for today and tomorrow.", "/assets/reference-derived/reader-castle-board-crop.png", "/library"],
+            ["Curated Collections", "Handpicked reading lists for every mood.", "/assets/reference-derived/commerce-chair-lamp-board-crop.png", "/library"],
+          ].map(([title, copy, image, href]) => (
+            <Link className="reference-home__discovery-card" to={href} key={title}>
+              <img src={image} alt="" loading="lazy" />
+              <span><strong>{title}</strong><small>{copy}</small><em>Explore <ArrowRight aria-hidden="true" /></em></span>
+            </Link>
+          ))}
+        </div>
         <ReferenceShelf books={shelfBooks} coversOnly discoveryOnly={discoveryOnlyShelf} label="Featured classics" className="reference-home__journey-shelf" data-testid="home-journey-shelf" />
       </section>
 
