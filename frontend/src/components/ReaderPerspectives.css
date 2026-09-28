@@ -1,38 +1,147 @@
-/* Illustrative reader perspectives: warm paper surface, readable literary copy. */
-.reference-reader-perspectives{width:100%;padding:var(--public-section-space,4.5rem) max(1rem,calc((100vw - 1344px)/2 + 1rem));background:var(--reference-paper);color:var(--reference-text,#35111d);--reference-text:#35111d;--reference-muted:#5e3d46;--reference-elevated:#fffaf2;--reference-quiet:#f4eadc;--reference-burgundy:#712a3d;--reference-gold:#a66f15;--reference-line:rgba(113,42,61,.2)}
-.reference-reader-perspectives__intro{max-width:50rem;margin:0 auto 1.75rem;text-align:center}
-.reference-reader-perspectives__intro .reference-kicker{color:var(--reference-burgundy,#712a3d)}
-.reference-reader-perspectives__intro h2{margin:0;color:var(--reference-burgundy,#35111d);font:500 clamp(2.1rem,3vw,3.25rem)/.98 var(--reference-display);letter-spacing:-.035em}
-.reference-reader-perspectives__intro>p:last-child{max-width:38rem;margin:.75rem auto 0;color:var(--reference-muted,#5e3d46);font:400 1rem/1.6 var(--reference-ui)}
-.reference-reader-perspectives__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;max-width:1344px;margin:0 auto}
-.reference-reader-perspective{overflow:hidden;border:1px solid var(--reference-line,rgba(113,42,61,.2));border-radius:var(--public-card-radius,.75rem);background:var(--reference-elevated,#fffaf2);box-shadow:none}
-.reference-reader-perspective figure{margin:0;background:var(--reference-quiet,#f4eadc)}
-.reference-reader-perspective figure img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 27%}
-.reference-reader-perspective__copy{display:flex;min-height:16rem;flex-direction:column;padding:1.25rem}
-.reference-reader-perspective__label{margin:0;color:var(--reference-burgundy,#712a3d);font:600 .6133rem/1.35 var(--reference-ui);letter-spacing:.1em;text-transform:uppercase}
-.reference-reader-perspective__copy>svg{width:1.35rem;height:1.35rem;margin:1rem 0 .6rem;color:var(--reference-gold,#a66f15)}
-.reference-reader-perspective blockquote{margin:0;color:var(--reference-burgundy,#35111d);font:500 clamp(1.05rem,1.45vw,1.3rem)/1.45 var(--reference-display)}
-.reference-reader-perspective__place{margin:auto 0 0;padding-top:1rem;border-top:1px solid var(--reference-line,rgba(113,42,61,.2));color:var(--reference-muted,#5e3d46);font:600 .875rem/1.35 var(--reference-ui)}
-.reference-reader-perspectives__closing{display:grid;justify-items:center;gap:1.25rem;margin:2rem auto 0;text-align:center}
-.reference-reader-perspectives__closing p{margin:0;color:var(--reference-muted,#5e3d46);font:400 1rem/1.6 var(--reference-ui)}
-.reference-reader-perspectives__closing .reference-button{border-radius:.55rem;padding-inline:1rem}
-.reference-reader-perspectives__closing .reference-button svg{width:1rem;height:1rem}
-@media (min-width:768px) and (max-width:1279px){.reference-reader-perspectives__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:767px){.reference-reader-perspectives{padding-block:3rem}.reference-reader-perspectives__intro{margin-bottom:1.25rem}.reference-reader-perspectives__grid{grid-template-columns:1fr;max-width:34rem}.reference-reader-perspective__copy{min-height:0}.reference-reader-perspective figure img{aspect-ratio:16/10;object-position:center 25%}}
-
-/* Mock-aligned editorial treatment: portraits support the reading proposition
-   instead of competing with it. */
-.reference-reader-perspectives{padding-block:clamp(3.5rem,7vw,6rem);background:#f7efe3}
-.reference-reader-perspectives__intro{text-align:left;max-width:1344px;margin-bottom:2rem}
-.reference-reader-perspectives__intro h2{max-width:12ch;font-size:clamp(2.6rem,4vw,4.2rem);color:#35111d}
-.reference-reader-perspectives__intro>p:last-child{max-width:34rem;margin-left:0;color:#5e3d46}
-.reference-reader-perspectives__grid{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1344px;gap:.75rem}
-.reference-reader-perspective{border-color:rgba(113,42,61,.14);background:rgba(255,250,242,.82);box-shadow:0 .7rem 1.6rem rgba(76,42,34,.06)}
-.reference-reader-perspective figure img{aspect-ratio:16/8;opacity:.74;filter:saturate(.72);object-position:center 30%}
-.reference-reader-perspective__copy{min-height:13rem;padding:1rem 1.1rem}
-.reference-reader-perspective blockquote{font-size:clamp(1rem,1.25vw,1.2rem);line-height:1.4}
-.reference-reader-perspectives__closing{margin-top:2.5rem}
-.reference-reader-perspectives__closing p{max-width:44rem;font-family:var(--reference-display);font-size:1.25rem;color:#712a3d}
-@media (min-width:768px) and (max-width:1279px){.reference-reader-perspectives__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:767px){.reference-reader-perspectives__intro{text-align:center}.reference-reader-perspectives__intro>p:last-child{margin-inline:auto}.reference-reader-perspectives__grid{grid-template-columns:1fr 1fr}.reference-reader-perspective__copy{padding:.85rem}.reference-reader-perspective__label{font-size:.55rem}.reference-reader-perspective blockquote{font-size:1rem}.reference-reader-perspective__place{font-size:.75rem}}
-@media (max-width:420px){.reference-reader-perspectives__grid{grid-template-columns:1fr}}
+/* Option B treats reader imagery as a quiet accent within the editorial story. */
+.reference-reader-perspectives {
+  width: 100%;
+  padding: clamp(2.5rem, 4vw, 4.25rem) max(1.25rem, calc((100vw - 1344px) / 2 + 1rem));
+  color: #35111d;
+  background: #f7efe3;
+  --reference-text: #35111d;
+  --reference-muted: #5e3d46;
+  --reference-burgundy: #712a3d;
+  --reference-gold: #a66f15;
+  --reference-line: rgba(113, 42, 61, .18);
+}
+.reference-reader-perspectives__layout {
+  display: grid;
+  grid-template-columns: minmax(15rem, .95fr) minmax(0, 1.45fr);
+  align-items: center;
+  gap: clamp(2rem, 4vw, 4rem);
+  max-width: 1344px;
+  margin: 0 auto;
+}
+.reference-reader-perspectives__intro { max-width: 31rem; }
+.reference-reader-perspectives__intro .reference-kicker {
+  margin: 0 0 1rem;
+  color: #a47d4d;
+  font: 600 .68rem/1.3 var(--reference-ui);
+  letter-spacing: .15em;
+}
+.reference-reader-perspectives__intro h2 {
+  max-width: 13ch;
+  margin: 0;
+  color: #241517;
+  font: 400 clamp(2.15rem, 3vw, 3.25rem)/1.02 var(--reference-display);
+  letter-spacing: -.035em;
+}
+.reference-reader-perspectives__intro > p:last-child {
+  max-width: 34rem;
+  margin: .85rem 0 0;
+  color: #49393a;
+  font: 400 .95rem/1.55 var(--reference-ui);
+}
+.reference-reader-perspectives__benefits {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-self: stretch;
+}
+.reference-reader-perspectives__benefits article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  padding: 1.25rem clamp(.65rem, 1.5vw, 1.35rem);
+  text-align: center;
+}
+.reference-reader-perspectives__benefits article + article { border-left: 1px solid var(--reference-line); }
+.reference-reader-perspectives__benefits svg {
+  width: 2.1rem;
+  height: 2.1rem;
+  margin-bottom: .45rem;
+  color: #a47d4d;
+  stroke-width: 1.25;
+}
+.reference-reader-perspectives__benefits h3 {
+  margin: 0;
+  color: #35111d;
+  font: 600 .95rem/1.3 var(--reference-display);
+}
+.reference-reader-perspectives__benefits p {
+  max-width: 13rem;
+  margin: 0;
+  color: #5e3d46;
+  font: 400 .8rem/1.45 var(--reference-ui);
+}
+.reference-reader-perspectives__closing {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: .35rem;
+  max-width: 1344px;
+  margin: 1.25rem auto 0;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--reference-line);
+  text-align: center;
+}
+.reference-reader-perspectives__closing blockquote {
+  margin: 0;
+  color: #712a3d;
+  font: italic 400 clamp(1.1rem, 1.65vw, 1.5rem)/1.3 var(--reference-display);
+}
+.reference-reader-perspectives__closing > p {
+  margin: 0;
+  color: #5e3d46;
+  font: 600 .62rem/1.4 var(--reference-ui);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.reference-reader-perspectives__portraits {
+  position: absolute;
+  right: 0;
+  top: -2.8rem;
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+}
+.reference-reader-perspectives__portraits img {
+  width: 2.65rem;
+  height: 2.65rem;
+  border: 2px solid #f7efe3;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 24%;
+  filter: saturate(.72);
+}
+.reference-reader-perspectives__portraits svg { width: 2.3rem; height: 2.3rem; color: #b69c75; stroke-width: 1; }
+.reference-reader-perspectives__more { max-width: 1344px; margin: .9rem auto 0; color: #5e3d46; font: 400 .82rem/1.5 var(--reference-ui); }
+.reference-reader-perspectives__more summary { width: fit-content; cursor: pointer; color: #712a3d; }
+.reference-reader-perspectives__more > div { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; padding: 1rem 0; }
+.reference-reader-perspectives__more blockquote { margin: 0; padding-left: .8rem; border-left: 1px solid var(--reference-line); }
+.reference-reader-perspectives__more blockquote p { margin: 0 0 .45rem; }
+.reference-reader-perspectives__more cite { font-style: normal; font-weight: 600; }
+@media (min-width: 768px) and (max-width: 1279px) {
+  .reference-reader-perspectives__layout { grid-template-columns: minmax(14rem, .85fr) minmax(0, 1.35fr); gap: 1.25rem; }
+  .reference-reader-perspectives__benefits article { padding-inline: .45rem; }
+  .reference-reader-perspectives__benefits h3 { font-size: .88rem; }
+  .reference-reader-perspectives__benefits p { font-size: .74rem; }
+}
+@media (max-width: 767px) {
+  .reference-reader-perspectives { padding-block: 2.75rem; }
+  .reference-reader-perspectives__layout { grid-template-columns: 1fr; gap: 1.5rem; }
+  .reference-reader-perspectives__intro { max-width: 37rem; }
+  .reference-reader-perspectives__intro h2 { max-width: 16ch; }
+  .reference-reader-perspectives__benefits article { padding: .75rem .45rem; }
+  .reference-reader-perspectives__benefits svg { width: 1.7rem; height: 1.7rem; }
+  .reference-reader-perspectives__benefits h3 { font-size: .83rem; }
+  .reference-reader-perspectives__benefits p { font-size: .72rem; }
+  .reference-reader-perspectives__closing { margin-top: 1rem; padding-right: 0; }
+  .reference-reader-perspectives__portraits { position: static; margin-top: .55rem; }
+  .reference-reader-perspectives__more > div { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 420px) {
+  .reference-reader-perspectives { padding-inline: 1rem; }
+  .reference-reader-perspectives__benefits { gap: 0; }
+  .reference-reader-perspectives__benefits article { padding-inline: .35rem; }
+  .reference-reader-perspectives__benefits h3 { font-size: .76rem; }
+  .reference-reader-perspectives__benefits p { font-size: .68rem; }
+  .reference-reader-perspectives__more > div { grid-template-columns: 1fr; }
+}

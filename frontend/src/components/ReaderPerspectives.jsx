@@ -1,12 +1,27 @@
-import { Link } from "react-router-dom";
-import { ArrowRight, Quote } from "lucide-react";
+import { BookOpen, Leaf, Sprout, Sun } from "lucide-react";
 import "./ReaderPerspectives.css";
 
-// Commissioned illustrations and copy, not statements or portraits of customers.
+const BENEFITS = [
+  {
+    Icon: Sprout,
+    title: "A slower mind",
+    copy: "Step away from the rush and find room for what really matters.",
+  },
+  {
+    Icon: BookOpen,
+    title: "A wider world",
+    copy: "Meet new ideas, cultures and perspectives across time and place.",
+  },
+  {
+    Icon: Sun,
+    title: "A more thoughtful you",
+    copy: "Return to yourself with a little more kindness and clarity.",
+  },
+];
+
 const PERSPECTIVES = [
   {
     id: "kolkata",
-    tone: "blush",
     place: "Kolkata, India",
     portrait: "/assets/reader-perspectives/kolkata-reader.webp",
     alt: "Illustrative painted portrait of a reader in Kolkata",
@@ -15,7 +30,6 @@ const PERSPECTIVES = [
   },
   {
     id: "london",
-    tone: "cool",
     place: "London, United Kingdom",
     portrait: "/assets/reader-perspectives/london-reader.webp",
     alt: "Illustrative painted portrait of a reader in London",
@@ -24,7 +38,6 @@ const PERSPECTIVES = [
   },
   {
     id: "chennai",
-    tone: "sage",
     place: "Chennai, India",
     portrait: "/assets/reader-perspectives/chennai-reader.webp",
     alt: "Illustrative painted portrait of a reader in Chennai",
@@ -33,7 +46,6 @@ const PERSPECTIVES = [
   },
   {
     id: "new-delhi",
-    tone: "gold",
     place: "New Delhi, India",
     portrait: "/assets/reader-perspectives/new-delhi-reader.webp",
     alt: "Illustrative painted portrait of a reader in New Delhi",
@@ -45,31 +57,43 @@ const PERSPECTIVES = [
 export default function ReaderPerspectives() {
   return (
     <section className="reference-reader-perspectives" aria-labelledby="reader-perspectives-title" data-testid="reader-perspectives-section">
-      <div className="reference-reader-perspectives__intro">
-        <p className="reference-kicker">What reading can feel like · Reader perspectives</p>
-        <h2 id="reader-perspectives-title">A gentler, richer way to be in the world.</h2>
-        <p>What reading can feel like: a little more space to think, feel and see life through other eyes.</p>
-        <span className="sr-only">Four reader perspectives.</span>
-      </div>
-      <div className="reference-reader-perspectives__grid">
-        {PERSPECTIVES.map((perspective) => (
-          <article className={`reference-reader-perspective reference-reader-perspective--${perspective.tone}`} data-testid={`reader-perspective-${perspective.id}`} key={perspective.id}>
-            <figure>
-              <img src={perspective.portrait} alt={perspective.alt} width="640" height="800" loading="lazy" decoding="async" />
-            </figure>
-            <div className="reference-reader-perspective__copy">
-              <p className="reference-reader-perspective__label">Illustrative reader perspective</p>
-              <Quote aria-hidden="true" />
-              <blockquote lang={perspective.language}>{perspective.quote}</blockquote>
-              <p className="reference-reader-perspective__place">{perspective.place}</p>
-            </div>
-          </article>
-        ))}
+      <div className="reference-reader-perspectives__layout">
+        <div className="reference-reader-perspectives__intro">
+          <p className="reference-kicker">WHAT READING CAN FEEL LIKE</p>
+          <h2 id="reader-perspectives-title">A gentler, richer way to be in the world.</h2>
+          <p>Reading slows us down. It gives us space to think, to feel, and to see life through other eyes. At The Earnalism Digital Library, we believe in the quiet power of books—to comfort, challenge, and keep us curiously human.</p>
+        </div>
+        <div className="reference-reader-perspectives__benefits" aria-label="What reading can bring">
+          {BENEFITS.map(({ Icon, title, copy }) => (
+            <article key={title}>
+              <Icon aria-hidden="true" />
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
+        </div>
       </div>
       <div className="reference-reader-perspectives__closing">
-        <p>“A book is a way to hold a conversation across time.” — Chimamanda Ngozi Adichie</p>
-        <Link to="/library" className="reference-button reference-button--gold" data-testid="reader-perspectives-cta">Start Reading Today <ArrowRight aria-hidden="true" /></Link>
+        <blockquote>“A book is a way to hold a conversation across time.”</blockquote>
+        <p>— Chimamanda Ngozi Adichie</p>
+        <div className="reference-reader-perspectives__portraits" aria-label="Illustrative reader portraits">
+          {PERSPECTIVES.slice(0, 2).map((perspective) => (
+            <img key={perspective.id} src={perspective.portrait} alt={perspective.alt} width="64" height="64" loading="lazy" decoding="async" />
+          ))}
+          <Leaf aria-hidden="true" />
+        </div>
       </div>
+      <details className="reference-reader-perspectives__more">
+        <summary>Explore four illustrative reader perspectives</summary>
+        <div>
+          {PERSPECTIVES.map((perspective) => (
+            <blockquote lang={perspective.language} key={perspective.id}>
+              <p>“{perspective.quote}”</p>
+              <cite>{perspective.place}</cite>
+            </blockquote>
+          ))}
+        </div>
+      </details>
     </section>
   );
 }
