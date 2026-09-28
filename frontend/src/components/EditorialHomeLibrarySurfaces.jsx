@@ -180,7 +180,7 @@ export function ReferenceHomeSurface({ curation, readingPasses = [], listeningIt
       <section className="reference-home__hero" aria-labelledby="reference-home-title">
         <div className="reference-home__hero-copy">
           <p className="reference-kicker">LITERATURE LIVES HERE</p>
-          <h1 id="reference-home-title">A calmer place for timeless reading.</h1>
+          <h1 id="reference-home-title">Come for a story.<br />Stay a little longer.</h1>
           <p className="reference-home__lede">Discover enduring works of Bengali and English literature across generations. Read, reflect, and reconnect with what truly matters.</p>
           <div className="reference-home__cta-row">
             <Link to="/library" className="reference-button reference-button--gold" data-testid="home-reference-primary-cta">Start Reading</Link>
