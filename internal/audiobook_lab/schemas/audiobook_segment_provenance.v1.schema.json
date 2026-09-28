@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://theearnalism.com/schemas/audiobook_segment_provenance.v1.schema.json",
+  "title": "Earnalism audio segment provenance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "generation_job_id", "segment_id", "text_sha256", "audio_sha256", "audio_size_bytes", "start_word", "end_word", "start_paragraph", "end_paragraph", "start_ms", "end_ms", "sync_measured", "voice", "model_repo", "model_revision"],
+  "properties": {
+    "schema_version": {"const": "earnalism.audiobook_segment_provenance.v1"},
+    "generation_job_id": {"type": "string", "pattern": "^egj_[a-f0-9]{64}$"},
+    "segment_id": {"type": "string", "minLength": 1},
+    "text_sha256": {"$ref": "#/$defs/hash"}, "audio_sha256": {"$ref": "#/$defs/hash"},
+    "audio_size_bytes": {"type": "integer", "minimum": 1},
+    "start_word": {"type": "integer", "minimum": 0}, "end_word": {"type": "integer", "minimum": 1},
+    "start_paragraph": {"type": "integer", "minimum": 0}, "end_paragraph": {"type": "integer", "minimum": 1},
+    "start_ms": {"type": ["integer", "null"], "minimum": 0}, "end_ms": {"type": ["integer", "null"], "minimum": 1},
+    "sync_measured": {"type": "boolean"}, "voice": {"type": "string"},
+    "model_repo": {"const": "hexgrad/Kokoro-82M"}, "model_revision": {"type": "string", "minLength": 40}
+  },
+  "$defs": {"hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+}

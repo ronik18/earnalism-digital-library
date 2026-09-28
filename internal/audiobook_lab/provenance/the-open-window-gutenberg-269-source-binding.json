@@ -1,0 +1,20 @@
+{
+  "schema_version": "earnalism.gutenberg_source_binding.v1",
+  "title": "The Open Window",
+  "author": "Saki",
+  "source_id": "project-gutenberg-269",
+  "source_url": "https://www.gutenberg.org/cache/epub/269/pg269.txt",
+  "source_sha256": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+  "story_interval": {
+    "start_heading": "THE OPEN WINDOW",
+    "exclusive_end_heading": "THE TREASURE SHIP"
+  },
+  "normalization": "gutenberg-269-story-dewrap-v1",
+  "manuscript_sha256": "2d4aff5e3a7b238f7eaf2178242e21b55f09e3813f272194d7e8ff5eb937e1c8",
+  "character_count": 6839,
+  "word_count_whitespace_split": 1208,
+  "source_rights_status": "TEXT_RIGHTS_PASS_PER_CAMPAIGN_INPUT",
+  "audio_rights_status": "BLOCKED_PENDING_NEW_RECORDING_AND_COMPLETE_AUDIO_DISTRIBUTION_AUTHORITY",
+  "reader_facing_source_metadata": false,
+  "public_release_ready": false
+}

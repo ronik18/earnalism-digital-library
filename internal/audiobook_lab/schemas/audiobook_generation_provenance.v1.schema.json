@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://theearnalism.com/schemas/audiobook_generation_provenance.v1.schema.json",
+  "title": "Earnalism private audiobook generation provenance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "generation_job_id", "source_binding", "model_runtime", "voice", "generation_settings", "segments", "qa_evidence", "license_evidence", "storage_receipts", "release_state", "public_release_ready", "manifest_sha256"],
+  "properties": {
+    "schema_version": {"const": "earnalism.audiobook_generation_provenance.v1"},
+    "generation_job_id": {"type": "string", "pattern": "^egj_[a-f0-9]{64}$"},
+    "source_binding": {"type": "object", "required": ["source_id", "source_sha256", "manuscript_sha256", "normalization"], "properties": {"source_id": {"type": "string"}, "source_url": {"type": "string"}, "source_sha256": {"$ref": "#/$defs/hash"}, "manuscript_sha256": {"$ref": "#/$defs/hash"}, "normalization": {"type": "string"}}},
+    "model_runtime": {"type": "object"},
+    "voice": {"type": "string", "minLength": 1},
+    "generation_settings": {"type": "object"},
+    "segments": {"type": "array", "items": {"type": "object", "required": ["generation_job_id", "segment_id", "text_sha256", "audio_sha256", "audio_size_bytes", "sync_measured"], "properties": {"generation_job_id": {"type": "string"}, "segment_id": {"type": "string"}, "text_sha256": {"$ref": "#/$defs/hash"}, "audio_sha256": {"$ref": "#/$defs/hash"}, "audio_size_bytes": {"type": "integer", "minimum": 1}, "sync_measured": {"type": "boolean"}}}},
+    "qa_evidence": {"type": "array", "items": {"$ref": "#/$defs/evidence"}},
+    "license_evidence": {"type": "array", "items": {"$ref": "#/$defs/evidence"}},
+    "storage_receipts": {"type": "array", "items": {"type": "object"}},
+    "release_state": {"const": "PRIVATE_CANDIDATE"},
+    "public_release_ready": {"const": false},
+    "manifest_sha256": {"$ref": "#/$defs/hash"}
+  },
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "evidence": {"type": "object", "required": ["evidence_type", "path", "present", "decision"], "properties": {"evidence_type": {"type": "string"}, "path": {"type": "string"}, "present": {"type": "boolean"}, "sha256": {"anyOf": [{"$ref": "#/$defs/hash"}, {"type": "null"}]}, "decision": {"type": "string"}}}
+  }
+}
