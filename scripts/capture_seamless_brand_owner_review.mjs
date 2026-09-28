@@ -601,8 +601,10 @@ async function ownerScopedMobileMenu(page, state) {
       await toggle.click();
       await page.waitForFunction((id) => document.getElementById(id)?.getAttribute("aria-modal") === "true", controls, { timeout: 5000 });
       const destination = state.route === "/library" ? "/pricing" : "/library";
-      const routeActionTestId = destination === "/pricing" ? "mobile-nav-reading-passes" : "mobile-nav-library";
-      const routeAction = header.locator(`[data-testid="mobile-menu"] [data-testid="${routeActionTestId}"]:visible`);
+      const routeActionTestIds = destination === "/pricing"
+        ? ["mobile-nav-reading-passes", "mobile-nav-reading-pass"]
+        : ["mobile-nav-books", "mobile-nav-library"];
+      const routeAction = header.locator(routeActionTestIds.map((id) => `[data-testid="mobile-menu"] [data-testid="${id}"]:visible`).join(", "));
       result.route_action_destination = destination;
       if (await routeAction.count() !== 1) {
         result.failures.push("menu-route-action");
