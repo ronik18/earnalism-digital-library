@@ -1,6 +1,6 @@
 {
   "public_reader_exposure_enabled": true,
-  "public_audio_exposure_enabled": false,
+  "public_audio_exposure_enabled": true,
   "public_paid_commerce_enabled": true,
   "text_access_mode": "COMMERCIAL_ENTITLEMENT",
   "title_access_modes": {
@@ -10,6 +10,7 @@
     "a-white-heron": "COMMERCIAL_ENTITLEMENT",
     "the-gift-of-the-magi": "COMMERCIAL_ENTITLEMENT",
     "the-canterville-ghost": "COMMERCIAL_ENTITLEMENT"
+    ,"the-open-window": "COMMERCIAL_ENTITLEMENT"
   },
   "launch_compliance_jurisdiction": "IN",
   "live_approved_slugs": [
@@ -18,12 +19,13 @@
     "radharani",
     "a-white-heron",
     "the-gift-of-the-magi",
-    "the-canterville-ghost"
+    "the-canterville-ghost",
+    "the-open-window"
   ],
   "pipeline_slugs": [
     "kshudhita-pashan"
   ],
-  "audio_enabled_slugs": [],
+  "audio_enabled_slugs": ["the-open-window"],
   "reader_only_audio_excluded_slugs": [
     "agentic-ai-with-python"
   ]

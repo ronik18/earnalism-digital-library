@@ -25,6 +25,7 @@ INDIA_TEXT_RELEASE_SLUGS = {
     "the-gift-of-the-magi",
     "the-canterville-ghost",
 }
+AUDIO_PILOT_SLUG = "the-open-window"
 
 
 def load_json(path: Path) -> dict:
@@ -70,19 +71,19 @@ def test_owner_exclusion_tombstone_is_mirrored_exactly():
     }
 
 
-def test_backend_controlled_launch_opens_only_the_six_india_text_titles_and_no_audio():
+def test_backend_controlled_launch_opens_six_text_titles_and_approved_audio_pilot():
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     backend_audio = set(backend_launch["audio_enabled_slugs"])
 
     assert backend_launch["public_reader_exposure_enabled"] is True
-    assert set(backend_launch["live_approved_slugs"]) == INDIA_TEXT_RELEASE_SLUGS
-    assert backend_audio == set()
+    assert set(backend_launch["live_approved_slugs"]) == INDIA_TEXT_RELEASE_SLUGS | {AUDIO_PILOT_SLUG}
+    assert backend_audio == {AUDIO_PILOT_SLUG}
 
 
 def test_root_controlled_launch_keeps_yugalanguriya_and_every_other_title_held():
     root_launch = load_json(ROOT_CONTROLLED_LAUNCH)
 
-    assert set(root_launch["live_approved_slugs"]) == INDIA_TEXT_RELEASE_SLUGS
+    assert set(root_launch["live_approved_slugs"]) == INDIA_TEXT_RELEASE_SLUGS | {AUDIO_PILOT_SLUG}
     assert "yugalanguriya" not in root_launch["live_approved_slugs"]
     assert FULLY_EXCLUDED_BENGALI_TITLE not in root_launch["audio_enabled_slugs"]
 
@@ -92,11 +93,11 @@ def test_india_commercial_text_release_is_mirrored_and_audio_remains_disabled():
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
 
     for launch in (root_launch, backend_launch):
-        assert set(launch["live_approved_slugs"]) == INDIA_TEXT_RELEASE_SLUGS
-        assert launch["public_audio_exposure_enabled"] is False
+        assert set(launch["live_approved_slugs"]) == INDIA_TEXT_RELEASE_SLUGS | {AUDIO_PILOT_SLUG}
+        assert launch["public_audio_exposure_enabled"] is True
         assert launch["public_paid_commerce_enabled"] is True
         assert launch["text_access_mode"] == "COMMERCIAL_ENTITLEMENT"
-        assert launch["audio_enabled_slugs"] == []
+        assert launch["audio_enabled_slugs"] == [AUDIO_PILOT_SLUG]
 
 
 def test_six_title_release_uses_commercial_mode_and_keeps_checkout_audio_disabled():
@@ -109,15 +110,16 @@ def test_six_title_release_uses_commercial_mode_and_keeps_checkout_audio_disable
         "a-white-heron": "COMMERCIAL_ENTITLEMENT",
         "the-gift-of-the-magi": "COMMERCIAL_ENTITLEMENT",
         "the-canterville-ghost": "COMMERCIAL_ENTITLEMENT",
+        AUDIO_PILOT_SLUG: "COMMERCIAL_ENTITLEMENT",
     }
 
     for launch in (root_launch, backend_launch):
         assert launch["title_access_modes"] == expected_modes
-        assert set(launch["live_approved_slugs"]) == INDIA_TEXT_RELEASE_SLUGS
-        assert set(launch["title_access_modes"]) == INDIA_TEXT_RELEASE_SLUGS
+        assert set(launch["live_approved_slugs"]) == INDIA_TEXT_RELEASE_SLUGS | {AUDIO_PILOT_SLUG}
+        assert set(launch["title_access_modes"]) == INDIA_TEXT_RELEASE_SLUGS | {AUDIO_PILOT_SLUG}
         assert set(launch["title_access_modes"].values()) == {"COMMERCIAL_ENTITLEMENT"}
         assert launch["public_paid_commerce_enabled"] is True
-        assert launch["public_audio_exposure_enabled"] is False
+        assert launch["public_audio_exposure_enabled"] is True
 
 
 def test_six_title_release_has_hash_bound_reading_pass_rights_and_published_reader_manifests():
@@ -175,7 +177,7 @@ def test_released_title_resources_and_content_hashes_are_complete():
     registry = load_json(ROOT / "backend" / "data" / "rights_decision_registry.json")
     dispositions = registry["pilot_dispositions"]
 
-    assert set(launch["live_approved_slugs"]) == INDIA_TEXT_RELEASE_SLUGS
+    assert set(launch["live_approved_slugs"]) == INDIA_TEXT_RELEASE_SLUGS | {AUDIO_PILOT_SLUG}
     for slug in sorted(INDIA_TEXT_RELEASE_SLUGS):
         package = ROOT / "data" / "controlled_publications" / slug
         for name in (
