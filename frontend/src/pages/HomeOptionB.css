@@ -16,6 +16,13 @@
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
 }
+@media (max-width: 1279px) {
+  .layout--homepage-option-b .premium-site-header--reference-home {
+    --site-header-height: 72px;
+    height: 72px;
+    min-height: 72px;
+  }
+}
 .layout--homepage-option-b .premium-site-header--reference-home .premium-header-inner {
   width: min(calc(100% - 48px), 1360px);
   max-width: 1360px;
