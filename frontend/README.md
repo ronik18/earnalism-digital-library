@@ -1,5 +1,12 @@
 # Getting Started with Create React App
 
+## Canonical install
+
+The frontend uses npm and the committed `package-lock.json` is authoritative.
+From a clean checkout run `npm ci --legacy-peer-deps` in this directory. The
+build and test scripts resolve CRACO from the local dependency graph; no global
+CRACO installation is required.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
