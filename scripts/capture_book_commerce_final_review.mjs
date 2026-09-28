@@ -193,7 +193,7 @@ try { for (const state of states) { const context=await newContext(); captures.p
   }
  }
  const headingContext=await newContext(); const home=await headingContext.newPage(); await routes(home);
- const expectedHomeHeading=baseline ? "Read beautifully. Listen deeply." : "Come for a story. Stay a little longer.";
+ const expectedHomeHeading=baseline ? "Read beautifully. Listen deeply." : "A calmer place for timeless reading.";
  const expectedCommerceHeading=baseline ? "Buy time. Keep the story." : publicPaidCommerceEnabled ? "Read more. Live the stories." : "Reading Passes are not available in this launch.";
  await home.goto(`${baseUrl}/`,{waitUntil:"domcontentloaded"}); await settle(home);
  const homeHeading=(await home.locator("#reference-home-title").innerText()).replace(/\s+/g," ").trim();

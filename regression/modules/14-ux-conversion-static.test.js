@@ -62,6 +62,7 @@ describe("UX conversion static signals", () => {
   const home = read("frontend/src/pages/Home.jsx");
   const homeShelfArchitecture = read("frontend/src/components/HomeShelfArchitecture.jsx");
   const homeSurfaces = read("frontend/src/lib/homeSurfaces.js");
+  const editorialHomeSurface = read("frontend/src/components/EditorialHomeLibrarySurfaces.jsx");
   const homeCurationConfig = read("backend/data/home_hero_curation.json");
   const curatedShelfCollage = read("frontend/src/components/CuratedShelfCollage.jsx");
   const shelfCollageTile = read("frontend/src/components/ShelfCollageTile.jsx");
@@ -219,10 +220,24 @@ describe("UX conversion static signals", () => {
   ].join("\n");
 
   test("homepage exposes approved bilingual library positioning and release-truth CTAs", () => {
-    expect(home).toContain("fetchHomeHero");
-    expect(homeSurfaces).toContain('fetchPublicSurface("/home/hero"');
+    // The approved Option B homepage is editorial and locally rendered. Its
+    // only live home-surface request is optional, release-safe listening data.
+    expect(home).toContain("fetchHomeListening");
+    expect(home).not.toContain("fetchHomeHero");
     expect(homeSurfaces).toContain('fetchPublicSurface(`/home/listening?limit=${boundedLimit}`');
     expect(home).toContain("<ReferenceHomeSurface");
+    expect(editorialHomeSurface).toContain("A calmer place for<br />timeless reading.");
+    expect(editorialHomeSurface).toContain('<h1 id="reference-home-title">A calmer place for<br />timeless reading.</h1>');
+    expect(editorialHomeSurface).toContain("Explore the Library");
+    expect(editorialHomeSurface).toContain('aria-label="Explore the library by collection"');
+    expect(editorialHomeSurface).toContain("Bengali Classics");
+    expect(editorialHomeSurface).toContain("English Classics");
+    expect(editorialHomeSurface).toContain("Modern Favourites");
+    expect(editorialHomeSurface).toContain("Curated Collections");
+    expect(editorialHomeSurface).toContain("<ReaderPerspectives />");
+    expect(editorialHomeSurface).toContain('PUBLIC_AUDIO_EXPOSURE_ENABLED && Array.isArray(listeningItems)');
+    expect(editorialHomeSurface).toContain(".filter((book) => audiobookReleaseState(book).releaseApproved)");
+    expect(editorialHomeSurface).toContain("{listeningBooks.length > 0 && <section");
     expect(referencePublicPages).toContain("Enter the Library");
     expect(referencePublicPages).toContain("Discover listening");
     expect(referencePublicPages).toContain("Timeless Bengali and English classics.");
