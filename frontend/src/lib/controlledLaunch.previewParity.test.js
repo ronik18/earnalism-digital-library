@@ -1,5 +1,6 @@
 import {
   DRACULA_FALLBACK_BOOK,
+  PUBLIC_READER_RELEASED_SLUGS,
   canShowAudioCTA,
   canShowPreview,
   canShowStartReading,
@@ -28,6 +29,23 @@ function readerApprovedBook(slug = "reader-approved-edition") {
 }
 
 describe("controlled launch preview parity", () => {
+  test("allows the approved Sherlock text edition while keeping audio suppressed", () => {
+    const slug = "the-adventures-of-sherlock-holmes";
+    const book = {
+      ...readerApprovedBook(slug),
+      preview_enabled: true,
+      preview_url: `/reader/${slug}`,
+      chapters: [{ id: "sherlock-page-1", is_preview: true }],
+      audiobook_enabled: false,
+      audio_enabled: false,
+    };
+
+    expect(PUBLIC_READER_RELEASED_SLUGS).toContain(slug);
+    expect(canShowStartReading(book)).toBe(true);
+    expect(canShowPreview(book)).toBe(true);
+    expect(canShowAudioCTA(book)).toBe(false);
+  });
+
   test("holds reader access even when a stale client payload claims approval", () => {
     const book = readerApprovedBook("reader-approved-without-preview");
 
