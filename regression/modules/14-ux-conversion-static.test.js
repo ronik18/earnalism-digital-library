@@ -328,7 +328,8 @@ describe("UX conversion static signals", () => {
     expect(controlledLaunch).toContain("back_cover_image_url: DRACULA_BACK_COVER_IMAGE");
     expect(controlledLaunch).toContain("back_cover_url: DRACULA_BACK_COVER_IMAGE");
     expect(controlledLaunch).toContain("back_cover_thumbnail_url: DRACULA_BACK_COVER_IMAGE");
-    expect(staticSnapshotGenerator).toContain("book.cover_url || brandImage");
+    expect(staticSnapshotGenerator).toContain("const coverImage = book.cover_url ? absolute(book.cover_url) : brandImage;");
+    expect(staticSnapshotGenerator).toContain("image: coverImage");
     expect(bookDetail).toContain("publicBook?.cover_image_url");
     expect(bookDetail).toContain("mergeDraculaBook(book)");
     expect(useSeo).toContain("assets/books/dracula/dracula-front-cover.webp");
