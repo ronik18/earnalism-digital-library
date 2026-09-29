@@ -121,6 +121,7 @@ describe("UX conversion static signals", () => {
   const firstBatchMatrixCsv = read("FIRST_BATCH_REAL_SOURCE_MATRIX.csv");
   const firstBatchBackfillTemplate = read("FIRST_BATCH_REAL_SOURCE_BACKFILL_INPUT.template.json");
   const header = read("frontend/src/components/Header.jsx");
+  const publicNavigation = read("frontend/src/config/publicNavigation.js");
   const firstVisitSiteTour = read("frontend/src/components/FirstVisitSiteTour.jsx");
   const footer = read("frontend/src/components/Footer.jsx");
   const footerSocialLinks = read("frontend/src/components/FooterSocialLinks.jsx");
@@ -1536,8 +1537,11 @@ describe("UX conversion static signals", () => {
     expect(header).toContain("aria-expanded={open}");
     expect(header).toContain('aria-controls="mobile-menu"');
     expect(header).toContain('id="mobile-menu"');
-    expect(header).toContain("Bengali Classics");
-    expect(header).toContain("English Classics");
+    expect(header).toContain('import { PUBLIC_NAV_ITEMS, isPublicNavItemActive } from "../config/publicNavigation";');
+    const canonicalLabels = ["Home", "Library", "Bengali Classics", "English Classics", "Audiobooks", "Reading Pass", "About"];
+    const labelOffsets = canonicalLabels.map((label) => publicNavigation.indexOf(`label: "${label}"`));
+    expect(labelOffsets.every((offset) => offset >= 0)).toBe(true);
+    expect(labelOffsets).toEqual([...labelOffsets].sort((left, right) => left - right));
     expect(styles).toContain(".header-brand-cluster");
     expect(styles).toContain(".glass-header");
     expect(styles).toContain("rgba(255, 252, 244, 0.98)");

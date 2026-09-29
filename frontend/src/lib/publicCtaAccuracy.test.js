@@ -27,14 +27,14 @@ describe("public CTA accuracy contract", () => {
   const globalStyles = source("src/index.css");
 
   test("catalog destinations use browsing language instead of claiming that reading has started", () => {
-    expect(header).toContain('to="/library" className="reference-home-header-icon" aria-label="Search the library" data-testid="nav-search"');
+    expect(header).toContain('role="search" data-testid="nav-search"');
     expect(header).toContain('data-testid={isAuthed ? "nav-account" : "nav-sign-in"}');
     expect(header).toContain('data-testid="mobile-cta-library">Enter the Library');
     expect(hero).toContain('? "Enter the Library"');
     expect(hero).toContain('audiobooksDestination.includes("availability=approved-audiobook")');
     expect(hero).toContain('? "Enter the Listening Room"');
     expect(header).not.toContain('label: "Membership"');
-    expect(header).toContain('label: "Reading Passes"');
+    expect(header).toContain('PUBLIC_NAV_ITEMS');
   });
 
   test("home paths describe their exact language and release-gated destinations", () => {

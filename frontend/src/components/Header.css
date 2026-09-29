@@ -212,8 +212,6 @@
     height: calc(var(--site-header-height) * 0.74);
     max-width: min(34rem, 34vw);
     max-height: none;
-    transform: scale(1.3);
-    transform-origin: left center;
   }
 
   .premium-site-header--reference-home .brand-header-logo--wordmark {
@@ -228,8 +226,6 @@
     height: calc(var(--site-header-height) * 0.74);
     max-width: min(34rem, 34vw);
     max-height: none;
-    transform: scale(1.3);
-    transform-origin: left center;
     object-fit: contain;
   }
 
@@ -322,8 +318,6 @@
     height: calc(var(--site-header-height) - 0.55rem);
     max-width: min(21rem, calc(100vw - 4.8rem));
     max-height: none;
-    transform: scale(1.12);
-    transform-origin: left center;
   }
   .premium-site-header .brand-header-logo__base { font-size: 1.22rem; }
   .premium-site-header .brand-header-logo__inserted-l { font-size: 1.18rem; }
@@ -332,85 +326,6 @@
   .premium-site-header .brand-header-logo__venture { display: none; }
   .premium-site-header .brand-header-logo__badge { width: 2rem; height: 2rem; }
   .premium-site-header .brand-header-logo__india-flag { width: 1.08rem; height: 0.73rem; }
-}
-
-/* A mobile route chooser is a real modal surface, never a short floating
-   sheet. Its scope stays inside the shared public header so account and
-   editorial routes retain their own approved desktop treatments. */
-@media (max-width: 1279px) {
-  .premium-site-header .mobile-menu-overlay {
-    position: fixed;
-    z-index: 80;
-    inset: var(--site-header-height) 0 0;
-    display: block;
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    border: 0;
-    background: rgba(23, 9, 14, .985);
-    color: #f6ead7;
-  }
-
-  .premium-site-header .mobile-menu-overlay__content {
-    position: relative;
-    display: flex;
-    min-height: 100%;
-    flex-direction: column;
-    padding: 5.5rem 1.5rem max(2rem, env(safe-area-inset-bottom));
-  }
-
-  .premium-site-header .mobile-menu-overlay__close {
-    position: absolute;
-    top: .85rem;
-    right: 1rem;
-    display: grid;
-    width: 44px;
-    height: 44px;
-    place-items: center;
-    border: 1px solid rgba(235, 205, 132, .3);
-    border-radius: .5rem;
-    background: rgba(255, 248, 233, .05);
-    color: #f6ead7;
-  }
-
-  .premium-site-header .mobile-menu-overlay__content > a,
-  .premium-site-header .mobile-menu-overlay__content .mobile-menu-overlay__cta {
-    display: flex;
-    min-height: 52px;
-    align-items: center;
-    border-bottom: 1px solid rgba(235, 205, 132, .2);
-    color: #f6ead7;
-    font: 500 1.05rem/1.2 var(--font-body, Outfit, sans-serif);
-    letter-spacing: .01em !important;
-    text-decoration: none;
-  }
-
-  .premium-site-header .mobile-menu-overlay__content .mobile-menu-overlay__cta {
-    justify-content: center;
-    margin-top: 2rem;
-    border: 1px solid #dfb85a;
-    border-radius: .45rem;
-    background: #dfb85a;
-    color: #240c14;
-    font-weight: 700;
-  }
-
-  .premium-site-header .mobile-menu-overlay__socials {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: .75rem;
-    margin-top: auto;
-    padding-top: 2rem;
-  }
-
-  .premium-site-header .mobile-menu-overlay__social-link {
-    flex: 0 0 44px;
-    width: 44px;
-    min-width: 44px;
-    height: 44px;
-    min-height: 44px;
-  }
 }
 
 /* One route-neutral public-header contract. Route classes select only the
@@ -524,7 +439,7 @@
 /* The public premium header is opaque. Below the desktop breakpoint its
    historical glass blur creates a fixed-position containing block, which
    collapses the mobile dialog against the header instead of the viewport. */
-@media (max-width: 1279px) {
+@media (max-width: 1359px) {
   .premium-site-header.glass-header {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
@@ -571,4 +486,201 @@
   .premium-header-inner { padding-inline: clamp(1.5rem, 3.25vw, 3.5rem) !important; gap: 1.5rem !important; }
   .premium-site-header .earnalism-brand-lockup { width: clamp(18rem, 20vw, 20rem); }
   .premium-header-nav { display: flex !important; flex: 1 1 auto; justify-content: flex-end; }
+}
+
+/* A mobile route chooser is a real modal surface, never a short floating
+   sheet. Its scope stays inside the shared public header so account and
+   editorial routes retain their own approved desktop treatments. */
+@media (max-width: 1359px) {
+  .premium-site-header .mobile-menu-overlay {
+    position: fixed;
+    z-index: 80;
+    inset: var(--site-header-height) 0 0;
+    display: block;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border: 0;
+    background: rgba(23, 9, 14, .985);
+    color: #f6ead7;
+  }
+
+  .premium-site-header .mobile-menu-overlay__content {
+    position: relative;
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    padding: 5.5rem 1.5rem max(2rem, env(safe-area-inset-bottom));
+  }
+
+  .premium-site-header .mobile-menu-overlay__close {
+    position: absolute;
+    top: .85rem;
+    right: 1rem;
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    border: 1px solid rgba(235, 205, 132, .3);
+    border-radius: .5rem;
+    background: rgba(255, 248, 233, .05);
+    color: #f6ead7;
+  }
+
+  .premium-site-header .mobile-menu-overlay__content > a,
+  .premium-site-header .mobile-menu-overlay__content .mobile-menu-overlay__cta {
+    display: flex;
+    min-height: 52px;
+    align-items: center;
+    border-bottom: 1px solid rgba(235, 205, 132, .2);
+    color: #f6ead7;
+    font: 500 1.05rem/1.2 var(--font-body, Outfit, sans-serif);
+    letter-spacing: .01em !important;
+    text-decoration: none;
+  }
+
+  .premium-site-header .mobile-menu-overlay__content .mobile-menu-overlay__cta {
+    justify-content: center;
+    margin-top: 2rem;
+    border: 1px solid #dfb85a;
+    border-radius: .45rem;
+    background: #dfb85a;
+    color: #240c14;
+    font-weight: 700;
+  }
+
+  .premium-site-header .mobile-menu-overlay__socials {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: .75rem;
+    margin-top: auto;
+    padding-top: 2rem;
+  }
+
+  .premium-site-header .mobile-menu-overlay__social-link {
+    flex: 0 0 44px;
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    min-height: 44px;
+  }
+}
+
+/* The customer header shares one route model, search field, and identity size. */
+.premium-site-header {
+  --site-header-height: 5.75rem;
+}
+
+.premium-site-header .premium-header-inner {
+  display: flex;
+  height: var(--site-header-height) !important;
+  min-height: var(--site-header-height) !important;
+  padding-inline: clamp(1rem, 3.25vw, 3.5rem) !important;
+  gap: clamp(0.75rem, 1.5vw, 1.5rem) !important;
+}
+
+.premium-site-header .header-brand-cluster {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  width: auto;
+  min-width: 0;
+}
+
+.premium-site-header .earnalism-brand-lockup--desktop-header {
+  width: clamp(15rem, 18.5vw, 16.75rem);
+  max-width: none;
+}
+
+.premium-site-header .earnalism-brand-lockup img {
+  width: 100%;
+  height: auto;
+  max-width: none;
+  transform: none;
+}
+
+.premium-site-header .premium-header-nav--desktop {
+  display: none;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(0.45rem, 0.78vw, 0.75rem) !important;
+  min-width: 0;
+}
+
+.premium-site-header .premium-header-nav--desktop > a {
+  padding-inline: 0.25rem;
+  font-size: clamp(0.94rem, 1.08vw, 1.03rem) !important;
+}
+
+.premium-site-header .premium-header-nav--desktop .premium-header-search {
+  display: flex;
+  flex: 0 1 13.5rem;
+  min-width: 10.5rem;
+  height: 2.5rem;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: clamp(0.25rem, 0.65vw, 0.65rem);
+  padding: 0 0.75rem;
+  border: 1px solid #d9cbbd;
+  border-radius: 1.25rem;
+  color: #641f27;
+  background: #fbf7f0;
+}
+
+.premium-header-search input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  color: #251814;
+  background: transparent;
+  font: 400 0.84rem/1.2 var(--font-ui, Outfit, sans-serif);
+}
+
+.premium-header-search input::placeholder { color: #766960; opacity: 1; }
+.premium-header-search:focus-within { outline: 3px solid #b98855; outline-offset: 2px; }
+
+.premium-site-header .premium-header-nav--desktop .premium-header-account {
+  min-width: max-content;
+  gap: 0.35rem;
+  padding-inline: 0.35rem;
+}
+
+.premium-site-header .premium-mobile-search,
+.premium-site-header .premium-mobile-menu-toggle { display: inline-flex; }
+
+.premium-site-header .mobile-menu-overlay__content > a {
+  font-size: 1.1rem;
+}
+
+@media (min-width: 768px) {
+  .premium-site-header { --site-header-height: 5.25rem; }
+  .premium-site-header .earnalism-brand-lockup--desktop-header { width: clamp(12.8rem, 20vw, 14.4rem); }
+}
+
+@media (min-width: 1280px) and (max-width: 1359px) {
+  .premium-site-header { --site-header-height: 5.75rem; }
+  .premium-site-header .earnalism-brand-lockup--desktop-header { width: clamp(15rem, 18.5vw, 16.75rem); }
+}
+
+@media (min-width: 1360px) {
+  .premium-site-header { --site-header-height: 5.75rem; }
+  .premium-site-header .premium-header-nav--desktop { display: flex; }
+  .premium-site-header .premium-mobile-search,
+  .premium-site-header .premium-mobile-menu-toggle { display: none; }
+  .premium-site-header .earnalism-brand-lockup--desktop-header { width: clamp(15rem, 18.5vw, 16.75rem); }
+}
+
+@media (max-width: 767px) {
+  .premium-site-header { --site-header-height: 4.5rem; }
+  .premium-site-header .premium-header-inner { padding-inline: 1rem !important; gap: 0.5rem !important; }
+  .premium-site-header .earnalism-brand-lockup--desktop-header { width: min(11.75rem, calc(100vw - 11rem)); }
+  .premium-site-header .premium-mobile-search,
+  .premium-site-header .premium-mobile-menu-toggle { min-width: 44px; min-height: 44px; }
+}
+
+@media (max-width: 1359px) {
+  .premium-site-header .premium-header-nav--desktop { display: none !important; }
 }

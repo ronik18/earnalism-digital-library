@@ -1,4 +1,5 @@
 import React, { act } from "react";
+jest.mock("react-router-dom", () => ({ Link: ({ to, children, ...props }) => <a href={to} {...props}>{children}</a> }), { virtual: true });
 import { createRoot } from "react-dom/client";
 import ReaderExperienceV2, { READER_V2_FIXTURE } from "./ReaderExperienceV2";
 import { READER_SETTINGS_STORAGE_KEY } from "../../lib/readerSettings";

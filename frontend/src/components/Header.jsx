@@ -16,25 +16,8 @@ import { useSettings } from "../context/SettingsContext";
 import { useAuth } from "../context/AuthContext";
 import EarnalismBrandLockup from "./EarnalismBrandLockup";
 import { getEnabledSocialLinks } from "../config/socialLinks";
+import { PUBLIC_NAV_ITEMS, isPublicNavItemActive } from "../config/publicNavigation";
 import "./Header.css";
-
-const NAV = [
-  { to: "/", label: "Home" },
-  { to: "/library", label: "Library" },
-  { to: "/library?language=bn&availability=reader-ready", label: "Bengali Classics" },
-  { to: "/library?language=en", label: "English Classics" },
-  { to: "/library?availability=approved-audiobook", label: "Audiobooks" },
-  { to: "/pricing", label: "Reading Passes" },
-  { to: "/about", label: "About" },
-];
-
-const HOME_NAV = [
-  { to: "/library", label: "Books" },
-  { to: "/library?sort=author", label: "Authors" },
-  { to: "/library#library-collection", label: "Collections" },
-  { to: "/pricing", label: "Reading Pass" },
-  { to: "/about", label: "About" },
-];
 
 const SOCIAL_ICONS = {
   email: Mail,
@@ -44,17 +27,6 @@ const SOCIAL_ICONS = {
   x: Twitter,
   youtube: Youtube,
 };
-
-function isNavItemActive(item, location) {
-  const pathname = location.pathname.replace(/\/+$/, "") || "/";
-  if (item.to.includes("sort=author")) return pathname === "/library" && new URLSearchParams(location.search).get("sort") === "author";
-  if (item.to.includes("#library-collection")) return pathname === "/library" && location.hash === "#library-collection";
-  if (item.to === "/library") return pathname === "/library" && !location.search;
-  if (item.to.includes("language=bn")) return pathname === "/library" && location.search.includes("language=bn");
-  if (item.to.includes("language=en")) return pathname === "/library" && location.search.includes("language=en") && !location.search.includes("language=bn");
-  if (item.to.includes("approved-audiobook")) return pathname === "/library" && location.search.includes("approved-audiobook");
-  return pathname === item.to;
-}
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -145,56 +117,41 @@ export default function Header() {
           </Link>
         </div>
 
-        <nav
-          className="premium-header-nav hidden xl:flex items-center gap-4 2xl:gap-6"
-          aria-label="Primary navigation"
-        >
-          {(usesHomeOptionBShell ? HOME_NAV : NAV).map((n) => (
+        <nav className="premium-header-nav premium-header-nav--desktop items-center" aria-label="Primary navigation">
+          {PUBLIC_NAV_ITEMS.map((n) => (
             <Link
-              key={n.to || n.key}
+              key={n.key}
               to={n.to}
               data-testid={`nav-${n.label.toLowerCase().replace(/\s/g, '-')}`}
-              className={`tracking-[0.12em] transition-colors whitespace-nowrap ${isNavItemActive(n, loc) ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`}
-              aria-current={isNavItemActive(n, loc) ? "page" : undefined}
+              className={`tracking-[0.12em] transition-colors whitespace-nowrap ${isPublicNavItemActive(n, loc) ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`}
+              aria-current={isPublicNavItemActive(n, loc) ? "page" : undefined}
             >
               {n.label}
             </Link>
           ))}
-          {usesHomeOptionBShell ? (
-            <form className="home-option-b-search" role="search" onSubmit={(event) => {
-              event.preventDefault();
-              const query = searchQuery.trim();
-              navigate(query ? `/library?q=${encodeURIComponent(query)}` : "/library");
-            }}>
-              <Search size={16} strokeWidth={1.6} aria-hidden="true" />
-              <input aria-label="Search books, authors, topics" placeholder="Search books, authors, topics..." value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} />
-            </form>
-          ) : (
-            <Link to="/library" className="reference-home-header-icon" aria-label="Search the library" data-testid="nav-search">
-              <Search size={20} strokeWidth={1.55} aria-hidden="true" />
-            </Link>
-          )}
-          {!usesHomeOptionBShell && (
-            <NavLink
-              to={accountHref}
-              data-testid={isAuthed ? "nav-account" : "nav-sign-in"}
-              className={({ isActive }) =>
-                `tracking-[0.12em] transition-colors whitespace-nowrap ${isActive ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`
-              }
-            >
-              <UserRound size={17} strokeWidth={1.55} aria-hidden="true" />
-              <span>{accountLabel}</span>
-            </NavLink>
-          )}
+          <form className="premium-header-search" role="search" data-testid="nav-search" onSubmit={(event) => {
+            event.preventDefault();
+            const query = searchQuery.trim();
+            navigate(query ? `/library?q=${encodeURIComponent(query)}` : "/library");
+          }}>
+            <Search size={16} strokeWidth={1.6} aria-hidden="true" />
+            <input aria-label="Search books, authors, topics" placeholder="Search books, authors, topics..." value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} />
+          </form>
+          <NavLink
+            to={accountHref}
+            data-testid={isAuthed ? "nav-account" : "nav-sign-in"}
+            className={({ isActive }) =>
+              `premium-header-account transition-colors whitespace-nowrap ${isActive ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`
+            }
+          >
+            <UserRound size={17} strokeWidth={1.55} aria-hidden="true" />
+            <span>{accountLabel}</span>
+          </NavLink>
         </nav>
-
-        {usesHomeOptionBShell && (
-          <Link to={accountHref} className="home-option-b-auth" data-testid={isAuthed ? "nav-account-cta" : "nav-sign-in-cta"}>{accountLabel}</Link>
-        )}
 
         <Link
           to="/library"
-          className="xl:hidden inline-flex min-h-11 min-w-11 items-center justify-center p-2 text-burgundy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-burgundy"
+          className="premium-mobile-search inline-flex min-h-11 min-w-11 items-center justify-center p-2 text-burgundy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-burgundy"
           aria-label="Search the library"
           data-testid="mobile-header-search"
         >
@@ -207,7 +164,7 @@ export default function Header() {
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => (open ? closeMenu() : setOpen(true))}
-          className="xl:hidden inline-flex min-h-11 min-w-11 items-center justify-center p-2 -mr-2 text-burgundy"
+          className="premium-mobile-menu-toggle inline-flex min-h-11 min-w-11 items-center justify-center p-2 -mr-2 text-burgundy"
           data-testid="mobile-menu-toggle"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
@@ -215,17 +172,16 @@ export default function Header() {
       </div>
 
       {open && (
-        <div ref={menuRef} id="mobile-menu" className="mobile-menu-overlay xl:hidden" data-testid="mobile-menu" role="dialog" aria-modal="true" aria-label="Primary navigation">
+        <div ref={menuRef} id="mobile-menu" className="mobile-menu-overlay" data-testid="mobile-menu" role="dialog" aria-modal="true" aria-label="Primary navigation">
           <div className="mobile-menu-overlay__content">
             <button type="button" className="mobile-menu-overlay__close" onClick={() => closeMenu()} aria-label="Close menu"><X size={22} aria-hidden="true" /></button>
-            {(usesHomeOptionBShell ? HOME_NAV : NAV).map((n) => (
+            {PUBLIC_NAV_ITEMS.map((n) => (
               <Link
-                key={n.to}
+                key={n.key}
                 to={n.to}
-                end={n.to === "/"}
                 data-testid={`mobile-nav-${n.label.toLowerCase().replace(/\s/g, '-')}`}
-                className={() => `py-4 text-[0.95rem] tracking-wide border-b border-brand-soft ${isNavItemActive(n, loc) ? "text-burgundy" : "text-charcoal"}`}
-                aria-current={isNavItemActive(n, loc) ? "page" : undefined}
+                className={`py-4 text-[0.95rem] tracking-wide border-b border-brand-soft ${isPublicNavItemActive(n, loc) ? "text-burgundy" : "text-charcoal"}`}
+                aria-current={isPublicNavItemActive(n, loc) ? "page" : undefined}
               >
                 {n.label}
               </Link>
@@ -240,7 +196,6 @@ export default function Header() {
               {accountLabel}
             </NavLink>
             <Link to="/library" className="mobile-menu-overlay__cta" data-testid="mobile-cta-library">Enter the Library</Link>
-
             {activeSocials.length > 0 && (
               <nav className="mobile-menu-overlay__socials" aria-label="Earnalism social links" data-testid="mobile-socials">
                 {activeSocials.map(({ id, ariaLabel, external, Icon, url }) => (

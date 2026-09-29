@@ -2,23 +2,25 @@ import fs from "fs";
 import path from "path";
 
 const source = fs.readFileSync(path.join(process.cwd(), "src/components/Header.jsx"), "utf8");
+const navigation = fs.readFileSync(path.join(process.cwd(), "src/config/publicNavigation.js"), "utf8");
 const styles = fs.readFileSync(path.join(process.cwd(), "src/components/Header.css"), "utf8");
 const globalStyles = fs.readFileSync(path.join(process.cwd(), "src/index.css"), "utf8");
 
 describe("premium header navigation", () => {
   test("uses only valid application routes and approved library filters", () => {
-    expect(source).toContain('{ to: "/library", label: "Library" }');
-    expect(source).toContain('label: "Bengali Classics"');
-    expect(source).toContain('label: "English Classics"');
-    expect(source).toContain('{ to: "/library?availability=approved-audiobook", label: "Audiobooks" }');
-    expect(source).toContain('{ to: "/pricing", label: "Reading Passes" }');
-    expect(source).toContain('{ to: "/about", label: "About" }');
+    expect(navigation).toContain('{ key: "home", to: "/", label: "Home" }');
+    expect(navigation).toContain('{ key: "library", to: "/library", label: "Library" }');
+    expect(navigation).toContain('{ key: "bengali", to: "/library?language=bn&availability=reader-ready", label: "Bengali Classics" }');
+    expect(navigation).toContain('{ key: "english", to: "/library?language=en", label: "English Classics" }');
+    expect(navigation).toContain('{ key: "audiobooks", to: "/library?availability=approved-audiobook", label: "Audiobooks" }');
+    expect(navigation).toContain('{ key: "reading-pass", to: "/pricing", label: "Reading Pass" }');
+    expect(navigation).toContain('{ key: "about", to: "/about", label: "About" }');
     expect(source).toContain('const accountHref = isAuthed ? "/account" : "/login"');
     expect(source).not.toMatch(/href=["']#|to=["']#|javascript:/i);
   });
 
-  test("uses Search plus Sign In or Account on desktop and retains the Library CTA in the mobile menu", () => {
-    expect(source).toContain('data-testid="nav-search"');
+  test("uses the canonical nav, one search interaction, and Sign In or Account", () => {
+    expect(source).toContain('role="search" data-testid="nav-search"');
     expect(source).toContain('const accountHref = isAuthed ? "/account" : "/login"');
     expect(source).toContain('data-testid={isAuthed ? "nav-account" : "nav-sign-in"}');
     expect(source).not.toContain('data-testid="header-cta-library"');
@@ -43,21 +45,21 @@ describe("premium header navigation", () => {
 
   test("uses one readable public-header contract instead of the obsolete tiny route cascade", () => {
     expect(styles).toContain("One route-neutral public-header contract");
-    expect(styles).toContain("font-size: 0.9375rem !important;");
+    expect(styles).toContain("font-size: clamp(0.94rem, 1.08vw, 1.03rem) !important;");
     expect(styles).toContain("line-height: 1.35;");
     expect(styles).toContain("min-height: 2.75rem;");
     expect(styles).toContain("min-width: 2.75rem;");
     expect(styles).toContain("height: 3px;");
-    expect(styles).toContain("@media (min-width: 1280px)");
-    expect(styles).toContain("--site-header-height: 5.5rem;");
-    expect(styles).toContain("width: clamp(18rem, 20vw, 20rem);");
+    expect(styles).toContain("@media (min-width: 1360px)");
+    expect(styles).toContain("--site-header-height: 5.75rem;");
+    expect(styles).toContain("width: clamp(15rem, 18.5vw, 16.75rem);");
     expect(styles).toContain("background: var(--brand-lockup-paper, #fff9ee);");
     expect(styles).toContain("font: 600 1rem/1.35 var(--font-ui, Outfit, sans-serif);");
     expect(styles).toContain("min-height: 52px;");
     expect(styles).not.toContain("font-size: clamp(.56rem, .58vw, .66rem) !important;");
     expect(styles).not.toContain("font-size:.78rem !important;");
     expect(styles).not.toContain("--site-header-height: 2.8rem;");
-    expect(globalStyles).toContain("--site-header-height: 3.6rem;");
+    expect(globalStyles).toContain("--site-header-height: 4.5rem;");
   });
 
   test("keeps mobile social controls focusable, non-shrinking, and able to wrap", () => {

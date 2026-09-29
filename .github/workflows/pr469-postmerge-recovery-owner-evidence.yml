@@ -8,6 +8,10 @@ on:
       - frontend/src/pages/Home.newsletter.test.jsx
       - frontend/src/pages/Library.test.jsx
       - frontend/src/components/EditorialHomeLibrarySurfaces.jsx
+      - frontend/src/components/Header.jsx
+      - frontend/src/components/Header.css
+      - frontend/src/components/EarnalismBrandLockup.css
+      - frontend/src/config/publicNavigation.js
       - frontend/src/components/AuthPageShell.jsx
       - frontend/src/pages/Login.jsx
       - frontend/src/pages/Signup.jsx
@@ -19,8 +23,12 @@ on:
       - frontend/src/experiences-v2/reader/ReaderExperienceV2.jsx
       - frontend/src/experiences-v2/reader/reader-v2.css
       - frontend/src/experiences-v2/reader/ReaderExperienceV2.render.test.jsx
+      - frontend/src/experiences-v2/shared/ExperienceHeader.jsx
+      - frontend/src/experiences-v2/shared/experiences-v2.css
+      - frontend/src/experiences-v2/listener/listener-v2.css
       - scripts/test_library_catalogue_recovery_journey.mjs
       - scripts/capture_pr469_postmerge_recovery_states.mjs
+      - scripts/capture_pr471_canonical_header_matrix.mjs
       - scripts/package_pr469_postmerge_owner_review.py
       - .github/workflows/pr469-postmerge-recovery-owner-evidence.yml
 
@@ -105,6 +113,7 @@ jobs:
           curl -fsS http://127.0.0.1:13022/ >/dev/null
           SEAMLESS_BRAND_TEST_BASE_URL=http://127.0.0.1:13022 node scripts/test_library_catalogue_recovery_journey.mjs
           node scripts/capture_pr469_postmerge_recovery_states.mjs
+          HEADER_REVIEW_BASE_URL=http://127.0.0.1:13022 HEADER_REVIEW_OUTPUT="$RUNNER_TEMP/pr471-canonical-header" node scripts/capture_pr471_canonical_header_matrix.mjs
           python3 scripts/package_pr469_postmerge_owner_review.py \
             --prior "$PR469_BASELINE_ROOT" \
             --library "$LIBRARY_RECOVERY_EVIDENCE_OUTPUT" \
@@ -122,4 +131,11 @@ jobs:
         with:
           name: pr${{ github.event.pull_request.number }}-postmerge-recovery-owner-review-${{ github.event.pull_request.head.sha }}
           path: ${{ runner.temp }}/pr469-postmerge-owner-review/**
+          if-no-files-found: error
+
+      - name: Publish canonical navigation exact-head screenshots
+        uses: actions/upload-artifact@v7
+        with:
+          name: pr${{ github.event.pull_request.number }}-canonical-header-review-${{ github.event.pull_request.head.sha }}
+          path: ${{ runner.temp }}/pr471-canonical-header/**
           if-no-files-found: error
