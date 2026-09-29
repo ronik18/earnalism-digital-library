@@ -15,6 +15,25 @@ const books = [
   { slug: "a-ghost-story", title: "A Ghost Story", title_en: "A Ghost Story", author: "Mark Twain", language: "en", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/a-ghost-story", reader_url: "/reader/a-ghost-story", preview_enabled: true, preview_url: "/reader/a-ghost-story", chapters: [{ id: "ghost-story-page-1", is_preview: true }], audiobook_enabled: false },
 ];
 
+function collectDiagnostics(page) {
+  const consoleErrors = [];
+  const requestErrors = [];
+  page.on("pageerror", (error) => consoleErrors.push(error.message));
+  page.on("console", (message) => {
+    if (message.type() === "error" && !/Failed to load resource/i.test(message.text())) consoleErrors.push(message.text());
+  });
+  page.on("requestfailed", (request) => {
+    if (new URL(request.url()).pathname.endsWith("/books")) return; // Controlled API failures exercise the error/retry state.
+    requestErrors.push({ url: request.url(), error: request.failure()?.errorText || "unknown" });
+  });
+  return { consoleErrors, requestErrors };
+}
+
+function assertNoRuntimeDefects(diagnostics, label) {
+  assert.deepEqual(diagnostics.consoleErrors, [], `${label}: console/runtime errors`);
+  assert.deepEqual(diagnostics.requestErrors, [], `${label}: unexpected failed requests`);
+}
+
 async function installCatalogueFixture(page, outcomes) {
   let requestCount = 0;
   let releasePendingFailure;
@@ -40,11 +59,12 @@ async function installCatalogueFixture(page, outcomes) {
 
 async function openScenario(context, outcome, viewport) {
   const page = await context.newPage();
+  const diagnostics = collectDiagnostics(page);
   await page.setViewportSize(viewport);
   const fixture = await installCatalogueFixture(page, [outcome]);
   await page.goto(`${baseUrl.replace(/\/$/, "")}/library?language=en&availability=reader-ready&sort=title`, { waitUntil: "domcontentloaded" });
   await page.getByTestId("library-reference-surface").waitFor();
-  return { page, fixture };
+  return { page, fixture, diagnostics };
 }
 
 async function assertError(page, label) {
@@ -97,7 +117,7 @@ async function testInitialStates(context) {
   ];
   const results = [];
   for (const [id, outcome, expectsError, expectsEmpty] of cases) {
-    const { page } = await openScenario(context, outcome, { width: 1024, height: 768 });
+    const { page, diagnostics } = await openScenario(context, outcome, { width: 1024, height: 768 });
     await waitForCatalogueState(page, id === "success" ? "success" : expectsError ? "error" : "empty");
     if (expectsError) await assertError(page, id);
     else assert.equal(await page.getByTestId("library-catalogue-error").count(), 0, `${id}: error notice should not render`);
@@ -108,6 +128,7 @@ async function testInitialStates(context) {
     }
     if (id === "success") await page.getByTestId("reference-book-a-ghost-story").waitFor();
     results.push({ id, geometry: await assertNoDocumentOverflow(page, id) });
+    assertNoRuntimeDefects(diagnostics, id);
     if (["success", "rejected", "malformed", "empty"].includes(id)) {
       await page.screenshot({ path: path.join(output, `library-${id === "rejected" ? "error" : id}-1024.png`), fullPage: true });
     }
@@ -118,6 +139,7 @@ async function testInitialStates(context) {
 
 async function testLoadingAndNoResults(context) {
   const loading = await context.newPage();
+  const loadingDiagnostics = collectDiagnostics(loading);
   await loading.setViewportSize({ width: 1440, height: 900 });
   const pending = await installCatalogueFixture(loading, ["pending-failure"]);
   await loading.goto(`${baseUrl.replace(/\/$/, "")}/library?language=en&availability=reader-ready&sort=title`, { waitUntil: "domcontentloaded" });
@@ -127,15 +149,18 @@ async function testLoadingAndNoResults(context) {
   await waitForCatalogueState(loading, "error");
   await assertError(loading, "1440px loading completion");
   const loadingGeometry = await assertNoDocumentOverflow(loading, "1440px error");
+  assertNoRuntimeDefects(loadingDiagnostics, "loading to error");
   await loading.screenshot({ path: path.join(output, "library-error-1440.png"), fullPage: true });
   await loading.close();
 
   const noResults = await context.newPage();
+  const noResultsDiagnostics = collectDiagnostics(noResults);
   await noResults.setViewportSize({ width: 1024, height: 768 });
   await installCatalogueFixture(noResults, ["success"]);
   await noResults.goto(`${baseUrl.replace(/\/$/, "")}/library?language=en&q=earnalism-no-result-9f3b&sort=title`, { waitUntil: "domcontentloaded" });
   await noResults.getByTestId("library-no-results").waitFor();
   const noResultsGeometry = await assertNoDocumentOverflow(noResults, "1024px no results");
+  assertNoRuntimeDefects(noResultsDiagnostics, "no results");
   await noResults.screenshot({ path: path.join(output, "library-no-results-1024.png"), fullPage: true });
   await noResults.close();
   return { loading_geometry: loadingGeometry, no_results_geometry: noResultsGeometry };
@@ -143,6 +168,7 @@ async function testLoadingAndNoResults(context) {
 
 async function testKeyboardRetryAndRecovery(context, viewport) {
   const page = await context.newPage();
+  const diagnostics = collectDiagnostics(page);
   await page.setViewportSize(viewport);
   const fixture = await installCatalogueFixture(page, ["reject", "pending-failure", "success"]);
   const initialUrl = "/library?language=en&availability=reader-ready&sort=title";
@@ -181,6 +207,7 @@ async function testKeyboardRetryAndRecovery(context, viewport) {
   assert.equal(recoveredSearch.get("sort"), "title", `${viewport.width}px recovery: sort changed`);
   assert.equal(recoveredSearch.get("q"), "A Ghost Story", `${viewport.width}px recovery: search query changed`);
   const geometry = await assertNoDocumentOverflow(page, `${viewport.width}px recovery`);
+  assertNoRuntimeDefects(diagnostics, `${viewport.width}px retry and recovery`);
   await page.screenshot({ path: path.join(output, `library-recovery-${viewport.width}.png`), fullPage: true });
   await page.close();
   return { viewport, request_count: fixture.count(), keyboard_activation: { focus: "Tab traversal", key: "Enter", initial_tab_steps: tabSteps, recovery_tab_steps: recoveryTabSteps }, geometry, result: "PASS" };

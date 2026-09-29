@@ -11,7 +11,7 @@ const root = process.cwd();
 const validator = path.join(root, "scripts/validate_seamless_brand_final_evidence_inputs.py");
 const temp = fs.mkdtempSync(path.join(os.tmpdir(), "issue380-final-inputs-"));
 const currentRecord = DEFAULT_LIBRARY_INTERACTION_BASELINE;
-const currentHash = "9383db9e233be96bff8426e39a55f51a3b0aa441b3b26176f14df5af66e52f93";
+const currentHash = "b67f6a9d6011dcf6edd20da407216074b14c65b4990c0aecc147d878642a3adf";
 const sha = (file) => crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
 const head = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
 const stateCount = JSON.parse(fs.readFileSync(path.join(root, "docs/design-system/seamless-brand-state-manifest.json"), "utf8")).states.length;
@@ -89,9 +89,9 @@ const invalid = (mutate) => {
 };
 
 test("valid exact-head input set passes", () => { make(); run(); });
-test("active PR468 Library baseline is the canonical reproduced current surface", () => {
+test("active PR469 post-merge Library recovery baseline is the canonical reproduced current surface", () => {
   const baseline = compareLibraryInteractionBaseline(root);
-  assert.equal(currentRecord, "docs/design-system/pr468-listening-room-homepage-library-interaction-baseline.json");
+  assert.equal(currentRecord, "docs/design-system/pr469-postmerge-library-recovery-baseline.json");
   assert.equal(baseline.result, "PASS");
   assert.equal(baseline.expected_surface_sha256, currentHash);
   assert.equal(baseline.observed_surface_sha256, currentHash);
