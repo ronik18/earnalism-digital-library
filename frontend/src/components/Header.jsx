@@ -16,7 +16,7 @@ import { useSettings } from "../context/SettingsContext";
 import { useAuth } from "../context/AuthContext";
 import EarnalismBrandLockup from "./EarnalismBrandLockup";
 import { getEnabledSocialLinks } from "../config/socialLinks";
-import { PUBLIC_NAV_ITEMS, isPublicNavItemActive } from "../config/publicNavigation";
+import { getPublicNavItems, isPublicNavItemActive } from "../config/publicNavigation";
 import "./Header.css";
 
 const SOCIAL_ICONS = {
@@ -56,6 +56,7 @@ export default function Header() {
   const usesLibraryReferenceShell = loc.pathname === "/library";
   const usesCommerceReferenceShell = loc.pathname === "/pricing";
   const usesProfileMobileShell = loc.pathname === "/account";
+  const navigationItems = getPublicNavItems(loc);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -118,7 +119,7 @@ export default function Header() {
         </div>
 
         <nav className="premium-header-nav premium-header-nav--desktop items-center" aria-label="Primary navigation">
-          {PUBLIC_NAV_ITEMS.map((n) => (
+          {navigationItems.map((n) => (
             <Link
               key={n.key}
               to={n.to}
@@ -175,7 +176,7 @@ export default function Header() {
         <div ref={menuRef} id="mobile-menu" className="mobile-menu-overlay" data-testid="mobile-menu" role="dialog" aria-modal="true" aria-label="Primary navigation">
           <div className="mobile-menu-overlay__content">
             <button type="button" className="mobile-menu-overlay__close" onClick={() => closeMenu()} aria-label="Close menu"><X size={22} aria-hidden="true" /></button>
-            {PUBLIC_NAV_ITEMS.map((n) => (
+            {navigationItems.map((n) => (
               <Link
                 key={n.key}
                 to={n.to}

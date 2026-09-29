@@ -8,6 +8,9 @@ const globalStyles = fs.readFileSync(path.join(process.cwd(), "src/index.css"), 
 
 describe("premium header navigation", () => {
   test("uses only valid application routes and approved library filters", () => {
+    expect(navigation).toContain('{ key: "books", to: "/library", label: "Books" }');
+    expect(navigation).toContain('{ key: "authors", to: "/library?sort=author", label: "Authors" }');
+    expect(navigation).toContain('{ key: "collections", to: "/library#library-collection", label: "Collections" }');
     expect(navigation).toContain('{ key: "home", to: "/", label: "Home" }');
     expect(navigation).toContain('{ key: "library", to: "/library", label: "Library" }');
     expect(navigation).toContain('{ key: "bengali", to: "/library?language=bn&availability=reader-ready", label: "Bengali Classics" }');
@@ -26,6 +29,7 @@ describe("premium header navigation", () => {
     expect(source).not.toContain('data-testid="header-cta-library"');
     expect(source.match(/data-testid="header-cta-library"/g) || []).toHaveLength(0);
     expect(source).toContain('data-testid="mobile-header-search"');
+    expect(source).toContain("getPublicNavItems(loc)");
     expect(source).toContain('data-testid="mobile-menu-toggle"');
     expect(source).toContain('data-testid="mobile-cta-library">Enter the Library');
     expect(source).toContain('className="mobile-menu-overlay__cta" data-testid="mobile-cta-library"');

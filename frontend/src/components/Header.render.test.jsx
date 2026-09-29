@@ -42,10 +42,9 @@ describe("owner-approved Header composition", () => {
     const { container, cleanup } = renderHeader();
     expect(container.querySelector('[data-testid="brand-logo"] img')).not.toBeNull();
     expect(container.querySelector('.premium-header-search input[aria-label="Search books, authors, topics"]')).not.toBeNull();
-    expect(container.querySelector('[data-testid="nav-home"]')?.getAttribute("href")).toBe("/");
-    expect(container.querySelector('[data-testid="nav-library"]')?.getAttribute("href")).toBe("/library");
-    expect(container.querySelector('[data-testid="nav-bengali-classics"]')?.getAttribute("href")).toBe("/library?language=bn&availability=reader-ready");
-    expect(container.querySelector('[data-testid="nav-english-classics"]')?.getAttribute("href")).toBe("/library?language=en");
+    expect(container.querySelector('[data-testid="nav-books"]')?.getAttribute("href")).toBe("/library");
+    expect(container.querySelector('[data-testid="nav-authors"]')?.getAttribute("href")).toBe("/library?sort=author");
+    expect(container.querySelector('[data-testid="nav-collections"]')?.getAttribute("href")).toBe("/library#library-collection");
     expect(container.querySelector('[data-testid="nav-sign-in"]')?.getAttribute("href")).toBe("/login");
     expect(container.querySelector('[data-testid="nav-join"]')).toBeNull();
     expect(container.querySelector('[data-testid="nav-sign-in"]')?.textContent).toContain("Sign In");
@@ -64,8 +63,8 @@ describe("owner-approved Header composition", () => {
     const library = container.querySelector('[data-testid="mobile-cta-library"]');
     expect(library?.getAttribute("href")).toBe("/library");
     expect(container.querySelector('[data-testid="mobile-nav-sign-in"]')?.getAttribute("href")).toBe("/login");
-    expect([...container.querySelectorAll('[data-testid^="mobile-nav-"]')].slice(0, 7).map((item) => item.textContent)).toEqual([
-      "Home", "Library", "Bengali Classics", "English Classics", "Audiobooks", "Reading Pass", "About",
+    expect([...container.querySelectorAll('[data-testid^="mobile-nav-"]')].slice(0, 5).map((item) => item.textContent)).toEqual([
+      "Books", "Authors", "Collections", "Reading Pass", "About",
     ]);
     expect(document.documentElement.scrollWidth).toBeLessThanOrEqual(document.documentElement.clientWidth);
     cleanup();

@@ -7,6 +7,7 @@ function source(relativePath) {
 
 describe("public CTA accuracy contract", () => {
   const header = source("src/components/Header.jsx");
+  const navigation = source("src/config/publicNavigation.js");
   const home = source("src/pages/Home.jsx");
   const homeSurfaces = source("src/components/EditorialHomeLibrarySurfaces.jsx");
   const hero = source("src/components/PremiumHero.jsx");
@@ -34,7 +35,8 @@ describe("public CTA accuracy contract", () => {
     expect(hero).toContain('audiobooksDestination.includes("availability=approved-audiobook")');
     expect(hero).toContain('? "Enter the Listening Room"');
     expect(header).not.toContain('label: "Membership"');
-    expect(header).toContain('PUBLIC_NAV_ITEMS');
+    expect(header).toContain("getPublicNavItems(loc)");
+    expect(navigation).toContain("export const PUBLIC_NAV_ITEMS");
   });
 
   test("home paths describe their exact language and release-gated destinations", () => {
