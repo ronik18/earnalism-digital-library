@@ -38,6 +38,8 @@ describe("ReaderExperienceV2 customer controls", () => {
   test("the Reader enters at the masthead and page turns preserve keyboard focus and scroll", () => {
     render();
     expect(document.activeElement).toBe(container.querySelector("#reader-v2-title"));
+    expect(container.querySelector("#reader-v2-title").tabIndex).toBe(-1);
+    expect(container.querySelector('.reader-v2__toolbar button[aria-label="Reader settings"]').getAttribute("aria-label")).toBe("Reader settings");
     expect(window.scrollTo).toHaveBeenCalledTimes(1);
     expect(window.scrollTo).toHaveBeenLastCalledWith({ top: 0, behavior: "instant" });
     const selector = container.querySelector('select[aria-label="Go to page"]');

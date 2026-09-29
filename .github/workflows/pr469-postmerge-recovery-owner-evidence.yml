@@ -8,6 +8,17 @@ on:
       - frontend/src/pages/Home.newsletter.test.jsx
       - frontend/src/pages/Library.test.jsx
       - frontend/src/components/EditorialHomeLibrarySurfaces.jsx
+      - frontend/src/components/AuthPageShell.jsx
+      - frontend/src/pages/Login.jsx
+      - frontend/src/pages/Signup.jsx
+      - frontend/src/authAccountTextRules.test.js
+      - frontend/src/lib/publicAccessCopy.js
+      - frontend/src/lib/bookDetailPresentation.js
+      - frontend/src/lib/bookDetailPresentation.test.js
+      - frontend/src/pages/BookDetail.jsx
+      - frontend/src/experiences-v2/reader/ReaderExperienceV2.jsx
+      - frontend/src/experiences-v2/reader/reader-v2.css
+      - frontend/src/experiences-v2/reader/ReaderExperienceV2.render.test.jsx
       - scripts/test_library_catalogue_recovery_journey.mjs
       - scripts/capture_pr469_postmerge_recovery_states.mjs
       - scripts/package_pr469_postmerge_owner_review.py
@@ -81,6 +92,8 @@ jobs:
         run: |
           set -euo pipefail
           npm --prefix frontend run build
+        env:
+          REACT_APP_ENABLE_VISUAL_FIXTURES: "1"
 
       - name: Run deterministic Library recovery journey and capture supplemental states
         run: |

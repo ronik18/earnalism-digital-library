@@ -10,6 +10,19 @@ function upper(value = "") {
   return text(value).toUpperCase();
 }
 
+// Package copy may predate the current runtime release decision. Keep editorial
+// book copy intact while suppressing sentence-level audio claims unless the
+// active release truth allows a Listener control.
+export function releaseSafeBookCopy(value = "", audioApproved = false) {
+  const copy = text(value);
+  if (audioApproved || !copy) return copy;
+  return copy
+    .split(/(?<=[.!?])\s+/u)
+    .filter((sentence) => !/\b(?:audio(?:books?)?|listen(?:ing)?|narrat(?:e|ed|ion|ing))\b/i.test(sentence))
+    .join(" ")
+    .trim();
+}
+
 export function languageOfBookDetail(book = {}) {
   const explicit = text(book.language || book.language_code || book.lang || book.locale).toLowerCase();
   if (explicit.startsWith("bn") || explicit.startsWith("ben")) return "bn";
@@ -63,7 +76,7 @@ export function bookDetailPresentationForBook(book = {}) {
       : readerReady
         ? "This approved edition cannot be opened while the current Reader service is unavailable. Explore the Library for another title."
         : "This reading edition is still in preparation.",
-    audioBadgeLabel: audioReleaseApproved ? "Audiobook Approved" : readerReady ? "Audio Hidden" : "Release Gated",
+    audioBadgeLabel: audioApproved ? "Audiobook Approved" : "Listening unavailable",
     audioHeading: audioApproved
       ? "Listening room approved"
       : audioReleaseApproved

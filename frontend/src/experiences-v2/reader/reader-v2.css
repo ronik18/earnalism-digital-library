@@ -80,6 +80,7 @@
 .reader-v2__canvas[data-reader-theme="dark"] { --reader-canvas: #241713; --reader-ink: #F7F0E3; --reader-accent: #D7A84E; --reader-border: #8D7043; }
 .reader-v2__chapter, .reader-v2__continuation { border-color: var(--reader-border); }
 .reader-v2__chapter > span, .reader-v2__toolbar output { color: var(--reader-accent); }
+.reader-v2__chapter h1:focus { outline: none; }
 .reader-v2__toolbar .experience-icon-button { width: 44px; height: 44px; color: var(--reader-accent); border-color: var(--reader-border); }
 .reader-v2__canvas button:focus-visible, .reader-v2__canvas select:focus-visible { outline: 2px solid var(--reader-accent); outline-offset: 3px; }
 .reader-v2__contents ol { max-height: 45vh; overflow-y: auto; }

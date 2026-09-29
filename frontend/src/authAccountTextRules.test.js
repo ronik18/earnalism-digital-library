@@ -3,7 +3,7 @@ import path from "path";
 
 const source = (file) => fs.readFileSync(path.join(__dirname, file), "utf8");
 
-const LOCKED_PRODUCT_SENTENCE = "The first 3 pages are free where a preview is available. A valid Reading Pass is required from page 4. Pass purchases are not available yet.";
+const AUTH_PRODUCT_ACCESS_COPY = "The first 3 pages are free where a preview is available. A Reading Pass is required from page 4 on eligible titles. Listening appears only where an edition is approved.";
 
 describe("auth and account customer-copy contract", () => {
   const authShell = source("components/AuthPageShell.jsx");
@@ -11,13 +11,15 @@ describe("auth and account customer-copy contract", () => {
   const signup = source("pages/Signup.jsx");
   const account = source("pages/Account.jsx");
 
-  test("describes the preview boundary and unavailable purchases on each applicable customer surface", () => {
-    expect(authShell).toContain("A valid Reading Pass is required from page 4.");
+  test("uses durable release-safe Reading Pass and listening policy copy across auth surfaces", () => {
+    expect(authShell).toContain("AUTH_PRODUCT_ACCESS_COPY");
     [login, signup].forEach((page) => {
-      expect(page).toContain("A valid Reading Pass is required from page 4");
-      expect(page).toContain("Pass purchases are not available yet.");
+      expect(page).toContain("AUTH_PRODUCT_ACCESS_COPY");
+      expect(page).not.toContain("Pass purchases are not available yet.");
     });
-    expect(account).toContain(LOCKED_PRODUCT_SENTENCE);
+    expect(AUTH_PRODUCT_ACCESS_COPY).toContain("Reading Pass is required from page 4 on eligible titles.");
+    expect(AUTH_PRODUCT_ACCESS_COPY).toContain("Listening appears only where an edition is approved.");
+    expect(account).not.toContain(AUTH_PRODUCT_ACCESS_COPY);
   });
 
   test("uses library-wide Signup accessibility copy", () => {

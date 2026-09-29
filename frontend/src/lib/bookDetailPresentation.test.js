@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { bookDetailPresentationForBook, chapterReaderEntryForBook, readerRuntimeIsAvailable } from "./bookDetailPresentation";
+import { bookDetailPresentationForBook, chapterReaderEntryForBook, readerRuntimeIsAvailable, releaseSafeBookCopy } from "./bookDetailPresentation";
 
 describe("bookDetailPresentation", () => {
   test("only a server-declared free Reader entitlement changes the book CTA and access copy", () => {
@@ -36,7 +36,7 @@ describe("bookDetailPresentation", () => {
     });
 
     expect(presentation.listenCtaVisible).toBe(false);
-    expect(presentation.audioBadgeLabel).toBe("Audio Hidden");
+    expect(presentation.audioBadgeLabel).toBe("Listening unavailable");
     expect(presentation.allowAudioStructuredData).toBe(false);
   });
 
@@ -76,7 +76,7 @@ describe("bookDetailPresentation", () => {
       audio_url: "",
     });
 
-    expect(presentation.audioBadgeLabel).toBe("Audiobook Approved");
+    expect(presentation.audioBadgeLabel).toBe("Listening unavailable");
     expect(presentation.audioHeading).toBe("Listening currently unavailable");
     expect(presentation.listenCtaVisible).toBe(false);
     expect(presentation.allowAudioStructuredData).toBe(false);
@@ -98,7 +98,7 @@ describe("bookDetailPresentation", () => {
     });
 
     expect(presentation.listenCtaVisible).toBe(false);
-    expect(presentation.audioBadgeLabel).toBe("Audio Hidden");
+    expect(presentation.audioBadgeLabel).toBe("Listening unavailable");
     expect(presentation.audioHeading).toBe("Audio waits for release gates");
     expect(presentation.syncCopy).toBe("");
     expect(presentation.allowAudioStructuredData).toBe(false);
@@ -113,7 +113,7 @@ describe("bookDetailPresentation", () => {
     });
 
     expect(presentation.listenCtaVisible).toBe(false);
-    expect(presentation.audioBadgeLabel).toBe("Audio Hidden");
+    expect(presentation.audioBadgeLabel).toBe("Listening unavailable");
   });
 
   test("exposes A Ghost Story only with the approved Stage 2D manifest", () => {
@@ -139,7 +139,7 @@ describe("bookDetailPresentation", () => {
     expect(presentation.syncCopy).toBe("Section-following narration");
   });
 
-  test("keeps blocked Bengali canary and prelaunch titles audio-hidden", () => {
+  test("keeps blocked Bengali canary and prelaunch titles unavailable without internal audio labels", () => {
     for (const slug of blockedCanarySlugs) {
       const presentation = bookDetailPresentationForBook({
         slug,
@@ -151,6 +151,14 @@ describe("bookDetailPresentation", () => {
       expect(presentation.audioHeading).toBe("Audio waits for release gates");
       expect(presentation.allowAudioStructuredData).toBe(false);
     }
+  });
+
+  test("suppresses stale audio claims from public book copy until runtime release truth allows listening", () => {
+    const staleDescription = "A comic encounter with a haunted room. This edition includes a release-gated, section-following narration.";
+    const staleBenefits = ["Read a compact comic ghost story.", "Listen through the approved section-following narration in the reader."];
+    expect(releaseSafeBookCopy(staleDescription, false)).toBe("A comic encounter with a haunted room.");
+    expect(staleBenefits.map((benefit) => releaseSafeBookCopy(benefit, false)).filter(Boolean)).toEqual(["Read a compact comic ghost story."]);
+    expect(releaseSafeBookCopy(staleDescription, true)).toBe(staleDescription);
   });
 
   test("keeps reader-approved titles truthful while the active Reader runtime is unavailable", () => {

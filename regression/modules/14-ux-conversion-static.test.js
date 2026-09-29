@@ -1482,9 +1482,12 @@ describe("UX conversion static signals", () => {
 
   test("login signup account and default SEO use the approved access contract without overclaiming", () => {
     expect(login).toContain('data-testid="login-continuation-note"');
-    expect(login).toContain("The first 3 pages are free where a preview is available. A valid Reading Pass is required from page 4. Pass purchases are not available yet. Audiobooks are unavailable.");
+    expect(login).toContain("AUTH_PRODUCT_ACCESS_COPY");
+    expect(login).not.toContain("Pass purchases are not available yet.");
     expect(signup).toContain('data-testid="signup-wallet-note"');
-    expect(signup).toContain("The first 3 pages are free where a preview is available. A valid Reading Pass is required from page 4. Pass purchases are not available yet. Audiobooks are unavailable.");
+    expect(signup).toContain("AUTH_PRODUCT_ACCESS_COPY");
+    expect(signup).not.toContain("Pass purchases are not available yet.");
+    expect(publicAccessCopy).toContain("The first 3 pages are free where a preview is available. A Reading Pass is required from page 4 on eligible titles. Listening appears only where an edition is approved.");
     expect(account).toContain('data-testid="account-wallet-explainer"');
     expect(account).toContain("The first 3 pages are free where a preview is available. Continuing from page 4 requires a valid Reading Pass; pass purchases are not available yet.");
     expect(account).toContain("Continue reading");

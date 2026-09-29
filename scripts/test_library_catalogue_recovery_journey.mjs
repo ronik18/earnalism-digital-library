@@ -60,6 +60,8 @@ async function installCatalogueFixture(page, outcomes) {
 async function openScenario(context, outcome, viewport) {
   const page = await context.newPage();
   const diagnostics = collectDiagnostics(page);
+  const officialBrandAsset = fs.readFileSync(path.resolve("frontend/public/assets/brand/earnalism-brand-lockup.png"));
+  await page.route("**/assets/brand/earnalism-brand-lockup.png", (route) => route.fulfill({ status: 200, contentType: "image/png", body: officialBrandAsset }));
   await page.setViewportSize(viewport);
   const fixture = await installCatalogueFixture(page, [outcome]);
   await page.goto(`${baseUrl.replace(/\/$/, "")}/library?language=en&availability=reader-ready&sort=title`, { waitUntil: "domcontentloaded" });
@@ -145,6 +147,8 @@ async function testInitialStates(context) {
 async function testLoadingAndNoResults(context) {
   const loading = await context.newPage();
   const loadingDiagnostics = collectDiagnostics(loading);
+  const officialBrandAsset = fs.readFileSync(path.resolve("frontend/public/assets/brand/earnalism-brand-lockup.png"));
+  await loading.route("**/assets/brand/earnalism-brand-lockup.png", (route) => route.fulfill({ status: 200, contentType: "image/png", body: officialBrandAsset }));
   await loading.setViewportSize({ width: 1440, height: 900 });
   const pending = await installCatalogueFixture(loading, ["pending-failure"]);
   await loading.goto(`${baseUrl.replace(/\/$/, "")}/library?language=en&availability=reader-ready&sort=title`, { waitUntil: "domcontentloaded" });
@@ -160,6 +164,7 @@ async function testLoadingAndNoResults(context) {
 
   const noResults = await context.newPage();
   const noResultsDiagnostics = collectDiagnostics(noResults);
+  await noResults.route("**/assets/brand/earnalism-brand-lockup.png", (route) => route.fulfill({ status: 200, contentType: "image/png", body: officialBrandAsset }));
   await noResults.setViewportSize({ width: 1024, height: 768 });
   await installCatalogueFixture(noResults, ["success"]);
   await noResults.goto(`${baseUrl.replace(/\/$/, "")}/library?language=en&q=earnalism-no-result-9f3b&sort=title`, { waitUntil: "domcontentloaded" });
@@ -174,6 +179,8 @@ async function testLoadingAndNoResults(context) {
 async function testKeyboardRetryAndRecovery(context, viewport) {
   const page = await context.newPage();
   const diagnostics = collectDiagnostics(page);
+  const officialBrandAsset = fs.readFileSync(path.resolve("frontend/public/assets/brand/earnalism-brand-lockup.png"));
+  await page.route("**/assets/brand/earnalism-brand-lockup.png", (route) => route.fulfill({ status: 200, contentType: "image/png", body: officialBrandAsset }));
   await page.setViewportSize(viewport);
   const fixture = await installCatalogueFixture(page, ["reject", "pending-failure", "success"]);
   const initialUrl = "/library?language=en&availability=reader-ready&sort=title";
@@ -181,6 +188,10 @@ async function testKeyboardRetryAndRecovery(context, viewport) {
   await page.getByTestId("library-reference-surface").waitFor();
   await waitForCatalogueState(page, "error");
   await assertError(page, `${viewport.width}px initial`);
+  await captureFullPageAtTop(page, path.join(output, `library-api-error-${viewport.width}.png`));
+  // The active Retry action is part of the failure state and is captured before
+  // keyboard activation so owner review can judge its visibility and wording.
+  await captureFullPageAtTop(page, path.join(output, `library-retry-visible-${viewport.width}.png`));
 
   const retry = page.getByTestId("library-catalogue-retry");
   const tabSteps = await focusRetryByTab(page, retry, `${viewport.width}px initial`);
@@ -215,7 +226,7 @@ async function testKeyboardRetryAndRecovery(context, viewport) {
   assertNoRuntimeDefects(diagnostics, `${viewport.width}px retry and recovery`);
   await captureFullPageAtTop(page, path.join(output, `library-recovery-${viewport.width}.png`));
   await page.close();
-  return { viewport, request_count: fixture.count(), keyboard_activation: { focus: "Tab traversal", key: "Enter", initial_tab_steps: tabSteps, recovery_tab_steps: recoveryTabSteps }, geometry, result: "PASS" };
+  return { viewport, request_count: fixture.count(), recovered_title: "A Ghost Story", recovery_source: "successful second catalogue API response fixture; no bundled fallback", keyboard_activation: { focus: "Tab traversal", key: "Enter", initial_tab_steps: tabSteps, recovery_tab_steps: recoveryTabSteps }, geometry, result: "PASS" };
 }
 
 const browser = await chromium.launch({ headless: true });

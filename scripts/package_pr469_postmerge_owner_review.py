@@ -98,18 +98,61 @@ def main() -> None:
     contact_sheet = output / "owner-review-contact-sheet.png"
     image_contact_sheet([(label, images_dir / filename) for filename, _, label in selections], contact_sheet)
     exact_head = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+    delta_selections = [
+        ("delta-login-1440.png", supplemental / "login-validation-1440.png", "Login · release-safe copy · 1440"),
+        ("delta-login-390.png", supplemental / "login-validation-390.png", "Login · release-safe copy · 390"),
+        ("delta-signup-1440.png", supplemental / "signup-validation-1440.png", "Signup · release-safe copy · 1440"),
+        ("delta-signup-390.png", supplemental / "signup-validation-390.png", "Signup · release-safe copy · 390"),
+        ("delta-book-detail-a-ghost-story-1440.png", supplemental / "book-detail-a-ghost-story-1440.png", "A Ghost Story · audio release-safe · 1440"),
+        ("delta-book-detail-a-ghost-story-390.png", supplemental / "book-detail-a-ghost-story-390.png", "A Ghost Story · audio release-safe · 390"),
+        ("delta-book-detail-unapproved-audio-1440.png", supplemental / "book-detail-unapproved-audio-1440.png", "Unapproved audio title · release-safe · 1440"),
+        ("delta-book-detail-unapproved-audio-390.png", supplemental / "book-detail-unapproved-audio-390.png", "Unapproved audio title · release-safe · 390"),
+        ("delta-reader-default-no-focus-1440.png", supplemental / "reader-default-no-focus-1440.png", "Reader · default no-focus · 1440"),
+        ("delta-reader-default-no-focus-390.png", supplemental / "reader-default-no-focus-390.png", "Reader · default no-focus · 390"),
+        ("delta-reader-keyboard-focus-1440.png", supplemental / "reader-keyboard-focus-1440.png", "Reader · keyboard focus · 1440"),
+        ("delta-reader-keyboard-focus-390.png", supplemental / "reader-keyboard-focus-390.png", "Reader · keyboard focus · 390"),
+    ]
+    for width in (1440, 390):
+        for state, source_name, label in (
+            ("api-error", f"library-api-error-{width}.png", "Library API error"),
+            ("retry-visible", f"library-retry-visible-{width}.png", "Library retry visible"),
+            ("recovered", f"library-recovery-{width}.png", "Library recovered catalogue"),
+        ):
+            delta_selections.append((f"delta-library-{state}-{width}.png", library / source_name, f"{label} · {width}"))
+    delta_records = [copy(source, images_dir / filename, label) for filename, source, label in delta_selections]
+    delta_contact_sheet = output / "owner-delta-contact-sheet.png"
+    image_contact_sheet([(label, images_dir / filename) for filename, _, label in delta_selections], delta_contact_sheet)
+    delta_manifest = {
+        "schema_version": "earnalism.pr471-owner-delta-evidence.v1",
+        "repository": "ronik18/earnalism-digital-library",
+        "pr_number": args.pr,
+        "repair_head": exact_head,
+        "classification": "LOCAL_DETERMINISTIC_FIXTURES_NO_PRODUCTION_REQUESTS_OR_MUTATIONS",
+        "reader_default_state": "The route initially focuses its non-interactive chapter heading for reading context; screenshots capture the default after blur. Interactive controls retain :focus-visible styling.",
+        "library_recovery": "Error/retry captures show the active Retry action. Recovered state follows a successful local catalogue API fixture response for A Ghost Story, not bundled fallback inventory.",
+        "screenshots": delta_records,
+        "contact_sheet": {"filename": delta_contact_sheet.name, "sha256": sha(delta_contact_sheet)},
+    }
+    delta_manifest_path = output / "owner-delta-manifest.json"
+    delta_manifest_path.write_text(json.dumps(delta_manifest, indent=2) + "\n")
+    delta_zip = output / "owner-delta-images.zip"
+    with zipfile.ZipFile(delta_zip, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=6) as archive:
+        archive.write(delta_contact_sheet, delta_contact_sheet.name)
+        archive.write(delta_manifest_path, delta_manifest_path.name)
+        for filename, _, _ in delta_selections:
+            archive.write(images_dir / filename, f"owner-delta-images/{filename}")
     prior_head = "b5d607a89ed756ab5efca058379ed1201b7d234b"
     library_summary = json.loads((library / "summary.json").read_text())
     supplemental_summary = json.loads((supplemental / "summary.json").read_text())
     manifest = {
-        "schema_version": "earnalism.pr469-postmerge-recovery-owner-review.v1",
+        "schema_version": "earnalism.pr471-postmerge-recovery-owner-review.v1",
         "repository": "ronik18/earnalism-digital-library",
         "pr_number": args.pr,
         "repair_head": exact_head,
         "prior_owner_reviewed_head": prior_head,
         "prior_evidence_run_id": 36549307831,
         "prior_evidence_artifact_id": 11025247154,
-        "prior_evidence_reuse": "Unchanged Option B/product states only; changed Library recovery and form states are freshly captured against repair head.",
+        "prior_evidence_reuse": "Unchanged Option B/product states only; every affected PR471 auth, Book Detail, Reader, and Library recovery state is freshly captured against repair head.",
         "capture_classification": "LOCAL_DETERMINISTIC_FIXTURES_NO_PRODUCTION_REQUESTS_OR_MUTATIONS",
         "my_library": "NA_PRODUCT_STATE: current product has no saved-book or reading-history source; truthful empty state retained.",
         "library_journey_result": library_summary.get("result"),
@@ -123,18 +166,20 @@ def main() -> None:
         f"PR {args.pr} post-merge production-readiness repair owner review\n"
         f"Exact repair head: {exact_head}\n"
         f"Prior approved Option B head: {prior_head}\n\n"
-        "This packet contains the approved exact-head PR469 route imagery for unchanged states, plus fresh loopback-only captures for the repaired newsletter and Library states. All forms use synthetic local responses. No production account, payment, customer record, catalogue state, or audio state was changed. My Library remains an honest empty state because no saved-book or reading-history API exists.\n\n"
+        "This packet contains approved exact-head PR469 imagery for unchanged states, plus fresh loopback-only captures for requested PR471 deltas. Interactions use synthetic local responses and fixtures. No production account, payment, customer record, catalogue state, or audio state was changed. My Library remains an honest empty state because no saved-book or reading-history API exists.\n\n"
         "Automated capture does not equal owner visual approval. Every owner checklist item remains OWNER_REVIEW_REQUIRED. See manifest.json for screenshot hashes and fixture classification.\n"
     )
     (output / "README.txt").write_text(readme)
     with zipfile.ZipFile(output / "owner-approval-images.zip", "w", compression=zipfile.ZIP_DEFLATED, compresslevel=6) as archive:
         archive.write(contact_sheet, contact_sheet.name)
+        archive.write(delta_contact_sheet, delta_contact_sheet.name)
         archive.write(output / "manifest.json", "manifest.json")
+        archive.write(delta_manifest_path, delta_manifest_path.name)
         archive.write(output / "README.txt", "README.txt")
         for image in sorted(images_dir.iterdir()):
             if image.is_file():
                 archive.write(image, f"owner-approval-images/{image.name}")
-    print(json.dumps({"result": "PASS", "exact_head": exact_head, "screenshot_count": len(records), "contact_sheet": str(contact_sheet), "zip": str(output / "owner-approval-images.zip")}, indent=2))
+    print(json.dumps({"result": "PASS", "exact_head": exact_head, "screenshot_count": len(records), "delta_screenshot_count": len(delta_records), "contact_sheet": str(contact_sheet), "delta_contact_sheet": str(delta_contact_sheet), "delta_zip": str(delta_zip), "zip": str(output / "owner-approval-images.zip")}, indent=2))
 
 
 if __name__ == "__main__":
