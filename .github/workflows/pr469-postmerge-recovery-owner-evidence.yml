@@ -122,6 +122,7 @@ jobs:
             --pr "$PR_NUMBER"
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           LIBRARY_RECOVERY_EVIDENCE_OUTPUT: ${{ runner.temp }}/pr469-library-recovery
           RECOVERY_REVIEW_BASE_URL: http://127.0.0.1:13022
           RECOVERY_REVIEW_OUTPUT: ${{ runner.temp }}/pr469-supplemental

@@ -7,7 +7,9 @@ import { chromium } from "playwright";
 
 const baseUrl = String(process.env.HEADER_REVIEW_BASE_URL || "").replace(/\/$/, "");
 const output = path.resolve(process.env.HEADER_REVIEW_OUTPUT || "/tmp/pr471-canonical-header-evidence");
-const headSha = process.env.GITHUB_SHA || execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
+// For pull_request workflows, GITHUB_SHA is the synthetic merge ref. Bind the
+// screenshots to the checked-out PR head supplied explicitly by the workflow.
+const headSha = process.env.PR_HEAD_SHA || execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
 const officialBrandAsset = fs.readFileSync(path.resolve("frontend/public/assets/brand/earnalism-brand-lockup.png"));
 if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(baseUrl)) throw new Error("HEADER_REVIEW_BASE_URL must be an isolated loopback build.");
 fs.mkdirSync(output, { recursive: true });
