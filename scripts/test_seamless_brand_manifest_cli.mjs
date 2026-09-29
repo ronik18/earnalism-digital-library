@@ -56,6 +56,7 @@ test("four live Reading Pass offer screenshots cover 1440, 1024, and 390 widths"
   const states = manifest.states.filter((state) => state.fixture === "pricing-four-offers");
   assert.deepEqual(states.map(({ viewport }) => viewport.width), [1440, 1024, 390]);
   assert.ok(states.every((state) => state.route === "/pricing"));
+  assert.ok(states.every((state) => state.capture.full_page === true), "all three offer grids need durable full-page screenshots");
 });
 test("populated BookDetail screenshots use the live-approved, audio-hidden A Ghost Story release", () => {
   const states = manifest.states.filter((state) => state.fixture === "live-approved-book-detail");
