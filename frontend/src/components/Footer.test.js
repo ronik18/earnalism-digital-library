@@ -31,7 +31,7 @@ describe("Footer compact colophon", () => {
   });
 
   test("keeps premium public copy, copyright protection, and accessible navigation", () => {
-    expect(footerSource).toContain("Timeless Bengali and English literature, made beautiful for the way you read.");
+    expect(footerSource).toContain("Good books. A kinder tomorrow.");
     expect(footerSource).toContain('data-testid="footer-venture-attribution"');
     expect(footerSource).toContain("A Reo Enterprise Venture");
     expect(footerSource).toContain('aria-labelledby="footer-explore-heading"');
@@ -47,5 +47,10 @@ describe("Footer compact colophon", () => {
     expect(footerSource).toContain("const { social } = useSettings();");
     expect(footerSource).toContain("<FooterSocialLinks links={social} />");
     expect(footerSource).toContain('href={`mailto:${CONTACT_EMAIL}`}');
+  });
+
+  test("renders the shared editorial note on every public route", () => {
+    expect(footerSource).toContain('className="footer-home-note min-w-0');
+    expect(footerSource).not.toContain("isHomepage");
   });
 });

@@ -5,6 +5,7 @@ import { SettingsProvider } from "./context/SettingsContext";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import { AppToaster } from "./components/AppToaster";
+import "./design-system/sitewide-option-b.css";
 
 const pageImports = {
   Library: () => import("./pages/Library"),

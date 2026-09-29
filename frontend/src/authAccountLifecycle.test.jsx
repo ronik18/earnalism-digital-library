@@ -39,6 +39,7 @@ jest.mock("react-router-dom", () => ({
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import Account from "./pages/Account";
 import { USER_TOKEN_KEY } from "./lib/api";
+import { PUBLIC_PAID_COMMERCE_ENABLED } from "./lib/controlledLaunch";
 
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 
@@ -203,7 +204,12 @@ describe("AuthProvider and Account lifecycle", () => {
     await flush();
 
     expect(mounted.container.querySelector('[data-testid="account-balance"]')?.textContent).toContain("120s");
-    expect(mounted.container.querySelector('[data-testid="account-reading-pass-status"]')?.textContent).toContain("Purchases are not available yet");
+    const purchaseStatus = mounted.container.querySelector('[data-testid="account-reading-pass-status"]');
+    if (PUBLIC_PAID_COMMERCE_ENABLED) {
+      expect(purchaseStatus).toBeNull();
+    } else {
+      expect(purchaseStatus?.textContent).toContain("Purchases are not available yet");
+    }
     expect(mounted.container.querySelector('[data-testid="account-active-sessions"]')?.textContent).toContain("Chrome on Mac");
     expect(mounted.container.querySelector('[data-testid="account-active-sessions"]')?.textContent).toContain("This device");
     expect(mounted.container.querySelector('[data-testid="account-page"]')?.textContent).not.toContain("Mozilla/5.0");

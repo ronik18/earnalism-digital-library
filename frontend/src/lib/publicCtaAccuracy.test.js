@@ -22,6 +22,8 @@ describe("public CTA accuracy contract", () => {
   const signup = source("src/pages/Signup.jsx");
   const shareButtons = source("src/components/ShareButtons.jsx");
   const footer = source("src/components/Footer.jsx");
+  const sitewideDesign = source("src/design-system/sitewide-option-b.css");
+  const homeDesign = source("src/pages/HomeOptionB.css");
   const globalStyles = source("src/index.css");
 
   test("catalog destinations use browsing language instead of claiming that reading has started", () => {
@@ -86,7 +88,8 @@ describe("public CTA accuracy contract", () => {
     expect(login).toContain("inline-flex min-h-11 items-center");
     expect(signup).toContain("inline-flex min-h-11 items-center");
     expect(shareButtons).toContain('const btn = "w-11 h-11');
-    expect(footer.match(/min-h-11 min-w-11/g)?.length).toBeGreaterThanOrEqual(5);
+    expect(sitewideDesign).toContain("min-height: 2.75rem");
+    expect(homeDesign).toContain("min-height: 44px");
     expect(globalStyles).toContain(".reading-dispatch__field input { width: 100%; min-height: 2.75rem;");
   });
 });

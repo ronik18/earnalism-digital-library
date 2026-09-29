@@ -1,0 +1,398 @@
+/* Shared Option B language for customer-facing pages. Page behavior stays in
+   its owning components; this layer only standardizes presentation. */
+
+.layout:not(.layout--homepage-option-b) {
+  color: var(--optionb-ink);
+  background: var(--optionb-paper);
+}
+
+.public-page-frame {
+  min-height: 70vh;
+  color: var(--optionb-ink);
+  background: var(--optionb-paper);
+  font-family: var(--optionb-body);
+}
+
+.public-page-frame--editorial {
+  background: linear-gradient(180deg, var(--optionb-paper-warm), var(--optionb-paper) 24rem);
+}
+
+.public-page-frame--quiet {
+  background: linear-gradient(180deg, var(--optionb-paper-warm), var(--optionb-paper) 32rem);
+}
+
+.public-page-frame :is(h1, h2, h3),
+.reference-library :is(h1, h2, h3),
+.reference-commerce :is(h1, h2, h3),
+.commerce-page :is(h1, h2, h3) {
+  font-family: var(--optionb-display);
+  text-wrap: pretty;
+}
+
+.public-page-frame :is(p, li, label),
+.reference-library,
+.reference-commerce,
+.commerce-page {
+  color: var(--optionb-ink);
+}
+
+.public-page-frame :is(a, button),
+.reference-library :is(a, button),
+.reference-commerce :is(a, button),
+.commerce-page :is(a, button) {
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.public-page-frame :is(input, select, textarea),
+.reference-library :is(input, select),
+.reference-commerce :is(input, select) {
+  border-radius: var(--optionb-radius-control);
+  border-color: var(--optionb-line);
+  color: var(--optionb-ink);
+  background-color: #fffdf9;
+}
+
+.public-page-frame :is(a, button, input, select, textarea):focus-visible,
+.reference-library :is(a, button, input, select):focus-visible,
+.reference-commerce :is(a, button, input, select):focus-visible {
+  outline: 2px solid var(--optionb-gold);
+  outline-offset: 3px;
+}
+
+/* Library discovery uses the same warm paper and burgundy hierarchy as the
+   Option B homepage while keeping all filter/search behavior unchanged. */
+.reference-library {
+  --reference-ink: var(--optionb-paper);
+  --reference-surface: #fffdf9;
+  --reference-elevated: var(--optionb-paper-warm);
+  --reference-quiet: #efe5d8;
+  --reference-paper: var(--optionb-paper);
+  --reference-text: var(--optionb-ink);
+  --reference-muted: var(--optionb-ink-muted);
+  --reference-gold: var(--optionb-gold);
+  --reference-gold-soft: var(--optionb-burgundy);
+  --reference-burgundy: var(--optionb-burgundy);
+  --reference-line: var(--optionb-line);
+  min-height: 70vh;
+  background: var(--optionb-paper);
+  color: var(--optionb-ink);
+}
+
+.reference-library .reference-kicker,
+.reference-library .reference-filter-group button[aria-pressed="true"],
+.reference-library .reference-library__pass a,
+.reference-library .reference-filter-group button:hover {
+  color: var(--optionb-burgundy);
+}
+
+.reference-library .reference-search,
+.reference-library .reference-sort,
+.reference-library .reference-filter-trigger,
+.reference-library .reference-filter-group button,
+.reference-library .reference-library__sidebar,
+.reference-library .reference-library-drawer > div {
+  border-color: var(--optionb-line);
+  background: #fffdf9;
+  color: var(--optionb-ink);
+}
+
+.reference-library .reference-library__sidebar {
+  border-radius: var(--optionb-radius-surface);
+}
+
+.reference-library .reference-filter-group button[aria-pressed="true"] {
+  border-color: color-mix(in srgb, var(--optionb-burgundy) 28%, white);
+  background: var(--optionb-paper-warm);
+}
+
+.reference-library .reference-library__pass {
+  border-color: var(--optionb-line);
+}
+
+.reference-library .reference-library__pass strong,
+.reference-library .reference-book-tile__title {
+  color: var(--optionb-burgundy-deep);
+}
+
+.reference-library .reference-library-drawer {
+  background: rgba(37, 24, 20, 0.44);
+}
+
+.reference-library .reference-library-drawer > div {
+  background: var(--optionb-paper);
+}
+
+.reference-library .reference-button--gold,
+.reference-library .reference-library-drawer__footer .reference-button {
+  border-color: var(--optionb-burgundy);
+  border-radius: var(--optionb-radius-control);
+  color: #fff9ee;
+  background: var(--optionb-burgundy);
+}
+
+/* Reading Pass keeps a burgundy feature surface within the editorial paper
+   page. Offer values and checkout actions remain owned by runtime data. */
+.commerce-page {
+  min-height: 70vh;
+  padding-block: clamp(2rem, 4vw, 3.5rem);
+  color: var(--optionb-ink);
+  background: linear-gradient(180deg, var(--optionb-paper-warm), var(--optionb-paper) 28rem);
+}
+
+/* The dedicated Reading Pass page shares Option B's paper-and-burgundy
+   balance; offer data, purchase eligibility, and checkout remain untouched. */
+.reading-passes {
+  --rp-ink: var(--optionb-ink);
+  --rp-muted: var(--optionb-ink-muted);
+  --rp-cream: var(--optionb-paper);
+  --rp-line: var(--optionb-line);
+  --rp-wine: var(--optionb-burgundy-deep);
+  --rp-gold: var(--optionb-gold);
+  --rp-dark: var(--optionb-burgundy-deep);
+  color: var(--optionb-ink);
+  background: var(--optionb-paper);
+  font-family: var(--optionb-body);
+}
+
+.reading-passes .rp-hero { background: var(--optionb-burgundy-deep); }
+.reading-passes .rp-offer,
+.reading-passes .rp-offer-state,
+.reading-passes .rp-faq-grid details,
+.reading-passes .rp-persona-grid article {
+  border-radius: var(--optionb-radius-surface);
+  border-color: var(--optionb-line);
+  background: #fffdf9;
+  color: var(--optionb-ink);
+  box-shadow: none;
+}
+
+.reading-passes .rp-offer.is-featured {
+  border-color: var(--optionb-gold);
+  background: var(--optionb-paper-warm);
+  color: var(--optionb-ink);
+}
+
+.reading-passes .rp-offer.is-featured .rp-offer-poem { color: var(--optionb-ink-muted); }
+.reading-passes .rp-partner {
+  border-color: var(--optionb-line);
+  border-radius: var(--optionb-radius-surface);
+  color: var(--optionb-ink);
+  background: var(--optionb-paper-warm);
+}
+
+.reading-passes .rp-partner h2,
+.reading-passes .rp-partner .rp-partner-sub,
+.reading-passes .rp-partner div > p:not(.rp-partner-sub) { color: var(--optionb-ink); }
+.reading-passes .rp-partner > svg { color: var(--optionb-burgundy); }
+.reading-passes .rp-assurance { border-radius: var(--optionb-radius-surface); background: var(--optionb-burgundy-deep); }
+.reading-passes .rp-world { border-color: var(--optionb-line); border-radius: var(--optionb-radius-surface); background: var(--optionb-paper-warm); }
+.reading-passes .rp-final { border-color: var(--optionb-burgundy-deep); border-radius: var(--optionb-radius-surface); background: var(--optionb-burgundy-deep); }
+.reading-passes .rp-button { border-radius: var(--optionb-radius-control); background: var(--optionb-burgundy); color: #fff9ee; box-shadow: none; }
+.reading-passes .rp-button:hover { background: var(--optionb-burgundy-deep); }
+
+/* Book detail is an editorial room on paper. The existing dark reader and
+   listener remain immersive and are intentionally not targeted here. */
+.book-detail-page.book-detail-page--reference {
+  --book-reference-ink: var(--optionb-paper);
+  --book-reference-surface: #fffdf9;
+  --book-reference-ivory: var(--optionb-ink);
+  --book-reference-gold: var(--optionb-burgundy);
+  --book-reference-line: var(--optionb-line);
+  color: var(--optionb-ink);
+  background: linear-gradient(180deg, var(--optionb-paper-warm), var(--optionb-paper) 34rem);
+}
+
+.book-detail-page.book-detail-page--reference .book-detail-reference__return a { color: var(--optionb-ink-muted) !important; }
+.book-detail-page.book-detail-page--reference :is(.book-detail-title, .font-serif-light, .font-serif-display) { color: var(--optionb-burgundy-deep) !important; }
+.book-detail-page.book-detail-page--reference :is(.text-charcoal, .text-charcoal-soft) { color: var(--optionb-ink-muted) !important; }
+.book-detail-page.book-detail-page--reference :is(.italic-eyebrow, .overline, .book-detail-reference__details > .overline) { color: var(--optionb-burgundy) !important; }
+.book-detail-page.book-detail-page--reference :is(#rights-note, .book-experience-panel, .card-elegant, .book-detail-reference__rights) {
+  border-color: var(--optionb-line) !important;
+  border-radius: var(--optionb-radius-surface);
+  color: var(--optionb-ink);
+  background: #fffdf9 !important;
+  box-shadow: none;
+}
+.book-detail-page.book-detail-page--reference .book-experience-panel__item { color: var(--optionb-ink-muted); background: var(--optionb-paper-warm); }
+.book-detail-page.book-detail-page--reference .book-experience-panel__item p { color: var(--optionb-ink-muted); }
+.book-detail-page.book-detail-page--reference .book-experience-panel__item :is(svg, strong),
+.book-detail-page.book-detail-page--reference .book-experience-panel__sync { color: var(--optionb-burgundy) !important; }
+.book-detail-page.book-detail-page--reference .btn-primary { border-color: var(--optionb-burgundy); background: var(--optionb-burgundy); color: #fff9ee; }
+.book-detail-page.book-detail-page--reference :is(.btn-secondary, .btn-link) { border-color: var(--optionb-line); background: #fffdf9; color: var(--optionb-burgundy); }
+.book-detail-page.book-detail-page--reference li > a { color: var(--optionb-burgundy) !important; }
+.book-detail-page.book-detail-page--reference .preview-payment-shell { border-color: var(--optionb-line); background: linear-gradient(110deg, var(--optionb-paper-warm), var(--optionb-paper)); }
+.book-detail-page.book-detail-page--reference .preview-payment-shell__copy :is(h2, p),
+.book-detail-page.book-detail-page--reference .preview-payment-shell__proof { color: var(--optionb-ink); }
+
+/* About, Journal, contact, legal, auth, account, and recovery routes share
+   the same centered measure and restrained editorial surfaces. */
+.about-v3__masthead,
+.journal-v2__masthead,
+.editorial-support-hero {
+  background: linear-gradient(115deg, var(--optionb-paper-warm), var(--optionb-paper));
+}
+
+.about-v3__masthead-inner,
+.about-v3__principles,
+.about-v3__desk,
+.journal-v2__masthead-inner,
+.journal-v2__content,
+.journal-v2__related,
+.editorial-support-hero > div {
+  width: min(calc(100% - 2rem), var(--optionb-content-width));
+}
+
+.about-v3__desk,
+.editorial-surface,
+.editorial-article-card,
+.error-route-panel,
+.auth-account-auth-card,
+.account-page-modern .account-panel {
+  border-radius: var(--optionb-radius-surface);
+  box-shadow: 0 1rem 3rem -2.5rem rgba(53, 16, 24, 0.38);
+}
+
+.auth-account-shell {
+  background: linear-gradient(180deg, var(--optionb-paper-warm), var(--optionb-paper));
+}
+
+.auth-account-auth-card {
+  border-color: var(--optionb-line);
+  background: #fffdf9;
+}
+
+.account-page-modern {
+  background: linear-gradient(180deg, var(--optionb-paper-warm), var(--optionb-paper));
+}
+
+/* One shared Option B colophon across every standard public route. */
+.optionb-site-footer {
+  border-top: 0;
+  color: var(--beige-50, #fff9ee);
+  background: var(--burgundy-900, #240c14);
+}
+
+.optionb-site-footer > div:first-child { display: none; }
+.optionb-site-footer > div:nth-of-type(2) { background: var(--burgundy-900, #240c14); }
+.optionb-site-footer > div:nth-of-type(2) > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.8fr) minmax(12rem, 0.72fr);
+  align-items: start;
+  gap: clamp(1rem, 2vw, 1.75rem);
+  padding-block: 1.9rem 1.6rem;
+}
+
+.optionb-site-footer [data-testid="footer-brand"] > p {
+  color: var(--beige-50, #fff9ee);
+  font: 400 1rem/1.4 var(--optionb-display);
+}
+
+.optionb-site-footer .home-footer-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.optionb-site-footer .home-footer-links nav { min-width: 0; }
+.optionb-site-footer .home-footer-links nav > div {
+  color: var(--gold-300, #f0d78e);
+  font: 600 0.625rem/1.2 var(--optionb-body);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.optionb-site-footer .home-footer-links ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  color: var(--beige-100, #f6ead7);
+  font: 400 0.82rem/1.2 var(--optionb-display);
+}
+
+.optionb-site-footer .home-footer-links a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.optionb-site-footer .home-footer-links a:hover,
+.optionb-site-footer .home-footer-links a:focus-visible,
+.optionb-site-footer .footer-home-note a { color: var(--gold-300, #f0d78e); }
+
+.optionb-site-footer [data-testid="footer-contact"] {
+  border-color: color-mix(in srgb, var(--gold-300, #f0d78e) 28%, transparent);
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.optionb-site-footer .footer-home-note__quote {
+  margin: 0;
+  color: var(--beige-50, #fff9ee);
+  font: italic 400 1.125rem/1.35 var(--optionb-display);
+}
+
+.optionb-site-footer .footer-social { margin-top: 0.75rem; padding-top: 0.75rem; }
+.optionb-site-footer .footer-social__label,
+.optionb-site-footer .footer-social__link-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.optionb-site-footer .footer-social__links { gap: 0.5rem; }
+.optionb-site-footer .footer-social__link {
+  width: 2.75rem;
+  min-width: 2.75rem;
+  height: 2.75rem;
+  min-height: 2.75rem;
+  border: 0;
+  border-radius: 50%;
+  padding: 0;
+  color: var(--beige-50, #fff9ee);
+  background: transparent;
+  box-shadow: none;
+}
+
+.optionb-site-footer .footer-social__link:hover,
+.optionb-site-footer .footer-social__link:focus-visible {
+  color: var(--gold-300, #f0d78e);
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.optionb-site-footer [data-testid="footer-copyright"] {
+  border-color: color-mix(in srgb, var(--gold-300, #f0d78e) 24%, transparent);
+}
+
+/* A quiet route entrance avoids abrupt SPA page swaps. Reader surfaces remain
+   untouched; the rule applies only to children of the standard public shell. */
+.layout > #main-content > :first-child {
+  animation: optionb-page-enter 220ms cubic-bezier(0.22, 0.68, 0, 1) both;
+}
+
+@keyframes optionb-page-enter {
+  from { opacity: 0.72; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .layout > #main-content > :first-child { animation: none; }
+  .public-page-frame :is(a, button),
+  .reference-library :is(a, button),
+  .reference-commerce :is(a, button),
+  .commerce-page :is(a, button) { transition-duration: 0.01ms; }
+}
+
+@media (max-width: 767px) {
+  .optionb-site-footer > div:nth-of-type(2) > div { grid-template-columns: 1fr; gap: 1.5rem; }
+  .optionb-site-footer .home-footer-links { gap: 0.75rem; }
+  .optionb-site-footer [data-testid="footer-contact"] { grid-column: auto; }
+  .commerce-page { padding-block: 1.5rem; }
+}
