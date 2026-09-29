@@ -66,14 +66,13 @@ jobs:
       - name: Verify exact PR469 baseline screenshot inputs
         run: |
           set -euo pipefail
-          echo "Downloaded baseline file inventory:"
-          find "$RUNNER_TEMP/pr469-reviewed-baseline" -maxdepth 9 -type f | head -80
-          home_screenshot="$(find "$RUNNER_TEMP/pr469-reviewed-baseline" -type f -path '*/screenshots/chromium/states/home-desktop/viewport.png' -print -quit)"
-          if [[ -z "$home_screenshot" ]]; then
-            echo "Expected reviewed Home screenshot is absent from the downloaded artifact." >&2
-            exit 1
-          fi
-          baseline_root="${home_screenshot%/screenshots/chromium/states/home-desktop/viewport.png}"
+          outer_artifact="$RUNNER_TEMP/pr469-reviewed-baseline"
+          test -s "$outer_artifact/artifact.zip"
+          unzip -t "$outer_artifact/artifact.zip"
+          baseline_root="$RUNNER_TEMP/pr469-reviewed-baseline-full"
+          mkdir -p "$baseline_root"
+          unzip -q "$outer_artifact/artifact.zip" -d "$baseline_root"
+          test -s "$baseline_root/screenshots/chromium/states/home-desktop/viewport.png"
           test -s "$baseline_root/screenshots/chromium/states/book-detail-live-desktop-1440/viewport.png"
           printf 'Exact PR469 baseline root: %s\n' "$baseline_root"
           echo "PR469_BASELINE_ROOT=$baseline_root" >> "$GITHUB_ENV"
