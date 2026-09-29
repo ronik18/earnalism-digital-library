@@ -45,7 +45,7 @@ const make = () => {
     current_pr_head: head,
     production_surface_sha256: production,
     canonical_logo_sha256: sha(path.join(root, "frontend/public/assets/brand/earnalism-brand-lockup.png")),
-    chromium: { summary_path: chromium.path, summary_sha256: chromium.sha256, expected: 65, captured: 65, stable: 65 },
+    chromium: { summary_path: chromium.path, summary_sha256: chromium.sha256, expected: 71, captured: 71, stable: 71 },
     firefox: { summary_path: firefox.path, summary_sha256: firefox.sha256, expected: 20, captured: 20, stable: 20, result: "PASS" },
     webkit: { summary_path: webkit.path, summary_sha256: webkit.sha256, expected: 20, captured: 20, stable: 20, result: "PASS" },
     article_stability: { article_mobile: { webkit: { expected: 10, captured: 10, stable: 10 }, chromium: { expected: 5, captured: 5, stable: 5 }, firefox: { expected: 5, captured: 5, stable: 5 } } },

@@ -1,6 +1,6 @@
 {
   "schema_version": "earnalism.seamless-brand-state-manifest.v1",
-  "supported_fixtures": ["public-safe", "reader-visual-safe", "listener-non-playable", "listener-approved-non-playable", "listener-disabled-safe", "sanitized-account", "error-404-contract", "tombstone-410-contract"],
+  "supported_fixtures": ["public-safe", "reader-visual-safe", "listener-non-playable", "listener-approved-non-playable", "listener-disabled-safe", "sanitized-account", "pricing-four-offers", "live-approved-book-detail", "error-404-contract", "tombstone-410-contract"],
   "supported_interactions": ["none", "sanitize-account-fixture", "open-mobile-menu", "open-library-filters", "scroll-to-footer"],
   "states": [
     {"id":"home-desktop","route":"/","viewport":{"width":1440,"height":1000},"zoom":100,"fixture":"public-safe","interaction":"none","capture":{"viewport":true,"brand_close_up":true}},
@@ -12,8 +12,14 @@
     {"id":"library-mobile","route":"/library","viewport":{"width":390,"height":844},"zoom":100,"fixture":"public-safe","interaction":"none","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
     {"id":"commerce-desktop","route":"/pricing","viewport":{"width":1440,"height":1000},"zoom":100,"fixture":"public-safe","interaction":"none","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
     {"id":"commerce-mobile","route":"/pricing","viewport":{"width":390,"height":844},"zoom":100,"fixture":"public-safe","interaction":"none","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
+    {"id":"commerce-offers-desktop-1440","route":"/pricing","viewport":{"width":1440,"height":1000},"zoom":100,"fixture":"pricing-four-offers","interaction":"none","introduced_in":"optionb-offer-grid-2c3","capture":{"viewport":true,"parent_surface_close_up":true}},
+    {"id":"commerce-offers-tablet-1024","route":"/pricing","viewport":{"width":1024,"height":1000},"zoom":100,"fixture":"pricing-four-offers","interaction":"none","introduced_in":"optionb-offer-grid-2c3","capture":{"viewport":true,"parent_surface_close_up":true}},
+    {"id":"commerce-offers-mobile-390","route":"/pricing","viewport":{"width":390,"height":844},"zoom":100,"fixture":"pricing-four-offers","interaction":"none","introduced_in":"optionb-offer-grid-2c3","capture":{"viewport":true,"parent_surface_close_up":true}},
     {"id":"book-detail-desktop","route":"/book/dracula","viewport":{"width":1440,"height":1000},"zoom":100,"fixture":"public-safe","interaction":"none","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
     {"id":"book-detail-mobile","route":"/book/dracula","viewport":{"width":390,"height":844},"zoom":100,"fixture":"public-safe","interaction":"none","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
+    {"id":"book-detail-live-desktop-1440","route":"/book/a-ghost-story","viewport":{"width":1440,"height":1000},"zoom":100,"fixture":"live-approved-book-detail","interaction":"none","introduced_in":"live-book-detail-2c3","capture":{"viewport":true,"parent_surface_close_up":true}},
+    {"id":"book-detail-live-tablet-1024","route":"/book/a-ghost-story","viewport":{"width":1024,"height":1000},"zoom":100,"fixture":"live-approved-book-detail","interaction":"none","introduced_in":"live-book-detail-2c3","capture":{"viewport":true,"parent_surface_close_up":true}},
+    {"id":"book-detail-live-mobile-390","route":"/book/a-ghost-story","viewport":{"width":390,"height":844},"zoom":100,"fixture":"live-approved-book-detail","interaction":"none","introduced_in":"live-book-detail-2c3","capture":{"viewport":true,"parent_surface_close_up":true}},
     {"id":"about-desktop","route":"/about","viewport":{"width":1440,"height":1000},"zoom":100,"fixture":"public-safe","interaction":"none","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
     {"id":"about-mobile","route":"/about","viewport":{"width":390,"height":844},"zoom":100,"fixture":"public-safe","interaction":"none","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
     {"id":"login-desktop","route":"/login","viewport":{"width":1440,"height":1000},"zoom":100,"fixture":"public-safe","interaction":"none","introduced_in":"auth-private-2b2","capture":{"viewport":true,"brand_close_up":true,"parent_surface_close_up":true}},
