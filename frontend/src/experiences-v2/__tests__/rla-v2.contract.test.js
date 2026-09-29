@@ -15,6 +15,7 @@ describe("Reader, Listener, and About v2 product truth", () => {
     const canonical = fs.readFileSync(path.join(process.cwd(), "src/config/publicNavigation.js"), "utf8");
     expect(header).toContain('import { PUBLIC_NAV_ITEMS } from "../../config/publicNavigation"');
     expect(header).toContain("PUBLIC_NAV_ITEMS.map");
+    expect(header).toContain('aria-current={item.key === activeNavKey ? "page" : undefined}');
     expect(header).toContain('aria-label={menuOpen ? "Close menu" : "Open menu"}');
     expect(header).toContain('aria-label="Primary navigation"');
     expect(header).toContain("const auth = useAuth();");
@@ -23,6 +24,7 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(header).toContain("to={accountHref}");
     expect(header).toContain('<EarnalismBrandLockup variant="desktop-header" />');
     expect(canonical).toContain('{ key: "audiobooks", to: "/library?availability=approved-audiobook", label: "Audiobooks" }');
+    expect(canonical).not.toContain("HOME_OPTION_B_NAV_ITEMS");
     expect(shared).toContain("min-height: 92px;");
     expect(shared).toContain("min-height: 84px;");
     expect(shared).toContain("min-height: 72px;");

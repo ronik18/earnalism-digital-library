@@ -30,12 +30,12 @@ describe("public CTA accuracy contract", () => {
   test("catalog destinations use browsing language instead of claiming that reading has started", () => {
     expect(header).toContain('role="search" data-testid="nav-search"');
     expect(header).toContain('data-testid={isAuthed ? "nav-account" : "nav-sign-in"}');
-    expect(header).toContain('data-testid="mobile-cta-library">Enter the Library');
+    expect(header).toContain("data-nav-key={n.key}");
     expect(hero).toContain('? "Enter the Library"');
     expect(hero).toContain('audiobooksDestination.includes("availability=approved-audiobook")');
     expect(hero).toContain('? "Enter the Listening Room"');
     expect(header).not.toContain('label: "Membership"');
-    expect(header).toContain("getPublicNavItems(loc)");
+    expect(header).toContain("const navigationItems = PUBLIC_NAV_ITEMS;");
     expect(navigation).toContain("export const PUBLIC_NAV_ITEMS");
   });
 

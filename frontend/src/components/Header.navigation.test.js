@@ -8,9 +8,7 @@ const globalStyles = fs.readFileSync(path.join(process.cwd(), "src/index.css"), 
 
 describe("premium header navigation", () => {
   test("uses only valid application routes and approved library filters", () => {
-    expect(navigation).toContain('{ key: "books", to: "/library", label: "Books" }');
-    expect(navigation).toContain('{ key: "authors", to: "/library?sort=author", label: "Authors" }');
-    expect(navigation).toContain('{ key: "collections", to: "/library#library-collection", label: "Collections" }');
+    expect(navigation).not.toContain("HOME_OPTION_B_NAV_ITEMS");
     expect(navigation).toContain('{ key: "home", to: "/", label: "Home" }');
     expect(navigation).toContain('{ key: "library", to: "/library", label: "Library" }');
     expect(navigation).toContain('{ key: "bengali", to: "/library?language=bn&availability=reader-ready", label: "Bengali Classics" }');
@@ -29,10 +27,10 @@ describe("premium header navigation", () => {
     expect(source).not.toContain('data-testid="header-cta-library"');
     expect(source.match(/data-testid="header-cta-library"/g) || []).toHaveLength(0);
     expect(source).toContain('data-testid="mobile-header-search"');
-    expect(source).toContain("getPublicNavItems(loc)");
+    expect(source).toContain("const navigationItems = PUBLIC_NAV_ITEMS;");
+    expect(source).toContain("import { PUBLIC_NAV_ITEMS, isPublicNavItemActive }");
     expect(source).toContain('data-testid="mobile-menu-toggle"');
-    expect(source).toContain('data-testid="mobile-cta-library">Enter the Library');
-    expect(source).toContain('className="mobile-menu-overlay__cta" data-testid="mobile-cta-library"');
+    expect(source).toContain("data-nav-key={n.key}");
     expect(source).toContain('data-testid={isAuthed ? "mobile-nav-account" : "mobile-nav-sign-in"}');
   });
 
@@ -54,7 +52,7 @@ describe("premium header navigation", () => {
     expect(styles).toContain("min-height: 2.75rem;");
     expect(styles).toContain("min-width: 2.75rem;");
     expect(styles).toContain("height: 3px;");
-    expect(styles).toContain("@media (min-width: 1360px)");
+    expect(styles).toContain("@media (min-width: 1280px)");
     expect(styles).toContain("--site-header-height: 5.75rem;");
     expect(styles).toContain("width: clamp(15rem, 18.5vw, 16.75rem);");
     expect(styles).toContain("background: var(--brand-lockup-paper, #fff9ee);");

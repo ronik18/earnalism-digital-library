@@ -13,10 +13,16 @@ if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(baseUrl)) throw new Error("HEADER_REVIEW
 fs.mkdirSync(output, { recursive: true });
 
 const navLabels = ["Home", "Library", "Bengali Classics", "English Classics", "Audiobooks", "Reading Pass", "About"];
-const homeNavLabels = ["Books", "Authors", "Collections", "Reading Pass", "About"];
+const activeLabelByState = {
+  home: "Home", library: "Library", "bengali-classics": "Bengali Classics", "english-classics": "English Classics",
+  audiobooks: "Audiobooks", "reading-pass": "Reading Pass", about: "About",
+};
 const routes = [
   { id: "home", path: "/" },
   { id: "library", path: "/library" },
+  { id: "bengali-classics", path: "/library?language=bn&availability=reader-ready" },
+  { id: "english-classics", path: "/library?language=en" },
+  { id: "audiobooks", path: "/library?availability=approved-audiobook" },
   { id: "book-detail", path: "/book/a-ghost-story" },
   { id: "reading-pass", path: "/pricing" },
   { id: "about", path: "/about" },
@@ -24,6 +30,8 @@ const routes = [
   { id: "login", path: "/login" },
   { id: "signup", path: "/signup" },
   { id: "privacy", path: "/privacy" },
+  { id: "terms", path: "/terms" },
+  { id: "copyright", path: "/copyright" },
   { id: "reader", path: "/reader/dracula?visual-fixture=1" },
   { id: "listener", path: "/listener/a-ghost-story?visual-fixture=1" },
 ];
@@ -94,7 +102,8 @@ try {
           logo_src: logo?.currentSrc || logo?.src || "",
           header_scroll_width: node.scrollWidth,
           header_client_width: node.clientWidth,
-          public_nav_labels: [...node.querySelectorAll('.premium-header-nav--desktop > a:not([data-testid="nav-sign-in"]):not([data-testid="nav-account"])')].map((link) => link.textContent.trim()),
+          public_nav_labels: [...node.querySelectorAll('.premium-header-nav--desktop > a[data-nav-key]')].map((link) => link.textContent.trim()),
+          active_public_nav_labels: [...node.querySelectorAll('.premium-header-nav--desktop > a[data-nav-key][aria-current="page"]')].map((link) => link.textContent.trim()),
           has_search_field: visible(".premium-header-search input"),
           has_mobile_search: visible('[data-testid="mobile-header-search"]'),
           has_immersive_search: visible('[aria-label="Search library"]'),
@@ -108,22 +117,27 @@ try {
       assert.ok(Math.abs(headerInfo.height - expectedHeaderHeight) <= 1, `${routeInfo.id} ${viewport.width}: header height ${headerInfo.height}px`);
       const expectedWidth = viewport.width >= 1280 ? [240, 270] : viewport.width >= 768 ? [205, 230] : [165, 190];
       assert.ok(headerInfo.logo_width >= expectedWidth[0] && headerInfo.logo_width <= expectedWidth[1], `${routeInfo.id} ${viewport.width}: logo width ${headerInfo.logo_width}`);
-      const expectedNavLabels = routeInfo.id === "home" ? homeNavLabels : navLabels;
-      if (viewport.width >= 1360 && !["reader", "listener"].includes(routeInfo.id)) assert.deepEqual(headerInfo.public_nav_labels, expectedNavLabels, `${routeInfo.id}: desktop nav labels/order`);
-      if (viewport.width >= 1360 && !["reader", "listener"].includes(routeInfo.id)) assert.equal(headerInfo.has_search_field, true, `${routeInfo.id}: shared desktop search`);
-      if (viewport.width < 1360 && !["reader", "listener"].includes(routeInfo.id)) assert.equal(headerInfo.has_mobile_search, true, `${routeInfo.id}: shared mobile search`);
+      const expectedNavLabels = navLabels;
+      if (viewport.width >= 1280 && !["reader", "listener"].includes(routeInfo.id)) assert.deepEqual(headerInfo.public_nav_labels, expectedNavLabels, `${routeInfo.id}: desktop nav labels/order`);
+      if (viewport.width >= 1280 && !["reader", "listener"].includes(routeInfo.id)) assert.deepEqual(headerInfo.active_public_nav_labels, activeLabelByState[routeInfo.id] ? [activeLabelByState[routeInfo.id]] : [], `${routeInfo.id}: single route-aware active item`);
+      if (viewport.width >= 1280 && !["reader", "listener"].includes(routeInfo.id)) assert.equal(headerInfo.has_search_field, true, `${routeInfo.id}: shared desktop search`);
+      if (viewport.width < 1280 && !["reader", "listener"].includes(routeInfo.id)) assert.equal(headerInfo.has_mobile_search, true, `${routeInfo.id}: shared mobile search`);
       if (["reader", "listener"].includes(routeInfo.id)) assert.equal(headerInfo.has_immersive_search, true, `${routeInfo.id}: immersive search affordance`);
 
       let menuLabels = [...headerInfo.public_nav_labels];
       const hasImmersiveHeader = ["reader", "listener"].includes(routeInfo.id);
-      if (viewport.width < 1360 || hasImmersiveHeader) {
+      if (viewport.width < 1280 || hasImmersiveHeader) {
         const menuToggle = header.locator('[data-testid="mobile-menu-toggle"], .experience-header__menu-toggle').first();
         await menuToggle.click();
         const menu = page.locator("#mobile-menu, #experience-header-menu").first();
         await menu.waitFor({ state: "visible" });
         menuLabels = await menu.locator("a").allTextContents();
+        const canonicalMenuLabels = await menu.locator("a[data-nav-key]").allTextContents();
+        assert.deepEqual(canonicalMenuLabels.map((label) => label.trim()), expectedNavLabels, `${routeInfo.id} ${viewport.width}: exact canonical menu options`);
         assert.deepEqual(menuLabels.slice(0, expectedNavLabels.length).map((label) => label.trim()), expectedNavLabels, `${routeInfo.id} ${viewport.width}: menu labels/order`);
         assert.match(menuLabels[expectedNavLabels.length]?.trim() || "", /^(Sign In|Account)$/, `${routeInfo.id} ${viewport.width}: account action follows route navigation`);
+        const activeMenuLabels = (await menu.locator('a[data-nav-key][aria-current="page"]').allTextContents()).map((label) => label.trim());
+        assert.deepEqual(activeMenuLabels, activeLabelByState[routeInfo.id] ? [activeLabelByState[routeInfo.id]] : [], `${routeInfo.id} ${viewport.width}: menu active state`);
         if (routeInfo.id === "home" && viewport.width === 390) await page.screenshot({ path: path.join(output, "home-mobile-menu.png"), fullPage: true, animations: "disabled" });
         if (routeInfo.id === "reader" && viewport.width === 390) await page.screenshot({ path: path.join(output, "reader-mobile-menu.png"), fullPage: true, animations: "disabled" });
         if (routeInfo.id === "listener" && viewport.width === 390) await page.screenshot({ path: path.join(output, "listener-mobile-menu.png"), fullPage: true, animations: "disabled" });

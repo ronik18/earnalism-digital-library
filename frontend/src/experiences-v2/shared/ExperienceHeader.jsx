@@ -6,7 +6,7 @@ import { PUBLIC_NAV_ITEMS } from "../../config/publicNavigation";
 import { useAuth } from "../../context/AuthContext";
 import ExperienceIconButton from "./ExperienceIconButton";
 
-export default function ExperienceHeader({ compact = false, onSearch, onNotifications, onNavigate, trailingLabel = "Library" }) {
+export default function ExperienceHeader({ compact = false, onSearch, onNotifications, onNavigate, trailingLabel = "Library", activeNavKey = null }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuToggleRef = useRef(null);
   const auth = useAuth();
@@ -43,7 +43,7 @@ export default function ExperienceHeader({ compact = false, onSearch, onNotifica
         </button>
       </div>
       {menuOpen && <nav id="experience-header-menu" className="experience-header__menu" aria-label="Primary navigation">
-        {PUBLIC_NAV_ITEMS.map(({ key, label, to }) => <Link key={key} to={to} onClick={() => setMenuOpen(false)}>{label}</Link>)}
+        {PUBLIC_NAV_ITEMS.map((item) => <Link key={item.key} data-nav-key={item.key} to={item.to} aria-current={item.key === activeNavKey ? "page" : undefined} onClick={() => setMenuOpen(false)}>{item.label}</Link>)}
         <Link to={accountHref} data-testid={isAuthed ? "experience-menu-account" : "experience-menu-sign-in"} onClick={() => setMenuOpen(false)}>{accountLabel}</Link>
       </nav>}
     </header>

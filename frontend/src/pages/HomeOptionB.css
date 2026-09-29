@@ -70,7 +70,6 @@
   letter-spacing: 0 !important;
   text-transform: none;
 }
-.layout--homepage-option-b .premium-site-header--reference-home .premium-header-nav > a::after { display: none; }
 .layout--homepage-option-b .premium-site-header--reference-home .premium-header-nav > a:hover { color: var(--burgundy-600); }
 .layout--homepage-option-b .premium-site-header--reference-home .premium-header-nav > a[aria-current="page"] { color: var(--burgundy-700); }
 .layout--homepage-option-b .premium-site-header--reference-home .premium-header-nav > a[data-testid="nav-sign-in"] svg,

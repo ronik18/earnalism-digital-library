@@ -16,7 +16,7 @@ import { useSettings } from "../context/SettingsContext";
 import { useAuth } from "../context/AuthContext";
 import EarnalismBrandLockup from "./EarnalismBrandLockup";
 import { getEnabledSocialLinks } from "../config/socialLinks";
-import { getPublicNavItems, isPublicNavItemActive } from "../config/publicNavigation";
+import { PUBLIC_NAV_ITEMS, isPublicNavItemActive } from "../config/publicNavigation";
 import "./Header.css";
 
 const SOCIAL_ICONS = {
@@ -56,7 +56,7 @@ export default function Header() {
   const usesLibraryReferenceShell = loc.pathname === "/library";
   const usesCommerceReferenceShell = loc.pathname === "/pricing";
   const usesProfileMobileShell = loc.pathname === "/account";
-  const navigationItems = getPublicNavItems(loc);
+  const navigationItems = PUBLIC_NAV_ITEMS;
 
   useEffect(() => {
     if (!open) return undefined;
@@ -123,6 +123,7 @@ export default function Header() {
             <Link
               key={n.key}
               to={n.to}
+              data-nav-key={n.key}
               data-testid={`nav-${n.label.toLowerCase().replace(/\s/g, '-')}`}
               className={`tracking-[0.12em] transition-colors whitespace-nowrap ${isPublicNavItemActive(n, loc) ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`}
               aria-current={isPublicNavItemActive(n, loc) ? "page" : undefined}
@@ -180,6 +181,7 @@ export default function Header() {
               <Link
                 key={n.key}
                 to={n.to}
+                data-nav-key={n.key}
                 data-testid={`mobile-nav-${n.label.toLowerCase().replace(/\s/g, '-')}`}
                 className={`py-4 text-[0.95rem] tracking-wide border-b border-brand-soft ${isPublicNavItemActive(n, loc) ? "text-burgundy" : "text-charcoal"}`}
                 aria-current={isPublicNavItemActive(n, loc) ? "page" : undefined}
@@ -196,7 +198,6 @@ export default function Header() {
             >
               {accountLabel}
             </NavLink>
-            <Link to="/library" className="mobile-menu-overlay__cta" data-testid="mobile-cta-library">Enter the Library</Link>
             {activeSocials.length > 0 && (
               <nav className="mobile-menu-overlay__socials" aria-label="Earnalism social links" data-testid="mobile-socials">
                 {activeSocials.map(({ id, ariaLabel, external, Icon, url }) => (

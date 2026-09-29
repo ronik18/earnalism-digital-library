@@ -112,9 +112,7 @@ const mobileMenuDiagnostics = () => {
     header: styleSummary(header), dialog: styleSummary(dialog), ancestors, visibleToggleCount: toggle ? 1 : 0, activeVisibleOwnerDialogCount: visibleDialogCount,
     toggleExpanded: toggle?.getAttribute("aria-expanded") || null, ariaControls: toggle?.getAttribute("aria-controls") || null,
     ariaModal: dialog?.getAttribute("aria-modal") || null, closeVisible: Boolean(dialog?.querySelector('button[aria-label="Close menu"]') && visible(dialog.querySelector('button[aria-label="Close menu"]'))),
-    requiredRowsVisible: (location.pathname === "/"
-      ? ["mobile-nav-home", "mobile-nav-library", "mobile-nav-reading-pass", "mobile-cta-library"]
-      : ["mobile-nav-home", "mobile-nav-library", "mobile-nav-reading-pass"])
+    requiredRowsVisible: ["mobile-nav-home", "mobile-nav-library", "mobile-nav-reading-pass"]
       .every((id) => { const row = dialog?.querySelector(`[data-testid="${id}"]`); return Boolean(row && visible(row)); }),
     bodyScrollLocked: document.body.style.overflow === "hidden",
     backgroundInert: [document.getElementById("main-content"), document.querySelector("footer")].filter(Boolean).every((node) => node.hasAttribute("inert") && node.getAttribute("aria-hidden") === "true"),
