@@ -234,7 +234,7 @@ describe("UX conversion static signals", () => {
     expect(editorialHomeSurface).toContain('aria-label="Explore the library by collection"');
     expect(editorialHomeSurface).toContain("Bengali Classics");
     expect(editorialHomeSurface).toContain("English Classics");
-    expect(editorialHomeSurface).toContain("Modern Favourites");
+    expect(editorialHomeSurface).toContain("The Listening Room");
     expect(editorialHomeSurface).toContain("Curated Collections");
     expect(editorialHomeSurface).toContain("<ReaderPerspectives />");
     expect(editorialHomeSurface).not.toContain("listeningItems");

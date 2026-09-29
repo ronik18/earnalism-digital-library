@@ -38,15 +38,17 @@ function renderHeader() {
 describe("owner-approved Header composition", () => {
   afterEach(() => { document.body.innerHTML = ""; });
 
-  test("renders the official logo, Option B navigation, search, Sign In, and Join", () => {
+  test("renders the official logo, Option B navigation, search, and a single Sign In action", () => {
     const { container, cleanup } = renderHeader();
     expect(container.querySelector('[data-testid="brand-logo"] img')).not.toBeNull();
     expect(container.querySelector('.home-option-b-search input[aria-label="Search books, authors, topics"]')).not.toBeNull();
     expect(container.querySelector('[data-testid="nav-books"]')?.getAttribute("href")).toBe("/library");
     expect(container.querySelector('[data-testid="nav-authors"]')?.getAttribute("href")).toBe("/library?sort=author");
     expect(container.querySelector('[data-testid="nav-collections"]')?.getAttribute("href")).toBe("/library#library-collection");
-    expect(container.querySelector('[data-testid="nav-sign-in"]')).not.toBeNull();
-    expect(container.querySelector('[data-testid="nav-join"]')?.getAttribute("href")).toBe("/signup");
+    expect(container.querySelector('[data-testid="nav-sign-in"]')).toBeNull();
+    expect(container.querySelector('[data-testid="nav-sign-in-cta"]')?.getAttribute("href")).toBe("/login");
+    expect(container.querySelector('[data-testid="nav-join"]')).toBeNull();
+    expect(container.querySelector('[data-testid="nav-sign-in-cta"]')?.textContent).toBe("Sign In");
     expect(container.querySelector(".premium-header-nav")).not.toBeNull();
     expect(container.querySelector('[data-testid="header-cta-library"]')).toBeNull();
     expect(document.documentElement.scrollWidth).toBeLessThanOrEqual(document.documentElement.clientWidth);
