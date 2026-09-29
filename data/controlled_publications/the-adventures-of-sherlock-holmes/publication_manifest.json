@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-adventures-of-sherlock-holmes",
   "title": "The Adventures of Sherlock Holmes",
-  "generated_at": "2026-08-08T10:14:17.204939+00:00",
+  "generated_at": "2026-09-29T05:07:50.062589+00:00",
   "content": {
     "source_hash": "bde9b313e5f4e7674d64afb47af1e6ba4e312ca68ad360c1fb575c717691908a",
     "content_hash": "b10d37f4214b7f74247590da5140b5ef248c771974262faa9d9f30736090b1ec",
@@ -101,8 +101,8 @@
   "rights": {
     "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "65b96ad26488a9b1b1a97b3e7127da5b5db959802eaa93f7a2ffc498aa5bc108"
+    "publication_region": "in",
+    "evidence_sha256": "dd70c8a86f6308e3d56692feaa49071366d50df603da580df5821f561e9efafd"
   },
   "reader_release": {
     "status": "READY_FOR_APPROVAL",
@@ -121,10 +121,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "1baf721b8a81a5790c6c5daf6e09b1ad46f628740e4b2904ec91732b786b0016",
+    "public_book": "e32af046eaa26f0e4ed73e9a12754137ca8d162580ef582aa277f89d99357073",
     "reader_manifest": "1cea3e4c367856874c8b16320526eff1a4dcc6c2f3be12fea2e3f6055cb852b2",
-    "source_evidence": "65b96ad26488a9b1b1a97b3e7127da5b5db959802eaa93f7a2ffc498aa5bc108",
-    "approval_evidence": "0dde1e663113459200758e217fbccdab3dbbd002a4ecb73967da8441a5dca4e3"
+    "source_evidence": "dd70c8a86f6308e3d56692feaa49071366d50df603da580df5821f561e9efafd",
+    "approval_evidence": "8b9f85433857b9cc1b9e08b9e1f057241aaae534b55789940f02a60e98158dbc"
   },
-  "manifest_sha256": "84005afc412b1de62eb32a95885e9f2f6d1b301c0de8d078447fe9ec48c28ac3"
+  "manifest_sha256": "a6632e02311dc2a79c2db1fc68e085e5cfc6730dd5b7417be1081f520e213132"
 }
