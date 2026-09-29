@@ -54,15 +54,17 @@ jobs:
           npx playwright install --with-deps chromium
 
       - name: Download the exact merged PR469 baseline evidence
-        env:
-          GH_TOKEN: ${{ github.token }}
+        uses: actions/download-artifact@v4
+        with:
+          artifact-ids: 11025247154
+          repository: ${{ github.repository }}
+          run-id: 36549307831
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/pr469-reviewed-baseline
+
+      - name: Verify exact PR469 baseline screenshot inputs
         run: |
           set -euo pipefail
-          artifact_id="$(gh api "/repos/$GITHUB_REPOSITORY/actions/runs/36549307831/artifacts" --jq '.artifacts[] | select(.id == 11025247154 and .expired == false) | .id')"
-          test "$artifact_id" = "11025247154"
-          gh api "/repos/$GITHUB_REPOSITORY/actions/artifacts/$artifact_id/zip" > "$RUNNER_TEMP/pr469-reviewed-baseline.zip"
-          mkdir -p "$RUNNER_TEMP/pr469-reviewed-baseline"
-          unzip -q "$RUNNER_TEMP/pr469-reviewed-baseline.zip" -d "$RUNNER_TEMP/pr469-reviewed-baseline"
           test -s "$RUNNER_TEMP/pr469-reviewed-baseline/screenshots/chromium/states/home-desktop/viewport.png"
           test -s "$RUNNER_TEMP/pr469-reviewed-baseline/screenshots/chromium/states/book-detail-live-desktop-1440/viewport.png"
 
