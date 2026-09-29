@@ -1,6 +1,6 @@
 {
   "schema": "earnalism-lane2-first-activation-state-v1",
-  "updated_at": "2026-09-29T06:51:05Z",
+  "updated_at": "2026-09-29T06:59:32Z",
   "branch": "codex/lane2-first-activation-batch",
   "slug": "the-adventures-of-sherlock-holmes",
   "authoritative_live_set": [
@@ -41,5 +41,13 @@
   "activation_ready": false,
   "live_approval_changed": false,
   "non_fabricable_next_action": "Authenticated owner/legal determination for commercial India text-reader publication of this exact PG #1661 edition and hashes, recorded through trusted rights registry and edition-bound publication authorization.",
-  "decision_packet": "internal/earnalism_intelligence/sherlock_holmes_publication_decision_packet_20260929.md"
+  "decision_packet": "internal/earnalism_intelligence/sherlock_holmes_publication_decision_packet_20260929.md",
+  "audio_text_release_coupling_found": false,
+  "audio_text_release_evidence": {
+    "canonical_audio_live_set": [],
+    "reader_validator": "controlled_reader_validation_issues strips audio-only checks; text access remains separately gated",
+    "control_test": "a-ghost-story with stale audio flags: reader validation PASS; audio validation FAIL as expected",
+    "candidate_metadata": "all nine inspected candidates have audio-related local metadata; seven manifest candidates fail only the claimed audio lane for missing audio hashes, while reader release remains independently evaluated",
+    "changes_to_audio_state": false
+  }
 }

@@ -144,7 +144,10 @@ def test_checked_in_manifest_flags_fail_closed_when_release_evidence_is_revoked(
 
 
 def test_reader_truth_remains_valid_when_only_audio_truth_is_stale(tmp_path):
-    slug = "bn-066"
+    # Use an actually live, hash-bound text title as the control. The former
+    # bn-066 fixture is no longer in the authoritative launch allowlist, so
+    # its unrelated publication hold made this test unable to isolate audio.
+    slug = "a-ghost-story"
     artifact_dir = tmp_path / slug
     shutil.copytree(ROOT / "backend/data/controlled_publications" / slug, artifact_dir)
     public_path = artifact_dir / "public_book.json"
