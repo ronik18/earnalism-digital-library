@@ -7,7 +7,7 @@
     "frontend/api/removed-content.js"
   ],
   "routes": [
-    {"id":"home","path":"/","classification":"PUBLIC_INDEXABLE","expected_shell":"shared-public-header","review":{"desktop":true,"mobile":true},"fixture":"public-safe"},
+    {"id":"home","path":"/","classification":"PUBLIC_INDEXABLE","expected_shell":"shared-public-header","review":{"desktop":true,"tablet":true,"mobile":true},"fixture":"public-safe"},
     {"id":"library","path":"/library","classification":"PUBLIC_INDEXABLE","expected_shell":"shared-public-header","review":{"desktop":true,"mobile":true},"fixture":"public-safe"},
     {"id":"pricing","path":"/pricing","classification":"PUBLIC_INDEXABLE","expected_shell":"shared-public-header","review":{"desktop":true,"mobile":true},"fixture":"public-safe"},
     {"id":"book-dracula","path":"/book/dracula","classification":"PUBLIC_INDEXABLE","expected_shell":"shared-public-header","review":{"desktop":true,"mobile":true},"fixture":"public-safe"},

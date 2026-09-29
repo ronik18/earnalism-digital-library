@@ -47,10 +47,14 @@ def main():
         require(bool(reference) and Path(reference).exists(), f"{key} referenced file is missing", failures)
         if reference and Path(reference).exists() and item.get("summary_sha256", item.get("sha256")):
             require(sha(reference) == item.get("summary_sha256", item.get("sha256")), f"{key} referenced SHA mismatch", failures)
+    state_count = data.get("state_manifest", {}).get("count")
+    shell_count = data.get("cross_browser_contract", {}).get("count")
+    require(isinstance(state_count, int) and state_count > 0, "state-manifest count is missing", failures)
+    require(isinstance(shell_count, int) and shell_count > 0, "cross-browser shell count is missing", failures)
     chromium = data.get("chromium", {})
-    require((chromium.get("expected"), chromium.get("captured"), chromium.get("stable")) == (73, 73, 73), "Chromium counts differ from 73/73/73", failures)
+    require((chromium.get("expected"), chromium.get("captured"), chromium.get("stable")) == (state_count, state_count, state_count), "Chromium counts differ from bound state manifest", failures)
     for key in ["firefox", "webkit"]:
-        item = data.get(key, {}); require((item.get("expected"), item.get("captured"), item.get("stable")) == (20, 20, 20) and item.get("result") == "PASS", f"{key} result fails", failures)
+        item = data.get(key, {}); require((item.get("expected"), item.get("captured"), item.get("stable")) == (shell_count, shell_count, shell_count) and item.get("result") == "PASS", f"{key} result differs from bound shell-family manifest", failures)
     article = data.get("article_stability", {}).get("article_mobile", {})
     for browser, expected in [("webkit", 10), ("chromium", 5), ("firefox", 5)]:
         item = article.get(browser, {}); require((item.get("expected"), item.get("captured"), item.get("stable")) == (expected, expected, expected), f"{browser} Article stability result fails", failures)

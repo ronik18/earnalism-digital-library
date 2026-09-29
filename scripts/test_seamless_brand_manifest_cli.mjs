@@ -51,7 +51,7 @@ function runCli(args) {
 
 test("checked-in manifest passes", () => assert.equal(validateStateManifest(manifest, inventory), manifest));
 test("route count is 21", () => assert.equal(inventory.routes.length, 21));
-test("manifest contains sixty-five established states plus eight commerce, live-book, and legal responsive states", () => assert.equal(manifest.states.length, 73));
+test("manifest includes every approved route and responsive state", () => assert.equal(manifest.states.length, 74));
 test("four live Reading Pass offer screenshots cover 1440, 1024, and 390 widths", () => {
   const states = manifest.states.filter((state) => state.fixture === "pricing-four-offers");
   assert.deepEqual(states.map(({ viewport }) => viewport.width), [1440, 1024, 390]);
@@ -80,12 +80,12 @@ test("unknown filtered state fails", () => assert.throws(() => selectStateRecord
 test("duplicate filtered state fails", () => assert.throws(() => selectStateRecords(manifest, [manifest.states[0].id, manifest.states[0].id]), /duplicate/));
 test("list-states launches no browser", () => {
   const lines = runCli(["--manifest", manifestPath, "--route-inventory", inventoryPath, "--list-states"]).split("\n");
-  assert.equal(lines.length, 73);
+  assert.equal(lines.length, manifest.states.length);
   assert.deepEqual(lines.map((line) => JSON.parse(line).id), manifest.states.map((state) => state.id));
 });
 test("dry-run launches no browser", () => {
   const result = JSON.parse(runCli(["--manifest", manifestPath, "--route-inventory", inventoryPath, "--dry-run"]));
-  assert.equal(result.total_states, 73);
+  assert.equal(result.total_states, manifest.states.length);
   assert.deepEqual(result.selected_states, manifest.states.map((state) => state.id));
 });
 test("manifest and inventory SHA values are reported", () => {
