@@ -41,7 +41,7 @@ const states = [
   ["library-filter-mobile", "/library", 390, 844, "filter"], ["commerce-desktop", "/pricing", 1440, 1000, "commerce"],
   ["commerce-mobile", "/pricing", 390, 844, "commerce"], ["reading-pass-mobile", "/pricing", 390, 844, "commerce"],
   ["mobile-navigation", "/", 390, 844, "navigation"], ["mobile-navigation-320", "/", 320, 568, "navigation"], ["mobile-navigation-430", "/", 430, 932, "navigation"],
-  ["mobile-navigation-768", "/", 768, 1024, "navigation"], ["mobile-navigation-landscape", "/", 844, 390, "navigation"], ["desktop-navigation-1024", "/", 1024, 768, "navigation"], ["desktop-navigation-1279", "/", 1279, 800, "navigation"],
+  ["mobile-navigation-768", "/", 768, 1024, "navigation"], ["mobile-navigation-landscape", "/", 844, 390, "navigation"], ["mobile-navigation-1024", "/", 1024, 768, "navigation"], ["mobile-navigation-1279", "/", 1279, 800, "navigation"],
   ["book-detail-desktop", `/book/${primaryReaderSlug}`, 1440, 1000, "book"],
   ["book-detail-mobile", `/book/${primaryReaderSlug}`, 390, 844, "book"], ["reader-desktop", `/reader/${primaryReaderSlug}?visual-fixture=1`, 1440, 1000, "reader"],
   ["reader-mobile", `/reader/${primaryReaderSlug}?visual-fixture=1`, 390, 844, "reader"], ["listener-desktop", `/listener/${primaryReaderSlug}?visual-fixture=1`, 1440, 1000, "listener"],
@@ -225,7 +225,7 @@ async function capture(state, context, sessionFontLoad) {
   let navigation = null;
   let navigationClose = null;
   if (state.family === "navigation") {
-    if (state.viewport.width >= 1024) {
+    if (state.viewport.width >= 1360) {
       navigation = await page.evaluate(() => ({
         mode: "desktop-navigation",
         navVisible: (() => { const node = document.querySelector(".premium-header-nav"); const box = node?.getBoundingClientRect(); return Boolean(node && getComputedStyle(node).display !== "none" && box.width > 0); })(),
