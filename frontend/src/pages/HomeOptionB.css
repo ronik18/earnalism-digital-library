@@ -518,8 +518,8 @@
 }
 @media (max-width: 899px) {
   .layout--homepage-option-b .premium-site-header--reference-home { --site-header-height: 72px; height: 72px; min-height: 72px; }
-  .layout--homepage-option-b .premium-site-header--reference-home .premium-header-inner { width: calc(100% - 40px); }
-  .layout--homepage-option-b .premium-site-header--reference-home .header-brand-cluster { flex-basis: clamp(165px, calc(100vw - 200px), 190px); width: clamp(165px, calc(100vw - 200px), 190px); }
+  .layout--homepage-option-b .premium-site-header--reference-home .premium-header-inner { width: max(calc(100% - 40px), 152px); }
+  .layout--homepage-option-b .premium-site-header--reference-home .header-brand-cluster { flex-basis: clamp(48px, calc(100vw - 160px), 190px); width: clamp(48px, calc(100vw - 160px), 190px); }
   .layout--homepage-option-b .premium-site-header--reference-home .premium-header-nav--desktop { display: none; }
   .home-reference-page[data-testid="home-page"] .reference-home__hero { min-height: 450px; padding: 34px var(--home-option-b-gutter) 98px; }
   .home-reference-page[data-testid="home-page"] .reference-home__hero-copy { width: 60%; }
@@ -541,19 +541,9 @@
     font-size: calc(0.95rem + 2pt) !important;
   }
 }
-@media (max-width: 280px) {
-  .layout--homepage-option-b .premium-site-header--reference-home .premium-header-inner { width: calc(100% - 8px); gap: 4px; }
-  .layout--homepage-option-b .premium-site-header--reference-home .header-brand-cluster {
-    flex: 0 1 clamp(48px, calc(100vw - 112px), 112px);
-    width: clamp(48px, calc(100vw - 112px), 112px);
-    min-width: 48px;
-  }
-  .layout--homepage-option-b .premium-site-header--reference-home .brand-header-logo__custom { max-width: 100%; }
-  .layout--homepage-option-b .premium-site-header--reference-home [data-testid="mobile-menu-toggle"] { margin-right: 0; }
-}
 @media (max-width: 767px) {
   .layout--homepage-option-b .premium-site-header--reference-home { --site-header-height: 72px; height: 72px; min-height: 72px; }
-  .layout--homepage-option-b .premium-site-header--reference-home .header-brand-cluster { flex-basis: clamp(165px, calc(100vw - 200px), 190px); width: clamp(165px, calc(100vw - 200px), 190px); }
+  .layout--homepage-option-b .premium-site-header--reference-home .header-brand-cluster { flex-basis: clamp(48px, calc(100vw - 160px), 190px); width: clamp(48px, calc(100vw - 160px), 190px); }
   .home-reference-page[data-testid="home-page"] .reference-home { --home-option-b-gutter: 20px; }
   .home-reference-page[data-testid="home-page"] .reference-home__hero {
     min-height: 570px;
@@ -680,4 +670,17 @@
   .home-reference-page[data-testid="home-page"] .reference-reader-perspectives__benefits article:nth-child(odd) { border-left: 0; }
   .home-reference-page[data-testid="home-page"] .reference-reader-perspectives__benefits article:nth-child(n + 3) { border-top: 1px solid color-mix(in srgb, var(--burgundy-800) 18%, transparent); }
   .home-reference-page[data-testid="home-page"] .reference-home__pass-listening-note { font-size: 12px; }
+}
+
+/* This must follow the general mobile block: browser zoom can reduce the
+   effective layout width below 280px while retaining 320px physical width. */
+@media (max-width: 280px) {
+  .layout--homepage-option-b .premium-site-header--reference-home .premium-header-inner { width: calc(100% - 8px); gap: 4px; padding-inline: 0 !important; }
+  .layout--homepage-option-b .premium-site-header--reference-home .header-brand-cluster {
+    flex: 0 1 clamp(48px, calc(100vw - 112px), 112px);
+    width: clamp(48px, calc(100vw - 112px), 112px);
+    min-width: 48px;
+  }
+  .layout--homepage-option-b .premium-site-header--reference-home .brand-header-logo__custom { max-width: 100%; }
+  .layout--homepage-option-b .premium-site-header--reference-home [data-testid="mobile-menu-toggle"] { margin-right: 0; }
 }

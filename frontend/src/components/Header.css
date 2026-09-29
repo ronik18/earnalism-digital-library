@@ -676,7 +676,7 @@
 @media (max-width: 767px) {
   .premium-site-header { --site-header-height: 4.5rem; }
   .premium-site-header .premium-header-inner { padding-inline: 1rem !important; gap: 0.5rem !important; }
-  .premium-site-header .earnalism-brand-lockup--desktop-header { width: min(11.75rem, calc(100vw - 11rem)); }
+  .premium-site-header .earnalism-brand-lockup--desktop-header { width: min(11.75rem, max(2.5rem, calc(100vw - 7.5rem))); }
   .premium-site-header .premium-mobile-search,
   .premium-site-header .premium-mobile-menu-toggle { min-width: 44px; min-height: 44px; }
 }
