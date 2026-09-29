@@ -26,7 +26,7 @@
 .experience-header .earnalism-brand-lockup { width: min(16rem, 48vw); padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow:none; }
 .experience-header .earnalism-brand-lockup img { display: block; width: 100%; height: auto; }
 @media (min-width: 768px) and (max-width: 1279px) { .experience-header, .experience-header--compact { height: 84px; min-height: 84px; padding-inline: 18px; }.experience-header .earnalism-brand-lockup { width: clamp(12.8rem, 20vw, 14.4rem); } }
-@media (max-width: 767px) { .experience-header, .experience-header--compact { height: 72px; min-height: 72px; padding: 6px 16px; }.experience-header .earnalism-brand-lockup { width: min(11.75rem, calc(100vw - 11rem)); padding:0; }.experience-header__label { display:none; } }
+@media (max-width: 767px) { .experience-header, .experience-header--compact { height: 72px; min-height: 72px; padding: 6px 16px; }.experience-header .earnalism-brand-lockup { width: min(11.75rem, max(2.5rem, calc(100vw - 7.5rem))); padding:0; }.experience-header__label { display:none; } }
 .experience-icon-button { width: 44px; height: 44px; display: inline-grid; place-items: center; border: 1px solid color-mix(in srgb, var(--qh-burgundy, #651D32) 30%, transparent); border-radius: 4px; background: transparent; color: var(--qh-burgundy, #651D32); cursor: pointer; }
 .experience-icon-button:hover:not(:disabled) { background: color-mix(in srgb, var(--ev2-gold) 12%, transparent); }
 .experience-icon-button:disabled { opacity: .45; cursor: not-allowed; }
