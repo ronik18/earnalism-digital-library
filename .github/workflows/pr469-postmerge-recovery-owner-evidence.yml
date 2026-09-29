@@ -66,8 +66,12 @@ jobs:
       - name: Verify exact PR469 baseline screenshot inputs
         run: |
           set -euo pipefail
-          test -s "$RUNNER_TEMP/pr469-reviewed-baseline/screenshots/chromium/states/home-desktop/viewport.png"
-          test -s "$RUNNER_TEMP/pr469-reviewed-baseline/screenshots/chromium/states/book-detail-live-desktop-1440/viewport.png"
+          home_screenshot="$(find "$RUNNER_TEMP/pr469-reviewed-baseline" -type f -path '*/screenshots/chromium/states/home-desktop/viewport.png' -print -quit)"
+          test -n "$home_screenshot"
+          baseline_root="${home_screenshot%/screenshots/chromium/states/home-desktop/viewport.png}"
+          test -s "$baseline_root/screenshots/chromium/states/book-detail-live-desktop-1440/viewport.png"
+          printf 'Exact PR469 baseline root: %s\n' "$baseline_root"
+          echo "PR469_BASELINE_ROOT=$baseline_root" >> "$GITHUB_ENV"
 
       - name: Build production contract frontend
         run: |
@@ -85,7 +89,7 @@ jobs:
           SEAMLESS_BRAND_TEST_BASE_URL=http://127.0.0.1:13022 node scripts/test_library_catalogue_recovery_journey.mjs
           node scripts/capture_pr469_postmerge_recovery_states.mjs
           python3 scripts/package_pr469_postmerge_owner_review.py \
-            --prior "$RUNNER_TEMP/pr469-reviewed-baseline" \
+            --prior "$PR469_BASELINE_ROOT" \
             --library "$LIBRARY_RECOVERY_EVIDENCE_OUTPUT" \
             --supplemental "$RECOVERY_REVIEW_OUTPUT" \
             --output "$RUNNER_TEMP/pr469-postmerge-owner-review" \
