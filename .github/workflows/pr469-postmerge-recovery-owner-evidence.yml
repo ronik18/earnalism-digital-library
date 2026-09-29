@@ -1,0 +1,101 @@
+name: PR469 post-merge recovery owner evidence
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - frontend/src/pages/Home.jsx
+      - frontend/src/pages/Home.newsletter.test.jsx
+      - frontend/src/pages/Library.test.jsx
+      - frontend/src/components/EditorialHomeLibrarySurfaces.jsx
+      - scripts/test_library_catalogue_recovery_journey.mjs
+      - scripts/capture_pr469_postmerge_recovery_states.mjs
+      - scripts/package_pr469_postmerge_owner_review.py
+      - .github/workflows/pr469-postmerge-recovery-owner-evidence.yml
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  exact-head-owner-evidence:
+    name: Post-merge recovery owner evidence
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      npm_config_cache: ${{ github.workspace }}/.npm-cache
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.playwright-browsers
+      REACT_APP_BACKEND_URL: http://127.0.0.1:18007/api
+      REACT_APP_UAT_LOCAL: "true"
+    steps:
+      - name: Checkout exact pull request head
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            frontend/package-lock.json
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install repository dependencies and browser
+        run: |
+          npm ci
+          npm ci --prefix frontend --legacy-peer-deps
+          python3 -m pip install --disable-pip-version-check Pillow==10.3.0
+          npx playwright install --with-deps chromium
+
+      - name: Download the exact merged PR469 baseline evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          artifact_id="$(gh api "/repos/$GITHUB_REPOSITORY/actions/runs/36549307831/artifacts" --jq '.artifacts[] | select(.id == 11025247154 and .expired == false) | .id')"
+          test "$artifact_id" = "11025247154"
+          gh api "/repos/$GITHUB_REPOSITORY/actions/artifacts/$artifact_id/zip" > "$RUNNER_TEMP/pr469-reviewed-baseline.zip"
+          mkdir -p "$RUNNER_TEMP/pr469-reviewed-baseline"
+          unzip -q "$RUNNER_TEMP/pr469-reviewed-baseline.zip" -d "$RUNNER_TEMP/pr469-reviewed-baseline"
+          test -s "$RUNNER_TEMP/pr469-reviewed-baseline/screenshots/chromium/states/home-desktop/viewport.png"
+          test -s "$RUNNER_TEMP/pr469-reviewed-baseline/screenshots/chromium/states/book-detail-live-desktop-1440/viewport.png"
+
+      - name: Build production contract frontend
+        run: |
+          set -euo pipefail
+          npm --prefix frontend run build
+
+      - name: Run deterministic Library recovery journey and capture supplemental states
+        run: |
+          set -euo pipefail
+          node scripts/serve_frontend_build.js --port 13022 > "$RUNNER_TEMP/pr469-recovery-server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for _ in $(seq 1 45); do curl -fsS http://127.0.0.1:13022/ >/dev/null && break; sleep 1; done
+          curl -fsS http://127.0.0.1:13022/ >/dev/null
+          SEAMLESS_BRAND_TEST_BASE_URL=http://127.0.0.1:13022 node scripts/test_library_catalogue_recovery_journey.mjs
+          node scripts/capture_pr469_postmerge_recovery_states.mjs
+          python3 scripts/package_pr469_postmerge_owner_review.py \
+            --prior "$RUNNER_TEMP/pr469-reviewed-baseline" \
+            --library "$LIBRARY_RECOVERY_EVIDENCE_OUTPUT" \
+            --supplemental "$RECOVERY_REVIEW_OUTPUT" \
+            --output "$RUNNER_TEMP/pr469-postmerge-owner-review" \
+            --pr "$PR_NUMBER"
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          LIBRARY_RECOVERY_EVIDENCE_OUTPUT: ${{ runner.temp }}/pr469-library-recovery
+          RECOVERY_REVIEW_BASE_URL: http://127.0.0.1:13022
+          RECOVERY_REVIEW_OUTPUT: ${{ runner.temp }}/pr469-supplemental
+
+      - name: Publish exact-head owner review packet
+        uses: actions/upload-artifact@v7
+        with:
+          name: pr${{ github.event.pull_request.number }}-postmerge-recovery-owner-review-${{ github.event.pull_request.head.sha }}
+          path: ${{ runner.temp }}/pr469-postmerge-owner-review/**
+          if-no-files-found: error

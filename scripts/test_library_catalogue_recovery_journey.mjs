@@ -12,8 +12,7 @@ const output = process.env.LIBRARY_RECOVERY_EVIDENCE_OUTPUT || fs.mkdtempSync(pa
 fs.mkdirSync(output, { recursive: true });
 
 const books = [
-  { slug: "devdas", title: "দেবদাস / Devdas", author: "Sarat Chandra Chattopadhyay", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/devdas", reader_url: "/reader/devdas", preview_enabled: true, preview_url: "/reader/devdas", chapters: [{ id: "devdas-page-1", is_preview: true }], audiobook_enabled: false },
-  { slug: "pather-panchali", title: "পথের পাঁচালী / Pather Panchali", author: "Bibhutibhushan Bandyopadhyay", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/pather-panchali", reader_url: "/reader/pather-panchali", preview_enabled: true, preview_url: "/reader/pather-panchali", chapters: [{ id: "pather-page-1", is_preview: true }], audiobook_enabled: false },
+  { slug: "a-ghost-story", title: "A Ghost Story", title_en: "A Ghost Story", author: "Mark Twain", language: "en", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/a-ghost-story", reader_url: "/reader/a-ghost-story", preview_enabled: true, preview_url: "/reader/a-ghost-story", chapters: [{ id: "ghost-story-page-1", is_preview: true }], audiobook_enabled: false },
 ];
 
 async function installCatalogueFixture(page, outcomes) {
@@ -43,16 +42,17 @@ async function openScenario(context, outcome, viewport) {
   const page = await context.newPage();
   await page.setViewportSize(viewport);
   const fixture = await installCatalogueFixture(page, [outcome]);
-  await page.goto(`${baseUrl.replace(/\/$/, "")}/library?language=bn&availability=reader-ready&sort=title`, { waitUntil: "domcontentloaded" });
+  await page.goto(`${baseUrl.replace(/\/$/, "")}/library?language=en&availability=reader-ready&sort=title`, { waitUntil: "domcontentloaded" });
   await page.getByTestId("library-reference-surface").waitFor();
   return { page, fixture };
 }
 
-async function assertFallback(page, label) {
-  const notice = page.getByTestId("library-catalogue-fallback");
+async function assertError(page, label) {
+  const notice = page.getByTestId("library-catalogue-error");
   await notice.waitFor();
-  assert.equal((await notice.textContent()).replace(/\s+/g, " ").trim(), "We couldn’t load the full collection. You’re viewing a limited selection.Try again", `${label}: fallback message or recovery action changed`);
+  assert.equal((await notice.textContent()).replace(/\s+/g, " ").trim(), "We couldn’t load the Library just now. Your search and filters are unchanged.Try again", `${label}: error message or recovery action changed`);
   assert.equal(await page.getByTestId("library-catalogue-retry").isEnabled(), true, `${label}: retry is not keyboard-operable`);
+  assert.equal(await page.getByTestId("library-catalogue-fallback").count(), 0, `${label}: API error was mislabeled as curated fallback content`);
 }
 
 async function assertNoDocumentOverflow(page, label) {
@@ -62,20 +62,20 @@ async function assertNoDocumentOverflow(page, label) {
 }
 
 async function waitForCatalogueState(page, state) {
-  const fallback = page.getByTestId("library-catalogue-fallback");
+  const error = page.getByTestId("library-catalogue-error");
   const empty = page.getByTestId("library-catalogue-empty");
   if (state === "success") {
-    await page.getByTestId("reference-book-devdas").waitFor();
-    await fallback.waitFor({ state: "detached" });
+    await page.getByTestId("reference-book-a-ghost-story").waitFor();
+    await error.waitFor({ state: "detached" });
     await empty.waitFor({ state: "detached" });
     return;
   }
   if (state === "empty") {
     await empty.waitFor();
-    await fallback.waitFor({ state: "detached" });
+    await error.waitFor({ state: "detached" });
     return;
   }
-  await fallback.waitFor();
+  await error.waitFor();
   await page.getByTestId("library-catalogue-retry").waitFor({ state: "visible" });
 }
 
@@ -96,35 +96,60 @@ async function testInitialStates(context) {
     ["empty", "empty", false, true],
   ];
   const results = [];
-  for (const [id, outcome, expectsFallback, expectsEmpty] of cases) {
-    const { page } = await openScenario(context, outcome, { width: 768, height: 1024 });
-    await waitForCatalogueState(page, id === "success" ? "success" : expectsFallback ? "fallback" : "empty");
-    if (expectsFallback) await assertFallback(page, id);
-    else assert.equal(await page.getByTestId("library-catalogue-fallback").count(), 0, `${id}: fallback notice should not render`);
+  for (const [id, outcome, expectsError, expectsEmpty] of cases) {
+    const { page } = await openScenario(context, outcome, { width: 1024, height: 768 });
+    await waitForCatalogueState(page, id === "success" ? "success" : expectsError ? "error" : "empty");
+    if (expectsError) await assertError(page, id);
+    else assert.equal(await page.getByTestId("library-catalogue-error").count(), 0, `${id}: error notice should not render`);
     assert.equal(await page.getByTestId("library-catalogue-empty").count(), expectsEmpty ? 1 : 0, `${id}: empty state classification changed`);
     if (id === "empty") {
-      assert.equal(await page.getByTestId("reference-book-devdas").count(), 0, "empty: valid empty response was replaced with fallback reader inventory");
+      assert.equal(await page.getByTestId("reference-book-a-ghost-story").count(), 0, "empty: valid empty response was replaced with fallback reader inventory");
       assert.equal(await page.getByText("The shelves are quiet for now.", { exact: true }).count(), 1, "empty: valid empty response lacks a distinct explanation");
     }
-    if (id === "success") await page.getByTestId("reference-book-devdas").waitFor();
+    if (id === "success") await page.getByTestId("reference-book-a-ghost-story").waitFor();
     results.push({ id, geometry: await assertNoDocumentOverflow(page, id) });
-    if (id === "rejected" || id === "malformed" || id === "empty") {
-      await page.screenshot({ path: path.join(output, `library-${id}-768.png`), fullPage: true });
+    if (["success", "rejected", "malformed", "empty"].includes(id)) {
+      await page.screenshot({ path: path.join(output, `library-${id === "rejected" ? "error" : id}-1024.png`), fullPage: true });
     }
     await page.close();
   }
   return results;
 }
 
+async function testLoadingAndNoResults(context) {
+  const loading = await context.newPage();
+  await loading.setViewportSize({ width: 1440, height: 900 });
+  const pending = await installCatalogueFixture(loading, ["pending-failure"]);
+  await loading.goto(`${baseUrl.replace(/\/$/, "")}/library?language=en&availability=reader-ready&sort=title`, { waitUntil: "domcontentloaded" });
+  await loading.getByText("Finding your next read…", { exact: true }).waitFor();
+  await loading.screenshot({ path: path.join(output, "library-loading-1440.png"), fullPage: true });
+  pending.releasePendingFailure();
+  await waitForCatalogueState(loading, "error");
+  await assertError(loading, "1440px loading completion");
+  const loadingGeometry = await assertNoDocumentOverflow(loading, "1440px error");
+  await loading.screenshot({ path: path.join(output, "library-error-1440.png"), fullPage: true });
+  await loading.close();
+
+  const noResults = await context.newPage();
+  await noResults.setViewportSize({ width: 1024, height: 768 });
+  await installCatalogueFixture(noResults, ["success"]);
+  await noResults.goto(`${baseUrl.replace(/\/$/, "")}/library?language=en&q=earnalism-no-result-9f3b&sort=title`, { waitUntil: "domcontentloaded" });
+  await noResults.getByTestId("library-no-results").waitFor();
+  const noResultsGeometry = await assertNoDocumentOverflow(noResults, "1024px no results");
+  await noResults.screenshot({ path: path.join(output, "library-no-results-1024.png"), fullPage: true });
+  await noResults.close();
+  return { loading_geometry: loadingGeometry, no_results_geometry: noResultsGeometry };
+}
+
 async function testKeyboardRetryAndRecovery(context, viewport) {
   const page = await context.newPage();
   await page.setViewportSize(viewport);
   const fixture = await installCatalogueFixture(page, ["reject", "pending-failure", "success"]);
-  const initialUrl = "/library?language=bn&availability=reader-ready&sort=title";
+  const initialUrl = "/library?language=en&availability=reader-ready&sort=title";
   await page.goto(`${baseUrl.replace(/\/$/, "")}${initialUrl}`, { waitUntil: "domcontentloaded" });
   await page.getByTestId("library-reference-surface").waitFor();
-  await waitForCatalogueState(page, "fallback");
-  await assertFallback(page, `${viewport.width}px initial`);
+  await waitForCatalogueState(page, "error");
+  await assertError(page, `${viewport.width}px initial`);
 
   const retry = page.getByTestId("library-catalogue-retry");
   const tabSteps = await focusRetryByTab(page, retry, `${viewport.width}px initial`);
@@ -135,21 +160,26 @@ async function testKeyboardRetryAndRecovery(context, viewport) {
   await retry.click({ force: true });
   assert.equal(fixture.count(), 2, `${viewport.width}px retry: repeated click started another catalogue request`);
   await page.screenshot({ path: path.join(output, `library-pending-retry-${viewport.width}.png`), fullPage: true });
-  await page.locator("button.reference-filter-trigger:visible").click();
-  const drawer = page.locator('.reference-library-drawer[role="dialog"]:visible');
-  await drawer.getByRole("button", { name: "Bengali", exact: true }).click();
-  await page.getByRole("button", { name: /^Show \d+ editions?$/ }).click();
-  assert.equal(new URL(page.url()).search, "?language=bn&availability=reader-ready&sort=title", `${viewport.width}px retry: filter state was not retained while retrying`);
+  await page.getByTestId("library-reference-surface").getByTestId("library-search").fill("A Ghost Story");
+  const searchDuringRetry = new URL(page.url()).searchParams;
+  assert.equal(searchDuringRetry.get("language"), "en", `${viewport.width}px retry: language filter was not retained`);
+  assert.equal(searchDuringRetry.get("availability"), "reader-ready", `${viewport.width}px retry: availability filter was not retained`);
+  assert.equal(searchDuringRetry.get("sort"), "title", `${viewport.width}px retry: sort was not retained`);
+  assert.equal(searchDuringRetry.get("q"), "A Ghost Story", `${viewport.width}px retry: search query was not retained`);
   fixture.releasePendingFailure();
   await page.waitForFunction(() => document.querySelector('[data-testid="library-catalogue-retry"]')?.disabled === false);
-  await waitForCatalogueState(page, "fallback");
-  await assertFallback(page, `${viewport.width}px retry failure`);
+  await waitForCatalogueState(page, "error");
+  await assertError(page, `${viewport.width}px retry failure`);
   assert.equal(await retry.isEnabled(), true, `${viewport.width}px retry failure: recovery action stayed disabled`);
 
   const recoveryTabSteps = await focusRetryByTab(page, retry, `${viewport.width}px retry failure`);
   await page.keyboard.press("Enter");
   await waitForCatalogueState(page, "success");
-  assert.equal(new URL(page.url()).search, "?language=bn&availability=reader-ready&sort=title", `${viewport.width}px recovery: URL state changed after success`);
+  const recoveredSearch = new URL(page.url()).searchParams;
+  assert.equal(recoveredSearch.get("language"), "en", `${viewport.width}px recovery: language filter changed`);
+  assert.equal(recoveredSearch.get("availability"), "reader-ready", `${viewport.width}px recovery: availability filter changed`);
+  assert.equal(recoveredSearch.get("sort"), "title", `${viewport.width}px recovery: sort changed`);
+  assert.equal(recoveredSearch.get("q"), "A Ghost Story", `${viewport.width}px recovery: search query changed`);
   const geometry = await assertNoDocumentOverflow(page, `${viewport.width}px recovery`);
   await page.screenshot({ path: path.join(output, `library-recovery-${viewport.width}.png`), fullPage: true });
   await page.close();
@@ -159,13 +189,14 @@ async function testKeyboardRetryAndRecovery(context, viewport) {
 const browser = await chromium.launch({ headless: true });
 const context = await browser.newContext({ viewport: { width: 768, height: 1024 }, deviceScaleFactor: 1, locale: "en-US", timezoneId: "UTC", serviceWorkers: "block" });
 const initialStates = await testInitialStates(context);
+const supplementalStates = await testLoadingAndNoResults(context);
 const recovery = [];
-for (const viewport of [{ width: 768, height: 1024 }, { width: 390, height: 844 }, { width: 320, height: 568 }]) {
+for (const viewport of [{ width: 1440, height: 900 }, { width: 1024, height: 768 }, { width: 390, height: 844 }]) {
   recovery.push(await testKeyboardRetryAndRecovery(context, viewport));
 }
 await context.close();
 await browser.close();
 
-const result = { result: "PASS", classification: "ISOLATED_UI_AND_INTERACTION_EVIDENCE_ONLY", output, initial_states: initialStates, recovery };
+const result = { result: "PASS", classification: "ISOLATED_UI_AND_INTERACTION_EVIDENCE_ONLY", output, initial_states: initialStates, supplemental_states: supplementalStates, recovery };
 fs.writeFileSync(path.join(output, "summary.json"), `${JSON.stringify(result, null, 2)}\n`);
 console.log(JSON.stringify(result));
