@@ -72,7 +72,7 @@ const reset = () => createSynthetic(synthetic);
 const mutate = (callback) => { callback(); assert.throws(() => validate(synthetic)); reset(); };
 
 test("selection contract resolves exactly twenty families", () => assert.equal(selection.families.length, 20));
-test("every selected ID exists in the sixty-five-state manifest", () => assert.ok(ids.every((id) => manifest.states.some((state) => state.id === id))));
+test("every selected ID exists in the seventy-three-state manifest", () => assert.ok(ids.every((id) => manifest.states.some((state) => state.id === id))));
 test("no duplicate selected ID", () => assert.equal(new Set(ids).size, 20));
 test("missing shell family fails", () => mutate(() => { const s = read(path.join(synthetic, "cross-browser-summary.json")); s.shell_family_count = 19; write(path.join(synthetic, "cross-browser-summary.json"), s); }));
 test("missing Firefox state fails", () => mutate(() => { const s = read(path.join(synthetic, "cross-browser-summary.json")); s.firefox.captured_state_count = 19; write(path.join(synthetic, "cross-browser-summary.json"), s); }));

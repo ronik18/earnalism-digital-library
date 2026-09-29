@@ -51,7 +51,7 @@ function runCli(args) {
 
 test("checked-in manifest passes", () => assert.equal(validateStateManifest(manifest, inventory), manifest));
 test("route count is 21", () => assert.equal(inventory.routes.length, 21));
-test("manifest contains sixty-five established states plus six commerce, live-book, and legal responsive states", () => assert.equal(manifest.states.length, 73));
+test("manifest contains sixty-five established states plus eight commerce, live-book, and legal responsive states", () => assert.equal(manifest.states.length, 73));
 test("four live Reading Pass offer screenshots cover 1440, 1024, and 390 widths", () => {
   const states = manifest.states.filter((state) => state.fixture === "pricing-four-offers");
   assert.deepEqual(states.map(({ viewport }) => viewport.width), [1440, 1024, 390]);
