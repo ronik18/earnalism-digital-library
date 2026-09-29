@@ -175,11 +175,12 @@ function publicationPages(books) {
     const readerRoute = "/reader/" + book.slug;
     const listenerRoute = "/listener/" + book.slug;
     const bookDescription = book.title + " by " + book.author + " is a released India edition on The Earnalism. " + accessCopy;
+    const coverImage = book.cover_url ? absolute(book.cover_url) : brandImage;
     const listening = book.audio_availability_state === "approved"
       ? "Listening to " + book.title + " requires an active Reading Pass from the first second."
       : "Listening is not available for " + book.title + " in the current release.";
     return [
-      { path: bookRoute, title: book.title + " by " + book.author + " | The Earnalism", description: bookDescription, image: book.cover_url || brandImage, ogType: "book", jsonLd: [webPage(book.title, bookDescription, bookRoute), { "@context": "https://schema.org", "@type": "Book", name: book.title, author: { "@type": "Person", name: book.author }, url: absolute(bookRoute), image: book.cover_url || brandImage, isAccessibleForFree: false }], staticBody: shell("Reader-ready edition", book.title + " by " + book.author, bookDescription, [{ href: readerRoute, label: "Read the 3-page preview" }], [accessCopy]) },
+      { path: bookRoute, title: book.title + " by " + book.author + " | The Earnalism", description: bookDescription, image: coverImage, ogType: "book", jsonLd: [webPage(book.title, bookDescription, bookRoute), { "@context": "https://schema.org", "@type": "Book", name: book.title, author: { "@type": "Person", name: book.author }, url: absolute(bookRoute), image: coverImage, isAccessibleForFree: false }], staticBody: shell("Reader-ready edition", book.title + " by " + book.author, bookDescription, [{ href: readerRoute, label: "Read the 3-page preview" }], [accessCopy]) },
       { path: readerRoute, title: "Read " + book.title + " | The Earnalism Reader", description: accessCopy + " This reader route is noindex.", canonicalPath: bookRoute, robots: "noindex,follow", staticBody: shell("Reader", "Read " + book.title + ".", accessCopy, [{ href: bookRoute, label: "Book details" }]) },
       { path: listenerRoute, title: "Listen to " + book.title + " | The Earnalism", description: listening, canonicalPath: bookRoute, robots: "noindex,follow", staticBody: shell("Listening", book.title, listening, [{ href: bookRoute, label: "Book details" }], ["Public audio preview: 0 seconds.", accessCopy]) },
     ];
