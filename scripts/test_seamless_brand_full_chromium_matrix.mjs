@@ -41,10 +41,10 @@ export function validateFullChromiumMatrix(output, expectedProductionSurface) {
   const summaryPath = path.join(output, "capture-summary.json");
   assert.ok(fs.existsSync(summaryPath), "capture summary is missing");
   const summary = JSON.parse(fs.readFileSync(summaryPath, "utf8"));
-  assert.equal(expectedIds.length, 71, "manifest must contain 71 states");
-  assert.equal(summary.expected_state_count, 71, "expected state count must be 71");
-  assert.equal(summary.captured_state_count, 71, "captured state count must be 71");
-  assert.equal(summary.stable_state_count, 71, "stable state count must be 71");
+  assert.equal(expectedIds.length, 73, "manifest must contain 73 states");
+  assert.equal(summary.expected_state_count, 73, "expected state count must be 73");
+  assert.equal(summary.captured_state_count, 73, "captured state count must be 73");
+  assert.equal(summary.stable_state_count, 73, "stable state count must be 73");
   assert.equal(summary.unstable_state_count, 0, "unstable state count must be zero");
   assert.deepEqual(summary.requested_state_ids, expectedIds, "expected IDs must be derived from the manifest");
   assert.deepEqual(summary.captured_state_ids, expectedIds, "captured IDs must preserve manifest order");
@@ -59,7 +59,7 @@ export function validateFullChromiumMatrix(output, expectedProductionSurface) {
   assert.equal(summary.menu_state_count, 4, "all four mobile menu states must execute");
   assert.equal(summary.filter_state_count, 2, "both filter states must execute");
   assert.ok(summary.zoom_150_state_count > 0 && summary.zoom_200_state_count > 0, "zoom states are absent");
-  const records = validateCaptureSummary(summary, output, 71);
+  const records = validateCaptureSummary(summary, output, 73);
   for (const record of records) {
     assert.equal(record.source_head, summary.source_head, `${record.state_id}: source head mismatch`);
     assert.equal(record.tree_sha, summary.tree_sha, `${record.state_id}: tree SHA mismatch`);
@@ -109,16 +109,16 @@ function createSynthetic(output, productionSurface) {
     fs.writeFileSync(path.join(directory, "metadata.json"), JSON.stringify(metadata));
   }
   const classifications = { PUBLIC_INDEXABLE: 1 };
-  const summary = { source_head: head, tree_sha: tree, manifest_path: manifestPath, manifest_sha256: sha(fs.readFileSync(manifestPath)), route_inventory_path: "synthetic", route_inventory_sha256: "synthetic", production_surface_sha256: productionSurface, canonical_logo_sha256: logoHash, requested_state_ids: expectedIds, captured_state_ids: expectedIds, manifest_order_execution_list: expectedIds, missing_state_ids: [], unexpected_state_ids: [], duplicate_state_ids: [], expected_state_count: 71, captured_state_count: 71, stable_state_count: 71, unstable_state_count: 0, generated_screenshot_count: 71, menu_state_count: 4, filter_state_count: 2, zoom_100_state_count: 1, zoom_150_state_count: 1, zoom_200_state_count: 1, route_family_counts: classifications, raw_duplicate_logo_states: [], transform_logo_states: [], logo_card_states: [], clipped_logo_states: [], clipped_control_states: [], logo_control_overlap_states: [], multiple_header_states: [], horizontal_overflow_states: [], interaction_failure_states: [], reader_safety_defect_states: [], listener_safety_defect_states: [], status_contract_defect_states: [], static_parity_defect_states: [], runtime_failure_states: [], rendered_ui_defect_states: [], production_mutation_count: 0 };
+const summary = { source_head: head, tree_sha: tree, manifest_path: manifestPath, manifest_sha256: sha(fs.readFileSync(manifestPath)), route_inventory_path: "synthetic", route_inventory_sha256: "synthetic", production_surface_sha256: productionSurface, canonical_logo_sha256: logoHash, requested_state_ids: expectedIds, captured_state_ids: expectedIds, manifest_order_execution_list: expectedIds, missing_state_ids: [], unexpected_state_ids: [], duplicate_state_ids: [], expected_state_count: 73, captured_state_count: 73, stable_state_count: 73, unstable_state_count: 0, generated_screenshot_count: 73, menu_state_count: 4, filter_state_count: 2, zoom_100_state_count: 1, zoom_150_state_count: 1, zoom_200_state_count: 1, route_family_counts: classifications, raw_duplicate_logo_states: [], transform_logo_states: [], logo_card_states: [], clipped_logo_states: [], clipped_control_states: [], logo_control_overlap_states: [], multiple_header_states: [], horizontal_overflow_states: [], interaction_failure_states: [], reader_safety_defect_states: [], listener_safety_defect_states: [], status_contract_defect_states: [], static_parity_defect_states: [], runtime_failure_states: [], rendered_ui_defect_states: [], production_mutation_count: 0 };
   fs.writeFileSync(path.join(output, "capture-summary.json"), JSON.stringify(summary)); fs.writeFileSync(path.join(output, "route-surface-hashes.json"), "{}"); return summary;
 }
 
 const synthetic = fs.mkdtempSync(path.join(os.tmpdir(), "seamless-brand-full-chromium-")); createSynthetic(synthetic, syntheticProductionSurface);
 let cases = 0; const test = (name, fn) => { fn(); cases += 1; console.log(`PASS ${cases}: ${name}`); };
 const load = () => JSON.parse(fs.readFileSync(path.join(synthetic, "capture-summary.json"), "utf8")); const save = (summary) => fs.writeFileSync(path.join(synthetic, "capture-summary.json"), JSON.stringify(summary));
-test("final manifest contains seventy-one states", () => assert.equal(expectedIds.length, 71));
+test("final manifest contains seventy-three states", () => assert.equal(expectedIds.length, 73));
 test("expected IDs derive from manifest order", () => assert.deepEqual(load().requested_state_ids, expectedIds));
-test("all seventy-one states are required", () => validateFullChromiumMatrix(synthetic, syntheticProductionSurface));
+test("all seventy-three states are required", () => validateFullChromiumMatrix(synthetic, syntheticProductionSurface));
 test("missing state fails", () => { const s = load(); s.missing_state_ids = [expectedIds[0]]; save(s); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
 test("duplicate state fails", () => { const s = load(); s.duplicate_state_ids = [expectedIds[0]]; save(s); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
 test("unstable state fails", () => { const s = load(); s.stable_state_count = 64; s.unstable_state_count = 1; save(s); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
@@ -133,7 +133,7 @@ test("control overlap fails", () => { const p = path.join(stateOutputDirectory(s
 test("overflow fails", () => { const p = path.join(stateOutputDirectory(synthetic, "home-desktop"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.horizontal_overflow = true; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
 test("runtime error fails", () => { const p = path.join(stateOutputDirectory(synthetic, "home-desktop"), "metadata.json"); const r = JSON.parse(fs.readFileSync(p)); r.console_error_count = 1; fs.writeFileSync(p, JSON.stringify(r)); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
 test("production mutation fails", () => { const s = load(); s.production_mutation_count = 1; save(s); assert.throws(() => validateFullChromiumMatrix(synthetic, syntheticProductionSurface)); createSynthetic(synthetic, syntheticProductionSurface); });
-test("valid synthetic seventy-one-state summary passes", () => validateFullChromiumMatrix(synthetic, syntheticProductionSurface));
+test("valid synthetic seventy-three-state summary passes", () => validateFullChromiumMatrix(synthetic, syntheticProductionSurface));
 
 const realFixture = fs.mkdtempSync(path.join(os.tmpdir(), "seamless-brand-full-chromium-real-"));
 const realProductionSurface = "199ff2d18bc0df16f5e4e2bdc9bcf8ceba24d26c3ee92360802db80c1dbc31b1";

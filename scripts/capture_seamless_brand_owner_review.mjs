@@ -150,7 +150,7 @@ function runManifestCli(options) {
   const manifest = loadStateManifest(manifestPath);
   const routeInventory = JSON.parse(fs.readFileSync(routeInventoryPath, "utf8"));
   validateStateManifest(manifest, routeInventory);
-  if (routeInventory.routes.length !== 20) throw new Error(`Route inventory: invalid route count; received ${routeInventory.routes.length}; expected 20.`);
+  if (routeInventory.routes.length !== 21) throw new Error(`Route inventory: invalid route count; received ${routeInventory.routes.length}; expected 21.`);
   if (manifest.states.length < 5) throw new Error(`State manifest: invalid state count; received ${manifest.states.length}; expected at least 5.`);
   const requestedIds = options.stateFilter === undefined ? undefined : options.stateFilter;
   const selected = requestedIds === undefined ? listStateRecords(manifest) : selectStateRecords(manifest, requestedIds);
@@ -185,7 +185,7 @@ function loadManifestSelection(options) {
   const manifest = loadStateManifest(manifestPath);
   const routeInventory = JSON.parse(fs.readFileSync(routeInventoryPath, "utf8"));
   validateStateManifest(manifest, routeInventory);
-  if (routeInventory.routes.length !== 20) throw new Error(`Route inventory: invalid route count; received ${routeInventory.routes.length}; expected 20.`);
+  if (routeInventory.routes.length !== 21) throw new Error(`Route inventory: invalid route count; received ${routeInventory.routes.length}; expected 21.`);
   if (manifest.states.length < 5) throw new Error(`State manifest: invalid state count; received ${manifest.states.length}; expected at least 5.`);
   const selected = options.stateFilter === undefined ? listStateRecords(manifest) : selectStateRecords(manifest, options.stateFilter);
   return { manifestPath, routeInventoryPath, manifest, routeInventory, selected };

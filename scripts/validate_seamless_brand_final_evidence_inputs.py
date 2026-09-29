@@ -48,7 +48,7 @@ def main():
         if reference and Path(reference).exists() and item.get("summary_sha256", item.get("sha256")):
             require(sha(reference) == item.get("summary_sha256", item.get("sha256")), f"{key} referenced SHA mismatch", failures)
     chromium = data.get("chromium", {})
-    require((chromium.get("expected"), chromium.get("captured"), chromium.get("stable")) == (71, 71, 71), "Chromium counts differ from 71/71/71", failures)
+    require((chromium.get("expected"), chromium.get("captured"), chromium.get("stable")) == (73, 73, 73), "Chromium counts differ from 73/73/73", failures)
     for key in ["firefox", "webkit"]:
         item = data.get(key, {}); require((item.get("expected"), item.get("captured"), item.get("stable")) == (20, 20, 20) and item.get("result") == "PASS", f"{key} result fails", failures)
     article = data.get("article_stability", {}).get("article_mobile", {})

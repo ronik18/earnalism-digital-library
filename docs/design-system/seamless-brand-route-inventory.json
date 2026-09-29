@@ -14,6 +14,7 @@
     {"id":"book-a-ghost-story","path":"/book/a-ghost-story","classification":"PUBLIC_INDEXABLE","expected_shell":"shared-public-header","review":{"desktop":true,"tablet":true,"mobile":true},"fixture":"live-approved-book-detail"},
     {"id":"book-devdas","path":"/book/devdas","classification":"PUBLIC_INDEXABLE","expected_shell":"shared-public-header","review":{"desktop":true,"mobile":true},"fixture":"public-safe"},
     {"id":"about","path":"/about","classification":"PUBLIC_INDEXABLE","expected_shell":"standalone-about","review":{"desktop":true,"mobile":true},"fixture":"public-safe"},
+    {"id":"privacy","path":"/privacy","classification":"PUBLIC_INDEXABLE","expected_shell":"shared-public-header","review":{"desktop":true,"mobile":true},"fixture":"public-safe"},
     {"id":"journal","path":"/journal","classification":"PUBLIC_INDEXABLE","expected_shell":"shared-public-header","review":{"desktop":true,"mobile":true},"fixture":"public-safe"},
     {"id":"journal-article","path":"/journal/how-reading-shapes-better-founders","classification":"PUBLIC_INDEXABLE","expected_shell":"shared-public-header","review":{"desktop":true,"mobile":true},"fixture":"public-safe"},
     {"id":"contact","path":"/contact","classification":"PUBLIC_INDEXABLE","expected_shell":"shared-public-header","review":{"desktop":true,"mobile":true},"fixture":"public-safe"},
