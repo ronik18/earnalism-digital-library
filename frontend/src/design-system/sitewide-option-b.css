@@ -371,6 +371,92 @@
   border-color: color-mix(in srgb, var(--gold-300, #f0d78e) 24%, transparent);
 }
 
+/* Public actions use one geometry and type scale across the standard shell.
+   Their existing semantic classes retain their primary, secondary, or text
+   colors, while the standalone Reader and Listener keep their own controls. */
+.layout--sitewide-option-b :is(
+  .btn-primary,
+  .btn-secondary,
+  .reference-button,
+  .rp-button,
+  .journal-v2__primary-link,
+  .journal-v2__library-note a,
+  .journal-v2__library-cta a,
+  .journal-v2__empty > a,
+  .journal-v2__error-actions a
+) {
+  min-height: 44px;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  border-radius: var(--optionb-radius-control);
+  font-family: var(--optionb-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  text-transform: none;
+  box-shadow: none;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.layout--sitewide-option-b :is(.btn-primary, .btn-secondary, .reference-button, .rp-button, .journal-v2__primary-link, .journal-v2__library-note a, .journal-v2__library-cta a, .journal-v2__empty > a, .journal-v2__error-actions a) svg {
+  flex: 0 0 auto;
+  width: 1rem;
+  height: 1rem;
+}
+
+.layout--sitewide-option-b :is(.btn-link, .reference-text-link, .rp-text-link, .journal-v2__article-link, .reference-book-tile__actions a, .journal-v2__related > div:last-child > a > span:last-child) {
+  min-height: 44px;
+  gap: 0.5rem;
+  border-radius: 0;
+  font-family: var(--optionb-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  text-transform: none;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.layout--sitewide-option-b :is(.btn-primary, .btn-secondary, .btn-link, .reference-button, .reference-text-link, .rp-button, .rp-text-link, .journal-v2__primary-link, .journal-v2__library-note a, .journal-v2__library-cta a, .journal-v2__empty > a, .journal-v2__error-actions a, .journal-v2__article-link, .reference-book-tile__actions a):focus-visible {
+  outline: 3px solid var(--optionb-gold);
+  outline-offset: 3px;
+}
+
+.layout--sitewide-option-b :is(.btn-primary, .btn-secondary, .reference-button, .rp-button):is(:disabled, [aria-disabled="true"]) {
+  cursor: not-allowed;
+  opacity: 0.58;
+  transform: none;
+}
+
+/* Repeated public card families share the same quiet edge, corner, and shadow
+   treatment. Cover ratios and each card's content spacing stay semantic. */
+.layout--sitewide-option-b :is(
+  .reference-home__discovery-card,
+  .reference-book-tile__cover,
+  .editorial-article-card,
+  .reference-offer,
+  .rp-offer,
+  .account-panel,
+  .auth-account-auth-card,
+  .editorial-surface,
+  .error-route-panel,
+  .book-detail-page--reference .book-experience-panel,
+  .book-detail-page--reference .card-elegant
+) {
+  border-color: var(--optionb-line);
+  border-radius: var(--optionb-radius-surface);
+  box-shadow: none;
+}
+
+/* Book-detail availability badges sit on paper after the route moves into the
+   Option B palette; use ink text instead of the former dark-surface ivory. */
+.layout--sitewide-option-b .book-detail-page--reference .book-detail-status-row span {
+  border-color: var(--optionb-line);
+  background: #fffdf9;
+  color: var(--optionb-ink-muted);
+}
+
 /* A quiet route entrance avoids abrupt SPA page swaps. Reader surfaces remain
    untouched; the rule applies only to children of the standard public shell. */
 .layout > #main-content > :first-child {
@@ -384,6 +470,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .layout > #main-content > :first-child { animation: none; }
+  .layout--sitewide-option-b :is(.btn-primary, .btn-secondary, .btn-link, .reference-button, .reference-text-link, .rp-button, .rp-text-link, .journal-v2__primary-link, .journal-v2__library-note a, .journal-v2__library-cta a, .journal-v2__empty > a, .journal-v2__error-actions a, .journal-v2__article-link, .reference-book-tile__actions a) { transition-duration: 0.01ms; }
   .public-page-frame :is(a, button),
   .reference-library :is(a, button),
   .reference-commerce :is(a, button),

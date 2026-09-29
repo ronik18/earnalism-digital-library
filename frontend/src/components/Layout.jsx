@@ -30,7 +30,7 @@ export default function Layout() {
   }, [forcedTour, location.pathname]);
 
   return (
-    <div className={`min-h-screen flex flex-col${location.pathname === "/" ? " layout--homepage-option-b" : ""}`}>
+    <div className={`min-h-screen flex flex-col layout--sitewide-option-b${location.pathname === "/" ? " layout--homepage-option-b" : ""}`}>
       <a href="#main-content" className="skip-link">Skip to main content</a>
       <Header />
       <main id="main-content" className="flex-1" tabIndex={-1}>
