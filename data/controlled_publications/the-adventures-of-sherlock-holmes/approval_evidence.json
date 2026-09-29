@@ -1,12 +1,15 @@
 {
   "slug": "the-adventures-of-sherlock-holmes",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
-  "verification_status": "approved",
+  "verification_status": "review_required",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "historical_admin_import_reconstruction_not_publication_authorization",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": false
+  "audiobook_enabled": false,
+  "publication_authorization": "NOT_PRESENT",
+  "review_note": "Historical import metadata is retained for audit only and is not owner/legal publication authorization for the exact Project Gutenberg #1661 edition.",
+  "updated_at": "2026-09-29T06:45:27Z"
 }

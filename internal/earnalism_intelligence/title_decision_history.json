@@ -60,15 +60,17 @@
       "next_action": "Prove an exact-slug graphical cover, rerun reader gates, and render a fresh private preview."
     },
     "the-adventures-of-sherlock-holmes": {
-      "latest_decision": "PUBLICATION_MANIFEST_CONVEYOR_PILOT_READY_FOR_APPROVAL",
-      "decision_reason": "The legally cleared source was sanitized and deterministically indexed into twelve canonical stories. Reader, audio, and commerce lanes are independent; no audiobook is requested and no public exposure is authorized.",
-      "updated_at": "2026-08-08T10:15:00Z",
+      "latest_decision": "SOURCE_AND_EDITION_RECONCILED_RIGHTS_REVIEW_REQUIRED",
+      "decision_reason": "Official Project Gutenberg #1661 identity and all twelve chapter texts are checksum-bound; two omitted spans were restored from the source. Project Gutenberg establishes US public-domain status only and directs non-US readers to check local law. India commercial rights and exact-edition publication authorization remain unapproved.",
+      "updated_at": "2026-09-29T06:51:05Z",
       "language": "en",
-      "public_reader_status": "READY_FOR_APPROVAL_NOT_EXPOSED",
+      "public_reader_status": "BLOCKED_RIGHTS_REVIEW_REQUIRED_NOT_EXPOSED",
       "public_audio_status": "NOT_REQUESTED",
       "chapter_count": 12,
       "manifest_schema": "earnalism-publication-manifest-v1",
-      "next_action": "Review the generated manifest and obtain explicit owner approval before running the guarded reader-publication mutation."
+      "next_action": "Obtain one authenticated owner/legal determination for commercial text publication in India of this exact edition and bind the resulting edition-specific publication authorization; do not infer approval from the historical import record.",
+      "source_sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+      "content_sha256": "d6cb7d46af3d95b071c3783bf3b093f8c8397144ae717bbfbe87b8fc336fdc5c"
     },
     "gitanjali": {
       "reader_status": "READER_ONLY_LIVE_APPROVED",

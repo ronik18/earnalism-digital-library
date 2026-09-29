@@ -1,22 +1,59 @@
 {
   "slug": "the-adventures-of-sherlock-holmes",
   "source_url": "https://www.gutenberg.org/ebooks/1661",
-  "source_name": "Project Gutenberg",
-  "source_license": "Public domain; commercial use allowed in the United States and India.",
+  "source_name": "Project Gutenberg eBook #1661",
+  "source_license": "Project Gutenberg eBook #1661 states that the work is public domain in the United States and directs users outside the United States to check local law. This source does not establish commercial-use rights in India.",
   "author_name": "Arthur Conan Doyle",
   "author_death_year": 1930,
   "original_publication_year": 1892,
   "country_of_origin": "United Kingdom",
   "rights_tier": "A",
-  "verification_status": "approved",
+  "verification_status": "review_required",
   "publication_region": "IN",
   "verified_at": "2026-07-03T20:07:48Z",
-  "source_hash": "bde9b313e5f4e7674d64afb47af1e6ba4e312ca68ad360c1fb575c717691908a",
-  "content_hash": "b10d37f4214b7f74247590da5140b5ef248c771974262faa9d9f30736090b1ec",
-  "provenance_hash": "70f51eeded680633a8e43f5f1c5aae6469b7fe3a33e5af507c141490a3cf99de",
-  "rights_basis": "Author died in 1930. Work published in 1892, well before 1928. Public domain in the U.S. under pre-1928 publication rule and in most jurisdictions under life plus 70 years.",
+  "source_hash": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+  "content_hash": "d6cb7d46af3d95b071c3783bf3b093f8c8397144ae717bbfbe87b8fc336fdc5c",
+  "provenance_hash": "1ff85c9a528b7fcc7efa30701afa764d877030f68fa4ab33d994c634c4746c55",
+  "rights_basis": "Project Gutenberg #1661 establishes its United States public-domain notice and explicitly directs non-US users to check local law. India commercial-use status for the exact edition and transcription has not been determined; qualified rights review is required before publication.",
   "downloaded_at": "2026-05-25T20:09:56.810976+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
-  "qa_status": "QA_PASSED"
+  "qa_status": "QA_PASSED",
+  "blocked_reason": "India commercial publication rights and exact edition/transcription scope have not received a qualified title-specific determination.",
+  "rights_evidence_references": [
+    {
+      "url": "https://www.gutenberg.org/ebooks/1661",
+      "source_identity": "Project Gutenberg eBook #1661, The Adventures of Sherlock Holmes, Arthur Conan Doyle",
+      "accessed_at": "2026-09-29T06:45:27Z",
+      "sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+      "supports": "title, author, source identity, contents, and the source page public-domain notice for the United States"
+    },
+    {
+      "url": "https://www.gutenberg.org/cache/epub/1661/pg1661.txt",
+      "source_identity": "Project Gutenberg plain-text edition of eBook #1661",
+      "accessed_at": "2026-09-29T06:45:27Z",
+      "sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+      "supports": "exact source text used for chapter comparison and repairs"
+    },
+    {
+      "url": "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+      "source_identity": "Government of India, Copyright Act 1957, Chapter V, Section 22",
+      "accessed_at": "2026-09-29T06:45:27Z",
+      "supports": "statutory term text for qualified reviewer; this record does not itself make a legal conclusion"
+    }
+  ],
+  "source_identity_verification": {
+    "verified_at": "2026-09-29T06:45:27Z",
+    "source_url": "https://www.gutenberg.org/ebooks/1661",
+    "raw_text_url": "https://www.gutenberg.org/cache/epub/1661/pg1661.txt",
+    "raw_source_sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "chapter_count": 12,
+    "chapter_titles_match": true,
+    "normalized_text_comparison": "10 chapters matched before repair; chapter-002 and chapter-005 contained omitted source spans that were restored; all 12 chapters compared after normalization.",
+    "normalization": "HTML tags and line-break markup normalized; Project Gutenberg emphasis markers removed; whitespace collapsed; source text otherwise compared verbatim.",
+    "rights_conclusion": "NOT_MADE_REVIEW_REQUIRED"
+  },
+  "cover_provenance_status": "FIRST_PARTY_GENERATED_NO_EXTERNAL_ART",
+  "cover_provenance_ref": "data/controlled_publications/the-adventures-of-sherlock-holmes/cover_provenance.json",
+  "updated_at": "2026-09-29T06:45:27Z"
 }

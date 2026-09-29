@@ -162,6 +162,43 @@ def test_six_title_release_has_hash_bound_reading_pass_rights_and_published_read
             assert verdict.passed is True, (slug, action, verdict.reasons)
 
 
+def test_a_ghost_story_is_a_known_live_runtime_audit_control():
+    """Keep a known-live title available as the control for release probes."""
+    slug = "a-ghost-story"
+    launch = load_json(BACKEND_CONTROLLED_LAUNCH)
+    assert slug in launch["live_approved_slugs"]
+
+    registry, revoked = load_production_registry()
+    package = active_runtime_package(slug)
+    record = load_json(package / "rights_decision.json")
+    components = {
+        name.removesuffix(".json"): hashlib.sha256((package / name).read_bytes()).hexdigest()
+        for name in (
+            "public_book.json",
+            "reader_manifest.json",
+            "source_evidence.json",
+            "approval_evidence.json",
+            "checksum_manifest.json",
+            "publication_manifest.json",
+        )
+    }
+
+    for action in ("catalog_cta", "reader_manifest"):
+        verdict = evaluate_runtime_path(
+            action,
+            record=record,
+            edition_id=slug,
+            operator_id="reo-enterprise",
+            country="IN",
+            country_trusted=True,
+            required_components=components,
+            accepted_records=registry,
+            revoked_decision_ids=revoked,
+            now=datetime.now(timezone.utc),
+        )
+        assert verdict.passed is True, (action, verdict.reasons)
+
+
 def test_backend_controlled_launch_has_no_duplicate_slugs():
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
 

@@ -7,14 +7,14 @@
   "category_slug": "literary-fiction",
   "short_description": "Twelve classic detective stories featuring Sherlock Holmes and Dr. Watson.",
   "description": "A clean, structured reader edition of Arthur Conan Doyle's 1892 collection.",
-  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779860055/earnalism/covers/front/cover_75d9a463-e201-46e8-9e9d-60321dd13f75.png",
-  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779860055/earnalism/covers/front/cover_75d9a463-e201-46e8-9e9d-60321dd13f75.png",
-  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779860055/earnalism/covers/front/cover_75d9a463-e201-46e8-9e9d-60321dd13f75.png",
-  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779860055/earnalism/covers/front/cover_75d9a463-e201-46e8-9e9d-60321dd13f75.png",
-  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779860068/earnalism/covers/back/back_cover_75d9a463-e201-46e8-9e9d-60321dd13f75.png",
-  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779860068/earnalism/covers/back/back_cover_75d9a463-e201-46e8-9e9d-60321dd13f75.png",
-  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779860068/earnalism/covers/back/back_cover_75d9a463-e201-46e8-9e9d-60321dd13f75.png",
-  "cover_status": "CLOUDINARY_ASSIGNED",
+  "cover_url": "/assets/books/the-adventures-of-sherlock-holmes/front-cover.webp",
+  "cover_image_url": "/assets/books/the-adventures-of-sherlock-holmes/front-cover.webp",
+  "coverImage": "/assets/books/the-adventures-of-sherlock-holmes/front-cover.webp",
+  "cover_image": "/assets/books/the-adventures-of-sherlock-holmes/front-cover.webp",
+  "back_cover_url": "/assets/books/the-adventures-of-sherlock-holmes/back-cover.webp",
+  "back_cover_image_url": "/assets/books/the-adventures-of-sherlock-holmes/back-cover.webp",
+  "backCoverImage": "/assets/books/the-adventures-of-sherlock-holmes/back-cover.webp",
+  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "442 min",
   "formats": [
@@ -23,7 +23,7 @@
   "benefits": [
     "Read the foundational collection of the world's most famous detective.",
     "Enjoy a clean, structured reading format.",
-    "Access a legally cleared, unabridged classic."
+    "Read twelve classic detective stories in a structured edition."
   ],
   "who_for": [
     "Fans of detective and mystery fiction",
@@ -57,7 +57,7 @@
       "is_preview": false,
       "has_images": false,
       "image_count": 0,
-      "word_count": 9107,
+      "word_count": 9121,
       "reading_minutes": 38,
       "language_hint": "en",
       "processing_status": "ready",
@@ -96,7 +96,7 @@
       "is_preview": false,
       "has_images": false,
       "image_count": 0,
-      "word_count": 7321,
+      "word_count": 7332,
       "reading_minutes": 31,
       "language_hint": "en",
       "processing_status": "ready",
@@ -194,25 +194,25 @@
       "processing_warnings": []
     }
   ],
-  "source_hash": "bde9b313e5f4e7674d64afb47af1e6ba4e312ca68ad360c1fb575c717691908a",
-  "content_hash": "b10d37f4214b7f74247590da5140b5ef248c771974262faa9d9f30736090b1ec",
-  "provenance_hash": "70f51eeded680633a8e43f5f1c5aae6469b7fe3a33e5af507c141490a3cf99de",
-  "rights_basis": "Author died in 1930. Work published in 1892, well before 1928. Public domain in the U.S. under pre-1928 publication rule and in most jurisdictions under life plus 70 years.",
+  "source_hash": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+  "content_hash": "d6cb7d46af3d95b071c3783bf3b093f8c8397144ae717bbfbe87b8fc336fdc5c",
+  "provenance_hash": "1ff85c9a528b7fcc7efa30701afa764d877030f68fa4ab33d994c634c4746c55",
+  "rights_basis": "The official Project Gutenberg source establishes its United States public-domain notice only. India commercial publication rights and the exact edition/transcription scope require qualified review.",
   "rights_tier": "A",
-  "verification_status": "approved",
+  "verification_status": "review_required",
   "qa_status": "QA_PASSED",
-  "approved_to_publish": true,
-  "publication_status": "LIVE_APPROVED",
-  "readerStatus": "reader_ready",
-  "publicationStatus": "live",
-  "isPublic": true,
-  "isLive": true,
-  "showInPublicLibrary": true,
+  "approved_to_publish": false,
+  "publication_status": "READY_FOR_APPROVAL",
+  "readerStatus": "ready_for_approval",
+  "publicationStatus": "ready_for_approval",
+  "isPublic": false,
+  "isLive": false,
+  "showInPublicLibrary": false,
   "showInHomepage": false,
-  "allowPublicReading": true,
+  "allowPublicReading": false,
   "allowCheckout": false,
   "allowPayment": false,
-  "is_published": true,
+  "is_published": false,
   "audio_enabled": false,
   "audiobook_enabled": false,
   "generate_audiobook": false,
@@ -220,5 +220,15 @@
   "audiobook_voice": "",
   "audio_asset_slug": "",
   "created_at": "2026-07-03T20:07:48Z",
-  "updated_at": "2026-07-03T20:07:48Z"
+  "updated_at": "2026-09-29T06:45:27Z",
+  "cover_dimensions": {
+    "front": [
+      800,
+      1200
+    ],
+    "back": [
+      800,
+      1200
+    ]
+  }
 }

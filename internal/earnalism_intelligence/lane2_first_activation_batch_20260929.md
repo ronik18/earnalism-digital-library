@@ -53,3 +53,12 @@ The same scan found `agentic-ai-with-python`, `the-art-of-money-getting`, and `t
 ## Outcome and next action
 
 `FIRST_NEW_TITLE_ACTIVATION_READY_BATCH=NOT_ACHIEVED`. Zero candidates satisfy all rights, edition, cover, authorization, package, publication, and runtime gates. The smallest non-fabricable next action is for the rights/evidence owner to supply title-specific accepted rights decisions, exact source/edition records (including complete Bengali source license obligations), independently sourced cover provenance, and edition-bound publication authorization. After evidence exists, rerun candidate validators and resolve the production `RELEASE_PROXY_SCOPE_INVALID` runtime gate before any controlled-launch change. No live approval change is proposed in this PR.
+
+
+## Sherlock source/cover/runtime follow-up — 2026-09-29T06:51:05Z
+
+- Exact-source identity is confirmed as Project Gutenberg eBook #1661. Current official raw snapshot SHA-256: `922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0`. All twelve chapter bodies now compare equal after documented markup/whitespace normalization; two omitted text spans were restored in chapters 2 and 5. Rebound content/source/provenance hashes and package checksum/manifests.
+- Replaced the inherited claim of India commercial clearance with `review_required`. The official Gutenberg notice establishes U.S. public-domain status and directs non-U.S. users to check local law; no title-specific accepted rights decision or edition-bound authorization exists. Package and runtime remain fail-closed.
+- Added first-party Earnalism vector/typography front and back covers, both 800x1200, with asset hashes and no third-party art; both were visually inspected. Cover provenance is now present.
+- Calibrated public same-origin scoped runtime probe: known-live `a-ghost-story` returns HTTP 200; Sherlock returns HTTP 451. Local gate gives Sherlock `ACCEPTED_DECISION_MISSING` for catalog and reader paths. No proxy/release check was weakened.
+- No activation-ready title yet. Exact owner/legal decision packet: `internal/earnalism_intelligence/sherlock_holmes_publication_decision_packet_20260929.md`. Live allowlist unchanged.
