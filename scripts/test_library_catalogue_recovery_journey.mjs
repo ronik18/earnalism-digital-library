@@ -81,6 +81,11 @@ async function assertNoDocumentOverflow(page, label) {
   return geometry;
 }
 
+async function captureFullPageAtTop(page, target) {
+  await page.evaluate(() => { window.scrollTo(0, 0); return new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))); });
+  await page.screenshot({ path: target, fullPage: true, animations: "disabled" });
+}
+
 async function waitForCatalogueState(page, state) {
   const error = page.getByTestId("library-catalogue-error");
   const empty = page.getByTestId("library-catalogue-empty");
@@ -130,7 +135,7 @@ async function testInitialStates(context) {
     results.push({ id, geometry: await assertNoDocumentOverflow(page, id) });
     assertNoRuntimeDefects(diagnostics, id);
     if (["success", "rejected", "malformed", "empty"].includes(id)) {
-      await page.screenshot({ path: path.join(output, `library-${id === "rejected" ? "error" : id}-1024.png`), fullPage: true });
+      await captureFullPageAtTop(page, path.join(output, `library-${id === "rejected" ? "error" : id}-1024.png`));
     }
     await page.close();
   }
@@ -144,13 +149,13 @@ async function testLoadingAndNoResults(context) {
   const pending = await installCatalogueFixture(loading, ["pending-failure"]);
   await loading.goto(`${baseUrl.replace(/\/$/, "")}/library?language=en&availability=reader-ready&sort=title`, { waitUntil: "domcontentloaded" });
   await loading.getByText("Finding your next read…", { exact: true }).waitFor();
-  await loading.screenshot({ path: path.join(output, "library-loading-1440.png"), fullPage: true });
+  await captureFullPageAtTop(loading, path.join(output, "library-loading-1440.png"));
   pending.releasePendingFailure();
   await waitForCatalogueState(loading, "error");
   await assertError(loading, "1440px loading completion");
   const loadingGeometry = await assertNoDocumentOverflow(loading, "1440px error");
   assertNoRuntimeDefects(loadingDiagnostics, "loading to error");
-  await loading.screenshot({ path: path.join(output, "library-error-1440.png"), fullPage: true });
+  await captureFullPageAtTop(loading, path.join(output, "library-error-1440.png"));
   await loading.close();
 
   const noResults = await context.newPage();
@@ -161,7 +166,7 @@ async function testLoadingAndNoResults(context) {
   await noResults.getByTestId("library-no-results").waitFor();
   const noResultsGeometry = await assertNoDocumentOverflow(noResults, "1024px no results");
   assertNoRuntimeDefects(noResultsDiagnostics, "no results");
-  await noResults.screenshot({ path: path.join(output, "library-no-results-1024.png"), fullPage: true });
+  await captureFullPageAtTop(noResults, path.join(output, "library-no-results-1024.png"));
   await noResults.close();
   return { loading_geometry: loadingGeometry, no_results_geometry: noResultsGeometry };
 }
@@ -185,7 +190,7 @@ async function testKeyboardRetryAndRecovery(context, viewport) {
   assert.equal(fixture.count(), 2, `${viewport.width}px retry: duplicate catalogue request started`);
   await retry.click({ force: true });
   assert.equal(fixture.count(), 2, `${viewport.width}px retry: repeated click started another catalogue request`);
-  await page.screenshot({ path: path.join(output, `library-pending-retry-${viewport.width}.png`), fullPage: true });
+  await captureFullPageAtTop(page, path.join(output, `library-pending-retry-${viewport.width}.png`));
   await page.getByTestId("library-reference-surface").getByTestId("library-search").fill("A Ghost Story");
   const searchDuringRetry = new URL(page.url()).searchParams;
   assert.equal(searchDuringRetry.get("language"), "en", `${viewport.width}px retry: language filter was not retained`);
@@ -208,7 +213,7 @@ async function testKeyboardRetryAndRecovery(context, viewport) {
   assert.equal(recoveredSearch.get("q"), "A Ghost Story", `${viewport.width}px recovery: search query changed`);
   const geometry = await assertNoDocumentOverflow(page, `${viewport.width}px recovery`);
   assertNoRuntimeDefects(diagnostics, `${viewport.width}px retry and recovery`);
-  await page.screenshot({ path: path.join(output, `library-recovery-${viewport.width}.png`), fullPage: true });
+  await captureFullPageAtTop(page, path.join(output, `library-recovery-${viewport.width}.png`));
   await page.close();
   return { viewport, request_count: fixture.count(), keyboard_activation: { focus: "Tab traversal", key: "Enter", initial_tab_steps: tabSteps, recovery_tab_steps: recoveryTabSteps }, geometry, result: "PASS" };
 }

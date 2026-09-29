@@ -47,13 +47,15 @@ async function makePage(browser, width, height, apiMode = {}) {
   return { context, page, pageErrors, requestFailures, apiCalls };
 }
 
-async function capture(browser, { id, route, width = 1440, height = 1000, apiMode = {}, action, assertState }) {
+async function capture(browser, { id, route, width = 1440, height = 1000, apiMode = {}, action, assertState, settleMs = 0 }) {
   const session = await makePage(browser, width, height, apiMode);
   const { page } = session;
   await page.goto(`${baseUrl}${route}`, { waitUntil: "domcontentloaded", timeout: 60000 });
   await page.evaluate(async () => { await document.fonts.ready; await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))); });
   if (action) await action(page);
   if (assertState) await assertState(page);
+  if (settleMs) await page.waitForTimeout(settleMs);
+  await page.evaluate(() => { window.scrollTo(0, 0); return new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))); });
   const layout = await page.evaluate(() => ({ scroll_width: document.documentElement.scrollWidth, client_width: document.documentElement.clientWidth, viewport_width: window.innerWidth }));
   assert.equal(layout.scroll_width, layout.client_width, `${id}: horizontal overflow`);
   const filename = `${id}-${width}.png`;
@@ -75,6 +77,7 @@ try {
       await capture(browser, {
         id: `newsletter-${state}`, route: "/", width, height: width === 390 ? 844 : 1000,
         apiMode: { "/newsletter": responseMode },
+        settleMs: state === "validation" ? 0 : 4500,
         action: async (page) => {
           const form = page.getByTestId("newsletter-card");
           await form.waitFor();
@@ -94,14 +97,14 @@ try {
   }
 
   for (const width of [1440, 390]) {
-    await capture(browser, { id: "contact-error", route: "/contact", width, height: width === 390 ? 844 : 1000, apiMode: { "/contact": { status: 422, detail: "Please review your message and try again." } }, action: async (page) => {
+    await capture(browser, { id: "contact-error", route: "/contact", width, height: width === 390 ? 844 : 1000, apiMode: { "/contact": { status: 422, detail: "Please review your message and try again." } }, settleMs: 4500, action: async (page) => {
       await page.getByTestId("contact-name").fill("Review Reader");
       await page.getByTestId("contact-email-input").fill("reader@example.invalid");
       await page.getByTestId("contact-message").fill("A synthetic owner review submission.");
       await page.getByTestId("contact-submit").click();
       await page.getByRole("alert").waitFor();
     } });
-    await capture(browser, { id: "contact-success", route: "/contact", width, height: width === 390 ? 844 : 1000, apiMode: { "/contact": { status: 200, body: { ok: true } } }, action: async (page) => {
+    await capture(browser, { id: "contact-success", route: "/contact", width, height: width === 390 ? 844 : 1000, apiMode: { "/contact": { status: 200, body: { ok: true } } }, settleMs: 4500, action: async (page) => {
       await page.getByTestId("contact-name").fill("Review Reader");
       await page.getByTestId("contact-email-input").fill("reader@example.invalid");
       await page.getByTestId("contact-message").fill("A synthetic owner review submission.");
