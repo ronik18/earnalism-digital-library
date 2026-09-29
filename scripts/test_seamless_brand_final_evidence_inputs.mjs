@@ -9,8 +9,8 @@ import path from "node:path";
 const root = process.cwd();
 const validator = path.join(root, "scripts/validate_seamless_brand_final_evidence_inputs.py");
 const temp = fs.mkdtempSync(path.join(os.tmpdir(), "issue380-final-inputs-"));
-const currentRecord = "docs/design-system/pr467-approved-option-b-homepage-library-interaction-baseline.json";
-const currentHash = "b043c3ca7f6031c035a472cfd534bab49a0d31647c1434e280df87bfd658350b";
+const currentRecord = "docs/design-system/pr468-listening-room-homepage-library-interaction-baseline.json";
+const currentHash = "9383db9e233be96bff8426e39a55f51a3b0aa441b3b26176f14df5af66e52f93";
 const sha = (file) => crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
 const head = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
 const production = (() => {
@@ -114,6 +114,12 @@ test("the now-stale issue380 Library baseline cannot satisfy the current run", (
   input.library_interaction_baseline.approval_source_sha256 = sha(path.join(root, input.library_interaction_baseline.approval_source));
   input.library_interaction_baseline.expected_surface_sha256 = "54e3670f223a9f464ace67244802d4bcc3c25d6231c0ae7a4518aea4056dec66";
   input.library_interaction_baseline.observed_surface_sha256 = "54e3670f223a9f464ace67244802d4bcc3c25d6231c0ae7a4518aea4056dec66";
+}));
+test("the superseded PR467 Library baseline cannot satisfy the current PR468 authorization", () => invalid((input) => {
+  input.library_interaction_baseline.approval_source = "docs/design-system/pr467-approved-option-b-homepage-library-interaction-baseline.json";
+  input.library_interaction_baseline.approval_source_sha256 = sha(path.join(root, input.library_interaction_baseline.approval_source));
+  input.library_interaction_baseline.expected_surface_sha256 = "b043c3ca7f6031c035a472cfd534bab49a0d31647c1434e280df87bfd658350b";
+  input.library_interaction_baseline.observed_surface_sha256 = "b043c3ca7f6031c035a472cfd534bab49a0d31647c1434e280df87bfd658350b";
 }));
 test("an unauthorized Library baseline record fails", () => invalid((input) => { input.library_interaction_baseline.approval_source = "docs/design-system/pr360-library-interaction-baseline.json"; }));
 

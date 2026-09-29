@@ -1,41 +1,9 @@
 {
-  "id": "controlled-the-adventures-of-sherlock-holmes",
   "slug": "the-adventures-of-sherlock-holmes",
   "title": "The Adventures of Sherlock Holmes",
-  "subtitle": "",
   "author": "Arthur Conan Doyle",
-  "category_slug": "literary-fiction",
-  "short_description": "Twelve classic detective stories featuring Sherlock Holmes and Dr. Watson.",
-  "description": "A clean, structured reader edition of Arthur Conan Doyle's 1892 collection.",
-  "cover_url": "/assets/books/the-adventures-of-sherlock-holmes/front-cover.webp",
-  "cover_image_url": "/assets/books/the-adventures-of-sherlock-holmes/front-cover.webp",
-  "coverImage": "/assets/books/the-adventures-of-sherlock-holmes/front-cover.webp",
-  "cover_image": "/assets/books/the-adventures-of-sherlock-holmes/front-cover.webp",
-  "back_cover_url": "/assets/books/the-adventures-of-sherlock-holmes/back-cover.webp",
-  "back_cover_image_url": "/assets/books/the-adventures-of-sherlock-holmes/back-cover.webp",
-  "backCoverImage": "/assets/books/the-adventures-of-sherlock-holmes/back-cover.webp",
-  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
-  "dominant_color": "#4A1C27",
-  "estimated_reading_time": "442 min",
-  "formats": [
-    "Ebook"
-  ],
-  "benefits": [
-    "Read the foundational collection of the world's most famous detective.",
-    "Enjoy a clean, structured reading format.",
-    "Read twelve classic detective stories in a structured edition."
-  ],
-  "who_for": [
-    "Fans of detective and mystery fiction",
-    "Students of Victorian literature and crime writing",
-    "Readers who enjoy clever plot construction and deduction"
-  ],
-  "learnings": [
-    "Explore Doyle's method of logical deduction through Holmes's reasoning.",
-    "Understand how the collection shaped the detective fiction genre.",
-    "Read the original twelve stories without modern adaptation material."
-  ],
-  "about_author": "Arthur Conan Doyle (1859–1930) was a British author and physician, best known for creating the fictional detective Sherlock Holmes, one of the most enduring characters in Western storytelling.",
+  "language": "en",
+  "chapter_count": 12,
   "chapters": [
     {
       "id": "chapter-001",
@@ -194,41 +162,9 @@
       "processing_warnings": []
     }
   ],
-  "source_hash": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
-  "content_hash": "d6cb7d46af3d95b071c3783bf3b093f8c8397144ae717bbfbe87b8fc336fdc5c",
-  "provenance_hash": "1ff85c9a528b7fcc7efa30701afa764d877030f68fa4ab33d994c634c4746c55",
-  "rights_basis": "An authorized owner/legal decision permits commercial text-reader publication in India for this exact Project Gutenberg eBook #1661 edition and the bound source/content hashes. It does not authorize audio or another edition.",
-  "rights_tier": "A",
-  "verification_status": "approved",
-  "qa_status": "QA_PASSED",
-  "approved_to_publish": true,
-  "publication_status": "LIVE_APPROVED",
-  "readerStatus": "LIVE_APPROVED",
-  "publicationStatus": "LIVE_APPROVED",
-  "isPublic": true,
-  "isLive": true,
-  "showInPublicLibrary": true,
-  "showInHomepage": false,
-  "allowPublicReading": true,
-  "allowCheckout": false,
-  "allowPayment": false,
-  "is_published": true,
+  "preview_chapter_ids": [
+    "chapter-001"
+  ],
   "audio_enabled": false,
-  "audiobook_enabled": false,
-  "generate_audiobook": false,
-  "audiobook_provider": "",
-  "audiobook_voice": "",
-  "audio_asset_slug": "",
-  "created_at": "2026-07-03T20:07:48Z",
-  "updated_at": "2026-09-29T08:12:24Z",
-  "cover_dimensions": {
-    "front": [
-      800,
-      1200
-    ],
-    "back": [
-      800,
-      1200
-    ]
-  }
+  "audiobook_enabled": false
 }

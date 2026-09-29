@@ -61,7 +61,7 @@ def runtime_verdict(action: str, record: dict | None, registry: dict[str, str] |
     return evaluate_runtime_path(action, **arguments)
 
 
-def test_real_registry_retains_historical_records_and_binds_current_six_title_release():
+def test_real_registry_retains_historical_records_and_binds_current_seven_title_release():
     registry, revoked = load_production_registry()
     payload = json.loads(PRODUCTION_REGISTRY_PATH.read_text(encoding="utf-8"))
 
@@ -75,6 +75,7 @@ def test_real_registry_retains_historical_records_and_binds_current_six_title_re
         "india-20260925-a-white-heron-commercial-reader-release",
         "india-20260925-the-gift-of-the-magi-commercial-reader-release",
         "india-20260925-the-canterville-ghost-commercial-reader-release",
+        "india-20260929-the-adventures-of-sherlock-holmes-pg1661-text-reader",
     }
     current_runtime_release_slugs = (
         "a-ghost-story",
@@ -83,6 +84,7 @@ def test_real_registry_retains_historical_records_and_binds_current_six_title_re
         "a-white-heron",
         "the-gift-of-the-magi",
         "the-canterville-ghost",
+        "the-adventures-of-sherlock-holmes",
     )
     for slug in current_runtime_release_slugs:
         decision = json.loads(

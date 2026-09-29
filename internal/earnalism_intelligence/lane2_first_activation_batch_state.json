@@ -1,6 +1,6 @@
 {
   "schema": "earnalism-lane2-first-activation-state-v1",
-  "updated_at": "2026-09-29T06:59:32Z",
+  "updated_at": "2026-09-29T08:21:18Z",
   "branch": "codex/lane2-first-activation-batch",
   "slug": "the-adventures-of-sherlock-holmes",
   "authoritative_live_set": [
@@ -20,27 +20,23 @@
     "chapter-005"
   ],
   "cover_provenance": "PASS_FIRST_PARTY_NO_EXTERNAL_ART",
-  "rights": "REVIEW_REQUIRED",
-  "publication_authorization": "ABSENT",
+  "rights": "PASS_OWNER_LEGAL_APPROVAL_BOUND_IN",
+  "publication_authorization": "PASS_HASH_BOUND_TEXT_READER_ONLY",
   "publication_manifest": {
-    "status": "BLOCKED",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "/assets/books/the-adventures-of-sherlock-holmes/front-cover.webp",
-    "blockers": [
-      "Rights: verification_status must be approved before publishing.",
-      "Rights: blocked_reason: India commercial publication rights and exact edition/transcription scope have not received a qualified title-specific determination."
-    ]
+    "blockers": []
   },
   "runtime_control": {
     "known_live_slug": "a-ghost-story",
-    "known_live_http": 200,
-    "candidate_http": 451,
-    "local_candidate_reason": "ACCEPTED_DECISION_MISSING"
+    "last_verified_http": 200,
+    "sherlock_local_runtime_actions": "PASS",
+    "sherlock_production_runtime": "PENDING_DEPLOYMENT"
   },
-  "activation_ready": false,
-  "live_approval_changed": false,
-  "non_fabricable_next_action": "Authenticated owner/legal determination for commercial India text-reader publication of this exact PG #1661 edition and hashes, recorded through trusted rights registry and edition-bound publication authorization.",
+  "activation_ready": true,
+  "live_approval_changed": true,
+  "non_fabricable_next_action": "Pass exact-head required PR checks, merge through normal protection, deploy the exact backend revision, and verify a-ghost-story and Sherlock catalog/reader runtime in production.",
   "decision_packet": "internal/earnalism_intelligence/sherlock_holmes_publication_decision_packet_20260929.md",
   "audio_text_release_coupling_found": false,
   "audio_text_release_evidence": {
@@ -50,5 +46,24 @@
     "candidate_metadata": "All nine inspected candidates have local audio markers; eight carry package-local approval claims without an audio hash, while sredni-vashtar has a hash. These are not canonical runtime audio approvals.",
     "changes_to_audio_state": false,
     "incomplete_local_audio_hash_claims": 8
-  }
+  },
+  "authoritative_live_set_before": [
+    "a-ghost-story",
+    "the-tell-tale-heart",
+    "radharani",
+    "a-white-heron",
+    "the-gift-of-the-magi",
+    "the-canterville-ghost"
+  ],
+  "authoritative_live_set_after_in_branch": [
+    "a-ghost-story",
+    "the-tell-tale-heart",
+    "radharani",
+    "a-white-heron",
+    "the-gift-of-the-magi",
+    "the-canterville-ghost",
+    "the-adventures-of-sherlock-holmes"
+  ],
+  "new_live_slug_in_branch": "the-adventures-of-sherlock-holmes",
+  "production_activated": false
 }

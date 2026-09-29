@@ -60,17 +60,20 @@
       "next_action": "Prove an exact-slug graphical cover, rerun reader gates, and render a fresh private preview."
     },
     "the-adventures-of-sherlock-holmes": {
-      "latest_decision": "SOURCE_AND_EDITION_RECONCILED_RIGHTS_REVIEW_REQUIRED",
-      "decision_reason": "Official Project Gutenberg #1661 identity and all twelve chapter texts are checksum-bound; two omitted spans were restored from the source. Project Gutenberg establishes US public-domain status only and directs non-US readers to check local law. India commercial rights and exact-edition publication authorization remain unapproved.",
-      "updated_at": "2026-09-29T06:51:05Z",
+      "latest_decision": "OWNER_APPROVED_INDIA_TEXT_READER_ONLY_PENDING_PRODUCTION_DEPLOY",
+      "decision_reason": "User-supplied authorized owner/legal approval binds commercial text-reader publication in India to Project Gutenberg eBook #1661 and the exact source/content hashes. The approved edition is recorded in approval_evidence.json and a trusted hash-bound rights decision. Audio and every other edition remain unauthorized.",
+      "updated_at": "2026-09-29T08:21:18Z",
       "language": "en",
-      "public_reader_status": "BLOCKED_RIGHTS_REVIEW_REQUIRED_NOT_EXPOSED",
-      "public_audio_status": "NOT_REQUESTED",
+      "public_reader_status": "APPROVED_IN_CONTROLLED_PR_PENDING_PRODUCTION_RUNTIME_VERIFICATION",
+      "public_audio_status": "NOT_REQUESTED_FAIL_CLOSED",
       "chapter_count": 12,
       "manifest_schema": "earnalism-publication-manifest-v1",
-      "next_action": "Obtain one authenticated owner/legal determination for commercial text publication in India of this exact edition and bind the resulting edition-specific publication authorization; do not infer approval from the historical import record.",
+      "next_action": "Require all PR #470 protected checks, merge through normal governance, then verify the exact deployed backend revision with a-ghost-story control and Sherlock catalog/reader probes. Keep audio fail-closed.",
       "source_sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
-      "content_sha256": "d6cb7d46af3d95b071c3783bf3b093f8c8397144ae717bbfbe87b8fc336fdc5c"
+      "content_sha256": "d6cb7d46af3d95b071c3783bf3b093f8c8397144ae717bbfbe87b8fc336fdc5c",
+      "territory": "IN",
+      "rights_decision_id": "india-20260929-the-adventures-of-sherlock-holmes-pg1661-text-reader",
+      "publication_authorization": "HASH_BOUND_TEXT_READER_ONLY"
     },
     "gitanjali": {
       "reader_status": "READER_ONLY_LIVE_APPROVED",
@@ -3590,14 +3593,14 @@
       "active_connector_automation_owned": true
     },
     "the-adventures-of-sherlock-holmes": {
-      "status": "READY_FOR_APPROVAL_NOT_ACTIVATABLE",
-      "in_authoritative_live_approved_slugs": false,
-      "manifest_status": "READY_FOR_APPROVAL",
-      "exposed": false,
-      "checksum_rebuilt_from_package_files": false,
-      "release_authorized": false,
-      "reason": "No accepted title-specific rights registry decision, independent cover-provenance record, edition-bound publication authorization, or passing production runtime release validation.",
-      "existing_checksum_bundle_verified": true
+      "status": "APPROVED_TEXT_READER_ACTIVATION_IN_PR_PENDING_PRODUCTION",
+      "in_authoritative_live_approved_slugs": true,
+      "manifest_written_nonexposed": false,
+      "checksum_rebuilt_from_package_files": true,
+      "audio_metadata_package_left_untouched": true,
+      "release_authorized": true,
+      "reason": "Genuine owner/legal approval was bound to exact Project Gutenberg #1661 source/content hashes, cover, reader package, manifest, and runtime rights decision. Production runtime verification is pending deployment.",
+      "active_connector_automation_owned": false
     },
     "agentic-ai-with-python": {
       "status": "NOT_AUTHORIZED",

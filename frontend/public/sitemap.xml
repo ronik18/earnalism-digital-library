@@ -97,6 +97,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://theearnalism.com/book/the-adventures-of-sherlock-holmes</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://theearnalism.com/book/the-gift-of-the-magi</loc>
     <lastmod>2026-07-30</lastmod>
     <changefreq>weekly</changefreq>

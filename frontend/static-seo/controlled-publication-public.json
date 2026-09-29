@@ -2,7 +2,7 @@
   "schema_version": "earnalism.static-seo-public.v2",
   "public_release_held": false,
   "generated_from": {
-    "data/controlled_launch.json": "ba06daa61aeeed98b31cf66a6ec2f14a1d7e053249c6d7cdefbbc02f2544b341",
+    "data/controlled_launch.json": "ad81398fbc6ba84bd895ede86512f3d32c71e289f88d1a2bd1129c3f6a9a7c93",
     "data/controlled_publications/a-ghost-story/public_book.json": "993dbc5804da73144872935f9d43d2471afa200ac688e9b690fcf7f3e44a9338",
     "data/controlled_publications/a-ghost-story/reader_manifest.json": "043416f20760f32bd6ce0f401025bfa9230e7e9c76f8fc6a86b1b0b143b302c1",
     "data/controlled_publications/a-ghost-story/source_evidence.json": "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b",
@@ -15,6 +15,10 @@
     "data/controlled_publications/radharani/reader_manifest.json": "44d18a1e78aaa49d81bb23d32d92c5f3573793ec3453bd54ec02efee9a64f555",
     "data/controlled_publications/radharani/source_evidence.json": "702fa94b5aebbdb50431a7c4dfc56ed900c3d3f84cee7067e129fec07a720f95",
     "data/controlled_publications/radharani/approval_evidence.json": "dcdb1ba95e43f19099bec038c27f2a9e5abc40baa38bae9f1b1923ced14bffcc",
+    "data/controlled_publications/the-adventures-of-sherlock-holmes/public_book.json": "2ea560df8a7adc3fdd54100589fd96e81660f0f2a12d8d64632a72e2cbe16163",
+    "data/controlled_publications/the-adventures-of-sherlock-holmes/reader_manifest.json": "72df26f5a988406ad2be0dca1a6b45825a652dca75e5aeaafdf189bf9f16ba1d",
+    "data/controlled_publications/the-adventures-of-sherlock-holmes/source_evidence.json": "a2d6c8c617d5d21238767685e7f430536d02459d579ffe37e09a9145066599b5",
+    "data/controlled_publications/the-adventures-of-sherlock-holmes/approval_evidence.json": "3a4bb1af8591ce96ec9d1830750098d016122f9b78bbe9699b7213e43e4f9fea",
     "data/controlled_publications/the-canterville-ghost/public_book.json": "16fd86b7c71515176f9721e21bda36ef3ea6bee1e81f5a4ca939024ff181bfc0",
     "data/controlled_publications/the-canterville-ghost/reader_manifest.json": "a9dd15b839ece73acbcb0e93bf5f9f11de30523f73b60356739f18d535e4f5f3",
     "data/controlled_publications/the-canterville-ghost/source_evidence.json": "94fe16603a0ee2ce43bdb4e3a8695673e32e4cbeae6c49676dc083416b70b5fb",
@@ -78,6 +82,23 @@
         "book": "/book/radharani",
         "reader": "/reader/radharani",
         "listener": "/listener/radharani"
+      }
+    },
+    {
+      "slug": "the-adventures-of-sherlock-holmes",
+      "title": "The Adventures of Sherlock Holmes",
+      "author": "Arthur Conan Doyle",
+      "cover_url": "/assets/books/the-adventures-of-sherlock-holmes/front-cover.webp",
+      "chapter_count": 12,
+      "source_display_name": "Project Gutenberg eBook #1661",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-adventures-of-sherlock-holmes",
+        "reader": "/reader/the-adventures-of-sherlock-holmes",
+        "listener": "/listener/the-adventures-of-sherlock-holmes"
       }
     },
     {
