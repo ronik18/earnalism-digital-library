@@ -47,7 +47,8 @@
     "canonical_audio_live_set": [],
     "reader_validator": "controlled_reader_validation_issues strips audio-only checks; text access remains separately gated",
     "control_test": "a-ghost-story with stale audio flags: reader validation PASS; audio validation FAIL as expected",
-    "candidate_metadata": "all nine inspected candidates have audio-related local metadata; seven manifest candidates fail only the claimed audio lane for missing audio hashes, while reader release remains independently evaluated",
-    "changes_to_audio_state": false
+    "candidate_metadata": "All nine inspected candidates have local audio markers; eight carry package-local approval claims without an audio hash, while sredni-vashtar has a hash. These are not canonical runtime audio approvals.",
+    "changes_to_audio_state": false,
+    "incomplete_local_audio_hash_claims": 8
   }
 }
