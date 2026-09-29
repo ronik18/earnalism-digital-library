@@ -28,6 +28,7 @@ export const PR457_READING_PASS_HOME_LIBRARY_INTERACTION_BASELINE = "docs/design
 export const PR462_APPROVED_HOMEPAGE_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr462-approved-homepage-library-interaction-baseline.json";
 export const PR466_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr466-approved-option-b-homepage-library-interaction-baseline.json";
 export const PR467_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr467-approved-option-b-homepage-library-interaction-baseline.json";
+export const PR468_LISTENING_ROOM_HOMEPAGE_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr468-listening-room-homepage-library-interaction-baseline.json";
 export const ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_INPUT_PATHS = [
   "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
   "frontend/src/components/ReferencePublicPages.css",
@@ -37,7 +38,7 @@ export const ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_INPUT_PATHS = [
 // Prior Home-sections and India-commercial records remain immutable historical
 // transitions. Runtime/evidence callers must use the latest explicitly
 // authorized Reading Room transition as the active decision.
-export const DEFAULT_LIBRARY_INTERACTION_BASELINE = PR467_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE;
+export const DEFAULT_LIBRARY_INTERACTION_BASELINE = PR468_LISTENING_ROOM_HOMEPAGE_LIBRARY_INTERACTION_BASELINE;
 
 const SHA256 = /^[0-9a-f]{64}$/;
 const GIT_OBJECT_ID = /^[0-9a-f]{40}$/;
@@ -216,6 +217,15 @@ const baselineContracts = {
     changedPaths: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx"],
     unchangedPaths: ["frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/library-paper-review.css", "frontend/src/pages/Library.jsx"],
     authorization: "DIRECT_OWNER_AUTHORIZATION_PR467_OPTION_B_HOMEPAGE_REFINEMENT",
+  },
+  [PR468_LISTENING_ROOM_HOMEPAGE_LIBRARY_INTERACTION_BASELINE]: {
+    reviewedSource: { commit: "6b37f7060c5cd3559b5fe80c0b24faa4065ce596", tree: "ec9df965ca57ebc727bbe98a3ce94bfce9f8b13e" },
+    previous: { recordPath: PR467_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE, commit: "4c922f8d993d8efdbc9dc9d3c56263841b5ee4b7", hash: "b043c3ca7f6031c035a472cfd534bab49a0d31647c1434e280df87bfd658350b" },
+    authorizedHash: "9383db9e233be96bff8426e39a55f51a3b0aa441b3b26176f14df5af66e52f93",
+    inputPaths: ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_INPUT_PATHS,
+    changedPaths: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx"],
+    unchangedPaths: ["frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/library-paper-review.css", "frontend/src/pages/Library.jsx"],
+    authorization: "DIRECT_OWNER_AUTHORIZATION_PR468_LISTENING_ROOM_HOMEPAGE",
   },
 };
 

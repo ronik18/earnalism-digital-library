@@ -23,7 +23,7 @@ describe("Reference public page surfaces", () => {
   test("uses the approved canonical preview and non-recurring pass language", () => {
     expect(source).toContain('PUBLIC_PREVIEW_COPY');
     expect(source).toContain('PUBLIC_ACCESS_COPY');
-    expect(source).toContain("No subscription or autorenewal");
+    expect(source).toContain("One-time purchase · unused time never expires.");
     expect(source).not.toContain("Chapter 1 free");
     expect(source).not.toContain("Most Popular");
   });
@@ -41,7 +41,7 @@ describe("Reference public page surfaces", () => {
   });
 
   test("keeps Home discovery editorial and avoids a second dynamic catalogue shelf", () => {
-    for (const category of ["Bengali Classics", "English Classics", "Modern Favourites", "Curated Collections"]) {
+    for (const category of ["Bengali Classics", "English Classics", "The Listening Room", "Curated Collections"]) {
       expect(source).toContain(category);
     }
     expect(source).not.toContain('api.get("/books"');
@@ -76,9 +76,10 @@ describe("Reference public page surfaces", () => {
   test("keeps illustrative reader perspectives distinct from customer testimonials", () => {
     expect(home).toContain("<ReferenceHomeSurface");
     expect(source).toContain("<ReaderPerspectives />");
+    expect(source).toContain("<HomepageListeningRoom />");
     expect(source.indexOf("<ReaderPerspectives />")).toBeLessThan(source.indexOf('<section className="reference-home__pass"'));
     expect(perspectives).not.toMatch(/ReaderTestimonialsSection|What Our Readers Say|REAL READERS|verified reader/);
-    expect(perspectives).toContain("WHAT READING CAN FEEL LIKE");
+    expect(perspectives).toContain("WHAT READING — AND LISTENING — CAN FEEL LIKE");
     expect(perspectives).toContain("A slower mind");
     expect(perspectives).toContain("A wider world");
     expect(perspectives).toContain("A more thoughtful you");
@@ -94,7 +95,7 @@ describe("Reference public page surfaces", () => {
     expect(source).toContain("/assets/home-option-b/hero-reading-room.webp");
     expect(source).toContain("/assets/home-option-b/bengali-classics.webp");
     expect(source).toContain("/assets/home-option-b/english-classics.webp");
-    expect(source).toContain("/assets/home-option-b/modern-favourites.webp");
+    expect(source).toContain("/assets/home-option-b/listening-room.webp");
     expect(source).toContain("/assets/home-option-b/curated-collections.webp");
     expect(source).not.toContain("reference-home__listening");
     expect(home).toContain('import "./HomeOptionB.css"');

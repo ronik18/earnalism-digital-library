@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.library-interaction-baseline.v1",
+  "surface": "library_interaction_surface",
+  "hash_algorithm": "sha256(file-sha256 plus two spaces plus relative path plus newline, sorted by relative path)",
+  "input_paths": [
+    "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+    "frontend/src/components/ReferencePublicPages.css",
+    "frontend/src/styles/library-paper-review.css",
+    "frontend/src/pages/Library.jsx"
+  ],
+  "reviewed_source": {
+    "commit": "6b37f7060c5cd3559b5fe80c0b24faa4065ce596",
+    "tree": "ec9df965ca57ebc727bbe98a3ce94bfce9f8b13e"
+  },
+  "previous_baseline": {
+    "record_path": "docs/design-system/pr467-approved-option-b-homepage-library-interaction-baseline.json",
+    "reviewed_source_commit": "4c922f8d993d8efdbc9dc9d3c56263841b5ee4b7",
+    "surface_sha256": "b043c3ca7f6031c035a472cfd534bab49a0d31647c1434e280df87bfd658350b"
+  },
+  "authorized_surface_sha256": "9383db9e233be96bff8426e39a55f51a3b0aa441b3b26176f14df5af66e52f93",
+  "reviewed_source_comparison": {
+    "changed_paths_within_input_set": [
+      "frontend/src/components/EditorialHomeLibrarySurfaces.jsx"
+    ],
+    "unchanged_paths_within_input_set": [
+      "frontend/src/components/ReferencePublicPages.css",
+      "frontend/src/styles/library-paper-review.css",
+      "frontend/src/pages/Library.jsx"
+    ]
+  },
+  "owner_authorization": {
+    "reference": "DIRECT_OWNER_AUTHORIZATION_PR468_LISTENING_ROOM_HOMEPAGE",
+    "scope": "Add understated, release-aware audiobook discovery and the Listening Room to the approved Option B homepage while preserving existing Library interactions and routes, official Earnalism brand assets, Reading Pass pricing and behavior, newsletter behavior, accessibility, and fail-closed audio release enforcement. Payments, entitlements, catalogue exposure, rights, and production state remain unchanged.",
+    "capture_is_not_expected_value_authority": true
+  },
+  "limitations": "This transition records only the owner-authorized Listening Room homepage change. It does not authorize title-specific playback, audio publication, payment or entitlement changes, catalogue exposure, or any weakening of runtime release checks. Exact source hashing and independent browser, Reader safety, audio release, and release gates remain mandatory."
+}

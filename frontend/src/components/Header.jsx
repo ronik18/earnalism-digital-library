@@ -174,20 +174,22 @@ export default function Header() {
               <Search size={20} strokeWidth={1.55} aria-hidden="true" />
             </Link>
           )}
-          <NavLink
-            to={accountHref}
-            data-testid={isAuthed ? "nav-account" : "nav-sign-in"}
-            className={({ isActive }) =>
-              `tracking-[0.12em] transition-colors whitespace-nowrap ${isActive ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`
-            }
-          >
-            <UserRound size={17} strokeWidth={1.55} aria-hidden="true" />
-            <span>{accountLabel}</span>
-          </NavLink>
+          {!usesHomeOptionBShell && (
+            <NavLink
+              to={accountHref}
+              data-testid={isAuthed ? "nav-account" : "nav-sign-in"}
+              className={({ isActive }) =>
+                `tracking-[0.12em] transition-colors whitespace-nowrap ${isActive ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`
+              }
+            >
+              <UserRound size={17} strokeWidth={1.55} aria-hidden="true" />
+              <span>{accountLabel}</span>
+            </NavLink>
+          )}
         </nav>
 
-        {usesHomeOptionBShell && !isAuthed && (
-          <Link to="/signup" className="home-option-b-join" data-testid="nav-join">Join</Link>
+        {usesHomeOptionBShell && (
+          <Link to={accountHref} className="home-option-b-auth" data-testid={isAuthed ? "nav-account-cta" : "nav-sign-in-cta"}>{accountLabel}</Link>
         )}
 
         <Link
