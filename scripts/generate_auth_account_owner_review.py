@@ -56,10 +56,14 @@ def main() -> int:
         "login": (root / "frontend/src/pages/Login.jsx").read_text(),
         "signup": (root / "frontend/src/pages/Signup.jsx").read_text(),
         "account": (root / "frontend/src/pages/Account.jsx").read_text(),
+        "auth_policy": (root / "frontend/src/lib/publicAccessCopy.js").read_text(),
     }
     locked_sentence = "A valid Reading Pass is required from page 4."
+    auth_policy_copy = "The first 3 pages are free where a preview is available. A Reading Pass is required from page 4 on eligible titles. Listening appears only where an edition is approved."
     copy_contract = {
-        "locked_product_sentence": all(locked_sentence in source for source in sources.values()),
+        "auth_uses_shared_release_safe_product_copy": auth_policy_copy in sources["auth_policy"] and all("AUTH_PRODUCT_ACCESS_COPY" in sources[name] for name in ("login", "signup")),
+        "account_preview_boundary_remains_truthful": locked_sentence in sources["account"],
+        "stale_auth_purchase_claim_absent": all("Pass purchases are not available yet." not in sources[name] for name in ("login", "signup")),
         "signup_accessibility_copy_library_wide": "Create an account to manage your Reading Pass and return to your place across eligible books." in sources["signup"],
         "account_empty_copy_library_wide": "No reading activity yet. Open a book from the library to begin." in sources["account"],
         "user_visible_dracula_continue_copy_absent": "Continue Dracula" not in sources["account"],
