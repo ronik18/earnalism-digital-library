@@ -61,6 +61,7 @@ jobs:
           run-id: 36549307831
           github-token: ${{ github.token }}
           path: ${{ runner.temp }}/pr469-reviewed-baseline
+          merge-multiple: true
 
       - name: Verify exact PR469 baseline screenshot inputs
         run: |
