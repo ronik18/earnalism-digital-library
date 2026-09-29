@@ -13,6 +13,7 @@ if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(baseUrl)) throw new Error("HEADER_REVIEW
 fs.mkdirSync(output, { recursive: true });
 
 const navLabels = ["Home", "Library", "Bengali Classics", "English Classics", "Audiobooks", "Reading Pass", "About"];
+const homeNavLabels = ["Books", "Authors", "Collections", "Reading Pass", "About"];
 const routes = [
   { id: "home", path: "/" },
   { id: "library", path: "/library" },
@@ -93,7 +94,7 @@ try {
           logo_src: logo?.currentSrc || logo?.src || "",
           header_scroll_width: node.scrollWidth,
           header_client_width: node.clientWidth,
-          public_nav_labels: [...node.querySelectorAll(".premium-header-nav--desktop > a")].slice(0, 7).map((link) => link.textContent.trim()),
+          public_nav_labels: [...node.querySelectorAll('.premium-header-nav--desktop > a:not([data-testid="nav-sign-in"]):not([data-testid="nav-account"])')].map((link) => link.textContent.trim()),
           has_search_field: visible(".premium-header-search input"),
           has_mobile_search: visible('[data-testid="mobile-header-search"]'),
           has_immersive_search: visible('[aria-label="Search library"]'),
@@ -107,7 +108,8 @@ try {
       assert.ok(Math.abs(headerInfo.height - expectedHeaderHeight) <= 1, `${routeInfo.id} ${viewport.width}: header height ${headerInfo.height}px`);
       const expectedWidth = viewport.width >= 1280 ? [240, 270] : viewport.width >= 768 ? [205, 230] : [165, 190];
       assert.ok(headerInfo.logo_width >= expectedWidth[0] && headerInfo.logo_width <= expectedWidth[1], `${routeInfo.id} ${viewport.width}: logo width ${headerInfo.logo_width}`);
-      if (viewport.width >= 1360 && !["reader", "listener"].includes(routeInfo.id)) assert.deepEqual(headerInfo.public_nav_labels, navLabels, `${routeInfo.id}: desktop nav labels/order`);
+      const expectedNavLabels = routeInfo.id === "home" ? homeNavLabels : navLabels;
+      if (viewport.width >= 1360 && !["reader", "listener"].includes(routeInfo.id)) assert.deepEqual(headerInfo.public_nav_labels, expectedNavLabels, `${routeInfo.id}: desktop nav labels/order`);
       if (viewport.width >= 1360 && !["reader", "listener"].includes(routeInfo.id)) assert.equal(headerInfo.has_search_field, true, `${routeInfo.id}: shared desktop search`);
       if (viewport.width < 1360 && !["reader", "listener"].includes(routeInfo.id)) assert.equal(headerInfo.has_mobile_search, true, `${routeInfo.id}: shared mobile search`);
       if (["reader", "listener"].includes(routeInfo.id)) assert.equal(headerInfo.has_immersive_search, true, `${routeInfo.id}: immersive search affordance`);
@@ -120,14 +122,14 @@ try {
         const menu = page.locator("#mobile-menu, #experience-header-menu").first();
         await menu.waitFor({ state: "visible" });
         menuLabels = await menu.locator("a").allTextContents();
-        assert.deepEqual(menuLabels.slice(0, 7).map((label) => label.trim()), navLabels, `${routeInfo.id} ${viewport.width}: menu labels/order`);
-        assert.match(menuLabels[7]?.trim() || "", /^(Sign In|Account)$/, `${routeInfo.id} ${viewport.width}: account action follows canonical navigation`);
+        assert.deepEqual(menuLabels.slice(0, expectedNavLabels.length).map((label) => label.trim()), expectedNavLabels, `${routeInfo.id} ${viewport.width}: menu labels/order`);
+        assert.match(menuLabels[expectedNavLabels.length]?.trim() || "", /^(Sign In|Account)$/, `${routeInfo.id} ${viewport.width}: account action follows route navigation`);
         if (routeInfo.id === "home" && viewport.width === 390) await page.screenshot({ path: path.join(output, "home-mobile-menu.png"), fullPage: true, animations: "disabled" });
         if (routeInfo.id === "reader" && viewport.width === 390) await page.screenshot({ path: path.join(output, "reader-mobile-menu.png"), fullPage: true, animations: "disabled" });
         if (routeInfo.id === "listener" && viewport.width === 390) await page.screenshot({ path: path.join(output, "listener-mobile-menu.png"), fullPage: true, animations: "disabled" });
         await menuToggle.click();
       } else {
-        assert.deepEqual(menuLabels, navLabels, `${routeInfo.id} ${viewport.width}: desktop nav labels/order`);
+        assert.deepEqual(menuLabels, expectedNavLabels, `${routeInfo.id} ${viewport.width}: desktop nav labels/order`);
       }
 
       const pageWidth = await page.evaluate(() => ({ scroll: document.documentElement.scrollWidth, client: document.documentElement.clientWidth }));
