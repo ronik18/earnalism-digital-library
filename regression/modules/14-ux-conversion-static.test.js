@@ -1877,7 +1877,7 @@ describe("UX conversion static signals", () => {
     expect(footer).toContain("<FooterSocialLinks links={social} />");
     expect(footer).toContain("sales@reoenterprise.org");
     expect(footer).not.toContain("sales@reoenterprise.in");
-    expect(footer).toContain("Timeless Bengali and English literature, made beautiful for the way you read.");
+    expect(footer).toContain("Good books. A kinder tomorrow.");
     expect(footer).toContain('import FooterWordmark from "./FooterWordmark"');
     expect(footer).toContain("A Reo Enterprise Venture");
     expect(footer).not.toContain('bg-[#fff9ee]');

@@ -1,9 +1,9 @@
 {
   "schema_version": "seamless-brand-cross-browser-shell-matrix-v1",
   "source_state_manifest": "docs/design-system/seamless-brand-state-manifest.json",
-  "source_state_manifest_sha256": "6131e472bd0ef8438493844ae7550d17299c71b8e8a68b25d6820c9861c681d0",
+  "source_state_manifest_sha256": "d27210fe256a266fe6d7b9d6b08ae934b758816a89bdbc6f1f3bdbf82471c2e6",
   "source_route_inventory": "docs/design-system/seamless-brand-route-inventory.json",
-  "source_route_inventory_sha256": "7175348bc0cdd82d68e161b776f50343dd2cdc4852377b17bd6a1c16efbc896b",
+  "source_route_inventory_sha256": "95c641c93c3131904a6b981ac652fd613e450ab50c01065fc0f600e37f92cce3",
   "families": [
     { "family_id": "public-header-footer-desktop", "selected_state_id": "home-desktop", "route": "/", "viewport": { "width": 1440, "height": 1000 }, "zoom": 100, "fixture": "public-safe", "interaction": "none", "reason_selected": "Public Header and Footer desktop shell." },
     { "family_id": "public-header-footer-mobile", "selected_state_id": "home-mobile-zoom-100", "route": "/", "viewport": { "width": 390, "height": 844 }, "zoom": 100, "fixture": "public-safe", "interaction": "none", "reason_selected": "Public Header and Footer mobile shell." },

@@ -40,4 +40,20 @@
   --eds-page: min(100% - 2rem, 84rem);
   --eds-ui: "Outfit", "Noto Sans Bengali";
   --eds-display: "Cormorant Garamond", "Noto Serif Bengali";
+  /* Shared Option B customer-facing design tokens. These reference the
+     approved Earnalism brand palette and bundled typography above. */
+  --optionb-paper: var(--beige-canvas, #FAF7F0);
+  --optionb-paper-warm: var(--beige-surface, #F5F0E8);
+  --optionb-ink: var(--brand-charcoal, #332821);
+  --optionb-ink-muted: var(--brand-charcoal-soft, #63544A);
+  --optionb-burgundy: var(--brand-burgundy, #5A1F2B);
+  --optionb-burgundy-deep: var(--brand-burgundy-deep, #351018);
+  --optionb-gold: var(--brand-gold, #B58A45);
+  --optionb-line: var(--brand-border, #E5DCD3);
+  --optionb-display: var(--font-display, "Cormorant Garamond", "Noto Serif Bengali", serif);
+  --optionb-body: var(--font-ui, "Outfit", "Noto Sans Bengali", sans-serif);
+  --optionb-content-width: 84rem;
+  --optionb-section-gap: clamp(2.5rem, 5vw, 4.5rem);
+  --optionb-radius-control: 0.3rem;
+  --optionb-radius-surface: 0.55rem;
 }

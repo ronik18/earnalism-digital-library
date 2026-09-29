@@ -5,14 +5,17 @@ import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { compareLibraryInteractionBaseline, DEFAULT_LIBRARY_INTERACTION_BASELINE } from "./lib/library_interaction_baseline.mjs";
 
 const root = process.cwd();
 const validator = path.join(root, "scripts/validate_seamless_brand_final_evidence_inputs.py");
 const temp = fs.mkdtempSync(path.join(os.tmpdir(), "issue380-final-inputs-"));
-const currentRecord = "docs/design-system/pr467-approved-option-b-homepage-library-interaction-baseline.json";
-const currentHash = "b043c3ca7f6031c035a472cfd534bab49a0d31647c1434e280df87bfd658350b";
+const currentRecord = DEFAULT_LIBRARY_INTERACTION_BASELINE;
+const currentHash = "9383db9e233be96bff8426e39a55f51a3b0aa441b3b26176f14df5af66e52f93";
 const sha = (file) => crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
 const head = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
+const stateCount = JSON.parse(fs.readFileSync(path.join(root, "docs/design-system/seamless-brand-state-manifest.json"), "utf8")).states.length;
+const shellCount = JSON.parse(fs.readFileSync(path.join(root, "docs/design-system/seamless-brand-cross-browser-shell-matrix.json"), "utf8")).families.length;
 const production = (() => {
   const files = [];
   const walk = (directory) => fs.readdirSync(directory, { withFileTypes: true }).forEach((entry) => {
@@ -44,9 +47,11 @@ const make = () => {
     current_pr_head: head,
     production_surface_sha256: production,
     canonical_logo_sha256: sha(path.join(root, "frontend/public/assets/brand/earnalism-brand-lockup.png")),
-    chromium: { summary_path: chromium.path, summary_sha256: chromium.sha256, expected: 65, captured: 65, stable: 65 },
-    firefox: { summary_path: firefox.path, summary_sha256: firefox.sha256, expected: 20, captured: 20, stable: 20, result: "PASS" },
-    webkit: { summary_path: webkit.path, summary_sha256: webkit.sha256, expected: 20, captured: 20, stable: 20, result: "PASS" },
+    state_manifest: { path: "synthetic", sha256: "synthetic", count: stateCount },
+    cross_browser_contract: { path: "synthetic", sha256: "synthetic", count: shellCount },
+    chromium: { summary_path: chromium.path, summary_sha256: chromium.sha256, expected: stateCount, captured: stateCount, stable: stateCount },
+    firefox: { summary_path: firefox.path, summary_sha256: firefox.sha256, expected: shellCount, captured: shellCount, stable: shellCount, result: "PASS" },
+    webkit: { summary_path: webkit.path, summary_sha256: webkit.sha256, expected: shellCount, captured: shellCount, stable: shellCount, result: "PASS" },
     article_stability: { article_mobile: { webkit: { expected: 10, captured: 10, stable: 10 }, chromium: { expected: 5, captured: 5, stable: 5 }, firefox: { expected: 5, captured: 5, stable: 5 } } },
     static_snapshot: { path: staticResult.path, sha256: staticResult.sha256, expected: 1, inspected: 1, passing: 1, result: "PASS" },
     route_hashes: { path: hashes.path, sha256: hashes.sha256, result: "PASS" },
@@ -84,6 +89,13 @@ const invalid = (mutate) => {
 };
 
 test("valid exact-head input set passes", () => { make(); run(); });
+test("active PR468 Library baseline is the canonical reproduced current surface", () => {
+  const baseline = compareLibraryInteractionBaseline(root);
+  assert.equal(currentRecord, "docs/design-system/pr468-listening-room-homepage-library-interaction-baseline.json");
+  assert.equal(baseline.result, "PASS");
+  assert.equal(baseline.expected_surface_sha256, currentHash);
+  assert.equal(baseline.observed_surface_sha256, currentHash);
+});
 test("wrong head fails", () => invalid((input) => { input.current_pr_head = "wrong"; }));
 test("wrong production hash fails", () => invalid((input) => { input.production_surface_sha256 = "wrong"; }));
 test("wrong logo hash fails", () => invalid((input) => { input.canonical_logo_sha256 = "wrong"; }));

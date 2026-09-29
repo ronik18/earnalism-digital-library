@@ -502,7 +502,7 @@
 .layout--homepage-option-b [data-testid="footer-socials"] .footer-social__label,
 .layout--homepage-option-b [data-testid="footer-socials"] .footer-social__link-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .layout--homepage-option-b [data-testid="footer-socials"] .footer-social__links { gap: 10px; }
-.layout--homepage-option-b [data-testid="footer-socials"] .footer-social__link { min-width: 32px; min-height: 32px; border: 0; padding: 0; color: var(--beige-50); background: transparent; }
+.layout--homepage-option-b [data-testid="footer-socials"] .footer-social__link { width: 44px; min-width: 44px; height: 44px; min-height: 44px; border: 0; padding: 0; color: var(--beige-50); background: transparent; }
 .layout--homepage-option-b [data-testid="footer-socials"] .footer-social__link:hover,
 .layout--homepage-option-b [data-testid="footer-socials"] .footer-social__link:focus-visible { color: var(--gold-300); background: transparent; }
 .layout--homepage-option-b [data-testid="site-footer"] nav[aria-labelledby="footer-explore-heading"] ul {
@@ -518,7 +518,7 @@
 .layout--homepage-option-b [data-testid="footer-home-navigation"] nav { min-width: 0; }
 .layout--homepage-option-b [data-testid="footer-home-navigation"] nav > div { color: var(--gold-300); font: 600 10px/1.2 var(--font-ui); letter-spacing: .14em; text-transform: uppercase; }
 .layout--homepage-option-b [data-testid="footer-home-navigation"] ul { display: flex; flex-direction: column; gap: 0; color: var(--beige-100); font: 400 13px/1.2 var(--font-display); }
-.layout--homepage-option-b [data-testid="footer-home-navigation"] a { display: inline-flex; min-height: 32px; align-items: center; color: inherit; text-decoration: none; }
+.layout--homepage-option-b [data-testid="footer-home-navigation"] a { display: inline-flex; min-height: 44px; align-items: center; color: inherit; text-decoration: none; }
 .layout--homepage-option-b [data-testid="footer-home-navigation"] a:hover,
 .layout--homepage-option-b [data-testid="footer-home-navigation"] a:focus-visible { color: var(--gold-300); }
 .layout--homepage-option-b [data-testid="site-footer"] [data-testid="footer-contact"] {
