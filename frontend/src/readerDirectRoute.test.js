@@ -53,6 +53,20 @@ describe("approved Reader direct-route contract", () => {
     });
   });
 
+  test("held historical Reader and Listener routes retain the shared public shell", () => {
+    const layoutStart = app.indexOf("<Route element={<Layout />}");
+    const standaloneStart = app.indexOf("{/* Standalone full-screen routes", layoutStart);
+    expect(layoutStart).toBeGreaterThanOrEqual(0);
+    expect(standaloneStart).toBeGreaterThan(layoutStart);
+    const publicRoutes = app.slice(layoutStart, standaloneStart);
+    [
+      '<Route path="/reader/dracula" element={<UnavailableTitle />} />',
+      '<Route path="/reader/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />',
+      '<Route path="/listener/dracula" element={<UnavailableTitle />} />',
+      '<Route path="/listener/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />',
+    ].forEach((route) => expect(publicRoutes).toContain(route));
+  });
+
   test("serves the held historical Selfish Giant Reader URL without entering the Reader", () => {
     expect(app).toContain('<Route path="/reader/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />');
     const rewrites = vercel.rewrites || [];

@@ -50,7 +50,7 @@ function runCli(args) {
 }
 
 test("checked-in manifest passes", () => assert.equal(validateStateManifest(manifest, inventory), manifest));
-test("route count is 21", () => assert.equal(inventory.routes.length, 21));
+test("route count is 26", () => assert.equal(inventory.routes.length, 26));
 test("manifest includes every approved route and responsive state", () => assert.equal(manifest.states.length, 74));
 test("four live Reading Pass offer screenshots cover 1440, 1024, and 390 widths", () => {
   const states = manifest.states.filter((state) => state.fixture === "pricing-four-offers");
@@ -58,10 +58,14 @@ test("four live Reading Pass offer screenshots cover 1440, 1024, and 390 widths"
   assert.ok(states.every((state) => state.route === "/pricing"));
   assert.ok(states.every((state) => state.capture.full_page === true), "all three offer grids need durable full-page screenshots");
 });
-test("populated BookDetail screenshots use the live-approved, audio-hidden A Ghost Story release", () => {
-  const states = manifest.states.filter((state) => state.fixture === "live-approved-book-detail");
+test("primary populated BookDetail screenshots use the live-approved, audio-hidden A Ghost Story release", () => {
+  const states = manifest.states.filter((state) => state.fixture === "live-approved-book-detail" && state.route === "/book/a-ghost-story");
   assert.deepEqual(states.map(({ viewport }) => viewport.width), [1440, 1024, 390]);
-  assert.ok(states.every((state) => state.route === "/book/a-ghost-story"));
+});
+test("Bengali secondary BookDetail screenshots use live Radharani release data", () => {
+  const states = manifest.states.filter((state) => state.id.startsWith("secondary-book-"));
+  assert.deepEqual(states.map(({ viewport }) => viewport.width), [1440, 390]);
+  assert.ok(states.every((state) => state.fixture === "live-approved-book-detail" && state.route === "/book/radharani"));
 });
 test("representative legal screenshots cover desktop and mobile privacy states", () => {
   const states = manifest.states.filter((state) => state.route === "/privacy");

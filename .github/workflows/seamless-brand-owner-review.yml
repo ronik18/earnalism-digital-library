@@ -86,7 +86,7 @@ jobs:
       PR_NUMBER: ${{ needs.resolve-pr-head.outputs.pr_number }}
       WORKFLOW_EVENT_SHA: ${{ needs.resolve-pr-head.outputs.workflow_event_sha }}
       # Reproduced from the exact Task B production source by test_seamless_brand_final_publication_workflow.mjs; this binds current source and is not visual approval.
-      PRODUCTION_SURFACE_SHA: 85390a067214d68524bf011cbe85508c8da2c24db41e9847b8d8e58f2ecc1f14
+      PRODUCTION_SURFACE_SHA: fa7e89a5f3ba74516cc34014f9a63f96acd8e7ce3b028938841423ffc00d87f1
       CANONICAL_LOGO_SHA: 951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919
     steps:
       - name: Checkout exact pull-request head
@@ -354,7 +354,7 @@ jobs:
           sheet=Image.open(sys.argv[2]); assert sheet.width > 0 and sheet.height > 0 and sheet.getbbox() is not None
           PY
           pdftotext "$EVIDENCE_ROOT/package/owner-review.pdf" "$RUNNER_TEMP/owner-review.txt"
-          for heading in 'Cover and provenance' 'Brand decision and palette' 'Header desktop/mobile' 'Mobile menu open/closed' 'Home desktop/tablet/mobile/200%' 'Library desktop/mobile/filters' 'Commerce desktop/mobile' 'Book Detail — Dracula' 'Book Detail — Devdas (Bengali)' 'Reader desktop/mobile/high zoom' 'Listener desktop/mobile/high zoom' 'Login/Signup' 'Account/My Library' 'Journal/Article' 'Contact/Micro-story' '404/410' 'Footer 100%/200%' 'Firefox/WebKit comparison' 'Static-snapshot parity' 'Interaction and accessibility summary' 'Route-hash carry-forward' 'Known product limitations' 'Owner decision checklist'; do grep -Fq "$heading" "$RUNNER_TEMP/owner-review.txt"; done
+          for heading in 'Cover and provenance' 'Brand decision and palette' 'Header desktop/mobile' 'Mobile menu open/closed' 'Home desktop/tablet/mobile/200%' 'Library desktop/mobile/filters' 'Commerce desktop/mobile' 'Unavailable legacy title — Dracula' 'Populated live Book Detail — A Ghost Story' 'Populated live Bengali Book Detail — Radharani' 'Reader desktop/mobile/high zoom' 'Listener desktop/mobile/high zoom' 'Login/Signup' 'Account/My Library' 'Journal/Article' 'Contact/Micro-story' '404/410' 'Footer 100%/200%' 'Firefox/WebKit comparison' 'Static-snapshot parity' 'Interaction and accessibility summary' 'Route-hash carry-forward' 'Known product limitations' 'Owner decision checklist'; do grep -Fq "$heading" "$RUNNER_TEMP/owner-review.txt"; done
           find "$EVIDENCE_ROOT/package" -maxdepth 2 -type f -printf '%P\n' | sort > "$RUNNER_TEMP/package-top-level-inventory.txt"
           "$PYTHON_BIN" - "$RUNNER_TEMP/final-package-qa-results.json" "$EVIDENCE_ROOT/package" "$RUNNER_TEMP/final-package-test-report.json" "$RUNNER_TEMP/owner-review.txt" "$RUNNER_TEMP/pdf-pages" "$RUNNER_TEMP/package-server.log" <<'PY'
           import json, sys
@@ -365,7 +365,7 @@ jobs:
           package = package_path
           report = json.loads(report_path.read_text())
           text = text_path.read_text(errors='replace')
-          required_headings = ['Cover and provenance', 'Brand decision and palette', 'Header desktop/mobile', 'Mobile menu open/closed', 'Home desktop/tablet/mobile/200%', 'Library desktop/mobile/filters', 'Commerce desktop/mobile', 'Book Detail — Dracula', 'Book Detail — Devdas (Bengali)', 'Reader desktop/mobile/high zoom', 'Listener desktop/mobile/high zoom', 'Login/Signup', 'Account/My Library', 'Journal/Article', 'Contact/Micro-story', '404/410', 'Footer 100%/200%', 'Firefox/WebKit comparison', 'Static-snapshot parity', 'Interaction and accessibility summary', 'Route-hash carry-forward', 'Known product limitations', 'Owner decision checklist']
+          required_headings = ['Cover and provenance', 'Brand decision and palette', 'Header desktop/mobile', 'Mobile menu open/closed', 'Home desktop/tablet/mobile/200%', 'Library desktop/mobile/filters', 'Commerce desktop/mobile', 'Unavailable legacy title — Dracula', 'Populated live Book Detail — A Ghost Story', 'Populated live Bengali Book Detail — Radharani', 'Reader desktop/mobile/high zoom', 'Listener desktop/mobile/high zoom', 'Login/Signup', 'Account/My Library', 'Journal/Article', 'Contact/Micro-story', '404/410', 'Footer 100%/200%', 'Firefox/WebKit comparison', 'Static-snapshot parity', 'Interaction and accessibility summary', 'Route-hash carry-forward', 'Known product limitations', 'Owner decision checklist']
           gates = {}
           def record(name, passed, command, observed, expected, diagnostic):
               gates[name] = {'result': 'PASS' if passed else 'FAIL', 'command_or_validator': command, 'observed_value': observed, 'expected_value': expected, 'diagnostic_file_path': diagnostic}
@@ -498,7 +498,7 @@ jobs:
       GITHUB_ARTIFACT_URL: ${{ needs.seamless-brand-review.outputs.artifact_url }}
       GITHUB_ARTIFACT_DIGEST: ${{ needs.seamless-brand-review.outputs.artifact_digest }}
       # Must match the same exact source fingerprint as the capture job above.
-      PRODUCTION_SURFACE_SHA: 85390a067214d68524bf011cbe85508c8da2c24db41e9847b8d8e58f2ecc1f14
+      PRODUCTION_SURFACE_SHA: fa7e89a5f3ba74516cc34014f9a63f96acd8e7ce3b028938841423ffc00d87f1
       CANONICAL_LOGO_SHA: 951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919
     steps:
       - uses: actions/checkout@v6
@@ -575,7 +575,7 @@ jobs:
           assert json.loads((package/'static-snapshot-brand-results.json').read_text())['result'] == 'PASS'
           stats=json.loads((package/'package-statistics.json').read_text())
           assert sum(1 for item in package.rglob('*') if item.is_file()) == stats['extracted_verification_file_count']
-          representatives=['home-desktop','home-tablet-1024','home-mobile-zoom-200','library-desktop','library-filters-open-390','commerce-desktop','commerce-mobile','commerce-offers-desktop-1440','commerce-offers-tablet-1024','commerce-offers-mobile-390','book-detail-desktop','book-detail-live-desktop-1440','book-detail-live-tablet-1024','book-detail-live-mobile-390','secondary-book-desktop','reader-desktop','reader-mobile-320-zoom-200','approved-listener-desktop','listener-mobile-320-zoom-200','login-desktop','signup-desktop','account-desktop','my-library-desktop','journal-desktop','article-desktop','contact-desktop','micro-story-desktop','privacy-desktop','privacy-mobile','error-404-desktop','tombstone-410-desktop','library-footer-mobile-zoom-100','library-footer-mobile-zoom-200']
+          representatives=['home-desktop','home-tablet-1024','home-mobile-zoom-200','library-desktop','library-filters-open-390','commerce-desktop','commerce-mobile','commerce-offers-desktop-1440','commerce-offers-tablet-1024','commerce-offers-mobile-390','book-detail-desktop','book-detail-live-desktop-1440','book-detail-live-tablet-1024','book-detail-live-mobile-390','secondary-book-desktop','reader-desktop','reader-mobile-320-zoom-200','listener-unavailable-desktop','listener-mobile-320-zoom-200','login-desktop','signup-desktop','account-desktop','my-library-desktop','journal-desktop','article-desktop','contact-desktop','micro-story-desktop','privacy-desktop','privacy-mobile','error-404-desktop','tombstone-410-desktop','library-footer-mobile-zoom-100','library-footer-mobile-zoom-200']
           from PIL import Image
           for state in representatives:
               image=Image.open(package/'screenshots'/'chromium'/'states'/state/'viewport.png'); assert image.width > 0 and image.height > 0 and image.getbbox() is not None

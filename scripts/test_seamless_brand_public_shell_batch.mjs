@@ -15,7 +15,7 @@ const inventoryPath = path.join(root, "docs/design-system/seamless-brand-route-i
 const baseUrl = process.env.SEAMLESS_BRAND_TEST_BASE_URL;
 const temp = fs.mkdtempSync(path.join(os.tmpdir(), "seamless-brand-public-shell-test-"));
 const manifest = loadStateManifest(manifestPath);
-const ids = ["library-desktop", "library-mobile", "commerce-desktop", "commerce-mobile", "book-detail-desktop", "book-detail-mobile", "about-desktop", "about-mobile"];
+const ids = ["library-desktop", "library-mobile", "commerce-desktop", "commerce-mobile", "book-detail-live-desktop-1440", "book-detail-live-mobile-390", "about-desktop", "about-mobile"];
 const selected = selectStateRecords(manifest, ids);
 let cases = 0;
 
@@ -51,8 +51,20 @@ test("Library desktop metadata contract", () => { if (!baseUrl) throw new Error(
 test("Library mobile metadata contract", () => assertBrandContract(actualRecords.find((record) => record.state_id === "library-mobile"), selected[1]));
 test("Commerce desktop metadata contract", () => assertBrandContract(actualRecords.find((record) => record.state_id === "commerce-desktop"), selected[2]));
 test("Commerce mobile metadata contract", () => assertBrandContract(actualRecords.find((record) => record.state_id === "commerce-mobile"), selected[3]));
-test("Book Detail desktop metadata contract", () => assertBrandContract(actualRecords.find((record) => record.state_id === "book-detail-desktop"), selected[4]));
-test("Book Detail mobile metadata contract", () => assertBrandContract(actualRecords.find((record) => record.state_id === "book-detail-mobile"), selected[5]));
+test("populated live Book Detail desktop metadata contract", () => {
+  const record = actualRecords.find((item) => item.state_id === "book-detail-live-desktop-1440");
+  assertBrandContract(record, selected[4]);
+  assert.equal(record.book_detail.title, "A Ghost Story");
+  assert.equal(record.book_detail.page_visible, true);
+  assert.deepEqual(record.book_detail.audio_actions, []);
+});
+test("populated live Book Detail mobile metadata contract", () => {
+  const record = actualRecords.find((item) => item.state_id === "book-detail-live-mobile-390");
+  assertBrandContract(record, selected[5]);
+  assert.equal(record.book_detail.title, "A Ghost Story");
+  assert.equal(record.book_detail.page_visible, true);
+  assert.deepEqual(record.book_detail.audio_actions, []);
+});
 test("About desktop metadata contract", () => assertBrandContract(actualRecords.find((record) => record.state_id === "about-desktop"), selected[6]));
 test("About mobile metadata contract", () => assertBrandContract(actualRecords.find((record) => record.state_id === "about-mobile"), selected[7]));
 test("complete eight-state summary passes", () => assert.equal(actualRecords.length, 8));

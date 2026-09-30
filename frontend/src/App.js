@@ -117,6 +117,11 @@ export function AppRouterContent() {
             <Route path="/book/dracula" element={<UnavailableTitle />} />
             <Route path="/book/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />
             <Route path="/book/:slug" element={<BookDetail />} />
+            {/* Held historical Reader/Listener routes retain the shared public shell while staying fail-closed. */}
+            <Route path="/reader/dracula" element={<UnavailableTitle />} />
+            <Route path="/reader/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />
+            <Route path="/listener/dracula" element={<UnavailableTitle />} />
+            <Route path="/listener/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />
             <Route path="/journal" element={<Journal />} />
             <Route path="/journal/:slug" element={<JournalArticle />} />
             <Route path="/about-legacy" element={<AboutLegacy />} />
@@ -139,12 +144,8 @@ export function AppRouterContent() {
             <Route path="*" element={<NotFound />} />
           </Route>
           {/* Standalone full-screen routes (no public header/footer) */}
-          <Route path="/reader/dracula" element={<UnavailableTitle />} />
-          <Route path="/reader/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />
           <Route path="/reader/:slug" element={<ReaderV2 />} />
           <Route path="/reader-legacy/:slug" element={<ReaderLegacy />} />
-          <Route path="/listener/dracula" element={<UnavailableTitle />} />
-          <Route path="/listener/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />
           <Route path="/listener/:slug" element={<ListenerV2 />} />
           <Route path="/listener-legacy/:slug" element={<LegacyListenerRedirect />} />
           <Route path="/admin/login" element={<AdminLogin />} />
