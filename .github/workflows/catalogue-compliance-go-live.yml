@@ -137,7 +137,7 @@ jobs:
           docker info >/dev/null
 
       - name: Exercise real worker permission boundaries
-        run: python3 -m unittest scripts.test_catalogue_compliance_worker_permissions scripts.test_catalogue_compliance_worker_receipt scripts.test_catalogue_compliance_generated_evidence scripts.test_catalogue_compliance_batch -v
+        run: python3 -m unittest scripts.test_catalogue_compliance_worker_permissions scripts.test_catalogue_compliance_worker_receipt scripts.test_catalogue_compliance_generated_evidence scripts.test_catalogue_compliance_batch scripts.test_catalogue_compliance_controller_evidence -v
 
       - name: Capture fail-closed baseline
         run: |
@@ -305,7 +305,7 @@ jobs:
           # Return newly created worker files to the validation controller.
           test "$(git branch --show-current)" = "codex/main-approved-integration"
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-          git diff --quiet HEAD -- scripts/catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_permissions.py scripts/catalogue_compliance_generated_evidence.py scripts/test_catalogue_compliance_generated_evidence.py scripts/test_catalogue_compliance_batch.py
+          git diff --quiet HEAD -- scripts/catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_permissions.py scripts/catalogue_compliance_generated_evidence.py scripts/test_catalogue_compliance_generated_evidence.py scripts/test_catalogue_compliance_batch.py scripts/catalogue_compliance_controller_evidence.py scripts/test_catalogue_compliance_controller_evidence.py
           sudo -H -u earnalism-codex python3 scripts/catalogue_compliance_worker_receipt.py --receipt /tmp/earnalism-catalogue-worker-receipt.json --batch /tmp/earnalism-catalogue-campaign-batch.json --expected-head "$GITHUB_SHA"
           sudo chown -R "$(id -un):$(id -gn)" /tmp/earnalism-main-approved-integration
           python3 scripts/process_full_catalogue.py
@@ -454,12 +454,13 @@ jobs:
             echo "audio-related controlledLaunch change is forbidden"
             exit 1
           fi
-          for protected_test in scripts/catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_permissions.py scripts/catalogue_compliance_generated_evidence.py scripts/test_catalogue_compliance_generated_evidence.py scripts/test_catalogue_compliance_batch.py backend/tests/test_rights_decision_gate.py backend/tests/test_rights_engine.py backend/tests/test_controlled_publication_precheck.py; do
+          for protected_test in scripts/catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_permissions.py scripts/catalogue_compliance_generated_evidence.py scripts/test_catalogue_compliance_generated_evidence.py scripts/test_catalogue_compliance_batch.py scripts/catalogue_compliance_controller_evidence.py scripts/test_catalogue_compliance_controller_evidence.py backend/tests/test_rights_decision_gate.py backend/tests/test_rights_engine.py backend/tests/test_controlled_publication_precheck.py; do
             if ! git diff --quiet HEAD -- "$protected_test"; then
               echo "core compliance gate test modification is forbidden: $protected_test"
               exit 1
             fi
           done
+          python3 scripts/catalogue_compliance_controller_evidence.py snapshot --baseline /tmp/earnalism-catalogue-validated-source.json
 
       - name: Run focused compliance and release tests
         env:
@@ -484,6 +485,25 @@ jobs:
           UAT_EXTERNAL_REDIS: "true"
           NODE_ENV: production
         run: bash scripts/run_pr_regression.sh
+
+      - name: Retain controller report and verify final commit scope
+        id: controller-evidence
+        run: |
+          set -euo pipefail
+          archive="$(python3 scripts/catalogue_compliance_controller_evidence.py retain --baseline /tmp/earnalism-catalogue-validated-source.json)"
+          for record in /tmp/earnalism-catalogue-worker-receipt.json /tmp/earnalism-catalogue-campaign-batch.json /tmp/campaign-summary.json; do
+            test -f "$record" && test ! -L "$record"
+            cp -- "$record" "$archive/"
+          done
+          echo "archive=$archive" >> "$GITHUB_OUTPUT"
+
+      - name: Retain completed execution and controller proof
+        if: ${{ always() && steps.controller-evidence.outputs.archive != '' }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: catalogue-controller-evidence-${{ github.run_id }}
+          path: ${{ steps.controller-evidence.outputs.archive }}
+          if-no-files-found: error
 
       - name: Stop isolated regression services
         if: ${{ always() }}
@@ -538,7 +558,8 @@ jobs:
           EOF
           gh issue comment "$TRACKING_ISSUE" --repo "$GITHUB_REPOSITORY" --body-file /tmp/campaign-failure.md
 
-      - name: Create compliance candidate PR
+      - name: Create compliance candidate PR or retain bridge handoff
+        id: candidate
         if: ${{ success() }}
         env:
           GH_TOKEN: ${{ github.token }}
@@ -553,7 +574,9 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add -A
           git commit -m "Catalogue compliance: evidence-bound release progress"
-          echo "PR_HEAD_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+          PR_HEAD_SHA="$(git rev-parse HEAD)"
+          export PR_HEAD_SHA
+          echo "PR_HEAD_SHA=$PR_HEAD_SHA" >> "$GITHUB_ENV"
           git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push origin "$BRANCH"
 
           python3 - <<'PY' > /tmp/pr-body.md
@@ -572,11 +595,43 @@ jobs:
           print('The workflow rejects any new accepted decision unless the exact runtime package is independently READER_ONLY_LIVE_APPROVED with zero blockers. No audio exposure, payment/entitlement-policy change, customer-data change, secret, migration, or deployment-config change is allowed.')
           PY
 
-          PR_URL="$(gh pr create --repo "$GITHUB_REPOSITORY" --base main --head "$BRANCH" --title "Catalogue compliance: autonomous evidence-bound release progress" --body-file /tmp/pr-body.md)"
-          PR_NUMBER="${PR_URL##*/}"
-          echo "PR_URL=$PR_URL" >> "$GITHUB_ENV"
-          echo "PR_NUMBER=$PR_NUMBER" >> "$GITHUB_ENV"
-          gh issue comment "$TRACKING_ISSUE" --repo "$GITHUB_REPOSITORY" --body "Autonomous compliance candidate opened: $PR_URL. Waiting for the repository's normal required checks before merge."
+          if PR_URL="$(gh pr create --repo "$GITHUB_REPOSITORY" --base main --head "$BRANCH" --title "Catalogue compliance: autonomous evidence-bound release progress" --body-file /tmp/pr-body.md 2>/tmp/catalogue-pr-create-error.txt)"; then
+            PR_NUMBER="${PR_URL##*/}"
+            echo "PR_URL=$PR_URL" >> "$GITHUB_ENV"
+            echo "PR_NUMBER=$PR_NUMBER" >> "$GITHUB_ENV"
+            gh issue comment "$TRACKING_ISSUE" --repo "$GITHUB_REPOSITORY" --body "Autonomous compliance candidate opened: $PR_URL. Waiting for the repository's normal required checks before merge."
+          elif rg -Fq "GitHub Actions is not permitted to create or approve pull requests" /tmp/catalogue-pr-create-error.txt; then
+            # Keep the repository's administration policy. The authorized bridge
+            # connection creates the PR so normal PR events/checks are emitted.
+            python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          handoff = {
+              'status': 'VALIDATED_CANDIDATE_AWAITING_BRIDGE_PR_AND_PROTECTED_MERGE',
+              'source_head': os.environ['GITHUB_SHA'],
+              'candidate_head': os.environ['PR_HEAD_SHA'],
+              'branch': 'codex/main-approved-integration',
+              'run_id': os.environ['GITHUB_RUN_ID'],
+              'summary': json.loads(Path('/tmp/campaign-summary.json').read_text()),
+              'normal_candidate_checks': 'NOT_STARTED_BY_GITHUB_TOKEN',
+              'next_generated_prompt': 'Use the authorized GitHub connection to open this preserved canonical candidate against main; inspect normal checks for its exact head, merge with expected-head protection, and verify fresh main workflows. Do not force-push or change repository administration.',
+          }
+          Path('/tmp/earnalism-catalogue-bridge-handoff.json').write_text(json.dumps(handoff, indent=2) + '\n')
+          PY
+            echo "handoff=/tmp/earnalism-catalogue-bridge-handoff.json" >> "$GITHUB_OUTPUT"
+            gh issue comment "$TRACKING_ISSUE" --repo "$GITHUB_REPOSITORY" --body "Validated candidate $PR_HEAD_SHA is preserved on $BRANCH. Repository policy blocks Actions PR creation. Status: VALIDATED_CANDIDATE_AWAITING_BRIDGE_PR_AND_PROTECTED_MERGE. The authorized bridge must create the PR and require normal exact-head checks plus an expected-SHA merge. No candidate is reported as merged or newly released by this handoff. Run: https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          else
+            cat /tmp/catalogue-pr-create-error.txt >&2
+            exit 1
+          fi
+
+      - name: Retain policy-bound bridge handoff
+        if: ${{ always() && steps.candidate.outputs.handoff != '' }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: catalogue-bridge-handoff-${{ github.run_id }}
+          path: ${{ steps.candidate.outputs.handoff }}
+          if-no-files-found: error
 
       - name: Wait for candidate checks and merge
         if: ${{ success() && env.PR_NUMBER != '' }}
@@ -592,7 +647,7 @@ jobs:
           gh issue comment "$TRACKING_ISSUE" --repo "$GITHUB_REPOSITORY" --body "Candidate PR #$PR_NUMBER passed required checks and merged at $MERGED_SHA. Railway/main deployment status will remain fail-closed through the normal production gates."
 
       - name: Close campaign when all holds are cleared
-        if: ${{ success() }}
+        if: ${{ success() && env.MERGED_SHA != '' }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
