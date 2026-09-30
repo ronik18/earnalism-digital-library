@@ -4,11 +4,11 @@
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "23a6855d067feffa24faee04d69e03d461cf2f6bd15df8a67d28595a7e7638e0"
+      "sha256": "d030a1788f1de0a77de3d8de5429408176cfc10a39b91a8c4a6775d36c6e9618"
     },
     {
       "file": "public_book.json",
-      "sha256": "f8cd01d745c3de0206d8fe9ca5e07ca59ccd91f114908bfd29aedb25f9ee6e0e"
+      "sha256": "fc4144dc1126cd8a1a13ff196d8dbb688006e6af6cd735ecc62e01011596f4c6"
     },
     {
       "file": "reader_manifest.json",
