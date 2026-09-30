@@ -9,8 +9,12 @@ const baseOrigin = new URL(baseUrl).origin;
 const blockExternalOrigins = process.env.AUDIT_BLOCK_EXTERNAL === "1";
 const useVercelOidc = process.env.AUDIT_USE_VERCEL_OIDC === "1";
 const vercelOidcToken = useVercelOidc ? process.env.VERCEL_OIDC_TOKEN : "";
+const useVercelProtectionBypass = process.env.AUDIT_USE_VERCEL_PROTECTION_BYPASS === "1";
+const vercelProtectionBypass = useVercelProtectionBypass ? process.env.VERCEL_PROTECTION_BYPASS : "";
 if (useVercelOidc && !vercelOidcToken) throw new Error("AUDIT_USE_VERCEL_OIDC requires a VERCEL_OIDC_TOKEN from the authenticated Vercel CLI.");
 if (useVercelOidc && !new URL(baseUrl).hostname.endsWith(".vercel.app")) throw new Error("OIDC audit headers are restricted to an exact Vercel deployment URL.");
+if (useVercelProtectionBypass && !vercelProtectionBypass) throw new Error("AUDIT_USE_VERCEL_PROTECTION_BYPASS requires the VERCEL_PROTECTION_BYPASS environment variable.");
+if (useVercelProtectionBypass && !new URL(baseUrl).hostname.endsWith(".vercel.app")) throw new Error("Vercel protection bypass is restricted to an exact Vercel deployment URL.");
 const publicationContract = JSON.parse(readFileSync(new URL("../static-seo/controlled-publication-public.json", import.meta.url), "utf8"));
 const canonicalTitleRoutes = (publicationContract.publications || []).flatMap(({ slug }) => [
   `/book/${encodeURIComponent(slug)}`,
@@ -96,9 +100,12 @@ const systemChrome = process.platform === "darwin"
   : "";
 const executablePath = process.env.CHROME_PATH || (systemChrome && existsSync(systemChrome) ? systemChrome : undefined);
 const browser = await chromium.launch({ headless: true, ...(executablePath ? { executablePath } : {}) });
-const page = await browser.newPage(useVercelOidc ? {
-  extraHTTPHeaders: { "x-vercel-trusted-oidc-idp-token": vercelOidcToken },
-} : {});
+const previewHeaders = useVercelOidc
+  ? { "x-vercel-trusted-oidc-idp-token": vercelOidcToken }
+  : useVercelProtectionBypass
+    ? { "x-vercel-protection-bypass": vercelProtectionBypass }
+    : {};
+const page = await browser.newPage(Object.keys(previewHeaders).length ? { extraHTTPHeaders: previewHeaders } : {});
 const blockedWrites = [];
 const blockedExternalRequests = [];
 await page.route("**/*", async (route) => {
