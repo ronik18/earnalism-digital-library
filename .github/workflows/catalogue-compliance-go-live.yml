@@ -30,6 +30,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 120
     env:
+      CI: "true"
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.playwright-browsers
       TRACKING_ISSUE: "477"
       OWNER_POLICY: "Issue #477 owner-authorized autonomous India text-reader compliance campaign"
     steps:
@@ -50,6 +52,17 @@ jobs:
           ref: ${{ github.sha }}
           fetch-depth: 2
 
+      - name: Provision the canonical integration checkout
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin main:refs/remotes/origin/main
+          test "$(git rev-parse origin/main)" = "$GITHUB_SHA"
+          test -z "$(git status --porcelain)"
+          git switch -c codex/main-approved-integration
+          test ! -e /tmp/earnalism-main-approved-integration
+          ln -s "$GITHUB_WORKSPACE" /tmp/earnalism-main-approved-integration
+          test "$(git -C /tmp/earnalism-main-approved-integration rev-parse HEAD)" = "$GITHUB_SHA"
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -61,6 +74,21 @@ jobs:
 
       - name: Install bounded Codex dependencies
         run: npm ci --ignore-scripts
+
+      - name: Install backend test dependencies
+        run: |
+          python3 -m pip install --disable-pip-version-check -r backend/requirements.txt
+          python3 -m pytest --version
+
+      - name: Install frontend test dependencies
+        run: npm ci --prefix frontend --ignore-scripts --legacy-peer-deps
+
+      # Prepare privileged browser prerequisites before Codex drops sudo.
+      - name: Install regression runtime prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes ripgrep lsof
+          npx playwright install --with-deps chromium
 
       - name: Capture fail-closed baseline
         run: |
@@ -281,20 +309,50 @@ jobs:
           done
 
       - name: Run focused compliance and release tests
+        env:
+          ENVIRONMENT: uat
+          MONGODB_URL: mongodb://127.0.0.1:27018/earnalism_catalogue_test
+          JWT_SECRET: synthetic-catalogue-unit-test-only
+          READING_PASS_V2_ENABLED: "false"
+          ENABLE_STARTUP_DB_MAINTENANCE: "false"
         run: |
           set -euo pipefail
           python3 -m unittest scripts.test_process_full_catalogue scripts.test_autonomy_bridge
           python3 -m pytest             backend/tests/test_rights_decision_gate.py             backend/tests/test_rights_engine.py             backend/tests/test_controlled_publication_precheck.py             backend/tests/test_commercial_batch_launch_guard.py             backend/tests/test_controlled_launch_parity.py -q
           if [ -f frontend/package.json ]; then
-            (cd frontend && npm ci --ignore-scripts && npm test -- --runInBand src/lib/controlledLaunch.canonicalAuthority.test.js src/lib/controlledLaunch.previewParity.test.js)
+            npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath src/lib/controlledLaunch.canonicalAuthority.test.js src/lib/controlledLaunch.previewParity.test.js
           fi
+
+      - name: Start isolated regression services
+        run: |
+          set -euo pipefail
+          docker run --detach --name earnalism-catalogue-mongodb --network host mongo:7.0.14 mongod --bind_ip 127.0.0.1 --port 27018 --replSet earnalism-uat-rs0
+          for _ in $(seq 1 30); do
+            docker exec earnalism-catalogue-mongodb mongosh --host 127.0.0.1 --port 27018 --quiet --eval 'db.adminCommand({ ping: 1 })' && break
+            sleep 1
+          done
+          docker exec earnalism-catalogue-mongodb mongosh --host 127.0.0.1 --port 27018 --quiet --eval 'try { rs.initiate({_id: "earnalism-uat-rs0", members: [{ _id: 0, host: "127.0.0.1:27018" }]}) } catch (error) { if (error.codeName !== "AlreadyInitialized") throw error }'
+          docker run --detach --name earnalism-catalogue-redis --network host redis:8.2.1 redis-server --bind 127.0.0.1 --port 26379 --save '' --appendonly no
 
       - name: Run full regression gate
         if: ${{ hashFiles('scripts/run_pr_regression.sh') != '' }}
+        env:
+          UAT_EXTERNAL_MONGODB: "true"
+          UAT_EXTERNAL_REDIS: "true"
+          NODE_ENV: production
         run: bash scripts/run_pr_regression.sh
 
-      - name: Publish no-progress result
+      - name: Stop isolated regression services
         if: ${{ always() }}
+        run: |
+          for container in earnalism-catalogue-mongodb earnalism-catalogue-redis; do
+            if docker container inspect "$container" >/dev/null 2>&1; then
+              docker rm --force "$container"
+            fi
+          done
+
+      - name: Publish no-progress result
+        if: ${{ success() }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -323,6 +381,20 @@ jobs:
           PY
           gh issue comment "$TRACKING_ISSUE" --repo "$GITHUB_REPOSITORY" --body-file /tmp/no-progress.md
 
+      - name: Report failed campaign validation
+        if: ${{ failure() }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cat > /tmp/campaign-failure.md <<EOF
+          ## Catalogue campaign execution failed
+
+          Run: https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+
+          A workflow step failed. This is not a validated no-progress compliance result. No candidate will be created or merged from failed validation. Inspect the failed step before retrying.
+          EOF
+          gh issue comment "$TRACKING_ISSUE" --repo "$GITHUB_REPOSITORY" --body-file /tmp/campaign-failure.md
+
       - name: Create compliance candidate PR
         if: ${{ success() }}
         env:
@@ -332,10 +404,10 @@ jobs:
           if [ "$(cat /tmp/has-changes)" != "yes" ]; then
             exit 0
           fi
-          BRANCH="codex/catalogue-compliance-run-${GITHUB_RUN_ID}"
+          BRANCH="codex/main-approved-integration"
+          test "$(git branch --show-current)" = "$BRANCH"
           git config user.name "earnalism-autonomy"
           git config user.email "actions@users.noreply.github.com"
-          git switch -c "$BRANCH"
           git add -A
           git commit -m "Catalogue compliance: evidence-bound release progress"
           git push origin "$BRANCH"
@@ -372,7 +444,7 @@ jobs:
           gh pr merge "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --merge --delete-branch
           MERGED_SHA="$(gh pr view "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --json mergeCommit --jq '.mergeCommit.oid')"
           echo "MERGED_SHA=$MERGED_SHA" >> "$GITHUB_ENV"
-          gh issue comment "$TRACKING_ISSUE" --repo "$GITHUB_REPOSITORY" --body "Candidate PR #$PR_NUMBER passed required checks and merged at `$MERGED_SHA`. Railway/main deployment status will remain fail-closed through the normal production gates. The next campaign iteration will start automatically if catalogue paths changed."
+          gh issue comment "$TRACKING_ISSUE" --repo "$GITHUB_REPOSITORY" --body "Candidate PR #$PR_NUMBER passed required checks and merged at $MERGED_SHA. Railway/main deployment status will remain fail-closed through the normal production gates."
 
       - name: Close campaign when all holds are cleared
         if: ${{ success() }}

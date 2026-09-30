@@ -3643,5 +3643,13 @@
     "state_path": "internal/earnalism_intelligence/full_catalogue_processing_20260930/catalogue_state.json",
     "source_packages_changed": false,
     "next_action": "Run bounded catalogue-processing worker and independent reviewer at the checked-out candidate SHA; require exact-head Reader visual evidence before applying conditional design approval."
+  },
+  "catalogue_campaign_workflow": {
+    "updated_at": "2026-09-30T16:50:17.906185+00:00",
+    "latest_decision": "PROVISION_CANONICAL_CHECKOUT_AND_EXISTING_REGRESSION_PREREQUISITES",
+    "status": "LOCAL_VALIDATION_PASS_PENDING_REQUIRED_CI_AND_CORRECTED_CAMPAIGN",
+    "failed_run": 36743576217,
+    "titles_activated": 0,
+    "next_action": "Require exact-head regression and coordination checks, merge the focused workflow repair, then inspect the new main campaign run."
   }
 }
