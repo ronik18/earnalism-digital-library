@@ -46,8 +46,10 @@ describe("public CTA accuracy contract", () => {
     expect(homeSurfaces).toContain('"/library?language=en"');
     expect(homeSurfaces).toContain('"The Listening Room", <>Stories to hear in quiet moments,<br />on walks, and along the way.</>');
     expect(homeSurfaces).toContain('"/assets/home-option-b/listening-room.webp"');
-    expect(homeSurfaces).toContain('"Curated Collections", <>Handpicked reading lists<br />for every mood.</>');
-    expect(homeSurfaces).toContain('to="/library"');
+    expect(homeSurfaces).toContain('"Browse the Library", <>Explore available editions<br />from the full catalogue.</>');
+    expect(homeSurfaces).toContain('"/library#library-collection"');
+    expect(homeSurfaces).toContain('>Ask about title</Link>');
+    expect(homeSurfaces).not.toContain('>Notify me</Link>');
     expect(home).not.toMatch(/listen|listening room|play audiobook/i);
   });
 

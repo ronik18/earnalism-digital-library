@@ -25,6 +25,8 @@
     "prebuild": "node scripts/generate-seo-assets.mjs",
     "build": "GENERATE_SOURCEMAP=false craco build",
     "postbuild": "node scripts/generate-static-seo-snapshots.mjs && node scripts/verify-static-seo-snapshots.mjs",
+    "audit:routes": "node scripts/route-action-audit.mjs",
+    "audit:actions:test": "node scripts/route-action-harness.mjs",
     "test": "craco test"
   },
   "browserslist": {

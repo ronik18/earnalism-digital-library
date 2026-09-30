@@ -85,7 +85,7 @@ function BookTile({ book, compact = false, priority = false, showListen = false 
         <Link to={href} className="reference-book-tile__title" data-visual-mask="book-title">{title}</Link>
         <span className="reference-book-tile__author" data-visual-mask="book-author">{book.author || "Earnalism edition"}</span>
         <div className="reference-book-tile__actions">
-          {canShowPreview(book) ? <Link to={`/reader/${book.slug}`}>Read</Link> : live ? <Link to={href}>Details</Link> : <Link to={href}>Notify me</Link>}
+          {canShowPreview(book) ? <Link to={`/reader/${book.slug}`}>Read</Link> : live ? <Link to={href}>Details</Link> : <Link to={href}>Ask about title</Link>}
           {audio.releaseApproved ? <span className="reference-book-tile__locked-audio">{audio.canShowControls ? "Reading Pass required" : "Listening unavailable"}</span> : null}
         </div>
       </div>
@@ -176,7 +176,7 @@ export function ReferenceHomeSurface({ readingPasses = [], illustrativePasses = 
             ["Bengali Classics", <>Timeless works that continue<br />to inspire.</>, "/assets/home-option-b/bengali-classics.webp", "/library?language=bn&availability=reader-ready"],
             ["English Classics", <>Enduring voices from around<br />the world.</>, "/assets/home-option-b/english-classics.webp", "/library?language=en"],
             ["The Listening Room", <>Stories to hear in quiet moments,<br />on walks, and along the way.</>, "/assets/home-option-b/listening-room.webp", "/library?availability=approved-audiobook"],
-            ["Curated Collections", <>Handpicked reading lists<br />for every mood.</>, "/assets/home-option-b/curated-collections.webp", "/library"],
+            ["Browse the Library", <>Explore available editions<br />from the full catalogue.</>, "/assets/home-option-b/curated-collections.webp", "/library#library-collection"],
           ].map(([title, copy, image, href]) => (
             <Link className="reference-home__discovery-card" to={href} key={title}>
               <img src={image} alt="" loading="lazy" />

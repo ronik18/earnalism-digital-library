@@ -8,6 +8,12 @@ describe("public static SEO contract", () => {
 
     expect(generator).toContain("earnalism.static-seo-public.v2");
     expect(generator).toContain("Reader and listening editions are temporarily unavailable");
+    expect(generator).toContain('"Open the Library"');
+    expect(generator).toContain("books.length === indiaReleasedSlugs.size");
+    expect(generator).toContain("text_preview_limit_canonical_pages) === 3");
+    const publication = JSON.parse(fs.readFileSync(path.join(process.cwd(), "static-seo/controlled-publication-public.json"), "utf8"));
+    expect(publication.publications).toHaveLength(6);
+    expect(publication.publications.every((book) => book.text_preview_limit_canonical_pages === 3)).toBe(true);
     expect(generator).toContain("public_release_held");
     expect(sitemapGenerator).toContain("loadPublicEditorialPosts");
     expect(sitemapGenerator).toContain("editorial-public.json");

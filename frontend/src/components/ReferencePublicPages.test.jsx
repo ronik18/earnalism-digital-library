@@ -41,7 +41,7 @@ describe("Reference public page surfaces", () => {
   });
 
   test("keeps Home discovery editorial and avoids a second dynamic catalogue shelf", () => {
-    for (const category of ["Bengali Classics", "English Classics", "The Listening Room", "Curated Collections"]) {
+    for (const category of ["Bengali Classics", "English Classics", "The Listening Room", "Browse the Library"]) {
       expect(source).toContain(category);
     }
     expect(source).not.toContain('api.get("/books"');

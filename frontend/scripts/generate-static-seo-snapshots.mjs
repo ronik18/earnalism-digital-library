@@ -122,7 +122,7 @@ function standardPages(editorial, { releaseHeld = false } = {}) {
     : accessCopy;
   const pages = [
     ["/", "Earnalism | Bengali and English Classics", "A calm digital reading room for timeless Bengali and English literature. " + releaseCopy, "The Earnalism Digital Library", "A calmer place for timeless reading.", "/library", "Explore the Library"],
-    ["/library", "Library | The Earnalism Digital Library", "Browse verified Bengali and English editions. " + releaseCopy, "Library", "Bengali and English classics.", "/library", "Explore released editions"],
+    ["/library", "Library | The Earnalism Digital Library", "Browse verified Bengali and English editions. " + releaseCopy, "Library", "Bengali and English classics.", "/library", "Open the Library"],
     ["/pricing", "Reading Passes | The Earnalism", releaseHeld ? releaseCopy : "Reading Passes and paid checkout are unavailable in this launch. Explore six released India Reader previews.", "Reading Passes", "Paid checkout is unavailable.", "/library", "Explore the Library"],
     ["/about", "About Earnalism | The Earnalism Digital Library", "Earnalism is a digital library for Bengali and English classics, designed for thoughtful reading and release-aware listening.", "About Earnalism", "A library made for attention.", "/library", "Explore the Library"],
     ["/contact", "Contact | The Earnalism", "Contact The Earnalism for reader support, rights and title inquiries, or institutional access.", "Library desk", "Write to The Earnalism.", "mailto:sales@reoenterprise.org", "Email the library desk"],
