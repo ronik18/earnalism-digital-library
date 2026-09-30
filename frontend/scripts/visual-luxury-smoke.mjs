@@ -16,6 +16,10 @@ const requestedScreenshotDir = process.env.EARNALISM_VISUAL_OUTPUT_DIR || proces
 
 const homeRoutes = ["/"];
 const libraryRoutes = ["/library"];
+const readerListenerDesignRoutes = [
+  "/reader/dracula?visual-fixture=1",
+  "/listener/a-ghost-story?visual-fixture=1",
+];
 const brandHeaderLogoRoutes = ["/", "/library", "/book/dracula"];
 const bookDetailSlugs = [
   "book-2b9853ec52",
@@ -83,6 +87,8 @@ const routes = visualPhase === "HOME" || routeMatrix === "home"
   ? homeRoutes
   : visualPhase === "LIBRARY" || routeMatrix === "library"
     ? libraryRoutes
+    : routeMatrix === "reader-listener-design"
+      ? readerListenerDesignRoutes
     : visualPhase === "BRAND_HEADER_LOGO" || routeMatrix === "brand-header-logo"
       ? brandHeaderLogoRoutes
     : visualPhase === "BOOK_DETAIL" || routeMatrix === "book-detail"
@@ -139,7 +145,18 @@ const viewports = shouldCheckMarketingLanding
     { width: 430, height: 932 },
     { width: 390, height: 844 },
   ]
-  : allViewports;
+  : routeMatrix === "reader-listener-design"
+    ? [
+      { width: 1600, height: 1000 },
+      { width: 1440, height: 1000 },
+      { width: 1280, height: 900 },
+      { width: 1024, height: 900 },
+      { width: 768, height: 1024 },
+      { width: 430, height: 932 },
+      { width: 390, height: 844 },
+      { width: 360, height: 800 },
+    ]
+    : allViewports;
 
 const sourceChecks = [
   {
@@ -203,24 +220,21 @@ const sourceChecks = [
     require: ["isStaticAudiobookAssetPath", "Same-origin static audiobook assets are not public release evidence."],
   },
   {
-    name: "brand-header-logo-deterministic-proofreader-lockup",
-    file: "frontend/src/components/BrandHeaderLogo.jsx",
+    name: "earnalism-brand-lockup-canonical-asset",
+    file: "frontend/src/components/EarnalismBrandLockup.jsx",
     require: [
-      "earnalism-logo-transparent-96.webp",
-      "LEarnalism",
-      "Where Learning Becomes Earning",
-      "brand-header-logo__inserted-l",
-      "brand-header-logo__caret",
-      "exact-flag",
-      "tricolor",
-      "none",
+      "earnalism-brand-lockup.png",
+      "earnalism-logo-text-original.png",
+      "data-testid=\"earnalism-brand-lockup\"",
+      "The Earnalism — Read. Reflect. Remember.",
+      "desktop-header",
     ],
-    failIf: ["data:image", "ai-garbled", "Comic Sans"],
+    failIf: ["data:image", "Comic Sans"],
   },
   {
-    name: "header-uses-brand-header-logo",
+    name: "public-header-uses-official-brand-lockup",
     file: "frontend/src/components/Header.jsx",
-    require: ["BrandHeaderLogo", "badgeVariant=\"tricolor\""],
+    require: ["EarnalismBrandLockup", "variant=\"desktop-header\""],
     failIf: ["IndiaCraftBadge"],
   },
   {
@@ -705,7 +719,7 @@ for (const route of routes) {
       consoleErrors.push(error.message);
     }
     await page.waitForSelector(
-      "[data-testid='home-page'], [data-testid='library-page'], [data-testid='book-page'], [data-testid='reader-page'], [data-testid='about-page'], [data-testid='pricing-page'], [data-testid='contact-page'], [data-testid='journal-page'], .micro-story-page, [data-testid='book-not-found'], [data-testid='reader-not-found']",
+      "[data-testid='home-page'], [data-testid='library-page'], [data-testid='book-page'], [data-testid='reader-page'], [data-testid='about-page'], [data-testid='pricing-page'], [data-testid='contact-page'], [data-testid='journal-page'], .micro-story-page, [data-testid='book-not-found'], [data-testid='reader-not-found'], .reader-v2, .listener-v2",
       { timeout: 12000 },
     ).catch(() => {});
     if (${JSON.stringify(shouldCheckSettingsPanel)}) {
@@ -767,9 +781,23 @@ for (const route of routes) {
       const marketingPage = document.querySelector("[data-testid='home-page'], [data-testid='about-page'], [data-testid='pricing-page'], [data-testid='contact-page'], [data-testid='journal-page'], .micro-story-page");
       const marketingPrimaryCta = document.querySelector("[data-testid='hero-cta-library'], [data-testid='pricing-to-library'], [data-testid='contact-submit'], .micro-story-hero__cta, a[href='/library'], a[href*='/pricing']");
       return {
-        appContentVisible: Boolean(document.querySelector("[data-testid='home-page'], [data-testid='library-page'], [data-testid='book-page'], [data-testid='reader-page'], [data-testid='about-page'], [data-testid='pricing-page'], [data-testid='contact-page'], [data-testid='journal-page'], .micro-story-page, [data-testid='book-not-found'], [data-testid='reader-not-found']")),
+        appContentVisible: Boolean(document.querySelector("[data-testid='home-page'], [data-testid='library-page'], [data-testid='book-page'], [data-testid='reader-page'], [data-testid='about-page'], [data-testid='pricing-page'], [data-testid='contact-page'], [data-testid='journal-page'], .micro-story-page, [data-testid='book-not-found'], [data-testid='reader-not-found'], .reader-v2, .listener-v2")),
         vercelLoginShellDetected: /vercel deployment protection|log in to continue|continue with github|saml sso|vercel\\.com\\/sso-api/i.test(bodyText),
         horizontalOverflow: body.scrollWidth > window.innerWidth + 1,
+        smallInteractiveTargets: Array.from(document.querySelectorAll("button, a[href], input, select")).filter((element) => {
+          const rect = element.getBoundingClientRect();
+          const style = window.getComputedStyle(element);
+          return rect.width > 0 && rect.height > 0 && style.visibility !== "hidden" && style.display !== "none"
+            && (rect.width < 44 || rect.height < 44);
+        }).map((element) => ({ tag: element.tagName.toLowerCase(), label: element.getAttribute("aria-label") || element.textContent.trim().slice(0, 50), width: Math.round(element.getBoundingClientRect().width), height: Math.round(element.getBoundingClientRect().height) })),
+        unlabeledControls: Array.from(document.querySelectorAll("button, input, select")).filter((element) => {
+          const rect = element.getBoundingClientRect();
+          if (!rect.width || !rect.height) return false;
+          const labelledBy = element.getAttribute("aria-labelledby");
+          const parentLabel = element.closest("label");
+          return !element.getAttribute("aria-label") && !(labelledBy && document.getElementById(labelledBy))
+            && !parentLabel && !element.textContent.trim() && element.tagName !== "INPUT";
+        }).map((element) => element.outerHTML.slice(0, 120)),
         heroHeadingVisible: heading ? Boolean(heading.offsetWidth && heading.offsetHeight) : true,
         heroCtaVisible: cta ? Boolean(cta.offsetWidth && cta.offsetHeight) : true,
         coverClipped: rect ? rect.right > window.innerWidth + 1 || rect.left < -1 : false,
@@ -847,6 +875,8 @@ const blockers = results.flatMap((result) => {
   if (!result.appContentVisible) issues.push("app content not visible");
   if (result.vercelLoginShellDetected) issues.push("Vercel login shell");
   if (result.horizontalOverflow) issues.push("horizontal overflow");
+  if (${JSON.stringify(routeMatrix === "reader-listener-design")} && result.smallInteractiveTargets.length) issues.push("interactive target below 44px");
+  if (${JSON.stringify(routeMatrix === "reader-listener-design")} && result.unlabeledControls.length) issues.push("unlabeled interactive control");
   if (!result.heroHeadingVisible) issues.push("hero heading invisible");
   if (!result.heroCtaVisible) issues.push("CTA invisible");
   if (result.coverClipped) issues.push("cover clipped");

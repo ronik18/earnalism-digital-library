@@ -12,6 +12,8 @@ describe("Reader, Listener, and About v2 product truth", () => {
   test("immersive chrome reuses the canonical navigation and remains usable at every width", () => {
     const header = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/shared/ExperienceHeader.jsx"), "utf8");
     const shared = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/shared/experiences-v2.css"), "utf8");
+    const readerStyles = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/reader-v2.css"), "utf8");
+    const listenerStyles = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/listener/listener-v2.css"), "utf8");
     const canonical = fs.readFileSync(path.join(process.cwd(), "src/config/publicNavigation.js"), "utf8");
     expect(header).toContain('import { PUBLIC_NAV_ITEMS } from "../../config/publicNavigation"');
     expect(header).toContain("PUBLIC_NAV_ITEMS.map");
@@ -29,6 +31,12 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(shared).toContain("min-height: 84px;");
     expect(shared).toContain("min-height: 72px;");
     expect(shared).toContain(".experience-header__menu a:focus-visible");
+    expect(readerStyles).toContain(".reader-v2 .experience-header__menu-toggle { display: inline-grid; }");
+    expect(listenerStyles).toContain(".listener-v2 .experience-header__menu-toggle { display: inline-grid; }");
+    expect(readerStyles).toContain("height: 84px; min-height: 84px;");
+    expect(listenerStyles).toContain("height: 84px; min-height: 84px;");
+    expect(readerStyles).toContain("height: 72px; min-height: 72px;");
+    expect(listenerStyles).toContain("height: 72px; min-height: 72px;");
   });
 
   test("only canonical pages 1–3 are public and page 4 requires server authorization", () => {
@@ -101,7 +109,8 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(route).toContain("authorizingRef.current");
     expect(route).toContain("This edition is not approved for listening.");
     expect(route).toContain("<ExperienceHeader");
-    expect(route).toContain('onSearch={onSearch}');
+    expect(route).toContain('onSearch={() => onNavigate?.("search")}');
+    expect(route).toContain('onNavigatePath={onNavigatePath}');
     expect(route).not.toContain("startReadingPassAudioSession({ bookSlug: slug, positionSeconds: 180 })");
   });
 
@@ -111,8 +120,16 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(fixture.fixture).toBe(true);
     expect(fixture.mediaUrl).toBe("");
     expect(fixture.publicPreviewSeconds).toBe(0);
+    expect(fixture.release.status).toBe("visual_fixture");
     expect(fixture.title).toBe("A Ghost Story");
     expect(fixture.author).toBe("Mark Twain");
+    const currentBookFixture = listenerReleasePresentation({
+      title: "A Ghost Story", author: "Mark Twain", chapter_label: "Chapter 1 of 1",
+      chapters: [{ id: "chapter-001", order: 1, title: "A Ghost Story" }], preview_duration_seconds: 0,
+    }, { fixture: true });
+    expect(currentBookFixture.chapterLabel).toBe("Chapter 1 of 1");
+    expect(currentBookFixture.durationSeconds).toBe(0);
+    expect(currentBookFixture.mediaUrl).toBe("");
   });
 
   test("Listener fixture uses the compact mobile control shell without changing audio access", () => {
@@ -129,7 +146,8 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(route).toContain("LISTENER_VISUAL_FIXTURE_BOOK");
     expect(route).toContain('slug: "a-ghost-story"');
     expect(route).toContain("cover_image_url:");
-    expect(source).toContain("presentation.fixture || !canPlay || !totalDuration");
+    expect(source).toContain("!presentation.fixture && <>");
+    expect(source).not.toContain("canPlay || presentation.fixture");
   });
 
   // ReaderExperienceV2.render.test.jsx clicks the real size controls and checks
