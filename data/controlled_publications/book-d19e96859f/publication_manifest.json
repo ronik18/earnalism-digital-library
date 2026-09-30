@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "book-d19e96859f",
+  "title": "গিন্নি",
+  "generated_at": "2026-09-29T04:55:56.148227+00:00",
+  "content": {
+    "source_hash": "3c184ef8918fee4686c3ac93e17c12d7108617099c70425948cdd7cbf36b68d5",
+    "content_hash": "021462a46f1c87fb984bd68c0d90ff022123dacc236e876ee97baee87ff065fa",
+    "provenance_hash": "a2c7815b2c7477def2684e3e374b5d1db23d18888e6f9769dd9efbdf6c8a0717",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "1c594749b2586104574de9b75ff77aa890879909b11f7783eaf42e1af709281c",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Full Text",
+        "word_count": 1000,
+        "sha256": "26d10f7e8eecae197da20254ff5b5be5ff1c083a55051c1e343259505550d845"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "e525d4771e06857f991b2ce7492d503ff5fe4059b17a96f83acd516c7882c3cc"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779342197/earnalism/covers/front/cover_ff96c6fb-bcad-4a11-aba2-f31f6fe69e41.png",
+    "blockers": [
+      "Rights: author_death_year is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "1cce39252afbf783f60e960113fdc837d5a3a511b1b17a9c7f3c9af678f41af2",
+    "reader_manifest": "572b407f2559bb96af06a247f72d1333ba84531774265184e7ee62b18fa1d3fa",
+    "source_evidence": "e525d4771e06857f991b2ce7492d503ff5fe4059b17a96f83acd516c7882c3cc",
+    "approval_evidence": "76453786385926e62d3168a96f301cdc88d8a3d5c48d896272e39c3684911a3d"
+  },
+  "manifest_sha256": "f629825f70ca693b7ce0942aec67417076df11c2ff424244b6fa3099d0b266c9"
+}

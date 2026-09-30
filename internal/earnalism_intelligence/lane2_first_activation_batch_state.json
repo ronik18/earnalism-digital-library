@@ -1,0 +1,87 @@
+{
+  "schema": "earnalism-lane2-first-activation-state-v1",
+  "updated_at": "2026-09-30T08:10:54Z",
+  "branch": "codex/lane2-first-activation-batch",
+  "slug": "the-adventures-of-sherlock-holmes",
+  "authoritative_live_set": [
+    "a-ghost-story",
+    "the-tell-tale-heart",
+    "radharani",
+    "a-white-heron",
+    "the-gift-of-the-magi",
+    "the-canterville-ghost"
+  ],
+  "source_identity": "PASS",
+  "source_sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+  "content_sha256": "d6cb7d46af3d95b071c3783bf3b093f8c8397144ae717bbfbe87b8fc336fdc5c",
+  "reader_content_match_chapters": 12,
+  "reader_content_repairs": [
+    "chapter-002",
+    "chapter-005"
+  ],
+  "cover_provenance": "PASS_FIRST_PARTY_NO_EXTERNAL_ART",
+  "rights": "PASS_OWNER_LEGAL_APPROVAL_BOUND_IN",
+  "publication_authorization": "PASS_HASH_BOUND_TEXT_READER_ONLY",
+  "publication_manifest": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "blockers": []
+  },
+  "runtime_control": {
+    "known_live_slug": "a-ghost-story",
+    "last_verified_http": 200,
+    "sherlock_local_runtime_actions": "PASS",
+    "sherlock_production_runtime": "PENDING_DEPLOYMENT"
+  },
+  "activation_ready": true,
+  "live_approval_changed": true,
+  "non_fabricable_next_action": "Pass exact-head required PR checks, merge through normal protection, deploy the exact backend revision, and verify a-ghost-story and Sherlock catalog/reader runtime in production.",
+  "decision_packet": "internal/earnalism_intelligence/sherlock_holmes_publication_decision_packet_20260929.md",
+  "audio_text_release_coupling_found": false,
+  "audio_text_release_evidence": {
+    "canonical_audio_live_set": [],
+    "reader_validator": "controlled_reader_validation_issues strips audio-only checks; text access remains separately gated",
+    "control_test": "a-ghost-story with stale audio flags: reader validation PASS; audio validation FAIL as expected",
+    "candidate_metadata": "All nine inspected candidates have local audio markers; eight carry package-local approval claims without an audio hash, while sredni-vashtar has a hash. These are not canonical runtime audio approvals.",
+    "changes_to_audio_state": false,
+    "incomplete_local_audio_hash_claims": 8
+  },
+  "authoritative_live_set_before": [
+    "a-ghost-story",
+    "the-tell-tale-heart",
+    "radharani",
+    "a-white-heron",
+    "the-gift-of-the-magi",
+    "the-canterville-ghost"
+  ],
+  "authoritative_live_set_after_in_branch": [
+    "a-ghost-story",
+    "the-tell-tale-heart",
+    "radharani",
+    "a-white-heron",
+    "the-gift-of-the-magi",
+    "the-canterville-ghost",
+    "the-adventures-of-sherlock-holmes"
+  ],
+  "new_live_slug_in_branch": "the-adventures-of-sherlock-holmes",
+  "production_activated": false,
+  "autonomous_completion": {
+    "status": "RECONCILED_PENDING_EXACT_HEAD_CI",
+    "historical_head": "3548c4e6e4b1533de4d9b2cd2bd6b2683fc91360",
+    "main_reconciled": "5fd063f5e8d1d569c1d2917d21daa882d81b63d6",
+    "history_rewritten": false,
+    "production_surface_sha256": "118b5ed10d64b59915789dcac64cc574765e6bcb01a46b0c84d7f1f56afb21c2",
+    "sherlock_evidence_changed": false,
+    "local_validation": {
+      "backend_tests": 171,
+      "frontend_tests": 30,
+      "seamless_evidence_tests": 23,
+      "seamless_workflow_tests": 46,
+      "static_seo_assertions": 767
+    },
+    "protected_merge": "PENDING",
+    "deployment": "PENDING",
+    "production_verification": "PENDING"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": "earnalism.rights-decision-registry.v1",
-  "registry_id": "india-six-title-commercial-entitlement-reader-20260925",
+  "registry_id": "india-seven-title-commercial-entitlement-reader-20260929",
   "accepted_records": {
     "india-20260922-a-ghost-story-reader-release": "caa2538805f8388e3216affae04aa6e3a941541395296d7bab17ed34fd725107",
     "india-20260922-the-tell-tale-heart-reader-release": "39010bea33d4b43790f98af1758fdeadc20625d4ab8df01e247bb143788bec39",
@@ -10,7 +10,8 @@
     "india-20260925-radharani-commercial-reader-release": "9be847de52927f16dba1a5d40d0c85be07d69bc47c974cd9791daeca532f2a4d",
     "india-20260925-a-white-heron-commercial-reader-release": "756bb230f18b4c7226f88a376d1c8a8e53c240ec1864e8f290be70afcf66c388",
     "india-20260925-the-gift-of-the-magi-commercial-reader-release": "6d4b4acbe88350b9c81ea55002306bc72cf5178daaacfd87269833557c012773",
-    "india-20260925-the-canterville-ghost-commercial-reader-release": "704fa0e1a6373356c3f6fa3210050eadd54b37fb584006782e1d16fa42661c15"
+    "india-20260925-the-canterville-ghost-commercial-reader-release": "704fa0e1a6373356c3f6fa3210050eadd54b37fb584006782e1d16fa42661c15",
+    "india-20260929-the-adventures-of-sherlock-holmes-pg1661-text-reader": "6698711d408c59160d65605bb156c38eaf183affbdc3695b92ced8f0627e09c6"
   },
   "historical_records": {
     "superseded_runtime_bindings": {
@@ -53,7 +54,8 @@
     "controlled-radharani": {"status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4", "countries": ["IN"], "access_mode": "COMMERCIAL_ENTITLEMENT"},
     "controlled-a-white-heron": {"status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4", "countries": ["IN"], "access_mode": "COMMERCIAL_ENTITLEMENT"},
     "controlled-the-gift-of-the-magi": {"status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4", "countries": ["IN"], "access_mode": "COMMERCIAL_ENTITLEMENT"},
-    "controlled-the-canterville-ghost": {"status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4", "countries": ["IN"], "access_mode": "COMMERCIAL_ENTITLEMENT"}
+    "controlled-the-canterville-ghost": {"status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4", "countries": ["IN"], "access_mode": "COMMERCIAL_ENTITLEMENT"},
+    "controlled-the-adventures-of-sherlock-holmes": {"status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4", "countries": ["IN"], "access_mode": "COMMERCIAL_ENTITLEMENT"}
   },
-  "non_activation_note": "All six controlled India text titles are approved for public 3-page previews with Reading Pass entitlement required from page 4. Public paid checkout remains disabled until payment, remedy, and seller/grievance disclosures are ready; therefore protected full-book Reading Pass admission remains fail-closed. Historical pilot decisions are retained. Yugalanguriya remains HOLD; public audio remains disabled."
+  "non_activation_note": "All seven controlled India text titles are approved for public 3-page previews with Reading Pass entitlement required from page 4. Sherlock Holmes is authorized only for the exact Project Gutenberg #1661 text-reader edition in India. Public audio remains disabled."
 }

@@ -10,8 +10,8 @@
   "baseline_commit": "c788502c27211bf7d52a517bb5d802c5b8096034",
   "historical_manifest_count": 79,
   "historical_chapter_count": 691,
-  "expected_manifest_count": 96,
-  "expected_chapter_count": 760,
+  "expected_manifest_count": 97,
+  "expected_chapter_count": 772,
   "packages": [
     {
       "package_key": "a-ghost-story",
@@ -3460,6 +3460,72 @@
         "historical_chapter_count": 1,
         "baseline_kind": "VERSIONED_ENGINEERING_SNAPSHOT_NOT_RELEASE_AUTHORITY",
         "historical_ordered_ids_unchanged": true
+      }
+    },
+    {
+      "package_key": "the-adventures-of-sherlock-holmes",
+      "manifest_path": "backend/data/controlled_publications/the-adventures-of-sherlock-holmes/reader_manifest.json",
+      "manifest_slug": "the-adventures-of-sherlock-holmes",
+      "chapter_count": 12,
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        }
+      ],
+      "provenance": {
+        "repository": "ronik18/earnalism-digital-library",
+        "baseline_commit": "5171f6f2b918a32421228d636fe08e255edc4298",
+        "baseline_manifest_blob_sha1": "234b90021efec38ac1f5880aeb462a307576195a",
+        "baseline_manifest_sha256": "72df26f5a988406ad2be0dca1a6b45825a652dca75e5aeaafdf189bf9f16ba1d",
+        "baseline_url": "https://github.com/ronik18/earnalism-digital-library/blob/5171f6f2b918a32421228d636fe08e255edc4298/backend/data/controlled_publications/the-adventures-of-sherlock-holmes/reader_manifest.json",
+        "historical_membership": "NOT_IN_FROZEN_HISTORICAL_BASELINE",
+        "baseline_kind": "PR_470_REVIEWED_CANDIDATE_ADDITION_NOT_RELEASE_AUTHORITY",
+        "ordered_ids_bound_to_manifest_sha256": true
       }
     },
     {

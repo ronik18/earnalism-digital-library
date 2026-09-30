@@ -109,6 +109,7 @@ def test_shared_controlled_launch_config_matches_backend_and_audit():
     assert catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS == (
         "a-ghost-story", "the-tell-tale-heart", "radharani",
         "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost",
+        "the-adventures-of-sherlock-holmes",
     )
     assert "book-2b9853ec52" in catalog_truth.PUBLIC_CATALOG_EXCLUDED_SLUGS
     assert "book-2b9853ec52" not in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
@@ -119,6 +120,7 @@ def test_shared_controlled_launch_config_matches_backend_and_audit():
     assert live_slugs == {
         "a-ghost-story", "the-tell-tale-heart", "radharani",
         "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost",
+        "the-adventures-of-sherlock-holmes",
     }
     assert "book-2b9853ec52" not in live_slugs
 
@@ -304,6 +306,7 @@ def test_live_approved_mongo_query_preserves_rights_and_search_or():
     assert controlled_slugs == [
         "a-ghost-story", "the-tell-tale-heart", "radharani",
         "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost",
+        "the-adventures-of-sherlock-holmes",
     ]
     assert query["$and"][1]["$or"][0]["title"] == {"$regex": "Dracula", "$options": "i"}
 
@@ -348,6 +351,7 @@ def test_public_release_scope_denies_held_titles_and_never_reopens_historical_ma
     assert controlled_slugs == [
         "a-ghost-story", "the-tell-tale-heart", "radharani",
         "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost",
+        "the-adventures-of-sherlock-holmes",
     ]
 
 
@@ -403,6 +407,7 @@ def test_sitemap_truth_lists_only_the_exact_controlled_reader_release():
     for slug in (
         "a-ghost-story", "the-tell-tale-heart", "radharani",
         "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost",
+        "the-adventures-of-sherlock-holmes",
     ):
         assert f"/book/{slug}" in sitemap
     assert "/book/yugalanguriya" not in sitemap

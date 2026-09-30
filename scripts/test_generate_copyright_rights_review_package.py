@@ -40,12 +40,12 @@ class CopyrightRightsReviewPackageTests(unittest.TestCase):
         )
         self.assertEqual([item["slug"] for item in package["titles"]], expected)
         self.assertEqual(package["inventory_summary"]["title_count"], len(expected))
-        self.assertEqual(package["inventory_summary"]["accepted_rights_record_count"], 9)
-        self.assertEqual(package["inventory_summary"]["live_accepted_rights_record_count"], 6)
+        self.assertEqual(package["inventory_summary"]["accepted_rights_record_count"], 10)
+        self.assertEqual(package["inventory_summary"]["live_accepted_rights_record_count"], 7)
         self.assertEqual(package["inventory_summary"]["rights_accepted_unexposed_count"], 0)
         self.assertEqual(package["conclusion"], "INDIA_RELEASE_EVIDENCE_COMPLETE_FOR_CONTROLLED_ALLOWLIST")
         accepted = {title["slug"] for title in package["titles"] if title["title_release_status"] == "ACCEPTED_FOR_CONTROLLED_RELEASE"}
-        self.assertEqual(accepted, {"a-ghost-story", "the-tell-tale-heart", "radharani", "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost"})
+        self.assertEqual(accepted, {"a-ghost-story", "the-tell-tale-heart", "radharani", "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost", "the-adventures-of-sherlock-holmes"})
         rights_accepted_unexposed = {title["slug"] for title in package["titles"] if title["title_release_status"] == "RIGHTS_ACCEPTED_UNEXPOSED"}
         self.assertEqual(rights_accepted_unexposed, set())
 

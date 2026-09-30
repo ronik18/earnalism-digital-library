@@ -30,6 +30,13 @@ class StaticSeoCanaryTests(unittest.TestCase):
         html = html.replace("</head>", '<script type="application/ld+json">{"isAccessibleForFree":false}</script></head>')
         self.assertEqual(self.inspect("/book/a-ghost-story", html)["result"], "PASS")
 
+    def test_sherlock_text_reader_book_and_reader_routes_have_release_safe_metadata(self) -> None:
+        book = page(title="The Adventures of Sherlock Holmes | The Earnalism", description="The Adventures of Sherlock Holmes reader edition. " + ACCESS, h1="The Adventures of Sherlock Holmes", canonical="https://theearnalism.com/book/the-adventures-of-sherlock-holmes", body=ACCESS, links="<a href='/reader/the-adventures-of-sherlock-holmes'>Read the 3-page preview</a>")
+        book = book.replace("</head>", '<script type="application/ld+json">{"isAccessibleForFree":false}</script></head>')
+        reader = page(title="Read The Adventures of Sherlock Holmes | The Earnalism Reader", description=ACCESS, h1="Read The Adventures of Sherlock Holmes", canonical="https://theearnalism.com/book/the-adventures-of-sherlock-holmes", robots="noindex,follow", body=ACCESS)
+        self.assertEqual(self.inspect("/book/the-adventures-of-sherlock-holmes", book)["result"], "PASS")
+        self.assertEqual(self.inspect("/reader/the-adventures-of-sherlock-holmes", reader)["result"], "PASS")
+
     def test_current_approved_pricing_html_passes(self) -> None:
         html = page(title="Reading Passes | The Earnalism", description="Reading Passes and paid checkout are unavailable in this launch.", h1="Reading Passes", canonical="https://theearnalism.com/pricing", robots="noindex,follow", body="Paid checkout is unavailable.")
         self.assertEqual(self.inspect("/pricing", html)["result"], "PASS")
