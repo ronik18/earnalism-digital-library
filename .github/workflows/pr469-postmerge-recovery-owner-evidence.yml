@@ -24,7 +24,7 @@ on:
       - frontend/src/lib/api.js
       - frontend/src/lib/api.test.js
       - frontend/src/pages/BookDetail.jsx
-      - frontend/api/[...proxy].js
+      - 'frontend/api/\[...proxy\].js'
       - frontend/scripts/release-proxy.test.js
       - frontend/src/experiences-v2/reader/ReaderExperienceV2.jsx
       - frontend/src/experiences-v2/reader/reader-v2.css
