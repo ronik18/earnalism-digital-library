@@ -1,0 +1,109 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "de8d315ed722045999ba6117be591daf639165510f16d4668036e60b418dba4a",
+    "chapters/chapter-001.json": "c4b8dff5a616190cbad7dc61a29b49d1c7b8020e270bc7dde9f6de1b904e8d34",
+    "checksum_manifest.json": "418935e29a0dc42bd47e68575ba937903f932a7e172abda74a886f3786593640",
+    "cover_approval_evidence.json": "2b60eeea9fb367b934d2c2170dd7002efb49130669f540e354c7504eea948c9e",
+    "highlight_sync.json": "50c855c27d16a7802f040f43d6138ce6276ac23c4035a9a553f5adfab4cfe50c",
+    "public_book.json": "87c5058f9226fceb945c264f070629d99884fa54381c23342b091c953f30e6eb",
+    "publication_manifest.json": "00c04f1b70a324bca3d0fa56f43025f2975e5523612303c6313ffc535d9e4726",
+    "reader_manifest.json": "f50a47eb83a43e1dc763a8bf7310e4d7cfff7f828c8e8cb2b66b2c58d0e9357f",
+    "rights_decision.json": "1957ce763318a1a085733dd1537687eb7d81bc2e1bb8add17ac6a46a209a46dd",
+    "source_evidence.json": "32c5f6aff23758db159fd3ecf5c13bf9201a6a689948d3a9fdf03fcadf09100f"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "0d754cdbbbcdc662091824f2078312d78eb3d80262e6301b0465ab4c3db54e4e",
+      "file_sha256": "c4b8dff5a616190cbad7dc61a29b49d1c7b8020e270bc7dde9f6de1b904e8d34",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "2a9ad87ef34f349a6239edaa20684e057b6465139c64acb7fee5360fe3974942",
+    "approval_evidence.json": "de8d315ed722045999ba6117be591daf639165510f16d4668036e60b418dba4a",
+    "chapters/chapter-001.json": "c4b8dff5a616190cbad7dc61a29b49d1c7b8020e270bc7dde9f6de1b904e8d34",
+    "checksum_manifest.json": "418935e29a0dc42bd47e68575ba937903f932a7e172abda74a886f3786593640",
+    "cover_approval_evidence.json": "2b60eeea9fb367b934d2c2170dd7002efb49130669f540e354c7504eea948c9e",
+    "highlight_sync.json": "50c855c27d16a7802f040f43d6138ce6276ac23c4035a9a553f5adfab4cfe50c",
+    "public_book.json": "87c5058f9226fceb945c264f070629d99884fa54381c23342b091c953f30e6eb",
+    "publication_manifest.json": "00c04f1b70a324bca3d0fa56f43025f2975e5523612303c6313ffc535d9e4726",
+    "reader_manifest.json": "f50a47eb83a43e1dc763a8bf7310e4d7cfff7f828c8e8cb2b66b2c58d0e9357f",
+    "rights_decision.json": "1957ce763318a1a085733dd1537687eb7d81bc2e1bb8add17ac6a46a209a46dd",
+    "source_evidence.json": "32c5f6aff23758db159fd3ecf5c13bf9201a6a689948d3a9fdf03fcadf09100f"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "de8d315ed722045999ba6117be591daf639165510f16d4668036e60b418dba4a",
+      "public_book": "87c5058f9226fceb945c264f070629d99884fa54381c23342b091c953f30e6eb",
+      "reader_manifest": "f50a47eb83a43e1dc763a8bf7310e4d7cfff7f828c8e8cb2b66b2c58d0e9357f",
+      "source_evidence": "32c5f6aff23758db159fd3ecf5c13bf9201a6a689948d3a9fdf03fcadf09100f"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "b0b344740f4aee90b69abad9689572cc4aaf6860336a77d1bb89424186a4e834",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "c4b8dff5a616190cbad7dc61a29b49d1c7b8020e270bc7dde9f6de1b904e8d34",
+          "title": "The Tell-Tale Heart",
+          "word_count": 2155
+        }
+      ],
+      "content_hash": "a07c4b3d611f371eff7ff8ded51a6dd40eabe86f595b459fbe2f5e23afb18dcf",
+      "provenance_hash": "842f37156736790444d3edc2f38a4e1e1aa3689c723936dc9f2e38f0d063aa4b",
+      "sanitized": true,
+      "source_hash": "f5d856baf4abec894c1fdc82f8676a416dc96efd3708162c04bcde0ff0a4579b"
+    },
+    "generated_at": "2026-09-25T00:00:00Z",
+    "manifest_sha256": "31c27ed62067f95520658c2831600cfb5489e857469e518d8fd10791068bdb5d",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420357/earnalism/covers/front/cover_candidate_controlled-the-tell-tale-heart-474742edf3427ac414565c05b170cb83e855b223951be3ed22cc597ddf6f673d.jpg",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "32c5f6aff23758db159fd3ecf5c13bf9201a6a689948d3a9fdf03fcadf09100f",
+      "publication_region": "in",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-tell-tale-heart",
+    "title": "The Tell-Tale Heart"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20260925-the-tell-tale-heart-commercial-reader-release",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

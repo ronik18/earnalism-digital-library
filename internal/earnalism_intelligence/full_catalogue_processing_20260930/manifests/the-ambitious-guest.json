@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "db4c1757772f927d4f164c215d46b2f695d9dbd6e573874d8436434a5c482619",
+    "chapters/chapter-001.json": "344fe1a9fac580c744df699ee7f0acbbbc04ac7e130e708b8a3056729e7d881b",
+    "checksum_manifest.json": "4cae397d6f3927971ee8679456138c9ac6bfc769b83ae550341038b7cdc3cdad",
+    "highlight_sync.json": "58fe5efcac6c8b3f3adb02b068aed0319d9f22fdf706b3740b8c426760187036",
+    "public_book.json": "9aa9aff83c8ac5a1967d0c85d45391d2e040f9959300e077bb3381120b718c3e",
+    "reader_manifest.json": "c187b34b8cd39ce509ff237856cd7d6bdd9274b79789f46759af590b1c78e786",
+    "source_evidence.json": "09e881695ec1819f851c5fd346161e3e4557d68591014e4a1766178aad168c5b"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "dbfd78d5760dd08bf9bcdec9424bd63065b649bdb0feb1df817a953cdf7af784",
+      "file_sha256": "344fe1a9fac580c744df699ee7f0acbbbc04ac7e130e708b8a3056729e7d881b",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "db4c1757772f927d4f164c215d46b2f695d9dbd6e573874d8436434a5c482619",
+    "chapters/chapter-001.json": "344fe1a9fac580c744df699ee7f0acbbbc04ac7e130e708b8a3056729e7d881b",
+    "checksum_manifest.json": "4cae397d6f3927971ee8679456138c9ac6bfc769b83ae550341038b7cdc3cdad",
+    "highlight_sync.json": "58fe5efcac6c8b3f3adb02b068aed0319d9f22fdf706b3740b8c426760187036",
+    "public_book.json": "9aa9aff83c8ac5a1967d0c85d45391d2e040f9959300e077bb3381120b718c3e",
+    "reader_manifest.json": "c187b34b8cd39ce509ff237856cd7d6bdd9274b79789f46759af590b1c78e786",
+    "source_evidence.json": "09e881695ec1819f851c5fd346161e3e4557d68591014e4a1766178aad168c5b"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "db4c1757772f927d4f164c215d46b2f695d9dbd6e573874d8436434a5c482619",
+      "public_book": "9aa9aff83c8ac5a1967d0c85d45391d2e040f9959300e077bb3381120b718c3e",
+      "reader_manifest": "c187b34b8cd39ce509ff237856cd7d6bdd9274b79789f46759af590b1c78e786",
+      "source_evidence": "09e881695ec1819f851c5fd346161e3e4557d68591014e4a1766178aad168c5b"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "9c198f642b7d91e961324255a75f4b806970d095665ed1bceaa0e8c88c81860b",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "344fe1a9fac580c744df699ee7f0acbbbc04ac7e130e708b8a3056729e7d881b",
+          "title": "The Ambitious Guest",
+          "word_count": 3285
+        }
+      ],
+      "content_hash": "ec3d20e545a161c6382ab30e8ac0ea73e9c86e2f68dd51e2ebddeb89be9b8d9a",
+      "provenance_hash": "6fe8763590e16b3bb0e993d1556589fc7fbd19c3586132d55e8e84eb1077d0ec",
+      "sanitized": true,
+      "source_hash": "e5575209af8f67db282d16c1adb0e224aacaee4e9abb122ccdbb0a8e60ceaf45"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "f5144aab1eee693b5c25564ea733dc1815d5e7bc795668c5a902ee7df79cb150",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "09e881695ec1819f851c5fd346161e3e4557d68591014e4a1766178aad168c5b",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-ambitious-guest",
+    "title": "The Ambitious Guest"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

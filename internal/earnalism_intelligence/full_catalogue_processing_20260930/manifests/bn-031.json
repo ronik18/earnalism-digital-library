@@ -1,0 +1,146 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "f4a2b1bbea7d73bd5494a69fa9a19baba3a3b601512549f6025d65103365f47f",
+    "chapters/chapter-001.json": "10b838021ac01089d5a354b2bec9f7fcd560df7734a9b6fb25d5221e1357ae32",
+    "chapters/chapter-002.json": "7bcfb96aa8a65763b17f2a99a76e5619368e60d0236d899c7c3053deb84d09cf",
+    "chapters/chapter-003.json": "148116e68d501d359089f851c482be4157164147e1a095b09249e2fbf3b2d8ba",
+    "checksum_manifest.json": "34d5438da415c8c5add1900697db4d88e5f9bbd99dcd7c602e398063b9328c6d",
+    "highlight_sync.json": "3c5b3babaff080922db9932fcc3d3b49748ef66a2fbe5b0afd4032924aec595c",
+    "public_book.json": "456f70ff219349c40c858f89e60eaa670f8eee5972657d6e0c2c0bf4de546e3d",
+    "reader_manifest.json": "fa7a1a4861d40772ea7e9fb6af09c432569c862e6e119ac2e399cfd2e13885c8",
+    "source_evidence.json": "85904f143472f25b0277db1d12857602ed0c8fee036c25bf75a0c77b3440ad71"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "652e01c81029c8aaf76304c1543698dd7a6b3ab6da0bbceb6c07e3eb3dc74fd2",
+      "file_sha256": "10b838021ac01089d5a354b2bec9f7fcd560df7734a9b6fb25d5221e1357ae32",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "a62d0e3d7c8314a9d4483f69611efe109f4bd138714155267c48398142c969aa",
+      "file_sha256": "7bcfb96aa8a65763b17f2a99a76e5619368e60d0236d899c7c3053deb84d09cf",
+      "id": "chapter-002"
+    },
+    {
+      "content_sha256": "b2ed3ae3b0d546b26aa2cbcb52bbd3f49f937e4803f65823d978ccf5ee6baadd",
+      "file_sha256": "148116e68d501d359089f851c482be4157164147e1a095b09249e2fbf3b2d8ba",
+      "id": "chapter-003"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "f4a2b1bbea7d73bd5494a69fa9a19baba3a3b601512549f6025d65103365f47f",
+    "chapters/chapter-001.json": "10b838021ac01089d5a354b2bec9f7fcd560df7734a9b6fb25d5221e1357ae32",
+    "chapters/chapter-002.json": "7bcfb96aa8a65763b17f2a99a76e5619368e60d0236d899c7c3053deb84d09cf",
+    "chapters/chapter-003.json": "148116e68d501d359089f851c482be4157164147e1a095b09249e2fbf3b2d8ba",
+    "checksum_manifest.json": "34d5438da415c8c5add1900697db4d88e5f9bbd99dcd7c602e398063b9328c6d",
+    "highlight_sync.json": "3c5b3babaff080922db9932fcc3d3b49748ef66a2fbe5b0afd4032924aec595c",
+    "public_book.json": "456f70ff219349c40c858f89e60eaa670f8eee5972657d6e0c2c0bf4de546e3d",
+    "reader_manifest.json": "fa7a1a4861d40772ea7e9fb6af09c432569c862e6e119ac2e399cfd2e13885c8",
+    "source_evidence.json": "85904f143472f25b0277db1d12857602ed0c8fee036c25bf75a0c77b3440ad71"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "f4a2b1bbea7d73bd5494a69fa9a19baba3a3b601512549f6025d65103365f47f",
+      "public_book": "456f70ff219349c40c858f89e60eaa670f8eee5972657d6e0c2c0bf4de546e3d",
+      "reader_manifest": "fa7a1a4861d40772ea7e9fb6af09c432569c862e6e119ac2e399cfd2e13885c8",
+      "source_evidence": "85904f143472f25b0277db1d12857602ed0c8fee036c25bf75a0c77b3440ad71"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 3,
+      "chapter_index_sha256": "15ae8c71736cef07353b6df56bec12b5d39a5aab3e34ad84485be562cc67b9b3",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "10b838021ac01089d5a354b2bec9f7fcd560df7734a9b6fb25d5221e1357ae32",
+          "title": "Chapter 1. ১",
+          "word_count": 1385
+        },
+        {
+          "id": "chapter-002",
+          "order": 2,
+          "sha256": "7bcfb96aa8a65763b17f2a99a76e5619368e60d0236d899c7c3053deb84d09cf",
+          "title": "Chapter 2. ২",
+          "word_count": 737
+        },
+        {
+          "id": "chapter-003",
+          "order": 3,
+          "sha256": "148116e68d501d359089f851c482be4157164147e1a095b09249e2fbf3b2d8ba",
+          "title": "Chapter 3. ৩",
+          "word_count": 1185
+        }
+      ],
+      "content_hash": "8253da5e5f081952e702b8ca1e2ba9c82b15bd3210b8605f2c515b1b75a81417",
+      "provenance_hash": "9afe945de85c8fa2b78cc82ab883c157a586f0d5560e0d8aefdc1e90e307557a",
+      "sanitized": true,
+      "source_hash": "b4cbab54263d2bd9c717525c55e300dda3ae2385329ae93ff716461a0fe20dea"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "da8b25588bffa5b0a4960d65c38598203cbca919ab6f7a81bbe067b223638931",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267401/earnalism/covers/front/bn-031_front_1600x2400.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "85904f143472f25b0277db1d12857602ed0c8fee036c25bf75a0c77b3440ad71",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "bn-031",
+    "title": "মহেশ"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

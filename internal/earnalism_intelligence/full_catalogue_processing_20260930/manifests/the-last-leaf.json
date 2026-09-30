@@ -1,0 +1,115 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "5437d5fe63064e0285b7a3812aa9508f5352a5c879384f55b64dc8aa47bd79ee",
+    "chapters/chapter-001.json": "6cd5c963e4f4279e3b20e80ae6871ac5261b2506220a02b871c1b7c884962c7b",
+    "checksum_manifest.json": "0ffbdae07093050fea51590ee9041edab084cb11994cd58be0616f71e68d42a0",
+    "public_book.json": "4ccef2d65df98f0d40cec1c62fa6853494f19131855e57018c8a0b58cb15365d",
+    "reader_manifest.json": "cd7a86a387312fedf34085d7b130b9d91d3890966316f9e33a0c4d8c5acdc36d",
+    "source_evidence.json": "a8cad1ea38f5a794cf608d2b7fd2a397ca94a5471f14a3dc76ca0aeff5a7eafb"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "e3a825f58d8a086967586988d7eeaf902fbb415b53cd164340d935f98d7645f7",
+      "file_sha256": "6cd5c963e4f4279e3b20e80ae6871ac5261b2506220a02b871c1b7c884962c7b",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "e4e07e7895fc94f495d641a83cf0dba9cbb4921e1bfe5eedd1eb5dcb16d023e7",
+    "approval_evidence.json": "5437d5fe63064e0285b7a3812aa9508f5352a5c879384f55b64dc8aa47bd79ee",
+    "chapters/chapter-001.json": "6cd5c963e4f4279e3b20e80ae6871ac5261b2506220a02b871c1b7c884962c7b",
+    "checksum_manifest.json": "a21e8e439c3b570214a52edb1d9d5b505e407fa3c06e0203035150715b0e31fe",
+    "highlight_sync.json": "42fb16c4338b23d563538fc492308fc2bdf28541974c8f32a356f6410799c4ee",
+    "public_book.json": "4ccef2d65df98f0d40cec1c62fa6853494f19131855e57018c8a0b58cb15365d",
+    "reader_manifest.json": "cd7a86a387312fedf34085d7b130b9d91d3890966316f9e33a0c4d8c5acdc36d",
+    "source_evidence.json": "a8cad1ea38f5a794cf608d2b7fd2a397ca94a5471f14a3dc76ca0aeff5a7eafb"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "5437d5fe63064e0285b7a3812aa9508f5352a5c879384f55b64dc8aa47bd79ee",
+      "public_book": "4ccef2d65df98f0d40cec1c62fa6853494f19131855e57018c8a0b58cb15365d",
+      "reader_manifest": "cd7a86a387312fedf34085d7b130b9d91d3890966316f9e33a0c4d8c5acdc36d",
+      "source_evidence": "a8cad1ea38f5a794cf608d2b7fd2a397ca94a5471f14a3dc76ca0aeff5a7eafb"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "e05c334e9ecfcc411e1f9bec5f90e2c32caf0a0e67670135f81cdc2afe7a7bef",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "6cd5c963e4f4279e3b20e80ae6871ac5261b2506220a02b871c1b7c884962c7b",
+          "title": "The Last Leaf",
+          "word_count": 2402
+        }
+      ],
+      "content_hash": "750d93c0a95a22e2d6fc3dbb827cf25a24324830c96720906724aa3cd27f728f",
+      "provenance_hash": "034931b10a219ccaaf22f3d7e299ae6936c765abe784f30fb28b65149235e759",
+      "sanitized": true,
+      "source_hash": "3b86fb4d8aae47c9471240ba708f681dc16aec5b34d97976faa9a642339290ba"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "31c13989d94c69259dbbfa8fabfb671760d120158e7a3b61efa2e99142af5e34",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "a8cad1ea38f5a794cf608d2b7fd2a397ca94a5471f14a3dc76ca0aeff5a7eafb",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-last-leaf",
+    "title": "The Last Leaf"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

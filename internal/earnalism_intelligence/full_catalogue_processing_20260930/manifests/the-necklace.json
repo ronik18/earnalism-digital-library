@@ -1,0 +1,116 @@
+{
+  "active_files_sha256": {
+    "approval_evidence 2.json": "15faf85582c4909c0704cb3b395941d5a16d886e2d9b7436bb34fd454eab53d7",
+    "approval_evidence.json": "4298df9ca6de14ddb2f8d09c16eae4be10861cc669446d61c7f42cf80633b955",
+    "chapters/chapter-001.json": "ff0b4e463d678a5c7161e306db8f8f9da332df67db69d9bc481c84bacc3b1495",
+    "checksum_manifest.json": "2a37442002cc666f4ea4075110f1f21028cafa6ac0ee48207eaec89301f46b74",
+    "highlight_sync.json": "d64f8eed986ca81109bac99a967a74f8415f2d1888cd0822539ceabb75815024",
+    "public_book.json": "a17ac9c46b8762c24cc4096a1717ade26a9922913d0dc2fd0fd266a708e184ad",
+    "reader_manifest.json": "970649ffc577d7b802bc31981bf7215c06e3bc57dbf4d24e7075774233ca0cdb",
+    "source_evidence.json": "936199b64b84f7e30d2017959d706eae20de3854ae14ae7c184242a1d58635ff"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "ee0e443ea8e7cc6c5cbd9327e74f6bf3cdbf4aabcf92f345c79a07ab643a3ae3",
+      "file_sha256": "ff0b4e463d678a5c7161e306db8f8f9da332df67db69d9bc481c84bacc3b1495",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "4298df9ca6de14ddb2f8d09c16eae4be10861cc669446d61c7f42cf80633b955",
+    "chapters/chapter-001.json": "ff0b4e463d678a5c7161e306db8f8f9da332df67db69d9bc481c84bacc3b1495",
+    "checksum_manifest.json": "2a37442002cc666f4ea4075110f1f21028cafa6ac0ee48207eaec89301f46b74",
+    "highlight_sync.json": "d64f8eed986ca81109bac99a967a74f8415f2d1888cd0822539ceabb75815024",
+    "public_book.json": "a17ac9c46b8762c24cc4096a1717ade26a9922913d0dc2fd0fd266a708e184ad",
+    "reader_manifest.json": "970649ffc577d7b802bc31981bf7215c06e3bc57dbf4d24e7075774233ca0cdb",
+    "source_evidence.json": "936199b64b84f7e30d2017959d706eae20de3854ae14ae7c184242a1d58635ff"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "4298df9ca6de14ddb2f8d09c16eae4be10861cc669446d61c7f42cf80633b955",
+      "public_book": "a17ac9c46b8762c24cc4096a1717ade26a9922913d0dc2fd0fd266a708e184ad",
+      "reader_manifest": "970649ffc577d7b802bc31981bf7215c06e3bc57dbf4d24e7075774233ca0cdb",
+      "source_evidence": "936199b64b84f7e30d2017959d706eae20de3854ae14ae7c184242a1d58635ff"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "a9b0a6dfb0ab7125c3447b45936fa8d839b808ef2f54ec1c0f1c0bd7d6519102",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "ff0b4e463d678a5c7161e306db8f8f9da332df67db69d9bc481c84bacc3b1495",
+          "title": "The Necklace",
+          "word_count": 2847
+        }
+      ],
+      "content_hash": "11dd5fc25c6413ce85715a6e09f717af89defd4ee69e13739275588e5d4a152c",
+      "provenance_hash": "647161385ead777380d68a8dd5ab420a248a85641e663ed72e7980d2426ba78d",
+      "sanitized": true,
+      "source_hash": "bc5f461772b5583801472773e623c39ee14a218ae50b87715e24aa14b026549c"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "f713807c15c9c4cd414293df5c2c4496ac8bedcfd1b4a2a68f3682b1f674c7c1",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "936199b64b84f7e30d2017959d706eae20de3854ae14ae7c184242a1d58635ff",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-necklace",
+    "title": "The Necklace"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

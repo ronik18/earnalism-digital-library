@@ -1,0 +1,380 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "2f8890741932b8c0fe7e7f9088b4ff0f6c233b07d79160a6feeabbdcfcacd69c",
+    "chapters/chapter-001.json": "2a1fd4c3e04b1ebb563d265d3a320f331755941a1afa095f7a7177e289afc384",
+    "chapters/chapter-002.json": "a7bcb5cef6577ddfa014b01d9800e487652bb517fb97a6763b3eaf2f7ad293e3",
+    "chapters/chapter-003.json": "dd45c004ed530f20cfd00ffbb31e0ed212e85836913ab9ba79719e7165f1bd11",
+    "chapters/chapter-004.json": "c0fa9c85a48b57bce9b4fb877b6b6603f3dc70d0561a3511979ea433fab6219b",
+    "chapters/chapter-005.json": "02b539eac32e6cfaab454bc1b0c5bd2d3cb57788da0b2c8fd44fd1d0bf5b054b",
+    "chapters/chapter-006.json": "ec5547b4d4f8056ed8353d022a7c0cf3722a30067b5a9cad8e1803143f3cc596",
+    "chapters/chapter-007.json": "cabea63030da009912cb6c1cf7d8a086eaceb6bf806f6851fb5a80aa29186d03",
+    "chapters/chapter-008.json": "ef5c0035b6eeff68add7a9965d06956b3b49b1aca97c7814cef41da6f0482593",
+    "chapters/chapter-009.json": "7a87f5c0a32f1f6845ff1dc8ff345211a702d06f9531e1a6e4662458639d8e46",
+    "chapters/chapter-010.json": "eee3343808fd2eaed81f5bd46fd8d42c386788237aeaede07dc3d714ad9da9b0",
+    "chapters/chapter-011.json": "eeaa335e4e455dfd05745e645018b6f12c6660105ef0ad69e1b2a2801a3d6bcb",
+    "chapters/chapter-012.json": "61cb29ad3cd6d127db6a4a62384e035e08b548fe5d595f3afb0f725ca5ba90e8",
+    "chapters/chapter-013.json": "5b5474245f0bb790faa6d972cfb9a982acca24d9061fd73647056d88e7235e6b",
+    "chapters/chapter-014.json": "1c5e0d62db59e3ee4582e777ff2c642be4dde24114bcd28144485e16fe578a83",
+    "chapters/chapter-015.json": "ef3867bb022a01be23bcf218fde2d808519ad55aa3dcfa8b183c66b031936798",
+    "chapters/chapter-016.json": "74ba7b50b8f06cad4ab57dd5ef18f7930a27c4f706aaa5650ab7e35c6eb47aca",
+    "chapters/chapter-017.json": "5266d6958665c159f3c2bb0b78a3d49aca761026f7dfe05b8702b256845d35b8",
+    "chapters/chapter-018.json": "ef89755dc7219ef22e39dfb9152682d3e3372afc3125e7e55bb0f95cd9dae868",
+    "chapters/chapter-019.json": "c1322b3da8525cbcb717bc06c2be1b5af15c891d288e1c337aad70b7caf09049",
+    "chapters/chapter-020.json": "acd20f34eb13df93e82688fc463925a77298b69ae984987b9efabb5e11b7810c",
+    "checksum_manifest.json": "db335fc98f880678853dda98be2bb6425a1c02a71444e68b45e324667f5baf54",
+    "highlight_sync.json": "0c00b96caba8dc3931d1fde1b5e1d99db1d556d6fd32c3b9ee2229581f044df1",
+    "public_book.json": "2b7dd39c921abd88afc285958c5660e70b8e2295fd0d30112e023b4f1246fe4d",
+    "reader_manifest.json": "8101b45d51b353e0112bad7600e1cd8e71f1759c18ec7f9e1060b8e9db589559",
+    "source_evidence.json": "d7895ebd47275ea493ebc43690a6f722c132242bf7ac30da3b51f508f5e8228a"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "35d0e0af2b20f272b5126b827abd30e3dfd2e0fcd5b9e76210a418f942a3adff",
+      "file_sha256": "2a1fd4c3e04b1ebb563d265d3a320f331755941a1afa095f7a7177e289afc384",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "3875b63b6bd7eca5e7f210acf850df6165107467e799db960baa3364352144ee",
+      "file_sha256": "a7bcb5cef6577ddfa014b01d9800e487652bb517fb97a6763b3eaf2f7ad293e3",
+      "id": "chapter-002"
+    },
+    {
+      "content_sha256": "f1e341a75ac012884a468e3843aeef357a7d724c748a7c3f9a7206a2678f13fb",
+      "file_sha256": "dd45c004ed530f20cfd00ffbb31e0ed212e85836913ab9ba79719e7165f1bd11",
+      "id": "chapter-003"
+    },
+    {
+      "content_sha256": "778605fcc6b89e0e269b55261c8576875c6fd55b9ce0f8de81731c6368853725",
+      "file_sha256": "c0fa9c85a48b57bce9b4fb877b6b6603f3dc70d0561a3511979ea433fab6219b",
+      "id": "chapter-004"
+    },
+    {
+      "content_sha256": "a3711a9b617569348e43e0389de82f084dc20b45152e9ff14609e40375da6e1b",
+      "file_sha256": "02b539eac32e6cfaab454bc1b0c5bd2d3cb57788da0b2c8fd44fd1d0bf5b054b",
+      "id": "chapter-005"
+    },
+    {
+      "content_sha256": "ca435d0cf473d7fb60ffcc0369a3087e25f84f844a68a916e6f272102dba516b",
+      "file_sha256": "ec5547b4d4f8056ed8353d022a7c0cf3722a30067b5a9cad8e1803143f3cc596",
+      "id": "chapter-006"
+    },
+    {
+      "content_sha256": "b78adacc3ebfca0507648145d8d003a4867d9a637c3bdd2e417ac3f0302e8cab",
+      "file_sha256": "cabea63030da009912cb6c1cf7d8a086eaceb6bf806f6851fb5a80aa29186d03",
+      "id": "chapter-007"
+    },
+    {
+      "content_sha256": "235acbc290db006ca7895d772993f31f476165e9f8526111b4ec4b94a02a5a50",
+      "file_sha256": "ef5c0035b6eeff68add7a9965d06956b3b49b1aca97c7814cef41da6f0482593",
+      "id": "chapter-008"
+    },
+    {
+      "content_sha256": "2ae9063bb584d140fc1b0c93f06925a32d229101be3c7585b13ed184da762a79",
+      "file_sha256": "7a87f5c0a32f1f6845ff1dc8ff345211a702d06f9531e1a6e4662458639d8e46",
+      "id": "chapter-009"
+    },
+    {
+      "content_sha256": "c0478e248b52e7bdb83d02d95b260e05ffe8713f7560d6a0ff9231897e0ebba5",
+      "file_sha256": "eee3343808fd2eaed81f5bd46fd8d42c386788237aeaede07dc3d714ad9da9b0",
+      "id": "chapter-010"
+    },
+    {
+      "content_sha256": "89e917a3df0e6a8460ec5ee1c10229d367b814a3a9ebe35f561db04f15a0f0a6",
+      "file_sha256": "eeaa335e4e455dfd05745e645018b6f12c6660105ef0ad69e1b2a2801a3d6bcb",
+      "id": "chapter-011"
+    },
+    {
+      "content_sha256": "919c9301c74a4bc85d7e441e433147fa9c30a4285492399ce0cf46c6f14b8306",
+      "file_sha256": "61cb29ad3cd6d127db6a4a62384e035e08b548fe5d595f3afb0f725ca5ba90e8",
+      "id": "chapter-012"
+    },
+    {
+      "content_sha256": "2b2f4ab1f0c4b4bf21933c8a0c92b4d0451604fc870adf272dfab327c42000ff",
+      "file_sha256": "5b5474245f0bb790faa6d972cfb9a982acca24d9061fd73647056d88e7235e6b",
+      "id": "chapter-013"
+    },
+    {
+      "content_sha256": "29db71aa2d312829f209f3abd81df4a84cebcee47eaa148abfb50fcde1851011",
+      "file_sha256": "1c5e0d62db59e3ee4582e777ff2c642be4dde24114bcd28144485e16fe578a83",
+      "id": "chapter-014"
+    },
+    {
+      "content_sha256": "03217495e52aef1b622629a41dcc0ead6fbae125f30efeb40128ce314c930aa7",
+      "file_sha256": "ef3867bb022a01be23bcf218fde2d808519ad55aa3dcfa8b183c66b031936798",
+      "id": "chapter-015"
+    },
+    {
+      "content_sha256": "a39968a9dfb2afbbe5216d559840656ab847469a505da9fd06f5ec69c3b98550",
+      "file_sha256": "74ba7b50b8f06cad4ab57dd5ef18f7930a27c4f706aaa5650ab7e35c6eb47aca",
+      "id": "chapter-016"
+    },
+    {
+      "content_sha256": "ac1c4cb0ea7c9e7aefcc7301ed1a3d3fe415253ce35e3fa67d764ebea56ecfc2",
+      "file_sha256": "5266d6958665c159f3c2bb0b78a3d49aca761026f7dfe05b8702b256845d35b8",
+      "id": "chapter-017"
+    },
+    {
+      "content_sha256": "aafa4292d9cbdb23ca2ce35912d4676cbccf52dcd22ac5079ed00aac383c24e2",
+      "file_sha256": "ef89755dc7219ef22e39dfb9152682d3e3372afc3125e7e55bb0f95cd9dae868",
+      "id": "chapter-018"
+    },
+    {
+      "content_sha256": "071bc9b4d8c50a692a0542c4ccf5f91b434b07c9c0c8046fa51cb74ceef52f42",
+      "file_sha256": "c1322b3da8525cbcb717bc06c2be1b5af15c891d288e1c337aad70b7caf09049",
+      "id": "chapter-019"
+    },
+    {
+      "content_sha256": "346cce753523cc3d025903d1a229cf836456a32c0264c1bb8612820f6259b315",
+      "file_sha256": "acd20f34eb13df93e82688fc463925a77298b69ae984987b9efabb5e11b7810c",
+      "id": "chapter-020"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "2f8890741932b8c0fe7e7f9088b4ff0f6c233b07d79160a6feeabbdcfcacd69c",
+    "chapters/chapter-001.json": "2a1fd4c3e04b1ebb563d265d3a320f331755941a1afa095f7a7177e289afc384",
+    "chapters/chapter-002.json": "a7bcb5cef6577ddfa014b01d9800e487652bb517fb97a6763b3eaf2f7ad293e3",
+    "chapters/chapter-003.json": "dd45c004ed530f20cfd00ffbb31e0ed212e85836913ab9ba79719e7165f1bd11",
+    "chapters/chapter-004.json": "c0fa9c85a48b57bce9b4fb877b6b6603f3dc70d0561a3511979ea433fab6219b",
+    "chapters/chapter-005.json": "02b539eac32e6cfaab454bc1b0c5bd2d3cb57788da0b2c8fd44fd1d0bf5b054b",
+    "chapters/chapter-006.json": "ec5547b4d4f8056ed8353d022a7c0cf3722a30067b5a9cad8e1803143f3cc596",
+    "chapters/chapter-007.json": "cabea63030da009912cb6c1cf7d8a086eaceb6bf806f6851fb5a80aa29186d03",
+    "chapters/chapter-008.json": "ef5c0035b6eeff68add7a9965d06956b3b49b1aca97c7814cef41da6f0482593",
+    "chapters/chapter-009.json": "7a87f5c0a32f1f6845ff1dc8ff345211a702d06f9531e1a6e4662458639d8e46",
+    "chapters/chapter-010.json": "eee3343808fd2eaed81f5bd46fd8d42c386788237aeaede07dc3d714ad9da9b0",
+    "chapters/chapter-011.json": "eeaa335e4e455dfd05745e645018b6f12c6660105ef0ad69e1b2a2801a3d6bcb",
+    "chapters/chapter-012.json": "61cb29ad3cd6d127db6a4a62384e035e08b548fe5d595f3afb0f725ca5ba90e8",
+    "chapters/chapter-013.json": "5b5474245f0bb790faa6d972cfb9a982acca24d9061fd73647056d88e7235e6b",
+    "chapters/chapter-014.json": "1c5e0d62db59e3ee4582e777ff2c642be4dde24114bcd28144485e16fe578a83",
+    "chapters/chapter-015.json": "ef3867bb022a01be23bcf218fde2d808519ad55aa3dcfa8b183c66b031936798",
+    "chapters/chapter-016.json": "74ba7b50b8f06cad4ab57dd5ef18f7930a27c4f706aaa5650ab7e35c6eb47aca",
+    "chapters/chapter-017.json": "5266d6958665c159f3c2bb0b78a3d49aca761026f7dfe05b8702b256845d35b8",
+    "chapters/chapter-018.json": "ef89755dc7219ef22e39dfb9152682d3e3372afc3125e7e55bb0f95cd9dae868",
+    "chapters/chapter-019.json": "c1322b3da8525cbcb717bc06c2be1b5af15c891d288e1c337aad70b7caf09049",
+    "chapters/chapter-020.json": "acd20f34eb13df93e82688fc463925a77298b69ae984987b9efabb5e11b7810c",
+    "checksum_manifest.json": "db335fc98f880678853dda98be2bb6425a1c02a71444e68b45e324667f5baf54",
+    "highlight_sync.json": "0c00b96caba8dc3931d1fde1b5e1d99db1d556d6fd32c3b9ee2229581f044df1",
+    "public_book.json": "2b7dd39c921abd88afc285958c5660e70b8e2295fd0d30112e023b4f1246fe4d",
+    "reader_manifest.json": "8101b45d51b353e0112bad7600e1cd8e71f1759c18ec7f9e1060b8e9db589559",
+    "source_evidence.json": "d7895ebd47275ea493ebc43690a6f722c132242bf7ac30da3b51f508f5e8228a"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "2f8890741932b8c0fe7e7f9088b4ff0f6c233b07d79160a6feeabbdcfcacd69c",
+      "public_book": "2b7dd39c921abd88afc285958c5660e70b8e2295fd0d30112e023b4f1246fe4d",
+      "reader_manifest": "8101b45d51b353e0112bad7600e1cd8e71f1759c18ec7f9e1060b8e9db589559",
+      "source_evidence": "d7895ebd47275ea493ebc43690a6f722c132242bf7ac30da3b51f508f5e8228a"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 20,
+      "chapter_index_sha256": "91c820b20635912d53afe82647167fe028caef5ebe65c79f896c71c5b31c6500",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "2a1fd4c3e04b1ebb563d265d3a320f331755941a1afa095f7a7177e289afc384",
+          "title": "INTRODUCTION",
+          "word_count": 6645
+        },
+        {
+          "id": "chapter-002",
+          "order": 2,
+          "sha256": "a7bcb5cef6577ddfa014b01d9800e487652bb517fb97a6763b3eaf2f7ad293e3",
+          "title": "CHAPTER I. THE BEGINNING OF BUSINESS",
+          "word_count": 4015
+        },
+        {
+          "id": "chapter-003",
+          "order": 3,
+          "sha256": "dd45c004ed530f20cfd00ffbb31e0ed212e85836913ab9ba79719e7165f1bd11",
+          "title": "CHAPTER II. WHAT I LEARNED ABOUT BUSINESS",
+          "word_count": 4891
+        },
+        {
+          "id": "chapter-004",
+          "order": 4,
+          "sha256": "c0fa9c85a48b57bce9b4fb877b6b6603f3dc70d0561a3511979ea433fab6219b",
+          "title": "CHAPTER III. STARTING THE REAL BUSINESS",
+          "word_count": 5684
+        },
+        {
+          "id": "chapter-005",
+          "order": 5,
+          "sha256": "02b539eac32e6cfaab454bc1b0c5bd2d3cb57788da0b2c8fd44fd1d0bf5b054b",
+          "title": "CHAPTER IV. THE SECRET OF MANUFACTURING AND SERVING",
+          "word_count": 4325
+        },
+        {
+          "id": "chapter-006",
+          "order": 6,
+          "sha256": "ec5547b4d4f8056ed8353d022a7c0cf3722a30067b5a9cad8e1803143f3cc596",
+          "title": "CHAPTER V. GETTING INTO PRODUCTION",
+          "word_count": 4559
+        },
+        {
+          "id": "chapter-007",
+          "order": 7,
+          "sha256": "cabea63030da009912cb6c1cf7d8a086eaceb6bf806f6851fb5a80aa29186d03",
+          "title": "CHAPTER VI. MACHINES AND MEN",
+          "word_count": 4076
+        },
+        {
+          "id": "chapter-008",
+          "order": 8,
+          "sha256": "ef5c0035b6eeff68add7a9965d06956b3b49b1aca97c7814cef41da6f0482593",
+          "title": "CHAPTER VII. THE TERROR OF THE MACHINE",
+          "word_count": 4331
+        },
+        {
+          "id": "chapter-009",
+          "order": 9,
+          "sha256": "7a87f5c0a32f1f6845ff1dc8ff345211a702d06f9531e1a6e4662458639d8e46",
+          "title": "CHAPTER VIII. WAGES",
+          "word_count": 5146
+        },
+        {
+          "id": "chapter-010",
+          "order": 10,
+          "sha256": "eee3343808fd2eaed81f5bd46fd8d42c386788237aeaede07dc3d714ad9da9b0",
+          "title": "CHAPTER IX. WHY NOT ALWAYS HAVE GOOD BUSINESS?",
+          "word_count": 3269
+        },
+        {
+          "id": "chapter-011",
+          "order": 11,
+          "sha256": "eeaa335e4e455dfd05745e645018b6f12c6660105ef0ad69e1b2a2801a3d6bcb",
+          "title": "CHAPTER X. HOW CHEAPLY CAN THINGS BE MADE?",
+          "word_count": 5007
+        },
+        {
+          "id": "chapter-012",
+          "order": 12,
+          "sha256": "61cb29ad3cd6d127db6a4a62384e035e08b548fe5d595f3afb0f725ca5ba90e8",
+          "title": "CHAPTER XI. MONEY AND GOODS",
+          "word_count": 4263
+        },
+        {
+          "id": "chapter-013",
+          "order": 13,
+          "sha256": "5b5474245f0bb790faa6d972cfb9a982acca24d9061fd73647056d88e7235e6b",
+          "title": "CHAPTER XII. MONEY--MASTER OR SERVANT?",
+          "word_count": 4730
+        },
+        {
+          "id": "chapter-014",
+          "order": 14,
+          "sha256": "1c5e0d62db59e3ee4582e777ff2c642be4dde24114bcd28144485e16fe578a83",
+          "title": "CHAPTER XIII. WHY BE POOR?",
+          "word_count": 3573
+        },
+        {
+          "id": "chapter-015",
+          "order": 15,
+          "sha256": "ef3867bb022a01be23bcf218fde2d808519ad55aa3dcfa8b183c66b031936798",
+          "title": "CHAPTER XIV. THE TRACTOR AND POWER FARMING",
+          "word_count": 3501
+        },
+        {
+          "id": "chapter-016",
+          "order": 16,
+          "sha256": "74ba7b50b8f06cad4ab57dd5ef18f7930a27c4f706aaa5650ab7e35c6eb47aca",
+          "title": "CHAPTER XV. WHY CHARITY?",
+          "word_count": 5215
+        },
+        {
+          "id": "chapter-017",
+          "order": 17,
+          "sha256": "5266d6958665c159f3c2bb0b78a3d49aca761026f7dfe05b8702b256845d35b8",
+          "title": "CHAPTER XVI. THE RAILROADS",
+          "word_count": 3852
+        },
+        {
+          "id": "chapter-018",
+          "order": 18,
+          "sha256": "ef89755dc7219ef22e39dfb9152682d3e3372afc3125e7e55bb0f95cd9dae868",
+          "title": "CHAPTER XVII. THINGS IN GENERAL",
+          "word_count": 6147
+        },
+        {
+          "id": "chapter-019",
+          "order": 19,
+          "sha256": "c1322b3da8525cbcb717bc06c2be1b5af15c891d288e1c337aad70b7caf09049",
+          "title": "CHAPTER XVIII. DEMOCRACY AND INDUSTRY",
+          "word_count": 4415
+        },
+        {
+          "id": "chapter-020",
+          "order": 20,
+          "sha256": "acd20f34eb13df93e82688fc463925a77298b69ae984987b9efabb5e11b7810c",
+          "title": "CHAPTER XIX. WHAT WE MAY EXPECT",
+          "word_count": 6207
+        }
+      ],
+      "content_hash": "732f86e53656c3ea2354d306f42616d82af69aae60c40845a651b2ee8ff7e7e8",
+      "provenance_hash": "88e5a40d94c44697246fb1cc266abef38a9ff8a954b546ff41313497a684ec01",
+      "sanitized": true,
+      "source_hash": "0d6d9463085c9411e41dd19eed8fe9c8678708490bff6f17764224a6a4d701e5"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "26eb67290eedd9077729914a3bf7f7215f994a4df79c03f3a055df0783b7682b",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950242/earnalism/covers/front/cover_1fab21bf-16e8-4829-a8d7-6703692ec54b.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "d7895ebd47275ea493ebc43690a6f722c132242bf7ac30da3b51f508f5e8228a",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "my-life-and-work",
+    "title": "My Life and Work"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

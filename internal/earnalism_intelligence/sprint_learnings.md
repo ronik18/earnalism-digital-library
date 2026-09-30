@@ -2349,3 +2349,11 @@ PR #401 is merged and its Railway deployment is provider-confirmed, but the init
 ## 2026-09-30T08:58:54Z — Lane 2 deployment trigger repair
 
 - PR470 merged after all five exact-head gates passed. Railway skipped the merge because an inherited owner-evidence workflow contained an invalid bracket path pattern for the literal `[...proxy].js` filename. Escape the brackets while preserving the trigger and every evidence job; do not disable CI waiting or redeploy the older revision. Production Reader proof remains pending an India-based authenticated context.
+
+## 2026-09-30 — Reader approval and complete catalogue scope
+
+The owner approves the Reader by default when fresh rendered evidence matches the supplied mock. This approval replaces the design handoff only; it does not clear title rights, source editions, covers, protected Reader delivery, or audio. Current CI captures exposed missing literary and notebook details, now implemented with device-local, edition/account-isolated persistence. The repository tests continue to verify access and session settlement. Catalogue reconciliation must use accepted backend runtime rights records; three root package decisions are intentionally historical and must not shadow them.
+
+## 2026-09-30 — Complete catalogue processing through the autonomy pipeline
+
+Processed all 231 inventory/package identities and 1,012 prepared chapters into 162 private manifests with retained file hashes, chapter content hashes, accepted runtime-decision checks, a draft intake manifest and explicit per-title dispositions. Seven titles retain accepted India text scope; 224 require factual evidence, including 69 without a cleared source package. Original content, source, approval and rights bytes are unchanged. The legacy worker review condition excluded successful non-Codex workers; include either successful worker branch. The bounded catalogue task runs without paid generation, customer mutations, publication, new credentials or relaxed scope controls, and its reviewer independently recomputes the evidence.

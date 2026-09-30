@@ -1,0 +1,115 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "7610a9cdc8fd218cadc524f332c1ad67c5161bb6bcb715f46eac90e27c413677",
+    "chapters/chapter-001.json": "2d82010af3e039ba5e9ca47cb8deec9f76128470cae7386c02259575f73f61d2",
+    "checksum_manifest.json": "e17a789f69091f361eeb8b67ae1fa0a8a88631588165dbd61c22b605d0f84403",
+    "public_book.json": "6f262a70cde6b33baa22371aee5f511f3cb0def6ea3aabfe01637d34ba344237",
+    "reader_manifest.json": "74ba7f40ec93bbfa308835132ca8ff677e3c95ffa8e985127753b090b3766b57",
+    "source_evidence.json": "2412dc45bd1472e58217d8f6186482b1acb48f4780e8790172fa644c8752d03c"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "c517483495ef7266f533d077036a8e83bba53dc33cac60580cd895e757f637e3",
+      "file_sha256": "2d82010af3e039ba5e9ca47cb8deec9f76128470cae7386c02259575f73f61d2",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "9a0405a6e5ca46a57cc4fb0b79f6965e129001f2bcbf692544eb1c1da9ec71d6",
+    "approval_evidence.json": "7610a9cdc8fd218cadc524f332c1ad67c5161bb6bcb715f46eac90e27c413677",
+    "chapters/chapter-001.json": "2d82010af3e039ba5e9ca47cb8deec9f76128470cae7386c02259575f73f61d2",
+    "checksum_manifest.json": "ed440d19ca6f6ac9eb216652a65508df60709f47d5875cf77f8097e0439150b2",
+    "highlight_sync.json": "f7889a46138bf8206260cebbdfa6a1fdc0bd6dc89c3b1cc5e7f8f31825303729",
+    "public_book.json": "6f262a70cde6b33baa22371aee5f511f3cb0def6ea3aabfe01637d34ba344237",
+    "reader_manifest.json": "74ba7f40ec93bbfa308835132ca8ff677e3c95ffa8e985127753b090b3766b57",
+    "source_evidence.json": "2412dc45bd1472e58217d8f6186482b1acb48f4780e8790172fa644c8752d03c"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "7610a9cdc8fd218cadc524f332c1ad67c5161bb6bcb715f46eac90e27c413677",
+      "public_book": "6f262a70cde6b33baa22371aee5f511f3cb0def6ea3aabfe01637d34ba344237",
+      "reader_manifest": "74ba7f40ec93bbfa308835132ca8ff677e3c95ffa8e985127753b090b3766b57",
+      "source_evidence": "2412dc45bd1472e58217d8f6186482b1acb48f4780e8790172fa644c8752d03c"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "487f4080a587fa8d39b14bb4d801b461b3e538cfae46108178e60cc19d01fabe",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "2d82010af3e039ba5e9ca47cb8deec9f76128470cae7386c02259575f73f61d2",
+          "title": "The Masque of the Red Death",
+          "word_count": 2421
+        }
+      ],
+      "content_hash": "8e292e23a73729319a17d9aac397303b6311d97a0ede19a80514922c114c1dd0",
+      "provenance_hash": "fccc97a08521519d711236c769280c844fb91a421fca2976bfe8b149bbab6db1",
+      "sanitized": true,
+      "source_hash": "2264be57608b30c4af99db7b1d430accae5a7c4d9da738ac04651f7ef74bc266"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "6bf50108dfb84dedf3b20a759447877c1565703bef914a94a92d44b7fadec3d4",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "2412dc45bd1472e58217d8f6186482b1acb48f4780e8790172fa644c8752d03c",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-masque-of-the-red-death",
+    "title": "The Masque of the Red Death"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

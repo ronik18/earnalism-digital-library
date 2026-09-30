@@ -1,0 +1,111 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "df56dfb86da0313455048aee89368af237670dd186400c2d1ded3621a296f6e6",
+    "chapters/chapter-001.json": "747b573b44a98b8860668283c937f9ab2aa02c51ee98856a3644048f4ff11fbd",
+    "checksum_manifest.json": "478207ae5f15b6cdeda719d700196a72ca3e5ca7eaa0b267388fe7364c448993",
+    "highlight_sync.json": "91c91d21f3a27edae2bac0d25a5110eb539dd01a0a14257411d1e0a2203534fe",
+    "public_book.json": "53b92408acac07619bebff1a17b4fcafc7d7392e96ef78fc58fedccec70b87cf",
+    "reader_manifest.json": "75184bafdc2e13f06824e1a3070fdfe5afc5bac478fb5142fa54393f07e32eed",
+    "source_evidence.json": "1a64c6709c98a917f7c338a28023ef2df49bad1e896f090cf50286be878eb4e0"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "778162c0eb0685fc28e6433b48e5685e3ae86fd69413588c90c21a967d4babb6",
+      "file_sha256": "747b573b44a98b8860668283c937f9ab2aa02c51ee98856a3644048f4ff11fbd",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "df56dfb86da0313455048aee89368af237670dd186400c2d1ded3621a296f6e6",
+    "chapters/chapter-001.json": "747b573b44a98b8860668283c937f9ab2aa02c51ee98856a3644048f4ff11fbd",
+    "checksum_manifest.json": "478207ae5f15b6cdeda719d700196a72ca3e5ca7eaa0b267388fe7364c448993",
+    "highlight_sync.json": "91c91d21f3a27edae2bac0d25a5110eb539dd01a0a14257411d1e0a2203534fe",
+    "public_book.json": "53b92408acac07619bebff1a17b4fcafc7d7392e96ef78fc58fedccec70b87cf",
+    "reader_manifest.json": "75184bafdc2e13f06824e1a3070fdfe5afc5bac478fb5142fa54393f07e32eed",
+    "source_evidence.json": "1a64c6709c98a917f7c338a28023ef2df49bad1e896f090cf50286be878eb4e0"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "df56dfb86da0313455048aee89368af237670dd186400c2d1ded3621a296f6e6",
+      "public_book": "53b92408acac07619bebff1a17b4fcafc7d7392e96ef78fc58fedccec70b87cf",
+      "reader_manifest": "75184bafdc2e13f06824e1a3070fdfe5afc5bac478fb5142fa54393f07e32eed",
+      "source_evidence": "1a64c6709c98a917f7c338a28023ef2df49bad1e896f090cf50286be878eb4e0"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "f0a5f3407286cef28ca7b0427b654473beb89f8fc7cbce740ca325738ed07195",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "747b573b44a98b8860668283c937f9ab2aa02c51ee98856a3644048f4ff11fbd",
+          "title": "The Pit and the Pendulum",
+          "word_count": 6149
+        }
+      ],
+      "content_hash": "f96d05695c79e4edb6938e6667ab88a40336e44aa16c7277a4e46a2422a2fcac",
+      "provenance_hash": "d8a4d1194b949e3d5b16de9c04b4989128541def7e0a09d689da260b395519c4",
+      "sanitized": true,
+      "source_hash": "44c59e6e27d1402d0ac587da78370177b575b3acc9144b2f4e52fdee018b3781"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "2cd8e1f9fb88289e1f131901b534db9791c69b4b11e7b60087697cd94af2c5cb",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+      ],
+      "cover_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover.webp",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "1a64c6709c98a917f7c338a28023ef2df49bad1e896f090cf50286be878eb4e0",
+      "publication_region": "in",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-pit-and-the-pendulum",
+    "title": "The Pit and the Pendulum"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

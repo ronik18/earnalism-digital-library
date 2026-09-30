@@ -1,0 +1,434 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "9cfaa56ba815f3400451eafdaaf97f93919ccae4fe62e2bfd31ef5791267b53c",
+    "chapters/chapter-001.json": "a38532948200f9ab8d372ef06e6daa07471f845696dd431e7a87c5bdfe8e5c5f",
+    "chapters/chapter-002.json": "95d7c99aecd3f38d0aa6acc99d58761521bfd481845a3d79122774e2047b2bff",
+    "chapters/chapter-003.json": "7141e39c60e6529bc43dc1ec70e45e2bfc03e2f0806fda4856c274f1af729ff4",
+    "chapters/chapter-004.json": "d5624a0b574720c9d7a60ec63818c390744cdc7758f8eee224967cbaa554484d",
+    "chapters/chapter-005.json": "e97c72f3ad51efbf982fe4e982a6a7b6911470eb696f94d0e1a7bd0116b21d39",
+    "chapters/chapter-006.json": "11958a08e902290f1a3f685e3bc3aed090015a04108655e54c6a800b2c94593a",
+    "chapters/chapter-007.json": "2e2eb2e9ee9242627df13ef1453141da705c3ae21a1d04fa652654d1f1659a0e",
+    "chapters/chapter-008.json": "3aaadee598721641a6107a134b409ced996abed0f9cef916fd960f725a8ee737",
+    "chapters/chapter-009.json": "af86aa46b027fb54995bee218dfd5f49e85593f26dc9a8b5260ae60cbd4d6a6e",
+    "chapters/chapter-010.json": "28d6bd9e0336276641be1ed0e122a7b60f83c7c95c3216d136abf14a38c47abe",
+    "chapters/chapter-011.json": "3d47aa1205019727a434189ddacc5dc43426ac31405410c1e056db764116918c",
+    "chapters/chapter-012.json": "f3740c25cc50bb37e0b1433f54e6bf0743ac4848bfabbbd2c95a243a65d924d6",
+    "chapters/chapter-013.json": "13eb24617a8777f74e8e40086570109858a705376218d9f090f6a675887e1143",
+    "chapters/chapter-014.json": "77eece192e4ad607f728196a129e6cd7ada6df4ab2400ad725cf20fe17237e7a",
+    "chapters/chapter-015.json": "4ea65ba1cd4565acb63a2695982084bc4aaadda2828f386514597b32735824e2",
+    "chapters/chapter-016.json": "7e6c7d5347bfb2c9cef2b6e6adc2747322587a4ba5d7ffc5bc9a92d6a3d1cca2",
+    "chapters/chapter-017.json": "766be34c5d94f247e84d58b87743333124f9defb2dc672ef0c86f902535cf71c",
+    "chapters/chapter-018.json": "a80d7b0772b0808248f6079a0fe21d248e8fe9e1a341a260dcb5202d36544c89",
+    "chapters/chapter-019.json": "44c26cbf2c821a08b83386e94c370ae095844a737a5b017adfe122433e7381b5",
+    "chapters/chapter-020.json": "ce874838e5dc138e768617816bfe3da17632c6171bdd880126a50f71cc9be37b",
+    "chapters/chapter-021.json": "c8f07a2e9a0f7111ea6adcbb78b6ca1f9edccf5efe9ae7c07e85a82ccc6f8782",
+    "chapters/chapter-022.json": "d5b2f422d0e7fee959078bb81e551611fa71694819838911f905c4c35c028a24",
+    "chapters/chapter-023.json": "a5e4bcb71a9bf0c7255cc9e5ce6a51da8e660c5e124a74de1185438e2dbb9567",
+    "chapters/chapter-024.json": "b6d8b3eb5fecc3482bfd0a02e2a51cd53bc24191604347a52aba36ac3e38aabb",
+    "checksum_manifest.json": "e3fa0a888a590f3ba1b88a7e1d0c0e5f3fecb263a6175da1088618bf37188de3",
+    "highlight_sync.json": "32c5e5256e2584ee9acda5cc8a83ecd7dbccd7ba23a224339c0b9b34c5a753d2",
+    "public_book.json": "96ff821980b1431c2dbd375e0b798a2498baedfc55eab02d409f2149653b90da",
+    "reader_manifest.json": "6e2af8711b1ca09c95333e54d08cf400b3c223046d007bdcd10260a937858296",
+    "source_evidence.json": "abd2f08a6924833316c663399e4b135a75ccabbdc6ae388e552c652824213e33"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "6b2ea04eb2b5feb63d6b63a2c67707607d2295825b3e1820f5132d3c1533ae08",
+      "file_sha256": "1b0ebe7f55608d007a5f2a7322840434ec457587bed832f100ebf91433036bda",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "67fe62a17606b88d40a54c43b8a5369e94c7daab9929369138fc62c377820c59",
+      "file_sha256": "00ad06d50ac54ec8158f19bf652cf6eae0e2a13d2a3a469bfd1b922a20256d32",
+      "id": "chapter-002"
+    },
+    {
+      "content_sha256": "b6ff8d5fd832cc286bbfbaf5ce1c0dfe122339c014871491818765223d4f6d18",
+      "file_sha256": "792d576b7eec4a42f7ff7a9d399450101c9638b74eb222c3eec4b035119a009d",
+      "id": "chapter-003"
+    },
+    {
+      "content_sha256": "de3d562b9fae84e13875079c3fc98bc464e3d1c67a2e4e7c6f2c394b7f32d82b",
+      "file_sha256": "23ae8319af7ab2310960278012708e46fbf51245532e6a08a26dc43301b72941",
+      "id": "chapter-004"
+    },
+    {
+      "content_sha256": "9cd55cf52f18ad44471dcdfcfc1b2cb8182bb7d5135fcc1f157416a16aaadb6b",
+      "file_sha256": "9775e6b0a376005e09d7c0fa3190823eac77b3b5b0e2324ca5db7eed599287d3",
+      "id": "chapter-005"
+    },
+    {
+      "content_sha256": "096721ba2084335c0ce9fa04c5601d1e0dec29df5c13de98471be74b33502afe",
+      "file_sha256": "1e592388c4bf32feda556132082709909679a019d1d4ef258d32df938f118ec0",
+      "id": "chapter-006"
+    },
+    {
+      "content_sha256": "87811cfcd53ec87813e3bf94fe58fbff17eae5e0e042aa7ff63c989e594cefdd",
+      "file_sha256": "6c0902729c661f2463a6c5199ae50ad5e719dc2ef70d32fa54f17e3618b7c82a",
+      "id": "chapter-007"
+    },
+    {
+      "content_sha256": "403beb9177e20c15ef43916f675aa8819c196de573f7215bdd8f6e68a70ab851",
+      "file_sha256": "15b9c75f32756f56532f0920e95df83af00b1a0d0008ac0a860a48b11343b879",
+      "id": "chapter-008"
+    },
+    {
+      "content_sha256": "937b6e58f195152e70208ea591a9223895975c2fa6712f221c25b64e1f0f49b0",
+      "file_sha256": "beb5d0ba3c2416d67e2e6d2410bbadb4debab8338c7d4d95bf6c9262f8e6529f",
+      "id": "chapter-009"
+    },
+    {
+      "content_sha256": "b3ce471d2ebd869955ae30d3fb23f7d8fb1a94246a4f035f751eab3a9560d3ab",
+      "file_sha256": "ce8d682ec38fb81c0014e876f752ee95ee078b842dd2dd25d508e608b10a7d22",
+      "id": "chapter-010"
+    },
+    {
+      "content_sha256": "8a15173e3f2cbf4d7c5935764d6e1e23a421ef71fe7140f8198db2fbcebad2d3",
+      "file_sha256": "32ed8fea3faad3cd6f59490a95ddd3a5266bba0f954f193d5dc50d34fc17c4a8",
+      "id": "chapter-011"
+    },
+    {
+      "content_sha256": "70e1b7c08f7bd7738f2c03ace1dc7024e3eeaae33ee78ab1a1deda74985a07cd",
+      "file_sha256": "ea50b919cc2cec74fd6ba2cc2ab991bd2adfaf5a933fc0878a3c4cb81aee22d8",
+      "id": "chapter-012"
+    },
+    {
+      "content_sha256": "a2001a0bab24668bd6007ddbffba93a54fb3e53071e21f863e85307477089ca6",
+      "file_sha256": "1f09b97fc98dd641b0cf3bb6e2e2dd6061ac2fd81cbbe120649bc4ee115a2d09",
+      "id": "chapter-013"
+    },
+    {
+      "content_sha256": "c85247d45ded916cbc9e04718a081d99ac2aade35246ddcf37dea4dea2e35516",
+      "file_sha256": "32bf93b2f33a51684d30fb5509a79d139722d2747022396dfd645caec0f5f7bb",
+      "id": "chapter-014"
+    },
+    {
+      "content_sha256": "2586ade1195a4ca70029a0314fd3036ad19ec682d49f71bb7b92515500174318",
+      "file_sha256": "81b94d7738c08ffeb1ba184b6c1a8d266d85e56f1d69151a641b8275657bf941",
+      "id": "chapter-015"
+    },
+    {
+      "content_sha256": "faa3c6bceade03582a56cab024b19be20380343f752ed5349b23467b0658691d",
+      "file_sha256": "a168470cdafef72c53ea750caafd3dfc58643a3b7402901ec1d1796475da8c55",
+      "id": "chapter-016"
+    },
+    {
+      "content_sha256": "c12602a79c60dce6dd9b3159e7f5de153f0660a48e022cf3b5e423b9b4b63d9f",
+      "file_sha256": "9b6455ab9ef7b1e99822a9901c072ed0963ac79a2baaf0321a6b84cb679e1711",
+      "id": "chapter-017"
+    },
+    {
+      "content_sha256": "32284038a5d48ad7a85929a1378a17aa1ec020f39653f84d9bb38eb2d692df13",
+      "file_sha256": "8465acf3ef5a3e6dacfd8f17f107853ac6a0e3b140ee6b4ddf34947bd2cc59e4",
+      "id": "chapter-018"
+    },
+    {
+      "content_sha256": "390ae6cbec463ae5b1d9692dc6e7327eec29cb7a51d86b4d5c60324e10e96f79",
+      "file_sha256": "7951701e09ae067c995428a81e5b0bacdd50ec1e65e5be97eb3c4edeffcf3ea7",
+      "id": "chapter-019"
+    },
+    {
+      "content_sha256": "fd8c7de4f03b2b40f83c2fd60b1ec3c0e71f26e11bbabf1e1caccca872d55019",
+      "file_sha256": "06c05cc429fb380be52e6f3ffd51b326051b95495c1b50b1a5ce6439eb5592e3",
+      "id": "chapter-020"
+    },
+    {
+      "content_sha256": "56cea2c9b1f6919ebb6ec1b383cb29185f27abcb17363211b7749a142a85849f",
+      "file_sha256": "e8b9c70866d0585f19319c7b13f5c3f2d230832bd89ef56299bc0fb5e76e40b2",
+      "id": "chapter-021"
+    },
+    {
+      "content_sha256": "4bbee98a22b11a98393a12757085d4d62bc3c812a305a4de0c1062aaddd3f62a",
+      "file_sha256": "83f0a613a13736b901dca3b19344b93b7823dae0392e12c0be28099066719392",
+      "id": "chapter-022"
+    },
+    {
+      "content_sha256": "7b619e3046238df157e1263254df2f528841808b3399f737e4272d4c05b3124c",
+      "file_sha256": "57eaefac8b87229ca226d5a76e923ec3f10c5487b9049f65d0eb0bc0b9f46ef0",
+      "id": "chapter-023"
+    },
+    {
+      "content_sha256": "7bc57e0cc9ae0e4ecc9fedd4f922f9a1df0ea7435d9b177a4fe8d8a2e8ae7a78",
+      "file_sha256": "96aab5ee0649a534096d41b40e497fceee1c4b9400d36d04192da0992c5328a8",
+      "id": "chapter-024"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "825d869ab62e7fa4dc8352d54fca3c4d8101842441d20fad39d235a1b2ca245d",
+    "chapters/chapter-001.json": "1b0ebe7f55608d007a5f2a7322840434ec457587bed832f100ebf91433036bda",
+    "chapters/chapter-002.json": "00ad06d50ac54ec8158f19bf652cf6eae0e2a13d2a3a469bfd1b922a20256d32",
+    "chapters/chapter-003.json": "792d576b7eec4a42f7ff7a9d399450101c9638b74eb222c3eec4b035119a009d",
+    "chapters/chapter-004.json": "23ae8319af7ab2310960278012708e46fbf51245532e6a08a26dc43301b72941",
+    "chapters/chapter-005.json": "9775e6b0a376005e09d7c0fa3190823eac77b3b5b0e2324ca5db7eed599287d3",
+    "chapters/chapter-006.json": "1e592388c4bf32feda556132082709909679a019d1d4ef258d32df938f118ec0",
+    "chapters/chapter-007.json": "6c0902729c661f2463a6c5199ae50ad5e719dc2ef70d32fa54f17e3618b7c82a",
+    "chapters/chapter-008.json": "15b9c75f32756f56532f0920e95df83af00b1a0d0008ac0a860a48b11343b879",
+    "chapters/chapter-009.json": "beb5d0ba3c2416d67e2e6d2410bbadb4debab8338c7d4d95bf6c9262f8e6529f",
+    "chapters/chapter-010.json": "ce8d682ec38fb81c0014e876f752ee95ee078b842dd2dd25d508e608b10a7d22",
+    "chapters/chapter-011.json": "32ed8fea3faad3cd6f59490a95ddd3a5266bba0f954f193d5dc50d34fc17c4a8",
+    "chapters/chapter-012.json": "ea50b919cc2cec74fd6ba2cc2ab991bd2adfaf5a933fc0878a3c4cb81aee22d8",
+    "chapters/chapter-013.json": "1f09b97fc98dd641b0cf3bb6e2e2dd6061ac2fd81cbbe120649bc4ee115a2d09",
+    "chapters/chapter-014.json": "32bf93b2f33a51684d30fb5509a79d139722d2747022396dfd645caec0f5f7bb",
+    "chapters/chapter-015.json": "81b94d7738c08ffeb1ba184b6c1a8d266d85e56f1d69151a641b8275657bf941",
+    "chapters/chapter-016.json": "a168470cdafef72c53ea750caafd3dfc58643a3b7402901ec1d1796475da8c55",
+    "chapters/chapter-017.json": "9b6455ab9ef7b1e99822a9901c072ed0963ac79a2baaf0321a6b84cb679e1711",
+    "chapters/chapter-018.json": "8465acf3ef5a3e6dacfd8f17f107853ac6a0e3b140ee6b4ddf34947bd2cc59e4",
+    "chapters/chapter-019.json": "7951701e09ae067c995428a81e5b0bacdd50ec1e65e5be97eb3c4edeffcf3ea7",
+    "chapters/chapter-020.json": "06c05cc429fb380be52e6f3ffd51b326051b95495c1b50b1a5ce6439eb5592e3",
+    "chapters/chapter-021.json": "e8b9c70866d0585f19319c7b13f5c3f2d230832bd89ef56299bc0fb5e76e40b2",
+    "chapters/chapter-022.json": "83f0a613a13736b901dca3b19344b93b7823dae0392e12c0be28099066719392",
+    "chapters/chapter-023.json": "57eaefac8b87229ca226d5a76e923ec3f10c5487b9049f65d0eb0bc0b9f46ef0",
+    "chapters/chapter-024.json": "96aab5ee0649a534096d41b40e497fceee1c4b9400d36d04192da0992c5328a8",
+    "checksum_manifest.json": "71b78d73984fa98485fb7061ac91d8a1f96d30f8fa9ea73d3af6e6f31177e3a9",
+    "highlight_sync.json": "32c5e5256e2584ee9acda5cc8a83ecd7dbccd7ba23a224339c0b9b34c5a753d2",
+    "public_book.json": "10425c89fbe666638516db0681d1dad5172bd499ecc8b6f9337fe9ee791812c5",
+    "reader_manifest.json": "48a6523189b097c56f295fb59b6fe93f0c03c65dbea2bc26b5c3557e5ddb6910",
+    "source_evidence.json": "cec0652b80580d3288cd4f569e37c31729552db874df896ae4503290ec44faf7"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "825d869ab62e7fa4dc8352d54fca3c4d8101842441d20fad39d235a1b2ca245d",
+      "public_book": "10425c89fbe666638516db0681d1dad5172bd499ecc8b6f9337fe9ee791812c5",
+      "reader_manifest": "48a6523189b097c56f295fb59b6fe93f0c03c65dbea2bc26b5c3557e5ddb6910",
+      "source_evidence": "cec0652b80580d3288cd4f569e37c31729552db874df896ae4503290ec44faf7"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 24,
+      "chapter_index_sha256": "4ae30f756bd32c1ffbbde20052fee32f928aacd1a1b7170193fa57d25a66e2bb",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "1b0ebe7f55608d007a5f2a7322840434ec457587bed832f100ebf91433036bda",
+          "title": "Chapter I. The Cyclone",
+          "word_count": 1148
+        },
+        {
+          "id": "chapter-002",
+          "order": 2,
+          "sha256": "00ad06d50ac54ec8158f19bf652cf6eae0e2a13d2a3a469bfd1b922a20256d32",
+          "title": "Chapter II",
+          "word_count": 2010
+        },
+        {
+          "id": "chapter-003",
+          "order": 3,
+          "sha256": "792d576b7eec4a42f7ff7a9d399450101c9638b74eb222c3eec4b035119a009d",
+          "title": "Chapter III. How Dorothy Saved the Scarecrow",
+          "word_count": 1971
+        },
+        {
+          "id": "chapter-004",
+          "order": 4,
+          "sha256": "23ae8319af7ab2310960278012708e46fbf51245532e6a08a26dc43301b72941",
+          "title": "Chapter IV. The Road Through the Forest",
+          "word_count": 1440
+        },
+        {
+          "id": "chapter-005",
+          "order": 5,
+          "sha256": "9775e6b0a376005e09d7c0fa3190823eac77b3b5b0e2324ca5db7eed599287d3",
+          "title": "Chapter V",
+          "word_count": 2064
+        },
+        {
+          "id": "chapter-006",
+          "order": 6,
+          "sha256": "1e592388c4bf32feda556132082709909679a019d1d4ef258d32df938f118ec0",
+          "title": "Chapter VI. The Cowardly Lion",
+          "word_count": 1528
+        },
+        {
+          "id": "chapter-007",
+          "order": 7,
+          "sha256": "6c0902729c661f2463a6c5199ae50ad5e719dc2ef70d32fa54f17e3618b7c82a",
+          "title": "Chapter VII",
+          "word_count": 1817
+        },
+        {
+          "id": "chapter-008",
+          "order": 8,
+          "sha256": "15b9c75f32756f56532f0920e95df83af00b1a0d0008ac0a860a48b11343b879",
+          "title": "Chapter VIII. The Deadly Poppy Field",
+          "word_count": 1940
+        },
+        {
+          "id": "chapter-009",
+          "order": 9,
+          "sha256": "beb5d0ba3c2416d67e2e6d2410bbadb4debab8338c7d4d95bf6c9262f8e6529f",
+          "title": "Chapter IX",
+          "word_count": 1392
+        },
+        {
+          "id": "chapter-010",
+          "order": 10,
+          "sha256": "ce8d682ec38fb81c0014e876f752ee95ee078b842dd2dd25d508e608b10a7d22",
+          "title": "Chapter X",
+          "word_count": 1960
+        },
+        {
+          "id": "chapter-011",
+          "order": 11,
+          "sha256": "32ed8fea3faad3cd6f59490a95ddd3a5266bba0f954f193d5dc50d34fc17c4a8",
+          "title": "Chapter XI. The Wonderful City of Oz",
+          "word_count": 3614
+        },
+        {
+          "id": "chapter-012",
+          "order": 12,
+          "sha256": "ea50b919cc2cec74fd6ba2cc2ab991bd2adfaf5a933fc0878a3c4cb81aee22d8",
+          "title": "Chapter XII",
+          "word_count": 3686
+        },
+        {
+          "id": "chapter-013",
+          "order": 13,
+          "sha256": "1f09b97fc98dd641b0cf3bb6e2e2dd6061ac2fd81cbbe120649bc4ee115a2d09",
+          "title": "Chapter XIII. The Rescue",
+          "word_count": 1197
+        },
+        {
+          "id": "chapter-014",
+          "order": 14,
+          "sha256": "32bf93b2f33a51684d30fb5509a79d139722d2747022396dfd645caec0f5f7bb",
+          "title": "Chapter XIV. The Winged Monkeys",
+          "word_count": 1892
+        },
+        {
+          "id": "chapter-015",
+          "order": 15,
+          "sha256": "81b94d7738c08ffeb1ba184b6c1a8d266d85e56f1d69151a641b8275657bf941",
+          "title": "Chapter XV",
+          "word_count": 2796
+        },
+        {
+          "id": "chapter-016",
+          "order": 16,
+          "sha256": "a168470cdafef72c53ea750caafd3dfc58643a3b7402901ec1d1796475da8c55",
+          "title": "Chapter XVI",
+          "word_count": 942
+        },
+        {
+          "id": "chapter-017",
+          "order": 17,
+          "sha256": "9b6455ab9ef7b1e99822a9901c072ed0963ac79a2baaf0321a6b84cb679e1711",
+          "title": "Chapter XVII. How the Balloon Was Launched",
+          "word_count": 1160
+        },
+        {
+          "id": "chapter-018",
+          "order": 18,
+          "sha256": "8465acf3ef5a3e6dacfd8f17f107853ac6a0e3b140ee6b4ddf34947bd2cc59e4",
+          "title": "Chapter XVIII",
+          "word_count": 1173
+        },
+        {
+          "id": "chapter-019",
+          "order": 19,
+          "sha256": "7951701e09ae067c995428a81e5b0bacdd50ec1e65e5be97eb3c4edeffcf3ea7",
+          "title": "Chapter XIX",
+          "word_count": 1019
+        },
+        {
+          "id": "chapter-020",
+          "order": 20,
+          "sha256": "06c05cc429fb380be52e6f3ffd51b326051b95495c1b50b1a5ce6439eb5592e3",
+          "title": "Chapter XX. The Dainty China Country",
+          "word_count": 1518
+        },
+        {
+          "id": "chapter-021",
+          "order": 21,
+          "sha256": "e8b9c70866d0585f19319c7b13f5c3f2d230832bd89ef56299bc0fb5e76e40b2",
+          "title": "Chapter XXI",
+          "word_count": 901
+        },
+        {
+          "id": "chapter-022",
+          "order": 22,
+          "sha256": "83f0a613a13736b901dca3b19344b93b7823dae0392e12c0be28099066719392",
+          "title": "Chapter XXII",
+          "word_count": 944
+        },
+        {
+          "id": "chapter-023",
+          "order": 23,
+          "sha256": "57eaefac8b87229ca226d5a76e923ec3f10c5487b9049f65d0eb0bc0b9f46ef0",
+          "title": "Chapter XXIII. Glinda The Good Witch Grants Dorothy’s Wish",
+          "word_count": 1252
+        },
+        {
+          "id": "chapter-024",
+          "order": 24,
+          "sha256": "96aab5ee0649a534096d41b40e497fceee1c4b9400d36d04192da0992c5328a8",
+          "title": "Chapter XXIV. Home Again",
+          "word_count": 75
+        }
+      ],
+      "content_hash": "1256f90f4c8943940d6520a4322fe67ddb2d6537d1ae8577b8a4be713531291c",
+      "provenance_hash": "b79ac47434fc029bf7c4110ee5f38fb9b705ccb6c83a3fcbc49cef7d0a9d9df0",
+      "sanitized": true,
+      "source_hash": "20b4fa5a47c6e23b6093c2eedbf5d0b2930c6eefe5c8646e009a98bd0131c85e"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "36ef07181e0586bdd0bc2463bac305713c1f18a8904faa5310201a3c0739e628",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "cec0652b80580d3288cd4f569e37c31729552db874df896ae4503290ec44faf7",
+      "publication_region": "in",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-wonderful-wizard-of-oz",
+    "title": "The Wonderful Wizard of Oz"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

@@ -12,6 +12,10 @@ READER_ONLY_SLUGS = (
     "a-ghost-story",
     "the-tell-tale-heart",
     "radharani",
+    "a-white-heron",
+    "the-gift-of-the-magi",
+    "the-canterville-ghost",
+    "the-adventures-of-sherlock-holmes",
 )
 REQUIRED_FILES = {
     "approval_evidence.json",

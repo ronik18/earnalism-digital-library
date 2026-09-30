@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "81b8c38f97e5590cfae4634473e6de70fae65e1f189db528071df33c3b394d56",
+    "chapters/chapter-001.json": "4196d5bf8824220e403a8a7784e858fe4eef71ce9d5f8029a349efd188fdab65",
+    "checksum_manifest.json": "d63456e3a070c68cedba17f7ed16be687eaf3381f41988057613bd176b223bcf",
+    "highlight_sync.json": "78d558acc9ee4f334e2d91b65bd8477f5d8b5153077bdabaecb486faf4a5ec60",
+    "public_book.json": "2a29ffa0c4f7b293323890d6d2ac913c4f9bc4d59679cf12a1ea80ddff199cb9",
+    "reader_manifest.json": "cbff7910d185de3e698aeefd838daa6c9c44a08ad29d43499b8b8f2c05ed6ab6",
+    "source_evidence.json": "09368fdaa0b0cc162168da984648708f6573b760c9e697fbcaca3a6f5a55ffbc"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "553f45169b6403cc9dec10718d50780fc6478fe3839ee317a64c61ee49dfc375",
+      "file_sha256": "4196d5bf8824220e403a8a7784e858fe4eef71ce9d5f8029a349efd188fdab65",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "81b8c38f97e5590cfae4634473e6de70fae65e1f189db528071df33c3b394d56",
+    "chapters/chapter-001.json": "4196d5bf8824220e403a8a7784e858fe4eef71ce9d5f8029a349efd188fdab65",
+    "checksum_manifest.json": "d63456e3a070c68cedba17f7ed16be687eaf3381f41988057613bd176b223bcf",
+    "highlight_sync.json": "78d558acc9ee4f334e2d91b65bd8477f5d8b5153077bdabaecb486faf4a5ec60",
+    "public_book.json": "2a29ffa0c4f7b293323890d6d2ac913c4f9bc4d59679cf12a1ea80ddff199cb9",
+    "reader_manifest.json": "cbff7910d185de3e698aeefd838daa6c9c44a08ad29d43499b8b8f2c05ed6ab6",
+    "source_evidence.json": "09368fdaa0b0cc162168da984648708f6573b760c9e697fbcaca3a6f5a55ffbc"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "81b8c38f97e5590cfae4634473e6de70fae65e1f189db528071df33c3b394d56",
+      "public_book": "2a29ffa0c4f7b293323890d6d2ac913c4f9bc4d59679cf12a1ea80ddff199cb9",
+      "reader_manifest": "cbff7910d185de3e698aeefd838daa6c9c44a08ad29d43499b8b8f2c05ed6ab6",
+      "source_evidence": "09368fdaa0b0cc162168da984648708f6573b760c9e697fbcaca3a6f5a55ffbc"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "882db9d6031996e5e6331709adb4693747308d81e77e00099e5be361d2dbe56e",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "4196d5bf8824220e403a8a7784e858fe4eef71ce9d5f8029a349efd188fdab65",
+          "title": "The Adventure of the Priory School",
+          "word_count": 11551
+        }
+      ],
+      "content_hash": "f53e83470106d20a25b54ae5c640c8bc6a15fcdc2ab22a77347fc0cc1b025e64",
+      "provenance_hash": "8a4567cd207a26feaa1fbdc0b0d6057b3920ff8ea200a66fdd6e69c33d4b2e40",
+      "sanitized": true,
+      "source_hash": "1c0eeb56e57f62d657701f3711cd5aa6d470a38cf009da0602b3fbdf6f591635"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "01c4f5444274e4618f491ce2e4f50d1866d8095e18e97cad6c3243854786a3af",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "09368fdaa0b0cc162168da984648708f6573b760c9e697fbcaca3a6f5a55ffbc",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-adventure-of-the-priory-school",
+    "title": "The Adventure of the Priory School"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

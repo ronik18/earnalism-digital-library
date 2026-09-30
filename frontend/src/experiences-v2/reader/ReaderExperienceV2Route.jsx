@@ -530,6 +530,8 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       label: `Page ${item.page_number || item.page_index || index + 1}`,
     }));
     return {
+      slug,
+      notebookOwner: identity || "guest",
       title: book.public_title || book.display_title || book.title || "Book",
       author: book.author || book.author_name || "",
       language: /^(bn|bengali|বাংলা)/i.test(book.language || "") ? "bn" : /^(en|english)/i.test(book.language || "") ? "en" : undefined,
@@ -555,7 +557,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       statusMessage: notice,
       metadata: { language: book.language || "", genre: book.genre || "", year: book.publication_year || book.year || "", source: book.rights_status || "" },
     };
-  }, [displayedBalance, canonicalPage, displayedPageNumber, error, freeReading, manifest, notice, page, pageResult, selectedPage, slowPageLoading, totalPages, user]);
+  }, [displayedBalance, canonicalPage, displayedPageNumber, error, freeReading, identity, manifest, notice, page, pageResult, selectedPage, slowPageLoading, slug, totalPages, user]);
 
   const recovery = <>
     <button type="button" data-testid="reader-recovery-book" onClick={() => navigateAfterSettlement("back")} disabled={busy}>Return to book details</button>

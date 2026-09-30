@@ -1,0 +1,112 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "6fb7dc5b9dd1d8aedeec379808dfa8d289c918b34629b269a517233eca579779",
+    "chapters/chapter-001.json": "1102f2638f209d7881c6ed3f7b88eb9ca5fb7e2740ac32cdb45ce291069e9ae7",
+    "checksum_manifest.json": "e0f7e9578f367b264951a5131cb849f325c01f1e11f9912eabb55ff0cb2f5a77",
+    "highlight_sync.json": "3ae3472af703043b922f8166f5e43bcba101399d3167faab03adfcaea5f60f8e",
+    "public_book.json": "d89cf0249313e1a14fe52e41c513c2c457741614495d81ed6b57b820e79c09a0",
+    "reader_manifest.json": "b0a6af3fa57d2ee2b1399a50552523918ab705c1f1a7bb5f6703f457008d657a",
+    "source_evidence.json": "aebe2a1d7a459a2c2444a0b4ae3ca4b82088bdb21387af6cf20c3e0d36c9bcfe"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "28f94b2e98de909c8d1212f7a4351c17db67153461f367098022a528e65d4caa",
+      "file_sha256": "1102f2638f209d7881c6ed3f7b88eb9ca5fb7e2740ac32cdb45ce291069e9ae7",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "6fb7dc5b9dd1d8aedeec379808dfa8d289c918b34629b269a517233eca579779",
+    "chapters/chapter-001.json": "1102f2638f209d7881c6ed3f7b88eb9ca5fb7e2740ac32cdb45ce291069e9ae7",
+    "checksum_manifest.json": "e0f7e9578f367b264951a5131cb849f325c01f1e11f9912eabb55ff0cb2f5a77",
+    "highlight_sync.json": "3ae3472af703043b922f8166f5e43bcba101399d3167faab03adfcaea5f60f8e",
+    "public_book.json": "d89cf0249313e1a14fe52e41c513c2c457741614495d81ed6b57b820e79c09a0",
+    "reader_manifest.json": "b0a6af3fa57d2ee2b1399a50552523918ab705c1f1a7bb5f6703f457008d657a",
+    "source_evidence.json": "aebe2a1d7a459a2c2444a0b4ae3ca4b82088bdb21387af6cf20c3e0d36c9bcfe"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "6fb7dc5b9dd1d8aedeec379808dfa8d289c918b34629b269a517233eca579779",
+      "public_book": "d89cf0249313e1a14fe52e41c513c2c457741614495d81ed6b57b820e79c09a0",
+      "reader_manifest": "b0a6af3fa57d2ee2b1399a50552523918ab705c1f1a7bb5f6703f457008d657a",
+      "source_evidence": "aebe2a1d7a459a2c2444a0b4ae3ca4b82088bdb21387af6cf20c3e0d36c9bcfe"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "24f9b23b2ea1f1d7ce6e7abed52c4fdde358e1dd2656919b9cf3fdae723bca5c",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "1102f2638f209d7881c6ed3f7b88eb9ca5fb7e2740ac32cdb45ce291069e9ae7",
+          "title": "The Happy Prince",
+          "word_count": 3473
+        }
+      ],
+      "content_hash": "d2ced3c3b48dbc0a9af63c8cec2e0010693083c6ed590a3717a5f351e90ee8ff",
+      "provenance_hash": "5e120d6dafa93babec1d71b47449195d32028d52d3c3e98ea3d5c870f9d6ff7f",
+      "sanitized": true,
+      "source_hash": "aec5f24c5cef2533989442028811632667522939a78217a9f3d07389b5c6d145"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "23fe29641c0796ab139832c026ef6e12aa939e00400ae258bdc43cf29b68d587",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Reader QA must pass."
+      ],
+      "cover_url": "https://theearnalism.com/assets/books/the-happy-prince/front-cover.webp",
+      "exposed": false,
+      "qa_status": "READY_FOR_APPROVAL",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "aebe2a1d7a459a2c2444a0b4ae3ca4b82088bdb21387af6cf20c3e0d36c9bcfe",
+      "publication_region": "in",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-happy-prince",
+    "title": "The Happy Prince"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

@@ -1,0 +1,111 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "bc3781aaac84dc7b5682bc752a3d75108c7be909561f642f5a510b2f2346d3ba",
+    "chapters/chapter-001.json": "359d98971f6e9a67c38bc5b8e048816b3c205d508604aa8f08e88d67531fe36f",
+    "checksum_manifest.json": "98a6328b3d52782138c907049d74911ad2e346f547c1ab13d178f1a45f29297a",
+    "highlight_sync.json": "16f9d37220950bef9983969503064c4ae2b9714bebdb12715828b7332e628b46",
+    "public_book.json": "28924a8a0fcfa792c87b68b9e947a20d191fd343c67aa8a68ec2c544572ee38c",
+    "reader_manifest.json": "63e9e1c437467cccbde56590fad2409d1a16274e659e7acda2b4fd9b3263bc9e",
+    "source_evidence.json": "dfc4b9a54b026547d60f75fbc96a7e5f8dd69a7c668f43d1bcd6130a84c230f0"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "ec3ceb6ecdd81da8b89878a491fa42517849f70cf623b23bf7f0b10ecb76f391",
+      "file_sha256": "359d98971f6e9a67c38bc5b8e048816b3c205d508604aa8f08e88d67531fe36f",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "bc3781aaac84dc7b5682bc752a3d75108c7be909561f642f5a510b2f2346d3ba",
+    "chapters/chapter-001.json": "359d98971f6e9a67c38bc5b8e048816b3c205d508604aa8f08e88d67531fe36f",
+    "checksum_manifest.json": "98a6328b3d52782138c907049d74911ad2e346f547c1ab13d178f1a45f29297a",
+    "highlight_sync.json": "16f9d37220950bef9983969503064c4ae2b9714bebdb12715828b7332e628b46",
+    "public_book.json": "28924a8a0fcfa792c87b68b9e947a20d191fd343c67aa8a68ec2c544572ee38c",
+    "reader_manifest.json": "63e9e1c437467cccbde56590fad2409d1a16274e659e7acda2b4fd9b3263bc9e",
+    "source_evidence.json": "dfc4b9a54b026547d60f75fbc96a7e5f8dd69a7c668f43d1bcd6130a84c230f0"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "bc3781aaac84dc7b5682bc752a3d75108c7be909561f642f5a510b2f2346d3ba",
+      "public_book": "28924a8a0fcfa792c87b68b9e947a20d191fd343c67aa8a68ec2c544572ee38c",
+      "reader_manifest": "63e9e1c437467cccbde56590fad2409d1a16274e659e7acda2b4fd9b3263bc9e",
+      "source_evidence": "dfc4b9a54b026547d60f75fbc96a7e5f8dd69a7c668f43d1bcd6130a84c230f0"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "b147962fdb9f95d65dd95b630e4d9ed11c74467c382cd786078c7cb3ee259858",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "359d98971f6e9a67c38bc5b8e048816b3c205d508604aa8f08e88d67531fe36f",
+          "title": "The Lady with the Dog",
+          "word_count": 6628
+        }
+      ],
+      "content_hash": "227e8ddb08b517da5cbb6513bef4b250c8aa13f2527d2c628ad7638d4e20cf93",
+      "provenance_hash": "05ea103685b1394593b86e33783d9b8b2f3fc6439dfc49f83914ee44ce992583",
+      "sanitized": true,
+      "source_hash": "ef9ab1135b609dfa39aac169c9ed8040ca003b939bc42b9146fd9f5187b147a8"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "9e6db0b8160d722ad61ea9e485e18d4b048a34049e79c4a68212d5a5f1cdd36c",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+      ],
+      "cover_url": "https://theearnalism.com/assets/books/the-lady-with-the-dog/front-cover.webp",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "dfc4b9a54b026547d60f75fbc96a7e5f8dd69a7c668f43d1bcd6130a84c230f0",
+      "publication_region": "in",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-lady-with-the-dog",
+    "title": "The Lady with the Dog"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

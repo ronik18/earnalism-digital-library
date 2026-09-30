@@ -1,0 +1,111 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "29bbd460abb519131fdaaa3106d18619b54b510dd666fe206f48ca5ba964793a",
+    "chapters/chapter-001.json": "1927ff96289930c691938cf8948700d1f7324ef50166879f5f476258eb17c2fc",
+    "checksum_manifest.json": "7c829623030d10c7ee68c92d18b56b64d0e4155ce2a733a084f455fa62275fe8",
+    "highlight_sync.json": "f4cc65845dbdec62f6f71c376c358d9a592556698b05309fad5c3689db01918c",
+    "public_book.json": "8a355e19863ed866ef613b8be5d832ff5866f43e6c241e9efafebe4c3eaf5438",
+    "reader_manifest.json": "dcc6a45067337a47776013768468dc54e0c52db88b1062f2f48d9bef7b747f3b",
+    "source_evidence.json": "9a0ad9c1a9521d9b0a5b5fc5737d191d2525a16a133d3f806614faee38f2b6bd"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "0fc44f09b5da4dccf181357f25ec32c1b21a9aada4391e51e811bfcd057930d6",
+      "file_sha256": "1927ff96289930c691938cf8948700d1f7324ef50166879f5f476258eb17c2fc",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "29bbd460abb519131fdaaa3106d18619b54b510dd666fe206f48ca5ba964793a",
+    "chapters/chapter-001.json": "1927ff96289930c691938cf8948700d1f7324ef50166879f5f476258eb17c2fc",
+    "checksum_manifest.json": "7c829623030d10c7ee68c92d18b56b64d0e4155ce2a733a084f455fa62275fe8",
+    "highlight_sync.json": "f4cc65845dbdec62f6f71c376c358d9a592556698b05309fad5c3689db01918c",
+    "public_book.json": "8a355e19863ed866ef613b8be5d832ff5866f43e6c241e9efafebe4c3eaf5438",
+    "reader_manifest.json": "dcc6a45067337a47776013768468dc54e0c52db88b1062f2f48d9bef7b747f3b",
+    "source_evidence.json": "9a0ad9c1a9521d9b0a5b5fc5737d191d2525a16a133d3f806614faee38f2b6bd"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "29bbd460abb519131fdaaa3106d18619b54b510dd666fe206f48ca5ba964793a",
+      "public_book": "8a355e19863ed866ef613b8be5d832ff5866f43e6c241e9efafebe4c3eaf5438",
+      "reader_manifest": "dcc6a45067337a47776013768468dc54e0c52db88b1062f2f48d9bef7b747f3b",
+      "source_evidence": "9a0ad9c1a9521d9b0a5b5fc5737d191d2525a16a133d3f806614faee38f2b6bd"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "2565add4498ecc148f3cd20712509829a72945b9e269a7bed296fd0d0fec68b2",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "1927ff96289930c691938cf8948700d1f7324ef50166879f5f476258eb17c2fc",
+          "title": "The Most Dangerous Game",
+          "word_count": 7990
+        }
+      ],
+      "content_hash": "42abf60a854bbec5d5aad3c065927c6f62aad640e6791f1bb77b66f804ffdafa",
+      "provenance_hash": "3b5ee0d41aa18483dcdfb61242320186bb3026289fcd84a90cdb9ec14b1600ab",
+      "sanitized": true,
+      "source_hash": "213e4a287408e7c78cb14a5d94dfcc519a378c710ca8739601220f6d51df52b1"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "7472cfa63876724a3046e99113cdd6ff178c789cd81cd6977a56954777e04f79",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+      ],
+      "cover_url": "https://theearnalism.com/assets/books/the-most-dangerous-game/front-cover.webp",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "9a0ad9c1a9521d9b0a5b5fc5737d191d2525a16a133d3f806614faee38f2b6bd",
+      "publication_region": "in",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-most-dangerous-game",
+    "title": "The Most Dangerous Game"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

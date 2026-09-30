@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "4b1aad52062e04aa8c6d87072d16c1379a15800d2f349eadeeef1000ae19b0eb",
+    "chapters/chapter-001.json": "2831060443c651368848707b46ce1188ba3886dbb946eec86483c322fc643d37",
+    "checksum_manifest.json": "b3a02b2887bd9a3257b8095f601f506c6085aae7d06e1f39a0e39848ff9a9c7c",
+    "highlight_sync.json": "bc843a767d245ed23d5b73c4704579b95f716c3325eba6edc3433ac6376da3ed",
+    "public_book.json": "aa71e62a5aa8a39a6d7c8945d9d5d45c07e57077ece03823b9d2420a7ddecb47",
+    "reader_manifest.json": "8fe807a4936a240950d242a8084a8e4e0049b35e85087991e7567d5f10f16812",
+    "source_evidence.json": "525f6b25daa31ec8abf11c1e603fd1ca8d1b315aaf41250956abe6d3d69f2022"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90",
+      "file_sha256": "2831060443c651368848707b46ce1188ba3886dbb946eec86483c322fc643d37",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "4b1aad52062e04aa8c6d87072d16c1379a15800d2f349eadeeef1000ae19b0eb",
+    "chapters/chapter-001.json": "2831060443c651368848707b46ce1188ba3886dbb946eec86483c322fc643d37",
+    "checksum_manifest.json": "b3a02b2887bd9a3257b8095f601f506c6085aae7d06e1f39a0e39848ff9a9c7c",
+    "highlight_sync.json": "bc843a767d245ed23d5b73c4704579b95f716c3325eba6edc3433ac6376da3ed",
+    "public_book.json": "aa71e62a5aa8a39a6d7c8945d9d5d45c07e57077ece03823b9d2420a7ddecb47",
+    "reader_manifest.json": "8fe807a4936a240950d242a8084a8e4e0049b35e85087991e7567d5f10f16812",
+    "source_evidence.json": "525f6b25daa31ec8abf11c1e603fd1ca8d1b315aaf41250956abe6d3d69f2022"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "4b1aad52062e04aa8c6d87072d16c1379a15800d2f349eadeeef1000ae19b0eb",
+      "public_book": "aa71e62a5aa8a39a6d7c8945d9d5d45c07e57077ece03823b9d2420a7ddecb47",
+      "reader_manifest": "8fe807a4936a240950d242a8084a8e4e0049b35e85087991e7567d5f10f16812",
+      "source_evidence": "525f6b25daa31ec8abf11c1e603fd1ca8d1b315aaf41250956abe6d3d69f2022"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "d2fc1730040a28a8674515415a484d91509f8f43396b9b53d0c31457cea1684a",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "2831060443c651368848707b46ce1188ba3886dbb946eec86483c322fc643d37",
+          "title": "The Student",
+          "word_count": 1498
+        }
+      ],
+      "content_hash": "5fcd6d4c4bae12a4355d733daa70626c9c4740ba4c8854453a6da5641ff7bf31",
+      "provenance_hash": "50445647f700eb377e6c8f1761347a031cf15bd29da15e2db11ae5a2ea0b2bc2",
+      "sanitized": true,
+      "source_hash": "032a7fa2066e75ee2743f96015af671d54d83c1dcf16aa0e164056ab23b34b27"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "20dcf1886cb3744e4d3741f989002fd045bcb144b1e1172b90dc7614fb7d4654",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267888/earnalism/covers/front/the-student_front_1600x2400.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "525f6b25daa31ec8abf11c1e603fd1ca8d1b315aaf41250956abe6d3d69f2022",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-student",
+    "title": "The Student"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

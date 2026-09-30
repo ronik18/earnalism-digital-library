@@ -1,6 +1,23 @@
 name: Earnalism autonomy worker
 
 on:
+  pull_request:
+    branches: [main]
+    paths:
+      - scripts/process_full_catalogue.py
+      - scripts/test_process_full_catalogue.py
+      - scripts/autonomy_worker.py
+      - scripts/autonomy_reviewer.py
+      - internal/earnalism_intelligence/full_catalogue_processing_20260930/**
+      - .github/workflows/earnalism-autonomy-worker.yml
+  push:
+    branches: [main]
+    paths:
+      - scripts/process_full_catalogue.py
+      - scripts/autonomy_worker.py
+      - scripts/autonomy_reviewer.py
+      - internal/earnalism_intelligence/full_catalogue_processing_20260930/**
+      - .github/workflows/earnalism-autonomy-worker.yml
   workflow_dispatch:
     inputs:
       task_id:
@@ -34,6 +51,7 @@ permissions:
 
 jobs:
   worker-and-reviewer:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
@@ -84,7 +102,7 @@ jobs:
           prompt: |
             You are an authorized bounded non-production implementation worker. Edit only files necessary for this task; never touch payments, entitlements, customer data, catalogue publication, secrets, deployment configuration, or destructive scripts. Make the source change, run focused tests, and report changed files and results. Task type: ${{ inputs.task_type }}. Attempt: ${{ inputs.attempt }}. Brief: ${{ inputs.brief }}. Acceptance criteria: ${{ inputs.acceptance }}. Reviewer context: ${{ inputs.correction_context }}
       - name: Run bounded worker
-        id: legacy-worker
+        id: legacy_worker
         if: inputs.task_type != 'codex-implementation-fixture' && inputs.task_type != 'codex-implementation'
         run: >-
           python scripts/autonomy_worker.py --task-id "$TASK_ID"
@@ -114,7 +132,7 @@ jobs:
           PY
           python scripts/autonomy_worker.py --task-id "$TASK_ID" --task-type "$TASK_TYPE" --candidate-sha "$CANDIDATE_SHA" --generation "$TASK_GENERATION" --attempt "$TASK_ATTEMPT" --correction-context "$CORRECTION_CONTEXT" --brief "$TASK_BRIEF" --acceptance "$TASK_ACCEPTANCE" --codex-result codex-result.json --output worker-result.json
       - name: Review worker evidence
-        if: always() && steps.worker.outcome == 'success'
+        if: always() && (steps.worker.outcome == 'success' || steps.legacy_worker.outcome == 'success')
         run: >-
           python scripts/autonomy_reviewer.py --task-id "$TASK_ID"
           --candidate-sha "$CANDIDATE_SHA" --generation "$TASK_GENERATION"
@@ -122,7 +140,7 @@ jobs:
           --task-type "$TASK_TYPE"
           --worker-result worker-result.json --output review-result.json
       - name: Write structured failure result
-        if: always() && steps.worker.outcome != 'success'
+        if: always() && steps.worker.outcome != 'success' && steps.legacy_worker.outcome != 'success'
         run: |
           python - <<'PY'
           import json, os
@@ -151,3 +169,41 @@ jobs:
         with:
           name: earnalism-autonomy-${{ inputs.task_id }}-${{ github.run_id }}
           path: '*-result.json'
+
+  catalogue-processing:
+    if: github.event_name != 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    env:
+      CANDIDATE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+      TASK_ID: full-catalogue-${{ github.run_id }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify catalogue processor safeguards
+        run: python3 -m unittest scripts.test_process_full_catalogue scripts.test_autonomy_bridge
+      - name: Process the complete catalogue through the bounded worker
+        run: python3 scripts/autonomy_worker.py --task-id "$TASK_ID" --task-type catalogue-processing --candidate-sha "$CANDIDATE_SHA" --generation 1 --attempt 1 --output catalogue-worker-result.json
+      - name: Independently reproduce every catalogue result
+        run: |
+          python3 scripts/autonomy_reviewer.py --task-id "$TASK_ID" --task-type catalogue-processing --candidate-sha "$CANDIDATE_SHA" --generation 1 --attempt 1 --worker-result catalogue-worker-result.json --output catalogue-review-result.json
+          python3 - <<'PY'
+          import json
+          assert json.load(open('catalogue-review-result.json'))['decision'] == 'ACCEPT_WITHIN_SCOPE'
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: full-catalogue-processing-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            catalogue-worker-result.json
+            catalogue-review-result.json
+            internal/earnalism_intelligence/full_catalogue_processing_20260930/
+          if-no-files-found: error

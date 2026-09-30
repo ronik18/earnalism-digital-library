@@ -1,0 +1,323 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "25a44ca7f7beb7b06bbf2fbd75fa9983ce843ea5a19267790e248a8399fbe521",
+    "chapters/chapter-001.json": "ec54e8d6abfbea5fa18a96a06cb68777151021fad0fb2511e084b68143bd7693",
+    "chapters/chapter-002.json": "0d9b215765f1cf9bdba709a7d0475ff82b17082eb9cda61f444c507912ae2302",
+    "chapters/chapter-003.json": "04fa6dbc3212e88f51b68643085bf11d53d81933f282332fe1eef681a3be1c35",
+    "chapters/chapter-004.json": "06ac862eda572faa1bc221d4322d740cb113cd17834c39f6ea2f871edf06964c",
+    "chapters/chapter-005.json": "cd148470d070a8ba9daaa288172a89114e9b48f79f27edb350dabac152cb4cab",
+    "chapters/chapter-006.json": "09d45f9fab05ca1812124884442b5bcbbdd9ca143b46a36bb508310c87ad43cb",
+    "chapters/chapter-007.json": "66bfc61f35303cae0828ff6053b04bc62655db0fd684976bcc72ed6af99f22da",
+    "chapters/chapter-008.json": "cfe407cc5aa1d561ed463b4f589402670a72e8197a4f3b75d22cc3cb37de51cb",
+    "chapters/chapter-009.json": "3bcd1ef377cd0a89d21699e9356512a16a8d90740fb6e28fceedc3b5d37e2b2d",
+    "chapters/chapter-010.json": "5b7c4ff6d5544687d93d2176ac20f022713abba439bfe607c196a5daa747bd80",
+    "chapters/chapter-011.json": "b6c05d934d24bf78cd9a1f34a87df9bb6d13a9f7f57e615dbec965474cd95d4c",
+    "chapters/chapter-012.json": "4b00dc32f80a32858246ec194f1b45308e7d9e3778892f938948d2a185423a63",
+    "chapters/chapter-013.json": "345db188fa16280e3115b2553cbed94b70252bff025a6b76b997c7a2ea272431",
+    "chapters/chapter-014.json": "b9bf851c3546350b62c1c799d76b22e8fca38177180cafb921669a6fa49667c8",
+    "chapters/chapter-015.json": "007c974179ab0abb7e79e4918f1b28828908ad2ddf86138c811792bb77e8d6f7",
+    "chapters/chapter-016.json": "06d51ab9b8ad4f5837c2e4b15b66695e8683c5974c3d6337728a32006fedbf06",
+    "checksum_manifest.json": "fa68035e7c2c705475899656206f0117f6f47e6ba88132d64dd74be5c8cce767",
+    "public_book.json": "7897989ddd3e062ad5c2e43c6c3e15d609d7fd168121e890d7b6593cc804ed8b",
+    "reader_manifest.json": "6060790337140fea316ae120bbeedf6c736324ba1e4dcda8ba0f78baeca0338d",
+    "source_evidence.json": "d8fa9acc8be24d685e8687d6febc6efa595ef7cb92020224539eb204cb9000e7"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "d73789d8031cb88e0922217efc8f22cadb740f28e5b97ad591ef70754f160738",
+      "file_sha256": "ec54e8d6abfbea5fa18a96a06cb68777151021fad0fb2511e084b68143bd7693",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "27abac843db7691ff591feba266476242a4450eec3fe83c1e9a19f486a0d936a",
+      "file_sha256": "0d9b215765f1cf9bdba709a7d0475ff82b17082eb9cda61f444c507912ae2302",
+      "id": "chapter-002"
+    },
+    {
+      "content_sha256": "8213f16ba05785aaf1f170623db53f3d0f899db36b5df694f4dd16a308b1891d",
+      "file_sha256": "04fa6dbc3212e88f51b68643085bf11d53d81933f282332fe1eef681a3be1c35",
+      "id": "chapter-003"
+    },
+    {
+      "content_sha256": "45bd631779ff17859758a5ef60235bd2cf6d176d52b0368f16b4d8edc0bdf8d7",
+      "file_sha256": "06ac862eda572faa1bc221d4322d740cb113cd17834c39f6ea2f871edf06964c",
+      "id": "chapter-004"
+    },
+    {
+      "content_sha256": "980683c22188e919d7cf769d435b6fded1fdaabc4c88b0638e13a436ea84125f",
+      "file_sha256": "cd148470d070a8ba9daaa288172a89114e9b48f79f27edb350dabac152cb4cab",
+      "id": "chapter-005"
+    },
+    {
+      "content_sha256": "2e41d7ecb10a28259fc02b24d4331d119050546c21226506e2eda930789feb86",
+      "file_sha256": "09d45f9fab05ca1812124884442b5bcbbdd9ca143b46a36bb508310c87ad43cb",
+      "id": "chapter-006"
+    },
+    {
+      "content_sha256": "78e08ea339ebbd34838470a9758aa4dbfea4175bfb4fec7be48dd0eb68cf2959",
+      "file_sha256": "66bfc61f35303cae0828ff6053b04bc62655db0fd684976bcc72ed6af99f22da",
+      "id": "chapter-007"
+    },
+    {
+      "content_sha256": "2b7b5e3352b784e625f04900f7ea8fbfdda45c8ddd0aaf7676f2be86cf9d47a7",
+      "file_sha256": "cfe407cc5aa1d561ed463b4f589402670a72e8197a4f3b75d22cc3cb37de51cb",
+      "id": "chapter-008"
+    },
+    {
+      "content_sha256": "0286a872d96f55004016ae309b09d77134de9bcd8c525ccda2efd12df8d018cf",
+      "file_sha256": "3bcd1ef377cd0a89d21699e9356512a16a8d90740fb6e28fceedc3b5d37e2b2d",
+      "id": "chapter-009"
+    },
+    {
+      "content_sha256": "d179d6ff39703fd424855c9bfc2e3805aa24bd52ef3fb611b1f1b1161fc2ca18",
+      "file_sha256": "5b7c4ff6d5544687d93d2176ac20f022713abba439bfe607c196a5daa747bd80",
+      "id": "chapter-010"
+    },
+    {
+      "content_sha256": "8429dbad8f53198ddd5d675a06188757017b8089cb8b001d5e531b6f86e420d3",
+      "file_sha256": "b6c05d934d24bf78cd9a1f34a87df9bb6d13a9f7f57e615dbec965474cd95d4c",
+      "id": "chapter-011"
+    },
+    {
+      "content_sha256": "c9cb651da3e3873d6cd7708a7970cb570d9cfd910530a4dcb3d19ea6ea074ea9",
+      "file_sha256": "4b00dc32f80a32858246ec194f1b45308e7d9e3778892f938948d2a185423a63",
+      "id": "chapter-012"
+    },
+    {
+      "content_sha256": "c2052e473278033f73ac6a0cebddd2ffdd14b7e013d622f2ce306637fd40ff43",
+      "file_sha256": "345db188fa16280e3115b2553cbed94b70252bff025a6b76b997c7a2ea272431",
+      "id": "chapter-013"
+    },
+    {
+      "content_sha256": "e0cfab2dfcf3a4914b77775cf4ba3625c80e1346ce153417debcb326cc1bc0d3",
+      "file_sha256": "b9bf851c3546350b62c1c799d76b22e8fca38177180cafb921669a6fa49667c8",
+      "id": "chapter-014"
+    },
+    {
+      "content_sha256": "e73e22bc54ee43efac15e14e13a1bda603ff11f17c958e3bef066734ace67b5f",
+      "file_sha256": "007c974179ab0abb7e79e4918f1b28828908ad2ddf86138c811792bb77e8d6f7",
+      "id": "chapter-015"
+    },
+    {
+      "content_sha256": "74234e88500de74936d9438385f8301b9b23fdcaa274815fc40d83d86cabb147",
+      "file_sha256": "06d51ab9b8ad4f5837c2e4b15b66695e8683c5974c3d6337728a32006fedbf06",
+      "id": "chapter-016"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "25a44ca7f7beb7b06bbf2fbd75fa9983ce843ea5a19267790e248a8399fbe521",
+    "chapters/chapter-001.json": "ec54e8d6abfbea5fa18a96a06cb68777151021fad0fb2511e084b68143bd7693",
+    "chapters/chapter-002.json": "0d9b215765f1cf9bdba709a7d0475ff82b17082eb9cda61f444c507912ae2302",
+    "chapters/chapter-003.json": "04fa6dbc3212e88f51b68643085bf11d53d81933f282332fe1eef681a3be1c35",
+    "chapters/chapter-004.json": "06ac862eda572faa1bc221d4322d740cb113cd17834c39f6ea2f871edf06964c",
+    "chapters/chapter-005.json": "cd148470d070a8ba9daaa288172a89114e9b48f79f27edb350dabac152cb4cab",
+    "chapters/chapter-006.json": "09d45f9fab05ca1812124884442b5bcbbdd9ca143b46a36bb508310c87ad43cb",
+    "chapters/chapter-007.json": "66bfc61f35303cae0828ff6053b04bc62655db0fd684976bcc72ed6af99f22da",
+    "chapters/chapter-008.json": "cfe407cc5aa1d561ed463b4f589402670a72e8197a4f3b75d22cc3cb37de51cb",
+    "chapters/chapter-009.json": "3bcd1ef377cd0a89d21699e9356512a16a8d90740fb6e28fceedc3b5d37e2b2d",
+    "chapters/chapter-010.json": "5b7c4ff6d5544687d93d2176ac20f022713abba439bfe607c196a5daa747bd80",
+    "chapters/chapter-011.json": "b6c05d934d24bf78cd9a1f34a87df9bb6d13a9f7f57e615dbec965474cd95d4c",
+    "chapters/chapter-012.json": "4b00dc32f80a32858246ec194f1b45308e7d9e3778892f938948d2a185423a63",
+    "chapters/chapter-013.json": "345db188fa16280e3115b2553cbed94b70252bff025a6b76b997c7a2ea272431",
+    "chapters/chapter-014.json": "b9bf851c3546350b62c1c799d76b22e8fca38177180cafb921669a6fa49667c8",
+    "chapters/chapter-015.json": "007c974179ab0abb7e79e4918f1b28828908ad2ddf86138c811792bb77e8d6f7",
+    "chapters/chapter-016.json": "06d51ab9b8ad4f5837c2e4b15b66695e8683c5974c3d6337728a32006fedbf06",
+    "checksum_manifest.json": "7d1f347304e0648f53c56bf5d7182646c5b8d963ff441ef9583962b5d2022716",
+    "highlight_sync.json": "49f9d125f4a876a6e07a1c61e56607b84db13ef3bd9d2595ac8fc021cb52887d",
+    "public_book.json": "7897989ddd3e062ad5c2e43c6c3e15d609d7fd168121e890d7b6593cc804ed8b",
+    "reader_manifest.json": "6060790337140fea316ae120bbeedf6c736324ba1e4dcda8ba0f78baeca0338d",
+    "source_evidence.json": "d8fa9acc8be24d685e8687d6febc6efa595ef7cb92020224539eb204cb9000e7"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "25a44ca7f7beb7b06bbf2fbd75fa9983ce843ea5a19267790e248a8399fbe521",
+      "public_book": "7897989ddd3e062ad5c2e43c6c3e15d609d7fd168121e890d7b6593cc804ed8b",
+      "reader_manifest": "6060790337140fea316ae120bbeedf6c736324ba1e4dcda8ba0f78baeca0338d",
+      "source_evidence": "d8fa9acc8be24d685e8687d6febc6efa595ef7cb92020224539eb204cb9000e7"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 16,
+      "chapter_index_sha256": "3310ff8a19b448d494959d227577ee1c2aa1b1321ed292e579ff0782f8b8ab7b",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "ec54e8d6abfbea5fa18a96a06cb68777151021fad0fb2511e084b68143bd7693",
+          "title": "I. Introduction",
+          "word_count": 1694
+        },
+        {
+          "id": "chapter-002",
+          "order": 2,
+          "sha256": "0d9b215765f1cf9bdba709a7d0475ff82b17082eb9cda61f444c507912ae2302",
+          "title": "II. The Machine",
+          "word_count": 1353
+        },
+        {
+          "id": "chapter-003",
+          "order": 3,
+          "sha256": "04fa6dbc3212e88f51b68643085bf11d53d81933f282332fe1eef681a3be1c35",
+          "title": "III. The Time Traveller Returns",
+          "word_count": 2042
+        },
+        {
+          "id": "chapter-004",
+          "order": 4,
+          "sha256": "06ac862eda572faa1bc221d4322d740cb113cd17834c39f6ea2f871edf06964c",
+          "title": "IV. Time Travelling",
+          "word_count": 2105
+        },
+        {
+          "id": "chapter-005",
+          "order": 5,
+          "sha256": "cd148470d070a8ba9daaa288172a89114e9b48f79f27edb350dabac152cb4cab",
+          "title": "V. In the Golden Age",
+          "word_count": 1661
+        },
+        {
+          "id": "chapter-006",
+          "order": 6,
+          "sha256": "09d45f9fab05ca1812124884442b5bcbbdd9ca143b46a36bb508310c87ad43cb",
+          "title": "VI. The Sunset of Mankind",
+          "word_count": 2204
+        },
+        {
+          "id": "chapter-007",
+          "order": 7,
+          "sha256": "66bfc61f35303cae0828ff6053b04bc62655db0fd684976bcc72ed6af99f22da",
+          "title": "VII. A Sudden Shock",
+          "word_count": 2333
+        },
+        {
+          "id": "chapter-008",
+          "order": 8,
+          "sha256": "cfe407cc5aa1d561ed463b4f589402670a72e8197a4f3b75d22cc3cb37de51cb",
+          "title": "VIII. Explanation",
+          "word_count": 4212
+        },
+        {
+          "id": "chapter-009",
+          "order": 9,
+          "sha256": "3bcd1ef377cd0a89d21699e9356512a16a8d90740fb6e28fceedc3b5d37e2b2d",
+          "title": "IX. The Morlocks",
+          "word_count": 2163
+        },
+        {
+          "id": "chapter-010",
+          "order": 10,
+          "sha256": "5b7c4ff6d5544687d93d2176ac20f022713abba439bfe607c196a5daa747bd80",
+          "title": "X. When Night Came",
+          "word_count": 2533
+        },
+        {
+          "id": "chapter-011",
+          "order": 11,
+          "sha256": "b6c05d934d24bf78cd9a1f34a87df9bb6d13a9f7f57e615dbec965474cd95d4c",
+          "title": "XI. The Palace of Green Porcelain",
+          "word_count": 2482
+        },
+        {
+          "id": "chapter-012",
+          "order": 12,
+          "sha256": "4b00dc32f80a32858246ec194f1b45308e7d9e3778892f938948d2a185423a63",
+          "title": "XII",
+          "word_count": 2648
+        },
+        {
+          "id": "chapter-013",
+          "order": 13,
+          "sha256": "345db188fa16280e3115b2553cbed94b70252bff025a6b76b997c7a2ea272431",
+          "title": "XIII",
+          "word_count": 1078
+        },
+        {
+          "id": "chapter-014",
+          "order": 14,
+          "sha256": "b9bf851c3546350b62c1c799d76b22e8fca38177180cafb921669a6fa49667c8",
+          "title": "XIV. The Further Vision",
+          "word_count": 1913
+        },
+        {
+          "id": "chapter-015",
+          "order": 15,
+          "sha256": "007c974179ab0abb7e79e4918f1b28828908ad2ddf86138c811792bb77e8d6f7",
+          "title": "XV. The Time Traveller’s Return",
+          "word_count": 482
+        },
+        {
+          "id": "chapter-016",
+          "order": 16,
+          "sha256": "06d51ab9b8ad4f5837c2e4b15b66695e8683c5974c3d6337728a32006fedbf06",
+          "title": "XVI",
+          "word_count": 1704
+        }
+      ],
+      "content_hash": "86f6463ed64691c02e7b927ae73e94d76027d3f3c4f82c6a18c17310020325ba",
+      "provenance_hash": "b7acc90769cf6bd7d1f99038cd336e48007db2e8d55469954243660d07d7efa6",
+      "sanitized": true,
+      "source_hash": "c7aeb98aa3143ae724283da3a0a74aef602537073f8c8f06ae0e1d22c0a38968"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "e40976dbd06ba7bb26a62df9150393ff89b9aaf9799f1609acc28cbe0fd1bdcc",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566866/earnalism/covers/front/cover_d4cb4472-7e0a-4bad-ab89-05f7d7ace821.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "d8fa9acc8be24d685e8687d6febc6efa595ef7cb92020224539eb204cb9000e7",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-time-machine",
+    "title": "The Time Machine"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

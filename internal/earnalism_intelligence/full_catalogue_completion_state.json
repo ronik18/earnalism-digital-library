@@ -1,0 +1,13 @@
+{
+  "schema": "earnalism.full-catalogue-completion.v1",
+  "reader_design_owner_approval": "CONDITIONAL_ON_FRESH_MATCH_WITH_SUPPLIED_MOCK",
+  "catalogue_scope": 231,
+  "processing_status": "COMPLETE_FOR_AVAILABLE_INPUTS",
+  "publication_status": "7_PREEXISTING_APPROVED_224_EVIDENCE_HOLDS",
+  "source_packages_changed": 0,
+  "worker_task_type": "catalogue-processing",
+  "worker_review": "PENDING_EXACT_HEAD_PIPELINE",
+  "processing_state": "internal/earnalism_intelligence/full_catalogue_processing_20260930/catalogue_state.json",
+  "production_reader_verification": "PENDING_TRUSTED_INDIA_CONTEXT",
+  "next_exact_command": "python3 scripts/process_full_catalogue.py --check"
+}

@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "1571c64769f6d9dbe3fc7bde03bf46221af77428ee98e8320c70d4ee3f2b14de",
+    "chapters/chapter-001.json": "90e79541a3067517b762ac7633e792d93ef5324e19728643b66f26e8c467c77d",
+    "checksum_manifest.json": "daa240cb3515553ae9ea25666dd0a17abf566e4a0f846648648c2aba41b9a545",
+    "highlight_sync.json": "fc285a64aa8b585253a4e93c61623ef9e4217e193f9fae4136b7e54720a6052c",
+    "public_book.json": "47449d254cdb75729d7343cb4edb2f994b1e01eea54b63b9751109d1017c03db",
+    "reader_manifest.json": "6c3fea2af3ed7a015e0aba5c93e0d38247ed1411a14555a8b40df9d09d63dbcf",
+    "source_evidence.json": "ab1f06d66d7f65a4a862b99a8e23c43a2e66579b43fab0ca89d340edb183344f"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "0879b82d827a6fc06defd69c8b9abb9b1df719c9378b3d86b3384cd39e22ef7a",
+      "file_sha256": "90e79541a3067517b762ac7633e792d93ef5324e19728643b66f26e8c467c77d",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "1571c64769f6d9dbe3fc7bde03bf46221af77428ee98e8320c70d4ee3f2b14de",
+    "chapters/chapter-001.json": "90e79541a3067517b762ac7633e792d93ef5324e19728643b66f26e8c467c77d",
+    "checksum_manifest.json": "daa240cb3515553ae9ea25666dd0a17abf566e4a0f846648648c2aba41b9a545",
+    "highlight_sync.json": "fc285a64aa8b585253a4e93c61623ef9e4217e193f9fae4136b7e54720a6052c",
+    "public_book.json": "47449d254cdb75729d7343cb4edb2f994b1e01eea54b63b9751109d1017c03db",
+    "reader_manifest.json": "6c3fea2af3ed7a015e0aba5c93e0d38247ed1411a14555a8b40df9d09d63dbcf",
+    "source_evidence.json": "ab1f06d66d7f65a4a862b99a8e23c43a2e66579b43fab0ca89d340edb183344f"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "1571c64769f6d9dbe3fc7bde03bf46221af77428ee98e8320c70d4ee3f2b14de",
+      "public_book": "47449d254cdb75729d7343cb4edb2f994b1e01eea54b63b9751109d1017c03db",
+      "reader_manifest": "6c3fea2af3ed7a015e0aba5c93e0d38247ed1411a14555a8b40df9d09d63dbcf",
+      "source_evidence": "ab1f06d66d7f65a4a862b99a8e23c43a2e66579b43fab0ca89d340edb183344f"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "cd8c36230be0825ac2c32379255fb546d7be8e589f6a1d730c76fb08aa52e446",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "90e79541a3067517b762ac7633e792d93ef5324e19728643b66f26e8c467c77d",
+          "title": "The Man in a Case",
+          "word_count": 5335
+        }
+      ],
+      "content_hash": "bc9e31688c165ba14e19a48e2b2429792f33e93501255d1a81de39072d16baa4",
+      "provenance_hash": "969075fa229f71f1239b1c51fc96f39f4f6b5c4a9a59b1c126762b4758c38089",
+      "sanitized": true,
+      "source_hash": "4a49f5472e5ce0b39d5022c5e2bf23188cd76f58aa6b3344541cb7b2d9e2173a"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "b70d92c79859b7de542bf58707d4c20c78c4ee9b7f4d100d6adbc684a8044c50",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "ab1f06d66d7f65a4a862b99a8e23c43a2e66579b43fab0ca89d340edb183344f",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-man-in-a-case",
+    "title": "The Man in a Case"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

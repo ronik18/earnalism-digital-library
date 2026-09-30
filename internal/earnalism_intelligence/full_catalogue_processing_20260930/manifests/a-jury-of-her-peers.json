@@ -1,0 +1,119 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "8331d96cb874efae307edb87c6cf5bbaac8500316f9542e3ece99cf939ec2314",
+    "chapters/chapter-001.json": "12cc5306572184aef6faaac6d809b591659b31672ce70eeaf6cb1292de5c391a",
+    "checksum_manifest.json": "2f63cebf1d090da521752d2e24293b44430b6d31c291e67e3690ac392445d066",
+    "highlight_sync.json": "501b82a78639842255db1dd1e1133039a466fbdb0d28542b3060945ebf5866de",
+    "public_book.json": "8b9194363c90cc4cbf20d9e4e9b51d1974dccc19a86ec794ef80d48c7318820b",
+    "reader_manifest.json": "166fda075f9846a733e0cba75ea3184bed741bfc609d4f932044c9757b60c805",
+    "source_evidence.json": "6981129be89ede2062496a9e1838f638186886d10e87ee2ad08a64502cb388a4"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "174c89fb3060de3479e5beed24c45b23fd7e15f9daf42ba9650c148e540ce6b6",
+      "file_sha256": "12cc5306572184aef6faaac6d809b591659b31672ce70eeaf6cb1292de5c391a",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "8331d96cb874efae307edb87c6cf5bbaac8500316f9542e3ece99cf939ec2314",
+    "approval_evidence.json": "8331d96cb874efae307edb87c6cf5bbaac8500316f9542e3ece99cf939ec2314",
+    "chapters/chapter-001.json": "12cc5306572184aef6faaac6d809b591659b31672ce70eeaf6cb1292de5c391a",
+    "checksum_manifest.json": "2f63cebf1d090da521752d2e24293b44430b6d31c291e67e3690ac392445d066",
+    "highlight_sync.json": "501b82a78639842255db1dd1e1133039a466fbdb0d28542b3060945ebf5866de",
+    "public_book.json": "8b9194363c90cc4cbf20d9e4e9b51d1974dccc19a86ec794ef80d48c7318820b",
+    "reader_manifest.json": "166fda075f9846a733e0cba75ea3184bed741bfc609d4f932044c9757b60c805",
+    "source_evidence.json": "6981129be89ede2062496a9e1838f638186886d10e87ee2ad08a64502cb388a4"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "8331d96cb874efae307edb87c6cf5bbaac8500316f9542e3ece99cf939ec2314",
+      "public_book": "8b9194363c90cc4cbf20d9e4e9b51d1974dccc19a86ec794ef80d48c7318820b",
+      "reader_manifest": "166fda075f9846a733e0cba75ea3184bed741bfc609d4f932044c9757b60c805",
+      "source_evidence": "6981129be89ede2062496a9e1838f638186886d10e87ee2ad08a64502cb388a4"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "1446101b3fc4b9a9dd1dff2bfda4b101eb12486cc9d11de5c14bd4059cae1491",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "12cc5306572184aef6faaac6d809b591659b31672ce70eeaf6cb1292de5c391a",
+          "title": "A Jury of Her Peers",
+          "word_count": 8217
+        }
+      ],
+      "content_hash": "a9ef4839bef2ff5bf3c8f3ea7765dd131a04f0b3deda047c75efec96419b4325",
+      "provenance_hash": "5a10292b91d399e8422ccba67274a1cc3fb9c8d5667d2ca6d7212c4a3a6ccfc9",
+      "sanitized": true,
+      "source_hash": "c19fcfb420fe99571e830c0794a0625d72ac2c74630ca7e4af2ec49202ec2b43"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "4382dc9c9524178340e514ee1bb08bec01960687056ceda32fd90577c2a65c34",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "6981129be89ede2062496a9e1838f638186886d10e87ee2ad08a64502cb388a4",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "a-jury-of-her-peers",
+    "title": "A Jury of Her Peers"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

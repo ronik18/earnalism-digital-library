@@ -1,0 +1,119 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "7d069311d3f520431e517a7cfaf443f4d25ebf205481163d1d69c5832af9d7c1",
+    "chapters/chapter-001.json": "31a070d20353f386b670cc016f739c0dd621d304efb684f6b5cb155fc2ca08c9",
+    "checksum_manifest.json": "1e4ef4b09b7ca3a5eac89bcac571023ae2f32b9a451a6f428cca72163e6657a3",
+    "highlight_sync.json": "9d610a1cf25e13d813c0f4551faa1055b253c6fcc93928f8e1e636bf20cf2ff4",
+    "public_book.json": "6be996f25d3828ae3501e0151a25e02929f587786c27cfd01b0f350eeaa0d8f1",
+    "reader_manifest.json": "665cdb0ca0677c4420d4a274eeccceaa28fb4c05231876a01f17647279132bbc",
+    "source_evidence.json": "8cdd5231560cacf3d8932b33dbd9fedc3bcf92783915824ff6b36a291bb89c30"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "c8c13f43f5790d3ac90b69ee2d75d6b5f04d967ab300d0214e0053862d1bad0f",
+      "file_sha256": "31a070d20353f386b670cc016f739c0dd621d304efb684f6b5cb155fc2ca08c9",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "7d069311d3f520431e517a7cfaf443f4d25ebf205481163d1d69c5832af9d7c1",
+    "approval_evidence.json": "7d069311d3f520431e517a7cfaf443f4d25ebf205481163d1d69c5832af9d7c1",
+    "chapters/chapter-001.json": "31a070d20353f386b670cc016f739c0dd621d304efb684f6b5cb155fc2ca08c9",
+    "checksum_manifest.json": "1e4ef4b09b7ca3a5eac89bcac571023ae2f32b9a451a6f428cca72163e6657a3",
+    "highlight_sync.json": "9d610a1cf25e13d813c0f4551faa1055b253c6fcc93928f8e1e636bf20cf2ff4",
+    "public_book.json": "6be996f25d3828ae3501e0151a25e02929f587786c27cfd01b0f350eeaa0d8f1",
+    "reader_manifest.json": "665cdb0ca0677c4420d4a274eeccceaa28fb4c05231876a01f17647279132bbc",
+    "source_evidence.json": "8cdd5231560cacf3d8932b33dbd9fedc3bcf92783915824ff6b36a291bb89c30"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "7d069311d3f520431e517a7cfaf443f4d25ebf205481163d1d69c5832af9d7c1",
+      "public_book": "6be996f25d3828ae3501e0151a25e02929f587786c27cfd01b0f350eeaa0d8f1",
+      "reader_manifest": "665cdb0ca0677c4420d4a274eeccceaa28fb4c05231876a01f17647279132bbc",
+      "source_evidence": "8cdd5231560cacf3d8932b33dbd9fedc3bcf92783915824ff6b36a291bb89c30"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "0b3299eb84efec26a0b9719fa93b223d3065fc067dc4030215b99eaa2e36166b",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "31a070d20353f386b670cc016f739c0dd621d304efb684f6b5cb155fc2ca08c9",
+          "title": "বলাই",
+          "word_count": 1274
+        }
+      ],
+      "content_hash": "fbb6cf013c8923df7c691e56e5dd33e9134ce73286df7869d27b7378ec85051d",
+      "provenance_hash": "8f84b8f4a21e9847bb0ad4420976e85ecf8cc573fb3b6bd0924d02c5a9532a70",
+      "sanitized": true,
+      "source_hash": "c8c13f43f5790d3ac90b69ee2d75d6b5f04d967ab300d0214e0053862d1bad0f"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "9de0ee7a23ab41370ca0400cb44f6e280a9af3678388b8396fc644c455eb27c0",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "8cdd5231560cacf3d8932b33dbd9fedc3bcf92783915824ff6b36a291bb89c30",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-4968248842",
+    "title": "বলাই"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

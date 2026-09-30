@@ -1,0 +1,115 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "275f78297ecf04acf828286b92c25d87fea3591b445b211efa6bbc227c4f31f5",
+    "chapters/chapter-001.json": "eae6c1b5730045e027b42151dc0177d2d54dc941ed6fbce8f9bc03cb6fca2e6c",
+    "checksum_manifest.json": "b4150da447ab7a32393467b31cc3db938b044b94c752730e42b230782033ed0f",
+    "highlight_sync.json": "e43267c0b21c66eea04baa38e5ad40911a3ed2662963b562bedb4006eb9922ce",
+    "public_book.json": "5b9eabc269db16b653048d92eb25dbbaa09f125e1aa1b090a9025f77a9a89e41",
+    "reader_manifest.json": "a9a2d2809e3099fba25e12685af8f4e7995a3d1e3d1e20bb5ca993b7bbac85de",
+    "source_evidence.json": "f0fb2ebfc7b66722c7d6a7a29c396559d0dafa13a09b7742593b20045cdc38be"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "1c6c50661763d7497213b1041ae809c1f63a1262387eacdbc0b0a3348fe8e350",
+      "file_sha256": "eae6c1b5730045e027b42151dc0177d2d54dc941ed6fbce8f9bc03cb6fca2e6c",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "275f78297ecf04acf828286b92c25d87fea3591b445b211efa6bbc227c4f31f5",
+    "chapters/chapter-001.json": "eae6c1b5730045e027b42151dc0177d2d54dc941ed6fbce8f9bc03cb6fca2e6c",
+    "checksum_manifest.json": "a4de16a5c4d7e8d5b04795d280bec2b13cea07408835bda5d7c2f2711e323162",
+    "highlight_sync.json": "e43267c0b21c66eea04baa38e5ad40911a3ed2662963b562bedb4006eb9922ce",
+    "public_book.json": "5b9eabc269db16b653048d92eb25dbbaa09f125e1aa1b090a9025f77a9a89e41",
+    "publication_manifest.json": "de0478851dfd8bd218e5bdb5ec3be59a9e4f00e8d2da1e8ebb318329dcc0916e",
+    "reader_manifest.json": "a9a2d2809e3099fba25e12685af8f4e7995a3d1e3d1e20bb5ca993b7bbac85de",
+    "source_evidence.json": "f0fb2ebfc7b66722c7d6a7a29c396559d0dafa13a09b7742593b20045cdc38be"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "275f78297ecf04acf828286b92c25d87fea3591b445b211efa6bbc227c4f31f5",
+      "public_book": "5b9eabc269db16b653048d92eb25dbbaa09f125e1aa1b090a9025f77a9a89e41",
+      "reader_manifest": "a9a2d2809e3099fba25e12685af8f4e7995a3d1e3d1e20bb5ca993b7bbac85de",
+      "source_evidence": "f0fb2ebfc7b66722c7d6a7a29c396559d0dafa13a09b7742593b20045cdc38be"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "30283a0a6bb180e6a7f2cdb77b945ecdfb212bf32e69513237ea633e2070dd6e",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "eae6c1b5730045e027b42151dc0177d2d54dc941ed6fbce8f9bc03cb6fca2e6c",
+          "title": "Full Text",
+          "word_count": 1399
+        }
+      ],
+      "content_hash": "0fbaa0cb48c5a35910ebee2891591d340c1e8b4f6e7e37b3c4af1070fe4827eb",
+      "provenance_hash": "96f13b64e75d574e6c94fa79a186f39f4bdeed875c52c7b9c6dacb55c1e06d5d",
+      "sanitized": true,
+      "source_hash": "1c6c50661763d7497213b1041ae809c1f63a1262387eacdbc0b0a3348fe8e350"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "f4167cce5d718ea4c16fb0a81c94231d8779f6f61be6faddf1050157e0413a5f",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779944684/earnalism/covers/front/cover_5dfb07a4-361f-4b48-aac7-a4a819e1c7b4.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "f0fb2ebfc7b66722c7d6a7a29c396559d0dafa13a09b7742593b20045cdc38be",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-f5d593e1f4",
+    "title": "রামকানাইয়ের নির্বুদ্ধিতা"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

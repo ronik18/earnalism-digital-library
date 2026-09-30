@@ -1,0 +1,268 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "d3b141745de46ee66c1f7a47ec02156d909370335f7b936e1583031d0d287a30",
+    "chapters/chapter-001.json": "bcde36b8ae4afedaeb4e6f561ee355a3a23d24d22f3e575b7618cce84cb57424",
+    "chapters/chapter-002.json": "0dcee496236c3895b189c1bfa16d4e7ade28e90575e1556ae7793efca02f30aa",
+    "chapters/chapter-003.json": "9e6e71f8c73399ba9770cea50d4a77038d1e0ff5319824f0795cbbdfc4f45bf2",
+    "chapters/chapter-004.json": "2cd6e0b6b1fed9989e87eb96a8c9939b96127a32f8db6a60965b78e848a9468b",
+    "chapters/chapter-005.json": "f01c78112c510b4f9b1db70d85350d05eb2d1851dc9f9027701a14323ac1851c",
+    "chapters/chapter-006.json": "efb2db7bac6af896f54e1ef9d63d08dce0b0b348731d78f409457418b33b6dab",
+    "chapters/chapter-007.json": "d54ba9789b7ed50c6e0d2438116a59e4ef1c817dfc7d9eb5249b168faf1951bd",
+    "chapters/chapter-008.json": "59e722d8d9bfdceccb532faf4a42469b978ee23da981363256670d998982dcc1",
+    "chapters/chapter-009.json": "bef6aa64413e8b3615bf4cf8da3adec02cb32267d4ae0ea4b9b916d64819ca8e",
+    "chapters/chapter-010.json": "712e9221095ebb4c357e455602c9149cbda6b3c4507a4464b1660a9cf2728e6d",
+    "chapters/chapter-011.json": "a30ba7adb4a5376a9c475f5e87e2516f333fb993c614b779205b8dce68eb6cce",
+    "chapters/chapter-012.json": "5b343f754ebd6fd3c4b808283a9cc4955f4d42dc87d3725526ea429a44e81562",
+    "checksum_manifest.json": "cdeac979d7f1226784195b8a1bd4a4a50adead6254c9e6e20ebb29b95efd94db",
+    "highlight_sync.json": "fb96a7aced05433c8bc5892633eed9d69df5f9640d5c2795483da6c51d17ebf4",
+    "public_book.json": "51481f2b45c62cd3902ed79c1caa6fb8e6af400d567f3458499c86eb647f1484",
+    "reader_manifest.json": "ae5b59118890b75403bb24f4a77f9d2ca9307d6a85a1c4dd06c30234ce837796",
+    "source_evidence.json": "62b59134df986b6deaa654c0a1c6012250260cd60d0fa35ea8ed3cefa4117384"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "104b7e3c2477c11fdc4e40b3fb9a12076626f568fb7aaa167f8523c9d102850d",
+      "file_sha256": "e43f6986be308931430ef92ee06633712f0272837c465b724f745efed84296a6",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "a2fb4e154be7dfd612ecfd52252285cf5b68ef1f0d5f22d9efd05adbf28f8d5e",
+      "file_sha256": "66bab26e98069495b7f6702de87ae2a32ba3723d763ad02fd863fa187a4b36d3",
+      "id": "chapter-002"
+    },
+    {
+      "content_sha256": "8abac900f8019473191aa983bc099869e95af3f6337bf741f4f3ad4eb964c785",
+      "file_sha256": "788f02016434b4cb8e4193327e7b854022bf07559d356f04bf98536390daa473",
+      "id": "chapter-003"
+    },
+    {
+      "content_sha256": "761d82ed79944f4da40c4d397b38afac3cfc94597a1fdc31807333e6da5b41c2",
+      "file_sha256": "5c83157736ddce90c7be60de1f4286bc41d0c6bea8a2e0abd7bae23d194bf80b",
+      "id": "chapter-004"
+    },
+    {
+      "content_sha256": "7e5b6c5ada1474bc92f29a9632c2efa071ce154afe84d213c7f0f6dcc2ca89b3",
+      "file_sha256": "ce2a47a67c46d131e0a7c3b3d50389a27bc24d3eab892e8fc59eabd64d048b47",
+      "id": "chapter-005"
+    },
+    {
+      "content_sha256": "a55b64a4102259c5fd45c2321cbda43e3b62a09610a468964cd81f572fc340ca",
+      "file_sha256": "a04d86edace13b0642d49f7ae9d2f8285b663f3bc1891c2e5b7260d13f51f85d",
+      "id": "chapter-006"
+    },
+    {
+      "content_sha256": "88713e0483ca657522d8f7b15ac9db785eaba44418015a8a1da6a334cf449e38",
+      "file_sha256": "ffd2ff398d456aca20a4edf5fe7562f300cc77d04ede75d85dfcc422944ec7be",
+      "id": "chapter-007"
+    },
+    {
+      "content_sha256": "41dbcdb545ee4e39a2a66c66f0f5763ef7c0a9e7510938afdf3219a1ad7a5d5b",
+      "file_sha256": "f63681a2a381bee8ee6cfdf209f6b4bb851991cc984da79f1f56e80cc284e231",
+      "id": "chapter-008"
+    },
+    {
+      "content_sha256": "9eb262d5d18b68081aa87e2f2b2f2017d04b70d759ce6efdc31b9606217ba284",
+      "file_sha256": "7af3063cc4e14da19aa5c786cf6b54606b85d4df7bc11e935898f7176b2eac12",
+      "id": "chapter-009"
+    },
+    {
+      "content_sha256": "c2e46a40d898143de31c82bc7f4c2ad6bc31d1261c613bdfdd0ab643ef7312b8",
+      "file_sha256": "7862da243af51cf9e6c6f7558353590bf7f499121d460413cc0629cd629cd491",
+      "id": "chapter-010"
+    },
+    {
+      "content_sha256": "b5c24d555b38ba5640bfda65ae3788ea728023e8109f0912b50b8862a2946db4",
+      "file_sha256": "0d0bc512cacd8975146429daa5b57dfcf26f84d836ace38354c10e170644ef4c",
+      "id": "chapter-011"
+    },
+    {
+      "content_sha256": "ed41d07cab3b03a857470f3b55f29834d98d8cedafb5eea1ef02b240449727f1",
+      "file_sha256": "2581e99590e1f9654ccbb3ef9b3df70cc850a78f26b0d6e21feba24b06db8cf9",
+      "id": "chapter-012"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "12641b87097def4f649ae0dcfb8f5a243e2b56929a8e1b35223d94c9d93b2b93",
+    "chapters/chapter-001.json": "e43f6986be308931430ef92ee06633712f0272837c465b724f745efed84296a6",
+    "chapters/chapter-002.json": "66bab26e98069495b7f6702de87ae2a32ba3723d763ad02fd863fa187a4b36d3",
+    "chapters/chapter-003.json": "788f02016434b4cb8e4193327e7b854022bf07559d356f04bf98536390daa473",
+    "chapters/chapter-004.json": "5c83157736ddce90c7be60de1f4286bc41d0c6bea8a2e0abd7bae23d194bf80b",
+    "chapters/chapter-005.json": "ce2a47a67c46d131e0a7c3b3d50389a27bc24d3eab892e8fc59eabd64d048b47",
+    "chapters/chapter-006.json": "a04d86edace13b0642d49f7ae9d2f8285b663f3bc1891c2e5b7260d13f51f85d",
+    "chapters/chapter-007.json": "ffd2ff398d456aca20a4edf5fe7562f300cc77d04ede75d85dfcc422944ec7be",
+    "chapters/chapter-008.json": "f63681a2a381bee8ee6cfdf209f6b4bb851991cc984da79f1f56e80cc284e231",
+    "chapters/chapter-009.json": "7af3063cc4e14da19aa5c786cf6b54606b85d4df7bc11e935898f7176b2eac12",
+    "chapters/chapter-010.json": "7862da243af51cf9e6c6f7558353590bf7f499121d460413cc0629cd629cd491",
+    "chapters/chapter-011.json": "0d0bc512cacd8975146429daa5b57dfcf26f84d836ace38354c10e170644ef4c",
+    "chapters/chapter-012.json": "2581e99590e1f9654ccbb3ef9b3df70cc850a78f26b0d6e21feba24b06db8cf9",
+    "checksum_manifest.json": "f35bab87ef558398f80ba55f8da73561b71ddea2aec60a1c3208684cd688fd17",
+    "highlight_sync.json": "fb96a7aced05433c8bc5892633eed9d69df5f9640d5c2795483da6c51d17ebf4",
+    "public_book.json": "0b44e473913a449757882ec6277235bc5b78f37c4f19fb8d89417fd3664f7853",
+    "reader_manifest.json": "b4884654a495c628c64916819dff635597f5afdb10b0ecaf46f6c88b3f8dd288",
+    "source_evidence.json": "62b59134df986b6deaa654c0a1c6012250260cd60d0fa35ea8ed3cefa4117384"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "12641b87097def4f649ae0dcfb8f5a243e2b56929a8e1b35223d94c9d93b2b93",
+      "public_book": "0b44e473913a449757882ec6277235bc5b78f37c4f19fb8d89417fd3664f7853",
+      "reader_manifest": "b4884654a495c628c64916819dff635597f5afdb10b0ecaf46f6c88b3f8dd288",
+      "source_evidence": "62b59134df986b6deaa654c0a1c6012250260cd60d0fa35ea8ed3cefa4117384"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 12,
+      "chapter_index_sha256": "2b94e158b4d1cfc0cf4d9efe878e84af1119e4fa8d3b4c1fbe5eae071c3d2e67",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "e43f6986be308931430ef92ee06633712f0272837c465b724f745efed84296a6",
+          "title": "CHAPTER I",
+          "word_count": 2175
+        },
+        {
+          "id": "chapter-002",
+          "order": 2,
+          "sha256": "66bab26e98069495b7f6702de87ae2a32ba3723d763ad02fd863fa187a4b36d3",
+          "title": "CHAPTER II. The Pool of Tears",
+          "word_count": 2176
+        },
+        {
+          "id": "chapter-003",
+          "order": 3,
+          "sha256": "788f02016434b4cb8e4193327e7b854022bf07559d356f04bf98536390daa473",
+          "title": "CHAPTER III",
+          "word_count": 1732
+        },
+        {
+          "id": "chapter-004",
+          "order": 4,
+          "sha256": "5c83157736ddce90c7be60de1f4286bc41d0c6bea8a2e0abd7bae23d194bf80b",
+          "title": "CHAPTER IV",
+          "word_count": 2730
+        },
+        {
+          "id": "chapter-005",
+          "order": 5,
+          "sha256": "ce2a47a67c46d131e0a7c3b3d50389a27bc24d3eab892e8fc59eabd64d048b47",
+          "title": "CHAPTER V",
+          "word_count": 2244
+        },
+        {
+          "id": "chapter-006",
+          "order": 6,
+          "sha256": "a04d86edace13b0642d49f7ae9d2f8285b663f3bc1891c2e5b7260d13f51f85d",
+          "title": "CHAPTER VI",
+          "word_count": 2655
+        },
+        {
+          "id": "chapter-007",
+          "order": 7,
+          "sha256": "ffd2ff398d456aca20a4edf5fe7562f300cc77d04ede75d85dfcc422944ec7be",
+          "title": "CHAPTER VII. A Mad Tea-Party",
+          "word_count": 2364
+        },
+        {
+          "id": "chapter-008",
+          "order": 8,
+          "sha256": "f63681a2a381bee8ee6cfdf209f6b4bb851991cc984da79f1f56e80cc284e231",
+          "title": "CHAPTER VIII. The Queen’s Croquet-Ground",
+          "word_count": 2547
+        },
+        {
+          "id": "chapter-009",
+          "order": 9,
+          "sha256": "7af3063cc4e14da19aa5c786cf6b54606b85d4df7bc11e935898f7176b2eac12",
+          "title": "CHAPTER IX. The Mock Turtle’s Story",
+          "word_count": 2351
+        },
+        {
+          "id": "chapter-010",
+          "order": 10,
+          "sha256": "7862da243af51cf9e6c6f7558353590bf7f499121d460413cc0629cd629cd491",
+          "title": "CHAPTER X. The Lobster Quadrille",
+          "word_count": 2095
+        },
+        {
+          "id": "chapter-011",
+          "order": 11,
+          "sha256": "0d0bc512cacd8975146429daa5b57dfcf26f84d836ace38354c10e170644ef4c",
+          "title": "CHAPTER XI",
+          "word_count": 1932
+        },
+        {
+          "id": "chapter-012",
+          "order": 12,
+          "sha256": "2581e99590e1f9654ccbb3ef9b3df70cc850a78f26b0d6e21feba24b06db8cf9",
+          "title": "CHAPTER XII. Alice’s Evidence",
+          "word_count": 2171
+        }
+      ],
+      "content_hash": "37e99a24d25aea8914744cf4717c7f7540303fa0aff01db75b1143f6fb637447",
+      "provenance_hash": "4e19e7841da7de8d46afb025c7a8365520bcaf525b9c309a766bd7fb755a2c09",
+      "sanitized": true,
+      "source_hash": "49c44704fee971be4aff3b6ebf4764b9aabf0c1f338ca72942216a301205bd8d"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "663ba3ec6b8f26011a79abd4a4ee975a60e31710295411e4b859d9a7853879a7",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902722/earnalism/covers/front/cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "62b59134df986b6deaa654c0a1c6012250260cd60d0fa35ea8ed3cefa4117384",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "alices-adventures-in-wonderland",
+    "title": "Alice's Adventures in Wonderland"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

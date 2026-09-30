@@ -5528,7 +5528,7 @@ class AutomationTaskResult(BaseModel):
     result: Dict[str, Any] = Field(default_factory=dict)
 
 
-AUTOMATION_ALLOWED_TASKS = {"reader-benchmark", "bridge-fixture", "codex-implementation-fixture", "codex-implementation"}
+AUTOMATION_ALLOWED_TASKS = {"reader-benchmark", "bridge-fixture", "catalogue-processing", "codex-implementation-fixture", "codex-implementation"}
 AUTOMATION_TERMINAL_STATES = {"DONE", "FAILED", "WAITING_DEPENDENCY", "WAITING_OWNER", "PAUSED"}
 
 

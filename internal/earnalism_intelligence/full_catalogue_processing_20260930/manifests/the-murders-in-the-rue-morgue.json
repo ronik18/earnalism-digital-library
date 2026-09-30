@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "dd7d47e182fd0af117c062d12718c897841640775fa387cbb4d13ca9448b3aee",
+    "chapters/chapter-001.json": "6c780d1c2d7d47298c47a43916a4587c37091f9dad1553e3839ac7db7738b29b",
+    "checksum_manifest.json": "76b8ed0ae6ca1870475219dd7ee7dd51d434910a3d8e0e5f23f58db346c0a2b8",
+    "highlight_sync.json": "d23d5f5bf8466b0534ed4df0896fc060935f393942c1c84c54f2bb9d74cf13b4",
+    "public_book.json": "84037d9506bf608a9ad29f78bc9ff099f337bf9e2ac9352da1fb9fceab4cb6ff",
+    "reader_manifest.json": "155ab2bd8bf62422a44c9d4c5d3b7523e654cb0a13d64609d512e0f6b36d2ab3",
+    "source_evidence.json": "ce138f34b5bad7de3fdb8230fd73f8b4a72fec3b378c8ebaeb6239b882e9924c"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "037fd47cc776d2825d701acc0c53900a99c383f611977f690899db4f68df3fb0",
+      "file_sha256": "6c780d1c2d7d47298c47a43916a4587c37091f9dad1553e3839ac7db7738b29b",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "dd7d47e182fd0af117c062d12718c897841640775fa387cbb4d13ca9448b3aee",
+    "chapters/chapter-001.json": "6c780d1c2d7d47298c47a43916a4587c37091f9dad1553e3839ac7db7738b29b",
+    "checksum_manifest.json": "76b8ed0ae6ca1870475219dd7ee7dd51d434910a3d8e0e5f23f58db346c0a2b8",
+    "highlight_sync.json": "d23d5f5bf8466b0534ed4df0896fc060935f393942c1c84c54f2bb9d74cf13b4",
+    "public_book.json": "84037d9506bf608a9ad29f78bc9ff099f337bf9e2ac9352da1fb9fceab4cb6ff",
+    "reader_manifest.json": "155ab2bd8bf62422a44c9d4c5d3b7523e654cb0a13d64609d512e0f6b36d2ab3",
+    "source_evidence.json": "ce138f34b5bad7de3fdb8230fd73f8b4a72fec3b378c8ebaeb6239b882e9924c"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "dd7d47e182fd0af117c062d12718c897841640775fa387cbb4d13ca9448b3aee",
+      "public_book": "84037d9506bf608a9ad29f78bc9ff099f337bf9e2ac9352da1fb9fceab4cb6ff",
+      "reader_manifest": "155ab2bd8bf62422a44c9d4c5d3b7523e654cb0a13d64609d512e0f6b36d2ab3",
+      "source_evidence": "ce138f34b5bad7de3fdb8230fd73f8b4a72fec3b378c8ebaeb6239b882e9924c"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "efe8be926f1d1407183348667b5da2b300419e9f7c86027755c40f7ecaa970e4",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "6c780d1c2d7d47298c47a43916a4587c37091f9dad1553e3839ac7db7738b29b",
+          "title": "The Murders in the Rue Morgue",
+          "word_count": 13882
+        }
+      ],
+      "content_hash": "e2683c1bec04ea4cc15f1777fe762bb4227daae89dea7fdbbbc1f9751d0b84bc",
+      "provenance_hash": "2434e19f68e93e8072b0659424b44b4fcf95b05de66fe6defec57cec10c9afb0",
+      "sanitized": true,
+      "source_hash": "cb52ddf4a8617bb3331028ff932c34daf7f762a33ea13563cd5d7e983b095c11"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "390aaf893775124599baf37e0685fd937620d241bcbe860f71e58596b7ab0c0b",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "ce138f34b5bad7de3fdb8230fd73f8b4a72fec3b378c8ebaeb6239b882e9924c",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-murders-in-the-rue-morgue",
+    "title": "The Murders in the Rue Morgue"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

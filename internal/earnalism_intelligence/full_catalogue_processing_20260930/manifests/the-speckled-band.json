@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "b7fffa83d48248f0a1720495b91e41eef8c21ebce981e6311fec1ba4a9a65f54",
+    "chapters/chapter-001.json": "c644ef48e9feafca7c3444b42aad83689bcf341def0eb8cdf009ffe89b4b646f",
+    "checksum_manifest.json": "1e9767ce971fd5974573f46024d70ebfee4d1943cefe07633d3513a0dfeca588",
+    "highlight_sync.json": "a549c484a1f9445de2caa7bbfe8340a6383765a6a7a75c746ff4a1c25e2fb76f",
+    "public_book.json": "6e1120bf494c15f1fef26342c0be6ae20c9d7f88294ce35594c4558b175b2770",
+    "reader_manifest.json": "99c60761cc3dbf0e4128e1c6e470f171de69e5f8aba4fc6dd006941a110ad41e",
+    "source_evidence.json": "a3cacbad4459b27f5c26e6e55f5e92431a091ae86edc34b76ff4a92e50af22b9"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "ef46d27a97d829def7dbb2935f56aa044ea42ee2122b2f137d8d515cc50cf535",
+      "file_sha256": "c644ef48e9feafca7c3444b42aad83689bcf341def0eb8cdf009ffe89b4b646f",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "b7fffa83d48248f0a1720495b91e41eef8c21ebce981e6311fec1ba4a9a65f54",
+    "chapters/chapter-001.json": "c644ef48e9feafca7c3444b42aad83689bcf341def0eb8cdf009ffe89b4b646f",
+    "checksum_manifest.json": "1e9767ce971fd5974573f46024d70ebfee4d1943cefe07633d3513a0dfeca588",
+    "highlight_sync.json": "a549c484a1f9445de2caa7bbfe8340a6383765a6a7a75c746ff4a1c25e2fb76f",
+    "public_book.json": "6e1120bf494c15f1fef26342c0be6ae20c9d7f88294ce35594c4558b175b2770",
+    "reader_manifest.json": "99c60761cc3dbf0e4128e1c6e470f171de69e5f8aba4fc6dd006941a110ad41e",
+    "source_evidence.json": "a3cacbad4459b27f5c26e6e55f5e92431a091ae86edc34b76ff4a92e50af22b9"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "b7fffa83d48248f0a1720495b91e41eef8c21ebce981e6311fec1ba4a9a65f54",
+      "public_book": "6e1120bf494c15f1fef26342c0be6ae20c9d7f88294ce35594c4558b175b2770",
+      "reader_manifest": "99c60761cc3dbf0e4128e1c6e470f171de69e5f8aba4fc6dd006941a110ad41e",
+      "source_evidence": "a3cacbad4459b27f5c26e6e55f5e92431a091ae86edc34b76ff4a92e50af22b9"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "304869dbb5529fd61ec24cfe18076f1b75a58fb44acc269f3efb6336679aba7f",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "c644ef48e9feafca7c3444b42aad83689bcf341def0eb8cdf009ffe89b4b646f",
+          "title": "The Speckled Band",
+          "word_count": 9867
+        }
+      ],
+      "content_hash": "78c18a18063608bbe008f0b933a47113f21852166857877e5e1d9c770ca621e8",
+      "provenance_hash": "ef4ae9f1cec1960e924230c7208b4d2471297535df3466e5d219d2ca1bc5115e",
+      "sanitized": true,
+      "source_hash": "6e1a4b7da706a2b3e55ea0be17cf1e2acf6894db69ee6e7974a47d2188bfbb8c"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "2da690512355106cbab42f2e53dba79f3b4fce08ef38062a232f3830d7dd7df5",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "a3cacbad4459b27f5c26e6e55f5e92431a091ae86edc34b76ff4a92e50af22b9",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-speckled-band",
+    "title": "The Speckled Band"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}
