@@ -9,7 +9,7 @@
   "worker_review": "PENDING_EXACT_HEAD_PIPELINE",
   "processing_state": "internal/earnalism_intelligence/full_catalogue_processing_20260930/catalogue_state.json",
   "production_reader_verification": "PENDING_TRUSTED_INDIA_CONTEXT",
-  "next_exact_command": "gh pr checks 486 --repo ronik18/earnalism-digital-library --watch --fail-fast",
+  "next_exact_command": "gh pr checks <worker-report-pr> --repo ronik18/earnalism-digital-library --watch --fail-fast",
   "prior_candidate_pipeline": {
     "head": "98984d52eee26a8c5361edfcd58c97df706b73d4",
     "run_id": 36705876984,
@@ -44,12 +44,11 @@
     "implementation_result": "BLOCKED_COMMAND_STARTUP_EACCES_NOT_AN_EVIDENCE_ASSESSMENT",
     "receipt_required": true,
     "latest_verified_outcome": {
-      "run": 36773761003,
-      "receipt": "COMPLETED_20_CANDIDATES",
-      "physical_cwd_execution": "VERIFIED",
-      "controller_scope": "FAIL_DERIVED_REPORTS",
-      "publication": "NONE",
-      "checksum_proposals": "FIVE_HELD_NOT_YET_ACCEPTED"
+      "run": 36780560381,
+      "receipt": "STARTED_REJECTED",
+      "command_execution": "VERIFIED",
+      "regeneration": "BLOCKED_CONTROLLER_RESTORED_FILE_PERMISSIONS",
+      "publication": "NONE"
     }
   },
   "historical_unavailable_seo_recovery": {
@@ -78,6 +77,20 @@
       "publication_authority_changed": false,
       "required_next": "Fresh exact-head full hosted regression and browser evidence, protected merge, production deploy/canaries and actual bounded catalogue assessment",
       "next_exact_command": "gh pr checks 486 --repo ronik18/earnalism-digital-library --watch --fail-fast"
+    },
+    "verified_release": {
+      "pr": 486,
+      "candidate_sha": "da340e6f53a6c2e614fb3de0f4f16800c68ead45",
+      "tree_sha": "61e27f91311343ee0a8f0e82f694fb0dcaab00ff",
+      "required_ci": "PASS",
+      "fresh_three_browser_review_run": 36778025065,
+      "fresh_browser_review": "PASS_INDEPENDENTLY_VERIFIED_ENVELOPE",
+      "browser_artifact": 11127451386,
+      "production_main_run": 36780560388,
+      "production_deploy": "SUCCESS",
+      "production_url": "https://earnalism-oujgqhwpx-sales-8498s-projects.vercel.app",
+      "public_alias": "https://theearnalism.com",
+      "production_canaries": "PASS_REMOVED_ROUTES_STATIC_SEO_REGRESSION"
     }
   },
   "generated_evidence_preservation": {
@@ -118,5 +131,53 @@
     "audio_activations": 0,
     "customer_ready": "NOT_DECLARED",
     "next_exact_command": "gh pr checks <report-preservation-pr> --repo ronik18/earnalism-digital-library --watch --fail-fast"
+  },
+  "worker_report_directory_recovery": {
+    "timestamp": "2026-09-30T21:57:56.561299+00:00",
+    "workstream": "open_issue_autonomous_resolution",
+    "decision": "PRESERVE_CONTROLLER_REPORTS_USE_WORKER_OWNED_GENERATION_AND_RETAINED_EXACT_SOURCE",
+    "source_head": "cae4d7c8105d14e831e62152403003a8cdad5016",
+    "failed_campaign_run": 36780560381,
+    "failed_job": 110109456518,
+    "observed_failures": [
+      "Worker default regeneration hit PermissionError on controller-restored manifests/a-ghost-story.json",
+      "Three Enchanted April source-fidelity tests referenced absent /private/tmp/pg16389.txt despite an exact retained source archive"
+    ],
+    "receipt_result": "STARTED_REJECTED_NO_CANDIDATE_NO_PUBLICATION",
+    "source_or_title_package_changed": false,
+    "repairs": [
+      "Explicit known worker-owned private report directory already covered by the evidence archive guard; preserve controller-restored reports",
+      "Enchanted April tooling reads the retained source archive, retaining the existing exact source SHA check and every fidelity/cover/private/audio assertion",
+      "Mandatory Enchanted April dry-run tests in normal full regression and campaign focused validation; actual UID fixture covers read-only historical files, separate worker reports and safe controller archive recovery"
+    ],
+    "retained_source_sha256": "d2d5a31f295361fb742f44729d3de6082cd7bff742a0484cd178731d66ef8370",
+    "local_tests": {
+      "exact_source_structure_cover_private_determinism": 3,
+      "report_and_receipt": 9,
+      "new_real_uid_fixture": "REQUIRED_HOSTED_NOT_RUN_LOCALLY"
+    },
+    "verified_release": {
+      "pr": 486,
+      "candidate_sha": "da340e6f53a6c2e614fb3de0f4f16800c68ead45",
+      "tree_sha": "61e27f91311343ee0a8f0e82f694fb0dcaab00ff",
+      "required_ci": "PASS",
+      "fresh_three_browser_review_run": 36778025065,
+      "fresh_browser_review": "PASS_INDEPENDENTLY_VERIFIED_ENVELOPE",
+      "browser_artifact": 11127451386,
+      "production_main_run": 36780560388,
+      "production_deploy": "SUCCESS",
+      "production_url": "https://earnalism-oujgqhwpx-sales-8498s-projects.vercel.app",
+      "public_alias": "https://theearnalism.com",
+      "production_canaries": "PASS_REMOVED_ROUTES_STATIC_SEO_REGRESSION"
+    },
+    "baseline_counts": {
+      "assessed": 231,
+      "accepted_live": 7,
+      "held": 224,
+      "missing_packages": 69
+    },
+    "customer_ready": "NOT_DECLARED",
+    "physical_device_uat": "DEFERRED_BY_OWNER_NOT_RUN",
+    "next_exact_command": "gh pr checks <worker-report-pr> --repo ronik18/earnalism-digital-library --watch --fail-fast"
   }
 }

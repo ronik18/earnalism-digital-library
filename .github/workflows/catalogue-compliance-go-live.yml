@@ -294,7 +294,7 @@ jobs:
             8. Keep root and backend runtime packages byte/parity-correct where the repository contract requires it.
             9. Keep all audio flags false/disabled and audio_enabled_slugs empty.
             10. Run focused rights, publication, controlled-launch, catalogue, checksum, and Reader tests. Use the controller-provisioned interpreter ${{ env.pythonLocation }}/bin/python3 for Python and backend tests; the worker login PATH may select a system Python without the installed dependencies. Do not run the controller-only sudo/permission fixtures from this unprivileged account. For backend unit-test imports, explicitly prefix synthetic loopback settings: ENVIRONMENT=uat MONGODB_URL=mongodb://127.0.0.1:27018/earnalism_catalogue_test JWT_SECRET=synthetic-catalogue-unit-test-only READING_PASS_V2_ENABLED=false ENABLE_STARTUP_DB_MAINTENANCE=false. These are test inputs, not production evidence. Do not claim completion for titles still held.
-            11. Keep this implementation pass bounded. Do not spend the run exhaustively researching a single unresolved title; leave unsupported facts held. Keep additional temporary comparison reports outside Git under /tmp. Before finishing, regenerate the private catalogue state with scripts/process_full_catalogue.py using its default output directory so remaining blockers are explicit and reproducible. Do not leave alternate generated report directories in the checkout; they are not publication inputs.
+            11. Keep this implementation pass bounded. Do not spend the run exhaustively researching a single unresolved title; leave unsupported facts held. Keep additional temporary comparison reports outside Git under /tmp. Before finishing, regenerate private catalogue evidence with scripts/process_full_catalogue.py --output internal/earnalism_intelligence/full_catalogue_processing_20260930_worker. This separate worker-owned report directory is covered by the controller's evidence archive guard. The canonical historical report files were restored by the controller and may be read-only; preserve them and do not bypass their permissions. Do not leave any other alternate report directory in the checkout. Generated reports are not publication inputs.
             12. In your final message report newly-live slugs, repaired-but-still-held slugs, unchanged external holds, tests run, and any authoritative external evidence fetched.
 
       - name: Recompute catalogue truth
@@ -469,6 +469,7 @@ jobs:
         run: |
           set -euo pipefail
           python3 -m unittest scripts.test_process_full_catalogue scripts.test_autonomy_bridge
+          python3 -m pytest scripts/test_repair_enchanted_april_reader_preflight.py -q
           python3 -m pytest             backend/tests/test_rights_decision_gate.py             backend/tests/test_rights_engine.py             backend/tests/test_controlled_publication_precheck.py             backend/tests/test_commercial_batch_launch_guard.py             backend/tests/test_controlled_launch_parity.py -q
           if [ -f frontend/package.json ]; then
             npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath src/lib/controlledLaunch.canonicalAuthority.test.js src/lib/controlledLaunch.previewParity.test.js

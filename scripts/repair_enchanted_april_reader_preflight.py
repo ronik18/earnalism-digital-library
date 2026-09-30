@@ -13,11 +13,11 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 SLUG = "the-enchanted-april"
-SOURCE = Path("/private/tmp/pg16389.txt")
 SOURCE_URL = "https://www.gutenberg.org/cache/epub/16389/pg16389.txt"
 SOURCE_SHA = "d2d5a31f295361fb742f44729d3de6082cd7bff742a0484cd178731d66ef8370"
 CONTENT = ROOT / "content/books" / SLUG
 RAW = CONTENT / "raw/source.txt"
+SOURCE = RAW
 PACK = ROOT / "data/controlled_publications" / SLUG
 BACKEND = ROOT / "backend/data/controlled_publications" / SLUG
 FRONT = ROOT / "frontend/public/assets/books" / SLUG / "front-cover.webp"
