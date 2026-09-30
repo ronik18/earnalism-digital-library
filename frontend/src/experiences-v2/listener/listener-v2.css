@@ -29,8 +29,8 @@
   color: var(--listener-paper);
 }
 .listener-v2 .experience-header {
-  height: 62px;
-  min-height: 62px;
+  height: 92px;
+  min-height: 92px;
   padding-inline: clamp(16px, 2.6vw, 42px);
   border-color: rgba(72, 15, 26, .14);
   background: #F6EDDC;
