@@ -217,7 +217,7 @@
   .reader-v2__context { display: none; }
 }
 @media (max-width: 767px) {
-  .reader-v2 .experience-header, .reader-v2 .experience-header--compact { height: 56px; min-height: 56px; padding-inline: 14px; }
+  .reader-v2 .experience-header, .reader-v2 .experience-header--compact { height: 58px; min-height: 58px; padding-inline: 14px; }
   .reader-v2__layout { width: 100%; padding: 0 0 24px; }
   .reader-v2__canvas { padding: 18px 20px 16px; border-radius: 0; box-shadow: none; }
   .reader-v2__chapter h1 { color: var(--reader-maroon); font-size: clamp(29px, 8vw, 36px); }

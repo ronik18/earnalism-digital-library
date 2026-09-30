@@ -25,7 +25,7 @@ Both routes were captured at every requested CSS viewport: 1600 × 1000, 1440 ×
 
 - Base source fingerprint (PR471 main at `57237eb76c24022f02214ce08fd02b7869fe411`): `211b1ce39a61ace6fe92d3a6162cd85b5e5009b6ac819f94b8e89cce966ce3c9` (independently reproduced from a `git archive` copy; 330 hashed files).
 - PR472 merged-main source fingerprint: `ce26abb38ce5d4a835c589c0b784ceaf91f4647373f4517bc7c96814b2bdffc7`.
-- Combined A candidate source fingerprint: `2a2ce419d454d716639b7ba17f1f02a43a929ef8f399d15e11f9386504b4b4e4` (independently reproduced after combining current main and Task A; 331 hashed files). Both seamless-brand workflow authorities are being bound to this exact candidate fingerprint. The canonical Earnalism logo hash remains unchanged.
+- Combined A candidate source fingerprint after rebasing PR472 and correcting Reader reflow: `d80f0fa773aa9f6d8db5000ca9d7de86c21fbde9245ffe1998e149d1727bb85e` (independently reproduced, 331 hashed files). Both seamless-brand workflow authorities are bound to this exact source fingerprint. The canonical Earnalism logo hash remains unchanged.
 
 ## Verification
 
@@ -33,6 +33,6 @@ Both routes were captured at every requested CSS viewport: 1600 × 1000, 1440 ×
 - `npm run build --prefix frontend`: passed.
 - Static SEO verifier: 34/34 snapshots, 703 assertions, 0 failed.
 - `git diff --check`: passed.
-- Full visual smoke report: `visual-smoke-report.json`, PASS.
+- Full visual smoke report after the 58 px correction: `visual-smoke-report.json`, 16/16 routes PASS. Refreshed viewport screenshots and `screenshots.sha256` are included.
 
-An exact-head GitHub owner-review artifact was published for `8d44970ccabe8146c1b3538fd4ae1dd18630f908`: artifact `pr473-fresh-mobile-header-menu-review-8d44970ccabe8146c1b3538fd4ae1dd18630f908` (run 36685329332). The later current-head seamless-brand workflow exposed a high-zoom Reader rendered UI defect, so that check must be rerun after correction and rebasing. This is not a production deployment or release approval; audiobook release remains fail-closed.
+An exact-head GitHub owner-review artifact was published for the prior candidate `8d44970ccabe8146c1b3538fd4ae1dd18630f908`: artifact `pr473-fresh-mobile-header-menu-review-8d44970ccabe8146c1b3538fd4ae1dd18630f908` (run 36685329332). A fresh exact-head review is required after this corrective commit. The current-head seamless-brand workflow exposed a Reader lockup bounding box 0.69 px above the top edge at 390 px and 320 px at 100% zoom, caused by the 56 px Reader masthead being shorter than the canonical lockup. The masthead now uses 58 px; the same high-zoom gate passes all 23 assertions against the corrected fixture build. Current main used the shared 72 px mobile masthead, so this was a Task A regression. This is not a production deployment or release approval; audiobook release remains fail-closed.
