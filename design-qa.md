@@ -51,7 +51,7 @@ No actionable P0, P1, or P2 visual findings remain. The final comparison is agai
 
 ## Owner review
 
-Exact-head owner package: `uat/evidence/homepage-beige-refinement/owner-review-exact-head/` and `uat/evidence/homepage-beige-owner-review-exact-head.zip`. The manifest records head `94a1f08388f580d5d05c6b6a01aa9962722f8b30`, base `57237eb76c24022f02214ce08fd02b7869fe4114`, five full-page/five viewport captures, the source mock, both comparison sheets, and the payment API audit. The local payment route is marked `EXPECTED_TEST_ENVIRONMENT_LIMITATION`.
+Exact-head owner package: `uat/evidence/homepage-beige-refinement/owner-review-exact-head/` and `uat/evidence/homepage-beige-owner-review-exact-head.zip`. The manifest records the exact reviewed branch head and base `57237eb76c24022f02214ce08fd02b7869fe4114`, five full-page/five viewport captures, the source mock, both comparison sheets, focus-state evidence, the payment API audit, and the production offers fixture. The final screenshots were refreshed from the branch after PR #471 was merged; `capture-report-main-live.json` records the screenshot head and all five widths. The local payment route is marked `EXPECTED_TEST_ENVIRONMENT_LIMITATION`.
 
 Status: `READY_FOR_OWNER_VISUAL_APPROVAL`. Owner visual approval is **WAITING** for this exact head. The change has not been merged or deployed.
 
