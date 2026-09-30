@@ -14,11 +14,31 @@ if (useVercelOidc && !new URL(baseUrl).hostname.endsWith(".vercel.app")) throw n
 const publicationContract = JSON.parse(readFileSync(new URL("../static-seo/controlled-publication-public.json", import.meta.url), "utf8"));
 const canonicalTitleRoutes = (publicationContract.publications || []).flatMap(({ slug }) => [
   `/book/${encodeURIComponent(slug)}`,
+  `/book/${encodeURIComponent(slug)}/`,
   `/reader/${encodeURIComponent(slug)}`,
+  `/reader/${encodeURIComponent(slug)}/`,
   `/listener/${encodeURIComponent(slug)}`,
+  `/listener/${encodeURIComponent(slug)}/`,
   `/reader-legacy/${encodeURIComponent(slug)}`,
   `/listener-legacy/${encodeURIComponent(slug)}`,
 ]);
+const historicalTitleRoutes = [
+  "/book/the-selfish-giant",
+  "/book/the-selfish-giant/",
+  "/reader/the-selfish-giant",
+  "/reader/the-selfish-giant/",
+  "/book/moby-dick-or-the-whale",
+  "/book/moby-dick-or-the-whale/",
+  "/reader/moby-dick-or-the-whale",
+  "/reader/moby-dick-or-the-whale/",
+  "/book/the-count-of-monte-cristo",
+  "/book/the-count-of-monte-cristo/",
+  "/reader/the-count-of-monte-cristo",
+  "/reader/the-count-of-monte-cristo/",
+  "/book/dracula/",
+  "/reader/dracula/",
+  "/listener/dracula/",
+];
 const routes = [
   "/",
   "/library",
@@ -51,6 +71,7 @@ const routes = [
   "/book/dracula",
   "/reader/dracula",
   "/listener/dracula",
+  ...historicalTitleRoutes,
   "/reader-legacy/dracula",
   "/listener-legacy/dracula",
   "/admin/login",

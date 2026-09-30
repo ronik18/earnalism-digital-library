@@ -115,6 +115,7 @@ export function AppRouterContent() {
             <Route path="/" element={<Home />} />
             <Route path="/library" element={<Library />} />
             <Route path="/book/dracula" element={<UnavailableTitle />} />
+            <Route path="/book/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />
             <Route path="/book/:slug" element={<BookDetail />} />
             <Route path="/journal" element={<Journal />} />
             <Route path="/journal/:slug" element={<JournalArticle />} />
@@ -139,6 +140,7 @@ export function AppRouterContent() {
           </Route>
           {/* Standalone full-screen routes (no public header/footer) */}
           <Route path="/reader/dracula" element={<UnavailableTitle />} />
+          <Route path="/reader/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />
           <Route path="/reader/:slug" element={<ReaderV2 />} />
           <Route path="/reader-legacy/:slug" element={<ReaderLegacy />} />
           <Route path="/listener/dracula" element={<UnavailableTitle />} />

@@ -32,4 +32,23 @@ describe("historical title release hold page", () => {
       container.remove();
     }
   });
+
+  test("uses the historical title identity in recovery links without fetching its content", () => {
+    const container = document.createElement("div");
+    document.body.appendChild(container);
+    const root = createRoot(container);
+    const originalFetch = global.fetch;
+    global.fetch = jest.fn(() => { throw new Error("unavailable page must not fetch title data"); });
+
+    try {
+      act(() => root.render(<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />));
+      expect(container.querySelector("h1").textContent).toBe("The Selfish Giant is not currently available.");
+      expect(container.querySelector('[data-testid="unavailable-title-contact-link"]').getAttribute("href")).toBe("/contact?interest=the-selfish-giant");
+      expect(global.fetch).not.toHaveBeenCalled();
+    } finally {
+      global.fetch = originalFetch;
+      act(() => root.unmount());
+      container.remove();
+    }
+  });
 });

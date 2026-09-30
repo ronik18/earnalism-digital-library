@@ -8,7 +8,7 @@ describe("approved Reader direct-route contract", () => {
   const app = read("src/App.js");
   const vercel = JSON.parse(read("vercel.json"));
 
-  test("keeps verified reader-enabled titles reachable before the generic reader 404 policy", () => {
+  test("keeps the current A White Heron Reader route reachable before the generic reader 404 policy", () => {
     expect(app).toContain('<Route path="/reader/:slug" element={<ReaderV2 />} />');
     const rewrites = vercel.rewrites || [];
     const dynamicNotFound = rewrites.findIndex(
@@ -19,8 +19,6 @@ describe("approved Reader direct-route contract", () => {
     [
       "/reader/a-white-heron",
       "/reader/a-white-heron/",
-      "/reader/the-selfish-giant",
-      "/reader/the-selfish-giant/",
     ].forEach((source) => {
       const index = rewrites.findIndex(
         (rule) => rule.source === source && rule.destination === "/index.html",
@@ -30,7 +28,7 @@ describe("approved Reader direct-route contract", () => {
     });
   });
 
-  test("keeps all other reader slugs behind the explicit not-found policy", () => {
+  test("keeps unknown reader slugs behind the explicit not-found policy", () => {
     expect(vercel.rewrites).toContainEqual({
       source: "/reader/:slug",
       destination: "/api/not-found",
@@ -52,6 +50,17 @@ describe("approved Reader direct-route contract", () => {
       const index = rewrites.findIndex((rule) => rule.source === source && rule.destination === "/index.html");
       expect(index).toBeGreaterThanOrEqual(0);
       expect(index).toBeLessThan(genericListenerNotFound);
+    });
+  });
+
+  test("serves the held historical Selfish Giant Reader URL without entering the Reader", () => {
+    expect(app).toContain('<Route path="/reader/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />');
+    const rewrites = vercel.rewrites || [];
+    const genericNotFound = rewrites.findIndex((rule) => rule.source === "/reader/:slug" && rule.destination === "/api/not-found");
+    ["/reader/the-selfish-giant", "/reader/the-selfish-giant/"].forEach((source) => {
+      const index = rewrites.findIndex((rule) => rule.source === source && rule.destination === "/index.html");
+      expect(index).toBeGreaterThanOrEqual(0);
+      expect(index).toBeLessThan(genericNotFound);
     });
   });
 });
