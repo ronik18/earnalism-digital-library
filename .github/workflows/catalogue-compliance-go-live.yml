@@ -1,0 +1,390 @@
+name: Catalogue compliance GO-LIVE campaign
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/catalogue-compliance-go-live.yml
+      - backend/data/controlled_launch.json
+      - backend/data/controlled_publications/**
+      - backend/data/rights_decision_registry.json
+      - data/controlled_launch.json
+      - data/controlled_publications/**
+      - frontend/src/lib/controlledLaunch.js
+      - frontend/static-seo/controlled-publication-public.json
+      - frontend/public/sitemap.xml
+  workflow_dispatch:
+
+concurrency:
+  group: earnalism-catalogue-compliance-go-live
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  id-token: write
+
+jobs:
+  compliance-campaign:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      TRACKING_ISSUE: "477"
+      OWNER_POLICY: "Issue #477 owner-authorized autonomous India text-reader compliance campaign"
+    steps:
+      - name: Check campaign state
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          state="$(gh issue view "$TRACKING_ISSUE" --repo "$GITHUB_REPOSITORY" --json state --jq .state)"
+          if [ "$state" != "OPEN" ]; then
+            echo "campaign issue is not open; nothing to do"
+            exit 0
+          fi
+
+      - name: Check out exact main revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 2
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install bounded Codex dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Capture fail-closed baseline
+        run: |
+          set -euo pipefail
+          python3 scripts/process_full_catalogue.py --check
+          cp internal/earnalism_intelligence/full_catalogue_processing_20260930/catalogue_state.json /tmp/catalogue-before.json
+          cp backend/data/rights_decision_registry.json /tmp/rights-registry-before.json
+          cp backend/data/controlled_launch.json /tmp/controlled-launch-before.json
+          python3 - <<'PY'
+          import json
+          state=json.load(open('/tmp/catalogue-before.json'))
+          held=[t for t in state['titles'] if t['state']=='EXTERNAL_ACTION_REQUIRED']
+          print(json.dumps({'held_before':len(held),'live_before':state['state_counts'].get('READER_ONLY_LIVE_APPROVED',0),'chapters':state['chapter_count']}, indent=2))
+          PY
+
+      - name: Resolve compliant catalogue holds
+        id: codex
+        timeout-minutes: 45
+        uses: openai/codex-action@86365089eb2b84e0a8fb0717b304f8bdcb13b20e
+        with:
+          openai-api-key: ${{ secrets.EARNALISM_CODEX_OPENAI_API_KEY }}
+          output-file: codex-catalogue-final-message.txt
+          model: gpt-5.6-luna
+          permission-profile: ":workspace"
+          safety-strategy: drop-sudo
+          prompt: |
+            You are the authorized Earnalism catalogue-compliance implementation worker for the owner-approved campaign in GitHub issue #477.
+
+            CURRENT GOAL
+            Reduce the remaining EXTERNAL_ACTION_REQUIRED catalogue titles as far as truthfully possible and move only genuinely compliant titles into the existing India commercial text-reader release path. Prefer reusable, deterministic/data-driven repairs over hand-editing hundreds of titles.
+
+            OWNER POLICY
+            - Additional manual/live PRODUCTION_READER observation is waived only when the exact source/package is independently verified complete and integrity-clean: no missing chapter/section, content/package anomaly, or unresolved integrity discrepancy, and Reader validation is clean.
+            - This waiver does NOT create rights facts or legal/source evidence.
+            - A new production rights decision may be recorded only when every required source, rights, integrity, QA, cover, territory, and component condition is independently supportable and the exact package passes the repository's rights/publication gates.
+            - For such fully evidenced titles, accepted_by may truthfully reference: "Owner-authorized evidence-bound automation under GitHub issue #477". Do not invent an individual reviewer identity.
+            - India text Reader only. Use the same bounded uses as the current Sherlock decision: catalog_metadata, cover_display, reader_preview, reader_delivery, reading_pass_session, reading_pass_renewal.
+            - Audio remains disabled and unexposed.
+
+            EVIDENCE RULES
+            - Never invent author death years, publication years, source URLs, licenses, translations, ownership, attestations, covers, chapter content, or approval facts.
+            - Use repository evidence first.
+            - If network access is available, you may fetch exact source/bibliographic evidence only over HTTPS from established primary or archival sources. Persist the source URL, retrieval/evidence identity, and exact hashes in the title package. Search snippets, model memory, and uncited assertions are not evidence.
+            - A title whose required fact cannot be substantiated remains held with the exact blocker.
+            - Do not silently switch editions or translations.
+            - Existing clean source text must not be rewritten merely to match a different source.
+
+            ALLOWED PRODUCT SCOPE
+            You may change only what is necessary for this text-only catalogue campaign:
+            - data/controlled_publications/**
+            - backend/data/controlled_publications/**
+            - data/controlled_launch.json
+            - backend/data/controlled_launch.json
+            - backend/data/rights_decision_registry.json
+            - earnalism_book_inventory_for_launch.csv
+            - frontend/src/lib/controlledLaunch.js
+            - frontend/static-seo/controlled-publication-public.json
+            - frontend/public/sitemap.xml
+            - frontend/public/assets/books/** only by reusing or generating a legitimate Earnalism-owned cover asset from repository tooling/evidence; never copy a copyrighted third-party cover without permission
+            - backend/tests/** for exact release/integrity assertions
+            - frontend/src/lib/*controlledLaunch*.test*
+            - scripts/catalogue_compliance_*.py
+            - scripts/test_catalogue_compliance_*.py
+
+            FORBIDDEN
+            Do not change payment/Razorpay/wallet/accounting behavior, entitlement authorization or policy, customer/user data, secrets/tokens/credentials, database migrations, deployment configuration, .github workflows, audio allowlists/assets/generation, or unrelated UI/design. Do not weaken, skip, delete, or rewrite tests/gates to obtain a pass.
+
+            REQUIRED IMPLEMENTATION BEHAVIOR
+            1. Read internal/earnalism_intelligence/full_catalogue_processing_20260930/catalogue_state.json and work only from the currently held titles.
+            2. Repair deterministic package/content/checksum/QA issues only from exact evidence.
+            3. Fill rights/source metadata only from persisted evidence. If external retrieval is used, bind the exact retrieved source/metadata to the package.
+            4. For missing packages, create a controlled package only when the exact source edition and all required provenance are genuinely available and verified; otherwise leave the title held.
+            5. Treat acceptance decisions as the FINAL step, never a way to suppress other blockers.
+            6. A new accepted decision must be hash-bound to exact package components and added to the production registry only after every non-decision blocker is clear.
+            7. Add a title to both controlled-launch allowlists and the frontend fail-closed Reader allowlist only after its exact runtime package is fully accepted.
+            8. Keep root and backend runtime packages byte/parity-correct where the repository contract requires it.
+            9. Keep all audio flags false/disabled and audio_enabled_slugs empty.
+            10. Run focused rights, publication, controlled-launch, catalogue, checksum, and Reader tests. Do not claim completion for titles still held.
+            11. Before finishing, regenerate the private catalogue state with scripts/process_full_catalogue.py so remaining blockers are explicit and reproducible.
+            12. In your final message report newly-live slugs, repaired-but-still-held slugs, unchanged external holds, tests run, and any authoritative external evidence fetched.
+
+      - name: Recompute catalogue truth
+        run: |
+          set -euo pipefail
+          python3 scripts/process_full_catalogue.py
+          cp internal/earnalism_intelligence/full_catalogue_processing_20260930/catalogue_state.json /tmp/catalogue-after.json
+
+      - name: Enforce evidence-bound release semantics
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, pathlib, subprocess, sys
+          root=pathlib.Path('.')
+          before=json.load(open('/tmp/catalogue-before.json'))
+          after=json.load(open('/tmp/catalogue-after.json'))
+          rb=json.load(open('/tmp/rights-registry-before.json'))
+          ra=json.load(open('backend/data/rights_decision_registry.json'))
+          lb=json.load(open('/tmp/controlled-launch-before.json'))
+          la=json.load(open('backend/data/controlled_launch.json'))
+
+          b={t['slug']:t for t in before['titles']}
+          a={t['slug']:t for t in after['titles']}
+          newly_live=sorted(s for s,t in a.items() if t['state']=='READER_ONLY_LIVE_APPROVED' and b.get(s,{}).get('state')!='READER_ONLY_LIVE_APPROVED')
+          regressed=sorted(s for s,t in b.items() if t['state']=='READER_ONLY_LIVE_APPROVED' and a.get(s,{}).get('state')!='READER_ONLY_LIVE_APPROVED')
+          if regressed:
+              raise SystemExit('previously live titles regressed: '+', '.join(regressed))
+          if after.get('audio_activation_count') != 0:
+              raise SystemExit('audio activation is forbidden')
+          if la.get('public_audio_exposure_enabled') is not False or la.get('audio_enabled_slugs') not in ([], None):
+              raise SystemExit('controlled launch attempted audio exposure')
+          if la.get('launch_compliance_jurisdiction') != 'IN':
+              raise SystemExit('campaign must remain India-scoped')
+          if set(lb.get('live_approved_slugs',[])) - set(la.get('live_approved_slugs',[])):
+              raise SystemExit('campaign removed an existing live title')
+          if set(la.get('live_approved_slugs',[])) - set(t for t,v in a.items() if v['state']=='READER_ONLY_LIVE_APPROVED'):
+              raise SystemExit('controlled launch contains title not independently live-approved')
+
+          old=set((rb.get('accepted_records') or {}).keys())
+          new=set((ra.get('accepted_records') or {}).keys())-old
+          decision_to_slug={}
+          for p in (root/'backend/data/controlled_publications').glob('*/rights_decision.json'):
+              try: d=json.loads(p.read_text())
+              except Exception: continue
+              decision_to_slug[d.get('decision_id')]=p.parent.name
+          for decision_id in new:
+              slug=decision_to_slug.get(decision_id)
+              if not slug:
+                  raise SystemExit(f'new registry decision has no runtime package: {decision_id}')
+              title=a.get(slug)
+              if not title or title.get('state')!='READER_ONLY_LIVE_APPROVED' or title.get('blockers'):
+                  raise SystemExit(f'accepted decision entered before all blockers cleared: {slug}')
+              d=json.loads((root/'backend/data/controlled_publications'/slug/'rights_decision.json').read_text())
+              if d.get('status')!='ACCEPTED' or d.get('territories')!=['IN']:
+                  raise SystemExit(f'new decision has invalid status/territory: {slug}')
+              expected={'catalog_metadata','cover_display','reader_preview','reader_delivery','reading_pass_session','reading_pass_renewal'}
+              if set(d.get('uses') or []) != expected:
+                  raise SystemExit(f'new decision has over/under-broad uses: {slug}')
+              if 'issue #477' not in str(d.get('accepted_by','')).lower():
+                  raise SystemExit(f'new decision lacks truthful owner-policy attribution: {slug}')
+
+          for p in list((root/'backend/data/controlled_publications').glob('*/public_book.json')) + list((root/'data/controlled_publications').glob('*/public_book.json')):
+              d=json.loads(p.read_text())
+              if d.get('audio_enabled') is True or d.get('audiobook_enabled') is True or d.get('generate_audiobook') is True:
+                  slug=p.parent.name
+                  if slug in newly_live:
+                      raise SystemExit(f'newly-live title exposed audio: {slug}')
+
+          held_before=sum(1 for t in before['titles'] if t['state']=='EXTERNAL_ACTION_REQUIRED')
+          held_after=sum(1 for t in after['titles'] if t['state']=='EXTERNAL_ACTION_REQUIRED')
+          blocker_before=sum(len(t.get('blockers') or []) for t in before['titles'])
+          blocker_after=sum(len(t.get('blockers') or []) for t in after['titles'])
+          if held_after > held_before or blocker_after > blocker_before:
+              raise SystemExit('campaign increased catalogue holds/blockers')
+
+          summary={
+              'held_before':held_before,'held_after':held_after,
+              'live_before':before['state_counts'].get('READER_ONLY_LIVE_APPROVED',0),
+              'live_after':after['state_counts'].get('READER_ONLY_LIVE_APPROVED',0),
+              'newly_live':newly_live,
+              'new_registry_decisions':sorted(new),
+              'blockers_before':blocker_before,'blockers_after':blocker_after,
+          }
+          pathlib.Path('/tmp/campaign-summary.json').write_text(json.dumps(summary,indent=2)+'\n')
+          print(json.dumps(summary,indent=2))
+          PY
+
+      - name: Restore private generated evidence
+        run: |
+          git restore --source=HEAD --worktree --staged internal/earnalism_intelligence/full_catalogue_processing_20260930 || true
+          git clean -fd -- internal/earnalism_intelligence/full_catalogue_processing_20260930 || true
+          rm -f codex-catalogue-final-message.txt
+
+      - name: Enforce bounded changed-file scope
+        run: |
+          set -euo pipefail
+          git diff --name-only HEAD > /tmp/changed-files.txt
+          git ls-files --others --exclude-standard >> /tmp/changed-files.txt
+          sort -u /tmp/changed-files.txt -o /tmp/changed-files.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          changed=[x.strip() for x in Path('/tmp/changed-files.txt').read_text().splitlines() if x.strip()]
+          exact={
+            'data/controlled_launch.json',
+            'backend/data/controlled_launch.json',
+            'backend/data/rights_decision_registry.json',
+            'earnalism_book_inventory_for_launch.csv',
+            'frontend/src/lib/controlledLaunch.js',
+            'frontend/static-seo/controlled-publication-public.json',
+            'frontend/public/sitemap.xml',
+          }
+          prefixes=(
+            'data/controlled_publications/',
+            'backend/data/controlled_publications/',
+            'frontend/public/assets/books/',
+            'backend/tests/',
+          )
+          def allowed(p):
+              if p in exact or p.startswith(prefixes): return True
+              if p.startswith('frontend/src/lib/') and 'controlledLaunch' in p and '.test' in p: return True
+              if p.startswith('scripts/catalogue_compliance_') and p.endswith('.py'): return True
+              if p.startswith('scripts/test_catalogue_compliance_') and p.endswith('.py'): return True
+              return False
+          forbidden=[p for p in changed if not allowed(p)]
+          if forbidden:
+              raise SystemExit('forbidden campaign paths changed: '+', '.join(forbidden))
+          Path('/tmp/has-changes').write_text('yes\n' if changed else 'no\n')
+          print('\n'.join(changed) if changed else 'NO_CHANGES')
+          PY
+          if git diff -U0 HEAD -- frontend/src/lib/controlledLaunch.js | grep -E '^[+-].*(AUDIO|audio)' | grep -v '^---' | grep -v '^+++'; then
+            echo "audio-related controlledLaunch change is forbidden"
+            exit 1
+          fi
+          for protected_test in             backend/tests/test_rights_decision_gate.py             backend/tests/test_rights_engine.py             backend/tests/test_controlled_publication_precheck.py; do
+            if ! git diff --quiet HEAD -- "$protected_test"; then
+              echo "core compliance gate test modification is forbidden: $protected_test"
+              exit 1
+            fi
+          done
+
+      - name: Run focused compliance and release tests
+        run: |
+          set -euo pipefail
+          python3 -m unittest scripts.test_process_full_catalogue scripts.test_autonomy_bridge
+          python3 -m pytest             backend/tests/test_rights_decision_gate.py             backend/tests/test_rights_engine.py             backend/tests/test_controlled_publication_precheck.py             backend/tests/test_commercial_batch_launch_guard.py             backend/tests/test_controlled_launch_parity.py -q
+          if [ -f frontend/package.json ]; then
+            (cd frontend && npm ci --ignore-scripts && npm test -- --runInBand src/lib/controlledLaunch.canonicalAuthority.test.js src/lib/controlledLaunch.previewParity.test.js)
+          fi
+
+      - name: Run full regression gate
+        if: ${{ hashFiles('scripts/run_pr_regression.sh') != '' }}
+        run: bash scripts/run_pr_regression.sh
+
+      - name: Publish no-progress result
+        if: ${{ always() }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if [ ! -f /tmp/campaign-summary.json ]; then
+            exit 0
+          fi
+          has_changes="$(cat /tmp/has-changes 2>/dev/null || echo no)"
+          if [ "$has_changes" = "yes" ]; then
+            exit 0
+          fi
+          python3 - <<'PY' > /tmp/no-progress.md
+          import json, collections
+          s=json.load(open('/tmp/catalogue-after.json'))
+          held=[t for t in s['titles'] if t['state']=='EXTERNAL_ACTION_REQUIRED']
+          c=collections.Counter(b for t in held for b in (t.get('blockers') or []))
+          print('## Autonomous compliance pass reached a truthful stop')
+          print()
+          print(f'- Remaining held titles: **{len(held)}**')
+          print('- No repository change passed the bounded evidence rules in this iteration.')
+          print('- The campaign did not fabricate or waive any remaining evidence.')
+          print()
+          print('Top remaining blockers:')
+          for blocker,n in c.most_common(15):
+              print(f'- {n} × {blocker}')
+          PY
+          gh issue comment "$TRACKING_ISSUE" --repo "$GITHUB_REPOSITORY" --body-file /tmp/no-progress.md
+
+      - name: Create compliance candidate PR
+        if: ${{ success() }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if [ "$(cat /tmp/has-changes)" != "yes" ]; then
+            exit 0
+          fi
+          BRANCH="codex/catalogue-compliance-run-${GITHUB_RUN_ID}"
+          git config user.name "earnalism-autonomy"
+          git config user.email "actions@users.noreply.github.com"
+          git switch -c "$BRANCH"
+          git add -A
+          git commit -m "Catalogue compliance: evidence-bound release progress"
+          git push origin "$BRANCH"
+
+          python3 - <<'PY' > /tmp/pr-body.md
+          import json
+          s=json.load(open('/tmp/campaign-summary.json'))
+          print('## Autonomous catalogue compliance iteration')
+          print()
+          print('Owner authority: issue #477. India commercial text Reader only; audio remains disabled.')
+          print()
+          print(f"- Held titles: **{s['held_before']} → {s['held_after']}**")
+          print(f"- Live-approved titles: **{s['live_before']} → {s['live_after']}**")
+          print(f"- Aggregate blockers: **{s['blockers_before']} → {s['blockers_after']}**")
+          print(f"- Newly live: {', '.join(s['newly_live']) if s['newly_live'] else 'none'}")
+          print(f"- New evidence-bound registry decisions: {len(s['new_registry_decisions'])}")
+          print()
+          print('The workflow rejects any new accepted decision unless the exact runtime package is independently READER_ONLY_LIVE_APPROVED with zero blockers. No audio exposure, payment/entitlement-policy change, customer-data change, secret, migration, or deployment-config change is allowed.')
+          PY
+
+          PR_URL="$(gh pr create --repo "$GITHUB_REPOSITORY" --base main --head "$BRANCH" --title "Catalogue compliance: autonomous evidence-bound release progress" --body-file /tmp/pr-body.md)"
+          PR_NUMBER="${PR_URL##*/}"
+          echo "PR_URL=$PR_URL" >> "$GITHUB_ENV"
+          echo "PR_NUMBER=$PR_NUMBER" >> "$GITHUB_ENV"
+          gh issue comment "$TRACKING_ISSUE" --repo "$GITHUB_REPOSITORY" --body "Autonomous compliance candidate opened: $PR_URL. Waiting for the repository's normal required checks before merge."
+
+      - name: Wait for candidate checks and merge
+        if: ${{ success() && env.PR_NUMBER != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh pr checks "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --watch --interval 30 --fail-fast
+          gh pr merge "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --merge --delete-branch
+          MERGED_SHA="$(gh pr view "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --json mergeCommit --jq '.mergeCommit.oid')"
+          echo "MERGED_SHA=$MERGED_SHA" >> "$GITHUB_ENV"
+          gh issue comment "$TRACKING_ISSUE" --repo "$GITHUB_REPOSITORY" --body "Candidate PR #$PR_NUMBER passed required checks and merged at `$MERGED_SHA`. Railway/main deployment status will remain fail-closed through the normal production gates. The next campaign iteration will start automatically if catalogue paths changed."
+
+      - name: Close campaign when all holds are cleared
+        if: ${{ success() }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          held="$(python3 - <<'PY'
+          import json
+          print(sum(1 for t in json.load(open('/tmp/catalogue-after.json'))['titles'] if t['state']=='EXTERNAL_ACTION_REQUIRED'))
+          PY
+          )"
+          if [ "$held" = "0" ]; then
+            gh issue close "$TRACKING_ISSUE" --repo "$GITHUB_REPOSITORY" --comment "All catalogue titles are now evidence-bound and compliant for the authorized release scope. Campaign complete."
+          fi
