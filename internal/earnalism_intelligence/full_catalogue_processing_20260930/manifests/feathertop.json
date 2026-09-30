@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "0e977f5b7a78b060679e7c303fadb6741a739bcf479593fef558ac5d4a4f50f1",
+    "chapters/chapter-001.json": "900bcf930dff1510f1f830c37c2b1416d2c1a053f81a4d85423a2f67f413cf5b",
+    "checksum_manifest.json": "25ee28d4b32effe76d3f0a895f9f381ee4d27d2f1b50f92baa492c46470ed18e",
+    "highlight_sync.json": "8f86504baf203a46e7752bfdfc9d83785df1dce117540ef379744d7e4f4a8bb5",
+    "public_book.json": "29f4a4ff1cf79850e8d0e77cf445731c5da3857f47957a692d43b324a2139d63",
+    "reader_manifest.json": "5e0c41f2d1f8cfbfc31d1012196ee5514218fef77b8f70db94393d62d842aed8",
+    "source_evidence.json": "ae15d66d40e859bcfd7d3f6a127049ffd65a9a1b25bb85344879b33c23ccb1d6"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "58a42de53474f8dd703147ade7e6ab0fe9d082e6d6272bcc669ec7f178664915",
+      "file_sha256": "900bcf930dff1510f1f830c37c2b1416d2c1a053f81a4d85423a2f67f413cf5b",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "0e977f5b7a78b060679e7c303fadb6741a739bcf479593fef558ac5d4a4f50f1",
+    "chapters/chapter-001.json": "900bcf930dff1510f1f830c37c2b1416d2c1a053f81a4d85423a2f67f413cf5b",
+    "checksum_manifest.json": "25ee28d4b32effe76d3f0a895f9f381ee4d27d2f1b50f92baa492c46470ed18e",
+    "highlight_sync.json": "8f86504baf203a46e7752bfdfc9d83785df1dce117540ef379744d7e4f4a8bb5",
+    "public_book.json": "29f4a4ff1cf79850e8d0e77cf445731c5da3857f47957a692d43b324a2139d63",
+    "reader_manifest.json": "5e0c41f2d1f8cfbfc31d1012196ee5514218fef77b8f70db94393d62d842aed8",
+    "source_evidence.json": "ae15d66d40e859bcfd7d3f6a127049ffd65a9a1b25bb85344879b33c23ccb1d6"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "0e977f5b7a78b060679e7c303fadb6741a739bcf479593fef558ac5d4a4f50f1",
+      "public_book": "29f4a4ff1cf79850e8d0e77cf445731c5da3857f47957a692d43b324a2139d63",
+      "reader_manifest": "5e0c41f2d1f8cfbfc31d1012196ee5514218fef77b8f70db94393d62d842aed8",
+      "source_evidence": "ae15d66d40e859bcfd7d3f6a127049ffd65a9a1b25bb85344879b33c23ccb1d6"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "a36e01d2493259254fdedd4b8a03a01ac6bf9b70451cdb030afb2b3d883089e6",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "900bcf930dff1510f1f830c37c2b1416d2c1a053f81a4d85423a2f67f413cf5b",
+          "title": "Feathertop",
+          "word_count": 7844
+        }
+      ],
+      "content_hash": "f5450bba2ac3ccb0f570a34f3ecf914465b6dbb81ecf248fb1a9a07b03065e9c",
+      "provenance_hash": "d4ff427ea8ab960cfd26f22d43ec28355535d97a75927c94c6586e96d6ddb46c",
+      "sanitized": true,
+      "source_hash": "85a78b4e74dc88dd691687eddd599571e215524da97a6a85b6500ac16ef05636"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "dfce98cc3cf2c260a872491ebfb6adc6f9c48ce4eb99f8539e4f9227082c43ad",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "ae15d66d40e859bcfd7d3f6a127049ffd65a9a1b25bb85344879b33c23ccb1d6",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "feathertop",
+    "title": "Feathertop"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

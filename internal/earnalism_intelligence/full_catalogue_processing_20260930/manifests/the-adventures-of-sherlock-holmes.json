@@ -1,0 +1,262 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "3a4bb1af8591ce96ec9d1830750098d016122f9b78bbe9699b7213e43e4f9fea",
+    "chapters/chapter-001.json": "852fcb26387a68ebe70749ceb41f0034eec799cadbca2ee7e1c14723d598f3da",
+    "chapters/chapter-002.json": "d8c09d4ea245550136c44c1e1a0285c21e3b954b4c367236927f6e2367424e99",
+    "chapters/chapter-003.json": "d3e86c9d39064af3b23dcb980c0e564b0ea836023c38837c36699def33d71e98",
+    "chapters/chapter-004.json": "f9de0c5a9a3e51b2b755b6c46be7e6ea65b5bcc098753af2230862ccad4cb07a",
+    "chapters/chapter-005.json": "1a340d73d54c30d782fe54b1071755ca83f02699db52587e98128703c23185a9",
+    "chapters/chapter-006.json": "1ad0081d9bc46074608a4513a1c7555c79389d39814c17d7725fd4b047936b06",
+    "chapters/chapter-007.json": "92ebc733a1e7e23f3c849382b8f78078d31a0be5a5580f89af60cd000d8a0238",
+    "chapters/chapter-008.json": "b572564beaeb1d37a9b7b5bda18c2bfb710a0cdc0eb6ec898913542d1b6c2299",
+    "chapters/chapter-009.json": "19c9040a338b2908520492ea76620880bedaaeccc183e37aa5a8e0dd6d6652bb",
+    "chapters/chapter-010.json": "9ebd6398629b2f234622d5531071f73d6a3f1e79be1004d018565fc659f9d04c",
+    "chapters/chapter-011.json": "63e5c873ad78050562841cc60693a79954f2e4405d5be6f2d49466693efd2e7d",
+    "chapters/chapter-012.json": "a057a3c4f5d978219fccbe5fc5d28d82c979cf2a8a29bf8affaa1f3c6d74f6ff",
+    "checksum_manifest.json": "5e6ed7b1defbad9f6df51bfd76bbebdb4d845551bcf04c458644df6148bc1152",
+    "cover_provenance.json": "22eea5c3ea2f466eedcccc32f7d45ec83054aeb32978ecef1378103533279044",
+    "highlight_sync.json": "61f181d996f45e7802392af19274f99a6bf6fbbd89ce37cb354c9b6ff2d69c47",
+    "public_book.json": "2ea560df8a7adc3fdd54100589fd96e81660f0f2a12d8d64632a72e2cbe16163",
+    "publication_manifest.json": "40da8f2bf212b75e7843bac0c132534424dc0161a537d2ed000c5245e6523387",
+    "reader_manifest.json": "72df26f5a988406ad2be0dca1a6b45825a652dca75e5aeaafdf189bf9f16ba1d",
+    "rights_decision.json": "fbb43e25473eab69f1eb18f07f167781a898cb95b116bd8727c6c2f6ec691be3",
+    "source_evidence.json": "a2d6c8c617d5d21238767685e7f430536d02459d579ffe37e09a9145066599b5"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "adbc76b54812fbd5ab2c7fbe173cb11d46fd7a18d88803ae7ae291f9735bb1d8",
+      "file_sha256": "852fcb26387a68ebe70749ceb41f0034eec799cadbca2ee7e1c14723d598f3da",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "af7dba59ee7f35bf7b8498d881abd39f849552f0d75c613086c563450df6da0d",
+      "file_sha256": "d8c09d4ea245550136c44c1e1a0285c21e3b954b4c367236927f6e2367424e99",
+      "id": "chapter-002"
+    },
+    {
+      "content_sha256": "fb52dc128b7fdbac7ec11f1b49a90e9291cf0e3bcf30b5d9f67a53005503f211",
+      "file_sha256": "d3e86c9d39064af3b23dcb980c0e564b0ea836023c38837c36699def33d71e98",
+      "id": "chapter-003"
+    },
+    {
+      "content_sha256": "ca9002c11a14cbcdba525751fa505c3751262ec7cffb51df4d6bc9fbceb9c408",
+      "file_sha256": "f9de0c5a9a3e51b2b755b6c46be7e6ea65b5bcc098753af2230862ccad4cb07a",
+      "id": "chapter-004"
+    },
+    {
+      "content_sha256": "394555ab6e999f20be72cb3f45c1742fc64232a9b385235ae7e04d3141ab36e3",
+      "file_sha256": "1a340d73d54c30d782fe54b1071755ca83f02699db52587e98128703c23185a9",
+      "id": "chapter-005"
+    },
+    {
+      "content_sha256": "32db024bfa4006fcbbd6f92a3b9855e79f1a083452b2e3f918b66fbe095bfc55",
+      "file_sha256": "1ad0081d9bc46074608a4513a1c7555c79389d39814c17d7725fd4b047936b06",
+      "id": "chapter-006"
+    },
+    {
+      "content_sha256": "b9d1f421cead57e97e15de99f657f1d24be61749d8198a2044f86fb122d56b20",
+      "file_sha256": "92ebc733a1e7e23f3c849382b8f78078d31a0be5a5580f89af60cd000d8a0238",
+      "id": "chapter-007"
+    },
+    {
+      "content_sha256": "641621a9ef305c33448bd18a6470215245f113ecbea4aad19973e86a9887a3f7",
+      "file_sha256": "b572564beaeb1d37a9b7b5bda18c2bfb710a0cdc0eb6ec898913542d1b6c2299",
+      "id": "chapter-008"
+    },
+    {
+      "content_sha256": "e4ff6f0d08c8535aaff1b9fe1b977c19f77d0318103e14376b447dfa3731f9a3",
+      "file_sha256": "19c9040a338b2908520492ea76620880bedaaeccc183e37aa5a8e0dd6d6652bb",
+      "id": "chapter-009"
+    },
+    {
+      "content_sha256": "7a595011082084572b2a60612e9e99fd67269abdeb1204dbc9541c5918f7403d",
+      "file_sha256": "9ebd6398629b2f234622d5531071f73d6a3f1e79be1004d018565fc659f9d04c",
+      "id": "chapter-010"
+    },
+    {
+      "content_sha256": "74f6f59d16c224a132605cf3884fb494875d419ec96f97e31b45d675274b44b5",
+      "file_sha256": "63e5c873ad78050562841cc60693a79954f2e4405d5be6f2d49466693efd2e7d",
+      "id": "chapter-011"
+    },
+    {
+      "content_sha256": "d7738dab28fbb2c325088a9e9eae26f83adc4692d5ada497651775d7a0261e75",
+      "file_sha256": "a057a3c4f5d978219fccbe5fc5d28d82c979cf2a8a29bf8affaa1f3c6d74f6ff",
+      "id": "chapter-012"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "3a4bb1af8591ce96ec9d1830750098d016122f9b78bbe9699b7213e43e4f9fea",
+    "chapters/chapter-001.json": "852fcb26387a68ebe70749ceb41f0034eec799cadbca2ee7e1c14723d598f3da",
+    "chapters/chapter-002.json": "d8c09d4ea245550136c44c1e1a0285c21e3b954b4c367236927f6e2367424e99",
+    "chapters/chapter-003.json": "d3e86c9d39064af3b23dcb980c0e564b0ea836023c38837c36699def33d71e98",
+    "chapters/chapter-004.json": "f9de0c5a9a3e51b2b755b6c46be7e6ea65b5bcc098753af2230862ccad4cb07a",
+    "chapters/chapter-005.json": "1a340d73d54c30d782fe54b1071755ca83f02699db52587e98128703c23185a9",
+    "chapters/chapter-006.json": "1ad0081d9bc46074608a4513a1c7555c79389d39814c17d7725fd4b047936b06",
+    "chapters/chapter-007.json": "92ebc733a1e7e23f3c849382b8f78078d31a0be5a5580f89af60cd000d8a0238",
+    "chapters/chapter-008.json": "b572564beaeb1d37a9b7b5bda18c2bfb710a0cdc0eb6ec898913542d1b6c2299",
+    "chapters/chapter-009.json": "19c9040a338b2908520492ea76620880bedaaeccc183e37aa5a8e0dd6d6652bb",
+    "chapters/chapter-010.json": "9ebd6398629b2f234622d5531071f73d6a3f1e79be1004d018565fc659f9d04c",
+    "chapters/chapter-011.json": "63e5c873ad78050562841cc60693a79954f2e4405d5be6f2d49466693efd2e7d",
+    "chapters/chapter-012.json": "a057a3c4f5d978219fccbe5fc5d28d82c979cf2a8a29bf8affaa1f3c6d74f6ff",
+    "checksum_manifest.json": "5e6ed7b1defbad9f6df51bfd76bbebdb4d845551bcf04c458644df6148bc1152",
+    "cover_provenance.json": "22eea5c3ea2f466eedcccc32f7d45ec83054aeb32978ecef1378103533279044",
+    "highlight_sync.json": "61f181d996f45e7802392af19274f99a6bf6fbbd89ce37cb354c9b6ff2d69c47",
+    "public_book.json": "2ea560df8a7adc3fdd54100589fd96e81660f0f2a12d8d64632a72e2cbe16163",
+    "publication_manifest.json": "40da8f2bf212b75e7843bac0c132534424dc0161a537d2ed000c5245e6523387",
+    "reader_manifest.json": "72df26f5a988406ad2be0dca1a6b45825a652dca75e5aeaafdf189bf9f16ba1d",
+    "rights_decision.json": "fbb43e25473eab69f1eb18f07f167781a898cb95b116bd8727c6c2f6ec691be3",
+    "source_evidence.json": "a2d6c8c617d5d21238767685e7f430536d02459d579ffe37e09a9145066599b5"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "3a4bb1af8591ce96ec9d1830750098d016122f9b78bbe9699b7213e43e4f9fea",
+      "public_book": "2ea560df8a7adc3fdd54100589fd96e81660f0f2a12d8d64632a72e2cbe16163",
+      "reader_manifest": "72df26f5a988406ad2be0dca1a6b45825a652dca75e5aeaafdf189bf9f16ba1d",
+      "source_evidence": "a2d6c8c617d5d21238767685e7f430536d02459d579ffe37e09a9145066599b5"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 12,
+      "chapter_index_sha256": "c65346c2f64c644a3239cfa7de403d93c4f8c08e994962757a42ba3267aacff0",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "852fcb26387a68ebe70749ceb41f0034eec799cadbca2ee7e1c14723d598f3da",
+          "title": "I. A SCANDAL IN BOHEMIA",
+          "word_count": 8543
+        },
+        {
+          "id": "chapter-002",
+          "order": 2,
+          "sha256": "d8c09d4ea245550136c44c1e1a0285c21e3b954b4c367236927f6e2367424e99",
+          "title": "II. THE RED-HEADED LEAGUE",
+          "word_count": 9121
+        },
+        {
+          "id": "chapter-003",
+          "order": 3,
+          "sha256": "d3e86c9d39064af3b23dcb980c0e564b0ea836023c38837c36699def33d71e98",
+          "title": "III. A CASE OF IDENTITY",
+          "word_count": 6989
+        },
+        {
+          "id": "chapter-004",
+          "order": 4,
+          "sha256": "f9de0c5a9a3e51b2b755b6c46be7e6ea65b5bcc098753af2230862ccad4cb07a",
+          "title": "IV. THE BOSCOMBE VALLEY MYSTERY",
+          "word_count": 9623
+        },
+        {
+          "id": "chapter-005",
+          "order": 5,
+          "sha256": "1a340d73d54c30d782fe54b1071755ca83f02699db52587e98128703c23185a9",
+          "title": "V. THE FIVE ORANGE PIPS",
+          "word_count": 7332
+        },
+        {
+          "id": "chapter-006",
+          "order": 6,
+          "sha256": "1ad0081d9bc46074608a4513a1c7555c79389d39814c17d7725fd4b047936b06",
+          "title": "VI. THE MAN WITH THE TWISTED LIP",
+          "word_count": 9213
+        },
+        {
+          "id": "chapter-007",
+          "order": 7,
+          "sha256": "92ebc733a1e7e23f3c849382b8f78078d31a0be5a5580f89af60cd000d8a0238",
+          "title": "VII. THE ADVENTURE OF THE BLUE CARBUNCLE",
+          "word_count": 7823
+        },
+        {
+          "id": "chapter-008",
+          "order": 8,
+          "sha256": "b572564beaeb1d37a9b7b5bda18c2bfb710a0cdc0eb6ec898913542d1b6c2299",
+          "title": "VIII. THE ADVENTURE OF THE SPECKLED BAND",
+          "word_count": 9816
+        },
+        {
+          "id": "chapter-009",
+          "order": 9,
+          "sha256": "19c9040a338b2908520492ea76620880bedaaeccc183e37aa5a8e0dd6d6652bb",
+          "title": "IX. THE ADVENTURE OF THE ENGINEER’S THUMB",
+          "word_count": 8299
+        },
+        {
+          "id": "chapter-010",
+          "order": 10,
+          "sha256": "9ebd6398629b2f234622d5531071f73d6a3f1e79be1004d018565fc659f9d04c",
+          "title": "X. THE ADVENTURE OF THE NOBLE BACHELOR",
+          "word_count": 8126
+        },
+        {
+          "id": "chapter-011",
+          "order": 11,
+          "sha256": "63e5c873ad78050562841cc60693a79954f2e4405d5be6f2d49466693efd2e7d",
+          "title": "XI. THE ADVENTURE OF THE BERYL CORONET",
+          "word_count": 9688
+        },
+        {
+          "id": "chapter-012",
+          "order": 12,
+          "sha256": "a057a3c4f5d978219fccbe5fc5d28d82c979cf2a8a29bf8affaa1f3c6d74f6ff",
+          "title": "XII. THE ADVENTURE OF THE COPPER BEECHES",
+          "word_count": 9955
+        }
+      ],
+      "content_hash": "d6cb7d46af3d95b071c3783bf3b093f8c8397144ae717bbfbe87b8fc336fdc5c",
+      "provenance_hash": "1ff85c9a528b7fcc7efa30701afa764d877030f68fa4ab33d994c634c4746c55",
+      "sanitized": true,
+      "source_hash": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0"
+    },
+    "generated_at": "2026-09-29T08:16:53.257504+00:00",
+    "manifest_sha256": "d603ec86090ac0e2b9a2caf0010d0c30c370380445e8abd49a973a13cfb3445b",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "/assets/books/the-adventures-of-sherlock-holmes/front-cover.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "a2d6c8c617d5d21238767685e7f430536d02459d579ffe37e09a9145066599b5",
+      "publication_region": "in",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-adventures-of-sherlock-holmes",
+    "title": "The Adventures of Sherlock Holmes"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20260929-the-adventures-of-sherlock-holmes-pg1661-text-reader",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

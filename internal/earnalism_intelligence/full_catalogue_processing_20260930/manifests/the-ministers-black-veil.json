@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "8da5b7419325b6094978f6f31baa0ef0603bf7ea70d53a7ccb9cc4df6d166072",
+    "chapters/chapter-001.json": "efb995d6f49b9f46dbf7eb0843b4a28e6169a7c3be5abdf6adeaa450648d8506",
+    "checksum_manifest.json": "2e40e14e5a7974b46458f30b9ce33cb0c5f55acc67447427c6529b83f5530d72",
+    "highlight_sync.json": "54007edcbef9e9a6e4f9799cf834891c60bb0cbbe71408fbb53f444953788ca7",
+    "public_book.json": "ff11eed7b324f0918e5b06215500bec6ca06ed52224bf158d9efebf37ca0cf6e",
+    "reader_manifest.json": "18837b2475de3590609b6d47a9f4df411db0f0a5cd8042d7cec85878693f11e0",
+    "source_evidence.json": "f0329703d9342e31d09c4b2c1c9cd43de6a6b596eb307558572f7a60fc51f89a"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "087dcd5245d6cd1625aee1d1b02dc3e8e6fef94602439d1cc3ef8d42df48f346",
+      "file_sha256": "efb995d6f49b9f46dbf7eb0843b4a28e6169a7c3be5abdf6adeaa450648d8506",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "8da5b7419325b6094978f6f31baa0ef0603bf7ea70d53a7ccb9cc4df6d166072",
+    "chapters/chapter-001.json": "efb995d6f49b9f46dbf7eb0843b4a28e6169a7c3be5abdf6adeaa450648d8506",
+    "checksum_manifest.json": "2e40e14e5a7974b46458f30b9ce33cb0c5f55acc67447427c6529b83f5530d72",
+    "highlight_sync.json": "54007edcbef9e9a6e4f9799cf834891c60bb0cbbe71408fbb53f444953788ca7",
+    "public_book.json": "ff11eed7b324f0918e5b06215500bec6ca06ed52224bf158d9efebf37ca0cf6e",
+    "reader_manifest.json": "18837b2475de3590609b6d47a9f4df411db0f0a5cd8042d7cec85878693f11e0",
+    "source_evidence.json": "f0329703d9342e31d09c4b2c1c9cd43de6a6b596eb307558572f7a60fc51f89a"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "8da5b7419325b6094978f6f31baa0ef0603bf7ea70d53a7ccb9cc4df6d166072",
+      "public_book": "ff11eed7b324f0918e5b06215500bec6ca06ed52224bf158d9efebf37ca0cf6e",
+      "reader_manifest": "18837b2475de3590609b6d47a9f4df411db0f0a5cd8042d7cec85878693f11e0",
+      "source_evidence": "f0329703d9342e31d09c4b2c1c9cd43de6a6b596eb307558572f7a60fc51f89a"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "c5984618e37eabc53ead87a4b254e37a9add79220cac0d05da27b2c023551c16",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "efb995d6f49b9f46dbf7eb0843b4a28e6169a7c3be5abdf6adeaa450648d8506",
+          "title": "The Minister's Black Veil",
+          "word_count": 5193
+        }
+      ],
+      "content_hash": "9017fde9142f3ecebebd5058b8f847326803d4d43f9ef7aad3382844675dfc9b",
+      "provenance_hash": "0623e3600f5fadc131513c94fa6631cfd0653f9b2beb0e409ceca887bebae28a",
+      "sanitized": true,
+      "source_hash": "0d148e66348291f1fa91bb3d9724cb57659d1343d72bce23084803a46fa3514c"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "499ca5decc189f733d8acea88eedddbd7a6ffb1c370673e22cd60302a1881f2e",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "f0329703d9342e31d09c4b2c1c9cd43de6a6b596eb307558572f7a60fc51f89a",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-ministers-black-veil",
+    "title": "The Minister's Black Veil"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

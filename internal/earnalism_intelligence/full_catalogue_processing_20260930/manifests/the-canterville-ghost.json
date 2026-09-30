@@ -1,0 +1,190 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "0cca34bf90e6dc798191ea57c9bc4d9e539230477b842c6af520115cbc7fd580",
+    "chapters/chapter-001.json": "1586dc1069474bc497944af3b7837dde519b122a72100248f9f10233dc98719c",
+    "chapters/chapter-002.json": "dee52f610f770555e38171abd646203ecec1623d5f2fffc2a5a21abade893373",
+    "chapters/chapter-003.json": "caebaf9aac3c6b5e32b4dcff5f7d506540c9d9c6d6018c1f112aabb4f46ca017",
+    "chapters/chapter-004.json": "9d86018f2db9233f2a330a6b5411d56ce1eccf67847d3611ee29ec047e1bf12d",
+    "chapters/chapter-005.json": "034d8703021756aed632ec53d8100d14c430ecd231f34d069f5c17cd9973af4c",
+    "chapters/chapter-006.json": "f54346227e5bc84d82e5f06cd6b8469fcdf55045c5616b3ec67e4ede088fc996",
+    "chapters/chapter-007.json": "1528e9e97be14ec5848897baa39d2692b74bc074003b9a7e70583c550d3d3181",
+    "checksum_manifest.json": "2fd11e27eec750c4e1eccbaacb97fadb63875cad377ca3639c47e0b0f52d3f4d",
+    "highlight_sync.json": "ccef4c274ce11e1f1194c214db0e144fd66d9cc1557771c3f15c4e7f65b5f270",
+    "public_book.json": "16fd86b7c71515176f9721e21bda36ef3ea6bee1e81f5a4ca939024ff181bfc0",
+    "publication_manifest.json": "f501fb2835bad4f5ee117b3b580b09b6ff763d8db18738b618f8a0c33e007c2a",
+    "reader_manifest.json": "a9dd15b839ece73acbcb0e93bf5f9f11de30523f73b60356739f18d535e4f5f3",
+    "rights_decision.json": "a8ffa314113ce53ef82534ac0bdbf29444bc8c6f0fcc218c453363b7de13e128",
+    "source_evidence.json": "94fe16603a0ee2ce43bdb4e3a8695673e32e4cbeae6c49676dc083416b70b5fb"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "6f436ff68f8b4d8ece9cbea4df262f295bfdbdfde143071f547face74acc1284",
+      "file_sha256": "1586dc1069474bc497944af3b7837dde519b122a72100248f9f10233dc98719c",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "76f8703c8eafaa0fd4f2ee4235fbb3c137bdd56d71b379620cb2bf4e301f5ca3",
+      "file_sha256": "dee52f610f770555e38171abd646203ecec1623d5f2fffc2a5a21abade893373",
+      "id": "chapter-002"
+    },
+    {
+      "content_sha256": "c624baee2a0f6c4c473ef5e2b7d641a9789fbb9ac700a23f2eba9202bacfa22c",
+      "file_sha256": "caebaf9aac3c6b5e32b4dcff5f7d506540c9d9c6d6018c1f112aabb4f46ca017",
+      "id": "chapter-003"
+    },
+    {
+      "content_sha256": "a1a1f60155fc8192a6a21e61a30c00a57061bc472c790f3e687b080f163aad49",
+      "file_sha256": "9d86018f2db9233f2a330a6b5411d56ce1eccf67847d3611ee29ec047e1bf12d",
+      "id": "chapter-004"
+    },
+    {
+      "content_sha256": "edd7b06cd8d89d79d48f2ba266cff19df7114de438b27e87a76797f5c344eb9b",
+      "file_sha256": "034d8703021756aed632ec53d8100d14c430ecd231f34d069f5c17cd9973af4c",
+      "id": "chapter-005"
+    },
+    {
+      "content_sha256": "be067cae2299134e9b311aa67c1385d28941fbdf0f83e0ed17416ab853989712",
+      "file_sha256": "f54346227e5bc84d82e5f06cd6b8469fcdf55045c5616b3ec67e4ede088fc996",
+      "id": "chapter-006"
+    },
+    {
+      "content_sha256": "b8989aa96939b115575384ccfb8619999c078dbf34a7562a8a2b3c5b1c1f9718",
+      "file_sha256": "1528e9e97be14ec5848897baa39d2692b74bc074003b9a7e70583c550d3d3181",
+      "id": "chapter-007"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "0cca34bf90e6dc798191ea57c9bc4d9e539230477b842c6af520115cbc7fd580",
+    "chapters/chapter-001.json": "1586dc1069474bc497944af3b7837dde519b122a72100248f9f10233dc98719c",
+    "chapters/chapter-002.json": "dee52f610f770555e38171abd646203ecec1623d5f2fffc2a5a21abade893373",
+    "chapters/chapter-003.json": "caebaf9aac3c6b5e32b4dcff5f7d506540c9d9c6d6018c1f112aabb4f46ca017",
+    "chapters/chapter-004.json": "9d86018f2db9233f2a330a6b5411d56ce1eccf67847d3611ee29ec047e1bf12d",
+    "chapters/chapter-005.json": "034d8703021756aed632ec53d8100d14c430ecd231f34d069f5c17cd9973af4c",
+    "chapters/chapter-006.json": "f54346227e5bc84d82e5f06cd6b8469fcdf55045c5616b3ec67e4ede088fc996",
+    "chapters/chapter-007.json": "1528e9e97be14ec5848897baa39d2692b74bc074003b9a7e70583c550d3d3181",
+    "checksum_manifest.json": "2fd11e27eec750c4e1eccbaacb97fadb63875cad377ca3639c47e0b0f52d3f4d",
+    "highlight_sync.json": "ccef4c274ce11e1f1194c214db0e144fd66d9cc1557771c3f15c4e7f65b5f270",
+    "public_book.json": "16fd86b7c71515176f9721e21bda36ef3ea6bee1e81f5a4ca939024ff181bfc0",
+    "publication_manifest.json": "f501fb2835bad4f5ee117b3b580b09b6ff763d8db18738b618f8a0c33e007c2a",
+    "reader_manifest.json": "a9dd15b839ece73acbcb0e93bf5f9f11de30523f73b60356739f18d535e4f5f3",
+    "rights_decision.json": "a8ffa314113ce53ef82534ac0bdbf29444bc8c6f0fcc218c453363b7de13e128",
+    "source_evidence.json": "94fe16603a0ee2ce43bdb4e3a8695673e32e4cbeae6c49676dc083416b70b5fb"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "0cca34bf90e6dc798191ea57c9bc4d9e539230477b842c6af520115cbc7fd580",
+      "public_book": "16fd86b7c71515176f9721e21bda36ef3ea6bee1e81f5a4ca939024ff181bfc0",
+      "reader_manifest": "a9dd15b839ece73acbcb0e93bf5f9f11de30523f73b60356739f18d535e4f5f3",
+      "source_evidence": "94fe16603a0ee2ce43bdb4e3a8695673e32e4cbeae6c49676dc083416b70b5fb"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 7,
+      "chapter_index_sha256": "8a7f8e6754565400f847ce63d9027d9c6ed3b5733127f0cca723aedfcc3a6d09",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "1586dc1069474bc497944af3b7837dde519b122a72100248f9f10233dc98719c",
+          "title": "I",
+          "word_count": 1492
+        },
+        {
+          "id": "chapter-002",
+          "order": 2,
+          "sha256": "dee52f610f770555e38171abd646203ecec1623d5f2fffc2a5a21abade893373",
+          "title": "II",
+          "word_count": 1177
+        },
+        {
+          "id": "chapter-003",
+          "order": 3,
+          "sha256": "caebaf9aac3c6b5e32b4dcff5f7d506540c9d9c6d6018c1f112aabb4f46ca017",
+          "title": "III",
+          "word_count": 2270
+        },
+        {
+          "id": "chapter-004",
+          "order": 4,
+          "sha256": "9d86018f2db9233f2a330a6b5411d56ce1eccf67847d3611ee29ec047e1bf12d",
+          "title": "IV",
+          "word_count": 1696
+        },
+        {
+          "id": "chapter-005",
+          "order": 5,
+          "sha256": "034d8703021756aed632ec53d8100d14c430ecd231f34d069f5c17cd9973af4c",
+          "title": "V",
+          "word_count": 1662
+        },
+        {
+          "id": "chapter-006",
+          "order": 6,
+          "sha256": "f54346227e5bc84d82e5f06cd6b8469fcdf55045c5616b3ec67e4ede088fc996",
+          "title": "VI",
+          "word_count": 1525
+        },
+        {
+          "id": "chapter-007",
+          "order": 7,
+          "sha256": "1528e9e97be14ec5848897baa39d2692b74bc074003b9a7e70583c550d3d3181",
+          "title": "VII",
+          "word_count": 1471
+        }
+      ],
+      "content_hash": "f11621c70a9d8a6452069dea6928cf3f1e634ba80e35268f4cb74a9a612f6601",
+      "provenance_hash": "eeb505db324299df564272a10de2bac7bb5a4b07af1a627c731f17112df3ccbb",
+      "sanitized": true,
+      "source_hash": "c9079f8d4169402f84457ee6081f685e5f8b617d1818454883e46da961040cf8"
+    },
+    "generated_at": "2026-09-25T00:00:00Z",
+    "manifest_sha256": "32d0f5d9d933a3146207b790eae27c25121a787681f4b5dc61197654e18cb88b",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/the-canterville-ghost/front-cover.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "94fe16603a0ee2ce43bdb4e3a8695673e32e4cbeae6c49676dc083416b70b5fb",
+      "publication_region": "in",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-canterville-ghost",
+    "title": "The Canterville Ghost"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20260925-the-canterville-ghost-commercial-reader-release",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

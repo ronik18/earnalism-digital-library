@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "2ed89c30eeed40144a511d282b5a7ea5c5f1462fea12f5ae803884eca4aaef1f",
+    "chapters/chapter-001.json": "1e97d33c69253a1322ddec44d72832feef63eec6c9f83fb0620aebc350cb6036",
+    "checksum_manifest.json": "4fe0faf3fc69a33352702e3b769bf71ccc7572ad7bd06ca4211cce6fe5373e1d",
+    "highlight_sync.json": "0c1e349389cf3e84be2a54883efef74d906a0223770b8ca832122869b877bc36",
+    "public_book.json": "b63b4d826395bc802b4bfde37f98d277eeb44673862b202faa9e022ad494be7b",
+    "reader_manifest.json": "1f1c880da817e5811384c653bce7f44d9cca213d69b2303ed01387d5bd47440e",
+    "source_evidence.json": "d6f2d3cc631c88b2ac6b6e6d45b5df8e743e21035fa081702148b0f89c396257"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "9972e85ba4bfd20b80ea948f864a5c06b7c1e104af1e3b586fe69bd9b76fed3e",
+      "file_sha256": "1e97d33c69253a1322ddec44d72832feef63eec6c9f83fb0620aebc350cb6036",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "2ed89c30eeed40144a511d282b5a7ea5c5f1462fea12f5ae803884eca4aaef1f",
+    "chapters/chapter-001.json": "1e97d33c69253a1322ddec44d72832feef63eec6c9f83fb0620aebc350cb6036",
+    "checksum_manifest.json": "4fe0faf3fc69a33352702e3b769bf71ccc7572ad7bd06ca4211cce6fe5373e1d",
+    "highlight_sync.json": "0c1e349389cf3e84be2a54883efef74d906a0223770b8ca832122869b877bc36",
+    "public_book.json": "b63b4d826395bc802b4bfde37f98d277eeb44673862b202faa9e022ad494be7b",
+    "reader_manifest.json": "1f1c880da817e5811384c653bce7f44d9cca213d69b2303ed01387d5bd47440e",
+    "source_evidence.json": "d6f2d3cc631c88b2ac6b6e6d45b5df8e743e21035fa081702148b0f89c396257"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "2ed89c30eeed40144a511d282b5a7ea5c5f1462fea12f5ae803884eca4aaef1f",
+      "public_book": "b63b4d826395bc802b4bfde37f98d277eeb44673862b202faa9e022ad494be7b",
+      "reader_manifest": "1f1c880da817e5811384c653bce7f44d9cca213d69b2303ed01387d5bd47440e",
+      "source_evidence": "d6f2d3cc631c88b2ac6b6e6d45b5df8e743e21035fa081702148b0f89c396257"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "c69efd56fc102af63bf8476949724755db788a0dbbec5a62e5d2c66925eb0cf3",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "1e97d33c69253a1322ddec44d72832feef63eec6c9f83fb0620aebc350cb6036",
+          "title": "The Adventure of the Empty House",
+          "word_count": 8755
+        }
+      ],
+      "content_hash": "6bf0c63b087dee0ced53a0c8c74c637bf13e11aeda9ca65846a2d801c06dee21",
+      "provenance_hash": "d115aa91dc3a3bb82e642e4cc6cb2d0d02e207d6e0da6b19447bdbe11e3f2a2a",
+      "sanitized": true,
+      "source_hash": "ee5dd7cf242158b7805d53f7d1c251893c338689056297a6e0a3fb23aca5f2b6"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "7f3810969a72c1fece2bc267f10782b5daf51cb25201b565d10a75f9bfd36d15",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "d6f2d3cc631c88b2ac6b6e6d45b5df8e743e21035fa081702148b0f89c396257",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-adventure-of-the-empty-house",
+    "title": "The Adventure of the Empty House"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

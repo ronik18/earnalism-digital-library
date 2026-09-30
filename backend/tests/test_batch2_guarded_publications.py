@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import json
 import os
 from pathlib import Path
 from types import SimpleNamespace
@@ -13,6 +14,7 @@ os.environ.setdefault("JWT_SECRET", "batch2-live-audio-test-secret")
 from backend import catalog_truth, server
 from backend.publication_manifest import validate_manifest
 from backend.home_curation import build_home_curated_payload
+from backend.rights_decision_gate import load_production_registry, record_sha256
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -59,7 +61,17 @@ def test_batch2_packets_are_packaged_for_railway_and_byte_identical(slug: str):
 
     assert backend_files == root_files
     for relative_path in root_files:
+        # Commercial activation preserves the root's historical decision and
+        # binds the active Railway bundle to the accepted runtime decision.
+        if slug == "a-white-heron" and relative_path.name in {"checksum_manifest.json", "rights_decision.json"}:
+            continue
         assert (backend_dir / relative_path).read_bytes() == (root_dir / relative_path).read_bytes()
+    if slug == "a-white-heron":
+        accepted, _ = load_production_registry()
+        decision = catalog_truth.read_json_file(backend_dir / "rights_decision.json")
+        assert accepted[decision["decision_id"]] == record_sha256(decision)
+        for component, expected in decision["components"].items():
+            assert catalog_truth.file_sha256(backend_dir / f"{component}.json") == expected
 
 
 @pytest.mark.parametrize("slug", GUARDED_AUDIO_SLUGS)
@@ -140,7 +152,12 @@ def test_historical_database_audio_claim_cannot_admit_title_outside_release_allo
 
     manifest = asyncio.run(server._reader_book_manifest_doc(slug))
 
-    assert manifest is None
+    if slug == "a-white-heron":
+        assert manifest is not None
+        assert "backblazeb2.com" not in json.dumps(manifest)
+        assert catalog_truth.can_expose_audio(manifest.get("book", {})) is False
+    else:
+        assert manifest is None
 
 
 def test_batch2_server_owned_audio_does_not_enter_static_home_listening_shelf():
@@ -152,8 +169,8 @@ def test_batch2_server_owned_audio_does_not_enter_static_home_listening_shelf():
     assert listening_slugs.isdisjoint(GUARDED_AUDIO_SLUGS)
 
 
-def test_a_white_heron_is_prepared_but_not_live_and_audio_is_disabled():
-    artifact_dir = ROOT / "data" / "controlled_publications" / "a-white-heron"
+def test_a_white_heron_accepted_text_release_is_live_and_audio_is_disabled():
+    artifact_dir = ROOT / "backend" / "data" / "controlled_publications" / "a-white-heron"
     public = catalog_truth.read_json_file(artifact_dir / "public_book.json")
     reader = catalog_truth.read_json_file(artifact_dir / "reader_manifest.json")
     source = catalog_truth.read_json_file(artifact_dir / "source_evidence.json")
@@ -162,16 +179,16 @@ def test_a_white_heron_is_prepared_but_not_live_and_audio_is_disabled():
     checksum = catalog_truth.read_json_file(artifact_dir / "checksum_manifest.json")
     historical_audio = catalog_truth.read_json_file(artifact_dir / "production_audio_evidence.json")
 
-    assert public["publication_status"] == "READY_FOR_COMMERCIAL_CUTOVER"
-    assert public["approved_to_publish"] is False
-    assert public["is_published"] is False
-    assert public["isPublic"] is False and public["isLive"] is False
-    assert public["showInPublicLibrary"] is False
+    assert public["publication_status"] == "LIVE_APPROVED"
+    assert public["approved_to_publish"] is True
+    assert public["is_published"] is True
+    assert public["isPublic"] is True and public["isLive"] is True
+    assert public["showInPublicLibrary"] is True
     assert public["formats"] == ["Ebook"]
     assert public["audio_enabled"] is False
     assert public["audiobook_enabled"] is False
     assert public["generate_audiobook"] is False
-    assert approval["approved_to_publish"] is False
+    assert approval["approved_to_publish"] is True
     assert approval["audio_public_release"] == "PUBLIC_AUDIO_RELEASE_NOT_APPROVED"
     assert approval["audiobook_enabled"] is False
     assert approval["historical_audio_approval"]["historical_only"] is True
@@ -184,8 +201,8 @@ def test_a_white_heron_is_prepared_but_not_live_and_audio_is_disabled():
     assert source["edition_variant_classification"].startswith("DOCUMENTED_EDITION_VARIANT")
     assert len(source["edition_variant_evidence"]) == 3
     assert publication["rights"]["status"] == "APPROVED"
-    assert publication["reader_release"]["status"] == "READY_FOR_APPROVAL"
-    assert publication["reader_release"]["exposed"] is False
+    assert publication["reader_release"]["status"] == "APPROVED"
+    assert publication["reader_release"]["exposed"] is True
     assert publication["audio_release"]["status"] == "NOT_REQUESTED"
     assert publication["audio_release"]["exposed"] is False
     assert validate_manifest(publication) == []

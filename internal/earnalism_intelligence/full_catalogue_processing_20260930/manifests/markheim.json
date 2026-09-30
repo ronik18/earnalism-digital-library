@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "af6638f61e6b0780e7eb26faa18b41161df2170c7b593482f917c18d44e73bcd",
+    "chapters/chapter-001.json": "1a2f4f17a4029a41c0032ec665dccd6fde6292fddcbb11162d6296db5ed88672",
+    "checksum_manifest.json": "2c4984af00d9d67c5477c804fe32a8244311bb4cceb72d5170b2eec357fb8221",
+    "highlight_sync.json": "495fcc4f1a207f8068ec3e251730ff61d5e1e96e5d3e1885c381ebce6cf76d58",
+    "public_book.json": "985b64f8b2c66860aae7ab3be6f6476e4a0c88e5eb9e8fff69bbb2e42d649754",
+    "reader_manifest.json": "50b5435a1bd1cd25c59c17b2fed8e63ca5ce696047c1c7bb2830549867d3311d",
+    "source_evidence.json": "f808648c7eb140725e870fac94706f669b2a15cc194956a842ceec42edf31850"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "66ecd743f5e28122df51b1f7d3ba2252032747351358ae05888ea30cc9b27ce8",
+      "file_sha256": "1a2f4f17a4029a41c0032ec665dccd6fde6292fddcbb11162d6296db5ed88672",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "af6638f61e6b0780e7eb26faa18b41161df2170c7b593482f917c18d44e73bcd",
+    "chapters/chapter-001.json": "1a2f4f17a4029a41c0032ec665dccd6fde6292fddcbb11162d6296db5ed88672",
+    "checksum_manifest.json": "2c4984af00d9d67c5477c804fe32a8244311bb4cceb72d5170b2eec357fb8221",
+    "highlight_sync.json": "495fcc4f1a207f8068ec3e251730ff61d5e1e96e5d3e1885c381ebce6cf76d58",
+    "public_book.json": "985b64f8b2c66860aae7ab3be6f6476e4a0c88e5eb9e8fff69bbb2e42d649754",
+    "reader_manifest.json": "50b5435a1bd1cd25c59c17b2fed8e63ca5ce696047c1c7bb2830549867d3311d",
+    "source_evidence.json": "f808648c7eb140725e870fac94706f669b2a15cc194956a842ceec42edf31850"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "af6638f61e6b0780e7eb26faa18b41161df2170c7b593482f917c18d44e73bcd",
+      "public_book": "985b64f8b2c66860aae7ab3be6f6476e4a0c88e5eb9e8fff69bbb2e42d649754",
+      "reader_manifest": "50b5435a1bd1cd25c59c17b2fed8e63ca5ce696047c1c7bb2830549867d3311d",
+      "source_evidence": "f808648c7eb140725e870fac94706f669b2a15cc194956a842ceec42edf31850"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "72db2fa36b8c66691c464a3bb404fc5a123424d569f81880721043f2e555043e",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "1a2f4f17a4029a41c0032ec665dccd6fde6292fddcbb11162d6296db5ed88672",
+          "title": "Markheim",
+          "word_count": 6745
+        }
+      ],
+      "content_hash": "8a869c7629e7cee3364b8e52890f673febf4e8396abf92987c32537e4680aca5",
+      "provenance_hash": "cd36dcda88cb832456c3a9513c8931cd18891b8a2d4426f5f519c60f33ac6be3",
+      "sanitized": true,
+      "source_hash": "d6737555143cb2fb2267d7653d4a0f8bd76e89d61e46db1755b5e5b6605b02d5"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "00224ca9f714879da9e04346e4f25ed04000efc3be0c353006963d0ebca335fe",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "f808648c7eb140725e870fac94706f669b2a15cc194956a842ceec42edf31850",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "markheim",
+    "title": "Markheim"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

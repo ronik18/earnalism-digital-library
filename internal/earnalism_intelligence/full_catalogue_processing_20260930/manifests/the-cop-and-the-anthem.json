@@ -1,0 +1,114 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "eba8dc9670d4b046092be624c851a9216c6a682ffab482a7dcf85e9cde3ea713",
+    "chapters/chapter-001.json": "5efa2347d8668dc8a3d1419cd5c253e70dee82c390e6038d5b59704e5fe857aa",
+    "checksum_manifest.json": "abfec56801eb7dce5c323044a976afa203c333ed3ac936bcdc9a0577e03d3e28",
+    "public_book.json": "8579571f875d23ed1083e99a7a6338aa208baa61af82bb97fedad4a1d43e258f",
+    "reader_manifest.json": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22",
+    "source_evidence.json": "6e89943557cd5e0b840586198fa824048ac0f0cfe2b015be5ddb99e12917fecc"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "77a6d1c7ff6162cc7aad47b950666c6bb1dedf0beb55a08f3f476e27e57bd3ab",
+      "file_sha256": "5efa2347d8668dc8a3d1419cd5c253e70dee82c390e6038d5b59704e5fe857aa",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "aac19a817365dfebaa22742bd82020167c4b55d42b53ca2fa6d3e47fce49fa95",
+    "approval_evidence.json": "eba8dc9670d4b046092be624c851a9216c6a682ffab482a7dcf85e9cde3ea713",
+    "chapters/chapter-001.json": "5efa2347d8668dc8a3d1419cd5c253e70dee82c390e6038d5b59704e5fe857aa",
+    "checksum_manifest.json": "daab7bb9cd7e890cbfb60f893d16dc851b79d1336b604f3a02d4739a33225544",
+    "highlight_sync.json": "193728619d202fad6d4f71dbf895c35d68190b7ae6663a77d19d02d774efd113",
+    "public_book.json": "8579571f875d23ed1083e99a7a6338aa208baa61af82bb97fedad4a1d43e258f",
+    "reader_manifest.json": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22",
+    "source_evidence.json": "6e89943557cd5e0b840586198fa824048ac0f0cfe2b015be5ddb99e12917fecc"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "eba8dc9670d4b046092be624c851a9216c6a682ffab482a7dcf85e9cde3ea713",
+      "public_book": "8579571f875d23ed1083e99a7a6338aa208baa61af82bb97fedad4a1d43e258f",
+      "reader_manifest": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22",
+      "source_evidence": "6e89943557cd5e0b840586198fa824048ac0f0cfe2b015be5ddb99e12917fecc"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "1488c35e19835acd676f7e356d33f0ac865b18839d7012cc291ce3d08092411d",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "5efa2347d8668dc8a3d1419cd5c253e70dee82c390e6038d5b59704e5fe857aa",
+          "title": "The Cop and the Anthem",
+          "word_count": 2306
+        }
+      ],
+      "content_hash": "356045c3e1b95de8512621cc5d37d18fd1af247ab68e90c8b5f085734292e153",
+      "provenance_hash": "543d7bc7fba576c2729b91b4ff9ac21c0ffc39f51789ef9b5f453b95a42e0e64",
+      "sanitized": true,
+      "source_hash": "e1e65254ba428e929553edaef131babdf3a2cba3ee18acf61d0c2cd81fa2e45b"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "dd3c0b4d8de8b101fa65f604357dfc946f987930dbfa69d4901ab2d9be00e153",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275534/earnalism/covers/front/the-cop-and-the-anthem_front_1600x2400.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "6e89943557cd5e0b840586198fa824048ac0f0cfe2b015be5ddb99e12917fecc",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-cop-and-the-anthem",
+    "title": "The Cop and the Anthem"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

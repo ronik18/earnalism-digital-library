@@ -1,0 +1,115 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "c29c1e66d076a9434184b532f8ac21e5dedab4f9f80dfb48d0ed43fc9a8bc02c",
+    "chapters/chapter-001.json": "fbae279433d37ef9a92b29e2f192a0c031a84caa70ea889a46d0b95ad2ebdc21",
+    "checksum_manifest.json": "ffa68285176b3a631d174a11b00ecb43a95ba86cd1841b05974daad7aa93b8bf",
+    "highlight_sync.json": "c5504b62f868ae782d814c7b6556afe482d0f2c1cab666ca1e314dce435e4568",
+    "public_book.json": "14c01462e1d03849d166d34678fa5d9e55d63f410b0a90dd95feafde5bc93afa",
+    "reader_manifest.json": "2fab757bd4355d1586e6a9272fded5f8491f30332203878f35c4bc58613bebf6",
+    "source_evidence.json": "e47492184a8e2c28c9f0279c73c471476abac7e7045696ac35177d0721413cdc"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "07c013cc12e20449cb1355abe745215f3f4d89e18949ef36aff7718c1f916499",
+      "file_sha256": "fbae279433d37ef9a92b29e2f192a0c031a84caa70ea889a46d0b95ad2ebdc21",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "c29c1e66d076a9434184b532f8ac21e5dedab4f9f80dfb48d0ed43fc9a8bc02c",
+    "chapters/chapter-001.json": "fbae279433d37ef9a92b29e2f192a0c031a84caa70ea889a46d0b95ad2ebdc21",
+    "checksum_manifest.json": "ffa68285176b3a631d174a11b00ecb43a95ba86cd1841b05974daad7aa93b8bf",
+    "highlight_sync.json": "c5504b62f868ae782d814c7b6556afe482d0f2c1cab666ca1e314dce435e4568",
+    "public_book.json": "14c01462e1d03849d166d34678fa5d9e55d63f410b0a90dd95feafde5bc93afa",
+    "reader_manifest.json": "2fab757bd4355d1586e6a9272fded5f8491f30332203878f35c4bc58613bebf6",
+    "source_evidence.json": "e47492184a8e2c28c9f0279c73c471476abac7e7045696ac35177d0721413cdc"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "c29c1e66d076a9434184b532f8ac21e5dedab4f9f80dfb48d0ed43fc9a8bc02c",
+      "public_book": "14c01462e1d03849d166d34678fa5d9e55d63f410b0a90dd95feafde5bc93afa",
+      "reader_manifest": "2fab757bd4355d1586e6a9272fded5f8491f30332203878f35c4bc58613bebf6",
+      "source_evidence": "e47492184a8e2c28c9f0279c73c471476abac7e7045696ac35177d0721413cdc"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "84a47184d2270bf702c365c0c3a943ae19df122f1e98ec1199a8aff3c97c86a0",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "fbae279433d37ef9a92b29e2f192a0c031a84caa70ea889a46d0b95ad2ebdc21",
+          "title": "The Door in the Wall",
+          "word_count": 6750
+        }
+      ],
+      "content_hash": "b587a74512de6a7607f81bee7180c0529d8088d0bc6afd6222fb43c971bb5b83",
+      "provenance_hash": "ea1c878f2a5bb0147afe371b1d7fd60204e5596f1470483b9b716e53a2426415",
+      "sanitized": true,
+      "source_hash": "dd1e44d2ddf9f3a49bc10d51c90eb9a3dc5fde221d972bd59a4a3fd54e130ff6"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "43749f0104b4adc48e17f3c0c07707d50a570bbda2b9d23fb3e8bf155b84cd33",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "e47492184a8e2c28c9f0279c73c471476abac7e7045696ac35177d0721413cdc",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-door-in-the-wall",
+    "title": "The Door in the Wall"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "c4e86e2697f7f156f03e4cb3490ef894d93363c540d32f068ffb9cd8237a37fc",
+    "chapters/chapter-001.json": "9193f7c35d1cd49e445000349d10fc1ba9d69249169381c9fb2eb2920a8fc922",
+    "checksum_manifest.json": "ab64570aba004d0482081e59139b1524103bc8223a1531bf6a485c9ea3ab4125",
+    "highlight_sync.json": "2e46cf9e98cdafd7dbcdeca1057120ad6ff026434c4261abd99f24290f758cbc",
+    "public_book.json": "77cbbee453fd218ecdd14470be94057e8f82a82cd053acda666c1f1dbcd3f6e0",
+    "reader_manifest.json": "c7779fb3a85b5b407fe8fd55423a74e7656de0ffa4c977a815bc78e654b0ea2a",
+    "source_evidence.json": "58f52424237880402e06236f59827e68274098130a7cd9a08ebfddde75cf371f"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "d877f8690760743769d4b36e1e47701e9d8b640cd1ea95d19eb1aae471333f79",
+      "file_sha256": "9193f7c35d1cd49e445000349d10fc1ba9d69249169381c9fb2eb2920a8fc922",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "c4e86e2697f7f156f03e4cb3490ef894d93363c540d32f068ffb9cd8237a37fc",
+    "chapters/chapter-001.json": "9193f7c35d1cd49e445000349d10fc1ba9d69249169381c9fb2eb2920a8fc922",
+    "checksum_manifest.json": "ab64570aba004d0482081e59139b1524103bc8223a1531bf6a485c9ea3ab4125",
+    "highlight_sync.json": "2e46cf9e98cdafd7dbcdeca1057120ad6ff026434c4261abd99f24290f758cbc",
+    "public_book.json": "77cbbee453fd218ecdd14470be94057e8f82a82cd053acda666c1f1dbcd3f6e0",
+    "reader_manifest.json": "c7779fb3a85b5b407fe8fd55423a74e7656de0ffa4c977a815bc78e654b0ea2a",
+    "source_evidence.json": "58f52424237880402e06236f59827e68274098130a7cd9a08ebfddde75cf371f"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "c4e86e2697f7f156f03e4cb3490ef894d93363c540d32f068ffb9cd8237a37fc",
+      "public_book": "77cbbee453fd218ecdd14470be94057e8f82a82cd053acda666c1f1dbcd3f6e0",
+      "reader_manifest": "c7779fb3a85b5b407fe8fd55423a74e7656de0ffa4c977a815bc78e654b0ea2a",
+      "source_evidence": "58f52424237880402e06236f59827e68274098130a7cd9a08ebfddde75cf371f"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "ef5c44f9393f8106713c37f0afb941674bf355deee4e981035c47aff9f213686",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "9193f7c35d1cd49e445000349d10fc1ba9d69249169381c9fb2eb2920a8fc922",
+          "title": "The Red-Headed League",
+          "word_count": 9178
+        }
+      ],
+      "content_hash": "596bf4c4ffc933a0b09dc4f7ad39db6cb0377154b14cd10744de5e45df14a8ea",
+      "provenance_hash": "e792349c3b8700617f947eb7d677ea9b740f892f0394595385b5c0080a25f22a",
+      "sanitized": true,
+      "source_hash": "908533b5a44104e7a8675a3d9a06b3526dea93d125afd859f998b5f6d1e0d0fe"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "e263df2b2ba49edbe2df70f47b7117e130721d0b32494217e6bd3a95bc16deaa",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "58f52424237880402e06236f59827e68274098130a7cd9a08ebfddde75cf371f",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-red-headed-league",
+    "title": "The Red-Headed League"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

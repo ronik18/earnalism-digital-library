@@ -7,7 +7,7 @@ try:
 except ModuleNotFoundError:  # direct ``python scripts/autonomy_worker.py`` execution
     from autonomy_scope import forbidden_paths
 
-ALLOWED = {"bridge-fixture", "reader-benchmark", "codex-implementation-fixture", "codex-implementation"}
+ALLOWED = {"bridge-fixture", "reader-benchmark", "catalogue-processing", "codex-implementation-fixture", "codex-implementation"}
 CODEX_TASKS = {"codex-implementation-fixture", "codex-implementation"}
 
 
@@ -53,6 +53,8 @@ def main() -> int:
         command = [os.environ.get("PYTHON", "python3"), "-m", "unittest", "scripts.test_autonomy_bridge"]
     elif args.task_type == "reader-benchmark":
         command = ["bash", "scripts/run_reader_benchmark.sh"]
+    elif args.task_type == "catalogue-processing":
+        command = [os.environ.get("PYTHON", "python3"), "scripts/process_full_catalogue.py", "--check"]
     else:
         if args.codex_result:
             codex_path = args.codex_result
@@ -91,6 +93,15 @@ def main() -> int:
         if forbidden:
             result.update(state="CHANGES_REQUIRED", unresolved_findings=[f"protected or unrelated paths changed: {', '.join(forbidden)}"], proposed_next_action="FIX_SCOPE")
     result["files_changed"] = result["changed_files"]
+    if args.task_type == "catalogue-processing" and proc.returncode == 0:
+        import hashlib
+        state = Path("internal/earnalism_intelligence/full_catalogue_processing_20260930")
+        result["catalogue_processing"] = {
+            "read_only_verification": True,
+            "processing_checksums_sha256": hashlib.sha256((state / "processing_checksums.json").read_bytes()).hexdigest(),
+            "title_count": json.loads((state / "catalogue_state.json").read_text(encoding="utf-8"))["title_count"],
+            "publication_authorized": False,
+        }
     args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result))
     return 0 if proc.returncode == 0 else 1

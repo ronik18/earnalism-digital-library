@@ -1,0 +1,116 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "d2bef9bea76efe3efbfe01aeeea762ee83f7ec2bf82de388b62c2650143a80db",
+    "chapters/chapter-001.json": "d61b486956b8787cc7d40bce6678109cc557949b7af53b91b8f8a04a4595831c",
+    "checksum_manifest.json": "1079c971ad237a009459a6a4f143df1f1dd44e01cd27ce7e5831eeafef66c990",
+    "public_book.json": "8cc8c7fcfd2590e0d85ec3228af6cf4d4508ab59b357069884000ff915887b8e",
+    "reader_manifest.json": "578b4307d3c68ec69fac91bcb795f1c55677ca8a3532aafe5b2472b204e27142",
+    "source_evidence.json": "09779a6b5c80eccdea6783118cbc43c6a58bedb319353ff8b68fb43c3fdaf0d6"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+      "file_sha256": "d61b486956b8787cc7d40bce6678109cc557949b7af53b91b8f8a04a4595831c",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "d2bef9bea76efe3efbfe01aeeea762ee83f7ec2bf82de388b62c2650143a80db",
+    "chapters/chapter-001.json": "d61b486956b8787cc7d40bce6678109cc557949b7af53b91b8f8a04a4595831c",
+    "checksum_manifest.json": "1079c971ad237a009459a6a4f143df1f1dd44e01cd27ce7e5831eeafef66c990",
+    "highlight_sync.json": "b2742d2516aa71aa23f79d33dba6ff5c27c5036c6b581197b6c55f991e97215e",
+    "public_book.json": "8cc8c7fcfd2590e0d85ec3228af6cf4d4508ab59b357069884000ff915887b8e",
+    "reader_manifest.json": "578b4307d3c68ec69fac91bcb795f1c55677ca8a3532aafe5b2472b204e27142",
+    "source_evidence.json": "09779a6b5c80eccdea6783118cbc43c6a58bedb319353ff8b68fb43c3fdaf0d6"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "d2bef9bea76efe3efbfe01aeeea762ee83f7ec2bf82de388b62c2650143a80db",
+      "public_book": "8cc8c7fcfd2590e0d85ec3228af6cf4d4508ab59b357069884000ff915887b8e",
+      "reader_manifest": "578b4307d3c68ec69fac91bcb795f1c55677ca8a3532aafe5b2472b204e27142",
+      "source_evidence": "09779a6b5c80eccdea6783118cbc43c6a58bedb319353ff8b68fb43c3fdaf0d6"
+    },
+    "audio_release": {
+      "audio_sha256": "b23e6720a2434c5a90d2437abf630cf68b6cb4cd7305a827a0d88fe5e586d438",
+      "candidate_fingerprint": "725b089d9603f0bc7e7463a310e6bc07b529fc6894a0dbf9b736aca1178ccf20",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "d4fb50d126ba15e873da8742b9203f2154fc7eb16773524bc6a976272ce7a326",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "d61b486956b8787cc7d40bce6678109cc557949b7af53b91b8f8a04a4595831c",
+          "title": "The Open Window",
+          "word_count": 1219
+        }
+      ],
+      "content_hash": "8a5f82edf94305333080dc160175cb82c865c6acb498216f15616ac90295042d",
+      "provenance_hash": "21e38f6081034d3d8731db585a96fdf014731375175eae0c279eca43415fe9a4",
+      "sanitized": true,
+      "source_hash": "a107f7212542030d90e15e1b7daeeee6dcef9a77ea18887ce009afbf61457078"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "d996cd44ef1a7978e0769a861f44110108deaa76b133947859201ffdbf51f673",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "09779a6b5c80eccdea6783118cbc43c6a58bedb319353ff8b68fb43c3fdaf0d6",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-open-window",
+    "title": "The Open Window"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

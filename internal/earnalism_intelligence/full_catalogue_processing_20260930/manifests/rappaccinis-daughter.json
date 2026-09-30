@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "08c1111d9d2079d4d87d35ed9fe0086408fa15d5f6dc06f42ae17db16c3823b5",
+    "chapters/chapter-001.json": "440b993aabe5291db3d86fd941fe05efa33e2d5a788818a55cdeac278481ccc2",
+    "checksum_manifest.json": "42063dff02daed7d3d689965c6bdd3cf9ea8930f9e63740807b24048ed71067f",
+    "highlight_sync.json": "b668e8f74aaf696918e75b409183459790f08e7825796182365ed3e4fdb83e71",
+    "public_book.json": "4e2c753fbc8f3b363219bb062aad488ebd6f9e845061a86445b2d7d0a5d56eb8",
+    "reader_manifest.json": "4c0a1d82c5aacfae3ce8c0ec906b28e17279794c281bd5ebfdfc6ad505b6803d",
+    "source_evidence.json": "287c41f25f969e4cac583740f4253113a8f291a640681e6536bb00d40c80dc42"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "53085b079b15213a5456edfb86198a6cefcdef68a877f3c3606fd0236a778dd3",
+      "file_sha256": "440b993aabe5291db3d86fd941fe05efa33e2d5a788818a55cdeac278481ccc2",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "08c1111d9d2079d4d87d35ed9fe0086408fa15d5f6dc06f42ae17db16c3823b5",
+    "chapters/chapter-001.json": "440b993aabe5291db3d86fd941fe05efa33e2d5a788818a55cdeac278481ccc2",
+    "checksum_manifest.json": "42063dff02daed7d3d689965c6bdd3cf9ea8930f9e63740807b24048ed71067f",
+    "highlight_sync.json": "b668e8f74aaf696918e75b409183459790f08e7825796182365ed3e4fdb83e71",
+    "public_book.json": "4e2c753fbc8f3b363219bb062aad488ebd6f9e845061a86445b2d7d0a5d56eb8",
+    "reader_manifest.json": "4c0a1d82c5aacfae3ce8c0ec906b28e17279794c281bd5ebfdfc6ad505b6803d",
+    "source_evidence.json": "287c41f25f969e4cac583740f4253113a8f291a640681e6536bb00d40c80dc42"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "08c1111d9d2079d4d87d35ed9fe0086408fa15d5f6dc06f42ae17db16c3823b5",
+      "public_book": "4e2c753fbc8f3b363219bb062aad488ebd6f9e845061a86445b2d7d0a5d56eb8",
+      "reader_manifest": "4c0a1d82c5aacfae3ce8c0ec906b28e17279794c281bd5ebfdfc6ad505b6803d",
+      "source_evidence": "287c41f25f969e4cac583740f4253113a8f291a640681e6536bb00d40c80dc42"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "5534c8c5b8077f01d46c90de904c89fa4fe64ba694f633f5a965af068404d326",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "440b993aabe5291db3d86fd941fe05efa33e2d5a788818a55cdeac278481ccc2",
+          "title": "Rappaccini's Daughter",
+          "word_count": 11465
+        }
+      ],
+      "content_hash": "57b2ef721088ddee8684f8f1d080065501760da3659ef86e11453d43e6355959",
+      "provenance_hash": "4d1aee24155cbed5d82ea7f1593935e34b402079c365c564814f4d1384445f10",
+      "sanitized": true,
+      "source_hash": "5c406033a5c3d1c4f7ccafb13ad5303d631cc19ad4403382407fcbb435e71d4a"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "897ef89343c8a9e7f6497602ee1d45215305b325356d3606908d5d6fbe4c8495",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "287c41f25f969e4cac583740f4253113a8f291a640681e6536bb00d40c80dc42",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "rappaccinis-daughter",
+    "title": "Rappaccini's Daughter"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

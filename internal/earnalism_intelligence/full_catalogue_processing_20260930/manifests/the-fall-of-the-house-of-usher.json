@@ -1,0 +1,111 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "a9ef7e5210050014c1622776c0d51eb8637ae9e05f324ac37316d8caed3e479f",
+    "chapters/chapter-001.json": "34d4107d4f0f48552d42d3fbb35d71e837f4f6f93112a6992a5a91467d7d2266",
+    "checksum_manifest.json": "1dee8d4c7b2145361a3fd40f1220d27bfecd6acc9cebe5759a90d2cec40c1bbb",
+    "highlight_sync.json": "0a034f6c286dcf240cacfd2ddf9e11e31c5bf8e4c0f12cd3c429e9a004bcde1e",
+    "public_book.json": "408e9d976788acd6500d0ee789152be2720642540657a7866de0988944315a6f",
+    "reader_manifest.json": "0edb0521b5d203b0a6efb53d98d6e9425a4d21e617d8f67e5ec591a7d6a52d1e",
+    "source_evidence.json": "8fbc65f1d07c9ec6bd37eae1bea33bcc3c1b03cfbf6ada5869a96f5130cfcdca"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "51f5aeca3e88367050046042ca32b6b95522c7ae93150cd95fe06988ef92a353",
+      "file_sha256": "34d4107d4f0f48552d42d3fbb35d71e837f4f6f93112a6992a5a91467d7d2266",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "a9ef7e5210050014c1622776c0d51eb8637ae9e05f324ac37316d8caed3e479f",
+    "chapters/chapter-001.json": "34d4107d4f0f48552d42d3fbb35d71e837f4f6f93112a6992a5a91467d7d2266",
+    "checksum_manifest.json": "1dee8d4c7b2145361a3fd40f1220d27bfecd6acc9cebe5759a90d2cec40c1bbb",
+    "highlight_sync.json": "0a034f6c286dcf240cacfd2ddf9e11e31c5bf8e4c0f12cd3c429e9a004bcde1e",
+    "public_book.json": "408e9d976788acd6500d0ee789152be2720642540657a7866de0988944315a6f",
+    "reader_manifest.json": "0edb0521b5d203b0a6efb53d98d6e9425a4d21e617d8f67e5ec591a7d6a52d1e",
+    "source_evidence.json": "8fbc65f1d07c9ec6bd37eae1bea33bcc3c1b03cfbf6ada5869a96f5130cfcdca"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "a9ef7e5210050014c1622776c0d51eb8637ae9e05f324ac37316d8caed3e479f",
+      "public_book": "408e9d976788acd6500d0ee789152be2720642540657a7866de0988944315a6f",
+      "reader_manifest": "0edb0521b5d203b0a6efb53d98d6e9425a4d21e617d8f67e5ec591a7d6a52d1e",
+      "source_evidence": "8fbc65f1d07c9ec6bd37eae1bea33bcc3c1b03cfbf6ada5869a96f5130cfcdca"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "1b92b4200cb86f472584f2b8bf990c140cd5f213355b3be5e44d85c9957e8093",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "34d4107d4f0f48552d42d3fbb35d71e837f4f6f93112a6992a5a91467d7d2266",
+          "title": "The Fall of the House of Usher",
+          "word_count": 7182
+        }
+      ],
+      "content_hash": "140c5cca220c9e7f5abe3b168e2e4410c47d771b985bc07da3282b5cb1be18b4",
+      "provenance_hash": "18addf33f3d7f05471e04879bb1615dd916aadbd2f56af59fe16658f340ffe13",
+      "sanitized": true,
+      "source_hash": "d1b7c8646c08a450edd16e58e0e034a5be43b283427cdc0d507439bc4c57a535"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "22ed692a1be8966a51e6ae06d95a7b424d6a612ca87330fe964c6511eb7acd5f",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+      ],
+      "cover_url": "https://theearnalism.com/assets/books/the-fall-of-the-house-of-usher/front-cover.webp",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "8fbc65f1d07c9ec6bd37eae1bea33bcc3c1b03cfbf6ada5869a96f5130cfcdca",
+      "publication_region": "in",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-fall-of-the-house-of-usher",
+    "title": "The Fall of the House of Usher"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

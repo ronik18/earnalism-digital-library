@@ -1,0 +1,119 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "21b497e25934f1d434b16584095a4697adc5e44ddefd4a7e568cb5bea429fcc0",
+    "chapters/chapter-001.json": "3c27b0704f285e0396231a1da0b6c53715d4389558e8c43444d4854d56931b64",
+    "checksum_manifest.json": "ba6d50688455bacb4cd81070e61092547d4c5312e380abb46be40da1e2936d0b",
+    "highlight_sync.json": "ffddf5da362104ca04f373598227e8c669534800a7764d48f9386944ecf361b6",
+    "public_book.json": "1324a9cb2bd95f104007a2250d921f06a1b5d05319c43c3c1eb3f642c1505c01",
+    "reader_manifest.json": "47326e8319c87bb767737f87e507b1ff40b4ad9b446dbc90817e43664aa0a9f0",
+    "source_evidence.json": "3e44963566f3373e077e7755ce3e868b62908b9ac75840a6b16fb69d2dded25f"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "daa29dda065503bfc19385c12779f2cba28f20287a07854e0356d0611f5e1538",
+      "file_sha256": "3c27b0704f285e0396231a1da0b6c53715d4389558e8c43444d4854d56931b64",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "21b497e25934f1d434b16584095a4697adc5e44ddefd4a7e568cb5bea429fcc0",
+    "approval_evidence.json": "21b497e25934f1d434b16584095a4697adc5e44ddefd4a7e568cb5bea429fcc0",
+    "chapters/chapter-001.json": "3c27b0704f285e0396231a1da0b6c53715d4389558e8c43444d4854d56931b64",
+    "checksum_manifest.json": "ba6d50688455bacb4cd81070e61092547d4c5312e380abb46be40da1e2936d0b",
+    "highlight_sync.json": "ffddf5da362104ca04f373598227e8c669534800a7764d48f9386944ecf361b6",
+    "public_book.json": "1324a9cb2bd95f104007a2250d921f06a1b5d05319c43c3c1eb3f642c1505c01",
+    "reader_manifest.json": "47326e8319c87bb767737f87e507b1ff40b4ad9b446dbc90817e43664aa0a9f0",
+    "source_evidence.json": "3e44963566f3373e077e7755ce3e868b62908b9ac75840a6b16fb69d2dded25f"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "21b497e25934f1d434b16584095a4697adc5e44ddefd4a7e568cb5bea429fcc0",
+      "public_book": "1324a9cb2bd95f104007a2250d921f06a1b5d05319c43c3c1eb3f642c1505c01",
+      "reader_manifest": "47326e8319c87bb767737f87e507b1ff40b4ad9b446dbc90817e43664aa0a9f0",
+      "source_evidence": "3e44963566f3373e077e7755ce3e868b62908b9ac75840a6b16fb69d2dded25f"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "d14cc8aead03be73e80e999ad0dfd25883317be8106363ca9b948b2563618a0c",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "3c27b0704f285e0396231a1da0b6c53715d4389558e8c43444d4854d56931b64",
+          "title": "একরাত্রি",
+          "word_count": 1785
+        }
+      ],
+      "content_hash": "ae7e8fcd4e2a8230f767a61992476c887cda3b61b6cf07ddb4eb4b486bfa1820",
+      "provenance_hash": "62fa0ae5b9b032d4195d27e4677a7d7ad64e57337432c076d77e8abd8bdd89a4",
+      "sanitized": true,
+      "source_hash": "daa29dda065503bfc19385c12779f2cba28f20287a07854e0356d0611f5e1538"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "9225eb98690fa021cf5606bceb45ea378f9cc85ef5f85546873ea5d77b1e8024",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "3e44963566f3373e077e7755ce3e868b62908b9ac75840a6b16fb69d2dded25f",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-4b944e64fa",
+    "title": "একরাত্রি"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

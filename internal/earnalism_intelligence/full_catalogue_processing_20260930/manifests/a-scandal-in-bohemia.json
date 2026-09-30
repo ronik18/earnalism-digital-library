@@ -1,0 +1,111 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "c44e53fd7116ac72e1ad639a90ba9d9d7420dbcefacb125ef41cb797b8610347",
+    "chapters/chapter-001.json": "efd315eb11fceeab3dba24c4ef4b5152496dd9e57033669908ba9b7ae54532ea",
+    "checksum_manifest.json": "6aa9e7d1881957f3d9c3af8092fcd1a573f677682bbc8306f04c0eaab9989e7d",
+    "highlight_sync.json": "c9fbef7081737ec06550b2e514632886918c3dd1181fddd072c8b61296679c6a",
+    "public_book.json": "5b5203f14999e53a380545a75464f76a52f3f3499a883fe285f2b580c43c9612",
+    "reader_manifest.json": "08be9023532b392a948c29ac4725a7a46a9fb1641ed78b9c438e0d5da08222d8",
+    "source_evidence.json": "0302b427ea3695a9ee06d524823239bdc8ff3021b8582b3acbc4340febbd81a9"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "b916cefa2e3bf0071435341af94c94b7f7ff3466799a79005f8a9ddc60bbf462",
+      "file_sha256": "efd315eb11fceeab3dba24c4ef4b5152496dd9e57033669908ba9b7ae54532ea",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "c44e53fd7116ac72e1ad639a90ba9d9d7420dbcefacb125ef41cb797b8610347",
+    "chapters/chapter-001.json": "efd315eb11fceeab3dba24c4ef4b5152496dd9e57033669908ba9b7ae54532ea",
+    "checksum_manifest.json": "6aa9e7d1881957f3d9c3af8092fcd1a573f677682bbc8306f04c0eaab9989e7d",
+    "highlight_sync.json": "c9fbef7081737ec06550b2e514632886918c3dd1181fddd072c8b61296679c6a",
+    "public_book.json": "5b5203f14999e53a380545a75464f76a52f3f3499a883fe285f2b580c43c9612",
+    "reader_manifest.json": "08be9023532b392a948c29ac4725a7a46a9fb1641ed78b9c438e0d5da08222d8",
+    "source_evidence.json": "0302b427ea3695a9ee06d524823239bdc8ff3021b8582b3acbc4340febbd81a9"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "c44e53fd7116ac72e1ad639a90ba9d9d7420dbcefacb125ef41cb797b8610347",
+      "public_book": "5b5203f14999e53a380545a75464f76a52f3f3499a883fe285f2b580c43c9612",
+      "reader_manifest": "08be9023532b392a948c29ac4725a7a46a9fb1641ed78b9c438e0d5da08222d8",
+      "source_evidence": "0302b427ea3695a9ee06d524823239bdc8ff3021b8582b3acbc4340febbd81a9"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "578ffb944358063553404f65509bac7dc4d98ddf192252443746539a35ca9142",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "efd315eb11fceeab3dba24c4ef4b5152496dd9e57033669908ba9b7ae54532ea",
+          "title": "A Scandal in Bohemia",
+          "word_count": 8542
+        }
+      ],
+      "content_hash": "ca95b6c1af79a8239e6641235f78ae0e31b5dd535800f76950b4f144650f0f0f",
+      "provenance_hash": "e3212953ceb32e1d32ebdb6e596b4851485edd17c7c6a944430b9c8c8fe34267",
+      "sanitized": true,
+      "source_hash": "c8a8c8bd954f303cb9a2ebdbb67935fe88c9b623afa510883e23dfc86026212c"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "711bfabdcd90e82ebca636d2754198b21500c6a43e70753b90e8e20e90b4419e",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+      ],
+      "cover_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "0302b427ea3695a9ee06d524823239bdc8ff3021b8582b3acbc4340febbd81a9",
+      "publication_region": "in",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "a-scandal-in-bohemia",
+    "title": "A Scandal in Bohemia"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

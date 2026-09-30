@@ -1,0 +1,129 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "74dabd9925df38019d13c1579b1b0a9d22603f69084dfd1b2acbf3cfb4c7e545",
+    "chapters/chapter-001.json": "c6a56abd3ca27dcb83417018f74e66ef45b491eacb83ed9d000bbb292f712da4",
+    "chapters/chapter-002.json": "9172cf08cd6fe0009a376beb1911bfde55386e42385aa351f19388ee7e08834b",
+    "checksum_manifest.json": "b3fda7b89e176e8257840544a18ec9a47dfc1c14fe70407ec82c7095e70d0cab",
+    "highlight_sync.json": "b1f7fda41647a4f3cb1b7bf2709a459355e59850e90e7e44239f13fdaa270f2e",
+    "public_book.json": "d34ecd7491b15a3b6fe09ae0fa501769efc583e71c12dca897af2b8f023cb9be",
+    "reader_manifest.json": "304fd60e3952495cfd1f9e4fd1c31994880ccd8144d8df05d5ec96a8d8eb3d53",
+    "source_evidence.json": "b52ad326cec3bea4f1ea9381b2afcf7e27e394eb8b279e8a8dd926ac3f5847e8"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "2da278011f7705b08e941479981aa83558e56b1c6a3d40f30b14fb8a6f23092e",
+      "file_sha256": "c6a56abd3ca27dcb83417018f74e66ef45b491eacb83ed9d000bbb292f712da4",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "9c57d79295766ee6651f2193a7d5266e5cfd816ace6621fbe77211cb8240df28",
+      "file_sha256": "9172cf08cd6fe0009a376beb1911bfde55386e42385aa351f19388ee7e08834b",
+      "id": "chapter-002"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "7cb4e8248f7984bfadc3787b8be6eb7edb10a61db2ed9034deb83ef7dc5cdc49",
+    "approval_evidence.json": "74dabd9925df38019d13c1579b1b0a9d22603f69084dfd1b2acbf3cfb4c7e545",
+    "chapters/chapter-001.json": "c6a56abd3ca27dcb83417018f74e66ef45b491eacb83ed9d000bbb292f712da4",
+    "chapters/chapter-002.json": "9172cf08cd6fe0009a376beb1911bfde55386e42385aa351f19388ee7e08834b",
+    "checksum_manifest.json": "b3fda7b89e176e8257840544a18ec9a47dfc1c14fe70407ec82c7095e70d0cab",
+    "highlight_sync.json": "b1f7fda41647a4f3cb1b7bf2709a459355e59850e90e7e44239f13fdaa270f2e",
+    "public_book.json": "d34ecd7491b15a3b6fe09ae0fa501769efc583e71c12dca897af2b8f023cb9be",
+    "reader_manifest.json": "304fd60e3952495cfd1f9e4fd1c31994880ccd8144d8df05d5ec96a8d8eb3d53",
+    "source_evidence.json": "b52ad326cec3bea4f1ea9381b2afcf7e27e394eb8b279e8a8dd926ac3f5847e8"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "74dabd9925df38019d13c1579b1b0a9d22603f69084dfd1b2acbf3cfb4c7e545",
+      "public_book": "d34ecd7491b15a3b6fe09ae0fa501769efc583e71c12dca897af2b8f023cb9be",
+      "reader_manifest": "304fd60e3952495cfd1f9e4fd1c31994880ccd8144d8df05d5ec96a8d8eb3d53",
+      "source_evidence": "b52ad326cec3bea4f1ea9381b2afcf7e27e394eb8b279e8a8dd926ac3f5847e8"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 2,
+      "chapter_index_sha256": "de2f0f78d8a062472485c0901c91f3acb8b68ab063beb3cce91a8777b0b2ff6b",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "c6a56abd3ca27dcb83417018f74e66ef45b491eacb83ed9d000bbb292f712da4",
+          "title": "Chapter 1. প্রথম পরিচ্ছেদ",
+          "word_count": 561
+        },
+        {
+          "id": "chapter-002",
+          "order": 2,
+          "sha256": "9172cf08cd6fe0009a376beb1911bfde55386e42385aa351f19388ee7e08834b",
+          "title": "Chapter 2. দ্বিতীয় পরিচ্ছেদ",
+          "word_count": 352
+        }
+      ],
+      "content_hash": "dea6e37479af7c2067c5929999da22f8b2f49aeb2d0abd9741da4e7f01e6ba48",
+      "provenance_hash": "5684356538fbb400de644b128c8ac1307bf46f737170d77dec156e1e1ac5f8a4",
+      "sanitized": true,
+      "source_hash": "733466ffdadc8f5c0172023edd5c0ba7327387d65d0c46b1b881a26e303e800a"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "717f0e7fe43da1dec64000540b3f7803bf63a600eb8ce23416af1274babf551e",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482980/earnalism/covers/front/cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "b52ad326cec3bea4f1ea9381b2afcf7e27e394eb8b279e8a8dd926ac3f5847e8",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "muchiram-gurer-jibanchorit",
+    "title": "মুচিরাম গুড়ের জীবনচরিত"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

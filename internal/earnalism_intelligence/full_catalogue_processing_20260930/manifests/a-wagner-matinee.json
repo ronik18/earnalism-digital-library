@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "cf8741c7e7c7ef7e2c862c9e63359824b2125f40f15d6c111b16c491add01099",
+    "chapters/chapter-001.json": "9cbd9fe333b76136c9d0c55044655605eb03f8658528bad31a6b7bd38ce0adde",
+    "checksum_manifest.json": "7fe1976da4290579861c66c6f4a7f33dc53d82192686637ed3a8e88b974fb809",
+    "highlight_sync.json": "1ec02f0663a8036fb2f880da5ad7978f133584140f6779194bf3cf07c0620722",
+    "public_book.json": "3a7886f07fa9895b64c858caa5240c6d935adb8fc9e894cca5503fb06a428a32",
+    "reader_manifest.json": "10f18cabd6fa99775d81a6b98d6587dda2b81373479048b6749b8efea5940048",
+    "source_evidence.json": "c59954e1575c9a8e025b8f80dcb4009e6b28d641f0d554a6b549b3b3ae15d488"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "70f9c11e3bba0acef0eec8581c2e314d3a6155ed1ec2acab3908fca3b0162251",
+      "file_sha256": "9cbd9fe333b76136c9d0c55044655605eb03f8658528bad31a6b7bd38ce0adde",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "cf8741c7e7c7ef7e2c862c9e63359824b2125f40f15d6c111b16c491add01099",
+    "chapters/chapter-001.json": "9cbd9fe333b76136c9d0c55044655605eb03f8658528bad31a6b7bd38ce0adde",
+    "checksum_manifest.json": "7fe1976da4290579861c66c6f4a7f33dc53d82192686637ed3a8e88b974fb809",
+    "highlight_sync.json": "1ec02f0663a8036fb2f880da5ad7978f133584140f6779194bf3cf07c0620722",
+    "public_book.json": "3a7886f07fa9895b64c858caa5240c6d935adb8fc9e894cca5503fb06a428a32",
+    "reader_manifest.json": "10f18cabd6fa99775d81a6b98d6587dda2b81373479048b6749b8efea5940048",
+    "source_evidence.json": "c59954e1575c9a8e025b8f80dcb4009e6b28d641f0d554a6b549b3b3ae15d488"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "cf8741c7e7c7ef7e2c862c9e63359824b2125f40f15d6c111b16c491add01099",
+      "public_book": "3a7886f07fa9895b64c858caa5240c6d935adb8fc9e894cca5503fb06a428a32",
+      "reader_manifest": "10f18cabd6fa99775d81a6b98d6587dda2b81373479048b6749b8efea5940048",
+      "source_evidence": "c59954e1575c9a8e025b8f80dcb4009e6b28d641f0d554a6b549b3b3ae15d488"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "e33b9db4391ecbd4212161e1d8bc552e44ce290bae7b34dfd47219ff8680fa02",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "9cbd9fe333b76136c9d0c55044655605eb03f8658528bad31a6b7bd38ce0adde",
+          "title": "A Wagner Matinee",
+          "word_count": 3319
+        }
+      ],
+      "content_hash": "b2f80c6bef9230701b586cb9f75fd159fb9cdddd338aa5dc181f802390ad258a",
+      "provenance_hash": "7387f9fb2c7162dd6ef8b7e5b6b0699a397f5fdfb5ecaa00384efa1ee631acb4",
+      "sanitized": true,
+      "source_hash": "0fcf30f0d708bfe3dbde73b23676faf5cc7ae069dcb76fb23ad3e4cd2b353bb3"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "639f89e1ef3ce591233119394927b5737ca0ec862578591add63ec09c90ee534",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "c59954e1575c9a8e025b8f80dcb4009e6b28d641f0d554a6b549b3b3ae15d488",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "a-wagner-matinee",
+    "title": "A Wagner Matinee"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

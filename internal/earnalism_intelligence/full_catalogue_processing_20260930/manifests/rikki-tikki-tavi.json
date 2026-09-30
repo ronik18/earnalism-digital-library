@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "dad32cd0cc9d5e7625c387ba07ed7796cf64291a788c9a3cabd4ab78db20f5bc",
+    "chapters/chapter-001.json": "91206afb10aed8e4020989d533e107c483b6ef0871ee40f9e91b0f2773bc1e4c",
+    "checksum_manifest.json": "d9d5a6324bb457effa9dfe55cdef4ecc8109502bf42d73404be6c971f82683ca",
+    "highlight_sync.json": "875a6df75bb02ed89dcbf6d242c8a9800350a8441ec77bec32c278304f506445",
+    "public_book.json": "50354e94d87f75e1fddf21b855835186a72cae9e27b1a34e020f0f9210e55c85",
+    "reader_manifest.json": "53ad1b485103b247da45ee2a8e73b0f770d257b9e97623ffcf381d3795758399",
+    "source_evidence.json": "2bc739a93c13a1c203cbfb8fa0bffc09722e046918c35ddae377a204d33dcc24"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "6c0e5ab6390ed2b3fbf7f064e8bef012e0ee3012c14b69a165b2bd8df6773e17",
+      "file_sha256": "91206afb10aed8e4020989d533e107c483b6ef0871ee40f9e91b0f2773bc1e4c",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "dad32cd0cc9d5e7625c387ba07ed7796cf64291a788c9a3cabd4ab78db20f5bc",
+    "chapters/chapter-001.json": "91206afb10aed8e4020989d533e107c483b6ef0871ee40f9e91b0f2773bc1e4c",
+    "checksum_manifest.json": "d9d5a6324bb457effa9dfe55cdef4ecc8109502bf42d73404be6c971f82683ca",
+    "highlight_sync.json": "875a6df75bb02ed89dcbf6d242c8a9800350a8441ec77bec32c278304f506445",
+    "public_book.json": "50354e94d87f75e1fddf21b855835186a72cae9e27b1a34e020f0f9210e55c85",
+    "reader_manifest.json": "53ad1b485103b247da45ee2a8e73b0f770d257b9e97623ffcf381d3795758399",
+    "source_evidence.json": "2bc739a93c13a1c203cbfb8fa0bffc09722e046918c35ddae377a204d33dcc24"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "dad32cd0cc9d5e7625c387ba07ed7796cf64291a788c9a3cabd4ab78db20f5bc",
+      "public_book": "50354e94d87f75e1fddf21b855835186a72cae9e27b1a34e020f0f9210e55c85",
+      "reader_manifest": "53ad1b485103b247da45ee2a8e73b0f770d257b9e97623ffcf381d3795758399",
+      "source_evidence": "2bc739a93c13a1c203cbfb8fa0bffc09722e046918c35ddae377a204d33dcc24"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "70e2a8489947501858587396733cf817eaa1e64e03511eae2ccf6265c54b8d30",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "91206afb10aed8e4020989d533e107c483b6ef0871ee40f9e91b0f2773bc1e4c",
+          "title": "Rikki-Tikki-Tavi",
+          "word_count": 2909
+        }
+      ],
+      "content_hash": "213c2a4d8a06ab1ef0a043434d8026e50b6a01eff59a8ec74287afaf2c0f9ff7",
+      "provenance_hash": "50b412128c232ff4cb8be5219da80cc52acbdcbecb4a58dfd0a934dc6514dde3",
+      "sanitized": true,
+      "source_hash": "9fb989d890306e186ad819ae9917d27b053bad992c2910b016dbf5540b28faf9"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "d1c1663bd4b120ab4c9dc924abc9310335f1c5537de7026ce3b02b21661ca95d",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "2bc739a93c13a1c203cbfb8fa0bffc09722e046918c35ddae377a204d33dcc24",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "rikki-tikki-tavi",
+    "title": "Rikki-Tikki-Tavi"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

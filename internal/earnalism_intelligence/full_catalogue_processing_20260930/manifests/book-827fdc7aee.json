@@ -1,0 +1,119 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "aa96ddddc1290cbd2de44a412b3845d2300524a6198f27c418eac5eb54666494",
+    "chapters/chapter-001.json": "8cfb7608593d54bbc1cfbb21e6faf3341f5bd045cb799e4098ea094e6448cae1",
+    "checksum_manifest.json": "0e983fadf68a39e4dfdb7396298c136d569b3350d845004b10b2728b8bea5350",
+    "highlight_sync.json": "de9fbc1f12657ea14def215996cbe3762cfa01a73a968c0d3815532299b19652",
+    "public_book.json": "4f05993f919ac9dc372570ee1b90d0fba08439f54e2fa069f26b467f500e30c0",
+    "reader_manifest.json": "353089984fab0a40e3bbd757a7ca6718192646fece4aa3041f19d67e6802a6b8",
+    "source_evidence.json": "22b9a82c90083028ac267cfd31567747664ae16f15f447182913dea7ec7d1dba"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "73789e5480cf2f077ad75c01ed713e5f350480f5e493d4886d4a1f8cabc22f2a",
+      "file_sha256": "8cfb7608593d54bbc1cfbb21e6faf3341f5bd045cb799e4098ea094e6448cae1",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "aa96ddddc1290cbd2de44a412b3845d2300524a6198f27c418eac5eb54666494",
+    "approval_evidence.json": "aa96ddddc1290cbd2de44a412b3845d2300524a6198f27c418eac5eb54666494",
+    "chapters/chapter-001.json": "8cfb7608593d54bbc1cfbb21e6faf3341f5bd045cb799e4098ea094e6448cae1",
+    "checksum_manifest.json": "0e983fadf68a39e4dfdb7396298c136d569b3350d845004b10b2728b8bea5350",
+    "highlight_sync.json": "de9fbc1f12657ea14def215996cbe3762cfa01a73a968c0d3815532299b19652",
+    "public_book.json": "4f05993f919ac9dc372570ee1b90d0fba08439f54e2fa069f26b467f500e30c0",
+    "reader_manifest.json": "353089984fab0a40e3bbd757a7ca6718192646fece4aa3041f19d67e6802a6b8",
+    "source_evidence.json": "22b9a82c90083028ac267cfd31567747664ae16f15f447182913dea7ec7d1dba"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "aa96ddddc1290cbd2de44a412b3845d2300524a6198f27c418eac5eb54666494",
+      "public_book": "4f05993f919ac9dc372570ee1b90d0fba08439f54e2fa069f26b467f500e30c0",
+      "reader_manifest": "353089984fab0a40e3bbd757a7ca6718192646fece4aa3041f19d67e6802a6b8",
+      "source_evidence": "22b9a82c90083028ac267cfd31567747664ae16f15f447182913dea7ec7d1dba"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "0b0800c1a6eaf267902c69dc3766efab33e94f5ad7fea722cb317fdb40198d03",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "8cfb7608593d54bbc1cfbb21e6faf3341f5bd045cb799e4098ea094e6448cae1",
+          "title": "রাসমণির ছেলে",
+          "word_count": 10546
+        }
+      ],
+      "content_hash": "d06687a9cc39eaae8bb09cd5273c9a0047606893924392c225fa1db72a50863b",
+      "provenance_hash": "1346c562712008039c3581f121ef749ca1b540fd1a8db8ed11735b03eb6ccaf3",
+      "sanitized": true,
+      "source_hash": "73789e5480cf2f077ad75c01ed713e5f350480f5e493d4886d4a1f8cabc22f2a"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "460c8ac3a2d2dc8e5772b3d430fb70aa51ce5b2a2e07966806840b307e4c1770",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "22b9a82c90083028ac267cfd31567747664ae16f15f447182913dea7ec7d1dba",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-827fdc7aee",
+    "title": "রাসমণির ছেলে"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

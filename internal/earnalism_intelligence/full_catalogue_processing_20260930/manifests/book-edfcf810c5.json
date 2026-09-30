@@ -1,0 +1,114 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "4db03ac530007827caa5a8973b73aeb4cc8b0f3a00cc5eeed3410999e417bfe9",
+    "chapters/chapter-001.json": "41b21a65fe7d0be19bd30e7ad632849a72f28356a441ee258845249ba3b3ca67",
+    "checksum_manifest.json": "397a0b2f3fda876de4397956a9379d80a353d50baaef460d1f3d63c276c27ec1",
+    "highlight_sync.json": "507cbe9cce27d5ea95499e0d0df7938001c8289062d9f24090055d07a67656ee",
+    "public_book.json": "0d92936ad473b2bbd700b5894c5ad11b7a126aba1418619d065660ab7dd668f2",
+    "reader_manifest.json": "6afeee33062302af8dc59005f89c619f8515a727688232e1006fa88ffe5ee663",
+    "source_evidence.json": "25f39ff28d27b714d62401d07b251c00cefdff04edf44f0d29f1943739877f2b"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "2591896f7fd678dafae394be36f7c60f39f240d5ac74e5806b5570982b5d96d7",
+      "file_sha256": "41b21a65fe7d0be19bd30e7ad632849a72f28356a441ee258845249ba3b3ca67",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "4db03ac530007827caa5a8973b73aeb4cc8b0f3a00cc5eeed3410999e417bfe9",
+    "chapters/chapter-001.json": "41b21a65fe7d0be19bd30e7ad632849a72f28356a441ee258845249ba3b3ca67",
+    "checksum_manifest.json": "397a0b2f3fda876de4397956a9379d80a353d50baaef460d1f3d63c276c27ec1",
+    "highlight_sync.json": "507cbe9cce27d5ea95499e0d0df7938001c8289062d9f24090055d07a67656ee",
+    "public_book.json": "0d92936ad473b2bbd700b5894c5ad11b7a126aba1418619d065660ab7dd668f2",
+    "reader_manifest.json": "6afeee33062302af8dc59005f89c619f8515a727688232e1006fa88ffe5ee663",
+    "source_evidence.json": "25f39ff28d27b714d62401d07b251c00cefdff04edf44f0d29f1943739877f2b"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "4db03ac530007827caa5a8973b73aeb4cc8b0f3a00cc5eeed3410999e417bfe9",
+      "public_book": "0d92936ad473b2bbd700b5894c5ad11b7a126aba1418619d065660ab7dd668f2",
+      "reader_manifest": "6afeee33062302af8dc59005f89c619f8515a727688232e1006fa88ffe5ee663",
+      "source_evidence": "25f39ff28d27b714d62401d07b251c00cefdff04edf44f0d29f1943739877f2b"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "0a2211cc9492734d06bbdd36eef4b7f1638f92c585f32a8e80796344b7f50a1c",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "41b21a65fe7d0be19bd30e7ad632849a72f28356a441ee258845249ba3b3ca67",
+          "title": "ক্ষুধিত পাষাণ",
+          "word_count": 3356
+        }
+      ],
+      "content_hash": "12bc09cce1802df3c03d94ec8dee67e3feedc7fe754887b8e6cdb3acce02e614",
+      "provenance_hash": "c204c2faa373044ae1e5476b61cc0102027b5d2615e3bfca930781591c9270db",
+      "sanitized": true,
+      "source_hash": "2591896f7fd678dafae394be36f7c60f39f240d5ac74e5806b5570982b5d96d7"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "2b612244fe4c7edc7941b1736f1ee4f3195a60e20ccbf652e71de44884a4aa6e",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1784226492/earnalism/covers/front/book-edfcf810c5_front_1024x1536.webp",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "25f39ff28d27b714d62401d07b251c00cefdff04edf44f0d29f1943739877f2b",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-edfcf810c5",
+    "title": "ক্ষুধিত পাষাণ"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

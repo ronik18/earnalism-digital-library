@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "23e79fc9ba56f77e3ddad9f8af4fe79761766f188cbec45dbe02144d8de6c1ad",
+    "chapters/chapter-001.json": "73e4e3c28a0aa9601d88c8ee192f32bce6feb3aceea92420ff4b902ddff4dbf5",
+    "checksum_manifest.json": "a83829be9c070819d827d3c4d837f5cdea540e3e512d505f25d47d67759d3d27",
+    "highlight_sync.json": "b5e829a55cde2e8550ff31f8321d41333740815a16320c85d5151842d34c6377",
+    "public_book.json": "480c8f53eeda7665a0311ea1eed7023da609552547297fc5b14f54ba186a00c0",
+    "reader_manifest.json": "9e660d67515f7bd0a8ef45402eace1039a6cd3dc81cc75eeb210390fccf72210",
+    "source_evidence.json": "c2c98591429b9ceafdb15ae518a86421fdf4659cc61476fe5b640b9efdeecede"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "5acebb7b0d479bdccf79828e96a9a86027e013d846621117ac027220e046dca8",
+      "file_sha256": "73e4e3c28a0aa9601d88c8ee192f32bce6feb3aceea92420ff4b902ddff4dbf5",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "23e79fc9ba56f77e3ddad9f8af4fe79761766f188cbec45dbe02144d8de6c1ad",
+    "chapters/chapter-001.json": "73e4e3c28a0aa9601d88c8ee192f32bce6feb3aceea92420ff4b902ddff4dbf5",
+    "checksum_manifest.json": "a83829be9c070819d827d3c4d837f5cdea540e3e512d505f25d47d67759d3d27",
+    "highlight_sync.json": "b5e829a55cde2e8550ff31f8321d41333740815a16320c85d5151842d34c6377",
+    "public_book.json": "480c8f53eeda7665a0311ea1eed7023da609552547297fc5b14f54ba186a00c0",
+    "reader_manifest.json": "9e660d67515f7bd0a8ef45402eace1039a6cd3dc81cc75eeb210390fccf72210",
+    "source_evidence.json": "c2c98591429b9ceafdb15ae518a86421fdf4659cc61476fe5b640b9efdeecede"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "23e79fc9ba56f77e3ddad9f8af4fe79761766f188cbec45dbe02144d8de6c1ad",
+      "public_book": "480c8f53eeda7665a0311ea1eed7023da609552547297fc5b14f54ba186a00c0",
+      "reader_manifest": "9e660d67515f7bd0a8ef45402eace1039a6cd3dc81cc75eeb210390fccf72210",
+      "source_evidence": "c2c98591429b9ceafdb15ae518a86421fdf4659cc61476fe5b640b9efdeecede"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "f1bde04d4b299f0dfe4dec258a5dbda1566190cec76651528352b31f794e23af",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "73e4e3c28a0aa9601d88c8ee192f32bce6feb3aceea92420ff4b902ddff4dbf5",
+          "title": "The Five Orange Pips",
+          "word_count": 7342
+        }
+      ],
+      "content_hash": "879efaad73ff552d7c0b7bafc862306936c5aaa1d278dd9e89ecc3a3c9e5c213",
+      "provenance_hash": "eb6e24a5e4ee9a56708d8001f1736cdb05ec1f31bbe72be7739b0536b91dc6bb",
+      "sanitized": true,
+      "source_hash": "5d37ae2d72dd6654476af65bcaeabefeb7d0f105910f7e0070803fce1e6a767e"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "5620b7f69c333aee719f5841ec55e5d77947ceca5d19a6e2aa0c50de156115ff",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "c2c98591429b9ceafdb15ae518a86421fdf4659cc61476fe5b640b9efdeecede",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-five-orange-pips",
+    "title": "The Five Orange Pips"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

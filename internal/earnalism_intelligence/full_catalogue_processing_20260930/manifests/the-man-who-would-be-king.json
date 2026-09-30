@@ -1,0 +1,111 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "9835063bdca72194e396b1459b75d573e98e7a6addc9141559118749a4c9ead5",
+    "chapters/chapter-001.json": "fceadfd7e05c26bfd2a467327219843b89369a50ff5b11d018e202ade45e0914",
+    "checksum_manifest.json": "7204eb149587b941af2568f5c319c8db43a62c4859c6b36ffbd76d3438a45477",
+    "highlight_sync.json": "65550c498ea653e1f52329825101496ecb952eaee1fab64dac3f327d5d6187b2",
+    "public_book.json": "d829d633b8980dab442fc64d60ff008aaa5aad39f6f10850e1ef3c9f96c9aa1c",
+    "reader_manifest.json": "5df6dd9b255ce9ad88e1dad00532528c0b4a6a990a81bde422c6640f98924e32",
+    "source_evidence.json": "b28baa8735f34c23f3236faea44061e0dd31609038ebd84dc01d9ae297718e09"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "6bb07930606cf29425f255fe36c7aca80ab53654da30c4c01831b01a11be6ccb",
+      "file_sha256": "fceadfd7e05c26bfd2a467327219843b89369a50ff5b11d018e202ade45e0914",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "9835063bdca72194e396b1459b75d573e98e7a6addc9141559118749a4c9ead5",
+    "chapters/chapter-001.json": "fceadfd7e05c26bfd2a467327219843b89369a50ff5b11d018e202ade45e0914",
+    "checksum_manifest.json": "7204eb149587b941af2568f5c319c8db43a62c4859c6b36ffbd76d3438a45477",
+    "highlight_sync.json": "65550c498ea653e1f52329825101496ecb952eaee1fab64dac3f327d5d6187b2",
+    "public_book.json": "d829d633b8980dab442fc64d60ff008aaa5aad39f6f10850e1ef3c9f96c9aa1c",
+    "reader_manifest.json": "5df6dd9b255ce9ad88e1dad00532528c0b4a6a990a81bde422c6640f98924e32",
+    "source_evidence.json": "b28baa8735f34c23f3236faea44061e0dd31609038ebd84dc01d9ae297718e09"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "9835063bdca72194e396b1459b75d573e98e7a6addc9141559118749a4c9ead5",
+      "public_book": "d829d633b8980dab442fc64d60ff008aaa5aad39f6f10850e1ef3c9f96c9aa1c",
+      "reader_manifest": "5df6dd9b255ce9ad88e1dad00532528c0b4a6a990a81bde422c6640f98924e32",
+      "source_evidence": "b28baa8735f34c23f3236faea44061e0dd31609038ebd84dc01d9ae297718e09"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "5936b82edc03f86fec35795e8c0f9c34a7c3e4019b0e637fbc4092af8fc2f774",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "fceadfd7e05c26bfd2a467327219843b89369a50ff5b11d018e202ade45e0914",
+          "title": "The Man Who Would Be King",
+          "word_count": 14303
+        }
+      ],
+      "content_hash": "28f4b454893a6d614cb729f94b3c7cbac26640a9d4f102d585051a8e9532e8e5",
+      "provenance_hash": "f4a3486f775a233fae6df4ae40dafec5bc5ce82e4ad8b1d64c75164c11b01827",
+      "sanitized": true,
+      "source_hash": "f793cabaf57da4c855c5fefa2783c2f21eaa0a14a9d0199f305b89afe57f75f8"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "e33f2e540674f1e91135cf803ae516dfbcdaf875ae9016fa933c2fb87d765ec5",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+      ],
+      "cover_url": "https://theearnalism.com/assets/books/the-man-who-would-be-king/front-cover.webp",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "b28baa8735f34c23f3236faea44061e0dd31609038ebd84dc01d9ae297718e09",
+      "publication_region": "in",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-man-who-would-be-king",
+    "title": "The Man Who Would Be King"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

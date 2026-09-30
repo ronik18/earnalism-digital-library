@@ -1,0 +1,119 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "5b4d292d2322af4ce6743bfd7de0adcab2a251f7dc1423fb44755a093579d66d",
+    "chapters/chapter-001.json": "a31869179bdc721edfed8419f74adf3a87d6cfc335a386124236128bd9e21500",
+    "checksum_manifest.json": "10981687113cb6e0211cdc1597f86e49ddf8492fa3456911ecef65fb0c02fc8e",
+    "highlight_sync.json": "58a159021c574decbc2d9384af890319c00f2993e984945c1bbb758df6576305",
+    "public_book.json": "36e0a9924e3fa268fffeb89498d162e951415f395f6e30ebc0611387d10d99f1",
+    "reader_manifest.json": "59ebf61183ec1fa6ee87f207c7dfa39ff16d5f6a57db0d38d01ca649b0f82cfb",
+    "source_evidence.json": "978fd3fcf8fbd6bb96da62ba9af8205146dca7b4e1725bd51e780a9a30f0fd55"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "7c41b5ea9b6dd62a8cd4828141cda63cd9c86803357268bc25c411554d182b33",
+      "file_sha256": "a31869179bdc721edfed8419f74adf3a87d6cfc335a386124236128bd9e21500",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "5b4d292d2322af4ce6743bfd7de0adcab2a251f7dc1423fb44755a093579d66d",
+    "approval_evidence.json": "5b4d292d2322af4ce6743bfd7de0adcab2a251f7dc1423fb44755a093579d66d",
+    "chapters/chapter-001.json": "a31869179bdc721edfed8419f74adf3a87d6cfc335a386124236128bd9e21500",
+    "checksum_manifest.json": "10981687113cb6e0211cdc1597f86e49ddf8492fa3456911ecef65fb0c02fc8e",
+    "highlight_sync.json": "58a159021c574decbc2d9384af890319c00f2993e984945c1bbb758df6576305",
+    "public_book.json": "36e0a9924e3fa268fffeb89498d162e951415f395f6e30ebc0611387d10d99f1",
+    "reader_manifest.json": "59ebf61183ec1fa6ee87f207c7dfa39ff16d5f6a57db0d38d01ca649b0f82cfb",
+    "source_evidence.json": "978fd3fcf8fbd6bb96da62ba9af8205146dca7b4e1725bd51e780a9a30f0fd55"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "5b4d292d2322af4ce6743bfd7de0adcab2a251f7dc1423fb44755a093579d66d",
+      "public_book": "36e0a9924e3fa268fffeb89498d162e951415f395f6e30ebc0611387d10d99f1",
+      "reader_manifest": "59ebf61183ec1fa6ee87f207c7dfa39ff16d5f6a57db0d38d01ca649b0f82cfb",
+      "source_evidence": "978fd3fcf8fbd6bb96da62ba9af8205146dca7b4e1725bd51e780a9a30f0fd55"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "78c79386e447cafbf29591d47a958199d7593ed08e36bfe55f196c8afbaccf28",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "a31869179bdc721edfed8419f74adf3a87d6cfc335a386124236128bd9e21500",
+          "title": "দিদি",
+          "word_count": 2982
+        }
+      ],
+      "content_hash": "a3390f2b02edbd02d8b0ad171173488bb8f6fa6649a94886f4a0b92b5324ac36",
+      "provenance_hash": "ac0e121b2b55180f7861584e8c191aba4756b1c5db63e9b266def593f6851680",
+      "sanitized": true,
+      "source_hash": "7c41b5ea9b6dd62a8cd4828141cda63cd9c86803357268bc25c411554d182b33"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "d3704fed69446c4a7cce4885acfdf08fde672506f84f7147f0118b66c3cb6732",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "978fd3fcf8fbd6bb96da62ba9af8205146dca7b4e1725bd51e780a9a30f0fd55",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-ef193ffc52",
+    "title": "দিদি"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}
