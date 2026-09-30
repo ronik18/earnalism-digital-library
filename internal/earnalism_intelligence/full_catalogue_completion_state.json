@@ -241,5 +241,17 @@
     "held": 224,
     "live": 7,
     "publication": "PENDING_PROTECTED_MERGE"
+  },
+  "catalogue_controller_handoff_contract": {
+    "timestamp": "2026-09-30T22:59:04.998230+00:00",
+    "workstream": "catalogue_compliance_campaign",
+    "decision": "VERIFY_ACTUAL_PR_POLICY_HANDOFF_BRANCHES_AND_EXPORT_SAME_STEP_IDENTITY",
+    "source_head": "3bc779e217ce148c21c6d147d8165f3e15422410",
+    "pr": 488,
+    "observation": "GITHUB_ENV values become visible in later steps; the Python handoff in the same creation step needs the actual candidate SHA explicitly exported",
+    "repair": "Export the read-only actual git HEAD before both PR creation and policy-bound handoff",
+    "verification": "Nine controller evidence fixtures pass: six source/report boundaries plus actual workflow shell paths for specific Actions PR-policy rejection, unrelated PR error, and normal creation; no branch claims a merge before normal checks",
+    "package_or_product_change": false,
+    "next_exact_command": "gh pr checks 488 --repo ronik18/earnalism-digital-library --watch --fail-fast"
   }
 }

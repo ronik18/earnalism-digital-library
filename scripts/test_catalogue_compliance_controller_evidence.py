@@ -1,8 +1,13 @@
 import importlib.util
+import json
+import os
 from pathlib import Path
 import shutil
+import shlex
+import sys
 import subprocess
 import tempfile
+import textwrap
 import unittest
 
 
@@ -79,6 +84,44 @@ class ControllerEvidenceTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "regular tracked"):
             evidence.retain(self.root, self.baseline)
         self.assertEqual(target.read_bytes(), self.fresh)
+
+    def run_candidate_handoff(self, error=None):
+        workflow = Path(__file__).resolve().parents[1] / ".github/workflows/catalogue-compliance-go-live.yml"
+        section = workflow.read_text().split("      - name: Create compliance candidate PR or retain bridge handoff\n", 1)[1]
+        script = textwrap.dedent(section.split("run: |\n", 1)[1].split("\n      - name:", 1)[0])
+        script = script[script.index('PR_HEAD_SHA="$(git rev-parse HEAD)"'):]
+        folder = Path(self.folder.name)
+        script = script.replace("/tmp/", str(folder) + "/")
+        summary = {'held_before':224,'held_after':224,'live_before':7,'live_after':7,'blockers_before':919,'blockers_after':912,'newly_live':[],'new_registry_decisions':[]}
+        (folder / "campaign-summary.json").write_text(json.dumps(summary))
+        response = "printf '%s\\n' 'https://github.com/fixture/repo/pull/42'" if error is None else "printf '%s\\n' " + shlex.quote(error) + " >&2; return 1"
+        prefix = "set -euo pipefail\ngit() { if [[ \"$1 $2\" == 'rev-parse HEAD' ]]; then printf '%s\\n' '" + "b"*40 + "'; elif [[ \"$*\" == *' push '* ]]; then :; else return 72; fi; }\ngh() { if [[ \"$1 $2\" == 'pr create' ]]; then " + response + "; elif [[ \"$1 $2\" == 'issue comment' ]]; then :; else return 73; fi; }\n"
+        env = {'PATH':str(Path(sys.executable).parent) + os.pathsep + os.defpath,'GITHUB_SHA':'a'*40,'GITHUB_RUN_ID':'123','GITHUB_REPOSITORY':'fixture/repo','BRANCH':'codex/main-approved-integration','TRACKING_ISSUE':'477','GITHUB_ENV':str(folder/'github-env'),'GITHUB_OUTPUT':str(folder/'github-output')}
+        result = subprocess.run(['bash','-c',prefix + script],cwd=self.root,env=env,text=True,capture_output=True)
+        return result, folder / "earnalism-catalogue-bridge-handoff.json", folder / "github-env"
+
+    def test_actions_policy_rejection_retains_exact_candidate_without_merge_claim(self):
+        result, handoff, github_env = self.run_candidate_handoff("GraphQL: GitHub Actions is not permitted to create or approve pull requests")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        record = json.loads(handoff.read_text())
+        self.assertEqual(record['candidate_head'], 'b'*40)
+        self.assertEqual(record['source_head'], 'a'*40)
+        self.assertEqual(record['status'], 'VALIDATED_CANDIDATE_AWAITING_BRIDGE_PR_AND_PROTECTED_MERGE')
+        self.assertNotIn('PR_NUMBER=', github_env.read_text())
+        self.assertNotIn('MERGED_SHA=', github_env.read_text())
+
+    def test_unexpected_pr_error_fails_without_handoff_or_merge(self):
+        result, handoff, github_env = self.run_candidate_handoff("GraphQL: Resource not accessible by integration")
+        self.assertNotEqual(result.returncode, 0)
+        self.assertFalse(handoff.exists())
+        self.assertNotIn('PR_NUMBER=', github_env.read_text())
+
+    def test_normal_pr_creation_retains_required_check_handoff(self):
+        result, handoff, github_env = self.run_candidate_handoff()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertFalse(handoff.exists())
+        self.assertIn('PR_NUMBER=42\n', github_env.read_text())
+        self.assertNotIn('MERGED_SHA=', github_env.read_text())
 
 
 if __name__ == "__main__":

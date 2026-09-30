@@ -574,7 +574,9 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add -A
           git commit -m "Catalogue compliance: evidence-bound release progress"
-          echo "PR_HEAD_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+          PR_HEAD_SHA="$(git rev-parse HEAD)"
+          export PR_HEAD_SHA
+          echo "PR_HEAD_SHA=$PR_HEAD_SHA" >> "$GITHUB_ENV"
           git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push origin "$BRANCH"
 
           python3 - <<'PY' > /tmp/pr-body.md
