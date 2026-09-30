@@ -39,7 +39,8 @@ env \
   ENABLE_STARTUP_DB_MAINTENANCE=false \
   "$PYTHON_BIN" -m pytest -q \
     backend/tests/test_b2_audiobook_routing.py \
-    backend/tests/test_agentic_ai_with_python_reader_only.py
+    backend/tests/test_agentic_ai_with_python_reader_only.py \
+    scripts/test_repair_enchanted_april_reader_preflight.py
 
 echo "==> Reader segment and inspection MongoDB integrations"
 env \

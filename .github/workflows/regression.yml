@@ -55,7 +55,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install --yes ripgrep
 
       - name: Validate catalogue worker permission boundaries
-        run: python3 -m unittest scripts.test_catalogue_compliance_worker_permissions scripts.test_catalogue_compliance_worker_receipt scripts.test_catalogue_compliance_generated_evidence -v
+        run: python3 -m unittest scripts.test_catalogue_compliance_worker_permissions scripts.test_catalogue_compliance_worker_receipt scripts.test_catalogue_compliance_generated_evidence scripts.test_catalogue_compliance_batch -v
 
       - name: Validate historical unavailable snapshots and raw HTML canary
         run: python3 -m unittest scripts.test_post_deploy_static_seo_canary -v

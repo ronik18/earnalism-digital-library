@@ -10,6 +10,9 @@ import shutil
 import subprocess
 import tempfile
 import unittest
+import sys
+
+from scripts.catalogue_compliance_generated_evidence import CANONICAL, WORKER, preserve_generated_evidence
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -84,6 +87,44 @@ class WorkerPermissionPreflight(unittest.TestCase):
         self.assertTrue(self.repo.is_symlink())
         self.assertEqual(self.repo.resolve(), canonical)
         self.assertEqual((canonical / "synthetic.txt").read_text(), "Synthetic worker permission fixture only.\n")
+
+    def test_worker_generates_separate_reports_when_restored_reports_are_read_only(self):
+        canonical = self.repo / CANONICAL
+        canonical.mkdir(parents=True)
+        historical = canonical / "catalogue_state.json"
+        historical.write_text('{"historical":true}\n')
+        command(["git", "-C", str(self.repo), "add", CANONICAL], check=True)
+        command(["git", "-C", str(self.repo), "-c", "user.name=Fixture",
+                 "-c", "user.email=fixture@example.invalid", "commit", "--quiet", "-m", "historical reports"], check=True)
+        command(["sudo", "-n", "chgrp", "-R", str(self.worker.pw_gid), str(self.repo)], check=True)
+        command(["sudo", "-n", "chmod", "-R", "g+rwX", str(self.repo)], check=True)
+        command(["sudo", "-n", "find", str(self.repo), "-type", "d", "-exec", "chmod", "g+s", "{}", "+"], check=True)
+        historical.chmod(0o644)  # A controller restore creates a new non-group-writable file.
+        code = """from pathlib import Path
+import sys
+historical, output = map(Path, sys.argv[1:])
+try:
+    historical.write_text('unexpected overwrite')
+except PermissionError:
+    pass
+else:
+    raise AssertionError('worker unexpectedly rewrote restored historical evidence')
+output.mkdir()
+(output/'catalogue_state.json').write_text('{"worker":true}\\n')
+"""
+        worker = self.repo / WORKER
+        result = command(["sudo", "-n", "-u", "nobody", sys.executable, "-c", code,
+                          str(historical), str(worker)])
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(historical.read_text(), '{"historical":true}\n')
+        self.assertEqual((worker / "catalogue_state.json").stat().st_uid, self.worker.pw_uid)
+        command(["sudo", "-n", "chown", "-R", f"{os.getuid()}:{os.getgid()}", str(self.repo)], check=True)
+        archive = preserve_generated_evidence(self.repo)
+        self.addCleanup(shutil.rmtree, archive)
+        self.assertEqual((archive / worker.name / "catalogue_state.json").read_text(), '{"worker":true}\n')
+        self.assertEqual(historical.read_text(), '{"historical":true}\n')
+        self.assertFalse(worker.exists())
+        self.assertEqual(command(["git", "-C", str(self.repo), "status", "--porcelain"]).stdout, "")
 
     def test_root_worker_is_rejected(self):
         self.assertNotEqual(self.run_worker(user="root").returncode, 0)
