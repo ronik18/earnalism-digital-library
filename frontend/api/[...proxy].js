@@ -42,6 +42,29 @@ function requestBody(req) {
   });
 }
 
+function previewIsolationResponse(req, res, pathname) {
+  res.setHeader("Cache-Control", "no-store");
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  const method = String(req.method || "GET").toUpperCase();
+  if (method === "GET" && pathname === "/api/payments/config") {
+    res.statusCode = 200;
+    res.end(JSON.stringify({ configured: false, mode: "preview-disabled", preview: true }));
+    return;
+  }
+  if (method === "GET" && pathname === "/api/payments/offers") {
+    res.statusCode = 200;
+    res.end(JSON.stringify({ packs: [], config: { configured: false, mode: "preview-disabled", preview: true } }));
+    return;
+  }
+  if (method === "GET" && pathname === "/api/payments/packs") {
+    res.statusCode = 200;
+    res.end(JSON.stringify([]));
+    return;
+  }
+  res.statusCode = 503;
+  res.end(JSON.stringify({ detail: { code: "PREVIEW_API_ISOLATED", message: "API access is disabled in isolated Preview." } }));
+}
+
 module.exports = async function releaseProxy(req, res) {
   const origin = upstreamOrigin();
   const incoming = new URL(req.url || "/api", "https://theearnalism.com");
@@ -73,6 +96,10 @@ module.exports = async function releaseProxy(req, res) {
       headers: req.headers || {},
       query: { path: incoming.searchParams.get("path") || req.query?.path },
     }, res);
+    return;
+  }
+  if (process.env.VERCEL_ENV === "preview") {
+    previewIsolationResponse(req, res, incoming.pathname);
     return;
   }
   if (!origin || !incoming.pathname.startsWith("/api/")) {

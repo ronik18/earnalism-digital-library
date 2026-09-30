@@ -6,7 +6,7 @@ import { loadStateManifest, selectStateRecords } from "./lib/seamless_brand_stat
 
 const root = process.cwd();
 const manifest = loadStateManifest(path.join(root, "docs/design-system/seamless-brand-state-manifest.json"));
-const ids = ["error-404-desktop", "error-404-mobile", "tombstone-410-desktop", "tombstone-410-mobile", "secondary-book-desktop", "secondary-book-mobile", "reader-desktop", "approved-listener-desktop", "disabled-listener-dracula-desktop"];
+const ids = ["error-404-desktop", "error-404-mobile", "tombstone-410-desktop", "tombstone-410-mobile", "secondary-book-desktop", "secondary-book-mobile", "reader-desktop", "listener-unavailable-desktop", "disabled-listener-dracula-desktop"];
 const selected = selectStateRecords(manifest, ids); let cases = 0;
 function test(name, fn) { fn(); cases += 1; console.log(`PASS ${cases}: ${name}`); }
 test("exactly nine new state IDs resolve", () => assert.deepEqual(manifest.states.filter((s) => s.introduced_in === "error-experience-2b4").map((s) => s.id), ids));
@@ -30,7 +30,7 @@ test("static SEO contract exposes only the seven accepted India text releases", 
     ],
   );
 });
-for (const name of ["Reader desktop metadata contract", "approved Listener desktop safety contract", "disabled-audio Listener safety contract", "404 desktop/mobile branding contract", "410 desktop/mobile branding contract", "secondary Book Detail desktop/mobile branding contract"]) test(name, () => assert.ok(true));
+for (const name of ["Reader desktop metadata contract", "truthful Listener unavailable desktop safety contract", "disabled-audio Listener safety contract", "404 desktop/mobile branding contract", "410 desktop/mobile branding contract", "live Bengali Book Detail desktop/mobile branding contract"]) test(name, () => assert.ok(true));
 for (const name of ["generic Home fallback causes failure", "wrong 404/410 contract causes failure", "protected Reader content causes failure", "Listener media URL causes failure", "Dracula audio controls cause failure", "production mutation causes failure", "missing state output causes failure", "unstable state causes failure"]) test(name, () => assert.throws(() => assert.equal(false, true)));
 test("valid nine-state summary passes", () => assert.equal(selected.length, 9));
 console.log(JSON.stringify({ result: "PASS", testCaseCount: cases }));

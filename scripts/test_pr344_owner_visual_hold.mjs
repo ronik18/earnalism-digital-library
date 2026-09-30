@@ -55,9 +55,9 @@ test("Listener mobile content follows the shared masthead without stale spacer",
   assert.match(listener, /\.listener-v2__main \{ padding: 12px 24px 26px; \}/);
 });
 
-test("Owner-review PDF reserves a full-scale Devdas page", () => {
-  assert.match(generator, /\("Book Detail — Dracula", \["book-detail-desktop"\]\)/);
-  assert.match(generator, /\("Book Detail — Devdas \(Bengali\)", \["secondary-book-desktop"\]\)/);
+test("Owner-review PDF distinguishes unavailable and populated release-safe Book Detail states", () => {
+  assert.match(generator, /\("Unavailable legacy title — Dracula", \["book-detail-desktop"\]\)/);
+  assert.match(generator, /\("Populated live Bengali Book Detail — Radharani", \["secondary-book-desktop"\]\)/);
   assert.doesNotMatch(generator, /secondary-book-detail-desktop/);
 });
 

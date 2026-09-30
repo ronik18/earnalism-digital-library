@@ -81,7 +81,7 @@ function BookTile({ book, compact = false, priority = false, showListen = false 
         <Link to={href} className="reference-book-tile__title" data-visual-mask="book-title">{title}</Link>
         <span className="reference-book-tile__author" data-visual-mask="book-author">{book.author || "Earnalism edition"}</span>
         <div className="reference-book-tile__actions">
-          {canShowPreview(book) ? <Link to={`/reader/${book.slug}`}>Read</Link> : live ? <Link to={href}>Details</Link> : <Link to={href}>Notify me</Link>}
+          {canShowPreview(book) ? <Link to={`/reader/${book.slug}`}>Read</Link> : live ? <Link to={href}>Details</Link> : <Link to={href}>Ask about title</Link>}
           {audio.releaseApproved ? <span className="reference-book-tile__locked-audio">{audio.canShowControls ? "Reading Pass required" : "Listening unavailable"}</span> : null}
         </div>
       </div>

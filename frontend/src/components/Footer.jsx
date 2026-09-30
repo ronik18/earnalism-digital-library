@@ -30,7 +30,7 @@ export default function Footer() {
           <div className="home-footer-links" data-testid="footer-home-navigation">
             <nav aria-labelledby="footer-explore-heading">
               <div id="footer-explore-heading" className="overline mb-2.5">Books</div>
-              <ul><li><Link to="/library">Books</Link></li><li><Link to="/library?sort=author">Authors</Link></li><li><Link to="/library#library-collection">Collections</Link></li></ul>
+              <ul><li><Link to="/library">Books</Link></li><li><Link to="/library?sort=author">Authors</Link></li><li><Link to="/library#library-collection">Catalogue</Link></li></ul>
             </nav>
             <nav aria-labelledby="footer-reading-heading">
               <div id="footer-reading-heading" className="overline mb-2.5">Reading Pass</div>

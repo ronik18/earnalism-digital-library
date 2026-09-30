@@ -391,6 +391,38 @@
       "destination": "/index.html"
     },
     {
+      "source": "/book/dracula",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/book/dracula/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/reader/dracula",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/reader/dracula/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/listener/dracula",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/listener/dracula/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/listener/the-selfish-giant",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/listener/the-selfish-giant/",
+      "destination": "/index.html"
+    },
+    {
       "source": "/book/:slug",
       "destination": "/api/not-found"
     },

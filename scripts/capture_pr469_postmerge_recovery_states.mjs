@@ -218,7 +218,9 @@ for (const width of [1440, 390]) {
         await page.getByTestId("reference-book-a-ghost-story").getByRole("link", { name: "Details", exact: true }).waitFor();
         await page.getByTestId("reference-book-frankenstein").waitFor();
         await page.getByTestId("reference-book-frankenstein").getByText("Coming soon", { exact: true }).waitFor();
-        await page.getByTestId("reference-book-frankenstein").getByRole("link", { name: "Notify me", exact: true }).waitFor();
+        const titleInquiry = page.getByTestId("reference-book-frankenstein").getByRole("link", { name: "Ask about title", exact: true });
+        await titleInquiry.waitFor();
+        assert.equal(await titleInquiry.getAttribute("href"), "/contact?interest=frankenstein");
         assert.equal(liveSlugs.includes("a-ghost-story"), true, "live Library screenshot must be grounded in controlled-launch authority");
       },
     });
@@ -227,7 +229,7 @@ for (const width of [1440, 390]) {
   for (const width of [1440, 390]) {
     await capture(browser, {
       id: "reader-default-no-focus",
-      route: "/reader/dracula?visual-fixture=1",
+      route: "/reader/a-ghost-story?visual-fixture=1",
       width,
       height: width === 390 ? 844 : 1000,
       action: async (page) => {
@@ -238,7 +240,7 @@ for (const width of [1440, 390]) {
     });
     await capture(browser, {
       id: "reader-keyboard-focus",
-      route: "/reader/dracula?visual-fixture=1",
+      route: "/reader/a-ghost-story?visual-fixture=1",
       width,
       height: width === 390 ? 844 : 1000,
       action: async (page) => {

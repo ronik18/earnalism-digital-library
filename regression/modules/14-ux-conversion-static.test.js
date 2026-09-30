@@ -236,7 +236,8 @@ describe("UX conversion static signals", () => {
     expect(editorialHomeSurface).toContain("Bengali Classics");
     expect(editorialHomeSurface).toContain("English Classics");
     expect(editorialHomeSurface).toContain("The Listening Room");
-    expect(editorialHomeSurface).toContain("Curated Collections");
+    expect(editorialHomeSurface).toContain("Browse the Library");
+    expect(editorialHomeSurface).toContain("/library#library-collection");
     expect(editorialHomeSurface).toContain("<ReaderPerspectives />");
     expect(editorialHomeSurface).not.toContain("listeningItems");
     expect(editorialHomeSurface).not.toContain("Listen Now");
@@ -1231,7 +1232,8 @@ describe("UX conversion static signals", () => {
   test("Bengali and Gothic discovery shelves preserve reader-safe browse paths", () => {
     expect(home).not.toContain("<HomeShelfArchitecture");
     expect(editorialHomeSurface).toContain("Bengali Classics");
-    expect(editorialHomeSurface).toContain("Curated Collections");
+    expect(editorialHomeSurface).toContain("Browse the Library");
+    expect(editorialHomeSurface).toContain("/library#library-collection");
     expect(homeShelfArchitecture).toContain("<CuratedShelfCollage");
     expect(homeCurationConfig).toContain("Bengali Life & Legacy");
     expect(homeCurationConfig).toContain("Gothic & the Uncanny");

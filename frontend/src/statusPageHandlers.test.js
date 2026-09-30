@@ -41,6 +41,14 @@ describe("direct seamless-branded status pages", () => {
     expect(response.body).toContain("404 · Page unavailable");
   });
 
+  test("title query values retain generic 404 copy", () => {
+    const response = invoke(notFound, { query: { title: "unknown" }, headers: {}, url: "/book/unknown" });
+    expect(response.statusCode).toBe(404);
+    expect(response.body).toContain("This page is not on the shelf.");
+    expect(response.body).not.toContain("unknown is not currently available");
+    expect(response.body).not.toContain("Dracula is not currently available");
+  });
+
   test("the authoritative tombstone stays a 410 with its existing cache contract", () => {
     const response = invoke(removedContent, { query: { path: "/product/patterned-wrap-dress" }, headers: {}, url: "/product/patterned-wrap-dress" });
     expect(response.statusCode).toBe(410);

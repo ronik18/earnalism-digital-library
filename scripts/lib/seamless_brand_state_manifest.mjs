@@ -64,8 +64,7 @@ export function validateStateManifest(manifest, routeInventory) {
       throw stateError(index, state, "route", state.route, "a non-empty inventory route");
     }
     const deterministicNotFoundRoute = state.fixture === "error-404-contract" && state.route === "/__seamless-brand-review-not-found-344__" && routes.has("UNKNOWN_URL");
-    const controlledApprovedListenerRoute = state.fixture === "listener-approved-non-playable" && state.route === "/listener/the-art-of-money-getting";
-    if (!routes.has(state.route) && !deterministicNotFoundRoute && !controlledApprovedListenerRoute) {
+    if (!routes.has(state.route) && !deterministicNotFoundRoute) {
       throw stateError(index, state, "route", state.route, "a route present in the route inventory");
     }
     if (!Number.isInteger(state.viewport?.width) || state.viewport.width <= 0) {

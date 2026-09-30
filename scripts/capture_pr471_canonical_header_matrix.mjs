@@ -34,7 +34,8 @@ const routes = [
   { id: "privacy", path: "/privacy" },
   { id: "terms", path: "/terms" },
   { id: "copyright", path: "/copyright" },
-  { id: "reader", path: "/reader/dracula?visual-fixture=1" },
+  // Render the design fixture through an approved live route; Dracula stays fail-closed.
+  { id: "reader", path: "/reader/a-ghost-story?visual-fixture=1" },
   { id: "listener", path: "/listener/a-ghost-story?visual-fixture=1" },
 ];
 const viewports = [

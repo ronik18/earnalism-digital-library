@@ -19,11 +19,16 @@ const browserName = process.env.EXACT_OWNER_REVIEW_BROWSER;
 const output = path.resolve(process.env.EXACT_OWNER_REVIEW_BROWSER_OUTPUT || "uat/evidence/exact-primary-design/current/browser-results.json");
 const publicReaderExposureEnabled = JSON.parse(fs.readFileSync(new URL("../data/controlled_launch.json", import.meta.url), "utf8")).public_reader_exposure_enabled === true;
 const publicPaidCommerceEnabled = JSON.parse(fs.readFileSync(new URL("../data/controlled_launch.json", import.meta.url), "utf8")).public_paid_commerce_enabled === true;
+const populatedBookSlug = publicReaderExposureEnabled ? "a-white-heron" : "dracula";
+const readerFixtureSlug = publicReaderExposureEnabled ? "a-white-heron" : "dracula";
+const populatedBookRoute = `/book/${populatedBookSlug}`;
+const readerFixtureRoute = `/reader/${readerFixtureSlug}?visual-fixture=1`;
 if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(baseUrl)) throw new Error("UAT_BASE_URL must be an explicit loopback URL.");
 if (!{ firefox, webkit }[browserName]) throw new Error("EXACT_OWNER_REVIEW_BROWSER must be firefox or webkit.");
 
 const books = [
   { slug: "dracula", title: "Dracula", author: "Bram Stoker", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/dracula", audiobook_enabled: false, category_slug: "english-classics", chapters: [{ id: "dracula-canonical-page-1", is_preview: true }] },
+  { slug: "a-white-heron", title: "A White Heron", author: "Sarah Orne Jewett", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/a-white-heron", audiobook_enabled: false, category_slug: "literary-fiction", cover_image_url: "/assets/books/a-white-heron/front-cover.webp", chapters: [{ id: "a-white-heron-canonical-page-1", title: "A White Heron", is_preview: true }] },
   { slug: "a-ghost-story", title: "A Ghost Story", author: "Mark Twain", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, preview_url: "/reader/a-ghost-story", audiobook_enabled: true, category_slug: "english-classics", chapters: [{ id: "a-ghost-story-canonical-page-1", is_preview: true }] },
 ];
 const packs = [{ id: "30m", label: "The Opening Hour", minutes: 30, amount_paise: 4900, price_inr: 49 }];
@@ -35,13 +40,15 @@ const states = [
   ["commerce-mobile", "/pricing", 390, 844, "commerce"], ["reading-pass-mobile", "/pricing", 390, 844, "commerce"],
   ["mobile-navigation", "/", 390, 844, "navigation"], ["mobile-navigation-320", "/", 320, 568, "navigation"], ["mobile-navigation-430", "/", 430, 932, "navigation"],
   ["mobile-navigation-768", "/", 768, 1024, "navigation"], ["mobile-navigation-landscape", "/", 844, 390, "navigation"], ["mobile-navigation-1024", "/", 1024, 768, "navigation"], ["mobile-navigation-1279", "/", 1279, 800, "navigation"],
-  ["book-detail-desktop", "/book/dracula", 1440, 1000, "book"],
-  ["book-detail-mobile", "/book/dracula", 390, 844, "book"], ["reader-desktop", "/reader/dracula?visual-fixture=1", 1440, 1000, "reader"],
-  ["reader-mobile", "/reader/dracula?visual-fixture=1", 390, 844, "reader"], ["listener-desktop", "/listener/a-ghost-story?visual-fixture=1", 1440, 1000, "listener"],
+  ["book-detail-desktop", populatedBookRoute, 1440, 1000, "book"],
+  ["book-detail-mobile", populatedBookRoute, 390, 844, "book"],
+  ["book-detail-held-desktop", "/book/dracula", 1440, 1000, "held-book"], ["book-detail-held-mobile", "/book/dracula", 390, 844, "held-book"],
+  ["reader-desktop", readerFixtureRoute, 1440, 1000, "reader"],
+  ["reader-mobile", readerFixtureRoute, 390, 844, "reader"], ["listener-desktop", "/listener/a-ghost-story?visual-fixture=1", 1440, 1000, "listener"],
   ["listener-mobile", "/listener/a-ghost-story?visual-fixture=1", 390, 844, "listener"], ["about-mobile", "/about", 390, 844, "about"],
   ["my-library-mobile", "/my-library", 390, 844, "my-library"], ["profile-mobile", "/account?visual-fixture=1", 390, 844, "profile"],
 ].map(([id, route, width, height, family]) => ({ id, route, viewport: { width, height }, family }));
-const requiredFor = (family) => ({ home: ["header"], library: ["[data-testid=library-reference-surface]"], filter: [".reference-library-drawer[role=dialog]"], commerce: [publicPaidCommerceEnabled ? "[data-testid=pricing-reference-surface]" : "[data-testid=paid-commerce-disabled]"], navigation: ["header"], book: [publicReaderExposureEnabled ? ".book-detail-page" : "[data-testid=book-not-found]"], reader: ["#reader-v2-title"], listener: ["#listener-v2-title"], about: ["#about-page-title"], "my-library": ["[data-testid=my-library-mobile]"], profile: ["[data-testid=account-visual-fixture]"], }[family] || ["main"]);
+const requiredFor = (family) => ({ home: ["header"], library: ["[data-testid=library-reference-surface]"], filter: [".reference-library-drawer[role=dialog]"], commerce: [publicPaidCommerceEnabled ? "[data-testid=pricing-reference-surface]" : "[data-testid=paid-commerce-disabled]"], navigation: ["header"], book: [publicReaderExposureEnabled ? ".book-detail-page" : "[data-testid=unavailable-title-page]"], "held-book": ["[data-testid=unavailable-title-page]"], reader: ["#reader-v2-title"], listener: ["#listener-v2-title"], about: ["#about-page-title"], "my-library": ["[data-testid=my-library-mobile]"], profile: ["[data-testid=account-visual-fixture]"], }[family] || ["main"]);
 const sha = (value) => crypto.createHash("sha256").update(value).digest("hex");
 const json = (route, body) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(body) });
 

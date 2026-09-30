@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.library-interaction-baseline.v1",
+  "surface": "library_interaction_surface",
+  "hash_algorithm": "sha256(file-sha256 plus two spaces plus relative path plus newline, sorted by relative path)",
+  "input_paths": [
+    "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
+    "frontend/src/components/ReferencePublicPages.css",
+    "frontend/src/styles/library-paper-review.css",
+    "frontend/src/pages/Library.jsx"
+  ],
+  "reviewed_source": {
+    "commit": "dd863f9acaac139e55a8a1a724345ca72e5fdbf6",
+    "tree": "9aef095211896516895cf03898ef439bc9785af3"
+  },
+  "previous_baseline": {
+    "record_path": "docs/design-system/pr469-postmerge-library-recovery-baseline.json",
+    "reviewed_source_commit": "7f462552fb26600cef2ff1d0b0a23b79ccbe50cc",
+    "surface_sha256": "b67f6a9d6011dcf6edd20da407216074b14c65b4990c0aecc147d878642a3adf"
+  },
+  "authorized_surface_sha256": "d213e1e3ac86428cb6ebcc840cee04ebf9864e4e3b0c8b11fda6e6cad8c9bd86",
+  "reviewed_source_comparison": {
+    "changed_paths_within_input_set": [
+      "frontend/src/components/EditorialHomeLibrarySurfaces.jsx"
+    ],
+    "unchanged_paths_within_input_set": [
+      "frontend/src/components/ReferencePublicPages.css",
+      "frontend/src/styles/library-paper-review.css",
+      "frontend/src/pages/Library.jsx"
+    ]
+  },
+  "owner_authorization": {
+    "reference": "OWNER_RELEASE_DIRECTIVE_TASK_B_RELEASE",
+    "scope": "The owner directed Task B to eliminate misleading and self-looping production internal links and CTAs. This transition records the exact source fingerprint for the Home discovery CTA correction from a general Library self-link to the released-edition catalogue anchor, together with truthful available-edition copy. It is an interaction/source baseline only and is not visual approval.",
+    "capture_is_not_expected_value_authority": true
+  },
+  "limitations": "This transition changes only the Home discovery destination and its truthful label within the fingerprinted interaction surface. It does not grant visual approval, change catalogue or audio release gates, enable checkout, or authorize payment, entitlement, production-data, or rights changes."
+}
