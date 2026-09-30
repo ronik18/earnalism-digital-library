@@ -3986,5 +3986,77 @@
     "current_main_regression": "PASS",
     "customer_ready": "NOT_DECLARED",
     "next_generated_prompt": "Use the authorized GitHub connection to open the reviewed canonical candidate against main; require its fresh exact-head normal checks, merge with expected-SHA protection, then inspect the next bounded campaign. Preserve all worker commits and approved source."
+  },
+  "catalogue_bridge_review_run_36791115145": {
+    "timestamp": "2026-09-30T23:39:44.601852+00:00",
+    "workstream": "catalogue_compliance_campaign",
+    "decision": "ACCEPT_WITHIN_SCOPE_THIRD_EXACT_BYTE_CHECKSUM_PROPOSAL_PENDING_NORMAL_CI",
+    "run": 36791115145,
+    "source_main": "e0228275c76b533fc7f774446b119e5d42e1e989",
+    "worker_candidate": "3a9286e6b6ce2e3e363219f1dc28f49144ebf7a2",
+    "examined_count": 20,
+    "modified_slugs": [
+      "carmilla",
+      "eyesore-chokher-bali",
+      "hound-of-the-baskervilles",
+      "hungry-stones",
+      "woman-in-white"
+    ],
+    "aggregate_blockers_before": 907,
+    "aggregate_blockers_candidate": 902,
+    "accepted_live": 7,
+    "held": 224,
+    "new_publications": 0,
+    "audio_activations": 0,
+    "worker_pipeline": "SUCCESS_ACTUAL_RECEIPT_FOCUSED_FULL_REGRESSION_FINAL_SOURCE_GUARD",
+    "proof_artifacts": [
+      {
+        "id": 11131363470,
+        "sha256": "7807514afdc5ca5a3599b0218909ace7db8319b2f3c8cd95f57bcf0af66e367f"
+      },
+      {
+        "id": 11132143186,
+        "sha256": "e15493fde8f8f7c5e9ad263a25685a5e4c7f62040e9b6010bd252736ca2819f3"
+      },
+      {
+        "id": 11131894261,
+        "sha256": "a33768040f92fcdf24546d23b49d16ed42415a4a2f894fdac1689b12cd27e36f"
+      }
+    ],
+    "independent_verification": "All ZIP digests verified; completed receipt bound to exact source and 20 candidates; controller diff digest equals retained proposal; ten hash replacement values match unchanged existing bytes; commit changes only ten checksum manifests",
+    "approved_ui_source_approval_registry_and_launch_bytes": "UNCHANGED",
+    "current_main_regression_run": 36791115035,
+    "current_main_regression": "PASS",
+    "missing_chapter_recovery": [
+      {
+        "slug": "the-principles-of-scientific-management",
+        "missing_path": "data/controlled_publications/the-principles-of-scientific-management/chapters/chapter-004.json",
+        "expected_sha256": "35834e952f1a0283299d0d4132dab89daa7bd983c95c45390055df25f98ce6e8",
+        "source_url": "https://www.gutenberg.org/ebooks/6435",
+        "recorded_source_hash": "cdc35806ba1cf7fbecfd0e9a62d7f7bac1f36a796ed2ff1883ee150d88e46865",
+        "finding": "Chapter file absent from current committed tree; no path history found in available Git history. A checksum refresh cannot reconstruct exact cleared content.",
+        "status": "HELD_NO_PLACEHOLDER_OR_SOURCE_SUBSTITUTION"
+      },
+      {
+        "slug": "the-suicide-club",
+        "missing_path": "data/controlled_publications/the-suicide-club/chapters/chapter-001.json",
+        "expected_sha256": "0c1a58321e2dd6cd59df58b32ed9fad155a7a7666860796144025e8c0aee3a66",
+        "source_url": "https://www.gutenberg.org/ebooks/839",
+        "recorded_source_hash": "36f2eab8f19108f05a306169130f8bddc9c21c23725e7c12a330ac18cfdb9e39",
+        "finding": "Chapter file absent from current committed tree; no path history found in available Git history. A checksum refresh cannot reconstruct exact cleared content.",
+        "status": "HELD_NO_PLACEHOLDER_OR_SOURCE_SUBSTITUTION"
+      },
+      {
+        "slug": "ward-no-6",
+        "missing_path": "data/controlled_publications/ward-no-6/chapters/chapter-001.json",
+        "expected_sha256": "2e9358363425e85708e63824cdc8a76ce616310359466a50799d15ab646ed8a3",
+        "source_url": "https://www.gutenberg.org/ebooks/13409",
+        "recorded_source_hash": "d105256944cc16cf2d440209e9d086608457234990d68addc3350a5a9b80e512",
+        "finding": "Chapter file absent from current committed tree; no path history found in available Git history. A checksum refresh cannot reconstruct exact cleared content.",
+        "status": "HELD_NO_PLACEHOLDER_OR_SOURCE_SUBSTITUTION"
+      }
+    ],
+    "customer_ready": "NOT_DECLARED",
+    "next_generated_prompt": "Use the authorized GitHub connection to open the reviewed canonical candidate against main; require fresh exact-head normal checks and an expected-SHA protected merge, then inspect the next bounded campaign. Missing chapter files need exact cleared content recovery, not refreshed hashes or placeholders."
   }
 }
