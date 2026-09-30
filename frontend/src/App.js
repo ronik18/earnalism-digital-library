@@ -144,6 +144,7 @@ export function AppRouterContent() {
           <Route path="/reader/:slug" element={<ReaderV2 />} />
           <Route path="/reader-legacy/:slug" element={<ReaderLegacy />} />
           <Route path="/listener/dracula" element={<UnavailableTitle />} />
+          <Route path="/listener/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />
           <Route path="/listener/:slug" element={<ListenerV2 />} />
           <Route path="/listener-legacy/:slug" element={<LegacyListenerRedirect />} />
           <Route path="/admin/login" element={<AdminLogin />} />

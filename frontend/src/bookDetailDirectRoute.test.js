@@ -64,6 +64,8 @@ describe("approved Book Detail direct-route contract", () => {
       "/book/the-count-of-monte-cristo",
       "/reader/the-count-of-monte-cristo/",
       "/book/dracula/",
+      "/listener/the-selfish-giant",
+      "/listener/the-selfish-giant/",
     ].forEach((route) => expect(crawler).toContain(`"${route}"`));
   });
 

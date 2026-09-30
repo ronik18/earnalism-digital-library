@@ -415,6 +415,14 @@
       "destination": "/index.html"
     },
     {
+      "source": "/listener/the-selfish-giant",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/listener/the-selfish-giant/",
+      "destination": "/index.html"
+    },
+    {
       "source": "/book/:slug",
       "destination": "/api/not-found"
     },

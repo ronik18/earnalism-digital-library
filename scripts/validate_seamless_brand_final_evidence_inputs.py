@@ -65,11 +65,11 @@ def main():
     require(library.get("surface") == "library_interaction_surface", "Library baseline surface is invalid", failures)
     require(library.get("result") == "PASS" and library.get("changed_from_previous") is True and library.get("expected_change") is True, "Library baseline transition result fails", failures)
     require(library.get("expected_surface_sha256") == library.get("observed_surface_sha256"), "Library baseline expected and observed fingerprints differ", failures)
-    # PR469 post-merge recovery changes only the previously approved Library
-    # error/retry surface under the owner's direct repair instruction. The
-    # record explicitly leaves visual approval pending and is not capture-led.
-    require(library_path == "docs/design-system/pr469-postmerge-library-recovery-baseline.json" and Path(library_path).exists(), "active PR469 post-merge Library recovery baseline record is missing", failures)
-    require(library.get("expected_surface_sha256") == "b67f6a9d6011dcf6edd20da407216074b14c65b4990c0aecc147d878642a3adf", "Library baseline expected fingerprint is not the direct-instruction PR469 recovery value", failures)
+    # Task B records the owner-directed Home destination/copy correction as an
+    # exact source fingerprint. This is an interaction baseline, not visual
+    # approval, and cannot be derived from the captured evidence itself.
+    require(library_path == "docs/design-system/task-b-production-link-action-integrity-library-interaction-baseline.json" and Path(library_path).exists(), "active Task B Library interaction baseline record is missing", failures)
+    require(library.get("expected_surface_sha256") == "d213e1e3ac86428cb6ebcc840cee04ebf9864e4e3b0c8b11fda6e6cad8c9bd86", "Library baseline expected fingerprint is not the owner-directed Task B interaction value", failures)
     if library_path and Path(library_path).exists() and library.get("approval_source_sha256"):
         require(sha(library_path) == library.get("approval_source_sha256"), "Library baseline record SHA mismatch", failures)
     route_hash_path = data.get("route_hashes", {}).get("path")

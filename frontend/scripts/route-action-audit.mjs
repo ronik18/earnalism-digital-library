@@ -27,6 +27,8 @@ const historicalTitleRoutes = [
   "/book/the-selfish-giant/",
   "/reader/the-selfish-giant",
   "/reader/the-selfish-giant/",
+  "/listener/the-selfish-giant",
+  "/listener/the-selfish-giant/",
   "/book/moby-dick-or-the-whale",
   "/book/moby-dick-or-the-whale/",
   "/reader/moby-dick-or-the-whale",

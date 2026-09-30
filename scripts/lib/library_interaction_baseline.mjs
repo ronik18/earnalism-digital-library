@@ -30,16 +30,17 @@ export const PR466_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE = "do
 export const PR467_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr467-approved-option-b-homepage-library-interaction-baseline.json";
 export const PR468_LISTENING_ROOM_HOMEPAGE_LIBRARY_INTERACTION_BASELINE = "docs/design-system/pr468-listening-room-homepage-library-interaction-baseline.json";
 export const PR469_POSTMERGE_LIBRARY_RECOVERY_BASELINE = "docs/design-system/pr469-postmerge-library-recovery-baseline.json";
+export const TASK_B_PRODUCTION_LINK_ACTION_BASELINE = "docs/design-system/task-b-production-link-action-integrity-library-interaction-baseline.json";
 export const ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_INPUT_PATHS = [
   "frontend/src/components/EditorialHomeLibrarySurfaces.jsx",
   "frontend/src/components/ReferencePublicPages.css",
   "frontend/src/styles/library-paper-review.css",
   "frontend/src/pages/Library.jsx",
 ];
-// Prior Home-sections and India-commercial records remain immutable historical
-// transitions. Runtime/evidence callers must use the latest explicitly
-// authorized Reading Room transition as the active decision.
-export const DEFAULT_LIBRARY_INTERACTION_BASELINE = PR469_POSTMERGE_LIBRARY_RECOVERY_BASELINE;
+// Earlier Home, Reading Room, and recovery records remain immutable historical
+// transitions. Runtime/evidence callers use the latest explicitly authorized
+// interaction transition as the active decision.
+export const DEFAULT_LIBRARY_INTERACTION_BASELINE = TASK_B_PRODUCTION_LINK_ACTION_BASELINE;
 
 const SHA256 = /^[0-9a-f]{64}$/;
 const GIT_OBJECT_ID = /^[0-9a-f]{40}$/;
@@ -236,6 +237,15 @@ const baselineContracts = {
     changedPaths: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx"],
     unchangedPaths: ["frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/library-paper-review.css", "frontend/src/pages/Library.jsx"],
     authorization: "OWNER_DIRECTIVE_POST_MERGE_LIBRARY_API_RECOVERY",
+  },
+  [TASK_B_PRODUCTION_LINK_ACTION_BASELINE]: {
+    reviewedSource: { commit: "dd863f9acaac139e55a8a1a724345ca72e5fdbf6", tree: "9aef095211896516895cf03898ef439bc9785af3" },
+    previous: { recordPath: PR469_POSTMERGE_LIBRARY_RECOVERY_BASELINE, commit: "7f462552fb26600cef2ff1d0b0a23b79ccbe50cc", hash: "b67f6a9d6011dcf6edd20da407216074b14c65b4990c0aecc147d878642a3adf" },
+    authorizedHash: "d213e1e3ac86428cb6ebcc840cee04ebf9864e4e3b0c8b11fda6e6cad8c9bd86",
+    inputPaths: ISSUE380_UI_COMPLETION_LIBRARY_INTERACTION_INPUT_PATHS,
+    changedPaths: ["frontend/src/components/EditorialHomeLibrarySurfaces.jsx"],
+    unchangedPaths: ["frontend/src/components/ReferencePublicPages.css", "frontend/src/styles/library-paper-review.css", "frontend/src/pages/Library.jsx"],
+    authorization: "OWNER_RELEASE_DIRECTIVE_TASK_B_RELEASE",
   },
 };
 

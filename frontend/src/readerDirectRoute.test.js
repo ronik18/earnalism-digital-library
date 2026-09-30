@@ -63,4 +63,22 @@ describe("approved Reader direct-route contract", () => {
       expect(index).toBeLessThan(genericNotFound);
     });
   });
+
+  test("serves the held historical Selfish Giant Listener URL without entering the player", () => {
+    expect(app).toContain('<Route path="/listener/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />');
+    const rewrites = vercel.rewrites || [];
+    const genericNotFound = rewrites.findIndex((rule) => rule.source === "/listener/:slug" && rule.destination === "/api/not-found");
+    ["/listener/the-selfish-giant", "/listener/the-selfish-giant/"].forEach((source) => {
+      const index = rewrites.findIndex((rule) => rule.source === source && rule.destination === "/index.html");
+      expect(index).toBeGreaterThanOrEqual(0);
+      expect(index).toBeLessThan(genericNotFound);
+    });
+  });
+
+  test("keeps cross-browser review on a live populated detail while checking Dracula as held", () => {
+    const crossBrowserReview = read("../scripts/verify_exact_primary_cross_browser.mjs");
+    expect(crossBrowserReview).toContain('publicReaderExposureEnabled ? "a-white-heron" : "dracula"');
+    expect(crossBrowserReview).toContain('["book-detail-held-desktop", "/book/dracula"');
+    expect(crossBrowserReview).toContain('"held-book": ["[data-testid=unavailable-title-page]"]');
+  });
 });
