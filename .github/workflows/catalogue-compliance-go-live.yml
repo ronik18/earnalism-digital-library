@@ -158,20 +158,6 @@ jobs:
           print(json.dumps(payload, indent=2))
           PY
 
-      # Codex's drop-sudo safety strategy intentionally removes later access to
-      # the Docker daemon. Start the isolated regression dependencies first,
-      # while the hosted runner still has its normal Docker access.
-      - name: Start isolated regression services
-        run: |
-          set -euo pipefail
-          docker run --detach --name earnalism-catalogue-mongodb --network host mongo:7.0.14 mongod --bind_ip 127.0.0.1 --port 27018 --replSet earnalism-uat-rs0
-          for _ in $(seq 1 30); do
-            docker exec earnalism-catalogue-mongodb mongosh --host 127.0.0.1 --port 27018 --quiet --eval 'db.adminCommand({ ping: 1 })' && break
-            sleep 1
-          done
-          docker exec earnalism-catalogue-mongodb mongosh --host 127.0.0.1 --port 27018 --quiet --eval 'try { rs.initiate({_id: "earnalism-uat-rs0", members: [{ _id: 0, host: "127.0.0.1:27018" }]}) } catch (error) { if (error.codeName !== "AlreadyInitialized") throw error }'
-          docker run --detach --name earnalism-catalogue-redis --network host redis:8.2.1 redis-server --bind 127.0.0.1 --port 26379 --save '' --appendonly no
-
       - name: Resolve compliant catalogue holds
         id: codex
         timeout-minutes: 18
@@ -391,22 +377,11 @@ jobs:
             npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath src/lib/controlledLaunch.canonicalAuthority.test.js src/lib/controlledLaunch.previewParity.test.js
           fi
 
-      - name: Run full regression gate
-        if: ${{ hashFiles('scripts/run_pr_regression.sh') != '' }}
-        env:
-          UAT_EXTERNAL_MONGODB: "true"
-          UAT_EXTERNAL_REDIS: "true"
-          NODE_ENV: production
-        run: bash scripts/run_pr_regression.sh
-
-      - name: Stop isolated regression services
-        if: ${{ always() }}
-        run: |
-          for container in earnalism-catalogue-mongodb earnalism-catalogue-redis; do
-            if docker container inspect "$container" >/dev/null 2>&1; then
-              docker rm --force "$container"
-            fi
-          done
+      # Do not run the full GO-LIVE regression inside this post-Codex runner.
+      # Codex deliberately drops sudo/Docker access. When there are changes, the
+      # candidate PR below is validated on a fresh runner by the repository's
+      # exact-head GO LIVE regression gate before merge. When there are no
+      # changes, there is no candidate diff to regress.
 
       - name: Publish no-progress result
         if: ${{ success() }}
