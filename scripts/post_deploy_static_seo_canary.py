@@ -47,8 +47,12 @@ ROUTES = {
     "/reader/the-gift-of-the-magi": {"kind": "reader", "canonical": "/book/the-gift-of-the-magi", "robots": "noindex,follow", "title": "The Gift of the Magi"},
     "/reader/the-canterville-ghost": {"kind": "reader", "canonical": "/book/the-canterville-ghost", "robots": "noindex,follow", "title": "The Canterville Ghost"},
     "/reader/the-adventures-of-sherlock-holmes": {"kind": "reader", "canonical": "/book/the-adventures-of-sherlock-holmes", "robots": "noindex,follow", "title": "The Adventures of Sherlock Holmes"},
-    "/book/dracula": {"kind": "held"},
-    "/reader/dracula": {"kind": "held"},
+    "/book/dracula": {"kind": "historical_unavailable", "canonical": "/book/dracula", "robots": "noindex,nofollow", "title": "Dracula"},
+    "/reader/dracula": {"kind": "historical_unavailable", "canonical": "/book/dracula", "robots": "noindex,nofollow", "title": "Dracula"},
+    "/listener/dracula": {"kind": "historical_unavailable", "canonical": "/book/dracula", "robots": "noindex,nofollow", "title": "Dracula"},
+    "/book/the-selfish-giant": {"kind": "historical_unavailable", "canonical": "/book/the-selfish-giant", "robots": "noindex,nofollow", "title": "The Selfish Giant"},
+    "/reader/the-selfish-giant": {"kind": "historical_unavailable", "canonical": "/book/the-selfish-giant", "robots": "noindex,nofollow", "title": "The Selfish Giant"},
+    "/listener/the-selfish-giant": {"kind": "historical_unavailable", "canonical": "/book/the-selfish-giant", "robots": "noindex,nofollow", "title": "The Selfish Giant"},
     "/book/yugalanguriya": {"kind": "held"},
     "/reader/yugalanguriya": {"kind": "held"},
     "/my-library": {"kind": "private_library", "canonical": "/my-library", "robots": "noindex,nofollow"},
@@ -149,6 +153,30 @@ def inspect_route(route: str, policy: dict[str, str], status: int, headers: dict
     facts = facts_for(html)
     text, title, description, h1 = normalize(" ".join(facts.text)), normalize(" ".join(facts.title)), normalize(facts.description), normalize(" ".join(facts.h1))
     failures: list[str] = []
+    if policy["kind"] == "historical_unavailable":
+        expected_title = normalize(policy["title"])
+        if status != 200:
+            failures.append(f"historical unavailable route must be 200, got {status}")
+        if expected_title not in title or "unavailable" not in title or "earnalism" not in title:
+            failures.append("missing historical unavailable title metadata")
+        if expected_title + " is not currently available" not in h1:
+            failures.append("missing historical unavailable title heading")
+        if expected_title + " is not currently available" not in description:
+            failures.append("missing historical unavailable description")
+        if canonical_url(facts.canonical) != canonical_url(urljoin(CANONICAL_SITE_URL, policy["canonical"])):
+            failures.append("wrong historical title canonical URL")
+        if normalize(facts.robots).replace(" ", "") != "noindex,nofollow":
+            failures.append("historical unavailable route must be noindex,nofollow")
+        if "not part of the current public release" not in text or "no book text, reader session, or audio is available" not in text:
+            failures.append("missing truthful historical unavailable access copy")
+        if has_access_contract(text) or "read the 3-page preview" in text or "reader-ready edition" in text or GENERIC_HOME_MARKER in text:
+            failures.append("historical unavailable route exposes released-edition or Home copy")
+        allowed = {"/library", "/contact?interest=" + policy["canonical"].rsplit("/", 1)[1]}
+        if any(href not in allowed for href, _ in facts.links):
+            failures.append("historical unavailable route exposes a non-recovery link")
+        if RAW_MEDIA_URL.search(html) or re.search(r'<(?:audio|video|iframe|button)\b|"@type"\s*:\s*"(?:Book|Audiobook)"', html, re.I):
+            failures.append("historical unavailable route exposes title content or access controls")
+        return {"route": route, "url": url, "status_code": status, "failures": failures, "result": "PASS" if not failures else "FAIL"}
     if policy["kind"] == "held":
         if status != 404:
             failures.append(f"held route must be 404, got {status}")

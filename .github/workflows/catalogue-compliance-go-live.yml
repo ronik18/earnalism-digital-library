@@ -137,7 +137,7 @@ jobs:
           docker info >/dev/null
 
       - name: Exercise real worker permission boundaries
-        run: python3 -m unittest scripts.test_catalogue_compliance_worker_permissions scripts.test_catalogue_compliance_worker_receipt -v
+        run: python3 -m unittest scripts.test_catalogue_compliance_worker_permissions scripts.test_catalogue_compliance_worker_receipt scripts.test_catalogue_compliance_generated_evidence -v
 
       - name: Capture fail-closed baseline
         run: |
@@ -293,8 +293,8 @@ jobs:
             7. Add a title to both controlled-launch allowlists and the frontend fail-closed Reader allowlist only after its exact runtime package is fully accepted.
             8. Keep root and backend runtime packages byte/parity-correct where the repository contract requires it.
             9. Keep all audio flags false/disabled and audio_enabled_slugs empty.
-            10. Run focused rights, publication, controlled-launch, catalogue, checksum, and Reader tests. For backend unit-test imports, explicitly prefix synthetic loopback settings: ENVIRONMENT=uat MONGODB_URL=mongodb://127.0.0.1:27018/earnalism_catalogue_test JWT_SECRET=synthetic-catalogue-unit-test-only READING_PASS_V2_ENABLED=false ENABLE_STARTUP_DB_MAINTENANCE=false. These are test inputs, not production evidence. Do not claim completion for titles still held.
-            11. Keep this implementation pass bounded. Do not spend the run exhaustively researching a single unresolved title; leave unsupported facts held. Before finishing, regenerate the private catalogue state with scripts/process_full_catalogue.py so remaining blockers are explicit and reproducible.
+            10. Run focused rights, publication, controlled-launch, catalogue, checksum, and Reader tests. Use the controller-provisioned interpreter ${{ env.pythonLocation }}/bin/python3 for Python and backend tests; the worker login PATH may select a system Python without the installed dependencies. Do not run the controller-only sudo/permission fixtures from this unprivileged account. For backend unit-test imports, explicitly prefix synthetic loopback settings: ENVIRONMENT=uat MONGODB_URL=mongodb://127.0.0.1:27018/earnalism_catalogue_test JWT_SECRET=synthetic-catalogue-unit-test-only READING_PASS_V2_ENABLED=false ENABLE_STARTUP_DB_MAINTENANCE=false. These are test inputs, not production evidence. Do not claim completion for titles still held.
+            11. Keep this implementation pass bounded. Do not spend the run exhaustively researching a single unresolved title; leave unsupported facts held. Keep additional temporary comparison reports outside Git under /tmp. Before finishing, regenerate the private catalogue state with scripts/process_full_catalogue.py using its default output directory so remaining blockers are explicit and reproducible. Do not leave alternate generated report directories in the checkout; they are not publication inputs.
             12. In your final message report newly-live slugs, repaired-but-still-held slugs, unchanged external holds, tests run, and any authoritative external evidence fetched.
 
       - name: Recompute catalogue truth
@@ -303,7 +303,7 @@ jobs:
           # Return newly created worker files to the validation controller.
           test "$(git branch --show-current)" = "codex/main-approved-integration"
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-          git diff --quiet HEAD -- scripts/catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_permissions.py
+          git diff --quiet HEAD -- scripts/catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_permissions.py scripts/catalogue_compliance_generated_evidence.py scripts/test_catalogue_compliance_generated_evidence.py
           sudo -H -u earnalism-codex python3 scripts/catalogue_compliance_worker_receipt.py --receipt /tmp/earnalism-catalogue-worker-receipt.json --batch /tmp/earnalism-catalogue-campaign-batch.json --expected-head "$GITHUB_SHA"
           sudo chown -R "$(id -un):$(id -gn)" /tmp/earnalism-main-approved-integration
           python3 scripts/process_full_catalogue.py
@@ -396,11 +396,21 @@ jobs:
           print(json.dumps(summary,indent=2))
           PY
 
-      - name: Restore private generated evidence
+      - name: Preserve private generated evidence outside Git
+        id: generated-evidence
         run: |
-          git restore --source=HEAD --worktree --staged internal/earnalism_intelligence/full_catalogue_processing_20260930 || true
-          git clean -fd -- internal/earnalism_intelligence/full_catalogue_processing_20260930 || true
+          set -euo pipefail
+          archive="$(python3 scripts/catalogue_compliance_generated_evidence.py)"
+          echo "archive=$archive" >> "$GITHUB_OUTPUT"
           rm -f codex-catalogue-final-message.txt
+
+      - name: Retain private reports and held-title proposals
+        if: ${{ always() && steps.generated-evidence.outputs.archive != '' }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: catalogue-private-evidence-${{ github.run_id }}
+          path: ${{ steps.generated-evidence.outputs.archive }}
+          if-no-files-found: error
 
       - name: Enforce bounded changed-file scope
         run: |
@@ -442,7 +452,7 @@ jobs:
             echo "audio-related controlledLaunch change is forbidden"
             exit 1
           fi
-          for protected_test in scripts/catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_permissions.py backend/tests/test_rights_decision_gate.py backend/tests/test_rights_engine.py backend/tests/test_controlled_publication_precheck.py; do
+          for protected_test in scripts/catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_permissions.py scripts/catalogue_compliance_generated_evidence.py scripts/test_catalogue_compliance_generated_evidence.py backend/tests/test_rights_decision_gate.py backend/tests/test_rights_engine.py backend/tests/test_controlled_publication_precheck.py; do
             if ! git diff --quiet HEAD -- "$protected_test"; then
               echo "core compliance gate test modification is forbidden: $protected_test"
               exit 1
