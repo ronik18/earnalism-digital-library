@@ -71,6 +71,20 @@ class WorkerPermissionPreflight(unittest.TestCase):
         command(["sudo", "-n", "chown", "-R", owner + ":" + group, str(self.repo)], check=True)
         self.assertEqual((folder / "candidate.json").read_text(), "synthetic candidate bytes\n")
 
+    def test_canonical_bootstrap_preserves_one_physical_checkout_and_workspace_alias(self):
+        source = WORKFLOW.read_text().split("          # Keep the Codex working directory physical.", 1)[1]
+        source = source.split("\n      - uses:", 1)[0]
+        script = "# Keep the Codex working directory physical." + source
+        canonical = self.parent / "canonical"
+        script = script.replace("/tmp/earnalism-main-approved-integration", str(canonical))
+        env = {**os.environ, "GITHUB_WORKSPACE": str(self.repo), "GITHUB_SHA": self.head}
+        result = command(["bash", "-euo", "pipefail", "-c", script], env=env)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertFalse(canonical.is_symlink())
+        self.assertTrue(self.repo.is_symlink())
+        self.assertEqual(self.repo.resolve(), canonical)
+        self.assertEqual((canonical / "synthetic.txt").read_text(), "Synthetic worker permission fixture only.\n")
+
     def test_root_worker_is_rejected(self):
         self.assertNotEqual(self.run_worker(user="root").returncode, 0)
 

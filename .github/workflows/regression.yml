@@ -55,7 +55,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install --yes ripgrep
 
       - name: Validate catalogue worker permission boundaries
-        run: python3 -m unittest scripts.test_catalogue_compliance_worker_permissions -v
+        run: python3 -m unittest scripts.test_catalogue_compliance_worker_permissions scripts.test_catalogue_compliance_worker_receipt -v
 
       - name: Run complete local UAT launcher suite
         run: |

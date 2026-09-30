@@ -18,14 +18,14 @@
   "reader_visual_review": "CORRECTED_TABLET_GAP_AND_TITLE_WRAP_PENDING_FRESH_EXACT_HEAD",
   "worker_execution_recovery": {
     "recorded_at": "2026-09-30T19:20:17.936910+00:00",
-    "source_head": "d82af32b50400459b16e3d9cc9c1d01064d778e1",
-    "status": "CANDIDATE_PENDING_HOSTED_PERMISSION_CI",
+    "source_head": "e1fa37b4e15c10494cce7a9532a8389a9caa8a2f",
+    "status": "CANDIDATE_PENDING_PHYSICAL_CWD_AND_EXECUTION_RECEIPT_VERIFICATION",
     "superseded_source_run": 36757671157,
     "superseded_implementation_result": "HOSTED_RUNNER_COMMUNICATION_FAILURE",
     "repair": "pinned official action unprivileged-user mode, dedicated non-sudo/non-Docker account, credential-free checkout and transient controller Git authentication",
     "publication_status": "UNCHANGED_7_ACCEPTED_224_HELD",
     "customer_ready": "NOT_DECLARED",
-    "next_exact_command": "gh pr checks <recovery-pr> --repo ronik18/earnalism-digital-library --watch --fail-fast",
+    "next_exact_command": "gh pr checks <execution-receipt-pr> --repo ronik18/earnalism-digital-library --watch --fail-fast",
     "current_main_failure": 36766302362,
     "verified_failures": [
       "worker stopped on controller-created untracked batch; .git fetch is intentionally sandbox-protected",
@@ -38,6 +38,10 @@
       "20 deterministic candidates",
       "modify at most 5 titles"
     ],
-    "preserved_pr482_service_order": true
+    "preserved_pr482_service_order": true,
+    "controller_validation_run": 36770076565,
+    "controller_validation": "PASS",
+    "implementation_result": "BLOCKED_COMMAND_STARTUP_EACCES_NOT_AN_EVIDENCE_ASSESSMENT",
+    "receipt_required": true
   }
 }
