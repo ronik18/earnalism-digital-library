@@ -17,7 +17,10 @@ on:
 
 concurrency:
   group: earnalism-catalogue-compliance-go-live
-  cancel-in-progress: false
+  # A newer main revision supersedes any older campaign runner. Durable progress is
+  # only accepted after a candidate commit is pushed and validated, so cancelling
+  # a hung/stale runner cannot publish partial work.
+  cancel-in-progress: true
 
 permissions:
   contents: write
@@ -28,7 +31,7 @@ permissions:
 jobs:
   compliance-campaign:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 75
     env:
       CI: "true"
       PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.playwright-browsers
@@ -104,9 +107,60 @@ jobs:
           print(json.dumps({'held_before':len(held),'live_before':state['state_counts'].get('READER_ONLY_LIVE_APPROVED',0),'chapters':state['chapter_count']}, indent=2))
           PY
 
+      - name: Select bounded compliance batch
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          state_path = Path('internal/earnalism_intelligence/full_catalogue_processing_20260930/catalogue_state.json')
+          batch_path = state_path.with_name('campaign_batch.json')
+          state = json.loads(state_path.read_text(encoding='utf-8'))
+          held = [t for t in state['titles'] if t.get('state') == 'EXTERNAL_ACTION_REQUIRED']
+
+          deterministic_markers = (
+              'RETAINED_CHECKSUM_MISMATCH',
+              'CHAPTER_ID_MISMATCH',
+              'has no reader content',
+              'Reader QA must pass',
+              'boilerplate',
+              'verification_status',
+          )
+
+          def rank(title):
+              blockers = title.get('blockers') or []
+              joined = ' | '.join(blockers)
+              deterministic = any(marker in joined for marker in deterministic_markers)
+              prepared = 'CLEARED_SOURCE_AND_READER_PACKAGE_MISSING' not in blockers
+              return (
+                  0 if deterministic else 1,
+                  0 if prepared else 1,
+                  len(blockers),
+                  title.get('slug', ''),
+              )
+
+          candidates = sorted(held, key=rank)[:20]
+          payload = {
+              'schema_version': 1,
+              'max_titles_to_modify': 5,
+              'candidate_count': len(candidates),
+              'candidates': [
+                  {
+                      'slug': t.get('slug'),
+                      'title': t.get('title'),
+                      'blockers': t.get('blockers') or [],
+                  }
+                  for t in candidates
+              ],
+          }
+          batch_path.write_text(json.dumps(payload, indent=2) + '\n', encoding='utf-8')
+          print(json.dumps(payload, indent=2))
+          PY
+
       - name: Resolve compliant catalogue holds
         id: codex
-        timeout-minutes: 45
+        timeout-minutes: 18
         uses: openai/codex-action@86365089eb2b84e0a8fb0717b304f8bdcb13b20e
         with:
           openai-api-key: ${{ secrets.EARNALISM_CODEX_OPENAI_API_KEY }}
@@ -118,7 +172,7 @@ jobs:
             You are the authorized Earnalism catalogue-compliance implementation worker for the owner-approved campaign in GitHub issue #477.
 
             CURRENT GOAL
-            Reduce the remaining EXTERNAL_ACTION_REQUIRED catalogue titles as far as truthfully possible and move only genuinely compliant titles into the existing India commercial text-reader release path. Prefer reusable, deterministic/data-driven repairs over hand-editing hundreds of titles.
+            This is one bounded iteration of the remaining EXTERNAL_ACTION_REQUIRED catalogue campaign. Read internal/earnalism_intelligence/full_catalogue_processing_20260930/campaign_batch.json and work only on candidate slugs listed there. Modify at most 5 titles in this run. Prefer the most deterministic, evidence-backed repairs first. Do not scan or repair title packages outside this candidate set. If a candidate cannot be substantiated quickly from exact repository or authoritative evidence, leave it held rather than extending the run. Move only genuinely compliant titles into the existing India commercial text-reader release path.
 
             OWNER POLICY
             - Additional manual/live PRODUCTION_READER observation is waived only when the exact source/package is independently verified complete and integrity-clean: no missing chapter/section, content/package anomaly, or unresolved integrity discrepancy, and Reader validation is clean.
@@ -157,7 +211,7 @@ jobs:
             Do not change payment/Razorpay/wallet/accounting behavior, entitlement authorization or policy, customer/user data, secrets/tokens/credentials, database migrations, deployment configuration, .github workflows, audio allowlists/assets/generation, or unrelated UI/design. Do not weaken, skip, delete, or rewrite tests/gates to obtain a pass.
 
             REQUIRED IMPLEMENTATION BEHAVIOR
-            1. Read internal/earnalism_intelligence/full_catalogue_processing_20260930/catalogue_state.json and work only from the currently held titles.
+            1. Read internal/earnalism_intelligence/full_catalogue_processing_20260930/campaign_batch.json first. Work only on its candidate slugs and modify at most 5 titles. You may consult catalogue_state.json only for those slugs. Do not edit campaign_batch.json.
             2. Repair deterministic package/content/checksum/QA issues only from exact evidence.
             3. Fill rights/source metadata only from persisted evidence. If external retrieval is used, bind the exact retrieved source/metadata to the package.
             4. For missing packages, create a controlled package only when the exact source edition and all required provenance are genuinely available and verified; otherwise leave the title held.
@@ -167,7 +221,7 @@ jobs:
             8. Keep root and backend runtime packages byte/parity-correct where the repository contract requires it.
             9. Keep all audio flags false/disabled and audio_enabled_slugs empty.
             10. Run focused rights, publication, controlled-launch, catalogue, checksum, and Reader tests. Do not claim completion for titles still held.
-            11. Before finishing, regenerate the private catalogue state with scripts/process_full_catalogue.py so remaining blockers are explicit and reproducible.
+            11. Keep this implementation pass bounded. Do not spend the run exhaustively researching a single unresolved title; leave unsupported facts held. Before finishing, regenerate the private catalogue state with scripts/process_full_catalogue.py so remaining blockers are explicit and reproducible.
             12. In your final message report newly-live slugs, repaired-but-still-held slugs, unchanged external holds, tests run, and any authoritative external evidence fetched.
 
       - name: Recompute catalogue truth
