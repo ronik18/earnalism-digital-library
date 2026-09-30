@@ -3814,5 +3814,19 @@
     "audio_activations": 0,
     "customer_ready": "NOT_DECLARED",
     "next_exact_command": "gh pr checks <report-preservation-pr> --repo ronik18/earnalism-digital-library --watch --fail-fast"
+  },
+  "historical_snapshot_regression_reconciliation_20260930": {
+    "timestamp": "2026-09-30T21:12:15.748502+00:00",
+    "workstream": "open_issue_release_verification",
+    "decision": "RECONCILE_STALE_RELEASED_DRACULA_SNAPSHOT_ASSERTION_WITH_CURRENT_AUTHORITY",
+    "candidate_sha": "4445d8046ff79663c0fc913c2e23a6ea32bd17a6",
+    "failed_regression_run": 36776970714,
+    "failed_job": 110097213169,
+    "observed_failure": "New truthful unavailable Dracula snapshot triggered a latent positive released-book SEO assertion; 122 other hosted regression tests passed and four were skipped",
+    "correction": "Keep positive Book/WebPage/OpenGraph/metadata SEO checks on the accepted A Ghost Story release; add explicit unavailable/noindex/no-content checks for all six historical Book/Reader/Listener snapshots",
+    "test_or_gate_disabled": false,
+    "publication_authority_changed": false,
+    "required_next": "Fresh exact-head full hosted regression and browser evidence, protected merge, production deploy/canaries and actual bounded catalogue assessment",
+    "next_exact_command": "gh pr checks 486 --repo ronik18/earnalism-digital-library --watch --fail-fast"
   }
 }

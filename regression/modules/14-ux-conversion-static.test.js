@@ -1742,8 +1742,8 @@ describe("UX conversion static signals", () => {
     expect(siteTourFeatureReport).not.toMatch(/testimonials available|rated by readers|trusted by thousands/i);
   });
 
-  test("built Dracula book snapshot exposes crawlable book SEO when build output exists", () => {
-    const bookHtml = readOptional("frontend/build/book/dracula/index.html");
+  test("built accepted A Ghost Story book snapshot exposes crawlable book SEO when build output exists", () => {
+    const bookHtml = readOptional("frontend/build/book/a-ghost-story/index.html");
     if (staticSeoPublicContract.public_release_held === true) {
       expect(bookHtml).toBe("");
       expect(staticSnapshotGenerator).toContain("releaseHeld ? books.length === 0");
@@ -1755,18 +1755,35 @@ describe("UX conversion static signals", () => {
       return;
     }
 
-    expect(bookHtml).toContain("<title>Dracula by Bram Stoker | The Earnalism</title>");
-    expect(metaContent(bookHtml, "name", "description")).toContain("Dracula by Bram Stoker is available as a reader-ready edition");
-    expect(canonicalHref(bookHtml)).toBe("https://theearnalism.com/book/dracula");
+    expect(bookHtml).toContain("<title>A Ghost Story by Mark Twain | The Earnalism</title>");
+    expect(metaContent(bookHtml, "name", "description")).toContain("A Ghost Story by Mark Twain is a released India edition");
+    expect(canonicalHref(bookHtml)).toBe("https://theearnalism.com/book/a-ghost-story");
     expect(metaContent(bookHtml, "property", "og:type")).toBe("book");
-    expect(metaContent(bookHtml, "property", "og:title")).toContain("Dracula by Bram Stoker");
+    expect(metaContent(bookHtml, "property", "og:title")).toContain("A Ghost Story by Mark Twain");
     expect(metaContent(bookHtml, "name", "twitter:card")).toBe("summary_large_image");
     expect(bookHtml).toContain('"@type":"Book"');
     expect(bookHtml).toContain('"@type":"WebPage"');
-    expect(bookHtml).not.toContain("Project Gutenberg eBook #345");
+    expect(bookHtml).not.toContain("Project Gutenberg eBook #3189");
     expect(bookHtml).not.toMatch(/aggregateRating|"review"\s*:/i);
     expect(bookHtml).not.toMatch(/Listen Now|audiobook available/i);
     expect(bookHtml).not.toContain("Preview every book before you pay");
+  });
+
+  test("built historical title snapshots preserve unavailable access when build output exists", () => {
+    for (const [slug, title] of [["dracula", "Dracula"], ["the-selfish-giant", "The Selfish Giant"]]) {
+      for (const kind of ["book", "reader", "listener"]) {
+        const html = readOptional(`frontend/build/${kind}/${slug}/index.html`);
+        if (!html) {
+          expect(staticSnapshotGenerator).toContain("unavailablePages(safe.unavailableRoutes)");
+          continue;
+        }
+        expect(html).toContain(`<title>${title} unavailable | The Earnalism</title>`);
+        expect(metaContent(html, "name", "robots")).toBe("noindex,nofollow");
+        expect(canonicalHref(html)).toBe(`https://theearnalism.com/book/${slug}`);
+        expect(html).toContain("No book text, reader session, or audio is available from this page.");
+        expect(html).not.toMatch(/reader-ready edition|Read the 3-page preview|"@type"\s*:\s*"(?:Book|Audiobook)"|<(?:audio|video|iframe|button)\b/i);
+      }
+    }
   });
 
   test("built homepage and reader snapshots follow controlled launch SEO policy", () => {

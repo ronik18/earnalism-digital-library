@@ -30,3 +30,8 @@ Retain known canonical and alternate worker generated JSON directories, plus the
 Source fingerprint for the updated Vercel route mappings: `94282c9df97458a814478a2dad75af9a5ad7cfc6734a5ae7de88f012226c72ef`. Fresh exact-head source-bound visual workflow checks remain mandatory.
 
 Next exact command: `gh pr checks <report-preservation-pr> --repo ronik18/earnalism-digital-library --watch --fail-fast`.
+
+
+## 2026-09-30 — Fresh full-regression snapshot assertion reconciliation
+
+PR #486 hosted permission/archive fixtures and the mandatory snapshot fixtures passed. Full regression run 36776970714 found one latent released-Dracula SEO assertion because that snapshot now exists as the approved unavailable page; 122 other regression tests passed and four were skipped. Retain the positive released-book SEO/schema/canonical checks using accepted A Ghost Story and add unavailable/noindex/no-content assertions for all six historical routes. Do not re-release Dracula, remove its safe page, or disable the regression module. A fresh CRA build is the generator's real production input; reusing an already populated local snapshot root is not fresh build evidence. Require all checks again on the corrected exact head.
