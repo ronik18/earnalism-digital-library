@@ -60,6 +60,41 @@ test("same-app nested rewrite signs the actual Reader path and preserves its que
   }
 });
 
+test("Vercel Preview uses inert fixtures and never reaches the configured production upstream", async () => {
+  const previousEnvironment = process.env.VERCEL_ENV;
+  const previousFetch = global.fetch;
+  let upstreamCalls = 0;
+  process.env.VERCEL_ENV = "preview";
+  global.fetch = async () => { upstreamCalls += 1; throw new Error("Preview must never contact an upstream"); };
+  const invoke = async (method, url) => {
+    const response = { statusCode: 200, headers: {}, body: "", setHeader(key, value) { this.headers[key.toLowerCase()] = value; }, end(value) { this.body = value; } };
+    await releaseProxy({ url, method, headers: { "x-vercel-ip-country": "IN" } }, response);
+    return { ...response, body: response.body ? JSON.parse(response.body) : null };
+  };
+  try {
+    const config = await invoke("GET", "/api/[...proxy]?proxy_path=payments/config");
+    assert.equal(config.statusCode, 200);
+    assert.deepEqual(config.body, { configured: false, mode: "preview-disabled", preview: true });
+    assert.equal(config.headers["cache-control"], "no-store");
+
+    const offers = await invoke("GET", "/api/[...proxy]?proxy_path=payments/offers");
+    assert.deepEqual(offers.body, { packs: [], config: { configured: false, mode: "preview-disabled", preview: true } });
+
+    const protectedManifest = await invoke("GET", "/api/[...proxy]?proxy_path=reader/book/a-ghost-story/manifest");
+    assert.equal(protectedManifest.statusCode, 503);
+    assert.equal(protectedManifest.body.detail.code, "PREVIEW_API_ISOLATED");
+
+    const paymentWrite = await invoke("POST", "/api/[...proxy]?proxy_path=payments/topup");
+    assert.equal(paymentWrite.statusCode, 503);
+    assert.equal(paymentWrite.body.detail.code, "PREVIEW_API_ISOLATED");
+    assert.equal(upstreamCalls, 0);
+  } finally {
+    global.fetch = previousFetch;
+    if (previousEnvironment === undefined) delete process.env.VERCEL_ENV;
+    else process.env.VERCEL_ENV = previousEnvironment;
+  }
+});
+
 test("forwards decoded upstream JSON without stale compression or representation headers", async () => {
   const previousSecret = process.env.EARNALISM_RELEASE_PROXY_SECRET;
   const previousFetch = global.fetch;
