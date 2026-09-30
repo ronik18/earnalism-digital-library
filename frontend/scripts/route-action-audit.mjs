@@ -5,6 +5,8 @@ import { existsSync } from "node:fs";
 import { readFileSync } from "node:fs";
 
 const baseUrl = (process.argv[2] || "https://theearnalism.com").replace(/\/$/, "");
+const baseOrigin = new URL(baseUrl).origin;
+const blockExternalOrigins = process.env.AUDIT_BLOCK_EXTERNAL === "1";
 const publicationContract = JSON.parse(readFileSync(new URL("../static-seo/controlled-publication-public.json", import.meta.url), "utf8"));
 const canonicalTitleRoutes = (publicationContract.publications || []).flatMap(({ slug }) => [
   `/book/${encodeURIComponent(slug)}`,
@@ -54,6 +56,9 @@ const routes = [
   "/route-audit-unknown",
   ...canonicalTitleRoutes,
 ];
+const requestedRoutes = process.env.AUDIT_ROUTES?.split(",").map((route) => route.trim()).filter((route) => route.startsWith("/"));
+if (requestedRoutes?.some((route) => !routes.includes(route))) throw new Error("AUDIT_ROUTES includes a route outside the explicit audit route list.");
+const routesToAudit = requestedRoutes?.length ? routes.filter((route) => requestedRoutes.includes(route)) : routes;
 const viewports = [
   { label: "desktop", width: 1440, height: 900 },
   { label: "mobile", width: 390, height: 844 },
@@ -66,10 +71,16 @@ const executablePath = process.env.CHROME_PATH || (systemChrome && existsSync(sy
 const browser = await chromium.launch({ headless: true, ...(executablePath ? { executablePath } : {}) });
 const page = await browser.newPage();
 const blockedWrites = [];
+const blockedExternalRequests = [];
 await page.route("**/*", async (route) => {
   const request = route.request();
+  const requestUrl = new URL(request.url());
   if (request.method() !== "GET") {
-    blockedWrites.push({ method: request.method(), path: new URL(request.url()).pathname });
+    blockedWrites.push({ method: request.method(), origin: requestUrl.origin, path: requestUrl.pathname });
+    return route.abort("blockedbyclient");
+  }
+  if (blockExternalOrigins && requestUrl.origin !== baseOrigin) {
+    blockedExternalRequests.push({ method: request.method(), origin: requestUrl.origin, path: requestUrl.pathname });
     return route.abort("blockedbyclient");
   }
   return route.continue();
@@ -77,16 +88,18 @@ await page.route("**/*", async (route) => {
 const report = {
   auditedAt: new Date().toISOString(),
   baseUrl,
-  safety: "Read-only GET navigation at desktop and mobile viewports. Forms are not filled or submitted; buttons are not activated.",
+  safety: `Read-only GET navigation at desktop and mobile viewports. Forms are not filled or submitted; buttons are not activated.${blockExternalOrigins ? " Non-base origins are blocked." : ""}`,
   titleSlugsFromPublicStaticContract: (publicationContract.publications || []).map(({ slug }) => slug),
+  requestedRouteFilter: routesToAudit.length === routes.length ? null : routesToAudit,
   blockedNonGetRequests: blockedWrites,
+  blockedExternalRequests,
   routes: [],
   linkedRoutes: [],
 };
 
 for (const viewport of viewports) {
   await page.setViewportSize({ width: viewport.width, height: viewport.height });
-for (const route of routes) {
+for (const route of routesToAudit) {
   const apiCalls = new Map();
   const releaseConfig = [];
   const pageErrors = [];

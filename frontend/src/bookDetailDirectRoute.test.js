@@ -32,14 +32,24 @@ describe("approved Book Detail direct-route contract", () => {
     expect(rewrites).toContainEqual({ source: "/product", destination: "/api/removed-content?path=/product" });
   });
 
-  test("keeps the historical Dracula URL available as a noindex page without exposing its detail", () => {
+  test("serves the historical Dracula book URL through the app's truthful unavailable route", () => {
+    expect(app).toContain('<Route path="/book/dracula" element={<UnavailableTitle />} />');
     const rewrites = vercel.rewrites || [];
     const genericNotFound = rewrites.findIndex((rule) => rule.source === "/book/:slug" && rule.destination === "/api/not-found");
     ["/book/dracula", "/book/dracula/"].forEach((source) => {
-      const index = rewrites.findIndex((rule) => rule.source === source && rule.destination === "/api/not-found?title=dracula");
+      const index = rewrites.findIndex((rule) => rule.source === source && rule.destination === "/index.html");
       expect(index).toBeGreaterThanOrEqual(0);
       expect(index).toBeLessThan(genericNotFound);
     });
+  });
+
+  test("the unavailable-title component is noindex and has no title-content or manifest dependency", () => {
+    const page = read("src/pages/UnavailableTitle.jsx");
+    expect(page).toContain('robots: "noindex, nofollow"');
+    expect(page).toContain("is not currently available.");
+    expect(page).toContain("not part of the current public release");
+    expect(page).toContain("No book text, reader session, or audio is available");
+    expect(page).not.toMatch(/fetch\(|axios|manifest|audioUrl|chapter/i);
   });
 
   test("attributes the Radharani source layer without relicensing unrelated material", () => {

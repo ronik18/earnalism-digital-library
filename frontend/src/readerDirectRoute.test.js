@@ -37,17 +37,19 @@ describe("approved Reader direct-route contract", () => {
     });
   });
 
-  test("keeps the historical Dracula Reader URL on a noindex unavailable page, never the Reader bundle", () => {
+  test("keeps the historical Dracula Reader and Listener URLs on the safe unavailable route", () => {
+    expect(app).toContain('<Route path="/reader/dracula" element={<UnavailableTitle />} />');
+    expect(app).toContain('<Route path="/listener/dracula" element={<UnavailableTitle />} />');
     const rewrites = vercel.rewrites || [];
     const genericNotFound = rewrites.findIndex((rule) => rule.source === "/reader/:slug" && rule.destination === "/api/not-found");
     const genericListenerNotFound = rewrites.findIndex((rule) => rule.source === "/listener/:slug" && rule.destination === "/api/not-found");
     ["/reader/dracula", "/reader/dracula/"].forEach((source) => {
-      const index = rewrites.findIndex((rule) => rule.source === source && rule.destination === "/api/not-found?title=dracula");
+      const index = rewrites.findIndex((rule) => rule.source === source && rule.destination === "/index.html");
       expect(index).toBeGreaterThanOrEqual(0);
       expect(index).toBeLessThan(genericNotFound);
     });
     ["/listener/dracula", "/listener/dracula/"].forEach((source) => {
-      const index = rewrites.findIndex((rule) => rule.source === source && rule.destination === "/api/not-found?title=dracula");
+      const index = rewrites.findIndex((rule) => rule.source === source && rule.destination === "/index.html");
       expect(index).toBeGreaterThanOrEqual(0);
       expect(index).toBeLessThan(genericListenerNotFound);
     });

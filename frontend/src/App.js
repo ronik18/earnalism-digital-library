@@ -30,6 +30,7 @@ const pageImports = {
   AdminLogin: () => import("./pages/AdminLogin"),
   Admin: () => import("./pages/Admin"),
   NotFound: () => import("./pages/NotFound"),
+  UnavailableTitle: () => import("./pages/UnavailableTitle"),
   GoogleAuthBoundary: () => import("./components/GoogleAuthBoundary"),
 };
 
@@ -55,6 +56,7 @@ const SecureReaderHarness = lazy(pageImports.SecureReaderHarness);
 const AdminLogin = lazy(pageImports.AdminLogin);
 const Admin = lazy(pageImports.Admin);
 const NotFound = lazy(pageImports.NotFound);
+const UnavailableTitle = lazy(pageImports.UnavailableTitle);
 const GoogleAuthBoundary = lazy(pageImports.GoogleAuthBoundary);
 
 function ScrollToTop() {
@@ -112,6 +114,7 @@ export function AppRouterContent() {
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/library" element={<Library />} />
+            <Route path="/book/dracula" element={<UnavailableTitle />} />
             <Route path="/book/:slug" element={<BookDetail />} />
             <Route path="/journal" element={<Journal />} />
             <Route path="/journal/:slug" element={<JournalArticle />} />
@@ -135,8 +138,10 @@ export function AppRouterContent() {
             <Route path="*" element={<NotFound />} />
           </Route>
           {/* Standalone full-screen routes (no public header/footer) */}
+          <Route path="/reader/dracula" element={<UnavailableTitle />} />
           <Route path="/reader/:slug" element={<ReaderV2 />} />
           <Route path="/reader-legacy/:slug" element={<ReaderLegacy />} />
+          <Route path="/listener/dracula" element={<UnavailableTitle />} />
           <Route path="/listener/:slug" element={<ListenerV2 />} />
           <Route path="/listener-legacy/:slug" element={<LegacyListenerRedirect />} />
           <Route path="/admin/login" element={<AdminLogin />} />
