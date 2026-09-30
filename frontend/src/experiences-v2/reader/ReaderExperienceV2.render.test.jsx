@@ -36,6 +36,16 @@ describe("ReaderExperienceV2 customer controls", () => {
     select.dispatchEvent(new Event("change", { bubbles: true }));
   });
 
+  test("a visual fixture never presents synthetic account progress or Reading Pass balance", () => {
+    const onNavigate = jest.fn();
+    render({ model: { ...model, visualFixture: true, progress: null, readingTime: "", readingPass: "Sign in to check Reading Pass balance" }, onNavigate });
+    expect(container.textContent).not.toContain("Reading Progress");
+    expect(container.textContent).not.toContain("215 minutes left");
+    expect(button("Sign in to check balance")).toBeTruthy();
+    click(button("Sign in to check balance"));
+    expect(onNavigate).toHaveBeenCalledWith("signin");
+  });
+
   test("the Reader enters at the masthead and page turns preserve keyboard focus and scroll", () => {
     render();
     expect(document.activeElement).toBe(container.querySelector("#reader-v2-title"));
@@ -58,7 +68,7 @@ describe("ReaderExperienceV2 customer controls", () => {
     const onRequestPage = jest.fn();
     const onNavigate = jest.fn();
     render({ onRequestPage, onNavigate });
-    click(container.querySelector(".experience-header__link"));
+    click(container.querySelector('.experience-header__desktop-nav [data-nav-key="library"]'));
     expect(onNavigate).toHaveBeenCalledWith("library");
     click(button("Page 2"));
     expect(onRequestPage).toHaveBeenCalledWith(2);
@@ -103,17 +113,17 @@ describe("ReaderExperienceV2 customer controls", () => {
     click(button("Page 2"));
     expect(container.querySelector('select[aria-label="Go to page"]').disabled).toBe(true);
     expect(onRequestPage).not.toHaveBeenCalled();
-    click(container.querySelector(".experience-header__link"));
+    click(container.querySelector('.experience-header__desktop-nav [data-nav-key="library"]'));
     expect(onNavigate).toHaveBeenCalledWith("library");
   });
 
   test("both responsive font controls use the bounded rem contract and persist an explicit preference", () => {
     render();
     const text = container.querySelector('[data-testid="reader-reading-text"]');
-    expect(container.querySelector("article").getAttribute("data-reader-theme")).toBe("dark");
+    expect(container.querySelector("article").getAttribute("data-reader-theme")).toBe("beige");
     expect(text.style.fontSize).toBe("1.125rem");
     expect(text.style.lineHeight).toBe("calc(1.75em - 0.5pt)");
-    expect(text.style.fontFamily).toContain("Outfit");
+    expect(text.style.fontFamily).toContain("EB Garamond");
     click(container.querySelector('.reader-v2__toolbar button[aria-label="Increase text size"]'));
     expect(text.style.fontSize).toBe("1.25rem");
     click(container.querySelector('.reader-v2__mobile-topbar button[aria-label="Decrease text size"]'));

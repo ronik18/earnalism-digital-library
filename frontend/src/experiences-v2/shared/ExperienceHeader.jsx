@@ -6,7 +6,7 @@ import { PUBLIC_NAV_ITEMS } from "../../config/publicNavigation";
 import { useAuth } from "../../context/AuthContext";
 import ExperienceIconButton from "./ExperienceIconButton";
 
-export default function ExperienceHeader({ compact = false, onSearch, onNotifications, onNavigate, trailingLabel = "Library", activeNavKey = null }) {
+export default function ExperienceHeader({ compact = false, onSearch, onNotifications, onNavigate, onNavigatePath, trailingLabel = "Library", activeNavKey = null, showDesktopNavigation = false }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuToggleRef = useRef(null);
   const auth = useAuth();
@@ -29,11 +29,16 @@ export default function ExperienceHeader({ compact = false, onSearch, onNotifica
 
   return (
     <header className={`experience-header ${compact ? "experience-header--compact" : ""}`.trim()} data-testid="experience-header">
-      <Link to="/" className="experience-header__brand" aria-label="Earnalism home">
+      <Link to="/" className="experience-header__brand" aria-label="Earnalism home" onClick={(event) => { if (onNavigatePath) { event.preventDefault(); onNavigatePath({ key: "home", to: "/", label: "Home" }); } }}>
         <EarnalismBrandLockup variant="desktop-header" />
       </Link>
+      {showDesktopNavigation && <nav className="experience-header__desktop-nav" aria-label="Primary navigation">
+        {PUBLIC_NAV_ITEMS.map((item) => onNavigatePath
+          ? <button key={item.key} type="button" data-nav-key={item.key} aria-current={item.key === activeNavKey ? "page" : undefined} onClick={() => onNavigatePath(item)}>{item.label}</button>
+          : <Link key={item.key} data-nav-key={item.key} to={item.to} aria-current={item.key === activeNavKey ? "page" : undefined}>{item.label}</Link>)}
+      </nav>}
       <div className="experience-header__actions">
-        {!compact && (onNavigate
+        {!compact && !showDesktopNavigation && (onNavigate
           ? <button type="button" className="experience-header__label experience-header__link" onClick={() => onNavigate("library")}>{trailingLabel}</button>
           : <span className="experience-header__label">{trailingLabel}</span>)}
         {onSearch && <ExperienceIconButton label="Search library" onClick={onSearch}><Search size={17} /></ExperienceIconButton>}
@@ -43,8 +48,12 @@ export default function ExperienceHeader({ compact = false, onSearch, onNotifica
         </button>
       </div>
       {menuOpen && <nav id="experience-header-menu" className="experience-header__menu" aria-label="Primary navigation">
-        {PUBLIC_NAV_ITEMS.map((item) => <Link key={item.key} data-nav-key={item.key} to={item.to} aria-current={item.key === activeNavKey ? "page" : undefined} onClick={() => setMenuOpen(false)}>{item.label}</Link>)}
-        <Link to={accountHref} data-testid={isAuthed ? "experience-menu-account" : "experience-menu-sign-in"} onClick={() => setMenuOpen(false)}>{accountLabel}</Link>
+        {PUBLIC_NAV_ITEMS.map((item) => onNavigatePath
+          ? <button key={item.key} type="button" data-nav-key={item.key} aria-current={item.key === activeNavKey ? "page" : undefined} onClick={() => { onNavigatePath(item); setMenuOpen(false); }}>{item.label}</button>
+          : <Link key={item.key} data-nav-key={item.key} to={item.to} aria-current={item.key === activeNavKey ? "page" : undefined} onClick={() => setMenuOpen(false)}>{item.label}</Link>)}
+        {onNavigatePath
+          ? <button type="button" data-testid={isAuthed ? "experience-menu-account" : "experience-menu-sign-in"} onClick={() => { onNavigatePath({ key: isAuthed ? "profile" : "signin", to: accountHref, label: accountLabel }); setMenuOpen(false); }}>{accountLabel}</button>
+          : <Link to={accountHref} data-testid={isAuthed ? "experience-menu-account" : "experience-menu-sign-in"} onClick={() => setMenuOpen(false)}>{accountLabel}</Link>}
       </nav>}
     </header>
   );

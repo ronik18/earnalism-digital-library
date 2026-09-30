@@ -28,8 +28,10 @@ export function listenerReleasePresentation(book = {}, { fixture = false } = {})
     canRender: true,
     fixture: true,
     mediaUrl: "",
-    release: { status: "approved" },
+    release: { status: "visual_fixture" },
     ...APPROVED_AUDIO_FIXTURE,
+    chapterLabel: book.chapter_label || APPROVED_AUDIO_FIXTURE.chapterLabel,
+    durationSeconds: Number(book.preview_duration_seconds) || 0,
     // A local review fixture may safely use the title/author and cover that
     // belong together; it never changes production audio approval or media.
     title: book.public_title || book.display_title || book.title || APPROVED_AUDIO_FIXTURE.title,

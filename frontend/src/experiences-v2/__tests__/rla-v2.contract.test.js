@@ -101,7 +101,8 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(route).toContain("authorizingRef.current");
     expect(route).toContain("This edition is not approved for listening.");
     expect(route).toContain("<ExperienceHeader");
-    expect(route).toContain('onSearch={onSearch}');
+    expect(route).toContain('onSearch={() => onNavigate?.("search")}');
+    expect(route).toContain('onNavigatePath={onNavigatePath}');
     expect(route).not.toContain("startReadingPassAudioSession({ bookSlug: slug, positionSeconds: 180 })");
   });
 
@@ -111,8 +112,16 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(fixture.fixture).toBe(true);
     expect(fixture.mediaUrl).toBe("");
     expect(fixture.publicPreviewSeconds).toBe(0);
+    expect(fixture.release.status).toBe("visual_fixture");
     expect(fixture.title).toBe("A Ghost Story");
     expect(fixture.author).toBe("Mark Twain");
+    const currentBookFixture = listenerReleasePresentation({
+      title: "A Ghost Story", author: "Mark Twain", chapter_label: "Chapter 1 of 1",
+      chapters: [{ id: "chapter-001", order: 1, title: "A Ghost Story" }], preview_duration_seconds: 0,
+    }, { fixture: true });
+    expect(currentBookFixture.chapterLabel).toBe("Chapter 1 of 1");
+    expect(currentBookFixture.durationSeconds).toBe(0);
+    expect(currentBookFixture.mediaUrl).toBe("");
   });
 
   test("Listener fixture uses the compact mobile control shell without changing audio access", () => {
@@ -129,7 +138,8 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(route).toContain("LISTENER_VISUAL_FIXTURE_BOOK");
     expect(route).toContain('slug: "a-ghost-story"');
     expect(route).toContain("cover_image_url:");
-    expect(source).toContain("presentation.fixture || !canPlay || !totalDuration");
+    expect(source).toContain("!presentation.fixture && <>");
+    expect(source).not.toContain("canPlay || presentation.fixture");
   });
 
   // ReaderExperienceV2.render.test.jsx clicks the real size controls and checks
