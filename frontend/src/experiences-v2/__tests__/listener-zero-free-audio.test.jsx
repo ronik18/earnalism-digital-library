@@ -1,4 +1,5 @@
 import { renderToStaticMarkup } from "react-dom/server";
+jest.mock("react-router-dom", () => ({ Link: ({ to, children, ...props }) => <a href={to} {...props}>{children}</a> }), { virtual: true });
 import ListenerExperienceV2, { clampPlaybackTime } from "../listener/ListenerExperienceV2";
 import { listenerReleasePresentation } from "../shared/ReleaseTruthAdapter";
 import { protectedAudiobookPackageManifestPath } from "../../lib/audioReleaseSafety";

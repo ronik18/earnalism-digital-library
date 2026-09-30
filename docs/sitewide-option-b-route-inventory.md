@@ -18,7 +18,7 @@ Admin and test harness routes are identified separately and remain outside the p
 | `/login`, `/signin` | Login / redirect | Authentication and continuation states; `/signin` redirects to `/login` |
 | `/signup` | Signup | Authentication and account creation |
 | `/account` | Account | Authenticated profile, sessions, wallet/Reading Pass status |
-| `/my-library` | MyLibrary | Authenticated saved-library state |
+| `/my-library` | MyLibrary | Authenticated truthful empty state; `NA_PRODUCT_STATE` until a canonical saved-book or reading-history API exists |
 | `/reader/:slug` | ReaderExperienceV2 | Immersive reader shell; preserve reading, preview and entitlement gates |
 | `/reader-legacy/:slug` | ReaderLegacy | Legacy reader route and release-safe states |
 | `/listener/:slug` | ListenerExperienceV2 | Immersive listening route; runtime release and authorization gates preserved |

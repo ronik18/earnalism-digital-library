@@ -364,18 +364,18 @@ async function run({ name, viewport, mobile, source }) {
   await configureApi(page, source);
   await page.goto(`${base}/`, { waitUntil: "domcontentloaded" });
 
-  const headerBooksLink = mobile
-    ? page.getByTestId("mobile-nav-books")
-    : page.getByTestId("nav-books");
+  const headerLibraryLink = mobile
+    ? page.getByTestId("mobile-nav-library")
+    : page.getByTestId("nav-library");
   if (mobile) await page.getByTestId("mobile-menu-toggle").click();
   await Promise.all([
     page.waitForURL((url) => url.pathname === "/library" && url.search === ""),
-    headerBooksLink.click(),
+    headerLibraryLink.click(),
   ]);
   await page.getByTestId("library-reference-surface").waitFor();
 
-  // Option B replaces the old language-specific header item with the mock's
-  // Books link; the Bengali collection card retains its exact filtered route.
+  // The canonical Library header item opens the unfiltered route; the Bengali
+  // discovery card retains its exact filtered destination.
   await page.goto(`${base}/`, { waitUntil: "domcontentloaded" });
   const bengaliCollection = page.locator(".reference-home__discovery-card").filter({ hasText: "Bengali Classics" });
   assert.equal(await bengaliCollection.getAttribute("href"), `/library${expectedHeaderUrl}`, `${name}: Bengali Classics must retain its filtered Library destination`);

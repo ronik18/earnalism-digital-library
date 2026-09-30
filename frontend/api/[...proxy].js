@@ -119,7 +119,12 @@ module.exports = async function releaseProxy(req, res) {
     });
     res.statusCode = response.status;
     for (const [name, value] of response.headers.entries()) {
-      if (!["connection", "transfer-encoding"].includes(name.toLowerCase())) res.setHeader(name, value);
+      // Node fetch transparently decompresses upstream responses. Do not send
+      // the upstream representation metadata with those decoded bytes or the
+      // browser will attempt a second gzip/br decode and discard the response.
+      if (!["connection", "transfer-encoding", "content-encoding", "content-length", "content-md5", "etag"].includes(name.toLowerCase())) {
+        res.setHeader(name, value);
+      }
     }
     if (protectedPath) {
       // Never let a response cached in one country bypass the next request's

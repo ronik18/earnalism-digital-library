@@ -38,32 +38,32 @@ function renderHeader() {
 describe("owner-approved Header composition", () => {
   afterEach(() => { document.body.innerHTML = ""; });
 
-  test("renders the official logo, Option B navigation, search, and a single Sign In action", () => {
+  test("renders the official logo, canonical navigation, search, and a single Sign In action", () => {
     const { container, cleanup } = renderHeader();
     expect(container.querySelector('[data-testid="brand-logo"] img')).not.toBeNull();
-    expect(container.querySelector('.home-option-b-search input[aria-label="Search books, authors, topics"]')).not.toBeNull();
-    expect(container.querySelector('[data-testid="nav-books"]')?.getAttribute("href")).toBe("/library");
-    expect(container.querySelector('[data-testid="nav-authors"]')?.getAttribute("href")).toBe("/library?sort=author");
-    expect(container.querySelector('[data-testid="nav-collections"]')?.getAttribute("href")).toBe("/library#library-collection");
-    expect(container.querySelector('[data-testid="nav-sign-in"]')).toBeNull();
-    expect(container.querySelector('[data-testid="nav-sign-in-cta"]')?.getAttribute("href")).toBe("/login");
+    expect(container.querySelector('.premium-header-search input[aria-label="Search books, authors, topics"]')).not.toBeNull();
+    expect([...container.querySelectorAll('.premium-header-nav--desktop > a[data-testid^="nav-"]')].map((item) => item.textContent.trim())).toEqual([
+      "Home", "Library", "Bengali Classics", "English Classics", "Audiobooks", "Reading Pass", "About", "Sign In",
+    ]);
+    expect(container.querySelector('[data-testid="nav-sign-in"]')?.getAttribute("href")).toBe("/login");
     expect(container.querySelector('[data-testid="nav-join"]')).toBeNull();
-    expect(container.querySelector('[data-testid="nav-sign-in-cta"]')?.textContent).toBe("Sign In");
+    expect(container.querySelector('[data-testid="nav-sign-in"]')?.textContent).toContain("Sign In");
     expect(container.querySelector(".premium-header-nav")).not.toBeNull();
     expect(container.querySelector('[data-testid="header-cta-library"]')).toBeNull();
     expect(document.documentElement.scrollWidth).toBeLessThanOrEqual(document.documentElement.clientWidth);
     cleanup();
   });
 
-  test("reveals the approved mobile Library CTA and Sign In route from the menu", () => {
+  test("reveals the canonical mobile navigation and Sign In route from the menu", () => {
     const { container, cleanup } = renderHeader();
     expect(container.querySelector('[data-testid="mobile-header-search"]')).not.toBeNull();
     const toggle = container.querySelector('[data-testid="mobile-menu-toggle"]');
     expect(toggle).not.toBeNull();
     act(() => toggle.dispatchEvent(new MouseEvent("click", { bubbles: true })));
-    const library = container.querySelector('[data-testid="mobile-cta-library"]');
-    expect(library?.getAttribute("href")).toBe("/library");
     expect(container.querySelector('[data-testid="mobile-nav-sign-in"]')?.getAttribute("href")).toBe("/login");
+    expect([...container.querySelectorAll('[data-testid^="mobile-nav-"]')].slice(0, 8).map((item) => item.textContent)).toEqual([
+      "Home", "Library", "Bengali Classics", "English Classics", "Audiobooks", "Reading Pass", "About", "Sign In",
+    ]);
     expect(document.documentElement.scrollWidth).toBeLessThanOrEqual(document.documentElement.clientWidth);
     cleanup();
   });

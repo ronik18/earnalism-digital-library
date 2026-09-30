@@ -18,7 +18,7 @@ import {
   readingPassUrl,
 } from "../lib/controlledLaunch";
 import useSEO from "../hooks/useSEO";
-import { bookDetailPresentationForBook, chapterReaderEntryForBook, readerRuntimeIsAvailable } from "../lib/bookDetailPresentation";
+import { bookDetailPresentationForBook, chapterReaderEntryForBook, readerRuntimeIsAvailable, releaseSafeBookCopy } from "../lib/bookDetailPresentation";
 import { readerManifestPath } from "../lib/audioReleaseSafety";
 import { readerManifestAudioIsAuthorized } from "../lib/readerManifestAccess";
 import { PUBLIC_PREVIEW_COPY } from "../lib/publicAccessCopy";
@@ -84,6 +84,12 @@ export default function BookDetail() {
   const bookLoadError = !loading && loadStatus === "error";
   const shouldNoindex = bookNotFound || bookLoadError;
   const publicBook = book?.slug === LIVE_APPROVED_SLUG ? mergeDraculaBook(book) : book;
+  const detailPresentation = bookDetailPresentationForBook(publicBook || {});
+  const safeDescription = releaseSafeBookCopy(publicBook?.description, detailPresentation.listenCtaVisible);
+  const safeShortDescription = releaseSafeBookCopy(publicBook?.short_description, detailPresentation.listenCtaVisible);
+  const safeBenefits = (publicBook?.benefits || [])
+    .map((benefit) => releaseSafeBookCopy(benefit, detailPresentation.listenCtaVisible))
+    .filter(Boolean);
   const readerRuntimeAvailable = readerRuntimeIsAvailable(publicBook);
 
   useSEO({
@@ -96,7 +102,7 @@ export default function BookDetail() {
       ? "This Earnalism book is no longer available."
       : publicBook?.slug === LIVE_APPROVED_SLUG && readerRuntimeAvailable
         ? "Preview Dracula by Bram Stoker on Earnalism. Read the first 3 pages free. Continue with Reading Pass access."
-        : publicBook?.short_description || publicBook?.subtitle || "A curated digital title from The Earnalism Digital Library — for readers who value depth, beauty, and meaning.",
+        : safeShortDescription || safeDescription || publicBook?.subtitle || "A curated digital title from The Earnalism Digital Library — for readers who value depth, beauty, and meaning.",
     image: publicBook?.cover_image_url,
     imageAlt: publicBook?.slug === LIVE_APPROVED_SLUG ? "Custom Earnalism Dracula cover artwork" : publicBook?.title,
     type: bookNotFound ? "website" : "book",
@@ -177,7 +183,7 @@ export default function BookDetail() {
     "@type": "Book",
     "name": publicBook.title,
     ...(publicBook.subtitle ? { "alternativeHeadline": publicBook.subtitle } : {}),
-    "description": publicBook.description || publicBook.short_description,
+    "description": safeDescription || safeShortDescription,
     ...(publicBook.cover_image_url ? { "image": publicBook.cover_image_url } : {}),
     "bookFormat": "https://schema.org/EBook",
     "inLanguage": bookLanguage,
@@ -232,7 +238,6 @@ export default function BookDetail() {
   const hasFreePreview = hasExplicitPreview || chapterCount > 1;
   const readerHref = `/reader/${publicBook.slug}`;
   const passHref = isDracula ? readingPassUrl("book_detail") : "";
-  const detailPresentation = bookDetailPresentationForBook(publicBook);
   const chapterEntries = (publicBook.chapters || []).map((chapter) => ({
     chapter,
     entry: chapterReaderEntryForBook(publicBook, chapter.id),
@@ -284,7 +289,7 @@ export default function BookDetail() {
             <span data-testid="book-detail-language-status">{detailPresentation.languageLabel}</span>
           </div>
           <div className="gold-rule-thin mt-8" />
-          <p className="book-detail-reference__description text-charcoal-soft mt-7 leading-[1.85] font-light">{publicBook.description}</p>
+          {safeDescription && <p className="book-detail-reference__description text-charcoal-soft mt-7 leading-[1.85] font-light" data-testid="book-detail-description">{safeDescription}</p>}
 
           {isDracula && (
             <div id="rights-note" className="book-detail-reference__rights mt-8 rounded-lg border border-brand-soft bg-ivory-warm p-5 sm:p-6" data-testid="dracula-rights-note">
@@ -410,12 +415,12 @@ export default function BookDetail() {
 
           {selectedTab === "related" && <div id="book-panel-related" role="tabpanel" aria-labelledby="book-tab-related" className="mt-8" data-testid="book-related-panel"><h3 className="font-serif-light text-[1.48rem] text-burgundy">Related titles</h3><p className="mt-3 text-charcoal-soft">Explore more editions in the Library.</p><Link to="/library" className="btn-secondary mt-5 inline-flex">Browse the Library</Link></div>}
 
-          {publicBook.benefits?.length > 0 && (
+          {safeBenefits.length > 0 && (
             <div className="mt-14">
               <div className="italic-eyebrow mb-3">For the reader</div>
               <h3 className="font-serif-light text-[1.48rem] sm:text-[1.68rem] text-burgundy mb-6 leading-snug">What waits inside</h3>
-              <ul className="space-y-4">
-                {publicBook.benefits.map((b) => (
+              <ul className="space-y-4" data-testid="book-detail-benefits">
+                {safeBenefits.map((b) => (
                   <li key={b} className="flex items-start gap-3 text-charcoal-soft leading-relaxed font-light">
                     <Check size={16} className="text-gold mt-1 flex-shrink-0" strokeWidth={1.5} /><span>{b}</span>
                   </li>

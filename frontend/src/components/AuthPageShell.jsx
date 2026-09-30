@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import EarnalismBrandLockup from "./EarnalismBrandLockup";
 import { PUBLIC_PAID_COMMERCE_ENABLED } from "../lib/controlledLaunch";
+import { AUTH_PRODUCT_ACCESS_COPY } from "../lib/publicAccessCopy";
 import "../styles/auth-account.css";
 
 export default function AuthPageShell({ eyebrow, title, introduction, children, footer, testId }) {
@@ -17,7 +18,7 @@ export default function AuthPageShell({ eyebrow, title, introduction, children, 
               <span>Manage access whenever you need to</span>
             </div>
           </div>
-          <p className="auth-account-aside-note">The first 3 pages are free where a preview is available. A valid Reading Pass is required from page 4. Pass purchases are not available yet; audiobooks remain unavailable.</p>
+          <p className="auth-account-aside-note">{AUTH_PRODUCT_ACCESS_COPY}</p>
         </aside>
         <div className="auth-account-auth-content p-7 sm:p-10 lg:p-12">
           <Link to="/" className="auth-account-mobile-brand inline-flex rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-burgundy lg:hidden" aria-label="The Earnalism home">

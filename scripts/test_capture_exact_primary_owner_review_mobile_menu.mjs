@@ -21,7 +21,7 @@ const baseFixture = ({ duplicate = false, corrected = false } = {}) => `<!doctyp
 <script>
  const toggle=document.querySelector('header[data-testid="site-header"] [data-testid="mobile-menu-toggle"]');
  const close=()=>{document.querySelectorAll('header[data-testid="site-header"] > [data-testid="mobile-menu"]').forEach(n=>n.remove());toggle.setAttribute('aria-expanded','false');document.body.style.overflow='';['#main-content','footer'].map(s=>document.querySelector(s)).forEach(n=>{n.removeAttribute('inert');n.removeAttribute('aria-hidden')});toggle.focus()};
- toggle.addEventListener('click',()=>{toggle.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';['#main-content','footer'].map(s=>document.querySelector(s)).forEach(n=>{n.setAttribute('inert','');n.setAttribute('aria-hidden','true')});for(let i=0;i<${duplicate ? 2 : 1};i++){const menu=document.createElement('div');menu.id='mobile-menu';menu.className='menu';menu.dataset.testid='mobile-menu';menu.setAttribute('role','dialog');menu.setAttribute('aria-modal','true');menu.innerHTML='<button aria-label="Close menu">Close</button><a data-testid="mobile-nav-home">Home</a><a data-testid="mobile-nav-library">Library</a><a data-testid="mobile-nav-reading-passes">Reading Passes</a>';toggle.closest('header').append(menu);menu.querySelector('button').addEventListener('click',close);}});
+ toggle.addEventListener('click',()=>{toggle.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';['#main-content','footer'].map(s=>document.querySelector(s)).forEach(n=>{n.setAttribute('inert','');n.setAttribute('aria-hidden','true')});for(let i=0;i<${duplicate ? 2 : 1};i++){const menu=document.createElement('div');menu.id='mobile-menu';menu.className='menu';menu.dataset.testid='mobile-menu';menu.setAttribute('role','dialog');menu.setAttribute('aria-modal','true');menu.innerHTML='<button aria-label="Close menu">Close</button><a data-testid="mobile-nav-home">Home</a><a data-testid="mobile-nav-library">Library</a><a data-testid="mobile-nav-reading-pass">Reading Pass</a><a data-testid="mobile-nav-bengali-classics">Bengali Classics</a><a data-testid="mobile-nav-english-classics">English Classics</a><a data-testid="mobile-nav-audiobooks">Audiobooks</a><a data-testid="mobile-nav-about">About</a><a data-testid="mobile-cta-library">Enter the Library</a>';toggle.closest('header').append(menu);menu.querySelector('button').addEventListener('click',close);}});
  document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
 </script>`;
 
@@ -44,6 +44,7 @@ try {
   await corrected.setContent(baseFixture({ corrected: true }));
   const correctedDiagnostics = await openActualMobileMenu(corrected);
   assertMobileMenuGeometry(correctedDiagnostics);
+  assert.equal(correctedDiagnostics.requiredRowsVisible, true, "canonical Home, Library, Reading Pass, and Library CTA rows must remain visible");
   result.correctedFixture = true;
   result.hiddenFixturesIgnored = correctedDiagnostics.visibleToggleCount === 1 && correctedDiagnostics.activeVisibleOwnerDialogCount === 1;
   assert.deepEqual(await closeActualMobileMenu(corrected), { escapeClose: true, focusRestored: true, activeVisibleDialogCount: 0, bodyScrollRestored: true, backgroundRestored: true });
@@ -59,7 +60,7 @@ try {
     const page = await browser.newPage({ viewport });
     await installPublicFixture(page);
     await page.goto(`${baseUrl}/`, { waitUntil: "domcontentloaded" });
-    if (viewport.width >= 1024) {
+    if (viewport.width >= 1360) {
       const desktop = await page.evaluate(() => ({ navVisible: (() => { const node = document.querySelector(".premium-header-nav"); const box = node?.getBoundingClientRect(); return Boolean(node && getComputedStyle(node).display !== "none" && box.width > 0); })(), mobileToggleCount: [...document.querySelectorAll('[data-testid="mobile-menu-toggle"]')].filter((node) => getComputedStyle(node).display !== "none" && node.getBoundingClientRect().width > 0).length, dialogCount: document.querySelectorAll('[data-testid="mobile-menu"]').length }));
       assert.deepEqual(desktop, { navVisible: true, mobileToggleCount: 0, dialogCount: 0 });
       result.desktop.push({ width: viewport.width, ...desktop });
@@ -87,7 +88,7 @@ try {
   assert.deepEqual(result.routeAction, { route: "/", menuClosed: true });
   await routeAction.close();
 
-  for (const width of [1280, 1440]) {
+  for (const width of [1360, 1440]) {
     const page = await browser.newPage({ viewport: { width, height: 900 } });
     await installPublicFixture(page);
     await page.goto(`${baseUrl}/`, { waitUntil: "domcontentloaded" });

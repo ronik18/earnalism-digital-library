@@ -121,6 +121,7 @@ describe("UX conversion static signals", () => {
   const firstBatchMatrixCsv = read("FIRST_BATCH_REAL_SOURCE_MATRIX.csv");
   const firstBatchBackfillTemplate = read("FIRST_BATCH_REAL_SOURCE_BACKFILL_INPUT.template.json");
   const header = read("frontend/src/components/Header.jsx");
+  const publicNavigation = read("frontend/src/config/publicNavigation.js");
   const firstVisitSiteTour = read("frontend/src/components/FirstVisitSiteTour.jsx");
   const footer = read("frontend/src/components/Footer.jsx");
   const footerSocialLinks = read("frontend/src/components/FooterSocialLinks.jsx");
@@ -1482,9 +1483,12 @@ describe("UX conversion static signals", () => {
 
   test("login signup account and default SEO use the approved access contract without overclaiming", () => {
     expect(login).toContain('data-testid="login-continuation-note"');
-    expect(login).toContain("The first 3 pages are free where a preview is available. A valid Reading Pass is required from page 4. Pass purchases are not available yet. Audiobooks are unavailable.");
+    expect(login).toContain("AUTH_PRODUCT_ACCESS_COPY");
+    expect(login).not.toContain("Pass purchases are not available yet.");
     expect(signup).toContain('data-testid="signup-wallet-note"');
-    expect(signup).toContain("The first 3 pages are free where a preview is available. A valid Reading Pass is required from page 4. Pass purchases are not available yet. Audiobooks are unavailable.");
+    expect(signup).toContain("AUTH_PRODUCT_ACCESS_COPY");
+    expect(signup).not.toContain("Pass purchases are not available yet.");
+    expect(publicAccessCopy).toContain("The first 3 pages are free where a preview is available. A Reading Pass is required from page 4 on eligible titles. Listening appears only where an edition is approved.");
     expect(account).toContain('data-testid="account-wallet-explainer"');
     expect(account).toContain("The first 3 pages are free where a preview is available. Continuing from page 4 requires a valid Reading Pass; pass purchases are not available yet.");
     expect(account).toContain("Continue reading");
@@ -1527,14 +1531,18 @@ describe("UX conversion static signals", () => {
     expect(header).toContain('data-testid="brand-logo"');
     expect(header).toContain('data-testid="nav-search"');
     expect(header).toContain('data-testid="mobile-header-search"');
-    expect(header).toContain('data-testid="mobile-cta-library"');
-    expect(header).toContain("Enter the Library");
+    expect(header).toContain("data-nav-key={n.key}");
     expect(header).not.toContain(">Start Reading</Link>");
     expect(header).toContain("aria-expanded={open}");
     expect(header).toContain('aria-controls="mobile-menu"');
     expect(header).toContain('id="mobile-menu"');
-    expect(header).toContain("Bengali Classics");
-    expect(header).toContain("English Classics");
+    expect(header).toContain('import { PUBLIC_NAV_ITEMS, isPublicNavItemActive } from "../config/publicNavigation";');
+    expect(header).toContain("const navigationItems = PUBLIC_NAV_ITEMS;");
+    const canonicalLabels = ["Home", "Library", "Bengali Classics", "English Classics", "Audiobooks", "Reading Pass", "About"];
+    const labelOffsets = canonicalLabels.map((label) => publicNavigation.indexOf(`label: "${label}"`));
+    expect(labelOffsets.every((offset) => offset >= 0)).toBe(true);
+    expect(labelOffsets).toEqual([...labelOffsets].sort((left, right) => left - right));
+    expect(publicNavigation).not.toContain("HOME_OPTION_B_NAV_ITEMS");
     expect(styles).toContain(".header-brand-cluster");
     expect(styles).toContain(".glass-header");
     expect(styles).toContain("rgba(255, 252, 244, 0.98)");

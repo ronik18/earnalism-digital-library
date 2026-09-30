@@ -9,6 +9,16 @@ import { availableReadingPasses } from "../lib/readingPassOffers";
 import { ReferenceHomeSurface } from "../components/EditorialHomeLibrarySurfaces";
 import "./HomeOptionB.css";
 
+function trackNewsletterEvent(event) {
+  try {
+    // Newsletter analytics is supplemental: tracking must never interrupt signup.
+    // Keep metadata intentionally free of the submitted name and email.
+    trackFunnelEvent(event, { source: "reading_circle" });
+  } catch {
+    // A tracking failure must not block the newsletter request or its feedback.
+  }
+}
+
 export default function Home() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -59,7 +69,7 @@ export default function Home() {
 
   const subscribe = async (event) => {
     event.preventDefault();
-    track("newsletter_submit_attempt", { source: "reading_circle" });
+    trackNewsletterEvent("newsletter_submit_attempt");
     setSubmitting(true);
     setNewsletterStatus("");
     try {
@@ -69,12 +79,12 @@ export default function Home() {
       setName("");
       setEmail("");
       setNewsletterStatus(message);
-      track("newsletter_submit_success", { source: "reading_circle" });
+      trackNewsletterEvent("newsletter_submit_success");
     } catch (err) {
       const message = formatError(err.response?.data?.detail);
       toast.error(message);
       setNewsletterStatus(message);
-      track("newsletter_submit_failure", { source: "reading_circle" });
+      trackNewsletterEvent("newsletter_submit_failure");
     } finally {
       setSubmitting(false);
     }

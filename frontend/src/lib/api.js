@@ -2,36 +2,25 @@ import axios from "axios";
 import { toast } from "sonner";
 
 export function resolveBackendUrl() {
-  // The public Reader release uses the same-origin Vercel proxy so Railway can
-  // authenticate the release boundary. It does not restrict visitors by
-  // geography. This flag is a production build setting, not a browser fallback.
-  if (process.env.NODE_ENV === "production" && process.env.REACT_APP_RELEASE_PROXY_ENABLED === "true") {
-    return "";
-  }
   const configured = (
     process.env.REACT_APP_BACKEND_URL ||
     process.env.REACT_APP_API_URL ||
     ""
   ).trim();
 
-  if (process.env.NODE_ENV !== "production") return configured;
-  if (!configured || configured.includes("<") || configured.includes("yourdomain.com")) {
-    return "";
-  }
-  if (configured.startsWith("/")) {
-    return configured.replace(/\/$/, "");
-  }
-  if (configured.startsWith("/")) {
-    return configured.replace(/\/$/, "");
-  }
-  try {
-    const url = new URL(configured);
-    if (["localhost", "127.0.0.1", "0.0.0.0"].includes(url.hostname)) {
-      // Production-like UAT builds must retain their explicit loopback API
-      // origin.  All normal production builds continue to reject local hosts.
-      return process.env.REACT_APP_UAT_LOCAL === "true" ? configured : "";
+  // Production browser traffic must use the same-origin Vercel proxy. Protected
+  // catalogue and Reader endpoints require its signed release assertion; a
+  // direct Railway request is correctly rejected with RELEASE_PROXY_SCOPE_INVALID.
+  // Preserve an explicit loopback API origin only in isolated local UAT builds.
+  if (process.env.NODE_ENV === "production") {
+    if (process.env.REACT_APP_UAT_LOCAL === "true" && configured) {
+      try {
+        const url = new URL(configured);
+        if (["localhost", "127.0.0.1", "0.0.0.0"].includes(url.hostname)) return configured;
+      } catch {
+        return "";
+      }
     }
-  } catch {
     return "";
   }
   return configured;

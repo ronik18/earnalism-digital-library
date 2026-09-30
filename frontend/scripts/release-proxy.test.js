@@ -60,6 +60,45 @@ test("same-app nested rewrite signs the actual Reader path and preserves its que
   }
 });
 
+test("forwards decoded upstream JSON without stale compression or representation headers", async () => {
+  const previousSecret = process.env.EARNALISM_RELEASE_PROXY_SECRET;
+  const previousFetch = global.fetch;
+  const body = Buffer.from('{"books":[{"slug":"a-ghost-story"}]}');
+  process.env.EARNALISM_RELEASE_PROXY_SECRET = "release-proxy-test-secret-that-is-long-enough";
+  global.fetch = async () => ({
+    status: 200,
+    headers: new Headers({
+      "content-type": "application/json; charset=utf-8",
+      "content-encoding": "gzip",
+      "content-length": "24750",
+      "content-md5": "stale-representation-digest",
+      etag: '"compressed-body"',
+      "x-reader-manifest-version": "fixture-version",
+    }),
+    arrayBuffer: async () => body.buffer.slice(body.byteOffset, body.byteOffset + body.byteLength),
+  });
+  try {
+    const response = {
+      statusCode: 200,
+      headers: {},
+      setHeader(key, value) { this.headers[key.toLowerCase()] = value; },
+      end(value) { this.body = value; },
+    };
+    await releaseProxy({ url: "/api/books", method: "GET", headers: { "x-vercel-ip-country": "IN" } }, response);
+    assert.equal(response.statusCode, 200);
+    assert.equal(response.body.toString(), body.toString());
+    assert.equal(response.headers["content-type"], "application/json; charset=utf-8");
+    assert.equal(response.headers["x-reader-manifest-version"], "fixture-version");
+    for (const header of ["content-encoding", "content-length", "content-md5", "etag"]) {
+      assert.equal(response.headers[header], undefined, `${header} must not describe the upstream compressed bytes`);
+    }
+  } finally {
+    global.fetch = previousFetch;
+    if (previousSecret === undefined) delete process.env.EARNALISM_RELEASE_PROXY_SECRET;
+    else process.env.EARNALISM_RELEASE_PROXY_SECRET = previousSecret;
+  }
+});
+
 test("retired local routes remain branded tombstones if the API rewrite matches them", async () => {
   const response = { statusCode: 200, headers: {}, setHeader(key, value) { this.headers[key] = value; }, end(body) { this.body = body; } };
   await releaseProxy({ url: "/api/[...proxy]?proxy_path=removed-content&path=/shop", method: "GET", headers: {} }, response);

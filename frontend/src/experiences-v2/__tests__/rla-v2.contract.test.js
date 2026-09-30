@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+jest.mock("react-router-dom", () => ({ Link: ({ to, children, ...props }) => <a href={to} {...props}>{children}</a> }), { virtual: true });
 import { readerPageAccess } from "../reader/ReaderExperienceV2";
 import { readerRecoveryPlan } from "../reader/readerRouteState";
 import { clampPlaybackTime } from "../listener/ListenerExperienceV2";
@@ -8,6 +9,28 @@ import { listenerReleasePresentation } from "../shared/ReleaseTruthAdapter";
 import { ABOUT_TRUST_CARDS } from "../about/AboutExperienceV2";
 
 describe("Reader, Listener, and About v2 product truth", () => {
+  test("immersive chrome reuses the canonical navigation and remains usable at every width", () => {
+    const header = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/shared/ExperienceHeader.jsx"), "utf8");
+    const shared = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/shared/experiences-v2.css"), "utf8");
+    const canonical = fs.readFileSync(path.join(process.cwd(), "src/config/publicNavigation.js"), "utf8");
+    expect(header).toContain('import { PUBLIC_NAV_ITEMS } from "../../config/publicNavigation"');
+    expect(header).toContain("PUBLIC_NAV_ITEMS.map");
+    expect(header).toContain('aria-current={item.key === activeNavKey ? "page" : undefined}');
+    expect(header).toContain('aria-label={menuOpen ? "Close menu" : "Open menu"}');
+    expect(header).toContain('aria-label="Primary navigation"');
+    expect(header).toContain("const auth = useAuth();");
+    expect(header).toContain('const accountHref = isAuthed ? "/account" : "/login"');
+    expect(header).toContain('const accountLabel = isAuthed ? "Account" : "Sign In"');
+    expect(header).toContain("to={accountHref}");
+    expect(header).toContain('<EarnalismBrandLockup variant="desktop-header" />');
+    expect(canonical).toContain('{ key: "audiobooks", to: "/library?availability=approved-audiobook", label: "Audiobooks" }');
+    expect(canonical).not.toContain("HOME_OPTION_B_NAV_ITEMS");
+    expect(shared).toContain("min-height: 92px;");
+    expect(shared).toContain("min-height: 84px;");
+    expect(shared).toContain("min-height: 72px;");
+    expect(shared).toContain(".experience-header__menu a:focus-visible");
+  });
+
   test("only canonical pages 1–3 are public and page 4 requires server authorization", () => {
     expect(readerPageAccess({ canonicalPage: 1 })).toMatchObject({ canRequest: true, reason: "public_preview" });
     expect(readerPageAccess({ canonicalPage: 3 })).toMatchObject({ canRequest: true, reason: "public_preview" });
@@ -44,7 +67,7 @@ describe("Reader, Listener, and About v2 product truth", () => {
     const experience = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/ReaderExperienceV2.jsx"), "utf8");
     const stylesheet = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/reader-v2.css"), "utf8");
     expect(experience).toContain('className="reader-v2__mobile-topbar"');
-    expect(stylesheet).toContain(".reader-v2 .experience-header { display: none; }");
+    expect(stylesheet).toContain(".reader-v2 .experience-header { display: flex !important; }");
     expect(stylesheet).toContain(".reader-v2__continuation { position: sticky;");
     expect(stylesheet).toContain(".reader-v2__reader-navigation { display: none; }");
     expect(experience).toContain("PUBLIC_PREVIEW_COPY");
@@ -96,7 +119,7 @@ describe("Reader, Listener, and About v2 product truth", () => {
     const stylesheet = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/listener/listener-v2.css"), "utf8");
     const source = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/listener/ListenerExperienceV2.jsx"), "utf8");
     const route = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/listener/ListenerExperienceV2Route.jsx"), "utf8");
-    expect(stylesheet).toContain(".listener-v2 .experience-header { display:none; }");
+    expect(stylesheet).toContain(".listener-v2 .experience-header { display: flex !important; }");
     expect(stylesheet).toContain(".listener-v2__main { padding: 12px 24px 26px; }");
     expect(source).toContain('className="listener-v2__mobile-top"');
     expect(source).toContain("<BookCoverImage");
