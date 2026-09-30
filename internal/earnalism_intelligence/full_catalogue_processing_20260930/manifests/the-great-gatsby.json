@@ -1,0 +1,227 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "ecc44aaa3e95a0449f97f0ba39f1bd349d69ab4a90da8585296a3ca682460cbd",
+    "chapters/chapter-001.json": "2705a5ed44d84620d719b5a1e2585bbec8114e5a8933b340a5fcf43538d7543c",
+    "chapters/chapter-002.json": "dbf49e3d2422dda121b6faaf76c995f3d40798795fbbec28b10e9d3b050618a0",
+    "chapters/chapter-003.json": "8ca61a4e395f910d0f5c5298b42758e2bb41b359af74573e57d610ab3f3ed81d",
+    "chapters/chapter-004.json": "fc4639fc1a2191f13e945817ed2280440d4caff4411cb546a5a8d9665e6dd318",
+    "chapters/chapter-005.json": "36c5c00da5af92a4975567c56236aa527e0046a873acc99d9b46af069ce67427",
+    "chapters/chapter-006.json": "307f1d24f12522902b0bf7552313daf21b496361a86f2bfc806ce2b9b8dd2f24",
+    "chapters/chapter-007.json": "6590968adea1aed365517dd192414e1a09906589f39369628287f3ee7da35308",
+    "chapters/chapter-008.json": "8e907745215441bde9ea2f24a6c377586fe9b3459cc82d5c13b01d84a83ae86d",
+    "chapters/chapter-009.json": "9641e892fcb1bfefd53e20b4919747b1c6b0b2d4065fdc0877707fcaef077dbf",
+    "checksum_manifest.json": "b6951221b7b48514fbedab84be0376b42906623c44cee018505e9c114f95feb4",
+    "highlight_sync.json": "05e57751ae1960050039ca565b5b395638c93478414a0ad757d744f249737888",
+    "public_book.json": "b6503b1ff504c2b781675a20b32a2811d0005e38fe0d3c4d81e60953671f834a",
+    "reader_manifest.json": "66ace521d8850547175804562bfddf4f097aefe310ef2f0c50aed16bf50d69b6",
+    "reader_repair_evidence.json": "898dc429914c003e998d703fbcaa3d739647420f2f596836da0dc3ed9bc6b499",
+    "source_evidence.json": "334604b641e0693604ad5956de935acd8208bf1b4ee7112bcdbd07aa2569f3f3"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "e18f148e1a4c37a974853160cbcde26b38bb540990f026ea2c3b6598b48fb991",
+      "file_sha256": "2705a5ed44d84620d719b5a1e2585bbec8114e5a8933b340a5fcf43538d7543c",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "c88bbfd8975bfda97c07dae3d8464bcffa0775ee598af3d31cb0813cde4df32f",
+      "file_sha256": "dbf49e3d2422dda121b6faaf76c995f3d40798795fbbec28b10e9d3b050618a0",
+      "id": "chapter-002"
+    },
+    {
+      "content_sha256": "b6830f0fe1e12a07b0afd008fe6096618e4edca6583106610c3db895f8c9d424",
+      "file_sha256": "8ca61a4e395f910d0f5c5298b42758e2bb41b359af74573e57d610ab3f3ed81d",
+      "id": "chapter-003"
+    },
+    {
+      "content_sha256": "f14a9c319d9cd6585be3aff2ee3bc8fb596b415309c0fdb9bd1f1cbe09d8bda3",
+      "file_sha256": "fc4639fc1a2191f13e945817ed2280440d4caff4411cb546a5a8d9665e6dd318",
+      "id": "chapter-004"
+    },
+    {
+      "content_sha256": "7ff88b9272c934215b40f480ec2479be280d4a7f0cf910864f3791f21f42591a",
+      "file_sha256": "36c5c00da5af92a4975567c56236aa527e0046a873acc99d9b46af069ce67427",
+      "id": "chapter-005"
+    },
+    {
+      "content_sha256": "5460677bf721f9da48c9cb1ef22f4077ae5fd937619820de8b6659dfba00ca4c",
+      "file_sha256": "307f1d24f12522902b0bf7552313daf21b496361a86f2bfc806ce2b9b8dd2f24",
+      "id": "chapter-006"
+    },
+    {
+      "content_sha256": "1232638642e738d518e4fe06e365cf3b9fdbc4e263abc4ab39a628878ae5cfb3",
+      "file_sha256": "6590968adea1aed365517dd192414e1a09906589f39369628287f3ee7da35308",
+      "id": "chapter-007"
+    },
+    {
+      "content_sha256": "da9e62381cb1d73f6659f43f4b89209534f995f2748fba1e985ccbb123fc5e87",
+      "file_sha256": "8e907745215441bde9ea2f24a6c377586fe9b3459cc82d5c13b01d84a83ae86d",
+      "id": "chapter-008"
+    },
+    {
+      "content_sha256": "ffc56f967c7b9e2e9b619aaf8ce8b005f446be9b0cf48bfd53d2d1ef39efebe6",
+      "file_sha256": "9641e892fcb1bfefd53e20b4919747b1c6b0b2d4065fdc0877707fcaef077dbf",
+      "id": "chapter-009"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "ecc44aaa3e95a0449f97f0ba39f1bd349d69ab4a90da8585296a3ca682460cbd",
+    "chapters/chapter-001.json": "2705a5ed44d84620d719b5a1e2585bbec8114e5a8933b340a5fcf43538d7543c",
+    "chapters/chapter-002.json": "dbf49e3d2422dda121b6faaf76c995f3d40798795fbbec28b10e9d3b050618a0",
+    "chapters/chapter-003.json": "8ca61a4e395f910d0f5c5298b42758e2bb41b359af74573e57d610ab3f3ed81d",
+    "chapters/chapter-004.json": "fc4639fc1a2191f13e945817ed2280440d4caff4411cb546a5a8d9665e6dd318",
+    "chapters/chapter-005.json": "36c5c00da5af92a4975567c56236aa527e0046a873acc99d9b46af069ce67427",
+    "chapters/chapter-006.json": "307f1d24f12522902b0bf7552313daf21b496361a86f2bfc806ce2b9b8dd2f24",
+    "chapters/chapter-007.json": "6590968adea1aed365517dd192414e1a09906589f39369628287f3ee7da35308",
+    "chapters/chapter-008.json": "8e907745215441bde9ea2f24a6c377586fe9b3459cc82d5c13b01d84a83ae86d",
+    "chapters/chapter-009.json": "9641e892fcb1bfefd53e20b4919747b1c6b0b2d4065fdc0877707fcaef077dbf",
+    "checksum_manifest.json": "b6951221b7b48514fbedab84be0376b42906623c44cee018505e9c114f95feb4",
+    "highlight_sync.json": "05e57751ae1960050039ca565b5b395638c93478414a0ad757d744f249737888",
+    "public_book.json": "b6503b1ff504c2b781675a20b32a2811d0005e38fe0d3c4d81e60953671f834a",
+    "reader_manifest.json": "66ace521d8850547175804562bfddf4f097aefe310ef2f0c50aed16bf50d69b6",
+    "reader_repair_evidence.json": "898dc429914c003e998d703fbcaa3d739647420f2f596836da0dc3ed9bc6b499",
+    "source_evidence.json": "334604b641e0693604ad5956de935acd8208bf1b4ee7112bcdbd07aa2569f3f3"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "ecc44aaa3e95a0449f97f0ba39f1bd349d69ab4a90da8585296a3ca682460cbd",
+      "public_book": "b6503b1ff504c2b781675a20b32a2811d0005e38fe0d3c4d81e60953671f834a",
+      "reader_manifest": "66ace521d8850547175804562bfddf4f097aefe310ef2f0c50aed16bf50d69b6",
+      "source_evidence": "334604b641e0693604ad5956de935acd8208bf1b4ee7112bcdbd07aa2569f3f3"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 9,
+      "chapter_index_sha256": "bde91cdfe1afcc5a06e7ff94dd18e107166aab16926ba3839b2bd0a4d17e4d13",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "2705a5ed44d84620d719b5a1e2585bbec8114e5a8933b340a5fcf43538d7543c",
+          "title": "I",
+          "word_count": 5943
+        },
+        {
+          "id": "chapter-002",
+          "order": 2,
+          "sha256": "dbf49e3d2422dda121b6faaf76c995f3d40798795fbbec28b10e9d3b050618a0",
+          "title": "II",
+          "word_count": 4293
+        },
+        {
+          "id": "chapter-003",
+          "order": 3,
+          "sha256": "8ca61a4e395f910d0f5c5298b42758e2bb41b359af74573e57d610ab3f3ed81d",
+          "title": "III",
+          "word_count": 5769
+        },
+        {
+          "id": "chapter-004",
+          "order": 4,
+          "sha256": "fc4639fc1a2191f13e945817ed2280440d4caff4411cb546a5a8d9665e6dd318",
+          "title": "IV",
+          "word_count": 5477
+        },
+        {
+          "id": "chapter-005",
+          "order": 5,
+          "sha256": "36c5c00da5af92a4975567c56236aa527e0046a873acc99d9b46af069ce67427",
+          "title": "V",
+          "word_count": 4256
+        },
+        {
+          "id": "chapter-006",
+          "order": 6,
+          "sha256": "307f1d24f12522902b0bf7552313daf21b496361a86f2bfc806ce2b9b8dd2f24",
+          "title": "VI",
+          "word_count": 4057
+        },
+        {
+          "id": "chapter-007",
+          "order": 7,
+          "sha256": "6590968adea1aed365517dd192414e1a09906589f39369628287f3ee7da35308",
+          "title": "VII",
+          "word_count": 8811
+        },
+        {
+          "id": "chapter-008",
+          "order": 8,
+          "sha256": "8e907745215441bde9ea2f24a6c377586fe9b3459cc82d5c13b01d84a83ae86d",
+          "title": "VIII",
+          "word_count": 4564
+        },
+        {
+          "id": "chapter-009",
+          "order": 9,
+          "sha256": "9641e892fcb1bfefd53e20b4919747b1c6b0b2d4065fdc0877707fcaef077dbf",
+          "title": "IX",
+          "word_count": 5255
+        }
+      ],
+      "content_hash": "4f6579e08ebba7b91e4a92bf134f29c0a79b7c5575125351a20684c4ff8688ec",
+      "provenance_hash": "bfd4a08c6d91bec76bbdb15e9edc73b1b2e7f6a582a87a5f79b6e4c37e9068ab",
+      "sanitized": true,
+      "source_hash": "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "68d191b454266e21db9e3ff517d3bec6de6716dc661cc2475b26c426abc47cfa",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Reader QA must pass.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779565318/earnalism/covers/front/cover_82440320-0910-4dfe-97de-540153139e00.png",
+      "exposed": false,
+      "qa_status": "READER_REPAIR_PASSED_COVER_BLOCKED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "334604b641e0693604ad5956de935acd8208bf1b4ee7112bcdbd07aa2569f3f3",
+      "publication_region": "in",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-great-gatsby",
+    "title": "The Great Gatsby"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

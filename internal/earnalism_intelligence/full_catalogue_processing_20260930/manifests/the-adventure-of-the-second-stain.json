@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "1d1d42dc49907bdfd0bd795334b2872200b6cb7d1087e447bea531f2b5a70c42",
+    "chapters/chapter-001.json": "a16004f487784e610c693972d03b84a801a36b315c0b7659f222909ddad280fe",
+    "checksum_manifest.json": "2a8f83d5e25b2bbf97d36be7dd00b2fddfac5857dd37cf3286e92c3f1ec706be",
+    "highlight_sync.json": "10ec8f5c577bdb9080027ef4c4abae559fe996c70d450370026663aead17c317",
+    "public_book.json": "2591588e73feb486b0ab14e38859ab067722734803e07c92ee9600376204d836",
+    "reader_manifest.json": "970818cfdaf247e9e4811e4886d75656464b52954e7358282fbc99eba848a9cb",
+    "source_evidence.json": "7b7b11e059d635a5719f884789c55821b9f7be136f283ab847ccbf7ed88b21b1"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "0ee60bab476492b1a0925dbb6d857db42d4cb9c89647f9440ad14819f212bb88",
+      "file_sha256": "a16004f487784e610c693972d03b84a801a36b315c0b7659f222909ddad280fe",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "1d1d42dc49907bdfd0bd795334b2872200b6cb7d1087e447bea531f2b5a70c42",
+    "chapters/chapter-001.json": "a16004f487784e610c693972d03b84a801a36b315c0b7659f222909ddad280fe",
+    "checksum_manifest.json": "2a8f83d5e25b2bbf97d36be7dd00b2fddfac5857dd37cf3286e92c3f1ec706be",
+    "highlight_sync.json": "10ec8f5c577bdb9080027ef4c4abae559fe996c70d450370026663aead17c317",
+    "public_book.json": "2591588e73feb486b0ab14e38859ab067722734803e07c92ee9600376204d836",
+    "reader_manifest.json": "970818cfdaf247e9e4811e4886d75656464b52954e7358282fbc99eba848a9cb",
+    "source_evidence.json": "7b7b11e059d635a5719f884789c55821b9f7be136f283ab847ccbf7ed88b21b1"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "1d1d42dc49907bdfd0bd795334b2872200b6cb7d1087e447bea531f2b5a70c42",
+      "public_book": "2591588e73feb486b0ab14e38859ab067722734803e07c92ee9600376204d836",
+      "reader_manifest": "970818cfdaf247e9e4811e4886d75656464b52954e7358282fbc99eba848a9cb",
+      "source_evidence": "7b7b11e059d635a5719f884789c55821b9f7be136f283ab847ccbf7ed88b21b1"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "5a47ecaaa0b023fcdbaa57c19c9ab5b1f1349a56b99c9497faad19cacde5b7b8",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "a16004f487784e610c693972d03b84a801a36b315c0b7659f222909ddad280fe",
+          "title": "The Adventure of the Second Stain",
+          "word_count": 9738
+        }
+      ],
+      "content_hash": "ce1b8cf942e80535b2575d5c030c28c40062edb2a0071f9a380898ea03409ace",
+      "provenance_hash": "4fb3490b13cc83101581af9778eec4d40f99e87e077709ceb8095dac91c1a299",
+      "sanitized": true,
+      "source_hash": "0318bc5ec52f3dc20404f2834fd87cb5e6156380568729a26dd82cfd73344a09"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "35f2fe1f0a6152237245abca15365d8455d819c7f7c1187e61569f4fa22f3da3",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "7b7b11e059d635a5719f884789c55821b9f7be136f283ab847ccbf7ed88b21b1",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-adventure-of-the-second-stain",
+    "title": "The Adventure of the Second Stain"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

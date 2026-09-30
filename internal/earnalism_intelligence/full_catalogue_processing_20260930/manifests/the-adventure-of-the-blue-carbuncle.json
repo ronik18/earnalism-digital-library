@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "2cb6989d8f241d945e069a6a22d9d75ad2534ab80a9e7fdcb67bfa3565e74bc7",
+    "chapters/chapter-001.json": "211044d68c58cad4de2e4071a6be9e856615880675a360bb356c4062a150e4ea",
+    "checksum_manifest.json": "e7e3ac1905569c8d737f3dea4bce2b4f03370bb6908b7ae55063aaca735499ba",
+    "highlight_sync.json": "2f2a51cc680a705ef2a968013cf2041ff1a1a60c8cac12bd163de21dcf8693bd",
+    "public_book.json": "dc2a5a960704e36f0c1f0b8e0367464be529835687d1c7f6c75b7e584113aa9d",
+    "reader_manifest.json": "f32bd6eddf5ce3b187a963e77b5dac9c136270380db888fa71c1373d4e52b96d",
+    "source_evidence.json": "d5dbdfe03859811c57bf50a13b217574e3943049309fc2c51f5e4e4b41420cee"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "22f789b09fdde1521b0f78827fc5549ca91a4091747856ce209c31ac2431aad9",
+      "file_sha256": "211044d68c58cad4de2e4071a6be9e856615880675a360bb356c4062a150e4ea",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "2cb6989d8f241d945e069a6a22d9d75ad2534ab80a9e7fdcb67bfa3565e74bc7",
+    "chapters/chapter-001.json": "211044d68c58cad4de2e4071a6be9e856615880675a360bb356c4062a150e4ea",
+    "checksum_manifest.json": "e7e3ac1905569c8d737f3dea4bce2b4f03370bb6908b7ae55063aaca735499ba",
+    "highlight_sync.json": "2f2a51cc680a705ef2a968013cf2041ff1a1a60c8cac12bd163de21dcf8693bd",
+    "public_book.json": "dc2a5a960704e36f0c1f0b8e0367464be529835687d1c7f6c75b7e584113aa9d",
+    "reader_manifest.json": "f32bd6eddf5ce3b187a963e77b5dac9c136270380db888fa71c1373d4e52b96d",
+    "source_evidence.json": "d5dbdfe03859811c57bf50a13b217574e3943049309fc2c51f5e4e4b41420cee"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "2cb6989d8f241d945e069a6a22d9d75ad2534ab80a9e7fdcb67bfa3565e74bc7",
+      "public_book": "dc2a5a960704e36f0c1f0b8e0367464be529835687d1c7f6c75b7e584113aa9d",
+      "reader_manifest": "f32bd6eddf5ce3b187a963e77b5dac9c136270380db888fa71c1373d4e52b96d",
+      "source_evidence": "d5dbdfe03859811c57bf50a13b217574e3943049309fc2c51f5e4e4b41420cee"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "d89ffb4428a0d3b2f75c211a27830a63aad23f530c6e642ae522c5b4e0cc8886",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "211044d68c58cad4de2e4071a6be9e856615880675a360bb356c4062a150e4ea",
+          "title": "The Adventure of the Blue Carbuncle",
+          "word_count": 7894
+        }
+      ],
+      "content_hash": "2b480523e8ff22604f51984f6fbd495a5ab02b7213247985a4ca18de1a2c22fe",
+      "provenance_hash": "0ee937916f54c6bc72d06dddc2cd8f2af82a7a1671389d63349552ccbc82972e",
+      "sanitized": true,
+      "source_hash": "8a37410ac7374823466af3ed1332e7b85235aca89e4c39cc12bd9834696cbddc"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "b4e115c2f292d13c3c67734b0f2da63520143d20e94e675a7dcab18288be76b6",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "d5dbdfe03859811c57bf50a13b217574e3943049309fc2c51f5e4e4b41420cee",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-adventure-of-the-blue-carbuncle",
+    "title": "The Adventure of the Blue Carbuncle"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

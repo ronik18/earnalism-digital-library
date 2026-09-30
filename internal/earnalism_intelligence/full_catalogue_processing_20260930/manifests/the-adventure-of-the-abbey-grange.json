@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "fde45d9254bdcf1b5630641721e689424c3286b71bea8fef441ad10ad0204f5d",
+    "chapters/chapter-001.json": "2360511a0640687e6d235126a785d302f4aad53d5d951c9527986bf49ddebcc8",
+    "checksum_manifest.json": "ccc79b89fbca2e5d985d9e13030d6eea83a6c33a930b926d3327a127ac7040bf",
+    "highlight_sync.json": "282c429ec8841cae7bba9e2cb0aaea8f935e27fc837a8e595e857e7f59dc07f9",
+    "public_book.json": "afafaaafc62201ce4f8ac961a357ef993757b903212698f6829a939dd9f81cd1",
+    "reader_manifest.json": "bc9ea797dc69442e009bddccf9476ed6c12d27a968768bda6bd04878745459c3",
+    "source_evidence.json": "af2b0f0ee5ea5f3cdfbc6cab0ece6a05f58c7a199c8d6b1057433098f1557e70"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "3ab754df655e74c016007890d7d3f30c776a6618864501d3e066d9c6f10ff7ce",
+      "file_sha256": "2360511a0640687e6d235126a785d302f4aad53d5d951c9527986bf49ddebcc8",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "fde45d9254bdcf1b5630641721e689424c3286b71bea8fef441ad10ad0204f5d",
+    "chapters/chapter-001.json": "2360511a0640687e6d235126a785d302f4aad53d5d951c9527986bf49ddebcc8",
+    "checksum_manifest.json": "ccc79b89fbca2e5d985d9e13030d6eea83a6c33a930b926d3327a127ac7040bf",
+    "highlight_sync.json": "282c429ec8841cae7bba9e2cb0aaea8f935e27fc837a8e595e857e7f59dc07f9",
+    "public_book.json": "afafaaafc62201ce4f8ac961a357ef993757b903212698f6829a939dd9f81cd1",
+    "reader_manifest.json": "bc9ea797dc69442e009bddccf9476ed6c12d27a968768bda6bd04878745459c3",
+    "source_evidence.json": "af2b0f0ee5ea5f3cdfbc6cab0ece6a05f58c7a199c8d6b1057433098f1557e70"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "fde45d9254bdcf1b5630641721e689424c3286b71bea8fef441ad10ad0204f5d",
+      "public_book": "afafaaafc62201ce4f8ac961a357ef993757b903212698f6829a939dd9f81cd1",
+      "reader_manifest": "bc9ea797dc69442e009bddccf9476ed6c12d27a968768bda6bd04878745459c3",
+      "source_evidence": "af2b0f0ee5ea5f3cdfbc6cab0ece6a05f58c7a199c8d6b1057433098f1557e70"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "45ad0ae67c3ffa574645cb5d9d12b05d55928eec8ac0218e063a9e2cb9d99783",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "2360511a0640687e6d235126a785d302f4aad53d5d951c9527986bf49ddebcc8",
+          "title": "The Adventure of the Abbey Grange",
+          "word_count": 9233
+        }
+      ],
+      "content_hash": "3ddcb0f37f27c617939219e75e1876087ae9475f1bee8bfdc5f5d21f1240dc4c",
+      "provenance_hash": "708b91110d03fd1bf84fbf1305226b85104f15f4d7895a583c26443d95d45219",
+      "sanitized": true,
+      "source_hash": "a42a5efecaf8ca98b72329b6c31d8a0bda6334be40692e3d1127ea8fe60d97e6"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "c0e3e73702f42a487fe3471abe03d152eef8611d79b218681c2289d2e17114ac",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "af2b0f0ee5ea5f3cdfbc6cab0ece6a05f58c7a199c8d6b1057433098f1557e70",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-adventure-of-the-abbey-grange",
+    "title": "The Adventure of the Abbey Grange"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

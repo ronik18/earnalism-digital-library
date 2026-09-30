@@ -1,0 +1,119 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "4aefc2b1f6aee51bedeec44f516ae29053246d603c3b4b4e4745a10ff93cf78f",
+    "chapters/chapter-001.json": "75f1f2c70a06dd3bcec4c8a83e35ded92bd8241553afaa9e44a66311c9b74ba3",
+    "checksum_manifest.json": "a5e446df2e3e9b6e4037d7c7c7c352db876d293fa6d2aa58186feaad2251fa4e",
+    "highlight_sync.json": "33d278c671036acfa0fcd4929bcc3efaf5ff561425b9838cbee8c468694ac779",
+    "public_book.json": "a7a4e51df475d9e0180a1077e682032bdcb9156215fabba273b1c25db7d59f26",
+    "reader_manifest.json": "e01cf73cb8d925515ab87a435db8c42e963ff4a99f775495431ca97c8abaf8f2",
+    "source_evidence.json": "70febe971a9362d1ac71bccf62c615f75cc47950e1b8d8434e8d61443cafc268"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "0d4ac559c2276da934c3946fb2a9da8c3dd7a60018261ecb1ef85c9f2273b215",
+      "file_sha256": "75f1f2c70a06dd3bcec4c8a83e35ded92bd8241553afaa9e44a66311c9b74ba3",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "4aefc2b1f6aee51bedeec44f516ae29053246d603c3b4b4e4745a10ff93cf78f",
+    "approval_evidence.json": "4aefc2b1f6aee51bedeec44f516ae29053246d603c3b4b4e4745a10ff93cf78f",
+    "chapters/chapter-001.json": "75f1f2c70a06dd3bcec4c8a83e35ded92bd8241553afaa9e44a66311c9b74ba3",
+    "checksum_manifest.json": "a5e446df2e3e9b6e4037d7c7c7c352db876d293fa6d2aa58186feaad2251fa4e",
+    "highlight_sync.json": "33d278c671036acfa0fcd4929bcc3efaf5ff561425b9838cbee8c468694ac779",
+    "public_book.json": "a7a4e51df475d9e0180a1077e682032bdcb9156215fabba273b1c25db7d59f26",
+    "reader_manifest.json": "e01cf73cb8d925515ab87a435db8c42e963ff4a99f775495431ca97c8abaf8f2",
+    "source_evidence.json": "70febe971a9362d1ac71bccf62c615f75cc47950e1b8d8434e8d61443cafc268"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "4aefc2b1f6aee51bedeec44f516ae29053246d603c3b4b4e4745a10ff93cf78f",
+      "public_book": "a7a4e51df475d9e0180a1077e682032bdcb9156215fabba273b1c25db7d59f26",
+      "reader_manifest": "e01cf73cb8d925515ab87a435db8c42e963ff4a99f775495431ca97c8abaf8f2",
+      "source_evidence": "70febe971a9362d1ac71bccf62c615f75cc47950e1b8d8434e8d61443cafc268"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "9efaa2685e03a52938894e0210c8ae37269c6948974c67fb54a0f9a8d004058a",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "75f1f2c70a06dd3bcec4c8a83e35ded92bd8241553afaa9e44a66311c9b74ba3",
+          "title": "গুপ্তধন",
+          "word_count": 4616
+        }
+      ],
+      "content_hash": "393ff4b22559500271456bd1769d04603d7eb3b393aed1b4d3679194024e2da5",
+      "provenance_hash": "c8455038e7d5a9659b68dca9b2b5f55078de2c581d69b944d813e74d5939e473",
+      "sanitized": true,
+      "source_hash": "473952a838282182f8610338ed5bbdc57a659794eb159896e99061a0963b12a7"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "b72384992a6b89eac42e452698f13900619b86649aec170fc3a4d2fe47540c33",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "70febe971a9362d1ac71bccf62c615f75cc47950e1b8d8434e8d61443cafc268",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-0fbdaa730e",
+    "title": "গুপ্তধন"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

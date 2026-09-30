@@ -1,0 +1,116 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "7d02c5428a1b63f6639424b87271ebffb00675e24df2ea36c124afa2f46c494a",
+    "chapters/chapter-001.json": "1479bad3f14cc9c48bf4c415d49f848933ba65436fe2b5b1efda0156be8d1260",
+    "checksum_manifest.json": "acf5dbbc942cbffdf4645e06113989dc4a89179ff1791420a954332b2bfcc5c0",
+    "public_book.json": "31ca9d07e3fa8e594daf8e1ce1af839226fb526a3bb07a51bc5962d8bc899c92",
+    "reader_manifest.json": "2ccf2bae7a65d944946f1cf4ca5a5f8b4011408638d67cc95e7f8bf6eca3ab54",
+    "source_evidence.json": "16f999e4b2708921fcc5f912f9d2c9b350ab66490d1e67d8ac546b851a79fc61"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+      "file_sha256": "1479bad3f14cc9c48bf4c415d49f848933ba65436fe2b5b1efda0156be8d1260",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "7d02c5428a1b63f6639424b87271ebffb00675e24df2ea36c124afa2f46c494a",
+    "chapters/chapter-001.json": "1479bad3f14cc9c48bf4c415d49f848933ba65436fe2b5b1efda0156be8d1260",
+    "checksum_manifest.json": "acf5dbbc942cbffdf4645e06113989dc4a89179ff1791420a954332b2bfcc5c0",
+    "highlight_sync.json": "0b302f6d91f901adad699ed496663b1ebbb8d17917cd4bbdc340f75eb94ca728",
+    "public_book.json": "31ca9d07e3fa8e594daf8e1ce1af839226fb526a3bb07a51bc5962d8bc899c92",
+    "reader_manifest.json": "2ccf2bae7a65d944946f1cf4ca5a5f8b4011408638d67cc95e7f8bf6eca3ab54",
+    "source_evidence.json": "16f999e4b2708921fcc5f912f9d2c9b350ab66490d1e67d8ac546b851a79fc61"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "7d02c5428a1b63f6639424b87271ebffb00675e24df2ea36c124afa2f46c494a",
+      "public_book": "31ca9d07e3fa8e594daf8e1ce1af839226fb526a3bb07a51bc5962d8bc899c92",
+      "reader_manifest": "2ccf2bae7a65d944946f1cf4ca5a5f8b4011408638d67cc95e7f8bf6eca3ab54",
+      "source_evidence": "16f999e4b2708921fcc5f912f9d2c9b350ab66490d1e67d8ac546b851a79fc61"
+    },
+    "audio_release": {
+      "audio_sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "a2a03e9aa7fd65342bae8c8ccc54e75cac6bb3743b480c75c31c48d034c493f9",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "1479bad3f14cc9c48bf4c415d49f848933ba65436fe2b5b1efda0156be8d1260",
+          "title": "Sredni Vashtar",
+          "word_count": 1787
+        }
+      ],
+      "content_hash": "adaad32e67a022024f647efcfd8b02639eab6716a526e6045e85d8d648fc529c",
+      "provenance_hash": "87eec37fc864c1d5b323d47468e1ed2547510c408ff97b400185fd13834a6c51",
+      "sanitized": true,
+      "source_hash": "089628df1446736886ddae93252fc070854ec17606ade714a70ba77b55e6ea02"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "f0ac3d69a7f997f47fee5dbf86d40cddcb992c3498cbe7d5c31fb757072d3f83",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "16f999e4b2708921fcc5f912f9d2c9b350ab66490d1e67d8ac546b851a79fc61",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "sredni-vashtar",
+    "title": "Sredni Vashtar"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

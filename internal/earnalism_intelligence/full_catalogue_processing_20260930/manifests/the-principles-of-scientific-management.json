@@ -1,0 +1,158 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "5faf355eb5d9705f51dcafc0c63167cbc73970b8e2337494b1ca86f05d7bf93b",
+    "chapters/chapter-001.json": "e15380c04b8aed1e4d3f1a87ad6248685b68f232c9d226920ec6768490c40d86",
+    "chapters/chapter-002.json": "151ad507568985b29c9c9bdbbc9e1aaf3afb626c187d5206987399a13adb96be",
+    "chapters/chapter-003.json": "35c043c70b7fc9b7ae1370c1dc0e2cf9cae364ded24704f453356130a300fed6",
+    "checksum_manifest.json": "7310f5910e1bbf90467e61c55ee18b01963ecada322cecf7b195359ee60fa27b",
+    "highlight_sync.json": "a41defc9882bca4759e902093932f56cbf628eb9f0e3e5860b9295d26a9c6ae0",
+    "public_book.json": "39f1485b436355df74497210af12fd1daeea0963b5c5530d39fbf53af8e95987",
+    "reader_manifest.json": "d16358118d8980331158b8826669c3fd49c2acd3f901ea3e198594455b4947bf",
+    "source_evidence.json": "5b9146646a76488fce2ee4b93bed396ca2619393add1d1965522061cf1f9949a"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "d32f0bdd8af72e44a868496b9b366d89d354ea1a6fbf3338e2945fd2844a3a4b",
+      "file_sha256": "e15380c04b8aed1e4d3f1a87ad6248685b68f232c9d226920ec6768490c40d86",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "d3bce9820aacf3f0c3a82d2a40931e82095f705f26d4312cb0836141496f63ae",
+      "file_sha256": "151ad507568985b29c9c9bdbbc9e1aaf3afb626c187d5206987399a13adb96be",
+      "id": "chapter-002"
+    },
+    {
+      "content_sha256": "d3dc6737ae6dc38a609951e5642ccb70160e08b0ebe71beb82569b3ce62b5a0b",
+      "file_sha256": "35c043c70b7fc9b7ae1370c1dc0e2cf9cae364ded24704f453356130a300fed6",
+      "id": "chapter-003"
+    },
+    {
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "file_sha256": "",
+      "id": "chapter-004"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "5faf355eb5d9705f51dcafc0c63167cbc73970b8e2337494b1ca86f05d7bf93b",
+    "chapters/chapter-001.json": "e15380c04b8aed1e4d3f1a87ad6248685b68f232c9d226920ec6768490c40d86",
+    "chapters/chapter-002.json": "151ad507568985b29c9c9bdbbc9e1aaf3afb626c187d5206987399a13adb96be",
+    "chapters/chapter-003.json": "35c043c70b7fc9b7ae1370c1dc0e2cf9cae364ded24704f453356130a300fed6",
+    "checksum_manifest.json": "7310f5910e1bbf90467e61c55ee18b01963ecada322cecf7b195359ee60fa27b",
+    "highlight_sync.json": "a41defc9882bca4759e902093932f56cbf628eb9f0e3e5860b9295d26a9c6ae0",
+    "public_book.json": "39f1485b436355df74497210af12fd1daeea0963b5c5530d39fbf53af8e95987",
+    "reader_manifest.json": "d16358118d8980331158b8826669c3fd49c2acd3f901ea3e198594455b4947bf",
+    "source_evidence.json": "5b9146646a76488fce2ee4b93bed396ca2619393add1d1965522061cf1f9949a"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "5faf355eb5d9705f51dcafc0c63167cbc73970b8e2337494b1ca86f05d7bf93b",
+      "public_book": "39f1485b436355df74497210af12fd1daeea0963b5c5530d39fbf53af8e95987",
+      "reader_manifest": "d16358118d8980331158b8826669c3fd49c2acd3f901ea3e198594455b4947bf",
+      "source_evidence": "5b9146646a76488fce2ee4b93bed396ca2619393add1d1965522061cf1f9949a"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 4,
+      "chapter_index_sha256": "95641575e6b703086601541b564b752ffe3bb092dc654cb19377036840fc8e09",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "e15380c04b8aed1e4d3f1a87ad6248685b68f232c9d226920ec6768490c40d86",
+          "title": "INTRODUCTION",
+          "word_count": 795
+        },
+        {
+          "id": "chapter-002",
+          "order": 2,
+          "sha256": "151ad507568985b29c9c9bdbbc9e1aaf3afb626c187d5206987399a13adb96be",
+          "title": "CHAPTER I. FUNDAMENTALS OF SCIENTIFIC MANAGEMENT",
+          "word_count": 5370
+        },
+        {
+          "id": "chapter-003",
+          "order": 3,
+          "sha256": "35c043c70b7fc9b7ae1370c1dc0e2cf9cae364ded24704f453356130a300fed6",
+          "title": "CHAPTER II. THE PRINCIPLES OF SCIENTIFIC MANAGEMENT",
+          "word_count": 109
+        },
+        {
+          "id": "chapter-004",
+          "order": 4,
+          "sha256": "",
+          "title": "THE FINEST TYPE OF ORDINARY MANAGEMENT",
+          "word_count": 30300
+        }
+      ],
+      "content_hash": "a68caf0990ca361ef8755e3f79cde0be2c9bb621ee6488bec85dbe66a880e474",
+      "provenance_hash": "34bc32b93b612a6b064be5d98af9a2a066f33196290068561ab450979cf79050",
+      "sanitized": true,
+      "source_hash": "cdc35806ba1cf7fbecfd0e9a62d7f7bac1f36a796ed2ff1883ee150d88e46865"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "9953794bd10a8b8e19a5ec6329f17ec919249d4c9d59f453be6c0e0141ac6c0f",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "CHAPTER_ID_MISMATCH:chapter-004",
+        "Chapter chapter-004 has no reader content.",
+        "EMPTY_CHAPTER:chapter-004",
+        "RETAINED_CHECKSUM_MISMATCH:chapters/chapter-004.json",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950275/earnalism/covers/front/cover_279d4a41-b545-4371-80c9-4dc4e816f934.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "5b9146646a76488fce2ee4b93bed396ca2619393add1d1965522061cf1f9949a",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-principles-of-scientific-management",
+    "title": "The Principles of Scientific Management"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

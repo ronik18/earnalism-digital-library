@@ -3620,5 +3620,28 @@
       "changed": false,
       "reason": "Audio-enabled package left untouched; historical title history describes prior public-live state."
     }
+  },
+  "reader_design_review_20260930": {
+    "existing_pr": 473,
+    "reference": "owner-supplied Reader/Listener mock",
+    "owner_design_approval": "CONDITIONAL_ON_FRESH_VISUAL_MATCH",
+    "local_validation": "71 focused tests; 767 static SEO assertions passed",
+    "title_rights_approval_changed": false,
+    "audio_approval_changed": false,
+    "next_action": "inspect fresh exact-head captures before applying conditional design approval"
+  },
+  "full_catalogue_processing_20260930": {
+    "title_count": 231,
+    "prepared_package_count": 162,
+    "chapter_count": 1012,
+    "reader_only_live_approved": 7,
+    "external_action_required": 224,
+    "missing_source_package": 69,
+    "new_uploads": 0,
+    "new_publications": 0,
+    "audio_activations": 0,
+    "state_path": "internal/earnalism_intelligence/full_catalogue_processing_20260930/catalogue_state.json",
+    "source_packages_changed": false,
+    "next_action": "Run bounded catalogue-processing worker and independent reviewer at the checked-out candidate SHA; require exact-head Reader visual evidence before applying conditional design approval."
   }
 }

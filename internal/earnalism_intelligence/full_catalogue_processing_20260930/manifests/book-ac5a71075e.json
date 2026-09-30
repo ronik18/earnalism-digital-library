@@ -1,0 +1,119 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "e56435185db7a7702d39e19e1e9979521e93fa021bd8027b3525628a77051c92",
+    "chapters/chapter-001.json": "7ef8366a1361806b91ac6ee7819f5368ecf3b0d2bfd14ad660dedbd00f6ddee8",
+    "checksum_manifest.json": "0236dc8401164ac5fd9c2d1254a6b250b55ca97b9c67b184cb03a86bd1657219",
+    "highlight_sync.json": "e3f1f1245af81cd67b8b2a15b680d62837d294435dcb68400e0e38242f7ce426",
+    "public_book.json": "cd294fd005dd14706ee78c28c646a7ba4dfd665b78e399ee99139acb541c2aa7",
+    "reader_manifest.json": "faa238cf2907b0c55047743e41a35fa8a07ee236acbf0272ed62ad7637d5f331",
+    "source_evidence.json": "1f20b5970cac941c9b92158fe1f29d3cce4d73c07a63f8313cd17438414f059a"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "b03136231d5436607a7b3c3ff298b1037d5061724e1042cf8fab24eb3bf94460",
+      "file_sha256": "7ef8366a1361806b91ac6ee7819f5368ecf3b0d2bfd14ad660dedbd00f6ddee8",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "e56435185db7a7702d39e19e1e9979521e93fa021bd8027b3525628a77051c92",
+    "approval_evidence.json": "e56435185db7a7702d39e19e1e9979521e93fa021bd8027b3525628a77051c92",
+    "chapters/chapter-001.json": "7ef8366a1361806b91ac6ee7819f5368ecf3b0d2bfd14ad660dedbd00f6ddee8",
+    "checksum_manifest.json": "0236dc8401164ac5fd9c2d1254a6b250b55ca97b9c67b184cb03a86bd1657219",
+    "highlight_sync.json": "e3f1f1245af81cd67b8b2a15b680d62837d294435dcb68400e0e38242f7ce426",
+    "public_book.json": "cd294fd005dd14706ee78c28c646a7ba4dfd665b78e399ee99139acb541c2aa7",
+    "reader_manifest.json": "faa238cf2907b0c55047743e41a35fa8a07ee236acbf0272ed62ad7637d5f331",
+    "source_evidence.json": "1f20b5970cac941c9b92158fe1f29d3cce4d73c07a63f8313cd17438414f059a"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "e56435185db7a7702d39e19e1e9979521e93fa021bd8027b3525628a77051c92",
+      "public_book": "cd294fd005dd14706ee78c28c646a7ba4dfd665b78e399ee99139acb541c2aa7",
+      "reader_manifest": "faa238cf2907b0c55047743e41a35fa8a07ee236acbf0272ed62ad7637d5f331",
+      "source_evidence": "1f20b5970cac941c9b92158fe1f29d3cce4d73c07a63f8313cd17438414f059a"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "ff17955316d6189aaa9385ff6d9bba53829f7324ecfd47aa44396e6dc8819357",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "7ef8366a1361806b91ac6ee7819f5368ecf3b0d2bfd14ad660dedbd00f6ddee8",
+          "title": "পোস্টমাস্টার",
+          "word_count": 1697
+        }
+      ],
+      "content_hash": "d9e2dab4904d87a1d516f1c668364f12d17087f781a572d8ee01c0e23cccc830",
+      "provenance_hash": "3ef4323bf1f198b0e48ad9c6913c497b02ab567b889fcdb0ae439ab003d4a5a3",
+      "sanitized": true,
+      "source_hash": "b03136231d5436607a7b3c3ff298b1037d5061724e1042cf8fab24eb3bf94460"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "56d74d9ba890571a24733471f793ba5f2ecd80e4286c239607d13d6c07bcb625",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "1f20b5970cac941c9b92158fe1f29d3cce4d73c07a63f8313cd17438414f059a",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-ac5a71075e",
+    "title": "পোস্টমাস্টার"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

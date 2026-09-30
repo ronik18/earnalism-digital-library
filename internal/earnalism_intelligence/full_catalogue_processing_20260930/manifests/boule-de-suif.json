@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "6c8c5b1cc405099f58f97282411f728b5a6a97deb2fa5d8cf1812e4ee5d3bd64",
+    "chapters/chapter-001.json": "6178078176770d176dc9796758222e78ff877b95a50ad1543848d13bf3914258",
+    "checksum_manifest.json": "333aedf8ace70e63d9d562ef1db2eb1409fceb11bb928b1252d252c1d684c42d",
+    "highlight_sync.json": "6734794508685a3e5a81cf385f0641fd91652a912abf27065e9d26f589777c95",
+    "public_book.json": "671991b89c5f19c642b96e2b4ee40f794f6c09da5fa50593560747b24fbc98d4",
+    "reader_manifest.json": "2e2823f176e58697f497a1238dcb721c1d829515c7e9668f45a2f83f9f022750",
+    "source_evidence.json": "9bcfcb34546ccd9da8731b41127ecd40a176f61cad710dfe5abca7789897efd9"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "cb001dd5a0ddd4e2fae9483736ff69e4145ae05d25b2d50d42217300b45edd85",
+      "file_sha256": "6178078176770d176dc9796758222e78ff877b95a50ad1543848d13bf3914258",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "6c8c5b1cc405099f58f97282411f728b5a6a97deb2fa5d8cf1812e4ee5d3bd64",
+    "chapters/chapter-001.json": "6178078176770d176dc9796758222e78ff877b95a50ad1543848d13bf3914258",
+    "checksum_manifest.json": "333aedf8ace70e63d9d562ef1db2eb1409fceb11bb928b1252d252c1d684c42d",
+    "highlight_sync.json": "6734794508685a3e5a81cf385f0641fd91652a912abf27065e9d26f589777c95",
+    "public_book.json": "671991b89c5f19c642b96e2b4ee40f794f6c09da5fa50593560747b24fbc98d4",
+    "reader_manifest.json": "2e2823f176e58697f497a1238dcb721c1d829515c7e9668f45a2f83f9f022750",
+    "source_evidence.json": "9bcfcb34546ccd9da8731b41127ecd40a176f61cad710dfe5abca7789897efd9"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "6c8c5b1cc405099f58f97282411f728b5a6a97deb2fa5d8cf1812e4ee5d3bd64",
+      "public_book": "671991b89c5f19c642b96e2b4ee40f794f6c09da5fa50593560747b24fbc98d4",
+      "reader_manifest": "2e2823f176e58697f497a1238dcb721c1d829515c7e9668f45a2f83f9f022750",
+      "source_evidence": "9bcfcb34546ccd9da8731b41127ecd40a176f61cad710dfe5abca7789897efd9"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "1b020bfd41e4ec06d4ba7ff82aab77a0465579d3e026a8ccf10f9c43c3f462a1",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "6178078176770d176dc9796758222e78ff877b95a50ad1543848d13bf3914258",
+          "title": "Boule de Suif",
+          "word_count": 14440
+        }
+      ],
+      "content_hash": "54085892457bf65ed5f9394fb722eee54f71123d9622b0b40f1ec45ad76707d5",
+      "provenance_hash": "74feca75082c4263690808b2747e72216034cb633ff078c20196bccc3523a1fb",
+      "sanitized": true,
+      "source_hash": "17c514dce10d194bfbb13b4d9196eafd3a3ae310b38180de42d3a5693bddd0a7"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "0cf13a6db4b0b494804ffdfeea5436500fbe80b1d5f565ea75f2fae79577f0ae",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "9bcfcb34546ccd9da8731b41127ecd40a176f61cad710dfe5abca7789897efd9",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "boule-de-suif",
+    "title": "Boule de Suif"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

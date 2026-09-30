@@ -1,0 +1,2781 @@
+{
+  "books": [
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/a-ghost-story",
+      "skip_reasons": [
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
+      ],
+      "slug": "a-ghost-story",
+      "title": "A Ghost Story"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/a-horseman-in-the-sky",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+      ],
+      "slug": "a-horseman-in-the-sky",
+      "title": "A Horseman in the Sky"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/a-jury-of-her-peers",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "a-jury-of-her-peers",
+      "title": "A Jury of Her Peers"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/a-mystery-of-heroism",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+      ],
+      "slug": "a-mystery-of-heroism",
+      "title": "A Mystery of Heroism"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/a-retrieved-reformation",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "a-retrieved-reformation",
+      "title": "A Retrieved Reformation"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/a-scandal-in-bohemia",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+      ],
+      "slug": "a-scandal-in-bohemia",
+      "title": "A Scandal in Bohemia"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/a-wagner-matinee",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "a-wagner-matinee",
+      "title": "A Wagner Matinee"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/a-white-heron",
+      "skip_reasons": [
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
+      ],
+      "slug": "a-white-heron",
+      "title": "A White Heron"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/acres-of-diamonds",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "acres-of-diamonds",
+      "title": "Acres of Diamonds"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/agentic-ai-with-python",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+      ],
+      "slug": "agentic-ai-with-python",
+      "title": "Agentic AI With Python"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/alices-adventures-in-wonderland",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "alices-adventures-in-wonderland",
+      "title": "Alice's Adventures in Wonderland"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/an-occurrence-at-owl-creek-bridge",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Reader QA must pass."
+      ],
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "title": "An Occurrence at Owl Creek Bridge"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/berenice",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "berenice",
+      "title": "Berenice"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/bharat-at-the-crossroads",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: copyright_owner is required for first-party original work.",
+        "Rights: owner_attestation is required for first-party original work.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "bharat-at-the-crossroads",
+      "title": "Bharat at the Crossroads"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-007",
+      "title": "নষ্টনীড়"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-010",
+      "title": "মাল্যদান"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-014",
+      "title": "দর্পচূর্ণ"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-023",
+      "title": "ঠাকুরদা"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/bn-027",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "bn-027",
+      "title": "অপরিচিতা"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-029",
+      "title": "দুরাশা"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/bn-031",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "bn-031",
+      "title": "মহেশ"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-032",
+      "title": "বিলাসী"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-033",
+      "title": "অভাগীর স্বর্গ"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-034",
+      "title": "লালু"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/bn-035",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "bn-035",
+      "title": "বড়দিদি"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/bn-036",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "bn-036",
+      "title": "মেজদিদি"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-037",
+      "title": "ছেলেধরা"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-038",
+      "title": "হরিলক্ষ্মী"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-039",
+      "title": "একাদশী বৈরাগী"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-040",
+      "title": "দর্পণ"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/bn-041",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "bn-041",
+      "title": "আঁধারে আলো"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-042",
+      "title": "বিন্দুর ছেলে"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-043",
+      "title": "রামের সুমতি"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-044",
+      "title": "পথ নির্দেশ"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-046",
+      "title": "স্বামী"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-047",
+      "title": "সতী"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-048",
+      "title": "মমতাদি"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-049",
+      "title": "পরিণীতা"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-050",
+      "title": "আলো ও ছায়া"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-051",
+      "title": "অনুপমার প্রেম"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-052",
+      "title": "শুভদা"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-053",
+      "title": "বৈকুণ্ঠের উইল"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-054",
+      "title": "বিপ্রদাস"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-055",
+      "title": "অরক্ষণীয়া"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-058",
+      "title": "দেবী চৌধুরাণী"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/bn-059",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "slug": "bn-059",
+      "title": "কমলাকান্তের দপ্তর"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/bn-060",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "slug": "bn-060",
+      "title": "ইন্দিরা"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-061",
+      "title": "যোগিনী"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-063",
+      "title": "নলিনী"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-064",
+      "title": "কৃষ্ণকান্তের উইল"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-065",
+      "title": "বিষবৃক্ষ"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/bn-066",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "slug": "bn-066",
+      "title": "আনন্দমঠ"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-069",
+      "title": "চন্দ্রশেখর"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-070",
+      "title": "কপালকুণ্ডলা"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-071",
+      "title": "তোতা কাহিনী"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-072",
+      "title": "রাজা ও রানী"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-075",
+      "title": "মাস্টারমশাই"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-076",
+      "title": "ভিখারিণী"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-078",
+      "title": "মেঘ"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-079",
+      "title": "ফেলু বাবুর দোকান"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-080",
+      "title": "ইচ্ছাপূরণ"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-081",
+      "title": "পুত্রযজ্ঞ"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-082",
+      "title": "ঘরে ফেরার দিন"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-085",
+      "title": "পোষ্টঅফিস"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-086",
+      "title": "পথের পাঁচালী (অংশ)"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-087",
+      "title": "পুঁইমাচা"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-088",
+      "title": "মেঘমল্লার"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-089",
+      "title": "তালনবমী"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-090",
+      "title": "অনুবর্তন"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-091",
+      "title": "কিন্নরদল"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-092",
+      "title": "বনের খাতা"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-093",
+      "title": "আহ্বান"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-094",
+      "title": "চাঁদের পাহাড় (অংশ)"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-095",
+      "title": "নিশিপদ্ম"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-096",
+      "title": "যাত্রাবদল"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-097",
+      "title": "মরণের ডঙ্কা বাজে"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-098",
+      "title": "অশনি সংকেত (অংশ)"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-099",
+      "title": "ইছামতী (অংশ)"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "bn-100",
+      "title": "স্মৃতির রেখা"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-0986aeb7e3",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-0986aeb7e3",
+      "title": "হৈমন্তী"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-0deb35c750",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-0deb35c750",
+      "title": "খাতা"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-0fbdaa730e",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-0fbdaa730e",
+      "title": "গুপ্তধন"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-1090573dff",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-1090573dff",
+      "title": "ছুটি"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-2b9853ec52",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "RETAINED_CHECKSUM_MISMATCH:approval_evidence.json",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-2b9853ec52",
+      "title": "দুই বিঘা জমি"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-2ddbed8293",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-2ddbed8293",
+      "title": "ব্যবধান"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-2e468c4990",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-2e468c4990",
+      "title": "কাবুলিওয়ালা"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-4968248842",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-4968248842",
+      "title": "বলাই"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-4b944e64fa",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-4b944e64fa",
+      "title": "একরাত্রি"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-5461971092",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-5461971092",
+      "title": "মেঘ ও রৌদ্র"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-5704b31005",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-5704b31005",
+      "title": "বিচারক"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-5aedda79fe",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-5aedda79fe",
+      "title": "শাস্তি"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-63afd5e9be",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-63afd5e9be",
+      "title": "দেনাপাওনা"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-754da4eab8",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-754da4eab8",
+      "title": "তারাপ্রসন্নের কীর্তি"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-827fdc7aee",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-827fdc7aee",
+      "title": "রাসমণির ছেলে"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-88ded9b47c",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-88ded9b47c",
+      "title": "মানভঞ্জন"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-95624627d5",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-95624627d5",
+      "title": "মধ্যবর্তিনী"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-9a7f771921",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-9a7f771921",
+      "title": "কর্মফল"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-a23625bf36",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-a23625bf36",
+      "title": "সমাপ্তি"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-a4a369483f",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-a4a369483f",
+      "title": "সম্পত্তি সমর্পণ"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-a74c1a1451",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-a74c1a1451",
+      "title": "দালিয়া"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-ac5a71075e",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-ac5a71075e",
+      "title": "পোস্টমাস্টার"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-b9d47814a8",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-b9d47814a8",
+      "title": "নিশীথে"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-bfc51280b3",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-bfc51280b3",
+      "title": "অতিথি"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-c307a57868",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-c307a57868",
+      "title": "স্ত্রীর পত্র"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-c7f3ce526c",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-c7f3ce526c",
+      "title": "খোকাবাবুর প্রত্যাবর্তন"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-c85323409f",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-c85323409f",
+      "title": "জীবিত ও মৃত"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-d19e96859f",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-d19e96859f",
+      "title": "গিন্নি"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-d2fe532e1c",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-d2fe532e1c",
+      "title": "স্বর্ণমৃগ"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-edfcf810c5",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-edfcf810c5",
+      "title": "ক্ষুধিত পাষাণ"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-ef193ffc52",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-ef193ffc52",
+      "title": "দিদি"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-f5d593e1f4",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-f5d593e1f4",
+      "title": "রামকানাইয়ের নির্বুদ্ধিতা"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/book-fbdf2991ab",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "book-fbdf2991ab",
+      "title": "সুভা"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/boule-de-suif",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "boule-de-suif",
+      "title": "Boule de Suif"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/carmilla",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "carmilla",
+      "title": "Carmilla"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/devdas",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "devdas",
+      "title": "দেবদাস / Devdas"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/dracula",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "dracula",
+      "title": "Dracula"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/dsires-baby",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "dsires-baby",
+      "title": "Désirée's Baby"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "en-005",
+      "title": "The Cask of Amontillado"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "en-008",
+      "title": "After Twenty Years"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "en-028",
+      "title": "The Story of an Hour"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "en-045",
+      "title": "Gooseberries"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "en-052",
+      "title": "The Bride Comes to Yellow Sky"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "en-059",
+      "title": "Ligeia"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "en-065",
+      "title": "The Revolt of Mother"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "en-066",
+      "title": "The Deadliest Game"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "en-075",
+      "title": "The Fiddler of the Reels"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "en-081",
+      "title": "In the Penal Colony"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "en-100",
+      "title": "The Adventure of the Six Napoleons"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/eyesore-chokher-bali",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "eyesore-chokher-bali",
+      "title": "Eyesore (Chokher Bali)"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/feathertop",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "feathertop",
+      "title": "Feathertop"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/frankenstein",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "frankenstein",
+      "title": "Frankenstein"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/gitanjali",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Chapter ordering must be contiguous and one-based.",
+        "Reader-facing source boilerplate removal is not verified.",
+        "Rights: Tier A requires public-domain source confidence.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "gitanjali",
+      "title": "Gitanjali"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/great-expectations",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "great-expectations",
+      "title": "Great Expectations"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/hound-of-the-baskervilles",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "hound-of-the-baskervilles",
+      "title": "The Hound of the Baskervilles"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/hungry-stones",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "hungry-stones",
+      "title": "Kshudhita Pashan / The Hungry Stones"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/jane-eyre",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "jane-eyre",
+      "title": "Jane Eyre"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/jekyll-and-hyde",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+      ],
+      "slug": "jekyll-and-hyde",
+      "title": "The Strange Case of Dr. Jekyll and Mr. Hyde"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/lokrahasya",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "slug": "lokrahasya",
+      "title": "লোকরহস্য"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/love-of-life",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+      ],
+      "slug": "love-of-life",
+      "title": "Love of Life"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/markheim",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "markheim",
+      "title": "Markheim"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/mrinalini",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "slug": "mrinalini",
+      "title": "মৃণালিনী"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/muchiram-gurer-jibanchorit",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "slug": "muchiram-gurer-jibanchorit",
+      "title": "মুচিরাম গুড়ের জীবনচরিত"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/my-life-and-work",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "my-life-and-work",
+      "title": "My Life and Work"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/nishkriti",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "nishkriti",
+      "title": "নিষ্কৃতি"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/pather-panchali",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "RETAINED_CHECKSUM_MISMATCH:approval_evidence.json",
+        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "pather-panchali",
+      "title": "পথের পাঁচালী / Pather Panchali"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/pauls-case",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "pauls-case",
+      "title": "Paul's Case"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/picture-of-dorian-gray",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Reader QA must pass."
+      ],
+      "slug": "picture-of-dorian-gray",
+      "title": "The Picture of Dorian Gray"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/pride-and-prejudice",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "pride-and-prejudice",
+      "title": "Pride and Prejudice"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/radharani",
+      "skip_reasons": [
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
+      ],
+      "slug": "radharani",
+      "title": "রাধারাণী"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/rappaccinis-daughter",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "rappaccinis-daughter",
+      "title": "Rappaccini's Daughter"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/rikki-tikki-tavi",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "rikki-tikki-tavi",
+      "title": "Rikki-Tikki-Tavi"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/rip-van-winkle",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "rip-van-winkle",
+      "title": "Rip Van Winkle"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/sredni-vashtar",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "sredni-vashtar",
+      "title": "Sredni Vashtar"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-adventure-of-charles-augustus-milverton",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-adventure-of-charles-augustus-milverton",
+      "title": "The Adventure of Charles Augustus Milverton"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-adventure-of-the-abbey-grange",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-adventure-of-the-abbey-grange",
+      "title": "The Adventure of the Abbey Grange"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-adventure-of-the-beryl-coronet",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-adventure-of-the-beryl-coronet",
+      "title": "The Adventure of the Beryl Coronet"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-adventure-of-the-blue-carbuncle",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-adventure-of-the-blue-carbuncle",
+      "title": "The Adventure of the Blue Carbuncle"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-adventure-of-the-copper-beeches",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-adventure-of-the-copper-beeches",
+      "title": "The Adventure of the Copper Beeches"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-adventure-of-the-dancing-men",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-adventure-of-the-dancing-men",
+      "title": "The Adventure of the Dancing Men"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-adventure-of-the-empty-house",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-adventure-of-the-empty-house",
+      "title": "The Adventure of the Empty House"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-adventure-of-the-engineers-thumb",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-adventure-of-the-engineers-thumb",
+      "title": "The Adventure of the Engineer's Thumb"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-adventure-of-the-final-problem",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-adventure-of-the-final-problem",
+      "title": "The Adventure of the Final Problem"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-adventure-of-the-greek-interpreter",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-adventure-of-the-greek-interpreter",
+      "title": "The Adventure of the Greek Interpreter"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-adventure-of-the-noble-bachelor",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-adventure-of-the-noble-bachelor",
+      "title": "The Adventure of the Noble Bachelor"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-adventure-of-the-priory-school",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-adventure-of-the-priory-school",
+      "title": "The Adventure of the Priory School"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-adventure-of-the-second-stain",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-adventure-of-the-second-stain",
+      "title": "The Adventure of the Second Stain"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-adventure-of-the-solitary-cyclist",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-adventure-of-the-solitary-cyclist",
+      "title": "The Adventure of the Solitary Cyclist"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-adventures-of-sherlock-holmes",
+      "skip_reasons": [
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
+      ],
+      "slug": "the-adventures-of-sherlock-holmes",
+      "title": "The Adventures of Sherlock Holmes"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-ambitious-guest",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-ambitious-guest",
+      "title": "The Ambitious Guest"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-art-of-money-getting",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "RETAINED_CHECKSUM_MISMATCH:approval_evidence.json",
+        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
+        "RETAINED_CHECKSUM_MISMATCH:source_evidence.json"
+      ],
+      "slug": "the-art-of-money-getting",
+      "title": "The Art of Money Getting"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-bet",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-bet",
+      "title": "The Bet"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-bishop",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+      ],
+      "slug": "the-bishop",
+      "title": "The Bishop"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-call-of-the-wild",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-call-of-the-wild",
+      "title": "The Call of the Wild"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-canterville-ghost",
+      "skip_reasons": [
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
+      ],
+      "slug": "the-canterville-ghost",
+      "title": "The Canterville Ghost"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+      "title": "The Celebrated Jumping Frog of Calaveras County"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-cop-and-the-anthem",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-cop-and-the-anthem",
+      "title": "The Cop and the Anthem"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-country-of-the-blind",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-country-of-the-blind",
+      "title": "The Country of the Blind"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-darling",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-darling",
+      "title": "The Darling"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-door-in-the-wall",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-door-in-the-wall",
+      "title": "The Door in the Wall"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-enchanted-april",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "READER_SOURCE_FURNITURE_OR_ENCODING_ERROR:chapter-003",
+        "Reader QA must pass."
+      ],
+      "slug": "the-enchanted-april",
+      "title": "The Enchanted April"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-fall-of-the-house-of-usher",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+      ],
+      "slug": "the-fall-of-the-house-of-usher",
+      "title": "The Fall of the House of Usher"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-five-orange-pips",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-five-orange-pips",
+      "title": "The Five Orange Pips"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-furnished-room",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-furnished-room",
+      "title": "The Furnished Room"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-gift-of-the-magi",
+      "skip_reasons": [
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
+      ],
+      "slug": "the-gift-of-the-magi",
+      "title": "The Gift of the Magi"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-great-gatsby",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Reader QA must pass.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "slug": "the-great-gatsby",
+      "title": "The Great Gatsby"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-happy-prince",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Reader QA must pass."
+      ],
+      "slug": "the-happy-prince",
+      "title": "The Happy Prince"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-imp-of-the-perverse",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-imp-of-the-perverse",
+      "title": "The Imp of the Perverse"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-lady-with-the-dog",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+      ],
+      "slug": "the-lady-with-the-dog",
+      "title": "The Lady with the Dog"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-last-leaf",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-last-leaf",
+      "title": "The Last Leaf"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-legend-of-sleepy-hollow",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-legend-of-sleepy-hollow",
+      "title": "The Legend of Sleepy Hollow"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-lifted-veil",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-lifted-veil",
+      "title": "The Lifted Veil"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-luck-of-roaring-camp",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-luck-of-roaring-camp",
+      "title": "The Luck of Roaring Camp"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-man-in-a-case",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-man-in-a-case",
+      "title": "The Man in a Case"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-man-who-would-be-king",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+      ],
+      "slug": "the-man-who-would-be-king",
+      "title": "The Man Who Would Be King"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-man-with-the-twisted-lip",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-man-with-the-twisted-lip",
+      "title": "The Man with the Twisted Lip"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-masque-of-the-red-death",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-masque-of-the-red-death",
+      "title": "The Masque of the Red Death"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-metamorphosis",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Reader QA must pass.",
+        "Rights: Tier C rights block all publishing.",
+        "Rights: modern or unknown translation rights block publishing until separately verified.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "slug": "the-metamorphosis",
+      "title": "The Metamorphosis"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-ministers-black-veil",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-ministers-black-veil",
+      "title": "The Minister's Black Veil"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-monkeys-paw",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-monkeys-paw",
+      "title": "The Monkey's Paw"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-most-dangerous-game",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+      ],
+      "slug": "the-most-dangerous-game",
+      "title": "The Most Dangerous Game"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-murders-in-the-rue-morgue",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-murders-in-the-rue-morgue",
+      "title": "The Murders in the Rue Morgue"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-necklace",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-necklace",
+      "title": "The Necklace"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-open-boat",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+      ],
+      "slug": "the-open-boat",
+      "title": "The Open Boat"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-open-window",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-open-window",
+      "title": "The Open Window"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-outcasts-of-poker-flat",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-outcasts-of-poker-flat",
+      "title": "The Outcasts of Poker Flat"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-picture-of-dorian-gray",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "CHECKSUM_INDEX_MISSING",
+        "Missing approval_evidence artifact.",
+        "Missing source_evidence artifact.",
+        "Reader-facing source boilerplate removal is not verified.",
+        "Rights: Tier A requires public-domain source confidence.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: source_license is required.",
+        "Rights: source_name is required.",
+        "Rights: source_url is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-picture-of-dorian-gray",
+      "title": "The Picture of Dorian Gray"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-pit-and-the-pendulum",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+      ],
+      "slug": "the-pit-and-the-pendulum",
+      "title": "The Pit and the Pendulum"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-principles-of-scientific-management",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "CHAPTER_ID_MISMATCH:chapter-004",
+        "Chapter chapter-004 has no reader content.",
+        "EMPTY_CHAPTER:chapter-004",
+        "RETAINED_CHECKSUM_MISMATCH:chapters/chapter-004.json",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-principles-of-scientific-management",
+      "title": "The Principles of Scientific Management"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-purloined-letter",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-purloined-letter",
+      "title": "The Purloined Letter"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-ransom-of-red-chief",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-ransom-of-red-chief",
+      "title": "The Ransom of Red Chief"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-red-headed-league",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-red-headed-league",
+      "title": "The Red-Headed League"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-science-of-getting-rich",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Reader QA must pass."
+      ],
+      "slug": "the-science-of-getting-rich",
+      "title": "The Science of Getting Rich"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-secret-garden",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-secret-garden",
+      "title": "The Secret Garden"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-selfish-giant",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+      ],
+      "slug": "the-selfish-giant",
+      "title": "The Selfish Giant"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-speckled-band",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-speckled-band",
+      "title": "The Speckled Band"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-stolen-white-elephant",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+      ],
+      "slug": "the-stolen-white-elephant",
+      "title": "The Stolen White Elephant"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-strange-case-of-dr-jekyll-and-mr-hyde",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "At least one chapter is required.",
+        "CHAPTER_IDS_MISSING_OR_DUPLICATED",
+        "Front cover is required.",
+        "Reader QA must pass.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "slug": "the-strange-case-of-dr-jekyll-and-mr-hyde",
+      "title": "The Strange Case of Dr Jekyll and Mr Hyde"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-student",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-student",
+      "title": "The Student"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-suicide-club",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "CHAPTER_ID_MISMATCH:chapter-001",
+        "Chapter chapter-001 has no reader content.",
+        "EMPTY_CHAPTER:chapter-001",
+        "Front cover is required.",
+        "RETAINED_CHECKSUM_MISMATCH:chapters/chapter-001.json",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-suicide-club",
+      "title": "The Suicide Club"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-tell-tale-heart",
+      "skip_reasons": [
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
+      ],
+      "slug": "the-tell-tale-heart",
+      "title": "The Tell-Tale Heart"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-time-machine",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-time-machine",
+      "title": "The Time Machine"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-withered-arm",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-withered-arm",
+      "title": "The Withered Arm"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-wonderful-wizard-of-oz",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "slug": "the-wonderful-wizard-of-oz",
+      "title": "The Wonderful Wizard of Oz"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/the-yellow-wallpaper",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "the-yellow-wallpaper",
+      "title": "The Yellow Wallpaper"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/to-build-a-fire",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "to-build-a-fire",
+      "title": "To Build a Fire"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/tobermory",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "tobermory",
+      "title": "Tobermory"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/ward-no-6",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "CHAPTER_ID_MISMATCH:chapter-001",
+        "Chapter chapter-001 has no reader content.",
+        "EMPTY_CHAPTER:chapter-001",
+        "Front cover is required.",
+        "RETAINED_CHECKSUM_MISMATCH:chapters/chapter-001.json",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "ward-no-6",
+      "title": "Ward No. 6"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/white-fang",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "white-fang",
+      "title": "White Fang"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/woman-in-white",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "woman-in-white",
+      "title": "The Woman in White"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": "data/controlled_publications/young-goodman-brown",
+      "skip_reasons": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "slug": "young-goodman-brown",
+      "title": "Young Goodman Brown"
+    },
+    {
+      "eligible_for_new_upload": false,
+      "package": null,
+      "skip_reasons": [
+        "CLEARED_SOURCE_AND_READER_PACKAGE_MISSING"
+      ],
+      "slug": "yugalanguriya",
+      "title": "যুগলাঙ্গুরীয়"
+    }
+  ],
+  "mode": "draft",
+  "schema": "earnalism.full-catalogue-draft-intake.v1",
+  "upload_execution": "NOT_REQUESTED_NO_NEW_PASSING_ACCEPTED_TITLES"
+}

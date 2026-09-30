@@ -3,6 +3,7 @@ jest.mock("react-router-dom", () => ({ Link: ({ to, children, ...props }) => <a 
 import { createRoot } from "react-dom/client";
 import ReaderExperienceV2, { READER_V2_FIXTURE } from "./ReaderExperienceV2";
 import { READER_SETTINGS_STORAGE_KEY } from "../../lib/readerSettings";
+import { readerNotebookKey } from "../../lib/readerNotebook";
 
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 
@@ -18,6 +19,7 @@ describe("ReaderExperienceV2 customer controls", () => {
   beforeEach(() => {
     jest.spyOn(window, "scrollTo").mockImplementation(() => {});
     localStorage.removeItem(READER_SETTINGS_STORAGE_KEY);
+    localStorage.removeItem(readerNotebookKey(model.title));
     container = document.createElement("div");
     document.body.appendChild(container);
     root = createRoot(container);
@@ -34,6 +36,18 @@ describe("ReaderExperienceV2 customer controls", () => {
   const change = (select, value) => act(() => {
     select.value = value;
     select.dispatchEvent(new Event("change", { bubbles: true }));
+  });
+
+  test("bookmarks persist and requests for protected pages still use route authorization", () => {
+    localStorage.setItem(readerNotebookKey(model.title), JSON.stringify({ notes: [], bookmarks: [4] }));
+    const onRequestPage = jest.fn();
+    render({ onRequestPage });
+    click(button("Bookmarks"));
+    click(button("Page 4"));
+    expect(onRequestPage).toHaveBeenCalledWith(4);
+    expect(container.querySelector('[data-testid="reader-page-content"]').textContent).not.toContain("Page 4 content");
+    click(container.querySelector('.reader-v2__toolbar button[aria-label="Bookmark this page"]'));
+    expect(JSON.parse(localStorage.getItem(readerNotebookKey(model.title))).bookmarks).toEqual([1, 4]);
   });
 
   test("a visual fixture never presents synthetic account progress or Reading Pass balance", () => {

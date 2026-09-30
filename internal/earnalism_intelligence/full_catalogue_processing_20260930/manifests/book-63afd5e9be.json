@@ -1,0 +1,119 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "fbef1a491a82ec30c324070e321c14b8b0c5850f1b15b0f571065e73a89db1b6",
+    "chapters/chapter-001.json": "fea7572889f58926b517648c0ebfff647469caad574481eb9b81c69349d5f5a9",
+    "checksum_manifest.json": "6c719fed6db7c0d27642c42b041f0b396e19118dd43cb0a3e167d2e7ac8393f0",
+    "highlight_sync.json": "e302aac48964141a402619652fd570f2d8907c03372917bc27f0dd96610b01e3",
+    "public_book.json": "0f305234f13f5102113945db230d7c9fb5c3661cb19785a78eb6190eb066c0c6",
+    "reader_manifest.json": "99a6a4d34bb36ce8212a151d62a25f5a9f7bd0c9cd7b8e56a1554143a75f2ebc",
+    "source_evidence.json": "f08762aeec61087c8eb02410e0719287e34cbb04a2269740bf72c428f7dde0a0"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "5e68c5acaac3fdbf53b959032927fe034d693ef82f27cff017d78199d1467d5c",
+      "file_sha256": "fea7572889f58926b517648c0ebfff647469caad574481eb9b81c69349d5f5a9",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "519f41356cf81e456bb0c230374d6dd713998666a05bbf77315ef67e49996a2e",
+    "approval_evidence.json": "fbef1a491a82ec30c324070e321c14b8b0c5850f1b15b0f571065e73a89db1b6",
+    "chapters/chapter-001.json": "fea7572889f58926b517648c0ebfff647469caad574481eb9b81c69349d5f5a9",
+    "checksum_manifest.json": "6c719fed6db7c0d27642c42b041f0b396e19118dd43cb0a3e167d2e7ac8393f0",
+    "go_live_evidence.json": "b70969951716380f063c8213016b51da6c9b9d4c293fe6e3d102aa348d03702c",
+    "highlight_sync.json": "e302aac48964141a402619652fd570f2d8907c03372917bc27f0dd96610b01e3",
+    "public_book.json": "0f305234f13f5102113945db230d7c9fb5c3661cb19785a78eb6190eb066c0c6",
+    "reader_manifest.json": "99a6a4d34bb36ce8212a151d62a25f5a9f7bd0c9cd7b8e56a1554143a75f2ebc",
+    "source_evidence.json": "f08762aeec61087c8eb02410e0719287e34cbb04a2269740bf72c428f7dde0a0"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "fbef1a491a82ec30c324070e321c14b8b0c5850f1b15b0f571065e73a89db1b6",
+      "public_book": "0f305234f13f5102113945db230d7c9fb5c3661cb19785a78eb6190eb066c0c6",
+      "reader_manifest": "99a6a4d34bb36ce8212a151d62a25f5a9f7bd0c9cd7b8e56a1554143a75f2ebc",
+      "source_evidence": "f08762aeec61087c8eb02410e0719287e34cbb04a2269740bf72c428f7dde0a0"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "27f5c422c57d691125921a1949a9f32956217908a35535f94c5927977fd4a967",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "fea7572889f58926b517648c0ebfff647469caad574481eb9b81c69349d5f5a9",
+          "title": "Full Text",
+          "word_count": 1860
+        }
+      ],
+      "content_hash": "128565a95b6a90cad6a9ee84561f38f483a33b6db875aa7a13b4084bb4e47b99",
+      "provenance_hash": "179d53b867feed56735d3f8d56661ba9f6079ed957ce1c4f2055f411b9bc5722",
+      "sanitized": true,
+      "source_hash": "5e68c5acaac3fdbf53b959032927fe034d693ef82f27cff017d78199d1467d5c"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "d3aed0c9309a28ebca7f3b2b2bb38ebfe03626ac45505e0a348d6e770ccce5c7",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779453498/earnalism/covers/front/cover_7d71638e-e3a9-44ca-a477-6d6d03d28925.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "f08762aeec61087c8eb02410e0719287e34cbb04a2269740bf72c428f7dde0a0",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-63afd5e9be",
+    "title": "দেনাপাওনা"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

@@ -1,0 +1,120 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "2e4a1bc9da26af5876d1301394bbff413ac7e3ebf59c060e1c6cc72127c93959",
+    "checksum_manifest.json": "f33d910e5b11306b7eba0fdb3dbbebaf589995fe0b5b035b911cfb6a97459fdd",
+    "highlight_sync.json": "7463e1329e06029b49d79d55df1aabd45ff33aaad98781e65d51d3b506fe40de",
+    "public_book.json": "bb7fd05d82bf0328c08589c8af595163dd6ea36f1b5bde85bb9528c3609d297d",
+    "reader_manifest.json": "162aeaf7807c66c64a3b0322a153d786c2b8b28e998b2691c6769e86b9a659ef",
+    "source_evidence.json": "abaf4043dc552ce0b278ed155ec9d63a64ec01df68dfd972a4ee3253ffbd40b3"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "file_sha256": "",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "2e4a1bc9da26af5876d1301394bbff413ac7e3ebf59c060e1c6cc72127c93959",
+    "checksum_manifest.json": "f33d910e5b11306b7eba0fdb3dbbebaf589995fe0b5b035b911cfb6a97459fdd",
+    "highlight_sync.json": "7463e1329e06029b49d79d55df1aabd45ff33aaad98781e65d51d3b506fe40de",
+    "public_book.json": "bb7fd05d82bf0328c08589c8af595163dd6ea36f1b5bde85bb9528c3609d297d",
+    "reader_manifest.json": "162aeaf7807c66c64a3b0322a153d786c2b8b28e998b2691c6769e86b9a659ef",
+    "source_evidence.json": "abaf4043dc552ce0b278ed155ec9d63a64ec01df68dfd972a4ee3253ffbd40b3"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "2e4a1bc9da26af5876d1301394bbff413ac7e3ebf59c060e1c6cc72127c93959",
+      "public_book": "bb7fd05d82bf0328c08589c8af595163dd6ea36f1b5bde85bb9528c3609d297d",
+      "reader_manifest": "162aeaf7807c66c64a3b0322a153d786c2b8b28e998b2691c6769e86b9a659ef",
+      "source_evidence": "abaf4043dc552ce0b278ed155ec9d63a64ec01df68dfd972a4ee3253ffbd40b3"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "709a7ff17138aba69df521f097f820c25664127b66ad292bbec35df1315cb25f",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "",
+          "title": "The Suicide Club",
+          "word_count": 27707
+        }
+      ],
+      "content_hash": "42592fc8597ac69e604f61b3930d46848712033a3d5ca427d02a7234952e36e3",
+      "provenance_hash": "06055fded54812b2a06957fef8e55de7d89f2d115b9cc403a8ca1d834aa330a6",
+      "sanitized": true,
+      "source_hash": "36f2eab8f19108f05a306169130f8bddc9c21c23725e7c12a330ac18cfdb9e39"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "aa8cb64e298fb71fcec75ad17dd8e0feaa7ec3401e5091cedf71e1de6da1967f",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "CHAPTER_ID_MISMATCH:chapter-001",
+        "Chapter chapter-001 has no reader content.",
+        "EMPTY_CHAPTER:chapter-001",
+        "Front cover is required.",
+        "RETAINED_CHECKSUM_MISMATCH:chapters/chapter-001.json",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "abaf4043dc552ce0b278ed155ec9d63a64ec01df68dfd972a4ee3253ffbd40b3",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-suicide-club",
+    "title": "The Suicide Club"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

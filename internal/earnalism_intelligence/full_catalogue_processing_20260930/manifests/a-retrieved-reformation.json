@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "a36171ca2221296c6ddc21caa7e9a057e996572ff57c4deba6d2b5ca83ce3b74",
+    "chapters/chapter-001.json": "dd1b8bdb0eb30ccbfc58fa812ad928896b96432b6a4e6f9800a0520575a97899",
+    "checksum_manifest.json": "07fdf2b96fbaef4650a896a262d58fbdb11c21b38182e0beac8dc3e1ad75e55e",
+    "highlight_sync.json": "0e4d105bbc01a5de033a2a07ca59208b428cd64a6fc8eec8e29d1fb068c68b13",
+    "public_book.json": "7f353405bc4664020c95c8d04f0763172880474d6c5c7caa9613d2b92e2ac087",
+    "reader_manifest.json": "81b8eccb9da780af7ea6f5f51b7ae540d2b84245f6558906fce407b348efb609",
+    "source_evidence.json": "0f19e7e31aa10b6fd209ece0c6a9d6ed4c8e10671fc17a6b16c15f239a0c191a"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "58b55bd17afe0993ca5c8bdf25e2484619d9d8901193198440c80a999b4a6d82",
+      "file_sha256": "dd1b8bdb0eb30ccbfc58fa812ad928896b96432b6a4e6f9800a0520575a97899",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "a36171ca2221296c6ddc21caa7e9a057e996572ff57c4deba6d2b5ca83ce3b74",
+    "chapters/chapter-001.json": "dd1b8bdb0eb30ccbfc58fa812ad928896b96432b6a4e6f9800a0520575a97899",
+    "checksum_manifest.json": "07fdf2b96fbaef4650a896a262d58fbdb11c21b38182e0beac8dc3e1ad75e55e",
+    "highlight_sync.json": "0e4d105bbc01a5de033a2a07ca59208b428cd64a6fc8eec8e29d1fb068c68b13",
+    "public_book.json": "7f353405bc4664020c95c8d04f0763172880474d6c5c7caa9613d2b92e2ac087",
+    "reader_manifest.json": "81b8eccb9da780af7ea6f5f51b7ae540d2b84245f6558906fce407b348efb609",
+    "source_evidence.json": "0f19e7e31aa10b6fd209ece0c6a9d6ed4c8e10671fc17a6b16c15f239a0c191a"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "a36171ca2221296c6ddc21caa7e9a057e996572ff57c4deba6d2b5ca83ce3b74",
+      "public_book": "7f353405bc4664020c95c8d04f0763172880474d6c5c7caa9613d2b92e2ac087",
+      "reader_manifest": "81b8eccb9da780af7ea6f5f51b7ae540d2b84245f6558906fce407b348efb609",
+      "source_evidence": "0f19e7e31aa10b6fd209ece0c6a9d6ed4c8e10671fc17a6b16c15f239a0c191a"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "96f62d92fa0b87c52a506b3f47ea2af97deac23b34edc5da3393df7ceabeb26c",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "dd1b8bdb0eb30ccbfc58fa812ad928896b96432b6a4e6f9800a0520575a97899",
+          "title": "A Retrieved Reformation",
+          "word_count": 2821
+        }
+      ],
+      "content_hash": "26333f5658cfcb36488d5d64200a0db57a6693bcea82c1bcbcef7a41d35be761",
+      "provenance_hash": "1ee6272d06c799a412b12b5e694682891db8412ddd256b677456862eb46d4e71",
+      "sanitized": true,
+      "source_hash": "03fc9a36b9e316f3c2d02902dd5cddcacd1724ac42b9602827f8914ead6c27b3"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "b4001d15ffecbdf62ae1ec23e4a47deba2e0d6b617734bb54f14e46b1415b293",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "0f19e7e31aa10b6fd209ece0c6a9d6ed4c8e10671fc17a6b16c15f239a0c191a",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "a-retrieved-reformation",
+    "title": "A Retrieved Reformation"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

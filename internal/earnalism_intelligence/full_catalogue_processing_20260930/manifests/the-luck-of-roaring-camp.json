@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "0608e478c31600287c183d42551cb40d2dc455ebdac48eb9fbead4620decd15e",
+    "chapters/chapter-001.json": "0de4c55a9ec34ccfe1a7bff8496caef3baf891938474693ca9c0d851820d7dae",
+    "checksum_manifest.json": "cb381e52ea740ba210c43f6f13bba78e84862ca884b4ff349c67c47ddedc24b3",
+    "highlight_sync.json": "45f4b8e1d941ae2278ae337ede7e564650dce31e830e7331fc8be03d05b7c652",
+    "public_book.json": "234eee0e8cb4631154e077e859477dae39e2bb0ecaaa755da7601f2c6ae7e064",
+    "reader_manifest.json": "a525fc6b97d2929d65cdb7ec801406b889aff6d28b0974ba5e9765229e9d55dd",
+    "source_evidence.json": "dbae18b85a4e04c46428586f1f55315eba31d0ba4dcf2b44ea251914c5ec0652"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "2f4e9381683289df36840cd2a5149325f8836f03786d853a4e8cff5788fcaea1",
+      "file_sha256": "0de4c55a9ec34ccfe1a7bff8496caef3baf891938474693ca9c0d851820d7dae",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "0608e478c31600287c183d42551cb40d2dc455ebdac48eb9fbead4620decd15e",
+    "chapters/chapter-001.json": "0de4c55a9ec34ccfe1a7bff8496caef3baf891938474693ca9c0d851820d7dae",
+    "checksum_manifest.json": "cb381e52ea740ba210c43f6f13bba78e84862ca884b4ff349c67c47ddedc24b3",
+    "highlight_sync.json": "45f4b8e1d941ae2278ae337ede7e564650dce31e830e7331fc8be03d05b7c652",
+    "public_book.json": "234eee0e8cb4631154e077e859477dae39e2bb0ecaaa755da7601f2c6ae7e064",
+    "reader_manifest.json": "a525fc6b97d2929d65cdb7ec801406b889aff6d28b0974ba5e9765229e9d55dd",
+    "source_evidence.json": "dbae18b85a4e04c46428586f1f55315eba31d0ba4dcf2b44ea251914c5ec0652"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "0608e478c31600287c183d42551cb40d2dc455ebdac48eb9fbead4620decd15e",
+      "public_book": "234eee0e8cb4631154e077e859477dae39e2bb0ecaaa755da7601f2c6ae7e064",
+      "reader_manifest": "a525fc6b97d2929d65cdb7ec801406b889aff6d28b0974ba5e9765229e9d55dd",
+      "source_evidence": "dbae18b85a4e04c46428586f1f55315eba31d0ba4dcf2b44ea251914c5ec0652"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "99e7bd5b90001bf211766a865d05c57b71a87f87b3c016f63a3759014a003d05",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "0de4c55a9ec34ccfe1a7bff8496caef3baf891938474693ca9c0d851820d7dae",
+          "title": "The Luck of Roaring Camp",
+          "word_count": 4188
+        }
+      ],
+      "content_hash": "e8cf5138f084af3e5b585c5f3512192549d5f778e98275fd9be1208a5d394472",
+      "provenance_hash": "179a519aaf069211f7157fae4c280d1b07bb911a506178cff2e25f889e79e7dd",
+      "sanitized": true,
+      "source_hash": "d64c82d8f35d3e817f9c8f75d0a500fe408f85e519258f7a902fc565e1fc8264"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "541f984a209bf93513e6138d1b881d656b3921ba0b93a98e0fa8694e7d7f14f6",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "dbae18b85a4e04c46428586f1f55315eba31d0ba4dcf2b44ea251914c5ec0652",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-luck-of-roaring-camp",
+    "title": "The Luck of Roaring Camp"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "88a437397ceee8a6c19e81a7cdbe39443927ea9d4108405ccb9836637b96141f",
+    "chapters/chapter-001.json": "cb638e7ce5ab378f9d8651da9f5c9ce0a087580c50095f917780a06d9927d9ed",
+    "checksum_manifest.json": "b54e0515621f7a117b924788859126ddbf106e0ef88a9dcaf2ce84d8387ac27d",
+    "highlight_sync.json": "706f970e5b69a3b541afdb35668a451d0c8ebac26c67341a5b6b1680bf7ba623",
+    "public_book.json": "85bd9967b58713025a8d49125c15231cba2652b121590be5a4ead8a23ec3ff00",
+    "reader_manifest.json": "88c3ba1cc3966ad4c8ea096ede6b71630409d39373c1e1524d488543ff5e2f3a",
+    "source_evidence.json": "8fd7316ebad8a5fab5c1c09fe78f7d8ee6de9e8e1e97acf7f37b9b2be7cfa666"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "b462ab2045b83b93266df29ada25c1fe29f319e658ae9eef3a608fc9284303d0",
+      "file_sha256": "cb638e7ce5ab378f9d8651da9f5c9ce0a087580c50095f917780a06d9927d9ed",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "88a437397ceee8a6c19e81a7cdbe39443927ea9d4108405ccb9836637b96141f",
+    "chapters/chapter-001.json": "cb638e7ce5ab378f9d8651da9f5c9ce0a087580c50095f917780a06d9927d9ed",
+    "checksum_manifest.json": "b54e0515621f7a117b924788859126ddbf106e0ef88a9dcaf2ce84d8387ac27d",
+    "highlight_sync.json": "706f970e5b69a3b541afdb35668a451d0c8ebac26c67341a5b6b1680bf7ba623",
+    "public_book.json": "85bd9967b58713025a8d49125c15231cba2652b121590be5a4ead8a23ec3ff00",
+    "reader_manifest.json": "88c3ba1cc3966ad4c8ea096ede6b71630409d39373c1e1524d488543ff5e2f3a",
+    "source_evidence.json": "8fd7316ebad8a5fab5c1c09fe78f7d8ee6de9e8e1e97acf7f37b9b2be7cfa666"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "88a437397ceee8a6c19e81a7cdbe39443927ea9d4108405ccb9836637b96141f",
+      "public_book": "85bd9967b58713025a8d49125c15231cba2652b121590be5a4ead8a23ec3ff00",
+      "reader_manifest": "88c3ba1cc3966ad4c8ea096ede6b71630409d39373c1e1524d488543ff5e2f3a",
+      "source_evidence": "8fd7316ebad8a5fab5c1c09fe78f7d8ee6de9e8e1e97acf7f37b9b2be7cfa666"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "a7d5c8867c948ecbf1949c692977855c797c2fe2e86e247bb2e2bfc533f4c2be",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "cb638e7ce5ab378f9d8651da9f5c9ce0a087580c50095f917780a06d9927d9ed",
+          "title": "The Adventure of the Copper Beeches",
+          "word_count": 10007
+        }
+      ],
+      "content_hash": "9b9c7ba40e8ed216b596a5037e98da10b797866ec6978c64496b69d5dbca36ec",
+      "provenance_hash": "98236e5ca9c3a3610401ab6c7149d86ba024b2b7a8c8b3772afa67a44baa27df",
+      "sanitized": true,
+      "source_hash": "bd867c2b7a24654e27ccdc0e02a61b30c91ce61a1cf28a04bd9884811e332b90"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "9ff816ea98476a8410c907b1fc1a7212621c51cabeeb501eac056edd459b4f6f",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "8fd7316ebad8a5fab5c1c09fe78f7d8ee6de9e8e1e97acf7f37b9b2be7cfa666",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-adventure-of-the-copper-beeches",
+    "title": "The Adventure of the Copper Beeches"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

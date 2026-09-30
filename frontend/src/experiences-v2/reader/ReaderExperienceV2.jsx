@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Bookmark, ChevronLeft, ChevronRight, Clock3, Minus, Plus, Settings2 } from "lucide-react";
+import { Bookmark, ChevronLeft, ChevronRight, Clock3, Minus, Plus, Settings2, StickyNote, X } from "lucide-react";
 import ExperienceBottomNavigation from "../shared/ExperienceBottomNavigation";
 import ExperienceHeader from "../shared/ExperienceHeader";
 import ExperienceIconButton from "../shared/ExperienceIconButton";
@@ -9,6 +9,7 @@ import "./reader-v2.css";
 import "./reader-v2.mobile.css";
 import BookCoverImage from "../../components/BookCoverImage";
 import { PUBLIC_PREVIEW_COPY } from "../../lib/publicAccessCopy";
+import { loadReaderNotebook, readerNotebookKey, saveReaderNotebook } from "../../lib/readerNotebook";
 import {
   loadReaderSettings,
   READER_SETTINGS_DEFAULTS,
@@ -22,6 +23,8 @@ export const READER_V2_FIXTURE = Object.freeze({
   author: "Bram Stoker",
   chapterEyebrow: "Chapter 1",
   chapterTitle: "Jonathan Harker’s Journal",
+  chapterDateline: "3 May 1897 · Bistritz to Vienna",
+  editorialQuote: "All journeys have secret destinations of which the traveller is unaware.",
   canonicalPage: 1,
   totalPublicPages: 3,
   totalPages: 4,
@@ -77,6 +80,19 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
     try { return loadReaderSettings(); } catch { return READER_SETTINGS_DEFAULTS; }
   });
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const notebookKey = readerNotebookKey(model.slug || model.title, model.notebookOwner || "guest");
+  const [savedNotebook, setSavedNotebook] = useState(() => ({ key: notebookKey, value: loadReaderNotebook(notebookKey) }));
+  const notebook = savedNotebook.key === notebookKey ? savedNotebook.value : loadReaderNotebook(notebookKey);
+  const [notebookOpen, setNotebookOpen] = useState(false);
+  const [notebookTab, setNotebookTab] = useState("notes");
+  const [noteText, setNoteText] = useState("");
+  const [noteEditorOpen, setNoteEditorOpen] = useState(false);
+  const [notebookNotice, setNotebookNotice] = useState("");
+  const notebookTriggerRef = useRef(null);
+  useEffect(() => {
+    setSavedNotebook({ key: notebookKey, value: loadReaderNotebook(notebookKey) });
+    setNoteText(""); setNoteEditorOpen(false); setNotebookOpen(false); setNotebookNotice("");
+  }, [notebookKey]);
   const headingRef = useRef(null);
   const settingsTriggerRef = useRef(null);
   useEffect(() => {
@@ -111,6 +127,21 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
     : languageTypography.fontFamily;
   const fontWeight = fontMode === "sans" ? (language === "bn" ? 500 : 400) : languageTypography.fontWeight;
   const busy = Boolean(access.busy);
+  const bookmarked = notebook.bookmarks.includes(page);
+  const updateNotebook = (value) => {
+    const saved = saveReaderNotebook(notebookKey, value);
+    setSavedNotebook({ key: notebookKey, value });
+    setNotebookNotice(saved ? "Saved on this device." : "Storage is unavailable. Your changes last for this reading session only.");
+  };
+  const toggleBookmark = () => updateNotebook({ ...notebook, bookmarks: bookmarked
+    ? notebook.bookmarks.filter((item) => item !== page) : [...notebook.bookmarks, page] });
+  const addNote = (event) => {
+    event.preventDefault();
+    if (!noteText.trim() || notebook.notes.length >= 100) return;
+    updateNotebook({ ...notebook, notes: [...notebook.notes, { id: `${Date.now()}-${Math.random().toString(36).slice(2)}`, page, text: noteText.trim(), createdAt: new Date().toISOString() }] });
+    setNoteText(""); setNoteEditorOpen(false);
+  };
+  const closeNotebook = () => { setNotebookOpen(false); notebookTriggerRef.current?.focus(); };
   const atEnd = navigationPage >= totalPages;
   const nextLabel = navigationPage === 3 && !access.authorized
     ? (model.freeReading ? "Continue reading free" : "Use Reading Time to Continue")
@@ -187,8 +218,10 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
               <output aria-label="Text size">Aa · {formatRem(textSizeRem)}</output>
               <ExperienceIconButton label="Increase text size" disabled={textSizeStep === READER_TEXT_SIZE_REM_STEPS.length - 1} onClick={() => resizeText(1)}><Plus size={16} /></ExperienceIconButton>
               <ExperienceIconButton label="Reader settings" pressed={settingsOpen} onClick={toggleSettings}><Settings2 size={16} /></ExperienceIconButton>
+              <ExperienceIconButton label={bookmarked ? "Remove page bookmark" : "Bookmark this page"} pressed={bookmarked} onClick={toggleBookmark}><Bookmark size={16} /></ExperienceIconButton>
             </div>
             <h1 id="reader-v2-title" ref={headingRef} tabIndex={-1}>{model.chapterTitle}</h1>
+            {model.chapterDateline && <p className="reader-v2__dateline">{model.chapterDateline}</p>}
           </header>
           {settingsOpen && <section id="reader-v2-settings" className="reader-v2__settings" aria-label="Reading preferences">
             <h2>Reading preferences</h2>
@@ -220,14 +253,29 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
           </footer>
         </article>
 
-        <aside className="reader-v2__context" aria-label="About this book">
+        <aside id="reader-notebook" className="reader-v2__context" data-notebook-open={notebookOpen} aria-label="Notes and bookmarks" onKeyDown={(event) => { if (event.key === "Escape" && notebookOpen) closeNotebook(); }}>
+          <button type="button" className="reader-v2__notebook-close" onClick={closeNotebook} aria-label="Close notes and bookmarks"><X size={18} /></button>
           {model.illustration?.src
-            ? <figure className="reader-v2__artwork"><img className="reader-v2__illustration" src={model.illustration.src} alt={model.illustration.alt || ""} decoding="async" /><figcaption>{model.title}{model.author ? ` · ${model.author}` : ""}</figcaption></figure>
+            ? <figure className="reader-v2__artwork" data-quote={Boolean(model.editorialQuote)}><img className="reader-v2__illustration" src={model.illustration.src} alt={model.illustration.alt || ""} decoding="async" /><figcaption>{model.editorialQuote ? <><blockquote>“{model.editorialQuote}”</blockquote><cite>— {model.author}</cite></> : <>{model.title}{model.author ? ` · ${model.author}` : ""}</>}</figcaption></figure>
             : model.book && <BookCoverImage book={model.book} alt={`${model.title} cover`} className="reader-v2__book-cover" loading="lazy" width={520} widths={[280, 420, 520]} sizes="(min-width: 1280px) 16rem, 40vw" allowGraphicalFallback={false} fallback="" />}
-          <ExperiencePanel eyebrow="About this edition" className="reader-v2__edition-panel"><dl>{model.author && <div><dt>Author</dt><dd>{model.author}</dd></div>}{metadata.language && <div><dt>Language</dt><dd>{metadata.language}</dd></div>}{metadata.genre && <div><dt>Genre</dt><dd>{metadata.genre}</dd></div>}{metadata.year && <div><dt>First published</dt><dd>{metadata.year}</dd></div>}{metadata.source && <div><dt>Edition</dt><dd>{metadata.source}</dd></div>}</dl><p>{model.freeReading ? "Read this complete edition free after signing in. No Reading Pass debit is required." : `${PUBLIC_PREVIEW_COPY} A valid Reading Pass is required to continue.`}</p></ExperiencePanel>
+          <section className="reader-v2__notebook" aria-label="Your reading notebook">
+            <div className="reader-v2__notebook-tabs" role="tablist" aria-label="Notebook views">
+              <button id="reader-notes-tab" role="tab" type="button" aria-selected={notebookTab === "notes"} aria-controls="reader-notebook-panel" onClick={() => setNotebookTab("notes")}>Notes</button>
+              <button id="reader-bookmarks-tab" role="tab" type="button" aria-selected={notebookTab === "bookmarks"} aria-controls="reader-notebook-panel" onClick={() => setNotebookTab("bookmarks")}>Bookmarks</button>
+            </div>
+            <div id="reader-notebook-panel" role="tabpanel" aria-labelledby={`reader-${notebookTab}-tab`}>
+              {notebookTab === "notes" ? <>
+                {notebook.notes.length ? <ul className="reader-v2__note-list">{notebook.notes.map((note) => <li key={note.id}><button type="button" onClick={() => requestPage(note.page)}>Page {note.page}</button><p>{note.text}</p><button type="button" aria-label={`Delete note on page ${note.page}`} onClick={() => updateNotebook({ ...notebook, notes: notebook.notes.filter((item) => item.id !== note.id) })}>Delete note</button></li>)}</ul> : <p className="reader-v2__notebook-empty">Keep a thought from this page.</p>}
+                {noteEditorOpen ? <form onSubmit={addNote}><label>Note for page {page}<textarea autoFocus value={noteText} maxLength={2000} onChange={(event) => setNoteText(event.target.value)} /></label><button type="submit" disabled={!noteText.trim()}>Save note</button><button type="button" onClick={() => setNoteEditorOpen(false)}>Cancel</button></form> : <button type="button" className="reader-v2__add-note" disabled={notebook.notes.length >= 100} onClick={() => setNoteEditorOpen(true)}><Plus size={15} /> New note</button>}
+              </> : <>{notebook.bookmarks.length ? <ul className="reader-v2__bookmark-list">{notebook.bookmarks.map((item) => <li key={item}><button type="button" disabled={busy} onClick={() => requestPage(item)}>Page {item}</button></li>)}</ul> : <p className="reader-v2__notebook-empty">Your saved pages appear here.</p>}<button type="button" onClick={toggleBookmark}>{bookmarked ? "Remove page bookmark" : "Bookmark this page"}</button></>}
+            </div>
+            <p className="reader-v2__notebook-storage">Notes and bookmarks stay on this device.</p>
+            {notebookNotice && <p role="status">{notebookNotice}</p>}
+          </section>
+          <details className="reader-v2__edition-details"><summary>About this edition</summary><dl>{model.author && <div><dt>Author</dt><dd>{model.author}</dd></div>}{metadata.language && <div><dt>Language</dt><dd>{metadata.language}</dd></div>}{metadata.genre && <div><dt>Genre</dt><dd>{metadata.genre}</dd></div>}{metadata.year && <div><dt>First published</dt><dd>{metadata.year}</dd></div>}{metadata.source && <div><dt>Edition</dt><dd>{metadata.source}</dd></div>}</dl></details>
         </aside>
       </div>
-      <div className="reader-v2__mobile-actions"><button type="button" onClick={() => onNavigate?.("back")} aria-label="Back to book"><ChevronLeft size={18} /></button><span><Clock3 size={14} /> {model.readingPass}</span><button type="button" onClick={() => onNavigate?.("bookmark")} aria-label="Save current page"><Bookmark size={18} /></button></div>
+      <div className="reader-v2__mobile-actions"><button ref={notebookTriggerRef} type="button" onClick={() => setNotebookOpen((open) => !open)} aria-label="Open notes and bookmarks" aria-expanded={notebookOpen} aria-controls="reader-notebook"><StickyNote size={18} /></button><span><Clock3 size={14} /> {model.readingPass}</span><button type="button" onClick={() => { toggleBookmark(); onNavigate?.("bookmark"); }} aria-label="Save current page" aria-pressed={bookmarked}><Bookmark size={18} /></button></div>
       <div className="reader-v2__reader-navigation"><ExperienceBottomNavigation active="library" onNavigate={onNavigate} /></div>
     </ExperienceShell>
   );

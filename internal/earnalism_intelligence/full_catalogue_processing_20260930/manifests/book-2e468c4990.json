@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "c0405541dec47dd7a73a38f073cc455de537fe1b059f24aab70dbdaf58051068",
+    "chapters/chapter-001.json": "be44bfa8b526c5e14504d541698811031c6be8120f5754d48931723290afe9f0",
+    "checksum_manifest.json": "57379e4f4556eb4f7df83c29bba1c1b9d953834b35a4bcfeca8146d97bb5dea9",
+    "highlight_sync.json": "1fe5f211dae671c60630e603c88b9d3745879351ce1851808b509f556bfaacf9",
+    "public_book.json": "b5bfced7584149979cb28b78226e02b461511b9ec395c9b3781c17015bc4a4e5",
+    "reader_manifest.json": "b084ca12f1743804cb17b420ab41bb2896a5770d6ac748990db4f662838a35dc",
+    "source_evidence.json": "bab1d78521ea6d3dae52964edc76b788070367aaaaed9cdeb61305f9bde776e8"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "b0580e325d637dbd74661db1f98dbfff0ca27700d64a7f2420fc735629ce2337",
+      "file_sha256": "be44bfa8b526c5e14504d541698811031c6be8120f5754d48931723290afe9f0",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "c0405541dec47dd7a73a38f073cc455de537fe1b059f24aab70dbdaf58051068",
+    "chapters/chapter-001.json": "be44bfa8b526c5e14504d541698811031c6be8120f5754d48931723290afe9f0",
+    "checksum_manifest.json": "57379e4f4556eb4f7df83c29bba1c1b9d953834b35a4bcfeca8146d97bb5dea9",
+    "highlight_sync.json": "1fe5f211dae671c60630e603c88b9d3745879351ce1851808b509f556bfaacf9",
+    "public_book.json": "b5bfced7584149979cb28b78226e02b461511b9ec395c9b3781c17015bc4a4e5",
+    "reader_manifest.json": "b084ca12f1743804cb17b420ab41bb2896a5770d6ac748990db4f662838a35dc",
+    "source_evidence.json": "bab1d78521ea6d3dae52964edc76b788070367aaaaed9cdeb61305f9bde776e8"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "c0405541dec47dd7a73a38f073cc455de537fe1b059f24aab70dbdaf58051068",
+      "public_book": "b5bfced7584149979cb28b78226e02b461511b9ec395c9b3781c17015bc4a4e5",
+      "reader_manifest": "b084ca12f1743804cb17b420ab41bb2896a5770d6ac748990db4f662838a35dc",
+      "source_evidence": "bab1d78521ea6d3dae52964edc76b788070367aaaaed9cdeb61305f9bde776e8"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "79a9c4ee245f59f92baa12b3e62d843034f7c0a9fd1ea8dfbee3f5ced334b536",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "be44bfa8b526c5e14504d541698811031c6be8120f5754d48931723290afe9f0",
+          "title": "Full Text",
+          "word_count": 2284
+        }
+      ],
+      "content_hash": "72aeb222d118f8f36dbe7a1648851d98e5b9a4f60988a3c8732f0cc5b7161f27",
+      "provenance_hash": "b490b659a0ff953ae53d8fd7272be692c5cf7ad868a62269b7a77c407bf62b0f",
+      "sanitized": true,
+      "source_hash": "b0580e325d637dbd74661db1f98dbfff0ca27700d64a7f2420fc735629ce2337"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "9cf012b76068d46d95c43aed2dd3f6dba0d7d40fbd0d18dd22c959fb4915a34c",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783227062/earnalism/covers/front/book-2e468c4990_front_1600x2400.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "bab1d78521ea6d3dae52964edc76b788070367aaaaed9cdeb61305f9bde776e8",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-2e468c4990",
+    "title": "কাবুলিওয়ালা"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

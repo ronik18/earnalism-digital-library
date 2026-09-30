@@ -40,8 +40,9 @@ describe('chapter index contract', () => {
       .map((slug) => path.join(controlledRoot, slug, 'reader_manifest.json'))
       .filter((manifestPath) => fs.existsSync(manifestPath))
       .sort();
-    // The active inventory includes Sherlock Holmes' 12-chapter launch
-    // package. Yugalanguriya's 10-chapter package remains archived and held.
+    // Yugalanguriya's 10-chapter package remains archived and held, outside the
+    // active inventory. That inventory includes Sherlock Holmes' approved
+    // 12-chapter package added in PR #470.
     expect(manifests).toHaveLength(96);
 
     let auditedChapters = 0;

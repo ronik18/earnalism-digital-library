@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "ba17737ee2cb2ea95ab3a66a109dcb4a1d36ac6437fdf7bf2c6cb006d64b4940",
+    "chapters/chapter-001.json": "4b67f4dbca39a6208440b978ee0ca7715ff3ab7be00540e59a1512b0fa1743f6",
+    "checksum_manifest.json": "a6f14e549aa4b1b560d2243c8df6ab7c3532acf77f00cd1d0dc15e51b3442945",
+    "highlight_sync.json": "00a054a2ac3350832ac63791f8948a481bf4398786e0a3cde3099bcc83d1ecf5",
+    "public_book.json": "1dc6022ee78fe065dc905d2047d2adddcd0eb2c014921e4632ce1d4f9758d1f5",
+    "reader_manifest.json": "e661454cb8aa855d31007c42465fdd7499411b967e680cb85d8d46a789d9694f",
+    "source_evidence.json": "52e82ea38ede33daca6127014f0d6840cd8b43694806e66493b64355cb4c1d69"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "a03d0c0fa2909265a3c2fe7026299860ffee3d49c0285d23e34b87eefc155386",
+      "file_sha256": "4b67f4dbca39a6208440b978ee0ca7715ff3ab7be00540e59a1512b0fa1743f6",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "ba17737ee2cb2ea95ab3a66a109dcb4a1d36ac6437fdf7bf2c6cb006d64b4940",
+    "chapters/chapter-001.json": "4b67f4dbca39a6208440b978ee0ca7715ff3ab7be00540e59a1512b0fa1743f6",
+    "checksum_manifest.json": "a6f14e549aa4b1b560d2243c8df6ab7c3532acf77f00cd1d0dc15e51b3442945",
+    "highlight_sync.json": "00a054a2ac3350832ac63791f8948a481bf4398786e0a3cde3099bcc83d1ecf5",
+    "public_book.json": "1dc6022ee78fe065dc905d2047d2adddcd0eb2c014921e4632ce1d4f9758d1f5",
+    "reader_manifest.json": "e661454cb8aa855d31007c42465fdd7499411b967e680cb85d8d46a789d9694f",
+    "source_evidence.json": "52e82ea38ede33daca6127014f0d6840cd8b43694806e66493b64355cb4c1d69"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "ba17737ee2cb2ea95ab3a66a109dcb4a1d36ac6437fdf7bf2c6cb006d64b4940",
+      "public_book": "1dc6022ee78fe065dc905d2047d2adddcd0eb2c014921e4632ce1d4f9758d1f5",
+      "reader_manifest": "e661454cb8aa855d31007c42465fdd7499411b967e680cb85d8d46a789d9694f",
+      "source_evidence": "52e82ea38ede33daca6127014f0d6840cd8b43694806e66493b64355cb4c1d69"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "e52a4eab4ad2bb3d1577028ae6db2b442ae331b6abce23634c2f89bfca6ef260",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "4b67f4dbca39a6208440b978ee0ca7715ff3ab7be00540e59a1512b0fa1743f6",
+          "title": "The Country of the Blind",
+          "word_count": 9570
+        }
+      ],
+      "content_hash": "9733617f1c7378d6d529652708dd58f8f0c6f106b449a5e317464e8b7d7e0095",
+      "provenance_hash": "e4d674d5122b9110ce1dd6ce2d82449c096b1912afde09b23cd4f45a9aad3c76",
+      "sanitized": true,
+      "source_hash": "9c3a181e89c3cba35cc6f55c71aff374a2348b64cc26aba3fbb9e999e8a7676c"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "7e83109e76833afc2d65e26dbb93668bb0300bf5b4546398fa4ea3ba5cfac3bb",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "52e82ea38ede33daca6127014f0d6840cd8b43694806e66493b64355cb4c1d69",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-country-of-the-blind",
+    "title": "The Country of the Blind"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

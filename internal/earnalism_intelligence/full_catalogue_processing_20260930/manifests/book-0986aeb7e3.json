@@ -1,0 +1,119 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "38d37f80eadb5bedfe43578d83898fbaf7b0f5f2b5c2c00dd81ae5e25a8f89d1",
+    "chapters/chapter-001.json": "f17954559fd1e9c0a101d0b425c02de2a55b94ccbeeedab641fcc0f7e59ba4f0",
+    "checksum_manifest.json": "6b684cbdc00eac1a9554c02ab4edd88f8293da390bcd62fce0cee7726cac3fa8",
+    "highlight_sync.json": "99b6539084da130375c1bb4ef658eab3ba569cc3d37ecf554e90824e51aca83b",
+    "public_book.json": "881c0fc82b94e39e75affddb9b0667681882b44093af71813d0c904e676a2219",
+    "reader_manifest.json": "c93cfe76dfd95816d13ade91c990f4574fabb61afd6fb1311519302395defce9",
+    "source_evidence.json": "f2459082cda1c27979d5392242c62d3646e971c0764c04798066704c865b80e0"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "f3d11b36d1ca572a7fbae5e7e765afe4f834c6c5a4d60a1ec83bfd84c33d0eb6",
+      "file_sha256": "f17954559fd1e9c0a101d0b425c02de2a55b94ccbeeedab641fcc0f7e59ba4f0",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "38d37f80eadb5bedfe43578d83898fbaf7b0f5f2b5c2c00dd81ae5e25a8f89d1",
+    "approval_evidence.json": "38d37f80eadb5bedfe43578d83898fbaf7b0f5f2b5c2c00dd81ae5e25a8f89d1",
+    "chapters/chapter-001.json": "f17954559fd1e9c0a101d0b425c02de2a55b94ccbeeedab641fcc0f7e59ba4f0",
+    "checksum_manifest.json": "6b684cbdc00eac1a9554c02ab4edd88f8293da390bcd62fce0cee7726cac3fa8",
+    "highlight_sync.json": "99b6539084da130375c1bb4ef658eab3ba569cc3d37ecf554e90824e51aca83b",
+    "public_book.json": "881c0fc82b94e39e75affddb9b0667681882b44093af71813d0c904e676a2219",
+    "reader_manifest.json": "c93cfe76dfd95816d13ade91c990f4574fabb61afd6fb1311519302395defce9",
+    "source_evidence.json": "f2459082cda1c27979d5392242c62d3646e971c0764c04798066704c865b80e0"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "38d37f80eadb5bedfe43578d83898fbaf7b0f5f2b5c2c00dd81ae5e25a8f89d1",
+      "public_book": "881c0fc82b94e39e75affddb9b0667681882b44093af71813d0c904e676a2219",
+      "reader_manifest": "c93cfe76dfd95816d13ade91c990f4574fabb61afd6fb1311519302395defce9",
+      "source_evidence": "f2459082cda1c27979d5392242c62d3646e971c0764c04798066704c865b80e0"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "b05d02ceb3c6696f25001b5cbd19ffc5a1a092f3451b9e0673d78301aac61ae9",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "f17954559fd1e9c0a101d0b425c02de2a55b94ccbeeedab641fcc0f7e59ba4f0",
+          "title": "হৈমন্তী",
+          "word_count": 3954
+        }
+      ],
+      "content_hash": "e4f1997b2afb99d713363043c730084c26f66421856dcefc2e8f9e9dbad74d13",
+      "provenance_hash": "e2f991986f3739cec4987de40fae4a32290d6e30d363f2b01cc081e96141abc4",
+      "sanitized": true,
+      "source_hash": "f3d11b36d1ca572a7fbae5e7e765afe4f834c6c5a4d60a1ec83bfd84c33d0eb6"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "ee7304e444c8e85a6d4ccfe95493329ed49f30aa71f16cb31c54c215517c4fb6",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "f2459082cda1c27979d5392242c62d3646e971c0764c04798066704c865b80e0",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-0986aeb7e3",
+    "title": "হৈমন্তী"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

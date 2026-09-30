@@ -1,0 +1,119 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "f7fc77aa8dc941dc645a6130d9de1331d2dfa5a896e23be58a2a63c4f318cded",
+    "chapters/chapter-001.json": "7505d26d36bc40460039afc0eef1e21e00bb80983b2d31ff469ff3e70a6826b9",
+    "checksum_manifest.json": "219b46a6f06037c97386c78be79fa83779c99afcfe979acf1a44a8152df6fbed",
+    "highlight_sync.json": "0cc0849ab6248702816f91a5734a45c6df1b8c7c895b78566e72c4a51d786eac",
+    "public_book.json": "12009ad0911af086fb2a7335ee45fc85864be31fdad3408ce0af1c7d0bbde4ea",
+    "reader_manifest.json": "91760dd774f5afe1b24e29d3bee376e12d94a552b03c929ae86488acca53ffbe",
+    "source_evidence.json": "b8a45458b92134c78a66479d779d2f962bf54a2d1e21361e63f0e30156de6d09"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "208a553fc4eb8ac6e6de42a4f65a71da855d6e0ddd4b2d2259f8d15809845d16",
+      "file_sha256": "7505d26d36bc40460039afc0eef1e21e00bb80983b2d31ff469ff3e70a6826b9",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "f7fc77aa8dc941dc645a6130d9de1331d2dfa5a896e23be58a2a63c4f318cded",
+    "approval_evidence.json": "f7fc77aa8dc941dc645a6130d9de1331d2dfa5a896e23be58a2a63c4f318cded",
+    "chapters/chapter-001.json": "7505d26d36bc40460039afc0eef1e21e00bb80983b2d31ff469ff3e70a6826b9",
+    "checksum_manifest.json": "219b46a6f06037c97386c78be79fa83779c99afcfe979acf1a44a8152df6fbed",
+    "highlight_sync.json": "0cc0849ab6248702816f91a5734a45c6df1b8c7c895b78566e72c4a51d786eac",
+    "public_book.json": "12009ad0911af086fb2a7335ee45fc85864be31fdad3408ce0af1c7d0bbde4ea",
+    "reader_manifest.json": "91760dd774f5afe1b24e29d3bee376e12d94a552b03c929ae86488acca53ffbe",
+    "source_evidence.json": "b8a45458b92134c78a66479d779d2f962bf54a2d1e21361e63f0e30156de6d09"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "f7fc77aa8dc941dc645a6130d9de1331d2dfa5a896e23be58a2a63c4f318cded",
+      "public_book": "12009ad0911af086fb2a7335ee45fc85864be31fdad3408ce0af1c7d0bbde4ea",
+      "reader_manifest": "91760dd774f5afe1b24e29d3bee376e12d94a552b03c929ae86488acca53ffbe",
+      "source_evidence": "b8a45458b92134c78a66479d779d2f962bf54a2d1e21361e63f0e30156de6d09"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "e67d89db8f5b2a22272cab9f78f31c3a7141789b8c43071ed52d5f955a06b6c1",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "7505d26d36bc40460039afc0eef1e21e00bb80983b2d31ff469ff3e70a6826b9",
+          "title": "মেঘ ও রৌদ্র",
+          "word_count": 7459
+        }
+      ],
+      "content_hash": "35286f73e2006c6041d9fba9ef6450ae5998f3959d91d67fdf428ceca8b66402",
+      "provenance_hash": "30a404a955ae1154aec3a50c262ae701a66920477b3d7b6d9bacd35c3d5d8909",
+      "sanitized": true,
+      "source_hash": "208a553fc4eb8ac6e6de42a4f65a71da855d6e0ddd4b2d2259f8d15809845d16"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "6666543e129697fac18f9869d422a9782416420d5908738746bd012be3536581",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "b8a45458b92134c78a66479d779d2f962bf54a2d1e21361e63f0e30156de6d09",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-5461971092",
+    "title": "মেঘ ও রৌদ্র"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

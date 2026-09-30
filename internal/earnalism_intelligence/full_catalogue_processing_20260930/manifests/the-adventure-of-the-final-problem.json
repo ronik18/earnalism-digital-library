@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "ab7d4ee9765e9a29ef9bafaa3e59b5e2b0794a5351c922789ab0130463704d7f",
+    "chapters/chapter-001.json": "6fd983bde17e2bebecd4be3e135062f7d55b37792c845752f54ddc70c98cb942",
+    "checksum_manifest.json": "a107d2c9015f0509e13e965ee4039fd27a24e51aa5f094df30d58032b119cfe2",
+    "highlight_sync.json": "4acdc7bb8882508f0ba6c8326fcdac51ebe5d0d802b45d57a18e6ad4e362e58c",
+    "public_book.json": "b7839853e0ca389837f45587a1a3812114c34c9ed8269f670b7ff6b85ebe67a5",
+    "reader_manifest.json": "ea221aa0a291620db387c3a5e42d0d879b092fee9e33fcd6be5bfc000852857c",
+    "source_evidence.json": "a2783c4db5cd1a2f11f46a99ffdee11abd23150db21151a83bdef3c43fd415a8"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "117d6a3c1729145f0d58f61c8f8f28a3cb007cb16557e9bc018534974fb108f8",
+      "file_sha256": "6fd983bde17e2bebecd4be3e135062f7d55b37792c845752f54ddc70c98cb942",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "ab7d4ee9765e9a29ef9bafaa3e59b5e2b0794a5351c922789ab0130463704d7f",
+    "chapters/chapter-001.json": "6fd983bde17e2bebecd4be3e135062f7d55b37792c845752f54ddc70c98cb942",
+    "checksum_manifest.json": "a107d2c9015f0509e13e965ee4039fd27a24e51aa5f094df30d58032b119cfe2",
+    "highlight_sync.json": "4acdc7bb8882508f0ba6c8326fcdac51ebe5d0d802b45d57a18e6ad4e362e58c",
+    "public_book.json": "b7839853e0ca389837f45587a1a3812114c34c9ed8269f670b7ff6b85ebe67a5",
+    "reader_manifest.json": "ea221aa0a291620db387c3a5e42d0d879b092fee9e33fcd6be5bfc000852857c",
+    "source_evidence.json": "a2783c4db5cd1a2f11f46a99ffdee11abd23150db21151a83bdef3c43fd415a8"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "ab7d4ee9765e9a29ef9bafaa3e59b5e2b0794a5351c922789ab0130463704d7f",
+      "public_book": "b7839853e0ca389837f45587a1a3812114c34c9ed8269f670b7ff6b85ebe67a5",
+      "reader_manifest": "ea221aa0a291620db387c3a5e42d0d879b092fee9e33fcd6be5bfc000852857c",
+      "source_evidence": "a2783c4db5cd1a2f11f46a99ffdee11abd23150db21151a83bdef3c43fd415a8"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "818e833ec905362fcea487a25a2db2e6872ed63b39526bc28ff9ecded19371fc",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "6fd983bde17e2bebecd4be3e135062f7d55b37792c845752f54ddc70c98cb942",
+          "title": "The Adventure of the Final Problem",
+          "word_count": 7180
+        }
+      ],
+      "content_hash": "d2a21379a278bf64fb92743b55f1ab9ac201582359c3955956ca6b30944a6f11",
+      "provenance_hash": "e9e7696d32b14368eb4f60192167e5eb6533cd7ba75faf5c303586675d77871a",
+      "sanitized": true,
+      "source_hash": "b4779b3e521590be2dc8773a1e83bdcadf78abeb2f2de5bca52d56c8189d1ec1"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "1603b030e1681a12e1e4a815b64230b49f3c863298fcbaaafc878e6ee66861b3",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "a2783c4db5cd1a2f11f46a99ffdee11abd23150db21151a83bdef3c43fd415a8",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-adventure-of-the-final-problem",
+    "title": "The Adventure of the Final Problem"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

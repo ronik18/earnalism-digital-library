@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "12d785fc5c7091756b9ef88ab34c19c8e94e90f29843b108045d97bd0f042ed9",
+    "chapters/chapter-001.json": "23d67370acaeb2f78188f15d55ef5c4512147b593a17d8c55d071629474bdc95",
+    "checksum_manifest.json": "2fe11ee964e885f76535089848686d8219aeadd17197e72980f85d538ec0d69f",
+    "highlight_sync.json": "32a3cf87c128627123cccf37c3fe2c3a3aae8c40564cfcd3bd42b76597d30408",
+    "public_book.json": "b3a63ad3cb0a48702a5fa94009c2ff4eb9357291bb39bbf820ba72b3a6f22170",
+    "reader_manifest.json": "ce8cf215f1ae71d760b80329b62a0fe6463d4aabca80bd457c93ffe782f2dd06",
+    "source_evidence.json": "bd42da9003f879eea7c3746be87d491085f336a51b1363ed44d61f35d3402f33"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "eb1b8f204ad8a0764e59d823c68fa470020d236a9d60138a406ee3f89ebdc669",
+      "file_sha256": "23d67370acaeb2f78188f15d55ef5c4512147b593a17d8c55d071629474bdc95",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "12d785fc5c7091756b9ef88ab34c19c8e94e90f29843b108045d97bd0f042ed9",
+    "chapters/chapter-001.json": "23d67370acaeb2f78188f15d55ef5c4512147b593a17d8c55d071629474bdc95",
+    "checksum_manifest.json": "2fe11ee964e885f76535089848686d8219aeadd17197e72980f85d538ec0d69f",
+    "highlight_sync.json": "32a3cf87c128627123cccf37c3fe2c3a3aae8c40564cfcd3bd42b76597d30408",
+    "public_book.json": "b3a63ad3cb0a48702a5fa94009c2ff4eb9357291bb39bbf820ba72b3a6f22170",
+    "reader_manifest.json": "ce8cf215f1ae71d760b80329b62a0fe6463d4aabca80bd457c93ffe782f2dd06",
+    "source_evidence.json": "bd42da9003f879eea7c3746be87d491085f336a51b1363ed44d61f35d3402f33"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "12d785fc5c7091756b9ef88ab34c19c8e94e90f29843b108045d97bd0f042ed9",
+      "public_book": "b3a63ad3cb0a48702a5fa94009c2ff4eb9357291bb39bbf820ba72b3a6f22170",
+      "reader_manifest": "ce8cf215f1ae71d760b80329b62a0fe6463d4aabca80bd457c93ffe782f2dd06",
+      "source_evidence": "bd42da9003f879eea7c3746be87d491085f336a51b1363ed44d61f35d3402f33"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "0a48522d454d5fa0cbb55ebdd43f98a7613187d6d698d6dc77c0a705cab17385",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "23d67370acaeb2f78188f15d55ef5c4512147b593a17d8c55d071629474bdc95",
+          "title": "The Purloined Letter",
+          "word_count": 7062
+        }
+      ],
+      "content_hash": "cd6b9310551df3ad1a0618cff3295671a7b120a29d4e7084b21ac26019fcda82",
+      "provenance_hash": "5c62101e10697153b9580b73f755beb9b87e52472ec5b56742eab750433cc711",
+      "sanitized": true,
+      "source_hash": "99de013d9419389e884e72a91328bc815ac35158c71aaf703d57b9f0a4de836b"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "66e556ff2f3d552fe534f5dbfdd5a0fe2f98fd52c646f93563a2266c65099b97",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "bd42da9003f879eea7c3746be87d491085f336a51b1363ed44d61f35d3402f33",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-purloined-letter",
+    "title": "The Purloined Letter"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

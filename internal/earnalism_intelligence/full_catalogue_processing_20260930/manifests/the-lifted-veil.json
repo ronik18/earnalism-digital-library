@@ -1,0 +1,132 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "fb5f2baededb0dfa7fb5f9489ecd6390b9ad8542ba2f2096e3c63d9cc55d1dfb",
+    "chapters/chapter-001.json": "fa2128719bfb107386fb0e44fa8a8ce721cf435a737ff738bf9552db5d7ec292",
+    "chapters/chapter-002.json": "54cca76528a8f61f8024406bd99e019e0c6e30c13cf60ca0a04bb41f11c47b6e",
+    "checksum_manifest.json": "cbe76f22c9812af7f3880516a784244a0004422eb63ab98e81a9e518dde23bea",
+    "highlight_sync.json": "7dce4241b0b84565498a23c8b24dd7847650f39f06c3abee0a820414ba7d46cf",
+    "public_book.json": "af4782533a36ed1362bef06a292438f3082f87df1c97dd46fd8393345df4e8cb",
+    "reader_manifest.json": "9db3e6b1e0d52ff3c6cbe25cb20595b66ff51b34337ca44cfe04b0beffa218b8",
+    "source_evidence.json": "af6a6662de70d0ab939eef192e75533c5c3052d8f5ffe5b829c62ed78731116e"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "2a4daea30e9fdd8dcea28cd90b4546aebee6225d6ed02a574da79b2eb40bc2cf",
+      "file_sha256": "fa2128719bfb107386fb0e44fa8a8ce721cf435a737ff738bf9552db5d7ec292",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "f44f0ee02c1be2380576d972d094e803bddcaf3d062e72ab0bf1dbaf279b5b36",
+      "file_sha256": "54cca76528a8f61f8024406bd99e019e0c6e30c13cf60ca0a04bb41f11c47b6e",
+      "id": "chapter-002"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "fb5f2baededb0dfa7fb5f9489ecd6390b9ad8542ba2f2096e3c63d9cc55d1dfb",
+    "chapters/chapter-001.json": "fa2128719bfb107386fb0e44fa8a8ce721cf435a737ff738bf9552db5d7ec292",
+    "chapters/chapter-002.json": "54cca76528a8f61f8024406bd99e019e0c6e30c13cf60ca0a04bb41f11c47b6e",
+    "checksum_manifest.json": "cbe76f22c9812af7f3880516a784244a0004422eb63ab98e81a9e518dde23bea",
+    "highlight_sync.json": "7dce4241b0b84565498a23c8b24dd7847650f39f06c3abee0a820414ba7d46cf",
+    "public_book.json": "af4782533a36ed1362bef06a292438f3082f87df1c97dd46fd8393345df4e8cb",
+    "reader_manifest.json": "9db3e6b1e0d52ff3c6cbe25cb20595b66ff51b34337ca44cfe04b0beffa218b8",
+    "source_evidence.json": "af6a6662de70d0ab939eef192e75533c5c3052d8f5ffe5b829c62ed78731116e"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "fb5f2baededb0dfa7fb5f9489ecd6390b9ad8542ba2f2096e3c63d9cc55d1dfb",
+      "public_book": "af4782533a36ed1362bef06a292438f3082f87df1c97dd46fd8393345df4e8cb",
+      "reader_manifest": "9db3e6b1e0d52ff3c6cbe25cb20595b66ff51b34337ca44cfe04b0beffa218b8",
+      "source_evidence": "af6a6662de70d0ab939eef192e75533c5c3052d8f5ffe5b829c62ed78731116e"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 2,
+      "chapter_index_sha256": "fa8d8bd19081af66a31a08d28b86c9fdfd5dabfcdbd67bbcec1740972b996683",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "fa2128719bfb107386fb0e44fa8a8ce721cf435a737ff738bf9552db5d7ec292",
+          "title": "CHAPTER I",
+          "word_count": 9204
+        },
+        {
+          "id": "chapter-002",
+          "order": 2,
+          "sha256": "54cca76528a8f61f8024406bd99e019e0c6e30c13cf60ca0a04bb41f11c47b6e",
+          "title": "CHAPTER II",
+          "word_count": 8489
+        }
+      ],
+      "content_hash": "219375fc5342ed68872f60e0aa9cd130666c6b09fbbab4add27a550d9c6f068e",
+      "provenance_hash": "6a1c7c08efed73d87d76e7e99145d2df2166ad241cba7e35396022c6ff7b4469",
+      "sanitized": true,
+      "source_hash": "53fcae1e2c80c9265a01a5d40a3e35bb661e311018ba965982306be7bf3abff6"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "0744f518c7008384d6713fc47471b9a9a07c7934407adfa005c825ec0b08ce8f",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "af6a6662de70d0ab939eef192e75533c5c3052d8f5ffe5b829c62ed78731116e",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-lifted-veil",
+    "title": "The Lifted Veil"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

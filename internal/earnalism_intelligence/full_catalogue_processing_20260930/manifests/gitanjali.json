@@ -1,0 +1,1559 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "7788e737790279baa11324c2c31edfeabf112a4942151e39b074a4159e3014f2",
+    "chapters/introduction.json": "460718195e657f7f8fd19f3fdd62249ba7470f44fbfc2ae4419e1ec724944fc0",
+    "chapters/piece-001.json": "1b337e41102d9f7ee5d194fe59d74181d6e49d3f8adcb220bf6ed2e7b889ed24",
+    "chapters/piece-002.json": "fe60eafb9678b3a7445889a75e37dd8a903d92949570b9fc61791b7019d70527",
+    "chapters/piece-003.json": "e7f35e0364379eacc73ee558d8dc14bf5d9c3ad8a6ef32b1ddd9081de9fb8563",
+    "chapters/piece-004.json": "2f5f7220b1c7539e385289cd267c7bc626d8afb8357374f77e0baac4ceec5aa0",
+    "chapters/piece-005.json": "60def2cd9a5497630e1b8067b0202215be78a5871c956347c10531a363ca4864",
+    "chapters/piece-006.json": "363cd6789dd2b93f62dade343bc43adcfd9ba52809e1aabaf80a1080150869d5",
+    "chapters/piece-007.json": "961626ece131beae7185d8cfff03fb8c64c9681afafcc119c6cdfc11ed6ee7fe",
+    "chapters/piece-008.json": "17b994095652ac8029e035a0242bc09c25a76eb9b8b870348f8a6098683099bf",
+    "chapters/piece-009.json": "f0ade92930b62db5032f4ea664670da133fe269a8e42fc574b3009a7ede5a769",
+    "chapters/piece-010.json": "b327adbb490ded782668654bd273038900abc09b4512ba8fedb321dd6f9d0de1",
+    "chapters/piece-011.json": "75a44ad69cc587c3b55ce5ead75cdf917a11f26f1a53478003b1b255158e2a8a",
+    "chapters/piece-012.json": "ae5eafad4493a087465c1ba740c898c0befcd2ceedf153a134d403aa3581ad0c",
+    "chapters/piece-013.json": "dca17d56f168470992aabd97229bbfc6dc87c18b6e5677b64525de5de8fbb5b8",
+    "chapters/piece-014.json": "c20283e1ece90a3e6906b1bfecb8afe971e2f130f319a4b43cabed3a3f337d47",
+    "chapters/piece-015.json": "2d3937f760ae0d5cb722abeef5e92f233a2c0a941f4163480c803be2960fa86b",
+    "chapters/piece-016.json": "6d4e4078b811568035feabe35bb92e9cdff2aae9e3814fb6c1a90a84d933d415",
+    "chapters/piece-017.json": "8f179c8209978e138a9202c0d660b8a29c8760dd5eb83920cdee3f2973710136",
+    "chapters/piece-018.json": "3c19ed3d18a2fd51bc80d6e5b4744a4f42aa483cf49c31b4a31c3397f3e1b17e",
+    "chapters/piece-019.json": "cd430616c92fae27fed8379e8f3ed38ea633a06622505bb46084994ab12f7420",
+    "chapters/piece-020.json": "a3fa67b4179e13077c16031b451ed3c0105616b7e7f166b10cd3de38bb2ea677",
+    "chapters/piece-021.json": "dbedcee6bbd2f2f298acba94f0b12052cf9a92557cd0bee256b57e5028ed5202",
+    "chapters/piece-022.json": "8462107cb52b98ca2923db98e55d163b59b3fe4dc9072fac82d0cc81132486ef",
+    "chapters/piece-023.json": "13d39951ef0db112abe924c899cff1640cf72098d4a1e51f7b1ca69a0d0b0eac",
+    "chapters/piece-024.json": "4811271de8dc457b8925723c3e283c145d85eef43e3e6ce63735607a7883dfc7",
+    "chapters/piece-025.json": "cc0ff042fff6afbe4ddf0d4075875b3bc37e3167f173535ecf90d766e9e1558f",
+    "chapters/piece-026.json": "db662d533b8031f01f689a71c3ce305ec2b2c889461b9644ad85068536e751d9",
+    "chapters/piece-027.json": "3d9a70a5d6f719d82bf573e3a0691a8b47701fad4b25f128a116559ecca72316",
+    "chapters/piece-028.json": "923ea2a6cfee83c5e3c97871f01b08ac0820e83b08d1e64e93a2a24b9d584261",
+    "chapters/piece-029.json": "d70cd487fd3c9e06dae0db2f72ae641fc5d553d1d03865f1e5f67c0e3ac350cc",
+    "chapters/piece-030.json": "66f3d33708093f2057ab8b60a1db5fd3b7a069cd75a0bb181963ad9d4240af7d",
+    "chapters/piece-031.json": "648f295d0876e2f4db74b3e130791b098eb095da5c21e02d2c5cb546b686428d",
+    "chapters/piece-032.json": "e3d16a91c7837045e17f89f238c00db046ab9ce987a97a73ac2564914dae944c",
+    "chapters/piece-033.json": "28f3fdb43d4edac30b050eadc8adca4e300d38576565e6050f337f4abd8afc2e",
+    "chapters/piece-034.json": "4fed37c8dce9863b180774ca68fc82f67063bfa6723893b77ccdf6123e252e5b",
+    "chapters/piece-035.json": "0fb4763dd143ca9fbc0a6b16618d00d5c4f78e249137f7286f404c804fb7d76e",
+    "chapters/piece-036.json": "e233673072fe861f2d6cb334890c6151d88d7afcb4226069bf9d821178846f15",
+    "chapters/piece-037.json": "c2fc3f58c2ce956e07741031c3231ae8e35eddef34dd06386739136e78995f13",
+    "chapters/piece-038.json": "22e68b1664cff0e64051848ef12da15acde13d11b400b2958ce2654544d3b7de",
+    "chapters/piece-039.json": "574a7bd5b02f88ccbfbaf75e49a933fcacb82818b8a94ab8c83fca54fb849edb",
+    "chapters/piece-040.json": "205cb21661596984f6d9dcf8969660a360a3f6fd2b1f55cd64eb5061f56cbf07",
+    "chapters/piece-041.json": "36a26f5b2a7f2740cb2f2dbcb02cbe4a131b5f469bf906cec2cb0ca278cfc654",
+    "chapters/piece-042.json": "cb2df00b5eef04fccf491f2a01cc4cdd8f9c57a43f063e67e8e292b047a940b5",
+    "chapters/piece-043.json": "325cfc9c803ed42491edd277ec079eb5d0d9b7a562b10dcf896fc715d5b938b8",
+    "chapters/piece-044.json": "52218fc0c7e123d02f3f624ad9ec9d7bfd4bbf1cba52fdc28e5640c6543343e8",
+    "chapters/piece-045.json": "aecebb1a183eb3adb92e6c8d33c1433afe69f24f4ecb9589c1cc7c3f36d0781a",
+    "chapters/piece-046.json": "e8a405474e73dbf1a9a7bc39a9bdcd8f16167667f991e5b253721336a49fa461",
+    "chapters/piece-047.json": "46404c7575270293d77a407a489b341400d764e100956baa6f78a7f987ea80a1",
+    "chapters/piece-048.json": "f0dcb1563b8a03de491d691503f46e1fb8557995d59157fe0395498ee076bb03",
+    "chapters/piece-049.json": "8967df15edcb90a11475a09571d971b17971414dab67646c8deace1571c30089",
+    "chapters/piece-050.json": "99bde0e4f3768b5b612576b167915722b5c04222cb3da55a638e2d792bc3063a",
+    "chapters/piece-051.json": "25a464621cd528796f32d4739cf2836097771c19f2b963f0593df989b76fdb6c",
+    "chapters/piece-052.json": "eb3973766d60014ce3d7f259179577505b0d597cf4df646692e0fd73eda4199a",
+    "chapters/piece-053.json": "e9614a877a815dacd35697ececb79e84b05877028e2d3be7e54baadf239e492a",
+    "chapters/piece-054.json": "85b687fc4baa87beb6e209e3ca68f5ec9ac0ce6608f5a1bc1265267f96817b8e",
+    "chapters/piece-055.json": "3e57a48b87eeced2597abfa45b5769423f32208810c78f433492cc96698f9205",
+    "chapters/piece-056.json": "84fddebfd43fa735554eac49f280831b42dd8a43f14616603358e894bd42c71e",
+    "chapters/piece-057.json": "13bd38c1381e775f11606b9bb4494d30b89f07994e47e0ed795a8e0fd84aeaab",
+    "chapters/piece-058.json": "c9f5b6ebc1179003e3141d30bdd4ca43d32e0b7ee3d0b9dfc5a6075bcb149df0",
+    "chapters/piece-059.json": "e2f9ceb58234de4d2a5cd97513ca69b58018cda3ef66c41652e491b13d815327",
+    "chapters/piece-060.json": "626964a9b3f489b1d29d67e3eb103d5a92b6807551af2beccc883e541d732d98",
+    "chapters/piece-061.json": "f56e2b7dba3640a8e1957f37834bbb00090693a44ac5e696fd7d9ead44d38330",
+    "chapters/piece-062.json": "2936ec8f14fb78fa843f7988e9391fd8323baeb7386a504814c16d9a5d9a08ab",
+    "chapters/piece-063.json": "a966073dfeb1e31a24371819eaffea73337ef3888d14e4c71531f8b4b4d4f98d",
+    "chapters/piece-064.json": "90322e8d150e7ee111a20cf84d1b5f7b136e571f5f8a47b0266adc6a702c1bee",
+    "chapters/piece-065.json": "9d2276b6773ee040757b3c239fd2776ffd40a09544b1ab4f420303dda7d55ce0",
+    "chapters/piece-066.json": "1c46ea405c5dee5c8a3614e5ac95b16c3bc9c9770901b6533f02851c75807200",
+    "chapters/piece-067.json": "25cf144bb4aac3839300a5fa5a7e51f017c2475e818086f9c9a0432a640e76c4",
+    "chapters/piece-068.json": "722fb748958470974fcc23df1a5032c663697197ce6ee9e72d7dfec4f8e1deb1",
+    "chapters/piece-069.json": "d0c3abcc0f79f8379a1e85feec399948bb84531328a35a86951aa9ba6bae90d9",
+    "chapters/piece-070.json": "bae8b4442ccc99e262182dad2da507af2f8dfbe313a30b7531fe00d849004ced",
+    "chapters/piece-071.json": "d9dad0e997d8254e17dea9472bc71af3233733421d0a8a241f0f7550f7a30792",
+    "chapters/piece-072.json": "6721c569ea0e8108ceb9824479df09a964ba99dd3aed811a1bf96eddbcc8066c",
+    "chapters/piece-073.json": "b1073792a6bffd1167375d15472523128e0c8f75012c9110a026120fdd4f0cf8",
+    "chapters/piece-074.json": "1f4f63f6e59645d9ecbff7dfd986e28790359e7d28fe1ddf94d548aab2fa5dda",
+    "chapters/piece-075.json": "0b9745ab0b5169ef6622e69edd09f68cc4dc7f8ca79a6b14ce73cbd14935dacc",
+    "chapters/piece-076.json": "6179ac5a92506cfa9993a461b0fa6cfbca95bcc5929135eba88b5db8bf5a75ba",
+    "chapters/piece-077.json": "2d7f1202aa49286147981c5b9281f092cb39398763f5dcbdfc648616606e93f7",
+    "chapters/piece-078.json": "6dc72cc7a52c34b7657b3b9440771cd61d3e5601bc7f71e1ae903d5709df2c83",
+    "chapters/piece-079.json": "894e973ba71598f5364a393d934557ecb06eb61959d04aad97705fbd6a4c8890",
+    "chapters/piece-080.json": "1dd9314470a6a7f3baa9cfcbb97f7c532556c40cd70461bad06c521e0600f627",
+    "chapters/piece-081.json": "08d1bb7c068351be5f5a644d0df3829c266d38d4255621775ceafbe6e9b3943a",
+    "chapters/piece-082.json": "05e6e47c6fe29dbf1e01eadd920fc3344cdaa8fc0bf122282e79b0cb2f64509a",
+    "chapters/piece-083.json": "c30bad5eb79626d59846370a119a766a6ab9a7aa4fae9b1a24bc9770ffa86364",
+    "chapters/piece-084.json": "b7879661e75a9faf28eba950afb81229f6cb62e4b4e1d21cb08d8a37221b211a",
+    "chapters/piece-085.json": "da7f96475f398681f3c6ad8d3e32eaa6b1bad7fddae9fefa170db2673a4a30df",
+    "chapters/piece-086.json": "13d8ecc73f2cd1a589aa80904dfb89e9312c0d16394a85eaad0634c47924273a",
+    "chapters/piece-087.json": "8b3970d89d33ac4e2df06ad5cb76b946e1c1bb3ad8f1d54aff161cd3e0e0da17",
+    "chapters/piece-088.json": "bbc0fbb9993ce56ba64f811f669319fa57ec3ddbcc06260a20f6cd8d8d7cc3db",
+    "chapters/piece-089.json": "32daa5d9980265724bb20e69e0e25e4575f08fd838f77807051c79049d5abed2",
+    "chapters/piece-090.json": "a1a1b359faad2a8f31e9b8717d80bf25f6c6e3cfb5f498e15075a8df105ff6be",
+    "chapters/piece-091.json": "4e02803663c1df914ac4bd8b49250f61038912a0c3cadebb534a2618c1380e15",
+    "chapters/piece-092.json": "2abbfa8fad08c2179839d1e623e7e6279ea10f3a108ff272ae293a2bbbe3f266",
+    "chapters/piece-093.json": "3d4d6c3ceeaf31055804dc272814bbd8d12c0c902a049f00979485cf9ae8997f",
+    "chapters/piece-094.json": "5b712a2f7d3ce5602622e883b478910c665605f00e974b25a26496c4e3d3c316",
+    "chapters/piece-095.json": "7e2eaa1f4127756356ccdc12868e615995e499841600157b7047d54b2b183ede",
+    "chapters/piece-096.json": "7e5aa594b58299b958e95baf0a0651fe294fcaa71333f4f6b9b83cc6ff6e83e1",
+    "chapters/piece-097.json": "5d1d920fdd43071fce71fb0cd659954b41bf400ffe2a75b696ed7b51e044db6a",
+    "chapters/piece-098.json": "1609dd9786b317422789b3f7c942abcf75145255962ebb579ba318a2a28a4967",
+    "chapters/piece-099.json": "d8e485353bc68f0a939fb9bfb65a91e80d0a99f5516c6fcefe3990a66d268635",
+    "chapters/piece-100.json": "c64707ede46e29ddf3d20e3ff57d4e4ae5aa5cfdbc822c0f6880fc9d28d2013b",
+    "chapters/piece-101.json": "b921c0afd26d94f84f09adca91e3b9aecac07bd5ac6cc0e7f10ff48a2e109a11",
+    "chapters/piece-102.json": "030a77a27d68b396689287078dd9f7654ef3a6ebe057437226cfc4f8021a8846",
+    "chapters/piece-103.json": "fcdf79108819e166aa4a4504076462f500b0dfd00aada8eb4f85c638e949824d",
+    "checksum_manifest.json": "0dc00b2927f7139294e37a25bd17b28765e6680c93338ef69090f36be089fdea",
+    "cover_approval_evidence.json": "dc57215379b0500a7676cd3e2c0a0f6d16aa3c80b86cfec373dbf5a7760ff5f0",
+    "public_book.json": "4cbaf34b765446589df09e28906e5093bfae28e8f139681816eaf48e033a1c11",
+    "reader_manifest.json": "ca6d3e68d25681ef81ff9126b42d44bcb2ac63f722a451e8b9bac8084b43fe8c",
+    "source_evidence.json": "3ca1efc66192a53bce4cc31542ac3ad3ea513b5281a6cd3847de27913195d084"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "f0461bdca4ba94d8e5f1dac116ee2543be494830cb6bcfd1afdc0b6427a0b6fc",
+      "file_sha256": "460718195e657f7f8fd19f3fdd62249ba7470f44fbfc2ae4419e1ec724944fc0",
+      "id": "introduction"
+    },
+    {
+      "content_sha256": "f451dd188c779898cd5f4ee5f048349661c63f6ea16c4d854b8de7ed4a169576",
+      "file_sha256": "1b337e41102d9f7ee5d194fe59d74181d6e49d3f8adcb220bf6ed2e7b889ed24",
+      "id": "piece-001"
+    },
+    {
+      "content_sha256": "191de58c7e65a9a98c9e7d7e0b4aecaff0f1e61bcc75e0b971bde88646f72684",
+      "file_sha256": "fe60eafb9678b3a7445889a75e37dd8a903d92949570b9fc61791b7019d70527",
+      "id": "piece-002"
+    },
+    {
+      "content_sha256": "99a3fa18a1ebac501c458101ed307294ae87bfc615f03678bcc7ef8dacda1508",
+      "file_sha256": "e7f35e0364379eacc73ee558d8dc14bf5d9c3ad8a6ef32b1ddd9081de9fb8563",
+      "id": "piece-003"
+    },
+    {
+      "content_sha256": "2fd65402a2b7d77d0fc634b10de90480b551a76709cdcb8cd81a4dfcceb81e9e",
+      "file_sha256": "2f5f7220b1c7539e385289cd267c7bc626d8afb8357374f77e0baac4ceec5aa0",
+      "id": "piece-004"
+    },
+    {
+      "content_sha256": "16f83b693ebdef9b4bd9ce3a7e3def0e1f3433334a503b40b8581d77329f06f9",
+      "file_sha256": "60def2cd9a5497630e1b8067b0202215be78a5871c956347c10531a363ca4864",
+      "id": "piece-005"
+    },
+    {
+      "content_sha256": "cdcdba5d60f93b5ec6d56feae34bbb89cb08fa100a9b6ab7e8e34d9d3af23328",
+      "file_sha256": "363cd6789dd2b93f62dade343bc43adcfd9ba52809e1aabaf80a1080150869d5",
+      "id": "piece-006"
+    },
+    {
+      "content_sha256": "efb5f821d97cdeb47e5e410677c7b31bc8788b80d8fe14c9f44114ad1d3da174",
+      "file_sha256": "961626ece131beae7185d8cfff03fb8c64c9681afafcc119c6cdfc11ed6ee7fe",
+      "id": "piece-007"
+    },
+    {
+      "content_sha256": "4bec5bbc1b208327f48dd6a94845c441a1555fa71bab46cf66acf6e967482812",
+      "file_sha256": "17b994095652ac8029e035a0242bc09c25a76eb9b8b870348f8a6098683099bf",
+      "id": "piece-008"
+    },
+    {
+      "content_sha256": "4c31dab0bf206cf23861d7082362d1478f4d77b1ae6880cb363f31dd371db404",
+      "file_sha256": "f0ade92930b62db5032f4ea664670da133fe269a8e42fc574b3009a7ede5a769",
+      "id": "piece-009"
+    },
+    {
+      "content_sha256": "2384c53ee3ead107013ad30d3ff2287272b2fb49dd3b848360820df3b7eec31c",
+      "file_sha256": "b327adbb490ded782668654bd273038900abc09b4512ba8fedb321dd6f9d0de1",
+      "id": "piece-010"
+    },
+    {
+      "content_sha256": "78dcd2bcd7d518ed1419f2d2a1854413068ccc854993ab7c457b130b6708008a",
+      "file_sha256": "75a44ad69cc587c3b55ce5ead75cdf917a11f26f1a53478003b1b255158e2a8a",
+      "id": "piece-011"
+    },
+    {
+      "content_sha256": "362aea8c8bfbb85305ecbc631a66cb1d43243a0ee2516e19c973079805591b21",
+      "file_sha256": "ae5eafad4493a087465c1ba740c898c0befcd2ceedf153a134d403aa3581ad0c",
+      "id": "piece-012"
+    },
+    {
+      "content_sha256": "329adf7a79d182247fb472c079046638d137f29bec0d2a432ff6f4e4e5c29d0b",
+      "file_sha256": "dca17d56f168470992aabd97229bbfc6dc87c18b6e5677b64525de5de8fbb5b8",
+      "id": "piece-013"
+    },
+    {
+      "content_sha256": "7dd50b8bc554aae6946cb5c18686f3b1c63a5628c777df308aac9a4a028fc662",
+      "file_sha256": "c20283e1ece90a3e6906b1bfecb8afe971e2f130f319a4b43cabed3a3f337d47",
+      "id": "piece-014"
+    },
+    {
+      "content_sha256": "406965e89dacbc86f04606186a63c24ab3c94370e61c4b7a7ac5ae7be9cf260c",
+      "file_sha256": "2d3937f760ae0d5cb722abeef5e92f233a2c0a941f4163480c803be2960fa86b",
+      "id": "piece-015"
+    },
+    {
+      "content_sha256": "4e041960ae2cd0801ece8757c9eb950abe73721d38343dc4160b41494f540265",
+      "file_sha256": "6d4e4078b811568035feabe35bb92e9cdff2aae9e3814fb6c1a90a84d933d415",
+      "id": "piece-016"
+    },
+    {
+      "content_sha256": "1de422a99ad6fd74970bd412040faff8aa8526ba1f4b98a64e7c1cb86ebf51c0",
+      "file_sha256": "8f179c8209978e138a9202c0d660b8a29c8760dd5eb83920cdee3f2973710136",
+      "id": "piece-017"
+    },
+    {
+      "content_sha256": "8a32733226716cc7ba74f2e93a395e4e08c81100d2c7978f23b2713563737de7",
+      "file_sha256": "3c19ed3d18a2fd51bc80d6e5b4744a4f42aa483cf49c31b4a31c3397f3e1b17e",
+      "id": "piece-018"
+    },
+    {
+      "content_sha256": "5630a31c60b7367834a2e031325975bdc69f6efa0dee4b1aed616c5f12294027",
+      "file_sha256": "cd430616c92fae27fed8379e8f3ed38ea633a06622505bb46084994ab12f7420",
+      "id": "piece-019"
+    },
+    {
+      "content_sha256": "35c634f6483157286b0acbf492921c0c35d86932aeed00e2aa79e9753ad8f271",
+      "file_sha256": "a3fa67b4179e13077c16031b451ed3c0105616b7e7f166b10cd3de38bb2ea677",
+      "id": "piece-020"
+    },
+    {
+      "content_sha256": "92ac84a64021d649271a1270d9834ca44840f3723a327bc3be28f36be38b201f",
+      "file_sha256": "dbedcee6bbd2f2f298acba94f0b12052cf9a92557cd0bee256b57e5028ed5202",
+      "id": "piece-021"
+    },
+    {
+      "content_sha256": "0f4daf07eea41b0b194ca334f85b45046d7d82c5104d9c093c9646271a2f1a14",
+      "file_sha256": "8462107cb52b98ca2923db98e55d163b59b3fe4dc9072fac82d0cc81132486ef",
+      "id": "piece-022"
+    },
+    {
+      "content_sha256": "e316a8c0f90fa7eb8f94109aa9e0b38bc583fd51a61ffb2f122b9317451cefef",
+      "file_sha256": "13d39951ef0db112abe924c899cff1640cf72098d4a1e51f7b1ca69a0d0b0eac",
+      "id": "piece-023"
+    },
+    {
+      "content_sha256": "faf2475ce9e05e6c194d574a7060c32bf9c17551f7dca01d22780de39e05af3a",
+      "file_sha256": "4811271de8dc457b8925723c3e283c145d85eef43e3e6ce63735607a7883dfc7",
+      "id": "piece-024"
+    },
+    {
+      "content_sha256": "53fd16616d6ac08d68153da81e46bf007b3124ab58eba8d31d7e7aaf9fc86ce3",
+      "file_sha256": "cc0ff042fff6afbe4ddf0d4075875b3bc37e3167f173535ecf90d766e9e1558f",
+      "id": "piece-025"
+    },
+    {
+      "content_sha256": "7f3b7ae2270e5067b53494ccbe1b703cd3f42580e4e55807a1a3628aef4393ed",
+      "file_sha256": "db662d533b8031f01f689a71c3ce305ec2b2c889461b9644ad85068536e751d9",
+      "id": "piece-026"
+    },
+    {
+      "content_sha256": "708b01c56d23ec5d8c96ec9e3624f06d89af3ae5b64438ba4a54939719dfa264",
+      "file_sha256": "3d9a70a5d6f719d82bf573e3a0691a8b47701fad4b25f128a116559ecca72316",
+      "id": "piece-027"
+    },
+    {
+      "content_sha256": "a103d1297cae79438fbdf2fb8fb11e7c9c16b1448ee8c28498ad4e042000ca05",
+      "file_sha256": "923ea2a6cfee83c5e3c97871f01b08ac0820e83b08d1e64e93a2a24b9d584261",
+      "id": "piece-028"
+    },
+    {
+      "content_sha256": "ac2e05004a71495d0809486266f2dde54b3a2152a24880e9009a4b7caa7401f4",
+      "file_sha256": "d70cd487fd3c9e06dae0db2f72ae641fc5d553d1d03865f1e5f67c0e3ac350cc",
+      "id": "piece-029"
+    },
+    {
+      "content_sha256": "6de798691baf4deaad5824ee130346061a7472a02dab3f6a315d4d58a93145d0",
+      "file_sha256": "66f3d33708093f2057ab8b60a1db5fd3b7a069cd75a0bb181963ad9d4240af7d",
+      "id": "piece-030"
+    },
+    {
+      "content_sha256": "5e4d72d927d2e8eb9a7a7e199b1baf51872d6b276327ed2b575fb842713e22f4",
+      "file_sha256": "648f295d0876e2f4db74b3e130791b098eb095da5c21e02d2c5cb546b686428d",
+      "id": "piece-031"
+    },
+    {
+      "content_sha256": "93c9a36f12a4da0e3bcbfc633c619089b8da9205d4bffd7b15a30e3f507eb3ae",
+      "file_sha256": "e3d16a91c7837045e17f89f238c00db046ab9ce987a97a73ac2564914dae944c",
+      "id": "piece-032"
+    },
+    {
+      "content_sha256": "e27d6f265e3576b156c7bd80d2f41484dceef967db8f9af74f3abafaf5114e2d",
+      "file_sha256": "28f3fdb43d4edac30b050eadc8adca4e300d38576565e6050f337f4abd8afc2e",
+      "id": "piece-033"
+    },
+    {
+      "content_sha256": "976d0ff288fdd80c0405b19d764d753117458ccd31db678f12e1628a094086e3",
+      "file_sha256": "4fed37c8dce9863b180774ca68fc82f67063bfa6723893b77ccdf6123e252e5b",
+      "id": "piece-034"
+    },
+    {
+      "content_sha256": "ce9e461db9e45d9e3ab482aeaa291131d496999025a53da881d324bb02bc579b",
+      "file_sha256": "0fb4763dd143ca9fbc0a6b16618d00d5c4f78e249137f7286f404c804fb7d76e",
+      "id": "piece-035"
+    },
+    {
+      "content_sha256": "792f87ca7cd499138b5b8a7eb743aeb291a5a351c7e17317f5923f7684e9990b",
+      "file_sha256": "e233673072fe861f2d6cb334890c6151d88d7afcb4226069bf9d821178846f15",
+      "id": "piece-036"
+    },
+    {
+      "content_sha256": "adba68503054956dfed5e930b3c5879048167994158ed90674b38837a7c295e2",
+      "file_sha256": "c2fc3f58c2ce956e07741031c3231ae8e35eddef34dd06386739136e78995f13",
+      "id": "piece-037"
+    },
+    {
+      "content_sha256": "1149d444d72244d67dab311188d939565c9b97da2f727a9ba0115eb22ac47989",
+      "file_sha256": "22e68b1664cff0e64051848ef12da15acde13d11b400b2958ce2654544d3b7de",
+      "id": "piece-038"
+    },
+    {
+      "content_sha256": "dceabf55e5aae631367dc039aeba6842810401baf9d05a94b395a9397938ec4b",
+      "file_sha256": "574a7bd5b02f88ccbfbaf75e49a933fcacb82818b8a94ab8c83fca54fb849edb",
+      "id": "piece-039"
+    },
+    {
+      "content_sha256": "9037b3861d1df94b44a5afe685b0b5646314a0b2b0b190737ca46b4da5146c5b",
+      "file_sha256": "205cb21661596984f6d9dcf8969660a360a3f6fd2b1f55cd64eb5061f56cbf07",
+      "id": "piece-040"
+    },
+    {
+      "content_sha256": "00c3e52b788aa1320aa6b8138b563588c730b67f0b438b49dd07f68d054b9dac",
+      "file_sha256": "36a26f5b2a7f2740cb2f2dbcb02cbe4a131b5f469bf906cec2cb0ca278cfc654",
+      "id": "piece-041"
+    },
+    {
+      "content_sha256": "7537cfecf500f35c96428d1504f5f960d5fee6a73e25c1a5303bf195a1b67735",
+      "file_sha256": "cb2df00b5eef04fccf491f2a01cc4cdd8f9c57a43f063e67e8e292b047a940b5",
+      "id": "piece-042"
+    },
+    {
+      "content_sha256": "b4a68d01a511f08a21dfc2d015c469a3bf54fa76dd5f3ad1d996e4e104d7f425",
+      "file_sha256": "325cfc9c803ed42491edd277ec079eb5d0d9b7a562b10dcf896fc715d5b938b8",
+      "id": "piece-043"
+    },
+    {
+      "content_sha256": "98e479477e9556630a14a53ad3b043aae0d1c31dcf0db87812933ec561dd091e",
+      "file_sha256": "52218fc0c7e123d02f3f624ad9ec9d7bfd4bbf1cba52fdc28e5640c6543343e8",
+      "id": "piece-044"
+    },
+    {
+      "content_sha256": "96859f5002495e9587e5446d98547bef3efcf960144557fbdb53b76b07562223",
+      "file_sha256": "aecebb1a183eb3adb92e6c8d33c1433afe69f24f4ecb9589c1cc7c3f36d0781a",
+      "id": "piece-045"
+    },
+    {
+      "content_sha256": "7c57b8da76d7913db6be0143563e006ac2fea0e5298463c557f9560e23765af8",
+      "file_sha256": "e8a405474e73dbf1a9a7bc39a9bdcd8f16167667f991e5b253721336a49fa461",
+      "id": "piece-046"
+    },
+    {
+      "content_sha256": "2d4e6e0e644b53bce54ec42a16ecc118371dfa5d50135458cd90ffcea674dac9",
+      "file_sha256": "46404c7575270293d77a407a489b341400d764e100956baa6f78a7f987ea80a1",
+      "id": "piece-047"
+    },
+    {
+      "content_sha256": "fd74e975e6fd7259c2df5aba26bba88a3e05d93a3a50f3df08449a7d75714391",
+      "file_sha256": "f0dcb1563b8a03de491d691503f46e1fb8557995d59157fe0395498ee076bb03",
+      "id": "piece-048"
+    },
+    {
+      "content_sha256": "719a5fbaf1ae7e21bfddcc34a2960ff2d672b32a25c0bc14e6d8b854e5005219",
+      "file_sha256": "8967df15edcb90a11475a09571d971b17971414dab67646c8deace1571c30089",
+      "id": "piece-049"
+    },
+    {
+      "content_sha256": "f996bc15505fa83c98f275b50caeeaae0348ec9d8ef3df200df838e5badd1001",
+      "file_sha256": "99bde0e4f3768b5b612576b167915722b5c04222cb3da55a638e2d792bc3063a",
+      "id": "piece-050"
+    },
+    {
+      "content_sha256": "f615f606beec886fc584a3aa62befbbc53adfe45c3040dfd770f94eb1e787f5c",
+      "file_sha256": "25a464621cd528796f32d4739cf2836097771c19f2b963f0593df989b76fdb6c",
+      "id": "piece-051"
+    },
+    {
+      "content_sha256": "1523d2f711d4b422e2af789b2a67ee459bee491f41d4486577743a6fecf2477c",
+      "file_sha256": "eb3973766d60014ce3d7f259179577505b0d597cf4df646692e0fd73eda4199a",
+      "id": "piece-052"
+    },
+    {
+      "content_sha256": "2504391623b6aae4f2647ff4bb434a070adf37082461982d5b1bc328ca379cc3",
+      "file_sha256": "e9614a877a815dacd35697ececb79e84b05877028e2d3be7e54baadf239e492a",
+      "id": "piece-053"
+    },
+    {
+      "content_sha256": "9159c7c56a5916aeea798cbcae5118f2200906ff6351ffa7b68f5512309d82e2",
+      "file_sha256": "85b687fc4baa87beb6e209e3ca68f5ec9ac0ce6608f5a1bc1265267f96817b8e",
+      "id": "piece-054"
+    },
+    {
+      "content_sha256": "e23605923c7539ea7218ea6298b3770341661c88db1f472e32abf28fa948c49e",
+      "file_sha256": "3e57a48b87eeced2597abfa45b5769423f32208810c78f433492cc96698f9205",
+      "id": "piece-055"
+    },
+    {
+      "content_sha256": "20f2758fd2d9ec25115816097528a9a4da431ddab798ed314007f4d232770dc0",
+      "file_sha256": "84fddebfd43fa735554eac49f280831b42dd8a43f14616603358e894bd42c71e",
+      "id": "piece-056"
+    },
+    {
+      "content_sha256": "9d2820676597e570ee44d82dd9624fb7db03fe779600b79cdb588ae17f1e568f",
+      "file_sha256": "13bd38c1381e775f11606b9bb4494d30b89f07994e47e0ed795a8e0fd84aeaab",
+      "id": "piece-057"
+    },
+    {
+      "content_sha256": "b67a30c7493149b8affeee7aa96bad93bebe48ac7b621d5a23f92eea0d52a032",
+      "file_sha256": "c9f5b6ebc1179003e3141d30bdd4ca43d32e0b7ee3d0b9dfc5a6075bcb149df0",
+      "id": "piece-058"
+    },
+    {
+      "content_sha256": "7047a77c5d4a8755e41289c538fade7317ed8fc160603a1e08cb9dbd2ab18811",
+      "file_sha256": "e2f9ceb58234de4d2a5cd97513ca69b58018cda3ef66c41652e491b13d815327",
+      "id": "piece-059"
+    },
+    {
+      "content_sha256": "2f4cf731ebbe8e3e83615789cccf0b3fd6ef76fec6c08307e4ba0049fcc03299",
+      "file_sha256": "626964a9b3f489b1d29d67e3eb103d5a92b6807551af2beccc883e541d732d98",
+      "id": "piece-060"
+    },
+    {
+      "content_sha256": "2171853a6a7cfbdf94d2e50026df818b82003a36f47de3d864ded5613aa4b927",
+      "file_sha256": "f56e2b7dba3640a8e1957f37834bbb00090693a44ac5e696fd7d9ead44d38330",
+      "id": "piece-061"
+    },
+    {
+      "content_sha256": "067a9791c34285641b8bfb4898b7b2a148371633620dc6a965333eeb4ee4ebcd",
+      "file_sha256": "2936ec8f14fb78fa843f7988e9391fd8323baeb7386a504814c16d9a5d9a08ab",
+      "id": "piece-062"
+    },
+    {
+      "content_sha256": "6b2abf91c868a61a653f0145f610cd51f6f79538e770b8c54af4ce291642cd98",
+      "file_sha256": "a966073dfeb1e31a24371819eaffea73337ef3888d14e4c71531f8b4b4d4f98d",
+      "id": "piece-063"
+    },
+    {
+      "content_sha256": "d5083d71aab4b1b554f291e46b969b9458770a1954ab332791d21668857e7a16",
+      "file_sha256": "90322e8d150e7ee111a20cf84d1b5f7b136e571f5f8a47b0266adc6a702c1bee",
+      "id": "piece-064"
+    },
+    {
+      "content_sha256": "08343b5438d9d7d8597cffeddc0548dfc9abbda0055581b7a77ea78cbb0ef691",
+      "file_sha256": "9d2276b6773ee040757b3c239fd2776ffd40a09544b1ab4f420303dda7d55ce0",
+      "id": "piece-065"
+    },
+    {
+      "content_sha256": "68b8fd122bab267b65b49d0516926306fdd802983a42f73df0c79e00a5f9ce03",
+      "file_sha256": "1c46ea405c5dee5c8a3614e5ac95b16c3bc9c9770901b6533f02851c75807200",
+      "id": "piece-066"
+    },
+    {
+      "content_sha256": "8db33f18280e8f1d44346a9b340b9f38d92f20a9a7c2b5396b38dfff8cf87721",
+      "file_sha256": "25cf144bb4aac3839300a5fa5a7e51f017c2475e818086f9c9a0432a640e76c4",
+      "id": "piece-067"
+    },
+    {
+      "content_sha256": "5cffd5789dbc82ea8bf061ec58fc12eb07102d8dd094c438dce21efabeff77a7",
+      "file_sha256": "722fb748958470974fcc23df1a5032c663697197ce6ee9e72d7dfec4f8e1deb1",
+      "id": "piece-068"
+    },
+    {
+      "content_sha256": "21b213401cc7499befc0415c50fb1e1fa24ad6a3185ae00033a2ee31042e4608",
+      "file_sha256": "d0c3abcc0f79f8379a1e85feec399948bb84531328a35a86951aa9ba6bae90d9",
+      "id": "piece-069"
+    },
+    {
+      "content_sha256": "ae944267fa42170f4e15951f4860486cbbdffbac74d8ec2215bc1e29c19a90f2",
+      "file_sha256": "bae8b4442ccc99e262182dad2da507af2f8dfbe313a30b7531fe00d849004ced",
+      "id": "piece-070"
+    },
+    {
+      "content_sha256": "c494c18f9540ba28052936ed04a1001cf08343609363304195346b8d8855bc08",
+      "file_sha256": "d9dad0e997d8254e17dea9472bc71af3233733421d0a8a241f0f7550f7a30792",
+      "id": "piece-071"
+    },
+    {
+      "content_sha256": "4f66567dc425641ccaab9167576b9a452e5886d7714c82b2c58fe2549faabb2c",
+      "file_sha256": "6721c569ea0e8108ceb9824479df09a964ba99dd3aed811a1bf96eddbcc8066c",
+      "id": "piece-072"
+    },
+    {
+      "content_sha256": "9d54dc1497901e6d3a6d4beda78172e2d8e5e818743099b311045f37f27f718e",
+      "file_sha256": "b1073792a6bffd1167375d15472523128e0c8f75012c9110a026120fdd4f0cf8",
+      "id": "piece-073"
+    },
+    {
+      "content_sha256": "41abb53236ffaedc8e3f5a04ac5c1320e2f96895d5d9e0e053687c3decb5051b",
+      "file_sha256": "1f4f63f6e59645d9ecbff7dfd986e28790359e7d28fe1ddf94d548aab2fa5dda",
+      "id": "piece-074"
+    },
+    {
+      "content_sha256": "1466f3295f41e360367b6ff1759a6145f9ac767449adb460ecaa0e1dd7d69097",
+      "file_sha256": "0b9745ab0b5169ef6622e69edd09f68cc4dc7f8ca79a6b14ce73cbd14935dacc",
+      "id": "piece-075"
+    },
+    {
+      "content_sha256": "b31a120c6c8be7603e4bf36ce35f90a9ab03a1e1ed6d8881f34ddda2940ff74f",
+      "file_sha256": "6179ac5a92506cfa9993a461b0fa6cfbca95bcc5929135eba88b5db8bf5a75ba",
+      "id": "piece-076"
+    },
+    {
+      "content_sha256": "1d1f449389ec0fedd571dc09b75ea882c4a3690a7f29f0caf0b6c8048642ae05",
+      "file_sha256": "2d7f1202aa49286147981c5b9281f092cb39398763f5dcbdfc648616606e93f7",
+      "id": "piece-077"
+    },
+    {
+      "content_sha256": "e57ebb69d245cbcea93e9ae181af40a003e770aa57296fe9fb5dc90e2c86177f",
+      "file_sha256": "6dc72cc7a52c34b7657b3b9440771cd61d3e5601bc7f71e1ae903d5709df2c83",
+      "id": "piece-078"
+    },
+    {
+      "content_sha256": "1759219edbedf294ac05ae789aa8fbceab99df31c03c0b8d21feac6e64708f2e",
+      "file_sha256": "894e973ba71598f5364a393d934557ecb06eb61959d04aad97705fbd6a4c8890",
+      "id": "piece-079"
+    },
+    {
+      "content_sha256": "da89b6fb6a2567ad8ae2c541e7bfb01811d0bc38b5cf89292daf4c9a1fa4cc5a",
+      "file_sha256": "1dd9314470a6a7f3baa9cfcbb97f7c532556c40cd70461bad06c521e0600f627",
+      "id": "piece-080"
+    },
+    {
+      "content_sha256": "b68dc054190248686a5021738e93fe122550f1944682f87f95029eacb92fd664",
+      "file_sha256": "08d1bb7c068351be5f5a644d0df3829c266d38d4255621775ceafbe6e9b3943a",
+      "id": "piece-081"
+    },
+    {
+      "content_sha256": "57b50bb797eca79847edba365db0f70251466ba052e39b3f6332a3aaee7e6e4a",
+      "file_sha256": "05e6e47c6fe29dbf1e01eadd920fc3344cdaa8fc0bf122282e79b0cb2f64509a",
+      "id": "piece-082"
+    },
+    {
+      "content_sha256": "f96201536810dc32d642b29bfbbbc1d6ba76f31e94255e5761ad1fd3d67bc22d",
+      "file_sha256": "c30bad5eb79626d59846370a119a766a6ab9a7aa4fae9b1a24bc9770ffa86364",
+      "id": "piece-083"
+    },
+    {
+      "content_sha256": "23d815c950c05a5eb7ad32c32b548071c51294cd81093378e7fde08d8a351141",
+      "file_sha256": "b7879661e75a9faf28eba950afb81229f6cb62e4b4e1d21cb08d8a37221b211a",
+      "id": "piece-084"
+    },
+    {
+      "content_sha256": "24d9cc32b1d73a78a4b1574002f7eb4bc71f794c36fee683f6b5df1787f1618e",
+      "file_sha256": "da7f96475f398681f3c6ad8d3e32eaa6b1bad7fddae9fefa170db2673a4a30df",
+      "id": "piece-085"
+    },
+    {
+      "content_sha256": "b686487dc7274e554a29d86d6f0ff317ddd28c0455f775d7ccb9516e89f64c49",
+      "file_sha256": "13d8ecc73f2cd1a589aa80904dfb89e9312c0d16394a85eaad0634c47924273a",
+      "id": "piece-086"
+    },
+    {
+      "content_sha256": "9439bb9ee553201f53d5fed3f4b10c6fdddb6244374dfc959ac4dfeb3fc60a2a",
+      "file_sha256": "8b3970d89d33ac4e2df06ad5cb76b946e1c1bb3ad8f1d54aff161cd3e0e0da17",
+      "id": "piece-087"
+    },
+    {
+      "content_sha256": "58a90f0ac96456f71d121605bde01aaf0d3fb986ea70bf7a7b65da5835b61500",
+      "file_sha256": "bbc0fbb9993ce56ba64f811f669319fa57ec3ddbcc06260a20f6cd8d8d7cc3db",
+      "id": "piece-088"
+    },
+    {
+      "content_sha256": "7ba5552f4a6540b76f96ac7a7259647ac6ea1a8635010ff739bb0596734dc16c",
+      "file_sha256": "32daa5d9980265724bb20e69e0e25e4575f08fd838f77807051c79049d5abed2",
+      "id": "piece-089"
+    },
+    {
+      "content_sha256": "034db2772d874ebecfe7ca5254ef02c5aa42a2591221f7878f7b79c8e76a439b",
+      "file_sha256": "a1a1b359faad2a8f31e9b8717d80bf25f6c6e3cfb5f498e15075a8df105ff6be",
+      "id": "piece-090"
+    },
+    {
+      "content_sha256": "26707396c65a60cffb861ff57bceb0c85b8595405dd61cc50eb273ee0e006c56",
+      "file_sha256": "4e02803663c1df914ac4bd8b49250f61038912a0c3cadebb534a2618c1380e15",
+      "id": "piece-091"
+    },
+    {
+      "content_sha256": "096ecbd5965a43896cca54d81a242babbf76f15944ef22f41a7646ee0832cadc",
+      "file_sha256": "2abbfa8fad08c2179839d1e623e7e6279ea10f3a108ff272ae293a2bbbe3f266",
+      "id": "piece-092"
+    },
+    {
+      "content_sha256": "c1a9157004db5f1cc623eb6cd1f917e2ed2519edeecacc43db3eab2931048ecd",
+      "file_sha256": "3d4d6c3ceeaf31055804dc272814bbd8d12c0c902a049f00979485cf9ae8997f",
+      "id": "piece-093"
+    },
+    {
+      "content_sha256": "d35c15f8841b2ad9e8087488163ddd9fb0b17637df86f34c19b31d873f742059",
+      "file_sha256": "5b712a2f7d3ce5602622e883b478910c665605f00e974b25a26496c4e3d3c316",
+      "id": "piece-094"
+    },
+    {
+      "content_sha256": "e7d9a8eefdce059b86b67432681215e6f74a28a69a7359176145f37a6a818abe",
+      "file_sha256": "7e2eaa1f4127756356ccdc12868e615995e499841600157b7047d54b2b183ede",
+      "id": "piece-095"
+    },
+    {
+      "content_sha256": "4f5a76435aa0a472cd96f4e7b60903a4a9ee1127de62743c6452680682f07d8b",
+      "file_sha256": "7e5aa594b58299b958e95baf0a0651fe294fcaa71333f4f6b9b83cc6ff6e83e1",
+      "id": "piece-096"
+    },
+    {
+      "content_sha256": "64c37f22e6b1e3cc9b7dc4ad510a9cca965985909691d4b1b66e631e0a96a711",
+      "file_sha256": "5d1d920fdd43071fce71fb0cd659954b41bf400ffe2a75b696ed7b51e044db6a",
+      "id": "piece-097"
+    },
+    {
+      "content_sha256": "3c57a106b4b39864b6554920ebf5313c238c8cbf48a9654975c71263ee1c117d",
+      "file_sha256": "1609dd9786b317422789b3f7c942abcf75145255962ebb579ba318a2a28a4967",
+      "id": "piece-098"
+    },
+    {
+      "content_sha256": "46cfbc961d7cfcff19db6f39aa35d55d1cf156e35e714eb21ffd6e411f2268df",
+      "file_sha256": "d8e485353bc68f0a939fb9bfb65a91e80d0a99f5516c6fcefe3990a66d268635",
+      "id": "piece-099"
+    },
+    {
+      "content_sha256": "0f6793455a137da2f18a7d57456fd3b2068f7d4cf500409d6c91bea482986a57",
+      "file_sha256": "c64707ede46e29ddf3d20e3ff57d4e4ae5aa5cfdbc822c0f6880fc9d28d2013b",
+      "id": "piece-100"
+    },
+    {
+      "content_sha256": "bb316329f73b9d9e69ef5a891eaf1044467aeaa3253ad3f7460fb382a0efd034",
+      "file_sha256": "b921c0afd26d94f84f09adca91e3b9aecac07bd5ac6cc0e7f10ff48a2e109a11",
+      "id": "piece-101"
+    },
+    {
+      "content_sha256": "1a9dc11df381c6878271d333bc333a46951cde00e762159a61601aa0ede70ff0",
+      "file_sha256": "030a77a27d68b396689287078dd9f7654ef3a6ebe057437226cfc4f8021a8846",
+      "id": "piece-102"
+    },
+    {
+      "content_sha256": "151fc18fce27e8b426471d5e16925c0d21d1ab67e50585e11b091c367d1ee59f",
+      "file_sha256": "fcdf79108819e166aa4a4504076462f500b0dfd00aada8eb4f85c638e949824d",
+      "id": "piece-103"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "7788e737790279baa11324c2c31edfeabf112a4942151e39b074a4159e3014f2",
+    "chapters/introduction.json": "460718195e657f7f8fd19f3fdd62249ba7470f44fbfc2ae4419e1ec724944fc0",
+    "chapters/piece-001.json": "1b337e41102d9f7ee5d194fe59d74181d6e49d3f8adcb220bf6ed2e7b889ed24",
+    "chapters/piece-002.json": "fe60eafb9678b3a7445889a75e37dd8a903d92949570b9fc61791b7019d70527",
+    "chapters/piece-003.json": "e7f35e0364379eacc73ee558d8dc14bf5d9c3ad8a6ef32b1ddd9081de9fb8563",
+    "chapters/piece-004.json": "2f5f7220b1c7539e385289cd267c7bc626d8afb8357374f77e0baac4ceec5aa0",
+    "chapters/piece-005.json": "60def2cd9a5497630e1b8067b0202215be78a5871c956347c10531a363ca4864",
+    "chapters/piece-006.json": "363cd6789dd2b93f62dade343bc43adcfd9ba52809e1aabaf80a1080150869d5",
+    "chapters/piece-007.json": "961626ece131beae7185d8cfff03fb8c64c9681afafcc119c6cdfc11ed6ee7fe",
+    "chapters/piece-008.json": "17b994095652ac8029e035a0242bc09c25a76eb9b8b870348f8a6098683099bf",
+    "chapters/piece-009.json": "f0ade92930b62db5032f4ea664670da133fe269a8e42fc574b3009a7ede5a769",
+    "chapters/piece-010.json": "b327adbb490ded782668654bd273038900abc09b4512ba8fedb321dd6f9d0de1",
+    "chapters/piece-011.json": "75a44ad69cc587c3b55ce5ead75cdf917a11f26f1a53478003b1b255158e2a8a",
+    "chapters/piece-012.json": "ae5eafad4493a087465c1ba740c898c0befcd2ceedf153a134d403aa3581ad0c",
+    "chapters/piece-013.json": "dca17d56f168470992aabd97229bbfc6dc87c18b6e5677b64525de5de8fbb5b8",
+    "chapters/piece-014.json": "c20283e1ece90a3e6906b1bfecb8afe971e2f130f319a4b43cabed3a3f337d47",
+    "chapters/piece-015.json": "2d3937f760ae0d5cb722abeef5e92f233a2c0a941f4163480c803be2960fa86b",
+    "chapters/piece-016.json": "6d4e4078b811568035feabe35bb92e9cdff2aae9e3814fb6c1a90a84d933d415",
+    "chapters/piece-017.json": "8f179c8209978e138a9202c0d660b8a29c8760dd5eb83920cdee3f2973710136",
+    "chapters/piece-018.json": "3c19ed3d18a2fd51bc80d6e5b4744a4f42aa483cf49c31b4a31c3397f3e1b17e",
+    "chapters/piece-019.json": "cd430616c92fae27fed8379e8f3ed38ea633a06622505bb46084994ab12f7420",
+    "chapters/piece-020.json": "a3fa67b4179e13077c16031b451ed3c0105616b7e7f166b10cd3de38bb2ea677",
+    "chapters/piece-021.json": "dbedcee6bbd2f2f298acba94f0b12052cf9a92557cd0bee256b57e5028ed5202",
+    "chapters/piece-022.json": "8462107cb52b98ca2923db98e55d163b59b3fe4dc9072fac82d0cc81132486ef",
+    "chapters/piece-023.json": "13d39951ef0db112abe924c899cff1640cf72098d4a1e51f7b1ca69a0d0b0eac",
+    "chapters/piece-024.json": "4811271de8dc457b8925723c3e283c145d85eef43e3e6ce63735607a7883dfc7",
+    "chapters/piece-025.json": "cc0ff042fff6afbe4ddf0d4075875b3bc37e3167f173535ecf90d766e9e1558f",
+    "chapters/piece-026.json": "db662d533b8031f01f689a71c3ce305ec2b2c889461b9644ad85068536e751d9",
+    "chapters/piece-027.json": "3d9a70a5d6f719d82bf573e3a0691a8b47701fad4b25f128a116559ecca72316",
+    "chapters/piece-028.json": "923ea2a6cfee83c5e3c97871f01b08ac0820e83b08d1e64e93a2a24b9d584261",
+    "chapters/piece-029.json": "d70cd487fd3c9e06dae0db2f72ae641fc5d553d1d03865f1e5f67c0e3ac350cc",
+    "chapters/piece-030.json": "66f3d33708093f2057ab8b60a1db5fd3b7a069cd75a0bb181963ad9d4240af7d",
+    "chapters/piece-031.json": "648f295d0876e2f4db74b3e130791b098eb095da5c21e02d2c5cb546b686428d",
+    "chapters/piece-032.json": "e3d16a91c7837045e17f89f238c00db046ab9ce987a97a73ac2564914dae944c",
+    "chapters/piece-033.json": "28f3fdb43d4edac30b050eadc8adca4e300d38576565e6050f337f4abd8afc2e",
+    "chapters/piece-034.json": "4fed37c8dce9863b180774ca68fc82f67063bfa6723893b77ccdf6123e252e5b",
+    "chapters/piece-035.json": "0fb4763dd143ca9fbc0a6b16618d00d5c4f78e249137f7286f404c804fb7d76e",
+    "chapters/piece-036.json": "e233673072fe861f2d6cb334890c6151d88d7afcb4226069bf9d821178846f15",
+    "chapters/piece-037.json": "c2fc3f58c2ce956e07741031c3231ae8e35eddef34dd06386739136e78995f13",
+    "chapters/piece-038.json": "22e68b1664cff0e64051848ef12da15acde13d11b400b2958ce2654544d3b7de",
+    "chapters/piece-039.json": "574a7bd5b02f88ccbfbaf75e49a933fcacb82818b8a94ab8c83fca54fb849edb",
+    "chapters/piece-040.json": "205cb21661596984f6d9dcf8969660a360a3f6fd2b1f55cd64eb5061f56cbf07",
+    "chapters/piece-041.json": "36a26f5b2a7f2740cb2f2dbcb02cbe4a131b5f469bf906cec2cb0ca278cfc654",
+    "chapters/piece-042.json": "cb2df00b5eef04fccf491f2a01cc4cdd8f9c57a43f063e67e8e292b047a940b5",
+    "chapters/piece-043.json": "325cfc9c803ed42491edd277ec079eb5d0d9b7a562b10dcf896fc715d5b938b8",
+    "chapters/piece-044.json": "52218fc0c7e123d02f3f624ad9ec9d7bfd4bbf1cba52fdc28e5640c6543343e8",
+    "chapters/piece-045.json": "aecebb1a183eb3adb92e6c8d33c1433afe69f24f4ecb9589c1cc7c3f36d0781a",
+    "chapters/piece-046.json": "e8a405474e73dbf1a9a7bc39a9bdcd8f16167667f991e5b253721336a49fa461",
+    "chapters/piece-047.json": "46404c7575270293d77a407a489b341400d764e100956baa6f78a7f987ea80a1",
+    "chapters/piece-048.json": "f0dcb1563b8a03de491d691503f46e1fb8557995d59157fe0395498ee076bb03",
+    "chapters/piece-049.json": "8967df15edcb90a11475a09571d971b17971414dab67646c8deace1571c30089",
+    "chapters/piece-050.json": "99bde0e4f3768b5b612576b167915722b5c04222cb3da55a638e2d792bc3063a",
+    "chapters/piece-051.json": "25a464621cd528796f32d4739cf2836097771c19f2b963f0593df989b76fdb6c",
+    "chapters/piece-052.json": "eb3973766d60014ce3d7f259179577505b0d597cf4df646692e0fd73eda4199a",
+    "chapters/piece-053.json": "e9614a877a815dacd35697ececb79e84b05877028e2d3be7e54baadf239e492a",
+    "chapters/piece-054.json": "85b687fc4baa87beb6e209e3ca68f5ec9ac0ce6608f5a1bc1265267f96817b8e",
+    "chapters/piece-055.json": "3e57a48b87eeced2597abfa45b5769423f32208810c78f433492cc96698f9205",
+    "chapters/piece-056.json": "84fddebfd43fa735554eac49f280831b42dd8a43f14616603358e894bd42c71e",
+    "chapters/piece-057.json": "13bd38c1381e775f11606b9bb4494d30b89f07994e47e0ed795a8e0fd84aeaab",
+    "chapters/piece-058.json": "c9f5b6ebc1179003e3141d30bdd4ca43d32e0b7ee3d0b9dfc5a6075bcb149df0",
+    "chapters/piece-059.json": "e2f9ceb58234de4d2a5cd97513ca69b58018cda3ef66c41652e491b13d815327",
+    "chapters/piece-060.json": "626964a9b3f489b1d29d67e3eb103d5a92b6807551af2beccc883e541d732d98",
+    "chapters/piece-061.json": "f56e2b7dba3640a8e1957f37834bbb00090693a44ac5e696fd7d9ead44d38330",
+    "chapters/piece-062.json": "2936ec8f14fb78fa843f7988e9391fd8323baeb7386a504814c16d9a5d9a08ab",
+    "chapters/piece-063.json": "a966073dfeb1e31a24371819eaffea73337ef3888d14e4c71531f8b4b4d4f98d",
+    "chapters/piece-064.json": "90322e8d150e7ee111a20cf84d1b5f7b136e571f5f8a47b0266adc6a702c1bee",
+    "chapters/piece-065.json": "9d2276b6773ee040757b3c239fd2776ffd40a09544b1ab4f420303dda7d55ce0",
+    "chapters/piece-066.json": "1c46ea405c5dee5c8a3614e5ac95b16c3bc9c9770901b6533f02851c75807200",
+    "chapters/piece-067.json": "25cf144bb4aac3839300a5fa5a7e51f017c2475e818086f9c9a0432a640e76c4",
+    "chapters/piece-068.json": "722fb748958470974fcc23df1a5032c663697197ce6ee9e72d7dfec4f8e1deb1",
+    "chapters/piece-069.json": "d0c3abcc0f79f8379a1e85feec399948bb84531328a35a86951aa9ba6bae90d9",
+    "chapters/piece-070.json": "bae8b4442ccc99e262182dad2da507af2f8dfbe313a30b7531fe00d849004ced",
+    "chapters/piece-071.json": "d9dad0e997d8254e17dea9472bc71af3233733421d0a8a241f0f7550f7a30792",
+    "chapters/piece-072.json": "6721c569ea0e8108ceb9824479df09a964ba99dd3aed811a1bf96eddbcc8066c",
+    "chapters/piece-073.json": "b1073792a6bffd1167375d15472523128e0c8f75012c9110a026120fdd4f0cf8",
+    "chapters/piece-074.json": "1f4f63f6e59645d9ecbff7dfd986e28790359e7d28fe1ddf94d548aab2fa5dda",
+    "chapters/piece-075.json": "0b9745ab0b5169ef6622e69edd09f68cc4dc7f8ca79a6b14ce73cbd14935dacc",
+    "chapters/piece-076.json": "6179ac5a92506cfa9993a461b0fa6cfbca95bcc5929135eba88b5db8bf5a75ba",
+    "chapters/piece-077.json": "2d7f1202aa49286147981c5b9281f092cb39398763f5dcbdfc648616606e93f7",
+    "chapters/piece-078.json": "6dc72cc7a52c34b7657b3b9440771cd61d3e5601bc7f71e1ae903d5709df2c83",
+    "chapters/piece-079.json": "894e973ba71598f5364a393d934557ecb06eb61959d04aad97705fbd6a4c8890",
+    "chapters/piece-080.json": "1dd9314470a6a7f3baa9cfcbb97f7c532556c40cd70461bad06c521e0600f627",
+    "chapters/piece-081.json": "08d1bb7c068351be5f5a644d0df3829c266d38d4255621775ceafbe6e9b3943a",
+    "chapters/piece-082.json": "05e6e47c6fe29dbf1e01eadd920fc3344cdaa8fc0bf122282e79b0cb2f64509a",
+    "chapters/piece-083.json": "c30bad5eb79626d59846370a119a766a6ab9a7aa4fae9b1a24bc9770ffa86364",
+    "chapters/piece-084.json": "b7879661e75a9faf28eba950afb81229f6cb62e4b4e1d21cb08d8a37221b211a",
+    "chapters/piece-085.json": "da7f96475f398681f3c6ad8d3e32eaa6b1bad7fddae9fefa170db2673a4a30df",
+    "chapters/piece-086.json": "13d8ecc73f2cd1a589aa80904dfb89e9312c0d16394a85eaad0634c47924273a",
+    "chapters/piece-087.json": "8b3970d89d33ac4e2df06ad5cb76b946e1c1bb3ad8f1d54aff161cd3e0e0da17",
+    "chapters/piece-088.json": "bbc0fbb9993ce56ba64f811f669319fa57ec3ddbcc06260a20f6cd8d8d7cc3db",
+    "chapters/piece-089.json": "32daa5d9980265724bb20e69e0e25e4575f08fd838f77807051c79049d5abed2",
+    "chapters/piece-090.json": "a1a1b359faad2a8f31e9b8717d80bf25f6c6e3cfb5f498e15075a8df105ff6be",
+    "chapters/piece-091.json": "4e02803663c1df914ac4bd8b49250f61038912a0c3cadebb534a2618c1380e15",
+    "chapters/piece-092.json": "2abbfa8fad08c2179839d1e623e7e6279ea10f3a108ff272ae293a2bbbe3f266",
+    "chapters/piece-093.json": "3d4d6c3ceeaf31055804dc272814bbd8d12c0c902a049f00979485cf9ae8997f",
+    "chapters/piece-094.json": "5b712a2f7d3ce5602622e883b478910c665605f00e974b25a26496c4e3d3c316",
+    "chapters/piece-095.json": "7e2eaa1f4127756356ccdc12868e615995e499841600157b7047d54b2b183ede",
+    "chapters/piece-096.json": "7e5aa594b58299b958e95baf0a0651fe294fcaa71333f4f6b9b83cc6ff6e83e1",
+    "chapters/piece-097.json": "5d1d920fdd43071fce71fb0cd659954b41bf400ffe2a75b696ed7b51e044db6a",
+    "chapters/piece-098.json": "1609dd9786b317422789b3f7c942abcf75145255962ebb579ba318a2a28a4967",
+    "chapters/piece-099.json": "d8e485353bc68f0a939fb9bfb65a91e80d0a99f5516c6fcefe3990a66d268635",
+    "chapters/piece-100.json": "c64707ede46e29ddf3d20e3ff57d4e4ae5aa5cfdbc822c0f6880fc9d28d2013b",
+    "chapters/piece-101.json": "b921c0afd26d94f84f09adca91e3b9aecac07bd5ac6cc0e7f10ff48a2e109a11",
+    "chapters/piece-102.json": "030a77a27d68b396689287078dd9f7654ef3a6ebe057437226cfc4f8021a8846",
+    "chapters/piece-103.json": "fcdf79108819e166aa4a4504076462f500b0dfd00aada8eb4f85c638e949824d",
+    "checksum_manifest.json": "0dc00b2927f7139294e37a25bd17b28765e6680c93338ef69090f36be089fdea",
+    "cover_approval_evidence.json": "dc57215379b0500a7676cd3e2c0a0f6d16aa3c80b86cfec373dbf5a7760ff5f0",
+    "public_book.json": "4cbaf34b765446589df09e28906e5093bfae28e8f139681816eaf48e033a1c11",
+    "reader_manifest.json": "ca6d3e68d25681ef81ff9126b42d44bcb2ac63f722a451e8b9bac8084b43fe8c",
+    "source_evidence.json": "3ca1efc66192a53bce4cc31542ac3ad3ea513b5281a6cd3847de27913195d084"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "7788e737790279baa11324c2c31edfeabf112a4942151e39b074a4159e3014f2",
+      "public_book": "4cbaf34b765446589df09e28906e5093bfae28e8f139681816eaf48e033a1c11",
+      "reader_manifest": "ca6d3e68d25681ef81ff9126b42d44bcb2ac63f722a451e8b9bac8084b43fe8c",
+      "source_evidence": "3ca1efc66192a53bce4cc31542ac3ad3ea513b5281a6cd3847de27913195d084"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 104,
+      "chapter_index_sha256": "f075f0aebc35d1976b9d261a46ef87dbd04c0674a53deca8eb963e2bd1a2ffc8",
+      "chapters": [
+        {
+          "id": "introduction",
+          "order": 0,
+          "sha256": "460718195e657f7f8fd19f3fdd62249ba7470f44fbfc2ae4419e1ec724944fc0",
+          "title": "Introduction",
+          "word_count": 2368
+        },
+        {
+          "id": "piece-001",
+          "order": 1,
+          "sha256": "1b337e41102d9f7ee5d194fe59d74181d6e49d3f8adcb220bf6ed2e7b889ed24",
+          "title": "Gitanjali 1",
+          "word_count": 93
+        },
+        {
+          "id": "piece-002",
+          "order": 2,
+          "sha256": "fe60eafb9678b3a7445889a75e37dd8a903d92949570b9fc61791b7019d70527",
+          "title": "Gitanjali 2",
+          "word_count": 114
+        },
+        {
+          "id": "piece-003",
+          "order": 3,
+          "sha256": "e7f35e0364379eacc73ee558d8dc14bf5d9c3ad8a6ef32b1ddd9081de9fb8563",
+          "title": "Gitanjali 3",
+          "word_count": 91
+        },
+        {
+          "id": "piece-004",
+          "order": 4,
+          "sha256": "2f5f7220b1c7539e385289cd267c7bc626d8afb8357374f77e0baac4ceec5aa0",
+          "title": "Gitanjali 4",
+          "word_count": 104
+        },
+        {
+          "id": "piece-005",
+          "order": 5,
+          "sha256": "60def2cd9a5497630e1b8067b0202215be78a5871c956347c10531a363ca4864",
+          "title": "Gitanjali 5",
+          "word_count": 100
+        },
+        {
+          "id": "piece-006",
+          "order": 6,
+          "sha256": "363cd6789dd2b93f62dade343bc43adcfd9ba52809e1aabaf80a1080150869d5",
+          "title": "Gitanjali 6",
+          "word_count": 83
+        },
+        {
+          "id": "piece-007",
+          "order": 7,
+          "sha256": "961626ece131beae7185d8cfff03fb8c64c9681afafcc119c6cdfc11ed6ee7fe",
+          "title": "Gitanjali 7",
+          "word_count": 72
+        },
+        {
+          "id": "piece-008",
+          "order": 8,
+          "sha256": "17b994095652ac8029e035a0242bc09c25a76eb9b8b870348f8a6098683099bf",
+          "title": "Gitanjali 8",
+          "word_count": 91
+        },
+        {
+          "id": "piece-009",
+          "order": 9,
+          "sha256": "f0ade92930b62db5032f4ea664670da133fe269a8e42fc574b3009a7ede5a769",
+          "title": "Gitanjali 9",
+          "word_count": 72
+        },
+        {
+          "id": "piece-010",
+          "order": 10,
+          "sha256": "b327adbb490ded782668654bd273038900abc09b4512ba8fedb321dd6f9d0de1",
+          "title": "Gitanjali 10",
+          "word_count": 87
+        },
+        {
+          "id": "piece-011",
+          "order": 11,
+          "sha256": "75a44ad69cc587c3b55ce5ead75cdf917a11f26f1a53478003b1b255158e2a8a",
+          "title": "Gitanjali 11",
+          "word_count": 150
+        },
+        {
+          "id": "piece-012",
+          "order": 12,
+          "sha256": "ae5eafad4493a087465c1ba740c898c0befcd2ceedf153a134d403aa3581ad0c",
+          "title": "Gitanjali 12",
+          "word_count": 144
+        },
+        {
+          "id": "piece-013",
+          "order": 13,
+          "sha256": "dca17d56f168470992aabd97229bbfc6dc87c18b6e5677b64525de5de8fbb5b8",
+          "title": "Gitanjali 13",
+          "word_count": 126
+        },
+        {
+          "id": "piece-014",
+          "order": 14,
+          "sha256": "c20283e1ece90a3e6906b1bfecb8afe971e2f130f319a4b43cabed3a3f337d47",
+          "title": "Gitanjali 14",
+          "word_count": 121
+        },
+        {
+          "id": "piece-015",
+          "order": 15,
+          "sha256": "2d3937f760ae0d5cb722abeef5e92f233a2c0a941f4163480c803be2960fa86b",
+          "title": "Gitanjali 15",
+          "word_count": 77
+        },
+        {
+          "id": "piece-016",
+          "order": 16,
+          "sha256": "6d4e4078b811568035feabe35bb92e9cdff2aae9e3814fb6c1a90a84d933d415",
+          "title": "Gitanjali 16",
+          "word_count": 68
+        },
+        {
+          "id": "piece-017",
+          "order": 17,
+          "sha256": "8f179c8209978e138a9202c0d660b8a29c8760dd5eb83920cdee3f2973710136",
+          "title": "Gitanjali 17",
+          "word_count": 121
+        },
+        {
+          "id": "piece-018",
+          "order": 18,
+          "sha256": "3c19ed3d18a2fd51bc80d6e5b4744a4f42aa483cf49c31b4a31c3397f3e1b17e",
+          "title": "Gitanjali 18",
+          "word_count": 93
+        },
+        {
+          "id": "piece-019",
+          "order": 19,
+          "sha256": "cd430616c92fae27fed8379e8f3ed38ea633a06622505bb46084994ab12f7420",
+          "title": "Gitanjali 19",
+          "word_count": 83
+        },
+        {
+          "id": "piece-020",
+          "order": 20,
+          "sha256": "a3fa67b4179e13077c16031b451ed3c0105616b7e7f166b10cd3de38bb2ea677",
+          "title": "Gitanjali 20",
+          "word_count": 109
+        },
+        {
+          "id": "piece-021",
+          "order": 21,
+          "sha256": "dbedcee6bbd2f2f298acba94f0b12052cf9a92557cd0bee256b57e5028ed5202",
+          "title": "Gitanjali 21",
+          "word_count": 86
+        },
+        {
+          "id": "piece-022",
+          "order": 22,
+          "sha256": "8462107cb52b98ca2923db98e55d163b59b3fe4dc9072fac82d0cc81132486ef",
+          "title": "Gitanjali 22",
+          "word_count": 91
+        },
+        {
+          "id": "piece-023",
+          "order": 23,
+          "sha256": "13d39951ef0db112abe924c899cff1640cf72098d4a1e51f7b1ca69a0d0b0eac",
+          "title": "Gitanjali 23",
+          "word_count": 86
+        },
+        {
+          "id": "piece-024",
+          "order": 24,
+          "sha256": "4811271de8dc457b8925723c3e283c145d85eef43e3e6ce63735607a7883dfc7",
+          "title": "Gitanjali 24",
+          "word_count": 90
+        },
+        {
+          "id": "piece-025",
+          "order": 25,
+          "sha256": "cc0ff042fff6afbe4ddf0d4075875b3bc37e3167f173535ecf90d766e9e1558f",
+          "title": "Gitanjali 25",
+          "word_count": 59
+        },
+        {
+          "id": "piece-026",
+          "order": 26,
+          "sha256": "db662d533b8031f01f689a71c3ce305ec2b2c889461b9644ad85068536e751d9",
+          "title": "Gitanjali 26",
+          "word_count": 63
+        },
+        {
+          "id": "piece-027",
+          "order": 27,
+          "sha256": "3d9a70a5d6f719d82bf573e3a0691a8b47701fad4b25f128a116559ecca72316",
+          "title": "Gitanjali 27",
+          "word_count": 167
+        },
+        {
+          "id": "piece-028",
+          "order": 28,
+          "sha256": "923ea2a6cfee83c5e3c97871f01b08ac0820e83b08d1e64e93a2a24b9d584261",
+          "title": "Gitanjali 28",
+          "word_count": 108
+        },
+        {
+          "id": "piece-029",
+          "order": 29,
+          "sha256": "d70cd487fd3c9e06dae0db2f72ae641fc5d553d1d03865f1e5f67c0e3ac350cc",
+          "title": "Gitanjali 29",
+          "word_count": 83
+        },
+        {
+          "id": "piece-030",
+          "order": 30,
+          "sha256": "66f3d33708093f2057ab8b60a1db5fd3b7a069cd75a0bb181963ad9d4240af7d",
+          "title": "Gitanjali 30",
+          "word_count": 79
+        },
+        {
+          "id": "piece-031",
+          "order": 31,
+          "sha256": "648f295d0876e2f4db74b3e130791b098eb095da5c21e02d2c5cb546b686428d",
+          "title": "Gitanjali 31",
+          "word_count": 148
+        },
+        {
+          "id": "piece-032",
+          "order": 32,
+          "sha256": "e3d16a91c7837045e17f89f238c00db046ab9ce987a97a73ac2564914dae944c",
+          "title": "Gitanjali 32",
+          "word_count": 79
+        },
+        {
+          "id": "piece-033",
+          "order": 33,
+          "sha256": "28f3fdb43d4edac30b050eadc8adca4e300d38576565e6050f337f4abd8afc2e",
+          "title": "Gitanjali 33",
+          "word_count": 83
+        },
+        {
+          "id": "piece-034",
+          "order": 34,
+          "sha256": "4fed37c8dce9863b180774ca68fc82f67063bfa6723893b77ccdf6123e252e5b",
+          "title": "Gitanjali 34",
+          "word_count": 93
+        },
+        {
+          "id": "piece-035",
+          "order": 35,
+          "sha256": "0fb4763dd143ca9fbc0a6b16618d00d5c4f78e249137f7286f404c804fb7d76e",
+          "title": "Gitanjali 35",
+          "word_count": 90
+        },
+        {
+          "id": "piece-036",
+          "order": 36,
+          "sha256": "e233673072fe861f2d6cb334890c6151d88d7afcb4226069bf9d821178846f15",
+          "title": "Gitanjali 36",
+          "word_count": 81
+        },
+        {
+          "id": "piece-037",
+          "order": 37,
+          "sha256": "c2fc3f58c2ce956e07741031c3231ae8e35eddef34dd06386739136e78995f13",
+          "title": "Gitanjali 37",
+          "word_count": 79
+        },
+        {
+          "id": "piece-038",
+          "order": 38,
+          "sha256": "22e68b1664cff0e64051848ef12da15acde13d11b400b2958ce2654544d3b7de",
+          "title": "Gitanjali 38",
+          "word_count": 88
+        },
+        {
+          "id": "piece-039",
+          "order": 39,
+          "sha256": "574a7bd5b02f88ccbfbaf75e49a933fcacb82818b8a94ab8c83fca54fb849edb",
+          "title": "Gitanjali 39",
+          "word_count": 101
+        },
+        {
+          "id": "piece-040",
+          "order": 40,
+          "sha256": "205cb21661596984f6d9dcf8969660a360a3f6fd2b1f55cd64eb5061f56cbf07",
+          "title": "Gitanjali 40",
+          "word_count": 105
+        },
+        {
+          "id": "piece-041",
+          "order": 41,
+          "sha256": "36a26f5b2a7f2740cb2f2dbcb02cbe4a131b5f469bf906cec2cb0ca278cfc654",
+          "title": "Gitanjali 41",
+          "word_count": 291
+        },
+        {
+          "id": "piece-042",
+          "order": 42,
+          "sha256": "cb2df00b5eef04fccf491f2a01cc4cdd8f9c57a43f063e67e8e292b047a940b5",
+          "title": "Gitanjali 42",
+          "word_count": 116
+        },
+        {
+          "id": "piece-043",
+          "order": 43,
+          "sha256": "325cfc9c803ed42491edd277ec079eb5d0d9b7a562b10dcf896fc715d5b938b8",
+          "title": "Gitanjali 43",
+          "word_count": 111
+        },
+        {
+          "id": "piece-044",
+          "order": 44,
+          "sha256": "52218fc0c7e123d02f3f624ad9ec9d7bfd4bbf1cba52fdc28e5640c6543343e8",
+          "title": "Gitanjali 44",
+          "word_count": 101
+        },
+        {
+          "id": "piece-045",
+          "order": 45,
+          "sha256": "aecebb1a183eb3adb92e6c8d33c1433afe69f24f4ecb9589c1cc7c3f36d0781a",
+          "title": "Gitanjali 45",
+          "word_count": 113
+        },
+        {
+          "id": "piece-046",
+          "order": 46,
+          "sha256": "e8a405474e73dbf1a9a7bc39a9bdcd8f16167667f991e5b253721336a49fa461",
+          "title": "Gitanjali 46",
+          "word_count": 99
+        },
+        {
+          "id": "piece-047",
+          "order": 47,
+          "sha256": "46404c7575270293d77a407a489b341400d764e100956baa6f78a7f987ea80a1",
+          "title": "Gitanjali 47",
+          "word_count": 181
+        },
+        {
+          "id": "piece-048",
+          "order": 48,
+          "sha256": "f0dcb1563b8a03de491d691503f46e1fb8557995d59157fe0395498ee076bb03",
+          "title": "Gitanjali 48",
+          "word_count": 296
+        },
+        {
+          "id": "piece-049",
+          "order": 49,
+          "sha256": "8967df15edcb90a11475a09571d971b17971414dab67646c8deace1571c30089",
+          "title": "Gitanjali 49",
+          "word_count": 88
+        },
+        {
+          "id": "piece-050",
+          "order": 50,
+          "sha256": "99bde0e4f3768b5b612576b167915722b5c04222cb3da55a638e2d792bc3063a",
+          "title": "Gitanjali 50",
+          "word_count": 204
+        },
+        {
+          "id": "piece-051",
+          "order": 51,
+          "sha256": "25a464621cd528796f32d4739cf2836097771c19f2b963f0593df989b76fdb6c",
+          "title": "Gitanjali 51",
+          "word_count": 302
+        },
+        {
+          "id": "piece-052",
+          "order": 52,
+          "sha256": "eb3973766d60014ce3d7f259179577505b0d597cf4df646692e0fd73eda4199a",
+          "title": "Gitanjali 52",
+          "word_count": 296
+        },
+        {
+          "id": "piece-053",
+          "order": 53,
+          "sha256": "e9614a877a815dacd35697ececb79e84b05877028e2d3be7e54baadf239e492a",
+          "title": "Gitanjali 53",
+          "word_count": 107
+        },
+        {
+          "id": "piece-054",
+          "order": 54,
+          "sha256": "85b687fc4baa87beb6e209e3ca68f5ec9ac0ce6608f5a1bc1265267f96817b8e",
+          "title": "Gitanjali 54",
+          "word_count": 215
+        },
+        {
+          "id": "piece-055",
+          "order": 55,
+          "sha256": "3e57a48b87eeced2597abfa45b5769423f32208810c78f433492cc96698f9205",
+          "title": "Gitanjali 55",
+          "word_count": 117
+        },
+        {
+          "id": "piece-056",
+          "order": 56,
+          "sha256": "84fddebfd43fa735554eac49f280831b42dd8a43f14616603358e894bd42c71e",
+          "title": "Gitanjali 56",
+          "word_count": 109
+        },
+        {
+          "id": "piece-057",
+          "order": 57,
+          "sha256": "13bd38c1381e775f11606b9bb4494d30b89f07994e47e0ed795a8e0fd84aeaab",
+          "title": "Gitanjali 57",
+          "word_count": 111
+        },
+        {
+          "id": "piece-058",
+          "order": 58,
+          "sha256": "c9f5b6ebc1179003e3141d30bdd4ca43d32e0b7ee3d0b9dfc5a6075bcb149df0",
+          "title": "Gitanjali 58",
+          "word_count": 86
+        },
+        {
+          "id": "piece-059",
+          "order": 59,
+          "sha256": "e2f9ceb58234de4d2a5cd97513ca69b58018cda3ef66c41652e491b13d815327",
+          "title": "Gitanjali 59",
+          "word_count": 70
+        },
+        {
+          "id": "piece-060",
+          "order": 60,
+          "sha256": "626964a9b3f489b1d29d67e3eb103d5a92b6807551af2beccc883e541d732d98",
+          "title": "Gitanjali 60",
+          "word_count": 198
+        },
+        {
+          "id": "piece-061",
+          "order": 61,
+          "sha256": "f56e2b7dba3640a8e1957f37834bbb00090693a44ac5e696fd7d9ead44d38330",
+          "title": "Gitanjali 61",
+          "word_count": 159
+        },
+        {
+          "id": "piece-062",
+          "order": 62,
+          "sha256": "2936ec8f14fb78fa843f7988e9391fd8323baeb7386a504814c16d9a5d9a08ab",
+          "title": "Gitanjali 62",
+          "word_count": 159
+        },
+        {
+          "id": "piece-063",
+          "order": 63,
+          "sha256": "a966073dfeb1e31a24371819eaffea73337ef3888d14e4c71531f8b4b4d4f98d",
+          "title": "Gitanjali 63",
+          "word_count": 139
+        },
+        {
+          "id": "piece-064",
+          "order": 64,
+          "sha256": "90322e8d150e7ee111a20cf84d1b5f7b136e571f5f8a47b0266adc6a702c1bee",
+          "title": "Gitanjali 64",
+          "word_count": 233
+        },
+        {
+          "id": "piece-065",
+          "order": 65,
+          "sha256": "9d2276b6773ee040757b3c239fd2776ffd40a09544b1ab4f420303dda7d55ce0",
+          "title": "Gitanjali 65",
+          "word_count": 77
+        },
+        {
+          "id": "piece-066",
+          "order": 66,
+          "sha256": "1c46ea405c5dee5c8a3614e5ac95b16c3bc9c9770901b6533f02851c75807200",
+          "title": "Gitanjali 66",
+          "word_count": 145
+        },
+        {
+          "id": "piece-067",
+          "order": 67,
+          "sha256": "25cf144bb4aac3839300a5fa5a7e51f017c2475e818086f9c9a0432a640e76c4",
+          "title": "Gitanjali 67",
+          "word_count": 119
+        },
+        {
+          "id": "piece-068",
+          "order": 68,
+          "sha256": "722fb748958470974fcc23df1a5032c663697197ce6ee9e72d7dfec4f8e1deb1",
+          "title": "Gitanjali 68",
+          "word_count": 100
+        },
+        {
+          "id": "piece-069",
+          "order": 69,
+          "sha256": "d0c3abcc0f79f8379a1e85feec399948bb84531328a35a86951aa9ba6bae90d9",
+          "title": "Gitanjali 69",
+          "word_count": 102
+        },
+        {
+          "id": "piece-070",
+          "order": 70,
+          "sha256": "bae8b4442ccc99e262182dad2da507af2f8dfbe313a30b7531fe00d849004ced",
+          "title": "Gitanjali 70",
+          "word_count": 80
+        },
+        {
+          "id": "piece-071",
+          "order": 71,
+          "sha256": "d9dad0e997d8254e17dea9472bc71af3233733421d0a8a241f0f7550f7a30792",
+          "title": "Gitanjali 71",
+          "word_count": 157
+        },
+        {
+          "id": "piece-072",
+          "order": 72,
+          "sha256": "6721c569ea0e8108ceb9824479df09a964ba99dd3aed811a1bf96eddbcc8066c",
+          "title": "Gitanjali 72",
+          "word_count": 107
+        },
+        {
+          "id": "piece-073",
+          "order": 73,
+          "sha256": "b1073792a6bffd1167375d15472523128e0c8f75012c9110a026120fdd4f0cf8",
+          "title": "Gitanjali 73",
+          "word_count": 103
+        },
+        {
+          "id": "piece-074",
+          "order": 74,
+          "sha256": "1f4f63f6e59645d9ecbff7dfd986e28790359e7d28fe1ddf94d548aab2fa5dda",
+          "title": "Gitanjali 74",
+          "word_count": 97
+        },
+        {
+          "id": "piece-075",
+          "order": 75,
+          "sha256": "0b9745ab0b5169ef6622e69edd09f68cc4dc7f8ca79a6b14ce73cbd14935dacc",
+          "title": "Gitanjali 75",
+          "word_count": 85
+        },
+        {
+          "id": "piece-076",
+          "order": 76,
+          "sha256": "6179ac5a92506cfa9993a461b0fa6cfbca95bcc5929135eba88b5db8bf5a75ba",
+          "title": "Gitanjali 76",
+          "word_count": 99
+        },
+        {
+          "id": "piece-077",
+          "order": 77,
+          "sha256": "2d7f1202aa49286147981c5b9281f092cb39398763f5dcbdfc648616606e93f7",
+          "title": "Gitanjali 77",
+          "word_count": 124
+        },
+        {
+          "id": "piece-078",
+          "order": 78,
+          "sha256": "6dc72cc7a52c34b7657b3b9440771cd61d3e5601bc7f71e1ae903d5709df2c83",
+          "title": "Gitanjali 78",
+          "word_count": 138
+        },
+        {
+          "id": "piece-079",
+          "order": 79,
+          "sha256": "894e973ba71598f5364a393d934557ecb06eb61959d04aad97705fbd6a4c8890",
+          "title": "Gitanjali 79",
+          "word_count": 201
+        },
+        {
+          "id": "piece-080",
+          "order": 80,
+          "sha256": "1dd9314470a6a7f3baa9cfcbb97f7c532556c40cd70461bad06c521e0600f627",
+          "title": "Gitanjali 80",
+          "word_count": 121
+        },
+        {
+          "id": "piece-081",
+          "order": 81,
+          "sha256": "08d1bb7c068351be5f5a644d0df3829c266d38d4255621775ceafbe6e9b3943a",
+          "title": "Gitanjali 81",
+          "word_count": 80
+        },
+        {
+          "id": "piece-082",
+          "order": 82,
+          "sha256": "05e6e47c6fe29dbf1e01eadd920fc3344cdaa8fc0bf122282e79b0cb2f64509a",
+          "title": "Gitanjali 82",
+          "word_count": 117
+        },
+        {
+          "id": "piece-083",
+          "order": 83,
+          "sha256": "c30bad5eb79626d59846370a119a766a6ab9a7aa4fae9b1a24bc9770ffa86364",
+          "title": "Gitanjali 83",
+          "word_count": 76
+        },
+        {
+          "id": "piece-084",
+          "order": 84,
+          "sha256": "b7879661e75a9faf28eba950afb81229f6cb62e4b4e1d21cb08d8a37221b211a",
+          "title": "Gitanjali 84",
+          "word_count": 81
+        },
+        {
+          "id": "piece-085",
+          "order": 85,
+          "sha256": "da7f96475f398681f3c6ad8d3e32eaa6b1bad7fddae9fefa170db2673a4a30df",
+          "title": "Gitanjali 85",
+          "word_count": 100
+        },
+        {
+          "id": "piece-086",
+          "order": 86,
+          "sha256": "13d8ecc73f2cd1a589aa80904dfb89e9312c0d16394a85eaad0634c47924273a",
+          "title": "Gitanjali 86",
+          "word_count": 108
+        },
+        {
+          "id": "piece-087",
+          "order": 87,
+          "sha256": "8b3970d89d33ac4e2df06ad5cb76b946e1c1bb3ad8f1d54aff161cd3e0e0da17",
+          "title": "Gitanjali 87",
+          "word_count": 123
+        },
+        {
+          "id": "piece-088",
+          "order": 88,
+          "sha256": "bbc0fbb9993ce56ba64f811f669319fa57ec3ddbcc06260a20f6cd8d8d7cc3db",
+          "title": "Gitanjali 88",
+          "word_count": 154
+        },
+        {
+          "id": "piece-089",
+          "order": 89,
+          "sha256": "32daa5d9980265724bb20e69e0e25e4575f08fd838f77807051c79049d5abed2",
+          "title": "Gitanjali 89",
+          "word_count": 134
+        },
+        {
+          "id": "piece-090",
+          "order": 90,
+          "sha256": "a1a1b359faad2a8f31e9b8717d80bf25f6c6e3cfb5f498e15075a8df105ff6be",
+          "title": "Gitanjali 90",
+          "word_count": 76
+        },
+        {
+          "id": "piece-091",
+          "order": 91,
+          "sha256": "4e02803663c1df914ac4bd8b49250f61038912a0c3cadebb534a2618c1380e15",
+          "title": "Gitanjali 91",
+          "word_count": 104
+        },
+        {
+          "id": "piece-092",
+          "order": 92,
+          "sha256": "2abbfa8fad08c2179839d1e623e7e6279ea10f3a108ff272ae293a2bbbe3f266",
+          "title": "Gitanjali 92",
+          "word_count": 120
+        },
+        {
+          "id": "piece-093",
+          "order": 93,
+          "sha256": "3d4d6c3ceeaf31055804dc272814bbd8d12c0c902a049f00979485cf9ae8997f",
+          "title": "Gitanjali 93",
+          "word_count": 84
+        },
+        {
+          "id": "piece-094",
+          "order": 94,
+          "sha256": "5b712a2f7d3ce5602622e883b478910c665605f00e974b25a26496c4e3d3c316",
+          "title": "Gitanjali 94",
+          "word_count": 102
+        },
+        {
+          "id": "piece-095",
+          "order": 95,
+          "sha256": "7e2eaa1f4127756356ccdc12868e615995e499841600157b7047d54b2b183ede",
+          "title": "Gitanjali 95",
+          "word_count": 134
+        },
+        {
+          "id": "piece-096",
+          "order": 96,
+          "sha256": "7e5aa594b58299b958e95baf0a0651fe294fcaa71333f4f6b9b83cc6ff6e83e1",
+          "title": "Gitanjali 96",
+          "word_count": 96
+        },
+        {
+          "id": "piece-097",
+          "order": 97,
+          "sha256": "5d1d920fdd43071fce71fb0cd659954b41bf400ffe2a75b696ed7b51e044db6a",
+          "title": "Gitanjali 97",
+          "word_count": 107
+        },
+        {
+          "id": "piece-098",
+          "order": 98,
+          "sha256": "1609dd9786b317422789b3f7c942abcf75145255962ebb579ba318a2a28a4967",
+          "title": "Gitanjali 98",
+          "word_count": 115
+        },
+        {
+          "id": "piece-099",
+          "order": 99,
+          "sha256": "d8e485353bc68f0a939fb9bfb65a91e80d0a99f5516c6fcefe3990a66d268635",
+          "title": "Gitanjali 99",
+          "word_count": 116
+        },
+        {
+          "id": "piece-100",
+          "order": 100,
+          "sha256": "c64707ede46e29ddf3d20e3ff57d4e4ae5aa5cfdbc822c0f6880fc9d28d2013b",
+          "title": "Gitanjali 100",
+          "word_count": 110
+        },
+        {
+          "id": "piece-101",
+          "order": 101,
+          "sha256": "b921c0afd26d94f84f09adca91e3b9aecac07bd5ac6cc0e7f10ff48a2e109a11",
+          "title": "Gitanjali 101",
+          "word_count": 103
+        },
+        {
+          "id": "piece-102",
+          "order": 102,
+          "sha256": "030a77a27d68b396689287078dd9f7654ef3a6ebe057437226cfc4f8021a8846",
+          "title": "Gitanjali 102",
+          "word_count": 107
+        },
+        {
+          "id": "piece-103",
+          "order": 103,
+          "sha256": "fcdf79108819e166aa4a4504076462f500b0dfd00aada8eb4f85c638e949824d",
+          "title": "Gitanjali 103",
+          "word_count": 103
+        }
+      ],
+      "content_hash": "169757c4993a9c5e9c08b26792003f37112e03c5c21a5cacfd929559e7165a7f",
+      "provenance_hash": "fb4695fa40285b1793c251d0b3614f32caf671600d49f6d0232720c05ea93086",
+      "sanitized": false,
+      "source_hash": "13b3cd4ddacc72b184fc34406a6b8cf063e0ca631697e7006752a032165fb202"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "5d4f786e648a907fef920909c9365090846534a605c09e76246187dd2771ce9a",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Chapter ordering must be contiguous and one-based.",
+        "Reader-facing source boilerplate removal is not verified.",
+        "Rights: Tier A requires public-domain source confidence.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785900201/earnalism/covers/front/cover_candidate_controlled-gitanjali-e7ff77fd3d42dc2af09be258a55b93c7a0a99d8aad9b0a0217a870145e5c9fb8.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "3ca1efc66192a53bce4cc31542ac3ad3ea513b5281a6cd3847de27913195d084",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "gitanjali",
+    "title": "Gitanjali"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

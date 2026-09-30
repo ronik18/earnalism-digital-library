@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "82e8deedd2fa06ad67edf7f5996fb8f4b66af429f01ec6a6af9bfaf51f6e817c",
+    "chapters/chapter-001.json": "0aad8317f1e4689fdca6a28416795297a73cbfbb30736d8399fa926c4cf68498",
+    "checksum_manifest.json": "dba83ef9295341aa2e9d3c83073f77329af2d73e0190a803a518be9523a393d4",
+    "highlight_sync.json": "5d9d669d1beb837de0bd640b08b5156d67d7927a0addcc5d276db8a73d154ab1",
+    "public_book.json": "18f0f53c139be991b3af1fd94c6dfb84bee7905e4f467020a126c503fbac7953",
+    "reader_manifest.json": "fc3ef77b3f34a37bde15de882b8f5951d067c416186ff039de403e0c0434dc96",
+    "source_evidence.json": "9e75f83f61c7d132e2f48a6d231992238e16b2bffb3ad8756e8c1d3c37fe7cb3"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "c1d1338d73235b3f05c710e0b170b9a600b69956ca89220291e4ada43a6cef20",
+      "file_sha256": "0aad8317f1e4689fdca6a28416795297a73cbfbb30736d8399fa926c4cf68498",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "82e8deedd2fa06ad67edf7f5996fb8f4b66af429f01ec6a6af9bfaf51f6e817c",
+    "chapters/chapter-001.json": "0aad8317f1e4689fdca6a28416795297a73cbfbb30736d8399fa926c4cf68498",
+    "checksum_manifest.json": "dba83ef9295341aa2e9d3c83073f77329af2d73e0190a803a518be9523a393d4",
+    "highlight_sync.json": "5d9d669d1beb837de0bd640b08b5156d67d7927a0addcc5d276db8a73d154ab1",
+    "public_book.json": "18f0f53c139be991b3af1fd94c6dfb84bee7905e4f467020a126c503fbac7953",
+    "reader_manifest.json": "fc3ef77b3f34a37bde15de882b8f5951d067c416186ff039de403e0c0434dc96",
+    "source_evidence.json": "9e75f83f61c7d132e2f48a6d231992238e16b2bffb3ad8756e8c1d3c37fe7cb3"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "82e8deedd2fa06ad67edf7f5996fb8f4b66af429f01ec6a6af9bfaf51f6e817c",
+      "public_book": "18f0f53c139be991b3af1fd94c6dfb84bee7905e4f467020a126c503fbac7953",
+      "reader_manifest": "fc3ef77b3f34a37bde15de882b8f5951d067c416186ff039de403e0c0434dc96",
+      "source_evidence": "9e75f83f61c7d132e2f48a6d231992238e16b2bffb3ad8756e8c1d3c37fe7cb3"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "e08e1e3fa32c746e2f8411be3678f2ab5d9560987b7aa291bc61725a5ca29ebf",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "0aad8317f1e4689fdca6a28416795297a73cbfbb30736d8399fa926c4cf68498",
+          "title": "The Outcasts of Poker Flat",
+          "word_count": 4090
+        }
+      ],
+      "content_hash": "68844ac3c0ca7badcbaf95b7945501fb789b7dfc9206eb0ed10c6cbea6b34ad6",
+      "provenance_hash": "503a0270772e6f2f78dc22b13bf53a6e1eddf1a5632b028117bb113d6f7a78f2",
+      "sanitized": true,
+      "source_hash": "33981862ad30151ecb5c3224bbe5482be150e0d6868bc1355c3b3ec919dc39a1"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "76a51dd08b030f5ad8783cdcfc1734bbbe4535f9c651a69a96357e0e1e53709a",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "9e75f83f61c7d132e2f48a6d231992238e16b2bffb3ad8756e8c1d3c37fe7cb3",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-outcasts-of-poker-flat",
+    "title": "The Outcasts of Poker Flat"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

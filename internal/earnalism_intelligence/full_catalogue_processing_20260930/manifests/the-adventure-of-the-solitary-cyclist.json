@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "a7ae152f064ca056bcd63fd8265e8469ed1791a4b725e3062eb8181776d17f6a",
+    "chapters/chapter-001.json": "643e2566369fb83520477a8e70b595992cf98891d194347aaa4ada9570f12f24",
+    "checksum_manifest.json": "33b1f9f27cd42115ffb75d6d8132fabe2ae22bd5ac70239a77e30f503e20d389",
+    "highlight_sync.json": "b54d1f6ed0521ec8a5ee8a29fde4adc2784f0409bef7c38629def4fd2327a6b3",
+    "public_book.json": "90819a624a4ff958b0a80fa2f72c62fc0e4c0bcc46ac2968f94314b368864307",
+    "reader_manifest.json": "fd8cca180adc687f3df79a82f91fa445330c88e6f114f4f8b359bafe864f88aa",
+    "source_evidence.json": "e5b158149a8f316f383cea69be0280fa6daa6e62e8a607bac087ae517e3c7eea"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "556ddb617ff449dcfbfa93db5b7a6f52097953c6191a68e5de222c43bd37d2de",
+      "file_sha256": "643e2566369fb83520477a8e70b595992cf98891d194347aaa4ada9570f12f24",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "a7ae152f064ca056bcd63fd8265e8469ed1791a4b725e3062eb8181776d17f6a",
+    "chapters/chapter-001.json": "643e2566369fb83520477a8e70b595992cf98891d194347aaa4ada9570f12f24",
+    "checksum_manifest.json": "33b1f9f27cd42115ffb75d6d8132fabe2ae22bd5ac70239a77e30f503e20d389",
+    "highlight_sync.json": "b54d1f6ed0521ec8a5ee8a29fde4adc2784f0409bef7c38629def4fd2327a6b3",
+    "public_book.json": "90819a624a4ff958b0a80fa2f72c62fc0e4c0bcc46ac2968f94314b368864307",
+    "reader_manifest.json": "fd8cca180adc687f3df79a82f91fa445330c88e6f114f4f8b359bafe864f88aa",
+    "source_evidence.json": "e5b158149a8f316f383cea69be0280fa6daa6e62e8a607bac087ae517e3c7eea"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "a7ae152f064ca056bcd63fd8265e8469ed1791a4b725e3062eb8181776d17f6a",
+      "public_book": "90819a624a4ff958b0a80fa2f72c62fc0e4c0bcc46ac2968f94314b368864307",
+      "reader_manifest": "fd8cca180adc687f3df79a82f91fa445330c88e6f114f4f8b359bafe864f88aa",
+      "source_evidence": "e5b158149a8f316f383cea69be0280fa6daa6e62e8a607bac087ae517e3c7eea"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "cf9c96404ac03a469d8c45eb79fb48bd5ee39da47857a8c907028561b7c8853e",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "643e2566369fb83520477a8e70b595992cf98891d194347aaa4ada9570f12f24",
+          "title": "The Adventure of the Solitary Cyclist",
+          "word_count": 7904
+        }
+      ],
+      "content_hash": "1e26a03a190e6f8ab41c5ac1e3a7b209f4649573d32e7f6677a784bab6aa9328",
+      "provenance_hash": "de774603a0a66c87c9086c3bdf3780f9c580fd298230cd21c5d8e8f0d1452f44",
+      "sanitized": true,
+      "source_hash": "b2be1527bc9a7fc221f04bfbe8971f0d685233fb0b3f50db33dd9b9e47e93c44"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "ef70c6af82587293839a0899ae8fb15412256ae95108e250397c32473b8b6612",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "e5b158149a8f316f383cea69be0280fa6daa6e62e8a607bac087ae517e3c7eea",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-adventure-of-the-solitary-cyclist",
+    "title": "The Adventure of the Solitary Cyclist"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

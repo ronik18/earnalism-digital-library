@@ -1,0 +1,114 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "12313bde425c85b16bd8deaf9bb2bf9a0e7d360e50407a6f5edb07ced87bbc8b",
+    "chapters/chapter-001.json": "48e203f5b81fc27d1ee3f5d80c485434f383fa5f622839c0128d3a443d15ed2e",
+    "checksum_manifest.json": "a475d08ab6ad49c4657be7e73f737ef40c4cf8f2504bce31f3c7ae3b1cc59196",
+    "public_book.json": "76d9488d74961f283821d169d2a8b21b1b64a729c8a00d07304d472bbf935e34",
+    "reader_manifest.json": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee",
+    "source_evidence.json": "8ad158a3e3e3c363ef7cf26bd48aeae1e622e5c001fb14f7a23c938528158346"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98",
+      "file_sha256": "48e203f5b81fc27d1ee3f5d80c485434f383fa5f622839c0128d3a443d15ed2e",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "17c9e18d5f6a978c33ce1fecdbff48c621da93dd255acc7e8a363486643b629c",
+    "approval_evidence.json": "12313bde425c85b16bd8deaf9bb2bf9a0e7d360e50407a6f5edb07ced87bbc8b",
+    "chapters/chapter-001.json": "48e203f5b81fc27d1ee3f5d80c485434f383fa5f622839c0128d3a443d15ed2e",
+    "checksum_manifest.json": "f86f27b97998088125df65a62c75d7f71fd1e7a52058a3c700fe8ae299b7b447",
+    "highlight_sync.json": "11b60f5ca19e9fabb00a130253b197b9d842de217c0c66b6b9999f5160b093e2",
+    "public_book.json": "76d9488d74961f283821d169d2a8b21b1b64a729c8a00d07304d472bbf935e34",
+    "reader_manifest.json": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee",
+    "source_evidence.json": "8ad158a3e3e3c363ef7cf26bd48aeae1e622e5c001fb14f7a23c938528158346"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "12313bde425c85b16bd8deaf9bb2bf9a0e7d360e50407a6f5edb07ced87bbc8b",
+      "public_book": "76d9488d74961f283821d169d2a8b21b1b64a729c8a00d07304d472bbf935e34",
+      "reader_manifest": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee",
+      "source_evidence": "8ad158a3e3e3c363ef7cf26bd48aeae1e622e5c001fb14f7a23c938528158346"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "f2e57023bfac91a3c964647388a514a45a28500cd0067efe125f3c0f047b8497",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "48e203f5b81fc27d1ee3f5d80c485434f383fa5f622839c0128d3a443d15ed2e",
+          "title": "Désirée's Baby",
+          "word_count": 2178
+        }
+      ],
+      "content_hash": "d08d7e830b28474c5d8ac3595444f376074e1e48ee9c2f8cc774dc8a1a91882a",
+      "provenance_hash": "d8fbdf6d75f8e5260b619728efb926a71e9166fb659a93fcf7216cda9caaf44a",
+      "sanitized": true,
+      "source_hash": "2006e24206b918744a8a8a7589e883389759ccd9cbef93ae8ce260d633dab5d9"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "bdaa732bb947ab1acda653bf200764fd9d634ac483c0edb667e03e9877195c86",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275510/earnalism/covers/front/dsires-baby_front_1600x2400.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "8ad158a3e3e3c363ef7cf26bd48aeae1e622e5c001fb14f7a23c938528158346",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "dsires-baby",
+    "title": "Désirée's Baby"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

@@ -1,0 +1,118 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "71a512b08d3e58cd5e72979b665d2a9d9b67e813c34edb4d730b3f5a4cbfef85",
+    "chapters/chapter-001.json": "7da8bbd9f16959b911f522731799d9dc1f0ae5200bec04f98fe334f972d7a6f4",
+    "checksum_manifest.json": "cd56a95f273a8e0c94067a0dbc3e12888d7ab79b7b01e43ad71440077448ce6d",
+    "highlight_sync.json": "53c37f2a0626c1337aa69192c954cb3f5b207f5bbbea5226a8fe926d435baaa5",
+    "public_book.json": "c938d5107d7d8cc56df5eea1b15ebd9151dbd57090efda38808fde5a4813e8a3",
+    "reader_manifest.json": "d03b73c89c5916380fa50ca2830e4afa9110a82722725f7cb1dad3a5371bf821",
+    "source_evidence.json": "9d644e3812d57a2927d9db3e0c6fee348a87e62fd0f15fa73d2ed7e8258d72bc"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "d45168ed6ade657707793bb04303b91c6446c4f41be4ed49dc8c2226e3f59ae1",
+      "file_sha256": "7da8bbd9f16959b911f522731799d9dc1f0ae5200bec04f98fe334f972d7a6f4",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "71a512b08d3e58cd5e72979b665d2a9d9b67e813c34edb4d730b3f5a4cbfef85",
+    "chapters/chapter-001.json": "7da8bbd9f16959b911f522731799d9dc1f0ae5200bec04f98fe334f972d7a6f4",
+    "checksum_manifest.json": "cd56a95f273a8e0c94067a0dbc3e12888d7ab79b7b01e43ad71440077448ce6d",
+    "highlight_sync.json": "53c37f2a0626c1337aa69192c954cb3f5b207f5bbbea5226a8fe926d435baaa5",
+    "public_book.json": "c938d5107d7d8cc56df5eea1b15ebd9151dbd57090efda38808fde5a4813e8a3",
+    "reader_manifest.json": "d03b73c89c5916380fa50ca2830e4afa9110a82722725f7cb1dad3a5371bf821",
+    "source_evidence.json": "9d644e3812d57a2927d9db3e0c6fee348a87e62fd0f15fa73d2ed7e8258d72bc"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "71a512b08d3e58cd5e72979b665d2a9d9b67e813c34edb4d730b3f5a4cbfef85",
+      "public_book": "c938d5107d7d8cc56df5eea1b15ebd9151dbd57090efda38808fde5a4813e8a3",
+      "reader_manifest": "d03b73c89c5916380fa50ca2830e4afa9110a82722725f7cb1dad3a5371bf821",
+      "source_evidence": "9d644e3812d57a2927d9db3e0c6fee348a87e62fd0f15fa73d2ed7e8258d72bc"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "d65c39f4d868b690c36c9b51683e2fbf65c0c7a218f52df4a7ecb01d3a154220",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "7da8bbd9f16959b911f522731799d9dc1f0ae5200bec04f98fe334f972d7a6f4",
+          "title": "The Ransom of Red Chief",
+          "word_count": 4262
+        }
+      ],
+      "content_hash": "137a261f562cb4fbf5343df30bd6d117d8a254c4e4aab2cf2a75cded4e2f4997",
+      "provenance_hash": "525316e65b4064a0aa18cbf92e96840cdee9b68e2d1bd2b542717132098564cf",
+      "sanitized": true,
+      "source_hash": "7064aa284fe4bc210e8953c8d5e4dd410145f06ec9d7b822c609dea4cd8573b2"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "cde67b14e33f3d0e3d2636660fad846b430a976912c8a9c6bfa0f7f40c4acbda",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "9d644e3812d57a2927d9db3e0c6fee348a87e62fd0f15fa73d2ed7e8258d72bc",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-ransom-of-red-chief",
+    "title": "The Ransom of Red Chief"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

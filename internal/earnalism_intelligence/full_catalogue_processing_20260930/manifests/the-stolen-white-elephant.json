@@ -1,0 +1,111 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "3358f1172e13c791e50802ffd6a1898f15690aaa0a893afe9233e54d076a3f50",
+    "chapters/chapter-001.json": "3c399adaaccaabceeef46222ac79c2428b6fbc2665f1fc4d7e28bfb074fb5b95",
+    "checksum_manifest.json": "0621067b943141aecba1ac5d9f61b9c953d7b8c34cee6dae44b883abff77ea22",
+    "highlight_sync.json": "e5ba8e6896d990099fa329b9117f3bae93927ee22feb7c26b4ae9529aae25c78",
+    "public_book.json": "5a746dd018904240d7d325c25f71df70925c5361b1e7d21033358e127ade5214",
+    "reader_manifest.json": "dfaf46f1970dda6041c0f161a415cce1be4427402b1156ff2de5e3ec5fa8ad8c",
+    "source_evidence.json": "3604c82d994c47602b76c49a0a1e8b028b704646eadb813481791a28d70dc4b6"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "1f73408bab8612720c3463f1a48f16b58a3403a29749e3544789e743323558f9",
+      "file_sha256": "3c399adaaccaabceeef46222ac79c2428b6fbc2665f1fc4d7e28bfb074fb5b95",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "3358f1172e13c791e50802ffd6a1898f15690aaa0a893afe9233e54d076a3f50",
+    "chapters/chapter-001.json": "3c399adaaccaabceeef46222ac79c2428b6fbc2665f1fc4d7e28bfb074fb5b95",
+    "checksum_manifest.json": "0621067b943141aecba1ac5d9f61b9c953d7b8c34cee6dae44b883abff77ea22",
+    "highlight_sync.json": "e5ba8e6896d990099fa329b9117f3bae93927ee22feb7c26b4ae9529aae25c78",
+    "public_book.json": "5a746dd018904240d7d325c25f71df70925c5361b1e7d21033358e127ade5214",
+    "reader_manifest.json": "dfaf46f1970dda6041c0f161a415cce1be4427402b1156ff2de5e3ec5fa8ad8c",
+    "source_evidence.json": "3604c82d994c47602b76c49a0a1e8b028b704646eadb813481791a28d70dc4b6"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "3358f1172e13c791e50802ffd6a1898f15690aaa0a893afe9233e54d076a3f50",
+      "public_book": "5a746dd018904240d7d325c25f71df70925c5361b1e7d21033358e127ade5214",
+      "reader_manifest": "dfaf46f1970dda6041c0f161a415cce1be4427402b1156ff2de5e3ec5fa8ad8c",
+      "source_evidence": "3604c82d994c47602b76c49a0a1e8b028b704646eadb813481791a28d70dc4b6"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "a12d9e474db6b02c46dbfd14968d60ae5f5e8a087d6bb71bf5744ac129f5ceed",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "3c399adaaccaabceeef46222ac79c2428b6fbc2665f1fc4d7e28bfb074fb5b95",
+          "title": "The Stolen White Elephant",
+          "word_count": 6821
+        }
+      ],
+      "content_hash": "1966dc3ff417b39ec3faeab8031f6c99f0138f8d1595f351147a023fed8f0235",
+      "provenance_hash": "6637344b47e4a4cb2f0afdce7adfaf8eca02d84429c408c533fb13cece300756",
+      "sanitized": true,
+      "source_hash": "fe0f4b88b895ed50544c4d0c7e4a42f370cfcf59dcf2643009c4a5cc3a4c1517"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "7e68a944844eb17fa19c88cba788852db2294055e15b408195c3d1268c52379f",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+      ],
+      "cover_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover.webp",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "3604c82d994c47602b76c49a0a1e8b028b704646eadb813481791a28d70dc4b6",
+      "publication_region": "in",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-stolen-white-elephant",
+    "title": "The Stolen White Elephant"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

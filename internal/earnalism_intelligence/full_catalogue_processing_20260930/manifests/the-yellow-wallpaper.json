@@ -1,0 +1,115 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "90c68577f9ae380459a07bfe55d20f76600647086d2befc12d8c6c0456542f1f",
+    "chapters/chapter-001.json": "3a926569e8d46c8b198371f5d77bb633a6a41fa73d73e2f54ff5c636580cb8a4",
+    "checksum_manifest.json": "4eccfd7b0e24d11b793c46e34c3cb4eefdcbcc363a9db16988af3920a060dac7",
+    "highlight_sync.json": "df82a75d89f2b84d23e8c5a72ce4ed160f8a25142cd1469bd07d957e3a342a4b",
+    "public_book.json": "90c8958326339f7979fa40e9914107476f39adf89cea16a585e34c3e5688ff2a",
+    "reader_manifest.json": "4124fac958f1ab3c4729f52d96234e2560d1f98587b3386cb9a13c75c7f6ade4",
+    "source_evidence.json": "5beb34f8788d0f5b5c4da0fbf331edef96e71d4874d102fa961b0b19124a637c"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "eb3707607672f6a9260383f8523dca5e089399e5121bd1a1961b34308c34273d",
+      "file_sha256": "3a926569e8d46c8b198371f5d77bb633a6a41fa73d73e2f54ff5c636580cb8a4",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "90c68577f9ae380459a07bfe55d20f76600647086d2befc12d8c6c0456542f1f",
+    "chapters/chapter-001.json": "3a926569e8d46c8b198371f5d77bb633a6a41fa73d73e2f54ff5c636580cb8a4",
+    "checksum_manifest.json": "4eccfd7b0e24d11b793c46e34c3cb4eefdcbcc363a9db16988af3920a060dac7",
+    "highlight_sync.json": "df82a75d89f2b84d23e8c5a72ce4ed160f8a25142cd1469bd07d957e3a342a4b",
+    "public_book.json": "90c8958326339f7979fa40e9914107476f39adf89cea16a585e34c3e5688ff2a",
+    "reader_manifest.json": "4124fac958f1ab3c4729f52d96234e2560d1f98587b3386cb9a13c75c7f6ade4",
+    "source_evidence.json": "5beb34f8788d0f5b5c4da0fbf331edef96e71d4874d102fa961b0b19124a637c"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "90c68577f9ae380459a07bfe55d20f76600647086d2befc12d8c6c0456542f1f",
+      "public_book": "90c8958326339f7979fa40e9914107476f39adf89cea16a585e34c3e5688ff2a",
+      "reader_manifest": "4124fac958f1ab3c4729f52d96234e2560d1f98587b3386cb9a13c75c7f6ade4",
+      "source_evidence": "5beb34f8788d0f5b5c4da0fbf331edef96e71d4874d102fa961b0b19124a637c"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "6c92f044f592b0eafeb0a2af0f40540a9b70a85bee451f1e215d5c6c7c10f137",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "3a926569e8d46c8b198371f5d77bb633a6a41fa73d73e2f54ff5c636580cb8a4",
+          "title": "The Yellow Wallpaper",
+          "word_count": 6225
+        }
+      ],
+      "content_hash": "5f145d1aff160976b72445c5f651d8030f3ede780aa1414a9c639afc2a4d7aae",
+      "provenance_hash": "5349c038b13af8d9809ae184e4d7ae4d54f3ad3ebce5ed13748776e22dd0a09c",
+      "sanitized": true,
+      "source_hash": "ef4b3a11042ebd451e1abc73007c6d5f5fb9910ab2571db97d33457f1ddcfa00"
+    },
+    "generated_at": "2026-09-30T00:00:00Z",
+    "manifest_sha256": "43ab3e452ff5f37847d6c1fea76a9ccff2bc7d48b819c5d339d664d17eb9e48a",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "5beb34f8788d0f5b5c4da0fbf331edef96e71d4874d102fa961b0b19124a637c",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-yellow-wallpaper",
+    "title": "The Yellow Wallpaper"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "earnalism.full-catalogue-completion.v1",
+  "reader_design_owner_approval": "CONDITIONAL_ON_FRESH_MATCH_WITH_SUPPLIED_MOCK",
+  "catalogue_scope": 231,
+  "processing_status": "COMPLETE_FOR_AVAILABLE_INPUTS",
+  "publication_status": "7_PREEXISTING_APPROVED_224_EVIDENCE_HOLDS",
+  "source_packages_changed": 0,
+  "worker_task_type": "catalogue-processing",
+  "worker_review": "PENDING_EXACT_HEAD_PIPELINE",
+  "processing_state": "internal/earnalism_intelligence/full_catalogue_processing_20260930/catalogue_state.json",
+  "production_reader_verification": "PENDING_TRUSTED_INDIA_CONTEXT",
+  "next_exact_command": "python3 scripts/process_full_catalogue.py --check",
+  "prior_candidate_pipeline": {
+    "head": "98984d52eee26a8c5361edfcd58c97df706b73d4",
+    "run_id": 36705876984,
+    "worker_review": "ACCEPT_WITHIN_SCOPE"
+  },
+  "reader_visual_review": "CORRECTED_TABLET_GAP_AND_TITLE_WRAP_PENDING_FRESH_EXACT_HEAD"
+}
