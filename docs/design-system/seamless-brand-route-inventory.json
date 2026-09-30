@@ -23,7 +23,7 @@
     {"id":"signup","path":"/signup","classification":"PUBLIC_NOINDEX","expected_shell":"auth-shell","review":{"desktop":true,"mobile":true},"fixture":"public-safe"},
     {"id":"account","path":"/account","classification":"AUTHENTICATED_PRIVATE","expected_shell":"account-shell","review":{"desktop":true,"mobile":true},"fixture":"sanitized-account"},
     {"id":"my-library","path":"/my-library","classification":"AUTHENTICATED_PRIVATE","expected_shell":"account-shell","review":{"desktop":true,"mobile":true},"fixture":"sanitized-account"},
-    {"id":"reader-dracula","path":"/reader/dracula","classification":"AUTHENTICATED_PRIVATE","expected_shell":"reader-experience","review":{"desktop":true,"mobile":true},"fixture":"reader-visual-safe"},
+    {"id":"reader-a-ghost-story","path":"/reader/a-ghost-story","classification":"AUTHENTICATED_PRIVATE","expected_shell":"reader-experience","review":{"desktop":true,"mobile":true},"fixture":"reader-visual-safe"},
     {"id":"listener-a-ghost-story","path":"/listener/a-ghost-story","classification":"AUTHENTICATED_PRIVATE","expected_shell":"listener-experience","review":{"desktop":true,"mobile":true},"fixture":"listener-non-playable"},
     {"id":"listener-dracula","path":"/listener/dracula","classification":"AUTHENTICATED_PRIVATE","expected_shell":"listener-experience","review":{"desktop":true,"mobile":true},"fixture":"listener-non-playable"},
     {"id":"not-found","path":"UNKNOWN_URL","classification":"NOT_FOUND","expected_shell":"not-found-shell","review":{"desktop":true,"mobile":true},"fixture":"public-safe","indexable":false},

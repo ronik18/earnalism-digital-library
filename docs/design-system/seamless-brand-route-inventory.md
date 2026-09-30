@@ -20,7 +20,7 @@ owner, required desktop and mobile brand review, and the safe fixture class.
 | `/signup` | `PUBLIC_NOINDEX` | auth shell | desktop, mobile | public-safe |
 | `/account` | `AUTHENTICATED_PRIVATE` | account shell | desktop, mobile | sanitized account fixture |
 | `/my-library` | `AUTHENTICATED_PRIVATE` | account shell | desktop, mobile | sanitized account fixture |
-| `/reader/dracula` | `AUTHENTICATED_PRIVATE` | Reader experience | desktop, mobile | reader visual-safe fixture |
+| `/reader/a-ghost-story` | `AUTHENTICATED_PRIVATE` | Reader experience | desktop, mobile | reader visual-safe fixture |
 | `/listener/a-ghost-story` | `AUTHENTICATED_PRIVATE` | Listener experience | desktop, mobile | listener non-playable fixture |
 | `/listener/dracula` | `AUTHENTICATED_PRIVATE` | Listener experience | desktop, mobile | listener non-playable fixture |
 | `UNKNOWN_URL` | `NOT_FOUND` | NotFound shell | desktop, mobile | public-safe; noindex |

@@ -1075,7 +1075,7 @@ if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(base)) throw new Error("UAT_BASE_URL mus
 fs.mkdirSync(path.join(out, "screenshots"), { recursive: true });
 const states = [
   ["home-desktop", "/", 1440, 1000, 100], ["home-mobile", "/", 390, 844, 100], ["home-mobile-zoom-200", "/", 390, 844, 200],
-  ["reader-mobile-390", "/reader/dracula?visual-fixture=1", 390, 844, 100], ["reader-mobile-320", "/reader/dracula?visual-fixture=1", 320, 568, 100],
+  ["reader-mobile-390", "/reader/a-ghost-story?visual-fixture=1", 390, 844, 100], ["reader-mobile-320", "/reader/a-ghost-story?visual-fixture=1", 320, 568, 100],
   ["listener-mobile-390", "/listener/a-ghost-story?visual-fixture=1", 390, 844, 100], ["listener-mobile-320", "/listener/a-ghost-story?visual-fixture=1", 320, 568, 100],
   ["account-mobile", "/account?visual-fixture=1", 390, 844, 100], ["library-footer-mobile", "/library", 390, 844, 100],
 ];
