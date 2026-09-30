@@ -39,6 +39,8 @@
 .listener-v2 .experience-icon-button { color: #480F1A; border-color: rgba(72, 15, 26, .3); }
 .listener-v2 .experience-header__menu { border-color: rgba(72, 15, 26, .2); background: #F6EDDC; }
 .listener-v2 .experience-header__menu a { color: #480F1A; }
+@media (min-width: 768px) and (max-width: 1279px) { .listener-v2 .experience-header, .listener-v2 .experience-header--compact { height: 84px; min-height: 84px; } }
+@media (min-width: 1100px) { .listener-v2 .experience-header__menu-toggle { display: inline-grid; } }
 .listener-v2__layout {
   width: min(100%, 96rem);
   margin: 0 auto;
@@ -138,7 +140,7 @@
   .listener-v2__side { padding: 14px; }
 }
 @media (max-width: 767px) {
-  .listener-v2 .experience-header, .listener-v2 .experience-header--compact { height: 58px; min-height: 58px; padding-inline: 14px; }
+  .listener-v2 .experience-header, .listener-v2 .experience-header--compact { height: 72px; min-height: 72px; padding-inline: 14px; }
   .listener-v2__layout { display: block; padding: 12px 14px 26px; }
   .listener-v2__main { display: flex; min-height: 0; flex-direction: column; align-items: center; padding: 14px 18px 24px; border-radius: 5px; background-position: 63% center; }
   .listener-v2__mobile-top { display: flex; width: 100%; min-height: 44px; align-items: center; justify-content: flex-start; padding: 0; }

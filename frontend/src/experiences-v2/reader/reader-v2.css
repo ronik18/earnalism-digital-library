@@ -145,6 +145,8 @@
 .reader-v2 .experience-icon-button { color: var(--reader-maroon); border-color: color-mix(in srgb, var(--reader-maroon) 30%, transparent); }
 .reader-v2 .experience-header__menu { border-color: var(--reader-line); background: var(--reader-sand); }
 .reader-v2 .experience-header__menu a { color: var(--reader-maroon); }
+@media (min-width: 768px) and (max-width: 1279px) { .reader-v2 .experience-header, .reader-v2 .experience-header--compact { height: 84px; min-height: 84px; } }
+@media (min-width: 1100px) { .reader-v2 .experience-header__menu-toggle { display: inline-grid; } }
 .reader-v2__layout {
   width: min(calc(100% - 48px), 94rem);
   margin: 0 auto;
@@ -217,7 +219,7 @@
   .reader-v2__context { display: none; }
 }
 @media (max-width: 767px) {
-  .reader-v2 .experience-header, .reader-v2 .experience-header--compact { height: 58px; min-height: 58px; padding-inline: 14px; }
+  .reader-v2 .experience-header, .reader-v2 .experience-header--compact { height: 72px; min-height: 72px; padding-inline: 14px; }
   .reader-v2__layout { width: 100%; padding: 0 0 24px; }
   .reader-v2__canvas { padding: 18px 20px 16px; border-radius: 0; box-shadow: none; }
   .reader-v2__chapter h1 { color: var(--reader-maroon); font-size: clamp(29px, 8vw, 36px); }

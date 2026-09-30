@@ -64,6 +64,27 @@ describe("ReaderExperienceV2 customer controls", () => {
     expect(window.scrollTo).toHaveBeenLastCalledWith({ top: 0, behavior: "instant" });
   });
 
+  test("immersive primary navigation keeps real links and runs the route settlement callback", () => {
+    const onNavigate = jest.fn();
+    render({ onNavigate });
+    const desktopLibrary = container.querySelector('.experience-header__desktop-nav a[data-nav-key="library"]');
+    expect(desktopLibrary.getAttribute("href")).toBe("/library");
+    click(desktopLibrary);
+    expect(onNavigate).toHaveBeenCalledWith("library");
+
+    click(container.querySelector('.experience-header__menu-toggle[aria-label="Open menu"]'));
+    const menuLibrary = container.querySelector('#experience-header-menu a[data-nav-key="library"]');
+    expect(menuLibrary.getAttribute("href")).toBe("/library");
+    click(menuLibrary);
+    expect(onNavigate).toHaveBeenLastCalledWith("library");
+
+    click(container.querySelector('.experience-header__menu-toggle[aria-label="Open menu"]'));
+    const signIn = container.querySelector('#experience-header-menu a[data-testid="experience-menu-sign-in"]');
+    expect(signIn.getAttribute("href")).toBe("/login");
+    click(signIn);
+    expect(onNavigate).toHaveBeenLastCalledWith("signin");
+  });
+
   test("Library and contents request their actual destinations and mark the current page", () => {
     const onRequestPage = jest.fn();
     const onNavigate = jest.fn();

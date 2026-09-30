@@ -12,6 +12,8 @@ describe("Reader, Listener, and About v2 product truth", () => {
   test("immersive chrome reuses the canonical navigation and remains usable at every width", () => {
     const header = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/shared/ExperienceHeader.jsx"), "utf8");
     const shared = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/shared/experiences-v2.css"), "utf8");
+    const readerStyles = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/reader/reader-v2.css"), "utf8");
+    const listenerStyles = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/listener/listener-v2.css"), "utf8");
     const canonical = fs.readFileSync(path.join(process.cwd(), "src/config/publicNavigation.js"), "utf8");
     expect(header).toContain('import { PUBLIC_NAV_ITEMS } from "../../config/publicNavigation"');
     expect(header).toContain("PUBLIC_NAV_ITEMS.map");
@@ -29,6 +31,12 @@ describe("Reader, Listener, and About v2 product truth", () => {
     expect(shared).toContain("min-height: 84px;");
     expect(shared).toContain("min-height: 72px;");
     expect(shared).toContain(".experience-header__menu a:focus-visible");
+    expect(readerStyles).toContain(".reader-v2 .experience-header__menu-toggle { display: inline-grid; }");
+    expect(listenerStyles).toContain(".listener-v2 .experience-header__menu-toggle { display: inline-grid; }");
+    expect(readerStyles).toContain("height: 84px; min-height: 84px;");
+    expect(listenerStyles).toContain("height: 84px; min-height: 84px;");
+    expect(readerStyles).toContain("height: 72px; min-height: 72px;");
+    expect(listenerStyles).toContain("height: 72px; min-height: 72px;");
   });
 
   test("only canonical pages 1–3 are public and page 4 requires server authorization", () => {
