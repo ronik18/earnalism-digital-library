@@ -51,6 +51,8 @@ No actionable P0, P1, or P2 visual findings remain. The final comparison is agai
 
 ## Owner review
 
+- Production-surface authority: the old workflow fingerprint `211b1ce39a61ace6fe92d3a6162cd85b5e5009b6ac819f94b8e89cce966ce3c9` exactly matched PR #471 merged `origin/main`. This branch changes homepage CSS, so the derived current source fingerprint is `ce26abb38ce5d4a835c589c0b784ceaf91f4647373f4517bc7c96814b2bdffc7`; both workflow hash authorities were rebound to that computed value. The 46-case publication-workflow contract passes with its authority comparison intact; no semantic, browser, publication, merge, or deployment gates were weakened.
+
 Exact-head owner package: `uat/evidence/homepage-beige-refinement/owner-review-exact-head/` and `uat/evidence/homepage-beige-owner-review-exact-head.zip`. The manifest records the exact reviewed branch head and base `57237eb76c24022f02214ce08fd02b7869fe4114`, five full-page/five viewport captures, the source mock, both comparison sheets, focus-state evidence, the payment API audit, and the production offers fixture. The final screenshots were refreshed from the branch after PR #471 was merged; `capture-report-main-live.json` records the screenshot head and all five widths. The local payment route is marked `EXPECTED_TEST_ENVIRONMENT_LIMITATION`.
 
 Status: `READY_FOR_OWNER_VISUAL_APPROVAL`. Owner visual approval is **WAITING** for this exact head. The change has not been merged or deployed.
