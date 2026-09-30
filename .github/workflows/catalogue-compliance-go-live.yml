@@ -158,6 +158,20 @@ jobs:
           print(json.dumps(payload, indent=2))
           PY
 
+      # Codex's drop-sudo safety strategy intentionally removes later access to
+      # the Docker daemon. Start the isolated regression dependencies first,
+      # while the hosted runner still has its normal Docker access.
+      - name: Start isolated regression services
+        run: |
+          set -euo pipefail
+          docker run --detach --name earnalism-catalogue-mongodb --network host mongo:7.0.14 mongod --bind_ip 127.0.0.1 --port 27018 --replSet earnalism-uat-rs0
+          for _ in $(seq 1 30); do
+            docker exec earnalism-catalogue-mongodb mongosh --host 127.0.0.1 --port 27018 --quiet --eval 'db.adminCommand({ ping: 1 })' && break
+            sleep 1
+          done
+          docker exec earnalism-catalogue-mongodb mongosh --host 127.0.0.1 --port 27018 --quiet --eval 'try { rs.initiate({_id: "earnalism-uat-rs0", members: [{ _id: 0, host: "127.0.0.1:27018" }]}) } catch (error) { if (error.codeName !== "AlreadyInitialized") throw error }'
+          docker run --detach --name earnalism-catalogue-redis --network host redis:8.2.1 redis-server --bind 127.0.0.1 --port 26379 --save '' --appendonly no
+
       - name: Resolve compliant catalogue holds
         id: codex
         timeout-minutes: 18
@@ -376,17 +390,6 @@ jobs:
           if [ -f frontend/package.json ]; then
             npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath src/lib/controlledLaunch.canonicalAuthority.test.js src/lib/controlledLaunch.previewParity.test.js
           fi
-
-      - name: Start isolated regression services
-        run: |
-          set -euo pipefail
-          docker run --detach --name earnalism-catalogue-mongodb --network host mongo:7.0.14 mongod --bind_ip 127.0.0.1 --port 27018 --replSet earnalism-uat-rs0
-          for _ in $(seq 1 30); do
-            docker exec earnalism-catalogue-mongodb mongosh --host 127.0.0.1 --port 27018 --quiet --eval 'db.adminCommand({ ping: 1 })' && break
-            sleep 1
-          done
-          docker exec earnalism-catalogue-mongodb mongosh --host 127.0.0.1 --port 27018 --quiet --eval 'try { rs.initiate({_id: "earnalism-uat-rs0", members: [{ _id: 0, host: "127.0.0.1:27018" }]}) } catch (error) { if (error.codeName !== "AlreadyInitialized") throw error }'
-          docker run --detach --name earnalism-catalogue-redis --network host redis:8.2.1 redis-server --bind 127.0.0.1 --port 26379 --save '' --appendonly no
 
       - name: Run full regression gate
         if: ${{ hashFiles('scripts/run_pr_regression.sh') != '' }}
