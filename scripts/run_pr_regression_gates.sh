@@ -32,6 +32,15 @@ env \
   JWT_SECRET="${JWT_SECRET:?isolated JWT secret is required}" \
   "$PYTHON_BIN" -m pytest -q backend/tests/test_cors_cache_headers.py backend/tests/test_reader_manifest_cache_contract.py
 
+echo "==> Audio transport, current release containment, and revised reader-only manuscript"
+env \
+  ENVIRONMENT=uat \
+  READING_PASS_V2_ENABLED=false \
+  ENABLE_STARTUP_DB_MAINTENANCE=false \
+  "$PYTHON_BIN" -m pytest -q \
+    backend/tests/test_b2_audiobook_routing.py \
+    backend/tests/test_agentic_ai_with_python_reader_only.py
+
 echo "==> Reader segment and inspection MongoDB integrations"
 env \
   READER_SEGMENT_MONGO_INTEGRATION=1 \
@@ -72,6 +81,9 @@ CI=true npm --prefix frontend test -- --watch=false --runInBand --runTestsByPath
   src/bookDetailDirectRoute.test.js \
   src/components/Footer.test.js \
   src/components/ReferencePublicPages.test.jsx \
+  src/pages/Library.test.jsx \
+  src/pages/Pricing.test.jsx \
+  src/authAccountLifecycle.test.jsx \
   src/staticSeoContract.test.js
 
 npm run regression:ci

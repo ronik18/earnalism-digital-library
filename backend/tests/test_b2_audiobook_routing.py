@@ -6,6 +6,8 @@ import sys
 from pathlib import Path
 from types import SimpleNamespace
 
+import pytest
+
 
 BACKEND_DIR = Path(__file__).resolve().parents[1]
 if str(BACKEND_DIR) not in sys.path:
@@ -369,7 +371,9 @@ def test_package_manifest_endpoint_caches_only_projected_metadata_and_head_is_em
         calls.append(("set", namespace, key, ttl_seconds))
         cache[(namespace, key)] = copy.deepcopy(value)
 
-    monkeypatch.setattr(server, "_reader_audio_book_for_slug", fake_book)
+    # The package transport has its own resolver. Keep its synthetic release
+    # separate from the currently held, real catalogue title.
+    monkeypatch.setattr(server, "_reader_audio_package_book_for_slug", fake_book)
     monkeypatch.setattr(server, "_redis_cache_get", fake_cache_get)
     monkeypatch.setattr(server, "_redis_cache_set", fake_cache_set)
     get_request = SimpleNamespace(headers={}, method="GET", cookies={})
@@ -409,20 +413,22 @@ def test_package_manifest_endpoint_caches_only_projected_metadata_and_head_is_em
 
 def test_reader_manifest_truth_gate_invalidates_pre_package_v2_cache(monkeypatch):
     server = _server(monkeypatch)
+    # Use an accepted reader-only control, not a held historical audio title.
+    slug = "a-ghost-story"
     stale_key = (
-        "book-manifest:audio-contract-v12:17:public:the-open-window"
+        f"book-manifest:audio-contract-v12:17:public:{slug}"
     )
     current_key = (
         "book-manifest:"
         f"{server.CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:"
         f"{server.PUBLIC_CATALOG_TRUTH_CACHE_VERSION}:"
-        f"{server.CHAPTER_INDEX_CONTRACT_VERSION}:17:public:the-open-window"
+        f"{server.CHAPTER_INDEX_CONTRACT_VERSION}:17:public:{slug}"
     )
     cache = {
         ("reader-manifest", stale_key): {
             "audio": {
                 "assets": {
-                    "mp3": "/api/reader/book/the-open-window/audiobook",
+                    "mp3": f"/api/reader/book/{slug}/audiobook",
                 },
             },
         },
@@ -441,6 +447,10 @@ def test_reader_manifest_truth_gate_invalidates_pre_package_v2_cache(monkeypatch
         set_calls.append((namespace, key, ttl_seconds))
         cache[(namespace, key)] = copy.deepcopy(value)
 
+    class NoStoredBook:
+        async def find_one(self, *_args, **_kwargs):
+            return None
+
     monkeypatch.setattr(
         server,
         "_reader_content_cache_generation_value",
@@ -448,14 +458,18 @@ def test_reader_manifest_truth_gate_invalidates_pre_package_v2_cache(monkeypatch
     )
     monkeypatch.setattr(server, "_redis_cache_get", fake_cache_get)
     monkeypatch.setattr(server, "_redis_cache_set", fake_cache_set)
+    monkeypatch.setattr(server, "db", SimpleNamespace(books=NoStoredBook()))
 
     result = asyncio.run(
-        server._reader_book_manifest_doc("the-open-window")
+        server._reader_book_manifest_doc(slug)
     )
 
-    assert result["audio"]["assets"]["manifest"] == (
-        "/api/reader/book/the-open-window/audiobook/manifest"
-    )
+    assert result is not None
+    assert result["book"]["slug"] == slug
+    assert result["audio"]["enabled"] is False
+    assert result["audio"]["assets"] == {}
+    assert result["audio"]["url"] == ""
+    assert f"/api/reader/book/{slug}/audiobook" not in json.dumps(result)
     assert get_calls == [(
         "reader-manifest",
         current_key,
@@ -482,7 +496,7 @@ def test_package_manifest_endpoint_never_reads_cache_before_release_selection(
     async def forbidden_cache_get(*_args, **_kwargs):
         raise AssertionError("invalid release selection must not read Redis")
 
-    monkeypatch.setattr(server, "_reader_audio_book_for_slug", fake_book)
+    monkeypatch.setattr(server, "_reader_audio_package_book_for_slug", fake_book)
     monkeypatch.setattr(server, "_redis_cache_get", forbidden_cache_get)
     request = SimpleNamespace(headers={}, method="GET", cookies={})
     response = asyncio.run(
@@ -616,7 +630,7 @@ def test_package_segment_resolves_exact_current_version_and_segment(monkeypatch)
         })
         return "STREAMED"
 
-    monkeypatch.setattr(server, "_reader_audio_book_for_slug", fake_book)
+    monkeypatch.setattr(server, "_reader_audio_package_book_for_slug", fake_book)
     monkeypatch.setattr(server, "_stream_audiobook_asset_url", fake_stream)
     monkeypatch.setattr(
         server,
@@ -686,7 +700,7 @@ def test_finalized_prod_receipt_resolves_and_streams_exact_versioned_range(monke
             }
 
     fake_s3 = FakeS3()
-    monkeypatch.setattr(server, "_reader_audio_book_for_slug", fake_book)
+    monkeypatch.setattr(server, "_reader_audio_package_book_for_slug", fake_book)
     monkeypatch.setattr(server, "_b2_client", lambda storage=None: fake_s3)
     request = SimpleNamespace(
         headers={"range": "bytes=0-3"},
@@ -734,8 +748,8 @@ def test_package_segment_rejects_stale_version_and_unknown_segment(monkeypatch):
     async def fake_book(_slug):
         return book
 
-    monkeypatch.setattr(server, "_reader_audio_book_for_slug", fake_book)
-    request = SimpleNamespace(headers={}, method="GET")
+    monkeypatch.setattr(server, "_reader_audio_package_book_for_slug", fake_book)
+    request = SimpleNamespace(headers={}, method="GET", cookies={})
 
     for version, segment_id in (
         (f"sha256-{'0' * 64}", "c001-s001"),
@@ -990,11 +1004,10 @@ def test_new_title_canary_manifest_is_private_and_hidden_cohort_is_404(
         >= 5
     )
 
-    monkeypatch.setattr(
-        server,
-        "_controlled_artifact_doc",
-        lambda _slug, include_content=False: book,
-    )
+    async def fake_book(_slug):
+        return book
+
+    monkeypatch.setattr(server, "_reader_audio_package_book_for_slug", fake_book)
 
     async def forbidden_cache(*_args, **_kwargs):
         raise AssertionError("transport canary must not use Redis manifest cache")
@@ -1171,6 +1184,7 @@ def test_b2_key_and_range_helpers(monkeypatch):
 
 def test_private_audio_store_is_proxied_without_changing_primary_b2(monkeypatch):
     server = _server(monkeypatch)
+    primary_config = (server.B2_S3_ENDPOINT, server.B2_REGION, server.B2_BUCKET)
     monkeypatch.setattr(server, "can_expose_audio", lambda book: True)
     monkeypatch.setattr(server, "B2_PRIVATE_AUDIO_S3_ENDPOINT", "https://s3.us-west-004.backblazeb2.com")
     monkeypatch.setattr(server, "B2_PRIVATE_AUDIO_REGION", "us-west-004")
@@ -1200,9 +1214,15 @@ def test_private_audio_store_is_proxied_without_changing_primary_b2(monkeypatch)
     assert server._b2_key_from_url(private_url, storage) == (
         "earnalism/audiobooks/the-open-window/the-open-window.mp3"
     )
-    assert audio["assets"]["mp3"] == "/api/reader/book/the-open-window/audiobook"
-    assert audio["url"] == "/api/reader/book/the-open-window/audiobook"
+    assert server._reader_audio_asset_url(book, "the-open-window", "mp3", private_url) == (
+        "/api/reader/book/the-open-window/audiobook"
+    )
+    assert audio["enabled"] is True
+    assert audio["assets"] == {}
+    assert audio["url"] == ""
+    assert "backblazeb2.com" not in json.dumps(audio)
     assert audio["narration_disclosure"] == "Narration: AI voice"
+    assert (server.B2_S3_ENDPOINT, server.B2_REGION, server.B2_BUCKET) == primary_config
 
 
 def test_private_audio_endpoint_reads_the_selected_private_bucket(monkeypatch):
@@ -1565,13 +1585,26 @@ def test_malformed_range_returns_416_without_fetching_object_body(monkeypatch):
     assert fake_s3.get_called is False
 
 
-def test_open_window_controlled_release_exposes_only_proxy_assets_with_disclosure(monkeypatch):
+def test_eligible_audio_metadata_retains_disclosure_without_playable_urls(monkeypatch):
     server = _server(monkeypatch)
-    artifact = server.load_controlled_artifact_book("the-open-window")
+    # Isolate presentation eligibility for synthetic metadata only. The real
+    # current-release rejection is exercised below without overriding its gate.
+    monkeypatch.setattr(server, "can_expose_audio", lambda _book: True)
+    book = {
+        "audiobook_enabled": True,
+        "audiobook_provider": "kokoro",
+        "audiobook_voice": "af_bella",
+        "audio_qa_status": "QA_PASSED",
+        "sync_mode": "section_following",
+        "audiobook_assets": {"mp3": "https://storage.invalid/fixture.mp3"},
+        "audiobook": {
+            "ai_narration_disclosure": "Narration: AI voice",
+            "size": 6283053,
+            "duration_ms": 392600,
+        },
+    }
 
-    assert artifact is not None
-    assert server.can_expose_audio({**artifact, "slug": "the-open-window"}) is True
-    audio = server._reader_manifest_audio(artifact, "the-open-window")
+    audio = server._reader_manifest_audio(book, "fixture-audio-metadata")
 
     assert audio["enabled"] is True
     assert audio["provider"] == "kokoro"
@@ -1583,14 +1616,46 @@ def test_open_window_controlled_release_exposes_only_proxy_assets_with_disclosur
     assert audio["narration_disclosure"] == "Narration: AI voice"
     assert audio["size"] == 6283053
     assert audio["duration_ms"] == 392600
-    assert audio["assets"] == {
-        "mp3": "/api/reader/book/the-open-window/audiobook",
-        "timestamps": "/api/reader/book/the-open-window/audiobook/timestamps",
-        "vtt": "/api/reader/book/the-open-window/audiobook/vtt",
-        "chapters": "/api/reader/book/the-open-window/audiobook/chapters",
-        "meta": "/api/reader/book/the-open-window/audiobook/meta",
-        "manifest": "/api/reader/book/the-open-window/audiobook/manifest",
-    }
+    assert audio["assets"] == {}
+    assert audio["url"] == ""
+    assert "storage.invalid" not in json.dumps(audio)
+
+
+def test_open_window_current_release_keeps_unapproved_audio_hidden(monkeypatch):
+    server = _server(monkeypatch)
+    slug = "the-open-window"
+    # Historical package metadata must never grant current release authority.
+    artifact = json.loads((BACKEND_DIR / "data" / "controlled_publications" / slug / "public_book.json").read_text())
+    assert server.can_expose_audio({**artifact, "slug": slug}) is False
+    audio = server._reader_manifest_audio(artifact, slug)
+
+    assert audio["enabled"] is False
+    assert audio["provider"] == ""
+    assert audio["voice"] == ""
+    assert audio["release_gate"] == ""
+    assert audio["qa_status"] == ""
+    assert audio["highlight_sync_enabled"] is False
+    assert audio["assets"] == {}
+    assert audio["url"] == ""
+    assert audio["package_version"] == ""
+
+    class HistoricalStoredBook:
+        async def find_one(self, *_args, **_kwargs):
+            return copy.deepcopy(artifact)
+
+    def forbidden(*_args, **_kwargs):
+        raise AssertionError("unapproved audio must not reach package selection or storage")
+
+    monkeypatch.setattr(server, "db", SimpleNamespace(books=HistoricalStoredBook()))
+    monkeypatch.setattr(server, "_selected_audiobook_package", forbidden)
+    monkeypatch.setattr(server, "_stream_audiobook_asset_url", forbidden)
+    request = SimpleNamespace(headers={}, method="GET", cookies={})
+    with pytest.raises(server.HTTPException) as manifest_error:
+        asyncio.run(server._reader_book_audiobook_package_manifest_response(slug, request))
+    assert manifest_error.value.status_code == 404
+    with pytest.raises(server.HTTPException) as segment_error:
+        asyncio.run(server._reader_book_audiobook_package_segment(slug, "sha256-" + "0" * 64, "c001-s001", "mp3", request))
+    assert segment_error.value.status_code == 404
 
 
 def test_admin_audiobook_asset_sanitizer_rejects_static_audio_fallbacks(monkeypatch):

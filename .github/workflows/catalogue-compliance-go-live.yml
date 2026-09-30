@@ -410,6 +410,7 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add -A
           git commit -m "Catalogue compliance: evidence-bound release progress"
+          echo "PR_HEAD_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
           git push origin "$BRANCH"
 
           python3 - <<'PY' > /tmp/pr-body.md
@@ -441,7 +442,8 @@ jobs:
         run: |
           set -euo pipefail
           gh pr checks "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --watch --interval 30 --fail-fast
-          gh pr merge "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --merge --delete-branch
+          # The integration branch is shared release lineage, not disposable.
+          gh pr merge "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --merge --match-head-commit "$PR_HEAD_SHA"
           MERGED_SHA="$(gh pr view "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --json mergeCommit --jq '.mergeCommit.oid')"
           echo "MERGED_SHA=$MERGED_SHA" >> "$GITHUB_ENV"
           gh issue comment "$TRACKING_ISSUE" --repo "$GITHUB_REPOSITORY" --body "Candidate PR #$PR_NUMBER passed required checks and merged at $MERGED_SHA. Railway/main deployment status will remain fail-closed through the normal production gates."

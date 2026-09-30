@@ -4,6 +4,8 @@ import json
 from pathlib import Path
 from types import SimpleNamespace
 
+import pytest
+
 from backend.reader_only_audio_policy import READER_ONLY_AUDIO_EXCLUDED_SLUGS, ReaderOnlyAudioExcluded
 from backend import server
 
@@ -38,7 +40,7 @@ def test_reader_only_slug_is_refused_before_any_audio_pipeline_output(tmp_path):
         run_chapter_pipeline(book_slug=SLUG, chapter=1, language="en", provider="fixture", voice_id="fixture", voice_name="fixture", write_root_reports=False)
 
 
-def test_public_detail_handler_serializes_revised_reader_only_artifact(monkeypatch):
+def test_public_detail_handler_respects_revised_reader_only_release_authority(monkeypatch):
     class NoStoredBook:
         async def find_one(self, *_args, **_kwargs):
             return None
@@ -50,11 +52,28 @@ def test_public_detail_handler_serializes_revised_reader_only_artifact(monkeypat
     monkeypatch.setattr(server, "_public_cache_get", no_cache)
     monkeypatch.setattr(server, "_public_cache_set", no_cache)
 
-    result = asyncio.run(server.get_book(SLUG))
-    dumped = server.PublicBookOut.model_validate(result).model_dump()
+    artifact = ROOT / "backend" / "data" / "controlled_publications" / SLUG
+    public = json.loads((artifact / "public_book.json").read_text())
+    dumped = server.PublicBookOut.model_validate(server.public_book_projection(public)).model_dump()
 
     assert dumped["slug"] == SLUG
     assert dumped["estimated_reading_time"] == "396"
-    assert dumped["reader_enabled"] is True
     assert dumped["audio_enabled"] is False
     assert dumped["audio_url"] == ""
+
+    launch = json.loads((ROOT / "backend" / "data" / "controlled_launch.json").read_text())
+    if SLUG not in launch["live_approved_slugs"]:
+        # A source revision and historical approval flags cannot publish a
+        # title that has not completed the current hash-bound release gates.
+        assert dumped["reader_enabled"] is False
+        with pytest.raises(server.HTTPException) as error:
+            asyncio.run(server.get_book(SLUG))
+        assert error.value.status_code == 404
+    else:
+        result = asyncio.run(server.get_book(SLUG))
+        released = server.PublicBookOut.model_validate(result).model_dump()
+        assert released["slug"] == SLUG
+        assert released["estimated_reading_time"] == "396"
+        assert released["reader_enabled"] is True
+        assert released["audio_enabled"] is False
+        assert released["audio_url"] == ""
