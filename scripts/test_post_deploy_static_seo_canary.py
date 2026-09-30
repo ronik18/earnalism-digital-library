@@ -4,6 +4,10 @@
 from __future__ import annotations
 
 import importlib.util
+import shutil
+import subprocess
+import tempfile
+import json
 import unittest
 from pathlib import Path
 
@@ -72,8 +76,86 @@ class StaticSeoCanaryTests(unittest.TestCase):
         self.assertEqual(self.inspect("/reader/a-ghost-story", html)["result"], "PASS")
 
     def test_held_routes_require_404(self) -> None:
-        self.assertEqual(self.inspect("/book/dracula", "", status=404)["result"], "PASS")
+        self.assertEqual(self.inspect("/book/yugalanguriya", "", status=404)["result"], "PASS")
         self.assertEqual(self.inspect("/reader/yugalanguriya", "", status=200)["result"], "FAIL")
+
+    def unavailable_html(self, *, body="", links=""):
+        return page(title="Dracula unavailable | The Earnalism", description="Dracula is not currently available as a public Earnalism release.", h1="Dracula is not currently available.", canonical="https://theearnalism.com/book/dracula", robots="noindex,nofollow", body="This title is not part of the current public release. No book text, reader session, or audio is available from this page. " + body, links=links)
+
+    def test_approved_historical_recovery_page_passes_without_releasing_a_title(self):
+        html = self.unavailable_html(links="<a href='/library'>Browse Library</a><a href='/contact?interest=dracula'>Ask about title</a>")
+        self.assertEqual(self.inspect("/book/dracula", html)["result"], "PASS")
+        self.assertEqual(self.inspect("/reader/dracula", html)["result"], "PASS")
+        self.assertEqual(self.inspect("/listener/dracula", html)["result"], "PASS")
+
+    def test_historical_home_fallback_and_released_access_copy_are_rejected(self):
+        html = page(title="Earnalism | Classics", description=ACCESS, h1="A library made for lingering", canonical="https://theearnalism.com/", body=ACCESS)
+        self.assertEqual(self.inspect("/book/dracula", html)["result"], "FAIL")
+        self.assertEqual(self.inspect("/reader/dracula", self.unavailable_html(body=ACCESS))["result"], "FAIL")
+
+    def test_historical_controls_media_schema_and_non_recovery_links_are_rejected(self):
+        unsafe = ["<button>Read</button>", "<audio src='https://media.example/audio.mp3'></audio>", '<script type="application/ld+json">{"@type":"Book","isAccessibleForFree":true}</script>', "<a href='/reader/dracula'>Open Reader</a>"]
+        for content in unsafe:
+            with self.subTest(content=content):
+                self.assertEqual(self.inspect("/book/dracula", self.unavailable_html(body=content))["result"], "FAIL")
+
+    def test_historical_routes_require_exact_identity_and_noindex(self):
+        html = self.unavailable_html()
+        for unsafe in [html.replace("noindex,nofollow", "index,follow"), html.replace("https://theearnalism.com/book/dracula", "https://theearnalism.com/"), html.replace("Dracula", "Another title")]:
+            self.assertEqual(self.inspect("/book/dracula", unsafe)["result"], "FAIL")
+
+
+class HistoricalUnavailableSnapshotTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory(prefix="historical-unavailable-snapshots-")
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        source_root = SCRIPT.parent.parent
+        files = ["frontend/scripts/generate-static-seo-snapshots.mjs", "frontend/scripts/verify-static-seo-snapshots.mjs", "frontend/scripts/unavailable-title-routes.mjs", "frontend/static-seo/controlled-publication-public.json", "frontend/static-seo/editorial-public.json", "frontend/public/index.html", "data/controlled_launch.json"]
+        for relative in files:
+            target = self.root / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(source_root / relative, target)
+        self.generate()
+
+    def generate(self):
+        subprocess.run(["node", str(self.root / "frontend/scripts/generate-static-seo-snapshots.mjs")], check=True, capture_output=True, text=True, timeout=30)
+
+    def verify(self):
+        return subprocess.run(["node", str(self.root / "frontend/scripts/verify-static-seo-snapshots.mjs")], capture_output=True, text=True, timeout=30)
+
+    def test_real_generator_and_verifier_produce_six_safe_unavailable_snapshots(self):
+        result = self.verify()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        manifest = json.loads((self.root / "frontend/build/static-seo-snapshot-manifest.json").read_text())
+        held = [r for r in manifest["routes"] if r["snapshot_classification"] == "RELEASE_HELD"]
+        self.assertEqual(len(held), 6)
+        for entry in held:
+            route = entry["route"]
+            html = (self.root / "frontend/build" / route.lstrip("/") / "index.html").read_text()
+            report = MODULE.inspect_route(route, MODULE.ROUTES[route], 200, {}, html, "https://theearnalism.com" + route)
+            self.assertEqual(report["result"], "PASS", report)
+
+    def test_first_matching_rewrite_uses_the_snapshot_and_preserves_old_app_rules(self):
+        config = json.loads((SCRIPT.parent.parent / "frontend/vercel.json").read_text())
+        for slug in ["dracula", "the-selfish-giant"]:
+            for kind in ["book", "reader", "listener"]:
+                route = "/" + kind + "/" + slug
+                for source in [route, route + "/"]:
+                    winning = next(r for r in config["rewrites"] if r["source"] == source)
+                    self.assertEqual(winning["destination"], route + "/index.html")
+                    self.assertIn({"source": source, "destination": "/index.html"}, config["rewrites"])
+                self.assertTrue((self.root / "frontend/build" / route.lstrip("/") / "index.html").is_file())
+        for kind in ["book", "reader", "listener"]:
+            self.assertIn({"source": "/" + kind + "/:slug", "destination": "/api/not-found"}, config["rewrites"])
+
+    def test_snapshot_tampering_cannot_pass_the_build_or_production_canary(self):
+        target = self.root / "frontend/build/book/dracula/index.html"
+        original = target.read_text()
+        for html in [original.replace('name="robots" content="noindex,nofollow"', 'name="robots" content="index,follow"'), original.replace("</main>", '<a href="/reader/dracula">Read the 3-page preview</a></main>')]:
+            target.write_text(html)
+            self.assertNotEqual(self.verify().returncode, 0)
+            self.assertEqual(MODULE.inspect_route("/book/dracula", MODULE.ROUTES["/book/dracula"], 200, {}, html, "https://theearnalism.com/book/dracula")["result"], "FAIL")
 
 
 if __name__ == "__main__":

@@ -367,6 +367,54 @@
       "destination": "/index.html"
     },
     {
+      "source": "/book/dracula",
+      "destination": "/book/dracula/index.html"
+    },
+    {
+      "source": "/book/dracula/",
+      "destination": "/book/dracula/index.html"
+    },
+    {
+      "source": "/reader/dracula",
+      "destination": "/reader/dracula/index.html"
+    },
+    {
+      "source": "/reader/dracula/",
+      "destination": "/reader/dracula/index.html"
+    },
+    {
+      "source": "/listener/dracula",
+      "destination": "/listener/dracula/index.html"
+    },
+    {
+      "source": "/listener/dracula/",
+      "destination": "/listener/dracula/index.html"
+    },
+    {
+      "source": "/book/the-selfish-giant",
+      "destination": "/book/the-selfish-giant/index.html"
+    },
+    {
+      "source": "/book/the-selfish-giant/",
+      "destination": "/book/the-selfish-giant/index.html"
+    },
+    {
+      "source": "/reader/the-selfish-giant",
+      "destination": "/reader/the-selfish-giant/index.html"
+    },
+    {
+      "source": "/reader/the-selfish-giant/",
+      "destination": "/reader/the-selfish-giant/index.html"
+    },
+    {
+      "source": "/listener/the-selfish-giant",
+      "destination": "/listener/the-selfish-giant/index.html"
+    },
+    {
+      "source": "/listener/the-selfish-giant/",
+      "destination": "/listener/the-selfish-giant/index.html"
+    },
+    {
       "source": "/book/the-selfish-giant",
       "destination": "/index.html"
     },

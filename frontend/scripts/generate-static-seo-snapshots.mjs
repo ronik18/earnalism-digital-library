@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { unavailableTitleRoutes, unavailableCopy, unavailableAccessCopy } from "./unavailable-title-routes.mjs";
 
 const frontendDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const rootDir = path.resolve(frontendDir, "..");
@@ -61,7 +62,7 @@ async function contracts() {
     && editorial.journal && editorial.journal.canonical_route === "/journal"
     && articles.every((article) => article.slug && article.title && article.excerpt && article.author);
   if (!validBooks || !validEditorial) throw new Error("Static SEO contract is stale or invalid. Refresh the checked-in public-safe contracts before building.");
-  return { books, releaseHeld, editorial: { ...editorial, articles } };
+  return { books, releaseHeld, unavailableRoutes: unavailableTitleRoutes(liveApprovedSlugs), editorial: { ...editorial, articles } };
 }
 
 function removeManagedHead(source) {
@@ -187,6 +188,21 @@ function publicationPages(books) {
   });
 }
 
+function unavailablePages(routes) {
+  return routes.map(({ path, canonicalPath, slug, title }) => ({
+    path,
+    canonicalPath,
+    title: title + " unavailable | The Earnalism",
+    description: title + " is not currently available as a public Earnalism release.",
+    robots: "noindex,nofollow",
+    snapshot_classification: "RELEASE_HELD",
+    staticBody: shell("Public title unavailable", title + " is not currently available.", unavailableCopy, [
+      { href: "/library", label: "Browse Library" },
+      { href: "/contact?interest=" + encodeURIComponent(slug), label: "Ask about title" },
+    ], [unavailableAccessCopy]),
+  }));
+}
+
 function render(source, page) {
   const head = removeManagedHead(source).replace("</head>", pageHead(page) + "\n</head>");
   return head.replace(/<noscript>[\s\S]*?<\/noscript>/i, "<noscript>" + page.staticBody + "</noscript>").replace(/<div id="root"><\/div>/i, '<div id="root">' + page.staticBody + "</div>");
@@ -195,7 +211,7 @@ function render(source, page) {
 async function main() {
   const source = await template();
   const safe = await contracts();
-  const pages = [...standardPages(safe.editorial, { releaseHeld: safe.releaseHeld, releasedBookCount: safe.books.length }), ...publicationPages(safe.books)];
+  const pages = [...standardPages(safe.editorial, { releaseHeld: safe.releaseHeld, releasedBookCount: safe.books.length }), ...publicationPages(safe.books), ...unavailablePages(safe.unavailableRoutes)];
   const paths = new Set();
   for (const page of pages) {
     if (paths.has(page.path)) throw new Error("Duplicate static SEO route: " + page.path);

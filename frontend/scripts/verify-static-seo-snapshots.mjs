@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { unavailableTitleRoutes, unavailableCopy, unavailableAccessCopy } from "./unavailable-title-routes.mjs";
 
 const frontendDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const rootDir = path.resolve(frontendDir, "..");
@@ -36,7 +37,8 @@ async function main() {
     ? controlledLaunch.live_approved_slugs
     : [];
   const liveSlugSet = new Set(indiaReleasedSlugs);
-  const expected = requiredRoutes(publication, editorial);
+  const unavailable = new Map(unavailableTitleRoutes(indiaReleasedSlugs).map((item) => [item.path, item]));
+  const expected = [...requiredRoutes(publication, editorial), ...unavailable.keys()];
 
   const releaseHeld = publication.public_release_held === true;
   if (publication.schema_version !== "earnalism.static-seo-public.v2" || !Object.values(publication.generated_from || {}).every(isSha) || (releaseHeld ? publication.publications.length !== 0 : publication.publications.length === 0)) fail("Publication contract provenance is invalid", state);
@@ -44,6 +46,7 @@ async function main() {
   if (editorial.schema_version !== "earnalism.static-seo-editorial.v1" || !isSha(editorial.generated_from && editorial.generated_from["https://api.theearnalism.com/api/blog"])) fail("Editorial contract provenance is invalid", state);
   if (manifest.schema_version !== "earnalism.static-seo-snapshots.v2") fail("Snapshot manifest version is invalid", state);
   if (new Set(manifest.routes.map((item) => item.route)).size !== manifest.routes.length) fail("Snapshot manifest has duplicate routes", state);
+  if (manifest.routes.length !== expected.length) fail("Snapshot manifest has unexpected routes", state);
 
   for (const route of expected) {
     const manifestEntry = manifest.routes.find((item) => item.route === route);
@@ -60,6 +63,7 @@ async function main() {
     }
     state.inspected += 1;
     const normalized = html.toLowerCase();
+    const heldTitle = unavailable.get(route);
     const assertions = [
       ['data-static-seo-snapshot="true"', "missing route-specific static shell"],
       ["<title>", "missing title"],
@@ -81,7 +85,7 @@ async function main() {
       state.assertions += 1;
       if (!releaseHeld && normalized.includes(phrase.toLowerCase())) fail(route + " contains stale paid-access copy: " + phrase, state);
     }
-    if (route === "/" || route === "/library" || route.startsWith("/book/") || route.startsWith("/reader/") || route.startsWith("/listener/")) {
+    if (!heldTitle && (route === "/" || route === "/library" || route.startsWith("/book/") || route.startsWith("/reader/") || route.startsWith("/listener/"))) {
       state.assertions += 1;
       const requiredAccessCopy = releaseHeld && ["/", "/library"].includes(route) ? heldCopy : accessCopy;
       if (!normalized.includes(requiredAccessCopy.toLowerCase())) fail(route + " is missing the applicable access contract", state);
@@ -91,7 +95,7 @@ async function main() {
       if (!normalized.includes((releaseHeld ? heldCopy : "Reading Passes and paid checkout are unavailable in this launch").toLowerCase())) fail(route + " must describe disabled checkout", state);
       if (!normalized.includes('name="robots" content="noindex,follow"')) fail(route + " must be noindex", state);
     }
-    if (route.startsWith("/book/")) {
+    if (!heldTitle && route.startsWith("/book/")) {
       state.assertions += 2;
       if (!normalized.includes('"isaccessibleforfree":false')) fail(route + " must not mark the full edition free", state);
       if (!normalized.includes("read the 3-page preview")) fail(route + " must offer only the public preview", state);
@@ -112,9 +116,23 @@ async function main() {
       const staticBody = (html.match(/<main[^>]+data-static-seo-snapshot="true"[\s\S]*?<\/main>/i) || [""])[0];
       if (/\b(?:balance|transaction|device|saved editions|@[^\s<]+)/i.test(staticBody)) fail(route + " contains account-private data", state);
     }
-    if (route.startsWith("/reader/") || route.startsWith("/listener/")) {
+    if (!heldTitle && (route.startsWith("/reader/") || route.startsWith("/listener/"))) {
       state.assertions += 1;
       if (!normalized.includes('name="robots" content="noindex,follow"')) fail(route + " must be noindex", state);
+    }
+    if (heldTitle) {
+      state.assertions += 8;
+      if (manifestEntry.snapshot_classification !== "RELEASE_HELD") fail(route + " must retain its release hold", state);
+      if (!normalized.includes('name="robots" content="noindex,nofollow"')) fail(route + " must be noindex,nofollow", state);
+      if (!normalized.includes(heldTitle.title.toLowerCase() + " is not currently available")) fail(route + " is missing its unavailable title identity", state);
+      if (!normalized.includes(unavailableCopy.toLowerCase()) || !normalized.includes(unavailableAccessCopy.toLowerCase())) fail(route + " is missing truthful unavailable access copy", state);
+      if (normalized.includes(accessCopy.toLowerCase()) || normalized.includes("read the 3-page preview") || normalized.includes("reader-ready edition")) fail(route + " exposes released-edition copy", state);
+      if (!normalized.includes('rel="canonical" href="https://theearnalism.com' + heldTitle.canonicalPath + '"')) fail(route + " has the wrong historical title canonical", state);
+      if (/<(?:audio|video|iframe|button)\b/i.test(html) || /"@type"\s*:\s*"(?:Book|Audiobook)"/i.test(html)) fail(route + " exposes title access or publication data", state);
+      const allowedLinks = new Set(["/library", "/contact?interest=" + heldTitle.slug]);
+      for (const match of html.matchAll(/<a\b[^>]*href=["']([^"']+)["']/gi)) {
+        if (!allowedLinks.has(match[1])) fail(route + " exposes a non-recovery link", state);
+      }
     }
     state.assertions += 1;
     if (/https?:\/\/[^"'\s]+\.(?:mp3|m4a|aac|wav)(?:["'\s?]|$)/i.test(html)) fail(route + " exposes a raw media URL", state);
