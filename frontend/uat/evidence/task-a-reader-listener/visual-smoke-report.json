@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-30T07:34:15.939Z",
+  "generated_at": "2026-09-30T09:15:08.526Z",
   "mode": "browser_and_source",
   "visual_phase": null,
   "route_matrix": "reader-listener-design",
-  "base_url": "http://localhost:3010",
+  "base_url": "http://127.0.0.1:13018",
   "routes": [
     "/reader/dracula?visual-fixture=1",
     "/listener/a-ghost-story?visual-fixture=1"
@@ -142,7 +142,7 @@
     "browser_checks_completed": 16,
     "routes_attempted": 16,
     "routes_completed": 16,
-    "screenshotDir": "frontend/uat/evidence/task-a-reader-listener",
+    "screenshotDir": "/tmp/pr473-visual-final",
     "results": [
       {
         "route": "/reader/dracula?visual-fixture=1",
