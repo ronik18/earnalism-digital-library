@@ -54,6 +54,7 @@ jobs:
         with:
           ref: ${{ github.sha }}
           fetch-depth: 2
+          persist-credentials: false
 
       - name: Provision the canonical integration checkout
         run: |
@@ -86,16 +87,56 @@ jobs:
       - name: Install frontend test dependencies
         run: npm ci --prefix frontend --ignore-scripts --legacy-peer-deps
 
-      # Prepare privileged browser prerequisites before Codex drops sudo.
+      # The controller installs host prerequisites; Codex uses a separate account.
       - name: Install regression runtime prerequisites
         run: |
           sudo apt-get update
           sudo apt-get install --yes ripgrep lsof
           npx playwright install --with-deps chromium
 
+      - name: Prepare and verify the unprivileged implementation account
+        run: |
+          set -euo pipefail
+          runner_user="$(id -un)"
+          runner_group="$(id -gn)"
+          test "$runner_user" != root
+          sudo adduser --system --home /home/earnalism-codex --shell /bin/bash --group earnalism-codex
+          sudo usermod -a -G earnalism-codex "$runner_user"
+          sudo usermod -a -G "$runner_group" earnalism-codex
+          sudo chown -R "$runner_user:earnalism-codex" "$GITHUB_WORKSPACE"
+          sudo chmod -R g+rwX "$GITHUB_WORKSPACE"
+          sudo find "$GITHUB_WORKSPACE" -type d -exec chmod g+s {} +
+          sudo -H -u earnalism-codex git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          sudo -H -u earnalism-codex bash -c '
+            set -euo pipefail
+            test "$(id -u)" != 0
+            if id -Gn | grep -Eq "(^| )(sudo|docker)( |$)"; then
+              echo "worker has a privileged group" >&2; exit 64
+            fi
+            if sudo -n true 2>/dev/null; then
+              echo "worker has sudo authority" >&2; exit 64
+            fi
+            if test -w /var/run/docker.sock; then
+              echo "worker has Docker authority" >&2; exit 64
+            fi
+            test "$(git -C "$1" rev-parse HEAD)" = "$2"
+            test -z "$(git -C "$1" status --porcelain)"
+            probe="$(mktemp "$1/.catalogue-worker-write.XXXXXX")"
+            remove_probe() { rm -f -- "$probe"; }
+            trap remove_probe EXIT
+            printf "isolated-worker-write-probe\n" > "$probe"
+            test -s "$probe"
+          ' -- "$GITHUB_WORKSPACE" "$GITHUB_SHA"
+          # The controller must retain Docker for later isolated validation.
+          docker info >/dev/null
+
+      - name: Exercise real worker permission boundaries
+        run: python3 -m unittest scripts.test_catalogue_compliance_worker_permissions -v
+
       - name: Capture fail-closed baseline
         run: |
           set -euo pipefail
+          python3 scripts/process_full_catalogue.py
           python3 scripts/process_full_catalogue.py --check
           cp internal/earnalism_intelligence/full_catalogue_processing_20260930/catalogue_state.json /tmp/catalogue-before.json
           cp backend/data/rights_decision_registry.json /tmp/rights-registry-before.json
@@ -106,6 +147,10 @@ jobs:
           held=[t for t in state['titles'] if t['state']=='EXTERNAL_ACTION_REQUIRED']
           print(json.dumps({'held_before':len(held),'live_before':state['state_counts'].get('READER_ONLY_LIVE_APPROVED',0),'chapters':state['chapter_count']}, indent=2))
           PY
+          # Generated snapshots are inputs, not implementation changes. Keep the
+          # canonical checkout clean while retaining the exact baseline in /tmp.
+          git restore --source=HEAD --worktree --staged internal/earnalism_intelligence/full_catalogue_processing_20260930
+          test -z "$(git status --porcelain)"
 
       - name: Select bounded compliance batch
         run: |
@@ -114,8 +159,8 @@ jobs:
           import json
           from pathlib import Path
 
-          state_path = Path('internal/earnalism_intelligence/full_catalogue_processing_20260930/catalogue_state.json')
-          batch_path = state_path.with_name('campaign_batch.json')
+          state_path = Path('/tmp/catalogue-before.json')
+          batch_path = Path('/tmp/earnalism-catalogue-campaign-batch.json')
           state = json.loads(state_path.read_text(encoding='utf-8'))
           held = [t for t in state['titles'] if t.get('state') == 'EXTERNAL_ACTION_REQUIRED']
 
@@ -158,9 +203,8 @@ jobs:
           print(json.dumps(payload, indent=2))
           PY
 
-      # Codex's drop-sudo safety strategy intentionally removes later access to
-      # the Docker daemon. Start the isolated regression dependencies first,
-      # while the hosted runner still has its normal Docker access.
+      # Preserve the approved service ordering: the controller starts isolated
+      # regression dependencies before the unprivileged implementation worker.
       - name: Start isolated regression services
         run: |
           set -euo pipefail
@@ -181,12 +225,17 @@ jobs:
           output-file: codex-catalogue-final-message.txt
           model: gpt-5.6-luna
           permission-profile: ":workspace"
-          safety-strategy: drop-sudo
+          safety-strategy: unprivileged-user
+          codex-user: earnalism-codex
+          working-directory: /tmp/earnalism-main-approved-integration
           prompt: |
             You are the authorized Earnalism catalogue-compliance implementation worker for the owner-approved campaign in GitHub issue #477.
 
+            EXECUTION SNAPSHOT
+            The controller fetched and verified the exact main revision before creating this clean canonical checkout. Confirm the canonical branch and HEAD using read-only Git commands. The worker sandbox intentionally protects .git: do not fetch, commit, switch branches or update refs. The controller-created batch and baseline live outside the checkout so they do not make it dirty. Use them as read-only inputs. Never overwrite or remove any approved source to obtain a clean state.
+
             CURRENT GOAL
-            This is one bounded iteration of the remaining EXTERNAL_ACTION_REQUIRED catalogue campaign. Read internal/earnalism_intelligence/full_catalogue_processing_20260930/campaign_batch.json and work only on candidate slugs listed there. Modify at most 5 titles in this run. Prefer the most deterministic, evidence-backed repairs first. Do not scan or repair title packages outside this candidate set. If a candidate cannot be substantiated quickly from exact repository or authoritative evidence, leave it held rather than extending the run. Move only genuinely compliant titles into the existing India commercial text-reader release path.
+            This is one bounded iteration of the remaining EXTERNAL_ACTION_REQUIRED catalogue campaign. Read /tmp/earnalism-catalogue-campaign-batch.json and work only on candidate slugs listed there. Modify at most 5 titles in this run. Prefer the most deterministic, evidence-backed repairs first. Do not scan or repair title packages outside this candidate set. If a candidate cannot be substantiated quickly from exact repository or authoritative evidence, leave it held rather than extending the run. Move only genuinely compliant titles into the existing India commercial text-reader release path.
 
             OWNER POLICY
             - Additional manual/live PRODUCTION_READER observation is waived only when the exact source/package is independently verified complete and integrity-clean: no missing chapter/section, content/package anomaly, or unresolved integrity discrepancy, and Reader validation is clean.
@@ -225,7 +274,7 @@ jobs:
             Do not change payment/Razorpay/wallet/accounting behavior, entitlement authorization or policy, customer/user data, secrets/tokens/credentials, database migrations, deployment configuration, .github workflows, audio allowlists/assets/generation, or unrelated UI/design. Do not weaken, skip, delete, or rewrite tests/gates to obtain a pass.
 
             REQUIRED IMPLEMENTATION BEHAVIOR
-            1. Read internal/earnalism_intelligence/full_catalogue_processing_20260930/campaign_batch.json first. Work only on its candidate slugs and modify at most 5 titles. You may consult catalogue_state.json only for those slugs. Do not edit campaign_batch.json.
+            1. Read /tmp/earnalism-catalogue-campaign-batch.json first. Work only on its candidate slugs and modify at most 5 titles. You may consult /tmp/catalogue-before.json only for those slugs. Do not edit either controller-prepared input file.
             2. Repair deterministic package/content/checksum/QA issues only from exact evidence.
             3. Fill rights/source metadata only from persisted evidence. If external retrieval is used, bind the exact retrieved source/metadata to the package.
             4. For missing packages, create a controlled package only when the exact source edition and all required provenance are genuinely available and verified; otherwise leave the title held.
@@ -234,13 +283,17 @@ jobs:
             7. Add a title to both controlled-launch allowlists and the frontend fail-closed Reader allowlist only after its exact runtime package is fully accepted.
             8. Keep root and backend runtime packages byte/parity-correct where the repository contract requires it.
             9. Keep all audio flags false/disabled and audio_enabled_slugs empty.
-            10. Run focused rights, publication, controlled-launch, catalogue, checksum, and Reader tests. Do not claim completion for titles still held.
+            10. Run focused rights, publication, controlled-launch, catalogue, checksum, and Reader tests. For backend unit-test imports, explicitly prefix synthetic loopback settings: ENVIRONMENT=uat MONGODB_URL=mongodb://127.0.0.1:27018/earnalism_catalogue_test JWT_SECRET=synthetic-catalogue-unit-test-only READING_PASS_V2_ENABLED=false ENABLE_STARTUP_DB_MAINTENANCE=false. These are test inputs, not production evidence. Do not claim completion for titles still held.
             11. Keep this implementation pass bounded. Do not spend the run exhaustively researching a single unresolved title; leave unsupported facts held. Before finishing, regenerate the private catalogue state with scripts/process_full_catalogue.py so remaining blockers are explicit and reproducible.
             12. In your final message report newly-live slugs, repaired-but-still-held slugs, unchanged external holds, tests run, and any authoritative external evidence fetched.
 
       - name: Recompute catalogue truth
         run: |
           set -euo pipefail
+          # Return newly created worker files to the validation controller.
+          sudo chown -R "$(id -un):$(id -gn)" "$GITHUB_WORKSPACE"
+          test "$(git branch --show-current)" = "codex/main-approved-integration"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
           python3 scripts/process_full_catalogue.py
           cp internal/earnalism_intelligence/full_catalogue_processing_20260930/catalogue_state.json /tmp/catalogue-after.json
 
@@ -256,6 +309,14 @@ jobs:
           ra=json.load(open('backend/data/rights_decision_registry.json'))
           lb=json.load(open('/tmp/controlled-launch-before.json'))
           la=json.load(open('backend/data/controlled_launch.json'))
+
+          old_records=rb.get('accepted_records') or {}
+          new_records=ra.get('accepted_records') or {}
+          changed_records=sorted(k for k,v in old_records.items() if new_records.get(k)!=v)
+          if changed_records:
+              raise SystemExit('existing accepted rights records changed or removed: '+', '.join(changed_records))
+          if set(rb.get('revoked_decision_ids') or []) - set(ra.get('revoked_decision_ids') or []):
+              raise SystemExit('campaign removed an existing rights revocation')
 
           b={t['slug']:t for t in before['titles']}
           a={t['slug']:t for t in after['titles']}
@@ -468,7 +529,7 @@ jobs:
           git add -A
           git commit -m "Catalogue compliance: evidence-bound release progress"
           echo "PR_HEAD_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
-          git push origin "$BRANCH"
+          git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push origin "$BRANCH"
 
           python3 - <<'PY' > /tmp/pr-body.md
           import json
