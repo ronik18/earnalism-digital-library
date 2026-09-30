@@ -9,7 +9,7 @@
   "worker_review": "PENDING_EXACT_HEAD_PIPELINE",
   "processing_state": "internal/earnalism_intelligence/full_catalogue_processing_20260930/catalogue_state.json",
   "production_reader_verification": "PENDING_TRUSTED_INDIA_CONTEXT",
-  "next_exact_command": "gh pr checks <worker-report-pr> --repo ronik18/earnalism-digital-library --watch --fail-fast",
+  "next_exact_command": "gh pr checks 487 --repo ronik18/earnalism-digital-library --watch --fail-fast",
   "prior_candidate_pipeline": {
     "head": "98984d52eee26a8c5361edfcd58c97df706b73d4",
     "run_id": 36705876984,
@@ -179,5 +179,17 @@
     "customer_ready": "NOT_DECLARED",
     "physical_device_uat": "DEFERRED_BY_OWNER_NOT_RUN",
     "next_exact_command": "gh pr checks <worker-report-pr> --repo ronik18/earnalism-digital-library --watch --fail-fast"
+  },
+  "checksum_priority_recovery": {
+    "timestamp": "2026-09-30T22:17:22.341881+00:00",
+    "workstream": "catalogue_compliance_campaign",
+    "decision": "PRIORITIZE_EXISTING_EXACT_CHECKSUM_REPAIRS_WITHOUT_CLEARING_EVIDENCE_HOLDS",
+    "source_head": "3da0d83b1a1b996c49343c762bb2edf69bcf7db8",
+    "evidence_run": 36780560381,
+    "observation": "Worker examined five approval/QA holds first and made no package changes, while the earlier 36773761003 assessment had identified five retained-checksum repairs in the selected batch",
+    "repair": "Put exact RETAINED_CHECKSUM_MISMATCH entries ahead of approval-only holds; preserve every blocker and source/approval byte; distinguish the five-title modification limit from candidate assessment",
+    "verification": "Four fixtures exercise the actual workflow selector: checksum priority, 20-candidate/5-modification bounds with live exclusions, stable order, and prepared-source preference with unchanged blockers",
+    "scope": "No title package, metadata approval, rights registry, launch allowlist, source/manuscript, cover or audio change",
+    "next_exact_command": "gh pr checks 487 --repo ronik18/earnalism-digital-library --watch --fail-fast"
   }
 }

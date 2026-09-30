@@ -137,7 +137,7 @@ jobs:
           docker info >/dev/null
 
       - name: Exercise real worker permission boundaries
-        run: python3 -m unittest scripts.test_catalogue_compliance_worker_permissions scripts.test_catalogue_compliance_worker_receipt scripts.test_catalogue_compliance_generated_evidence -v
+        run: python3 -m unittest scripts.test_catalogue_compliance_worker_permissions scripts.test_catalogue_compliance_worker_receipt scripts.test_catalogue_compliance_generated_evidence scripts.test_catalogue_compliance_batch -v
 
       - name: Capture fail-closed baseline
         run: |
@@ -182,9 +182,11 @@ jobs:
           def rank(title):
               blockers = title.get('blockers') or []
               joined = ' | '.join(blockers)
+              checksum_repair = any(blocker.startswith('RETAINED_CHECKSUM_MISMATCH:') for blocker in blockers)
               deterministic = any(marker in joined for marker in deterministic_markers)
               prepared = 'CLEARED_SOURCE_AND_READER_PACKAGE_MISSING' not in blockers
               return (
+                  0 if checksum_repair else 1,
                   0 if deterministic else 1,
                   0 if prepared else 1,
                   len(blockers),
@@ -245,7 +247,7 @@ jobs:
             After actually examining the selected candidates and running the applicable focused checks, update execution_status to COMPLETED and examined_slugs to the exact candidate slugs examined. Unsupported evidence may remain held. If command startup, batch access or implementation checks fail, do not mark COMPLETED: leave STARTED or record BLOCKED. A final explanation or a controller test pass cannot substitute for executing the assessment. Never edit or weaken the receipt validator.
 
             CURRENT GOAL
-            This is one bounded iteration of the remaining EXTERNAL_ACTION_REQUIRED catalogue campaign. Read /tmp/earnalism-catalogue-campaign-batch.json and work only on candidate slugs listed there. Modify at most 5 titles in this run. Prefer the most deterministic, evidence-backed repairs first. Do not scan or repair title packages outside this candidate set. If a candidate cannot be substantiated quickly from exact repository or authoritative evidence, leave it held rather than extending the run. Move only genuinely compliant titles into the existing India commercial text-reader release path.
+            This is one bounded iteration of the remaining EXTERNAL_ACTION_REQUIRED catalogue campaign. Read /tmp/earnalism-catalogue-campaign-batch.json and work only on candidate slugs listed there. Modify at most 5 titles in this run; that is a modification limit, not an instruction to stop examining candidates after five external holds. Inspect the selected blocker list before choosing repairs, and prefer the highest-ranked deterministic checksum repairs while preserving every source/approval byte. Do not scan or repair title packages outside this candidate set. If a candidate cannot be substantiated quickly from exact repository or authoritative evidence, leave it held rather than extending the run. Move only genuinely compliant titles into the existing India commercial text-reader release path.
 
             OWNER POLICY
             - Additional manual/live PRODUCTION_READER observation is waived only when the exact source/package is independently verified complete and integrity-clean: no missing chapter/section, content/package anomaly, or unresolved integrity discrepancy, and Reader validation is clean.
@@ -303,7 +305,7 @@ jobs:
           # Return newly created worker files to the validation controller.
           test "$(git branch --show-current)" = "codex/main-approved-integration"
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-          git diff --quiet HEAD -- scripts/catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_permissions.py scripts/catalogue_compliance_generated_evidence.py scripts/test_catalogue_compliance_generated_evidence.py
+          git diff --quiet HEAD -- scripts/catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_permissions.py scripts/catalogue_compliance_generated_evidence.py scripts/test_catalogue_compliance_generated_evidence.py scripts/test_catalogue_compliance_batch.py
           sudo -H -u earnalism-codex python3 scripts/catalogue_compliance_worker_receipt.py --receipt /tmp/earnalism-catalogue-worker-receipt.json --batch /tmp/earnalism-catalogue-campaign-batch.json --expected-head "$GITHUB_SHA"
           sudo chown -R "$(id -un):$(id -gn)" /tmp/earnalism-main-approved-integration
           python3 scripts/process_full_catalogue.py
@@ -452,7 +454,7 @@ jobs:
             echo "audio-related controlledLaunch change is forbidden"
             exit 1
           fi
-          for protected_test in scripts/catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_permissions.py scripts/catalogue_compliance_generated_evidence.py scripts/test_catalogue_compliance_generated_evidence.py backend/tests/test_rights_decision_gate.py backend/tests/test_rights_engine.py backend/tests/test_controlled_publication_precheck.py; do
+          for protected_test in scripts/catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_permissions.py scripts/catalogue_compliance_generated_evidence.py scripts/test_catalogue_compliance_generated_evidence.py scripts/test_catalogue_compliance_batch.py backend/tests/test_rights_decision_gate.py backend/tests/test_rights_engine.py backend/tests/test_controlled_publication_precheck.py; do
             if ! git diff --quiet HEAD -- "$protected_test"; then
               echo "core compliance gate test modification is forbidden: $protected_test"
               exit 1
