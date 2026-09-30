@@ -229,7 +229,7 @@ for (const width of [1440, 390]) {
   for (const width of [1440, 390]) {
     await capture(browser, {
       id: "reader-default-no-focus",
-      route: "/reader/dracula?visual-fixture=1",
+      route: "/reader/a-ghost-story?visual-fixture=1",
       width,
       height: width === 390 ? 844 : 1000,
       action: async (page) => {
@@ -240,7 +240,7 @@ for (const width of [1440, 390]) {
     });
     await capture(browser, {
       id: "reader-keyboard-focus",
-      route: "/reader/dracula?visual-fixture=1",
+      route: "/reader/a-ghost-story?visual-fixture=1",
       width,
       height: width === 390 ? 844 : 1000,
       action: async (page) => {
