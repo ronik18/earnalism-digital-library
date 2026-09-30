@@ -3651,5 +3651,20 @@
     "failed_run": 36743576217,
     "titles_activated": 0,
     "next_action": "Require exact-head regression and coordination checks, merge the focused workflow repair, then inspect the new main campaign run."
+  },
+  "open_issue_reconciliation_20260930": {
+    "recorded_at": "2026-09-30T18:04:51.641651+00:00",
+    "status": "89_BACKEND_AND_27_FRONTEND_TESTS_PASS_PENDING_PROTECTED_CI_MERGE",
+    "source_main": "de5d669a484f82e693b654565923ce96b4b9ad1a",
+    "review_packet": "internal/earnalism_intelligence/open_issue_reconciliation_20260930.md",
+    "issues": {
+      "347": "CANDIDATE_FIX_VALIDATED_PENDING_REQUIRED_CI_MERGE",
+      "380": "SOURCE_INCLUSIONS_VERIFIED_LIVE_RELEASE_ACCEPTANCE_OPEN",
+      "385": "DEFERRED_BY_OWNER_POST_CUSTOMER_READY_NOT_RUN",
+      "477": "224_FACTUAL_HOLDS_HOSTED_WORKER_WITHOUT_VALIDATED_RESULT"
+    },
+    "approved_source_content_changed": false,
+    "rights_or_audio_approval_created": false,
+    "next_action": "Publish the focused candidate by fast-forward only; require fresh required checks and exact-head protected merge, verify merged-main regression, and retain factual release/device blockers."
   }
 }
