@@ -9,7 +9,6 @@
   "worker_review": "PENDING_EXACT_HEAD_PIPELINE",
   "processing_state": "internal/earnalism_intelligence/full_catalogue_processing_20260930/catalogue_state.json",
   "production_reader_verification": "PENDING_TRUSTED_INDIA_CONTEXT",
-  "next_exact_command": "gh pr checks 488 --repo ronik18/earnalism-digital-library --watch --fail-fast",
   "prior_candidate_pipeline": {
     "head": "98984d52eee26a8c5361edfcd58c97df706b73d4",
     "run_id": 36705876984,
@@ -44,11 +43,12 @@
     "implementation_result": "BLOCKED_COMMAND_STARTUP_EACCES_NOT_AN_EVIDENCE_ASSESSMENT",
     "receipt_required": true,
     "latest_verified_outcome": {
-      "run": 36780560381,
-      "receipt": "STARTED_REJECTED",
-      "command_execution": "VERIFIED",
-      "regeneration": "BLOCKED_CONTROLLER_RESTORED_FILE_PERMISSIONS",
-      "publication": "NONE"
+      "run": 36789262625,
+      "receipt": "COMPLETED_20_CANDIDATES",
+      "worker_pipeline": "SUCCESS",
+      "final_source_guard": "PASS",
+      "bridge_handoff": "VALIDATED_CANDIDATE_AWAITING_BRIDGE_PR_AND_PROTECTED_MERGE",
+      "publication": "PENDING_NORMAL_CI_AND_PROTECTED_MERGE"
     }
   },
   "historical_unavailable_seo_recovery": {
@@ -235,12 +235,11 @@
     "next_exact_command": "gh pr checks 488 --repo ronik18/earnalism-digital-library --watch --fail-fast"
   },
   "latest_catalogue_candidate": {
-    "head": "b016ca0b2edfaa25fb5c52b656043a5b21bde431",
-    "pr": 488,
-    "aggregate_blockers": 912,
+    "head": "a027b349da465f83e574eb99ef270493c119d76c",
+    "aggregate_blockers": 907,
     "held": 224,
     "live": 7,
-    "publication": "PENDING_PROTECTED_MERGE"
+    "publication": "PENDING_NORMAL_CI_AND_PROTECTED_MERGE"
   },
   "catalogue_controller_handoff_contract": {
     "timestamp": "2026-09-30T22:59:04.998230+00:00",
@@ -253,5 +252,50 @@
     "verification": "Nine controller evidence fixtures pass: six source/report boundaries plus actual workflow shell paths for specific Actions PR-policy rejection, unrelated PR error, and normal creation; no branch claims a merge before normal checks",
     "package_or_product_change": false,
     "next_exact_command": "gh pr checks 488 --repo ronik18/earnalism-digital-library --watch --fail-fast"
-  }
+  },
+  "latest_catalogue_bridge_review": {
+    "timestamp": "2026-09-30T23:18:58.645238+00:00",
+    "workstream": "catalogue_compliance_campaign",
+    "decision": "ACCEPT_WITHIN_SCOPE_EXACT_BYTE_CHECKSUM_PROPOSAL_PENDING_NORMAL_CI",
+    "run": 36789262625,
+    "source_main": "4905cf7f8fb1c22d28e37e193a436650f01c79ba",
+    "worker_candidate": "a027b349da465f83e574eb99ef270493c119d76c",
+    "examined_count": 20,
+    "modified_slugs": [
+      "book-0deb35c750",
+      "book-2b9853ec52",
+      "book-2ddbed8293",
+      "book-2e468c4990",
+      "the-student"
+    ],
+    "aggregate_blockers_before": 912,
+    "aggregate_blockers_candidate": 907,
+    "accepted_live": 7,
+    "held": 224,
+    "new_publications": 0,
+    "audio_activations": 0,
+    "worker_pipeline": "SUCCESS_ACTUAL_RECEIPT_FOCUSED_FULL_REGRESSION_FINAL_SOURCE_GUARD",
+    "handoff": "VALIDATED_CANDIDATE_AWAITING_BRIDGE_PR_AND_PROTECTED_MERGE",
+    "proof_artifacts": [
+      {
+        "id": 11131046329,
+        "sha256": "5a8c991fa788bc3186a2f6cf1c6bf989235498f9ffa951605f074f2277961a80"
+      },
+      {
+        "id": 11131316462,
+        "sha256": "779d94084096573f00475bd84b28949d3b5c74c30e8c5d61ee96252a832fbc1f"
+      },
+      {
+        "id": 11131171648,
+        "sha256": "223ae594cccb425eab8b75eeb4c8eb3cebe9ceb8e6eaa4466678b1e85f60042f"
+      }
+    ],
+    "independent_verification": "All three artifact ZIP digests verified; receipt exact source and 20 candidates verified; controller diff digest equals retained proposal; all six checksum replacement values match existing exact bytes; candidate commit contains only six checksum manifests",
+    "approved_ui_source_approval_registry_and_launch_bytes": "UNCHANGED",
+    "current_main_regression_run": 36789262605,
+    "current_main_regression": "PASS",
+    "customer_ready": "NOT_DECLARED",
+    "next_generated_prompt": "Use the authorized GitHub connection to open the reviewed canonical candidate against main; require its fresh exact-head normal checks, merge with expected-SHA protection, then inspect the next bounded campaign. Preserve all worker commits and approved source."
+  },
+  "next_generated_prompt": "Use the authorized GitHub connection to open the reviewed canonical candidate against main; require its fresh exact-head normal checks, merge with expected-SHA protection, then inspect the next bounded campaign. Preserve all worker commits and approved source."
 }
