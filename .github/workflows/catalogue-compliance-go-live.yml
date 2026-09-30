@@ -64,7 +64,12 @@ jobs:
           test -z "$(git status --porcelain)"
           git switch -c codex/main-approved-integration
           test ! -e /tmp/earnalism-main-approved-integration
-          ln -s "$GITHUB_WORKSPACE" /tmp/earnalism-main-approved-integration
+          # Keep the Codex working directory physical. GitHub steps retain their
+          # expected workspace alias to this single checkout.
+          mv -- "$GITHUB_WORKSPACE" /tmp/earnalism-main-approved-integration
+          ln -s /tmp/earnalism-main-approved-integration "$GITHUB_WORKSPACE"
+          test ! -L /tmp/earnalism-main-approved-integration
+          test "$(realpath "$GITHUB_WORKSPACE")" = /tmp/earnalism-main-approved-integration
           test "$(git -C /tmp/earnalism-main-approved-integration rev-parse HEAD)" = "$GITHUB_SHA"
 
       - uses: actions/setup-python@v5
@@ -98,15 +103,16 @@ jobs:
         run: |
           set -euo pipefail
           runner_user="$(id -un)"
+          worker_checkout=/tmp/earnalism-main-approved-integration
           runner_group="$(id -gn)"
           test "$runner_user" != root
           sudo adduser --system --home /home/earnalism-codex --shell /bin/bash --group earnalism-codex
           sudo usermod -a -G earnalism-codex "$runner_user"
           sudo usermod -a -G "$runner_group" earnalism-codex
-          sudo chown -R "$runner_user:earnalism-codex" "$GITHUB_WORKSPACE"
-          sudo chmod -R g+rwX "$GITHUB_WORKSPACE"
-          sudo find "$GITHUB_WORKSPACE" -type d -exec chmod g+s {} +
-          sudo -H -u earnalism-codex git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          sudo chown -R "$runner_user:earnalism-codex" "$worker_checkout"
+          sudo chmod -R g+rwX "$worker_checkout"
+          sudo find "$worker_checkout" -type d -exec chmod g+s {} +
+          sudo -H -u earnalism-codex git config --global --add safe.directory "$worker_checkout"
           sudo -H -u earnalism-codex bash -c '
             set -euo pipefail
             test "$(id -u)" != 0
@@ -126,12 +132,12 @@ jobs:
             trap remove_probe EXIT
             printf "isolated-worker-write-probe\n" > "$probe"
             test -s "$probe"
-          ' -- "$GITHUB_WORKSPACE" "$GITHUB_SHA"
+          ' -- "$worker_checkout" "$GITHUB_SHA"
           # The controller must retain Docker for later isolated validation.
           docker info >/dev/null
 
       - name: Exercise real worker permission boundaries
-        run: python3 -m unittest scripts.test_catalogue_compliance_worker_permissions -v
+        run: python3 -m unittest scripts.test_catalogue_compliance_worker_permissions scripts.test_catalogue_compliance_worker_receipt -v
 
       - name: Capture fail-closed baseline
         run: |
@@ -234,6 +240,10 @@ jobs:
             EXECUTION SNAPSHOT
             The controller fetched and verified the exact main revision before creating this clean canonical checkout. Confirm the canonical branch and HEAD using read-only Git commands. The worker sandbox intentionally protects .git: do not fetch, commit, switch branches or update refs. The controller-created batch and baseline live outside the checkout so they do not make it dirty. Use them as read-only inputs. Never overwrite or remove any approved source to obtain a clean state.
 
+            REQUIRED EXECUTION RECEIPT
+            Your first successful shell command must create /tmp/earnalism-catalogue-worker-receipt.json with execution_status STARTED, the exact Git HEAD as source_head, SHA-256 of /tmp/earnalism-catalogue-campaign-batch.json as batch_sha256, and an empty examined_slugs array. Read those values from the actual checkout/file using Python, never guess them.
+            After actually examining the selected candidates and running the applicable focused checks, update execution_status to COMPLETED and examined_slugs to the exact candidate slugs examined. Unsupported evidence may remain held. If command startup, batch access or implementation checks fail, do not mark COMPLETED: leave STARTED or record BLOCKED. A final explanation or a controller test pass cannot substitute for executing the assessment. Never edit or weaken the receipt validator.
+
             CURRENT GOAL
             This is one bounded iteration of the remaining EXTERNAL_ACTION_REQUIRED catalogue campaign. Read /tmp/earnalism-catalogue-campaign-batch.json and work only on candidate slugs listed there. Modify at most 5 titles in this run. Prefer the most deterministic, evidence-backed repairs first. Do not scan or repair title packages outside this candidate set. If a candidate cannot be substantiated quickly from exact repository or authoritative evidence, leave it held rather than extending the run. Move only genuinely compliant titles into the existing India commercial text-reader release path.
 
@@ -291,9 +301,11 @@ jobs:
         run: |
           set -euo pipefail
           # Return newly created worker files to the validation controller.
-          sudo chown -R "$(id -un):$(id -gn)" "$GITHUB_WORKSPACE"
           test "$(git branch --show-current)" = "codex/main-approved-integration"
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          git diff --quiet HEAD -- scripts/catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_permissions.py
+          sudo -H -u earnalism-codex python3 scripts/catalogue_compliance_worker_receipt.py --receipt /tmp/earnalism-catalogue-worker-receipt.json --batch /tmp/earnalism-catalogue-campaign-batch.json --expected-head "$GITHUB_SHA"
+          sudo chown -R "$(id -un):$(id -gn)" /tmp/earnalism-main-approved-integration
           python3 scripts/process_full_catalogue.py
           cp internal/earnalism_intelligence/full_catalogue_processing_20260930/catalogue_state.json /tmp/catalogue-after.json
 
@@ -430,7 +442,7 @@ jobs:
             echo "audio-related controlledLaunch change is forbidden"
             exit 1
           fi
-          for protected_test in             backend/tests/test_rights_decision_gate.py             backend/tests/test_rights_engine.py             backend/tests/test_controlled_publication_precheck.py; do
+          for protected_test in scripts/catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_receipt.py scripts/test_catalogue_compliance_worker_permissions.py backend/tests/test_rights_decision_gate.py backend/tests/test_rights_engine.py backend/tests/test_controlled_publication_precheck.py; do
             if ! git diff --quiet HEAD -- "$protected_test"; then
               echo "core compliance gate test modification is forbidden: $protected_test"
               exit 1

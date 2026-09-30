@@ -3718,5 +3718,36 @@
     "source_and_product_changes": 0,
     "verification": "100 rights/publication tests and 11 catalogue/Bridge tests passed; actual UID permission checks required in hosted CI",
     "next_exact_command": "gh pr checks <recovery-pr> --repo ronik18/earnalism-digital-library --watch --fail-fast"
+  },
+  "catalogue_worker_execution_receipt_20260930": {
+    "timestamp": "2026-09-30T20:28:08.545737+00:00",
+    "workstream": "catalogue_compliance_campaign",
+    "decision": "REJECT_GREEN_ACTION_WITH_UNEXECUTED_WORKER_AND_USE_PHYSICAL_CANONICAL_CHECKOUT",
+    "source_head": "e1fa37b4e15c10494cce7a9532a8389a9caa8a2f",
+    "run": 36770076565,
+    "job": 110075884855,
+    "controller_validation": "PASS_PERMISSION_FIXTURES_SERVICES_FOCUSED_TESTS_FULL_REGRESSION_CLEANUP",
+    "implementation_result": "BLOCKED_COMMAND_STARTUP_EACCES_NOT_AN_EVIDENCE_ASSESSMENT",
+    "root_cause_assessment": "Worker used a writable canonical symlink; physical-CWD repair must be verified by actual hosted command execution, not model inference",
+    "repair": "Move the single ephemeral checkout to the physical canonical path; retain GitHub workspace as an alias; require a source/batch-bound completed worker receipt before no-progress reporting or candidate creation",
+    "retained_controls": [
+      "dedicated non-root worker",
+      "no worker sudo or Docker authority",
+      "credential-free checkout",
+      "20 candidates, at most 5 changes, 18-minute worker",
+      "immutable accepted records and revocations",
+      "full focused and isolated regression",
+      "exact reviewed-head protected merge"
+    ],
+    "verification": "Six receipt tests pass locally; six real-UID/bootstrap fixtures required in hosted CI; current title and product bytes unchanged",
+    "superseded_pr": 484,
+    "preserved_proposal_head": "fc496250ac2e33e5a8fa8d0a25336abbac3715f5",
+    "baseline_counts": {
+      "assessed": 231,
+      "accepted_live": 7,
+      "held": 224,
+      "aggregate_blockers": 919
+    },
+    "next_exact_command": "gh pr checks <execution-receipt-pr> --repo ronik18/earnalism-digital-library --watch --fail-fast"
   }
 }
