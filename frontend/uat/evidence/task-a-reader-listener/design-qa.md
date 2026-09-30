@@ -5,7 +5,7 @@
 ## Reference and implementation
 
 - Reference: `/Users/ronikbasak/Documents/ChatGPT Image Sep 29, 2026, 11_45_50 PM.png` (1536 × 1024 px).
-- Local implementation: clean `codex/reader-listener-beige-experience` worktree based on merged PR471 `57237eb76c24022f02214ce08fd02b7869fe411`.
+- Implementation began from merged PR471 `57237eb76c24022f02214ce08fd02b7869fe411` and is being rebased onto current main `5fd063f5e8d1d569c1d2917d21daa882d81b63d6` (PR472).
 - Screenshots and browser report: this directory. Browser capture used the repository Playwright smoke runner, Chromium, device scale factor 1, viewport screenshots (`fullPage: false`).
 - Screenshot inputs are local review fixtures. The Reader has public-domain Dracula chapter text and real book metadata; account progress and balance are omitted. The Listener uses the actual one-chapter A Ghost Story metadata and cover, with no approved audio, media URL, media element, or playback controls.
 
@@ -21,6 +21,12 @@ Both routes were captured at every requested CSS viewport: 1600 × 1000, 1440 ×
 - Navigation actions in production Reader and Listener routes pass through the existing session settlement flow before leaving. Focus-visible styling and reduced-motion rules are present.
 - The Playwright report records 16/16 routes completed, zero blockers, zero horizontal overflow, no visible interactive target below 44 × 44 px, no unlabeled visible controls, and no console errors.
 
+## Production-surface fingerprint
+
+- Base source fingerprint (PR471 main at `57237eb76c24022f02214ce08fd02b7869fe411`): `211b1ce39a61ace6fe92d3a6162cd85b5e5009b6ac819f94b8e89cce966ce3c9` (independently reproduced from a `git archive` copy; 330 hashed files).
+- PR472 merged-main source fingerprint: `ce26abb38ce5d4a835c589c0b784ceaf91f4647373f4517bc7c96814b2bdffc7`.
+- Combined A candidate source fingerprint: `2a2ce419d454d716639b7ba17f1f02a43a929ef8f399d15e11f9386504b4b4e4` (independently reproduced after combining current main and Task A; 331 hashed files). Both seamless-brand workflow authorities are being bound to this exact candidate fingerprint. The canonical Earnalism logo hash remains unchanged.
+
 ## Verification
 
 - Complete frontend Jest suite: 83 suites, 520 tests passed (including focused Reader/Listener release-truth tests).
@@ -29,4 +35,4 @@ Both routes were captured at every requested CSS viewport: 1600 × 1000, 1440 ×
 - `git diff --check`: passed.
 - Full visual smoke report: `visual-smoke-report.json`, PASS.
 
-This packet supports owner review of the exact pull request head when published by the repository's PR469 post-merge recovery owner-evidence workflow. It is not a production deployment or release approval; audiobook release remains fail-closed.
+An exact-head GitHub owner-review artifact was published for `8d44970ccabe8146c1b3538fd4ae1dd18630f908`: artifact `pr473-fresh-mobile-header-menu-review-8d44970ccabe8146c1b3538fd4ae1dd18630f908` (run 36685329332). The later current-head seamless-brand workflow exposed a high-zoom Reader rendered UI defect, so that check must be rerun after correction and rebasing. This is not a production deployment or release approval; audiobook release remains fail-closed.
