@@ -41,6 +41,28 @@ describe("direct seamless-branded status pages", () => {
     expect(response.body).toContain("404 · Page unavailable");
   });
 
+  test("a held historical title gets a truthful noindex 404 without book or reader content", () => {
+    const response = invoke(notFound, { query: { title: "dracula" }, headers: {}, url: "/book/dracula" });
+    expect(response.statusCode).toBe(404);
+    expect(response.headers["X-Robots-Tag"]).toBe("noindex, nofollow, noarchive");
+    expect(response.body).toContain("Dracula is not currently available.");
+    expect(response.body).toContain("This title is not in the current public catalogue.");
+    expect(response.body).toContain("This page does not provide book text, a reader session, or audio.");
+    expect(response.body).not.toContain("LIVE_APPROVED");
+    expect(response.body).not.toContain("Bram Stoker");
+    expect(response.body).not.toContain("<script");
+    expect(response.body).not.toContain("data-testid=\"reader-page\"");
+    expect(response.body).not.toContain("chapter-001");
+    expectSeamlessStatusDocument(response);
+  });
+
+  test("unrecognized title query values retain generic 404 copy", () => {
+    const response = invoke(notFound, { query: { title: "unknown" }, headers: {}, url: "/book/unknown" });
+    expect(response.statusCode).toBe(404);
+    expect(response.body).toContain("This page is not on the shelf.");
+    expect(response.body).not.toContain("unknown is not currently available");
+  });
+
   test("the authoritative tombstone stays a 410 with its existing cache contract", () => {
     const response = invoke(removedContent, { query: { path: "/product/patterned-wrap-dress" }, headers: {}, url: "/product/patterned-wrap-dress" });
     expect(response.statusCode).toBe(410);

@@ -391,6 +391,30 @@
       "destination": "/index.html"
     },
     {
+      "source": "/book/dracula",
+      "destination": "/api/not-found?title=dracula"
+    },
+    {
+      "source": "/book/dracula/",
+      "destination": "/api/not-found?title=dracula"
+    },
+    {
+      "source": "/reader/dracula",
+      "destination": "/api/not-found?title=dracula"
+    },
+    {
+      "source": "/reader/dracula/",
+      "destination": "/api/not-found?title=dracula"
+    },
+    {
+      "source": "/listener/dracula",
+      "destination": "/api/not-found?title=dracula"
+    },
+    {
+      "source": "/listener/dracula/",
+      "destination": "/api/not-found?title=dracula"
+    },
+    {
       "source": "/book/:slug",
       "destination": "/api/not-found"
     },

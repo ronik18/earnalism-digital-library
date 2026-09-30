@@ -36,4 +36,20 @@ describe("approved Reader direct-route contract", () => {
       destination: "/api/not-found",
     });
   });
+
+  test("keeps the historical Dracula Reader URL on a noindex unavailable page, never the Reader bundle", () => {
+    const rewrites = vercel.rewrites || [];
+    const genericNotFound = rewrites.findIndex((rule) => rule.source === "/reader/:slug" && rule.destination === "/api/not-found");
+    const genericListenerNotFound = rewrites.findIndex((rule) => rule.source === "/listener/:slug" && rule.destination === "/api/not-found");
+    ["/reader/dracula", "/reader/dracula/"].forEach((source) => {
+      const index = rewrites.findIndex((rule) => rule.source === source && rule.destination === "/api/not-found?title=dracula");
+      expect(index).toBeGreaterThanOrEqual(0);
+      expect(index).toBeLessThan(genericNotFound);
+    });
+    ["/listener/dracula", "/listener/dracula/"].forEach((source) => {
+      const index = rewrites.findIndex((rule) => rule.source === source && rule.destination === "/api/not-found?title=dracula");
+      expect(index).toBeGreaterThanOrEqual(0);
+      expect(index).toBeLessThan(genericListenerNotFound);
+    });
+  });
 });

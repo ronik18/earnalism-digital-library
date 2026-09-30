@@ -32,6 +32,16 @@ describe("approved Book Detail direct-route contract", () => {
     expect(rewrites).toContainEqual({ source: "/product", destination: "/api/removed-content?path=/product" });
   });
 
+  test("keeps the historical Dracula URL available as a noindex page without exposing its detail", () => {
+    const rewrites = vercel.rewrites || [];
+    const genericNotFound = rewrites.findIndex((rule) => rule.source === "/book/:slug" && rule.destination === "/api/not-found");
+    ["/book/dracula", "/book/dracula/"].forEach((source) => {
+      const index = rewrites.findIndex((rule) => rule.source === source && rule.destination === "/api/not-found?title=dracula");
+      expect(index).toBeGreaterThanOrEqual(0);
+      expect(index).toBeLessThan(genericNotFound);
+    });
+  });
+
   test("attributes the Radharani source layer without relicensing unrelated material", () => {
     const detail = read("src/pages/BookDetail.jsx");
     expect(detail).toContain('publicBook.slug === "radharani"');

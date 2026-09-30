@@ -140,20 +140,21 @@ def test_public_reader_release_accepts_fresh_signed_india_request(monkeypatch):
     assert response.status_code == 204
 
 
-def test_public_reader_release_denies_signed_request_without_accepted_rights(monkeypatch):
+def test_dracula_reader_manifest_denies_signed_request_without_accepted_rights(monkeypatch):
     monkeypatch.setattr(server, "ENVIRONMENT", "production")
     monkeypatch.setattr(server, "PUBLIC_READER_EXPOSURE_ENABLED", True)
     monkeypatch.setenv("EARNALISM_RELEASE_PROXY_SECRET", SECRET)
     monkeypatch.setattr(server, "_release_rights_verdict", lambda _request, *, country: DecisionGateVerdict(False, ("ACCEPTED_DECISION_MISSING",)))
     timestamp = int(datetime.now(timezone.utc).timestamp())
+    path = "/api/reader/book/dracula/manifest"
     headers = {
         SCOPE_HEADER: PUBLIC_RELEASE_SCOPE,
         COUNTRY_HEADER: "IN",
         TIMESTAMP_HEADER: str(timestamp),
-        SIGNATURE_HEADER: request_signature(SECRET, "GET", "/api/books", PUBLIC_RELEASE_SCOPE, timestamp, "IN"),
+        SIGNATURE_HEADER: request_signature(SECRET, "GET", path, PUBLIC_RELEASE_SCOPE, timestamp, "IN"),
     }
 
-    response = asyncio.run(server.enforce_public_release_country(request_with_headers(headers), next_response))
+    response = asyncio.run(server.enforce_public_release_country(request_with_headers(headers, path=path), next_response))
 
     assert response.status_code == 451
     assert response.body == b'{"detail":{"code":"RELEASE_RIGHTS_DENIED"}}'
