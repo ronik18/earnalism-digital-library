@@ -32,11 +32,14 @@ describe("Library experience", () => {
     expect(source).toContain('aria-modal="true"');
   });
 
-  test("keeps a release hold distinct from an empty catalogue without reviving bundled books", () => {
+  test("keeps API failure distinct from an empty catalogue without presenting bundled books as live", () => {
     expect(source).toContain('setCatalogueState("unavailable")');
     expect(source).toContain('setCatalogueState(booksResult.value.data.length ? "ready" : "empty")');
     expect(source).toContain("retryCatalogue");
-    expect(referenceSource).toContain("We couldn’t load the full collection. You’re viewing a limited selection.");
+    expect(referenceSource).toContain('const catalogueUnavailable = catalogueState === "unavailable"');
+    expect(referenceSource).toContain("We couldn’t load the Library just now. Your search and filters are unchanged.");
+    expect(referenceSource).not.toContain("You’re viewing a limited selection.");
+    expect(referenceSource).toContain('data-testid="library-catalogue-error"');
     expect(referenceSource).toContain('data-testid="library-catalogue-retry"');
     expect(referenceSource).toContain('data-testid="library-catalogue-empty"');
   });

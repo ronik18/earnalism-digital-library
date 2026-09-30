@@ -1,0 +1,148 @@
+name: PR469 post-merge recovery owner evidence
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - frontend/src/pages/Home.jsx
+      - frontend/src/pages/Home.newsletter.test.jsx
+      - frontend/src/pages/Library.test.jsx
+      - frontend/src/components/EditorialHomeLibrarySurfaces.jsx
+      - frontend/src/components/Header.jsx
+      - frontend/src/components/Header.css
+      - frontend/src/components/EarnalismBrandLockup.css
+      - frontend/src/config/publicNavigation.js
+      - frontend/src/components/AuthPageShell.jsx
+      - frontend/src/pages/Login.jsx
+      - frontend/src/pages/Signup.jsx
+      - frontend/src/authAccountTextRules.test.js
+      - frontend/src/lib/publicAccessCopy.js
+      - frontend/src/lib/bookDetailPresentation.js
+      - frontend/src/lib/bookDetailPresentation.test.js
+      - frontend/src/lib/controlledLaunch.js
+      - frontend/src/lib/controlledLaunch.canonicalAuthority.test.js
+      - frontend/src/lib/api.js
+      - frontend/src/lib/api.test.js
+      - frontend/src/pages/BookDetail.jsx
+      - frontend/api/[...proxy].js
+      - frontend/scripts/release-proxy.test.js
+      - frontend/src/experiences-v2/reader/ReaderExperienceV2.jsx
+      - frontend/src/experiences-v2/reader/reader-v2.css
+      - frontend/src/experiences-v2/reader/ReaderExperienceV2.render.test.jsx
+      - frontend/src/experiences-v2/shared/ExperienceHeader.jsx
+      - frontend/src/experiences-v2/shared/experiences-v2.css
+      - frontend/src/experiences-v2/listener/listener-v2.css
+      - scripts/test_library_catalogue_recovery_journey.mjs
+      - scripts/capture_pr469_postmerge_recovery_states.mjs
+      - scripts/capture_pr471_canonical_header_matrix.mjs
+      - scripts/package_pr469_postmerge_owner_review.py
+      - .github/workflows/pr469-postmerge-recovery-owner-evidence.yml
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  exact-head-owner-evidence:
+    name: Post-merge recovery owner evidence
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      npm_config_cache: ${{ github.workspace }}/.npm-cache
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.playwright-browsers
+      REACT_APP_BACKEND_URL: http://127.0.0.1:18007/api
+      REACT_APP_UAT_LOCAL: "true"
+    steps:
+      - name: Checkout exact pull request head
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            frontend/package-lock.json
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install repository dependencies and browser
+        run: |
+          npm ci
+          npm ci --prefix frontend --legacy-peer-deps
+          python3 -m pip install --disable-pip-version-check Pillow==10.3.0
+          npx playwright install --with-deps chromium
+
+      - name: Download the exact merged PR469 baseline evidence
+        uses: actions/download-artifact@v4
+        with:
+          artifact-ids: 11025247154
+          repository: ${{ github.repository }}
+          run-id: 36549307831
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/pr469-reviewed-baseline
+          merge-multiple: true
+
+      - name: Verify exact PR469 baseline screenshot inputs
+        run: |
+          set -euo pipefail
+          outer_artifact="$RUNNER_TEMP/pr469-reviewed-baseline"
+          test -s "$outer_artifact/artifact.zip"
+          unzip -t "$outer_artifact/artifact.zip"
+          baseline_root="$RUNNER_TEMP/pr469-reviewed-baseline-full"
+          mkdir -p "$baseline_root"
+          unzip -q "$outer_artifact/artifact.zip" -d "$baseline_root"
+          test -s "$baseline_root/screenshots/chromium/states/home-desktop/viewport.png"
+          test -s "$baseline_root/screenshots/chromium/states/book-detail-live-desktop-1440/viewport.png"
+          printf 'Exact PR469 baseline root: %s\n' "$baseline_root"
+          echo "PR469_BASELINE_ROOT=$baseline_root" >> "$GITHUB_ENV"
+
+      - name: Build production contract frontend
+        run: |
+          set -euo pipefail
+          npm --prefix frontend run build
+        env:
+          REACT_APP_ENABLE_VISUAL_FIXTURES: "1"
+
+      - name: Run deterministic Library recovery journey and capture supplemental states
+        run: |
+          set -euo pipefail
+          node scripts/serve_frontend_build.js --port 13022 > "$RUNNER_TEMP/pr469-recovery-server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for _ in $(seq 1 45); do curl -fsS http://127.0.0.1:13022/ >/dev/null && break; sleep 1; done
+          curl -fsS http://127.0.0.1:13022/ >/dev/null
+          SEAMLESS_BRAND_TEST_BASE_URL=http://127.0.0.1:13022 node scripts/test_library_catalogue_recovery_journey.mjs
+          node scripts/capture_pr469_postmerge_recovery_states.mjs
+          HEADER_REVIEW_BASE_URL=http://127.0.0.1:13022 HEADER_REVIEW_OUTPUT="$RUNNER_TEMP/pr471-canonical-header" node scripts/capture_pr471_canonical_header_matrix.mjs
+          python3 scripts/package_pr469_postmerge_owner_review.py \
+            --prior "$PR469_BASELINE_ROOT" \
+            --library "$LIBRARY_RECOVERY_EVIDENCE_OUTPUT" \
+            --supplemental "$RECOVERY_REVIEW_OUTPUT" \
+            --output "$RUNNER_TEMP/pr469-postmerge-owner-review" \
+            --pr "$PR_NUMBER"
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          LIBRARY_RECOVERY_EVIDENCE_OUTPUT: ${{ runner.temp }}/pr469-library-recovery
+          RECOVERY_REVIEW_BASE_URL: http://127.0.0.1:13022
+          RECOVERY_REVIEW_OUTPUT: ${{ runner.temp }}/pr469-supplemental
+
+      - name: Publish exact-head owner review packet
+        uses: actions/upload-artifact@v7
+        with:
+          name: pr${{ github.event.pull_request.number }}-postmerge-recovery-owner-review-${{ github.event.pull_request.head.sha }}
+          path: ${{ runner.temp }}/pr469-postmerge-owner-review/**
+          if-no-files-found: error
+
+      - name: Publish canonical navigation exact-head screenshots
+        uses: actions/upload-artifact@v7
+        with:
+          name: pr${{ github.event.pull_request.number }}-canonical-header-review-${{ github.event.pull_request.head.sha }}
+          path: ${{ runner.temp }}/pr471-canonical-header/**
+          if-no-files-found: error

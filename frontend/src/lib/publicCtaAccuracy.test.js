@@ -7,6 +7,7 @@ function source(relativePath) {
 
 describe("public CTA accuracy contract", () => {
   const header = source("src/components/Header.jsx");
+  const navigation = source("src/config/publicNavigation.js");
   const home = source("src/pages/Home.jsx");
   const homeSurfaces = source("src/components/EditorialHomeLibrarySurfaces.jsx");
   const hero = source("src/components/PremiumHero.jsx");
@@ -22,17 +23,20 @@ describe("public CTA accuracy contract", () => {
   const signup = source("src/pages/Signup.jsx");
   const shareButtons = source("src/components/ShareButtons.jsx");
   const footer = source("src/components/Footer.jsx");
+  const sitewideDesign = source("src/design-system/sitewide-option-b.css");
+  const homeDesign = source("src/pages/HomeOptionB.css");
   const globalStyles = source("src/index.css");
 
   test("catalog destinations use browsing language instead of claiming that reading has started", () => {
-    expect(header).toContain('to="/library" className="reference-home-header-icon" aria-label="Search the library" data-testid="nav-search"');
+    expect(header).toContain('role="search" data-testid="nav-search"');
     expect(header).toContain('data-testid={isAuthed ? "nav-account" : "nav-sign-in"}');
-    expect(header).toContain('data-testid="mobile-cta-library">Enter the Library');
+    expect(header).toContain("data-nav-key={n.key}");
     expect(hero).toContain('? "Enter the Library"');
     expect(hero).toContain('audiobooksDestination.includes("availability=approved-audiobook")');
     expect(hero).toContain('? "Enter the Listening Room"');
     expect(header).not.toContain('label: "Membership"');
-    expect(header).toContain('label: "Reading Passes"');
+    expect(header).toContain("const navigationItems = PUBLIC_NAV_ITEMS;");
+    expect(navigation).toContain("export const PUBLIC_NAV_ITEMS");
   });
 
   test("home paths describe their exact language and release-gated destinations", () => {
@@ -86,7 +90,8 @@ describe("public CTA accuracy contract", () => {
     expect(login).toContain("inline-flex min-h-11 items-center");
     expect(signup).toContain("inline-flex min-h-11 items-center");
     expect(shareButtons).toContain('const btn = "w-11 h-11');
-    expect(footer.match(/min-h-11 min-w-11/g)?.length).toBeGreaterThanOrEqual(5);
+    expect(sitewideDesign).toContain("min-height: 2.75rem");
+    expect(homeDesign).toContain("min-height: 44px");
     expect(globalStyles).toContain(".reading-dispatch__field input { width: 100%; min-height: 2.75rem;");
   });
 });

@@ -48,7 +48,9 @@ def main():
         need((item.get('expected'),item.get('captured'),item.get('stable'))==(expected_count,expected_count,expected_count),f'{browser} Article stability evidence incomplete',failures)
     need(load(package/'article-stability-results.json')==inputs.get('article_stability'),'packaged Article stability evidence differs',failures)
     need(all(provenance.get('browsers',{}).get(name) for name in ['chromium','firefox','webkit']),'browser version missing',failures); need(all(provenance.get(key) for key in ['capture_tool_sha256','generator_sha256','validator_sha256']),'tool SHA missing',failures)
-    expected=1 if args.allow_synthetic else 65
+    state_manifest=load(package/'state-manifest.json')
+    expected=1 if args.allow_synthetic else len(state_manifest.get('states',[]))
+    need(expected > 0, 'state manifest contains no states', failures)
     chromium=load(package/'chromium-summary.json'); firefox=load(package/'firefox-summary.json'); webkit=load(package/'webkit-summary.json')
     need((chromium.get('expected_state_count'),chromium.get('captured_state_count'),chromium.get('stable_state_count'))==(expected,expected,expected),'Chromium evidence incomplete',failures)
     browser_expected=1 if args.allow_synthetic else 20

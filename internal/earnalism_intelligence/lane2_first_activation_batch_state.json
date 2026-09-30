@@ -1,6 +1,6 @@
 {
   "schema": "earnalism-lane2-first-activation-state-v1",
-  "updated_at": "2026-09-29T08:21:18Z",
+  "updated_at": "2026-09-30T08:10:54Z",
   "branch": "codex/lane2-first-activation-batch",
   "slug": "the-adventures-of-sherlock-holmes",
   "authoritative_live_set": [
@@ -65,5 +65,23 @@
     "the-adventures-of-sherlock-holmes"
   ],
   "new_live_slug_in_branch": "the-adventures-of-sherlock-holmes",
-  "production_activated": false
+  "production_activated": false,
+  "autonomous_completion": {
+    "status": "RECONCILED_PENDING_EXACT_HEAD_CI",
+    "historical_head": "3548c4e6e4b1533de4d9b2cd2bd6b2683fc91360",
+    "main_reconciled": "5fd063f5e8d1d569c1d2917d21daa882d81b63d6",
+    "history_rewritten": false,
+    "production_surface_sha256": "118b5ed10d64b59915789dcac64cc574765e6bcb01a46b0c84d7f1f56afb21c2",
+    "sherlock_evidence_changed": false,
+    "local_validation": {
+      "backend_tests": 171,
+      "frontend_tests": 30,
+      "seamless_evidence_tests": 23,
+      "seamless_workflow_tests": 46,
+      "static_seo_assertions": 767
+    },
+    "protected_merge": "PENDING",
+    "deployment": "PENDING",
+    "production_verification": "PENDING"
+  }
 }

@@ -51,14 +51,14 @@ describe("API display helpers", () => {
     }
   });
 
-  test("uses the signed same-origin release proxy when the public launch enables it", () => {
+  test("keeps production API traffic on the signed same-origin proxy even when a backend URL is configured", () => {
     const previousNodeEnv = process.env.NODE_ENV;
     const previousBackendUrl = process.env.REACT_APP_BACKEND_URL;
     const previousProxy = process.env.REACT_APP_RELEASE_PROXY_ENABLED;
 
     process.env.NODE_ENV = "production";
     process.env.REACT_APP_BACKEND_URL = "https://api.theearnalism.com";
-    process.env.REACT_APP_RELEASE_PROXY_ENABLED = "true";
+    process.env.REACT_APP_RELEASE_PROXY_ENABLED = "false";
 
     try {
       expect(resolveBackendUrl()).toBe("");
@@ -68,6 +68,26 @@ describe("API display helpers", () => {
       else process.env.REACT_APP_BACKEND_URL = previousBackendUrl;
       if (previousProxy === undefined) delete process.env.REACT_APP_RELEASE_PROXY_ENABLED;
       else process.env.REACT_APP_RELEASE_PROXY_ENABLED = previousProxy;
+    }
+  });
+
+  test("retains the explicit loopback origin for isolated production-mode UAT builds", () => {
+    const previousNodeEnv = process.env.NODE_ENV;
+    const previousBackendUrl = process.env.REACT_APP_BACKEND_URL;
+    const previousUat = process.env.REACT_APP_UAT_LOCAL;
+
+    process.env.NODE_ENV = "production";
+    process.env.REACT_APP_BACKEND_URL = "http://127.0.0.1:18007/api";
+    process.env.REACT_APP_UAT_LOCAL = "true";
+
+    try {
+      expect(resolveBackendUrl()).toBe("http://127.0.0.1:18007/api");
+    } finally {
+      process.env.NODE_ENV = previousNodeEnv;
+      if (previousBackendUrl === undefined) delete process.env.REACT_APP_BACKEND_URL;
+      else process.env.REACT_APP_BACKEND_URL = previousBackendUrl;
+      if (previousUat === undefined) delete process.env.REACT_APP_UAT_LOCAL;
+      else process.env.REACT_APP_UAT_LOCAL = previousUat;
     }
   });
 });

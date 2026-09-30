@@ -16,6 +16,7 @@ import {
   PR466_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE,
   PR467_APPROVED_OPTION_B_HOMEPAGE_LIBRARY_INTERACTION_BASELINE,
   PR468_LISTENING_ROOM_HOMEPAGE_LIBRARY_INTERACTION_BASELINE,
+  PR469_POSTMERGE_LIBRARY_RECOVERY_BASELINE,
   compareLibraryInteractionBaseline,
   loadLibraryInteractionBaseline,
 } from "./lib/library_interaction_baseline.mjs";
@@ -171,12 +172,22 @@ test("the historical PR467 Option B refinement preserves its reviewed Library in
 
 test("the owner-approved PR468 Listening Room homepage transition preserves Library interactions", () => {
   const baseline = loadLibraryInteractionBaseline(root, PR468_LISTENING_ROOM_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
-  const comparison = compareLibraryInteractionBaseline(root, PR468_LISTENING_ROOM_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
-  assert.equal(compareLibraryInteractionBaseline(root).approval_source, PR468_LISTENING_ROOM_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
+  const comparison = compareLibraryInteractionBaseline(materializeReviewedSurface(PR468_LISTENING_ROOM_HOMEPAGE_LIBRARY_INTERACTION_BASELINE), PR468_LISTENING_ROOM_HOMEPAGE_LIBRARY_INTERACTION_BASELINE);
   assert.equal(comparison.previous_surface_sha256, "b043c3ca7f6031c035a472cfd534bab49a0d31647c1434e280df87bfd658350b");
   assert.equal(comparison.expected_surface_sha256, "9383db9e233be96bff8426e39a55f51a3b0aa441b3b26176f14df5af66e52f93");
   assert.equal(comparison.result, "PASS");
   assert.equal(baseline.owner_authorization.capture_is_not_expected_value_authority, true);
+});
+
+test("the directly requested post-merge Library recovery preserves the approved surface and adds only error/retry behavior", () => {
+  const baseline = loadLibraryInteractionBaseline(root, PR469_POSTMERGE_LIBRARY_RECOVERY_BASELINE);
+  const comparison = compareLibraryInteractionBaseline(root, PR469_POSTMERGE_LIBRARY_RECOVERY_BASELINE);
+  assert.equal(compareLibraryInteractionBaseline(root).approval_source, PR469_POSTMERGE_LIBRARY_RECOVERY_BASELINE);
+  assert.equal(comparison.previous_surface_sha256, "9383db9e233be96bff8426e39a55f51a3b0aa441b3b26176f14df5af66e52f93");
+  assert.equal(comparison.expected_surface_sha256, "b67f6a9d6011dcf6edd20da407216074b14c65b4990c0aecc147d878642a3adf");
+  assert.equal(comparison.result, "PASS");
+  assert.equal(baseline.owner_authorization.reference, "OWNER_DIRECTIVE_POST_MERGE_LIBRARY_API_RECOVERY");
+  assert.match(baseline.limitations, /Owner visual review of the exact repair head remains required/);
 });
 
 test("an unauthorized PR468 Listening Room baseline mutation fails closed", () => {
@@ -186,6 +197,15 @@ test("an unauthorized PR468 Listening Room baseline mutation fails closed", () =
   value.owner_authorization.reference = "UNAUTHORIZED";
   write(record, value);
   assert.throws(() => loadLibraryInteractionBaseline(temporary, PR468_LISTENING_ROOM_HOMEPAGE_LIBRARY_INTERACTION_BASELINE));
+});
+
+test("an unauthorized PR469 post-merge Library baseline mutation fails closed", () => {
+  const temporary = materializeReviewedSurface(PR469_POSTMERGE_LIBRARY_RECOVERY_BASELINE);
+  const record = path.join(temporary, PR469_POSTMERGE_LIBRARY_RECOVERY_BASELINE);
+  const value = JSON.parse(read(record));
+  value.owner_authorization.reference = "UNAUTHORIZED";
+  write(record, value);
+  assert.throws(() => loadLibraryInteractionBaseline(temporary, PR469_POSTMERGE_LIBRARY_RECOVERY_BASELINE));
 });
 
 test("an unauthorized PR467 homepage baseline mutation fails closed", () => {

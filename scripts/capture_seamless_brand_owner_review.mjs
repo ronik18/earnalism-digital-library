@@ -150,7 +150,7 @@ function runManifestCli(options) {
   const manifest = loadStateManifest(manifestPath);
   const routeInventory = JSON.parse(fs.readFileSync(routeInventoryPath, "utf8"));
   validateStateManifest(manifest, routeInventory);
-  if (routeInventory.routes.length !== 19) throw new Error(`Route inventory: invalid route count; received ${routeInventory.routes.length}; expected 19.`);
+  if (routeInventory.routes.length !== 21) throw new Error(`Route inventory: invalid route count; received ${routeInventory.routes.length}; expected 21.`);
   if (manifest.states.length < 5) throw new Error(`State manifest: invalid state count; received ${manifest.states.length}; expected at least 5.`);
   const requestedIds = options.stateFilter === undefined ? undefined : options.stateFilter;
   const selected = requestedIds === undefined ? listStateRecords(manifest) : selectStateRecords(manifest, requestedIds);
@@ -185,7 +185,7 @@ function loadManifestSelection(options) {
   const manifest = loadStateManifest(manifestPath);
   const routeInventory = JSON.parse(fs.readFileSync(routeInventoryPath, "utf8"));
   validateStateManifest(manifest, routeInventory);
-  if (routeInventory.routes.length !== 19) throw new Error(`Route inventory: invalid route count; received ${routeInventory.routes.length}; expected 19.`);
+  if (routeInventory.routes.length !== 21) throw new Error(`Route inventory: invalid route count; received ${routeInventory.routes.length}; expected 21.`);
   if (manifest.states.length < 5) throw new Error(`State manifest: invalid state count; received ${manifest.states.length}; expected at least 5.`);
   const selected = options.stateFilter === undefined ? listStateRecords(manifest) : selectStateRecords(manifest, options.stateFilter);
   return { manifestPath, routeInventoryPath, manifest, routeInventory, selected };
@@ -503,11 +503,29 @@ function fixtureUrl(baseUrl, state) {
   return target.toString();
 }
 
-function routeFixture(route) {
+function routeFixture(route, state) {
   const requestUrl = new URL(route.request().url());
-  const books = [{ slug: "dracula", title: "Dracula", author: "Bram Stoker", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, chapters: [{ id: "p1", is_preview: true }] }, { slug: "a-ghost-story", title: "A Ghost Story", author: "Mark Twain", publication_status: "LIVE_APPROVED", reader_enabled: true, audiobook_enabled: false, preview_enabled: true, chapters: [{ id: "p1", is_preview: true }] }, { slug: "devdas", title: "দেবদাস / Devdas", author: "Sarat Chandra Chattopadhyay", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, audiobook_enabled: false, preview_enabled: true, short_description: "A public-safe Bengali reader edition.", chapters: [{ id: "devdas-canonical-page-1", is_preview: true }] }];
+  const launchAuthority = JSON.parse(fs.readFileSync("data/controlled_launch.json", "utf8"));
+  const liveBook = JSON.parse(fs.readFileSync("data/controlled_publications/a-ghost-story/public_book.json", "utf8"));
+  const livePublicationManifest = JSON.parse(fs.readFileSync("data/controlled_publications/a-ghost-story/publication_manifest.json", "utf8"));
+  if (!launchAuthority.live_approved_slugs?.includes("a-ghost-story") || launchAuthority.audio_enabled_slugs?.includes("a-ghost-story")
+    || livePublicationManifest.slug !== "a-ghost-story" || livePublicationManifest.reader_release?.status !== "APPROVED"
+    || livePublicationManifest.audio_release?.exposed !== false) {
+    throw new Error("The live book visual fixture is no longer backed by reader-live, audio-hidden release authority.");
+  }
+  const liveBookFixture = { ...liveBook, publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, audio_enabled: false, audiobook_enabled: false, audiobook_assets: {}, audiobook: {} };
+  const packs = [
+    { id: "30m", label: "The Opening Hour", minutes: 30, amount_paise: 4900, price_inr: 49, note: "Continue after the free preview, one careful sitting at a time." },
+    { id: "1h", label: "The Quiet Hour", minutes: 60, amount_paise: 8900, price_inr: 89, note: "An unhurried first return to any eligible title." },
+    { id: "3h", label: "The Deep Reading Pass", minutes: 180, amount_paise: 23900, price_inr: 239, note: "A longer weekend return to the classics you choose." },
+    { id: "10h", label: "The Reader’s Reserve", minutes: 600, amount_paise: 49900, price_inr: 499, note: "Ten quiet hours kept for every eligible classic." },
+  ];
+  const books = [{ slug: "dracula", title: "Dracula", author: "Bram Stoker", publication_status: "LIVE_APPROVED", reader_enabled: true, preview_enabled: true, chapters: [{ id: "p1", is_preview: true }] }, liveBookFixture, { slug: "devdas", title: "দেবদাস / Devdas", author: "Sarat Chandra Chattopadhyay", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, audiobook_enabled: false, preview_enabled: true, short_description: "A public-safe Bengali reader edition.", chapters: [{ id: "devdas-canonical-page-1", is_preview: true }] }];
   const editorial = editorialFixture();
   const approvedManifest = { book: { slug: "the-art-of-money-getting", title: "The Art of Money Getting", author: "P. T. Barnum", cover_image_url: "" }, audio: { enabled: true, asset_slug: "the-art-of-money-getting", provider: "review-fixture", version: "v1", release_gate: "APPROVED", qa_status: "QA_PASSED", assets: { manifest: "/api/reader/book/the-art-of-money-getting/audiobook/manifest" }, package_version: `sha256-${"a".repeat(64)}` }, access: { reading_pass: { total_pages: 3 } } };
+  if (state.fixture === "pricing-four-offers" && requestUrl.pathname.endsWith("/payments/offers")) {
+    return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ packs, config: { configured: false, mode: "test", key_id: "" } }) });
+  }
   const requestedBook = requestUrl.pathname.match(/^\/api\/books\/([^/]+)$/)?.[1];
   if (requestedBook) {
     const book = books.find((entry) => entry.slug === decodeURIComponent(requestedBook));
@@ -805,7 +823,7 @@ async function captureManifestState(browser, browserName, state, baseUrl, output
   });
   await page.route("**/api/**", (route) => {
     fixtureApiRequests.push({ url: route.request().url(), method: route.request().method() });
-    return routeFixture(route);
+    return routeFixture(route, state);
   });
   if (statusFixture) await page.route((url) => new URL(url).pathname === state.route, (route) => route.fulfill({ status: statusResponse.status, headers: statusResponse.headers, body: statusResponse.body }));
   await page.route("https://theearnalism.com/assets/brand/earnalism-brand-lockup.png", (route) => route.fulfill({ path: "frontend/public/assets/brand/earnalism-brand-lockup.png", contentType: "image/png" }));
@@ -874,12 +892,15 @@ async function captureManifestState(browser, browserName, state, baseUrl, output
     const myLibraryEmptyStateVisible = Boolean(myLibraryFixture && [...myLibraryFixture.querySelectorAll("h1,h2,p")].some((node) => /No saved titles to show\.|doesn’t yet show saved books or reading progress/.test(node.textContent || "")));
     const bookPage = document.querySelector('[data-testid="book-page"]');
     const bookNotFound = document.querySelector('[data-testid="book-not-found"], [data-testid="book-load-error"]');
+    const pricingGrid = document.querySelector(".rp-offer-grid");
+    const offerCards = [...document.querySelectorAll(".rp-offer")];
+    const bookAudioActions = [...(bookPage?.querySelectorAll("a,button") || [])].map((node) => node.textContent.trim()).filter((label) => /^(listen|play)\b/i.test(label));
     const menuReachable = [...document.querySelectorAll('[data-testid="mobile-menu-toggle"],button[aria-label*="menu" i]')].some(visible);
     const searchReachable = [...document.querySelectorAll('[data-testid="nav-search"],button[aria-label*="search" i],a[aria-label*="search" i]')].some(visible);
     const actionRow = document.querySelector(".reader-v2__mobile-topbar,.listener-v2__mobile-top"); const actionRect = actionRow?.getBoundingClientRect(); const headerRect = header?.getBoundingClientRect();
     const text = document.body.textContent || "";
     const journalCards = [...document.querySelectorAll('[data-testid^="journal-card-"],a[href="/journal/how-reading-shapes-better-founders"]')].filter(visible);
-    return { document_height: document.documentElement.scrollHeight, scroll_width: document.documentElement.scrollWidth, client_width: document.documentElement.clientWidth, visible_header_count: headers.length, visible_canonical_lockup_count: lockups.length, logo: lockup ? { natural_width: image.naturalWidth, natural_height: image.naturalHeight, rendered_width: rect.width, rendered_height: rect.height, aspect_ratio: rect.width / rect.height, transform: getComputedStyle(image).transform, wrapper_background: wrapper.backgroundColor, wrapper_border_width: wrapper.borderWidth, wrapper_border_radius: wrapper.borderRadius, wrapper_box_shadow: wrapper.boxShadow, wrapper_padding: wrapper.padding, parent_background: parent.backgroundColor, clipped: rect.left < 0 || rect.top < 0 || rect.right > innerWidth || rect.bottom > innerHeight } : null, overlap, horizontal_overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth, menu_reachable: menuReachable, search_reachable: searchReachable, reader: { protected_content_exposed: Boolean(document.querySelector('[data-testid="reader-protected-content"],[data-testid="protected-reader-content"]')) || protectedRequest, protected_prefetch: protectedRequest, balance_consumption: balanceRequestCount }, listener: { raw_media_url: media.some((item) => item.src) ? "present" : "absent", playable_source: media.some((item) => item.src) ? "present" : "absent", autoplay: media.some((item) => item.autoplay), preload: media.some((item) => item.preload) ? "present" : "absent", balance_consumption: balanceRequestCount, cover_visible: [...document.querySelectorAll(".listener-v2 img")].some(visible) }, book_detail: { page_visible: Boolean(bookPage && visible(bookPage)), not_found: Boolean(bookNotFound && visible(bookNotFound)), title: bookPage?.querySelector("h1")?.textContent?.trim() || "" }, account: { visual_fixture_present: Boolean(accountFixture), sensitive_fixture_values_present: Boolean(accountFixture && sensitivePrivateFixtureValues) }, private_fixture: { fixture_visible: privateFixtureVisible, sensitive_fixture_values_present: sensitivePrivateFixtureValues, my_library_empty_state_visible: myLibraryEmptyStateVisible }, action_row_below_brand: !actionRect || !headerRect || actionRect.top >= headerRect.bottom, editorial: { hydrated_title: document.title, hydrated_canonical_logo_source: image?.getAttribute("src") || "", journal_article_link_count: journalCards.length, selected_article_route_present: journalCards.some((node) => node.getAttribute("href") === "/journal/how-reading-shapes-better-founders"), article_title_present: Boolean(document.querySelector('[data-testid="journal-article"] h1')) && !text.includes("Article not found"), generic_home_fallback_absent: !text.includes("Welcome to The Earnalism"), contact_form_labels_present: document.querySelectorAll('[data-testid="contact-form"] label').length >= 4, contact_submit_visible: visible(document.querySelector('[data-testid="contact-submit"]')), ...microStoryCampaign, micro_story_product_truth_result: text.includes("No auto-renewal") && text.includes("Reading Pass") ? "PASS" : "FAIL" } };
+    return { document_height: document.documentElement.scrollHeight, scroll_width: document.documentElement.scrollWidth, client_width: document.documentElement.clientWidth, visible_header_count: headers.length, visible_canonical_lockup_count: lockups.length, logo: lockup ? { natural_width: image.naturalWidth, natural_height: image.naturalHeight, rendered_width: rect.width, rendered_height: rect.height, aspect_ratio: rect.width / rect.height, transform: getComputedStyle(image).transform, wrapper_background: wrapper.backgroundColor, wrapper_border_width: wrapper.borderWidth, wrapper_border_radius: wrapper.borderRadius, wrapper_box_shadow: wrapper.boxShadow, wrapper_padding: wrapper.padding, parent_background: parent.backgroundColor, clipped: rect.left < 0 || rect.top < 0 || rect.right > innerWidth || rect.bottom > innerHeight } : null, overlap, horizontal_overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth, menu_reachable: menuReachable, search_reachable: searchReachable, reader: { protected_content_exposed: Boolean(document.querySelector('[data-testid="reader-protected-content"],[data-testid="protected-reader-content"]')) || protectedRequest, protected_prefetch: protectedRequest, balance_consumption: balanceRequestCount }, listener: { raw_media_url: media.some((item) => item.src) ? "present" : "absent", playable_source: media.some((item) => item.src) ? "present" : "absent", autoplay: media.some((item) => item.autoplay), preload: media.some((item) => item.preload) ? "present" : "absent", balance_consumption: balanceRequestCount, cover_visible: [...document.querySelectorAll(".listener-v2 img")].some(visible) }, book_detail: { page_visible: Boolean(bookPage && visible(bookPage)), not_found: Boolean(bookNotFound && visible(bookNotFound)), title: bookPage?.querySelector("h1")?.textContent?.trim() || "", audio_actions: bookAudioActions }, reading_passes: { card_count: offerCards.length, cards: offerCards.map((card) => ({ duration: card.querySelector("h3")?.textContent?.trim() || "", price: card.querySelector(".rp-price")?.textContent?.trim() || "" })), grid_column_count: pricingGrid ? getComputedStyle(pricingGrid).gridTemplateColumns.split(/\s+/).filter(Boolean).length : 0 }, account: { visual_fixture_present: Boolean(accountFixture), sensitive_fixture_values_present: Boolean(accountFixture && sensitivePrivateFixtureValues) }, private_fixture: { fixture_visible: privateFixtureVisible, sensitive_fixture_values_present: sensitivePrivateFixtureValues, my_library_empty_state_visible: myLibraryEmptyStateVisible }, action_row_below_brand: !actionRect || !headerRect || actionRect.top >= headerRect.bottom, editorial: { hydrated_title: document.title, hydrated_canonical_logo_source: image?.getAttribute("src") || "", journal_article_link_count: journalCards.length, selected_article_route_present: journalCards.some((node) => node.getAttribute("href") === "/journal/how-reading-shapes-better-founders"), article_title_present: Boolean(document.querySelector('[data-testid="journal-article"] h1')) && !text.includes("Article not found"), generic_home_fallback_absent: !text.includes("Welcome to The Earnalism"), contact_form_labels_present: document.querySelectorAll('[data-testid="contact-form"] label').length >= 4, contact_submit_visible: visible(document.querySelector('[data-testid="contact-submit"]')), ...microStoryCampaign, micro_story_product_truth_result: text.includes("No auto-renewal") && text.includes("Reading Pass") ? "PASS" : "FAIL" } };
   }, { statusFixture, microStoryCampaign });
   const zoomResults = await page.evaluate((requestedZoom) => {
     const visible = (node) => { if (!node) return false; const style = getComputedStyle(node); const rect = node.getBoundingClientRect(); return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0; };
@@ -972,6 +993,13 @@ async function captureManifestState(browser, browserName, state, baseUrl, output
       ? (!data.book_detail.page_visible || data.book_detail.not_found)
       : (data.book_detail.page_visible || !data.book_detail.not_found)
   )) defects.push("book-detail-fixture-contract");
+  if (state.fixture === "live-approved-book-detail" && (data.book_detail.title !== "A Ghost Story" || !data.book_detail.page_visible || data.book_detail.not_found || data.book_detail.audio_actions.length !== 0)) defects.push("live-book-detail-release-safe-contract");
+  if (state.fixture === "pricing-four-offers") {
+    const expectedColumns = state.viewport.width >= 1280 ? 4 : state.viewport.width >= 768 ? 2 : 1;
+    const expectedOffers = [["30 Minutes", "₹49"], ["60 Minutes", "₹89"], ["180 Minutes", "₹239"], ["600 Minutes", "₹499"]];
+    const capturedOffers = data.reading_passes.cards.map(({ duration, price }) => [duration, price]);
+    if (data.reading_passes.card_count !== 4 || JSON.stringify(capturedOffers) !== JSON.stringify(expectedOffers) || data.reading_passes.grid_column_count !== expectedColumns) defects.push("reading-pass-offer-grid-contract");
+  }
   if (statusLogoCard) defects.push("legacy-error-logo-card");
   if (statusContract && statusContract.result !== "PASS") defects.push("status-contract");
   if (!Object.values(fontResults).every(Boolean)) defects.push("required-font-load");
