@@ -237,6 +237,7 @@ def render_pdf(package, summary, states):
         ("Cover and provenance", ["home-desktop"]), ("Brand decision and palette", ["home-mobile"]),
         ("Header desktop/mobile", ["home-desktop", "home-mobile"]), ("Mobile menu open/closed", ["home-menu-open-390"]),
         ("Home desktop/tablet/mobile/200%", ["home-desktop", "home-tablet-1024", "home-mobile-zoom-200"]), ("Library desktop/mobile/filters", ["library-desktop", "library-filters-open-390"]),
+        ("Commerce desktop/mobile", ["commerce-desktop", "commerce-mobile"]),
         ("Unavailable legacy title — Dracula", ["book-detail-desktop"]),
         ("Populated live Book Detail — A Ghost Story", ["book-detail-live-desktop-1440"]),
         ("Populated live Bengali Book Detail — Radharani", ["secondary-book-desktop"]),
