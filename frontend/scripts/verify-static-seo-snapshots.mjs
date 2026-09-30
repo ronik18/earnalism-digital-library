@@ -3,14 +3,13 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const frontendDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const rootDir = path.resolve(frontendDir, "..");
 const buildDir = path.join(frontendDir, "build");
 const contractDir = path.join(frontendDir, "static-seo");
 const accessCopy = "The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch.";
 const heldCopy = "Reader and listening editions are temporarily unavailable while title-specific release decisions are completed.";
 const forbidden = ["Chapter 1 free", "First chapter free", "Chapter 1 is on us", "First 3 minutes free", "First 180 seconds free", "Free audiobook preview", "Free listening sample", "Listen free"];
 const paidContinuation = ["Listening requires an active Reading Pass", "View Reading Passes", "Reading time is used only while you read"];
-const indiaReleasedSlugs = ["a-ghost-story", "the-tell-tale-heart", "radharani", "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost"];
-
 const json = async (file) => JSON.parse(await readFile(file, "utf8"));
 const snapshotFile = (route) => route === "/" ? path.join(buildDir, "index.html") : path.join(buildDir, route.replace(/^\/+/, ""), "index.html");
 const isSha = (value) => /^[a-f0-9]{64}$/i.test(String(value || ""));
@@ -31,12 +30,17 @@ async function main() {
   const state = { inspected: 0, assertions: 0, failures: 0 };
   const publication = await json(path.join(contractDir, "controlled-publication-public.json"));
   const editorial = await json(path.join(contractDir, "editorial-public.json"));
+  const controlledLaunch = await json(path.join(rootDir, "data", "controlled_launch.json"));
   const manifest = await json(path.join(buildDir, "static-seo-snapshot-manifest.json"));
+  const indiaReleasedSlugs = Array.isArray(controlledLaunch.live_approved_slugs)
+    ? controlledLaunch.live_approved_slugs
+    : [];
+  const liveSlugSet = new Set(indiaReleasedSlugs);
   const expected = requiredRoutes(publication, editorial);
 
   const releaseHeld = publication.public_release_held === true;
   if (publication.schema_version !== "earnalism.static-seo-public.v2" || !Object.values(publication.generated_from || {}).every(isSha) || (releaseHeld ? publication.publications.length !== 0 : publication.publications.length === 0)) fail("Publication contract provenance is invalid", state);
-  if (!releaseHeld && (publication.publications.length !== indiaReleasedSlugs.length || publication.publications.some((book) => !indiaReleasedSlugs.includes(book.slug) || book.audio_availability_state !== "disabled"))) fail("Publication contract exceeds the controlled six-title India release", state);
+  if (!releaseHeld && (indiaReleasedSlugs.length === 0 || liveSlugSet.size !== indiaReleasedSlugs.length || publication.publications.length !== indiaReleasedSlugs.length || publication.publications.some((book) => !liveSlugSet.has(book.slug) || book.audio_availability_state !== "disabled"))) fail("Publication contract must exactly match the canonical controlled India release", state);
   if (editorial.schema_version !== "earnalism.static-seo-editorial.v1" || !isSha(editorial.generated_from && editorial.generated_from["https://api.theearnalism.com/api/blog"])) fail("Editorial contract provenance is invalid", state);
   if (manifest.schema_version !== "earnalism.static-seo-snapshots.v2") fail("Snapshot manifest version is invalid", state);
   if (new Set(manifest.routes.map((item) => item.route)).size !== manifest.routes.length) fail("Snapshot manifest has duplicate routes", state);

@@ -13,6 +13,7 @@ export const PUBLIC_READER_RELEASED_SLUGS = Object.freeze([
   "a-white-heron",
   "the-gift-of-the-magi",
   "the-canterville-ghost",
+  "the-adventures-of-sherlock-holmes",
 ]);
 // The India text launch does not offer paid Reading Passes until the live
 // Razorpay, consumer-remedy, and accounting surface has been independently

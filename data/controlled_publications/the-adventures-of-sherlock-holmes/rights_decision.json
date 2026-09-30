@@ -1,0 +1,38 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20260929-the-adventures-of-sherlock-holmes-pg1661-text-reader",
+  "edition_id": "the-adventures-of-sherlock-holmes",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "2ea560df8a7adc3fdd54100589fd96e81660f0f2a12d8d64632a72e2cbe16163",
+    "reader_manifest": "72df26f5a988406ad2be0dca1a6b45825a652dca75e5aeaafdf189bf9f16ba1d",
+    "source_evidence": "a2d6c8c617d5d21238767685e7f430536d02459d579ffe37e09a9145066599b5",
+    "approval_evidence": "3a4bb1af8591ce96ec9d1830750098d016122f9b78bbe9699b7213e43e4f9fea",
+    "checksum_manifest": "5e6ed7b1defbad9f6df51bfd76bbebdb4d845551bcf04c458644df6148bc1152",
+    "publication_manifest": "40da8f2bf212b75e7843bac0c132534424dc0161a537d2ed000c5245e6523387",
+    "cover_provenance": "22eea5c3ea2f466eedcccc32f7d45ec83054aeb32978ecef1378103533279044"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-09-29T08:18:47+00:00",
+  "valid_until": "2036-09-29T08:18:47+00:00",
+  "basis": "The direct owner/legal decision received on 2026-09-29 authorizes commercial text-reader publication in India for Project Gutenberg eBook #1661 only, bound to the exact source and normalized content hashes in this package. No audio use, payment/entitlement logic change, or other edition is authorized by this record.",
+  "evidence_sha256": [
+    "22eea5c3ea2f466eedcccc32f7d45ec83054aeb32978ecef1378103533279044",
+    "3a4bb1af8591ce96ec9d1830750098d016122f9b78bbe9699b7213e43e4f9fea",
+    "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "d6cb7d46af3d95b071c3783bf3b093f8c8397144ae717bbfbe87b8fc336fdc5c"
+  ],
+  "accepted_by": "Authorized owner/legal decision supplied directly in the user-provided task instruction; individual approver identity was not provided.",
+  "conditions_satisfied": true
+}

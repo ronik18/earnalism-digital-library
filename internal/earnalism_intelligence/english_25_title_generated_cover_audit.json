@@ -1,7 +1,7 @@
 {
   "schema": "earnalism-generated-cover-audit-v1",
   "status": "GENERATED_AWAITING_VISUAL_SMOKE",
-  "cover_count": 19,
+  "cover_count": 20,
   "performance_budget_bytes": 184320,
   "no_unlicensed_external_art": true,
   "visual_smoke": "PENDING",
@@ -146,6 +146,29 @@
       "back_sha256": "ade357db40d10ab548cdff0ddbf2b77e5f7aeaba8dd7e8a666667d01fd4b50d6",
       "front_bytes": 19390,
       "back_bytes": 26352
+    },
+    {
+      "slug": "the-adventures-of-sherlock-holmes",
+      "title": "The Adventures of Sherlock Holmes",
+      "author": "Arthur Conan Doyle",
+      "theme": "London fog and magnifying glass",
+      "art_source": "deterministic_vector_primitives_no_external_art",
+      "title_author_overlay": "deterministic",
+      "front_path": "frontend/public/assets/books/the-adventures-of-sherlock-holmes/front-cover.webp",
+      "back_path": "frontend/public/assets/books/the-adventures-of-sherlock-holmes/back-cover.webp",
+      "front_url": "https://theearnalism.com/assets/books/the-adventures-of-sherlock-holmes/front-cover.webp",
+      "back_url": "https://theearnalism.com/assets/books/the-adventures-of-sherlock-holmes/back-cover.webp",
+      "dimensions": [
+        800,
+        1200
+      ],
+      "front_sha256": "2207b2aa7c703f1bd20adb181a4b05a0ecfaac91d95823d62c85c8e18b5c5ba9",
+      "back_sha256": "622ad67239da00c96cfd9730b1e07a1fdf2220cad143d6ad45fda33c03cb2f04",
+      "front_bytes": 23074,
+      "back_bytes": 19950,
+      "visual_smoke": "PASS",
+      "visual_reviewed_at": "2026-09-29T06:45:27Z",
+      "visual_review_note": "Front and back inspected; text legible and no external art."
     },
     {
       "slug": "the-bishop",

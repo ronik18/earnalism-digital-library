@@ -24,6 +24,7 @@ INDIA_TEXT_RELEASE_SLUGS = {
     "a-white-heron",
     "the-gift-of-the-magi",
     "the-canterville-ghost",
+    "the-adventures-of-sherlock-holmes",
 }
 
 
@@ -70,7 +71,7 @@ def test_owner_exclusion_tombstone_is_mirrored_exactly():
     }
 
 
-def test_backend_controlled_launch_opens_only_the_six_india_text_titles_and_no_audio():
+def test_backend_controlled_launch_opens_only_the_seven_approved_india_text_titles_and_no_audio():
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     backend_audio = set(backend_launch["audio_enabled_slugs"])
 
@@ -99,7 +100,7 @@ def test_india_commercial_text_release_is_mirrored_and_audio_remains_disabled():
         assert launch["audio_enabled_slugs"] == []
 
 
-def test_six_title_release_uses_commercial_mode_and_keeps_checkout_audio_disabled():
+def test_seven_title_release_uses_commercial_mode_and_keeps_checkout_audio_disabled():
     root_launch = load_json(ROOT_CONTROLLED_LAUNCH)
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     expected_modes = {
@@ -109,6 +110,7 @@ def test_six_title_release_uses_commercial_mode_and_keeps_checkout_audio_disable
         "a-white-heron": "COMMERCIAL_ENTITLEMENT",
         "the-gift-of-the-magi": "COMMERCIAL_ENTITLEMENT",
         "the-canterville-ghost": "COMMERCIAL_ENTITLEMENT",
+        "the-adventures-of-sherlock-holmes": "COMMERCIAL_ENTITLEMENT",
     }
 
     for launch in (root_launch, backend_launch):
@@ -120,7 +122,7 @@ def test_six_title_release_uses_commercial_mode_and_keeps_checkout_audio_disable
         assert launch["public_audio_exposure_enabled"] is False
 
 
-def test_six_title_release_has_hash_bound_reading_pass_rights_and_published_reader_manifests():
+def test_seven_title_release_has_hash_bound_reading_pass_rights_and_published_reader_manifests():
     launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     registry, revoked = load_production_registry()
     commercial_slugs = tuple(sorted(INDIA_TEXT_RELEASE_SLUGS))
@@ -145,7 +147,18 @@ def test_six_title_release_has_hash_bound_reading_pass_rights_and_published_read
             )
         }
         assert registry[record["decision_id"]]
-        assert record["accepted_by"].startswith("REO ENTERPRISE under the direct owner-provided India commercial go-live mandate") or record["accepted_by"].startswith("REO ENTERPRISE proprietor under the direct user-provided") or record["accepted_by"].startswith("REO ENTERPRISE proprietor under the direct PR #414 go-live mandate")
+        assert (
+            record["accepted_by"].startswith("REO ENTERPRISE under the direct owner-provided India commercial go-live mandate")
+            or record["accepted_by"].startswith("REO ENTERPRISE proprietor under the direct user-provided")
+            or record["accepted_by"].startswith("REO ENTERPRISE proprietor under the direct PR #414 go-live mandate")
+            or (slug == "the-adventures-of-sherlock-holmes" and "identity was not provided" in record["accepted_by"])
+        )
+        if slug == "the-adventures-of-sherlock-holmes":
+            assert record["territories"] == ["IN"]
+            assert set(record["uses"]) == {
+                "catalog_metadata", "cover_display", "reader_preview", "reader_delivery",
+                "reading_pass_session", "reading_pass_renewal",
+            }
         for action in ("reading_pass_session_start", "reading_pass_page", "reading_pass_lease_renewal"):
             verdict = evaluate_runtime_path(
                 action,
@@ -160,6 +173,74 @@ def test_six_title_release_has_hash_bound_reading_pass_rights_and_published_read
                 now=now,
             )
             assert verdict.passed is True, (slug, action, verdict.reasons)
+
+
+def test_a_ghost_story_is_a_known_live_runtime_audit_control():
+    """Keep a known-live title available as the control for release probes."""
+    slug = "a-ghost-story"
+    launch = load_json(BACKEND_CONTROLLED_LAUNCH)
+    assert slug in launch["live_approved_slugs"]
+
+    registry, revoked = load_production_registry()
+    package = active_runtime_package(slug)
+    record = load_json(package / "rights_decision.json")
+    components = {
+        name.removesuffix(".json"): hashlib.sha256((package / name).read_bytes()).hexdigest()
+        for name in (
+            "public_book.json",
+            "reader_manifest.json",
+            "source_evidence.json",
+            "approval_evidence.json",
+            "checksum_manifest.json",
+            "publication_manifest.json",
+        )
+    }
+
+    for action in ("catalog_cta", "reader_manifest"):
+        verdict = evaluate_runtime_path(
+            action,
+            record=record,
+            edition_id=slug,
+            operator_id="reo-enterprise",
+            country="IN",
+            country_trusted=True,
+            required_components=components,
+            accepted_records=registry,
+            revoked_decision_ids=revoked,
+            now=datetime.now(timezone.utc),
+        )
+        assert verdict.passed is True, (action, verdict.reasons)
+
+
+def test_sherlock_is_bound_to_the_exact_owner_approved_text_reader_edition_only():
+    slug = "the-adventures-of-sherlock-holmes"
+    launch = load_json(BACKEND_CONTROLLED_LAUNCH)
+    package = active_runtime_package(slug)
+    book = load_json(package / "public_book.json")
+    source = load_json(package / "source_evidence.json")
+    approval = load_json(package / "approval_evidence.json")
+    manifest = load_json(package / "publication_manifest.json")
+    record = load_json(package / "rights_decision.json")
+
+    assert slug in launch["live_approved_slugs"]
+    assert slug not in launch["audio_enabled_slugs"]
+    assert launch["public_audio_exposure_enabled"] is False
+    assert source["source_name"] == approval["authorized_edition"]["source_name"] == "Project Gutenberg eBook #1661"
+    assert source["source_hash"] == book["source_hash"] == approval["authorized_edition"]["source_sha256"] == "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0"
+    assert source["content_hash"] == book["content_hash"] == approval["authorized_edition"]["content_sha256"] == "d6cb7d46af3d95b071c3783bf3b093f8c8397144ae717bbfbe87b8fc336fdc5c"
+    assert approval["approval_scope"] == "owner_authorized_india_commercial_text_reader_only"
+    assert approval["owner_legal_decision"]["not_authorized"] == [
+        "audiobook release", "audio playback", "Listen CTA", "audio entitlement", "any other edition"
+    ]
+    assert record["edition_id"] == slug
+    assert record["territories"] == ["IN"]
+    assert "audio_stream" not in record["uses"] and "audio_download" not in record["uses"]
+    assert manifest["reader_release"]["status"] == "APPROVED"
+    assert manifest["reader_release"]["exposed"] is True
+    assert manifest["audio_release"] == {
+        "status": "NOT_REQUESTED", "exposed": False, "required_for_reader_release": False
+    }
+    assert book["audio_enabled"] is False and book["audiobook_enabled"] is False
 
 
 def test_backend_controlled_launch_has_no_duplicate_slugs():

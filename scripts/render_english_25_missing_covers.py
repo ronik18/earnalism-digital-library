@@ -2,9 +2,11 @@
 """Render deterministic, rights-safe graphical covers for the 25-title batch.
 
 The artwork is generated from vector primitives and deterministic typography;
-it does not download or embed third-party art. Existing approved covers are
-never replaced. The output is an 800x1200 WebP front/back pair under the
-frontend's same-origin book asset path plus a checksum-bound audit report.
+it does not download or embed third-party art. Existing covers are never
+replaced by default. A caller may explicitly name one planned title with
+``--replace-existing-slug`` after an evidence review. The output is an
+800x1200 WebP front/back pair under the frontend's same-origin book asset path
+plus a checksum-bound audit report.
 """
 
 from __future__ import annotations
@@ -63,6 +65,7 @@ THEMES = {
     "the-canterville-ghost": Theme("English manor", (30, 36, 55), (71, 41, 61), (215, 182, 112), "manor"),
     "the-man-who-would-be-king": Theme("mountain crown", (30, 45, 50), (78, 55, 36), (225, 184, 100), "crown"),
     "the-fall-of-the-house-of-usher": Theme("house and tarn", (24, 31, 41), (61, 31, 39), (202, 164, 105), "usher"),
+    "the-adventures-of-sherlock-holmes": Theme("London fog and magnifying glass", (34, 43, 49), (76, 39, 30), (219, 177, 105), "magnifying_glass"),
     "picture-of-dorian-gray": Theme("portrait and gilt frame", (29, 35, 44), (65, 33, 47), (218, 180, 105), "portrait"),
 }
 
@@ -152,7 +155,7 @@ def decorative_field(image: Image.Image, theme: Theme, seed: int) -> None:
     draw.rounded_rectangle((35, 35, 765, 1165), radius=18, outline=(*theme.accent, 170), width=2)
     draw.rounded_rectangle((49, 49, 751, 1151), radius=14, outline=(*theme.accent, 65), width=1)
     draw.line((110, 142, 690, 142), fill=(*theme.accent, 120), width=2)
-    draw.line((110, 1018, 690, 1018), fill=(*theme.accent, 120), width=2)
+    draw.line((110, 986, 690, 986), fill=(*theme.accent, 120), width=2)
 
 
 def draw_symbol(image: Image.Image, theme: Theme) -> None:
@@ -264,6 +267,11 @@ def draw_symbol(image: Image.Image, theme: Theme) -> None:
         draw.line((400, 350, 405, 810), fill=gold, width=3)
         draw.line((190, 760, 610, 760), fill=gold, width=3)
         draw.arc((170, 710, 630, 875), 195, 345, fill=gold, width=3)
+    elif symbol == "magnifying_glass":
+        draw.ellipse((270, 390, 530, 650), outline=gold, width=8)
+        draw.ellipse((292, 412, 508, 628), outline=(*theme.accent, 105), width=3)
+        draw.line((500, 620, 640, 760), fill=gold, width=12)
+        draw.arc((170, 340, 630, 800), 205, 335, fill=(*theme.accent, 145), width=3)
     elif symbol == "portrait":
         draw.rounded_rectangle((235, 360, 565, 790), radius=12, outline=gold, width=7)
         draw.rounded_rectangle((260, 385, 540, 765), radius=8, outline=(*theme.accent, 125), width=3)
@@ -302,7 +310,10 @@ def render_front(public: dict[str, Any], theme: Theme) -> Image.Image:
     draw.text((400, 92), "E A R N A L I S M   C L A S S I C S", anchor="mm", font=font(16), fill=(*theme.accent, 235))
     lines, title_font = fit_title(draw, str(public["title"]), 650)
     line_height = title_font.size + 8
-    top = 190 - (len(lines) - 1) * line_height / 2
+    # Keep long, wrapped titles clear of the ornamental rule at y=142 and the
+    # central illustration. Single-line titles retain the established rhythm.
+    title_center = 190 if len(lines) == 1 else 250
+    top = title_center - (len(lines) - 1) * line_height / 2
     for index, line in enumerate(lines):
         draw.text((400, top + index * line_height), line, anchor="mm", font=title_font, fill=(250, 244, 226, 255))
     author = str(public.get("author") or "").upper()
@@ -355,13 +366,28 @@ def save_webp(image: Image.Image, path: Path) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--write", action="store_true")
+    parser.add_argument(
+        "--replace-existing-slug",
+        action="append",
+        default=[],
+        help="Explicitly generate and bind a first-party cover for this planned slug even when metadata already has a cover URL.",
+    )
     args = parser.parse_args()
+    plans = load_plans()
+    planned_slugs = {plan.slug for plan in plans}
+    unknown_slugs = sorted(set(args.replace_existing_slug) - planned_slugs)
+    if unknown_slugs:
+        raise ValueError(f"Replacement slug is not in the approved English title plan: {', '.join(unknown_slugs)}")
+    if args.replace_existing_slug and not args.write:
+        raise ValueError("--replace-existing-slug requires --write so the generated evidence cannot describe missing files")
     rows = []
-    for plan in load_plans():
+    for plan in plans:
+        if args.replace_existing_slug and plan.slug not in args.replace_existing_slug:
+            continue
         public_path = ROOT / "data" / "controlled_publications" / plan.slug / "public_book.json"
         public = read_json(public_path)
         has_cover = bool(public.get("cover_image_url") or public.get("cover_url"))
-        if has_cover:
+        if has_cover and plan.slug not in args.replace_existing_slug:
             continue
         theme = THEMES.get(plan.slug)
         if theme is None:

@@ -14,7 +14,7 @@ test("prior manifest IDs remain present", () => assert.ok(manifest.states.length
 test("reverse-order filter executes in manifest order", () => assert.deepEqual(selectStateRecords(manifest, [...ids].reverse()).map((s) => s.id), ids));
 test("404 route is not a real route", () => assert.equal(manifest.states.filter((s) => s.route === "/__seamless-brand-review-not-found-344__").length, 2));
 test("selected 410 route exists in tombstone authority", () => assert.match(fs.readFileSync(path.join(root, "scripts/serve_frontend_build.js"), "utf8"), /patterned-wrap-dress/));
-test("static SEO contract exposes only the six accepted India text releases", () => {
+test("static SEO contract exposes only the seven accepted India text releases", () => {
   const contract = JSON.parse(fs.readFileSync(path.join(root, "frontend/static-seo/controlled-publication-public.json"), "utf8"));
   assert.equal(contract.public_release_held, false);
   assert.deepEqual(
@@ -23,6 +23,7 @@ test("static SEO contract exposes only the six accepted India text releases", ()
       "a-ghost-story",
       "a-white-heron",
       "radharani",
+      "the-adventures-of-sherlock-holmes",
       "the-canterville-ghost",
       "the-gift-of-the-magi",
       "the-tell-tale-heart",

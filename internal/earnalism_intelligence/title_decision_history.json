@@ -60,15 +60,20 @@
       "next_action": "Prove an exact-slug graphical cover, rerun reader gates, and render a fresh private preview."
     },
     "the-adventures-of-sherlock-holmes": {
-      "latest_decision": "PUBLICATION_MANIFEST_CONVEYOR_PILOT_READY_FOR_APPROVAL",
-      "decision_reason": "The legally cleared source was sanitized and deterministically indexed into twelve canonical stories. Reader, audio, and commerce lanes are independent; no audiobook is requested and no public exposure is authorized.",
-      "updated_at": "2026-08-08T10:15:00Z",
+      "latest_decision": "OWNER_APPROVED_INDIA_TEXT_READER_ONLY_PENDING_PRODUCTION_DEPLOY",
+      "decision_reason": "User-supplied authorized owner/legal approval binds commercial text-reader publication in India to Project Gutenberg eBook #1661 and the exact source/content hashes. The approved edition is recorded in approval_evidence.json and a trusted hash-bound rights decision. Audio and every other edition remain unauthorized.",
+      "updated_at": "2026-09-29T08:21:18Z",
       "language": "en",
-      "public_reader_status": "READY_FOR_APPROVAL_NOT_EXPOSED",
-      "public_audio_status": "NOT_REQUESTED",
+      "public_reader_status": "APPROVED_IN_CONTROLLED_PR_PENDING_PRODUCTION_RUNTIME_VERIFICATION",
+      "public_audio_status": "NOT_REQUESTED_FAIL_CLOSED",
       "chapter_count": 12,
       "manifest_schema": "earnalism-publication-manifest-v1",
-      "next_action": "Review the generated manifest and obtain explicit owner approval before running the guarded reader-publication mutation."
+      "next_action": "Require all PR #470 protected checks, merge through normal governance, then verify the exact deployed backend revision with a-ghost-story control and Sherlock catalog/reader probes. Keep audio fail-closed.",
+      "source_sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+      "content_sha256": "d6cb7d46af3d95b071c3783bf3b093f8c8397144ae717bbfbe87b8fc336fdc5c",
+      "territory": "IN",
+      "rights_decision_id": "india-20260929-the-adventures-of-sherlock-holmes-pg1661-text-reader",
+      "publication_authorization": "HASH_BOUND_TEXT_READER_ONLY"
     },
     "gitanjali": {
       "reader_status": "READER_ONLY_LIVE_APPROVED",
@@ -104,23 +109,23 @@
       "evidence": "internal/earnalism_intelligence/audiobook_package_v2_canary_a_ghost_story_20260730.json",
       "audiobook_next_action": "Keep the retained legacy descriptor available for rollback, continue health monitoring, and inspect book-2b9853ec52 as the next already-approved package-v2 migration candidate without changing narration or release gates.",
       "p0_cover_candidate": {
-    "status": "CANONICAL_PROMOTED_PENDING_PR_MERGE",
+        "status": "CANONICAL_PROMOTED_PENDING_PR_MERGE",
         "defect": "WRONG_TITLE_ART",
         "wrong_pair_assigned_title": "Bharat at the Crossroads",
         "front_sha256": "d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742",
         "back_sha256": "baa45f507dda0926dfeeb219430a8ecd580d53eec43fbdda66aaa0c7fa2a2400",
         "evidence": "internal/audiobook_lab/sprint1_publication/cover_candidates/a-ghost-story/p0_v1/candidate_manifest.json",
-    "production_mutations": 4,
+        "production_mutations": 4,
         "staged_candidate_records": "private production book_cover_candidates: a-ghost-story:front and a-ghost-story:back",
-    "assignment_plan": "internal/audiobook_lab/sprint1_publication/cover_candidates/a-ghost-story/p0_v1/a-ghost-story-cover-assignment-plan.json",
-    "canonical_promotion": {
-      "approved_at": "2026-08-30T19:26:21Z",
-      "front_event_id": "0cb148cc-584f-45d4-b021-a9d546d4a71a",
-      "back_event_id": "7909a5b8-de10-4714-b51e-a4e0ce527df6",
-      "non_cover_changes": 0,
-      "mirror_differences": 0,
-      "rollback": "internal/audiobook_lab/sprint1_publication/cover_candidates/a-ghost-story/p0_v1/final-cover-rollback.json"
-    }
+        "assignment_plan": "internal/audiobook_lab/sprint1_publication/cover_candidates/a-ghost-story/p0_v1/a-ghost-story-cover-assignment-plan.json",
+        "canonical_promotion": {
+          "approved_at": "2026-08-30T19:26:21Z",
+          "front_event_id": "0cb148cc-584f-45d4-b021-a9d546d4a71a",
+          "back_event_id": "7909a5b8-de10-4714-b51e-a4e0ce527df6",
+          "non_cover_changes": 0,
+          "mirror_differences": 0,
+          "rollback": "internal/audiobook_lab/sprint1_publication/cover_candidates/a-ghost-story/p0_v1/final-cover-rollback.json"
+        }
       }
     },
     "alices-adventures-in-wonderland": {
@@ -3447,5 +3452,173 @@
   },
   "bengali_audio_lane_status": "D19_INDIC_PARLER_OBJECTIVE_FAIL_SOURCE_BOUND_REPLACEMENT_REQUIRED",
   "bengali_audiobook_campaign_status": "NO_NEW_BENGALI_PUBLICATION_D19_PROVIDER_FREE_OBJECTIVE_FAIL_CLOSED",
-  "bengali_audiobook_campaign_updated_at": "2026-07-30T09:15:47Z"
+  "bengali_audiobook_campaign_updated_at": "2026-07-30T09:15:47Z",
+  "lane2_activation_review_20260929": {
+    "alices-adventures-in-wonderland": {
+      "status": "NON_LIVE_READ_ONLY_ACTIVE_RIGHTS_AUTOMATION",
+      "in_authoritative_live_approved_slugs": false,
+      "manifest_written_nonexposed": false,
+      "checksum_rebuilt_from_package_files": false,
+      "audio_metadata_package_left_untouched": false,
+      "release_authorized": false,
+      "reason": "Read-only audit only; candidate is owned by the active rights-binding automation. No package changes made in this run.",
+      "active_connector_automation_owned": true
+    },
+    "sredni-vashtar": {
+      "status": "NON_LIVE_BLOCKED_NOT_AUTHORIZED",
+      "in_authoritative_live_approved_slugs": false,
+      "manifest_written_nonexposed": false,
+      "checksum_rebuilt_from_package_files": false,
+      "audio_metadata_package_left_untouched": true,
+      "release_authorized": false,
+      "reason": "Missing accepted title-specific rights decision, complete source/edition and independent cover provenance, and edition-bound publication authorization; production runtime release gate unresolved."
+    },
+    "dracula": {
+      "status": "NON_LIVE_BLOCKED_NOT_AUTHORIZED",
+      "in_authoritative_live_approved_slugs": false,
+      "manifest_written_nonexposed": true,
+      "checksum_rebuilt_from_package_files": true,
+      "audio_metadata_package_left_untouched": false,
+      "release_authorized": false,
+      "reason": "Missing accepted title-specific rights decision, complete source/edition and independent cover provenance, and edition-bound publication authorization; production runtime release gate unresolved."
+    },
+    "book-d19e96859f": {
+      "status": "NON_LIVE_BLOCKED_NOT_AUTHORIZED",
+      "in_authoritative_live_approved_slugs": false,
+      "manifest_written_nonexposed": true,
+      "checksum_rebuilt_from_package_files": true,
+      "audio_metadata_package_left_untouched": false,
+      "release_authorized": false,
+      "reason": "Missing accepted title-specific rights decision, complete source/edition and independent cover provenance, and edition-bound publication authorization; production runtime release gate unresolved."
+    },
+    "book-f5d593e1f4": {
+      "status": "NON_LIVE_BLOCKED_NOT_AUTHORIZED",
+      "in_authoritative_live_approved_slugs": false,
+      "manifest_written_nonexposed": true,
+      "checksum_rebuilt_from_package_files": true,
+      "audio_metadata_package_left_untouched": false,
+      "release_authorized": false,
+      "reason": "Missing accepted title-specific rights decision, complete source/edition and independent cover provenance, and edition-bound publication authorization; production runtime release gate unresolved."
+    },
+    "book-4b944e64fa": {
+      "status": "NON_LIVE_BLOCKED_NOT_AUTHORIZED",
+      "in_authoritative_live_approved_slugs": false,
+      "manifest_written_nonexposed": false,
+      "checksum_rebuilt_from_package_files": false,
+      "audio_metadata_package_left_untouched": true,
+      "release_authorized": false,
+      "reason": "Missing accepted title-specific rights decision, complete source/edition and independent cover provenance, and edition-bound publication authorization; production runtime release gate unresolved."
+    },
+    "book-2e468c4990": {
+      "status": "NON_LIVE_BLOCKED_NOT_AUTHORIZED",
+      "in_authoritative_live_approved_slugs": false,
+      "manifest_written_nonexposed": false,
+      "checksum_rebuilt_from_package_files": false,
+      "audio_metadata_package_left_untouched": true,
+      "release_authorized": false,
+      "reason": "Missing accepted title-specific rights decision, complete source/edition and independent cover provenance, and edition-bound publication authorization; production runtime release gate unresolved."
+    },
+    "book-0deb35c750": {
+      "status": "NON_LIVE_BLOCKED_NOT_AUTHORIZED",
+      "in_authoritative_live_approved_slugs": false,
+      "manifest_written_nonexposed": false,
+      "checksum_rebuilt_from_package_files": false,
+      "audio_metadata_package_left_untouched": true,
+      "release_authorized": false,
+      "reason": "Missing accepted title-specific rights decision, complete source/edition and independent cover provenance, and edition-bound publication authorization; production runtime release gate unresolved."
+    },
+    "book-c7f3ce526c": {
+      "status": "NON_LIVE_BLOCKED_NOT_AUTHORIZED",
+      "in_authoritative_live_approved_slugs": false,
+      "manifest_written_nonexposed": false,
+      "checksum_rebuilt_from_package_files": false,
+      "audio_metadata_package_left_untouched": true,
+      "release_authorized": false,
+      "reason": "Missing accepted title-specific rights decision, complete source/edition and independent cover provenance, and edition-bound publication authorization; production runtime release gate unresolved."
+    },
+    "book-1090573dff": {
+      "status": "NON_LIVE_BLOCKED_NOT_AUTHORIZED",
+      "in_authoritative_live_approved_slugs": false,
+      "manifest_written_nonexposed": false,
+      "checksum_rebuilt_from_package_files": false,
+      "audio_metadata_package_left_untouched": true,
+      "release_authorized": false,
+      "reason": "Missing accepted title-specific rights decision, complete source/edition and independent cover provenance, and edition-bound publication authorization; production runtime release gate unresolved."
+    },
+    "book-754da4eab8": {
+      "status": "NON_LIVE_BLOCKED_NOT_AUTHORIZED",
+      "in_authoritative_live_approved_slugs": false,
+      "manifest_written_nonexposed": false,
+      "checksum_rebuilt_from_package_files": false,
+      "audio_metadata_package_left_untouched": true,
+      "release_authorized": false,
+      "reason": "Missing accepted title-specific rights decision, complete source/edition and independent cover provenance, and edition-bound publication authorization; production runtime release gate unresolved."
+    },
+    "book-a74c1a1451": {
+      "status": "NON_LIVE_BLOCKED_NOT_AUTHORIZED",
+      "in_authoritative_live_approved_slugs": false,
+      "manifest_written_nonexposed": false,
+      "checksum_rebuilt_from_package_files": false,
+      "audio_metadata_package_left_untouched": true,
+      "release_authorized": false,
+      "reason": "Missing accepted title-specific rights decision, complete source/edition and independent cover provenance, and edition-bound publication authorization; production runtime release gate unresolved."
+    },
+    "book-63afd5e9be": {
+      "status": "NON_LIVE_BLOCKED_NOT_AUTHORIZED",
+      "in_authoritative_live_approved_slugs": false,
+      "manifest_written_nonexposed": false,
+      "checksum_rebuilt_from_package_files": false,
+      "audio_metadata_package_left_untouched": true,
+      "release_authorized": false,
+      "reason": "Missing accepted title-specific rights decision, complete source/edition and independent cover provenance, and edition-bound publication authorization; production runtime release gate unresolved."
+    },
+    "pride-and-prejudice": {
+      "status": "NON_LIVE_READ_ONLY_ACTIVE_RIGHTS_AUTOMATION",
+      "in_authoritative_live_approved_slugs": false,
+      "manifest_written_nonexposed": false,
+      "checksum_rebuilt_from_package_files": false,
+      "audio_metadata_package_left_untouched": false,
+      "release_authorized": false,
+      "reason": "Read-only audit only; candidate is owned by the active rights-binding automation. No package changes made in this run.",
+      "active_connector_automation_owned": true
+    },
+    "frankenstein": {
+      "status": "NON_LIVE_READ_ONLY_ACTIVE_RIGHTS_AUTOMATION",
+      "in_authoritative_live_approved_slugs": false,
+      "manifest_written_nonexposed": false,
+      "checksum_rebuilt_from_package_files": false,
+      "audio_metadata_package_left_untouched": false,
+      "release_authorized": false,
+      "reason": "Read-only audit only; candidate is owned by the active rights-binding automation. No package changes made in this run.",
+      "active_connector_automation_owned": true
+    },
+    "the-adventures-of-sherlock-holmes": {
+      "status": "APPROVED_TEXT_READER_ACTIVATION_IN_PR_PENDING_PRODUCTION",
+      "in_authoritative_live_approved_slugs": true,
+      "manifest_written_nonexposed": false,
+      "checksum_rebuilt_from_package_files": true,
+      "audio_metadata_package_left_untouched": true,
+      "release_authorized": true,
+      "reason": "Genuine owner/legal approval was bound to exact Project Gutenberg #1661 source/content hashes, cover, reader package, manifest, and runtime rights decision. Production runtime verification is pending deployment.",
+      "active_connector_automation_owned": false
+    },
+    "agentic-ai-with-python": {
+      "status": "NOT_AUTHORIZED",
+      "in_authoritative_live_approved_slugs": false,
+      "changed": false,
+      "reason": "No authoritative source URL; package-local approved/exposed fields do not confer launch authority."
+    },
+    "the-art-of-money-getting": {
+      "status": "OUT_OF_SCOPE_BLOCKED",
+      "in_authoritative_live_approved_slugs": false,
+      "changed": false,
+      "reason": "Audio-enabled package left untouched; source-use scope is limited."
+    },
+    "the-selfish-giant": {
+      "status": "NOT_COUNTED_AS_NEW",
+      "in_authoritative_live_approved_slugs": false,
+      "changed": false,
+      "reason": "Audio-enabled package left untouched; historical title history describes prior public-live state."
+    }
+  }
 }
