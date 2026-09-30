@@ -11,25 +11,31 @@ fs.mkdirSync(output, { recursive: true });
 
 const captures = [];
 const errors = [];
+const controlledLaunch = JSON.parse(fs.readFileSync(path.resolve("data/controlled_launch.json"), "utf8"));
+const liveSlugs = controlledLaunch.live_approved_slugs;
+const knownLivePackage = JSON.parse(fs.readFileSync(path.resolve("data/controlled_publications/a-ghost-story/public_book.json"), "utf8"));
 const knownLiveBook = {
-  slug: "a-ghost-story", title: "A Ghost Story", title_en: "A Ghost Story", author: "Mark Twain",
-  language: "en", publication_status: "LIVE_APPROVED", reader_enabled: true,
-  public_route: "/book/a-ghost-story", reader_url: "/reader/a-ghost-story", preview_enabled: true,
-  preview_url: "/reader/a-ghost-story", chapters: [{ id: "a-ghost-story-chapter-1", title: "A Ghost Story", is_preview: true }],
-  description: "A comic encounter with a haunted room. This edition includes a release-gated, section-following narration.",
-  benefits: ["Read a compact classic comic ghost story.", "Listen through the approved section-following narration in the reader."],
-  audiobook_enabled: true,
-  audiobook_assets: { mp3: "/audio/a-ghost-story.mp3" },
+  ...knownLivePackage,
+  language: "en",
+  publication_status: "LIVE_APPROVED",
+  reader_enabled: liveSlugs.includes("a-ghost-story"),
+  public_route: "/book/a-ghost-story",
+  reader_url: "/reader/a-ghost-story",
+  preview_enabled: false,
+  preview_url: "",
+  // The production runtime API is currently not returning a manifest body.
+  // Do not infer a free preview or segment readiness from package metadata.
+  audio_enabled: false,
+  audiobook_enabled: false,
+  audiobook_assets: {},
 };
-const unapprovedAudioBook = {
-  slug: "sredni-vashtar", title: "Sredni Vashtar", title_en: "Sredni Vashtar", author: "Saki",
-  language: "en", publication_status: "LIVE_APPROVED", reader_enabled: true,
-  public_route: "/book/sredni-vashtar", reader_url: "/reader/sredni-vashtar", preview_enabled: true,
-  preview_url: "/reader/sredni-vashtar", chapters: [{ id: "sredni-vashtar-chapter-1", title: "Sredni Vashtar", is_preview: true }],
-  description: "A quiet classic about a boy and the world he imagines. An audiobook is coming soon.",
-  benefits: ["Explore a reader-ready edition.", "Listen to this story in the Listening Room."],
-  audiobook_enabled: true,
-  audiobook_assets: { mp3: "/audio/sredni-vashtar.mp3" },
+const comingSoonBook = {
+  slug: "frankenstein", title: "Frankenstein", title_en: "Frankenstein", author: "Mary Wollstonecraft Shelley",
+  language: "en", publication_status: "COMING_SOON_PIPELINE", pipeline_stage: "PIPELINE_ONLY",
+  reader_enabled: false, public_route: "/book/frankenstein", reader_url: "", preview_enabled: false,
+  preview_url: "", chapters: [], audiobook_enabled: false, audio_enabled: false, audiobook_assets: {},
+  short_description: "A future Gothic shelf candidate. Cover evidence remains pending, so this title stays in preparation.",
+  cover_image_url: "/assets/books/frankenstein/front-cover.webp",
 };
 
 async function makePage(browser, width, height, apiMode = {}) {
@@ -55,7 +61,7 @@ async function makePage(browser, width, height, apiMode = {}) {
     if (pathname === "/settings") return route.fulfill({ status: 200, contentType: "application/json", body: "{}" });
     if (pathname === "/books") return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify([knownLiveBook]) });
     if (pathname === "/books/a-ghost-story") return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(knownLiveBook) });
-    if (pathname === "/books/sredni-vashtar") return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(unapprovedAudioBook) });
+    if (pathname === "/books/frankenstein") return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(comingSoonBook) });
     if (pathname === "/payments/offers") return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ packs: [{ id: "30", minutes: 30, price_inr: 49 }, { id: "60", minutes: 60, price_inr: 89 }, { id: "180", minutes: 180, price_inr: 239 }, { id: "600", minutes: 600, price_inr: 499 }], config: { configured: false, mode: "visual-fixture" } }) });
     if (pathname === "/payments/packs") return route.fulfill({ status: 200, contentType: "application/json", body: "[]" });
     return route.fulfill({ status: 200, contentType: "application/json", body: "{}" });
@@ -172,9 +178,9 @@ for (const width of [1440, 390]) {
   }
 
   for (const width of [1440, 390]) {
-    for (const book of [knownLiveBook, unapprovedAudioBook]) {
+    for (const book of [knownLiveBook, comingSoonBook]) {
       await capture(browser, {
-        id: book.slug === "a-ghost-story" ? "book-detail-a-ghost-story" : "book-detail-unapproved-audio",
+        id: book.slug === "a-ghost-story" ? "book-detail-a-ghost-story" : "book-detail-coming-soon",
         route: `/book/${book.slug}`,
         width,
         height: width === 390 ? 844 : 1000,
@@ -187,9 +193,35 @@ for (const width of [1440, 390]) {
           const structuredData = await page.locator('script[type="application/ld+json"]').allTextContents();
           assert.doesNotMatch(structuredData.join(" "), /listen through|section-following narration|approved narration|audiobook (?:is|includes|features|available)/i, `${book.slug}: unapproved title-specific audio claim remained in structured data`);
           assert.equal(await page.locator("audio, video, source[src*='audio']").count(), 0, `${book.slug}: unapproved playable source was exposed`);
+          if (book.slug === "a-ghost-story") {
+            assert.equal(liveSlugs.includes(book.slug), true, "A Ghost Story fixture must be in canonical controlled-launch authority");
+            assert.equal(await page.getByTestId("book-detail-reader-status").textContent(), "Reader currently unavailable");
+            assert.equal(await page.getByTestId("start-reading").getAttribute("href"), "/library", "Without the runtime Reading Pass manifest, Book Detail must keep the safe Library fallback");
+          } else {
+            assert.equal(await page.getByTestId("start-reading").getAttribute("href"), "/library", "Coming-soon editions must not open the Reader");
+          }
         },
       });
     }
+  }
+
+  for (const width of [1440, 1024, 390]) {
+    await capture(browser, {
+      id: "library-canonical-live-and-coming-soon",
+      route: "/library",
+      width,
+      height: width === 390 ? 844 : width === 1024 ? 768 : 1000,
+      assertState: async (page) => {
+        await page.getByTestId("reference-book-a-ghost-story").waitFor();
+        await page.getByText("A Ghost Story", { exact: true }).first().waitFor();
+        await page.getByTestId("reference-book-a-ghost-story").getByText("Live", { exact: true }).waitFor();
+        await page.getByTestId("reference-book-a-ghost-story").getByRole("link", { name: "Details", exact: true }).waitFor();
+        await page.getByTestId("reference-book-frankenstein").waitFor();
+        await page.getByTestId("reference-book-frankenstein").getByText("Coming soon", { exact: true }).waitFor();
+        await page.getByTestId("reference-book-frankenstein").getByRole("link", { name: "Notify me", exact: true }).waitFor();
+        assert.equal(liveSlugs.includes("a-ghost-story"), true, "live Library screenshot must be grounded in controlled-launch authority");
+      },
+    });
   }
 
   for (const width of [1440, 390]) {
@@ -220,7 +252,22 @@ for (const width of [1440, 390]) {
     });
   }
 
-  const result = { result: "PASS", classification: "ISOLATED_LOCAL_FIXTURE_EVIDENCE_ONLY", generated_at: new Date().toISOString(), output, captures };
+const result = {
+  result: "PASS",
+  classification: "ISOLATED_LOCAL_FIXTURE_EVIDENCE_ONLY",
+  generated_at: new Date().toISOString(),
+  exact_head: process.env.PR_HEAD_SHA || "LOCAL_UNCOMMITTED_WORKTREE",
+  canonical_reader_live_slugs: liveSlugs,
+  canonical_audio_live_slugs: controlledLaunch.audio_enabled_slugs || [],
+  fixture_semantics: {
+    live_title: "A Ghost Story from data/controlled_publications/a-ghost-story/public_book.json and data/controlled_launch.json",
+    live_title_audio: "NOT_REQUESTED, not exposed, no assets",
+    reader_manifest: "No runtime access/segments_ready claims supplied; detail screenshot preserves Reader currently unavailable",
+    coming_soon_title: "Frankenstein pipeline state; reader_enabled=false; no preview or audio",
+  },
+  output,
+  captures,
+};
   fs.writeFileSync(path.join(output, "summary.json"), `${JSON.stringify(result, null, 2)}\n`);
   console.log(JSON.stringify(result));
 } finally {

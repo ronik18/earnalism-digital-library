@@ -105,8 +105,8 @@ def main() -> None:
         ("delta-signup-390.png", supplemental / "signup-validation-390.png", "Signup · release-safe copy · 390"),
         ("delta-book-detail-a-ghost-story-1440.png", supplemental / "book-detail-a-ghost-story-1440.png", "A Ghost Story · audio release-safe · 1440"),
         ("delta-book-detail-a-ghost-story-390.png", supplemental / "book-detail-a-ghost-story-390.png", "A Ghost Story · audio release-safe · 390"),
-        ("delta-book-detail-unapproved-audio-1440.png", supplemental / "book-detail-unapproved-audio-1440.png", "Unapproved audio title · release-safe · 1440"),
-        ("delta-book-detail-unapproved-audio-390.png", supplemental / "book-detail-unapproved-audio-390.png", "Unapproved audio title · release-safe · 390"),
+        ("delta-book-detail-coming-soon-1440.png", supplemental / "book-detail-coming-soon-1440.png", "Coming-soon title · non-readable · 1440"),
+        ("delta-book-detail-coming-soon-390.png", supplemental / "book-detail-coming-soon-390.png", "Coming-soon title · non-readable · 390"),
         ("delta-reader-default-no-focus-1440.png", supplemental / "reader-default-no-focus-1440.png", "Reader · default no-focus · 1440"),
         ("delta-reader-default-no-focus-390.png", supplemental / "reader-default-no-focus-390.png", "Reader · default no-focus · 390"),
         ("delta-reader-keyboard-focus-1440.png", supplemental / "reader-keyboard-focus-1440.png", "Reader · keyboard focus · 1440"),
@@ -119,6 +119,8 @@ def main() -> None:
             ("recovered", f"library-recovery-{width}.png", "Library recovered catalogue"),
         ):
             delta_selections.append((f"delta-library-{state}-{width}.png", library / source_name, f"{label} · {width}"))
+    for width in (1440, 1024, 390):
+        delta_selections.append((f"delta-library-live-and-coming-soon-{width}.png", supplemental / f"library-canonical-live-and-coming-soon-{width}.png", f"Library · canonical live + coming soon · {width}"))
     delta_records = [copy(source, images_dir / filename, label) for filename, source, label in delta_selections]
     delta_contact_sheet = output / "owner-delta-contact-sheet.png"
     image_contact_sheet([(label, images_dir / filename) for filename, _, label in delta_selections], delta_contact_sheet)
@@ -129,6 +131,7 @@ def main() -> None:
         "repair_head": exact_head,
         "classification": "LOCAL_DETERMINISTIC_FIXTURES_NO_PRODUCTION_REQUESTS_OR_MUTATIONS",
         "reader_default_state": "The route initially focuses its non-interactive chapter heading for reading context; screenshots capture the default after blur. Interactive controls retain :focus-visible styling.",
+        "canonical_release_state": "The Library fixture reads the canonical controlled-launch allowlist and A Ghost Story public package. It distinguishes canonical reader publication from the separate runtime Reading Pass manifest gate. The captured A Ghost Story detail remains in the truthful Reader-unavailable state because the fixture does not invent runtime segment readiness.",
         "library_recovery": "Error/retry captures show the active Retry action. Recovered state follows a successful local catalogue API fixture response for A Ghost Story, not bundled fallback inventory.",
         "screenshots": delta_records,
         "contact_sheet": {"filename": delta_contact_sheet.name, "sha256": sha(delta_contact_sheet)},

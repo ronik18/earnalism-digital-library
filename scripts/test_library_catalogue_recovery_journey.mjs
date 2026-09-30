@@ -12,7 +12,7 @@ const output = process.env.LIBRARY_RECOVERY_EVIDENCE_OUTPUT || fs.mkdtempSync(pa
 fs.mkdirSync(output, { recursive: true });
 
 const books = [
-  { slug: "a-ghost-story", title: "A Ghost Story", title_en: "A Ghost Story", author: "Mark Twain", language: "en", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/a-ghost-story", reader_url: "/reader/a-ghost-story", preview_enabled: true, preview_url: "/reader/a-ghost-story", chapters: [{ id: "ghost-story-page-1", is_preview: true }], audiobook_enabled: false },
+  { slug: "a-ghost-story", title: "A Ghost Story", title_en: "A Ghost Story", author: "Mark Twain", language: "en", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/a-ghost-story", reader_url: "/reader/a-ghost-story", preview_enabled: false, preview_url: "", chapters: [{ id: "ghost-story-page-1", is_preview: true }], audiobook_enabled: false, audio_enabled: false, audiobook_assets: {} },
 ];
 
 function collectDiagnostics(page) {
@@ -92,7 +92,10 @@ async function waitForCatalogueState(page, state) {
   const error = page.getByTestId("library-catalogue-error");
   const empty = page.getByTestId("library-catalogue-empty");
   if (state === "success") {
-    await page.getByTestId("reference-book-a-ghost-story").waitFor();
+    const liveTile = page.getByTestId("reference-book-a-ghost-story");
+    await liveTile.waitFor();
+    await liveTile.getByText("Live", { exact: true }).waitFor();
+    await liveTile.getByRole("link", { name: "Details", exact: true }).waitFor();
     await error.waitFor({ state: "detached" });
     await empty.waitFor({ state: "detached" });
     return;
@@ -133,7 +136,12 @@ async function testInitialStates(context) {
       assert.equal(await page.getByTestId("reference-book-a-ghost-story").count(), 0, "empty: valid empty response was replaced with fallback reader inventory");
       assert.equal(await page.getByText("The shelves are quiet for now.", { exact: true }).count(), 1, "empty: valid empty response lacks a distinct explanation");
     }
-    if (id === "success") await page.getByTestId("reference-book-a-ghost-story").waitFor();
+    if (id === "success") {
+      const liveTile = page.getByTestId("reference-book-a-ghost-story");
+      await liveTile.waitFor();
+      await liveTile.getByText("Live", { exact: true }).waitFor();
+      await liveTile.getByRole("link", { name: "Details", exact: true }).waitFor();
+    }
     results.push({ id, geometry: await assertNoDocumentOverflow(page, id) });
     assertNoRuntimeDefects(diagnostics, id);
     if (["success", "rejected", "malformed", "empty"].includes(id)) {
@@ -226,7 +234,7 @@ async function testKeyboardRetryAndRecovery(context, viewport) {
   assertNoRuntimeDefects(diagnostics, `${viewport.width}px retry and recovery`);
   await captureFullPageAtTop(page, path.join(output, `library-recovery-${viewport.width}.png`));
   await page.close();
-  return { viewport, request_count: fixture.count(), recovered_title: "A Ghost Story", recovery_source: "successful second catalogue API response fixture; no bundled fallback", keyboard_activation: { focus: "Tab traversal", key: "Enter", initial_tab_steps: tabSteps, recovery_tab_steps: recoveryTabSteps }, geometry, result: "PASS" };
+  return { viewport, request_count: fixture.count(), recovered_title: "A Ghost Story", recovered_state: "canonical live fixture displays Live + Details; runtime preview and segment readiness are not inferred from publication metadata", recovery_source: "successful second catalogue API response fixture; no bundled fallback", keyboard_activation: { focus: "Tab traversal", key: "Enter", initial_tab_steps: tabSteps, recovery_tab_steps: recoveryTabSteps }, geometry, result: "PASS" };
 }
 
 const browser = await chromium.launch({ headless: true });
