@@ -231,6 +231,7 @@ jobs:
         run: |
           git restore --source=HEAD --worktree --staged internal/earnalism_intelligence/full_catalogue_processing_20260930 || true
           git clean -fd -- internal/earnalism_intelligence/full_catalogue_processing_20260930 || true
+          rm -f codex-catalogue-final-message.txt
 
       - name: Enforce bounded changed-file scope
         run: |
@@ -272,6 +273,12 @@ jobs:
             echo "audio-related controlledLaunch change is forbidden"
             exit 1
           fi
+          for protected_test in             backend/tests/test_rights_decision_gate.py             backend/tests/test_rights_engine.py             backend/tests/test_controlled_publication_precheck.py; do
+            if ! git diff --quiet HEAD -- "$protected_test"; then
+              echo "core compliance gate test modification is forbidden: $protected_test"
+              exit 1
+            fi
+          done
 
       - name: Run focused compliance and release tests
         run: |
