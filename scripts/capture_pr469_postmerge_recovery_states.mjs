@@ -218,7 +218,9 @@ for (const width of [1440, 390]) {
         await page.getByTestId("reference-book-a-ghost-story").getByRole("link", { name: "Details", exact: true }).waitFor();
         await page.getByTestId("reference-book-frankenstein").waitFor();
         await page.getByTestId("reference-book-frankenstein").getByText("Coming soon", { exact: true }).waitFor();
-        await page.getByTestId("reference-book-frankenstein").getByRole("link", { name: "Notify me", exact: true }).waitFor();
+        const titleInquiry = page.getByTestId("reference-book-frankenstein").getByRole("link", { name: "Ask about title", exact: true });
+        await titleInquiry.waitFor();
+        assert.equal(await titleInquiry.getAttribute("href"), "/contact?interest=frankenstein");
         assert.equal(liveSlugs.includes("a-ghost-story"), true, "live Library screenshot must be grounded in controlled-launch authority");
       },
     });
