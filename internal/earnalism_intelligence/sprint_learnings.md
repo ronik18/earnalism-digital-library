@@ -2357,3 +2357,7 @@ The owner approves the Reader by default when fresh rendered evidence matches th
 ## 2026-09-30 — Complete catalogue processing through the autonomy pipeline
 
 Processed all 231 inventory/package identities and 1,012 prepared chapters into 162 private manifests with retained file hashes, chapter content hashes, accepted runtime-decision checks, a draft intake manifest and explicit per-title dispositions. Seven titles retain accepted India text scope; 224 require factual evidence, including 69 without a cleared source package. Original content, source, approval and rights bytes are unchanged. The legacy worker review condition excluded successful non-Codex workers; include either successful worker branch. The bounded catalogue task runs without paid generation, customer mutations, publication, new credentials or relaxed scope controls, and its reviewer independently recomputes the evidence.
+
+## 2026-09-30 — Fresh Reader responsive review
+
+Exact-head captures revealed that an older max-width rule hid the notebook at 1024px while retaining a third grid column. Keep the tablet notebook pane through 1279px and place the desktop chapter heading below its toolbar in a full grid row. The 231-title catalogue job and independent review passed on the prior candidate; rerun normal checks and fresh visual captures on the correction before using conditional design approval.

@@ -237,8 +237,8 @@
 .reader-v2__canvas[data-reader-language="en"] .reader-v2__body > div > p:first-of-type::first-letter { float: left; padding: .04em .13em 0 0; color: var(--reader-accent); font-size: 3.6em; line-height: .9; }
 .reader-v2__page-selector { display: flex; align-items: center; gap: 12px; max-width: none; margin-top: 12px; font-size: 11px; }
 .reader-v2__page-selector select { width: 9rem; }
-.reader-v2__contents li button { border: 0; border-inline-start: 2px solid transparent; background: transparent; padding: 8px 10px; }
-.reader-v2__contents button[aria-current="page"] { border-inline-start-color: var(--reader-gold); background: var(--reader-warm-beige); color: var(--reader-maroon); text-decoration: none; }
+.reader-v2__rail .reader-v2__contents li button { border: 0; border-inline-start: 2px solid transparent; border-radius: 4px; background: transparent; padding: 8px 10px; }
+.reader-v2__rail .reader-v2__contents button[aria-current="page"] { border-inline-start-color: var(--reader-gold); background: var(--reader-warm-beige); color: var(--reader-maroon); text-decoration: none; }
 .reader-v2__notebook-close { display: none; }
 .reader-v2__notebook { padding: 0 12px 14px; }
 .reader-v2__notebook-tabs { display: flex; gap: 10px; border-bottom: 1px solid var(--ev2-line); }
@@ -265,7 +265,13 @@
 .reader-v2__edition-details summary { display: flex; align-items: center; color: var(--reader-maroon); cursor: pointer; }
 .reader-v2__edition-details dl div { display: flex; justify-content: space-between; gap: 8px; margin-block: 8px; }
 .reader-v2__edition-details dd { margin: 0; text-align: right; }
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) {
+  .reader-v2__chapter { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 12px; }
+  .reader-v2__chapter > span { grid-column: 1; grid-row: 1; align-self: center; }
+  .reader-v2__toolbar { grid-column: 2; grid-row: 1; justify-self: end; float: none; }
+  .reader-v2__chapter h1, .reader-v2__dateline { grid-column: 1 / -1; }
+}
+@media (min-width: 768px) and (max-width: 1279px) {
   .reader-v2__layout { width: calc(100% - 32px); grid-template-columns: minmax(0, 1fr) minmax(12rem, 14rem); gap: 16px; }
   .reader-v2__rail { display: none; }
   .reader-v2__context { display: block; }
