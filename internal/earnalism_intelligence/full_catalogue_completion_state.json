@@ -9,7 +9,7 @@
   "worker_review": "PENDING_EXACT_HEAD_PIPELINE",
   "processing_state": "internal/earnalism_intelligence/full_catalogue_processing_20260930/catalogue_state.json",
   "production_reader_verification": "PENDING_TRUSTED_INDIA_CONTEXT",
-  "next_exact_command": "gh pr checks 487 --repo ronik18/earnalism-digital-library --watch --fail-fast",
+  "next_exact_command": "gh pr checks 488 --repo ronik18/earnalism-digital-library --watch --fail-fast",
   "prior_candidate_pipeline": {
     "head": "98984d52eee26a8c5361edfcd58c97df706b73d4",
     "run_id": 36705876984,
@@ -191,5 +191,55 @@
     "verification": "Four fixtures exercise the actual workflow selector: checksum priority, 20-candidate/5-modification bounds with live exclusions, stable order, and prepared-source preference with unchanged blockers",
     "scope": "No title package, metadata approval, rights registry, launch allowlist, source/manuscript, cover or audio change",
     "next_exact_command": "gh pr checks 487 --repo ronik18/earnalism-digital-library --watch --fail-fast"
+  },
+  "catalogue_controller_bridge_handoff": {
+    "timestamp": "2026-09-30T22:53:57.176518+00:00",
+    "workstream": "catalogue_compliance_campaign",
+    "decision": "PRESERVE_VALIDATED_WORKER_CANDIDATE_AND_USE_POLICY_BOUND_BRIDGE_PR_HANDOFF",
+    "source_head": "68501c936edf69b5492f662c6a46e89dc12e53d1",
+    "worker_candidate": "b016ca0b2edfaa25fb5c52b656043a5b21bde431",
+    "pr": 488,
+    "run": 36785743093,
+    "job": 110126600152,
+    "execution": "COMPLETED_RECEIPT_20_CANDIDATES",
+    "worker_validations": "PASS_RELEASE_SCOPE_FOCUSED_AND_FULL_REGRESSION",
+    "publication": "NOT_MERGED_NO_NEW_LIVE_OR_AUDIO",
+    "held_checksum_repairs": [
+      "the-art-of-money-getting",
+      "bn-031",
+      "bn-035",
+      "bn-036",
+      "bn-041"
+    ],
+    "blockers_before": 919,
+    "blockers_candidate": 912,
+    "held": 224,
+    "accepted_live": 7,
+    "independent_review": "Every proposed replacement hash matches the unchanged existing source/approval/public-book bytes; only six checksum manifests and one controller smoke-output timestamp are in the preserved worker commit",
+    "artifact": 11129479800,
+    "artifact_sha256": "eaa40f13fd4c6f082b572b36dee2275b05524cdb2586a814de9da783bd0208ca",
+    "artifact_entries": 331,
+    "observed_controller_failures": [
+      "GitHub repository policy refuses Actions PR creation after the validated commit is pushed",
+      "Full regression updates a tracked smoke report after the original changed-file check"
+    ],
+    "repair": [
+      "Preserve a candidate handoff artifact on the specific Actions PR-policy rejection; authorized GitHub bridge creates normal PR events without changing administration",
+      "Snapshot the exact validated source diff/untracked bytes before tests; retain only the known controller smoke-output path update and recheck unchanged source after full regression",
+      "Campaign closure requires actual merged identity, not a pending bridge handoff"
+    ],
+    "new_guard_validation": "SIX_LOCAL_FIXTURES_PASS_PENDING_FRESH_HOSTED_EXACT_HEAD",
+    "preserved": "Approved product UI, artwork, manuscript, source/approval bytes, accepted records, 20/5 policy, all release/full-regression gates and historical commits",
+    "customer_ready": "NOT_DECLARED",
+    "physical_device_uat": "DEFERRED_BY_OWNER_NOT_RUN_UNVERIFIED",
+    "next_exact_command": "gh pr checks 488 --repo ronik18/earnalism-digital-library --watch --fail-fast"
+  },
+  "latest_catalogue_candidate": {
+    "head": "b016ca0b2edfaa25fb5c52b656043a5b21bde431",
+    "pr": 488,
+    "aggregate_blockers": 912,
+    "held": 224,
+    "live": 7,
+    "publication": "PENDING_PROTECTED_MERGE"
   }
 }
