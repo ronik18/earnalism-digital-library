@@ -15,10 +15,15 @@ const LISTENER_VISUAL_FIXTURE_BOOK = Object.freeze({
   author: "Mark Twain",
   cover_image_url: "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1788115329/earnalism/covers/front/cover_candidate_controlled-a-ghost-story-d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742.png",
   thumbnail_url: "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,h_450,q_auto:best,w_300/v1788115329/earnalism/covers/front/cover_candidate_controlled-a-ghost-story-d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742.png",
+  chapter_label: "Chapter 1 of 1",
+  chapters: [{ id: "chapter-001", order: 1, title: "A Ghost Story" }],
+  preview_duration_seconds: 0,
 });
 
-function routeState(title, message, action = null, onSearch = null) {
-  return <><ExperienceHeader onSearch={onSearch} trailingLabel="Library" /><main className="experience-v2-route-state"><section className="experience-v2-route-state__card"><h1>{title}</h1><p role="alert">{message}</p>{action}</section></main></>;
+function routeState(title, message, action = null, onNavigate = null) {
+  const loading = title === "Opening listener" || title === "Preparing listening package";
+  const onNavigatePath = onNavigate ? (item) => onNavigate(item.key === "reading-pass" ? "passes" : item.key) : undefined;
+  return <div className="listener-v2"><ExperienceHeader onSearch={() => onNavigate?.("search")} onNavigatePath={onNavigatePath} trailingLabel="Library" showDesktopNavigation /><main className="experience-v2-route-state listener-v2__route-state"><section className="experience-v2-route-state__card"><h1>{title}</h1><p role={loading ? "status" : "alert"}>{message}</p>{action}</section></main></div>;
 }
 
 function ListenerRecoveryActions({ slug, error, onRetry = null }) {
@@ -201,21 +206,26 @@ export default function ListenerExperienceV2Route() {
   }, [invalidateLifecycle, navigate, ownsLifecycle, setLeaseState, slug, user]);
 
   if (visualFixture) return <ListenerExperienceV2 book={LISTENER_VISUAL_FIXTURE_BOOK} fixture access={{ authorized: false }} onNavigate={(target) => {
-    if (target === "back") navigate(`/book/${slug || "a-ghost-story"}`);
-    if (target === "library" || target === "search") navigate("/library");
-    if (target === "passes") navigate("/pricing");
+    const destinations = { back: `/book/${slug || "a-ghost-story"}`, library: "/library", search: "/library", bengali: "/library?language=bn&availability=reader-ready", english: "/library?language=en", audiobooks: "/library?availability=approved-audiobook", passes: "/pricing", home: "/", about: "/about", profile: "/account", signin: `/login?next=${encodeURIComponent(`/listener/${slug || "a-ghost-story"}`)}` };
+    if (destinations[target]) navigate(destinations[target]);
   }} />;
-  const searchLibrary = () => navigate("/library");
-  if (loadError) return routeState("Listener unavailable", loadError, <ListenerRecoveryActions slug={slug} error={loadError} onRetry={() => setReloadAttempt((attempt) => attempt + 1)} />, searchLibrary);
-  if (book === null) return routeState("Opening listener", "Checking approved listening access.", null, searchLibrary);
-  if (!listenerReleasePresentation(book).canRender) return routeState("Listening unavailable", "This edition is not approved for listening. Its book details show the available formats.", <ListenerRecoveryActions slug={slug} error="This edition is not approved for listening." />, searchLibrary);
-  if (error) return routeState("Listening access needs attention", error, <ListenerRecoveryActions slug={slug} error={error} />, searchLibrary);
-  if (lease && !audioManifest) return routeState("Preparing listening package", "Verifying the approved narration package before audio opens.", null, searchLibrary);
   const leaveListener = async (target) => {
     await settleLease("listener_v2_navigation");
     if (target === "back") navigate(`/book/${slug}`);
     if (target === "library" || target === "search") navigate("/library");
     if (target === "passes") navigate("/pricing");
+    if (target === "home") navigate("/");
+    if (target === "about") navigate("/about");
+    if (target === "profile") navigate("/account");
+    if (target === "signin") navigate(`/login?next=${encodeURIComponent(`/listener/${slug}`)}`);
+    if (target === "bengali") navigate("/library?language=bn&availability=reader-ready");
+    if (target === "english") navigate("/library?language=en");
+    if (target === "audiobooks") navigate("/library?availability=approved-audiobook");
   };
-  return <><ListenerExperienceV2 book={book} audioManifest={audioManifest} access={{ authorized: Boolean(lease && audioManifest) }} authorizing={authorizing} onAuthorize={authorize} onPlaybackStateChange={setPlaybackState} onStop={() => settleLease("listener_v2_stop")} onPlaybackComplete={() => settleLease("listener_v2_complete")} onMediaError={() => { setError("Approved listening audio could not continue. No further audio was requested."); void settleLease("listener_v2_media_error"); }} onNavigate={leaveListener} />{error ? <p className="sr-only" role="alert">{error}</p> : null}</>;
+  if (loadError) return routeState("Listener unavailable", loadError, <ListenerRecoveryActions slug={slug} error={loadError} onRetry={() => setReloadAttempt((attempt) => attempt + 1)} />, leaveListener);
+  if (book === null) return routeState("Opening listener", "Checking approved listening access.", null, leaveListener);
+  if (!listenerReleasePresentation(book).canRender) return routeState("Listening unavailable", "This edition is not approved for listening. Its book details show the available formats.", <ListenerRecoveryActions slug={slug} error="This edition is not approved for listening." />, leaveListener);
+  if (error) return routeState("Listening access needs attention", error, <ListenerRecoveryActions slug={slug} error={error} />, leaveListener);
+  if (lease && !audioManifest) return routeState("Preparing listening package", "Verifying the approved narration package before audio opens.", null, leaveListener);
+  return <><ListenerExperienceV2 book={book} audioManifest={audioManifest} access={{ authorized: Boolean(lease && audioManifest), readingPassBalanceSeconds: user?.reading_seconds_balance }} authorizing={authorizing} onAuthorize={authorize} onPlaybackStateChange={setPlaybackState} onStop={() => settleLease("listener_v2_stop")} onPlaybackComplete={() => settleLease("listener_v2_complete")} onMediaError={() => { setError("Approved listening audio could not continue. No further audio was requested."); void settleLease("listener_v2_media_error"); }} onNavigate={leaveListener} />{error ? <p className="sr-only" role="alert">{error}</p> : null}</>;
 }

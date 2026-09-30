@@ -45,7 +45,7 @@ function leaseResponse(response, slug, previous = null, sequence = 0) {
 }
 
 function RouteState({ title, message, children }) {
-  return <main className="experience-v2-route-state"><section className="experience-v2-route-state__card"><h1>{title}</h1><p role="alert">{message}</p><div className="experience-v2-route-state__actions">{children}</div></section></main>;
+  return <main className="experience-v2 reader-v2 experience-v2-route-state reader-v2-route-state"><section className="experience-v2-route-state__card"><h1>{title}</h1><p role="alert">{message}</p><div className="experience-v2-route-state__actions">{children}</div></section></main>;
 }
 
 // A different title or signed-in identity must never inherit another reader's
@@ -449,7 +449,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     if (actionRef.current) return;
     actionRef.current = true;
     setBusy(true);
-    const destinations = { back: `/book/${slug}`, library: "/library", search: "/library", passes: "/pricing", home: "/", profile: "/account", signin: `/login?next=${encodeURIComponent(`/reader/${slug}?p=${canonicalPage}`)}` };
+    const destinations = { back: `/book/${slug}`, library: "/library", search: "/library", bengali: "/library?language=bn&availability=reader-ready", english: "/library?language=en", audiobooks: "/library?availability=approved-audiobook", passes: "/pricing", home: "/", about: "/about", profile: "/account", signin: `/login?next=${encodeURIComponent(`/reader/${slug}?p=${canonicalPage}`)}` };
     try {
       if (!await settleLease("reader_v2_navigation")) {
         setNotice("Your reading session could not be closed. Please retry before leaving this reader.");
@@ -510,6 +510,25 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
   }, [displayedPageNumber, identity, manifest, page, pageAccessContext, sessionId, slug, totalPages, usable, validPage]);
   const model = useMemo(() => {
     const book = manifest?.book || {};
+    const canonicalRows = manifest?.canonical_pages?.pages || [];
+    const chapterStarts = new Map();
+    canonicalRows.forEach((item, index) => {
+      const chapterId = String(item.chapter_id || "");
+      if (chapterId && !chapterStarts.has(chapterId)) chapterStarts.set(chapterId, Number(item.page_number || item.page_index || index + 1));
+    });
+    const chapters = Array.isArray(book.chapters) ? book.chapters : [];
+    const chapterContents = chapters
+      .map((chapter, index) => {
+        const id = String(chapter.id || chapter.chapter_id || "");
+        const pageNumber = chapterStarts.get(id);
+        return pageNumber ? { page: pageNumber, chapterId: id, label: chapter.title || `Chapter ${index + 1}` } : null;
+      })
+      .filter(Boolean);
+    const contents = chapterContents.length ? chapterContents : canonicalRows.map((item, index) => ({
+      page: Number(item.page_number || item.page_index || index + 1),
+      chapterId: String(item.chapter_id || ""),
+      label: `Page ${item.page_number || item.page_index || index + 1}`,
+    }));
     return {
       title: book.public_title || book.display_title || book.title || "Book",
       author: book.author || book.author_name || "",
@@ -528,7 +547,8 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       readingTime: "",
       readingPass: freeReading ? "Free complete reading" : !user ? "Sign in to continue" : displayedBalance === null ? "Balance unavailable" : displayedBalance < 60 ? `${displayedBalance} seconds left` : `${Math.floor(displayedBalance / 60)} minutes left`,
       freeReading,
-      contents: (manifest?.canonical_pages?.pages || []).map((item) => ({ page: Number(item.page_number || item.page_index), label: `Page ${item.page_number || item.page_index}` })),
+      contents,
+      book,
       content: page ? <ReaderContent html={page.content} /> : null,
       paragraphs: [],
       illustration: null,
@@ -555,8 +575,12 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       chapterEyebrow: "প্রথম পরিচ্ছেদ",
       chapterTitle: "অপু ও দুর্গা",
       paragraphs: ["বাংলা পাঠ্যের যুক্তাক্ষর, স্বরচিহ্ন এবং বিরামচিহ্ন স্বাভাবিক পাঠের অংশ।", "এই বিচ্ছিন্ন পরীক্ষার নমুনা কেবল পাঠ-টাইপোগ্রাফি যাচাই করে; এটি কোনো প্রকাশিত পৃষ্ঠা বা অডিও অনুরোধ করে না।"],
-    } : READER_V2_FIXTURE;
-    return <ReaderExperienceV2 model={fixtureModel} access={{ authorized: false }} onRequestPage={changePage} onNavigate={(target) => { if (["library", "search"].includes(target)) navigate("/library"); }} />;
+    } : { ...READER_V2_FIXTURE };
+    Object.assign(fixtureModel, { visualFixture: true, progress: null, readingTime: "", readingPass: "Sign in to check Reading Pass balance" });
+    return <ReaderExperienceV2 model={fixtureModel} access={{ authorized: false }} onRequestPage={changePage} onNavigate={(target) => {
+      const destinations = { back: "/book/dracula", library: "/library", search: "/library", bengali: "/library?language=bn&availability=reader-ready", english: "/library?language=en", audiobooks: "/library?availability=approved-audiobook", passes: "/pricing", home: "/", about: "/about", profile: "/account", signin: "/login", bookmark: "/login?next=%2Freader%2Fdracula" };
+      if (destinations[target]) navigate(destinations[target]);
+    }} />;
   }
   const loadingExit = <button type="button" onClick={() => navigateAfterSettlement("library")} disabled={busy}>{busy ? "Closing reader…" : "Library"}</button>;
   if (loading) return <RouteState title="Opening reader" message="Loading this edition.">{loadingExit}</RouteState>;

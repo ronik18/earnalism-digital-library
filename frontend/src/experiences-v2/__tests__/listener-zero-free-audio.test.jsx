@@ -70,8 +70,11 @@ describe("Listener v2 zero-free-audio contract", () => {
     expect(entitled).not.toContain('src="/api/reader/book/approved-audio/audiobook"');
     const fixture = renderToStaticMarkup(<ListenerExperienceV2 fixture access={{ authorized: false }} />);
     expect(fixture).not.toContain("<audio");
-    expect(fixture).toContain('aria-label="Seek within approved audiobook"');
-    expect(fixture).toContain("disabled");
+    expect(fixture).not.toContain('aria-label="Seek within approved audiobook"');
+    expect(fixture).not.toContain("Play approved audiobook");
+    expect(fixture).not.toContain("215 minutes left");
+    expect(fixture).toContain("Reading Pass required");
+    expect(fixture).toContain("Playback is disabled until an approved recording is available.");
   });
 
   test("a public-safe canonical manifest identifies listening without exposing a media or protected-manifest URL", () => {
