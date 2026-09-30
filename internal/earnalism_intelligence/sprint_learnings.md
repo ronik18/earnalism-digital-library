@@ -2345,3 +2345,7 @@ PR #401 is merged and its Railway deployment is provider-confirmed, but the init
 - Merged current main after PR472 into the published Lane 2 history. Preserve the active PR469 Library recovery baseline and newer shell tests; retain both append-only learning histories. The Sherlock package, rights decision, checksum bindings, and exact 12-chapter manuscript remain unchanged.
 - Reproduced the merged production source fingerprint `118b5ed10d64b59915789dcac64cc574765e6bcb01a46b0c84d7f1f56afb21c2` from 332 inputs and rebound both workflow authorities. Local validation passed 171 backend tests, 30 frontend tests, 23 evidence-input checks, 46 review-workflow checks, and 767 static SEO assertions. Restore the known generated sitemap after a local build, as required by the existing review workflow.
 - Completion remains pending fresh exact-head CI, protected merge, actual successful production deployment, and non-destructive Reader/catalogue/audio/blocked-title verification. Hosted implementation workers do not own production publication.
+
+## 2026-09-30T08:58:54Z — Lane 2 deployment trigger repair
+
+- PR470 merged after all five exact-head gates passed. Railway skipped the merge because an inherited owner-evidence workflow contained an invalid bracket path pattern for the literal `[...proxy].js` filename. Escape the brackets while preserving the trigger and every evidence job; do not disable CI waiting or redeploy the older revision. Production Reader proof remains pending an India-based authenticated context.
