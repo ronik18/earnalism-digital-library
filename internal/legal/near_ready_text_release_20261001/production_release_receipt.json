@@ -1,0 +1,224 @@
+{
+  "schema": "earnalism.near-ready-production-release-receipt.v1",
+  "verified_at": "2026-10-01T09:23:44.881631+00:00",
+  "decision": "CHECKED_PRODUCTION_RELEASE_AND_GUARDED_CANONICAL_INITIALIZATION_OBSERVED",
+  "merged_release_pr": 497,
+  "release_reviewed_head": "501b86543eb1cb88e5c0823563a274bddc872134",
+  "release_main": "160b8175ac80e505e4888be7306677f022f86923",
+  "runtime_recovery_pr": 498,
+  "runtime_recovery_reviewed_head": "8fcd2f973a192a8a8ff644e517e5499ce4c343bb",
+  "runtime_production_main": "56e1bedbd11ab696497ddedd03bef6bed2a0f56a",
+  "runtime_production_tree": "28efa7cb6b36063150335dedf06a0357cf3d3bdc",
+  "frontend_source_fingerprint": "2f19ec50ccd6dbf5174aa5a66efb5278ab4cffc68f0679a619e73017397b7fe5",
+  "frontend_deployed_source_main": "160b8175ac80e505e4888be7306677f022f86923",
+  "frontend_deploy": "SUCCESS",
+  "frontend_production_canary": "SUCCESS",
+  "runtime_followup_frontend": "SOURCE_UNCHANGED_CI_DEPLOY_STEP_SUCCESS_SOURCE_REUSE_CANARY_SKIPPED",
+  "backend_deployment": "SUCCESS",
+  "backend_deployment_id": "50ba50c5-0f7f-4bdb-aacd-8e1c9c2afefd",
+  "backend_canary": {
+    "run": 36840249902,
+    "job": 110297410690,
+    "artifact": 11150901789,
+    "artifact_zip_sha256": "96c87fd3213089ace3e1fead307b1461768ed402aedad0bd6228e853ff39642e",
+    "provider": "RAILWAY_CONFIRMED",
+    "result": "PASS",
+    "checks": 5,
+    "get_head_only": true,
+    "india_reader_remote_smoke": "NOT_AVAILABLE_IN_CURRENT_RUNNER"
+  },
+  "source_approved_and_configured_titles": 24,
+  "additional_released_edition_scope": 16,
+  "new_batch_fresh_canonical_versions": 15,
+  "new_batch_retained_existing_active_version": "jekyll-and-hyde",
+  "fresh_canonical_versions_total": 17,
+  "fresh_canonical_pages_total": 714,
+  "preserved_existing_active_versions": 7,
+  "initializer_holds": 0,
+  "actual_initializer_results": [
+    {
+      "timestamp": "2026-10-01T09:03:25.296651483Z",
+      "slug": "a-ghost-story",
+      "status": "PRESERVED_EXISTING_ACTIVE_VERSION"
+    },
+    {
+      "timestamp": "2026-10-01T09:03:25.936016271Z",
+      "slug": "the-tell-tale-heart",
+      "status": "PRESERVED_EXISTING_ACTIVE_VERSION"
+    },
+    {
+      "timestamp": "2026-10-01T09:03:27.053110481Z",
+      "slug": "radharani",
+      "status": "PRESERVED_EXISTING_ACTIVE_VERSION"
+    },
+    {
+      "timestamp": "2026-10-01T09:03:27.053116611Z",
+      "slug": "a-white-heron",
+      "status": "PRESERVED_EXISTING_ACTIVE_VERSION"
+    },
+    {
+      "timestamp": "2026-10-01T09:03:28.061947025Z",
+      "slug": "the-gift-of-the-magi",
+      "status": "PRESERVED_EXISTING_ACTIVE_VERSION"
+    },
+    {
+      "timestamp": "2026-10-01T09:03:34.183921498Z",
+      "slug": "the-canterville-ghost",
+      "status": "INITIALIZED",
+      "total_pages": 28,
+      "version": "47fdacd02015a8df827c55e2"
+    },
+    {
+      "timestamp": "2026-10-01T09:03:44.065285153Z",
+      "slug": "the-adventures-of-sherlock-holmes",
+      "status": "INITIALIZED",
+      "total_pages": 195,
+      "version": "ec6db0695999e6df9bf88fcb"
+    },
+    {
+      "timestamp": "2026-10-01T09:03:44.219441100Z",
+      "slug": "agentic-ai-with-python",
+      "status": "PRESERVED_EXISTING_ACTIVE_VERSION"
+    },
+    {
+      "timestamp": "2026-10-01T09:03:49.531732684Z",
+      "slug": "a-horseman-in-the-sky",
+      "status": "INITIALIZED",
+      "total_pages": 5,
+      "version": "cd1b4a95d367cef72d58664f"
+    },
+    {
+      "timestamp": "2026-10-01T09:03:55.504927578Z",
+      "slug": "a-mystery-of-heroism",
+      "status": "INITIALIZED",
+      "total_pages": 7,
+      "version": "7c33872ef57fb96e27fb59c1"
+    },
+    {
+      "timestamp": "2026-10-01T09:04:00.675878417Z",
+      "slug": "a-scandal-in-bohemia",
+      "status": "INITIALIZED",
+      "total_pages": 16,
+      "version": "9f82e43e1cc159dc6aa429df"
+    },
+    {
+      "timestamp": "2026-10-01T09:04:01.861289937Z",
+      "slug": "jekyll-and-hyde",
+      "status": "PRESERVED_EXISTING_ACTIVE_VERSION"
+    },
+    {
+      "timestamp": "2026-10-01T09:04:06.857782178Z",
+      "slug": "love-of-life",
+      "status": "INITIALIZED",
+      "total_pages": 16,
+      "version": "c28d6f36e4f41515c3c4e0de"
+    },
+    {
+      "timestamp": "2026-10-01T09:04:11.926456865Z",
+      "slug": "the-bishop",
+      "status": "INITIALIZED",
+      "total_pages": 12,
+      "version": "fd4090034def7e674447a4bc"
+    },
+    {
+      "timestamp": "2026-10-01T09:04:16.904844976Z",
+      "slug": "the-fall-of-the-house-of-usher",
+      "status": "INITIALIZED",
+      "total_pages": 17,
+      "version": "3cdf8e2b85cbb4b85afae7d0"
+    },
+    {
+      "timestamp": "2026-10-01T09:04:22.274805664Z",
+      "slug": "the-lady-with-the-dog",
+      "status": "INITIALIZED",
+      "total_pages": 14,
+      "version": "7a368d9431ba71dc2a0b24c1"
+    },
+    {
+      "timestamp": "2026-10-01T09:04:28.020813246Z",
+      "slug": "the-man-who-would-be-king",
+      "status": "INITIALIZED",
+      "total_pages": 28,
+      "version": "aa9dba77a040b8c2e6d071d6"
+    },
+    {
+      "timestamp": "2026-10-01T09:04:33.074442324Z",
+      "slug": "the-open-boat",
+      "status": "INITIALIZED",
+      "total_pages": 18,
+      "version": "6649030c2511ed5c7c8e5b1f"
+    },
+    {
+      "timestamp": "2026-10-01T09:04:38.224764339Z",
+      "slug": "the-pit-and-the-pendulum",
+      "status": "INITIALIZED",
+      "total_pages": 13,
+      "version": "dfcf8d205e180e4ce5f89b7d"
+    },
+    {
+      "timestamp": "2026-10-01T09:04:43.447758151Z",
+      "slug": "the-stolen-white-elephant",
+      "status": "INITIALIZED",
+      "total_pages": 13,
+      "version": "fccdfc7364b2cccfc3e936ce"
+    },
+    {
+      "timestamp": "2026-10-01T09:04:49.214564166Z",
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "status": "INITIALIZED",
+      "total_pages": 8,
+      "version": "516eac4477d62b9e9737465c"
+    },
+    {
+      "timestamp": "2026-10-01T09:04:55.388509234Z",
+      "slug": "the-enchanted-april",
+      "status": "INITIALIZED",
+      "total_pages": 157,
+      "version": "081ecf451460e84e580a81e0"
+    },
+    {
+      "timestamp": "2026-10-01T09:05:01.412805903Z",
+      "slug": "the-happy-prince",
+      "status": "INITIALIZED",
+      "total_pages": 6,
+      "version": "1d6154d1530c6b9e322d38da"
+    },
+    {
+      "timestamp": "2026-10-01T09:05:08.504429151Z",
+      "slug": "picture-of-dorian-gray",
+      "status": "INITIALIZED",
+      "total_pages": 161,
+      "version": "033d2546e7443d3fd9733722"
+    }
+  ],
+  "initialized_version_source_parity": {
+    "verified_titles": 17,
+    "verified_pages": 714,
+    "record": "production_renderer_version_verification.json",
+    "source_text": "PASS",
+    "deployed_manifest_version_and_page_counts": "PASS",
+    "raw_source_projection": "PRESERVED_NOT_REWRITTEN",
+    "explanation": "Production canonical versions include sanitized HTML from the existing renderer. Raw-source and rendered-source hashes can differ. Independently derive the rendered projection from unchanged approved source and verify actual committed activation hashes/counts; never rewrite source or production hashes to fit an expectation."
+  },
+  "preserved_active_version_content_parity": "NOT_VERIFIED_NO_AUTHENTICATED_PRODUCTION_INSPECTION",
+  "session_fix": "DEPLOYED_PRIVATE_BROWSER_BINDING_VALID_REFRESH_PROOF_LEGACY_MIGRATION_AND_SEPARATE_COOKIE_FORWARDING",
+  "hosted_exact_runtime_regression": "PASS_115_CANONICAL_CONCURRENCY_ADMISSION_SESSION_CASES_PLUS_124_FULL_REGRESSION_47_FRONTEND_33_WORKER_BOUNDARY_COST_CASES",
+  "authenticated_production_readback": "NOT_VERIFIED_SIGN_IN_REMAINS_VISIBLE",
+  "trusted_india_production_readback": "NOT_VERIFIED",
+  "delivered_agentic_cover_byte_sha256": "NOT_VERIFIED_PRIOR_VISUAL_OBSERVATION_ONLY",
+  "customer_ready": "NOT_DECLARED",
+  "physical_device_uat": "OWNER_DEFERRED_NOT_RUN_UNVERIFIED",
+  "remaining_catalogue": {
+    "held": 207,
+    "aggregate_blockers": 860,
+    "missing_cleared_packages": 69
+  },
+  "paid_proposal_workflow": "MANUAL_ONLY_EXPLICIT_BUDGET_BOOLEAN_DEFAULT_FALSE_AND_OPEN_ISSUE_POLICY",
+  "earlier_automatic_paid_proposal": "FAILED_QUOTA_REPORTED_112690_TOKENS_UNVALIDATED_OUTPUT_NOT_ACCEPTED",
+  "new_paid_image_audio_generation": 0,
+  "new_paid_worker_reruns_after_quota_failure": 0,
+  "prior_source_art_files_byte_identical": 2807,
+  "prior_release_package_files_byte_identical": 231,
+  "customer_wallet_audio_and_existing_version_mutations": "NONE_OUTSIDE_AUTHORIZED_NEW_CANONICAL_VERSION_INITIALIZATION",
+  "next_generated_prompt": "Complete authenticated trusted-India Reader and Reading Pass readback for the 24 configured editions, prioritizing the seven preserved active versions and exact Agentic delivery/cover hashes. Use the existing secure sign-in handoff; never forge auth/country or overwrite retained approved versions. Keep all 207 genuine catalogue holds and deferred physical-device UAT explicit. Continue only inexpensive evidence-complete candidates; paid proposal workflow stays default-off and requires separate budget opt-in."
+}

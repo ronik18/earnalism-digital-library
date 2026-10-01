@@ -1,0 +1,153 @@
+{
+  "schema": "earnalism.production-renderer-source-projection.v1",
+  "verified_at": "2026-10-01T09:12:18.052165+00:00",
+  "production_backend_sha": "56e1bedbd11ab696497ddedd03bef6bed2a0f56a",
+  "deployment": "50ba50c5-0f7f-4bdb-aacd-8e1c9c2afefd",
+  "renderer": "server._manual_content_to_render_html with actual production utils import path",
+  "source_and_decision_bytes_unchanged": true,
+  "raw_source_projection_retained": "internal/legal/near_ready_text_release_20261001/reader_bootstrap_offline_verification.json",
+  "raw_vs_rendered_hash_difference": "Sanitized HTML representation changes the manifest hash while source text and page counts are preserved. Actual activation versions are independently compared with the renderer-derived projection. No production/source bytes or hashes are rewritten.",
+  "initialized_titles": 17,
+  "initialized_pages": 714,
+  "preserved_active_versions": 7,
+  "preserved_active_versions_content_parity": "NOT_VERIFIED_NO_AUTHENTICATED_PRODUCTION_INSPECTION",
+  "authenticated_production_readback": "NOT_VERIFIED",
+  "titles": [
+    {
+      "slug": "the-canterville-ghost",
+      "record_sha256": "704fa0e1a6373356c3f6fa3210050eadd54b37fb584006782e1d16fa42661c15",
+      "rendered_version": "47fdacd02015a8df827c55e2",
+      "rendered_pages": 28,
+      "source_text_parity": "PASS",
+      "production_activation_version_and_count_parity": "PASS"
+    },
+    {
+      "slug": "the-adventures-of-sherlock-holmes",
+      "record_sha256": "6698711d408c59160d65605bb156c38eaf183affbdc3695b92ced8f0627e09c6",
+      "rendered_version": "ec6db0695999e6df9bf88fcb",
+      "rendered_pages": 195,
+      "source_text_parity": "PASS",
+      "production_activation_version_and_count_parity": "PASS"
+    },
+    {
+      "slug": "a-horseman-in-the-sky",
+      "record_sha256": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+      "rendered_version": "cd1b4a95d367cef72d58664f",
+      "rendered_pages": 5,
+      "source_text_parity": "PASS",
+      "production_activation_version_and_count_parity": "PASS"
+    },
+    {
+      "slug": "a-mystery-of-heroism",
+      "record_sha256": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+      "rendered_version": "7c33872ef57fb96e27fb59c1",
+      "rendered_pages": 7,
+      "source_text_parity": "PASS",
+      "production_activation_version_and_count_parity": "PASS"
+    },
+    {
+      "slug": "a-scandal-in-bohemia",
+      "record_sha256": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+      "rendered_version": "9f82e43e1cc159dc6aa429df",
+      "rendered_pages": 16,
+      "source_text_parity": "PASS",
+      "production_activation_version_and_count_parity": "PASS"
+    },
+    {
+      "slug": "love-of-life",
+      "record_sha256": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb",
+      "rendered_version": "c28d6f36e4f41515c3c4e0de",
+      "rendered_pages": 16,
+      "source_text_parity": "PASS",
+      "production_activation_version_and_count_parity": "PASS"
+    },
+    {
+      "slug": "the-bishop",
+      "record_sha256": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b",
+      "rendered_version": "fd4090034def7e674447a4bc",
+      "rendered_pages": 12,
+      "source_text_parity": "PASS",
+      "production_activation_version_and_count_parity": "PASS"
+    },
+    {
+      "slug": "the-fall-of-the-house-of-usher",
+      "record_sha256": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168",
+      "rendered_version": "3cdf8e2b85cbb4b85afae7d0",
+      "rendered_pages": 17,
+      "source_text_parity": "PASS",
+      "production_activation_version_and_count_parity": "PASS"
+    },
+    {
+      "slug": "the-lady-with-the-dog",
+      "record_sha256": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
+      "rendered_version": "7a368d9431ba71dc2a0b24c1",
+      "rendered_pages": 14,
+      "source_text_parity": "PASS",
+      "production_activation_version_and_count_parity": "PASS"
+    },
+    {
+      "slug": "the-man-who-would-be-king",
+      "record_sha256": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
+      "rendered_version": "aa9dba77a040b8c2e6d071d6",
+      "rendered_pages": 28,
+      "source_text_parity": "PASS",
+      "production_activation_version_and_count_parity": "PASS"
+    },
+    {
+      "slug": "the-open-boat",
+      "record_sha256": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+      "rendered_version": "6649030c2511ed5c7c8e5b1f",
+      "rendered_pages": 18,
+      "source_text_parity": "PASS",
+      "production_activation_version_and_count_parity": "PASS"
+    },
+    {
+      "slug": "the-pit-and-the-pendulum",
+      "record_sha256": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+      "rendered_version": "dfcf8d205e180e4ce5f89b7d",
+      "rendered_pages": 13,
+      "source_text_parity": "PASS",
+      "production_activation_version_and_count_parity": "PASS"
+    },
+    {
+      "slug": "the-stolen-white-elephant",
+      "record_sha256": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+      "rendered_version": "fccdfc7364b2cccfc3e936ce",
+      "rendered_pages": 13,
+      "source_text_parity": "PASS",
+      "production_activation_version_and_count_parity": "PASS"
+    },
+    {
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "record_sha256": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+      "rendered_version": "516eac4477d62b9e9737465c",
+      "rendered_pages": 8,
+      "source_text_parity": "PASS",
+      "production_activation_version_and_count_parity": "PASS"
+    },
+    {
+      "slug": "the-enchanted-april",
+      "record_sha256": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
+      "rendered_version": "081ecf451460e84e580a81e0",
+      "rendered_pages": 157,
+      "source_text_parity": "PASS",
+      "production_activation_version_and_count_parity": "PASS"
+    },
+    {
+      "slug": "the-happy-prince",
+      "record_sha256": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
+      "rendered_version": "1d6154d1530c6b9e322d38da",
+      "rendered_pages": 6,
+      "source_text_parity": "PASS",
+      "production_activation_version_and_count_parity": "PASS"
+    },
+    {
+      "slug": "picture-of-dorian-gray",
+      "record_sha256": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea",
+      "rendered_version": "033d2546e7443d3fd9733722",
+      "rendered_pages": 161,
+      "source_text_parity": "PASS",
+      "production_activation_version_and_count_parity": "PASS"
+    }
+  ]
+}

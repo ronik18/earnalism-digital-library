@@ -1,0 +1,94 @@
+{
+  "generated_at": "2026-10-01T09:03:44.880221+00:00",
+  "base_url": "https://api.theearnalism.com",
+  "methods_used": [
+    "GET"
+  ],
+  "deployment_sha": "56e1bedbd11ab696497ddedd03bef6bed2a0f56a",
+  "approved_audio_fixture": {
+    "slug": "a-ghost-story",
+    "source": "frontend/src/data/homeCuratedSprint1.json#shelves.approved_audiobooks",
+    "repository_contract": {
+      "reader_enabled": true,
+      "audiobook_enabled": true,
+      "audiobook_release_gate": "PUBLIC_AUDIO_RELEASE_APPROVED",
+      "audio_qa_status": "QA_PASSED"
+    },
+    "public_contract": {
+      "audio_enabled": true,
+      "audiobook_enabled": true,
+      "audiobook_release_gates": [
+        "APPROVED",
+        "PUBLIC_AUDIO_RELEASE_APPROVED"
+      ],
+      "audio_qa_status": "QA_PASSED",
+      "raw_audio_url": "absent",
+      "anonymous_range_statuses": [
+        401,
+        403
+      ]
+    }
+  },
+  "deployment_provenance": {
+    "provider_classification": "RAILWAY_CONFIRMED",
+    "event_eligibility": "ELIGIBLE",
+    "deployment_sha": "56e1bedbd11ab696497ddedd03bef6bed2a0f56a",
+    "checked_out_sha": "56e1bedbd11ab696497ddedd03bef6bed2a0f56a",
+    "checked_out_sha_matches_deployment_sha": true,
+    "deployment_sha_reachable_from_origin_main": true,
+    "run_backend_canary": true,
+    "railway_deployment_proof": true,
+    "provenance": {
+      "deployment_id": "6780221466",
+      "deployment_sha": "56e1bedbd11ab696497ddedd03bef6bed2a0f56a",
+      "deployment_ref": "56e1bedbd11ab696497ddedd03bef6bed2a0f56a",
+      "environment": "earnalism / production",
+      "state": "success",
+      "status_id": "19104826373",
+      "target_url": "https://railway.com/project/a8533934-35c4-463e-9f43-577a9ac391ee?environmentId=580b250c-80ee-48ad-bfbe-fa4e31a6b378",
+      "log_url": "https://railway.com/project/a8533934-35c4-463e-9f43-577a9ac391ee?environmentId=580b250c-80ee-48ad-bfbe-fa4e31a6b378",
+      "environment_url": "https://railway.com/project/a8533934-35c4-463e-9f43-577a9ac391ee?environmentId=580b250c-80ee-48ad-bfbe-fa4e31a6b378",
+      "sender": "railway-app[bot]",
+      "creator": "railway-app[bot]",
+      "task": "deploy",
+      "description": "",
+      "checked_out_sha": "56e1bedbd11ab696497ddedd03bef6bed2a0f56a"
+    },
+    "railway_provider_marker_configured": false
+  },
+  "manifest_conditional_etag": "",
+  "response_edge": "iad1",
+  "response_region_debug": "iad1.dh1s,iad1.trg5",
+  "territory_denial_test": "NOT_AVAILABLE_IN_CURRENT_RUNNER",
+  "untrusted_reader_request_test": "PASS",
+  "india_reader_remote_smoke": "NOT_AVAILABLE_IN_CURRENT_RUNNER",
+  "checks": [
+    {
+      "name": "health_200",
+      "passed": true,
+      "detail": "status=200"
+    },
+    {
+      "name": "health_no_store",
+      "passed": true,
+      "detail": "no-store"
+    },
+    {
+      "name": "reading_pass_contract",
+      "passed": true,
+      "detail": "status=200; pages=3; audio=0"
+    },
+    {
+      "name": "cors_origin",
+      "passed": true,
+      "detail": "https://theearnalism.com"
+    },
+    {
+      "name": "untrusted_reader_requests_denied",
+      "passed": true,
+      "detail": "{\"statuses\": [451, 451, 451, 451, 451], \"response_edge\": \"iad1\"}"
+    }
+  ],
+  "status": "PASS",
+  "production_mutation_performed": false
+}
