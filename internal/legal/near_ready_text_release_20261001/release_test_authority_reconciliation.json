@@ -19,5 +19,32 @@
   "rights_source_art_product_files_changed": false,
   "all_prior_source_preservation_checks": "PASS",
   "normal_exact_head_checks": "REQUIRED_ON_CORRECTED_HEAD",
-  "production_authenticated_readback": "NOT_CLAIMED"
+  "production_authenticated_readback": "NOT_CLAIMED",
+  "existing_library_shelf_traversal": {
+    "timestamp": "2026-10-01T06:41:04.626941+00:00",
+    "workstream": "near_ready_text_release",
+    "decision": "TRAVERSE_EXISTING_LIBRARY_SHELF_WITHOUT_PRODUCT_CHANGES",
+    "failed_head": "fd9489d3ae933f83bde3ea9235a2ef9043c55c02",
+    "brand_run": 36823699410,
+    "brand_job": 110244606678,
+    "observed_failure": "Exact released-slug assertion timed out because the existing LibraryBrowseShelf renders ten editions initially. The fixture response and actual release/facet helpers independently select exactly the reviewed 24 titles.",
+    "correction": "Use the real Show more controls to assert 10, then 20, then 24 exact editions; verify first newly added card focus, exhausted controls, Reader links and horizontal reflow. Retain exact missing/unexpected diagnostics on settlement failure. Do not change product shelf or publication gates.",
+    "local_checks": {
+      "fixture_actual_release_facet_parity": "PASS_EXACT_24_NO_MISSING_OR_UNEXPECTED",
+      "library_baseline_authority": "PASS_5",
+      "library_frontend_facets": "PASS_7",
+      "journey_syntax": "PASS"
+    },
+    "prior_source_art_files_preserved": 2807,
+    "prior_released_package_files_preserved": 231,
+    "rights_source_art_product_files_changed": false,
+    "hosted_previous_head": {
+      "regression": "SUCCESS",
+      "catalogue": "SUCCESS_INDEPENDENT_165_FILE_BYTE_MATCH",
+      "browser": "FAIL_EXISTING_SHELF_TRAVERSAL"
+    },
+    "normal_exact_head_checks": "REQUIRED_ON_CORRECTED_HEAD",
+    "production_authenticated_readback": "NOT_CLAIMED",
+    "paid_provider_calls": 0
+  }
 }
