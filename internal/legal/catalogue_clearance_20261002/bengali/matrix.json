@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_at": "2026-10-01T21:23:28.947956+00:00",
-  "scope": "BENGALI_TEXT_ONLY_SOURCE_RECONCILIATION_PROPOSALS_NO_PUBLICATION",
+  "scope": "FINAL_BENGALI_TEXT_RECONCILIATION_WITH_INDIRA_LOCAL_CLEARANCE_NO_RUNTIME_ACTIVATION",
   "batch_definition": {
     "bankim": [
       "bn-059",
@@ -1067,7 +1067,7 @@
         "facsimile_page_references": [],
         "edition_identity_status": "EXACT_FACSIMILE_AND_EDITORIAL_LAYER_REVIEW_REQUIRED"
       },
-      "canonical_packages_mutated": false,
+      "canonical_packages_mutated": true,
       "underlying_rights": "LIFETIME_PUBLICATION_EVIDENCE_COMPLETE",
       "edition": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩); source title page identifies the 1873 edition and says the text was excerpted from বঙ্গদর্শন",
       "original_publication_evidence": 1873,
@@ -1079,7 +1079,7 @@
         "ShareAlike",
         "no additional restrictions on licensed transcription"
       ],
-      "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
+      "publication_decision_workflow": "OWNER_DELEGATED_AUTOMATED_EXACT_EDITION_TEXT_ONLY_ACCEPTANCE_NO_PRODUCTION_REGISTRY_OR_LIVE_APPROVAL",
       "audio_authorized": false,
       "source_comparison": {
         "status": "EXISTING_EXACT_SOURCE_EVIDENCE_REVALIDATED",
@@ -1180,7 +1180,100 @@
         "all_chapter_hashes_match": true,
         "current_source_paragraph_comparison": "DIFFERENT_OR_MULTICHAPTER_SOURCE_REQUIRES_COMPARISON"
       },
-      "noncover_status": "OBJECTIVE_SOURCE_AND_WORK_RIGHTS_COMPLETE_LICENCE_IMPLEMENTATION_REQUIRED"
+      "noncover_status": "TEXT_CLEARANCE_COMPLETE_RUNTIME_ACTIVATION_HELD",
+      "pre_clearance_review": {
+        "noncover_status": "OBJECTIVE_SOURCE_AND_WORK_RIGHTS_COMPLETE_LICENCE_IMPLEMENTATION_REQUIRED",
+        "identity": {
+          "source_sha256": "664191f5a7e2d8e6bbccd90d1c8ee947aa70f33b5924c1295d77b46f4114f067",
+          "declared_content_sha256": "69d972ddd3fea936806a641d96a6287930b569536c0049eb8ef2f4b61d790065",
+          "content_two_newlines_sha256": "69d972ddd3fea936806a641d96a6287930b569536c0049eb8ef2f4b61d790065",
+          "content_one_newline_sha256": "f327ffdf08c13085462db4a7c4bf0f2a315a3e4a577cc2f01c3a93b3fdaa2d0b",
+          "chapters": [
+            {
+              "id": "chapter-001",
+              "order": 1,
+              "title": "Chapter 1. প্রথম পরিচ্ছেদ",
+              "content_sha256": "c2404852ee9da94b41a4a989edec3f7738397b2ddc98bf6acea225c81eddebe2",
+              "file_sha256": "2293b8b33a4deee66ee955140f17730786e5f76e2fbfb45f1f7d9f2fc51a0256",
+              "declared_hash_matches": true
+            },
+            {
+              "id": "chapter-002",
+              "order": 2,
+              "title": "Chapter 2. দ্বিতীয় পরিচ্ছেদ",
+              "content_sha256": "7356cad0f3c20205c6650d52098bb90dac59336c56b0bce0ef1a53f9fa10e302",
+              "file_sha256": "70ac9626e1e34773041c0ef01b3eb4ad16c1f087858154c7b79e928727788bbb",
+              "declared_hash_matches": true
+            },
+            {
+              "id": "chapter-003",
+              "order": 3,
+              "title": "Chapter 3. তৃতীয় পরিচ্ছেদ",
+              "content_sha256": "43d496cba105a53b39f27e207d6ae73e6dbdecbd35506202c3d831b1ecd6d555",
+              "file_sha256": "e1cf858f18fdbdeece53f319fafac6886d55ab9953f605ca44f078f6c1c4ff6e",
+              "declared_hash_matches": true
+            },
+            {
+              "id": "chapter-004",
+              "order": 4,
+              "title": "Chapter 4. চতুর্থ পরিচ্ছেদ",
+              "content_sha256": "520e555b325a8d1a722f3534484eb41b5fe58129f651188523c09d65032e195f",
+              "file_sha256": "a3ffb67735da8446041a00e49eecd5da11081d6754546cfba48b4870d2811572",
+              "declared_hash_matches": true
+            },
+            {
+              "id": "chapter-005",
+              "order": 5,
+              "title": "Chapter 5. পঞ্চম পরিচ্ছেদ",
+              "content_sha256": "494cee46a4461eaebc67b68e81c447f31831296723e21e1024e5d9500694868a",
+              "file_sha256": "1d1c3adac84a293e59f172ecc4de63e7efb214d4533a2888e07db8accde8330f",
+              "declared_hash_matches": true
+            },
+            {
+              "id": "chapter-006",
+              "order": 6,
+              "title": "Chapter 6. ষষ্ঠ পরিচ্ছেদ",
+              "content_sha256": "1ff67f3b84c1f1e61ac885e90327dc232ec0ce1b49f46b3d635e036bc297429d",
+              "file_sha256": "ec8e8251fde679c8ed5fa0d7a9518755a5801abdef0821b327fffe182c1f7d54",
+              "declared_hash_matches": true
+            },
+            {
+              "id": "chapter-007",
+              "order": 7,
+              "title": "Chapter 7. সপ্তম পরিচ্ছেদ",
+              "content_sha256": "8a15e0ef3f75e2c3a4d9701b16e445d40205ee2391b5b13777162bac33342afc",
+              "file_sha256": "a7d35ad28aadb5b1202c02f12ce64a7c429b33d8b8e2629e6c46d26185800e39",
+              "declared_hash_matches": true
+            },
+            {
+              "id": "chapter-008",
+              "order": 8,
+              "title": "Chapter 8. অষ্টম পরিচ্ছেদ",
+              "content_sha256": "d32caf511e719a5e8ae6f776f0dbec32bdcbcf17200fcf184d451dadc0bace3e",
+              "file_sha256": "e1938414f2a944c498e74aeb2965d67fb0861dcfd6c6a767eceeb398abf0fb92",
+              "declared_hash_matches": true
+            }
+          ]
+        },
+        "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity."
+      },
+      "current_identity": {
+        "status": "TEXT_CLEARANCE_COMPLETE_RUNTIME_ACTIVATION_HELD",
+        "source_identity": "PASS",
+        "edition_identity": "PASS",
+        "rights": "PASS_IN_TEXT_ONLY",
+        "cover_provenance": "PASS_BOUND_OWNER_ASSETS",
+        "publication_authorization": "PASS_EDITION_BOUND_OWNER_DELEGATION",
+        "license_delivery": "IMPLEMENTED_TESTED",
+        "reader_manifest": "READY_FOR_APPROVAL",
+        "reader_exposed": false,
+        "registered_in_production_rights_registry": false,
+        "live_allowlist_changed": false,
+        "audio_exposed": false,
+        "canonical_rights_decision_sha256": "ef13c99abc9682321e1f8f9ee3e6822a2657993d46828d144fb0e0300a1d4267",
+        "runtime_blocker": "Inactive canonical Reading Pass segments must be prepared/promoted through the existing authorized admin workflow and runtime validated before controlled launch. No production customer/data writes performed."
+      },
+      "license_implementation": "IMMUTABLE_CC_BY_SA_NOTICE_AND_RUNTIME_DELIVERED_TEXT_PERMISSIONS_IMPLEMENTED"
     },
     {
       "slug": "bn-066",
@@ -6656,5 +6749,6 @@
   "published": 0,
   "audio_changes": 0,
   "canonical_package_changes": 36,
-  "legal_clearance_not_inferred_from_cover_or_author_death": true
+  "legal_clearance_not_inferred_from_cover_or_author_death": true,
+  "final_reconciled_at": "2026-10-01T21:31:02.704018+00:00"
 }

@@ -28,7 +28,7 @@
     "picture-of-dorian-gray"
   ],
   "count": 90,
-  "scope": "TEXT_EVIDENCE_ONLY_NO_RELEASE_OR_AUTHORIZATION_MUTATION",
+  "scope": "FINAL_NON_COVER_TEXT_RECONCILIATION_WITH_LOCAL_EDITION_BOUND_DECISIONS_NO_RUNTIME_ACTIVATION",
   "titles": [
     {
       "slug": "a-jury-of-her-peers",
@@ -8681,5 +8681,6 @@
       "status": "EVIDENCE_PREPARED_RELEASE_HELD",
       "canonical_slug": null
     }
-  ]
+  ],
+  "final_reconciled_at": "2026-10-01T21:31:02.704018+00:00"
 }
