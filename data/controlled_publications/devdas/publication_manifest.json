@@ -1,0 +1,162 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "devdas",
+  "title": "দেবদাস / Devdas",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "content": {
+    "source_hash": "0091b1d4a93df523779db334ccc52e390a673ca7adf88fd716d954f4c0782fcb",
+    "content_hash": "752b8541f36e788ddcd7265a26fd37aba89035d364e8f920414da38a72ec27af",
+    "provenance_hash": "3e5be4dcdfd4d39e84b8e1c9555313032c83706379a0ab40d259691a7747f682",
+    "sanitized": true,
+    "chapter_count": 16,
+    "chapter_index_sha256": "2a8a9a60d84f31411acc8290ad38ba6b74cf2ef4e2aa29e7bde6e64c42b59b0e",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "প্রথম পরিচ্ছেদ",
+        "word_count": 1600,
+        "sha256": "cff3a9a8b51d5db016b81031d7171c3b5f0aa31eed476a3a90b06e1ee32b5641"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "দ্বিতীয় পরিচ্ছেদ",
+        "word_count": 884,
+        "sha256": "a1941fb197efe9c8e68f1f12187f2866eb01ba52274ef1bde332d70841488d48"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "তৃতীয় পরিচ্ছেদ",
+        "word_count": 757,
+        "sha256": "bd9ff8528262efcc05a6abb273fe09af13afa0d4c931d2189ff9666dc5790fc7"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "চতুর্থ পরিচ্ছেদ",
+        "word_count": 861,
+        "sha256": "24f6436243cc858df28a9de319bed702d48ab9a323420a3535a12f793cc11006"
+      },
+      {
+        "id": "chapter-005",
+        "order": 5,
+        "title": "পঞ্চম পরিচ্ছেদ",
+        "word_count": 1987,
+        "sha256": "c2252da7e1bee86ed8b9e220b80b45d62d1f17718a8c0e675bd895c345d4b3db"
+      },
+      {
+        "id": "chapter-006",
+        "order": 6,
+        "title": "ষষ্ঠ পরিচ্ছেদ",
+        "word_count": 852,
+        "sha256": "ca66856715941cce1971e557c4de3132e310e545059c76554cd61a5133157737"
+      },
+      {
+        "id": "chapter-007",
+        "order": 7,
+        "title": "সপ্তম পরিচ্ছেদ",
+        "word_count": 1248,
+        "sha256": "78fa5d1e21f48cfbc2bf8e8e8741fb173f3214cbcd99597fe023c637114f8fe1"
+      },
+      {
+        "id": "chapter-008",
+        "order": 8,
+        "title": "অষ্টম পরিচ্ছেদ",
+        "word_count": 1674,
+        "sha256": "57e612b8db401d6299bca5d88fb62af5cae669ae90120b2454a47cf43cc0003f"
+      },
+      {
+        "id": "chapter-009",
+        "order": 9,
+        "title": "নবম পরিচ্ছেদ",
+        "word_count": 1624,
+        "sha256": "c625a9fb68827c36cd0fe02966f11e03c62ac67f8184ba74dff44281334a85f9"
+      },
+      {
+        "id": "chapter-010",
+        "order": 10,
+        "title": "দশম পরিচ্ছেদ",
+        "word_count": 1338,
+        "sha256": "d40e092255f14baa874b152d91bdc5aef3a66e5404b15d599cbfa38b4ecb84a5"
+      },
+      {
+        "id": "chapter-011",
+        "order": 11,
+        "title": "একাদশ পরিচ্ছেদ",
+        "word_count": 725,
+        "sha256": "dc3e9493a89e6646e30b5502f7c35f79e78cd18576c41389b554a55101f98eb6"
+      },
+      {
+        "id": "chapter-012",
+        "order": 12,
+        "title": "দ্বাদশ পরিচ্ছেদ",
+        "word_count": 2050,
+        "sha256": "7f20cd0d2b80ccddcb434a7c3966fd3da19d41aad7d404135840973fec07ade0"
+      },
+      {
+        "id": "chapter-013",
+        "order": 13,
+        "title": "ত্রয়োদশ পরিচ্ছেদ",
+        "word_count": 2557,
+        "sha256": "f2ee359c9b556ed140080dfbd149d898a78d00ea57347b8d864b6d1e5b1e616c"
+      },
+      {
+        "id": "chapter-014",
+        "order": 14,
+        "title": "চতুর্দশ পরিচ্ছেদ",
+        "word_count": 1603,
+        "sha256": "4e25e46c7e79f1d835531507d537f136df4e978554912576ea00f68e8a5be15f"
+      },
+      {
+        "id": "chapter-015",
+        "order": 15,
+        "title": "পঞ্চদশ পরিচ্ছেদ",
+        "word_count": 2959,
+        "sha256": "ef9dcd46a24b7bf60b0e5a019d25cc6279f467ab75efa550aedc4357b4351c76"
+      },
+      {
+        "id": "chapter-016",
+        "order": 16,
+        "title": "ষোড়শ পরিচ্ছেদ",
+        "word_count": 2269,
+        "sha256": "4f98282acac036096cb674b9a5701e9ce62c439e84cab38a7da994f6dc007e08"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "8b9e1f9f72a93fc6d3068b74066ac2a718b640e5a356a262e673f5bf1368e552"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verification_status must be approved before publishing."
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "916b4c273355466434b951506dec2b92aaae034d2f02b8e69306bcac609075e4",
+    "reader_manifest": "7fd589c629759806eb98321a28b95d1e1d4d33d2311d8f5dbb61fd2c79c1c2ff",
+    "source_evidence": "8b9e1f9f72a93fc6d3068b74066ac2a718b640e5a356a262e673f5bf1368e552",
+    "approval_evidence": "059fc4db36a82b76eb5fc0384c8f99ea0ab1433620e134c05b5401117f60cfaa"
+  },
+  "manifest_sha256": "3386787fed602a9dad1658a238067ff82683b8fec3a185dc333bcb7df74d3a76"
+}

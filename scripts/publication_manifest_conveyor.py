@@ -185,6 +185,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--artifact-root", default=str(ROOT / "data" / "controlled_publications"))
     parser.add_argument("--write", action="store_true", help="Write publication_manifest.json after validation.")
     parser.add_argument("--publish-approved", action="store_true", help="Expose the reader lane after explicit approval.")
+    parser.add_argument("--reader-preparation-only", action="store_true", help="Prepare a held text package without accepting historical audio approval claims or changing audio artifacts. Cannot publish.")
     parser.add_argument("--generated-at", help="Use an explicit UTC timestamp for reproducible mirrored manifests.")
     parser.add_argument("--refresh-checksum", action="store_true", help="Rebuild the package checksum bundle after metadata/approval edits.")
     parser.add_argument("--disable-audio", action="store_true", help="Remove audio exposure metadata from public book/reader manifests while preserving separate historical evidence files.")
@@ -194,6 +195,9 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 def run(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
+    if args.reader_preparation_only and (args.publish_approved or args.disable_audio):
+        print("BLOCKED: reader preparation cannot publish or modify audio artifacts.", file=sys.stderr)
+        return 2
     artifact_dir = Path(args.artifact_root) / args.slug
     if args.import_metadata:
         migrate_import_metadata(Path(args.import_metadata), artifact_dir)
@@ -239,6 +243,7 @@ def run(argv: list[str] | None = None) -> int:
         artifact_dir,
         publish_approved=args.publish_approved,
         generated_at=args.generated_at,
+        reader_preparation_only=args.reader_preparation_only,
     )
     issues = validate_manifest(manifest)
     if issues:

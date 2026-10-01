@@ -13,5 +13,42 @@
   ],
   "downloaded_at": "2026-07-01T10:36:20Z",
   "source_format": "mediawiki-parse-api-html",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "author_death_year": 1938,
+  "author_fact_evidence": {
+    "record": "internal/legal/bengali_text_preparation_20261002/author_fact_receipts.json",
+    "record_sha256": "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "author_id": "sarat-chandra",
+    "authority_url": "https://www.wbtourism.gov.in/legends-view-byId/63e0abae50952a1a1b0e9601/SARAT%2520CHANDRA%2520CHATTOPADHYAY%2520%25281876%2520-%25201938%2529",
+    "authority_response_sha256": "e904b67f5fb45db2c99b0ba2882a8d5f501cff12127ff7cb6a6c167298d1e7ff",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_EDITION_OR_PUBLICATION_APPROVAL"
+  },
+  "verification_status": "pending",
+  "text_clearance_status": "PREPARED_EVIDENCE_NOT_AUTHORIZED",
+  "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
+  "canonical_reader_identity": {
+    "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
+    "reader_content_sha256": "bc2f42bef06d86e0d32e26fb5c04bc4265db06b98db1ec1a18e2e335b3f5358a",
+    "chapter_count": 16,
+    "chapter_content_sha256": {
+      "chapter-001": "0f40d942647f7e31a313a057fd75644016c64d663c2360cf50a1d2437371c23e",
+      "chapter-002": "a63e0a4fdf3e1e50b08965697ef3870ced70376e2a791aa84fd0f763b8b01f49",
+      "chapter-003": "953a298cc9754616dc17a0730570777802792892efdf5a92da04fed7e4796f9c",
+      "chapter-004": "d3bf93dd86d6fc03c1fc51892e01a950a715307352a470bcf3d23e189ca411d9",
+      "chapter-005": "e64f0da72d7ed67b1f170917c1f6d8463eb12ef7444707586ce311653b3f0c56",
+      "chapter-006": "8364f7b9518589d00de1500d3509723edcfbb195048b986690774464188b06dc",
+      "chapter-007": "dc8a3410f8ed47fe4179f27998bb500a5b1b0fa79aaa5cde0b66a5b3a0015bde",
+      "chapter-008": "561950ca61d7778fd8ad724c7e98ea825d3a1f1e555e7546675860609a0c733c",
+      "chapter-009": "48493e3dc5bf79d5cb41981f4341e97bb2b75d0102f539098c4efb5d7fe50fc8",
+      "chapter-010": "432c74a4ee4530900b31dbdf047791ac93ec02d1d3e1bd3f691cfe80dda37789",
+      "chapter-011": "28c0b77351a702f6393863339132e7d5f39bf221931ee91517f11da986878efa",
+      "chapter-012": "275ce9fa4df39737e878df16a68a39f90a01c0e9ffc221455e6eea8dd49397be",
+      "chapter-013": "91ca0452010eaf23cc2944691d9a99ce9e2dffc07198154997b8347438654a60",
+      "chapter-014": "fa501a8ee2cc6a27377bd98bbf2c75e7e35c1de81f61ac86624c00c46919862b",
+      "chapter-015": "5722298c96677b30f0c01baeb035fc8b34587a40bef9b3a0db91d19621319a9c",
+      "chapter-016": "e520e25a494f262ae7bb399a2387b85d0320412a7688f303d43007382653fbf8"
+    },
+    "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
+    "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  }
 }

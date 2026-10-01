@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "book-a4a369483f",
+  "title": "সম্পত্তি সমর্পণ",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "content": {
+    "source_hash": "72f4422557a1cc965b07fde5fe64d27a2764ede21e3a13582b7b953745927efc",
+    "content_hash": "161ed4395559eb73370b8550089542e789ea906f1451a5315535eaef9173ddcd",
+    "provenance_hash": "eb1a8ac0ebb77ac93fa9102383440701d727b33f139ab36b320a57beed929467",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "8e03de591e13dcf79e76468ce5b5c449d3839221223f6fc18f482d7562c46c81",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "সম্পত্তি সমর্পণ",
+        "word_count": 2297,
+        "sha256": "9bbdcb9a6f199e525ace8a194b22756b6e3a1e689e144a8ab350ff1a8b76051b"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "5519a5c98905aaafab1eaf36c5690210a42c2339ba358924c71efe6155bf3472"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verification_status must be approved before publishing."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "7c84f18aa5ae0eb38eec4c063f1327cb88db39f15014cbbb89f0ca165229b3f8",
+    "reader_manifest": "1578227a554c2bac39353e8ede0914ae2166da3060eee83c484552acc1d901f1",
+    "source_evidence": "5519a5c98905aaafab1eaf36c5690210a42c2339ba358924c71efe6155bf3472",
+    "approval_evidence": "13dd9693ad218883be83729c2a1136cb2a038feabeb197e4be95f66c00e65dff"
+  },
+  "manifest_sha256": "1881e3733e0cca5b17cd18fc2c41548beb42f66eda07442b41cc32dff027e5da"
+}

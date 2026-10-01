@@ -1,14 +1,14 @@
 {
   "slug": "book-edfcf810c5",
-  "generated_at": "2026-07-23T11:10:13Z",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
       "sha256": "4db03ac530007827caa5a8973b73aeb4cc8b0f3a00cc5eeed3410999e417bfe9"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "bcab0be06011395fe7d9381f5feb230e6b0c72ec54cdc3597f3cabb05aa8ee88"
+      "file": "chapters/chapter-001.json",
+      "sha256": "41b21a65fe7d0be19bd30e7ad632849a72f28356a441ee258845249ba3b3ca67"
     },
     {
       "file": "highlight_sync.json",
@@ -24,11 +24,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "25f39ff28d27b714d62401d07b251c00cefdff04edf44f0d29f1943739877f2b"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "41b21a65fe7d0be19bd30e7ad632849a72f28356a441ee258845249ba3b3ca67"
+      "sha256": "0b5a0cd45d5de4cc8976f07e0ba517656be347a65cc10faaf9dc604483a3f5fc"
     }
   ]
 }

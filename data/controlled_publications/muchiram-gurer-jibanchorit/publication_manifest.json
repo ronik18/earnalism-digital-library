@@ -1,0 +1,62 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "muchiram-gurer-jibanchorit",
+  "title": "মুচিরাম গুড়ের জীবনচরিত",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "content": {
+    "source_hash": "733466ffdadc8f5c0172023edd5c0ba7327387d65d0c46b1b881a26e303e800a",
+    "content_hash": "dea6e37479af7c2067c5929999da22f8b2f49aeb2d0abd9741da4e7f01e6ba48",
+    "provenance_hash": "5684356538fbb400de644b128c8ac1307bf46f737170d77dec156e1e1ac5f8a4",
+    "sanitized": true,
+    "chapter_count": 2,
+    "chapter_index_sha256": "de2f0f78d8a062472485c0901c91f3acb8b68ab063beb3cce91a8777b0b2ff6b",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Chapter 1. প্রথম পরিচ্ছেদ",
+        "word_count": 561,
+        "sha256": "c6a56abd3ca27dcb83417018f74e66ef45b491eacb83ed9d000bbb292f712da4"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "Chapter 2. দ্বিতীয় পরিচ্ছেদ",
+        "word_count": 352,
+        "sha256": "9172cf08cd6fe0009a376beb1911bfde55386e42385aa351f19388ee7e08834b"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "28cf06e1dec75665a84715e8d92b3d3b21326e51bcb3e81bbb338a459f00257c"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482980/earnalism/covers/front/cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+    "blockers": [
+      "Rights: verification_status must be approved before publishing."
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "d34ecd7491b15a3b6fe09ae0fa501769efc583e71c12dca897af2b8f023cb9be",
+    "reader_manifest": "304fd60e3952495cfd1f9e4fd1c31994880ccd8144d8df05d5ec96a8d8eb3d53",
+    "source_evidence": "28cf06e1dec75665a84715e8d92b3d3b21326e51bcb3e81bbb338a459f00257c",
+    "approval_evidence": "74dabd9925df38019d13c1579b1b0a9d22603f69084dfd1b2acbf3cfb4c7e545"
+  },
+  "manifest_sha256": "bb9f68e7608b7558b71b20387819e70b64c4c5338830dbe52539782b80daa20a"
+}

@@ -1,0 +1,91 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "bn-041",
+  "title": "আঁধারে আলো",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "content": {
+    "source_hash": "c7639924d0638986453e3ab15aa949220b38a0ae1edc1619d44370d733e046d7",
+    "content_hash": "45f66af7c4420dc81e5fdb8f66337383b4d6e1ccc6ddc32aa17ac555d8e0ba88",
+    "provenance_hash": "df2e91922dcc4b741c41292472840b833f6ef0d9b3d8fea9ecc7d70e85bca31e",
+    "sanitized": true,
+    "chapter_count": 6,
+    "chapter_index_sha256": "d70c468eb127b6f47e5d7283b7518e174a81b60e3f33980427dddac8bbddbbdf",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Chapter 1. এক",
+        "word_count": 631,
+        "sha256": "46592063fd4ad9cd4bd17bacbfd0f52b877ce52ada9b31e9c650c5bea7a67671"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "Chapter 2. দুই",
+        "word_count": 392,
+        "sha256": "cdb3b0a00a622d6c251cb79c3a2923b37aee67f52edc2cf159ee443ca83f3a01"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "Chapter 3. তিন",
+        "word_count": 849,
+        "sha256": "1a44cbc4e044fc41df4c41e6991cec5b7451c79ea8c48d1fe9f04fdf3e075fc9"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "Chapter 4. চার",
+        "word_count": 443,
+        "sha256": "668ca2f9033ac614cda9cade9ff3470bda8afb711aa5c038f098b99678a3e8df"
+      },
+      {
+        "id": "chapter-005",
+        "order": 5,
+        "title": "Chapter 5. পাঁচ",
+        "word_count": 1642,
+        "sha256": "65e40d4863a58e076f4ba57cbf990def0425243f470f339109e996b671c20a23"
+      },
+      {
+        "id": "chapter-006",
+        "order": 6,
+        "title": "Chapter 6. ছয়",
+        "word_count": 1109,
+        "sha256": "d1bed1d1a8b1bde234522f0f3cfc1042aa6e8fec4a04d97dd5470a67796bf9b7"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "21e273594c316c8c1f380a77ed83d5f8c16a63b7a65d40b00ebdf22b55aa6952"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270649/earnalism/covers/front/bn-041_front_1600x2400.png",
+    "blockers": [
+      "Rights: original_publication_year is required.",
+      "Rights: verification_status must be approved before publishing."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "f2305a1de3a259c93225b4c0ff9e60d347eeea5b57a4f6cca0d74e8c57f3e096",
+    "reader_manifest": "4516fcbcc1601ab4a931fccff17b9e3474c30907a923dfdfb9fb244334bac00d",
+    "source_evidence": "21e273594c316c8c1f380a77ed83d5f8c16a63b7a65d40b00ebdf22b55aa6952",
+    "approval_evidence": "4410c7679adf6864efceaaa961c2d460744c6b52ff8ee09141dc2b979248be3d"
+  },
+  "manifest_sha256": "1bf68683f08aae55702e448426820f02947ffd677461f96375d88e3a3295a918"
+}

@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "book-d19e96859f",
   "title": "গিন্নি",
-  "generated_at": "2026-09-29T04:55:56.148227+00:00",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
   "content": {
     "source_hash": "3c184ef8918fee4686c3ac93e17c12d7108617099c70425948cdd7cbf36b68d5",
     "content_hash": "021462a46f1c87fb984bd68c0d90ff022123dacc236e876ee97baee87ff065fa",
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "e525d4771e06857f991b2ce7492d503ff5fe4059b17a96f83acd516c7882c3cc"
+    "evidence_sha256": "0740380d6e66067e939fc55a9f871f637b3cf1a093874a72c91edb3d7329e183"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,8 @@
     "qa_status": "QA_PASSED",
     "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779342197/earnalism/covers/front/cover_ff96c6fb-bcad-4a11-aba2-f31f6fe69e41.png",
     "blockers": [
-      "Rights: author_death_year is required.",
       "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Rights: verification_status must be approved before publishing."
     ]
   },
   "audio_release": {
@@ -50,8 +49,8 @@
   "artifacts": {
     "public_book": "1cce39252afbf783f60e960113fdc837d5a3a511b1b17a9c7f3c9af678f41af2",
     "reader_manifest": "572b407f2559bb96af06a247f72d1333ba84531774265184e7ee62b18fa1d3fa",
-    "source_evidence": "e525d4771e06857f991b2ce7492d503ff5fe4059b17a96f83acd516c7882c3cc",
+    "source_evidence": "0740380d6e66067e939fc55a9f871f637b3cf1a093874a72c91edb3d7329e183",
     "approval_evidence": "76453786385926e62d3168a96f301cdc88d8a3d5c48d896272e39c3684911a3d"
   },
-  "manifest_sha256": "f629825f70ca693b7ce0942aec67417076df11c2ff424244b6fa3099d0b266c9"
+  "manifest_sha256": "471f1c60c4bac029016f846cd3a0516f5d3b4a2b1d996088eb89eec84ff09249"
 }

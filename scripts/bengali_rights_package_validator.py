@@ -210,6 +210,7 @@ def evaluate_title(
         "territory_allowed": territory == "IN"
         and launch.get("launch_compliance_jurisdiction") == "IN",
         "package_held": package_is_held(package),
+        "package_commerce_held": package_book.get("allowCheckout") is not True and package_book.get("allowPayment") is not True,
         "release_allowlisted": slug in launch_slugs,
         "hash_bound_release_decision_accepted": decision_accepted,
         "release_package_unheld": not package_is_held(package),
@@ -282,7 +283,7 @@ def evaluate_title(
 def audit(root: Path = ROOT, packet_path: Path | None = None) -> dict[str, Any]:
     packet = read_json(root / PACKET if packet_path is None else packet_path)
     titles = packet.get("titles")
-    launch = read_json(root / "backend/data/controlled_launch.json")
+    launch = read_json(root / "data/controlled_launch.json")
     if not isinstance(titles, list) or not titles:
         return {
             "status": "INVALID",
@@ -301,19 +302,13 @@ def audit(root: Path = ROOT, packet_path: Path | None = None) -> dict[str, Any]:
     slugs = [row["slug"] for row in rows]
     if not all(slugs) or len(set(slugs)) != len(slugs):
         issues.append("Rights packet title slugs are missing or duplicated.")
-    if launch.get("live_approved_slugs") != [
-        "a-ghost-story",
-        "the-tell-tale-heart",
-        "radharani",
-    ]:
-        issues.append("The existing three-title India pilot allowlist changed.")
-    if (
-        launch.get("public_audio_exposure_enabled") is not False
-        or launch.get("public_paid_commerce_enabled") is not False
-    ):
-        issues.append(
-            "Audio or paid commerce is enabled in the current launch configuration."
-        )
+    live_slugs = launch.get("live_approved_slugs")
+    if not isinstance(live_slugs, list) or not all(isinstance(s, str) and s for s in live_slugs) or len(set(live_slugs)) != len(live_slugs):
+        issues.append("Canonical live Reader allowlist is missing or malformed.")
+    if launch.get("public_audio_exposure_enabled") is not False or launch.get("audio_enabled_slugs") != []:
+        issues.append("Audio exposure is enabled in the canonical launch configuration.")
+    if any(not row["checks"]["package_commerce_held"] for row in rows):
+        issues.append("A held cohort package has a checkout/payment action enabled.")
     if any(not row["checks"]["package_held"] for row in rows):
         issues.append(
             "A held cohort package still has public/live/approval flags enabled."

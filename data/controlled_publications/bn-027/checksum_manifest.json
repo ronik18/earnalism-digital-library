@@ -1,10 +1,14 @@
 {
   "slug": "bn-027",
-  "generated_at": "2026-07-03T20:07:46Z",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
       "sha256": "a75f4df3db0661a7f0f46bbd8c3b1b8065bba66eb7d3e5c27e41d4879082b23e"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "8ccf6a7fd7bafe7ed495994607c728d56a353f2d81cda3b1aa37e36ad9076dc3"
     },
     {
       "file": "highlight_sync.json",
@@ -20,11 +24,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "9fca7c36b39190957594d8aad79832725d69c3eca17c3532b4b6b4ef04924a25"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "8ccf6a7fd7bafe7ed495994607c728d56a353f2d81cda3b1aa37e36ad9076dc3"
+      "sha256": "23da07c8c60241a37dbb31dc282e8b28bdf90460203b0244333bd8fbeeca34a3"
     }
   ]
 }

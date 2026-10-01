@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "book-0fbdaa730e",
+  "title": "গুপ্তধন",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "content": {
+    "source_hash": "473952a838282182f8610338ed5bbdc57a659794eb159896e99061a0963b12a7",
+    "content_hash": "393ff4b22559500271456bd1769d04603d7eb3b393aed1b4d3679194024e2da5",
+    "provenance_hash": "c8455038e7d5a9659b68dca9b2b5f55078de2c581d69b944d813e74d5939e473",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "9efaa2685e03a52938894e0210c8ae37269c6948974c67fb54a0f9a8d004058a",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "গুপ্তধন",
+        "word_count": 4616,
+        "sha256": "75f1f2c70a06dd3bcec4c8a83e35ded92bd8241553afaa9e44a66311c9b74ba3"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "95ab241f3280852da40e9ed71ca53099123c962b1dd56ae9044380f43234d225"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verification_status must be approved before publishing."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "a7a4e51df475d9e0180a1077e682032bdcb9156215fabba273b1c25db7d59f26",
+    "reader_manifest": "e01cf73cb8d925515ab87a435db8c42e963ff4a99f775495431ca97c8abaf8f2",
+    "source_evidence": "95ab241f3280852da40e9ed71ca53099123c962b1dd56ae9044380f43234d225",
+    "approval_evidence": "4aefc2b1f6aee51bedeec44f516ae29053246d603c3b4b4e4745a10ff93cf78f"
+  },
+  "manifest_sha256": "6758b2dbfcf7888cd6fe4d204c472af02bbc34ee2232fa33281e7e66db684888"
+}

@@ -9,5 +9,50 @@
   "rights_basis": "Author died 1894. Original publication 1874. Public domain in India and the U.S.; source evidence kept internal/admin-only.",
   "downloaded_at": "2026-06-03T08:51:47.842258+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "author_death_year": 1894,
+  "author_fact_evidence": {
+    "record": "internal/legal/bengali_text_preparation_20261002/author_fact_receipts.json",
+    "record_sha256": "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "author_id": "bankim-chandra",
+    "authority_url": "https://museumsofindia.gov.in/repository/record/vmh_kol-R2824-17621",
+    "authority_response_sha256": "7f092de94596c2bb0bf82f22abd0bed0be2fe94040c1b1426d4b88604d5cf677",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_EDITION_OR_PUBLICATION_APPROVAL"
+  },
+  "original_publication_year": 1874,
+  "original_publication_fact_evidence": {
+    "record": "data/title_rights_evidence/bengali-bankim-cohort-1.json",
+    "record_sha256": "6aa201278a3420414ab1c348bd24b19ff4cf1b539595e142dd64696152c5eccf",
+    "slug": "lokrahasya",
+    "source_edition": "লোকরহস্য (১৯৩৯), বঙ্কিম-শতবার্ষিকী সংস্করণ; the edition states first printed in 1874 and names its two editors",
+    "scope": "EXISTING_REVIEWED_PUBLICATION_FACT_ONLY; SOURCE_COMPARISON_AND_LICENSE_OBLIGATIONS_REMAIN_TITLE_SPECIFIC"
+  },
+  "verification_status": "pending",
+  "text_clearance_status": "PREPARED_EVIDENCE_NOT_AUTHORIZED",
+  "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
+  "canonical_reader_identity": {
+    "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
+    "reader_content_sha256": "2c2bc214485736496d17282c9c1fccd0d2f55d952889a3eacfe3737d6401df84",
+    "chapter_count": 16,
+    "chapter_content_sha256": {
+      "chapter-001": "729a0ec8c88e8cb5de85698b032b40886a6ac47f0bb08b6b980682744377c1ef",
+      "chapter-002": "619ab8c5384adbfa816179f9d8a0776bb13d1f08c555a25215813235cd4e46f7",
+      "chapter-003": "39dd197a1ccf93e36781c6ed5dc374b4f97514222fadf665e8f02e564189e4be",
+      "chapter-004": "07373c51e0df6d2e5222d038c99b56f696c50b11c6667b17a3cea1c6d940476c",
+      "chapter-005": "e908dc63447c4191d6edfee2787858a8fc052758e7226b00d40aed06770b1c90",
+      "chapter-006": "21ae6636ae5977bfa869473d1487c3cc754587d6f26c5b57ef4339aa55e9a3f8",
+      "chapter-007": "1f8c3ac3bb80e995200fde7c3b66c9463b541ed7f6dad23fb64cbd22af48f540",
+      "chapter-008": "5628f612b22513c49148b53b7dc52aa26b1e2c67f29bba0585af989cbe233e5d",
+      "chapter-009": "deb0cd9746bb517cc7a206302b7331bfdbe255474b76738920672db59755013e",
+      "chapter-010": "763829b78e243cf507b965bf937a18242b3464ff0b67d7cff3ba24f6c4a93c4f",
+      "chapter-011": "93be984a04423686dd6ed15f0721120048c3bef211b0c95a1bf33696f469a76c",
+      "chapter-012": "c46a3bb7a8bcdb19f215410bbfce96e779d756dc9406a817fec932b824f478c9",
+      "chapter-013": "0d3af34ac004f154108952e71f2200b9eaeebf408fe994892b09563599f856cf",
+      "chapter-014": "ae245e65f7679a7423fd11e437661cbfdf3d7ace87c5cab4d40c6e20a8d0ba28",
+      "chapter-015": "80bacae9079c0f1c73a888b665c28760ebc6d8e5b969d24f54b26400aa7afd3e",
+      "chapter-016": "79863cf99d49f3992f0294207371401efb3b6adf8a6dd8b74164cae952a2d04a"
+    },
+    "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
+    "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  }
 }

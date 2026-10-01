@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "book-88ded9b47c",
+  "title": "মানভঞ্জন",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "content": {
+    "source_hash": "08e48da6bb28ab20a543f422d867bb4c8df3f4ea3c108590144e58aa3be3566b",
+    "content_hash": "938feb779bee24998461bf4da3daf77e9823cc429867f64807859a30ef84fb6f",
+    "provenance_hash": "02079f8c7a3fcfe9713b44a7e0e706ba9588d426d9ba853112ecb2943de2f7a5",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "f4c65267d31535530162b24774cfcd40bebdccf8d8912cbd6bb7199463a6a746",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "মানভঞ্জন",
+        "word_count": 2915,
+        "sha256": "408c664493d97cea87cade6e3a0bafdb399a3ac6cd5104b8a7f0ef4404dc0448"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "4b682db87b5b23b1d6c66bf391b2343d45e8ad1a93fa51716f251bafc8a705c1"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verification_status must be approved before publishing."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "b035cb8b4a0ac4a36466a7ce847e5f20964b592f08b85ea5e911f5ecf27743a2",
+    "reader_manifest": "2b46faebaca743856469db39c5b8741238fa689dd72ff3764609441fb4175800",
+    "source_evidence": "4b682db87b5b23b1d6c66bf391b2343d45e8ad1a93fa51716f251bafc8a705c1",
+    "approval_evidence": "7ee58470899eb7edcabcbcb9b8d8dd36860a2f735d90a280319f9ef137e5a027"
+  },
+  "manifest_sha256": "2cf398d6418f8c1e50ef12cbe09a4f8ea28be1761e707a0e1be412890c8a9dc6"
+}

@@ -9,5 +9,38 @@
   "rights_basis": "public_domain",
   "downloaded_at": "2026-07-01T10:36:20Z",
   "source_format": "mediawiki-parse-api-html",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "author_death_year": 1950,
+  "author_fact_evidence": {
+    "record": "internal/legal/bengali_text_preparation_20261002/author_fact_receipts.json",
+    "record_sha256": "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "author_id": "bibhutibhushan",
+    "authority_url": "https://bibhutibhushan.in/about-him/",
+    "authority_response_sha256": "c57b87ff7fdc696130da2d8abe5fcd4cd9e605ac4a4e39772355c6520d8a9032",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_EDITION_OR_PUBLICATION_APPROVAL"
+  },
+  "verification_status": "pending",
+  "text_clearance_status": "PREPARED_EVIDENCE_NOT_AUTHORIZED",
+  "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
+  "canonical_reader_identity": {
+    "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
+    "reader_content_sha256": "77bbc0ac1cb7c0548efb0139c13fa50252dfeff32503edb74f8ee6a857f0d751",
+    "chapter_count": 12,
+    "chapter_content_sha256": {
+      "chapter-001": "fd5cf00eebb16aac870c583c6ddb3484dbc5dd5370912dde157a2697bff0f82a",
+      "chapter-002": "d8c50346fefae677176ec0e78d7ea6f64f4bab311670547891a7b689c9e8f987",
+      "chapter-003": "510492d9ded4ed1dd19b5c715de15c51064c34467611cc711d08cf4e533312ea",
+      "chapter-004": "781f936c8f627d45a29b4045d28589965a37ba02efb84ea7a6efaf89240adb27",
+      "chapter-005": "cccbe2d40202bce4fcb31ab8bc7f277e4ae45dd6d0458506570cdce8c5f488b7",
+      "chapter-006": "c4428af70d76ab01abe545cd216e08d0f389bac2397581f60cf9ad8694c8b16e",
+      "chapter-007": "9b8f07a86b2e7ad9695e31698e07427630d4db0ba5f40af9fb8ad493c8659f87",
+      "chapter-008": "939aa75d61e40b8da90c553bdfd5222cf04da4efc57eac07b881f2509bc190d0",
+      "chapter-009": "bf7c2d857d5442dfecf9f4f64e7b08550e7e557c2ce2c6a5e399c3475c92063f",
+      "chapter-010": "151273a0e46f5bef1a33126924dfc462b89197117fa37da1a8e3c6d16a88b411",
+      "chapter-011": "17c5d3d6d05bfa6159c3f58e471189d82bc2d4087306c8cc80e6ef0a78d6f55e",
+      "chapter-012": "44d013b02eb6434e614d4e4a107e39ae74f192fd989344983fc9fce6ac89de06"
+    },
+    "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
+    "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  }
 }

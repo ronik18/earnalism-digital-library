@@ -19,5 +19,42 @@
     "new_canonical_chapter_sha256": "1ff67f3b84c1f1e61ac885e90327dc232ec0ce1b49f46b3d635e036bc297429d",
     "source_sha256_unchanged": "20fd4394099662a7126b388fe2c242b5cd947fefe9ca280e808375bdadd77d9a",
     "rights_or_publication_state_changed": false
+  },
+  "author_death_year": 1894,
+  "author_fact_evidence": {
+    "record": "internal/legal/bengali_text_preparation_20261002/author_fact_receipts.json",
+    "record_sha256": "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "author_id": "bankim-chandra",
+    "authority_url": "https://museumsofindia.gov.in/repository/record/vmh_kol-R2824-17621",
+    "authority_response_sha256": "7f092de94596c2bb0bf82f22abd0bed0be2fe94040c1b1426d4b88604d5cf677",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_EDITION_OR_PUBLICATION_APPROVAL"
+  },
+  "original_publication_year": 1873,
+  "original_publication_fact_evidence": {
+    "record": "data/title_rights_evidence/bengali-bankim-cohort-1.json",
+    "record_sha256": "6aa201278a3420414ab1c348bd24b19ff4cf1b539595e142dd64696152c5eccf",
+    "slug": "bn-060",
+    "source_edition": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩); source title page identifies the 1873 edition and says the text was excerpted from বঙ্গদর্শন",
+    "scope": "EXISTING_REVIEWED_PUBLICATION_FACT_ONLY; SOURCE_COMPARISON_AND_LICENSE_OBLIGATIONS_REMAIN_TITLE_SPECIFIC"
+  },
+  "verification_status": "pending",
+  "text_clearance_status": "PREPARED_EVIDENCE_NOT_AUTHORIZED",
+  "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
+  "canonical_reader_identity": {
+    "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
+    "reader_content_sha256": "69d972ddd3fea936806a641d96a6287930b569536c0049eb8ef2f4b61d790065",
+    "chapter_count": 8,
+    "chapter_content_sha256": {
+      "chapter-001": "c2404852ee9da94b41a4a989edec3f7738397b2ddc98bf6acea225c81eddebe2",
+      "chapter-002": "7356cad0f3c20205c6650d52098bb90dac59336c56b0bce0ef1a53f9fa10e302",
+      "chapter-003": "43d496cba105a53b39f27e207d6ae73e6dbdecbd35506202c3d831b1ecd6d555",
+      "chapter-004": "520e555b325a8d1a722f3534484eb41b5fe58129f651188523c09d65032e195f",
+      "chapter-005": "494cee46a4461eaebc67b68e81c447f31831296723e21e1024e5d9500694868a",
+      "chapter-006": "1ff67f3b84c1f1e61ac885e90327dc232ec0ce1b49f46b3d635e036bc297429d",
+      "chapter-007": "8a15e0ef3f75e2c3a4d9701b16e445d40205ee2391b5b13777162bac33342afc",
+      "chapter-008": "d32caf511e719a5e8ae6f776f0dbec32bdcbcf17200fcf184d451dadc0bace3e"
+    },
+    "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
+    "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
   }
 }

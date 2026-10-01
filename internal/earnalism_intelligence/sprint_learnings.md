@@ -2576,3 +2576,7 @@ Next generated prompt: Finish secure production sign-in and authenticated truste
 - Shared cover `height:100%` stretched artwork to manuscript height; constrain editorial covers to their actual aspect ratio.
 - Delegating immersive headers to the canonical public Header prevents navigation drift; preserve lease settlement before exits.
 - Existing static article snapshots alone cannot serve newly authored Journal slugs. Published-only runtime metadata routes must preserve missing/draft 404 and distinct outage states.
+
+## Bengali text preparation — 2026-10-02
+
+Author lifetime facts, transcription licensing, exact source edition and publication authorization are separate gates. Owner-designed covers still require explicit asset bindings. Source site licensing is not an accepted edition decision. Preserve legacy import hashes while binding actual current chapter hashes. A text-preparation manifest must not inherit stale audio approval; ordinary publication validation remains strict. Current canonical launch authority has 24 titles and paid commerce, so held-cohort audit must enforce package-local non-exposure rather than a historical three-title/global-commerce-off assumption.

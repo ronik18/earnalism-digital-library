@@ -1,0 +1,134 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "pather-panchali",
+  "title": "পথের পাঁচালী / Pather Panchali",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "content": {
+    "source_hash": "0f3626226a1ecc776a89670b8a9e53d2a6c4ee373afab6be0fa387ae59f90c8f",
+    "content_hash": "51a3175817002fb99a5cdf88b6e51819855b6c92a985558071fe1df0bde33435",
+    "provenance_hash": "6bd378cf51938be88b825f1cfa3866a19868167db9792c22511a4797af5fef5a",
+    "sanitized": true,
+    "chapter_count": 12,
+    "chapter_index_sha256": "8f5d3dfeec24f26470c78a58e00db7f1eb7e8efc4aea3f025bf0b512c81e144e",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "প্রথম পরিচ্ছেদ",
+        "word_count": 1730,
+        "sha256": "cce1207af2dd9bed78373a138402ccdd02af622e7684b86581815b1174d4fc31"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "দ্বিতীয় পরিচ্ছেদ",
+        "word_count": 983,
+        "sha256": "e23efe4df4152de997c7c75560dea5e2d3c5198b1e5f0a2f96d1f3175d9a1685"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "তৃতীয় পরিচ্ছেদ",
+        "word_count": 1338,
+        "sha256": "6295ca9e7283951fd3a39ec2202be117527836b3fb698e14d5a895690aecaba7"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "চতুর্থ পরিচ্ছেদ",
+        "word_count": 1564,
+        "sha256": "23ea7391141a3d5b195b0ed5d88a86f6b90c2f04d56c2d99c15c00891b902425"
+      },
+      {
+        "id": "chapter-005",
+        "order": 5,
+        "title": "পঞ্চম পরিচ্ছেদ",
+        "word_count": 926,
+        "sha256": "fa4a57e46e21766171152113d962c194027bef22b3cef1fff506ffb115354b8e"
+      },
+      {
+        "id": "chapter-006",
+        "order": 6,
+        "title": "ষষ্ঠ পরিচ্ছেদ",
+        "word_count": 1811,
+        "sha256": "ea0796201ddc528829430667b1027170cd7f6f6a20b8f1f10aeb038759b11f44"
+      },
+      {
+        "id": "chapter-007",
+        "order": 7,
+        "title": "সপ্তম পরিচ্ছেদ",
+        "word_count": 1525,
+        "sha256": "61b5c1ed17727417e70c3c6cc418b2ed47990f9ce66334d258dda0be96130fa9"
+      },
+      {
+        "id": "chapter-008",
+        "order": 8,
+        "title": "অষ্টম পরিচ্ছেদ",
+        "word_count": 1722,
+        "sha256": "6ab1e751377a6fb43336a9bc60936668d562b5805fdd220ce8cfeb4e93a0e176"
+      },
+      {
+        "id": "chapter-009",
+        "order": 9,
+        "title": "নবম পরিচ্ছেদ",
+        "word_count": 1767,
+        "sha256": "dbf3df17727b5f870783fbab6c092589b533f48ae38f62b4dffe3f4272d79265"
+      },
+      {
+        "id": "chapter-010",
+        "order": 10,
+        "title": "দশম পরিচ্ছেদ",
+        "word_count": 2891,
+        "sha256": "bcabc7c4f7d41cd22721294035b47d427a781dd4e86e2ddba8ac97de2c2dadb5"
+      },
+      {
+        "id": "chapter-011",
+        "order": 11,
+        "title": "একাদশ পরিচ্ছেদ",
+        "word_count": 1522,
+        "sha256": "36f960a4555efd203ade4a9e75b1eba5d74ca5757b250a6cf83713e63cd2b755"
+      },
+      {
+        "id": "chapter-012",
+        "order": 12,
+        "title": "দ্বাদশ পরিচ্ছেদ",
+        "word_count": 3092,
+        "sha256": "1edbcee06a390de8b87b1e2bd3f33826ee24ce8cf85805181681b3be2ebfaf09"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "1fb70e981fbd1050b12db990f0b592146fd1488e82a7aed9769c4501e83e5887"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verification_status must be approved before publishing."
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "fc4144dc1126cd8a1a13ff196d8dbb688006e6af6cd735ecc62e01011596f4c6",
+    "reader_manifest": "ce1bd80e41d650d7efc95130e528e13275c59196da0581f58361b07f012c6054",
+    "source_evidence": "1fb70e981fbd1050b12db990f0b592146fd1488e82a7aed9769c4501e83e5887",
+    "approval_evidence": "d030a1788f1de0a77de3d8de5429408176cfc10a39b91a8c4a6775d36c6e9618"
+  },
+  "manifest_sha256": "bf12b348ac811d38f3f763379793cb2ff34207afe0589331551f1b3fa88e98a0"
+}

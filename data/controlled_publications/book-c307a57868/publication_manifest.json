@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "book-c307a57868",
+  "title": "স্ত্রীর পত্র",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "content": {
+    "source_hash": "0fefda3a0973af62047a64c30c531984d9cdc7efbeabd46a2d97fe7a47f5f7af",
+    "content_hash": "7a71b70f908ec6ac628c298ea7c46492efb8cfc3febc16c145a6f6ad27b38286",
+    "provenance_hash": "945c734aa43c04495c6738632d84a67e68033516071c501a874ea2dba375705d",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "ae735d37cd9f56d4b1ca23fd8ebcc05b09476decc5ac056b7c0f035b04adccd4",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "স্ত্রীর পত্র",
+        "word_count": 4607,
+        "sha256": "b2d8a25bbfb8f8469df81b1280c08cbe3ce59ffb4f1288e2bb989cc78bf5696e"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "27e3a906ece8d89b5804989954ace8e5fd000ca8edf246050f3a8f4344aaa941"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verification_status must be approved before publishing."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "588276f1a693e4a89ab3ea9d089bf927a5610e474d7e2e6ab86380f6c478d403",
+    "reader_manifest": "4d6c3478ef634b01ac439ccecc060d9b38f0e86f96db60ecc0fbfb08da442373",
+    "source_evidence": "27e3a906ece8d89b5804989954ace8e5fd000ca8edf246050f3a8f4344aaa941",
+    "approval_evidence": "21626dcb637a02acf152b41be82c7f3bfcdc8f3a9a87461e1ff889ae733cdcea"
+  },
+  "manifest_sha256": "22c36cf47ffc9f05fcc8a80c7e6883341ae290342574d686bf825d6e3dec2fbd"
+}

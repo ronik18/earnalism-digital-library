@@ -9,5 +9,36 @@
   "rights_basis": "Author died 1894. Original publication 1884. Public domain in India and the U.S.; source evidence kept internal/admin-only.",
   "downloaded_at": "2026-06-03T08:51:47.807454+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "author_death_year": 1894,
+  "author_fact_evidence": {
+    "record": "internal/legal/bengali_text_preparation_20261002/author_fact_receipts.json",
+    "record_sha256": "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "author_id": "bankim-chandra",
+    "authority_url": "https://museumsofindia.gov.in/repository/record/vmh_kol-R2824-17621",
+    "authority_response_sha256": "7f092de94596c2bb0bf82f22abd0bed0be2fe94040c1b1426d4b88604d5cf677",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_EDITION_OR_PUBLICATION_APPROVAL"
+  },
+  "original_publication_year": 1880,
+  "original_publication_fact_evidence": {
+    "record": "data/title_rights_evidence/bengali-bankim-cohort-1.json",
+    "record_sha256": "6aa201278a3420414ab1c348bd24b19ff4cf1b539595e142dd64696152c5eccf",
+    "slug": "muchiram-gurer-jibanchorit",
+    "source_edition": "মুচিরাম গুড়ের জীবনচরিত (১৯৪৪), বঙ্কিম-শতবার্ষিকী সংস্করণ; source names editors and identifies the first 1884 book publication",
+    "scope": "EXISTING_REVIEWED_PUBLICATION_FACT_ONLY; SOURCE_COMPARISON_AND_LICENSE_OBLIGATIONS_REMAIN_TITLE_SPECIFIC"
+  },
+  "verification_status": "pending",
+  "text_clearance_status": "PREPARED_EVIDENCE_NOT_AUTHORIZED",
+  "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
+  "canonical_reader_identity": {
+    "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
+    "reader_content_sha256": "0e9455b19181966cd83886298b223030bd427f8e9c54aaaafd69aba4c0b743e6",
+    "chapter_count": 2,
+    "chapter_content_sha256": {
+      "chapter-001": "2da278011f7705b08e941479981aa83558e56b1c6a3d40f30b14fb8a6f23092e",
+      "chapter-002": "9c57d79295766ee6651f2193a7d5266e5cfd816ace6621fbe77211cb8240df28"
+    },
+    "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
+    "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  }
 }

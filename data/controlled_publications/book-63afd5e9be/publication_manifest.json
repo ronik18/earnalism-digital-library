@@ -1,0 +1,56 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "book-63afd5e9be",
+  "title": "দেনাপাওনা",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "content": {
+    "source_hash": "5e68c5acaac3fdbf53b959032927fe034d693ef82f27cff017d78199d1467d5c",
+    "content_hash": "128565a95b6a90cad6a9ee84561f38f483a33b6db875aa7a13b4084bb4e47b99",
+    "provenance_hash": "179d53b867feed56735d3f8d56661ba9f6079ed957ce1c4f2055f411b9bc5722",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "27f5c422c57d691125921a1949a9f32956217908a35535f94c5927977fd4a967",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Full Text",
+        "word_count": 1860,
+        "sha256": "fea7572889f58926b517648c0ebfff647469caad574481eb9b81c69349d5f5a9"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "48e0ee7974b05cf4db8b9905ffd0442ed97926e3efadd44004b12e3b5cc756f0"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779453498/earnalism/covers/front/cover_7d71638e-e3a9-44ca-a477-6d6d03d28925.png",
+    "blockers": [
+      "Rights: original_publication_year is required.",
+      "Rights: verification_status must be approved before publishing."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "0f305234f13f5102113945db230d7c9fb5c3661cb19785a78eb6190eb066c0c6",
+    "reader_manifest": "99a6a4d34bb36ce8212a151d62a25f5a9f7bd0c9cd7b8e56a1554143a75f2ebc",
+    "source_evidence": "48e0ee7974b05cf4db8b9905ffd0442ed97926e3efadd44004b12e3b5cc756f0",
+    "approval_evidence": "fbef1a491a82ec30c324070e321c14b8b0c5850f1b15b0f571065e73a89db1b6"
+  },
+  "manifest_sha256": "51a338d59b940f8e03f8638d71e9a2f21eee4d3a083c5ac391c65b692ba9602a"
+}

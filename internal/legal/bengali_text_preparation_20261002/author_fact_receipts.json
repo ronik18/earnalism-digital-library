@@ -1,0 +1,53 @@
+{
+  "records": [
+    {
+      "author_id": "tagore",
+      "url": "https://www.nobelprize.org/prizes/literature/1913/tagore/biographical/?print=1",
+      "retrieved_at": "2026-10-01T19:52:43.777477+00:00",
+      "scope": "AUTHOR_FACT_ONLY_NOT_TITLE_OR_EDITION_CLEARANCE",
+      "http_status": 200,
+      "response_sha256": "0048c2eaa3a43087f4e130b3e5153c9389111d9aed6d329cf12286ad158c0aa9",
+      "asserted_year_present": true,
+      "status": "AUTHOR_DEATH_YEAR_VERIFIED_NOT_EDITION_RIGHTS_CLEARANCE",
+      "fact_context_review_passed": true,
+      "author_death_year": 1941
+    },
+    {
+      "author_id": "sarat-chandra",
+      "url": "https://www.wbtourism.gov.in/legends-view-byId/63e0abae50952a1a1b0e9601/SARAT%2520CHANDRA%2520CHATTOPADHYAY%2520%25281876%2520-%25201938%2529",
+      "retrieved_at": "2026-10-01T19:52:44.734068+00:00",
+      "scope": "AUTHOR_FACT_ONLY_NOT_TITLE_OR_EDITION_CLEARANCE",
+      "http_status": 200,
+      "response_sha256": "e904b67f5fb45db2c99b0ba2882a8d5f501cff12127ff7cb6a6c167298d1e7ff",
+      "asserted_year_present": true,
+      "status": "AUTHOR_DEATH_YEAR_VERIFIED_NOT_EDITION_RIGHTS_CLEARANCE",
+      "fact_context_review_passed": true,
+      "author_death_year": 1938
+    },
+    {
+      "author_id": "bibhutibhushan",
+      "url": "https://bibhutibhushan.in/about-him/",
+      "retrieved_at": "2026-10-01T19:52:46.438424+00:00",
+      "scope": "AUTHOR_FACT_ONLY_NOT_TITLE_OR_EDITION_CLEARANCE",
+      "http_status": 200,
+      "response_sha256": "c57b87ff7fdc696130da2d8abe5fcd4cd9e605ac4a4e39772355c6520d8a9032",
+      "asserted_year_present": true,
+      "status": "AUTHOR_DEATH_YEAR_VERIFIED_NOT_EDITION_RIGHTS_CLEARANCE",
+      "fact_context_review_passed": true,
+      "author_death_year": 1950
+    },
+    {
+      "author_id": "bankim-chandra",
+      "url": "https://museumsofindia.gov.in/repository/record/vmh_kol-R2824-17621",
+      "retrieved_at": "2026-10-01T19:52:48.599740+00:00",
+      "scope": "AUTHOR_FACT_ONLY_NOT_TITLE_OR_EDITION_CLEARANCE",
+      "http_status": 200,
+      "response_sha256": "7f092de94596c2bb0bf82f22abd0bed0be2fe94040c1b1426d4b88604d5cf677",
+      "asserted_year_present": true,
+      "status": "AUTHOR_DEATH_YEAR_VERIFIED_NOT_EDITION_RIGHTS_CLEARANCE",
+      "fact_context_review_passed": true,
+      "author_death_year": 1894
+    }
+  ],
+  "accepted_rights_decision": false
+}
