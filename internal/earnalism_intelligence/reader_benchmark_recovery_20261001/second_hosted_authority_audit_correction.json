@@ -1,0 +1,21 @@
+{
+  "schema": "earnalism.reader-benchmark-authority-audit-correction.v1",
+  "observed_at": "2026-10-01T10:56:58.624322+00:00",
+  "reviewed_head": "e8ce0e5c133bc2efe426407ce6daca143ef589ae",
+  "workflow_run": 36851696048,
+  "regression_job": 110334610184,
+  "regression_conclusion": "FAILURE",
+  "existing_native_cases": {
+    "passed": 115
+  },
+  "benchmark": "FAILURE_AT_WHOLE_POINTER_EQUALITY_ASSERTION",
+  "preceding_http_checks": "SIGNUP_FIVE_SESSION_LIMIT_LOGIN_REFRESH_LEASE_20_PROTECTED_PAGE_PARITY_AND_NEGATIVE_ACCESS_LOGOUT_PASSED_BEFORE_THIS_ASSERTION",
+  "actual_additional_fixture_pointer_fields": {
+    "text_authority_fence": 1,
+    "text_authority_last_start_at": "RECORDED_AT_REAL_ADMISSION"
+  },
+  "approved_behavior": "A real text admission increments an authority audit fence in the existing transaction to serialize against revocation; it does not replace the active version or generation.",
+  "correction": "Require the exact +1 fence update and admission timestamp bounds, then compare every other pointer field and all segment/manifest bytes unchanged. Keep all runtime code unchanged.",
+  "production_observation": false,
+  "paid_provider_calls": 0
+}

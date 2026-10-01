@@ -7278,5 +7278,417 @@
     "prior_release_package_files_byte_identical": 231,
     "customer_wallet_audio_and_existing_version_mutations": "NONE_OUTSIDE_AUTHORIZED_NEW_CANONICAL_VERSION_INITIALIZATION",
     "next_generated_prompt": "Complete authenticated trusted-India Reader and Reading Pass readback for the 24 configured editions, prioritizing the seven preserved active versions and exact Agentic delivery/cover hashes. Use the existing secure sign-in handoff; never forge auth/country or overwrite retained approved versions. Keep all 207 genuine catalogue holds and deferred physical-device UAT explicit. Continue only inexpensive evidence-complete candidates; paid proposal workflow stays default-off and requires separate budget opt-in."
+  },
+  "reader_benchmark_recovery_20261001": {
+    "schema": "earnalism.reader-benchmark-repair-progress.v1",
+    "observed_at": "2026-10-01T11:08:49.729679+00:00",
+    "base_main": "af286898c9c9f039c13355a19de0ce11e0d1629d",
+    "owner_instruction": "Repair the stale Reader benchmark task, then complete authenticated India Reader and Reading Pass verification for all 24 configured editions. Preserve approved code, artwork and versions; record actual results and remaining holds. Use no paid generation or proposal reruns.",
+    "stale_coordination_run": 36844619269,
+    "stale_plan_zip_sha256": "945f57e7f7ece5eeb846d547e018a6867c8a8024e7c5175b1945fde17bfbc107",
+    "finding": "Planner emitted DISPATCH for reader-benchmark, but its entry point was absent; the planner does not execute actions.",
+    "repair": "Restore the guarded runner and actual ASGI/native Mongo benchmark in the existing prepared regression stack; preserve runtime code, approved sources, artwork, versions and release policies.",
+    "benchmark_status": "PASS_HOSTED_ISOLATED_ASGI_REAL_MONGO",
+    "local_guard_bridge_cost_tests": {
+      "passed": 12,
+      "native_mongo": "UNAVAILABLE_LOCAL_LOOPBACK_REPLICA_SET",
+      "shell_syntax": "PASS",
+      "python_compile": "PASS",
+      "workflow_yaml": "PASS"
+    },
+    "execution_source_sha256": {
+      "scripts/run_reader_benchmark.sh": "22dc34984ddab70c65e120e6a6dde214063acf5c435f97b073f4b711f576b94c",
+      "scripts/test_reader_benchmark_runner.py": "994f1c95cddead1dc3a673f7f1f47652d1ce7f20604d0845c252c806683c2107",
+      "backend/tests/test_reader_benchmark_mongo_integration.py": "f61e9a4ece4fe2dcd1d1924d453c2508f3f0d83c4848c433aaa9869a2dbd6bce",
+      "scripts/run_pr_regression_gates.sh": "ac597a675849671368e4d7859f4c6676a3dad58e76035a135f69cfa9e668f1c9",
+      ".github/workflows/regression.yml": "f89099f58ada1c034ff5e1bd98e842d66e27185baf400a54c990750dfec939b7",
+      ".github/earnalism-coordination/tasks.json": "328e71833a8ec9982aef5d17252ed8fbdedd759514159240fc5d18cf2d7f339e",
+      ".gitignore": "4186497fdca81bb0c7810bcec76f5514dea44d344d824f89d9d9f23268155a00"
+    },
+    "production_auth_attempt": {
+      "method": "OWNER_SELECTED_GOOGLE_VIA_SECURE_BROWSER_AUTH",
+      "handoff_result": "SUBMITTED_NOT_PROOF_OF_LOGIN",
+      "google_step": "DEVICE_APPROVAL_NOTIFICATION_OBSERVED",
+      "popup_inspection": "BROWSER_ATTACH_TIMEOUT_NO_RETRY_OR_CREDENTIAL_EXTRACTION",
+      "fresh_target_domain_observation": "SIGN_IN_VISIBLE",
+      "authenticated_session": "NOT_VERIFIED",
+      "trusted_india_context": "NOT_VERIFIED",
+      "latest_target_domain_observation": "SIGN_IN_PAGE_UNCHANGED_AFTER_CORRECTED_CI_SUBMISSION",
+      "target_domain_url": "https://theearnalism.com/login"
+    },
+    "configured_title_count": 24,
+    "production_readback_status": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+    "production_customer_ready": "NOT_DECLARED",
+    "existing_backend_proof": {
+      "deployment_id": "50ba50c5-0f7f-4bdb-aacd-8e1c9c2afefd",
+      "revision": "56e1bedbd11ab696497ddedd03bef6bed2a0f56a",
+      "initialized_versions": 17,
+      "initialized_pages": 714,
+      "preserved_versions": 7,
+      "new_production_readback_claim": false
+    },
+    "title_readbacks": [
+      {
+        "slug": "a-ghost-story",
+        "accepted_decision_id": "india-20260925-a-ghost-story-commercial-reader-release",
+        "canonical_record_sha256": "26c538b1a5ae4f6807a4ddfafa7b54e4f44ad4a927777ffa6662dfcd5ccd821c",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "PRESERVED_EXISTING_ACTIVE_VERSION"
+      },
+      {
+        "slug": "the-tell-tale-heart",
+        "accepted_decision_id": "india-20260925-the-tell-tale-heart-commercial-reader-release",
+        "canonical_record_sha256": "370cd4896655d25629bd791a0046844992166169aadc6e4c8061d22106b199cb",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "PRESERVED_EXISTING_ACTIVE_VERSION"
+      },
+      {
+        "slug": "radharani",
+        "accepted_decision_id": "india-20260925-radharani-commercial-reader-release",
+        "canonical_record_sha256": "9be847de52927f16dba1a5d40d0c85be07d69bc47c974cd9791daeca532f2a4d",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "PRESERVED_EXISTING_ACTIVE_VERSION"
+      },
+      {
+        "slug": "a-white-heron",
+        "accepted_decision_id": "india-20260925-a-white-heron-commercial-reader-release",
+        "canonical_record_sha256": "756bb230f18b4c7226f88a376d1c8a8e53c240ec1864e8f290be70afcf66c388",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "PRESERVED_EXISTING_ACTIVE_VERSION"
+      },
+      {
+        "slug": "the-gift-of-the-magi",
+        "accepted_decision_id": "india-20260925-the-gift-of-the-magi-commercial-reader-release",
+        "canonical_record_sha256": "6d4b4acbe88350b9c81ea55002306bc72cf5178daaacfd87269833557c012773",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "PRESERVED_EXISTING_ACTIVE_VERSION"
+      },
+      {
+        "slug": "the-canterville-ghost",
+        "accepted_decision_id": "india-20260925-the-canterville-ghost-commercial-reader-release",
+        "canonical_record_sha256": "704fa0e1a6373356c3f6fa3210050eadd54b37fb584006782e1d16fa42661c15",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "INITIALIZED"
+      },
+      {
+        "slug": "the-adventures-of-sherlock-holmes",
+        "accepted_decision_id": "india-20260929-the-adventures-of-sherlock-holmes-pg1661-text-reader",
+        "canonical_record_sha256": "6698711d408c59160d65605bb156c38eaf183affbdc3695b92ced8f0627e09c6",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "INITIALIZED"
+      },
+      {
+        "slug": "agentic-ai-with-python",
+        "accepted_decision_id": "india-20261001-agentic-ai-with-python-owner-text-reader",
+        "canonical_record_sha256": "5660b0da970e88056cf9507f15c016dad9a4819aae1ab177054eb47c861d7586",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "PRESERVED_EXISTING_ACTIVE_VERSION"
+      },
+      {
+        "slug": "a-horseman-in-the-sky",
+        "accepted_decision_id": "india-20261001-a-horseman-in-the-sky-owner-text-reader",
+        "canonical_record_sha256": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "INITIALIZED"
+      },
+      {
+        "slug": "a-mystery-of-heroism",
+        "accepted_decision_id": "india-20261001-a-mystery-of-heroism-owner-text-reader",
+        "canonical_record_sha256": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "INITIALIZED"
+      },
+      {
+        "slug": "a-scandal-in-bohemia",
+        "accepted_decision_id": "india-20261001-a-scandal-in-bohemia-owner-text-reader",
+        "canonical_record_sha256": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "INITIALIZED"
+      },
+      {
+        "slug": "jekyll-and-hyde",
+        "accepted_decision_id": "india-20261001-jekyll-and-hyde-owner-text-reader",
+        "canonical_record_sha256": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "PRESERVED_EXISTING_ACTIVE_VERSION"
+      },
+      {
+        "slug": "love-of-life",
+        "accepted_decision_id": "india-20261001-love-of-life-owner-text-reader",
+        "canonical_record_sha256": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "INITIALIZED"
+      },
+      {
+        "slug": "the-bishop",
+        "accepted_decision_id": "india-20261001-the-bishop-owner-text-reader",
+        "canonical_record_sha256": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "INITIALIZED"
+      },
+      {
+        "slug": "the-fall-of-the-house-of-usher",
+        "accepted_decision_id": "india-20261001-the-fall-of-the-house-of-usher-owner-text-reader",
+        "canonical_record_sha256": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "INITIALIZED"
+      },
+      {
+        "slug": "the-lady-with-the-dog",
+        "accepted_decision_id": "india-20261001-the-lady-with-the-dog-owner-text-reader",
+        "canonical_record_sha256": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "INITIALIZED"
+      },
+      {
+        "slug": "the-man-who-would-be-king",
+        "accepted_decision_id": "india-20261001-the-man-who-would-be-king-owner-text-reader",
+        "canonical_record_sha256": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "INITIALIZED"
+      },
+      {
+        "slug": "the-open-boat",
+        "accepted_decision_id": "india-20261001-the-open-boat-owner-text-reader",
+        "canonical_record_sha256": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "INITIALIZED"
+      },
+      {
+        "slug": "the-pit-and-the-pendulum",
+        "accepted_decision_id": "india-20261001-the-pit-and-the-pendulum-owner-text-reader",
+        "canonical_record_sha256": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "INITIALIZED"
+      },
+      {
+        "slug": "the-stolen-white-elephant",
+        "accepted_decision_id": "india-20261001-the-stolen-white-elephant-owner-text-reader",
+        "canonical_record_sha256": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "INITIALIZED"
+      },
+      {
+        "slug": "an-occurrence-at-owl-creek-bridge",
+        "accepted_decision_id": "india-20261001-an-occurrence-at-owl-creek-bridge-owner-text-reader",
+        "canonical_record_sha256": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "INITIALIZED"
+      },
+      {
+        "slug": "the-enchanted-april",
+        "accepted_decision_id": "india-20261001-the-enchanted-april-owner-text-reader",
+        "canonical_record_sha256": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "INITIALIZED"
+      },
+      {
+        "slug": "the-happy-prince",
+        "accepted_decision_id": "india-20261001-the-happy-prince-owner-text-reader",
+        "canonical_record_sha256": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "INITIALIZED"
+      },
+      {
+        "slug": "picture-of-dorian-gray",
+        "accepted_decision_id": "india-20261001-picture-of-dorian-gray-owner-text-reader",
+        "canonical_record_sha256": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea",
+        "reader_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "reading_pass_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+        "existing_initializer_status": "INITIALIZED"
+      }
+    ],
+    "remaining_catalogue": {
+      "held": 207,
+      "aggregate_blockers": 860,
+      "missing_cleared_packages": 69
+    },
+    "physical_device_uat": "OWNER_DEFERRED_NOT_RUN_UNVERIFIED",
+    "new_paid_generation": 0,
+    "paid_proposal_reruns": 0,
+    "production_credentials_extracted": false,
+    "country_or_entitlement_bypass": false,
+    "production_customer_or_version_mutations": false,
+    "next_generated_prompt": "Finish secure production sign-in and authenticated trusted-India Reader/Reading Pass readback for all 24 configured editions, including seven retained versions and delivered Agentic cover hashes. Use the preserved exact-source evidence; do not rerun paid generation or proposals, overwrite approved versions, or bypass country or entitlement controls. Record actual per-title results and keep every remaining hold explicit.",
+    "first_hosted_attempt": {
+      "schema": "earnalism.reader-benchmark-assertion-correction.v1",
+      "observed_at": "2026-10-01T10:48:17.185424+00:00",
+      "reviewed_head": "054f3ca4d55f48b9c12546f5c335aa775e54e4ca",
+      "workflow_run": 36850450944,
+      "regression_job": 110330581795,
+      "regression_conclusion": "FAILURE",
+      "existing_native_cases": {
+        "passed": 115
+      },
+      "benchmark": "FAILURE_AT_SINGLE_LOGIN_ASSERTION",
+      "actual_response": 200,
+      "incorrect_expected_response": 401,
+      "approved_policy": "Reading Pass V2 defaults to five active authentication sessions; a second login alone does not revoke the first.",
+      "correction": "Keep the approved runtime unchanged. Use five active sessions in the isolated fixture, confirm the first remains valid within the limit, then perform a sixth real login and require revocation of the oldest session.",
+      "production_observation": false,
+      "paid_provider_calls": 0,
+      "source_sha256": {
+        "scripts/run_reader_benchmark.sh": "22dc34984ddab70c65e120e6a6dde214063acf5c435f97b073f4b711f576b94c",
+        "backend/tests/test_reader_benchmark_mongo_integration.py": "6b083abb2b53428af0de5a9cf85586c7b5848621357350b74f351ab8d58ba768"
+      }
+    },
+    "public_reading_pass_observation": {
+      "url": "https://theearnalism.com/pricing",
+      "page": "RENDERED",
+      "account_signal": "SIGN_IN_VISIBLE",
+      "offers": [
+        {
+          "minutes": 30,
+          "price_inr": 49
+        },
+        {
+          "minutes": 60,
+          "price_inr": 89
+        },
+        {
+          "minutes": 180,
+          "price_inr": 239
+        },
+        {
+          "minutes": 600,
+          "price_inr": 499
+        }
+      ],
+      "entitlement_checkout_metering_and_authenticated_delivery": "NOT_VERIFIED",
+      "purchase_or_customer_mutation": false
+    },
+    "second_hosted_attempt": {
+      "schema": "earnalism.reader-benchmark-authority-audit-correction.v1",
+      "observed_at": "2026-10-01T10:56:58.624322+00:00",
+      "reviewed_head": "e8ce0e5c133bc2efe426407ce6daca143ef589ae",
+      "workflow_run": 36851696048,
+      "regression_job": 110334610184,
+      "regression_conclusion": "FAILURE",
+      "existing_native_cases": {
+        "passed": 115
+      },
+      "benchmark": "FAILURE_AT_WHOLE_POINTER_EQUALITY_ASSERTION",
+      "preceding_http_checks": "SIGNUP_FIVE_SESSION_LIMIT_LOGIN_REFRESH_LEASE_20_PROTECTED_PAGE_PARITY_AND_NEGATIVE_ACCESS_LOGOUT_PASSED_BEFORE_THIS_ASSERTION",
+      "actual_additional_fixture_pointer_fields": {
+        "text_authority_fence": 1,
+        "text_authority_last_start_at": "RECORDED_AT_REAL_ADMISSION"
+      },
+      "approved_behavior": "A real text admission increments an authority audit fence in the existing transaction to serialize against revocation; it does not replace the active version or generation.",
+      "correction": "Require the exact +1 fence update and admission timestamp bounds, then compare every other pointer field and all segment/manifest bytes unchanged. Keep all runtime code unchanged.",
+      "production_observation": false,
+      "paid_provider_calls": 0
+    },
+    "native_benchmark_acceptance": {
+      "schema": "earnalism.reader-benchmark-native-acceptance.v1",
+      "verified_at": "2026-10-01T11:08:49.729679+00:00",
+      "source_head": "7bc1aa2ba6fbc8131da25382d0da0fad14020dc6",
+      "tested_revision": "3c7702b7ad23288c085acff3dba43326eccb6839",
+      "tested_tree": "cb1e8e0d20fd48bf0ae6a3b365c4b4dd84649772",
+      "tested_tree_equals_source_head_tree": true,
+      "workflow_run": 36852504273,
+      "regression_job": 110337212016,
+      "normal_required_checks": {
+        "regression": "SUCCESS",
+        "docker_build_health": "SUCCESS",
+        "coordination": "SUCCESS",
+        "frontend_PR_deploy": "SKIPPED_BY_EXISTING_MAIN_ONLY_POLICY"
+      },
+      "artifact_id": 11156580936,
+      "artifact_zip_sha256": "8a6dfe645ab001efcd60e29d7020da1931728b00d77e0fd0554e729658f73d76",
+      "native_report_sha256": "a14ea12db0e64419f8cdf9de7cb176810817b9d9785a4018ba1bc17495b3206f",
+      "execution_source_sha256": {
+        "scripts/run_reader_benchmark.sh": "22dc34984ddab70c65e120e6a6dde214063acf5c435f97b073f4b711f576b94c",
+        "scripts/test_reader_benchmark_runner.py": "994f1c95cddead1dc3a673f7f1f47652d1ce7f20604d0845c252c806683c2107",
+        "backend/tests/test_reader_benchmark_mongo_integration.py": "f61e9a4ece4fe2dcd1d1924d453c2508f3f0d83c4848c433aaa9869a2dbd6bce",
+        "scripts/run_pr_regression_gates.sh": "ac597a675849671368e4d7859f4c6676a3dad58e76035a135f69cfa9e668f1c9",
+        ".github/workflows/regression.yml": "f89099f58ada1c034ff5e1bd98e842d66e27185baf400a54c990750dfec939b7",
+        ".gitignore": "4186497fdca81bb0c7810bcec76f5514dea44d344d824f89d9d9f23268155a00"
+      },
+      "benchmark_status": "PASS",
+      "existing_native_cases": 115,
+      "new_native_benchmark_cases": 1,
+      "frontend_tests": 47,
+      "full_regression_tests": {
+        "passed": 124,
+        "existing_configured_skips": 4
+      },
+      "protected_page_responses": 20,
+      "negative_access_checks": [
+        "guest_page_4",
+        "login_limit_revoked_session",
+        "missing_lease",
+        "invalid_lease",
+        "missing_device_cookie",
+        "logged_out_session"
+      ],
+      "fixture_versions_unchanged": true,
+      "fixture_wallet_debit_seconds": 0,
+      "fixture_authority_fence_delta": 1,
+      "page_response_timings": {
+        "samples": 20,
+        "median_ms": 5.825,
+        "p95_ms": 6.155,
+        "maximum_ms": 6.564,
+        "samples_ms": [
+          6.564,
+          6.155,
+          5.966,
+          6.134,
+          5.834,
+          5.891,
+          5.898,
+          6.039,
+          5.726,
+          5.555,
+          5.562,
+          5.815,
+          5.618,
+          5.637,
+          5.601,
+          5.928,
+          5.644,
+          5.626,
+          5.636,
+          6.008
+        ],
+        "interpretation": "Informational ASGI/database response timings; no browser paint or production latency/SLO claim."
+      },
+      "production_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+      "production_titles_passed": 0,
+      "production_titles_not_run": 24,
+      "customer_ready": "NOT_DECLARED",
+      "preservation": {
+        "source_art_byte_identical": 2807,
+        "prior_release_package_byte_identical": 231,
+        "approved_runtime_UI_registry_decisions_versions_unchanged": true
+      },
+      "new_paid_generation": 0,
+      "paid_proposal_reruns": 0,
+      "next_generated_prompt": "Finish secure production sign-in and authenticated trusted-India Reader/Reading Pass readback for all 24 configured editions, including seven retained versions and delivered Agentic cover hashes. Use the preserved exact-source evidence; do not rerun paid generation or proposals, overwrite approved versions, or bypass country or entitlement controls. Record actual per-title results and keep every remaining hold explicit."
+    },
+    "coordination_task_state": "VERIFYING_PRODUCTION_BLOCKED_PREREQUISITES"
   }
 }

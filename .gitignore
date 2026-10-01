@@ -137,6 +137,7 @@ credentials.json
 node_modules/
 build/
 **/__pycache__/
+regression/artifacts/reader-benchmark/
 **pycache**
 
 .secrets/

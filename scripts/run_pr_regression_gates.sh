@@ -60,6 +60,9 @@ env \
     backend/tests/test_approved_reader_bootstrap.py \
     backend/tests/test_yugalanguriya_publication_inspection.py
 
+echo "==> Isolated Reader authentication and protected page response benchmark"
+env READER_SEGMENT_MONGO_INTEGRATION=1 bash scripts/run_reader_benchmark.sh
+
 echo "==> Local UAT public-release hold seeding contract"
 "$PYTHON_BIN" -m unittest \
   scripts.test_seed_uat_canonical_pages \

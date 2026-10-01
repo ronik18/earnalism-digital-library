@@ -1,9 +1,103 @@
 {
   "schema_version": 1,
   "tasks": [
-    {"task_id":"payment-21122804","lane":"payment","state":"WAITING_OWNER_PROVIDER_UPDATE","file_scope":[],"dependencies":[],"acceptance":["provider response"],"next_state":"DONE"},
-    {"task_id":"pr-441-production","lane":"ui","state":"DONE","file_scope":["frontend/src/components/ReaderPerspectives.css"],"dependencies":[],"acceptance":["production visual smoke"],"head":"65d0654c1796816a185bba71c7b0133b5ff15bfb"},
-    {"task_id":"reader-benchmark","lane":"reader","state":"READY","file_scope":["scripts/run_reader_benchmark.sh"],"dependencies":[],"acceptance":["isolated auth","page-turn timings"],"next_state":"READY_FOR_REVIEW"},
-    {"task_id":"catalogue-ginni","lane":"catalogue","state":"BLOCKED_EXACT_REASON","file_scope":[],"dependencies":[],"acceptance":["source disclosure","cover-optional manifest"],"blocker":"generated package contains stale cover/live fields and lacks source-layer attribution"}
+    {
+      "task_id": "payment-21122804",
+      "lane": "payment",
+      "state": "WAITING_OWNER_PROVIDER_UPDATE",
+      "file_scope": [],
+      "dependencies": [],
+      "acceptance": [
+        "provider response"
+      ],
+      "next_state": "DONE"
+    },
+    {
+      "task_id": "pr-441-production",
+      "lane": "ui",
+      "state": "DONE",
+      "file_scope": [
+        "frontend/src/components/ReaderPerspectives.css"
+      ],
+      "dependencies": [],
+      "acceptance": [
+        "production visual smoke"
+      ],
+      "head": "65d0654c1796816a185bba71c7b0133b5ff15bfb"
+    },
+    {
+      "task_id": "reader-benchmark",
+      "lane": "reader",
+      "state": "VERIFYING_PRODUCTION",
+      "file_scope": [
+        "scripts/run_reader_benchmark.sh",
+        "scripts/test_reader_benchmark_runner.py",
+        "backend/tests/test_reader_benchmark_mongo_integration.py",
+        "scripts/run_pr_regression_gates.sh",
+        ".github/workflows/regression.yml",
+        ".github/earnalism-coordination/tasks.json",
+        ".gitignore"
+      ],
+      "dependencies": [],
+      "acceptance": [
+        "real isolated HTTP auth and refresh",
+        "20 protected canonical page responses with source/hash parity and timings",
+        "guest, lease, device-cookie and logout denials",
+        "fixture versions and wallet unchanged"
+      ],
+      "next_state": "DONE",
+      "checks": {
+        "all_passed": true,
+        "source_head": "7bc1aa2ba6fbc8131da25382d0da0fad14020dc6",
+        "tested_revision": "3c7702b7ad23288c085acff3dba43326eccb6839",
+        "tested_tree": "cb1e8e0d20fd48bf0ae6a3b365c4b4dd84649772",
+        "regression_run": 36852504273,
+        "benchmark_report_sha256": "a14ea12db0e64419f8cdf9de7cb176810817b9d9785a4018ba1bc17495b3206f",
+        "execution_source_sha256": {
+          "scripts/run_reader_benchmark.sh": "22dc34984ddab70c65e120e6a6dde214063acf5c435f97b073f4b711f576b94c",
+          "scripts/test_reader_benchmark_runner.py": "994f1c95cddead1dc3a673f7f1f47652d1ce7f20604d0845c252c806683c2107",
+          "backend/tests/test_reader_benchmark_mongo_integration.py": "f61e9a4ece4fe2dcd1d1924d453c2508f3f0d83c4848c433aaa9869a2dbd6bce",
+          "scripts/run_pr_regression_gates.sh": "ac597a675849671368e4d7859f4c6676a3dad58e76035a135f69cfa9e668f1c9",
+          ".github/workflows/regression.yml": "f89099f58ada1c034ff5e1bd98e842d66e27185baf400a54c990750dfec939b7",
+          ".gitignore": "4186497fdca81bb0c7810bcec76f5514dea44d344d824f89d9d9f23268155a00"
+        },
+        "production_proof": false
+      },
+      "execution": {
+        "workflow": ".github/workflows/regression.yml",
+        "runner": "scripts/run_reader_benchmark.sh",
+        "prepared_context": "existing isolated UAT Python and MongoDB replica set on 127.0.0.1:27018; explicit opt-in required",
+        "artifact": "regression/artifacts/reader-benchmark/report.json",
+        "production_proof": false,
+        "paid_provider_calls": 0,
+        "native_report": "internal/earnalism_intelligence/reader_benchmark_recovery_20261001/native_report.json"
+      },
+      "remaining_production_acceptance": [
+        "authenticated trusted-India Reader/Reading Pass readback for all 24 configured editions",
+        "preserved active-version parity for seven editions",
+        "delivered Agentic cover bytes/hashes"
+      ],
+      "production_checks": {
+        "all_passed": false,
+        "status": "BLOCKED_PREREQUISITES",
+        "reader_readbacks_passed": 0,
+        "reading_pass_readbacks_passed": 0,
+        "configured_editions_not_run": 24,
+        "reason": "Secure owner-selected Google flow reached device approval but has not produced a confirmed target-domain login; trusted India context is not verified. No credentials, country headers or entitlements may be manufactured."
+      },
+      "blocker": "Secure owner-selected Google flow reached device approval but has not produced a confirmed target-domain login; trusted India context is not verified. No credentials, country headers or entitlements may be manufactured."
+    },
+    {
+      "task_id": "catalogue-ginni",
+      "lane": "catalogue",
+      "state": "BLOCKED_EXACT_REASON",
+      "file_scope": [],
+      "dependencies": [],
+      "acceptance": [
+        "source disclosure",
+        "cover-optional manifest"
+      ],
+      "blocker": "generated package contains stale cover/live fields and lacks source-layer attribution"
+    }
   ]
 }
