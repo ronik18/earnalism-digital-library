@@ -175,7 +175,9 @@ export function getAnonymousLaunchSessionId() {
 }
 
 export function analyticsNetworkEnabled() {
-  if (typeof process !== "undefined" && process.env?.REACT_APP_ENABLE_LAUNCH_ANALYTICS === "true") {
+  // Read the CRA build-time variable directly so DefinePlugin can substitute
+  // it in production bundles; browsers do not guarantee a global `process`.
+  if (process.env.REACT_APP_ENABLE_LAUNCH_ANALYTICS === "true") {
     return true;
   }
   return typeof window !== "undefined" && window.__EARNALISM_ENABLE_FUNNEL_ANALYTICS__ === true;
@@ -244,7 +246,7 @@ export function resetLaunchAnalyticsForTests() {
 }
 
 export function analyticsDebugEnabled() {
-  if (typeof process !== "undefined" && process.env?.REACT_APP_ENABLE_LAUNCH_ANALYTICS_DEBUG === "true") {
+  if (process.env.REACT_APP_ENABLE_LAUNCH_ANALYTICS_DEBUG === "true") {
     return true;
   }
   return typeof window !== "undefined" && window.__EARNALISM_DEBUG_FUNNEL_ANALYTICS__ === true;
