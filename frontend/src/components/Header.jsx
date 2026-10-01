@@ -109,7 +109,7 @@ export default function Header({ onNavigatePath } = {}) {
   return (
     <header
       className={`sticky top-0 z-50 glass-header premium-site-header${usesDarkReferenceShell ? " premium-site-header--reference-public" : ""}${usesHomeOptionBShell ? " premium-site-header--reference-home" : ""}${usesLibraryReferenceShell ? " premium-site-header--reference-library" : ""}${usesCommerceReferenceShell ? " premium-site-header--reference-commerce" : ""}${usesProfileMobileShell ? " premium-site-header--reference-profile" : ""}`}
-      onClick={(event) => {
+      onClickCapture={(event) => {
         if (!onNavigatePath || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         const link = event.target.closest("a[href]");
         const destination = link?.getAttribute("href");
