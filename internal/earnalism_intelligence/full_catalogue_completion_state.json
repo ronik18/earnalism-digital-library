@@ -307,7 +307,7 @@
       "merge_main": "45490009cf45fc1ce6853752f80e903636169916"
     }
   },
-  "next_generated_prompt": "Review the exact-head isolated Reader benchmark artifact and merge only its passing repair. Complete the pending Google device approval through the secure sign-in flow and verify authenticated trusted-India Reader/Reading Pass delivery for all 24 configured editions, including seven retained versions and delivered Agentic hashes. Preserve all approved source, art, versions and 207 genuine holds; run no paid generation or proposal reruns.",
+  "next_generated_prompt": "Finish secure production sign-in and authenticated trusted-India Reader/Reading Pass readback for all 24 configured editions, including seven retained versions and delivered Agentic cover hashes. Use the preserved exact-source evidence; do not rerun paid generation or proposals, overwrite approved versions, or bypass country or entitlement controls. Record actual per-title results and keep every remaining hold explicit.",
   "latest_verified_catalogue_campaign": {
     "run": 36794894294,
     "job": 110156271363,
@@ -1114,14 +1114,14 @@
   },
   "reader_benchmark_recovery_20261001": {
     "schema": "earnalism.reader-benchmark-repair-progress.v1",
-    "observed_at": "2026-10-01T10:56:58.624322+00:00",
+    "observed_at": "2026-10-01T11:08:49.729679+00:00",
     "base_main": "af286898c9c9f039c13355a19de0ce11e0d1629d",
     "owner_instruction": "Repair the stale Reader benchmark task, then complete authenticated India Reader and Reading Pass verification for all 24 configured editions. Preserve approved code, artwork and versions; record actual results and remaining holds. Use no paid generation or proposal reruns.",
     "stale_coordination_run": 36844619269,
     "stale_plan_zip_sha256": "945f57e7f7ece5eeb846d547e018a6867c8a8024e7c5175b1945fde17bfbc107",
     "finding": "Planner emitted DISPATCH for reader-benchmark, but its entry point was absent; the planner does not execute actions.",
     "repair": "Restore the guarded runner and actual ASGI/native Mongo benchmark in the existing prepared regression stack; preserve runtime code, approved sources, artwork, versions and release policies.",
-    "benchmark_status": "PENDING_CORRECTED_HOSTED_NATIVE_EXECUTION",
+    "benchmark_status": "PASS_HOSTED_ISOLATED_ASGI_REAL_MONGO",
     "local_guard_bridge_cost_tests": {
       "passed": 12,
       "native_mongo": "UNAVAILABLE_LOCAL_LOOPBACK_REPLICA_SET",
@@ -1135,7 +1135,7 @@
       "backend/tests/test_reader_benchmark_mongo_integration.py": "f61e9a4ece4fe2dcd1d1924d453c2508f3f0d83c4848c433aaa9869a2dbd6bce",
       "scripts/run_pr_regression_gates.sh": "ac597a675849671368e4d7859f4c6676a3dad58e76035a135f69cfa9e668f1c9",
       ".github/workflows/regression.yml": "f89099f58ada1c034ff5e1bd98e842d66e27185baf400a54c990750dfec939b7",
-      ".github/earnalism-coordination/tasks.json": "c6cbfff9e11f02eb6d84fbab07cff7c9d25e464cd10fa20414edaed1b67deea5",
+      ".github/earnalism-coordination/tasks.json": "328e71833a8ec9982aef5d17252ed8fbdedd759514159240fc5d18cf2d7f339e",
       ".gitignore": "4186497fdca81bb0c7810bcec76f5514dea44d344d824f89d9d9f23268155a00"
     },
     "production_auth_attempt": {
@@ -1145,7 +1145,9 @@
       "popup_inspection": "BROWSER_ATTACH_TIMEOUT_NO_RETRY_OR_CREDENTIAL_EXTRACTION",
       "fresh_target_domain_observation": "SIGN_IN_VISIBLE",
       "authenticated_session": "NOT_VERIFIED",
-      "trusted_india_context": "NOT_VERIFIED"
+      "trusted_india_context": "NOT_VERIFIED",
+      "latest_target_domain_observation": "SIGN_IN_PAGE_UNCHANGED_AFTER_CORRECTED_CI_SUBMISSION",
+      "target_domain_url": "https://theearnalism.com/login"
     },
     "configured_title_count": 24,
     "production_readback_status": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
@@ -1363,7 +1365,7 @@
     "production_credentials_extracted": false,
     "country_or_entitlement_bypass": false,
     "production_customer_or_version_mutations": false,
-    "next_generated_prompt": "Review the exact-head isolated Reader benchmark artifact and merge only its passing repair. Complete the pending Google device approval through the secure sign-in flow and verify authenticated trusted-India Reader/Reading Pass delivery for all 24 configured editions, including seven retained versions and delivered Agentic hashes. Preserve all approved source, art, versions and 207 genuine holds; run no paid generation or proposal reruns.",
+    "next_generated_prompt": "Finish secure production sign-in and authenticated trusted-India Reader/Reading Pass readback for all 24 configured editions, including seven retained versions and delivered Agentic cover hashes. Use the preserved exact-source evidence; do not rerun paid generation or proposals, overwrite approved versions, or bypass country or entitlement controls. Record actual per-title results and keep every remaining hold explicit.",
     "first_hosted_attempt": {
       "schema": "earnalism.reader-benchmark-assertion-correction.v1",
       "observed_at": "2026-10-01T10:48:17.185424+00:00",
@@ -1431,6 +1433,95 @@
       "correction": "Require the exact +1 fence update and admission timestamp bounds, then compare every other pointer field and all segment/manifest bytes unchanged. Keep all runtime code unchanged.",
       "production_observation": false,
       "paid_provider_calls": 0
-    }
+    },
+    "native_benchmark_acceptance": {
+      "schema": "earnalism.reader-benchmark-native-acceptance.v1",
+      "verified_at": "2026-10-01T11:08:49.729679+00:00",
+      "source_head": "7bc1aa2ba6fbc8131da25382d0da0fad14020dc6",
+      "tested_revision": "3c7702b7ad23288c085acff3dba43326eccb6839",
+      "tested_tree": "cb1e8e0d20fd48bf0ae6a3b365c4b4dd84649772",
+      "tested_tree_equals_source_head_tree": true,
+      "workflow_run": 36852504273,
+      "regression_job": 110337212016,
+      "normal_required_checks": {
+        "regression": "SUCCESS",
+        "docker_build_health": "SUCCESS",
+        "coordination": "SUCCESS",
+        "frontend_PR_deploy": "SKIPPED_BY_EXISTING_MAIN_ONLY_POLICY"
+      },
+      "artifact_id": 11156580936,
+      "artifact_zip_sha256": "8a6dfe645ab001efcd60e29d7020da1931728b00d77e0fd0554e729658f73d76",
+      "native_report_sha256": "a14ea12db0e64419f8cdf9de7cb176810817b9d9785a4018ba1bc17495b3206f",
+      "execution_source_sha256": {
+        "scripts/run_reader_benchmark.sh": "22dc34984ddab70c65e120e6a6dde214063acf5c435f97b073f4b711f576b94c",
+        "scripts/test_reader_benchmark_runner.py": "994f1c95cddead1dc3a673f7f1f47652d1ce7f20604d0845c252c806683c2107",
+        "backend/tests/test_reader_benchmark_mongo_integration.py": "f61e9a4ece4fe2dcd1d1924d453c2508f3f0d83c4848c433aaa9869a2dbd6bce",
+        "scripts/run_pr_regression_gates.sh": "ac597a675849671368e4d7859f4c6676a3dad58e76035a135f69cfa9e668f1c9",
+        ".github/workflows/regression.yml": "f89099f58ada1c034ff5e1bd98e842d66e27185baf400a54c990750dfec939b7",
+        ".gitignore": "4186497fdca81bb0c7810bcec76f5514dea44d344d824f89d9d9f23268155a00"
+      },
+      "benchmark_status": "PASS",
+      "existing_native_cases": 115,
+      "new_native_benchmark_cases": 1,
+      "frontend_tests": 47,
+      "full_regression_tests": {
+        "passed": 124,
+        "existing_configured_skips": 4
+      },
+      "protected_page_responses": 20,
+      "negative_access_checks": [
+        "guest_page_4",
+        "login_limit_revoked_session",
+        "missing_lease",
+        "invalid_lease",
+        "missing_device_cookie",
+        "logged_out_session"
+      ],
+      "fixture_versions_unchanged": true,
+      "fixture_wallet_debit_seconds": 0,
+      "fixture_authority_fence_delta": 1,
+      "page_response_timings": {
+        "samples": 20,
+        "median_ms": 5.825,
+        "p95_ms": 6.155,
+        "maximum_ms": 6.564,
+        "samples_ms": [
+          6.564,
+          6.155,
+          5.966,
+          6.134,
+          5.834,
+          5.891,
+          5.898,
+          6.039,
+          5.726,
+          5.555,
+          5.562,
+          5.815,
+          5.618,
+          5.637,
+          5.601,
+          5.928,
+          5.644,
+          5.626,
+          5.636,
+          6.008
+        ],
+        "interpretation": "Informational ASGI/database response timings; no browser paint or production latency/SLO claim."
+      },
+      "production_readback": "NOT_RUN_AUTHENTICATED_TRUSTED_INDIA_CONTEXT_UNAVAILABLE",
+      "production_titles_passed": 0,
+      "production_titles_not_run": 24,
+      "customer_ready": "NOT_DECLARED",
+      "preservation": {
+        "source_art_byte_identical": 2807,
+        "prior_release_package_byte_identical": 231,
+        "approved_runtime_UI_registry_decisions_versions_unchanged": true
+      },
+      "new_paid_generation": 0,
+      "paid_proposal_reruns": 0,
+      "next_generated_prompt": "Finish secure production sign-in and authenticated trusted-India Reader/Reading Pass readback for all 24 configured editions, including seven retained versions and delivered Agentic cover hashes. Use the preserved exact-source evidence; do not rerun paid generation or proposals, overwrite approved versions, or bypass country or entitlement controls. Record actual per-title results and keep every remaining hold explicit."
+    },
+    "coordination_task_state": "VERIFYING_PRODUCTION_BLOCKED_PREREQUISITES"
   }
 }
