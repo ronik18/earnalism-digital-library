@@ -1,0 +1,50 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261001-agentic-ai-with-python-owner-text-reader-proposal",
+  "edition_id": "agentic-ai-with-python",
+  "operator_id": "reo-enterprise",
+  "status": "HOLD",
+  "components": {
+    "public_book": "3b9fb4c9c4ab17f1746d5df6d889692e6440db6262277e099a87d69cbdd18b3e",
+    "reader_manifest": "705ce53074d1d9259bc1f38b7ba999351b269d48bff630fde669c4b1133674b7",
+    "source_evidence": "c21bb049f395d0a88c6912136974140341db4b6ecd631395aad36609ded48386",
+    "approval_evidence": "1d34313e08796c09cb8d3a9a0e9a343c59fce01028bdaa47e846cf25f505d308",
+    "checksum_manifest": "79da7661b185b8960925442990da75e9310634a50da83452afbc5cd8d381df79",
+    "publication_manifest": "f25b571aa0c40b84448435a8078586ecd92142414f5edbe70617362879872d8f",
+    "chapter:chapter-001": "efccca13d2252ce2dac4cb5553e1edfca33262ffa7fa0f2179a7577476aff08a",
+    "chapter:chapter-002": "b389924f429367b00e32aa8f9bb8d6d5a69693bbd4bc41e27736b20c61902ecc",
+    "chapter:chapter-003": "896bdf0af90efb7dee3fa0e6d9e80db1471595836736ba67908fa79fd6482ae7",
+    "chapter:chapter-004": "e2f83bff22823507495fe31d4f2e0004fbaca6fd5ed81312564871aed72b5e2f",
+    "chapter:chapter-005": "a93803d652cb04f2bb0ea8a55471c684f961703acad287fb94853e5a0e328fc8",
+    "chapter:chapter-006": "cb6ed6a1ec7e58dbc204e686459cf35318a3d7266d16cfb726b9f43a31586715",
+    "chapter:chapter-007": "8746d00c4c12a3825a962188e914f2d1ea1c7c10c406ea462afa4fa4aaa9e730",
+    "chapter:chapter-008": "fef53ecb91b3afb8d0c23a0a4a4b558c9f23598a3fa7fefe9edd081716a5c701",
+    "chapter:chapter-009": "6fb468b540a40e1cd8c5e1d6a68331f9a2f611031f927893ef4c1614e0bdbe03",
+    "chapter:chapter-010": "19c190ec3caddb1653fea629eaf913a0468655c533c1a4f1588c2a487227cf8c",
+    "chapter:chapter-011": "4bed8449a5e8bc9e89d0c45913063d0bb2a1abcb7d1c59e415503c93440ca27c",
+    "chapter:chapter-012": "edde00eac6df148abef6f39ef8f8eaa9ff6384a17b6b7bf0b722b6e98a5b703a",
+    "chapter:chapter-013": "95196ad65444292e591f976eb8fa51e25fc17237039b3ad5560b666f91842c03",
+    "chapter:chapter-014": "e61748ddd182c6049b3a454debc9e8b57d4f43f87469fc5105b1a1a7fba404da",
+    "front_cover": "c78a7236129ec23bc41008947087ae692ae8ecfeeecd674914e4c636749aa6d1",
+    "back_cover": "94268d9f1c05505ae161bf3756875c8b6a49cbc76cd7b964612586713b190496",
+    "cover_provenance": "b4a2fb7ff5a1900f4918411cb344882c6eb0260567dd825c1025bd096b1d2e33"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery"
+  ],
+  "valid_from": "2026-10-01T02:22:54.965113+00:00",
+  "valid_until": "2036-10-01T02:22:55.036193+00:00",
+  "basis": "Ronik Basak directly reaffirmed manuscript authorship and creation of both cover designs; retained owner evidence authorizes commercial reader publication. The exact selected revision and cover assets are hash-bound here. Full release acceptance remains pending the specific PSF logo variant disposition and applicable book trademark notice. This proposed India text-reader scope does not authorize audio, paid Pass uses, exports, AI generation, another edition, deployment or publication activation. Proposed validity is reviewable and is not an accepted grant.",
+  "evidence_sha256": [
+    "a421be4c4fa95b7fcb875d23e112eb4a80db71ac3f88e009c841029ed45f5aa3",
+    "b4a2fb7ff5a1900f4918411cb344882c6eb0260567dd825c1025bd096b1d2e33"
+  ],
+  "accepted_by": "",
+  "conditions_satisfied": false
+}
