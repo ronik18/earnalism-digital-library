@@ -1,6 +1,6 @@
 {
   "active_files_sha256": {
-    "approval_evidence.json": "e3978a2da64ac709ce58130292bb1a3f630b97ed4dfff50ea9d95ef828c79135",
+    "approval_evidence.json": "07592d4f7b23ddbc05ffafda17ab7392c25f536fa84c290b285e16edf383d71a",
     "chapters/chapter-001.json": "a5abf8f1897a155c8f51ceffa27b7b7602b894e4f21ab9f8886761bca2180517",
     "chapters/chapter-002.json": "ddbc78fbf461f9fa5a940922548f1f2af2170a67190d2bb7ecd00e352dc19e79",
     "chapters/chapter-003.json": "697c038108e506accb3e18d48cc81ecb6d537e91a5df534f4b8f3e68a3aa70dd",
@@ -23,11 +23,15 @@
     "chapters/chapter-020.json": "c653c2e1d9857f1e4d6175c6194f93fa02d90a9e73c09cfff0081da90789dd51",
     "chapters/chapter-021.json": "45c29e3980041e171f60bf86552d52f94b59e1792a48dc39b307818aff71e08b",
     "chapters/chapter-022.json": "c7685ce921efa52dd2425812958614458f56bdd55742078565054dfd68a2a659",
-    "checksum_manifest.json": "ba421ea8348d346e07c0c4dd89ed6540be066074940bff2f083c4e50ae3831bf",
+    "checksum_manifest.json": "db1000b20f32ed87927ba5df71ef6a6c05083ac18171835fecb4c2c73a34e4c4",
+    "cover_provenance.json": "ae3f16a1f0f5c928e6d705c1474b6c6fbed4ec0f6036833f1f0ef9af48ba50fa",
     "highlight_sync.json": "2601e4898cd1a00d62da1e266ee3f66b2d396d448f1acf53376eca1cf518b862",
-    "public_book.json": "c3aba2778defb0c3ca5be4fed5b0d6231069ba2d4d823206047dc67c8a98ceaa",
+    "public_book.json": "3ca6322edc59469b1550e93ea9b706ae56e68f2314f2a136bf196a73f06d7f28",
+    "publication_manifest.json": "0cc8bc909be6fb64762a2c3f411c41e6ba2b34505af83b6a721d5eebf655742a",
     "reader_manifest.json": "8971cebfd2ff004ea3321c2f7b67ccd300fc11508f36e8ed23eb1174efc7bcc2",
+    "reader_release_approval.json": "a5a18dbfad60eaf0c54399be20bc3c3ad7f61063a01ca28e18a292ade0889925",
     "reader_repair_evidence.json": "ebc6c62633d6d809c4857d9f6a18c64aadca0c1b12ee1be5bbb9833a303ab7bf",
+    "rights_decision.json": "89023e2fd78098d10c2544eb1cf2486d86883b94a01a99a6f377a4297474e5ef",
     "source_evidence.json": "85f0311dfb8e5262fc813fcf48e4c56f4677f6a75d949a6c9f3ff0fd19b9a80f"
   },
   "chapter_content_hashes": [
@@ -143,7 +147,7 @@
     }
   ],
   "input_files_sha256": {
-    "approval_evidence.json": "e3978a2da64ac709ce58130292bb1a3f630b97ed4dfff50ea9d95ef828c79135",
+    "approval_evidence.json": "07592d4f7b23ddbc05ffafda17ab7392c25f536fa84c290b285e16edf383d71a",
     "chapters/chapter-001.json": "a5abf8f1897a155c8f51ceffa27b7b7602b894e4f21ab9f8886761bca2180517",
     "chapters/chapter-002.json": "ddbc78fbf461f9fa5a940922548f1f2af2170a67190d2bb7ecd00e352dc19e79",
     "chapters/chapter-003.json": "697c038108e506accb3e18d48cc81ecb6d537e91a5df534f4b8f3e68a3aa70dd",
@@ -166,18 +170,22 @@
     "chapters/chapter-020.json": "c653c2e1d9857f1e4d6175c6194f93fa02d90a9e73c09cfff0081da90789dd51",
     "chapters/chapter-021.json": "45c29e3980041e171f60bf86552d52f94b59e1792a48dc39b307818aff71e08b",
     "chapters/chapter-022.json": "c7685ce921efa52dd2425812958614458f56bdd55742078565054dfd68a2a659",
-    "checksum_manifest.json": "ba421ea8348d346e07c0c4dd89ed6540be066074940bff2f083c4e50ae3831bf",
+    "checksum_manifest.json": "db1000b20f32ed87927ba5df71ef6a6c05083ac18171835fecb4c2c73a34e4c4",
+    "cover_provenance.json": "ae3f16a1f0f5c928e6d705c1474b6c6fbed4ec0f6036833f1f0ef9af48ba50fa",
     "highlight_sync.json": "2601e4898cd1a00d62da1e266ee3f66b2d396d448f1acf53376eca1cf518b862",
-    "public_book.json": "c3aba2778defb0c3ca5be4fed5b0d6231069ba2d4d823206047dc67c8a98ceaa",
+    "public_book.json": "3ca6322edc59469b1550e93ea9b706ae56e68f2314f2a136bf196a73f06d7f28",
+    "publication_manifest.json": "0cc8bc909be6fb64762a2c3f411c41e6ba2b34505af83b6a721d5eebf655742a",
     "reader_manifest.json": "8971cebfd2ff004ea3321c2f7b67ccd300fc11508f36e8ed23eb1174efc7bcc2",
+    "reader_release_approval.json": "a5a18dbfad60eaf0c54399be20bc3c3ad7f61063a01ca28e18a292ade0889925",
     "reader_repair_evidence.json": "ebc6c62633d6d809c4857d9f6a18c64aadca0c1b12ee1be5bbb9833a303ab7bf",
+    "rights_decision.json": "89023e2fd78098d10c2544eb1cf2486d86883b94a01a99a6f377a4297474e5ef",
     "source_evidence.json": "85f0311dfb8e5262fc813fcf48e4c56f4677f6a75d949a6c9f3ff0fd19b9a80f"
   },
   "publication_authority": false,
   "publication_manifest": {
     "artifacts": {
-      "approval_evidence": "e3978a2da64ac709ce58130292bb1a3f630b97ed4dfff50ea9d95ef828c79135",
-      "public_book": "c3aba2778defb0c3ca5be4fed5b0d6231069ba2d4d823206047dc67c8a98ceaa",
+      "approval_evidence": "07592d4f7b23ddbc05ffafda17ab7392c25f536fa84c290b285e16edf383d71a",
+      "public_book": "3ca6322edc59469b1550e93ea9b706ae56e68f2314f2a136bf196a73f06d7f28",
       "reader_manifest": "8971cebfd2ff004ea3321c2f7b67ccd300fc11508f36e8ed23eb1174efc7bcc2",
       "source_evidence": "85f0311dfb8e5262fc813fcf48e4c56f4677f6a75d949a6c9f3ff0fd19b9a80f"
     },
@@ -354,18 +362,14 @@
       "sanitized": true,
       "source_hash": "d2d5a31f295361fb742f44729d3de6082cd7bff742a0484cd178731d66ef8370"
     },
-    "generated_at": "2026-10-01T03:17:21.336723+00:00",
-    "manifest_sha256": "710484a6c65263145999e725c9fcb8247726c7138f891ef880a17c29ae56fabe",
+    "generated_at": "2026-10-01T05:38:07.922769+00:00",
+    "manifest_sha256": "5f02d871883c391a682ed5384c8325d3df93e20297eda786af08fd3d91b05d01",
     "reader_release": {
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "Reader QA must pass."
-      ],
+      "blockers": [],
       "cover_url": "https://theearnalism.com/assets/books/the-enchanted-april/front-cover.webp",
-      "exposed": false,
-      "qa_status": "READY_FOR_APPROVAL",
-      "status": "BLOCKED"
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
     },
     "rights": {
       "evidence_sha256": "85f0311dfb8e5262fc813fcf48e4c56f4677f6a75d949a6c9f3ff0fd19b9a80f",
@@ -379,28 +383,22 @@
     "title": "The Enchanted April"
   },
   "rights_assessment": {
-    "decision_id": null,
-    "offline_india_text_scope_passed": false,
+    "decision_id": "india-20261001-the-enchanted-april-owner-text-reader",
+    "offline_india_text_scope_passed": true,
     "production_request_verified": false,
-    "registry_bound": false,
+    "registry_bound": true,
     "runtime_actions": {
       "catalog_cta": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_chapter": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_manifest": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       }
     }
   },

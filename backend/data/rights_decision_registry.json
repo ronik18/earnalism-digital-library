@@ -1,6 +1,6 @@
 {
   "schema_version": "earnalism.rights-decision-registry.v1",
-  "registry_id": "india-eight-title-commercial-entitlement-reader-20261001",
+  "registry_id": "india-twenty-four-title-commercial-entitlement-reader-20261001",
   "accepted_records": {
     "india-20260922-a-ghost-story-reader-release": "caa2538805f8388e3216affae04aa6e3a941541395296d7bab17ed34fd725107",
     "india-20260922-the-tell-tale-heart-reader-release": "39010bea33d4b43790f98af1758fdeadc20625d4ab8df01e247bb143788bec39",
@@ -12,7 +12,23 @@
     "india-20260925-the-gift-of-the-magi-commercial-reader-release": "6d4b4acbe88350b9c81ea55002306bc72cf5178daaacfd87269833557c012773",
     "india-20260925-the-canterville-ghost-commercial-reader-release": "704fa0e1a6373356c3f6fa3210050eadd54b37fb584006782e1d16fa42661c15",
     "india-20260929-the-adventures-of-sherlock-holmes-pg1661-text-reader": "6698711d408c59160d65605bb156c38eaf183affbdc3695b92ced8f0627e09c6",
-    "india-20261001-agentic-ai-with-python-owner-text-reader": "5660b0da970e88056cf9507f15c016dad9a4819aae1ab177054eb47c861d7586"
+    "india-20261001-agentic-ai-with-python-owner-text-reader": "5660b0da970e88056cf9507f15c016dad9a4819aae1ab177054eb47c861d7586",
+    "india-20261001-a-horseman-in-the-sky-owner-text-reader": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+    "india-20261001-a-mystery-of-heroism-owner-text-reader": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+    "india-20261001-a-scandal-in-bohemia-owner-text-reader": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+    "india-20261001-jekyll-and-hyde-owner-text-reader": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
+    "india-20261001-love-of-life-owner-text-reader": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb",
+    "india-20261001-the-bishop-owner-text-reader": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b",
+    "india-20261001-the-fall-of-the-house-of-usher-owner-text-reader": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168",
+    "india-20261001-the-lady-with-the-dog-owner-text-reader": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
+    "india-20261001-the-man-who-would-be-king-owner-text-reader": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
+    "india-20261001-the-open-boat-owner-text-reader": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+    "india-20261001-the-pit-and-the-pendulum-owner-text-reader": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+    "india-20261001-the-stolen-white-elephant-owner-text-reader": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+    "india-20261001-an-occurrence-at-owl-creek-bridge-owner-text-reader": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+    "india-20261001-the-enchanted-april-owner-text-reader": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
+    "india-20261001-the-happy-prince-owner-text-reader": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
+    "india-20261001-picture-of-dorian-gray-owner-text-reader": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea"
   },
   "historical_records": {
     "superseded_runtime_bindings": {
@@ -147,7 +163,119 @@
         "IN"
       ],
       "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-a-horseman-in-the-sky": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-a-mystery-of-heroism": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-a-scandal-in-bohemia": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-jekyll-and-hyde": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-love-of-life": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-the-bishop": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-the-fall-of-the-house-of-usher": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-the-lady-with-the-dog": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-the-man-who-would-be-king": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-the-open-boat": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-the-pit-and-the-pendulum": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-the-stolen-white-elephant": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-an-occurrence-at-owl-creek-bridge": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-the-enchanted-april": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-the-happy-prince": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-picture-of-dorian-gray": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
     }
   },
-  "non_activation_note": "Eight controlled India text titles are approved for public 3-page previews with Reading Pass entitlement required from page 4. Agentic is authorized under the direct owner instruction for the exact revised 14-chapter text package and corrected covers with notice. Sherlock Holmes remains restricted to the exact Project Gutenberg #1661 text-reader edition. Production delivery requires its independent runtime/readback gates. Public audio remains disabled."
+  "non_activation_note": "Twenty-four exact controlled India text editions are source-approved for 3-page preview and existing Reading Pass entitlement from page 4. Sixteen near-ready editions reuse prior source and artwork; Agentic retains its corrected owner-authorized edition. Production delivery still requires independent deployed runtime and active canonical version/readback gates. Audio remains disabled."
 }

@@ -2,10 +2,14 @@
   "active_files_sha256": {
     "approval_evidence.json": "c33d7c7868c0ffc377b53be1fa5c20809b89bb71a9df946bb9632754f6ad81f2",
     "chapters/chapter-001.json": "f15462ba0fcb637d96290a4e04e9305a9ad8df6a343a0b4eab8be0be2572f6e4",
-    "checksum_manifest.json": "f4162f08a3ebca2d7a3d48c3df5dd18538acb87dda9d8395a685ce8d5976e4cf",
+    "checksum_manifest.json": "c8f23de2765818035fca711607b94b8a79373d32acce4e8b1de8d021fb224e65",
+    "cover_provenance.json": "0f8e37ac193930622b1b164eccbd35379bfd157fb844b708dc3225e0661bbc64",
     "highlight_sync.json": "b49a1d12daf952d41f2ca24d495a70c2e57573c4e4b64fa9c399af58202dfefe",
     "public_book.json": "0d26d045211e73777cf38fa06d0539771f33fcc3f4e4a56bb52d712820109f1e",
+    "publication_manifest.json": "d42bfc4bf385ce397ae9e2b5a578660fb3308b63d122ce791a644022d2e6e9d7",
     "reader_manifest.json": "e4378fc2bfbadb9fe9277ff2edab1069c1c2bc398b3dc1baf5d1aefbd8b2b367",
+    "reader_release_approval.json": "67602a30a388af6c910959f33669380992c2d295891781176e314079fe0302fe",
+    "rights_decision.json": "e5d45c9fa29b03c40b68b02b40d29bc8fff06f0265ae80f9d3d05a1bdadc953a",
     "source_evidence.json": "d1c48bae0ce3d6f3061cd549883de5b825187ef68852698f57e8677e025125de"
   },
   "chapter_content_hashes": [
@@ -18,10 +22,14 @@
   "input_files_sha256": {
     "approval_evidence.json": "c33d7c7868c0ffc377b53be1fa5c20809b89bb71a9df946bb9632754f6ad81f2",
     "chapters/chapter-001.json": "f15462ba0fcb637d96290a4e04e9305a9ad8df6a343a0b4eab8be0be2572f6e4",
-    "checksum_manifest.json": "f4162f08a3ebca2d7a3d48c3df5dd18538acb87dda9d8395a685ce8d5976e4cf",
+    "checksum_manifest.json": "c8f23de2765818035fca711607b94b8a79373d32acce4e8b1de8d021fb224e65",
+    "cover_provenance.json": "0f8e37ac193930622b1b164eccbd35379bfd157fb844b708dc3225e0661bbc64",
     "highlight_sync.json": "b49a1d12daf952d41f2ca24d495a70c2e57573c4e4b64fa9c399af58202dfefe",
     "public_book.json": "0d26d045211e73777cf38fa06d0539771f33fcc3f4e4a56bb52d712820109f1e",
+    "publication_manifest.json": "d42bfc4bf385ce397ae9e2b5a578660fb3308b63d122ce791a644022d2e6e9d7",
     "reader_manifest.json": "e4378fc2bfbadb9fe9277ff2edab1069c1c2bc398b3dc1baf5d1aefbd8b2b367",
+    "reader_release_approval.json": "67602a30a388af6c910959f33669380992c2d295891781176e314079fe0302fe",
+    "rights_decision.json": "e5d45c9fa29b03c40b68b02b40d29bc8fff06f0265ae80f9d3d05a1bdadc953a",
     "source_evidence.json": "d1c48bae0ce3d6f3061cd549883de5b825187ef68852698f57e8677e025125de"
   },
   "publication_authority": false,
@@ -58,17 +66,14 @@
       "sanitized": true,
       "source_hash": "f7dbf9d8194ae1cabc49bad7598b01e1094baae7fdbd294bf14369c0e822eccc"
     },
-    "generated_at": "2026-10-01T03:17:21.336723+00:00",
-    "manifest_sha256": "44471656c3927f076cdbc3779419782c6405fc399e358cbfc7e0fa24d9d0592b",
+    "generated_at": "2026-10-01T05:38:07.922769+00:00",
+    "manifest_sha256": "26ba400832ffef4ac1e2ebcae0ecaa67f3a9d833210a2d2f561f9e000d9c4617",
     "reader_release": {
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
-      ],
+      "blockers": [],
       "cover_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover.webp",
-      "exposed": false,
+      "exposed": true,
       "qa_status": "QA_PASSED",
-      "status": "BLOCKED"
+      "status": "APPROVED"
     },
     "rights": {
       "evidence_sha256": "d1c48bae0ce3d6f3061cd549883de5b825187ef68852698f57e8677e025125de",
@@ -82,28 +87,22 @@
     "title": "A Mystery of Heroism"
   },
   "rights_assessment": {
-    "decision_id": null,
-    "offline_india_text_scope_passed": false,
+    "decision_id": "india-20261001-a-mystery-of-heroism-owner-text-reader",
+    "offline_india_text_scope_passed": true,
     "production_request_verified": false,
-    "registry_bound": false,
+    "registry_bound": true,
     "runtime_actions": {
       "catalog_cta": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_chapter": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_manifest": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       }
     }
   },

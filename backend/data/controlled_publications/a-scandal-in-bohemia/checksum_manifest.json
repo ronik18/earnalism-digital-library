@@ -1,6 +1,6 @@
 {
   "slug": "a-scandal-in-bohemia",
-  "generated_at": "2026-08-15T22:12:42Z",
+  "generated_at": "2026-10-01T05:38:07.922769+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
@@ -9,6 +9,10 @@
     {
       "file": "chapters/chapter-001.json",
       "sha256": "efd315eb11fceeab3dba24c4ef4b5152496dd9e57033669908ba9b7ae54532ea"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "c7a38092da3a068a43538a38243f7f3d5f0e0f3664ef4d431eb6df71bf94a7dd"
     },
     {
       "file": "highlight_sync.json",
@@ -21,6 +25,10 @@
     {
       "file": "reader_manifest.json",
       "sha256": "08be9023532b392a948c29ac4725a7a46a9fb1641ed78b9c438e0d5da08222d8"
+    },
+    {
+      "file": "reader_release_approval.json",
+      "sha256": "0e18c6ccaaccf52e7ff30d23cf7980673f6c85552f55835a02bd0aca384a6935"
     },
     {
       "file": "source_evidence.json",

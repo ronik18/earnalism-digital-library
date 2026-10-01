@@ -1,6 +1,6 @@
 {
   "slug": "jekyll-and-hyde",
-  "generated_at": "2026-08-16T05:16:57Z",
+  "generated_at": "2026-10-01T05:38:07.922769+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
@@ -49,6 +49,10 @@
     {
       "file": "cover_approval_evidence.json",
       "sha256": "7ff51145b7bb97f64b6f01ddb84d3c75188c15b76ceec3aa8fa9af2dd01782f9"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "09a5eec75d03b62420e79ebac6ac58d552db603c2d244de0b7f4207797c46e7f"
     },
     {
       "file": "highlight_sync.json",

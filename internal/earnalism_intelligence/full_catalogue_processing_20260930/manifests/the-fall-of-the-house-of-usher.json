@@ -2,10 +2,14 @@
   "active_files_sha256": {
     "approval_evidence.json": "a9ef7e5210050014c1622776c0d51eb8637ae9e05f324ac37316d8caed3e479f",
     "chapters/chapter-001.json": "34d4107d4f0f48552d42d3fbb35d71e837f4f6f93112a6992a5a91467d7d2266",
-    "checksum_manifest.json": "1dee8d4c7b2145361a3fd40f1220d27bfecd6acc9cebe5759a90d2cec40c1bbb",
+    "checksum_manifest.json": "f80f13e8b3c11a2104eb7b5d7b081e1bc805c7ef7649a423a4d47159eefc22f4",
+    "cover_provenance.json": "ba40ec30c3678a7cb037d04c24cec0d3b4b8f590f97d29a1c1895590f0e3c284",
     "highlight_sync.json": "0a034f6c286dcf240cacfd2ddf9e11e31c5bf8e4c0f12cd3c429e9a004bcde1e",
     "public_book.json": "408e9d976788acd6500d0ee789152be2720642540657a7866de0988944315a6f",
+    "publication_manifest.json": "2065c8d29f1611f05525594b50ff204a92bbfcd5ee12ab8951d9de7b7ed146be",
     "reader_manifest.json": "0edb0521b5d203b0a6efb53d98d6e9425a4d21e617d8f67e5ec591a7d6a52d1e",
+    "reader_release_approval.json": "42e74a51b2ad269a123eedb43492a7d26918710ea2a59ec4029b89ed12d8c8aa",
+    "rights_decision.json": "85e5b31c1ea16a5b42c546ee097500ba02d5be18aa61d384dc75fe1d2c4adc8e",
     "source_evidence.json": "8fbc65f1d07c9ec6bd37eae1bea33bcc3c1b03cfbf6ada5869a96f5130cfcdca"
   },
   "chapter_content_hashes": [
@@ -18,10 +22,14 @@
   "input_files_sha256": {
     "approval_evidence.json": "a9ef7e5210050014c1622776c0d51eb8637ae9e05f324ac37316d8caed3e479f",
     "chapters/chapter-001.json": "34d4107d4f0f48552d42d3fbb35d71e837f4f6f93112a6992a5a91467d7d2266",
-    "checksum_manifest.json": "1dee8d4c7b2145361a3fd40f1220d27bfecd6acc9cebe5759a90d2cec40c1bbb",
+    "checksum_manifest.json": "f80f13e8b3c11a2104eb7b5d7b081e1bc805c7ef7649a423a4d47159eefc22f4",
+    "cover_provenance.json": "ba40ec30c3678a7cb037d04c24cec0d3b4b8f590f97d29a1c1895590f0e3c284",
     "highlight_sync.json": "0a034f6c286dcf240cacfd2ddf9e11e31c5bf8e4c0f12cd3c429e9a004bcde1e",
     "public_book.json": "408e9d976788acd6500d0ee789152be2720642540657a7866de0988944315a6f",
+    "publication_manifest.json": "2065c8d29f1611f05525594b50ff204a92bbfcd5ee12ab8951d9de7b7ed146be",
     "reader_manifest.json": "0edb0521b5d203b0a6efb53d98d6e9425a4d21e617d8f67e5ec591a7d6a52d1e",
+    "reader_release_approval.json": "42e74a51b2ad269a123eedb43492a7d26918710ea2a59ec4029b89ed12d8c8aa",
+    "rights_decision.json": "85e5b31c1ea16a5b42c546ee097500ba02d5be18aa61d384dc75fe1d2c4adc8e",
     "source_evidence.json": "8fbc65f1d07c9ec6bd37eae1bea33bcc3c1b03cfbf6ada5869a96f5130cfcdca"
   },
   "publication_authority": false,
@@ -58,17 +66,14 @@
       "sanitized": true,
       "source_hash": "d1b7c8646c08a450edd16e58e0e034a5be43b283427cdc0d507439bc4c57a535"
     },
-    "generated_at": "2026-10-01T03:17:21.336723+00:00",
-    "manifest_sha256": "28f4cd0f43f491b0d9d85d9d551b4fb2c9ddb7baa01ad6983a1a426d233f62a8",
+    "generated_at": "2026-10-01T05:38:07.922769+00:00",
+    "manifest_sha256": "f4bfca69c13f6c979dccda3af48440c7da003b6626aa3f38f9529912fcfa5e2b",
     "reader_release": {
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
-      ],
+      "blockers": [],
       "cover_url": "https://theearnalism.com/assets/books/the-fall-of-the-house-of-usher/front-cover.webp",
-      "exposed": false,
+      "exposed": true,
       "qa_status": "QA_PASSED",
-      "status": "BLOCKED"
+      "status": "APPROVED"
     },
     "rights": {
       "evidence_sha256": "8fbc65f1d07c9ec6bd37eae1bea33bcc3c1b03cfbf6ada5869a96f5130cfcdca",
@@ -82,28 +87,22 @@
     "title": "The Fall of the House of Usher"
   },
   "rights_assessment": {
-    "decision_id": null,
-    "offline_india_text_scope_passed": false,
+    "decision_id": "india-20261001-the-fall-of-the-house-of-usher-owner-text-reader",
+    "offline_india_text_scope_passed": true,
     "production_request_verified": false,
-    "registry_bound": false,
+    "registry_bound": true,
     "runtime_actions": {
       "catalog_cta": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_chapter": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_manifest": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       }
     }
   },

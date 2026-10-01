@@ -26,8 +26,43 @@ INDIA_TEXT_RELEASE_SLUGS = {
     "the-canterville-ghost",
     "the-adventures-of-sherlock-holmes",
     "agentic-ai-with-python",
+    "a-horseman-in-the-sky",
+    "a-mystery-of-heroism",
+    "a-scandal-in-bohemia",
+    "jekyll-and-hyde",
+    "love-of-life",
+    "the-bishop",
+    "the-fall-of-the-house-of-usher",
+    "the-lady-with-the-dog",
+    "the-man-who-would-be-king",
+    "the-open-boat",
+    "the-pit-and-the-pendulum",
+    "the-stolen-white-elephant",
+    "an-occurrence-at-owl-creek-bridge",
+    "the-enchanted-april",
+    "the-happy-prince",
+    "picture-of-dorian-gray",
 }
 
+
+NEAR_READY_20261001_SLUGS = {
+    "a-horseman-in-the-sky",
+    "a-mystery-of-heroism",
+    "a-scandal-in-bohemia",
+    "jekyll-and-hyde",
+    "love-of-life",
+    "the-bishop",
+    "the-fall-of-the-house-of-usher",
+    "the-lady-with-the-dog",
+    "the-man-who-would-be-king",
+    "the-open-boat",
+    "the-pit-and-the-pendulum",
+    "the-stolen-white-elephant",
+    "an-occurrence-at-owl-creek-bridge",
+    "the-enchanted-april",
+    "the-happy-prince",
+    "picture-of-dorian-gray",
+}
 
 def load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -72,7 +107,7 @@ def test_owner_exclusion_tombstone_is_mirrored_exactly():
     }
 
 
-def test_backend_controlled_launch_opens_only_the_eight_approved_india_text_titles_and_no_audio():
+def test_backend_controlled_launch_opens_only_the_twenty_four_approved_india_text_titles_and_no_audio():
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     backend_audio = set(backend_launch["audio_enabled_slugs"])
 
@@ -101,19 +136,10 @@ def test_india_commercial_text_release_is_mirrored_and_audio_remains_disabled():
         assert launch["audio_enabled_slugs"] == []
 
 
-def test_eight_title_release_uses_commercial_mode_and_keeps_checkout_audio_disabled():
+def test_twenty_four_title_release_uses_commercial_mode_and_keeps_checkout_audio_disabled():
     root_launch = load_json(ROOT_CONTROLLED_LAUNCH)
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
-    expected_modes = {
-        "a-ghost-story": "COMMERCIAL_ENTITLEMENT",
-        "the-tell-tale-heart": "COMMERCIAL_ENTITLEMENT",
-        "radharani": "COMMERCIAL_ENTITLEMENT",
-        "a-white-heron": "COMMERCIAL_ENTITLEMENT",
-        "the-gift-of-the-magi": "COMMERCIAL_ENTITLEMENT",
-        "the-canterville-ghost": "COMMERCIAL_ENTITLEMENT",
-        "the-adventures-of-sherlock-holmes": "COMMERCIAL_ENTITLEMENT",
-        "agentic-ai-with-python": "COMMERCIAL_ENTITLEMENT",
-    }
+    expected_modes = {slug: "COMMERCIAL_ENTITLEMENT" for slug in INDIA_TEXT_RELEASE_SLUGS}
 
     for launch in (root_launch, backend_launch):
         assert launch["title_access_modes"] == expected_modes
@@ -124,7 +150,7 @@ def test_eight_title_release_uses_commercial_mode_and_keeps_checkout_audio_disab
         assert launch["public_audio_exposure_enabled"] is False
 
 
-def test_eight_title_release_has_hash_bound_reading_pass_rights_and_published_reader_manifests():
+def test_twenty_four_title_release_has_hash_bound_reading_pass_rights_and_published_reader_manifests():
     launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     registry, revoked = load_production_registry()
     commercial_slugs = tuple(sorted(INDIA_TEXT_RELEASE_SLUGS))
@@ -155,8 +181,9 @@ def test_eight_title_release_has_hash_bound_reading_pass_rights_and_published_re
             or record["accepted_by"].startswith("REO ENTERPRISE proprietor under the direct PR #414 go-live mandate")
             or (slug == "the-adventures-of-sherlock-holmes" and "identity was not provided" in record["accepted_by"])
             or (slug == "agentic-ai-with-python" and record["accepted_by"].startswith("Ronik Basak, direct owner release instruction;"))
+            or (slug in NEAR_READY_20261001_SLUGS and record["accepted_by"].startswith("Codex under Ronik Basak direct autonomous safe near-ready release instruction."))
         )
-        if slug in {"the-adventures-of-sherlock-holmes", "agentic-ai-with-python"}:
+        if slug in {"the-adventures-of-sherlock-holmes", "agentic-ai-with-python"} | NEAR_READY_20261001_SLUGS:
             assert record["territories"] == ["IN"]
             assert set(record["uses"]) == {
                 "catalog_metadata", "cover_display", "reader_preview", "reader_delivery",

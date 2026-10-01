@@ -2,10 +2,14 @@
   "active_files_sha256": {
     "approval_evidence.json": "9835063bdca72194e396b1459b75d573e98e7a6addc9141559118749a4c9ead5",
     "chapters/chapter-001.json": "fceadfd7e05c26bfd2a467327219843b89369a50ff5b11d018e202ade45e0914",
-    "checksum_manifest.json": "7204eb149587b941af2568f5c319c8db43a62c4859c6b36ffbd76d3438a45477",
+    "checksum_manifest.json": "9a90c1c75d9ca48b8384c3435c4b016a46ba99007305ee228ed6fced01161c1d",
+    "cover_provenance.json": "10466e0e5a4fe6965ed8559a586fe7f1a9f3808ccf21b430adad80277d8435bf",
     "highlight_sync.json": "65550c498ea653e1f52329825101496ecb952eaee1fab64dac3f327d5d6187b2",
     "public_book.json": "d829d633b8980dab442fc64d60ff008aaa5aad39f6f10850e1ef3c9f96c9aa1c",
+    "publication_manifest.json": "dc361d4ee0c48169f2b8b72323b35bba348a391da5056ca276354b2410971e17",
     "reader_manifest.json": "5df6dd9b255ce9ad88e1dad00532528c0b4a6a990a81bde422c6640f98924e32",
+    "reader_release_approval.json": "426e4ddacb93facd8811a20d3b1e404812c491017462a6933572f56207f035c3",
+    "rights_decision.json": "ae70a0c45fb9568d811e91d11d6380c7337b1b262f552c41cc29c4ad3023b7ce",
     "source_evidence.json": "b28baa8735f34c23f3236faea44061e0dd31609038ebd84dc01d9ae297718e09"
   },
   "chapter_content_hashes": [
@@ -18,10 +22,14 @@
   "input_files_sha256": {
     "approval_evidence.json": "9835063bdca72194e396b1459b75d573e98e7a6addc9141559118749a4c9ead5",
     "chapters/chapter-001.json": "fceadfd7e05c26bfd2a467327219843b89369a50ff5b11d018e202ade45e0914",
-    "checksum_manifest.json": "7204eb149587b941af2568f5c319c8db43a62c4859c6b36ffbd76d3438a45477",
+    "checksum_manifest.json": "9a90c1c75d9ca48b8384c3435c4b016a46ba99007305ee228ed6fced01161c1d",
+    "cover_provenance.json": "10466e0e5a4fe6965ed8559a586fe7f1a9f3808ccf21b430adad80277d8435bf",
     "highlight_sync.json": "65550c498ea653e1f52329825101496ecb952eaee1fab64dac3f327d5d6187b2",
     "public_book.json": "d829d633b8980dab442fc64d60ff008aaa5aad39f6f10850e1ef3c9f96c9aa1c",
+    "publication_manifest.json": "dc361d4ee0c48169f2b8b72323b35bba348a391da5056ca276354b2410971e17",
     "reader_manifest.json": "5df6dd9b255ce9ad88e1dad00532528c0b4a6a990a81bde422c6640f98924e32",
+    "reader_release_approval.json": "426e4ddacb93facd8811a20d3b1e404812c491017462a6933572f56207f035c3",
+    "rights_decision.json": "ae70a0c45fb9568d811e91d11d6380c7337b1b262f552c41cc29c4ad3023b7ce",
     "source_evidence.json": "b28baa8735f34c23f3236faea44061e0dd31609038ebd84dc01d9ae297718e09"
   },
   "publication_authority": false,
@@ -58,17 +66,14 @@
       "sanitized": true,
       "source_hash": "f793cabaf57da4c855c5fefa2783c2f21eaa0a14a9d0199f305b89afe57f75f8"
     },
-    "generated_at": "2026-10-01T03:17:21.336723+00:00",
-    "manifest_sha256": "e8142c802f6104a8e1fb503c3da4bd7368db245a315b77c4687aeb501b0764da",
+    "generated_at": "2026-10-01T05:38:07.922769+00:00",
+    "manifest_sha256": "92539aad4f60efa05dea2b29d4dc403674cd4ce8d0301a5d84dff3b9593985bf",
     "reader_release": {
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
-      ],
+      "blockers": [],
       "cover_url": "https://theearnalism.com/assets/books/the-man-who-would-be-king/front-cover.webp",
-      "exposed": false,
+      "exposed": true,
       "qa_status": "QA_PASSED",
-      "status": "BLOCKED"
+      "status": "APPROVED"
     },
     "rights": {
       "evidence_sha256": "b28baa8735f34c23f3236faea44061e0dd31609038ebd84dc01d9ae297718e09",
@@ -82,28 +87,22 @@
     "title": "The Man Who Would Be King"
   },
   "rights_assessment": {
-    "decision_id": null,
-    "offline_india_text_scope_passed": false,
+    "decision_id": "india-20261001-the-man-who-would-be-king-owner-text-reader",
+    "offline_india_text_scope_passed": true,
     "production_request_verified": false,
-    "registry_bound": false,
+    "registry_bound": true,
     "runtime_actions": {
       "catalog_cta": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_chapter": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_manifest": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       }
     }
   },

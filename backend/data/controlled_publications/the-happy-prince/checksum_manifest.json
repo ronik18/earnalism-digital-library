@@ -1,14 +1,18 @@
 {
   "slug": "the-happy-prince",
-  "generated_at": "2026-08-16T06:21:21Z",
+  "generated_at": "2026-10-01T05:38:07.922769+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "6fb7dc5b9dd1d8aedeec379808dfa8d289c918b34629b269a517233eca579779"
+      "sha256": "45cb73bfad4cbc31ad1c4f1d80859c856381ed4d49dd1088861b01f6fb61b732"
     },
     {
       "file": "chapters/chapter-001.json",
       "sha256": "1102f2638f209d7881c6ed3f7b88eb9ca5fb7e2740ac32cdb45ce291069e9ae7"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "93e284dd1b12ddee26bfa9a27b330be8535867888da33fa5daeca0f501c8589c"
     },
     {
       "file": "highlight_sync.json",
@@ -16,11 +20,15 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "d89cf0249313e1a14fe52e41c513c2c457741614495d81ed6b57b820e79c09a0"
+      "sha256": "3dc9a6887ff1ac2bc39329fa48190b657391a145c303d251f48a61414431f3af"
     },
     {
       "file": "reader_manifest.json",
       "sha256": "b0a6af3fa57d2ee2b1399a50552523918ab705c1f1a7bb5f6703f457008d657a"
+    },
+    {
+      "file": "reader_release_approval.json",
+      "sha256": "a4d627767ab8cbf53f2d272a2491a99ac1f3b5e3368ca5472e5336673a0545c6"
     },
     {
       "file": "source_evidence.json",

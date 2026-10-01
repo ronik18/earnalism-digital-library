@@ -1,6 +1,6 @@
 {
   "slug": "a-mystery-of-heroism",
-  "generated_at": "2026-08-15T20:36:24Z",
+  "generated_at": "2026-10-01T05:38:07.922769+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
@@ -9,6 +9,10 @@
     {
       "file": "chapters/chapter-001.json",
       "sha256": "f15462ba0fcb637d96290a4e04e9305a9ad8df6a343a0b4eab8be0be2572f6e4"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "0f8e37ac193930622b1b164eccbd35379bfd157fb844b708dc3225e0661bbc64"
     },
     {
       "file": "highlight_sync.json",
@@ -21,6 +25,10 @@
     {
       "file": "reader_manifest.json",
       "sha256": "e4378fc2bfbadb9fe9277ff2edab1069c1c2bc398b3dc1baf5d1aefbd8b2b367"
+    },
+    {
+      "file": "reader_release_approval.json",
+      "sha256": "67602a30a388af6c910959f33669380992c2d295891781176e314079fe0302fe"
     },
     {
       "file": "source_evidence.json",

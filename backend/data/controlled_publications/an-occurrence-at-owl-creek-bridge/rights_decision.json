@@ -1,0 +1,43 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261001-an-occurrence-at-owl-creek-bridge-owner-text-reader",
+  "edition_id": "an-occurrence-at-owl-creek-bridge",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "cb2393c098ba17ceae6ad8a9fdb9d4e0e78f4a9f67529f8ad1c3bcd2a363c6bb",
+    "reader_manifest": "791870c247a3b38ab2b35aaf32c148e76b42f1ccb4f954f1225a5c1e8b144ce5",
+    "source_evidence": "3243e4e6f0b4cc47d72bd0b3b5b43f0724ef8af8875f6fa1cd74264218b32be1",
+    "approval_evidence": "397e92e48ebdf882998540c67e7f09a39bb59fc148d62b0817bfeee9dcb7ae34",
+    "checksum_manifest": "bc0b789e822fe3ca5fc0813860e24e498ce44ac0481d064a94bc8d7fbf25d12d",
+    "publication_manifest": "2881932ca8285343a44fdd48b4637a326f156094bfe03fcecad8eb98294dccaf",
+    "cover_provenance": "aa55579e7bb3a8674021c24d4230debd9a2eb077507b0ffe7840ee44993467f3",
+    "reader_release_approval": "d6aae75c259146409557d9d2a8de528e40f88a23290ea3a317c27f2a4555556f",
+    "chapter_file:chapter-001.json": "426b65889907daa4afa0d1c7a0a888a9b332c9188b72ec4eeefa3731166c5e3b",
+    "cover_asset:front": "057d26a3babfb4659cb777826880ec625844003a137fa0e5f11828454a97c7cd",
+    "cover_asset:back": "640ba85f97a923cb526413c5d84600be771f7492f05b5dc9fc7730a66c306d31"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T05:38:07.922769+00:00",
+  "valid_until": "2036-10-01T05:38:07.922769+00:00",
+  "basis": "Original literary text published during the author’s lifetime; India Copyright Act 1957 section 22, life plus 60 years, assessed separately from repository U.S. notices. Selected original text only, with repository boilerplate, protected modern editorial matter, illustrations and collection framing excluded; existing chapter/source repair proofs preserved. No third-party modern introduction, notes, anthology layout, illustrations or author portrait is included in the delivered chapters. Original author preface and chapter prose are retained where applicable. Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art. Exact existing assets and all selected chapters are bound. Owner-authorized India-only commercial text Reader uses under the existing 3-page preview / Reading Pass policy; no audio, exports, downloads, global territory grant, new payment policy or unobserved production readiness is asserted.",
+  "evidence_sha256": [
+    "538c726547957d127294daa3add4984b59f5889ddea250e0ec92426fa40e672b",
+    "8b4c0ebbf854fc4ab4e23b3be155149ef9abd14bd3ddda6eb925eb3b904eb403",
+    "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+    "d6aae75c259146409557d9d2a8de528e40f88a23290ea3a317c27f2a4555556f",
+    "aa55579e7bb3a8674021c24d4230debd9a2eb077507b0ffe7840ee44993467f3"
+  ],
+  "accepted_by": "Codex under Ronik Basak direct autonomous safe near-ready release instruction. Conditional owner waiver covers manual production observation only; no separate owner hash review or independent human inspection is claimed.",
+  "conditions_satisfied": true
+}

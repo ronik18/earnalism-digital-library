@@ -1,0 +1,116 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "jekyll-and-hyde",
+  "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+  "generated_at": "2026-10-01T05:38:07.922769+00:00",
+  "content": {
+    "source_hash": "7e19df634b5db327f75392f934268bc232179bd17c44e52fc399b640a0375958",
+    "content_hash": "9b1ab2987886368c4dae32d7fd1c12da9bccb91d74425eccda60333ddfbb5acb",
+    "provenance_hash": "de1aa5ced7ff6d5fe9506a384df73f5d96a5b0999b03edbf60f1cd273fe3da1a",
+    "sanitized": true,
+    "chapter_count": 10,
+    "chapter_index_sha256": "608d49d0baa36a7e071561cdd5a8c30c08c91b12bb7990e8fe37762d4ee08605",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "STORY OF THE DOOR",
+        "word_count": 2400,
+        "sha256": "6741a99c2a840b45efea63acb2a17363b72daafc7ef8ad44dc469a68a1d662f3"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "SEARCH FOR MR. HYDE",
+        "word_count": 2945,
+        "sha256": "7a103a9b1585d21216f12bc6de55d47dd7ebf58d02e3b79423f48adb97478f52"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "DR. JEKYLL WAS QUITE AT EASE",
+        "word_count": 798,
+        "sha256": "706eb38f1f5f89847b3f6e08ade3813100f98fa7071a5b22fdd358adc4141c0f"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "THE CAREW MURDER CASE",
+        "word_count": 1665,
+        "sha256": "2cf722f845ea29aa19a75999dac2f9127fe304e8089c367511e6a0a576c89c4a"
+      },
+      {
+        "id": "chapter-005",
+        "order": 5,
+        "title": "INCIDENT OF THE LETTER",
+        "word_count": 1634,
+        "sha256": "fb2746809d935be3e75c41380f8832bf0e3e50bf95e3f6b9675d1db06c5f37b4"
+      },
+      {
+        "id": "chapter-006",
+        "order": 6,
+        "title": "INCIDENT OF DR. LANYON",
+        "word_count": 1492,
+        "sha256": "e628e8a18477700ff96312bcc066a5ff7d2f38d61520591098ed6e70b6595f29"
+      },
+      {
+        "id": "chapter-007",
+        "order": 7,
+        "title": "INCIDENT AT THE WINDOW",
+        "word_count": 553,
+        "sha256": "4f19b8a4be9c6c34a8a010177ffdcad1db773054907a8ba44049b0f7f47be92a"
+      },
+      {
+        "id": "chapter-008",
+        "order": 8,
+        "title": "THE LAST NIGHT",
+        "word_count": 4373,
+        "sha256": "de304ed5e7dd006aba2791fa9db35f3817e82d1ad6ac896df24c646d07e7c2f4"
+      },
+      {
+        "id": "chapter-009",
+        "order": 9,
+        "title": "DR. LANYON’S NARRATIVE",
+        "word_count": 2805,
+        "sha256": "3bd5dfd710ef08e09c07d816b295ad9a2b86799077f343295f1aa615c84a3f35"
+      },
+      {
+        "id": "chapter-010",
+        "order": 10,
+        "title": "HENRY JEKYLL’S FULL STATEMENT OF THE CASE",
+        "word_count": 6944,
+        "sha256": "aec99585a0a0705f25255d8560da47ee7af382755cea957ff03d65896b98ddf9"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "in",
+    "evidence_sha256": "88d44198ddc62c022897e594901d7f06fd9c4f93a286b29b4b304e46724df644"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785416467/earnalism/covers/front/cover_candidate_controlled-jekyll-and-hyde-eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8.jpg",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "01c3a333da4712bc8041e8eb16338e5d37dd581dcf9f2ab2a92b56321f42f91a",
+    "reader_manifest": "c3fff66ff02d37c3fa727c1c2f17a36ace48c1f1368ff3cb5ee69eebcec2a032",
+    "source_evidence": "88d44198ddc62c022897e594901d7f06fd9c4f93a286b29b4b304e46724df644",
+    "approval_evidence": "d17ded6fd9f29b76e4c3598b2118dd6d912728c8710435a6c85e4bbcfb401359"
+  },
+  "manifest_sha256": "88811ed0d07119cd9aa8f0a542135844ece343fc234d56c0f07fd8c5397513fd"
+}

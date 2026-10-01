@@ -145,6 +145,32 @@ class StaticSeoCanaryTests(unittest.TestCase):
         self.assertEqual(report["result"], "FAIL")
         self.assertEqual([row["result"] for row in report["protected_apis"]], ["PASS", "PASS", "FAIL"])
 
+    def test_explicit_overseas_edge_denial_does_not_claim_india_readback(self):
+        for route, policy in MODULE.PROTECTED_API_CHECKS.items():
+            result = MODULE.inspect_protected_api(route, policy, 451,
+                {"detail": {"code": "RELEASE_TERRITORY_DENIED", "country": "US", "allowed_countries": ["IN"]}},
+                "https://theearnalism.com" + route)
+            self.assertEqual(result["result"], "PASS")
+            self.assertEqual(result["india_backend_contract"], "NOT_RUN_FROM_NON_IN")
+
+    def test_territorial_denial_is_not_a_generic_451_exception(self):
+        route = "/api/reading-pass/books/the-adventures-of-sherlock-holmes/manifest"
+        policy = MODULE.PROTECTED_API_CHECKS[route]
+        for country, allowed, status, actual_route in [
+            ("IN", ["IN"], 451, route), (None, ["IN"], 451, route),
+            ("us", ["IN"], 451, route), ("ZZ", ["IN"], 451, route), ("US", ["IN", "US"], 451, route),
+            ("US", ["IN"], 200, route), ("US", ["IN"], 451, "/api/unreviewed"),
+        ]:
+            with self.subTest(country=country, allowed=allowed, status=status, route=actual_route):
+                result = MODULE.inspect_protected_api(actual_route, policy, status,
+                    {"detail": {"code": "RELEASE_TERRITORY_DENIED", "country": country, "allowed_countries": allowed}},
+                    "https://theearnalism.com" + actual_route)
+                self.assertEqual(result["result"], "FAIL")
+        result = MODULE.inspect_protected_api(route, policy, 451,
+            {"detail": {"code": "RELEASE_TERRITORY_DENIED", "country": "US", "allowed_countries": ["IN"]}},
+            "https://theearnalism.com/login")
+        self.assertEqual(result["result"], "FAIL")
+
     def test_genuine_missing_routes_still_require_404(self):
         self.assertEqual(self.inspect("/book/yugalanguriya", "", status=404)["result"], "PASS")
         self.assertEqual(self.inspect("/book/yugalanguriya", "", status=451)["result"], "FAIL")

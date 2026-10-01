@@ -1,0 +1,16 @@
+{
+  "schema": "earnalism.near-ready-preservation-proof.v1",
+  "checked_at": "2026-10-01T05:49:44.955687+00:00",
+  "baseline_commit": "3f76c8521ef7e636e8f6f0d0c7d864f7ed132da7",
+  "source_chapter_art_files_verified": 2807,
+  "prior_eight_full_release_files_verified": 231,
+  "source_chapter_art_changes": 0,
+  "prior_accepted_release_file_changes": 0,
+  "prior_registry_records_preserved": 11,
+  "history_revocations_and_pilot_dispositions_unchanged": true,
+  "frozen_chapter_index_inventory_unchanged": true,
+  "new_backend_horseman_mirror": "Exact unchanged root approved files copied; no historical version removed",
+  "source_baseline_listing_sha256": "446c9cb674ffc744c7be159622237be29be112d07f2639b9ecf223c87f48d2b4",
+  "prior_release_listing_sha256": "8a02b264f172b2940a99b9f15d0a8a7b142ea33b2090c20dbb3bd122d972652e",
+  "verification_method": "For every retained file compare SHA256 against the snapshot of merged main taken before edits. Independent review can reconstruct baseline from this commit and compare current files. All additions confined to 16 metadata-only releases, their missing mirror and test/SEO/deployment dependencies."
+}

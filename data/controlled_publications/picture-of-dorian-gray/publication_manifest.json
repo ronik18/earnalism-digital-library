@@ -1,0 +1,193 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "picture-of-dorian-gray",
+  "title": "The Picture of Dorian Gray",
+  "generated_at": "2026-10-01T05:38:07.922769+00:00",
+  "content": {
+    "source_hash": "9e37dc7035cb6991073be62b6e8de858173cd8608a25ec5a5ca78c6608458932",
+    "content_hash": "73afc95ebd217de9ff7cb189a89308591fa3de51e6d92cbdf70b703ad435ad81",
+    "provenance_hash": "532afed1d7e68f6b2495b8b0d27c64d38fffda7a337b2ff47bdcec42f6aa8883",
+    "sanitized": true,
+    "chapter_count": 21,
+    "chapter_index_sha256": "9cd351467360d7884fe8a7363391d9f2584c2d61b78ae860c83b29e4c836e816",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "THE PREFACE",
+        "word_count": 382,
+        "sha256": "7a9c793f018bb3531b5627d749d155dd56d85310f72a82a454e7ef06396f5f2f"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "CHAPTER I.",
+        "word_count": 4978,
+        "sha256": "48a907f317ee1f7abad4ad0cc4bd1baeecd67321e12c3e01c2b9986bd4f31134"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "CHAPTER II.",
+        "word_count": 5660,
+        "sha256": "a6d7a978e502ef9054e0120504ac13f8503307de8b1996535bdd936503f2380a"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "CHAPTER III.",
+        "word_count": 4452,
+        "sha256": "ac8d66268d28eb2e5753f025e430a4aa37892f1375b0128391839e188a946e69"
+      },
+      {
+        "id": "chapter-005",
+        "order": 5,
+        "title": "CHAPTER IV.",
+        "word_count": 5631,
+        "sha256": "1d95231b52a887b77fbaafc335ed0d13a54c0fd1c483c872a40f1c3c119e9290"
+      },
+      {
+        "id": "chapter-006",
+        "order": 6,
+        "title": "CHAPTER V.",
+        "word_count": 4424,
+        "sha256": "d44bc264b7eff0ed411c1e1fef8f70d3857d20e3945e0f40470d7405db192932"
+      },
+      {
+        "id": "chapter-007",
+        "order": 7,
+        "title": "CHAPTER VI.",
+        "word_count": 2837,
+        "sha256": "fa23c5cb28a83364fe9a9bddd8f104634fd70735dc2192b6fc262f1ee6b81d4b"
+      },
+      {
+        "id": "chapter-008",
+        "order": 8,
+        "title": "CHAPTER VII.",
+        "word_count": 4458,
+        "sha256": "b0d7ddab6648672bba283cc7379a52804644a87ca64ea74099c1d30ca1c3fb6b"
+      },
+      {
+        "id": "chapter-009",
+        "order": 9,
+        "title": "CHAPTER VIII.",
+        "word_count": 5324,
+        "sha256": "ee136dfd3291c8169faa772b6cd29006d7e0d6c5c6b5d63680b8d1e3cabb8c73"
+      },
+      {
+        "id": "chapter-010",
+        "order": 10,
+        "title": "CHAPTER IX.",
+        "word_count": 3922,
+        "sha256": "d39e9e8782778e4277c6968ec6ebaf4fe1eea61417bde649459f3d6eef7c8d61"
+      },
+      {
+        "id": "chapter-011",
+        "order": 11,
+        "title": "CHAPTER X.",
+        "word_count": 3268,
+        "sha256": "0002b78c4b90fe0936fed08217ce163d7b30a5753eac3e59ff3f55585e720c9d"
+      },
+      {
+        "id": "chapter-012",
+        "order": 12,
+        "title": "CHAPTER XI.",
+        "word_count": 7441,
+        "sha256": "78bc698d2a28afd81cf37d9c8326457b1681e0ff123282ba24dd67a2a8e3dda9"
+      },
+      {
+        "id": "chapter-013",
+        "order": 13,
+        "title": "CHAPTER XII.",
+        "word_count": 2791,
+        "sha256": "6c4af018541da8c3de794ab2e6845858079f6a4bc37a078d71b0e51dc53ec90f"
+      },
+      {
+        "id": "chapter-014",
+        "order": 14,
+        "title": "CHAPTER XIII.",
+        "word_count": 2514,
+        "sha256": "955f94129de74693a1b112bb913695c5d53afa8be60bc796f1fdbd25f740cfd1"
+      },
+      {
+        "id": "chapter-015",
+        "order": 15,
+        "title": "CHAPTER XIV.",
+        "word_count": 4571,
+        "sha256": "1c1da1141ede4201a4eba69447cb92d79e4c5d8eda0a8365922d9d6e1193d82b"
+      },
+      {
+        "id": "chapter-016",
+        "order": 16,
+        "title": "CHAPTER XV.",
+        "word_count": 3165,
+        "sha256": "7e02c5a49740d0c65060ca747085657f3f974b41ffa19afcc93d0fa6c4d95af5"
+      },
+      {
+        "id": "chapter-017",
+        "order": 17,
+        "title": "CHAPTER XVI.",
+        "word_count": 3130,
+        "sha256": "a73d0fecb63755956d15522f5c4802dc1fd3bf24088057c62fa65caa26455b8c"
+      },
+      {
+        "id": "chapter-018",
+        "order": 18,
+        "title": "CHAPTER XVII.",
+        "word_count": 1809,
+        "sha256": "c31dc13b6e6eb2889dbe9f42c2c0367a99b47c8171b50657cf1f7b6baefca41c"
+      },
+      {
+        "id": "chapter-019",
+        "order": 19,
+        "title": "CHAPTER XVIII.",
+        "word_count": 3352,
+        "sha256": "da38299f139b8654812de331af035f62ce3cf91caa09a0c20439cf69c0ec5f98"
+      },
+      {
+        "id": "chapter-020",
+        "order": 20,
+        "title": "CHAPTER XIX.",
+        "word_count": 3612,
+        "sha256": "f98dc79541d626ab9e46e22e9197b6b2853dc76d3e6371051f9246c92f3c47b7"
+      },
+      {
+        "id": "chapter-021",
+        "order": 21,
+        "title": "CHAPTER XX.",
+        "word_count": 1936,
+        "sha256": "56808ecf91437ecb439b9e1cad4222e600839fc8c6a4ab03ccd3d65efa7cf376"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "in",
+    "evidence_sha256": "4a89b5e09914efd550ae2d058d60e96aad90c42d79a6f301093ddfd9c7666faf"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/picture-of-dorian-gray/front-cover.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "73406a82723f6a990f1d55ccab838270a15ad4c24cd44d93f4da5a6f495228ee",
+    "reader_manifest": "6a7653d407d43a0e8e51b1831e3f622c914bd3700f77ba104a6bbdbc85b83d09",
+    "source_evidence": "4a89b5e09914efd550ae2d058d60e96aad90c42d79a6f301093ddfd9c7666faf",
+    "approval_evidence": "009e924803328f964e55e44e04e40d9ebe04edb8f17affe91ad1b5582c7513f5"
+  },
+  "manifest_sha256": "504769c54d8b8a7d1e8ee88d04a17a960811b34454deaccf280d51b65cdedae0"
+}

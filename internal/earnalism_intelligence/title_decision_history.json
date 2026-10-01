@@ -1859,7 +1859,85 @@
       "remote_media_mutated": false,
       "next_action": "Merge PR #293, deploy merged main, and verify the production reader while audio stays disabled.",
       "reader_gate_fingerprint": "36a0b3e4a640bc6f8925979358edbb8009dc5de87618337f7d4dbb38b3a41dd3",
-      "reader_release_approval_sha256": "fe13259793451f3706d6c739d55d682f3cef95818da84cce90f27c72d3a2961f"
+      "reader_release_approval_sha256": "fe13259793451f3706d6c739d55d682f3cef95818da84cce90f27c72d3a2961f",
+      "history": [
+        {
+          "timestamp": "2026-10-01T05:49:44.955687+00:00",
+          "workstream": "near_ready_text_release",
+          "decision": "PRIORITIZE_SIXTEEN_PROVEN_EXISTING_EDITIONS_WITHOUT_PAID_GENERATION",
+          "source_head": "3f76c8521ef7e636e8f6f0d0c7d864f7ed132da7",
+          "slugs": [
+            "jekyll-and-hyde"
+          ],
+          "release_packet": "internal/legal/near_ready_text_release_20261001",
+          "accepted_at": "2026-10-01T05:38:07.922769+00:00",
+          "accepted_decision_ids": [
+            "india-20261001-jekyll-and-hyde-owner-text-reader"
+          ],
+          "canonical_record_sha256": {
+            "a-horseman-in-the-sky": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+            "a-mystery-of-heroism": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+            "a-scandal-in-bohemia": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+            "jekyll-and-hyde": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
+            "love-of-life": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb",
+            "the-bishop": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b",
+            "the-fall-of-the-house-of-usher": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168",
+            "the-lady-with-the-dog": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
+            "the-man-who-would-be-king": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
+            "the-open-boat": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+            "the-pit-and-the-pendulum": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+            "the-stolen-white-elephant": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+            "an-occurrence-at-owl-creek-bridge": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+            "the-enchanted-april": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
+            "the-happy-prince": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
+            "picture-of-dorian-gray": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea"
+          },
+          "territory": "IN",
+          "access_mode": "COMMERCIAL_ENTITLEMENT",
+          "free_preview_pages": 3,
+          "chapters_in_batch": 66,
+          "offline_canonical_projection_pages": 539,
+          "new_images": 0,
+          "paid_provider_calls": 0,
+          "source_and_art_bytes_changed": false,
+          "prior_full_release_files_preserved": 231,
+          "prior_registry_bindings_preserved": 11,
+          "audio_activation_count": 0,
+          "catalogue": {
+            "assessed": 231,
+            "prepared": 162,
+            "chapters": 1012,
+            "source_approved": 24,
+            "held": 207,
+            "missing_packages": 69,
+            "aggregate_blockers": 860
+          },
+          "local_checks": {
+            "unchanged_source_boundary_regressions": 44,
+            "package_manifest_rights_and_proxy_tests": 56,
+            "core_safety_and_query_tests": "152 passed, then 53 catalogue/chapter tests passed after exact-authority fixture reconciliation",
+            "public_legal_Reader_frontend_tests": 47,
+            "mandatory_seed_review_processor_preflight": 27,
+            "release_proxy_tests": 11,
+            "production_build": "PASS_94_SNAPSHOTS_2017_ASSERTIONS",
+            "full_hosted_browser_mongo_redis_regression": "PENDING_EXACT_HEAD_NORMAL_CI"
+          },
+          "production_deployment": "PENDING_NORMAL_PROTECTED_MERGE_MAIN_ONLY",
+          "authenticated_production_readback": "NOT_RUN",
+          "trusted_india_production_readback": "NOT_RUN",
+          "active_canonical_segments": "NOT_OBSERVED_OR_CHANGED",
+          "customer_ready": "NOT_DECLARED",
+          "physical_device_uat": "OWNER_DEFERRED_NOT_RUN_UNVERIFIED",
+          "next_generated_prompt": "Validate the exact 16-title near-ready batch with normal regression, independent catalogue and browser checks. Merge only the current protected head; deploy merged main through the existing Vercel/Railway checks. Verify delivered title and cover hashes and applicable authenticated trusted-India Reader and active canonical version. Use existing admin dry-run/parity and guarded bootstrap/promotion only when genuinely authenticated and qualified; preserve every approved active pointer. Continue only other cheap exact-evidence candidates; Most Dangerous Game needs its visible licence/downstream-use conditions, current Cloudinary cover gaps and conflicting mirrors remain held. No paid image/audio generation, inferred legal grants, overwritten approved sources/art or customer/wallet changes.",
+          "slug": "jekyll-and-hyde"
+        }
+      ],
+      "reader_release_status": "ACCEPTED_SOURCE_PENDING_PROTECTED_DEPLOY_AND_PRODUCTION_READBACK",
+      "configured_reader_exposure": true,
+      "reader_exposed": false,
+      "audio_release_status": "NOT_REQUESTED",
+      "audio_exposed": false,
+      "last_decision_at": "2026-10-01T05:38:07.922769+00:00"
     },
     "the-open-window": {
       "latest_decision": "PRODUCTION_ACTIVE_PACKAGE_V2_VALIDATED",
@@ -2749,7 +2827,85 @@
       "public_audio_status": "AUDIO_HIDDEN_NOT_REQUESTED",
       "source_sha256": "9e37dc7035cb6991073be62b6e8de858173cd8608a25ec5a5ca78c6608458932",
       "content_sha256": "73afc95ebd217de9ff7cb189a89308591fa3de51e6d92cbdf70b703ad435ad81",
-      "next_action": "Prove exact-slug cover provenance, render a private checksum-bound preview, and obtain fresh reader approval before restoring public allowlists."
+      "next_action": "Prove exact-slug cover provenance, render a private checksum-bound preview, and obtain fresh reader approval before restoring public allowlists.",
+      "history": [
+        {
+          "timestamp": "2026-10-01T05:49:44.955687+00:00",
+          "workstream": "near_ready_text_release",
+          "decision": "PRIORITIZE_SIXTEEN_PROVEN_EXISTING_EDITIONS_WITHOUT_PAID_GENERATION",
+          "source_head": "3f76c8521ef7e636e8f6f0d0c7d864f7ed132da7",
+          "slugs": [
+            "picture-of-dorian-gray"
+          ],
+          "release_packet": "internal/legal/near_ready_text_release_20261001",
+          "accepted_at": "2026-10-01T05:38:07.922769+00:00",
+          "accepted_decision_ids": [
+            "india-20261001-picture-of-dorian-gray-owner-text-reader"
+          ],
+          "canonical_record_sha256": {
+            "a-horseman-in-the-sky": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+            "a-mystery-of-heroism": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+            "a-scandal-in-bohemia": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+            "jekyll-and-hyde": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
+            "love-of-life": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb",
+            "the-bishop": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b",
+            "the-fall-of-the-house-of-usher": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168",
+            "the-lady-with-the-dog": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
+            "the-man-who-would-be-king": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
+            "the-open-boat": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+            "the-pit-and-the-pendulum": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+            "the-stolen-white-elephant": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+            "an-occurrence-at-owl-creek-bridge": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+            "the-enchanted-april": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
+            "the-happy-prince": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
+            "picture-of-dorian-gray": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea"
+          },
+          "territory": "IN",
+          "access_mode": "COMMERCIAL_ENTITLEMENT",
+          "free_preview_pages": 3,
+          "chapters_in_batch": 66,
+          "offline_canonical_projection_pages": 539,
+          "new_images": 0,
+          "paid_provider_calls": 0,
+          "source_and_art_bytes_changed": false,
+          "prior_full_release_files_preserved": 231,
+          "prior_registry_bindings_preserved": 11,
+          "audio_activation_count": 0,
+          "catalogue": {
+            "assessed": 231,
+            "prepared": 162,
+            "chapters": 1012,
+            "source_approved": 24,
+            "held": 207,
+            "missing_packages": 69,
+            "aggregate_blockers": 860
+          },
+          "local_checks": {
+            "unchanged_source_boundary_regressions": 44,
+            "package_manifest_rights_and_proxy_tests": 56,
+            "core_safety_and_query_tests": "152 passed, then 53 catalogue/chapter tests passed after exact-authority fixture reconciliation",
+            "public_legal_Reader_frontend_tests": 47,
+            "mandatory_seed_review_processor_preflight": 27,
+            "release_proxy_tests": 11,
+            "production_build": "PASS_94_SNAPSHOTS_2017_ASSERTIONS",
+            "full_hosted_browser_mongo_redis_regression": "PENDING_EXACT_HEAD_NORMAL_CI"
+          },
+          "production_deployment": "PENDING_NORMAL_PROTECTED_MERGE_MAIN_ONLY",
+          "authenticated_production_readback": "NOT_RUN",
+          "trusted_india_production_readback": "NOT_RUN",
+          "active_canonical_segments": "NOT_OBSERVED_OR_CHANGED",
+          "customer_ready": "NOT_DECLARED",
+          "physical_device_uat": "OWNER_DEFERRED_NOT_RUN_UNVERIFIED",
+          "next_generated_prompt": "Validate the exact 16-title near-ready batch with normal regression, independent catalogue and browser checks. Merge only the current protected head; deploy merged main through the existing Vercel/Railway checks. Verify delivered title and cover hashes and applicable authenticated trusted-India Reader and active canonical version. Use existing admin dry-run/parity and guarded bootstrap/promotion only when genuinely authenticated and qualified; preserve every approved active pointer. Continue only other cheap exact-evidence candidates; Most Dangerous Game needs its visible licence/downstream-use conditions, current Cloudinary cover gaps and conflicting mirrors remain held. No paid image/audio generation, inferred legal grants, overwritten approved sources/art or customer/wallet changes.",
+          "slug": "picture-of-dorian-gray"
+        }
+      ],
+      "reader_release_status": "ACCEPTED_SOURCE_PENDING_PROTECTED_DEPLOY_AND_PRODUCTION_READBACK",
+      "configured_reader_exposure": true,
+      "reader_exposed": false,
+      "audio_release_status": "NOT_REQUESTED",
+      "audio_exposed": false,
+      "last_decision_at": "2026-10-01T05:38:07.922769+00:00"
     },
     "frankenstein": {
       "latest_decision": "P0_READER_FIXTURE_IDENTITY_CONTAINMENT_CI_RERUN_PENDING",
@@ -3205,7 +3361,37 @@
         "physical_device_uat": "DEFERRED_BY_OWNER_NOT_RUN_UNVERIFIED",
         "next_generated_prompt": "Require normal exact-head regression and independent catalogue checks for the owner-authorized Agentic release, merge with expected-head protection, and deploy only merged main. Verify the four corrected cover assets and the public title readback, then complete authenticated trusted-India Reader and existing Reading Pass acceptance. If canonical segments require preparation, use the existing admin dry-run/parity and separately guarded activation workflow; do not overwrite an approved active version. Preserve all 14 revised chapter files, the original covers, all seven earlier accepted releases and all other evidence holds. Audio stays disabled; physical-device UAT remains owner-deferred NOT_RUN / UNVERIFIED. Do not mutate wallets, customers, unrelated publication pointers or global payment policy. Record actual production observations without claiming CUSTOMER_READY from offline rights checks."
       },
-      "configured_reader_exposure": true
+      "configured_reader_exposure": true,
+      "history": [
+        {
+          "schema": "earnalism.agentic-main-production-observation.v1",
+          "checked_at": "2026-10-01T05:49:44.955687+00:00",
+          "merged_pr": 496,
+          "merged_main": "3f76c8521ef7e636e8f6f0d0c7d864f7ed132da7",
+          "reviewed_head": "e59be0fc2caff242b5fc3bd65283a3187bf30ab7",
+          "reviewed_and_merged_tree": "68a4d4b3f9466fcf018e8324d6a4fde7e002c505",
+          "main_regression": "PASS",
+          "main_regression_run": 36816915371,
+          "main_catalogue_run": 36816915381,
+          "catalogue_artifact_id": 11141781539,
+          "catalogue_zip_sha256": "3a9adadf69df5cfb4a97a59965fdace5b4580284ac6d2327a85fbbf0af8ebf21",
+          "independent_catalogue_files_equal": 165,
+          "worker_review": "ACCEPT_WITHIN_SCOPE_NO_SOURCE_MUTATIONS",
+          "frontend_deployment": "SUCCESS",
+          "frontend_canary": "FAIL_THREE_OVERSEAS_BARE_451_API_ASSERTIONS",
+          "frontend_html_routes_passed": 26,
+          "removed_routes_passed": 23,
+          "frontend_failure_artifact": 11141394855,
+          "frontend_failure_zip_sha256": "2f26fb3b7ccde9673a5b0287c2d9539c7ffd14fe2970efeee5c697be5a766040",
+          "backend_deployment": "SKIPPED_CHECK_SUITE_GATE",
+          "backend_skipped_deployment": "9f69676f-1573-4848-be62-d37e5ba90f74",
+          "authenticated_production_readback": "NOT_VERIFIED_SIGN_IN_REMAINS_VISIBLE",
+          "trusted_india_production_readback": "NOT_VERIFIED",
+          "active_canonical_version": "NOT_OBSERVED_OR_MUTATED",
+          "customer_ready": "NOT_DECLARED",
+          "resolution": "Keep India-only denial; return explicit bounded JSON territory code. Canary must report India backend contract NOT_RUN_FROM_NON_IN for reviewed protected routes and keep strict original India status/code checks. Do not accept generic 451, change trusted region, bypass deployment checks or fabricate authentication."
+        }
+      ]
     },
     "platform-output-workspace": {
       "decisions": [
@@ -3276,7 +3462,85 @@
       "public_reader_status": "CONTROLLED_READER_READY",
       "public_audio_status": "HIDDEN_NOT_APPROVED",
       "public_release_mutated": false,
-      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main."
+      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main.",
+      "history": [
+        {
+          "timestamp": "2026-10-01T05:49:44.955687+00:00",
+          "workstream": "near_ready_text_release",
+          "decision": "PRIORITIZE_SIXTEEN_PROVEN_EXISTING_EDITIONS_WITHOUT_PAID_GENERATION",
+          "source_head": "3f76c8521ef7e636e8f6f0d0c7d864f7ed132da7",
+          "slugs": [
+            "the-lady-with-the-dog"
+          ],
+          "release_packet": "internal/legal/near_ready_text_release_20261001",
+          "accepted_at": "2026-10-01T05:38:07.922769+00:00",
+          "accepted_decision_ids": [
+            "india-20261001-the-lady-with-the-dog-owner-text-reader"
+          ],
+          "canonical_record_sha256": {
+            "a-horseman-in-the-sky": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+            "a-mystery-of-heroism": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+            "a-scandal-in-bohemia": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+            "jekyll-and-hyde": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
+            "love-of-life": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb",
+            "the-bishop": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b",
+            "the-fall-of-the-house-of-usher": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168",
+            "the-lady-with-the-dog": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
+            "the-man-who-would-be-king": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
+            "the-open-boat": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+            "the-pit-and-the-pendulum": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+            "the-stolen-white-elephant": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+            "an-occurrence-at-owl-creek-bridge": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+            "the-enchanted-april": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
+            "the-happy-prince": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
+            "picture-of-dorian-gray": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea"
+          },
+          "territory": "IN",
+          "access_mode": "COMMERCIAL_ENTITLEMENT",
+          "free_preview_pages": 3,
+          "chapters_in_batch": 66,
+          "offline_canonical_projection_pages": 539,
+          "new_images": 0,
+          "paid_provider_calls": 0,
+          "source_and_art_bytes_changed": false,
+          "prior_full_release_files_preserved": 231,
+          "prior_registry_bindings_preserved": 11,
+          "audio_activation_count": 0,
+          "catalogue": {
+            "assessed": 231,
+            "prepared": 162,
+            "chapters": 1012,
+            "source_approved": 24,
+            "held": 207,
+            "missing_packages": 69,
+            "aggregate_blockers": 860
+          },
+          "local_checks": {
+            "unchanged_source_boundary_regressions": 44,
+            "package_manifest_rights_and_proxy_tests": 56,
+            "core_safety_and_query_tests": "152 passed, then 53 catalogue/chapter tests passed after exact-authority fixture reconciliation",
+            "public_legal_Reader_frontend_tests": 47,
+            "mandatory_seed_review_processor_preflight": 27,
+            "release_proxy_tests": 11,
+            "production_build": "PASS_94_SNAPSHOTS_2017_ASSERTIONS",
+            "full_hosted_browser_mongo_redis_regression": "PENDING_EXACT_HEAD_NORMAL_CI"
+          },
+          "production_deployment": "PENDING_NORMAL_PROTECTED_MERGE_MAIN_ONLY",
+          "authenticated_production_readback": "NOT_RUN",
+          "trusted_india_production_readback": "NOT_RUN",
+          "active_canonical_segments": "NOT_OBSERVED_OR_CHANGED",
+          "customer_ready": "NOT_DECLARED",
+          "physical_device_uat": "OWNER_DEFERRED_NOT_RUN_UNVERIFIED",
+          "next_generated_prompt": "Validate the exact 16-title near-ready batch with normal regression, independent catalogue and browser checks. Merge only the current protected head; deploy merged main through the existing Vercel/Railway checks. Verify delivered title and cover hashes and applicable authenticated trusted-India Reader and active canonical version. Use existing admin dry-run/parity and guarded bootstrap/promotion only when genuinely authenticated and qualified; preserve every approved active pointer. Continue only other cheap exact-evidence candidates; Most Dangerous Game needs its visible licence/downstream-use conditions, current Cloudinary cover gaps and conflicting mirrors remain held. No paid image/audio generation, inferred legal grants, overwritten approved sources/art or customer/wallet changes.",
+          "slug": "the-lady-with-the-dog"
+        }
+      ],
+      "reader_release_status": "ACCEPTED_SOURCE_PENDING_PROTECTED_DEPLOY_AND_PRODUCTION_READBACK",
+      "configured_reader_exposure": true,
+      "reader_exposed": false,
+      "audio_release_status": "NOT_REQUESTED",
+      "audio_exposed": false,
+      "last_decision_at": "2026-10-01T05:38:07.922769+00:00"
     },
     "the-stolen-white-elephant": {
       "latest_decision": "READER_PREFLIGHT_REPAIRED_PENDING_CHECKPOINT_AND_OWNER_PREVIEW_GATE",
@@ -3289,7 +3553,85 @@
       "public_reader_status": "CONTROLLED_PACKET_READY_NOT_ALLOWLISTED",
       "public_audio_status": "HIDDEN_NOT_APPROVED",
       "public_release_mutated": false,
-      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main."
+      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main.",
+      "history": [
+        {
+          "timestamp": "2026-10-01T05:49:44.955687+00:00",
+          "workstream": "near_ready_text_release",
+          "decision": "PRIORITIZE_SIXTEEN_PROVEN_EXISTING_EDITIONS_WITHOUT_PAID_GENERATION",
+          "source_head": "3f76c8521ef7e636e8f6f0d0c7d864f7ed132da7",
+          "slugs": [
+            "the-stolen-white-elephant"
+          ],
+          "release_packet": "internal/legal/near_ready_text_release_20261001",
+          "accepted_at": "2026-10-01T05:38:07.922769+00:00",
+          "accepted_decision_ids": [
+            "india-20261001-the-stolen-white-elephant-owner-text-reader"
+          ],
+          "canonical_record_sha256": {
+            "a-horseman-in-the-sky": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+            "a-mystery-of-heroism": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+            "a-scandal-in-bohemia": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+            "jekyll-and-hyde": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
+            "love-of-life": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb",
+            "the-bishop": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b",
+            "the-fall-of-the-house-of-usher": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168",
+            "the-lady-with-the-dog": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
+            "the-man-who-would-be-king": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
+            "the-open-boat": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+            "the-pit-and-the-pendulum": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+            "the-stolen-white-elephant": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+            "an-occurrence-at-owl-creek-bridge": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+            "the-enchanted-april": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
+            "the-happy-prince": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
+            "picture-of-dorian-gray": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea"
+          },
+          "territory": "IN",
+          "access_mode": "COMMERCIAL_ENTITLEMENT",
+          "free_preview_pages": 3,
+          "chapters_in_batch": 66,
+          "offline_canonical_projection_pages": 539,
+          "new_images": 0,
+          "paid_provider_calls": 0,
+          "source_and_art_bytes_changed": false,
+          "prior_full_release_files_preserved": 231,
+          "prior_registry_bindings_preserved": 11,
+          "audio_activation_count": 0,
+          "catalogue": {
+            "assessed": 231,
+            "prepared": 162,
+            "chapters": 1012,
+            "source_approved": 24,
+            "held": 207,
+            "missing_packages": 69,
+            "aggregate_blockers": 860
+          },
+          "local_checks": {
+            "unchanged_source_boundary_regressions": 44,
+            "package_manifest_rights_and_proxy_tests": 56,
+            "core_safety_and_query_tests": "152 passed, then 53 catalogue/chapter tests passed after exact-authority fixture reconciliation",
+            "public_legal_Reader_frontend_tests": 47,
+            "mandatory_seed_review_processor_preflight": 27,
+            "release_proxy_tests": 11,
+            "production_build": "PASS_94_SNAPSHOTS_2017_ASSERTIONS",
+            "full_hosted_browser_mongo_redis_regression": "PENDING_EXACT_HEAD_NORMAL_CI"
+          },
+          "production_deployment": "PENDING_NORMAL_PROTECTED_MERGE_MAIN_ONLY",
+          "authenticated_production_readback": "NOT_RUN",
+          "trusted_india_production_readback": "NOT_RUN",
+          "active_canonical_segments": "NOT_OBSERVED_OR_CHANGED",
+          "customer_ready": "NOT_DECLARED",
+          "physical_device_uat": "OWNER_DEFERRED_NOT_RUN_UNVERIFIED",
+          "next_generated_prompt": "Validate the exact 16-title near-ready batch with normal regression, independent catalogue and browser checks. Merge only the current protected head; deploy merged main through the existing Vercel/Railway checks. Verify delivered title and cover hashes and applicable authenticated trusted-India Reader and active canonical version. Use existing admin dry-run/parity and guarded bootstrap/promotion only when genuinely authenticated and qualified; preserve every approved active pointer. Continue only other cheap exact-evidence candidates; Most Dangerous Game needs its visible licence/downstream-use conditions, current Cloudinary cover gaps and conflicting mirrors remain held. No paid image/audio generation, inferred legal grants, overwritten approved sources/art or customer/wallet changes.",
+          "slug": "the-stolen-white-elephant"
+        }
+      ],
+      "reader_release_status": "ACCEPTED_SOURCE_PENDING_PROTECTED_DEPLOY_AND_PRODUCTION_READBACK",
+      "configured_reader_exposure": true,
+      "reader_exposed": false,
+      "audio_release_status": "NOT_REQUESTED",
+      "audio_exposed": false,
+      "last_decision_at": "2026-10-01T05:38:07.922769+00:00"
     },
     "the-fall-of-the-house-of-usher": {
       "latest_decision": "READER_PREFLIGHT_REPAIRED_PENDING_CHECKPOINT_AND_OWNER_PREVIEW_GATE",
@@ -3304,7 +3646,85 @@
       "root_backend_byte_parity": true,
       "legacy_estimated_sync_invalidated": true,
       "public_release_mutated": false,
-      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main."
+      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main.",
+      "history": [
+        {
+          "timestamp": "2026-10-01T05:49:44.955687+00:00",
+          "workstream": "near_ready_text_release",
+          "decision": "PRIORITIZE_SIXTEEN_PROVEN_EXISTING_EDITIONS_WITHOUT_PAID_GENERATION",
+          "source_head": "3f76c8521ef7e636e8f6f0d0c7d864f7ed132da7",
+          "slugs": [
+            "the-fall-of-the-house-of-usher"
+          ],
+          "release_packet": "internal/legal/near_ready_text_release_20261001",
+          "accepted_at": "2026-10-01T05:38:07.922769+00:00",
+          "accepted_decision_ids": [
+            "india-20261001-the-fall-of-the-house-of-usher-owner-text-reader"
+          ],
+          "canonical_record_sha256": {
+            "a-horseman-in-the-sky": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+            "a-mystery-of-heroism": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+            "a-scandal-in-bohemia": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+            "jekyll-and-hyde": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
+            "love-of-life": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb",
+            "the-bishop": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b",
+            "the-fall-of-the-house-of-usher": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168",
+            "the-lady-with-the-dog": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
+            "the-man-who-would-be-king": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
+            "the-open-boat": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+            "the-pit-and-the-pendulum": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+            "the-stolen-white-elephant": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+            "an-occurrence-at-owl-creek-bridge": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+            "the-enchanted-april": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
+            "the-happy-prince": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
+            "picture-of-dorian-gray": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea"
+          },
+          "territory": "IN",
+          "access_mode": "COMMERCIAL_ENTITLEMENT",
+          "free_preview_pages": 3,
+          "chapters_in_batch": 66,
+          "offline_canonical_projection_pages": 539,
+          "new_images": 0,
+          "paid_provider_calls": 0,
+          "source_and_art_bytes_changed": false,
+          "prior_full_release_files_preserved": 231,
+          "prior_registry_bindings_preserved": 11,
+          "audio_activation_count": 0,
+          "catalogue": {
+            "assessed": 231,
+            "prepared": 162,
+            "chapters": 1012,
+            "source_approved": 24,
+            "held": 207,
+            "missing_packages": 69,
+            "aggregate_blockers": 860
+          },
+          "local_checks": {
+            "unchanged_source_boundary_regressions": 44,
+            "package_manifest_rights_and_proxy_tests": 56,
+            "core_safety_and_query_tests": "152 passed, then 53 catalogue/chapter tests passed after exact-authority fixture reconciliation",
+            "public_legal_Reader_frontend_tests": 47,
+            "mandatory_seed_review_processor_preflight": 27,
+            "release_proxy_tests": 11,
+            "production_build": "PASS_94_SNAPSHOTS_2017_ASSERTIONS",
+            "full_hosted_browser_mongo_redis_regression": "PENDING_EXACT_HEAD_NORMAL_CI"
+          },
+          "production_deployment": "PENDING_NORMAL_PROTECTED_MERGE_MAIN_ONLY",
+          "authenticated_production_readback": "NOT_RUN",
+          "trusted_india_production_readback": "NOT_RUN",
+          "active_canonical_segments": "NOT_OBSERVED_OR_CHANGED",
+          "customer_ready": "NOT_DECLARED",
+          "physical_device_uat": "OWNER_DEFERRED_NOT_RUN_UNVERIFIED",
+          "next_generated_prompt": "Validate the exact 16-title near-ready batch with normal regression, independent catalogue and browser checks. Merge only the current protected head; deploy merged main through the existing Vercel/Railway checks. Verify delivered title and cover hashes and applicable authenticated trusted-India Reader and active canonical version. Use existing admin dry-run/parity and guarded bootstrap/promotion only when genuinely authenticated and qualified; preserve every approved active pointer. Continue only other cheap exact-evidence candidates; Most Dangerous Game needs its visible licence/downstream-use conditions, current Cloudinary cover gaps and conflicting mirrors remain held. No paid image/audio generation, inferred legal grants, overwritten approved sources/art or customer/wallet changes.",
+          "slug": "the-fall-of-the-house-of-usher"
+        }
+      ],
+      "reader_release_status": "ACCEPTED_SOURCE_PENDING_PROTECTED_DEPLOY_AND_PRODUCTION_READBACK",
+      "configured_reader_exposure": true,
+      "reader_exposed": false,
+      "audio_release_status": "NOT_REQUESTED",
+      "audio_exposed": false,
+      "last_decision_at": "2026-10-01T05:38:07.922769+00:00"
     },
     "love-of-life": {
       "latest_decision": "READER_PREFLIGHT_REPAIRED_PENDING_CHECKPOINT_AND_OWNER_PREVIEW_GATE",
@@ -3319,7 +3739,85 @@
       "root_backend_byte_parity": true,
       "legacy_estimated_sync_invalidated": true,
       "public_release_mutated": false,
-      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main."
+      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main.",
+      "history": [
+        {
+          "timestamp": "2026-10-01T05:49:44.955687+00:00",
+          "workstream": "near_ready_text_release",
+          "decision": "PRIORITIZE_SIXTEEN_PROVEN_EXISTING_EDITIONS_WITHOUT_PAID_GENERATION",
+          "source_head": "3f76c8521ef7e636e8f6f0d0c7d864f7ed132da7",
+          "slugs": [
+            "love-of-life"
+          ],
+          "release_packet": "internal/legal/near_ready_text_release_20261001",
+          "accepted_at": "2026-10-01T05:38:07.922769+00:00",
+          "accepted_decision_ids": [
+            "india-20261001-love-of-life-owner-text-reader"
+          ],
+          "canonical_record_sha256": {
+            "a-horseman-in-the-sky": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+            "a-mystery-of-heroism": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+            "a-scandal-in-bohemia": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+            "jekyll-and-hyde": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
+            "love-of-life": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb",
+            "the-bishop": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b",
+            "the-fall-of-the-house-of-usher": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168",
+            "the-lady-with-the-dog": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
+            "the-man-who-would-be-king": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
+            "the-open-boat": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+            "the-pit-and-the-pendulum": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+            "the-stolen-white-elephant": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+            "an-occurrence-at-owl-creek-bridge": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+            "the-enchanted-april": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
+            "the-happy-prince": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
+            "picture-of-dorian-gray": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea"
+          },
+          "territory": "IN",
+          "access_mode": "COMMERCIAL_ENTITLEMENT",
+          "free_preview_pages": 3,
+          "chapters_in_batch": 66,
+          "offline_canonical_projection_pages": 539,
+          "new_images": 0,
+          "paid_provider_calls": 0,
+          "source_and_art_bytes_changed": false,
+          "prior_full_release_files_preserved": 231,
+          "prior_registry_bindings_preserved": 11,
+          "audio_activation_count": 0,
+          "catalogue": {
+            "assessed": 231,
+            "prepared": 162,
+            "chapters": 1012,
+            "source_approved": 24,
+            "held": 207,
+            "missing_packages": 69,
+            "aggregate_blockers": 860
+          },
+          "local_checks": {
+            "unchanged_source_boundary_regressions": 44,
+            "package_manifest_rights_and_proxy_tests": 56,
+            "core_safety_and_query_tests": "152 passed, then 53 catalogue/chapter tests passed after exact-authority fixture reconciliation",
+            "public_legal_Reader_frontend_tests": 47,
+            "mandatory_seed_review_processor_preflight": 27,
+            "release_proxy_tests": 11,
+            "production_build": "PASS_94_SNAPSHOTS_2017_ASSERTIONS",
+            "full_hosted_browser_mongo_redis_regression": "PENDING_EXACT_HEAD_NORMAL_CI"
+          },
+          "production_deployment": "PENDING_NORMAL_PROTECTED_MERGE_MAIN_ONLY",
+          "authenticated_production_readback": "NOT_RUN",
+          "trusted_india_production_readback": "NOT_RUN",
+          "active_canonical_segments": "NOT_OBSERVED_OR_CHANGED",
+          "customer_ready": "NOT_DECLARED",
+          "physical_device_uat": "OWNER_DEFERRED_NOT_RUN_UNVERIFIED",
+          "next_generated_prompt": "Validate the exact 16-title near-ready batch with normal regression, independent catalogue and browser checks. Merge only the current protected head; deploy merged main through the existing Vercel/Railway checks. Verify delivered title and cover hashes and applicable authenticated trusted-India Reader and active canonical version. Use existing admin dry-run/parity and guarded bootstrap/promotion only when genuinely authenticated and qualified; preserve every approved active pointer. Continue only other cheap exact-evidence candidates; Most Dangerous Game needs its visible licence/downstream-use conditions, current Cloudinary cover gaps and conflicting mirrors remain held. No paid image/audio generation, inferred legal grants, overwritten approved sources/art or customer/wallet changes.",
+          "slug": "love-of-life"
+        }
+      ],
+      "reader_release_status": "ACCEPTED_SOURCE_PENDING_PROTECTED_DEPLOY_AND_PRODUCTION_READBACK",
+      "configured_reader_exposure": true,
+      "reader_exposed": false,
+      "audio_release_status": "NOT_REQUESTED",
+      "audio_exposed": false,
+      "last_decision_at": "2026-10-01T05:38:07.922769+00:00"
     },
     "the-most-dangerous-game": {
       "latest_decision": "READER_PREFLIGHT_REPAIRED_PENDING_CHECKPOINT_AND_OWNER_PREVIEW_GATE",
@@ -3351,7 +3849,85 @@
       "root_backend_byte_parity": true,
       "legacy_estimated_sync_invalidated": true,
       "public_release_mutated": false,
-      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main."
+      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main.",
+      "history": [
+        {
+          "timestamp": "2026-10-01T05:49:44.955687+00:00",
+          "workstream": "near_ready_text_release",
+          "decision": "PRIORITIZE_SIXTEEN_PROVEN_EXISTING_EDITIONS_WITHOUT_PAID_GENERATION",
+          "source_head": "3f76c8521ef7e636e8f6f0d0c7d864f7ed132da7",
+          "slugs": [
+            "a-scandal-in-bohemia"
+          ],
+          "release_packet": "internal/legal/near_ready_text_release_20261001",
+          "accepted_at": "2026-10-01T05:38:07.922769+00:00",
+          "accepted_decision_ids": [
+            "india-20261001-a-scandal-in-bohemia-owner-text-reader"
+          ],
+          "canonical_record_sha256": {
+            "a-horseman-in-the-sky": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+            "a-mystery-of-heroism": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+            "a-scandal-in-bohemia": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+            "jekyll-and-hyde": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
+            "love-of-life": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb",
+            "the-bishop": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b",
+            "the-fall-of-the-house-of-usher": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168",
+            "the-lady-with-the-dog": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
+            "the-man-who-would-be-king": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
+            "the-open-boat": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+            "the-pit-and-the-pendulum": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+            "the-stolen-white-elephant": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+            "an-occurrence-at-owl-creek-bridge": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+            "the-enchanted-april": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
+            "the-happy-prince": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
+            "picture-of-dorian-gray": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea"
+          },
+          "territory": "IN",
+          "access_mode": "COMMERCIAL_ENTITLEMENT",
+          "free_preview_pages": 3,
+          "chapters_in_batch": 66,
+          "offline_canonical_projection_pages": 539,
+          "new_images": 0,
+          "paid_provider_calls": 0,
+          "source_and_art_bytes_changed": false,
+          "prior_full_release_files_preserved": 231,
+          "prior_registry_bindings_preserved": 11,
+          "audio_activation_count": 0,
+          "catalogue": {
+            "assessed": 231,
+            "prepared": 162,
+            "chapters": 1012,
+            "source_approved": 24,
+            "held": 207,
+            "missing_packages": 69,
+            "aggregate_blockers": 860
+          },
+          "local_checks": {
+            "unchanged_source_boundary_regressions": 44,
+            "package_manifest_rights_and_proxy_tests": 56,
+            "core_safety_and_query_tests": "152 passed, then 53 catalogue/chapter tests passed after exact-authority fixture reconciliation",
+            "public_legal_Reader_frontend_tests": 47,
+            "mandatory_seed_review_processor_preflight": 27,
+            "release_proxy_tests": 11,
+            "production_build": "PASS_94_SNAPSHOTS_2017_ASSERTIONS",
+            "full_hosted_browser_mongo_redis_regression": "PENDING_EXACT_HEAD_NORMAL_CI"
+          },
+          "production_deployment": "PENDING_NORMAL_PROTECTED_MERGE_MAIN_ONLY",
+          "authenticated_production_readback": "NOT_RUN",
+          "trusted_india_production_readback": "NOT_RUN",
+          "active_canonical_segments": "NOT_OBSERVED_OR_CHANGED",
+          "customer_ready": "NOT_DECLARED",
+          "physical_device_uat": "OWNER_DEFERRED_NOT_RUN_UNVERIFIED",
+          "next_generated_prompt": "Validate the exact 16-title near-ready batch with normal regression, independent catalogue and browser checks. Merge only the current protected head; deploy merged main through the existing Vercel/Railway checks. Verify delivered title and cover hashes and applicable authenticated trusted-India Reader and active canonical version. Use existing admin dry-run/parity and guarded bootstrap/promotion only when genuinely authenticated and qualified; preserve every approved active pointer. Continue only other cheap exact-evidence candidates; Most Dangerous Game needs its visible licence/downstream-use conditions, current Cloudinary cover gaps and conflicting mirrors remain held. No paid image/audio generation, inferred legal grants, overwritten approved sources/art or customer/wallet changes.",
+          "slug": "a-scandal-in-bohemia"
+        }
+      ],
+      "reader_release_status": "ACCEPTED_SOURCE_PENDING_PROTECTED_DEPLOY_AND_PRODUCTION_READBACK",
+      "configured_reader_exposure": true,
+      "reader_exposed": false,
+      "audio_release_status": "NOT_REQUESTED",
+      "audio_exposed": false,
+      "last_decision_at": "2026-10-01T05:38:07.922769+00:00"
     },
     "the-canterville-ghost": {
       "latest_decision": "READER_PREFLIGHT_REPAIRED_PENDING_CHECKPOINT_AND_OWNER_PREVIEW_GATE",
@@ -3398,7 +3974,85 @@
       "root_backend_byte_parity": true,
       "legacy_estimated_sync_invalidated": true,
       "public_release_mutated": false,
-      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main."
+      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main.",
+      "history": [
+        {
+          "timestamp": "2026-10-01T05:49:44.955687+00:00",
+          "workstream": "near_ready_text_release",
+          "decision": "PRIORITIZE_SIXTEEN_PROVEN_EXISTING_EDITIONS_WITHOUT_PAID_GENERATION",
+          "source_head": "3f76c8521ef7e636e8f6f0d0c7d864f7ed132da7",
+          "slugs": [
+            "the-man-who-would-be-king"
+          ],
+          "release_packet": "internal/legal/near_ready_text_release_20261001",
+          "accepted_at": "2026-10-01T05:38:07.922769+00:00",
+          "accepted_decision_ids": [
+            "india-20261001-the-man-who-would-be-king-owner-text-reader"
+          ],
+          "canonical_record_sha256": {
+            "a-horseman-in-the-sky": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+            "a-mystery-of-heroism": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+            "a-scandal-in-bohemia": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+            "jekyll-and-hyde": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
+            "love-of-life": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb",
+            "the-bishop": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b",
+            "the-fall-of-the-house-of-usher": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168",
+            "the-lady-with-the-dog": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
+            "the-man-who-would-be-king": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
+            "the-open-boat": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+            "the-pit-and-the-pendulum": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+            "the-stolen-white-elephant": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+            "an-occurrence-at-owl-creek-bridge": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+            "the-enchanted-april": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
+            "the-happy-prince": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
+            "picture-of-dorian-gray": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea"
+          },
+          "territory": "IN",
+          "access_mode": "COMMERCIAL_ENTITLEMENT",
+          "free_preview_pages": 3,
+          "chapters_in_batch": 66,
+          "offline_canonical_projection_pages": 539,
+          "new_images": 0,
+          "paid_provider_calls": 0,
+          "source_and_art_bytes_changed": false,
+          "prior_full_release_files_preserved": 231,
+          "prior_registry_bindings_preserved": 11,
+          "audio_activation_count": 0,
+          "catalogue": {
+            "assessed": 231,
+            "prepared": 162,
+            "chapters": 1012,
+            "source_approved": 24,
+            "held": 207,
+            "missing_packages": 69,
+            "aggregate_blockers": 860
+          },
+          "local_checks": {
+            "unchanged_source_boundary_regressions": 44,
+            "package_manifest_rights_and_proxy_tests": 56,
+            "core_safety_and_query_tests": "152 passed, then 53 catalogue/chapter tests passed after exact-authority fixture reconciliation",
+            "public_legal_Reader_frontend_tests": 47,
+            "mandatory_seed_review_processor_preflight": 27,
+            "release_proxy_tests": 11,
+            "production_build": "PASS_94_SNAPSHOTS_2017_ASSERTIONS",
+            "full_hosted_browser_mongo_redis_regression": "PENDING_EXACT_HEAD_NORMAL_CI"
+          },
+          "production_deployment": "PENDING_NORMAL_PROTECTED_MERGE_MAIN_ONLY",
+          "authenticated_production_readback": "NOT_RUN",
+          "trusted_india_production_readback": "NOT_RUN",
+          "active_canonical_segments": "NOT_OBSERVED_OR_CHANGED",
+          "customer_ready": "NOT_DECLARED",
+          "physical_device_uat": "OWNER_DEFERRED_NOT_RUN_UNVERIFIED",
+          "next_generated_prompt": "Validate the exact 16-title near-ready batch with normal regression, independent catalogue and browser checks. Merge only the current protected head; deploy merged main through the existing Vercel/Railway checks. Verify delivered title and cover hashes and applicable authenticated trusted-India Reader and active canonical version. Use existing admin dry-run/parity and guarded bootstrap/promotion only when genuinely authenticated and qualified; preserve every approved active pointer. Continue only other cheap exact-evidence candidates; Most Dangerous Game needs its visible licence/downstream-use conditions, current Cloudinary cover gaps and conflicting mirrors remain held. No paid image/audio generation, inferred legal grants, overwritten approved sources/art or customer/wallet changes.",
+          "slug": "the-man-who-would-be-king"
+        }
+      ],
+      "reader_release_status": "ACCEPTED_SOURCE_PENDING_PROTECTED_DEPLOY_AND_PRODUCTION_READBACK",
+      "configured_reader_exposure": true,
+      "reader_exposed": false,
+      "audio_release_status": "NOT_REQUESTED",
+      "audio_exposed": false,
+      "last_decision_at": "2026-10-01T05:38:07.922769+00:00"
     },
     "the-open-boat": {
       "latest_decision": "SOURCE_OMISSION_REPAIRED_PENDING_FRESH_OWNER_PREVIEW_GATE",
@@ -3418,7 +4072,85 @@
       "public_release_mutated": false,
       "official_source_download_sha256": "0ebacd153c0ed8e37227d5a41e01da7cee5723ed50b29a15da9e824161793840",
       "restored_source_words": "warmth which this clumsy cork contrivance could donate, and he seemed",
-      "next_action": "Validate and merge the focused source repair, render a fresh checksum-bound private preview, and require a new owner reader approval before pilot synthesis."
+      "next_action": "Validate and merge the focused source repair, render a fresh checksum-bound private preview, and require a new owner reader approval before pilot synthesis.",
+      "history": [
+        {
+          "timestamp": "2026-10-01T05:49:44.955687+00:00",
+          "workstream": "near_ready_text_release",
+          "decision": "PRIORITIZE_SIXTEEN_PROVEN_EXISTING_EDITIONS_WITHOUT_PAID_GENERATION",
+          "source_head": "3f76c8521ef7e636e8f6f0d0c7d864f7ed132da7",
+          "slugs": [
+            "the-open-boat"
+          ],
+          "release_packet": "internal/legal/near_ready_text_release_20261001",
+          "accepted_at": "2026-10-01T05:38:07.922769+00:00",
+          "accepted_decision_ids": [
+            "india-20261001-the-open-boat-owner-text-reader"
+          ],
+          "canonical_record_sha256": {
+            "a-horseman-in-the-sky": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+            "a-mystery-of-heroism": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+            "a-scandal-in-bohemia": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+            "jekyll-and-hyde": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
+            "love-of-life": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb",
+            "the-bishop": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b",
+            "the-fall-of-the-house-of-usher": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168",
+            "the-lady-with-the-dog": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
+            "the-man-who-would-be-king": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
+            "the-open-boat": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+            "the-pit-and-the-pendulum": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+            "the-stolen-white-elephant": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+            "an-occurrence-at-owl-creek-bridge": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+            "the-enchanted-april": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
+            "the-happy-prince": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
+            "picture-of-dorian-gray": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea"
+          },
+          "territory": "IN",
+          "access_mode": "COMMERCIAL_ENTITLEMENT",
+          "free_preview_pages": 3,
+          "chapters_in_batch": 66,
+          "offline_canonical_projection_pages": 539,
+          "new_images": 0,
+          "paid_provider_calls": 0,
+          "source_and_art_bytes_changed": false,
+          "prior_full_release_files_preserved": 231,
+          "prior_registry_bindings_preserved": 11,
+          "audio_activation_count": 0,
+          "catalogue": {
+            "assessed": 231,
+            "prepared": 162,
+            "chapters": 1012,
+            "source_approved": 24,
+            "held": 207,
+            "missing_packages": 69,
+            "aggregate_blockers": 860
+          },
+          "local_checks": {
+            "unchanged_source_boundary_regressions": 44,
+            "package_manifest_rights_and_proxy_tests": 56,
+            "core_safety_and_query_tests": "152 passed, then 53 catalogue/chapter tests passed after exact-authority fixture reconciliation",
+            "public_legal_Reader_frontend_tests": 47,
+            "mandatory_seed_review_processor_preflight": 27,
+            "release_proxy_tests": 11,
+            "production_build": "PASS_94_SNAPSHOTS_2017_ASSERTIONS",
+            "full_hosted_browser_mongo_redis_regression": "PENDING_EXACT_HEAD_NORMAL_CI"
+          },
+          "production_deployment": "PENDING_NORMAL_PROTECTED_MERGE_MAIN_ONLY",
+          "authenticated_production_readback": "NOT_RUN",
+          "trusted_india_production_readback": "NOT_RUN",
+          "active_canonical_segments": "NOT_OBSERVED_OR_CHANGED",
+          "customer_ready": "NOT_DECLARED",
+          "physical_device_uat": "OWNER_DEFERRED_NOT_RUN_UNVERIFIED",
+          "next_generated_prompt": "Validate the exact 16-title near-ready batch with normal regression, independent catalogue and browser checks. Merge only the current protected head; deploy merged main through the existing Vercel/Railway checks. Verify delivered title and cover hashes and applicable authenticated trusted-India Reader and active canonical version. Use existing admin dry-run/parity and guarded bootstrap/promotion only when genuinely authenticated and qualified; preserve every approved active pointer. Continue only other cheap exact-evidence candidates; Most Dangerous Game needs its visible licence/downstream-use conditions, current Cloudinary cover gaps and conflicting mirrors remain held. No paid image/audio generation, inferred legal grants, overwritten approved sources/art or customer/wallet changes.",
+          "slug": "the-open-boat"
+        }
+      ],
+      "reader_release_status": "ACCEPTED_SOURCE_PENDING_PROTECTED_DEPLOY_AND_PRODUCTION_READBACK",
+      "configured_reader_exposure": true,
+      "reader_exposed": false,
+      "audio_release_status": "NOT_REQUESTED",
+      "audio_exposed": false,
+      "last_decision_at": "2026-10-01T05:38:07.922769+00:00"
     },
     "the-happy-prince": {
       "latest_decision": "READER_BOUNDARY_AND_PARAGRAPH_REPAIRED_PENDING_CHECKPOINT_AND_OWNER_PREVIEW_GATE",
@@ -3435,7 +4167,85 @@
       "root_backend_byte_parity": true,
       "legacy_estimated_sync_invalidated": true,
       "public_release_mutated": false,
-      "next_action": "Merge the focused checkpoint and render a fresh checksum-bound private reader preview from clean origin/main."
+      "next_action": "Merge the focused checkpoint and render a fresh checksum-bound private reader preview from clean origin/main.",
+      "history": [
+        {
+          "timestamp": "2026-10-01T05:49:44.955687+00:00",
+          "workstream": "near_ready_text_release",
+          "decision": "PRIORITIZE_SIXTEEN_PROVEN_EXISTING_EDITIONS_WITHOUT_PAID_GENERATION",
+          "source_head": "3f76c8521ef7e636e8f6f0d0c7d864f7ed132da7",
+          "slugs": [
+            "the-happy-prince"
+          ],
+          "release_packet": "internal/legal/near_ready_text_release_20261001",
+          "accepted_at": "2026-10-01T05:38:07.922769+00:00",
+          "accepted_decision_ids": [
+            "india-20261001-the-happy-prince-owner-text-reader"
+          ],
+          "canonical_record_sha256": {
+            "a-horseman-in-the-sky": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+            "a-mystery-of-heroism": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+            "a-scandal-in-bohemia": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+            "jekyll-and-hyde": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
+            "love-of-life": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb",
+            "the-bishop": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b",
+            "the-fall-of-the-house-of-usher": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168",
+            "the-lady-with-the-dog": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
+            "the-man-who-would-be-king": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
+            "the-open-boat": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+            "the-pit-and-the-pendulum": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+            "the-stolen-white-elephant": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+            "an-occurrence-at-owl-creek-bridge": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+            "the-enchanted-april": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
+            "the-happy-prince": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
+            "picture-of-dorian-gray": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea"
+          },
+          "territory": "IN",
+          "access_mode": "COMMERCIAL_ENTITLEMENT",
+          "free_preview_pages": 3,
+          "chapters_in_batch": 66,
+          "offline_canonical_projection_pages": 539,
+          "new_images": 0,
+          "paid_provider_calls": 0,
+          "source_and_art_bytes_changed": false,
+          "prior_full_release_files_preserved": 231,
+          "prior_registry_bindings_preserved": 11,
+          "audio_activation_count": 0,
+          "catalogue": {
+            "assessed": 231,
+            "prepared": 162,
+            "chapters": 1012,
+            "source_approved": 24,
+            "held": 207,
+            "missing_packages": 69,
+            "aggregate_blockers": 860
+          },
+          "local_checks": {
+            "unchanged_source_boundary_regressions": 44,
+            "package_manifest_rights_and_proxy_tests": 56,
+            "core_safety_and_query_tests": "152 passed, then 53 catalogue/chapter tests passed after exact-authority fixture reconciliation",
+            "public_legal_Reader_frontend_tests": 47,
+            "mandatory_seed_review_processor_preflight": 27,
+            "release_proxy_tests": 11,
+            "production_build": "PASS_94_SNAPSHOTS_2017_ASSERTIONS",
+            "full_hosted_browser_mongo_redis_regression": "PENDING_EXACT_HEAD_NORMAL_CI"
+          },
+          "production_deployment": "PENDING_NORMAL_PROTECTED_MERGE_MAIN_ONLY",
+          "authenticated_production_readback": "NOT_RUN",
+          "trusted_india_production_readback": "NOT_RUN",
+          "active_canonical_segments": "NOT_OBSERVED_OR_CHANGED",
+          "customer_ready": "NOT_DECLARED",
+          "physical_device_uat": "OWNER_DEFERRED_NOT_RUN_UNVERIFIED",
+          "next_generated_prompt": "Validate the exact 16-title near-ready batch with normal regression, independent catalogue and browser checks. Merge only the current protected head; deploy merged main through the existing Vercel/Railway checks. Verify delivered title and cover hashes and applicable authenticated trusted-India Reader and active canonical version. Use existing admin dry-run/parity and guarded bootstrap/promotion only when genuinely authenticated and qualified; preserve every approved active pointer. Continue only other cheap exact-evidence candidates; Most Dangerous Game needs its visible licence/downstream-use conditions, current Cloudinary cover gaps and conflicting mirrors remain held. No paid image/audio generation, inferred legal grants, overwritten approved sources/art or customer/wallet changes.",
+          "slug": "the-happy-prince"
+        }
+      ],
+      "reader_release_status": "ACCEPTED_SOURCE_PENDING_PROTECTED_DEPLOY_AND_PRODUCTION_READBACK",
+      "configured_reader_exposure": true,
+      "reader_exposed": false,
+      "audio_release_status": "NOT_REQUESTED",
+      "audio_exposed": false,
+      "last_decision_at": "2026-10-01T05:38:07.922769+00:00"
     },
     "an-occurrence-at-owl-creek-bridge": {
       "latest_decision": "READER_PREFLIGHT_REPAIRED_PENDING_CHECKPOINT_AND_OWNER_PREVIEW_GATE",
@@ -3453,7 +4263,85 @@
       "root_backend_byte_parity": true,
       "legacy_estimated_sync_invalidated": true,
       "public_release_mutated": false,
-      "next_action": "Merge the focused checkpoint and render a fresh checksum-bound private reader preview from clean origin/main."
+      "next_action": "Merge the focused checkpoint and render a fresh checksum-bound private reader preview from clean origin/main.",
+      "history": [
+        {
+          "timestamp": "2026-10-01T05:49:44.955687+00:00",
+          "workstream": "near_ready_text_release",
+          "decision": "PRIORITIZE_SIXTEEN_PROVEN_EXISTING_EDITIONS_WITHOUT_PAID_GENERATION",
+          "source_head": "3f76c8521ef7e636e8f6f0d0c7d864f7ed132da7",
+          "slugs": [
+            "an-occurrence-at-owl-creek-bridge"
+          ],
+          "release_packet": "internal/legal/near_ready_text_release_20261001",
+          "accepted_at": "2026-10-01T05:38:07.922769+00:00",
+          "accepted_decision_ids": [
+            "india-20261001-an-occurrence-at-owl-creek-bridge-owner-text-reader"
+          ],
+          "canonical_record_sha256": {
+            "a-horseman-in-the-sky": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+            "a-mystery-of-heroism": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+            "a-scandal-in-bohemia": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+            "jekyll-and-hyde": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
+            "love-of-life": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb",
+            "the-bishop": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b",
+            "the-fall-of-the-house-of-usher": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168",
+            "the-lady-with-the-dog": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
+            "the-man-who-would-be-king": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
+            "the-open-boat": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+            "the-pit-and-the-pendulum": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+            "the-stolen-white-elephant": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+            "an-occurrence-at-owl-creek-bridge": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+            "the-enchanted-april": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
+            "the-happy-prince": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
+            "picture-of-dorian-gray": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea"
+          },
+          "territory": "IN",
+          "access_mode": "COMMERCIAL_ENTITLEMENT",
+          "free_preview_pages": 3,
+          "chapters_in_batch": 66,
+          "offline_canonical_projection_pages": 539,
+          "new_images": 0,
+          "paid_provider_calls": 0,
+          "source_and_art_bytes_changed": false,
+          "prior_full_release_files_preserved": 231,
+          "prior_registry_bindings_preserved": 11,
+          "audio_activation_count": 0,
+          "catalogue": {
+            "assessed": 231,
+            "prepared": 162,
+            "chapters": 1012,
+            "source_approved": 24,
+            "held": 207,
+            "missing_packages": 69,
+            "aggregate_blockers": 860
+          },
+          "local_checks": {
+            "unchanged_source_boundary_regressions": 44,
+            "package_manifest_rights_and_proxy_tests": 56,
+            "core_safety_and_query_tests": "152 passed, then 53 catalogue/chapter tests passed after exact-authority fixture reconciliation",
+            "public_legal_Reader_frontend_tests": 47,
+            "mandatory_seed_review_processor_preflight": 27,
+            "release_proxy_tests": 11,
+            "production_build": "PASS_94_SNAPSHOTS_2017_ASSERTIONS",
+            "full_hosted_browser_mongo_redis_regression": "PENDING_EXACT_HEAD_NORMAL_CI"
+          },
+          "production_deployment": "PENDING_NORMAL_PROTECTED_MERGE_MAIN_ONLY",
+          "authenticated_production_readback": "NOT_RUN",
+          "trusted_india_production_readback": "NOT_RUN",
+          "active_canonical_segments": "NOT_OBSERVED_OR_CHANGED",
+          "customer_ready": "NOT_DECLARED",
+          "physical_device_uat": "OWNER_DEFERRED_NOT_RUN_UNVERIFIED",
+          "next_generated_prompt": "Validate the exact 16-title near-ready batch with normal regression, independent catalogue and browser checks. Merge only the current protected head; deploy merged main through the existing Vercel/Railway checks. Verify delivered title and cover hashes and applicable authenticated trusted-India Reader and active canonical version. Use existing admin dry-run/parity and guarded bootstrap/promotion only when genuinely authenticated and qualified; preserve every approved active pointer. Continue only other cheap exact-evidence candidates; Most Dangerous Game needs its visible licence/downstream-use conditions, current Cloudinary cover gaps and conflicting mirrors remain held. No paid image/audio generation, inferred legal grants, overwritten approved sources/art or customer/wallet changes.",
+          "slug": "an-occurrence-at-owl-creek-bridge"
+        }
+      ],
+      "reader_release_status": "ACCEPTED_SOURCE_PENDING_PROTECTED_DEPLOY_AND_PRODUCTION_READBACK",
+      "configured_reader_exposure": true,
+      "reader_exposed": false,
+      "audio_release_status": "NOT_REQUESTED",
+      "audio_exposed": false,
+      "last_decision_at": "2026-10-01T05:38:07.922769+00:00"
     },
     "the-pit-and-the-pendulum": {
       "latest_decision": "READER_PREFLIGHT_REPAIRED_PENDING_CHECKPOINT_AND_OWNER_PREVIEW_GATE",
@@ -3469,7 +4357,85 @@
       "root_backend_byte_parity": true,
       "legacy_estimated_sync_invalidated": true,
       "public_release_mutated": false,
-      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main for the first human gate."
+      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main for the first human gate.",
+      "history": [
+        {
+          "timestamp": "2026-10-01T05:49:44.955687+00:00",
+          "workstream": "near_ready_text_release",
+          "decision": "PRIORITIZE_SIXTEEN_PROVEN_EXISTING_EDITIONS_WITHOUT_PAID_GENERATION",
+          "source_head": "3f76c8521ef7e636e8f6f0d0c7d864f7ed132da7",
+          "slugs": [
+            "the-pit-and-the-pendulum"
+          ],
+          "release_packet": "internal/legal/near_ready_text_release_20261001",
+          "accepted_at": "2026-10-01T05:38:07.922769+00:00",
+          "accepted_decision_ids": [
+            "india-20261001-the-pit-and-the-pendulum-owner-text-reader"
+          ],
+          "canonical_record_sha256": {
+            "a-horseman-in-the-sky": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+            "a-mystery-of-heroism": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+            "a-scandal-in-bohemia": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+            "jekyll-and-hyde": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
+            "love-of-life": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb",
+            "the-bishop": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b",
+            "the-fall-of-the-house-of-usher": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168",
+            "the-lady-with-the-dog": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
+            "the-man-who-would-be-king": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
+            "the-open-boat": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+            "the-pit-and-the-pendulum": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+            "the-stolen-white-elephant": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+            "an-occurrence-at-owl-creek-bridge": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+            "the-enchanted-april": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
+            "the-happy-prince": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
+            "picture-of-dorian-gray": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea"
+          },
+          "territory": "IN",
+          "access_mode": "COMMERCIAL_ENTITLEMENT",
+          "free_preview_pages": 3,
+          "chapters_in_batch": 66,
+          "offline_canonical_projection_pages": 539,
+          "new_images": 0,
+          "paid_provider_calls": 0,
+          "source_and_art_bytes_changed": false,
+          "prior_full_release_files_preserved": 231,
+          "prior_registry_bindings_preserved": 11,
+          "audio_activation_count": 0,
+          "catalogue": {
+            "assessed": 231,
+            "prepared": 162,
+            "chapters": 1012,
+            "source_approved": 24,
+            "held": 207,
+            "missing_packages": 69,
+            "aggregate_blockers": 860
+          },
+          "local_checks": {
+            "unchanged_source_boundary_regressions": 44,
+            "package_manifest_rights_and_proxy_tests": 56,
+            "core_safety_and_query_tests": "152 passed, then 53 catalogue/chapter tests passed after exact-authority fixture reconciliation",
+            "public_legal_Reader_frontend_tests": 47,
+            "mandatory_seed_review_processor_preflight": 27,
+            "release_proxy_tests": 11,
+            "production_build": "PASS_94_SNAPSHOTS_2017_ASSERTIONS",
+            "full_hosted_browser_mongo_redis_regression": "PENDING_EXACT_HEAD_NORMAL_CI"
+          },
+          "production_deployment": "PENDING_NORMAL_PROTECTED_MERGE_MAIN_ONLY",
+          "authenticated_production_readback": "NOT_RUN",
+          "trusted_india_production_readback": "NOT_RUN",
+          "active_canonical_segments": "NOT_OBSERVED_OR_CHANGED",
+          "customer_ready": "NOT_DECLARED",
+          "physical_device_uat": "OWNER_DEFERRED_NOT_RUN_UNVERIFIED",
+          "next_generated_prompt": "Validate the exact 16-title near-ready batch with normal regression, independent catalogue and browser checks. Merge only the current protected head; deploy merged main through the existing Vercel/Railway checks. Verify delivered title and cover hashes and applicable authenticated trusted-India Reader and active canonical version. Use existing admin dry-run/parity and guarded bootstrap/promotion only when genuinely authenticated and qualified; preserve every approved active pointer. Continue only other cheap exact-evidence candidates; Most Dangerous Game needs its visible licence/downstream-use conditions, current Cloudinary cover gaps and conflicting mirrors remain held. No paid image/audio generation, inferred legal grants, overwritten approved sources/art or customer/wallet changes.",
+          "slug": "the-pit-and-the-pendulum"
+        }
+      ],
+      "reader_release_status": "ACCEPTED_SOURCE_PENDING_PROTECTED_DEPLOY_AND_PRODUCTION_READBACK",
+      "configured_reader_exposure": true,
+      "reader_exposed": false,
+      "audio_release_status": "NOT_REQUESTED",
+      "audio_exposed": false,
+      "last_decision_at": "2026-10-01T05:38:07.922769+00:00"
     },
     "the-bishop": {
       "latest_decision": "READER_PREFLIGHT_RECONCILED_PENDING_CHECKPOINT_AND_OWNER_PREVIEW_GATE",
@@ -3485,7 +4451,85 @@
       "legacy_estimated_sync_invalidated": true,
       "remote_media_mutated": false,
       "public_release_mutated": false,
-      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main for the first human gate."
+      "next_action": "Merge the repair checkpoint and render the checksum-bound private reader preview from clean origin/main for the first human gate.",
+      "history": [
+        {
+          "timestamp": "2026-10-01T05:49:44.955687+00:00",
+          "workstream": "near_ready_text_release",
+          "decision": "PRIORITIZE_SIXTEEN_PROVEN_EXISTING_EDITIONS_WITHOUT_PAID_GENERATION",
+          "source_head": "3f76c8521ef7e636e8f6f0d0c7d864f7ed132da7",
+          "slugs": [
+            "the-bishop"
+          ],
+          "release_packet": "internal/legal/near_ready_text_release_20261001",
+          "accepted_at": "2026-10-01T05:38:07.922769+00:00",
+          "accepted_decision_ids": [
+            "india-20261001-the-bishop-owner-text-reader"
+          ],
+          "canonical_record_sha256": {
+            "a-horseman-in-the-sky": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+            "a-mystery-of-heroism": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+            "a-scandal-in-bohemia": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+            "jekyll-and-hyde": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
+            "love-of-life": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb",
+            "the-bishop": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b",
+            "the-fall-of-the-house-of-usher": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168",
+            "the-lady-with-the-dog": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
+            "the-man-who-would-be-king": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
+            "the-open-boat": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+            "the-pit-and-the-pendulum": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+            "the-stolen-white-elephant": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+            "an-occurrence-at-owl-creek-bridge": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+            "the-enchanted-april": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
+            "the-happy-prince": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
+            "picture-of-dorian-gray": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea"
+          },
+          "territory": "IN",
+          "access_mode": "COMMERCIAL_ENTITLEMENT",
+          "free_preview_pages": 3,
+          "chapters_in_batch": 66,
+          "offline_canonical_projection_pages": 539,
+          "new_images": 0,
+          "paid_provider_calls": 0,
+          "source_and_art_bytes_changed": false,
+          "prior_full_release_files_preserved": 231,
+          "prior_registry_bindings_preserved": 11,
+          "audio_activation_count": 0,
+          "catalogue": {
+            "assessed": 231,
+            "prepared": 162,
+            "chapters": 1012,
+            "source_approved": 24,
+            "held": 207,
+            "missing_packages": 69,
+            "aggregate_blockers": 860
+          },
+          "local_checks": {
+            "unchanged_source_boundary_regressions": 44,
+            "package_manifest_rights_and_proxy_tests": 56,
+            "core_safety_and_query_tests": "152 passed, then 53 catalogue/chapter tests passed after exact-authority fixture reconciliation",
+            "public_legal_Reader_frontend_tests": 47,
+            "mandatory_seed_review_processor_preflight": 27,
+            "release_proxy_tests": 11,
+            "production_build": "PASS_94_SNAPSHOTS_2017_ASSERTIONS",
+            "full_hosted_browser_mongo_redis_regression": "PENDING_EXACT_HEAD_NORMAL_CI"
+          },
+          "production_deployment": "PENDING_NORMAL_PROTECTED_MERGE_MAIN_ONLY",
+          "authenticated_production_readback": "NOT_RUN",
+          "trusted_india_production_readback": "NOT_RUN",
+          "active_canonical_segments": "NOT_OBSERVED_OR_CHANGED",
+          "customer_ready": "NOT_DECLARED",
+          "physical_device_uat": "OWNER_DEFERRED_NOT_RUN_UNVERIFIED",
+          "next_generated_prompt": "Validate the exact 16-title near-ready batch with normal regression, independent catalogue and browser checks. Merge only the current protected head; deploy merged main through the existing Vercel/Railway checks. Verify delivered title and cover hashes and applicable authenticated trusted-India Reader and active canonical version. Use existing admin dry-run/parity and guarded bootstrap/promotion only when genuinely authenticated and qualified; preserve every approved active pointer. Continue only other cheap exact-evidence candidates; Most Dangerous Game needs its visible licence/downstream-use conditions, current Cloudinary cover gaps and conflicting mirrors remain held. No paid image/audio generation, inferred legal grants, overwritten approved sources/art or customer/wallet changes.",
+          "slug": "the-bishop"
+        }
+      ],
+      "reader_release_status": "ACCEPTED_SOURCE_PENDING_PROTECTED_DEPLOY_AND_PRODUCTION_READBACK",
+      "configured_reader_exposure": true,
+      "reader_exposed": false,
+      "audio_release_status": "NOT_REQUESTED",
+      "audio_exposed": false,
+      "last_decision_at": "2026-10-01T05:38:07.922769+00:00"
     },
     "english-25-title-controlled-batch": {
       "latest_decision": "TWO_PILOT_AUDIOBOOKS_LIVE_AND_REPOSITORY_TRUTH_RECONCILED",
@@ -3609,7 +4653,245 @@
       "public_audio_status": "AUDIO_HIDDEN_NOT_REQUESTED",
       "source_sha256": "d2d5a31f295361fb742f44729d3de6082cd7bff742a0484cd178731d66ef8370",
       "content_sha256": "3539ad44486bb347c096d9905edc019fada09b3d58f3b1dbfbf375da7a892627",
-      "next_action": "Run private preview prechecks and request fresh checksum-bound owner approval."
+      "next_action": "Run private preview prechecks and request fresh checksum-bound owner approval.",
+      "history": [
+        {
+          "timestamp": "2026-10-01T05:49:44.955687+00:00",
+          "workstream": "near_ready_text_release",
+          "decision": "PRIORITIZE_SIXTEEN_PROVEN_EXISTING_EDITIONS_WITHOUT_PAID_GENERATION",
+          "source_head": "3f76c8521ef7e636e8f6f0d0c7d864f7ed132da7",
+          "slugs": [
+            "the-enchanted-april"
+          ],
+          "release_packet": "internal/legal/near_ready_text_release_20261001",
+          "accepted_at": "2026-10-01T05:38:07.922769+00:00",
+          "accepted_decision_ids": [
+            "india-20261001-the-enchanted-april-owner-text-reader"
+          ],
+          "canonical_record_sha256": {
+            "a-horseman-in-the-sky": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+            "a-mystery-of-heroism": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+            "a-scandal-in-bohemia": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+            "jekyll-and-hyde": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
+            "love-of-life": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb",
+            "the-bishop": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b",
+            "the-fall-of-the-house-of-usher": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168",
+            "the-lady-with-the-dog": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
+            "the-man-who-would-be-king": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
+            "the-open-boat": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+            "the-pit-and-the-pendulum": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+            "the-stolen-white-elephant": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+            "an-occurrence-at-owl-creek-bridge": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+            "the-enchanted-april": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
+            "the-happy-prince": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
+            "picture-of-dorian-gray": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea"
+          },
+          "territory": "IN",
+          "access_mode": "COMMERCIAL_ENTITLEMENT",
+          "free_preview_pages": 3,
+          "chapters_in_batch": 66,
+          "offline_canonical_projection_pages": 539,
+          "new_images": 0,
+          "paid_provider_calls": 0,
+          "source_and_art_bytes_changed": false,
+          "prior_full_release_files_preserved": 231,
+          "prior_registry_bindings_preserved": 11,
+          "audio_activation_count": 0,
+          "catalogue": {
+            "assessed": 231,
+            "prepared": 162,
+            "chapters": 1012,
+            "source_approved": 24,
+            "held": 207,
+            "missing_packages": 69,
+            "aggregate_blockers": 860
+          },
+          "local_checks": {
+            "unchanged_source_boundary_regressions": 44,
+            "package_manifest_rights_and_proxy_tests": 56,
+            "core_safety_and_query_tests": "152 passed, then 53 catalogue/chapter tests passed after exact-authority fixture reconciliation",
+            "public_legal_Reader_frontend_tests": 47,
+            "mandatory_seed_review_processor_preflight": 27,
+            "release_proxy_tests": 11,
+            "production_build": "PASS_94_SNAPSHOTS_2017_ASSERTIONS",
+            "full_hosted_browser_mongo_redis_regression": "PENDING_EXACT_HEAD_NORMAL_CI"
+          },
+          "production_deployment": "PENDING_NORMAL_PROTECTED_MERGE_MAIN_ONLY",
+          "authenticated_production_readback": "NOT_RUN",
+          "trusted_india_production_readback": "NOT_RUN",
+          "active_canonical_segments": "NOT_OBSERVED_OR_CHANGED",
+          "customer_ready": "NOT_DECLARED",
+          "physical_device_uat": "OWNER_DEFERRED_NOT_RUN_UNVERIFIED",
+          "next_generated_prompt": "Validate the exact 16-title near-ready batch with normal regression, independent catalogue and browser checks. Merge only the current protected head; deploy merged main through the existing Vercel/Railway checks. Verify delivered title and cover hashes and applicable authenticated trusted-India Reader and active canonical version. Use existing admin dry-run/parity and guarded bootstrap/promotion only when genuinely authenticated and qualified; preserve every approved active pointer. Continue only other cheap exact-evidence candidates; Most Dangerous Game needs its visible licence/downstream-use conditions, current Cloudinary cover gaps and conflicting mirrors remain held. No paid image/audio generation, inferred legal grants, overwritten approved sources/art or customer/wallet changes.",
+          "slug": "the-enchanted-april"
+        }
+      ],
+      "reader_release_status": "ACCEPTED_SOURCE_PENDING_PROTECTED_DEPLOY_AND_PRODUCTION_READBACK",
+      "configured_reader_exposure": true,
+      "reader_exposed": false,
+      "audio_release_status": "NOT_REQUESTED",
+      "audio_exposed": false,
+      "last_decision_at": "2026-10-01T05:38:07.922769+00:00"
+    },
+    "a-horseman-in-the-sky": {
+      "history": [
+        {
+          "timestamp": "2026-10-01T05:49:44.955687+00:00",
+          "workstream": "near_ready_text_release",
+          "decision": "PRIORITIZE_SIXTEEN_PROVEN_EXISTING_EDITIONS_WITHOUT_PAID_GENERATION",
+          "source_head": "3f76c8521ef7e636e8f6f0d0c7d864f7ed132da7",
+          "slugs": [
+            "a-horseman-in-the-sky"
+          ],
+          "release_packet": "internal/legal/near_ready_text_release_20261001",
+          "accepted_at": "2026-10-01T05:38:07.922769+00:00",
+          "accepted_decision_ids": [
+            "india-20261001-a-horseman-in-the-sky-owner-text-reader"
+          ],
+          "canonical_record_sha256": {
+            "a-horseman-in-the-sky": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+            "a-mystery-of-heroism": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+            "a-scandal-in-bohemia": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+            "jekyll-and-hyde": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
+            "love-of-life": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb",
+            "the-bishop": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b",
+            "the-fall-of-the-house-of-usher": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168",
+            "the-lady-with-the-dog": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
+            "the-man-who-would-be-king": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
+            "the-open-boat": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+            "the-pit-and-the-pendulum": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+            "the-stolen-white-elephant": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+            "an-occurrence-at-owl-creek-bridge": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+            "the-enchanted-april": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
+            "the-happy-prince": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
+            "picture-of-dorian-gray": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea"
+          },
+          "territory": "IN",
+          "access_mode": "COMMERCIAL_ENTITLEMENT",
+          "free_preview_pages": 3,
+          "chapters_in_batch": 66,
+          "offline_canonical_projection_pages": 539,
+          "new_images": 0,
+          "paid_provider_calls": 0,
+          "source_and_art_bytes_changed": false,
+          "prior_full_release_files_preserved": 231,
+          "prior_registry_bindings_preserved": 11,
+          "audio_activation_count": 0,
+          "catalogue": {
+            "assessed": 231,
+            "prepared": 162,
+            "chapters": 1012,
+            "source_approved": 24,
+            "held": 207,
+            "missing_packages": 69,
+            "aggregate_blockers": 860
+          },
+          "local_checks": {
+            "unchanged_source_boundary_regressions": 44,
+            "package_manifest_rights_and_proxy_tests": 56,
+            "core_safety_and_query_tests": "152 passed, then 53 catalogue/chapter tests passed after exact-authority fixture reconciliation",
+            "public_legal_Reader_frontend_tests": 47,
+            "mandatory_seed_review_processor_preflight": 27,
+            "release_proxy_tests": 11,
+            "production_build": "PASS_94_SNAPSHOTS_2017_ASSERTIONS",
+            "full_hosted_browser_mongo_redis_regression": "PENDING_EXACT_HEAD_NORMAL_CI"
+          },
+          "production_deployment": "PENDING_NORMAL_PROTECTED_MERGE_MAIN_ONLY",
+          "authenticated_production_readback": "NOT_RUN",
+          "trusted_india_production_readback": "NOT_RUN",
+          "active_canonical_segments": "NOT_OBSERVED_OR_CHANGED",
+          "customer_ready": "NOT_DECLARED",
+          "physical_device_uat": "OWNER_DEFERRED_NOT_RUN_UNVERIFIED",
+          "next_generated_prompt": "Validate the exact 16-title near-ready batch with normal regression, independent catalogue and browser checks. Merge only the current protected head; deploy merged main through the existing Vercel/Railway checks. Verify delivered title and cover hashes and applicable authenticated trusted-India Reader and active canonical version. Use existing admin dry-run/parity and guarded bootstrap/promotion only when genuinely authenticated and qualified; preserve every approved active pointer. Continue only other cheap exact-evidence candidates; Most Dangerous Game needs its visible licence/downstream-use conditions, current Cloudinary cover gaps and conflicting mirrors remain held. No paid image/audio generation, inferred legal grants, overwritten approved sources/art or customer/wallet changes.",
+          "slug": "a-horseman-in-the-sky"
+        }
+      ],
+      "reader_release_status": "ACCEPTED_SOURCE_PENDING_PROTECTED_DEPLOY_AND_PRODUCTION_READBACK",
+      "configured_reader_exposure": true,
+      "reader_exposed": false,
+      "audio_release_status": "NOT_REQUESTED",
+      "audio_exposed": false,
+      "last_decision_at": "2026-10-01T05:38:07.922769+00:00"
+    },
+    "a-mystery-of-heroism": {
+      "history": [
+        {
+          "timestamp": "2026-10-01T05:49:44.955687+00:00",
+          "workstream": "near_ready_text_release",
+          "decision": "PRIORITIZE_SIXTEEN_PROVEN_EXISTING_EDITIONS_WITHOUT_PAID_GENERATION",
+          "source_head": "3f76c8521ef7e636e8f6f0d0c7d864f7ed132da7",
+          "slugs": [
+            "a-mystery-of-heroism"
+          ],
+          "release_packet": "internal/legal/near_ready_text_release_20261001",
+          "accepted_at": "2026-10-01T05:38:07.922769+00:00",
+          "accepted_decision_ids": [
+            "india-20261001-a-mystery-of-heroism-owner-text-reader"
+          ],
+          "canonical_record_sha256": {
+            "a-horseman-in-the-sky": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+            "a-mystery-of-heroism": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+            "a-scandal-in-bohemia": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+            "jekyll-and-hyde": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
+            "love-of-life": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb",
+            "the-bishop": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b",
+            "the-fall-of-the-house-of-usher": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168",
+            "the-lady-with-the-dog": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
+            "the-man-who-would-be-king": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
+            "the-open-boat": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+            "the-pit-and-the-pendulum": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+            "the-stolen-white-elephant": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+            "an-occurrence-at-owl-creek-bridge": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+            "the-enchanted-april": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
+            "the-happy-prince": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
+            "picture-of-dorian-gray": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea"
+          },
+          "territory": "IN",
+          "access_mode": "COMMERCIAL_ENTITLEMENT",
+          "free_preview_pages": 3,
+          "chapters_in_batch": 66,
+          "offline_canonical_projection_pages": 539,
+          "new_images": 0,
+          "paid_provider_calls": 0,
+          "source_and_art_bytes_changed": false,
+          "prior_full_release_files_preserved": 231,
+          "prior_registry_bindings_preserved": 11,
+          "audio_activation_count": 0,
+          "catalogue": {
+            "assessed": 231,
+            "prepared": 162,
+            "chapters": 1012,
+            "source_approved": 24,
+            "held": 207,
+            "missing_packages": 69,
+            "aggregate_blockers": 860
+          },
+          "local_checks": {
+            "unchanged_source_boundary_regressions": 44,
+            "package_manifest_rights_and_proxy_tests": 56,
+            "core_safety_and_query_tests": "152 passed, then 53 catalogue/chapter tests passed after exact-authority fixture reconciliation",
+            "public_legal_Reader_frontend_tests": 47,
+            "mandatory_seed_review_processor_preflight": 27,
+            "release_proxy_tests": 11,
+            "production_build": "PASS_94_SNAPSHOTS_2017_ASSERTIONS",
+            "full_hosted_browser_mongo_redis_regression": "PENDING_EXACT_HEAD_NORMAL_CI"
+          },
+          "production_deployment": "PENDING_NORMAL_PROTECTED_MERGE_MAIN_ONLY",
+          "authenticated_production_readback": "NOT_RUN",
+          "trusted_india_production_readback": "NOT_RUN",
+          "active_canonical_segments": "NOT_OBSERVED_OR_CHANGED",
+          "customer_ready": "NOT_DECLARED",
+          "physical_device_uat": "OWNER_DEFERRED_NOT_RUN_UNVERIFIED",
+          "next_generated_prompt": "Validate the exact 16-title near-ready batch with normal regression, independent catalogue and browser checks. Merge only the current protected head; deploy merged main through the existing Vercel/Railway checks. Verify delivered title and cover hashes and applicable authenticated trusted-India Reader and active canonical version. Use existing admin dry-run/parity and guarded bootstrap/promotion only when genuinely authenticated and qualified; preserve every approved active pointer. Continue only other cheap exact-evidence candidates; Most Dangerous Game needs its visible licence/downstream-use conditions, current Cloudinary cover gaps and conflicting mirrors remain held. No paid image/audio generation, inferred legal grants, overwritten approved sources/art or customer/wallet changes.",
+          "slug": "a-mystery-of-heroism"
+        }
+      ],
+      "reader_release_status": "ACCEPTED_SOURCE_PENDING_PROTECTED_DEPLOY_AND_PRODUCTION_READBACK",
+      "configured_reader_exposure": true,
+      "reader_exposed": false,
+      "audio_release_status": "NOT_REQUESTED",
+      "audio_exposed": false,
+      "last_decision_at": "2026-10-01T05:38:07.922769+00:00"
     }
   },
   "bengali_audio_lane_status": "D19_INDIC_PARLER_OBJECTIVE_FAIL_SOURCE_BOUND_REPLACEMENT_REQUIRED",
@@ -4515,5 +5797,132 @@
     "all_14_chapter_files_unchanged": true,
     "full_head_checks": "REQUIRED_ON_NEW_HEAD",
     "production_readback": "NOT_CLAIMED"
+  },
+  "near_ready_text_release_20261001": {
+    "timestamp": "2026-10-01T05:49:44.955687+00:00",
+    "workstream": "near_ready_text_release",
+    "decision": "PRIORITIZE_SIXTEEN_PROVEN_EXISTING_EDITIONS_WITHOUT_PAID_GENERATION",
+    "source_head": "3f76c8521ef7e636e8f6f0d0c7d864f7ed132da7",
+    "slugs": [
+      "a-horseman-in-the-sky",
+      "a-mystery-of-heroism",
+      "a-scandal-in-bohemia",
+      "jekyll-and-hyde",
+      "love-of-life",
+      "the-bishop",
+      "the-fall-of-the-house-of-usher",
+      "the-lady-with-the-dog",
+      "the-man-who-would-be-king",
+      "the-open-boat",
+      "the-pit-and-the-pendulum",
+      "the-stolen-white-elephant",
+      "an-occurrence-at-owl-creek-bridge",
+      "the-enchanted-april",
+      "the-happy-prince",
+      "picture-of-dorian-gray"
+    ],
+    "release_packet": "internal/legal/near_ready_text_release_20261001",
+    "accepted_at": "2026-10-01T05:38:07.922769+00:00",
+    "accepted_decision_ids": [
+      "india-20261001-a-horseman-in-the-sky-owner-text-reader",
+      "india-20261001-a-mystery-of-heroism-owner-text-reader",
+      "india-20261001-a-scandal-in-bohemia-owner-text-reader",
+      "india-20261001-jekyll-and-hyde-owner-text-reader",
+      "india-20261001-love-of-life-owner-text-reader",
+      "india-20261001-the-bishop-owner-text-reader",
+      "india-20261001-the-fall-of-the-house-of-usher-owner-text-reader",
+      "india-20261001-the-lady-with-the-dog-owner-text-reader",
+      "india-20261001-the-man-who-would-be-king-owner-text-reader",
+      "india-20261001-the-open-boat-owner-text-reader",
+      "india-20261001-the-pit-and-the-pendulum-owner-text-reader",
+      "india-20261001-the-stolen-white-elephant-owner-text-reader",
+      "india-20261001-an-occurrence-at-owl-creek-bridge-owner-text-reader",
+      "india-20261001-the-enchanted-april-owner-text-reader",
+      "india-20261001-the-happy-prince-owner-text-reader",
+      "india-20261001-picture-of-dorian-gray-owner-text-reader"
+    ],
+    "canonical_record_sha256": {
+      "a-horseman-in-the-sky": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+      "a-mystery-of-heroism": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+      "a-scandal-in-bohemia": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+      "jekyll-and-hyde": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
+      "love-of-life": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb",
+      "the-bishop": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b",
+      "the-fall-of-the-house-of-usher": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168",
+      "the-lady-with-the-dog": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
+      "the-man-who-would-be-king": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
+      "the-open-boat": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+      "the-pit-and-the-pendulum": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+      "the-stolen-white-elephant": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+      "an-occurrence-at-owl-creek-bridge": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+      "the-enchanted-april": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
+      "the-happy-prince": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
+      "picture-of-dorian-gray": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea"
+    },
+    "territory": "IN",
+    "access_mode": "COMMERCIAL_ENTITLEMENT",
+    "free_preview_pages": 3,
+    "chapters_in_batch": 66,
+    "offline_canonical_projection_pages": 539,
+    "new_images": 0,
+    "paid_provider_calls": 0,
+    "source_and_art_bytes_changed": false,
+    "prior_full_release_files_preserved": 231,
+    "prior_registry_bindings_preserved": 11,
+    "audio_activation_count": 0,
+    "catalogue": {
+      "assessed": 231,
+      "prepared": 162,
+      "chapters": 1012,
+      "source_approved": 24,
+      "held": 207,
+      "missing_packages": 69,
+      "aggregate_blockers": 860
+    },
+    "local_checks": {
+      "unchanged_source_boundary_regressions": 44,
+      "package_manifest_rights_and_proxy_tests": 56,
+      "core_safety_and_query_tests": "152 passed, then 53 catalogue/chapter tests passed after exact-authority fixture reconciliation",
+      "public_legal_Reader_frontend_tests": 47,
+      "mandatory_seed_review_processor_preflight": 27,
+      "release_proxy_tests": 11,
+      "production_build": "PASS_94_SNAPSHOTS_2017_ASSERTIONS",
+      "full_hosted_browser_mongo_redis_regression": "PENDING_EXACT_HEAD_NORMAL_CI"
+    },
+    "production_deployment": "PENDING_NORMAL_PROTECTED_MERGE_MAIN_ONLY",
+    "authenticated_production_readback": "NOT_RUN",
+    "trusted_india_production_readback": "NOT_RUN",
+    "active_canonical_segments": "NOT_OBSERVED_OR_CHANGED",
+    "customer_ready": "NOT_DECLARED",
+    "physical_device_uat": "OWNER_DEFERRED_NOT_RUN_UNVERIFIED",
+    "next_generated_prompt": "Validate the exact 16-title near-ready batch with normal regression, independent catalogue and browser checks. Merge only the current protected head; deploy merged main through the existing Vercel/Railway checks. Verify delivered title and cover hashes and applicable authenticated trusted-India Reader and active canonical version. Use existing admin dry-run/parity and guarded bootstrap/promotion only when genuinely authenticated and qualified; preserve every approved active pointer. Continue only other cheap exact-evidence candidates; Most Dangerous Game needs its visible licence/downstream-use conditions, current Cloudinary cover gaps and conflicting mirrors remain held. No paid image/audio generation, inferred legal grants, overwritten approved sources/art or customer/wallet changes."
+  },
+  "agentic_merged_main_observation_20261001": {
+    "schema": "earnalism.agentic-main-production-observation.v1",
+    "checked_at": "2026-10-01T05:49:44.955687+00:00",
+    "merged_pr": 496,
+    "merged_main": "3f76c8521ef7e636e8f6f0d0c7d864f7ed132da7",
+    "reviewed_head": "e59be0fc2caff242b5fc3bd65283a3187bf30ab7",
+    "reviewed_and_merged_tree": "68a4d4b3f9466fcf018e8324d6a4fde7e002c505",
+    "main_regression": "PASS",
+    "main_regression_run": 36816915371,
+    "main_catalogue_run": 36816915381,
+    "catalogue_artifact_id": 11141781539,
+    "catalogue_zip_sha256": "3a9adadf69df5cfb4a97a59965fdace5b4580284ac6d2327a85fbbf0af8ebf21",
+    "independent_catalogue_files_equal": 165,
+    "worker_review": "ACCEPT_WITHIN_SCOPE_NO_SOURCE_MUTATIONS",
+    "frontend_deployment": "SUCCESS",
+    "frontend_canary": "FAIL_THREE_OVERSEAS_BARE_451_API_ASSERTIONS",
+    "frontend_html_routes_passed": 26,
+    "removed_routes_passed": 23,
+    "frontend_failure_artifact": 11141394855,
+    "frontend_failure_zip_sha256": "2f26fb3b7ccde9673a5b0287c2d9539c7ffd14fe2970efeee5c697be5a766040",
+    "backend_deployment": "SKIPPED_CHECK_SUITE_GATE",
+    "backend_skipped_deployment": "9f69676f-1573-4848-be62-d37e5ba90f74",
+    "authenticated_production_readback": "NOT_VERIFIED_SIGN_IN_REMAINS_VISIBLE",
+    "trusted_india_production_readback": "NOT_VERIFIED",
+    "active_canonical_version": "NOT_OBSERVED_OR_MUTATED",
+    "customer_ready": "NOT_DECLARED",
+    "resolution": "Keep India-only denial; return explicit bounded JSON territory code. Canary must report India backend contract NOT_RUN_FROM_NON_IN for reviewed protected routes and keep strict original India status/code checks. Do not accept generic 451, change trusted region, bypass deployment checks or fabricate authentication."
   }
 }

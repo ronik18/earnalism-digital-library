@@ -1,0 +1,16 @@
+{
+  "schema": "earnalism.reader-release-owner-authority.v1",
+  "slug": "the-pit-and-the-pendulum",
+  "recorded_at": "2026-10-01T05:38:07.922769+00:00",
+  "owner_instruction_sha256": "538c726547957d127294daa3add4984b59f5889ddea250e0ec92426fa40e672b",
+  "component_review_sha256": "8b4c0ebbf854fc4ab4e23b3be155149ef9abd14bd3ddda6eb925eb3b904eb403",
+  "reader_qa_sha256": "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+  "chapter_files_sha256": {
+    "chapter-001.json": "747b573b44a98b8860668283c937f9ab2aa02c51ee98856a3644048f4ff11fbd"
+  },
+  "authorization": "Ronik Basak directly authorized autonomous safe release of near-ready compliant books; exact checks performed by Codex, no separate owner hash inspection claimed.",
+  "territory": "IN",
+  "access_mode": "COMMERCIAL_ENTITLEMENT",
+  "audio_authorized": false,
+  "publication_readback_verified": false
+}

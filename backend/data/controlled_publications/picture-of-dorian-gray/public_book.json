@@ -7,7 +7,7 @@
   "category_slug": "classic-literature",
   "short_description": "A clean Earnalism reader edition of The Picture of Dorian Gray, prepared from a legally cleared public-domain classic source with source boilerplate removed.",
   "description": "A clean Earnalism reader edition of The Picture of Dorian Gray, prepared from a legally cleared public-domain classic source with source boilerplate removed.",
-  "cover_status": "BLOCKED_UNPROVEN_EXACT_SLUG_GRAPHICAL_COVER",
+  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "332 min",
   "formats": [
@@ -328,26 +328,26 @@
   "rights_basis": "Oscar Wilde died in 1900. Under Section 22 of the Copyright Act, 1957 (India), copyright in a literary work subsists until sixty years from the beginning of the calendar year following the author's death; the term expired after 1960 and the work entered the public domain in India on 1 January 1961. Territory: IN.",
   "rights_tier": "A",
   "verification_status": "approved",
-  "qa_status": "READY_FOR_APPROVAL",
-  "approved_to_publish": false,
-  "publication_status": "READER_APPROVAL_REQUIRED",
-  "readerStatus": "reader_approval_required",
-  "publicationStatus": "draft",
-  "isPublic": false,
-  "isLive": false,
-  "showInPublicLibrary": false,
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
   "showInHomepage": false,
-  "allowPublicReading": false,
+  "allowPublicReading": true,
   "allowCheckout": false,
   "allowPayment": false,
-  "is_published": false,
+  "is_published": true,
   "audio_enabled": false,
   "audiobook_enabled": false,
   "generate_audiobook": false,
   "audiobook_assets": {},
   "audiobook": {},
   "created_at": "2026-07-01T10:36:20Z",
-  "updated_at": "2026-08-16T00:00:00Z",
+  "updated_at": "2026-10-01T05:38:07.922769+00:00",
   "audiobook_provider": "",
   "audiobook_voice": "",
   "audio_asset_slug": "",
@@ -359,5 +359,22 @@
     "exact_slug_cover_provenance_required",
     "fresh_checksum_bound_reader_approval_required"
   ],
-  "reader_package_fingerprint": "5f8daba1feaff87cd39969832d96558887f4965051d7945d5a54a999ef38609d"
+  "reader_package_fingerprint": "5f8daba1feaff87cd39969832d96558887f4965051d7945d5a54a999ef38609d",
+  "cover_url": "https://theearnalism.com/assets/books/picture-of-dorian-gray/front-cover.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/picture-of-dorian-gray/front-cover.webp",
+  "coverImage": "https://theearnalism.com/assets/books/picture-of-dorian-gray/front-cover.webp",
+  "cover_image": "https://theearnalism.com/assets/books/picture-of-dorian-gray/front-cover.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/picture-of-dorian-gray/back-cover.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/picture-of-dorian-gray/back-cover.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/picture-of-dorian-gray/back-cover.webp",
+  "cover_dimensions": {
+    "front": [
+      800,
+      1200
+    ],
+    "back": [
+      800,
+      1200
+    ]
+  }
 }

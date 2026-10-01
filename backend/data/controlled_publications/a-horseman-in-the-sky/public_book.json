@@ -1,0 +1,93 @@
+{
+  "id": "controlled-a-horseman-in-the-sky",
+  "slug": "a-horseman-in-the-sky",
+  "title": "A Horseman in the Sky",
+  "subtitle": "",
+  "author": "Ambrose Bierce",
+  "category_slug": "history-strategy",
+  "short_description": "A Union soldier spots a Confederate scout on a cliff — and shoots him, not knowing it is his own father.",
+  "description": "Carter Druse, a Virginian fighting for the Union, falls asleep on sentry duty and wakes to see a Confederate horseman on a cliff commanding a view of the entire Union position. He fires — and only a sergeant later witnesses what falls from the cliff.",
+  "cover_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
+  "coverImage": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
+  "cover_image": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover.webp",
+  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "11 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Ambrose Bierce (1842–1914) was an American Civil War veteran, journalist, and author of sardonic fiction and The Devil's Dictionary.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "A Horseman in the Sky",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 2488,
+      "reading_minutes": 11,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-08-15T20:29:34Z"
+    }
+  ],
+  "source_hash": "80fcddf28824332d64cd71c5715a34fe73be1c4c51959edb7e6a6513338afaa7",
+  "content_hash": "3f89be2c6d914ead58cb73bf95c7912f9061c0552efb0c3c1d4fbc34946752bf",
+  "provenance_hash": "d6b045255992fbb0ad9ef6b59c3017dc1211c4cd52a5ef1eb7b576ddeb7f658e",
+  "rights_basis": "Ambrose Bierce died 1914; first published 1889. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_provider": "",
+  "audiobook_voice": "",
+  "audio_asset_slug": "",
+  "created_at": "2026-07-03T20:07:48Z",
+  "updated_at": "2026-08-15T20:29:34Z",
+  "cover_dimensions": {
+    "front": [
+      800,
+      1200
+    ],
+    "back": [
+      800,
+      1200
+    ]
+  }
+}

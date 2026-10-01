@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "a-mystery-of-heroism",
+  "title": "A Mystery of Heroism",
+  "generated_at": "2026-10-01T05:38:07.922769+00:00",
+  "content": {
+    "source_hash": "f7dbf9d8194ae1cabc49bad7598b01e1094baae7fdbd294bf14369c0e822eccc",
+    "content_hash": "d17b7158385cf5f47704692be63189043372b91a143c9e02485d8b9cfe4e00fb",
+    "provenance_hash": "6e615167cdd7ffb8dc6a8d743a34f8b9184f80e8527ccf6e4b1f13d91c1f3628",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "1c6f75eaac2631c72ee10480eda649c940c2cbb77228e3bbdb5e7775c7feddf4",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "A Mystery of Heroism",
+        "word_count": 3413,
+        "sha256": "f15462ba0fcb637d96290a4e04e9305a9ad8df6a343a0b4eab8be0be2572f6e4"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "in",
+    "evidence_sha256": "d1c48bae0ce3d6f3061cd549883de5b825187ef68852698f57e8677e025125de"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "0d26d045211e73777cf38fa06d0539771f33fcc3f4e4a56bb52d712820109f1e",
+    "reader_manifest": "e4378fc2bfbadb9fe9277ff2edab1069c1c2bc398b3dc1baf5d1aefbd8b2b367",
+    "source_evidence": "d1c48bae0ce3d6f3061cd549883de5b825187ef68852698f57e8677e025125de",
+    "approval_evidence": "c33d7c7868c0ffc377b53be1fa5c20809b89bb71a9df946bb9632754f6ad81f2"
+  },
+  "manifest_sha256": "26ba400832ffef4ac1e2ebcae0ecaa67f3a9d833210a2d2f561f9e000d9c4617"
+}

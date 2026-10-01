@@ -2,10 +2,14 @@
   "active_files_sha256": {
     "approval_evidence.json": "df56dfb86da0313455048aee89368af237670dd186400c2d1ded3621a296f6e6",
     "chapters/chapter-001.json": "747b573b44a98b8860668283c937f9ab2aa02c51ee98856a3644048f4ff11fbd",
-    "checksum_manifest.json": "478207ae5f15b6cdeda719d700196a72ca3e5ca7eaa0b267388fe7364c448993",
+    "checksum_manifest.json": "fb5f7ea77d39afb9872fea4e610592b071eb8aac7a3d9097e9f04653af58ad34",
+    "cover_provenance.json": "eb7664ac057a4b3e74e31fe0c0897f398f9ab676f58bb4a68ceebad9828e1709",
     "highlight_sync.json": "91c91d21f3a27edae2bac0d25a5110eb539dd01a0a14257411d1e0a2203534fe",
     "public_book.json": "53b92408acac07619bebff1a17b4fcafc7d7392e96ef78fc58fedccec70b87cf",
+    "publication_manifest.json": "7a71dedfe7704aa099d448ba23fc9246e8afad93b8eced53e65f282f0e5b57f3",
     "reader_manifest.json": "75184bafdc2e13f06824e1a3070fdfe5afc5bac478fb5142fa54393f07e32eed",
+    "reader_release_approval.json": "2cb3bbf36f33c31eee7b54d1310626bf63866579f374ab0bb52757ca2301a8e2",
+    "rights_decision.json": "e3effaab8f350fc370cad70ba7669b6768eff38d38a18cbced2c853bad60dc87",
     "source_evidence.json": "1a64c6709c98a917f7c338a28023ef2df49bad1e896f090cf50286be878eb4e0"
   },
   "chapter_content_hashes": [
@@ -18,10 +22,14 @@
   "input_files_sha256": {
     "approval_evidence.json": "df56dfb86da0313455048aee89368af237670dd186400c2d1ded3621a296f6e6",
     "chapters/chapter-001.json": "747b573b44a98b8860668283c937f9ab2aa02c51ee98856a3644048f4ff11fbd",
-    "checksum_manifest.json": "478207ae5f15b6cdeda719d700196a72ca3e5ca7eaa0b267388fe7364c448993",
+    "checksum_manifest.json": "fb5f7ea77d39afb9872fea4e610592b071eb8aac7a3d9097e9f04653af58ad34",
+    "cover_provenance.json": "eb7664ac057a4b3e74e31fe0c0897f398f9ab676f58bb4a68ceebad9828e1709",
     "highlight_sync.json": "91c91d21f3a27edae2bac0d25a5110eb539dd01a0a14257411d1e0a2203534fe",
     "public_book.json": "53b92408acac07619bebff1a17b4fcafc7d7392e96ef78fc58fedccec70b87cf",
+    "publication_manifest.json": "7a71dedfe7704aa099d448ba23fc9246e8afad93b8eced53e65f282f0e5b57f3",
     "reader_manifest.json": "75184bafdc2e13f06824e1a3070fdfe5afc5bac478fb5142fa54393f07e32eed",
+    "reader_release_approval.json": "2cb3bbf36f33c31eee7b54d1310626bf63866579f374ab0bb52757ca2301a8e2",
+    "rights_decision.json": "e3effaab8f350fc370cad70ba7669b6768eff38d38a18cbced2c853bad60dc87",
     "source_evidence.json": "1a64c6709c98a917f7c338a28023ef2df49bad1e896f090cf50286be878eb4e0"
   },
   "publication_authority": false,
@@ -58,17 +66,14 @@
       "sanitized": true,
       "source_hash": "44c59e6e27d1402d0ac587da78370177b575b3acc9144b2f4e52fdee018b3781"
     },
-    "generated_at": "2026-10-01T03:17:21.336723+00:00",
-    "manifest_sha256": "e22e63c2cb8c27022a54e4a35e75e68e579f481dd5cb25231d2107d99c6abe0e",
+    "generated_at": "2026-10-01T05:38:07.922769+00:00",
+    "manifest_sha256": "3f3077243b1f6e3adfee1ddf8b0d0b2dec6ed3aecbf58f0ce6ef011c741c4b2f",
     "reader_release": {
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
-      ],
+      "blockers": [],
       "cover_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover.webp",
-      "exposed": false,
+      "exposed": true,
       "qa_status": "QA_PASSED",
-      "status": "BLOCKED"
+      "status": "APPROVED"
     },
     "rights": {
       "evidence_sha256": "1a64c6709c98a917f7c338a28023ef2df49bad1e896f090cf50286be878eb4e0",
@@ -82,28 +87,22 @@
     "title": "The Pit and the Pendulum"
   },
   "rights_assessment": {
-    "decision_id": null,
-    "offline_india_text_scope_passed": false,
+    "decision_id": "india-20261001-the-pit-and-the-pendulum-owner-text-reader",
+    "offline_india_text_scope_passed": true,
     "production_request_verified": false,
-    "registry_bound": false,
+    "registry_bound": true,
     "runtime_actions": {
       "catalog_cta": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_chapter": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_manifest": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       }
     }
   },

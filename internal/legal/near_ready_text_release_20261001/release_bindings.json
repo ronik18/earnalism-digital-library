@@ -1,0 +1,192 @@
+{
+  "schema": "earnalism.near-ready-text-release-bindings.v1",
+  "accepted_at": "2026-10-01T05:38:07.922769+00:00",
+  "source_head": "3f76c8521ef7e636e8f6f0d0c7d864f7ed132da7",
+  "owner_instruction_sha256": "538c726547957d127294daa3add4984b59f5889ddea250e0ec92426fa40e672b",
+  "component_review_sha256": "8b4c0ebbf854fc4ab4e23b3be155149ef9abd14bd3ddda6eb925eb3b904eb403",
+  "reader_QA_sha256": "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+  "titles": [
+    {
+      "slug": "a-horseman-in-the-sky",
+      "decision_id": "india-20261001-a-horseman-in-the-sky-owner-text-reader",
+      "canonical_record_sha256": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+      "decision_file_sha256": "649dfea2d9bc8aa038069a05d37d51074c366a12cbdab6772bb6c5d019ccf9a8",
+      "publication_manifest_sha256": "50ab70a25eadfdeeb56a0fd88d03244cbf7d564e534b22598a5d3f3dfb501736",
+      "reader_QA_sha256": "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+      "mirror_parity": true,
+      "runtime_india_rights_gate": "PASS_OFFLINE",
+      "production_readback": "NOT_RUN"
+    },
+    {
+      "slug": "a-mystery-of-heroism",
+      "decision_id": "india-20261001-a-mystery-of-heroism-owner-text-reader",
+      "canonical_record_sha256": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+      "decision_file_sha256": "e5d45c9fa29b03c40b68b02b40d29bc8fff06f0265ae80f9d3d05a1bdadc953a",
+      "publication_manifest_sha256": "d42bfc4bf385ce397ae9e2b5a578660fb3308b63d122ce791a644022d2e6e9d7",
+      "reader_QA_sha256": "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+      "mirror_parity": true,
+      "runtime_india_rights_gate": "PASS_OFFLINE",
+      "production_readback": "NOT_RUN"
+    },
+    {
+      "slug": "a-scandal-in-bohemia",
+      "decision_id": "india-20261001-a-scandal-in-bohemia-owner-text-reader",
+      "canonical_record_sha256": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+      "decision_file_sha256": "8d291e3afff4e12a3e659539e0eac18900a97ca1a7652a1ca5c91f5e5fbe43f3",
+      "publication_manifest_sha256": "201f40b780f3e3adf1879aad82bacd7310d3a63b7b62ea42d5da134bd775a8eb",
+      "reader_QA_sha256": "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+      "mirror_parity": true,
+      "runtime_india_rights_gate": "PASS_OFFLINE",
+      "production_readback": "NOT_RUN"
+    },
+    {
+      "slug": "jekyll-and-hyde",
+      "decision_id": "india-20261001-jekyll-and-hyde-owner-text-reader",
+      "canonical_record_sha256": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
+      "decision_file_sha256": "d2b42fe92836163db7ba17252e95661be0f35971e6311a3b46d78eceb210329a",
+      "publication_manifest_sha256": "b9094001fb435084d41e8845ba17fdb476e8305b78bc664b6fffb708965c3849",
+      "reader_QA_sha256": "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+      "mirror_parity": true,
+      "runtime_india_rights_gate": "PASS_OFFLINE",
+      "production_readback": "NOT_RUN"
+    },
+    {
+      "slug": "love-of-life",
+      "decision_id": "india-20261001-love-of-life-owner-text-reader",
+      "canonical_record_sha256": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb",
+      "decision_file_sha256": "6f7854dd6b53d0c44b0603833bba5a4e7d2b5d70cfe80c951c471b2ce842c346",
+      "publication_manifest_sha256": "6107d1629ca295c1e3f785716c48a84c1fcbb3586ad65a5558d3f86679d0df6e",
+      "reader_QA_sha256": "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+      "mirror_parity": true,
+      "runtime_india_rights_gate": "PASS_OFFLINE",
+      "production_readback": "NOT_RUN"
+    },
+    {
+      "slug": "the-bishop",
+      "decision_id": "india-20261001-the-bishop-owner-text-reader",
+      "canonical_record_sha256": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b",
+      "decision_file_sha256": "a7c73f71ad33e4ad86a73891ea170422eab20e25983d0816a69c1492b567797d",
+      "publication_manifest_sha256": "4d5b124fce6ff16746b8e14e01d7b4f52d2213995068415b598280193dfa640c",
+      "reader_QA_sha256": "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+      "mirror_parity": true,
+      "runtime_india_rights_gate": "PASS_OFFLINE",
+      "production_readback": "NOT_RUN"
+    },
+    {
+      "slug": "the-fall-of-the-house-of-usher",
+      "decision_id": "india-20261001-the-fall-of-the-house-of-usher-owner-text-reader",
+      "canonical_record_sha256": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168",
+      "decision_file_sha256": "85e5b31c1ea16a5b42c546ee097500ba02d5be18aa61d384dc75fe1d2c4adc8e",
+      "publication_manifest_sha256": "2065c8d29f1611f05525594b50ff204a92bbfcd5ee12ab8951d9de7b7ed146be",
+      "reader_QA_sha256": "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+      "mirror_parity": true,
+      "runtime_india_rights_gate": "PASS_OFFLINE",
+      "production_readback": "NOT_RUN"
+    },
+    {
+      "slug": "the-lady-with-the-dog",
+      "decision_id": "india-20261001-the-lady-with-the-dog-owner-text-reader",
+      "canonical_record_sha256": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
+      "decision_file_sha256": "41b7db86e47845721bb857d97734143fcb48cffe3c5f04989fb8d6e9fbb87032",
+      "publication_manifest_sha256": "cbe0b20eba35819e2b5374c842989a443780c1cb36caf22a0e263c99c2e53a54",
+      "reader_QA_sha256": "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+      "mirror_parity": true,
+      "runtime_india_rights_gate": "PASS_OFFLINE",
+      "production_readback": "NOT_RUN"
+    },
+    {
+      "slug": "the-man-who-would-be-king",
+      "decision_id": "india-20261001-the-man-who-would-be-king-owner-text-reader",
+      "canonical_record_sha256": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
+      "decision_file_sha256": "ae70a0c45fb9568d811e91d11d6380c7337b1b262f552c41cc29c4ad3023b7ce",
+      "publication_manifest_sha256": "dc361d4ee0c48169f2b8b72323b35bba348a391da5056ca276354b2410971e17",
+      "reader_QA_sha256": "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+      "mirror_parity": true,
+      "runtime_india_rights_gate": "PASS_OFFLINE",
+      "production_readback": "NOT_RUN"
+    },
+    {
+      "slug": "the-open-boat",
+      "decision_id": "india-20261001-the-open-boat-owner-text-reader",
+      "canonical_record_sha256": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+      "decision_file_sha256": "fbacb3045f2740761e1aad3104bf064eb54d39b59dfc79f3559ad470c2b97901",
+      "publication_manifest_sha256": "26c68b1900a65b58afd2fb8172dd9eb3122dcf3b46bbcbec8a43d8b0bef5e715",
+      "reader_QA_sha256": "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+      "mirror_parity": true,
+      "runtime_india_rights_gate": "PASS_OFFLINE",
+      "production_readback": "NOT_RUN"
+    },
+    {
+      "slug": "the-pit-and-the-pendulum",
+      "decision_id": "india-20261001-the-pit-and-the-pendulum-owner-text-reader",
+      "canonical_record_sha256": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+      "decision_file_sha256": "e3effaab8f350fc370cad70ba7669b6768eff38d38a18cbced2c853bad60dc87",
+      "publication_manifest_sha256": "7a71dedfe7704aa099d448ba23fc9246e8afad93b8eced53e65f282f0e5b57f3",
+      "reader_QA_sha256": "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+      "mirror_parity": true,
+      "runtime_india_rights_gate": "PASS_OFFLINE",
+      "production_readback": "NOT_RUN"
+    },
+    {
+      "slug": "the-stolen-white-elephant",
+      "decision_id": "india-20261001-the-stolen-white-elephant-owner-text-reader",
+      "canonical_record_sha256": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+      "decision_file_sha256": "7b9e344b3ebdffb619cbeb70c6e9fcc25d44491128b9094d40b33781e9b177d5",
+      "publication_manifest_sha256": "4a8efaeccf7858192911a8310ae831466d7e7c539d8dac2f31caf80253689af2",
+      "reader_QA_sha256": "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+      "mirror_parity": true,
+      "runtime_india_rights_gate": "PASS_OFFLINE",
+      "production_readback": "NOT_RUN"
+    },
+    {
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "decision_id": "india-20261001-an-occurrence-at-owl-creek-bridge-owner-text-reader",
+      "canonical_record_sha256": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+      "decision_file_sha256": "95f924f4ad0f38e46d90b6556d8d40ae522ebd9c78dcdf3ff064311416005ca4",
+      "publication_manifest_sha256": "2881932ca8285343a44fdd48b4637a326f156094bfe03fcecad8eb98294dccaf",
+      "reader_QA_sha256": "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+      "mirror_parity": true,
+      "runtime_india_rights_gate": "PASS_OFFLINE",
+      "production_readback": "NOT_RUN"
+    },
+    {
+      "slug": "the-enchanted-april",
+      "decision_id": "india-20261001-the-enchanted-april-owner-text-reader",
+      "canonical_record_sha256": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
+      "decision_file_sha256": "89023e2fd78098d10c2544eb1cf2486d86883b94a01a99a6f377a4297474e5ef",
+      "publication_manifest_sha256": "0cc8bc909be6fb64762a2c3f411c41e6ba2b34505af83b6a721d5eebf655742a",
+      "reader_QA_sha256": "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+      "mirror_parity": true,
+      "runtime_india_rights_gate": "PASS_OFFLINE",
+      "production_readback": "NOT_RUN"
+    },
+    {
+      "slug": "the-happy-prince",
+      "decision_id": "india-20261001-the-happy-prince-owner-text-reader",
+      "canonical_record_sha256": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
+      "decision_file_sha256": "6fc45d04284b89d2d2cd65409b40ef0b94febea0f6436d1d3aac6f405fc74769",
+      "publication_manifest_sha256": "6c033650ea71c4e3bd5a2766b308580141a50a2fa3e1d8127ac12cd5f1786d7a",
+      "reader_QA_sha256": "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+      "mirror_parity": true,
+      "runtime_india_rights_gate": "PASS_OFFLINE",
+      "production_readback": "NOT_RUN"
+    },
+    {
+      "slug": "picture-of-dorian-gray",
+      "decision_id": "india-20261001-picture-of-dorian-gray-owner-text-reader",
+      "canonical_record_sha256": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea",
+      "decision_file_sha256": "aa0a30fc1f0b146200caabe354c310e0c48ae6e756580b071006cc4fcaf8f661",
+      "publication_manifest_sha256": "8a615d35a63a7138e2cd11b7db02d9842fbdd047483850fdec66f6aec5619d97",
+      "reader_QA_sha256": "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+      "mirror_parity": true,
+      "runtime_india_rights_gate": "PASS_OFFLINE",
+      "production_readback": "NOT_RUN"
+    }
+  ],
+  "prior_eight_release_files_unchanged": 231,
+  "prior_registry_records_preserved": 11,
+  "new_accepted_records": 16,
+  "deployment": "PENDING_NORMAL_PROTECTED_MERGE_MAIN_ONLY",
+  "authenticated_production_readback": "NOT_RUN",
+  "paid_provider_calls": 0
+}

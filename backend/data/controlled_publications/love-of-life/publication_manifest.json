@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "love-of-life",
+  "title": "Love of Life",
+  "generated_at": "2026-10-01T05:38:07.922769+00:00",
+  "content": {
+    "source_hash": "edab396a4cde4053abc9e0380d1eb5479493dc5362b8c49c4faa526619fa16a5",
+    "content_hash": "e33bedbb19f9c172f918cdf79f7a00c87c3592a914f9f7e9bbac3b5b75e689f7",
+    "provenance_hash": "d75aa813f122b26404c4fdfbf67bd8a4f8c02e15fbaf8d77e0717f8bb8b4efde",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "d89b14c40fcb72de42f08baa745fca66caea7926dbae07792fe7205af6f71a17",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Love of Life",
+        "word_count": 8172,
+        "sha256": "32357fa06aac2676c3785ef87070da3f2c7764ba58057b116c7de57d9b1d6a50"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "in",
+    "evidence_sha256": "2d0fa5ed6528d05841da0e262170b789178070fb6160efbbdca8ec2bd8914124"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/love-of-life/front-cover.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "42e9dbf3520d002a283b9e914b0b2bd53512770d734c45aca59d104c17af9ae0",
+    "reader_manifest": "8c455a99667a07a8402d409efc76ea9f7a2fcf603bba6f6409dd749b699b1c57",
+    "source_evidence": "2d0fa5ed6528d05841da0e262170b789178070fb6160efbbdca8ec2bd8914124",
+    "approval_evidence": "b36aada3baa735af83d16d451861db2f4f653f09054c71cf889e617b4c3443a5"
+  },
+  "manifest_sha256": "fb2d5f8e7e9f172b60c35990f724d50096841d8e0f3e391ed43956aaccaac93a"
+}

@@ -2,10 +2,14 @@
   "active_files_sha256": {
     "approval_evidence.json": "b36aada3baa735af83d16d451861db2f4f653f09054c71cf889e617b4c3443a5",
     "chapters/chapter-001.json": "32357fa06aac2676c3785ef87070da3f2c7764ba58057b116c7de57d9b1d6a50",
-    "checksum_manifest.json": "8ed97f4b2c04c6aae6a523811cc60a1d79fd7e665e1f024660659bc78f4df34d",
+    "checksum_manifest.json": "d4a7e9c1f716acac09f00cf8b1226d1ce3a568d889e17a538915b99af6a5ef11",
+    "cover_provenance.json": "b806e9946ca32ce04ae68e064905435f7afc3d7acf0f4509880fdbc2f8521b4c",
     "highlight_sync.json": "6cdff919147dca828590aaf05aafe87f575c960145487dfb112c7d946d202d72",
     "public_book.json": "42e9dbf3520d002a283b9e914b0b2bd53512770d734c45aca59d104c17af9ae0",
+    "publication_manifest.json": "6107d1629ca295c1e3f785716c48a84c1fcbb3586ad65a5558d3f86679d0df6e",
     "reader_manifest.json": "8c455a99667a07a8402d409efc76ea9f7a2fcf603bba6f6409dd749b699b1c57",
+    "reader_release_approval.json": "4cb3ad97742b7a14f7c39baca6a2142cb07985efccb9c30c150d30b63fac1286",
+    "rights_decision.json": "6f7854dd6b53d0c44b0603833bba5a4e7d2b5d70cfe80c951c471b2ce842c346",
     "source_evidence.json": "2d0fa5ed6528d05841da0e262170b789178070fb6160efbbdca8ec2bd8914124"
   },
   "chapter_content_hashes": [
@@ -18,10 +22,14 @@
   "input_files_sha256": {
     "approval_evidence.json": "b36aada3baa735af83d16d451861db2f4f653f09054c71cf889e617b4c3443a5",
     "chapters/chapter-001.json": "32357fa06aac2676c3785ef87070da3f2c7764ba58057b116c7de57d9b1d6a50",
-    "checksum_manifest.json": "8ed97f4b2c04c6aae6a523811cc60a1d79fd7e665e1f024660659bc78f4df34d",
+    "checksum_manifest.json": "d4a7e9c1f716acac09f00cf8b1226d1ce3a568d889e17a538915b99af6a5ef11",
+    "cover_provenance.json": "b806e9946ca32ce04ae68e064905435f7afc3d7acf0f4509880fdbc2f8521b4c",
     "highlight_sync.json": "6cdff919147dca828590aaf05aafe87f575c960145487dfb112c7d946d202d72",
     "public_book.json": "42e9dbf3520d002a283b9e914b0b2bd53512770d734c45aca59d104c17af9ae0",
+    "publication_manifest.json": "6107d1629ca295c1e3f785716c48a84c1fcbb3586ad65a5558d3f86679d0df6e",
     "reader_manifest.json": "8c455a99667a07a8402d409efc76ea9f7a2fcf603bba6f6409dd749b699b1c57",
+    "reader_release_approval.json": "4cb3ad97742b7a14f7c39baca6a2142cb07985efccb9c30c150d30b63fac1286",
+    "rights_decision.json": "6f7854dd6b53d0c44b0603833bba5a4e7d2b5d70cfe80c951c471b2ce842c346",
     "source_evidence.json": "2d0fa5ed6528d05841da0e262170b789178070fb6160efbbdca8ec2bd8914124"
   },
   "publication_authority": false,
@@ -58,17 +66,14 @@
       "sanitized": true,
       "source_hash": "edab396a4cde4053abc9e0380d1eb5479493dc5362b8c49c4faa526619fa16a5"
     },
-    "generated_at": "2026-10-01T03:17:21.336723+00:00",
-    "manifest_sha256": "44dd40f0a3d30fe0fd3418c0def28d0adb0af207914d4ea427b0f5a96f1bbf14",
+    "generated_at": "2026-10-01T05:38:07.922769+00:00",
+    "manifest_sha256": "fb2d5f8e7e9f172b60c35990f724d50096841d8e0f3e391ed43956aaccaac93a",
     "reader_release": {
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
-      ],
+      "blockers": [],
       "cover_url": "https://theearnalism.com/assets/books/love-of-life/front-cover.webp",
-      "exposed": false,
+      "exposed": true,
       "qa_status": "QA_PASSED",
-      "status": "BLOCKED"
+      "status": "APPROVED"
     },
     "rights": {
       "evidence_sha256": "2d0fa5ed6528d05841da0e262170b789178070fb6160efbbdca8ec2bd8914124",
@@ -82,28 +87,22 @@
     "title": "Love of Life"
   },
   "rights_assessment": {
-    "decision_id": null,
-    "offline_india_text_scope_passed": false,
+    "decision_id": "india-20261001-love-of-life-owner-text-reader",
+    "offline_india_text_scope_passed": true,
     "production_request_verified": false,
-    "registry_bound": false,
+    "registry_bound": true,
     "runtime_actions": {
       "catalog_cta": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_chapter": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_manifest": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       }
     }
   },

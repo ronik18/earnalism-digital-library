@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-01T03:17:21.336723+00:00",
+  "as_of": "2026-10-01T05:38:07.922769+00:00",
   "audio_activation_count": 0,
   "chapter_count": 1012,
   "full_catalogue_publication_complete": false,
@@ -11,12 +11,12 @@
   "prepared_package_count": 162,
   "processing_status": "COMPLETE_FOR_AVAILABLE_INPUTS",
   "public_package_mutations": 0,
-  "rights_registry_sha256": "cc8245131e8daa3a8a558d9808f650ad7faa8f33f76eaf84796651a83cd48db8",
+  "rights_registry_sha256": "5a577e35a01b546ebae2ae94d2d72850fcfdcfb94810d0acf8a8d66728209607",
   "schema": "earnalism.full-catalogue-processing.v1",
   "scope": "all inventory, controlled and content-package slugs",
   "state_counts": {
-    "EXTERNAL_ACTION_REQUIRED": 223,
-    "READER_ONLY_LIVE_APPROVED": 8
+    "EXTERNAL_ACTION_REQUIRED": 207,
+    "READER_ONLY_LIVE_APPROVED": 24
   },
   "title_count": 231,
   "titles": [
@@ -61,49 +61,40 @@
       "uploaded": false
     },
     {
-      "active_package": "data/controlled_publications/a-horseman-in-the-sky",
+      "active_package": "backend/data/controlled_publications/a-horseman-in-the-sky",
       "audio_activation_authorized": false,
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
-      ],
+      "blockers": [],
       "chapter_count": 1,
       "historical_root_decision": false,
       "language": "en",
       "new_publication_authorized": false,
-      "next_action": "Resolve the listed source, content, cover and accepted-decision gaps; rerun the processor. This design approval does not resolve title-specific evidence.",
+      "next_action": "Verify production Reader delivery and protected-page entitlement from a trusted India context.",
       "prepared_package": "data/controlled_publications/a-horseman-in-the-sky",
       "private_manifest": "manifests/a-horseman-in-the-sky.json",
       "processing_status": "ASSESSED",
       "retained_package_issues": [],
       "rights": {
-        "decision_id": null,
-        "offline_india_text_scope_passed": false,
+        "decision_id": "india-20261001-a-horseman-in-the-sky-owner-text-reader",
+        "offline_india_text_scope_passed": true,
         "production_request_verified": false,
-        "registry_bound": false,
+        "registry_bound": true,
         "runtime_actions": {
           "catalog_cta": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_chapter": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_manifest": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           }
         }
       },
       "slug": "a-horseman-in-the-sky",
-      "state": "EXTERNAL_ACTION_REQUIRED",
+      "state": "READER_ONLY_LIVE_APPROVED",
       "title": "A Horseman in the Sky",
       "uploaded": false
     },
@@ -161,47 +152,38 @@
     {
       "active_package": "backend/data/controlled_publications/a-mystery-of-heroism",
       "audio_activation_authorized": false,
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
-      ],
+      "blockers": [],
       "chapter_count": 1,
       "historical_root_decision": false,
       "language": "en",
       "new_publication_authorized": false,
-      "next_action": "Resolve the listed source, content, cover and accepted-decision gaps; rerun the processor. This design approval does not resolve title-specific evidence.",
+      "next_action": "Verify production Reader delivery and protected-page entitlement from a trusted India context.",
       "prepared_package": "data/controlled_publications/a-mystery-of-heroism",
       "private_manifest": "manifests/a-mystery-of-heroism.json",
       "processing_status": "ASSESSED",
       "retained_package_issues": [],
       "rights": {
-        "decision_id": null,
-        "offline_india_text_scope_passed": false,
+        "decision_id": "india-20261001-a-mystery-of-heroism-owner-text-reader",
+        "offline_india_text_scope_passed": true,
         "production_request_verified": false,
-        "registry_bound": false,
+        "registry_bound": true,
         "runtime_actions": {
           "catalog_cta": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_chapter": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_manifest": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           }
         }
       },
       "slug": "a-mystery-of-heroism",
-      "state": "EXTERNAL_ACTION_REQUIRED",
+      "state": "READER_ONLY_LIVE_APPROVED",
       "title": "A Mystery of Heroism",
       "uploaded": false
     },
@@ -259,47 +241,38 @@
     {
       "active_package": "backend/data/controlled_publications/a-scandal-in-bohemia",
       "audio_activation_authorized": false,
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
-      ],
+      "blockers": [],
       "chapter_count": 1,
       "historical_root_decision": false,
       "language": "en",
       "new_publication_authorized": false,
-      "next_action": "Resolve the listed source, content, cover and accepted-decision gaps; rerun the processor. This design approval does not resolve title-specific evidence.",
+      "next_action": "Verify production Reader delivery and protected-page entitlement from a trusted India context.",
       "prepared_package": "data/controlled_publications/a-scandal-in-bohemia",
       "private_manifest": "manifests/a-scandal-in-bohemia.json",
       "processing_status": "ASSESSED",
       "retained_package_issues": [],
       "rights": {
-        "decision_id": null,
-        "offline_india_text_scope_passed": false,
+        "decision_id": "india-20261001-a-scandal-in-bohemia-owner-text-reader",
+        "offline_india_text_scope_passed": true,
         "production_request_verified": false,
-        "registry_bound": false,
+        "registry_bound": true,
         "runtime_actions": {
           "catalog_cta": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_chapter": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_manifest": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           }
         }
       },
       "slug": "a-scandal-in-bohemia",
-      "state": "EXTERNAL_ACTION_REQUIRED",
+      "state": "READER_ONLY_LIVE_APPROVED",
       "title": "A Scandal in Bohemia",
       "uploaded": false
     },
@@ -535,48 +508,38 @@
     {
       "active_package": "backend/data/controlled_publications/an-occurrence-at-owl-creek-bridge",
       "audio_activation_authorized": false,
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "Reader QA must pass."
-      ],
+      "blockers": [],
       "chapter_count": 1,
       "historical_root_decision": false,
       "language": "en",
       "new_publication_authorized": false,
-      "next_action": "Resolve the listed source, content, cover and accepted-decision gaps; rerun the processor. This design approval does not resolve title-specific evidence.",
+      "next_action": "Verify production Reader delivery and protected-page entitlement from a trusted India context.",
       "prepared_package": "data/controlled_publications/an-occurrence-at-owl-creek-bridge",
       "private_manifest": "manifests/an-occurrence-at-owl-creek-bridge.json",
       "processing_status": "ASSESSED",
       "retained_package_issues": [],
       "rights": {
-        "decision_id": null,
-        "offline_india_text_scope_passed": false,
+        "decision_id": "india-20261001-an-occurrence-at-owl-creek-bridge-owner-text-reader",
+        "offline_india_text_scope_passed": true,
         "production_request_verified": false,
-        "registry_bound": false,
+        "registry_bound": true,
         "runtime_actions": {
           "catalog_cta": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_chapter": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_manifest": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           }
         }
       },
       "slug": "an-occurrence-at-owl-creek-bridge",
-      "state": "EXTERNAL_ACTION_REQUIRED",
+      "state": "READER_ONLY_LIVE_APPROVED",
       "title": "An Occurrence at Owl Creek Bridge",
       "uploaded": false
     },
@@ -4436,47 +4399,38 @@
     {
       "active_package": "backend/data/controlled_publications/jekyll-and-hyde",
       "audio_activation_authorized": false,
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
-      ],
+      "blockers": [],
       "chapter_count": 10,
       "historical_root_decision": false,
       "language": "en",
       "new_publication_authorized": false,
-      "next_action": "Resolve the listed source, content, cover and accepted-decision gaps; rerun the processor. This design approval does not resolve title-specific evidence.",
+      "next_action": "Verify production Reader delivery and protected-page entitlement from a trusted India context.",
       "prepared_package": "data/controlled_publications/jekyll-and-hyde",
       "private_manifest": "manifests/jekyll-and-hyde.json",
       "processing_status": "ASSESSED",
       "retained_package_issues": [],
       "rights": {
-        "decision_id": null,
-        "offline_india_text_scope_passed": false,
+        "decision_id": "india-20261001-jekyll-and-hyde-owner-text-reader",
+        "offline_india_text_scope_passed": true,
         "production_request_verified": false,
-        "registry_bound": false,
+        "registry_bound": true,
         "runtime_actions": {
           "catalog_cta": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_chapter": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_manifest": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           }
         }
       },
       "slug": "jekyll-and-hyde",
-      "state": "EXTERNAL_ACTION_REQUIRED",
+      "state": "READER_ONLY_LIVE_APPROVED",
       "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
       "uploaded": false
     },
@@ -4533,47 +4487,38 @@
     {
       "active_package": "backend/data/controlled_publications/love-of-life",
       "audio_activation_authorized": false,
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
-      ],
+      "blockers": [],
       "chapter_count": 1,
       "historical_root_decision": false,
       "language": "en",
       "new_publication_authorized": false,
-      "next_action": "Resolve the listed source, content, cover and accepted-decision gaps; rerun the processor. This design approval does not resolve title-specific evidence.",
+      "next_action": "Verify production Reader delivery and protected-page entitlement from a trusted India context.",
       "prepared_package": "data/controlled_publications/love-of-life",
       "private_manifest": "manifests/love-of-life.json",
       "processing_status": "ASSESSED",
       "retained_package_issues": [],
       "rights": {
-        "decision_id": null,
-        "offline_india_text_scope_passed": false,
+        "decision_id": "india-20261001-love-of-life-owner-text-reader",
+        "offline_india_text_scope_passed": true,
         "production_request_verified": false,
-        "registry_bound": false,
+        "registry_bound": true,
         "runtime_actions": {
           "catalog_cta": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_chapter": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_manifest": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           }
         }
       },
       "slug": "love-of-life",
-      "state": "EXTERNAL_ACTION_REQUIRED",
+      "state": "READER_ONLY_LIVE_APPROVED",
       "title": "Love of Life",
       "uploaded": false
     },
@@ -4933,49 +4878,38 @@
     {
       "active_package": "backend/data/controlled_publications/picture-of-dorian-gray",
       "audio_activation_authorized": false,
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "Front cover is required.",
-        "Reader QA must pass."
-      ],
+      "blockers": [],
       "chapter_count": 21,
       "historical_root_decision": false,
       "language": "en",
       "new_publication_authorized": false,
-      "next_action": "Resolve the listed source, content, cover and accepted-decision gaps; rerun the processor. This design approval does not resolve title-specific evidence.",
+      "next_action": "Verify production Reader delivery and protected-page entitlement from a trusted India context.",
       "prepared_package": "data/controlled_publications/picture-of-dorian-gray",
       "private_manifest": "manifests/picture-of-dorian-gray.json",
       "processing_status": "ASSESSED",
       "retained_package_issues": [],
       "rights": {
-        "decision_id": null,
-        "offline_india_text_scope_passed": false,
+        "decision_id": "india-20261001-picture-of-dorian-gray-owner-text-reader",
+        "offline_india_text_scope_passed": true,
         "production_request_verified": false,
-        "registry_bound": false,
+        "registry_bound": true,
         "runtime_actions": {
           "catalog_cta": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_chapter": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_manifest": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           }
         }
       },
       "slug": "picture-of-dorian-gray",
-      "state": "EXTERNAL_ACTION_REQUIRED",
+      "state": "READER_ONLY_LIVE_APPROVED",
       "title": "The Picture of Dorian Gray",
       "uploaded": false
     },
@@ -6174,47 +6108,38 @@
     {
       "active_package": "backend/data/controlled_publications/the-bishop",
       "audio_activation_authorized": false,
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
-      ],
+      "blockers": [],
       "chapter_count": 1,
       "historical_root_decision": false,
       "language": "en",
       "new_publication_authorized": false,
-      "next_action": "Resolve the listed source, content, cover and accepted-decision gaps; rerun the processor. This design approval does not resolve title-specific evidence.",
+      "next_action": "Verify production Reader delivery and protected-page entitlement from a trusted India context.",
       "prepared_package": "data/controlled_publications/the-bishop",
       "private_manifest": "manifests/the-bishop.json",
       "processing_status": "ASSESSED",
       "retained_package_issues": [],
       "rights": {
-        "decision_id": null,
-        "offline_india_text_scope_passed": false,
+        "decision_id": "india-20261001-the-bishop-owner-text-reader",
+        "offline_india_text_scope_passed": true,
         "production_request_verified": false,
-        "registry_bound": false,
+        "registry_bound": true,
         "runtime_actions": {
           "catalog_cta": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_chapter": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_manifest": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           }
         }
       },
       "slug": "the-bishop",
-      "state": "EXTERNAL_ACTION_REQUIRED",
+      "state": "READER_ONLY_LIVE_APPROVED",
       "title": "The Bishop",
       "uploaded": false
     },
@@ -6563,95 +6488,76 @@
     {
       "active_package": "backend/data/controlled_publications/the-enchanted-april",
       "audio_activation_authorized": false,
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "Reader QA must pass."
-      ],
+      "blockers": [],
       "chapter_count": 22,
       "historical_root_decision": false,
       "language": "en",
       "new_publication_authorized": false,
-      "next_action": "Resolve the listed source, content, cover and accepted-decision gaps; rerun the processor. This design approval does not resolve title-specific evidence.",
+      "next_action": "Verify production Reader delivery and protected-page entitlement from a trusted India context.",
       "prepared_package": "data/controlled_publications/the-enchanted-april",
       "private_manifest": "manifests/the-enchanted-april.json",
       "processing_status": "ASSESSED",
       "retained_package_issues": [],
       "rights": {
-        "decision_id": null,
-        "offline_india_text_scope_passed": false,
+        "decision_id": "india-20261001-the-enchanted-april-owner-text-reader",
+        "offline_india_text_scope_passed": true,
         "production_request_verified": false,
-        "registry_bound": false,
+        "registry_bound": true,
         "runtime_actions": {
           "catalog_cta": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_chapter": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_manifest": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           }
         }
       },
       "slug": "the-enchanted-april",
-      "state": "EXTERNAL_ACTION_REQUIRED",
+      "state": "READER_ONLY_LIVE_APPROVED",
       "title": "The Enchanted April",
       "uploaded": false
     },
     {
       "active_package": "backend/data/controlled_publications/the-fall-of-the-house-of-usher",
       "audio_activation_authorized": false,
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
-      ],
+      "blockers": [],
       "chapter_count": 1,
       "historical_root_decision": false,
       "language": "en",
       "new_publication_authorized": false,
-      "next_action": "Resolve the listed source, content, cover and accepted-decision gaps; rerun the processor. This design approval does not resolve title-specific evidence.",
+      "next_action": "Verify production Reader delivery and protected-page entitlement from a trusted India context.",
       "prepared_package": "data/controlled_publications/the-fall-of-the-house-of-usher",
       "private_manifest": "manifests/the-fall-of-the-house-of-usher.json",
       "processing_status": "ASSESSED",
       "retained_package_issues": [],
       "rights": {
-        "decision_id": null,
-        "offline_india_text_scope_passed": false,
+        "decision_id": "india-20261001-the-fall-of-the-house-of-usher-owner-text-reader",
+        "offline_india_text_scope_passed": true,
         "production_request_verified": false,
-        "registry_bound": false,
+        "registry_bound": true,
         "runtime_actions": {
           "catalog_cta": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_chapter": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_manifest": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           }
         }
       },
       "slug": "the-fall-of-the-house-of-usher",
-      "state": "EXTERNAL_ACTION_REQUIRED",
+      "state": "READER_ONLY_LIVE_APPROVED",
       "title": "The Fall of the House of Usher",
       "uploaded": false
     },
@@ -6847,48 +6753,38 @@
     {
       "active_package": "backend/data/controlled_publications/the-happy-prince",
       "audio_activation_authorized": false,
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "Reader QA must pass."
-      ],
+      "blockers": [],
       "chapter_count": 1,
       "historical_root_decision": false,
       "language": "en",
       "new_publication_authorized": false,
-      "next_action": "Resolve the listed source, content, cover and accepted-decision gaps; rerun the processor. This design approval does not resolve title-specific evidence.",
+      "next_action": "Verify production Reader delivery and protected-page entitlement from a trusted India context.",
       "prepared_package": "data/controlled_publications/the-happy-prince",
       "private_manifest": "manifests/the-happy-prince.json",
       "processing_status": "ASSESSED",
       "retained_package_issues": [],
       "rights": {
-        "decision_id": null,
-        "offline_india_text_scope_passed": false,
+        "decision_id": "india-20261001-the-happy-prince-owner-text-reader",
+        "offline_india_text_scope_passed": true,
         "production_request_verified": false,
-        "registry_bound": false,
+        "registry_bound": true,
         "runtime_actions": {
           "catalog_cta": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_chapter": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_manifest": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           }
         }
       },
       "slug": "the-happy-prince",
-      "state": "EXTERNAL_ACTION_REQUIRED",
+      "state": "READER_ONLY_LIVE_APPROVED",
       "title": "The Happy Prince",
       "uploaded": false
     },
@@ -6946,47 +6842,38 @@
     {
       "active_package": "backend/data/controlled_publications/the-lady-with-the-dog",
       "audio_activation_authorized": false,
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
-      ],
+      "blockers": [],
       "chapter_count": 1,
       "historical_root_decision": false,
       "language": "en",
       "new_publication_authorized": false,
-      "next_action": "Resolve the listed source, content, cover and accepted-decision gaps; rerun the processor. This design approval does not resolve title-specific evidence.",
+      "next_action": "Verify production Reader delivery and protected-page entitlement from a trusted India context.",
       "prepared_package": "data/controlled_publications/the-lady-with-the-dog",
       "private_manifest": "manifests/the-lady-with-the-dog.json",
       "processing_status": "ASSESSED",
       "retained_package_issues": [],
       "rights": {
-        "decision_id": null,
-        "offline_india_text_scope_passed": false,
+        "decision_id": "india-20261001-the-lady-with-the-dog-owner-text-reader",
+        "offline_india_text_scope_passed": true,
         "production_request_verified": false,
-        "registry_bound": false,
+        "registry_bound": true,
         "runtime_actions": {
           "catalog_cta": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_chapter": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_manifest": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           }
         }
       },
       "slug": "the-lady-with-the-dog",
-      "state": "EXTERNAL_ACTION_REQUIRED",
+      "state": "READER_ONLY_LIVE_APPROVED",
       "title": "The Lady with the Dog",
       "uploaded": false
     },
@@ -7248,47 +7135,38 @@
     {
       "active_package": "backend/data/controlled_publications/the-man-who-would-be-king",
       "audio_activation_authorized": false,
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
-      ],
+      "blockers": [],
       "chapter_count": 1,
       "historical_root_decision": false,
       "language": "en",
       "new_publication_authorized": false,
-      "next_action": "Resolve the listed source, content, cover and accepted-decision gaps; rerun the processor. This design approval does not resolve title-specific evidence.",
+      "next_action": "Verify production Reader delivery and protected-page entitlement from a trusted India context.",
       "prepared_package": "data/controlled_publications/the-man-who-would-be-king",
       "private_manifest": "manifests/the-man-who-would-be-king.json",
       "processing_status": "ASSESSED",
       "retained_package_issues": [],
       "rights": {
-        "decision_id": null,
-        "offline_india_text_scope_passed": false,
+        "decision_id": "india-20261001-the-man-who-would-be-king-owner-text-reader",
+        "offline_india_text_scope_passed": true,
         "production_request_verified": false,
-        "registry_bound": false,
+        "registry_bound": true,
         "runtime_actions": {
           "catalog_cta": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_chapter": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_manifest": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           }
         }
       },
       "slug": "the-man-who-would-be-king",
-      "state": "EXTERNAL_ACTION_REQUIRED",
+      "state": "READER_ONLY_LIVE_APPROVED",
       "title": "The Man Who Would Be King",
       "uploaded": false
     },
@@ -7699,47 +7577,38 @@
     {
       "active_package": "backend/data/controlled_publications/the-open-boat",
       "audio_activation_authorized": false,
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
-      ],
+      "blockers": [],
       "chapter_count": 1,
       "historical_root_decision": false,
       "language": "en",
       "new_publication_authorized": false,
-      "next_action": "Resolve the listed source, content, cover and accepted-decision gaps; rerun the processor. This design approval does not resolve title-specific evidence.",
+      "next_action": "Verify production Reader delivery and protected-page entitlement from a trusted India context.",
       "prepared_package": "data/controlled_publications/the-open-boat",
       "private_manifest": "manifests/the-open-boat.json",
       "processing_status": "ASSESSED",
       "retained_package_issues": [],
       "rights": {
-        "decision_id": null,
-        "offline_india_text_scope_passed": false,
+        "decision_id": "india-20261001-the-open-boat-owner-text-reader",
+        "offline_india_text_scope_passed": true,
         "production_request_verified": false,
-        "registry_bound": false,
+        "registry_bound": true,
         "runtime_actions": {
           "catalog_cta": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_chapter": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_manifest": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           }
         }
       },
       "slug": "the-open-boat",
-      "state": "EXTERNAL_ACTION_REQUIRED",
+      "state": "READER_ONLY_LIVE_APPROVED",
       "title": "The Open Boat",
       "uploaded": false
     },
@@ -7907,47 +7776,38 @@
     {
       "active_package": "backend/data/controlled_publications/the-pit-and-the-pendulum",
       "audio_activation_authorized": false,
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
-      ],
+      "blockers": [],
       "chapter_count": 1,
       "historical_root_decision": false,
       "language": "en",
       "new_publication_authorized": false,
-      "next_action": "Resolve the listed source, content, cover and accepted-decision gaps; rerun the processor. This design approval does not resolve title-specific evidence.",
+      "next_action": "Verify production Reader delivery and protected-page entitlement from a trusted India context.",
       "prepared_package": "data/controlled_publications/the-pit-and-the-pendulum",
       "private_manifest": "manifests/the-pit-and-the-pendulum.json",
       "processing_status": "ASSESSED",
       "retained_package_issues": [],
       "rights": {
-        "decision_id": null,
-        "offline_india_text_scope_passed": false,
+        "decision_id": "india-20261001-the-pit-and-the-pendulum-owner-text-reader",
+        "offline_india_text_scope_passed": true,
         "production_request_verified": false,
-        "registry_bound": false,
+        "registry_bound": true,
         "runtime_actions": {
           "catalog_cta": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_chapter": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_manifest": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           }
         }
       },
       "slug": "the-pit-and-the-pendulum",
-      "state": "EXTERNAL_ACTION_REQUIRED",
+      "state": "READER_ONLY_LIVE_APPROVED",
       "title": "The Pit and the Pendulum",
       "uploaded": false
     },
@@ -8361,47 +8221,38 @@
     {
       "active_package": "backend/data/controlled_publications/the-stolen-white-elephant",
       "audio_activation_authorized": false,
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
-      ],
+      "blockers": [],
       "chapter_count": 1,
       "historical_root_decision": false,
       "language": "en",
       "new_publication_authorized": false,
-      "next_action": "Resolve the listed source, content, cover and accepted-decision gaps; rerun the processor. This design approval does not resolve title-specific evidence.",
+      "next_action": "Verify production Reader delivery and protected-page entitlement from a trusted India context.",
       "prepared_package": "data/controlled_publications/the-stolen-white-elephant",
       "private_manifest": "manifests/the-stolen-white-elephant.json",
       "processing_status": "ASSESSED",
       "retained_package_issues": [],
       "rights": {
-        "decision_id": null,
-        "offline_india_text_scope_passed": false,
+        "decision_id": "india-20261001-the-stolen-white-elephant-owner-text-reader",
+        "offline_india_text_scope_passed": true,
         "production_request_verified": false,
-        "registry_bound": false,
+        "registry_bound": true,
         "runtime_actions": {
           "catalog_cta": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_chapter": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_manifest": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           }
         }
       },
       "slug": "the-stolen-white-elephant",
-      "state": "EXTERNAL_ACTION_REQUIRED",
+      "state": "READER_ONLY_LIVE_APPROVED",
       "title": "The Stolen White Elephant",
       "uploaded": false
     },

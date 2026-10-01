@@ -240,13 +240,13 @@ def test_migration_regenerates_legacy_checksum_bundle(tmp_path):
     assert "publication_manifest.json" not in entries
 
 
-def test_agentic_ai_reader_package_is_not_exposed_outside_the_controlled_release():
+def test_agentic_ai_reader_package_is_exposed_only_through_the_controlled_text_release():
     clear_controlled_artifact_caches()
     book = load_controlled_artifact_book("agentic-ai-with-python", include_content=True)
 
     assert book is not None
-    assert "agentic-ai-with-python" not in CONTROLLED_LIVE_BOOK_SLUGS
-    assert can_expose_reader(book) is False
+    assert "agentic-ai-with-python" in CONTROLLED_LIVE_BOOK_SLUGS
+    assert can_expose_reader(book) is True
     assert len(book["chapters"]) == 14
     assert all(chapter.get("content") for chapter in book["chapters"])
     assert book.get("audio_enabled") is False

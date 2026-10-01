@@ -1,6 +1,6 @@
 {
   "slug": "the-bishop",
-  "generated_at": "2026-08-16T07:38:39Z",
+  "generated_at": "2026-10-01T05:38:07.922769+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
@@ -9,6 +9,10 @@
     {
       "file": "chapters/chapter-001.json",
       "sha256": "bbb0ddd5d2cea66b38e74f880797edb585a9326b58387fe20fd4046e9f294a56"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "a31eb76d40948f6efc73ccb975d8693481e8ee9f3fa392df2db533e9b7b8e7b2"
     },
     {
       "file": "highlight_sync.json",
@@ -21,6 +25,10 @@
     {
       "file": "reader_manifest.json",
       "sha256": "42a7984591f6da7aec6d9fbb56fdd62ff813c1d38277a08a4594592da0efea4c"
+    },
+    {
+      "file": "reader_release_approval.json",
+      "sha256": "787438d37d6266e0e2b5b385abf3098c65014a90f3de843eed6c8733dc943b04"
     },
     {
       "file": "source_evidence.json",

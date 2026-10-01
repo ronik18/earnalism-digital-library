@@ -1,0 +1,43 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261001-a-mystery-of-heroism-owner-text-reader",
+  "edition_id": "a-mystery-of-heroism",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "0d26d045211e73777cf38fa06d0539771f33fcc3f4e4a56bb52d712820109f1e",
+    "reader_manifest": "e4378fc2bfbadb9fe9277ff2edab1069c1c2bc398b3dc1baf5d1aefbd8b2b367",
+    "source_evidence": "d1c48bae0ce3d6f3061cd549883de5b825187ef68852698f57e8677e025125de",
+    "approval_evidence": "c33d7c7868c0ffc377b53be1fa5c20809b89bb71a9df946bb9632754f6ad81f2",
+    "checksum_manifest": "c8f23de2765818035fca711607b94b8a79373d32acce4e8b1de8d021fb224e65",
+    "publication_manifest": "d42bfc4bf385ce397ae9e2b5a578660fb3308b63d122ce791a644022d2e6e9d7",
+    "cover_provenance": "0f8e37ac193930622b1b164eccbd35379bfd157fb844b708dc3225e0661bbc64",
+    "reader_release_approval": "67602a30a388af6c910959f33669380992c2d295891781176e314079fe0302fe",
+    "chapter_file:chapter-001.json": "f15462ba0fcb637d96290a4e04e9305a9ad8df6a343a0b4eab8be0be2572f6e4",
+    "cover_asset:front": "05dc95c5fb886dce25bc6f0422074c0d0e99879af999e592392800af5d157036",
+    "cover_asset:back": "39b2f0614d3b4304ed1bea68056d4b19320997a2c26711a893418323ec70ac29"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T05:38:07.922769+00:00",
+  "valid_until": "2036-10-01T05:38:07.922769+00:00",
+  "basis": "Original literary text published during the author’s lifetime; India Copyright Act 1957 section 22, life plus 60 years, assessed separately from repository U.S. notices. Selected original text only, with repository boilerplate, protected modern editorial matter, illustrations and collection framing excluded; existing chapter/source repair proofs preserved. No third-party modern introduction, notes, anthology layout, illustrations or author portrait is included in the delivered chapters. Original author preface and chapter prose are retained where applicable. Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art. Exact existing assets and all selected chapters are bound. Owner-authorized India-only commercial text Reader uses under the existing 3-page preview / Reading Pass policy; no audio, exports, downloads, global territory grant, new payment policy or unobserved production readiness is asserted.",
+  "evidence_sha256": [
+    "538c726547957d127294daa3add4984b59f5889ddea250e0ec92426fa40e672b",
+    "8b4c0ebbf854fc4ab4e23b3be155149ef9abd14bd3ddda6eb925eb3b904eb403",
+    "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+    "67602a30a388af6c910959f33669380992c2d295891781176e314079fe0302fe",
+    "0f8e37ac193930622b1b164eccbd35379bfd157fb844b708dc3225e0661bbc64"
+  ],
+  "accepted_by": "Codex under Ronik Basak direct autonomous safe near-ready release instruction. Conditional owner waiver covers manual production observation only; no separate owner hash review or independent human inspection is claimed.",
+  "conditions_satisfied": true
+}

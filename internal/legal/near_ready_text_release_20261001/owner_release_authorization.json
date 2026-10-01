@@ -1,0 +1,43 @@
+{
+  "schema": "earnalism.owner-authorized-near-ready-text-batch.v1",
+  "received_at": "2026-10-01T05:24:02.900009+00:00",
+  "owner": "Ronik Basak",
+  "source_head": "3f76c8521ef7e636e8f6f0d0c7d864f7ed132da7",
+  "owner_instruction": "Please ensure to spend time and credit judiciously. I want all the books which are close to become legally compliant and reader ready with some small work, please get all of them ready and live first.",
+  "prior_authority": "Issue #477 owner-authorized autonomous India commercial text-reader campaign; exact compliant editions only.",
+  "acceptance_actor": "Codex under the owner-delegated release authority; no independent lawyer, separate owner hash inspection, or authenticated production observation claimed.",
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "audio_activation_authorized": false,
+  "paid_provider_calls": 0,
+  "reused_cover_pairs": 16,
+  "new_image_generations": 0,
+  "initial_selected_slugs": [
+    "a-horseman-in-the-sky",
+    "a-mystery-of-heroism",
+    "a-scandal-in-bohemia",
+    "jekyll-and-hyde",
+    "love-of-life",
+    "the-bishop",
+    "the-fall-of-the-house-of-usher",
+    "the-lady-with-the-dog",
+    "the-man-who-would-be-king",
+    "the-open-boat",
+    "the-pit-and-the-pendulum",
+    "the-stolen-white-elephant",
+    "an-occurrence-at-owl-creek-bridge",
+    "the-enchanted-april",
+    "the-happy-prince",
+    "picture-of-dorian-gray"
+  ],
+  "production_reader_observation": "NOT_OBSERVED_IN_TRUSTED_INDIA_AUTHENTICATED_SESSION"
+}

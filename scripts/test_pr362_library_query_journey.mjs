@@ -28,6 +28,16 @@ const books = [
   { slug: "approved-audio-without-runtime", title: "Approved Bengali audio release", author: "Fixture Editor", short_description: "Bengali edition with approved audio metadata but no public media asset", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/approved-audio-without-runtime", reader_url: "/reader/approved-audio-without-runtime", preview_enabled: true, preview_url: "/reader/approved-audio-without-runtime", chapters: [{ id: "chapter-001", is_preview: true }], audio_enabled: true, audiobook_enabled: true, audiobook_release_gate: "APPROVED", audio_qa_status: "QA_PASSED", audio_url: "", audiobook_assets: {} },
   { slug: "hungry-stones", title: "The Hungry Stones", author: "Rabindranath Tagore", short_description: "English translation", language: "en", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/hungry-stones", reader_url: "/reader/hungry-stones", preview_enabled: true, preview_url: "/reader/hungry-stones", chapters: [{ id: "chapter-001", is_preview: true }] },
 ];
+// Add the exact reviewed near-ready release fixtures from the safe public
+// metadata contract. Keep the independent held/malformed/audio fixtures above.
+const nearReadySlugs = ["a-horseman-in-the-sky", "a-mystery-of-heroism", "a-scandal-in-bohemia", "jekyll-and-hyde", "love-of-life", "the-bishop", "the-fall-of-the-house-of-usher", "the-lady-with-the-dog", "the-man-who-would-be-king", "the-open-boat", "the-pit-and-the-pendulum", "the-stolen-white-elephant", "an-occurrence-at-owl-creek-bridge", "the-enchanted-april", "the-happy-prince", "picture-of-dorian-gray"];
+const publicContract = JSON.parse(readFileSync(new URL("../frontend/static-seo/controlled-publication-public.json", import.meta.url), "utf8"));
+for (const slug of nearReadySlugs) {
+  const source = publicContract.publications.find((row) => row.slug === slug);
+  assert.ok(source, `Reviewed release ${slug} must have a public metadata contract`);
+  assert.equal(books.some((row) => row.slug === slug), false, `Duplicate fixture ${slug}`);
+  books.push({ ...source, language: "en", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: `/book/${slug}`, reader_url: `/reader/${slug}`, preview_enabled: true, preview_url: `/reader/${slug}`, chapters: [{ id: "chapter-001", is_preview: true }] });
+}
 const expectedHeaderUrl = "?language=bn&availability=reader-ready";
 const apiEligibleSlugs = ["radharani"];
 const fallbackEligibleSlugs = [];

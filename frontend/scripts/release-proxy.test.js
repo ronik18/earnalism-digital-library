@@ -160,10 +160,15 @@ test("uncleared or unknown territory cannot reach the upstream Reader API", asyn
   global.fetch = async () => { calls += 1; throw new Error("must not fetch"); };
   try {
     for (const country of ["US", "GB", "", "ZZ"]) {
-      const response = { statusCode: 200, headers: {}, setHeader(key, value) { this.headers[key] = value; }, end() {} };
+      const response = { statusCode: 200, headers: {}, setHeader(key, value) { this.headers[key] = value; }, end(body) { this.body = body; } };
       await releaseProxy({ url: "/api/reader/book/a-ghost-story/manifest", method: "GET", headers: { "x-vercel-ip-country": country } }, response);
       assert.equal(response.statusCode, 451);
       assert.equal(response.headers["Cache-Control"], "no-store");
+      assert.equal(response.headers["Content-Type"], "application/json; charset=utf-8");
+      const detail = JSON.parse(response.body).detail;
+      assert.equal(detail.code, "RELEASE_TERRITORY_DENIED");
+      assert.equal(detail.country, country || null);
+      assert.deepEqual(detail.allowed_countries, ["IN"]);
     }
     assert.equal(calls, 0);
   } finally {

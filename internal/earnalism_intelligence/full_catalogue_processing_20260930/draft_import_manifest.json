@@ -13,8 +13,7 @@
       "eligible_for_new_upload": false,
       "package": "data/controlled_publications/a-horseman-in-the-sky",
       "skip_reasons": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
       ],
       "slug": "a-horseman-in-the-sky",
       "title": "A Horseman in the Sky"
@@ -37,8 +36,7 @@
       "eligible_for_new_upload": false,
       "package": "data/controlled_publications/a-mystery-of-heroism",
       "skip_reasons": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
       ],
       "slug": "a-mystery-of-heroism",
       "title": "A Mystery of Heroism"
@@ -61,8 +59,7 @@
       "eligible_for_new_upload": false,
       "package": "data/controlled_publications/a-scandal-in-bohemia",
       "skip_reasons": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
       ],
       "slug": "a-scandal-in-bohemia",
       "title": "A Scandal in Bohemia"
@@ -129,9 +126,7 @@
       "eligible_for_new_upload": false,
       "package": "data/controlled_publications/an-occurrence-at-owl-creek-bridge",
       "skip_reasons": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "Reader QA must pass."
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
       ],
       "slug": "an-occurrence-at-owl-creek-bridge",
       "title": "An Occurrence at Owl Creek Bridge"
@@ -1513,8 +1508,7 @@
       "eligible_for_new_upload": false,
       "package": "data/controlled_publications/jekyll-and-hyde",
       "skip_reasons": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
       ],
       "slug": "jekyll-and-hyde",
       "title": "The Strange Case of Dr. Jekyll and Mr. Hyde"
@@ -1536,8 +1530,7 @@
       "eligible_for_new_upload": false,
       "package": "data/controlled_publications/love-of-life",
       "skip_reasons": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
       ],
       "slug": "love-of-life",
       "title": "Love of Life"
@@ -1640,10 +1633,7 @@
       "eligible_for_new_upload": false,
       "package": "data/controlled_publications/picture-of-dorian-gray",
       "skip_reasons": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "Front cover is required.",
-        "Reader QA must pass."
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
       ],
       "slug": "picture-of-dorian-gray",
       "title": "The Picture of Dorian Gray"
@@ -1972,8 +1962,7 @@
       "eligible_for_new_upload": false,
       "package": "data/controlled_publications/the-bishop",
       "skip_reasons": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
       ],
       "slug": "the-bishop",
       "title": "The Bishop"
@@ -2073,9 +2062,7 @@
       "eligible_for_new_upload": false,
       "package": "data/controlled_publications/the-enchanted-april",
       "skip_reasons": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "Reader QA must pass."
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
       ],
       "slug": "the-enchanted-april",
       "title": "The Enchanted April"
@@ -2084,8 +2071,7 @@
       "eligible_for_new_upload": false,
       "package": "data/controlled_publications/the-fall-of-the-house-of-usher",
       "skip_reasons": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
       ],
       "slug": "the-fall-of-the-house-of-usher",
       "title": "The Fall of the House of Usher"
@@ -2143,9 +2129,7 @@
       "eligible_for_new_upload": false,
       "package": "data/controlled_publications/the-happy-prince",
       "skip_reasons": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "Reader QA must pass."
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
       ],
       "slug": "the-happy-prince",
       "title": "The Happy Prince"
@@ -2168,8 +2152,7 @@
       "eligible_for_new_upload": false,
       "package": "data/controlled_publications/the-lady-with-the-dog",
       "skip_reasons": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
       ],
       "slug": "the-lady-with-the-dog",
       "title": "The Lady with the Dog"
@@ -2248,8 +2231,7 @@
       "eligible_for_new_upload": false,
       "package": "data/controlled_publications/the-man-who-would-be-king",
       "skip_reasons": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
       ],
       "slug": "the-man-who-would-be-king",
       "title": "The Man Who Would Be King"
@@ -2366,8 +2348,7 @@
       "eligible_for_new_upload": false,
       "package": "data/controlled_publications/the-open-boat",
       "skip_reasons": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
       ],
       "slug": "the-open-boat",
       "title": "The Open Boat"
@@ -2424,8 +2405,7 @@
       "eligible_for_new_upload": false,
       "package": "data/controlled_publications/the-pit-and-the-pendulum",
       "skip_reasons": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
       ],
       "slug": "the-pit-and-the-pendulum",
       "title": "The Pit and the Pendulum"
@@ -2541,8 +2521,7 @@
       "eligible_for_new_upload": false,
       "package": "data/controlled_publications/the-stolen-white-elephant",
       "skip_reasons": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
       ],
       "slug": "the-stolen-white-elephant",
       "title": "The Stolen White Elephant"

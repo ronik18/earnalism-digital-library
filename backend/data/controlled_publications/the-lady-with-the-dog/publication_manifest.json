@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-lady-with-the-dog",
+  "title": "The Lady with the Dog",
+  "generated_at": "2026-10-01T05:38:07.922769+00:00",
+  "content": {
+    "source_hash": "ef9ab1135b609dfa39aac169c9ed8040ca003b939bc42b9146fd9f5187b147a8",
+    "content_hash": "227e8ddb08b517da5cbb6513bef4b250c8aa13f2527d2c628ad7638d4e20cf93",
+    "provenance_hash": "05ea103685b1394593b86e33783d9b8b2f3fc6439dfc49f83914ee44ce992583",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "b147962fdb9f95d65dd95b630e4d9ed11c74467c382cd786078c7cb3ee259858",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Lady with the Dog",
+        "word_count": 6628,
+        "sha256": "359d98971f6e9a67c38bc5b8e048816b3c205d508604aa8f08e88d67531fe36f"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "in",
+    "evidence_sha256": "dfc4b9a54b026547d60f75fbc96a7e5f8dd69a7c668f43d1bcd6130a84c230f0"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/the-lady-with-the-dog/front-cover.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "28924a8a0fcfa792c87b68b9e947a20d191fd343c67aa8a68ec2c544572ee38c",
+    "reader_manifest": "63e9e1c437467cccbde56590fad2409d1a16274e659e7acda2b4fd9b3263bc9e",
+    "source_evidence": "dfc4b9a54b026547d60f75fbc96a7e5f8dd69a7c668f43d1bcd6130a84c230f0",
+    "approval_evidence": "bc3781aaac84dc7b5682bc752a3d75108c7be909561f642f5a510b2f2346d3ba"
+  },
+  "manifest_sha256": "f408850f409c4c76e4c29e4820dd1fa89c56c17c2881400e8d293c289fec2db8"
+}

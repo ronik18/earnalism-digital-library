@@ -11,12 +11,15 @@
     "chapters/chapter-008.json": "de304ed5e7dd006aba2791fa9db35f3817e82d1ad6ac896df24c646d07e7c2f4",
     "chapters/chapter-009.json": "3bd5dfd710ef08e09c07d816b295ad9a2b86799077f343295f1aa615c84a3f35",
     "chapters/chapter-010.json": "aec99585a0a0705f25255d8560da47ee7af382755cea957ff03d65896b98ddf9",
-    "checksum_manifest.json": "a514ce9278b7046c3a883f66b1231023d4723b8f56334adcea57a5f38c9c0a10",
+    "checksum_manifest.json": "e9f38b1736345732e167338393085a276fc0e2ffdc0a638e9a0107dd372974b5",
     "cover_approval_evidence.json": "7ff51145b7bb97f64b6f01ddb84d3c75188c15b76ceec3aa8fa9af2dd01782f9",
+    "cover_provenance.json": "09a5eec75d03b62420e79ebac6ac58d552db603c2d244de0b7f4207797c46e7f",
     "highlight_sync.json": "2881cb072840555624004936e5b3fef9810a5d44cfa9d5657c76f812b01f03cd",
     "public_book.json": "01c3a333da4712bc8041e8eb16338e5d37dd581dcf9f2ab2a92b56321f42f91a",
+    "publication_manifest.json": "b9094001fb435084d41e8845ba17fdb476e8305b78bc664b6fffb708965c3849",
     "reader_manifest.json": "c3fff66ff02d37c3fa727c1c2f17a36ace48c1f1368ff3cb5ee69eebcec2a032",
     "reader_release_approval.json": "8ae3d17e5314fe0a58d6e85d89c4ba0593e795e6fcc20e583d4d3c456d85a18b",
+    "rights_decision.json": "d2b42fe92836163db7ba17252e95661be0f35971e6311a3b46d78eceb210329a",
     "source_evidence.json": "88d44198ddc62c022897e594901d7f06fd9c4f93a286b29b4b304e46724df644"
   },
   "chapter_content_hashes": [
@@ -83,12 +86,15 @@
     "chapters/chapter-008.json": "de304ed5e7dd006aba2791fa9db35f3817e82d1ad6ac896df24c646d07e7c2f4",
     "chapters/chapter-009.json": "3bd5dfd710ef08e09c07d816b295ad9a2b86799077f343295f1aa615c84a3f35",
     "chapters/chapter-010.json": "aec99585a0a0705f25255d8560da47ee7af382755cea957ff03d65896b98ddf9",
-    "checksum_manifest.json": "a514ce9278b7046c3a883f66b1231023d4723b8f56334adcea57a5f38c9c0a10",
+    "checksum_manifest.json": "e9f38b1736345732e167338393085a276fc0e2ffdc0a638e9a0107dd372974b5",
     "cover_approval_evidence.json": "7ff51145b7bb97f64b6f01ddb84d3c75188c15b76ceec3aa8fa9af2dd01782f9",
+    "cover_provenance.json": "09a5eec75d03b62420e79ebac6ac58d552db603c2d244de0b7f4207797c46e7f",
     "highlight_sync.json": "2881cb072840555624004936e5b3fef9810a5d44cfa9d5657c76f812b01f03cd",
     "public_book.json": "01c3a333da4712bc8041e8eb16338e5d37dd581dcf9f2ab2a92b56321f42f91a",
+    "publication_manifest.json": "b9094001fb435084d41e8845ba17fdb476e8305b78bc664b6fffb708965c3849",
     "reader_manifest.json": "c3fff66ff02d37c3fa727c1c2f17a36ace48c1f1368ff3cb5ee69eebcec2a032",
     "reader_release_approval.json": "8ae3d17e5314fe0a58d6e85d89c4ba0593e795e6fcc20e583d4d3c456d85a18b",
+    "rights_decision.json": "d2b42fe92836163db7ba17252e95661be0f35971e6311a3b46d78eceb210329a",
     "source_evidence.json": "88d44198ddc62c022897e594901d7f06fd9c4f93a286b29b4b304e46724df644"
   },
   "publication_authority": false,
@@ -188,17 +194,14 @@
       "sanitized": true,
       "source_hash": "7e19df634b5db327f75392f934268bc232179bd17c44e52fc399b640a0375958"
     },
-    "generated_at": "2026-10-01T03:17:21.336723+00:00",
-    "manifest_sha256": "a57e9fdd71e1e8ea1a93f2467effbbb1c5826135e2143ae98164cd8d706afb31",
+    "generated_at": "2026-10-01T05:38:07.922769+00:00",
+    "manifest_sha256": "88811ed0d07119cd9aa8f0a542135844ece343fc234d56c0f07fd8c5397513fd",
     "reader_release": {
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
-      ],
+      "blockers": [],
       "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785416467/earnalism/covers/front/cover_candidate_controlled-jekyll-and-hyde-eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8.jpg",
-      "exposed": false,
+      "exposed": true,
       "qa_status": "QA_PASSED",
-      "status": "BLOCKED"
+      "status": "APPROVED"
     },
     "rights": {
       "evidence_sha256": "88d44198ddc62c022897e594901d7f06fd9c4f93a286b29b4b304e46724df644",
@@ -212,28 +215,22 @@
     "title": "The Strange Case of Dr. Jekyll and Mr. Hyde"
   },
   "rights_assessment": {
-    "decision_id": null,
-    "offline_india_text_scope_passed": false,
+    "decision_id": "india-20261001-jekyll-and-hyde-owner-text-reader",
+    "offline_india_text_scope_passed": true,
     "production_request_verified": false,
-    "registry_bound": false,
+    "registry_bound": true,
     "runtime_actions": {
       "catalog_cta": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_chapter": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_manifest": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       }
     }
   },

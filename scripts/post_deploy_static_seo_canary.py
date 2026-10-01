@@ -58,6 +58,15 @@ ROUTES = {
     "/my-library": {"kind": "private_library", "canonical": "/my-library", "robots": "noindex,nofollow"},
 }
 
+# Extend the original route assertions with each exact approved metadata
+# contract entry, including Agentic and the reviewed near-ready batch. This
+# reads only a checked-in public projection and never authorizes a title.
+_PUBLIC_CONTRACT = json.loads((ROOT / "frontend/static-seo/controlled-publication-public.json").read_text(encoding="utf-8"))
+for _book in _PUBLIC_CONTRACT["publications"]:
+    _slug, _title = _book["slug"], _book["title"]
+    ROUTES.setdefault(f"/book/{_slug}", {"kind": "book", "canonical": f"/book/{_slug}", "robots": "index,follow", "title": _title})
+    ROUTES.setdefault(f"/reader/{_slug}", {"kind": "reader", "canonical": f"/book/{_slug}", "robots": "noindex,follow", "title": _title})
+
 # Navigation availability and protected content authorization are distinct
 # contracts. Keep the denial assertion scoped to this exact protected Reader
 # manifest; never treat 451 or 503 as generally acceptable canary responses.
@@ -186,21 +195,35 @@ def fetch_protected_api(base_url: str, route: str, timeout: int) -> tuple[int, o
 
 def inspect_protected_api(route: str, policy: dict[str, object], status: int, payload: object, url: str) -> dict[str, object]:
     failures: list[str] = []
+    detail = payload.get("detail") if isinstance(payload, dict) else None
+    code = detail.get("code") if isinstance(detail, dict) else None
+    # The production edge denies an overseas request before contacting the
+    # backend. Validate that exact denial without claiming an India readback.
+    country = detail.get("country") if isinstance(detail, dict) else None
+    overseas_denial = (
+        route in PROTECTED_API_CHECKS
+        and policy == PROTECTED_API_CHECKS[route]
+        and status == 451
+        and code == "RELEASE_TERRITORY_DENIED"
+        and isinstance(country, str)
+        and country in {"US", "GB", "CA", "AU", "DE", "AE", "BD", "SG", "SA"}
+        and detail.get("allowed_countries") == ["IN"]
+    )
     expected_status = int(policy["expected_status"])
     expected_code = str(policy["expected_code"])
-    if status != expected_status:
+    if not overseas_denial and status != expected_status:
         failures.append(f"expected HTTP {expected_status}, got {status}")
     if urlsplit(url).path.rstrip("/") != route.rstrip("/"):
         failures.append(f"protected request redirected to unexpected path: {urlsplit(url).path}")
-    detail = payload.get("detail") if isinstance(payload, dict) else None
-    code = detail.get("code") if isinstance(detail, dict) else None
-    if code != expected_code:
+    if not overseas_denial and code != expected_code:
         failures.append(f"expected error code {expected_code}, got {code or 'missing'}")
     return {
         "route": route,
         "url": url,
         "status_code": status,
         "error_code": code,
+        "observed_country": country,
+        "india_backend_contract": "NOT_RUN_FROM_NON_IN" if overseas_denial else "CHECKED",
         "failures": failures,
         "result": "PASS" if not failures else "FAIL",
     }
@@ -315,7 +338,7 @@ def write_report(report: dict[str, object]) -> None:
         rows.append(f"- `{row['route']}`: `{row['result']}`; status={row['status_code']}; failures={'; '.join(row['failures']) or 'none'}")
     rows.extend(["", "## Protected API contracts", ""])
     for row in report.get("protected_apis", []):
-        rows.append(f"- `{row['route']}`: `{row['result']}`; status={row['status_code']}; code={row['error_code'] or 'missing'}; failures={'; '.join(row['failures']) or 'none'}")
+        rows.append(f"- `{row['route']}`: `{row['result']}`; status={row['status_code']}; code={row['error_code'] or 'missing'}; India backend={row['india_backend_contract']}; failures={'; '.join(row['failures']) or 'none'}")
     (OUTPUT_DIR / "post_deploy_static_seo_canary.md").write_text("\n".join(rows) + "\n", encoding="utf-8")
 
 

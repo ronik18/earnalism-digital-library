@@ -15,6 +15,22 @@ export const PUBLIC_READER_RELEASED_SLUGS = Object.freeze([
   "the-canterville-ghost",
   "the-adventures-of-sherlock-holmes",
   "agentic-ai-with-python",
+  "a-horseman-in-the-sky",
+  "a-mystery-of-heroism",
+  "a-scandal-in-bohemia",
+  "jekyll-and-hyde",
+  "love-of-life",
+  "the-bishop",
+  "the-fall-of-the-house-of-usher",
+  "the-lady-with-the-dog",
+  "the-man-who-would-be-king",
+  "the-open-boat",
+  "the-pit-and-the-pendulum",
+  "the-stolen-white-elephant",
+  "an-occurrence-at-owl-creek-bridge",
+  "the-enchanted-april",
+  "the-happy-prince",
+  "picture-of-dorian-gray",
 ]);
 // The India text launch does not offer paid Reading Passes until the live
 // Razorpay, consumer-remedy, and accounting surface has been independently

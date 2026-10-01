@@ -127,7 +127,13 @@ module.exports = async function releaseProxy(req, res) {
     if (!AUTHORIZED_READER_COUNTRIES.has(country)) {
       res.statusCode = 451;
       res.setHeader("Cache-Control", "no-store");
-      res.end();
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      res.end(JSON.stringify({ detail: {
+        code: "RELEASE_TERRITORY_DENIED",
+        message: "This Reader release is available in India only.",
+        country: /^[A-Z]{2}$/.test(country) ? country : null,
+        allowed_countries: ["IN"],
+      } }));
       return;
     }
     const timestamp = Math.floor(Date.now() / 1000);

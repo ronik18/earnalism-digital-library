@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "a-scandal-in-bohemia",
+  "title": "A Scandal in Bohemia",
+  "generated_at": "2026-10-01T05:38:07.922769+00:00",
+  "content": {
+    "source_hash": "c8a8c8bd954f303cb9a2ebdbb67935fe88c9b623afa510883e23dfc86026212c",
+    "content_hash": "ca95b6c1af79a8239e6641235f78ae0e31b5dd535800f76950b4f144650f0f0f",
+    "provenance_hash": "e3212953ceb32e1d32ebdb6e596b4851485edd17c7c6a944430b9c8c8fe34267",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "578ffb944358063553404f65509bac7dc4d98ddf192252443746539a35ca9142",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "A Scandal in Bohemia",
+        "word_count": 8542,
+        "sha256": "efd315eb11fceeab3dba24c4ef4b5152496dd9e57033669908ba9b7ae54532ea"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "in",
+    "evidence_sha256": "0302b427ea3695a9ee06d524823239bdc8ff3021b8582b3acbc4340febbd81a9"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "5b5203f14999e53a380545a75464f76a52f3f3499a883fe285f2b580c43c9612",
+    "reader_manifest": "08be9023532b392a948c29ac4725a7a46a9fb1641ed78b9c438e0d5da08222d8",
+    "source_evidence": "0302b427ea3695a9ee06d524823239bdc8ff3021b8582b3acbc4340febbd81a9",
+    "approval_evidence": "c44e53fd7116ac72e1ad639a90ba9d9d7420dbcefacb125ef41cb797b8610347"
+  },
+  "manifest_sha256": "99ec8d83e43f5231a6868c2858b8aed4817340b251acac5296059217ec1aaa21"
+}
