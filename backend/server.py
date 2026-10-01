@@ -478,6 +478,7 @@ EARNALISM_CANONICAL_REPO_ROOT: Optional[Path] = (
 ENABLE_SCHEDULED_JOBS = _env_bool("ENABLE_SCHEDULED_JOBS", False)
 ENABLE_QUEUE_CONSUMER = _env_bool("ENABLE_QUEUE_CONSUMER", False)
 ENABLE_ADMIN_MEDIA_UPLOADS = _env_bool("ENABLE_ADMIN_MEDIA_UPLOADS", False)
+ENABLE_JOURNAL_MEDIA_UPLOADS = _env_bool("ENABLE_JOURNAL_MEDIA_UPLOADS", False)
 ENABLE_STARTUP_DB_MAINTENANCE = _env_bool("ENABLE_STARTUP_DB_MAINTENANCE", not COST_CONTROL_MODE)
 MAX_CONCURRENT_JOBS = _env_int("MAX_CONCURRENT_JOBS", 1)
 REQUEST_BODY_LIMIT_BYTES = _env_int(
@@ -9150,7 +9151,7 @@ async def admin_upload_image(
 ):
     _require_expensive_job_enabled(
         "admin_media_uploads",
-        enabled=ENABLE_ADMIN_MEDIA_UPLOADS,
+        enabled=ENABLE_ADMIN_MEDIA_UPLOADS or ENABLE_JOURNAL_MEDIA_UPLOADS,
         confirm_expensive_job=confirm_expensive_job,
     )
     async with _expensive_job_slot("admin_media_uploads"):

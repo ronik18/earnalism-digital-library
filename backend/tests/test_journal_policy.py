@@ -1,6 +1,15 @@
 from backend.journal_policy import sanitize_journal_html
 
 
+def test_journal_upload_enablement_does_not_enable_brand_uploads():
+    source = Path('backend/server.py').read_text()
+    journal = source.split('async def admin_upload_image(', 1)[1].split('@api.', 1)[0]
+    brand = source.split('async def admin_upload_brand_logo(', 1)[1].split('@api.', 1)[0]
+    assert 'enabled=ENABLE_ADMIN_MEDIA_UPLOADS or ENABLE_JOURNAL_MEDIA_UPLOADS' in journal
+    assert 'ENABLE_JOURNAL_MEDIA_UPLOADS' not in brand
+    assert 'Depends(require_admin)' in journal
+
+
 def test_preserves_editorial_links_images_and_headings():
     result = sanitize_journal_html('<h2>Reading</h2><p><a href="https://theearnalism.com/library">Library</a></p><img src="https://example.com/photo.jpg" alt="A book">')
     assert '<h2>Reading</h2>' in result
