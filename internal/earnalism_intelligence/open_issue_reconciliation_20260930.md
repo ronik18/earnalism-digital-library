@@ -1,6 +1,20 @@
 # Open issue reconciliation
 
-## Current verified reconciliation — 2026-10-01T00:38:43.993882+00:00
+## Current owner-evidence update — 2026-10-01T02:22:54.965113+00:00
+
+Agentic manuscript authorship and creation of both existing covers are now directly confirmed by Ronik Basak. Retained commercial text authorization, all 14 exact current chapter hashes, root/runtime parity and 428 revised-archive checksums verify. The [exact component packet](../legal/agentic_owner_rights_20261001/README.md) retains both versioned CDN cover bytes, approved local hashes and an exact-schema India text-reader proposal.
+
+The remaining component condition is specific: the inspected Python logo treatment appears stylized/3D; current-variant approval and the applicable notice in the delivered book have not been substantiated. The proposed decision remains HOLD outside the production registry. Authenticated production readback is pending secure Google account verification; fresh target-domain UI still showed Sign In. No manuscript, source, approved artwork/UI, accepted registry, launch, wallet/customer data, deployment configuration or audio was changed. Seven pre-existing accepted titles, 224 holds and 899 catalogue blockers remain; CUSTOMER_READY is not declared.
+
+#380 remains open for those concrete release/authenticated conditions, with owner authorship and cover creation removed from its missing-fact description. #477 retains its complete per-slug holds. #347 remains completed and #385 remains owner-deferred NOT_RUN / UNVERIFIED.
+
+Next generated prompt: Use the confirmed Ronik Basak manuscript authorship and creation of both covers; do not reopen those missing-fact questions. Resolve only the evidenced Python logo variant and required notice conditions, preserve approved assets/text, and rebind the reviewed exact India text-reader record through the existing registry process when conditions are satisfied. Complete secure account verification, then inspect applicable production Reader/admin active publication and exact revised hashes from a trusted India context. Use the existing draft/admin path only after all gates pass. Keep audio disabled, physical-device UAT owner-deferred, all seven existing accepted titles and all other holds intact; do not change wallets, customer data, launch flags or deployment configuration.
+
+Earlier records below are retained historical proof; this update supersedes their missing owner-fact descriptions only.
+
+---
+
+## Historical verified reconciliation — 2026-10-01T00:38:43.993882+00:00
 
 Verified implementation: PR #492 head cc8d1ca5b198e53bc97dc745351d06027bb3b25e, merged main 5e800608e6a5c02a4a58bb12680f0af38321f152. Exact-head normal regression [36796257882](https://github.com/ronik18/earnalism-digital-library/actions/runs/36796257882), independent catalogue [36796257939](https://github.com/ronik18/earnalism-digital-library/actions/runs/36796257939) and coordination 36796257778 passed before expected-SHA protected merge. Fresh main regression [36796711277](https://github.com/ronik18/earnalism-digital-library/actions/runs/36796711277) and independent catalogue [36796711291](https://github.com/ronik18/earnalism-digital-library/actions/runs/36796711291) passed. Frontend deployment correctly reports no frontend change; this is not a new UI deployment.
 

@@ -1,0 +1,200 @@
+{
+  "schema": "earnalism.agentic-component-rights-evidence.v1",
+  "recorded_at": "2026-10-01T02:22:54.965113+00:00",
+  "source_head": "70509549d47f1153c7597e606cad59462e8e61b4",
+  "slug": "agentic-ai-with-python",
+  "owner_attestation_sha256": "a421be4c4fa95b7fcb875d23e112eb4a80db71ac3f88e009c841029ed45f5aa3",
+  "reader_revision": "owner-authorized-2026-09-12",
+  "component_files_sha256": {
+    "public_book": "3b9fb4c9c4ab17f1746d5df6d889692e6440db6262277e099a87d69cbdd18b3e",
+    "reader_manifest": "705ce53074d1d9259bc1f38b7ba999351b269d48bff630fde669c4b1133674b7",
+    "source_evidence": "c21bb049f395d0a88c6912136974140341db4b6ecd631395aad36609ded48386",
+    "approval_evidence": "1d34313e08796c09cb8d3a9a0e9a343c59fce01028bdaa47e846cf25f505d308",
+    "checksum_manifest": "79da7661b185b8960925442990da75e9310634a50da83452afbc5cd8d381df79",
+    "publication_manifest": "f25b571aa0c40b84448435a8078586ecd92142414f5edbe70617362879872d8f"
+  },
+  "content_hash": "750b1c7cf78457bed5083d11db08e6cc1999cd73bcb7546ff460ad62d2034282",
+  "provenance_hash": "7128a3c1a4c269ff0abe92e43cfc398087b7e158ce6803b5d5e947d25e067492",
+  "source_hash_semantics": "Retained original capture source_hash is not represented as the revised archive hash; the selected revision is bound by the archive, 14 chapter hashes, and current component hashes.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "Chapter 1: Building Your First Python AI Assistant",
+      "file_sha256": "efccca13d2252ce2dac4cb5553e1edfca33262ffa7fa0f2179a7577476aff08a",
+      "content_sha256": "21a43d95157e8222c9299d7b9b787fda366c67fc31f838f2759d3ee4a2cfe296",
+      "embedded_media_components": []
+    },
+    {
+      "id": "chapter-002",
+      "order": 2,
+      "title": "Chapter 2: LLMs, Prompts, Tokens and a Reusable API Client",
+      "file_sha256": "b389924f429367b00e32aa8f9bb8d6d5a69693bbd4bc41e27736b20c61902ecc",
+      "content_sha256": "9c374eb3789023d7094be65d866440113aa3563083f8bab3106cbecb1e290627",
+      "embedded_media_components": []
+    },
+    {
+      "id": "chapter-003",
+      "order": 3,
+      "title": "Chapter 3: Your First Python AI App",
+      "file_sha256": "896bdf0af90efb7dee3fa0e6d9e80db1471595836736ba67908fa79fd6482ae7",
+      "content_sha256": "249389f5c1a9d0cbc8f812ae2c42804506d57d612edee34cdf9b2e0371710acf",
+      "embedded_media_components": []
+    },
+    {
+      "id": "chapter-004",
+      "order": 4,
+      "title": "Chapter 4: RAG — Chat with Your Own Documents",
+      "file_sha256": "e2f83bff22823507495fe31d4f2e0004fbaca6fd5ed81312564871aed72b5e2f",
+      "content_sha256": "8493f65276d763dd1c02e06be02a744fe0f987e928e2e4a7b6c3a403ae2fafa9",
+      "embedded_media_components": []
+    },
+    {
+      "id": "chapter-005",
+      "order": 5,
+      "title": "Chapter 5: Embeddings, Vector Databases, and Semantic Search",
+      "file_sha256": "a93803d652cb04f2bb0ea8a55471c684f961703acad287fb94853e5a0e328fc8",
+      "content_sha256": "f978201299db1071d1594385b193f741776e3a653ee8032b7bab837b3f5685b0",
+      "embedded_media_components": []
+    },
+    {
+      "id": "chapter-006",
+      "order": 6,
+      "title": "Chapter 6: Tool-Using Agents in Python",
+      "file_sha256": "cb6ed6a1ec7e58dbc204e686459cf35318a3d7266d16cfb726b9f43a31586715",
+      "content_sha256": "5523929482657fd5d056e9d216f58b37301f9474033969a3d4a2f6867f5c85fe",
+      "embedded_media_components": []
+    },
+    {
+      "id": "chapter-007",
+      "order": 7,
+      "title": "Chapter 7: Memory — Giving an Assistant Useful Context",
+      "file_sha256": "8746d00c4c12a3825a962188e914f2d1ea1c7c10c406ea462afa4fa4aaa9e730",
+      "content_sha256": "bf81dc96ff29454e366bd7b565c4bcf44494f73f1aa1a3c7c833d5c82e581e42",
+      "embedded_media_components": []
+    },
+    {
+      "id": "chapter-008",
+      "order": 8,
+      "title": "Chapter 8: Workflow Automation with AI Agents",
+      "file_sha256": "fef53ecb91b3afb8d0c23a0a4a4b558c9f23598a3fa7fefe9edd081716a5c701",
+      "content_sha256": "6d94b6cf39755a9d7eb01adfe1128d8c481826a0c3053ded006dba8a55950dd6",
+      "embedded_media_components": []
+    },
+    {
+      "id": "chapter-009",
+      "order": 9,
+      "title": "Chapter 9: Multi-Step and Multi-Agent Workflows",
+      "file_sha256": "6fb468b540a40e1cd8c5e1d6a68331f9a2f611031f927893ef4c1614e0bdbe03",
+      "content_sha256": "88a6a6c90e345489afd690e6689345644bcbf985ef371ec5a7e57c504417a7de",
+      "embedded_media_components": []
+    },
+    {
+      "id": "chapter-010",
+      "order": 10,
+      "title": "Chapter 10: Guardrails, Safety, and Hallucination Control",
+      "file_sha256": "19c190ec3caddb1653fea629eaf913a0468655c533c1a4f1588c2a487227cf8c",
+      "content_sha256": "4f64a442dc1a1a1b77a9b3ab72a59230b3e0d7c566db5382833dcfc5dab5766d",
+      "embedded_media_components": []
+    },
+    {
+      "id": "chapter-011",
+      "order": 11,
+      "title": "Chapter 11: Testing, Evaluation, Monitoring, and Cost Control",
+      "file_sha256": "4bed8449a5e8bc9e89d0c45913063d0bb2a1abcb7d1c59e415503c93440ca27c",
+      "content_sha256": "194f9996934e09354b294482a294dd22568544e427fd0b29a52a821003d80def",
+      "embedded_media_components": []
+    },
+    {
+      "id": "chapter-012",
+      "order": 12,
+      "title": "Chapter 12: Deploying Your Python AI Agent",
+      "file_sha256": "edde00eac6df148abef6f39ef8f8eaa9ff6384a17b6b7bf0b722b6e98a5b703a",
+      "content_sha256": "0b2f933b235a0f08d8c9d065b131943f19793495f84e6f12fb90bf51b0ed68dc",
+      "embedded_media_components": []
+    },
+    {
+      "id": "chapter-013",
+      "order": 13,
+      "title": "Chapter 13: Bringing the Projects Together",
+      "file_sha256": "95196ad65444292e591f976eb8fa51e25fc17237039b3ad5560b666f91842c03",
+      "content_sha256": "6f5dafb4d00f18aeb1ec5e5ae4a92e5a97425f20a6306735f03673bb5b1bd047",
+      "embedded_media_components": []
+    },
+    {
+      "id": "chapter-014",
+      "order": 14,
+      "title": "Chapter 14: Glossary and Your Next Project",
+      "file_sha256": "e61748ddd182c6049b3a454debc9e8b57d4f43f87469fc5105b1a1a7fba404da",
+      "content_sha256": "1a3b4df9a9feff3b08aff646d79cfa71b279c920d43a5ae67d0959767f16d542",
+      "embedded_media_components": []
+    }
+  ],
+  "root_runtime_byte_parity": true,
+  "manuscript_disposition": "FIRST_PARTY_AUTHORSHIP_AND_COMMERCIAL_TEXT_AUTHORIZATION_SUBSTANTIATED",
+  "cover_assets": [
+    {
+      "role": "front_cover",
+      "creator": "Ronik Basak (direct owner confirmation)",
+      "creation_date": "NOT_RECORDED_NOT_A_BLOCKER_FOR_CONFIRMED_CREATION",
+      "current_runtime_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779560234/earnalism/covers/front/cover_307adb30-176d-4a7b-a499-e20c8312337b.png",
+      "retained_cdn_path": "internal/legal/agentic_owner_rights_20261001/front-cover-cdn.png",
+      "cdn_sha256": "c78a7236129ec23bc41008947087ae692ae8ecfeeecd674914e4c636749aa6d1",
+      "cdn_bytes": 1905680,
+      "cdn_dimensions": [
+        1024,
+        1536
+      ],
+      "approved_local_path": "frontend/public/assets/books/agentic-ai-with-python/front-cover.jpg",
+      "approved_local_sha256": "a70d7bb484478d7f783da00f399f3101500107972f68b11d9d00eb0045bfa592",
+      "third_party_component_identified": "Stylized Python two-snakes logo",
+      "creator_status": "SUBSTANTIATED_BY_OWNER",
+      "component_release_status": "PSF_VARIANT_DISPOSITION_PENDING"
+    },
+    {
+      "role": "back_cover",
+      "creator": "Ronik Basak (direct owner confirmation)",
+      "creation_date": "NOT_RECORDED_NOT_A_BLOCKER_FOR_CONFIRMED_CREATION",
+      "current_runtime_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779560267/earnalism/covers/back/back_cover_307adb30-176d-4a7b-a499-e20c8312337b.png",
+      "retained_cdn_path": "internal/legal/agentic_owner_rights_20261001/back-cover-cdn.png",
+      "cdn_sha256": "94268d9f1c05505ae161bf3756875c8b6a49cbc76cd7b964612586713b190496",
+      "cdn_bytes": 1933154,
+      "cdn_dimensions": [
+        1024,
+        1536
+      ],
+      "approved_local_path": "frontend/public/assets/books/agentic-ai-with-python/back-cover.jpg",
+      "approved_local_sha256": "c667243df0b221cc91a0293ff1fcd1e6d4f337aaa003dcabb079b35d35cb6edd",
+      "third_party_component_identified": "Stylized Python two-snakes logo",
+      "creator_status": "SUBSTANTIATED_BY_OWNER",
+      "component_release_status": "PSF_VARIANT_DISPOSITION_PENDING"
+    }
+  ],
+  "python_component_review": {
+    "rightsholder": "Python Software Foundation",
+    "primary_sources": [
+      "https://www.python.org/psf/trademarks/",
+      "https://www.python.org/psf/trademarks-faq/",
+      "https://www.python.org/community/logos/"
+    ],
+    "retrieved_on": "2026-10-01",
+    "book_wordmark_and_unaltered_logo_use": "Nominative book use is permitted; no separate royalty or generic book-name permission is inferred to be required.",
+    "visual_observation": "Both current covers show a glossy, illuminated Python logo treatment, appearing as a stylized/3D variant rather than a verified unchanged PSF-provided logo. This is a visual inference, not an infringement determination.",
+    "variant_approval_record": "NOT_FOUND_IN_INSPECTED_REPOSITORY_OR_TITLE_SOURCE_RECORDS",
+    "required_notice_in_delivered_chapters": "NOT_FOUND_IN_ALL_14_CURRENT_CHAPTERS",
+    "conditions_to_complete": [
+      "Establish that the exact displayed logo meets the unchanged-logo book-use terms, or retain PSF permission for the specific stylized/3D variant.",
+      "Include the applicable trademark and non-affiliation notice in the delivered book/imprint; preserve approved chapter and cover versions when preparing any reviewed addition."
+    ],
+    "no_psf_endorsement_or_ownership_claim": true
+  },
+  "audio_and_companion_distribution": "Excluded. The live reader package contains 14 text chapters and no embedded media; the companion project archive is not represented as a new production download release.",
+  "review_disposition": "OWNER_FACTS_SUBSTANTIATED_COMPONENT_CONDITIONS_INCOMPLETE",
+  "production_readback": {
+    "authenticated_session_verified": false,
+    "trusted_india_context_verified": false,
+    "observed": "Production Sign In remained visible after the secure Google-method request; Google presented account verification. No authenticated Reader/admin active-pointer readback was completed.",
+    "status": "PENDING_SECURE_AUTHENTICATION_AND_APPLICABLE_RELEASE_ACCEPTANCE"
+  },
+  "publication_authority": false
+}

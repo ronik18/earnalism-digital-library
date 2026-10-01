@@ -1,0 +1,46 @@
+{
+  "schema": "earnalism.owner-factual-attestation.v1",
+  "recorded_at": "2026-10-01T02:22:54.965113+00:00",
+  "slug": "agentic-ai-with-python",
+  "owner": "Ronik Basak",
+  "source_head": "70509549d47f1153c7597e606cad59462e8e61b4",
+  "direct_owner_statements": [
+    {
+      "kind": "manuscript_authorship",
+      "statement": "Agentic was written by myself so I do not think copyright is a blocker here.",
+      "source": "Direct user instruction in the authorized autonomous issue-resolution conversation on 2026-10-01",
+      "scope": "Manuscript authorship reaffirmed; no additional third-party component rights inferred."
+    },
+    {
+      "kind": "cover_creation",
+      "statement": "I created both covers",
+      "source": "Direct user answer to the existing front/back cover provenance question on 2026-10-01",
+      "scope": "Creation of both cover designs confirmed; this is not a claim of ownership of PSF trademarks or a PSF variant approval."
+    }
+  ],
+  "retained_commercial_text_authorization": {
+    "path": "data/controlled_publications/agentic-ai-with-python/source_evidence.json",
+    "sha256": "c21bb049f395d0a88c6912136974140341db4b6ecd631395aad36609ded48386",
+    "owner_attestation": "Ronik Basak attests that this is author-owned original work and authorizes commercial reader publication."
+  },
+  "selected_revision_archive": {
+    "file_name": "Agentic_AI_With_Python_Revised_Package.zip",
+    "sha256": "45e445dafef0449523a28e354496f6774307572412cdc51ebe26da4521e809e4",
+    "checksum_inventory_verified": 428,
+    "author_statement_sha256": "b83f9d5b4c707b4a1ff4260ba800b8bdc780545763d8ff862ef48a4da6ecb34b",
+    "author_statement": {
+      "title": "Agentic AI With Python",
+      "author": "Ronik Basak",
+      "owner": "Ronik Basak",
+      "basis": "User confirmation in this conversation",
+      "statement": "Agentic AI With Python is written by myself the owner only",
+      "status": "SOLE_AUTHOR_AND_OWNER_CONFIRMED_BY_USER",
+      "supersedes": "Earlier uncertainty about whether the manuscript had other text contributors",
+      "editorial_assistance": "AI-assisted revision requested by the author",
+      "author_review_complete": false,
+      "production_writes_performed": false
+    }
+  },
+  "historical_qa_not_promoted_to_new_owner_approval": true,
+  "audio_authorization": "NOT_REQUESTED"
+}
