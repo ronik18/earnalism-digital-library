@@ -116,7 +116,8 @@ jobs:
           printf 'ACTUAL_CHECKOUT_SHA=%s\nCHECKOUT_TREE_SHA=%s\nWORKFLOW_EVENT_SHA=%s\n' "$ACTUAL_CHECKOUT_SHA" "$CHECKOUT_TREE_SHA" "$WORKFLOW_EVENT_SHA" | tee "$RUNNER_TEMP/exact-checkout.env"
           npm ci
           npm ci --prefix frontend --legacy-peer-deps
-          python3 -m pip install --disable-pip-version-check -r requirements.txt reportlab==4.2.5
+          # Browser/PDF evidence needs these pinned tools, not audio/ML models.
+          python3 -m pip install --disable-pip-version-check Pillow==10.3.0 reportlab==4.2.5
           npx playwright install --with-deps chromium firefox webkit
           node --version | tee "$RUNNER_TEMP/node-version.txt"
           python3 --version | tee "$RUNNER_TEMP/python-version.txt"

@@ -6,6 +6,23 @@ const { Readable } = require("node:stream");
 const releaseProxy = require("../api/[...proxy]");
 const { protectedReaderPath, releaseSignature } = releaseProxy;
 
+test("keeps refresh and device cookies separate and makes authentication responses private", async () => {
+  const previousFetch = global.fetch;
+  const cookies = ["ear_user_refresh=isolated; Path=/; Secure; HttpOnly; SameSite=Lax", "ear_user_device=isolated-device; Expires=Thu, 01 Oct 2026 20:00:00 GMT; Path=/; Secure; HttpOnly; SameSite=Lax"];
+  global.fetch = async () => ({ status: 200, headers: new Headers(cookies.map((value) => ["Set-Cookie", value])), arrayBuffer: async () => new ArrayBuffer(0) });
+  try {
+    const req = Readable.from([]);
+    Object.assign(req, { url: "/api/users/refresh", method: "POST", headers: {} });
+    const response = { headers: {}, setHeader(key, value) { this.headers[key] = value; }, end() {} };
+    await releaseProxy(req, response);
+    assert.deepEqual(response.headers["Set-Cookie"], cookies);
+    assert.equal(response.headers["Cache-Control"], "private, no-store");
+    assert.equal(response.headers["Vercel-CDN-Cache-Control"], "no-store");
+  } finally {
+    global.fetch = previousFetch;
+  }
+});
+
 test("deployable Vercel API tree contains no test routes", () => {
   const apiFiles = fs.readdirSync(path.join(__dirname, "../api"));
   assert.equal(apiFiles.filter((name) => /\.(?:test|spec)\.[cm]?[jt]sx?$/.test(name)).length, 0);

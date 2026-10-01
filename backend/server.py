@@ -283,9 +283,9 @@ except ImportError:  # pragma: no cover - supports package-style test imports
     from backend.release_proxy_auth import verify_release_proxy_request
 
 try:
-    from rights_decision_gate import DecisionGateVerdict, evaluate_runtime_path, load_production_registry, should_deny_runtime_action
+    from rights_decision_gate import DecisionGateVerdict, evaluate_runtime_path, load_production_registry, record_sha256, should_deny_runtime_action
 except ImportError:  # pragma: no cover - supports package-style test imports
-    from backend.rights_decision_gate import DecisionGateVerdict, evaluate_runtime_path, load_production_registry, should_deny_runtime_action
+    from backend.rights_decision_gate import DecisionGateVerdict, evaluate_runtime_path, load_production_registry, record_sha256, should_deny_runtime_action
 
 try:
     from catalog_truth import (
@@ -576,6 +576,7 @@ SEED_TEST_READER_PASSWORD = os.environ.get("SEED_TEST_READER_PASSWORD", "").stri
 # can be disabled via env for plain-HTTP local dev only.
 SESSION_COOKIE = "ear_session"
 USER_REFRESH_COOKIE = "ear_user_refresh"
+USER_DEVICE_COOKIE = "ear_user_device"
 SESSION_TTL_SECONDS = JWT_EXPIRE_MINUTES * 60
 COOKIE_SECURE = os.environ.get("COOKIE_SECURE", "true").lower() != "false"
 COOKIE_SAMESITE = os.environ.get("COOKIE_SAMESITE", "lax")
@@ -1044,12 +1045,32 @@ def _hash_secret(value: str) -> str:
     return hmac.new(JWT_SECRET.encode("utf-8"), value.encode("utf-8"), hashlib.sha256).hexdigest()
 
 
-def _device_fingerprint(request: Request) -> str:
+def _legacy_device_fingerprint(request: Request) -> str:
     ua = request.headers.get("user-agent", "")[:240]
     lang = request.headers.get("accept-language", "")[:80]
     browser_hint = request.headers.get("x-client-fingerprint", "")[:120]
     raw = f"{_client_ip(request)}|{ua}|{lang}|{browser_hint}"
     return _hash_secret(raw)
+
+
+def _user_device_id(request: Request) -> str:
+    value = request.cookies.get(USER_DEVICE_COOKIE, "")
+    return value if isinstance(value, str) and re.fullmatch(r"[a-f0-9]{64}", value) else ""
+
+
+def _device_fingerprint(request: Request) -> str:
+    device_id = _user_device_id(request)
+    if device_id:
+        return _hash_secret(f"reader-device-v1|{device_id}")
+    return _legacy_device_fingerprint(request)
+
+
+def _set_user_device_cookie(response: Response, device_id: str) -> None:
+    response.set_cookie(
+        key=USER_DEVICE_COOKIE, value=device_id,
+        max_age=USER_REFRESH_TOTAL_HOURS * 3600,
+        httponly=True, secure=COOKIE_SECURE, samesite=COOKIE_SAMESITE, path="/",
+    )
 
 
 def _set_user_refresh_cookie(response: Response, refresh_token: str) -> None:
@@ -1084,13 +1105,17 @@ async def _create_user_session(user: dict, request: Request, response: Response)
     now = datetime.now(timezone.utc)
     session_id = str(uuid.uuid4())
     refresh_token = secrets.token_urlsafe(48)
-    device_fp = _device_fingerprint(request)
+    # A private random browser binding survives mobile IP/proxy changes. Both
+    # the signed access token and this HttpOnly cookie are required thereafter.
+    device_id = _user_device_id(request) or secrets.token_hex(32)
+    device_fp = _hash_secret(f"reader-device-v1|{device_id}")
 
     await db.user_sessions.insert_one({
         "id": session_id,
         "user_id": user["id"],
         "email": user["email"],
         "device_fingerprint": device_fp,
+        "device_binding_version": 1,
         "refresh_token_hash": _hash_secret(refresh_token),
         "status": "active",
         "created_at": now,
@@ -1123,6 +1148,7 @@ async def _create_user_session(user: dict, request: Request, response: Response)
         "user_id": user["id"],
         "email": user["email"],
         "device_fingerprint": device_fp,
+        "device_binding_version": 1,
         "status": "active",
         "created_at": now,
         "last_seen_at": now,
@@ -1130,6 +1156,7 @@ async def _create_user_session(user: dict, request: Request, response: Response)
         "absolute_expires_at": now + timedelta(hours=USER_REFRESH_TOTAL_HOURS),
     })
     _set_user_refresh_cookie(response, refresh_token)
+    _set_user_device_cookie(response, device_id)
     return create_user_token(user["id"], user["email"], session_id, device_fp)
 
 
@@ -1165,7 +1192,15 @@ async def _refresh_user_session(refresh_token: str, request: Request, response: 
         return None
 
     device_fp = _device_fingerprint(request)
-    if session.get("device_fingerprint") != device_fp:
+    legacy_binding = session.get("device_binding_version") != 1
+    # The refresh-cookie hash already authenticated this exact retained
+    # session. Legacy migration additionally preserves its original UA; it
+    # never extends an expired/revoked session or accepts an access token alone.
+    binding_matches = (
+        request.headers.get("user-agent", "")[:240] == session.get("user_agent", "")
+        if legacy_binding else session.get("device_fingerprint") == device_fp
+    )
+    if not binding_matches:
         await db.user_sessions.update_one(
             {"id": session["id"]},
             {"$set": {"status": "revoked", "revoked_at": now, "revoked_reason": "device_fingerprint_changed"}},
@@ -1173,6 +1208,19 @@ async def _refresh_user_session(refresh_token: str, request: Request, response: 
         await _invalidate_user_cache(user["id"], session_ids=[session["id"]])
         _clear_user_refresh_cookie(response)
         return None
+
+    if legacy_binding:
+        device_id = _user_device_id(request) or secrets.token_hex(32)
+        device_fp = _hash_secret(f"reader-device-v1|{device_id}")
+        migration = await db.user_sessions.update_one(
+            {"id": session["id"], "status": "active", "refresh_token_hash": token_hash, "device_binding_version": {"$ne": 1}},
+            {"$set": {"device_fingerprint": device_fp, "device_binding_version": 1, "device_binding_migrated_at": now}},
+        )
+        if migration.modified_count != 1:
+            raise HTTPException(status_code=503, detail="Session verification is already in progress; please retry.")
+        session["device_fingerprint"] = device_fp
+        session["device_binding_version"] = 1
+        _set_user_device_cookie(response, device_id)
 
     idle_expires_at = now + timedelta(minutes=USER_REFRESH_IDLE_MINUTES)
     await db.user_sessions.update_one(
@@ -5447,11 +5495,17 @@ async def lifespan(_app: FastAPI):
     else:
         logger.info("Startup database maintenance is disabled by cost-control mode.")
     _schedule_home_surface_warmup()
+    approved_reader_task = asyncio.create_task(_initialize_authorized_reader_release())
 
     yield
 
     # ----- shutdown -----
     _mark_shutdown_draining()
+    approved_reader_task.cancel()
+    try:
+        await approved_reader_task
+    except asyncio.CancelledError:
+        pass
     drain_deadline = time.monotonic() + 15
     while int(_shutdown_state.get("inflight", 0)) > 0 and time.monotonic() < drain_deadline:
         await asyncio.sleep(0.1)
@@ -10603,11 +10657,11 @@ async def admin_reading_pass_revocation_release_preflight(_=Depends(require_admi
 
 
 @api.post("/admin/reading-pass/books/{slug}/segments")
-async def admin_build_reading_pass_segments(
-    slug: str,
-    payload: ReadingPassSegmentMigrationIn,
-    admin=Depends(require_admin),
-):
+async def admin_build_reading_pass_segments(slug: str, payload: ReadingPassSegmentMigrationIn, admin=Depends(require_admin)):
+    return await _build_reader_segment_candidate(slug, payload, actor=f"admin:{admin.get('email', '')}")
+
+
+async def _build_reader_segment_candidate(slug: str, payload: ReadingPassSegmentMigrationIn, *, actor: str):
     """Build immutable canonical pages from controlled reader truth.
 
     Dry-run is the default.  Activation is an explicit, audited operation and
@@ -10658,13 +10712,13 @@ async def admin_build_reading_pass_segments(
             if not existing and records:
                 created_at = datetime.now(timezone.utc)
                 await db.reader_content_segments.insert_many(
-                    [{**row, "created_at": created_at, "created_by": f"admin:{admin.get('email', '')}"} for row in records],
+                    [{**row, "created_at": created_at, "created_by": actor} for row in records],
                     ordered=True,
                     session=mongo_session,
                 )
             await db.reader_segment_manifests.update_one(
                 {"book_slug": slug, "segmentation_version": payload.segmentation_version},
-                {"$setOnInsert": {**manifest, "id": str(uuid.uuid4()), "status": "prepared", "created_at": datetime.now(timezone.utc), "created_by": f"admin:{admin.get('email', '')}"}},
+                {"$setOnInsert": {**manifest, "id": str(uuid.uuid4()), "status": "prepared", "created_at": datetime.now(timezone.utc), "created_by": actor}},
                 upsert=True,
                 session=mongo_session,
             )
@@ -10783,6 +10837,10 @@ async def admin_promote_reading_pass_segments(slug: str, payload: ReadingPassSeg
 
 @api.post("/admin/reading-pass/books/{slug}/segments/bootstrap")
 async def admin_bootstrap_reading_pass_segments(slug: str, payload: ReadingPassSegmentBootstrapIn, admin=Depends(require_admin)):
+    return await _bootstrap_reader_segment_candidate(slug, payload, actor=f"admin:{admin.get('email', '')}")
+
+
+async def _bootstrap_reader_segment_candidate(slug: str, payload: ReadingPassSegmentBootstrapIn, *, actor: str):
     """Create the first active pointer for an otherwise uninitialized title.
 
     This is intentionally not a compatibility alias for the retired build
@@ -10811,7 +10869,7 @@ async def admin_bootstrap_reading_pass_segments(slug: str, payload: ReadingPassS
         try:
             promoted = await db.reader_segment_manifests.update_one(
                 {"book_slug": slug, "segmentation_version": payload.target_segmentation_version, "status": "prepared"},
-                {"$set": {"status": "active", "activated_at": now, "activated_by": f"admin:{admin.get('email', '')}"}},
+                {"$set": {"status": "active", "activated_at": now, "activated_by": actor}},
                 session=mongo_session,
             )
             if promoted.modified_count != 1:
@@ -10826,7 +10884,7 @@ async def admin_bootstrap_reading_pass_segments(slug: str, payload: ReadingPassS
             # transaction abort all writes from this losing attempt.
             raise HTTPException(status_code=409, detail={"code": "ACTIVE_SEGMENT_VERSION_EXISTS", "message": "This title already has a versioned publication pointer."}) from exc
         result = {"book_slug": slug, "operation_id": payload.operation_id, "segmentation_version": payload.target_segmentation_version, "activation_generation": 1, "version": target["version"], "total_pages": target["total_pages"], "activated": True, "bootstrap": True}
-        await db.reading_pass_audit.insert_one({"id": str(uuid.uuid4()), "event": "canonical_segments_bootstrapped", "book_slug": slug, "operation_id": payload.operation_id, "intent_digest": intent_digest, "actor": f"admin:{admin.get('email', '')}", "created_at": now}, session=mongo_session)
+        await db.reading_pass_audit.insert_one({"id": str(uuid.uuid4()), "event": "canonical_segments_bootstrapped", "book_slug": slug, "operation_id": payload.operation_id, "intent_digest": intent_digest, "actor": actor, "created_at": now}, session=mongo_session)
         await _record_reader_segment_activation_operation(
             {"id": str(uuid.uuid4()), "book_slug": slug, "operation_id": payload.operation_id, "operation_identity_schema": _READER_SEGMENT_OPERATION_INTENT_SCHEMA, "operation_kind": "bootstrap", "intent": intent, "intent_digest": intent_digest, "result": result, "created_at": now},
             mongo_session=mongo_session,
@@ -10836,6 +10894,101 @@ async def admin_bootstrap_reading_pass_segments(slug: str, payload: ReadingPassS
     return await _run_reader_segment_activation_transaction(
         bootstrap, operation_id=payload.operation_id, request_intent=intent
     )
+
+
+async def _initialize_authorized_reader_release() -> list[dict]:
+    """Run the owner's exact deployment initialization, never a promotion.
+
+    This prepares source-bound pages through the existing immutable service
+    and creates only an absent pointer through its audited transaction. It is
+    not a public endpoint, an admin impersonation, or a country observation.
+    Actual delivery keeps the signed India, entitlement and revocation gates.
+    """
+    if ENVIRONMENT != "production" or not READING_PASS_V2_ENABLED:
+        return []
+    actor = "system:owner-authorized-reader-bootstrap-v1"
+    results = []
+    try:
+        plan = read_json_file(Path(__file__).parent / "data" / "approved_reader_bootstrap.json")
+        if (plan.get("schema") != "earnalism.approved-reader-bootstrap.v1"
+            or plan.get("bootstrap_only") is not True or plan.get("territory") != "IN"
+            or plan.get("target_characters") != 3200):
+            raise ValueError("invalid exact release initialization plan")
+        entries = plan.get("titles")
+        if not isinstance(entries, list) or len({row["slug"] for row in entries}) != len(entries):
+            raise ValueError("invalid exact release title scope")
+        accepted, revoked = load_production_registry()
+        # These existing unique indexes are the cross-replica activation lock.
+        # Never weaken, drop or silently replace them to initialize a title.
+        required_indexes = {
+            "reader_content_segments": [([("book_slug", 1), ("page_index", 1), ("segmentation_version", 1)], None)],
+            "reader_segment_manifests": [([("book_slug", 1), ("segmentation_version", 1)], None), ([("book_slug", 1)], {"status": "active"})],
+            "reader_segment_activation_state": [([("book_slug", 1)], None)],
+            "reader_segment_activation_operations": [([("operation_id", 1)], None)],
+        }
+        for collection, constraints in required_indexes.items():
+            indexes = await db[collection].index_information()
+            for keys, partial in constraints:
+                if not any(index.get("unique") is True and list(index.get("key", [])) == keys
+                           and index.get("partialFilterExpression") == partial for index in indexes.values()):
+                    raise ValueError("canonical activation uniqueness prerequisite unavailable")
+    except Exception as exc:
+        logger.error("Approved Reader initialization held: %s", type(exc).__name__)
+        return [{"status": "HELD_INITIALIZATION_PREREQUISITE"}]
+
+    for entry in entries:
+        slug = entry["slug"]
+        result = {"slug": slug, "status": "HELD"}
+        try:
+            if not _is_controlled_public_slug(slug):
+                raise ValueError("title is not in the approved Reader scope")
+            record, components = _release_rights_artifact(slug)
+            if (not record or record.get("decision_id") != entry.get("decision_id")
+                or record_sha256(record) != entry.get("record_sha256")):
+                raise ValueError("exact accepted decision changed")
+            # This is offline validation of the configured release territory;
+            # no production request or observed user country is asserted here.
+            for action in ("reader_manifest", "reader_chapter", "reading_pass_page"):
+                verdict = evaluate_runtime_path(
+                    action, record=record, edition_id=slug, operator_id=RELEASE_RIGHTS_OPERATOR_ID,
+                    country=plan["territory"], country_trusted=True, required_components=components,
+                    accepted_records=accepted, revoked_decision_ids=revoked, now=datetime.now(timezone.utc),
+                )
+                if verdict.passed is not True:
+                    raise ValueError("exact text use or component approval unavailable")
+            if not await _reader_book_access_doc(slug):
+                raise ValueError("approved source package is incomplete")
+            # Any existing pointer includes suspended/revoked history and is
+            # never automatically promoted, repaired, reset or overwritten.
+            if await db.reader_segment_activation_state.find_one({"book_slug": slug}, {"_id": 1}):
+                result["status"] = "PRESERVED_EXISTING_POINTER"
+            elif await _active_reader_segment_manifest(slug):
+                result["status"] = "PRESERVED_EXISTING_ACTIVE_VERSION"
+            else:
+                version = "approved-html-v1-" + entry["record_sha256"][:32]
+                retained = await db.reader_segment_manifests.find({"book_slug": slug}, {"_id": 0}).to_list(100000)
+                if any(row.get("segmentation_version") != version or row.get("created_by") != actor
+                       or row.get("status") != "prepared" for row in retained):
+                    result["status"] = "PRESERVED_RETAINED_OPERATOR_VERSION"
+                else:
+                    await _build_reader_segment_candidate(
+                        slug, ReadingPassSegmentMigrationIn(segmentation_version=version,
+                            target_characters=3200, dry_run=False, activate=False), actor=actor,
+                    )
+                    # Reuse exact checksum/parity verification and the existing
+                    # expected-absence transaction; a concurrent winner is safe.
+                    activated = await _bootstrap_reader_segment_candidate(
+                        slug, ReadingPassSegmentBootstrapIn(target_segmentation_version=version,
+                            operation_id="approved-reader-init:" + slug + ":" + entry["record_sha256"]), actor=actor,
+                    )
+                    result.update(status="INITIALIZED", version=activated["version"], total_pages=activated["total_pages"])
+        except asyncio.CancelledError:
+            raise
+        except Exception as exc:
+            result.update(status="HELD", reason=type(exc).__name__)
+        results.append(result)
+        logger.info("Approved Reader initialization: %s", _json.dumps(result, sort_keys=True))
+    return results
 
 
 @api.post("/admin/reading-pass/books/{slug}/text-revocation")

@@ -1,0 +1,174 @@
+{
+  "verified_at": "2026-10-01T07:55:23.998958+00:00",
+  "offline_only": true,
+  "titles": [
+    {
+      "slug": "a-ghost-story",
+      "decision_id": "india-20260925-a-ghost-story-commercial-reader-release",
+      "record_sha256": "26c538b1a5ae4f6807a4ddfafa7b54e4f44ad4a927777ffa6662dfcd5ccd821c",
+      "offline_version": "5c7cd8eedf4403776061e1e4",
+      "offline_pages": 5
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "decision_id": "india-20260925-the-tell-tale-heart-commercial-reader-release",
+      "record_sha256": "370cd4896655d25629bd791a0046844992166169aadc6e4c8061d22106b199cb",
+      "offline_version": "8729bb854c92d6da1343ef95",
+      "offline_pages": 4
+    },
+    {
+      "slug": "radharani",
+      "decision_id": "india-20260925-radharani-commercial-reader-release",
+      "record_sha256": "9be847de52927f16dba1a5d40d0c85be07d69bc47c974cd9791daeca532f2a4d",
+      "offline_version": "6371fc0eb2c3722fbf17d0b3",
+      "offline_pages": 17
+    },
+    {
+      "slug": "a-white-heron",
+      "decision_id": "india-20260925-a-white-heron-commercial-reader-release",
+      "record_sha256": "756bb230f18b4c7226f88a376d1c8a8e53c240ec1864e8f290be70afcf66c388",
+      "offline_version": "7401e06e3c7f0c6010a190f2",
+      "offline_pages": 8
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "decision_id": "india-20260925-the-gift-of-the-magi-commercial-reader-release",
+      "record_sha256": "6d4b4acbe88350b9c81ea55002306bc72cf5178daaacfd87269833557c012773",
+      "offline_version": "b73dfa115a628fe3efa61fe6",
+      "offline_pages": 4
+    },
+    {
+      "slug": "the-canterville-ghost",
+      "decision_id": "india-20260925-the-canterville-ghost-commercial-reader-release",
+      "record_sha256": "704fa0e1a6373356c3f6fa3210050eadd54b37fb584006782e1d16fa42661c15",
+      "offline_version": "cf8053666ff1a29aad6a7c10",
+      "offline_pages": 28
+    },
+    {
+      "slug": "the-adventures-of-sherlock-holmes",
+      "decision_id": "india-20260929-the-adventures-of-sherlock-holmes-pg1661-text-reader",
+      "record_sha256": "6698711d408c59160d65605bb156c38eaf183affbdc3695b92ced8f0627e09c6",
+      "offline_version": "ec6db0695999e6df9bf88fcb",
+      "offline_pages": 195
+    },
+    {
+      "slug": "agentic-ai-with-python",
+      "decision_id": "india-20261001-agentic-ai-with-python-owner-text-reader",
+      "record_sha256": "5660b0da970e88056cf9507f15c016dad9a4819aae1ab177054eb47c861d7586",
+      "offline_version": "d5cb59551bb0a53ff76ddd9c",
+      "offline_pages": 211
+    },
+    {
+      "slug": "a-horseman-in-the-sky",
+      "decision_id": "india-20261001-a-horseman-in-the-sky-owner-text-reader",
+      "record_sha256": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc",
+      "offline_version": "cd1b4a95d367cef72d58664f",
+      "offline_pages": 5
+    },
+    {
+      "slug": "a-mystery-of-heroism",
+      "decision_id": "india-20261001-a-mystery-of-heroism-owner-text-reader",
+      "record_sha256": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962",
+      "offline_version": "7c33872ef57fb96e27fb59c1",
+      "offline_pages": 7
+    },
+    {
+      "slug": "a-scandal-in-bohemia",
+      "decision_id": "india-20261001-a-scandal-in-bohemia-owner-text-reader",
+      "record_sha256": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67",
+      "offline_version": "e2e5f296ea4a6422fa6f30ef",
+      "offline_pages": 16
+    },
+    {
+      "slug": "jekyll-and-hyde",
+      "decision_id": "india-20261001-jekyll-and-hyde-owner-text-reader",
+      "record_sha256": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7",
+      "offline_version": "4e1bea4ee58aa596d095e0da",
+      "offline_pages": 52
+    },
+    {
+      "slug": "love-of-life",
+      "decision_id": "india-20261001-love-of-life-owner-text-reader",
+      "record_sha256": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb",
+      "offline_version": "938d5f38a0ddad51277513b0",
+      "offline_pages": 16
+    },
+    {
+      "slug": "the-bishop",
+      "decision_id": "india-20261001-the-bishop-owner-text-reader",
+      "record_sha256": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b",
+      "offline_version": "fd4090034def7e674447a4bc",
+      "offline_pages": 12
+    },
+    {
+      "slug": "the-fall-of-the-house-of-usher",
+      "decision_id": "india-20261001-the-fall-of-the-house-of-usher-owner-text-reader",
+      "record_sha256": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168",
+      "offline_version": "48c1c84d33ddb90522a27e3b",
+      "offline_pages": 17
+    },
+    {
+      "slug": "the-lady-with-the-dog",
+      "decision_id": "india-20261001-the-lady-with-the-dog-owner-text-reader",
+      "record_sha256": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39",
+      "offline_version": "7a368d9431ba71dc2a0b24c1",
+      "offline_pages": 14
+    },
+    {
+      "slug": "the-man-who-would-be-king",
+      "decision_id": "india-20261001-the-man-who-would-be-king-owner-text-reader",
+      "record_sha256": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1",
+      "offline_version": "7bc9f7049f8f7ae6ccfa88c7",
+      "offline_pages": 28
+    },
+    {
+      "slug": "the-open-boat",
+      "decision_id": "india-20261001-the-open-boat-owner-text-reader",
+      "record_sha256": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d",
+      "offline_version": "4ee608d8fd975d471a98f799",
+      "offline_pages": 18
+    },
+    {
+      "slug": "the-pit-and-the-pendulum",
+      "decision_id": "india-20261001-the-pit-and-the-pendulum-owner-text-reader",
+      "record_sha256": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8",
+      "offline_version": "fcd58616009aa3aca819bbc2",
+      "offline_pages": 13
+    },
+    {
+      "slug": "the-stolen-white-elephant",
+      "decision_id": "india-20261001-the-stolen-white-elephant-owner-text-reader",
+      "record_sha256": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a",
+      "offline_version": "b51e7c85e34dfd15e4a8ecea",
+      "offline_pages": 13
+    },
+    {
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "decision_id": "india-20261001-an-occurrence-at-owl-creek-bridge-owner-text-reader",
+      "record_sha256": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
+      "offline_version": "516eac4477d62b9e9737465c",
+      "offline_pages": 8
+    },
+    {
+      "slug": "the-enchanted-april",
+      "decision_id": "india-20261001-the-enchanted-april-owner-text-reader",
+      "record_sha256": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
+      "offline_version": "fec5af9971b9a615d2cb1b56",
+      "offline_pages": 157
+    },
+    {
+      "slug": "the-happy-prince",
+      "decision_id": "india-20261001-the-happy-prince-owner-text-reader",
+      "record_sha256": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
+      "offline_version": "1d6154d1530c6b9e322d38da",
+      "offline_pages": 6
+    },
+    {
+      "slug": "picture-of-dorian-gray",
+      "decision_id": "india-20261001-picture-of-dorian-gray-owner-text-reader",
+      "record_sha256": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea",
+      "offline_version": "033d2546e7443d3fd9733722",
+      "offline_pages": 161
+    }
+  ]
+}
