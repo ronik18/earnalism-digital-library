@@ -14,7 +14,7 @@ test("prior manifest IDs remain present", () => assert.ok(manifest.states.length
 test("reverse-order filter executes in manifest order", () => assert.deepEqual(selectStateRecords(manifest, [...ids].reverse()).map((s) => s.id), ids));
 test("404 route is not a real route", () => assert.equal(manifest.states.filter((s) => s.route === "/__seamless-brand-review-not-found-344__").length, 2));
 test("selected 410 route exists in tombstone authority", () => assert.match(fs.readFileSync(path.join(root, "scripts/serve_frontend_build.js"), "utf8"), /patterned-wrap-dress/));
-test("static SEO contract exposes only the eight accepted India text releases", () => {
+test("static SEO contract exposes only the twenty-four accepted India text releases", () => {
   const contract = JSON.parse(fs.readFileSync(path.join(root, "frontend/static-seo/controlled-publication-public.json"), "utf8"));
   assert.equal(contract.public_release_held, false);
   assert.deepEqual(
@@ -28,7 +28,23 @@ test("static SEO contract exposes only the eight accepted India text releases", 
       "the-canterville-ghost",
       "the-gift-of-the-magi",
       "the-tell-tale-heart",
-    ],
+      "a-horseman-in-the-sky",
+      "a-mystery-of-heroism",
+      "a-scandal-in-bohemia",
+      "jekyll-and-hyde",
+      "love-of-life",
+      "the-bishop",
+      "the-fall-of-the-house-of-usher",
+      "the-lady-with-the-dog",
+      "the-man-who-would-be-king",
+      "the-open-boat",
+      "the-pit-and-the-pendulum",
+      "the-stolen-white-elephant",
+      "an-occurrence-at-owl-creek-bridge",
+      "the-enchanted-april",
+      "the-happy-prince",
+      "picture-of-dorian-gray",
+    ].sort(),
   );
 });
 for (const name of ["Reader desktop metadata contract", "truthful Listener unavailable desktop safety contract", "disabled-audio Listener safety contract", "404 desktop/mobile branding contract", "410 desktop/mobile branding contract", "live Bengali Book Detail desktop/mobile branding contract"]) test(name, () => assert.ok(true));

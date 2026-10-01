@@ -36,6 +36,22 @@ const CURRENT_RELEASED_SLUGS = [
   "the-canterville-ghost",
   "the-adventures-of-sherlock-holmes",
   "agentic-ai-with-python",
+  "a-horseman-in-the-sky",
+  "a-mystery-of-heroism",
+  "a-scandal-in-bohemia",
+  "jekyll-and-hyde",
+  "love-of-life",
+  "the-bishop",
+  "the-fall-of-the-house-of-usher",
+  "the-lady-with-the-dog",
+  "the-man-who-would-be-king",
+  "the-open-boat",
+  "the-pit-and-the-pendulum",
+  "the-stolen-white-elephant",
+  "an-occurrence-at-owl-creek-bridge",
+  "the-enchanted-april",
+  "the-happy-prince",
+  "picture-of-dorian-gray",
 ];
 const BOILERPLATE_RE = /Project Gutenberg|Gutenberg-tm|START OF THE PROJECT|END OF THE PROJECT|Wikisource|Category:|Creative Commons|Download as|Edit this page/i;
 const AUDIO_FIELDS = ["audio_enabled", "audiobook_enabled", "generate_audiobook"];
@@ -114,7 +130,21 @@ describe("Reader content quality batch 1", () => {
     }
     expect(launch.live_approved_slugs).toEqual(CURRENT_RELEASED_SLUGS);
     expect(new Set(launch.live_approved_slugs).size).toBe(launch.live_approved_slugs.length);
-    for (const slug of BATCH_SLUGS) expect(launch.live_approved_slugs).not.toContain(slug);
+    for (const slug of BATCH_SLUGS) {
+      if (["jekyll-and-hyde", "picture-of-dorian-gray"].includes(slug)) {
+        expect(launch.live_approved_slugs).toContain(slug);
+        const folder = `data/controlled_publications/${slug}`;
+        const exactDecision = readJson(`${folder}/rights_decision.json`);
+        const publicBytes = fs.readFileSync(path.join(ROOT, folder, "public_book.json"));
+        expect(exactDecision.decision_id).toBe(`india-20261001-${slug}-owner-text-reader`);
+        expect(exactDecision.components.public_book).toBe(require("node:crypto").createHash("sha256").update(publicBytes).digest("hex"));
+        expect(exactDecision.territories).toEqual(["IN"]);
+        expect(readJson(`${folder}/publication_manifest.json`).reader_release.exposed).toBe(true);
+        expect(readJson(`${folder}/publication_manifest.json`).audio_release.exposed).toBe(false);
+      } else {
+        expect(launch.live_approved_slugs).not.toContain(slug);
+      }
+    }
     expect(launch.audio_enabled_slugs).toEqual([]);
     for (const slug of HISTORICAL_AUDIO_HOLD_SLUGS) {
       expect(launch.audio_enabled_slugs).not.toContain(slug);
@@ -133,7 +163,10 @@ describe("Reader content quality batch 1", () => {
         expect(promotion.heldSlugs).toContain(slug);
         expect(promotion.promotedLiveSlugs).not.toContain(slug);
         expect(promotion.approvedReleaseAllowlist).not.toContain(slug);
-        for (const book of [contentBook, publicBook]) {
+        // The historical draft and promotion report remain preserved. The
+        // selected repaired public edition now has a separately accepted exact
+        // release; never rewrite its historical draft to make this test pass.
+        for (const book of [contentBook]) {
           expect(book.readerStatus).toBe("reader_approval_required");
           expect(book.publicationStatus).toBe("draft");
           expect(book.isPublic).toBe(false);
@@ -145,7 +178,17 @@ describe("Reader content quality batch 1", () => {
           expect(book.allowPayment).toBe(false);
           expect(book.is_published).toBe(false);
         }
-        expect(publicBook.publication_status).toBe("READER_APPROVAL_REQUIRED");
+        expect(publicBook.publication_status).toBe("LIVE_APPROVED");
+        expect(publicBook.qa_status).toBe("QA_PASSED");
+        expect(publicBook.approved_to_publish).toBe(true);
+        expect(publicBook.isPublic).toBe(true);
+        expect(publicBook.isLive).toBe(true);
+        expect(publicBook.readerStatus).toBe("reader_ready");
+        expect(publicBook.chapters).toHaveLength(21);
+        const freshReceipt = readJson("data/controlled_publications/picture-of-dorian-gray/reader_release_approval.json");
+        expect(freshReceipt.publication_readback_verified).toBe(false);
+        expect(freshReceipt.audio_authorized).toBe(false);
+        expect(freshReceipt.territory).toBe("IN");
         for (const field of AUDIO_FIELDS) expect(publicBook[field]).toBe(false);
         continue;
       }

@@ -1,0 +1,23 @@
+{
+  "timestamp": "2026-10-01T06:12:52.530834+00:00",
+  "workstream": "near_ready_text_release",
+  "decision": "RECONCILE_TWO_EXACT_RELEASE_TEST_AUTHORITIES_PRESERVING_HISTORICAL_DRAFTS",
+  "failed_head": "3fe3d5c0296df79719a8b5025d987108a778e3af",
+  "regression_run": 36822591017,
+  "regression_job": 110241170686,
+  "brand_run": 36822591040,
+  "brand_job": 110241199820,
+  "observations": [
+    "The broader reader-content regression still expected only eight titles and denied both Jekyll and canonical repaired Dorian.",
+    "The browser tooling static-contract test still expected eight titles; normal production build and its 94 snapshots passed before this stale expectation failed."
+  ],
+  "correction": "Explicitly expect only the reviewed 24 titles. Verify exact Jekyll/Dorian decision IDs and metadata hashes. Keep Dorian historical content draft and promotion report unchanged; validate the newly accepted public repaired edition separately. Retain all other batch and audio holds.",
+  "local_checks": {
+    "reader_content_module": "PASS_6",
+    "browser_tooling_error_contract": "PASS_21"
+  },
+  "rights_source_art_product_files_changed": false,
+  "all_prior_source_preservation_checks": "PASS",
+  "normal_exact_head_checks": "REQUIRED_ON_CORRECTED_HEAD",
+  "production_authenticated_readback": "NOT_CLAIMED"
+}
