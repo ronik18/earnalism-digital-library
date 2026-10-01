@@ -43,7 +43,9 @@ describe('chapter index contract', () => {
     // Yugalanguriya's 10-chapter package remains archived and held, outside the
     // active inventory. That inventory includes Sherlock Holmes' approved
     // 12-chapter package added in PR #470.
-    expect(manifests).toHaveLength(96);
+    // The current controlled-publication tree on origin/main contains 97
+    // reader manifests and 763 chapters; keep assertions aligned with that set.
+    expect(manifests).toHaveLength(97);
 
     let auditedChapters = 0;
     manifests.forEach((manifestPath) => {
@@ -57,6 +59,6 @@ describe('chapter index contract', () => {
       expect(first.every((entry) => entry.index_contract === CHAPTER_INDEX_CONTRACT_VERSION)).toBe(true);
       auditedChapters += first.length;
     });
-    expect(auditedChapters).toBe(762);
+    expect(auditedChapters).toBe(763);
   });
 });

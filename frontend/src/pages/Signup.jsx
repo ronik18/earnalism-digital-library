@@ -7,6 +7,7 @@ import { User, Mail, Lock } from "lucide-react";
 import useSEO from "../hooks/useSEO";
 import AuthPageShell from "../components/AuthPageShell";
 import { AUTH_PRODUCT_ACCESS_COPY } from "../lib/publicAccessCopy";
+import { trackFunnelEvent } from "../lib/funnelAnalytics";
 
 export default function Signup() {
   useSEO({
@@ -26,6 +27,7 @@ export default function Signup() {
 
   const submit = async (e) => {
     e.preventDefault();
+    trackFunnelEvent("signup_started", { source: "email_form" });
     if (password.length < 8) {
       toast.error("Password must be at least 8 characters.");
       return;
@@ -33,6 +35,7 @@ export default function Signup() {
     setBusy(true);
     try {
       await userSignup(name, email, password);
+      trackFunnelEvent("signup_completed", { source: "email_form" });
       toast.success("Welcome to The Earnalism.");
       nav("/account", { replace: true });
     } catch (err) {

@@ -569,6 +569,7 @@ class AnalyticsEventIn(BaseModel):
     route: str = ""
     book_slug: str = ""
     anonymous_session_id: str = ""
+    deployment_environment: str = "production"
     metadata: Dict[str, Any] = Field(default_factory=dict)
 
 class SecureReaderEventIn(BaseModel):
@@ -616,6 +617,14 @@ class PackOut(BaseModel):
 
 class TopUpCreateIn(BaseModel):
     pack_id: str
+    anonymous_session_id: str = Field(default="", max_length=80)
+    deployment_environment: str = Field(default="production", max_length=24)
+    referrer_category: str = Field(default="unknown", max_length=24)
+    utm_source: str = Field(default="", max_length=100)
+    utm_medium: str = Field(default="", max_length=100)
+    utm_campaign: str = Field(default="", max_length=100)
+    utm_content: str = Field(default="", max_length=100)
+    utm_term: str = Field(default="", max_length=100)
 
 
 class TopUpCreateOut(BaseModel):

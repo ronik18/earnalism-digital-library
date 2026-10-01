@@ -1,7 +1,9 @@
 import { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation, Navigate, useParams } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import { AuthProvider } from "./context/AuthContext";
 import { SettingsProvider } from "./context/SettingsContext";
+import { trackPageAnalyticsView } from "./lib/funnelAnalytics";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import { AppToaster } from "./components/AppToaster";
@@ -65,6 +67,32 @@ function ScrollToTop() {
   return null;
 }
 
+function RouteAnalytics() {
+  const location = useLocation();
+  useEffect(() => {
+    if (location.pathname.startsWith("/admin") || location.pathname === "/secure-reader-test") return;
+    trackPageAnalyticsView("page_view", location.key, location.pathname);
+    const eventByPath = {
+      "/": "homepage_view",
+      "/library": "library_view",
+      "/pricing": "pricing_view",
+    };
+    const event = eventByPath[location.pathname];
+    if (event) trackPageAnalyticsView(event, location.key, location.pathname);
+  }, [location.key, location.pathname]);
+  return null;
+}
+
+function sanitizeWebAnalyticsEvent(event) {
+  try {
+    const url = new URL(event.url, window.location.origin);
+    if (url.pathname === "/secure-reader-test" || url.pathname === "/admin" || url.pathname.startsWith("/admin/")) return null;
+    return { ...event, url: `${url.origin}${url.pathname}` };
+  } catch {
+    return null;
+  }
+}
+
 
 function PageFallback() {
   return (
@@ -105,10 +133,16 @@ export function AppProviders({ children }) {
 
 export function AppRouterContent() {
   useHighIntentRoutePrefetch();
+  const analyticsHost = window.location.hostname;
+  const hostedForAnalytics = analyticsHost === "theearnalism.com"
+    || analyticsHost === "www.theearnalism.com"
+    || analyticsHost.endsWith(".vercel.app");
 
   return (
     <>
       <ScrollToTop />
+      <RouteAnalytics />
+      {hostedForAnalytics && <Analytics mode="production" beforeSend={sanitizeWebAnalyticsEvent} />}
       <Suspense fallback={<PageFallback />}>
         <Routes>
           <Route element={<Layout />}>

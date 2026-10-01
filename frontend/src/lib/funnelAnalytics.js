@@ -1,7 +1,21 @@
 import { API } from "./api";
 
 export const LAUNCH_ANALYTICS_EVENTS = [
+  "page_view",
   "homepage_view",
+  "library_view",
+  "title_view",
+  "reader_preview_started",
+  "reader_preview_completed",
+  "pricing_view",
+  "signup_started",
+  "signup_completed",
+  "signin_started",
+  "signin_completed",
+  "reading_pass_offer_viewed",
+  "checkout_failed",
+  "listener_view",
+  "listener_started",
   "first_time_site_tour_shown",
   "first_time_site_tour_completed",
   "first_time_site_tour_skipped",
@@ -13,7 +27,6 @@ export const LAUNCH_ANALYTICS_EVENTS = [
   "reader_low_balance_state",
   "pricing_page_view",
   "reading_pack_selected",
-  "checkout_started",
   "payment_success_return",
   "payment_failed_or_cancelled",
   "wallet_credited_visible",
@@ -31,6 +44,8 @@ export const LAUNCH_ANALYTICS_EVENTS = [
   "newsletter_submit_success",
   "newsletter_submit_failure",
   "social_link_click",
+  "support_complaint_created",
+  "reader_upsell_cta_click",
 ];
 
 export const LAUNCH_ANALYTICS_EVENT_ALIASES = {
@@ -43,7 +58,6 @@ export const LAUNCH_ANALYTICS_EVENT_ALIASES = {
   dracula_chapter_1_complete: "continue_reading_click",
   homepage_dracula_cta_click: "hero_read_chapter_free_click",
   dracula_book_view: "dracula_book_page_view",
-  pricing_view: "pricing_page_view",
   pricing_pack_cta_click: "reading_pack_selected",
   dracula_continue_from_pricing_click: "continue_reading_click",
   checkout_start: "checkout_started",
@@ -89,6 +103,8 @@ export const SAFE_ANALYTICS_METADATA_FIELDS = new Set(["payment_mode"]);
 
 let analyticsSink = null;
 const SESSION_STORAGE_KEY = "earnalism:launch-monitor-session:v1";
+const ATTRIBUTION_STORAGE_KEY = "earnalism:analytics-attribution:v1";
+let lastEmittedPageViewKey = "";
 
 export function setAnalyticsSink(sink) {
   analyticsSink = typeof sink === "function" ? sink : null;
@@ -146,12 +162,12 @@ export function normalizeLaunchAnalyticsEvent(event) {
 export function getAnonymousLaunchSessionId() {
   if (typeof window === "undefined") return "";
   try {
-    const existing = window.localStorage.getItem(SESSION_STORAGE_KEY);
+    const existing = window.sessionStorage.getItem(SESSION_STORAGE_KEY);
     if (existing && /^[a-z0-9-]{12,80}$/i.test(existing)) return existing;
     const next = typeof crypto !== "undefined" && crypto.randomUUID
       ? crypto.randomUUID()
       : `anon-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
-    window.localStorage.setItem(SESSION_STORAGE_KEY, next);
+    window.sessionStorage.setItem(SESSION_STORAGE_KEY, next);
     return next;
   } catch {
     return "";
@@ -159,17 +175,78 @@ export function getAnonymousLaunchSessionId() {
 }
 
 export function analyticsNetworkEnabled() {
-  if (typeof process !== "undefined" && process.env?.REACT_APP_ENABLE_LAUNCH_ANALYTICS === "true") {
-    return true;
-  }
-  if (typeof process !== "undefined" && process.env?.REACT_APP_PERF_METRICS_ENABLED === "true") {
+  // Read the CRA build-time variable directly so DefinePlugin can substitute
+  // it in production bundles; browsers do not guarantee a global `process`.
+  if (process.env.REACT_APP_ENABLE_LAUNCH_ANALYTICS === "true") {
     return true;
   }
   return typeof window !== "undefined" && window.__EARNALISM_ENABLE_FUNNEL_ANALYTICS__ === true;
 }
 
+const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+
+function safeAttributionValue(value) {
+  const normalized = String(value || "").trim().replace(/[\r\n\t]/g, " ").slice(0, 100);
+  return normalized && !isUnsafeAnalyticsValue(normalized) ? normalized : "";
+}
+
+export function getLaunchAnalyticsAttribution() {
+  if (typeof window === "undefined") return {};
+  try {
+    let attribution = JSON.parse(window.sessionStorage.getItem(ATTRIBUTION_STORAGE_KEY) || "{}");
+    const params = new URLSearchParams(window.location.search);
+    const currentUtm = Object.fromEntries(UTM_KEYS.map((key) => [key, safeAttributionValue(params.get(key))]).filter(([, value]) => value));
+    if (Object.keys(currentUtm).length) {
+      attribution = { ...attribution, ...currentUtm, referrer_category: "campaign" };
+      window.sessionStorage.setItem(ATTRIBUTION_STORAGE_KEY, JSON.stringify(attribution));
+    } else if (!attribution.referrer_category) {
+      attribution.referrer_category = classifyReferrer(document.referrer);
+      window.sessionStorage.setItem(ATTRIBUTION_STORAGE_KEY, JSON.stringify(attribution));
+    }
+    return attribution;
+  } catch {
+    return {};
+  }
+}
+
+export function classifyReferrer(referrer = "") {
+  if (!referrer) return "direct";
+  try {
+    const host = new URL(referrer).hostname.toLowerCase();
+    if (/(^|\.)(google|bing|duckduckgo|yahoo)\./.test(host)) return "organic";
+    if (/(^|\.)(facebook|instagram|linkedin|pinterest|tiktok|x|twitter)\.com$/.test(host)) return "social";
+    if (host === window.location.hostname) return "direct";
+    return "referral";
+  } catch {
+    return "unknown";
+  }
+}
+
+export function classifyAnalyticsDeployment(hostname = typeof window !== "undefined" ? window.location.hostname : "") {
+  const host = String(hostname || "").toLowerCase();
+  if (host === "theearnalism.com" || host === "www.theearnalism.com") return "production";
+  if (host.endsWith(".vercel.app")) return "preview";
+  if (["localhost", "127.0.0.1", "::1"].includes(host)) return "local";
+  return "unknown";
+}
+
+export function trackPageAnalyticsView(event, locationKey, pathname, metadata = {}) {
+  const key = `${event}:${locationKey || pathname}`;
+  // React StrictMode replays an effect for the current location. Remembering
+  // the most recent event suppresses that replay while allowing browser-back
+  // navigation to an earlier history key to count as a new view.
+  if (lastEmittedPageViewKey === key) return false;
+  lastEmittedPageViewKey = key;
+  return trackFunnelEvent(event, { ...metadata, pathname });
+}
+
+export function resetLaunchAnalyticsForTests() {
+  lastEmittedPageViewKey = "";
+  analyticsSink = null;
+}
+
 export function analyticsDebugEnabled() {
-  if (typeof process !== "undefined" && process.env?.REACT_APP_ENABLE_LAUNCH_ANALYTICS_DEBUG === "true") {
+  if (process.env.REACT_APP_ENABLE_LAUNCH_ANALYTICS_DEBUG === "true") {
     return true;
   }
   return typeof window !== "undefined" && window.__EARNALISM_DEBUG_FUNNEL_ANALYTICS__ === true;
@@ -180,11 +257,11 @@ export function emitLaunchAnalyticsEvent(event, metadata = {}, { network = true 
   if (!canonicalEvent) return false;
   const safeMetadata = sanitizeAnalyticsMetadata(metadata);
   if (analyticsSink) {
-    analyticsSink(canonicalEvent, safeMetadata);
+    try { analyticsSink(canonicalEvent, safeMetadata); } catch { /* test/diagnostic sinks are best effort too */ }
     return true;
   }
   if (typeof window !== "undefined" && typeof window.__EARNALISM_ANALYTICS_SINK__ === "function") {
-    window.__EARNALISM_ANALYTICS_SINK__(canonicalEvent, safeMetadata);
+    try { window.__EARNALISM_ANALYTICS_SINK__(canonicalEvent, safeMetadata); } catch { /* harness sinks cannot block product flow */ }
     return true;
   }
   if (!network || !analyticsNetworkEnabled()) {
@@ -204,20 +281,24 @@ export function trackFunnelEvent(event, metadata = {}) {
 function sendAnalyticsEvent(event, metadata = {}) {
   if (typeof window === "undefined" || !event) return;
   const route = window.location.pathname;
-  const search = window.location.search;
   const bookSlug = metadata.book_slug || metadata.book || "";
   const anonymousSessionId = getAnonymousLaunchSessionId();
+  const attribution = getLaunchAnalyticsAttribution();
+  const safePath = (() => {
+    try { return new URL(route, window.location.origin).pathname; } catch { return "/"; }
+  })();
 
   const payload = JSON.stringify({
     event_name: event,
     event,
-    route,
+    route: safePath,
     book_slug: bookSlug,
     anonymous_session_id: anonymousSessionId,
+    deployment_environment: classifyAnalyticsDeployment(),
     metadata: {
       ...metadata,
-      route,
-      search,
+      ...attribution,
+      route: safePath,
     },
   });
   const url = `${API}/analytics/event`;
@@ -231,10 +312,14 @@ function sendAnalyticsEvent(event, metadata = {}) {
     // Beacon is opportunistic. Fall back to fetch below.
   }
 
-  fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: payload,
-    keepalive: true,
-  }).catch(() => {});
+  try {
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: payload,
+      keepalive: true,
+    }).catch(() => {});
+  } catch {
+    // Analytics is best-effort and must never interrupt a product action.
+  }
 }

@@ -460,33 +460,23 @@ function SecurityAlertsAdmin() {
 }
 
 const launchMetricLabels = {
-  homepage_view: "Homepage visits",
-  first_time_site_tour_shown: "Tour shown",
-  first_time_site_tour_completed: "Tour completed",
-  first_time_site_tour_skipped: "Tour skipped",
-  hero_read_chapter_free_click: "Hero Chapter 1 clicks",
-  dracula_book_page_view: "Dracula page views",
-  start_dracula_click: "Start Dracula clicks",
-  reader_opened: "Reader opens",
-  reader_locked_state: "Locked reader states",
-  reader_low_balance_state: "Low-balance states",
-  pricing_page_view: "Pricing views",
-  reading_pack_selected: "Pack selections",
+  homepage_view: "Homepage views",
+  library_view: "Library views",
+  title_view: "Title views",
+  reader_preview_started: "Reader previews started",
+  reader_preview_completed: "Reader previews completed",
+  signup_started: "Sign-ups started",
+  signup_completed: "Sign-ups completed",
+  signin_started: "Sign-ins started",
+  signin_completed: "Sign-ins completed",
+  pricing_view: "Pricing views",
+  reading_pass_offer_viewed: "Offers viewed",
+  reading_pack_selected: "Offers selected",
   checkout_started: "Checkout starts",
-  payment_success_return: "Payment success returns",
-  payment_failed_or_cancelled: "Payment failed/cancelled",
-  wallet_credited_visible: "Wallet credit visible",
-  continue_reading_click: "Continue reading",
-  return_resume_reading_click: "Return/resume clicks",
-};
-
-const conversionLabels = {
-  homepage_to_dracula_cta_pct: "Homepage to CTA",
-  dracula_to_reader_pct: "Dracula to reader",
-  reader_locked_to_pricing_pct: "Locked reader to pricing",
-  pricing_to_checkout_pct: "Pricing to checkout",
-  checkout_to_payment_success_pct: "Checkout to success",
-  payment_success_to_continue_reading_pct: "Success to continue",
+  checkout_failed: "Checkout failures",
+  purchase_completed: "Verified purchases",
+  listener_view: "Approved Listener views",
+  listener_started: "Approved listening starts",
 };
 
 function LaunchMonitorAdmin() {
@@ -512,7 +502,7 @@ function LaunchMonitorAdmin() {
 
   const selectedFunnel = summary?.funnel?.[windowKey] || {};
   const counts = selectedFunnel.counts || {};
-  const conversionRates = selectedFunnel.conversion_rates || {};
+  const traffic = summary?.traffic?.[windowKey] || {};
   const payment = summary?.payment?.[windowKey] || {};
   const ops = summary?.ops_health || {};
   const cwv = summary?.core_web_vitals || {};
@@ -523,9 +513,9 @@ function LaunchMonitorAdmin() {
         <div className="flex items-start justify-between gap-4 flex-wrap">
           <div>
             <div className="overline">Owner launch monitor</div>
-            <h2 className="font-serif-display text-2xl text-burgundy mt-1">Dracula reading-only launch</h2>
+            <h2 className="font-serif-display text-2xl text-burgundy mt-1">Customer journeys and launch health</h2>
             <p className="text-sm text-charcoal-soft mt-2 max-w-3xl">
-              First-party aggregate monitoring for the live reading funnel, payments, wallet credits, support queue, Core Web Vitals, canary state, and public-audio blockers.
+              First-party session journeys and verified commerce outcomes, alongside payment, support, Core Web Vitals, canary, and release health. Aggregate visitor estimates and full-site page views are available in the Vercel project Analytics dashboard.
             </p>
           </div>
           <button onClick={load} className="btn-link text-xs" data-testid="launch-monitor-refresh">Refresh</button>
@@ -541,7 +531,7 @@ function LaunchMonitorAdmin() {
           <span aria-hidden="true">/</span>
           <span>Last refresh: {loadedAt || "not loaded"}</span>
           <span aria-hidden="true">/</span>
-          <span>No PII, payment ids, customer ids, or third-party pixels.</span>
+          <span>Session counts are anonymous browser-tab sessions, not people or raw HTTP requests. Current events omit direct identifiers; older records may predate this minimization.</span>
         </div>
       </div>
 
@@ -549,10 +539,10 @@ function LaunchMonitorAdmin() {
         <div className="flex items-center justify-between gap-3 flex-wrap">
           <div>
             <div className="overline">Funnel window</div>
-            <h3 className="font-serif-display text-xl text-burgundy mt-1">Counts and conversion rates</h3>
+            <h3 className="font-serif-display text-xl text-burgundy mt-1">Traffic and ordered conversion</h3>
           </div>
           <div className="flex gap-2" role="group" aria-label="Launch monitor time window">
-            {["today", "last_24h", "last_48h"].map((key) => (
+            {["today", "last_24h", "last_7d", "last_30d"].map((key) => (
               <button
                 key={key}
                 type="button"
@@ -566,14 +556,34 @@ function LaunchMonitorAdmin() {
         </div>
         {loading ? <p className="mt-5 text-sm text-charcoal-soft">Loading launch metrics...</p> : (
           <>
+            <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3">
+              <MetricCard label="Anonymous sessions" value={traffic.unique_sessions || 0} note="Browser-tab journeys, not people" />
+              <MetricCard label="Page views" value={traffic.page_views || 0} note="Human-facing route events" />
+              <MetricCard label="Reader previews started" value={counts.reader_preview_started || 0} />
+              <MetricCard label="Verified purchases" value={counts.purchase_completed || 0} note="Server-confirmed wallet credits" />
+            </div>
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+              <AnalyticsBreakdown title="Top pages" rows={traffic.top_pages || []} />
+              <AnalyticsBreakdown title="Referrer event counts" rows={traffic.referrer_categories || []} />
+              <AnalyticsBreakdown title="Campaign event counts" rows={traffic.top_campaigns || []} />
+            </div>
+            <div className="mt-7 space-y-3">
+              <h4 className="font-serif-display text-lg text-burgundy">Sessions progressing through each funnel</h4>
+              {Object.entries(traffic.funnels || {}).map(([name, stages]) => (
+                <details key={name} className="rounded-lg border border-brand-soft bg-white/40 px-4 py-3">
+                  <summary className="cursor-pointer font-medium text-burgundy">{name.replace(/_/g, " ")}</summary>
+                  <div className="mt-3 overflow-x-auto">
+                    <table className="w-full text-left text-sm">
+                      <thead><tr className="text-xs uppercase tracking-wide text-charcoal-soft"><th className="py-2 pr-4">Stage</th><th className="py-2 pr-4">Sessions</th><th className="py-2 pr-4">Events</th><th className="py-2 pr-4">Next conversion</th><th className="py-2">Drop-off</th></tr></thead>
+                      <tbody>{(stages || []).map((stage) => <tr key={stage.stage} className="border-t border-brand-soft/70"><td className="py-2 pr-4">{stage.stage.replace(/_/g, " ")}</td><td className="py-2 pr-4">{stage.unique_sessions}</td><td className="py-2 pr-4">{stage.event_count}</td><td className="py-2 pr-4">{stage.conversion_to_next_pct == null ? "—" : `${stage.conversion_to_next_pct}%`}</td><td className="py-2">{stage.dropoff_count == null ? "—" : `${stage.dropoff_count} (${stage.dropoff_pct}%)`}</td></tr>)}</tbody>
+                    </table>
+                  </div>
+                </details>
+              ))}
+            </div>
             <div className="mt-6 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
               {Object.entries(launchMetricLabels).map(([key, label]) => (
                 <MetricCard key={key} label={label} value={counts[key] || 0} />
-              ))}
-            </div>
-            <div className="mt-7 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
-              {Object.entries(conversionLabels).map(([key, label]) => (
-                <MetricCard key={key} label={label} value={`${conversionRates[key] || 0}%`} />
               ))}
             </div>
           </>
@@ -586,7 +596,7 @@ function LaunchMonitorAdmin() {
           <h3 className="font-serif-display text-xl text-burgundy mt-1">Payment health</h3>
           <div className="mt-5 grid grid-cols-2 gap-3">
             <MetricCard label="Payment intents" value={payment.payment_intents_created || 0} />
-            <MetricCard label="Payment successes" value={payment.payment_success_count || 0} />
+            <MetricCard label="Verified Reading Pass purchases" value={counts.purchase_completed || 0} note="Idempotent server conversion event" />
             <MetricCard label="Payment failures" value={payment.payment_failed_count || 0} />
             <MetricCard label="Wallet credits" value={payment.wallet_credit_count || 0} />
             <MetricCard label="Webhooks received" value={payment.webhook_received_count || 0} />
@@ -602,7 +612,7 @@ function LaunchMonitorAdmin() {
             <KeyValue label="Public audio leak check" value={ops.public_audio_leak_check?.status || "PASS_NO_PUBLIC_AUDIO_FILES"} />
             <KeyValue label="Support queue statuses" value={summarizeCounts(payment.support_queue)} />
             <KeyValue label="Refund queue statuses" value={summarizeCounts(payment.refund_queue)} />
-            <KeyValue label="Privacy mode" value={summary?.privacy?.analytics_mode || "first_party_opt_in_minimal_events"} />
+            <KeyValue label="Privacy mode" value={summary?.privacy?.analytics_mode || "first-party session analytics"} />
           </div>
         </div>
       </div>
@@ -628,6 +638,19 @@ function LaunchMonitorAdmin() {
           ))}
         </ul>
       </div>
+    </div>
+  );
+}
+
+function AnalyticsBreakdown({ title, rows }) {
+  return (
+    <div className="rounded-lg border border-brand-soft bg-white/40 p-4">
+      <h5 className="font-medium text-burgundy">{title}</h5>
+      {!rows.length ? <p className="mt-2 text-sm text-charcoal-soft">No data yet.</p> : (
+        <ol className="mt-2 space-y-1 text-sm text-charcoal-soft">
+          {rows.map(([label, count]) => <li key={label} className="flex justify-between gap-3"><span className="truncate">{label || "unknown"}</span><span>{count}</span></li>)}
+        </ol>
+      )}
     </div>
   );
 }
