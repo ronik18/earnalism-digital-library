@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "book-0986aeb7e3",
+  "title": "হৈমন্তী",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "content": {
+    "source_hash": "f3d11b36d1ca572a7fbae5e7e765afe4f834c6c5a4d60a1ec83bfd84c33d0eb6",
+    "content_hash": "e4f1997b2afb99d713363043c730084c26f66421856dcefc2e8f9e9dbad74d13",
+    "provenance_hash": "e2f991986f3739cec4987de40fae4a32290d6e30d363f2b01cc081e96141abc4",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "b05d02ceb3c6696f25001b5cbd19ffc5a1a092f3451b9e0673d78301aac61ae9",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "হৈমন্তী",
+        "word_count": 3954,
+        "sha256": "f17954559fd1e9c0a101d0b425c02de2a55b94ccbeeedab641fcc0f7e59ba4f0"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "b6e89273ae36714e4ee9119fe61e5e213f2832910b56e5ed9b7f62c6fb423351"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verification_status must be approved before publishing."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "881c0fc82b94e39e75affddb9b0667681882b44093af71813d0c904e676a2219",
+    "reader_manifest": "c93cfe76dfd95816d13ade91c990f4574fabb61afd6fb1311519302395defce9",
+    "source_evidence": "b6e89273ae36714e4ee9119fe61e5e213f2832910b56e5ed9b7f62c6fb423351",
+    "approval_evidence": "38d37f80eadb5bedfe43578d83898fbaf7b0f5f2b5c2c00dd81ae5e25a8f89d1"
+  },
+  "manifest_sha256": "f178201209f4be7617b65fbf0a3a6f3395940f00690285deacb66d5395973276"
+}

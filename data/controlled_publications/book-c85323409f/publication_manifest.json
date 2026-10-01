@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "book-c85323409f",
+  "title": "জীবিত ও মৃত",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "content": {
+    "source_hash": "a3a670cd1107f63ab6b8df62ff5077d6245e4cfdcb772db39b78ca9e40c5a392",
+    "content_hash": "86f190d8981591db6470e84d7a543d9fb4b6c7079c033e71a026e2d949c6a2d2",
+    "provenance_hash": "c96d33fa58b0c2a7b57484c55e3484775b58ceea721f7500f23596e5d551e702",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "30937c7fcd1436a47dbe85bcf8da75c66d8dd894956530ab7cf5851f5d672565",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "জীবিত ও মৃত",
+        "word_count": 3459,
+        "sha256": "8db66d67c0603a6e1aa3f3bb2cf75db121469022307790dd2d933e42d2d70947"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "7a58b9aa597ee40f94723db970e415a9e53aedee1690744abb3bbc315186d399"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verification_status must be approved before publishing."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "6fdf3a42dd17d3f3602072973d4383498820ee56f4a22d4291992e5f630a41cb",
+    "reader_manifest": "bb8418451cc5c4a454d937b7b64e65ddaf52009510f6bda9e4a4548c81be8975",
+    "source_evidence": "7a58b9aa597ee40f94723db970e415a9e53aedee1690744abb3bbc315186d399",
+    "approval_evidence": "a4f5b6c4f05a2fff369c9e4fe04e5c3295e77886802889c7b5be0c69ec7dac68"
+  },
+  "manifest_sha256": "2bdfe57aa49b5d0123c39953e349a72b7ca127e83b324fb65525a94ff463e687"
+}

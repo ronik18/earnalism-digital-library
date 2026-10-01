@@ -1,6 +1,6 @@
 {
   "slug": "book-f5d593e1f4",
-  "generated_at": "2026-07-23T11:25:30Z",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
@@ -24,7 +24,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "f0fb2ebfc7b66722c7d6a7a29c396559d0dafa13a09b7742593b20045cdc38be"
+      "sha256": "fd3c07bb67430a1b5d5d9a51c3e7211dd628c57f8c43a6d08218e56f45559ab6"
     }
   ]
 }

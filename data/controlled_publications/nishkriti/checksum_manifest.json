@@ -1,26 +1,10 @@
 {
   "slug": "nishkriti",
-  "generated_at": "2026-07-03T20:07:47Z",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
       "sha256": "35ea07be669e75a733f37892e1e09f4c3d4a46d16b4b7d8a3c0c2950a0b7fff7"
-    },
-    {
-      "file": "highlight_sync.json",
-      "sha256": "3494992681f7752e0f598914bd57623667d7d2ecfe39f92300c742ce0f4058ef"
-    },
-    {
-      "file": "public_book.json",
-      "sha256": "adabab5489d5528337ac1046f5149eff46996ec0576476997881fbd28c320180"
-    },
-    {
-      "file": "reader_manifest.json",
-      "sha256": "a47ee2e6cb45ca40e74ff441371f3397d06e9ce24a191c77fa155396937850b5"
-    },
-    {
-      "file": "source_evidence.json",
-      "sha256": "abbe0f063556184da786d86536648c434a320b58f9baa28770a910b1ad16be48"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -57,6 +41,22 @@
     {
       "file": "chapters/chapter-009.json",
       "sha256": "494f8d4061a67e88094cad26a12e7183a34ec76b7019082aa3bb405e8efc3023"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "3494992681f7752e0f598914bd57623667d7d2ecfe39f92300c742ce0f4058ef"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "adabab5489d5528337ac1046f5149eff46996ec0576476997881fbd28c320180"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "a47ee2e6cb45ca40e74ff441371f3397d06e9ce24a191c77fa155396937850b5"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "9421496918727ee6da6d3af10fda225a53056cfe5b9495a6420f7e57d86c1b96"
     }
   ]
 }

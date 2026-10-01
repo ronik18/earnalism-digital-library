@@ -13,6 +13,18 @@ from backend import catalog_truth
 ROOT = Path(__file__).resolve().parents[2]
 
 
+def _copy_bankim_audit_inputs(destination):
+    packet_path = Path("data/title_rights_evidence/bengali-bankim-cohort-1.json")
+    (destination / packet_path.parent).mkdir(parents=True)
+    shutil.copy2(ROOT / packet_path, destination / packet_path)
+    shutil.copy2(ROOT / "data/controlled_launch.json", destination / "data/controlled_launch.json")
+    for title in json.loads((ROOT / packet_path).read_text())["titles"]:
+        for prefix in ("data/controlled_publications", "backend/data/controlled_publications"):
+            source = ROOT / prefix / title["slug"]
+            if source.exists():
+                shutil.copytree(source, destination / prefix / title["slug"])
+
+
 def test_bankim_cohort_is_audited_hash_bound_and_remains_held():
     report = audit(ROOT)
 
@@ -35,6 +47,32 @@ def test_bankim_cohort_is_audited_hash_bound_and_remains_held():
             is False
         )
         assert catalog_truth.load_controlled_artifact_book(title["slug"]) is None
+
+
+def test_cohort_audit_uses_current_canonical_launch_not_historical_three_title_pilot(tmp_path):
+    _copy_bankim_audit_inputs(tmp_path)
+    launch_path = tmp_path / "data/controlled_launch.json"
+    launch = json.loads(launch_path.read_text())
+    assert len(launch["live_approved_slugs"]) > 3
+    launch["public_paid_commerce_enabled"] = True
+    launch_path.write_text(json.dumps(launch))
+    assert audit(tmp_path)["status"] == "PASS"
+    launch["live_approved_slugs"].append("bn-060")
+    launch_path.write_text(json.dumps(launch))
+    assert "A cohort title entered the current pilot Reader allowlist." in audit(tmp_path)["issues"]
+    launch["live_approved_slugs"].remove("bn-060")
+    launch["public_audio_exposure_enabled"] = True
+    launch_path.write_text(json.dumps(launch))
+    assert "Audio exposure is enabled in the canonical launch configuration." in audit(tmp_path)["issues"]
+
+
+def test_global_commerce_does_not_authorize_a_held_bengali_checkout(tmp_path):
+    _copy_bankim_audit_inputs(tmp_path)
+    book_path = tmp_path / "data/controlled_publications/bn-060/public_book.json"
+    book = json.loads(book_path.read_text())
+    book["allowCheckout"] = True
+    book_path.write_text(json.dumps(book))
+    assert "A held cohort package has a checkout/payment action enabled." in audit(tmp_path)["issues"]
 
 
 def test_bankim_cohort_has_no_stale_public_audio_metadata_or_live_admission():

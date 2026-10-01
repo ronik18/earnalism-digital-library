@@ -1,0 +1,13 @@
+{
+  "authority_url": "https://ngmaindia.gov.in/pdf/Rabindranath-Tagore-Timeline-Text.pdf",
+  "retrieved_at": "2026-10-01T20:01:17.485276+00:00",
+  "response_sha256": "7d417620d468ec5181ea75ebf321f9cee21e6173b706242884e9285dc43be97a",
+  "page_count": 5,
+  "review_method": "Read extracted chronology; preserved distinction between writing date, collection publication and individual story first publication.",
+  "facts": {
+    "first_Galpaguchha_collection_published": 1900,
+    "Post_Master_written": 1891
+  },
+  "individual_story_first_publication_years_bound": 0,
+  "reason": "The chronology does not prove the exact first publication year of every included story. No collection year or writing year was substituted for an individual first-publication year."
+}

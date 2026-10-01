@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "book-5aedda79fe",
+  "title": "শাস্তি",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "content": {
+    "source_hash": "7d6e7fef47811ea27f5cf67005046a67bda3a16b1da2e4c4ae17d465b4684e75",
+    "content_hash": "7d6504abe60d1617e7e656c2ca9b3ba0c9a908e38c9f5026d1468ed777f464dd",
+    "provenance_hash": "f30f01be102d7e8bc6b8dcfb7fba23e44f0441a68bea11bd69b4cdc7c63f0f4a",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "1f2ca4f50879b72df817c257b3631171c875ab4c67dcc675ae8879709c0f06f9",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "শাস্তি",
+        "word_count": 2919,
+        "sha256": "1730815fabf2c5d09319462baf06ee489ebec2ef48a30a453bbccb7fd284ae73"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "fafe2b5a64626c29c65381892a9a21315a8db73c4c4836488e8e04fec62c6093"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verification_status must be approved before publishing."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "46df75aa2fb2378e1cf09a9f36bbaf343b00fb69e5587198a1ef3f7fe13dd9ff",
+    "reader_manifest": "1eae4e05092cd2f7e190f85894b7792a3fc4a5e30b0f916dba187f4bd46e2c39",
+    "source_evidence": "fafe2b5a64626c29c65381892a9a21315a8db73c4c4836488e8e04fec62c6093",
+    "approval_evidence": "cc1cb72ea294c1ad8c84c6e7b34eb43bc10647d9b63960376096458d464aab57"
+  },
+  "manifest_sha256": "05cbde24a26fb45f1fec24189418ad8b00f38d08c4e594a32c0328415edebf61"
+}

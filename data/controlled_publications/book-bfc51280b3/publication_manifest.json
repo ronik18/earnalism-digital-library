@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "book-bfc51280b3",
+  "title": "অতিথি",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "content": {
+    "source_hash": "be2d2b6e792ddbcbdba81a9ee2e10eb3d06bdd8832e10eb2719b72ad3ac776d3",
+    "content_hash": "2602659bd47e8258b6bf8505d09bb87b168e18c7069b85a3b98bcf38c2c31553",
+    "provenance_hash": "fef6633281952ea288a19a83e33369b351f48a58f0e2f0df57c32ba302a70cdc",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "8af0ec736a12bffadd479c3ea2f15a3971746037a67977bee5b0faa757aa0cce",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "অতিথি",
+        "word_count": 5069,
+        "sha256": "47186fd5afecfeb8d46a53c90f9b35ba995e85847edf4fd4c9ed76c55a28f297"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "1cc76cb38ee9cf5e18e59c5a6b1d4040407b2d8b8cb8232c1bfd17c85ab8e4e9"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verification_status must be approved before publishing."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "e69dc73cfccc48e049bed1ffdf058b05b2ead629081cdb006b35a811286bc9ce",
+    "reader_manifest": "32d510eb12b30eadb37d3031524a1877ee53e8b0c78df60acbfc964383d70929",
+    "source_evidence": "1cc76cb38ee9cf5e18e59c5a6b1d4040407b2d8b8cb8232c1bfd17c85ab8e4e9",
+    "approval_evidence": "0a0d2f7adc996cc1d8330ce89e0d0b579c1f6014937780f79587b9e4f0d487ef"
+  },
+  "manifest_sha256": "fe2cd9bfad27b8dfb8c382ac8610b6f7bc50dc3ce9d99eb0b4017b75ad714d37"
+}

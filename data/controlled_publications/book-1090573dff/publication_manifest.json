@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "book-1090573dff",
+  "title": "ছুটি",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "content": {
+    "source_hash": "2a7983ee9d64179f285d4afe42a05057462f8b807292cfd52e8ae535605bb4c0",
+    "content_hash": "6ed7b7e1000d05a647baef98bbbea0e3fefbef59841acdac257010703eeb88de",
+    "provenance_hash": "eb211ebd652d87f3d7edb09aa47f38186bcce2901ecb4066477446af4aea9c40",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "eeaf8e8033c9bcd29c81cc86e247da5de0292b52e4758f7549886e00db360d47",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "ছুটি",
+        "word_count": 1791,
+        "sha256": "aeda66291619e5db985762e24ed1a1f6ee70019262c1398bc1e096411b41c19d"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "119fa7a7bf98943780568aecc18e496a273d3cb74183aaeace126b1496e7682d"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verification_status must be approved before publishing."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "4cc192f7db70e7d58ad69d93609f9edea127df183a41c65721610a8f86be41db",
+    "reader_manifest": "c7a737545354d3584c9796403ece2880a60cf39e810fc75dc59c058c2b0a0fb8",
+    "source_evidence": "119fa7a7bf98943780568aecc18e496a273d3cb74183aaeace126b1496e7682d",
+    "approval_evidence": "e5302f69f629fa84967160d72cca2c69780c7e5c89cad5a16324ae1a1c679da7"
+  },
+  "manifest_sha256": "4dfa1ea55daded10914593a5df7c1e579a85bbc2c3ee2b8dd59026a9c9c7da37"
+}

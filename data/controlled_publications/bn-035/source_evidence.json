@@ -9,5 +9,36 @@
   "rights_basis": "Author died 1938. Published 1913. Public domain checks are enforced by the Earnalism import pipeline; source evidence kept internal/admin-only.",
   "downloaded_at": "2026-06-04T16:51:08.510739+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "author_death_year": 1938,
+  "author_fact_evidence": {
+    "record": "internal/legal/bengali_text_preparation_20261002/author_fact_receipts.json",
+    "record_sha256": "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "author_id": "sarat-chandra",
+    "authority_url": "https://www.wbtourism.gov.in/legends-view-byId/63e0abae50952a1a1b0e9601/SARAT%2520CHANDRA%2520CHATTOPADHYAY%2520%25281876%2520-%25201938%2529",
+    "authority_response_sha256": "e904b67f5fb45db2c99b0ba2882a8d5f501cff12127ff7cb6a6c167298d1e7ff",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_EDITION_OR_PUBLICATION_APPROVAL"
+  },
+  "verification_status": "pending",
+  "text_clearance_status": "PREPARED_EVIDENCE_NOT_AUTHORIZED",
+  "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
+  "canonical_reader_identity": {
+    "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
+    "reader_content_sha256": "f7cf21f360e40751999a1b79763003a491660adc45e15b2ce893156e6f82cb6d",
+    "chapter_count": 10,
+    "chapter_content_sha256": {
+      "chapter-001": "58f536ee4adfe33b8485d36f22a2bf9d5841b24a9cf8a1b854aa6611056a811e",
+      "chapter-002": "60148b5a52ca95892c7d14d81cc177ff8bd4b18a1447dde6a217f173837b7d7f",
+      "chapter-003": "ea7556f92abb3f50ecaf96bbb9f4ecec19ae5b96c7562552ac3d68463a1369ab",
+      "chapter-004": "dde0193f9787f77403377ada95c794c9ab92787903aa04384342c7f30bcb9861",
+      "chapter-005": "1fff632d33a7892f96b01fdead031df70c12a850fc1e796765692e69bfed0c48",
+      "chapter-006": "bcbfafd96d23d31565fa2cf60f072afc787d19d88b02cf3bc05a36debaff6fd2",
+      "chapter-007": "2d0d942f6d97d20b7e0bbf1e6e7058372e1fc0b6f098b90dd410754b5f7641da",
+      "chapter-008": "cfedb46fb9cbaf4f7ba234c97f1b261971254c7980ceb2740818bffe2fda4903",
+      "chapter-009": "74550ed97287d8f19dd13aeea5dce85071ada8a23404f1c1df6da1b431e0e2e6",
+      "chapter-010": "62f5814b903f29395a502d63b7b187f9ab15e562551178443d745e99799ecbb6"
+    },
+    "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
+    "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  }
 }

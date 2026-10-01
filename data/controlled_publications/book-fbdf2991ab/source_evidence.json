@@ -9,5 +9,29 @@
   "rights_basis": "Author died 1941. Published 1893. Public domain in India and U.S.",
   "downloaded_at": "2026-06-02T18:57:18.146444+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "author_death_year": 1941,
+  "author_fact_evidence": {
+    "record": "internal/legal/bengali_text_preparation_20261002/author_fact_receipts.json",
+    "record_sha256": "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "author_id": "tagore",
+    "authority_url": "https://www.nobelprize.org/prizes/literature/1913/tagore/biographical/?print=1",
+    "authority_response_sha256": "0048c2eaa3a43087f4e130b3e5153c9389111d9aed6d329cf12286ad158c0aa9",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_EDITION_OR_PUBLICATION_APPROVAL"
+  },
+  "verification_status": "pending",
+  "text_clearance_status": "PREPARED_EVIDENCE_NOT_AUTHORIZED",
+  "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
+  "canonical_reader_identity": {
+    "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
+    "reader_content_sha256": "c302bdc3c8afe6199fbdec18c213f6bfa0d8ac7c066e50e4bb669ca32a55fd5d",
+    "chapter_count": 3,
+    "chapter_content_sha256": {
+      "chapter-001": "806d5cd3027f2861cee9f2fb7e841420b58f2d1522cd1e2128706046f0fcf501",
+      "chapter-002": "535b7fa7163881470ac79322dcf5cb09c379108a6117040537358d8ff950dc16",
+      "chapter-003": "1367b22486044fa3f4959acaea64a9d294d28a17004d927009e37065dd82e30b"
+    },
+    "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
+    "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  }
 }

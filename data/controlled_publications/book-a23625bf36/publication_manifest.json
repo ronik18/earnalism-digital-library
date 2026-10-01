@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "book-a23625bf36",
+  "title": "সমাপ্তি",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "content": {
+    "source_hash": "08cf726a1c9f2acef4bb94a1228d4a5c22fe429d501b623d3a23853e1d645343",
+    "content_hash": "039054ed00bbbcfd67cf830434e41f40f2e05b93223400c16045883d1acc980f",
+    "provenance_hash": "50aae4c36dd08647c5fadecb1e7b6b5f6c58f438d1a150634dbb930433dcd4c4",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "2e8d310a7e5185e2165268e820d578d50c093dcc4f6890895b1a446931b11940",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "সমাপ্তি",
+        "word_count": 5515,
+        "sha256": "0cd3de69bd18e062eddaf7fec99dc45132eaf379520d86bc6961e5450d588f4c"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "cfe2a76a07c6a4045e5c056d71b25185975f9d2cec955c65e604bfda82756c84"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verification_status must be approved before publishing."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "295bf693031dc1945c3c368ec98a930135716e7d69f223f235f79c41b1db368c",
+    "reader_manifest": "d0e19c364d5c01418b6e1756aca177578f0a08d4ab7b0c6afcd85be2c51e3fc5",
+    "source_evidence": "cfe2a76a07c6a4045e5c056d71b25185975f9d2cec955c65e604bfda82756c84",
+    "approval_evidence": "9f63f6b7e698f60b56253d7841a4ca42c756c1974984973b1e35828317af9cb7"
+  },
+  "manifest_sha256": "8c3eb8159901b876bf570a6db4f2486df76b9f8896c8cca6d0ecdf6bb964fb3b"
+}

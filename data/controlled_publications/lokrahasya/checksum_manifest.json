@@ -1,26 +1,10 @@
 {
   "slug": "lokrahasya",
-  "generated_at": "2026-07-03T20:07:46Z",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
       "sha256": "131bd2662834b25eacdaae08ca0bf79826d07d2b9938cce4d56c4056447140c8"
-    },
-    {
-      "file": "highlight_sync.json",
-      "sha256": "20a25ad5ac8fab0c2c3f1240e603d7cd95175c9127dc368bfeac5beed67a1d52"
-    },
-    {
-      "file": "public_book.json",
-      "sha256": "d822119402def9c45a369026a997ae519ab0dbd1243675d439ff346fde8a166a"
-    },
-    {
-      "file": "reader_manifest.json",
-      "sha256": "9fa91e5cd205eac26c7f40aa362d53faae1becc0145f0c0fd9f36e99caa6657e"
-    },
-    {
-      "file": "source_evidence.json",
-      "sha256": "e99a9ef00248bcb817d80a3a7a0668f0b7cf2a85945990ca12d719e0a0bcf3ca"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -85,6 +69,22 @@
     {
       "file": "chapters/chapter-016.json",
       "sha256": "8187f33b5430671c2a36679bc4755d47be4afc17053759ce94546dc00a812ebb"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "20a25ad5ac8fab0c2c3f1240e603d7cd95175c9127dc368bfeac5beed67a1d52"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "d822119402def9c45a369026a997ae519ab0dbd1243675d439ff346fde8a166a"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "9fa91e5cd205eac26c7f40aa362d53faae1becc0145f0c0fd9f36e99caa6657e"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "dd7dda059bb3d205050b344ebd33ce4ba4c73d0ae053f1a0919b9783f3509aae"
     }
   ]
 }

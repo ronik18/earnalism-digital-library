@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "book-95624627d5",
+  "title": "মধ্যবর্তিনী",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "content": {
+    "source_hash": "12e68ccb1f58102856edb86d24bb700eb18bd1bda6dee53b8711895d5d73b6a8",
+    "content_hash": "b17c4f3d8928510f6a9012b3e9e9333e8bdefa213da3a51b87f1ab17e2c5d6b5",
+    "provenance_hash": "531807dbbf7b3dc9cc8fe1f91beb726ba5d86f8be99aef9d4ea2d2f4b42806a9",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "c8e5eea15a14497a3a1e599beb60aca6325497b17fcc53b886b151ed06741857",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "মধ্যবর্তিনী",
+        "word_count": 3585,
+        "sha256": "b3aefcbebb9e8b10a75e8e4312b0818dee7e51bea8d049f6ea0d559d91b36ad1"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "76efa608d5d61b7c6d142cae56b7e2c9da2ac6481c6a01ad3c299f0706fd3f55"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verification_status must be approved before publishing."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "5a5a9117e9b1216f72fc428a7e9402d309e508d12f6d062653ffce3073609f40",
+    "reader_manifest": "8461324eab29f7b86104836bfd8e80b3db25bdd08ac8d5877a021b24a056156c",
+    "source_evidence": "76efa608d5d61b7c6d142cae56b7e2c9da2ac6481c6a01ad3c299f0706fd3f55",
+    "approval_evidence": "cb5cbd7d5d00a3c8c63dc75ec47e51dcea5a08a7543ac891888a65d54a5b2ea3"
+  },
+  "manifest_sha256": "2622ce933f5388fa38a73341751d36f3afc074df61e772071c539f83884bc826"
+}

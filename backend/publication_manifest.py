@@ -91,7 +91,10 @@ def build_manifest(
     *,
     publish_approved: bool = False,
     generated_at: str | None = None,
+    reader_preparation_only: bool = False,
 ) -> dict[str, Any]:
+    if reader_preparation_only and publish_approved:
+        raise ValueError("Reader preparation cannot authorize publication.")
     public_path = artifact_dir / "public_book.json"
     reader_path = artifact_dir / "reader_manifest.json"
     source_path = artifact_dir / "source_evidence.json"
@@ -197,7 +200,8 @@ def build_manifest(
         or ""
     ).strip().lower()
     audio_approved = bool(
-        audio_requested
+        not reader_preparation_only
+        and audio_requested
         and public_book.get("audio_enabled") is True
         and public_book.get("audiobook_enabled") is True
         and approval.get("audiobook_enabled") is True

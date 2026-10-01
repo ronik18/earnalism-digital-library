@@ -1,22 +1,10 @@
 {
   "slug": "pather-panchali",
-  "generated_at": "2026-07-01T10:36:20Z",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
       "sha256": "d030a1788f1de0a77de3d8de5429408176cfc10a39b91a8c4a6775d36c6e9618"
-    },
-    {
-      "file": "public_book.json",
-      "sha256": "fc4144dc1126cd8a1a13ff196d8dbb688006e6af6cd735ecc62e01011596f4c6"
-    },
-    {
-      "file": "reader_manifest.json",
-      "sha256": "ce1bd80e41d650d7efc95130e528e13275c59196da0581f58361b07f012c6054"
-    },
-    {
-      "file": "source_evidence.json",
-      "sha256": "263f8a8eeb651ab6dceeda1dbed4098328336eedbcc17d97b9162c1f28e04229"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -65,6 +53,26 @@
     {
       "file": "chapters/chapter-012.json",
       "sha256": "1edbcee06a390de8b87b1e2bd3f33826ee24ce8cf85805181681b3be2ebfaf09"
+    },
+    {
+      "file": "covers/back.png",
+      "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+    },
+    {
+      "file": "covers/front.png",
+      "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "fc4144dc1126cd8a1a13ff196d8dbb688006e6af6cd735ecc62e01011596f4c6"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "ce1bd80e41d650d7efc95130e528e13275c59196da0581f58361b07f012c6054"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "1fb70e981fbd1050b12db990f0b592146fd1488e82a7aed9769c4501e83e5887"
     }
   ]
 }

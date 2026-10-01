@@ -1,26 +1,10 @@
 {
   "slug": "mrinalini",
-  "generated_at": "2026-07-03T20:07:47Z",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
       "sha256": "951213f7dfc097795dc2ce113946a7bd1acda5d4fc008dffabbccbae8a5f582b"
-    },
-    {
-      "file": "highlight_sync.json",
-      "sha256": "d8bc45186c3d1b361ad66d3c0b210383405a91c6f9125fcab08c779a0c87579e"
-    },
-    {
-      "file": "public_book.json",
-      "sha256": "11b154497df6a393e91668de6181694ba6d058919fbf7c5b2c142b1076505d49"
-    },
-    {
-      "file": "reader_manifest.json",
-      "sha256": "2f0ea214cd1d5f7fb8d76e10fed3b6095915aa9d9ec70318cc3f040a7815b4e2"
-    },
-    {
-      "file": "source_evidence.json",
-      "sha256": "3a257771f22703f708d1a195e31689d4d0260bc0dd9ea194031b1fec9a1cb121"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -205,6 +189,22 @@
     {
       "file": "chapters/chapter-046.json",
       "sha256": "b82d6c43dbb0533e22a50c4d74e657c6acff53ff33b017730b43453fdd62d2ec"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "d8bc45186c3d1b361ad66d3c0b210383405a91c6f9125fcab08c779a0c87579e"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "11b154497df6a393e91668de6181694ba6d058919fbf7c5b2c142b1076505d49"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "2f0ea214cd1d5f7fb8d76e10fed3b6095915aa9d9ec70318cc3f040a7815b4e2"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "f2db36a3a22c64aa7c4f4049940d1fd21051f841605c044a13f260ada9dc937c"
     }
   ]
 }

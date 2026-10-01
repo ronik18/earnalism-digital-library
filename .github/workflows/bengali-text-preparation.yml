@@ -1,0 +1,43 @@
+name: Bengali text preparation safety
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/bengali-text-preparation.yml'
+      - 'scripts/bengali_text_compliance_audit.py'
+      - 'scripts/test_bengali_text_compliance_audit.py'
+      - 'scripts/verify_bengali_text_preparation.py'
+      - 'internal/legal/bengali_text_preparation_20261002/**'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/bengali-text-preparation.yml'
+      - 'scripts/bengali_text_compliance_audit.py'
+      - 'scripts/test_bengali_text_compliance_audit.py'
+      - 'scripts/verify_bengali_text_preparation.py'
+      - 'internal/legal/bengali_text_preparation_20261002/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  held-text-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Install existing source-parser dependency
+        run: python -m pip install 'beautifulsoup4>=4.12.0'
+      - name: Verify evidence preparation and publication boundaries
+        run: |
+          python -m unittest scripts.test_bengali_text_compliance_audit -v
+          python scripts/verify_bengali_text_preparation.py
+          python scripts/bengali_rights_package_validator.py
+          git diff --check

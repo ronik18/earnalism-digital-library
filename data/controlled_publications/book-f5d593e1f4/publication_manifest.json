@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "book-f5d593e1f4",
   "title": "রামকানাইয়ের নির্বুদ্ধিতা",
-  "generated_at": "2026-09-29T04:55:56.253776+00:00",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
   "content": {
     "source_hash": "1c6c50661763d7497213b1041ae809c1f63a1262387eacdbc0b0a3348fe8e350",
     "content_hash": "0fbaa0cb48c5a35910ebee2891591d340c1e8b4f6e7e37b3c4af1070fe4827eb",
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "f0fb2ebfc7b66722c7d6a7a29c396559d0dafa13a09b7742593b20045cdc38be"
+    "evidence_sha256": "fd3c07bb67430a1b5d5d9a51c3e7211dd628c57f8c43a6d08218e56f45559ab6"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,8 @@
     "qa_status": "QA_PASSED",
     "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779944684/earnalism/covers/front/cover_5dfb07a4-361f-4b48-aac7-a4a819e1c7b4.png",
     "blockers": [
-      "Rights: author_death_year is required.",
       "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Rights: verification_status must be approved before publishing."
     ]
   },
   "audio_release": {
@@ -50,8 +49,8 @@
   "artifacts": {
     "public_book": "5b9eabc269db16b653048d92eb25dbbaa09f125e1aa1b090a9025f77a9a89e41",
     "reader_manifest": "a9a2d2809e3099fba25e12685af8f4e7995a3d1e3d1e20bb5ca993b7bbac85de",
-    "source_evidence": "f0fb2ebfc7b66722c7d6a7a29c396559d0dafa13a09b7742593b20045cdc38be",
+    "source_evidence": "fd3c07bb67430a1b5d5d9a51c3e7211dd628c57f8c43a6d08218e56f45559ab6",
     "approval_evidence": "275f78297ecf04acf828286b92c25d87fea3591b445b211efa6bbc227c4f31f5"
   },
-  "manifest_sha256": "3e64fbefe88c0e15912b03a8a7763f21fa14a8c10d3f91b8a29ec69ec1ecdf3e"
+  "manifest_sha256": "91d8a7f6b2b632061ea01ab43a3f0c2189269e4b866fc223eb9569d52b57a8b4"
 }

@@ -9,5 +9,29 @@
   "rights_basis": "Author died 1938. Published 1922. Public domain checks are enforced by the Earnalism import pipeline; source evidence kept internal/admin-only.",
   "downloaded_at": "2026-06-04T16:51:08.472556+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "author_death_year": 1938,
+  "author_fact_evidence": {
+    "record": "internal/legal/bengali_text_preparation_20261002/author_fact_receipts.json",
+    "record_sha256": "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "author_id": "sarat-chandra",
+    "authority_url": "https://www.wbtourism.gov.in/legends-view-byId/63e0abae50952a1a1b0e9601/SARAT%2520CHANDRA%2520CHATTOPADHYAY%2520%25281876%2520-%25201938%2529",
+    "authority_response_sha256": "e904b67f5fb45db2c99b0ba2882a8d5f501cff12127ff7cb6a6c167298d1e7ff",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_EDITION_OR_PUBLICATION_APPROVAL"
+  },
+  "verification_status": "pending",
+  "text_clearance_status": "PREPARED_EVIDENCE_NOT_AUTHORIZED",
+  "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
+  "canonical_reader_identity": {
+    "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
+    "reader_content_sha256": "3df89c7c65ab5fcd096cc7f51cf9450b70e1150e5b8a7f10f97f0ca30b932a97",
+    "chapter_count": 3,
+    "chapter_content_sha256": {
+      "chapter-001": "652e01c81029c8aaf76304c1543698dd7a6b3ab6da0bbceb6c07e3eb3dc74fd2",
+      "chapter-002": "a62d0e3d7c8314a9d4483f69611efe109f4bd138714155267c48398142c969aa",
+      "chapter-003": "b2ed3ae3b0d546b26aa2cbcb52bbd3f49f937e4803f65823d978ccf5ee6baadd"
+    },
+    "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
+    "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  }
 }

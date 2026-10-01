@@ -9,5 +9,32 @@
   "rights_basis": "Author died 1938. Published 1922. Public domain checks are enforced by the Earnalism import pipeline; source evidence kept internal/admin-only.",
   "downloaded_at": "2026-06-04T16:51:08.580034+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "author_death_year": 1938,
+  "author_fact_evidence": {
+    "record": "internal/legal/bengali_text_preparation_20261002/author_fact_receipts.json",
+    "record_sha256": "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "author_id": "sarat-chandra",
+    "authority_url": "https://www.wbtourism.gov.in/legends-view-byId/63e0abae50952a1a1b0e9601/SARAT%2520CHANDRA%2520CHATTOPADHYAY%2520%25281876%2520-%25201938%2529",
+    "authority_response_sha256": "e904b67f5fb45db2c99b0ba2882a8d5f501cff12127ff7cb6a6c167298d1e7ff",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_EDITION_OR_PUBLICATION_APPROVAL"
+  },
+  "verification_status": "pending",
+  "text_clearance_status": "PREPARED_EVIDENCE_NOT_AUTHORIZED",
+  "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
+  "canonical_reader_identity": {
+    "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
+    "reader_content_sha256": "a75406b86812bdf3f3e5ea17ee49e741a7723c636303d849932005f60b84bfac",
+    "chapter_count": 6,
+    "chapter_content_sha256": {
+      "chapter-001": "165adec540b11c92f75d58da93a4e8ac9b886d105f2aa088885a6b4861dfdc9c",
+      "chapter-002": "79290f6d18842952aaa2d53c8157cadbc87664b5b57a3e2b1949a5319f7bc8f4",
+      "chapter-003": "c8ea1df076498d992ffe276f1fe5f7924d20e0fde9c7bee325299e5cdfc7997b",
+      "chapter-004": "bb123504a0ea1db21c03e52bbb6d91c2b43fbb817f7bae9d590b33f585a68c4e",
+      "chapter-005": "382dcb99b3eb5d5b0cfb49c88800260037d10720b8a36dc286e83d9259c01312",
+      "chapter-006": "f5e0725c8e9aaea6bac11654f8dc08b41e6e4965f6065e39d449efd27fb08502"
+    },
+    "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
+    "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  }
 }

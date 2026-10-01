@@ -1,0 +1,70 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "bn-031",
+  "title": "মহেশ",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "content": {
+    "source_hash": "b4cbab54263d2bd9c717525c55e300dda3ae2385329ae93ff716461a0fe20dea",
+    "content_hash": "8253da5e5f081952e702b8ca1e2ba9c82b15bd3210b8605f2c515b1b75a81417",
+    "provenance_hash": "9afe945de85c8fa2b78cc82ab883c157a586f0d5560e0d8aefdc1e90e307557a",
+    "sanitized": true,
+    "chapter_count": 3,
+    "chapter_index_sha256": "15ae8c71736cef07353b6df56bec12b5d39a5aab3e34ad84485be562cc67b9b3",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Chapter 1. ১",
+        "word_count": 1385,
+        "sha256": "10b838021ac01089d5a354b2bec9f7fcd560df7734a9b6fb25d5221e1357ae32"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "Chapter 2. ২",
+        "word_count": 737,
+        "sha256": "7bcfb96aa8a65763b17f2a99a76e5619368e60d0236d899c7c3053deb84d09cf"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "Chapter 3. ৩",
+        "word_count": 1185,
+        "sha256": "148116e68d501d359089f851c482be4157164147e1a095b09249e2fbf3b2d8ba"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "aaad537001f56485ff69e19a4449fc228e852d80bec51ad0a60e04a955d5e51c"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267401/earnalism/covers/front/bn-031_front_1600x2400.png",
+    "blockers": [
+      "Rights: original_publication_year is required.",
+      "Rights: verification_status must be approved before publishing."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "456f70ff219349c40c858f89e60eaa670f8eee5972657d6e0c2c0bf4de546e3d",
+    "reader_manifest": "fa7a1a4861d40772ea7e9fb6af09c432569c862e6e119ac2e399cfd2e13885c8",
+    "source_evidence": "aaad537001f56485ff69e19a4449fc228e852d80bec51ad0a60e04a955d5e51c",
+    "approval_evidence": "f4a2b1bbea7d73bd5494a69fa9a19baba3a3b601512549f6025d65103365f47f"
+  },
+  "manifest_sha256": "e6379fdbaa9d2e20888f11cca5c78d3cea8a9da2fad32388fd11e05562161f50"
+}

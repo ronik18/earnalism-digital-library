@@ -1,0 +1,56 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "book-d2fe532e1c",
+  "title": "স্বর্ণমৃগ",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "content": {
+    "source_hash": "a23c3d63f7dcaff1ac404b313a056def8dc39813360642fe883a618a10aa7d64",
+    "content_hash": "ab597e18a4093bce3b8fd7321bc17c02198c74363e75bd05744f0186aeba9313",
+    "provenance_hash": "5feb3f6d36b68308c67078fcc4bd22010b2a1eb180dfab64c9b1259d6d9c83ee",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "f807d240e9b2776830b7048d9ce2d8268d212c5de2419ffc410b81ce7fe0ba71",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Full Text",
+        "word_count": 2985,
+        "sha256": "022154a4a1cdea63a560ddddd6acd598a4a4f2e359484aa16bf961cb42121134"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "018d0040deab640082b7ba6b1a0146578af0fe076843bda11ec4105954199654"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779944544/earnalism/covers/front/cover_e664a300-63cc-4103-a9a8-bc1fa8f83d2a.png",
+    "blockers": [
+      "Rights: original_publication_year is required.",
+      "Rights: verification_status must be approved before publishing."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "64cc0b3345e7a03c595faa4456bc82b048825607f113f2c0d76d1d87cec35235",
+    "reader_manifest": "b0e501c1b91b26406653c0cf3aab9a27772218f01287e4bfa090f4dfff01a650",
+    "source_evidence": "018d0040deab640082b7ba6b1a0146578af0fe076843bda11ec4105954199654",
+    "approval_evidence": "2f73b8116991b9bc93900f7880c580d84629126899861dfb2cd87bf05e24c221"
+  },
+  "manifest_sha256": "b3ec0161932667a0f07b8d0d49c8e5ac22d1991d9bca3cfb3dc44998663f4ddb"
+}

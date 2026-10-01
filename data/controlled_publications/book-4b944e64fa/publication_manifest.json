@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "book-4b944e64fa",
+  "title": "একরাত্রি",
+  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "content": {
+    "source_hash": "daa29dda065503bfc19385c12779f2cba28f20287a07854e0356d0611f5e1538",
+    "content_hash": "ae7e8fcd4e2a8230f767a61992476c887cda3b61b6cf07ddb4eb4b486bfa1820",
+    "provenance_hash": "62fa0ae5b9b032d4195d27e4677a7d7ad64e57337432c076d77e8abd8bdd89a4",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "d14cc8aead03be73e80e999ad0dfd25883317be8106363ca9b948b2563618a0c",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "একরাত্রি",
+        "word_count": 1785,
+        "sha256": "3c27b0704f285e0396231a1da0b6c53715d4389558e8c43444d4854d56931b64"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "245bb841016c0d9d6970dd44c922b69ca233961b4090213f973c75b800d37618"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verification_status must be approved before publishing."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "1324a9cb2bd95f104007a2250d921f06a1b5d05319c43c3c1eb3f642c1505c01",
+    "reader_manifest": "47326e8319c87bb767737f87e507b1ff40b4ad9b446dbc90817e43664aa0a9f0",
+    "source_evidence": "245bb841016c0d9d6970dd44c922b69ca233961b4090213f973c75b800d37618",
+    "approval_evidence": "21b497e25934f1d434b16584095a4697adc5e44ddefd4a7e568cb5bea429fcc0"
+  },
+  "manifest_sha256": "1563663cfcd92b3c3b93089ce276ca3cfa5a2c7de9cf48f929a256d091017736"
+}
