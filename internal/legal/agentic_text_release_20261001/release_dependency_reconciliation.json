@@ -30,5 +30,14 @@
     "expected": 46,
     "assertions": 993,
     "failed": 0
+  },
+  "remaining_browser_fixture": {
+    "failed_head": "3fdafd0e1ca2f2cf1ca8424fca88c9aaa850021e",
+    "failed_run": 36812864110,
+    "failed_job": 110211542374,
+    "finding": "Error-experience fixture hardcoded the prior seven-title static SEO list.",
+    "correction": "Append only owner-authorized Agentic to its exact list; retain all existing assertions and denied audio/Reader/error-state checks.",
+    "local_result": "PASS_21_EXISTING_CASES",
+    "production_source_sha256_unchanged": "f93d0d10d2fcc18644926d74d78b5895afebf4ef5ccec6c1de25550112d41a57"
   }
 }
