@@ -1,3 +1,28 @@
+# Open issue reconciliation
+
+## Current verified reconciliation — 2026-10-01T00:38:43.993882+00:00
+
+Verified implementation: PR #492 head cc8d1ca5b198e53bc97dc745351d06027bb3b25e, merged main 5e800608e6a5c02a4a58bb12680f0af38321f152. Exact-head normal regression [36796257882](https://github.com/ronik18/earnalism-digital-library/actions/runs/36796257882), independent catalogue [36796257939](https://github.com/ronik18/earnalism-digital-library/actions/runs/36796257939) and coordination 36796257778 passed before expected-SHA protected merge. Fresh main regression [36796711277](https://github.com/ronik18/earnalism-digital-library/actions/runs/36796711277) and independent catalogue [36796711291](https://github.com/ronik18/earnalism-digital-library/actions/runs/36796711291) passed. Frontend deployment correctly reports no frontend change; this is not a new UI deployment.
+
+All 165 catalogue snapshot files and both exact-head worker/reviewer envelopes were independently ZIP/digest verified. PR artifact 11132924775: 11db5791511608bf90ee070359f6e0a4d2de32b32de9793b7dc0aea2dd57c57a. Main artifact 11133723515: 4f4b545de68625c5fb9161124e1accdf8b33a55dfa2c9a896bf59d86834f806e. The complete [per-slug state](full_catalogue_processing_20260930/catalogue_state.json) reproduces with 899 blockers: 19 stale metadata blockers and one false prose match repaired; seven pre-existing accepted and 224 held titles remain. No new accepted decision, publication, upload or audio activation.
+
+The next actual bounded campaign 36794894294 passed its completed exact-source/batch receipt for 20 selected candidates, release/scope/focused/full regression and final source identity guard. Independently verified artifacts 11133108483 and 11133960716 retain its empty proposal and 900 blockers on the preceding source main. That bounded result is retained honestly; the separate checker correction accounts for 900 to 899. No unchanged batch rerun is required.
+
+| Issue | Current verified disposition | Exact next condition |
+| --- | --- | --- |
+| [#347](https://github.com/ronik18/earnalism-digital-library/issues/347) | Closed completed; reported routing/cache fixture failures repaired in PR480 | None for the reported defects |
+| [#380](https://github.com/ronik18/earnalism-digital-library/issues/380) | Approved UI/artwork and all 14 revised Agentic chapters included; source, PR486 three-browser envelope and actual deployed route/SEO canaries passed | Genuine cover/component provenance and an accepted hash-bound India text-use decision, then applicable authenticated production Reader acceptance/readback |
+| [#477](https://github.com/ronik18/earnalism-digital-library/issues/477) | 231 assessed / 162 prepared / 1,012 chapters; seven accepted / 224 explicit per-slug holds; 69 cleared packages missing | Exact source/edition/cover/QA and accepted-decision evidence listed for each slug; three missing chapter files require recorded exact-hash recovery |
+| [#385](https://github.com/ronik18/earnalism-digital-library/issues/385) | Owner-deferred after CUSTOMER_READY; narrowly nonblocking; Android/iOS NOT_RUN / UNVERIFIED | Owner-provided tester/device after CUSTOMER_READY; retain failures and repair demonstrated defects |
+
+The approved canonical Dorian repair and its deliberate legacy bundle removal remain intact. Historical QA, owner and production metadata are not relabelled as fresh human approval. All approved UI/manuscript/artwork and title source/approval/registry/launch bytes are preserved. Source release compliance and public route success do not prove authenticated production availability. CUSTOMER_READY is not declared.
+
+Next generated prompt: Resume from the clean, current canonical branch and the verified per-slug catalogue state. Prioritize Agentic AI With Python: verify exact current revision and genuine cover/component ownership or licence evidence, then use the existing rights-review/registry process for an accepted hash-bound India text-only decision. Promote only passing drafts through the existing admin path and verify applicable authenticated trusted-India Reader acceptance and production readback. Recover Scientific Management chapter-004, Suicide Club chapter-001 and Ward No. 6 chapter-001 only from exact cleared evidence matching the retained hashes; preserve approved canonical Dorian repair and all other source/manuscript/UI versions. Reassess other held titles only when their listed missing evidence is substantiated; do not repeat the unchanged 20-title run or invent QA, legal, cover or production observations. Physical Android/iOS UAT remains owner-deferred NOT_RUN until an owner-provided tester after CUSTOMER_READY. Audio stays disabled; no paid provider call, customer wallet/data, launch flag or deployment-configuration change.
+
+Earlier entries below are preserved historical inspection and candidate records; the verified disposition above supersedes their pending statuses.
+
+---
+
 # Open issue reconciliation — 2026-09-30
 
 Source inspected: merged main `de5d669a484f82e693b654565923ce96b4b9ad1a`. This record describes verified source and a narrow regression candidate. It does not declare CUSTOMER_READY or new publication authority.
