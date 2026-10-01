@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "tobermory",
+  "title": "Tobermory",
+  "generated_at": "2026-10-01T21:08:35.104944+00:00",
+  "content": {
+    "source_hash": "c0abb8304ec61d1f36e5fec7972cac04bf3616016be5786927f7715b3f60923d",
+    "content_hash": "8918088acb7f9dd15022f86a8047cb7c6a6373273670491bb9048a3a76a01456",
+    "provenance_hash": "88cf527a80243e135ebb503f7ee1381abd3750d9a5716ebe6a89d4366f458c48",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "20a6f2d560ae3d8792d7935b4f7e1ba7e239b121e2f03d127c8471eb1f65b807",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Tobermory",
+        "word_count": 2723,
+        "sha256": "b00117523393fc5ac87acca8e57e34c88cfd56a99282d4a668234867c771a0cf"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "cb1d4332ee2fe4461c662484e2bf9f42e7b7846d2fbfd70233d96598cd932cc7"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "b940af4b316505d236c4af567932d3afa8a2fe3f8b24744b23d4bd7c24f7afae",
+    "reader_manifest": "d93e440deb3c2c140845c4bde39f66b2ecd27ece7ab929572a413f90b1623d94",
+    "source_evidence": "cb1d4332ee2fe4461c662484e2bf9f42e7b7846d2fbfd70233d96598cd932cc7",
+    "approval_evidence": "f786548cc90242e76f12ac16f5fa953befed0f93f788fcfa5001fbff2b6e5ae1"
+  },
+  "manifest_sha256": "0b90a88e146467aadd546c746491771ba657ccca0b9e1ef91bbb44414d9a833c"
+}

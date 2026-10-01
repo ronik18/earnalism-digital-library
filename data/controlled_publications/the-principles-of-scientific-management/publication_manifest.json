@@ -1,0 +1,77 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-principles-of-scientific-management",
+  "title": "The Principles of Scientific Management",
+  "generated_at": "2026-10-01T21:23:53.140488+00:00",
+  "content": {
+    "source_hash": "cdc35806ba1cf7fbecfd0e9a62d7f7bac1f36a796ed2ff1883ee150d88e46865",
+    "content_hash": "a68caf0990ca361ef8755e3f79cde0be2c9bb621ee6488bec85dbe66a880e474",
+    "provenance_hash": "34bc32b93b612a6b064be5d98af9a2a066f33196290068561ab450979cf79050",
+    "sanitized": true,
+    "chapter_count": 4,
+    "chapter_index_sha256": "e7feed8e3c12959e51aab1f611cd286bf0ab08f56a21b9ca0e683790301a21be",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "INTRODUCTION",
+        "word_count": 795,
+        "sha256": "e15380c04b8aed1e4d3f1a87ad6248685b68f232c9d226920ec6768490c40d86"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "CHAPTER I. FUNDAMENTALS OF SCIENTIFIC MANAGEMENT",
+        "word_count": 5370,
+        "sha256": "151ad507568985b29c9c9bdbbc9e1aaf3afb626c187d5206987399a13adb96be"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "CHAPTER II. THE PRINCIPLES OF SCIENTIFIC MANAGEMENT",
+        "word_count": 109,
+        "sha256": "35c043c70b7fc9b7ae1370c1dc0e2cf9cae364ded24704f453356130a300fed6"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "THE FINEST TYPE OF ORDINARY MANAGEMENT",
+        "word_count": 30188,
+        "sha256": "33cd142e22486d545f9302026058eb1bac8d14efb80b25ac1cd0b241553197fb"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "b0c89c884a4d0a968ed3e4e0ef40e7ce267ddd5632dc8e90f06c508d0a082beb"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950275/earnalism/covers/front/cover_279d4a41-b545-4371-80c9-4dc4e816f934.png",
+    "blockers": [
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "d51fbc71a0401ab247478c82ee130e4cd373d912980997d5c7e553c8b56e8854",
+    "reader_manifest": "87a47f53b9dbcbae66a09bee4bcc5769f4b5f584ef9bdfc4ab31b65959c3318f",
+    "source_evidence": "b0c89c884a4d0a968ed3e4e0ef40e7ce267ddd5632dc8e90f06c508d0a082beb",
+    "approval_evidence": "5faf355eb5d9705f51dcafc0c63167cbc73970b8e2337494b1ca86f05d7bf93b"
+  },
+  "manifest_sha256": "10d68ac9207329ee2a70b9d7908cb82cc889b6f36676a169dcd587ec13b7dfcd"
+}

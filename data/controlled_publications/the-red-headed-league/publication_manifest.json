@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-red-headed-league",
+  "title": "The Red-Headed League",
+  "generated_at": "2026-10-01T21:08:34.167005+00:00",
+  "content": {
+    "source_hash": "908533b5a44104e7a8675a3d9a06b3526dea93d125afd859f998b5f6d1e0d0fe",
+    "content_hash": "596bf4c4ffc933a0b09dc4f7ad39db6cb0377154b14cd10744de5e45df14a8ea",
+    "provenance_hash": "e792349c3b8700617f947eb7d677ea9b740f892f0394595385b5c0080a25f22a",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "ef5c44f9393f8106713c37f0afb941674bf355deee4e981035c47aff9f213686",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Red-Headed League",
+        "word_count": 9178,
+        "sha256": "9193f7c35d1cd49e445000349d10fc1ba9d69249169381c9fb2eb2920a8fc922"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "ad0116555438b07ae78930d2c4121d9edce96094a04dcb1627abfe576d873f2e"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "77cbbee453fd218ecdd14470be94057e8f82a82cd053acda666c1f1dbcd3f6e0",
+    "reader_manifest": "c7779fb3a85b5b407fe8fd55423a74e7656de0ffa4c977a815bc78e654b0ea2a",
+    "source_evidence": "ad0116555438b07ae78930d2c4121d9edce96094a04dcb1627abfe576d873f2e",
+    "approval_evidence": "c4e86e2697f7f156f03e4cb3490ef894d93363c540d32f068ffb9cd8237a37fc"
+  },
+  "manifest_sha256": "d19dc181245325e741995a4a157b304324747656dc470dfde8a38d770568b47a"
+}

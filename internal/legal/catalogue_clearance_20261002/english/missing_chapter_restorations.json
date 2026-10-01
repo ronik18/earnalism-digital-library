@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "the-principles-of-scientific-management",
+    "chapter_id": "chapter-004",
+    "source_id": 6435,
+    "source_sha256": "1f504a9abe674ee616f13bf1db66ec25cbb1be0ff5fd9bfe70ab8593aa08a3b2",
+    "chapter_sha256": "ce03794ec55aecc0783b58cb64c4f2e54548bdb89ea538afc221bc9ed428ee1f",
+    "word_count": 30188,
+    "verified_at": "2026-10-01T21:23:53.140488+00:00",
+    "scope": "SOURCE_VERIFIED_MISSING_TEXT_RESTORATION_NO_PUBLICATION_APPROVAL"
+  },
+  {
+    "slug": "the-suicide-club",
+    "chapter_id": "chapter-001",
+    "source_id": 839,
+    "source_sha256": "8205ac009edcea995ee855585b05c223e22e1f53b00a96b2922d8a05d5f005bd",
+    "chapter_sha256": "43116bd2508f624562da844230418d70ed14eab3533f8173ff310e27b98fe814",
+    "word_count": 27528,
+    "verified_at": "2026-10-01T21:23:53.140488+00:00",
+    "scope": "SOURCE_VERIFIED_MISSING_TEXT_RESTORATION_NO_PUBLICATION_APPROVAL"
+  },
+  {
+    "slug": "ward-no-6",
+    "chapter_id": "chapter-001",
+    "source_id": 13409,
+    "source_sha256": "cc2cd8a8655d24f2e39cbebd531abcb347213b0a7e9208c5ac9670c43a142ab8",
+    "chapter_sha256": "1f9a4802733cb866631842b14ce1bed2d501b2294d1881b8d19e71b7d8452447",
+    "word_count": 21581,
+    "verified_at": "2026-10-01T21:23:53.140488+00:00",
+    "scope": "SOURCE_VERIFIED_MISSING_TEXT_RESTORATION_NO_PUBLICATION_APPROVAL"
+  }
+]

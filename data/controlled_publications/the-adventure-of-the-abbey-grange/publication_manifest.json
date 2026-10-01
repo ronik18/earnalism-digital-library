@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-abbey-grange",
+  "title": "The Adventure of the Abbey Grange",
+  "generated_at": "2026-10-01T21:08:30.930979+00:00",
+  "content": {
+    "source_hash": "a42a5efecaf8ca98b72329b6c31d8a0bda6334be40692e3d1127ea8fe60d97e6",
+    "content_hash": "3ddcb0f37f27c617939219e75e1876087ae9475f1bee8bfdc5f5d21f1240dc4c",
+    "provenance_hash": "708b91110d03fd1bf84fbf1305226b85104f15f4d7895a583c26443d95d45219",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "45ad0ae67c3ffa574645cb5d9d12b05d55928eec8ac0218e063a9e2cb9d99783",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Abbey Grange",
+        "word_count": 9233,
+        "sha256": "2360511a0640687e6d235126a785d302f4aad53d5d951c9527986bf49ddebcc8"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "ad35721d931d74d4905e789289cafa7ecdb4aee92ec7bb72ce96f5fe8490f482"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "afafaaafc62201ce4f8ac961a357ef993757b903212698f6829a939dd9f81cd1",
+    "reader_manifest": "bc9ea797dc69442e009bddccf9476ed6c12d27a968768bda6bd04878745459c3",
+    "source_evidence": "ad35721d931d74d4905e789289cafa7ecdb4aee92ec7bb72ce96f5fe8490f482",
+    "approval_evidence": "fde45d9254bdcf1b5630641721e689424c3286b71bea8fef441ad10ad0204f5d"
+  },
+  "manifest_sha256": "a0f144a51373e92ecda928e5228bac1f148f93852c5ebf16e074daed1891569b"
+}

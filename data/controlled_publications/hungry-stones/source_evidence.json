@@ -9,5 +9,112 @@
   "rights_basis": "public_domain",
   "downloaded_at": "2026-07-01T10:36:20Z",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #2518",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2518",
+      "resolved_url": "https://www.gutenberg.org/ebooks/2518",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:33.562226+00:00",
+      "response_sha256": "5b2976a521bdb9b5f0143b709de80693e813f3189e3a9f926132ee40c3a36a0c"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2518.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2518/pg2518.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:38.666140+00:00",
+      "response_sha256": "b998f1c836608d9c524da499f05b0e699103f8a9d28cceb3c57b0c4211340b10"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Tagore, Rabindranath, 1861-1941"
+      ],
+      "Title": [
+        "The Hungry Stones, and Other Stories"
+      ],
+      "Note": [
+        "\"The stories contained in this volume were translated by several hands.\"--Preface"
+      ],
+      "Contents": [
+        "The hungry stones -- The victory -- Once there was a king -- The home-coming -- My lord, the baby -- The kingdom of cards -- The devotee -- Vision -- The babus of Nayanjore -- Living or dead? -- \"We crown thee king\" -- The renunciation -- The Cabuliwallah [The Fruitseller from Cabul]."
+      ],
+      "Credits": [
+        "Produced by Alev Akman, and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 80.4 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PK: Language and Literatures: Indo-Iranian literatures"
+      ],
+      "Subject": [
+        "India -- Social life and customs -- Fiction",
+        "Short stories, Bengali -- Translations into English",
+        "Tagore, Rabindranath, 1861-1941 -- Translations into English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "2518"
+      ],
+      "Release Date": [
+        "Feb 1, 2001"
+      ],
+      "Last Update": [
+        "Jan 26, 2013"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1271 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1601,
+          "length": 26099
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "45e3dd5a02b2de0fb77f694a2de16648d59b622aefc5facc34ba8b4dff5bb1c5",
+    "legacy_content_sha256": "ec0aa0ad99a7784b2be3229f357f781d7ee4c00929eded08561c0ebec676b1e6",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1941,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "5b2976a521bdb9b5f0143b709de80693e813f3189e3a9f926132ee40c3a36a0c",
+    "url": "https://www.gutenberg.org/ebooks/2518",
+    "author_catalog_strings": [
+      "Tagore, Rabindranath, 1861-1941"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "48e430eef0498e74365f215d7ce7f7484e7207b52a177fd4bea46d0f534a0f28"
+      }
+    ],
+    "content_sha256": "48e430eef0498e74365f215d7ce7f7484e7207b52a177fd4bea46d0f534a0f28"
+  }
 }

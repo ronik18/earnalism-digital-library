@@ -17,5 +17,104 @@
   "verification_status": "approved",
   "publication_region": "IN",
   "source_type": "gutenberg",
-  "commercial_use_allowed": true
+  "commercial_use_allowed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #8581",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/8581",
+      "resolved_url": "https://www.gutenberg.org/ebooks/8581",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:00.148567+00:00",
+      "response_sha256": "585ff7e582b76b91dbfe41d0d5d9d9ff3fda1e604bb6137ff9d3eb88e11834f9"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/8581.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/8581/pg8581.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:04.582466+00:00",
+      "response_sha256": "ccf68ee545e68995f88d4cd2f534ecae9bf731b8996118d34b5a10bfc4958061"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Barnum, P. T. (Phineas Taylor), 1810-1891"
+      ],
+      "Title": [
+        "The art of money getting :  or, golden rules for making money"
+      ],
+      "Credits": [
+        "Produced by Wayne N. Keyser in honor of his Parents, Clifton B. and Esther N. Keyser; and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 64.6 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "HF: Social sciences: Commerce"
+      ],
+      "Subject": [
+        "Success",
+        "Success in business"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "8581"
+      ],
+      "Release Date": [
+        "Jul 1, 2005"
+      ],
+      "Last Update": [
+        "Feb 4, 2013"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "10246 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1083,
+          "length": 74656
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "0baf572e0ec351e47504ab1d49fb646be164ab6db13d0024cda7567b58dad287",
+    "legacy_content_sha256": "907586f92b4df67b3576f66b89d9c1434bd09200aec7d25926d4fb8253a6761e",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "585ff7e582b76b91dbfe41d0d5d9d9ff3fda1e604bb6137ff9d3eb88e11834f9",
+    "url": "https://www.gutenberg.org/ebooks/8581",
+    "author_catalog_strings": [
+      "Barnum, P. T. (Phineas Taylor), 1810-1891"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "f3c4db2a3c551518ebd4302e7409797eb49f0ff94470ebfbc4b800b900a44b61"
+      }
+    ],
+    "content_sha256": "f3c4db2a3c551518ebd4302e7409797eb49f0ff94470ebfbc4b800b900a44b61"
+  }
 }

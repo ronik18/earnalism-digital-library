@@ -17,5 +17,112 @@
   "verification_status": "approved",
   "publication_region": "IN",
   "verified_at": "2026-07-03T20:07:49Z",
-  "qa_status": "QA_PASSED"
+  "qa_status": "QA_PASSED",
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #902",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/902",
+      "resolved_url": "https://www.gutenberg.org/ebooks/902",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:59.500408+00:00",
+      "response_sha256": "3b85ac0793959e0dfc7b7cb8f5c108b60e769801cfd1b1ca2b6b5e3acfaaac89"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/902.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/902/pg902.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:04.230290+00:00",
+      "response_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Wilde, Oscar, 1854-1900"
+      ],
+      "Title": [
+        "The Happy Prince, and Other Tales"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Happy_Prince_and_Other_Tales"
+      ],
+      "Contents": [
+        "The happy prince -- The nightingale and the rose -- The selfish giant -- The devoted friend -- The remarkable rocket."
+      ],
+      "Credits": [
+        "David Price and Paul Redmond"
+      ],
+      "Reading Level": [
+        "Reading ease score: 88.4 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature",
+        "PZ: Language and Literatures: Juvenile belles lettres"
+      ],
+      "Subject": [
+        "Fairy tales",
+        "Children's stories, English",
+        "Short stories, English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "902"
+      ],
+      "Release Date": [
+        "May 1, 1997"
+      ],
+      "Last Update": [
+        "Oct 25, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "9478 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 32084,
+          "length": 8684
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "041b7a7d28b42f553ae23277588cee366952c83c2b9108c401a3fa4dd90e76b9",
+    "legacy_content_sha256": "58578923656c4e97b29509721be5a4e4a26e7d9240e464eebb8a0841576fe9f8",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "3b85ac0793959e0dfc7b7cb8f5c108b60e769801cfd1b1ca2b6b5e3acfaaac89",
+    "url": "https://www.gutenberg.org/ebooks/902",
+    "author_catalog_strings": [
+      "Wilde, Oscar, 1854-1900"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "3171ffecd2481ba039f1ebc6d4075260f70c30334df012567eed355a1f55aeaf"
+      }
+    ],
+    "content_sha256": "3171ffecd2481ba039f1ebc6d4075260f70c30334df012567eed355a1f55aeaf"
+  }
 }

@@ -3,21 +3,21 @@
   "schema_version": 1,
   "slug": "book-c7f3ce526c",
   "title": "খোকাবাবুর প্রত্যাবর্তন",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-01T21:16:37.084971+00:00",
   "content": {
     "source_hash": "e6482b11503e888e9e9a2e5233cce17d2476164d8894433b520ecad24db04a05",
     "content_hash": "30747ea77e55c1a8b6227802d6e89078e79b2c348970d55960080001e376a954",
     "provenance_hash": "3c9cd2a93fd45bf28d8a5aac81a3d21ed4edfb221f354fa21f0716a9487d76d8",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "659a1e65930c29373d89d12f9666afa5c6b0882c0a6e82a82f80d3a640916267",
+    "chapter_index_sha256": "1c4b312e82ba9849124ec525effd818f8a65c68379839b19e2949757f1845794",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "Full Text",
-        "word_count": 2153,
-        "sha256": "c1712a6e7b080d709cdcb88fe479a795e854b7ede261a072220a1ca12aea55ab"
+        "word_count": 2118,
+        "sha256": "2b043f365cb49096bd86a1d2c93841d1f24b68d38f5f8985d4e4c8f90c1a247f"
       }
     ]
   },
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "a3ee74c0145457c452e05bf996d3faf4ae843e7bb38c69416b4b7be7e450a93b"
+    "evidence_sha256": "f11e742532b82a814675cc3de9b54b1b4626765d6bcbfdd4d8a0b1e946b44e49"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,7 +33,6 @@
     "qa_status": "QA_PASSED",
     "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779561896/earnalism/covers/front/cover_cb4f1262-45e4-4741-ae4d-5cb2dc9de847.png",
     "blockers": [
-      "Rights: original_publication_year is required.",
       "Rights: verification_status must be approved before publishing."
     ]
   },
@@ -47,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "a9f3095ac0a174aa02d66266c01ac3c0c650580b3acc399b85a9ef6fbc7c3774",
-    "reader_manifest": "2fbdcdb5704427410098f8cabc07299974b63f034119f3ae968e3f06f1365fbd",
-    "source_evidence": "a3ee74c0145457c452e05bf996d3faf4ae843e7bb38c69416b4b7be7e450a93b",
+    "public_book": "357801e5f4d1e1c2a42431aea619aa4ae71e3a614bff92f5b298bc7b08b43cd0",
+    "reader_manifest": "af076626ab68baf3324206153f3e264871090dc7f2c57b0a32bbfaeb872d14e0",
+    "source_evidence": "f11e742532b82a814675cc3de9b54b1b4626765d6bcbfdd4d8a0b1e946b44e49",
     "approval_evidence": "d1b06d96a2167cb7788c168156dd8999b7ca5449dec9c4bbf06b8a22a6262ae2"
   },
-  "manifest_sha256": "9529de55003b1ebfc7d0415e543dd18ab1541247d41d782c0858ae18ffee7f77"
+  "manifest_sha256": "fa65bca7cacd3a5db71e6a8eb953bdc464a3b88c95a117925d8808eefbdbfbec"
 }

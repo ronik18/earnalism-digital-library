@@ -9,5 +9,357 @@
   "rights_basis": "Author died in 1912. Work published in 1897, well before 1928. Public domain in the U.S. under pre-1928 publication rule and in most jurisdictions under life plus 70 years.",
   "downloaded_at": "2026-05-25T20:09:54.197446+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #345",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/345",
+      "resolved_url": "https://www.gutenberg.org/ebooks/345",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:45.401315+00:00",
+      "response_sha256": "bcf205e4ea7d40c315911847bd68b655543ebb9bd1538eadcffef9278d8abcd2"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/345.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/345/pg345.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:50.800115+00:00",
+      "response_sha256": "96cd16eacdbfebae8fdda5591f66e0cc8ee76be18e0cd1aca02bc00615782d28"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Stoker, Bram, 1847-1912"
+      ],
+      "Title": [
+        "Dracula"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Dracula"
+      ],
+      "Credits": [
+        "Chuck Greif and the Online Distributed Proofreading Team"
+      ],
+      "Reading Level": [
+        "Reading ease score: 86.3 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Horror tales",
+        "Epistolary fiction",
+        "Gothic fiction",
+        "Vampires -- Fiction",
+        "Dracula, Count (Fictitious character) -- Fiction",
+        "Transylvania (Romania) -- Fiction",
+        "Whitby (England) -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "345"
+      ],
+      "Release Date": [
+        "Oct 1, 1995"
+      ],
+      "Last Update": [
+        "Sep 24, 2025"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "76200 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-000",
+          "offset": 2110,
+          "length": 456
+        },
+        {
+          "chapter_id": "chapter-001",
+          "offset": 2611,
+          "length": 30625
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 33287,
+          "length": 28490
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 61829,
+          "length": 29816
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 91696,
+          "length": 30315
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 122022,
+          "length": 18088
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 140144,
+          "length": 29300
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 169497,
+          "length": 30130
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 199663,
+          "length": 32752
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 232427,
+          "length": 30306
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 262744,
+          "length": 30820
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 293576,
+          "length": 26970
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 320578,
+          "length": 37915
+        },
+        {
+          "chapter_id": "chapter-013",
+          "offset": 358507,
+          "length": 34222
+        },
+        {
+          "chapter_id": "chapter-014",
+          "offset": 392764,
+          "length": 32646
+        },
+        {
+          "chapter_id": "chapter-015",
+          "offset": 425422,
+          "length": 29779
+        },
+        {
+          "chapter_id": "chapter-016",
+          "offset": 455246,
+          "length": 23895
+        },
+        {
+          "chapter_id": "chapter-017",
+          "offset": 479187,
+          "length": 29108
+        },
+        {
+          "chapter_id": "chapter-018",
+          "offset": 508329,
+          "length": 35952
+        },
+        {
+          "chapter_id": "chapter-019",
+          "offset": 544320,
+          "length": 29460
+        },
+        {
+          "chapter_id": "chapter-020",
+          "offset": 573818,
+          "length": 31232
+        },
+        {
+          "chapter_id": "chapter-021",
+          "offset": 605082,
+          "length": 32215
+        },
+        {
+          "chapter_id": "chapter-022",
+          "offset": 637337,
+          "length": 28108
+        },
+        {
+          "chapter_id": "chapter-023",
+          "offset": 665479,
+          "length": 29542
+        },
+        {
+          "chapter_id": "chapter-024",
+          "offset": 695088,
+          "length": 32095
+        },
+        {
+          "chapter_id": "chapter-025",
+          "offset": 727215,
+          "length": 32651
+        },
+        {
+          "chapter_id": "chapter-026",
+          "offset": 759899,
+          "length": 37179
+        },
+        {
+          "chapter_id": "chapter-027",
+          "offset": 797115,
+          "length": 40706
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "3dbe1845a822271cd2b887ebb81301b05844f8fa24133b915e30da35e915483a",
+    "legacy_content_sha256": "5a546ad219d6886b3a43abcfe64f67147ff10db9b3ba2d5c501d89f3a0bb38f4",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json",
+    "current_declared_content_sha256": "5a546ad219d6886b3a43abcfe64f67147ff10db9b3ba2d5c501d89f3a0bb38f4"
+  },
+  "author_death_year": 1912,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "bcf205e4ea7d40c315911847bd68b655543ebb9bd1538eadcffef9278d8abcd2",
+    "url": "https://www.gutenberg.org/ebooks/345",
+    "author_catalog_strings": [
+      "Stoker, Bram, 1847-1912"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 28,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-000",
+        "sha256": "bb3e6a9bc8229f003502f05024f8188accd6bacdaa555d55b6cdea33bd33053b"
+      },
+      {
+        "id": "chapter-001",
+        "sha256": "ab02d7ae9c16f2caaf747dd6ce98a06216a6c47d31d47080392e67235dda889e"
+      },
+      {
+        "id": "chapter-002",
+        "sha256": "773f32177e1e4c00d25c8259bc46a4e9ce68d3a0cce351ab57bdde50bc3af987"
+      },
+      {
+        "id": "chapter-003",
+        "sha256": "7e877461fa16de18c50193b754dbacc0d2fea11b12d8010a97671d3ca6baf986"
+      },
+      {
+        "id": "chapter-004",
+        "sha256": "108c9c3b6a8c3ceb5f677d6c3338a369a005d25a605424dce53a633d9a77d4ac"
+      },
+      {
+        "id": "chapter-005",
+        "sha256": "31a91e56f56916734ee118e99a06e24c071e8effae0f62c4cf688afbc145cdeb"
+      },
+      {
+        "id": "chapter-006",
+        "sha256": "29c7706da3faf7efe7e00af461fe7f4a62e298dae6ed3251133d68883a96ffa0"
+      },
+      {
+        "id": "chapter-007",
+        "sha256": "e4e5b3858ac61b0a43aeac384c42ee3f197dc84b76b8e55c34ee5c10e9c26c87"
+      },
+      {
+        "id": "chapter-008",
+        "sha256": "75674a553219f47a1a5837ccbc324be942270382db6b4669354e456ca4c02f60"
+      },
+      {
+        "id": "chapter-009",
+        "sha256": "37ecd9bab83cdfc1221195d4d726ceb6bff2474aee065adbd14ff2fbfe26b4c9"
+      },
+      {
+        "id": "chapter-010",
+        "sha256": "4a3d342ed47ad54e0c740ab8862171b79d69de3607ffc429656020e6bf7f207c"
+      },
+      {
+        "id": "chapter-011",
+        "sha256": "9d3f13e6bb18075b5ea2fffc09c18f54469981d679e7e9b7195b7dc3f79f83b2"
+      },
+      {
+        "id": "chapter-012",
+        "sha256": "4b94cc588ed5d5f3b8d0f1c265d2f079df3bd84beb476238aa5ef1f352eed53d"
+      },
+      {
+        "id": "chapter-013",
+        "sha256": "a8914362562af6bc6f34ba77b699123a8b40c5d292ce235015f9399e5053af2b"
+      },
+      {
+        "id": "chapter-014",
+        "sha256": "eff8ccf9aff5f1a0cb43cd5242e903f510fbe365fd687457ff07bba175d73b82"
+      },
+      {
+        "id": "chapter-015",
+        "sha256": "92a0c94356235c54703ce273d6dbefdd6f2b6ba0381cd4cc0dd2c1e10404bff8"
+      },
+      {
+        "id": "chapter-016",
+        "sha256": "a7ce46204f29eafe3d871032722ff09a51844dfbac605ea16f2fd921cb8842b1"
+      },
+      {
+        "id": "chapter-017",
+        "sha256": "85e94e021da444362bd0b2301e9337b97585f28170960f3efe3fedbe7d94f769"
+      },
+      {
+        "id": "chapter-018",
+        "sha256": "fd5d78c67d0350c0db9d97d5717fd33c2a8e8fa2a3cd2f38e7ab2e17bcd877c4"
+      },
+      {
+        "id": "chapter-019",
+        "sha256": "dd87078320081951e4dbeb257c59c55d3c38e78869c8ddedaef63bdb86459a07"
+      },
+      {
+        "id": "chapter-020",
+        "sha256": "e8e2152c90150c5922ffd47dc75dcdfa0e113a753d6350bffd898b0b95d327a3"
+      },
+      {
+        "id": "chapter-021",
+        "sha256": "183bdec00631cee304e04c4503de8ad255f78a678d304749a37aea5bdfb54067"
+      },
+      {
+        "id": "chapter-022",
+        "sha256": "106fa15e68682484973de9fae8f48f4955ed03b5b5e2f9c22b65b335b82a1837"
+      },
+      {
+        "id": "chapter-023",
+        "sha256": "185de6b4b3ba5f30562978f04b9250fafcfbb8c09307183735d7a8ec15b3c40e"
+      },
+      {
+        "id": "chapter-024",
+        "sha256": "6612021df5eb3fa57697322f9505e2e905d2393f30b4888693b34d791532f411"
+      },
+      {
+        "id": "chapter-025",
+        "sha256": "e7bc93a3a6389d7def6f98590f70a69729a186af8af5ae11f8003f0096f24cb7"
+      },
+      {
+        "id": "chapter-026",
+        "sha256": "28f9318c658325c7a574ce41f57384b28a79fcd8832c3ad805f2ec3119b63e7e"
+      },
+      {
+        "id": "chapter-027",
+        "sha256": "d64d75988726daed802a7dbb4581f50afc170500a3ccaca703769596f9f929d6"
+      }
+    ],
+    "content_sha256": "0ab0060ec9b89c62f3d33b57b08831aca532dc79aea59d9cd7f83cc0f2d1e1d0"
+  }
 }

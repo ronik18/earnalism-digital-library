@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-empty-house",
+  "title": "The Adventure of the Empty House",
+  "generated_at": "2026-10-01T21:08:31.304682+00:00",
+  "content": {
+    "source_hash": "ee5dd7cf242158b7805d53f7d1c251893c338689056297a6e0a3fb23aca5f2b6",
+    "content_hash": "6bf0c63b087dee0ced53a0c8c74c637bf13e11aeda9ca65846a2d801c06dee21",
+    "provenance_hash": "d115aa91dc3a3bb82e642e4cc6cb2d0d02e207d6e0da6b19447bdbe11e3f2a2a",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "c69efd56fc102af63bf8476949724755db788a0dbbec5a62e5d2c66925eb0cf3",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Empty House",
+        "word_count": 8755,
+        "sha256": "1e97d33c69253a1322ddec44d72832feef63eec6c9f83fb0620aebc350cb6036"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "be1076a49db59807878a4940e30bf6a9268a31c545b295b868a87ba430851327"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "b63b4d826395bc802b4bfde37f98d277eeb44673862b202faa9e022ad494be7b",
+    "reader_manifest": "1f1c880da817e5811384c653bce7f44d9cca213d69b2303ed01387d5bd47440e",
+    "source_evidence": "be1076a49db59807878a4940e30bf6a9268a31c545b295b868a87ba430851327",
+    "approval_evidence": "2ed89c30eeed40144a511d282b5a7ea5c5f1462fea12f5ae803884eca4aaef1f"
+  },
+  "manifest_sha256": "8defb68cd9e65c5fb9b6fd635c57a8dc3805a7dced6120d07f7678e35fc8e694"
+}

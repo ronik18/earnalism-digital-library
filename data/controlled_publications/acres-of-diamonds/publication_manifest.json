@@ -1,0 +1,133 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "acres-of-diamonds",
+  "title": "Acres of Diamonds",
+  "generated_at": "2026-10-01T21:08:29.144952+00:00",
+  "content": {
+    "source_hash": "7d76b89150b79dc7511527704c2c07387913f3ea1904523b72c60e6742744c39",
+    "content_hash": "81cee3802b924fe4e2c5d504f4b8256455bb60a14c31055f50816a8bbbc2ab37",
+    "provenance_hash": "b2c2559b19431922e4c7eb02f43a34e5f8a91927b3b6486f88791292aec0924e",
+    "sanitized": true,
+    "chapter_count": 12,
+    "chapter_index_sha256": "2616b0226b4d9b08042bd64f32bbb32e232d5f4ee870cffc6ea66c109b8f4d44",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "AN APPRECIATION",
+        "word_count": 281,
+        "sha256": "0b96f420adae8377311fd8b0c46a422e54f1e99d2060049e220d432e12be75e7"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "ACRES OF DIAMONDS",
+        "word_count": 15688,
+        "sha256": "a100a00e49d0942e69105f6392e520cd4f4fa0818e1f0806c8ebe7f0de2dd6e4"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "I. THE STORY OF THE SWORD",
+        "word_count": 3088,
+        "sha256": "14b0dd55652724a5398d4887e84c6716ff642e13a818a18b30706dad6ae4b745"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "II. THE BEGINNING AT OLD LEXINGTON",
+        "word_count": 2907,
+        "sha256": "ab1fec1a0b149a93b2ba821f982048584f8c808e4e839d41208378741a2dfd17"
+      },
+      {
+        "id": "chapter-005",
+        "order": 5,
+        "title": "III. STORY OF THE FIFTY-SEVEN CENTS",
+        "word_count": 1518,
+        "sha256": "6162e07e1b2656da98c917613cb3e40e953743a0a183fbb0c95269bae67c300e"
+      },
+      {
+        "id": "chapter-006",
+        "order": 6,
+        "title": "IV. HIS POWER AS ORATOR AND PREACHER",
+        "word_count": 2779,
+        "sha256": "7e0d097993d904a7744fa5b4af223ccb7d08057200df0c4772ce6335a2fd8409"
+      },
+      {
+        "id": "chapter-007",
+        "order": 7,
+        "title": "V. GIFT FOR INSPIRING OTHERS",
+        "word_count": 2886,
+        "sha256": "7bf13d2ab858fccffc31f278f2bba3efaabb4fe77978246e0fc98434640255c3"
+      },
+      {
+        "id": "chapter-008",
+        "order": 8,
+        "title": "VI. MILLIONS OF HEARERS",
+        "word_count": 3497,
+        "sha256": "46446338902ad15f0f4426494a0f9da44e34b557991e5d8aa0d24ea588ad1741"
+      },
+      {
+        "id": "chapter-009",
+        "order": 9,
+        "title": "VII. HOW A UNIVERSITY WAS FOUNDED",
+        "word_count": 3749,
+        "sha256": "188714d4ce92790cb3bd4bee7efa682f636ca8dadf6cb749c674ec36173329d9"
+      },
+      {
+        "id": "chapter-010",
+        "order": 10,
+        "title": "VIII. HIS SPLENDID EFFICIENCY",
+        "word_count": 2838,
+        "sha256": "1a009448e9768cbf3702665b8c3bb8a99c2fa23195dd1beacf0db02770080a18"
+      },
+      {
+        "id": "chapter-011",
+        "order": 11,
+        "title": "IX. THE STORY OF ACRES OF DIAMONDS",
+        "word_count": 2637,
+        "sha256": "bfaa3c6c5fbdb07000d6ec990bbdefaec163f7479602f710275a1547a561da22"
+      },
+      {
+        "id": "chapter-012",
+        "order": 12,
+        "title": "FIFTY YEARS ON THE LECTURE PLATFORM",
+        "word_count": 2176,
+        "sha256": "dd4329411e50159b4c0806c37b31a17133dcfd29aab233fe97aac41004abf2f6"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "bdec978679801f472679278b0b2508c0b3e746dfd99d6a753807c114f4335c4f"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950259/earnalism/covers/front/cover_fe1c453a-e7aa-41cd-b5ba-b49904757430.png",
+    "blockers": [
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "b77d8dc1ae05f32dcd5371ecdba824d919f4cd65f8696d83feb5f5ecb9a52697",
+    "reader_manifest": "578f3b135a997a082abc385085dc591941c84c2687605bc3628263c488d0615c",
+    "source_evidence": "bdec978679801f472679278b0b2508c0b3e746dfd99d6a753807c114f4335c4f",
+    "approval_evidence": "a956284fbc1b1e4781c33a43ec24a23b0be1135b3ab9db5b5b2b8b638d8cdf8b"
+  },
+  "manifest_sha256": "119020434c24d7d5eeec5f4dfd930348611448ceef5776560762164345391f26"
+}

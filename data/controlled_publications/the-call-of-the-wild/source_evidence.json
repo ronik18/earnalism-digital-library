@@ -9,5 +9,168 @@
   "rights_basis": "Jack London died in 1916, so the original literary work is public domain in India under life plus 60 years. Original publication in 1903 supports U.S. public-domain status.",
   "downloaded_at": "2026-05-24T04:14:18.062170+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #215",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/215",
+      "resolved_url": "https://www.gutenberg.org/ebooks/215",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:38.972738+00:00",
+      "response_sha256": "c99afed481fff4d12f65ec6bd118d61df86d89fa016230dd83000576636e4809"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/215.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/215/pg215.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:43.743462+00:00",
+      "response_sha256": "30f569c5671bba7bbc4a92ab6d8ee01a0d3be00f994819c77da62c28041eb8a2"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "London, Jack, 1876-1916"
+      ],
+      "Title": [
+        "The call of the wild"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Call_of_the_Wild"
+      ],
+      "Credits": [
+        "Ryan, Kirstin, Linda and Rick Trapp and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 77.5 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Dogs -- Fiction",
+        "Adventure stories",
+        "Nature stories",
+        "Klondike River Valley (Yukon) -- Fiction",
+        "Sled dogs -- Fiction",
+        "Pet theft -- Fiction",
+        "Feral dogs -- Fiction",
+        "Animal welfare -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "215"
+      ],
+      "Release Date": [
+        "Jul 2, 2008"
+      ],
+      "Last Update": [
+        "Aug 4, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "19756 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1167,
+          "length": 20531
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 21736,
+          "length": 18272
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 40052,
+          "length": 28289
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 68380,
+          "length": 17464
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 85884,
+          "length": 29521
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 115440,
+          "length": 26325
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 141804,
+          "length": 34227
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "e446f6fca02fb231d502760a82af57631256a51631c55421fb4a6c4891daf78a",
+    "legacy_content_sha256": "71dff1f58d48cd71957425bc2a4a9ebba42925495feeb18eea9d4ffe15072d85",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1916,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "c99afed481fff4d12f65ec6bd118d61df86d89fa016230dd83000576636e4809",
+    "url": "https://www.gutenberg.org/ebooks/215",
+    "author_catalog_strings": [
+      "London, Jack, 1876-1916"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 7,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "6ea8f908301e78416b40583c2c62e822463a20e841e52a6496b5e0388eb31124"
+      },
+      {
+        "id": "chapter-002",
+        "sha256": "98127e9f574ecae3026499e0769a680854598689d26dbc93a19f5008251c05a7"
+      },
+      {
+        "id": "chapter-003",
+        "sha256": "b4264259c059d87d53535b1aabd00f00c70779cd5001fafd1edf0646a8ffaf8e"
+      },
+      {
+        "id": "chapter-004",
+        "sha256": "a965824fe166c058d5bf74b6bb62caa5e3ea2c0d913fb7a83d46a697ddd7a101"
+      },
+      {
+        "id": "chapter-005",
+        "sha256": "3a23f434c7742466496005457bd83b847ee8655c2e4fa926109140ba670bcfad"
+      },
+      {
+        "id": "chapter-006",
+        "sha256": "309bebb9c1ff96b56842f848e0f56032d1198552af856d1d4941f7365e9b87fc"
+      },
+      {
+        "id": "chapter-007",
+        "sha256": "a0f7e7ed798258e92dbbeca9091e0009a9f39b2458b60585bb1b1d3ed0b74191"
+      }
+    ],
+    "content_sha256": "4b029c10c8cff516ed6f07f1928e55775ed7fd8d3d03dcf61f7ace0c55e8aa90"
+  }
 }

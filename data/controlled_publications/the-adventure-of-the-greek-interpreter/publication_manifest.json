@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-greek-interpreter",
+  "title": "The Adventure of the Greek Interpreter",
+  "generated_at": "2026-10-01T21:08:31.526590+00:00",
+  "content": {
+    "source_hash": "aa6f1872895a1f746245d8a9e4eeaa68ac19f0ea6ac259552419dbf3f3805c89",
+    "content_hash": "113b1df0730720eadc7859f2b8ffe1d73ec9d0de519c8006afede5e9b23bef2b",
+    "provenance_hash": "982369d476f0fe63c49023b7b7d30c4502ae57a16b3068aeef1854f883a87ca7",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "f9d7cdddc3dd836612a8a88f4a7c6d15d31acd1016dd01ed051ec201875d52ab",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Greek Interpreter",
+        "word_count": 7059,
+        "sha256": "ec4b917db86e196905a8c7e847b79da50109e582aa6808557175ff953ba663ae"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "d501f6016c5082d13364168147041ad8369946a6c9a1eb3c0cc8f5ddd2146917"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "a30556f97a3c0dd4f7e0c0d3fd9be31aa4452b4b4f552c3a310992c8b7e63e77",
+    "reader_manifest": "65b89a3fd16271b3c1af60b67672aec9432d867ca4168a3e8f9027190657685c",
+    "source_evidence": "d501f6016c5082d13364168147041ad8369946a6c9a1eb3c0cc8f5ddd2146917",
+    "approval_evidence": "c576ed3a0b7a8ac54de0f8d37dbbfb454192e619e15a89484543f290ac1ceaf7"
+  },
+  "manifest_sha256": "d935736239aea497581981423e3a2f636e3250def43c029712825d04c5d42661"
+}

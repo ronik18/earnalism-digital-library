@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-five-orange-pips",
+  "title": "The Five Orange Pips",
+  "generated_at": "2026-10-01T21:08:32.578492+00:00",
+  "content": {
+    "source_hash": "5d37ae2d72dd6654476af65bcaeabefeb7d0f105910f7e0070803fce1e6a767e",
+    "content_hash": "879efaad73ff552d7c0b7bafc862306936c5aaa1d278dd9e89ecc3a3c9e5c213",
+    "provenance_hash": "eb6e24a5e4ee9a56708d8001f1736cdb05ec1f31bbe72be7739b0536b91dc6bb",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "f1bde04d4b299f0dfe4dec258a5dbda1566190cec76651528352b31f794e23af",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Five Orange Pips",
+        "word_count": 7342,
+        "sha256": "73e4e3c28a0aa9601d88c8ee192f32bce6feb3aceea92420ff4b902ddff4dbf5"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "0eb7b39c379dd31d1e365d6b2492bd7bdbf0dd292b3c112cf57b32fcdfc268a8"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "480c8f53eeda7665a0311ea1eed7023da609552547297fc5b14f54ba186a00c0",
+    "reader_manifest": "9e660d67515f7bd0a8ef45402eace1039a6cd3dc81cc75eeb210390fccf72210",
+    "source_evidence": "0eb7b39c379dd31d1e365d6b2492bd7bdbf0dd292b3c112cf57b32fcdfc268a8",
+    "approval_evidence": "23e79fc9ba56f77e3ddad9f8af4fe79761766f188cbec45dbe02144d8de6c1ad"
+  },
+  "manifest_sha256": "2be73685b0e277a14569d16fad0eea29a8b774e599422f2009f2563115af1553"
+}

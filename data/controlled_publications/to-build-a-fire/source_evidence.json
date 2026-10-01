@@ -9,5 +9,116 @@
   "rights_basis": "Jack London died 1916; first published 1908. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:21.985891+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #2429",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2429",
+      "resolved_url": "https://www.gutenberg.org/ebooks/2429",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:32.722554+00:00",
+      "response_sha256": "23268dfd18d7e5c53c44004eccabd00396cb3ec9e1e0f7e0450c9e75fb9e333e"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2429.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2429/pg2429.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:37.763153+00:00",
+      "response_sha256": "1ffdf4b6e733fca15f7c4c57c409a6db4eb33129e8ff9a8f3dcc2867836b8c7d"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "London, Jack, 1876-1916"
+      ],
+      "Title": [
+        "Lost Face"
+      ],
+      "Original Publication": [
+        "[S.l.] :  Mills and Boon,  1919"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Lost_Face"
+      ],
+      "Contents": [
+        "Lost face -- Trust -- To build a fire -- That spot -- Flush of gold -- The passing of Marcus O'Brien -- The wit of Porportuk."
+      ],
+      "Credits": [
+        "Transcribed from the 1919 Mills and Boon edition by David Price"
+      ],
+      "Reading Level": [
+        "Reading ease score: 82.3 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Short stories",
+        "Western stories",
+        "American fiction -- 20th century",
+        "Adventure stories, American"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "2429"
+      ],
+      "Release Date": [
+        "Dec 1, 2000"
+      ],
+      "Last Update": [
+        "Feb 19, 2016"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "2363 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 54615,
+          "length": 37717
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "01770bd52b8e43a3c0eac921a04cd3f7e8d910810320fd17d582e96291dac097",
+    "legacy_content_sha256": "4dbb7f503073624760a333093d26e14db402904201a956729530f59bfbf3d6b8",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1916,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "23268dfd18d7e5c53c44004eccabd00396cb3ec9e1e0f7e0450c9e75fb9e333e",
+    "url": "https://www.gutenberg.org/ebooks/2429",
+    "author_catalog_strings": [
+      "London, Jack, 1876-1916"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "71d79b337afde5a79ad2484c79c38d1cdf0b031f7cf0320422e6000d89b08765"
+      }
+    ],
+    "content_sha256": "71d79b337afde5a79ad2484c79c38d1cdf0b031f7cf0320422e6000d89b08765"
+  }
 }

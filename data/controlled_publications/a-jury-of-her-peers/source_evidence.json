@@ -9,5 +9,100 @@
   "rights_basis": "Susan Glaspell died 1948; first published 1917. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.503048+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #20872",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/20872",
+      "resolved_url": "https://www.gutenberg.org/ebooks/20872",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:25.495255+00:00",
+      "response_sha256": "cfbc03d078079e74f5ba6074d96424caaa4c10662694a5e1ef8e2adfe8477af7"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/20872.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/20872/pg20872.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:31.141940+00:00",
+      "response_sha256": "f011e7e8f943cee34701f2c807a35c34af76592307f213602470c9140461032f"
+    },
+    "bibliographic_metadata": {
+      "Editor": [
+        "O'Brien, Edward J. (Edward Joseph), 1890-1941"
+      ],
+      "Title": [
+        "The best short stories of 1917, and the yearbook of the American short story"
+      ],
+      "Contents": [
+        "Excursion / Edwina Stanton Babcock -- Onnie / Thomas Beer -- Cup of tea / Maxwell Struthers Burt -- Lonely places / Francis Buzzell -- Boys will be boys / Irvin S. Cobb -- Laughter / Charles Caldwell Dobie -- Emperor of Elam / H.G. Dwight -- Gay old dog / Edna Ferber -- Knight's move / Katharine Fullerton Gerould -- Jury of her peers / Susan Glaspell -- Bunker mouse / Frederick Stuart Greene -- Rainbow Pete / Richard Matthews Hallet -- Get ready the wreaths / Fannie Hurst -- Strange looking man / Fanny Kemble Johnson --Caller in the night / Burton Kline -- Interval / Vincent O'Sullivan -- Certain rich man / Lawrence Perry -- Path of glory / Mary Brecht Pulver -- Ching, ching, chinaman / Wilbur Daniel Steele -- None so blind / Mary Synon."
+      ],
+      "Credits": [
+        "Produced by Suzanne Lybarger, Chuck Greif and the Online Distributed Proofreading Team at www.pgdp.net"
+      ],
+      "Reading Level": [
+        "Reading ease score: 83.5 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Short stories, American",
+        "American fiction -- 20th century",
+        "Short stories -- 20th century -- Bibliography",
+        "Short stories -- 20th century -- Indexes"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "20872"
+      ],
+      "Release Date": [
+        "Mar 22, 2007"
+      ],
+      "Last Update": [
+        "Jan 1, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1958 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 495379,
+          "length": 43990
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "c19fcfb420fe99571e830c0794a0625d72ac2c74630ca7e4af2ec49202ec2b43",
+    "legacy_content_sha256": "a9ef4839bef2ff5bf3c8f3ea7765dd131a04f0b3deda047c75efec96419b4325",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "174c89fb3060de3479e5beed24c45b23fd7e15f9daf42ba9650c148e540ce6b6"
+      }
+    ],
+    "content_sha256": "174c89fb3060de3479e5beed24c45b23fd7e15f9daf42ba9650c148e540ce6b6"
+  }
 }

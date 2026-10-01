@@ -9,5 +9,98 @@
   "rights_basis": "public_domain",
   "downloaded_at": "2026-07-01T10:36:20Z",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #10007",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/10007",
+      "resolved_url": "https://www.gutenberg.org/ebooks/10007",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:00.788370+00:00",
+      "response_sha256": "23a6cfda08b054fe6d7054047670cfeadbae600ef0f40c1adc2f53617fbf8c1a"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/10007.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/10007/pg10007.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:05.523264+00:00",
+      "response_sha256": "f751453ef6ad9363a7e31f63b8d4ef830c7ea20a2aba465a59fb6fbee6bbddca"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Le Fanu, Joseph Sheridan, 1814-1873"
+      ],
+      "Title": [
+        "Carmilla"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Carmilla"
+      ],
+      "Credits": [
+        "Suzanne Shell, Sjaani and PG Distributed Proofreaders"
+      ],
+      "Reading Level": [
+        "Reading ease score: 76.7 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Young women -- Fiction",
+        "Vampires -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "10007"
+      ],
+      "Release Date": [
+        "Nov 1, 2003"
+      ],
+      "Last Update": [
+        "Oct 28, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "15136 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1300,
+          "length": 154601
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "78e7f997e45a31d35a792805a1aec2800a896adee030c9b459f2357aee8db2c5",
+    "legacy_content_sha256": "5b54ba7acab17ed4c6819f91a713736b22adaedf797fac9425e5d1ecbd90fa4b",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "6d6a61c0239972fd2b3be28f3d531b800f2bff6c555d8b3d5357e03e997a416a"
+      }
+    ],
+    "content_sha256": "6d6a61c0239972fd2b3be28f3d531b800f2bff6c555d8b3d5357e03e997a416a"
+  }
 }

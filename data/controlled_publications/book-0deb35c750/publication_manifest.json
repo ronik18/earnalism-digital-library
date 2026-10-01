@@ -3,21 +3,21 @@
   "schema_version": 1,
   "slug": "book-0deb35c750",
   "title": "খাতা",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-01T21:16:37.084971+00:00",
   "content": {
     "source_hash": "81d68d7027dc2f7da5bf8a8faa40e25eb44978565615ff747af4215b396acb13",
     "content_hash": "f377ea836992c1f446d96cdac06abf5a2e2ad2ec300d68fad33950b4c6075ee8",
     "provenance_hash": "5603869f188f26317b44ad1054d1f4429c08f9546ca094393484872302cfcaa3",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "cd725e4bb42b83aea60c5128c9f03bea7e35fbf96e64d30104361acbacea1245",
+    "chapter_index_sha256": "a0d93ccd7ba1b8f1de7650dcc202cc85755bf7dde6484ee2125b1345e8975aa6",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "Full Text",
-        "word_count": 1549,
-        "sha256": "d09c20dda77a38488e1c6f9c04c9fdee305c0695f3c416d9c0d9c1ca2deb1373"
+        "word_count": 1538,
+        "sha256": "f5b4f1740600115909c851b42d04400bd12a15047aaf28d62ec4046bdbe2af67"
       }
     ]
   },
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "14dec4baca2503c1d46af81b96afa879f7c4e13bc62fd080f3c26ee6fdf9f55b"
+    "evidence_sha256": "0261661235f7de18d6dc08a02c620aad2664c2256d360c20144f6979b207ccdc"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -47,10 +47,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "70674aad6d1e2ae3ad67c1037cda59e5187cf9a48b2800f39663051b8cd2705b",
-    "reader_manifest": "6da2762a70d1c975330429a9cb1876ae0c519012e6b01266181634f66ea2a37a",
-    "source_evidence": "14dec4baca2503c1d46af81b96afa879f7c4e13bc62fd080f3c26ee6fdf9f55b",
+    "public_book": "afeaa6f020aff2080af4fbc9392cdb80957ccba27dffe651597cd9b2b0f6b620",
+    "reader_manifest": "fdbbb989abebba85a0c4028f9ca96d0cef144a9c59b1f4d342caac4bc20d5890",
+    "source_evidence": "0261661235f7de18d6dc08a02c620aad2664c2256d360c20144f6979b207ccdc",
     "approval_evidence": "0624942ae48f22620e2fcf4447c5b5ddc2171af8c379a212c58748ebf6009bb5"
   },
-  "manifest_sha256": "ccdba778c98f1165af640747ceaf1b520b5d31ffdb0f95bcc626cb1b1be5609b"
+  "manifest_sha256": "9e72064037100991b07ea6b1b2395937bda372a359d35609b4fb52e88cda0e0b"
 }

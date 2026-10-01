@@ -1,0 +1,64 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-lifted-veil",
+  "title": "The Lifted Veil",
+  "generated_at": "2026-10-01T21:08:33.026820+00:00",
+  "content": {
+    "source_hash": "53fcae1e2c80c9265a01a5d40a3e35bb661e311018ba965982306be7bf3abff6",
+    "content_hash": "219375fc5342ed68872f60e0aa9cd130666c6b09fbbab4add27a550d9c6f068e",
+    "provenance_hash": "6a1c7c08efed73d87d76e7e99145d2df2166ad241cba7e35396022c6ff7b4469",
+    "sanitized": true,
+    "chapter_count": 2,
+    "chapter_index_sha256": "fa8d8bd19081af66a31a08d28b86c9fdfd5dabfcdbd67bbcec1740972b996683",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "CHAPTER I",
+        "word_count": 9204,
+        "sha256": "fa2128719bfb107386fb0e44fa8a8ce721cf435a737ff738bf9552db5d7ec292"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "CHAPTER II",
+        "word_count": 8489,
+        "sha256": "54cca76528a8f61f8024406bd99e019e0c6e30c13cf60ca0a04bb41f11c47b6e"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "1dbf3f47664100563c78d4d7f280a24e15a11c32692b2188405052cf47f755ce"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "af4782533a36ed1362bef06a292438f3082f87df1c97dd46fd8393345df4e8cb",
+    "reader_manifest": "9db3e6b1e0d52ff3c6cbe25cb20595b66ff51b34337ca44cfe04b0beffa218b8",
+    "source_evidence": "1dbf3f47664100563c78d4d7f280a24e15a11c32692b2188405052cf47f755ce",
+    "approval_evidence": "fb5f2baededb0dfa7fb5f9489ecd6390b9ad8542ba2f2096e3c63d9cc55d1dfb"
+  },
+  "manifest_sha256": "c22cc213d0ec342af98d2710aff10b1cb3be056c4436d658a3e21469d1736628"
+}

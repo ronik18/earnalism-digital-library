@@ -9,5 +9,112 @@
   "rights_basis": "Nathaniel Hawthorne died 1864; first published 1844. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.078560+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #512",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/512",
+      "resolved_url": "https://www.gutenberg.org/ebooks/512",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:51.868236+00:00",
+      "response_sha256": "12ba4335b43efe5056d082426a6c363cf8951bfa258b8fa8377d856749db86b2"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/512.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/512/pg512.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:57.734853+00:00",
+      "response_sha256": "d9a0cc1df0c41f87ffe61076e23383a4223369105223318542dca83914b156d4"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Hawthorne, Nathaniel, 1804-1864"
+      ],
+      "Title": [
+        "Mosses from an old manse"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Mosses_from_an_Old_Manse"
+      ],
+      "Contents": [
+        "The old manse -- The birthmark -- A select party -- Young Goodman Brown -- Rappaccini's daughter -- Mrs. Bullfrog -- Fire worship -- Buds and bird voices -- Monsieur du Miroir -- The hall of fantasy -- The celestial railroad -- The procession of life -- Feathertop: a moralized legend -- The new Adam and Eve -- Egotism; or, The bosom serpent -- The Christmas banquet -- Drowne's wooden image -- The intelligence office -- Roger Malvin's burial -- P.'s correspondence -- Earth's holocaust -- Passages from a relinquished work -- Sketches from memory -- The old apple dealer -- The artist of the beautiful -- A virtuoso's collection."
+      ],
+      "Credits": [
+        "Charles Keller",
+        "Charles Keller"
+      ],
+      "Reading Level": [
+        "Reading ease score: 63.7 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Short stories, American",
+        "New England -- Social life and customs -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "512"
+      ],
+      "Release Date": [
+        "Apr 1, 1996"
+      ],
+      "Last Update": [
+        "Nov 9, 2022"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "5887 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 161185,
+          "length": 65442
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "5c406033a5c3d1c4f7ccafb13ad5303d631cc19ad4403382407fcbb435e71d4a",
+    "legacy_content_sha256": "57b2ef721088ddee8684f8f1d080065501760da3659ef86e11453d43e6355959",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1864,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "12ba4335b43efe5056d082426a6c363cf8951bfa258b8fa8377d856749db86b2",
+    "url": "https://www.gutenberg.org/ebooks/512",
+    "author_catalog_strings": [
+      "Hawthorne, Nathaniel, 1804-1864"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "53085b079b15213a5456edfb86198a6cefcdef68a877f3c3606fd0236a778dd3"
+      }
+    ],
+    "content_sha256": "53085b079b15213a5456edfb86198a6cefcdef68a877f3c3606fd0236a778dd3"
+  }
 }

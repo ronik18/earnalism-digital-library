@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-blue-carbuncle",
+  "title": "The Adventure of the Blue Carbuncle",
+  "generated_at": "2026-10-01T21:08:31.079499+00:00",
+  "content": {
+    "source_hash": "8a37410ac7374823466af3ed1332e7b85235aca89e4c39cc12bd9834696cbddc",
+    "content_hash": "2b480523e8ff22604f51984f6fbd495a5ab02b7213247985a4ca18de1a2c22fe",
+    "provenance_hash": "0ee937916f54c6bc72d06dddc2cd8f2af82a7a1671389d63349552ccbc82972e",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "d89ffb4428a0d3b2f75c211a27830a63aad23f530c6e642ae522c5b4e0cc8886",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Blue Carbuncle",
+        "word_count": 7894,
+        "sha256": "211044d68c58cad4de2e4071a6be9e856615880675a360bb356c4062a150e4ea"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "fd0a6d502f5c965cf63ad8032791659ec58f8162f3d0d714c1c57e9633366571"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "dc2a5a960704e36f0c1f0b8e0367464be529835687d1c7f6c75b7e584113aa9d",
+    "reader_manifest": "f32bd6eddf5ce3b187a963e77b5dac9c136270380db888fa71c1373d4e52b96d",
+    "source_evidence": "fd0a6d502f5c965cf63ad8032791659ec58f8162f3d0d714c1c57e9633366571",
+    "approval_evidence": "2cb6989d8f241d945e069a6a22d9d75ad2534ab80a9e7fdcb67bfa3565e74bc7"
+  },
+  "manifest_sha256": "94f6147bfc4eef41221b4d806eaea797866f833307b00b1a83cb46c5bc007ea2"
+}

@@ -9,5 +9,127 @@
   "rights_basis": "Author died 1943. Published 1902. Pre-1928 publication supports U.S. public-domain status.",
   "downloaded_at": "2026-06-02T18:57:41.204337+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #12122",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/12122",
+      "resolved_url": "https://www.gutenberg.org/ebooks/12122",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:07.016130+00:00",
+      "response_sha256": "00845b95a2909cee3db20b6caf83707ee24cdd8d25a579f5b532484f2860d345"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/12122.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/12122/pg12122.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:11.240432+00:00",
+      "response_sha256": "22f3431a7db6d9e210ffb446044739513475cb93992421d1b0d107f094d7408d"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Jacobs, W. W. (William Wymark), 1863-1943"
+      ],
+      "Illustrator": [
+        "Greiffenhagen, Maurice, 1862-1931",
+        "Richards, Amy, active 1896-1918"
+      ],
+      "Title": [
+        "The Monkey's Paw The Lady of the Barge and Others, Part 2."
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Monkey%27s_Paw"
+      ],
+      "Credits": [
+        "Produced by David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 83.4 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Horror tales",
+        "Wishes -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "12122"
+      ],
+      "Release Date": [
+        "Apr 1, 2004"
+      ],
+      "Last Update": [
+        "Oct 28, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "8434 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "SOURCE_TEXT_DIFFERS",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 951,
+          "length": 9463
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 10419,
+          "length": 5240
+        }
+      ],
+      "nonmatching_chapters": [
+        "chapter-003"
+      ],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "e435de0511bd61d2373a445b0c5e054b747072357b5373e27b7a4b8a5b40cd01",
+    "legacy_content_sha256": "249f95e4db53ad41f61ced9377faa84de5a03582a16a4981abb930a332b3f8b7",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1943,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "00845b95a2909cee3db20b6caf83707ee24cdd8d25a579f5b532484f2860d345",
+    "url": "https://www.gutenberg.org/ebooks/12122",
+    "author_catalog_strings": [
+      "Jacobs, W. W. (William Wymark), 1863-1943"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 3,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "1184a3e5b2d86508fc2c6bceac7519235581387e02e31a2c2dbfab03628ac942"
+      },
+      {
+        "id": "chapter-002",
+        "sha256": "d0eafaa9c6af9c96bd56ce956a8f59ba94da1ec9e19b3e6cf38b4f8b206cc9ee"
+      },
+      {
+        "id": "chapter-003",
+        "sha256": "7ad74f2ca75e5d2e5f1dbc0a43c440f9fb510cbcc32e739ec634b0cc21b30758"
+      }
+    ],
+    "content_sha256": "993ea84df5163bddcb4d4579a78ee5fb4b5ad9002a9659f9ac2e2f73198ec6b7"
+  }
 }

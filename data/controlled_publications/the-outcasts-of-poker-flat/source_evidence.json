@@ -9,5 +9,108 @@
   "rights_basis": "Bret Harte died 1902; first published 1869. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.195642+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #6373",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/6373",
+      "resolved_url": "https://www.gutenberg.org/ebooks/6373",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:53.358676+00:00",
+      "response_sha256": "c0f48a3238d5d4f0560f77bb650273821aa907413f5c6811ab39357b08abdfb0"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/6373.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/6373/pg6373.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:58.698241+00:00",
+      "response_sha256": "c19400f79c45463f6d35be61868b604f45dba60c4841769cb1f11543be1baee1"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Harte, Bret, 1836-1902"
+      ],
+      "Title": [
+        "The Luck of Roaring Camp and Other Tales With Condensed Novels, Spanish and American Legends, and Earlier Papers"
+      ],
+      "Contents": [
+        "General introduction -- The luck of Roaring Camp and other sketches: The luck of Roaring camp. The outcasts of Poker Flat. Miggles. Tennessee's partner. The idyl of Red Gulch. Brown of Calaveras -- Condensed novels: Muck-a-Muck: a modern Indian novel. Selina Sedilla. The ninety-nine guardsmen. Miss Mix. Mr. Midshipman Breezy: a naval officer. Guy Heavystone, or \"Entire\": a muscular novel. John Jenkins, or, the smoker reformed. Fantine; after the French of Victor Hugo. \"La femme\"; after the French of M. Michelet. The dweller of the threshold. N N.: being a novel in the French paragraphic style. No title. Handsome is as handsome does. Lothaw, or, the adventures of a young gentleman in search of a religion. The haunted man: a Christmas story. Terence Denville. Mary McGillup. The hoodlum band; or, the boy chief, the infant politician, and the pirate prodigy -- Earlier sketches: M'liss: an idyl of Red Mountain. High-water mark. A lonely ride. The man of no account. Notes by flood and field. Waiting for the ship: a Fort Point idyl. A night at Wingdam -- Spanish and American legends: The legend of Monte del Diablo. The right eye of the commander. The legend of Devil's Point. The adventure of Padre Vicentio: a legend of San Francisco. The devil and the broker: a mediaeval legend. The ogress of silver land, or the diverting history of Prince Badfellah and Prince Bulleboye. The Christmas gift that came to Rupert: a story for little soldiers."
+      ],
+      "Credits": [
+        "Skip Doughty, Juliet Sutherland, Charles Franks and the Online Distributed Proofreading Team HTML file produced by David Widger Revised by Richard Tonsing."
+      ],
+      "Reading Level": [
+        "Reading ease score: 71.1 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Western stories",
+        "Frontier and pioneer life -- West (U.S.) -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "6373"
+      ],
+      "Release Date": [
+        "Aug 1, 2004"
+      ],
+      "Last Update": [
+        "Aug 28, 2022"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1682 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 43379,
+          "length": 23301
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "33981862ad30151ecb5c3224bbe5482be150e0d6868bc1355c3b3ec919dc39a1",
+    "legacy_content_sha256": "68844ac3c0ca7badcbaf95b7945501fb789b7dfc9206eb0ed10c6cbea6b34ad6",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1902,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "c0f48a3238d5d4f0560f77bb650273821aa907413f5c6811ab39357b08abdfb0",
+    "url": "https://www.gutenberg.org/ebooks/6373",
+    "author_catalog_strings": [
+      "Harte, Bret, 1836-1902"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "c1d1338d73235b3f05c710e0b170b9a600b69956ca89220291e4ada43a6cef20"
+      }
+    ],
+    "content_sha256": "c1d1338d73235b3f05c710e0b170b9a600b69956ca89220291e4ada43a6cef20"
+  }
 }

@@ -9,5 +9,326 @@
   "rights_basis": "public_domain",
   "downloaded_at": "2026-07-01T10:36:20Z",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #583",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/583",
+      "resolved_url": "https://www.gutenberg.org/ebooks/583",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:52.168116+00:00",
+      "response_sha256": "5e46e61a79f86038112b254bb492aea977051c15384dee18a5f84be6b9e52947"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/583.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/583/pg583.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:58.010117+00:00",
+      "response_sha256": "c8cb8872f6c0a2a5b6489873c6c7b8c39f006c3fa44219738186a96f2c1d1254"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Collins, Wilkie, 1824-1889"
+      ],
+      "Title": [
+        "The Woman in White"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Woman_in_White_(novel)"
+      ],
+      "Reading Level": [
+        "Reading ease score: 78.5 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Inheritance and succession -- Fiction",
+        "England -- Fiction",
+        "Psychological fiction",
+        "Love stories",
+        "Country homes -- Fiction",
+        "Gothic fiction",
+        "Nobility -- Fiction",
+        "Deception -- Fiction",
+        "Art teachers -- Fiction",
+        "Psychiatric hospital patients -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "583"
+      ],
+      "Release Date": [
+        "Jul 1, 1996"
+      ],
+      "Last Update": [
+        "Jul 28, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "19309 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "SOURCE_TEXT_DIFFERS",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1531,
+          "length": 85816
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 87353,
+          "length": 99455
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 186814,
+          "length": 72102
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 258956,
+          "length": 23224
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 334838,
+          "length": 72387
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 407243,
+          "length": 160903
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 568164,
+          "length": 71944
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 640114,
+          "length": 69718
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 709864,
+          "length": 3318
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 713254,
+          "length": 41408
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 754702,
+          "length": 90887
+        },
+        {
+          "chapter_id": "chapter-013",
+          "offset": 845703,
+          "length": 12677
+        },
+        {
+          "chapter_id": "chapter-014",
+          "offset": 858412,
+          "length": 463
+        },
+        {
+          "chapter_id": "chapter-015",
+          "offset": 858907,
+          "length": 660
+        },
+        {
+          "chapter_id": "chapter-016",
+          "offset": 859602,
+          "length": 266
+        },
+        {
+          "chapter_id": "chapter-017",
+          "offset": 859906,
+          "length": 10300
+        },
+        {
+          "chapter_id": "chapter-018",
+          "offset": 870223,
+          "length": 145486
+        },
+        {
+          "chapter_id": "chapter-019",
+          "offset": 1015715,
+          "length": 110956
+        },
+        {
+          "chapter_id": "chapter-020",
+          "offset": 1126710,
+          "length": 28605
+        },
+        {
+          "chapter_id": "chapter-021",
+          "offset": 1155356,
+          "length": 128172
+        },
+        {
+          "chapter_id": "chapter-022",
+          "offset": 1283586,
+          "length": 318
+        },
+        {
+          "chapter_id": "chapter-023",
+          "offset": 1283927,
+          "length": 32593
+        },
+        {
+          "chapter_id": "chapter-024",
+          "offset": 1316561,
+          "length": 30026
+        },
+        {
+          "chapter_id": "chapter-025",
+          "offset": 1346601,
+          "length": 202
+        }
+      ],
+      "nonmatching_chapters": [
+        "chapter-005"
+      ],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "4cd6eea24d65d0aff7ff70e5b2ef74a0653d52a4e2eed8c6c3a9bd332e3ba9a1",
+    "legacy_content_sha256": "de195bde3be096db2abcbebc33011f65e50239d2e3b225bfb951ed179c6872e3",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1889,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "5e46e61a79f86038112b254bb492aea977051c15384dee18a5f84be6b9e52947",
+    "url": "https://www.gutenberg.org/ebooks/583",
+    "author_catalog_strings": [
+      "Collins, Wilkie, 1824-1889"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 25,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "a18d55438fd850a26a53534232498d58d6a04a59d0b9e93f87f10dc553fba44a"
+      },
+      {
+        "id": "chapter-002",
+        "sha256": "927292e6ec46a4b4ee77e398fe6aa5d118ddb34d0b1f1b2b18be0f0bb65ccac1"
+      },
+      {
+        "id": "chapter-003",
+        "sha256": "e8e5cd016f06aadd2427379b43c06b669257393c549ca068c8e856ed5dd8e42f"
+      },
+      {
+        "id": "chapter-004",
+        "sha256": "563b41d9c56b0f55d47b30499bbd3a3aaf4a25ca9a88bd2fd31145461bfdb778"
+      },
+      {
+        "id": "chapter-005",
+        "sha256": "7c68e1581b4d9301ee42cf1c64159481fd0c9fd10d4a2c25928551dff0217cd8"
+      },
+      {
+        "id": "chapter-006",
+        "sha256": "1e515351406da22a4db99c66c59e83d4d1712cf0eff71f32be870e05b339c4d2"
+      },
+      {
+        "id": "chapter-007",
+        "sha256": "fea7fc335d082bf63fc77645bda854dd893b53a2ac021f96cfea82162b48d70a"
+      },
+      {
+        "id": "chapter-008",
+        "sha256": "3c5e3997e9d07e0fccbdba8320205707ef2332baf7a1094570cb6feb4d2f27ab"
+      },
+      {
+        "id": "chapter-009",
+        "sha256": "b667b890332079a1d84b7fc0c69f49dab7330c0a4ea03ba97f9e25d7eba43bb4"
+      },
+      {
+        "id": "chapter-010",
+        "sha256": "64b6394cddca33c912660161991a71bd108922c95ab25374666d11563afff7e4"
+      },
+      {
+        "id": "chapter-011",
+        "sha256": "6e2af377933dce1c23c74d0d1c394d19b4b9491318e4e939ef75f68ea9e843cb"
+      },
+      {
+        "id": "chapter-012",
+        "sha256": "4f3035b634555ba3a55116c3deba9a178a570cc758385759310e64eb6c1295d9"
+      },
+      {
+        "id": "chapter-013",
+        "sha256": "b02644f40efd51535a24097be490cba6e93ec006af280f76433cc965b47ae203"
+      },
+      {
+        "id": "chapter-014",
+        "sha256": "09cd2fa1f0ac4ac0145a60e870a0b40db6ead4f57e7f7789b7935d1acf93823c"
+      },
+      {
+        "id": "chapter-015",
+        "sha256": "6226930e0a37dc3018948bf750dd80034143b5d5c9f183f6950887bc1a41fc49"
+      },
+      {
+        "id": "chapter-016",
+        "sha256": "85aad17fe47a5548f173a1a1adb13e38eb7537ac529209b0ca20a625d5ead06f"
+      },
+      {
+        "id": "chapter-017",
+        "sha256": "15107f5138d6106c72a4ebcc8889b66b6f3ea67880049523c082fb7805a98d99"
+      },
+      {
+        "id": "chapter-018",
+        "sha256": "3194ce4ebec2bf2f55affd3be969b39a126b085d780bdd6b9450e03fcb2432a8"
+      },
+      {
+        "id": "chapter-019",
+        "sha256": "5c2bd1e38a20fa263a40b9bc646dc30c29a5dfdbfb671487e67e285d9ba0ba1e"
+      },
+      {
+        "id": "chapter-020",
+        "sha256": "2b0d4a9175246b3d6bbc92dfa928e247398940f9191816561f51eb767bf7796e"
+      },
+      {
+        "id": "chapter-021",
+        "sha256": "a96aa36927ac25fe21aa19e2267d52a28d2b446d484488e3960584269ced448b"
+      },
+      {
+        "id": "chapter-022",
+        "sha256": "3cd272668419f278d27080010a2462fe9f379ccf5ff71eac0c8e4a26b6b05f8c"
+      },
+      {
+        "id": "chapter-023",
+        "sha256": "c65ddc925607b824ad68406fc42fee1bcbe00abc03e2e1deb0af11908965c3ed"
+      },
+      {
+        "id": "chapter-024",
+        "sha256": "7ba8ff94961deaa2136e67678c35fe36a7f672d3237c2f03f3ec49d26b5bc497"
+      },
+      {
+        "id": "chapter-025",
+        "sha256": "7f1233bfe7826a523eabbd86e99a1bcd382934f3cd16297b8cac18ef9c1eb7a0"
+      }
+    ],
+    "content_sha256": "3aca89627c1bb4a92fbf99e39e55c750c2cea408d2ce99fbb900bb9f059db760"
+  }
 }

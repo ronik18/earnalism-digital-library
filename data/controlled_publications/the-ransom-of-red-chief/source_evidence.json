@@ -9,5 +9,108 @@
   "rights_basis": "O. Henry died 1910; first published 1907. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:21.870344+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #1595",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1595",
+      "resolved_url": "https://www.gutenberg.org/ebooks/1595",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:13.589893+00:00",
+      "response_sha256": "09c6d886d93d8da11c63527a76335073c0693b53d31c99b2dc3f7299d50faa39"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1595.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1595/pg1595.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:18.948868+00:00",
+      "response_sha256": "49437bc16c4d2d6577714e87c36156ae5434e320b201ad739a9464214df00d0b"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Henry, O., 1862-1910"
+      ],
+      "Title": [
+        "Whirligigs"
+      ],
+      "Contents": [
+        "The world and the door -- The theory and the hound -- The hypotheses of failure -- Calloway's code -- A matter of mean elevation -- \"Girl\" -- Sociology in serge and straw -- The ransom of Red Chief -- The marry month of May -- A technical error -- Suite homes and their romance -- The whirligig of life -- A sacrifice hit -- The roads we take -- A blackjack bargainer -- The song and the sergeant -- One dollar's worth -- A newspaper story -- Tommy's burglar -- A chaparral Christmas gift -- A little local colour -- Georgia's ruling -- Blind man's holiday -- Madame Bo-Peep, of the ranches."
+      ],
+      "Credits": [
+        "anonymous Project Gutenberg Volunteers and Joseph E. Loewenstein, M.D."
+      ],
+      "Reading Level": [
+        "Reading ease score: 81.9 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Fiction",
+        "Short stories, American"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "1595"
+      ],
+      "Release Date": [
+        "Jan 1, 1999"
+      ],
+      "Last Update": [
+        "Jun 28, 2023"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1808 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 134470,
+          "length": 21851
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "7064aa284fe4bc210e8953c8d5e4dd410145f06ec9d7b822c609dea4cd8573b2",
+    "legacy_content_sha256": "137a261f562cb4fbf5343df30bd6d117d8a254c4e4aab2cf2a75cded4e2f4997",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1910,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "09c6d886d93d8da11c63527a76335073c0693b53d31c99b2dc3f7299d50faa39",
+    "url": "https://www.gutenberg.org/ebooks/1595",
+    "author_catalog_strings": [
+      "Henry, O., 1862-1910"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "d45168ed6ade657707793bb04303b91c6446c4f41be4ed49dc8c2226e3f59ae1"
+      }
+    ],
+    "content_sha256": "d45168ed6ade657707793bb04303b91c6446c4f41be4ed49dc8c2226e3f59ae1"
+  }
 }

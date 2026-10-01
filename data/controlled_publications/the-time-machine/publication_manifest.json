@@ -1,0 +1,161 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-time-machine",
+  "title": "The Time Machine",
+  "generated_at": "2026-10-01T21:08:34.717156+00:00",
+  "content": {
+    "source_hash": "c7aeb98aa3143ae724283da3a0a74aef602537073f8c8f06ae0e1d22c0a38968",
+    "content_hash": "86f6463ed64691c02e7b927ae73e94d76027d3f3c4f82c6a18c17310020325ba",
+    "provenance_hash": "b7acc90769cf6bd7d1f99038cd336e48007db2e8d55469954243660d07d7efa6",
+    "sanitized": true,
+    "chapter_count": 16,
+    "chapter_index_sha256": "3310ff8a19b448d494959d227577ee1c2aa1b1321ed292e579ff0782f8b8ab7b",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "I. Introduction",
+        "word_count": 1694,
+        "sha256": "ec54e8d6abfbea5fa18a96a06cb68777151021fad0fb2511e084b68143bd7693"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "II. The Machine",
+        "word_count": 1353,
+        "sha256": "0d9b215765f1cf9bdba709a7d0475ff82b17082eb9cda61f444c507912ae2302"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "III. The Time Traveller Returns",
+        "word_count": 2042,
+        "sha256": "04fa6dbc3212e88f51b68643085bf11d53d81933f282332fe1eef681a3be1c35"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "IV. Time Travelling",
+        "word_count": 2105,
+        "sha256": "06ac862eda572faa1bc221d4322d740cb113cd17834c39f6ea2f871edf06964c"
+      },
+      {
+        "id": "chapter-005",
+        "order": 5,
+        "title": "V. In the Golden Age",
+        "word_count": 1661,
+        "sha256": "cd148470d070a8ba9daaa288172a89114e9b48f79f27edb350dabac152cb4cab"
+      },
+      {
+        "id": "chapter-006",
+        "order": 6,
+        "title": "VI. The Sunset of Mankind",
+        "word_count": 2204,
+        "sha256": "09d45f9fab05ca1812124884442b5bcbbdd9ca143b46a36bb508310c87ad43cb"
+      },
+      {
+        "id": "chapter-007",
+        "order": 7,
+        "title": "VII. A Sudden Shock",
+        "word_count": 2333,
+        "sha256": "66bfc61f35303cae0828ff6053b04bc62655db0fd684976bcc72ed6af99f22da"
+      },
+      {
+        "id": "chapter-008",
+        "order": 8,
+        "title": "VIII. Explanation",
+        "word_count": 4212,
+        "sha256": "cfe407cc5aa1d561ed463b4f589402670a72e8197a4f3b75d22cc3cb37de51cb"
+      },
+      {
+        "id": "chapter-009",
+        "order": 9,
+        "title": "IX. The Morlocks",
+        "word_count": 2163,
+        "sha256": "3bcd1ef377cd0a89d21699e9356512a16a8d90740fb6e28fceedc3b5d37e2b2d"
+      },
+      {
+        "id": "chapter-010",
+        "order": 10,
+        "title": "X. When Night Came",
+        "word_count": 2533,
+        "sha256": "5b7c4ff6d5544687d93d2176ac20f022713abba439bfe607c196a5daa747bd80"
+      },
+      {
+        "id": "chapter-011",
+        "order": 11,
+        "title": "XI. The Palace of Green Porcelain",
+        "word_count": 2482,
+        "sha256": "b6c05d934d24bf78cd9a1f34a87df9bb6d13a9f7f57e615dbec965474cd95d4c"
+      },
+      {
+        "id": "chapter-012",
+        "order": 12,
+        "title": "XII",
+        "word_count": 2648,
+        "sha256": "4b00dc32f80a32858246ec194f1b45308e7d9e3778892f938948d2a185423a63"
+      },
+      {
+        "id": "chapter-013",
+        "order": 13,
+        "title": "XIII",
+        "word_count": 1078,
+        "sha256": "345db188fa16280e3115b2553cbed94b70252bff025a6b76b997c7a2ea272431"
+      },
+      {
+        "id": "chapter-014",
+        "order": 14,
+        "title": "XIV. The Further Vision",
+        "word_count": 1913,
+        "sha256": "b9bf851c3546350b62c1c799d76b22e8fca38177180cafb921669a6fa49667c8"
+      },
+      {
+        "id": "chapter-015",
+        "order": 15,
+        "title": "XV. The Time Traveller’s Return",
+        "word_count": 482,
+        "sha256": "007c974179ab0abb7e79e4918f1b28828908ad2ddf86138c811792bb77e8d6f7"
+      },
+      {
+        "id": "chapter-016",
+        "order": 16,
+        "title": "XVI",
+        "word_count": 1704,
+        "sha256": "06d51ab9b8ad4f5837c2e4b15b66695e8683c5974c3d6337728a32006fedbf06"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "fae4c69f673fb4359c537887d037d54ea41fef71f59350ec66bc4b94cf8ed0a0"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566866/earnalism/covers/front/cover_d4cb4472-7e0a-4bad-ab89-05f7d7ace821.png",
+    "blockers": [
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "7897989ddd3e062ad5c2e43c6c3e15d609d7fd168121e890d7b6593cc804ed8b",
+    "reader_manifest": "6060790337140fea316ae120bbeedf6c736324ba1e4dcda8ba0f78baeca0338d",
+    "source_evidence": "fae4c69f673fb4359c537887d037d54ea41fef71f59350ec66bc4b94cf8ed0a0",
+    "approval_evidence": "25a44ca7f7beb7b06bbf2fbd75fa9983ce843ea5a19267790e248a8399fbe521"
+  },
+  "manifest_sha256": "6b66adece486d5b881b2df1f829e4ef8c95f31808fe9ec20d14aac12322dd896"
+}

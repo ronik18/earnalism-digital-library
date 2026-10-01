@@ -9,5 +9,113 @@
   "rights_basis": "Robert Louis Stevenson died 1894; first published 1885. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.186348+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #344",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/344",
+      "resolved_url": "https://www.gutenberg.org/ebooks/344",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:45.331774+00:00",
+      "response_sha256": "3a2ed87a6d147a0962e88d3c76a8a76091c917239ee132029056e0524a9e76fb"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/344.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/344/pg344.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:50.677676+00:00",
+      "response_sha256": "4c397d6e1688b525c58c60ad565a63717feee1d0f7db36e69281919e6492aa16"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Stevenson, Robert Louis, 1850-1894"
+      ],
+      "Title": [
+        "The Merry Men, and Other Tales and Fables"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Merry_Men_and_Other_Tales_and_Fables"
+      ],
+      "Contents": [
+        "The merry men -- Will o' the mill -- Markheim -- Thrawn Janet -- Olalla -- The treasure of Franchard."
+      ],
+      "Credits": [
+        "David Price"
+      ],
+      "Reading Level": [
+        "Reading ease score: 75.0 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Boys -- Fiction",
+        "Treasure troves -- Fiction",
+        "Paranormal fiction",
+        "Great Britain -- History -- 19th century -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "344"
+      ],
+      "Release Date": [
+        "Oct 1, 1995"
+      ],
+      "Last Update": [
+        "May 17, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1537 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 161942,
+          "length": 36701
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "d6737555143cb2fb2267d7653d4a0f8bd76e89d61e46db1755b5e5b6605b02d5",
+    "legacy_content_sha256": "8a869c7629e7cee3364b8e52890f673febf4e8396abf92987c32537e4680aca5",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1894,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "3a2ed87a6d147a0962e88d3c76a8a76091c917239ee132029056e0524a9e76fb",
+    "url": "https://www.gutenberg.org/ebooks/344",
+    "author_catalog_strings": [
+      "Stevenson, Robert Louis, 1850-1894"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "66ecd743f5e28122df51b1f7d3ba2252032747351358ae05888ea30cc9b27ce8"
+      }
+    ],
+    "content_sha256": "66ecd743f5e28122df51b1f7d3ba2252032747351358ae05888ea30cc9b27ce8"
+  }
 }

@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "berenice",
+  "title": "Berenice",
+  "generated_at": "2026-10-01T21:08:29.300519+00:00",
+  "content": {
+    "source_hash": "de65134685ef354f51cfd071587face0fbd7296e09bc5dc9a693179f0b0ab253",
+    "content_hash": "a63a4c21c87b7ee5a1bff8c6e100feefdf9dafd2fe39203b1df4173dcd8f5dc7",
+    "provenance_hash": "f4d2fe8067652c02eecde243c12e29f771e8c6d033c1b7d4f5ec879cf6a628d7",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "760b8b847325094e7e03d2985981958e092181f8a4d0a65e1dc3fa6a25d6ac92",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Berenice",
+        "word_count": 3211,
+        "sha256": "554a960f827510e727aff095b73799e4c13a4283cf16e01a5dac8f47c1baa44b"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "6c2fc0279d637cd0edeb1beaec70b2ed2c8d1d21fb71dbc1c7e0abe98875f1f6"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "a14d26c3053cc1d77487021b9f4c1d8e990f907a1f7822463be0578c9d80c8f1",
+    "reader_manifest": "afc25b20fb523c25a4b2ef1e3746eca286c3e11c072c685bd5c6f56deb8c8be4",
+    "source_evidence": "6c2fc0279d637cd0edeb1beaec70b2ed2c8d1d21fb71dbc1c7e0abe98875f1f6",
+    "approval_evidence": "5ec5eb0dfff0a98572f46f2eaf7b4c814601bf72fe6b190296eea5d4fac1df7f"
+  },
+  "manifest_sha256": "906a9039c36956618bde9aa367cc36605a457fcc836f7a9f646137e053e23afb"
+}

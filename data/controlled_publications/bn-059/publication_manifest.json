@@ -3,105 +3,105 @@
   "schema_version": 1,
   "slug": "bn-059",
   "title": "কমলাকান্তের দপ্তর",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-01T21:16:37.084971+00:00",
   "content": {
     "source_hash": "9efae8fe7a3d58fb20c46491f8be3a869422c7ffcbc31b0ce3eb47c8f528b8a1",
     "content_hash": "3ab439de3efeda9d506ffa50795473ce3ced5de88849bb38a0c943db73c27387",
     "provenance_hash": "41369de7a0fc46a56d1ac62c5451e323cd8a59fcd52830d652f3fdb2f419fbd0",
     "sanitized": true,
     "chapter_count": 13,
-    "chapter_index_sha256": "c5e91aae650cddfa7e31eac14f7c164025f6d53a748328666ffffc79a5805661",
+    "chapter_index_sha256": "386653e1aa15d8649343196b2a13021695129ad826bd8c0721bac2bab0c22957",
     "chapters": [
       {
-        "id": "chapter-001",
+        "id": "chapter-011",
         "order": 1,
-        "title": "Chapter 1. অষ্টম সংখ্যা",
-        "word_count": 1917,
-        "sha256": "8926c9bd88360aaa7f0f375988ba870e449e43514dff7124a50bd88e65b561d4"
-      },
-      {
-        "id": "chapter-002",
-        "order": 2,
-        "title": "Chapter 2. একাদশ সংখ্যা",
-        "word_count": 714,
-        "sha256": "22b86f6d71ee4105f884220abf58015703ff322dde4cc8ed211f6cc5da84432a"
-      },
-      {
-        "id": "chapter-003",
-        "order": 3,
-        "title": "Chapter 3. চতুর্থ সংখ্যা",
-        "word_count": 855,
-        "sha256": "bbdf84ba701a80a44a4fc71f921060b6bb47a17f065428eccf7aef1665086cc6"
-      },
-      {
-        "id": "chapter-004",
-        "order": 4,
-        "title": "Chapter 4. তৃতীয় সংখ্যা",
-        "word_count": 1003,
-        "sha256": "56509fdef07adbbc983236e3785ae0dd8c7841c49db5e64e29098961fff108bd"
-      },
-      {
-        "id": "chapter-005",
-        "order": 5,
-        "title": "Chapter 5. ত্রয়োদশ সংখ্যা",
-        "word_count": 1334,
-        "sha256": "056fb807fabba34415438ddae3631fbe1a5610af8208283987e8c08ab7c272f2"
-      },
-      {
-        "id": "chapter-006",
-        "order": 6,
-        "title": "Chapter 6. দশম সংখ্যা",
-        "word_count": 1814,
-        "sha256": "ebd21a6baaa5d53595ba641d6ce77673866a03cf0016e81edadc8619492658c5"
-      },
-      {
-        "id": "chapter-007",
-        "order": 7,
-        "title": "Chapter 7. দ্বাদশ সংখ্যা",
-        "word_count": 1962,
-        "sha256": "84822bfd69d118ef3d3e4aa2776a04c97dc6d6612584f814977020602601ec0a"
+        "title": "প্রথম সংখ্যা",
+        "word_count": 794,
+        "sha256": "bcceb5deb8b1f416d97b259bce027a82752ab91740a86b14858d2eb89107fe95"
       },
       {
         "id": "chapter-008",
-        "order": 8,
-        "title": "Chapter 8. দ্বিতীয় সংখ্যা",
+        "order": 2,
+        "title": "দ্বিতীয় সংখ্যা",
         "word_count": 1731,
-        "sha256": "0919ad8269672f978fb2926eb137a0f10493015d168fc6ef0aac7de24192a51b"
+        "sha256": "4746877f99673f1cf6ed3597bedc9eebe1fcdeabbd6f5128ad25392caf1d5614"
+      },
+      {
+        "id": "chapter-004",
+        "order": 3,
+        "title": "তৃতীয় সংখ্যা",
+        "word_count": 1003,
+        "sha256": "464e80f9170b7af4852a779dbe158b174f4891db4db672c6250b8dec204989fb"
+      },
+      {
+        "id": "chapter-003",
+        "order": 4,
+        "title": "চতুর্থ সংখ্যা",
+        "word_count": 855,
+        "sha256": "b2f07b8a8e743a5521c9f4cad2befefbf383f62f8d93a18a1d1cdfa5067a9405"
+      },
+      {
+        "id": "chapter-010",
+        "order": 5,
+        "title": "পঞ্চম সংখ্যা",
+        "word_count": 2176,
+        "sha256": "8cfa5692dcf5e638b22ee3b9bfad9ddde0114bc3d929a345ff78d38c02e965b2"
+      },
+      {
+        "id": "chapter-012",
+        "order": 6,
+        "title": "ষষ্ঠ সংখ্যা",
+        "word_count": 2480,
+        "sha256": "52ab9cd8039d948a5bb19843be76c2c2eae1f1f912b88c0bf927de0f14942ec1"
+      },
+      {
+        "id": "chapter-013",
+        "order": 7,
+        "title": "সপ্তম সংখ্যা",
+        "word_count": 1200,
+        "sha256": "17e2754c628e1f42dc1e967fad8ca49d205aaf4463e0dab5fca30d715f026944"
+      },
+      {
+        "id": "chapter-001",
+        "order": 8,
+        "title": "অষ্টম সংখ্যা",
+        "word_count": 1917,
+        "sha256": "8c29f213c30fdf0879de50a60e6d5415e4563e400a23c0355a59cc8761b2b421"
       },
       {
         "id": "chapter-009",
         "order": 9,
-        "title": "Chapter 9. নবম সংখ্যা",
+        "title": "নবম সংখ্যা",
         "word_count": 978,
-        "sha256": "948606500da861cbb4e62b1340f5a3bd8c279eeed6c3330ddd21fad910006314"
+        "sha256": "b24c613b2453250453b892c17eace6879ebb5da448721c83208994614e0c1b0e"
       },
       {
-        "id": "chapter-010",
+        "id": "chapter-006",
         "order": 10,
-        "title": "Chapter 10. পঞ্চম সংখ্যা",
-        "word_count": 2176,
-        "sha256": "0c07153c86afcc226f5c7cc5f64d9a3551a76ca32d28951ca402a91ec38adafd"
+        "title": "দশম সংখ্যা",
+        "word_count": 1814,
+        "sha256": "480f9f6ef1d733bb974e796bf8bb887b89b48cf43055f02c2b11859c4e83d408"
       },
       {
-        "id": "chapter-011",
+        "id": "chapter-002",
         "order": 11,
-        "title": "Chapter 11. প্রথম সংখ্যা",
-        "word_count": 794,
-        "sha256": "c690eb3fd3c92b9acb9cd413ef8bf55eb6d78640aa42dbf22b5491cf52c849c5"
+        "title": "একাদশ সংখ্যা",
+        "word_count": 714,
+        "sha256": "8568cbeb31aa14e744f9dee674b4d110decc8fd9f3ba0df0f17d24f58d23db4a"
       },
       {
-        "id": "chapter-012",
+        "id": "chapter-007",
         "order": 12,
-        "title": "Chapter 12. ষষ্ঠ সংখ্যা",
-        "word_count": 2480,
-        "sha256": "f6c3477daca12e321e47ee23e3c7c0dd149dc8d00026da6feb49f857109badb4"
+        "title": "দ্বাদশ সংখ্যা",
+        "word_count": 1962,
+        "sha256": "68bd0c68fccac84837fb66db95bbfc664f1894c3ddcbd0ded467e71cdf4ef533"
       },
       {
-        "id": "chapter-013",
+        "id": "chapter-005",
         "order": 13,
-        "title": "Chapter 13. সপ্তম সংখ্যা",
-        "word_count": 1200,
-        "sha256": "56f3a90b909a5064db48a2260bcdfec3ee65897d4d326f062877b09c2c1b5247"
+        "title": "ত্রয়োদশ সংখ্যা",
+        "word_count": 1334,
+        "sha256": "f9f8d83212e59747058f4b10be9e3ca2973e1a892d34b5d13897074ec5733ddf"
       }
     ]
   },
@@ -109,7 +109,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "1d95df936b6af7fa83b7c329ca5fc28d6c5b62743b2dfc5cbbd14bf4f57bf55b"
+    "evidence_sha256": "05e3581eb6f354831a360e019d4bdefbc2959ad8c01a89eb6ce4d18ead507be0"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -130,10 +130,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "7c953f505ac3efcc2c7ac44bfa6c1d99c339160bf65d21bec3394be96f464d93",
-    "reader_manifest": "37df903d9898c7e7c41d5494c0577f7d8072de08e978d3eb9dbede7a7ee926a6",
-    "source_evidence": "1d95df936b6af7fa83b7c329ca5fc28d6c5b62743b2dfc5cbbd14bf4f57bf55b",
+    "public_book": "f87518fbbbaef478eb62d5a3fe0e8fef20fca379e5facf83ec31ff391e42100f",
+    "reader_manifest": "bf22b148fb0515b2c21fcc0f14543331e84f77783199c7453bce7365d5ec6338",
+    "source_evidence": "05e3581eb6f354831a360e019d4bdefbc2959ad8c01a89eb6ce4d18ead507be0",
     "approval_evidence": "d6db593a56a46eff10ebac7ae3a4bbced7ad993fc411bf1f73e145c9911c8def"
   },
-  "manifest_sha256": "60b7d4b45d76dbd2429366b762fc5c50a5d870c12a74306a2898afee952c6d98"
+  "manifest_sha256": "30b849f09dc1cde2ddb095bcddb226d2f16ca67d7df4283fd01c4f3030f3d781"
 }

@@ -9,5 +9,108 @@
   "rights_basis": "Washington Irving died 1859; first published 1820. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.051784+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #41",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/41",
+      "resolved_url": "https://www.gutenberg.org/ebooks/41",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:24.937825+00:00",
+      "response_sha256": "30be0b1e882514f5433f298e63f8eccc2fef5a0b6efcfb28bb44fc4a0ea85f88"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/41.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/41/pg41.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:29.444170+00:00",
+      "response_sha256": "6847c02f49c9ff8a5e2a0e8f49842bf3bffc7f5a87216c895a6b64f26ecf9353"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Irving, Washington, 1783-1859"
+      ],
+      "Title": [
+        "The Legend of Sleepy Hollow"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Legend_of_Sleepy_Hollow"
+      ],
+      "Credits": [
+        "Ilana M. (Kingsley) Newby and Greg Newby"
+      ],
+      "Reading Level": [
+        "Reading ease score: 52.8 (10th to 12th grade). Somewhat difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Ghosts -- Fiction",
+        "New York (State) -- History -- 1775-1865 -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "41"
+      ],
+      "Release Date": [
+        "Jun 27, 2008"
+      ],
+      "Last Update": [
+        "Feb 10, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "31647 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 893,
+          "length": 69538
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "8bb82877a5f11221b4aad10ee6b048d7171f48e5a4b600d67c57839fcfb873a4",
+    "legacy_content_sha256": "b461d1dc8d09ff6030890e130f5386489dc3f9764d7c6df2319a5dda60e0c80c",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1859,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "30be0b1e882514f5433f298e63f8eccc2fef5a0b6efcfb28bb44fc4a0ea85f88",
+    "url": "https://www.gutenberg.org/ebooks/41",
+    "author_catalog_strings": [
+      "Irving, Washington, 1783-1859"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "a06cbf5814b796114271076984e1e56da57612f28bd8758ea5e34f0c631b1aa3"
+      }
+    ],
+    "content_sha256": "a06cbf5814b796114271076984e1e56da57612f28bd8758ea5e34f0c631b1aa3"
+  }
 }

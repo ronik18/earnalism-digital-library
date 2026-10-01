@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "to-build-a-fire",
+  "title": "To Build a Fire",
+  "generated_at": "2026-10-01T21:08:35.026834+00:00",
+  "content": {
+    "source_hash": "01770bd52b8e43a3c0eac921a04cd3f7e8d910810320fd17d582e96291dac097",
+    "content_hash": "4dbb7f503073624760a333093d26e14db402904201a956729530f59bfbf3d6b8",
+    "provenance_hash": "1649035511c182a08e80b78f2ab61ccdac3afd2e35e349cb23fb3b96d6b2807a",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "0310890a65b911325acd63254f263e2aec5d22af7a103db3e1c75f0df3c0c834",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "To Build a Fire",
+        "word_count": 7116,
+        "sha256": "0bd1457cf6198d4dcf172044d1dabf3d989636df872d99fa34597c4df81d9e14"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "b41a1b877f3069131e8e7c203ea1f4b7b5b0926700284f190db699f3588b9fb5"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "0eb1789863e4c283b01bf398d3db323d453fd5e6a143b0013d29acb08363b0df",
+    "reader_manifest": "57b8590fe0c413398a2e30d453404b690e3bf9846fbebf709991a5671ccaa4cb",
+    "source_evidence": "b41a1b877f3069131e8e7c203ea1f4b7b5b0926700284f190db699f3588b9fb5",
+    "approval_evidence": "f40d49f77443aaffd9b2874cc77247555bad7335f7e741e7fa31e04b75c463bd"
+  },
+  "manifest_sha256": "645d3c2219d42c665a5ccff4b7479a3fd152761f4a54b0f78d7dc82a31cc12f1"
+}

@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "book-edfcf810c5",
   "title": "ক্ষুধিত পাষাণ",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-01T21:16:37.084971+00:00",
   "content": {
     "source_hash": "2591896f7fd678dafae394be36f7c60f39f240d5ac74e5806b5570982b5d96d7",
     "content_hash": "12bc09cce1802df3c03d94ec8dee67e3feedc7fe754887b8e6cdb3acce02e614",
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "0b5a0cd45d5de4cc8976f07e0ba517656be347a65cc10faaf9dc604483a3f5fc"
+    "evidence_sha256": "14d38d8749e43b11fa73d82787be2ed39ac423b2b9db4a95b6409c4a6ff47d72"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,7 +33,6 @@
     "qa_status": "QA_PASSED",
     "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1784226492/earnalism/covers/front/book-edfcf810c5_front_1024x1536.webp",
     "blockers": [
-      "Rights: original_publication_year is required.",
       "Rights: verification_status must be approved before publishing."
     ]
   },
@@ -49,8 +48,8 @@
   "artifacts": {
     "public_book": "0d92936ad473b2bbd700b5894c5ad11b7a126aba1418619d065660ab7dd668f2",
     "reader_manifest": "6afeee33062302af8dc59005f89c619f8515a727688232e1006fa88ffe5ee663",
-    "source_evidence": "0b5a0cd45d5de4cc8976f07e0ba517656be347a65cc10faaf9dc604483a3f5fc",
+    "source_evidence": "14d38d8749e43b11fa73d82787be2ed39ac423b2b9db4a95b6409c4a6ff47d72",
     "approval_evidence": "4db03ac530007827caa5a8973b73aeb4cc8b0f3a00cc5eeed3410999e417bfe9"
   },
-  "manifest_sha256": "b2a84284bc1ce09a574474d03002aa2be0af3cabe7c83a34481214b12d8b41d4"
+  "manifest_sha256": "a7271893bfdb13def1ad6152f3f6dbfda530875b454dfa4cfb4354fc31321d69"
 }

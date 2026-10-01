@@ -1,0 +1,174 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-science-of-getting-rich",
+  "title": "The Science of Getting Rich",
+  "generated_at": "2026-10-01T21:08:34.253931+00:00",
+  "content": {
+    "source_hash": "4de04867ec7814f6e7053582eaf50ad3c6817256d06141a5cee93c64f499557b",
+    "content_hash": "f1c0da0283105f7047177d0c5bc4dff6c4b3d15b44b3010684b168913ac1b6b6",
+    "provenance_hash": "cec823ac05c245b9b381ecf9bcc94972858e756d31fb8da46a07a8aa7ebe5461",
+    "sanitized": true,
+    "chapter_count": 18,
+    "chapter_index_sha256": "223fdd0b7b7826afc982a0f421418245b549ef9269697e864a93c79c025e3809",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "PREFACE",
+        "word_count": 445,
+        "sha256": "3f7c00bf891bfa61d86912600c8d6573c6e005de43846da7c450313b535f98f6"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "CHAPTER I. THE RIGHT TO BE RICH",
+        "word_count": 952,
+        "sha256": "a465a6152b4d33a0fa8cbd48b6387fb0e87f9873b97271acde8ac16a7643768b"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "CHAPTER II. THERE IS A SCIENCE OF GETTING RICH",
+        "word_count": 1151,
+        "sha256": "2d5b12a28ef31c80077157430de49bfd160249bed0ebe729b7a6b28ad3cdaa2d"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "CHAPTER III. IS OPPORTUNITY MONOPOLIZED?",
+        "word_count": 1230,
+        "sha256": "c2ba0b896479d30bb7be8b996be92b47467fbc1c78249bd5b80cdf695e7cec48"
+      },
+      {
+        "id": "chapter-005",
+        "order": 5,
+        "title": "CHAPTER IV. THE FIRST PRINCIPLE IN THE SCIENCE OF GETTING RICH",
+        "word_count": 1652,
+        "sha256": "e4350b486212e557708c1ecac1b265e3b048854427a5bec31d556e67b9733a9b"
+      },
+      {
+        "id": "chapter-006",
+        "order": 6,
+        "title": "CHAPTER V. INCREASING LIFE",
+        "word_count": 1700,
+        "sha256": "a6d51ae453a21fde90b828b5fe091741a382dc98b45fa5058ef63086b2c07d48"
+      },
+      {
+        "id": "chapter-007",
+        "order": 7,
+        "title": "CHAPTER VI. HOW RICHES COME TO YOU",
+        "word_count": 1631,
+        "sha256": "875e28cc8165d3875e635a764257babb86ab77cb0d4497b440d1b923c63dea10"
+      },
+      {
+        "id": "chapter-008",
+        "order": 8,
+        "title": "CHAPTER VII. GRATITUDE",
+        "word_count": 1096,
+        "sha256": "bc26289e3b5da936dd21aa572d5b9f540d5706b4e41f6745b209076a8c1ba10d"
+      },
+      {
+        "id": "chapter-009",
+        "order": 9,
+        "title": "CHAPTER VIII. THINKING IN THE CERTAIN WAY",
+        "word_count": 1350,
+        "sha256": "7a56540dcbba367470bee7045881198db894b7d3ff90be8d69b3f73f4679c385"
+      },
+      {
+        "id": "chapter-010",
+        "order": 10,
+        "title": "CHAPTER IX. HOW TO USE THE WILL",
+        "word_count": 1405,
+        "sha256": "00edaccf118e044eb5bf7834f60e7c0c7048973b09231a626716cb38c0e1e3a0"
+      },
+      {
+        "id": "chapter-011",
+        "order": 11,
+        "title": "CHAPTER X. FURTHER USE OF THE WILL",
+        "word_count": 1553,
+        "sha256": "43fec844cf358928f635255eddd7a90c7344d8d455ada79f15cc4ef5e6613d0d"
+      },
+      {
+        "id": "chapter-012",
+        "order": 12,
+        "title": "CHAPTER XI. ACTING IN THE CERTAIN WAY",
+        "word_count": 1636,
+        "sha256": "46d1777389c601cd5717936813396af17ccb69e218288c434162f3c37a9dfa5a"
+      },
+      {
+        "id": "chapter-013",
+        "order": 13,
+        "title": "CHAPTER XII. EFFICIENT ACTION",
+        "word_count": 1339,
+        "sha256": "786554916eb250abacd4280f3a47177f804909e14f3cef4f14aa603bb223d5fb"
+      },
+      {
+        "id": "chapter-014",
+        "order": 14,
+        "title": "CHAPTER XIII. GETTING INTO THE RIGHT BUSINESS",
+        "word_count": 1222,
+        "sha256": "522e0c1a7e91817818ba8d8743771fce5e37ea23583e5c211d178e0160ebfb3c"
+      },
+      {
+        "id": "chapter-015",
+        "order": 15,
+        "title": "CHAPTER XIV. THE IMPRESSION OF INCREASE",
+        "word_count": 1162,
+        "sha256": "668798449f06b7b3208458c935d078e0a96b2bd7293bcd941702c29ffc7ca303"
+      },
+      {
+        "id": "chapter-016",
+        "order": 16,
+        "title": "CHAPTER XV. THE ADVANCING MAN",
+        "word_count": 1255,
+        "sha256": "3f293587a1d4ddc37a7a659cd31e25a45cb487e1df4bc8e4ab91bc197a1bd54f"
+      },
+      {
+        "id": "chapter-017",
+        "order": 17,
+        "title": "CHAPTER XVI. SOME CAUTIONS, AND CONCLUDING OBSERVATIONS",
+        "word_count": 1363,
+        "sha256": "adf7a1fe33efd593527ed1e14ca85165edb7c21f8a4af9c9512a2e1abc1b6f23"
+      },
+      {
+        "id": "chapter-018",
+        "order": 18,
+        "title": "CHAPTER XVII. SUMMARY OF THE SCIENCE OF GETTING RICH",
+        "word_count": 507,
+        "sha256": "4e376be2ee51b073f4671daf0d39f0953e7b796ad83bee0df1549e90d2975f4d"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "in",
+    "evidence_sha256": "852d56448f85d875066a0423775c20febd8f4d80540e62f638359482b19c898e"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "READY_FOR_APPROVAL",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950227/earnalism/covers/front/cover_ab481468-31e0-4b96-9538-f4d4e944d771.png",
+    "blockers": [
+      "Reader QA must pass."
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "4b9c406e5115924696a26ef1d8b536f1e6dc0c83f87651aa3c8ee5c9425ebd35",
+    "reader_manifest": "6c6c0d47217642a5f67dff1fc23afcac146468d1017d48f59a2bef2bf90cbdce",
+    "source_evidence": "852d56448f85d875066a0423775c20febd8f4d80540e62f638359482b19c898e",
+    "approval_evidence": "8289c5179b52fc9e0f5050b83525b63c19a40312ab9eddf1c3085c53beab5d35"
+  },
+  "manifest_sha256": "af30b1ad81b232284d0f3fff7fab8a0fd964ed41e0f658bdd2a9a68b73f7f83f"
+}

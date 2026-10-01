@@ -7,6 +7,11 @@ from pathlib import Path
 from typing import Any
 
 try:
+    from licensed_text import public_license_notice
+except ImportError:
+    from backend.licensed_text import public_license_notice
+
+try:
     from publication_manifest import manifest_reader_exposed, validate_manifest
 except ImportError:  # pragma: no cover
     from backend.publication_manifest import manifest_reader_exposed, validate_manifest
@@ -1177,6 +1182,9 @@ def public_book_projection(book: dict[str, Any] | None) -> dict[str, Any] | None
     preview = live and can_expose_preview(book)
     audio = live and can_expose_audio(book)
     audio_status = "AVAILABLE" if audio else "NOT_AVAILABLE" if live else "BLOCKED_UNTIL_RIGHTS_QA"
+    notice = public_license_notice(controlled_artifact_dir(slug)) if live else None
+    if notice:
+        projected["text_license"] = notice
     projected.update(
         {
             "publication_status": status,

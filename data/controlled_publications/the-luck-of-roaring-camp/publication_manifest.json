@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-luck-of-roaring-camp",
+  "title": "The Luck of Roaring Camp",
+  "generated_at": "2026-10-01T21:08:33.108466+00:00",
+  "content": {
+    "source_hash": "d64c82d8f35d3e817f9c8f75d0a500fe408f85e519258f7a902fc565e1fc8264",
+    "content_hash": "e8cf5138f084af3e5b585c5f3512192549d5f778e98275fd9be1208a5d394472",
+    "provenance_hash": "179a519aaf069211f7157fae4c280d1b07bb911a506178cff2e25f889e79e7dd",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "99e7bd5b90001bf211766a865d05c57b71a87f87b3c016f63a3759014a003d05",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Luck of Roaring Camp",
+        "word_count": 4188,
+        "sha256": "0de4c55a9ec34ccfe1a7bff8496caef3baf891938474693ca9c0d851820d7dae"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "4666766824c4bc17b691fe4462b285113f5aea3cace5a670ec80af3c86dc6512"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "234eee0e8cb4631154e077e859477dae39e2bb0ecaaa755da7601f2c6ae7e064",
+    "reader_manifest": "a525fc6b97d2929d65cdb7ec801406b889aff6d28b0974ba5e9765229e9d55dd",
+    "source_evidence": "4666766824c4bc17b691fe4462b285113f5aea3cace5a670ec80af3c86dc6512",
+    "approval_evidence": "0608e478c31600287c183d42551cb40d2dc455ebdac48eb9fbead4620decd15e"
+  },
+  "manifest_sha256": "8311c84207214859b0c1dae8c51f76a39158b855646ce15a9a546a3e4772e28b"
+}

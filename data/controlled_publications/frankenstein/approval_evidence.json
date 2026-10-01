@@ -1,12 +1,22 @@
 {
   "slug": "frankenstein",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_PENDING_ASSET_MAPPING",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": false
+  "audiobook_enabled": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "2903ac9efd4035e1e993767c53539c463a0fde420188dce1273d20b3c5d01657",
+  "source_hash": "7810cd483cffcf2cc8a1d8f0d5807931e69d4f48cd14149b8c76f88af82fead3",
+  "content_hash": "53b45539400716c4cca3295c9bffef1f744179cc7e4a56cd5e4f983b1c4f53ef",
+  "provenance_hash": "bd3168b7919492bae2a96cbbdd36d2e2b747ff6456d38d97e7578c49a83d3bb6",
+  "verified_at": "2026-10-01T21:19:39.153654+00:00"
 }

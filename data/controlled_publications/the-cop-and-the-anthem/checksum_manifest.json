@@ -3,12 +3,16 @@
   "generated_at": "2026-07-12T07:04:07Z",
   "files": [
     {
+      "file": "approval_evidence 2.json",
+      "sha256": "aac19a817365dfebaa22742bd82020167c4b55d42b53ca2fa6d3e47fce49fa95"
+    },
+    {
       "file": "approval_evidence.json",
       "sha256": "eba8dc9670d4b046092be624c851a9216c6a682ffab482a7dcf85e9cde3ea713"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "4a1928268536c62bc7e88dac7c742b7b0dae12416ea231c03f2aec4a01260ab7"
+      "file": "chapters/chapter-001.json",
+      "sha256": "5efa2347d8668dc8a3d1419cd5c253e70dee82c390e6038d5b59704e5fe857aa"
     },
     {
       "file": "highlight_sync.json",
@@ -24,11 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "6e89943557cd5e0b840586198fa824048ac0f0cfe2b015be5ddb99e12917fecc"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "5efa2347d8668dc8a3d1419cd5c253e70dee82c390e6038d5b59704e5fe857aa"
+      "sha256": "2acc48845ea202fb02cc285cb3b8952fadd0b6437fad48a42a66d374999ee205"
     }
   ]
 }

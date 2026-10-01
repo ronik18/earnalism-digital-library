@@ -6,7 +6,7 @@
   "source_hash": "08cf726a1c9f2acef4bb94a1228d4a5c22fe429d501b623d3a23853e1d645343",
   "content_hash": "039054ed00bbbcfd67cf830434e41f40f2e05b93223400c16045883d1acc980f",
   "provenance_hash": "50aae4c36dd08647c5fadecb1e7b6b5f6c58f438d1a150634dbb930433dcd4c4",
-  "rights_basis": "Author died 1941. Published 1893. Public domain in India and U.S.",
+  "rights_basis": "Underlying original Bengali work was published during Rabindranath Tagore’s lifetime; author death1941 is independently evidenced. India Copyright Act section22 lifetime literary-work term is sixty years from the calendar year following death. This preparation does not authorize newer editorial material or waive CC BY-SA4.0 transcription obligations; edition/publication approval remains held.",
   "downloaded_at": "2026-06-02T19:23:49.010395+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -24,12 +24,39 @@
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "4de96523c8c1c9ab9f76c03996e854516ce9add44a5ec3f43a1771af508c9621",
+    "reader_content_sha256": "ef308dc5c4a4af5e47b4238db35bc11acbb7c8a50089c904f876398227583905",
     "chapter_count": 1,
     "chapter_content_sha256": {
-      "chapter-001": "4de96523c8c1c9ab9f76c03996e854516ce9add44a5ec3f43a1771af508c9621"
+      "chapter-001": "ef308dc5c4a4af5e47b4238db35bc11acbb7c8a50089c904f876398227583905"
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  },
+  "reader_content_reconciliation": {
+    "status": "SOURCE_FURNITURE_REMOVED_ONLY",
+    "performed_at": "2026-10-01T21:08:27.473444+00:00",
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/source-furniture-repair-proposals.json",
+    "artifact_sha256": "63e8128394ae67e1620d02a5bce6ca6b14dd72f8230ed86b0d535ed69707baf7",
+    "before_content_sha256": "4de96523c8c1c9ab9f76c03996e854516ce9add44a5ec3f43a1771af508c9621",
+    "after_content_sha256": "ef308dc5c4a4af5e47b4238db35bc11acbb7c8a50089c904f876398227583905",
+    "removed_source_furniture": [
+      "রবীন্দ্রনাথ ঠাকুর",
+      "গল্পগুচ্ছ",
+      "১৯৫০ (পৃ. ২৭৭-২৯৯)",
+      "সমাপ্তি"
+    ],
+    "literary_words_changed": false,
+    "source_transcription_completeness": "ADDITIONAL_SOURCE_COMPARISON_REQUIRED",
+    "scope": "READER_METADATA_FURNITURE_CLEANUP_NOT_PUBLICATION_OR_AUDIO_APPROVAL"
+  },
+  "original_publication_year": 1893,
+  "original_publication_evidence": {
+    "record": "internal/legal/catalogue_clearance_20261002/bengali/tagore-publication-facts.json",
+    "record_sha256": "132bb707cf39f0596a3aa27f5d5d368f415ba947a133f06103f4a361407f37a5",
+    "authority_event_url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/event/VZlSXRFWwJlUspFWOdVMXJ1aKVVVB1TP#event_529",
+    "year": 1893,
+    "date_as_recorded": "30th  September,  1893",
+    "evidence_type": "EXPLICIT_TITLE_JOURNAL_PUBLICATION_ENTRY",
+    "scope": "Underlying Bengali work publication fact only; later source edition/transcription obligations independently held."
   }
 }

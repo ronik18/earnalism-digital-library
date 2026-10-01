@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-legend-of-sleepy-hollow",
+  "title": "The Legend of Sleepy Hollow",
+  "generated_at": "2026-10-01T21:08:32.947357+00:00",
+  "content": {
+    "source_hash": "8bb82877a5f11221b4aad10ee6b048d7171f48e5a4b600d67c57839fcfb873a4",
+    "content_hash": "b461d1dc8d09ff6030890e130f5386489dc3f9764d7c6df2319a5dda60e0c80c",
+    "provenance_hash": "27d2f82e0abdc3be14e8a647096b5a9e59acc561cfa42ed50f1e5af6b363eea5",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "349fdea136e681b267a73dc3805f17e539eac997f1f79d1a8a247ffeceee9136",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Legend of Sleepy Hollow",
+        "word_count": 12267,
+        "sha256": "76107f36ccca7b3f002175e2b31193efff9880babd1a241961d1b17186ff3b5e"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "28ab5348ee41835ea6507549f85d4cf8af1a8643c64b834def2ec6f37bbda5dc"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "bcd191843829ecb61db3022463930a5dfd8ce1470e5e4b6cb718c9241fe94246",
+    "reader_manifest": "618825fc730b566a752fd3c0874b2f4a68f264c16d1779a0d3dcd854fcc9ad76",
+    "source_evidence": "28ab5348ee41835ea6507549f85d4cf8af1a8643c64b834def2ec6f37bbda5dc",
+    "approval_evidence": "8002c76e304dfa9f97da6ef6e1addcbbbd8c3232078e15f86d15d7c533f4a928"
+  },
+  "manifest_sha256": "f28f1f0c46128af92d754716a6146d2556f8e46bf0cc2e24a696b09205f54c1e"
+}

@@ -1,5 +1,6 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { cleanStaticSeoTemplate } from "./static-seo-template.mjs";
 import { fileURLToPath } from "node:url";
 import { unavailableTitleRoutes, unavailableCopy, unavailableAccessCopy } from "./unavailable-title-routes.mjs";
 
@@ -24,7 +25,7 @@ async function json(file) {
 }
 
 async function template() {
-  try { return await readFile(path.join(buildDir, "index.html"), "utf8"); }
+  try { return cleanStaticSeoTemplate(await readFile(path.join(buildDir, "index.html"), "utf8")); }
   catch (error) {
     if (error && error.code === "ENOENT") return readFile(path.join(frontendDir, "public", "index.html"), "utf8");
     throw error;

@@ -9,5 +9,122 @@
   "rights_basis": "Anton Chekhov died 1904; first published 1892. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:21.920352+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #13409",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/13409",
+      "resolved_url": "https://www.gutenberg.org/ebooks/13409",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:12.729470+00:00",
+      "response_sha256": "f666ed43eb36872564931cce2f7062b7a23c359ce7abb7cb433573c0a1c021fb"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/13409.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/13409/pg13409.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:17.821228+00:00",
+      "response_sha256": "cc2cd8a8655d24f2e39cbebd531abcb347213b0a7e9208c5ac9670c43a142ab8"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Chekhov, Anton Pavlovich, 1860-1904"
+      ],
+      "Translator": [
+        "Garnett, Constance, 1861-1946"
+      ],
+      "Title": [
+        "The Horse-Stealers and Other Stories"
+      ],
+      "Contents": [
+        "The horse-stealers -- Ward no. 6 -- The Petchenyeg -- A dead body -- A happy ending -- The looking-glass -- Old age -- Darkness -- The Beggar -- A story without a title -- In trouble -- Frost -- A slander -- Minds in ferment -- Gone astray -- An avenger -- The jeune premier -- A defenceless creature -- An enigmatic nature -- A happy man -- A troublesome visitor -- An actor's end."
+      ],
+      "Credits": [
+        "Text file produced by James Rusk HTML file produced by David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 81.5 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PG: Language and Literatures: Slavic (including Russian), Languages and Literature"
+      ],
+      "Subject": [
+        "Russia -- Social life and customs -- Fiction",
+        "Chekhov, Anton Pavlovich, 1860-1904 -- Translations into English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "13409"
+      ],
+      "Release Date": [
+        "Sep 9, 2004"
+      ],
+      "Last Update": [
+        "Oct 28, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1251 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 37108,
+          "length": 120581
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "d105256944cc16cf2d440209e9d086608457234990d68addc3350a5a9b80e512",
+    "legacy_content_sha256": "1289360732f7dc04fce81d0675a38c361391675746174274a40f8f088f1747f8",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1904,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "f666ed43eb36872564931cce2f7062b7a23c359ce7abb7cb433573c0a1c021fb",
+    "url": "https://www.gutenberg.org/ebooks/13409",
+    "author_catalog_strings": [
+      "Chekhov, Anton Pavlovich, 1860-1904"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "1f9a4802733cb866631842b14ce1bed2d501b2294d1881b8d19e71b7d8452447"
+      }
+    ],
+    "content_sha256": "1f9a4802733cb866631842b14ce1bed2d501b2294d1881b8d19e71b7d8452447"
+  },
+  "canonical_chapter_restoration": {
+    "verified_at": "2026-10-01T21:23:53.140488+00:00",
+    "source_receipt_sha256": "cc2cd8a8655d24f2e39cbebd531abcb347213b0a7e9208c5ac9670c43a142ab8",
+    "chapter_id": "chapter-001",
+    "source_boundary_start": "WARD NO. 6",
+    "source_boundary_end_excluded": "THE PETCHENYEG",
+    "transformation": "Exact source section; preserve paragraph boundaries and unwrap physical line breaks; no lexical changes",
+    "legacy_content_sha256_preserved": "1289360732f7dc04fce81d0675a38c361391675746174274a40f8f088f1747f8",
+    "current_reader_content_sha256": "1f9a4802733cb866631842b14ce1bed2d501b2294d1881b8d19e71b7d8452447",
+    "scope": "MISSING_CANONICAL_TEXT_RESTORATION_ONLY_NOT_RIGHTS_OR_PUBLICATION_APPROVAL"
+  }
 }

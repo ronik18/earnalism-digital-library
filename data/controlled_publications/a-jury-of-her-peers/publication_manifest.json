@@ -1,0 +1,58 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "a-jury-of-her-peers",
+  "title": "A Jury of Her Peers",
+  "generated_at": "2026-10-01T21:08:28.913009+00:00",
+  "content": {
+    "source_hash": "c19fcfb420fe99571e830c0794a0625d72ac2c74630ca7e4af2ec49202ec2b43",
+    "content_hash": "a9ef4839bef2ff5bf3c8f3ea7765dd131a04f0b3deda047c75efec96419b4325",
+    "provenance_hash": "5a10292b91d399e8422ccba67274a1cc3fb9c8d5667d2ca6d7212c4a3a6ccfc9",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "1446101b3fc4b9a9dd1dff2bfda4b101eb12486cc9d11de5c14bd4059cae1491",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "A Jury of Her Peers",
+        "word_count": 8217,
+        "sha256": "12cc5306572184aef6faaac6d809b591659b31672ce70eeaf6cb1292de5c391a"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "9fa4dfb28660eb8606e3108b3bc1b024912504402dc4a3cdee9a2b22fa474b50"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: author_death_year is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "8b9194363c90cc4cbf20d9e4e9b51d1974dccc19a86ec794ef80d48c7318820b",
+    "reader_manifest": "166fda075f9846a733e0cba75ea3184bed741bfc609d4f932044c9757b60c805",
+    "source_evidence": "9fa4dfb28660eb8606e3108b3bc1b024912504402dc4a3cdee9a2b22fa474b50",
+    "approval_evidence": "8331d96cb874efae307edb87c6cf5bbaac8500316f9542e3ece99cf939ec2314"
+  },
+  "manifest_sha256": "aa75668a70c126f90efa3e5c9c5d01771c8c868ecbc800a0891fe3789b3bb743"
+}

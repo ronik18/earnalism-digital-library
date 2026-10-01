@@ -9,5 +9,115 @@
   "rights_basis": "Anton Chekhov died 1904; first published 1889. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:21.924123+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #55283",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/55283",
+      "resolved_url": "https://www.gutenberg.org/ebooks/55283",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:20.316656+00:00",
+      "response_sha256": "2b395c3e0ceea5b6f6fac15b6948295d9a1be695cdc3edd552c54b252e480c34"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/55283.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/55283/pg55283.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:25.415610+00:00",
+      "response_sha256": "7f46ed4a590c1b37ba965a4cea6ec3e344382e1b3abe044d04f96896337c4ac9"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Chekhov, Anton Pavlovich, 1860-1904"
+      ],
+      "Translator": [
+        "Koteliansky, S. S. (Samuel Solomonovitch), 1880-1955",
+        "Murry, John Middleton, 1889-1957"
+      ],
+      "LoC No.": [
+        "16006396"
+      ],
+      "Title": [
+        "The Bet, and other stories"
+      ],
+      "Contents": [
+        "The bet -- A tedious story -- The fit -- Misfortune -- After the theatre -- That wretched boy -- Enemies -- A trifling occurrence -- A gentleman friend -- Overwhelming sensations -- Expensive lessons -- A living calendar -- Old age."
+      ],
+      "Credits": [
+        "Produced by Marc D'Hooghe at Free Literature (online soon in an extended version,also linking to free sources for education worldwide ... MOOC's, educational materials,...) Images generously made available by the Internet Archive.)"
+      ],
+      "Reading Level": [
+        "Reading ease score: 82.1 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PG: Language and Literatures: Slavic (including Russian), Languages and Literature"
+      ],
+      "Subject": [
+        "Short stories, Russian -- Translations into English",
+        "Russian fiction -- Translations into English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "55283"
+      ],
+      "Release Date": [
+        "Aug 7, 2017"
+      ],
+      "Last Update": [
+        "Oct 23, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "2734 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1876,
+          "length": 14887
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "35a9b8d90a0313a1e129715e179023051ed043b569e2d6f69d50d5a60e3e5fe2",
+    "legacy_content_sha256": "8ecb474057e0f376df471ae3b52ee18bfe7f0f24e31b3e683b4929af6d57045e",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1904,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "2b395c3e0ceea5b6f6fac15b6948295d9a1be695cdc3edd552c54b252e480c34",
+    "url": "https://www.gutenberg.org/ebooks/55283",
+    "author_catalog_strings": [
+      "Chekhov, Anton Pavlovich, 1860-1904"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "72b8e903ed62116f25575d77840b923f132f7c0e13e257f9a0821179cc1c7a0d"
+      }
+    ],
+    "content_sha256": "72b8e903ed62116f25575d77840b923f132f7c0e13e257f9a0821179cc1c7a0d"
+  }
 }

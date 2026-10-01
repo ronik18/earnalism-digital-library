@@ -1,15 +1,25 @@
 {
   "slug": "pride-and-prejudice",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audiobook_use_approved": true,
   "audiobook_use_approval_source": "OWNER_AUTHORIZATION_ALL_SPRINT1_AUDIOBOOKS_GO_LIVE_AFTER_GATE_PASS_2026-07-28",
   "audiobook_use_approved_at": "2026-07-28T10:45:00Z",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": false
+  "audiobook_enabled": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "ec35a5aed3936f495dc8cc0408fa54a6cf27c3c96003f74a85a58b594c5671b7",
+  "source_hash": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+  "content_hash": "4b68459abff92d885d2d493ad052e8cdba6308ebf78f24508c6410cce683c276",
+  "provenance_hash": "49f4ef0c8b50de3e8bf1430456a677414420b40c7153b4b7b1b8d4bd7c6d34bb",
+  "verified_at": "2026-10-01T21:19:39.153654+00:00"
 }

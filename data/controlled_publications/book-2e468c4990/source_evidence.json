@@ -24,12 +24,44 @@
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "b0580e325d637dbd74661db1f98dbfff0ca27700d64a7f2420fc735629ce2337",
+    "reader_content_sha256": "9def1585322b7867981a24ee20cf16bb50a6bd85e0c65c930975290e9b456220",
     "chapter_count": 1,
     "chapter_content_sha256": {
-      "chapter-001": "b0580e325d637dbd74661db1f98dbfff0ca27700d64a7f2420fc735629ce2337"
+      "chapter-001": "9def1585322b7867981a24ee20cf16bb50a6bd85e0c65c930975290e9b456220"
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  },
+  "reader_content_reconciliation": {
+    "status": "SOURCE_FURNITURE_REMOVED_ONLY",
+    "performed_at": "2026-10-01T21:08:27.473444+00:00",
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/source-furniture-repair-proposals.json",
+    "artifact_sha256": "63e8128394ae67e1620d02a5bce6ca6b14dd72f8230ed86b0d535ed69707baf7",
+    "before_content_sha256": "b0580e325d637dbd74661db1f98dbfff0ca27700d64a7f2420fc735629ce2337",
+    "after_content_sha256": "9def1585322b7867981a24ee20cf16bb50a6bd85e0c65c930975290e9b456220",
+    "removed_source_furniture": [
+      "রবীন্দ্রনাথ ঠাকুর",
+      "গল্পগুচ্ছ",
+      "১৯৫০ (পৃ. ১৮৪-১৯৪)",
+      "কাবুলিওয়ালা"
+    ],
+    "literary_words_changed": false,
+    "source_transcription_completeness": "ADDITIONAL_SOURCE_COMPARISON_REQUIRED",
+    "scope": "READER_METADATA_FURNITURE_CLEANUP_NOT_PUBLICATION_OR_AUDIO_APPROVAL"
+  },
+  "original_publication_year": 1892,
+  "original_publication_evidence": {
+    "record": "internal/legal/catalogue_clearance_20261002/bengali/tagore-printed-first-publication-datelines.json",
+    "record_sha256": "3d0b1635e64ffbf7e4ad330ed86b2b77c01c3b85ca0054fcd1ef0a71ac02dfb3",
+    "printed_dateline": "অগ্রহায়ণ ১২৯৯",
+    "source_rendered_sha256": "a0b30871ea239d6efd8a021fb41d7ead56e60328e2489b2ee218bb83e38c8a72",
+    "calendar_conversion": {
+      "bengali_year": 1299,
+      "offset": 593,
+      "gregorian_year": 1892,
+      "precision": "Gregorianyear only; month falls entirely within one year. No inferred exactday.",
+      "reference": "https://www.drikpanchang.com/festivals/pohela-boishakh/pohela-boishakh-date-time.html?year=0596"
+    },
+    "scope": "Underlyingwork firstpublication metadata only; sourceedition editorial/licence/publication authorization independently held."
   }
 }

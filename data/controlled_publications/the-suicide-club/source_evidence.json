@@ -9,5 +9,123 @@
   "rights_basis": "Robert Louis Stevenson died 1894; first published 1882. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.410682+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #839",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/839",
+      "resolved_url": "https://www.gutenberg.org/ebooks/839",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:59.343892+00:00",
+      "response_sha256": "49cd2b4ceddf97923ad71b0007d907bcc50457216a52aeff7ee0c80654bd314c"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/839.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/839/pg839.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:04.718806+00:00",
+      "response_sha256": "8205ac009edcea995ee855585b05c223e22e1f53b00a96b2922d8a05d5f005bd"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Stevenson, Robert Louis, 1850-1894"
+      ],
+      "Title": [
+        "New Arabian Nights"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/New_Arabian_Nights"
+      ],
+      "Contents": [
+        "The Suicide Club -- The rajah's diamond -- The pavilion on the links -- A lodging for the night: a story of Francis Villon -- The Sire de Maletroit's door -- Providence and the guitar."
+      ],
+      "Credits": [
+        "David Price"
+      ],
+      "Reading Level": [
+        "Reading ease score: 77.6 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Fiction",
+        "Short stories",
+        "Adventure stories"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "839"
+      ],
+      "Release Date": [
+        "Mar 1, 1997"
+      ],
+      "Last Update": [
+        "Aug 24, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "949 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 2112,
+          "length": 153525
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "36f2eab8f19108f05a306169130f8bddc9c21c23725e7c12a330ac18cfdb9e39",
+    "legacy_content_sha256": "42592fc8597ac69e604f61b3930d46848712033a3d5ca427d02a7234952e36e3",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1894,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "49cd2b4ceddf97923ad71b0007d907bcc50457216a52aeff7ee0c80654bd314c",
+    "url": "https://www.gutenberg.org/ebooks/839",
+    "author_catalog_strings": [
+      "Stevenson, Robert Louis, 1850-1894"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "43116bd2508f624562da844230418d70ed14eab3533f8173ff310e27b98fe814"
+      }
+    ],
+    "content_sha256": "43116bd2508f624562da844230418d70ed14eab3533f8173ff310e27b98fe814"
+  },
+  "canonical_chapter_restoration": {
+    "verified_at": "2026-10-01T21:23:53.140488+00:00",
+    "source_receipt_sha256": "8205ac009edcea995ee855585b05c223e22e1f53b00a96b2922d8a05d5f005bd",
+    "chapter_id": "chapter-001",
+    "source_boundary_start": "THE SUICIDE CLUB",
+    "source_boundary_end_excluded": "THE RAJAH’S DIAMOND",
+    "transformation": "Exact source section; preserve paragraph boundaries and unwrap physical line breaks; no lexical changes",
+    "legacy_content_sha256_preserved": "42592fc8597ac69e604f61b3930d46848712033a3d5ca427d02a7234952e36e3",
+    "current_reader_content_sha256": "43116bd2508f624562da844230418d70ed14eab3533f8173ff310e27b98fe814",
+    "scope": "MISSING_CANONICAL_TEXT_RESTORATION_ONLY_NOT_RIGHTS_OR_PUBLICATION_APPROVAL"
+  }
 }

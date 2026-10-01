@@ -9,5 +9,109 @@
   "rights_basis": "Willa Cather died 1947; first published 1905. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.219889+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #346",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/346",
+      "resolved_url": "https://www.gutenberg.org/ebooks/346",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:43.380723+00:00",
+      "response_sha256": "e856f343d315dad26441e472334deead2cf53d121df18bf8fca8fbceb2602048"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/346.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/346/pg346.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:48.990243+00:00",
+      "response_sha256": "926b042528d42a6e8b0e062dfee1987fbbb4ddbe1ea6601d2b61fc77b452f521"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Cather, Willa, 1873-1947"
+      ],
+      "Title": [
+        "The Troll Garden, and Selected Stories"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Troll_Garden"
+      ],
+      "Contents": [
+        "On the divide -- Eric Hermannson's soul -- The enchanted bluff -- The Bohemian girl -- Flavia and her artists -- The sculptor's funeral -- \"A death in the desert\" -- The garden lodge -- The marriage of Phaedra -- A Wagner matinee -- Paul's case."
+      ],
+      "Credits": [
+        "Produced by Judith Boss, and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 78.3 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Short stories",
+        "United States -- Social life and customs -- Fiction",
+        "Man-woman relationships -- Fiction",
+        "Nebraska -- Social life and customs -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "346"
+      ],
+      "Release Date": [
+        "Oct 1, 1995"
+      ],
+      "Last Update": [
+        "Jan 27, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1268 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "SOURCE_TEXT_DIFFERS",
+      "matched_chapters": [],
+      "nonmatching_chapters": [
+        "chapter-001"
+      ],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "91d773236f32e0fc615e5efc326c5aec8aa7c4984cd2c9a6dc0a626d954676fb",
+    "legacy_content_sha256": "9f6c9dbd187c102c629cfc21b94af323200799e8a9784a431b93c3b5650c16f9",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1947,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "e856f343d315dad26441e472334deead2cf53d121df18bf8fca8fbceb2602048",
+    "url": "https://www.gutenberg.org/ebooks/346",
+    "author_catalog_strings": [
+      "Cather, Willa, 1873-1947"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "65ff3653504da19e85d9bd2a72cd947d45868322085ff21d50c543f9166f3010"
+      }
+    ],
+    "content_sha256": "65ff3653504da19e85d9bd2a72cd947d45868322085ff21d50c543f9166f3010"
+  }
 }

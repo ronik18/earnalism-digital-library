@@ -1,0 +1,25 @@
+{
+  "id": "chapter-000",
+  "bookSlug": "dracula",
+  "order": 1,
+  "title": "Preface",
+  "language": "en",
+  "content": "How these papers have been placed in sequence will be made manifest in the reading of them. All needless matters have been eliminated, so that a history almost at variance with the possibilities of later-day belief may stand forth as simple fact. There is throughout no statement of past things wherein memory may err, for all the records chosen are exactly contemporary, given from the standpoints and within the range of knowledge of those who made them.",
+  "content_hash": "bb3e6a9bc8229f003502f05024f8188accd6bacdaa555d55b6cdea33bd33053b",
+  "sourceSha256": "96cd16eacdbfebae8fdda5591f66e0cc8ee76be18e0cd1aca02bc00615782d28",
+  "sanitizedSha256": "bb3e6a9bc8229f003502f05024f8188accd6bacdaa555d55b6cdea33bd33053b",
+  "word_count": 77,
+  "reading_minutes": 1,
+  "is_preview": true,
+  "has_images": false,
+  "image_count": 0,
+  "processing_status": "ready",
+  "processing_warnings": [],
+  "uploaded_at": "2026-07-03T20:07:47Z",
+  "updated_at": "2026-10-01T21:12:31.080597+00:00",
+  "editorial_repair": {
+    "kind": "restore_omitted_original_literary_preface",
+    "source_sha256": "96cd16eacdbfebae8fdda5591f66e0cc8ee76be18e0cd1aca02bc00615782d28",
+    "verified_at": "2026-10-01T21:12:31.080597+00:00"
+  }
+}

@@ -9,5 +9,585 @@
   "rights_basis": "Public domain in India based on life plus 60 years; public domain in the U.S. based on original publication before 1931.",
   "downloaded_at": "2026-05-20T08:24:18.856060+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #1400",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1400",
+      "resolved_url": "https://www.gutenberg.org/ebooks/1400",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:11.840220+00:00",
+      "response_sha256": "3c27432836d87b3d2a321055c57ff6ae29f26708b1a4a32428c94a06f8d85895"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1400.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1400/pg1400.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:17.504473+00:00",
+      "response_sha256": "9a637118af8e953e9764ec603d9b0a032883384d465acac2e27966a80cf1c6f8"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Dickens, Charles, 1812-1870"
+      ],
+      "Title": [
+        "Great Expectations"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Great_Expectations"
+      ],
+      "Credits": [
+        "An Anonymous Volunteer and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 77.1 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Orphans -- Fiction",
+        "England -- Fiction",
+        "Revenge -- Fiction",
+        "Bildungsromans",
+        "Young men -- Fiction",
+        "Man-woman relationships -- Fiction",
+        "Ex-convicts -- Fiction",
+        "Benefactors -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "1400"
+      ],
+      "Release Date": [
+        "Jul 1, 1998"
+      ],
+      "Last Update": [
+        "Dec 17, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "38268 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "SOURCE_TEXT_DIFFERS",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-002",
+          "offset": 11290,
+          "length": 18189
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 29493,
+          "length": 10092
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 39598,
+          "length": 18521
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 58131,
+          "length": 22314
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 80458,
+          "length": 4103
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 130920,
+          "length": 14172
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 145104,
+          "length": 13501
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 158618,
+          "length": 28536
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 187168,
+          "length": 12084
+        },
+        {
+          "chapter_id": "chapter-013",
+          "offset": 199267,
+          "length": 15459
+        },
+        {
+          "chapter_id": "chapter-014",
+          "offset": 214740,
+          "length": 4286
+        },
+        {
+          "chapter_id": "chapter-016",
+          "offset": 241953,
+          "length": 10507
+        },
+        {
+          "chapter_id": "chapter-017",
+          "offset": 252475,
+          "length": 17632
+        },
+        {
+          "chapter_id": "chapter-018",
+          "offset": 270123,
+          "length": 27062
+        },
+        {
+          "chapter_id": "chapter-019",
+          "offset": 297199,
+          "length": 30463
+        },
+        {
+          "chapter_id": "chapter-020",
+          "offset": 327675,
+          "length": 16912
+        },
+        {
+          "chapter_id": "chapter-021",
+          "offset": 344601,
+          "length": 9426
+        },
+        {
+          "chapter_id": "chapter-023",
+          "offset": 380898,
+          "length": 17613
+        },
+        {
+          "chapter_id": "chapter-024",
+          "offset": 398526,
+          "length": 12531
+        },
+        {
+          "chapter_id": "chapter-025",
+          "offset": 411071,
+          "length": 15801
+        },
+        {
+          "chapter_id": "chapter-026",
+          "offset": 426887,
+          "length": 15263
+        },
+        {
+          "chapter_id": "chapter-028",
+          "offset": 458357,
+          "length": 13125
+        },
+        {
+          "chapter_id": "chapter-031",
+          "offset": 515723,
+          "length": 11862
+        },
+        {
+          "chapter_id": "chapter-032",
+          "offset": 527601,
+          "length": 12040
+        },
+        {
+          "chapter_id": "chapter-033",
+          "offset": 539658,
+          "length": 14426
+        },
+        {
+          "chapter_id": "chapter-034",
+          "offset": 554100,
+          "length": 12856
+        },
+        {
+          "chapter_id": "chapter-036",
+          "offset": 583220,
+          "length": 13685
+        },
+        {
+          "chapter_id": "chapter-037",
+          "offset": 596922,
+          "length": 15441
+        },
+        {
+          "chapter_id": "chapter-039",
+          "offset": 638726,
+          "length": 25072
+        },
+        {
+          "chapter_id": "chapter-040",
+          "offset": 663811,
+          "length": 27545
+        },
+        {
+          "chapter_id": "chapter-041",
+          "offset": 691370,
+          "length": 11439
+        },
+        {
+          "chapter_id": "chapter-043",
+          "offset": 718131,
+          "length": 10408
+        },
+        {
+          "chapter_id": "chapter-045",
+          "offset": 743714,
+          "length": 15873
+        },
+        {
+          "chapter_id": "chapter-046",
+          "offset": 759602,
+          "length": 16193
+        },
+        {
+          "chapter_id": "chapter-047",
+          "offset": 775811,
+          "length": 13671
+        },
+        {
+          "chapter_id": "chapter-048",
+          "offset": 789499,
+          "length": 14516
+        },
+        {
+          "chapter_id": "chapter-049",
+          "offset": 804030,
+          "length": 18707
+        },
+        {
+          "chapter_id": "chapter-050",
+          "offset": 822749,
+          "length": 7970
+        },
+        {
+          "chapter_id": "chapter-051",
+          "offset": 830732,
+          "length": 16176
+        },
+        {
+          "chapter_id": "chapter-052",
+          "offset": 846922,
+          "length": 10919
+        },
+        {
+          "chapter_id": "chapter-054",
+          "offset": 885049,
+          "length": 30108
+        },
+        {
+          "chapter_id": "chapter-055",
+          "offset": 915170,
+          "length": 15332
+        },
+        {
+          "chapter_id": "chapter-056",
+          "offset": 930516,
+          "length": 11587
+        },
+        {
+          "chapter_id": "chapter-057",
+          "offset": 942118,
+          "length": 25279
+        },
+        {
+          "chapter_id": "chapter-058",
+          "offset": 967413,
+          "length": 16143
+        },
+        {
+          "chapter_id": "chapter-059",
+          "offset": 983570,
+          "length": 7605
+        }
+      ],
+      "nonmatching_chapters": [
+        "chapter-001",
+        "chapter-007",
+        "chapter-008",
+        "chapter-015",
+        "chapter-022",
+        "chapter-027",
+        "chapter-029",
+        "chapter-030",
+        "chapter-035",
+        "chapter-038",
+        "chapter-042",
+        "chapter-044",
+        "chapter-053"
+      ],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "838b7315c58734824d4441c58a11cdb96eb05c3a766ea7a6d3011d619da80523",
+    "legacy_content_sha256": "63a8e9aa1d418a2cac304e2b8628f0f170b1faa760bc52dbfd20409cc38ad389",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1870,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "3c27432836d87b3d2a321055c57ff6ae29f26708b1a4a32428c94a06f8d85895",
+    "url": "https://www.gutenberg.org/ebooks/1400",
+    "author_catalog_strings": [
+      "Dickens, Charles, 1812-1870"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 59,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "bdc9450330a0db7507233e6078461d754a9129e68557f276cb3c3044a85794d3"
+      },
+      {
+        "id": "chapter-002",
+        "sha256": "5ff62d60296fd934cef88c3b072277f94155991801b96778e983d576ec0a7479"
+      },
+      {
+        "id": "chapter-003",
+        "sha256": "f5ebbf160d5cc0a75b9bb3746858c34130e9cb410b35c5683741dee55f1f641b"
+      },
+      {
+        "id": "chapter-004",
+        "sha256": "8dfed9419ce0eba46dcaf207a166e60bc4029d06e11b963d17cad73b9435e08a"
+      },
+      {
+        "id": "chapter-005",
+        "sha256": "732df79c0b40b5acf3e1a06704d9d15c9ee21e1cae9229d6908c63bfeb148ea1"
+      },
+      {
+        "id": "chapter-006",
+        "sha256": "21c14df2bb3026473be4dabd2ee9d213897b9c5931ac732e24b96aa8cdafd2cb"
+      },
+      {
+        "id": "chapter-007",
+        "sha256": "1a164d19dbb83a8ddab7ddb5293cc6c3c01d65e9bf3d1ffac2c13a6255e01331"
+      },
+      {
+        "id": "chapter-008",
+        "sha256": "8e69ab9f409b3d9384399667cc4df320abd29c4bf8e31d28c780083f0722cfdd"
+      },
+      {
+        "id": "chapter-009",
+        "sha256": "ad6b87cccbeb705eedea035f654a9379777320ec3d260b90b66504338a1411a0"
+      },
+      {
+        "id": "chapter-010",
+        "sha256": "60a2b371f23b669cf4ee0fd1a9082f792f8aad0214da05d05e23b2edfe1ba2f1"
+      },
+      {
+        "id": "chapter-011",
+        "sha256": "47d388ef28654dae2ee4d21c66142295b073e75030451cbeddfadbac1ca773a4"
+      },
+      {
+        "id": "chapter-012",
+        "sha256": "ce0cc9ef11eaf6911fc7b12633ac1ecca101535bd82e3a117cb09e728fec89a0"
+      },
+      {
+        "id": "chapter-013",
+        "sha256": "2cb0902e024932484559c5b9f6824189bc085baf452878b4532c6bdf3b942fbe"
+      },
+      {
+        "id": "chapter-014",
+        "sha256": "57cb75e53556a91e6ebd3db56fec16e6653238fa7f61c17bd925d645d8714a7e"
+      },
+      {
+        "id": "chapter-015",
+        "sha256": "224f133ca5fb2308bef4febee8ca80ed3319342d7a7a3ad59c1be21e593648dd"
+      },
+      {
+        "id": "chapter-016",
+        "sha256": "de4c3dcc33ec49a33a520f559552fa3e1e553a221a46da377a57a287d75a59f7"
+      },
+      {
+        "id": "chapter-017",
+        "sha256": "975aeafe89b0030607a00d970e86c2d05d0fdb37d9c4580a189aff60f8c74480"
+      },
+      {
+        "id": "chapter-018",
+        "sha256": "4353ab49791b3a7ad346cbdfa6095e5172085e02f1b5e8afc439622a68cbf9d9"
+      },
+      {
+        "id": "chapter-019",
+        "sha256": "9141f0905ca1437a39cad2423a76dc37bc085fde9f09fd0afbff9d81356dd348"
+      },
+      {
+        "id": "chapter-020",
+        "sha256": "16de528e8362b225c56b4955f9f6de451e69cbc40c55fda0fa41bcb4c80548f1"
+      },
+      {
+        "id": "chapter-021",
+        "sha256": "3f650e72dd33cd6e79f4cff0bf1913c797cf48097b85208e913038dcd0ea3963"
+      },
+      {
+        "id": "chapter-022",
+        "sha256": "a05efb4a60040157daac9872a250292f71a47e1943918c80838e9e5abeb0d318"
+      },
+      {
+        "id": "chapter-023",
+        "sha256": "251eb8f5cb5a3ee85d256e8137229cea243ee0b856bcfa4e32aecfc056f6bd46"
+      },
+      {
+        "id": "chapter-024",
+        "sha256": "095725408dd6b00a17f3face1f599a82619358646e98ed8905ea82ca2c9f4b88"
+      },
+      {
+        "id": "chapter-025",
+        "sha256": "9ba9eb0e73c139bff8f4c9dbce5db38da9578aace3d6645e35a9f6d6b413f1a2"
+      },
+      {
+        "id": "chapter-026",
+        "sha256": "cb4b2961697d46e57173eff594b7964d317e881692783edf1b7e9f45ef533393"
+      },
+      {
+        "id": "chapter-027",
+        "sha256": "bee3704383e35908d981dc3c0ff67e3b380634dc5a2d7c6cda431446625ce257"
+      },
+      {
+        "id": "chapter-028",
+        "sha256": "1fdd838f1b2ff5d9add800819cd1d4dccbcc03fdf339b07b0ec9329f59d2c739"
+      },
+      {
+        "id": "chapter-029",
+        "sha256": "579fc598cb152058709780e5e01a7a411af82a50e69bed755e19650ccef63bf3"
+      },
+      {
+        "id": "chapter-030",
+        "sha256": "a1944a34474ab9105dd4311f2cef0048e8eadb95beb58f07dacd147b98289964"
+      },
+      {
+        "id": "chapter-031",
+        "sha256": "1a533d02513e473568b9ddb5aaf76bcf61ab0306c51364f468334a2364d8e319"
+      },
+      {
+        "id": "chapter-032",
+        "sha256": "82d0592bba87331848e1f27a36f701e4a6ed390b53e9e66fb0eb56df07bd4e2a"
+      },
+      {
+        "id": "chapter-033",
+        "sha256": "6050d4cc913ca398d919ba00b4d42af1e2ffb61d5da9bf9d0fc2b8823b8e54d4"
+      },
+      {
+        "id": "chapter-034",
+        "sha256": "624fe305c16aeb1549228c30383b7577098719b8b84904fd20b093c2509735a2"
+      },
+      {
+        "id": "chapter-035",
+        "sha256": "f1b8f5fd3bd57deb1b9800a30fe32bb8332bd5c8d1c59d22c57815c44d1debe7"
+      },
+      {
+        "id": "chapter-036",
+        "sha256": "a20ecbeae6df5072d3c325265330b44abc442c01d6f39d2fda2eaafaa77966e0"
+      },
+      {
+        "id": "chapter-037",
+        "sha256": "9af3dd587535d2910a88b2fc47fafc2e867ba33d72b1052169e322e3420fe730"
+      },
+      {
+        "id": "chapter-038",
+        "sha256": "766cf5c446743f3b729465ed7baa29f62299a261d7ccda228e8635b5dbd96d10"
+      },
+      {
+        "id": "chapter-039",
+        "sha256": "c3a4b7b3e0a10af2b64b6ad6e36ad99d9fc29c484e2ad997225bcd2cbeab598b"
+      },
+      {
+        "id": "chapter-040",
+        "sha256": "349e202456f7c19a5b991c675ae821f30a06f1b9f84fa7f15a727da07c3e4bc1"
+      },
+      {
+        "id": "chapter-041",
+        "sha256": "c1921da71fe1ad85ace77190bb28bb123db62e82654edffd076d14fc54924385"
+      },
+      {
+        "id": "chapter-042",
+        "sha256": "e103f495c34ee43c1774282d1e924e8bfd29b8aa0b8fff228481b0733fb9be21"
+      },
+      {
+        "id": "chapter-043",
+        "sha256": "191b6968b601d655636f56660c0b742b6d31f68f04011187ea896c9540dae18c"
+      },
+      {
+        "id": "chapter-044",
+        "sha256": "1fe2af4fa713b9dad056dc266ff84979c64a83fdeccceb54c6c895aaed5d3513"
+      },
+      {
+        "id": "chapter-045",
+        "sha256": "1e82e13d3fbba33c8afca69b887d560098d0f2bb1fc0b372731675d9e21268c1"
+      },
+      {
+        "id": "chapter-046",
+        "sha256": "34bfda10958e5bb099cf385ccdff9af42a628b96373870645fa1411b0b2c8a12"
+      },
+      {
+        "id": "chapter-047",
+        "sha256": "445d89a85b1a9684f07ee92d4c6362d2e1d8f50234d74a70e938c784adcfc927"
+      },
+      {
+        "id": "chapter-048",
+        "sha256": "0aab385a89d31a34f115b548ea7aa6e8708bcdf53db48e2b0c6e19d5dcf08d1c"
+      },
+      {
+        "id": "chapter-049",
+        "sha256": "8ff0665d031c69fb70a02df47b10ce4bc6a7d32c7d93d03488c1d3c7e32bb306"
+      },
+      {
+        "id": "chapter-050",
+        "sha256": "c66a35f8490df7b6d1829f07ab2194f46e7efe7f62eeebbb2551b57319d3db46"
+      },
+      {
+        "id": "chapter-051",
+        "sha256": "0b71a7a27f511a5cc142b5867783f803c95b7adbb95e626af3a9c781014e4de4"
+      },
+      {
+        "id": "chapter-052",
+        "sha256": "de682ad5445d62b7ea4efff626ef9aaea0dfcf5603a70d60c57786221641840f"
+      },
+      {
+        "id": "chapter-053",
+        "sha256": "c3911a1026b252450ebda3b09c362603385a9ffb346fafe2600218a0663f0e25"
+      },
+      {
+        "id": "chapter-054",
+        "sha256": "bb03f23f75a18bf68b0e30c75c5da3261fc39dcf372e86b0bfbdc14e482a470e"
+      },
+      {
+        "id": "chapter-055",
+        "sha256": "db822e414b1843fafb56ebc544b888b51b072a54a5f63e1cd41849a9a0fa450c"
+      },
+      {
+        "id": "chapter-056",
+        "sha256": "ae5f429c71e2a4a0302e634e1af4436996f1e24358f8fcd3fef373920dc41f49"
+      },
+      {
+        "id": "chapter-057",
+        "sha256": "6cefbb6f722c095cceb4e7c843cbd1a6571e17511773f5ed0e407f6b7ccf02b9"
+      },
+      {
+        "id": "chapter-058",
+        "sha256": "263f90c659673a60bbdde4e740b180b2d30d7deb52e71e16968642a363d38403"
+      },
+      {
+        "id": "chapter-059",
+        "sha256": "a1aff404bd7994e78f96bdd8617f54e33d71e7c489e5eb0468349164da6a8246"
+      }
+    ],
+    "content_sha256": "406d555375cc46901e4977a5dfa0815b4c4deea21b5eb3720f069ec5c7c1ea97"
+  }
 }

@@ -3,14 +3,14 @@
   "schema_version": 1,
   "slug": "muchiram-gurer-jibanchorit",
   "title": "মুচিরাম গুড়ের জীবনচরিত",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-01T21:22:46.728080+00:00",
   "content": {
     "source_hash": "733466ffdadc8f5c0172023edd5c0ba7327387d65d0c46b1b881a26e303e800a",
     "content_hash": "dea6e37479af7c2067c5929999da22f8b2f49aeb2d0abd9741da4e7f01e6ba48",
     "provenance_hash": "5684356538fbb400de644b128c8ac1307bf46f737170d77dec156e1e1ac5f8a4",
     "sanitized": true,
-    "chapter_count": 2,
-    "chapter_index_sha256": "de2f0f78d8a062472485c0901c91f3acb8b68ab063beb3cce91a8777b0b2ff6b",
+    "chapter_count": 14,
+    "chapter_index_sha256": "7fe8ee5fb7a34102b7ecc2bfe485a3f96ecd0c69dd86a1a506aa6550b65eddfc",
     "chapters": [
       {
         "id": "chapter-001",
@@ -25,6 +25,90 @@
         "title": "Chapter 2. দ্বিতীয় পরিচ্ছেদ",
         "word_count": 352,
         "sha256": "9172cf08cd6fe0009a376beb1911bfde55386e42385aa351f19388ee7e08834b"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "তৃতীয় পরিচ্ছেদ",
+        "word_count": 631,
+        "sha256": "8981b0859bf3cd3dffe6c582a32d833b1ac24153f4b8d2e11e058b98547d4b29"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "চতুর্থ পরিচ্ছেদ",
+        "word_count": 313,
+        "sha256": "de98c1d95dccde4de2aa6a3a0a6396b8f6053d78300afe74bee1934f5328f698"
+      },
+      {
+        "id": "chapter-005",
+        "order": 5,
+        "title": "পঞ্চম পরিচ্ছেদ",
+        "word_count": 267,
+        "sha256": "f60085e0dfe0f2caede7562e93f89c0eda99be553b7c6e80f4c3360c79e00877"
+      },
+      {
+        "id": "chapter-006",
+        "order": 6,
+        "title": "ষষ্ঠ পরিচ্ছেদ",
+        "word_count": 517,
+        "sha256": "8c33308e96ff7ba2f8f91fd8fe083bfb6e3865f4c84a1a90404f2efdf7a4ae5e"
+      },
+      {
+        "id": "chapter-007",
+        "order": 7,
+        "title": "সপ্তম পরিচ্ছেদ",
+        "word_count": 518,
+        "sha256": "a21596d82467a31917b3efe9eb2185d6d2bd718b6a06cd2deafa0a5c2fbf1e07"
+      },
+      {
+        "id": "chapter-008",
+        "order": 8,
+        "title": "অষ্টম পরিচ্ছেদ",
+        "word_count": 412,
+        "sha256": "2d49c1b2a3492a5d3454f48f1b563df39d2672f0facaab2d9a96631405bcbdac"
+      },
+      {
+        "id": "chapter-009",
+        "order": 9,
+        "title": "নবম পরিচ্ছেদ",
+        "word_count": 368,
+        "sha256": "c109786417f562c379d0083f772c07a2cdb312bec346ea1de41cf1a2393ca4b4"
+      },
+      {
+        "id": "chapter-010",
+        "order": 10,
+        "title": "দশম পরিচ্ছেদ",
+        "word_count": 620,
+        "sha256": "f7f2d6b158f9f2a9ff9d9d47b7764538ddfe315a3d64f27b7219393d29a52f23"
+      },
+      {
+        "id": "chapter-011",
+        "order": 11,
+        "title": "একাদশ পরিচ্ছেদ",
+        "word_count": 203,
+        "sha256": "e4622866cdcf9ee775e356237cb34f8e30702cb168d4f9b83eb06ee1df03273e"
+      },
+      {
+        "id": "chapter-012",
+        "order": 12,
+        "title": "দ্বাদশ পরিচ্ছেদ",
+        "word_count": 383,
+        "sha256": "1235a2e3901185fc3a60f51338829ce905764c2c949c60cabebb47d6bc7102b9"
+      },
+      {
+        "id": "chapter-013",
+        "order": 13,
+        "title": "ত্রয়োদশ পরিচ্ছেদ",
+        "word_count": 438,
+        "sha256": "7baa7a09d7a400cf587de482c494039df5ae52216efe52dfeaf9fef7960f5d5c"
+      },
+      {
+        "id": "chapter-014",
+        "order": 14,
+        "title": "চতুর্দ্দশ পরিচ্ছেদ",
+        "word_count": 921,
+        "sha256": "fc8ac6f15caf087eeea66842e6347d2abb5ab73b3e15fd0be53c108f3683c0f3"
       }
     ]
   },
@@ -32,7 +116,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "28cf06e1dec75665a84715e8d92b3d3b21326e51bcb3e81bbb338a459f00257c"
+    "evidence_sha256": "21db0cbe040912f63400d73e79f21227ee7d741c1f7d3a48d707b07cf7824bb7"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -53,10 +137,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "d34ecd7491b15a3b6fe09ae0fa501769efc583e71c12dca897af2b8f023cb9be",
-    "reader_manifest": "304fd60e3952495cfd1f9e4fd1c31994880ccd8144d8df05d5ec96a8d8eb3d53",
-    "source_evidence": "28cf06e1dec75665a84715e8d92b3d3b21326e51bcb3e81bbb338a459f00257c",
+    "public_book": "4865735424309666b4eba5e8bf92829586a4b2df09e41e48a03ed65036ed8e64",
+    "reader_manifest": "e00861285118f0f6131e400dd82c60e945b54fdf34ae33b602a071d018cfe50b",
+    "source_evidence": "21db0cbe040912f63400d73e79f21227ee7d741c1f7d3a48d707b07cf7824bb7",
     "approval_evidence": "74dabd9925df38019d13c1579b1b0a9d22603f69084dfd1b2acbf3cfb4c7e545"
   },
-  "manifest_sha256": "bb9f68e7608b7558b71b20387819e70b64c4c5338830dbe52539782b80daa20a"
+  "manifest_sha256": "e8898a1da02f676a8fb8f25a8947032b6bbddd9f3a317795c13f15f80fdce6e3"
 }

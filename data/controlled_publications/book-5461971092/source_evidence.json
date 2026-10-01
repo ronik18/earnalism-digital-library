@@ -24,12 +24,26 @@
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "208a553fc4eb8ac6e6de42a4f65a71da855d6e0ddd4b2d2259f8d15809845d16",
+    "reader_content_sha256": "3e60b9f12e219a85c516fe615662ffaf0f254d13ae9b12217ceacac14b1eb89b",
     "chapter_count": 1,
     "chapter_content_sha256": {
-      "chapter-001": "208a553fc4eb8ac6e6de42a4f65a71da855d6e0ddd4b2d2259f8d15809845d16"
+      "chapter-001": "3e60b9f12e219a85c516fe615662ffaf0f254d13ae9b12217ceacac14b1eb89b"
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  },
+  "reader_content_reconciliation": {
+    "status": "SOURCE_FURNITURE_REMOVED_ONLY",
+    "performed_at": "2026-10-01T21:08:27.473444+00:00",
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/source-furniture-repair-proposals.json",
+    "artifact_sha256": "63e8128394ae67e1620d02a5bce6ca6b14dd72f8230ed86b0d535ed69707baf7",
+    "before_content_sha256": "208a553fc4eb8ac6e6de42a4f65a71da855d6e0ddd4b2d2259f8d15809845d16",
+    "after_content_sha256": "3e60b9f12e219a85c516fe615662ffaf0f254d13ae9b12217ceacac14b1eb89b",
+    "removed_source_furniture": [
+      "রবীন্দ্রনাথ ঠাকুর"
+    ],
+    "literary_words_changed": false,
+    "source_transcription_completeness": "ADDITIONAL_SOURCE_COMPARISON_REQUIRED",
+    "scope": "READER_METADATA_FURNITURE_CLEANUP_NOT_PUBLICATION_OR_AUDIO_APPROVAL"
   }
 }

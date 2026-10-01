@@ -9,5 +9,230 @@
   "rights_basis": "H. G. Wells died in 1946, so the original literary work is public domain in India under life plus 60 years. Original publication in 1895 supports U.S. public-domain status.",
   "downloaded_at": "2026-05-24T04:46:57.262459+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #35",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/35",
+      "resolved_url": "https://www.gutenberg.org/ebooks/35",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:24.886802+00:00",
+      "response_sha256": "8a701df37a1d012b50a28d82e7315de63f26ac399bc08754939f8efdff452713"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/35.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/35/pg35.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:29.749784+00:00",
+      "response_sha256": "2892e919000e17c83e1dac51b30f4675db50536b644d7579fe8a89bb399a9bdc"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Wells, H. G. (Herbert George), 1866-1946"
+      ],
+      "Title": [
+        "The Time Machine"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Time_Machine"
+      ],
+      "Reading Level": [
+        "Reading ease score: 79.5 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Science fiction",
+        "Time travel -- Fiction",
+        "Dystopias -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "35"
+      ],
+      "Release Date": [
+        "Oct 2, 2004"
+      ],
+      "Last Update": [
+        "Jun 16, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "27995 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "SOURCE_TEXT_DIFFERS",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-003",
+          "offset": 18479,
+          "length": 11049
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 29549,
+          "length": 11625
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 41196,
+          "length": 9289
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 50512,
+          "length": 12532
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 63065,
+          "length": 12459
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 75543,
+          "length": 23325
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 98886,
+          "length": 11766
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 110672,
+          "length": 13725
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 138080,
+          "length": 13954
+        },
+        {
+          "chapter_id": "chapter-013",
+          "offset": 152041,
+          "length": 5936
+        },
+        {
+          "chapter_id": "chapter-014",
+          "offset": 158002,
+          "length": 10373
+        },
+        {
+          "chapter_id": "chapter-015",
+          "offset": 168408,
+          "length": 2627
+        },
+        {
+          "chapter_id": "chapter-016",
+          "offset": 171041,
+          "length": 8964
+        }
+      ],
+      "nonmatching_chapters": [
+        "chapter-001",
+        "chapter-002",
+        "chapter-011"
+      ],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "c7aeb98aa3143ae724283da3a0a74aef602537073f8c8f06ae0e1d22c0a38968",
+    "legacy_content_sha256": "86f6463ed64691c02e7b927ae73e94d76027d3f3c4f82c6a18c17310020325ba",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1946,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "8a701df37a1d012b50a28d82e7315de63f26ac399bc08754939f8efdff452713",
+    "url": "https://www.gutenberg.org/ebooks/35",
+    "author_catalog_strings": [
+      "Wells, H. G. (Herbert George), 1866-1946"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 16,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "d73789d8031cb88e0922217efc8f22cadb740f28e5b97ad591ef70754f160738"
+      },
+      {
+        "id": "chapter-002",
+        "sha256": "27abac843db7691ff591feba266476242a4450eec3fe83c1e9a19f486a0d936a"
+      },
+      {
+        "id": "chapter-003",
+        "sha256": "8213f16ba05785aaf1f170623db53f3d0f899db36b5df694f4dd16a308b1891d"
+      },
+      {
+        "id": "chapter-004",
+        "sha256": "45bd631779ff17859758a5ef60235bd2cf6d176d52b0368f16b4d8edc0bdf8d7"
+      },
+      {
+        "id": "chapter-005",
+        "sha256": "980683c22188e919d7cf769d435b6fded1fdaabc4c88b0638e13a436ea84125f"
+      },
+      {
+        "id": "chapter-006",
+        "sha256": "2e41d7ecb10a28259fc02b24d4331d119050546c21226506e2eda930789feb86"
+      },
+      {
+        "id": "chapter-007",
+        "sha256": "78e08ea339ebbd34838470a9758aa4dbfea4175bfb4fec7be48dd0eb68cf2959"
+      },
+      {
+        "id": "chapter-008",
+        "sha256": "2b7b5e3352b784e625f04900f7ea8fbfdda45c8ddd0aaf7676f2be86cf9d47a7"
+      },
+      {
+        "id": "chapter-009",
+        "sha256": "0286a872d96f55004016ae309b09d77134de9bcd8c525ccda2efd12df8d018cf"
+      },
+      {
+        "id": "chapter-010",
+        "sha256": "d179d6ff39703fd424855c9bfc2e3805aa24bd52ef3fb611b1f1b1161fc2ca18"
+      },
+      {
+        "id": "chapter-011",
+        "sha256": "8429dbad8f53198ddd5d675a06188757017b8089cb8b001d5e531b6f86e420d3"
+      },
+      {
+        "id": "chapter-012",
+        "sha256": "c9cb651da3e3873d6cd7708a7970cb570d9cfd910530a4dcb3d19ea6ea074ea9"
+      },
+      {
+        "id": "chapter-013",
+        "sha256": "c2052e473278033f73ac6a0cebddd2ffdd14b7e013d622f2ce306637fd40ff43"
+      },
+      {
+        "id": "chapter-014",
+        "sha256": "e0cfab2dfcf3a4914b77775cf4ba3625c80e1346ce153417debcb326cc1bc0d3"
+      },
+      {
+        "id": "chapter-015",
+        "sha256": "e73e22bc54ee43efac15e14e13a1bda603ff11f17c958e3bef066734ace67b5f"
+      },
+      {
+        "id": "chapter-016",
+        "sha256": "74234e88500de74936d9438385f8301b9b23fdcaa274815fc40d83d86cabb147"
+      }
+    ],
+    "content_sha256": "1f88fe7d2fe8692a8957f9e7d9f3453422c08daa69287bc80d6fca9016396f0d"
+  }
 }

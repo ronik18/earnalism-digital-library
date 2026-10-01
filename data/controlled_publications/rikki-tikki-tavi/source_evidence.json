@@ -9,5 +9,112 @@
   "rights_basis": "Rudyard Kipling died 1936; first published 1894. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.479465+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #35997",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/35997",
+      "resolved_url": "https://www.gutenberg.org/ebooks/35997",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:19.343736+00:00",
+      "response_sha256": "83cbc2946e9cd7dea303c59f23ea5ded576377db86b1bf6a6f9384694942b26b"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/35997.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/35997/pg35997.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:24.387975+00:00",
+      "response_sha256": "702dcf213efccf27768778ff44434f78557d1e7d2ba7a532899bec64633e55ca"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Kipling, Rudyard, 1865-1936"
+      ],
+      "Title": [
+        "The Jungle Book"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Jungle_Book",
+        "There is an improved edition of this title, eBook #236"
+      ],
+      "Credits": [
+        "Suzanne Shell, Ernest Schaal, and the Online Distributed Proofreading Team"
+      ],
+      "Reading Level": [
+        "Reading ease score: 86.6 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Short stories",
+        "Animals -- Fiction",
+        "Jungles -- Fiction",
+        "India -- Fiction",
+        "Jungle animals -- Fiction",
+        "Mowgli (Fictitious character) -- Fiction",
+        "Adventure stories, English",
+        "Feral children -- Fiction",
+        "India -- History -- 19th century -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "35997"
+      ],
+      "Release Date": [
+        "Apr 30, 2011"
+      ],
+      "Last Update": [
+        "Nov 8, 2023"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1489 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "SOURCE_TEXT_DIFFERS",
+      "matched_chapters": [],
+      "nonmatching_chapters": [
+        "chapter-001"
+      ],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "9fb989d890306e186ad819ae9917d27b053bad992c2910b016dbf5540b28faf9",
+    "legacy_content_sha256": "213c2a4d8a06ab1ef0a043434d8026e50b6a01eff59a8ec74287afaf2c0f9ff7",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1936,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "83cbc2946e9cd7dea303c59f23ea5ded576377db86b1bf6a6f9384694942b26b",
+    "url": "https://www.gutenberg.org/ebooks/35997",
+    "author_catalog_strings": [
+      "Kipling, Rudyard, 1865-1936"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "6c0e5ab6390ed2b3fbf7f064e8bef012e0ee3012c14b69a165b2bd8df6773e17"
+      }
+    ],
+    "content_sha256": "6c0e5ab6390ed2b3fbf7f064e8bef012e0ee3012c14b69a165b2bd8df6773e17"
+  }
 }

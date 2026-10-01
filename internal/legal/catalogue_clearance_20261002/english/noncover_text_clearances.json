@@ -1,0 +1,50 @@
+{
+  "scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_NO_RUNTIME_ACTIVATION",
+  "clearances": [
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "scope": "IN_NON_COVER_TEXT_READER_ONLY",
+      "rights_status": "ACCEPTED_LOCAL_RECORD",
+      "source_sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+      "content_sha256": "5629f655398205d45c0b7bba128ada0849d46e5148aa9b6553636f7d4d7e8812",
+      "chapter_count": 12,
+      "cover_status": "DEFERRED",
+      "production_registry_registered": false,
+      "live_approved": false,
+      "reader_exposed": false,
+      "audio_exposed": false,
+      "rights_decision_sha256": "63cf4088ff1b2b2be767c6678aefece1d0e85a82a6c1d248aa6d764a0b9c0a66",
+      "publication_authorization_sha256": "469a7f6ddd8202ef12e1c1e8f72e6d346887297737652e65c38baa8ff71ede16"
+    },
+    {
+      "slug": "frankenstein",
+      "scope": "IN_NON_COVER_TEXT_READER_ONLY",
+      "rights_status": "ACCEPTED_LOCAL_RECORD",
+      "source_sha256": "7810cd483cffcf2cc8a1d8f0d5807931e69d4f48cd14149b8c76f88af82fead3",
+      "content_sha256": "53b45539400716c4cca3295c9bffef1f744179cc7e4a56cd5e4f983b1c4f53ef",
+      "chapter_count": 28,
+      "cover_status": "DEFERRED",
+      "production_registry_registered": false,
+      "live_approved": false,
+      "reader_exposed": false,
+      "audio_exposed": false,
+      "rights_decision_sha256": "b87f8f34b74e69be6e0eaf3fca94ce487e6d38bfec4657518e5a3d268516c6c3",
+      "publication_authorization_sha256": "2903ac9efd4035e1e993767c53539c463a0fde420188dce1273d20b3c5d01657"
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "scope": "IN_NON_COVER_TEXT_READER_ONLY",
+      "rights_status": "ACCEPTED_LOCAL_RECORD",
+      "source_sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+      "content_sha256": "4b68459abff92d885d2d493ad052e8cdba6308ebf78f24508c6410cce683c276",
+      "chapter_count": 61,
+      "cover_status": "DEFERRED",
+      "production_registry_registered": false,
+      "live_approved": false,
+      "reader_exposed": false,
+      "audio_exposed": false,
+      "rights_decision_sha256": "b0aacd39d683c274a16274bc50a6c3b294352a4a6efbdc06211b3ca568355f55",
+      "publication_authorization_sha256": "ec35a5aed3936f495dc8cc0408fa54a6cf27c3c96003f74a85a58b594c5671b7"
+    }
+  ]
+}

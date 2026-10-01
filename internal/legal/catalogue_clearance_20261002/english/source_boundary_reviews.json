@@ -1,0 +1,2766 @@
+{
+  "scope": "ALL_ORDERED_EXACT_MATCH_CANDIDATES_NARRATIVE_GAP_TRIAGE",
+  "count": 70,
+  "titles": [
+    {
+      "slug": "a-jury-of-her-peers",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "n't know where you'll find him.\" Chantry smiled and shook hands. \"Oh, I carry him about with me. Good-night,\" said Havelock the Dane. A JURY OF HER PEERS[11] [Note 11: Copyright, 1917, by The Crowell Publishing Company. Copyright, 1918, by Susan Glaspell Cook.] BY SUSAN GLASPELL ",
+          "sha256": "58d445f7b0b73ee4accb9bb1fff936d5ed2fb14173d9bb0d5aa24e2429e0f764"
+        }
+      ],
+      "after_selected_text": " THE BUNKER MOUSE[12] [Note 12: Copyright, 1917, by The Century Company. Copyright, 1918, by Frederick Stuart Greene.] By FREDERICK STUART GREENE From _The Century Magazine_ LARRY WALSH slowly climbed the stairs of a house near the waterfront, in a run-down quarter of old New Yor",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "a-retrieved-reformation",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "ain pulled out from Espina. As its speed increased, and the black masses of chaparral went whizzing past on either side, the express messenger, lighting his pipe, looked through his window and remarked, feelingly: \"What a jim-dandy place for a hold-up!\" X A RETRIEVED REFORMATION ",
+          "sha256": "46da13698189d9f1a19faff72d2b78fcf3948b01ccaf29fac7570c5737d99dde"
+        }
+      ],
+      "after_selected_text": " CHERCHEZ LA FEMME Robbins, reporter for the _Picayune_, and Dumars, of _L'Abeille_--the old French newspaper that has buzzed for nearly a century--were good friends, well proven by years of ups and downs together. They were seated where they had a habit of meeting--in the little",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "a-wagner-matinee",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "re was a murmur in the hall, and MacMaster greeted the smiling Captain and his aunt as he bowed himself out. To all intents and purposes the _Marriage of Phaedra_ was already entombed in a vague continent in the Pacific, somewhere on the other side of the world. A Wagner Matinee ",
+          "sha256": "ff328a37da12432d3b4d70978764d6dacc3e86a39ba373ae966e146b7c27e6f5"
+        }
+      ],
+      "after_selected_text": " Paul's Case _A Study in Temperament_ It was Paul's afternoon to appear before the faculty of the Pittsburgh High School to account for his various misdemeanors. He had been suspended a week ago, and his father had called at the Principal's office and confessed his perplexity abo",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "chapter_count": 12,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "ll CHAPTER V. Advice from a Caterpillar CHAPTER VI. Pig and Pepper CHAPTER VII. A Mad Tea-Party CHAPTER VIII. The Queen’s Croquet-Ground CHAPTER IX. The Mock Turtle’s Story CHAPTER X. The Lobster Quadrille CHAPTER XI. Who Stole the Tarts? CHAPTER XII. Alice’s Evidence CHAPTER I. ",
+          "sha256": "52d7984255de8ea68c43264dc3b3c6f968680641ca8ca328c66e13192365c830"
+        },
+        {
+          "before_chapter": "chapter-002",
+          "characters": 31,
+          "excerpt": " CHAPTER II. The Pool of Tears ",
+          "sha256": "104c2fb1a5fe24579440ec60c5983eff7cb39bdb61ea4eb7afa5741f61496760"
+        },
+        {
+          "before_chapter": "chapter-003",
+          "characters": 14,
+          "excerpt": " CHAPTER III. ",
+          "sha256": "cd5f8adc746552a76af9c50bd1da82abbf63b943cc560b2c58d6fa612d8485b6"
+        },
+        {
+          "before_chapter": "chapter-004",
+          "characters": 13,
+          "excerpt": " CHAPTER IV. ",
+          "sha256": "9aa6c9ccbba830b82018c6f4ad4f4228fbdaf10972086d6266a9fe98be5db132"
+        },
+        {
+          "before_chapter": "chapter-005",
+          "characters": 12,
+          "excerpt": " CHAPTER V. ",
+          "sha256": "30dcd6a6be1f48146ececf524c4d7d040e557e25966ec582902dfb591cd83503"
+        },
+        {
+          "before_chapter": "chapter-006",
+          "characters": 13,
+          "excerpt": " CHAPTER VI. ",
+          "sha256": "8c780f99e734cd2a82130597bfd0a468b1c0b996ffcff744d355e0431015eb72"
+        },
+        {
+          "before_chapter": "chapter-007",
+          "characters": 30,
+          "excerpt": " CHAPTER VII. A Mad Tea-Party ",
+          "sha256": "3b7c2fe52e87563e1e7fc922d04dbf8c069a6902df53437817b5a3ea1020dcfb"
+        },
+        {
+          "before_chapter": "chapter-008",
+          "characters": 42,
+          "excerpt": " CHAPTER VIII. The Queen’s Croquet-Ground ",
+          "sha256": "4043e2423ee0e6b88ab63fd61a727d37c959a41c422db949aee888c889516c3e"
+        },
+        {
+          "before_chapter": "chapter-009",
+          "characters": 37,
+          "excerpt": " CHAPTER IX. The Mock Turtle’s Story ",
+          "sha256": "5b20d98cff07c1d027447af954d5711b735c6acc2eec37e9485762e6ba65dc84"
+        },
+        {
+          "before_chapter": "chapter-010",
+          "characters": 34,
+          "excerpt": " CHAPTER X. The Lobster Quadrille ",
+          "sha256": "8b6895dc4d367fb713d6d57b1351b68fe6fe660ff1114b9b4dec0359a8506171"
+        },
+        {
+          "before_chapter": "chapter-011",
+          "characters": 13,
+          "excerpt": " CHAPTER XI. ",
+          "sha256": "28168e88f4e61791a3411029bec5e4f836f482e936f21d0196684538e214c387"
+        },
+        {
+          "before_chapter": "chapter-012",
+          "characters": 31,
+          "excerpt": " CHAPTER XII. Alice’s Evidence ",
+          "sha256": "d73eaab285a77e594eb793ed7d31861ed9de474866578cb0b15f924332d1a92e"
+        }
+      ],
+      "after_selected_text": " *** END OF THE PROJECT GUTENBERG EBOOK ALICE'S ADVENTURES IN WONDERLAND *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyrigh",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "boule-de-suif",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "as unsuccessful. But his mind, henceforth “indifferent to all unhappiness,” had entered into eternal darkness. He was taken back to Paris and placed in Dr. Meuriot's sanatorium, where, after eighteen months of mechanical existence, the “meteor” quietly passed away. BOULE DE SUIF ",
+          "sha256": "9f3823638a022bf49f8959c75b5388be87f68cd16a5dae8449d213f7d42bc47b"
+        }
+      ],
+      "after_selected_text": " TWO FRIENDS Besieged Paris was in the throes of famine. Even the sparrows on the roofs and the rats in the sewers were growing scarce. People were eating anything they could get. As Monsieur Morissot, watchmaker by profession and idler for the nonce, was strolling along the boul",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "carmilla",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "ness CHAPTER VI. A Very Strange Agony CHAPTER VII. Descending CHAPTER VIII. Search CHAPTER IX. The Doctor CHAPTER X. Bereaved CHAPTER XI. The Story CHAPTER XII. A Petition CHAPTER XIII. The Woodman CHAPTER XIV. The Meeting CHAPTER XV. Ordeal and Execution CHAPTER XVI. Conclusion ",
+          "sha256": "cec9cb80b97bd91afce5c1d0f1241fd56653261bf68badf950dfc7d02049efde"
+        }
+      ],
+      "after_selected_text": " *** END OF THE PROJECT GUTENBERG EBOOK CARMILLA *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in these works, so the",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "dracula",
+      "chapter_count": 28,
+      "gaps": [
+        {
+          "before_chapter": "chapter-000",
+          "characters": 280,
+          "excerpt": "rnal CHAPTER XXI. Dr. Seward’s Diary CHAPTER XXII. Jonathan Harker’s Journal CHAPTER XXIII. Dr. Seward’s Diary CHAPTER XXIV. Dr. Seward’s Phonograph Diary, spoken by Van Helsing CHAPTER XXV. Dr. Seward’s Diary CHAPTER XXVI. Dr. Seward’s Diary CHAPTER XXVII. Mina Harker’s Journal ",
+          "sha256": "77145f0b9c52f9caf28ef38c03efab56c92d2e145b3451f94f35f0f885bc8b96"
+        },
+        {
+          "before_chapter": "chapter-001",
+          "characters": 45,
+          "excerpt": " DRACULA CHAPTER I JONATHAN HARKER’S JOURNAL ",
+          "sha256": "89e047f6ab05f2e6cd89c5e44131fd3475420e23777ec54a73ee30964a1c6aad"
+        },
+        {
+          "before_chapter": "chapter-002",
+          "characters": 51,
+          "excerpt": " CHAPTER II JONATHAN HARKER’S JOURNAL--_continued_ ",
+          "sha256": "7f9a0e99c5e7630a22e35aa4fea4acfae2c21c4179b9ff7e75081bf51e78b50f"
+        },
+        {
+          "before_chapter": "chapter-003",
+          "characters": 52,
+          "excerpt": " CHAPTER III JONATHAN HARKER’S JOURNAL--_continued_ ",
+          "sha256": "1a401e1782b9bdafe03f693dc4cc04b4cee03875f18e0acf19c668947d0ee3af"
+        },
+        {
+          "before_chapter": "chapter-004",
+          "characters": 51,
+          "excerpt": " CHAPTER IV JONATHAN HARKER’S JOURNAL--_continued_ ",
+          "sha256": "9298aeb6c421ff1f371e33fc1eaae39eecda0b396263e41e0c3a201ef9f5cc31"
+        },
+        {
+          "before_chapter": "chapter-005",
+          "characters": 11,
+          "excerpt": " CHAPTER V ",
+          "sha256": "1944005e79538789c221d856717dfdcc1313650c587c2110951153a15bdcdae1"
+        },
+        {
+          "before_chapter": "chapter-006",
+          "characters": 34,
+          "excerpt": " CHAPTER VI MINA MURRAY’S JOURNAL ",
+          "sha256": "883ad26da5bf15662954aefae293ab0bb9a39f57c2cbf21a686b6f3a3c7345f6"
+        },
+        {
+          "before_chapter": "chapter-007",
+          "characters": 53,
+          "excerpt": " CHAPTER VII CUTTING FROM “THE DAILYGRAPH,” 8 AUGUST ",
+          "sha256": "4b07a1f1aae1d9b2fccc53a180f5a6dd0aa347d32cef2c998164aa6ed4558c5d"
+        },
+        {
+          "before_chapter": "chapter-008",
+          "characters": 36,
+          "excerpt": " CHAPTER VIII MINA MURRAY’S JOURNAL ",
+          "sha256": "ca4424d4c345e688035fd7f2dcffc519e34facd90331759660d1daa748a98da3"
+        },
+        {
+          "before_chapter": "chapter-009",
+          "characters": 12,
+          "excerpt": " CHAPTER IX ",
+          "sha256": "f699debba8e3bc3d544238087c0c6c4343915625797e99599a327853261aee0b"
+        },
+        {
+          "before_chapter": "chapter-010",
+          "characters": 11,
+          "excerpt": " CHAPTER X ",
+          "sha256": "c89ac6465abce3c80f40de98ad740b555b601349708669e9a1a09a632298f594"
+        },
+        {
+          "before_chapter": "chapter-011",
+          "characters": 12,
+          "excerpt": " CHAPTER XI ",
+          "sha256": "338992240a9cdcf581d872e4f7c01364ba9f44a7a4e948a79e0090b24319cd78"
+        },
+        {
+          "before_chapter": "chapter-012",
+          "characters": 32,
+          "excerpt": " CHAPTER XII DR. SEWARD’S DIARY ",
+          "sha256": "67981cf98de35de60fbe8e0276e299a2a1f63d98d1d33d57ca44b45bfc8f9023"
+        },
+        {
+          "before_chapter": "chapter-013",
+          "characters": 14,
+          "excerpt": " CHAPTER XIII ",
+          "sha256": "c23742677f6ea18f90fcbca2011c00728ecf92cc618ab20706234226971f0a59"
+        },
+        {
+          "before_chapter": "chapter-014",
+          "characters": 35,
+          "excerpt": " CHAPTER XIV MINA HARKER’S JOURNAL ",
+          "sha256": "604b9f411e1cebd46034c6f0c661d10af3307ad32db4d698f9944c5315271ed9"
+        },
+        {
+          "before_chapter": "chapter-015",
+          "characters": 12,
+          "excerpt": " CHAPTER XV ",
+          "sha256": "f60026b9ba5e63d1bd9afbe21e1c98c470891fe0cdcdaa30a15f52f64a0318ef"
+        },
+        {
+          "before_chapter": "chapter-016",
+          "characters": 45,
+          "excerpt": " CHAPTER XVI DR. SEWARD’S DIARY--_continued_ ",
+          "sha256": "77bf487890e5bd11a97a55dd37f61619c2afb813f73d9646424767b61548f555"
+        },
+        {
+          "before_chapter": "chapter-017",
+          "characters": 46,
+          "excerpt": " CHAPTER XVII DR. SEWARD’S DIARY--_continued_ ",
+          "sha256": "49ded2c9fc92f36782ba3a03b607c6672c85744fd4cab1dffdaaba8289092a02"
+        },
+        {
+          "before_chapter": "chapter-018",
+          "characters": 34,
+          "excerpt": " CHAPTER XVIII DR. SEWARD’S DIARY ",
+          "sha256": "5578c00be0ac44c77ca244f9bbb568fd058ea6f9b4cd8bc557b21fc5b473f7ed"
+        },
+        {
+          "before_chapter": "chapter-019",
+          "characters": 39,
+          "excerpt": " CHAPTER XIX JONATHAN HARKER’S JOURNAL ",
+          "sha256": "a76b2088fe8cd5c141ffbf06151937780007fb52cf25d512ee0ba454c0908746"
+        },
+        {
+          "before_chapter": "chapter-020",
+          "characters": 38,
+          "excerpt": " CHAPTER XX JONATHAN HARKER’S JOURNAL ",
+          "sha256": "6bee448bd5bfce79455804e6de0032d5fa504a684b4135704c97ac374a05bf0f"
+        },
+        {
+          "before_chapter": "chapter-021",
+          "characters": 32,
+          "excerpt": " CHAPTER XXI DR. SEWARD’S DIARY ",
+          "sha256": "36ac003418b3fa2c231e33940ff39aa466ec839b0d659e14d1ba3b582af041dc"
+        },
+        {
+          "before_chapter": "chapter-022",
+          "characters": 40,
+          "excerpt": " CHAPTER XXII JONATHAN HARKER’S JOURNAL ",
+          "sha256": "755ccf87bcfb7ca0848e705d58eac75d42f203f73a2ebb531cbec6d4e7572096"
+        },
+        {
+          "before_chapter": "chapter-023",
+          "characters": 34,
+          "excerpt": " CHAPTER XXIII DR. SEWARD’S DIARY ",
+          "sha256": "d483af08fa6a61919ecf47b748627fb28ec3e5ee35030961ae96acece0e86a35"
+        },
+        {
+          "before_chapter": "chapter-024",
+          "characters": 67,
+          "excerpt": " CHAPTER XXIV DR. SEWARD’S PHONOGRAPH DIARY, SPOKEN BY VAN HELSING ",
+          "sha256": "a2469524ff6442ef596b60ded5eb91ba26776fa86a56d6b7200b18525373275e"
+        },
+        {
+          "before_chapter": "chapter-025",
+          "characters": 32,
+          "excerpt": " CHAPTER XXV DR. SEWARD’S DIARY ",
+          "sha256": "771effb325cce4df2d80c8a158f31525d91101ea57ab662fe057357a26bc1252"
+        },
+        {
+          "before_chapter": "chapter-026",
+          "characters": 33,
+          "excerpt": " CHAPTER XXVI DR. SEWARD’S DIARY ",
+          "sha256": "34c6dbe4ac1869b40448d61ff2d731b3c3514a45cb21bb6c7676442bea29d4ed"
+        },
+        {
+          "before_chapter": "chapter-027",
+          "characters": 37,
+          "excerpt": " CHAPTER XXVII MINA HARKER’S JOURNAL ",
+          "sha256": "401adda741a3d3b6109c779cd211e839188ec0627fb1753214396cfe571337eb"
+        }
+      ],
+      "after_selected_text": " * * * * * _There’s More to Follow!_ More stories of the sort you like; more, probably, by the author of this one; more than 500 titles all told by writers of world-wide reputation, in the Authors’ Alphabetical List which you will find on the _reverse side_ of the wrapper of this",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "dsires-baby",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "ave passed over her since the night she bade farewell to her visions. Poor Ma’ame Pélagie! How could it be different! While the outward pressure of a young and joyous existence had forced her footsteps into the light, her soul had stayed in the shadow of the ruin. DÉSIRÉE’S BABY ",
+          "sha256": "0c3bb59cfea4179217d148ecd138e607641dae7aa829b8ccee6c483bd559ab11"
+        }
+      ],
+      "after_selected_text": " A RESPECTABLE WOMAN Mrs. Baroda was a little provoked to learn that her husband expected his friend, Gouvernail, up to spend a week or two on the plantation. They had entertained a good deal during the winter; much of the time had also been passed in New Orleans in various forms",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "feathertop",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "ur innumerable footsteps echoes beyond his sphere. He knows not, more than we, our destined goal. But God, who made us, knows, and will not leave us on our toilsome and doubtful march, either to wander in infinite uncertainty, or perish by the way! FEATHERTOP: A MORALIZED LEGEND ",
+          "sha256": "0a6ae808d4ca43f8ac6ca31d66e9cdd78540f61726a383ff6d1c5ac4d742f8fc"
+        }
+      ],
+      "after_selected_text": " THE NEW ADAM AND EVE We who are born into the world’s artificial system can never adequately know how little in our present state and circumstances is natural, and how much is merely the interpolation of the perverted mind and heart of man. Art has become a second and stronger n",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "frankenstein",
+      "chapter_count": 28,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "apter 2 Chapter 3 Chapter 4 Chapter 5 Chapter 6 Chapter 7 Chapter 8 Chapter 9 Chapter 10 Chapter 11 Chapter 12 Chapter 13 Chapter 14 Chapter 15 Chapter 16 Chapter 17 Chapter 18 Chapter 19 Chapter 20 Chapter 21 Chapter 22 Chapter 23 Chapter 24 Letter 1 _To Mrs. Saville, England._ ",
+          "sha256": "4f2a353f5b011c404f3e4af2369ee6632e8a4497e0e7af9641b5822f730045cd"
+        },
+        {
+          "before_chapter": "chapter-002",
+          "characters": 38,
+          "excerpt": " Letter 2 _To Mrs. Saville, England._ ",
+          "sha256": "6b692196aadabb1ecd0fa3c9715b49f75cdffdad0826fee3fc3e8f0d656b8b68"
+        },
+        {
+          "before_chapter": "chapter-003",
+          "characters": 38,
+          "excerpt": " Letter 3 _To Mrs. Saville, England._ ",
+          "sha256": "b51456cca70a320ab8b77ec16159e1711f8914d34fc3268c8115079f7e08acc2"
+        },
+        {
+          "before_chapter": "chapter-004",
+          "characters": 38,
+          "excerpt": " Letter 4 _To Mrs. Saville, England._ ",
+          "sha256": "6c63998345ee34ae5f9acb16a82b6ebbe30b0d78b855d75964375210f7a79008"
+        },
+        {
+          "before_chapter": "chapter-005",
+          "characters": 11,
+          "excerpt": " Chapter 1 ",
+          "sha256": "1b61782bb8d65034c9e9b95c580a8c3858c18b9ae03830510a5e3bb22ce25751"
+        },
+        {
+          "before_chapter": "chapter-006",
+          "characters": 11,
+          "excerpt": " Chapter 2 ",
+          "sha256": "67e5f400db832954fb1af5a57067d5e0c77d9801a28c0d552537d03a861d7f4c"
+        },
+        {
+          "before_chapter": "chapter-007",
+          "characters": 11,
+          "excerpt": " Chapter 3 ",
+          "sha256": "67898dc5c5ecc9df76a70c5203b8fd401bee427ef2b968533d13967046c6e5d1"
+        },
+        {
+          "before_chapter": "chapter-008",
+          "characters": 11,
+          "excerpt": " Chapter 4 ",
+          "sha256": "36fafc0641c4199a57233b1ea0c4f80c0e861e9518b169c7f450cd78368dd095"
+        },
+        {
+          "before_chapter": "chapter-009",
+          "characters": 11,
+          "excerpt": " Chapter 5 ",
+          "sha256": "23e999a0b845f58db301a4e7205351b5e75d9c47b98cbf0f547a2c3202ac7a52"
+        },
+        {
+          "before_chapter": "chapter-010",
+          "characters": 11,
+          "excerpt": " Chapter 6 ",
+          "sha256": "832d06ba0bc30187958507c64926d3aca5c1ca5f50999360036c2dc0f1f98bb0"
+        },
+        {
+          "before_chapter": "chapter-011",
+          "characters": 11,
+          "excerpt": " Chapter 7 ",
+          "sha256": "a5a9e8eb487fe34356b0278c0b753e8f2a3f81ffc1345fab6e7d77df67cfc22b"
+        },
+        {
+          "before_chapter": "chapter-012",
+          "characters": 11,
+          "excerpt": " Chapter 8 ",
+          "sha256": "8b0c8b3101bae614826193ea0f484e5b2541137bddfdfeed336690fd1ebc034b"
+        },
+        {
+          "before_chapter": "chapter-013",
+          "characters": 11,
+          "excerpt": " Chapter 9 ",
+          "sha256": "841456624abedc18490e6d98482ecf18d7136bc963389bd90ca981505d43578a"
+        },
+        {
+          "before_chapter": "chapter-014",
+          "characters": 12,
+          "excerpt": " Chapter 10 ",
+          "sha256": "3060adc1c7b72cc1b8c431135de3e90a00d35cea9d4180bf91b51d6239ebba30"
+        },
+        {
+          "before_chapter": "chapter-015",
+          "characters": 12,
+          "excerpt": " Chapter 11 ",
+          "sha256": "d885acc828c744975dbaf18e19e292a9cbec9a6a7a593fbcd8f1a13bc935bfd9"
+        },
+        {
+          "before_chapter": "chapter-016",
+          "characters": 12,
+          "excerpt": " Chapter 12 ",
+          "sha256": "ffb2fe08d771f65daf383af9e9ac3ff7e0f53eb062ddcfeb7e7a7b5e688d08bc"
+        },
+        {
+          "before_chapter": "chapter-017",
+          "characters": 12,
+          "excerpt": " Chapter 13 ",
+          "sha256": "6917c29dabb622be7d974b654a49074ea878b11aadfc34afe1e1eba64782c357"
+        },
+        {
+          "before_chapter": "chapter-018",
+          "characters": 12,
+          "excerpt": " Chapter 14 ",
+          "sha256": "e91a48326063fcfad61ab9b5670187c98811f3df02bfdbf720f0f6feb6e8080d"
+        },
+        {
+          "before_chapter": "chapter-019",
+          "characters": 12,
+          "excerpt": " Chapter 15 ",
+          "sha256": "f027f7ca4ec4ea5dcfa003d3306f41ecaced16ebc4e04af19bc7da847355a5e3"
+        },
+        {
+          "before_chapter": "chapter-020",
+          "characters": 12,
+          "excerpt": " Chapter 16 ",
+          "sha256": "20e436d14926600f3a710b99458c68fe9bf30de927a2b79a1e22d2bd5db613df"
+        },
+        {
+          "before_chapter": "chapter-021",
+          "characters": 12,
+          "excerpt": " Chapter 17 ",
+          "sha256": "409272216fa505daa635338e5e71b74d0c096f50a20c79a57da1f2a2be60788f"
+        },
+        {
+          "before_chapter": "chapter-022",
+          "characters": 12,
+          "excerpt": " Chapter 18 ",
+          "sha256": "5b5c2416e1b0c8a392ff89999d7b813c671b75734af898e9890cea63396b6516"
+        },
+        {
+          "before_chapter": "chapter-023",
+          "characters": 12,
+          "excerpt": " Chapter 19 ",
+          "sha256": "c569f1ec4b7b17bf9ea061a1921be7e13a7b7a790fd599450903b7ed118eb6bc"
+        },
+        {
+          "before_chapter": "chapter-024",
+          "characters": 12,
+          "excerpt": " Chapter 20 ",
+          "sha256": "57489cd48b0148487fed945140aa6eaf5182b2ba5d33b985c954dee704635fd0"
+        },
+        {
+          "before_chapter": "chapter-025",
+          "characters": 12,
+          "excerpt": " Chapter 21 ",
+          "sha256": "d967bfe9a128017dab268d33bee757b0ae0a6111538de5e4cc240c80dc8005ff"
+        },
+        {
+          "before_chapter": "chapter-026",
+          "characters": 12,
+          "excerpt": " Chapter 22 ",
+          "sha256": "305fcbbefd4960f88a0ffdb254606894b94cc15743c697ef5453b3bae2fbd49c"
+        },
+        {
+          "before_chapter": "chapter-027",
+          "characters": 12,
+          "excerpt": " Chapter 23 ",
+          "sha256": "2c8fa574e3a3ab1c4096892998bf246e2c7d5ae92ca773cb2633b52d2631b8fd"
+        },
+        {
+          "before_chapter": "chapter-028",
+          "characters": 12,
+          "excerpt": " Chapter 24 ",
+          "sha256": "9f089451cd30a8e34c4547065a0fa3303efd2298dc169d85b1b339afe2bfaf99"
+        }
+      ],
+      "after_selected_text": " *** END OF THE PROJECT GUTENBERG EBOOK FRANKENSTEIN; OR, THE MODERN PROMETHEUS *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States c",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "hound-of-the-baskervilles",
+      "chapter_count": 15,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "on Chapter 9 The Light upon the Moor [Second Report of Dr. Watson] Chapter 10 Extract from the Diary of Dr. Watson Chapter 11 The Man on the Tor Chapter 12 Death on the Moor Chapter 13 Fixing the Nets Chapter 14 The Hound of the Baskervilles Chapter 15 A Retrospection Chapter 1. ",
+          "sha256": "bcc942c31ba7afbb03c126e7dc9d6d690ab13b12e3f8634dd63a74297aadae48"
+        },
+        {
+          "before_chapter": "chapter-002",
+          "characters": 12,
+          "excerpt": " Chapter 2. ",
+          "sha256": "9a73cdeee16ea58d06657b2052a24e1e8c3823e6429aa5962aa0c7ae397a0d51"
+        },
+        {
+          "before_chapter": "chapter-003",
+          "characters": 12,
+          "excerpt": " Chapter 3. ",
+          "sha256": "37d04a87641b1b13a80ae32d92dcd131b5db27374469eae4bdbaf1e834ce8bae"
+        },
+        {
+          "before_chapter": "chapter-004",
+          "characters": 12,
+          "excerpt": " Chapter 4. ",
+          "sha256": "c293d148041fc4de65786d7e9685793bb1b19951299bdbcbbf9e3713c60e31fc"
+        },
+        {
+          "before_chapter": "chapter-005",
+          "characters": 12,
+          "excerpt": " Chapter 5. ",
+          "sha256": "a8188f9a9fc5ace367c318549e440c3648f9697791dbb802fc7d4b524c6c9bbe"
+        },
+        {
+          "before_chapter": "chapter-006",
+          "characters": 12,
+          "excerpt": " Chapter 6. ",
+          "sha256": "440b664bacce1f801c79ef0b078ad7c59e0cbc0fad410abce6dc775c0294518c"
+        },
+        {
+          "before_chapter": "chapter-007",
+          "characters": 12,
+          "excerpt": " Chapter 7. ",
+          "sha256": "19502e055043bcd29999614c733513a6f08125128e4cb28ebbee98741c408171"
+        },
+        {
+          "before_chapter": "chapter-008",
+          "characters": 12,
+          "excerpt": " Chapter 8. ",
+          "sha256": "07e5667406adc8fe29a6536add55914aeb4ce4590861b0e1b363bbf3af58ee6e"
+        },
+        {
+          "before_chapter": "chapter-009",
+          "characters": 12,
+          "excerpt": " Chapter 9. ",
+          "sha256": "7f74c22a572cffd5bb3835fa6260fc132fb0ff7d4b6b263c44295327f1a0c1a4"
+        },
+        {
+          "before_chapter": "chapter-010",
+          "characters": 13,
+          "excerpt": " Chapter 10. ",
+          "sha256": "a529566529f61e4f19febf2b2f765809e6153171af02c64035c7025dc620a8fe"
+        },
+        {
+          "before_chapter": "chapter-011",
+          "characters": 13,
+          "excerpt": " Chapter 11. ",
+          "sha256": "a4f4e17242d83650a78bb5608dc3041e78a4e491cb2ec9d9dafe0bbea1286d5c"
+        },
+        {
+          "before_chapter": "chapter-012",
+          "characters": 13,
+          "excerpt": " Chapter 12. ",
+          "sha256": "4d9277f215cbd524067fd06f319fee454d67ad6fb53377a0c73f3d5048564ad0"
+        },
+        {
+          "before_chapter": "chapter-013",
+          "characters": 13,
+          "excerpt": " Chapter 13. ",
+          "sha256": "5a4da81ffe7c2312690405e3d0904816e1d5d65951ca3682c0fc8c14aa09af6f"
+        },
+        {
+          "before_chapter": "chapter-014",
+          "characters": 13,
+          "excerpt": " Chapter 14. ",
+          "sha256": "e30b1131155c0942f234658f8360389441af79eed223f8c435b2ba894071c1eb"
+        },
+        {
+          "before_chapter": "chapter-015",
+          "characters": 13,
+          "excerpt": " Chapter 15. ",
+          "sha256": "02d4011d823b8cc7c5146bfb5d0dcefd2e3144b65ba8c06d1d426e65f2dc3f29"
+        }
+      ],
+      "after_selected_text": " *** END OF THE PROJECT GUTENBERG EBOOK THE HOUND OF THE BASKERVILLES *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright i",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "hungry-stones",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "ictory is the author's own work. The seven stories which follow were translated by Mr. C. F. Andrews, with the help of the author's help. Assistance has also been given by the Rev. E. J. Thompson, Panna Lal Basu, Prabhat Kumar Mukerjii, and the Sister Nivedita. THE HUNGRY STONES ",
+          "sha256": "a8fbac5d812d56151ce340ad85f1d32449a371ac422d6b8cca18d513ab7f362b"
+        }
+      ],
+      "after_selected_text": " THE VICTORY She was the Princess Ajita. And the court poet of King Narayan had never seen her. On the day he recited a new poem to the king he would raise his voice just to that pitch which could be heard by unseen hearers in the screened balcony high above the hall. He sent up ",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "jane-eyre",
+      "chapter_count": 38,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": " has been attributed to me, an honour is awarded where it is not merited; and consequently, denied where it is justly due. This explanation will serve to rectify mistakes which may already have been made, and to prevent future errors. CURRER BELL. _April_ 13_th_, 1848. CHAPTER I ",
+          "sha256": "f36706eecc1801cfe8188bee06f2d8c5cb882aedd42a24247ab0ab10beb9e71b"
+        },
+        {
+          "before_chapter": "chapter-002",
+          "characters": 12,
+          "excerpt": " CHAPTER II ",
+          "sha256": "d4a963e6c146fdbc6765047341cb0e5cb1e2621241f438ad02112ba600a1eed6"
+        },
+        {
+          "before_chapter": "chapter-003",
+          "characters": 13,
+          "excerpt": " CHAPTER III ",
+          "sha256": "fda8d0ffdef23a06df65612900fd578659ae64db3f81ea4e49716e8ed3b9fec4"
+        },
+        {
+          "before_chapter": "chapter-004",
+          "characters": 12,
+          "excerpt": " CHAPTER IV ",
+          "sha256": "2725dfe61540fa22ea15266c342ade4bac2273c8fd93a1b5f576e7d9f3d16f59"
+        },
+        {
+          "before_chapter": "chapter-005",
+          "characters": 11,
+          "excerpt": " CHAPTER V ",
+          "sha256": "1944005e79538789c221d856717dfdcc1313650c587c2110951153a15bdcdae1"
+        },
+        {
+          "before_chapter": "chapter-006",
+          "characters": 12,
+          "excerpt": " CHAPTER VI ",
+          "sha256": "2235d9a1d88308b5ea85c73fd5b2a41246eaee1bb9d82a6d852ee6ecbebda650"
+        },
+        {
+          "before_chapter": "chapter-007",
+          "characters": 13,
+          "excerpt": " CHAPTER VII ",
+          "sha256": "072d0f9c8beab9f78dc1d286d5482efbff3774ccbacf535a273f76746b713bda"
+        },
+        {
+          "before_chapter": "chapter-008",
+          "characters": 14,
+          "excerpt": " CHAPTER VIII ",
+          "sha256": "3168494f5f6f3c68a91806b55b40a842702fd676fc4f3cd5cc9a5e2378c94fb8"
+        },
+        {
+          "before_chapter": "chapter-009",
+          "characters": 12,
+          "excerpt": " CHAPTER IX ",
+          "sha256": "f699debba8e3bc3d544238087c0c6c4343915625797e99599a327853261aee0b"
+        },
+        {
+          "before_chapter": "chapter-010",
+          "characters": 11,
+          "excerpt": " CHAPTER X ",
+          "sha256": "c89ac6465abce3c80f40de98ad740b555b601349708669e9a1a09a632298f594"
+        },
+        {
+          "before_chapter": "chapter-011",
+          "characters": 12,
+          "excerpt": " CHAPTER XI ",
+          "sha256": "338992240a9cdcf581d872e4f7c01364ba9f44a7a4e948a79e0090b24319cd78"
+        },
+        {
+          "before_chapter": "chapter-012",
+          "characters": 13,
+          "excerpt": " CHAPTER XII ",
+          "sha256": "29701c4dc366178dadaad076d7ff51aeb6d7e964c16bf301eecf4d91efafc738"
+        },
+        {
+          "before_chapter": "chapter-013",
+          "characters": 14,
+          "excerpt": " CHAPTER XIII ",
+          "sha256": "c23742677f6ea18f90fcbca2011c00728ecf92cc618ab20706234226971f0a59"
+        },
+        {
+          "before_chapter": "chapter-014",
+          "characters": 13,
+          "excerpt": " CHAPTER XIV ",
+          "sha256": "4dd7506b9b7b6e3e547376cb06da96198a13cd6b7110a41fc920cb50a9959f00"
+        },
+        {
+          "before_chapter": "chapter-015",
+          "characters": 12,
+          "excerpt": " CHAPTER XV ",
+          "sha256": "f60026b9ba5e63d1bd9afbe21e1c98c470891fe0cdcdaa30a15f52f64a0318ef"
+        },
+        {
+          "before_chapter": "chapter-016",
+          "characters": 13,
+          "excerpt": " CHAPTER XVI ",
+          "sha256": "677f4f7cba26db7001a762c782f66bab8122b0ae776cce3e1c87c9bc83c4ca98"
+        },
+        {
+          "before_chapter": "chapter-017",
+          "characters": 14,
+          "excerpt": " CHAPTER XVII ",
+          "sha256": "6e8e7e9ce4eded5039175eee132094db2f72570f2caeaed3d9eb6df742e4043e"
+        },
+        {
+          "before_chapter": "chapter-018",
+          "characters": 15,
+          "excerpt": " CHAPTER XVIII ",
+          "sha256": "04b4e08d8e12527a666fa22f6ebccbf976326dc35b2a09b6e1d64a0ef12b10f1"
+        },
+        {
+          "before_chapter": "chapter-019",
+          "characters": 13,
+          "excerpt": " CHAPTER XIX ",
+          "sha256": "df5a4eba5b1096b43586934e2c47b4ec683d4fcb97added8bc71834aa24fed38"
+        },
+        {
+          "before_chapter": "chapter-020",
+          "characters": 12,
+          "excerpt": " CHAPTER XX ",
+          "sha256": "c29008cfef038c4a613742fbae8a6f25d3eefb4c2f2a280fdc47acfbd461d8a8"
+        },
+        {
+          "before_chapter": "chapter-021",
+          "characters": 13,
+          "excerpt": " CHAPTER XXI ",
+          "sha256": "12eb5490f7c5eb62451b6d22115f823d6b1308bf3f1ac280e919fbc3338b3a4f"
+        },
+        {
+          "before_chapter": "chapter-022",
+          "characters": 14,
+          "excerpt": " CHAPTER XXII ",
+          "sha256": "2d5669bb1815b95a13a1cc0aec07e4dd716db761b7a0348e0e348fbb163fb358"
+        },
+        {
+          "before_chapter": "chapter-023",
+          "characters": 15,
+          "excerpt": " CHAPTER XXIII ",
+          "sha256": "002276d36729b4cd2af107db60395065f3411333fb2fb0999c29f885a6a43a61"
+        },
+        {
+          "before_chapter": "chapter-024",
+          "characters": 14,
+          "excerpt": " CHAPTER XXIV ",
+          "sha256": "705d6724608779c94f643b568a6ca235ba9123404656ee1e4cf5615050ae1679"
+        },
+        {
+          "before_chapter": "chapter-025",
+          "characters": 13,
+          "excerpt": " CHAPTER XXV ",
+          "sha256": "c0d4f1dea76b77b184045de6b702a469a4ba2d9d077a90a68994289808145835"
+        },
+        {
+          "before_chapter": "chapter-026",
+          "characters": 14,
+          "excerpt": " CHAPTER XXVI ",
+          "sha256": "48ce7099e503c009c2474d513ad7552d6392ac1a2617c1d8d6aab304d6c24065"
+        },
+        {
+          "before_chapter": "chapter-027",
+          "characters": 15,
+          "excerpt": " CHAPTER XXVII ",
+          "sha256": "b2daa4ffecc2aa4942b83cfdd4334b47b212df5d710a52b14dc4d86a87abdf2c"
+        },
+        {
+          "before_chapter": "chapter-028",
+          "characters": 16,
+          "excerpt": " CHAPTER XXVIII ",
+          "sha256": "2154f92a494f90dd95d43e36033a0ef84bf4891de071f8f0cbca2caac79fd85a"
+        },
+        {
+          "before_chapter": "chapter-029",
+          "characters": 14,
+          "excerpt": " CHAPTER XXIX ",
+          "sha256": "179afd80da068d2d09815ef32037e452ffd7d191410e5086fcd549619a482016"
+        },
+        {
+          "before_chapter": "chapter-030",
+          "characters": 13,
+          "excerpt": " CHAPTER XXX ",
+          "sha256": "019f0f9d707d2a6a297d8d41f46fcad5eab3add345c7dde7079af3f238508242"
+        },
+        {
+          "before_chapter": "chapter-031",
+          "characters": 14,
+          "excerpt": " CHAPTER XXXI ",
+          "sha256": "facbc690641c397a19456f8829c31052dc6b539d35444f737708e93686f1ba08"
+        },
+        {
+          "before_chapter": "chapter-032",
+          "characters": 15,
+          "excerpt": " CHAPTER XXXII ",
+          "sha256": "e2fcc9ac474cf76071d43496e9ac2454688fa5109614691155a28acdc16a1dd3"
+        },
+        {
+          "before_chapter": "chapter-033",
+          "characters": 16,
+          "excerpt": " CHAPTER XXXIII ",
+          "sha256": "ce8babda609d9e07278be0414b2eff5561c755ceb7f66bfadaa46ad7f1825ada"
+        },
+        {
+          "before_chapter": "chapter-034",
+          "characters": 15,
+          "excerpt": " CHAPTER XXXIV ",
+          "sha256": "317a0f16ac7a8961eb67c41d6a323a9001b25ed0b9fc2691b12ad24c582f9f79"
+        },
+        {
+          "before_chapter": "chapter-035",
+          "characters": 14,
+          "excerpt": " CHAPTER XXXV ",
+          "sha256": "6928dbaf354a0b3645997fcddcb1070a0e346a849257f9a7742398dfeaffe968"
+        },
+        {
+          "before_chapter": "chapter-036",
+          "characters": 15,
+          "excerpt": " CHAPTER XXXVI ",
+          "sha256": "b0af7dc755f654c8eb80d15d4f322f1ac1e0947436b9d8997f319f8600f91de9"
+        },
+        {
+          "before_chapter": "chapter-037",
+          "characters": 16,
+          "excerpt": " CHAPTER XXXVII ",
+          "sha256": "0a6a44256751b8f7cf2d71bdd09b0bc01929a33ea8584a5e0038cb3f1f2a18be"
+        },
+        {
+          "before_chapter": "chapter-038",
+          "characters": 28,
+          "excerpt": " CHAPTER XXXVIII—CONCLUSION ",
+          "sha256": "bd84a09558231a7e52e4de86b96c8a66f4c5e566696cab880ff9783900bdec45"
+        }
+      ],
+      "after_selected_text": " *** END OF THE PROJECT GUTENBERG EBOOK JANE EYRE: AN AUTOBIOGRAPHY *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in ",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "markheim",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "e noise of horses pawing before he dropped asleep again; all down the valley that night there was a rushing as of a smooth and steady wind descending towards the plain; and when the world rose next morning, sure enough Will o’ the Mill had gone at last upon his travels. MARKHEIM ",
+          "sha256": "8fbc94fee48d6c793469325924bad195ac91b5e931775c956a89cf4261c6df5d"
+        }
+      ],
+      "after_selected_text": " THRAWN JANET The Reverend Murdoch Soulis was long minister of the moorland parish of Balweary, in the vale of Dule. A severe, bleak-faced old man, dreadful to his hearers, he dwelt in the last years of his life, without relative or servant or any human company, in the small and ",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "chapter_count": 61,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "and her nieces” 420 “Lizzy, my dear, I want to speak to you” 422 Heading to Chapter LVI. 431 “After a short survey” 434 “But now it comes out” 442 “The efforts of his aunt” 448 “Unable to utter a syllable” 457 “The obsequious civility” 466 Heading to Chapter LXI. 472 The End 476 ",
+          "sha256": "41c319e0590627651bd4ae8f570b395e19fa16f13afb52f8dc7d26b4e49a6786"
+        },
+        {
+          "before_chapter": "chapter-002",
+          "characters": 13,
+          "excerpt": " CHAPTER II. ",
+          "sha256": "5a64e94fae73bd04a3775bf979e34f74c085ec1a1cba64807c6564bb46423bdf"
+        },
+        {
+          "before_chapter": "chapter-003",
+          "characters": 14,
+          "excerpt": " CHAPTER III. ",
+          "sha256": "cd5f8adc746552a76af9c50bd1da82abbf63b943cc560b2c58d6fa612d8485b6"
+        },
+        {
+          "before_chapter": "chapter-004",
+          "characters": 13,
+          "excerpt": " CHAPTER IV. ",
+          "sha256": "9aa6c9ccbba830b82018c6f4ad4f4228fbdaf10972086d6266a9fe98be5db132"
+        },
+        {
+          "before_chapter": "chapter-005",
+          "characters": 12,
+          "excerpt": " CHAPTER V. ",
+          "sha256": "30dcd6a6be1f48146ececf524c4d7d040e557e25966ec582902dfb591cd83503"
+        },
+        {
+          "before_chapter": "chapter-006",
+          "characters": 13,
+          "excerpt": " CHAPTER VI. ",
+          "sha256": "8c780f99e734cd2a82130597bfd0a468b1c0b996ffcff744d355e0431015eb72"
+        },
+        {
+          "before_chapter": "chapter-007",
+          "characters": 14,
+          "excerpt": " CHAPTER VII. ",
+          "sha256": "d41c7935c438586927d82fd7320fc77fc696729566d53cbeaa2da9025308b467"
+        },
+        {
+          "before_chapter": "chapter-008",
+          "characters": 15,
+          "excerpt": " CHAPTER VIII. ",
+          "sha256": "27014e783536a0597b584ac0fea1787e77fb8d6fb7a2fbeccda0fe090a083d26"
+        },
+        {
+          "before_chapter": "chapter-009",
+          "characters": 13,
+          "excerpt": " CHAPTER IX. ",
+          "sha256": "9b7d52a671a73697f1503730a1602cbb05a44eaecb07e0548dcbd09c57507663"
+        },
+        {
+          "before_chapter": "chapter-010",
+          "characters": 12,
+          "excerpt": " CHAPTER X. ",
+          "sha256": "637fa9d3d3e6a05a86a04e705179cd38fe2c62306a2ae35e83d3693c4158fa4d"
+        },
+        {
+          "before_chapter": "chapter-011",
+          "characters": 13,
+          "excerpt": " CHAPTER XI. ",
+          "sha256": "28168e88f4e61791a3411029bec5e4f836f482e936f21d0196684538e214c387"
+        },
+        {
+          "before_chapter": "chapter-012",
+          "characters": 14,
+          "excerpt": " CHAPTER XII. ",
+          "sha256": "913ee800255c43d506919b23fdd37ac1fda0762a9325fcfde0e14db1b5566267"
+        },
+        {
+          "before_chapter": "chapter-013",
+          "characters": 14,
+          "excerpt": " CHAPTER XIII ",
+          "sha256": "c23742677f6ea18f90fcbca2011c00728ecf92cc618ab20706234226971f0a59"
+        },
+        {
+          "before_chapter": "chapter-014",
+          "characters": 13,
+          "excerpt": " CHAPTER XIV ",
+          "sha256": "4dd7506b9b7b6e3e547376cb06da96198a13cd6b7110a41fc920cb50a9959f00"
+        },
+        {
+          "before_chapter": "chapter-015",
+          "characters": 13,
+          "excerpt": " CHAPTER XV. ",
+          "sha256": "cb128323bd3d4bdcac23bbba96fbe5ce3da5bcf8ef9308d8b3eef9453b123031"
+        },
+        {
+          "before_chapter": "chapter-016",
+          "characters": 14,
+          "excerpt": " CHAPTER XVI. ",
+          "sha256": "094aaeb965cc08ba8310f0184bccd33518c5ca378357286aad24d086b4da58ac"
+        },
+        {
+          "before_chapter": "chapter-017",
+          "characters": 15,
+          "excerpt": " CHAPTER XVII. ",
+          "sha256": "8c388fe730f487854c69773c5d9db185ea9ef4eef26ac71c47d1ff7d438d58d3"
+        },
+        {
+          "before_chapter": "chapter-018",
+          "characters": 16,
+          "excerpt": " CHAPTER XVIII. ",
+          "sha256": "841c30f8cc36dc2755563cfbea368dad257c825f7fe88c31bb636a79f8e42feb"
+        },
+        {
+          "before_chapter": "chapter-019",
+          "characters": 14,
+          "excerpt": " CHAPTER XIX. ",
+          "sha256": "ef175badfec3845bd968a7784359c298749a05daba36b811272075c1372f2ae9"
+        },
+        {
+          "before_chapter": "chapter-020",
+          "characters": 13,
+          "excerpt": " CHAPTER XX. ",
+          "sha256": "4002d9549cac092a30329bcfdda500fb24a4a7005169c877b6ca7fc6dfa6c7d4"
+        },
+        {
+          "before_chapter": "chapter-021",
+          "characters": 14,
+          "excerpt": " CHAPTER XXI. ",
+          "sha256": "e4b062296a986a33e738e780c8704f53c50af55fbd21b08567f8e9f719ba5fae"
+        },
+        {
+          "before_chapter": "chapter-022",
+          "characters": 15,
+          "excerpt": " CHAPTER XXII. ",
+          "sha256": "7964d5ac588a0361d08ada08a4598d9fdc9990821fc82fe7ee65c1f22a98ed76"
+        },
+        {
+          "before_chapter": "chapter-023",
+          "characters": 16,
+          "excerpt": " CHAPTER XXIII. ",
+          "sha256": "65b2d2ab384d400d733749c7af4554e1f485f479bd34a5790f770aa9565c5999"
+        },
+        {
+          "before_chapter": "chapter-024",
+          "characters": 15,
+          "excerpt": " CHAPTER XXIV. ",
+          "sha256": "893f9908e9e197f2497299bac212861eaa7d22052625a9bb5f4eecc655cd75bd"
+        },
+        {
+          "before_chapter": "chapter-025",
+          "characters": 14,
+          "excerpt": " CHAPTER XXV. ",
+          "sha256": "aabba67e0f1ae52eb83068173e7380de23a8891d244cbee6fce52def9476ef73"
+        },
+        {
+          "before_chapter": "chapter-026",
+          "characters": 15,
+          "excerpt": " CHAPTER XXVI. ",
+          "sha256": "60b4b6e8d82a49bf3748301e20cae34dc572a790aaef33c6215c4f2f215e8b40"
+        },
+        {
+          "before_chapter": "chapter-027",
+          "characters": 16,
+          "excerpt": " CHAPTER XXVII. ",
+          "sha256": "d820ec430500a6d043b8e226967f7805f485ba0267e45b1b47a36f5c1a283beb"
+        },
+        {
+          "before_chapter": "chapter-028",
+          "characters": 17,
+          "excerpt": " CHAPTER XXVIII. ",
+          "sha256": "c5eec421fc7cc95cb7d0b8261b972ff43c1929fe9b1c6e74db91fc7b26ce9792"
+        },
+        {
+          "before_chapter": "chapter-029",
+          "characters": 15,
+          "excerpt": " CHAPTER XXIX. ",
+          "sha256": "475a40f4a9e8e315da3310f0fe326ef346c0150dd6370bc241fbd63df4483262"
+        },
+        {
+          "before_chapter": "chapter-030",
+          "characters": 14,
+          "excerpt": " CHAPTER XXX. ",
+          "sha256": "f9c450b2649b2f1a6e4c26c9509bb85c8b79d9fa7680f98847634ef26236953d"
+        },
+        {
+          "before_chapter": "chapter-031",
+          "characters": 15,
+          "excerpt": " CHAPTER XXXI. ",
+          "sha256": "750c5c31337f2e17898f128b3af0edb4e1e905d2c1d794ec34d00b6efead5b8d"
+        },
+        {
+          "before_chapter": "chapter-032",
+          "characters": 16,
+          "excerpt": " CHAPTER XXXII. ",
+          "sha256": "238c27d182d2fb5239494c8c1cb403ab1c994ba84712a094422d3ee11d482ef0"
+        },
+        {
+          "before_chapter": "chapter-033",
+          "characters": 17,
+          "excerpt": " CHAPTER XXXIII. ",
+          "sha256": "b28257deb5bc298aa35e66a1b2e059bfc8f508eb6805d099fea9e1b832cb126d"
+        },
+        {
+          "before_chapter": "chapter-034",
+          "characters": 16,
+          "excerpt": " CHAPTER XXXIV. ",
+          "sha256": "0d17d764ecab297b5bac59ef9dc670c21a52d2a4a68dd29523c2430bdd8e6c10"
+        },
+        {
+          "before_chapter": "chapter-035",
+          "characters": 15,
+          "excerpt": " CHAPTER XXXV. ",
+          "sha256": "8fdb175f5d70318c9bc0215fb951f4012b6f6257dcd6fbd7537116ca8de5c577"
+        },
+        {
+          "before_chapter": "chapter-036",
+          "characters": 16,
+          "excerpt": " CHAPTER XXXVI. ",
+          "sha256": "3b68902513806c877bf63e21c78557a27720e2b98d29b430aff18fe662031a99"
+        },
+        {
+          "before_chapter": "chapter-037",
+          "characters": 17,
+          "excerpt": " CHAPTER XXXVII. ",
+          "sha256": "ba3e6f457c0bb5b0806bdccc222bab5a3b40be2d44f880a235db626621435fc3"
+        },
+        {
+          "before_chapter": "chapter-038",
+          "characters": 18,
+          "excerpt": " CHAPTER XXXVIII. ",
+          "sha256": "617de37905ceb72c387541373e0788163fc9570a3d10df041809e57d95a900ff"
+        },
+        {
+          "before_chapter": "chapter-039",
+          "characters": 16,
+          "excerpt": " CHAPTER XXXIX. ",
+          "sha256": "31d80a74c14cfe6bb8f3251d8a486b1f219f3d31f2d8004d2eafefbd8aa620c5"
+        },
+        {
+          "before_chapter": "chapter-040",
+          "characters": 13,
+          "excerpt": " CHAPTER XL. ",
+          "sha256": "64341ecd4e89c972ac25d3efcc61010f00b593c3d1180397d24b5a8d140516e8"
+        },
+        {
+          "before_chapter": "chapter-041",
+          "characters": 14,
+          "excerpt": " CHAPTER XLI. ",
+          "sha256": "59f3e67de84257f52d75619affc0103b938965b3334a4c952526e91f7076f968"
+        },
+        {
+          "before_chapter": "chapter-042",
+          "characters": 15,
+          "excerpt": " CHAPTER XLII. ",
+          "sha256": "f76a78f97a26fe39f5b6f8a7e2757fa68cc372da8ab85aa6b4834a6b4bbb35e8"
+        },
+        {
+          "before_chapter": "chapter-043",
+          "characters": 16,
+          "excerpt": " CHAPTER XLIII. ",
+          "sha256": "b9f8826471b59eca779e72787787e29235fe549733f4753677219ad9e9a7150f"
+        },
+        {
+          "before_chapter": "chapter-044",
+          "characters": 15,
+          "excerpt": " CHAPTER XLIV. ",
+          "sha256": "621a88beec444df0c5e594b646455276f2a055149e50b321b41df1b9d7411109"
+        },
+        {
+          "before_chapter": "chapter-045",
+          "characters": 14,
+          "excerpt": " CHAPTER XLV. ",
+          "sha256": "27294f9a2eb5217afb02fcd0f7c0148bde010ced26094ea0574a0b25b83a8546"
+        },
+        {
+          "before_chapter": "chapter-046",
+          "characters": 15,
+          "excerpt": " Chapter XLVI. ",
+          "sha256": "fad4a33827827065dcad1feb0c62c742dca7d4e6d194d02f08ae4ecec96aac8b"
+        },
+        {
+          "before_chapter": "chapter-047",
+          "characters": 16,
+          "excerpt": " CHAPTER XLVII. ",
+          "sha256": "e0d5fd2495df6d5a23cedc1f3f8b034cf5b340b49ced7a7fae97fdf9e5ab0e1d"
+        },
+        {
+          "before_chapter": "chapter-048",
+          "characters": 17,
+          "excerpt": " CHAPTER XLVIII. ",
+          "sha256": "2a5692b2ab2283ae6030b7c3c0769050db24705fc35c3bdd87c4763e164bcc48"
+        },
+        {
+          "before_chapter": "chapter-049",
+          "characters": 15,
+          "excerpt": " CHAPTER XLIX. ",
+          "sha256": "756d777caf528f08218a7fe6098c33dcf4efaaeecbb0decac03d2d7bab58729a"
+        },
+        {
+          "before_chapter": "chapter-050",
+          "characters": 12,
+          "excerpt": " CHAPTER L. ",
+          "sha256": "a797f58a6c50d3c938ced41b21f709494ac97a5b5010a8ac42d34f21c66210c0"
+        },
+        {
+          "before_chapter": "chapter-051",
+          "characters": 13,
+          "excerpt": " CHAPTER LI. ",
+          "sha256": "871c8071064b886e78461b02e6b72801eddd99e9a10c28f9114c40d3110a9a28"
+        },
+        {
+          "before_chapter": "chapter-052",
+          "characters": 14,
+          "excerpt": " CHAPTER LII. ",
+          "sha256": "fdca998fcd9ae79eae458983d9bcafd320f419247fd32bd1f076a3ac9e719e1f"
+        },
+        {
+          "before_chapter": "chapter-053",
+          "characters": 15,
+          "excerpt": " CHAPTER LIII. ",
+          "sha256": "df17eacb061f15e7657300d0cf7474fa7417445451013919fcb068df74b2a567"
+        },
+        {
+          "before_chapter": "chapter-054",
+          "characters": 14,
+          "excerpt": " CHAPTER LIV. ",
+          "sha256": "abf0465eabb193b19b8e0a25eda4f4421d98ff0d441982b118d802034a1ae0c7"
+        },
+        {
+          "before_chapter": "chapter-055",
+          "characters": 13,
+          "excerpt": " CHAPTER LV. ",
+          "sha256": "1aeb6d753e0042eb915bce3fc91c654c7241e43fb81b3f8b4d99de9265e87436"
+        },
+        {
+          "before_chapter": "chapter-056",
+          "characters": 14,
+          "excerpt": " CHAPTER LVI. ",
+          "sha256": "a0fcfee0744c8b6551b37772c1341568b1d8a6ae197db66988eeac32d1a23680"
+        },
+        {
+          "before_chapter": "chapter-057",
+          "characters": 15,
+          "excerpt": " CHAPTER LVII. ",
+          "sha256": "9f1bca46bb46ceb3c26ebfa2064dafa500d187b87e43f357e39b917529563bac"
+        },
+        {
+          "before_chapter": "chapter-058",
+          "characters": 16,
+          "excerpt": " CHAPTER LVIII. ",
+          "sha256": "9b85084b07ece96d80908871cd505ace27ee2a9a1a979d1cf7e9e9c1cf9d7326"
+        },
+        {
+          "before_chapter": "chapter-059",
+          "characters": 14,
+          "excerpt": " CHAPTER LIX. ",
+          "sha256": "844ae37962fb9ae6f2c9e5a5b23b5bcded5fa05b6b183d1f1503a203bc500cdc"
+        },
+        {
+          "before_chapter": "chapter-060",
+          "characters": 13,
+          "excerpt": " CHAPTER LX. ",
+          "sha256": "fafbfb1f82891d11b51563aae78a991e88abdcc367afb193373e865e730d96d2"
+        },
+        {
+          "before_chapter": "chapter-061",
+          "characters": 14,
+          "excerpt": " CHAPTER LXI. ",
+          "sha256": "5e4763226d19f8c9bd96ff23cb54a60998ec042b6452c7cf04c4e0ecf1a03593"
+        }
+      ],
+      "after_selected_text": " *** END OF THE PROJECT GUTENBERG EBOOK PRIDE AND PREJUDICE *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in these wo",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "rappaccinis-daughter",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": " he had lived long, and was borne to his grave a hoary corpse, followed by Faith, an aged woman, and children and grandchildren, a goodly procession, besides neighbors not a few, they carved no hopeful verse upon his tombstone, for his dying hour was gloom. RAPPACCINI’S DAUGHTER ",
+          "sha256": "1ab664eeaa7b6783fcb752207d29ebf7cfa06d51c1d8090cc1580689375cf995"
+        }
+      ],
+      "after_selected_text": " MRS. BULLFROG It makes me melancholy to see how like fools some very sensible people act in the matter of choosing wives. They perplex their judgments by a most undue attention to little niceties of personal appearance, habits, disposition, and other trifles which concern nobody",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "sredni-vashtar",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "d a certain amount of unobtrusive speculation. Clovis, who perhaps exaggerated the importance of curry in the home, hinted at domestic sorrow. And of course Arlington never knew. It was the tragedy of his life that he should miss the fullest effect of his jesting. SREDNI VASHTAR ",
+          "sha256": "4de5cca5ea09c9f4eb568ae311887e040cfb9b90e6f8a49c90de602384321d4c"
+        }
+      ],
+      "after_selected_text": " ADRIAN A CHAPTER IN ACCLIMATIZATION His baptismal register spoke of him pessimistically as John Henry, but he had left that behind with the other maladies of infancy, and his friends knew him under the front-name of Adrian. His mother lived in Bethnal Green, which was not altoge",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-adventure-of-charles-augustus-milverton",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "I, and had returned about six o’clock on a cold, frosty winter’s evening. As Holmes turned up the lamp the light fell upon a card on the table. He glanced at it, and then, with an ejaculation of disgust, threw it on the floor. I picked it up and read: CHARLES AUGUSTUS MILVERTON, ",
+          "sha256": "3fd0ee7c3e21bb9f24f6858e257349212608e951455ed732f06a2e4879fe543a"
+        }
+      ],
+      "after_selected_text": " THE ADVENTURE OF THE SIX NAPOLEONS It was no very unusual thing for Mr. Lestrade, of Scotland Yard, to look in upon us of an evening, and his visits were welcome to Sherlock Holmes, for they enabled him to keep in touch with all that was going on at the police headquarters. In r",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-adventure-of-the-abbey-grange",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "gs. That is all, Mr. Holmes, and I am sure that I can rely upon your discretion and that of your friend.” Holmes grasped the doctor’s hand. “Come, Watson,” said he, and we passed from that house of grief into the pale sunlight of the winter day. THE ADVENTURE OF THE ABBEY GRANGE ",
+          "sha256": "fd57f628403e62cf4a68aef3546020e5b6b16106d734888c716b57ae6276073f"
+        }
+      ],
+      "after_selected_text": " THE ADVENTURE OF THE SECOND STAIN I had intended “The Adventure of the Abbey Grange” to be the last of those exploits of my friend, Mr. Sherlock Holmes, which I should ever communicate to the public. This resolution of mine was not due to any lack of material, since I have notes",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-adventure-of-the-beryl-coronet",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": " very mercifully and thank our stars that we are never likely to find ourselves in the same position. Draw your chair up and hand me my violin, for the only problem we have still to solve is how to while away these bleak autumnal evenings.” XI. THE ADVENTURE OF THE BERYL CORONET ",
+          "sha256": "a4d37e7b4b401e69a64a8c25a894bfc90a1e7705b76b7af9b70fa7045946bdb3"
+        }
+      ],
+      "after_selected_text": " XII. THE ADVENTURE OF THE COPPER BEECHES “To the man who loves art for its own sake,” remarked Sherlock Holmes, tossing aside the advertisement sheet of _The Daily Telegraph_, “it is frequently in its least important and lowliest manifestations that the keenest pleasure is to be",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-adventure-of-the-blue-carbuncle",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": " up. I wish I knew how you reach your results.” “I reached this one,” said my friend, “by sitting upon five pillows and consuming an ounce of shag. I think, Watson, that if we drive to Baker Street we shall just be in time for breakfast.” VII. THE ADVENTURE OF THE BLUE CARBUNCLE ",
+          "sha256": "fec4625b7142de22c6abd15a7abf0671c1a8624eeccb08df6264042cdedad777"
+        }
+      ],
+      "after_selected_text": " VIII. THE ADVENTURE OF THE SPECKLED BAND On glancing over my notes of the seventy odd cases in which I have during the last eight years studied the methods of my friend Sherlock Holmes, I find many tragic, some comic, a large number merely strange, but none commonplace; for, wor",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-adventure-of-the-copper-beeches",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "form me where she is now.” “I think that we may safely say,” returned Holmes, “that she is wherever Sir George Burnwell is. It is equally certain, too, that whatever her sins are, they will soon receive a more than sufficient punishment.” XII. THE ADVENTURE OF THE COPPER BEECHES ",
+          "sha256": "19e8b389a5abb69ca6f71449fcedaff57900c560d1929c24af838db97dfd0a4b"
+        }
+      ],
+      "after_selected_text": " *** END OF THE PROJECT GUTENBERG EBOOK THE ADVENTURES OF SHERLOCK HOLMES *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyrig",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-adventure-of-the-dancing-men",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "its, or what? You won’t tell? Dear me, how very unkind of you! Well, well, I daresay that a couple of rabbits would account both for the blood and for the charred ashes. If ever you write an account, Watson, you can make rabbits serve your turn.” THE ADVENTURE OF THE DANCING MEN ",
+          "sha256": "0a572f727b469dea132133102977d10ddc8d5175ccb6056cdf33e03030108581"
+        }
+      ],
+      "after_selected_text": " THE ADVENTURE OF THE SOLITARY CYCLIST From the years 1894 to 1901 inclusive, Mr. Sherlock Holmes was a very busy man. It is safe to say that there was no public case of any difficulty in which he was not consulted during those eight years, and there were hundreds of private case",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-adventure-of-the-empty-house",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "Charles Augustus Milverton The Adventure of the Six Napoleons The Adventure of the Three Students The Adventure of the Golden Pince-Nez The Adventure of the Missing Three-Quarter The Adventure of the Abbey Grange The Adventure of the Second Stain THE ADVENTURE OF THE EMPTY HOUSE ",
+          "sha256": "0ece33acd638e193a8c799f17c0d554cc54fdd0deebf9fa80773ff493b8d9ef1"
+        }
+      ],
+      "after_selected_text": " THE ADVENTURE OF THE NORWOOD BUILDER “From the point of view of the criminal expert,” said Mr. Sherlock Holmes, “London has become a singularly uninteresting city since the death of the late lamented Professor Moriarty.” “I can hardly think that you would find many decent citize",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-adventure-of-the-engineers-thumb",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "and roused its snakish temper, so that it flew upon the first person it saw. In this way I am no doubt indirectly responsible for Dr. Grimesby Roylott’s death, and I cannot say that it is likely to weigh very heavily upon my conscience.” IX. THE ADVENTURE OF THE ENGINEER’S THUMB ",
+          "sha256": "6ba84445611e43c478e092c5766ec39f5242faeb2ee35990d26abe8b796f7c73"
+        }
+      ],
+      "after_selected_text": " X. THE ADVENTURE OF THE NOBLE BACHELOR The Lord St. Simon marriage, and its curious termination, have long ceased to be a subject of interest in those exalted circles in which the unfortunate bridegroom moves. Fresh scandals have eclipsed it, and their more piquant details have ",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-adventure-of-the-final-problem",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "hat he had any murderous intention? The knife was only meant as a tool.” “It may be so,” answered Holmes, shrugging his shoulders. “I can only say for certain that Mr. Joseph Harrison is a gentleman to whose mercy I should be extremely unwilling to trust.” XII. The Final Problem ",
+          "sha256": "b65224ec0b73740d696d3588f796dfebd74276e6bdb52e4fe1dee4f71771b9d2"
+        }
+      ],
+      "after_selected_text": " *** END OF THE PROJECT GUTENBERG EBOOK THE MEMOIRS OF SHERLOCK HOLMES *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright ",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-adventure-of-the-greek-interpreter",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "ith all hands upon the Portuguese coast, some leagues to the north of Oporto. The proceedings against the page broke down for want of evidence, and the Brook Street Mystery, as it was called, has never until now been fully dealt with in any public print. X. The Greek Interpreter ",
+          "sha256": "dee599b8325879ae205adbd901c681853582de831e7200c40ed87fdc9ea59b44"
+        }
+      ],
+      "after_selected_text": " XI. The Naval Treaty The July which immediately succeeded my marriage was made memorable by three cases of interest, in which I had the privilege of being associated with Sherlock Holmes and of studying his methods. I find them recorded in my notes under the headings of “The Adv",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-adventure-of-the-noble-bachelor",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "y-guinea fee, and what have I gained?” “Experience,” said Holmes, laughing. “Indirectly it may be of value, you know; you have only to put it into words to gain the reputation of being excellent company for the remainder of your existence.” X. THE ADVENTURE OF THE NOBLE BACHELOR ",
+          "sha256": "55c02d689cce0810ec2c7af90b9122442742340d56a83758d06b148fcbbe994c"
+        }
+      ],
+      "after_selected_text": " XI. THE ADVENTURE OF THE BERYL CORONET “Holmes,” said I as I stood one morning in our bow-window looking down the street, “here is a madman coming along. It seems rather sad that his relatives should allow him to come out alone.” My friend rose lazily from his armchair and stood",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-adventure-of-the-priory-school",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "ers, I have no record, but I am sure that his assault was not viewed very gravely by the court, since Woodley had the reputation of being a most dangerous ruffian, and I think that a few months were sufficient to satisfy the demands of justice. THE ADVENTURE OF THE PRIORY SCHOOL ",
+          "sha256": "781893fd5038f7d9b050319cec50a667a500f484c803b4941b0fc0455a8d32a1"
+        }
+      ],
+      "after_selected_text": " THE ADVENTURE OF BLACK PETER I have never known my friend to be in better form, both mental and physical, than in the year ’95. His increasing fame had brought with it an immense practice, and I should be guilty of an indiscretion if I were even to hint at the identity of some o",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-adventure-of-the-second-stain",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "ox Dei_. You are acquitted, Captain Crocker. So long as the law does not find some other victim you are safe from me. Come back to this lady in a year, and may her future and yours justify us in the judgment which we have pronounced this night!” THE ADVENTURE OF THE SECOND STAIN ",
+          "sha256": "db4ebf23df40736752e4652eabdec10cedc3875e376df046e0ac40c4262c5fe9"
+        }
+      ],
+      "after_selected_text": " *** END OF THE PROJECT GUTENBERG EBOOK THE RETURN OF SHERLOCK HOLMES *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright i",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-adventure-of-the-solitary-cyclist",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "bitt had fired the first shot. Of Mrs. Hilton Cubitt I only know that I have heard she recovered entirely, and that she still remains a widow, devoting her whole life to the care of the poor and to the administration of her husband’s estate. THE ADVENTURE OF THE SOLITARY CYCLIST ",
+          "sha256": "494235008fa8ab02485664ac51e27bd5d4bb34d2d01f31f223bfed685e4dc5d2"
+        }
+      ],
+      "after_selected_text": " THE ADVENTURE OF THE PRIORY SCHOOL We have had some dramatic entrances and exits upon our small stage at Baker Street, but I cannot recollect anything more sudden and startling than the first appearance of Thorneycroft Huxtable, M.A., Ph.D., etc. His card, which seemed too small",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-ambitious-guest",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "f cobweb could repel the wintry blast. Be this the moral, then: In chaste and warm affections, humble wishes and honest toil for some useful end there is health for the mind and quiet for the heart, the prospect of a happy life and the fairest hope of heaven. THE AMBITIOUS GUEST ",
+          "sha256": "428b6de5fa013fe89cd3f79303e99f348b60939937fb03a5ece8252951c0bcca"
+        }
+      ],
+      "after_selected_text": " THE SISTER-YEARS Last night, between eleven and twelve o’clock, when the Old Year was leaving her final footprints on the borders of Time’s empire, she found herself in possession of a few spare moments, and sat down—of all places in the world—on the steps of our new city-hall. ",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-art-of-money-getting",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": ", Clifton B. and Esther N. Keyser; and David Widger *** START OF THE PROJECT GUTENBERG EBOOK THE ART OF MONEY GETTING *** Produced by Wayne N. Keyser in honor of his Parents, Clifton B. and Esther N. Keyser THE ART OF MONEY GETTING or GOLDEN RULES FOR MAKING MONEY By P.T. Barnum ",
+          "sha256": "1dfd64a0c858dee063a445821110c7849e34ab3b8def96dda4e3350ac53e231e"
+        }
+      ],
+      "after_selected_text": " End of Project Gutenberg's The Art of Money Getting, by P. T. Barnum *** END OF THE PROJECT GUTENBERG EBOOK THE ART OF MONEY GETTING *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. ",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-bet",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": " the song which the students sing in “The Fit” come from Poushkin. CONTENTS THE BET A TEDIOUS STORY THE FIT MISFORTUNE AFTER THE THEATRE THAT WRETCHED BOY ENEMIES A TRIFLING OCCURRENCE A GENTLEMAN FRIEND OVERWHELMING SENSATIONS EXPENSIVE LESSONS A LIVING CALENDAR OLD AGE THE BET ",
+          "sha256": "a4414505a7ca902283255189f8e02ab4790e0cdc36eb01bcd9ae9f0ed7dd0966"
+        }
+      ],
+      "after_selected_text": " A TEDIOUS STORY (FROM AN OLD MAN’S JOURNAL) I There lives in Russia an emeritus professor, Nicolai Stiepanovich ... privy councillor and knight. He has so many Russian and foreign Orders that when he puts them on the students call him “the holy picture.” His acquaintance is most",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "chapter_count": 7,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": ". Into the Primitive Chapter II. The Law of Club and Fang Chapter III. The Dominant Primordial Beast Chapter IV. Who Has Won to Mastership Chapter V. The Toil of Trace and Trail Chapter VI. For the Love of a Man Chapter VII. The Sounding of the Call Chapter I. Into the Primitive ",
+          "sha256": "c5d7d76184a96c24283298be25cfd0c24dbf3424b0c713962a2bc65ad00eb84e"
+        },
+        {
+          "before_chapter": "chapter-002",
+          "characters": 38,
+          "excerpt": " Chapter II. The Law of Club and Fang ",
+          "sha256": "d61ea511c1800dae3591d2ebd10b92c93e3974d7985973667a25ade8c5933865"
+        },
+        {
+          "before_chapter": "chapter-003",
+          "characters": 44,
+          "excerpt": " Chapter III. The Dominant Primordial Beast ",
+          "sha256": "531becc6631ad0a4871c0cb793d4d279c8a409bc6c0c74f857a199854a3d647c"
+        },
+        {
+          "before_chapter": "chapter-004",
+          "characters": 39,
+          "excerpt": " Chapter IV. Who Has Won to Mastership ",
+          "sha256": "9f5ffa3c720d7a911826d55ebc4556e46df070e8f8c4610ee832b117760dd8a4"
+        },
+        {
+          "before_chapter": "chapter-005",
+          "characters": 40,
+          "excerpt": " Chapter V. The Toil of Trace and Trail ",
+          "sha256": "551a89db5a93c66c4781b7b403f4d647e332b46983821f84c4c4f30b6c260c29"
+        },
+        {
+          "before_chapter": "chapter-006",
+          "characters": 35,
+          "excerpt": " Chapter VI. For the Love of a Man ",
+          "sha256": "944a27be6f7192eb7ec0812e44b4a90b03d925325c3218b61826390076c01ee3"
+        },
+        {
+          "before_chapter": "chapter-007",
+          "characters": 39,
+          "excerpt": " Chapter VII. The Sounding of the Call ",
+          "sha256": "668831343d914e69396c5b948c7a735375a1b8324fec87f03c4ada16d91be7b8"
+        }
+      ],
+      "after_selected_text": " *** END OF THE PROJECT GUTENBERG EBOOK THE CALL OF THE WILD *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in these w",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": " FOOTNOTES: [17] From _The Atlantic Monthly_, January, 1861. Republished in _Soundings from the Atlantic_ (1864), by Oliver Wendell Holmes, whose authorized publishers are the Houghton Mifflin Company. THE CELEBRATED JUMPING FROG OF CALAVERAS COUNTY[18] By Mark Twain (1835–1910) ",
+          "sha256": "8c31e9d9f0f84083e73b1c2f2e68b4977e53e48b06b3b6a5429fa7e879bdba8f"
+        }
+      ],
+      "after_selected_text": " ELDER BROWN’S BACKSLIDE[19] By Harry Stillwell Edwards (1855- ) I Elder Brown told his wife good-by at the farmhouse door as mechanically as though his proposed trip to Macon, ten miles away, was an everyday affair, while, as a matter of fact, many years had elapsed since unacco",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "sked cheerily. I read the article. Its headlines began where I heard the buzzing leave off the night before. It closed with these lines: “—Bellevue Hospital, where it was said that his injuries were not serious. He appeared to be a typical Man About Town.” THE COP AND THE ANTHEM ",
+          "sha256": "35a04136cfef7890c3381d97f330e5d0a44cc977550c6888e3d3c5b8a2e42e57"
+        }
+      ],
+      "after_selected_text": " AN ADJUSTMENT OF NATURE In an art exhibition the other day I saw a painting that had been sold for $5,000. The painter was a young scrub out of the West named Kraft, who had a favourite food and a pet theory. His pabulum was an unquenchable belief in the Unerring Artistic Adjust",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-country-of-the-blind",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": " inmost mystery of these dreamers, these men of vision and the imagination. We see our world fair and common, the hoarding and the pit. By our daylight standard he walked out of security into darkness, danger, and death. But did he see like that? XXXII. THE COUNTRY OF THE BLIND. ",
+          "sha256": "ea715b48dbdedb715da75973f5a26c42b77f6a10dd2908aca99c71889ac277e8"
+        }
+      ],
+      "after_selected_text": " THE BEAUTIFUL SUIT. There was once a little man whose mother made him a beautiful suit of clothes. It was green and gold, and woven so that I cannot describe how delicate and fine it was, and there was a tie of orange fluffiness that tied up under his chin. And the buttons in th",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-darling",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "HE DARLING AND OTHER STORIES *** THE TALES OF CHEKHOV VOLUME 1 THE DARLING AND OTHER STORIES BY ANTON TCHEKHOV Translated by CONSTANCE GARNETT CONTENTS THE DARLING ARIADNE POLINKA ANYUTA THE TWO VOLODYAS THE TROUSSEAU THE HELPMATE TALENT AN ARTIST'S STORY THREE YEARS THE DARLING ",
+          "sha256": "cdb846edffbf38366a6432d92470a2723c194ff352fa74f58b6a4a24e0f89192"
+        }
+      ],
+      "after_selected_text": " ARIADNE ON the deck of a steamer sailing from Odessa to Sevastopol, a rather good-looking gentleman, with a little round beard, came up to me to smoke, and said: \"Notice those Germans sitting near the shelter? Whenever Germans or Englishmen get together, they talk about the crop",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-door-in-the-wall",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "on as they are going, they ought to strike the Capuarana Extension Railway, and force themselves upon the attention of the European capitalist. By 1920 they will be half-way down the Amazon. I fix 1950 or '60 at the latest for the discovery of Europe. XXXI. THE DOOR IN THE WALL. ",
+          "sha256": "7a4a7c8fe15ada2f8ed7c3251ef93ba8d8bdd963a3a80b54a19272ecc7ff94f8"
+        }
+      ],
+      "after_selected_text": " THE COUNTRY OF THE BLIND. Three hundred miles and more from Chimborazo, one hundred from the snows of Cotopaxi, in the wildest wastes of Ecuador's Andes, there lies that mysterious mountain valley, cut off from the world of men, the Country of the Blind. Long years ago that vall",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-furnished-room",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": " and handed it to the boy. “De gent wants an answer,” said the messenger. “Wot’s de word?” The lady’s eyes suddenly flashed on him, bright, smiling and wet. “Tell that guy on the other bench,” she said, with a happy, tremulous laugh, “that his girl wants him.” THE FURNISHED ROOM ",
+          "sha256": "8301622f0fbd0126740f2b45cb3513adff249ccba4240699087ad697cb5522f4"
+        }
+      ],
+      "after_selected_text": " THE BRIEF DÉBUT OF TILDY If you do not know Bogle’s Chop House and Family Restaurant it is your loss. For if you are one of the fortunate ones who dine expensively you should be interested to know how the other half consumes provisions. And if you belong to the half to whom wait",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-great-gatsby",
+      "chapter_count": 9,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": " F. Scott Fitzgerald Table of Contents I II III IV V VI VII VIII IX Once again to Zelda Then wear the gold hat, if that will move her; If you can bounce high, bounce for her too, Till she cry “Lover, gold-hatted, high-bouncing lover, I must have you!” Thomas Parke d’Invilliers I ",
+          "sha256": "5df5d2e1f8e9cb9222af3fff7c12f5d16dc6fc1afae932fb794770cc9f8a1c7d"
+        },
+        {
+          "before_chapter": "chapter-002",
+          "characters": 4,
+          "excerpt": " II ",
+          "sha256": "dddfde8d6f6f160fa2a99b3106229c17558f7df46ed2ee42cffd532d433b8887"
+        },
+        {
+          "before_chapter": "chapter-003",
+          "characters": 5,
+          "excerpt": " III ",
+          "sha256": "4f093d6759379db161a135eea473da45119f1755202f559a1cdb73743e3e560d"
+        },
+        {
+          "before_chapter": "chapter-004",
+          "characters": 4,
+          "excerpt": " IV ",
+          "sha256": "8d28af3936fcb602d9cec8a16c44b99e57437a7ff0411161ff74508b47083161"
+        },
+        {
+          "before_chapter": "chapter-005",
+          "characters": 3,
+          "excerpt": " V ",
+          "sha256": "2af061053de6f7799400cf973900d94049a28a7585b401589f7e06a3d6d0c7ca"
+        },
+        {
+          "before_chapter": "chapter-006",
+          "characters": 4,
+          "excerpt": " VI ",
+          "sha256": "9db23cf6ba23d2771f8265878bcc882f0387ae4804d95b0c4f116571c8745109"
+        },
+        {
+          "before_chapter": "chapter-007",
+          "characters": 5,
+          "excerpt": " VII ",
+          "sha256": "0c2ae458142d03bbc3528186b59c55f5b00b8aa7053a3783712fc056551e5f91"
+        },
+        {
+          "before_chapter": "chapter-008",
+          "characters": 6,
+          "excerpt": " VIII ",
+          "sha256": "9d1046ee41562268ecc84a57a454a48344b3f61ceea13d3440e3b0ff491eba3d"
+        },
+        {
+          "before_chapter": "chapter-009",
+          "characters": 4,
+          "excerpt": " IX ",
+          "sha256": "19911cdeea312b4c2dee08aba8bbf206401172370a24d2f28c764e84a540bcb4"
+        }
+      ],
+      "after_selected_text": " *** END OF THE PROJECT GUTENBERG EBOOK THE GREAT GATSBY *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in these works",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-imp-of-the-perverse",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "he catacombs. I hastened to make an end of my labor. I forced the last stone into its position; I plastered it up. Against the new masonry I re-erected the old rampart of bones. For the half of a century no mortal has disturbed them. _In pace requiescat!_ THE IMP OF THE PERVERSE ",
+          "sha256": "f1438ab8b0012b03a0b84829c85213c57be42c0345bba2043c91b804c8a21b1d"
+        }
+      ],
+      "after_selected_text": " THE ISLAND OF THE FAY Nullus enim locus sine genio est.—_Servius_. “La musique,” says Marmontel, in those “Contes Moraux” (*1) which in all our translations, we have insisted upon calling “Moral Tales,” as if in mockery of their spirit—“la musique est le seul des talents qui jou",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-last-leaf",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": " been that to me … ever and ever, Mary. The man who said he thought New York the finest summer resort in the country dropped into a café on his way home and had a glass of beer under an electric fan. “Wonder what kind of a fly old Harding used,” he said to himself. THE LAST LEAF ",
+          "sha256": "bfcfa1772ebf8447749f5302c6f5e0a5e56e5f076c0bd7b5669477a04000c5d1"
+        }
+      ],
+      "after_selected_text": " THE COUNT AND THE WEDDING GUEST One evening when Andy Donovan went to dinner at his Second Avenue boarding-house, Mrs. Scott introduced him to a new boarder, a young lady, Miss Conway. Miss Conway was small and unobtrusive. She wore a plain, snuffy-brown dress, and bestowed her ",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-legend-of-sleepy-hollow",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "tly updated: February 10, 2026 Language: English Other information and formats: www.gutenberg.org/ebooks/41 Credits: Ilana M. (Kingsley) Newby and Greg Newby *** START OF THE PROJECT GUTENBERG EBOOK THE LEGEND OF SLEEPY HOLLOW *** The Legend of Sleepy Hollow by Washington Irving ",
+          "sha256": "c6316a42e8ee6325a939df0fd69684623b3b4e1e390b528c1b6cc082f270430e"
+        }
+      ],
+      "after_selected_text": " *** END OF THE PROJECT GUTENBERG EBOOK THE LEGEND OF SLEEPY HOLLOW *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in ",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-lifted-veil",
+      "chapter_count": 2,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "enberg.org/ebooks/2165 Credits: David Price *** START OF THE PROJECT GUTENBERG EBOOK THE LIFTED VEIL *** THE LIFTED VEIL Give me no light, great Heaven, but such as turns To energy of human fellowship; No powers beyond the growing heritage That makes completer manhood. CHAPTER I ",
+          "sha256": "768ce9ce4d764604289b4917642c1f9166ef659d5bae3bb0232b93d2a8b10795"
+        },
+        {
+          "before_chapter": "chapter-002",
+          "characters": 12,
+          "excerpt": " CHAPTER II ",
+          "sha256": "d4a963e6c146fdbc6765047341cb0e5cb1e2621241f438ad02112ba600a1eed6"
+        }
+      ],
+      "after_selected_text": " *** END OF THE PROJECT GUTENBERG EBOOK THE LIFTED VEIL *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in these works,",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-luck-of-roaring-camp",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "ine in this, but of only voicing the beliefs of a few of his literary brethren happily living, and one gloriously dead, who never made proclamation of this “from the housetops.” * * * * * THE LUCK OF ROARING CAMP, AND OTHER STORIES AND SKETCHES * * * * * THE LUCK OF ROARING CAMP ",
+          "sha256": "bfa15ccf6259a5a8e1fd2575f96db0b1a2ce0f14b2ad2d08c457e527f25feb37"
+        }
+      ],
+      "after_selected_text": " THE OUTCASTS OF POKER FLAT As Mr. John Oakhurst, gambler, stepped into the main street of Poker Flat on the morning of the 23d of November, 1850, he was conscious of a change in its moral atmosphere since the preceding night. Two or three men, conversing earnestly together, ceas",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-man-in-a-case",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "attle?” “Ah, the dear boy...” laughed my uncle, kissing me. “A charming boy, upon my soul! How natural, how living it all is, upon my soul!...” The carriage set off.... I looked after him, and long afterwards that farewell “upon my soul” was ringing in my ears. THE MAN IN A CASE ",
+          "sha256": "306dca8a02433249adfe13a2a1d27a0ab1a7b24368c2849a3a8efde532c86e48"
+        }
+      ],
+      "after_selected_text": " GOOSEBERRIES THE whole sky had been overcast with rain-clouds from early morning; it was a still day, not hot, but heavy, as it is in grey dull weather when the clouds have been hanging over the country for a long while, when one expects rain and it does not come. Ivan Ivanovitc",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-man-with-the-twisted-lip",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": " did at last hear that somewhere far out in the Atlantic a shattered stern-post of a boat was seen swinging in the trough of a wave, with the letters “L. S.” carved upon it, and that is all which we shall ever know of the fate of the _Lone Star_. VI. THE MAN WITH THE TWISTED LIP ",
+          "sha256": "80b668984891263300a5b9d18b834e82eb0a6258124c244d69ab9ec917dcb6a6"
+        }
+      ],
+      "after_selected_text": " VII. THE ADVENTURE OF THE BLUE CARBUNCLE I had called upon my friend Sherlock Holmes upon the second morning after Christmas, with the intention of wishing him the compliments of the season. He was lounging upon the sofa in a purple dressing-gown, a pipe-rack within his reach up",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-masque-of-the-red-death",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "eptember 30, 2026 Language: English Other information and formats: www.gutenberg.org/ebooks/1064 Credits: Produced by Levent Kurnaz. HTML version by Al Haines. *** START OF THE PROJECT GUTENBERG EBOOK THE MASQUE OF THE RED DEATH *** The Masque of the Red Death by Edgar Allan Poe ",
+          "sha256": "4deaef16e5f7fa5e6fc185cebbb5663f0f00aa81754461e577305833d3ac9673"
+        }
+      ],
+      "after_selected_text": " *** END OF THE PROJECT GUTENBERG EBOOK THE MASQUE OF THE RED DEATH *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in ",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-metamorphosis",
+      "chapter_count": 3,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": " Metamorphosis Author: Franz Kafka Translator: David Wyllie Release date: August 17, 2005 [eBook #5200] Most recently updated: June 9, 2026 Language: English Other information and formats: www.gutenberg.org/ebooks/5200 *** START OF THE PROJECT GUTENBERG EBOOK METAMORPHOSIS *** I ",
+          "sha256": "bc8205692ba4d3161505ed623f6f4d2808e932b8f6fea4480143f2c3fa0346ee"
+        },
+        {
+          "before_chapter": "chapter-002",
+          "characters": 4,
+          "excerpt": " II ",
+          "sha256": "dddfde8d6f6f160fa2a99b3106229c17558f7df46ed2ee42cffd532d433b8887"
+        },
+        {
+          "before_chapter": "chapter-003",
+          "characters": 5,
+          "excerpt": " III ",
+          "sha256": "4f093d6759379db161a135eea473da45119f1755202f559a1cdb73743e3e560d"
+        }
+      ],
+      "after_selected_text": " *** END OF THE PROJECT GUTENBERG EBOOK METAMORPHOSIS *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in these works, s",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-ministers-black-veil",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "e dismal knell, then rising to a loftier strain, till the soul looked down upon its woe. And when the awful rite was finished and with cold hand in cold hand the married of eternity withdrew, the organ’s peal of solemn triumph drowned the wedding-knell. THE MINISTER’S BLACK VEIL ",
+          "sha256": "fb5b0a24666f85eab0d4ab4bbe30fb72c90b0d0a048fd65c5f920d7d727f07a1"
+        }
+      ],
+      "after_selected_text": " THE MAYPOLE OF MERRY MOUNT There is an admirable foundation for a philosophic romance in the curious history of the early settlement of Mount Wollaston, or Merry Mount. In the slight sketch here attempted the facts recorded on the grave pages of our New England annalists have wr",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-murders-in-the-rue-morgue",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "now give him in advance. Footnotes—Four Beasts (*1) Flavius Vospicus says, that the hymn here introduced was sung by the rabble upon the occasion of Aurelian, in the Sarmatic war, having slain, with his own hand, nine hundred and fifty of the enemy. THE MURDERS IN THE RUE MORGUE ",
+          "sha256": "8d461923966056e37a24228dbacb16ef3a57505add99d7ef634cf88baa197b58"
+        }
+      ],
+      "after_selected_text": " THE MYSTERY OF MARIE ROGET.(*1) A SEQUEL TO “THE MURDERS IN THE RUE MORGUE.” Es giebt eine Reihe idealischer Begebenheiten, die der Wirklichkeit parallel lauft. Selten fallen sie zusammen. Menschen und zufalle modificiren gewohulich die idealische Begebenheit, so dass sie unvoll",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-necklace",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "suddenly furious, stammered out: “What house--what--what house is this? Wretch--scoundrel--villain--what house, indeed? The house of the judge--of the judge of the Supreme Court--of the Supreme Court--of the Supreme Court--Oh, oh--rascal! --rascal!--rascal!” THE DIAMOND NECKLACE ",
+          "sha256": "0e7aad8a7ac2993c073041b41c11d29bba7673c3d88f6b9dbbacca5271e28069"
+        }
+      ],
+      "after_selected_text": " THE MARQUIS DE FUMEROL Roger de Tourneville was whiffing a cigar and blowing out small clouds of smoke every now and then, as he sat astride a chair amid a party of friends. He was talking. “We were at dinner when a letter was brought in which my father opened. You know my fathe",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-open-window",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "-baskets. The miracle lost some of its usefulness from the fact that Dora wrote the same day postponing the date of her visit, but, at any rate, Clovis holds the record as the only human being who ever hustled Jane Martlet out of the time-table of her migrations. THE OPEN WINDOW ",
+          "sha256": "55f4f8049ac87e28be6c76559ee1b749f693ca9d947689c471ed10e6f81a8f89"
+        }
+      ],
+      "after_selected_text": " THE TREASURE SHIP The great galleon lay in semi-retirement under the sand and weed and water of the northern bay where the fortune of war and weather had long ago ensconced it. Three and a quarter centuries had passed since the day when it had taken the high seas as an important",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-outcasts-of-poker-flat",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "repeated; “he’s a-taking me with him. Tell the boys I’ve got The Luck with me now;” and the strong man, clinging to the frail babe as a drowning man is said to cling to a straw, drifted away into the shadowy river that flows forever to the unknown sea. THE OUTCASTS OF POKER FLAT ",
+          "sha256": "9e2de7bf2e093649518423247eedca8ef569ee97cd1f0649d9df467d18ec0934"
+        }
+      ],
+      "after_selected_text": " MIGGLES We were eight including the driver. We had not spoken during the passage of the last six miles, since the jolting of the heavy vehicle over the roughening road had spoiled the Judge’s last poetical quotation. The tall man beside the Judge was asleep, his arm passed throu",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "chapter_count": 3,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "utenberg.org/ebooks/6435 Credits: Produced by Charles E. Nichols *** START OF THE PROJECT GUTENBERG EBOOK THE PRINCIPLES OF SCIENTIFIC MANAGEMENT *** Produced by Charles E. Nichols The Principles of Scientific Management by FREDERICK WINSLOW TAYLOR, M.E., Sc.D. 1911 INTRODUCTION ",
+          "sha256": "c1cbeed8fb4f8cdd5280cf6cb844ed3704b92f0c682e801e3e8ddd9412f73bf7"
+        },
+        {
+          "before_chapter": "chapter-002",
+          "characters": 49,
+          "excerpt": " CHAPTER I FUNDAMENTALS OF SCIENTIFIC MANAGEMENT ",
+          "sha256": "39b8fa5ada6deab79a0f67e3f809b41556f6c9302127e9df3b5611ab2119245c"
+        },
+        {
+          "before_chapter": "chapter-003",
+          "characters": 52,
+          "excerpt": " CHAPTER II THE PRINCIPLES OF SCIENTIFIC MANAGEMENT ",
+          "sha256": "64116221c22e3c76bf24f98bc8bd83f0fdb769ca1e81865a78809e177cfd0e51"
+        }
+      ],
+      "after_selected_text": " THE FINEST TYPE OF ORDINARY MANAGEMENT Before starting to illustrate the principles of scientific management, or \"task management\" as it is briefly called, it seems desirable to outline what the writer believes will be recognized as the best type of management which is in common",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-purloined-letter",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "M THE PREMATURE BURIAL THE DOMAIN OF ARNHEIM LANDOR’S COTTAGE WILLIAM WILSO THE TELL-TALE HEART. BERENICE ELEONORA NOTES TO THE SECOND VOLUME [Redactor’s Note—Some endnotes are by Poe and some were added by Griswold. In this volume the notes are at the end.] THE PURLOINED LETTER ",
+          "sha256": "1cd25c77de676300d45f57b82b23c8ab0ac81b81ad93285fdd768584294a6df1"
+        }
+      ],
+      "after_selected_text": " THE THOUSAND-AND-SECOND TALE OF SCHEHERAZADE Truth is stranger than fiction.—_Old Saying_ Having had occasion, lately, in the course of some Oriental investigations, to consult the Tellmenow Isitsöornot, a work which (like the Zohar of Simeon Jochaides) is scarcely known at all,",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-ransom-of-red-chief",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "ing round and round in circles instead of getting anywhere.” “What do you mean?” asked the man of progress. “Why, look what he has done to ‘Smoky’,” I replied. “You will always be a fool,” said my friend, the sociologist, getting up and walking away. VIII THE RANSOM OF RED CHIEF ",
+          "sha256": "363b1296676ea3b2e2244f6d96ca446b94e5962106c28deffc06647c757a3e24"
+        }
+      ],
+      "after_selected_text": " THE MARRY MONTH OF MAY Prithee, smite the poet in the eye when he would sing to you praises of the month of May. It is a month presided over by the spirits of mischief and madness. Pixies and flibbertigibbets haunt the budding woods: Puck and his train of midgets are busy in tow",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-science-of-getting-rich",
+      "chapter_count": 18,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "ILL 89 XI. ACTING IN THE CERTAIN WAY 99 XII. EFFICIENT ACTION 110 XIII. GETTING INTO THE RIGHT BUSINESS 119 XIV. THE IMPRESSION OF INCREASE 127 XV. THE ADVANCING MAN 135 XVI. SOME CAUTIONS, AND CONCLUDING OBSERVATIONS 143 XVII. SUMMARY OF THE SCIENCE OF GETTING RICH 152 PREFACE. ",
+          "sha256": "cf2f17096b1c39802d355569e21ad040ceca75fa94d07a6279586aa2837482d0"
+        },
+        {
+          "before_chapter": "chapter-002",
+          "characters": 34,
+          "excerpt": " CHAPTER I. THE RIGHT TO BE RICH. ",
+          "sha256": "c7980474e779fa58e5ab894b16bdb766287288b8731fb602bcb8aa76b472528b"
+        },
+        {
+          "before_chapter": "chapter-003",
+          "characters": 49,
+          "excerpt": " CHAPTER II. THERE IS A SCIENCE OF GETTING RICH. ",
+          "sha256": "e2f45f36463d003c2fc24843a85722c171a39029b8a8d2f6836d41ea53dd6660"
+        },
+        {
+          "before_chapter": "chapter-004",
+          "characters": 42,
+          "excerpt": " CHAPTER III. IS OPPORTUNITY MONOPOLIZED? ",
+          "sha256": "90538952d0df3981aa7880f746217e1a77204774d9cb22b334e33f68a2397ef2"
+        },
+        {
+          "before_chapter": "chapter-005",
+          "characters": 65,
+          "excerpt": " CHAPTER IV. THE FIRST PRINCIPLE IN THE SCIENCE OF GETTING RICH. ",
+          "sha256": "53f0e352d76aa0f9b4995d5411a559457ade40350db399d8d6cff63c20b326d7"
+        },
+        {
+          "before_chapter": "chapter-006",
+          "characters": 29,
+          "excerpt": " CHAPTER V. INCREASING LIFE. ",
+          "sha256": "d4a159d7091c93f6cf1264864bfcb22f8a48ccd91294e7c60c3a7fd1e8118586"
+        },
+        {
+          "before_chapter": "chapter-007",
+          "characters": 37,
+          "excerpt": " CHAPTER VI. HOW RICHES COME TO YOU. ",
+          "sha256": "7c5b566d619375a0f08c524b7df1653544ec089a92c02535588e928673d661e8"
+        },
+        {
+          "before_chapter": "chapter-008",
+          "characters": 25,
+          "excerpt": " CHAPTER VII. GRATITUDE. ",
+          "sha256": "bd54a540e1d8dba9ab43a63ec058c4c2fd1078a7dc29127acaf7a47418d14fcb"
+        },
+        {
+          "before_chapter": "chapter-009",
+          "characters": 44,
+          "excerpt": " CHAPTER VIII. THINKING IN THE CERTAIN WAY. ",
+          "sha256": "dd7ebb706fa7fa2cecf1f050c3dd1f304f50c7c4010174de1c79b330b3c4e139"
+        },
+        {
+          "before_chapter": "chapter-010",
+          "characters": 34,
+          "excerpt": " CHAPTER IX. HOW TO USE THE WILL. ",
+          "sha256": "85f18e97bc2417a64e85f52a8c9d5f5684f9346857cdc853e58dc0f1346bcb31"
+        },
+        {
+          "before_chapter": "chapter-011",
+          "characters": 37,
+          "excerpt": " CHAPTER X. FURTHER USE OF THE WILL. ",
+          "sha256": "8652ba2b354e2c101d9bf1d17709fca4af4f767eb49e016a3c5b346d9ae453e6"
+        },
+        {
+          "before_chapter": "chapter-012",
+          "characters": 40,
+          "excerpt": " CHAPTER XI. ACTING IN THE CERTAIN WAY. ",
+          "sha256": "168118d42060bddffb6ab0db4b162e4e58df1bbe845f26f4fa474ed7d451c281"
+        },
+        {
+          "before_chapter": "chapter-013",
+          "characters": 32,
+          "excerpt": " CHAPTER XII. EFFICIENT ACTION. ",
+          "sha256": "38925b3b671917bbe16b7b591b3f3b4c9fcc9b6190c2406820097dcd03efce23"
+        },
+        {
+          "before_chapter": "chapter-014",
+          "characters": 48,
+          "excerpt": " CHAPTER XIII. GETTING INTO THE RIGHT BUSINESS. ",
+          "sha256": "95459f49f105b0a951a2d064622df2e74edfdd799df668b83b088d567e34b149"
+        },
+        {
+          "before_chapter": "chapter-015",
+          "characters": 42,
+          "excerpt": " CHAPTER XIV. THE IMPRESSION OF INCREASE. ",
+          "sha256": "23259c590ecaefa62f6b697c2565d9928e79c9ecc9a5c9f60b0f5bf6aecec08f"
+        },
+        {
+          "before_chapter": "chapter-016",
+          "characters": 32,
+          "excerpt": " CHAPTER XV. THE ADVANCING MAN. ",
+          "sha256": "a5018116feb988f0a1cbad331c2525cc25a279ab82e3e2dd85eb26ebeb3b8389"
+        },
+        {
+          "before_chapter": "chapter-017",
+          "characters": 58,
+          "excerpt": " CHAPTER XVI. SOME CAUTIONS, AND CONCLUDING OBSERVATIONS. ",
+          "sha256": "a9e681fb9bfd6cbb00082f62eb23c8835cab98a7b96a895e4b199090146ec402"
+        },
+        {
+          "before_chapter": "chapter-018",
+          "characters": 55,
+          "excerpt": " CHAPTER XVII. SUMMARY OF THE SCIENCE OF GETTING RICH. ",
+          "sha256": "76766cd3d1cefa1b381637d8ad795bfa74b32f87bc2045195cd27caad3756cc6"
+        }
+      ],
+      "after_selected_text": " * * * * * FURTHER AIDS TOWARD GETTING RICH RIGHT THE NAUTILUS is published monthly for the express purpose of making Men and Women Who Can Do What They Will To Do. It abounds in practical ideas and in the bright inspiration that impels you to USE the ideas. Use it as first aid! ",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-secret-garden",
+      "chapter_count": 27,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": " XVIII. “THA’ MUNNOT WASTE NO TIME” XIX. “IT HAS COME!” XX. “I SHALL LIVE FOREVER—AND EVER—AND EVER!” XXI. BEN WEATHERSTAFF XXII. WHEN THE SUN WENT DOWN XXIII. MAGIC XXIV. “LET THEM LAUGH” XXV. THE CURTAIN XXVI. “IT’S MOTHER!” XXVII. IN THE GARDEN CHAPTER I. THERE IS NO ONE LEFT ",
+          "sha256": "d06e2f37a7066e5b065a3b0e8899b1f89022e4bdf15b3b61c327e69ceed7a196"
+        },
+        {
+          "before_chapter": "chapter-002",
+          "characters": 42,
+          "excerpt": " CHAPTER II. MISTRESS MARY QUITE CONTRARY ",
+          "sha256": "47357dadfc136169c29df156286c498b68b6e53bfee5071f9aaed83362402272"
+        },
+        {
+          "before_chapter": "chapter-003",
+          "characters": 30,
+          "excerpt": " CHAPTER III. ACROSS THE MOOR ",
+          "sha256": "d2ff8d5fe048f523889b919a6b7d3e797824b66bc706eb9face367f5172c3163"
+        },
+        {
+          "before_chapter": "chapter-004",
+          "characters": 20,
+          "excerpt": " CHAPTER IV. MARTHA ",
+          "sha256": "6d1f1eb6e5c1e2b0649c8c90050b845498695f97c0e6154c92c3b77118483dda"
+        },
+        {
+          "before_chapter": "chapter-005",
+          "characters": 35,
+          "excerpt": " CHAPTER V THE CRY IN THE CORRIDOR ",
+          "sha256": "ba6615299e23ba05c5449466f768b9bd26e5145cfba8872ed1698c3db992dd24"
+        },
+        {
+          "before_chapter": "chapter-006",
+          "characters": 51,
+          "excerpt": " CHAPTER VI. “THERE WAS SOMEONE CRYING—THERE WAS!” ",
+          "sha256": "1460d02cd6e9a391028a198ae06b15177aef00b8589b6ab6edf3cdaf7ed06c2f"
+        },
+        {
+          "before_chapter": "chapter-007",
+          "characters": 36,
+          "excerpt": " CHAPTER VII. THE KEY TO THE GARDEN ",
+          "sha256": "d8110a0e9e88328ddc763af312cd89c4411dbce2f047d38ce38be79e57cd8fd5"
+        },
+        {
+          "before_chapter": "chapter-008",
+          "characters": 44,
+          "excerpt": " CHAPTER VIII. THE ROBIN WHO SHOWED THE WAY ",
+          "sha256": "4e58b7a2f9d7927b667b9315a9deedc3f632b37b0731903c3168d2c056834f5f"
+        },
+        {
+          "before_chapter": "chapter-009",
+          "characters": 54,
+          "excerpt": " CHAPTER IX. THE STRANGEST HOUSE ANYONE EVER LIVED IN ",
+          "sha256": "24d15237cc518f4139718d830df43c5c137297645cc0c4412139941df1724d7b"
+        },
+        {
+          "before_chapter": "chapter-010",
+          "characters": 19,
+          "excerpt": " CHAPTER X. DICKON ",
+          "sha256": "be55322f83ac355c655b9dbf901a6ad2a2ba974a43b25dc5783890fea5638b2f"
+        },
+        {
+          "before_chapter": "chapter-011",
+          "characters": 43,
+          "excerpt": " CHAPTER XI. THE NEST OF THE MISSEL THRUSH ",
+          "sha256": "49b8fad929224d902eb44d1938c64ed411c544601586e55c22e6d3db5423d4d2"
+        },
+        {
+          "before_chapter": "chapter-012",
+          "characters": 45,
+          "excerpt": " CHAPTER XII. “MIGHT I HAVE A BIT OF EARTH?” ",
+          "sha256": "3a806c80d6f52a68a201bfe5183e102966314a6465cf2a5253386a348f288706"
+        },
+        {
+          "before_chapter": "chapter-013",
+          "characters": 28,
+          "excerpt": " CHAPTER XIII. “I AM COLIN” ",
+          "sha256": "6799993dcb259c0b29830db9288ea3c095d31f8f6b450defd109a4f668bc2b43"
+        },
+        {
+          "before_chapter": "chapter-014",
+          "characters": 28,
+          "excerpt": " CHAPTER XIV. A YOUNG RAJAH ",
+          "sha256": "f8a4ba4168316d327284e01bdde539568762c44f2bcf03ebe0f743f57a547a2c"
+        },
+        {
+          "before_chapter": "chapter-015",
+          "characters": 27,
+          "excerpt": " CHAPTER XV. NEST BUILDING ",
+          "sha256": "fcf9ce97a1c425f7e87d9355f5c591dca6728a6c9f9f9b7cbffa00c0a2505376"
+        },
+        {
+          "before_chapter": "chapter-016",
+          "characters": 35,
+          "excerpt": " CHAPTER XVI. “I WON’T!” SAID MARY ",
+          "sha256": "5d247e20f8ea21354432813b2a514781c0203cbc64edf940febeaf8edd7fa60a"
+        },
+        {
+          "before_chapter": "chapter-017",
+          "characters": 25,
+          "excerpt": " CHAPTER XVII. A TANTRUM ",
+          "sha256": "1cfcf9bf6a4d61e0106b4cc807e47e14a3eba0948f9657cfb3ce474e1da43ead"
+        },
+        {
+          "before_chapter": "chapter-018",
+          "characters": 44,
+          "excerpt": " CHAPTER XVIII. “THA’ MUNNOT WASTE NO TIME” ",
+          "sha256": "e197ca2ea611314887a29cf2777a0439e19aed35ae32fc4195ed601c28e5773d"
+        },
+        {
+          "before_chapter": "chapter-019",
+          "characters": 29,
+          "excerpt": " CHAPTER XIX. “IT HAS COME!” ",
+          "sha256": "e26a1cf588b14e2db234faef518a548dc783302f1e5f018b3574335d9d977505"
+        },
+        {
+          "before_chapter": "chapter-020",
+          "characters": 55,
+          "excerpt": " CHAPTER XX. “I SHALL LIVE FOREVER—AND EVER—AND EVER!” ",
+          "sha256": "cf063e9729f973abf8eea1f8d705e68dcc2e985dbcd27cd62f11965ec4cf7eef"
+        },
+        {
+          "before_chapter": "chapter-021",
+          "characters": 31,
+          "excerpt": " CHAPTER XXI. BEN WEATHERSTAFF ",
+          "sha256": "2da80d2c005dc7219f0fbf14f6860aa7ff8c9b6828b07c3e551ed3f2e2aad8de"
+        },
+        {
+          "before_chapter": "chapter-022",
+          "characters": 38,
+          "excerpt": " CHAPTER XXII. WHEN THE SUN WENT DOWN ",
+          "sha256": "c06302e4779687059e73562b77fdf3b372171139f50858e67a7c19d85245a4eb"
+        },
+        {
+          "before_chapter": "chapter-023",
+          "characters": 22,
+          "excerpt": " CHAPTER XXIII. MAGIC ",
+          "sha256": "1b54fb653c86243e87b9f7444e205c29cc1bf9b543bc317230a51cf146de61f7"
+        },
+        {
+          "before_chapter": "chapter-024",
+          "characters": 32,
+          "excerpt": " CHAPTER XXIV. “LET THEM LAUGH” ",
+          "sha256": "3ed52428277e9b30308bef49872632e36f63c66e8d41a2f65135fbc8503af83e"
+        },
+        {
+          "before_chapter": "chapter-025",
+          "characters": 26,
+          "excerpt": " CHAPTER XXV. THE CURTAIN ",
+          "sha256": "8e1477f088a5112264630f7fde33f1bb02c652130b539c8cef53bffccc43bef8"
+        },
+        {
+          "before_chapter": "chapter-026",
+          "characters": 30,
+          "excerpt": " CHAPTER XXVI. “IT’S MOTHER!” ",
+          "sha256": "da397ce235d797d76c7933c0b81ea8f18c0c9e5f7d2c8bb9ffa83dcd167a4b60"
+        },
+        {
+          "before_chapter": "chapter-027",
+          "characters": 30,
+          "excerpt": " CHAPTER XXVII. IN THE GARDEN ",
+          "sha256": "3c877f91ffbcf24ba1208d7126cc7112968c362e145b523b094665b4ba896812"
+        }
+      ],
+      "after_selected_text": " *** END OF THE PROJECT GUTENBERG EBOOK THE SECRET GARDEN *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in these work",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-selfish-giant",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "s quite unpractical, and, as in this age to be practical is everything, I shall go back to Philosophy and study Metaphysics.” So he returned to his room and pulled out a great dusty book, and began to read. [Picture: Decorative graphic of nightingale and rose] The Selfish Giant. ",
+          "sha256": "401819fec2d0b1f7e1e8c68374e15c13ff41305edfdb08d9de27e9a62164104d"
+        }
+      ],
+      "after_selected_text": " The Devoted Friend. [Picture: Hans and the Miller] ONE morning the old Water-rat put his head out of his hole. He had bright beady eyes and stiff grey whiskers and his tail was like a long bit of black india-rubber. The little ducks were swimming about in the pond, looking just ",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-speckled-band",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": " has put in our way a most singular and whimsical problem, and its solution is its own reward. If you will have the goodness to touch the bell, Doctor, we will begin another investigation, in which, also a bird will be the chief feature.” VIII. THE ADVENTURE OF THE SPECKLED BAND ",
+          "sha256": "dbe56fe9e150a45bfe03e533088c10566cb24d6e427e595dc343b2dc26cba48b"
+        }
+      ],
+      "after_selected_text": " IX. THE ADVENTURE OF THE ENGINEER’S THUMB Of all the problems which have been submitted to my friend, Mr. Sherlock Holmes, for solution during the years of our intimacy, there were only two which I was the means of introducing to his notice—that of Mr. Hatherley’s thumb, and tha",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-student",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "side it; next that, one of gold, then one rose-coloured.... The sky turns a soft lilac. Looking at this gorgeous, enchanted sky, at first the ocean scowls, but soon it, too, takes tender, joyous, passionate colours for which it is hard to find a name in human speech. THE STUDENT ",
+          "sha256": "293949757f3a633ebdf4dd54a4681552382ca9ffa22ddb9da789cc5dfdf8e6b7"
+        }
+      ],
+      "after_selected_text": " IN THE RAVINE I THE village of Ukleevo lay in a ravine so that only the belfry and the chimneys of the printed cottons factories could be seen from the high road and the railway-station. When visitors asked what village this was, they were told: “That’s the village where the dea",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-wonderful-wizard-of-oz",
+      "chapter_count": 24,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "d of Oz” was written solely to please children of today. It aspires to being a modernized fairy tale, in which the wonderment and joy are retained and the heartaches and nightmares are left out. L. Frank Baum Chicago, April, 1900. The Wonderful Wizard of Oz Chapter I The Cyclone ",
+          "sha256": "de0689ca5261603cb6717b7f80b6728255400295620175838404058ee7843643"
+        },
+        {
+          "before_chapter": "chapter-002",
+          "characters": 12,
+          "excerpt": " Chapter II ",
+          "sha256": "2d43795f9525aab6ca86a4de20674d1736290f7522dda3c0ded65d1bff582851"
+        },
+        {
+          "before_chapter": "chapter-003",
+          "characters": 45,
+          "excerpt": " Chapter III How Dorothy Saved the Scarecrow ",
+          "sha256": "bf9f31928238f020077c6551d788938188e89d5dc226ca54e8dc0f3f17f751bd"
+        },
+        {
+          "before_chapter": "chapter-004",
+          "characters": 40,
+          "excerpt": " Chapter IV The Road Through the Forest ",
+          "sha256": "8383a78b2c8b0fe8d88eaff85898b084aa17ece0506e4ebe6bd36b818492f1d7"
+        },
+        {
+          "before_chapter": "chapter-005",
+          "characters": 11,
+          "excerpt": " Chapter V ",
+          "sha256": "61de7255bd15f890978ef06e50f5bb78867c574fdc06762556aa28c9ebea657c"
+        },
+        {
+          "before_chapter": "chapter-006",
+          "characters": 30,
+          "excerpt": " Chapter VI The Cowardly Lion ",
+          "sha256": "c1e49639fc46911cdce43d65bc04b9a7a1216db7f3b9aded08dc772d05bb29a1"
+        },
+        {
+          "before_chapter": "chapter-007",
+          "characters": 13,
+          "excerpt": " Chapter VII ",
+          "sha256": "4852ca813a9ebb46a15217b42d8828092be0ac7d96dcc294d3b35627c11f29e7"
+        },
+        {
+          "before_chapter": "chapter-008",
+          "characters": 37,
+          "excerpt": " Chapter VIII The Deadly Poppy Field ",
+          "sha256": "4715219119375eb9daec3aa4cad19154c346ee7f9b6b713e313ede769185cb03"
+        },
+        {
+          "before_chapter": "chapter-009",
+          "characters": 12,
+          "excerpt": " Chapter IX ",
+          "sha256": "6c53d692dbe4700ded880fd64380dca27a83994fecae0fc979b6022066019d7e"
+        },
+        {
+          "before_chapter": "chapter-010",
+          "characters": 11,
+          "excerpt": " Chapter X ",
+          "sha256": "1593f7dd495ae1a39a60dbe2c994145e5894c683f6a457515034e56d9d038d14"
+        },
+        {
+          "before_chapter": "chapter-011",
+          "characters": 37,
+          "excerpt": " Chapter XI The Wonderful City of Oz ",
+          "sha256": "52447bfa8e0eb137914cf67b1a401c8f90d198cdea885e59cad3074301796d96"
+        },
+        {
+          "before_chapter": "chapter-012",
+          "characters": 13,
+          "excerpt": " Chapter XII ",
+          "sha256": "1d8dd6c616ff6f8ef9511b49ef55a71bd4cfed324f597bd44080ebda2396eb45"
+        },
+        {
+          "before_chapter": "chapter-013",
+          "characters": 25,
+          "excerpt": " Chapter XIII The Rescue ",
+          "sha256": "ca4f95f75a39ba340634e6d1f6bd489501f536f90713ef648ed4e56cce5a7d36"
+        },
+        {
+          "before_chapter": "chapter-014",
+          "characters": 32,
+          "excerpt": " Chapter XIV The Winged Monkeys ",
+          "sha256": "6acf2ca1795444dc18256fdab374f8371932cff29dc9c62e81beb2d3c1751e48"
+        },
+        {
+          "before_chapter": "chapter-015",
+          "characters": 12,
+          "excerpt": " Chapter XV ",
+          "sha256": "0feb14434cb2cbc8ea4c93fb754fdd8a79ff4baab2cefbf9758b62edb1dea9a8"
+        },
+        {
+          "before_chapter": "chapter-016",
+          "characters": 13,
+          "excerpt": " Chapter XVI ",
+          "sha256": "e119d775800551c2e4d76d00c134a36d5f8d9aa410d06e14eeb4f42a97864eed"
+        },
+        {
+          "before_chapter": "chapter-017",
+          "characters": 43,
+          "excerpt": " Chapter XVII How the Balloon Was Launched ",
+          "sha256": "5ca301e22237213d8f88757110fa51202ff0219a39f67b4263aad4ca43aa7efa"
+        },
+        {
+          "before_chapter": "chapter-018",
+          "characters": 15,
+          "excerpt": " Chapter XVIII ",
+          "sha256": "b22abc637455574939431ccf5de3b28b69ada40326b4113564f82003878b7465"
+        },
+        {
+          "before_chapter": "chapter-019",
+          "characters": 13,
+          "excerpt": " Chapter XIX ",
+          "sha256": "f4c36e9ee5d33962ad41b1e83abe662ca77cffb9996979704daeea9f9497020f"
+        },
+        {
+          "before_chapter": "chapter-020",
+          "characters": 37,
+          "excerpt": " Chapter XX The Dainty China Country ",
+          "sha256": "b8337f0c6c5497b4423594e53066e278ce12efe7797273e460a92ff3ee629399"
+        },
+        {
+          "before_chapter": "chapter-021",
+          "characters": 13,
+          "excerpt": " Chapter XXI ",
+          "sha256": "f49d131a465794550cc57d404cb10b5c35c085bfc50967bfd83350d1f5f75d3e"
+        },
+        {
+          "before_chapter": "chapter-022",
+          "characters": 14,
+          "excerpt": " Chapter XXII ",
+          "sha256": "36374e40cc99230304ff9dad6e1e5248e9a65581c26b92d8234ca1edc482e962"
+        },
+        {
+          "before_chapter": "chapter-023",
+          "characters": 59,
+          "excerpt": " Chapter XXIII Glinda The Good Witch Grants Dorothy’s Wish ",
+          "sha256": "83a4dcb30e194c7f05e3a01c63f5663c630fa3978dcf686c86ecb121a64779ee"
+        },
+        {
+          "before_chapter": "chapter-024",
+          "characters": 25,
+          "excerpt": " Chapter XXIV Home Again ",
+          "sha256": "4d0e0966c1653a5dfb66cb6d5761eb730e1cf891f0c75b48752ea208a985cdb4"
+        }
+      ],
+      "after_selected_text": " *** END OF THE PROJECT GUTENBERG EBOOK THE WONDERFUL WIZARD OF OZ *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in t",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "the-yellow-wallpaper",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "elease date: November 1, 1999 [eBook #1952] Most recently updated: September 16, 2026 Language: English Other information and formats: www.gutenberg.org/ebooks/1952 Credits: An Anonymous Volunteer and David Widger *** START OF THE PROJECT GUTENBERG EBOOK THE YELLOW WALLPAPER *** ",
+          "sha256": "d0ce59e027466f351467caae749707019ebc9be0745a2ecacb042f68ddd1f52a"
+        }
+      ],
+      "after_selected_text": " *** END OF THE PROJECT GUTENBERG EBOOK THE YELLOW WALLPAPER *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in these w",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "to-build-a-fire",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "s,” Churchill answered. “Too bad it got wet. I guess I was a bit careless.” He got up and went outside. Ten minutes later Louis Bondell went out and found him on the steps, sitting down, elbows on knees and chin on hands, gazing steadfastly out into the darkness. TO BUILD A FIRE ",
+          "sha256": "ef256701b58f1772f074c97385b6c6b8e67ba1908c69cbce1cd452efeeda52ba"
+        }
+      ],
+      "after_selected_text": " THAT SPOT I don’t think much of Stephen Mackaye any more, though I used to swear by him. I know that in those days I loved him more than my own brother. If ever I meet Stephen Mackaye again, I shall not be responsible for my actions. It passes beyond me that a man with whom I sh",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "tobermory",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": " into the family.\" \"You seem destined to be the victim of the reformation, after all.\" Clovis wiped the trace of Turkish coffee and the beginnings of a smile from his lips, and slowly lowered his dexter eyelid. Which, being interpreted, probably meant, \"I DON'T think!\" TOBERMORY ",
+          "sha256": "263dfae2bd30ea85e3482a604d2003e3fba1262e7167c097a300ca6c05de9648"
+        }
+      ],
+      "after_selected_text": " MRS. PACKLETIDE'S TIGER It was Mrs. Packletide's pleasure and intention that she should shoot a tiger. Not that the lust to kill had suddenly descended on her, or that she felt that she would leave India safer and more wholesome than she had found it, with one fraction less of w",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "white-fang",
+      "chapter_count": 25,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "E REIGN OF HATE CHAPTER IV THE CLINGING DEATH CHAPTER V THE INDOMITABLE CHAPTER VI THE LOVE-MASTER PART V CHAPTER I THE LONG TRAIL CHAPTER II THE SOUTHLAND CHAPTER III THE GOD’S DOMAIN CHAPTER IV THE CALL OF KIND CHAPTER V THE SLEEPING WOLF PART I CHAPTER I THE TRAIL OF THE MEAT ",
+          "sha256": "19e1c0627aed7168382c0dca4ec1e40f699d1b95528640338c9d17016cb631cb"
+        },
+        {
+          "before_chapter": "chapter-002",
+          "characters": 25,
+          "excerpt": " CHAPTER II THE SHE-WOLF ",
+          "sha256": "c6a4b3fdec816741a0929c9af8bc4a7b1f3ba9051a4f8a41da293a1979cc7edd"
+        },
+        {
+          "before_chapter": "chapter-003",
+          "characters": 28,
+          "excerpt": " CHAPTER III THE HUNGER CRY ",
+          "sha256": "6ae5669390dbf811f3a203ebe535389dfd62d3cff0b9876471fc7461b8270a88"
+        },
+        {
+          "before_chapter": "chapter-004",
+          "characters": 35,
+          "excerpt": " CHAPTER I THE BATTLE OF THE FANGS ",
+          "sha256": "44e27eae273d87a9f6ff9bec0f3360c14537281458f876026d99d2680d114283"
+        },
+        {
+          "before_chapter": "chapter-005",
+          "characters": 21,
+          "excerpt": " CHAPTER II THE LAIR ",
+          "sha256": "a396057b469d58b1fe5aebfdc6f9a663a05c1f4724115432210d68deadd6c64f"
+        },
+        {
+          "before_chapter": "chapter-006",
+          "characters": 26,
+          "excerpt": " CHAPTER III THE GREY CUB ",
+          "sha256": "25b0e5aaaff2e9907263c33e73c8fe3591abf72a1d46441124a354c52acfa92e"
+        },
+        {
+          "before_chapter": "chapter-007",
+          "characters": 34,
+          "excerpt": " CHAPTER IV THE WALL OF THE WORLD ",
+          "sha256": "bc917611328e41afff89ae4674efbd8fa824836d9445310239936dc1635358e7"
+        },
+        {
+          "before_chapter": "chapter-008",
+          "characters": 27,
+          "excerpt": " CHAPTER V THE LAW OF MEAT ",
+          "sha256": "f973ec5152a717144ce0f4ff6477471743b0bb5bde6ef595ba4e04009cf50a88"
+        },
+        {
+          "before_chapter": "chapter-009",
+          "characters": 30,
+          "excerpt": " CHAPTER I THE MAKERS OF FIRE ",
+          "sha256": "a06de42e13b9d08afd1b46ae29f8a48aaa70736749bce5a32418be89f4f9f735"
+        },
+        {
+          "before_chapter": "chapter-010",
+          "characters": 24,
+          "excerpt": " CHAPTER II THE BONDAGE ",
+          "sha256": "20f4fe0c40b4ede25321d272de8224449fcbd55b3ff360073dede797f03fecb0"
+        },
+        {
+          "before_chapter": "chapter-011",
+          "characters": 25,
+          "excerpt": " CHAPTER III THE OUTCAST ",
+          "sha256": "04ebe0cf4ee44d5085bb75fdb0f7db9e89e3da523330dbd824e21b5966da7052"
+        },
+        {
+          "before_chapter": "chapter-012",
+          "characters": 34,
+          "excerpt": " CHAPTER IV THE TRAIL OF THE GODS ",
+          "sha256": "df03fc13d6f73934bd24bc8b5d7bdb280914477e046679e8e6f120cb9fa48c8b"
+        },
+        {
+          "before_chapter": "chapter-013",
+          "characters": 24,
+          "excerpt": " CHAPTER V THE COVENANT ",
+          "sha256": "91ee3467eb0da142dfe4187bce760c8830df3c4e84aadfd727eab95ecea24c36"
+        },
+        {
+          "before_chapter": "chapter-014",
+          "characters": 23,
+          "excerpt": " CHAPTER VI THE FAMINE ",
+          "sha256": "37147ea0014a5fce527d38bff29459dac7743871288b6054fac50946017c7fa5"
+        },
+        {
+          "before_chapter": "chapter-015",
+          "characters": 33,
+          "excerpt": " CHAPTER I THE ENEMY OF HIS KIND ",
+          "sha256": "b7fca2d51691955fa51d76dfee49070379d9d81227e21855407a4874e6ef6948"
+        },
+        {
+          "before_chapter": "chapter-016",
+          "characters": 24,
+          "excerpt": " CHAPTER II THE MAD GOD ",
+          "sha256": "a4bb2231d494311fdc18446624c34ba57caefd094ad97af0d3762c1bf9458299"
+        },
+        {
+          "before_chapter": "chapter-017",
+          "characters": 31,
+          "excerpt": " CHAPTER III THE REIGN OF HATE ",
+          "sha256": "8dd0a2f1036e193a79b6177f5323120a05ecf94ca40c81d8af28bd0937060a1b"
+        },
+        {
+          "before_chapter": "chapter-018",
+          "characters": 31,
+          "excerpt": " CHAPTER IV THE CLINGING DEATH ",
+          "sha256": "72cae0856a2c556e14f0ec04f4ac95d97c588e7f2ded29382ee73eddca47c9a5"
+        },
+        {
+          "before_chapter": "chapter-019",
+          "characters": 27,
+          "excerpt": " CHAPTER V THE INDOMITABLE ",
+          "sha256": "1efed431656c90da0da5f7510e528a1702b33f43e15db10bba6ffa59b5aee49d"
+        },
+        {
+          "before_chapter": "chapter-020",
+          "characters": 28,
+          "excerpt": " CHAPTER VI THE LOVE-MASTER ",
+          "sha256": "122d4a071b68c2891701bc8515f2e97557ce8d53b6271c34b11faf43d7d76fa9"
+        },
+        {
+          "before_chapter": "chapter-021",
+          "characters": 26,
+          "excerpt": " CHAPTER I THE LONG TRAIL ",
+          "sha256": "77711fd18dba59fc8e0f5ce00acf522e474067a5b2f249fc35bfb8ff2e67b48b"
+        },
+        {
+          "before_chapter": "chapter-022",
+          "characters": 26,
+          "excerpt": " CHAPTER II THE SOUTHLAND ",
+          "sha256": "bd9a49163d86fc74db436bea6b0e101e0b4f65c461d2763f3834269a30241204"
+        },
+        {
+          "before_chapter": "chapter-023",
+          "characters": 30,
+          "excerpt": " CHAPTER III THE GOD’S DOMAIN ",
+          "sha256": "ed0222de85eb20c7c39066a4d4b707e6e50c0f63d5a4b0f5dcb4c8dbf8d6d7c5"
+        },
+        {
+          "before_chapter": "chapter-024",
+          "characters": 29,
+          "excerpt": " CHAPTER IV THE CALL OF KIND ",
+          "sha256": "fc0985c13da754fc9a1b9055e3226b78d2d8696483675c97653cb69235cd1f25"
+        },
+        {
+          "before_chapter": "chapter-025",
+          "characters": 29,
+          "excerpt": " CHAPTER V THE SLEEPING WOLF ",
+          "sha256": "d01b9c6749a52ffb90381576926ec1f684625f4af21a85b8a3542898a0cd88b1"
+        }
+      ],
+      "after_selected_text": " *** END OF THE PROJECT GUTENBERG EBOOK WHITE FANG *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in these works, so t",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    },
+    {
+      "slug": "young-goodman-brown",
+      "chapter_count": 1,
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 280,
+          "excerpt": "overthrown castle in the air, and deluded by all sorts of unrealities, are points that concern themselves much more than the writer or the public. People should think of these matters before they trust themselves on a pleasure-party into the realm of Nowhere. YOUNG GOODMAN BROWN ",
+          "sha256": "41fbab03ddc5c7d408831539e6719a0a1253dc9947558ee77ed1064347625402"
+        }
+      ],
+      "after_selected_text": " RAPPACCINI’S DAUGHTER A young man, named Giovanni Guasconti, came, very long ago, from the more southern region of Italy, to pursue his studies at the University of Padua. Giovanni, who had but a scanty supply of gold ducats in his pocket, took lodgings in a high and gloomy cham",
+      "substantial_internal_gaps": [],
+      "not_a_whole_collection_clearance": true
+    }
+  ]
+}

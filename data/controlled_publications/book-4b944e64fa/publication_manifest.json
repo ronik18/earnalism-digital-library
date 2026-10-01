@@ -3,21 +3,21 @@
   "schema_version": 1,
   "slug": "book-4b944e64fa",
   "title": "একরাত্রি",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-01T21:16:37.084971+00:00",
   "content": {
     "source_hash": "daa29dda065503bfc19385c12779f2cba28f20287a07854e0356d0611f5e1538",
     "content_hash": "ae7e8fcd4e2a8230f767a61992476c887cda3b61b6cf07ddb4eb4b486bfa1820",
     "provenance_hash": "62fa0ae5b9b032d4195d27e4677a7d7ad64e57337432c076d77e8abd8bdd89a4",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "d14cc8aead03be73e80e999ad0dfd25883317be8106363ca9b948b2563618a0c",
+    "chapter_index_sha256": "de6d6090bfe3334a09333c728c1c34f926210dea7030e7941d5252a05b6ca26f",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "একরাত্রি",
-        "word_count": 1785,
-        "sha256": "3c27b0704f285e0396231a1da0b6c53715d4389558e8c43444d4854d56931b64"
+        "word_count": 1762,
+        "sha256": "1dcd8918d197b62f4a033e60574023cc2ee0de9543f7a404235fb4c8577d1317"
       }
     ]
   },
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "245bb841016c0d9d6970dd44c922b69ca233961b4090213f973c75b800d37618"
+    "evidence_sha256": "db72627bc265e4faf67279e70472a52f4b566f2a9cd2e5bb8e7c65e35c13ba40"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -34,7 +34,6 @@
     "cover_url": "",
     "blockers": [
       "Front cover is required.",
-      "Rights: original_publication_year is required.",
       "Rights: verification_status must be approved before publishing."
     ]
   },
@@ -48,10 +47,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "1324a9cb2bd95f104007a2250d921f06a1b5d05319c43c3c1eb3f642c1505c01",
-    "reader_manifest": "47326e8319c87bb767737f87e507b1ff40b4ad9b446dbc90817e43664aa0a9f0",
-    "source_evidence": "245bb841016c0d9d6970dd44c922b69ca233961b4090213f973c75b800d37618",
+    "public_book": "d8f472d0c43c4d3eade8184508d01828d2309cf8dc44d5d83bee51b1cbe6ad5f",
+    "reader_manifest": "b7ce3031863083230ca923a13c6a0a24c4aeaa919ca234bb6f756517a0ee32fb",
+    "source_evidence": "db72627bc265e4faf67279e70472a52f4b566f2a9cd2e5bb8e7c65e35c13ba40",
     "approval_evidence": "21b497e25934f1d434b16584095a4697adc5e44ddefd4a7e568cb5bea429fcc0"
   },
-  "manifest_sha256": "1563663cfcd92b3c3b93089ce276ca3cfa5a2c7de9cf48f929a256d091017736"
+  "manifest_sha256": "c373b3802c16b53c167be9aec88dc7777f924dbe4b9644d3db0df59eaedd9b48"
 }

@@ -1,0 +1,326 @@
+[
+  {
+    "slug": "bn-027",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "bn-059",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "bn-066",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-0986aeb7e3",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-0deb35c750",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-0fbdaa730e",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-1090573dff",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-2ddbed8293",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-2e468c4990",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-4968248842",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-4b944e64fa",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-5461971092",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-5704b31005",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-5aedda79fe",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-63afd5e9be",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-754da4eab8",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-827fdc7aee",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-88ded9b47c",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-95624627d5",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-9a7f771921",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-a23625bf36",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-a4a369483f",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-a74c1a1451",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-ac5a71075e",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-b9d47814a8",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-bfc51280b3",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-c307a57868",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-c7f3ce526c",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-c85323409f",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-d19e96859f",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-d2fe532e1c",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-edfcf810c5",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-ef193ffc52",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-f5d593e1f4",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "book-fbdf2991ab",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  },
+  {
+    "slug": "muchiram-gurer-jibanchorit",
+    "manifest_schema_issues": [],
+    "checksum": "PASS",
+    "reader_status": "BLOCKED",
+    "reader_exposed": false,
+    "audio_exposed": false,
+    "conveyor_exit": 1
+  }
+]

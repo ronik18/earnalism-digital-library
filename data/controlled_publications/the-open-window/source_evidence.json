@@ -9,5 +9,112 @@
   "rights_basis": "Saki died 1916; first published 1911. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.240646+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #269",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/269",
+      "resolved_url": "https://www.gutenberg.org/ebooks/269",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:45.352117+00:00",
+      "response_sha256": "bb6a25392e89f073a1088fa10b62b911aad3d61499cc7284d973ec6fecbe566c"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/269.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/269/pg269.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:50.335414+00:00",
+      "response_sha256": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Saki, 1870-1916"
+      ],
+      "Title": [
+        "Beasts and Super-Beasts"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Beasts_and_Super-Beasts"
+      ],
+      "Contents": [
+        "The she-wolf -- Laura -- The boar-pig -- The Brogue -- The hen -- The open window -- The treasure-ship -- The cobweb -- The lull -- The unkindest blow -- The romancers -- The Schartz-Metterklume method -- The seventh pullet -- The blind spot -- Dusk -- A touch of realism -- Cousin Teresa -- The Yarkand manner -- The Byzantine omelette -- The Feast of Nemesis -- The dreamer -- The quince tree -- The forbidden buzzards -- The stake -- Clovis on parental responsibilities -- A holiday task -- The stalled ox -- The story-teller -- A defensive diamond -- The elk -- Down pens -- The name-day -- The lumber room -- Fur -- The philanthropist and the happy cat -- On approval."
+      ],
+      "Credits": [
+        "Transcribed from the 1914 John Lane, The Bodley Head edition by David Price"
+      ],
+      "Reading Level": [
+        "Reading ease score: 67.8 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Humorous stories",
+        "Supernatural -- Fiction",
+        "Short stories, English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "269"
+      ],
+      "Release Date": [
+        "May 1, 1995"
+      ],
+      "Last Update": [
+        "Dec 26, 2011"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "4783 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 55114,
+          "length": 6810
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "a107f7212542030d90e15e1b7daeeee6dcef9a77ea18887ce009afbf61457078",
+    "legacy_content_sha256": "8a5f82edf94305333080dc160175cb82c865c6acb498216f15616ac90295042d",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1916,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "bb6a25392e89f073a1088fa10b62b911aad3d61499cc7284d973ec6fecbe566c",
+    "url": "https://www.gutenberg.org/ebooks/269",
+    "author_catalog_strings": [
+      "Saki, 1870-1916"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be"
+      }
+    ],
+    "content_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be"
+  }
 }

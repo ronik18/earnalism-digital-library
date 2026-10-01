@@ -1,0 +1,229 @@
+{
+  "checked_at": "2026-10-01T21:02:53.321817+00:00",
+  "profiles": [
+    {
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/company/earnalism-a-reo-enterprise-venture/",
+      "http_status": 200,
+      "final_url": "https://www.linkedin.com/company/earnalism-a-reo-enterprise-venture/",
+      "contains_earnalism": true,
+      "verification": "PROFILE_IDENTITY_VISIBLE_IN_PROVIDER_RESPONSE",
+      "response_sha256": "080d37b78458dd580fc20618af6464b6356a71d5d6c68d5ed15fc18d18b08e44",
+      "page_titles": [
+        "Earnalism | LinkedIn"
+      ]
+    },
+    {
+      "platform": "facebook",
+      "url": "https://www.facebook.com/profile.php?id=61591315384768",
+      "http_status": 200,
+      "final_url": "https://www.facebook.com/people/Earnalism-A-Reo-Enterprise-Venture/61591315384768/",
+      "contains_earnalism": true,
+      "verification": "PROFILE_IDENTITY_VISIBLE_IN_PROVIDER_RESPONSE",
+      "response_sha256": "46cc7b819743cfe675404b12ddb91cdac55c76c193ed3df8db9466dd02177bd5",
+      "page_titles": [
+        "Earnalism - A Reo Enterprise Venture"
+      ]
+    },
+    {
+      "platform": "instagram",
+      "url": "https://www.instagram.com/theearnalism/",
+      "http_status": 200,
+      "final_url": "https://www.instagram.com/theearnalism/",
+      "contains_earnalism": true,
+      "verification": "PROFILE_IDENTITY_VISIBLE_IN_PROVIDER_RESPONSE",
+      "response_sha256": "8955f5385fa1e118f189128cd102cbfe8a2b1857320eb84185880fcd6fffccec",
+      "page_titles": [
+        "Earnalism (&#064;theearnalism) • Instagram photos and videos"
+      ]
+    },
+    {
+      "platform": "x",
+      "url": "https://x.com/earnalism",
+      "http_status": 200,
+      "final_url": "https://x.com/earnalism",
+      "contains_earnalism": true,
+      "verification": "PROFILE_IDENTITY_VISIBLE_IN_PROVIDER_RESPONSE",
+      "response_sha256": "5e0e99239c02f521a8b3108d3c789308d9939975d5d949367673966b323f1d6a",
+      "page_titles": [
+        "Earnalism - A Reo Enterprise Venture (@earnalism) / X"
+      ]
+    },
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/channel/UCw-UnAXdRzqij8_B2TlgQjQ",
+      "http_status": 200,
+      "final_url": "https://www.youtube.com/channel/UCw-UnAXdRzqij8_B2TlgQjQ",
+      "contains_earnalism": true,
+      "verification": "PROFILE_IDENTITY_VISIBLE_IN_PROVIDER_RESPONSE",
+      "response_sha256": "68128b45a1e7c635101c1b3a531c57d88d2c012417719a58f712707a778d57ba",
+      "page_titles": [
+        "Earnalism - A Reo Enterprise Venture - YouTube"
+      ]
+    }
+  ],
+  "scope": "Read-only anonymous GET; no follow/like/share/login action; no social-account ownership inference",
+  "production_settings_social": {
+    "instagram": "",
+    "facebook": "",
+    "youtube": "",
+    "linkedin": "",
+    "twitter": ""
+  },
+  "profile_surfaces": [
+    "all public routes: FooterSocialLinks",
+    "all header mobile menus: Header",
+    "/contact: Contact"
+  ],
+  "share_surfaces": [
+    "/book/:slug: ShareButtons product",
+    "/journal/:slug: ShareButtons article"
+  ],
+  "share_endpoints": [
+    {
+      "platform": "WhatsApp",
+      "template": "https://wa.me/?text=<encoded-title-and-canonical-url>",
+      "kind": "SHARE_INTENT",
+      "validation": "URL_SCHEMA_AND_COMPONENT_TEST; no message sent"
+    },
+    {
+      "platform": "Facebook",
+      "template": "https://www.facebook.com/sharer/sharer.php?u=<canonical-url>",
+      "kind": "SHARE_INTENT",
+      "validation": "URL_SCHEMA_AND_COMPONENT_TEST; no post published"
+    },
+    {
+      "platform": "X",
+      "template": "https://x.com/intent/tweet?url=<canonical-url>&text=<title>",
+      "kind": "SHARE_INTENT",
+      "validation": "URL_SCHEMA_AND_COMPONENT_TEST; no post published",
+      "primary_contract_source": "https://publish.x.com/"
+    },
+    {
+      "platform": "LinkedIn",
+      "template": "https://www.linkedin.com/sharing/share-offsite/?url=<canonical-url>",
+      "kind": "SHARE_INTENT",
+      "validation": "URL_SCHEMA_AND_COMPONENT_TEST; no post published"
+    }
+  ],
+  "email": {
+    "url": "mailto:sales@reoenterprise.org",
+    "validation": "MAILTO_SYNTAX; delivery not tested"
+  },
+  "changes": [
+    "Reject mislabeled/wrong-platform profile overrides and credentials",
+    "Remove query/fragment from canonical public share URLs",
+    "Use X-published intent/tweet endpoint",
+    "One viewport-specific official header logo width across all routes"
+  ],
+  "source_inventory": [
+    {
+      "source": "frontend/src/config/socialLinks.js",
+      "kind": "CANONICAL_PROFILE_URLS",
+      "customer_surfaces": [
+        "shared footer",
+        "header mobile menu",
+        "Contact"
+      ]
+    },
+    {
+      "source": "frontend/src/components/ShareButtons.jsx",
+      "kind": "SHARE_INTENTS",
+      "customer_surfaces": [
+        "BookDetail",
+        "JournalArticle"
+      ]
+    },
+    {
+      "source": "frontend/src/pages/Admin.jsx:1348-1352",
+      "kind": "INTERNAL_ADMIN_INPUT_PLACEHOLDERS_NOT_HYPERLINKS",
+      "note": "Illustrative old handles are input placeholder text, not live customer anchors or profile authority; actual defaults are canonical config."
+    }
+  ],
+  "production_before": {
+    "base_revision": "8be3926fd9fc4526dec66d51b64d8ca72b2d0035",
+    "captures": 18,
+    "routes": [
+      "/",
+      "/library",
+      "/reader/a-ghost-story",
+      "/listener/a-ghost-story",
+      "/contact",
+      "/journal/how-reading-shapes-better-founders"
+    ],
+    "viewports": [
+      1440,
+      1024,
+      390
+    ],
+    "unexpected_customer_mutations_sent": 0,
+    "writes_guarded": 27,
+    "evidence": "/tmp/earnalism-header-social-before/report.json",
+    "note": "Fresh anonymous contexts; blocked telemetry/Reader writes do not constitute delivered mutations.",
+    "observed_social_hrefs": [
+      "https://twitter.com/intent/tweet?url=https%3A%2F%2Ftheearnalism.com%2Fjournal%2Fhow-reading-shapes-better-founders&text=How%20Reading%20Shapes%20Better%20Founders",
+      "https://wa.me/?text=How%20Reading%20Shapes%20Better%20Founders%20https%3A%2F%2Ftheearnalism.com%2Fjournal%2Fhow-reading-shapes-better-founders",
+      "https://www.facebook.com/profile.php?id=61591315384768",
+      "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftheearnalism.com%2Fjournal%2Fhow-reading-shapes-better-founders",
+      "https://www.instagram.com/theearnalism/",
+      "https://www.linkedin.com/company/earnalism-a-reo-enterprise-venture/",
+      "https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftheearnalism.com%2Fjournal%2Fhow-reading-shapes-better-founders",
+      "https://www.youtube.com/channel/UCw-UnAXdRzqij8_B2TlgQjQ",
+      "https://x.com/earnalism"
+    ]
+  },
+  "header_contract": {
+    "asset": "/assets/brand/earnalism-brand-lockup.png",
+    "asset_changed": false,
+    "desktop_width_px": 300,
+    "tablet_width_px": 280,
+    "mobile_390_width_px": 240,
+    "mobile_360_width_px": 224,
+    "header_height_px": {
+      "desktop": 104,
+      "tablet": 96,
+      "mobile": 80
+    },
+    "touch_target_minimum_px": 44
+  },
+  "tests": {
+    "main_focused": {
+      "suites": 8,
+      "passed": 38,
+      "log": "/tmp/earnalism-logo-social-focused.log"
+    },
+    "home_journal_immersive_compatibility": {
+      "suites": 6,
+      "passed": 50,
+      "log": "/tmp/earnalism-logo-social-home-compatibility.log"
+    },
+    "final_contract_recheck": {
+      "suites": 4,
+      "passed": 18,
+      "log": "/tmp/earnalism-logo-social-final-focused.log"
+    }
+  },
+  "local_header_validation": {
+    "result": "PASS",
+    "route_families": 18,
+    "states": 108,
+    "viewports": [
+      1440,
+      1280,
+      1024,
+      768,
+      390,
+      360
+    ],
+    "report": "/tmp/earnalism-logo-social-after-final/summary.json",
+    "contact_sheet": "/tmp/earnalism-logo-social-after-final/header-contact-sheet.html",
+    "isolated_visual_fixtures": true,
+    "production_build_flag_enabled": false,
+    "overflow": false,
+    "uncaught_page_errors": 0,
+    "console_errors": 0,
+    "bad_http_responses": 0,
+    "request_failures": 0,
+    "note": "Workspace validation; final committed exact-head artifact must be regenerated/published by existing owner-review workflow."
+  }
+}

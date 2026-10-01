@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "a-wagner-matinee",
+  "title": "A Wagner Matinee",
+  "generated_at": "2026-10-01T21:08:29.060630+00:00",
+  "content": {
+    "source_hash": "0fcf30f0d708bfe3dbde73b23676faf5cc7ae069dcb76fb23ad3e4cd2b353bb3",
+    "content_hash": "b2f80c6bef9230701b586cb9f75fd159fb9cdddd338aa5dc181f802390ad258a",
+    "provenance_hash": "7387f9fb2c7162dd6ef8b7e5b6b0699a397f5fdfb5ecaa00384efa1ee631acb4",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "e33b9db4391ecbd4212161e1d8bc552e44ce290bae7b34dfd47219ff8680fa02",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "A Wagner Matinee",
+        "word_count": 3319,
+        "sha256": "9cbd9fe333b76136c9d0c55044655605eb03f8658528bad31a6b7bd38ce0adde"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "400df10224e2015e7a4c4b6202d8caa551ba914b7b69065827efe6f7a0d64455"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "3a7886f07fa9895b64c858caa5240c6d935adb8fc9e894cca5503fb06a428a32",
+    "reader_manifest": "10f18cabd6fa99775d81a6b98d6587dda2b81373479048b6749b8efea5940048",
+    "source_evidence": "400df10224e2015e7a4c4b6202d8caa551ba914b7b69065827efe6f7a0d64455",
+    "approval_evidence": "cf8741c7e7c7ef7e2c862c9e63359824b2125f40f15d6c111b16c491add01099"
+  },
+  "manifest_sha256": "dda458ac52ef690666cdf8400fbb55682eeaf6e01cf5c0b064ab513d65eba7e7"
+}

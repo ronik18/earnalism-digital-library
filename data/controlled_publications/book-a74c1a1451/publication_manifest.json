@@ -3,21 +3,21 @@
   "schema_version": 1,
   "slug": "book-a74c1a1451",
   "title": "দালিয়া",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-01T21:16:37.084971+00:00",
   "content": {
     "source_hash": "f5679559b9a30f93368556f83d22f64501d6be7ffab6138c7c889fea22fca731",
     "content_hash": "8cb3e87c1abe91327409b50bd85d7362169277ac440fc7c0cabc7112b6ace2af",
     "provenance_hash": "c75c475c302d85b60accce952a8d6ed70d6715a69bd64bbd223c896a46005616",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "81ca6a14db2d4c9c72082ca4dd63f2d437c80c96713790800df896065b8647b4",
+    "chapter_index_sha256": "3ee18af4c0a5008d330f86971ce95141922a6c3e2736508818e3e408d85156f4",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "Full Text",
-        "word_count": 2214,
-        "sha256": "f3b3c3858814c1559b51317ebb6d99ebde4871b65fbedd44fc1dbb7dc7f8951f"
+        "word_count": 2203,
+        "sha256": "f58dc37b80f787222d00ca5471a8e20346f0ad118e3369fb8d793e3b2c1a7a5e"
       }
     ]
   },
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "af438f97bdba82f19fcf8dd068feb556a837833456c11bfbc7afbb1df4314ca0"
+    "evidence_sha256": "549a28ac10416c78266eb7741b009b503fd1a58cf3e5c7ad46e95e1bade0334d"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,7 +33,6 @@
     "qa_status": "QA_PASSED",
     "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779945878/earnalism/covers/front/cover_7c93ccd6-e997-42c8-b104-6672dbe670b6.png",
     "blockers": [
-      "Rights: original_publication_year is required.",
       "Rights: verification_status must be approved before publishing."
     ]
   },
@@ -47,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "6e605f5f553459560850240980bcba5d2cf41d427fb07c8383309e15e131c33e",
-    "reader_manifest": "7e686cbf7bddb1130bedc68b75ccc7c50cb4ad647acddd00cbc465880231c77e",
-    "source_evidence": "af438f97bdba82f19fcf8dd068feb556a837833456c11bfbc7afbb1df4314ca0",
+    "public_book": "4eabaf7cfb17c156064d9f974b28826b82d3d905419404726dfb2ecd464bc9c7",
+    "reader_manifest": "ff12192bfcff9d3442b2fa566acf8f0a54f571cca8458c1c6d6cf8be9047a76d",
+    "source_evidence": "549a28ac10416c78266eb7741b009b503fd1a58cf3e5c7ad46e95e1bade0334d",
     "approval_evidence": "54cde3566121818f9e2a978e8aa11a0b03af4be13b99915bbfc24beb60da07c5"
   },
-  "manifest_sha256": "b68b23579277548d3c62988695556ab5a76441ad03bdb25285b9be58f216ce76"
+  "manifest_sha256": "68be34b4ef3f4cb463158fe6365614d35869fa15cd8e6061ba8dbe380420a36e"
 }

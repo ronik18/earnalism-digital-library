@@ -3,21 +3,21 @@
   "schema_version": 1,
   "slug": "book-b9d47814a8",
   "title": "নিশীথে",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-01T21:16:37.084971+00:00",
   "content": {
     "source_hash": "6aa5605fb8527c091dc73ddc3ff7f857cd7d3e046e8da03750a9178a82f27b75",
     "content_hash": "ee1ad578c70de41e5726395741bdbd61d5adbb058737b6c6c1feea2feb1484c2",
     "provenance_hash": "5df1f60d195d79ab370b01099d7428775261f3be0631eaadc52490965ca532ba",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "d9375c0d4f8225b350dbb5050ba84f3644861935f8fef2273c8bec427d338166",
+    "chapter_index_sha256": "0a073e89afcd4084364a5bbaa3438d74f17985494e1c354ab593dbf8bea67495",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "নিশীথে",
-        "word_count": 3512,
-        "sha256": "7bbdb0efe241df473e4cff259fc97c75d97dcb1a4f810d99f5227aca86f49e22"
+        "word_count": 3450,
+        "sha256": "a57fc2254642fd19a8e8f04b7e8dc947ec5ef01fd715b6f4f18e1ca1557690ef"
       }
     ]
   },
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "b42b2c24f66e2f8466ebec6eac675aab75fd78f4b90ca3fa243e8b511ac262fa"
+    "evidence_sha256": "345f2b5f2d4a7c612829846a83f8c806026748fd5f4aed4ea5e2ad10bfe2ccc3"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -48,10 +48,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "43e6c78e8fb026d0a0844b6e2bdef89d0fb6fe2d7b57c8945065b0e1892bdbd5",
-    "reader_manifest": "58af12bb67600b30474a5566adf9328200da93fdc4020617a166499dbd7531c7",
-    "source_evidence": "b42b2c24f66e2f8466ebec6eac675aab75fd78f4b90ca3fa243e8b511ac262fa",
+    "public_book": "4e44f51315390611e895e02a1bee87d06bd30fe765eef3806ebf55be9cd51edb",
+    "reader_manifest": "e5eefe59df7fb785f752d82dfb0e83dfe94a840a8db6e959c2876f660e01ac23",
+    "source_evidence": "345f2b5f2d4a7c612829846a83f8c806026748fd5f4aed4ea5e2ad10bfe2ccc3",
     "approval_evidence": "5e036c5196dcbf904e5cd782434ee787e9eb8711a3f10f584bb19298843b1dd0"
   },
-  "manifest_sha256": "94eb5fc1dac613aeac98effd302832d3391962d291e438a66f445c6a78fe2f96"
+  "manifest_sha256": "abfdb4381cb51626d817c342f5db0feb65b5afedff315f323d99ec79ad82f0fb"
 }

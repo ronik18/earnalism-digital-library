@@ -9,5 +9,110 @@
   "rights_basis": "H.G. Wells died 1946; first published 1904. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.326388+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #11870",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/11870",
+      "resolved_url": "https://www.gutenberg.org/ebooks/11870",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:06.530990+00:00",
+      "response_sha256": "d2d96c440f71459b74770f4ca578766ab0a88d18a4fdf004df5b21174ee7bd44"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/11870.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/11870/pg11870.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:12.288469+00:00",
+      "response_sha256": "4f5efdaf578c1b581fd748a5a6dc6d6895490ccc17f5af181171a0d6d6f41114"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Wells, H. G. (Herbert George), 1866-1946"
+      ],
+      "Title": [
+        "The Country of the Blind, and Other Stories"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Country_of_the_Blind_and_Other_Stories"
+      ],
+      "Contents": [
+        "The jilting of Jane -- The cone -- The stolen bacillus -- The flowering of the strange orchid -- In the Avu Observatory -- Aepyornis Island -- The remarkable case of Davidson's eyes -- The Lord of the Dynamos -- The moth -- The treasure in the forest -- The story of the late Mr. Elvesham -- Under the knife -- The sea raiders -- The obliterated man -- The Plattner story -- The red room -- The purple Pileus -- A slip under the microscope -- The crystal egg -- The star -- The man who could work miracles -- A vision of judgment -- Jimmy Goggles the God -- Miss Winchelsea's heart -- A dream of Armageddon -- The valley of spiders -- The new accelerator -- The truth about Pyecraft -- The magic shop -- The empire of the ants -- The door in the wall -- The country of the blind -- The beautiful suit."
+      ],
+      "Credits": [
+        "E-text prepared by Paul Murray, Charles Bidwell, and Project Gutenberg Distributed Proofreaders"
+      ],
+      "Reading Level": [
+        "Reading ease score: 80.1 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Science fiction, English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "11870"
+      ],
+      "Release Date": [
+        "Apr 1, 2004"
+      ],
+      "Last Update": [
+        "Oct 28, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "3212 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 833667,
+          "length": 52322
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "9c3a181e89c3cba35cc6f55c71aff374a2348b64cc26aba3fbb9e999e8a7676c",
+    "legacy_content_sha256": "9733617f1c7378d6d529652708dd58f8f0c6f106b449a5e317464e8b7d7e0095",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1946,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "d2d96c440f71459b74770f4ca578766ab0a88d18a4fdf004df5b21174ee7bd44",
+    "url": "https://www.gutenberg.org/ebooks/11870",
+    "author_catalog_strings": [
+      "Wells, H. G. (Herbert George), 1866-1946"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "a03d0c0fa2909265a3c2fe7026299860ffee3d49c0285d23e34b87eefc155386"
+      }
+    ],
+    "content_sha256": "a03d0c0fa2909265a3c2fe7026299860ffee3d49c0285d23e34b87eefc155386"
+  }
 }

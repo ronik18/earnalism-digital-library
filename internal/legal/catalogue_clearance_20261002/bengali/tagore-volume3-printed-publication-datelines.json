@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "facts": [
+    {
+      "slug": "book-0986aeb7e3",
+      "publication_year": 1914,
+      "printed_publication_dateline": "জ্যৈষ্ঠ ১৩২১",
+      "date_role_evidence": "Volume3publisher expressly states stories1310Paush–1340Kartik arranged bypublicationdate andpublicationdate printedatend",
+      "publisher_record": "internal/legal/catalogue_clearance_20261002/bengali/galpaguchha-volume3-title-publisher-pages.json",
+      "publisher_record_sha256": "0ef432b2e270af6f45d95f3c891817110e5fd76856421e7cd9ba37b5431ff153",
+      "source_comparison_record": "internal/legal/catalogue_clearance_20261002/bengali/book-0986aeb7e3-source-comparison.json",
+      "source_comparison_record_sha256": "0d4b807a802dc2e586b0a6387c992aae4838d9c5c25c9c74cc8d91c66a4a1b0e",
+      "source_rendered_sha256": "3b8378ef4002376061c4a68aa57a4fadbe08faf29ed20d39f3e2458e2ad917a6",
+      "calendar_inference": "Bengaliyear+593 for Jyaishtha/Ashwin/Kartik, Gregorianyearonly, noexactday",
+      "source_edition_copyright_notice": "© Visva-Bharati1969 appears onpublisherpage; scope/editorialrights not silently cleared",
+      "publication_authorized": false
+    },
+    {
+      "slug": "book-827fdc7aee",
+      "publication_year": 1911,
+      "printed_publication_dateline": "আশ্বিন ১৩১৮",
+      "date_role_evidence": "Volume3publisher expressly states stories1310Paush–1340Kartik arranged bypublicationdate andpublicationdate printedatend",
+      "publisher_record": "internal/legal/catalogue_clearance_20261002/bengali/galpaguchha-volume3-title-publisher-pages.json",
+      "publisher_record_sha256": "0ef432b2e270af6f45d95f3c891817110e5fd76856421e7cd9ba37b5431ff153",
+      "source_comparison_record": "internal/legal/catalogue_clearance_20261002/bengali/book-827fdc7aee-source-comparison.json",
+      "source_comparison_record_sha256": "bae2b25eda9290b2a767f0b9b23c8f035889d2878c41d29c9d32050beb4a9a29",
+      "source_rendered_sha256": "d6e66a71ab9879f44d111c4e120b881cf2302df4bb4faa8d31e323bfe9c3ebb4",
+      "calendar_inference": "Bengaliyear+593 for Jyaishtha/Ashwin/Kartik, Gregorianyearonly, noexactday",
+      "source_edition_copyright_notice": "© Visva-Bharati1969 appears onpublisherpage; scope/editorialrights not silently cleared",
+      "publication_authorized": false
+    },
+    {
+      "slug": "bn-027",
+      "publication_year": 1914,
+      "printed_publication_dateline": "কার্তিক ১৩২১",
+      "date_role_evidence": "Volume3publisher expressly states stories1310Paush–1340Kartik arranged bypublicationdate andpublicationdate printedatend",
+      "publisher_record": "internal/legal/catalogue_clearance_20261002/bengali/galpaguchha-volume3-title-publisher-pages.json",
+      "publisher_record_sha256": "0ef432b2e270af6f45d95f3c891817110e5fd76856421e7cd9ba37b5431ff153",
+      "source_comparison_record": "internal/legal/catalogue_clearance_20261002/bengali/bn-027-source-comparison.json",
+      "source_comparison_record_sha256": "9d577fd06a029481eb5418a349a6dbc6d9823e52d0db54171dc80e3bae882345",
+      "source_rendered_sha256": "ba72a4e4ea6ae27848bd8d4d0da2ac1fdd8bc23096ee787bcd8a7afd3fc0b872",
+      "calendar_inference": "Bengaliyear+593 for Jyaishtha/Ashwin/Kartik, Gregorianyearonly, noexactday",
+      "source_edition_copyright_notice": "© Visva-Bharati1969 appears onpublisherpage; scope/editorialrights not silently cleared",
+      "publication_authorized": false
+    }
+  ],
+  "scope": "Verifiedpublicationmetadata only; latereditoriallayer andpublicationauthorization remainheld."
+}

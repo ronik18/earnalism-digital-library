@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-necklace",
+  "title": "The Necklace",
+  "generated_at": "2026-10-01T21:08:33.704143+00:00",
+  "content": {
+    "source_hash": "bc5f461772b5583801472773e623c39ee14a218ae50b87715e24aa14b026549c",
+    "content_hash": "11dd5fc25c6413ce85715a6e09f717af89defd4ee69e13739275588e5d4a152c",
+    "provenance_hash": "647161385ead777380d68a8dd5ab420a248a85641e663ed72e7980d2426ba78d",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "a9b0a6dfb0ab7125c3447b45936fa8d839b808ef2f54ec1c0f1c0bd7d6519102",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Necklace",
+        "word_count": 2847,
+        "sha256": "ff0b4e463d678a5c7161e306db8f8f9da332df67db69d9bc481c84bacc3b1495"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "a434ff5e1e9f034f44ba124e4a0ff2c2f509444f537241b3e4876784e9a8bdfc"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "a17ac9c46b8762c24cc4096a1717ade26a9922913d0dc2fd0fd266a708e184ad",
+    "reader_manifest": "970649ffc577d7b802bc31981bf7215c06e3bc57dbf4d24e7075774233ca0cdb",
+    "source_evidence": "a434ff5e1e9f034f44ba124e4a0ff2c2f509444f537241b3e4876784e9a8bdfc",
+    "approval_evidence": "4298df9ca6de14ddb2f8d09c16eae4be10861cc669446d61c7f42cf80633b955"
+  },
+  "manifest_sha256": "a49517ef53a8ffdd7efbed42914567d25badec17e2b05e2a9491d452bf417681"
+}

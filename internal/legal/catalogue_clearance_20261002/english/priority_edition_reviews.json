@@ -1,0 +1,1288 @@
+{
+  "scope": "AUTOMATED_EDITORIAL_REVIEW_NOT_COVER_OR_RUNTIME_RELEASE",
+  "reviews": [
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "source_receipt_key": "11",
+      "chapter_comparison": {
+        "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+        "status": "ALL_CHAPTERS_MATCH_SOURCE",
+        "matched_chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "offset": 1380,
+            "length": 11330
+          },
+          {
+            "chapter_id": "chapter-002",
+            "offset": 12741,
+            "length": 10869
+          },
+          {
+            "chapter_id": "chapter-003",
+            "offset": 23624,
+            "length": 9136
+          },
+          {
+            "chapter_id": "chapter-004",
+            "offset": 32773,
+            "length": 13829
+          },
+          {
+            "chapter_id": "chapter-005",
+            "offset": 46614,
+            "length": 11766
+          },
+          {
+            "chapter_id": "chapter-006",
+            "offset": 58393,
+            "length": 13729
+          },
+          {
+            "chapter_id": "chapter-007",
+            "offset": 72152,
+            "length": 12546
+          },
+          {
+            "chapter_id": "chapter-008",
+            "offset": 84740,
+            "length": 13557
+          },
+          {
+            "chapter_id": "chapter-009",
+            "offset": 98334,
+            "length": 12502
+          },
+          {
+            "chapter_id": "chapter-010",
+            "offset": 110870,
+            "length": 11264
+          },
+          {
+            "chapter_id": "chapter-011",
+            "offset": 122147,
+            "length": 10291
+          },
+          {
+            "chapter_id": "chapter-012",
+            "offset": 132469,
+            "length": 11501
+          }
+        ],
+        "nonmatching_chapters": [],
+        "complete_edition_proven": false,
+        "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+      },
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 1380,
+          "sha256": "a79871f70e30ad58de259f727fa7248ae0f03dcdb8272bfbae2190565081f755",
+          "excerpt": "CHAPTER VI. Pig and Pepper CHAPTER VII. A Mad Tea-Party CHAPTER VIII. The Queen’s Croquet-Ground CHAPTER IX. The Mock Turtle’s Story CHAPTER X. The Lobster Quadrille CHAPTER XI. Who Stole the Tarts? CHAPTER XII. Alice’s Evidence CHAPTER I. ",
+          "classification": "SOURCE_FRONT_MATTER_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-002",
+          "characters": 31,
+          "sha256": "104c2fb1a5fe24579440ec60c5983eff7cb39bdb61ea4eb7afa5741f61496760",
+          "excerpt": " CHAPTER II. The Pool of Tears ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-003",
+          "characters": 14,
+          "sha256": "cd5f8adc746552a76af9c50bd1da82abbf63b943cc560b2c58d6fa612d8485b6",
+          "excerpt": " CHAPTER III. ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-004",
+          "characters": 13,
+          "sha256": "9aa6c9ccbba830b82018c6f4ad4f4228fbdaf10972086d6266a9fe98be5db132",
+          "excerpt": " CHAPTER IV. ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-005",
+          "characters": 12,
+          "sha256": "30dcd6a6be1f48146ececf524c4d7d040e557e25966ec582902dfb591cd83503",
+          "excerpt": " CHAPTER V. ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-006",
+          "characters": 13,
+          "sha256": "8c780f99e734cd2a82130597bfd0a468b1c0b996ffcff744d355e0431015eb72",
+          "excerpt": " CHAPTER VI. ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-007",
+          "characters": 30,
+          "sha256": "3b7c2fe52e87563e1e7fc922d04dbf8c069a6902df53437817b5a3ea1020dcfb",
+          "excerpt": " CHAPTER VII. A Mad Tea-Party ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-008",
+          "characters": 42,
+          "sha256": "4043e2423ee0e6b88ab63fd61a727d37c959a41c422db949aee888c889516c3e",
+          "excerpt": " CHAPTER VIII. The Queen’s Croquet-Ground ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-009",
+          "characters": 37,
+          "sha256": "5b20d98cff07c1d027447af954d5711b735c6acc2eec37e9485762e6ba65dc84",
+          "excerpt": " CHAPTER IX. The Mock Turtle’s Story ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-010",
+          "characters": 34,
+          "sha256": "8b6895dc4d367fb713d6d57b1351b68fe6fe660ff1114b9b4dec0359a8506171",
+          "excerpt": " CHAPTER X. The Lobster Quadrille ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-011",
+          "characters": 13,
+          "sha256": "28168e88f4e61791a3411029bec5e4f836f482e936f21d0196684538e214c387",
+          "excerpt": " CHAPTER XI. ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-012",
+          "characters": 31,
+          "sha256": "d73eaab285a77e594eb793ed7d31861ed9de474866578cb0b15f924332d1a92e",
+          "excerpt": " CHAPTER XII. Alice’s Evidence ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        }
+      ],
+      "after_last_chapter_excerpt": " *** END OF THE PROJECT GUTENBERG EBOOK ALICE'S ADVENTURES IN WONDERLAND *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means t",
+      "manual_findings": [
+        "All12 narrative bodies exact; interchapter gaps are chapter labels/titles; trailingtext begins PG END marker. Source frontmatter onlyPGnotice,title,TOC,illustrationplaceholder,MillenniumFulcrumEdition3.0. Underlyingfirstpub1865/death1898 verifiedBritishLibrary. Noillustrations imported. Full textual chapter coverage verified for this electronic edition."
+      ]
+    },
+    {
+      "slug": "frankenstein",
+      "source_receipt_key": "84",
+      "chapter_comparison": {
+        "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+        "status": "ALL_CHAPTERS_MATCH_SOURCE",
+        "matched_chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "offset": 1398,
+            "length": 6796
+          },
+          {
+            "chapter_id": "chapter-002",
+            "offset": 8232,
+            "length": 7308
+          },
+          {
+            "chapter_id": "chapter-003",
+            "offset": 15578,
+            "length": 1660
+          },
+          {
+            "chapter_id": "chapter-004",
+            "offset": 17276,
+            "length": 15100
+          },
+          {
+            "chapter_id": "chapter-005",
+            "offset": 32387,
+            "length": 10132
+          },
+          {
+            "chapter_id": "chapter-006",
+            "offset": 42530,
+            "length": 12679
+          },
+          {
+            "chapter_id": "chapter-007",
+            "offset": 55220,
+            "length": 15238
+          },
+          {
+            "chapter_id": "chapter-008",
+            "offset": 70469,
+            "length": 14403
+          },
+          {
+            "chapter_id": "chapter-009",
+            "offset": 84883,
+            "length": 12940
+          },
+          {
+            "chapter_id": "chapter-010",
+            "offset": 97834,
+            "length": 15474
+          },
+          {
+            "chapter_id": "chapter-011",
+            "offset": 113319,
+            "length": 19787
+          },
+          {
+            "chapter_id": "chapter-012",
+            "offset": 133117,
+            "length": 17226
+          },
+          {
+            "chapter_id": "chapter-013",
+            "offset": 150354,
+            "length": 12413
+          },
+          {
+            "chapter_id": "chapter-014",
+            "offset": 162779,
+            "length": 12940
+          },
+          {
+            "chapter_id": "chapter-015",
+            "offset": 175803,
+            "length": 15820
+          },
+          {
+            "chapter_id": "chapter-016",
+            "offset": 191635,
+            "length": 11952
+          },
+          {
+            "chapter_id": "chapter-017",
+            "offset": 203599,
+            "length": 11545
+          },
+          {
+            "chapter_id": "chapter-018",
+            "offset": 215156,
+            "length": 10413
+          },
+          {
+            "chapter_id": "chapter-019",
+            "offset": 225581,
+            "length": 17082
+          },
+          {
+            "chapter_id": "chapter-020",
+            "offset": 242675,
+            "length": 17502
+          },
+          {
+            "chapter_id": "chapter-021",
+            "offset": 260189,
+            "length": 10222
+          },
+          {
+            "chapter_id": "chapter-022",
+            "offset": 270423,
+            "length": 16095
+          },
+          {
+            "chapter_id": "chapter-023",
+            "offset": 286530,
+            "length": 14781
+          },
+          {
+            "chapter_id": "chapter-024",
+            "offset": 301323,
+            "length": 18986
+          },
+          {
+            "chapter_id": "chapter-025",
+            "offset": 320321,
+            "length": 20393
+          },
+          {
+            "chapter_id": "chapter-026",
+            "offset": 340726,
+            "length": 18977
+          },
+          {
+            "chapter_id": "chapter-027",
+            "offset": 359715,
+            "length": 13999
+          },
+          {
+            "chapter_id": "chapter-028",
+            "offset": 373726,
+            "length": 45540
+          }
+        ],
+        "nonmatching_chapters": [],
+        "complete_edition_proven": false,
+        "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+      },
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 1398,
+          "sha256": "6ec1213342079be1d891386fe8a38a8851514741d4b4a06d37b5316c8e1f0562",
+          "excerpt": "apter 6 Chapter 7 Chapter 8 Chapter 9 Chapter 10 Chapter 11 Chapter 12 Chapter 13 Chapter 14 Chapter 15 Chapter 16 Chapter 17 Chapter 18 Chapter 19 Chapter 20 Chapter 21 Chapter 22 Chapter 23 Chapter 24 Letter 1 _To Mrs. Saville, England._ ",
+          "classification": "SOURCE_FRONT_MATTER_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-002",
+          "characters": 38,
+          "sha256": "6b692196aadabb1ecd0fa3c9715b49f75cdffdad0826fee3fc3e8f0d656b8b68",
+          "excerpt": " Letter 2 _To Mrs. Saville, England._ ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-003",
+          "characters": 38,
+          "sha256": "b51456cca70a320ab8b77ec16159e1711f8914d34fc3268c8115079f7e08acc2",
+          "excerpt": " Letter 3 _To Mrs. Saville, England._ ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-004",
+          "characters": 38,
+          "sha256": "6c63998345ee34ae5f9acb16a82b6ebbe30b0d78b855d75964375210f7a79008",
+          "excerpt": " Letter 4 _To Mrs. Saville, England._ ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-005",
+          "characters": 11,
+          "sha256": "1b61782bb8d65034c9e9b95c580a8c3858c18b9ae03830510a5e3bb22ce25751",
+          "excerpt": " Chapter 1 ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-006",
+          "characters": 11,
+          "sha256": "67e5f400db832954fb1af5a57067d5e0c77d9801a28c0d552537d03a861d7f4c",
+          "excerpt": " Chapter 2 ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-007",
+          "characters": 11,
+          "sha256": "67898dc5c5ecc9df76a70c5203b8fd401bee427ef2b968533d13967046c6e5d1",
+          "excerpt": " Chapter 3 ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-008",
+          "characters": 11,
+          "sha256": "36fafc0641c4199a57233b1ea0c4f80c0e861e9518b169c7f450cd78368dd095",
+          "excerpt": " Chapter 4 ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-009",
+          "characters": 11,
+          "sha256": "23e999a0b845f58db301a4e7205351b5e75d9c47b98cbf0f547a2c3202ac7a52",
+          "excerpt": " Chapter 5 ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-010",
+          "characters": 11,
+          "sha256": "832d06ba0bc30187958507c64926d3aca5c1ca5f50999360036c2dc0f1f98bb0",
+          "excerpt": " Chapter 6 ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-011",
+          "characters": 11,
+          "sha256": "a5a9e8eb487fe34356b0278c0b753e8f2a3f81ffc1345fab6e7d77df67cfc22b",
+          "excerpt": " Chapter 7 ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-012",
+          "characters": 11,
+          "sha256": "8b0c8b3101bae614826193ea0f484e5b2541137bddfdfeed336690fd1ebc034b",
+          "excerpt": " Chapter 8 ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-013",
+          "characters": 11,
+          "sha256": "841456624abedc18490e6d98482ecf18d7136bc963389bd90ca981505d43578a",
+          "excerpt": " Chapter 9 ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-014",
+          "characters": 12,
+          "sha256": "3060adc1c7b72cc1b8c431135de3e90a00d35cea9d4180bf91b51d6239ebba30",
+          "excerpt": " Chapter 10 ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-015",
+          "characters": 84,
+          "sha256": "072cf57b10114df524bb6f1a7005040189760a7d72289666a94c1ea5024bf2f9",
+          "excerpt": " Chapter 11 “It is with considerable difficulty that I remember the original era of ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-016",
+          "characters": 12,
+          "sha256": "ffb2fe08d771f65daf383af9e9ac3ff7e0f53eb062ddcfeb7e7a7b5e688d08bc",
+          "excerpt": " Chapter 12 ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-017",
+          "characters": 12,
+          "sha256": "6917c29dabb622be7d974b654a49074ea878b11aadfc34afe1e1eba64782c357",
+          "excerpt": " Chapter 13 ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-018",
+          "characters": 12,
+          "sha256": "e91a48326063fcfad61ab9b5670187c98811f3df02bfdbf720f0f6feb6e8080d",
+          "excerpt": " Chapter 14 ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-019",
+          "characters": 12,
+          "sha256": "f027f7ca4ec4ea5dcfa003d3306f41ecaced16ebc4e04af19bc7da847355a5e3",
+          "excerpt": " Chapter 15 ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-020",
+          "characters": 12,
+          "sha256": "20e436d14926600f3a710b99458c68fe9bf30de927a2b79a1e22d2bd5db613df",
+          "excerpt": " Chapter 16 ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-021",
+          "characters": 12,
+          "sha256": "409272216fa505daa635338e5e71b74d0c096f50a20c79a57da1f2a2be60788f",
+          "excerpt": " Chapter 17 ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-022",
+          "characters": 12,
+          "sha256": "5b5c2416e1b0c8a392ff89999d7b813c671b75734af898e9890cea63396b6516",
+          "excerpt": " Chapter 18 ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-023",
+          "characters": 12,
+          "sha256": "c569f1ec4b7b17bf9ea061a1921be7e13a7b7a790fd599450903b7ed118eb6bc",
+          "excerpt": " Chapter 19 ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-024",
+          "characters": 12,
+          "sha256": "57489cd48b0148487fed945140aa6eaf5182b2ba5d33b985c954dee704635fd0",
+          "excerpt": " Chapter 20 ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-025",
+          "characters": 12,
+          "sha256": "d967bfe9a128017dab268d33bee757b0ae0a6111538de5e4cc240c80dc8005ff",
+          "excerpt": " Chapter 21 ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-026",
+          "characters": 12,
+          "sha256": "305fcbbefd4960f88a0ffdb254606894b94cc15743c697ef5453b3bae2fbd49c",
+          "excerpt": " Chapter 22 ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-027",
+          "characters": 12,
+          "sha256": "2c8fa574e3a3ab1c4096892998bf246e2c7d5ae92ca773cb2633b52d2631b8fd",
+          "excerpt": " Chapter 23 ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-028",
+          "characters": 12,
+          "sha256": "9f089451cd30a8e34c4547065a0fa3303efd2298dc169d85b1b339afe2bfaf99",
+          "excerpt": " Chapter 24 ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        }
+      ],
+      "after_last_chapter_excerpt": " *** END OF THE PROJECT GUTENBERG EBOOK FRANKENSTEIN; OR, THE MODERN PROMETHEUS *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law ",
+      "manual_findings": [
+        "28narrativebodies exact;chapter11 firstnarrative phrase mistakenlyswallowedbymetadata. verified_text_repairs.json records exactrestoration. Do NOT substitute1818/1831differentGutenbergIDs."
+      ]
+    },
+    {
+      "slug": "dracula",
+      "source_receipt_key": "345",
+      "chapter_comparison": {
+        "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+        "status": "ALL_CHAPTERS_MATCH_SOURCE",
+        "matched_chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "offset": 2611,
+            "length": 30625
+          },
+          {
+            "chapter_id": "chapter-002",
+            "offset": 33287,
+            "length": 28490
+          },
+          {
+            "chapter_id": "chapter-003",
+            "offset": 61829,
+            "length": 29816
+          },
+          {
+            "chapter_id": "chapter-004",
+            "offset": 91696,
+            "length": 30315
+          },
+          {
+            "chapter_id": "chapter-005",
+            "offset": 122022,
+            "length": 18088
+          },
+          {
+            "chapter_id": "chapter-006",
+            "offset": 140144,
+            "length": 29300
+          },
+          {
+            "chapter_id": "chapter-007",
+            "offset": 169497,
+            "length": 30130
+          },
+          {
+            "chapter_id": "chapter-008",
+            "offset": 199663,
+            "length": 32752
+          },
+          {
+            "chapter_id": "chapter-009",
+            "offset": 232427,
+            "length": 30306
+          },
+          {
+            "chapter_id": "chapter-010",
+            "offset": 262744,
+            "length": 30820
+          },
+          {
+            "chapter_id": "chapter-011",
+            "offset": 293576,
+            "length": 26970
+          },
+          {
+            "chapter_id": "chapter-012",
+            "offset": 320578,
+            "length": 37915
+          },
+          {
+            "chapter_id": "chapter-013",
+            "offset": 358507,
+            "length": 34222
+          },
+          {
+            "chapter_id": "chapter-014",
+            "offset": 392764,
+            "length": 32646
+          },
+          {
+            "chapter_id": "chapter-015",
+            "offset": 425422,
+            "length": 29779
+          },
+          {
+            "chapter_id": "chapter-016",
+            "offset": 455246,
+            "length": 23895
+          },
+          {
+            "chapter_id": "chapter-017",
+            "offset": 479187,
+            "length": 29108
+          },
+          {
+            "chapter_id": "chapter-018",
+            "offset": 508329,
+            "length": 35952
+          },
+          {
+            "chapter_id": "chapter-019",
+            "offset": 544320,
+            "length": 29460
+          },
+          {
+            "chapter_id": "chapter-020",
+            "offset": 573818,
+            "length": 31232
+          },
+          {
+            "chapter_id": "chapter-021",
+            "offset": 605082,
+            "length": 32215
+          },
+          {
+            "chapter_id": "chapter-022",
+            "offset": 637337,
+            "length": 28108
+          },
+          {
+            "chapter_id": "chapter-023",
+            "offset": 665479,
+            "length": 29542
+          },
+          {
+            "chapter_id": "chapter-024",
+            "offset": 695088,
+            "length": 32095
+          },
+          {
+            "chapter_id": "chapter-025",
+            "offset": 727215,
+            "length": 32651
+          },
+          {
+            "chapter_id": "chapter-026",
+            "offset": 759899,
+            "length": 37179
+          },
+          {
+            "chapter_id": "chapter-027",
+            "offset": 797115,
+            "length": 40706
+          }
+        ],
+        "nonmatching_chapters": [],
+        "complete_edition_proven": false,
+        "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+      },
+      "gaps": [
+        {
+          "before_chapter": "chapter-001",
+          "characters": 2611,
+          "sha256": "d244740c7e5ee69e3f00134c00e87eb0828c0e155a6a764340e5a2ad8f5d6404",
+          "excerpt": "ghout no statement of past things wherein memory may err, for all the records chosen are exactly contemporary, given from the standpoints and within the range of knowledge of those who made them. DRACULA CHAPTER I JONATHAN HARKER’S JOURNAL ",
+          "classification": "SOURCE_FRONT_MATTER_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-002",
+          "characters": 51,
+          "sha256": "7f9a0e99c5e7630a22e35aa4fea4acfae2c21c4179b9ff7e75081bf51e78b50f",
+          "excerpt": " CHAPTER II JONATHAN HARKER’S JOURNAL--_continued_ ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-003",
+          "characters": 52,
+          "sha256": "1a401e1782b9bdafe03f693dc4cc04b4cee03875f18e0acf19c668947d0ee3af",
+          "excerpt": " CHAPTER III JONATHAN HARKER’S JOURNAL--_continued_ ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-004",
+          "characters": 51,
+          "sha256": "9298aeb6c421ff1f371e33fc1eaae39eecda0b396263e41e0c3a201ef9f5cc31",
+          "excerpt": " CHAPTER IV JONATHAN HARKER’S JOURNAL--_continued_ ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-005",
+          "characters": 11,
+          "sha256": "1944005e79538789c221d856717dfdcc1313650c587c2110951153a15bdcdae1",
+          "excerpt": " CHAPTER V ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-006",
+          "characters": 34,
+          "sha256": "883ad26da5bf15662954aefae293ab0bb9a39f57c2cbf21a686b6f3a3c7345f6",
+          "excerpt": " CHAPTER VI MINA MURRAY’S JOURNAL ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-007",
+          "characters": 53,
+          "sha256": "4b07a1f1aae1d9b2fccc53a180f5a6dd0aa347d32cef2c998164aa6ed4558c5d",
+          "excerpt": " CHAPTER VII CUTTING FROM “THE DAILYGRAPH,” 8 AUGUST ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-008",
+          "characters": 36,
+          "sha256": "ca4424d4c345e688035fd7f2dcffc519e34facd90331759660d1daa748a98da3",
+          "excerpt": " CHAPTER VIII MINA MURRAY’S JOURNAL ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-009",
+          "characters": 12,
+          "sha256": "f699debba8e3bc3d544238087c0c6c4343915625797e99599a327853261aee0b",
+          "excerpt": " CHAPTER IX ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-010",
+          "characters": 11,
+          "sha256": "c89ac6465abce3c80f40de98ad740b555b601349708669e9a1a09a632298f594",
+          "excerpt": " CHAPTER X ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-011",
+          "characters": 12,
+          "sha256": "338992240a9cdcf581d872e4f7c01364ba9f44a7a4e948a79e0090b24319cd78",
+          "excerpt": " CHAPTER XI ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-012",
+          "characters": 32,
+          "sha256": "67981cf98de35de60fbe8e0276e299a2a1f63d98d1d33d57ca44b45bfc8f9023",
+          "excerpt": " CHAPTER XII DR. SEWARD’S DIARY ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-013",
+          "characters": 14,
+          "sha256": "c23742677f6ea18f90fcbca2011c00728ecf92cc618ab20706234226971f0a59",
+          "excerpt": " CHAPTER XIII ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-014",
+          "characters": 35,
+          "sha256": "604b9f411e1cebd46034c6f0c661d10af3307ad32db4d698f9944c5315271ed9",
+          "excerpt": " CHAPTER XIV MINA HARKER’S JOURNAL ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-015",
+          "characters": 12,
+          "sha256": "f60026b9ba5e63d1bd9afbe21e1c98c470891fe0cdcdaa30a15f52f64a0318ef",
+          "excerpt": " CHAPTER XV ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-016",
+          "characters": 45,
+          "sha256": "77bf487890e5bd11a97a55dd37f61619c2afb813f73d9646424767b61548f555",
+          "excerpt": " CHAPTER XVI DR. SEWARD’S DIARY--_continued_ ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-017",
+          "characters": 46,
+          "sha256": "49ded2c9fc92f36782ba3a03b607c6672c85744fd4cab1dffdaaba8289092a02",
+          "excerpt": " CHAPTER XVII DR. SEWARD’S DIARY--_continued_ ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-018",
+          "characters": 34,
+          "sha256": "5578c00be0ac44c77ca244f9bbb568fd058ea6f9b4cd8bc557b21fc5b473f7ed",
+          "excerpt": " CHAPTER XVIII DR. SEWARD’S DIARY ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-019",
+          "characters": 39,
+          "sha256": "a76b2088fe8cd5c141ffbf06151937780007fb52cf25d512ee0ba454c0908746",
+          "excerpt": " CHAPTER XIX JONATHAN HARKER’S JOURNAL ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-020",
+          "characters": 38,
+          "sha256": "6bee448bd5bfce79455804e6de0032d5fa504a684b4135704c97ac374a05bf0f",
+          "excerpt": " CHAPTER XX JONATHAN HARKER’S JOURNAL ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-021",
+          "characters": 32,
+          "sha256": "36ac003418b3fa2c231e33940ff39aa466ec839b0d659e14d1ba3b582af041dc",
+          "excerpt": " CHAPTER XXI DR. SEWARD’S DIARY ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-022",
+          "characters": 40,
+          "sha256": "755ccf87bcfb7ca0848e705d58eac75d42f203f73a2ebb531cbec6d4e7572096",
+          "excerpt": " CHAPTER XXII JONATHAN HARKER’S JOURNAL ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-023",
+          "characters": 34,
+          "sha256": "d483af08fa6a61919ecf47b748627fb28ec3e5ee35030961ae96acece0e86a35",
+          "excerpt": " CHAPTER XXIII DR. SEWARD’S DIARY ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-024",
+          "characters": 67,
+          "sha256": "a2469524ff6442ef596b60ded5eb91ba26776fa86a56d6b7200b18525373275e",
+          "excerpt": " CHAPTER XXIV DR. SEWARD’S PHONOGRAPH DIARY, SPOKEN BY VAN HELSING ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-025",
+          "characters": 32,
+          "sha256": "771effb325cce4df2d80c8a158f31525d91101ea57ab662fe057357a26bc1252",
+          "excerpt": " CHAPTER XXV DR. SEWARD’S DIARY ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-026",
+          "characters": 33,
+          "sha256": "34c6dbe4ac1869b40448d61ff2d731b3c3514a45cb21bb6c7676442bea29d4ed",
+          "excerpt": " CHAPTER XXVI DR. SEWARD’S DIARY ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-027",
+          "characters": 37,
+          "sha256": "401adda741a3d3b6109c779cd211e839188ec0627fb1753214396cfe571337eb",
+          "excerpt": " CHAPTER XXVII MINA HARKER’S JOURNAL ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        }
+      ],
+      "after_last_chapter_excerpt": " * * * * * _There’s More to Follow!_ More stories of the sort you like; more, probably, by the author of this one; more than 500 titles all told by writers of world-wide reputation, in the Authors’ Alphabetical List which you will find on t",
+      "manual_findings": [
+        "27bodies exact; prefatory paragraph betweenTOC andchapter1 omitted. Editionpreface mustberestored/boundorintentionalabridgementstated; historical rights451unchanged."
+      ]
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "source_receipt_key": "1342",
+      "chapter_comparison": {
+        "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+        "status": "SOURCE_TEXT_DIFFERS",
+        "matched_chapters": [
+          {
+            "chapter_id": "chapter-002",
+            "offset": 34494,
+            "length": 4281
+          },
+          {
+            "chapter_id": "chapter-008",
+            "offset": 84454,
+            "length": 10950
+          },
+          {
+            "chapter_id": "chapter-009",
+            "offset": 95525,
+            "length": 9733
+          },
+          {
+            "chapter_id": "chapter-011",
+            "offset": 117918,
+            "length": 8916
+          },
+          {
+            "chapter_id": "chapter-012",
+            "offset": 126878,
+            "length": 3924
+          },
+          {
+            "chapter_id": "chapter-013",
+            "offset": 130846,
+            "length": 9277
+          },
+          {
+            "chapter_id": "chapter-015",
+            "offset": 146703,
+            "length": 9780
+          },
+          {
+            "chapter_id": "chapter-017",
+            "offset": 175721,
+            "length": 7264
+          },
+          {
+            "chapter_id": "chapter-019",
+            "offset": 212336,
+            "length": 10650
+          },
+          {
+            "chapter_id": "chapter-024",
+            "offset": 263259,
+            "length": 10803
+          },
+          {
+            "chapter_id": "chapter-026",
+            "offset": 282853,
+            "length": 12748
+          },
+          {
+            "chapter_id": "chapter-027",
+            "offset": 295665,
+            "length": 7203
+          },
+          {
+            "chapter_id": "chapter-028",
+            "offset": 302931,
+            "length": 6415
+          },
+          {
+            "chapter_id": "chapter-029",
+            "offset": 311370,
+            "length": 13647
+          },
+          {
+            "chapter_id": "chapter-031",
+            "offset": 332306,
+            "length": 8721
+          },
+          {
+            "chapter_id": "chapter-033",
+            "offset": 349658,
+            "length": 10348
+          },
+          {
+            "chapter_id": "chapter-034",
+            "offset": 360052,
+            "length": 11982
+          },
+          {
+            "chapter_id": "chapter-035",
+            "offset": 372106,
+            "length": 16977
+          },
+          {
+            "chapter_id": "chapter-039",
+            "offset": 415051,
+            "length": 8769
+          },
+          {
+            "chapter_id": "chapter-042",
+            "offset": 446351,
+            "length": 10618
+          },
+          {
+            "chapter_id": "chapter-043",
+            "offset": 457047,
+            "length": 27444
+          },
+          {
+            "chapter_id": "chapter-047",
+            "offset": 525231,
+            "length": 22287
+          },
+          {
+            "chapter_id": "chapter-050",
+            "offset": 572656,
+            "length": 12467
+          },
+          {
+            "chapter_id": "chapter-051",
+            "offset": 585232,
+            "length": 11203
+          },
+          {
+            "chapter_id": "chapter-052",
+            "offset": 596513,
+            "length": 16537
+          },
+          {
+            "chapter_id": "chapter-053",
+            "offset": 613119,
+            "length": 16049
+          },
+          {
+            "chapter_id": "chapter-055",
+            "offset": 638187,
+            "length": 12945
+          },
+          {
+            "chapter_id": "chapter-057",
+            "offset": 666616,
+            "length": 9394
+          },
+          {
+            "chapter_id": "chapter-058",
+            "offset": 676119,
+            "length": 13632
+          },
+          {
+            "chapter_id": "chapter-059",
+            "offset": 689861,
+            "length": 13517
+          },
+          {
+            "chapter_id": "chapter-060",
+            "offset": 703485,
+            "length": 8686
+          }
+        ],
+        "nonmatching_chapters": [
+          "chapter-001",
+          "chapter-003",
+          "chapter-004",
+          "chapter-005",
+          "chapter-006",
+          "chapter-007",
+          "chapter-010",
+          "chapter-014",
+          "chapter-016",
+          "chapter-018",
+          "chapter-020",
+          "chapter-021",
+          "chapter-022",
+          "chapter-023",
+          "chapter-025",
+          "chapter-030",
+          "chapter-032",
+          "chapter-036",
+          "chapter-037",
+          "chapter-038",
+          "chapter-040",
+          "chapter-041",
+          "chapter-044",
+          "chapter-045",
+          "chapter-046",
+          "chapter-048",
+          "chapter-049",
+          "chapter-054",
+          "chapter-056",
+          "chapter-061"
+        ],
+        "complete_edition_proven": false,
+        "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+      },
+      "gaps": [
+        {
+          "before_chapter": "chapter-002",
+          "characters": 34494,
+          "sha256": "90280afd6d41ceb756a94b3a815052365607feee4dbb567c53f7f546f905f408",
+          "excerpt": "ughters married: its solace was visiting and news. [Illustration: M^{r.} & M^{rs.} Bennet [_Copyright 1894 by George Allen._]] [Illustration: “I hope Mr. Bingley will like it” [_Copyright 1894 by George Allen._]] CHAPTER II. [Illustration] ",
+          "classification": "SOURCE_FRONT_MATTER_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-008",
+          "characters": 45679,
+          "sha256": "364ea6c53d592013d51431877671f540f9b4f4b6f4d94d448e0b0aaf88723b8b",
+          "excerpt": " [Illustration: “I’m the tallest”] [Illustration: “He rode a black horse” ] CHAPTER III. [Illustration] Not all that Mrs. Bennet, however, with the assistance of her five daughters, could ask on the subject, was sufficient to draw from her ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-009",
+          "characters": 121,
+          "sha256": "38bfc1a5b4422b09301d07f85b4b252fa6c903f362fb62232386ec927e64a3ee",
+          "excerpt": " [Illustration: M^{rs} Bennet and her two youngest girls [_Copyright 1894 by George Allen._]] CHAPTER IX. [Illustration] ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-011",
+          "characters": 12660,
+          "sha256": "e52d5efa0d532039c562d5a6975b4f5e88e3369e5b4cfb42d950bb092d7e1ad2",
+          "excerpt": " [Illustration] CHAPTER X. [Illustration] The day passed much as the day before had done. Mrs. Hurst and Miss Bingley had spent some hours of the morning with the invalid, who continued, though slowly, to mend; and, in the evening, Elizabet",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-012",
+          "characters": 44,
+          "sha256": "da89b4636967602244905e0b7971d45ff5afcde34193f863323063add1af555c",
+          "excerpt": " [Illustration] CHAPTER XII. [Illustration] ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-013",
+          "characters": 44,
+          "sha256": "9c6d9755c30de2e9019ac5cb37143993dc40ff1fbc49e902de66e726c46cae7e",
+          "excerpt": " [Illustration] CHAPTER XIII [Illustration] ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-015",
+          "characters": 6580,
+          "sha256": "802ee1ca6bf7f9a7b48d5f6f6e2e4f57e4cf64db79a191540dbcb4e925f9fce5",
+          "excerpt": " [Illustration] CHAPTER XIV [Illustration] During dinner, Mr. Bennet scarcely spoke at all; but when the servants were withdrawn, he thought it time to have some conversation with his guest, and therefore started a subject in which he expec",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-017",
+          "characters": 19238,
+          "sha256": "7ea3ebfd964780f8389106fdcffe6ca3127b808a455b374a7bb435fc351ce5de",
+          "excerpt": " [Illustration] CHAPTER XVI. [Illustration] As no objection was made to the young people’s engagement with their aunt, and all Mr. Collins’s scruples of leaving Mr. and Mrs. Bennet for a single evening during his visit were most steadily re",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-019",
+          "characters": 29351,
+          "sha256": "7b1937fd8b89d438e43fbc8c4ae8e2ba68d76ef972c0aa1ae8d808af33c08c8d",
+          "excerpt": " [Illustration] CHAPTER XVIII. [Illustration] Till Elizabeth entered the drawing-room at Netherfield, and looked in vain for Mr. Wickham among the cluster of red coats there assembled, a doubt of his being present had never occurred to her.",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-024",
+          "characters": 40273,
+          "sha256": "85b1295d401b9d25f65c4ab54503a7be510988566ab1c40d0bea0eae0bdeb2bb",
+          "excerpt": " [Illustration] CHAPTER XX. [Illustration] Mr. Collins was not left long to the silent contemplation of his successful love; for Mrs. Bennet, having dawdled about in the vestibule to watch for the end of the conference, no sooner saw Elizab",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-026",
+          "characters": 8791,
+          "sha256": "ca4f260b0f2fcc437b74b0166031f0bb0a138abda04e8e89f58b7c915829a718",
+          "excerpt": " [Illustration] CHAPTER XXV. [Illustration] After a week spent in professions of love and schemes of felicity, Mr. Collins was called from his amiable Charlotte by the arrival of Saturday. The pain of separation, however, might be alleviate",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-027",
+          "characters": 64,
+          "sha256": "4f113c10de7c4a18fc4906e741ad2a154fdbaaa3c034b98dadf61282dfce727c",
+          "excerpt": " [Illustration: “On the Stairs” ] CHAPTER XXVII. [Illustration] ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-028",
+          "characters": 63,
+          "sha256": "ccfb8ea8fc4ba004c41477891fc348e9baf3c169e623bf362eb7c1e61cd3dad9",
+          "excerpt": " [Illustration: “At the door” ] CHAPTER XXVIII. [Illustration] ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-029",
+          "characters": 2024,
+          "sha256": "db53947e582fb2e72fad219ea0c0b36e57b650eaa56fc82cf4e0194de13078cf",
+          "excerpt": " [Illustration: “In Conversation with the ladies” [Copyright 1894 by George Allen.]] “Oh, my dear Eliza! pray make haste and come into the dining-room, for there is such a sight to be seen! I will not tell you what it is. Make haste, and co",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-031",
+          "characters": 7289,
+          "sha256": "c6ec4848f485ec014c3ef747d49f745499389594114f6cc91ede90f86fa823d7",
+          "excerpt": " [Illustration] CHAPTER XXX. [Illustration] Sir William stayed only a week at Hunsford; but his visit was long enough to convince him of his daughter’s being most comfortably settled, and of her possessing such a husband and such a neighbou",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-033",
+          "characters": 8631,
+          "sha256": "4ef4207dc4def17db2eed94baf81cbce8e5c4e017d765009270d283eb854e8e7",
+          "excerpt": " [Illustration] CHAPTER XXXII. [Illustration] Elizabeth was sitting by herself the next morning, and writing to Jane, while Mrs. Collins and Maria were gone on business into the village, when she was startled by a ring at the door, the cert",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-034",
+          "characters": 46,
+          "sha256": "79cd1cacdd9e3b225bdb38b800384f0ef4f44b935dbc6b08215ac6c75028a440",
+          "excerpt": " [Illustration] CHAPTER XXXIV. [Illustration] ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-035",
+          "characters": 72,
+          "sha256": "9d56e40129f9ed8f2b3f7593aa4c235d4f959b1f1fa3e8a9112c84566d18036b",
+          "excerpt": " [Illustration: “Hearing herself called” ] CHAPTER XXXV. [Illustration] ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-039",
+          "characters": 25968,
+          "sha256": "ea167db930c779461962409ebbe1e2f7cc75992383f1f078ffa597e5950d9fd9",
+          "excerpt": " [Illustration] CHAPTER XXXVI. [Illustration] Elizabeth, when Mr. Darcy gave her the letter, did not expect it to contain a renewal of his offers, she had formed no expectation at all of its contents. But such as they were, it may be well s",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-042",
+          "characters": 22531,
+          "sha256": "5b9ba9ad303851d854ebce2d0ac7761bdbfcc0e55eacb188a8954617ee9e9fed",
+          "excerpt": " [Illustration] CHAPTER XL. [Illustration] Elizabeth’s impatience to acquaint Jane with what had happened could no longer be overcome; and at length resolving to suppress every particular in which her sister was concerned, and preparing her",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-043",
+          "characters": 78,
+          "sha256": "81767d9798472bdd458dde0789c09b1e9dae686ea4656aec109176ab0349a89e",
+          "excerpt": " [Illustration: “Conjecturing as to the date” ] CHAPTER XLIII. [Illustration] ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-047",
+          "characters": 40740,
+          "sha256": "0828bd480ced39d1617e14fed9939c9f07e484af720f8ee3fdc87dfc242bb81c",
+          "excerpt": " [Illustration] CHAPTER XLIV. [Illustration] Elizabeth had settled it that Mr. Darcy would bring his sister to visit her the very day after her reaching Pemberley; and was, consequently, resolved not to be out of sight of the inn the whole ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-050",
+          "characters": 25138,
+          "sha256": "15a0236e7dacfbf53bc0618d778081271e65cd74161524ef5e8b0533aafb2114",
+          "excerpt": " [Illustration: The Post ] CHAPTER XLVIII. [Illustration] The whole party were in hopes of a letter from Mr. Bennet the next morning, but the post came in without bringing a single line from him. His family knew him to be, on all common occ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-051",
+          "characters": 109,
+          "sha256": "9678007be4c179002b101ff107c74245c631cba61545d5cd135a38537759d88a",
+          "excerpt": " [Illustration: “With an affectionate smile” [_Copyright 1894 by George Allen._]] CHAPTER LI. [Illustration] ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-052",
+          "characters": 78,
+          "sha256": "ae2a1ebf915efa90522d257e8305a2cb73e4ee84bf7c70bcbf22521adb8c8ac7",
+          "excerpt": " [Illustration: “I am sure she did not listen.” ] CHAPTER LII. [Illustration] ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-053",
+          "characters": 69,
+          "sha256": "674a055040872230f0c9e6df95e07ca1ac356e17e8a663f4e56e907f0219e4e6",
+          "excerpt": " [Illustration: “Mr. Darcy with him.” ] CHAPTER LIII. [Illustration] ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-055",
+          "characters": 9019,
+          "sha256": "b2f3ed5c4d4dbbbe74ac26da660deb3dfae504cbbe3b452afb9666f46b249913",
+          "excerpt": " [Illustration: “Jane happened to look round” ] CHAPTER LIV. [Illustration] As soon as they were gone, Elizabeth walked out to recover her spirits; or, in other words, to dwell without interruption on those subjects which must deaden them m",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-057",
+          "characters": 15484,
+          "sha256": "683852d976d9f3ca974f8fc60ce80ee0d2dc4ff829723c221ad323dfb95d835e",
+          "excerpt": " [Illustration] CHAPTER LVI. [Illustration] One morning, about a week after Bingley’s engagement with Jane had been formed, as he and the females of the family were sitting together in the dining-room, their attention was suddenly drawn to ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-058",
+          "characters": 109,
+          "sha256": "789f7c68e651d4dfca8586c14cd5aed59ddc28f578620edd7b640bd2c7e7e35f",
+          "excerpt": " [Illustration: “The efforts of his aunt” [_Copyright 1894 by George Allen._]] CHAPTER LVIII. [Illustration] ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-059",
+          "characters": 110,
+          "sha256": "b75af7a225f4c4887676e9aba0be94cfda284c60995e2432f959dda1f7e05438",
+          "excerpt": " [Illustration: “Unable to utter a syllable” [_Copyright 1894 by George Allen._]] CHAPTER LIX. [Illustration] ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        },
+        {
+          "before_chapter": "chapter-060",
+          "characters": 107,
+          "sha256": "9d9b37c2f025739d6f27dec1c512071001c20cbac4e30785e4af1e27f3b32137",
+          "excerpt": " [Illustration: “The obsequious civility.” [_Copyright 1894 by George Allen._]] CHAPTER LX. [Illustration] ",
+          "classification": "METADATA_OR_OMISSION_REQUIRES_REVIEW"
+        }
+      ],
+      "after_last_chapter_excerpt": " [Illustration] CHAPTER LXI. [Illustration] Happy for all her maternal feelings was the day on which Mrs. Bennet got rid of her two most deserving daughters. With what delighted pride she afterwards visited Mrs. Bingley, and talked of Mrs. ",
+      "manual_findings": [
+        "CurrentGutenberg#1342changedSep29,2026 to illustratedtext; sourcehas61chapters butcanonical60. Atleast30bodycomparisons differ. DoNOTapprove currentlegacyidentity; reconstruct/extractexactsourceedition andremoveunlicensed/unusedillustrationlayers."
+      ]
+    }
+  ]
+}

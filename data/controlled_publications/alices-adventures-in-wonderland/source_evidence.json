@@ -1,13 +1,453 @@
 {
   "slug": "alices-adventures-in-wonderland",
   "source_url": "https://www.gutenberg.org/ebooks/11",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #11, Millennium Fulcrum Edition3.0, Carroll narrative, no illustrations",
   "source_license": "Public domain. Project Gutenberg transcription is freely redistributable for any use including commercial.",
-  "source_hash": "49c44704fee971be4aff3b6ebf4764b9aabf0c1f338ca72942216a301205bd8d",
-  "content_hash": "37e99a24d25aea8914744cf4717c7f7540303fa0aff01db75b1143f6fb637447",
-  "provenance_hash": "4e19e7841da7de8d46afb025c7a8365520bcaf525b9c309a766bd7fb755a2c09",
-  "rights_basis": "Author died in 1898. Work published in 1865, well before 1928. Public domain in the U.S. under pre-1928 publication rule and in most jurisdictions under life plus 70 years.",
+  "source_hash": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+  "content_hash": "5629f655398205d45c0b7bba128ada0849d46e5148aa9b6553636f7d4d7e8812",
+  "provenance_hash": "83edea9b276d54e81189bc2db63c16cbaf4d70f84bc948986c64aa20000f1ae5",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1898, original publication 1865; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-05-25T20:09:49.154423+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "author_death_year": 1898,
+  "publication_region": "India",
+  "country_of_origin": "United Kingdom",
+  "verified_at": "2026-10-01T21:19:39.153654+00:00",
+  "verification_status": "approved",
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "original_publication_year": 1865,
+  "source_identity_reconciliation": {
+    "electronic_edition_id": "Project Gutenberg #11",
+    "current_official_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/11.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/11/pg11.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:04.864446+00:00",
+      "response_sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e"
+    },
+    "legacy_source_hash_retained": "49c44704fee971be4aff3b6ebf4764b9aabf0c1f338ca72942216a301205bd8d",
+    "legacy_content_hash_retained": "37e99a24d25aea8914744cf4717c7f7540303fa0aff01db75b1143f6fb637447",
+    "legacy_source_bytes_reproduced": false,
+    "migration_scope": "Current canonical chapter text independently verifies against same electronic Gutenberg ID; historical byte/content identifiers retained, not retroactively claimed reproduced.",
+    "physical_print_edition_not_substituted": true,
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1380,
+          "length": 11330
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 12741,
+          "length": 10869
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 23624,
+          "length": 9136
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 32773,
+          "length": 13829
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 46614,
+          "length": 11766
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 58393,
+          "length": 13729
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 72152,
+          "length": 12546
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 84740,
+          "length": 13557
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 98334,
+          "length": 12502
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 110870,
+          "length": 11264
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 122147,
+          "length": 10291
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 132469,
+          "length": 11501
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "approved_for_publication": false
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 12,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "104b7e3c2477c11fdc4e40b3fb9a12076626f568fb7aaa167f8523c9d102850d"
+      },
+      {
+        "id": "chapter-002",
+        "sha256": "a2fb4e154be7dfd612ecfd52252285cf5b68ef1f0d5f22d9efd05adbf28f8d5e"
+      },
+      {
+        "id": "chapter-003",
+        "sha256": "8abac900f8019473191aa983bc099869e95af3f6337bf741f4f3ad4eb964c785"
+      },
+      {
+        "id": "chapter-004",
+        "sha256": "761d82ed79944f4da40c4d397b38afac3cfc94597a1fdc31807333e6da5b41c2"
+      },
+      {
+        "id": "chapter-005",
+        "sha256": "7e5b6c5ada1474bc92f29a9632c2efa071ce154afe84d213c7f0f6dcc2ca89b3"
+      },
+      {
+        "id": "chapter-006",
+        "sha256": "a55b64a4102259c5fd45c2321cbda43e3b62a09610a468964cd81f572fc340ca"
+      },
+      {
+        "id": "chapter-007",
+        "sha256": "88713e0483ca657522d8f7b15ac9db785eaba44418015a8a1da6a334cf449e38"
+      },
+      {
+        "id": "chapter-008",
+        "sha256": "41dbcdb545ee4e39a2a66c66f0f5763ef7c0a9e7510938afdf3219a1ad7a5d5b"
+      },
+      {
+        "id": "chapter-009",
+        "sha256": "9eb262d5d18b68081aa87e2f2b2f2017d04b70d759ce6efdc31b9606217ba284"
+      },
+      {
+        "id": "chapter-010",
+        "sha256": "c2e46a40d898143de31c82bc7f4c2ad6bc31d1261c613bdfdd0ab643ef7312b8"
+      },
+      {
+        "id": "chapter-011",
+        "sha256": "b5c24d555b38ba5640bfda65ae3788ea728023e8109f0912b50b8862a2946db4"
+      },
+      {
+        "id": "chapter-012",
+        "sha256": "ed41d07cab3b03a857470f3b55f29834d98d8cedafb5eea1ef02b240449727f1"
+      }
+    ],
+    "content_sha256": "5629f655398205d45c0b7bba128ada0849d46e5148aa9b6553636f7d4d7e8812"
+  },
+  "author_and_first_publication_evidence": {
+    "record_path": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json",
+    "record_file_sha256": "a8c4b8b3a116e154c2ac028f048d81b06f0068ddbee5008827bf50693bcd12d9",
+    "gutenberg_author_metadata": [
+      "Carroll, Lewis, 1832-1898"
+    ],
+    "first_publication_record": {
+      "requested_url": "https://searcharchives.bl.uk/catalog/032-002102746",
+      "resolved_url": "https://searcharchives.bl.uk/catalog/032-002102746",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:38.057951+00:00",
+      "response_sha256": "27cd6382fc1206d32cfe307326ccfcb94aa33be94a574635b3644f87aa8c1c12",
+      "original_publication_year": 1865,
+      "author_death_year": 1898,
+      "scope": "WORK_FIRST_PUBLICATION_AND_AUTHOR_FACTS; not Gutenberg physical-edition identity or cover",
+      "context_quote": "published in 1865",
+      "review_status": "VERIFIED_PRIMARY_LIBRARY_RECORD"
+    },
+    "scope": "FACTS_ONLY_NO_COVER_AUDIO_OR_ACCEPTED_PUBLICATION_DECISION"
+  },
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #11",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/11",
+      "resolved_url": "https://www.gutenberg.org/ebooks/11",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:59.732798+00:00",
+      "response_sha256": "838d3e1cbdad6b7b8f10ae8aabfe09a3c2eb472266182c1fbc664116566b1441"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/11.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/11/pg11.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:04.864446+00:00",
+      "response_sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Carroll, Lewis, 1832-1898"
+      ],
+      "Title": [
+        "Alice's Adventures in Wonderland"
+      ],
+      "Alternate Title": [
+        "Alice in Wonderland"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Alice%27s_Adventures_in_Wonderland"
+      ],
+      "Credits": [
+        "Arthur DiBianca and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 87.5 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature",
+        "PZ: Language and Literatures: Juvenile belles lettres"
+      ],
+      "Subject": [
+        "Fantasy fiction",
+        "Children's stories",
+        "Imaginary places -- Juvenile fiction",
+        "Alice (Fictitious character from Carroll) -- Juvenile fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "11"
+      ],
+      "Release Date": [
+        "Jun 27, 2008"
+      ],
+      "Last Update": [
+        "Jun 26, 2025"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "121510 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1380,
+          "length": 11330
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 12741,
+          "length": 10869
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 23624,
+          "length": 9136
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 32773,
+          "length": 13829
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 46614,
+          "length": 11766
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 58393,
+          "length": 13729
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 72152,
+          "length": 12546
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 84740,
+          "length": 13557
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 98334,
+          "length": 12502
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 110870,
+          "length": 11264
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 122147,
+          "length": 10291
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 132469,
+          "length": 11501
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "49c44704fee971be4aff3b6ebf4764b9aabf0c1f338ca72942216a301205bd8d",
+    "legacy_content_sha256": "37e99a24d25aea8914744cf4717c7f7540303fa0aff01db75b1143f6fb637447",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "838d3e1cbdad6b7b8f10ae8aabfe09a3c2eb472266182c1fbc664116566b1441",
+    "url": "https://www.gutenberg.org/ebooks/11",
+    "author_catalog_strings": [
+      "Carroll, Lewis, 1832-1898"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "49c44704fee971be4aff3b6ebf4764b9aabf0c1f338ca72942216a301205bd8d",
+        "content_hash": "37e99a24d25aea8914744cf4717c7f7540303fa0aff01db75b1143f6fb637447",
+        "provenance_hash": "4e19e7841da7de8d46afb025c7a8365520bcaf525b9c309a766bd7fb755a2c09",
+        "source_url": "https://www.gutenberg.org/ebooks/11",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:19:28.686502+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "rights_tier": "A",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/11.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/11/pg11.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:04.864446+00:00",
+      "response_sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 12,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1380,
+          "length": 11330
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 12741,
+          "length": 10869
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 23624,
+          "length": 9136
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 32773,
+          "length": 13829
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 46614,
+          "length": 11766
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 58393,
+          "length": 13729
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 72152,
+          "length": 12546
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 84740,
+          "length": 13557
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 98334,
+          "length": 12502
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 110870,
+          "length": 11264
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 122147,
+          "length": 10291
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 132469,
+          "length": 11501
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "first_publication_evidence": {
+      "error": "HTTP Error 403: Forbidden",
+      "british_library_verification": {
+        "requested_url": "https://searcharchives.bl.uk/catalog/032-002102746",
+        "resolved_url": "https://searcharchives.bl.uk/catalog/032-002102746",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:05:38.057951+00:00",
+        "response_sha256": "27cd6382fc1206d32cfe307326ccfcb94aa33be94a574635b3644f87aa8c1c12",
+        "original_publication_year": 1865,
+        "author_death_year": 1898,
+        "scope": "WORK_FIRST_PUBLICATION_AND_AUTHOR_FACTS; not Gutenberg physical-edition identity or cover",
+        "context_quote": "published in 1865",
+        "review_status": "VERIFIED_PRIMARY_LIBRARY_RECORD"
+      }
+    },
+    "author_death_evidence": [
+      "Carroll, Lewis, 1832-1898"
+    ],
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "NONE_IMPORTED",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  }
 }

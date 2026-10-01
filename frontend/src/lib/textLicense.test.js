@@ -1,0 +1,4 @@
+import { approvedTextLicense } from './textLicense';
+const notice = {schema_version:'earnalism.text-license.v1',slug:'bn-060',license:'CC-BY-SA-4.0',license_url:'https://creativecommons.org/licenses/by-sa/4.0/',attribution:'Contributors',changes:'Formatting',scope:'Transcription only',disclaimer:'No warranties',source_url:'https://bn.wikisource.org/w/index.php?oldid=1971705',contributors_url:'https://bn.wikisource.org/w/index.php?action=history'};
+test('exact runtime notice supports licensed transcription only',()=>expect(approvedTextLicense({slug:'bn-060',text_license:notice})).toEqual(notice));
+test.each([null,{}, {...notice,slug:'other'}, {...notice,source_url:'javascript:alert(1)'}, {...notice,contributors_url:'https://evil.test/'}, {...notice,license:'PD'}, {...notice,changes:''}])('invalid notice remains restricted',n=>expect(approvedTextLicense({slug:'bn-060',text_license:n})).toBeNull());

@@ -44,7 +44,7 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 1549,
+      "word_count": 1538,
       "reading_minutes": 7,
       "language_hint": "ben",
       "processing_status": "ready",
@@ -112,5 +112,6 @@
       2400
     ]
   },
-  "cover_semantic_match_score": 9.8
+  "cover_semantic_match_score": 9.8,
+  "license_notice_sha256": "0096cded0fa318d53b247c12a81ff7387705142f582617ae047d05a03505b1bd"
 }

@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-art-of-money-getting",
   "title": "The Art of Money Getting",
-  "generated_at": "2026-08-10T07:43:55.438742+00:00",
+  "generated_at": "2026-10-01T21:08:31.979128+00:00",
   "content": {
     "source_hash": "0baf572e0ec351e47504ab1d49fb646be164ab6db13d0024cda7567b58dad287",
     "content_hash": "907586f92b4df67b3576f66b89d9c1434bd09200aec7d25926d4fb8253a6761e",
@@ -25,11 +25,11 @@
     "status": "APPROVED",
     "tier": "A",
     "publication_region": "in",
-    "evidence_sha256": "e1b3135f42b112aee673c2acc3b59ec273cc1d5f55eee9cf414d62a4b90d85d7"
+    "evidence_sha256": "d01f157a4a2c7733d95b008b365e4a6710ddc7b6b6e2ddd28fb576e0426b13ee"
   },
   "reader_release": {
-    "status": "APPROVED",
-    "exposed": true,
+    "status": "READY_FOR_APPROVAL",
+    "exposed": false,
     "qa_status": "QA_PASSED",
     "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273638/earnalism/covers/front/the-art-of-money-getting_front_1600x2400.png",
     "blockers": []
@@ -46,8 +46,8 @@
   "artifacts": {
     "public_book": "82191df2abb5e775be78134455a2e3dd7faf72bf4b67ae208ccc870ccf1d0b6f",
     "reader_manifest": "29536b26759f9e967efac4eba42447cb6b17943f9ee99bb797b48bba76e10fec",
-    "source_evidence": "e1b3135f42b112aee673c2acc3b59ec273cc1d5f55eee9cf414d62a4b90d85d7",
+    "source_evidence": "d01f157a4a2c7733d95b008b365e4a6710ddc7b6b6e2ddd28fb576e0426b13ee",
     "approval_evidence": "67b6de67fba80fa95778e9a581d0dd162dd37f79a2f722b6255fdec087b5af6b"
   },
-  "manifest_sha256": "cbe6daec7b99f4caa7e015f657944742daa33f25282d02386f43fe4ba48a2fe4"
+  "manifest_sha256": "8b0b1703254fc79f768eb7786417d99a0a0b8d40671d8569005603aeae42ae57"
 }

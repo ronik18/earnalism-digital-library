@@ -9,5 +9,112 @@
   "rights_basis": "Arthur Conan Doyle died 1930; first published 1903. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.346626+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #108",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/108",
+      "resolved_url": "https://www.gutenberg.org/ebooks/108",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:31.258135+00:00",
+      "response_sha256": "1342352674167fe6b7b9e98aafdea8aba4737944a4a8a88b0856f31c4dc42287"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/108.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/108/pg108.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:36.762132+00:00",
+      "response_sha256": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Doyle, Arthur Conan, 1859-1930"
+      ],
+      "Title": [
+        "The Return of Sherlock Holmes"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Return_of_Sherlock_Holmes"
+      ],
+      "Contents": [
+        "The adventure of the empty house -- The adventure of the Norwood builder -- The adventure of the dancing men -- The adventure of the solitary cyclist -- The adventure of the priory school -- The adventure of Black Peter -- The adventure of Charles Augustus Milverton -- The adventure of the six Napoleons -- The adventure of the three students -- The adventure of the golden pince-nez -- The adventure of the missing three-quarter -- The adventure of the Abbey Grange -- The adventure of the second stain."
+      ],
+      "Credits": [
+        "An Anonymous Volunteer"
+      ],
+      "Reading Level": [
+        "Reading ease score: 81.8 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Holmes, Sherlock (Fictitious character) -- Fiction",
+        "Private investigators -- England -- Fiction",
+        "Detective and mystery stories, English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "108"
+      ],
+      "Release Date": [
+        "Mar 8, 2006"
+      ],
+      "Last Update": [
+        "Apr 25, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "21977 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 98870,
+          "length": 51437
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "f8acdaa228e5ed8f8f5672316f2c6044c44da568fa9398e65a1267456b6a1774",
+    "legacy_content_sha256": "924f60975fb2a9e147ac51b8abba1a0d1bee1efa475de9ece38615ac615fc755",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1930,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "1342352674167fe6b7b9e98aafdea8aba4737944a4a8a88b0856f31c4dc42287",
+    "url": "https://www.gutenberg.org/ebooks/108",
+    "author_catalog_strings": [
+      "Doyle, Arthur Conan, 1859-1930"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "d07a8a9586d4ff3f724556ae02eb4075eb6a4da0d316295ab6db531d173a5dec"
+      }
+    ],
+    "content_sha256": "d07a8a9586d4ff3f724556ae02eb4075eb6a4da0d316295ab6db531d173a5dec"
+  }
 }

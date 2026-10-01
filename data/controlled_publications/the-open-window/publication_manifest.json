@@ -1,0 +1,56 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-open-window",
+  "title": "The Open Window",
+  "generated_at": "2026-10-01T21:08:33.780140+00:00",
+  "content": {
+    "source_hash": "a107f7212542030d90e15e1b7daeeee6dcef9a77ea18887ce009afbf61457078",
+    "content_hash": "8a5f82edf94305333080dc160175cb82c865c6acb498216f15616ac90295042d",
+    "provenance_hash": "21e38f6081034d3d8731db585a96fdf014731375175eae0c279eca43415fe9a4",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "d4fb50d126ba15e873da8742b9203f2154fc7eb16773524bc6a976272ce7a326",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Open Window",
+        "word_count": 1219,
+        "sha256": "d61b486956b8787cc7d40bce6678109cc557949b7af53b91b8f8a04a4595831c"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "30211c29a908d390e90473adb895260efa1be349fd3979165d642ecfe90ce3dd"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png",
+    "blockers": [
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "8cc8c7fcfd2590e0d85ec3228af6cf4d4508ab59b357069884000ff915887b8e",
+    "reader_manifest": "578b4307d3c68ec69fac91bcb795f1c55677ca8a3532aafe5b2472b204e27142",
+    "source_evidence": "30211c29a908d390e90473adb895260efa1be349fd3979165d642ecfe90ce3dd",
+    "approval_evidence": "d2bef9bea76efe3efbfe01aeeea762ee83f7ec2bf82de388b62c2650143a80db"
+  },
+  "manifest_sha256": "830891d712d62259c80a424842fdf2a8b502e78b3ad952c26960b5c2edb14f5b"
+}

@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-withered-arm",
+  "title": "The Withered Arm",
+  "generated_at": "2026-10-01T21:08:34.793967+00:00",
+  "content": {
+    "source_hash": "b9697ff53faa2aa6ace3c91156126068c302e360124aff1633e1cb319a471bc1",
+    "content_hash": "fb42b9f8bea73e8b961a09fee5f4baaffada54127880695f2792456d9ebf7cd2",
+    "provenance_hash": "653acab377c282abd241e7cd35d1d6b93c2300570ea63473d4321c8af5c7164d",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "341ddb46b8d761dc2605ea173c6c6ef221c1ca4cc84c4bfdffcf793ba703d168",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Withered Arm",
+        "word_count": 10749,
+        "sha256": "62cbc49e83294f28b40a873818f1ef0c902775c2c6aecd5739cff6e8bcf1fafe"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "6b99551aee6b55f31be60fedda128974bdb33a199b0e6e0791b09792aa3bae1e"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "9579fb565dede58157ee23cd1851b52caff5942d071804368164dbf61f3dac2f",
+    "reader_manifest": "2fde117267249fb6a98ad38bd548c58a45ce3a371d01ed0196bfefc0c80459c3",
+    "source_evidence": "6b99551aee6b55f31be60fedda128974bdb33a199b0e6e0791b09792aa3bae1e",
+    "approval_evidence": "de34d87038b46268b04e787ba6e0c518e7fcc627df1ebc3f3c8a494455451516"
+  },
+  "manifest_sha256": "e2cbef7cd544ac6e17870c0d25b9bd0aecb45647e33450dd11a33e9f904b4839"
+}

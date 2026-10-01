@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-selfish-giant",
   "title": "The Selfish Giant",
-  "generated_at": "2026-08-16T06:45:34Z",
+  "generated_at": "2026-10-01T21:08:34.409403+00:00",
   "content": {
     "source_hash": "041b7a7d28b42f553ae23277588cee366952c83c2b9108c401a3fa4dd90e76b9",
     "content_hash": "58578923656c4e97b29509721be5a4e4a26e7d9240e464eebb8a0841576fe9f8",
@@ -25,26 +25,19 @@
     "status": "APPROVED",
     "tier": "A",
     "publication_region": "in",
-    "evidence_sha256": "489eb8ea5d0db8e8c55b2586fc8fdfb29b8cfb7c487a814f785187aacef689f4"
+    "evidence_sha256": "ef4430dda34b226aedcdfb55a7f37032c9b9e6b2133f45d60b6ac4d6650d81c1"
   },
   "reader_release": {
-    "status": "APPROVED",
-    "exposed": true,
+    "status": "READY_FOR_APPROVAL",
+    "exposed": false,
     "qa_status": "QA_PASSED",
     "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267898/earnalism/covers/front/the-selfish-giant_front_1600x2400.png",
     "blockers": []
   },
   "audio_release": {
-    "status": "APPROVED",
-    "exposed": true,
-    "required_for_reader_release": false,
-    "qa_status": "QA_PASSED",
-    "audio_sha256": "824944d0c068b4f4f45cb750e018918b2af55c5e043cd29417ce2a756e9a4c67",
-    "candidate_fingerprint": "92a24c3442fe5ad637e72be523f52baded74d0390a256e3b5d5865bdb3f3d96e",
-    "delivery_mode": "SERVER_OWNED_CONVEYOR",
-    "public_endpoint": "/api/reader/book/the-selfish-giant/audiobook",
-    "discovery_exposed": false,
-    "blockers": []
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
   },
   "commerce_release": {
     "status": "NOT_REQUESTED",
@@ -53,8 +46,8 @@
   "artifacts": {
     "public_book": "796c11191413e8b66e606a3846a491f8ab0763855783a118a1d8840270a18ea0",
     "reader_manifest": "aedb9cb50bf14839e2bf32a3c6d267ea24b0ff220fe8334069298f4a96bf6eae",
-    "source_evidence": "489eb8ea5d0db8e8c55b2586fc8fdfb29b8cfb7c487a814f785187aacef689f4",
+    "source_evidence": "ef4430dda34b226aedcdfb55a7f37032c9b9e6b2133f45d60b6ac4d6650d81c1",
     "approval_evidence": "6685cd9a36ebf4a130a445837d594198416c97ed6bcb6f2e565b46270eaa7edb"
   },
-  "manifest_sha256": "947d997515d3ef7434ef2a750e0ef2f6ed1a8e0b5445216ff21e8e8d4570d2d2"
+  "manifest_sha256": "6c31822160ba811033c868d6be09bc7a6f583af6fc9a96afa4b4c1e4afcdfd4f"
 }

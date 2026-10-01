@@ -9,5 +9,114 @@
   "rights_basis": "Arthur Conan Doyle died 1930; first published 1892. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.209535+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #1661",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1661",
+      "resolved_url": "https://www.gutenberg.org/ebooks/1661",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:13.631115+00:00",
+      "response_sha256": "d06aec994dcbdcdca5d88afd44a4982db1b26348a3404ef6c3d749267d17ff31"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1661.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1661/pg1661.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:18.989717+00:00",
+      "response_sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Doyle, Arthur Conan, 1859-1930"
+      ],
+      "Title": [
+        "The Adventures of Sherlock Holmes"
+      ],
+      "Note": [
+        "There is an improved edition of this title, eBook #48320",
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Adventures_of_Sherlock_Holmes",
+        "Also available as audio book: #9551"
+      ],
+      "Contents": [
+        "A scandal in Bohemia -- The Red-headed League -- A case of identity -- The Boscombe Valley mystery -- The five orange pips -- The man with the twisted lip -- The adventure of the blue carbuncle -- The adventure of the speckled band -- The adventure of the engineer's thumb -- The adventure of the noble bachelor -- The adventure of the beryl coronet -- The adventure of the Copper Beeches."
+      ],
+      "Credits": [
+        "an anonymous Project Gutenberg volunteer and Jose Menendez"
+      ],
+      "Reading Level": [
+        "Reading ease score: 80.6 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Holmes, Sherlock (Fictitious character) -- Fiction",
+        "Private investigators -- England -- Fiction",
+        "Detective and mystery stories, English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "1661"
+      ],
+      "Release Date": [
+        "Mar 1, 1999"
+      ],
+      "Last Update": [
+        "Oct 10, 2023"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "96353 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 412710,
+          "length": 43832
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "38eca8ce65749233c926c71ed3ae28a8548cc71aa703b2419bf8363915432a64",
+    "legacy_content_sha256": "911e6f7b701ecab9cc374fa23faffb75d96268af87ce187164c598ba2ad33f17",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1930,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "d06aec994dcbdcdca5d88afd44a4982db1b26348a3404ef6c3d749267d17ff31",
+    "url": "https://www.gutenberg.org/ebooks/1661",
+    "author_catalog_strings": [
+      "Doyle, Arthur Conan, 1859-1930"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "0be7ef437e28cae9f47095541f5d7eb3d06ee9a2abd3b3f4f6db78353eaab804"
+      }
+    ],
+    "content_sha256": "0be7ef437e28cae9f47095541f5d7eb3d06ee9a2abd3b3f4f6db78353eaab804"
+  }
 }

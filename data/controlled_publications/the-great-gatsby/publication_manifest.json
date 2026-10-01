@@ -1,0 +1,112 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-great-gatsby",
+  "title": "The Great Gatsby",
+  "generated_at": "2026-10-01T21:08:32.723452+00:00",
+  "content": {
+    "source_hash": "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35",
+    "content_hash": "4f6579e08ebba7b91e4a92bf134f29c0a79b7c5575125351a20684c4ff8688ec",
+    "provenance_hash": "bfd4a08c6d91bec76bbdb15e9edc73b1b2e7f6a582a87a5f79b6e4c37e9068ab",
+    "sanitized": true,
+    "chapter_count": 9,
+    "chapter_index_sha256": "bde91cdfe1afcc5a06e7ff94dd18e107166aab16926ba3839b2bd0a4d17e4d13",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "I",
+        "word_count": 5943,
+        "sha256": "2705a5ed44d84620d719b5a1e2585bbec8114e5a8933b340a5fcf43538d7543c"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "II",
+        "word_count": 4293,
+        "sha256": "dbf49e3d2422dda121b6faaf76c995f3d40798795fbbec28b10e9d3b050618a0"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "III",
+        "word_count": 5769,
+        "sha256": "8ca61a4e395f910d0f5c5298b42758e2bb41b359af74573e57d610ab3f3ed81d"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "IV",
+        "word_count": 5477,
+        "sha256": "fc4639fc1a2191f13e945817ed2280440d4caff4411cb546a5a8d9665e6dd318"
+      },
+      {
+        "id": "chapter-005",
+        "order": 5,
+        "title": "V",
+        "word_count": 4256,
+        "sha256": "36c5c00da5af92a4975567c56236aa527e0046a873acc99d9b46af069ce67427"
+      },
+      {
+        "id": "chapter-006",
+        "order": 6,
+        "title": "VI",
+        "word_count": 4057,
+        "sha256": "307f1d24f12522902b0bf7552313daf21b496361a86f2bfc806ce2b9b8dd2f24"
+      },
+      {
+        "id": "chapter-007",
+        "order": 7,
+        "title": "VII",
+        "word_count": 8811,
+        "sha256": "6590968adea1aed365517dd192414e1a09906589f39369628287f3ee7da35308"
+      },
+      {
+        "id": "chapter-008",
+        "order": 8,
+        "title": "VIII",
+        "word_count": 4564,
+        "sha256": "8e907745215441bde9ea2f24a6c377586fe9b3459cc82d5c13b01d84a83ae86d"
+      },
+      {
+        "id": "chapter-009",
+        "order": 9,
+        "title": "IX",
+        "word_count": 5255,
+        "sha256": "9641e892fcb1bfefd53e20b4919747b1c6b0b2d4065fdc0877707fcaef077dbf"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "in",
+    "evidence_sha256": "1876a30ae8939a1704190f3cfc5bcc2443f797dc79af65f39ab60edc37149e9a"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "READER_REPAIR_PASSED_COVER_BLOCKED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779565318/earnalism/covers/front/cover_82440320-0910-4dfe-97de-540153139e00.png",
+    "blockers": [
+      "Rights: verification_status must be approved before publishing.",
+      "Reader QA must pass."
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "b6503b1ff504c2b781675a20b32a2811d0005e38fe0d3c4d81e60953671f834a",
+    "reader_manifest": "66ace521d8850547175804562bfddf4f097aefe310ef2f0c50aed16bf50d69b6",
+    "source_evidence": "1876a30ae8939a1704190f3cfc5bcc2443f797dc79af65f39ab60edc37149e9a",
+    "approval_evidence": "ecc44aaa3e95a0449f97f0ba39f1bd349d69ab4a90da8585296a3ca682460cbd"
+  },
+  "manifest_sha256": "e86691cd11c28363a64278918cf3466b53deb355462bcfe6c9ad637724bf6f72"
+}

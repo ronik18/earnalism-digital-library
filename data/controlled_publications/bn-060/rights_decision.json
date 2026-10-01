@@ -1,0 +1,39 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-bn-060-1873-cc-by-sa-text-reader",
+  "edition_id": "bn-060",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "860d1efe328898188179a4257709cecdd2795359160f94865b0cc40682e2da34",
+    "reader_manifest": "5cd2dcbb4cf43cf8d6790d4061d105735b9aa5800c4d8358ecb87a7cc27e028b",
+    "source_evidence": "5ccde9b1660715f5d6585c3d75b52850a56d8621a3eae39808238462e735e707",
+    "approval_evidence": "a027c29480ca2f51b6ce21529aea12128bcbea75530a98be9c130a181c9efce9",
+    "checksum_manifest": "24e1ff7db0842cd69161df9b194fdd722458e0b8f219779e822d41fd81bfdc97",
+    "publication_manifest": "caac365744814c8c372989fdd5c156793653ecd82a33a65bcba8a7d36608566b",
+    "cover_provenance": "72188a640edb64509a7a2b062f56147a93ef5e5c0a06e1d0a1ace787cedcd0b4"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:15:55.650005+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Evidence-verified lifetime 1873 single-author literary edition; author died1894, India Section22 term expired1954. Exact facsimile, all8chaptercomparisons, owner-designed cover byte provenance, and actual CC BY-SA4 delivery implementation are bound. Audio and other editions excluded. Existing Reader access/payment behavior unchanged. Production acceptance registration intentionally deferred until runtime activation validation.",
+  "evidence_sha256": [
+    "bca1950a636f6176b81871802e47a3406d32cab6cb3160059c54fd034a5f0294",
+    "fe977a6dcacd1c930578c32396e67e214aaa41d7a12c5830f7c3dd3e7d17a4ff",
+    "727e2c3014cdb5b7b12452f085e775d944d10fece82c2414b235c0eafacda3dc",
+    "664191f5a7e2d8e6bbccd90d1c8ee947aa70f33b5924c1295d77b46f4114f067",
+    "69d972ddd3fea936806a641d96a6287930b569536c0049eb8ef2f4b61d790065"
+  ],
+  "accepted_by": "Automated executor under the owner’s explicit autonomous text-clearance delegation; no invented human/legal reviewer identity.",
+  "conditions_satisfied": true
+}

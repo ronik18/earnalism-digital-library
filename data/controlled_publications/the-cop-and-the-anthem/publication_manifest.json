@@ -1,0 +1,56 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-cop-and-the-anthem",
+  "title": "The Cop and the Anthem",
+  "generated_at": "2026-10-01T21:08:32.283095+00:00",
+  "content": {
+    "source_hash": "e1e65254ba428e929553edaef131babdf3a2cba3ee18acf61d0c2cd81fa2e45b",
+    "content_hash": "356045c3e1b95de8512621cc5d37d18fd1af247ab68e90c8b5f085734292e153",
+    "provenance_hash": "543d7bc7fba576c2729b91b4ff9ac21c0ffc39f51789ef9b5f453b95a42e0e64",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "1488c35e19835acd676f7e356d33f0ac865b18839d7012cc291ce3d08092411d",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Cop and the Anthem",
+        "word_count": 2306,
+        "sha256": "5efa2347d8668dc8a3d1419cd5c253e70dee82c390e6038d5b59704e5fe857aa"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "2acc48845ea202fb02cc285cb3b8952fadd0b6437fad48a42a66d374999ee205"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275534/earnalism/covers/front/the-cop-and-the-anthem_front_1600x2400.png",
+    "blockers": [
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "8579571f875d23ed1083e99a7a6338aa208baa61af82bb97fedad4a1d43e258f",
+    "reader_manifest": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22",
+    "source_evidence": "2acc48845ea202fb02cc285cb3b8952fadd0b6437fad48a42a66d374999ee205",
+    "approval_evidence": "eba8dc9670d4b046092be624c851a9216c6a682ffab482a7dcf85e9cde3ea713"
+  },
+  "manifest_sha256": "34943c3a34a63a0483d40aade2d25f83924d1d077c5cd83b25be23509e9bc7b0"
+}

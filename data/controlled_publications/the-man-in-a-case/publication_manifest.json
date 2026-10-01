@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-man-in-a-case",
+  "title": "The Man in a Case",
+  "generated_at": "2026-10-01T21:08:33.185542+00:00",
+  "content": {
+    "source_hash": "4a49f5472e5ce0b39d5022c5e2bf23188cd76f58aa6b3344541cb7b2d9e2173a",
+    "content_hash": "bc9e31688c165ba14e19a48e2b2429792f33e93501255d1a81de39072d16baa4",
+    "provenance_hash": "969075fa229f71f1239b1c51fc96f39f4f6b5c4a9a59b1c126762b4758c38089",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "cd8c36230be0825ac2c32379255fb546d7be8e589f6a1d730c76fb08aa52e446",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Man in a Case",
+        "word_count": 5335,
+        "sha256": "90e79541a3067517b762ac7633e792d93ef5324e19728643b66f26e8c467c77d"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "a1c04996d466ba3f8bcf3d2a9626e214f7417a2b6a4ba7f416d68c9d92393126"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "47449d254cdb75729d7343cb4edb2f994b1e01eea54b63b9751109d1017c03db",
+    "reader_manifest": "6c3fea2af3ed7a015e0aba5c93e0d38247ed1411a14555a8b40df9d09d63dbcf",
+    "source_evidence": "a1c04996d466ba3f8bcf3d2a9626e214f7417a2b6a4ba7f416d68c9d92393126",
+    "approval_evidence": "1571c64769f6d9dbe3fc7bde03bf46221af77428ee98e8320c70d4ee3f2b14de"
+  },
+  "manifest_sha256": "31cec6a9154743354071f1a13a177535ad8af7febfc03d7038500b784988c4d8"
+}

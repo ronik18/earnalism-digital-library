@@ -3,21 +3,21 @@
   "schema_version": 1,
   "slug": "book-88ded9b47c",
   "title": "মানভঞ্জন",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-01T21:16:37.084971+00:00",
   "content": {
     "source_hash": "08e48da6bb28ab20a543f422d867bb4c8df3f4ea3c108590144e58aa3be3566b",
     "content_hash": "938feb779bee24998461bf4da3daf77e9823cc429867f64807859a30ef84fb6f",
     "provenance_hash": "02079f8c7a3fcfe9713b44a7e0e706ba9588d426d9ba853112ecb2943de2f7a5",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "f4c65267d31535530162b24774cfcd40bebdccf8d8912cbd6bb7199463a6a746",
+    "chapter_index_sha256": "570524c28ca92a888683bdc7df2f8d1ad00e09f1a2c232e963642ba2e382552d",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "মানভঞ্জন",
-        "word_count": 2915,
-        "sha256": "408c664493d97cea87cade6e3a0bafdb399a3ac6cd5104b8a7f0ef4404dc0448"
+        "word_count": 2842,
+        "sha256": "80e6c3bfc6f1548d2d88bce92f7096b121c5b149817b77ff7a68a6407a6b484e"
       }
     ]
   },
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "4b682db87b5b23b1d6c66bf391b2343d45e8ad1a93fa51716f251bafc8a705c1"
+    "evidence_sha256": "efc1e10cdedc475959c924ff36c651e33f0cc226de157a9c7381e3c8b023b228"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -34,7 +34,6 @@
     "cover_url": "",
     "blockers": [
       "Front cover is required.",
-      "Rights: original_publication_year is required.",
       "Rights: verification_status must be approved before publishing."
     ]
   },
@@ -48,10 +47,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "b035cb8b4a0ac4a36466a7ce847e5f20964b592f08b85ea5e911f5ecf27743a2",
-    "reader_manifest": "2b46faebaca743856469db39c5b8741238fa689dd72ff3764609441fb4175800",
-    "source_evidence": "4b682db87b5b23b1d6c66bf391b2343d45e8ad1a93fa51716f251bafc8a705c1",
+    "public_book": "83eafc31ecb4d2dc023f4b41a3cf549e958fc44d6549fecbe732db228a3dbcb5",
+    "reader_manifest": "59906d63b8129cb9381f14696681296966c2b079e6aa4c5de219c861b5375a11",
+    "source_evidence": "efc1e10cdedc475959c924ff36c651e33f0cc226de157a9c7381e3c8b023b228",
     "approval_evidence": "7ee58470899eb7edcabcbcb9b8d8dd36860a2f735d90a280319f9ef137e5a027"
   },
-  "manifest_sha256": "2cf398d6418f8c1e50ef12cbe09a4f8ea28be1761e707a0e1be412890c8a9dc6"
+  "manifest_sha256": "9eea17fb763d26045e00419a7cd79a4eed8f72c3f76cd2545af2ef09aa670ab3"
 }

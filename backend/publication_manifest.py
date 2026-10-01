@@ -116,6 +116,14 @@ def build_manifest(
         if not path.exists():
             blockers.append(f"Missing {label} artifact.")
 
+    if public_book.get("license_notice_sha256"):
+        try:
+            from licensed_text import public_license_notice
+        except ImportError:
+            from backend.licensed_text import public_license_notice
+        if public_license_notice(artifact_dir) is None:
+            blockers.append("Declared text licence notice must match the exact chapter bytes and attribution contract.")
+
     cover_url = str(public_book.get("cover_image_url") or public_book.get("cover_url") or "").strip()
     if not cover_url:
         blockers.append("Front cover is required.")

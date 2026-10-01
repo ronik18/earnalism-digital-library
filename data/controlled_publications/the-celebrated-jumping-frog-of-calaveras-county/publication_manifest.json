@@ -1,0 +1,58 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+  "title": "The Celebrated Jumping Frog of Calaveras County",
+  "generated_at": "2026-10-01T21:08:32.210537+00:00",
+  "content": {
+    "source_hash": "28b3c1e687145e6bfb8871dfde7c6dc6f55a69b7eae41e0933bca9e08cc6b44a",
+    "content_hash": "5e7e1d54abb8eb87764f4118319ef5c11224381b11b8d3a3b198ce85d016f722",
+    "provenance_hash": "ee9166ef167cd220b4386ad52881dff2c0fabc9149b4f073fd293f815e1d8448",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "10821d9510c8ce50a6a5719c3b167d3ffdbb76c099e38a75ec91b96166d14024",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Celebrated Jumping Frog of Calaveras County",
+        "word_count": 2713,
+        "sha256": "4fc3eaceff01acc74f46418b4a3bb3ed6a893551de665d0ac0b8d85e8db8a868"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "8d9666324188377f3a8e8a41049a5508b18ff0f9a0f1f1c5ee371ccbc07440d3"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: author_death_year is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "c985d0ac8c21f342cb5c8847bb16db5af500f15a95b2ff1f92e811ded6a2f456",
+    "reader_manifest": "0e726b59feff51c9c14a7c44ee54bfbfdf914ccd8bfd23c9857c5b086476c11a",
+    "source_evidence": "8d9666324188377f3a8e8a41049a5508b18ff0f9a0f1f1c5ee371ccbc07440d3",
+    "approval_evidence": "aa84bd813bf3c51d7d0117de83f20c1236f2bac3ed619c23f30ccaa358a772fb"
+  },
+  "manifest_sha256": "e7800e037f4bc6f779ea90d7f4e4380197698e7ad84e0c82e304da886bb3386e"
+}

@@ -9,5 +9,111 @@
   "rights_basis": "Kate Chopin died 1904; first published 1893. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.020126+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #160",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/160",
+      "resolved_url": "https://www.gutenberg.org/ebooks/160",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:38.436945+00:00",
+      "response_sha256": "189fac1b504479dab2bd7daa6467234019c44d696c7a9484ef614d1de0289e90"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/160.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/160/pg160.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:43.540665+00:00",
+      "response_sha256": "31d4577d255806b92c6296419adddd5ca460bdb788743878a09ded1e19f4161a"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Chopin, Kate, 1850-1904"
+      ],
+      "Title": [
+        "The Awakening, and Selected Short Stories"
+      ],
+      "Contents": [
+        "The awakening -- Beyond the Bayou -- Maáme Pélagle -- Désirée's baby -- A respectable woman -- The kiss -- A pair of silk stockings -- The locket -- A reflection."
+      ],
+      "Credits": [
+        "Judith Boss and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 81.6 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Adultery -- Fiction",
+        "Women -- Louisiana -- New Orleans -- Social conditions -- Fiction",
+        "Self-actualization (Psychology) -- Fiction",
+        "New Orleans (La.) -- Fiction",
+        "Louisiana -- Social life and customs -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "160"
+      ],
+      "Release Date": [
+        "Mar 11, 2006"
+      ],
+      "Last Update": [
+        "Sep 2, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "14969 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 309780,
+          "length": 11781
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "2006e24206b918744a8a8a7589e883389759ccd9cbef93ae8ce260d633dab5d9",
+    "legacy_content_sha256": "d08d7e830b28474c5d8ac3595444f376074e1e48ee9c2f8cc774dc8a1a91882a",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1904,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "189fac1b504479dab2bd7daa6467234019c44d696c7a9484ef614d1de0289e90",
+    "url": "https://www.gutenberg.org/ebooks/160",
+    "author_catalog_strings": [
+      "Chopin, Kate, 1850-1904"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98"
+      }
+    ],
+    "content_sha256": "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98"
+  }
 }

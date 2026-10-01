@@ -1,30 +1,10 @@
 {
   "slug": "frankenstein",
-  "generated_at": "2026-07-03T20:07:47Z",
+  "generated_at": "2026-10-01T21:19:39.153654+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "30290d987454b1c9d836db8f2975b4711f2f12456097f251f1c10b6568627bee"
-    },
-    {
-      "file": "checksum_manifest.json",
-      "sha256": "48177ed5012de4839967b5ef582d46cb5244cd7069d87fa51a16d88912aa93d9"
-    },
-    {
-      "file": "highlight_sync.json",
-      "sha256": "437782ecfe58f530722ef84afa21f69c4148bfc5bddb3ed0a0d18dbf3c2b21b2"
-    },
-    {
-      "file": "public_book.json",
-      "sha256": "626e99a769e8b97d3d1c6ce7ec7a317c624bbd68061a38315be9cab26543a541"
-    },
-    {
-      "file": "reader_manifest.json",
-      "sha256": "8d9aaf30b1baf50790bb3eca62c9bfc601d22e325b474104b09c0cf1e16b675d"
-    },
-    {
-      "file": "source_evidence.json",
-      "sha256": "053ee21353bb348aca0e8d360252ed144ce9d7d0659004b292187088e33810c1"
+      "sha256": "2bf3725626a6e7552b4e0ae5142e5814d784de075fd9345adefa017f5f8c0ab4"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -84,7 +64,7 @@
     },
     {
       "file": "chapters/chapter-015.json",
-      "sha256": "9a97f523d717f2505406579341f38b0d92c8c48380f827e8b10ff0515dad63ac"
+      "sha256": "346a60da9f05561af4f9c53a8a264697723ae5e0db808a0e699bf22b744908d1"
     },
     {
       "file": "chapters/chapter-016.json",
@@ -137,6 +117,26 @@
     {
       "file": "chapters/chapter-028.json",
       "sha256": "142f55774d76f902ab1718e383e4f8b0b8c614242b0066e8ea45a34ee913641f"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "437782ecfe58f530722ef84afa21f69c4148bfc5bddb3ed0a0d18dbf3c2b21b2"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "105971ebf3b835311acaf2619767020ee1118136017a735ab47a4448a0b75450"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "2903ac9efd4035e1e993767c53539c463a0fde420188dce1273d20b3c5d01657"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "0a616cf5e248085c7b6733f651cadd469d76287a27d03a7390d7873967023d6e"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "3dd90b4858364fa6ab260065879151145383f0d5015fa33994440077875feb82"
     }
   ]
 }

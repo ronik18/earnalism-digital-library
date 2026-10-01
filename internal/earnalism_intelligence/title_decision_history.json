@@ -7745,5 +7745,20 @@
     "state": "PREPARED_HELD_NOT_AUTHORIZED",
     "excluded_unchanged": "book-2b9853ec52",
     "new_activations": 0
+  },
+  "catalogue_clearance_20261002": {
+    "run": "catalogue-clearance-20261002",
+    "base_sha": "8be3926fd9fc4526dec66d51b64d8ca72b2d0035",
+    "packages_repaired": 122,
+    "local_text_clearances": [
+      "alices-adventures-in-wonderland",
+      "frankenstein",
+      "pride-and-prejudice",
+      "bn-060"
+    ],
+    "covers_deferred": true,
+    "live_authority_changed": false,
+    "audio_changed": false,
+    "evidence": "internal/legal/catalogue_clearance_20261002/README.md"
   }
 }

@@ -9,5 +9,325 @@
   "rights_basis": "Author died 1916. Published 1906. Public domain in U.S. and worldwide.",
   "downloaded_at": "2026-06-02T18:57:29.093079+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #910",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/910",
+      "resolved_url": "https://www.gutenberg.org/ebooks/910",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:59.594858+00:00",
+      "response_sha256": "277a4cb85ff9b16b30e301e8df419728baf7e32b52cba8ce0ac11feed18cd4ee"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/910.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/910/pg910.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:04.926346+00:00",
+      "response_sha256": "3c7226d00fd9b169f0016635d0e461501620f343220ee18db7ca9f083f4ad3f4"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "London, Jack, 1876-1916"
+      ],
+      "Title": [
+        "White Fang"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/White_Fang"
+      ],
+      "Credits": [
+        "Credits: David Price"
+      ],
+      "Reading Level": [
+        "Reading ease score: 81.2 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Wolfdogs -- Fiction",
+        "Adventure stories",
+        "Canada, Northern -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "910"
+      ],
+      "Release Date": [
+        "May 1, 1997"
+      ],
+      "Last Update": [
+        "Aug 4, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "12118 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1570,
+          "length": 13610
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 15205,
+          "length": 18159
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 33392,
+          "length": 20784
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 54211,
+          "length": 19428
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 73660,
+          "length": 16123
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 89809,
+          "length": 10568
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 100411,
+          "length": 21619
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 122057,
+          "length": 10918
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 133005,
+          "length": 21487
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 154516,
+          "length": 16544
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 171085,
+          "length": 9110
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 180229,
+          "length": 10011
+        },
+        {
+          "chapter_id": "chapter-013",
+          "offset": 190264,
+          "length": 16921
+        },
+        {
+          "chapter_id": "chapter-014",
+          "offset": 207208,
+          "length": 17018
+        },
+        {
+          "chapter_id": "chapter-015",
+          "offset": 224259,
+          "length": 19111
+        },
+        {
+          "chapter_id": "chapter-016",
+          "offset": 243394,
+          "length": 16595
+        },
+        {
+          "chapter_id": "chapter-017",
+          "offset": 260020,
+          "length": 10123
+        },
+        {
+          "chapter_id": "chapter-018",
+          "offset": 270174,
+          "length": 21140
+        },
+        {
+          "chapter_id": "chapter-019",
+          "offset": 291341,
+          "length": 9518
+        },
+        {
+          "chapter_id": "chapter-020",
+          "offset": 300887,
+          "length": 26261
+        },
+        {
+          "chapter_id": "chapter-021",
+          "offset": 327174,
+          "length": 8926
+        },
+        {
+          "chapter_id": "chapter-022",
+          "offset": 336126,
+          "length": 12311
+        },
+        {
+          "chapter_id": "chapter-023",
+          "offset": 348467,
+          "length": 20456
+        },
+        {
+          "chapter_id": "chapter-024",
+          "offset": 368952,
+          "length": 11928
+        },
+        {
+          "chapter_id": "chapter-025",
+          "offset": 380909,
+          "length": 16165
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "7cd371dc6727b650321d3b349e3aa042a822d7ece3c24a42ba06fc70322cbd90",
+    "legacy_content_sha256": "fe9e370a06f2c5ee7acf689e3f129da95f648ebacf4de58e7bbea1a25c4bbf2f",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1916,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "277a4cb85ff9b16b30e301e8df419728baf7e32b52cba8ce0ac11feed18cd4ee",
+    "url": "https://www.gutenberg.org/ebooks/910",
+    "author_catalog_strings": [
+      "London, Jack, 1876-1916"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 25,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "3e9ccea0aa78c8d6fe64aefb49a97b24baa27031cb4bc63b805248460b260ef1"
+      },
+      {
+        "id": "chapter-002",
+        "sha256": "e835e4eb425370836537779193135e0cef5e4f62f7fa27d4943b15d9f8d3eaf4"
+      },
+      {
+        "id": "chapter-003",
+        "sha256": "246115f74563d51774bae922d7f145dff9adb90869fb73c12c6ee2e3df7ef366"
+      },
+      {
+        "id": "chapter-004",
+        "sha256": "97fe1b385cbad11e11223bbe1708dfd3e10be82dbdefb3c7c2393d1eee52e828"
+      },
+      {
+        "id": "chapter-005",
+        "sha256": "224a518e3fcd02be251329cb36aeb843ac29378614058db37deb612d8fac3125"
+      },
+      {
+        "id": "chapter-006",
+        "sha256": "cb57a99b86ef490751d068bb0947bc2be2c313c2962e4b784935c5647e65e5d0"
+      },
+      {
+        "id": "chapter-007",
+        "sha256": "d93274887d59a86fa99a498c03e66108f76bdc5a50f456ebd9c6316cf35bccde"
+      },
+      {
+        "id": "chapter-008",
+        "sha256": "dcbd2c0e51ae440fca04d4b6d34247e84cfecd8db8adfb6421fcb843f6a34ab3"
+      },
+      {
+        "id": "chapter-009",
+        "sha256": "90e11d0b21a4906073f2c2f122c5936bc5c2c342a29360e3ad31f75d385e73a4"
+      },
+      {
+        "id": "chapter-010",
+        "sha256": "78079707219c3c4abeb0ffa93c6bee4ee31c9a528382ddb10fab3ffbfe3c208b"
+      },
+      {
+        "id": "chapter-011",
+        "sha256": "4c5b6436ac0788e5dd291e5b401157e7476756c75b6fa368e4488821a497b6b4"
+      },
+      {
+        "id": "chapter-012",
+        "sha256": "7e5ed37f46846371e04ee2ab7dce9e865e0a07a4c4efdceb345a9fd80fe3e0ec"
+      },
+      {
+        "id": "chapter-013",
+        "sha256": "1397f50534dc5c6a835f83d34e24a0f4c13c05c7322e66a55c6cbf68b35f60fc"
+      },
+      {
+        "id": "chapter-014",
+        "sha256": "ddc0aa5724a5c22cfc99d5eb9d42e042b9d566f1d6a042879c9407342fcc7a9e"
+      },
+      {
+        "id": "chapter-015",
+        "sha256": "93ce450649cae46146df946dcc016ffc71b015aef521048650625b566340a74f"
+      },
+      {
+        "id": "chapter-016",
+        "sha256": "97b53929fc6ce30651be83f2043e4da1d5f819d816ba247084b26e9d08d3fe96"
+      },
+      {
+        "id": "chapter-017",
+        "sha256": "cb1c78f63b646b6f180e5a72486d6d0134833e64af7519a9307a4d6b6af64020"
+      },
+      {
+        "id": "chapter-018",
+        "sha256": "6a6534a903ab1d910c3d5292eab3f078a797cf680b72580e129a65599a5eb1e1"
+      },
+      {
+        "id": "chapter-019",
+        "sha256": "2792a8432a203f7303961dc6634566827b491d552a2e4292d8cf0ad2b0c8786b"
+      },
+      {
+        "id": "chapter-020",
+        "sha256": "ce71d1ebbcc79f924ad89574e56da31a8be79fb8397101f477c1677a73fbdcc1"
+      },
+      {
+        "id": "chapter-021",
+        "sha256": "74261d98ddc8201e339bef0ef331914512d35c3f5a9afbc48945e1e73257ddbb"
+      },
+      {
+        "id": "chapter-022",
+        "sha256": "33316867ba63d22f80872ddaee557c64cbd32a0e25dad5b60ab5fcea3d574b37"
+      },
+      {
+        "id": "chapter-023",
+        "sha256": "e8048e316f3ed3ce72574718739a72ba28c6dd0e10639ffa2f2b08e0838402cf"
+      },
+      {
+        "id": "chapter-024",
+        "sha256": "680fd7492bc2b4e27bb7ae43770546c839ce07022b0cf37ac06862dae8e16cfc"
+      },
+      {
+        "id": "chapter-025",
+        "sha256": "4a49b742b87f0f022735cceac5df409400fc0500f3b0f9bd003983ada33d6fcd"
+      }
+    ],
+    "content_sha256": "1cc0fc8e2a082b85ecb6eaaa5932b09d2c554f4ae1df4233903373bbc2025ccd"
+  }
 }

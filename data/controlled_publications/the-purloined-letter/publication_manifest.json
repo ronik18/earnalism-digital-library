@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-purloined-letter",
+  "title": "The Purloined Letter",
+  "generated_at": "2026-10-01T21:08:34.020994+00:00",
+  "content": {
+    "source_hash": "99de013d9419389e884e72a91328bc815ac35158c71aaf703d57b9f0a4de836b",
+    "content_hash": "cd6b9310551df3ad1a0618cff3295671a7b120a29d4e7084b21ac26019fcda82",
+    "provenance_hash": "5c62101e10697153b9580b73f755beb9b87e52472ec5b56742eab750433cc711",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "0a48522d454d5fa0cbb55ebdd43f98a7613187d6d698d6dc77c0a705cab17385",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Purloined Letter",
+        "word_count": 7062,
+        "sha256": "23d67370acaeb2f78188f15d55ef5c4512147b593a17d8c55d071629474bdc95"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "4b4e9c66906d44fadeaada793a5a922760e8c7dc06403ae1552e043ea2a98a24"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "b3a63ad3cb0a48702a5fa94009c2ff4eb9357291bb39bbf820ba72b3a6f22170",
+    "reader_manifest": "ce8cf215f1ae71d760b80329b62a0fe6463d4aabca80bd457c93ffe782f2dd06",
+    "source_evidence": "4b4e9c66906d44fadeaada793a5a922760e8c7dc06403ae1552e043ea2a98a24",
+    "approval_evidence": "12d785fc5c7091756b9ef88ab34c19c8e94e90f29843b108045d97bd0f042ed9"
+  },
+  "manifest_sha256": "873aabdd55a74b48e4f8eea0e7e894776eca2d8f6f6cd89b7a4a3e9a08a81b65"
+}

@@ -1,0 +1,56 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-student",
+  "title": "The Student",
+  "generated_at": "2026-10-01T21:08:34.561167+00:00",
+  "content": {
+    "source_hash": "032a7fa2066e75ee2743f96015af671d54d83c1dcf16aa0e164056ab23b34b27",
+    "content_hash": "5fcd6d4c4bae12a4355d733daa70626c9c4740ba4c8854453a6da5641ff7bf31",
+    "provenance_hash": "50445647f700eb377e6c8f1761347a031cf15bd29da15e2db11ae5a2ea0b2bc2",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "d2fc1730040a28a8674515415a484d91509f8f43396b9b53d0c31457cea1684a",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Student",
+        "word_count": 1498,
+        "sha256": "2831060443c651368848707b46ce1188ba3886dbb946eec86483c322fc643d37"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "deb4ee7847fd3cfebed56a2555a98a5e3bf9301692739a7e72b374b849a39ef5"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267888/earnalism/covers/front/the-student_front_1600x2400.png",
+    "blockers": [
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "aa71e62a5aa8a39a6d7c8945d9d5d45c07e57077ece03823b9d2420a7ddecb47",
+    "reader_manifest": "8fe807a4936a240950d242a8084a8e4e0049b35e85087991e7567d5f10f16812",
+    "source_evidence": "deb4ee7847fd3cfebed56a2555a98a5e3bf9301692739a7e72b374b849a39ef5",
+    "approval_evidence": "4b1aad52062e04aa8c6d87072d16c1379a15800d2f349eadeeef1000ae19b0eb"
+  },
+  "manifest_sha256": "79701963151aadd7b31da0d046cd6e7b7733a223814f0e0c3d65a3b479f3f9a2"
+}

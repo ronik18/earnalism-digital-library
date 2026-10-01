@@ -54,15 +54,26 @@ describe("premium header navigation", () => {
     expect(styles).toContain("min-width: 2.75rem;");
     expect(styles).toContain("height: 3px;");
     expect(styles).toContain("@media (min-width: 1280px)");
-    expect(styles).toContain("--site-header-height: 5.75rem;");
-    expect(styles).toContain("width: clamp(15rem, 18.5vw, 16.75rem);");
+    expect(styles).toContain("--site-header-height: 6.5rem;");
+    expect(styles).toContain("width: var(--header-lockup-width);");
+    expect(styles).toContain("--header-lockup-width: 18.75rem;");
+    expect(styles).toContain("--header-lockup-width: min(15rem, calc(100vw - 8.5rem));");
     expect(styles).toContain("background: var(--brand-lockup-paper, #fff9ee);");
     expect(styles).toContain("font: 600 1rem/1.35 var(--font-ui, Outfit, sans-serif);");
     expect(styles).toContain("min-height: 52px;");
     expect(styles).not.toContain("font-size: clamp(.56rem, .58vw, .66rem) !important;");
     expect(styles).not.toContain("font-size:.78rem !important;");
     expect(styles).not.toContain("--site-header-height: 2.8rem;");
-    expect(globalStyles).toContain("--site-header-height: 4.5rem;");
+    expect(globalStyles).toContain("--site-header-height: 5rem;");
+    expect(globalStyles).toContain("--site-header-height: 6rem;");
+    expect(globalStyles).toContain("--site-header-height: 6.5rem;");
+  });
+
+  test("Home cannot override the shared header sizing and immersive routes reuse Header", () => {
+    const homeStyles = fs.readFileSync(path.join(process.cwd(), "src/pages/HomeOptionB.css"), "utf8");
+    const immersive = fs.readFileSync(path.join(process.cwd(), "src/experiences-v2/shared/ExperienceHeader.jsx"), "utf8");
+    expect(homeStyles).not.toContain("premium-site-header--reference-home");
+    expect(immersive).toContain("<Header onNavigatePath={onNavigatePath}");
   });
 
   test("owner header evidence covers Blog and applies the canonical shell assertions to immersive pages", () => {

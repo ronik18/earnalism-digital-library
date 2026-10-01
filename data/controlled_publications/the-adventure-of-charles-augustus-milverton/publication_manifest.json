@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-charles-augustus-milverton",
+  "title": "The Adventure of Charles Augustus Milverton",
+  "generated_at": "2026-10-01T21:08:30.852426+00:00",
+  "content": {
+    "source_hash": "2821fd715a52eb3293bbe0363ce49b1057b55af7999d59be9ee09548db90fefe",
+    "content_hash": "d1250da3fea3ec9bc6da2e9f9fe8a6b1ad8c8f71f1c1ee6460297071320316da",
+    "provenance_hash": "57dcfcba138fe3d9d3741402100a5cf67aeabf7a3a4c420665891617f7844c70",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "8f0cf4c269199ee48d4f565e75c704351ee0ea2acb62f82aef88a04b1839522d",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of Charles Augustus Milverton",
+        "word_count": 6618,
+        "sha256": "499a4148c37036c7df570ac4894f8c2c4fca0a036c4833feaf185fecb8033163"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "07984f26545bebb4a0160cfc28c9eaab75d442e62f6b33f0f9c24b1a25ce607f"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "8cb87f3346a0d371bcaf9710d2a76c726353b771fe0485fbfc929d46adbc8262",
+    "reader_manifest": "9ea0e2da0296f71732f02c5eaa361012347e1c109038f3eb8924c791993015f4",
+    "source_evidence": "07984f26545bebb4a0160cfc28c9eaab75d442e62f6b33f0f9c24b1a25ce607f",
+    "approval_evidence": "ef6c5eb63aca69920fb6b954718cc7b5101ba109dd5fd08573c303908e5b83cf"
+  },
+  "manifest_sha256": "4e5256ec28682653f5d380e209655bad7017db47f23b999e7c5ec9aa356542c6"
+}

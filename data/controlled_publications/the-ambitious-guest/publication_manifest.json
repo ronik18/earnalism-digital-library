@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-ambitious-guest",
+  "title": "The Ambitious Guest",
+  "generated_at": "2026-10-01T21:08:31.892423+00:00",
+  "content": {
+    "source_hash": "e5575209af8f67db282d16c1adb0e224aacaee4e9abb122ccdbb0a8e60ceaf45",
+    "content_hash": "ec3d20e545a161c6382ab30e8ac0ea73e9c86e2f68dd51e2ebddeb89be9b8d9a",
+    "provenance_hash": "6fe8763590e16b3bb0e993d1556589fc7fbd19c3586132d55e8e84eb1077d0ec",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "9c198f642b7d91e961324255a75f4b806970d095665ed1bceaa0e8c88c81860b",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Ambitious Guest",
+        "word_count": 3285,
+        "sha256": "344fe1a9fac580c744df699ee7f0acbbbc04ac7e130e708b8a3056729e7d881b"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "737907e7532c63e3ef906cd615f74be68f3075a0324b33c1f2028f11292167c6"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "9aa9aff83c8ac5a1967d0c85d45391d2e040f9959300e077bb3381120b718c3e",
+    "reader_manifest": "c187b34b8cd39ce509ff237856cd7d6bdd9274b79789f46759af590b1c78e786",
+    "source_evidence": "737907e7532c63e3ef906cd615f74be68f3075a0324b33c1f2028f11292167c6",
+    "approval_evidence": "db4c1757772f927d4f164c215d46b2f695d9dbd6e573874d8436434a5c482619"
+  },
+  "manifest_sha256": "bd0aaad03f2d4548aa3083c634daab31dd5a9e682bb2afa268c7f16b23750959"
+}

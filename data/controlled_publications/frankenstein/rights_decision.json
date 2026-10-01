@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-frankenstein-pg84-noncover-text",
+  "edition_id": "frankenstein",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "105971ebf3b835311acaf2619767020ee1118136017a735ab47a4448a0b75450",
+    "reader_manifest": "0a616cf5e248085c7b6733f651cadd469d76287a27d03a7390d7873967023d6e",
+    "source_evidence": "3dd90b4858364fa6ab260065879151145383f0d5015fa33994440077875feb82",
+    "approval_evidence": "2bf3725626a6e7552b4e0ae5142e5814d784de075fd9345adefa017f5f8c0ab4",
+    "checksum_manifest": "1c83f2a43f4a4af58e7ccd08c6bac0bcca8d5ffe4808c7e8163d9018e64720ea",
+    "publication_manifest": "2c7bcbb13eb9b0ac70e1bb899a3c121bce42f0148fb4f3c3b70bbf0d4f57fb2a"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:19:39.153654+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1851, original publication 1818; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "2903ac9efd4035e1e993767c53539c463a0fde420188dce1273d20b3c5d01657",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "a8c4b8b3a116e154c2ac028f048d81b06f0068ddbee5008827bf50693bcd12d9",
+    "7810cd483cffcf2cc8a1d8f0d5807931e69d4f48cd14149b8c76f88af82fead3",
+    "53b45539400716c4cca3295c9bffef1f744179cc7e4a56cd5e4f983b1c4f53ef"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

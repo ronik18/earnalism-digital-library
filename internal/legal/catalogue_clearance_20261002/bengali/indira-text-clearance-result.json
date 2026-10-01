@@ -1,0 +1,16 @@
+{
+  "status": "TEXT_CLEARANCE_COMPLETE_RUNTIME_ACTIVATION_HELD",
+  "source_identity": "PASS",
+  "edition_identity": "PASS",
+  "rights": "PASS_IN_TEXT_ONLY",
+  "cover_provenance": "PASS_BOUND_OWNER_ASSETS",
+  "publication_authorization": "PASS_EDITION_BOUND_OWNER_DELEGATION",
+  "license_delivery": "IMPLEMENTED_TESTED",
+  "reader_manifest": "READY_FOR_APPROVAL",
+  "reader_exposed": false,
+  "registered_in_production_rights_registry": false,
+  "live_allowlist_changed": false,
+  "audio_exposed": false,
+  "canonical_rights_decision_sha256": "ef13c99abc9682321e1f8f9ee3e6822a2657993d46828d144fb0e0300a1d4267",
+  "runtime_blocker": "Inactive canonical Reading Pass segments must be prepared/promoted through the existing authorized admin workflow and runtime validated before controlled launch. No production customer/data writes performed."
+}

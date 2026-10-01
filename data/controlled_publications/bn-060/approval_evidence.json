@@ -1,10 +1,10 @@
 {
   "slug": "bn-060",
-  "approved_to_publish": false,
+  "approved_to_publish": true,
   "rights_tier": "A",
-  "verification_status": "pending",
+  "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "sprint1_evidence_reconciliation_hold",
+  "approval_scope": "OWNER_DELEGATED_AUTOMATED_IN_EDITION_BOUND_TEXT_READER_ONLY",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_BLOCKED_QA_REQUIRED",
   "allowCheckout": false,
   "allowPayment": false,
@@ -17,9 +17,13 @@
     "approval_scope": "historical_admin_import_reconstruction",
     "verified_at": null
   },
-  "hold_reason": "Title-level source/text and/or license/asset evidence is incomplete; see data/title_rights_evidence/bengali-bankim-cohort-1.json. This is a fail-closed package state, not a new rights acceptance decision.",
   "audio_qa_status": "",
   "endpoint_url": "",
   "provider": "",
-  "version": ""
+  "version": "",
+  "verified_at": "2026-10-01T21:15:55.650005+00:00",
+  "source_hash": "664191f5a7e2d8e6bbccd90d1c8ee947aa70f33b5924c1295d77b46f4114f067",
+  "content_hash": "69d972ddd3fea936806a641d96a6287930b569536c0049eb8ef2f4b61d790065",
+  "provenance_hash": "4b74464474f354b0fd452628b3dfbacdd814b9c95c5e891c1c9499c97772742d",
+  "publication_authorization_sha256": "fe977a6dcacd1c930578c32396e67e214aaa41d7a12c5830f7c3dd3e7d17a4ff"
 }

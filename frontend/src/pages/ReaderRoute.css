@@ -194,10 +194,10 @@
 }
 
 @media print {
-  body * {
+  body:not(:has([data-licensed-text="true"])) * {
     display: none !important;
   }
-  body::after {
+  body:not(:has([data-licensed-text="true"]))::after {
     content: "This content is protected. © Earnalism — Unauthorized reproduction is prohibited.";
     display: block;
     font-size: 20px;
@@ -418,8 +418,8 @@
 .wallet-low { animation: walletPulse 1s ease-in-out infinite; }
 
 @media print {
-  body * { display: none !important; }
-  body::after {
+  body:not(:has([data-licensed-text="true"])) * { display: none !important; }
+  body:not(:has([data-licensed-text="true"]))::after {
     content: "This content is protected. © Earnalism — Unauthorized reproduction is prohibited.";
     display: block;
     font-size: 20px;
@@ -620,7 +620,7 @@
 }
 
 @media print {
-  .secure-reader__content {
+  .secure-reader:not(.secure-reader--licensed-text) .secure-reader__content {
     display: none !important;
   }
 }
@@ -2116,3 +2116,7 @@
   height: auto;
   -webkit-user-drag: none;
 }
+
+/* Licence-specific delivery: no change to other titles or access gates. */
+.secure-reader--licensed-text, .secure-reader--licensed-text .secure-reader__content, .secure-reader--licensed-text .secure-reader__content .reader-canvas { user-select: text; -webkit-user-select: text; -moz-user-select: text; }
+@media print { [data-licensed-text="true"] .secure-reader__watermark { display: none; } }

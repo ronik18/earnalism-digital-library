@@ -9,5 +9,112 @@
   "rights_basis": "Guy de Maupassant died 1893; first published 1880. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.017008+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #3077",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/3077",
+      "resolved_url": "https://www.gutenberg.org/ebooks/3077",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:40.228735+00:00",
+      "response_sha256": "c6fbae1d1ee91321520051d7481310dde0c21e1409196abb5221b5061a067053"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/3077.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/3077/pg3077.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:45.242161+00:00",
+      "response_sha256": "73ab0a4fcb4dc62fc39ee7876d6e9a1fc0ae3c9443cdd2732b970bfd18c803bc"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Maupassant, Guy de, 1850-1893"
+      ],
+      "Translator": [
+        "Henderson, A. E.",
+        "McMaster, Albert Cohn",
+        "Quesada, Louise Charlotte Garstin, 1864?-"
+      ],
+      "Title": [
+        "Original Short Stories — Volume 01"
+      ],
+      "Contents": [
+        "Boule de Suif --Two friends -- The lancer's wife -- The prisoners -- Two little soldiers -- Father Milon -- A coup d'tat -- Lieutenant Lare's marriage --The horrible --Madame Parisse --Mademoiselle Fifi -- A duel."
+      ],
+      "Credits": [
+        "Produced by David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 77.5 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PQ: Language and Literatures: Romance literatures: French, Italian, Spanish, Portuguese"
+      ],
+      "Subject": [
+        "Short stories, French -- Translations into English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "3077"
+      ],
+      "Release Date": [
+        "Oct 3, 2004"
+      ],
+      "Last Update": [
+        "Jan 8, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1208 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 16488,
+          "length": 83413
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "17c514dce10d194bfbb13b4d9196eafd3a3ae310b38180de42d3a5693bddd0a7",
+    "legacy_content_sha256": "54085892457bf65ed5f9394fb722eee54f71123d9622b0b40f1ec45ad76707d5",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1893,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "c6fbae1d1ee91321520051d7481310dde0c21e1409196abb5221b5061a067053",
+    "url": "https://www.gutenberg.org/ebooks/3077",
+    "author_catalog_strings": [
+      "Maupassant, Guy de, 1850-1893"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "cb001dd5a0ddd4e2fae9483736ff69e4145ae05d25b2d50d42217300b45edd85"
+      }
+    ],
+    "content_sha256": "cb001dd5a0ddd4e2fae9483736ff69e4145ae05d25b2d50d42217300b45edd85"
+  }
 }

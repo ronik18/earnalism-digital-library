@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "rip-van-winkle",
+  "title": "Rip Van Winkle",
+  "generated_at": "2026-10-01T21:08:30.711958+00:00",
+  "content": {
+    "source_hash": "2498820aafa64ce1ba7fe577338b4e4f680aa95ed1cf5944ad61ca9e4a255c66",
+    "content_hash": "879951dca445b3fb065612687474f9eff66c80ef0abec75958c3666a6498f02b",
+    "provenance_hash": "e07b6c4fccb9b68c35366f1794098a99f881384baca70c7f61d05eb7abe2fffa",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "87e32690a858c70ba9977712194e7f7e47c45c8b7953cd8529bfac9d20cc0b44",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Rip Van Winkle",
+        "word_count": 6906,
+        "sha256": "358cc805ffccb137fe11c57a14efcb614e27bba1d7eb0cf303d8b34f840b3323"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "2078f71a89ca6ffeefdcb1a23f0b40378e48d601b869c048ccc35c3ceb55be83"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "122416a181376f001800dcb193e58c142a3ac04a66ba201ef42c96dccd3be7f7",
+    "reader_manifest": "1fb6f6e6ff512ca21fa0b4458765ecf1e0711cc4e952bfade003f3079dbdae87",
+    "source_evidence": "2078f71a89ca6ffeefdcb1a23f0b40378e48d601b869c048ccc35c3ceb55be83",
+    "approval_evidence": "0a72c93746942e3342969beda4951653de11bfcd9eaa7da27c9420f78c362541"
+  },
+  "manifest_sha256": "70961fca1da2a4f323009b1ba63e20949f1d6d467c9b72a6a540cb1ba4a32d1a"
+}

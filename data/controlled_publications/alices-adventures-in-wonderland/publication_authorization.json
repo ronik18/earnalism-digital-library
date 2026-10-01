@@ -1,0 +1,40 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "alices-adventures-in-wonderland",
+  "edition": "Project Gutenberg #11, Millennium Fulcrum Edition3.0, Carroll narrative, no illustrations",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_ONLY_NON_COVER_COMPONENTS",
+  "source_sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+  "content_sha256": "5629f655398205d45c0b7bba128ada0849d46e5148aa9b6553636f7d4d7e8812",
+  "chapter_sha256": {
+    "chapter-001": "104b7e3c2477c11fdc4e40b3fb9a12076626f568fb7aaa167f8523c9d102850d",
+    "chapter-002": "a2fb4e154be7dfd612ecfd52252285cf5b68ef1f0d5f22d9efd05adbf28f8d5e",
+    "chapter-003": "8abac900f8019473191aa983bc099869e95af3f6337bf741f4f3ad4eb964c785",
+    "chapter-004": "761d82ed79944f4da40c4d397b38afac3cfc94597a1fdc31807333e6da5b41c2",
+    "chapter-005": "7e5b6c5ada1474bc92f29a9632c2efa071ce154afe84d213c7f0f6dcc2ca89b3",
+    "chapter-006": "a55b64a4102259c5fd45c2321cbda43e3b62a09610a468964cd81f572fc340ca",
+    "chapter-007": "88713e0483ca657522d8f7b15ac9db785eaba44418015a8a1da6a334cf449e38",
+    "chapter-008": "41dbcdb545ee4e39a2a66c66f0f5763ef7c0a9e7510938afdf3219a1ad7a5d5b",
+    "chapter-009": "9eb262d5d18b68081aa87e2f2b2f2017d04b70d759ce6efdc31b9606217ba284",
+    "chapter-010": "c2e46a40d898143de31c82bc7f4c2ad6bc31d1261c613bdfdd0ab643ef7312b8",
+    "chapter-011": "b5c24d555b38ba5640bfda65ae3788ea728023e8109f0912b50b8862a2946db4",
+    "chapter-012": "ed41d07cab3b03a857470f3b55f29834d98d8cedafb5eea1ef02b240449727f1"
+  },
+  "cover_provenance_sha256": null,
+  "cover_status": "DEFERRED_BY_OWNER_REQUEST_NO_COVER_DISPLAY_AUTHORIZED",
+  "authorized_by": "Automated executor under owner explicit autonomous clearance delegation; not a fabricated human or legal signature.",
+  "verified_at": "2026-10-01T21:19:39.153654+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Cover clearance/binding, trusted production registry acceptance, canonical controlled-live allowlist, actual runtime Reader readiness and protected gates must separately pass.",
+  "not_authorized": [
+    "cover_display",
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-beryl-coronet",
+  "title": "The Adventure of the Beryl Coronet",
+  "generated_at": "2026-10-01T21:08:31.004955+00:00",
+  "content": {
+    "source_hash": "3838f62e17d9f75f271b8857446972cf633b14049e3fde5a8963e88d89e37ffc",
+    "content_hash": "430c6724b01d315313ae2fd20b3ef7947d876e4d8a29a523873980e3c787f94b",
+    "provenance_hash": "cb48b0d389499bb7b0e7d5ef5387c4c473e8e07ec2f3ebb91d8b5f6a87ac43fb",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "5892496d7c0c1e910e4040e9132cb48fe6410e21d5149c164e18a87b1da596a1",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Beryl Coronet",
+        "word_count": 9714,
+        "sha256": "c8402c2184dc96144ae1f1bf258487f2a929a805ba3eb9d4f32a216619699739"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "ac5143f73ecd5c35c6cb7319ff6860d66ed2a1e8d6b30dcfb959a94238f3b961"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "c8676f61f1d249819e65861dda1efa9681a216d9786530e15d2ae82a1bc07d03",
+    "reader_manifest": "5eb31b7e5c734b2207b4601445f9ca81702b2793122ac3aff5485499a28f2121",
+    "source_evidence": "ac5143f73ecd5c35c6cb7319ff6860d66ed2a1e8d6b30dcfb959a94238f3b961",
+    "approval_evidence": "87e01391cafe9aca36d53104b7736aa01fea4e37429da1622d5c80cacb191d26"
+  },
+  "manifest_sha256": "360fc9b7a1369096e423e8e838f5f25a882bba238d26a15ae06f36a0bf3a7499"
+}

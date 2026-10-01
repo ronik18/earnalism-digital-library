@@ -1,0 +1,190 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "my-life-and-work",
+  "title": "My Life and Work",
+  "generated_at": "2026-10-01T21:08:30.312087+00:00",
+  "content": {
+    "source_hash": "0d6d9463085c9411e41dd19eed8fe9c8678708490bff6f17764224a6a4d701e5",
+    "content_hash": "732f86e53656c3ea2354d306f42616d82af69aae60c40845a651b2ee8ff7e7e8",
+    "provenance_hash": "88e5a40d94c44697246fb1cc266abef38a9ff8a954b546ff41313497a684ec01",
+    "sanitized": true,
+    "chapter_count": 20,
+    "chapter_index_sha256": "91c820b20635912d53afe82647167fe028caef5ebe65c79f896c71c5b31c6500",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "INTRODUCTION",
+        "word_count": 6645,
+        "sha256": "2a1fd4c3e04b1ebb563d265d3a320f331755941a1afa095f7a7177e289afc384"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "CHAPTER I. THE BEGINNING OF BUSINESS",
+        "word_count": 4015,
+        "sha256": "a7bcb5cef6577ddfa014b01d9800e487652bb517fb97a6763b3eaf2f7ad293e3"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "CHAPTER II. WHAT I LEARNED ABOUT BUSINESS",
+        "word_count": 4891,
+        "sha256": "dd45c004ed530f20cfd00ffbb31e0ed212e85836913ab9ba79719e7165f1bd11"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "CHAPTER III. STARTING THE REAL BUSINESS",
+        "word_count": 5684,
+        "sha256": "c0fa9c85a48b57bce9b4fb877b6b6603f3dc70d0561a3511979ea433fab6219b"
+      },
+      {
+        "id": "chapter-005",
+        "order": 5,
+        "title": "CHAPTER IV. THE SECRET OF MANUFACTURING AND SERVING",
+        "word_count": 4325,
+        "sha256": "02b539eac32e6cfaab454bc1b0c5bd2d3cb57788da0b2c8fd44fd1d0bf5b054b"
+      },
+      {
+        "id": "chapter-006",
+        "order": 6,
+        "title": "CHAPTER V. GETTING INTO PRODUCTION",
+        "word_count": 4559,
+        "sha256": "ec5547b4d4f8056ed8353d022a7c0cf3722a30067b5a9cad8e1803143f3cc596"
+      },
+      {
+        "id": "chapter-007",
+        "order": 7,
+        "title": "CHAPTER VI. MACHINES AND MEN",
+        "word_count": 4076,
+        "sha256": "cabea63030da009912cb6c1cf7d8a086eaceb6bf806f6851fb5a80aa29186d03"
+      },
+      {
+        "id": "chapter-008",
+        "order": 8,
+        "title": "CHAPTER VII. THE TERROR OF THE MACHINE",
+        "word_count": 4331,
+        "sha256": "ef5c0035b6eeff68add7a9965d06956b3b49b1aca97c7814cef41da6f0482593"
+      },
+      {
+        "id": "chapter-009",
+        "order": 9,
+        "title": "CHAPTER VIII. WAGES",
+        "word_count": 5146,
+        "sha256": "7a87f5c0a32f1f6845ff1dc8ff345211a702d06f9531e1a6e4662458639d8e46"
+      },
+      {
+        "id": "chapter-010",
+        "order": 10,
+        "title": "CHAPTER IX. WHY NOT ALWAYS HAVE GOOD BUSINESS?",
+        "word_count": 3269,
+        "sha256": "eee3343808fd2eaed81f5bd46fd8d42c386788237aeaede07dc3d714ad9da9b0"
+      },
+      {
+        "id": "chapter-011",
+        "order": 11,
+        "title": "CHAPTER X. HOW CHEAPLY CAN THINGS BE MADE?",
+        "word_count": 5007,
+        "sha256": "eeaa335e4e455dfd05745e645018b6f12c6660105ef0ad69e1b2a2801a3d6bcb"
+      },
+      {
+        "id": "chapter-012",
+        "order": 12,
+        "title": "CHAPTER XI. MONEY AND GOODS",
+        "word_count": 4263,
+        "sha256": "61cb29ad3cd6d127db6a4a62384e035e08b548fe5d595f3afb0f725ca5ba90e8"
+      },
+      {
+        "id": "chapter-013",
+        "order": 13,
+        "title": "CHAPTER XII. MONEY--MASTER OR SERVANT?",
+        "word_count": 4730,
+        "sha256": "5b5474245f0bb790faa6d972cfb9a982acca24d9061fd73647056d88e7235e6b"
+      },
+      {
+        "id": "chapter-014",
+        "order": 14,
+        "title": "CHAPTER XIII. WHY BE POOR?",
+        "word_count": 3573,
+        "sha256": "1c5e0d62db59e3ee4582e777ff2c642be4dde24114bcd28144485e16fe578a83"
+      },
+      {
+        "id": "chapter-015",
+        "order": 15,
+        "title": "CHAPTER XIV. THE TRACTOR AND POWER FARMING",
+        "word_count": 3501,
+        "sha256": "ef3867bb022a01be23bcf218fde2d808519ad55aa3dcfa8b183c66b031936798"
+      },
+      {
+        "id": "chapter-016",
+        "order": 16,
+        "title": "CHAPTER XV. WHY CHARITY?",
+        "word_count": 5215,
+        "sha256": "74ba7b50b8f06cad4ab57dd5ef18f7930a27c4f706aaa5650ab7e35c6eb47aca"
+      },
+      {
+        "id": "chapter-017",
+        "order": 17,
+        "title": "CHAPTER XVI. THE RAILROADS",
+        "word_count": 3852,
+        "sha256": "5266d6958665c159f3c2bb0b78a3d49aca761026f7dfe05b8702b256845d35b8"
+      },
+      {
+        "id": "chapter-018",
+        "order": 18,
+        "title": "CHAPTER XVII. THINGS IN GENERAL",
+        "word_count": 6147,
+        "sha256": "ef89755dc7219ef22e39dfb9152682d3e3372afc3125e7e55bb0f95cd9dae868"
+      },
+      {
+        "id": "chapter-019",
+        "order": 19,
+        "title": "CHAPTER XVIII. DEMOCRACY AND INDUSTRY",
+        "word_count": 4415,
+        "sha256": "c1322b3da8525cbcb717bc06c2be1b5af15c891d288e1c337aad70b7caf09049"
+      },
+      {
+        "id": "chapter-020",
+        "order": 20,
+        "title": "CHAPTER XIX. WHAT WE MAY EXPECT",
+        "word_count": 6207,
+        "sha256": "acd20f34eb13df93e82688fc463925a77298b69ae984987b9efabb5e11b7810c"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "65da9dfd84b7bbce211c5b5438caab2896480c5f14b2fad80b432c6f1bfa045a"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950242/earnalism/covers/front/cover_1fab21bf-16e8-4829-a8d7-6703692ec54b.png",
+    "blockers": [
+      "Rights: author_death_year is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "2b7dd39c921abd88afc285958c5660e70b8e2295fd0d30112e023b4f1246fe4d",
+    "reader_manifest": "8101b45d51b353e0112bad7600e1cd8e71f1759c18ec7f9e1060b8e9db589559",
+    "source_evidence": "65da9dfd84b7bbce211c5b5438caab2896480c5f14b2fad80b432c6f1bfa045a",
+    "approval_evidence": "2f8890741932b8c0fe7e7f9088b4ff0f6c233b07d79160a6feeabbdcfcacd69c"
+  },
+  "manifest_sha256": "60733b8fdb2bd21101229ef4f07730ef7e2494d2d89550265f5d27e896b9f9ab"
+}

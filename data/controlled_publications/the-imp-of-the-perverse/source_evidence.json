@@ -9,5 +9,110 @@
   "rights_basis": "Edgar Allan Poe died 1849; first published 1845. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.423797+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #2148",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2148",
+      "resolved_url": "https://www.gutenberg.org/ebooks/2148",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:26.514581+00:00",
+      "response_sha256": "773b3d37cc212e89aa9dfdf2389fcb679789752503a37ffd22803154d8667455"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2148.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2148/pg2148.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:31.865916+00:00",
+      "response_sha256": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Poe, Edgar Allan, 1809-1849"
+      ],
+      "Title": [
+        "The Works of Edgar Allan Poe — Volume 2"
+      ],
+      "Contents": [
+        "The purloined letter -- The thousand-and-second tale of Scheherezade -- A descent into the Maelström -- Von Kempelen and his discovery -- Mesmeric revelation -- The facts in the case of M. Valdemar -- The black cat -- The fall of the House of Usher -- Silence: a fable -- The masque of the Red Death -- The cask of Amontillado -- The imp of the perverse -- The island of the Fay -- The assignation -- The pit and the pendulum -- The premature burial -- The domain of Arnheim -- Landor's cottage -- William Wilson -- The tell-tale heart -- Berenice -- Eleonora."
+      ],
+      "Credits": [
+        "David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 65.0 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Short stories",
+        "Fantasy fiction",
+        "Horror tales, American",
+        "American fiction -- 19th century"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "2148"
+      ],
+      "Release Date": [
+        "Apr 1, 2000"
+      ],
+      "Last Update": [
+        "Aug 31, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "30902 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 266855,
+          "length": 13849
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "596cf1c38d455304f0df2163666ee8c12691292e23b61f0a8f74914f67b01b2e",
+    "legacy_content_sha256": "6902c40654ed82160028cc915dacce07a8959e45a40beef469829aa6b420eb41",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1849,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "773b3d37cc212e89aa9dfdf2389fcb679789752503a37ffd22803154d8667455",
+    "url": "https://www.gutenberg.org/ebooks/2148",
+    "author_catalog_strings": [
+      "Poe, Edgar Allan, 1809-1849"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "e92577c21fa4292e3494ee1404796d429ac88083d758f667bad859b912eeb5b0"
+      }
+    ],
+    "content_sha256": "e92577c21fa4292e3494ee1404796d429ac88083d758f667bad859b912eeb5b0"
+  }
 }

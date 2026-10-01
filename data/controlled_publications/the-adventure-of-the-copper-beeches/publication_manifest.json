@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-copper-beeches",
+  "title": "The Adventure of the Copper Beeches",
+  "generated_at": "2026-10-01T21:08:31.160957+00:00",
+  "content": {
+    "source_hash": "bd867c2b7a24654e27ccdc0e02a61b30c91ce61a1cf28a04bd9884811e332b90",
+    "content_hash": "9b9c7ba40e8ed216b596a5037e98da10b797866ec6978c64496b69d5dbca36ec",
+    "provenance_hash": "98236e5ca9c3a3610401ab6c7149d86ba024b2b7a8c8b3772afa67a44baa27df",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "a7d5c8867c948ecbf1949c692977855c797c2fe2e86e247bb2e2bfc533f4c2be",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Copper Beeches",
+        "word_count": 10007,
+        "sha256": "cb638e7ce5ab378f9d8651da9f5c9ce0a087580c50095f917780a06d9927d9ed"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "7c1978923cc09468595e9d2fe583e4672f800cf5bf6b5adbb5e44cd786fe52af"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "85bd9967b58713025a8d49125c15231cba2652b121590be5a4ead8a23ec3ff00",
+    "reader_manifest": "88c3ba1cc3966ad4c8ea096ede6b71630409d39373c1e1524d488543ff5e2f3a",
+    "source_evidence": "7c1978923cc09468595e9d2fe583e4672f800cf5bf6b5adbb5e44cd786fe52af",
+    "approval_evidence": "88a437397ceee8a6c19e81a7cdbe39443927ea9d4108405ccb9836637b96141f"
+  },
+  "manifest_sha256": "2a5349bc35f8ae60fd18177b7dea5a3573d4d2522302bd3042fa763988771454"
+}

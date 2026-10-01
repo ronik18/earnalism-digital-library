@@ -1,0 +1,25 @@
+{
+  "schema_version": "earnalism.cover-provenance.v1",
+  "slug": "bn-060",
+  "basis": "Owner states all Earnalism covers were personally designed; existing reviewed Bankim source packet confirms this exact cover has no identified external protected component. Actual current asset bytes retrieved and bound below.",
+  "owner_identity": "Repository/product owner; no additional identity inferred",
+  "assets": [
+    {
+      "kind": "owner-front-cover",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270665/earnalism/covers/front/bn-060_front_1600x2400.png",
+      "status": 200,
+      "sha256": "dcbfc2996987baae482523e355aefa218a3d422c027127237daccbc700c34b88",
+      "bytes": 192403,
+      "verified_at": "2026-10-01T21:14:29.548417+00:00"
+    },
+    {
+      "kind": "owner-back-cover",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270666/earnalism/covers/back/bn-060_back_1600x2400.png",
+      "status": 200,
+      "sha256": "b5ed699a3ff0fbcee904ead6b2825904621fdb74165762a685a456f1a376aeed",
+      "bytes": 407126,
+      "verified_at": "2026-10-01T21:14:30.644566+00:00"
+    }
+  ],
+  "audio_authorized": false
+}

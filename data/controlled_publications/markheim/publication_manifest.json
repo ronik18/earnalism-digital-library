@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "markheim",
+  "title": "Markheim",
+  "generated_at": "2026-10-01T21:08:30.228285+00:00",
+  "content": {
+    "source_hash": "d6737555143cb2fb2267d7653d4a0f8bd76e89d61e46db1755b5e5b6605b02d5",
+    "content_hash": "8a869c7629e7cee3364b8e52890f673febf4e8396abf92987c32537e4680aca5",
+    "provenance_hash": "cd36dcda88cb832456c3a9513c8931cd18891b8a2d4426f5f519c60f33ac6be3",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "72db2fa36b8c66691c464a3bb404fc5a123424d569f81880721043f2e555043e",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Markheim",
+        "word_count": 6745,
+        "sha256": "1a2f4f17a4029a41c0032ec665dccd6fde6292fddcbb11162d6296db5ed88672"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "05841e9e6118643a5813cebb1a7789aedebb5734face8ef1938f67653afc865a"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "985b64f8b2c66860aae7ab3be6f6476e4a0c88e5eb9e8fff69bbb2e42d649754",
+    "reader_manifest": "50b5435a1bd1cd25c59c17b2fed8e63ca5ce696047c1c7bb2830549867d3311d",
+    "source_evidence": "05841e9e6118643a5813cebb1a7789aedebb5734face8ef1938f67653afc865a",
+    "approval_evidence": "af6638f61e6b0780e7eb26faa18b41161df2170c7b593482f917c18d44e73bcd"
+  },
+  "manifest_sha256": "0f4cadf6e68d760db4289ac8281b25629d0748475de3bf9e70843c1ea25d6746"
+}

@@ -9,5 +9,111 @@
   "rights_basis": "O. Henry died 1910; first published 1903. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:21.874505+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #1646",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1646",
+      "resolved_url": "https://www.gutenberg.org/ebooks/1646",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:33.706671+00:00",
+      "response_sha256": "9ba8c2647e4f5fc11ef42149e020a1bf32c1635339ad9d17b013f4bb273f2e56"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1646.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1646/pg1646.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:39.333359+00:00",
+      "response_sha256": "c963a7c08d104b1bb71930c8d122022ce908dbdc8f1f22e8af31e613520af686"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Henry, O., 1862-1910"
+      ],
+      "Title": [
+        "Roads of Destiny"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Roads_of_Destiny_(short_story_collection)"
+      ],
+      "Contents": [
+        "Roads of destiny -- The guardian of the accolade -- The discounters of money -- The enchanted profile -- \"Next to reading matter\" -- Art and the bronco -- Phoebe -- A doubled-dyed deceiver -- The passing of Black Engle -- A retrieved reformation -- Cherchez la femme -- Friends in San Rosario -- The fourth in Salvador -- The emancipation of Billy -- The enchanted Kiss -- A departmental case -- The renaissance at Charleroi -- On behalf of the management -- Whistling Dick's Christmas stocking -- The halberdier of the little Rheinschloss -- Two renegades -- The lonesome road."
+      ],
+      "Credits": [
+        "E-text prepared by John Bickers and Dagny and revised by Joseph E. Loewenstein, M.D."
+      ],
+      "Reading Level": [
+        "Reading ease score: 81.3 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "United States -- Social life and customs -- Fiction",
+        "Short stories, American"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "1646"
+      ],
+      "Release Date": [
+        "Feb 1, 1999"
+      ],
+      "Last Update": [
+        "Dec 31, 2020"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1825 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 231890,
+          "length": 15712
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "03fc9a36b9e316f3c2d02902dd5cddcacd1724ac42b9602827f8914ead6c27b3",
+    "legacy_content_sha256": "26333f5658cfcb36488d5d64200a0db57a6693bcea82c1bcbcef7a41d35be761",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1910,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "9ba8c2647e4f5fc11ef42149e020a1bf32c1635339ad9d17b013f4bb273f2e56",
+    "url": "https://www.gutenberg.org/ebooks/1646",
+    "author_catalog_strings": [
+      "Henry, O., 1862-1910"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "58b55bd17afe0993ca5c8bdf25e2484619d9d8901193198440c80a999b4a6d82"
+      }
+    ],
+    "content_sha256": "58b55bd17afe0993ca5c8bdf25e2484619d9d8901193198440c80a999b4a6d82"
+  }
 }

@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "rikki-tikki-tavi",
+  "title": "Rikki-Tikki-Tavi",
+  "generated_at": "2026-10-01T21:08:30.640067+00:00",
+  "content": {
+    "source_hash": "9fb989d890306e186ad819ae9917d27b053bad992c2910b016dbf5540b28faf9",
+    "content_hash": "213c2a4d8a06ab1ef0a043434d8026e50b6a01eff59a8ec74287afaf2c0f9ff7",
+    "provenance_hash": "50b412128c232ff4cb8be5219da80cc52acbdcbecb4a58dfd0a934dc6514dde3",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "70e2a8489947501858587396733cf817eaa1e64e03511eae2ccf6265c54b8d30",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Rikki-Tikki-Tavi",
+        "word_count": 2909,
+        "sha256": "91206afb10aed8e4020989d533e107c483b6ef0871ee40f9e91b0f2773bc1e4c"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "ddbf226ddd96b605960e5ee48833bff2441f538556211c1d4fe45d78273a056d"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "50354e94d87f75e1fddf21b855835186a72cae9e27b1a34e020f0f9210e55c85",
+    "reader_manifest": "53ad1b485103b247da45ee2a8e73b0f770d257b9e97623ffcf381d3795758399",
+    "source_evidence": "ddbf226ddd96b605960e5ee48833bff2441f538556211c1d4fe45d78273a056d",
+    "approval_evidence": "dad32cd0cc9d5e7625c387ba07ed7796cf64291a788c9a3cabd4ab78db20f5bc"
+  },
+  "manifest_sha256": "9714e37e3e5de575a4dd47441ffb379b8f99ea757e7aace0b56e0572a3f24f44"
+}

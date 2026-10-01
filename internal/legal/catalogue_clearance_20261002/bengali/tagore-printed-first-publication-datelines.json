@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "verified_facts": [
+    {
+      "slug": "book-a74c1a1451",
+      "publication_year": 1892,
+      "printed_first_publication_dateline": "মাঘ ১২৯৮",
+      "source_comparison_record": "internal/legal/catalogue_clearance_20261002/bengali/book-a74c1a1451-source-comparison.json",
+      "source_comparison_sha256": "6f4f17f02fd6f93646503c5e71d5cfb6b2f8e74960644a333c29b10163a0cb51",
+      "source_rendered_sha256": "02f95654db8b91cf5f113fb7fe3beb38901b1944abb861d4bbd01dc72c47e452",
+      "publisher_explanation_record": "internal/legal/catalogue_clearance_20261002/bengali/galpaguchha-volume1-title-publisher-pages.json",
+      "publisher_explanation_record_sha256": "26fa62905b573768e4607a79c3d0f6828bddf280162762ffc507c5f8dc4cdb06",
+      "publisher_explanation": "Firstvolume collects1291–1300stories in first-publication order; date at each work end is periodical publication date.",
+      "calendar_conversion": {
+        "bengali_year": 1298,
+        "offset": 594,
+        "gregorian_year": 1892,
+        "precision": "Gregorianyear only; month falls entirely within one year. No inferred exactday.",
+        "reference": "https://www.drikpanchang.com/festivals/pohela-boishakh/pohela-boishakh-date-time.html?year=0596"
+      },
+      "scope": "Underlyingwork firstpublication metadata only; sourceedition editorial/licence/publication authorization independently held."
+    },
+    {
+      "slug": "book-2e468c4990",
+      "publication_year": 1892,
+      "printed_first_publication_dateline": "অগ্রহায়ণ ১২৯৯",
+      "source_comparison_record": "internal/legal/catalogue_clearance_20261002/bengali/book-2e468c4990-source-comparison.json",
+      "source_comparison_sha256": "1a01784c9fffd9bf55e88c503f295fe5b60354e0647049692a968d0729add52c",
+      "source_rendered_sha256": "a0b30871ea239d6efd8a021fb41d7ead56e60328e2489b2ee218bb83e38c8a72",
+      "publisher_explanation_record": "internal/legal/catalogue_clearance_20261002/bengali/galpaguchha-volume1-title-publisher-pages.json",
+      "publisher_explanation_record_sha256": "26fa62905b573768e4607a79c3d0f6828bddf280162762ffc507c5f8dc4cdb06",
+      "publisher_explanation": "Firstvolume collects1291–1300stories in first-publication order; date at each work end is periodical publication date.",
+      "calendar_conversion": {
+        "bengali_year": 1299,
+        "offset": 593,
+        "gregorian_year": 1892,
+        "precision": "Gregorianyear only; month falls entirely within one year. No inferred exactday.",
+        "reference": "https://www.drikpanchang.com/festivals/pohela-boishakh/pohela-boishakh-date-time.html?year=0596"
+      },
+      "scope": "Underlyingwork firstpublication metadata only; sourceedition editorial/licence/publication authorization independently held."
+    },
+    {
+      "slug": "book-95624627d5",
+      "publication_year": 1893,
+      "printed_first_publication_dateline": "জ্যৈষ্ঠ ১৩০০",
+      "source_comparison_record": "internal/legal/catalogue_clearance_20261002/bengali/book-95624627d5-source-comparison.json",
+      "source_comparison_sha256": "9766f76382534d30a0d88a46a098a4d5d52d1b1358e138cac74769376532d3ee",
+      "source_rendered_sha256": "3ee368962dbcdd11b7405b836e4ea51150a682123699a2389bd55ba77c6f331c",
+      "publisher_explanation_record": "internal/legal/catalogue_clearance_20261002/bengali/galpaguchha-volume1-title-publisher-pages.json",
+      "publisher_explanation_record_sha256": "26fa62905b573768e4607a79c3d0f6828bddf280162762ffc507c5f8dc4cdb06",
+      "publisher_explanation": "Firstvolume collects1291–1300stories in first-publication order; date at each work end is periodical publication date.",
+      "calendar_conversion": {
+        "bengali_year": 1300,
+        "offset": 593,
+        "gregorian_year": 1893,
+        "precision": "Gregorianyear only; month falls entirely within one year. No inferred exactday.",
+        "reference": "https://www.drikpanchang.com/festivals/pohela-boishakh/pohela-boishakh-date-time.html?year=0596"
+      },
+      "scope": "Underlyingwork firstpublication metadata only; sourceedition editorial/licence/publication authorization independently held."
+    },
+    {
+      "slug": "book-d2fe532e1c",
+      "publication_year": 1892,
+      "printed_first_publication_dateline": "ভাদ্র-আশ্বিন ১২৯৯",
+      "source_comparison_record": "internal/legal/catalogue_clearance_20261002/bengali/book-d2fe532e1c-source-comparison.json",
+      "source_comparison_sha256": "8030da9b59b70fecf91fdaf8f3bcb14ca3718f8176b143c815738a0a9a19d7b5",
+      "source_rendered_sha256": "cf0960a0286aad1ce966c0e98100a72c94eb4ea83c54205f23de0a7329b57c6e",
+      "publisher_explanation_record": "internal/legal/catalogue_clearance_20261002/bengali/galpaguchha-volume1-title-publisher-pages.json",
+      "publisher_explanation_record_sha256": "26fa62905b573768e4607a79c3d0f6828bddf280162762ffc507c5f8dc4cdb06",
+      "publisher_explanation": "Firstvolume collects1291–1300stories in first-publication order; date at each work end is periodical publication date.",
+      "calendar_conversion": {
+        "bengali_year": 1299,
+        "offset": 593,
+        "gregorian_year": 1892,
+        "precision": "Gregorianyear only; month falls entirely within one year. No inferred exactday.",
+        "reference": "https://www.drikpanchang.com/festivals/pohela-boishakh/pohela-boishakh-date-time.html?year=0596"
+      },
+      "scope": "Underlyingwork firstpublication metadata only; sourceedition editorial/licence/publication authorization independently held."
+    },
+    {
+      "slug": "book-4b944e64fa",
+      "publication_year": 1892,
+      "printed_first_publication_dateline": "জ্যৈষ্ঠ ১২৯৯",
+      "source_comparison_record": "internal/legal/catalogue_clearance_20261002/bengali/book-4b944e64fa-source-comparison.json",
+      "source_comparison_sha256": "d4563d61e1a112fd9907bfefc9ab3dabbeb34d3769f9e9b8bd121db7a5035b57",
+      "source_rendered_sha256": "97b9b439ea9079d8c062b204584639c886d5837775802420640fe414161b450d",
+      "publisher_explanation_record": "internal/legal/catalogue_clearance_20261002/bengali/galpaguchha-volume1-title-publisher-pages.json",
+      "publisher_explanation_record_sha256": "26fa62905b573768e4607a79c3d0f6828bddf280162762ffc507c5f8dc4cdb06",
+      "publisher_explanation": "Firstvolume collects1291–1300stories in first-publication order; date at each work end is periodical publication date.",
+      "calendar_conversion": {
+        "bengali_year": 1299,
+        "offset": 593,
+        "gregorian_year": 1892,
+        "precision": "Gregorianyear only; month falls entirely within one year. No inferred exactday.",
+        "reference": "https://www.drikpanchang.com/festivals/pohela-boishakh/pohela-boishakh-date-time.html?year=0596"
+      },
+      "scope": "Underlyingwork firstpublication metadata only; sourceedition editorial/licence/publication authorization independently held."
+    },
+    {
+      "slug": "book-5aedda79fe",
+      "publication_year": 1893,
+      "printed_first_publication_dateline": "শ্রাবণ ১৩০০",
+      "source_comparison_record": "internal/legal/catalogue_clearance_20261002/bengali/book-5aedda79fe-source-comparison.json",
+      "source_comparison_sha256": "5a24b774482351a353b9d0c0b32f4682e409ee37f23199156b2df92e15ca6cdc",
+      "source_rendered_sha256": "519d3c3a7cc0a60054aa100f603db6acfdf8025960179e2e0b76eb5994ef255e",
+      "publisher_explanation_record": "internal/legal/catalogue_clearance_20261002/bengali/galpaguchha-volume1-title-publisher-pages.json",
+      "publisher_explanation_record_sha256": "26fa62905b573768e4607a79c3d0f6828bddf280162762ffc507c5f8dc4cdb06",
+      "publisher_explanation": "Firstvolume collects1291–1300stories in first-publication order; date at each work end is periodical publication date.",
+      "calendar_conversion": {
+        "bengali_year": 1300,
+        "offset": 593,
+        "gregorian_year": 1893,
+        "precision": "Gregorianyear only; month falls entirely within one year. No inferred exactday.",
+        "reference": "https://www.drikpanchang.com/festivals/pohela-boishakh/pohela-boishakh-date-time.html?year=0596"
+      },
+      "scope": "Underlyingwork firstpublication metadata only; sourceedition editorial/licence/publication authorization independently held."
+    },
+    {
+      "slug": "book-fbdf2991ab",
+      "publication_year": 1893,
+      "printed_first_publication_dateline": "মাঘ ১২৯৯",
+      "source_comparison_record": "internal/legal/catalogue_clearance_20261002/bengali/book-fbdf2991ab-source-comparison.json",
+      "source_comparison_sha256": "f50f9813ea8c31aab88f3ca817c123d0865aa13e9fa345e6f368773f30d9569e",
+      "source_rendered_sha256": "bdb9cc486b09774bdc5077649941238cd92b464e05e5b52292375a602fbb7c58",
+      "publisher_explanation_record": "internal/legal/catalogue_clearance_20261002/bengali/galpaguchha-volume1-title-publisher-pages.json",
+      "publisher_explanation_record_sha256": "26fa62905b573768e4607a79c3d0f6828bddf280162762ffc507c5f8dc4cdb06",
+      "publisher_explanation": "Firstvolume collects1291–1300stories in first-publication order; date at each work end is periodical publication date.",
+      "calendar_conversion": {
+        "bengali_year": 1299,
+        "offset": 594,
+        "gregorian_year": 1893,
+        "precision": "Gregorianyear only; month falls entirely within one year. No inferred exactday.",
+        "reference": "https://www.drikpanchang.com/festivals/pohela-boishakh/pohela-boishakh-date-time.html?year=0596"
+      },
+      "scope": "Underlyingwork firstpublication metadata only; sourceedition editorial/licence/publication authorization independently held."
+    },
+    {
+      "slug": "book-c85323409f",
+      "publication_year": 1892,
+      "printed_first_publication_dateline": "শ্রাবণ ১২৯৯",
+      "source_comparison_record": "internal/legal/catalogue_clearance_20261002/bengali/book-c85323409f-source-comparison.json",
+      "source_comparison_sha256": "f17c21002f9d65419f26b5578e1a003c208af8c18a497dcc88ccdaa1c6f8073a",
+      "source_rendered_sha256": "8d237b47862a2f068fbc79ccc1d779c1fb902b644c58d164edbf334da1153f58",
+      "publisher_explanation_record": "internal/legal/catalogue_clearance_20261002/bengali/galpaguchha-volume1-title-publisher-pages.json",
+      "publisher_explanation_record_sha256": "26fa62905b573768e4607a79c3d0f6828bddf280162762ffc507c5f8dc4cdb06",
+      "publisher_explanation": "Firstvolume collects1291–1300stories in first-publication order; date at each work end is periodical publication date.",
+      "calendar_conversion": {
+        "bengali_year": 1299,
+        "offset": 593,
+        "gregorian_year": 1892,
+        "precision": "Gregorianyear only; month falls entirely within one year. No inferred exactday.",
+        "reference": "https://www.drikpanchang.com/festivals/pohela-boishakh/pohela-boishakh-date-time.html?year=0596"
+      },
+      "scope": "Underlyingwork firstpublication metadata only; sourceedition editorial/licence/publication authorization independently held."
+    }
+  ],
+  "unbound_cross_year_months": [
+    "book-1090573dff Paush1299→1892/1893",
+    "book-a4a369483f Paush1298→1891/1892"
+  ],
+  "composition_not_assumed": "Publisher explicitly defines these as periodical publicationdates. Othercollections/datelines not treated the same."
+}

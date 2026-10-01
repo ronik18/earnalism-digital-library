@@ -7,8 +7,8 @@
       "sha256": "e08661096cc750017871e2006e545777d7eb9178e61804caf9f734d04af7bc6a"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "40bc05afbc930bec15d41c67b6c4f3f4c36bfcb371225433d2c0544b5a2c7ffe"
+      "file": "chapters/chapter-001.json",
+      "sha256": "40b95bf8eeeb0975744d43e53dc3b3eccb35ad08996f6a81a0c55f00f7823635"
     },
     {
       "file": "highlight_sync.json",
@@ -24,11 +24,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "03f8d0f3dde938e2be11c2ecf0a70f7b2703d271e38f6e0a2def62acf0b12b95"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "40b95bf8eeeb0975744d43e53dc3b3eccb35ad08996f6a81a0c55f00f7823635"
+      "sha256": "5d9c94f9d12dc6a3210c5158e642855c96ff13add1c2560f74aea4e3f1a2ce39"
     }
   ]
 }

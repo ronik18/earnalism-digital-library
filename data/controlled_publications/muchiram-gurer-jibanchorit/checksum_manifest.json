@@ -19,20 +19,68 @@
       "sha256": "9172cf08cd6fe0009a376beb1911bfde55386e42385aa351f19388ee7e08834b"
     },
     {
+      "file": "chapters/chapter-003.json",
+      "sha256": "8981b0859bf3cd3dffe6c582a32d833b1ac24153f4b8d2e11e058b98547d4b29"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "de98c1d95dccde4de2aa6a3a0a6396b8f6053d78300afe74bee1934f5328f698"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "f60085e0dfe0f2caede7562e93f89c0eda99be553b7c6e80f4c3360c79e00877"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "8c33308e96ff7ba2f8f91fd8fe083bfb6e3865f4c84a1a90404f2efdf7a4ae5e"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "a21596d82467a31917b3efe9eb2185d6d2bd718b6a06cd2deafa0a5c2fbf1e07"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "2d49c1b2a3492a5d3454f48f1b563df39d2672f0facaab2d9a96631405bcbdac"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "c109786417f562c379d0083f772c07a2cdb312bec346ea1de41cf1a2393ca4b4"
+    },
+    {
+      "file": "chapters/chapter-010.json",
+      "sha256": "f7f2d6b158f9f2a9ff9d9d47b7764538ddfe315a3d64f27b7219393d29a52f23"
+    },
+    {
+      "file": "chapters/chapter-011.json",
+      "sha256": "e4622866cdcf9ee775e356237cb34f8e30702cb168d4f9b83eb06ee1df03273e"
+    },
+    {
+      "file": "chapters/chapter-012.json",
+      "sha256": "1235a2e3901185fc3a60f51338829ce905764c2c949c60cabebb47d6bc7102b9"
+    },
+    {
+      "file": "chapters/chapter-013.json",
+      "sha256": "7baa7a09d7a400cf587de482c494039df5ae52216efe52dfeaf9fef7960f5d5c"
+    },
+    {
+      "file": "chapters/chapter-014.json",
+      "sha256": "fc8ac6f15caf087eeea66842e6347d2abb5ab73b3e15fd0be53c108f3683c0f3"
+    },
+    {
       "file": "highlight_sync.json",
       "sha256": "b1f7fda41647a4f3cb1b7bf2709a459355e59850e90e7e44239f13fdaa270f2e"
     },
     {
       "file": "public_book.json",
-      "sha256": "d34ecd7491b15a3b6fe09ae0fa501769efc583e71c12dca897af2b8f023cb9be"
+      "sha256": "4865735424309666b4eba5e8bf92829586a4b2df09e41e48a03ed65036ed8e64"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "304fd60e3952495cfd1f9e4fd1c31994880ccd8144d8df05d5ec96a8d8eb3d53"
+      "sha256": "e00861285118f0f6131e400dd82c60e945b54fdf34ae33b602a071d018cfe50b"
     },
     {
       "file": "source_evidence.json",
-      "sha256": "28cf06e1dec75665a84715e8d92b3d3b21326e51bcb3e81bbb338a459f00257c"
+      "sha256": "21db0cbe040912f63400d73e79f21227ee7d741c1f7d3a48d707b07cf7824bb7"
     }
   ]
 }

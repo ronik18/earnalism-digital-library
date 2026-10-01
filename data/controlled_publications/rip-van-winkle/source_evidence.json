@@ -9,5 +9,111 @@
   "rights_basis": "Washington Irving died 1859; first published 1819. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.036927+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #60976",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/60976",
+      "resolved_url": "https://www.gutenberg.org/ebooks/60976",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:25.920686+00:00",
+      "response_sha256": "0545683f37db94ae22ce0c46c648b5e1a11401d1e6177e880bb23de2c9b0fe55"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/60976.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/60976/pg60976.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:30.361233+00:00",
+      "response_sha256": "3085b99a7b6a9d5f527dfb97351c858a6f7fc97f2c654570f5defbbfb50e5042"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Irving, Washington, 1783-1859"
+      ],
+      "Illustrator": [
+        "Rackham, Arthur, 1867-1939"
+      ],
+      "Title": [
+        "Rip Van Winkle"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Rip_Van_Winkle"
+      ],
+      "Credits": [
+        "Produced by Sue Clark and the Online Distributed Proofreading Team at www.pgdp.net (This file was produced from images generously made available by The Internet Archive)"
+      ],
+      "Reading Level": [
+        "Reading ease score: 62.9 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PZ: Language and Literatures: Juvenile belles lettres",
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Fantasy fiction",
+        "New York (State) -- History -- 1775-1865 -- Fiction",
+        "Catskill Mountains Region (N.Y.) -- History -- 18th century -- Fiction",
+        "Van Winkle, Rip (Fictitious character) -- Fiction",
+        "Hudson River (N.Y. and N.J.) -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "60976"
+      ],
+      "Release Date": [
+        "Dec 20, 2019"
+      ],
+      "Last Update": [
+        "Oct 17, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "7641 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "SOURCE_TEXT_DIFFERS",
+      "matched_chapters": [],
+      "nonmatching_chapters": [
+        "chapter-001"
+      ],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "2498820aafa64ce1ba7fe577338b4e4f680aa95ed1cf5944ad61ca9e4a255c66",
+    "legacy_content_sha256": "879951dca445b3fb065612687474f9eff66c80ef0abec75958c3666a6498f02b",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1859,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "0545683f37db94ae22ce0c46c648b5e1a11401d1e6177e880bb23de2c9b0fe55",
+    "url": "https://www.gutenberg.org/ebooks/60976",
+    "author_catalog_strings": [
+      "Irving, Washington, 1783-1859"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "525d6c0f3df1a5d2d89831695f279fb2e0e4bf7028b4c8ede0ac1d9fc9dd6a49"
+      }
+    ],
+    "content_sha256": "525d6c0f3df1a5d2d89831695f279fb2e0e4bf7028b4c8ede0ac1d9fc9dd6a49"
+  }
 }

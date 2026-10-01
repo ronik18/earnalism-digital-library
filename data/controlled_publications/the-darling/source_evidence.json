@@ -9,5 +9,111 @@
   "rights_basis": "Anton Chekhov died 1904; first published 1899. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.103723+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #13416",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/13416",
+      "resolved_url": "https://www.gutenberg.org/ebooks/13416",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:13.772911+00:00",
+      "response_sha256": "41812d4426e4c4aadfc7767cc45c83081ec494555e945606653323e1754cb81e"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/13416.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/13416/pg13416.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:18.796955+00:00",
+      "response_sha256": "518cdaabeea113109967b4c6ad0ed2f4cae23bc390bdcd4eac7a8a4519634f9b"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Chekhov, Anton Pavlovich, 1860-1904"
+      ],
+      "Translator": [
+        "Garnett, Constance, 1861-1946"
+      ],
+      "Title": [
+        "The Darling and Other Stories"
+      ],
+      "Contents": [
+        "The Darling -- Ariadne -- Anyuta -- The Two Volodyas -- The Trousseau -- The Helpmate -- Talent -- An Artist's Story -- Three Years."
+      ],
+      "Credits": [
+        "Produced by James Rusk.  HTML version by Al Haines"
+      ],
+      "Reading Level": [
+        "Reading ease score: 79.3 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PG: Language and Literatures: Slavic (including Russian), Languages and Literature"
+      ],
+      "Subject": [
+        "Russia -- Social life and customs -- Fiction",
+        "Chekhov, Anton Pavlovich, 1860-1904 -- Translations into English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "13416"
+      ],
+      "Release Date": [
+        "Sep 9, 2004"
+      ],
+      "Last Update": [
+        "Oct 28, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1415 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1151,
+          "length": 26896
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "447caa75d91256a4028eb69688345d10f5a0d76c971b39961a0e159e1a159ba1",
+    "legacy_content_sha256": "669f2abf5030d78bc962625a87b9a6a5ca3bafaeed02df6c833613c04109b73f",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1904,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "41812d4426e4c4aadfc7767cc45c83081ec494555e945606653323e1754cb81e",
+    "url": "https://www.gutenberg.org/ebooks/13416",
+    "author_catalog_strings": [
+      "Chekhov, Anton Pavlovich, 1860-1904"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "22944ec0e518269ee5676b6fca3c8d7a38f7a0f60083ac84a29b6d7e30714360"
+      }
+    ],
+    "content_sha256": "22944ec0e518269ee5676b6fca3c8d7a38f7a0f60083ac84a29b6d7e30714360"
+  }
 }

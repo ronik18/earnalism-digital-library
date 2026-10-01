@@ -3,21 +3,21 @@
   "schema_version": 1,
   "slug": "book-5461971092",
   "title": "মেঘ ও রৌদ্র",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-01T21:16:37.084971+00:00",
   "content": {
     "source_hash": "208a553fc4eb8ac6e6de42a4f65a71da855d6e0ddd4b2d2259f8d15809845d16",
     "content_hash": "35286f73e2006c6041d9fba9ef6450ae5998f3959d91d67fdf428ceca8b66402",
     "provenance_hash": "30a404a955ae1154aec3a50c262ae701a66920477b3d7b6d9bacd35c3d5d8909",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "e67d89db8f5b2a22272cab9f78f31c3a7141789b8c43071ed52d5f955a06b6c1",
+    "chapter_index_sha256": "5732d3eb0102511b7e1ec9ba036d3d820468cdb60b06db3334f951d6eba31009",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "মেঘ ও রৌদ্র",
-        "word_count": 7459,
-        "sha256": "7505d26d36bc40460039afc0eef1e21e00bb80983b2d31ff469ff3e70a6826b9"
+        "word_count": 7391,
+        "sha256": "547ecd15b3e7efe00649fd7b353e43f2e23296279d6717452a0be027e7fd8007"
       }
     ]
   },
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "051c5e064b60ac010b617b2ac57800818f3d1a25746678c205ad0c54dfcca223"
+    "evidence_sha256": "d8f98ce41f1fb49612170bfef52cddbe7d301cfc7cc48f3dd157501c57a4b850"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -48,10 +48,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "12009ad0911af086fb2a7335ee45fc85864be31fdad3408ce0af1c7d0bbde4ea",
-    "reader_manifest": "91760dd774f5afe1b24e29d3bee376e12d94a552b03c929ae86488acca53ffbe",
-    "source_evidence": "051c5e064b60ac010b617b2ac57800818f3d1a25746678c205ad0c54dfcca223",
+    "public_book": "9150cf5464b55074af56d8b44ded3f606455481b52c8e4156058388506001c95",
+    "reader_manifest": "69a3421f58e4cb91902da78daf369be41b114891b04f93daf8c2d4c1a12dfe6a",
+    "source_evidence": "d8f98ce41f1fb49612170bfef52cddbe7d301cfc7cc48f3dd157501c57a4b850",
     "approval_evidence": "f7fc77aa8dc941dc645a6130d9de1331d2dfa5a896e23be58a2a63c4f318cded"
   },
-  "manifest_sha256": "378b7e525fd8e9ff9b932aa0c150d3e3a4e88c2553aa312bb57e36101512682c"
+  "manifest_sha256": "1ebf0c600947e7208769b7926fcf9b52879f7eacba3bd7310f88d764bb5f955a"
 }

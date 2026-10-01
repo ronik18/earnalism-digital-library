@@ -9,5 +9,114 @@
   "rights_basis": "Saki died 1916; first published 1911. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.238513+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #3688",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/3688",
+      "resolved_url": "https://www.gutenberg.org/ebooks/3688",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:46.749463+00:00",
+      "response_sha256": "f47ff6e8e72a30298bb62911b432f59310a3a9cf69b4d5fe52e00c403c037e61"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/3688.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/3688/pg3688.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:51.820470+00:00",
+      "response_sha256": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Saki, 1870-1916"
+      ],
+      "Author of introduction, etc.": [
+        "Milne, A. A. (Alan Alexander), 1882-1956"
+      ],
+      "Title": [
+        "The Chronicles of Clovis"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Chronicles_of_Clovis"
+      ],
+      "Contents": [
+        "Esmé -- The match-maker -- Tobermory -- Mrs. Packletide's tiger -- The stampeding of Lady Bastable -- The background -- Hermann the irascible: a story of the great weep -- The unrest-cure -- The jesting of Arlington Stringham -- Sredni Vashtar  -- Adrian -- The chaplet -- The quest -- Wratislav -- The Easter egg -- Filboid Studge, the story of a mouse that helped -- The music on the hill -- The story of St. Vespaluus -- The way to the dairy -- The peace offering -- The peace of Mowsle Barton -- The talking-out of Tarrington -- The hounds of fate -- The recessional -- A matter of sentiment -- The secret sin of Septimus Brope -- \"Ministers of Grace\" -- The remoulding of Groby Lington."
+      ],
+      "Credits": [
+        "Produced by Richard E. Henrich, Jr.  HTML version by Al Haines."
+      ],
+      "Reading Level": [
+        "Reading ease score: 67.1 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Short stories",
+        "Satire, English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "3688"
+      ],
+      "Release Date": [
+        "Jan 1, 2003"
+      ],
+      "Last Update": [
+        "Jan 8, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1590 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 86890,
+          "length": 10213
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "089628df1446736886ddae93252fc070854ec17606ade714a70ba77b55e6ea02",
+    "legacy_content_sha256": "adaad32e67a022024f647efcfd8b02639eab6716a526e6045e85d8d648fc529c",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1916,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "f47ff6e8e72a30298bb62911b432f59310a3a9cf69b4d5fe52e00c403c037e61",
+    "url": "https://www.gutenberg.org/ebooks/3688",
+    "author_catalog_strings": [
+      "Saki, 1870-1916"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06"
+      }
+    ],
+    "content_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06"
+  }
 }

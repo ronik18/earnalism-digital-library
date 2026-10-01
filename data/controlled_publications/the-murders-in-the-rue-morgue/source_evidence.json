@@ -9,5 +9,114 @@
   "rights_basis": "Edgar Allan Poe died 1849; first published 1841. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:21.855424+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #2147",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2147",
+      "resolved_url": "https://www.gutenberg.org/ebooks/2147",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:25.899682+00:00",
+      "response_sha256": "01f406139e1367ece964a4b6f85f337b95e06af73c9005822355d64f4984449d"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2147.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2147/pg2147.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:31.137299+00:00",
+      "response_sha256": "c8d5fec040f1dc29be8d4e9cb7d3279b65bf894adea50544d99d400b2d587386"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Poe, Edgar Allan, 1809-1849"
+      ],
+      "Contributor": [
+        "Lowell, James Russell, 1819-1891",
+        "Willis, Nathaniel Parker, 1806-1867"
+      ],
+      "Title": [
+        "The Works of Edgar Allan Poe — Volume 1"
+      ],
+      "Contents": [
+        "Edgar Allan Poe, an appreciation -- Life of Poe, by James Russell Lowell -- Death of Poe, by N. P. Willis -- The unparalleled adventures of one Hans Pfaal -- The gold-bug -- Four beasts in one -- The murders in the Rue Morgue -- The mystery of Marie Rogêt -- The balloon hoax -- MS. found in a bottle -- The oval portrait."
+      ],
+      "Credits": [
+        "David Widger and Carlo Traverso"
+      ],
+      "Reading Level": [
+        "Reading ease score: 65.2 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Fantasy fiction",
+        "Horror tales, American",
+        "American fiction -- 19th century",
+        "Poe, Edgar Allan, 1809-1849"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "2147"
+      ],
+      "Release Date": [
+        "Apr 1, 2000"
+      ],
+      "Last Update": [
+        "Aug 31, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "24243 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 263974,
+          "length": 78891
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "cb52ddf4a8617bb3331028ff932c34daf7f762a33ea13563cd5d7e983b095c11",
+    "legacy_content_sha256": "e2683c1bec04ea4cc15f1777fe762bb4227daae89dea7fdbbbc1f9751d0b84bc",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1849,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "01f406139e1367ece964a4b6f85f337b95e06af73c9005822355d64f4984449d",
+    "url": "https://www.gutenberg.org/ebooks/2147",
+    "author_catalog_strings": [
+      "Poe, Edgar Allan, 1809-1849"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "037fd47cc776d2825d701acc0c53900a99c383f611977f690899db4f68df3fb0"
+      }
+    ],
+    "content_sha256": "037fd47cc776d2825d701acc0c53900a99c383f611977f690899db4f68df3fb0"
+  }
 }

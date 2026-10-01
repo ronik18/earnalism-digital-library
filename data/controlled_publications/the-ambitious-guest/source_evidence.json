@@ -9,5 +9,112 @@
   "rights_basis": "Nathaniel Hawthorne died 1864; first published 1835. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.190478+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #13707",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/13707",
+      "resolved_url": "https://www.gutenberg.org/ebooks/13707",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:13.835313+00:00",
+      "response_sha256": "9963da793aa9512c4040150d3d154e2f07a9650b0d3de95fd455429111c539eb"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/13707.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/13707/pg13707.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:19.275676+00:00",
+      "response_sha256": "256624faf1f612edc47dd0a0ecc9717bd15074baea33e8a9f32bc66f3f04b50b"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Hawthorne, Nathaniel, 1804-1864"
+      ],
+      "Title": [
+        "Twice-told tales"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Twice-Told_Tales"
+      ],
+      "Contents": [
+        "The gray champion -- Sunday at home -- The wedding-knell -- The minister's black veil -- The Maypole of Merry Mount -- The gentle boy -- Mr. Higginbotham's catastrophe -- Little Annie's ramble -- Wakefield -- A rill from the town pump -- The Great Carbuncle -- The prophetic pictures -- David Swan -- Sights from a steeple -- The Hollow of the three hills -- The toll-gatherer's day -- The vision of the fountain -- Fancy's show-box -- Dr. Heidegger's experiment -- Legends of the Province House: Howe's masquerade. Edward Randolph's portrait. Lady Eleanore's mantle. Old Esther Dudley -- The haunted mind -- The village uncle -- The ambitious guest -- The sister-years -- The White Old Maid -- Peter Goldthwaite's treasure -- Chippings with a chisel -- The Shaker bridal -- Night-sketches -- Endicott and the Red Cross -- The Lily's quest -- Footprints on the seashore -- Edward Fane's rosebud -- The threefold destiny."
+      ],
+      "Credits": [
+        "Rick Niles, John Hagerson, and the Online Distributed Proofreading Team"
+      ],
+      "Reading Level": [
+        "Reading ease score: 63.8 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Short stories",
+        "New England -- Social life and customs -- Fiction",
+        "Historical fiction, American"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "13707"
+      ],
+      "Release Date": [
+        "Oct 11, 2004"
+      ],
+      "Last Update": [
+        "Oct 28, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "3282 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 557601,
+          "length": 17970
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "e5575209af8f67db282d16c1adb0e224aacaee4e9abb122ccdbb0a8e60ceaf45",
+    "legacy_content_sha256": "ec3d20e545a161c6382ab30e8ac0ea73e9c86e2f68dd51e2ebddeb89be9b8d9a",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1864,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "9963da793aa9512c4040150d3d154e2f07a9650b0d3de95fd455429111c539eb",
+    "url": "https://www.gutenberg.org/ebooks/13707",
+    "author_catalog_strings": [
+      "Hawthorne, Nathaniel, 1804-1864"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "dbfd78d5760dd08bf9bcdec9424bd63065b649bdb0feb1df817a953cdf7af784"
+      }
+    ],
+    "content_sha256": "dbfd78d5760dd08bf9bcdec9424bd63065b649bdb0feb1df817a953cdf7af784"
+  }
 }

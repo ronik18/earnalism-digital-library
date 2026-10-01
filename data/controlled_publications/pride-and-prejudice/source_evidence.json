@@ -1,13 +1,1679 @@
 {
   "slug": "pride-and-prejudice",
   "source_url": "https://www.gutenberg.org/ebooks/1342",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #1342, 1894 Austen narrative text-only; Saintsbury preface and Thomson illustrations excluded",
   "source_license": "Public domain. Project Gutenberg transcription is freely redistributable for any use including commercial.",
-  "source_hash": "fcf234e0476cc6af8b3f604399bf3d7c4b72931bdf2af276ab4cc78caf938d5c",
-  "content_hash": "bdf431c50329d7f3fd9d0fe5ac4026050fe2f76cdc553d392ca223f2c54c5568",
-  "provenance_hash": "d6a4a3e80cef639d4650f95d8322db7edfdf9200a52e401de2b5290cdcfe2184",
-  "rights_basis": "Author died in 1817. Work published in 1813, well before 1928. Public domain in the U.S. under pre-1928 publication rule and in most jurisdictions under life plus 70 years.",
+  "source_hash": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+  "content_hash": "4b68459abff92d885d2d493ad052e8cdba6308ebf78f24508c6410cce683c276",
+  "provenance_hash": "49f4ef0c8b50de3e8bf1430456a677414420b40c7153b4b7b1b8d4bd7c6d34bb",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1817, original publication 1813; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-05-25T20:09:42.983775+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #1342",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1342",
+      "resolved_url": "https://www.gutenberg.org/ebooks/1342",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:06.660381+00:00",
+      "response_sha256": "9d94053f32bfa304b1d83131db46992a2f6660563e815a333b8f7f6fdfc96875"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1342.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1342/pg1342.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:12.101100+00:00",
+      "response_sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Austen, Jane, 1775-1817"
+      ],
+      "Title": [
+        "Pride and Prejudice"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Pride_and_Prejudice",
+        "This title is also available as eBook #42671 ."
+      ],
+      "Credits": [
+        "Chuck Greif and the Online Distributed Proofreading Team at www.pgdp.net (This file was produced from images available at The Internet Archive)"
+      ],
+      "Reading Level": [
+        "Reading ease score: 69.2 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "England -- Fiction",
+        "Young women -- Fiction",
+        "Love stories",
+        "Sisters -- Fiction",
+        "Domestic fiction",
+        "Courtship -- Fiction",
+        "Social classes -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "1342"
+      ],
+      "Release Date": [
+        "Jun 1, 1998"
+      ],
+      "Last Update": [
+        "Sep 29, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "190246 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 29347,
+          "length": 4454
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 33814,
+          "length": 4281
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 38109,
+          "length": 9544
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 47666,
+          "length": 5919
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 53597,
+          "length": 5250
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 58860,
+          "length": 12975
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 71849,
+          "length": 11146
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 83010,
+          "length": 10950
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 93973,
+          "length": 9733
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 103718,
+          "length": 12436
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 116167,
+          "length": 8916
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 125097,
+          "length": 3924
+        },
+        {
+          "chapter_id": "chapter-013",
+          "offset": 129035,
+          "length": 9277
+        },
+        {
+          "chapter_id": "chapter-014",
+          "offset": 138325,
+          "length": 6428
+        },
+        {
+          "chapter_id": "chapter-015",
+          "offset": 144766,
+          "length": 9780
+        },
+        {
+          "chapter_id": "chapter-016",
+          "offset": 154560,
+          "length": 19020
+        },
+        {
+          "chapter_id": "chapter-017",
+          "offset": 173595,
+          "length": 7264
+        },
+        {
+          "chapter_id": "chapter-018",
+          "offset": 180875,
+          "length": 29113
+        },
+        {
+          "chapter_id": "chapter-019",
+          "offset": 210002,
+          "length": 10650
+        },
+        {
+          "chapter_id": "chapter-020",
+          "offset": 220665,
+          "length": 9154
+        },
+        {
+          "chapter_id": "chapter-021",
+          "offset": 229833,
+          "length": 11267
+        },
+        {
+          "chapter_id": "chapter-022",
+          "offset": 241115,
+          "length": 9988
+        },
+        {
+          "chapter_id": "chapter-023",
+          "offset": 251119,
+          "length": 9299
+        },
+        {
+          "chapter_id": "chapter-024",
+          "offset": 260433,
+          "length": 10803
+        },
+        {
+          "chapter_id": "chapter-025",
+          "offset": 271250,
+          "length": 8583
+        },
+        {
+          "chapter_id": "chapter-026",
+          "offset": 279848,
+          "length": 12748
+        },
+        {
+          "chapter_id": "chapter-027",
+          "offset": 292612,
+          "length": 7203
+        },
+        {
+          "chapter_id": "chapter-028",
+          "offset": 299832,
+          "length": 8215
+        },
+        {
+          "chapter_id": "chapter-029",
+          "offset": 308062,
+          "length": 13647
+        },
+        {
+          "chapter_id": "chapter-030",
+          "offset": 321723,
+          "length": 7051
+        },
+        {
+          "chapter_id": "chapter-031",
+          "offset": 328789,
+          "length": 8721
+        },
+        {
+          "chapter_id": "chapter-032",
+          "offset": 337526,
+          "length": 8441
+        },
+        {
+          "chapter_id": "chapter-033",
+          "offset": 345984,
+          "length": 10348
+        },
+        {
+          "chapter_id": "chapter-034",
+          "offset": 356348,
+          "length": 11982
+        },
+        {
+          "chapter_id": "chapter-035",
+          "offset": 368345,
+          "length": 16977
+        },
+        {
+          "chapter_id": "chapter-036",
+          "offset": 385338,
+          "length": 11782
+        },
+        {
+          "chapter_id": "chapter-037",
+          "offset": 397137,
+          "length": 7765
+        },
+        {
+          "chapter_id": "chapter-038",
+          "offset": 404920,
+          "length": 5937
+        },
+        {
+          "chapter_id": "chapter-039",
+          "offset": 410873,
+          "length": 8769
+        },
+        {
+          "chapter_id": "chapter-040",
+          "offset": 419655,
+          "length": 9171
+        },
+        {
+          "chapter_id": "chapter-041",
+          "offset": 428840,
+          "length": 12983
+        },
+        {
+          "chapter_id": "chapter-042",
+          "offset": 441838,
+          "length": 10618
+        },
+        {
+          "chapter_id": "chapter-043",
+          "offset": 452472,
+          "length": 27444
+        },
+        {
+          "chapter_id": "chapter-044",
+          "offset": 479931,
+          "length": 13357
+        },
+        {
+          "chapter_id": "chapter-045",
+          "offset": 493302,
+          "length": 10084
+        },
+        {
+          "chapter_id": "chapter-046",
+          "offset": 503401,
+          "length": 16910
+        },
+        {
+          "chapter_id": "chapter-047",
+          "offset": 520327,
+          "length": 22287
+        },
+        {
+          "chapter_id": "chapter-048",
+          "offset": 542631,
+          "length": 12542
+        },
+        {
+          "chapter_id": "chapter-049",
+          "offset": 555188,
+          "length": 12208
+        },
+        {
+          "chapter_id": "chapter-050",
+          "offset": 567408,
+          "length": 12467
+        },
+        {
+          "chapter_id": "chapter-051",
+          "offset": 579888,
+          "length": 11203
+        },
+        {
+          "chapter_id": "chapter-052",
+          "offset": 591105,
+          "length": 16537
+        },
+        {
+          "chapter_id": "chapter-053",
+          "offset": 607657,
+          "length": 16049
+        },
+        {
+          "chapter_id": "chapter-054",
+          "offset": 623720,
+          "length": 8808
+        },
+        {
+          "chapter_id": "chapter-055",
+          "offset": 632541,
+          "length": 12945
+        },
+        {
+          "chapter_id": "chapter-056",
+          "offset": 645500,
+          "length": 15295
+        },
+        {
+          "chapter_id": "chapter-057",
+          "offset": 660810,
+          "length": 9394
+        },
+        {
+          "chapter_id": "chapter-058",
+          "offset": 670220,
+          "length": 13632
+        },
+        {
+          "chapter_id": "chapter-059",
+          "offset": 683866,
+          "length": 13517
+        },
+        {
+          "chapter_id": "chapter-060",
+          "offset": 697396,
+          "length": 8686
+        },
+        {
+          "chapter_id": "chapter-061",
+          "offset": 706096,
+          "length": 7152
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "fcf234e0476cc6af8b3f604399bf3d7c4b72931bdf2af276ab4cc78caf938d5c",
+    "legacy_content_sha256": "bdf431c50329d7f3fd9d0fe5ac4026050fe2f76cdc553d392ca223f2c54c5568",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json",
+    "current_declared_content_sha256": "4b68459abff92d885d2d493ad052e8cdba6308ebf78f24508c6410cce683c276"
+  },
+  "author_death_year": 1817,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "9d94053f32bfa304b1d83131db46992a2f6660563e815a333b8f7f6fdfc96875",
+    "url": "https://www.gutenberg.org/ebooks/1342",
+    "author_catalog_strings": [
+      "Austen, Jane, 1775-1817"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 61,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "7f973056dde36493c6140889014efae0517974a9baafb7b6563c98e007b60497"
+      },
+      {
+        "id": "chapter-002",
+        "sha256": "c7c345d3b432d5629f30754ccbcc3762a0a614c8870c5c0a17fe70c5009f1335"
+      },
+      {
+        "id": "chapter-003",
+        "sha256": "5cd3fa754fd40adb542a25d7049452344d3a9e3c3cb36e5a660ed148026670c6"
+      },
+      {
+        "id": "chapter-004",
+        "sha256": "c6537936b1e75fdc96261a4b38ae5891e0f7982839aeedb82fbda76cd33d3932"
+      },
+      {
+        "id": "chapter-005",
+        "sha256": "14f2998d2bf984ab44cd53e95383b0bb3eca666bddd7f845b2cb462d66ed75e7"
+      },
+      {
+        "id": "chapter-006",
+        "sha256": "b342fd38ee0074070e1829acdffe0e7a3dee4eaf7b80b7722c9f3189b1d1f740"
+      },
+      {
+        "id": "chapter-007",
+        "sha256": "e4a29cd9be452d388db10b2724b072765b0f3f304573f3c875ee074eaefcbebf"
+      },
+      {
+        "id": "chapter-008",
+        "sha256": "bfb3a99c2c03daa77b600fbf8abbf921a43dd6e8621fbe7b74a5e65066112c6b"
+      },
+      {
+        "id": "chapter-009",
+        "sha256": "fc0a0b00ee239ba17481bff31bcbfe06462c0374dfea2e237c53cd5b60261c9d"
+      },
+      {
+        "id": "chapter-010",
+        "sha256": "59edfc40fd0c4e4037e7f93f772b01a2a006347d5b290a890c240171adad6f50"
+      },
+      {
+        "id": "chapter-011",
+        "sha256": "501be81ef6fbd183112fd9cca2844723082d345de2b9c3af0e984188c7dbd39e"
+      },
+      {
+        "id": "chapter-012",
+        "sha256": "4d1a90d5de26aa0726b20a56a14659d1fbb8cd1af4706b99a95d539c90b934ef"
+      },
+      {
+        "id": "chapter-013",
+        "sha256": "5965c684a2475ab5e6254c3744460f1cd39ea54551839ba89e8425bba342488c"
+      },
+      {
+        "id": "chapter-014",
+        "sha256": "e20779de1ad7b8f1aa2ecb2857c7d0193d17b7f62075e471d2dedadf34b82ba0"
+      },
+      {
+        "id": "chapter-015",
+        "sha256": "bcac77270006bb587fcceb6ab8e9c0aee881417c8c98368ae572f8011d15bc63"
+      },
+      {
+        "id": "chapter-016",
+        "sha256": "5add925568a7c32bb601fc3a60b9e3c91fa02c62e11018b5b5408c6db6c3a31f"
+      },
+      {
+        "id": "chapter-017",
+        "sha256": "428a51e79bdf07c730412b24f0fb4e84cb6b106ded002a6f5bd9c03a3a7e9731"
+      },
+      {
+        "id": "chapter-018",
+        "sha256": "05162e6e750426f335c9f34ec2aefb660c58a685ad3b128c57b763458678fcbf"
+      },
+      {
+        "id": "chapter-019",
+        "sha256": "5d9eaeaf5fd81f75c50695ee44a72da06097ecdd308ed8eea13354e72f1ff466"
+      },
+      {
+        "id": "chapter-020",
+        "sha256": "58be3fe018fa969c2fc0f33825b49fc10baf9d692cd8b6a8b71f3d31a7060368"
+      },
+      {
+        "id": "chapter-021",
+        "sha256": "040971c3b0fa82501e78c092884de69808acc1ff439d646313076d06abf818d0"
+      },
+      {
+        "id": "chapter-022",
+        "sha256": "cc63444a643a3df41a2f9b0c89dc086700a38de2705ef648e6b4851d416e4d9c"
+      },
+      {
+        "id": "chapter-023",
+        "sha256": "b0f4022f6bbb001515426507824264e794d6cf436495624cc37641c1dc28cf54"
+      },
+      {
+        "id": "chapter-024",
+        "sha256": "eda0ce1050edfc50415171289194860a7fb607b1fb915346cc06beafc860a254"
+      },
+      {
+        "id": "chapter-025",
+        "sha256": "a08a7f2170f914d8ec82697274ef20a3f0712f1cf9d3b8571b205a294fa9f7dd"
+      },
+      {
+        "id": "chapter-026",
+        "sha256": "e65c51516e8ec63ef948e515847b2da56f6805ca01ff1836580c15768efe04ee"
+      },
+      {
+        "id": "chapter-027",
+        "sha256": "26d9c763ed865103ec16de7a001b8c4a5c0ae06b9a6c28fef2984236fc571f3d"
+      },
+      {
+        "id": "chapter-028",
+        "sha256": "5e8d91e71341f741331f6274489da2f4a2c4d7c1670ecd025c64e5efdb75ee17"
+      },
+      {
+        "id": "chapter-029",
+        "sha256": "78c7fdadc517cb1c4355234062c863948d516b23c2be6e8cb5ffdaf4e62331dd"
+      },
+      {
+        "id": "chapter-030",
+        "sha256": "150b6579cbf22b645c0236fb48ef90c8b6058c9905298b623101cee3a3fea923"
+      },
+      {
+        "id": "chapter-031",
+        "sha256": "e331c4fc8b701976a7caf8ab8a03dbd4174483775f7e7623bc8799997c6af3cc"
+      },
+      {
+        "id": "chapter-032",
+        "sha256": "ed496d283f2fc7199c7281ffdb9201e82ef676396ff7ed9954b4f8e0a3f91cf4"
+      },
+      {
+        "id": "chapter-033",
+        "sha256": "78ac9ae10e05db2e58d4085566ea3a81d87d7ebe296e43608aad05e2cadc48ae"
+      },
+      {
+        "id": "chapter-034",
+        "sha256": "993dafc3d4ca76327a0e24bfefcc4e438ebf0b9afaad17e61cb1d3878ef41b44"
+      },
+      {
+        "id": "chapter-035",
+        "sha256": "756f2855ac48983f5582830ebd0dc48db76d1ca2af2b519cdf940a5392098a8d"
+      },
+      {
+        "id": "chapter-036",
+        "sha256": "99153530cec4068183995ac8ab09b8d8d2389a20f700e7c7d07eff844afe6a69"
+      },
+      {
+        "id": "chapter-037",
+        "sha256": "1b065d72ff65ada13ea55a623aa0d78a2890b91e3c11e45201a3886763d2949b"
+      },
+      {
+        "id": "chapter-038",
+        "sha256": "918174c7f7dc25f7b58a6b2b7306dedd145997b83059e12e99378cb9d4ec5733"
+      },
+      {
+        "id": "chapter-039",
+        "sha256": "649e572965c345ef65a7249adadddaa7cba0373c6671c8890168fa1180c57347"
+      },
+      {
+        "id": "chapter-040",
+        "sha256": "c7f4f6a2b50509f021ff3ae72ccef01fd8d73629e00788f1dc4613279090eb63"
+      },
+      {
+        "id": "chapter-041",
+        "sha256": "778f7a8beba1cbf6f19d144ba7fd1e12ef47dfffa38870008adbf2c8dae8e9ff"
+      },
+      {
+        "id": "chapter-042",
+        "sha256": "9f21982ecdaf916e69b90d301828169d4125e0086301c8a12a4f2e83a3e60f2c"
+      },
+      {
+        "id": "chapter-043",
+        "sha256": "f352dfb57af0782897af8d0c5b40418218d38843f9804a702cd051132f9ef3e6"
+      },
+      {
+        "id": "chapter-044",
+        "sha256": "ca5e65a9bbec6fb1db1c95f022d6aa58a3062b51b8ce6fdc1b07d93a0a92d966"
+      },
+      {
+        "id": "chapter-045",
+        "sha256": "638f8aaa2c5a6431bc3e93855419b38f74de9b1eb10a05cedfb08f2010592ef5"
+      },
+      {
+        "id": "chapter-046",
+        "sha256": "1c345789f325d473bfc61929325dadaa49970f5f920f31e1ba96ae14eb32b097"
+      },
+      {
+        "id": "chapter-047",
+        "sha256": "267a520a85f84528de22cf50288dc2dbe92826a3b69cf424421de7649c1b9931"
+      },
+      {
+        "id": "chapter-048",
+        "sha256": "0d3d8c2b342814228115bd0deb87cdcfde824b0578b1dcd3915738b338a33a29"
+      },
+      {
+        "id": "chapter-049",
+        "sha256": "965471a977afba163d3806442f058a6fe368bd49aaabfedb2643b588e0c86a5d"
+      },
+      {
+        "id": "chapter-050",
+        "sha256": "0ff74dfb9dc5e81662dbf7a38c65713cd8f062e55ee4bcb3462f0e76cc2ffcf5"
+      },
+      {
+        "id": "chapter-051",
+        "sha256": "fb64e6cb8527c3ae6c08106b6c035fb25178ebe886e40a58d7021a70807d0313"
+      },
+      {
+        "id": "chapter-052",
+        "sha256": "c5f14c7aec053e1d7ae9abc2aa9053577f3f8b28988cd1189d16c9d0e06c106f"
+      },
+      {
+        "id": "chapter-053",
+        "sha256": "92b316ba6f4a71334f698fe75cd36cb7ec4ab9560d3422f42713f1deacd354e5"
+      },
+      {
+        "id": "chapter-054",
+        "sha256": "96d58e934c480d82d68f3f3395ab62b3cbfb8beb1b516ff38138a7e439931e7c"
+      },
+      {
+        "id": "chapter-055",
+        "sha256": "938dbd7b26f2ba1cf8fc50e67698895a5686244aa09e0ce79c3949b9eb428de0"
+      },
+      {
+        "id": "chapter-056",
+        "sha256": "64c65773c25447fe6f8ad168a7fee421c8101799cf5096385b4ee381eccef574"
+      },
+      {
+        "id": "chapter-057",
+        "sha256": "73b4eaaf35be662b841cc9cdbcda86c2b09a6071725c77c6025264c4163575e8"
+      },
+      {
+        "id": "chapter-058",
+        "sha256": "4ff21e71f1bf3180c76b2ead98a17e57bb0d92ddb06d738e377e78ee3741258e"
+      },
+      {
+        "id": "chapter-059",
+        "sha256": "a20dc1c441c9fcc9aa726b2524b22a3e16bcbaba90a394a930f56fbedbe411ea"
+      },
+      {
+        "id": "chapter-060",
+        "sha256": "46943c51da6a22a5a6231ee957f0221b6cf8eaf260fd8c5cc5188c6207f655e7"
+      },
+      {
+        "id": "chapter-061",
+        "sha256": "d0a745a05ced4e42a4e634711e8ccadab9df7cbd7c0dd5403c846e77df41fea3"
+      }
+    ],
+    "content_sha256": "4b68459abff92d885d2d493ad052e8cdba6308ebf78f24508c6410cce683c276"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "fcf234e0476cc6af8b3f604399bf3d7c4b72931bdf2af276ab4cc78caf938d5c",
+        "content_hash": "bdf431c50329d7f3fd9d0fe5ac4026050fe2f76cdc553d392ca223f2c54c5568",
+        "provenance_hash": "d6a4a3e80cef639d4650f95d8322db7edfdf9200a52e401de2b5290cdcfe2184",
+        "source_url": "https://www.gutenberg.org/ebooks/1342",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:12:31.080597+00:00",
+      "reason": "old 60-chapter import lacked chapter61 and differs from current explicit #1342 text-only sourceedition; no old approval is transferred"
+    }
+  ],
+  "original_publication_year": 1813,
+  "edition_publication_year": 1894,
+  "publication_region": "India",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:19:39.153654+00:00",
+  "edition_migration_evidence": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1342",
+      "resolved_url": "https://www.gutenberg.org/ebooks/1342",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:06.660381+00:00",
+      "response_sha256": "9d94053f32bfa304b1d83131db46992a2f6660563e815a333b8f7f6fdfc96875"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1342.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1342/pg1342.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:12.101100+00:00",
+      "response_sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75"
+    },
+    "chapter_count": 61,
+    "removed_illustration_blocks": [
+      {
+        "sha256": "c813a3aabb7c0f295a42fdaa7c5b9aa89f13cc224476386878669708e396c0c4",
+        "length": 85
+      },
+      {
+        "sha256": "1847a118db8b8ce96f371821b9efd1231d99425681c5e3c7b3a8fa61649ad9d7",
+        "length": 76
+      },
+      {
+        "sha256": "bc0b708f1d8f055dfb74cec20100d3df2ca846c9150b614db9701d4999852829",
+        "length": 87
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "84339fe5b5d2f0c5f2f607dcba896893242c07c47c003d7470dd41ae2744754f",
+        "length": 33
+      },
+      {
+        "sha256": "038d4827b0cdef72f79bf6234fb0c03a9d3a7db453ef559f41064066158b5a41",
+        "length": 46
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "815d7f51e11149071e792af8e5a29b9f348bb9d359644b5e52909aa0dc60c00c",
+        "length": 83
+      },
+      {
+        "sha256": "36302b205604a05482653c78694953848b55365f34a3fda27cdb1b0b0780adfe",
+        "length": 72
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "0f7945a0725a4feee8f4d57500cadd1879abbc84d5789b6e1c423129e9c853aa",
+        "length": 51
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "bc73923405e1227a6fcbb3af8abb18b53d4fbfdb1f71077eccd505f41bb70c1f",
+        "length": 84
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "b663cc6e989580e53e059dddd458deb286c86117095b2739522cc741f073ee77",
+        "length": 79
+      },
+      {
+        "sha256": "256b1faf5a1474679ff688bd0ed122cc6c6d6f9e168884d858602150b616f20a",
+        "length": 83
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "e26e41eed4accf20153618ad3ff897200b3c5383db4a59ec5879d2ffbdbf5d13",
+        "length": 36
+      },
+      {
+        "sha256": "c3af4ced62a13f440bc26c0f27f3b899b7b04dabf12207974897b81c7583dde1",
+        "length": 39
+      },
+      {
+        "sha256": "cf66514ee6025251cbae64fc544e2b12e0cdf6df918fb899957c2a0d188f1e68",
+        "length": 37
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "18132923d31db1df450891310bc15fbec58b5729d6d5583731821153ebc38dc1",
+        "length": 94
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "fc463a7b0989a133d55319d5e78fe3c8bc3bc6894be4ead3b8b3dbcc45cebb5a",
+        "length": 87
+      },
+      {
+        "sha256": "7936cd3dc34bb784d1dc49ba3ec9e3bc8ee4140c9e2f39e37e7f00e97679dc87",
+        "length": 79
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "eadbf047c1a2846b742252dc826f483451ee5dd39eedf1c63931c86e3760a80e",
+        "length": 71
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "0514b7365df9236ffee60771d71cd10489b173dbbf76235c4e1ebeb75090502f",
+        "length": 85
+      },
+      {
+        "sha256": "fc35b70399b122156cba44a69aa31360e9f4ac6ccd6b35e0e539b7d1a395ef82",
+        "length": 65
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "0b98ab7ba21fc7764c66f6beaaad0c9a3400b5c1a45d5ee550c50c46b26f7e91",
+        "length": 101
+      },
+      {
+        "sha256": "dc41f6c3522bd1e5eed0070a25f3c75196a073798269586cfe97d20f4ddabfb6",
+        "length": 68
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "8d77f644eb37d2da490e82c89e5f77ef23dca3d959a4cd484b1881defe2beb69",
+        "length": 56
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "aa4b7cd7daf6dab985aa7706ec2219c9b9bd24975a259a5b4a6338e13d3d6f2b",
+        "length": 76
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "2c7bb8e4fa0a0dcbd601a653c1971e3cfd4823428c810882849a4614253cd97f",
+        "length": 87
+      },
+      {
+        "sha256": "5381497ef9d812011b5853fccd09ed6f75f2fc38417b1c291105741b041f6ac8",
+        "length": 100
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "04657836c381cb2aa37f873b258f3249ec5fbd76fefa82811d470a715847b2ca",
+        "length": 60
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "c1ada6f2b66628cac3541a1c419fbe12fb097911b163849cbb3d7d4a0a15a3f4",
+        "length": 95
+      },
+      {
+        "sha256": "662f21a75913291cf567a9497056ed3a71fae818da0cf65a706080371e5469c5",
+        "length": 50
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "031e1542257949abee43777386c7c31dd6f3a1b8e59f874f93ec82172565aa90",
+        "length": 38
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "516a8a176c7d80f288aaa01d477241564639abd7f3b665c465e678590a5b5ba9",
+        "length": 36
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "e3431b0955c6cd948388c8d923ccc83f268c1b398c79acb59f00237c3a1324c5",
+        "length": 90
+      },
+      {
+        "sha256": "235c16c90ff7c2fd13d10713c75a7e7120278702882dbdddabe261f7fb3ff4f9",
+        "length": 116
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "6790875118523ca3d129900c4df2d50abf6778f59d5eca02748d166c85a75331",
+        "length": 55
+      },
+      {
+        "sha256": "a366058c259cacfb059d4f5abd31aa818282c3403509a8c2c60f362db9c98d91",
+        "length": 86
+      },
+      {
+        "sha256": "8cd105c8449e2dc4a9c7b730b22c035f642be0164710136273eb058735922e65",
+        "length": 29
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "9e6bbb7360ce536be298443cb0a114630936697464322169d2204a0abeb25735",
+        "length": 80
+      },
+      {
+        "sha256": "8eaa78126497db1fe1f67d4e6b75a08dde4bc1707328b9dc39d3827d3dba1040",
+        "length": 31
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "bbb5c81385f8f2e75a1513790716974afde713cf1f1fbac27b40ffb92d746ae0",
+        "length": 42
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7fffe40e722c4df905a2d95346c5a406943291b6b824e3830e550e812f6c6be",
+        "length": 89
+      },
+      {
+        "sha256": "5713da750ad2ff69439620f325d66f2167e79f09ef7355ec8e570606c4892b93",
+        "length": 41
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "d0d2f5e6c791dc3279f4f0d8cffea3fa871f0e60f9ae33016d2b72b179de4dad",
+        "length": 62
+      },
+      {
+        "sha256": "1d17eaf61437b509c0a770a9e79f36ac05f53b7c666641a4866ab30fb4eec5ab",
+        "length": 50
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "73d25c198946ccbdfb46413b56b4e10d900f5b42e0c43d210af3b0cfe3e31371",
+        "length": 59
+      },
+      {
+        "sha256": "be5ebb84313dfd66009e2c17747f0957adeba1789eb7e77ebb467318d3804e88",
+        "length": 53
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "e54ab5642e4c0f0fb5c37a57436864e99cf26322e5e793a9d5569c240149339e",
+        "length": 67
+      },
+      {
+        "sha256": "f7e02e4961af51261a68622f9757cc176aef4b6d71085c41756f5556a4ebae66",
+        "length": 96
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "baf0c48fa3149497a770e485403a7f8136a8453043d82dbcb644dcae40b8d5a8",
+        "length": 73
+      },
+      {
+        "sha256": "93eb3e4a06d8aab919c30fd2a489fe6cd262cda25fb291856d915af039113253",
+        "length": 46
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "658f06b95c3aabcc48e391a00444b6c214e86b411d41696d0c715129f2d4dd36",
+        "length": 52
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "7f5dc0083ca19ef4771998cda787c99e423e29f2fa0838ed6e5d3fe1000593e3",
+        "length": 93
+      },
+      {
+        "sha256": "618d6cf503f168833d676c0f6440e786a8e7d958c43ae1220c3aa84ef3d9cff8",
+        "length": 45
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "c87ab95410ec7a122d744b4e8451b9d22beb9ada6f046bebfcd9ffec81530b47",
+        "length": 54
+      },
+      {
+        "sha256": "b1f2edc788538bb23b2c6932360cc8b7e8972398e19cb1f1d448c134b2824853",
+        "length": 68
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "0ebf7221a61df64700ae045296533d98b0e9245d56055d09ce01727910f025b4",
+        "length": 31
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "9fa8a71b8ae0fb9b15466c76b9221ca3e9aa6201a4ed0fce73a837cfa8948bf9",
+        "length": 94
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "0fcbbf01b5beaa805277cd3288f978b0b2de0ce2749a77a28e0c2169e355b8f7",
+        "length": 98
+      },
+      {
+        "sha256": "cc5e4a4f4efc6c0de0b2ddbf7710fc4ee7bfcc147d53a80f5465c41f985f7585",
+        "length": 79
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "5da167b32def112d14cd916e38738884afafa7d603a1ca39115b043ae98de9a6",
+        "length": 82
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "aeb549966d8e2aeba08d155e2edc446b30918e609ad9555a713a130b96a84f74",
+        "length": 49
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "724963ef3888dd1153b38a4bce110f4935a06b87d8c447bdd1ea2538aa0ccffd",
+        "length": 39
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "0dc940dad71d14747f7abc44d68a6e983091e514e3be5f707142e7e2d7e6a4ef",
+        "length": 52
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "647a0592367902be501a40c31f6f534fcbbd634f181d8b4fdb017279b4e2657c",
+        "length": 53
+      },
+      {
+        "sha256": "63666b50ffe76e99ea6e6fa82eb33b04a49136c948f5243eabf06bf35f120b2b",
+        "length": 64
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "986b63cb37dad8d19dc9869d6303e7a2cb91cea7308e9eb1110ad33b3b0b5b96",
+        "length": 76
+      },
+      {
+        "sha256": "ce913fe82d690e258aa17509fa476c793b63e6d6f4c582e08c164cd2f11a2fec",
+        "length": 45
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "767e0ce1e187e97770c8fed1a933d17a1c5385a29da46f3e54b570ec8a66abd2",
+        "length": 79
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "181dbfdd7ff622e53eaf2bd8b984413899ed54a1f6c303367f0a0be9b6c992ac",
+        "length": 87
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "33bc4fee204ba3e01c93e1ee2725244c62ca7f48e7a45d528a8a41a01e2eda47",
+        "length": 80
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "length": 14
+      },
+      {
+        "sha256": "4a7c5f8c38f679d30156277b235143b800217720c24ad18e14439ddb1c75554a",
+        "length": 128
+      }
+    ],
+    "removed_preface_author": "George Saintsbury",
+    "illustrator_not_imported": "Hugh Thomson",
+    "narrative_start": "It is a truth universally acknowledged",
+    "original_first_publication_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json",
+    "publication_authorized": false,
+    "approval_transfer_permitted": false
+  },
+  "country_of_origin": "United Kingdom",
+  "rights_tier": "A",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1342.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1342/pg1342.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:12.101100+00:00",
+      "response_sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 61,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 29347,
+          "length": 4454
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 33814,
+          "length": 4281
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 38109,
+          "length": 9544
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 47666,
+          "length": 5919
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 53597,
+          "length": 5250
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 58860,
+          "length": 12975
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 71849,
+          "length": 11146
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 83010,
+          "length": 10950
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 93973,
+          "length": 9733
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 103718,
+          "length": 12436
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 116167,
+          "length": 8916
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 125097,
+          "length": 3924
+        },
+        {
+          "chapter_id": "chapter-013",
+          "offset": 129035,
+          "length": 9277
+        },
+        {
+          "chapter_id": "chapter-014",
+          "offset": 138325,
+          "length": 6428
+        },
+        {
+          "chapter_id": "chapter-015",
+          "offset": 144766,
+          "length": 9780
+        },
+        {
+          "chapter_id": "chapter-016",
+          "offset": 154560,
+          "length": 19020
+        },
+        {
+          "chapter_id": "chapter-017",
+          "offset": 173595,
+          "length": 7264
+        },
+        {
+          "chapter_id": "chapter-018",
+          "offset": 180875,
+          "length": 29113
+        },
+        {
+          "chapter_id": "chapter-019",
+          "offset": 210002,
+          "length": 10650
+        },
+        {
+          "chapter_id": "chapter-020",
+          "offset": 220665,
+          "length": 9154
+        },
+        {
+          "chapter_id": "chapter-021",
+          "offset": 229833,
+          "length": 11267
+        },
+        {
+          "chapter_id": "chapter-022",
+          "offset": 241115,
+          "length": 9988
+        },
+        {
+          "chapter_id": "chapter-023",
+          "offset": 251119,
+          "length": 9299
+        },
+        {
+          "chapter_id": "chapter-024",
+          "offset": 260433,
+          "length": 10803
+        },
+        {
+          "chapter_id": "chapter-025",
+          "offset": 271250,
+          "length": 8583
+        },
+        {
+          "chapter_id": "chapter-026",
+          "offset": 279848,
+          "length": 12748
+        },
+        {
+          "chapter_id": "chapter-027",
+          "offset": 292612,
+          "length": 7203
+        },
+        {
+          "chapter_id": "chapter-028",
+          "offset": 299832,
+          "length": 8215
+        },
+        {
+          "chapter_id": "chapter-029",
+          "offset": 308062,
+          "length": 13647
+        },
+        {
+          "chapter_id": "chapter-030",
+          "offset": 321723,
+          "length": 7051
+        },
+        {
+          "chapter_id": "chapter-031",
+          "offset": 328789,
+          "length": 8721
+        },
+        {
+          "chapter_id": "chapter-032",
+          "offset": 337526,
+          "length": 8441
+        },
+        {
+          "chapter_id": "chapter-033",
+          "offset": 345984,
+          "length": 10348
+        },
+        {
+          "chapter_id": "chapter-034",
+          "offset": 356348,
+          "length": 11982
+        },
+        {
+          "chapter_id": "chapter-035",
+          "offset": 368345,
+          "length": 16977
+        },
+        {
+          "chapter_id": "chapter-036",
+          "offset": 385338,
+          "length": 11782
+        },
+        {
+          "chapter_id": "chapter-037",
+          "offset": 397137,
+          "length": 7765
+        },
+        {
+          "chapter_id": "chapter-038",
+          "offset": 404920,
+          "length": 5937
+        },
+        {
+          "chapter_id": "chapter-039",
+          "offset": 410873,
+          "length": 8769
+        },
+        {
+          "chapter_id": "chapter-040",
+          "offset": 419655,
+          "length": 9171
+        },
+        {
+          "chapter_id": "chapter-041",
+          "offset": 428840,
+          "length": 12983
+        },
+        {
+          "chapter_id": "chapter-042",
+          "offset": 441838,
+          "length": 10618
+        },
+        {
+          "chapter_id": "chapter-043",
+          "offset": 452472,
+          "length": 27444
+        },
+        {
+          "chapter_id": "chapter-044",
+          "offset": 479931,
+          "length": 13357
+        },
+        {
+          "chapter_id": "chapter-045",
+          "offset": 493302,
+          "length": 10084
+        },
+        {
+          "chapter_id": "chapter-046",
+          "offset": 503401,
+          "length": 16910
+        },
+        {
+          "chapter_id": "chapter-047",
+          "offset": 520327,
+          "length": 22287
+        },
+        {
+          "chapter_id": "chapter-048",
+          "offset": 542631,
+          "length": 12542
+        },
+        {
+          "chapter_id": "chapter-049",
+          "offset": 555188,
+          "length": 12208
+        },
+        {
+          "chapter_id": "chapter-050",
+          "offset": 567408,
+          "length": 12467
+        },
+        {
+          "chapter_id": "chapter-051",
+          "offset": 579888,
+          "length": 11203
+        },
+        {
+          "chapter_id": "chapter-052",
+          "offset": 591105,
+          "length": 16537
+        },
+        {
+          "chapter_id": "chapter-053",
+          "offset": 607657,
+          "length": 16049
+        },
+        {
+          "chapter_id": "chapter-054",
+          "offset": 623720,
+          "length": 8808
+        },
+        {
+          "chapter_id": "chapter-055",
+          "offset": 632541,
+          "length": 12945
+        },
+        {
+          "chapter_id": "chapter-056",
+          "offset": 645500,
+          "length": 15295
+        },
+        {
+          "chapter_id": "chapter-057",
+          "offset": 660810,
+          "length": 9394
+        },
+        {
+          "chapter_id": "chapter-058",
+          "offset": 670220,
+          "length": 13632
+        },
+        {
+          "chapter_id": "chapter-059",
+          "offset": 683866,
+          "length": 13517
+        },
+        {
+          "chapter_id": "chapter-060",
+          "offset": 697396,
+          "length": 8686
+        },
+        {
+          "chapter_id": "chapter-061",
+          "offset": 706096,
+          "length": 7152
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "first_publication_evidence": {
+      "error": "HTTP Error 403: Forbidden",
+      "web_primary_source_verification": {
+        "url": "https://janeaustens.house/jane-austen/novels/pride-and-prejudice/",
+        "retrieved_via": "authenticated agent web retrieval; direct urllib403 retained separately",
+        "verified_at": "2026-10-01T21:05:15.228637+00:00",
+        "quoted_fact": "Pride & Prejudice was published in January 1813",
+        "quote_sha256": "30862bc463757a3d80bc02a2757c09711d6717b54c12c9f84021b8d7f9cf8d7d",
+        "original_publication_year": 1813,
+        "http_response_hash_available": false,
+        "approval_conferred": false
+      }
+    },
+    "author_death_evidence": [
+      "Austen, Jane, 1775-1817"
+    ],
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  }
 }

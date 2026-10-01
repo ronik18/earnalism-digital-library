@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-man-with-the-twisted-lip",
+  "title": "The Man with the Twisted Lip",
+  "generated_at": "2026-10-01T21:08:33.256150+00:00",
+  "content": {
+    "source_hash": "b69b28057f04b091388b4fd21ad6f8ac05144724fc8711284969b3b05ed67557",
+    "content_hash": "8adb78db9dbc3697ba2b2bdb2bac619dee099515fc22fa9ce4d794391f618485",
+    "provenance_hash": "33e7ddbc481995a6ee4b59701b23e8ca96c1c8648855e18050c0d17d72f00c52",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "d8b591d10796449e449e01d7df035b35121a466c54acca3db35809094d512d7c",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Man with the Twisted Lip",
+        "word_count": 9268,
+        "sha256": "606818aa8c38f5c23d1e0cdbed67cafc33cc484a35d3140791fda73c09dbb5ec"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "acf1de07cf6f39556bc775eab899faff85d734e3f9d9b5339dd7fda14a160f2b"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "52d2cd0e80a523f162daa8013dacf1565d66683ebf75d0ae9fbb74d263ee7793",
+    "reader_manifest": "ea45dff003d561890ca214a027343eca0a2a606dc9e9f6d2f1783d9844ecaa53",
+    "source_evidence": "acf1de07cf6f39556bc775eab899faff85d734e3f9d9b5339dd7fda14a160f2b",
+    "approval_evidence": "ae13b0dec32e2f6534485cb5c65aa3716d7b04a90c7264aa6134a7c031bdaa12"
+  },
+  "manifest_sha256": "64630216f41d1bbabc667b5920c5c16339752c702d61773ec8255c79512a5a35"
+}

@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "young-goodman-brown",
+  "title": "Young Goodman Brown",
+  "generated_at": "2026-10-01T21:08:35.412500+00:00",
+  "content": {
+    "source_hash": "6569a27858b3aa4f73b86e1879089d231bf15e4cf1027a25a66530bbd60688d3",
+    "content_hash": "c0952917b250f919d97d849ec8ac271ca8d5b710808f5dad6abffc70304818db",
+    "provenance_hash": "bc05c1a07f993c98e09a0a567641cd75133546c8d44d1d362435562187bcd58d",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "87c633d91298677bc83bf16552e01ad384cac3ef89aeaad74cffee49a1076057",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Young Goodman Brown",
+        "word_count": 5264,
+        "sha256": "4b48d8f85d4f9a38d814e4fe744d3cb8cf23d3dcbcd4e7270d1b76a6084e0f29"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "e5b8f4419785efd0889d9b16dfa9349bb202e7e7a22c13b839674b64995f2c4c"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "70fffd1967531e99d9863ccd1dc20823d9ebc72b2ee04af0d8a37d159b92928e",
+    "reader_manifest": "ac19adcda295b2bdba56b620452d80486984190b178552c0e03eb3ec9da367b3",
+    "source_evidence": "e5b8f4419785efd0889d9b16dfa9349bb202e7e7a22c13b839674b64995f2c4c",
+    "approval_evidence": "f9f827afde34422dc786a875e03bf7185705ee580ba957501c214338c1344028"
+  },
+  "manifest_sha256": "6827e83211469ae2b881d812139d014937e780f2b457ea628b891d898982ebba"
+}

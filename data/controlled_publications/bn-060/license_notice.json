@@ -1,0 +1,22 @@
+{
+  "schema_version": "earnalism.text-license.v1",
+  "slug": "bn-060",
+  "license": "CC-BY-SA-4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "attribution": "ইন্দিরা — বঙ্কিমচন্দ্র চট্টোপাধ্যায়। ১৮৭৩ সংস্করণ; ব্রিটিশ লাইব্রেরির স্ক্যান ও বাংলা উইকিসংকলনের অবদানকারীদের প্রতিলিপি।",
+  "changes": "Source title/chapter headings and page furniture omitted from Reader prose. Facsimile-confirmed page-boundary word splits joined; two omitted paragraphs in chapter six restored from the same facsimile. No newly generated literary text.",
+  "scope": "Reused transcription/formatting adaptation only; not Earnalism-owned covers, trademarks, software or unrelated metadata.",
+  "disclaimer": "The transcription is offered without warranties under the CC BY-SA 4.0 disclaimer. No endorsement by the source contributors is implied.",
+  "source_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)&oldid=1971705",
+  "contributors_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)&action=history",
+  "chapter_sha256": [
+    "c2404852ee9da94b41a4a989edec3f7738397b2ddc98bf6acea225c81eddebe2",
+    "7356cad0f3c20205c6650d52098bb90dac59336c56b0bce0ef1a53f9fa10e302",
+    "43d496cba105a53b39f27e207d6ae73e6dbdecbd35506202c3d831b1ecd6d555",
+    "520e555b325a8d1a722f3534484eb41b5fe58129f651188523c09d65032e195f",
+    "494cee46a4461eaebc67b68e81c447f31831296723e21e1024e5d9500694868a",
+    "1ff67f3b84c1f1e61ac885e90327dc232ec0ce1b49f46b3d635e036bc297429d",
+    "8a15e0ef3f75e2c3a4d9701b16e445d40205ee2391b5b13777162bac33342afc",
+    "d32caf511e719a5e8ae6f776f0dbec32bdcbcf17200fcf184d451dadc0bace3e"
+  ]
+}

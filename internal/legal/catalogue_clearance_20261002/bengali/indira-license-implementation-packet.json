@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "slug": "bn-060",
+  "title": "ইন্দিরা",
+  "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+  "territory": "IN",
+  "scope": "TEXT_READER_ONLY",
+  "original_publication_year": 1873,
+  "source_edition": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩); source title page identifies the 1873 edition and says the text was excerpted from বঙ্গদর্শন",
+  "source_parent_permalink": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)&oldid=1971705",
+  "facsimile_sha256": "664191f5a7e2d8e6bbccd90d1c8ee947aa70f33b5924c1295d77b46f4114f067",
+  "ordered_chapter_bindings": [
+    {
+      "chapter": 1,
+      "source_child_page_revision": 1910625,
+      "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/প্রথম_পরিচ্ছেদ&oldid=1910625",
+      "canonical_chapter_sha256": "c2404852ee9da94b41a4a989edec3f7738397b2ddc98bf6acea225c81eddebe2",
+      "result": "FACSIMILE_CONFIRMED_PAGE_BOUNDARY_SPLITS_JOINED: printed page 4 ends খাই and page 5 begins তেছে; printed page 8 ends লা and page 9 begins ঠির. The canonical readings খাইতেছে and লাঠির follow the continuous source words.",
+      "facsimile_printed_pages": [
+        4,
+        5,
+        8,
+        9
+      ],
+      "facsimile_pdf_pages": [
+        6,
+        7,
+        10,
+        11
+      ]
+    },
+    {
+      "chapter": 2,
+      "source_child_page_revision": 1910623,
+      "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/দ্বিতীয়_পরিচ্ছেদ&oldid=1910623",
+      "canonical_chapter_sha256": "7356cad0f3c20205c6650d52098bb90dac59336c56b0bce0ef1a53f9fa10e302",
+      "result": "MATCH_AFTER_SOURCE_HEADING_REMOVAL"
+    },
+    {
+      "chapter": 3,
+      "source_child_page_revision": 1910622,
+      "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/তৃতীয়_পরিচ্ছেদ&oldid=1910622",
+      "canonical_chapter_sha256": "43d496cba105a53b39f27e207d6ae73e6dbdecbd35506202c3d831b1ecd6d555",
+      "result": "MATCH_AFTER_SOURCE_HEADING_REMOVAL"
+    },
+    {
+      "chapter": 4,
+      "source_child_page_revision": 1910621,
+      "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/চতুর্থ_পরিচ্ছেদ&oldid=1910621",
+      "canonical_chapter_sha256": "520e555b325a8d1a722f3534484eb41b5fe58129f651188523c09d65032e195f",
+      "result": "FACSIMILE_CONFIRMED_PAGE_BOUNDARY_SPLITS_JOINED: printed page 23 ends অ and page 24 begins ধিক; printed page 25 ends আ and page 26 begins মাকে. The canonical readings অধিক and আমাকে preserve the continuous source words.",
+      "facsimile_printed_pages": [
+        23,
+        24,
+        25,
+        26
+      ],
+      "facsimile_pdf_pages": [
+        25,
+        26,
+        27,
+        28
+      ]
+    },
+    {
+      "chapter": 5,
+      "source_child_page_revision": 1910624,
+      "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/পঞ্চম_পরিচ্ছেদ&oldid=1910624",
+      "canonical_chapter_sha256": "494cee46a4461eaebc67b68e81c447f31831296723e21e1024e5d9500694868a",
+      "result": "MATCH_AFTER_SOURCE_HEADING_REMOVAL"
+    },
+    {
+      "chapter": 6,
+      "source_child_page_revision": 1910626,
+      "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/ষষ্ঠ_পরিচ্ছেদ&oldid=1910626",
+      "canonical_chapter_sha256": "1ff67f3b84c1f1e61ac885e90327dc232ec0ce1b49f46b3d635e036bc297429d",
+      "result": "SOURCE_OMISSION_RESTORED_AND_PAGE_BOUNDARY_SPLIT_JOINED: the facsimile-confirmed two-paragraph continuation is present; printed page 32 ends করি and page 33 begins য়াই, supporting the canonical continuous reading করিয়াই.",
+      "facsimile_printed_pages": [
+        32,
+        33
+      ],
+      "facsimile_pdf_pages": [
+        34,
+        35
+      ]
+    },
+    {
+      "chapter": 7,
+      "source_child_page_revision": 1910627,
+      "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/সপ্তম_পরিচ্ছেদ&oldid=1910627",
+      "canonical_chapter_sha256": "8a15e0ef3f75e2c3a4d9701b16e445d40205ee2391b5b13777162bac33342afc",
+      "result": "MATCH_AFTER_SOURCE_HEADING_REMOVAL"
+    },
+    {
+      "chapter": 8,
+      "source_child_page_revision": 1910620,
+      "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/অষ্টম_পরিচ্ছেদ&oldid=1910620",
+      "canonical_chapter_sha256": "d32caf511e719a5e8ae6f776f0dbec32bdcbcf17200fcf184d451dadc0bace3e",
+      "result": "MATCH_AFTER_SOURCE_FURNITURE_REMOVAL"
+    }
+  ],
+  "canonical_text_one_LF_sha256": "f327ffdf08c13085462db4a7c4bf0f2a315a3e4a577cc2f01c3a93b3fdaa2d0b",
+  "license": "CC-BY-SA-4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "attribution": "ইন্দিরা — বঙ্কিমচন্দ্র চট্টোপাধ্যায়। ১৮৭৩ সংস্করণ; ব্রিটিশ লাইব্রেরির স্ক্যান ও বাংলা উইকিসংকলনের অবদানকারীদের প্রতিলিপি।",
+  "contributors_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)&action=history",
+  "changes": "Source title/chapter headings and page furniture omitted from Reader prose. Facsimile-confirmed page-boundary word splits joined; two omitted paragraphs in chapter six restored from the same facsimile. No newly generated literary text.",
+  "license_scope": "Reused transcription/formatting adaptation only; not Earnalism-owned covers, trademarks, software or unrelated metadata.",
+  "distribution_requirements": {
+    "public_notice_visible": false,
+    "license_link_visible": false,
+    "source_and_contributors_links_visible": false,
+    "adapted_transcription_under_same_license": false,
+    "no_additional_restrictions_on_transcription": false,
+    "separate_protected_components_not_relicensed": true
+  },
+  "automated_acceptance_basis": "Owner has delegated autonomous factual clearance decisions. Executor may record automated acceptance after objective conditions above and all immutable hashes are verified; no claim of an unnamed human legal reviewer.",
+  "current_status": "OBJECTIVE_SOURCE_AND_WORK_RIGHTS_COMPLETE_LICENCE_IMPLEMENTATION_REQUIRED",
+  "audio_authorized": false,
+  "publication_authorized_by_this_packet": false
+}

@@ -1,0 +1,90 @@
+{
+  "receipt": {
+    "url": "https://bn.wikisource.org/w/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&titles=%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29.djvu%2F%E0%A7%A8%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29.djvu%2F%E0%A7%A7%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29.djvu%2F%E0%A7%A9%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29.djvu%2F%E0%A7%AA&format=json&formatversion=2&redirects=1",
+    "retrieved_at": "2026-10-01T21:10:39.625769+00:00",
+    "response_sha256": "536d0de82b4e2a13ae7fe073d41e9bea87cab56bd7ea866c90e4aea30c67bdfb"
+  },
+  "data": {
+    "batchcomplete": true,
+    "query": {
+      "pages": [
+        {
+          "pageid": 16394,
+          "ns": 104,
+          "title": "পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/১",
+          "revisions": [
+            {
+              "revid": 1655950,
+              "parentid": 1607670,
+              "timestamp": "2021-11-30T16:27:42Z",
+              "slots": {
+                "main": {
+                  "contentmodel": "proofread-page",
+                  "contentformat": "text/x-wiki",
+                  "content": "<noinclude><pagequality level=\"4\" user=\"Hrishikes\" /></noinclude>{{c|{{xx-larger|{{xxxx-larger|গল্পগুচ্ছ}}}}\n\n[[File:Rabindranath Tagore Signature.svg|300px]]\n{{dhr|15em}}\n[[চিত্র:Visva-Bharati University logo.svg|80px]]\n{{dhr|15em}}\n{{xxx-larger|'''বিশ্বভারতী'''}}}}\n{{dhr}}<noinclude></noinclude>"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pageid": 51067,
+          "ns": 104,
+          "title": "পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/২",
+          "revisions": [
+            {
+              "revid": 1984057,
+              "parentid": 1655955,
+              "timestamp": "2026-06-26T19:42:17Z",
+              "slots": {
+                "main": {
+                  "contentmodel": "proofread-page",
+                  "contentformat": "text/x-wiki",
+                  "content": "<noinclude><pagequality level=\"4\" user=\"Mohaguru\" /></noinclude>{{center|<poem>﻿বিশ্বভারতী সংস্করণ ১৩৩৩ শ্রাবণ\nপুনরমুদ্রণ ১৩৪০ শ্রাবণ, ১৩৪৬ শ্রাবণ, ১৩৪৭ মাঘ\n১৩৪৮ অগ্রহায়ণ, ১৩৪৮ মাঘ, ১৩৪৯ মাঘ, ১৩৫০ বৈশাখ\nনূতন সংস্করণ ১৩৫৩ ভাদ্র\nপুনরমুদ্রণ ১৩৫৭ চৈত্র</poem>}}\n{{dhr| 5em}}\n{{Block center|width=300px|গল্পগুচ্ছের প্রথমখণ্ডে বাংলা ১২৯১ হইতে ১৩০০ সালের মধ্যে প্রকাশিত গল্পগুলি প্রথম প্রকাশের ক্রম-অনুযায়ী সংকলিত হইল। প্রত্যেক রচনার শেষে সাময়িকপত্রে প্রকাশের কাল মুদ্রিত হইয়াছে। সর্বশেষ গল্প ‘খাতা’ সম্ভবতঃ ১২৯৮ সালে হিতবাদী পত্রে প্রকাশিত, সে সম্বন্ধে নিঃসংশয় হওয়া যায় নাই বলিয়া উহা গ্রন্থাকারে প্রথম প্রকাশের তারিখঅনুসারে (ছোট গল্প: ১৫ ফাল্গুন ১৩০০) সংকলিত হইল।}}\n\n{{dhr|5em}}\n\n{{center|<poem>প্রকাশক শ্রীপুলিনবিহারী সেন\nবিশ্বভারতী। ৬।৩ দ্বারকানাথ ঠাকুর লেন। কলিকাতা\nমুদ্রাকর শ্রীসূর্যনারায়ণ ভট্টাচার্য\nতাপসী প্রেস। ৩০ কর্নওআলিস স্ট্রট। কলিকাতা</poem>}}<noinclude></noinclude>"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pageid": 51068,
+          "ns": 104,
+          "title": "পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/৩",
+          "revisions": [
+            {
+              "revid": 1655891,
+              "parentid": 1414598,
+              "timestamp": "2021-11-30T07:10:20Z",
+              "slots": {
+                "main": {
+                  "contentmodel": "proofread-page",
+                  "contentformat": "text/x-wiki",
+                  "content": "<noinclude><pagequality level=\"4\" user=\"Mohaguru\" /></noinclude>{{block center|width=350px|\n{{c|{{x-larger|'''সূচীপত্র'''}}}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/ঘাটের কথা|ঘাটের কথা]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/৭|৩]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/রাজপথের কথা|রাজপথের কথা]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/১৯|১৫]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/দেনাপাওনা|দেনাপাওনা]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/২৪|২০]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/পোস্ট্‌মাস্টার|পোস্ট্‌মাস্টার]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/৩২|২৮]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/গিন্নি|গিন্নি]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/৩৯|৩৫]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/রামকানাইয়ের নির্বুদ্ধিতা|রামকানাইয়ের নির্বুদ্ধিতা]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/৪৪|৪০]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/ব্যবধান|ব্যবধান]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/৫০|৪৬]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/তারাপ্রসন্নের কীর্তি|তারাপ্রসন্নের কীর্তি]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/৫৬|৫২]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/খোকাবাবুর প্রত্যাবর্তন|খোকাবাবুর প্রত্যাবর্তন]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/৬৪|৬০]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/সম্পত্তি-সমর্পণ|সম্পত্তি-সমর্পণ]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/৭৪|৭০]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/দালিয়া|দালিয়া]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/৮৫|৮১]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/কঙ্কাল|কঙ্কাল]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/৯৬|৯২]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/মুক্তির উপায়|মুক্তির উপায়]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/১০৬|১০২]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/ত্যাগ|ত্যাগ]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/১১৭|১১৩]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/একরাত্রি|একরাত্রি]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/১২৬|১২২]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/একটা আষাঢ়ে গল্প|একটা আষাঢ়ে গল্প]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/১৩৪|১৩০]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/জীবিত ও মৃত|জীবিত ও মৃত]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/১৪৪|১৪০]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/স্বর্ণমৃগ|স্বর্ণমৃগ]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/১৫৯|১৫৫]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/রীতিমতো নভেল|রীতিমতো নভেল]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/১৭২|১৬৮]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/জয়পরাজয়|জয়পরাজয়]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/১৭৭|১৭৩]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/কাবুলিওয়ালা|কাবুলিওয়ালা]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/১৯২|১৮৪]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/ছুটি|ছুটি]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/১৯৯|১৯৫]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/সুভা|সুভা]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/২০৮|২০৪]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/মহামায়া|মহামায়া]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/২১৬|২১২]]|dottext=…}}\n}}<noinclude></noinclude>"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pageid": 51069,
+          "ns": 104,
+          "title": "পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/৪",
+          "revisions": [
+            {
+              "revid": 1655890,
+              "parentid": 1562392,
+              "timestamp": "2021-11-30T07:10:14Z",
+              "slots": {
+                "main": {
+                  "contentmodel": "proofread-page",
+                  "contentformat": "text/x-wiki",
+                  "content": "<noinclude><pagequality level=\"4\" user=\"Mohaguru\" /></noinclude>{{block center|width=350px|\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/দানপ্রতিদান|দানপ্রতিদান]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/২২৫|২২১]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/সম্পাদক|সম্পাদক]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/২৩৩|২২৯]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/মধ্যবর্তিনী|মধ্যবর্তিনী]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/২৩৯|২৩৫]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/অসম্ভব কথা|অসম্ভব কথা]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/২৫৫|২৫১]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/শাস্তি|শাস্তি]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/২৬৫|২৬১]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/একটি ক্ষুদ্র পুরাতন গল্প|একটি ক্ষুদ্র পুরাতন গল্প]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/২৭৮|২৭৪]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/সমাপ্তি|সমাপ্তি]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/২৮১|২৭৭]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/সমস্যাপূরণ|সমস্যাপূরণ]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/৩০৪|৩০০]]|dottext=…}}\n{{Dotted TOC page listing||[[গল্পগুচ্ছ (প্রথম খণ্ড)/খাতা|খাতা]]|[[পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/৩১২|৩০৮]]|dottext=…}}\n}}<noinclude></noinclude>"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -3,21 +3,21 @@
   "schema_version": 1,
   "slug": "book-827fdc7aee",
   "title": "রাসমণির ছেলে",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-01T21:16:37.084971+00:00",
   "content": {
     "source_hash": "73789e5480cf2f077ad75c01ed713e5f350480f5e493d4886d4a1f8cabc22f2a",
     "content_hash": "d06687a9cc39eaae8bb09cd5273c9a0047606893924392c225fa1db72a50863b",
     "provenance_hash": "1346c562712008039c3581f121ef749ca1b540fd1a8db8ed11735b03eb6ccaf3",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "0b0800c1a6eaf267902c69dc3766efab33e94f5ad7fea722cb317fdb40198d03",
+    "chapter_index_sha256": "4c7f7a4e93afa26c8cbf1d2fb2648937c7cae8f63c2febfb555c4708796ca4a4",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "রাসমণির ছেলে",
-        "word_count": 10546,
-        "sha256": "8cfb7608593d54bbc1cfbb21e6faf3341f5bd045cb799e4098ea094e6448cae1"
+        "word_count": 10430,
+        "sha256": "db030866ce65882bbeaf082daf4dde5f7901520d0deea070fad646b0bea8f841"
       }
     ]
   },
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "b86ec06bd45d499e0985a611467761bf181b2bf5fec1470ba35597aa14e5ce5e"
+    "evidence_sha256": "58ff1b6f917b0cedc1256dbb7c2917ac366dc44b2fb048f3d01b4c76cac3f09a"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -34,7 +34,6 @@
     "cover_url": "",
     "blockers": [
       "Front cover is required.",
-      "Rights: original_publication_year is required.",
       "Rights: verification_status must be approved before publishing."
     ]
   },
@@ -48,10 +47,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "4f05993f919ac9dc372570ee1b90d0fba08439f54e2fa069f26b467f500e30c0",
-    "reader_manifest": "353089984fab0a40e3bbd757a7ca6718192646fece4aa3041f19d67e6802a6b8",
-    "source_evidence": "b86ec06bd45d499e0985a611467761bf181b2bf5fec1470ba35597aa14e5ce5e",
+    "public_book": "ae3d9b92b4cac8f3941e90d2b4bb249c442fc62282e106dc524adf96ea72cc50",
+    "reader_manifest": "81e918735847de126eac78195f4abf4b4dff24c9946c98f1173d2da50597f94a",
+    "source_evidence": "58ff1b6f917b0cedc1256dbb7c2917ac366dc44b2fb048f3d01b4c76cac3f09a",
     "approval_evidence": "aa96ddddc1290cbd2de44a412b3845d2300524a6198f27c418eac5eb54666494"
   },
-  "manifest_sha256": "a9c3ebdc1aab50d780eff3f75762a87b78b4bde8056b959cd031374e90409505"
+  "manifest_sha256": "bdaafbfa1bf5f2153edbae09fb4fe8c6115a6a511c2ba9413166c19f5e01c0cc"
 }

@@ -9,5 +9,109 @@
   "rights_basis": "Anton Chekhov died 1904; first published 1894. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:21.892920+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #1944",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1944",
+      "resolved_url": "https://www.gutenberg.org/ebooks/1944",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:20.518561+00:00",
+      "response_sha256": "dcb649633ea297df53cbe1af79ace2a10bd3e9a7e60d775a38975bbaf733ee7a"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1944.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1944/pg1944.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:25.612114+00:00",
+      "response_sha256": "fd7c69daa6080772e42bb26c21330c1dc1c5fb3967f40c23789f51e5c260c82f"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Chekhov, Anton Pavlovich, 1860-1904"
+      ],
+      "Title": [
+        "The Witch, and Other Stories"
+      ],
+      "Contents": [
+        "The witch -- Peasant wives -- The post -- The new villa -- Dreams -- The pipe -- Agafya -- At Christmas time -- Gusev -- The student -- In the ravine -- The huntsman -- Happiness -- A Malefactor -- Peasants"
+      ],
+      "Credits": [
+        "Produced by James Rusk and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 80.1 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PG: Language and Literatures: Slavic (including Russian), Languages and Literature"
+      ],
+      "Subject": [
+        "Short stories",
+        "Russia -- Social life and customs -- Fiction",
+        "Chekhov, Anton Pavlovich, 1860-1904 -- Translations into English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "1944"
+      ],
+      "Release Date": [
+        "Feb 26, 2006"
+      ],
+      "Last Update": [
+        "Jan 27, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1533 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 197914,
+          "length": 8301
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "032a7fa2066e75ee2743f96015af671d54d83c1dcf16aa0e164056ab23b34b27",
+    "legacy_content_sha256": "5fcd6d4c4bae12a4355d733daa70626c9c4740ba4c8854453a6da5641ff7bf31",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1904,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "dcb649633ea297df53cbe1af79ace2a10bd3e9a7e60d775a38975bbaf733ee7a",
+    "url": "https://www.gutenberg.org/ebooks/1944",
+    "author_catalog_strings": [
+      "Chekhov, Anton Pavlovich, 1860-1904"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90"
+      }
+    ],
+    "content_sha256": "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90"
+  }
 }

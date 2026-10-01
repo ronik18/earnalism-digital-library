@@ -1,6 +1,6 @@
 {
   "slug": "book-fbdf2991ab",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-01T21:16:37.084971+00:00",
   "files": [
     {
       "file": "approval_evidence 2.json",
@@ -36,7 +36,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "9d8af9527e2ae9f1869b9513bb8b2875bc2c00900369775be248af97bb513f37"
+      "sha256": "8695e460acc0bc47f7cd73cc591aba16cd814a6fa87260e73be448cb2f5d453d"
     }
   ]
 }

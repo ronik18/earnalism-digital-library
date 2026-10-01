@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "ward-no-6",
+  "title": "Ward No. 6",
+  "generated_at": "2026-10-01T21:23:53.140488+00:00",
+  "content": {
+    "source_hash": "d105256944cc16cf2d440209e9d086608457234990d68addc3350a5a9b80e512",
+    "content_hash": "1289360732f7dc04fce81d0675a38c361391675746174274a40f8f088f1747f8",
+    "provenance_hash": "9df41865d01bfebd92c589f2c103d8dce9ecce3ee29d868e8d9798dd04237b49",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "1bd83b025ca8caf1630d6e1caa5395cbc533ac61f03497a44b05e2583d4ed276",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Ward No. 6",
+        "word_count": 21581,
+        "sha256": "92155b19f4ff40bfd3799b7a62b0e740aad8933c5f227a8ee1a01678be8227a0"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "e6a05dce4be355416276dab6ed44f0fef87e7a1a39696fac7d85813dd28f9bdb"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "6a590a00d8ee2766728a1de56fdece75f46d1e7f292b8fdfac1bec0f2cf8cf1e",
+    "reader_manifest": "7a073766331a925269d1c5ad8b18167b7ad6e63a833d4d1b0b962386cca4255a",
+    "source_evidence": "e6a05dce4be355416276dab6ed44f0fef87e7a1a39696fac7d85813dd28f9bdb",
+    "approval_evidence": "90a0557fe3430be831172eb890dd84f196ca6bf9fe25e59b3d7c8bfd4c00bedd"
+  },
+  "manifest_sha256": "c4e27cab5fa8228b2175736e0a51507c8ccf281ad7bb31bfea6f2b47cdbb9ae1"
+}

@@ -1,0 +1,48 @@
+{
+  "alices-adventures-in-wonderland": {
+    "error": "HTTP Error 403: Forbidden",
+    "british_library_verification": {
+      "requested_url": "https://searcharchives.bl.uk/catalog/032-002102746",
+      "resolved_url": "https://searcharchives.bl.uk/catalog/032-002102746",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:38.057951+00:00",
+      "response_sha256": "27cd6382fc1206d32cfe307326ccfcb94aa33be94a574635b3644f87aa8c1c12",
+      "original_publication_year": 1865,
+      "author_death_year": 1898,
+      "scope": "WORK_FIRST_PUBLICATION_AND_AUTHOR_FACTS; not Gutenberg physical-edition identity or cover",
+      "context_quote": "published in 1865",
+      "review_status": "VERIFIED_PRIMARY_LIBRARY_RECORD"
+    }
+  },
+  "pride-and-prejudice": {
+    "error": "HTTP Error 403: Forbidden",
+    "web_primary_source_verification": {
+      "url": "https://janeaustens.house/jane-austen/novels/pride-and-prejudice/",
+      "retrieved_via": "authenticated agent web retrieval; direct urllib403 retained separately",
+      "verified_at": "2026-10-01T21:05:15.228637+00:00",
+      "quoted_fact": "Pride & Prejudice was published in January 1813",
+      "quote_sha256": "30862bc463757a3d80bc02a2757c09711d6717b54c12c9f84021b8d7f9cf8d7d",
+      "original_publication_year": 1813,
+      "http_response_hash_available": false,
+      "approval_conferred": false
+    }
+  },
+  "gutenberg_transcription_policy": {
+    "requested_url": "https://www.gutenberg.org/policy/license.html",
+    "resolved_url": "https://www.gutenberg.org/policy/license.html",
+    "http_status": 200,
+    "accessed_at": "2026-10-01T21:04:07.659472+00:00",
+    "response_sha256": "3ef4bb881c96ece56ace531fe88b4ffc0d6363a66473ae26ca1ad86bf6a6c4b6",
+    "scope": "US copyright status; trademark removal/territorial verification required"
+  },
+  "frankenstein": {
+    "requested_url": "https://onlinebooks.library.upenn.edu/webbin/work?id=olbp102544",
+    "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/work?id=olbp102544",
+    "http_status": 200,
+    "accessed_at": "2026-10-01T21:06:53.372766+00:00",
+    "response_sha256": "ec361453bd0fdbae349ddb899c292e1e336bd54202c6d23af713cd24ebaf09dd",
+    "original_publication_year": 1818,
+    "scope": "UNDERLYING_WORK_FIRST_PUBLICATION_ONLY_NOT_ELECTRONIC_EDITION",
+    "review_status": "VERIFIED_PRIMARY_UNIVERSITY_LIBRARY_BIBLIOGRAPHIC_RECORD"
+  }
+}

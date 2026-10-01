@@ -33,5 +33,20 @@
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  },
+  "original_publication_year": 1893,
+  "original_publication_evidence": {
+    "record": "internal/legal/catalogue_clearance_20261002/bengali/tagore-printed-first-publication-datelines.json",
+    "record_sha256": "3d0b1635e64ffbf7e4ad330ed86b2b77c01c3b85ca0054fcd1ef0a71ac02dfb3",
+    "printed_dateline": "মাঘ ১২৯৯",
+    "source_rendered_sha256": "bdb9cc486b09774bdc5077649941238cd92b464e05e5b52292375a602fbb7c58",
+    "calendar_conversion": {
+      "bengali_year": 1299,
+      "offset": 594,
+      "gregorian_year": 1893,
+      "precision": "Gregorianyear only; month falls entirely within one year. No inferred exactday.",
+      "reference": "https://www.drikpanchang.com/festivals/pohela-boishakh/pohela-boishakh-date-time.html?year=0596"
+    },
+    "scope": "Underlyingwork firstpublication metadata only; sourceedition editorial/licence/publication authorization independently held."
   }
 }

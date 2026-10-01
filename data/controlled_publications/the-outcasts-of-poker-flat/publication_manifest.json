@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-outcasts-of-poker-flat",
+  "title": "The Outcasts of Poker Flat",
+  "generated_at": "2026-10-01T21:08:33.862911+00:00",
+  "content": {
+    "source_hash": "33981862ad30151ecb5c3224bbe5482be150e0d6868bc1355c3b3ec919dc39a1",
+    "content_hash": "68844ac3c0ca7badcbaf95b7945501fb789b7dfc9206eb0ed10c6cbea6b34ad6",
+    "provenance_hash": "503a0270772e6f2f78dc22b13bf53a6e1eddf1a5632b028117bb113d6f7a78f2",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "e08e1e3fa32c746e2f8411be3678f2ab5d9560987b7aa291bc61725a5ca29ebf",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Outcasts of Poker Flat",
+        "word_count": 4090,
+        "sha256": "0aad8317f1e4689fdca6a28416795297a73cbfbb30736d8399fa926c4cf68498"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "f19bcc7d1c5ff3401321cd3fa9f6ea5aaedde295e36be1d8332797f6fe92f44e"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "18f0f53c139be991b3af1fd94c6dfb84bee7905e4f467020a126c503fbac7953",
+    "reader_manifest": "fc3ef77b3f34a37bde15de882b8f5951d067c416186ff039de403e0c0434dc96",
+    "source_evidence": "f19bcc7d1c5ff3401321cd3fa9f6ea5aaedde295e36be1d8332797f6fe92f44e",
+    "approval_evidence": "82e8deedd2fa06ad67edf7f5996fb8f4b66af429f01ec6a6af9bfaf51f6e817c"
+  },
+  "manifest_sha256": "584e8133028b96dbabb30770a8471b01740f91081f5dd384a4a00524de71d7e4"
+}

@@ -9,5 +9,107 @@
   "rights_basis": "Thomas Hardy died 1928; first published 1888. Public domain in India and the U.S.",
   "downloaded_at": "2026-06-03T08:04:22.281501+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #3056",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/3056",
+      "resolved_url": "https://www.gutenberg.org/ebooks/3056",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:40.174495+00:00",
+      "response_sha256": "b2bb1c192c1a10d1d01cae9d09d0963d75e795f38cf4519b06373d56e58e0fc8"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/3056.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/3056/pg3056.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:45.586386+00:00",
+      "response_sha256": "c2e80e062f09828cb87dd57ca8db79de7e4bb22cbbec178276fa50d2cd7caa53"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Hardy, Thomas, 1840-1928"
+      ],
+      "Title": [
+        "Wessex Tales"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Wessex_Tales"
+      ],
+      "Contents": [
+        "An imaginative woman -- The three strangers -- The withered arm -- Fellow-townsmen -- Interlopers at the Knap -- The distracted preacher."
+      ],
+      "Credits": [
+        "David Price"
+      ],
+      "Reading Level": [
+        "Reading ease score: 78.2 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "England -- Social life and customs -- 19th century -- Fiction",
+        "Wessex (England) -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "3056"
+      ],
+      "Release Date": [
+        "Feb 1, 2002"
+      ],
+      "Last Update": [
+        "Feb 4, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1037 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "SOURCE_TEXT_DIFFERS",
+      "matched_chapters": [],
+      "nonmatching_chapters": [
+        "chapter-001"
+      ],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "b9697ff53faa2aa6ace3c91156126068c302e360124aff1633e1cb319a471bc1",
+    "legacy_content_sha256": "fb42b9f8bea73e8b961a09fee5f4baaffada54127880695f2792456d9ebf7cd2",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1928,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "b2bb1c192c1a10d1d01cae9d09d0963d75e795f38cf4519b06373d56e58e0fc8",
+    "url": "https://www.gutenberg.org/ebooks/3056",
+    "author_catalog_strings": [
+      "Hardy, Thomas, 1840-1928"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "688a38410e62c99b7f1536322d5fe487dd9db8a0336adb2ab5d479448ca16172"
+      }
+    ],
+    "content_sha256": "688a38410e62c99b7f1536322d5fe487dd9db8a0336adb2ab5d479448ca16172"
+  }
 }

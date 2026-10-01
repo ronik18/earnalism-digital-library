@@ -1,13 +1,750 @@
 {
   "slug": "frankenstein",
   "source_url": "https://www.gutenberg.org/ebooks/84.txt.utf-8",
-  "source_name": "Earnalism historical import",
+  "source_name": "Project Gutenberg #84 electronic narrative, four letters and24chapters; no substitution of #41445/#42324",
   "source_license": "Public domain",
-  "source_hash": "b338859650bae7d8c9a83c4905cc794ef2ef03ada59aa725a41cdf429d8aa844",
-  "content_hash": "ad32d25982275cdda7f1418d676facf933c537fd09e1971e6909dfca39e57346",
-  "provenance_hash": "6ae5f74cb8540270f2278372055e1898913c2d3811079f9d098d487b130f40dd",
-  "rights_basis": "Public domain in India based on life plus 60 years; public domain in the U.S. based on original publication before 1931.",
+  "source_hash": "7810cd483cffcf2cc8a1d8f0d5807931e69d4f48cd14149b8c76f88af82fead3",
+  "content_hash": "53b45539400716c4cca3295c9bffef1f744179cc7e4a56cd5e4f983b1c4f53ef",
+  "provenance_hash": "bd3168b7919492bae2a96cbbdd36d2e2b747ff6456d38d97e7578c49a83d3bb6",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1851, original publication 1818; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-05-20T08:24:42.583836+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "author_death_year": 1851,
+  "publication_region": "India",
+  "country_of_origin": "United Kingdom",
+  "verified_at": "2026-10-01T21:19:39.153654+00:00",
+  "verification_status": "approved",
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "original_publication_year": 1818,
+  "source_identity_reconciliation": {
+    "electronic_edition_id": "Project Gutenberg #84",
+    "current_official_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/84.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/84/pg84.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:36.600593+00:00",
+      "response_sha256": "7810cd483cffcf2cc8a1d8f0d5807931e69d4f48cd14149b8c76f88af82fead3"
+    },
+    "legacy_source_hash_retained": "b338859650bae7d8c9a83c4905cc794ef2ef03ada59aa725a41cdf429d8aa844",
+    "legacy_content_hash_retained": "ad32d25982275cdda7f1418d676facf933c537fd09e1971e6909dfca39e57346",
+    "legacy_source_bytes_reproduced": false,
+    "migration_scope": "Current canonical chapter text independently verifies against same electronic Gutenberg ID; historical byte/content identifiers retained, not retroactively claimed reproduced.",
+    "physical_print_edition_not_substituted": true,
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1398,
+          "length": 6796
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 8232,
+          "length": 7308
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 15578,
+          "length": 1660
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 17276,
+          "length": 15100
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 32387,
+          "length": 10132
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 42530,
+          "length": 12679
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 55220,
+          "length": 15238
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 70469,
+          "length": 14403
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 84883,
+          "length": 12940
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 97834,
+          "length": 15474
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 113319,
+          "length": 19787
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 133117,
+          "length": 17226
+        },
+        {
+          "chapter_id": "chapter-013",
+          "offset": 150354,
+          "length": 12413
+        },
+        {
+          "chapter_id": "chapter-014",
+          "offset": 162779,
+          "length": 12940
+        },
+        {
+          "chapter_id": "chapter-015",
+          "offset": 175731,
+          "length": 15892
+        },
+        {
+          "chapter_id": "chapter-016",
+          "offset": 191635,
+          "length": 11952
+        },
+        {
+          "chapter_id": "chapter-017",
+          "offset": 203599,
+          "length": 11545
+        },
+        {
+          "chapter_id": "chapter-018",
+          "offset": 215156,
+          "length": 10413
+        },
+        {
+          "chapter_id": "chapter-019",
+          "offset": 225581,
+          "length": 17082
+        },
+        {
+          "chapter_id": "chapter-020",
+          "offset": 242675,
+          "length": 17502
+        },
+        {
+          "chapter_id": "chapter-021",
+          "offset": 260189,
+          "length": 10222
+        },
+        {
+          "chapter_id": "chapter-022",
+          "offset": 270423,
+          "length": 16095
+        },
+        {
+          "chapter_id": "chapter-023",
+          "offset": 286530,
+          "length": 14781
+        },
+        {
+          "chapter_id": "chapter-024",
+          "offset": 301323,
+          "length": 18986
+        },
+        {
+          "chapter_id": "chapter-025",
+          "offset": 320321,
+          "length": 20393
+        },
+        {
+          "chapter_id": "chapter-026",
+          "offset": 340726,
+          "length": 18977
+        },
+        {
+          "chapter_id": "chapter-027",
+          "offset": 359715,
+          "length": 13999
+        },
+        {
+          "chapter_id": "chapter-028",
+          "offset": 373726,
+          "length": 45540
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "approved_for_publication": false
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 28,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "35999c1161c9dfc1c47e9e52e030ad3d7932e8f87bae0b2c5afbf10b7cb4a638"
+      },
+      {
+        "id": "chapter-002",
+        "sha256": "6c7b6434ea1ebee157d358b234348474906c56a9e2a66879ef913da582f745a2"
+      },
+      {
+        "id": "chapter-003",
+        "sha256": "fdb8b2539acbd036a7ce233d77dc0a798ea8ba6aa4245fadf922471d6103c9c7"
+      },
+      {
+        "id": "chapter-004",
+        "sha256": "20470bee18666a207895a0e8b2addba06d8b7ee8b357f7c6d285d157a3b29f8e"
+      },
+      {
+        "id": "chapter-005",
+        "sha256": "f3b95ae089c300e0c18fb3cbe7f1c5b89f83af7563b11b16b4e308ed5e44444f"
+      },
+      {
+        "id": "chapter-006",
+        "sha256": "deb274c4fd552ad6707d90b99088b5c1ce7dfa29cdab1834f1ba8b0767280e52"
+      },
+      {
+        "id": "chapter-007",
+        "sha256": "7f7d0051ad343b1bcb75d39bfa43c79f9f92fb2bc0b69dfa3539acbcd32babf3"
+      },
+      {
+        "id": "chapter-008",
+        "sha256": "2cbca3ab7cad32bb135d35aedba0fe1327c0c8799c2411c0f037c7750223c1ee"
+      },
+      {
+        "id": "chapter-009",
+        "sha256": "50aabede305f09ae8c24d6c9d55a5d837513a315b55fd9ff7ab1a8e1b97780e3"
+      },
+      {
+        "id": "chapter-010",
+        "sha256": "ab511fd7b2a6c87e4e72b23c1e67014d31ab3ce10273f0c143a39db2c2a06725"
+      },
+      {
+        "id": "chapter-011",
+        "sha256": "136d932b63a4e7d2af297c623fdad7c942a345d40913bba18c6c8324b9f88695"
+      },
+      {
+        "id": "chapter-012",
+        "sha256": "8ccedab0685d643c935a12c1b5dde1cc200a54c693e1d3d68a186d1a189e865c"
+      },
+      {
+        "id": "chapter-013",
+        "sha256": "cd5a9df3f84f8133b6e17d035d283516a9f747789c0494bf50a2ce2d417b28f8"
+      },
+      {
+        "id": "chapter-014",
+        "sha256": "d58c8b15bab90316a6e95c2857fa07a3f4516ff769e6f7ea9e59eec32655c913"
+      },
+      {
+        "id": "chapter-015",
+        "sha256": "b8dbd7fea59cfb285b249eaf8014323cd82c0f86c2622ababe7cf4b0a5bfdfed"
+      },
+      {
+        "id": "chapter-016",
+        "sha256": "8c060cd82d865a8adc9369f3dcaee76cee8301f8899d3fc397fb023336cff0cd"
+      },
+      {
+        "id": "chapter-017",
+        "sha256": "d1e059a34daad1d6374fa282d77f242f6377f28a6856d594ae98eff6500640b9"
+      },
+      {
+        "id": "chapter-018",
+        "sha256": "49e1d94463d3b87a3710ee22b6aae549c2bdc54044cd2648ba444d684233e17f"
+      },
+      {
+        "id": "chapter-019",
+        "sha256": "be47245fc2957d46fc63f3fd9726818364b16441d2b0548099abae2d8f550459"
+      },
+      {
+        "id": "chapter-020",
+        "sha256": "26852b8e6e2921ba26ba738f41536543d15d8eab65a7115b3e1e3b225ebfb380"
+      },
+      {
+        "id": "chapter-021",
+        "sha256": "22f3172a81700a8889ac8f8ba5e53840477c2728c62cea6e55ca01cb544ed05a"
+      },
+      {
+        "id": "chapter-022",
+        "sha256": "2ebe0ca248afd8fcdcd89f37a22fca8f9a86a403a90b5e7f6bda973ae60eb04e"
+      },
+      {
+        "id": "chapter-023",
+        "sha256": "884e455f8b89963ad3cbc14ab7ba54ae958dd0cae421104352c4183a76b11ab5"
+      },
+      {
+        "id": "chapter-024",
+        "sha256": "29359272d1ed7f212be4ab2bd4a4d79b51d07f5ce3e1b562f8cb17e7035a6dcd"
+      },
+      {
+        "id": "chapter-025",
+        "sha256": "b15cd81e3250dc81672d7be7bd57a4345b410d31d54952d9082654f8c94a8d5f"
+      },
+      {
+        "id": "chapter-026",
+        "sha256": "3fab38cb4f28b5dae53df8e2f9e9f9b567b838211659d4b6f01e0ecae58733db"
+      },
+      {
+        "id": "chapter-027",
+        "sha256": "9f8bc35360a0350f8cb25402b808693480744bbc955acfd01002bd7b380d69a1"
+      },
+      {
+        "id": "chapter-028",
+        "sha256": "bb039592fcbdedc4b3b2bcc272f3f64f186addcaee21df97a21ee84a455f2a23"
+      }
+    ],
+    "content_sha256": "53b45539400716c4cca3295c9bffef1f744179cc7e4a56cd5e4f983b1c4f53ef"
+  },
+  "author_and_first_publication_evidence": {
+    "record_path": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json",
+    "record_file_sha256": "a8c4b8b3a116e154c2ac028f048d81b06f0068ddbee5008827bf50693bcd12d9",
+    "gutenberg_author_metadata": [
+      "Shelley, Mary Wollstonecraft, 1797-1851"
+    ],
+    "first_publication_record": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/work?id=olbp102544",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/work?id=olbp102544",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:06:53.372766+00:00",
+      "response_sha256": "ec361453bd0fdbae349ddb899c292e1e336bd54202c6d23af713cd24ebaf09dd",
+      "original_publication_year": 1818,
+      "scope": "UNDERLYING_WORK_FIRST_PUBLICATION_ONLY_NOT_ELECTRONIC_EDITION",
+      "review_status": "VERIFIED_PRIMARY_UNIVERSITY_LIBRARY_BIBLIOGRAPHIC_RECORD"
+    },
+    "scope": "FACTS_ONLY_NO_COVER_AUDIO_OR_ACCEPTED_PUBLICATION_DECISION"
+  },
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #84",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/84",
+      "resolved_url": "https://www.gutenberg.org/ebooks/84",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:31.154354+00:00",
+      "response_sha256": "88d110000408558531372c449a9943b5f15fc0650dc87c936ee82e3959d57d30"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/84.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/84/pg84.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:36.600593+00:00",
+      "response_sha256": "7810cd483cffcf2cc8a1d8f0d5807931e69d4f48cd14149b8c76f88af82fead3"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Shelley, Mary Wollstonecraft, 1797-1851"
+      ],
+      "Title": [
+        "Frankenstein; or, the modern prometheus"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Frankenstein",
+        "There are improved editions of this title, eBook #41445 (1818 ed.) and #42324 (1831 ed.)."
+      ],
+      "Credits": [
+        "Judith Boss, Christy Phillips, Lynn Hanninen and David Meltzer. HTML version by Al Haines. Further corrections by Menno de Leeuw."
+      ],
+      "Reading Level": [
+        "Reading ease score: 65.0 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Science fiction",
+        "Horror tales",
+        "Gothic fiction",
+        "Scientists -- Fiction",
+        "Monsters -- Fiction",
+        "Frankenstein, Victor (Fictitious character) -- Fiction",
+        "Frankenstein's monster (Fictitious character) -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "84"
+      ],
+      "Release Date": [
+        "Oct 1, 1993"
+      ],
+      "Last Update": [
+        "Feb 10, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "146025 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1398,
+          "length": 6796
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 8232,
+          "length": 7308
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 15578,
+          "length": 1660
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 17276,
+          "length": 15100
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 32387,
+          "length": 10132
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 42530,
+          "length": 12679
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 55220,
+          "length": 15238
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 70469,
+          "length": 14403
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 84883,
+          "length": 12940
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 97834,
+          "length": 15474
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 113319,
+          "length": 19787
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 133117,
+          "length": 17226
+        },
+        {
+          "chapter_id": "chapter-013",
+          "offset": 150354,
+          "length": 12413
+        },
+        {
+          "chapter_id": "chapter-014",
+          "offset": 162779,
+          "length": 12940
+        },
+        {
+          "chapter_id": "chapter-015",
+          "offset": 175731,
+          "length": 15892
+        },
+        {
+          "chapter_id": "chapter-016",
+          "offset": 191635,
+          "length": 11952
+        },
+        {
+          "chapter_id": "chapter-017",
+          "offset": 203599,
+          "length": 11545
+        },
+        {
+          "chapter_id": "chapter-018",
+          "offset": 215156,
+          "length": 10413
+        },
+        {
+          "chapter_id": "chapter-019",
+          "offset": 225581,
+          "length": 17082
+        },
+        {
+          "chapter_id": "chapter-020",
+          "offset": 242675,
+          "length": 17502
+        },
+        {
+          "chapter_id": "chapter-021",
+          "offset": 260189,
+          "length": 10222
+        },
+        {
+          "chapter_id": "chapter-022",
+          "offset": 270423,
+          "length": 16095
+        },
+        {
+          "chapter_id": "chapter-023",
+          "offset": 286530,
+          "length": 14781
+        },
+        {
+          "chapter_id": "chapter-024",
+          "offset": 301323,
+          "length": 18986
+        },
+        {
+          "chapter_id": "chapter-025",
+          "offset": 320321,
+          "length": 20393
+        },
+        {
+          "chapter_id": "chapter-026",
+          "offset": 340726,
+          "length": 18977
+        },
+        {
+          "chapter_id": "chapter-027",
+          "offset": 359715,
+          "length": 13999
+        },
+        {
+          "chapter_id": "chapter-028",
+          "offset": 373726,
+          "length": 45540
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "b338859650bae7d8c9a83c4905cc794ef2ef03ada59aa725a41cdf429d8aa844",
+    "legacy_content_sha256": "ad32d25982275cdda7f1418d676facf933c537fd09e1971e6909dfca39e57346",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "88d110000408558531372c449a9943b5f15fc0650dc87c936ee82e3959d57d30",
+    "url": "https://www.gutenberg.org/ebooks/84",
+    "author_catalog_strings": [
+      "Shelley, Mary Wollstonecraft, 1797-1851"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "b338859650bae7d8c9a83c4905cc794ef2ef03ada59aa725a41cdf429d8aa844",
+        "content_hash": "ad32d25982275cdda7f1418d676facf933c537fd09e1971e6909dfca39e57346",
+        "provenance_hash": "6ae5f74cb8540270f2278372055e1898913c2d3811079f9d098d487b130f40dd",
+        "source_url": "https://www.gutenberg.org/ebooks/84.txt.utf-8",
+        "source_name": "Earnalism historical import"
+      },
+      "superseded_at": "2026-10-01T21:19:28.686502+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "rights_tier": "A",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/84.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/84/pg84.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:36.600593+00:00",
+      "response_sha256": "7810cd483cffcf2cc8a1d8f0d5807931e69d4f48cd14149b8c76f88af82fead3"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 28,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1398,
+          "length": 6796
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 8232,
+          "length": 7308
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 15578,
+          "length": 1660
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 17276,
+          "length": 15100
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 32387,
+          "length": 10132
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 42530,
+          "length": 12679
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 55220,
+          "length": 15238
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 70469,
+          "length": 14403
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 84883,
+          "length": 12940
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 97834,
+          "length": 15474
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 113319,
+          "length": 19787
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 133117,
+          "length": 17226
+        },
+        {
+          "chapter_id": "chapter-013",
+          "offset": 150354,
+          "length": 12413
+        },
+        {
+          "chapter_id": "chapter-014",
+          "offset": 162779,
+          "length": 12940
+        },
+        {
+          "chapter_id": "chapter-015",
+          "offset": 175731,
+          "length": 15892
+        },
+        {
+          "chapter_id": "chapter-016",
+          "offset": 191635,
+          "length": 11952
+        },
+        {
+          "chapter_id": "chapter-017",
+          "offset": 203599,
+          "length": 11545
+        },
+        {
+          "chapter_id": "chapter-018",
+          "offset": 215156,
+          "length": 10413
+        },
+        {
+          "chapter_id": "chapter-019",
+          "offset": 225581,
+          "length": 17082
+        },
+        {
+          "chapter_id": "chapter-020",
+          "offset": 242675,
+          "length": 17502
+        },
+        {
+          "chapter_id": "chapter-021",
+          "offset": 260189,
+          "length": 10222
+        },
+        {
+          "chapter_id": "chapter-022",
+          "offset": 270423,
+          "length": 16095
+        },
+        {
+          "chapter_id": "chapter-023",
+          "offset": 286530,
+          "length": 14781
+        },
+        {
+          "chapter_id": "chapter-024",
+          "offset": 301323,
+          "length": 18986
+        },
+        {
+          "chapter_id": "chapter-025",
+          "offset": 320321,
+          "length": 20393
+        },
+        {
+          "chapter_id": "chapter-026",
+          "offset": 340726,
+          "length": 18977
+        },
+        {
+          "chapter_id": "chapter-027",
+          "offset": 359715,
+          "length": 13999
+        },
+        {
+          "chapter_id": "chapter-028",
+          "offset": 373726,
+          "length": 45540
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "first_publication_evidence": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/work?id=olbp102544",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/work?id=olbp102544",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:06:53.372766+00:00",
+      "response_sha256": "ec361453bd0fdbae349ddb899c292e1e336bd54202c6d23af713cd24ebaf09dd",
+      "original_publication_year": 1818,
+      "scope": "UNDERLYING_WORK_FIRST_PUBLICATION_ONLY_NOT_ELECTRONIC_EDITION",
+      "review_status": "VERIFIED_PRIMARY_UNIVERSITY_LIBRARY_BIBLIOGRAPHIC_RECORD"
+    },
+    "author_death_evidence": [
+      "Shelley, Mary Wollstonecraft, 1797-1851"
+    ],
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "NONE_IMPORTED",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  }
 }

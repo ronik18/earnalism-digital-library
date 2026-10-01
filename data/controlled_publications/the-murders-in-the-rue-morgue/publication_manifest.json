@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-murders-in-the-rue-morgue",
+  "title": "The Murders in the Rue Morgue",
+  "generated_at": "2026-10-01T21:08:33.629775+00:00",
+  "content": {
+    "source_hash": "cb52ddf4a8617bb3331028ff932c34daf7f762a33ea13563cd5d7e983b095c11",
+    "content_hash": "e2683c1bec04ea4cc15f1777fe762bb4227daae89dea7fdbbbc1f9751d0b84bc",
+    "provenance_hash": "2434e19f68e93e8072b0659424b44b4fcf95b05de66fe6defec57cec10c9afb0",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "efe8be926f1d1407183348667b5da2b300419e9f7c86027755c40f7ecaa970e4",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Murders in the Rue Morgue",
+        "word_count": 13882,
+        "sha256": "6c780d1c2d7d47298c47a43916a4587c37091f9dad1553e3839ac7db7738b29b"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "835fc828db2535aa7e58c3b968d55fb43a8a8cb3296dc9b1061af054ba8f21a1"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "84037d9506bf608a9ad29f78bc9ff099f337bf9e2ac9352da1fb9fceab4cb6ff",
+    "reader_manifest": "155ab2bd8bf62422a44c9d4c5d3b7523e654cb0a13d64609d512e0f6b36d2ab3",
+    "source_evidence": "835fc828db2535aa7e58c3b968d55fb43a8a8cb3296dc9b1061af054ba8f21a1",
+    "approval_evidence": "dd7d47e182fd0af117c062d12718c897841640775fa387cbb4d13ca9448b3aee"
+  },
+  "manifest_sha256": "bf8ca70b2310305af569348ed38c10e4e9f492ca07f334d0d8a5c13865490f85"
+}

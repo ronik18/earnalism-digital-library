@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-solitary-cyclist",
+  "title": "The Adventure of the Solitary Cyclist",
+  "generated_at": "2026-10-01T21:08:31.812172+00:00",
+  "content": {
+    "source_hash": "b2be1527bc9a7fc221f04bfbe8971f0d685233fb0b3f50db33dd9b9e47e93c44",
+    "content_hash": "1e26a03a190e6f8ab41c5ac1e3a7b209f4649573d32e7f6677a784bab6aa9328",
+    "provenance_hash": "de774603a0a66c87c9086c3bdf3780f9c580fd298230cd21c5d8e8f0d1452f44",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "cf9c96404ac03a469d8c45eb79fb48bd5ee39da47857a8c907028561b7c8853e",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Solitary Cyclist",
+        "word_count": 7904,
+        "sha256": "643e2566369fb83520477a8e70b595992cf98891d194347aaa4ada9570f12f24"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "f885fde2b330fcc253c357413d354c6261ce1debf422015c9f1ab9449ea5854a"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "90819a624a4ff958b0a80fa2f72c62fc0e4c0bcc46ac2968f94314b368864307",
+    "reader_manifest": "fd8cca180adc687f3df79a82f91fa445330c88e6f114f4f8b359bafe864f88aa",
+    "source_evidence": "f885fde2b330fcc253c357413d354c6261ce1debf422015c9f1ab9449ea5854a",
+    "approval_evidence": "a7ae152f064ca056bcd63fd8265e8469ed1791a4b725e3062eb8181776d17f6a"
+  },
+  "manifest_sha256": "5d45046e83dc4057cb15e30a58288037ec55dcba1c616f745a296efea8bbbbd9"
+}

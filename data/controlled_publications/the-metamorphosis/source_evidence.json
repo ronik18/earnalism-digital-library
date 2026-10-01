@@ -35,5 +35,125 @@
     "reader_exposure_allowed": false,
     "audio_generation_allowed": false,
     "legacy_estimated_sync_invalidated": true
+  },
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #5200",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/5200",
+      "resolved_url": "https://www.gutenberg.org/ebooks/5200",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:53.027640+00:00",
+      "response_sha256": "04b86cef7c5eaaa9a816bfe0d0f6532cc6bce24c30ab824ec63295f3acddd83b"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/5200.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/5200/pg5200.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:57.848678+00:00",
+      "response_sha256": "0933283a19a4daaef0d412e8f69c74fae126b0a946cb74b8f3c783a8e869830d"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Kafka, Franz, 1883-1924"
+      ],
+      "Translator": [
+        "Wyllie, David (Translator)"
+      ],
+      "Title": [
+        "Metamorphosis"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Metamorphosis"
+      ],
+      "Reading Level": [
+        "Reading ease score: 68.9 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PT: Language and Literatures: Germanic, Scandinavian, and Icelandic literatures"
+      ],
+      "Subject": [
+        "Psychological fiction",
+        "Metamorphosis -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "5200"
+      ],
+      "Release Date": [
+        "Aug 17, 2005"
+      ],
+      "Last Update": [
+        "Jun 9, 2026"
+      ],
+      "Copyright": [
+        "Copyrighted. Read the copyright notice inside this book for details."
+      ],
+      "Downloads": [
+        "47294 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 905,
+          "length": 37977
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 38886,
+          "length": 40114
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 79005,
+          "length": 40205
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "4668a0a73a218a2f7ce39133432c411bc4acdf307c6d40ce300bfee15750d56c",
+    "legacy_content_sha256": "7f7b0c9985633cfcc77657523a5ee407a8e7727403d7dcf4a42e4b52e90ca887",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "04b86cef7c5eaaa9a816bfe0d0f6532cc6bce24c30ab824ec63295f3acddd83b",
+    "url": "https://www.gutenberg.org/ebooks/5200",
+    "author_catalog_strings": [
+      "Kafka, Franz, 1883-1924"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 3,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "231c74e153cefc0299d2ef84bfb907624183b9305c393d998472d92fc9b55294"
+      },
+      {
+        "id": "chapter-002",
+        "sha256": "452e472cf481212aa49a2de6e17e182e00f5dcc09dd187c0726fb5a7053fc83c"
+      },
+      {
+        "id": "chapter-003",
+        "sha256": "cae1d0401595f852bbf0476091dc056c8e55a2ee7d5355e56756af96a28ec468"
+      }
+    ],
+    "content_sha256": "f10743e0510cb420ec7a1e8bb5ad40e1b3190c90373ec9a14d585f0d17830a83"
   }
 }

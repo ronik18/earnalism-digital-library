@@ -17,5 +17,324 @@
   "verification_status": "approved",
   "publication_region": "IN",
   "verified_at": "2026-07-03T20:07:47Z",
-  "qa_status": "QA_PASSED"
+  "qa_status": "QA_PASSED",
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #55",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/55",
+      "resolved_url": "https://www.gutenberg.org/ebooks/55",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:30.983594+00:00",
+      "response_sha256": "5b008743b57144d50ff35143b720b89305aca939dc8ad10ca5bd11dd1ebdbf30"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/55.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/55/pg55.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:36.135494+00:00",
+      "response_sha256": "969bffab7740d4d8a0bac332d78bd0152ad4a40a2efc52f06c74a9bb6120be75"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Baum, L. Frank (Lyman Frank), 1856-1919"
+      ],
+      "Title": [
+        "The Wonderful Wizard of Oz"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Wonderful_Wizard_of_Oz",
+        "There is an improved edition of this title, eBook #43936"
+      ],
+      "Reading Level": [
+        "Reading ease score: 86.6 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PZ: Language and Literatures: Juvenile belles lettres"
+      ],
+      "Subject": [
+        "Oz (Imaginary place) -- Juvenile fiction",
+        "Fantasy literature",
+        "Courage -- Juvenile fiction",
+        "Home -- Juvenile fiction",
+        "Good and evil -- Juvenile fiction",
+        "Dreams -- Juvenile fiction",
+        "Gale, Dorothy (Fictitious character) -- Juvenile fiction",
+        "Cowardly Lion (Fictitious character) -- Juvenile fiction",
+        "Cyclones -- Juvenile fiction",
+        "Scarecrow (Fictitious character from Baum) -- Juvenile fiction",
+        "Toto (Fictitious character) -- Juvenile fiction",
+        "Witches -- Juvenile fiction",
+        "Wizard of Oz (Fictitious character) -- Juvenile fiction",
+        "Tin Woodman (Fictitious character) -- Juvenile fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "55"
+      ],
+      "Release Date": [
+        "Feb 1, 1993"
+      ],
+      "Last Update": [
+        "Dec 29, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "38924 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 3087,
+          "length": 5939
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 9038,
+          "length": 10545
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 19628,
+          "length": 10202
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 29870,
+          "length": 7407
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 37288,
+          "length": 10332
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 47650,
+          "length": 7754
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 55417,
+          "length": 9391
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 64845,
+          "length": 9981
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 74838,
+          "length": 7230
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 82079,
+          "length": 10057
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 92173,
+          "length": 18593
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 110779,
+          "length": 18915
+        },
+        {
+          "chapter_id": "chapter-013",
+          "offset": 129719,
+          "length": 6276
+        },
+        {
+          "chapter_id": "chapter-014",
+          "offset": 136027,
+          "length": 9858
+        },
+        {
+          "chapter_id": "chapter-015",
+          "offset": 145897,
+          "length": 14312
+        },
+        {
+          "chapter_id": "chapter-016",
+          "offset": 160222,
+          "length": 4847
+        },
+        {
+          "chapter_id": "chapter-017",
+          "offset": 165112,
+          "length": 5828
+        },
+        {
+          "chapter_id": "chapter-018",
+          "offset": 170955,
+          "length": 6126
+        },
+        {
+          "chapter_id": "chapter-019",
+          "offset": 177094,
+          "length": 5327
+        },
+        {
+          "chapter_id": "chapter-020",
+          "offset": 182458,
+          "length": 8085
+        },
+        {
+          "chapter_id": "chapter-021",
+          "offset": 190556,
+          "length": 4715
+        },
+        {
+          "chapter_id": "chapter-022",
+          "offset": 195285,
+          "length": 5022
+        },
+        {
+          "chapter_id": "chapter-023",
+          "offset": 200366,
+          "length": 6549
+        },
+        {
+          "chapter_id": "chapter-024",
+          "offset": 206940,
+          "length": 377
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "20b4fa5a47c6e23b6093c2eedbf5d0b2930c6eefe5c8646e009a98bd0131c85e",
+    "legacy_content_sha256": "1256f90f4c8943940d6520a4322fe67ddb2d6537d1ae8577b8a4be713531291c",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "5b008743b57144d50ff35143b720b89305aca939dc8ad10ca5bd11dd1ebdbf30",
+    "url": "https://www.gutenberg.org/ebooks/55",
+    "author_catalog_strings": [
+      "Baum, L. Frank (Lyman Frank), 1856-1919"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 24,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "6b2ea04eb2b5feb63d6b63a2c67707607d2295825b3e1820f5132d3c1533ae08"
+      },
+      {
+        "id": "chapter-002",
+        "sha256": "67fe62a17606b88d40a54c43b8a5369e94c7daab9929369138fc62c377820c59"
+      },
+      {
+        "id": "chapter-003",
+        "sha256": "b6ff8d5fd832cc286bbfbaf5ce1c0dfe122339c014871491818765223d4f6d18"
+      },
+      {
+        "id": "chapter-004",
+        "sha256": "de3d562b9fae84e13875079c3fc98bc464e3d1c67a2e4e7c6f2c394b7f32d82b"
+      },
+      {
+        "id": "chapter-005",
+        "sha256": "9cd55cf52f18ad44471dcdfcfc1b2cb8182bb7d5135fcc1f157416a16aaadb6b"
+      },
+      {
+        "id": "chapter-006",
+        "sha256": "096721ba2084335c0ce9fa04c5601d1e0dec29df5c13de98471be74b33502afe"
+      },
+      {
+        "id": "chapter-007",
+        "sha256": "87811cfcd53ec87813e3bf94fe58fbff17eae5e0e042aa7ff63c989e594cefdd"
+      },
+      {
+        "id": "chapter-008",
+        "sha256": "403beb9177e20c15ef43916f675aa8819c196de573f7215bdd8f6e68a70ab851"
+      },
+      {
+        "id": "chapter-009",
+        "sha256": "937b6e58f195152e70208ea591a9223895975c2fa6712f221c25b64e1f0f49b0"
+      },
+      {
+        "id": "chapter-010",
+        "sha256": "b3ce471d2ebd869955ae30d3fb23f7d8fb1a94246a4f035f751eab3a9560d3ab"
+      },
+      {
+        "id": "chapter-011",
+        "sha256": "8a15173e3f2cbf4d7c5935764d6e1e23a421ef71fe7140f8198db2fbcebad2d3"
+      },
+      {
+        "id": "chapter-012",
+        "sha256": "70e1b7c08f7bd7738f2c03ace1dc7024e3eeaae33ee78ab1a1deda74985a07cd"
+      },
+      {
+        "id": "chapter-013",
+        "sha256": "a2001a0bab24668bd6007ddbffba93a54fb3e53071e21f863e85307477089ca6"
+      },
+      {
+        "id": "chapter-014",
+        "sha256": "c85247d45ded916cbc9e04718a081d99ac2aade35246ddcf37dea4dea2e35516"
+      },
+      {
+        "id": "chapter-015",
+        "sha256": "2586ade1195a4ca70029a0314fd3036ad19ec682d49f71bb7b92515500174318"
+      },
+      {
+        "id": "chapter-016",
+        "sha256": "faa3c6bceade03582a56cab024b19be20380343f752ed5349b23467b0658691d"
+      },
+      {
+        "id": "chapter-017",
+        "sha256": "c12602a79c60dce6dd9b3159e7f5de153f0660a48e022cf3b5e423b9b4b63d9f"
+      },
+      {
+        "id": "chapter-018",
+        "sha256": "32284038a5d48ad7a85929a1378a17aa1ec020f39653f84d9bb38eb2d692df13"
+      },
+      {
+        "id": "chapter-019",
+        "sha256": "390ae6cbec463ae5b1d9692dc6e7327eec29cb7a51d86b4d5c60324e10e96f79"
+      },
+      {
+        "id": "chapter-020",
+        "sha256": "fd8c7de4f03b2b40f83c2fd60b1ec3c0e71f26e11bbabf1e1caccca872d55019"
+      },
+      {
+        "id": "chapter-021",
+        "sha256": "56cea2c9b1f6919ebb6ec1b383cb29185f27abcb17363211b7749a142a85849f"
+      },
+      {
+        "id": "chapter-022",
+        "sha256": "4bbee98a22b11a98393a12757085d4d62bc3c812a305a4de0c1062aaddd3f62a"
+      },
+      {
+        "id": "chapter-023",
+        "sha256": "7b619e3046238df157e1263254df2f528841808b3399f737e4272d4c05b3124c"
+      },
+      {
+        "id": "chapter-024",
+        "sha256": "7bc57e0cc9ae0e4ecc9fedd4f922f9a1df0ea7435d9b177a4fe8d8a2e8ae7a78"
+      }
+    ],
+    "content_sha256": "955047c0d3ff957160495d64305f770e946482015600a11524a756027b98ca69"
+  }
 }

@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "boule-de-suif",
+  "title": "Boule de Suif",
+  "generated_at": "2026-10-01T21:08:29.384957+00:00",
+  "content": {
+    "source_hash": "17c514dce10d194bfbb13b4d9196eafd3a3ae310b38180de42d3a5693bddd0a7",
+    "content_hash": "54085892457bf65ed5f9394fb722eee54f71123d9622b0b40f1ec45ad76707d5",
+    "provenance_hash": "74feca75082c4263690808b2747e72216034cb633ff078c20196bccc3523a1fb",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "1b020bfd41e4ec06d4ba7ff82aab77a0465579d3e026a8ccf10f9c43c3f462a1",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Boule de Suif",
+        "word_count": 14440,
+        "sha256": "6178078176770d176dc9796758222e78ff877b95a50ad1543848d13bf3914258"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "a1ebd933ff36e63fe9afbd4186c92fa00116739505ef6f57499227321ba4caba"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "671991b89c5f19c642b96e2b4ee40f794f6c09da5fa50593560747b24fbc98d4",
+    "reader_manifest": "2e2823f176e58697f497a1238dcb721c1d829515c7e9668f45a2f83f9f022750",
+    "source_evidence": "a1ebd933ff36e63fe9afbd4186c92fa00116739505ef6f57499227321ba4caba",
+    "approval_evidence": "6c8c5b1cc405099f58f97282411f728b5a6a97deb2fa5d8cf1812e4ee5d3bd64"
+  },
+  "manifest_sha256": "fba957dfa8aa95bdc7153017e868025a53ba562d0bd687219a1ee85707b45f88"
+}

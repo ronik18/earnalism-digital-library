@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-door-in-the-wall",
+  "title": "The Door in the Wall",
+  "generated_at": "2026-10-01T21:08:32.507176+00:00",
+  "content": {
+    "source_hash": "dd1e44d2ddf9f3a49bc10d51c90eb9a3dc5fde221d972bd59a4a3fd54e130ff6",
+    "content_hash": "b587a74512de6a7607f81bee7180c0529d8088d0bc6afd6222fb43c971bb5b83",
+    "provenance_hash": "ea1c878f2a5bb0147afe371b1d7fd60204e5596f1470483b9b716e53a2426415",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "84a47184d2270bf702c365c0c3a943ae19df122f1e98ec1199a8aff3c97c86a0",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Door in the Wall",
+        "word_count": 6750,
+        "sha256": "fbae279433d37ef9a92b29e2f192a0c031a84caa70ea889a46d0b95ad2ebdc21"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "3ca4ee1f4a9b3b0e830f505518153acb58dc39ae65722e7a6d801354ee25678c"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "14c01462e1d03849d166d34678fa5d9e55d63f410b0a90dd95feafde5bc93afa",
+    "reader_manifest": "2fab757bd4355d1586e6a9272fded5f8491f30332203878f35c4bc58613bebf6",
+    "source_evidence": "3ca4ee1f4a9b3b0e830f505518153acb58dc39ae65722e7a6d801354ee25678c",
+    "approval_evidence": "c29c1e66d076a9434184b532f8ac21e5dedab4f9f80dfb48d0ed43fc9a8bc02c"
+  },
+  "manifest_sha256": "dfff5f04e9e2df2962ba54167ae717d18809ab627dd20e6a57207f7d37663e71"
+}

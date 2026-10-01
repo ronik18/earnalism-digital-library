@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-priory-school",
+  "title": "The Adventure of the Priory School",
+  "generated_at": "2026-10-01T21:08:31.671295+00:00",
+  "content": {
+    "source_hash": "1c0eeb56e57f62d657701f3711cd5aa6d470a38cf009da0602b3fbdf6f591635",
+    "content_hash": "f53e83470106d20a25b54ae5c640c8bc6a15fcdc2ab22a77347fc0cc1b025e64",
+    "provenance_hash": "8a4567cd207a26feaa1fbdc0b0d6057b3920ff8ea200a66fdd6e69c33d4b2e40",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "882db9d6031996e5e6331709adb4693747308d81e77e00099e5be361d2dbe56e",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Priory School",
+        "word_count": 11551,
+        "sha256": "4196d5bf8824220e403a8a7784e858fe4eef71ce9d5f8029a349efd188fdab65"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "1d7d9dd3b9dfa38fee21a9029675d1682f87b7d9ee3d3e748d7ef10750012143"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "2a29ffa0c4f7b293323890d6d2ac913c4f9bc4d59679cf12a1ea80ddff199cb9",
+    "reader_manifest": "cbff7910d185de3e698aeefd838daa6c9c44a08ad29d43499b8b8f2c05ed6ab6",
+    "source_evidence": "1d7d9dd3b9dfa38fee21a9029675d1682f87b7d9ee3d3e748d7ef10750012143",
+    "approval_evidence": "81b8c38f97e5590cfae4634473e6de70fae65e1f189db528071df33c3b394d56"
+  },
+  "manifest_sha256": "c7af337f316047a5129a068e7b289f62f672ea8f99908c924df9b8153f54c67d"
+}

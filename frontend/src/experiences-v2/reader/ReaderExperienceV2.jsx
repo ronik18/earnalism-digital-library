@@ -8,6 +8,7 @@ import ExperienceShell from "../shared/ExperienceShell";
 import "./reader-v2.css";
 import "./reader-v2.mobile.css";
 import BookCoverImage from "../../components/BookCoverImage";
+import LicensedTextNotice from "../../components/LicensedTextNotice";
 import { PUBLIC_PREVIEW_COPY } from "../../lib/publicAccessCopy";
 import { loadReaderNotebook, readerNotebookKey, saveReaderNotebook } from "../../lib/readerNotebook";
 import {
@@ -244,6 +245,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
             {model.pageErrorRetryable && <button type="button" onClick={() => requestPage(navigationPage)}>Retry page</button>}
           </p>}
           {model.statusMessage && <p className="reader-v2__status" role="status">{model.statusMessage}</p>}
+          <LicensedTextNotice book={model.book} />
           <footer className="reader-v2__continuation">
             <span>{atEnd ? "You have reached the end of this book." : page <= 3 ? PUBLIC_PREVIEW_COPY : `Page ${page} of ${totalPages}`}</span>
             <nav aria-label="Page navigation">

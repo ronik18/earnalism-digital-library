@@ -126,9 +126,9 @@ try {
       assert.ok(new URL(headerInfo.logo_src).pathname.endsWith("/assets/brand/earnalism-brand-lockup.png"), `${routeInfo.id} ${viewport.width}: canonical asset is rendered`);
       assert.ok(headerInfo.logo_natural_width > 0, `${routeInfo.id} ${viewport.width}: logo loaded`);
       assert.ok(headerInfo.header_scroll_width <= headerInfo.header_client_width, `${routeInfo.id} ${viewport.width}: header overflow`);
-      const expectedHeaderHeight = viewport.width >= 1280 ? 92 : viewport.width >= 768 ? 84 : 72;
+      const expectedHeaderHeight = viewport.width >= 1280 ? 104 : viewport.width >= 768 ? 96 : 80;
       assert.ok(Math.abs(headerInfo.height - expectedHeaderHeight) <= 1, `${routeInfo.id} ${viewport.width}: header height ${headerInfo.height}px`);
-      const expectedWidth = viewport.width >= 1280 ? [240, 270] : viewport.width >= 768 ? [205, 230] : [165, 190];
+      const expectedWidth = viewport.width >= 1280 ? [300, 300] : viewport.width >= 768 ? [280, 280] : [Math.min(240, viewport.width - 136), Math.min(240, viewport.width - 136)];
       assert.ok(headerInfo.logo_width >= expectedWidth[0] && headerInfo.logo_width <= expectedWidth[1], `${routeInfo.id} ${viewport.width}: logo width ${headerInfo.logo_width}`);
       const expectedNavLabels = navLabels;
       if (viewport.width >= 1280) assert.deepEqual(headerInfo.public_nav_labels, expectedNavLabels, `${routeInfo.id}: desktop nav labels/order`);

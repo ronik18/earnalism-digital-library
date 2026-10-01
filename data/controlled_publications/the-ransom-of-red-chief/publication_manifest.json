@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-ransom-of-red-chief",
+  "title": "The Ransom of Red Chief",
+  "generated_at": "2026-10-01T21:08:34.092516+00:00",
+  "content": {
+    "source_hash": "7064aa284fe4bc210e8953c8d5e4dd410145f06ec9d7b822c609dea4cd8573b2",
+    "content_hash": "137a261f562cb4fbf5343df30bd6d117d8a254c4e4aab2cf2a75cded4e2f4997",
+    "provenance_hash": "525316e65b4064a0aa18cbf92e96840cdee9b68e2d1bd2b542717132098564cf",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "d65c39f4d868b690c36c9b51683e2fbf65c0c7a218f52df4a7ecb01d3a154220",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Ransom of Red Chief",
+        "word_count": 4262,
+        "sha256": "7da8bbd9f16959b911f522731799d9dc1f0ae5200bec04f98fe334f972d7a6f4"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "d4d69872931f3a6f68484eb1c5c0297b1b2a8d3577a05b4e2c4db634660ba86e"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "c938d5107d7d8cc56df5eea1b15ebd9151dbd57090efda38808fde5a4813e8a3",
+    "reader_manifest": "d03b73c89c5916380fa50ca2830e4afa9110a82722725f7cb1dad3a5371bf821",
+    "source_evidence": "d4d69872931f3a6f68484eb1c5c0297b1b2a8d3577a05b4e2c4db634660ba86e",
+    "approval_evidence": "71a512b08d3e58cd5e72979b665d2a9d9b67e813c34edb4d730b3f5a4cbfef85"
+  },
+  "manifest_sha256": "43b080ac2c09a4ead14f5236d86cde6e803d0766f1c08fda5073f9324065cafb"
+}

@@ -9,5 +9,238 @@
   "rights_basis": "public_domain",
   "downloaded_at": "2026-07-01T10:36:20Z",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #2852",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2852",
+      "resolved_url": "https://www.gutenberg.org/ebooks/2852",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:39.595175+00:00",
+      "response_sha256": "ce2cd5680776992b8307af527306825964aa5f0f4add1d644fc0f93f0e457839"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2852.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2852/pg2852.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:44.717819+00:00",
+      "response_sha256": "f7c8c68729d32a5f6a04a5a9ad73d184176e66a6c76b3992c41c1ab47b427d98"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Doyle, Arthur Conan, 1859-1930"
+      ],
+      "Title": [
+        "The Hound of the Baskervilles"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Hound_of_the_Baskervilles"
+      ],
+      "Credits": [
+        "Shreevatsa R, and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 80.9 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Holmes, Sherlock (Fictitious character) -- Fiction",
+        "Private investigators -- England -- Fiction",
+        "Dogs -- Fiction",
+        "Detective and mystery stories",
+        "Blessing and cursing -- Fiction",
+        "Dartmoor (England) -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "2852"
+      ],
+      "Release Date": [
+        "Oct 1, 2001"
+      ],
+      "Last Update": [
+        "Aug 4, 2025"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "31158 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1687,
+          "length": 12531
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 14230,
+          "length": 21211
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 35453,
+          "length": 15761
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 51226,
+          "length": 22023
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 73261,
+          "length": 18393
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 91666,
+          "length": 18900
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 110578,
+          "length": 26340
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 136930,
+          "length": 14799
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 151741,
+          "length": 34346
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 186100,
+          "length": 18933
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 205046,
+          "length": 24209
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 229268,
+          "length": 25635
+        },
+        {
+          "chapter_id": "chapter-013",
+          "offset": 254916,
+          "length": 18324
+        },
+        {
+          "chapter_id": "chapter-014",
+          "offset": 273253,
+          "length": 22133
+        },
+        {
+          "chapter_id": "chapter-015",
+          "offset": 295399,
+          "length": 22347
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "d3f65a1d363c9f72666a61e2a88f60696a8620a7d823dbf25e106ecc0655d251",
+    "legacy_content_sha256": "4d5747626319130ea531bdf107b6e424bb7d7e7f5caeda6590b7ca42cc7a970f",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1930,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "ce2cd5680776992b8307af527306825964aa5f0f4add1d644fc0f93f0e457839",
+    "url": "https://www.gutenberg.org/ebooks/2852",
+    "author_catalog_strings": [
+      "Doyle, Arthur Conan, 1859-1930"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 15,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "90246b60816b2f4d3561c80d727e365af1ef4f995048e2e81ffe70830da01d68"
+      },
+      {
+        "id": "chapter-002",
+        "sha256": "b4b06148d8ab8f3a39f129021ea53cb30f1c27b2dd338d5d5f31fd1ddd6d7b8c"
+      },
+      {
+        "id": "chapter-003",
+        "sha256": "fa07f460f1d478d7ef2530c4fc4ab62dac378ce79e3957dd41f916af8a380b38"
+      },
+      {
+        "id": "chapter-004",
+        "sha256": "15fcbfbe8949a0ee9dcb4c0fb2d677b2017d07f4ec5e20c75709ca65bb74d268"
+      },
+      {
+        "id": "chapter-005",
+        "sha256": "e1180666f64162e64b7b7b7a4a8b1319e95c912b1e0ad983f7cc3d6d5facd231"
+      },
+      {
+        "id": "chapter-006",
+        "sha256": "072b6355839ab85e16cf0531172c617a0f66d0a5c14075ca6a446441b5bc4dcf"
+      },
+      {
+        "id": "chapter-007",
+        "sha256": "0736c650d20e457f4d3ab087e14dc0e522cb92312e5b7c2223d5154f26e87d74"
+      },
+      {
+        "id": "chapter-008",
+        "sha256": "855fc3bb50c1418bbed043368221288c8d40828e70735d9f7b95b7eafb3222c6"
+      },
+      {
+        "id": "chapter-009",
+        "sha256": "8e9c496f6b06dad41b5b74f9ddfc0fbbefeaad590df0028c7d7cae4516514725"
+      },
+      {
+        "id": "chapter-010",
+        "sha256": "6060453997a3973294f5d4cd4717b9aaa1bc52a1f5b026a0dc2711e977ae99bf"
+      },
+      {
+        "id": "chapter-011",
+        "sha256": "6251990c704d9b4fb0d21b8ad9080fabc4819b860c051d51232701843ce4aa4a"
+      },
+      {
+        "id": "chapter-012",
+        "sha256": "336212a1f1165a9f27e8698aa6e799f0ce9ff16126a91046fcb4da3d130904c5"
+      },
+      {
+        "id": "chapter-013",
+        "sha256": "fb608fed9bdaf59c04b3e089d0a267689c84eaac0bbe391b0f0ec37062ed8ccd"
+      },
+      {
+        "id": "chapter-014",
+        "sha256": "115a927c1f10dda4e08d6e6127260293a0b2ff9180ae260c80e288af1a531fe6"
+      },
+      {
+        "id": "chapter-015",
+        "sha256": "26bf44c4356286ba19eb97e755c39fb7a91c930a9789759c0a7d4e20a9f14b40"
+      }
+    ],
+    "content_sha256": "7225ff8de1cb971c2b6dec1fc7b91341c206a61c272064fd85099ce399269762"
+  }
 }

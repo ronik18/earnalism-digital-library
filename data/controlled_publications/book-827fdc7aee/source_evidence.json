@@ -24,12 +24,37 @@
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "73789e5480cf2f077ad75c01ed713e5f350480f5e493d4886d4a1f8cabc22f2a",
+    "reader_content_sha256": "d228351380e5eb1ce2c6c3d014b2c8f2eb9e3b0d4d1f92caeedd043c5d546b48",
     "chapter_count": 1,
     "chapter_content_sha256": {
-      "chapter-001": "73789e5480cf2f077ad75c01ed713e5f350480f5e493d4886d4a1f8cabc22f2a"
+      "chapter-001": "d228351380e5eb1ce2c6c3d014b2c8f2eb9e3b0d4d1f92caeedd043c5d546b48"
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  },
+  "reader_content_reconciliation": {
+    "status": "SOURCE_FURNITURE_REMOVED_ONLY",
+    "performed_at": "2026-10-01T21:08:27.473444+00:00",
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/source-furniture-repair-proposals.json",
+    "artifact_sha256": "63e8128394ae67e1620d02a5bce6ca6b14dd72f8230ed86b0d535ed69707baf7",
+    "before_content_sha256": "73789e5480cf2f077ad75c01ed713e5f350480f5e493d4886d4a1f8cabc22f2a",
+    "after_content_sha256": "d228351380e5eb1ce2c6c3d014b2c8f2eb9e3b0d4d1f92caeedd043c5d546b48",
+    "removed_source_furniture": [
+      "রবীন্দ্রনাথ ঠাকুর",
+      "গল্পগুচ্ছ",
+      "১৯৬৯ (পৃ. ৫৮৪-৬১২)",
+      "রাসমণির ছেলে"
+    ],
+    "literary_words_changed": false,
+    "source_transcription_completeness": "ADDITIONAL_SOURCE_COMPARISON_REQUIRED",
+    "scope": "READER_METADATA_FURNITURE_CLEANUP_NOT_PUBLICATION_OR_AUDIO_APPROVAL"
+  },
+  "original_publication_year": 1911,
+  "original_publication_evidence": {
+    "record": "internal/legal/catalogue_clearance_20261002/bengali/tagore-volume3-printed-publication-datelines.json",
+    "record_sha256": "806b47cb8964633dcad588d37ce67306177faf79db885eabd0ca84aa7cc42e7e",
+    "printed_publication_dateline": "আশ্বিন ১৩১৮",
+    "calendar_inference": "Bengaliyear+593 for Jyaishtha/Ashwin/Kartik, Gregorianyearonly, noexactday",
+    "scope": "Underlyingwork publicationfact; ©VisvaBharati1969 editorialrights/CCtranscriptionconditions independently held"
   }
 }

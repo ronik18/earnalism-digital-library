@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-speckled-band",
+  "title": "The Speckled Band",
+  "generated_at": "2026-10-01T21:08:34.484426+00:00",
+  "content": {
+    "source_hash": "6e1a4b7da706a2b3e55ea0be17cf1e2acf6894db69ee6e7974a47d2188bfbb8c",
+    "content_hash": "78c18a18063608bbe008f0b933a47113f21852166857877e5e1d9c770ca621e8",
+    "provenance_hash": "ef4ae9f1cec1960e924230c7208b4d2471297535df3466e5d219d2ca1bc5115e",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "304869dbb5529fd61ec24cfe18076f1b75a58fb44acc269f3efb6336679aba7f",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Speckled Band",
+        "word_count": 9867,
+        "sha256": "c644ef48e9feafca7c3444b42aad83689bcf341def0eb8cdf009ffe89b4b646f"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "e69d6c994b2a9d4d69a4234fabfe1494d22959a1a4d41b612fa51d6e7f9efc39"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "6e1120bf494c15f1fef26342c0be6ae20c9d7f88294ce35594c4558b175b2770",
+    "reader_manifest": "99c60761cc3dbf0e4128e1c6e470f171de69e5f8aba4fc6dd006941a110ad41e",
+    "source_evidence": "e69d6c994b2a9d4d69a4234fabfe1494d22959a1a4d41b612fa51d6e7f9efc39",
+    "approval_evidence": "b7fffa83d48248f0a1720495b91e41eef8c21ebce981e6311fec1ba4a9a65f54"
+  },
+  "manifest_sha256": "65c1b85af2e57af7c3f6c4d1489fbac1ca145736a69880b10e115a24cfb2f6c3"
+}

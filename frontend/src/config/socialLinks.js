@@ -97,7 +97,7 @@ export function normalizeSocialUrl(url) {
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(address)) return "";
       return `mailto:${address}`;
     }
-    if (!["https:"].includes(parsed.protocol)) return "";
+    if (!["https:"].includes(parsed.protocol) || parsed.username || parsed.password) return "";
     if (["localhost", "127.0.0.1", "::1"].includes(parsed.hostname)) return "";
     parsed.hash = "";
     return parsed.href;
@@ -106,18 +106,37 @@ export function normalizeSocialUrl(url) {
   }
 }
 
+const PLATFORM_HOSTS = {
+  linkedin: ["linkedin.com", "www.linkedin.com"],
+  facebook: ["facebook.com", "www.facebook.com", "m.facebook.com"],
+  instagram: ["instagram.com", "www.instagram.com"],
+  x: ["x.com", "www.x.com", "twitter.com", "www.twitter.com"],
+  youtube: ["youtube.com", "www.youtube.com", "youtu.be"],
+};
+
+export function normalizeSocialUrlForPlatform(url, id) {
+  const normalized = normalizeSocialUrl(url);
+  if (!normalized) return "";
+  const parsed = new URL(normalized);
+  if (id === "email") return parsed.protocol === "mailto:" ? normalized : "";
+  if (parsed.protocol !== "https:" || !PLATFORM_HOSTS[id]?.includes(parsed.hostname)) return "";
+  // A platform homepage or a share intent is not an Earnalism profile.
+  if (parsed.pathname === "/" || /\/(?:intent|sharer|sharing)(?:\/|$)/.test(parsed.pathname)) return "";
+  return normalized;
+}
+
 function overrideFor(link, overrides = {}) {
   if (!overrides || Array.isArray(overrides) || typeof overrides !== "object") return "";
   const keys = [link.id, ...(link.aliases || [])];
   for (const key of keys) {
-    const normalized = normalizeSocialUrl(overrides[key]);
+    const normalized = normalizeSocialUrlForPlatform(overrides[key], link.id);
     if (normalized) return normalized;
   }
   return "";
 }
 
 function envOverrideFor(link) {
-  return normalizeSocialUrl(env[link.envKey]);
+  return normalizeSocialUrlForPlatform(env[link.envKey], link.id);
 }
 
 export function getEnabledSocialLinks(input) {
@@ -127,7 +146,7 @@ export function getEnabledSocialLinks(input) {
   return links
     .map((link) => ({
       ...link,
-      url: overrideFor(link, overrides) || envOverrideFor(link) || normalizeSocialUrl(link.url),
+      url: overrideFor(link, overrides) || envOverrideFor(link) || normalizeSocialUrlForPlatform(link.url, link.id),
     }))
     .filter((link) => link.enabled !== false && Boolean(link.url))
     .sort((left, right) => Number(left.order || 0) - Number(right.order || 0));

@@ -7,6 +7,10 @@
       "sha256": "5a01e4c097ede1a7d7edcfaf6153d3ed33c54371ef89c783fbc2bd4386a8ba50"
     },
     {
+      "file": "chapters/chapter-001.json",
+      "sha256": "9404d42991bbbc93c8efd47e63eddf83e8a757e4bf7f164285207c96959b25ea"
+    },
+    {
       "file": "public_book.json",
       "sha256": "6ade179e7ac88d7f35378f06fd365392e353790eb50669554e6ed0647c4a0486"
     },
@@ -16,11 +20,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "eb68f9e65d6cea55e847c8edbd2442588adfef92385ff9854bb8f929611638d4"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "9404d42991bbbc93c8efd47e63eddf83e8a757e4bf7f164285207c96959b25ea"
+      "sha256": "0617b3c19e2d0ac1328cc2b83b4ff5c17c2f26fae97a7194f6d2fbca3a952550"
     }
   ]
 }

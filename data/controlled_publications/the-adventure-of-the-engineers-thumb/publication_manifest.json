@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-engineers-thumb",
+  "title": "The Adventure of the Engineer's Thumb",
+  "generated_at": "2026-10-01T21:08:31.373116+00:00",
+  "content": {
+    "source_hash": "0a430ed09fb1ae520258e09ff18b49f4b53274301a20a76e517280b6be327861",
+    "content_hash": "a6aada95decc4f51b9563cf2ae9d928434298e484d158fb62cac729c85422946",
+    "provenance_hash": "8aab0fffcd582e9fd7601030b845d72895f46a9a7ca8fbd7acf451fff31486b7",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "b6072337ea836efe36aec0a87adcbf1863c2ca44d8c9667a0a4f1903c02786e9",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Engineer's Thumb",
+        "word_count": 8328,
+        "sha256": "7323c35e43db9fef07f912532e800533d23a6ceb5ac8dedf6715d910a4fd2921"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "0340a6ead6176ebf23f1632e240115e4301a7ed7c56fcacfb052d7d4c08368b8"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "cb75b90fa9b8e613fb36a802fe44be29ec7c3210f49edea2fedab7003a4acf8d",
+    "reader_manifest": "b68287906770bc6db0b99930ab4473900ef42c31b051095a5ee5d9ab0a218569",
+    "source_evidence": "0340a6ead6176ebf23f1632e240115e4301a7ed7c56fcacfb052d7d4c08368b8",
+    "approval_evidence": "de78ff2a98e0f1c817977b680d3cd5cf89098df63d204522d1c7114a621faa6a"
+  },
+  "manifest_sha256": "35fd18ab3c49dabbd2f0b764ad2a697a1e2246cf9cb3a512864d8464ea53cfef"
+}

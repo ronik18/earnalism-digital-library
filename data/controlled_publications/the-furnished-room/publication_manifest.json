@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-furnished-room",
+  "title": "The Furnished Room",
+  "generated_at": "2026-10-01T21:08:32.652674+00:00",
+  "content": {
+    "source_hash": "d684d8a0b1f05e3d9fcc773a1865638899d10056ae68982e9bfb8cc16bfe0596",
+    "content_hash": "31f02252aef36b093080d6896220b58079628e8f6c15a00c1c575c8e5b6f2830",
+    "provenance_hash": "28234022f7b918ca569e0f1b59cb57bba80e54ce149e25ed61ba044ee2104046",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "568ca50c4a5166910fa48c77cd0b5cafab4b3f28606d257761bf6f45e8019d7d",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Furnished Room",
+        "word_count": 2490,
+        "sha256": "744979fcae05023ed048c5719c82382587c7f772ba5fae8a1a11862111b818a2"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "7084bcac45d4d84e59945de17367edcc3054be54c0c11fb3ddac5cb4a8e88a32"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "8523c9c692e963b2999503a20383c7d9abe8c79a76a8de7a44a8315ce0c69544",
+    "reader_manifest": "8b8fdef98d50d1511e2c4b636064c39a934c2872b44ddb9e89b2e4af9896dee1",
+    "source_evidence": "7084bcac45d4d84e59945de17367edcc3054be54c0c11fb3ddac5cb4a8e88a32",
+    "approval_evidence": "08f4fbe5c8b8306e897350ffcd98d8667652c236d94324a63cc34014165f4cc0"
+  },
+  "manifest_sha256": "c1cf9ba6b74d6cd2bbfdf9c8323a948b8613a4d2088b2b9e73f19fb680dc60f8"
+}

@@ -1,0 +1,57 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-noble-bachelor",
+  "title": "The Adventure of the Noble Bachelor",
+  "generated_at": "2026-10-01T21:08:31.598262+00:00",
+  "content": {
+    "source_hash": "38eca8ce65749233c926c71ed3ae28a8548cc71aa703b2419bf8363915432a64",
+    "content_hash": "911e6f7b701ecab9cc374fa23faffb75d96268af87ce187164c598ba2ad33f17",
+    "provenance_hash": "a4dc33f4ec0382e477b0407fae1a3916c421ce9f0b4dc4c8a4782e51cc893257",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "9fc411ab83dad05faa15b011d66265aeb0fb28d79766be5697764e455b04603a",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Noble Bachelor",
+        "word_count": 8175,
+        "sha256": "1a7d51325928b8b53f559d804623fd9ce2798d1dd501ab7ac3e685f545996788"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "3b51a9f5853527c3e5e42df80234e6c60c6a0220cbb773fc4c8bc57730a096b1"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required.",
+      "Rights: original_publication_year is required.",
+      "Rights: verified_at is required for approved rights metadata."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "478397fd8a553d2f1edb70c9eb71a62a0e3fa0e46acf7c9fdacddfd2b9022e6c",
+    "reader_manifest": "7afba7c134f796700ce927cc6eace038e12c335cb0551b74a77906cb380e887f",
+    "source_evidence": "3b51a9f5853527c3e5e42df80234e6c60c6a0220cbb773fc4c8bc57730a096b1",
+    "approval_evidence": "7dca17ef07fce415a1409888343f4591d064b5dfa08d2e64bf944e3cdd996be8"
+  },
+  "manifest_sha256": "bb0ec53cdf80c6b19899dcbe2a798dae44cc3065ff59040865b48ab3dfb3222e"
+}

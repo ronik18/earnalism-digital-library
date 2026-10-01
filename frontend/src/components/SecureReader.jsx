@@ -59,6 +59,8 @@ export default function SecureReader({
   lang,
   blurred = false,
   onViolation,
+  licensedText = false,
+  licenseAttribution = null,
   licenseNotice = DEFAULT_LICENSE_NOTICE,
   licenseMetadata = DEFAULT_LICENSE_METADATA,
   watermarkText: customWatermarkText = "",
@@ -67,6 +69,8 @@ export default function SecureReader({
   const [shielded, setShielded] = useState(false);
   const localRef = useRef(null);
   const countsRef = useRef({});
+  const licensedTextRef = useRef(licensedText);
+  licensedTextRef.current = licensedText;
   const safeSessionId = sessionId || "reader-session";
   const emailHash = useMemo(() => simpleHash(userEmail || "guest").slice(0, 8), [userEmail]);
   const issuedAt = useMemo(() => new Date().toISOString(), []);
@@ -99,19 +103,20 @@ export default function SecureReader({
     const onKeyDown = (event) => {
       const key = String(event.key || "").toLowerCase();
       const blockedShortcut = (event.ctrlKey || event.metaKey) && ["s", "p", "u", "a"].includes(key);
-      if (blockedShortcut) {
+      if (!licensedTextRef.current && blockedShortcut) {
         event.preventDefault();
         event.stopPropagation();
         report("blocked_shortcut", { key });
       }
     };
     const onKeyUp = (event) => {
-      if (event.key === "PrintScreen") {
+      if (!licensedTextRef.current && event.key === "PrintScreen") {
         report("print_screen");
         temporarilyShield();
       }
     };
     const onBeforePrint = (event) => {
+      if (licensedTextRef.current) return;
       event.preventDefault?.();
       report("print");
       temporarilyShield();
@@ -138,6 +143,7 @@ export default function SecureReader({
   }, [safeSessionId]);
 
   const block = (event, eventType) => {
+    if (licensedText) return;
     event.preventDefault();
     event.stopPropagation();
     report(eventType);
@@ -146,7 +152,7 @@ export default function SecureReader({
 
   return (
     <section
-      className={`secure-reader ${shielded || blurred ? "secure-reader--shielded" : ""}`}
+      className={`secure-reader ${licensedText ? "secure-reader--licensed-text" : ""} ${shielded || blurred ? "secure-reader--shielded" : ""}`}
       aria-label="Secure licensed ebook reader"
       onContextMenu={(event) => block(event, "right_click")}
       onCopy={(event) => block(event, "copy")}
@@ -181,6 +187,7 @@ export default function SecureReader({
       </div>
       <footer className="secure-reader__page-footer" aria-label="Licensed reading notice">
         <span>{footerText}</span>
+        {licenseAttribution}
         {licenseNotice && (
           <details className="secure-reader__legal">
             <summary>Terms</summary>

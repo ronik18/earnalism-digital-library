@@ -1,26 +1,10 @@
 {
   "slug": "alices-adventures-in-wonderland",
-  "generated_at": "2026-07-03T20:07:47Z",
+  "generated_at": "2026-10-01T21:19:39.153654+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "12641b87097def4f649ae0dcfb8f5a243e2b56929a8e1b35223d94c9d93b2b93"
-    },
-    {
-      "file": "highlight_sync.json",
-      "sha256": "fb96a7aced05433c8bc5892633eed9d69df5f9640d5c2795483da6c51d17ebf4"
-    },
-    {
-      "file": "public_book.json",
-      "sha256": "0b44e473913a449757882ec6277235bc5b78f37c4f19fb8d89417fd3664f7853"
-    },
-    {
-      "file": "reader_manifest.json",
-      "sha256": "b4884654a495c628c64916819dff635597f5afdb10b0ecaf46f6c88b3f8dd288"
-    },
-    {
-      "file": "source_evidence.json",
-      "sha256": "62b59134df986b6deaa654c0a1c6012250260cd60d0fa35ea8ed3cefa4117384"
+      "sha256": "2a09f96b2296ed45e201a33875fcaece77b4a90a72013d7cb66761e19159ac4c"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -69,6 +53,26 @@
     {
       "file": "chapters/chapter-012.json",
       "sha256": "2581e99590e1f9654ccbb3ef9b3df70cc850a78f26b0d6e21feba24b06db8cf9"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "fb96a7aced05433c8bc5892633eed9d69df5f9640d5c2795483da6c51d17ebf4"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "0b44e473913a449757882ec6277235bc5b78f37c4f19fb8d89417fd3664f7853"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "469a7f6ddd8202ef12e1c1e8f72e6d346887297737652e65c38baa8ff71ede16"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "b4884654a495c628c64916819dff635597f5afdb10b0ecaf46f6c88b3f8dd288"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "5878c960420a5fe11b19bf526baeccb12f4b6776054d604d176e89ef36ff59e5"
     }
   ]
 }

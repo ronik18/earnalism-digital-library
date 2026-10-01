@@ -9,5 +9,204 @@
   "rights_basis": "Public domain; official catalog marks copyright status as Public domain in the USA; source text header permits reuse in the United States.",
   "downloaded_at": "2026-06-08T20:17:58.132847+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #368",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/368",
+      "resolved_url": "https://www.gutenberg.org/ebooks/368",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:51.502277+00:00",
+      "response_sha256": "a0b896e7c3f830e86d816a6cd6e7861d17895a8a0a49899b2d78d4d1d7813a88"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/368.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/368/pg368.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:56.894794+00:00",
+      "response_sha256": "a0b8613f5a9c0ee604b53d6aa68388084bdefbf24e1f5e9749aafe2c8448efa3"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Conwell, Russell H., 1843-1925"
+      ],
+      "Contributor": [
+        "Shackleton, Robert, 1860-1923"
+      ],
+      "Title": [
+        "Acres of Diamonds: Our Every-day Opportunities"
+      ],
+      "Contents": [
+        "An appreciation -- Acres of diamonds -- His life and achievements -- Fifty years on the lecture platform."
+      ],
+      "Credits": [
+        "Produced by Charles Keller and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 73.9 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "BJ: Philosophy, Psychology, Religion: Ethics, Social usages, Etiquette, Religion"
+      ],
+      "Subject": [
+        "Success",
+        "Temple University",
+        "Conwell, Russell H., 1843-1925"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "368"
+      ],
+      "Release Date": [
+        "Jun 29, 2008"
+      ],
+      "Last Update": [
+        "Feb 26, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "2389 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "SOURCE_TEXT_DIFFERS",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1537,
+          "length": 1536
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 3092,
+          "length": 81048
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 84167,
+          "length": 16666
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 100869,
+          "length": 15726
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 116632,
+          "length": 8129
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 124799,
+          "length": 15195
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 140024,
+          "length": 15591
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 196160,
+          "length": 15640
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 211836,
+          "length": 14156
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 226051,
+          "length": 12167
+        }
+      ],
+      "nonmatching_chapters": [
+        "chapter-008",
+        "chapter-009"
+      ],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "7d76b89150b79dc7511527704c2c07387913f3ea1904523b72c60e6742744c39",
+    "legacy_content_sha256": "81cee3802b924fe4e2c5d504f4b8256455bb60a14c31055f50816a8bbbc2ab37",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1925,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "a0b896e7c3f830e86d816a6cd6e7861d17895a8a0a49899b2d78d4d1d7813a88",
+    "url": "https://www.gutenberg.org/ebooks/368",
+    "author_catalog_strings": [
+      "Conwell, Russell H., 1843-1925"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 12,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "102e72efbb536893d71361c6b6b2518a26330036b666d5496ff9e05e5b5f4ffd"
+      },
+      {
+        "id": "chapter-002",
+        "sha256": "4d904ef71f685a7071e6325a2d78521d76a24f125dc55e87edd1d580e6af7738"
+      },
+      {
+        "id": "chapter-003",
+        "sha256": "22df1fd016a83573a7600658cad5f7168b481243eee255a7b5d3ac5b541ba169"
+      },
+      {
+        "id": "chapter-004",
+        "sha256": "06430ae071e3f22559fcecb0f349c23c7f93adafc2cdc45f2d820ebe82eacd38"
+      },
+      {
+        "id": "chapter-005",
+        "sha256": "8d141f8ed86374561b693a3b65081be4090f8e6687e7f7d76e46765bf0ec04ac"
+      },
+      {
+        "id": "chapter-006",
+        "sha256": "ac6d6deef745e02db2184368f1f6f0953d2680c5b11beefc90676f4ae7565a14"
+      },
+      {
+        "id": "chapter-007",
+        "sha256": "0bc43fb80cf74dbf37082e3a0acbf20193c7b7e4bbbb4760093c887bd441e897"
+      },
+      {
+        "id": "chapter-008",
+        "sha256": "47c2ad26c950b61e4ec7cfa58d2e2c4e58d047801515522b754608027f1cb31d"
+      },
+      {
+        "id": "chapter-009",
+        "sha256": "bc7c718fdc892198c4d1e6a6e77dbd39a52e15a0279e1a6391b1e18e2c1a64ef"
+      },
+      {
+        "id": "chapter-010",
+        "sha256": "6c71713ca787e4e013627f0128d7c45f6dc8faf28cc5cff7b91defaca006e43d"
+      },
+      {
+        "id": "chapter-011",
+        "sha256": "560c691411ac158c4e02f6b7851548fcdad3256fb42d3dfc7fd5b8bfc83a31aa"
+      },
+      {
+        "id": "chapter-012",
+        "sha256": "eeabcea35e427b6cfb2ced2c22071fac72610b02035db420aa91695de9c12e41"
+      }
+    ],
+    "content_sha256": "41cffa1c120ca353c2d24e1c123b7905204abb61c496ee4948347b115959dc09"
+  }
 }
