@@ -3116,6 +3116,36 @@
           "customer_ready": "NOT_DECLARED",
           "physical_device_uat": "DEFERRED_BY_OWNER_NOT_RUN_UNVERIFIED",
           "next_generated_prompt": "Require normal exact-head regression and independent catalogue checks for the owner-authorized Agentic release, merge with expected-head protection, and deploy only merged main. Verify the four corrected cover assets and the public title readback, then complete authenticated trusted-India Reader and existing Reading Pass acceptance. If canonical segments require preparation, use the existing admin dry-run/parity and separately guarded activation workflow; do not overwrite an approved active version. Preserve all 14 revised chapter files, the original covers, all seven earlier accepted releases and all other evidence holds. Audio stays disabled; physical-device UAT remains owner-deferred NOT_RUN / UNVERIFIED. Do not mutate wallets, customers, unrelated publication pointers or global payment policy. Record actual production observations without claiming CUSTOMER_READY from offline rights checks."
+        },
+        {
+          "timestamp": "2026-10-01T03:54:11.637142+00:00",
+          "workstream": "agentic_owner_authorized_text_release",
+          "decision": "RECONCILE_NEW_RELEASE_DISCOVERY_ASSET_TEST_ISOLATION_AND_SOURCE_HASH_AUTHORITY",
+          "schema": "earnalism.agentic-release-dependencies.v1",
+          "failed_head": "c2f4a9728d896db95655245ede860b3fc408a439",
+          "failed_regression_run": 36811995491,
+          "failed_regression_job": 110208860223,
+          "failed_brand_review_run": 36811995516,
+          "failed_brand_review_job": 110208878009,
+          "observations": [
+            "Tracked sitemap omitted the newly allowlisted Agentic book.",
+            "PR cover HEAD checks reached the previous production release for candidate-owned assets.",
+            "Two immutable workflow source hash authorities still described the preceding seven-title frontend."
+          ],
+          "corrections": [
+            "Regenerate tracked sitemap and robots with the existing offline generator; preserve earlier routes.",
+            "Resolve only first-party /assets resources to the loopback candidate in PR mode; external hosts and production/canary checks retain exact URLs and content-type assertions.",
+            "Rebind both existing workflow source hash authorities to the actual owner-authorized release surface; preserve Library/UI baselines and full browser validation."
+          ],
+          "previous_source_surface": "94282c9df97458a814478a2dad75af9a5ad7cfc6734a5ae7de88f012226c72ef",
+          "new_source_surface": "f93d0d10d2fcc18644926d74d78b5895afebf4ef5ccec6c1de25550112d41a57",
+          "source_surface_scope": "Four sibling cover assets, one Agentic client allowlist entry, generated sitemap/robots. Existing product UI/layout source unchanged.",
+          "local_dependency_test_cases": 53,
+          "rights_decision_record_sha256": "5660b0da970e88056cf9507f15c016dad9a4819aae1ab177054eb47c861d7586",
+          "rights_artifact_bytes_unchanged": true,
+          "all_14_chapter_files_unchanged": true,
+          "full_head_checks": "REQUIRED_ON_NEW_HEAD",
+          "production_readback": "NOT_CLAIMED"
         }
       ],
       "title": "Agentic AI With Python",
@@ -4455,5 +4485,35 @@
     "customer_ready": "NOT_DECLARED",
     "physical_device_uat": "DEFERRED_BY_OWNER_NOT_RUN_UNVERIFIED",
     "next_generated_prompt": "Require normal exact-head regression and independent catalogue checks for the owner-authorized Agentic release, merge with expected-head protection, and deploy only merged main. Verify the four corrected cover assets and the public title readback, then complete authenticated trusted-India Reader and existing Reading Pass acceptance. If canonical segments require preparation, use the existing admin dry-run/parity and separately guarded activation workflow; do not overwrite an approved active version. Preserve all 14 revised chapter files, the original covers, all seven earlier accepted releases and all other evidence holds. Audio stays disabled; physical-device UAT remains owner-deferred NOT_RUN / UNVERIFIED. Do not mutate wallets, customers, unrelated publication pointers or global payment policy. Record actual production observations without claiming CUSTOMER_READY from offline rights checks."
+  },
+  "agentic_release_dependency_reconciliation_20261001": {
+    "timestamp": "2026-10-01T03:54:11.637142+00:00",
+    "workstream": "agentic_owner_authorized_text_release",
+    "decision": "RECONCILE_NEW_RELEASE_DISCOVERY_ASSET_TEST_ISOLATION_AND_SOURCE_HASH_AUTHORITY",
+    "schema": "earnalism.agentic-release-dependencies.v1",
+    "failed_head": "c2f4a9728d896db95655245ede860b3fc408a439",
+    "failed_regression_run": 36811995491,
+    "failed_regression_job": 110208860223,
+    "failed_brand_review_run": 36811995516,
+    "failed_brand_review_job": 110208878009,
+    "observations": [
+      "Tracked sitemap omitted the newly allowlisted Agentic book.",
+      "PR cover HEAD checks reached the previous production release for candidate-owned assets.",
+      "Two immutable workflow source hash authorities still described the preceding seven-title frontend."
+    ],
+    "corrections": [
+      "Regenerate tracked sitemap and robots with the existing offline generator; preserve earlier routes.",
+      "Resolve only first-party /assets resources to the loopback candidate in PR mode; external hosts and production/canary checks retain exact URLs and content-type assertions.",
+      "Rebind both existing workflow source hash authorities to the actual owner-authorized release surface; preserve Library/UI baselines and full browser validation."
+    ],
+    "previous_source_surface": "94282c9df97458a814478a2dad75af9a5ad7cfc6734a5ae7de88f012226c72ef",
+    "new_source_surface": "f93d0d10d2fcc18644926d74d78b5895afebf4ef5ccec6c1de25550112d41a57",
+    "source_surface_scope": "Four sibling cover assets, one Agentic client allowlist entry, generated sitemap/robots. Existing product UI/layout source unchanged.",
+    "local_dependency_test_cases": 53,
+    "rights_decision_record_sha256": "5660b0da970e88056cf9507f15c016dad9a4819aae1ab177054eb47c861d7586",
+    "rights_artifact_bytes_unchanged": true,
+    "all_14_chapter_files_unchanged": true,
+    "full_head_checks": "REQUIRED_ON_NEW_HEAD",
+    "production_readback": "NOT_CLAIMED"
   }
 }

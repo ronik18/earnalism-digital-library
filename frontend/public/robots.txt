@@ -6,6 +6,7 @@ Disallow: /account
 Disallow: /my-library
 Allow: /reader/a-ghost-story
 Allow: /reader/a-white-heron
+Allow: /reader/agentic-ai-with-python
 Allow: /reader/radharani
 Allow: /reader/the-adventures-of-sherlock-holmes
 Allow: /reader/the-canterville-ghost

@@ -67,6 +67,7 @@ echo "==> Local UAT public-release hold seeding contract"
   scripts.test_process_full_catalogue
 
 echo "==> Current catalogue resource, held-title, chapter-index and SEO invariants"
+node scripts/test_regression_asset_isolation.cjs
 env ENVIRONMENT=development "$PYTHON_BIN" -m pytest -q \
   backend/tests/test_controlled_launch_parity.py \
   backend/tests/test_chapter_index.py \

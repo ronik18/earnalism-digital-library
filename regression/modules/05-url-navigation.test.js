@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const { request, apiGet, mapLimit } = require("../utils/http");
 const { fetchSitemap } = require("../utils/sitemap");
-const { frontendUrl, isGoLive, isPr } = require("../utils/envGuard");
+const { frontendUrl, frontendResourceUrl, isGoLive, isPr } = require("../utils/envGuard");
 const perf = require("../config/performance.rules.json");
 const publicAudioTruth = require("../../internal/audiobook_lab/release_gate/claimable_go_live_tranche.json");
 const controlledLaunch = require("../../data/controlled_launch.json");
@@ -67,7 +67,7 @@ describe("URL, Path & Navigation", () => {
         : "";
       const url = book.cover_image_url || book.cover_url || book.thumbnail_url || sourceCover;
       expect(url).toBeTruthy();
-      const response = await request(url, { method: "HEAD", skipBody: true, timeoutMs: 20000 });
+      const response = await request(frontendResourceUrl(url), { method: "HEAD", skipBody: true, timeoutMs: 20000 });
       expect(response.ok).toBe(true);
       expect(response.headers.get("content-type") || "").toMatch(/image|octet-stream/i);
     });
