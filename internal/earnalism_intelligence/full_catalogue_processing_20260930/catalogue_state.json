@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-30T00:00:00Z",
+  "as_of": "2026-10-01T03:17:21.336723+00:00",
   "audio_activation_count": 0,
   "chapter_count": 1012,
   "full_catalogue_publication_complete": false,
@@ -11,12 +11,12 @@
   "prepared_package_count": 162,
   "processing_status": "COMPLETE_FOR_AVAILABLE_INPUTS",
   "public_package_mutations": 0,
-  "rights_registry_sha256": "0d271a7b05d129c2590dfc75ca15a746ac2fbe0ece34e20be2491ab94ea54d39",
+  "rights_registry_sha256": "cc8245131e8daa3a8a558d9808f650ad7faa8f33f76eaf84796651a83cd48db8",
   "schema": "earnalism.full-catalogue-processing.v1",
   "scope": "all inventory, controlled and content-package slugs",
   "state_counts": {
-    "EXTERNAL_ACTION_REQUIRED": 224,
-    "READER_ONLY_LIVE_APPROVED": 7
+    "EXTERNAL_ACTION_REQUIRED": 223,
+    "READER_ONLY_LIVE_APPROVED": 8
   },
   "title_count": 231,
   "titles": [
@@ -447,47 +447,38 @@
     {
       "active_package": "backend/data/controlled_publications/agentic-ai-with-python",
       "audio_activation_authorized": false,
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
-      ],
+      "blockers": [],
       "chapter_count": 14,
       "historical_root_decision": false,
       "language": "en",
       "new_publication_authorized": false,
-      "next_action": "Resolve the listed source, content, cover and accepted-decision gaps; rerun the processor. This design approval does not resolve title-specific evidence.",
+      "next_action": "Verify production Reader delivery and protected-page entitlement from a trusted India context.",
       "prepared_package": "data/controlled_publications/agentic-ai-with-python",
       "private_manifest": "manifests/agentic-ai-with-python.json",
       "processing_status": "ASSESSED",
       "retained_package_issues": [],
       "rights": {
-        "decision_id": null,
-        "offline_india_text_scope_passed": false,
+        "decision_id": "india-20261001-agentic-ai-with-python-owner-text-reader",
+        "offline_india_text_scope_passed": true,
         "production_request_verified": false,
-        "registry_bound": false,
+        "registry_bound": true,
         "runtime_actions": {
           "catalog_cta": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_chapter": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           },
           "reader_manifest": {
-            "passed": false,
-            "reasons": [
-              "ACCEPTED_DECISION_MISSING"
-            ]
+            "passed": true,
+            "reasons": []
           }
         }
       },
       "slug": "agentic-ai-with-python",
-      "state": "EXTERNAL_ACTION_REQUIRED",
+      "state": "READER_ONLY_LIVE_APPROVED",
       "title": "Agentic AI With Python",
       "uploaded": false
     },

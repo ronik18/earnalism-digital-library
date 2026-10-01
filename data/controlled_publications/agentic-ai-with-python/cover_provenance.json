@@ -1,0 +1,66 @@
+{
+  "schema": "earnalism.cover-provenance.v1",
+  "slug": "agentic-ai-with-python",
+  "reviewed_at": "2026-10-01T03:17:21.336723+00:00",
+  "original_creator": "Ronik Basak; directly confirmed for both covers",
+  "revision_authorization_sha256": "f919f54c311cd7c8c90e0ee9371d0e4e632748b365d0e6c5ce6bf7debe8080a8",
+  "original_assets_preserved": {
+    "front": {
+      "path": "internal/legal/agentic_owner_rights_20261001/front-cover-cdn.png",
+      "sha256": "c78a7236129ec23bc41008947087ae692ae8ecfeeecd674914e4c636749aa6d1"
+    },
+    "back": {
+      "path": "internal/legal/agentic_owner_rights_20261001/back-cover-cdn.png",
+      "sha256": "94268d9f1c05505ae161bf3756875c8b6a49cbc76cd7b964612586713b190496"
+    }
+  },
+  "edited_assets": {
+    "front_full": {
+      "path": "frontend/public/assets/books/agentic-ai-with-python/front-cover-release-20261001.webp",
+      "url": "https://theearnalism.com/assets/books/agentic-ai-with-python/front-cover-release-20261001.webp",
+      "sha256": "abb4a39dee194b08be9f0f6f85ba65ea2504e1d2dd5a6f7d020383486bdade83",
+      "size_bytes": 172572
+    },
+    "front_thumbnail": {
+      "path": "frontend/public/assets/books/agentic-ai-with-python/front-cover-release-20261001-320.webp",
+      "url": "https://theearnalism.com/assets/books/agentic-ai-with-python/front-cover-release-20261001-320.webp",
+      "sha256": "dc3e94e15856a98e9eb7e8fa2c995fedf611fa4fd4481b9357a95242d1f672ca",
+      "size_bytes": 34102
+    },
+    "back_full": {
+      "path": "frontend/public/assets/books/agentic-ai-with-python/back-cover-release-20261001.webp",
+      "url": "https://theearnalism.com/assets/books/agentic-ai-with-python/back-cover-release-20261001.webp",
+      "sha256": "389ddc9869f48a78dfa6864c1c2ab165ccd2f079f420898825a070997b1b69c6",
+      "size_bytes": 228748
+    },
+    "back_thumbnail": {
+      "path": "frontend/public/assets/books/agentic-ai-with-python/back-cover-release-20261001-320.webp",
+      "url": "https://theearnalism.com/assets/books/agentic-ai-with-python/back-cover-release-20261001-320.webp",
+      "sha256": "ea645a224c08018a248d79597576d61e5abbbc49d5932228f366fab62491c713",
+      "size_bytes": 42054
+    }
+  },
+  "generation": {
+    "method": "built-in image_gen, precise-object-edit",
+    "generated_front_sha256": "8e1e845b2e92e9c83b0112a3af677916c175453084ab5d3d1ab7c52f9e556c13",
+    "generated_back_sha256": "a6354048423305d7eea32c361db143a0ec9645a4fd31a4358148be4e0f215b7e",
+    "optimization": "sharp WebP quality 90, full size and 320px thumbnails; no editorial modification during conversion"
+  },
+  "component_disposition": {
+    "python_logo": "REMOVED_FROM_BOTH_RELEASE_COVERS",
+    "replacement": "Original abstract connected-node agent illustration; no two-snakes or vendor mark",
+    "review": "Actual assistant visual inspection of both generated covers; no independent human review claimed",
+    "nominative_python_word": "Book concerns the Python programming language; no endorsement or affiliation claim",
+    "notice": "Python is a trademark of the Python Software Foundation. This independent book is not affiliated with the PSF.",
+    "notice_locations": [
+      "back cover bottom imprint",
+      "public book description"
+    ],
+    "policy_sources": [
+      "https://www.python.org/psf/trademarks/",
+      "https://www.python.org/psf/trademarks-faq/"
+    ]
+  },
+  "commercial_use_authorized": true,
+  "audio_authorized": false
+}

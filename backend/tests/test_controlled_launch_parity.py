@@ -25,6 +25,7 @@ INDIA_TEXT_RELEASE_SLUGS = {
     "the-gift-of-the-magi",
     "the-canterville-ghost",
     "the-adventures-of-sherlock-holmes",
+    "agentic-ai-with-python",
 }
 
 
@@ -71,7 +72,7 @@ def test_owner_exclusion_tombstone_is_mirrored_exactly():
     }
 
 
-def test_backend_controlled_launch_opens_only_the_seven_approved_india_text_titles_and_no_audio():
+def test_backend_controlled_launch_opens_only_the_eight_approved_india_text_titles_and_no_audio():
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     backend_audio = set(backend_launch["audio_enabled_slugs"])
 
@@ -100,7 +101,7 @@ def test_india_commercial_text_release_is_mirrored_and_audio_remains_disabled():
         assert launch["audio_enabled_slugs"] == []
 
 
-def test_seven_title_release_uses_commercial_mode_and_keeps_checkout_audio_disabled():
+def test_eight_title_release_uses_commercial_mode_and_keeps_checkout_audio_disabled():
     root_launch = load_json(ROOT_CONTROLLED_LAUNCH)
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     expected_modes = {
@@ -111,6 +112,7 @@ def test_seven_title_release_uses_commercial_mode_and_keeps_checkout_audio_disab
         "the-gift-of-the-magi": "COMMERCIAL_ENTITLEMENT",
         "the-canterville-ghost": "COMMERCIAL_ENTITLEMENT",
         "the-adventures-of-sherlock-holmes": "COMMERCIAL_ENTITLEMENT",
+        "agentic-ai-with-python": "COMMERCIAL_ENTITLEMENT",
     }
 
     for launch in (root_launch, backend_launch):
@@ -122,7 +124,7 @@ def test_seven_title_release_uses_commercial_mode_and_keeps_checkout_audio_disab
         assert launch["public_audio_exposure_enabled"] is False
 
 
-def test_seven_title_release_has_hash_bound_reading_pass_rights_and_published_reader_manifests():
+def test_eight_title_release_has_hash_bound_reading_pass_rights_and_published_reader_manifests():
     launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     registry, revoked = load_production_registry()
     commercial_slugs = tuple(sorted(INDIA_TEXT_RELEASE_SLUGS))
@@ -152,8 +154,9 @@ def test_seven_title_release_has_hash_bound_reading_pass_rights_and_published_re
             or record["accepted_by"].startswith("REO ENTERPRISE proprietor under the direct user-provided")
             or record["accepted_by"].startswith("REO ENTERPRISE proprietor under the direct PR #414 go-live mandate")
             or (slug == "the-adventures-of-sherlock-holmes" and "identity was not provided" in record["accepted_by"])
+            or (slug == "agentic-ai-with-python" and record["accepted_by"].startswith("Ronik Basak, direct owner release instruction;"))
         )
-        if slug == "the-adventures-of-sherlock-holmes":
+        if slug in {"the-adventures-of-sherlock-holmes", "agentic-ai-with-python"}:
             assert record["territories"] == ["IN"]
             assert set(record["uses"]) == {
                 "catalog_metadata", "cover_display", "reader_preview", "reader_delivery",

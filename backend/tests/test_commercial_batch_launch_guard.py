@@ -46,7 +46,7 @@ def test_production_simulator_cannot_credit_wallet_even_if_commerce_flag_is_misc
     assert denied.value.status_code == 403
 
 
-def test_all_seven_live_titles_require_commercial_entitlement_and_held_title_is_denied():
+def test_all_eight_live_titles_require_commercial_entitlement_and_held_title_is_denied():
     for slug in (
         "a-ghost-story",
         "the-tell-tale-heart",
@@ -55,6 +55,7 @@ def test_all_seven_live_titles_require_commercial_entitlement_and_held_title_is_
         "the-gift-of-the-magi",
         "the-canterville-ghost",
         "the-adventures-of-sherlock-holmes",
+        "agentic-ai-with-python",
     ):
         assert server._title_text_access_mode(slug) == "COMMERCIAL_ENTITLEMENT"
     assert server._title_text_access_mode("yugalanguriya") is None
@@ -76,5 +77,6 @@ def test_no_live_title_can_be_read_end_to_end_while_paid_commerce_is_disabled(mo
         "the-gift-of-the-magi",
         "the-canterville-ghost",
         "the-adventures-of-sherlock-holmes",
+        "agentic-ai-with-python",
     ):
         assert server._commercial_india_reader_verdict(blocked_request, slug) is False

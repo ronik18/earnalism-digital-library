@@ -1,6 +1,6 @@
 {
   "slug": "agentic-ai-with-python",
-  "generated_at": "2026-09-12T13:34:11.119698+00:00",
+  "generated_at": "2026-10-01T03:17:21.336723+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
@@ -63,12 +63,20 @@
       "sha256": "e61748ddd182c6049b3a454debc9e8b57d4f43f87469fc5105b1a1a7fba404da"
     },
     {
+      "file": "cover_provenance.json",
+      "sha256": "602bee4d08c1aa7ea51b00c36d313c60f7beb14a0165232ff5b6b1fa33f364c9"
+    },
+    {
       "file": "public_book.json",
-      "sha256": "3b9fb4c9c4ab17f1746d5df6d889692e6440db6262277e099a87d69cbdd18b3e"
+      "sha256": "1fc2712208ce7cd27247741e808391f13d511f8d11f3bedcc8ea38b516514625"
     },
     {
       "file": "reader_manifest.json",
       "sha256": "705ce53074d1d9259bc1f38b7ba999351b269d48bff630fde669c4b1133674b7"
+    },
+    {
+      "file": "reader_release_approval.json",
+      "sha256": "97f6185464999f5cea714cb8c16b2f0ea59c89b37bc1e272fb955389eae7b171"
     },
     {
       "file": "source_evidence.json",

@@ -120,6 +120,25 @@ class CatalogueProcessorTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "duplicate catalogue slug"):
             self.run_processor()
 
+    def test_cli_reproduces_advanced_assessment_without_backdating_or_mutation(self):
+        command = [sys.executable, str(Path(__file__).with_name("process_full_catalogue.py")), "--root", str(self.root)]
+        instant = "2026-10-01T03:17:21.336723+00:00"
+        result = subprocess.run(command + ["--as-of", instant], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        output = self.root / OUTPUT
+        before = {p.relative_to(output).as_posix(): p.read_bytes() for p in output.rglob("*.json")}
+        self.assertEqual(json.loads(before["catalogue_state.json"])["as_of"], instant)
+        checked = subprocess.run(command + ["--check"], capture_output=True, text=True)
+        self.assertEqual(checked.returncode, 0, checked.stdout + checked.stderr)
+        self.assertEqual(before, {p.relative_to(output).as_posix(): p.read_bytes() for p in output.rglob("*.json")})
+        older = subprocess.run(command + ["--check", "--as-of", "2026-09-30T00:00:00Z"], capture_output=True, text=True)
+        self.assertEqual(older.returncode, 1)
+        self.assertEqual(before, {p.relative_to(output).as_posix(): p.read_bytes() for p in output.rglob("*.json")})
+        worker_output = self.root / "internal/earnalism_intelligence/worker-report"
+        worker = subprocess.run(command + ["--output", str(worker_output)], capture_output=True, text=True)
+        self.assertEqual(worker.returncode, 0, worker.stderr)
+        self.assertEqual(json.loads((worker_output / "catalogue_state.json").read_text())["as_of"], instant)
+
     def test_outputs_cannot_be_written_into_public_runtime_packages(self):
         command = [sys.executable, str(Path(__file__).with_name("process_full_catalogue.py")), "--root", str(self.root), "--output", str(self.package)]
         result = subprocess.run(command, capture_output=True, text=True)

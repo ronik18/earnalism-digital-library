@@ -107,8 +107,7 @@
       "eligible_for_new_upload": false,
       "package": "data/controlled_publications/agentic-ai-with-python",
       "skip_reasons": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
+        "ALREADY_CONTROLLED_LIVE_APPROVED"
       ],
       "slug": "agentic-ai-with-python",
       "title": "Agentic AI With Python"

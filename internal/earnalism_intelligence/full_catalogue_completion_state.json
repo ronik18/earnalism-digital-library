@@ -3,7 +3,7 @@
   "reader_design_owner_approval": "CONDITIONAL_ON_FRESH_MATCH_WITH_SUPPLIED_MOCK",
   "catalogue_scope": 231,
   "processing_status": "COMPLETE_FOR_AVAILABLE_INPUTS",
-  "publication_status": "7_PREEXISTING_APPROVED_224_EVIDENCE_HOLDS",
+  "publication_status": "8_SOURCE_APPROVED_223_EVIDENCE_HOLDS_PRODUCTION_ACCEPTANCE_PENDING",
   "source_packages_changed": 0,
   "worker_task_type": "catalogue-processing",
   "worker_review": "ACCEPT_WITHIN_SCOPE_VERIFIED_IMPLEMENTATION_AND_MERGED_MAIN",
@@ -307,7 +307,7 @@
       "merge_main": "45490009cf45fc1ce6853752f80e903636169916"
     }
   },
-  "next_generated_prompt": "Use the confirmed Ronik Basak manuscript authorship and creation of both covers; do not reopen those missing-fact questions. Resolve only the evidenced Python logo variant and required notice conditions, preserve approved assets/text, and rebind the reviewed exact India text-reader record through the existing registry process when conditions are satisfied. Complete secure account verification, then inspect applicable production Reader/admin active publication and exact revised hashes from a trusted India context. Use the existing draft/admin path only after all gates pass. Keep audio disabled, physical-device UAT owner-deferred, all seven existing accepted titles and all other holds intact; do not change wallets, customer data, launch flags or deployment configuration.",
+  "next_generated_prompt": "Require normal exact-head regression and independent catalogue checks for the owner-authorized Agentic release, merge with expected-head protection, and deploy only merged main. Verify the four corrected cover assets and the public title readback, then complete authenticated trusted-India Reader and existing Reading Pass acceptance. If canonical segments require preparation, use the existing admin dry-run/parity and separately guarded activation workflow; do not overwrite an approved active version. Preserve all 14 revised chapter files, the original covers, all seven earlier accepted releases and all other evidence holds. Audio stays disabled; physical-device UAT remains owner-deferred NOT_RUN / UNVERIFIED. Do not mutate wallets, customers, unrelated publication pointers or global payment policy. Record actual production observations without claiming CUSTOMER_READY from offline rights checks.",
   "latest_verified_catalogue_campaign": {
     "run": 36794894294,
     "job": 110156271363,
@@ -504,5 +504,56 @@
     "customer_ready": "NOT_DECLARED",
     "physical_device_uat": "DEFERRED_BY_OWNER_NOT_RUN_UNVERIFIED",
     "next_generated_prompt": "Use the confirmed Ronik Basak manuscript authorship and creation of both covers; do not reopen those missing-fact questions. Resolve only the evidenced Python logo variant and required notice conditions, preserve approved assets/text, and rebind the reviewed exact India text-reader record through the existing registry process when conditions are satisfied. Complete secure account verification, then inspect applicable production Reader/admin active publication and exact revised hashes from a trusted India context. Use the existing draft/admin path only after all gates pass. Keep audio disabled, physical-device UAT owner-deferred, all seven existing accepted titles and all other holds intact; do not change wallets, customer data, launch flags or deployment configuration."
+  },
+  "agentic_owner_authorized_text_release_20261001": {
+    "timestamp": "2026-10-01T03:17:21.336723+00:00",
+    "workstream": "agentic_owner_authorized_text_release",
+    "decision": "RESOLVE_PYTHON_COMPONENT_CONDITIONS_AND_ACCEPT_EXACT_INDIA_TEXT_RELEASE",
+    "slug": "agentic-ai-with-python",
+    "source_head": "a62ac8c136ba18bee53ef87508a353ab3c67cdd0",
+    "owner_authority": "Direct instruction authorizes necessary cover/notice changes and release; authorship and creation of both original covers already directly confirmed.",
+    "component_disposition": "Stylized Python logo removed from both release covers; neutral connected-node illustration and trademark/non-affiliation notice verified visually. Original assets preserved.",
+    "review_attribution": "Codex exact-artifact checks under the owner instruction; no separate owner hash inspection, independent human review or PSF variant approval claimed.",
+    "selected_chapter_count": 14,
+    "all_selected_chapter_files_unchanged": true,
+    "original_source_approval_reader_index_bytes_unchanged": true,
+    "release_packet": "internal/legal/agentic_text_release_20261001",
+    "accepted_decision_id": "india-20261001-agentic-ai-with-python-owner-text-reader",
+    "accepted_record_sha256": "5660b0da970e88056cf9507f15c016dad9a4819aae1ab177054eb47c861d7586",
+    "accepted_registry_binding": true,
+    "territory": "IN",
+    "text_access": "Existing commercial Reader / Reading Pass entitlement, 3 free pages and entitlement required from page 4",
+    "configured_new_reader_title_count": 1,
+    "production_verified_new_title_count": 0,
+    "audio_activations": 0,
+    "prior_accepted_records_preserved": 10,
+    "prior_accepted_titles_preserved": 7,
+    "other_held_title_assessments_unchanged": true,
+    "catalogue": {
+      "assessed": 231,
+      "prepared": 162,
+      "chapters": 1012,
+      "accepted_source_titles": 8,
+      "held": 223,
+      "missing_packages": 69,
+      "aggregate_blockers": 897
+    },
+    "assessment_as_of": "2026-10-01T03:17:21.336723+00:00",
+    "processor_change": "CLI defaults to the retained snapshot timestamp (canonical snapshot for a new worker output) rather than backdating a new accepted decision to September 30; explicit --as-of advances it and --check stays read-only.",
+    "local_checks": {
+      "package_manifest": "PASS_BOTH_MIRRORS",
+      "preservation_checksums": "PASS_20_ENTRIES_PER_PACKAGE_14_CHAPTERS",
+      "agentic_sprint1_rights_tests": "PASS_77",
+      "proxy_launch_tests": "PASS_32",
+      "draft_import_safety_tests": "PASS_10",
+      "copyright_india_seed_processor_tests": "PASS_25"
+    },
+    "protected_ci": "PENDING_NORMAL_EXACT_HEAD_AND_MAIN_CHECKS",
+    "deployment": "PENDING_MERGED_MAIN_ONLY",
+    "authenticated_production_readback": "PENDING_SIGN_IN_NO_CONFIRMED_AUTHENTICATED_SESSION",
+    "trusted_india_production_verified": false,
+    "customer_ready": "NOT_DECLARED",
+    "physical_device_uat": "DEFERRED_BY_OWNER_NOT_RUN_UNVERIFIED",
+    "next_generated_prompt": "Require normal exact-head regression and independent catalogue checks for the owner-authorized Agentic release, merge with expected-head protection, and deploy only merged main. Verify the four corrected cover assets and the public title readback, then complete authenticated trusted-India Reader and existing Reading Pass acceptance. If canonical segments require preparation, use the existing admin dry-run/parity and separately guarded activation workflow; do not overwrite an approved active version. Preserve all 14 revised chapter files, the original covers, all seven earlier accepted releases and all other evidence holds. Audio stays disabled; physical-device UAT remains owner-deferred NOT_RUN / UNVERIFIED. Do not mutate wallets, customers, unrelated publication pointers or global payment policy. Record actual production observations without claiming CUSTOMER_READY from offline rights checks."
   }
 }

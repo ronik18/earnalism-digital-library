@@ -529,7 +529,7 @@ def markdown(package: dict[str, Any]) -> str:
         f"- Production-surface fingerprint: `{package['generated_from']['production_surface_sha256']}`.",
         f"- Generator revision: `{package['generated_from']['generator_head']}` (tree `{package['generated_from']['generator_tree']}`).",
         f"- Full repository-controlled inventory: {summary['title_count']} titles and {summary['component_count']} component rows in `copyright-rights-inventory.json`.",
-        "- The three current controlled-release titles are reported from their immutable accepted records; Yugalanguriya and all other controlled titles remain held.",
+        f"- The {summary['live_accepted_rights_record_count']} current controlled-release titles are reported from their immutable accepted records; Yugalanguriya and unaccepted titles remain held.",
         "- Customer/accounting acceptance, rights acceptance, publication activation, deployment, and production mutation are outside this packet.",
         "",
         "## Technical fail-closed evidence",

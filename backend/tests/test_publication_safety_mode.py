@@ -56,7 +56,11 @@ def test_publication_allowlist_requires_root_and_backend_controlled_launch_parit
     expected = tuple(sorted(set(root_launch["live_approved_slugs"]) & set(backend_launch["live_approved_slugs"])))
 
     assert APPROVED_RELEASE_ALLOWLIST == expected
-    assert APPROVED_RELEASE_ALLOWLIST == ("a-ghost-story", "radharani", "the-tell-tale-heart")
+    assert APPROVED_RELEASE_ALLOWLIST == (
+        "a-ghost-story", "a-white-heron", "agentic-ai-with-python", "radharani",
+        "the-adventures-of-sherlock-holmes", "the-canterville-ghost",
+        "the-gift-of-the-magi", "the-tell-tale-heart",
+    )
     assert "not-controlled" not in APPROVED_RELEASE_ALLOWLIST
     issues = validate_import_book_safety(
         {

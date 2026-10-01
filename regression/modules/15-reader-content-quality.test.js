@@ -35,6 +35,7 @@ const CURRENT_RELEASED_SLUGS = [
   "the-gift-of-the-magi",
   "the-canterville-ghost",
   "the-adventures-of-sherlock-holmes",
+  "agentic-ai-with-python",
 ];
 const BOILERPLATE_RE = /Project Gutenberg|Gutenberg-tm|START OF THE PROJECT|END OF THE PROJECT|Wikisource|Category:|Creative Commons|Download as|Edit this page/i;
 const AUDIO_FIELDS = ["audio_enabled", "audiobook_enabled", "generate_audiobook"];

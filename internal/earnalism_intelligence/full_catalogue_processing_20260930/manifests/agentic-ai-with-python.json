@@ -15,10 +15,13 @@
     "chapters/chapter-012.json": "edde00eac6df148abef6f39ef8f8eaa9ff6384a17b6b7bf0b722b6e98a5b703a",
     "chapters/chapter-013.json": "95196ad65444292e591f976eb8fa51e25fc17237039b3ad5560b666f91842c03",
     "chapters/chapter-014.json": "e61748ddd182c6049b3a454debc9e8b57d4f43f87469fc5105b1a1a7fba404da",
-    "checksum_manifest.json": "79da7661b185b8960925442990da75e9310634a50da83452afbc5cd8d381df79",
-    "public_book.json": "3b9fb4c9c4ab17f1746d5df6d889692e6440db6262277e099a87d69cbdd18b3e",
-    "publication_manifest.json": "f25b571aa0c40b84448435a8078586ecd92142414f5edbe70617362879872d8f",
+    "checksum_manifest.json": "f0d15578a06db07b44c07ee9b4ed023ee6096bd2c6e5061dd8c453df21f6eaf6",
+    "cover_provenance.json": "602bee4d08c1aa7ea51b00c36d313c60f7beb14a0165232ff5b6b1fa33f364c9",
+    "public_book.json": "1fc2712208ce7cd27247741e808391f13d511f8d11f3bedcc8ea38b516514625",
+    "publication_manifest.json": "3b50f1958f2cd12453165b08086901c9d56c8eb66d6869953637dc4b3bbb8879",
     "reader_manifest.json": "705ce53074d1d9259bc1f38b7ba999351b269d48bff630fde669c4b1133674b7",
+    "reader_release_approval.json": "97f6185464999f5cea714cb8c16b2f0ea59c89b37bc1e272fb955389eae7b171",
+    "rights_decision.json": "9a3b8f3ac26f1326e5b94067829cdd70b65f72888fe209a9c93c0b3b4fa71ab7",
     "source_evidence.json": "c21bb049f395d0a88c6912136974140341db4b6ecd631395aad36609ded48386"
   },
   "chapter_content_hashes": [
@@ -109,17 +112,20 @@
     "chapters/chapter-012.json": "edde00eac6df148abef6f39ef8f8eaa9ff6384a17b6b7bf0b722b6e98a5b703a",
     "chapters/chapter-013.json": "95196ad65444292e591f976eb8fa51e25fc17237039b3ad5560b666f91842c03",
     "chapters/chapter-014.json": "e61748ddd182c6049b3a454debc9e8b57d4f43f87469fc5105b1a1a7fba404da",
-    "checksum_manifest.json": "79da7661b185b8960925442990da75e9310634a50da83452afbc5cd8d381df79",
-    "public_book.json": "3b9fb4c9c4ab17f1746d5df6d889692e6440db6262277e099a87d69cbdd18b3e",
-    "publication_manifest.json": "f25b571aa0c40b84448435a8078586ecd92142414f5edbe70617362879872d8f",
+    "checksum_manifest.json": "f0d15578a06db07b44c07ee9b4ed023ee6096bd2c6e5061dd8c453df21f6eaf6",
+    "cover_provenance.json": "602bee4d08c1aa7ea51b00c36d313c60f7beb14a0165232ff5b6b1fa33f364c9",
+    "public_book.json": "1fc2712208ce7cd27247741e808391f13d511f8d11f3bedcc8ea38b516514625",
+    "publication_manifest.json": "3b50f1958f2cd12453165b08086901c9d56c8eb66d6869953637dc4b3bbb8879",
     "reader_manifest.json": "705ce53074d1d9259bc1f38b7ba999351b269d48bff630fde669c4b1133674b7",
+    "reader_release_approval.json": "97f6185464999f5cea714cb8c16b2f0ea59c89b37bc1e272fb955389eae7b171",
+    "rights_decision.json": "9a3b8f3ac26f1326e5b94067829cdd70b65f72888fe209a9c93c0b3b4fa71ab7",
     "source_evidence.json": "c21bb049f395d0a88c6912136974140341db4b6ecd631395aad36609ded48386"
   },
   "publication_authority": false,
   "publication_manifest": {
     "artifacts": {
       "approval_evidence": "1d34313e08796c09cb8d3a9a0e9a343c59fce01028bdaa47e846cf25f505d308",
-      "public_book": "3b9fb4c9c4ab17f1746d5df6d889692e6440db6262277e099a87d69cbdd18b3e",
+      "public_book": "1fc2712208ce7cd27247741e808391f13d511f8d11f3bedcc8ea38b516514625",
       "reader_manifest": "705ce53074d1d9259bc1f38b7ba999351b269d48bff630fde669c4b1133674b7",
       "source_evidence": "c21bb049f395d0a88c6912136974140341db4b6ecd631395aad36609ded48386"
     },
@@ -240,17 +246,14 @@
       "sanitized": true,
       "source_hash": "c0d3577b9b4f7f91c2ecc19ff64e7bc2e64d1091275def3c3849f97e6b1a8a8f"
     },
-    "generated_at": "2026-09-30T00:00:00Z",
-    "manifest_sha256": "e11cbec24793e1b9039c7002b29eefb14263a6f6fee45f78e1dd49786f5b975b",
+    "generated_at": "2026-10-01T03:17:21.336723+00:00",
+    "manifest_sha256": "c715c843ccee7bf2e4dbf5407d2a7f5be3ba845b771053b6abce5403a2377bbd",
     "reader_release": {
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
-      ],
-      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779560234/earnalism/covers/front/cover_307adb30-176d-4a7b-a499-e20c8312337b.png",
-      "exposed": false,
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/agentic-ai-with-python/front-cover-release-20261001.webp",
+      "exposed": true,
       "qa_status": "QA_PASSED",
-      "status": "BLOCKED"
+      "status": "APPROVED"
     },
     "rights": {
       "evidence_sha256": "c21bb049f395d0a88c6912136974140341db4b6ecd631395aad36609ded48386",
@@ -264,28 +267,22 @@
     "title": "Agentic AI With Python"
   },
   "rights_assessment": {
-    "decision_id": null,
-    "offline_india_text_scope_passed": false,
+    "decision_id": "india-20261001-agentic-ai-with-python-owner-text-reader",
+    "offline_india_text_scope_passed": true,
     "production_request_verified": false,
-    "registry_bound": false,
+    "registry_bound": true,
     "runtime_actions": {
       "catalog_cta": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_chapter": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_manifest": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       }
     }
   },

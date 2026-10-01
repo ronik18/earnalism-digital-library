@@ -1,6 +1,6 @@
 {
   "schema_version": "earnalism.rights-decision-registry.v1",
-  "registry_id": "india-seven-title-commercial-entitlement-reader-20260929",
+  "registry_id": "india-eight-title-commercial-entitlement-reader-20261001",
   "accepted_records": {
     "india-20260922-a-ghost-story-reader-release": "caa2538805f8388e3216affae04aa6e3a941541395296d7bab17ed34fd725107",
     "india-20260922-the-tell-tale-heart-reader-release": "39010bea33d4b43790f98af1758fdeadc20625d4ab8df01e247bb143788bec39",
@@ -11,7 +11,8 @@
     "india-20260925-a-white-heron-commercial-reader-release": "756bb230f18b4c7226f88a376d1c8a8e53c240ec1864e8f290be70afcf66c388",
     "india-20260925-the-gift-of-the-magi-commercial-reader-release": "6d4b4acbe88350b9c81ea55002306bc72cf5178daaacfd87269833557c012773",
     "india-20260925-the-canterville-ghost-commercial-reader-release": "704fa0e1a6373356c3f6fa3210050eadd54b37fb584006782e1d16fa42661c15",
-    "india-20260929-the-adventures-of-sherlock-holmes-pg1661-text-reader": "6698711d408c59160d65605bb156c38eaf183affbdc3695b92ced8f0627e09c6"
+    "india-20260929-the-adventures-of-sherlock-holmes-pg1661-text-reader": "6698711d408c59160d65605bb156c38eaf183affbdc3695b92ced8f0627e09c6",
+    "india-20261001-agentic-ai-with-python-owner-text-reader": "5660b0da970e88056cf9507f15c016dad9a4819aae1ab177054eb47c861d7586"
   },
   "historical_records": {
     "superseded_runtime_bindings": {
@@ -43,19 +44,110 @@
   },
   "revoked_decision_ids": [],
   "pilot_dispositions": {
-    "controlled-a-ghost-story": {"status": "ACCEPTED", "countries": ["IN"], "uses": ["reader"]},
-    "controlled-the-tell-tale-heart": {"status": "ACCEPTED", "countries": ["IN"], "uses": ["reader"]},
-    "controlled-radharani": {"status": "ACCEPTED", "countries": ["IN"], "uses": ["reader"]},
-    "controlled-yugalanguriya": {"status": "HOLD", "countries": ["IN", "US", "GB", "CA", "AU", "DE", "AE", "BD", "SG", "SA"], "uses": ["reader", "audio"]}
+    "controlled-a-ghost-story": {
+      "status": "ACCEPTED",
+      "countries": [
+        "IN"
+      ],
+      "uses": [
+        "reader"
+      ]
+    },
+    "controlled-the-tell-tale-heart": {
+      "status": "ACCEPTED",
+      "countries": [
+        "IN"
+      ],
+      "uses": [
+        "reader"
+      ]
+    },
+    "controlled-radharani": {
+      "status": "ACCEPTED",
+      "countries": [
+        "IN"
+      ],
+      "uses": [
+        "reader"
+      ]
+    },
+    "controlled-yugalanguriya": {
+      "status": "HOLD",
+      "countries": [
+        "IN",
+        "US",
+        "GB",
+        "CA",
+        "AU",
+        "DE",
+        "AE",
+        "BD",
+        "SG",
+        "SA"
+      ],
+      "uses": [
+        "reader",
+        "audio"
+      ]
+    }
   },
   "commercial_batch_dispositions": {
-    "controlled-a-ghost-story": {"status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4", "countries": ["IN"], "access_mode": "COMMERCIAL_ENTITLEMENT"},
-    "controlled-the-tell-tale-heart": {"status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4", "countries": ["IN"], "access_mode": "COMMERCIAL_ENTITLEMENT"},
-    "controlled-radharani": {"status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4", "countries": ["IN"], "access_mode": "COMMERCIAL_ENTITLEMENT"},
-    "controlled-a-white-heron": {"status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4", "countries": ["IN"], "access_mode": "COMMERCIAL_ENTITLEMENT"},
-    "controlled-the-gift-of-the-magi": {"status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4", "countries": ["IN"], "access_mode": "COMMERCIAL_ENTITLEMENT"},
-    "controlled-the-canterville-ghost": {"status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4", "countries": ["IN"], "access_mode": "COMMERCIAL_ENTITLEMENT"},
-    "controlled-the-adventures-of-sherlock-holmes": {"status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4", "countries": ["IN"], "access_mode": "COMMERCIAL_ENTITLEMENT"}
+    "controlled-a-ghost-story": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-the-tell-tale-heart": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-radharani": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-a-white-heron": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-the-gift-of-the-magi": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-the-canterville-ghost": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-the-adventures-of-sherlock-holmes": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-agentic-ai-with-python": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT"
+    }
   },
-  "non_activation_note": "All seven controlled India text titles are approved for public 3-page previews with Reading Pass entitlement required from page 4. Sherlock Holmes is authorized only for the exact Project Gutenberg #1661 text-reader edition in India. Public audio remains disabled."
+  "non_activation_note": "Eight controlled India text titles are approved for public 3-page previews with Reading Pass entitlement required from page 4. Agentic is authorized under the direct owner instruction for the exact revised 14-chapter text package and corrected covers with notice. Sherlock Holmes remains restricted to the exact Project Gutenberg #1661 text-reader edition. Production delivery requires its independent runtime/readback gates. Public audio remains disabled."
 }
