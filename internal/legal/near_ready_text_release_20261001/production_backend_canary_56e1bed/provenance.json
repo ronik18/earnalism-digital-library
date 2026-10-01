@@ -1,0 +1,27 @@
+{
+  "provider_classification": "RAILWAY_CONFIRMED",
+  "event_eligibility": "ELIGIBLE",
+  "deployment_sha": "56e1bedbd11ab696497ddedd03bef6bed2a0f56a",
+  "checked_out_sha": "56e1bedbd11ab696497ddedd03bef6bed2a0f56a",
+  "checked_out_sha_matches_deployment_sha": true,
+  "deployment_sha_reachable_from_origin_main": true,
+  "run_backend_canary": true,
+  "railway_deployment_proof": true,
+  "provenance": {
+    "deployment_id": "6780221466",
+    "deployment_sha": "56e1bedbd11ab696497ddedd03bef6bed2a0f56a",
+    "deployment_ref": "56e1bedbd11ab696497ddedd03bef6bed2a0f56a",
+    "environment": "earnalism / production",
+    "state": "success",
+    "status_id": "19104826373",
+    "target_url": "https://railway.com/project/a8533934-35c4-463e-9f43-577a9ac391ee?environmentId=580b250c-80ee-48ad-bfbe-fa4e31a6b378",
+    "log_url": "https://railway.com/project/a8533934-35c4-463e-9f43-577a9ac391ee?environmentId=580b250c-80ee-48ad-bfbe-fa4e31a6b378",
+    "environment_url": "https://railway.com/project/a8533934-35c4-463e-9f43-577a9ac391ee?environmentId=580b250c-80ee-48ad-bfbe-fa4e31a6b378",
+    "sender": "railway-app[bot]",
+    "creator": "railway-app[bot]",
+    "task": "deploy",
+    "description": "",
+    "checked_out_sha": "56e1bedbd11ab696497ddedd03bef6bed2a0f56a"
+  },
+  "railway_provider_marker_configured": false
+}
