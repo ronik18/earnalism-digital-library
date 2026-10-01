@@ -228,7 +228,6 @@
       "skip_reasons": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -269,7 +268,6 @@
       "skip_reasons": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -283,7 +281,6 @@
       "skip_reasons": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -333,7 +330,6 @@
       "skip_reasons": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -805,7 +801,6 @@
       "skip_reasons": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -847,7 +842,6 @@
       "skip_reasons": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "RETAINED_CHECKSUM_MISMATCH:approval_evidence.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -861,7 +855,6 @@
       "skip_reasons": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -875,7 +868,6 @@
       "skip_reasons": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -1260,7 +1252,6 @@
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
         "Front cover is required.",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -1414,7 +1405,6 @@
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
         "Front cover is required.",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -1485,7 +1475,6 @@
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
         "Front cover is required.",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -1500,7 +1489,6 @@
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
         "Front cover is required.",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -1628,8 +1616,6 @@
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
         "Front cover is required.",
-        "RETAINED_CHECKSUM_MISMATCH:approval_evidence.json",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -1964,10 +1950,7 @@
       "package": "data/controlled_publications/the-art-of-money-getting",
       "skip_reasons": [
         "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "RETAINED_CHECKSUM_MISMATCH:approval_evidence.json",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
-        "RETAINED_CHECKSUM_MISMATCH:source_evidence.json"
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
       ],
       "slug": "the-art-of-money-getting",
       "title": "The Art of Money Getting"
@@ -2093,7 +2076,6 @@
       "skip_reasons": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "READER_SOURCE_FURNITURE_OR_ENCODING_ERROR:chapter-003",
         "Reader QA must pass."
       ],
       "slug": "the-enchanted-april",
@@ -2589,7 +2571,6 @@
       "skip_reasons": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -2743,7 +2724,6 @@
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
         "Front cover is required.",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."

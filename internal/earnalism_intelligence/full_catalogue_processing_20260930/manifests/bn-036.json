@@ -15,7 +15,7 @@
     "chapters/chapter-012.json": "cc7a2f723d315c696844cf07833b7a4a4176dd4397e48b7b211aa86b3d0bb1cd",
     "chapters/chapter-013.json": "6c0f12330a331cb7e7aa5d5f276de01dd3d1a15e7b41cfc22854e85d309e21ef",
     "chapters/chapter-014.json": "deae3f3f18a7875d80387b69511e31eaba8e7a22c124707624d5f3344f3ff74e",
-    "checksum_manifest.json": "229ddf53cdb216116eba8e782e5abeb554b519b43e4dc41d07d420ec48fdf073",
+    "checksum_manifest.json": "4fd4d9bc5c26e444da030aaabe3d71a696639e4f74180d6d1d5c399a2bb3cf0d",
     "highlight_sync.json": "e6e46f2b70a067bd24828d06bb5a5452479b59ced3aa9aef0b02fa7d938c3a80",
     "public_book.json": "62c06fc1944175aba0c634326adf2b819574f1b33b93677f24101a9288eb060e",
     "reader_manifest.json": "9554ba2587e03df5f1d870fa9b8616901848f2ca10187a387cb66cbd84c9b128",
@@ -109,7 +109,7 @@
     "chapters/chapter-012.json": "cc7a2f723d315c696844cf07833b7a4a4176dd4397e48b7b211aa86b3d0bb1cd",
     "chapters/chapter-013.json": "6c0f12330a331cb7e7aa5d5f276de01dd3d1a15e7b41cfc22854e85d309e21ef",
     "chapters/chapter-014.json": "deae3f3f18a7875d80387b69511e31eaba8e7a22c124707624d5f3344f3ff74e",
-    "checksum_manifest.json": "229ddf53cdb216116eba8e782e5abeb554b519b43e4dc41d07d420ec48fdf073",
+    "checksum_manifest.json": "4fd4d9bc5c26e444da030aaabe3d71a696639e4f74180d6d1d5c399a2bb3cf0d",
     "highlight_sync.json": "e6e46f2b70a067bd24828d06bb5a5452479b59ced3aa9aef0b02fa7d938c3a80",
     "public_book.json": "62c06fc1944175aba0c634326adf2b819574f1b33b93677f24101a9288eb060e",
     "reader_manifest.json": "9554ba2587e03df5f1d870fa9b8616901848f2ca10187a387cb66cbd84c9b128",
@@ -244,12 +244,11 @@
       "source_hash": "146b869c20ef86c23668192cea41613bff875db98da39218473e429a8dca86f6"
     },
     "generated_at": "2026-09-30T00:00:00Z",
-    "manifest_sha256": "7a6467540ca2df3e8f69014420f50f883844320e529876eb3121a0cd7535bdcb",
+    "manifest_sha256": "f0e0f5117ca36d8b0ff5ee603438e40fbe9688662a70084bd947ef1636d0ab8f",
     "reader_release": {
       "blockers": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."

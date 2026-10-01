@@ -355,12 +355,11 @@
       "source_hash": "d2d5a31f295361fb742f44729d3de6082cd7bff742a0484cd178731d66ef8370"
     },
     "generated_at": "2026-09-30T00:00:00Z",
-    "manifest_sha256": "b9c22e131c86ce77e90364e6d12f8c7ed77ec2bbaaf245ad2306572b3ccd49df",
+    "manifest_sha256": "dd8bca2f158e4274a2e57a2d069aeacc92d0a347640ce153e20ab34b19718618",
     "reader_release": {
       "blockers": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "READER_SOURCE_FURNITURE_OR_ENCODING_ERROR:chapter-003",
         "Reader QA must pass."
       ],
       "cover_url": "https://theearnalism.com/assets/books/the-enchanted-april/front-cover.webp",

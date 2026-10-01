@@ -65,6 +65,40 @@ class CatalogueProcessorTests(unittest.TestCase):
         title = next(row for row in state["titles"] if row["slug"] == "prepared")
         self.assertIn("UNSAFE_CHECKSUM_PATH", title["blockers"])
 
+    def test_original_prose_with_category_colon_is_preserved_and_stays_held(self):
+        content = "Without the least trouble and at once she had got him placed in his proper category: he was an artist and of an effervescent temperament."
+        self.write("chapters/chapter-001.json", {"id": "chapter-001", "content": content, "content_hash": hashlib.sha256(content.encode()).hexdigest()})
+        path = self.package / "chapters/chapter-001.json"
+        before = path.read_bytes()
+        _, state = self.run_processor()
+        title = next(row for row in state["titles"] if row["slug"] == "prepared")
+        self.assertNotIn("READER_SOURCE_FURNITURE_OR_ENCODING_ERROR:chapter-001", title["blockers"])
+        self.assertIn("ACCEPTED_DECISION_MISSING", title["blockers"])
+        self.assertIn("ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED", title["blockers"])
+        self.assertEqual(title["state"], "EXTERNAL_ACTION_REQUIRED")
+        self.assertEqual(path.read_bytes(), before)
+
+    def test_repository_metadata_and_encoding_errors_remain_explicit_holds(self):
+        examples = [
+            "Chapter text.\nCategory:English novels",
+            "[[Category:English novels]]",
+            "[[:Category:English novels]]",
+            '<a href="https://example.org/wiki/Category:English_novels">Index</a>',
+            "https://example.org/wiki/Category:English_novels",
+            "*** START OF THE PROJECT GUTENBERG EBOOK ***",
+            "Gutenberg-tm and www.gutenberg.org",
+            "Download as EPUB",
+            "Special:Export",
+            "A damaged \ufffd paragraph.",
+        ]
+        for content in examples:
+            with self.subTest(content=content):
+                self.write("chapters/chapter-001.json", {"id": "chapter-001", "content": content, "content_hash": hashlib.sha256(content.encode()).hexdigest()})
+                _, state = self.run_processor()
+                title = next(row for row in state["titles"] if row["slug"] == "prepared")
+                self.assertIn("READER_SOURCE_FURNITURE_OR_ENCODING_ERROR:chapter-001", title["blockers"])
+                self.assertEqual(title["state"], "EXTERNAL_ACTION_REQUIRED")
+
     def test_private_artifacts_reproduce_and_tampering_fails_verification(self):
         outputs, _ = self.run_processor()
         output = self.root / OUTPUT

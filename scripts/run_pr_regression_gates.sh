@@ -63,7 +63,8 @@ echo "==> Local UAT public-release hold seeding contract"
   scripts.test_seed_uat_canonical_pages \
   scripts.test_validate_book_commerce_final_review \
   scripts.test_generate_copyright_rights_review_package \
-  scripts.test_generate_india_launch_compliance_package
+  scripts.test_generate_india_launch_compliance_package \
+  scripts.test_process_full_catalogue
 
 echo "==> Current catalogue resource, held-title, chapter-index and SEO invariants"
 env ENVIRONMENT=development "$PYTHON_BIN" -m pytest -q \

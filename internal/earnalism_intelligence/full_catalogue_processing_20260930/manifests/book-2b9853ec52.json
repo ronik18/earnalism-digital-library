@@ -2,7 +2,7 @@
   "active_files_sha256": {
     "approval_evidence.json": "a4fd37acae8c73acf13130701a1dac711a7b55dbbb0164afeaa506e9b1a2261b",
     "chapters/chapter-001.json": "8f9f60537327b68644ece5ae319fe4b7534b038d61619c481a3108cc9f6499ba",
-    "checksum_manifest.json": "3c2633c32c591208204714dc8cdb0c2b030e3fd528448f3e2ac88a43e722e650",
+    "checksum_manifest.json": "cedd6abe99101bb6fb2f60ceb7896e1baa58e8434f88b3b81fde3086a85f895d",
     "highlight_sync.json": "b953b6ed5589a7463bdd31df4d9bae30b9647009c47d4a1308a1129a6500fd3a",
     "public_book.json": "b828867d1b2f0a4cf85de0c4f5cee4b3db3fe2c518c7c3da38f02ca77161e7fe",
     "reader_manifest.json": "91114b13fca4ea21f4fe7e7679e0bff8cbd043704e7ec4d1811bd277c8293ef8",
@@ -19,7 +19,7 @@
     "approval_evidence 2.json": "5a9888696e9da72bd8e559adf682ae58caa6a4710a88843161cc93c99d042774",
     "approval_evidence.json": "a4fd37acae8c73acf13130701a1dac711a7b55dbbb0164afeaa506e9b1a2261b",
     "chapters/chapter-001.json": "8f9f60537327b68644ece5ae319fe4b7534b038d61619c481a3108cc9f6499ba",
-    "checksum_manifest.json": "3c2633c32c591208204714dc8cdb0c2b030e3fd528448f3e2ac88a43e722e650",
+    "checksum_manifest.json": "cedd6abe99101bb6fb2f60ceb7896e1baa58e8434f88b3b81fde3086a85f895d",
     "highlight_sync.json": "b953b6ed5589a7463bdd31df4d9bae30b9647009c47d4a1308a1129a6500fd3a",
     "public_book.json": "b828867d1b2f0a4cf85de0c4f5cee4b3db3fe2c518c7c3da38f02ca77161e7fe",
     "reader_manifest.json": "91114b13fca4ea21f4fe7e7679e0bff8cbd043704e7ec4d1811bd277c8293ef8",
@@ -60,12 +60,11 @@
       "source_hash": "1e1d0b25627df784b861b8c6314b8bade1baabc554122dabf00dd8c5f2ae4dd9"
     },
     "generated_at": "2026-09-30T00:00:00Z",
-    "manifest_sha256": "2431a8c94de09969526e8ac48ae98c30553a0fd69fe199d2072e0980e0439f4e",
+    "manifest_sha256": "f9f77c8d10cc942e1203af09de6e63aeea7459c7c07202c0212839d6d016c080",
     "reader_release": {
       "blockers": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "RETAINED_CHECKSUM_MISMATCH:approval_evidence.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."

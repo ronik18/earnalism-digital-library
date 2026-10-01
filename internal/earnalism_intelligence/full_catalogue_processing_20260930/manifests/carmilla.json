@@ -2,7 +2,7 @@
   "active_files_sha256": {
     "approval_evidence.json": "5a01e4c097ede1a7d7edcfaf6153d3ed33c54371ef89c783fbc2bd4386a8ba50",
     "chapters/chapter-001.json": "9404d42991bbbc93c8efd47e63eddf83e8a757e4bf7f164285207c96959b25ea",
-    "checksum_manifest.json": "d461b5f1238c2aee8a81c785dc09a30909a7645c609a598560772969c5312ea1",
+    "checksum_manifest.json": "6e937b2b7e8dd071b8685e11cd23f4011cb4a277e3ade258287b281b2836cfa1",
     "public_book.json": "6ade179e7ac88d7f35378f06fd365392e353790eb50669554e6ed0647c4a0486",
     "reader_manifest.json": "03f705e249d9d7368c38e0404019b98aae1dbfbd8776c383a51d4e76fdd69a0a",
     "source_evidence.json": "eb68f9e65d6cea55e847c8edbd2442588adfef92385ff9854bb8f929611638d4"
@@ -17,7 +17,7 @@
   "input_files_sha256": {
     "approval_evidence.json": "5a01e4c097ede1a7d7edcfaf6153d3ed33c54371ef89c783fbc2bd4386a8ba50",
     "chapters/chapter-001.json": "9404d42991bbbc93c8efd47e63eddf83e8a757e4bf7f164285207c96959b25ea",
-    "checksum_manifest.json": "d461b5f1238c2aee8a81c785dc09a30909a7645c609a598560772969c5312ea1",
+    "checksum_manifest.json": "6e937b2b7e8dd071b8685e11cd23f4011cb4a277e3ade258287b281b2836cfa1",
     "public_book.json": "6ade179e7ac88d7f35378f06fd365392e353790eb50669554e6ed0647c4a0486",
     "reader_manifest.json": "03f705e249d9d7368c38e0404019b98aae1dbfbd8776c383a51d4e76fdd69a0a",
     "source_evidence.json": "eb68f9e65d6cea55e847c8edbd2442588adfef92385ff9854bb8f929611638d4"
@@ -57,13 +57,12 @@
       "source_hash": "78e7f997e45a31d35a792805a1aec2800a896adee030c9b459f2357aee8db2c5"
     },
     "generated_at": "2026-09-30T00:00:00Z",
-    "manifest_sha256": "89152b9afc20055f8d33f06b0d93fd2aa2abd16b3b4257a33110b9c8683d4476",
+    "manifest_sha256": "27dd257894348544c6789704096933985cbaf9e6370e3b7df6631938c58df77a",
     "reader_release": {
       "blockers": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
         "Front cover is required.",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."

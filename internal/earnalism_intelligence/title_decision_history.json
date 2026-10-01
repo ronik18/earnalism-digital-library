@@ -4098,5 +4098,89 @@
     "remaining_integrity": "Only three absent chapter-file checksum discrepancies remain; no placeholders, inventory stripping or hashes invented for absent files",
     "customer_ready": "NOT_DECLARED",
     "next_generated_prompt": "Open the reviewed canonical proposal through the authorized GitHub connection, require normal exact-head checks and an expected-SHA merge, then inspect one further bounded pass for substantiated progress. Keep all unresolved source, cover, rights, decision and authenticated acceptance holds."
+  },
+  "open_issue_next_inspection_20261001": {
+    "timestamp": "2026-10-01T00:24:11.845293+00:00",
+    "workstream": "open_issue_autonomous_resolution",
+    "decision": "CORRECT_REPOSITORY_CATEGORY_FALSE_POSITIVE_PRESERVE_EXACT_PROSE_AND_RELEASE_HOLDS",
+    "source_main": "45490009cf45fc1ce6853752f80e903636169916",
+    "merged_checksum_repairs": {
+      "prs": [
+        488,
+        489,
+        490,
+        491
+      ],
+      "titles": 16,
+      "aggregate_blockers": {
+        "before": 919,
+        "after": 900
+      },
+      "latest_exact_head": "26d0b055ea68354646686d36afe878a5ea3e9690",
+      "latest_required_ci": [
+        36793929991,
+        36793930010
+      ],
+      "latest_merge": "45490009cf45fc1ce6853752f80e903636169916"
+    },
+    "actual_follow_on_campaign": {
+      "run": 36794894294,
+      "job": 110156271363,
+      "receipt": "COMPLETED_EXACT_SOURCE_AND_BATCH_20_EXAMINED",
+      "source_main": "45490009cf45fc1ce6853752f80e903636169916",
+      "pipeline": "PASS_RECEIPT_RELEASE_SCOPE_FOCUSED_FULL_REGRESSION_FINAL_SOURCE_GUARD",
+      "implementation_diff": "EMPTY_SHA256_e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "new_publications": 0,
+      "new_decisions": 0,
+      "aggregate_blockers_before": 900,
+      "aggregate_blockers_after": 900,
+      "scope_of_no_progress": "SELECTED_20_ONLY_NOT_GLOBAL_EVIDENCE_EXHAUSTION",
+      "artifacts": [
+        {
+          "id": 11133108483,
+          "sha256": "b3150cd3e70697580d145814a4013a3204a9fafd108f0d14b45fb708920f7c8d"
+        },
+        {
+          "id": 11133960716,
+          "sha256": "0d558e012aa1a1a6decd53ff164d028b13e47481a4694584503a40bd6d905dc8"
+        }
+      ]
+    },
+    "checker_correction": {
+      "slug": "the-enchanted-april",
+      "finding": "Original chapter-003 prose includes proper category:; exact retained source has the same wording. The old unbounded Category: regex misclassified original prose as repository furniture.",
+      "repair": "Recognize category namespace metadata at line, wiki-link or URL boundaries; preserve every chapter/source byte and all other boilerplate, encoding and unsafe-HTML holds.",
+      "local_processor_tests": 8,
+      "mandatory_normal_regression": true,
+      "aggregate_blockers_candidate": 899,
+      "publication_state_unchanged": true
+    },
+    "private_snapshot": "full_catalogue_processing_20260930 is reproduced for all 231 titles from current exact packages and corrected checker; it is derived evidence, never publication authority.",
+    "preserved_legacy_dorian_repair": {
+      "slug": "the-picture-of-dorian-gray",
+      "approved_history": "4b41439bb2397f6e6ecebd6d35ca990213a59840",
+      "finding": "Legacy checksum/source/approval removal belongs to Repair canonical Dorian Gray reader. Do not restore that old package or substitute the separate current picture-of-dorian-gray title merely to clear a legacy inventory hold."
+    },
+    "accepted_live": 7,
+    "held": 224,
+    "missing_cleared_packages": 69,
+    "new_publications": 0,
+    "audio_activations": 0,
+    "customer_ready": "NOT_DECLARED",
+    "physical_device_uat": "DEFERRED_BY_OWNER_NOT_RUN_UNVERIFIED",
+    "approved_ui_artwork_manuscript_source_approval_registry_launch": "UNCHANGED",
+    "current_main_regression": {
+      "run": 36794894307,
+      "status": "PASS",
+      "frontend_deployment": "NO_FRONTEND_CHANGE_NOT_A_NEW_UI_DEPLOYMENT"
+    },
+    "issue_dispositions": {
+      "347": "CLOSED_COMPLETED_STALE_FIXTURES_FIXED_PR480",
+      "380": "SOURCE_BROWSER_PRODUCTION_CANARIES_VERIFIED_RELEASE_DECISION_AND_AUTHENTICATED_ACCEPTANCE_OPEN",
+      "477": "19_METADATA_BLOCKERS_FIXED_16_TITLES_1_FALSE_POSITIVE_CANDIDATE_224_EVIDENCE_HOLDS",
+      "385": "DEFERRED_BY_OWNER_POST_CUSTOMER_READY_UAT_NOT_RUN_UNVERIFIED"
+    },
+    "candidate_validation": "PENDING_NORMAL_EXACT_HEAD_CI_AND_PROTECTED_MERGE",
+    "next_generated_prompt": "Require the corrected checker and reproduced private catalogue snapshot to pass normal exact-head regression and independent full-catalogue worker/reviewer checks; merge with expected-head protection. Reconcile all four issues with those verified outcomes. Resume title release only when exact missing source/chapter/cover and accepted hash-bound evidence is available; use the existing draft/admin path and verify applicable authenticated production acceptance. Preserve all approved source and the owner-deferred physical-device UAT."
   }
 }
