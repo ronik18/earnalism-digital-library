@@ -10904,7 +10904,10 @@ async def _initialize_authorized_reader_release() -> list[dict]:
     not a public endpoint, an admin impersonation, or a country observation.
     Actual delivery keeps the signed India, entitlement and revocation gates.
     """
-    if ENVIRONMENT != "production" or not READING_PASS_V2_ENABLED:
+    if ENVIRONMENT != "production":
+        return []
+    if not READING_PASS_V2_ENABLED:
+        logger.info("Approved Reader initialization: %s", _json.dumps({"status": "HELD_READING_PASS_DISABLED"}))
         return []
     actor = "system:owner-authorized-reader-bootstrap-v1"
     results = []
@@ -10918,8 +10921,9 @@ async def _initialize_authorized_reader_release() -> list[dict]:
         if not isinstance(entries, list) or len({row["slug"] for row in entries}) != len(entries):
             raise ValueError("invalid exact release title scope")
         accepted, revoked = load_production_registry()
-        # These existing unique indexes are the cross-replica activation lock.
-        # Never weaken, drop or silently replace them to initialize a title.
+        # The exact uniqueness constraints are the cross-replica activation
+        # lock. Install only missing indexes, retaining all existing data and
+        # indexes; conflicts/duplicates hold safely, never repair or delete.
         required_indexes = {
             "reader_content_segments": [([("book_slug", 1), ("page_index", 1), ("segmentation_version", 1)], None)],
             "reader_segment_manifests": [([("book_slug", 1), ("segmentation_version", 1)], None), ([("book_slug", 1)], {"status": "active"})],
@@ -10929,8 +10933,16 @@ async def _initialize_authorized_reader_release() -> list[dict]:
         for collection, constraints in required_indexes.items():
             indexes = await db[collection].index_information()
             for keys, partial in constraints:
-                if not any(index.get("unique") is True and list(index.get("key", [])) == keys
-                           and index.get("partialFilterExpression") == partial for index in indexes.values()):
+                def present():
+                    return any(index.get("unique") is True and list(index.get("key", [])) == keys
+                               and index.get("partialFilterExpression") == partial for index in indexes.values())
+                if not present():
+                    options = {"unique": True}
+                    if partial is not None:
+                        options["partialFilterExpression"] = partial
+                    await db[collection].create_index(keys, **options)
+                    indexes = await db[collection].index_information()
+                if not present():
                     raise ValueError("canonical activation uniqueness prerequisite unavailable")
     except Exception as exc:
         logger.error("Approved Reader initialization held: %s", type(exc).__name__)

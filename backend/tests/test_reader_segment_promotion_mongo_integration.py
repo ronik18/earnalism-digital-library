@@ -132,6 +132,59 @@ async def _isolated_database():
         client.close()
 
 
+def _exact_approved_bootstrap_plan(monkeypatch):
+    import json
+    from pathlib import Path
+
+    path = Path(server.__file__).parent / "data" / "approved_reader_bootstrap.json"
+    plan = json.loads(path.read_text())
+    plan["titles"] = [row for row in plan["titles"] if row["slug"] == "a-horseman-in-the-sky"]
+    original_read = server.read_json_file
+    monkeypatch.setattr(server, "read_json_file", lambda target: plan if Path(target) == path else original_read(target))
+    monkeypatch.setattr(server, "ENVIRONMENT", "production")
+    monkeypatch.setattr(server, "READING_PASS_V2_ENABLED", True)
+
+
+def test_real_mongo_installs_only_missing_bootstrap_uniqueness_and_preserves_retained_history(monkeypatch):
+    _exact_approved_bootstrap_plan(monkeypatch)
+
+    async def scenario():
+        async with _isolated_database() as database:
+            states = database.reader_segment_activation_state
+            await states.drop_index("book_slug_1")  # This disposable test namespace only.
+            await states.create_index("retained_history_id")
+            retained = {"book_slug": "retained-other-title", "generation": 9, "retained_history_id": "original"}
+            await states.insert_one(dict(retained))
+            result = await server._initialize_authorized_reader_release()
+            assert result[0]["status"] == "INITIALIZED"
+            manifest = await server.reading_pass_book_manifest("a-horseman-in-the-sky", Response())
+            assert manifest["total_pages"] > 3 and manifest["version"] == result[0]["version"]
+            assert await states.find_one({"book_slug": retained["book_slug"]}, {"_id": 0}) == retained
+            indexes = await states.index_information()
+            assert indexes["book_slug_1"]["unique"] is True and "retained_history_id_1" in indexes
+            assert await server._initialize_authorized_reader_release() == [{"slug": "a-horseman-in-the-sky", "status": "PRESERVED_EXISTING_POINTER"}]
+
+    asyncio.run(scenario())
+
+
+def test_real_mongo_duplicate_active_history_holds_without_deleting_or_selecting_a_winner(monkeypatch):
+    _exact_approved_bootstrap_plan(monkeypatch)
+
+    async def scenario():
+        async with _isolated_database() as database:
+            manifests = database.reader_segment_manifests
+            await manifests.drop_index("book_slug_1")  # This disposable test namespace only.
+            retained = [{"book_slug": "retained-other-title", "segmentation_version": version, "status": "active", "version": version} for version in ["original-one", "original-two"]]
+            await manifests.insert_many([dict(row) for row in retained])
+            assert await server._initialize_authorized_reader_release() == [{"status": "HELD_INITIALIZATION_PREREQUISITE"}]
+            assert await manifests.find({}, {"_id": 0}).sort("segmentation_version", 1).to_list(10) == retained
+            assert await database.reader_content_segments.count_documents({}) == 0
+            assert await database.reader_segment_activation_state.count_documents({}) == 0
+            assert await database.reader_segment_activation_operations.count_documents({}) == 0
+
+    asyncio.run(scenario())
+
+
 def _promotion(target: str, expected: str, generation: int, operation_id: str):
     return server.ReadingPassSegmentPromotionIn(
         target_segmentation_version=target,

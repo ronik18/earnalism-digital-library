@@ -24,6 +24,9 @@ class IndexedCollection(Collection):
     async def index_information(self):
         return self.indexes
 
+    async def create_index(self, keys, **options):
+        self.indexes[str(len(self.indexes))] = {"key": keys, **options}
+
     async def insert_many(self, documents, **_kwargs):
         self.rows.extend(copy.deepcopy(documents))
 
@@ -93,7 +96,7 @@ def test_existing_versions_and_revocation_history_remain_unchanged(monkeypatch, 
         assert getattr(database, key).rows == old.rows
 
 
-@pytest.mark.parametrize("hold", ["changed-decision", "revoked-decision", "missing-index", "incomplete-source", "unreleased-title"])
+@pytest.mark.parametrize("hold", ["changed-decision", "revoked-decision", "conflicting-index", "incomplete-source", "unreleased-title"])
 def test_missing_authority_or_integrity_cannot_create_pages_or_pointer(monkeypatch, hold):
     database, plan = setup(monkeypatch)
     entry = plan["titles"][0]
@@ -102,8 +105,9 @@ def test_missing_authority_or_integrity_cannot_create_pages_or_pointer(monkeypat
     elif hold == "revoked-decision":
         accepted, _revoked = server.load_production_registry()
         monkeypatch.setattr(server, "load_production_registry", lambda: (accepted, frozenset({entry["decision_id"]})))
-    elif hold == "missing-index":
+    elif hold == "conflicting-index":
         database.reader_segment_activation_state.indexes = {}
+        database.reader_segment_activation_state.create_index = AsyncMock(side_effect=RuntimeError("synthetic uniqueness conflict"))
     elif hold == "incomplete-source":
         server._reader_book_access_doc.return_value = None
     else:
@@ -127,3 +131,16 @@ def test_uat_seed_and_preview_environments_are_not_initialized(monkeypatch):
     monkeypatch.setattr(server, "ENVIRONMENT", "uat")
     assert asyncio.run(server._initialize_authorized_reader_release()) == []
     assert not database.reader_content_segments.rows
+
+
+def test_missing_unique_index_is_installed_without_changing_existing_indexes_or_history(monkeypatch):
+    database, _plan = setup(monkeypatch)
+    collection = database.reader_segment_activation_state
+    collection.indexes = {"retained_history_lookup": {"key": [("retained_history_id", 1)], "unique": False}}
+    collection.rows.append({"book_slug": "another-retained-title", "generation": 9})
+    before = copy.deepcopy(collection.rows)
+    first = asyncio.run(server._initialize_authorized_reader_release())
+    assert first[0]["status"] == "INITIALIZED"
+    assert collection.rows[:1] == before
+    assert collection.indexes["retained_history_lookup"] == {"key": [("retained_history_id", 1)], "unique": False}
+    assert any(index["key"] == [("book_slug", 1)] and index["unique"] is True for index in collection.indexes.values())
