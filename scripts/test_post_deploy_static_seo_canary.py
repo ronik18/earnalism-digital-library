@@ -9,6 +9,7 @@ import subprocess
 import tempfile
 import json
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 
@@ -87,6 +88,66 @@ class StaticSeoCanaryTests(unittest.TestCase):
         self.assertEqual(self.inspect("/book/dracula", html)["result"], "PASS")
         self.assertEqual(self.inspect("/reader/dracula", html)["result"], "PASS")
         self.assertEqual(self.inspect("/listener/dracula", html)["result"], "PASS")
+
+    def test_dracula_browser_routes_are_reachable_but_protected_reader_access_is_denied(self):
+        html = self.unavailable_html(links="<a href='/library'>Browse Library</a>")
+        self.assertEqual(self.inspect("/book/dracula", html, status=200)["result"], "PASS")
+        self.assertEqual(self.inspect("/reader/dracula", html, status=200)["result"], "PASS")
+
+        route = "/api/reader/book/dracula/manifest"
+        policy = MODULE.PROTECTED_API_CHECKS[route]
+        denied = MODULE.inspect_protected_api(
+            route,
+            policy,
+            451,
+            {"detail": {"code": "RELEASE_RIGHTS_DENIED"}},
+            "https://theearnalism.com" + route,
+        )
+        self.assertEqual(denied["result"], "PASS")
+
+    def test_protected_api_contract_does_not_globally_allow_451_or_503(self):
+        route = "/api/reader/book/dracula/manifest"
+        policy = MODULE.PROTECTED_API_CHECKS[route]
+        for status, payload in [
+            (200, {"detail": {"code": "RELEASE_RIGHTS_DENIED"}}),
+            (451, {"detail": {"code": "COUNTRY_NOT_AUTHORIZED"}}),
+            (503, {"detail": {"code": "SEGMENTS_NOT_READY"}}),
+        ]:
+            with self.subTest(status=status, payload=payload):
+                result = MODULE.inspect_protected_api(route, policy, status, payload, "https://theearnalism.com" + route)
+                self.assertEqual(result["result"], "FAIL")
+
+    def test_sherlock_and_canterville_segment_readiness_is_endpoint_scoped(self):
+        expected = {
+            "/api/reading-pass/books/the-adventures-of-sherlock-holmes/manifest",
+            "/api/reading-pass/books/the-canterville-ghost/manifest",
+        }
+        self.assertEqual(set(MODULE.PROTECTED_API_CHECKS) - {"/api/reader/book/dracula/manifest"}, expected)
+        for route in expected:
+            result = MODULE.inspect_protected_api(
+                route,
+                MODULE.PROTECTED_API_CHECKS[route],
+                503,
+                {"detail": {"code": "SEGMENTS_NOT_READY"}},
+                "https://theearnalism.com" + route,
+            )
+            self.assertEqual(result["result"], "PASS")
+
+    def test_overall_canary_fails_if_one_scoped_api_contract_fails(self):
+        with patch.object(MODULE, "fetch_raw_html", return_value=(200, {}, "", "https://theearnalism.com/")), patch.object(
+            MODULE, "inspect_route", return_value={"result": "PASS"}
+        ), patch.object(MODULE, "fetch_protected_api", side_effect=[
+            (451, {"detail": {"code": "RELEASE_RIGHTS_DENIED"}}, "https://theearnalism.com/api/reader/book/dracula/manifest"),
+            (503, {"detail": {"code": "SEGMENTS_NOT_READY"}}, "https://theearnalism.com/api/reading-pass/books/the-adventures-of-sherlock-holmes/manifest"),
+            (200, {"detail": {"code": "SEGMENTS_NOT_READY"}}, "https://theearnalism.com/api/reading-pass/books/the-canterville-ghost/manifest"),
+        ]):
+            report = MODULE.run("https://theearnalism.com", 1)
+        self.assertEqual(report["result"], "FAIL")
+        self.assertEqual([row["result"] for row in report["protected_apis"]], ["PASS", "PASS", "FAIL"])
+
+    def test_genuine_missing_routes_still_require_404(self):
+        self.assertEqual(self.inspect("/book/yugalanguriya", "", status=404)["result"], "PASS")
+        self.assertEqual(self.inspect("/book/yugalanguriya", "", status=451)["result"], "FAIL")
 
     def test_historical_home_fallback_and_released_access_copy_are_rejected(self):
         html = page(title="Earnalism | Classics", description=ACCESS, h1="A library made for lingering", canonical="https://theearnalism.com/", body=ACCESS)
