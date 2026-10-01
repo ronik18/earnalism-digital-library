@@ -1,5 +1,5 @@
 import React, { act } from "react";
-jest.mock("react-router-dom", () => ({ Link: ({ to, children, ...props }) => <a href={to} {...props}>{children}</a> }), { virtual: true });
+jest.mock("react-router-dom", () => ({ Link: ({ to, children, ...props }) => <a href={to} {...props}>{children}</a>, NavLink: ({ to, children, className, ...props }) => <a href={to} className={typeof className === "function" ? className({ isActive: false }) : className} {...props}>{children}</a>, useLocation: () => ({ pathname: "/reader/example", search: "" }), useNavigate: () => jest.fn() }), { virtual: true });
 import { createRoot } from "react-dom/client";
 import ReaderExperienceV2, { READER_V2_FIXTURE } from "./ReaderExperienceV2";
 import { READER_SETTINGS_STORAGE_KEY } from "../../lib/readerSettings";
@@ -81,30 +81,30 @@ describe("ReaderExperienceV2 customer controls", () => {
   test("immersive primary navigation keeps real links and runs the route settlement callback", () => {
     const onNavigate = jest.fn();
     render({ onNavigate });
-    const desktopLibrary = container.querySelector('.experience-header__desktop-nav a[data-nav-key="library"]');
+    const desktopLibrary = container.querySelector('.premium-header-nav--desktop a[data-nav-key="library"]');
     expect(desktopLibrary.getAttribute("href")).toBe("/library");
     click(desktopLibrary);
-    expect(onNavigate).toHaveBeenCalledWith("library");
+    expect(onNavigate).toHaveBeenCalledWith("library", "/library");
 
-    click(container.querySelector('.experience-header__menu-toggle[aria-label="Open menu"]'));
-    const menuLibrary = container.querySelector('#experience-header-menu a[data-nav-key="library"]');
+    click(container.querySelector('[data-testid="mobile-menu-toggle"][aria-label="Open menu"]'));
+    const menuLibrary = container.querySelector('#mobile-menu a[data-nav-key="library"]');
     expect(menuLibrary.getAttribute("href")).toBe("/library");
     click(menuLibrary);
-    expect(onNavigate).toHaveBeenLastCalledWith("library");
+    expect(onNavigate).toHaveBeenLastCalledWith("library", "/library");
 
-    click(container.querySelector('.experience-header__menu-toggle[aria-label="Open menu"]'));
-    const signIn = container.querySelector('#experience-header-menu a[data-testid="experience-menu-sign-in"]');
+    click(container.querySelector('[data-testid="mobile-menu-toggle"][aria-label="Open menu"]'));
+    const signIn = container.querySelector('#mobile-menu a[data-testid="mobile-nav-sign-in"]');
     expect(signIn.getAttribute("href")).toBe("/login");
     click(signIn);
-    expect(onNavigate).toHaveBeenLastCalledWith("signin");
+    expect(onNavigate).toHaveBeenLastCalledWith("signin", "/login");
   });
 
   test("Library and contents request their actual destinations and mark the current page", () => {
     const onRequestPage = jest.fn();
     const onNavigate = jest.fn();
     render({ onRequestPage, onNavigate });
-    click(container.querySelector('.experience-header__desktop-nav [data-nav-key="library"]'));
-    expect(onNavigate).toHaveBeenCalledWith("library");
+    click(container.querySelector('.premium-header-nav--desktop [data-nav-key="library"]'));
+    expect(onNavigate).toHaveBeenCalledWith("library", "/library");
     click(button("Page 2"));
     expect(onRequestPage).toHaveBeenCalledWith(2);
     render({ model: { ...model, canonicalPage: 2 }, onRequestPage, onNavigate });
@@ -148,8 +148,8 @@ describe("ReaderExperienceV2 customer controls", () => {
     click(button("Page 2"));
     expect(container.querySelector('select[aria-label="Go to page"]').disabled).toBe(true);
     expect(onRequestPage).not.toHaveBeenCalled();
-    click(container.querySelector('.experience-header__desktop-nav [data-nav-key="library"]'));
-    expect(onNavigate).toHaveBeenCalledWith("library");
+    click(container.querySelector('.premium-header-nav--desktop [data-nav-key="library"]'));
+    expect(onNavigate).toHaveBeenCalledWith("library", "/library");
   });
 
   test("both responsive font controls use the bounded rem contract and persist an explicit preference", () => {

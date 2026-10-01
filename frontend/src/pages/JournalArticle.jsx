@@ -3,11 +3,14 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowUpRight, ChevronLeft } from "lucide-react";
 import { api } from "../lib/api";
 import { optimizedImageUrl } from "../lib/images";
+import JournalDiscussion from "../components/JournalDiscussion";
 import ShareButtons from "../components/ShareButtons";
 import JsonLd from "../components/JsonLd";
 import useSEO from "../hooks/useSEO";
+import JournalNewsletter from "../components/JournalNewsletter";
 import PublicPageFrame from "../components/PublicPageFrame";
 import "../styles/editorial-support.css";
+import "../styles/journal-option-b.css";
 
 const articleReadMinutes = (content = "") => Math.max(2, Math.round(String(content).split(/\s+/).filter(Boolean).length / 200));
 
@@ -96,35 +99,32 @@ export default function JournalArticle() {
       <div>
         <div className="editorial-kicker">{post.category || "Journal"}</div>
         <h1>{post.title}</h1>
+        {post.excerpt && <p className="journal-option-b__standfirst">{post.excerpt}</p>}
         <div className="journal-v2__article-metadata">
           <span>By {post.author}</span><span>·</span>
           <span>{new Date(post.created_at).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" })}</span><span>·</span>
           <span>{articleReadMinutes(post.content)} min read</span>
         </div>
         <div className="journal-v2__rule" />
-      </div></header>
+      </div><aside className="journal-option-b__share-rail" aria-label="Share article"><span>Share</span><ShareButtons title={post.title} variant="article" testIdPrefix="article-share" labelled /></aside></header>
 
       {post.cover_image_url && (
-        <div className="max-w-5xl mx-auto px-5 sm:px-8">
-          <div className="aspect-[16/9] overflow-hidden rounded-2xl border border-brand">
-            <img src={optimizedImageUrl(post.cover_image_url, { width: 1200 })} width="1200" height="675" alt={post.title} decoding="async" fetchPriority="high" className="w-full h-full object-cover" />
+        <div className="journal-option-b__photo-wrap">
+          <div className="journal-option-b__cover">
+            <img src={optimizedImageUrl(post.cover_image_url, { width: 1200 })} width="1200" height="675" alt={post.cover_image_alt || post.title} decoding="async" fetchPriority="high" className="w-full h-full object-cover" />
           </div>
+          {post.image_caption && <p className="journal-option-b__caption">{post.image_caption}</p>}
         </div>
       )}
 
-      <div className="max-w-2xl mx-auto px-5 sm:px-8 py-12 sm:py-16">
-        <div className="editorial-prose reader-content drop-cap">
-          {String(post.content || "").split("\n\n").filter(Boolean).map((para, i) => (
-            <p key={`${post.slug}-p-${i}`} className={i === 0 ? "" : "mt-7"}>{para}</p>
-          ))}
+      <div className="journal-option-b__body">
+        <div className="editorial-prose journal-option-b__prose">
+          {post.content_html ? <div dangerouslySetInnerHTML={{ __html: post.content_html }} /> : String(post.content || "").split("\n\n").filter(Boolean).map((para, i) => <p key={`${post.slug}-p-${i}`}>{para}</p>)}
         </div>
         {post.pull_quote && (
         <div className="my-12 pull-quote" data-testid="pull-quote">{post.pull_quote}</div>
         )}
-        <div className="mt-10 pt-8 border-t border-brand flex items-center justify-between flex-wrap gap-4" data-testid="article-share">
-          <span className="overline">Share this essay</span>
-          <ShareButtons title={post.title} variant="article" testIdPrefix="article-share" />
-        </div>
+        <JournalDiscussion slug={post.slug} />
         <aside className="journal-v2__library-cta" data-testid="article-library-discovery">
           <div><p className="editorial-kicker">Continue with a book</p><h2>Take the thought back to the shelf.</h2><p>Explore the Library for a story to read next.</p></div>
           <Link to="/library" data-testid="article-library-cta">Explore the Library <ArrowUpRight size={16} aria-hidden="true" /></Link>
@@ -146,6 +146,6 @@ export default function JournalArticle() {
           </div>
         </section>
       )}
-    </article></PublicPageFrame>
+    </article><JournalNewsletter /></PublicPageFrame>
   );
 }

@@ -550,6 +550,9 @@ function routeFixture(route, state) {
     const book = books.find((entry) => entry.slug === decodeURIComponent(requestedBook));
     return route.fulfill({ status: book ? 200 : 404, contentType: "application/json", body: JSON.stringify(book || { detail: "Book not found" }) });
   }
+  if (requestUrl.pathname === `/api/blog/${editorial.post.slug}/discussion`) {
+    return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ likes: 0, comments: [] }) });
+  }
   const body = requestUrl.pathname.endsWith("/books") ? books : requestUrl.pathname === "/api/blog" ? [editorial.post] : requestUrl.pathname === `/api/blog/${editorial.post.slug}` ? editorial.post : requestUrl.pathname.includes("auth") ? { id: "fixture", email: "fixture@invalid.example" } : [];
   return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(body) });
 }

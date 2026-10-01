@@ -334,6 +334,9 @@ class BlogPost(BaseModel):
     title: str
     excerpt: str = ""
     content: str = ""
+    content_html: str = ""
+    image_caption: str = ""
+    cover_image_alt: str = ""
     category: str = "Reflections"
     cover_image_url: str = ""
     author: str = "The Earnalism"
@@ -345,6 +348,9 @@ class BlogPostIn(BaseModel):
     title: str
     excerpt: str = ""
     content: str = ""
+    content_html: str = ""
+    image_caption: str = ""
+    cover_image_alt: str = ""
     category: str = "Reflections"
     cover_image_url: str = ""
     author: str = "The Earnalism"

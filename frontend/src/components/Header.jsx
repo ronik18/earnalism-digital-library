@@ -28,7 +28,7 @@ const SOCIAL_ICONS = {
   youtube: Youtube,
 };
 
-export default function Header() {
+export default function Header({ onNavigatePath } = {}) {
   const [open, setOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const menuRef = useRef(null);
@@ -37,7 +37,7 @@ export default function Header() {
   const loc = useLocation();
   const navigate = useNavigate();
   const { social } = useSettings();
-  const { user } = useAuth();
+  const { user } = useAuth() || {};
   useEffect(() => { setOpen(false); }, [loc.pathname, loc.search]);
   const closeMenu = useCallback(({ restoreFocus = true } = {}) => {
     returnFocusToMenuToggle.current = restoreFocus;
@@ -109,6 +109,20 @@ export default function Header() {
   return (
     <header
       className={`sticky top-0 z-50 glass-header premium-site-header${usesDarkReferenceShell ? " premium-site-header--reference-public" : ""}${usesHomeOptionBShell ? " premium-site-header--reference-home" : ""}${usesLibraryReferenceShell ? " premium-site-header--reference-library" : ""}${usesCommerceReferenceShell ? " premium-site-header--reference-commerce" : ""}${usesProfileMobileShell ? " premium-site-header--reference-profile" : ""}`}
+      onClickCapture={(event) => {
+        if (!onNavigatePath || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        const link = event.target.closest("a[href]");
+        const destination = link?.getAttribute("href");
+        if (!destination?.startsWith("/") || destination.startsWith("//")) return;
+        const item = PUBLIC_NAV_ITEMS.find((entry) => entry.to === destination) || {
+          key: destination === "/account" ? "profile" : destination === "/login" ? "signin" : "library",
+          to: destination,
+          label: link.textContent,
+        };
+        event.preventDefault();
+        closeMenu({ restoreFocus: false });
+        onNavigatePath(item);
+      }}
       data-testid="site-header"
     >
       <div className="premium-header-inner max-w-[1536px] mx-auto px-5 sm:px-8 lg:px-10 h-[var(--site-header-height)] flex items-center justify-between gap-4">
@@ -134,7 +148,9 @@ export default function Header() {
           <form className="premium-header-search" role="search" data-testid="nav-search" onSubmit={(event) => {
             event.preventDefault();
             const query = searchQuery.trim();
-            navigate(query ? `/library?q=${encodeURIComponent(query)}` : "/library");
+            const destination = query ? `/library?q=${encodeURIComponent(query)}` : "/library";
+            if (onNavigatePath) onNavigatePath({ key: "search", to: destination, label: "Search" });
+            else navigate(destination);
           }}>
             <Search size={16} strokeWidth={1.6} aria-hidden="true" />
             <input aria-label="Search books, authors, topics" placeholder="Search books, authors, topics..." value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} />

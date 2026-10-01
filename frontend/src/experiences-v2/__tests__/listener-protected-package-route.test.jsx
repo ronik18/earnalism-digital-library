@@ -5,10 +5,13 @@ const mockPackageVersion = `sha256-${"a".repeat(64)}`;
 const mockUserApiGet = jest.fn();
 const mockStartReadingPassAudioSession = jest.fn();
 const mockEndReadingPassSession = jest.fn();
+const mockNavigate = jest.fn();
 
 jest.mock("react-router-dom", () => ({
   Link: ({ to, children, ...props }) => <a href={to} {...props}>{children}</a>,
-  useNavigate: () => jest.fn(),
+  NavLink: ({ to, children, className, ...props }) => <a href={to} className={typeof className === "function" ? className({ isActive: false }) : className} {...props}>{children}</a>,
+  useLocation: () => ({ pathname: "/listen/a-ghost-story", search: "" }),
+  useNavigate: () => mockNavigate,
   useParams: () => ({ slug: "a-ghost-story" }),
 }), { virtual: true });
 
@@ -54,9 +57,10 @@ jest.mock("../../lib/audioPackageManifest", () => ({
 
 jest.mock("../listener/ListenerExperienceV2", () => ({
   __esModule: true,
-  default: ({ onAuthorize, access, audioManifest }) => (
+  default: ({ onAuthorize, access, audioManifest, onNavigate }) => (
     <section>
       <button type="button" onClick={onAuthorize}>Authorize Listening</button>
+      <button type="button" onClick={() => onNavigate("search", "/library?q=Mark%20Twain")}>Header Search</button>
       {access.authorized && audioManifest?.valid ? <p data-testid="listener-ready">Ready</p> : null}
     </section>
   ),
@@ -82,6 +86,7 @@ function flush() {
 
 describe("Listener protected package route", () => {
   beforeEach(() => {
+    mockNavigate.mockReset();
     mockUserApiGet.mockReset();
     mockStartReadingPassAudioSession.mockReset();
     mockEndReadingPassSession.mockReset();
@@ -94,6 +99,26 @@ describe("Listener protected package route", () => {
       lease_version: 1,
     });
     mockEndReadingPassSession.mockResolvedValue({ ended: true });
+  });
+
+  test("canonical header destination preserves its query and settles the active audio lease before leaving", async () => {
+    const container = document.createElement("div");
+    document.body.appendChild(container);
+    const root = createRoot(container);
+    await act(async () => { root.render(<ListenerExperienceV2Route />); });
+    await flush();
+    const click = async (label) => {
+      const control = [...container.querySelectorAll("button")].find((button) => button.textContent === label);
+      await act(async () => { control.dispatchEvent(new MouseEvent("click", { bubbles: true })); });
+      await flush();
+    };
+    await click("Authorize Listening");
+    await click("Header Search");
+    expect(mockEndReadingPassSession).toHaveBeenCalledTimes(1);
+    expect(mockNavigate).toHaveBeenCalledWith("/library?q=Mark%20Twain");
+    expect(mockEndReadingPassSession.mock.invocationCallOrder[0]).toBeLessThan(mockNavigate.mock.invocationCallOrder[0]);
+    await act(async () => { root.unmount(); });
+    container.remove();
   });
 
   test("derives the protected manifest path only after the audio lease and never duplicates the API prefix", async () => {

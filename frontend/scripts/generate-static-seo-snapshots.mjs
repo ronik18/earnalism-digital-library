@@ -210,6 +210,10 @@ function render(source, page) {
 
 async function main() {
   const source = await template();
+  await mkdir(buildDir, { recursive: true });
+  // Runtime Journal routes reuse the same built application assets and obtain
+  // metadata only from published backend articles, including newly authored posts.
+  await writeFile(path.join(buildDir, "journal-app-shell.html"), source, "utf8");
   const safe = await contracts();
   const pages = [...standardPages(safe.editorial, { releaseHeld: safe.releaseHeld, releasedBookCount: safe.books.length }), ...publicationPages(safe.books), ...unavailablePages(safe.unavailableRoutes)];
   const paths = new Set();

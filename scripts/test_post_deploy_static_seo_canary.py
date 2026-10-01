@@ -211,6 +211,11 @@ class HistoricalUnavailableSnapshotTests(unittest.TestCase):
     def verify(self):
         return subprocess.run(["node", str(self.root / "frontend/scripts/verify-static-seo-snapshots.mjs")], capture_output=True, text=True, timeout=30)
 
+    def test_fresh_build_directory_contains_runtime_journal_app_shell(self):
+        shell = self.root / "frontend/build/journal-app-shell.html"
+        self.assertTrue(shell.is_file())
+        self.assertIn('id="root"', shell.read_text())
+
     def test_real_generator_and_verifier_produce_six_safe_unavailable_snapshots(self):
         result = self.verify()
         self.assertEqual(result.returncode, 0, result.stderr)

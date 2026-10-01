@@ -189,7 +189,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
 
   return (
     <ExperienceShell className="reader-v2" labelledBy="reader-v2-title">
-      <ExperienceHeader onSearch={() => onNavigate?.("search")} onNavigate={onNavigate} onNavigatePath={(item) => onNavigate?.(item.key === "reading-pass" ? "passes" : item.key === "about" ? "about" : item.key)} trailingLabel="Library" showDesktopNavigation />
+      <ExperienceHeader onSearch={() => onNavigate?.("search")} onNavigate={onNavigate} onNavigatePath={(item) => onNavigate?.(item.key === "reading-pass" ? "passes" : item.key === "about" ? "about" : item.key, item.to)} trailingLabel="Library" showDesktopNavigation />
       <header className="reader-v2__mobile-topbar" aria-label="Reader actions">
         <button type="button" onClick={() => onNavigate?.("back")} aria-label="Back to book"><ChevronLeft size={18} /></button>
         <span><small>Page</small>{page} of {totalPages}</span>

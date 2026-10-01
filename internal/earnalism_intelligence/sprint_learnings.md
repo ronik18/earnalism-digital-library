@@ -2569,3 +2569,10 @@ Normal hosted regression run 36852504273 / job 110337212016 passed on source hea
 The repaired coordinator task now advances to VERIFYING_PRODUCTION with an exact prerequisite blocker, never DONE or CUSTOMER_READY. The production target remains on Sign In. All 24 authenticated trusted-India Reader/Reading Pass observations are NOT_RUN, not failed title tests. Public offers render; authenticated entitlements, metering, seven retained-version parity and Agentic delivered cover hashes remain unverified. Preserve prior 17-version / 714-page initialization evidence, all 207 catalogue holds and owner-deferred physical UAT. No paid generation/proposal rerun, credential extraction, country/entitlement bypass or production customer/version mutation.
 
 Next generated prompt: Finish secure production sign-in and authenticated trusted-India Reader/Reading Pass readback for all 24 configured editions, including seven retained versions and delivered Agentic cover hashes. Use the preserved exact-source evidence; do not rerun paid generation or proposals, overwrite approved versions, or bypass country or entitlement controls. Record actual per-title results and keep every remaining hold explicit.
+
+## Blog / canonical header / English Reader rendering
+
+- Independent centering of prose inside an expanding canvas caused the visible second inset; align heading and prose against one bounded reading measure.
+- Shared cover `height:100%` stretched artwork to manuscript height; constrain editorial covers to their actual aspect ratio.
+- Delegating immersive headers to the canonical public Header prevents navigation drift; preserve lease settlement before exits.
+- Existing static article snapshots alone cannot serve newly authored Journal slugs. Published-only runtime metadata routes must preserve missing/draft 404 and distinct outage states.

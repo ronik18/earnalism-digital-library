@@ -23,7 +23,7 @@ const LISTENER_VISUAL_FIXTURE_BOOK = Object.freeze({
 
 function routeState(title, message, action = null, onNavigate = null) {
   const loading = title === "Opening listener" || title === "Preparing listening package";
-  const onNavigatePath = onNavigate ? (item) => onNavigate(item.key === "reading-pass" ? "passes" : item.key) : undefined;
+  const onNavigatePath = onNavigate ? (item) => onNavigate(item.key === "reading-pass" ? "passes" : item.key, item.to) : undefined;
   return <div className="listener-v2"><ExperienceHeader onSearch={() => onNavigate?.("search")} onNavigatePath={onNavigatePath} trailingLabel="Library" showDesktopNavigation /><main className="experience-v2-route-state listener-v2__route-state"><section className="experience-v2-route-state__card"><h1>{title}</h1><p role={loading ? "status" : "alert"}>{message}</p>{action}</section></main></div>;
 }
 
@@ -220,12 +220,13 @@ export default function ListenerExperienceV2Route() {
     }
   }, [invalidateLifecycle, navigate, ownsLifecycle, setLeaseState, slug, user]);
 
-  if (visualFixture) return <ListenerExperienceV2 book={LISTENER_VISUAL_FIXTURE_BOOK} fixture access={{ authorized: false }} onNavigate={(target) => {
+  if (visualFixture) return <ListenerExperienceV2 book={LISTENER_VISUAL_FIXTURE_BOOK} fixture access={{ authorized: false }} onNavigate={(target, destination) => {
     const destinations = { back: `/book/${slug || "a-ghost-story"}`, library: "/library", search: "/library", bengali: "/library?language=bn&availability=reader-ready", english: "/library?language=en", audiobooks: "/library?availability=approved-audiobook", passes: "/pricing", home: "/", about: "/about", profile: "/account", signin: `/login?next=${encodeURIComponent(`/listener/${slug || "a-ghost-story"}`)}` };
-    if (destinations[target]) navigate(destinations[target]);
+    if (destination || destinations[target]) navigate(destination || destinations[target]);
   }} />;
-  const leaveListener = async (target) => {
+  const leaveListener = async (target, destination) => {
     await settleLease("listener_v2_navigation");
+    if (destination) { navigate(destination); return; }
     if (target === "back") navigate(`/book/${slug}`);
     if (target === "library" || target === "search") navigate("/library");
     if (target === "passes") navigate("/pricing");

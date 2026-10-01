@@ -348,6 +348,19 @@ test("an already-ended session does not trap Library navigation", async () => {
   expect(pass.endReadingPassSession).toHaveBeenCalledTimes(1);
 });
 
+test("canonical header search preserves its query and settles the active lease before leaving", async () => {
+  await openProtected();
+  const input = container.querySelector('input[aria-label="Search books, authors, topics"]');
+  const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value").set;
+  await act(async () => {
+    setter.call(input, "Mark Twain");
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+  });
+  await act(async () => input.closest("form").dispatchEvent(new Event("submit", { bubbles: true, cancelable: true })));
+  expect(container.querySelector('[data-testid="location"]').textContent).toBe("/library?q=Mark%20Twain");
+  expect(pass.endReadingPassSession).toHaveBeenCalledTimes(1);
+});
+
 test("page fetch failure can recover on a later successful authorized request", async () => {
   pass.getReadingPassPage.mockRejectedValueOnce({ response: { status: 403, data: { detail: { message: "Lease expired." } } } });
   await openProtected();

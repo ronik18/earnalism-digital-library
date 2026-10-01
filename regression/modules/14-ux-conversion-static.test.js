@@ -1154,7 +1154,8 @@ describe("UX conversion static signals", () => {
       expect(source).not.toMatch(/learn about the bookstore/i);
     }
     expect(about).toContain("reading room");
-    expect(journal).toContain("notes for a more attentive reading life");
+    expect(journal).toContain("Ideas worth reading.</span><br />Stories worth sharing.");
+    expect(journal).toContain("api.get(\"/blog\"");
     expect(publicIndex).toContain("A premium reading and listening sanctuary for timeless Bengali and English classics.");
     expect(publicIndex).not.toMatch(/beginning with Dracula by Bram Stoker|Dracula-first/i);
   });

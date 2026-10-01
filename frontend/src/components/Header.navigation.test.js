@@ -15,6 +15,7 @@ describe("premium header navigation", () => {
     expect(navigation).toContain('{ key: "english", to: "/library?language=en", label: "English Classics" }');
     expect(navigation).toContain('{ key: "audiobooks", to: "/library?availability=approved-audiobook", label: "Audiobooks" }');
     expect(navigation).toContain('{ key: "reading-pass", to: "/pricing", label: "Reading Pass" }');
+    expect(navigation).toContain('{ key: "journal", to: "/journal", label: "Blog" }');
     expect(navigation).toContain('{ key: "about", to: "/about", label: "About" }');
     expect(source).toContain('const accountHref = isAuthed ? "/account" : "/login"');
     expect(source).not.toMatch(/href=["']#|to=["']#|javascript:/i);
@@ -62,6 +63,19 @@ describe("premium header navigation", () => {
     expect(styles).not.toContain("font-size:.78rem !important;");
     expect(styles).not.toContain("--site-header-height: 2.8rem;");
     expect(globalStyles).toContain("--site-header-height: 4.5rem;");
+  });
+
+  test("owner header evidence covers Blog and applies the canonical shell assertions to immersive pages", () => {
+    const evidence = fs.readFileSync(path.join(process.cwd(), "../scripts/capture_pr471_canonical_header_matrix.mjs"), "utf8");
+    const labels = [...navigation.matchAll(/label: "([^"]+)"/g)].map((match) => match[1]);
+    const expected = JSON.parse(evidence.match(/const navLabels = (\[[^;]+\]);/)[1]);
+    expect(expected).toEqual(labels);
+    expect(evidence).toContain('{ id: "journal", path: "/journal" }');
+    expect(evidence).toContain('{ id: "journal-article", path: "/journal/how-reading-shapes-better-founders" }');
+    expect(evidence).not.toContain('&& !["reader", "listener"].includes(routeInfo.id)');
+    expect(evidence).not.toContain('viewport.width < 1280 || hasImmersiveHeader');
+    expect(evidence).toContain('header[data-testid="site-header"]');
+    expect(evidence).toContain('body = { likes: 0, comments: [] }');
   });
 
   test("keeps mobile social controls focusable, non-shrinking, and able to wrap", () => {

@@ -1,0 +1,63 @@
+name: Blog and Reader exact-head evidence
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'frontend/**'
+      - 'backend/journal_policy.py'
+      - 'backend/tests/test_journal_policy.py'
+      - '.github/workflows/blog-reader-owner-evidence.yml'
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - run: npm ci --prefix frontend --legacy-peer-deps
+      - run: python -m pip install pytest bleach==6.1.0 fastapi==0.110.1 httpx==0.28.1
+      - run: python -m pytest -q backend/tests/test_journal_policy.py
+      - run: node --test frontend/scripts/journal-page.test.cjs
+      - run: npx --prefix frontend playwright install --with-deps chromium
+      - name: Build isolated visual fixture
+        run: npm run build --prefix frontend
+        env:
+          REACT_APP_ENABLE_VISUAL_FIXTURES: '1'
+          REACT_APP_UAT_LOCAL: 'true'
+          REACT_APP_BACKEND_URL: http://127.0.0.1:3015/api
+      - name: Capture exact-head isolated states
+        run: |
+          python - <<'PY' &
+          from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+          import os
+          os.chdir('frontend/build')
+          class SPA(SimpleHTTPRequestHandler):
+              def do_GET(self):
+                  if not os.path.isfile(self.translate_path(self.path)):
+                      self.path = '/index.html'
+                  super().do_GET()
+          ThreadingHTTPServer(('127.0.0.1',3015), SPA).serve_forever()
+          PY
+          for attempt in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:3015/ >/dev/null; then break; fi
+            sleep 1
+          done
+          node frontend/scripts/reader-spacing-smoke.mjs
+          JOURNAL_QA_OUTPUT=uat/evidence/blog-header-reader/journal node frontend/scripts/journal-option-b-smoke.mjs
+          git rev-parse HEAD > uat/evidence/blog-header-reader/HEAD_SHA
+          sha256sum uat/evidence/blog-header-reader/*/*.png > uat/evidence/blog-header-reader/SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: blog-reader-owner-evidence-${{ github.event.pull_request.head.sha }}
+          path: uat/evidence/blog-header-reader
+          retention-days: 30

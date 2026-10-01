@@ -11,6 +11,7 @@ jest.mock("../lib/api", () => ({
 jest.mock("../context/AuthContext", () => ({ useAuth: () => ({}) }));
 jest.mock("../context/SettingsContext", () => ({ useSettings: () => ({}) }));
 jest.mock("../components/BrandMark", () => () => null);
+jest.mock("../components/Admin/JournalEditor", () => () => null);
 jest.mock("../components/Admin/ChapterUpload", () => () => null);
 jest.mock("../components/Admin/CoverUpload", () => () => null);
 jest.mock("../components/Admin/CoverManager", () => () => null);

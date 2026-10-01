@@ -3,11 +3,11 @@ import { PUBLIC_NAV_ITEMS, isPublicNavItemActive } from "./publicNavigation";
 describe("canonical public navigation", () => {
   test("keeps the approved labels, order, and live routes in one shared model", () => {
     expect(PUBLIC_NAV_ITEMS.map(({ label }) => label)).toEqual([
-      "Home", "Library", "Bengali Classics", "English Classics", "Audiobooks", "Reading Pass", "About",
+      "Home", "Library", "Bengali Classics", "English Classics", "Audiobooks", "Reading Pass", "Blog", "About",
     ]);
     expect(PUBLIC_NAV_ITEMS.map(({ to }) => to)).toEqual([
       "/", "/library", "/library?language=bn&availability=reader-ready", "/library?language=en",
-      "/library?availability=approved-audiobook", "/pricing", "/about",
+      "/library?availability=approved-audiobook", "/pricing", "/journal", "/about",
     ]);
   });
 
@@ -22,6 +22,7 @@ describe("canonical public navigation", () => {
     ["audiobooks", { pathname: "/library", search: "?availability=approved-audiobook" }],
     ["audiobooks", { pathname: "/library", search: "?language=bn&availability=approved-audiobook" }],
     ["reading-pass", { pathname: "/pricing", search: "" }],
+    ["journal", { pathname: "/journal/example", search: "" }],
     ["about", { pathname: "/about", search: "" }],
   ])("marks %s active only for its canonical location", (key, location) => {
     const item = PUBLIC_NAV_ITEMS.find((candidate) => candidate.key === key);
@@ -34,8 +35,8 @@ describe("canonical public navigation", () => {
     const experienceHeaderSource = require("fs").readFileSync(require("path").join(process.cwd(), "src/experiences-v2/shared/ExperienceHeader.jsx"), "utf8");
     expect(headerSource).toContain("import { PUBLIC_NAV_ITEMS, isPublicNavItemActive }");
     expect(headerSource).toContain("const navigationItems = PUBLIC_NAV_ITEMS;");
-    expect(experienceHeaderSource).toContain('import { PUBLIC_NAV_ITEMS } from "../../config/publicNavigation"');
-    expect(experienceHeaderSource).toContain("PUBLIC_NAV_ITEMS.map");
+    expect(experienceHeaderSource).toContain('import Header from "../../components/Header"');
+    expect(experienceHeaderSource).toContain("<Header onNavigatePath={onNavigatePath}");
     expect(headerSource).not.toContain("HOME_OPTION_B_NAV_ITEMS");
     expect(experienceHeaderSource).not.toMatch(/(?:const|let)\s+\w*(?:NAV|nav)\w*\s*=\s*\[/);
     expect(headerSource).not.toMatch(/(?:const|let)\s+\w*(?:NAV|nav)\w*\s*=\s*\[/);

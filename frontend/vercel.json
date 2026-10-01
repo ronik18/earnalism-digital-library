@@ -476,7 +476,11 @@
     },
     {
       "source": "/journal/:slug",
-      "destination": "/api/not-found"
+      "destination": "/api/journal-page?slug=:slug"
+    },
+    {
+      "source": "/journal/:slug/",
+      "destination": "/api/journal-page?slug=:slug"
     },
     {
       "source": "/reader/:slug",
@@ -722,5 +726,10 @@
         }
       ]
     }
-  ]
+  ],
+  "functions": {
+    "api/journal-page.js": {
+      "includeFiles": "build/journal-app-shell.html"
+    }
+  }
 }
