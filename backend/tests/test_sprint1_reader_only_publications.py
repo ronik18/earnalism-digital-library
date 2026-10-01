@@ -16,6 +16,7 @@ READER_ONLY_SLUGS = (
     "the-gift-of-the-magi",
     "the-canterville-ghost",
     "the-adventures-of-sherlock-holmes",
+    "agentic-ai-with-python",
 )
 REQUIRED_FILES = {
     "approval_evidence.json",

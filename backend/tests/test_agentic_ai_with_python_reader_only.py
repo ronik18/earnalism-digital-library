@@ -3,11 +3,13 @@ import hashlib
 import json
 from pathlib import Path
 from types import SimpleNamespace
+from datetime import datetime
 
 import pytest
 
 from backend.reader_only_audio_policy import READER_ONLY_AUDIO_EXCLUDED_SLUGS, ReaderOnlyAudioExcluded
 from backend import server
+from backend.rights_decision_gate import evaluate_runtime_path, load_production_registry
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -77,3 +79,36 @@ def test_public_detail_handler_respects_revised_reader_only_release_authority(mo
         assert released["reader_enabled"] is True
         assert released["audio_enabled"] is False
         assert released["audio_url"] == ""
+
+
+def release_verdict(action, **overrides):
+    record, components = server._release_rights_artifact(SLUG)
+    accepted, revoked = load_production_registry()
+    arguments = dict(record=record, edition_id=SLUG, operator_id="reo-enterprise", country="IN", country_trusted=True,
+                     required_components=components, accepted_records=accepted, revoked_decision_ids=revoked,
+                     now=datetime.fromisoformat(record["valid_from"]))
+    arguments.update(overrides)
+    return evaluate_runtime_path(action, **arguments)
+
+
+@pytest.mark.parametrize("action", ["catalog_cta", "reader_preview", "reader_manifest", "reader_chapter", "reading_pass_page", "reading_pass_session_start", "reading_pass_lease_renewal"])
+def test_real_agentic_decision_authorizes_only_existing_india_text_actions(action):
+    assert release_verdict(action).passed is True
+
+
+@pytest.mark.parametrize("action", ["audio_manifest", "audio_download", "content_export", "signed_storage_url", "generation_worker", "generation_cache"])
+def test_owner_text_release_does_not_authorize_audio_export_or_generation(action):
+    verdict = release_verdict(action)
+    assert verdict.passed is False
+    assert "USE_NOT_AUTHORIZED" in verdict.reasons
+
+
+def test_agentic_release_rejects_untrusted_territory_changed_components_and_decisions():
+    assert "TERRITORY_UNTRUSTED_OR_UNSUPPORTED" in release_verdict("reader_manifest", country_trusted=False).reasons
+    assert "TERRITORY_NOT_AUTHORIZED" in release_verdict("reader_manifest", country="US").reasons
+    record, components = server._release_rights_artifact(SLUG)
+    changed = {**components, "public_book": "0" * 64}
+    assert "COMPONENT_MISSING_OR_CHANGED:public_book" in release_verdict("reader_manifest", required_components=changed).reasons
+    altered_record = {**record, "uses": [*record["uses"], "audio_stream"]}
+    assert "DECISION_NOT_TRUSTED_OR_CHANGED" in release_verdict("audio_manifest", record=altered_record).reasons
+    assert "DECISION_REVOKED" in release_verdict("reader_manifest", revoked_decision_ids=frozenset({record["decision_id"]})).reasons

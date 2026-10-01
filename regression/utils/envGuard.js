@@ -102,6 +102,18 @@ function isCanary() {
   return mode() === "canary";
 }
 
+function frontendResourceUrl(value) {
+  const resource = new URL(value, `${frontendUrl()}/`);
+  // Candidate-owned assets must be tested against the candidate build before
+  // deployment. External cover hosts and production canaries keep their URLs.
+  if (isPr() && isLocalUrl(frontendUrl())
+      && ["theearnalism.com", "www.theearnalism.com"].includes(resource.hostname)
+      && resource.pathname.startsWith("/assets/")) {
+    return new URL(resource.pathname + resource.search, `${frontendUrl()}/`).toString();
+  }
+  return resource.toString();
+}
+
 module.exports = {
   mode,
   frontendUrl,
@@ -117,4 +129,5 @@ module.exports = {
   isGoLive,
   isPr,
   isCanary,
+  frontendResourceUrl,
 };

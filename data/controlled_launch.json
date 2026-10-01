@@ -10,7 +10,8 @@
     "a-white-heron": "COMMERCIAL_ENTITLEMENT",
     "the-gift-of-the-magi": "COMMERCIAL_ENTITLEMENT",
     "the-canterville-ghost": "COMMERCIAL_ENTITLEMENT",
-    "the-adventures-of-sherlock-holmes": "COMMERCIAL_ENTITLEMENT"
+    "the-adventures-of-sherlock-holmes": "COMMERCIAL_ENTITLEMENT",
+    "agentic-ai-with-python": "COMMERCIAL_ENTITLEMENT"
   },
   "launch_compliance_jurisdiction": "IN",
   "live_approved_slugs": [
@@ -20,7 +21,8 @@
     "a-white-heron",
     "the-gift-of-the-magi",
     "the-canterville-ghost",
-    "the-adventures-of-sherlock-holmes"
+    "the-adventures-of-sherlock-holmes",
+    "agentic-ai-with-python"
   ],
   "pipeline_slugs": [
     "kshudhita-pashan"

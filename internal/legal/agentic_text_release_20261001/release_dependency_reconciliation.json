@@ -1,0 +1,53 @@
+{
+  "schema": "earnalism.agentic-release-dependencies.v1",
+  "failed_head": "c2f4a9728d896db95655245ede860b3fc408a439",
+  "failed_regression_run": 36811995491,
+  "failed_regression_job": 110208860223,
+  "failed_brand_review_run": 36811995516,
+  "failed_brand_review_job": 110208878009,
+  "observations": [
+    "Tracked sitemap omitted the newly allowlisted Agentic book.",
+    "PR cover HEAD checks reached the previous production release for candidate-owned assets.",
+    "Two immutable workflow source hash authorities still described the preceding seven-title frontend."
+  ],
+  "corrections": [
+    "Regenerate tracked sitemap and robots with the existing offline generator; preserve earlier routes.",
+    "Resolve only first-party /assets resources to the loopback candidate in PR mode; external hosts and production/canary checks retain exact URLs and content-type assertions.",
+    "Rebind both existing workflow source hash authorities to the actual owner-authorized release surface; preserve Library/UI baselines and full browser validation."
+  ],
+  "previous_source_surface": "94282c9df97458a814478a2dad75af9a5ad7cfc6734a5ae7de88f012226c72ef",
+  "new_source_surface": "f93d0d10d2fcc18644926d74d78b5895afebf4ef5ccec6c1de25550112d41a57",
+  "source_surface_scope": "Four sibling cover assets, one Agentic client allowlist entry, generated sitemap/robots. Existing product UI/layout source unchanged.",
+  "local_dependency_test_cases": 53,
+  "rights_decision_record_sha256": "5660b0da970e88056cf9507f15c016dad9a4819aae1ab177054eb47c861d7586",
+  "rights_artifact_bytes_unchanged": true,
+  "all_14_chapter_files_unchanged": true,
+  "full_head_checks": "REQUIRED_ON_NEW_HEAD",
+  "production_readback": "NOT_CLAIMED",
+  "local_production_build": "PASS",
+  "static_snapshot_validation": {
+    "inspected": 46,
+    "expected": 46,
+    "assertions": 993,
+    "failed": 0
+  },
+  "remaining_browser_fixture": {
+    "failed_head": "3fdafd0e1ca2f2cf1ca8424fca88c9aaa850021e",
+    "failed_run": 36812864110,
+    "failed_job": 110211542374,
+    "finding": "Error-experience fixture hardcoded the prior seven-title static SEO list.",
+    "correction": "Append only owner-authorized Agentic to its exact list; retain all existing assertions and denied audio/Reader/error-state checks.",
+    "local_result": "PASS_21_EXISTING_CASES",
+    "production_source_sha256_unchanged": "f93d0d10d2fcc18644926d74d78b5895afebf4ef5ccec6c1de25550112d41a57"
+  },
+  "library_query_api_fixture": {
+    "failed_head": "b223f1915af2bfd644b5025d8f33ebf72129ccc9",
+    "failed_run": 36813666402,
+    "failed_job": 110213980338,
+    "finding": "The isolated Header-to-Library API fixture omitted Agentic while its exact expected results correctly read the current eight-title controlled launch authority.",
+    "correction": "Append the owner-authorized English text-only Agentic fixture. Retain exact displayed-slug comparison, Bengali filtering, all six viewport/API/fallback journeys and audio exclusions.",
+    "production_source_sha256_unchanged": "f93d0d10d2fcc18644926d74d78b5895afebf4ef5ccec6c1de25550112d41a57",
+    "local_result": "SYNTAX_AND_46_SNAPSHOT_993_ASSERTION_BUILD_PASS; SIX_BROWSER_JOURNEYS_REQUIRE_CI",
+    "local_browser_tooling": "Chrome download returned an invalid/empty archive in this workspace; no browser journey pass claimed."
+  }
+}

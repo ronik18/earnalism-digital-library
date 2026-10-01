@@ -1,0 +1,15 @@
+{
+  "schema": "earnalism.agentic-release-preservation.v1",
+  "source_head": "a62ac8c136ba18bee53ef87508a353ab3c67cdd0",
+  "chapter_count": 14,
+  "chapter_files_preserved": true,
+  "source_evidence_approval_reader_index_preserved": true,
+  "root_runtime_complete_byte_parity": true,
+  "checksum_entries_per_package": 20,
+  "all_checksum_entries_verified": true,
+  "other_catalogue_title_assessments_preserved": 230,
+  "other_title_source_packages_changed": 0,
+  "source_acceptance": "8_APPROVED_223_HELD_897_BLOCKERS",
+  "production_acceptance": "NOT_VERIFIED",
+  "audio_activations": 0
+}

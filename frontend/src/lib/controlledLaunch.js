@@ -14,6 +14,7 @@ export const PUBLIC_READER_RELEASED_SLUGS = Object.freeze([
   "the-gift-of-the-magi",
   "the-canterville-ghost",
   "the-adventures-of-sherlock-holmes",
+  "agentic-ai-with-python",
 ]);
 // The India text launch does not offer paid Reading Passes until the live
 // Razorpay, consumer-remedy, and accounting surface has been independently

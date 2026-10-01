@@ -199,14 +199,20 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=ROOT)
     parser.add_argument("--output", type=Path)
-    parser.add_argument("--as-of", default="2026-09-30T00:00:00Z")
+    parser.add_argument("--as-of", help="Assessment timestamp; defaults to the retained snapshot timestamp.")
     parser.add_argument("--check", action="store_true", help="Verify every retained processing artifact without mutation.")
     args = parser.parse_args()
     root = args.root.resolve()
     output = (args.output or root / OUTPUT).resolve()
     if not output.is_relative_to(root / "internal/earnalism_intelligence"):
         parser.error("processing outputs must remain in the private intelligence directory")
-    outputs, summary = process(root, args.as_of)
+    # Reproduce the retained assessment without backdating newly accepted
+    # records. An explicit timestamp advances it; --check remains read-only.
+    as_of = (args.as_of
+             or read_object(output / "catalogue_state.json").get("as_of")
+             or read_object(root / OUTPUT / "catalogue_state.json").get("as_of")
+             or "2026-09-30T00:00:00Z")
+    outputs, summary = process(root, as_of)
     if args.check:
         mismatches = [name for name, value in outputs.items() if not (output / name).is_file() or (output / name).read_text(encoding="utf-8") != value]
         unexpected = [path.relative_to(output).as_posix() for path in output.rglob("*.json") if path.relative_to(output).as_posix() not in outputs]

@@ -1,0 +1,28 @@
+{
+  "schema": "earnalism.reader-release-owner-authority.v1",
+  "slug": "agentic-ai-with-python",
+  "recorded_at": "2026-10-01T03:17:21.336723+00:00",
+  "owner_instruction_sha256": "f919f54c311cd7c8c90e0ee9371d0e4e632748b365d0e6c5ce6bf7debe8080a8",
+  "cover_review_sha256": "602bee4d08c1aa7ea51b00c36d313c60f7beb14a0165232ff5b6b1fa33f364c9",
+  "chapter_files_sha256": {
+    "chapter-008.json": "fef53ecb91b3afb8d0c23a0a4a4b558c9f23598a3fa7fefe9edd081716a5c701",
+    "chapter-005.json": "a93803d652cb04f2bb0ea8a55471c684f961703acad287fb94853e5a0e328fc8",
+    "chapter-007.json": "8746d00c4c12a3825a962188e914f2d1ea1c7c10c406ea462afa4fa4aaa9e730",
+    "chapter-013.json": "95196ad65444292e591f976eb8fa51e25fc17237039b3ad5560b666f91842c03",
+    "chapter-006.json": "cb6ed6a1ec7e58dbc204e686459cf35318a3d7266d16cfb726b9f43a31586715",
+    "chapter-010.json": "19c190ec3caddb1653fea629eaf913a0468655c533c1a4f1588c2a487227cf8c",
+    "chapter-004.json": "e2f83bff22823507495fe31d4f2e0004fbaca6fd5ed81312564871aed72b5e2f",
+    "chapter-014.json": "e61748ddd182c6049b3a454debc9e8b57d4f43f87469fc5105b1a1a7fba404da",
+    "chapter-001.json": "efccca13d2252ce2dac4cb5553e1edfca33262ffa7fa0f2179a7577476aff08a",
+    "chapter-003.json": "896bdf0af90efb7dee3fa0e6d9e80db1471595836736ba67908fa79fd6482ae7",
+    "chapter-011.json": "4bed8449a5e8bc9e89d0c45913063d0bb2a1abcb7d1c59e415503c93440ca27c",
+    "chapter-012.json": "edde00eac6df148abef6f39ef8f8eaa9ff6384a17b6b7bf0b722b6e98a5b703a",
+    "chapter-009.json": "6fb468b540a40e1cd8c5e1d6a68331f9a2f611031f927893ef4c1614e0bdbe03",
+    "chapter-002.json": "b389924f429367b00e32aa8f9bb8d6d5a69693bbd4bc41e27736b20c61902ecc"
+  },
+  "authorization": "Owner directly instructed necessary compliance changes and release. Execution and exact-byte verification delegated to Codex; no invented separate owner hash review.",
+  "territory": "IN",
+  "access_mode": "COMMERCIAL_ENTITLEMENT",
+  "audio_authorized": false,
+  "publication_readback_verified": false
+}

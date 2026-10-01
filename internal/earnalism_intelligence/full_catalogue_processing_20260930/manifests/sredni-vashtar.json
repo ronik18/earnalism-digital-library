@@ -60,8 +60,8 @@
       "sanitized": true,
       "source_hash": "089628df1446736886ddae93252fc070854ec17606ade714a70ba77b55e6ea02"
     },
-    "generated_at": "2026-09-30T00:00:00Z",
-    "manifest_sha256": "f0ac3d69a7f997f47fee5dbf86d40cddcb992c3498cbe7d5c31fb757072d3f83",
+    "generated_at": "2026-10-01T03:17:21.336723+00:00",
+    "manifest_sha256": "9213b24eef9622db0d7c420ffced9c6e3facbc9619cb69e3f877eeb19fd10519",
     "reader_release": {
       "blockers": [
         "ACCEPTED_DECISION_MISSING",
