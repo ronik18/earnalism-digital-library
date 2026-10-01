@@ -1,6 +1,6 @@
 {
   "active_files_sha256": {
-    "approval_evidence.json": "48f9cfa9061d9c979a23b4a51c411b4446275015ae971a967d85afef35b4ce85",
+    "approval_evidence.json": "009e924803328f964e55e44e04e40d9ebe04edb8f17affe91ad1b5582c7513f5",
     "chapters/chapter-001.json": "7a9c793f018bb3531b5627d749d155dd56d85310f72a82a454e7ef06396f5f2f",
     "chapters/chapter-002.json": "48a907f317ee1f7abad4ad0cc4bd1baeecd67321e12c3e01c2b9986bd4f31134",
     "chapters/chapter-003.json": "a6d7a978e502ef9054e0120504ac13f8503307de8b1996535bdd936503f2380a",
@@ -22,11 +22,15 @@
     "chapters/chapter-019.json": "da38299f139b8654812de331af035f62ce3cf91caa09a0c20439cf69c0ec5f98",
     "chapters/chapter-020.json": "f98dc79541d626ab9e46e22e9197b6b2853dc76d3e6371051f9246c92f3c47b7",
     "chapters/chapter-021.json": "56808ecf91437ecb439b9e1cad4222e600839fc8c6a4ab03ccd3d65efa7cf376",
-    "checksum_manifest.json": "7d0552627862f78cc9425cd62a490aba1f21731aebde41c3293b911b31b379e0",
+    "checksum_manifest.json": "7d5590eb0c86ce5ee69c3530b41a0e665b7d02c1d12fabaf11b6ef8a8f6f7c12",
+    "cover_provenance.json": "0e07dceaed4c9489c5a478b3bb1f2198dd48ca3e70714b72c2042b0779547006",
     "highlight_sync.json": "90db4890da0e4d5b8e9d589df0839ed9840c1aedf20bbff552f61bef1984309c",
-    "public_book.json": "5704c1ff4a5dc5e03e633b766d0a56932814199a019b0292e463f553625a181c",
+    "public_book.json": "73406a82723f6a990f1d55ccab838270a15ad4c24cd44d93f4da5a6f495228ee",
+    "publication_manifest.json": "8a615d35a63a7138e2cd11b7db02d9842fbdd047483850fdec66f6aec5619d97",
     "reader_manifest.json": "6a7653d407d43a0e8e51b1831e3f622c914bd3700f77ba104a6bbdbc85b83d09",
+    "reader_release_approval.json": "08f58b76de0478b177cd0dd777fbf8e3446c5f0f0cc9c227d5e9543b73edeaf1",
     "reader_repair_evidence.json": "b00d023b3955eb4ba6f185d7de020a941eb059ddf022056eaa240eff6990f253",
+    "rights_decision.json": "aa0a30fc1f0b146200caabe354c310e0c48ae6e756580b071006cc4fcaf8f661",
     "source_evidence.json": "4a89b5e09914efd550ae2d058d60e96aad90c42d79a6f301093ddfd9c7666faf"
   },
   "chapter_content_hashes": [
@@ -137,7 +141,7 @@
     }
   ],
   "input_files_sha256": {
-    "approval_evidence.json": "48f9cfa9061d9c979a23b4a51c411b4446275015ae971a967d85afef35b4ce85",
+    "approval_evidence.json": "009e924803328f964e55e44e04e40d9ebe04edb8f17affe91ad1b5582c7513f5",
     "chapters/chapter-001.json": "7a9c793f018bb3531b5627d749d155dd56d85310f72a82a454e7ef06396f5f2f",
     "chapters/chapter-002.json": "48a907f317ee1f7abad4ad0cc4bd1baeecd67321e12c3e01c2b9986bd4f31134",
     "chapters/chapter-003.json": "a6d7a978e502ef9054e0120504ac13f8503307de8b1996535bdd936503f2380a",
@@ -159,18 +163,22 @@
     "chapters/chapter-019.json": "da38299f139b8654812de331af035f62ce3cf91caa09a0c20439cf69c0ec5f98",
     "chapters/chapter-020.json": "f98dc79541d626ab9e46e22e9197b6b2853dc76d3e6371051f9246c92f3c47b7",
     "chapters/chapter-021.json": "56808ecf91437ecb439b9e1cad4222e600839fc8c6a4ab03ccd3d65efa7cf376",
-    "checksum_manifest.json": "7d0552627862f78cc9425cd62a490aba1f21731aebde41c3293b911b31b379e0",
+    "checksum_manifest.json": "7d5590eb0c86ce5ee69c3530b41a0e665b7d02c1d12fabaf11b6ef8a8f6f7c12",
+    "cover_provenance.json": "0e07dceaed4c9489c5a478b3bb1f2198dd48ca3e70714b72c2042b0779547006",
     "highlight_sync.json": "90db4890da0e4d5b8e9d589df0839ed9840c1aedf20bbff552f61bef1984309c",
-    "public_book.json": "5704c1ff4a5dc5e03e633b766d0a56932814199a019b0292e463f553625a181c",
+    "public_book.json": "73406a82723f6a990f1d55ccab838270a15ad4c24cd44d93f4da5a6f495228ee",
+    "publication_manifest.json": "8a615d35a63a7138e2cd11b7db02d9842fbdd047483850fdec66f6aec5619d97",
     "reader_manifest.json": "6a7653d407d43a0e8e51b1831e3f622c914bd3700f77ba104a6bbdbc85b83d09",
+    "reader_release_approval.json": "08f58b76de0478b177cd0dd777fbf8e3446c5f0f0cc9c227d5e9543b73edeaf1",
     "reader_repair_evidence.json": "b00d023b3955eb4ba6f185d7de020a941eb059ddf022056eaa240eff6990f253",
+    "rights_decision.json": "aa0a30fc1f0b146200caabe354c310e0c48ae6e756580b071006cc4fcaf8f661",
     "source_evidence.json": "4a89b5e09914efd550ae2d058d60e96aad90c42d79a6f301093ddfd9c7666faf"
   },
   "publication_authority": false,
   "publication_manifest": {
     "artifacts": {
-      "approval_evidence": "48f9cfa9061d9c979a23b4a51c411b4446275015ae971a967d85afef35b4ce85",
-      "public_book": "5704c1ff4a5dc5e03e633b766d0a56932814199a019b0292e463f553625a181c",
+      "approval_evidence": "009e924803328f964e55e44e04e40d9ebe04edb8f17affe91ad1b5582c7513f5",
+      "public_book": "73406a82723f6a990f1d55ccab838270a15ad4c24cd44d93f4da5a6f495228ee",
       "reader_manifest": "6a7653d407d43a0e8e51b1831e3f622c914bd3700f77ba104a6bbdbc85b83d09",
       "source_evidence": "4a89b5e09914efd550ae2d058d60e96aad90c42d79a6f301093ddfd9c7666faf"
     },
@@ -340,19 +348,14 @@
       "sanitized": true,
       "source_hash": "9e37dc7035cb6991073be62b6e8de858173cd8608a25ec5a5ca78c6608458932"
     },
-    "generated_at": "2026-10-01T03:17:21.336723+00:00",
-    "manifest_sha256": "3d5c735fcb81cd9252eb823963b271890c8de020523012acc45c549b2ebd4154",
+    "generated_at": "2026-10-01T05:38:07.922769+00:00",
+    "manifest_sha256": "504769c54d8b8a7d1e8ee88d04a17a960811b34454deaccf280d51b65cdedae0",
     "reader_release": {
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "Front cover is required.",
-        "Reader QA must pass."
-      ],
-      "cover_url": "",
-      "exposed": false,
-      "qa_status": "READY_FOR_APPROVAL",
-      "status": "BLOCKED"
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/picture-of-dorian-gray/front-cover.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
     },
     "rights": {
       "evidence_sha256": "4a89b5e09914efd550ae2d058d60e96aad90c42d79a6f301093ddfd9c7666faf",
@@ -366,28 +369,22 @@
     "title": "The Picture of Dorian Gray"
   },
   "rights_assessment": {
-    "decision_id": null,
-    "offline_india_text_scope_passed": false,
+    "decision_id": "india-20261001-picture-of-dorian-gray-owner-text-reader",
+    "offline_india_text_scope_passed": true,
     "production_request_verified": false,
-    "registry_bound": false,
+    "registry_bound": true,
     "runtime_actions": {
       "catalog_cta": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_chapter": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_manifest": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       }
     }
   },

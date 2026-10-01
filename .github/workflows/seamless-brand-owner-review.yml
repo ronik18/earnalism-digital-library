@@ -86,7 +86,7 @@ jobs:
       PR_NUMBER: ${{ needs.resolve-pr-head.outputs.pr_number }}
       WORKFLOW_EVENT_SHA: ${{ needs.resolve-pr-head.outputs.workflow_event_sha }}
       # Reproduced from the exact Task B production source by test_seamless_brand_final_publication_workflow.mjs; this binds current source and is not visual approval.
-      PRODUCTION_SURFACE_SHA: f93d0d10d2fcc18644926d74d78b5895afebf4ef5ccec6c1de25550112d41a57
+      PRODUCTION_SURFACE_SHA: 2f19ec50ccd6dbf5174aa5a66efb5278ab4cffc68f0679a619e73017397b7fe5
       CANONICAL_LOGO_SHA: 951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919
     steps:
       - name: Checkout exact pull-request head
@@ -116,7 +116,8 @@ jobs:
           printf 'ACTUAL_CHECKOUT_SHA=%s\nCHECKOUT_TREE_SHA=%s\nWORKFLOW_EVENT_SHA=%s\n' "$ACTUAL_CHECKOUT_SHA" "$CHECKOUT_TREE_SHA" "$WORKFLOW_EVENT_SHA" | tee "$RUNNER_TEMP/exact-checkout.env"
           npm ci
           npm ci --prefix frontend --legacy-peer-deps
-          python3 -m pip install --disable-pip-version-check -r requirements.txt reportlab==4.2.5
+          # Browser/PDF evidence needs these pinned tools, not audio/ML models.
+          python3 -m pip install --disable-pip-version-check Pillow==10.3.0 reportlab==4.2.5
           npx playwright install --with-deps chromium firefox webkit
           node --version | tee "$RUNNER_TEMP/node-version.txt"
           python3 --version | tee "$RUNNER_TEMP/python-version.txt"
@@ -498,7 +499,7 @@ jobs:
       GITHUB_ARTIFACT_URL: ${{ needs.seamless-brand-review.outputs.artifact_url }}
       GITHUB_ARTIFACT_DIGEST: ${{ needs.seamless-brand-review.outputs.artifact_digest }}
       # Must match the same exact source fingerprint as the capture job above.
-      PRODUCTION_SURFACE_SHA: f93d0d10d2fcc18644926d74d78b5895afebf4ef5ccec6c1de25550112d41a57
+      PRODUCTION_SURFACE_SHA: 2f19ec50ccd6dbf5174aa5a66efb5278ab4cffc68f0679a619e73017397b7fe5
       CANONICAL_LOGO_SHA: 951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919
     steps:
       - uses: actions/checkout@v6

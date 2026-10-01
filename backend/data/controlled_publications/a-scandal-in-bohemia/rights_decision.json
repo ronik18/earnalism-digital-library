@@ -1,0 +1,43 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261001-a-scandal-in-bohemia-owner-text-reader",
+  "edition_id": "a-scandal-in-bohemia",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "5b5203f14999e53a380545a75464f76a52f3f3499a883fe285f2b580c43c9612",
+    "reader_manifest": "08be9023532b392a948c29ac4725a7a46a9fb1641ed78b9c438e0d5da08222d8",
+    "source_evidence": "0302b427ea3695a9ee06d524823239bdc8ff3021b8582b3acbc4340febbd81a9",
+    "approval_evidence": "c44e53fd7116ac72e1ad639a90ba9d9d7420dbcefacb125ef41cb797b8610347",
+    "checksum_manifest": "ac34171490600d73e0fe0e972fc20791a486cd936885677991a28e57e8de8a8a",
+    "publication_manifest": "201f40b780f3e3adf1879aad82bacd7310d3a63b7b62ea42d5da134bd775a8eb",
+    "cover_provenance": "c7a38092da3a068a43538a38243f7f3d5f0e0f3664ef4d431eb6df71bf94a7dd",
+    "reader_release_approval": "0e18c6ccaaccf52e7ff30d23cf7980673f6c85552f55835a02bd0aca384a6935",
+    "chapter_file:chapter-001.json": "efd315eb11fceeab3dba24c4ef4b5152496dd9e57033669908ba9b7ae54532ea",
+    "cover_asset:front": "fdaa99cef5754917ec758b27d92fcad1d5cda431037a4d3008987d36d4a78fad",
+    "cover_asset:back": "98d7d85802e02275a9bbb9bd4cd1844e1e956af310003970272375452621a8b7"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T05:38:07.922769+00:00",
+  "valid_until": "2036-10-01T05:38:07.922769+00:00",
+  "basis": "Original literary text published during the author’s lifetime; India Copyright Act 1957 section 22, life plus 60 years, assessed separately from repository U.S. notices. Selected original text only, with repository boilerplate, protected modern editorial matter, illustrations and collection framing excluded; existing chapter/source repair proofs preserved. No third-party modern introduction, notes, anthology layout, illustrations or author portrait is included in the delivered chapters. Original author preface and chapter prose are retained where applicable. Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art. Exact existing assets and all selected chapters are bound. Owner-authorized India-only commercial text Reader uses under the existing 3-page preview / Reading Pass policy; no audio, exports, downloads, global territory grant, new payment policy or unobserved production readiness is asserted.",
+  "evidence_sha256": [
+    "538c726547957d127294daa3add4984b59f5889ddea250e0ec92426fa40e672b",
+    "8b4c0ebbf854fc4ab4e23b3be155149ef9abd14bd3ddda6eb925eb3b904eb403",
+    "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+    "0e18c6ccaaccf52e7ff30d23cf7980673f6c85552f55835a02bd0aca384a6935",
+    "c7a38092da3a068a43538a38243f7f3d5f0e0f3664ef4d431eb6df71bf94a7dd"
+  ],
+  "accepted_by": "Codex under Ronik Basak direct autonomous safe near-ready release instruction. Conditional owner waiver covers manual production observation only; no separate owner hash review or independent human inspection is claimed.",
+  "conditions_satisfied": true
+}

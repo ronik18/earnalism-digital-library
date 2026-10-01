@@ -1,0 +1,63 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261001-picture-of-dorian-gray-owner-text-reader",
+  "edition_id": "picture-of-dorian-gray",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "73406a82723f6a990f1d55ccab838270a15ad4c24cd44d93f4da5a6f495228ee",
+    "reader_manifest": "6a7653d407d43a0e8e51b1831e3f622c914bd3700f77ba104a6bbdbc85b83d09",
+    "source_evidence": "4a89b5e09914efd550ae2d058d60e96aad90c42d79a6f301093ddfd9c7666faf",
+    "approval_evidence": "009e924803328f964e55e44e04e40d9ebe04edb8f17affe91ad1b5582c7513f5",
+    "checksum_manifest": "7d5590eb0c86ce5ee69c3530b41a0e665b7d02c1d12fabaf11b6ef8a8f6f7c12",
+    "publication_manifest": "8a615d35a63a7138e2cd11b7db02d9842fbdd047483850fdec66f6aec5619d97",
+    "cover_provenance": "0e07dceaed4c9489c5a478b3bb1f2198dd48ca3e70714b72c2042b0779547006",
+    "reader_release_approval": "08f58b76de0478b177cd0dd777fbf8e3446c5f0f0cc9c227d5e9543b73edeaf1",
+    "chapter_file:chapter-001.json": "7a9c793f018bb3531b5627d749d155dd56d85310f72a82a454e7ef06396f5f2f",
+    "chapter_file:chapter-002.json": "48a907f317ee1f7abad4ad0cc4bd1baeecd67321e12c3e01c2b9986bd4f31134",
+    "chapter_file:chapter-003.json": "a6d7a978e502ef9054e0120504ac13f8503307de8b1996535bdd936503f2380a",
+    "chapter_file:chapter-004.json": "ac8d66268d28eb2e5753f025e430a4aa37892f1375b0128391839e188a946e69",
+    "chapter_file:chapter-005.json": "1d95231b52a887b77fbaafc335ed0d13a54c0fd1c483c872a40f1c3c119e9290",
+    "chapter_file:chapter-006.json": "d44bc264b7eff0ed411c1e1fef8f70d3857d20e3945e0f40470d7405db192932",
+    "chapter_file:chapter-007.json": "fa23c5cb28a83364fe9a9bddd8f104634fd70735dc2192b6fc262f1ee6b81d4b",
+    "chapter_file:chapter-008.json": "b0d7ddab6648672bba283cc7379a52804644a87ca64ea74099c1d30ca1c3fb6b",
+    "chapter_file:chapter-009.json": "ee136dfd3291c8169faa772b6cd29006d7e0d6c5c6b5d63680b8d1e3cabb8c73",
+    "chapter_file:chapter-010.json": "d39e9e8782778e4277c6968ec6ebaf4fe1eea61417bde649459f3d6eef7c8d61",
+    "chapter_file:chapter-011.json": "0002b78c4b90fe0936fed08217ce163d7b30a5753eac3e59ff3f55585e720c9d",
+    "chapter_file:chapter-012.json": "78bc698d2a28afd81cf37d9c8326457b1681e0ff123282ba24dd67a2a8e3dda9",
+    "chapter_file:chapter-013.json": "6c4af018541da8c3de794ab2e6845858079f6a4bc37a078d71b0e51dc53ec90f",
+    "chapter_file:chapter-014.json": "955f94129de74693a1b112bb913695c5d53afa8be60bc796f1fdbd25f740cfd1",
+    "chapter_file:chapter-015.json": "1c1da1141ede4201a4eba69447cb92d79e4c5d8eda0a8365922d9d6e1193d82b",
+    "chapter_file:chapter-016.json": "7e02c5a49740d0c65060ca747085657f3f974b41ffa19afcc93d0fa6c4d95af5",
+    "chapter_file:chapter-017.json": "a73d0fecb63755956d15522f5c4802dc1fd3bf24088057c62fa65caa26455b8c",
+    "chapter_file:chapter-018.json": "c31dc13b6e6eb2889dbe9f42c2c0367a99b47c8171b50657cf1f7b6baefca41c",
+    "chapter_file:chapter-019.json": "da38299f139b8654812de331af035f62ce3cf91caa09a0c20439cf69c0ec5f98",
+    "chapter_file:chapter-020.json": "f98dc79541d626ab9e46e22e9197b6b2853dc76d3e6371051f9246c92f3c47b7",
+    "chapter_file:chapter-021.json": "56808ecf91437ecb439b9e1cad4222e600839fc8c6a4ab03ccd3d65efa7cf376",
+    "cover_asset:front": "2222284a9d1a2f5e1e5c7f0b95eb3bdfb6775e3b83a953d9ecb3e071d6588657",
+    "cover_asset:back": "ade357db40d10ab548cdff0ddbf2b77e5f7aeaba8dd7e8a666667d01fd4b50d6"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T05:38:07.922769+00:00",
+  "valid_until": "2036-10-01T05:38:07.922769+00:00",
+  "basis": "Original literary text published during the author’s lifetime; India Copyright Act 1957 section 22, life plus 60 years, assessed separately from repository U.S. notices. Selected original text only, with repository boilerplate, protected modern editorial matter, illustrations and collection framing excluded; existing chapter/source repair proofs preserved. No third-party modern introduction, notes, anthology layout, illustrations or author portrait is included in the delivered chapters. Original author preface and chapter prose are retained where applicable. Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art. Exact existing assets and all selected chapters are bound. Owner-authorized India-only commercial text Reader uses under the existing 3-page preview / Reading Pass policy; no audio, exports, downloads, global territory grant, new payment policy or unobserved production readiness is asserted.",
+  "evidence_sha256": [
+    "538c726547957d127294daa3add4984b59f5889ddea250e0ec92426fa40e672b",
+    "8b4c0ebbf854fc4ab4e23b3be155149ef9abd14bd3ddda6eb925eb3b904eb403",
+    "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+    "08f58b76de0478b177cd0dd777fbf8e3446c5f0f0cc9c227d5e9543b73edeaf1",
+    "0e07dceaed4c9489c5a478b3bb1f2198dd48ca3e70714b72c2042b0779547006"
+  ],
+  "accepted_by": "Codex under Ronik Basak direct autonomous safe near-ready release instruction. Conditional owner waiver covers manual production observation only; no separate owner hash review or independent human inspection is claimed.",
+  "conditions_satisfied": true
+}

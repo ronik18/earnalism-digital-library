@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-pit-and-the-pendulum",
+  "title": "The Pit and the Pendulum",
+  "generated_at": "2026-10-01T05:38:07.922769+00:00",
+  "content": {
+    "source_hash": "44c59e6e27d1402d0ac587da78370177b575b3acc9144b2f4e52fdee018b3781",
+    "content_hash": "f96d05695c79e4edb6938e6667ab88a40336e44aa16c7277a4e46a2422a2fcac",
+    "provenance_hash": "d8a4d1194b949e3d5b16de9c04b4989128541def7e0a09d689da260b395519c4",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "f0a5f3407286cef28ca7b0427b654473beb89f8fc7cbce740ca325738ed07195",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Pit and the Pendulum",
+        "word_count": 6149,
+        "sha256": "747b573b44a98b8860668283c937f9ab2aa02c51ee98856a3644048f4ff11fbd"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "in",
+    "evidence_sha256": "1a64c6709c98a917f7c338a28023ef2df49bad1e896f090cf50286be878eb4e0"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "53b92408acac07619bebff1a17b4fcafc7d7392e96ef78fc58fedccec70b87cf",
+    "reader_manifest": "75184bafdc2e13f06824e1a3070fdfe5afc5bac478fb5142fa54393f07e32eed",
+    "source_evidence": "1a64c6709c98a917f7c338a28023ef2df49bad1e896f090cf50286be878eb4e0",
+    "approval_evidence": "df56dfb86da0313455048aee89368af237670dd186400c2d1ded3621a296f6e6"
+  },
+  "manifest_sha256": "3f3077243b1f6e3adfee1ddf8b0d0b2dec6ed3aecbf58f0ce6ef011c741c4b2f"
+}

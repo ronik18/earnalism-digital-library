@@ -1,0 +1,41 @@
+{
+  "schema": "earnalism.exact-existing-cover-provenance.v1",
+  "slug": "a-scandal-in-bohemia",
+  "checked_at": "2026-10-01T05:38:07.922769+00:00",
+  "component_review_path": "internal/legal/near_ready_text_release_20261001/component_review.json",
+  "component_review_sha256": "8b4c0ebbf854fc4ab4e23b3be155149ef9abd14bd3ddda6eb925eb3b904eb403",
+  "cover": {
+    "basis": "Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art.",
+    "audit_path": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json",
+    "audit_sha256": "8b024fad4e023f74612ebb4925218f4a2acac65d33e1a255662157ebdd40e2d7",
+    "generator": "scripts/render_english_25_missing_covers.py",
+    "generator_sha256": "82a8c078f8c855deac50aa6f8af6cfc78f6c152af7578e6ae0f88e1a0063f354",
+    "font_source": "Original first-party programmatic composition with rasterized system typography, as evidenced by the retained generator and exact asset audit. The historical font selected from Georgia, Times New Roman or DejaVu was not recorded; no claim that a current Linux rerender identifies the historical font. No font software is distributed. DejaVu permission reference documents only that generator option, not an asserted identification of the existing font.",
+    "font_license_url": "https://dejavu-fonts.github.io/License.html",
+    "assistant_visual_review": "Actual retained front and back images inspected in the 2026-10-01 review; readable exact title and author, no third-party logo, image, character portrait or clipped text observed. No independent human review claimed.",
+    "assets": {
+      "front": {
+        "path": "frontend/public/assets/books/a-scandal-in-bohemia/front-cover.webp",
+        "sha256": "fdaa99cef5754917ec758b27d92fcad1d5cda431037a4d3008987d36d4a78fad",
+        "bytes": 19456,
+        "url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
+        "dimensions": [
+          800,
+          1200
+        ]
+      },
+      "back": {
+        "path": "frontend/public/assets/books/a-scandal-in-bohemia/back-cover.webp",
+        "sha256": "98d7d85802e02275a9bbb9bd4cd1844e1e956af310003970272375452621a8b7",
+        "bytes": 21384,
+        "url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover.webp",
+        "dimensions": [
+          800,
+          1200
+        ]
+      }
+    }
+  },
+  "new_art_generated": false,
+  "existing_art_replaced": false
+}

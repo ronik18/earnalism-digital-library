@@ -61,7 +61,7 @@ def runtime_verdict(action: str, record: dict | None, registry: dict[str, str] |
     return evaluate_runtime_path(action, **arguments)
 
 
-def test_real_registry_retains_historical_records_and_binds_current_eight_title_release():
+def test_real_registry_retains_historical_records_and_binds_current_twenty_four_title_release():
     registry, revoked = load_production_registry()
     payload = json.loads(PRODUCTION_REGISTRY_PATH.read_text(encoding="utf-8"))
 
@@ -77,6 +77,22 @@ def test_real_registry_retains_historical_records_and_binds_current_eight_title_
         "india-20260925-the-canterville-ghost-commercial-reader-release",
         "india-20260929-the-adventures-of-sherlock-holmes-pg1661-text-reader",
         "india-20261001-agentic-ai-with-python-owner-text-reader",
+        "india-20261001-a-horseman-in-the-sky-owner-text-reader",
+        "india-20261001-a-mystery-of-heroism-owner-text-reader",
+        "india-20261001-a-scandal-in-bohemia-owner-text-reader",
+        "india-20261001-jekyll-and-hyde-owner-text-reader",
+        "india-20261001-love-of-life-owner-text-reader",
+        "india-20261001-the-bishop-owner-text-reader",
+        "india-20261001-the-fall-of-the-house-of-usher-owner-text-reader",
+        "india-20261001-the-lady-with-the-dog-owner-text-reader",
+        "india-20261001-the-man-who-would-be-king-owner-text-reader",
+        "india-20261001-the-open-boat-owner-text-reader",
+        "india-20261001-the-pit-and-the-pendulum-owner-text-reader",
+        "india-20261001-the-stolen-white-elephant-owner-text-reader",
+        "india-20261001-an-occurrence-at-owl-creek-bridge-owner-text-reader",
+        "india-20261001-the-enchanted-april-owner-text-reader",
+        "india-20261001-the-happy-prince-owner-text-reader",
+        "india-20261001-picture-of-dorian-gray-owner-text-reader",
     }
     current_runtime_release_slugs = (
         "a-ghost-story",
@@ -87,6 +103,22 @@ def test_real_registry_retains_historical_records_and_binds_current_eight_title_
         "the-canterville-ghost",
         "the-adventures-of-sherlock-holmes",
         "agentic-ai-with-python",
+        "a-horseman-in-the-sky",
+        "a-mystery-of-heroism",
+        "a-scandal-in-bohemia",
+        "jekyll-and-hyde",
+        "love-of-life",
+        "the-bishop",
+        "the-fall-of-the-house-of-usher",
+        "the-lady-with-the-dog",
+        "the-man-who-would-be-king",
+        "the-open-boat",
+        "the-pit-and-the-pendulum",
+        "the-stolen-white-elephant",
+        "an-occurrence-at-owl-creek-bridge",
+        "the-enchanted-april",
+        "the-happy-prince",
+        "picture-of-dorian-gray",
     )
     for slug in current_runtime_release_slugs:
         decision = json.loads(

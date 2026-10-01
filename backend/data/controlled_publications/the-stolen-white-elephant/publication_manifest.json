@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-stolen-white-elephant",
+  "title": "The Stolen White Elephant",
+  "generated_at": "2026-10-01T05:38:07.922769+00:00",
+  "content": {
+    "source_hash": "fe0f4b88b895ed50544c4d0c7e4a42f370cfcf59dcf2643009c4a5cc3a4c1517",
+    "content_hash": "1966dc3ff417b39ec3faeab8031f6c99f0138f8d1595f351147a023fed8f0235",
+    "provenance_hash": "6637344b47e4a4cb2f0afdce7adfaf8eca02d84429c408c533fb13cece300756",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "a12d9e474db6b02c46dbfd14968d60ae5f5e8a087d6bb71bf5744ac129f5ceed",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Stolen White Elephant",
+        "word_count": 6821,
+        "sha256": "3c399adaaccaabceeef46222ac79c2428b6fbc2665f1fc4d7e28bfb074fb5b95"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "in",
+    "evidence_sha256": "3604c82d994c47602b76c49a0a1e8b028b704646eadb813481791a28d70dc4b6"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "5a746dd018904240d7d325c25f71df70925c5361b1e7d21033358e127ade5214",
+    "reader_manifest": "dfaf46f1970dda6041c0f161a415cce1be4427402b1156ff2de5e3ec5fa8ad8c",
+    "source_evidence": "3604c82d994c47602b76c49a0a1e8b028b704646eadb813481791a28d70dc4b6",
+    "approval_evidence": "3358f1172e13c791e50802ffd6a1898f15690aaa0a893afe9233e54d076a3f50"
+  },
+  "manifest_sha256": "86f82adb7e832fae7c51ab2bc5595e3364c1db79697ae602fb431bf9e7c5736c"
+}

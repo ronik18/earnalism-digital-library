@@ -131,6 +131,18 @@ def test_catalog_wide_reader_indexes_are_complete_and_deterministic():
             if package["package_key"] not in archived_hold_keys
         ],
     }
+    # Preserve the frozen historical fixture. This explicit addition is copied
+    # unchanged from the approved root package at merged main 3f76c852, which
+    # predated its backend mirror. Never regenerate expectations from candidate
+    # manifests or remove archived membership from the frozen fixture.
+    current_inventory["packages"].append({
+        "package_key": "a-horseman-in-the-sky",
+        "manifest_path": "backend/data/controlled_publications/a-horseman-in-the-sky/reader_manifest.json",
+        "manifest_slug": "a-horseman-in-the-sky", "chapter_count": 1,
+        "chapters": [{"id": "chapter-001", "order": 1}],
+    })
+    import hashlib
+    assert hashlib.sha256((CONTROLLED_ROOT / "a-horseman-in-the-sky/reader_manifest.json").read_bytes()).hexdigest() == "fcf6313edcaaac648fbc96dcb446bca87b5c5a79118606e3556905d681406748"
     current_inventory["expected_manifest_count"] = len(current_inventory["packages"])
     current_inventory["expected_chapter_count"] = sum(
         package["chapter_count"] for package in current_inventory["packages"]

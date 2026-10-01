@@ -1,6 +1,6 @@
 {
   "slug": "the-fall-of-the-house-of-usher",
-  "generated_at": "2026-08-15T22:01:46Z",
+  "generated_at": "2026-10-01T05:38:07.922769+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
@@ -9,6 +9,10 @@
     {
       "file": "chapters/chapter-001.json",
       "sha256": "34d4107d4f0f48552d42d3fbb35d71e837f4f6f93112a6992a5a91467d7d2266"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "ba40ec30c3678a7cb037d04c24cec0d3b4b8f590f97d29a1c1895590f0e3c284"
     },
     {
       "file": "highlight_sync.json",
@@ -21,6 +25,10 @@
     {
       "file": "reader_manifest.json",
       "sha256": "0edb0521b5d203b0a6efb53d98d6e9425a4d21e617d8f67e5ec591a7d6a52d1e"
+    },
+    {
+      "file": "reader_release_approval.json",
+      "sha256": "42e74a51b2ad269a123eedb43492a7d26918710ea2a59ec4029b89ed12d8c8aa"
     },
     {
       "file": "source_evidence.json",

@@ -1,0 +1,846 @@
+{
+  "schema": "earnalism.near-ready-offline-reader-qa.v1",
+  "checked_at": "2026-10-01T05:38:07.922769+00:00",
+  "reviewed_source_head": "3f76c8521ef7e636e8f6f0d0c7d864f7ed132da7",
+  "boundary_regression_tests": {
+    "passed": 44,
+    "paid_calls": 0
+  },
+  "source_and_art_bytes_changed": false,
+  "titles": [
+    {
+      "slug": "a-horseman-in-the-sky",
+      "chapter_count": 1,
+      "chapter_files_sha256": {
+        "chapter-001.json": "528d930f6fcfc8f6a7ec80011ca49a3e67eca6f819190292d5cf3b2a8815cea4"
+      },
+      "retained_checksum_issues": [],
+      "sanitized_complete_text_parity": true,
+      "sanitizer_warnings": [],
+      "canonical_projection": {
+        "total_pages": 5,
+        "public_preview_pages": 3,
+        "version": "90401bca0f55a041eee5ba79",
+        "chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "chapter_title": "A Horseman in the Sky",
+            "chapter_order": 1,
+            "first_page_index": 1,
+            "last_page_index": 5
+          }
+        ]
+      },
+      "production_active_pointer": "NOT_OBSERVED_OR_CHANGED",
+      "authenticated_india_production_readback": "NOT_RUN",
+      "audio_enabled": false
+    },
+    {
+      "slug": "a-mystery-of-heroism",
+      "chapter_count": 1,
+      "chapter_files_sha256": {
+        "chapter-001.json": "f15462ba0fcb637d96290a4e04e9305a9ad8df6a343a0b4eab8be0be2572f6e4"
+      },
+      "retained_checksum_issues": [],
+      "sanitized_complete_text_parity": true,
+      "sanitizer_warnings": [],
+      "canonical_projection": {
+        "total_pages": 6,
+        "public_preview_pages": 3,
+        "version": "f117eed7e067d18cf89c560b",
+        "chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "chapter_title": "A Mystery of Heroism",
+            "chapter_order": 1,
+            "first_page_index": 1,
+            "last_page_index": 6
+          }
+        ]
+      },
+      "production_active_pointer": "NOT_OBSERVED_OR_CHANGED",
+      "authenticated_india_production_readback": "NOT_RUN",
+      "audio_enabled": false
+    },
+    {
+      "slug": "a-scandal-in-bohemia",
+      "chapter_count": 1,
+      "chapter_files_sha256": {
+        "chapter-001.json": "efd315eb11fceeab3dba24c4ef4b5152496dd9e57033669908ba9b7ae54532ea"
+      },
+      "retained_checksum_issues": [],
+      "sanitized_complete_text_parity": true,
+      "sanitizer_warnings": [],
+      "canonical_projection": {
+        "total_pages": 16,
+        "public_preview_pages": 3,
+        "version": "2b91924ea564a52ab7620ddc",
+        "chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "chapter_title": "A Scandal in Bohemia",
+            "chapter_order": 1,
+            "first_page_index": 1,
+            "last_page_index": 16
+          }
+        ]
+      },
+      "production_active_pointer": "NOT_OBSERVED_OR_CHANGED",
+      "authenticated_india_production_readback": "NOT_RUN",
+      "audio_enabled": false
+    },
+    {
+      "slug": "jekyll-and-hyde",
+      "chapter_count": 10,
+      "chapter_files_sha256": {
+        "chapter-001.json": "6741a99c2a840b45efea63acb2a17363b72daafc7ef8ad44dc469a68a1d662f3",
+        "chapter-002.json": "7a103a9b1585d21216f12bc6de55d47dd7ebf58d02e3b79423f48adb97478f52",
+        "chapter-003.json": "706eb38f1f5f89847b3f6e08ade3813100f98fa7071a5b22fdd358adc4141c0f",
+        "chapter-004.json": "2cf722f845ea29aa19a75999dac2f9127fe304e8089c367511e6a0a576c89c4a",
+        "chapter-005.json": "fb2746809d935be3e75c41380f8832bf0e3e50bf95e3f6b9675d1db06c5f37b4",
+        "chapter-006.json": "e628e8a18477700ff96312bcc066a5ff7d2f38d61520591098ed6e70b6595f29",
+        "chapter-007.json": "4f19b8a4be9c6c34a8a010177ffdcad1db773054907a8ba44049b0f7f47be92a",
+        "chapter-008.json": "de304ed5e7dd006aba2791fa9db35f3817e82d1ad6ac896df24c646d07e7c2f4",
+        "chapter-009.json": "3bd5dfd710ef08e09c07d816b295ad9a2b86799077f343295f1aa615c84a3f35",
+        "chapter-010.json": "aec99585a0a0705f25255d8560da47ee7af382755cea957ff03d65896b98ddf9"
+      },
+      "retained_checksum_issues": [],
+      "sanitized_complete_text_parity": true,
+      "sanitizer_warnings": [],
+      "canonical_projection": {
+        "total_pages": 52,
+        "public_preview_pages": 3,
+        "version": "23c34da33a2e85bf41d8f431",
+        "chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "chapter_title": "STORY OF THE DOOR",
+            "chapter_order": 1,
+            "first_page_index": 1,
+            "last_page_index": 5
+          },
+          {
+            "chapter_id": "chapter-002",
+            "chapter_title": "SEARCH FOR MR. HYDE",
+            "chapter_order": 2,
+            "first_page_index": 6,
+            "last_page_index": 11
+          },
+          {
+            "chapter_id": "chapter-003",
+            "chapter_title": "DR. JEKYLL WAS QUITE AT EASE",
+            "chapter_order": 3,
+            "first_page_index": 12,
+            "last_page_index": 13
+          },
+          {
+            "chapter_id": "chapter-004",
+            "chapter_title": "THE CAREW MURDER CASE",
+            "chapter_order": 4,
+            "first_page_index": 14,
+            "last_page_index": 16
+          },
+          {
+            "chapter_id": "chapter-005",
+            "chapter_title": "INCIDENT OF THE LETTER",
+            "chapter_order": 5,
+            "first_page_index": 17,
+            "last_page_index": 20
+          },
+          {
+            "chapter_id": "chapter-006",
+            "chapter_title": "INCIDENT OF DR. LANYON",
+            "chapter_order": 6,
+            "first_page_index": 21,
+            "last_page_index": 23
+          },
+          {
+            "chapter_id": "chapter-007",
+            "chapter_title": "INCIDENT AT THE WINDOW",
+            "chapter_order": 7,
+            "first_page_index": 24,
+            "last_page_index": 24
+          },
+          {
+            "chapter_id": "chapter-008",
+            "chapter_title": "THE LAST NIGHT",
+            "chapter_order": 8,
+            "first_page_index": 25,
+            "last_page_index": 32
+          },
+          {
+            "chapter_id": "chapter-009",
+            "chapter_title": "DR. LANYON’S NARRATIVE",
+            "chapter_order": 9,
+            "first_page_index": 33,
+            "last_page_index": 38
+          },
+          {
+            "chapter_id": "chapter-010",
+            "chapter_title": "HENRY JEKYLL’S FULL STATEMENT OF THE CASE",
+            "chapter_order": 10,
+            "first_page_index": 39,
+            "last_page_index": 52
+          }
+        ]
+      },
+      "production_active_pointer": "NOT_OBSERVED_OR_CHANGED",
+      "authenticated_india_production_readback": "NOT_RUN",
+      "audio_enabled": false
+    },
+    {
+      "slug": "love-of-life",
+      "chapter_count": 1,
+      "chapter_files_sha256": {
+        "chapter-001.json": "32357fa06aac2676c3785ef87070da3f2c7764ba58057b116c7de57d9b1d6a50"
+      },
+      "retained_checksum_issues": [],
+      "sanitized_complete_text_parity": true,
+      "sanitizer_warnings": [],
+      "canonical_projection": {
+        "total_pages": 16,
+        "public_preview_pages": 3,
+        "version": "7c88eafe654de6f6ca39c821",
+        "chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "chapter_title": "Love of Life",
+            "chapter_order": 1,
+            "first_page_index": 1,
+            "last_page_index": 16
+          }
+        ]
+      },
+      "production_active_pointer": "NOT_OBSERVED_OR_CHANGED",
+      "authenticated_india_production_readback": "NOT_RUN",
+      "audio_enabled": false
+    },
+    {
+      "slug": "the-bishop",
+      "chapter_count": 1,
+      "chapter_files_sha256": {
+        "chapter-001.json": "bbb0ddd5d2cea66b38e74f880797edb585a9326b58387fe20fd4046e9f294a56"
+      },
+      "retained_checksum_issues": [],
+      "sanitized_complete_text_parity": true,
+      "sanitizer_warnings": [],
+      "canonical_projection": {
+        "total_pages": 12,
+        "public_preview_pages": 3,
+        "version": "6178f91356f24871c08fc44d",
+        "chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "chapter_title": "The Bishop",
+            "chapter_order": 1,
+            "first_page_index": 1,
+            "last_page_index": 12
+          }
+        ]
+      },
+      "production_active_pointer": "NOT_OBSERVED_OR_CHANGED",
+      "authenticated_india_production_readback": "NOT_RUN",
+      "audio_enabled": false
+    },
+    {
+      "slug": "the-fall-of-the-house-of-usher",
+      "chapter_count": 1,
+      "chapter_files_sha256": {
+        "chapter-001.json": "34d4107d4f0f48552d42d3fbb35d71e837f4f6f93112a6992a5a91467d7d2266"
+      },
+      "retained_checksum_issues": [],
+      "sanitized_complete_text_parity": true,
+      "sanitizer_warnings": [],
+      "canonical_projection": {
+        "total_pages": 16,
+        "public_preview_pages": 3,
+        "version": "b59ba3a1dc10b71a77d606de",
+        "chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "chapter_title": "The Fall of the House of Usher",
+            "chapter_order": 1,
+            "first_page_index": 1,
+            "last_page_index": 16
+          }
+        ]
+      },
+      "production_active_pointer": "NOT_OBSERVED_OR_CHANGED",
+      "authenticated_india_production_readback": "NOT_RUN",
+      "audio_enabled": false
+    },
+    {
+      "slug": "the-lady-with-the-dog",
+      "chapter_count": 1,
+      "chapter_files_sha256": {
+        "chapter-001.json": "359d98971f6e9a67c38bc5b8e048816b3c205d508604aa8f08e88d67531fe36f"
+      },
+      "retained_checksum_issues": [],
+      "sanitized_complete_text_parity": true,
+      "sanitizer_warnings": [],
+      "canonical_projection": {
+        "total_pages": 13,
+        "public_preview_pages": 3,
+        "version": "42a65b9b51f58023330a2f2f",
+        "chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "chapter_title": "The Lady with the Dog",
+            "chapter_order": 1,
+            "first_page_index": 1,
+            "last_page_index": 13
+          }
+        ]
+      },
+      "production_active_pointer": "NOT_OBSERVED_OR_CHANGED",
+      "authenticated_india_production_readback": "NOT_RUN",
+      "audio_enabled": false
+    },
+    {
+      "slug": "the-man-who-would-be-king",
+      "chapter_count": 1,
+      "chapter_files_sha256": {
+        "chapter-001.json": "fceadfd7e05c26bfd2a467327219843b89369a50ff5b11d018e202ade45e0914"
+      },
+      "retained_checksum_issues": [],
+      "sanitized_complete_text_parity": true,
+      "sanitizer_warnings": [],
+      "canonical_projection": {
+        "total_pages": 28,
+        "public_preview_pages": 3,
+        "version": "bd9837581b13490cfd43cf5f",
+        "chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "chapter_title": "The Man Who Would Be King",
+            "chapter_order": 1,
+            "first_page_index": 1,
+            "last_page_index": 28
+          }
+        ]
+      },
+      "production_active_pointer": "NOT_OBSERVED_OR_CHANGED",
+      "authenticated_india_production_readback": "NOT_RUN",
+      "audio_enabled": false
+    },
+    {
+      "slug": "the-open-boat",
+      "chapter_count": 1,
+      "chapter_files_sha256": {
+        "chapter-001.json": "f07b6cae3f668eaa44c6f75238bd62344876077b930e3417693b8429da5a751f"
+      },
+      "retained_checksum_issues": [],
+      "sanitized_complete_text_parity": true,
+      "sanitizer_warnings": [],
+      "canonical_projection": {
+        "total_pages": 17,
+        "public_preview_pages": 3,
+        "version": "1d935fefdba1a1f82a6c6e1f",
+        "chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "chapter_title": "The Open Boat",
+            "chapter_order": 1,
+            "first_page_index": 1,
+            "last_page_index": 17
+          }
+        ]
+      },
+      "production_active_pointer": "NOT_OBSERVED_OR_CHANGED",
+      "authenticated_india_production_readback": "NOT_RUN",
+      "audio_enabled": false
+    },
+    {
+      "slug": "the-pit-and-the-pendulum",
+      "chapter_count": 1,
+      "chapter_files_sha256": {
+        "chapter-001.json": "747b573b44a98b8860668283c937f9ab2aa02c51ee98856a3644048f4ff11fbd"
+      },
+      "retained_checksum_issues": [],
+      "sanitized_complete_text_parity": true,
+      "sanitizer_warnings": [],
+      "canonical_projection": {
+        "total_pages": 13,
+        "public_preview_pages": 3,
+        "version": "5fe25f3e61d61cd01d4d4145",
+        "chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "chapter_title": "The Pit and the Pendulum",
+            "chapter_order": 1,
+            "first_page_index": 1,
+            "last_page_index": 13
+          }
+        ]
+      },
+      "production_active_pointer": "NOT_OBSERVED_OR_CHANGED",
+      "authenticated_india_production_readback": "NOT_RUN",
+      "audio_enabled": false
+    },
+    {
+      "slug": "the-stolen-white-elephant",
+      "chapter_count": 1,
+      "chapter_files_sha256": {
+        "chapter-001.json": "3c399adaaccaabceeef46222ac79c2428b6fbc2665f1fc4d7e28bfb074fb5b95"
+      },
+      "retained_checksum_issues": [],
+      "sanitized_complete_text_parity": true,
+      "sanitizer_warnings": [],
+      "canonical_projection": {
+        "total_pages": 13,
+        "public_preview_pages": 3,
+        "version": "572982f4a795aa094b73e210",
+        "chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "chapter_title": "The Stolen White Elephant",
+            "chapter_order": 1,
+            "first_page_index": 1,
+            "last_page_index": 13
+          }
+        ]
+      },
+      "production_active_pointer": "NOT_OBSERVED_OR_CHANGED",
+      "authenticated_india_production_readback": "NOT_RUN",
+      "audio_enabled": false
+    },
+    {
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "chapter_count": 1,
+      "chapter_files_sha256": {
+        "chapter-001.json": "426b65889907daa4afa0d1c7a0a888a9b332c9188b72ec4eeefa3731166c5e3b"
+      },
+      "retained_checksum_issues": [],
+      "sanitized_complete_text_parity": true,
+      "sanitizer_warnings": [],
+      "canonical_projection": {
+        "total_pages": 8,
+        "public_preview_pages": 3,
+        "version": "cfbda0827873b457a0cbda9f",
+        "chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "chapter_title": "An Occurrence at Owl Creek Bridge",
+            "chapter_order": 1,
+            "first_page_index": 1,
+            "last_page_index": 8
+          }
+        ]
+      },
+      "production_active_pointer": "NOT_OBSERVED_OR_CHANGED",
+      "authenticated_india_production_readback": "NOT_RUN",
+      "audio_enabled": false
+    },
+    {
+      "slug": "the-enchanted-april",
+      "chapter_count": 22,
+      "chapter_files_sha256": {
+        "chapter-001.json": "a5abf8f1897a155c8f51ceffa27b7b7602b894e4f21ab9f8886761bca2180517",
+        "chapter-002.json": "ddbc78fbf461f9fa5a940922548f1f2af2170a67190d2bb7ecd00e352dc19e79",
+        "chapter-003.json": "697c038108e506accb3e18d48cc81ecb6d537e91a5df534f4b8f3e68a3aa70dd",
+        "chapter-004.json": "26fa1809dfed1a8ea31652409fb0c042a286161ca369a90c6baad70d0a3028bc",
+        "chapter-005.json": "1a365f41d28aa356c0d5a2c414671ba74cdf3e0ad7cdfa10e8b69cc8903d6416",
+        "chapter-006.json": "eb15215323eac66fc99248a951ff3a5c6ac32b68d68bb18aa94cd66648e3d55a",
+        "chapter-007.json": "e4170cf938d4771695ab1bbe029c121b0e096f69b4257f11f523a8024549659a",
+        "chapter-008.json": "57cc35d0564ffb0e5766a91bba8a6852a52ab3a3252f367e41d78eca791d4b56",
+        "chapter-009.json": "a6d2e283626b0818a88bc31d9da7af95f068951f1572d908270e47f745333086",
+        "chapter-010.json": "98766dca9321daeec57c12b521f9adcbe527425ae94e50bbc734e481308d6253",
+        "chapter-011.json": "25569268b13c1b304b95d98bfae4e25c95e70210477597f6101be839d10e1ad0",
+        "chapter-012.json": "ec0db4e12a6f5213acb05d68ee3a442398244b7b660f3b88253c639a9a74453e",
+        "chapter-013.json": "099b869c64f13b22e5e4f816508602842ba71f06b102f2bd70f1564fcd84349b",
+        "chapter-014.json": "b313227cd3e9f011dd8aa17cfe9943f845a64302c60fad1a2b94e6c4d6959f0d",
+        "chapter-015.json": "a2b71f2cf5413341a6adcf5f48a9c94a102c373d45902a3a26e5fef42e8003f3",
+        "chapter-016.json": "510ae3811320820412d666ef573b1b094290d2b4bf454a4fb1c1395d8a583acb",
+        "chapter-017.json": "064297c04d7d3542fddbebd131c0776926e54d1b6a00f049389ad8da6cb022f0",
+        "chapter-018.json": "252d383f190da71e8e3ae9ee9faadb7ec508bdae13601594113b0caf056c9c4b",
+        "chapter-019.json": "3238e037d0b96f0f3ac1751c53eb7ca484526ea1228c0711466126455c3d3f21",
+        "chapter-020.json": "c653c2e1d9857f1e4d6175c6194f93fa02d90a9e73c09cfff0081da90789dd51",
+        "chapter-021.json": "45c29e3980041e171f60bf86552d52f94b59e1792a48dc39b307818aff71e08b",
+        "chapter-022.json": "c7685ce921efa52dd2425812958614458f56bdd55742078565054dfd68a2a659"
+      },
+      "retained_checksum_issues": [],
+      "sanitized_complete_text_parity": true,
+      "sanitizer_warnings": [],
+      "canonical_projection": {
+        "total_pages": 157,
+        "public_preview_pages": 3,
+        "version": "ed0d84de0e1e46692b72f1ff",
+        "chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "chapter_title": "Chapter 1",
+            "chapter_order": 1,
+            "first_page_index": 1,
+            "last_page_index": 10
+          },
+          {
+            "chapter_id": "chapter-002",
+            "chapter_title": "Chapter 2",
+            "chapter_order": 2,
+            "first_page_index": 11,
+            "last_page_index": 15
+          },
+          {
+            "chapter_id": "chapter-003",
+            "chapter_title": "Chapter 3",
+            "chapter_order": 3,
+            "first_page_index": 16,
+            "last_page_index": 22
+          },
+          {
+            "chapter_id": "chapter-004",
+            "chapter_title": "Chapter 4",
+            "chapter_order": 4,
+            "first_page_index": 23,
+            "last_page_index": 26
+          },
+          {
+            "chapter_id": "chapter-005",
+            "chapter_title": "Chapter 5",
+            "chapter_order": 5,
+            "first_page_index": 27,
+            "last_page_index": 32
+          },
+          {
+            "chapter_id": "chapter-006",
+            "chapter_title": "Chapter 6",
+            "chapter_order": 6,
+            "first_page_index": 33,
+            "last_page_index": 41
+          },
+          {
+            "chapter_id": "chapter-007",
+            "chapter_title": "Chapter 7",
+            "chapter_order": 7,
+            "first_page_index": 42,
+            "last_page_index": 46
+          },
+          {
+            "chapter_id": "chapter-008",
+            "chapter_title": "Chapter 8",
+            "chapter_order": 8,
+            "first_page_index": 47,
+            "last_page_index": 56
+          },
+          {
+            "chapter_id": "chapter-009",
+            "chapter_title": "Chapter 9",
+            "chapter_order": 9,
+            "first_page_index": 57,
+            "last_page_index": 63
+          },
+          {
+            "chapter_id": "chapter-010",
+            "chapter_title": "Chapter 10",
+            "chapter_order": 10,
+            "first_page_index": 64,
+            "last_page_index": 70
+          },
+          {
+            "chapter_id": "chapter-011",
+            "chapter_title": "Chapter 11",
+            "chapter_order": 11,
+            "first_page_index": 71,
+            "last_page_index": 76
+          },
+          {
+            "chapter_id": "chapter-012",
+            "chapter_title": "Chapter 12",
+            "chapter_order": 12,
+            "first_page_index": 77,
+            "last_page_index": 85
+          },
+          {
+            "chapter_id": "chapter-013",
+            "chapter_title": "Chapter 13",
+            "chapter_order": 13,
+            "first_page_index": 86,
+            "last_page_index": 96
+          },
+          {
+            "chapter_id": "chapter-014",
+            "chapter_title": "Chapter 14",
+            "chapter_order": 14,
+            "first_page_index": 97,
+            "last_page_index": 104
+          },
+          {
+            "chapter_id": "chapter-015",
+            "chapter_title": "Chapter 15",
+            "chapter_order": 15,
+            "first_page_index": 105,
+            "last_page_index": 112
+          },
+          {
+            "chapter_id": "chapter-016",
+            "chapter_title": "Chapter 16",
+            "chapter_order": 16,
+            "first_page_index": 113,
+            "last_page_index": 120
+          },
+          {
+            "chapter_id": "chapter-017",
+            "chapter_title": "Chapter 17",
+            "chapter_order": 17,
+            "first_page_index": 121,
+            "last_page_index": 126
+          },
+          {
+            "chapter_id": "chapter-018",
+            "chapter_title": "Chapter 18",
+            "chapter_order": 18,
+            "first_page_index": 127,
+            "last_page_index": 133
+          },
+          {
+            "chapter_id": "chapter-019",
+            "chapter_title": "Chapter 19",
+            "chapter_order": 19,
+            "first_page_index": 134,
+            "last_page_index": 140
+          },
+          {
+            "chapter_id": "chapter-020",
+            "chapter_title": "Chapter 20",
+            "chapter_order": 20,
+            "first_page_index": 141,
+            "last_page_index": 144
+          },
+          {
+            "chapter_id": "chapter-021",
+            "chapter_title": "Chapter 21",
+            "chapter_order": 21,
+            "first_page_index": 145,
+            "last_page_index": 150
+          },
+          {
+            "chapter_id": "chapter-022",
+            "chapter_title": "Chapter 22",
+            "chapter_order": 22,
+            "first_page_index": 151,
+            "last_page_index": 157
+          }
+        ]
+      },
+      "production_active_pointer": "NOT_OBSERVED_OR_CHANGED",
+      "authenticated_india_production_readback": "NOT_RUN",
+      "audio_enabled": false
+    },
+    {
+      "slug": "the-happy-prince",
+      "chapter_count": 1,
+      "chapter_files_sha256": {
+        "chapter-001.json": "1102f2638f209d7881c6ed3f7b88eb9ca5fb7e2740ac32cdb45ce291069e9ae7"
+      },
+      "retained_checksum_issues": [],
+      "sanitized_complete_text_parity": true,
+      "sanitizer_warnings": [],
+      "canonical_projection": {
+        "total_pages": 6,
+        "public_preview_pages": 3,
+        "version": "fb0804a1c3f642de3986b78e",
+        "chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "chapter_title": "The Happy Prince",
+            "chapter_order": 1,
+            "first_page_index": 1,
+            "last_page_index": 6
+          }
+        ]
+      },
+      "production_active_pointer": "NOT_OBSERVED_OR_CHANGED",
+      "authenticated_india_production_readback": "NOT_RUN",
+      "audio_enabled": false
+    },
+    {
+      "slug": "picture-of-dorian-gray",
+      "chapter_count": 21,
+      "chapter_files_sha256": {
+        "chapter-001.json": "7a9c793f018bb3531b5627d749d155dd56d85310f72a82a454e7ef06396f5f2f",
+        "chapter-002.json": "48a907f317ee1f7abad4ad0cc4bd1baeecd67321e12c3e01c2b9986bd4f31134",
+        "chapter-003.json": "a6d7a978e502ef9054e0120504ac13f8503307de8b1996535bdd936503f2380a",
+        "chapter-004.json": "ac8d66268d28eb2e5753f025e430a4aa37892f1375b0128391839e188a946e69",
+        "chapter-005.json": "1d95231b52a887b77fbaafc335ed0d13a54c0fd1c483c872a40f1c3c119e9290",
+        "chapter-006.json": "d44bc264b7eff0ed411c1e1fef8f70d3857d20e3945e0f40470d7405db192932",
+        "chapter-007.json": "fa23c5cb28a83364fe9a9bddd8f104634fd70735dc2192b6fc262f1ee6b81d4b",
+        "chapter-008.json": "b0d7ddab6648672bba283cc7379a52804644a87ca64ea74099c1d30ca1c3fb6b",
+        "chapter-009.json": "ee136dfd3291c8169faa772b6cd29006d7e0d6c5c6b5d63680b8d1e3cabb8c73",
+        "chapter-010.json": "d39e9e8782778e4277c6968ec6ebaf4fe1eea61417bde649459f3d6eef7c8d61",
+        "chapter-011.json": "0002b78c4b90fe0936fed08217ce163d7b30a5753eac3e59ff3f55585e720c9d",
+        "chapter-012.json": "78bc698d2a28afd81cf37d9c8326457b1681e0ff123282ba24dd67a2a8e3dda9",
+        "chapter-013.json": "6c4af018541da8c3de794ab2e6845858079f6a4bc37a078d71b0e51dc53ec90f",
+        "chapter-014.json": "955f94129de74693a1b112bb913695c5d53afa8be60bc796f1fdbd25f740cfd1",
+        "chapter-015.json": "1c1da1141ede4201a4eba69447cb92d79e4c5d8eda0a8365922d9d6e1193d82b",
+        "chapter-016.json": "7e02c5a49740d0c65060ca747085657f3f974b41ffa19afcc93d0fa6c4d95af5",
+        "chapter-017.json": "a73d0fecb63755956d15522f5c4802dc1fd3bf24088057c62fa65caa26455b8c",
+        "chapter-018.json": "c31dc13b6e6eb2889dbe9f42c2c0367a99b47c8171b50657cf1f7b6baefca41c",
+        "chapter-019.json": "da38299f139b8654812de331af035f62ce3cf91caa09a0c20439cf69c0ec5f98",
+        "chapter-020.json": "f98dc79541d626ab9e46e22e9197b6b2853dc76d3e6371051f9246c92f3c47b7",
+        "chapter-021.json": "56808ecf91437ecb439b9e1cad4222e600839fc8c6a4ab03ccd3d65efa7cf376"
+      },
+      "retained_checksum_issues": [],
+      "sanitized_complete_text_parity": true,
+      "sanitizer_warnings": [],
+      "canonical_projection": {
+        "total_pages": 161,
+        "public_preview_pages": 3,
+        "version": "9f091c784cd7a74da18cf7c5",
+        "chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "chapter_title": "THE PREFACE",
+            "chapter_order": 1,
+            "first_page_index": 1,
+            "last_page_index": 1
+          },
+          {
+            "chapter_id": "chapter-002",
+            "chapter_title": "CHAPTER I.",
+            "chapter_order": 2,
+            "first_page_index": 2,
+            "last_page_index": 11
+          },
+          {
+            "chapter_id": "chapter-003",
+            "chapter_title": "CHAPTER II.",
+            "chapter_order": 3,
+            "first_page_index": 12,
+            "last_page_index": 22
+          },
+          {
+            "chapter_id": "chapter-004",
+            "chapter_title": "CHAPTER III.",
+            "chapter_order": 4,
+            "first_page_index": 23,
+            "last_page_index": 31
+          },
+          {
+            "chapter_id": "chapter-005",
+            "chapter_title": "CHAPTER IV.",
+            "chapter_order": 5,
+            "first_page_index": 32,
+            "last_page_index": 42
+          },
+          {
+            "chapter_id": "chapter-006",
+            "chapter_title": "CHAPTER V.",
+            "chapter_order": 6,
+            "first_page_index": 43,
+            "last_page_index": 50
+          },
+          {
+            "chapter_id": "chapter-007",
+            "chapter_title": "CHAPTER VI.",
+            "chapter_order": 7,
+            "first_page_index": 51,
+            "last_page_index": 56
+          },
+          {
+            "chapter_id": "chapter-008",
+            "chapter_title": "CHAPTER VII.",
+            "chapter_order": 8,
+            "first_page_index": 57,
+            "last_page_index": 65
+          },
+          {
+            "chapter_id": "chapter-009",
+            "chapter_title": "CHAPTER VIII.",
+            "chapter_order": 9,
+            "first_page_index": 66,
+            "last_page_index": 75
+          },
+          {
+            "chapter_id": "chapter-010",
+            "chapter_title": "CHAPTER IX.",
+            "chapter_order": 10,
+            "first_page_index": 76,
+            "last_page_index": 84
+          },
+          {
+            "chapter_id": "chapter-011",
+            "chapter_title": "CHAPTER X.",
+            "chapter_order": 11,
+            "first_page_index": 85,
+            "last_page_index": 90
+          },
+          {
+            "chapter_id": "chapter-012",
+            "chapter_title": "CHAPTER XI.",
+            "chapter_order": 12,
+            "first_page_index": 91,
+            "last_page_index": 106
+          },
+          {
+            "chapter_id": "chapter-013",
+            "chapter_title": "CHAPTER XII.",
+            "chapter_order": 13,
+            "first_page_index": 107,
+            "last_page_index": 112
+          },
+          {
+            "chapter_id": "chapter-014",
+            "chapter_title": "CHAPTER XIII.",
+            "chapter_order": 14,
+            "first_page_index": 113,
+            "last_page_index": 117
+          },
+          {
+            "chapter_id": "chapter-015",
+            "chapter_title": "CHAPTER XIV.",
+            "chapter_order": 15,
+            "first_page_index": 118,
+            "last_page_index": 127
+          },
+          {
+            "chapter_id": "chapter-016",
+            "chapter_title": "CHAPTER XV.",
+            "chapter_order": 16,
+            "first_page_index": 128,
+            "last_page_index": 133
+          },
+          {
+            "chapter_id": "chapter-017",
+            "chapter_title": "CHAPTER XVI.",
+            "chapter_order": 17,
+            "first_page_index": 134,
+            "last_page_index": 139
+          },
+          {
+            "chapter_id": "chapter-018",
+            "chapter_title": "CHAPTER XVII.",
+            "chapter_order": 18,
+            "first_page_index": 140,
+            "last_page_index": 143
+          },
+          {
+            "chapter_id": "chapter-019",
+            "chapter_title": "CHAPTER XVIII.",
+            "chapter_order": 19,
+            "first_page_index": 144,
+            "last_page_index": 149
+          },
+          {
+            "chapter_id": "chapter-020",
+            "chapter_title": "CHAPTER XIX.",
+            "chapter_order": 20,
+            "first_page_index": 150,
+            "last_page_index": 157
+          },
+          {
+            "chapter_id": "chapter-021",
+            "chapter_title": "CHAPTER XX.",
+            "chapter_order": 21,
+            "first_page_index": 158,
+            "last_page_index": 161
+          }
+        ]
+      },
+      "production_active_pointer": "NOT_OBSERVED_OR_CHANGED",
+      "authenticated_india_production_readback": "NOT_RUN",
+      "audio_enabled": false
+    }
+  ],
+  "production_readback": "NOT_RUN",
+  "canonical_activation": "NOT_PERFORMED"
+}

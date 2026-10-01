@@ -1,0 +1,1190 @@
+{
+  "schema": "earnalism.near-ready-component-review.v1",
+  "checked_at": "2026-10-01T05:24:02.900009+00:00",
+  "review_actor": "Codex under the owner-delegated release authority; no independent lawyer, separate owner hash inspection, or authenticated production observation claimed.",
+  "legal_primary_sources": [
+    {
+      "url": "https://copyright.gov.in/Documents/Public_Notice_inviting_reviews_and_comments_of_stakeholders_on_draft_guidelines/Artistic_Works.pdf",
+      "retrieval": "Official Copyright Office indexed extract of section 22 obtained 2026-10-01; direct PDF fetch failed. No claim of a newly downloaded full Act."
+    },
+    {
+      "url": "https://www.gutenberg.org/policy/license.html",
+      "retrieval": "Primary source policy inspected; U.S. source statement alone does not grant India rights. Selected public-domain literary text and repository name/license removal are separately evidenced."
+    },
+    {
+      "url": "https://dejavu-fonts.github.io/License.html",
+      "retrieval": "Primary DejaVu font permission text inspected; this supports a generator option only. The precise historical system font was not recorded, and font software is not redistributed in raster images."
+    }
+  ],
+  "titles": [
+    {
+      "slug": "a-horseman-in-the-sky",
+      "title": "A Horseman in the Sky",
+      "author": "Ambrose Bierce",
+      "checked_at": "2026-10-01T05:24:02.900009+00:00",
+      "pre_release_package": "data/controlled_publications/a-horseman-in-the-sky",
+      "pre_release_files": {
+        "approval_evidence.json": "11791436f943e5791b7efca9279a53679162c97f17e56f7a7697b202a251ba59",
+        "chapters/chapter-001.json": "528d930f6fcfc8f6a7ec80011ca49a3e67eca6f819190292d5cf3b2a8815cea4",
+        "checksum_manifest.json": "12929c23cc6ee9b3b41619faa5b4ea4f25bff9542a10955765f0fc81a212549e",
+        "highlight_sync.json": "05b546dff59917be0427fcd086f35b7f9027dd217d00e7e43999d2e2f8696426",
+        "public_book.json": "a71a3be63c1b726178143ca04a198b22e83f4982487cbb13685991f4edeb14b8",
+        "reader_manifest.json": "fcf6313edcaaac648fbc96dcb446bca87b5c5a79118606e3556905d681406748",
+        "source_evidence.json": "3ff8648598f3766ad11fd1df4f0b6d63f71d2f4061ca95bfbc6caf124574af3c"
+      },
+      "source_url": "https://www.gutenberg.org/ebooks/5661",
+      "author_death_year": 1914,
+      "original_publication_year": 1889,
+      "jurisdiction": "IN",
+      "text_basis": "Original literary text published during the author’s lifetime; India Copyright Act 1957 section 22, life plus 60 years, assessed separately from repository U.S. notices.",
+      "source_layer": "Selected original text only, with repository boilerplate, protected modern editorial matter, illustrations and collection framing excluded; existing chapter/source repair proofs preserved.",
+      "source_hash": "80fcddf28824332d64cd71c5715a34fe73be1c4c51959edb7e6a6513338afaa7",
+      "content_hash": "3f89be2c6d914ead58cb73bf95c7912f9061c0552efb0c3c1d4fbc34946752bf",
+      "provenance_hash": "d6b045255992fbb0ad9ef6b59c3017dc1211c4cd52a5ef1eb7b576ddeb7f658e",
+      "chapter_count": 1,
+      "chapter_file_sha256": {
+        "chapter-001.json": "528d930f6fcfc8f6a7ec80011ca49a3e67eca6f819190292d5cf3b2a8815cea4"
+      },
+      "reader_QA": "Unchanged merged-main source/boundary regressions: 44 passed. Fresh retained-checksum, complete sanitized text parity and offline canonical page projection checks passed for all 66 chapters; see reader_QA.json. Offline proof does not assert a production active version or authenticated observation.",
+      "owner_manual_observation_waiver": "Issue #477 conditional waiver applies to exact independently complete and integrity-clean sources; does not convert unobserved production facts into observations.",
+      "editorial_additions": "No third-party modern introduction, notes, anthology layout, illustrations or author portrait is included in the delivered chapters. Original author preface and chapter prose are retained where applicable.",
+      "metadata_basis": "Existing title/author facts and original Earnalism descriptions; metadata source and exact bytes retained in the reviewed package.",
+      "audio": "Not accepted or activated by this decision.",
+      "author_date_qualification": "Primary Project Gutenberg and Library of Congress authority records label 1842–1914?; 1914 is the standard presumed date, not a certified exact death date. This qualification is retained in the review rather than represented as a witnessed fact.",
+      "cover": {
+        "basis": "Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art.",
+        "audit_path": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json",
+        "audit_sha256": "8b024fad4e023f74612ebb4925218f4a2acac65d33e1a255662157ebdd40e2d7",
+        "generator": "scripts/render_english_25_missing_covers.py",
+        "generator_sha256": "82a8c078f8c855deac50aa6f8af6cfc78f6c152af7578e6ae0f88e1a0063f354",
+        "font_source": "Original first-party programmatic composition with rasterized system typography, as evidenced by the retained generator and exact asset audit. The historical font selected from Georgia, Times New Roman or DejaVu was not recorded; no claim that a current Linux rerender identifies the historical font. No font software is distributed. DejaVu permission reference documents only that generator option, not an asserted identification of the existing font.",
+        "font_license_url": "https://dejavu-fonts.github.io/License.html",
+        "assistant_visual_review": "Actual retained front and back images inspected in the 2026-10-01 review; readable exact title and author, no third-party logo, image, character portrait or clipped text observed. No independent human review claimed.",
+        "assets": {
+          "front": {
+            "path": "frontend/public/assets/books/a-horseman-in-the-sky/front-cover.webp",
+            "sha256": "b9fb8340aa519d19a32fefc276a26c72ba102f700e9dc9f643fb537f41526ff2",
+            "bytes": 19374,
+            "url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          },
+          "back": {
+            "path": "frontend/public/assets/books/a-horseman-in-the-sky/back-cover.webp",
+            "sha256": "6e55ee7d626fbc330b205a88d8728e456eaeeffd988ecef45022342139008cca",
+            "bytes": 22202,
+            "url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/back-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "a-mystery-of-heroism",
+      "title": "A Mystery of Heroism",
+      "author": "Stephen Crane",
+      "checked_at": "2026-10-01T05:24:02.900009+00:00",
+      "pre_release_package": "backend/data/controlled_publications/a-mystery-of-heroism",
+      "pre_release_files": {
+        "approval_evidence.json": "c33d7c7868c0ffc377b53be1fa5c20809b89bb71a9df946bb9632754f6ad81f2",
+        "chapters/chapter-001.json": "f15462ba0fcb637d96290a4e04e9305a9ad8df6a343a0b4eab8be0be2572f6e4",
+        "checksum_manifest.json": "f4162f08a3ebca2d7a3d48c3df5dd18538acb87dda9d8395a685ce8d5976e4cf",
+        "highlight_sync.json": "b49a1d12daf952d41f2ca24d495a70c2e57573c4e4b64fa9c399af58202dfefe",
+        "public_book.json": "0d26d045211e73777cf38fa06d0539771f33fcc3f4e4a56bb52d712820109f1e",
+        "reader_manifest.json": "e4378fc2bfbadb9fe9277ff2edab1069c1c2bc398b3dc1baf5d1aefbd8b2b367",
+        "source_evidence.json": "d1c48bae0ce3d6f3061cd549883de5b825187ef68852698f57e8677e025125de"
+      },
+      "source_url": "https://www.gutenberg.org/ebooks/6979",
+      "author_death_year": 1900,
+      "original_publication_year": 1895,
+      "jurisdiction": "IN",
+      "text_basis": "Original literary text published during the author’s lifetime; India Copyright Act 1957 section 22, life plus 60 years, assessed separately from repository U.S. notices.",
+      "source_layer": "Selected original text only, with repository boilerplate, protected modern editorial matter, illustrations and collection framing excluded; existing chapter/source repair proofs preserved.",
+      "source_hash": "f7dbf9d8194ae1cabc49bad7598b01e1094baae7fdbd294bf14369c0e822eccc",
+      "content_hash": "d17b7158385cf5f47704692be63189043372b91a143c9e02485d8b9cfe4e00fb",
+      "provenance_hash": "6e615167cdd7ffb8dc6a8d743a34f8b9184f80e8527ccf6e4b1f13d91c1f3628",
+      "chapter_count": 1,
+      "chapter_file_sha256": {
+        "chapter-001.json": "f15462ba0fcb637d96290a4e04e9305a9ad8df6a343a0b4eab8be0be2572f6e4"
+      },
+      "reader_QA": "Unchanged merged-main source/boundary regressions: 44 passed. Fresh retained-checksum, complete sanitized text parity and offline canonical page projection checks passed for all 66 chapters; see reader_QA.json. Offline proof does not assert a production active version or authenticated observation.",
+      "owner_manual_observation_waiver": "Issue #477 conditional waiver applies to exact independently complete and integrity-clean sources; does not convert unobserved production facts into observations.",
+      "editorial_additions": "No third-party modern introduction, notes, anthology layout, illustrations or author portrait is included in the delivered chapters. Original author preface and chapter prose are retained where applicable.",
+      "metadata_basis": "Existing title/author facts and original Earnalism descriptions; metadata source and exact bytes retained in the reviewed package.",
+      "audio": "Not accepted or activated by this decision.",
+      "cover": {
+        "basis": "Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art.",
+        "audit_path": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json",
+        "audit_sha256": "8b024fad4e023f74612ebb4925218f4a2acac65d33e1a255662157ebdd40e2d7",
+        "generator": "scripts/render_english_25_missing_covers.py",
+        "generator_sha256": "82a8c078f8c855deac50aa6f8af6cfc78f6c152af7578e6ae0f88e1a0063f354",
+        "font_source": "Original first-party programmatic composition with rasterized system typography, as evidenced by the retained generator and exact asset audit. The historical font selected from Georgia, Times New Roman or DejaVu was not recorded; no claim that a current Linux rerender identifies the historical font. No font software is distributed. DejaVu permission reference documents only that generator option, not an asserted identification of the existing font.",
+        "font_license_url": "https://dejavu-fonts.github.io/License.html",
+        "assistant_visual_review": "Actual retained front and back images inspected in the 2026-10-01 review; readable exact title and author, no third-party logo, image, character portrait or clipped text observed. No independent human review claimed.",
+        "assets": {
+          "front": {
+            "path": "frontend/public/assets/books/a-mystery-of-heroism/front-cover.webp",
+            "sha256": "05dc95c5fb886dce25bc6f0422074c0d0e99879af999e592392800af5d157036",
+            "bytes": 17768,
+            "url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/front-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          },
+          "back": {
+            "path": "frontend/public/assets/books/a-mystery-of-heroism/back-cover.webp",
+            "sha256": "39b2f0614d3b4304ed1bea68056d4b19320997a2c26711a893418323ec70ac29",
+            "bytes": 21818,
+            "url": "https://theearnalism.com/assets/books/a-mystery-of-heroism/back-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "a-scandal-in-bohemia",
+      "title": "A Scandal in Bohemia",
+      "author": "Arthur Conan Doyle",
+      "checked_at": "2026-10-01T05:24:02.900009+00:00",
+      "pre_release_package": "backend/data/controlled_publications/a-scandal-in-bohemia",
+      "pre_release_files": {
+        "approval_evidence.json": "c44e53fd7116ac72e1ad639a90ba9d9d7420dbcefacb125ef41cb797b8610347",
+        "chapters/chapter-001.json": "efd315eb11fceeab3dba24c4ef4b5152496dd9e57033669908ba9b7ae54532ea",
+        "checksum_manifest.json": "6aa9e7d1881957f3d9c3af8092fcd1a573f677682bbc8306f04c0eaab9989e7d",
+        "highlight_sync.json": "c9fbef7081737ec06550b2e514632886918c3dd1181fddd072c8b61296679c6a",
+        "public_book.json": "5b5203f14999e53a380545a75464f76a52f3f3499a883fe285f2b580c43c9612",
+        "reader_manifest.json": "08be9023532b392a948c29ac4725a7a46a9fb1641ed78b9c438e0d5da08222d8",
+        "source_evidence.json": "0302b427ea3695a9ee06d524823239bdc8ff3021b8582b3acbc4340febbd81a9"
+      },
+      "source_url": "https://www.gutenberg.org/ebooks/1661",
+      "author_death_year": 1930,
+      "original_publication_year": 1891,
+      "jurisdiction": "IN",
+      "text_basis": "Original literary text published during the author’s lifetime; India Copyright Act 1957 section 22, life plus 60 years, assessed separately from repository U.S. notices.",
+      "source_layer": "Selected original text only, with repository boilerplate, protected modern editorial matter, illustrations and collection framing excluded; existing chapter/source repair proofs preserved.",
+      "source_hash": "c8a8c8bd954f303cb9a2ebdbb67935fe88c9b623afa510883e23dfc86026212c",
+      "content_hash": "ca95b6c1af79a8239e6641235f78ae0e31b5dd535800f76950b4f144650f0f0f",
+      "provenance_hash": "e3212953ceb32e1d32ebdb6e596b4851485edd17c7c6a944430b9c8c8fe34267",
+      "chapter_count": 1,
+      "chapter_file_sha256": {
+        "chapter-001.json": "efd315eb11fceeab3dba24c4ef4b5152496dd9e57033669908ba9b7ae54532ea"
+      },
+      "reader_QA": "Unchanged merged-main source/boundary regressions: 44 passed. Fresh retained-checksum, complete sanitized text parity and offline canonical page projection checks passed for all 66 chapters; see reader_QA.json. Offline proof does not assert a production active version or authenticated observation.",
+      "owner_manual_observation_waiver": "Issue #477 conditional waiver applies to exact independently complete and integrity-clean sources; does not convert unobserved production facts into observations.",
+      "editorial_additions": "No third-party modern introduction, notes, anthology layout, illustrations or author portrait is included in the delivered chapters. Original author preface and chapter prose are retained where applicable.",
+      "metadata_basis": "Existing title/author facts and original Earnalism descriptions; metadata source and exact bytes retained in the reviewed package.",
+      "audio": "Not accepted or activated by this decision.",
+      "cover": {
+        "basis": "Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art.",
+        "audit_path": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json",
+        "audit_sha256": "8b024fad4e023f74612ebb4925218f4a2acac65d33e1a255662157ebdd40e2d7",
+        "generator": "scripts/render_english_25_missing_covers.py",
+        "generator_sha256": "82a8c078f8c855deac50aa6f8af6cfc78f6c152af7578e6ae0f88e1a0063f354",
+        "font_source": "Original first-party programmatic composition with rasterized system typography, as evidenced by the retained generator and exact asset audit. The historical font selected from Georgia, Times New Roman or DejaVu was not recorded; no claim that a current Linux rerender identifies the historical font. No font software is distributed. DejaVu permission reference documents only that generator option, not an asserted identification of the existing font.",
+        "font_license_url": "https://dejavu-fonts.github.io/License.html",
+        "assistant_visual_review": "Actual retained front and back images inspected in the 2026-10-01 review; readable exact title and author, no third-party logo, image, character portrait or clipped text observed. No independent human review claimed.",
+        "assets": {
+          "front": {
+            "path": "frontend/public/assets/books/a-scandal-in-bohemia/front-cover.webp",
+            "sha256": "fdaa99cef5754917ec758b27d92fcad1d5cda431037a4d3008987d36d4a78fad",
+            "bytes": 19456,
+            "url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          },
+          "back": {
+            "path": "frontend/public/assets/books/a-scandal-in-bohemia/back-cover.webp",
+            "sha256": "98d7d85802e02275a9bbb9bd4cd1844e1e956af310003970272375452621a8b7",
+            "bytes": 21384,
+            "url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/back-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "jekyll-and-hyde",
+      "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+      "author": "Robert Louis Stevenson",
+      "checked_at": "2026-10-01T05:24:02.900009+00:00",
+      "pre_release_package": "backend/data/controlled_publications/jekyll-and-hyde",
+      "pre_release_files": {
+        "approval_evidence.json": "d17ded6fd9f29b76e4c3598b2118dd6d912728c8710435a6c85e4bbcfb401359",
+        "chapters/chapter-001.json": "6741a99c2a840b45efea63acb2a17363b72daafc7ef8ad44dc469a68a1d662f3",
+        "chapters/chapter-002.json": "7a103a9b1585d21216f12bc6de55d47dd7ebf58d02e3b79423f48adb97478f52",
+        "chapters/chapter-003.json": "706eb38f1f5f89847b3f6e08ade3813100f98fa7071a5b22fdd358adc4141c0f",
+        "chapters/chapter-004.json": "2cf722f845ea29aa19a75999dac2f9127fe304e8089c367511e6a0a576c89c4a",
+        "chapters/chapter-005.json": "fb2746809d935be3e75c41380f8832bf0e3e50bf95e3f6b9675d1db06c5f37b4",
+        "chapters/chapter-006.json": "e628e8a18477700ff96312bcc066a5ff7d2f38d61520591098ed6e70b6595f29",
+        "chapters/chapter-007.json": "4f19b8a4be9c6c34a8a010177ffdcad1db773054907a8ba44049b0f7f47be92a",
+        "chapters/chapter-008.json": "de304ed5e7dd006aba2791fa9db35f3817e82d1ad6ac896df24c646d07e7c2f4",
+        "chapters/chapter-009.json": "3bd5dfd710ef08e09c07d816b295ad9a2b86799077f343295f1aa615c84a3f35",
+        "chapters/chapter-010.json": "aec99585a0a0705f25255d8560da47ee7af382755cea957ff03d65896b98ddf9",
+        "checksum_manifest.json": "a514ce9278b7046c3a883f66b1231023d4723b8f56334adcea57a5f38c9c0a10",
+        "cover_approval_evidence.json": "7ff51145b7bb97f64b6f01ddb84d3c75188c15b76ceec3aa8fa9af2dd01782f9",
+        "highlight_sync.json": "2881cb072840555624004936e5b3fef9810a5d44cfa9d5657c76f812b01f03cd",
+        "public_book.json": "01c3a333da4712bc8041e8eb16338e5d37dd581dcf9f2ab2a92b56321f42f91a",
+        "reader_manifest.json": "c3fff66ff02d37c3fa727c1c2f17a36ace48c1f1368ff3cb5ee69eebcec2a032",
+        "reader_release_approval.json": "8ae3d17e5314fe0a58d6e85d89c4ba0593e795e6fcc20e583d4d3c456d85a18b",
+        "source_evidence.json": "88d44198ddc62c022897e594901d7f06fd9c4f93a286b29b4b304e46724df644"
+      },
+      "source_url": "https://www.gutenberg.org/ebooks/43",
+      "author_death_year": 1894,
+      "original_publication_year": 1886,
+      "jurisdiction": "IN",
+      "text_basis": "Original literary text published during the author’s lifetime; India Copyright Act 1957 section 22, life plus 60 years, assessed separately from repository U.S. notices.",
+      "source_layer": "Selected original text only, with repository boilerplate, protected modern editorial matter, illustrations and collection framing excluded; existing chapter/source repair proofs preserved.",
+      "source_hash": "7e19df634b5db327f75392f934268bc232179bd17c44e52fc399b640a0375958",
+      "content_hash": "9b1ab2987886368c4dae32d7fd1c12da9bccb91d74425eccda60333ddfbb5acb",
+      "provenance_hash": "de1aa5ced7ff6d5fe9506a384df73f5d96a5b0999b03edbf60f1cd273fe3da1a",
+      "chapter_count": 10,
+      "chapter_file_sha256": {
+        "chapter-001.json": "6741a99c2a840b45efea63acb2a17363b72daafc7ef8ad44dc469a68a1d662f3",
+        "chapter-002.json": "7a103a9b1585d21216f12bc6de55d47dd7ebf58d02e3b79423f48adb97478f52",
+        "chapter-003.json": "706eb38f1f5f89847b3f6e08ade3813100f98fa7071a5b22fdd358adc4141c0f",
+        "chapter-004.json": "2cf722f845ea29aa19a75999dac2f9127fe304e8089c367511e6a0a576c89c4a",
+        "chapter-005.json": "fb2746809d935be3e75c41380f8832bf0e3e50bf95e3f6b9675d1db06c5f37b4",
+        "chapter-006.json": "e628e8a18477700ff96312bcc066a5ff7d2f38d61520591098ed6e70b6595f29",
+        "chapter-007.json": "4f19b8a4be9c6c34a8a010177ffdcad1db773054907a8ba44049b0f7f47be92a",
+        "chapter-008.json": "de304ed5e7dd006aba2791fa9db35f3817e82d1ad6ac896df24c646d07e7c2f4",
+        "chapter-009.json": "3bd5dfd710ef08e09c07d816b295ad9a2b86799077f343295f1aa615c84a3f35",
+        "chapter-010.json": "aec99585a0a0705f25255d8560da47ee7af382755cea957ff03d65896b98ddf9"
+      },
+      "reader_QA": "Unchanged merged-main source/boundary regressions: 44 passed. Fresh retained-checksum, complete sanitized text parity and offline canonical page projection checks passed for all 66 chapters; see reader_QA.json. Offline proof does not assert a production active version or authenticated observation.",
+      "owner_manual_observation_waiver": "Issue #477 conditional waiver applies to exact independently complete and integrity-clean sources; does not convert unobserved production facts into observations.",
+      "editorial_additions": "No third-party modern introduction, notes, anthology layout, illustrations or author portrait is included in the delivered chapters. Original author preface and chapter prose are retained where applicable.",
+      "metadata_basis": "Existing title/author facts and original Earnalism descriptions; metadata source and exact bytes retained in the reviewed package.",
+      "audio": "Not accepted or activated by this decision.",
+      "cover": {
+        "basis": "Existing exact first-party programmatic cover approval and remote-hash verification record retained without changing either approved asset.",
+        "cover_approval_evidence_sha256": "7ff51145b7bb97f64b6f01ddb84d3c75188c15b76ceec3aa8fa9af2dd01782f9",
+        "cover_approval_record": "cover_approval_evidence.json",
+        "review_attribution": "Existing recorded owner approval and source code/provenance; no fresh live CDN observation claimed."
+      }
+    },
+    {
+      "slug": "love-of-life",
+      "title": "Love of Life",
+      "author": "Jack London",
+      "checked_at": "2026-10-01T05:24:02.900009+00:00",
+      "pre_release_package": "backend/data/controlled_publications/love-of-life",
+      "pre_release_files": {
+        "approval_evidence.json": "b36aada3baa735af83d16d451861db2f4f653f09054c71cf889e617b4c3443a5",
+        "chapters/chapter-001.json": "32357fa06aac2676c3785ef87070da3f2c7764ba58057b116c7de57d9b1d6a50",
+        "checksum_manifest.json": "8ed97f4b2c04c6aae6a523811cc60a1d79fd7e665e1f024660659bc78f4df34d",
+        "highlight_sync.json": "6cdff919147dca828590aaf05aafe87f575c960145487dfb112c7d946d202d72",
+        "public_book.json": "42e9dbf3520d002a283b9e914b0b2bd53512770d734c45aca59d104c17af9ae0",
+        "reader_manifest.json": "8c455a99667a07a8402d409efc76ea9f7a2fcf603bba6f6409dd749b699b1c57",
+        "source_evidence.json": "2d0fa5ed6528d05841da0e262170b789178070fb6160efbbdca8ec2bd8914124"
+      },
+      "source_url": "https://www.gutenberg.org/ebooks/710",
+      "author_death_year": 1916,
+      "original_publication_year": 1905,
+      "jurisdiction": "IN",
+      "text_basis": "Original literary text published during the author’s lifetime; India Copyright Act 1957 section 22, life plus 60 years, assessed separately from repository U.S. notices.",
+      "source_layer": "Selected original text only, with repository boilerplate, protected modern editorial matter, illustrations and collection framing excluded; existing chapter/source repair proofs preserved.",
+      "source_hash": "edab396a4cde4053abc9e0380d1eb5479493dc5362b8c49c4faa526619fa16a5",
+      "content_hash": "e33bedbb19f9c172f918cdf79f7a00c87c3592a914f9f7e9bbac3b5b75e689f7",
+      "provenance_hash": "d75aa813f122b26404c4fdfbf67bd8a4f8c02e15fbaf8d77e0717f8bb8b4efde",
+      "chapter_count": 1,
+      "chapter_file_sha256": {
+        "chapter-001.json": "32357fa06aac2676c3785ef87070da3f2c7764ba58057b116c7de57d9b1d6a50"
+      },
+      "reader_QA": "Unchanged merged-main source/boundary regressions: 44 passed. Fresh retained-checksum, complete sanitized text parity and offline canonical page projection checks passed for all 66 chapters; see reader_QA.json. Offline proof does not assert a production active version or authenticated observation.",
+      "owner_manual_observation_waiver": "Issue #477 conditional waiver applies to exact independently complete and integrity-clean sources; does not convert unobserved production facts into observations.",
+      "editorial_additions": "No third-party modern introduction, notes, anthology layout, illustrations or author portrait is included in the delivered chapters. Original author preface and chapter prose are retained where applicable.",
+      "metadata_basis": "Existing title/author facts and original Earnalism descriptions; metadata source and exact bytes retained in the reviewed package.",
+      "audio": "Not accepted or activated by this decision.",
+      "cover": {
+        "basis": "Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art.",
+        "audit_path": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json",
+        "audit_sha256": "8b024fad4e023f74612ebb4925218f4a2acac65d33e1a255662157ebdd40e2d7",
+        "generator": "scripts/render_english_25_missing_covers.py",
+        "generator_sha256": "82a8c078f8c855deac50aa6f8af6cfc78f6c152af7578e6ae0f88e1a0063f354",
+        "font_source": "Original first-party programmatic composition with rasterized system typography, as evidenced by the retained generator and exact asset audit. The historical font selected from Georgia, Times New Roman or DejaVu was not recorded; no claim that a current Linux rerender identifies the historical font. No font software is distributed. DejaVu permission reference documents only that generator option, not an asserted identification of the existing font.",
+        "font_license_url": "https://dejavu-fonts.github.io/License.html",
+        "assistant_visual_review": "Actual retained front and back images inspected in the 2026-10-01 review; readable exact title and author, no third-party logo, image, character portrait or clipped text observed. No independent human review claimed.",
+        "assets": {
+          "front": {
+            "path": "frontend/public/assets/books/love-of-life/front-cover.webp",
+            "sha256": "2c38df718cb570fd58c1af8832421188c7dd835452fef3d74cd54e17c0d259b3",
+            "bytes": 16680,
+            "url": "https://theearnalism.com/assets/books/love-of-life/front-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          },
+          "back": {
+            "path": "frontend/public/assets/books/love-of-life/back-cover.webp",
+            "sha256": "fcdd127186c4d4f9e5fd82ecb3cc61e3a867790589ee89b6c62e9ee9989c8f1a",
+            "bytes": 21950,
+            "url": "https://theearnalism.com/assets/books/love-of-life/back-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "the-bishop",
+      "title": "The Bishop",
+      "author": "Anton Chekhov",
+      "checked_at": "2026-10-01T05:24:02.900009+00:00",
+      "pre_release_package": "backend/data/controlled_publications/the-bishop",
+      "pre_release_files": {
+        "approval_evidence.json": "8828c4617b1c4d22ef66821816b7c9bb190df1be95374e8f721642164ba92a3e",
+        "chapters/chapter-001.json": "bbb0ddd5d2cea66b38e74f880797edb585a9326b58387fe20fd4046e9f294a56",
+        "checksum_manifest.json": "fba41b1242c7fe17ce2e7ffaaaa3f974f031b7abbfcccaa4785510e763536963",
+        "highlight_sync.json": "0c6dff8d6738bdcf2b8c1e79ad86ec5518ebf235e3887705050aeeb159e3fa5f",
+        "public_book.json": "794334d5ae17091ddf01e863dff215674831e0ee3a250ad54553bc1d1f578791",
+        "reader_manifest.json": "42a7984591f6da7aec6d9fbb56fdd62ff813c1d38277a08a4594592da0efea4c",
+        "source_evidence.json": "051f49bdacb42dc4dae3476392b740e04d71664c95ab7413d71f361550bb1e7b"
+      },
+      "source_url": "https://www.gutenberg.org/ebooks/13419",
+      "author_death_year": 1904,
+      "original_publication_year": 1902,
+      "jurisdiction": "IN",
+      "text_basis": "Original literary text published during the author’s lifetime; India Copyright Act 1957 section 22, life plus 60 years, assessed separately from repository U.S. notices.",
+      "source_layer": "Selected original text only, with repository boilerplate, protected modern editorial matter, illustrations and collection framing excluded; existing chapter/source repair proofs preserved.",
+      "source_hash": "706d537e20ed0eaeddb883abdd23d76a3fb4e68afe1221dbc04d63fb98314071",
+      "content_hash": "1dc838b382d4c4c70b4109b50dafbd63da98d4660bb73af278af06d6ac0d96c1",
+      "provenance_hash": "f45783e085d460e7f411295566a38ea11985d5ae2d6ef4fd28b309da2347a778",
+      "chapter_count": 1,
+      "chapter_file_sha256": {
+        "chapter-001.json": "bbb0ddd5d2cea66b38e74f880797edb585a9326b58387fe20fd4046e9f294a56"
+      },
+      "reader_QA": "Unchanged merged-main source/boundary regressions: 44 passed. Fresh retained-checksum, complete sanitized text parity and offline canonical page projection checks passed for all 66 chapters; see reader_QA.json. Offline proof does not assert a production active version or authenticated observation.",
+      "owner_manual_observation_waiver": "Issue #477 conditional waiver applies to exact independently complete and integrity-clean sources; does not convert unobserved production facts into observations.",
+      "editorial_additions": "No third-party modern introduction, notes, anthology layout, illustrations or author portrait is included in the delivered chapters. Original author preface and chapter prose are retained where applicable.",
+      "metadata_basis": "Existing title/author facts and original Earnalism descriptions; metadata source and exact bytes retained in the reviewed package.",
+      "audio": "Not accepted or activated by this decision.",
+      "translator": "Constance Garnett",
+      "translator_death_year": 1946,
+      "translation_basis": "Exact Constance Garnett translation identified by both primary source catalogue records; her separate India literary-work term expired after 2006.",
+      "cover": {
+        "basis": "Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art.",
+        "audit_path": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json",
+        "audit_sha256": "8b024fad4e023f74612ebb4925218f4a2acac65d33e1a255662157ebdd40e2d7",
+        "generator": "scripts/render_english_25_missing_covers.py",
+        "generator_sha256": "82a8c078f8c855deac50aa6f8af6cfc78f6c152af7578e6ae0f88e1a0063f354",
+        "font_source": "Original first-party programmatic composition with rasterized system typography, as evidenced by the retained generator and exact asset audit. The historical font selected from Georgia, Times New Roman or DejaVu was not recorded; no claim that a current Linux rerender identifies the historical font. No font software is distributed. DejaVu permission reference documents only that generator option, not an asserted identification of the existing font.",
+        "font_license_url": "https://dejavu-fonts.github.io/License.html",
+        "assistant_visual_review": "Actual retained front and back images inspected in the 2026-10-01 review; readable exact title and author, no third-party logo, image, character portrait or clipped text observed. No independent human review claimed.",
+        "assets": {
+          "front": {
+            "path": "frontend/public/assets/books/the-bishop/front-cover.webp",
+            "sha256": "b29a98a47ab7867785aa81db72eb38c591de844b3af7e5aa8b04945e57d6c017",
+            "bytes": 15226,
+            "url": "https://theearnalism.com/assets/books/the-bishop/front-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          },
+          "back": {
+            "path": "frontend/public/assets/books/the-bishop/back-cover.webp",
+            "sha256": "a9750874325163a19df349ee9f906a3c6a7c69644360a953d398cd8aaf488e71",
+            "bytes": 21004,
+            "url": "https://theearnalism.com/assets/books/the-bishop/back-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "the-fall-of-the-house-of-usher",
+      "title": "The Fall of the House of Usher",
+      "author": "Edgar Allan Poe",
+      "checked_at": "2026-10-01T05:24:02.900009+00:00",
+      "pre_release_package": "backend/data/controlled_publications/the-fall-of-the-house-of-usher",
+      "pre_release_files": {
+        "approval_evidence.json": "a9ef7e5210050014c1622776c0d51eb8637ae9e05f324ac37316d8caed3e479f",
+        "chapters/chapter-001.json": "34d4107d4f0f48552d42d3fbb35d71e837f4f6f93112a6992a5a91467d7d2266",
+        "checksum_manifest.json": "1dee8d4c7b2145361a3fd40f1220d27bfecd6acc9cebe5759a90d2cec40c1bbb",
+        "highlight_sync.json": "0a034f6c286dcf240cacfd2ddf9e11e31c5bf8e4c0f12cd3c429e9a004bcde1e",
+        "public_book.json": "408e9d976788acd6500d0ee789152be2720642540657a7866de0988944315a6f",
+        "reader_manifest.json": "0edb0521b5d203b0a6efb53d98d6e9425a4d21e617d8f67e5ec591a7d6a52d1e",
+        "source_evidence.json": "8fbc65f1d07c9ec6bd37eae1bea33bcc3c1b03cfbf6ada5869a96f5130cfcdca"
+      },
+      "source_url": "https://www.gutenberg.org/ebooks/932",
+      "author_death_year": 1849,
+      "original_publication_year": 1839,
+      "jurisdiction": "IN",
+      "text_basis": "Original literary text published during the author’s lifetime; India Copyright Act 1957 section 22, life plus 60 years, assessed separately from repository U.S. notices.",
+      "source_layer": "Selected original text only, with repository boilerplate, protected modern editorial matter, illustrations and collection framing excluded; existing chapter/source repair proofs preserved.",
+      "source_hash": "d1b7c8646c08a450edd16e58e0e034a5be43b283427cdc0d507439bc4c57a535",
+      "content_hash": "140c5cca220c9e7f5abe3b168e2e4410c47d771b985bc07da3282b5cb1be18b4",
+      "provenance_hash": "18addf33f3d7f05471e04879bb1615dd916aadbd2f56af59fe16658f340ffe13",
+      "chapter_count": 1,
+      "chapter_file_sha256": {
+        "chapter-001.json": "34d4107d4f0f48552d42d3fbb35d71e837f4f6f93112a6992a5a91467d7d2266"
+      },
+      "reader_QA": "Unchanged merged-main source/boundary regressions: 44 passed. Fresh retained-checksum, complete sanitized text parity and offline canonical page projection checks passed for all 66 chapters; see reader_QA.json. Offline proof does not assert a production active version or authenticated observation.",
+      "owner_manual_observation_waiver": "Issue #477 conditional waiver applies to exact independently complete and integrity-clean sources; does not convert unobserved production facts into observations.",
+      "editorial_additions": "No third-party modern introduction, notes, anthology layout, illustrations or author portrait is included in the delivered chapters. Original author preface and chapter prose are retained where applicable.",
+      "metadata_basis": "Existing title/author facts and original Earnalism descriptions; metadata source and exact bytes retained in the reviewed package.",
+      "audio": "Not accepted or activated by this decision.",
+      "cover": {
+        "basis": "Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art.",
+        "audit_path": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json",
+        "audit_sha256": "8b024fad4e023f74612ebb4925218f4a2acac65d33e1a255662157ebdd40e2d7",
+        "generator": "scripts/render_english_25_missing_covers.py",
+        "generator_sha256": "82a8c078f8c855deac50aa6f8af6cfc78f6c152af7578e6ae0f88e1a0063f354",
+        "font_source": "Original first-party programmatic composition with rasterized system typography, as evidenced by the retained generator and exact asset audit. The historical font selected from Georgia, Times New Roman or DejaVu was not recorded; no claim that a current Linux rerender identifies the historical font. No font software is distributed. DejaVu permission reference documents only that generator option, not an asserted identification of the existing font.",
+        "font_license_url": "https://dejavu-fonts.github.io/License.html",
+        "assistant_visual_review": "Actual retained front and back images inspected in the 2026-10-01 review; readable exact title and author, no third-party logo, image, character portrait or clipped text observed. No independent human review claimed.",
+        "assets": {
+          "front": {
+            "path": "frontend/public/assets/books/the-fall-of-the-house-of-usher/front-cover.webp",
+            "sha256": "8dfb51de07beed3873dac4d418c0596846b34507f4ae51ef28245f7cd16f6e9d",
+            "bytes": 19136,
+            "url": "https://theearnalism.com/assets/books/the-fall-of-the-house-of-usher/front-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          },
+          "back": {
+            "path": "frontend/public/assets/books/the-fall-of-the-house-of-usher/back-cover.webp",
+            "sha256": "e433337c3b5d5f38ef37b740cf15e6d57534fa8446e5b8ed87a6846fe3d8f168",
+            "bytes": 22890,
+            "url": "https://theearnalism.com/assets/books/the-fall-of-the-house-of-usher/back-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "the-lady-with-the-dog",
+      "title": "The Lady with the Dog",
+      "author": "Anton Chekhov",
+      "checked_at": "2026-10-01T05:24:02.900009+00:00",
+      "pre_release_package": "backend/data/controlled_publications/the-lady-with-the-dog",
+      "pre_release_files": {
+        "approval_evidence.json": "bc3781aaac84dc7b5682bc752a3d75108c7be909561f642f5a510b2f2346d3ba",
+        "chapters/chapter-001.json": "359d98971f6e9a67c38bc5b8e048816b3c205d508604aa8f08e88d67531fe36f",
+        "checksum_manifest.json": "98a6328b3d52782138c907049d74911ad2e346f547c1ab13d178f1a45f29297a",
+        "highlight_sync.json": "16f9d37220950bef9983969503064c4ae2b9714bebdb12715828b7332e628b46",
+        "public_book.json": "28924a8a0fcfa792c87b68b9e947a20d191fd343c67aa8a68ec2c544572ee38c",
+        "reader_manifest.json": "63e9e1c437467cccbde56590fad2409d1a16274e659e7acda2b4fd9b3263bc9e",
+        "source_evidence.json": "dfc4b9a54b026547d60f75fbc96a7e5f8dd69a7c668f43d1bcd6130a84c230f0"
+      },
+      "source_url": "https://www.gutenberg.org/ebooks/13415",
+      "author_death_year": 1904,
+      "original_publication_year": 1899,
+      "jurisdiction": "IN",
+      "text_basis": "Original literary text published during the author’s lifetime; India Copyright Act 1957 section 22, life plus 60 years, assessed separately from repository U.S. notices.",
+      "source_layer": "Selected original text only, with repository boilerplate, protected modern editorial matter, illustrations and collection framing excluded; existing chapter/source repair proofs preserved.",
+      "source_hash": "ef9ab1135b609dfa39aac169c9ed8040ca003b939bc42b9146fd9f5187b147a8",
+      "content_hash": "227e8ddb08b517da5cbb6513bef4b250c8aa13f2527d2c628ad7638d4e20cf93",
+      "provenance_hash": "05ea103685b1394593b86e33783d9b8b2f3fc6439dfc49f83914ee44ce992583",
+      "chapter_count": 1,
+      "chapter_file_sha256": {
+        "chapter-001.json": "359d98971f6e9a67c38bc5b8e048816b3c205d508604aa8f08e88d67531fe36f"
+      },
+      "reader_QA": "Unchanged merged-main source/boundary regressions: 44 passed. Fresh retained-checksum, complete sanitized text parity and offline canonical page projection checks passed for all 66 chapters; see reader_QA.json. Offline proof does not assert a production active version or authenticated observation.",
+      "owner_manual_observation_waiver": "Issue #477 conditional waiver applies to exact independently complete and integrity-clean sources; does not convert unobserved production facts into observations.",
+      "editorial_additions": "No third-party modern introduction, notes, anthology layout, illustrations or author portrait is included in the delivered chapters. Original author preface and chapter prose are retained where applicable.",
+      "metadata_basis": "Existing title/author facts and original Earnalism descriptions; metadata source and exact bytes retained in the reviewed package.",
+      "audio": "Not accepted or activated by this decision.",
+      "translator": "Constance Garnett",
+      "translator_death_year": 1946,
+      "translation_basis": "Exact Constance Garnett translation identified by both primary source catalogue records; her separate India literary-work term expired after 2006.",
+      "cover": {
+        "basis": "Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art.",
+        "audit_path": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json",
+        "audit_sha256": "8b024fad4e023f74612ebb4925218f4a2acac65d33e1a255662157ebdd40e2d7",
+        "generator": "scripts/render_english_25_missing_covers.py",
+        "generator_sha256": "82a8c078f8c855deac50aa6f8af6cfc78f6c152af7578e6ae0f88e1a0063f354",
+        "font_source": "Original first-party programmatic composition with rasterized system typography, as evidenced by the retained generator and exact asset audit. The historical font selected from Georgia, Times New Roman or DejaVu was not recorded; no claim that a current Linux rerender identifies the historical font. No font software is distributed. DejaVu permission reference documents only that generator option, not an asserted identification of the existing font.",
+        "font_license_url": "https://dejavu-fonts.github.io/License.html",
+        "assistant_visual_review": "Actual retained front and back images inspected in the 2026-10-01 review; readable exact title and author, no third-party logo, image, character portrait or clipped text observed. No independent human review claimed.",
+        "assets": {
+          "front": {
+            "path": "frontend/public/assets/books/the-lady-with-the-dog/front-cover.webp",
+            "sha256": "639135ab803048092198578b61e0b119d9b5cf4a9313db3f93bbb2194aec6869",
+            "bytes": 19968,
+            "url": "https://theearnalism.com/assets/books/the-lady-with-the-dog/front-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          },
+          "back": {
+            "path": "frontend/public/assets/books/the-lady-with-the-dog/back-cover.webp",
+            "sha256": "3fc989282374d1336f8fe066cf43974e1ad76c7b927817405d3e47c8c53319bb",
+            "bytes": 20712,
+            "url": "https://theearnalism.com/assets/books/the-lady-with-the-dog/back-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "the-man-who-would-be-king",
+      "title": "The Man Who Would Be King",
+      "author": "Rudyard Kipling",
+      "checked_at": "2026-10-01T05:24:02.900009+00:00",
+      "pre_release_package": "backend/data/controlled_publications/the-man-who-would-be-king",
+      "pre_release_files": {
+        "approval_evidence.json": "9835063bdca72194e396b1459b75d573e98e7a6addc9141559118749a4c9ead5",
+        "chapters/chapter-001.json": "fceadfd7e05c26bfd2a467327219843b89369a50ff5b11d018e202ade45e0914",
+        "checksum_manifest.json": "7204eb149587b941af2568f5c319c8db43a62c4859c6b36ffbd76d3438a45477",
+        "highlight_sync.json": "65550c498ea653e1f52329825101496ecb952eaee1fab64dac3f327d5d6187b2",
+        "public_book.json": "d829d633b8980dab442fc64d60ff008aaa5aad39f6f10850e1ef3c9f96c9aa1c",
+        "reader_manifest.json": "5df6dd9b255ce9ad88e1dad00532528c0b4a6a990a81bde422c6640f98924e32",
+        "source_evidence.json": "b28baa8735f34c23f3236faea44061e0dd31609038ebd84dc01d9ae297718e09"
+      },
+      "source_url": "https://www.gutenberg.org/ebooks/8147",
+      "author_death_year": 1936,
+      "original_publication_year": 1888,
+      "jurisdiction": "IN",
+      "text_basis": "Original literary text published during the author’s lifetime; India Copyright Act 1957 section 22, life plus 60 years, assessed separately from repository U.S. notices.",
+      "source_layer": "Selected original text only, with repository boilerplate, protected modern editorial matter, illustrations and collection framing excluded; existing chapter/source repair proofs preserved.",
+      "source_hash": "f793cabaf57da4c855c5fefa2783c2f21eaa0a14a9d0199f305b89afe57f75f8",
+      "content_hash": "28f4b454893a6d614cb729f94b3c7cbac26640a9d4f102d585051a8e9532e8e5",
+      "provenance_hash": "f4a3486f775a233fae6df4ae40dafec5bc5ce82e4ad8b1d64c75164c11b01827",
+      "chapter_count": 1,
+      "chapter_file_sha256": {
+        "chapter-001.json": "fceadfd7e05c26bfd2a467327219843b89369a50ff5b11d018e202ade45e0914"
+      },
+      "reader_QA": "Unchanged merged-main source/boundary regressions: 44 passed. Fresh retained-checksum, complete sanitized text parity and offline canonical page projection checks passed for all 66 chapters; see reader_QA.json. Offline proof does not assert a production active version or authenticated observation.",
+      "owner_manual_observation_waiver": "Issue #477 conditional waiver applies to exact independently complete and integrity-clean sources; does not convert unobserved production facts into observations.",
+      "editorial_additions": "No third-party modern introduction, notes, anthology layout, illustrations or author portrait is included in the delivered chapters. Original author preface and chapter prose are retained where applicable.",
+      "metadata_basis": "Existing title/author facts and original Earnalism descriptions; metadata source and exact bytes retained in the reviewed package.",
+      "audio": "Not accepted or activated by this decision.",
+      "cover": {
+        "basis": "Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art.",
+        "audit_path": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json",
+        "audit_sha256": "8b024fad4e023f74612ebb4925218f4a2acac65d33e1a255662157ebdd40e2d7",
+        "generator": "scripts/render_english_25_missing_covers.py",
+        "generator_sha256": "82a8c078f8c855deac50aa6f8af6cfc78f6c152af7578e6ae0f88e1a0063f354",
+        "font_source": "Original first-party programmatic composition with rasterized system typography, as evidenced by the retained generator and exact asset audit. The historical font selected from Georgia, Times New Roman or DejaVu was not recorded; no claim that a current Linux rerender identifies the historical font. No font software is distributed. DejaVu permission reference documents only that generator option, not an asserted identification of the existing font.",
+        "font_license_url": "https://dejavu-fonts.github.io/License.html",
+        "assistant_visual_review": "Actual retained front and back images inspected in the 2026-10-01 review; readable exact title and author, no third-party logo, image, character portrait or clipped text observed. No independent human review claimed.",
+        "assets": {
+          "front": {
+            "path": "frontend/public/assets/books/the-man-who-would-be-king/front-cover.webp",
+            "sha256": "ecbcd6cc4640babc136f5e3220fe49849bafabbd8be5600a11dfefdb8f612f76",
+            "bytes": 21400,
+            "url": "https://theearnalism.com/assets/books/the-man-who-would-be-king/front-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          },
+          "back": {
+            "path": "frontend/public/assets/books/the-man-who-would-be-king/back-cover.webp",
+            "sha256": "8c75c153de8810a39f40d568f32f36c4a273deea17732477f84216fc7e565e8d",
+            "bytes": 21472,
+            "url": "https://theearnalism.com/assets/books/the-man-who-would-be-king/back-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "the-open-boat",
+      "title": "The Open Boat",
+      "author": "Stephen Crane",
+      "checked_at": "2026-10-01T05:24:02.900009+00:00",
+      "pre_release_package": "backend/data/controlled_publications/the-open-boat",
+      "pre_release_files": {
+        "approval_evidence.json": "8f6dc1da359bef3f9f9f863924def97e8cc46ebfc6bd014410199452baaa9959",
+        "chapters/chapter-001.json": "f07b6cae3f668eaa44c6f75238bd62344876077b930e3417693b8429da5a751f",
+        "checksum_manifest.json": "6dadc789441adec30011b465043e97d0ccc08c31a890e88fdb7069a52f242c10",
+        "highlight_sync.json": "37c9315eeaf970d4502097a06ae8e6041ca0ebd123986321c0a17c041ad6d619",
+        "public_book.json": "ba4de39e81eecaa7b6cff9132c6afa265af5bd48bdb017b00ec8acdeb9cf91e2",
+        "reader_manifest.json": "5eca0e75ee9c7ded8776eccc22c45e9ff2480efa8de3c9123bfaaed0f61ec36a",
+        "source_evidence.json": "362e86b588c8cd4b2f9e1f11aa49834aa66733c7b2260d526938d62d5b68e859"
+      },
+      "source_url": "https://www.gutenberg.org/ebooks/45524",
+      "author_death_year": 1900,
+      "original_publication_year": 1897,
+      "jurisdiction": "IN",
+      "text_basis": "Original literary text published during the author’s lifetime; India Copyright Act 1957 section 22, life plus 60 years, assessed separately from repository U.S. notices.",
+      "source_layer": "Selected original text only, with repository boilerplate, protected modern editorial matter, illustrations and collection framing excluded; existing chapter/source repair proofs preserved.",
+      "source_hash": "29a393e33c66ac380b611737429839d88116598a4b6397d03caa3c432175615f",
+      "content_hash": "863ac1ae6501ac2fea00d247925c839a76728c96c12f80bd70c0eddb771182a9",
+      "provenance_hash": "7fd768106afdded9d8170cd9c7b172491097cefb80d6eeb7914a7fb856517149",
+      "chapter_count": 1,
+      "chapter_file_sha256": {
+        "chapter-001.json": "f07b6cae3f668eaa44c6f75238bd62344876077b930e3417693b8429da5a751f"
+      },
+      "reader_QA": "Unchanged merged-main source/boundary regressions: 44 passed. Fresh retained-checksum, complete sanitized text parity and offline canonical page projection checks passed for all 66 chapters; see reader_QA.json. Offline proof does not assert a production active version or authenticated observation.",
+      "owner_manual_observation_waiver": "Issue #477 conditional waiver applies to exact independently complete and integrity-clean sources; does not convert unobserved production facts into observations.",
+      "editorial_additions": "No third-party modern introduction, notes, anthology layout, illustrations or author portrait is included in the delivered chapters. Original author preface and chapter prose are retained where applicable.",
+      "metadata_basis": "Existing title/author facts and original Earnalism descriptions; metadata source and exact bytes retained in the reviewed package.",
+      "audio": "Not accepted or activated by this decision.",
+      "cover": {
+        "basis": "Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art.",
+        "audit_path": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json",
+        "audit_sha256": "8b024fad4e023f74612ebb4925218f4a2acac65d33e1a255662157ebdd40e2d7",
+        "generator": "scripts/render_english_25_missing_covers.py",
+        "generator_sha256": "82a8c078f8c855deac50aa6f8af6cfc78f6c152af7578e6ae0f88e1a0063f354",
+        "font_source": "Original first-party programmatic composition with rasterized system typography, as evidenced by the retained generator and exact asset audit. The historical font selected from Georgia, Times New Roman or DejaVu was not recorded; no claim that a current Linux rerender identifies the historical font. No font software is distributed. DejaVu permission reference documents only that generator option, not an asserted identification of the existing font.",
+        "font_license_url": "https://dejavu-fonts.github.io/License.html",
+        "assistant_visual_review": "Actual retained front and back images inspected in the 2026-10-01 review; readable exact title and author, no third-party logo, image, character portrait or clipped text observed. No independent human review claimed.",
+        "assets": {
+          "front": {
+            "path": "frontend/public/assets/books/the-open-boat/front-cover.webp",
+            "sha256": "296b67825cf9bd73c3586afdd03cc09f837203e04de9202ea708191dfdb750e4",
+            "bytes": 19054,
+            "url": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          },
+          "back": {
+            "path": "frontend/public/assets/books/the-open-boat/back-cover.webp",
+            "sha256": "39143f938d1c09214f3bd9ebd9545d404e944b6d0c4c156a89621a469958deee",
+            "bytes": 25196,
+            "url": "https://theearnalism.com/assets/books/the-open-boat/back-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "the-pit-and-the-pendulum",
+      "title": "The Pit and the Pendulum",
+      "author": "Edgar Allan Poe",
+      "checked_at": "2026-10-01T05:24:02.900009+00:00",
+      "pre_release_package": "backend/data/controlled_publications/the-pit-and-the-pendulum",
+      "pre_release_files": {
+        "approval_evidence.json": "df56dfb86da0313455048aee89368af237670dd186400c2d1ded3621a296f6e6",
+        "chapters/chapter-001.json": "747b573b44a98b8860668283c937f9ab2aa02c51ee98856a3644048f4ff11fbd",
+        "checksum_manifest.json": "478207ae5f15b6cdeda719d700196a72ca3e5ca7eaa0b267388fe7364c448993",
+        "highlight_sync.json": "91c91d21f3a27edae2bac0d25a5110eb539dd01a0a14257411d1e0a2203534fe",
+        "public_book.json": "53b92408acac07619bebff1a17b4fcafc7d7392e96ef78fc58fedccec70b87cf",
+        "reader_manifest.json": "75184bafdc2e13f06824e1a3070fdfe5afc5bac478fb5142fa54393f07e32eed",
+        "source_evidence.json": "1a64c6709c98a917f7c338a28023ef2df49bad1e896f090cf50286be878eb4e0"
+      },
+      "source_url": "https://www.gutenberg.org/ebooks/2148",
+      "author_death_year": 1849,
+      "original_publication_year": 1842,
+      "jurisdiction": "IN",
+      "text_basis": "Original literary text published during the author’s lifetime; India Copyright Act 1957 section 22, life plus 60 years, assessed separately from repository U.S. notices.",
+      "source_layer": "Selected original text only, with repository boilerplate, protected modern editorial matter, illustrations and collection framing excluded; existing chapter/source repair proofs preserved.",
+      "source_hash": "44c59e6e27d1402d0ac587da78370177b575b3acc9144b2f4e52fdee018b3781",
+      "content_hash": "f96d05695c79e4edb6938e6667ab88a40336e44aa16c7277a4e46a2422a2fcac",
+      "provenance_hash": "d8a4d1194b949e3d5b16de9c04b4989128541def7e0a09d689da260b395519c4",
+      "chapter_count": 1,
+      "chapter_file_sha256": {
+        "chapter-001.json": "747b573b44a98b8860668283c937f9ab2aa02c51ee98856a3644048f4ff11fbd"
+      },
+      "reader_QA": "Unchanged merged-main source/boundary regressions: 44 passed. Fresh retained-checksum, complete sanitized text parity and offline canonical page projection checks passed for all 66 chapters; see reader_QA.json. Offline proof does not assert a production active version or authenticated observation.",
+      "owner_manual_observation_waiver": "Issue #477 conditional waiver applies to exact independently complete and integrity-clean sources; does not convert unobserved production facts into observations.",
+      "editorial_additions": "No third-party modern introduction, notes, anthology layout, illustrations or author portrait is included in the delivered chapters. Original author preface and chapter prose are retained where applicable.",
+      "metadata_basis": "Existing title/author facts and original Earnalism descriptions; metadata source and exact bytes retained in the reviewed package.",
+      "audio": "Not accepted or activated by this decision.",
+      "cover": {
+        "basis": "Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art.",
+        "audit_path": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json",
+        "audit_sha256": "8b024fad4e023f74612ebb4925218f4a2acac65d33e1a255662157ebdd40e2d7",
+        "generator": "scripts/render_english_25_missing_covers.py",
+        "generator_sha256": "82a8c078f8c855deac50aa6f8af6cfc78f6c152af7578e6ae0f88e1a0063f354",
+        "font_source": "Original first-party programmatic composition with rasterized system typography, as evidenced by the retained generator and exact asset audit. The historical font selected from Georgia, Times New Roman or DejaVu was not recorded; no claim that a current Linux rerender identifies the historical font. No font software is distributed. DejaVu permission reference documents only that generator option, not an asserted identification of the existing font.",
+        "font_license_url": "https://dejavu-fonts.github.io/License.html",
+        "assistant_visual_review": "Actual retained front and back images inspected in the 2026-10-01 review; readable exact title and author, no third-party logo, image, character portrait or clipped text observed. No independent human review claimed.",
+        "assets": {
+          "front": {
+            "path": "frontend/public/assets/books/the-pit-and-the-pendulum/front-cover.webp",
+            "sha256": "7c5e56a75f22008a54bf44ba12a445078c8b4d7eae64b900c7aac68af48e414c",
+            "bytes": 17058,
+            "url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/front-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          },
+          "back": {
+            "path": "frontend/public/assets/books/the-pit-and-the-pendulum/back-cover.webp",
+            "sha256": "5c817ec835fdd9c3ae40eaf557337709da69bd4f1ad4ce8a106ada0a501ec8ae",
+            "bytes": 23152,
+            "url": "https://theearnalism.com/assets/books/the-pit-and-the-pendulum/back-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "the-stolen-white-elephant",
+      "title": "The Stolen White Elephant",
+      "author": "Mark Twain",
+      "checked_at": "2026-10-01T05:24:02.900009+00:00",
+      "pre_release_package": "backend/data/controlled_publications/the-stolen-white-elephant",
+      "pre_release_files": {
+        "approval_evidence.json": "3358f1172e13c791e50802ffd6a1898f15690aaa0a893afe9233e54d076a3f50",
+        "chapters/chapter-001.json": "3c399adaaccaabceeef46222ac79c2428b6fbc2665f1fc4d7e28bfb074fb5b95",
+        "checksum_manifest.json": "0621067b943141aecba1ac5d9f61b9c953d7b8c34cee6dae44b883abff77ea22",
+        "highlight_sync.json": "e5ba8e6896d990099fa329b9117f3bae93927ee22feb7c26b4ae9529aae25c78",
+        "public_book.json": "5a746dd018904240d7d325c25f71df70925c5361b1e7d21033358e127ade5214",
+        "reader_manifest.json": "dfaf46f1970dda6041c0f161a415cce1be4427402b1156ff2de5e3ec5fa8ad8c",
+        "source_evidence.json": "3604c82d994c47602b76c49a0a1e8b028b704646eadb813481791a28d70dc4b6"
+      },
+      "source_url": "https://www.gutenberg.org/ebooks/3181",
+      "author_death_year": 1910,
+      "original_publication_year": 1882,
+      "jurisdiction": "IN",
+      "text_basis": "Original literary text published during the author’s lifetime; India Copyright Act 1957 section 22, life plus 60 years, assessed separately from repository U.S. notices.",
+      "source_layer": "Selected original text only, with repository boilerplate, protected modern editorial matter, illustrations and collection framing excluded; existing chapter/source repair proofs preserved.",
+      "source_hash": "fe0f4b88b895ed50544c4d0c7e4a42f370cfcf59dcf2643009c4a5cc3a4c1517",
+      "content_hash": "1966dc3ff417b39ec3faeab8031f6c99f0138f8d1595f351147a023fed8f0235",
+      "provenance_hash": "6637344b47e4a4cb2f0afdce7adfaf8eca02d84429c408c533fb13cece300756",
+      "chapter_count": 1,
+      "chapter_file_sha256": {
+        "chapter-001.json": "3c399adaaccaabceeef46222ac79c2428b6fbc2665f1fc4d7e28bfb074fb5b95"
+      },
+      "reader_QA": "Unchanged merged-main source/boundary regressions: 44 passed. Fresh retained-checksum, complete sanitized text parity and offline canonical page projection checks passed for all 66 chapters; see reader_QA.json. Offline proof does not assert a production active version or authenticated observation.",
+      "owner_manual_observation_waiver": "Issue #477 conditional waiver applies to exact independently complete and integrity-clean sources; does not convert unobserved production facts into observations.",
+      "editorial_additions": "No third-party modern introduction, notes, anthology layout, illustrations or author portrait is included in the delivered chapters. Original author preface and chapter prose are retained where applicable.",
+      "metadata_basis": "Existing title/author facts and original Earnalism descriptions; metadata source and exact bytes retained in the reviewed package.",
+      "audio": "Not accepted or activated by this decision.",
+      "cover": {
+        "basis": "Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art.",
+        "audit_path": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json",
+        "audit_sha256": "8b024fad4e023f74612ebb4925218f4a2acac65d33e1a255662157ebdd40e2d7",
+        "generator": "scripts/render_english_25_missing_covers.py",
+        "generator_sha256": "82a8c078f8c855deac50aa6f8af6cfc78f6c152af7578e6ae0f88e1a0063f354",
+        "font_source": "Original first-party programmatic composition with rasterized system typography, as evidenced by the retained generator and exact asset audit. The historical font selected from Georgia, Times New Roman or DejaVu was not recorded; no claim that a current Linux rerender identifies the historical font. No font software is distributed. DejaVu permission reference documents only that generator option, not an asserted identification of the existing font.",
+        "font_license_url": "https://dejavu-fonts.github.io/License.html",
+        "assistant_visual_review": "Actual retained front and back images inspected in the 2026-10-01 review; readable exact title and author, no third-party logo, image, character portrait or clipped text observed. No independent human review claimed.",
+        "assets": {
+          "front": {
+            "path": "frontend/public/assets/books/the-stolen-white-elephant/front-cover.webp",
+            "sha256": "16137ec2a018564aafa68962cf59bed705bdccc6cb89ef6000d431c30f16cddd",
+            "bytes": 22560,
+            "url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/front-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          },
+          "back": {
+            "path": "frontend/public/assets/books/the-stolen-white-elephant/back-cover.webp",
+            "sha256": "f6be789f2564035101a7b2fc954a3f72a8553af14e8aa1e7c196363848a1c9a4",
+            "bytes": 25046,
+            "url": "https://theearnalism.com/assets/books/the-stolen-white-elephant/back-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "title": "An Occurrence at Owl Creek Bridge",
+      "author": "Ambrose Bierce",
+      "checked_at": "2026-10-01T05:24:02.900009+00:00",
+      "pre_release_package": "backend/data/controlled_publications/an-occurrence-at-owl-creek-bridge",
+      "pre_release_files": {
+        "approval_evidence.json": "603bbf3d0b9249614ec0d1c1aebd6c0991a5ccdac6dd3127861bee738a7556d9",
+        "chapters/chapter-001.json": "426b65889907daa4afa0d1c7a0a888a9b332c9188b72ec4eeefa3731166c5e3b",
+        "checksum_manifest.json": "8c948a08d9fa34d533e45fbcc2126ed700c9eced37b5b4905a417d27804c4f98",
+        "highlight_sync.json": "3f687193b859723dbdd8e278c5086d34eb85c5c7060a7aea8a6cd9677221e4e8",
+        "public_book.json": "a84c5f7add92447ca430090d329789babeb364614cae77933bef7806ed4ba1bf",
+        "reader_manifest.json": "791870c247a3b38ab2b35aaf32c148e76b42f1ccb4f954f1225a5c1e8b144ce5",
+        "source_evidence.json": "3243e4e6f0b4cc47d72bd0b3b5b43f0724ef8af8875f6fa1cd74264218b32be1"
+      },
+      "source_url": "https://www.gutenberg.org/ebooks/375",
+      "author_death_year": 1914,
+      "original_publication_year": 1890,
+      "jurisdiction": "IN",
+      "text_basis": "Original literary text published during the author’s lifetime; India Copyright Act 1957 section 22, life plus 60 years, assessed separately from repository U.S. notices.",
+      "source_layer": "Selected original text only, with repository boilerplate, protected modern editorial matter, illustrations and collection framing excluded; existing chapter/source repair proofs preserved.",
+      "source_hash": "403d163c894a364aa545f11f0a1e491f8f017f217ecaa61d94f09000e57156d6",
+      "content_hash": "0687ac64681f6c58ce748c89ecb8800b15be0591a2b6a75d512d985ac40134b7",
+      "provenance_hash": "7f8106f25b45e035360a6691d96e1412e8de72f5e1f95421c5bb431547d9cf30",
+      "chapter_count": 1,
+      "chapter_file_sha256": {
+        "chapter-001.json": "426b65889907daa4afa0d1c7a0a888a9b332c9188b72ec4eeefa3731166c5e3b"
+      },
+      "reader_QA": "Unchanged merged-main source/boundary regressions: 44 passed. Fresh retained-checksum, complete sanitized text parity and offline canonical page projection checks passed for all 66 chapters; see reader_QA.json. Offline proof does not assert a production active version or authenticated observation.",
+      "owner_manual_observation_waiver": "Issue #477 conditional waiver applies to exact independently complete and integrity-clean sources; does not convert unobserved production facts into observations.",
+      "editorial_additions": "No third-party modern introduction, notes, anthology layout, illustrations or author portrait is included in the delivered chapters. Original author preface and chapter prose are retained where applicable.",
+      "metadata_basis": "Existing title/author facts and original Earnalism descriptions; metadata source and exact bytes retained in the reviewed package.",
+      "audio": "Not accepted or activated by this decision.",
+      "author_date_qualification": "Primary Project Gutenberg and Library of Congress authority records label 1842–1914?; 1914 is the standard presumed date, not a certified exact death date. This qualification is retained in the review rather than represented as a witnessed fact.",
+      "cover": {
+        "basis": "Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art.",
+        "audit_path": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json",
+        "audit_sha256": "8b024fad4e023f74612ebb4925218f4a2acac65d33e1a255662157ebdd40e2d7",
+        "generator": "scripts/render_english_25_missing_covers.py",
+        "generator_sha256": "82a8c078f8c855deac50aa6f8af6cfc78f6c152af7578e6ae0f88e1a0063f354",
+        "font_source": "Original first-party programmatic composition with rasterized system typography, as evidenced by the retained generator and exact asset audit. The historical font selected from Georgia, Times New Roman or DejaVu was not recorded; no claim that a current Linux rerender identifies the historical font. No font software is distributed. DejaVu permission reference documents only that generator option, not an asserted identification of the existing font.",
+        "font_license_url": "https://dejavu-fonts.github.io/License.html",
+        "assistant_visual_review": "Actual retained front and back images inspected in the 2026-10-01 review; readable exact title and author, no third-party logo, image, character portrait or clipped text observed. No independent human review claimed.",
+        "assets": {
+          "front": {
+            "path": "frontend/public/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
+            "sha256": "057d26a3babfb4659cb777826880ec625844003a137fa0e5f11828454a97c7cd",
+            "bytes": 21582,
+            "url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          },
+          "back": {
+            "path": "frontend/public/assets/books/an-occurrence-at-owl-creek-bridge/back-cover.webp",
+            "sha256": "640ba85f97a923cb526413c5d84600be771f7492f05b5dc9fc7730a66c306d31",
+            "bytes": 24080,
+            "url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/back-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "the-enchanted-april",
+      "title": "The Enchanted April",
+      "author": "Elizabeth von Arnim",
+      "checked_at": "2026-10-01T05:24:02.900009+00:00",
+      "pre_release_package": "backend/data/controlled_publications/the-enchanted-april",
+      "pre_release_files": {
+        "approval_evidence.json": "e3978a2da64ac709ce58130292bb1a3f630b97ed4dfff50ea9d95ef828c79135",
+        "chapters/chapter-001.json": "a5abf8f1897a155c8f51ceffa27b7b7602b894e4f21ab9f8886761bca2180517",
+        "chapters/chapter-002.json": "ddbc78fbf461f9fa5a940922548f1f2af2170a67190d2bb7ecd00e352dc19e79",
+        "chapters/chapter-003.json": "697c038108e506accb3e18d48cc81ecb6d537e91a5df534f4b8f3e68a3aa70dd",
+        "chapters/chapter-004.json": "26fa1809dfed1a8ea31652409fb0c042a286161ca369a90c6baad70d0a3028bc",
+        "chapters/chapter-005.json": "1a365f41d28aa356c0d5a2c414671ba74cdf3e0ad7cdfa10e8b69cc8903d6416",
+        "chapters/chapter-006.json": "eb15215323eac66fc99248a951ff3a5c6ac32b68d68bb18aa94cd66648e3d55a",
+        "chapters/chapter-007.json": "e4170cf938d4771695ab1bbe029c121b0e096f69b4257f11f523a8024549659a",
+        "chapters/chapter-008.json": "57cc35d0564ffb0e5766a91bba8a6852a52ab3a3252f367e41d78eca791d4b56",
+        "chapters/chapter-009.json": "a6d2e283626b0818a88bc31d9da7af95f068951f1572d908270e47f745333086",
+        "chapters/chapter-010.json": "98766dca9321daeec57c12b521f9adcbe527425ae94e50bbc734e481308d6253",
+        "chapters/chapter-011.json": "25569268b13c1b304b95d98bfae4e25c95e70210477597f6101be839d10e1ad0",
+        "chapters/chapter-012.json": "ec0db4e12a6f5213acb05d68ee3a442398244b7b660f3b88253c639a9a74453e",
+        "chapters/chapter-013.json": "099b869c64f13b22e5e4f816508602842ba71f06b102f2bd70f1564fcd84349b",
+        "chapters/chapter-014.json": "b313227cd3e9f011dd8aa17cfe9943f845a64302c60fad1a2b94e6c4d6959f0d",
+        "chapters/chapter-015.json": "a2b71f2cf5413341a6adcf5f48a9c94a102c373d45902a3a26e5fef42e8003f3",
+        "chapters/chapter-016.json": "510ae3811320820412d666ef573b1b094290d2b4bf454a4fb1c1395d8a583acb",
+        "chapters/chapter-017.json": "064297c04d7d3542fddbebd131c0776926e54d1b6a00f049389ad8da6cb022f0",
+        "chapters/chapter-018.json": "252d383f190da71e8e3ae9ee9faadb7ec508bdae13601594113b0caf056c9c4b",
+        "chapters/chapter-019.json": "3238e037d0b96f0f3ac1751c53eb7ca484526ea1228c0711466126455c3d3f21",
+        "chapters/chapter-020.json": "c653c2e1d9857f1e4d6175c6194f93fa02d90a9e73c09cfff0081da90789dd51",
+        "chapters/chapter-021.json": "45c29e3980041e171f60bf86552d52f94b59e1792a48dc39b307818aff71e08b",
+        "chapters/chapter-022.json": "c7685ce921efa52dd2425812958614458f56bdd55742078565054dfd68a2a659",
+        "checksum_manifest.json": "ba421ea8348d346e07c0c4dd89ed6540be066074940bff2f083c4e50ae3831bf",
+        "highlight_sync.json": "2601e4898cd1a00d62da1e266ee3f66b2d396d448f1acf53376eca1cf518b862",
+        "public_book.json": "c3aba2778defb0c3ca5be4fed5b0d6231069ba2d4d823206047dc67c8a98ceaa",
+        "reader_manifest.json": "8971cebfd2ff004ea3321c2f7b67ccd300fc11508f36e8ed23eb1174efc7bcc2",
+        "reader_repair_evidence.json": "ebc6c62633d6d809c4857d9f6a18c64aadca0c1b12ee1be5bbb9833a303ab7bf",
+        "source_evidence.json": "85f0311dfb8e5262fc813fcf48e4c56f4677f6a75d949a6c9f3ff0fd19b9a80f"
+      },
+      "source_url": "https://www.gutenberg.org/cache/epub/16389/pg16389.txt",
+      "author_death_year": 1941,
+      "original_publication_year": 1922,
+      "jurisdiction": "IN",
+      "text_basis": "Original literary text published during the author’s lifetime; India Copyright Act 1957 section 22, life plus 60 years, assessed separately from repository U.S. notices.",
+      "source_layer": "Selected original text only, with repository boilerplate, protected modern editorial matter, illustrations and collection framing excluded; existing chapter/source repair proofs preserved.",
+      "source_hash": "d2d5a31f295361fb742f44729d3de6082cd7bff742a0484cd178731d66ef8370",
+      "content_hash": "3539ad44486bb347c096d9905edc019fada09b3d58f3b1dbfbf375da7a892627",
+      "provenance_hash": "0a9bd2717cf725c9eb0bcec05bdd817fe609ba94e100b3079d3564cdcaad4b41",
+      "chapter_count": 22,
+      "chapter_file_sha256": {
+        "chapter-001.json": "a5abf8f1897a155c8f51ceffa27b7b7602b894e4f21ab9f8886761bca2180517",
+        "chapter-002.json": "ddbc78fbf461f9fa5a940922548f1f2af2170a67190d2bb7ecd00e352dc19e79",
+        "chapter-003.json": "697c038108e506accb3e18d48cc81ecb6d537e91a5df534f4b8f3e68a3aa70dd",
+        "chapter-004.json": "26fa1809dfed1a8ea31652409fb0c042a286161ca369a90c6baad70d0a3028bc",
+        "chapter-005.json": "1a365f41d28aa356c0d5a2c414671ba74cdf3e0ad7cdfa10e8b69cc8903d6416",
+        "chapter-006.json": "eb15215323eac66fc99248a951ff3a5c6ac32b68d68bb18aa94cd66648e3d55a",
+        "chapter-007.json": "e4170cf938d4771695ab1bbe029c121b0e096f69b4257f11f523a8024549659a",
+        "chapter-008.json": "57cc35d0564ffb0e5766a91bba8a6852a52ab3a3252f367e41d78eca791d4b56",
+        "chapter-009.json": "a6d2e283626b0818a88bc31d9da7af95f068951f1572d908270e47f745333086",
+        "chapter-010.json": "98766dca9321daeec57c12b521f9adcbe527425ae94e50bbc734e481308d6253",
+        "chapter-011.json": "25569268b13c1b304b95d98bfae4e25c95e70210477597f6101be839d10e1ad0",
+        "chapter-012.json": "ec0db4e12a6f5213acb05d68ee3a442398244b7b660f3b88253c639a9a74453e",
+        "chapter-013.json": "099b869c64f13b22e5e4f816508602842ba71f06b102f2bd70f1564fcd84349b",
+        "chapter-014.json": "b313227cd3e9f011dd8aa17cfe9943f845a64302c60fad1a2b94e6c4d6959f0d",
+        "chapter-015.json": "a2b71f2cf5413341a6adcf5f48a9c94a102c373d45902a3a26e5fef42e8003f3",
+        "chapter-016.json": "510ae3811320820412d666ef573b1b094290d2b4bf454a4fb1c1395d8a583acb",
+        "chapter-017.json": "064297c04d7d3542fddbebd131c0776926e54d1b6a00f049389ad8da6cb022f0",
+        "chapter-018.json": "252d383f190da71e8e3ae9ee9faadb7ec508bdae13601594113b0caf056c9c4b",
+        "chapter-019.json": "3238e037d0b96f0f3ac1751c53eb7ca484526ea1228c0711466126455c3d3f21",
+        "chapter-020.json": "c653c2e1d9857f1e4d6175c6194f93fa02d90a9e73c09cfff0081da90789dd51",
+        "chapter-021.json": "45c29e3980041e171f60bf86552d52f94b59e1792a48dc39b307818aff71e08b",
+        "chapter-022.json": "c7685ce921efa52dd2425812958614458f56bdd55742078565054dfd68a2a659"
+      },
+      "reader_QA": "Unchanged merged-main source/boundary regressions: 44 passed. Fresh retained-checksum, complete sanitized text parity and offline canonical page projection checks passed for all 66 chapters; see reader_QA.json. Offline proof does not assert a production active version or authenticated observation.",
+      "owner_manual_observation_waiver": "Issue #477 conditional waiver applies to exact independently complete and integrity-clean sources; does not convert unobserved production facts into observations.",
+      "editorial_additions": "No third-party modern introduction, notes, anthology layout, illustrations or author portrait is included in the delivered chapters. Original author preface and chapter prose are retained where applicable.",
+      "metadata_basis": "Existing title/author facts and original Earnalism descriptions; metadata source and exact bytes retained in the reviewed package.",
+      "audio": "Not accepted or activated by this decision.",
+      "cover": {
+        "basis": "Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art.",
+        "audit_path": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json",
+        "audit_sha256": "8b024fad4e023f74612ebb4925218f4a2acac65d33e1a255662157ebdd40e2d7",
+        "generator": "scripts/render_english_25_missing_covers.py",
+        "generator_sha256": "82a8c078f8c855deac50aa6f8af6cfc78f6c152af7578e6ae0f88e1a0063f354",
+        "font_source": "Original first-party programmatic composition with rasterized system typography, as evidenced by the retained generator and exact asset audit. The historical font selected from Georgia, Times New Roman or DejaVu was not recorded; no claim that a current Linux rerender identifies the historical font. No font software is distributed. DejaVu permission reference documents only that generator option, not an asserted identification of the existing font.",
+        "font_license_url": "https://dejavu-fonts.github.io/License.html",
+        "assistant_visual_review": "Actual retained front and back images inspected in the 2026-10-01 review; readable exact title and author, no third-party logo, image, character portrait or clipped text observed. No independent human review claimed.",
+        "assets": {
+          "front": {
+            "path": "frontend/public/assets/books/the-enchanted-april/front-cover.webp",
+            "sha256": "094e542561e8ef5ba2d6ed07c989e4ef69bcbcd00ae079525beb1d848a01a7f7",
+            "bytes": 20416,
+            "url": "https://theearnalism.com/assets/books/the-enchanted-april/front-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          },
+          "back": {
+            "path": "frontend/public/assets/books/the-enchanted-april/back-cover.webp",
+            "sha256": "135b4c8820ee8c4eb3d0cf27d5d0e4e013c62ae7df23c390558abca95f39588f",
+            "bytes": 23430,
+            "url": "https://theearnalism.com/assets/books/the-enchanted-april/back-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "the-happy-prince",
+      "title": "The Happy Prince",
+      "author": "Oscar Wilde",
+      "checked_at": "2026-10-01T05:24:02.900009+00:00",
+      "pre_release_package": "backend/data/controlled_publications/the-happy-prince",
+      "pre_release_files": {
+        "approval_evidence.json": "6fb7dc5b9dd1d8aedeec379808dfa8d289c918b34629b269a517233eca579779",
+        "chapters/chapter-001.json": "1102f2638f209d7881c6ed3f7b88eb9ca5fb7e2740ac32cdb45ce291069e9ae7",
+        "checksum_manifest.json": "e0f7e9578f367b264951a5131cb849f325c01f1e11f9912eabb55ff0cb2f5a77",
+        "highlight_sync.json": "3ae3472af703043b922f8166f5e43bcba101399d3167faab03adfcaea5f60f8e",
+        "public_book.json": "d89cf0249313e1a14fe52e41c513c2c457741614495d81ed6b57b820e79c09a0",
+        "reader_manifest.json": "b0a6af3fa57d2ee2b1399a50552523918ab705c1f1a7bb5f6703f457008d657a",
+        "source_evidence.json": "aebe2a1d7a459a2c2444a0b4ae3ca4b82088bdb21387af6cf20c3e0d36c9bcfe"
+      },
+      "source_url": "https://www.gutenberg.org/ebooks/902",
+      "author_death_year": 1900,
+      "original_publication_year": 1888,
+      "jurisdiction": "IN",
+      "text_basis": "Original literary text published during the author’s lifetime; India Copyright Act 1957 section 22, life plus 60 years, assessed separately from repository U.S. notices.",
+      "source_layer": "Selected original text only, with repository boilerplate, protected modern editorial matter, illustrations and collection framing excluded; existing chapter/source repair proofs preserved.",
+      "source_hash": "aec5f24c5cef2533989442028811632667522939a78217a9f3d07389b5c6d145",
+      "content_hash": "d2ced3c3b48dbc0a9af63c8cec2e0010693083c6ed590a3717a5f351e90ee8ff",
+      "provenance_hash": "5e120d6dafa93babec1d71b47449195d32028d52d3c3e98ea3d5c870f9d6ff7f",
+      "chapter_count": 1,
+      "chapter_file_sha256": {
+        "chapter-001.json": "1102f2638f209d7881c6ed3f7b88eb9ca5fb7e2740ac32cdb45ce291069e9ae7"
+      },
+      "reader_QA": "Unchanged merged-main source/boundary regressions: 44 passed. Fresh retained-checksum, complete sanitized text parity and offline canonical page projection checks passed for all 66 chapters; see reader_QA.json. Offline proof does not assert a production active version or authenticated observation.",
+      "owner_manual_observation_waiver": "Issue #477 conditional waiver applies to exact independently complete and integrity-clean sources; does not convert unobserved production facts into observations.",
+      "editorial_additions": "No third-party modern introduction, notes, anthology layout, illustrations or author portrait is included in the delivered chapters. Original author preface and chapter prose are retained where applicable.",
+      "metadata_basis": "Existing title/author facts and original Earnalism descriptions; metadata source and exact bytes retained in the reviewed package.",
+      "audio": "Not accepted or activated by this decision.",
+      "cover": {
+        "basis": "Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art.",
+        "audit_path": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json",
+        "audit_sha256": "8b024fad4e023f74612ebb4925218f4a2acac65d33e1a255662157ebdd40e2d7",
+        "generator": "scripts/render_english_25_missing_covers.py",
+        "generator_sha256": "82a8c078f8c855deac50aa6f8af6cfc78f6c152af7578e6ae0f88e1a0063f354",
+        "font_source": "Original first-party programmatic composition with rasterized system typography, as evidenced by the retained generator and exact asset audit. The historical font selected from Georgia, Times New Roman or DejaVu was not recorded; no claim that a current Linux rerender identifies the historical font. No font software is distributed. DejaVu permission reference documents only that generator option, not an asserted identification of the existing font.",
+        "font_license_url": "https://dejavu-fonts.github.io/License.html",
+        "assistant_visual_review": "Actual retained front and back images inspected in the 2026-10-01 review; readable exact title and author, no third-party logo, image, character portrait or clipped text observed. No independent human review claimed.",
+        "assets": {
+          "front": {
+            "path": "frontend/public/assets/books/the-happy-prince/front-cover.webp",
+            "sha256": "4d66d9da62bcecf1b6cd4a778a1ff21659454272d4cb7fcddf3e7f396b62955f",
+            "bytes": 20138,
+            "url": "https://theearnalism.com/assets/books/the-happy-prince/front-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          },
+          "back": {
+            "path": "frontend/public/assets/books/the-happy-prince/back-cover.webp",
+            "sha256": "8c3a27d696997837f3a1f2ea1aa49b74e7993cfaa30bb7abbc6a9f3f91a37334",
+            "bytes": 24006,
+            "url": "https://theearnalism.com/assets/books/the-happy-prince/back-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "picture-of-dorian-gray",
+      "title": "The Picture of Dorian Gray",
+      "author": "Oscar Wilde",
+      "checked_at": "2026-10-01T05:24:02.900009+00:00",
+      "pre_release_package": "backend/data/controlled_publications/picture-of-dorian-gray",
+      "pre_release_files": {
+        "approval_evidence.json": "48f9cfa9061d9c979a23b4a51c411b4446275015ae971a967d85afef35b4ce85",
+        "chapters/chapter-001.json": "7a9c793f018bb3531b5627d749d155dd56d85310f72a82a454e7ef06396f5f2f",
+        "chapters/chapter-002.json": "48a907f317ee1f7abad4ad0cc4bd1baeecd67321e12c3e01c2b9986bd4f31134",
+        "chapters/chapter-003.json": "a6d7a978e502ef9054e0120504ac13f8503307de8b1996535bdd936503f2380a",
+        "chapters/chapter-004.json": "ac8d66268d28eb2e5753f025e430a4aa37892f1375b0128391839e188a946e69",
+        "chapters/chapter-005.json": "1d95231b52a887b77fbaafc335ed0d13a54c0fd1c483c872a40f1c3c119e9290",
+        "chapters/chapter-006.json": "d44bc264b7eff0ed411c1e1fef8f70d3857d20e3945e0f40470d7405db192932",
+        "chapters/chapter-007.json": "fa23c5cb28a83364fe9a9bddd8f104634fd70735dc2192b6fc262f1ee6b81d4b",
+        "chapters/chapter-008.json": "b0d7ddab6648672bba283cc7379a52804644a87ca64ea74099c1d30ca1c3fb6b",
+        "chapters/chapter-009.json": "ee136dfd3291c8169faa772b6cd29006d7e0d6c5c6b5d63680b8d1e3cabb8c73",
+        "chapters/chapter-010.json": "d39e9e8782778e4277c6968ec6ebaf4fe1eea61417bde649459f3d6eef7c8d61",
+        "chapters/chapter-011.json": "0002b78c4b90fe0936fed08217ce163d7b30a5753eac3e59ff3f55585e720c9d",
+        "chapters/chapter-012.json": "78bc698d2a28afd81cf37d9c8326457b1681e0ff123282ba24dd67a2a8e3dda9",
+        "chapters/chapter-013.json": "6c4af018541da8c3de794ab2e6845858079f6a4bc37a078d71b0e51dc53ec90f",
+        "chapters/chapter-014.json": "955f94129de74693a1b112bb913695c5d53afa8be60bc796f1fdbd25f740cfd1",
+        "chapters/chapter-015.json": "1c1da1141ede4201a4eba69447cb92d79e4c5d8eda0a8365922d9d6e1193d82b",
+        "chapters/chapter-016.json": "7e02c5a49740d0c65060ca747085657f3f974b41ffa19afcc93d0fa6c4d95af5",
+        "chapters/chapter-017.json": "a73d0fecb63755956d15522f5c4802dc1fd3bf24088057c62fa65caa26455b8c",
+        "chapters/chapter-018.json": "c31dc13b6e6eb2889dbe9f42c2c0367a99b47c8171b50657cf1f7b6baefca41c",
+        "chapters/chapter-019.json": "da38299f139b8654812de331af035f62ce3cf91caa09a0c20439cf69c0ec5f98",
+        "chapters/chapter-020.json": "f98dc79541d626ab9e46e22e9197b6b2853dc76d3e6371051f9246c92f3c47b7",
+        "chapters/chapter-021.json": "56808ecf91437ecb439b9e1cad4222e600839fc8c6a4ab03ccd3d65efa7cf376",
+        "checksum_manifest.json": "7d0552627862f78cc9425cd62a490aba1f21731aebde41c3293b911b31b379e0",
+        "highlight_sync.json": "90db4890da0e4d5b8e9d589df0839ed9840c1aedf20bbff552f61bef1984309c",
+        "public_book.json": "5704c1ff4a5dc5e03e633b766d0a56932814199a019b0292e463f553625a181c",
+        "reader_manifest.json": "6a7653d407d43a0e8e51b1831e3f622c914bd3700f77ba104a6bbdbc85b83d09",
+        "reader_repair_evidence.json": "b00d023b3955eb4ba6f185d7de020a941eb059ddf022056eaa240eff6990f253",
+        "source_evidence.json": "4a89b5e09914efd550ae2d058d60e96aad90c42d79a6f301093ddfd9c7666faf"
+      },
+      "source_url": "https://www.gutenberg.org/ebooks/174.txt.utf-8",
+      "author_death_year": 1900,
+      "original_publication_year": 1890,
+      "jurisdiction": "IN",
+      "text_basis": "Original literary text published during the author’s lifetime; India Copyright Act 1957 section 22, life plus 60 years, assessed separately from repository U.S. notices.",
+      "source_layer": "Selected original text only, with repository boilerplate, protected modern editorial matter, illustrations and collection framing excluded; existing chapter/source repair proofs preserved.",
+      "source_hash": "9e37dc7035cb6991073be62b6e8de858173cd8608a25ec5a5ca78c6608458932",
+      "content_hash": "73afc95ebd217de9ff7cb189a89308591fa3de51e6d92cbdf70b703ad435ad81",
+      "provenance_hash": "532afed1d7e68f6b2495b8b0d27c64d38fffda7a337b2ff47bdcec42f6aa8883",
+      "chapter_count": 21,
+      "chapter_file_sha256": {
+        "chapter-001.json": "7a9c793f018bb3531b5627d749d155dd56d85310f72a82a454e7ef06396f5f2f",
+        "chapter-002.json": "48a907f317ee1f7abad4ad0cc4bd1baeecd67321e12c3e01c2b9986bd4f31134",
+        "chapter-003.json": "a6d7a978e502ef9054e0120504ac13f8503307de8b1996535bdd936503f2380a",
+        "chapter-004.json": "ac8d66268d28eb2e5753f025e430a4aa37892f1375b0128391839e188a946e69",
+        "chapter-005.json": "1d95231b52a887b77fbaafc335ed0d13a54c0fd1c483c872a40f1c3c119e9290",
+        "chapter-006.json": "d44bc264b7eff0ed411c1e1fef8f70d3857d20e3945e0f40470d7405db192932",
+        "chapter-007.json": "fa23c5cb28a83364fe9a9bddd8f104634fd70735dc2192b6fc262f1ee6b81d4b",
+        "chapter-008.json": "b0d7ddab6648672bba283cc7379a52804644a87ca64ea74099c1d30ca1c3fb6b",
+        "chapter-009.json": "ee136dfd3291c8169faa772b6cd29006d7e0d6c5c6b5d63680b8d1e3cabb8c73",
+        "chapter-010.json": "d39e9e8782778e4277c6968ec6ebaf4fe1eea61417bde649459f3d6eef7c8d61",
+        "chapter-011.json": "0002b78c4b90fe0936fed08217ce163d7b30a5753eac3e59ff3f55585e720c9d",
+        "chapter-012.json": "78bc698d2a28afd81cf37d9c8326457b1681e0ff123282ba24dd67a2a8e3dda9",
+        "chapter-013.json": "6c4af018541da8c3de794ab2e6845858079f6a4bc37a078d71b0e51dc53ec90f",
+        "chapter-014.json": "955f94129de74693a1b112bb913695c5d53afa8be60bc796f1fdbd25f740cfd1",
+        "chapter-015.json": "1c1da1141ede4201a4eba69447cb92d79e4c5d8eda0a8365922d9d6e1193d82b",
+        "chapter-016.json": "7e02c5a49740d0c65060ca747085657f3f974b41ffa19afcc93d0fa6c4d95af5",
+        "chapter-017.json": "a73d0fecb63755956d15522f5c4802dc1fd3bf24088057c62fa65caa26455b8c",
+        "chapter-018.json": "c31dc13b6e6eb2889dbe9f42c2c0367a99b47c8171b50657cf1f7b6baefca41c",
+        "chapter-019.json": "da38299f139b8654812de331af035f62ce3cf91caa09a0c20439cf69c0ec5f98",
+        "chapter-020.json": "f98dc79541d626ab9e46e22e9197b6b2853dc76d3e6371051f9246c92f3c47b7",
+        "chapter-021.json": "56808ecf91437ecb439b9e1cad4222e600839fc8c6a4ab03ccd3d65efa7cf376"
+      },
+      "reader_QA": "Unchanged merged-main source/boundary regressions: 44 passed. Fresh retained-checksum, complete sanitized text parity and offline canonical page projection checks passed for all 66 chapters; see reader_QA.json. Offline proof does not assert a production active version or authenticated observation.",
+      "owner_manual_observation_waiver": "Issue #477 conditional waiver applies to exact independently complete and integrity-clean sources; does not convert unobserved production facts into observations.",
+      "editorial_additions": "No third-party modern introduction, notes, anthology layout, illustrations or author portrait is included in the delivered chapters. Original author preface and chapter prose are retained where applicable.",
+      "metadata_basis": "Existing title/author facts and original Earnalism descriptions; metadata source and exact bytes retained in the reviewed package.",
+      "audio": "Not accepted or activated by this decision.",
+      "cover": {
+        "basis": "Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art.",
+        "audit_path": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json",
+        "audit_sha256": "8b024fad4e023f74612ebb4925218f4a2acac65d33e1a255662157ebdd40e2d7",
+        "generator": "scripts/render_english_25_missing_covers.py",
+        "generator_sha256": "82a8c078f8c855deac50aa6f8af6cfc78f6c152af7578e6ae0f88e1a0063f354",
+        "font_source": "Original first-party programmatic composition with rasterized system typography, as evidenced by the retained generator and exact asset audit. The historical font selected from Georgia, Times New Roman or DejaVu was not recorded; no claim that a current Linux rerender identifies the historical font. No font software is distributed. DejaVu permission reference documents only that generator option, not an asserted identification of the existing font.",
+        "font_license_url": "https://dejavu-fonts.github.io/License.html",
+        "assistant_visual_review": "Actual retained front and back images inspected in the 2026-10-01 review; readable exact title and author, no third-party logo, image, character portrait or clipped text observed. No independent human review claimed.",
+        "assets": {
+          "front": {
+            "path": "frontend/public/assets/books/picture-of-dorian-gray/front-cover.webp",
+            "sha256": "2222284a9d1a2f5e1e5c7f0b95eb3bdfb6775e3b83a953d9ecb3e071d6588657",
+            "bytes": 19390,
+            "url": "https://theearnalism.com/assets/books/picture-of-dorian-gray/front-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          },
+          "back": {
+            "path": "frontend/public/assets/books/picture-of-dorian-gray/back-cover.webp",
+            "sha256": "ade357db40d10ab548cdff0ddbf2b77e5f7aeaba8dd7e8a666667d01fd4b50d6",
+            "bytes": 26352,
+            "url": "https://theearnalism.com/assets/books/picture-of-dorian-gray/back-cover.webp",
+            "dimensions": [
+              800,
+              1200
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "deferred": [
+    {
+      "slug": "the-art-of-money-getting",
+      "reason": "Current front/back cover component provenance is missing; root/runtime historical approval evidence differs. Preserve both versions and audio evidence."
+    },
+    {
+      "slug": "the-selfish-giant",
+      "reason": "Current exact cover provenance is not substantiated by the source package; retain approved historical audio evidence without enabling it."
+    },
+    {
+      "slug": "the-most-dangerous-game",
+      "reason": "CC BY-SA transcription needs actual visible edition credits, same-license adaptation notice and no downstream copy/print restriction before this exact source layer can be accepted."
+    },
+    {
+      "slug": "the-science-of-getting-rich",
+      "reason": "Existing CDN cover lacks exact creator/licence/hash provenance."
+    },
+    {
+      "slug": "the-great-gatsby",
+      "reason": "Exact cover local provenance is explicitly blocked and revised source/Reader approval remains incomplete."
+    },
+    {
+      "slug": "the-wonderful-wizard-of-oz",
+      "reason": "Root/runtime manuscripts differ; no raw source archive and cover provenance sufficient to select an approved exact canonical edition."
+    }
+  ],
+  "final_package_preflight_at": "2026-10-01T05:38:07.922769+00:00"
+}

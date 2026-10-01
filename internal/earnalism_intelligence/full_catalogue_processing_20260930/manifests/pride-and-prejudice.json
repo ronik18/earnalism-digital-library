@@ -897,8 +897,8 @@
       "sanitized": true,
       "source_hash": "fcf234e0476cc6af8b3f604399bf3d7c4b72931bdf2af276ab4cc78caf938d5c"
     },
-    "generated_at": "2026-10-01T03:17:21.336723+00:00",
-    "manifest_sha256": "0acbad546fa13d4b2bdebfaa7f184096d21d05902379983712aa9d293ddb0c81",
+    "generated_at": "2026-10-01T05:38:07.922769+00:00",
+    "manifest_sha256": "4acd8095022396ea660d6daca5f7b7f9bc99736630e20fb49de4ef467747c385",
     "reader_release": {
       "blockers": [
         "ACCEPTED_DECISION_MISSING",

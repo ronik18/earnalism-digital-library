@@ -1,6 +1,6 @@
 {
   "slug": "the-open-boat",
-  "generated_at": "2026-08-15T22:31:13Z",
+  "generated_at": "2026-10-01T05:38:07.922769+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
@@ -9,6 +9,10 @@
     {
       "file": "chapters/chapter-001.json",
       "sha256": "f07b6cae3f668eaa44c6f75238bd62344876077b930e3417693b8429da5a751f"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "e59cfb8f96345748ddcf1cc824fcdea4f574b4f078dc097466d07effc09ab887"
     },
     {
       "file": "highlight_sync.json",
@@ -21,6 +25,10 @@
     {
       "file": "reader_manifest.json",
       "sha256": "5eca0e75ee9c7ded8776eccc22c45e9ff2480efa8de3c9123bfaaed0f61ec36a"
+    },
+    {
+      "file": "reader_release_approval.json",
+      "sha256": "c2d2978ae56d147b2f2664e6555fa0048a80083eff183964f8d7df0a90c75de1"
     },
     {
       "file": "source_evidence.json",

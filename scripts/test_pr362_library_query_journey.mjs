@@ -28,6 +28,16 @@ const books = [
   { slug: "approved-audio-without-runtime", title: "Approved Bengali audio release", author: "Fixture Editor", short_description: "Bengali edition with approved audio metadata but no public media asset", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/approved-audio-without-runtime", reader_url: "/reader/approved-audio-without-runtime", preview_enabled: true, preview_url: "/reader/approved-audio-without-runtime", chapters: [{ id: "chapter-001", is_preview: true }], audio_enabled: true, audiobook_enabled: true, audiobook_release_gate: "APPROVED", audio_qa_status: "QA_PASSED", audio_url: "", audiobook_assets: {} },
   { slug: "hungry-stones", title: "The Hungry Stones", author: "Rabindranath Tagore", short_description: "English translation", language: "en", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/hungry-stones", reader_url: "/reader/hungry-stones", preview_enabled: true, preview_url: "/reader/hungry-stones", chapters: [{ id: "chapter-001", is_preview: true }] },
 ];
+// Add the exact reviewed near-ready release fixtures from the safe public
+// metadata contract. Keep the independent held/malformed/audio fixtures above.
+const nearReadySlugs = ["a-horseman-in-the-sky", "a-mystery-of-heroism", "a-scandal-in-bohemia", "jekyll-and-hyde", "love-of-life", "the-bishop", "the-fall-of-the-house-of-usher", "the-lady-with-the-dog", "the-man-who-would-be-king", "the-open-boat", "the-pit-and-the-pendulum", "the-stolen-white-elephant", "an-occurrence-at-owl-creek-bridge", "the-enchanted-april", "the-happy-prince", "picture-of-dorian-gray"];
+const publicContract = JSON.parse(readFileSync(new URL("../frontend/static-seo/controlled-publication-public.json", import.meta.url), "utf8"));
+for (const slug of nearReadySlugs) {
+  const source = publicContract.publications.find((row) => row.slug === slug);
+  assert.ok(source, `Reviewed release ${slug} must have a public metadata contract`);
+  assert.equal(books.some((row) => row.slug === slug), false, `Duplicate fixture ${slug}`);
+  books.push({ ...source, language: "en", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: `/book/${slug}`, reader_url: `/reader/${slug}`, preview_enabled: true, preview_url: `/reader/${slug}`, chapters: [{ id: "chapter-001", is_preview: true }] });
+}
 const expectedHeaderUrl = "?language=bn&availability=reader-ready";
 const apiEligibleSlugs = ["radharani"];
 const fallbackEligibleSlugs = [];
@@ -108,13 +118,20 @@ async function assertSelected(locator, label) {
 async function assertDisplayedSlugs(page, expectedSlugs) {
   const surface = referenceSurface(page);
   const expected = [...expectedSlugs].sort();
-  await page.waitForFunction((expectedIds) => {
-    const container = document.querySelector('[data-testid="library-reference-surface"]');
-    const ids = [...(container?.querySelectorAll('[data-testid^="reference-book-"]') || [])]
-      .map((node) => node.getAttribute("data-testid").replace("reference-book-", ""))
-      .sort();
-    return ids.join("\u0000") === expectedIds.join("\u0000");
-  }, expected, { timeout: Number(process.env.LIBRARY_JOURNEY_SETTLE_TIMEOUT_MS || 30000) });
+  try {
+    await page.waitForFunction((expectedIds) => {
+      const container = document.querySelector('[data-testid="library-reference-surface"]');
+      const ids = [...(container?.querySelectorAll('[data-testid^="reference-book-"]') || [])]
+        .map((node) => node.getAttribute("data-testid").replace("reference-book-", ""))
+        .sort();
+      return ids.join("\u0000") === expectedIds.join("\u0000");
+    }, expected, { timeout: Number(process.env.LIBRARY_JOURNEY_SETTLE_TIMEOUT_MS || 30000) });
+  } catch (error) {
+    const actual = await surface.locator('[data-testid^="reference-book-"]').evaluateAll((nodes) => (
+      nodes.map((node) => node.getAttribute("data-testid").replace("reference-book-", "")).sort()
+    ));
+    throw new Error(`Library editions did not settle at ${page.url()}: ${JSON.stringify({ expected, actual, missing: expected.filter((slug) => !actual.includes(slug)), unexpected: actual.filter((slug) => !expected.includes(slug)) })}`, { cause: error });
+  }
   const displayedSlugs = await surface.locator('[data-testid^="reference-book-"]').evaluateAll((nodes) => (
     nodes.map((node) => node.getAttribute("data-testid").replace("reference-book-", "")).sort()
   ));
@@ -132,7 +149,23 @@ async function assertEligibleReaderResults(page, expectedSlugs) {
 async function assertCurrentControlledLaunchResults(page, name) {
   await page.goto(`${baseUrl.replace(/\/$/, "")}/library?listening=hidden`, { waitUntil: "domcontentloaded" });
   await referenceSurface(page).waitFor();
+  // Preserve the existing ten-edition shelf. Traverse its real controls before
+  // asserting the complete, independently reviewed 24-edition release scope.
+  const fixtureOrder = books.filter((book) => releasedSlugs.includes(book.slug)).map((book) => book.slug);
+  assert.equal(fixtureOrder.length, 24, "The current release fixture must contain exactly 24 approved editions");
+  await assertDisplayedSlugs(page, fixtureOrder.slice(0, 10));
+  for (const [nextCount, shownCount] of [[10, 20], [4, 24]]) {
+    const previousCount = shownCount - nextCount;
+    const more = referenceSurface(page).getByRole("button", { name: `Show ${nextCount} more editions in Live now`, exact: true });
+    await more.click();
+    await assertDisplayedSlugs(page, fixtureOrder.slice(0, shownCount));
+    const firstNewCover = referenceSurface(page).getByTestId(`reference-book-${fixtureOrder[previousCount]}`).locator("a[href]").first();
+    await page.waitForFunction((slug) => document.activeElement === document.querySelector(`[data-testid="reference-book-${slug}"] a[href]`), fixtureOrder[previousCount]);
+    assert.equal(await firstNewCover.evaluate((element) => element === document.activeElement), true, `${name}: Show more must focus the first new edition`);
+  }
+  assert.equal(await referenceSurface(page).locator(".reference-library-show-more").count(), 0, `${name}: Show more must disappear once all approved editions are shown`);
   await assertDisplayedSlugs(page, releasedSlugs);
+  await assertNoHorizontalOverflow(page, `${name}: expanded approved shelf`);
   for (const slug of releasedSlugs) {
     const card = referenceSurface(page).getByTestId(`reference-book-${slug}`);
     const read = card.getByRole("link", { name: "Read", exact: true });

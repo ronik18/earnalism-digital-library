@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "an-occurrence-at-owl-creek-bridge",
+  "title": "An Occurrence at Owl Creek Bridge",
+  "generated_at": "2026-10-01T05:38:07.922769+00:00",
+  "content": {
+    "source_hash": "403d163c894a364aa545f11f0a1e491f8f017f217ecaa61d94f09000e57156d6",
+    "content_hash": "0687ac64681f6c58ce748c89ecb8800b15be0591a2b6a75d512d985ac40134b7",
+    "provenance_hash": "7f8106f25b45e035360a6691d96e1412e8de72f5e1f95421c5bb431547d9cf30",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "50c7de1ac0499c5635c95227ee6a35d7691abd958465b30f32d8a81695fd8d76",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "An Occurrence at Owl Creek Bridge",
+        "word_count": 3764,
+        "sha256": "426b65889907daa4afa0d1c7a0a888a9b332c9188b72ec4eeefa3731166c5e3b"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "in",
+    "evidence_sha256": "3243e4e6f0b4cc47d72bd0b3b5b43f0724ef8af8875f6fa1cd74264218b32be1"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "cb2393c098ba17ceae6ad8a9fdb9d4e0e78f4a9f67529f8ad1c3bcd2a363c6bb",
+    "reader_manifest": "791870c247a3b38ab2b35aaf32c148e76b42f1ccb4f954f1225a5c1e8b144ce5",
+    "source_evidence": "3243e4e6f0b4cc47d72bd0b3b5b43f0724ef8af8875f6fa1cd74264218b32be1",
+    "approval_evidence": "397e92e48ebdf882998540c67e7f09a39bb59fc148d62b0817bfeee9dcb7ae34"
+  },
+  "manifest_sha256": "9c707d9f40fceb312946e3a9e954941551e5a942c8c0149658dc7adea01c3684"
+}

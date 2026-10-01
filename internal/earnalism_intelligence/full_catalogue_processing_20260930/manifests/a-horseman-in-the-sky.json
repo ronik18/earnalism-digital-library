@@ -2,10 +2,14 @@
   "active_files_sha256": {
     "approval_evidence.json": "11791436f943e5791b7efca9279a53679162c97f17e56f7a7697b202a251ba59",
     "chapters/chapter-001.json": "528d930f6fcfc8f6a7ec80011ca49a3e67eca6f819190292d5cf3b2a8815cea4",
-    "checksum_manifest.json": "12929c23cc6ee9b3b41619faa5b4ea4f25bff9542a10955765f0fc81a212549e",
+    "checksum_manifest.json": "1b322ac61b215ad548fd5fbb53d23f3a9ba22284bbe18959ea2725745c08ab6d",
+    "cover_provenance.json": "29cabaa07a389900131847493093c31cc6f325f3f4a5af662d8fe27886c3672a",
     "highlight_sync.json": "05b546dff59917be0427fcd086f35b7f9027dd217d00e7e43999d2e2f8696426",
     "public_book.json": "a71a3be63c1b726178143ca04a198b22e83f4982487cbb13685991f4edeb14b8",
+    "publication_manifest.json": "50ab70a25eadfdeeb56a0fd88d03244cbf7d564e534b22598a5d3f3dfb501736",
     "reader_manifest.json": "fcf6313edcaaac648fbc96dcb446bca87b5c5a79118606e3556905d681406748",
+    "reader_release_approval.json": "abacbdf60c02af5269baba9f6de932d191e6e465fcdc6b5de32d34f92ebbf599",
+    "rights_decision.json": "649dfea2d9bc8aa038069a05d37d51074c366a12cbdab6772bb6c5d019ccf9a8",
     "source_evidence.json": "3ff8648598f3766ad11fd1df4f0b6d63f71d2f4061ca95bfbc6caf124574af3c"
   },
   "chapter_content_hashes": [
@@ -18,10 +22,14 @@
   "input_files_sha256": {
     "approval_evidence.json": "11791436f943e5791b7efca9279a53679162c97f17e56f7a7697b202a251ba59",
     "chapters/chapter-001.json": "528d930f6fcfc8f6a7ec80011ca49a3e67eca6f819190292d5cf3b2a8815cea4",
-    "checksum_manifest.json": "12929c23cc6ee9b3b41619faa5b4ea4f25bff9542a10955765f0fc81a212549e",
+    "checksum_manifest.json": "1b322ac61b215ad548fd5fbb53d23f3a9ba22284bbe18959ea2725745c08ab6d",
+    "cover_provenance.json": "29cabaa07a389900131847493093c31cc6f325f3f4a5af662d8fe27886c3672a",
     "highlight_sync.json": "05b546dff59917be0427fcd086f35b7f9027dd217d00e7e43999d2e2f8696426",
     "public_book.json": "a71a3be63c1b726178143ca04a198b22e83f4982487cbb13685991f4edeb14b8",
+    "publication_manifest.json": "50ab70a25eadfdeeb56a0fd88d03244cbf7d564e534b22598a5d3f3dfb501736",
     "reader_manifest.json": "fcf6313edcaaac648fbc96dcb446bca87b5c5a79118606e3556905d681406748",
+    "reader_release_approval.json": "abacbdf60c02af5269baba9f6de932d191e6e465fcdc6b5de32d34f92ebbf599",
+    "rights_decision.json": "649dfea2d9bc8aa038069a05d37d51074c366a12cbdab6772bb6c5d019ccf9a8",
     "source_evidence.json": "3ff8648598f3766ad11fd1df4f0b6d63f71d2f4061ca95bfbc6caf124574af3c"
   },
   "publication_authority": false,
@@ -58,17 +66,14 @@
       "sanitized": true,
       "source_hash": "80fcddf28824332d64cd71c5715a34fe73be1c4c51959edb7e6a6513338afaa7"
     },
-    "generated_at": "2026-10-01T03:17:21.336723+00:00",
-    "manifest_sha256": "b841283caa786992aafa3a3ddec3784ba5c2e359f730687db870449d8e7bae0c",
+    "generated_at": "2026-10-01T05:38:07.922769+00:00",
+    "manifest_sha256": "549877fd2e3f41571d367070c7aa647901b88f578a377c8148aa54cc71340905",
     "reader_release": {
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
-      ],
+      "blockers": [],
       "cover_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
-      "exposed": false,
+      "exposed": true,
       "qa_status": "QA_PASSED",
-      "status": "BLOCKED"
+      "status": "APPROVED"
     },
     "rights": {
       "evidence_sha256": "3ff8648598f3766ad11fd1df4f0b6d63f71d2f4061ca95bfbc6caf124574af3c",
@@ -82,28 +87,22 @@
     "title": "A Horseman in the Sky"
   },
   "rights_assessment": {
-    "decision_id": null,
-    "offline_india_text_scope_passed": false,
+    "decision_id": "india-20261001-a-horseman-in-the-sky-owner-text-reader",
+    "offline_india_text_scope_passed": true,
     "production_request_verified": false,
-    "registry_bound": false,
+    "registry_bound": true,
     "runtime_actions": {
       "catalog_cta": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_chapter": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_manifest": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       }
     }
   },

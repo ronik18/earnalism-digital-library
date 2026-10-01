@@ -1500,8 +1500,8 @@
       "sanitized": false,
       "source_hash": "13b3cd4ddacc72b184fc34406a6b8cf063e0ca631697e7006752a032165fb202"
     },
-    "generated_at": "2026-10-01T03:17:21.336723+00:00",
-    "manifest_sha256": "d9759eb047c556f660b9740069bb8a33d4a2efed2588e39a239a20508ca4052c",
+    "generated_at": "2026-10-01T05:38:07.922769+00:00",
+    "manifest_sha256": "6392a0da27130da602fd2a26c2a4d92fe0fb28490592f46bc2ec8b9512aa5e29",
     "reader_release": {
       "blockers": [
         "ACCEPTED_DECISION_MISSING",

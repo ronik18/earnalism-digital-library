@@ -1,10 +1,10 @@
 {
   "slug": "picture-of-dorian-gray",
-  "generated_at": "2026-08-16T00:00:00Z",
+  "generated_at": "2026-10-01T05:38:07.922769+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "48f9cfa9061d9c979a23b4a51c411b4446275015ae971a967d85afef35b4ce85"
+      "sha256": "009e924803328f964e55e44e04e40d9ebe04edb8f17affe91ad1b5582c7513f5"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -91,16 +91,24 @@
       "sha256": "56808ecf91437ecb439b9e1cad4222e600839fc8c6a4ab03ccd3d65efa7cf376"
     },
     {
+      "file": "cover_provenance.json",
+      "sha256": "0e07dceaed4c9489c5a478b3bb1f2198dd48ca3e70714b72c2042b0779547006"
+    },
+    {
       "file": "highlight_sync.json",
       "sha256": "90db4890da0e4d5b8e9d589df0839ed9840c1aedf20bbff552f61bef1984309c"
     },
     {
       "file": "public_book.json",
-      "sha256": "5704c1ff4a5dc5e03e633b766d0a56932814199a019b0292e463f553625a181c"
+      "sha256": "73406a82723f6a990f1d55ccab838270a15ad4c24cd44d93f4da5a6f495228ee"
     },
     {
       "file": "reader_manifest.json",
       "sha256": "6a7653d407d43a0e8e51b1831e3f622c914bd3700f77ba104a6bbdbc85b83d09"
+    },
+    {
+      "file": "reader_release_approval.json",
+      "sha256": "08f58b76de0478b177cd0dd777fbf8e3446c5f0f0cc9c227d5e9543b73edeaf1"
     },
     {
       "file": "reader_repair_evidence.json",

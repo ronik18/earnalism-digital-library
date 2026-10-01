@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "a-horseman-in-the-sky",
+  "title": "A Horseman in the Sky",
+  "generated_at": "2026-10-01T05:38:07.922769+00:00",
+  "content": {
+    "source_hash": "80fcddf28824332d64cd71c5715a34fe73be1c4c51959edb7e6a6513338afaa7",
+    "content_hash": "3f89be2c6d914ead58cb73bf95c7912f9061c0552efb0c3c1d4fbc34946752bf",
+    "provenance_hash": "d6b045255992fbb0ad9ef6b59c3017dc1211c4cd52a5ef1eb7b576ddeb7f658e",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "b45a1c5b3f34d82b7400b3d6d5f2273cf80c40c75584977b136383579d3efc2e",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "A Horseman in the Sky",
+        "word_count": 2488,
+        "sha256": "528d930f6fcfc8f6a7ec80011ca49a3e67eca6f819190292d5cf3b2a8815cea4"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "in",
+    "evidence_sha256": "3ff8648598f3766ad11fd1df4f0b6d63f71d2f4061ca95bfbc6caf124574af3c"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/a-horseman-in-the-sky/front-cover.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "a71a3be63c1b726178143ca04a198b22e83f4982487cbb13685991f4edeb14b8",
+    "reader_manifest": "fcf6313edcaaac648fbc96dcb446bca87b5c5a79118606e3556905d681406748",
+    "source_evidence": "3ff8648598f3766ad11fd1df4f0b6d63f71d2f4061ca95bfbc6caf124574af3c",
+    "approval_evidence": "11791436f943e5791b7efca9279a53679162c97f17e56f7a7697b202a251ba59"
+  },
+  "manifest_sha256": "549877fd2e3f41571d367070c7aa647901b88f578a377c8148aa54cc71340905"
+}

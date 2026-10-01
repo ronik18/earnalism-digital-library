@@ -1,14 +1,19 @@
 {
   "slug": "an-occurrence-at-owl-creek-bridge",
-  "approved_to_publish": false,
+  "approved_to_publish": true,
   "rights_tier": "A",
   "verification_status": "approved",
-  "qa_status": "READY_FOR_APPROVAL",
-  "approval_scope": "historical_admin_import_reconstruction_superseded",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "owner_delegated_exact_india_text_release",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
   "audiobook_enabled": false,
   "historical_approval_superseded": true,
-  "reader_public_release": "READER_APPROVAL_REQUIRED"
+  "reader_public_release": "READER_APPROVAL_REQUIRED",
+  "publication_status": "LIVE_APPROVED",
+  "approved_by": "Codex under Ronik Basak direct autonomous release authority",
+  "approved_at": "2026-10-01T05:38:07.922769+00:00",
+  "reader_qa_evidence_sha256": "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+  "component_review_sha256": "8b4c0ebbf854fc4ab4e23b3be155149ef9abd14bd3ddda6eb925eb3b904eb403"
 }

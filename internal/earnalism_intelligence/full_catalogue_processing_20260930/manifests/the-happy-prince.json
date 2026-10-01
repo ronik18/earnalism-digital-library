@@ -1,11 +1,15 @@
 {
   "active_files_sha256": {
-    "approval_evidence.json": "6fb7dc5b9dd1d8aedeec379808dfa8d289c918b34629b269a517233eca579779",
+    "approval_evidence.json": "45cb73bfad4cbc31ad1c4f1d80859c856381ed4d49dd1088861b01f6fb61b732",
     "chapters/chapter-001.json": "1102f2638f209d7881c6ed3f7b88eb9ca5fb7e2740ac32cdb45ce291069e9ae7",
-    "checksum_manifest.json": "e0f7e9578f367b264951a5131cb849f325c01f1e11f9912eabb55ff0cb2f5a77",
+    "checksum_manifest.json": "b2a9bb002999e39b543a05f32110ee30b85fd7afba3f82d2c84f3b6d64e02774",
+    "cover_provenance.json": "93e284dd1b12ddee26bfa9a27b330be8535867888da33fa5daeca0f501c8589c",
     "highlight_sync.json": "3ae3472af703043b922f8166f5e43bcba101399d3167faab03adfcaea5f60f8e",
-    "public_book.json": "d89cf0249313e1a14fe52e41c513c2c457741614495d81ed6b57b820e79c09a0",
+    "public_book.json": "3dc9a6887ff1ac2bc39329fa48190b657391a145c303d251f48a61414431f3af",
+    "publication_manifest.json": "6c033650ea71c4e3bd5a2766b308580141a50a2fa3e1d8127ac12cd5f1786d7a",
     "reader_manifest.json": "b0a6af3fa57d2ee2b1399a50552523918ab705c1f1a7bb5f6703f457008d657a",
+    "reader_release_approval.json": "a4d627767ab8cbf53f2d272a2491a99ac1f3b5e3368ca5472e5336673a0545c6",
+    "rights_decision.json": "6fc45d04284b89d2d2cd65409b40ef0b94febea0f6436d1d3aac6f405fc74769",
     "source_evidence.json": "aebe2a1d7a459a2c2444a0b4ae3ca4b82088bdb21387af6cf20c3e0d36c9bcfe"
   },
   "chapter_content_hashes": [
@@ -16,19 +20,23 @@
     }
   ],
   "input_files_sha256": {
-    "approval_evidence.json": "6fb7dc5b9dd1d8aedeec379808dfa8d289c918b34629b269a517233eca579779",
+    "approval_evidence.json": "45cb73bfad4cbc31ad1c4f1d80859c856381ed4d49dd1088861b01f6fb61b732",
     "chapters/chapter-001.json": "1102f2638f209d7881c6ed3f7b88eb9ca5fb7e2740ac32cdb45ce291069e9ae7",
-    "checksum_manifest.json": "e0f7e9578f367b264951a5131cb849f325c01f1e11f9912eabb55ff0cb2f5a77",
+    "checksum_manifest.json": "b2a9bb002999e39b543a05f32110ee30b85fd7afba3f82d2c84f3b6d64e02774",
+    "cover_provenance.json": "93e284dd1b12ddee26bfa9a27b330be8535867888da33fa5daeca0f501c8589c",
     "highlight_sync.json": "3ae3472af703043b922f8166f5e43bcba101399d3167faab03adfcaea5f60f8e",
-    "public_book.json": "d89cf0249313e1a14fe52e41c513c2c457741614495d81ed6b57b820e79c09a0",
+    "public_book.json": "3dc9a6887ff1ac2bc39329fa48190b657391a145c303d251f48a61414431f3af",
+    "publication_manifest.json": "6c033650ea71c4e3bd5a2766b308580141a50a2fa3e1d8127ac12cd5f1786d7a",
     "reader_manifest.json": "b0a6af3fa57d2ee2b1399a50552523918ab705c1f1a7bb5f6703f457008d657a",
+    "reader_release_approval.json": "a4d627767ab8cbf53f2d272a2491a99ac1f3b5e3368ca5472e5336673a0545c6",
+    "rights_decision.json": "6fc45d04284b89d2d2cd65409b40ef0b94febea0f6436d1d3aac6f405fc74769",
     "source_evidence.json": "aebe2a1d7a459a2c2444a0b4ae3ca4b82088bdb21387af6cf20c3e0d36c9bcfe"
   },
   "publication_authority": false,
   "publication_manifest": {
     "artifacts": {
-      "approval_evidence": "6fb7dc5b9dd1d8aedeec379808dfa8d289c918b34629b269a517233eca579779",
-      "public_book": "d89cf0249313e1a14fe52e41c513c2c457741614495d81ed6b57b820e79c09a0",
+      "approval_evidence": "45cb73bfad4cbc31ad1c4f1d80859c856381ed4d49dd1088861b01f6fb61b732",
+      "public_book": "3dc9a6887ff1ac2bc39329fa48190b657391a145c303d251f48a61414431f3af",
       "reader_manifest": "b0a6af3fa57d2ee2b1399a50552523918ab705c1f1a7bb5f6703f457008d657a",
       "source_evidence": "aebe2a1d7a459a2c2444a0b4ae3ca4b82088bdb21387af6cf20c3e0d36c9bcfe"
     },
@@ -58,18 +66,14 @@
       "sanitized": true,
       "source_hash": "aec5f24c5cef2533989442028811632667522939a78217a9f3d07389b5c6d145"
     },
-    "generated_at": "2026-10-01T03:17:21.336723+00:00",
-    "manifest_sha256": "aba62b5c85ac98364118b1cabb4ab2b5c4594ccc65be5147f3a0909ab3f29623",
+    "generated_at": "2026-10-01T05:38:07.922769+00:00",
+    "manifest_sha256": "07a6f556c8b21df5d182c8171e7ba86bb5e32039d76ad2d5d75b47ed54c867c9",
     "reader_release": {
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "Reader QA must pass."
-      ],
+      "blockers": [],
       "cover_url": "https://theearnalism.com/assets/books/the-happy-prince/front-cover.webp",
-      "exposed": false,
-      "qa_status": "READY_FOR_APPROVAL",
-      "status": "BLOCKED"
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
     },
     "rights": {
       "evidence_sha256": "aebe2a1d7a459a2c2444a0b4ae3ca4b82088bdb21387af6cf20c3e0d36c9bcfe",
@@ -83,28 +87,22 @@
     "title": "The Happy Prince"
   },
   "rights_assessment": {
-    "decision_id": null,
-    "offline_india_text_scope_passed": false,
+    "decision_id": "india-20261001-the-happy-prince-owner-text-reader",
+    "offline_india_text_scope_passed": true,
     "production_request_verified": false,
-    "registry_bound": false,
+    "registry_bound": true,
     "runtime_actions": {
       "catalog_cta": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_chapter": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_manifest": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       }
     }
   },

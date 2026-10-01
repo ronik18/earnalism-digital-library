@@ -2,10 +2,14 @@
   "active_files_sha256": {
     "approval_evidence.json": "bc3781aaac84dc7b5682bc752a3d75108c7be909561f642f5a510b2f2346d3ba",
     "chapters/chapter-001.json": "359d98971f6e9a67c38bc5b8e048816b3c205d508604aa8f08e88d67531fe36f",
-    "checksum_manifest.json": "98a6328b3d52782138c907049d74911ad2e346f547c1ab13d178f1a45f29297a",
+    "checksum_manifest.json": "9a8327a44e95cbfa3b7bce269a876804db4617b897cdbc1ee508c0a6aa86d239",
+    "cover_provenance.json": "da3e8d6549ff7b6a337e1007c0916777a2d02feb34bf4cd2413eaad13695452d",
     "highlight_sync.json": "16f9d37220950bef9983969503064c4ae2b9714bebdb12715828b7332e628b46",
     "public_book.json": "28924a8a0fcfa792c87b68b9e947a20d191fd343c67aa8a68ec2c544572ee38c",
+    "publication_manifest.json": "cbe0b20eba35819e2b5374c842989a443780c1cb36caf22a0e263c99c2e53a54",
     "reader_manifest.json": "63e9e1c437467cccbde56590fad2409d1a16274e659e7acda2b4fd9b3263bc9e",
+    "reader_release_approval.json": "e6c76214d5d6ad1a4ff215300b951578a94a77a4d0cf03fbef3403f56bbb5746",
+    "rights_decision.json": "41b7db86e47845721bb857d97734143fcb48cffe3c5f04989fb8d6e9fbb87032",
     "source_evidence.json": "dfc4b9a54b026547d60f75fbc96a7e5f8dd69a7c668f43d1bcd6130a84c230f0"
   },
   "chapter_content_hashes": [
@@ -18,10 +22,14 @@
   "input_files_sha256": {
     "approval_evidence.json": "bc3781aaac84dc7b5682bc752a3d75108c7be909561f642f5a510b2f2346d3ba",
     "chapters/chapter-001.json": "359d98971f6e9a67c38bc5b8e048816b3c205d508604aa8f08e88d67531fe36f",
-    "checksum_manifest.json": "98a6328b3d52782138c907049d74911ad2e346f547c1ab13d178f1a45f29297a",
+    "checksum_manifest.json": "9a8327a44e95cbfa3b7bce269a876804db4617b897cdbc1ee508c0a6aa86d239",
+    "cover_provenance.json": "da3e8d6549ff7b6a337e1007c0916777a2d02feb34bf4cd2413eaad13695452d",
     "highlight_sync.json": "16f9d37220950bef9983969503064c4ae2b9714bebdb12715828b7332e628b46",
     "public_book.json": "28924a8a0fcfa792c87b68b9e947a20d191fd343c67aa8a68ec2c544572ee38c",
+    "publication_manifest.json": "cbe0b20eba35819e2b5374c842989a443780c1cb36caf22a0e263c99c2e53a54",
     "reader_manifest.json": "63e9e1c437467cccbde56590fad2409d1a16274e659e7acda2b4fd9b3263bc9e",
+    "reader_release_approval.json": "e6c76214d5d6ad1a4ff215300b951578a94a77a4d0cf03fbef3403f56bbb5746",
+    "rights_decision.json": "41b7db86e47845721bb857d97734143fcb48cffe3c5f04989fb8d6e9fbb87032",
     "source_evidence.json": "dfc4b9a54b026547d60f75fbc96a7e5f8dd69a7c668f43d1bcd6130a84c230f0"
   },
   "publication_authority": false,
@@ -58,17 +66,14 @@
       "sanitized": true,
       "source_hash": "ef9ab1135b609dfa39aac169c9ed8040ca003b939bc42b9146fd9f5187b147a8"
     },
-    "generated_at": "2026-10-01T03:17:21.336723+00:00",
-    "manifest_sha256": "5c1f59d393a0d166f1970cfbda038f062cbd92b0cba3ad3bfb1841b0c33d5689",
+    "generated_at": "2026-10-01T05:38:07.922769+00:00",
+    "manifest_sha256": "f408850f409c4c76e4c29e4820dd1fa89c56c17c2881400e8d293c289fec2db8",
     "reader_release": {
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
-      ],
+      "blockers": [],
       "cover_url": "https://theearnalism.com/assets/books/the-lady-with-the-dog/front-cover.webp",
-      "exposed": false,
+      "exposed": true,
       "qa_status": "QA_PASSED",
-      "status": "BLOCKED"
+      "status": "APPROVED"
     },
     "rights": {
       "evidence_sha256": "dfc4b9a54b026547d60f75fbc96a7e5f8dd69a7c668f43d1bcd6130a84c230f0",
@@ -82,28 +87,22 @@
     "title": "The Lady with the Dog"
   },
   "rights_assessment": {
-    "decision_id": null,
-    "offline_india_text_scope_passed": false,
+    "decision_id": "india-20261001-the-lady-with-the-dog-owner-text-reader",
+    "offline_india_text_scope_passed": true,
     "production_request_verified": false,
-    "registry_bound": false,
+    "registry_bound": true,
     "runtime_actions": {
       "catalog_cta": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_chapter": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_manifest": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       }
     }
   },

@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-open-boat",
+  "title": "The Open Boat",
+  "generated_at": "2026-10-01T05:38:07.922769+00:00",
+  "content": {
+    "source_hash": "29a393e33c66ac380b611737429839d88116598a4b6397d03caa3c432175615f",
+    "content_hash": "863ac1ae6501ac2fea00d247925c839a76728c96c12f80bd70c0eddb771182a9",
+    "provenance_hash": "7fd768106afdded9d8170cd9c7b172491097cefb80d6eeb7914a7fb856517149",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "8fc91cd5fc2ae5232e74dcd94d92dfd2ce73238f5f05dc5009bde23f0c17bffb",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Open Boat",
+        "word_count": 9340,
+        "sha256": "f07b6cae3f668eaa44c6f75238bd62344876077b930e3417693b8429da5a751f"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "in",
+    "evidence_sha256": "362e86b588c8cd4b2f9e1f11aa49834aa66733c7b2260d526938d62d5b68e859"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/the-open-boat/front-cover.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "ba4de39e81eecaa7b6cff9132c6afa265af5bd48bdb017b00ec8acdeb9cf91e2",
+    "reader_manifest": "5eca0e75ee9c7ded8776eccc22c45e9ff2480efa8de3c9123bfaaed0f61ec36a",
+    "source_evidence": "362e86b588c8cd4b2f9e1f11aa49834aa66733c7b2260d526938d62d5b68e859",
+    "approval_evidence": "8f6dc1da359bef3f9f9f863924def97e8cc46ebfc6bd014410199452baaa9959"
+  },
+  "manifest_sha256": "967cd2250f61e79444c6775c512da7ba2c6ad3c6571c51e21c9625fa8e63baf7"
+}

@@ -2,10 +2,14 @@
   "active_files_sha256": {
     "approval_evidence.json": "c44e53fd7116ac72e1ad639a90ba9d9d7420dbcefacb125ef41cb797b8610347",
     "chapters/chapter-001.json": "efd315eb11fceeab3dba24c4ef4b5152496dd9e57033669908ba9b7ae54532ea",
-    "checksum_manifest.json": "6aa9e7d1881957f3d9c3af8092fcd1a573f677682bbc8306f04c0eaab9989e7d",
+    "checksum_manifest.json": "ac34171490600d73e0fe0e972fc20791a486cd936885677991a28e57e8de8a8a",
+    "cover_provenance.json": "c7a38092da3a068a43538a38243f7f3d5f0e0f3664ef4d431eb6df71bf94a7dd",
     "highlight_sync.json": "c9fbef7081737ec06550b2e514632886918c3dd1181fddd072c8b61296679c6a",
     "public_book.json": "5b5203f14999e53a380545a75464f76a52f3f3499a883fe285f2b580c43c9612",
+    "publication_manifest.json": "201f40b780f3e3adf1879aad82bacd7310d3a63b7b62ea42d5da134bd775a8eb",
     "reader_manifest.json": "08be9023532b392a948c29ac4725a7a46a9fb1641ed78b9c438e0d5da08222d8",
+    "reader_release_approval.json": "0e18c6ccaaccf52e7ff30d23cf7980673f6c85552f55835a02bd0aca384a6935",
+    "rights_decision.json": "8d291e3afff4e12a3e659539e0eac18900a97ca1a7652a1ca5c91f5e5fbe43f3",
     "source_evidence.json": "0302b427ea3695a9ee06d524823239bdc8ff3021b8582b3acbc4340febbd81a9"
   },
   "chapter_content_hashes": [
@@ -18,10 +22,14 @@
   "input_files_sha256": {
     "approval_evidence.json": "c44e53fd7116ac72e1ad639a90ba9d9d7420dbcefacb125ef41cb797b8610347",
     "chapters/chapter-001.json": "efd315eb11fceeab3dba24c4ef4b5152496dd9e57033669908ba9b7ae54532ea",
-    "checksum_manifest.json": "6aa9e7d1881957f3d9c3af8092fcd1a573f677682bbc8306f04c0eaab9989e7d",
+    "checksum_manifest.json": "ac34171490600d73e0fe0e972fc20791a486cd936885677991a28e57e8de8a8a",
+    "cover_provenance.json": "c7a38092da3a068a43538a38243f7f3d5f0e0f3664ef4d431eb6df71bf94a7dd",
     "highlight_sync.json": "c9fbef7081737ec06550b2e514632886918c3dd1181fddd072c8b61296679c6a",
     "public_book.json": "5b5203f14999e53a380545a75464f76a52f3f3499a883fe285f2b580c43c9612",
+    "publication_manifest.json": "201f40b780f3e3adf1879aad82bacd7310d3a63b7b62ea42d5da134bd775a8eb",
     "reader_manifest.json": "08be9023532b392a948c29ac4725a7a46a9fb1641ed78b9c438e0d5da08222d8",
+    "reader_release_approval.json": "0e18c6ccaaccf52e7ff30d23cf7980673f6c85552f55835a02bd0aca384a6935",
+    "rights_decision.json": "8d291e3afff4e12a3e659539e0eac18900a97ca1a7652a1ca5c91f5e5fbe43f3",
     "source_evidence.json": "0302b427ea3695a9ee06d524823239bdc8ff3021b8582b3acbc4340febbd81a9"
   },
   "publication_authority": false,
@@ -58,17 +66,14 @@
       "sanitized": true,
       "source_hash": "c8a8c8bd954f303cb9a2ebdbb67935fe88c9b623afa510883e23dfc86026212c"
     },
-    "generated_at": "2026-10-01T03:17:21.336723+00:00",
-    "manifest_sha256": "30f18d2bc1edfcec179cdfbedd2572d18f5cc0197fa6ce4f3bd89577d2d8ba6c",
+    "generated_at": "2026-10-01T05:38:07.922769+00:00",
+    "manifest_sha256": "99ec8d83e43f5231a6868c2858b8aed4817340b251acac5296059217ec1aaa21",
     "reader_release": {
-      "blockers": [
-        "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
-      ],
+      "blockers": [],
       "cover_url": "https://theearnalism.com/assets/books/a-scandal-in-bohemia/front-cover.webp",
-      "exposed": false,
+      "exposed": true,
       "qa_status": "QA_PASSED",
-      "status": "BLOCKED"
+      "status": "APPROVED"
     },
     "rights": {
       "evidence_sha256": "0302b427ea3695a9ee06d524823239bdc8ff3021b8582b3acbc4340febbd81a9",
@@ -82,28 +87,22 @@
     "title": "A Scandal in Bohemia"
   },
   "rights_assessment": {
-    "decision_id": null,
-    "offline_india_text_scope_passed": false,
+    "decision_id": "india-20261001-a-scandal-in-bohemia-owner-text-reader",
+    "offline_india_text_scope_passed": true,
     "production_request_verified": false,
-    "registry_bound": false,
+    "registry_bound": true,
     "runtime_actions": {
       "catalog_cta": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_chapter": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       },
       "reader_manifest": {
-        "passed": false,
-        "reasons": [
-          "ACCEPTED_DECISION_MISSING"
-        ]
+        "passed": true,
+        "reasons": []
       }
     }
   },

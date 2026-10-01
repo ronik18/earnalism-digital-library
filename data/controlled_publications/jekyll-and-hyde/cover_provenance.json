@@ -1,0 +1,15 @@
+{
+  "schema": "earnalism.exact-existing-cover-provenance.v1",
+  "slug": "jekyll-and-hyde",
+  "checked_at": "2026-10-01T05:38:07.922769+00:00",
+  "component_review_path": "internal/legal/near_ready_text_release_20261001/component_review.json",
+  "component_review_sha256": "8b4c0ebbf854fc4ab4e23b3be155149ef9abd14bd3ddda6eb925eb3b904eb403",
+  "cover": {
+    "basis": "Existing exact first-party programmatic cover approval and remote-hash verification record retained without changing either approved asset.",
+    "cover_approval_evidence_sha256": "7ff51145b7bb97f64b6f01ddb84d3c75188c15b76ceec3aa8fa9af2dd01782f9",
+    "cover_approval_record": "cover_approval_evidence.json",
+    "review_attribution": "Existing recorded owner approval and source code/provenance; no fresh live CDN observation claimed."
+  },
+  "new_art_generated": false,
+  "existing_art_replaced": false
+}

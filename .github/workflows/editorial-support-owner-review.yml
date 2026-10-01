@@ -54,7 +54,8 @@ jobs:
         run: |
           npm ci
           npm ci --prefix frontend --legacy-peer-deps
-          python3 -m pip install --disable-pip-version-check -r requirements.txt
+          # This static visual package uses Pillow; no audio/ML inference runs.
+          python3 -m pip install --disable-pip-version-check Pillow==10.3.0
           npx playwright install --with-deps chromium
       - name: Materialize base source
         env:

@@ -56,6 +56,8 @@ env \
     backend/tests/test_reading_pass_text_admission.py \
     backend/tests/test_reading_pass_text_admission_mongo_integration.py \
     backend/tests/test_reading_pass_revocation_release_preflight.py \
+    backend/tests/test_reader_device_session_binding.py \
+    backend/tests/test_approved_reader_bootstrap.py \
     backend/tests/test_yugalanguriya_publication_inspection.py
 
 echo "==> Local UAT public-release hold seeding contract"

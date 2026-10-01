@@ -1,10 +1,10 @@
 {
   "slug": "the-enchanted-april",
-  "generated_at": "2026-08-16T00:00:00Z",
+  "generated_at": "2026-10-01T05:38:07.922769+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "e3978a2da64ac709ce58130292bb1a3f630b97ed4dfff50ea9d95ef828c79135"
+      "sha256": "07592d4f7b23ddbc05ffafda17ab7392c25f536fa84c290b285e16edf383d71a"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -95,16 +95,24 @@
       "sha256": "c7685ce921efa52dd2425812958614458f56bdd55742078565054dfd68a2a659"
     },
     {
+      "file": "cover_provenance.json",
+      "sha256": "ae3f16a1f0f5c928e6d705c1474b6c6fbed4ec0f6036833f1f0ef9af48ba50fa"
+    },
+    {
       "file": "highlight_sync.json",
       "sha256": "2601e4898cd1a00d62da1e266ee3f66b2d396d448f1acf53376eca1cf518b862"
     },
     {
       "file": "public_book.json",
-      "sha256": "c3aba2778defb0c3ca5be4fed5b0d6231069ba2d4d823206047dc67c8a98ceaa"
+      "sha256": "3ca6322edc59469b1550e93ea9b706ae56e68f2314f2a136bf196a73f06d7f28"
     },
     {
       "file": "reader_manifest.json",
       "sha256": "8971cebfd2ff004ea3321c2f7b67ccd300fc11508f36e8ed23eb1174efc7bcc2"
+    },
+    {
+      "file": "reader_release_approval.json",
+      "sha256": "a5a18dbfad60eaf0c54399be20bc3c3ad7f61063a01ca28e18a292ade0889925"
     },
     {
       "file": "reader_repair_evidence.json",

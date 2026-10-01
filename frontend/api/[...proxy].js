@@ -127,7 +127,13 @@ module.exports = async function releaseProxy(req, res) {
     if (!AUTHORIZED_READER_COUNTRIES.has(country)) {
       res.statusCode = 451;
       res.setHeader("Cache-Control", "no-store");
-      res.end();
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      res.end(JSON.stringify({ detail: {
+        code: "RELEASE_TERRITORY_DENIED",
+        message: "This Reader release is available in India only.",
+        country: /^[A-Z]{2}$/.test(country) ? country : null,
+        allowed_countries: ["IN"],
+      } }));
       return;
     }
     const timestamp = Math.floor(Date.now() / 1000);
@@ -149,11 +155,16 @@ module.exports = async function releaseProxy(req, res) {
       // Node fetch transparently decompresses upstream responses. Do not send
       // the upstream representation metadata with those decoded bytes or the
       // browser will attempt a second gzip/br decode and discard the response.
-      if (!["connection", "transfer-encoding", "content-encoding", "content-length", "content-md5", "etag"].includes(name.toLowerCase())) {
+      if (!["connection", "transfer-encoding", "content-encoding", "content-length", "content-md5", "etag", "set-cookie"].includes(name.toLowerCase())) {
         res.setHeader(name, value);
       }
     }
-    if (protectedPath) {
+    // Each cookie needs its own header. Folding Set-Cookie into one comma-
+    // separated value loses the refresh/device or Reading Pass cookie pair.
+    const cookies = response.headers.getSetCookie();
+    if (cookies.length) res.setHeader("Set-Cookie", cookies);
+    if (protectedPath || headers.has("authorization") || headers.has("cookie")
+      || incoming.pathname.startsWith("/api/users/") || incoming.pathname.startsWith("/api/auth/")) {
       // Never let a response cached in one country bypass the next request's
       // country and hash-bound rights checks.
       res.setHeader("Cache-Control", "private, no-store");

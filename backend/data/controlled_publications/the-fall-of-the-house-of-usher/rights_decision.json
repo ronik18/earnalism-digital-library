@@ -1,0 +1,43 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261001-the-fall-of-the-house-of-usher-owner-text-reader",
+  "edition_id": "the-fall-of-the-house-of-usher",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "408e9d976788acd6500d0ee789152be2720642540657a7866de0988944315a6f",
+    "reader_manifest": "0edb0521b5d203b0a6efb53d98d6e9425a4d21e617d8f67e5ec591a7d6a52d1e",
+    "source_evidence": "8fbc65f1d07c9ec6bd37eae1bea33bcc3c1b03cfbf6ada5869a96f5130cfcdca",
+    "approval_evidence": "a9ef7e5210050014c1622776c0d51eb8637ae9e05f324ac37316d8caed3e479f",
+    "checksum_manifest": "f80f13e8b3c11a2104eb7b5d7b081e1bc805c7ef7649a423a4d47159eefc22f4",
+    "publication_manifest": "2065c8d29f1611f05525594b50ff204a92bbfcd5ee12ab8951d9de7b7ed146be",
+    "cover_provenance": "ba40ec30c3678a7cb037d04c24cec0d3b4b8f590f97d29a1c1895590f0e3c284",
+    "reader_release_approval": "42e74a51b2ad269a123eedb43492a7d26918710ea2a59ec4029b89ed12d8c8aa",
+    "chapter_file:chapter-001.json": "34d4107d4f0f48552d42d3fbb35d71e837f4f6f93112a6992a5a91467d7d2266",
+    "cover_asset:front": "8dfb51de07beed3873dac4d418c0596846b34507f4ae51ef28245f7cd16f6e9d",
+    "cover_asset:back": "e433337c3b5d5f38ef37b740cf15e6d57534fa8446e5b8ed87a6846fe3d8f168"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T05:38:07.922769+00:00",
+  "valid_until": "2036-10-01T05:38:07.922769+00:00",
+  "basis": "Original literary text published during the author’s lifetime; India Copyright Act 1957 section 22, life plus 60 years, assessed separately from repository U.S. notices. Selected original text only, with repository boilerplate, protected modern editorial matter, illustrations and collection framing excluded; existing chapter/source repair proofs preserved. No third-party modern introduction, notes, anthology layout, illustrations or author portrait is included in the delivered chapters. Original author preface and chapter prose are retained where applicable. Earnalism original deterministic vector-primitives composition, with original descriptive text and rasterized typography; no external image or model-generated art. Exact existing assets and all selected chapters are bound. Owner-authorized India-only commercial text Reader uses under the existing 3-page preview / Reading Pass policy; no audio, exports, downloads, global territory grant, new payment policy or unobserved production readiness is asserted.",
+  "evidence_sha256": [
+    "538c726547957d127294daa3add4984b59f5889ddea250e0ec92426fa40e672b",
+    "8b4c0ebbf854fc4ab4e23b3be155149ef9abd14bd3ddda6eb925eb3b904eb403",
+    "06632bc9733caa8774aee3ff8a2dba566fae185b36c994bbf5b5e4ca1d3aa8aa",
+    "42e74a51b2ad269a123eedb43492a7d26918710ea2a59ec4029b89ed12d8c8aa",
+    "ba40ec30c3678a7cb037d04c24cec0d3b4b8f590f97d29a1c1895590f0e3c284"
+  ],
+  "accepted_by": "Codex under Ronik Basak direct autonomous safe near-ready release instruction. Conditional owner waiver covers manual production observation only; no separate owner hash review or independent human inspection is claimed.",
+  "conditions_satisfied": true
+}
