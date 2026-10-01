@@ -1,19 +1,13 @@
 name: Catalogue compliance GO-LIVE campaign
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - .github/workflows/catalogue-compliance-go-live.yml
-      - backend/data/controlled_launch.json
-      - backend/data/controlled_publications/**
-      - backend/data/rights_decision_registry.json
-      - data/controlled_launch.json
-      - data/controlled_publications/**
-      - frontend/src/lib/controlledLaunch.js
-      - frontend/static-seo/controlled-publication-public.json
-      - frontend/public/sitemap.xml
   workflow_dispatch:
+    inputs:
+      run_paid_implementation:
+        description: Explicitly run one budget-authorized paid catalogue proposal pass
+        type: boolean
+        required: false
+        default: false
 
 concurrency:
   group: earnalism-catalogue-compliance-go-live
@@ -29,7 +23,33 @@ permissions:
   id-token: write
 
 jobs:
+  campaign-policy:
+    if: github.event_name == 'workflow_dispatch' && inputs.run_paid_implementation == true
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      issues: read
+    outputs:
+      is_open: ${{ steps.campaign.outputs.is_open }}
+    steps:
+      - name: Check campaign state
+        id: campaign
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TRACKING_ISSUE: "477"
+        run: |
+          set -euo pipefail
+          state="$(gh issue view "$TRACKING_ISSUE" --repo "$GITHUB_REPOSITORY" --json state --jq .state)"
+          if [ "$state" = "OPEN" ]; then
+            echo "is_open=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "is_open=false" >> "$GITHUB_OUTPUT"
+            echo "campaign issue is not open; no paid implementation will run"
+          fi
+
   compliance-campaign:
+    needs: campaign-policy
+    if: needs.campaign-policy.outputs.is_open == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 75
     env:
@@ -38,17 +58,6 @@ jobs:
       TRACKING_ISSUE: "477"
       OWNER_POLICY: "Issue #477 owner-authorized autonomous India text-reader compliance campaign"
     steps:
-      - name: Check campaign state
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          state="$(gh issue view "$TRACKING_ISSUE" --repo "$GITHUB_REPOSITORY" --json state --jq .state)"
-          if [ "$state" != "OPEN" ]; then
-            echo "campaign issue is not open; nothing to do"
-            exit 0
-          fi
-
       - name: Check out exact main revision
         uses: actions/checkout@v4
         with:
@@ -137,7 +146,7 @@ jobs:
           docker info >/dev/null
 
       - name: Exercise real worker permission boundaries
-        run: python3 -m unittest scripts.test_catalogue_compliance_worker_permissions scripts.test_catalogue_compliance_worker_receipt scripts.test_catalogue_compliance_generated_evidence scripts.test_catalogue_compliance_batch scripts.test_catalogue_compliance_controller_evidence -v
+        run: python3 -m unittest scripts.test_catalogue_compliance_workflow_cost scripts.test_catalogue_compliance_worker_permissions scripts.test_catalogue_compliance_worker_receipt scripts.test_catalogue_compliance_generated_evidence scripts.test_catalogue_compliance_batch scripts.test_catalogue_compliance_controller_evidence -v
 
       - name: Capture fail-closed baseline
         run: |

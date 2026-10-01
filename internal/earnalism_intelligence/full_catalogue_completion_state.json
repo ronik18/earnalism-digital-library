@@ -3,7 +3,7 @@
   "reader_design_owner_approval": "CONDITIONAL_ON_FRESH_MATCH_WITH_SUPPLIED_MOCK",
   "catalogue_scope": 231,
   "processing_status": "COMPLETE_FOR_AVAILABLE_INPUTS",
-  "publication_status": "8_SOURCE_APPROVED_223_EVIDENCE_HOLDS_PRODUCTION_ACCEPTANCE_PENDING",
+  "publication_status": "24_SOURCE_APPROVED_207_EVIDENCE_HOLDS_FRONTEND_DEPLOYED_BACKEND_DEPLOYMENT_GATED",
   "source_packages_changed": 0,
   "worker_task_type": "catalogue-processing",
   "worker_review": "ACCEPT_WITHIN_SCOPE_VERIFIED_IMPLEMENTATION_AND_MERGED_MAIN",
@@ -307,7 +307,7 @@
       "merge_main": "45490009cf45fc1ce6853752f80e903636169916"
     }
   },
-  "next_generated_prompt": "Complete PR #497 exact-head regression, independent catalogue and mandatory browser/owner checks; merge with expected-head protection and deploy only merged main. Observe the actual Railway revision and bounded approved Reader initialization results, preserving all existing pointers, revocations and retained candidates. Verify delivered edition/cover hashes and authenticated trusted-India Reader/Reading Pass readback only where actually available. Keep unresolved production observations explicit, preserve source/art/history and all other holds, and continue only inexpensive evidence-complete candidates without paid image/audio generation or customer/wallet changes.",
+  "next_generated_prompt": "Complete the protected quota-recovery PR with normal exact-head regression, including actual loopback-Mongo missing-index and duplicate-history preservation tests. Merge only the passing revision and deploy merged main through the unchanged check-suite, Vercel and Railway gates. Do not rerun the quota-exhausted paid proposal job; it requires a separate explicit budget opt-in. Observe the actual backend revision and approved Reader initialization results; preserve every retained version/revocation and report holds truthfully. Verify authenticated trusted-India Reader delivery where an actual session is available. Preserve all 24 accepted text decisions, book source/art/history, all other holds and disabled audio; no customer/wallet changes.",
   "latest_verified_catalogue_campaign": {
     "run": 36794894294,
     "job": 110156271363,
@@ -827,5 +827,65 @@
     "customer_ready": "NOT_DECLARED",
     "paid_provider_calls": 0,
     "next_generated_prompt": "Complete PR #497 exact-head regression, independent catalogue and mandatory browser/owner checks; merge with expected-head protection and deploy only merged main. Observe the actual Railway revision and bounded approved Reader initialization results, preserving all existing pointers, revocations and retained candidates. Verify delivered edition/cover hashes and authenticated trusted-India Reader/Reading Pass readback only where actually available. Keep unresolved production observations explicit, preserve source/art/history and all other holds, and continue only inexpensive evidence-complete candidates without paid image/audio generation or customer/wallet changes."
+  },
+  "near_ready_release_quota_recovery_20261001": {
+    "schema": "earnalism.release-quota-recovery.v1",
+    "timestamp": "2026-10-01T08:45:42.078424+00:00",
+    "decision": "MAKE_PAID_CATALOGUE_PROPOSALS_EXPLICITLY_OPT_IN_PRESERVING_RELEASE_GATES",
+    "source_main": "160b8175ac80e505e4888be7306677f022f86923",
+    "merged_release_pr": 497,
+    "reviewed_release_head": "501b86543eb1cb88e5c0823563a274bddc872134",
+    "reviewed_release_tree": "fcb1eddb13ab9ecf3336b676882959df88cb4957",
+    "source_approved_titles": 24,
+    "additional_source_approved_titles": 16,
+    "held_titles": 207,
+    "aggregate_blockers": 860,
+    "observed_main_checks": {
+      "regression_run": 36836228856,
+      "regression_job": 110284178640,
+      "regression": "SUCCESS",
+      "frontend_deploy_job": 110285515293,
+      "frontend_deploy": "SUCCESS",
+      "frontend_canary_job": 110286010039,
+      "frontend_canary": "SUCCESS",
+      "catalogue_run": 36836229064,
+      "catalogue": "SUCCESS",
+      "paid_campaign_run": 36836228836,
+      "paid_campaign_job": 110284179174,
+      "paid_campaign": "FAILED_PROVIDER_QUOTA",
+      "provider_error": "Quota exceeded. Check your plan and billing details.",
+      "reported_tokens_used": 112690,
+      "backend_deployment": "SKIPPED_CHECK_SUITE_FAILURE",
+      "backend_skipped_deployment": "b787eb37-794b-466b-96f6-65b3603ff657",
+      "last_successful_backend_commit": "45490009cf45fc1ce6853752f80e903636169916"
+    },
+    "paid_worker_output": "UNVALIDATED_NOT_PUBLISHED_OR_ACCEPTED",
+    "corrections": [
+      "Keep the catalogue proposal workflow manual-only, with explicit boolean run_paid_implementation default false. A read-only policy job must also confirm issue #477 is open before any paid worker job starts.",
+      "Retain all normal regression, source/rights, independent evidence, expected-head merge, frontend canary and Railway check-suite protections. No quota increase, paid rerun or forced deployment.",
+      "For exact approved absent Reader initialization, create only missing unique indexes using the same existing constraints. Retain all data and indexes; duplicate/conflicting history or creation/verification failure holds safely. No data deletion, chosen duplicate winner, active-pointer overwrite or weakened constraint.",
+      "Record an explicit disabled-Reading-Pass startup hold without enabling a feature or changing service configuration."
+    ],
+    "production_index_absence": "NOT_OBSERVED_BACKEND_DEPLOYMENT_STILL_GATED",
+    "local_checks": {
+      "session_bootstrap_promotion_password": "PASS_42",
+      "cost_receipt_generated_evidence_batch_controller": "PASS_26",
+      "yaml_structure": "PASS",
+      "compile": "PASS",
+      "git_diff_check": "PASS"
+    },
+    "new_real_mongo_cases": "REQUIRED_IN_HOSTED_RELEASE_GATE_NOT_RUN_LOCALLY",
+    "preservation": {
+      "prior_source_art_byte_equal": 2807,
+      "prior_release_package_byte_equal": 231,
+      "all_24_source_packages_decisions_bootstrap_plan_art_frontend_UI_and_proxy_unchanged": true,
+      "service_variables_credentials_payment_policy_customer_and_wallets_unchanged": true
+    },
+    "new_paid_generation_or_rerun_in_this_correction": false,
+    "active_canonical_production_observation": "NOT_RUN",
+    "authenticated_production_readback": "NOT_VERIFIED_SIGN_IN_REMAINS_VISIBLE",
+    "trusted_india_production_readback": "NOT_VERIFIED",
+    "customer_ready": "NOT_DECLARED",
+    "next_generated_prompt": "Complete the protected quota-recovery PR with normal exact-head regression, including actual loopback-Mongo missing-index and duplicate-history preservation tests. Merge only the passing revision and deploy merged main through the unchanged check-suite, Vercel and Railway gates. Do not rerun the quota-exhausted paid proposal job; it requires a separate explicit budget opt-in. Observe the actual backend revision and approved Reader initialization results; preserve every retained version/revocation and report holds truthfully. Verify authenticated trusted-India Reader delivery where an actual session is available. Preserve all 24 accepted text decisions, book source/art/history, all other holds and disabled audio; no customer/wallet changes."
   }
 }
