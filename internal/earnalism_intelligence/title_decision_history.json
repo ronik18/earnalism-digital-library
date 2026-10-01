@@ -4058,5 +4058,45 @@
     ],
     "customer_ready": "NOT_DECLARED",
     "next_generated_prompt": "Use the authorized GitHub connection to open the reviewed canonical candidate against main; require fresh exact-head normal checks and an expected-SHA protected merge, then inspect the next bounded campaign. Missing chapter files need exact cleared content recovery, not refreshed hashes or placeholders."
+  },
+  "catalogue_bridge_review_run_36792862881": {
+    "timestamp": "2026-09-30T23:58:51.765872+00:00",
+    "workstream": "catalogue_compliance_campaign",
+    "decision": "ACCEPT_WITHIN_SCOPE_LAST_STALE_METADATA_HASH_REPAIR_PENDING_NORMAL_CI",
+    "run": 36792862881,
+    "source_main": "bd6a25e46e14b12ab772b09d88f1b1e6251bb0d6",
+    "worker_candidate": "dc959fa8151b027b960599b5dc7e5d3238c7f27c",
+    "examined_count": 20,
+    "modified_slugs": [
+      "pather-panchali"
+    ],
+    "aggregate_blockers_before": 902,
+    "aggregate_blockers_candidate": 900,
+    "accepted_live": 7,
+    "held": 224,
+    "new_publications": 0,
+    "audio_activations": 0,
+    "worker_pipeline": "SUCCESS_ACTUAL_RECEIPT_FOCUSED_FULL_REGRESSION_FINAL_SOURCE_GUARD",
+    "proof_artifacts": [
+      {
+        "id": 11133245918,
+        "sha256": "4330251c02d7ab93486baf86cc2b92dba24aba53fd818be8c240c8ee9c46e903"
+      },
+      {
+        "id": 11132836981,
+        "sha256": "b9eefefaa770d59053d67ba1b3c4a4fd8e26578714a78cb6d5f298e9e8bba509"
+      },
+      {
+        "id": 11132647278,
+        "sha256": "70ffe198461942b7120614e8a2bde2df777d554a76c017846a7570aa5a9094fe"
+      }
+    ],
+    "independent_verification": "All ZIP digests and source/20-candidate receipt verified; controller diff equals retained proposal; all four replacement hashes match unchanged current approval/public-book bytes in both trees; imported candidate commit and staged tree match exact remote Git identities",
+    "source_ui_approval_registry_launch": "UNCHANGED",
+    "current_main_regression_run": 36792862922,
+    "current_main_regression": "PASS",
+    "remaining_integrity": "Only three absent chapter-file checksum discrepancies remain; no placeholders, inventory stripping or hashes invented for absent files",
+    "customer_ready": "NOT_DECLARED",
+    "next_generated_prompt": "Open the reviewed canonical proposal through the authorized GitHub connection, require normal exact-head checks and an expected-SHA merge, then inspect one further bounded pass for substantiated progress. Keep all unresolved source, cover, rights, decision and authenticated acceptance holds."
   }
 }
