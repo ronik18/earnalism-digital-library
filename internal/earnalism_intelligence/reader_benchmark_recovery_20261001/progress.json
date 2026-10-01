@@ -1,13 +1,13 @@
 {
   "schema": "earnalism.reader-benchmark-repair-progress.v1",
-  "observed_at": "2026-10-01T10:32:34.129791+00:00",
+  "observed_at": "2026-10-01T10:48:17.185424+00:00",
   "base_main": "af286898c9c9f039c13355a19de0ce11e0d1629d",
   "owner_instruction": "Repair the stale Reader benchmark task, then complete authenticated India Reader and Reading Pass verification for all 24 configured editions. Preserve approved code, artwork and versions; record actual results and remaining holds. Use no paid generation or proposal reruns.",
   "stale_coordination_run": 36844619269,
   "stale_plan_zip_sha256": "945f57e7f7ece5eeb846d547e018a6867c8a8024e7c5175b1945fde17bfbc107",
   "finding": "Planner emitted DISPATCH for reader-benchmark, but its entry point was absent; the planner does not execute actions.",
   "repair": "Restore the guarded runner and actual ASGI/native Mongo benchmark in the existing prepared regression stack; preserve runtime code, approved sources, artwork, versions and release policies.",
-  "benchmark_status": "PENDING_HOSTED_NATIVE_MONGO_EXECUTION",
+  "benchmark_status": "PENDING_CORRECTED_HOSTED_NATIVE_EXECUTION",
   "local_guard_bridge_cost_tests": {
     "passed": 12,
     "native_mongo": "UNAVAILABLE_LOCAL_LOOPBACK_REPLICA_SET",
@@ -16,9 +16,9 @@
     "workflow_yaml": "PASS"
   },
   "execution_source_sha256": {
-    "scripts/run_reader_benchmark.sh": "1912e56fbf1c77e3533e9e621b31cc9007f568cc836642b68c0997df9bcb8a29",
+    "scripts/run_reader_benchmark.sh": "22dc34984ddab70c65e120e6a6dde214063acf5c435f97b073f4b711f576b94c",
     "scripts/test_reader_benchmark_runner.py": "994f1c95cddead1dc3a673f7f1f47652d1ce7f20604d0845c252c806683c2107",
-    "backend/tests/test_reader_benchmark_mongo_integration.py": "5c2f2aa8dc5318d28360462a34ca988ca1f9b241a9842e4f7e39cfcefe597436",
+    "backend/tests/test_reader_benchmark_mongo_integration.py": "6b083abb2b53428af0de5a9cf85586c7b5848621357350b74f351ab8d58ba768",
     "scripts/run_pr_regression_gates.sh": "ac597a675849671368e4d7859f4c6676a3dad58e76035a135f69cfa9e668f1c9",
     ".github/workflows/regression.yml": "f89099f58ada1c034ff5e1bd98e842d66e27185baf400a54c990750dfec939b7",
     ".github/earnalism-coordination/tasks.json": "c6cbfff9e11f02eb6d84fbab07cff7c9d25e464cd10fa20414edaed1b67deea5",
@@ -249,5 +249,52 @@
   "production_credentials_extracted": false,
   "country_or_entitlement_bypass": false,
   "production_customer_or_version_mutations": false,
-  "next_generated_prompt": "Review the exact-head isolated Reader benchmark artifact and merge only its passing repair. Complete the pending Google device approval through the secure sign-in flow and verify authenticated trusted-India Reader/Reading Pass delivery for all 24 configured editions, including seven retained versions and delivered Agentic hashes. Preserve all approved source, art, versions and 207 genuine holds; run no paid generation or proposal reruns."
+  "next_generated_prompt": "Review the exact-head isolated Reader benchmark artifact and merge only its passing repair. Complete the pending Google device approval through the secure sign-in flow and verify authenticated trusted-India Reader/Reading Pass delivery for all 24 configured editions, including seven retained versions and delivered Agentic hashes. Preserve all approved source, art, versions and 207 genuine holds; run no paid generation or proposal reruns.",
+  "first_hosted_attempt": {
+    "schema": "earnalism.reader-benchmark-assertion-correction.v1",
+    "observed_at": "2026-10-01T10:48:17.185424+00:00",
+    "reviewed_head": "054f3ca4d55f48b9c12546f5c335aa775e54e4ca",
+    "workflow_run": 36850450944,
+    "regression_job": 110330581795,
+    "regression_conclusion": "FAILURE",
+    "existing_native_cases": {
+      "passed": 115
+    },
+    "benchmark": "FAILURE_AT_SINGLE_LOGIN_ASSERTION",
+    "actual_response": 200,
+    "incorrect_expected_response": 401,
+    "approved_policy": "Reading Pass V2 defaults to five active authentication sessions; a second login alone does not revoke the first.",
+    "correction": "Keep the approved runtime unchanged. Use five active sessions in the isolated fixture, confirm the first remains valid within the limit, then perform a sixth real login and require revocation of the oldest session.",
+    "production_observation": false,
+    "paid_provider_calls": 0,
+    "source_sha256": {
+      "scripts/run_reader_benchmark.sh": "22dc34984ddab70c65e120e6a6dde214063acf5c435f97b073f4b711f576b94c",
+      "backend/tests/test_reader_benchmark_mongo_integration.py": "6b083abb2b53428af0de5a9cf85586c7b5848621357350b74f351ab8d58ba768"
+    }
+  },
+  "public_reading_pass_observation": {
+    "url": "https://theearnalism.com/pricing",
+    "page": "RENDERED",
+    "account_signal": "SIGN_IN_VISIBLE",
+    "offers": [
+      {
+        "minutes": 30,
+        "price_inr": 49
+      },
+      {
+        "minutes": 60,
+        "price_inr": 89
+      },
+      {
+        "minutes": 180,
+        "price_inr": 239
+      },
+      {
+        "minutes": 600,
+        "price_inr": 499
+      }
+    ],
+    "entitlement_checkout_metering_and_authenticated_delivery": "NOT_VERIFIED",
+    "purchase_or_customer_mutation": false
+  }
 }

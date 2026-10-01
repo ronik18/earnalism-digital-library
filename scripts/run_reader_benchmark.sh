@@ -25,6 +25,7 @@ PY
 
 export READER_BENCHMARK_REPORT="${READER_BENCHMARK_REPORT:-$BENCHMARK_ROOT/regression/artifacts/reader-benchmark/report.json}"
 env ENVIRONMENT=uat READING_PASS_V2_ENABLED=true ENABLE_STARTUP_DB_MAINTENANCE=false \
+  TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS=5 \
   JWT_SECRET=reader-benchmark-isolated-only-jwt-secret \
   READING_PASS_TOKEN_SECRET=reader-benchmark-isolated-only-lease-secret-0123456789 \
   "$BENCHMARK_PYTHON" -m pytest -q backend/tests/test_reader_benchmark_mongo_integration.py

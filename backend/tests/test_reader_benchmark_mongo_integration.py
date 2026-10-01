@@ -75,6 +75,17 @@ def test_real_http_login_refresh_lease_and_twenty_page_responses(monkeypatch):
                     'password': 'isolated-fixture-password-not-a-production-credential',
                 })
                 assert login.status_code == 200
+                # V2 permits five active logins. Exercise the real boundary
+                # before expecting the oldest session to be revoked.
+                assert server.TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS == 5
+                client.headers['Authorization'] = 'Bearer ' + signup.json()['token']
+                assert (await client.get('/api/users/me')).status_code == 200
+                for _ in range(server.TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS - 1):
+                    login = await client.post('/api/users/login', json={
+                        'email': 'reader-benchmark@example.com',
+                        'password': 'isolated-fixture-password-not-a-production-credential',
+                    })
+                    assert login.status_code == 200
                 client.headers['Authorization'] = 'Bearer ' + signup.json()['token']
                 assert (await client.get('/api/users/me')).status_code == 401
                 client.headers['Authorization'] = 'Bearer ' + login.json()['token']
@@ -129,8 +140,9 @@ def test_real_http_login_refresh_lease_and_twenty_page_responses(monkeypatch):
                 'scope': 'ISOLATED_ASGI_REAL_MONGO', 'production_verification': 'NOT_PERFORMED',
                 'browser_paint_verification': 'NOT_PERFORMED', 'country_verification': 'NOT_PERFORMED',
                 'fixture_title_count': 1, 'protected_page_response_count': len(timings),
-                'auth': 'REAL_SIGNUP_LOGIN_REFRESH_COOKIE_BOUND_SESSION_AND_LOGOUT',
-                'negative_access_checks': ['guest_page_4', 'superseded_login', 'missing_lease', 'invalid_lease', 'missing_device_cookie', 'logged_out_session'],
+                'auth': 'REAL_SIGNUP_BOUNDED_LOGIN_REFRESH_COOKIE_BOUND_SESSION_AND_LOGOUT',
+                'trusted_device_max_active_sessions': server.TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS,
+                'negative_access_checks': ['guest_page_4', 'login_limit_revoked_session', 'missing_lease', 'invalid_lease', 'missing_device_cookie', 'logged_out_session'],
                 'retained_fixture_versions_unchanged': True, 'fixture_wallet_debit_seconds': 0,
                 'page_response_timings': {
                     'samples': len(values), 'median_ms': round(statistics.median(values), 3),

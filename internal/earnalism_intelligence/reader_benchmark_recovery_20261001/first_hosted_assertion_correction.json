@@ -1,0 +1,22 @@
+{
+  "schema": "earnalism.reader-benchmark-assertion-correction.v1",
+  "observed_at": "2026-10-01T10:48:17.185424+00:00",
+  "reviewed_head": "054f3ca4d55f48b9c12546f5c335aa775e54e4ca",
+  "workflow_run": 36850450944,
+  "regression_job": 110330581795,
+  "regression_conclusion": "FAILURE",
+  "existing_native_cases": {
+    "passed": 115
+  },
+  "benchmark": "FAILURE_AT_SINGLE_LOGIN_ASSERTION",
+  "actual_response": 200,
+  "incorrect_expected_response": 401,
+  "approved_policy": "Reading Pass V2 defaults to five active authentication sessions; a second login alone does not revoke the first.",
+  "correction": "Keep the approved runtime unchanged. Use five active sessions in the isolated fixture, confirm the first remains valid within the limit, then perform a sixth real login and require revocation of the oldest session.",
+  "production_observation": false,
+  "paid_provider_calls": 0,
+  "source_sha256": {
+    "scripts/run_reader_benchmark.sh": "22dc34984ddab70c65e120e6a6dde214063acf5c435f97b073f4b711f576b94c",
+    "backend/tests/test_reader_benchmark_mongo_integration.py": "6b083abb2b53428af0de5a9cf85586c7b5848621357350b74f351ab8d58ba768"
+  }
+}

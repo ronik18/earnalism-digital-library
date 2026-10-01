@@ -2544,3 +2544,12 @@ The successful coordination run 36844619269 only emitted a plan; its Reader benc
 The owner selected Google through secure authentication. Google reported a device-approval notification; attachment to its popup timed out. A fresh target-domain tab still shows Sign In. Authentication and trusted-India context are NOT_VERIFIED, so all 24 Reader/Reading Pass readbacks remain explicitly NOT_RUN. No credentials were extracted, country/entitlement controls bypassed, production records changed, paid generation started or paid proposals rerun. Existing 17 initialization / 714-page / seven-preserved-version proof is historical unchanged evidence. All 207 genuine catalogue holds and deferred physical-device UAT remain.
 
 Next generated prompt: Review the exact-head isolated Reader benchmark artifact and merge only its passing repair. Complete the pending Google device approval through the secure sign-in flow and verify authenticated trusted-India Reader/Reading Pass delivery for all 24 configured editions, including seven retained versions and delivered Agentic hashes. Preserve all approved source, art, versions and 207 genuine holds; run no paid generation or proposal reruns.
+
+
+## 2026-10-01 — Benchmark respects the approved five-session policy
+
+The first hosted repair revision 054f3ca4d55f48b9c12546f5c335aa775e54e4ca passed all 115 existing native cases, then failed the new benchmark because it incorrectly expected a second login to revoke the signup session. Approved Reading Pass V2 permits five active logins. Preserve runtime behavior and test the actual bound: a retained session remains valid within the limit, and the sixth real login revokes the oldest. The corrected native run is still pending; the failed run is retained as evidence.
+
+The public production Reading Pass page rendered all four existing offers, with Sign In still visible. This is public presentation evidence only: authenticated entitlement, checkout, metering, trusted India and all 24 protected title readbacks remain unverified. No purchase, production mutation or paid rerun occurred.
+
+Next generated prompt: Review the exact-head isolated Reader benchmark artifact and merge only its passing repair. Complete the pending Google device approval through the secure sign-in flow and verify authenticated trusted-India Reader/Reading Pass delivery for all 24 configured editions, including seven retained versions and delivered Agentic hashes. Preserve all approved source, art, versions and 207 genuine holds; run no paid generation or proposal reruns.
