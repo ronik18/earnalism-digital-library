@@ -7381,6 +7381,68 @@ async def get_book_chapter(slug: str, chapter_id: str):
     return chapter
 
 
+try:
+    from backend.journal_policy import sanitize_journal_html
+except ImportError:
+    from journal_policy import sanitize_journal_html
+
+class JournalCommentIn(BaseModel):
+    text: str = Field(min_length=1, max_length=2000)
+
+async def _published_journal(slug):
+    if slug in RETIRED_PUBLIC_BLOG_SLUGS or not await db.blog_posts.find_one({"slug": slug, "is_published": True}):
+        raise HTTPException(status_code=404, detail="Article not found")
+
+@api.get("/blog/{slug}/discussion")
+async def journal_discussion(slug: str, response: Response):
+    response.headers["Cache-Control"] = "no-store"
+    await _published_journal(slug)
+    comments = await db.journal_comments.find({"slug": slug}, {"_id": 0, "user_id": 0}).sort("created_at", -1).to_list(100)
+    return {"likes": await db.journal_likes.count_documents({"slug": slug}), "comments": comments}
+
+@api.get("/blog/{slug}/my-like")
+async def journal_my_like(slug: str, user=Depends(require_user)):
+    await _published_journal(slug)
+    return {"liked": bool(await db.journal_likes.find_one({"_id": slug + ":" + str(user["id"])}))}
+
+@api.put("/blog/{slug}/like")
+async def journal_like(slug: str, user=Depends(require_user)):
+    await _published_journal(slug)
+    await db.journal_likes.update_one({"_id": slug + ":" + str(user["id"])}, {"$setOnInsert": {"slug": slug, "user_id": str(user["id"])}}, upsert=True)
+    return {"liked": True, "likes": await db.journal_likes.count_documents({"slug": slug})}
+
+@api.delete("/blog/{slug}/like")
+async def journal_unlike(slug: str, user=Depends(require_user)):
+    await _published_journal(slug)
+    await db.journal_likes.delete_one({"_id": slug + ":" + str(user["id"])})
+    return {"liked": False, "likes": await db.journal_likes.count_documents({"slug": slug})}
+
+@api.post("/blog/{slug}/comments", status_code=201)
+async def journal_comment(slug: str, payload: JournalCommentIn, user=Depends(require_user)):
+    await _published_journal(slug)
+    text = payload.text.strip()
+    if not text:
+        raise HTTPException(status_code=422, detail="Write a comment before posting.")
+    recent = (datetime.now(timezone.utc) - timedelta(minutes=1)).isoformat()
+    if await db.journal_comments.count_documents({"user_id": str(user["id"]), "created_at": {"$gte": recent}}) >= 3:
+        raise HTTPException(status_code=429, detail="Please wait a minute before posting another comment.")
+    # Plain text only; React escapes output. Never expose email or account IDs.
+    comment = {"id": str(uuid.uuid4()), "slug": slug, "text": text, "author": user.get("name") or "Reader", "created_at": now_iso(), "user_id": str(user["id"])}
+    await db.journal_comments.insert_one(dict(comment))
+    return {k: v for k, v in comment.items() if k != "user_id"}
+
+@api.delete("/blog/{slug}/comments/{comment_id}")
+async def journal_delete_own_comment(slug: str, comment_id: str, user=Depends(require_user)):
+    result = await db.journal_comments.delete_one({"slug": slug, "id": comment_id, "user_id": str(user["id"])})
+    if result.deleted_count != 1:
+        raise HTTPException(status_code=404, detail="Comment not found")
+    return {"deleted": 1}
+
+@api.delete("/admin/blog/{slug}/comments/{comment_id}")
+async def journal_moderate_comment(slug: str, comment_id: str, _=Depends(require_admin)):
+    result = await db.journal_comments.delete_one({"slug": slug, "id": comment_id})
+    return {"deleted": result.deleted_count}
+
 # ---------- Public: Blog ----------
 @api.get("/blog", response_model=List[BlogPost])
 async def list_blog(category: Optional[str] = None):
@@ -7409,10 +7471,12 @@ async def get_blog(slug: str):
     cache_key = _public_cache_key("blog_detail", slug=slug)
     cached = await _public_cache_get(cache_key)
     if cached is not None:
+        cached["content_html"] = sanitize_journal_html(cached.get("content_html", ""))
         return cached
     doc = await db.blog_posts.find_one({"slug": slug, "is_published": True}, {"_id": 0})
     if not doc:
         raise HTTPException(status_code=404, detail="Article not found")
+    doc["content_html"] = sanitize_journal_html(doc.get("content_html", ""))
     await _public_cache_set(cache_key, doc)
     return doc
 
@@ -9135,8 +9199,11 @@ async def admin_create_post(payload: BlogPostIn, _=Depends(require_admin)):
     slug = slugify(payload.slug or payload.title)
     if await db.blog_posts.find_one({"slug": slug}):
         raise HTTPException(status_code=400, detail="Slug already exists")
-    post = BlogPost(slug=slug, **{k: v for k, v in payload.model_dump().items() if k != "slug"})
+    values = payload.model_dump()
+    values["content_html"] = sanitize_journal_html(values.get("content_html"))
+    post = BlogPost(slug=slug, **{k: v for k, v in values.items() if k != "slug"})
     await db.blog_posts.insert_one(post.model_dump())
+    await _public_cache_clear()
     return post
 
 @api.put("/admin/blog/{slug}", response_model=BlogPost)
@@ -9145,13 +9212,17 @@ async def admin_update_post(slug: str, payload: BlogPostIn, _=Depends(require_ad
     if not existing:
         raise HTTPException(status_code=404, detail="Post not found")
     update = payload.model_dump()
+    update["content_html"] = sanitize_journal_html(update.get("content_html"))
+    update["updated_at"] = now_iso()
     update["slug"] = slug
     await db.blog_posts.update_one({"slug": slug}, {"$set": update})
+    await _public_cache_clear()
     return await db.blog_posts.find_one({"slug": slug}, {"_id": 0})
 
 @api.delete("/admin/blog/{slug}")
 async def admin_delete_post(slug: str, _=Depends(require_admin)):
     res = await db.blog_posts.delete_one({"slug": slug})
+    await _public_cache_clear()
     return {"deleted": res.deleted_count}
 
 @api.get("/admin/blog", response_model=List[BlogPost])

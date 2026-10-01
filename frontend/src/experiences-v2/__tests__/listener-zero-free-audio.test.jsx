@@ -1,5 +1,5 @@
 import { renderToStaticMarkup } from "react-dom/server";
-jest.mock("react-router-dom", () => ({ Link: ({ to, children, ...props }) => <a href={to} {...props}>{children}</a> }), { virtual: true });
+jest.mock("react-router-dom", () => ({ Link: ({ to, children, ...props }) => <a href={to} {...props}>{children}</a>, NavLink: ({ to, children, className, ...props }) => <a href={to} className={typeof className === "function" ? className({ isActive: false }) : className} {...props}>{children}</a>, useLocation: () => ({ pathname: "/reader/example", search: "" }), useNavigate: () => jest.fn() }), { virtual: true });
 import ListenerExperienceV2, { clampPlaybackTime } from "../listener/ListenerExperienceV2";
 import { listenerReleasePresentation } from "../shared/ReleaseTruthAdapter";
 import { protectedAudiobookPackageManifestPath } from "../../lib/audioReleaseSafety";

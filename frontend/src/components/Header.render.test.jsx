@@ -24,14 +24,15 @@ jest.mock("../context/AuthContext", () => ({
 }));
 
 import Header from "./Header";
+import ExperienceHeader from "../experiences-v2/shared/ExperienceHeader";
 
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 
-function renderHeader() {
+function renderHeader(Component = Header, props = {}) {
   const container = document.createElement("div");
   document.body.appendChild(container);
   const root = createRoot(container);
-  act(() => root.render(<Header />));
+  act(() => root.render(<Component {...props} />));
   return { container, cleanup: () => act(() => { root.unmount(); container.remove(); }) };
 }
 
@@ -43,7 +44,7 @@ describe("owner-approved Header composition", () => {
     expect(container.querySelector('[data-testid="brand-logo"] img')).not.toBeNull();
     expect(container.querySelector('.premium-header-search input[aria-label="Search books, authors, topics"]')).not.toBeNull();
     expect([...container.querySelectorAll('.premium-header-nav--desktop > a[data-testid^="nav-"]')].map((item) => item.textContent.trim())).toEqual([
-      "Home", "Library", "Bengali Classics", "English Classics", "Audiobooks", "Reading Pass", "About", "Sign In",
+      "Home", "Library", "Bengali Classics", "English Classics", "Audiobooks", "Reading Pass", "Blog", "About", "Sign In",
     ]);
     expect(container.querySelector('[data-testid="nav-sign-in"]')?.getAttribute("href")).toBe("/login");
     expect(container.querySelector('[data-testid="nav-join"]')).toBeNull();
@@ -54,6 +55,19 @@ describe("owner-approved Header composition", () => {
     cleanup();
   });
 
+  test("immersive pages render the same menu, search and account with their safe exit callback", () => {
+    const onNavigatePath = jest.fn();
+    const { container, cleanup } = renderHeader(ExperienceHeader, { onNavigatePath });
+    expect([...container.querySelectorAll('[data-nav-key]')].map((link) => link.textContent)).toEqual([
+      "Home", "Library", "Bengali Classics", "English Classics", "Audiobooks", "Reading Pass", "Blog", "About",
+    ]);
+    expect(container.querySelector('[data-testid="nav-sign-in"]')).not.toBeNull();
+    expect(container.querySelector('[role="search"]')).not.toBeNull();
+    act(() => container.querySelector('[data-nav-key="journal"]').dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true })));
+    expect(onNavigatePath).toHaveBeenCalledWith({ key: "journal", to: "/journal", label: "Blog" });
+    cleanup();
+  });
+
   test("reveals the canonical mobile navigation and Sign In route from the menu", () => {
     const { container, cleanup } = renderHeader();
     expect(container.querySelector('[data-testid="mobile-header-search"]')).not.toBeNull();
@@ -61,8 +75,8 @@ describe("owner-approved Header composition", () => {
     expect(toggle).not.toBeNull();
     act(() => toggle.dispatchEvent(new MouseEvent("click", { bubbles: true })));
     expect(container.querySelector('[data-testid="mobile-nav-sign-in"]')?.getAttribute("href")).toBe("/login");
-    expect([...container.querySelectorAll('[data-testid^="mobile-nav-"]')].slice(0, 8).map((item) => item.textContent)).toEqual([
-      "Home", "Library", "Bengali Classics", "English Classics", "Audiobooks", "Reading Pass", "About", "Sign In",
+    expect([...container.querySelectorAll('[data-testid^="mobile-nav-"]')].slice(0, 9).map((item) => item.textContent)).toEqual([
+      "Home", "Library", "Bengali Classics", "English Classics", "Audiobooks", "Reading Pass", "Blog", "About", "Sign In",
     ]);
     expect(document.documentElement.scrollWidth).toBeLessThanOrEqual(document.documentElement.clientWidth);
     cleanup();

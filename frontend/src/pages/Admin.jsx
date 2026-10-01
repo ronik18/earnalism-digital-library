@@ -1,3 +1,4 @@
+import JournalEditor from "../components/Admin/JournalEditor";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -1211,7 +1212,7 @@ function BlogAdmin() {
     <div data-testid="blog-admin">
       <div className="flex items-center justify-between mb-5">
         <h2 className="font-serif-display text-2xl text-burgundy">Journal ({posts.length})</h2>
-        <button onClick={() => setEditing({ _new: true, title: "", excerpt: "", content: "", category: "Reflections", cover_image_url: "", author: "The Earnalism", pull_quote: "", is_published: true })} className="btn-primary" data-testid="add-post"><Plus size={14} className="mr-2" /> New post</button>
+        <button onClick={() => setEditing({ _new: true, title: "", excerpt: "", content: "", content_html: "", category: "Reflections", cover_image_url: "", author: "The Earnalism", pull_quote: "", is_published: false })} className="btn-primary" data-testid="add-post"><Plus size={14} className="mr-2" /> New post</button>
       </div>
       <div className="grid gap-4">
         {posts.map((p) => (
@@ -1237,7 +1238,11 @@ function BlogAdmin() {
               <Field label="Author"><input className="input-elegant" value={editing.author} onChange={(e) => setEditing({ ...editing, author: e.target.value })} /></Field>
               <Field label="Cover image URL" wide><input className="input-elegant" value={editing.cover_image_url} onChange={(e) => setEditing({ ...editing, cover_image_url: e.target.value })} /></Field>
               <Field label="Excerpt" wide><textarea rows={2} className="input-elegant" value={editing.excerpt} onChange={(e) => setEditing({ ...editing, excerpt: e.target.value })} /></Field>
-              <Field label="Content (paragraphs separated by blank line)" wide><textarea rows={10} className="input-elegant" value={editing.content} onChange={(e) => setEditing({ ...editing, content: e.target.value })} /></Field>
+              <Field label="Article (select text to add a link; upload photographs from the toolbar)" wide><JournalEditor key={editing.slug || "new-post"} initialData={editing} embedded onChange={(content) => setEditing((current) => ({ ...current, ...content }))} /></Field>
+              <Field label="Image description" wide><input className="input-elegant" value={editing.cover_image_alt || ""} onChange={(e) => setEditing({ ...editing, cover_image_alt: e.target.value })} /></Field>
+              <Field label="Image caption / credit" wide><input className="input-elegant" value={editing.image_caption || ""} onChange={(e) => setEditing({ ...editing, image_caption: e.target.value })} /></Field>
+              <Field label="Upload photograph" wide><input type="file" accept="image/png,image/jpeg,image/webp" onChange={async (e) => { const file = e.target.files?.[0]; if (!file) return; const body = new FormData(); body.append("file", file); try { const { data } = await api.post("/admin/upload/image?confirm_expensive_job=true", body); setEditing((current) => ({ ...current, cover_image_url: data.url })); } catch (error) { toast.error(formatError(error.response?.data?.detail)); } }} /></Field>
+              <Field label="Publication"><label><input type="checkbox" checked={Boolean(editing.is_published)} onChange={(e) => setEditing({ ...editing, is_published: e.target.checked })} /> Published</label></Field>
               <Field label="Pull quote" wide><input className="input-elegant" value={editing.pull_quote} onChange={(e) => setEditing({ ...editing, pull_quote: e.target.value })} /></Field>
             </div>
             <div className="mt-6 flex justify-end gap-3">

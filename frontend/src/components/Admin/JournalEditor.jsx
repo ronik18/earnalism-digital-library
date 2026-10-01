@@ -6,7 +6,7 @@ import Typography from "@tiptap/extension-typography";
 import axios from "axios";
 import { API, TOKEN_KEY } from "../../lib/api";
 
-export default function JournalEditor({ initialData = null, onSave, onPublish }) {
+export default function JournalEditor({ initialData = null, onSave, onPublish, onChange, embedded = false }) {
   const [title, setTitle] = useState(initialData?.title || "");
   const [status, setStatus] = useState("idle");
   const [lastSaved, setLastSaved] = useState(null);
@@ -14,7 +14,8 @@ export default function JournalEditor({ initialData = null, onSave, onPublish })
 
   const editor = useEditor({
     extensions: [StarterKit, Image.configure({ inline: false }), Typography],
-    content: initialData?.content_html || "",
+    content: initialData?.content_html || (initialData?.content || "").split("\n\n").map((p) => `<p>${p.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>`).join(""),
+    onUpdate: ({ editor: updatedEditor }) => onChange?.({ content_html: updatedEditor.getHTML(), content: updatedEditor.getText({ blockSeparator: "\n\n" }) }),
     editorProps: {
       attributes: {
         class: "reader-canvas reader-content",
@@ -36,10 +37,10 @@ export default function JournalEditor({ initialData = null, onSave, onPublish })
       const token = localStorage.getItem(TOKEN_KEY);
       const headers = { "Content-Type": "multipart/form-data" };
       if (token) headers.Authorization = `Bearer ${token}`;
-      const { data } = await axios.post(`${API}/admin/upload/image`, fd, { headers });
+      const { data } = await axios.post(`${API}/admin/upload/image?confirm_expensive_job=true`, fd, { headers });
       editor.chain().focus().setImage({ src: data.url }).run();
     } catch {
-      // swallow — toolbar stays available
+      setStatus("Image upload failed. Please try again.")
     } finally {
       e.target.value = "";
     }
@@ -59,7 +60,7 @@ export default function JournalEditor({ initialData = null, onSave, onPublish })
   const saveDraft = async () => {
     if (!editor) return;
     setStatus("saving");
-    const body = { title, content_html: editor.getHTML(), is_draft: true };
+    const body = { ...initialData, title, content_html: editor.getHTML(), content: editor.getText(), is_published: false };
     try {
       const token = localStorage.getItem(TOKEN_KEY);
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
@@ -84,12 +85,12 @@ export default function JournalEditor({ initialData = null, onSave, onPublish })
       title,
       content_html: editor.getHTML(),
       excerpt: editor.getText().slice(0, 200),
-      is_draft: false,
+      is_published: true,
     };
     try {
       const token = localStorage.getItem(TOKEN_KEY);
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
-      const { data } = await axios.post(`${API}/admin/blog`, body, { headers });
+      const { data } = initialData?.slug ? await axios.put(`${API}/admin/blog/${initialData.slug}`, body, { headers }) : await axios.post(`${API}/admin/blog`, body, { headers });
       setStatus("idle");
       onPublish?.(data);
     } catch {
@@ -101,11 +102,17 @@ export default function JournalEditor({ initialData = null, onSave, onPublish })
     const html = editor?.getHTML() || "";
     const win = window.open("", "_blank");
     if (!win) return;
-    win.document.write(`<!DOCTYPE html><html><head><title>${title || "Preview"}</title>
-      <link rel="stylesheet" href="${window.location.origin}/static/css/main.css"/>
-      <style>body{background:#FAF7F0;margin:0;padding:48px 16px;}</style>
-      </head><body><div class="reader-canvas reader-content"><h1 style="font-family:'Cormorant Garamond',serif;color:#6B1020;">${title}</h1>${html}</div></body></html>`);
-    win.document.close();
+    win.opener = null;
+    win.document.title = title || "Preview";
+    const heading = win.document.createElement("h1");
+    heading.textContent = title || "Preview";
+    win.document.body.appendChild(heading);
+    const frame = win.document.createElement("iframe");
+    frame.setAttribute("sandbox", "");
+    frame.setAttribute("title", "Article preview");
+    frame.style.cssText = "width:100%;height:85vh;border:0";
+    frame.srcdoc = `<html><head><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src https:; style-src 'unsafe-inline'"><style>body{background:#F6E8D7;color:#261914;font:22px/1.6 Georgia,serif;padding:24px;max-width:760px;margin:auto}img{max-width:100%;height:auto}</style></head><body>${html}</body></html>`;
+    win.document.body.appendChild(frame);
   };
 
   return (
@@ -122,11 +129,12 @@ export default function JournalEditor({ initialData = null, onSave, onPublish })
         <button type="button" onClick={() => editor?.chain().focus().toggleBulletList().run()} style={tbBtn(editor?.isActive("bulletList"))}>•</button>
         <button type="button" onClick={() => editor?.chain().focus().toggleOrderedList().run()} style={tbBtn(editor?.isActive("orderedList"))}>1.</button>
         <button type="button" onClick={() => editor?.chain().focus().setHorizontalRule().run()} style={tbBtn(false)}>─</button>
-        <button type="button" onClick={() => imageInputRef.current?.click()} style={tbBtn(false)}>🖼</button>
+        <button type="button" onClick={() => { const href = window.prompt("Link URL (https://…)"); if (href && /^https?:\/\//i.test(href)) editor?.chain().focus().extendMarkRange("link").setLink({ href }).run(); }} style={tbBtn(editor?.isActive("link"))}>Link</button>
+        <button type="button" aria-label="Upload article photograph" onClick={() => imageInputRef.current?.click()} style={tbBtn(false)}>🖼</button>
         <input ref={imageInputRef} type="file" accept="image/*" hidden onChange={onPickImage} />
       </div>
 
-      <input
+      {!embedded && <input
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
@@ -143,13 +151,14 @@ export default function JournalEditor({ initialData = null, onSave, onPublish })
           fontWeight: 500,
           color: "#1C0A0E",
         }}
-      />
+      />}
 
       <hr style={{ border: 0, borderTop: "1px solid #E8DDD8" }} />
 
       <EditorContent editor={editor} />
 
-      <div
+      {embedded && status !== "idle" && <p role="status">{status}</p>}
+      {!embedded && <div
         style={{
           position: "sticky",
           bottom: 0,
@@ -218,7 +227,7 @@ export default function JournalEditor({ initialData = null, onSave, onPublish })
             {status === "publishing" ? "Publishing…" : "Publish →"}
           </button>
         </div>
-      </div>
+      </div>}
     </div>
   );
 }

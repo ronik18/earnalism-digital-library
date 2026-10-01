@@ -447,17 +447,18 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     }
   }, [canonicalPage, changePage, freeReading, navigate, publishLease, settleLease, slug, totalPages, user]);
 
-  const navigateAfterSettlement = useCallback(async (target) => {
+  const navigateAfterSettlement = useCallback(async (target, navigationPath) => {
     if (actionRef.current) return;
     actionRef.current = true;
     setBusy(true);
-    const destinations = { back: `/book/${slug}`, library: "/library", search: "/library", bengali: "/library?language=bn&availability=reader-ready", english: "/library?language=en", audiobooks: "/library?availability=approved-audiobook", passes: "/pricing", home: "/", about: "/about", profile: "/account", signin: `/login?next=${encodeURIComponent(`/reader/${slug}?p=${canonicalPage}`)}` };
+    const destinations = { back: `/book/${slug}`, library: "/library", search: "/library", bengali: "/library?language=bn&availability=reader-ready", english: "/library?language=en", audiobooks: "/library?availability=approved-audiobook", passes: "/pricing", home: "/", about: "/about", journal: "/journal", profile: "/account", signin: `/login?next=${encodeURIComponent(`/reader/${slug}?p=${canonicalPage}`)}` };
     try {
       if (!await settleLease("reader_v2_navigation")) {
         setNotice("Your reading session could not be closed. Please retry before leaving this reader.");
         return;
       }
-      if (aliveRef.current && destinations[target]) navigate(destinations[target]);
+      const destination = navigationPath || destinations[target];
+      if (aliveRef.current && destination) navigate(destination);
     } finally {
       actionRef.current = false;
       if (aliveRef.current) setBusy(false);
@@ -590,9 +591,9 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       paragraphs: ["বাংলা পাঠ্যের যুক্তাক্ষর, স্বরচিহ্ন এবং বিরামচিহ্ন স্বাভাবিক পাঠের অংশ।", "এই বিচ্ছিন্ন পরীক্ষার নমুনা কেবল পাঠ-টাইপোগ্রাফি যাচাই করে; এটি কোনো প্রকাশিত পৃষ্ঠা বা অডিও অনুরোধ করে না।"],
     } : { ...READER_V2_FIXTURE };
     Object.assign(fixtureModel, { visualFixture: true, progress: null, readingTime: "", readingPass: "Sign in to check Reading Pass balance" });
-    return <ReaderExperienceV2 model={fixtureModel} access={{ authorized: false }} onRequestPage={changePage} onNavigate={(target) => {
-      const destinations = { back: "/book/dracula", library: "/library", search: "/library", bengali: "/library?language=bn&availability=reader-ready", english: "/library?language=en", audiobooks: "/library?availability=approved-audiobook", passes: "/pricing", home: "/", about: "/about", profile: "/account", signin: "/login", bookmark: "/login?next=%2Freader%2Fdracula" };
-      if (destinations[target]) navigate(destinations[target]);
+    return <ReaderExperienceV2 model={fixtureModel} access={{ authorized: false }} onRequestPage={changePage} onNavigate={(target, navigationPath) => {
+      const destinations = { back: "/book/dracula", library: "/library", search: "/library", bengali: "/library?language=bn&availability=reader-ready", english: "/library?language=en", audiobooks: "/library?availability=approved-audiobook", passes: "/pricing", home: "/", about: "/about", journal: "/journal", profile: "/account", signin: "/login", bookmark: "/login?next=%2Freader%2Fdracula" };
+      if (navigationPath || destinations[target]) navigate(navigationPath || destinations[target]);
     }} />;
   }
   const loadingExit = <button type="button" onClick={() => navigateAfterSettlement("library")} disabled={busy}>{busy ? "Closing reader…" : "Library"}</button>;
@@ -601,10 +602,10 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
   if (!enabled || !validPage) return <RouteState title="Page unavailable" message="This page is not available in this edition.">{recovery}</RouteState>;
   if (canonicalPage > PREVIEW_PAGES && !usable && !page) return <RouteState title={leaseStatus === "Paused" ? "Reading paused" : "Continue reading"} message={leaseStatus === "Paused" ? "Your reading session is paused while the reader is inactive." : freeReading ? "Sign in to continue reading this edition free." : "Use your Reading Pass to open this page."}>{recovery}</RouteState>;
   if (!page) return <RouteState title="Opening page" message="Loading your selected page.">{loadingExit}</RouteState>;
-  return <ReaderExperienceV2 model={model} access={{ authorized: usable, busy }} onRequestPage={authorizeAndContinue} onNavigate={(target) => {
+  return <ReaderExperienceV2 model={model} access={{ authorized: usable, busy }} onRequestPage={authorizeAndContinue} onNavigate={(target, navigationPath) => {
     if (target === "bookmark") {
       if (!user) { void navigateAfterSettlement("signin"); return; }
       void persistPosition(page).then(() => { if (aliveRef.current) setNotice("Your current page is saved."); }).catch(() => { if (aliveRef.current) setNotice("Your page could not be saved. Please try again."); });
-    } else void navigateAfterSettlement(target);
+    } else void navigateAfterSettlement(target, navigationPath);
   }} />;
 }

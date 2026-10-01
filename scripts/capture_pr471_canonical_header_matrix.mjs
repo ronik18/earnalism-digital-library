@@ -14,10 +14,10 @@ const officialBrandAsset = fs.readFileSync(path.resolve("frontend/public/assets/
 if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(baseUrl)) throw new Error("HEADER_REVIEW_BASE_URL must be an isolated loopback build.");
 fs.mkdirSync(output, { recursive: true });
 
-const navLabels = ["Home", "Library", "Bengali Classics", "English Classics", "Audiobooks", "Reading Pass", "About"];
+const navLabels = ["Home", "Library", "Bengali Classics", "English Classics", "Audiobooks", "Reading Pass", "Blog", "About"];
 const activeLabelByState = {
   home: "Home", library: "Library", "bengali-classics": "Bengali Classics", "english-classics": "English Classics",
-  audiobooks: "Audiobooks", "reading-pass": "Reading Pass", about: "About",
+  audiobooks: "Audiobooks", "reading-pass": "Reading Pass", journal: "Blog", "journal-article": "Blog", about: "About",
 };
 const routes = [
   { id: "home", path: "/" },
@@ -27,6 +27,8 @@ const routes = [
   { id: "audiobooks", path: "/library?availability=approved-audiobook" },
   { id: "book-detail", path: "/book/a-ghost-story" },
   { id: "reading-pass", path: "/pricing" },
+  { id: "journal", path: "/journal" },
+  { id: "journal-article", path: "/journal/how-reading-shapes-better-founders" },
   { id: "about", path: "/about" },
   { id: "contact", path: "/contact" },
   { id: "login", path: "/login" },
@@ -49,6 +51,11 @@ const book = {
   preview_enabled: true, preview_url: "/reader/a-ghost-story", chapters: [{ id: "a-ghost-story-chapter-1", title: "A Ghost Story", is_preview: true }],
   cover_image_url: "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1788115329/earnalism/covers/front/cover_candidate_controlled-a-ghost-story-d79e673971bf6de537d4886877d9e9daedd08efeeff467af0b2f9fbe43e52742.png", description: "A live reader edition for deterministic local review.",
 };
+
+const editorialSource = JSON.parse(fs.readFileSync("frontend/static-seo/editorial-public.json", "utf8"));
+const editorialArticle = editorialSource.articles.find((article) => article.slug === "how-reading-shapes-better-founders");
+assert.ok(editorialArticle, "Canonical public editorial fixture is present");
+const editorialPost = { ...editorialArticle, created_at: editorialArticle.published_at, content: editorialArticle.excerpt };
 
 const browser = await chromium.launch({ headless: true });
 const captures = [];
@@ -73,6 +80,9 @@ try {
           const pathname = url.pathname.slice(url.pathname.indexOf("/api/") + 4);
           let body = {};
           if (pathname === "/settings") body = {};
+          if (pathname === "/blog") body = [editorialPost];
+          if (pathname === `/blog/${editorialPost.slug}`) body = editorialPost;
+          if (pathname === `/blog/${editorialPost.slug}/discussion`) body = { likes: 0, comments: [] };
           if (pathname === "/books") body = [book];
           if (pathname === "/books/a-ghost-story") body = book;
           if (pathname === "/payments/offers") body = { packs: [{ id: "30", minutes: 30, price_inr: 49 }, { id: "60", minutes: 60, price_inr: 89 }, { id: "180", minutes: 180, price_inr: 239 }, { id: "600", minutes: 600, price_inr: 499 }], config: { configured: false, mode: "review" } };
@@ -82,7 +92,7 @@ try {
         return requestRoute.continue();
       });
       await page.goto(`${baseUrl}${routeInfo.path}`, { waitUntil: "domcontentloaded" });
-      const header = page.locator('[data-testid="site-header"], [data-testid="experience-header"]').first();
+      const header = page.locator('header[data-testid="site-header"]').first();
       await header.waitFor({ state: "visible", timeout: 15000 });
       await page.evaluate(() => document.fonts?.ready);
       await page.waitForTimeout(300);
@@ -121,15 +131,13 @@ try {
       const expectedWidth = viewport.width >= 1280 ? [240, 270] : viewport.width >= 768 ? [205, 230] : [165, 190];
       assert.ok(headerInfo.logo_width >= expectedWidth[0] && headerInfo.logo_width <= expectedWidth[1], `${routeInfo.id} ${viewport.width}: logo width ${headerInfo.logo_width}`);
       const expectedNavLabels = navLabels;
-      if (viewport.width >= 1280 && !["reader", "listener"].includes(routeInfo.id)) assert.deepEqual(headerInfo.public_nav_labels, expectedNavLabels, `${routeInfo.id}: desktop nav labels/order`);
-      if (viewport.width >= 1280 && !["reader", "listener"].includes(routeInfo.id)) assert.deepEqual(headerInfo.active_public_nav_labels, activeLabelByState[routeInfo.id] ? [activeLabelByState[routeInfo.id]] : [], `${routeInfo.id}: single route-aware active item`);
-      if (viewport.width >= 1280 && !["reader", "listener"].includes(routeInfo.id)) assert.equal(headerInfo.has_search_field, true, `${routeInfo.id}: shared desktop search`);
-      if (viewport.width < 1280 && !["reader", "listener"].includes(routeInfo.id)) assert.equal(headerInfo.has_mobile_search, true, `${routeInfo.id}: shared mobile search`);
-      if (["reader", "listener"].includes(routeInfo.id)) assert.equal(headerInfo.has_immersive_search, true, `${routeInfo.id}: immersive search affordance`);
+      if (viewport.width >= 1280) assert.deepEqual(headerInfo.public_nav_labels, expectedNavLabels, `${routeInfo.id}: desktop nav labels/order`);
+      if (viewport.width >= 1280) assert.deepEqual(headerInfo.active_public_nav_labels, activeLabelByState[routeInfo.id] ? [activeLabelByState[routeInfo.id]] : [], `${routeInfo.id}: single route-aware active item`);
+      if (viewport.width >= 1280) assert.equal(headerInfo.has_search_field, true, `${routeInfo.id}: shared desktop search`);
+      if (viewport.width < 1280) assert.equal(headerInfo.has_mobile_search, true, `${routeInfo.id}: shared mobile search`);
 
       let menuLabels = [...headerInfo.public_nav_labels];
-      const hasImmersiveHeader = ["reader", "listener"].includes(routeInfo.id);
-      if (viewport.width < 1280 || hasImmersiveHeader) {
+      if (viewport.width < 1280) {
         const menuToggle = header.locator('[data-testid="mobile-menu-toggle"], .experience-header__menu-toggle').first();
         await menuToggle.click();
         const menu = page.locator("#mobile-menu, #experience-header-menu").first();

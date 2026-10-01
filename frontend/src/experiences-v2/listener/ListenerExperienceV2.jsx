@@ -179,7 +179,7 @@ export default function ListenerExperienceV2({ book = {}, fixture = false, acces
 
   return (
     <ExperienceShell className="listener-v2" labelledBy="listener-v2-title">
-      <ExperienceHeader onSearch={() => onNavigate?.("search")} onNavigatePath={(item) => onNavigate?.(item.key === "reading-pass" ? "passes" : item.key)} trailingLabel="Library" showDesktopNavigation />
+      <ExperienceHeader onSearch={() => onNavigate?.("search")} onNavigatePath={(item) => onNavigate?.(item.key === "reading-pass" ? "passes" : item.key, item.to)} trailingLabel="Library" showDesktopNavigation />
       <section className="listener-v2__layout">
         <div className="listener-v2__main">
           <div className="listener-v2__mobile-top"><button type="button" onClick={() => onNavigate?.("back")} aria-label="Back to book"><ChevronLeft size={18} /></button></div>

@@ -1,5 +1,5 @@
 import { toast } from "sonner";
-import { Facebook, Link as LinkIcon, MessageCircle, Twitter } from "lucide-react";
+import { Facebook, Link as LinkIcon, MessageCircle, Twitter, Linkedin } from "lucide-react";
 
 /**
  * ShareButtons — premium, minimal row of share actions.
@@ -8,7 +8,7 @@ import { Facebook, Link as LinkIcon, MessageCircle, Twitter } from "lucide-react
  *  - variant: "product" | "article" (controls which networks show)
  *  - testIdPrefix: optional override for data-testid prefix
  */
-export default function ShareButtons({ title = "", variant = "product", testIdPrefix = "share" }) {
+export default function ShareButtons({ title = "", variant = "product", testIdPrefix = "share", labelled = false }) {
   const url = typeof window !== "undefined" ? window.location.href : "";
   const encUrl = encodeURIComponent(url);
   const encText = encodeURIComponent(title);
@@ -32,18 +32,18 @@ export default function ShareButtons({ title = "", variant = "product", testIdPr
         target="_blank" rel="noreferrer"
         aria-label="Share on WhatsApp"
         data-testid={`${testIdPrefix}-whatsapp`}
-        className={btn}
+        className={labelled ? `${btn} share-labelled` : btn}
       >
-        <MessageCircle size={16} />
+        <MessageCircle size={16} />{labelled && <span>WhatsApp</span>}
       </a>
       <a
         href={`https://www.facebook.com/sharer/sharer.php?u=${encUrl}`}
         target="_blank" rel="noreferrer"
         aria-label="Share on Facebook"
         data-testid={`${testIdPrefix}-facebook`}
-        className={btn}
+        className={labelled ? `${btn} share-labelled` : btn}
       >
-        <Facebook size={16} />
+        <Facebook size={16} />{labelled && <span>Facebook</span>}
       </a>
       {variant === "article" && (
         <a
@@ -51,13 +51,14 @@ export default function ShareButtons({ title = "", variant = "product", testIdPr
           target="_blank" rel="noreferrer"
           aria-label="Share on X"
           data-testid={`${testIdPrefix}-twitter`}
-          className={btn}
+          className={labelled ? `${btn} share-labelled` : btn}
         >
-          <Twitter size={16} />
+          <Twitter size={16} />{labelled && <span>X</span>}
         </a>
       )}
-      <button onClick={copy} aria-label="Copy link" data-testid={`${testIdPrefix}-copy`} className={btn} type="button">
-        <LinkIcon size={16} />
+      {variant === "article" && <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encUrl}`} target="_blank" rel="noreferrer" aria-label="Share on LinkedIn" className={labelled ? `${btn} share-labelled` : btn}><Linkedin size={16} />{labelled && <span>LinkedIn</span>}</a>}
+      <button onClick={copy} aria-label="Copy link" data-testid={`${testIdPrefix}-copy`} className={labelled ? `${btn} share-labelled` : btn} type="button">
+        <LinkIcon size={16} />{labelled && <span>Copy link</span>}
       </button>
     </div>
   );
