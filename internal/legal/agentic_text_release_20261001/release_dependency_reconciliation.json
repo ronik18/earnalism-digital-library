@@ -39,5 +39,15 @@
     "correction": "Append only owner-authorized Agentic to its exact list; retain all existing assertions and denied audio/Reader/error-state checks.",
     "local_result": "PASS_21_EXISTING_CASES",
     "production_source_sha256_unchanged": "f93d0d10d2fcc18644926d74d78b5895afebf4ef5ccec6c1de25550112d41a57"
+  },
+  "library_query_api_fixture": {
+    "failed_head": "b223f1915af2bfd644b5025d8f33ebf72129ccc9",
+    "failed_run": 36813666402,
+    "failed_job": 110213980338,
+    "finding": "The isolated Header-to-Library API fixture omitted Agentic while its exact expected results correctly read the current eight-title controlled launch authority.",
+    "correction": "Append the owner-authorized English text-only Agentic fixture. Retain exact displayed-slug comparison, Bengali filtering, all six viewport/API/fallback journeys and audio exclusions.",
+    "production_source_sha256_unchanged": "f93d0d10d2fcc18644926d74d78b5895afebf4ef5ccec6c1de25550112d41a57",
+    "local_result": "SYNTAX_AND_46_SNAPSHOT_993_ASSERTION_BUILD_PASS; SIX_BROWSER_JOURNEYS_REQUIRE_CI",
+    "local_browser_tooling": "Chrome download returned an invalid/empty archive in this workspace; no browser journey pass claimed."
   }
 }
