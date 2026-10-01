@@ -1,0 +1,28 @@
+{
+  "slug": "bn-027",
+  "status": "CONTENT_RECONCILIATION_REQUIRED_NOT_APPROVED",
+  "observed_at": "2026-10-01T20:12:08.765307+00:00",
+  "pinned_source_revision": 1655974,
+  "source_response_sha256": "d210b1e5939377d16ada9ad4d7b85a157d3c416fadde8c47dad631fa821fcd39",
+  "chapter_sha256": "c72dcc9a084a75b70c14ed578248cfeb7c57960bdd356abf9317f74828456015",
+  "findings": [
+    {
+      "kind": "reader_facing_source_furniture",
+      "canonical_prefix": "গল্পগুচ্ছ ১৯৬৯ (পৃ. ৭০৭-৭১৮)",
+      "action": "Remove only after exact source edition/transcription reconciliation; preserve source identity internally."
+    },
+    {
+      "kind": "substantive_missing_passage",
+      "source_passage_beginning": "মা ভালো-লাগা এবং মন্দ-লাগার মধ্যে দোমনা হইয়া ছিলেন।",
+      "action": "Compare the complete chapter to this pinned transcription/facsimile; do not claim completeness or transfer authorization to a changed edition."
+    },
+    {
+      "kind": "punctuation_variance",
+      "canonical": "ASCII apostrophe",
+      "source": "curly apostrophe",
+      "action": "No blind punctuation normalization accepted as exact source identity."
+    }
+  ],
+  "source_reading_method": "Text extracted with inline whitespace retained; NFC/whitespace comparison; diagnostic only.",
+  "publication_authorized": false
+}

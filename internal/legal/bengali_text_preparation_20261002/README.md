@@ -93,6 +93,7 @@ Source receipts identify revision, retrieval time and response hashes. They are 
 - Indira / bn-060: existing 1873 facsimile review reproduces all eight canonical chapter hashes. Review the existing Bankim packet and licence/cover obligations, then make an explicit edition-bound text publication decision. No acceptance is fabricated.
 - Muchiram: source has 14 chapters; package has two. Incomplete manuscript must not be authorized as a complete edition.
 - Pather Panchali: canonical parent missing; pinned alternative 1952 seventh-edition index lists 35 chapters, package has 12. Do not transfer a 1929 publication identity to this later edition.
+- Aparichita / bn-027: the current chapter has a reader-facing 1969 collection header and a substantive passage absent relative to pinned revision 1655974. See aparichita_content_hold.json; content is not yet compliant/complete.
 - Other source comparisons remain unresolved; retrieved source HTML and site licence alone do not establish exact edition/completeness.
 
 ## Required owner/legal decisions
