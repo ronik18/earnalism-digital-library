@@ -821,7 +821,6 @@
       "blockers": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -834,9 +833,7 @@
       "prepared_package": "data/controlled_publications/bn-031",
       "private_manifest": "manifests/bn-031.json",
       "processing_status": "ASSESSED",
-      "retained_package_issues": [
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json"
-      ],
+      "retained_package_issues": [],
       "rights": {
         "decision_id": null,
         "offline_india_text_scope_passed": false,
@@ -919,7 +916,6 @@
       "blockers": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -932,9 +928,7 @@
       "prepared_package": "data/controlled_publications/bn-035",
       "private_manifest": "manifests/bn-035.json",
       "processing_status": "ASSESSED",
-      "retained_package_issues": [
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json"
-      ],
+      "retained_package_issues": [],
       "rights": {
         "decision_id": null,
         "offline_india_text_scope_passed": false,
@@ -972,7 +966,6 @@
       "blockers": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -985,9 +978,7 @@
       "prepared_package": "data/controlled_publications/bn-036",
       "private_manifest": "manifests/bn-036.json",
       "processing_status": "ASSESSED",
-      "retained_package_issues": [
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json"
-      ],
+      "retained_package_issues": [],
       "rights": {
         "decision_id": null,
         "offline_india_text_scope_passed": false,
@@ -1085,7 +1076,6 @@
       "blockers": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -1098,9 +1088,7 @@
       "prepared_package": "data/controlled_publications/bn-041",
       "private_manifest": "manifests/bn-041.json",
       "processing_status": "ASSESSED",
-      "retained_package_issues": [
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json"
-      ],
+      "retained_package_issues": [],
       "rights": {
         "decision_id": null,
         "offline_india_text_scope_passed": false,
@@ -2014,7 +2002,6 @@
       "blockers": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -2027,9 +2014,7 @@
       "prepared_package": "data/controlled_publications/book-0deb35c750",
       "private_manifest": "manifests/book-0deb35c750.json",
       "processing_status": "ASSESSED",
-      "retained_package_issues": [
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json"
-      ],
+      "retained_package_issues": [],
       "rights": {
         "decision_id": null,
         "offline_india_text_scope_passed": false,
@@ -2169,7 +2154,6 @@
       "blockers": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "RETAINED_CHECKSUM_MISMATCH:approval_evidence.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -2182,9 +2166,7 @@
       "prepared_package": "data/controlled_publications/book-2b9853ec52",
       "private_manifest": "manifests/book-2b9853ec52.json",
       "processing_status": "ASSESSED",
-      "retained_package_issues": [
-        "RETAINED_CHECKSUM_MISMATCH:approval_evidence.json"
-      ],
+      "retained_package_issues": [],
       "rights": {
         "decision_id": null,
         "offline_india_text_scope_passed": false,
@@ -2222,7 +2204,6 @@
       "blockers": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -2235,9 +2216,7 @@
       "prepared_package": "data/controlled_publications/book-2ddbed8293",
       "private_manifest": "manifests/book-2ddbed8293.json",
       "processing_status": "ASSESSED",
-      "retained_package_issues": [
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json"
-      ],
+      "retained_package_issues": [],
       "rights": {
         "decision_id": null,
         "offline_india_text_scope_passed": false,
@@ -2275,7 +2254,6 @@
       "blockers": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -2288,9 +2266,7 @@
       "prepared_package": "data/controlled_publications/book-2e468c4990",
       "private_manifest": "manifests/book-2e468c4990.json",
       "processing_status": "ASSESSED",
-      "retained_package_issues": [
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json"
-      ],
+      "retained_package_issues": [],
       "rights": {
         "decision_id": null,
         "offline_india_text_scope_passed": false,
@@ -3698,7 +3674,6 @@
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
         "Front cover is required.",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -3711,9 +3686,7 @@
       "prepared_package": "data/controlled_publications/carmilla",
       "private_manifest": "manifests/carmilla.json",
       "processing_status": "ASSESSED",
-      "retained_package_issues": [
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json"
-      ],
+      "retained_package_issues": [],
       "rights": {
         "decision_id": null,
         "offline_india_text_scope_passed": false,
@@ -4068,7 +4041,6 @@
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
         "Front cover is required.",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -4081,9 +4053,7 @@
       "prepared_package": "data/controlled_publications/eyesore-chokher-bali",
       "private_manifest": "manifests/eyesore-chokher-bali.json",
       "processing_status": "ASSESSED",
-      "retained_package_issues": [
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json"
-      ],
+      "retained_package_issues": [],
       "rights": {
         "decision_id": null,
         "offline_india_text_scope_passed": false,
@@ -4326,7 +4296,6 @@
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
         "Front cover is required.",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -4339,9 +4308,7 @@
       "prepared_package": "data/controlled_publications/hound-of-the-baskervilles",
       "private_manifest": "manifests/hound-of-the-baskervilles.json",
       "processing_status": "ASSESSED",
-      "retained_package_issues": [
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json"
-      ],
+      "retained_package_issues": [],
       "rights": {
         "decision_id": null,
         "offline_india_text_scope_passed": false,
@@ -4380,7 +4347,6 @@
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
         "Front cover is required.",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -4393,9 +4359,7 @@
       "prepared_package": "data/controlled_publications/hungry-stones",
       "private_manifest": "manifests/hungry-stones.json",
       "processing_status": "ASSESSED",
-      "retained_package_issues": [
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json"
-      ],
+      "retained_package_issues": [],
       "rights": {
         "decision_id": null,
         "offline_india_text_scope_passed": false,
@@ -4880,8 +4844,6 @@
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
         "Front cover is required.",
-        "RETAINED_CHECKSUM_MISMATCH:approval_evidence.json",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -4894,10 +4856,7 @@
       "prepared_package": "data/controlled_publications/pather-panchali",
       "private_manifest": "manifests/pather-panchali.json",
       "processing_status": "ASSESSED",
-      "retained_package_issues": [
-        "RETAINED_CHECKSUM_MISMATCH:approval_evidence.json",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json"
-      ],
+      "retained_package_issues": [],
       "rights": {
         "decision_id": null,
         "offline_india_text_scope_passed": false,
@@ -6128,10 +6087,7 @@
       "audio_activation_authorized": false,
       "blockers": [
         "ACCEPTED_DECISION_MISSING",
-        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "RETAINED_CHECKSUM_MISMATCH:approval_evidence.json",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
-        "RETAINED_CHECKSUM_MISMATCH:source_evidence.json"
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED"
       ],
       "chapter_count": 1,
       "historical_root_decision": false,
@@ -6141,11 +6097,7 @@
       "prepared_package": "data/controlled_publications/the-art-of-money-getting",
       "private_manifest": "manifests/the-art-of-money-getting.json",
       "processing_status": "ASSESSED",
-      "retained_package_issues": [
-        "RETAINED_CHECKSUM_MISMATCH:approval_evidence.json",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
-        "RETAINED_CHECKSUM_MISMATCH:source_evidence.json"
-      ],
+      "retained_package_issues": [],
       "rights": {
         "decision_id": null,
         "offline_india_text_scope_passed": false,
@@ -6623,7 +6575,6 @@
       "blockers": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "READER_SOURCE_FURNITURE_OR_ENCODING_ERROR:chapter-003",
         "Reader QA must pass."
       ],
       "chapter_count": 22,
@@ -6634,9 +6585,7 @@
       "prepared_package": "data/controlled_publications/the-enchanted-april",
       "private_manifest": "manifests/the-enchanted-april.json",
       "processing_status": "ASSESSED",
-      "retained_package_issues": [
-        "READER_SOURCE_FURNITURE_OR_ENCODING_ERROR:chapter-003"
-      ],
+      "retained_package_issues": [],
       "rights": {
         "decision_id": null,
         "offline_india_text_scope_passed": false,
@@ -8527,7 +8476,6 @@
       "blockers": [
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -8540,9 +8488,7 @@
       "prepared_package": "data/controlled_publications/the-student",
       "private_manifest": "manifests/the-student.json",
       "processing_status": "ASSESSED",
-      "retained_package_issues": [
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json"
-      ],
+      "retained_package_issues": [],
       "rights": {
         "decision_id": null,
         "offline_india_text_scope_passed": false,
@@ -9090,7 +9036,6 @@
         "ACCEPTED_DECISION_MISSING",
         "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
         "Front cover is required.",
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json",
         "Rights: author_death_year is required.",
         "Rights: original_publication_year is required.",
         "Rights: verified_at is required for approved rights metadata."
@@ -9103,9 +9048,7 @@
       "prepared_package": "data/controlled_publications/woman-in-white",
       "private_manifest": "manifests/woman-in-white.json",
       "processing_status": "ASSESSED",
-      "retained_package_issues": [
-        "RETAINED_CHECKSUM_MISMATCH:public_book.json"
-      ],
+      "retained_package_issues": [],
       "rights": {
         "decision_id": null,
         "offline_india_text_scope_passed": false,

@@ -39,3 +39,22 @@ The candidate retains the shared integration branch after campaign merges and bi
 Retain `DEFERRED_BY_OWNER_POST_CUSTOMER_READY_UAT`, Android and iOS `NOT_RUN / UNVERIFIED`, and the owner's narrow nonblocking decision. No authorized physical device is available here. Issue comment 5916449791 records the verified scheduling state and complete resumption trigger. Existing isolated authorization, settlement and Stop coverage is not a physical-device pass.
 
 Next exact command: `gh pr checks <candidate-pr> --repo ronik18/earnalism-digital-library --watch --fail-fast`; then use an exact-head protected merge and verify merged-main regression. Separately inspect `gh run view 36748172557 --repo ronik18/earnalism-digital-library --log-failed` before making any campaign outcome claim.
+
+## Follow-on inspection — 2026-10-01
+
+The earlier candidate/pending wording above records the initial September 30 inspection. Current source is verified merged main 45490009cf45fc1ce6853752f80e903636169916. PR #480 resolved #347 and the issue is closed completed. PRs #488–#491 repaired 19 stale metadata blockers for 16 held titles after full required exact-head checks and protected merges. No approved product, artwork, manuscript, chapter, source/approval, accepted decision or launch authority was replaced.
+
+The next actual campaign [36794894294](https://github.com/ronik18/earnalism-digital-library/actions/runs/36794894294) passed all gates with a completed exact-source/batch-bound receipt for 20 selected titles, empty implementation diff, seven accepted/224 held and 900 blockers. Private/controller artifacts 11133108483 and 11133960716 were independently digest/receipt/diff verified. Main regression 36794894307 passed. A no-progress conclusion applies to this selected batch only.
+
+The original “proper category:” sentence in Enchanted April was falsely identified as repository metadata. The corrected checker preserves the exact original prose while rejecting actual namespace lines/links/URLs and existing unsafe/encoding/source-furniture anomalies. Eight local processor tests pass and are added to mandatory normal regression. The reproduced [per-slug state](full_catalogue_processing_20260930/catalogue_state.json) contains 231 assessed, 162 prepared, 1,012 chapters, seven accepted, 224 held, 69 missing cleared packages and 899 candidate aggregate blockers. This private snapshot carries no publication authority. Required normal exact-head and independent catalogue checks remain pending for this correction.
+
+| Issue | Verified disposition | Remaining condition |
+| --- | --- | --- |
+| #347 | Closed completed; stale routing/cache fixtures repaired without changing release predicates | None for the reported failures |
+| #380 | Both archive checksum inventories, seven artwork crops, all 14 revised chapters, current approved UI/source, fresh PR486 browser envelope and actual production route/SEO canaries verified | Agentic accepted hash-bound cover/component/text-use decision and applicable authenticated trusted-India production acceptance/readback |
+| #477 | 19 retained metadata blockers repaired; one checker false positive corrected in this candidate; every remaining hold is retained by slug | Genuine exact edition/source, cover, accepted decision and QA evidence; 69 cleared packages missing; no new release from unsupported facts |
+| #385 | Owner-deferred post-CUSTOMER_READY UAT; nonblocking for this test only | Actual owner-provided Android/iOS testing later; NOT_RUN / UNVERIFIED |
+
+The three absent chapter files remain held with original hashes; no placeholder, inventory stripping or new hash substitutes for exact cleared content. Legacy Dorian bundle removals from approved repair 4b41439bb2397f6e6ecebd6d35ca990213a59840 are preserved. Historical QA/rights/production flags are not promoted to fresh approval. Authenticated production readiness and pre-existing accepted reader segment availability remain separate from public route/SEO passes. CUSTOMER_READY is not declared.
+
+Next generated prompt: require normal exact-head and independent catalogue checks for this correction, merge with expected-head protection, verify main and update all four issue dispositions with the actual outcomes. Then resume only on new substantiated exact evidence through the existing draft/admin path.

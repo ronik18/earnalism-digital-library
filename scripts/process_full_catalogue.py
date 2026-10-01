@@ -27,7 +27,9 @@ from backend.rights_decision_gate import evaluate_runtime_path, load_production_
 OUTPUT = "internal/earnalism_intelligence/full_catalogue_processing_20260930"
 COMPONENTS = ("public_book", "reader_manifest", "source_evidence", "approval_evidence", "checksum_manifest", "publication_manifest")
 BAD_HTML = re.compile(r"<(?:script|iframe|object|embed)\b", re.I)
-BOILERPLATE = re.compile(r"(?:START|END) OF (?:THE|THIS) PROJECT GUTENBERG|Gutenberg-tm|www\.gutenberg\.org|Download as|Category:|Special:Export", re.I)
+# Category namespace metadata has a line/link/URL boundary. Ordinary prose such
+# as Enchanted April's "proper category:" is source content, not repository UI.
+BOILERPLATE = re.compile(r"(?:START|END) OF (?:THE|THIS) PROJECT GUTENBERG|Gutenberg-tm|www\.gutenberg\.org|Download as|(?:^\s*|\[\[:?|/)Category:|Special:Export", re.I | re.M)
 
 
 def digest(path: Path) -> str:
