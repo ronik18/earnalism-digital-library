@@ -7401,7 +7401,8 @@ async def journal_discussion(slug: str, response: Response):
     return {"likes": await db.journal_likes.count_documents({"slug": slug}), "comments": comments}
 
 @api.get("/blog/{slug}/my-like")
-async def journal_my_like(slug: str, user=Depends(require_user)):
+async def journal_my_like(slug: str, response: Response, user=Depends(require_user)):
+    response.headers["Cache-Control"] = "private, no-store"
     await _published_journal(slug)
     return {"liked": bool(await db.journal_likes.find_one({"_id": slug + ":" + str(user["id"])}))}
 

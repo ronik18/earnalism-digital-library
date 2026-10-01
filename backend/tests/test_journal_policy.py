@@ -112,12 +112,13 @@ def test_http_routes_auth_fail_closed_and_idempotent_like():
         async def update_one(self, query, update, upsert=False): self.rows.setdefault(query['_id'], update['$setOnInsert'])
         async def delete_one(self, query): self.rows.pop(query['_id'], None)
         async def count_documents(self, query): return len(self.rows)
+        async def find_one(self, query): return self.rows.get(query['_id'])
     class Comments:
         def __init__(self): self.rows = []
         async def count_documents(self, query): return len(self.rows)
         async def insert_one(self, row): self.rows.append(row)
     source = ast.parse(Path('backend/server.py').read_text())
-    names = {'JournalCommentIn', '_published_journal', 'journal_like', 'journal_unlike', 'journal_comment'}
+    names = {'JournalCommentIn', '_published_journal', 'journal_like', 'journal_unlike', 'journal_comment', 'journal_my_like'}
     nodes = [n for n in source.body if getattr(n, 'name', '') in names]
     ns = dict(api=router, BaseModel=BaseModel, Field=Field, Depends=Depends, require_user=deny, HTTPException=HTTPException, Response=Response, RETIRED_PUBLIC_BLOG_SLUGS={'retired'}, db=SimpleNamespace(blog_posts=Posts(), journal_likes=Likes(), journal_comments=Comments()), uuid=uuid, datetime=datetime, timezone=timezone, timedelta=timedelta, now_iso=lambda: datetime.now(timezone.utc).isoformat())
     exec(compile(ast.Module(body=nodes, type_ignores=[]), '<journal-http>', 'exec'), ns)
@@ -130,6 +131,9 @@ def test_http_routes_auth_fail_closed_and_idempotent_like():
         assert client.put('/api/blog/retired/like').status_code == 404
         assert client.put('/api/blog/published/like').json() == {'liked': True, 'likes': 1}
         assert client.put('/api/blog/published/like').json() == {'liked': True, 'likes': 1}
+        personal = client.get('/api/blog/published/my-like')
+        assert personal.json() == {'liked': True}
+        assert personal.headers['cache-control'] == 'private, no-store'
         assert client.delete('/api/blog/published/like').json() == {'liked': False, 'likes': 0}
         assert client.post('/api/blog/draft/comments', json={'text': 'hello'}).status_code == 404
         assert client.post('/api/blog/published/comments', json={'text': '   '}).status_code == 422
