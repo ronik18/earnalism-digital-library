@@ -1,0 +1,928 @@
+{
+  "schema_version": 1,
+  "measurement_layers": {
+    "traffic": "Vercel Web Analytics aggregate page views and visitor estimates",
+    "product_funnel": "Earnalism first-party analytics_events, grouped by anonymous browser-tab session; preview and local events are excluded from production aggregates",
+    "purchase_authority": "Verified Razorpay captured payment followed by a successful Reading Pass credit"
+  },
+  "events": [
+    {
+      "event": "page_view",
+      "source": "frontend/src/App.js; frontend/src/lib/controlledLaunch.js; frontend/src/pages/Admin.jsx; frontend/src/pages/Account.jsx",
+      "kind": "client",
+      "trigger": "real customer-facing React Router navigation, excluding admin and internal harness routes; consecutive duplicate effect replay is suppressed, later back navigation counts again",
+      "fields": [
+        "anonymous_session_id",
+        "pathname",
+        "referrer_category",
+        "utm_source",
+        "utm_medium",
+        "utm_campaign",
+        "utm_content",
+        "utm_term"
+      ],
+      "authoritative_conversion": false,
+      "pii": false,
+      "client_or_server": "client",
+      "payload": [
+        "anonymous_session_id",
+        "pathname",
+        "referrer_category",
+        "utm_source",
+        "utm_medium",
+        "utm_campaign",
+        "utm_content",
+        "utm_term"
+      ],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "pii_present": false,
+      "test_coverage": "focused analytics unit/integration tests",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "homepage_view",
+      "source": "frontend/src/App.js; frontend/src/pages/Admin.jsx",
+      "kind": "client",
+      "trigger": "real navigation to /; duplicate effect replay is suppressed and later back navigation counts again",
+      "fields": [
+        "anonymous_session_id",
+        "pathname",
+        "referrer_category",
+        "utm_source",
+        "utm_medium",
+        "utm_campaign",
+        "utm_content",
+        "utm_term"
+      ],
+      "authoritative_conversion": false,
+      "pii": false,
+      "client_or_server": "client",
+      "payload": [
+        "anonymous_session_id",
+        "pathname",
+        "referrer_category",
+        "utm_source",
+        "utm_medium",
+        "utm_campaign",
+        "utm_content",
+        "utm_term"
+      ],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "pii_present": false,
+      "test_coverage": "focused analytics unit/integration tests",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "library_view",
+      "source": "frontend/src/App.js; frontend/src/pages/Admin.jsx",
+      "kind": "client",
+      "trigger": "real navigation to /library",
+      "fields": [
+        "anonymous_session_id",
+        "pathname",
+        "attribution"
+      ],
+      "authoritative_conversion": false,
+      "pii": false,
+      "client_or_server": "client",
+      "payload": [
+        "anonymous_session_id",
+        "pathname",
+        "attribution"
+      ],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "pii_present": false,
+      "test_coverage": "focused analytics unit/integration tests",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "title_view",
+      "source": "frontend/src/pages/Admin.jsx; frontend/src/pages/BookDetail.jsx",
+      "kind": "client",
+      "trigger": "loaded book slug matches requested route",
+      "fields": [
+        "anonymous_session_id",
+        "book_slug",
+        "pathname",
+        "attribution"
+      ],
+      "authoritative_conversion": false,
+      "pii": false,
+      "client_or_server": "client",
+      "payload": [
+        "anonymous_session_id",
+        "book_slug",
+        "pathname",
+        "attribution"
+      ],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "pii_present": false,
+      "test_coverage": "focused analytics unit/integration tests",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "reader_preview_started",
+      "source": "frontend/src/experiences-v2/reader/ReaderExperienceV2Route.jsx; frontend/src/pages/Admin.jsx",
+      "kind": "client",
+      "trigger": "validated visible page has runtime is_preview=true; once per Reader session",
+      "fields": [
+        "anonymous_session_id",
+        "book_slug",
+        "page_index"
+      ],
+      "authoritative_conversion": false,
+      "pii": false,
+      "client_or_server": "client",
+      "payload": [
+        "anonymous_session_id",
+        "book_slug",
+        "page_index"
+      ],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "pii_present": false,
+      "test_coverage": "focused analytics unit/integration tests",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "reader_preview_completed",
+      "source": "none",
+      "kind": "not_implemented",
+      "trigger": "No canonical completion definition is exposed.",
+      "fields": [],
+      "authoritative_conversion": false,
+      "pii": false,
+      "client_or_server": "not_emitted",
+      "payload": [],
+      "production_enabled": true,
+      "production_delivery_gate": "not implemented",
+      "pii_present": false,
+      "test_coverage": "server purchase idempotency coverage",
+      "status": "not_implemented"
+    },
+    {
+      "event": "pricing_view",
+      "source": "frontend/src/App.js; frontend/src/pages/Admin.jsx",
+      "kind": "client",
+      "trigger": "real navigation to /pricing",
+      "fields": [
+        "anonymous_session_id",
+        "pathname",
+        "attribution"
+      ],
+      "authoritative_conversion": false,
+      "pii": false,
+      "client_or_server": "client",
+      "payload": [
+        "anonymous_session_id",
+        "pathname",
+        "attribution"
+      ],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "pii_present": false,
+      "test_coverage": "focused analytics unit/integration tests",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "signup_started",
+      "source": "frontend/src/pages/Signup.jsx; frontend/src/pages/Admin.jsx",
+      "kind": "client",
+      "trigger": "form submit; no form values",
+      "fields": [
+        "anonymous_session_id",
+        "source"
+      ],
+      "authoritative_conversion": false,
+      "pii": false,
+      "client_or_server": "client",
+      "payload": [
+        "anonymous_session_id",
+        "source"
+      ],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "pii_present": false,
+      "test_coverage": "focused analytics unit/integration tests",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "signup_completed",
+      "source": "frontend/src/pages/Signup.jsx; frontend/src/pages/Admin.jsx",
+      "kind": "client",
+      "trigger": "successful signup API response",
+      "fields": [
+        "anonymous_session_id",
+        "source"
+      ],
+      "authoritative_conversion": false,
+      "pii": false,
+      "client_or_server": "client",
+      "payload": [
+        "anonymous_session_id",
+        "source"
+      ],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "pii_present": false,
+      "test_coverage": "focused analytics unit/integration tests",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "signin_started",
+      "source": "frontend/src/pages/Admin.jsx; frontend/src/pages/Login.jsx",
+      "kind": "client",
+      "trigger": "email or Google sign-in begins; no credential values",
+      "fields": [
+        "anonymous_session_id",
+        "source"
+      ],
+      "authoritative_conversion": false,
+      "pii": false,
+      "client_or_server": "client",
+      "payload": [
+        "anonymous_session_id",
+        "source"
+      ],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "signin_completed",
+      "source": "frontend/src/pages/Admin.jsx; frontend/src/pages/Login.jsx",
+      "kind": "client",
+      "trigger": "successful sign-in API response",
+      "fields": [
+        "anonymous_session_id",
+        "source"
+      ],
+      "authoritative_conversion": false,
+      "pii": false,
+      "client_or_server": "client",
+      "payload": [
+        "anonymous_session_id",
+        "source"
+      ],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "reading_pass_offer_viewed",
+      "source": "frontend/src/pages/Admin.jsx; frontend/src/pages/Pricing.jsx",
+      "kind": "client",
+      "trigger": "one or more live offers load, once per mount",
+      "fields": [
+        "anonymous_session_id",
+        "offer_count"
+      ],
+      "authoritative_conversion": false,
+      "pii": false,
+      "client_or_server": "client",
+      "payload": [
+        "anonymous_session_id",
+        "offer_count"
+      ],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "checkout_failed",
+      "source": "frontend/src/pages/Admin.jsx; frontend/src/pages/Pricing.jsx",
+      "kind": "client",
+      "trigger": "provider initialization, payment failure, or checkout dismissal",
+      "fields": [
+        "anonymous_session_id",
+        "pack_id",
+        "reason"
+      ],
+      "authoritative_conversion": false,
+      "pii": false,
+      "client_or_server": "client",
+      "payload": [
+        "anonymous_session_id",
+        "pack_id",
+        "reason"
+      ],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "pii_present": false,
+      "test_coverage": "focused analytics unit/integration tests",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "listener_view",
+      "source": "frontend/src/experiences-v2/listener/ListenerExperienceV2Route.jsx; frontend/src/pages/Admin.jsx",
+      "kind": "client",
+      "trigger": "verified playable manifest and active lease exist",
+      "fields": [
+        "anonymous_session_id",
+        "book_slug"
+      ],
+      "authoritative_conversion": false,
+      "pii": false,
+      "client_or_server": "client",
+      "payload": [
+        "anonymous_session_id",
+        "book_slug"
+      ],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "listener_started",
+      "source": "frontend/src/experiences-v2/listener/ListenerExperienceV2Route.jsx; frontend/src/pages/Admin.jsx",
+      "kind": "client",
+      "trigger": "approved playback enters playing state",
+      "fields": [
+        "anonymous_session_id",
+        "book_slug"
+      ],
+      "authoritative_conversion": false,
+      "pii": false,
+      "client_or_server": "client",
+      "payload": [
+        "anonymous_session_id",
+        "book_slug"
+      ],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "first_time_site_tour_shown",
+      "source": "frontend/src/components/FirstVisitSiteTour.jsx",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "first_time_site_tour_completed",
+      "source": "frontend/src/components/FirstVisitSiteTour.jsx",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "first_time_site_tour_skipped",
+      "source": "frontend/src/components/FirstVisitSiteTour.jsx",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "hero_read_chapter_free_click",
+      "source": "frontend/src/lib/controlledLaunch.js",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "dracula_book_page_view",
+      "source": "frontend/src/lib/controlledLaunch.js",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "start_dracula_click",
+      "source": "frontend/src/lib/controlledLaunch.js",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "reader_opened",
+      "source": "frontend/src/lib/controlledLaunch.js; frontend/src/pages/Reader.jsx",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "reader_locked_state",
+      "source": "frontend/src/pages/Reader.jsx",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "reader_low_balance_state",
+      "source": "frontend/src/pages/Reader.jsx",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "pricing_page_view",
+      "source": "frontend/src/lib/controlledLaunch.js; frontend/src/pages/Account.jsx",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "reading_pack_selected",
+      "source": "frontend/src/pages/Admin.jsx; frontend/src/pages/Pricing.jsx",
+      "kind": "client",
+      "trigger": "user selects an offer",
+      "fields": [
+        "anonymous_session_id",
+        "pack_id",
+        "minutes",
+        "price_inr",
+        "source"
+      ],
+      "authoritative_conversion": false,
+      "pii": false,
+      "client_or_server": "client",
+      "payload": [
+        "anonymous_session_id",
+        "pack_id",
+        "minutes",
+        "price_inr",
+        "source"
+      ],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "payment_success_return",
+      "source": "legacy browser event; no longer emitted",
+      "kind": "client",
+      "trigger": "historical browser return; never authoritative for purchase",
+      "fields": [
+        "legacy"
+      ],
+      "authoritative_conversion": false,
+      "pii": false,
+      "client_or_server": "client",
+      "payload": [
+        "legacy"
+      ],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "legacy_non_authoritative"
+    },
+    {
+      "event": "payment_failed_or_cancelled",
+      "source": "legacy frontend event with no current callsite",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "wallet_credited_visible",
+      "source": "frontend/src/pages/Pricing.jsx",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "continue_reading_click",
+      "source": "frontend/src/lib/controlledLaunch.js",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "return_resume_reading_click",
+      "source": "frontend/src/pages/Reader.jsx; frontend/src/pages/Account.jsx",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "core_web_vital",
+      "source": "frontend/src/lib/performanceMetrics.js; frontend/src/pages/Admin.jsx",
+      "kind": "client",
+      "trigger": "existing sampled performance telemetry",
+      "fields": [
+        "metric",
+        "value",
+        "rating",
+        "route"
+      ],
+      "authoritative_conversion": false,
+      "pii": false,
+      "client_or_server": "client",
+      "payload": [
+        "metric",
+        "value",
+        "rating",
+        "route"
+      ],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "hero_primary_cta_click",
+      "source": "frontend/src/components/PremiumHero.jsx",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "hero_secondary_cta_click",
+      "source": "frontend/src/components/PremiumHero.jsx",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "bengali_card_click",
+      "source": "frontend/src/components/ComingSoonBoard.jsx",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "english_card_click",
+      "source": "frontend/src/components/ComingSoonBoard.jsx",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "approved_audio_card_click",
+      "source": "frontend/src/components/ComingSoonBoard.jsx",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "book_card_read_click",
+      "source": "frontend/src/components/BookCard.jsx",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "book_card_listen_click",
+      "source": "frontend/src/components/BookCard.jsx",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "newsletter_submit_attempt",
+      "source": "frontend/src/pages/Home.jsx",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "newsletter_submit_success",
+      "source": "frontend/src/pages/Home.jsx",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "focused analytics unit/integration tests",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "newsletter_submit_failure",
+      "source": "frontend/src/pages/Home.jsx",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "social_link_click",
+      "source": "legacy frontend event with no current callsite",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "support_complaint_created",
+      "source": "frontend/src/pages/Contact.jsx",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "reader_upsell_cta_click",
+      "source": "frontend/src/components/Funnel/ReaderUpsellPrompt.jsx",
+      "kind": "client",
+      "client_or_server": "client",
+      "trigger": "Existing sanitized client callsite; see source list.",
+      "payload": [],
+      "production_enabled": false,
+      "production_delivery_gate": "frontend REACT_APP_ENABLE_LAUNCH_ANALYTICS=true",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "not individually asserted",
+      "status": "active_or_legacy_supported"
+    },
+    {
+      "event": "checkout_started",
+      "source": "backend/server.py payments_create_topup",
+      "kind": "server",
+      "client_or_server": "server",
+      "trigger": "Provider order and top-up intent were created successfully.",
+      "payload": [
+        "anonymous_session_id",
+        "pack_id",
+        "minutes",
+        "amount_inr",
+        "currency",
+        "allowlisted UTM/referrer category"
+      ],
+      "production_enabled": true,
+      "production_delivery_gate": "Backend best-effort writer after order/intent persistence",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "backend payment route and analytics instrumentation tests",
+      "status": "server_only"
+    },
+    {
+      "event": "purchase_completed",
+      "source": "backend/server.py verified payment verification and webhook credit path",
+      "kind": "server",
+      "client_or_server": "server",
+      "trigger": "Provider signature and captured payment verified, then the Reading Pass intent was successfully credited; idempotent across verification/webhook retries.",
+      "payload": [
+        "anonymous_session_id",
+        "pack_id",
+        "minutes",
+        "amount_inr",
+        "currency",
+        "outcome",
+        "hashed idempotency key"
+      ],
+      "production_enabled": true,
+      "production_delivery_gate": "Backend best-effort writer after successful credit",
+      "authoritative_conversion": true,
+      "pii_present": false,
+      "test_coverage": "backend verified purchase and duplicate retry idempotency tests",
+      "status": "server_only"
+    },
+    {
+      "event": "vercel_web_analytics_page_view",
+      "source": "@vercel/analytics/react <Analytics/>",
+      "kind": "platform_aggregate",
+      "client_or_server": "platform",
+      "trigger": "Vercel script records production SPA page navigation; beforeSend strips query/hash and excludes admin/internal harness routes",
+      "payload": [
+        "pathname",
+        "platform aggregate visitor/session context"
+      ],
+      "production_enabled": false,
+      "production_delivery_gate": "Vercel project Web Analytics integration enabled; frontend deployed to production",
+      "authoritative_conversion": false,
+      "pii_present": false,
+      "test_coverage": "production browser request verification pending deployment",
+      "status": "platform_measurement"
+    }
+  ],
+  "definitions": {
+    "visitor": "Vercel aggregate visitor estimate; not HTTP requests or guaranteed unique people",
+    "session": "random anonymous identifier kept in sessionStorage for one browser tab session",
+    "page_view": "route navigation event; not a unique visitor",
+    "title_view": "matching loaded BookDetail response",
+    "reader_start": "validated runtime preview page is displayed",
+    "signup": "started is a submit attempt; completed follows successful API response",
+    "checkout_start": "backend created a real provider order and intent; not a purchase",
+    "purchase": "server verified captured payment and credited its Reading Pass intent",
+    "conversion": "sessions reaching the next ordered stage divided by sessions reaching the current stage"
+  },
+  "limitations": [
+    "Session counts are browser-tab journeys, not individual people, and do not persist between tabs.",
+    "Historical analytics may contain request metadata collected before minimization; this change does not rewrite old records.",
+    "Reader preview completion is not reported because no canonical completion threshold exists.",
+    "Vercel visitor/page-view totals need hosted deployment and platform processing time.",
+    "Preview and local first-party analytics requests share the production collector but are tagged and excluded from production dashboard aggregates."
+  ],
+  "non_event_inventory": {
+    "commerce_authority": "checkout_started is server-created order/intent; purchase_completed only follows verified captured payment and successful credit, deduplicated by hashed intent id.",
+    "client_forbidden": [
+      "checkout_started",
+      "purchase_completed"
+    ],
+    "intentionally_suppressed_attempts": [
+      {
+        "event": "bengali_gothic_pipeline_view",
+        "source": "frontend/src/pages/Home.jsx",
+        "reason": "Not in public analytics allowlist; metadata marks public=false."
+      }
+    ],
+    "first_party_flag": "REACT_APP_ENABLE_LAUNCH_ANALYTICS",
+    "historical_records": "Old analytics rows are retained and may include request metadata from before this change; current writers do not add direct user identifiers, raw referrer, user-agent, or query strings."
+  },
+  "deployment_state": {
+    "vercel_web_analytics_project_toggle": "enabled",
+    "vercel_analytics_sdk_in_this_change": true,
+    "vercel_analytics_current_production_delivery": "pending_deployment",
+    "first_party_flag": "REACT_APP_ENABLE_LAUNCH_ANALYTICS",
+    "first_party_flag_targets": {
+      "preview": true,
+      "production": true
+    },
+    "first_party_current_production_delivery": "pending_deployment",
+    "preview_api_policy": "isolated; Preview cannot reach the production backend collector"
+  }
+}

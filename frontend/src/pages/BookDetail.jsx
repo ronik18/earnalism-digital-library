@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { Check, ChevronLeft, Clock, BookOpen, CreditCard, Sparkles, Headphones, ShieldCheck } from "lucide-react";
 import { api } from "../lib/api";
 import ShareButtons from "../components/ShareButtons";
 import BookCoverImage from "../components/BookCoverImage";
 import JsonLd from "../components/JsonLd";
-import { trackFunnelEvent } from "../lib/funnelAnalytics";
+import { trackFunnelEvent, trackPageAnalyticsView } from "../lib/funnelAnalytics";
 import {
   DRACULA_CHAPTER_COUNT,
   DRACULA_CTA_EVENTS,
@@ -75,6 +75,7 @@ function mergeReaderManifestIntoBook(book, manifest) {
 
 export default function BookDetail() {
   const { slug } = useParams();
+  const location = useLocation();
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
   const [loadStatus, setLoadStatus] = useState("idle");
@@ -164,6 +165,12 @@ export default function BookDetail() {
       document.getElementById("preview-payment")?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   }, [book, loading]);
+
+  useEffect(() => {
+    if (!loading && book?.slug === slug) {
+      trackPageAnalyticsView("title_view", `${location.key}:${slug}`, `/book/${slug}`, { book_slug: slug });
+    }
+  }, [book, loading, location.key, slug]);
 
   useEffect(() => {
     if (!loading && book?.slug === LIVE_APPROVED_SLUG) {

@@ -9,6 +9,7 @@ import { Mail, Lock } from "lucide-react";
 import useSEO from "../hooks/useSEO";
 import AuthPageShell from "../components/AuthPageShell";
 import { AUTH_PRODUCT_ACCESS_COPY } from "../lib/publicAccessCopy";
+import { trackFunnelEvent } from "../lib/funnelAnalytics";
 
 const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || "";
 // DISABLED: Mobile/OTP login is temporarily disabled until MSG91/DLT approval is ready.
@@ -54,6 +55,7 @@ export default function Login() {
       const { data } = await axios.post(`${API}/auth/google`, { credential });
       localStorage.setItem(USER_TOKEN_KEY, data.token);
       await refreshUser();
+      trackFunnelEvent("signin_completed", { source: "google" });
       toast.success("Welcome.");
       nav("/library", { replace: true });
     } catch (err) {
@@ -66,9 +68,11 @@ export default function Login() {
 
   const submit = async (e) => {
     e.preventDefault();
+    trackFunnelEvent("signin_started", { source: "email_form" });
     setBusy(true);
     try {
       await userLogin(email, password);
+      trackFunnelEvent("signin_completed", { source: "email_form" });
       toast.success("Welcome back.");
       nav(next, { replace: true });
     } catch (err) {
@@ -117,7 +121,7 @@ export default function Login() {
           {AUTH_PRODUCT_ACCESS_COPY}
         </div>
 
-        {GOOGLE_CLIENT_ID && <GoogleSignInButton onComplete={completeGoogle} />}
+        {GOOGLE_CLIENT_ID && <GoogleSignInButton onStart={() => trackFunnelEvent("signin_started", { source: "google" })} onComplete={completeGoogle} />}
 
         {GOOGLE_CLIENT_ID && (
           <div className="mt-6 flex items-center gap-3 text-[0.7rem] tracking-[0.22em] uppercase text-charcoal-soft/60">
@@ -272,7 +276,7 @@ export default function Login() {
   );
 }
 
-function GoogleSignInButton({ onComplete }) {
+function GoogleSignInButton({ onStart, onComplete }) {
   const googleLogin = useGoogleLogin({
     flow: "implicit",
     scope: "openid email profile",
@@ -287,7 +291,7 @@ function GoogleSignInButton({ onComplete }) {
   return (
     <button
       type="button"
-      onClick={() => googleLogin()}
+      onClick={() => { onStart?.(); googleLogin(); }}
       className="mt-8 w-full flex items-center justify-center gap-3 rounded-xl px-4 py-3"
       style={{
         background: "white",

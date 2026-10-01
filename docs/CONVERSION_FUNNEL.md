@@ -1,54 +1,31 @@
-# Earnalism Conversion Funnel
+# Earnalism production analytics
 
-## Component Layout
+This document supersedes the earlier campaign funnel notes in this file. The
+current event taxonomy and callsites are inventoried in
+[`analytics-event-inventory.json`](analytics-event-inventory.json), and the
+operating definitions and privacy rules are in
+[`../READING_LAUNCH_FUNNEL_TRACKING_PLAN.md`](../READING_LAUNCH_FUNNEL_TRACKING_PLAN.md).
 
-```text
-Instagram / YouTube traffic
-        |
-        v
-/micro-story
-  - three 3-minute story previews
-  - Afternoon Pause CTA, pack 30m, INR 49
-        |
-        v
-/pricing?pack=30m
-  - selected pack highlight
-  - Razorpay top-up through existing payment flow
+## Measurement layers
 
-Reader page
-  - chapter completion reaches the bottom
-  - one contextual prompt per browser session
-  - An Evening In CTA, pack 1h, INR 89
-  - 48-hour EVENING15 coupon timer in localStorage
+- Vercel Web Analytics is the source for aggregate traffic and page views. The
+  separate `@vercel/speed-insights` integration measures performance, not
+  visitors.
+- The protected Admin launch monitor uses the first-party `analytics_events`
+  collection for page journeys, product actions, and the ordered funnel.
+- `checkout_started` is emitted by the backend only after it creates the real
+  provider order and Reading Pass intent. `purchase_completed` is emitted only
+  after verified payment and successful entitlement credit, and is idempotent
+  across payment/webhook retries.
+- A visitor estimate, browser-tab session, page-view event, checkout, and
+  purchase are different metrics. Raw HTTP requests are never shown as visitors.
 
-Reader completion rewards
-  - completion event sent to backend
-  - 3-day streak unlocks a 10-minute wallet credit
-  - credit is idempotently claimed through REST
-  - toast confirms credit without interrupting reading
+The Vercel project has Web Analytics enabled. First-party analytics networking
+is configured with `REACT_APP_ENABLE_LAUNCH_ANALYTICS=true` for Preview and
+Production. Production delivery becomes active when this source is deployed;
+the Preview API intentionally remains isolated from the production backend.
 
-Weekly email
-  - use the behavioral template in docs/BEHAVIORAL_EMAIL_TEMPLATE.md
-  - merge reading minutes and discount URL from email provider
-```
-
-## Analytics Events
-
-- `micro_story_hero_cta_click`
-- `micro_story_card_cta_click`
-- `pricing_pack_cta_click`
-- `pricing_test_purchase_complete`
-- `reader_upsell_shown`
-- `reader_upsell_cta_click`
-- `reader_upsell_dismissed`
-- `reader_completion_recorded`
-- `reader_reward_claimed`
-
-Events are stored through `POST /api/analytics/events`. The endpoint stores event names, sanitized metadata, role/id when available, referer, user agent, and timestamp. It does not store request bodies, tokens, manuscript text, or payment secrets.
-
-## Current Tier Prices
-
-- Afternoon Pause: INR 49
-- An Evening In: INR 89
-- Long Weekend: INR 239
-- The Reader's Reserve: INR 499
+No analytics event includes passwords, auth tokens, payment credentials,
+customer identifiers, direct contact information, raw query strings, raw
+referrer URLs, or user-agent strings. See the event inventory for legacy event
+names and their current source/status.

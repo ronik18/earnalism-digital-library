@@ -34,8 +34,10 @@ describe("public legal direct-route contract", () => {
     expect(legalPages).not.toContain("[OWNER INPUT REQUIRED");
   });
 
-  test("initial launch does not inject optional PostHog tracking", () => {
+  test("analytics disclosure matches first-party session and aggregate visitor measurement", () => {
     expect(html).not.toMatch(/posthog/i);
-    expect(legalPages).toContain("Optional launch analytics and advertising trackers are not enabled");
+    expect(legalPages).toContain("random anonymous journey identifier stored only for the current browser tab session");
+    expect(legalPages).toContain("Vercel Web Analytics provides aggregate page-view and visitor measurement");
+    expect(legalPages).toContain("We do not use advertising pixels.");
   });
 });

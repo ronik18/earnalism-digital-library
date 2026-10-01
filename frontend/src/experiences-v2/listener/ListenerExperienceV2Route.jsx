@@ -6,6 +6,7 @@ import { protectedAudiobookPackageManifestPath, readerManifestPath } from "../..
 import { normalizeAudioManifest } from "../../lib/audioPackageManifest";
 import { endReadingPassSession, renewReadingPassLease, startReadingPassAudioSession } from "../../lib/readingPassApi";
 import { listenerReleasePresentation } from "../shared/ReleaseTruthAdapter";
+import { trackFunnelEvent } from "../../lib/funnelAnalytics";
 import ExperienceHeader from "../shared/ExperienceHeader";
 import ListenerExperienceV2 from "./ListenerExperienceV2";
 import { listenerRecoveryPlan } from "./listenerRouteState";
@@ -55,6 +56,8 @@ export default function ListenerExperienceV2Route() {
   const endingRef = useRef(false);
   const lifecycleGenerationRef = useRef(0);
   const mountedRef = useRef(false);
+  const listenerViewSessionRef = useRef("");
+  const listenerStartSessionRef = useRef("");
 
   const setLeaseState = useCallback((value) => { leaseRef.current = value; setLease(value); }, []);
   const invalidateLifecycle = useCallback(() => {
@@ -170,6 +173,18 @@ export default function ListenerExperienceV2Route() {
   }, [lease, ownsLifecycle, playbackState, setLeaseState, settleLease]);
 
   useEffect(() => () => { void settleLease("listener_v2_unmount"); }, [settleLease, slug]);
+
+  useEffect(() => {
+    if (!book || !lease?.sessionId || !audioManifest || !listenerReleasePresentation(book).canRender) return;
+    if (listenerViewSessionRef.current !== lease.sessionId) {
+      listenerViewSessionRef.current = lease.sessionId;
+      trackFunnelEvent("listener_view", { book_slug: slug });
+    }
+    if (playbackState === "playing" && listenerStartSessionRef.current !== lease.sessionId) {
+      listenerStartSessionRef.current = lease.sessionId;
+      trackFunnelEvent("listener_started", { book_slug: slug });
+    }
+  }, [audioManifest, book, lease?.sessionId, playbackState, slug]);
 
   const authorize = useCallback(async () => {
     if (!user || typeof user !== "object") {

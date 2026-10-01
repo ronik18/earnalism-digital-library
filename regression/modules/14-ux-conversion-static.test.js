@@ -652,14 +652,14 @@ describe("UX conversion static signals", () => {
     expect(readingOnlyRevenueOperationsScorecard).not.toMatch(/\b10\/10\b/);
   });
 
-  test("post-launch funnel tracking plan stays first-party, disabled by default, and privacy safe", () => {
-    expect(readingLaunchFunnelTrackingPlan).toContain("Tracking approach: first-party, privacy-safe, opt-in");
-    expect(readingLaunchFunnelTrackingPlan).toContain("Network delivery is disabled unless `REACT_APP_ENABLE_LAUNCH_ANALYTICS=true`");
-    expect(readingLaunchFunnelTrackingPlan).toContain("No third-party pixel was added by this pass.");
-    expect(readingLaunchFunnelTrackingPlan).toContain("No PII.");
-    expect(readingLaunchFunnelTrackingPlan).toContain("No raw unredacted Razorpay payment IDs");
-    expect(readingLaunchFunnelTrackingPlan).toContain("No customer email, phone, payment ID, order ID");
-    expect(readingLaunchFunnelTrackingPlan).toContain("No public audio, Listen Now CTA, AudioObject metadata, or audiobook-live claim is introduced.");
+  test("production analytics plan separates aggregate traffic from first-party funnel and authoritative purchase", () => {
+    expect(readingLaunchFunnelTrackingPlan).toContain("Vercel Web Analytics measures aggregate visitors and page views");
+    expect(readingLaunchFunnelTrackingPlan).toContain("Earnalism's first-party `analytics_events` collection is authoritative for product journeys and conversion");
+    expect(readingLaunchFunnelTrackingPlan).toContain("provider order and intent were created; this is not a purchase.");
+    expect(readingLaunchFunnelTrackingPlan).toContain("purchase_completed` are not accepted as client-emitted events");
+    expect(readingLaunchFunnelTrackingPlan).toContain("Query strings and continuation parameters are stripped.");
+    expect(readingLaunchFunnelTrackingPlan).toContain("No passwords, tokens, provider credentials, payment identifiers");
+    expect(readingLaunchFunnelTrackingPlan).toContain("First-party event networking is disabled unless the frontend is built with `REACT_APP_ENABLE_LAUNCH_ANALYTICS=true`");
 
     expect(postLaunchFunnelBaselineReport).toContain("Tracking status: OPT_IN_READY");
     expect(postLaunchFunnelBaselineReport).toContain("Events Implemented");
@@ -1383,7 +1383,7 @@ describe("UX conversion static signals", () => {
     expect(adminPage).toContain("OWNER_ADMIN_ONLY");
     expect(adminPage).toContain("PUBLIC_AUDIO_RELEASE_BLOCKED");
     expect(adminPage).toContain("PRODUCTION_BLOCKED");
-    expect(adminPage).toContain("No PII, payment ids, customer ids, or third-party pixels.");
+    expect(adminPage).toContain("Current events omit direct identifiers; older records may predate this minimization.");
     expect(backend).toContain('@api.get("/admin/launch-monitor/summary")');
     expect(backend).toContain("Depends(require_admin)");
     expect(backend).toContain("build_launch_monitor_summary");

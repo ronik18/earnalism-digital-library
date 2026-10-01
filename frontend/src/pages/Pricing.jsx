@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import useSEO from "../hooks/useSEO";
 import { BookOpen, Clock, CreditCard, Lock, ShieldCheck } from "lucide-react";
 import { api, userApi, formatError } from "../lib/api";
 import { useAuth } from "../context/AuthContext";
 import { toast } from "sonner";
-import { trackFunnelEvent } from "../lib/funnelAnalytics";
+import { classifyAnalyticsDeployment, getAnonymousLaunchSessionId, getLaunchAnalyticsAttribution, trackFunnelEvent } from "../lib/funnelAnalytics";
 import ReferenceCommerceSurface from "../components/ReadingPassesSurface";
 import PublicPageFrame from "../components/PublicPageFrame";
 import { availableReadingPasses } from "../lib/readingPassOffers";
@@ -66,6 +66,7 @@ function PricingAvailable() {
   const [busyId, setBusyId] = useState(null);
   const [offerStatus, setOfferStatus] = useState("loading");
   const [offerAttempt, setOfferAttempt] = useState(0);
+  const offerViewTrackedRef = useRef(false);
   const [searchParams] = useSearchParams();
   const nav = useNavigate();
   const selectedPackId = searchParams.get("pack");
@@ -79,11 +80,11 @@ function PricingAvailable() {
       setPacks(packRows);
       setConfig(nextConfig || {});
       setOfferStatus(packRows.length ? "ready" : "empty");
+      if (packRows.length && !offerViewTrackedRef.current) {
+        offerViewTrackedRef.current = true;
+        trackFunnelEvent("reading_pass_offer_viewed", { offer_count: packRows.length });
+      }
     };
-    trackFunnelEvent("pricing_page_view", {
-      selected_pack_id: selectedPackId || "",
-      source: funnelSource || "pricing",
-    });
     api.get("/payments/offers")
       .then(({ data }) => {
         applyOffers(data?.packs, data?.config);
@@ -110,12 +111,6 @@ function PricingAvailable() {
       minutes: pack.minutes,
       source: funnelSource || "pricing",
     });
-    trackFunnelEvent("checkout_started", {
-      pack_id: pack.id,
-      price_inr: pack.price_inr,
-      source: funnelSource || "pricing",
-      payment_mode: config.configured ? "razorpay" : config.mode || "unconfigured",
-    });
     if (!isAuthed) {
       const next = `${window.location.pathname}${window.location.search}`;
       nav(`/login?next=${encodeURIComponent(next)}`);
@@ -127,10 +122,16 @@ function PricingAvailable() {
         // Real Razorpay Checkout flow.
         const ok = await loadRazorpayScript();
         if (!ok) {
+          trackFunnelEvent("checkout_failed", { pack_id: pack.id, reason: "provider_script_unavailable" });
           toast.error("Could not load Razorpay. Please retry.");
           return;
         }
-        const { data } = await userApi.post("/payments/topup", { pack_id: pack.id });
+        const { data } = await userApi.post("/payments/topup", {
+          pack_id: pack.id,
+          anonymous_session_id: getAnonymousLaunchSessionId(),
+          deployment_environment: classifyAnalyticsDeployment(),
+          ...getLaunchAnalyticsAttribution(),
+        });
         const opts = {
           key: data.key_id,
           amount: data.amount,
@@ -156,13 +157,6 @@ function PricingAvailable() {
               });
               const fresh = await refreshUser();
               const credited = Number(fresh?.reading_seconds_balance || 0) > 0;
-              trackFunnelEvent("payment_success_return", {
-                pack_id: pack.id,
-                price_inr: pack.price_inr,
-                minutes: pack.minutes,
-                source: "razorpay_verify",
-                credited,
-              });
               if (credited) {
                 trackFunnelEvent("wallet_credited_visible", {
                   pack_id: pack.id,
@@ -186,13 +180,6 @@ function PricingAvailable() {
               } else {
                 toast.message("Payment received. Your reading time will appear within a minute.");
               }
-              trackFunnelEvent("payment_success_return", {
-                pack_id: pack.id,
-                price_inr: pack.price_inr,
-                minutes: pack.minutes,
-                source: "razorpay_webhook_fallback",
-                credited,
-              });
               if (credited) {
                 trackFunnelEvent("wallet_credited_visible", {
                   pack_id: pack.id,
@@ -206,9 +193,8 @@ function PricingAvailable() {
           },
           modal: {
             ondismiss: () => {
-              trackFunnelEvent("payment_failed_or_cancelled", {
+              trackFunnelEvent("checkout_failed", {
                 pack_id: pack.id,
-                price_inr: pack.price_inr,
                 reason: "razorpay_modal_dismissed",
               });
             },
@@ -216,9 +202,8 @@ function PricingAvailable() {
         };
         const rzp = new window.Razorpay(opts);
         rzp.on("payment.failed", (resp) => {
-          trackFunnelEvent("payment_failed_or_cancelled", {
+          trackFunnelEvent("checkout_failed", {
             pack_id: pack.id,
-            price_inr: pack.price_inr,
             reason: resp?.error?.code || "razorpay_failure",
           });
           toast.error(resp?.error?.description || "Payment failed");
@@ -230,13 +215,6 @@ function PricingAvailable() {
         await userApi.post(`/payments/_simulate_webhook?intent_id=${data.intent_id}`);
         await refreshUser();
         toast.success(`Test purchase complete · +${pack.minutes} minutes added.`);
-        trackFunnelEvent("payment_success_return", {
-          pack_id: pack.id,
-          price_inr: pack.price_inr,
-          minutes: pack.minutes,
-          source: "test_mode_simulator",
-          credited: true,
-        });
         trackFunnelEvent("wallet_credited_visible", {
           pack_id: pack.id,
           minutes: pack.minutes,
@@ -244,17 +222,15 @@ function PricingAvailable() {
         });
         nav("/account");
       } else {
-        trackFunnelEvent("payment_failed_or_cancelled", {
+        trackFunnelEvent("checkout_failed", {
           pack_id: pack.id,
-          price_inr: pack.price_inr,
           reason: "payments_unconfigured",
         });
         toast.error("Payments are not configured yet.");
       }
     } catch (err) {
-      trackFunnelEvent("payment_failed_or_cancelled", {
+      trackFunnelEvent("checkout_failed", {
         pack_id: pack.id,
-        price_inr: pack.price_inr,
         reason: err?.response?.status || "checkout_start_failed",
       });
       toast.error(formatError(err.response?.data?.detail) || "Could not start payment");

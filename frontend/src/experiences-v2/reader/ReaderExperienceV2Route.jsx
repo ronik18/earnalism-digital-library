@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { userApi } from "../../lib/api";
+import { trackFunnelEvent } from "../../lib/funnelAnalytics";
 import { readerManifestPath } from "../../lib/audioReleaseSafety";
 import { ReaderContent } from "./readerContent";
 import {
@@ -100,6 +101,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
   displayedPageRef.current = Boolean(!error && pageResult?.number === canonicalPage && pageResult.status === "ready");
   const positionVersionRef = useRef(null);
   const positionQueueRef = useRef(Promise.resolve());
+  const previewEventSentRef = useRef("");
 
   const publishBalance = useCallback((seconds) => {
     if (!aliveRef.current || validBalance(seconds) === null) return;
@@ -474,6 +476,15 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
   const pageAccessContext = canonicalPage > PREVIEW_PAGES
     ? `protected:${identity}:${sessionId}`
     : "preview";
+
+  useEffect(() => {
+    if (!selectedPage || selectedPage.is_preview !== true || previewEventSentRef.current === slug) return;
+    previewEventSentRef.current = slug;
+    trackFunnelEvent("reader_preview_started", {
+      book_slug: slug,
+      page_index: Number(selectedPage.page_index || canonicalPage),
+    });
+  }, [canonicalPage, selectedPage, slug]);
 
   useEffect(() => {
     if (!manifest || !page || !validPage) return;

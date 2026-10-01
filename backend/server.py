@@ -5199,6 +5199,7 @@ async def initialize_database_indexes() -> None:
     await db.analytics_events.create_index([("event", 1), ("created_at", -1)])
     await db.analytics_events.create_index([("route", 1), ("created_at", -1)])
     await db.analytics_events.create_index([("anonymous_session_id", 1), ("created_at", -1)])
+    await db.analytics_events.create_index([("event_id", 1)], unique=True, sparse=True)
 
     await db.reader_security_events.create_index([("event_type", 1), ("created_at", -1)])
     await db.reader_security_events.create_index([("session_id", 1), ("created_at", -1)])
@@ -5766,7 +5767,22 @@ async def automation_pause_task(task_id: str, request: Request):
     return {"task_id": task_id, "state": "PAUSED"}
 
 APPROVED_LAUNCH_ANALYTICS_EVENTS = {
+    "page_view",
     "homepage_view",
+    "library_view",
+    "title_view",
+    "reader_preview_started",
+    "reader_preview_completed",
+    "pricing_view",
+    "signup_started",
+    "signup_completed",
+    "signin_started",
+    "signin_completed",
+    "reading_pass_offer_viewed",
+    "checkout_failed",
+    "purchase_completed",
+    "listener_view",
+    "listener_started",
     "first_time_site_tour_shown",
     "first_time_site_tour_completed",
     "first_time_site_tour_skipped",
@@ -5785,10 +5801,38 @@ APPROVED_LAUNCH_ANALYTICS_EVENTS = {
     "continue_reading_click",
     "return_resume_reading_click",
     "core_web_vital",
+    "hero_primary_cta_click",
+    "hero_secondary_cta_click",
+    "bengali_card_click",
+    "english_card_click",
+    "approved_audio_card_click",
+    "book_card_read_click",
+    "book_card_listen_click",
+    "newsletter_submit_attempt",
+    "newsletter_submit_success",
+    "newsletter_submit_failure",
+    "social_link_click",
+    "support_complaint_created",
+    "reader_upsell_cta_click",
 }
 
 LAUNCH_MONITOR_FUNNEL_EVENTS = [
+    "page_view",
     "homepage_view",
+    "library_view",
+    "title_view",
+    "reader_preview_started",
+    "reader_preview_completed",
+    "pricing_view",
+    "signup_started",
+    "signup_completed",
+    "signin_started",
+    "signin_completed",
+    "reading_pass_offer_viewed",
+    "checkout_failed",
+    "purchase_completed",
+    "listener_view",
+    "listener_started",
     "first_time_site_tour_shown",
     "first_time_site_tour_completed",
     "first_time_site_tour_skipped",
@@ -5806,6 +5850,19 @@ LAUNCH_MONITOR_FUNNEL_EVENTS = [
     "wallet_credited_visible",
     "continue_reading_click",
     "return_resume_reading_click",
+    "hero_primary_cta_click",
+    "hero_secondary_cta_click",
+    "bengali_card_click",
+    "english_card_click",
+    "approved_audio_card_click",
+    "book_card_read_click",
+    "book_card_listen_click",
+    "newsletter_submit_attempt",
+    "newsletter_submit_success",
+    "newsletter_submit_failure",
+    "social_link_click",
+    "support_complaint_created",
+    "reader_upsell_cta_click",
 ]
 
 ANALYTICS_BLOCKED_KEY_RE = re.compile(
@@ -5875,13 +5932,22 @@ def _safe_analytics_route(value: str) -> str:
     if not route:
         return ""
     parsed = urlparse(route)
-    if parsed.scheme or parsed.netloc:
-        route = parsed.path or "/"
-    return re.sub(r"[^a-zA-Z0-9_./?=&:-]", "_", route)[:180]
+    # Store path only. Query strings can contain continuation state or other
+    # user supplied values and are not needed for page-level reporting.
+    route = parsed.path or "/"
+    if any(pattern.search(route) for pattern in ANALYTICS_UNSAFE_VALUE_PATTERNS):
+        return "/[redacted]"
+    return re.sub(r"[^a-zA-Z0-9_./:-]", "_", route)[:180]
 
 
 def _safe_analytics_session_id(value: str) -> str:
-    return re.sub(r"[^a-zA-Z0-9_.:-]", "_", str(value or "").strip())[:80]
+    candidate = re.sub(r"[^a-zA-Z0-9-]", "", str(value or "").strip())[:80]
+    return candidate if re.fullmatch(r"[a-zA-Z0-9-]{12,80}", candidate) else ""
+
+
+def _safe_analytics_environment(value: str) -> str:
+    candidate = str(value or "production").strip().lower()
+    return candidate if candidate in {"production", "preview", "local", "unknown"} else "unknown"
 
 
 def _safe_analytics_book_slug(value: str) -> str:
@@ -5892,6 +5958,8 @@ def _analytics_event_document(payload: AnalyticsEventIn, request: Request, princ
     event = _safe_analytics_event_name(payload.event_name or payload.event)
     if not event:
         raise HTTPException(status_code=400, detail="Unknown launch analytics event")
+    if event == "purchase_completed":
+        raise HTTPException(status_code=400, detail="Purchase completion is recorded only by verified server-side payment flows")
 
     metadata = dict(payload.metadata or {})
     route = _safe_analytics_route(payload.route or metadata.get("route") or metadata.get("path") or "")
@@ -5913,12 +5981,84 @@ def _analytics_event_document(payload: AnalyticsEventIn, request: Request, princ
         "route": route,
         "book_slug": book_slug,
         "anonymous_session_id": session_id,
-        "principal_role": principal.get("role") if principal else "guest",
-        "principal_id": principal.get("id") if principal else "",
-        "path": route or str(request.headers.get("referer", ""))[:240],
-        "user_agent": str(request.headers.get("user-agent", ""))[:180],
+        "deployment_environment": _safe_analytics_environment(payload.deployment_environment),
+        **_safe_analytics_attribution(metadata),
         "created_at": now_iso(),
     }
+
+
+def _safe_analytics_attribution(metadata: dict) -> dict:
+    allowed = {"utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"}
+    attribution = {key: str(metadata.get(key) or "").strip()[:100] for key in allowed}
+    for key in allowed:
+        if _analytics_metadata_violations({key: attribution[key]}):
+            attribution[key] = ""
+    category = str(metadata.get("referrer_category") or "unknown")[:24]
+    attribution["referrer_category"] = category if category in {"direct", "organic", "social", "referral", "campaign", "unknown"} else "unknown"
+    return attribution
+
+
+async def _record_server_analytics_event(
+    event: str,
+    *,
+    session_id: str = "",
+    route: str = "",
+    book_slug: str = "",
+    metadata: Optional[dict] = None,
+    event_id: str = "",
+    deployment_environment: str = "production",
+) -> None:
+    """Best-effort first-party analytics writer for authoritative server events."""
+    if event not in APPROVED_LAUNCH_ANALYTICS_EVENTS:
+        return
+    doc = {
+        "id": str(uuid.uuid4()),
+        "event": event,
+        "metadata": _safe_analytics_metadata(metadata or {}),
+        "route": _safe_analytics_route(route),
+        "book_slug": _safe_analytics_book_slug(book_slug),
+        "anonymous_session_id": _safe_analytics_session_id(session_id),
+        "deployment_environment": _safe_analytics_environment(deployment_environment),
+        **_safe_analytics_attribution(metadata or {}),
+        "created_at": now_iso(),
+    }
+    if event_id:
+        doc["event_id"] = event_id
+    try:
+        if event_id:
+            await db.analytics_events.update_one(
+                {"event_id": event_id}, {"$setOnInsert": doc}, upsert=True
+            )
+        else:
+            await db.analytics_events.insert_one(doc)
+    except Exception:
+        # Analytics storage must never change payment/signup/reading outcomes.
+        logger.warning("First-party analytics write failed for %s", event, exc_info=True)
+
+
+async def _record_purchase_conversion(intent: dict) -> None:
+    """Count one purchase only after the verified payment path credited its intent."""
+    if not intent or intent.get("status") != "credited":
+        return
+    intent_id = str(intent.get("id") or "")
+    if not intent_id:
+        return
+    event_id = "verified-purchase:" + hashlib.sha256(intent_id.encode("utf-8")).hexdigest()
+    await _record_server_analytics_event(
+        "purchase_completed",
+        session_id=intent.get("analytics_session_id") or "",
+        route="/pricing",
+        metadata={
+            **(intent.get("analytics_attribution") or {}),
+            "pack_id": str(intent.get("pack_id") or "")[:60],
+            "minutes": int(intent.get("minutes") or 0),
+            "amount_inr": int(intent.get("amount_paise") or 0) // 100,
+            "currency": str(intent.get("currency") or "INR")[:8],
+            "outcome": "credited",
+        },
+        event_id=event_id,
+        deployment_environment=intent.get("analytics_environment") or "production",
+    )
 
 
 def _launch_monitor_cutoff(hours: int) -> str:
@@ -5950,6 +6090,8 @@ async def _group_counts_since(
 ) -> Dict[str, int]:
     match = dict(extra or {})
     match[time_field] = {"$gte": cutoff}
+    if collection_name == "analytics_events":
+        match["deployment_environment"] = {"$nin": ["preview", "local"]}
     try:
         rows = await getattr(db, collection_name).aggregate([
             {"$match": match},
@@ -5973,15 +6115,12 @@ def _rate(numerator: int, denominator: int) -> float:
 
 def _conversion_rates(counts: Dict[str, int]) -> dict:
     return {
-        "homepage_to_dracula_cta_pct": _rate(counts.get("hero_read_chapter_free_click", 0), counts.get("homepage_view", 0)),
-        "dracula_to_reader_pct": _rate(counts.get("reader_opened", 0), counts.get("start_dracula_click", 0)),
-        "reader_locked_to_pricing_pct": _rate(
-            counts.get("pricing_page_view", 0),
-            counts.get("reader_locked_state", 0) + counts.get("reader_low_balance_state", 0),
-        ),
-        "pricing_to_checkout_pct": _rate(counts.get("checkout_started", 0), counts.get("pricing_page_view", 0)),
-        "checkout_to_payment_success_pct": _rate(counts.get("payment_success_return", 0), counts.get("checkout_started", 0)),
-        "payment_success_to_continue_reading_pct": _rate(counts.get("continue_reading_click", 0), counts.get("payment_success_return", 0)),
+        "homepage_to_library_pct": _rate(counts.get("library_view", 0), counts.get("homepage_view", 0)),
+        "library_to_title_pct": _rate(counts.get("title_view", 0), counts.get("library_view", 0)),
+        "title_to_reader_pct": _rate(counts.get("reader_preview_started", 0), counts.get("title_view", 0)),
+        "signup_completion_pct": _rate(counts.get("signup_completed", 0), counts.get("signup_started", 0)),
+        "pricing_to_checkout_pct": _rate(counts.get("checkout_started", 0), counts.get("pricing_view", 0)),
+        "checkout_to_purchase_pct": _rate(counts.get("purchase_completed", 0), counts.get("checkout_started", 0)),
     }
 
 
@@ -5997,6 +6136,125 @@ async def _launch_monitor_funnel_window(cutoff: str) -> dict:
     return {
         "counts": full_counts,
         "conversion_rates": _conversion_rates(full_counts),
+    }
+
+
+FUNNEL_PATHS = {
+    "discovery": ["homepage_view", "library_view"],
+    "content_discovery": ["library_view", "title_view"],
+    "reader_activation": ["title_view", "reader_preview_started"],
+    "signup": ["signup_started", "signup_completed"],
+    "commercial": ["pricing_view", "checkout_started", "purchase_completed"],
+    "full_customer_journey": [
+        "homepage_view", "library_view", "title_view", "reader_preview_started",
+        "signup_completed", "pricing_view", "checkout_started", "purchase_completed",
+    ],
+}
+
+
+async def _ordered_funnel_session_counts(cutoff: str) -> dict[str, list[int]]:
+    """Count ordered session progression in Mongo without truncating session rows."""
+    events = sorted({event for path in FUNNEL_PATHS.values() for event in path})
+    index_by_event = {event: index for index, event in enumerate(events)}
+    sentinel = "\uffff"
+    grouped = {"_id": "$anonymous_session_id"}
+    projected = {"_id": 0}
+    summed = {"_id": None}
+    for event, index in index_by_event.items():
+        time_field = f"time_{index}"
+        grouped[time_field] = {"$min": {"$cond": [{"$eq": ["$event", event]}, "$created_at", sentinel]}}
+        projected[time_field] = 1
+    for name, path in FUNNEL_PATHS.items():
+        for index in range(len(path)):
+            field = f"{name}_{index}"
+            conditions = []
+            for prior in range(index + 1):
+                current_time = f"$time_{index_by_event[path[prior]]}"
+                conditions.append({"$ne": [current_time, sentinel]})
+                if prior < index:
+                    next_time = f"$time_{index_by_event[path[prior + 1]]}"
+                    conditions.append({"$gte": [next_time, current_time]})
+            projected[field] = {"$and": conditions}
+            summed[field] = {"$sum": {"$cond": [f"${field}", 1, 0]}}
+    try:
+        rows = await db.analytics_events.aggregate([
+            {"$match": {"created_at": {"$gte": cutoff}, "event": {"$in": events}, "anonymous_session_id": {"$exists": True, "$nin": ["", None]}, "deployment_environment": {"$nin": ["preview", "local"]}}},
+            {"$group": grouped},
+            {"$project": projected},
+            {"$group": summed},
+        ]).to_list(1)
+        row = rows[0] if rows else {}
+        return {name: [int(row.get(f"{name}_{index}", 0) or 0) for index in range(len(path))] for name, path in FUNNEL_PATHS.items()}
+    except Exception:
+        logger.warning("Ordered analytics funnel aggregation failed", exc_info=True)
+        return {name: [0] * len(path) for name, path in FUNNEL_PATHS.items()}
+
+
+def _funnel_report_from_progress_counts(event_counts: Dict[str, int], progress_counts: dict[str, list[int]]) -> dict:
+    result = {}
+    for name, path in FUNNEL_PATHS.items():
+        progressed = progress_counts.get(name) or [0] * len(path)
+        rows = []
+        for index, event in enumerate(path):
+            count = int(progressed[index]) if index < len(progressed) else 0
+            next_count = int(progressed[index + 1]) if index + 1 < len(progressed) else None
+            dropoff = max(0, count - next_count) if next_count is not None else 0
+            rows.append({
+                "stage": event,
+                "unique_sessions": count,
+                "event_count": int(event_counts.get(event, 0)),
+                "conversion_to_next_pct": _rate(next_count, count) if next_count is not None else None,
+                "dropoff_count": dropoff,
+                "dropoff_pct": _rate(dropoff, count) if next_count is not None else None,
+            })
+        result[name] = rows
+    return result
+
+
+async def _unique_analytics_sessions(cutoff: str) -> int:
+    try:
+        rows = await db.analytics_events.aggregate([
+            {"$match": {"created_at": {"$gte": cutoff}, "event": "page_view", "anonymous_session_id": {"$exists": True, "$nin": ["", None]}, "deployment_environment": {"$nin": ["preview", "local"]}}},
+            {"$group": {"_id": "$anonymous_session_id"}},
+            {"$count": "sessions"},
+        ]).to_list(1)
+        return int(rows[0].get("sessions", 0)) if rows else 0
+    except Exception:
+        logger.warning("Analytics unique session aggregation failed", exc_info=True)
+        return 0
+
+
+async def _analytics_event_sessions(cutoff: str) -> dict[str, int]:
+    try:
+        rows = await db.analytics_events.aggregate([
+            {"$match": {"created_at": {"$gte": cutoff}, "anonymous_session_id": {"$exists": True, "$nin": ["", None]}, "deployment_environment": {"$nin": ["preview", "local"]}}},
+            {"$group": {"_id": {"event": "$event", "session": "$anonymous_session_id"}}},
+            {"$group": {"_id": "$_id.event", "sessions": {"$sum": 1}}},
+        ]).to_list(1000)
+        return {str(row.get("_id")): int(row.get("sessions", 0)) for row in rows}
+    except Exception:
+        logger.warning("Analytics event/session aggregation failed", exc_info=True)
+        return {}
+
+
+async def _analytics_traffic_window(cutoff: str) -> dict:
+    page_events = ("homepage_view", "library_view", "title_view", "pricing_view", "listener_view")
+    page_counts = await _group_counts_since("analytics_events", "route", "created_at", cutoff, {"event": "page_view"})
+    referrers = await _group_counts_since("analytics_events", "referrer_category", "created_at", cutoff)
+    campaigns = await _group_counts_since("analytics_events", "utm_campaign", "created_at", cutoff)
+    sources = await _group_counts_since("analytics_events", "utm_source", "created_at", cutoff)
+    event_counts = await _group_counts_since("analytics_events", "event", "created_at", cutoff, {"event": {"$in": LAUNCH_MONITOR_FUNNEL_EVENTS}})
+    progress_counts = await _ordered_funnel_session_counts(cutoff)
+    return {
+        "unique_sessions": await _unique_analytics_sessions(cutoff),
+        "page_views": int(event_counts.get("page_view", 0)),
+        "page_view_events": {event: int(event_counts.get(event, 0)) for event in page_events},
+        "sessions_by_event": await _analytics_event_sessions(cutoff),
+        "top_pages": sorted(page_counts.items(), key=lambda item: item[1], reverse=True)[:10],
+        "referrer_categories": sorted(referrers.items(), key=lambda item: item[1], reverse=True)[:10],
+        "top_campaigns": [(key, value) for key, value in sorted(campaigns.items(), key=lambda item: item[1], reverse=True) if key != "unknown"][:10],
+        "top_sources": [(key, value) for key, value in sorted(sources.items(), key=lambda item: item[1], reverse=True) if key != "unknown"][:10],
+        "funnels": _funnel_report_from_progress_counts(event_counts, progress_counts),
     }
 
 
@@ -6102,13 +6360,16 @@ async def build_launch_monitor_summary() -> dict:
     windows = {
         "today": _launch_monitor_today_cutoff(),
         "last_24h": _launch_monitor_cutoff(24),
-        "last_48h": _launch_monitor_cutoff(48),
+        "last_7d": _launch_monitor_cutoff(24 * 7),
+        "last_30d": _launch_monitor_cutoff(24 * 30),
     }
     funnel = {}
     payment = {}
+    traffic = {}
     for label, cutoff in windows.items():
         funnel[label] = await _launch_monitor_funnel_window(cutoff)
         payment[label] = await _launch_monitor_payment_window(cutoff)
+        traffic[label] = await _analytics_traffic_window(cutoff)
 
     return {
         "launch_status": "LIVE_VERIFIED",
@@ -6117,8 +6378,9 @@ async def build_launch_monitor_summary() -> dict:
         "dashboard_status": "OWNER_ADMIN_ONLY",
         "windows": list(windows.keys()),
         "funnel": funnel,
+        "traffic": traffic,
         "payment": payment,
-        "core_web_vitals": await _launch_monitor_core_web_vitals(windows["last_48h"]),
+        "core_web_vitals": await _launch_monitor_core_web_vitals(windows["last_24h"]),
         "ops_health": {
             "backend_errors": {"status": "NOT_PERSISTED", "count": 0},
             "post_deploy_canary": _post_deploy_canary_status(),
@@ -6132,10 +6394,12 @@ async def build_launch_monitor_summary() -> dict:
             "Keep audiobook release blocked until separate sync, accessibility, and release gates pass.",
         ],
         "privacy": {
-            "pii_collected": False,
+            "new_events_include_direct_pii": False,
             "payment_identifiers_collected": False,
             "third_party_pixels": False,
-            "analytics_mode": "first_party_opt_in_minimal_events",
+            "analytics_mode": "first_party_pseudonymous_session_events_plus_vercel_aggregate_page_views",
+            "historical_events_may_contain_request_metadata": True,
+            "measurement_unit": "anonymous browser-tab sessions; not individual people",
         },
     }
 
@@ -12817,7 +13081,23 @@ async def payments_create_topup(payload: TopUpCreateIn, user=Depends(require_use
         "expires_at": topup_intent_expires_at(),
         "credited_at": None,
         "credited_by": None,
+        "analytics_session_id": _safe_analytics_session_id(payload.anonymous_session_id),
+        "analytics_attribution": _safe_analytics_attribution(payload.model_dump()),
+        "analytics_environment": _safe_analytics_environment(payload.deployment_environment),
     })
+    await _record_server_analytics_event(
+        "checkout_started",
+        session_id=payload.anonymous_session_id,
+        route="/pricing",
+        metadata={
+            **_safe_analytics_attribution(payload.model_dump()),
+            "pack_id": pack["id"],
+            "minutes": pack["minutes"],
+            "amount_inr": int(pack["amount_paise"]) // 100,
+            "currency": "INR",
+        },
+        deployment_environment=payload.deployment_environment,
+    )
     await _invalidate_user_cache(user["id"])
 
     return TopUpCreateOut(
@@ -12864,6 +13144,7 @@ async def payments_verify(payload: PaymentVerifyIn, user=Depends(require_user)):
     if refreshed.get("status") != "credited":
         await _invalidate_user_cache(user["id"])
         raise HTTPException(status_code=409, detail="Top-up intent is expired or not creditable")
+    await _record_purchase_conversion(refreshed)
     return {
         "ok": True,
         "intent": refreshed,
@@ -12946,6 +13227,8 @@ async def payments_webhook(request: Request):
         if _razorpay_payment_matches_intent(payment, intent):
             refreshed = await _credit_wallet_for_intent(intent, payment_id, "webhook")
             log_doc["status"] = "credited" if refreshed.get("status") == "credited" else refreshed.get("status", "ignored")
+            if log_doc["status"] == "credited":
+                await _record_purchase_conversion(refreshed)
         else:
             log_doc["status"] = "rejected_payment_mismatch"
     elif event == "payment.failed" and intent:

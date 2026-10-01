@@ -1,107 +1,59 @@
-# Reading Launch Funnel Tracking Plan
+# Production Analytics and Reading Funnel
 
-Launch: Dracula reading-only production launch  
-Production base URL: https://theearnalism.com  
-Tracking approach: first-party, privacy-safe, opt-in
+Production: https://theearnalism.com
 
-## Funnel Events
+## Measurement layers
 
-| Funnel step | Event |
-| --- | --- |
-| Homepage view | `homepage_view` |
-| First-time tour shown | `first_time_site_tour_shown` |
-| First-time tour completed | `first_time_site_tour_completed` |
-| First-time tour skipped | `first_time_site_tour_skipped` |
-| Hero Read Chapter 1 Free click | `hero_read_chapter_free_click` with CTA metadata |
-| Dracula book page view | `dracula_book_page_view` |
-| Start Dracula click | `start_dracula_click` |
-| Reader opened | `reader_opened` |
-| Pricing page view | `pricing_page_view` |
-| Reading pack selected | `reading_pack_selected` |
-| Razorpay checkout started | `checkout_started` |
-| Payment success | `payment_success_return` |
-| Payment failed/cancelled | `payment_failed_or_cancelled` |
-| Wallet credited | `wallet_credited_visible` |
-| Continue reading after payment | `continue_reading_click` |
-| Reader low-balance/locked state | `reader_low_balance_state` and `reader_locked_state` |
-| Return/resume reading | `return_resume_reading_click` |
-| Core Web Vitals | `core_web_vital` |
+- Vercel Web Analytics measures aggregate visitors and page views. `@vercel/speed-insights` remains performance telemetry and is not a visitor counter.
+- Earnalism's first-party `analytics_events` collection is authoritative for product journeys and conversion. It groups by a random anonymous browser-tab session ID and records `production`, `preview`, or `local` deployment environment.
+- HTTP requests, API polls, health probes, static assets, and crawler activity are not counted as visitors. The Admin launch monitor displays human-facing client events, not server request totals.
 
-## Privacy Requirements
+## Event contract
 
-- No PII.
-- No customer email or phone.
-- No payment secrets.
-- No webhook secrets.
-- No card, UPI, bank, billing, or invoice data.
-- No raw unredacted Razorpay payment IDs, order IDs, customer IDs, or signatures.
-- No third-party pixels unless separately approved.
-- No broad browser fingerprinting.
-- Use first-party, privacy-safe events only.
-- Keep production performance low-cost and non-blocking.
+| Event | Source and trigger | Conversion authority |
+| --- | --- | --- |
+| `page_view` | Router navigation to a customer-facing route; excludes admin and internal harness routes | No |
+| `homepage_view`, `library_view`, `pricing_view` | Matching router location; duplicate effect replay is suppressed, a later back-navigation counts again | No |
+| `title_view` | Book detail response loaded and slug matches the requested route | No |
+| `reader_preview_started` | Reader displays a validated page whose runtime manifest marks it as preview | No |
+| `signup_started`, `signin_started` | User submits an auth method; credentials are not recorded | No |
+| `signup_completed`, `signin_completed` | Successful auth API response | No |
+| `reading_pass_offer_viewed` | Live offer response is non-empty | No |
+| `checkout_started` | Backend created a real provider order and top-up intent | No |
+| `checkout_failed` | Provider initialization/failure/dismissal or order creation fails | No |
+| `purchase_completed` | Server verifies captured payment and completes idempotent Reading Pass credit | **Yes, server only** |
+| `listener_view`, `listener_started` | Verified runtime-approved playable manifest and active lease; emits nothing for unavailable audio | No |
 
-## Implementation Notes
+`reader_preview_completed` has no event because there is no canonical completion threshold. `payment_success_return` is retained only as a legacy event name; it is not a purchase and is not used by the current commercial funnel. `checkout_started` and `purchase_completed` are not accepted as client-emitted events.
 
-- Frontend events use `frontend/src/lib/funnelAnalytics.js`.
-- Network delivery is disabled unless `REACT_APP_ENABLE_LAUNCH_ANALYTICS=true` or `window.__EARNALISM_ENABLE_FUNNEL_ANALYTICS__ === true`.
-- Local review can use `window.__EARNALISM_ANALYTICS_SINK__` or `REACT_APP_ENABLE_LAUNCH_ANALYTICS_DEBUG=true`.
-- Metadata is sanitized before sinks, console debug, or network delivery.
-- The backend endpoint remains first-party: `/api/analytics/event`.
-- The owner dashboard endpoint is admin-only: `/api/admin/launch-monitor/summary`.
-- No production mutation is required to emit events; events are lightweight POSTs only when first-party analytics delivery is explicitly enabled.
-- No third-party pixel was added by this pass.
+The full event/callsite inventory is [`analytics-event-inventory.json`](analytics-event-inventory.json).
 
-## Allowed Metadata
+## Definitions
 
-Safe examples:
+- **Visitor:** Vercel's aggregate visitor estimate; not guaranteed to equal a unique person.
+- **Session:** random ID held in `sessionStorage` for a browser-tab journey.
+- **Page view:** one customer-facing route navigation; not a unique visitor.
+- **Title view:** a matching, successfully loaded book-detail response.
+- **Reader start:** a runtime-validated preview page is displayed.
+- **Signup:** started is a form attempt; completed follows a successful response.
+- **Checkout start:** a provider order and intent were created; this is not a purchase.
+- **Purchase:** a captured payment was verified and the related Reading Pass credit succeeded.
+- **Conversion rate:** anonymous sessions reaching the next ordered funnel stage divided by sessions reaching the current stage.
 
-- event name
-- timestamp through backend insertion time
-- route path/search
-- CTA ID
-- source surface
-- book slug
-- chapter ID
-- pack ID
-- price INR
-- minutes
-- boolean credited state
-- safe failure reason code
+The Admin launch monitor reports today, 24-hour, 7-day, and 30-day production windows; session counts, page-view events, top routes, referrer categories, campaigns, and ordered funnels with conversion/drop-off. Preview and local events can be accepted for release verification but are excluded from production aggregates. Admin access remains protected by the existing authorization model.
 
-Blocked examples:
+## Attribution and privacy
 
-- email
-- phone
-- customer name
-- raw Razorpay payment/order/customer IDs
-- Razorpay signatures
-- card, UPI, bank, invoice, or billing data
-- API keys, bearer tokens, webhook secrets, or provider keys
+- Anonymous journey IDs are tab-scoped; no raw visitor profile is constructed.
+- Only pathname is stored. Query strings and continuation parameters are stripped.
+- Safe attribution is limited to `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term`, and coarse referrer categories (`direct`, `organic`, `social`, `referral`, `campaign`, `unknown`).
+- No passwords, tokens, provider credentials, payment identifiers, customer identifiers, names, emails, phone numbers, card/UPI/bank details, billing payloads, raw referrer URLs, or user-agent strings are included in newly stored events.
+- Historical analytics documents are not rewritten and may contain metadata collected before minimization.
+- Analytics ingestion and storage are best-effort. An analytics outage must not interrupt navigation, Reader, signup, checkout, wallet credit, or entitlement behavior.
+- Vercel Web Analytics uses the platform's aggregate measurement. See [Vercel Analytics privacy documentation](https://vercel.com/docs/analytics/privacy-policy).
 
-## Owner Review
+## Configuration and limitation
 
-Before enabling production network delivery, owner should confirm:
+First-party event networking is disabled unless the frontend is built with `REACT_APP_ENABLE_LAUNCH_ANALYTICS=true`; tests can use the explicit window override. Web Analytics is a separate platform integration and does not depend on that first-party flag. Hosted Vercel/Web Analytics totals need processing time after deployment. The product funnel cannot stitch across tabs or safely identify people, so reports use sessions rather than individuals.
 
-- Analytics endpoint is expected to receive first-party events.
-- Storage/retention policy is acceptable.
-- Event review confirms no PII.
-- Performance impact is acceptable.
-- Public audio and audiobook production remain blocked.
-- Owner dashboard aggregates only safe counts and never returns row-level payment/customer data.
-
-## Revenue Review Questions
-
-- Does the first-time tour improve the Chapter 1 free-click rate, or should it become shorter?
-- Does the Dracula book page convert better than the homepage hero path?
-- Does the reader locked state lead readers to pricing without confusion?
-- Does payment success reliably lead to wallet credit and resume reading?
-- Does the wallet/pass model read as time credit, not subscription, ownership, or audiobook access?
-
-## Production Enablement Gate
-
-Keep network delivery disabled until the owner confirms:
-
-- First-party endpoint storage is acceptable.
-- Event payload review shows only safe event names and coarse metadata.
-- No customer email, phone, payment ID, order ID, UPI/card/bank details, invoice, billing data, API key, or webhook secret is recorded.
-- No public audio, Listen Now CTA, AudioObject metadata, or audiobook-live claim is introduced.
+No production purchase is synthesized for verification. Purchase authority is tested through the verified payment/credit server path and retry-idempotency tests.
