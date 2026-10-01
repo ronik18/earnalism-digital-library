@@ -12,7 +12,9 @@ module.exports = async function journalPage(req, res) {
     if (!response.ok) throw new Error('Journal unavailable');
     const post = await response.json();
     if (post.slug !== slug || post.is_published !== true || !post.title) return notFound(req, res);
-    const shell = await fs.readFile(path.join(process.cwd(), 'build/journal-app-shell.html'), 'utf8');
+    // Monorepo functions may execute with the repository as cwd; the bundled
+    // application shell is relative to this frontend handler, not that cwd.
+    const shell = await fs.readFile(path.join(__dirname, '../build/journal-app-shell.html'), 'utf8');
     const canonical = `https://theearnalism.com/journal/${slug}`;
     const title = `${post.title} — The Earnalism Journal`;
     const description = String(post.excerpt || '').slice(0, 320);
@@ -23,7 +25,8 @@ module.exports = async function journalPage(req, res) {
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=60, must-revalidate');
     res.end(html);
-  } catch {
+  } catch (error) {
+    console.error('Journal page temporarily unavailable', { code: error?.code || 'UPSTREAM_OR_RENDER_FAILURE' });
     res.statusCode = 503;
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.setHeader('Cache-Control', 'no-store');
