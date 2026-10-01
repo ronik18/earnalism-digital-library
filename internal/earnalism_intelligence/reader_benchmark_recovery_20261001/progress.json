@@ -1,6 +1,6 @@
 {
   "schema": "earnalism.reader-benchmark-repair-progress.v1",
-  "observed_at": "2026-10-01T10:48:17.185424+00:00",
+  "observed_at": "2026-10-01T10:56:58.624322+00:00",
   "base_main": "af286898c9c9f039c13355a19de0ce11e0d1629d",
   "owner_instruction": "Repair the stale Reader benchmark task, then complete authenticated India Reader and Reading Pass verification for all 24 configured editions. Preserve approved code, artwork and versions; record actual results and remaining holds. Use no paid generation or proposal reruns.",
   "stale_coordination_run": 36844619269,
@@ -18,7 +18,7 @@
   "execution_source_sha256": {
     "scripts/run_reader_benchmark.sh": "22dc34984ddab70c65e120e6a6dde214063acf5c435f97b073f4b711f576b94c",
     "scripts/test_reader_benchmark_runner.py": "994f1c95cddead1dc3a673f7f1f47652d1ce7f20604d0845c252c806683c2107",
-    "backend/tests/test_reader_benchmark_mongo_integration.py": "6b083abb2b53428af0de5a9cf85586c7b5848621357350b74f351ab8d58ba768",
+    "backend/tests/test_reader_benchmark_mongo_integration.py": "f61e9a4ece4fe2dcd1d1924d453c2508f3f0d83c4848c433aaa9869a2dbd6bce",
     "scripts/run_pr_regression_gates.sh": "ac597a675849671368e4d7859f4c6676a3dad58e76035a135f69cfa9e668f1c9",
     ".github/workflows/regression.yml": "f89099f58ada1c034ff5e1bd98e842d66e27185baf400a54c990750dfec939b7",
     ".github/earnalism-coordination/tasks.json": "c6cbfff9e11f02eb6d84fbab07cff7c9d25e464cd10fa20414edaed1b67deea5",
@@ -296,5 +296,26 @@
     ],
     "entitlement_checkout_metering_and_authenticated_delivery": "NOT_VERIFIED",
     "purchase_or_customer_mutation": false
+  },
+  "second_hosted_attempt": {
+    "schema": "earnalism.reader-benchmark-authority-audit-correction.v1",
+    "observed_at": "2026-10-01T10:56:58.624322+00:00",
+    "reviewed_head": "e8ce0e5c133bc2efe426407ce6daca143ef589ae",
+    "workflow_run": 36851696048,
+    "regression_job": 110334610184,
+    "regression_conclusion": "FAILURE",
+    "existing_native_cases": {
+      "passed": 115
+    },
+    "benchmark": "FAILURE_AT_WHOLE_POINTER_EQUALITY_ASSERTION",
+    "preceding_http_checks": "SIGNUP_FIVE_SESSION_LIMIT_LOGIN_REFRESH_LEASE_20_PROTECTED_PAGE_PARITY_AND_NEGATIVE_ACCESS_LOGOUT_PASSED_BEFORE_THIS_ASSERTION",
+    "actual_additional_fixture_pointer_fields": {
+      "text_authority_fence": 1,
+      "text_authority_last_start_at": "RECORDED_AT_REAL_ADMISSION"
+    },
+    "approved_behavior": "A real text admission increments an authority audit fence in the existing transaction to serialize against revocation; it does not replace the active version or generation.",
+    "correction": "Require the exact +1 fence update and admission timestamp bounds, then compare every other pointer field and all segment/manifest bytes unchanged. Keep all runtime code unchanged.",
+    "production_observation": false,
+    "paid_provider_calls": 0
   }
 }

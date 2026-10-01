@@ -2553,3 +2553,10 @@ The first hosted repair revision 054f3ca4d55f48b9c12546f5c335aa775e54e4ca passed
 The public production Reading Pass page rendered all four existing offers, with Sign In still visible. This is public presentation evidence only: authenticated entitlement, checkout, metering, trusted India and all 24 protected title readbacks remain unverified. No purchase, production mutation or paid rerun occurred.
 
 Next generated prompt: Review the exact-head isolated Reader benchmark artifact and merge only its passing repair. Complete the pending Google device approval through the secure sign-in flow and verify authenticated trusted-India Reader/Reading Pass delivery for all 24 configured editions, including seven retained versions and delivered Agentic hashes. Preserve all approved source, art, versions and 207 genuine holds; run no paid generation or proposal reruns.
+
+
+## 2026-10-01 — Preserve publication identity while validating the real admission audit fence
+
+Hosted revision e8ce0e5c133bc2efe426407ce6daca143ef589ae again passed 115 existing native cases. The new benchmark completed the real signup/bounded-login/refresh/lease flow, 20 protected-page content/hash checks, invalid-access denials and logout before failing its overly broad pointer equality assertion. Real admission correctly adds an authority fence and last-start timestamp to serialize against revocation. Validate the exact +1 fence and admission timestamp bounds, then require every other pointer field, segment and manifest to remain unchanged. Do not remove the production fence or replace a content version. Native acceptance remains pending the corrected run.
+
+Next generated prompt: Review the exact-head isolated Reader benchmark artifact and merge only its passing repair. Complete the pending Google device approval through the secure sign-in flow and verify authenticated trusted-India Reader/Reading Pass delivery for all 24 configured editions, including seven retained versions and delivered Agentic hashes. Preserve all approved source, art, versions and 207 genuine holds; run no paid generation or proposal reruns.

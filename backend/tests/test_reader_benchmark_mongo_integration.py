@@ -7,7 +7,7 @@ MongoDB transactions are real. No production credential or country is supplied.
 from __future__ import annotations
 
 import asyncio
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 import hashlib
 import json
 import math
@@ -21,6 +21,7 @@ import httpx
 import pytest
 
 from backend import server
+from backend.domain.reading_pass import ensure_utc
 from backend.tests.test_reading_pass_text_admission_mongo_integration import (
     _isolated_database, _seed_retained_content,
 )
@@ -96,10 +97,12 @@ def test_real_http_login_refresh_lease_and_twenty_page_responses(monkeypatch):
                 assert (await client.get('/api/users/me')).status_code == 200
                 assert (await client.get(f'{url}/pages/4')).status_code == 403
                 await database.users.update_one({'id': user_id}, {'$set': {'reading_seconds_balance': 600, 'wallet_seconds': 600}})
+                start_before = datetime.now(timezone.utc)
                 start = await client.post('/api/reading-pass/sessions/start', json={
                     'device_id': 'isolated-reader-benchmark-device', 'device_label': 'Isolated benchmark',
                     'content_type': 'text', 'content_id': slug, 'canonical_page_index': 4,
                 })
+                start_after = datetime.now(timezone.utc)
                 assert start.status_code == 200
                 lease = start.json()
                 client.headers['X-Reading-Pass-Session'] = lease['session_id']
@@ -127,7 +130,13 @@ def test_real_http_login_refresh_lease_and_twenty_page_responses(monkeypatch):
                 assert (await client.get('/api/users/me')).status_code == 401
                 assert (await client.get(f'{url}/pages/4')).status_code == 401
             assert await database.reader_content_segments.find({'book_slug': slug}, {'_id': 0}).sort('page_index', 1).to_list(100) == before_segments
-            assert await database.reader_segment_activation_state.find_one({'book_slug': slug}, {'_id': 0}) == before_pointer
+            after_pointer = await database.reader_segment_activation_state.find_one({'book_slug': slug}, {'_id': 0})
+            # Admission serializes against revocation by advancing this audit
+            # fence. Every publication/version/generation field stays intact.
+            assert after_pointer['text_authority_fence'] == before_pointer.get('text_authority_fence', 0) + 1
+            assert start_before - timedelta(milliseconds=1) <= ensure_utc(after_pointer['text_authority_last_start_at']) <= start_after
+            audit_fields = {'text_authority_fence', 'text_authority_last_start_at'}
+            assert {k: v for k, v in after_pointer.items() if k not in audit_fields} == {k: v for k, v in before_pointer.items() if k not in audit_fields}
             assert await database.reader_segment_manifests.find_one({'book_slug': slug}, {'_id': 0}) == before_manifest
             assert await database.wallet_ledger.count_documents({}) == 0
             wallet = await database.users.find_one({'id': user_id}, {'_id': 0, 'reading_seconds_balance': 1})
@@ -144,6 +153,7 @@ def test_real_http_login_refresh_lease_and_twenty_page_responses(monkeypatch):
                 'trusted_device_max_active_sessions': server.TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS,
                 'negative_access_checks': ['guest_page_4', 'login_limit_revoked_session', 'missing_lease', 'invalid_lease', 'missing_device_cookie', 'logged_out_session'],
                 'retained_fixture_versions_unchanged': True, 'fixture_wallet_debit_seconds': 0,
+                'fixture_authority_fence_delta': 1,
                 'page_response_timings': {
                     'samples': len(values), 'median_ms': round(statistics.median(values), 3),
                     'p95_ms': round(values[math.ceil(0.95 * len(values)) - 1], 3),
