@@ -140,4 +140,3 @@ def test_http_routes_auth_fail_closed_and_idempotent_like():
         for _ in range(2):
             assert client.post('/api/blog/published/comments', json={'text': 'next comment'}).status_code == 201
         assert client.post('/api/blog/published/comments', json={'text': 'too fast'}).status_code == 429
-
