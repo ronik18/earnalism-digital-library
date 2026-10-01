@@ -58,6 +58,24 @@ ROUTES = {
     "/my-library": {"kind": "private_library", "canonical": "/my-library", "robots": "noindex,nofollow"},
 }
 
+# Navigation availability and protected content authorization are distinct
+# contracts. Keep the denial assertion scoped to this exact protected Reader
+# manifest; never treat 451 or 503 as generally acceptable canary responses.
+PROTECTED_API_CHECKS = {
+    "/api/reader/book/dracula/manifest": {
+        "expected_status": 451,
+        "expected_code": "RELEASE_RIGHTS_DENIED",
+    },
+    "/api/reading-pass/books/the-adventures-of-sherlock-holmes/manifest": {
+        "expected_status": 503,
+        "expected_code": "SEGMENTS_NOT_READY",
+    },
+    "/api/reading-pass/books/the-canterville-ghost/manifest": {
+        "expected_status": 503,
+        "expected_code": "SEGMENTS_NOT_READY",
+    },
+}
+
 
 def normalize(value: str) -> str:
     value = unicodedata.normalize("NFKC", unescape(value or ""))
@@ -147,6 +165,45 @@ def fetch_raw_html(base_url: str, route: str, timeout: int) -> tuple[int, dict[s
         return error.code, dict(error.headers.items()), error.read().decode("utf-8", errors="replace"), error.url
     except URLError as error:
         return 0, {}, "", f"{url} ({error})"
+
+
+def fetch_protected_api(base_url: str, route: str, timeout: int) -> tuple[int, object, str]:
+    url = urljoin(base_url.rstrip("/") + "/", route.lstrip("/"))
+    request = Request(url, headers={"Accept": "application/json", "User-Agent": "EarnalismStaticSeoCanary/2.0"})
+    try:
+        with urlopen(request, timeout=timeout) as response:
+            status, body, response_url = response.status, response.read().decode("utf-8", errors="replace"), response.url
+    except HTTPError as error:
+        status, body, response_url = error.code, error.read().decode("utf-8", errors="replace"), error.url
+    except URLError as error:
+        return 0, None, url
+    try:
+        payload = json.loads(body)
+    except (TypeError, json.JSONDecodeError):
+        payload = None
+    return status, payload, response_url
+
+
+def inspect_protected_api(route: str, policy: dict[str, object], status: int, payload: object, url: str) -> dict[str, object]:
+    failures: list[str] = []
+    expected_status = int(policy["expected_status"])
+    expected_code = str(policy["expected_code"])
+    if status != expected_status:
+        failures.append(f"expected HTTP {expected_status}, got {status}")
+    if urlsplit(url).path.rstrip("/") != route.rstrip("/"):
+        failures.append(f"protected request redirected to unexpected path: {urlsplit(url).path}")
+    detail = payload.get("detail") if isinstance(payload, dict) else None
+    code = detail.get("code") if isinstance(detail, dict) else None
+    if code != expected_code:
+        failures.append(f"expected error code {expected_code}, got {code or 'missing'}")
+    return {
+        "route": route,
+        "url": url,
+        "status_code": status,
+        "error_code": code,
+        "failures": failures,
+        "result": "PASS" if not failures else "FAIL",
+    }
 
 
 def inspect_route(route: str, policy: dict[str, str], status: int, headers: dict[str, str], html: str, url: str) -> dict[str, object]:
@@ -242,7 +299,12 @@ def inspect_route(route: str, policy: dict[str, str], status: int, headers: dict
 
 def run(base_url: str, timeout: int) -> dict[str, object]:
     routes = [inspect_route(route, policy, *fetch_raw_html(base_url, route, timeout)) for route, policy in ROUTES.items()]
-    return {"generated_at": datetime.now(timezone.utc).isoformat(), "base_url": base_url, "contract": ACCESS_COPY, "result": "PASS" if all(row["result"] == "PASS" for row in routes) else "FAIL", "routes": routes}
+    protected_apis = [
+        inspect_protected_api(route, policy, *fetch_protected_api(base_url, route, timeout))
+        for route, policy in PROTECTED_API_CHECKS.items()
+    ]
+    checks = [*routes, *protected_apis]
+    return {"generated_at": datetime.now(timezone.utc).isoformat(), "base_url": base_url, "contract": ACCESS_COPY, "result": "PASS" if all(row["result"] == "PASS" for row in checks) else "FAIL", "routes": routes, "protected_apis": protected_apis}
 
 
 def write_report(report: dict[str, object]) -> None:
@@ -251,6 +313,9 @@ def write_report(report: dict[str, object]) -> None:
     rows = ["# Static SEO Raw HTML Canary", "", f"Result: `{report['result']}`", ""]
     for row in report["routes"]:
         rows.append(f"- `{row['route']}`: `{row['result']}`; status={row['status_code']}; failures={'; '.join(row['failures']) or 'none'}")
+    rows.extend(["", "## Protected API contracts", ""])
+    for row in report.get("protected_apis", []):
+        rows.append(f"- `{row['route']}`: `{row['result']}`; status={row['status_code']}; code={row['error_code'] or 'missing'}; failures={'; '.join(row['failures']) or 'none'}")
     (OUTPUT_DIR / "post_deploy_static_seo_canary.md").write_text("\n".join(rows) + "\n", encoding="utf-8")
 
 
