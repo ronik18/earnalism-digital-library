@@ -47,9 +47,9 @@ ROUTES = {
     "/reader/the-gift-of-the-magi": {"kind": "reader", "canonical": "/book/the-gift-of-the-magi", "robots": "noindex,follow", "title": "The Gift of the Magi"},
     "/reader/the-canterville-ghost": {"kind": "reader", "canonical": "/book/the-canterville-ghost", "robots": "noindex,follow", "title": "The Canterville Ghost"},
     "/reader/the-adventures-of-sherlock-holmes": {"kind": "reader", "canonical": "/book/the-adventures-of-sherlock-holmes", "robots": "noindex,follow", "title": "The Adventures of Sherlock Holmes"},
-    "/book/dracula": {"kind": "historical_unavailable", "canonical": "/book/dracula", "robots": "noindex,nofollow", "title": "Dracula"},
-    "/reader/dracula": {"kind": "historical_unavailable", "canonical": "/book/dracula", "robots": "noindex,nofollow", "title": "Dracula"},
-    "/listener/dracula": {"kind": "historical_unavailable", "canonical": "/book/dracula", "robots": "noindex,nofollow", "title": "Dracula"},
+    "/book/dracula": {"kind": "book", "canonical": "/book/dracula", "robots": "index,follow", "title": "Dracula"},
+    "/reader/dracula": {"kind": "reader", "canonical": "/book/dracula", "robots": "noindex,follow", "title": "Dracula"},
+    "/listener/dracula": {"kind": "disabled_listener", "canonical": "/book/dracula", "robots": "noindex,follow", "title": "Dracula"},
     "/book/the-selfish-giant": {"kind": "historical_unavailable", "canonical": "/book/the-selfish-giant", "robots": "noindex,nofollow", "title": "The Selfish Giant"},
     "/reader/the-selfish-giant": {"kind": "historical_unavailable", "canonical": "/book/the-selfish-giant", "robots": "noindex,nofollow", "title": "The Selfish Giant"},
     "/listener/the-selfish-giant": {"kind": "historical_unavailable", "canonical": "/book/the-selfish-giant", "robots": "noindex,nofollow", "title": "The Selfish Giant"},
@@ -72,8 +72,9 @@ for _book in _PUBLIC_CONTRACT["publications"]:
 # manifest; never treat 451 or 503 as generally acceptable canary responses.
 PROTECTED_API_CHECKS = {
     "/api/reader/book/dracula/manifest": {
-        "expected_status": 451,
-        "expected_code": "RELEASE_RIGHTS_DENIED",
+        "expected_status": 200,
+        "expected_code": "",
+        "expected_slug": "dracula",
     },
     "/api/reading-pass/books/the-adventures-of-sherlock-holmes/manifest": {
         "expected_status": 503,
@@ -215,7 +216,15 @@ def inspect_protected_api(route: str, policy: dict[str, object], status: int, pa
         failures.append(f"expected HTTP {expected_status}, got {status}")
     if urlsplit(url).path.rstrip("/") != route.rstrip("/"):
         failures.append(f"protected request redirected to unexpected path: {urlsplit(url).path}")
-    if not overseas_denial and code != expected_code:
+    if not overseas_denial and expected_status == 200:
+        if not isinstance(payload, dict) or payload.get("slug") != policy.get("expected_slug"):
+            failures.append("reader manifest must identify the exact released edition")
+        access = payload.get("access") if isinstance(payload, dict) else None
+        if not isinstance(access, dict) or access.get("authenticated") is not False or access.get("can_read_paid") is not False:
+            failures.append("guest manifest must not grant authenticated or paid access")
+        if isinstance(payload, dict) and (payload.get("audio_enabled") is True or payload.get("audiobook_enabled") is True):
+            failures.append("reader manifest must not enable unapproved audio")
+    elif not overseas_denial and code != expected_code:
         failures.append(f"expected error code {expected_code}, got {code or 'missing'}")
     return {
         "route": route,
@@ -298,6 +307,15 @@ def inspect_route(route: str, policy: dict[str, str], status: int, headers: dict
             failures.append("Book structured data must mark full access unavailable")
         if any("listen" in normalize(label) for _, label in facts.links):
             failures.append("book exposes an active Listen CTA")
+    elif policy["kind"] == "disabled_listener":
+        if normalize(policy["title"]) not in title or normalize(policy["title"]) not in h1:
+            failures.append("disabled listener must identify the exact title")
+        if normalize("Listening is not available for " + policy["title"] + " in the current release.") not in text:
+            failures.append("disabled listener must explain unapproved audio availability")
+        if any(href != policy["canonical"] for href, _ in facts.links):
+            failures.append("disabled listener exposes a non-book recovery link")
+        if re.search(r'<(?:audio|video|iframe|button)\b|"@type"\s*:\s*"(?:Book|Audiobook)"', html, re.I):
+            failures.append("disabled listener exposes media or playback controls")
     elif policy["kind"] == "pricing":
         if "reading pass" not in title and "pricing" not in title:
             failures.append("missing route-specific Pricing or Reading Pass identity")

@@ -1,6 +1,5 @@
 // PR #476 intentionally retains these safe historical recovery pages.
 export const unavailableTitles = [
-  { slug: "dracula", title: "Dracula" },
   { slug: "the-selfish-giant", title: "The Selfish Giant" },
 ];
 export const unavailableCopy = "This title is not part of the current public release. Its reading and listening experiences are unavailable.";

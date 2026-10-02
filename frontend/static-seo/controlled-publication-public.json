@@ -2,7 +2,7 @@
   "schema_version": "earnalism.static-seo-public.v2",
   "public_release_held": false,
   "generated_from": {
-    "data/controlled_launch.json": "6fe5391a83a85a391b61905ff13aab6d934003b556740b12a091fdb9d2db1d22",
+    "data/controlled_launch.json": "30bb860d70f1c1dca8ac2c2913a051fd777f2518b7ccb446da1a6b7399c351da",
     "data/controlled_publications/a-ghost-story/public_book.json": "993dbc5804da73144872935f9d43d2471afa200ac688e9b690fcf7f3e44a9338",
     "data/controlled_publications/a-ghost-story/reader_manifest.json": "043416f20760f32bd6ce0f401025bfa9230e7e9c76f8fc6a86b1b0b143b302c1",
     "data/controlled_publications/a-ghost-story/source_evidence.json": "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b",
@@ -98,7 +98,15 @@
     "data/controlled_publications/the-tell-tale-heart/public_book.json": "87c5058f9226fceb945c264f070629d99884fa54381c23342b091c953f30e6eb",
     "data/controlled_publications/the-tell-tale-heart/reader_manifest.json": "f50a47eb83a43e1dc763a8bf7310e4d7cfff7f828c8e8cb2b66b2c58d0e9357f",
     "data/controlled_publications/the-tell-tale-heart/source_evidence.json": "32c5f6aff23758db159fd3ecf5c13bf9201a6a689948d3a9fdf03fcadf09100f",
-    "data/controlled_publications/the-tell-tale-heart/approval_evidence.json": "de8d315ed722045999ba6117be591daf639165510f16d4668036e60b418dba4a"
+    "data/controlled_publications/the-tell-tale-heart/approval_evidence.json": "de8d315ed722045999ba6117be591daf639165510f16d4668036e60b418dba4a",
+    "data/controlled_publications/dracula/public_book.json": "dc0393eca8f912b9dfe556c9f4d2de78410aa23827f28b432d4de782588936ac",
+    "data/controlled_publications/dracula/reader_manifest.json": "f51512441063fa5b19c8af4e6cb1130c9eda98897a242163416ec09fc321068d",
+    "data/controlled_publications/dracula/source_evidence.json": "6322c3822db62956da4b1fac653e74bbbf02f79f39554bc236199605764f0cd9",
+    "data/controlled_publications/dracula/approval_evidence.json": "25222b31c0b2557ac0d613352b03bd835ce9dac0931bd5c14d411198a0bcd32f",
+    "data/controlled_publications/book-edfcf810c5/public_book.json": "d0bb4ec1fd8cf065fb26b5cef0d382490305a6b6ddd2568e6218f864430ac986",
+    "data/controlled_publications/book-edfcf810c5/reader_manifest.json": "78e25b2d1a5ef845b2b4ed6f390857ee10ddc0d210e8ed1078e87569a85805bd",
+    "data/controlled_publications/book-edfcf810c5/source_evidence.json": "b2a8e0a62cd8abc25e88127adf58c22495c6c8687f43c0090ad495db67539fed",
+    "data/controlled_publications/book-edfcf810c5/approval_evidence.json": "dcc6c3cbae174d86f7a6e6c42e36829083d3a7cb05ebbd71daf77ea84af2a5e6"
   },
   "publications": [
     {
@@ -507,6 +515,40 @@
         "book": "/book/the-tell-tale-heart",
         "reader": "/reader/the-tell-tale-heart",
         "listener": "/listener/the-tell-tale-heart"
+      }
+    },
+    {
+      "slug": "dracula",
+      "title": "Dracula",
+      "author": "Bram Stoker",
+      "cover_url": "https://theearnalism.com/assets/books/dracula/dracula-front-5596e419.webp",
+      "chapter_count": 28,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/dracula",
+        "reader": "/reader/dracula",
+        "listener": "/listener/dracula"
+      }
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "title": "ক্ষুধিত পাষাণ",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1784226492/earnalism/covers/front/book-edfcf810c5_front_1024x1536.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/book-edfcf810c5",
+        "reader": "/reader/book-edfcf810c5",
+        "listener": "/listener/book-edfcf810c5"
       }
     }
   ]

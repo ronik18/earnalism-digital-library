@@ -26,9 +26,12 @@
   },
   "validation": {
     "local_tests_passed": 83,
-    "protected_ci": "PENDING",
+    "protected_ci": "FAILED_PARENT_STATIC_CONTRACT_REPAIRED_AWAITING_NEW_HEAD",
     "canary": "NOT_RUN",
-    "production": "NOT_RUN"
+    "production": "NOT_RUN",
+    "canary_unit_tests_passed": 24,
+    "static_snapshot_assertions_passed": 2064
   },
-  "next_action": "Complete exact-head protected CI/runtime fixtures for reviewed two-title PR; merge only on pass, verify deployment/canary/actual readback. Finalize independent next-candidate reviews then next cohort. Preserve holds and audio hidden."
+  "next_action": "Normal exact-new-head checks on existing PR508, resolve genuine fixture failures, merge only through protected checks; then verify deployed revision/canary/canonical version. Three next inactive reviewed proposals remain ready for exact asset recovery.",
+  "ci_repair_receipt": "static-contract-ci-repair.json"
 }
