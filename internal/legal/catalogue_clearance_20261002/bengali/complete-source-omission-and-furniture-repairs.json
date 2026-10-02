@@ -1,0 +1,201 @@
+[
+  {
+    "slug": "book-bfc51280b3",
+    "verified_at": "2026-10-01T21:46:35.855664+00:00",
+    "before_sha256": "032ff5d70e9acb1d78f47b8379b0f515faac56c5605fa1620093f10030f9cb56",
+    "after_sha256": "7325737829098f327b54cc74400d74a0bf53ebdfe1ab20f69daebdf52ebcef62",
+    "source": "internal/legal/catalogue_clearance_20261002/bengali/book-bfc51280b3-complete-source-comparison.json",
+    "source_sha256": "4ec4c162b5bf60fe15a5999187149c6958a86ded7a927a4e0ad4e571878f51b6",
+    "changes": [
+      {
+        "operation": "delete",
+        "canonical_paragraph_range": [
+          0,
+          3
+        ],
+        "source_paragraph_range": [
+          0,
+          0
+        ],
+        "canonical": [
+          "গল্প-দশক",
+          "১৮৯৫ (পৃ. ১৮৯--)",
+          "অতিথি।"
+        ],
+        "source": []
+      }
+    ],
+    "source_heading_not_body": [
+      "অতিথি।"
+    ],
+    "scope": "Exact pinned edition paragraphs/import furniture only; no invented words or publication authorization"
+  },
+  {
+    "slug": "book-ef193ffc52",
+    "verified_at": "2026-10-01T21:46:35.877569+00:00",
+    "before_sha256": "43885e55f61b67583a029f7f4f7ac99848d68abdef5e0e95228b384ccb2a2f9f",
+    "after_sha256": "7423a95d1cc99f56c7156f038feebfc630a97d777908ef0d778d5ca0cd833175",
+    "source": "internal/legal/catalogue_clearance_20261002/bengali/book-ef193ffc52-complete-source-comparison.json",
+    "source_sha256": "00fe7c73479e1d03c0fe5f885aee603cf1c019c7c2dda70643b6b6393b1015da",
+    "changes": [
+      {
+        "operation": "delete",
+        "canonical_paragraph_range": [
+          0,
+          3
+        ],
+        "source_paragraph_range": [
+          0,
+          0
+        ],
+        "canonical": [
+          "গল্প-দশক",
+          "১৮৯৫ (পৃ. ৮২-১০১)",
+          "দিদি।"
+        ],
+        "source": []
+      }
+    ],
+    "source_heading_not_body": [
+      "দিদি।"
+    ],
+    "scope": "Exact pinned edition paragraphs/import furniture only; no invented words or publication authorization"
+  },
+  {
+    "slug": "book-9a7f771921",
+    "verified_at": "2026-10-01T21:46:35.936433+00:00",
+    "before_sha256": "509de3c2c334561eba92a7dd1746ccb7a39494800509cbc91efd7a808128f88a",
+    "after_sha256": "f674d6c5f677e7aff20b734ad982bcf347d7fd0fdee13dfad55810f5d217a7e9",
+    "source": "internal/legal/catalogue_clearance_20261002/bengali/book-9a7f771921-complete-source-comparison.json",
+    "source_sha256": "eb3efb7a43b4b2fa8f4f7cb2dab72c7c17d7a56127bec7bb8bd5c2b3b86e850b",
+    "changes": [
+      {
+        "operation": "delete",
+        "canonical_paragraph_range": [
+          0,
+          1
+        ],
+        "source_paragraph_range": [
+          0,
+          0
+        ],
+        "canonical": [
+          "১৯৬৯ (পৃ. প্রচ্ছদ-৫৪৫)"
+        ],
+        "source": []
+      },
+      {
+        "operation": "replace",
+        "canonical_paragraph_range": [
+          181,
+          183
+        ],
+        "source_paragraph_range": [
+          180,
+          181
+        ],
+        "canonical": [
+          "বিধু। ওগো, এতবড়ো সত্যপ্রতিজ্ঞ যুধিষ্ঠির হলে সংসার চলে না। সতীশের এখন বয়স হয়েছে, তাকে জলপানি যা দাও তাতে ধার না করে তার চলে কী করে বলো দেখি।",
+          "মন্মথ। যার যেরূপ সাধ্য তার চেয়ে চাল বড়ো করলে কারোই চলে না— ফকিরেরও না, বাদশারও না।"
+        ],
+        "source": [
+          "বিধু। ওগো, এতবড়ো সত্যপ্রতিজ্ঞ যুধিষ্ঠির হলে সংসার চলে না। সতীশের এখন বয়স হয়েছে, তাকে জলপানি যা দাও তাতে ধার না করে তার চলে কী করে বলো দেখি।\n মন্মথ। যার যেরূপ সাধ্য তার চেয়ে চাল বড়ো করলে কারোই চলে না— ফকিরেরও না, বাদশারও না।"
+        ]
+      },
+      {
+        "operation": "replace",
+        "canonical_paragraph_range": [
+          430,
+          432
+        ],
+        "source_paragraph_range": [
+          428,
+          429
+        ],
+        "canonical": [
+          "সতীশ। না মেসোমশাই, আজ আর থিয়েটার না। এই দেখো, দীর্ঘকাল পরে মিস্টার ভাদুড়ির কাছ হতে আমি নিমন্ত্রণ পেয়েছি। তোমার দানপত্রের ফল দেখো। সংসারের উপর আমার ধিক্কার জন্মে গেছে, মেলোমশায়। আমি তোমার সে তালুক নেব না।",
+          "শশধর। কেন, সতীশ।"
+        ],
+        "source": [
+          "সতীশ। না মেসোমশাই, আজ আর থিয়েটার না। এই দেখো, দীর্ঘকাল পরে মিস্টার ভাদুড়ির কাছ হতে আমি নিমন্ত্রণ পেয়েছি। তোমার দানপত্রের ফল দেখো। সংসারের উপর আমার ধিক্কার জন্মে গেছে, মেলোমশায়। আমি তোমার সে তালুক নেব না।\n শশধর। কেন, সতীশ।"
+        ]
+      }
+    ],
+    "source_heading_not_body": [],
+    "scope": "Exact pinned edition paragraphs/import furniture only; no invented words or publication authorization"
+  },
+  {
+    "slug": "book-edfcf810c5",
+    "verified_at": "2026-10-01T21:46:35.962142+00:00",
+    "before_sha256": "2591896f7fd678dafae394be36f7c60f39f240d5ac74e5806b5570982b5d96d7",
+    "after_sha256": "d9249c44925bc65221d731727c5f35e557a13144feabe843f649d3dd5d249a34",
+    "source": "internal/legal/catalogue_clearance_20261002/bengali/book-edfcf810c5-complete-source-comparison.json",
+    "source_sha256": "43f8c82f2c7a4a3dcde3c11971d1c375ce797dabe4021dfce744f296fe148e2d",
+    "changes": [
+      {
+        "operation": "insert",
+        "canonical_paragraph_range": [
+          0,
+          0
+        ],
+        "source_paragraph_range": [
+          0,
+          1
+        ],
+        "canonical": [],
+        "source": [
+          "আমি এবং আমার আত্মীয় পূজার ছুটিতে দেশভ্রমণ সারিয়া কলিকাতায় ফিরিয়া আসিতেছিলাম এমন সময় রেলগাড়িতে বাবুটির সঙ্গে দেখা হয়। তাঁহার বেশভূষা দেখিয়া প্রথমটা তাঁহাকে পশ্চিমদেশীয় মুসলমান বলিয়া ভ্রম হইয়াছিল। তাঁহার কথাবার্তা শুনিয়া আরও ধাঁধাঁ লাগিয়া যায়। পৃথিবীর সকল বিষয়েই এমন করিয়া আলাপ করিতে লাগিলেন যেন তাঁহার সহিত প্রথম পরামর্শ করিয়া বিশ্ববিধাতা সকল কাজ করিয়া থাকেন। বিশ্বসংসারের ভিতরে ভিতরে যে এমন সকল অশ্রুতপূর্ব্ব নিগূঢ় ঘটনা ঘটিতেছিল, রশিয়ান্‌রা যে এতদুর অগ্রসর হইয়াছে, ইংরাজদের যে এমন সকল গোপন মৎলব আছে, দেশীয় রাজাদের মধ্যে যে একটা খিচুড়ি পাকিয়া উঠিয়াছে, এ সমস্ত কিছুই না জানিয়া আমরা সম্পূর্ণ নিশ্চিন্ত হইয়া ছিলাম। আমাদের নবপরিচিত আলাপীটি ঈষৎ হাসিয়া কহিলেন, There happen more things in heaven and earth, Horatio, than are reported in your newspapers. আমরা এই প্রথম ঘর ছাড়িয়া বাহির হইয়াছি, সুতরাং লোকটির রকম-সকম দেখিয়া অবাক হইয়া গেলাম। লোকটা সামান্য উপলক্ষে কখনো বিজ্ঞান বলে, কখনো বেদের ব্যাখ্যা করে, আবার হঠাৎ কখনো পার্সি বয়েৎ আওড়াইতে থাকে; বিজ্ঞান, বেদ এবং পার্সিভাষায় আমাদের কোনরূপ অধিকার না থাকাতে তাঁহার প্রতি আমাদের ভক্তি উত্তরোত্তর বাড়িতে লাগিল। এমন কি, আমার থিয়সফিষ্ট্‌ আত্মীয়টির মনে দৃঢ় বিশ্বাস হইল যে, আমাদের এই সহযাত্রীটির সহিত কোন এক রকমের অলৌকিক ব্যাপারের কিছু একটা যোগ আছে; কোন একটা অপূর্ব্ব ম্যাগ্নেটিজম্ অথবা দৈবশক্তি, অথবা সূক্ষ্ম শরীর, অথবা ঐ ভাবের একটা কিছু। তিনি এই অসামান্য লোকের সমস্ত সামান্য কথাও ভক্তিবিহ্বল মুগ্ধভাবে শুনিতেছিলেন এবং গোপনে নোট করিয়া লইতেছিলেন। আমার ভাবে বোধ হইল, অসামান্য ব্যক্তিটিও গোপনে তাহা বুঝিতে পারিয়াছিলেন, এবং কিছু খুসী হইয়াছিলেন।"
+        ]
+      },
+      {
+        "operation": "insert",
+        "canonical_paragraph_range": [
+          15,
+          15
+        ],
+        "source_paragraph_range": [
+          16,
+          17
+        ],
+        "canonical": [],
+        "source": [
+          "সিঁড়ির উপরে সম্মুখের ঘরটি অতি বৃহৎ। তিন সারি বড় বড় থামের উপর কারুকার্যখচিত খিলানে বিস্তীর্ণ ছাদ ধরিয়া রাখিয়াছে। এই প্রকাণ্ড ঘরটি আপনার বিপুল শূন্যতা ভরে অহর্নিশি গম্‌গম্‌ করিতে থাকে। সে দিন সন্ধ্যার প্রাক্কালে তখনো প্রদীপ জ্বালানো হয় নাই। দরজা ঠেলিয়া আমি সেই বৃহৎ ঘরে যেমন প্রবেশ করিলাম অমনি মনে হইল ঘরের মধ্যে যেন ভারি একটা বিপ্লব বাধিয়া গেল—যেন হঠাৎ সভা ভঙ্গ করিয়া চারিদিকের দরজা জান্‌লা ঘর পথ বারান্দা দিয়া কে কোন্ দিকে পালাইল তাহার ঠিকানা নাই। আমি কোথাও কিছু না দেখিতে পাইয়া অবাক্‌ হইয়া দাঁড়াইয়া রহিলাম। শরীর এক প্রকার আবেশে রোমাঞ্চিত হইয়া উঠিল। যেন বহুদিবসের লুপ্তাবশিষ্ট মাথাঘষা ও আতরের মৃদু গন্ধ আমার নাসার মধ্যে প্রবেশ করিতে লাগিল। আমি সেই দীপহীন জনহীন প্রকাণ্ড ঘরের প্রাচীন প্রস্তরস্তম্ভশ্রেণীর মাঝখানে দাঁড়াইয়া শুনিতে পাইলাম—ঝর্ঝর শব্দে ফোয়ারার জল শাদা পাথরের উপরে আসিয়া পড়িতেছে, সেতারে কি সুর বাজিতেছে বুঝিতে পারিতেছি না, কোথাও বা স্বর্ণভূষণের শিঞ্জিত, কোথাও বা নুপুরের নিক্কণ, কখন বা বৃহৎ তাম্রঘণ্টায় প্রহর বাজিবার শব্দ, অতি দূরে নহবতের আলাপ, বাতাসে দোদুল্যমান ঝাড়ের স্ফটিক দোলকগুলির ঠুনঠুন ধ্বনি, বারান্দা হইতে খাঁচার বুলবুলের গান, বাগান হইতে পোষ সারসের ডাক আমার চতুর্দ্দিক একটা প্রেতলোকের রাগিণী সৃষ্টি করিতে লাগিল।"
+        ]
+      }
+    ],
+    "source_heading_not_body": [
+      "ক্ষুধিত পাষাণ।"
+    ],
+    "scope": "Exact pinned edition paragraphs/import furniture only; no invented words or publication authorization"
+  },
+  {
+    "slug": "book-fbdf2991ab",
+    "verified_at": "2026-10-01T21:46:35.968993+00:00",
+    "source": "internal/legal/catalogue_clearance_20261002/bengali/book-fbdf2991ab-complete-source-comparison.json",
+    "source_sha256": "4920141103b227e7be5744936b671531c11650db9e1a6b5a35a742397c08913d",
+    "repair": "Restored missing originalsection1 from6exact sourceparagraphs; existingchapterIDs retained forsections2–4; originalpreviewcount preserved; structural numericmarkers mappedtochaptermetadata",
+    "ordered_chapters": [
+      [
+        "chapter-004",
+        "১",
+        "3831067c86b55d694a4dc55e260b970b5cbaa427d8aaf094a1ceb8a6ec7eb913"
+      ],
+      [
+        "chapter-001",
+        "২",
+        "806d5cd3027f2861cee9f2fb7e841420b58f2d1522cd1e2128706046f0fcf501"
+      ],
+      [
+        "chapter-002",
+        "৩",
+        "535b7fa7163881470ac79322dcf5cb09c379108a6117040537358d8ff950dc16"
+      ],
+      [
+        "chapter-003",
+        "৪",
+        "1367b22486044fa3f4959acaea64a9d294d28a17004d927009e37065dd82e30b"
+      ]
+    ],
+    "scope": "Reader content preparation only, no release authorization"
+  }
+]

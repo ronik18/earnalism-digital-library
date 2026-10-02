@@ -1,12 +1,22 @@
 {
   "slug": "the-withered-arm",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true
+  "audiobook_enabled": true,
+  "source_hash": "c2e80e062f09828cb87dd57ca8db79de7e4bb22cbbec178276fa50d2cd7caa53",
+  "content_hash": "12d3bf4e0b6a8682055242aa8ef4867d086c79257dcfc7f6c3592f1aea1a8ced",
+  "provenance_hash": "44ee41c0e15bf9a262bef891dc289a4fcc2bb89e47ed91f807f059dc5b88968b",
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "3b67da4e74b3f5a939d20759c399e252eb0ebda958d8899b17f59b4389e22a59",
+  "verified_at": "2026-10-01T21:49:40.745164+00:00"
 }

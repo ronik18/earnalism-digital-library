@@ -1,14 +1,14 @@
 {
   "slug": "a-retrieved-reformation",
-  "generated_at": "2026-07-03T20:07:47Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "a36171ca2221296c6ddc21caa7e9a057e996572ff57c4deba6d2b5ca83ce3b74"
+      "sha256": "d8e7abe739856da81643bc99d70f15dedd44a8462dbc075eca99da8af97bc936"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "5bd3ac95cadb852087afb10c9a7df87eb469342d1602e4dc1617a747cb0e6713"
+      "file": "chapters/chapter-001.json",
+      "sha256": "c68c083b811976723d26642f8471bd83564dc8be461a17155c1357a972879a6e"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "7f353405bc4664020c95c8d04f0763172880474d6c5c7caa9613d2b92e2ac087"
+      "sha256": "dbb8aab792611bfcdb002e68401175cb07fb28b7eff3df45602b7f875015d9c3"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "df3821df7d9326c2125d1a40cd2421e56bdeff8f374797ba445b13abfb46b0b7"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "0f19e7e31aa10b6fd209ece0c6a9d6ed4c8e10671fc17a6b16c15f239a0c191a"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "dd1b8bdb0eb30ccbfc58fa812ad928896b96432b6a4e6f9800a0520575a97899"
+      "sha256": "56142848634167ad07b32e76c88e288c885a9b6142e28e2df190833f1be797b7"
     }
   ]
 }

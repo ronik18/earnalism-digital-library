@@ -1,14 +1,14 @@
 {
   "slug": "the-adventure-of-the-beryl-coronet",
-  "generated_at": "2026-07-03T20:07:48Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "87e01391cafe9aca36d53104b7736aa01fea4e37429da1622d5c80cacb191d26"
+      "sha256": "9b6d902a161cb279285029b042e28fc7424d5032f5a70d76c09fa0cea91e8b2b"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "1878ce5c77f9e7ee4412f8df2bcd943631ab0b6861ff0b1424cc5b22afb89532"
+      "file": "chapters/chapter-001.json",
+      "sha256": "bfeb8bf0bcdbfa52e50f654fe88dac35be275eb1b241ca5ecf882d5c4d3b5f7b"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "c8676f61f1d249819e65861dda1efa9681a216d9786530e15d2ae82a1bc07d03"
+      "sha256": "860c985b31612d17b34a839835546f52954628f27b1fff7fa40db776fd238ee8"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "42cea77dc4b7384fd91a3ff2f76530eace29a48ce33c403c7fa33e5edf2f81af"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "2c9b0844d914951e6ccd9fae9348f27336ac8343e7d7407eddd334d7daf8cf1d"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "c8402c2184dc96144ae1f1bf258487f2a929a805ba3eb9d4f32a216619699739"
+      "sha256": "aad7298db6370e292749227530baff060e246e8a4681fa743ffeacc092146c60"
     }
   ]
 }

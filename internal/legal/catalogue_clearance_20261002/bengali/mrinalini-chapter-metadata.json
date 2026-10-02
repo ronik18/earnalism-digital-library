@@ -1,0 +1,287 @@
+{
+  "receipt": {
+    "url": "https://bn.wikisource.org/w/api.php?action=query&generator=allpages&gapprefix=%E0%A6%AE%E0%A7%83%E0%A6%A3%E0%A6%BE%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%80+%28%E0%A7%A7%E0%A7%AE%E0%A7%AD%E0%A7%AA%29%2F&gapnamespace=0&gaplimit=max&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2",
+    "retrieved_at": "2026-10-01T21:50:18.042733+00:00",
+    "response_sha256": "2990ba6cfed016680db44d7b14b5f9ece4c21e390cc7e1201204b2f2335c43f9"
+  },
+  "prefix": "মৃণালিনী (১৮৭৪)",
+  "leaves": [
+    {
+      "title": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/প্রথম পরিচ্ছেদ",
+      "revision": 1817264,
+      "revision_timestamp": "2024-05-10T05:31:21Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=4 to=10 header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/দ্বিতীয় পরিচ্ছেদ",
+      "revision": 1817262,
+      "revision_timestamp": "2024-05-10T05:31:20Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=11 to=16 tosection=A header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/তৃতীয় পরিচ্ছেদ",
+      "revision": 1817261,
+      "revision_timestamp": "2024-05-10T05:31:19Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=16 to=24 fromsection=B tosection=A header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/চতুর্থ পরিচ্ছেদ",
+      "revision": 1817260,
+      "revision_timestamp": "2024-05-10T05:31:19Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=24 to=30 fromsection=B header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/পঞ্চম পরিচ্ছেদ",
+      "revision": 1817263,
+      "revision_timestamp": "2024-05-10T05:31:20Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=31 to=37 tosection=A header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/ষষ্ঠ পরিচ্ছেদ",
+      "revision": 1817265,
+      "revision_timestamp": "2024-05-10T05:31:21Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=37 to=45 fromsection=B header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/সপ্তম পরিচ্ছেদ",
+      "revision": 1817266,
+      "revision_timestamp": "2024-05-10T05:31:22Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=46 to=50 header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/অষ্টম পরিচ্ছেদ",
+      "revision": 1817259,
+      "revision_timestamp": "2024-05-10T05:31:19Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=51 to=54 header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/প্রথম পরিচ্ছেদ",
+      "revision": 1817256,
+      "revision_timestamp": "2024-05-10T05:31:17Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=55 to=59 header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/দ্বিতীয় পরিচ্ছেদ",
+      "revision": 1817253,
+      "revision_timestamp": "2024-05-10T05:31:16Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=60 to=64 tosection=A header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/তৃতীয় পরিচ্ছেদ",
+      "revision": 1817250,
+      "revision_timestamp": "2024-05-10T05:31:14Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=64 to=68 fromsection=B tosection=A header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/চতুর্থ পরিচ্ছেদ",
+      "revision": 1817249,
+      "revision_timestamp": "2024-05-10T05:31:14Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=68 to=71 fromsection=B tosection=A header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/পঞ্চম পরিচ্ছেদ",
+      "revision": 1817255,
+      "revision_timestamp": "2024-05-10T05:31:17Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=71 to=75 fromsection=B header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/ষষ্ঠ পরিচ্ছেদ",
+      "revision": 1817257,
+      "revision_timestamp": "2024-05-10T05:31:18Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=76 to=82 header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/সপ্তম পরিচ্ছেদ",
+      "revision": 1817258,
+      "revision_timestamp": "2024-05-10T05:31:18Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=83 to=86 header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/অষ্টম পরিচ্ছেদ",
+      "revision": 1817247,
+      "revision_timestamp": "2024-05-10T05:31:13Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=87 to=88 header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/নবম পরিচ্ছেদ",
+      "revision": 1817254,
+      "revision_timestamp": "2024-05-10T05:31:16Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=89 to=93 tosection=A header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/দশম পরিচ্ছেদ",
+      "revision": 1817251,
+      "revision_timestamp": "2024-05-10T05:31:15Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=93 to=95 fromsection=B tosection=A header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/একাদশ পরিচ্ছেদ",
+      "revision": 1817248,
+      "revision_timestamp": "2024-05-10T05:31:14Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=95 to=97 fromsection=B tosection=A header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/দ্বাদশ পরিচ্ছেদ",
+      "revision": 1817252,
+      "revision_timestamp": "2024-05-10T05:31:15Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=97 to=100 fromsection=B header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/প্রথম পরিচ্ছেদ",
+      "revision": 1817244,
+      "revision_timestamp": "2024-05-10T05:31:12Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=101 to=104 header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/দ্বিতীয় পরিচ্ছেদ",
+      "revision": 1817241,
+      "revision_timestamp": "2024-05-10T05:31:10Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=105 to=107 tosection=A header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/তৃতীয় পরিচ্ছেদ",
+      "revision": 1817239,
+      "revision_timestamp": "2024-05-10T05:31:09Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=107 to=110 fromsection=B header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/পঞ্চম পরিচ্ছেদ",
+      "revision": 1817243,
+      "revision_timestamp": "2024-05-10T05:31:11Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=114 to=117 fromsection=B header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/ষষ্ঠ পরিচ্ছেদ",
+      "revision": 1817245,
+      "revision_timestamp": "2024-05-10T05:31:12Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=118 to=124 tosection=A header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/সপ্তম পরিচ্ছেদ",
+      "revision": 1817246,
+      "revision_timestamp": "2024-05-10T05:31:13Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=124 to=126 fromsection=B header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/অষ্টম পরিচ্ছেদ",
+      "revision": 1817237,
+      "revision_timestamp": "2024-05-10T05:31:08Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=127 to=133 tosection=A header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/নবম পরিচ্ছেদ",
+      "revision": 1817242,
+      "revision_timestamp": "2024-05-10T05:31:11Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=133 to=138 fromsection=B header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/দশম পরিচ্ছেদ",
+      "revision": 1817240,
+      "revision_timestamp": "2024-05-10T05:31:10Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=139 to=143 header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/প্রথম পরিচ্ছেদ",
+      "revision": 1817234,
+      "revision_timestamp": "2024-05-10T05:31:07Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=144 to=146 tosection=A header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/দ্বিতীয় পরিচ্ছেদ",
+      "revision": 1817229,
+      "revision_timestamp": "2024-05-10T05:31:05Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=146 to=148 fromsection=B header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/তৃতীয় পরিচ্ছেদ",
+      "revision": 1817225,
+      "revision_timestamp": "2024-05-10T05:31:03Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=149 to=154 tosection=A header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/চতুর্থ পরিচ্ছেদ",
+      "revision": 1817223,
+      "revision_timestamp": "2024-05-10T05:31:02Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=154 to=157 fromsection=B header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/পঞ্চম পরিচ্ছেদ",
+      "revision": 1817232,
+      "revision_timestamp": "2024-05-10T05:31:06Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=158 to=161 tosection=A header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/ষষ্ঠ পরিচ্ছেদ",
+      "revision": 1817235,
+      "revision_timestamp": "2024-05-10T05:31:07Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=161 to=162 fromsection=B header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/সপ্তম পরিচ্ছেদ",
+      "revision": 1817236,
+      "revision_timestamp": "2024-05-10T05:31:08Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=163 to=168 header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/অষ্টম পরিচ্ছেদ",
+      "revision": 1817221,
+      "revision_timestamp": "2024-05-10T05:31:01Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=169 to=171 header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/নবম পরিচ্ছেদ",
+      "revision": 1817230,
+      "revision_timestamp": "2024-05-10T05:31:05Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=172 to=173 header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/দশম পরিচ্ছেদ",
+      "revision": 1817227,
+      "revision_timestamp": "2024-05-10T05:31:03Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=174 to=177 tosection=A header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/একাদশ পরিচ্ছেদ",
+      "revision": 1817222,
+      "revision_timestamp": "2024-05-10T05:31:01Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=177 to=181 fromsection=B header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/দ্বাদশ পরিচ্ছেদ",
+      "revision": 1817228,
+      "revision_timestamp": "2024-05-10T05:31:04Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=182 to=185 tosection=A header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/ত্রয়োদশ পরিচ্ছেদ",
+      "revision": 1817226,
+      "revision_timestamp": "2024-05-10T05:31:03Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=185 to=187 fromsection=B tosection=A header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/চতুর্দ্দশ পরিচ্ছেদ",
+      "revision": 1817224,
+      "revision_timestamp": "2024-05-10T05:31:02Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=187 to=191 fromsection=B tosection=A header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/পঞ্চদশ পরিচ্ছেদ",
+      "revision": 1817231,
+      "revision_timestamp": "2024-05-10T05:31:06Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=191 to=195 fromsection=B header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/পরিশিষ্ট",
+      "revision": 1817233,
+      "revision_timestamp": "2024-05-10T05:31:07Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=196 to=198 header=1/>"
+    },
+    {
+      "title": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/চতুর্থ পরিচ্ছেদ",
+      "revision": 1817238,
+      "revision_timestamp": "2024-05-10T05:31:09Z",
+      "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=111 to=114 tosection=A header=1/>"
+    }
+  ],
+  "continuation": null
+}

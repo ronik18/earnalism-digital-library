@@ -1,14 +1,14 @@
 {
   "slug": "bn-060",
-  "source_url": "https://bn.wikisource.org/wiki/%E0%A6%87%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%BF%E0%A6%B0%E0%A6%BE_(%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%AE%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0_%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC,_%E0%A7%A7%E0%A7%AE%E0%A7%AD%E0%A7%A9)",
+  "source_url": "https://upload.wikimedia.org/wikipedia/commons/3/30/%E0%A6%87%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%BF%E0%A6%B0%E0%A6%BE_-_%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%AE%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0_%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC_%28%E0%A7%A7%E0%A7%AE%E0%A7%AD%E0%A7%A9%29.pdf",
   "source_name": "Bengali Wikisource",
-  "source_license": "Underlying Bengali literary text is public domain in India and the U.S.; Bengali Wikisource transcription/source layer is reused under CC BY-SA terms.",
-  "source_hash": "20fd4394099662a7126b388fe2c242b5cd947fefe9ca280e808375bdadd77d9a",
-  "content_hash": "8dc1e281ed72c9583923b9782b528d75daf6099f17b9f340e3e54c42d7b3d14d",
-  "provenance_hash": "2a9758446d81273f4a807d409237967beed5e587269d6113a6574f6231869f9f",
+  "source_license": "Public-domain 1873 literary work in India; exact Bengali Wikisource transcription licensed under CC BY-SA 4.0 with visible attribution, source, license, changes and same-license adaptation notices.",
+  "source_hash": "664191f5a7e2d8e6bbccd90d1c8ee947aa70f33b5924c1295d77b46f4114f067",
+  "content_hash": "69d972ddd3fea936806a641d96a6287930b569536c0049eb8ef2f4b61d790065",
+  "provenance_hash": "4b74464474f354b0fd452628b3dfbacdd814b9c95c5e891c1c9499c97772742d",
   "rights_basis": "Author died 1894. Published 1873. Public domain checks are enforced by the Earnalism import pipeline; source evidence kept internal/admin-only.",
   "downloaded_at": "2026-06-04T16:51:08.756323+00:00",
-  "source_format": "text/plain",
+  "source_format": "application/pdf",
   "reader_facing_boilerplate_removed": true,
   "chapter_006_source_correction": {
     "status": "PASS_SCAN_CONFIRMED_OMISSION_RESTORED",
@@ -37,9 +37,9 @@
     "source_edition": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩); source title page identifies the 1873 edition and says the text was excerpted from বঙ্গদর্শন",
     "scope": "EXISTING_REVIEWED_PUBLICATION_FACT_ONLY; SOURCE_COMPARISON_AND_LICENSE_OBLIGATIONS_REMAIN_TITLE_SPECIFIC"
   },
-  "verification_status": "pending",
-  "text_clearance_status": "PREPARED_EVIDENCE_NOT_AUTHORIZED",
-  "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
+  "verification_status": "approved",
+  "text_clearance_status": "AUTOMATED_OBJECTIVE_TEXT_CLEARANCE_COMPLETE",
+  "text_clearance_scope": "IN TEXT_READER_ONLY; no audio; no release allowlist mutation",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
     "reader_content_sha256": "69d972ddd3fea936806a641d96a6287930b569536c0049eb8ef2f4b61d790065",
@@ -56,5 +56,22 @@
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  },
+  "historical_import_identity": {
+    "source_hash": "20fd4394099662a7126b388fe2c242b5cd947fefe9ca280e808375bdadd77d9a",
+    "content_hash": "8dc1e281ed72c9583923b9782b528d75daf6099f17b9f340e3e54c42d7b3d14d",
+    "provenance_hash": "2a9758446d81273f4a807d409237967beed5e587269d6113a6574f6231869f9f",
+    "source_url": "https://bn.wikisource.org/wiki/%E0%A6%87%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%BF%E0%A6%B0%E0%A6%BE_(%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%AE%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0_%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC,_%E0%A7%A7%E0%A7%AE%E0%A7%AD%E0%A7%A9)",
+    "source_format": "text/plain"
+  },
+  "verified_at": "2026-10-01T21:15:55.650005+00:00",
+  "publication_region": "india",
+  "edition_publication_year": 1873,
+  "identity_migration": {
+    "verified_at": "2026-10-01T21:15:55.650005+00:00",
+    "reason": "Replace unreproducible historical import aggregate claims with actually retrieved same-edition 1873 facsimile and exact current ordered Reader bytes. Historical claims retained explicitly.",
+    "facsimile_receipt": "internal/legal/catalogue_clearance_20261002/bengali/indira-reverified-immutable-assets.json",
+    "facsimile_receipt_sha256": "5c8f86756e1b17ab2be1831a6fb96d854d11f02584c9c8c7d6bf5d4582ef16f4",
+    "source_comparison_packet_sha256": "bca1950a636f6176b81871802e47a3406d32cab6cb3160059c54fd034a5f0294"
   }
 }

@@ -1,0 +1,223 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "woman-in-white",
+  "title": "The Woman in White",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "c8cb8872f6c0a2a5b6489873c6c7b8c39f006c3fa44219738186a96f2c1d1254",
+    "content_hash": "f359435d90032e1ceee2a65bd58033c7375017bf813696d8965b4171e68c2962",
+    "provenance_hash": "c28dca8892148e76c0f28ff691626473495ca7e0bc54eb3ca3132eabe78d626f",
+    "sanitized": true,
+    "chapter_count": 25,
+    "chapter_index_sha256": "8afde04ff6bdb858b9b54156f65566353555d4ca5b386711bd1f072f59b0a3cc",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "THE STORY BEGUN BY WALTER HARTRIGHT",
+        "word_count": 15570,
+        "sha256": "85ce75644a6ec4ffc55e89bf4acd2df4c3fbec7736b5ea9777ff061eab404475"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "VIII",
+        "word_count": 18093,
+        "sha256": "988e7b0abe33e4fcb1795ae3d51bab74e45a63dfe36ca9c43e794f727e9f3b1b"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "XIII",
+        "word_count": 13338,
+        "sha256": "c82da12c08f500e94ca82b22476ee681ccd7e241d1e1bf92cdf2a1c6806cd5ce"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "THE STORY CONTINUED BY VINCENT GILMORE",
+        "word_count": 4156,
+        "sha256": "a8cea0965922c69dbf143ca2f6a00cdfbc965dd035d184829051cd437177ea55"
+      },
+      {
+        "id": "chapter-005",
+        "order": 5,
+        "title": "“JANE ANNE CATHERICK.”",
+        "word_count": 9500,
+        "sha256": "979e0f1e89d94cd50c671903bab76f521d8c36c7cae76b7899d4d91dc15766de"
+      },
+      {
+        "id": "chapter-006",
+        "order": 6,
+        "title": "THE STORY CONTINUED BY MARIAN HALCOMBE",
+        "word_count": 13439,
+        "sha256": "1ec0ce1d6f8245504e5f28560529b3812ab97ae263e129a4ac96b47ff07bf429"
+      },
+      {
+        "id": "chapter-007",
+        "order": 7,
+        "title": "THE SECOND EPOCH",
+        "word_count": 29504,
+        "sha256": "cf66872b1a78bcac7342e47407ac2aae4101d5b7cbe1377557b56c7e60b3f9b0"
+      },
+      {
+        "id": "chapter-008",
+        "order": 8,
+        "title": "“WILLIAM KYRLE.”",
+        "word_count": 13512,
+        "sha256": "302f457fdfd7ea987fb9c82642d0a8c10fc6873a68292ae7a0d6f1bd4565ae86"
+      },
+      {
+        "id": "chapter-009",
+        "order": 9,
+        "title": "VIII (section 2)",
+        "word_count": 13047,
+        "sha256": "f7c1e0f18da6f9962e331edfd0d7bebec1b355277b25e5e91b2ffcd211e8fcc5"
+      },
+      {
+        "id": "chapter-010",
+        "order": 10,
+        "title": "POSTSCRIPT BY A SINCERE FRIEND",
+        "word_count": 556,
+        "sha256": "ce8c5fd408fa1c1e6c45d1b900a9d37b2638abc9976ec603df699c6adde541d2"
+      },
+      {
+        "id": "chapter-011",
+        "order": 11,
+        "title": "THE STORY CONTINUED BY FREDERICK FAIRLIE, ESQ., OF LIMMERIDGE HOUSE[2]",
+        "word_count": 7499,
+        "sha256": "22e5a2b9749684f2195efac67c34722bc7b615d6e164e91daa8a18b7f850fc59"
+      },
+      {
+        "id": "chapter-012",
+        "order": 12,
+        "title": "THE STORY CONTINUED BY ELIZA MICHELSON",
+        "word_count": 16541,
+        "sha256": "a3bb496c129483b4eecbc0c97593149d00488d437f43222cf488ab2d88cc16b3"
+      },
+      {
+        "id": "chapter-013",
+        "order": 13,
+        "title": "1. THE NARRATIVE OF HESTER PINHORN, COOK IN THE SERVICE OF COUNT FOSCO",
+        "word_count": 2449,
+        "sha256": "fd5c4f3454b4cb993039ac6b574ac2751bb84aa51a9a238370ef636ff9ac6653"
+      },
+      {
+        "id": "chapter-014",
+        "order": 14,
+        "title": "2. THE NARRATIVE OF THE DOCTOR",
+        "word_count": 85,
+        "sha256": "57c2467a63e7bc31568cfc579aa89f28587bd034c50f636334e2d1be4154dd65"
+      },
+      {
+        "id": "chapter-015",
+        "order": 15,
+        "title": "3. THE NARRATIVE OF JANE GOULD",
+        "word_count": 129,
+        "sha256": "707bec9a5a48e272da5c4c652e7a30ad259e3659d88e9f9765e59242628af451"
+      },
+      {
+        "id": "chapter-016",
+        "order": 16,
+        "title": "4. THE NARRATIVE OF THE TOMBSTONE",
+        "word_count": 44,
+        "sha256": "3dfd2ca826b55eae350b5508f97ddc4212ca4aa4fc3145a1a497eae74d8b7d1d"
+      },
+      {
+        "id": "chapter-017",
+        "order": 17,
+        "title": "5. THE NARRATIVE OF WALTER HARTRIGHT",
+        "word_count": 1966,
+        "sha256": "955f76f79bd3b39ce8f8bf76f7f7083bfbdf021847c21fe0994914ffc6c82136"
+      },
+      {
+        "id": "chapter-018",
+        "order": 18,
+        "title": "THE THIRD EPOCH",
+        "word_count": 26459,
+        "sha256": "f6a9c6afacbf71f4e3639edee918f75ac4d8945a4889ceabb162fd987156e6f6"
+      },
+      {
+        "id": "chapter-019",
+        "order": 19,
+        "title": "VIII (section 3)",
+        "word_count": 20552,
+        "sha256": "60d9187f044b8af4942384e76df78080d237d6d81e9d88b5d6c9a59160e16a1a"
+      },
+      {
+        "id": "chapter-020",
+        "order": 20,
+        "title": "THE STORY CONTINUED BY MRS. CATHERICK",
+        "word_count": 5380,
+        "sha256": "316fc033814e29a34b87085a44bf32c95d8c520e26f4a1f3cd45c8dc477679c5"
+      },
+      {
+        "id": "chapter-021",
+        "order": 21,
+        "title": "THE STORY CONTINUED BY WALTER HARTRIGHT",
+        "word_count": 23637,
+        "sha256": "05d7847df994f2c38bad3dae843d883c2f9eb1f62bb5e7c8e58a1fec2fc91690"
+      },
+      {
+        "id": "chapter-022",
+        "order": 22,
+        "title": "THE STORY CONTINUED BY ISIDOR, OTTAVIO, BALDASSARE FOSCO",
+        "word_count": 44,
+        "sha256": "4df91c4e27a6da2f4cac63de8a390b60a002a827d95ee8824b7b4447f2e7ba67"
+      },
+      {
+        "id": "chapter-023",
+        "order": 23,
+        "title": "THE COUNT’S NARRATIVE",
+        "word_count": 5634,
+        "sha256": "46b64c0f5399d3762baa1863ebe340486afa8b4c25fb35fa5a7e0461474dd372"
+      },
+      {
+        "id": "chapter-024",
+        "order": 24,
+        "title": "THE STORY CONCLUDED BY WALTER HARTRIGHT",
+        "word_count": 5495,
+        "sha256": "7849e4d01988fdcbb32274267deab91f400a592461ce9e6643802f76496027d0"
+      },
+      {
+        "id": "chapter-025",
+        "order": 25,
+        "title": "LIMMERIDGE.”",
+        "word_count": 40,
+        "sha256": "1b54518fee858c75e3abc89b667ce75ea3778c49e7ba9924f07f951e1c56e94f"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "df67a3cffcc579f4934b1e948a8ce69dd854f3c36b2a7c8f0f4a4c66e8ea589b"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "0286507f66d390a5e059e44da7e906725b87da28a69f1ed565f5f4cad8ea9ba9",
+    "reader_manifest": "09c43a09e62c55add70652fdc379abafc7b5dbf21bf0c099f37357f0e4f0d30d",
+    "source_evidence": "df67a3cffcc579f4934b1e948a8ce69dd854f3c36b2a7c8f0f4a4c66e8ea589b",
+    "approval_evidence": "94fd0f892db8fcd561ce5af31de96afebc563234306e84ce3afdbfc09292aaec"
+  },
+  "manifest_sha256": "5a77084749f78b2f2a6ff455b74bfd4d2d473d04a1e0bd98b7f55d810074f6d8"
+}

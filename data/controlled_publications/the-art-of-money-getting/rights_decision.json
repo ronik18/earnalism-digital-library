@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-art-of-money-getting-pg8581-noncover-text",
+  "edition_id": "the-art-of-money-getting",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "253c7b38ae5815549018228ab6723139dcce22f880f04ba1a3a70ce65e334d88",
+    "reader_manifest": "29536b26759f9e967efac4eba42447cb6b17943f9ee99bb797b48bba76e10fec",
+    "source_evidence": "1de370a2d070b6d45231c688d02cce0bc8a3e9a0f2ee734807e54befd55d1034",
+    "approval_evidence": "872ae423202a4b8f2235d07970f57ece66c251ad112b6212568f08f918dd6137",
+    "checksum_manifest": "1ccab053bdaa0d80100543ca052f469f6b72b9537ae92d4f39b5438fd3b93a55",
+    "publication_manifest": "428fd1c5c0ef2d2a29af170047add4d98be463089a03385de9df56efee384bdf"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:34:27.335291+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1891, original publication 1880; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "802fa215c5935f25ceefe9c94ef88067e8385906cc9c8a9b558ee6b67227fdf6",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "9c3ad2f058cfabcc8df405127e0ed9db895b07bc81221fdd48d6681bc7d9999e",
+    "ccf68ee545e68995f88d4cd2f534ecae9bf731b8996118d34b5a10bfc4958061",
+    "f3c4db2a3c551518ebd4302e7409797eb49f0ff94470ebfbc4b800b900a44b61"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

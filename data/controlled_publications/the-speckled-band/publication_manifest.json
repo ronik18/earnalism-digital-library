@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-speckled-band",
+  "title": "The Speckled Band",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "content_hash": "ef46d27a97d829def7dbb2935f56aa044ea42ee2122b2f137d8d515cc50cf535",
+    "provenance_hash": "f207ef976b18aa24b7b94728c4788715d76a21ffacb9548b6a4009d360ab1d1a",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "014d5ed71a40106ffc38dcb25cc69959a2ffe0efff5eb1d7eb3fc3d4ecdd65b7",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Speckled Band",
+        "word_count": 9867,
+        "sha256": "04ef038bf83876438b1b3f458ae5cc04d1081ac69c66357ef816bf5f478bb2f3"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "88b303686beac1f47b3c0444557c62085a1719bfc7a72fa8360693de1648d7f2"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "bb6e1b4c00d3d1206cbd4fc887bcba1bef02153eac0c7e358a0c303b0c5a7e2c",
+    "reader_manifest": "99c60761cc3dbf0e4128e1c6e470f171de69e5f8aba4fc6dd006941a110ad41e",
+    "source_evidence": "88b303686beac1f47b3c0444557c62085a1719bfc7a72fa8360693de1648d7f2",
+    "approval_evidence": "816fb718e8e3c2c509b8fff980094da614461ba92c0e3b12dfecd23e9db098fb"
+  },
+  "manifest_sha256": "eefb243b71e23a1180f6ffe7516923c94bd35a4d1ceed8e886208d0f1a0a84c5"
+}

@@ -1,0 +1,29 @@
+{
+  "acres_scan": {
+    "receipt": {
+      "requested_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Acres_of_diamonds_%28IA_acresofdiamonds01conw%29.pdf",
+      "resolved_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Acres_of_diamonds_%28IA_acresofdiamonds01conw%29.pdf",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:56:01.852434+00:00",
+      "response_sha256": "51403651c27c5d174c9a0cc938c61875866f8ddc8aca84be8964627d9dc7ab07"
+    }
+  },
+  "surendranath": {
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Tagore%2C%20Surendranath%2C%201872-1940",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Tagore%2C%20Surendranath%2C%201872-1940",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:56:03.280097+00:00",
+      "response_sha256": "00047c8281065b67e28d3d5a7578b9d25f707b97af7b4d5c5b41e8af795b9b29"
+    }
+  },
+  "connell": {
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Connell%2C%20Richard%2C%201893-1949",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Connell%2C%20Richard%2C%201893-1949",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:56:05.065383+00:00",
+      "response_sha256": "2aaa3491186ec637a27cec2a0bc42ee091b7ad7daa60524ece12cb2870919d1a"
+    }
+  }
+}

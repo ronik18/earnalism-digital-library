@@ -1,0 +1,223 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "white-fang",
+  "title": "White Fang",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "3c7226d00fd9b169f0016635d0e461501620f343220ee18db7ca9f083f4ad3f4",
+    "content_hash": "1cc0fc8e2a082b85ecb6eaaa5932b09d2c554f4ae1df4233903373bbc2025ccd",
+    "provenance_hash": "ad4d89ca1aa5b3b1a94a8354cedc25486710728fd6adf69e69be973c5b08a806",
+    "sanitized": true,
+    "chapter_count": 25,
+    "chapter_index_sha256": "aafc5e9c2de08dc6ad9c18228bb544900ec922a8d9b82e49eb036613ee002d53",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "CHAPTER I. THE TRAIL OF THE MEAT",
+        "word_count": 2558,
+        "sha256": "fb374c7563e87656880af88bb9badeeb64c02fdf13f5cc15a36cfc532f8949ba"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "CHAPTER II. THE SHE-WOLF",
+        "word_count": 3417,
+        "sha256": "0c01fffe7416b89f590ccddbb78e94b58963d41a1a3ad687cb322d42cc6968e8"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "CHAPTER III. THE HUNGER CRY",
+        "word_count": 3835,
+        "sha256": "9ca2fd722b52961b50327fee3b522cf755842f280beb0a5b00d271536d10093a"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "CHAPTER I. THE BATTLE OF THE FANGS",
+        "word_count": 3478,
+        "sha256": "c7d67f2fc1636b5455095ffc3e200d3d53c80758956a38449e603e064418c882"
+      },
+      {
+        "id": "chapter-005",
+        "order": 5,
+        "title": "CHAPTER II. THE LAIR",
+        "word_count": 2972,
+        "sha256": "8f80f90921ba07473480c0058f7600cfc611106fba259072f6ecf9bb5706c793"
+      },
+      {
+        "id": "chapter-006",
+        "order": 6,
+        "title": "CHAPTER III. THE GREY CUB",
+        "word_count": 1971,
+        "sha256": "69aaa4615b033e8a19fe5d7602dcdf47b8ac537e55cee2c29f078cebb8aae037"
+      },
+      {
+        "id": "chapter-007",
+        "order": 7,
+        "title": "CHAPTER IV. THE WALL OF THE WORLD",
+        "word_count": 4032,
+        "sha256": "a721b2ab71e0210f1375332fc3afe909f9540400273744704693da6bdbab47dd"
+      },
+      {
+        "id": "chapter-008",
+        "order": 8,
+        "title": "CHAPTER V. THE LAW OF MEAT",
+        "word_count": 2029,
+        "sha256": "c2a91abbc94152204374065fe338789cdef513dbb4d2116f6dd48ba7a6fc7d76"
+      },
+      {
+        "id": "chapter-009",
+        "order": 9,
+        "title": "CHAPTER I. THE MAKERS OF FIRE",
+        "word_count": 3936,
+        "sha256": "c81e01a570e2bf24e8bdb1cfa836b77fcd5e33a9d65e00fdfe84c69f59c6570c"
+      },
+      {
+        "id": "chapter-010",
+        "order": 10,
+        "title": "CHAPTER II. THE BONDAGE",
+        "word_count": 3048,
+        "sha256": "87607c323eb7c273157539f942bf1124745df1533cd77bd8809c9e773f6efa8a"
+      },
+      {
+        "id": "chapter-011",
+        "order": 11,
+        "title": "CHAPTER III. THE OUTCAST",
+        "word_count": 1647,
+        "sha256": "133173e4a6265dbd1566d79594585118fc40d93f99c0b8acb369b9e195367e47"
+      },
+      {
+        "id": "chapter-012",
+        "order": 12,
+        "title": "CHAPTER IV. THE TRAIL OF THE GODS",
+        "word_count": 1827,
+        "sha256": "f3eab9f97c728a586db40a79acd1874059668d5f6272a3ae72876a8794f907c1"
+      },
+      {
+        "id": "chapter-013",
+        "order": 13,
+        "title": "CHAPTER V. THE COVENANT",
+        "word_count": 3156,
+        "sha256": "734cdf8d5b38e08c5d6ef0d7b34899e7c89220cadd2d8ff7c2989429ea9bcf9b"
+      },
+      {
+        "id": "chapter-014",
+        "order": 14,
+        "title": "CHAPTER VI. THE FAMINE",
+        "word_count": 3109,
+        "sha256": "72071386562cc04c2b0f509fea1c7eb7276cd66c37f2167c70a600374f2caa58"
+      },
+      {
+        "id": "chapter-015",
+        "order": 15,
+        "title": "CHAPTER I. THE ENEMY OF HIS KIND",
+        "word_count": 3492,
+        "sha256": "0ae353a6bc67d130df8f8db7c8ba2c2e80edea0e8144b4307f39ca26698f48a7"
+      },
+      {
+        "id": "chapter-016",
+        "order": 16,
+        "title": "CHAPTER II. THE MAD GOD",
+        "word_count": 3068,
+        "sha256": "cf9556448105d001a7a7c8ce93390cf76b88089178656dbe605529e94c8e49a9"
+      },
+      {
+        "id": "chapter-017",
+        "order": 17,
+        "title": "CHAPTER III. THE REIGN OF HATE",
+        "word_count": 1872,
+        "sha256": "80a255618ea93c757b80663d05ca62cef4f5771931ce7be1daa3486a8bc36a43"
+      },
+      {
+        "id": "chapter-018",
+        "order": 18,
+        "title": "CHAPTER IV. THE CLINGING DEATH",
+        "word_count": 3890,
+        "sha256": "dfbb7eed45ad889de389298524100d13ff2d57b6023abd4bd394a199b5d28c1b"
+      },
+      {
+        "id": "chapter-019",
+        "order": 19,
+        "title": "CHAPTER V. THE INDOMITABLE",
+        "word_count": 1786,
+        "sha256": "9c3cb5df3a17ee261e8d68d894c597f3671ef47f98b5665fa51cbc305bbdc5ed"
+      },
+      {
+        "id": "chapter-020",
+        "order": 20,
+        "title": "CHAPTER VI. THE LOVE-MASTER",
+        "word_count": 4815,
+        "sha256": "813062a4be4c62bdc6ead6216ac0bcd42e5c9f48915d743a6627a99d4fda4233"
+      },
+      {
+        "id": "chapter-021",
+        "order": 21,
+        "title": "CHAPTER I. THE LONG TRAIL",
+        "word_count": 1647,
+        "sha256": "a5397aa804ab7360b00db9c6343dd18b5527cc8b8304c8451af08d31edcb300f"
+      },
+      {
+        "id": "chapter-022",
+        "order": 22,
+        "title": "CHAPTER II. THE SOUTHLAND",
+        "word_count": 2223,
+        "sha256": "13c01e8fa4e6d07a77396e78d76d4422b1d4ba1ae669f4fdebb3e9606debdb8e"
+      },
+      {
+        "id": "chapter-023",
+        "order": 23,
+        "title": "CHAPTER III. THE GOD’S DOMAIN",
+        "word_count": 3745,
+        "sha256": "2ddc10a87d038332cefda01f5c04ca8a6e034a311788f0921c87b5d5ce63c21b"
+      },
+      {
+        "id": "chapter-024",
+        "order": 24,
+        "title": "CHAPTER IV. THE CALL OF KIND",
+        "word_count": 2167,
+        "sha256": "fd2668c68322876e131b7c9e9f56ec1124f45c7fcddfea72bd763f6b8c6f1264"
+      },
+      {
+        "id": "chapter-025",
+        "order": 25,
+        "title": "CHAPTER V. THE SLEEPING WOLF",
+        "word_count": 2979,
+        "sha256": "5a19bd500e319d0a857fac91a8ba9eec5b17878f5ec297f7e307d282694449a9"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "e3ba3448c5a6f62fe344411f66adf0d166ed44fb10823cb7a83c03c7607536d2"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "fc328afa3835fb3afe1221838382f8e4cfb42901b251977eae424550e7c38a05",
+    "reader_manifest": "5c72b37b75265f449c1f1afaebad02360465e159deab5436dd8d3cbb1d1dd977",
+    "source_evidence": "e3ba3448c5a6f62fe344411f66adf0d166ed44fb10823cb7a83c03c7607536d2",
+    "approval_evidence": "6e6ba46cb26e5e96b41b81ebdd186616fe01f0e6b45e9f1e48dc12a0e5ff5ecf"
+  },
+  "manifest_sha256": "08541f2b481901a9add2526222aeadf6e52cfcef72f25af317f08cafffbcff46"
+}

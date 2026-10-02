@@ -1,13 +1,205 @@
 {
   "slug": "the-furnished-room",
   "source_url": "https://www.gutenberg.org/ebooks/2776",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #2776; The Furnished Room selected complete O. Henry story/cycle from four million; verified lifetime collection edition 1906; no translation/editorial/art imported",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "d684d8a0b1f05e3d9fcc773a1865638899d10056ae68982e9bfb8cc16bfe0596",
-  "content_hash": "31f02252aef36b093080d6896220b58079628e8f6c15a00c1c575c8e5b6f2830",
-  "provenance_hash": "28234022f7b918ca569e0f1b59cb57bba80e54ce149e25ed61ba044ee2104046",
-  "rights_basis": "O. Henry died 1910; first published 1904. Public domain in India and the U.S.",
+  "source_hash": "6bb719852f2f0eb33db25613124d2d3c522dd3b879c187667ab31072bb2fb48d",
+  "content_hash": "0321583d3c06c815889a095d7fb18b751f4b3d35b6b79e17ad46c4a18d72a11e",
+  "provenance_hash": "8b0dfe28e43d81d5c0fa6158e6195bc68448f1ff0a9958baefb2e0b4cefdbafa",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1910, verified lifetime collection publication 1906 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-03T08:04:22.093874+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #2776",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2776",
+      "resolved_url": "https://www.gutenberg.org/ebooks/2776",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:33.516940+00:00",
+      "response_sha256": "8b04ea4b45ca85d18fc20b0848012c8ef6310bbe74f24c4ef326b0ec9207b508"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2776.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2776/pg2776.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:38.547712+00:00",
+      "response_sha256": "6bb719852f2f0eb33db25613124d2d3c522dd3b879c187667ab31072bb2fb48d"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Henry, O., 1862-1910"
+      ],
+      "Title": [
+        "The Four Million"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Four_Million"
+      ],
+      "Contents": [
+        "Tobin's palm -- The gift of the magi -- A cosmopolite in a café -- Between rounds -- The skylight room -- A service of love -- The coming-out of Maggie -- Man about town -- The cop and the anthem -- An adjustment of nature -- Memoirs of a yellow dog -- The love-philtre of Ikey Schoenstein -- Mammon and the archer -- Springtime à la carte -- The green door -- From the cabby's seat -- An unfinished story -- The caliph, Cupid and the clock -- Sisters of the golden circle -- The romance of a busy broker -- After twenty years -- Lost on dress parade -- By courier -- The furnished room -- The brief début of Tildy."
+      ],
+      "Credits": [
+        "Project Gutenberg volunteers and revised by Joseph E. Loewenstein, M.D."
+      ],
+      "Reading Level": [
+        "Reading ease score: 81.5 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "New York (N.Y.) -- Social life and customs -- Fiction",
+        "Short stories, American"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "2776"
+      ],
+      "Release Date": [
+        "Aug 1, 2001"
+      ],
+      "Last Update": [
+        "Oct 21, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "4637 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 263474,
+          "length": 13797
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "d684d8a0b1f05e3d9fcc773a1865638899d10056ae68982e9bfb8cc16bfe0596",
+    "legacy_content_sha256": "31f02252aef36b093080d6896220b58079628e8f6c15a00c1c575c8e5b6f2830",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1910,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "8b04ea4b45ca85d18fc20b0848012c8ef6310bbe74f24c4ef326b0ec9207b508",
+    "url": "https://www.gutenberg.org/ebooks/2776",
+    "author_catalog_strings": [
+      "Henry, O., 1862-1910"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "0321583d3c06c815889a095d7fb18b751f4b3d35b6b79e17ad46c4a18d72a11e"
+      }
+    ],
+    "content_sha256": "0321583d3c06c815889a095d7fb18b751f4b3d35b6b79e17ad46c4a18d72a11e"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "d684d8a0b1f05e3d9fcc773a1865638899d10056ae68982e9bfb8cc16bfe0596",
+        "content_hash": "31f02252aef36b093080d6896220b58079628e8f6c15a00c1c575c8e5b6f2830",
+        "provenance_hash": "28234022f7b918ca569e0f1b59cb57bba80e54ce149e25ed61ba044ee2104046",
+        "source_url": "https://www.gutenberg.org/ebooks/2776",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:48:17.188009+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1906,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2776.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2776/pg2776.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:38.547712+00:00",
+      "response_sha256": "6bb719852f2f0eb33db25613124d2d3c522dd3b879c187667ab31072bb2fb48d"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 263474,
+          "length": 13797
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Henry, O., 1862-1910",
+      "creator_death_year": 1910,
+      "selected_collection_publication_year": 1906,
+      "original_story_first_publication_year": null,
+      "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+      "bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Henry%2C%20O.%2C%201862-1910",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Henry%2C%20O.%2C%201862-1910",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:43:57.605869+00:00",
+        "response_sha256": "cce6208396d154308bcb396a5d0a93d8dbaa3c3b987591ab79af2c6a91a136eb"
+      },
+      "bibliographic_excerpt": "four million. (Doubleday, Page & company, 1920) (page images at HathiTrust) Henry, O., 1862-1910: The four million (Burt, 1906) (page images at HathiTrust) Henry, O., 1862-1910: The four million (Doubleday, Page & company, 1924) (page images at Hathi",
+      "scope": "Named author selected story text only; other collection stories, separately authored editorial matter and all illustrations excluded."
+    },
+    "author_death_evidence": 1910,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1906,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "6bb719852f2f0eb33db25613124d2d3c522dd3b879c187667ab31072bb2fb48d",
+    "content_sha256": "0321583d3c06c815889a095d7fb18b751f4b3d35b6b79e17ad46c4a18d72a11e",
+    "year": 1906,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Henry%2C%20O.%2C%201862-1910",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Henry%2C%20O.%2C%201862-1910",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:43:57.605869+00:00",
+      "response_sha256": "cce6208396d154308bcb396a5d0a93d8dbaa3c3b987591ab79af2c6a91a136eb"
+    },
+    "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  }
 }

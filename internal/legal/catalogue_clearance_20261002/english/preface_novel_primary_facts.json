@@ -1,0 +1,23 @@
+{
+  "jane-eyre": {
+    "retrieval": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Bront%26euml%3B%2C+Charlotte%2C+1816-1855",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Bront%26euml%3B%2C+Charlotte%2C+1816-1855",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:37:24.149944+00:00",
+      "response_sha256": "d50fc8d862a4240a7a31170e4a0668e89cfd685ff871a9f9a7d54a4c80e45a0a"
+    },
+    "original_publication_year": 1847,
+    "verified_at": "2026-10-01T21:37:20.182007+00:00",
+    "scope": "Underlying author edition date; selected PG text includes actual author prefatory material; no illustrations authorized"
+  },
+  "the-wonderful-wizard-of-oz": {
+    "url": "https://www.loc.gov/item/03032405/",
+    "original_publication_year": 1900,
+    "verified_at": "2026-10-01T21:37:20.182007+00:00",
+    "verification_method": "Actual web tool Library of Congress primary item retrieval; directJSON HTTP403; nofullresponsebytehashclaimed",
+    "excerpt": "Chicago ; New York : Geo. M. Hill Co., 1900.",
+    "excerpt_sha256": "66423b95649ca377fb8d902fe2ee5d23b722670ffc2860df5373b5cc3be7cba1",
+    "scope": "Baum original narrative andauthorIntroduction; noDenslowart imported"
+  }
+}

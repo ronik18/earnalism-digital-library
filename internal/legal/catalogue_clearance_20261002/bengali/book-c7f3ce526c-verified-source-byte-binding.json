@@ -1,0 +1,18 @@
+{
+  "slug": "book-c7f3ce526c",
+  "source_file": "internal/legal/catalogue_clearance_20261002/bengali/book-c7f3ce526c-pinned-rendered-source.html",
+  "source_sha256": "53a42deffdd1bb2c3411a0689b51f9a6f4adaa34ab812b0ea8318906bb7025df",
+  "receipt": {
+    "url": "https://bn.wikisource.org/w/api.php?action=parse&oldid=1666937&prop=text&format=json&formatversion=2",
+    "retrieved_at": "2026-10-01T21:09:30.848806+00:00",
+    "response_sha256": "daec11b99a684b716e2c7c243d54ece71eb11330bad7abbd2e57a282811acc75"
+  },
+  "pinned_parent_revision": 1666937,
+  "permalink": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%96%E0%A7%8B%E0%A6%95%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%AC%E0%A7%81%E0%A6%B0+%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%A8&oldid=1666937",
+  "source_expansion_reproduced_prior_comparison": true,
+  "legacy_source_hash_retained_in_package": true,
+  "migration_scope": "Same1950 Galpaguchha source edition, exactly matched manuscript; source metadata furniture omitted, no literary content changed",
+  "canonical_source_hash_migration_applied": false,
+  "transcription_license": "CC-BY-SA-4.0",
+  "publication_authorized_by_this_record": false
+}

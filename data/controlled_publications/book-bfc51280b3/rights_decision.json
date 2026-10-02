@@ -1,0 +1,36 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-book-bfc51280b3-1895-cc-by-sa-text-reader",
+  "edition_id": "book-bfc51280b3",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "0d94d3fe9727da1c05c6a099410bf553bdebb0b51d4e6f0d408362a633204703",
+    "reader_manifest": "94cae90d1355e250e300249ad82a5ab12ecb327ae833c9b49304926922a64206",
+    "source_evidence": "992d0db644023dfcc76a0b21d329bc758ebc3e7757b5bef3a63f1cea92024070",
+    "approval_evidence": "ca5b27e461b3d495ab11ea0ec258e73c510ace0367535127ed18fbd38dd748f0",
+    "checksum_manifest": "327291932c030866a47d060abaddf730eaeaa6dcda4c806e4b17443e37e7c523",
+    "publication_manifest": "be97d0dae1571c78ef7d356b664fd305e931fabd00edd8b9f6ba454d75eba63d"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-02T03:10:37.024181+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Exact Galpa-Dashak original1302/1895 sole-author Rabindranath Tagore edition; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1941; India Section22 literary term expired end2001. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
+  "evidence_sha256": [
+    "4a101e1fe9a73ea196fbf82b7fda9b44ef84e7da7ecc484ac9a10e96dd4e22f4",
+    "e9aa058ace47768ce7719edf9bdf78ae1a94175c2475fe0015544ae014c16911",
+    "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "fa7c4240ef27d5841accdc545b5820e4e2aafe4c2cf73935eecaaee187355699",
+    "a9c8cb8d33b948cb64e7ddd6b0cf92497c37aedd786271e32a6045a8030bc06e"
+  ],
+  "accepted_by": "Automated executor under explicit product-owner autonomous evidence-backed text-clearance delegation; not a human legal reviewer or signature.",
+  "conditions_satisfied": true
+}

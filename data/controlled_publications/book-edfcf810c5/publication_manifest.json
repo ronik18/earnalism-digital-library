@@ -3,39 +3,36 @@
   "schema_version": 1,
   "slug": "book-edfcf810c5",
   "title": "ক্ষুধিত পাষাণ",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
-    "source_hash": "2591896f7fd678dafae394be36f7c60f39f240d5ac74e5806b5570982b5d96d7",
-    "content_hash": "12bc09cce1802df3c03d94ec8dee67e3feedc7fe754887b8e6cdb3acce02e614",
+    "source_hash": "4e4f92326d92da407a564d61c67f18583795ccc176de35e04eeaa05652017c78",
+    "content_hash": "d9249c44925bc65221d731727c5f35e557a13144feabe843f649d3dd5d249a34",
     "provenance_hash": "c204c2faa373044ae1e5476b61cc0102027b5d2615e3bfca930781591c9270db",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "0a2211cc9492734d06bbdd36eef4b7f1638f92c585f32a8e80796344b7f50a1c",
+    "chapter_index_sha256": "ea2a502281b16c8afd29ed74fd2194eee47b026d12d1c4b8bf85a43352443cb3",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "ক্ষুধিত পাষাণ",
-        "word_count": 3356,
-        "sha256": "41b21a65fe7d0be19bd30e7ad632849a72f28356a441ee258845249ba3b3ca67"
+        "word_count": 3697,
+        "sha256": "63927f1257960f8a4651063b641feaed09eabb8f60da080e26d854456057f706"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "0b5a0cd45d5de4cc8976f07e0ba517656be347a65cc10faaf9dc604483a3f5fc"
+    "evidence_sha256": "b2a8e0a62cd8abc25e88127adf58c22495c6c8687f43c0090ad495db67539fed"
   },
   "reader_release": {
-    "status": "BLOCKED",
+    "status": "READY_FOR_APPROVAL",
     "exposed": false,
     "qa_status": "QA_PASSED",
     "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1784226492/earnalism/covers/front/book-edfcf810c5_front_1024x1536.webp",
-    "blockers": [
-      "Rights: original_publication_year is required.",
-      "Rights: verification_status must be approved before publishing."
-    ]
+    "blockers": []
   },
   "audio_release": {
     "status": "NOT_REQUESTED",
@@ -47,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "0d92936ad473b2bbd700b5894c5ad11b7a126aba1418619d065660ab7dd668f2",
-    "reader_manifest": "6afeee33062302af8dc59005f89c619f8515a727688232e1006fa88ffe5ee663",
-    "source_evidence": "0b5a0cd45d5de4cc8976f07e0ba517656be347a65cc10faaf9dc604483a3f5fc",
-    "approval_evidence": "4db03ac530007827caa5a8973b73aeb4cc8b0f3a00cc5eeed3410999e417bfe9"
+    "public_book": "a469461d0dc43df8f40af10622b5c4d6c5e7a95836285597b3719901fdbd71f2",
+    "reader_manifest": "78e25b2d1a5ef845b2b4ed6f390857ee10ddc0d210e8ed1078e87569a85805bd",
+    "source_evidence": "b2a8e0a62cd8abc25e88127adf58c22495c6c8687f43c0090ad495db67539fed",
+    "approval_evidence": "00e35b93095a4747fcbf63ef123c0281d349bb6023a97e7a6cad02ec3d97ecfd"
   },
-  "manifest_sha256": "b2a84284bc1ce09a574474d03002aa2be0af3cabe7c83a34481214b12d8b41d4"
+  "manifest_sha256": "0d2e252f72136775a80db4639f3666894b7d80d5f6124c4739f2e39ee8360aa7"
 }

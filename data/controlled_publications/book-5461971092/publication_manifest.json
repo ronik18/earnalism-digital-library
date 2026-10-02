@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "book-5461971092",
   "title": "মেঘ ও রৌদ্র",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-02T03:29:04.359028+00:00",
   "content": {
-    "source_hash": "208a553fc4eb8ac6e6de42a4f65a71da855d6e0ddd4b2d2259f8d15809845d16",
-    "content_hash": "35286f73e2006c6041d9fba9ef6450ae5998f3959d91d67fdf428ceca8b66402",
+    "source_hash": "64f24065cac61aa5366209ad4e18beea4412951fa49921d928ed1544d394335c",
+    "content_hash": "30815757cb482e262bc1a039e0db5b902149cbc4a9fbe1e0144978122353d9c5",
     "provenance_hash": "30a404a955ae1154aec3a50c262ae701a66920477b3d7b6d9bacd35c3d5d8909",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "e67d89db8f5b2a22272cab9f78f31c3a7141789b8c43071ed52d5f955a06b6c1",
+    "chapter_index_sha256": "fb8caa8ddb95b5a4a8f56670a5cc030d890cad81474aeae1de488b5da2948b11",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "মেঘ ও রৌদ্র",
-        "word_count": 7459,
-        "sha256": "7505d26d36bc40460039afc0eef1e21e00bb80983b2d31ff469ff3e70a6826b9"
+        "word_count": 7442,
+        "sha256": "14cbcdc61014a865e509b3a1aebe7496312afcaece4b9670af4f2e6b655a73fd"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "051c5e064b60ac010b617b2ac57800818f3d1a25746678c205ad0c54dfcca223"
+    "publication_region": "india",
+    "evidence_sha256": "e3d9514270078f56e31eeff627ebae9cb475c001087d1685a22fa7f0d7ab2cd8"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verification_status must be approved before publishing."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "12009ad0911af086fb2a7335ee45fc85864be31fdad3408ce0af1c7d0bbde4ea",
-    "reader_manifest": "91760dd774f5afe1b24e29d3bee376e12d94a552b03c929ae86488acca53ffbe",
-    "source_evidence": "051c5e064b60ac010b617b2ac57800818f3d1a25746678c205ad0c54dfcca223",
-    "approval_evidence": "f7fc77aa8dc941dc645a6130d9de1331d2dfa5a896e23be58a2a63c4f318cded"
+    "public_book": "9549e0ba3426c7e09daa2a5d4b48872962bd42d9a779a2e50bb69a7974f02ccc",
+    "reader_manifest": "11c6c34b6f0c68bbb02292eb2baa7d146a05829b74c67430764176ba784a5ad4",
+    "source_evidence": "e3d9514270078f56e31eeff627ebae9cb475c001087d1685a22fa7f0d7ab2cd8",
+    "approval_evidence": "0d26c36232878d81190e461fbc3854c4fba1e62e9ce513d89fbce33b57e23fd6"
   },
-  "manifest_sha256": "378b7e525fd8e9ff9b932aa0c150d3e3a4e88c2553aa312bb57e36101512682c"
+  "manifest_sha256": "ae47e334fc53b305ba874872a1522d2ab2d4343b0318380ebc0ad98e70b24fbd"
 }

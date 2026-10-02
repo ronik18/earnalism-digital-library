@@ -1,12 +1,22 @@
 {
   "slug": "the-monkeys-paw",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": false
+  "audiobook_enabled": false,
+  "source_hash": "22f3431a7db6d9e210ffb446044739513475cb93992421d1b0d107f094d7408d",
+  "content_hash": "48bf28c4bea8019bab01a7040d1acce9a6694d783ccfacacca3a2702a5ae0389",
+  "provenance_hash": "87d5e1db8a3e325c890052f97fd7458589e84e2e643002d47a48c7cde97e4df6",
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "aa96817040374a4b176aed02a61a2429ab3e1ab894fd96a65bd6c685482355de",
+  "verified_at": "2026-10-01T21:52:27.631967+00:00"
 }

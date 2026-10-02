@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-red-headed-league-pg1661-noncover-text",
+  "edition_id": "the-red-headed-league",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "54345e887627b0ab852db67b5f23b842e7d31b1e437a5603b1a52a0860ab249b",
+    "reader_manifest": "b4ad02b3945347d18af0fbc8c4e6dd6260f9c6a94ec875c283624c1b59e87486",
+    "source_evidence": "2076a8139b901ab26937009d373e3ca1fd4d5e9ff7a3fa79744766c6d896c58a",
+    "approval_evidence": "b0d0a997eb00c24c5d843d599ec74918db7ed9ffd61278a88b6ecf5ab09a40f2",
+    "checksum_manifest": "2e43f0ba9ffffbbd71fcea49702f5ff640a57d10aa3e69530bcf4a0137f7a17d",
+    "publication_manifest": "4a819717009fed4962d71ef139c52315849731af069105592038a065802d7222"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:48:34.443341+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1930, verified lifetime collection publication 1892 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "ac23e989c18c28f5c2b95c3d38ee7ac0e40478931087b4c3baff8a977efe03ba",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "0e79857c177b111777a6034258d2094a25682248fef0bdd8bd7df7e1b0a45251",
+    "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "2c1aec29382ba3f1eb9dca23f37ec66fad34806264b221e183c38088db92524d"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

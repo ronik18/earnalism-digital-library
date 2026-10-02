@@ -1,0 +1,15 @@
+{
+  "schema_version": "earnalism.text-license.v1",
+  "slug": "boule-de-suif",
+  "license": "CC0-1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": "Boule de Suif by Guy de Maupassant, English translation by Ernest Augustus Boyd, selected1922Knopfedition. Electronic transcription/editorial formatting from StandardEbooks contributors.",
+  "changes": "Complete story text including quoted French song retained; title/navigation/editorial styling removed and paragraphs adapted. Replaces a different uncleared translation; no approval transfer.",
+  "scope": "CC0 dedication covers upstream editorial transcription. Historical original and Boyd translation separately cleared for India; excludes Earnalism covers, marks, software and all audio. CC0 imposes no share-alike obligation.",
+  "disclaimer": "No contributor endorsement or warranty. Underlying historical works territorial rights remain separately evaluated.",
+  "source_url": "https://standardebooks.org/ebooks/guy-de-maupassant/short-fiction/various-translators",
+  "contributors_url": "https://github.com/standardebooks/guy-de-maupassant_short-fiction_various-translators/commits/master/src/epub/text/boule-de-suif.xhtml",
+  "chapter_sha256": [
+    "fc3455677ff33b41f70012df7239691fb56b8bdd977ea187f524b0c2a863d079"
+  ]
+}

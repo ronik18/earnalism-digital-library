@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "book-ef193ffc52",
   "title": "দিদি",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-02T03:29:04.572458+00:00",
   "content": {
-    "source_hash": "7c41b5ea9b6dd62a8cd4828141cda63cd9c86803357268bc25c411554d182b33",
-    "content_hash": "a3390f2b02edbd02d8b0ad171173488bb8f6fa6649a94886f4a0b92b5324ac36",
+    "source_hash": "dc05ca7f4ee113326288f0ba21f2fd9c9cc09854a1d2936e45a829b8482c45a6",
+    "content_hash": "7423a95d1cc99f56c7156f038feebfc630a97d777908ef0d778d5ca0cd833175",
     "provenance_hash": "ac0e121b2b55180f7861584e8c191aba4756b1c5db63e9b266def593f6851680",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "78c79386e447cafbf29591d47a958199d7593ed08e36bfe55f196c8afbaccf28",
+    "chapter_index_sha256": "6511e4027ba9ad6cc789d9e79eb9493cd3eca896bf8f1fef41093ca451a31936",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "দিদি",
-        "word_count": 2982,
-        "sha256": "a31869179bdc721edfed8419f74adf3a87d6cfc335a386124236128bd9e21500"
+        "word_count": 2926,
+        "sha256": "45de1e01f29af4a0553878359330b6552f7fb2f7fe3d84cff4652d8c64d4b43e"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "5ce8855aa837f6f7692924289079334b22eb080188ff558b1325f5cecb1b60c9"
+    "publication_region": "india",
+    "evidence_sha256": "22ef8f1aa93db20a2e6e3c97b3eea3a653c9a8def10fb9b1b5fb0b79ddaae6e1"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verification_status must be approved before publishing."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "36e0a9924e3fa268fffeb89498d162e951415f395f6e30ebc0611387d10d99f1",
-    "reader_manifest": "59ebf61183ec1fa6ee87f207c7dfa39ff16d5f6a57db0d38d01ca649b0f82cfb",
-    "source_evidence": "5ce8855aa837f6f7692924289079334b22eb080188ff558b1325f5cecb1b60c9",
-    "approval_evidence": "5b4d292d2322af4ce6743bfd7de0adcab2a251f7dc1423fb44755a093579d66d"
+    "public_book": "52f1734a953bb36872eef6af61f3ac2f784152214b78e79d930a947dac96453b",
+    "reader_manifest": "92b8f8aaf9ad95070c275a312b47e6d5746031f20068fe7cbca1d16e6324428e",
+    "source_evidence": "22ef8f1aa93db20a2e6e3c97b3eea3a653c9a8def10fb9b1b5fb0b79ddaae6e1",
+    "approval_evidence": "7ee5ba33b081c697fac4b5139d14df05b20c9aa5f0a023abf4ea4c3d3fc3953d"
   },
-  "manifest_sha256": "f5711a66243196e4d430cb479e73a561029c200f57d9bfaa4ce94abfd6ff321e"
+  "manifest_sha256": "7c42922d775994e0f6b3c9b125befc9174ed3ac59237e8724c408f847b16b1ff"
 }

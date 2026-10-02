@@ -62,6 +62,10 @@ def _rights_book(public_book: dict[str, Any], source: dict[str, Any]) -> dict[st
         "author_name": public_book.get("author", ""),
         "author_death_year": source.get("author_death_year"),
         "original_publication_year": source.get("original_publication_year"),
+        "publication_upper_bound_year": source.get("publication_upper_bound_year"),
+        "publication_upper_bound_evidence": source.get("publication_upper_bound_evidence"),
+        "source_sha256": source.get("source_hash"),
+        "content_sha256": source.get("content_hash"),
         "country_of_origin": source.get("country_of_origin", ""),
         "source_url": source.get("source_url", ""),
         "source_name": source.get("source_name", ""),
@@ -115,6 +119,14 @@ def build_manifest(
     for label, path in inputs.items():
         if not path.exists():
             blockers.append(f"Missing {label} artifact.")
+
+    if public_book.get("license_notice_sha256"):
+        try:
+            from licensed_text import public_license_notice
+        except ImportError:
+            from backend.licensed_text import public_license_notice
+        if public_license_notice(artifact_dir) is None:
+            blockers.append("Declared text licence notice must match the exact chapter bytes and attribution contract.")
 
     cover_url = str(public_book.get("cover_image_url") or public_book.get("cover_url") or "").strip()
     if not cover_url:

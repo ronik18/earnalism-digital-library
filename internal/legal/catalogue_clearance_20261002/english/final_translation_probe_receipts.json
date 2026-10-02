@@ -1,0 +1,29 @@
+{
+  "eyesore_index": {
+    "receipt": {
+      "requested_url": "https://en.wikisource.org/wiki/Index:Eyesore_-_Rabindranath_Tagore.pdf",
+      "resolved_url": "https://en.wikisource.org/wiki/Index:Eyesore_-_Rabindranath_Tagore.pdf",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T02:59:10.487959+00:00",
+      "response_sha256": "adead26212782791017f1ddb61f8778c1e0f45bc923475ee34119fe8994e304c"
+    }
+  },
+  "hungry_book": {
+    "receipt": {
+      "requested_url": "https://en.wikisource.org/wiki/The_Hungry_Stones_and_Other_Stories/The_Hungry_Stones",
+      "resolved_url": "https://en.wikisource.org/wiki/The_Hungry_Stones_and_Other_Stories/The_Hungry_Stones",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T02:59:12.456198+00:00",
+      "response_sha256": "9b3e954807de9750159648bfbaa1ddd07bea642365e6c16a782312723a2b713f"
+    }
+  },
+  "kafka_current": {
+    "receipt": {
+      "requested_url": "https://www.gutenberg.org/cache/epub/5200/pg5200.txt",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/5200/pg5200.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T02:59:14.410868+00:00",
+      "response_sha256": "0933283a19a4daaef0d412e8f69c74fae126b0a946cb74b8f3c783a8e869830d"
+    }
+  }
+}

@@ -38,6 +38,23 @@ describe("ReaderExperienceV2 customer controls", () => {
     select.dispatchEvent(new Event("change", { bubbles: true }));
   });
 
+  test("only a valid edition licence enables the delivered-text print marker", () => {
+    render();
+    expect(container.querySelector('[data-licensed-text="true"]')).toBeNull();
+    const book = { slug: "licensed-title", text_license: {
+      schema_version: "earnalism.text-license.v1", slug: "licensed-title",
+      license: "CC-BY-SA-4.0", license_url: "https://creativecommons.org/licenses/by-sa/4.0/",
+      attribution: "Wikisource contributors", changes: "Formatting", scope: "Transcription only", disclaimer: "No warranties",
+      source_url: "https://bn.wikisource.org/w/index.php?oldid=123",
+      contributors_url: "https://bn.wikisource.org/w/index.php?action=history",
+    } };
+    render({ model: { ...model, book } });
+    expect(container.querySelector('[data-licensed-text="true"]')).toBeTruthy();
+    expect(container.querySelector('[data-testid="text-license-notice"]')).toBeTruthy();
+    render({ model: { ...model, book: { ...book, slug: "another-edition" } } });
+    expect(container.querySelector('[data-licensed-text="true"]')).toBeNull();
+  });
+
   test("bookmarks persist and requests for protected pages still use route authorization", () => {
     localStorage.setItem(readerNotebookKey(model.title), JSON.stringify({ notes: [], bookmarks: [4] }));
     const onRequestPage = jest.fn();

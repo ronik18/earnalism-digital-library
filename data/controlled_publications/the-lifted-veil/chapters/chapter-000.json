@@ -1,0 +1,18 @@
+{
+  "id": "chapter-000",
+  "bookSlug": "the-lifted-veil",
+  "order": 1,
+  "title": "Author Epigraph",
+  "language": "en",
+  "content": "Give me no light, great Heaven, but such as turns To energy of human fellowship; No powers beyond the growing heritage That makes completer manhood.",
+  "content_hash": "f70b8c1e424e8b219c21c85dede7a054d34b658089c331ca62f17dcf7267459c",
+  "sanitizedSha256": "f70b8c1e424e8b219c21c85dede7a054d34b658089c331ca62f17dcf7267459c",
+  "sourceSha256": "0e8114ea868e1ecd07e44a695c8723b819527170f96bf1811a782b2b440e05b5",
+  "word_count": 25,
+  "reading_minutes": 1,
+  "is_preview": true,
+  "has_images": false,
+  "image_count": 0,
+  "processing_status": "ready",
+  "processing_warnings": []
+}

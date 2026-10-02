@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-legend-of-sleepy-hollow",
+  "title": "The Legend of Sleepy Hollow",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "6847c02f49c9ff8a5e2a0e8f49842bf3bffc7f5a87216c895a6b64f26ecf9353",
+    "content_hash": "a06cbf5814b796114271076984e1e56da57612f28bd8758ea5e34f0c631b1aa3",
+    "provenance_hash": "b7475b107e7e4aab2574668b585f93f84e1e4bb1b919cb6a0995e4f656188db8",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "8286ebf1a73183face9fc5bb18aa4c0e75de30281e7ebb467d3b6ebfb6193517",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Legend of Sleepy Hollow",
+        "word_count": 12267,
+        "sha256": "c4cb5c40865e31f569f8e1f750ea961f98bfc750e416e7c917346f3ce1c2a06b"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "a84cfd67843201088f02daa06d3a438f3c5910fd28a72c1cbcbf36d179555b8d"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "cbacf9523b410fce11e3d0dc047b55e853566c9d873ffe99f57ebcb089acc3a3",
+    "reader_manifest": "618825fc730b566a752fd3c0874b2f4a68f264c16d1779a0d3dcd854fcc9ad76",
+    "source_evidence": "a84cfd67843201088f02daa06d3a438f3c5910fd28a72c1cbcbf36d179555b8d",
+    "approval_evidence": "92e25f59ab6a7d728b22bc09fb56cf0dec494b480d9cf4578742971ad8bde603"
+  },
+  "manifest_sha256": "47af58dff07fb4fce89a3024cbad8b687951c893906c9f47e47f1bb2ef80c071"
+}

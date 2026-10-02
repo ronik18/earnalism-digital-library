@@ -1,0 +1,31 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "the-monkeys-paw",
+  "edition": "Project Gutenberg #12122; exact selected original-author text; verified lifetime work publication 1902; excludes anthology editor/art and other title components",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_ONLY_NON_COVER_COMPONENTS",
+  "source_sha256": "22f3431a7db6d9e210ffb446044739513475cb93992421d1b0d107f094d7408d",
+  "content_sha256": "48bf28c4bea8019bab01a7040d1acce9a6694d783ccfacacca3a2702a5ae0389",
+  "chapter_sha256": {
+    "chapter-001": "1184a3e5b2d86508fc2c6bceac7519235581387e02e31a2c2dbfab03628ac942",
+    "chapter-002": "d0eafaa9c6af9c96bd56ce956a8f59ba94da1ec9e19b3e6cf38b4f8b206cc9ee",
+    "chapter-003": "db74529db5f371fc0a75923645482180431e6b1048605c14f48efba1e12e143c"
+  },
+  "cover_provenance_sha256": null,
+  "cover_status": "DEFERRED_BY_OWNER_REQUEST_NO_COVER_DISPLAY_AUTHORIZED",
+  "authorized_by": "Automated executor under owner explicit autonomous clearance delegation; not a fabricated human or legal signature.",
+  "verified_at": "2026-10-01T21:52:27.631967+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Cover clearance/binding, trusted production registry acceptance, canonical controlled-live allowlist, actual runtime Reader readiness and protected gates must separately pass.",
+  "not_authorized": [
+    "cover_display",
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation"
+  ]
+}

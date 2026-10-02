@@ -53,9 +53,9 @@
       "updated_at": "2026-08-15T22:12:42Z"
     }
   ],
-  "source_hash": "213e4a287408e7c78cb14a5d94dfcc519a378c710ca8739601220f6d51df52b1",
-  "content_hash": "42abf60a854bbec5d5aad3c065927c6f62aad640e6791f1bb77b66f804ffdafa",
-  "provenance_hash": "3b5ee0d41aa18483dcdfb61242320186bb3026289fcd84a90cdb9ec14b1600ab",
+  "source_hash": "77c9fc421bd4d7742794edc9dd48b7f80eb70c0b73b969d4ef099d4ff9e4808f",
+  "content_hash": "8590d829e9f5d5b6ddf5dd7d131d5be1e2de353f0d3637ece79b88aa5f283ea7",
+  "provenance_hash": "a17bd1897d9e21f8697fcf0accfb5971849f0532b443076b1800a841f7f1125c",
   "rights_basis": "Richard Connell died in 1949 and the story was first published in 1924. Public domain in India and the U.S.; canonical title corrected from manifest alias.",
   "rights_tier": "A",
   "verification_status": "approved",
@@ -92,5 +92,6 @@
   },
   "requires_attribution": true,
   "requires_share_alike": true,
-  "required_attribution": "Text transcription adapted from Wikisource contributors, “The Most Dangerous Game,” https://en.wikisource.org/wiki/O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game, under CC BY-SA 4.0, https://creativecommons.org/licenses/by-sa/4.0/. The underlying 1924 story by Richard Connell is public domain in India and the United States."
+  "required_attribution": "Text transcription adapted from Wikisource contributors, “The Most Dangerous Game,” https://en.wikisource.org/wiki/O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game, under CC BY-SA 4.0, https://creativecommons.org/licenses/by-sa/4.0/. The underlying 1924 story by Richard Connell is public domain in India and the United States.",
+  "license_notice_sha256": "1822103ef4f55d4a3df141bcf9c536195b8a34d22bcaba9a9349484d4d74f8fa"
 }

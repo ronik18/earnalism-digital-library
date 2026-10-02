@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-withered-arm-pg3056-noncover-text",
+  "edition_id": "the-withered-arm",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "e3d5e6a016d3428ff0d03bc53ec7133b737920e8466a83a8b482b0b16546df8d",
+    "reader_manifest": "1b500afce3c2fd35345c9741cb9f4823bee2e31b77f2c8a210d3c1f8edc891bf",
+    "source_evidence": "5224d9d0c44411aa26a772d42affecac26974da89b8814daf0284eee8734b0e9",
+    "approval_evidence": "e7b3fbd5734107cf43babf138f6efdb2cd5268332eaed3eb32103431ca25e829",
+    "checksum_manifest": "92f2049f4234e618a881dc43d0f34d3a856e3e9fba0106e4dc34d571dd3b3117",
+    "publication_manifest": "e28c439a168c37f084322fe2765b10e1663f56c66d2964cf3187f45c0bd49b4b"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:49:40.745164+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1928, verified lifetime collection publication 1888 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "3b67da4e74b3f5a939d20759c399e252eb0ebda958d8899b17f59b4389e22a59",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ddff4d02c636c57500215604f778bd3b8b9883d5ca9d5de89dc1480b29fa52c3",
+    "c2e80e062f09828cb87dd57ca8db79de7e4bb22cbbec178276fa50d2cd7caa53",
+    "12d3bf4e0b6a8682055242aa8ef4867d086c79257dcfc7f6c3592f1aea1a8ced"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

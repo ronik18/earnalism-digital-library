@@ -1,0 +1,89 @@
+{
+  "receipt": {
+    "url": "https://bn.wikisource.org/w/api.php?action=query&generator=allpages&gapprefix=%E0%A6%95%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4+%28%E0%A7%A7%E0%A7%AE%E0%A7%AE%E0%A7%AB%29%2F%E0%A6%95%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0+%E0%A6%A6%E0%A6%AA%E0%A7%8D%E0%A6%A4%E0%A6%B0%2F&gapnamespace=0&gaplimit=max&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2",
+    "retrieved_at": "2026-10-01T21:48:42.158037+00:00",
+    "response_sha256": "43be6ea7fdc4ae104e160b7ec867ecdd95ecb725bc6c08e925e9b6b4cb9af01c"
+  },
+  "prefix": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর",
+  "leaves": [
+    {
+      "title": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/প্রথম সংখ্যা",
+      "revision": 1856905,
+      "revision_timestamp": "2025-01-26T07:19:27Z",
+      "wikitext": "<pages index=\"কমলাকান্ত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=১৯ to=২৫ header=1 />"
+    },
+    {
+      "title": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/দ্বিতীয় সংখ্যা",
+      "revision": 1856902,
+      "revision_timestamp": "2025-01-26T07:19:25Z",
+      "wikitext": "<pages index=\"কমলাকান্ত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=26 to=40 header=1 />"
+    },
+    {
+      "title": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/তৃতীয় সংখ্যা",
+      "revision": 1856898,
+      "revision_timestamp": "2025-01-26T07:19:23Z",
+      "wikitext": "<pages index=\"কমলাকান্ত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=41 to=49 header=1 />"
+    },
+    {
+      "title": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/চতুর্থ সংখ্যা",
+      "revision": 1856897,
+      "revision_timestamp": "2025-01-26T07:19:23Z",
+      "wikitext": "<pages index=\"কমলাকান্ত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=50 to=57 header=1 />"
+    },
+    {
+      "title": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/পঞ্চম সংখ্যা",
+      "revision": 1856904,
+      "revision_timestamp": "2025-01-26T07:19:26Z",
+      "wikitext": "<pages index=\"কমলাকান্ত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=58 to=75 header=1 />"
+    },
+    {
+      "title": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/ষষ্ঠ সংখ্যা",
+      "revision": 1856906,
+      "revision_timestamp": "2025-01-26T07:19:27Z",
+      "wikitext": "<pages index=\"কমলাকান্ত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=76 to=97 header=1 />"
+    },
+    {
+      "title": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/সপ্তম সংখ্যা",
+      "revision": 1856907,
+      "revision_timestamp": "2025-01-26T07:19:28Z",
+      "wikitext": "<pages index=\"কমলাকান্ত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=98 to=107 header=1 />"
+    },
+    {
+      "title": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/অষ্টম সংখ্যা",
+      "revision": 1856895,
+      "revision_timestamp": "2025-01-26T07:19:22Z",
+      "wikitext": "<pages index=\"কমলাকান্ত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=108 to=124 header=1 />"
+    },
+    {
+      "title": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/নবম সংখ্যা",
+      "revision": 1856903,
+      "revision_timestamp": "2025-01-26T07:19:26Z",
+      "wikitext": "<pages index=\"কমলাকান্ত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=125 to=133 header=1 />"
+    },
+    {
+      "title": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/দশম সংখ্যা",
+      "revision": 1856900,
+      "revision_timestamp": "2025-01-26T07:19:24Z",
+      "wikitext": "<pages index=\"কমলাকান্ত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=134 to=150 header=1 />"
+    },
+    {
+      "title": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/একাদশ সংখ্যা",
+      "revision": 1856896,
+      "revision_timestamp": "2025-01-26T07:19:22Z",
+      "wikitext": "<pages index=\"কমলাকান্ত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=151 to=157 header=1 />"
+    },
+    {
+      "title": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/দ্বাদশ সংখ্যা",
+      "revision": 1856901,
+      "revision_timestamp": "2025-01-26T07:19:24Z",
+      "wikitext": "<pages index=\"কমলাকান্ত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=158 to=174 header=1 />"
+    },
+    {
+      "title": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/ত্রয়োদশ সংখ্যা",
+      "revision": 1856899,
+      "revision_timestamp": "2025-01-26T07:19:23Z",
+      "wikitext": "<pages index=\"কমলাকান্ত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=175 to=186 header=1 />"
+    }
+  ],
+  "continuation": null
+}

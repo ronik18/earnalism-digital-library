@@ -1,0 +1,29 @@
+{
+  "receipt": {
+    "url": "https://bn.wikisource.org/w/api.php?action=query&generator=allpages&gapprefix=%E0%A6%B6%E0%A6%B0%E0%A7%8E-%E0%A6%B8%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF-%E0%A6%B8%E0%A6%82%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B9+%28%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%AF%E0%A6%BC%E0%A7%8B%E0%A6%A6%E0%A6%B6+%E0%A6%B8%E0%A6%AE%E0%A7%8D%E0%A6%AD%E0%A6%BE%E0%A6%B0%29%2F%E0%A6%AE%E0%A6%B9%E0%A7%87%E0%A6%B6%2F&gapnamespace=0&gaplimit=max&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2",
+    "retrieved_at": "2026-10-01T21:54:31.802071+00:00",
+    "response_sha256": "f9a7cb01bd21e234b0c61211edb57f9742af5632575e80f8421bb191cd17d6dd"
+  },
+  "prefix": "শরৎ-সাহিত্য-সংগ্রহ (ত্রয়োদশ সম্ভার)/মহেশ",
+  "leaves": [
+    {
+      "title": "শরৎ-সাহিত্য-সংগ্রহ (ত্রয়োদশ সম্ভার)/মহেশ/১",
+      "revision": 1943385,
+      "revision_timestamp": "2026-04-14T15:28:15Z",
+      "wikitext": "<pages index=\"শরৎ-সাহিত্য-সংগ্রহ (ত্রয়োদশ সম্ভার) - শরৎচন্দ্র চট্টোপাধ্যায় (১৯৬০).pdf\" from=325 to=329 header=1/>"
+    },
+    {
+      "title": "শরৎ-সাহিত্য-সংগ্রহ (ত্রয়োদশ সম্ভার)/মহেশ/২",
+      "revision": 1943386,
+      "revision_timestamp": "2026-04-14T15:29:17Z",
+      "wikitext": "<pages index=\"শরৎ-সাহিত্য-সংগ্রহ (ত্রয়োদশ সম্ভার) - শরৎচন্দ্র চট্টোপাধ্যায় (১৯৬০).pdf\" from=330 to=332 tosection=A header=1/>"
+    },
+    {
+      "title": "শরৎ-সাহিত্য-সংগ্রহ (ত্রয়োদশ সম্ভার)/মহেশ/৩",
+      "revision": 1943387,
+      "revision_timestamp": "2026-04-14T15:29:52Z",
+      "wikitext": "<pages index=\"শরৎ-সাহিত্য-সংগ্রহ (ত্রয়োদশ সম্ভার) - শরৎচন্দ্র চট্টোপাধ্যায় (১৯৬০).pdf\" from=332 to=336 fromsection=B header=1/>"
+    }
+  ],
+  "continuation": null
+}

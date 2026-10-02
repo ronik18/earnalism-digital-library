@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+  "title": "The Celebrated Jumping Frog of Calaveras County",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "312ae97f2616ba41d9f6d4bfc87aa3218f3b867941194d139297099b423d512e",
+    "content_hash": "ba7046e7f129168c08c7e5cd22062185183badee2cc894daf81c1ea405927934",
+    "provenance_hash": "2e9d41b20babffe151d857da04292a7b7d871f9de9a9558fc866f4f92de37aae",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "4f7fcd0104b68c20760a233834b555df13c009bc89657ef7530285b5c296788c",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Celebrated Jumping Frog of Calaveras County",
+        "word_count": 2713,
+        "sha256": "896e6b53dc1f117800a83f8880e81efd08316a45d01a652742c3b8fc90e77fa2"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "3e9d0284925415a32fdb7cfc8bc7d8864f896aeee4f89233141f6cb2a1802651"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "0dd92e37fbfdfa8de30399cefe6a3ce26218835e6c05f321970ae0789c93399c",
+    "reader_manifest": "0e726b59feff51c9c14a7c44ee54bfbfdf914ccd8bfd23c9857c5b086476c11a",
+    "source_evidence": "3e9d0284925415a32fdb7cfc8bc7d8864f896aeee4f89233141f6cb2a1802651",
+    "approval_evidence": "ebe54be1e4a0f772217db6bc4a73ac64438e09edb52aebf289c6aa6f059b90d7"
+  },
+  "manifest_sha256": "52675eff38b9a523a56695196a125118b44ee7ae6aea7376a582defc31438c26"
+}

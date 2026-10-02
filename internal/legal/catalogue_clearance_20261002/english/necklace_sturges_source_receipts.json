@@ -1,0 +1,19 @@
+{
+  "wikisource-necklace-sturges": {
+    "text_receipt": {
+      "requested_url": "https://en.wikisource.org/wiki/Stories_by_Foreign_Authors_(French_I)/The_Necklace",
+      "resolved_url": "https://en.wikisource.org/wiki/Stories_by_Foreign_Authors_(French_I)/The_Necklace",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:03:52.018026+00:00",
+      "response_sha256": "d90b8b53dd418a5063c2ae2469a426ede6f6914f64d4dd13c3eb2d97e7175f64"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Maupassant, Guyde,1850-1893"
+      ],
+      "Translator": [
+        "Sturges,Jonathan,1864-1911"
+      ]
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-greek-interpreter",
+  "title": "The Adventure of the Greek Interpreter",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "509da3f8bbdc6c3857073e74911f628eef8fea557fcb5bca9e1713c846e43ec3",
+    "content_hash": "dbe1e0f797d1ecc4374a5a87761e0b3d23d41607c40c41500ffeef98154297ab",
+    "provenance_hash": "3ee0c04a2a2833abf787603b9b3115fbca081a58298449cd344aaef42143bb2a",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "0f3aea58e55a738b0bee4ffbedd3347f8ff640859fc35f97bc3d651c8b8c17c0",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Greek Interpreter",
+        "word_count": 7059,
+        "sha256": "64256b3b007d368d92d1c790c5e80e6c0e7aba51c9dc6ed1bc857c242c512df4"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "c96f18526aeae2c316fbb45e972720dccbcbc59c16f423be5ceb20dea6e4c52e"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "ddce8bcb7e105a046987bcc5a793aa3510085f3db7d37bfe77ca794320b2b6df",
+    "reader_manifest": "65b89a3fd16271b3c1af60b67672aec9432d867ca4168a3e8f9027190657685c",
+    "source_evidence": "c96f18526aeae2c316fbb45e972720dccbcbc59c16f423be5ceb20dea6e4c52e",
+    "approval_evidence": "c7166be089d345bec5aeaf77fb7705f18317df9a542c84e8851c90d234272c0e"
+  },
+  "manifest_sha256": "6af1ce71fd0e734e5725dbddeaac28cf4d4fe310f38e8c2260a7ec49b1b51618"
+}

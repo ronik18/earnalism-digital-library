@@ -1,12 +1,12 @@
 {
   "slug": "the-selfish-giant",
   "source_url": "https://www.gutenberg.org/ebooks/902",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #902 selected Wilde Selfish Giant narrative, 1910 impression; illustrations excluded",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "041b7a7d28b42f553ae23277588cee366952c83c2b9108c401a3fa4dd90e76b9",
-  "content_hash": "58578923656c4e97b29509721be5a4e4a26e7d9240e464eebb8a0841576fe9f8",
-  "provenance_hash": "d426354bb000f4b72606e782483eb2882f5510e7e12087388d667120d1ba8053",
-  "rights_basis": "Oscar Wilde died 1900; first published 1888. Public domain in India and the U.S.",
+  "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+  "content_hash": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+  "provenance_hash": "1e08883215a0343a9dd6f8c53242fd4af41d62450aa24e424712188e8d79af16",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1900, original publication 1888; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-03T08:04:22.250185+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -15,7 +15,180 @@
   "original_publication_year": 1888,
   "rights_tier": "A",
   "verification_status": "approved",
-  "publication_region": "IN",
-  "verified_at": "2026-07-03T20:07:49Z",
-  "qa_status": "QA_PASSED"
+  "publication_region": "India",
+  "verified_at": "2026-10-01T21:34:27.335291+00:00",
+  "qa_status": "QA_PASSED",
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #902",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/902",
+      "resolved_url": "https://www.gutenberg.org/ebooks/902",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:59.500408+00:00",
+      "response_sha256": "3b85ac0793959e0dfc7b7cb8f5c108b60e769801cfd1b1ca2b6b5e3acfaaac89"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/902.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/902/pg902.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:04.230290+00:00",
+      "response_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Wilde, Oscar, 1854-1900"
+      ],
+      "Title": [
+        "The Happy Prince, and Other Tales"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Happy_Prince_and_Other_Tales"
+      ],
+      "Contents": [
+        "The happy prince -- The nightingale and the rose -- The selfish giant -- The devoted friend -- The remarkable rocket."
+      ],
+      "Credits": [
+        "David Price and Paul Redmond"
+      ],
+      "Reading Level": [
+        "Reading ease score: 88.4 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature",
+        "PZ: Language and Literatures: Juvenile belles lettres"
+      ],
+      "Subject": [
+        "Fairy tales",
+        "Children's stories, English",
+        "Short stories, English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "902"
+      ],
+      "Release Date": [
+        "May 1, 1997"
+      ],
+      "Last Update": [
+        "Oct 25, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "9478 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 32084,
+          "length": 8684
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "041b7a7d28b42f553ae23277588cee366952c83c2b9108c401a3fa4dd90e76b9",
+    "legacy_content_sha256": "58578923656c4e97b29509721be5a4e4a26e7d9240e464eebb8a0841576fe9f8",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "3b85ac0793959e0dfc7b7cb8f5c108b60e769801cfd1b1ca2b6b5e3acfaaac89",
+    "url": "https://www.gutenberg.org/ebooks/902",
+    "author_catalog_strings": [
+      "Wilde, Oscar, 1854-1900"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "3171ffecd2481ba039f1ebc6d4075260f70c30334df012567eed355a1f55aeaf"
+      }
+    ],
+    "content_sha256": "3171ffecd2481ba039f1ebc6d4075260f70c30334df012567eed355a1f55aeaf"
+  },
+  "reader_text_furniture_removal": {
+    "verified_at": "2026-10-01T21:34:27.321920+00:00",
+    "old_chapter_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+    "new_chapter_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+    "transformation": "Remove nonnarrative Picture illustration placeholder labels; no artwork imported"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "041b7a7d28b42f553ae23277588cee366952c83c2b9108c401a3fa4dd90e76b9",
+        "content_hash": "58578923656c4e97b29509721be5a4e4a26e7d9240e464eebb8a0841576fe9f8",
+        "provenance_hash": "d426354bb000f4b72606e782483eb2882f5510e7e12087388d667120d1ba8053",
+        "source_url": "https://www.gutenberg.org/ebooks/902",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:34:27.335291+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "country_of_origin": "United Kingdom",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/902.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/902/pg902.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:04.230290+00:00",
+      "response_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 31789,
+          "length": 8563
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "first_publication_evidence": {
+      "source": "Project Gutenberg #902 exact source title page",
+      "response_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+      "verified_at": "2026-10-01T21:34:27.321920+00:00",
+      "excerpt": "_First Edition_         _May_ 1888",
+      "original_publication_year": 1888,
+      "scope": "Wilde selected Selfish Giant narrative only, 1910 seventh impression; Crane/Hood illustration labels/art excluded"
+    },
+    "author_death_evidence": [
+      "Wilde, Oscar, 1854-1900"
+    ],
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  }
 }

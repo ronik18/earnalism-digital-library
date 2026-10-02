@@ -1,13 +1,221 @@
 {
   "slug": "the-student",
   "source_url": "https://www.gutenberg.org/ebooks/1944",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #1944; exact selected canonical text; all original author/translator/coauthor rights considered separately; historical publication upper bound 1918",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "032a7fa2066e75ee2743f96015af671d54d83c1dcf16aa0e164056ab23b34b27",
-  "content_hash": "5fcd6d4c4bae12a4355d733daa70626c9c4740ba4c8854453a6da5641ff7bf31",
-  "provenance_hash": "50445647f700eb377e6c8f1761347a031cf15bd29da15e2db11ae5a2ea0b2bc2",
-  "rights_basis": "Anton Chekhov died 1904; first published 1894. Public domain in India and the U.S.",
+  "source_hash": "fd7c69daa6080772e42bb26c21330c1dc1c5fb3967f40c23789f51e5c260c82f",
+  "content_hash": "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90",
+  "provenance_hash": "79c7266b8fe7cc1d7a378b394054a464856b4a84ef8c1af45b9edf6c3b43d6bb",
+  "rights_basis": "IN text only. Verified publication no later than 1918; original-author life+60 ends 1964, or conservative posthumous-publication upper bound+60 ends no later than 1978; every selected translator/coauthor latest death 1946, life+60 ends 2006. All bounds have elapsed by actual review2026. Unknown original first date stays unknown; no inference from US-only PG status.",
   "downloaded_at": "2026-06-03T08:04:21.892920+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #1944",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1944",
+      "resolved_url": "https://www.gutenberg.org/ebooks/1944",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:20.518561+00:00",
+      "response_sha256": "dcb649633ea297df53cbe1af79ace2a10bd3e9a7e60d775a38975bbaf733ee7a"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1944.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1944/pg1944.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:25.612114+00:00",
+      "response_sha256": "fd7c69daa6080772e42bb26c21330c1dc1c5fb3967f40c23789f51e5c260c82f"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Chekhov, Anton Pavlovich, 1860-1904"
+      ],
+      "Title": [
+        "The Witch, and Other Stories"
+      ],
+      "Contents": [
+        "The witch -- Peasant wives -- The post -- The new villa -- Dreams -- The pipe -- Agafya -- At Christmas time -- Gusev -- The student -- In the ravine -- The huntsman -- Happiness -- A Malefactor -- Peasants"
+      ],
+      "Credits": [
+        "Produced by James Rusk and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 80.1 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PG: Language and Literatures: Slavic (including Russian), Languages and Literature"
+      ],
+      "Subject": [
+        "Short stories",
+        "Russia -- Social life and customs -- Fiction",
+        "Chekhov, Anton Pavlovich, 1860-1904 -- Translations into English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "1944"
+      ],
+      "Release Date": [
+        "Feb 26, 2006"
+      ],
+      "Last Update": [
+        "Jan 27, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1533 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 197914,
+          "length": 8301
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "032a7fa2066e75ee2743f96015af671d54d83c1dcf16aa0e164056ab23b34b27",
+    "legacy_content_sha256": "5fcd6d4c4bae12a4355d733daa70626c9c4740ba4c8854453a6da5641ff7bf31",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1904,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "dcb649633ea297df53cbe1af79ace2a10bd3e9a7e60d775a38975bbaf733ee7a",
+    "url": "https://www.gutenberg.org/ebooks/1944",
+    "author_catalog_strings": [
+      "Chekhov, Anton Pavlovich, 1860-1904"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90"
+      }
+    ],
+    "content_sha256": "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "032a7fa2066e75ee2743f96015af671d54d83c1dcf16aa0e164056ab23b34b27",
+        "content_hash": "5fcd6d4c4bae12a4355d733daa70626c9c4740ba4c8854453a6da5641ff7bf31",
+        "provenance_hash": "50445647f700eb377e6c8f1761347a031cf15bd29da15e2db11ae5a2ea0b2bc2",
+        "source_url": "https://www.gutenberg.org/ebooks/1944",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:54:02.732252+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1918,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:54:02.732252+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1944.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1944/pg1944.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:25.612114+00:00",
+      "response_sha256": "fd7c69daa6080772e42bb26c21330c1dc1c5fb3967f40c23789f51e5c260c82f"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 197914,
+          "length": 8301
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "original_author_death_year": 1904,
+      "latest_selected_creator_death_year": 1946,
+      "verified_text_publication_upper_bound": 1918,
+      "original_first_publication_year": null,
+      "exact_creator_metadata": [
+        "Chekhov, Anton Pavlovich, 1860-1904",
+        "Garnett, Constance, 1861-1946"
+      ],
+      "translators": [
+        "Garnett, Constance, 1861-1946"
+      ],
+      "primary_bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Chekhov%2C%20Anton%20Pavlovich%2C%201860-1904",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Chekhov%2C%20Anton%20Pavlovich%2C%201860-1904",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:44:33.709102+00:00",
+        "response_sha256": "6e98302dc54a3049de644c78c6f0a397f1c3e2c1aaf28ce11b3f68aa3b22bd66"
+      },
+      "bibliographic_excerpt": "witch and other stories (Chatto & Windus, 1918) (page images at HathiTrust) Chekhov, Anton Pavlovich, 1860-1904: The witch, and other stories (The Macmillan company, 1918) (page images at HathiTrust) Chekhov, Anton Pavlovich, 1860-1904: The wood demon; a comedy in four ",
+      "legal_policy_receipt": {
+        "requested_url": "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+        "resolved_url": "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:51:37.140288+00:00",
+        "response_sha256": "87edb85c6014f6a6415051b982461a708dd901d65b6a6047fc5f5b8080960fe3"
+      },
+      "basis": "IN text only. Verified publication no later than 1918; original-author life+60 ends 1964, or conservative posthumous-publication upper bound+60 ends no later than 1978; every selected translator/coauthor latest death 1946, life+60 ends 2006. All bounds have elapsed by actual review2026. Unknown original first date stays unknown; no inference from US-only PG status.",
+      "scope": "Selected story/complete narrative including documented creators; collection translators note, other stories, art, editor matter not imported."
+    },
+    "author_death_evidence": 1904,
+    "translator": [
+      "Garnett, Constance, 1861-1946"
+    ],
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1918,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "fd7c69daa6080772e42bb26c21330c1dc1c5fb3967f40c23789f51e5c260c82f",
+    "content_sha256": "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90",
+    "year": 1918,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Chekhov%2C%20Anton%20Pavlovich%2C%201860-1904",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Chekhov%2C%20Anton%20Pavlovich%2C%201860-1904",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:33.709102+00:00",
+      "response_sha256": "6e98302dc54a3049de644c78c6f0a397f1c3e2c1aaf28ce11b3f68aa3b22bd66"
+    },
+    "basis": "IN text only. Verified publication no later than 1918; original-author life+60 ends 1964, or conservative posthumous-publication upper bound+60 ends no later than 1978; every selected translator/coauthor latest death 1946, life+60 ends 2006. All bounds have elapsed by actual review2026. Unknown original first date stays unknown; no inference from US-only PG status.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  },
+  "translator_name": "Garnett, Constance, 1861-1946",
+  "translator_death_year": 1946
 }

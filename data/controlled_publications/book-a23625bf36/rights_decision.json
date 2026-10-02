@@ -1,0 +1,36 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-book-a23625bf36-1894-cc-by-sa-text-reader",
+  "edition_id": "book-a23625bf36",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "117a3c88b4cccd1ab653bb13ee7001a9c5e5ce4d25acd943c6314149c4155cf5",
+    "reader_manifest": "c8721fbbf1a41a8829dd966495a19f55da04d791764c76764bf23f3d4c12922f",
+    "source_evidence": "67da23e545734240a2883972e9d9884ee48402e35957305c43dc81788979ab09",
+    "approval_evidence": "b23c2d2d7bae41ed8e21234bb1e148a777af4a4803f72ca1ef23863d8171a49b",
+    "checksum_manifest": "81074f9ca09e786e2d1468a7e2f1bd7302398cf9c22d142b33ebc43ced49a58e",
+    "publication_manifest": "d4ff57496fc8569be9a8d22e159ea5249d7bddf73da72918228db8acb62a8402"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-02T03:10:37.024181+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Exact Katha-Chatushtay original1301/1894 sole-author Rabindranath Tagore edition; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1941; India Section22 literary term expired end2001. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
+  "evidence_sha256": [
+    "4dd7dc9b147b535ddc643a42b5ca22d7b146ad073be0880f28c3aebec1a3f7e4",
+    "bdc43ed13661b536039f9686065b963e0fa5e8def446a1ec11957b121e3c3668",
+    "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "80a43ff341a40f6be6d29f47ed616c034cba32b2f11aa7c32d6f55a98009037c",
+    "6d17565256bd6857d3e6fa914ec73d3d916fa30b8da3899df1fd04c09b21392b"
+  ],
+  "accepted_by": "Automated executor under explicit product-owner autonomous evidence-backed text-clearance delegation; not a human legal reviewer or signature.",
+  "conditions_satisfied": true
+}

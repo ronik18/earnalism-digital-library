@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-ministers-black-veil",
+  "title": "The Minister's Black Veil",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "256624faf1f612edc47dd0a0ecc9717bd15074baea33e8a9f32bc66f3f04b50b",
+    "content_hash": "087dcd5245d6cd1625aee1d1b02dc3e8e6fef94602439d1cc3ef8d42df48f346",
+    "provenance_hash": "f0af064f093974dc587e597d2a5afdcef69beb600f5c605728c76341d0556dc0",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "c4ff6939b95aab8ba61ad9aa9f88086fce0f5141271733516a13b97f9aef97a4",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Minister's Black Veil",
+        "word_count": 5193,
+        "sha256": "1125739cfce0ac48e42a21de204a7973c7a16ea37dca4cdc832d094a65c5d390"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "eefb8cfcf6250d4ca1cfc520f9bdf71ffb69928cc48151f1a92565afa260b4c7"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "e89616cef4b147399870c56de46b53b60ec431a902347ef123ec25cde50578fb",
+    "reader_manifest": "18837b2475de3590609b6d47a9f4df411db0f0a5cd8042d7cec85878693f11e0",
+    "source_evidence": "eefb8cfcf6250d4ca1cfc520f9bdf71ffb69928cc48151f1a92565afa260b4c7",
+    "approval_evidence": "f0561952f7797ba13005f6961d26fadae769e4576c224a54dcf983af85593e41"
+  },
+  "manifest_sha256": "f66be5fa063c7566ee5f3dfc3cbdba3bc3ce0c9de1ddc30138c437e07b059c51"
+}

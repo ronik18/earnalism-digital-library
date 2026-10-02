@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-solitary-cyclist",
+  "title": "The Adventure of the Solitary Cyclist",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
+    "content_hash": "556ddb617ff449dcfbfa93db5b7a6f52097953c6191a68e5de222c43bd37d2de",
+    "provenance_hash": "f4f2423473ef7542b069215fc1facc7385bb1ee81c76ce41f66aed6016ebd93a",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "9fec8804f8981b18ee690f45870057e897546957c6feee0928a8180973a93ac7",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Solitary Cyclist",
+        "word_count": 7904,
+        "sha256": "c9c191055227e38401d2af0d490c44862797d649ab3fa368a0919742fba376fb"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "3da2cca157d6240bf0cf62c7b6eff35a467e32fe808e931069388e49391c430f"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "a821637407efad9b51f91573cbefa3627ec96fa4674717e326a695a2849d450d",
+    "reader_manifest": "fd8cca180adc687f3df79a82f91fa445330c88e6f114f4f8b359bafe864f88aa",
+    "source_evidence": "3da2cca157d6240bf0cf62c7b6eff35a467e32fe808e931069388e49391c430f",
+    "approval_evidence": "8d13108b4c4dda28b78239a873ff25186b4eb51f87ec2c467297cdccd1dda272"
+  },
+  "manifest_sha256": "2204a30e8714a273b8fff962549d852d4d58baf4e3fedb14c0a750dffd34bfff"
+}

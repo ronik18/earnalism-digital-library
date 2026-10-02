@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-second-stain",
+  "title": "The Adventure of the Second Stain",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
+    "content_hash": "0ee60bab476492b1a0925dbb6d857db42d4cb9c89647f9440ad14819f212bb88",
+    "provenance_hash": "dca6cf7fba58ed4c45c4411d767bd10f1ee4afdb39a3a8ad76c78ca023f333e1",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "17065a15cce54ec967143d039865cf43694da18c8cf6fcc8eaa31193fd062cad",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Second Stain",
+        "word_count": 9738,
+        "sha256": "0368a6a2ff680cc06cadd9183fa1fbe29d1481f3e788399ca752e9da4151899a"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "11c1b2af9299faf8f16652d4c0faec6029d70cd3446779012f9dfc4714db28b6"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "ab6b183bc20ce64a8fc996e28693e9a40f82a7a3229e058d9cfb2bb02302caee",
+    "reader_manifest": "970818cfdaf247e9e4811e4886d75656464b52954e7358282fbc99eba848a9cb",
+    "source_evidence": "11c1b2af9299faf8f16652d4c0faec6029d70cd3446779012f9dfc4714db28b6",
+    "approval_evidence": "b3c9c7a15ca30c6d848bf5bd0beae2c04b2ef82b1455831a6b67d9d33831f969"
+  },
+  "manifest_sha256": "f4ce7faec1981293fac8378f4f6033fee1d818b0bda929571e0a11c483af0550"
+}

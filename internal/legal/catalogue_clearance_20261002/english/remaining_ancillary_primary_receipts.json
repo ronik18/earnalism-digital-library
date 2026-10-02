@@ -1,0 +1,29 @@
+{
+  "acres_alt_meta": {
+    "receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/34258",
+      "resolved_url": "https://www.gutenberg.org/ebooks/34258",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:54:22.475692+00:00",
+      "response_sha256": "4758ed12a9b9ff8909cfafbe57cd4db0b902891cad6b24b091f5140a020948f2"
+    }
+  },
+  "acres_alt_text": {
+    "receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/34258.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/34258/pg34258.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:54:26.442471+00:00",
+      "response_sha256": "7a7a7deed1425188611e5b42e7f65542d2c1ea4f3700ffdaadf24710f92c3e29"
+    }
+  },
+  "thomson": {
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Thomson%2C%20James%2C%201700-1748",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Thomson%2C%20James%2C%201700-1748",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:54:28.992155+00:00",
+      "response_sha256": "ee6a3c90ef3dea39de0b03205ed7979782d0d009bde8fdb1cbcf1fac092b19e6"
+    }
+  }
+}

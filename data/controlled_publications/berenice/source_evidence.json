@@ -1,13 +1,208 @@
 {
   "slug": "berenice",
   "source_url": "https://www.gutenberg.org/ebooks/2148",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #2148; selected Poe original story; historical lifetime publication 1835; no modern scholarly/editorial text imported",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "de65134685ef354f51cfd071587face0fbd7296e09bc5dc9a693179f0b0ab253",
-  "content_hash": "a63a4c21c87b7ee5a1bff8c6e100feefdf9dafd2fe39203b1df4173dcd8f5dc7",
-  "provenance_hash": "f4d2fe8067652c02eecde243c12e29f771e8c6d033c1b7d4f5ec879cf6a628d7",
-  "rights_basis": "Edgar Allan Poe died 1849; first published 1835. Public domain in India and the U.S.",
+  "source_hash": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e",
+  "content_hash": "cc8ce45fafe29474e2f5384ed604c86312654a7e731cf73a6b57eede6e298643",
+  "provenance_hash": "b61876575bc649e0399ccd6971850b7cb41b9d5aa65bd2637411231f3c542744",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1849, verified lifetime collection publication 1835 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-03T08:04:22.090377+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #2148",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2148",
+      "resolved_url": "https://www.gutenberg.org/ebooks/2148",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:26.514581+00:00",
+      "response_sha256": "773b3d37cc212e89aa9dfdf2389fcb679789752503a37ffd22803154d8667455"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2148.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2148/pg2148.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:31.865916+00:00",
+      "response_sha256": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Poe, Edgar Allan, 1809-1849"
+      ],
+      "Title": [
+        "The Works of Edgar Allan Poe — Volume 2"
+      ],
+      "Contents": [
+        "The purloined letter -- The thousand-and-second tale of Scheherezade -- A descent into the Maelström -- Von Kempelen and his discovery -- Mesmeric revelation -- The facts in the case of M. Valdemar -- The black cat -- The fall of the House of Usher -- Silence: a fable -- The masque of the Red Death -- The cask of Amontillado -- The imp of the perverse -- The island of the Fay -- The assignation -- The pit and the pendulum -- The premature burial -- The domain of Arnheim -- Landor's cottage -- William Wilson -- The tell-tale heart -- Berenice -- Eleonora."
+      ],
+      "Credits": [
+        "David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 65.0 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Short stories",
+        "Fantasy fiction",
+        "Horror tales, American",
+        "American fiction -- 19th century"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "2148"
+      ],
+      "Release Date": [
+        "Apr 1, 2000"
+      ],
+      "Last Update": [
+        "Aug 31, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "30902 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 502896,
+          "length": 18442
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "de65134685ef354f51cfd071587face0fbd7296e09bc5dc9a693179f0b0ab253",
+    "legacy_content_sha256": "a63a4c21c87b7ee5a1bff8c6e100feefdf9dafd2fe39203b1df4173dcd8f5dc7",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1849,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "773b3d37cc212e89aa9dfdf2389fcb679789752503a37ffd22803154d8667455",
+    "url": "https://www.gutenberg.org/ebooks/2148",
+    "author_catalog_strings": [
+      "Poe, Edgar Allan, 1809-1849"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "cc8ce45fafe29474e2f5384ed604c86312654a7e731cf73a6b57eede6e298643"
+      }
+    ],
+    "content_sha256": "cc8ce45fafe29474e2f5384ed604c86312654a7e731cf73a6b57eede6e298643"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "de65134685ef354f51cfd071587face0fbd7296e09bc5dc9a693179f0b0ab253",
+        "content_hash": "a63a4c21c87b7ee5a1bff8c6e100feefdf9dafd2fe39203b1df4173dcd8f5dc7",
+        "provenance_hash": "f4d2fe8067652c02eecde243c12e29f771e8c6d033c1b7d4f5ec879cf6a628d7"
+      },
+      "superseded_at": "2026-10-01T21:39:46.223432+00:00",
+      "reason": "Exact same-Gutenberg-ID raw source receipt + restored original selected narrative replaces text differing historical import; no approval transferred"
+    }
+  ],
+  "same_edition_text_reconciliation": {
+    "verified_at": "2026-10-01T21:39:46.223432+00:00",
+    "old_chapter_sha256": "11b6a27d5d8a8483d4ce830486db7be6a1d60b04ff641a32d7fbe3e7506cb4b5",
+    "new_chapter_sha256": "cc8ce45fafe29474e2f5384ed604c86312654a7e731cf73a6b57eede6e298643",
+    "source_boundary_start": "^BERENICE\\s*$",
+    "source_boundary_end_excluded": "^ELEONORA\\s*$",
+    "scope": "Narrative identity repaired from verified official source; independent text-rights/publication acceptance not generated"
+  },
+  "selected_edition_publication_year": 1835,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:52:27.631967+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2148.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2148/pg2148.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:31.865916+00:00",
+      "response_sha256": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 502896,
+          "length": 18442
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Edgar Allan Poe",
+      "creator_death_year": 1849,
+      "lifetime_publication_year": 1835,
+      "primary_historical_bibliography_receipt": {
+        "requested_url": "https://www.eapoe.org/works/info/pt011.htm",
+        "resolved_url": "https://www.eapoe.org/works/info/pt011.htm",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:50:20.000678+00:00",
+        "response_sha256": "a39fc1ed6c785544996ca1366ecbedbdc09c77f994f4f39e3b73e02f9da2bcb3"
+      },
+      "historical_publication_excerpt": "Text-02b — “ Berenice — A Tale ” — March 1835 — Southern Literary Messenger — (Mabbott text A) ( The Poe Log , p. 149 , states that the March issue was available about April 17, 1835.) Text-03 — “Berenice — A Tale” Text-03a — “ Berenice — A",
+      "basis": "Historical printed-story publication verified before Poe death1849; selected RavenEdition text independently matches literal PG source; modern scholarly apparatus not imported."
+    },
+    "author_death_evidence": 1849,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1835,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e",
+    "content_sha256": "cc8ce45fafe29474e2f5384ed604c86312654a7e731cf73a6b57eede6e298643",
+    "year": 1835,
+    "receipt": {
+      "requested_url": "https://www.eapoe.org/works/info/pt011.htm",
+      "resolved_url": "https://www.eapoe.org/works/info/pt011.htm",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:20.000678+00:00",
+      "response_sha256": "a39fc1ed6c785544996ca1366ecbedbdc09c77f994f4f39e3b73e02f9da2bcb3"
+    },
+    "basis": "Historical printed-story publication verified before Poe death1849; selected RavenEdition text independently matches literal PG source; modern scholarly apparatus not imported.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  }
 }

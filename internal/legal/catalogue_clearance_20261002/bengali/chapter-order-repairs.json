@@ -1,0 +1,683 @@
+{
+  "performed_at": "2026-10-01T21:16:11.479435+00:00",
+  "repairs": [
+    {
+      "slug": "bn-059",
+      "before_order": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "title": "Chapter 1. অষ্টম সংখ্যা"
+        },
+        {
+          "id": "chapter-002",
+          "order": 2,
+          "title": "Chapter 2. একাদশ সংখ্যা"
+        },
+        {
+          "id": "chapter-003",
+          "order": 3,
+          "title": "Chapter 3. চতুর্থ সংখ্যা"
+        },
+        {
+          "id": "chapter-004",
+          "order": 4,
+          "title": "Chapter 4. তৃতীয় সংখ্যা"
+        },
+        {
+          "id": "chapter-005",
+          "order": 5,
+          "title": "Chapter 5. ত্রয়োদশ সংখ্যা"
+        },
+        {
+          "id": "chapter-006",
+          "order": 6,
+          "title": "Chapter 6. দশম সংখ্যা"
+        },
+        {
+          "id": "chapter-007",
+          "order": 7,
+          "title": "Chapter 7. দ্বাদশ সংখ্যা"
+        },
+        {
+          "id": "chapter-008",
+          "order": 8,
+          "title": "Chapter 8. দ্বিতীয় সংখ্যা"
+        },
+        {
+          "id": "chapter-009",
+          "order": 9,
+          "title": "Chapter 9. নবম সংখ্যা"
+        },
+        {
+          "id": "chapter-010",
+          "order": 10,
+          "title": "Chapter 10. পঞ্চম সংখ্যা"
+        },
+        {
+          "id": "chapter-011",
+          "order": 11,
+          "title": "Chapter 11. প্রথম সংখ্যা"
+        },
+        {
+          "id": "chapter-012",
+          "order": 12,
+          "title": "Chapter 12. ষষ্ঠ সংখ্যা"
+        },
+        {
+          "id": "chapter-013",
+          "order": 13,
+          "title": "Chapter 13. সপ্তম সংখ্যা"
+        }
+      ],
+      "after_order": [
+        {
+          "id": "chapter-011",
+          "order": 1,
+          "title": "প্রথম সংখ্যা",
+          "content_sha256": "8e1f623d971a6e168dc04bc974e92421ae6809dc828603c5d0551eee02ac7679"
+        },
+        {
+          "id": "chapter-008",
+          "order": 2,
+          "title": "দ্বিতীয় সংখ্যা",
+          "content_sha256": "9c93c48f56cf7d71705b4219411debbf857a1c59e9801053bdf7bef9d1fd448a"
+        },
+        {
+          "id": "chapter-004",
+          "order": 3,
+          "title": "তৃতীয় সংখ্যা",
+          "content_sha256": "a04bcbdcfc139596f2aad724fd8144b9783d67c2a2a12fe1abb9f6dbe5d3803a"
+        },
+        {
+          "id": "chapter-003",
+          "order": 4,
+          "title": "চতুর্থ সংখ্যা",
+          "content_sha256": "ab301887f452374e5e8eb43d49d7ad22a1b6c0015367ad98f9c12af312b3835f"
+        },
+        {
+          "id": "chapter-010",
+          "order": 5,
+          "title": "পঞ্চম সংখ্যা",
+          "content_sha256": "96a3bb93ea6e4484de991958928c7a7fd7e77d59c092fff88f6c2e732c87cc6a"
+        },
+        {
+          "id": "chapter-012",
+          "order": 6,
+          "title": "ষষ্ঠ সংখ্যা",
+          "content_sha256": "1102a72be55bdf8e51e7fdc5baca274c179aaa770bb43ae15a65a850e5f10605"
+        },
+        {
+          "id": "chapter-013",
+          "order": 7,
+          "title": "সপ্তম সংখ্যা",
+          "content_sha256": "1887bc299d841297deacd3d89c8b75a53d3c60f3a9d747a6c49f90a6e337f344"
+        },
+        {
+          "id": "chapter-001",
+          "order": 8,
+          "title": "অষ্টম সংখ্যা",
+          "content_sha256": "e04f746c0690e5124ca07c222dff6e0e7597eaaebe2dabea845a3a4c5efe97e9"
+        },
+        {
+          "id": "chapter-009",
+          "order": 9,
+          "title": "নবম সংখ্যা",
+          "content_sha256": "cf5cae83724948224b0305738e8a6476d4593311dbecf125b10727ca09eb725d"
+        },
+        {
+          "id": "chapter-006",
+          "order": 10,
+          "title": "দশম সংখ্যা",
+          "content_sha256": "46ed8cde89d44354166d39f82ab5c010ee91a803f9381415b1a9ce5713a6a1b5"
+        },
+        {
+          "id": "chapter-002",
+          "order": 11,
+          "title": "একাদশ সংখ্যা",
+          "content_sha256": "547858c3556ac9ac2f96fb4e070cdc641c712739d0b9b6a722c9f75e211ca28e"
+        },
+        {
+          "id": "chapter-007",
+          "order": 12,
+          "title": "দ্বাদশ সংখ্যা",
+          "content_sha256": "d92deb3e4f49539aada28dc548adda51fb89abff578433b3e12541421f85a804"
+        },
+        {
+          "id": "chapter-005",
+          "order": 13,
+          "title": "ত্রয়োদশ সংখ্যা",
+          "content_sha256": "a661e637ee68f25cebca25ec99abe9d613d7ade07286b9e6415d48d6b7aaf2fd"
+        }
+      ],
+      "basis": "Literal verifiedsourcechapterordinals andpartlabels; importedlexicographicorder wasincorrect",
+      "chapter_ids_preserved": true,
+      "all_literary_content_bytes_unchanged": true,
+      "preview_chapter_count_preserved": 13,
+      "preview_binding": "Samepreviewchaptercount rebound toactualfirstorderedchapters; textreleaseheld",
+      "audio_artifacts_changed": false,
+      "source_evidence": "data/title_rights_evidence/bengali-bankim-cohort-1.json"
+    },
+    {
+      "slug": "bn-066",
+      "before_order": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "title": "Chapter 1. উপক্রমণিকা"
+        },
+        {
+          "id": "chapter-002",
+          "order": 2,
+          "title": "Chapter 2. দ্বিতীয় খণ্ড / প্রথম পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-003",
+          "order": 3,
+          "title": "Chapter 3. দ্বিতীয় খণ্ড / দ্বিতীয় পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-004",
+          "order": 4,
+          "title": "Chapter 4. দ্বিতীয় খণ্ড / তৃতীয় পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-005",
+          "order": 5,
+          "title": "Chapter 5. দ্বিতীয় খণ্ড / চতুর্থ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-006",
+          "order": 6,
+          "title": "Chapter 6. দ্বিতীয় খণ্ড / পঞ্চম পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-007",
+          "order": 7,
+          "title": "Chapter 7. দ্বিতীয় খণ্ড / ষষ্ঠ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-008",
+          "order": 8,
+          "title": "Chapter 8. দ্বিতীয় খণ্ড / সপ্তম পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-009",
+          "order": 9,
+          "title": "Chapter 9. দ্বিতীয় খণ্ড / অষ্টম পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-010",
+          "order": 10,
+          "title": "Chapter 10. দ্বিতীয় খণ্ড / নবম পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-011",
+          "order": 11,
+          "title": "Chapter 11. দ্বিতীয় খণ্ড / দশম পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-012",
+          "order": 12,
+          "title": "Chapter 12. দ্বিতীয় খণ্ড / একাদশ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-013",
+          "order": 13,
+          "title": "Chapter 13. দ্বিতীয় খণ্ড / দ্বাদশ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-014",
+          "order": 14,
+          "title": "Chapter 14. দ্বিতীয় খণ্ড / ত্রয়োদশ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-015",
+          "order": 15,
+          "title": "Chapter 15. দ্বিতীয় খণ্ড / চতুর্দ্দশ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-016",
+          "order": 16,
+          "title": "Chapter 16. দ্বিতীয় খণ্ড / পঞ্চদশ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-017",
+          "order": 17,
+          "title": "Chapter 17. দ্বিতীয় খণ্ড / ষোড়শ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-018",
+          "order": 18,
+          "title": "Chapter 18. দ্বিতীয় খণ্ড / সপ্তদশ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-019",
+          "order": 19,
+          "title": "Chapter 19. দ্বিতীয় খণ্ড / অষ্টাদশ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-020",
+          "order": 20,
+          "title": "Chapter 20. দ্বিতীয় খণ্ড / ঊনবিংশ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-021",
+          "order": 21,
+          "title": "Chapter 21. দ্বিতীয় খণ্ড / বিংশ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-022",
+          "order": 22,
+          "title": "Chapter 22. প্রথম খণ্ড / প্রথম পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-023",
+          "order": 23,
+          "title": "Chapter 23. প্রথম খণ্ড / দ্বিতীয় পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-024",
+          "order": 24,
+          "title": "Chapter 24. প্রথম খণ্ড / তৃতীয় পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-025",
+          "order": 25,
+          "title": "Chapter 25. প্রথম খণ্ড / চতুর্থ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-026",
+          "order": 26,
+          "title": "Chapter 26. প্রথম খণ্ড / পঞ্চম পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-027",
+          "order": 27,
+          "title": "Chapter 27. প্রথম খণ্ড / ষষ্ঠ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-028",
+          "order": 28,
+          "title": "Chapter 28. প্রথম খণ্ড / সপ্তম পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-029",
+          "order": 29,
+          "title": "Chapter 29. প্রথম খণ্ড / অষ্টম পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-030",
+          "order": 30,
+          "title": "Chapter 30. প্রথম খণ্ড / নবম পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-031",
+          "order": 31,
+          "title": "Chapter 31. প্রথম খণ্ড / দশম পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-032",
+          "order": 32,
+          "title": "Chapter 32. প্রথম খণ্ড / একাদশ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-033",
+          "order": 33,
+          "title": "Chapter 33. প্রথম খণ্ড / দ্বাদশ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-034",
+          "order": 34,
+          "title": "Chapter 34. প্রথম খণ্ড / ত্রয়োদশ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-035",
+          "order": 35,
+          "title": "Chapter 35. প্রথম খণ্ড / চতুর্দ্দশ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-036",
+          "order": 36,
+          "title": "Chapter 36. প্রথম খণ্ড / পঞ্চদশ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-037",
+          "order": 37,
+          "title": "Chapter 37. প্রথম খণ্ড / ষোড়শ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-038",
+          "order": 38,
+          "title": "Chapter 38. প্রথম খণ্ড / সপ্তদশ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-039",
+          "order": 39,
+          "title": "Chapter 39. প্রথম খণ্ড / অষ্টাদশ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-040",
+          "order": 40,
+          "title": "Chapter 40. প্রথম খণ্ড / ঊনবিংশ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-041",
+          "order": 41,
+          "title": "Chapter 41. প্রথম খণ্ড / বিংশ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-042",
+          "order": 42,
+          "title": "Chapter 42. প্রথম খণ্ড / একবিংশ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-043",
+          "order": 43,
+          "title": "Chapter 43. প্রথম খণ্ড / চতুর্ব্বিংশ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-044",
+          "order": 44,
+          "title": "Chapter 44. প্রথম খণ্ড / ত্রয়োবিংশ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-045",
+          "order": 45,
+          "title": "Chapter 45. প্রথম খণ্ড / দ্বাবিংশ পরিচ্ছেদ"
+        },
+        {
+          "id": "chapter-046",
+          "order": 46,
+          "title": "Chapter 46. প্রথম খণ্ড / পঞ্চবিংশ পরিচ্ছেদ"
+        }
+      ],
+      "after_order": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "title": "উপক্রমণিকা",
+          "content_sha256": "fa7fb76b0d4de6f25f3dba8d9a4348088c1464716b07611df1f6f0c94dd29891"
+        },
+        {
+          "id": "chapter-022",
+          "order": 2,
+          "title": "প্রথম খণ্ড / প্রথম পরিচ্ছেদ",
+          "content_sha256": "6d0b81a45059577172020a562899165b266fc07342e28d446436904545bf252f"
+        },
+        {
+          "id": "chapter-023",
+          "order": 3,
+          "title": "প্রথম খণ্ড / দ্বিতীয় পরিচ্ছেদ",
+          "content_sha256": "37bdb3a9cfbea4ec31af7ad61cb7e9c5ba03c19c94f4fe7854fe2bc56da8da08"
+        },
+        {
+          "id": "chapter-024",
+          "order": 4,
+          "title": "প্রথম খণ্ড / তৃতীয় পরিচ্ছেদ",
+          "content_sha256": "0c082c65fd9fefaded819cca7272c978ca01a9dfd70d85813b8140a8551ad8e2"
+        },
+        {
+          "id": "chapter-025",
+          "order": 5,
+          "title": "প্রথম খণ্ড / চতুর্থ পরিচ্ছেদ",
+          "content_sha256": "6f5e858e97fd520bdf0830505785c24d310d4a7e041799a63c37b133ad0515c3"
+        },
+        {
+          "id": "chapter-026",
+          "order": 6,
+          "title": "প্রথম খণ্ড / পঞ্চম পরিচ্ছেদ",
+          "content_sha256": "6be12309eaffa6a37d864bafdc64aec6c31d1c0b10710fc4b45b566761bdc58e"
+        },
+        {
+          "id": "chapter-027",
+          "order": 7,
+          "title": "প্রথম খণ্ড / ষষ্ঠ পরিচ্ছেদ",
+          "content_sha256": "0f1d37432b7ed9c0739f69dc536ab424e09209753574b5a05b6a2fbb1bc674d8"
+        },
+        {
+          "id": "chapter-028",
+          "order": 8,
+          "title": "প্রথম খণ্ড / সপ্তম পরিচ্ছেদ",
+          "content_sha256": "431236030885471356995c0bfef90f94b429ba1aaa857ba9ff13707f39aea42d"
+        },
+        {
+          "id": "chapter-029",
+          "order": 9,
+          "title": "প্রথম খণ্ড / অষ্টম পরিচ্ছেদ",
+          "content_sha256": "a96c1bffa78f8b77d8816d8a85352098cf468593064e93424fb58251a57d9af9"
+        },
+        {
+          "id": "chapter-030",
+          "order": 10,
+          "title": "প্রথম খণ্ড / নবম পরিচ্ছেদ",
+          "content_sha256": "8ff726177c9343a4b75c529c2a585e11d0825ea1fe5b7d533e59009f2e6af1c7"
+        },
+        {
+          "id": "chapter-031",
+          "order": 11,
+          "title": "প্রথম খণ্ড / দশম পরিচ্ছেদ",
+          "content_sha256": "61c79ee94e587b9e2d4b1bc1cf1d97f490f0ee9e6d410c697c725554ecad41dc"
+        },
+        {
+          "id": "chapter-032",
+          "order": 12,
+          "title": "প্রথম খণ্ড / একাদশ পরিচ্ছেদ",
+          "content_sha256": "254af39249b1037212e08f39ae1f1e9902f0f0ad5aa4d3498e85844e1a37b5d3"
+        },
+        {
+          "id": "chapter-033",
+          "order": 13,
+          "title": "প্রথম খণ্ড / দ্বাদশ পরিচ্ছেদ",
+          "content_sha256": "289e04861891f41e422600b12eead3e54706d16483b312ca6c5e1dbf497ef613"
+        },
+        {
+          "id": "chapter-034",
+          "order": 14,
+          "title": "প্রথম খণ্ড / ত্রয়োদশ পরিচ্ছেদ",
+          "content_sha256": "d8647211d9bf64e9c8677f98ebefff8b0552ebfb770069af64a6329d854fbce3"
+        },
+        {
+          "id": "chapter-035",
+          "order": 15,
+          "title": "প্রথম খণ্ড / চতুর্দ্দশ পরিচ্ছেদ",
+          "content_sha256": "80ed5a612bf52d19060ef2ea5f2392071aa77a9e1c176fa173d6359bf762516c"
+        },
+        {
+          "id": "chapter-036",
+          "order": 16,
+          "title": "প্রথম খণ্ড / পঞ্চদশ পরিচ্ছেদ",
+          "content_sha256": "7422561644d5b14c09d72f2b9716189e7cef39936dcf0bfbc2aa52ddc8c87595"
+        },
+        {
+          "id": "chapter-037",
+          "order": 17,
+          "title": "প্রথম খণ্ড / ষোড়শ পরিচ্ছেদ",
+          "content_sha256": "3cd832e1f061782bd9f3c919a0434f78aef26886d502091bd48234dc5600c29c"
+        },
+        {
+          "id": "chapter-038",
+          "order": 18,
+          "title": "প্রথম খণ্ড / সপ্তদশ পরিচ্ছেদ",
+          "content_sha256": "47f08e6d0530302d7730c131189a974caa674519e59bbce799cd7f84566e5cec"
+        },
+        {
+          "id": "chapter-039",
+          "order": 19,
+          "title": "প্রথম খণ্ড / অষ্টাদশ পরিচ্ছেদ",
+          "content_sha256": "dbbf7cf142a952c57fa31207a46c6553e7e0a8062a5c98e56c45b447835481f6"
+        },
+        {
+          "id": "chapter-040",
+          "order": 20,
+          "title": "প্রথম খণ্ড / ঊনবিংশ পরিচ্ছেদ",
+          "content_sha256": "ac5293a129dbc04a9b383b75c17a32096d2a9e5dcef4bf75d174098a32257f78"
+        },
+        {
+          "id": "chapter-041",
+          "order": 21,
+          "title": "প্রথম খণ্ড / বিংশ পরিচ্ছেদ",
+          "content_sha256": "4b31dad1cff994faf38a56bb250855ca4574fb99aa14c8602485737bf99a7f6f"
+        },
+        {
+          "id": "chapter-042",
+          "order": 22,
+          "title": "প্রথম খণ্ড / একবিংশ পরিচ্ছেদ",
+          "content_sha256": "f5e78828a7e652b0a96f8aaccff0ee1c72d4d1656a2cc0f2adc65312c6bb4cb9"
+        },
+        {
+          "id": "chapter-045",
+          "order": 23,
+          "title": "প্রথম খণ্ড / দ্বাবিংশ পরিচ্ছেদ",
+          "content_sha256": "74b6009ec077626cdab7b0f377067bd69abc975488124ca855a6154d624111b8"
+        },
+        {
+          "id": "chapter-044",
+          "order": 24,
+          "title": "প্রথম খণ্ড / ত্রয়োবিংশ পরিচ্ছেদ",
+          "content_sha256": "a49350d0f2d05d57c322e303ef81553a0909ee797051b9b2a52a83a73777b369"
+        },
+        {
+          "id": "chapter-043",
+          "order": 25,
+          "title": "প্রথম খণ্ড / চতুর্ব্বিংশ পরিচ্ছেদ",
+          "content_sha256": "da1f29dbb0cdda472d8f136f75888981d46ee63958d71b62bf7a76fbe2186ef8"
+        },
+        {
+          "id": "chapter-046",
+          "order": 26,
+          "title": "প্রথম খণ্ড / পঞ্চবিংশ পরিচ্ছেদ",
+          "content_sha256": "ae63680b84b25f2c40ea1242a422c80605d5005eea86cd1cf0d30a3f51126c6d"
+        },
+        {
+          "id": "chapter-002",
+          "order": 27,
+          "title": "দ্বিতীয় খণ্ড / প্রথম পরিচ্ছেদ",
+          "content_sha256": "62a7bd2b2fbeab622a89c3c77d3452b72da505cc4600f68b0f59cef0585cfbdf"
+        },
+        {
+          "id": "chapter-003",
+          "order": 28,
+          "title": "দ্বিতীয় খণ্ড / দ্বিতীয় পরিচ্ছেদ",
+          "content_sha256": "8999e78bea5bbc1715d3b404fe66972ca64dcc52c3363cead8f1a1d68bf53aa6"
+        },
+        {
+          "id": "chapter-004",
+          "order": 29,
+          "title": "দ্বিতীয় খণ্ড / তৃতীয় পরিচ্ছেদ",
+          "content_sha256": "51803ed1e51cee9243de914f165f44ca5a807da278c1ecd66674fdb70bfb29dc"
+        },
+        {
+          "id": "chapter-005",
+          "order": 30,
+          "title": "দ্বিতীয় খণ্ড / চতুর্থ পরিচ্ছেদ",
+          "content_sha256": "72f3838d1cbddaba261d9a8cde63ba42847a79f4c17c9787eb6b6246e91ef1bb"
+        },
+        {
+          "id": "chapter-006",
+          "order": 31,
+          "title": "দ্বিতীয় খণ্ড / পঞ্চম পরিচ্ছেদ",
+          "content_sha256": "16d0ade8edd5ccb731ab891c1eb404830ed1db98aeae6c9638043b4fa7354205"
+        },
+        {
+          "id": "chapter-007",
+          "order": 32,
+          "title": "দ্বিতীয় খণ্ড / ষষ্ঠ পরিচ্ছেদ",
+          "content_sha256": "da42e1657ded85becb87e39af5e4b16f0e8e3effefb4f5996eba29af50f9dae6"
+        },
+        {
+          "id": "chapter-008",
+          "order": 33,
+          "title": "দ্বিতীয় খণ্ড / সপ্তম পরিচ্ছেদ",
+          "content_sha256": "8681e5423a52394efbeda8661b2469ae4238a6e184aa0edd345784b3835c23a8"
+        },
+        {
+          "id": "chapter-009",
+          "order": 34,
+          "title": "দ্বিতীয় খণ্ড / অষ্টম পরিচ্ছেদ",
+          "content_sha256": "c89a7d28d4c96db68638ce603621d1d2fafe4281b9495061427c160f4647c098"
+        },
+        {
+          "id": "chapter-010",
+          "order": 35,
+          "title": "দ্বিতীয় খণ্ড / নবম পরিচ্ছেদ",
+          "content_sha256": "81d2ad0a6c9393b8833495fcfe50c8174200d0b6d380e17e37b55203646f69ba"
+        },
+        {
+          "id": "chapter-011",
+          "order": 36,
+          "title": "দ্বিতীয় খণ্ড / দশম পরিচ্ছেদ",
+          "content_sha256": "c6db07ed430da96abd916c1962df0fac54128f5750609376df95855d846dd514"
+        },
+        {
+          "id": "chapter-012",
+          "order": 37,
+          "title": "দ্বিতীয় খণ্ড / একাদশ পরিচ্ছেদ",
+          "content_sha256": "3bf991ed07e0df0f5067571735a541ff43994c87c89e948f1dc5bcbc5624ac4d"
+        },
+        {
+          "id": "chapter-013",
+          "order": 38,
+          "title": "দ্বিতীয় খণ্ড / দ্বাদশ পরিচ্ছেদ",
+          "content_sha256": "4a2ff0d4a9ae67693da268dfbbc137ef4c104369294d0730f4075e8d8ed9e094"
+        },
+        {
+          "id": "chapter-014",
+          "order": 39,
+          "title": "দ্বিতীয় খণ্ড / ত্রয়োদশ পরিচ্ছেদ",
+          "content_sha256": "e1e00fd5f2d43f5fa435bec6cc8eb1dd23324845bb0c550f992ed7470a673a23"
+        },
+        {
+          "id": "chapter-015",
+          "order": 40,
+          "title": "দ্বিতীয় খণ্ড / চতুর্দ্দশ পরিচ্ছেদ",
+          "content_sha256": "7172991ca8724b3c65528a3f639ecdfffd48a6ad77cbeaeb6e75b6abf9a1275e"
+        },
+        {
+          "id": "chapter-016",
+          "order": 41,
+          "title": "দ্বিতীয় খণ্ড / পঞ্চদশ পরিচ্ছেদ",
+          "content_sha256": "aef5dec1d14c4ec4c6537668fe5becbc06234ba47cb6ba94a0ce83af92b71708"
+        },
+        {
+          "id": "chapter-017",
+          "order": 42,
+          "title": "দ্বিতীয় খণ্ড / ষোড়শ পরিচ্ছেদ",
+          "content_sha256": "bb99c718c9dcaababf0363209fe8c1a9de2436f036e5ee61169576ca4cb6ff3e"
+        },
+        {
+          "id": "chapter-018",
+          "order": 43,
+          "title": "দ্বিতীয় খণ্ড / সপ্তদশ পরিচ্ছেদ",
+          "content_sha256": "5c84474f5102a2553da18f442404e54ba1d71e74dc320acd74518bbd12864e32"
+        },
+        {
+          "id": "chapter-019",
+          "order": 44,
+          "title": "দ্বিতীয় খণ্ড / অষ্টাদশ পরিচ্ছেদ",
+          "content_sha256": "9c3fd0251b550ec5a889f70a6b562e6c1ca6d195ab1e7e06ccbbfe56cb3ce704"
+        },
+        {
+          "id": "chapter-020",
+          "order": 45,
+          "title": "দ্বিতীয় খণ্ড / ঊনবিংশ পরিচ্ছেদ",
+          "content_sha256": "8848b1e35435f6e20efd843a9f21897489af29dffb99ef79cf1cf15abd18feaf"
+        },
+        {
+          "id": "chapter-021",
+          "order": 46,
+          "title": "দ্বিতীয় খণ্ড / বিংশ পরিচ্ছেদ",
+          "content_sha256": "9bc6dba9e5717853121bd3fdaa76c3150816557014cd9c185497f563c9c376f4"
+        }
+      ],
+      "basis": "Literal verifiedsourcechapterordinals andpartlabels; importedlexicographicorder wasincorrect",
+      "chapter_ids_preserved": true,
+      "all_literary_content_bytes_unchanged": true,
+      "preview_chapter_count_preserved": 46,
+      "preview_binding": "Samepreviewchaptercount rebound toactualfirstorderedchapters; textreleaseheld",
+      "audio_artifacts_changed": false,
+      "source_evidence": "data/title_rights_evidence/bengali-bankim-cohort-1.json"
+    }
+  ],
+  "publication_authorizations_issued": 0
+}

@@ -1,14 +1,22 @@
 {
   "slug": "carmilla",
-  "generated_at": "2026-07-01T10:36:20Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "5a01e4c097ede1a7d7edcfaf6153d3ed33c54371ef89c783fbc2bd4386a8ba50"
+      "sha256": "8040cbfecaa295b39316792028b310be6d05708731b30d645dc397a2cd3ca270"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "171025cebd31026dbb2c9035f32f9f887ad4d72492c8dc1f51dde1675c71a9dd"
     },
     {
       "file": "public_book.json",
-      "sha256": "6ade179e7ac88d7f35378f06fd365392e353790eb50669554e6ed0647c4a0486"
+      "sha256": "2d364ec1ab6fc2d19310b5c97847eccabf9398db0a96f4d16fc9ce028ccc3f6d"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "d61695c0550971585e75e5e8435d0b088bb20a9ca70ecfc80c0e60a0732848cf"
     },
     {
       "file": "reader_manifest.json",
@@ -16,11 +24,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "eb68f9e65d6cea55e847c8edbd2442588adfef92385ff9854bb8f929611638d4"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "9404d42991bbbc93c8efd47e63eddf83e8a757e4bf7f164285207c96959b25ea"
+      "sha256": "ef616d05e36d43ac6321d316df676ececfd21ce107f0db2aec269f42a2219d0e"
     }
   ]
 }

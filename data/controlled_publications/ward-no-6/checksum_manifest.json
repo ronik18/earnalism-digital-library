@@ -1,14 +1,14 @@
 {
   "slug": "ward-no-6",
-  "generated_at": "2026-07-03T20:07:47Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "90a0557fe3430be831172eb890dd84f196ca6bf9fe25e59b3d7c8bfd4c00bedd"
+      "sha256": "dca2bc9971f91ecbafe8aa8e60ed032d6ad45aa7e265df29399c573cfba32b4c"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "a941771bfc29d06625b22426504eeae0372abb9b31b7430e8385e15364dd7277"
+      "file": "chapters/chapter-001.json",
+      "sha256": "92155b19f4ff40bfd3799b7a62b0e740aad8933c5f227a8ee1a01678be8227a0"
     },
     {
       "file": "highlight_sync.json",
@@ -16,19 +16,19 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "e2b32f9186d85661053b44ea71e5d70a502151d3fec5d82bba9ede058117a484"
+      "sha256": "6de1004077977344ab43ae8aa753e975c2fe4c49b4ecb676f910d778ab2ae85f"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "b97c03a9379c1b4acfbe3588fc054e86e1050fca44539bfdb12f69f3571d0354"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "9be307d8cded0893d88686799d1cf380822cb4199be4991ee521ca42000e9931"
+      "sha256": "7a073766331a925269d1c5ad8b18167b7ad6e63a833d4d1b0b962386cca4255a"
     },
     {
       "file": "source_evidence.json",
-      "sha256": "bf55042eaf375d1641e8c6ddecc37ac25f3284c74e46d57e9561bfbb5eb59253"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "2e9358363425e85708e63824cdc8a76ce616310359466a50799d15ab646ed8a3"
+      "sha256": "6f3708f0567a048154a8af95476a90a3619f5dd246d3b55c35e4890bb94a92f5"
     }
   ]
 }

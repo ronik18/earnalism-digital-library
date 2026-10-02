@@ -1,13 +1,243 @@
 {
   "slug": "hungry-stones",
   "source_url": "https://www.gutenberg.org/ebooks/2518",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #2518 selected Hungry Stones story ONLY,1916Macmillan collection, PannaLalBasu translation author-revised",
   "source_license": "Public-domain repository source; repository boilerplate removed from reader edition.",
-  "source_hash": "45e3dd5a02b2de0fb77f694a2de16648d59b622aefc5facc34ba8b4dff5bb1c5",
-  "content_hash": "ec0aa0ad99a7784b2be3229f357f781d7ee4c00929eded08561c0ebec676b1e6",
-  "provenance_hash": "914f5193aa1a57e545963be3a2771662d79aa2e015a654a0338232bcd7859ec8",
-  "rights_basis": "public_domain",
+  "source_hash": "b998f1c836608d9c524da499f05b0e699103f8a9d28cceb3c57b0c4211340b10",
+  "content_hash": "48e430eef0498e74365f215d7ce7f7484e7207b52a177fd4bea46d0f534a0f28",
+  "provenance_hash": "c4990ca3a73e5ce181339651abdcf139c87011a5a9ead190b18e4a8d2b8c7ad7",
+  "rights_basis": "Selected story ONLY from exact Project Gutenberg#2518, not whole mixed-translator anthology. Verified1916 Macmillan collection publication during RabindranathTagore1861–1941 lifetime; PannaLalBasu1881–1956 original translation1910 and author revision1916. IndiaSection22 original author term expired2001 and named selected translator term2016; original Bengali first-publication year not asserted here. Modern scholarly/headnote/art and all other separately-translated collection stories excluded. ActualPG source remains selected electronic text; Wikisource receipts prove identity/facts, not imported transcription. Cover/audio excluded; no runtime approval.",
   "downloaded_at": "2026-07-01T10:36:20Z",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #2518",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2518",
+      "resolved_url": "https://www.gutenberg.org/ebooks/2518",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:33.562226+00:00",
+      "response_sha256": "5b2976a521bdb9b5f0143b709de80693e813f3189e3a9f926132ee40c3a36a0c"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2518.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2518/pg2518.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:38.666140+00:00",
+      "response_sha256": "b998f1c836608d9c524da499f05b0e699103f8a9d28cceb3c57b0c4211340b10"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Tagore, Rabindranath, 1861-1941"
+      ],
+      "Title": [
+        "The Hungry Stones, and Other Stories"
+      ],
+      "Note": [
+        "\"The stories contained in this volume were translated by several hands.\"--Preface"
+      ],
+      "Contents": [
+        "The hungry stones -- The victory -- Once there was a king -- The home-coming -- My lord, the baby -- The kingdom of cards -- The devotee -- Vision -- The babus of Nayanjore -- Living or dead? -- \"We crown thee king\" -- The renunciation -- The Cabuliwallah [The Fruitseller from Cabul]."
+      ],
+      "Credits": [
+        "Produced by Alev Akman, and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 80.4 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PK: Language and Literatures: Indo-Iranian literatures"
+      ],
+      "Subject": [
+        "India -- Social life and customs -- Fiction",
+        "Short stories, Bengali -- Translations into English",
+        "Tagore, Rabindranath, 1861-1941 -- Translations into English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "2518"
+      ],
+      "Release Date": [
+        "Feb 1, 2001"
+      ],
+      "Last Update": [
+        "Jan 26, 2013"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1271 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1601,
+          "length": 26099
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "45e3dd5a02b2de0fb77f694a2de16648d59b622aefc5facc34ba8b4dff5bb1c5",
+    "legacy_content_sha256": "ec0aa0ad99a7784b2be3229f357f781d7ee4c00929eded08561c0ebec676b1e6",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1941,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "5b2976a521bdb9b5f0143b709de80693e813f3189e3a9f926132ee40c3a36a0c",
+    "url": "https://www.gutenberg.org/ebooks/2518",
+    "author_catalog_strings": [
+      "Tagore, Rabindranath, 1861-1941"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "48e430eef0498e74365f215d7ce7f7484e7207b52a177fd4bea46d0f534a0f28"
+      }
+    ],
+    "content_sha256": "48e430eef0498e74365f215d7ce7f7484e7207b52a177fd4bea46d0f534a0f28"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "45e3dd5a02b2de0fb77f694a2de16648d59b622aefc5facc34ba8b4dff5bb1c5",
+        "content_hash": "ec0aa0ad99a7784b2be3229f357f781d7ee4c00929eded08561c0ebec676b1e6",
+        "provenance_hash": "914f5193aa1a57e545963be3a2771662d79aa2e015a654a0338232bcd7859ec8",
+        "source_url": "https://www.gutenberg.org/ebooks/2518",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-02T03:01:33.068986+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1916,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-02T03:01:33.068986+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2518.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2518/pg2518.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:38.666140+00:00",
+      "response_sha256": "b998f1c836608d9c524da499f05b0e699103f8a9d28cceb3c57b0c4211340b10"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1601,
+          "length": 26099
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "original_author_death_year": 1941,
+      "selected_edition_publication_year": 1916,
+      "original_first_publication_year": null,
+      "translators": [
+        {
+          "name": "Panna Lal Basu",
+          "birth_year": 1881,
+          "death_year": 1956,
+          "evidence": "Actual signed February1910 ModernReview story with Panna Lal Basu, Bangabasi College, Jan1910; actual1916 collection-story source explicitly attributes selected translation to him and identifies author revision before collection publication; retrieved author bibliographic record1881–1956."
+        }
+      ],
+      "basis": "Selected story ONLY from exact Project Gutenberg#2518, not whole mixed-translator anthology. Verified1916 Macmillan collection publication during RabindranathTagore1861–1941 lifetime; PannaLalBasu1881–1956 original translation1910 and author revision1916. IndiaSection22 original author term expired2001 and named selected translator term2016; original Bengali first-publication year not asserted here. Modern scholarly/headnote/art and all other separately-translated collection stories excluded. ActualPG source remains selected electronic text; Wikisource receipts prove identity/facts, not imported transcription. Cover/audio excluded; no runtime approval.",
+      "primary_receipts": [
+        {
+          "requested_url": "https://en.wikisource.org/wiki/The_Modern_Review/Volume_7/Number_2/The_Hungry_Stones",
+          "resolved_url": "https://en.wikisource.org/wiki/The_Modern_Review/Volume_7/Number_2/The_Hungry_Stones",
+          "http_status": 200,
+          "accessed_at": "2026-10-02T02:53:46.083814+00:00",
+          "response_sha256": "460def7301f415de4accfee8b7b60cbe0f421c83ed8a8dfb472d32139b757f4c"
+        },
+        {
+          "requested_url": "https://en.wikisource.org/wiki/Author:Panna_Lal_Basu",
+          "resolved_url": "https://en.wikisource.org/wiki/Author:Panna_Lal_Basu",
+          "http_status": 200,
+          "accessed_at": "2026-10-02T02:53:47.302389+00:00",
+          "response_sha256": "88dbab908f93b920aebe3c1bd1bb8328853a4c189714de01dbc1bad4f853f3be"
+        },
+        {
+          "requested_url": "https://en.wikisource.org/wiki/The_Hungry_Stones_and_Other_Stories/The_Hungry_Stones",
+          "resolved_url": "https://en.wikisource.org/wiki/The_Hungry_Stones_and_Other_Stories/The_Hungry_Stones",
+          "http_status": 200,
+          "accessed_at": "2026-10-02T02:59:12.456198+00:00",
+          "response_sha256": "9b3e954807de9750159648bfbaa1ddd07bea642365e6c16a782312723a2b713f"
+        },
+        {
+          "requested_url": "https://en.wikisource.org/wiki/The_Hungry_Stones_and_Other_Stories",
+          "resolved_url": "https://en.wikisource.org/wiki/The_Hungry_Stones_and_Other_Stories",
+          "http_status": 200,
+          "accessed_at": "2026-10-02T03:01:06.335891+00:00",
+          "response_sha256": "487360de74e775b6a7fd36cdf9b1e2ceeba9f7dbe5db36ffd67ebd7c3b45aa59"
+        }
+      ]
+    },
+    "author_death_evidence": 1941,
+    "translator": [
+      {
+        "name": "Panna Lal Basu",
+        "birth_year": 1881,
+        "death_year": 1956,
+        "evidence": "Actual signed February1910 ModernReview story with Panna Lal Basu, Bangabasi College, Jan1910; actual1916 collection-story source explicitly attributes selected translation to him and identifies author revision before collection publication; retrieved author bibliographic record1881–1956."
+      }
+    ],
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1916,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "b998f1c836608d9c524da499f05b0e699103f8a9d28cceb3c57b0c4211340b10",
+    "content_sha256": "48e430eef0498e74365f215d7ce7f7484e7207b52a177fd4bea46d0f534a0f28",
+    "year": 1916,
+    "receipt": {
+      "requested_url": "https://en.wikisource.org/wiki/The_Modern_Review/Volume_7/Number_2/The_Hungry_Stones",
+      "resolved_url": "https://en.wikisource.org/wiki/The_Modern_Review/Volume_7/Number_2/The_Hungry_Stones",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T02:53:46.083814+00:00",
+      "response_sha256": "460def7301f415de4accfee8b7b60cbe0f421c83ed8a8dfb472d32139b757f4c"
+    },
+    "basis": "Selected story ONLY from exact Project Gutenberg#2518, not whole mixed-translator anthology. Verified1916 Macmillan collection publication during RabindranathTagore1861–1941 lifetime; PannaLalBasu1881–1956 original translation1910 and author revision1916. IndiaSection22 original author term expired2001 and named selected translator term2016; original Bengali first-publication year not asserted here. Modern scholarly/headnote/art and all other separately-translated collection stories excluded. ActualPG source remains selected electronic text; Wikisource receipts prove identity/facts, not imported transcription. Cover/audio excluded; no runtime approval.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  },
+  "translator_name": "Panna Lal Basu",
+  "translator_death_year": 1956
 }

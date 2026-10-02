@@ -40,7 +40,7 @@ function loadSocialLinks(env = {}) {
   const source = read("frontend/src/config/socialLinks.js")
     .replace("export const OFFICIAL_SOCIAL_URLS =", "const OFFICIAL_SOCIAL_URLS =")
     .replace("export const SUPPORTED_SOCIAL_LINKS =", "const SUPPORTED_SOCIAL_LINKS =")
-    .replace("export function normalizeSocialUrl", "function normalizeSocialUrl")
+    .replace(/export function /g, "function ")
     .replace("export function getEnabledSocialLinks", "function getEnabledSocialLinks");
   const context = {
     module: { exports: {} },

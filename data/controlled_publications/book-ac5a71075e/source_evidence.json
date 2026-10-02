@@ -6,7 +6,7 @@
   "source_hash": "b03136231d5436607a7b3c3ff298b1037d5061724e1042cf8fab24eb3bf94460",
   "content_hash": "d9e2dab4904d87a1d516f1c668364f12d17087f781a572d8ee01c0e23cccc830",
   "provenance_hash": "3ef4323bf1f198b0e48ad9c6913c497b02ab567b889fcdb0ae439ab003d4a5a3",
-  "rights_basis": "Author died 1941. Published 1891. Public domain in India and U.S.",
+  "rights_basis": "Underlying original Bengali work was published during Rabindranath Tagore’s lifetime; author death1941 is independently evidenced. India Copyright Act section22 lifetime literary-work term is sixty years from the calendar year following death. This preparation does not authorize newer editorial material or waive CC BY-SA4.0 transcription obligations; edition/publication approval remains held.",
   "downloaded_at": "2026-06-02T19:23:45.028548+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -24,12 +24,50 @@
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "b03136231d5436607a7b3c3ff298b1037d5061724e1042cf8fab24eb3bf94460",
+    "reader_content_sha256": "90cd4381bb0e8f3ba2d3d0a8f5cbbe86b5db07c1ee1b480e57c1e13a1c0f0723",
     "chapter_count": 1,
     "chapter_content_sha256": {
-      "chapter-001": "b03136231d5436607a7b3c3ff298b1037d5061724e1042cf8fab24eb3bf94460"
+      "chapter-001": "90cd4381bb0e8f3ba2d3d0a8f5cbbe86b5db07c1ee1b480e57c1e13a1c0f0723"
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  },
+  "reader_content_reconciliation": {
+    "status": "SOURCE_FURNITURE_REMOVED_ONLY",
+    "performed_at": "2026-10-01T21:08:27.473444+00:00",
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/source-furniture-repair-proposals.json",
+    "artifact_sha256": "63e8128394ae67e1620d02a5bce6ca6b14dd72f8230ed86b0d535ed69707baf7",
+    "before_content_sha256": "b03136231d5436607a7b3c3ff298b1037d5061724e1042cf8fab24eb3bf94460",
+    "after_content_sha256": "4790aaef767305f7ef7d4058c659f287a7ffbae496145ea6c9017ea2dc54e91e",
+    "removed_source_furniture": [
+      "রবীন্দ্রনাথ ঠাকুর",
+      "গল্পগুচ্ছ",
+      "১৯৫০ (পৃ. ২৮-৩৪)",
+      "পোস্ট্‌মাস্টার"
+    ],
+    "literary_words_changed": false,
+    "source_transcription_completeness": "ADDITIONAL_SOURCE_COMPARISON_REQUIRED",
+    "scope": "READER_METADATA_FURNITURE_CLEANUP_NOT_PUBLICATION_OR_AUDIO_APPROVAL"
+  },
+  "original_publication_year": 1891,
+  "original_publication_evidence": {
+    "record": "internal/legal/catalogue_clearance_20261002/bengali/tagore-publication-facts.json",
+    "record_sha256": "132bb707cf39f0596a3aa27f5d5d368f415ba947a133f06103f4a361407f37a5",
+    "authority_event_url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/event/VZlSXRlVONlUspFWOdVMXJ1aKVVVB1TP#event_434",
+    "year": 1891,
+    "date_as_recorded": "May,1891",
+    "evidence_type": "EXPLICIT_FIRST_SHORT_STORIES_PUBLICATION_ENTRY",
+    "scope": "Underlying Bengali work publication fact only; later source edition/transcription obligations independently held."
+  },
+  "exact_source_delta_repair": {
+    "slug": "book-ac5a71075e",
+    "verified_at": "2026-10-01T21:33:54.532619+00:00",
+    "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-ac5a71075e-source-comparison.json",
+    "source_snapshot_sha256": "04e1be9ae93b151dd7cfe91c203d8a69c34eea7e33747d8b3ff5a5a16ade3bf3",
+    "before_sha256": "90cd4381bb0e8f3ba2d3d0a8f5cbbe86b5db07c1ee1b480e57c1e13a1c0f0723",
+    "after_sha256": "90cd4381bb0e8f3ba2d3d0a8f5cbbe86b5db07c1ee1b480e57c1e13a1c0f0723",
+    "operations": [],
+    "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+    "scope": "Same pinned edition body repair; not rights/publication/audio approval"
   }
 }

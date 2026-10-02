@@ -1,0 +1,69 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-lifted-veil",
+  "title": "The Lifted Veil",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "0e8114ea868e1ecd07e44a695c8723b819527170f96bf1811a782b2b440e05b5",
+    "content_hash": "bff60f1c99b4b49f2acf25a64ccd63a3f553d26ba07855552352fa82b72ca60c",
+    "provenance_hash": "6a6d5cbde710b8ae9a8451cd9f9aaf67f51f27c06aaf21d0895ea9bc42ec16bd",
+    "sanitized": true,
+    "chapter_count": 3,
+    "chapter_index_sha256": "9d231a39da4644a6f92356ddcc8aed2d60e6f585a4e924145cdfce24173cd0b5",
+    "chapters": [
+      {
+        "id": "chapter-000",
+        "order": 1,
+        "title": "Author Epigraph",
+        "word_count": 25,
+        "sha256": "26d3c73adaf315536e740f52fea7d951bb2e35fbf265215a947250ce788bc4fa"
+      },
+      {
+        "id": "chapter-001",
+        "order": 2,
+        "title": "CHAPTER I",
+        "word_count": 9204,
+        "sha256": "50aaf3b3ac3880dca08bd5ab8b5b2fb869761885937251ba51694379e3adc523"
+      },
+      {
+        "id": "chapter-002",
+        "order": 3,
+        "title": "CHAPTER II",
+        "word_count": 8489,
+        "sha256": "aa9ce42d5bceef133265f1bd9bdf3d9c8ca70fd7128c0f19719bf130a905a1c2"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "dea40fc6a8c4debb22fe8d2024a41cc7d10f14c6679f8690efdb9de0f0405cf1"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "97929fa7fa0a1650a83c5022e7100765ab43253e6e0545bef6eedba9b8b40b41",
+    "reader_manifest": "5a602b94ee01b76ac62326d017e2945a3dbde7d2db0aa1726664ce42595a311f",
+    "source_evidence": "dea40fc6a8c4debb22fe8d2024a41cc7d10f14c6679f8690efdb9de0f0405cf1",
+    "approval_evidence": "3978f97e8445674292bd6ad743ae6340f8dbe17790a5ab6f2e0b9f396657b7ca"
+  },
+  "manifest_sha256": "77efa91dfa13d5956a481f0dc59d0a55fe50fd1494ea8df9ea792cec62fe6146"
+}

@@ -1,12 +1,22 @@
 {
   "slug": "the-bet",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true
+  "audiobook_enabled": true,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "90ce66dabba5d345143750e291487bc466e775c36655b6b5b36c91e44516d80d",
+  "source_hash": "7f46ed4a590c1b37ba965a4cea6ec3e344382e1b3abe044d04f96896337c4ac9",
+  "content_hash": "72b8e903ed62116f25575d77840b923f132f7c0e13e257f9a0821179cc1c7a0d",
+  "provenance_hash": "dda8e1c68983c69e610c27011c0fcf578b60fa6cb89a2e2b3cf31542e5f03075",
+  "verified_at": "2026-10-01T21:54:02.732252+00:00"
 }

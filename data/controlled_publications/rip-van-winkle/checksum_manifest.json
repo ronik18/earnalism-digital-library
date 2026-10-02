@@ -1,14 +1,14 @@
 {
   "slug": "rip-van-winkle",
-  "generated_at": "2026-07-03T20:07:48Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "0a72c93746942e3342969beda4951653de11bfcd9eaa7da27c9420f78c362541"
+      "sha256": "4168ff1092fa23555ad4932b73a3cf48fb9fd16ce0f52291f23561bb448a19bd"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "8d7946a03f39338c27d819204d69cae163b03cc62d2f2f9ec0a322847e2dfef4"
+      "file": "chapters/chapter-001.json",
+      "sha256": "111a1b6e69273cf876626624c38cb36ac27798df89bfb1c7a25f079fe755e98a"
     },
     {
       "file": "highlight_sync.json",
@@ -16,19 +16,19 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "122416a181376f001800dcb193e58c142a3ac04a66ba201ef42c96dccd3be7f7"
+      "sha256": "ed29cd99f0b9c6474984ca06eb9e802703523e19916498c9b0536b149bdeb4ca"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "39b1b1f431fcbd9ff255fcc6a075134c75f7d791246115a9581c073603e978f9"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "1fb6f6e6ff512ca21fa0b4458765ecf1e0711cc4e952bfade003f3079dbdae87"
+      "sha256": "d7b2ec1e2256154939f2c549c7e014437069a1db446baef249a4ac464b0ff094"
     },
     {
       "file": "source_evidence.json",
-      "sha256": "df60eaedc97681e0bd0d173ec2e2857486ae3ed5a213a3d0ca98e72c729e5bca"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "358cc805ffccb137fe11c57a14efcb614e27bba1d7eb0cf303d8b34f840b3323"
+      "sha256": "bef16a7c5dbf06b20febd0fc4c8ee36a2dcc2ee0aac08220b10d8526f0ac33c7"
     }
   ]
 }

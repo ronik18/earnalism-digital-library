@@ -1,14 +1,14 @@
 {
   "slug": "the-five-orange-pips",
-  "generated_at": "2026-07-03T20:07:49Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "23e79fc9ba56f77e3ddad9f8af4fe79761766f188cbec45dbe02144d8de6c1ad"
+      "sha256": "eade6b1f4e3f8c644b0d6aa0c9f79a075b84d2c39f0883c15b642b43b4737974"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "620f7207086ea1c4ee05dda686dcf31203c3b2d6a163f4a6c326278fd7b651b3"
+      "file": "chapters/chapter-001.json",
+      "sha256": "dd5bf1bbfe4e275fed297e16bd6dbfe6082bb83c23f7abf4c469d9d1411826cf"
     },
     {
       "file": "highlight_sync.json",
@@ -16,19 +16,19 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "480c8f53eeda7665a0311ea1eed7023da609552547297fc5b14f54ba186a00c0"
+      "sha256": "e1684e642901d9c76913606cb6f5776f7dc24357b444782e6f4efdf6f96228f4"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "4c4a5818fce6369b69cdf5be5a6aeb903d0d98dc2322c9a6bae143c92b05c325"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "9e660d67515f7bd0a8ef45402eace1039a6cd3dc81cc75eeb210390fccf72210"
+      "sha256": "82c39af8cc22a655bace9a1a173c5a05f49eafe181842e94c8deaa9f5f60abdd"
     },
     {
       "file": "source_evidence.json",
-      "sha256": "c2c98591429b9ceafdb15ae518a86421fdf4659cc61476fe5b640b9efdeecede"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "73e4e3c28a0aa9601d88c8ee192f32bce6feb3aceea92420ff4b902ddff4dbf5"
+      "sha256": "3237bbed5355eb3f2f586c3e82ebe06d86a1c13a42352c1e38601a9e43514a13"
     }
   ]
 }

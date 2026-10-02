@@ -1,0 +1,69 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-monkeys-paw",
+  "title": "The Monkey's Paw",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "22f3431a7db6d9e210ffb446044739513475cb93992421d1b0d107f094d7408d",
+    "content_hash": "48bf28c4bea8019bab01a7040d1acce9a6694d783ccfacacca3a2702a5ae0389",
+    "provenance_hash": "87d5e1db8a3e325c890052f97fd7458589e84e2e643002d47a48c7cde97e4df6",
+    "sanitized": true,
+    "chapter_count": 3,
+    "chapter_index_sha256": "5412984706d188009793b0b522cfe014ab7cf1896ba8d29217e880604661fb33",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "I",
+        "word_count": 1770,
+        "sha256": "b085c901f84f95df539f37049a7845221d20a94c3aa69500eccb95a3707f8181"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "II",
+        "word_count": 957,
+        "sha256": "efc77c2d14c0083ab697287a4997a6aa2e65a76c2a81f4191999e95ada167024"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "III",
+        "word_count": 1275,
+        "sha256": "00849753d1a23d1e870dbb842f57c192d8b0fd6e0e5a3dce6d901fa83250dfd0"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "b8c3bd37e31d8b6f8217104a2e67ac983b6311cc7f834697f3f2821c59015554"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "b071d802fbdce64e46a62b8603544d44c6e10defaa231aa65312f6d3693eb231",
+    "reader_manifest": "46d0c427c820fe37b06797be3fbeef43db9b028190fe4c809656292831b6d0a2",
+    "source_evidence": "b8c3bd37e31d8b6f8217104a2e67ac983b6311cc7f834697f3f2821c59015554",
+    "approval_evidence": "457c9c72d4a871b8f1b51a08487f4eed724466cef2150b998ce7a096155039f1"
+  },
+  "manifest_sha256": "87d855abbcf4fb404f5893074c8d8483dba4a997c62598d1b9d68cd342a5aa45"
+}

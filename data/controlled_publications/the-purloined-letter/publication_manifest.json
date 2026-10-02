@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-purloined-letter",
+  "title": "The Purloined Letter",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e",
+    "content_hash": "eb1b8f204ad8a0764e59d823c68fa470020d236a9d60138a406ee3f89ebdc669",
+    "provenance_hash": "0d661b71d28690735fed5c6a75e00424e855affdd1480314dcdbdb6b9d7b7185",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "248994e4fc120fffcd0edf7ad808084ed196418ff6c56b944e8bcff37d81de19",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Purloined Letter",
+        "word_count": 7062,
+        "sha256": "341d1f690a29b56e7d975ed77977370a21e28cd15bf9c432888757ee3f9380f9"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "8fa89d00dcd477025822aa3fb9510f691e8cf11723f403c9b1674ecd036a6a0f"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "1a73f7773fc04e88d4e0750118b3e19a33fdf1fb44d507b31349a05e9b9bb1d5",
+    "reader_manifest": "ce8cf215f1ae71d760b80329b62a0fe6463d4aabca80bd457c93ffe782f2dd06",
+    "source_evidence": "8fa89d00dcd477025822aa3fb9510f691e8cf11723f403c9b1674ecd036a6a0f",
+    "approval_evidence": "2234e7301f2766040d7bf292604213a8213a10f0d411cf1b53a802bfed761844"
+  },
+  "manifest_sha256": "f192b55f1dc858d86296e8948e226c30931fc1f4a33f0c810b2380669f9eee6c"
+}

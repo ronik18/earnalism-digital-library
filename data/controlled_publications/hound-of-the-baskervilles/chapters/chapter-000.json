@@ -1,0 +1,19 @@
+{
+  "id": "chapter-000",
+  "bookSlug": "hound-of-the-baskervilles",
+  "order": 1,
+  "title": "Author Dedication",
+  "language": "en",
+  "content": "My dear Robinson,\n\nIt was to your account of a West-Country legend that this tale owes its inception. For this and for your help in the details all thanks.\n\nYours most truly,\n\nA. Conan Doyle.\n\nHindhead,\n\nHaslemere.",
+  "content_hash": "45e02619ff964a611449ca66c0a777bbd2ae59ca55f0c000ba4a72b071c32e27",
+  "sanitizedSha256": "45e02619ff964a611449ca66c0a777bbd2ae59ca55f0c000ba4a72b071c32e27",
+  "sourceSha256": "f7c8c68729d32a5f6a04a5a9ad73d184176e66a6c76b3992c41c1ab47b427d98",
+  "word_count": 37,
+  "reading_minutes": 1,
+  "is_preview": true,
+  "has_images": false,
+  "image_count": 0,
+  "processing_status": "ready",
+  "processing_warnings": [],
+  "updated_at": "2026-10-02T03:25:38.460120+00:00"
+}

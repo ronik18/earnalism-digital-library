@@ -3,11 +3,11 @@
   "schema_version": 1,
   "slug": "bn-060",
   "title": "ইন্দিরা",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-01T21:15:55.723486+00:00",
   "content": {
-    "source_hash": "20fd4394099662a7126b388fe2c242b5cd947fefe9ca280e808375bdadd77d9a",
-    "content_hash": "8dc1e281ed72c9583923b9782b528d75daf6099f17b9f340e3e54c42d7b3d14d",
-    "provenance_hash": "2a9758446d81273f4a807d409237967beed5e587269d6113a6574f6231869f9f",
+    "source_hash": "664191f5a7e2d8e6bbccd90d1c8ee947aa70f33b5924c1295d77b46f4114f067",
+    "content_hash": "69d972ddd3fea936806a641d96a6287930b569536c0049eb8ef2f4b61d790065",
+    "provenance_hash": "4b74464474f354b0fd452628b3dfbacdd814b9c95c5e891c1c9499c97772742d",
     "sanitized": true,
     "chapter_count": 8,
     "chapter_index_sha256": "a08527a73f6a9ea889528f66eeb02f773c9b1e1b60c5e39927b8a7d1cdd78bed",
@@ -71,19 +71,17 @@
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "1466d9030b724c73103012ee3d5ce02e9a2cc9bfb3f5de34640d37e660f0cd4b"
+    "publication_region": "india",
+    "evidence_sha256": "5ccde9b1660715f5d6585c3d75b52850a56d8621a3eae39808238462e735e707"
   },
   "reader_release": {
-    "status": "BLOCKED",
+    "status": "READY_FOR_APPROVAL",
     "exposed": false,
     "qa_status": "QA_PASSED",
     "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270665/earnalism/covers/front/bn-060_front_1600x2400.png",
-    "blockers": [
-      "Rights: verification_status must be approved before publishing."
-    ]
+    "blockers": []
   },
   "audio_release": {
     "status": "NOT_REQUESTED",
@@ -95,10 +93,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "b0313679fbd3df5cb81c2b2d5c852be62ee8e27aedcf3a1bf9c1cc30d80979a9",
+    "public_book": "860d1efe328898188179a4257709cecdd2795359160f94865b0cc40682e2da34",
     "reader_manifest": "5cd2dcbb4cf43cf8d6790d4061d105735b9aa5800c4d8358ecb87a7cc27e028b",
-    "source_evidence": "1466d9030b724c73103012ee3d5ce02e9a2cc9bfb3f5de34640d37e660f0cd4b",
-    "approval_evidence": "953225db3f7128a5b4ffea84a033267f4053a1f30fb36784770bc8d8452d864a"
+    "source_evidence": "5ccde9b1660715f5d6585c3d75b52850a56d8621a3eae39808238462e735e707",
+    "approval_evidence": "a027c29480ca2f51b6ce21529aea12128bcbea75530a98be9c130a181c9efce9"
   },
-  "manifest_sha256": "9a8b7306922c74d182c3ee6c56fdb046a75533ac6674bf2e3e29d6a941151f95"
+  "manifest_sha256": "38c57c11890f77fc77dc5db3bb06b69f05bdffa7c5732112832836371e29f6c6"
 }

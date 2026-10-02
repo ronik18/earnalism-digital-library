@@ -1,0 +1,42 @@
+{
+  "a-jury-of-her-peers_author": {
+    "url": "https://www.gutenberg.org/ebooks/authors/search/?query=Susan_Glaspell",
+    "resolved_url": "https://www.gutenberg.org/ebooks/authors/search/?query=Susan_Glaspell",
+    "http_status": 200,
+    "response_sha256": "d7a8e0a82c4d74b0d8d7548adc9b6e8b8191bfac974372a6e29b47405ed53b14",
+    "verified_at": "2026-10-01T21:33:35.634077+00:00"
+  },
+  "the-art-of-money-getting": {
+    "url": "https://www.kpl.gov/catalog/item/?i=ent://ERC_215_8682/0/215_8682:HOOPLA:17274052",
+    "verified_at": "2026-10-01T21:34:27.321920+00:00",
+    "verification_method": "Actual web tool page retrieval; direct urllib HTTP403 retained separately; no full HTML byte hash claimed",
+    "excerpt": "was first published in book form in 1880",
+    "excerpt_sha256": "f09e30152dd3f0d55c885ac1aa22d705fd10acba61f15d54176e4bb3d9ea5cb0",
+    "original_publication_year": 1880,
+    "scope": "Underlying Barnum text publication only; 2024 Rick Carlile annotations and audiobook not imported or authorized"
+  },
+  "the-selfish-giant": {
+    "source": "Project Gutenberg #902 exact source title page",
+    "response_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+    "verified_at": "2026-10-01T21:34:27.321920+00:00",
+    "excerpt": "_First Edition_         _May_ 1888",
+    "original_publication_year": 1888,
+    "scope": "Wilde selected Selfish Giant narrative only, 1910 seventh impression; Crane/Hood illustration labels/art excluded"
+  },
+  "a-jury-of-her-peers": {
+    "source": "Project Gutenberg #20872 actual narrative heading and copyright notice",
+    "response_sha256": "f011e7e8f943cee34701f2c807a35c34af76592307f213602470c9140461032f",
+    "verified_at": "2026-10-01T21:34:27.321920+00:00",
+    "excerpt": "Copyright, 1917, by The Crowell Publishing Company. Copyright, 1918, by Susan Glaspell Cook.",
+    "original_publication_year": 1917,
+    "author_death_year": 1948,
+    "author_death_receipt": {
+      "url": "https://www.gutenberg.org/ebooks/authors/search/?query=Susan_Glaspell",
+      "resolved_url": "https://www.gutenberg.org/ebooks/authors/search/?query=Susan_Glaspell",
+      "http_status": 200,
+      "response_sha256": "d7a8e0a82c4d74b0d8d7548adc9b6e8b8191bfac974372a6e29b47405ed53b14",
+      "verified_at": "2026-10-01T21:33:35.634077+00:00"
+    },
+    "scope": "Selected Glaspell story only; O’Brien anthology introduction/criticism and other contributors excluded"
+  }
+}

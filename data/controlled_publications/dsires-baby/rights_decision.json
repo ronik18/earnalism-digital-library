@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-dsires-baby-pg160-noncover-text",
+  "edition_id": "dsires-baby",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "9e6623222de051bbd76fa4aee9d90f8634c3f4a28ea16fae80bc22a7aae0d728",
+    "reader_manifest": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee",
+    "source_evidence": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb",
+    "approval_evidence": "af14f48def2add9e702bebba52421441c6088e27b92e8b642cfd1831aa3f1b14",
+    "checksum_manifest": "4463efa485f349f3f778e2e7dce10af53e55f477bca1e4168a13cd6ac025a053",
+    "publication_manifest": "564e1ff7f55a4af46e0760be8a69cbfa260409e93aa117f1939891941076ca0b"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:48:17.188009+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1904, verified lifetime collection publication 1894 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "3d530252d7452a2ddc892f5d0406f60db23d0cbfa207c71265d01b095f6c77f0",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "31d4577d255806b92c6296419adddd5ca460bdb788743878a09ded1e19f4161a",
+    "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

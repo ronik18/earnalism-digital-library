@@ -3,21 +3,21 @@
   "schema_version": 1,
   "slug": "book-2ddbed8293",
   "title": "ব্যবধান",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
     "source_hash": "cdbc256917a94c371850044ac4b03a7b5d8f5de55f55dda7f09914f8e879dda6",
     "content_hash": "e084b718398439b633fa93a3e175ad2d48289d32bdc7fb2dc1523a239ba84335",
     "provenance_hash": "a615b2b2f9f7f9396277a860225099322937501a56d8020ad45678c6a595a15e",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "e3fc9f1577c5235f4ead39da92f5b5a7dcdfc8d9c0ffb569776500807c8f2c57",
+    "chapter_index_sha256": "408533e27f46da9986e5623155491fb51771b8c985cc8e9bec6542b4fc42b212",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "Full Text",
-        "word_count": 1310,
-        "sha256": "87a7aabd47ea945fde3f69eb327a1ea659783e1451cc5d5356ddffd061321f09"
+        "word_count": 1300,
+        "sha256": "6c2a5feddaee36199eb8b23da5a4ea8fb3f97c35e924a7aac64459f41d494c52"
       }
     ]
   },
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "bfd864cc9cf10f8f14e87ae252302eadf48ae48e4debf551110f9b21372863c8"
+    "evidence_sha256": "fa70bfd218b5963153c3446edde92e6c646d07bf534d46e6aad4b33c3cf84740"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,7 +33,6 @@
     "qa_status": "QA_PASSED",
     "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783226974/earnalism/covers/front/book-2ddbed8293_front_1600x2400.png",
     "blockers": [
-      "Rights: original_publication_year is required.",
       "Rights: verification_status must be approved before publishing."
     ]
   },
@@ -47,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "8a857feed09f5466cfb298ffc25520e0ca822c1d7ded68e28ce8ce01f668f1c2",
-    "reader_manifest": "367b0f8ade1767b46512e2392c971e3f8a6dfb1de0db2bf6689cad5d4305dfc9",
-    "source_evidence": "bfd864cc9cf10f8f14e87ae252302eadf48ae48e4debf551110f9b21372863c8",
+    "public_book": "9dbed29ebdada130e105a8735d537388a72826b97574cff9b7f3ed9b14e06cab",
+    "reader_manifest": "e8a8834232cb7290f1fa2689f4c5bcc57389d9e95ae8b5f6539185876cde7a29",
+    "source_evidence": "fa70bfd218b5963153c3446edde92e6c646d07bf534d46e6aad4b33c3cf84740",
     "approval_evidence": "54d61527580f952fe743769551b280bf92b4fadde571bc64745de28eb6c5431a"
   },
-  "manifest_sha256": "b6905926fb71c5e7dbe5397941cf299029e9bc0296494615d2b9781408955b11"
+  "manifest_sha256": "0e9ef9c35debd6a5e3a03f0551bcb0c74b8a241d8938bbab04da74a0a4b15deb"
 }

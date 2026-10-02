@@ -23,7 +23,7 @@
      face. Quiet Heritage opts into EB Garamond through --qh-display only. */
   --font-display: 'Cormorant Garamond', 'Noto Serif Bengali';
   --font-ui: 'Outfit', 'Noto Sans Bengali';
-  --site-header-height: 4.5rem;
+  --site-header-height: 5rem;
   --beige-canvas: #FAF7F0;
   --beige-surface: #F5F0E8;
   --burgundy-deep: #6B1020;
@@ -37,21 +37,21 @@
   --border-soft: #E8DDD8;
 }
 
-@media (min-width: 1024px) {
-  /* Keep every desktop route aligned with the reference hero header. */
+@media (min-width: 1280px) {
+  /* Shared header geometry also drives sticky content offsets. */
   :root {
-    /* The wordmark may scale inside this rail; it must never resize the rail. */
-    --site-header-height: 5.75rem;
+    /* Preserve the full official lockup without cropping. */
+    --site-header-height: 6.5rem;
   }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
-  :root { --site-header-height: 5.25rem; }
+@media (min-width: 768px) and (max-width: 1279px) {
+  :root { --site-header-height: 6rem; }
 }
 
 @media (max-width: 640px) {
   :root {
-    --site-header-height: 4.5rem;
+    --site-header-height: 5rem;
   }
 }
 

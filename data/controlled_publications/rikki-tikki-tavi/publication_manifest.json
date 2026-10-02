@@ -1,0 +1,62 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "rikki-tikki-tavi",
+  "title": "Rikki-Tikki-Tavi",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "702dcf213efccf27768778ff44434f78557d1e7d2ba7a532899bec64633e55ca",
+    "content_hash": "5278ec9aad39e461bbdb35db8bfce162e01e25ff7b2e532f00d198b6e52f5837",
+    "provenance_hash": "71b80cc91175e5e65cd71a377343b3c5e97a646e5bbc1faef0ecf59b69d49a9d",
+    "sanitized": true,
+    "chapter_count": 2,
+    "chapter_index_sha256": "d5ab161ae33952588bcaa454322f8583c0c9057d1d1be5ab1ccf26f82e9383ef",
+    "chapters": [
+      {
+        "id": "chapter-000",
+        "order": 1,
+        "title": "Opening Verse",
+        "word_count": 67,
+        "sha256": "d22084c0e65c69b6b9af48753ce39ff208ec08062262a05d80e48d1b87abb26a"
+      },
+      {
+        "id": "chapter-001",
+        "order": 2,
+        "title": "Rikki-Tikki-Tavi",
+        "word_count": 5831,
+        "sha256": "b2fb0ab31584e3d64d59f438916ae2aec4a83cdf9a160c92b8d4474564dbffff"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "a627a06569727914a029b271ec8e1f20272a49a6db14032413b320b2091f096c"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "ddb3baa816fb302c33a12e93e3b0f3e02abd653d1a09725f127cd786964881dc",
+    "reader_manifest": "3f9302e53f51d17819a3db7e24ac6ec02adbee944cbfd72a3e1c399e78619424",
+    "source_evidence": "a627a06569727914a029b271ec8e1f20272a49a6db14032413b320b2091f096c",
+    "approval_evidence": "c157bbf86b059ddc6b830031851e017d51c1185fb1cb62fff744de4261dcf13f"
+  },
+  "manifest_sha256": "60f0586dc7c527c082cfd0dbe485d18f2de207a515b753ceb2991e9d747210af"
+}

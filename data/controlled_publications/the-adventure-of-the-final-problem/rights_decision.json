@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-adventure-of-the-final-problem-pg834-noncover-text",
+  "edition_id": "the-adventure-of-the-final-problem",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "9b4e62e53fb3154be0309443ea2519611994f754505b87567624c4d2fc85f291",
+    "reader_manifest": "ea221aa0a291620db387c3a5e42d0d879b092fee9e33fcd6be5bfc000852857c",
+    "source_evidence": "c7961401f1165b6f2e828de48de24bfa20a55587e0adeda5b5db2000468f8f14",
+    "approval_evidence": "f850da778e71a455d62ddffaea73ccb0c78b3ebb88aa95d95473a54a747b8e4b",
+    "checksum_manifest": "d830af9e5dc0cdf16c09b86c458ba22553f83a86d3c6fe3215daccddeca38a29",
+    "publication_manifest": "9a23357ffed675272e8f840e73a4313b7964af560e0fdc706286c58d8fe89387"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:48:17.188009+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1930, verified lifetime collection publication 1894 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "849b10a17dc746a05f93cedaa1187a88f76665a01b8bcbf874d4ac8dc0b37e58",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "509da3f8bbdc6c3857073e74911f628eef8fea557fcb5bca9e1713c846e43ec3",
+    "117d6a3c1729145f0d58f61c8f8f28a3cb007cb16557e9bc018534974fb108f8"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

@@ -1,0 +1,511 @@
+{
+  "repairs": [
+    {
+      "slug": "book-a74c1a1451",
+      "verified_at": "2026-10-01T21:33:54.474531+00:00",
+      "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-a74c1a1451-source-comparison.json",
+      "source_snapshot_sha256": "6f4f17f02fd6f93646503c5e71d5cfb6b2f8e74960644a333c29b10163a0cb51",
+      "before_sha256": "a44a51eac95a9f28493c4b267ba8ec59c9fc5b35b4038de3f9cdb9fc4728eb71",
+      "after_sha256": "a44a51eac95a9f28493c4b267ba8ec59c9fc5b35b4038de3f9cdb9fc4728eb71",
+      "operations": [],
+      "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+      "scope": "Same pinned edition body repair; not rights/publication/audio approval"
+    },
+    {
+      "slug": "book-d19e96859f",
+      "verified_at": "2026-10-01T21:33:54.483511+00:00",
+      "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-d19e96859f-source-comparison.json",
+      "source_snapshot_sha256": "ffc88a369734ea53307258a834550497584ee7622c34084dfdada69dc6d0caa9",
+      "before_sha256": "013a0c4f7ac3e2e4fdbe80732c951c728d6d8e231e278a1ce856a66c87925c77",
+      "after_sha256": "013a0c4f7ac3e2e4fdbe80732c951c728d6d8e231e278a1ce856a66c87925c77",
+      "operations": [],
+      "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+      "scope": "Same pinned edition body repair; not rights/publication/audio approval"
+    },
+    {
+      "slug": "book-a4a369483f",
+      "verified_at": "2026-10-01T21:33:54.501531+00:00",
+      "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-a4a369483f-source-comparison.json",
+      "source_snapshot_sha256": "fc80388aa8eae85724b8b4b9ee8f976861505f4a993becc669700a590c35ac10",
+      "before_sha256": "2791f6f8c912c34fdfa49276a0737dd3f9868a339e016ac6913ef155a32d5a5e",
+      "after_sha256": "2791f6f8c912c34fdfa49276a0737dd3f9868a339e016ac6913ef155a32d5a5e",
+      "operations": [],
+      "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+      "scope": "Same pinned edition body repair; not rights/publication/audio approval"
+    },
+    {
+      "slug": "book-2e468c4990",
+      "verified_at": "2026-10-01T21:33:54.519302+00:00",
+      "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-2e468c4990-source-comparison.json",
+      "source_snapshot_sha256": "1a01784c9fffd9bf55e88c503f295fe5b60354e0647049692a968d0729add52c",
+      "before_sha256": "7ea410462889bee273fb5e206e2dbefd6f551c3282861aa542d772e9f321d6f8",
+      "after_sha256": "7ea410462889bee273fb5e206e2dbefd6f551c3282861aa542d772e9f321d6f8",
+      "operations": [],
+      "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+      "scope": "Same pinned edition body repair; not rights/publication/audio approval"
+    },
+    {
+      "slug": "book-ac5a71075e",
+      "verified_at": "2026-10-01T21:33:54.532619+00:00",
+      "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-ac5a71075e-source-comparison.json",
+      "source_snapshot_sha256": "04e1be9ae93b151dd7cfe91c203d8a69c34eea7e33747d8b3ff5a5a16ade3bf3",
+      "before_sha256": "90cd4381bb0e8f3ba2d3d0a8f5cbbe86b5db07c1ee1b480e57c1e13a1c0f0723",
+      "after_sha256": "90cd4381bb0e8f3ba2d3d0a8f5cbbe86b5db07c1ee1b480e57c1e13a1c0f0723",
+      "operations": [],
+      "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+      "scope": "Same pinned edition body repair; not rights/publication/audio approval"
+    },
+    {
+      "slug": "book-754da4eab8",
+      "verified_at": "2026-10-01T21:33:54.547278+00:00",
+      "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-754da4eab8-source-comparison.json",
+      "source_snapshot_sha256": "6610ec5d1aaedbb049f9c629e3124bde799fbf10c3f152c8629accdbae3e4a28",
+      "before_sha256": "3df32a2645f82e70db984a4fb39e39d3193a65146d89c2f40b791a64c9bedef9",
+      "after_sha256": "3df32a2645f82e70db984a4fb39e39d3193a65146d89c2f40b791a64c9bedef9",
+      "operations": [],
+      "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+      "scope": "Same pinned edition body repair; not rights/publication/audio approval"
+    },
+    {
+      "slug": "book-a23625bf36",
+      "verified_at": "2026-10-01T21:33:54.587802+00:00",
+      "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-a23625bf36-source-comparison.json",
+      "source_snapshot_sha256": "49ba0c39355ce2cd4d313c9d4541b3552ee9bf10799f11acc3f7f5276579ac64",
+      "before_sha256": "ef308dc5c4a4af5e47b4238db35bc11acbb7c8a50089c904f876398227583905",
+      "after_sha256": "06fb2616eec901111bc3f9bf8ed8e157fede7f51fe5f5d73e5468217425daf14",
+      "operations": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            17,
+            19
+          ],
+          "source_paragraph_range": [
+            17,
+            18
+          ],
+          "canonical": [
+            "অকস্মাৎ পুত্রের আগমনে তাহার বিধবা মাতা পুলকিত হইয়া উঠিলেন। তৎক্ষণাং ক্ষীর দধি রুইমাছের সন্ধানে দূরে নিকটে লোক দৌড়িল এবং পাড়াপ্রতিবেশীর মধ্যেও একটা আন্দোলন উপস্থিত হইল।",
+            "আহারান্তে মা অপূর্বর বিবাহের প্রস্তাব উত্থাপন করিলেন। অপূর্ব সেজন্য প্রস্তুত হইয়া ছিল। কারণ, প্রস্তাব অনেক পূর্বেই ছিল, কিন্তু পুত্র নব্যতন্ত্রের নূতন ধুয়া ধরিয়া জেদ করিয়া বসিয়াছিল যে, ‘বি.এ পাস না করিয়া বিবাহ করিব না।’ এতকাল জননী সেইজন্য অপেক্ষা করিয়াছিলেন, অতএব এখন আর-কোনো ওজর করা মিথ্যা। অপূর্ব কহিল, “আগে পাত্রী দেখা হউক, তাহার পর স্থির হইবে।” মা কহিলেন, “পাত্রী দেখা হইয়াছে, সেজন্য তোকে ভাবিতে হইবে না।” অপূর্ব ওই ভাবনাটা নিজে ভাবিতে প্রস্তুত হইল এবং কহিল, “মেয়ে না দেখিয়া বিবাহ করিতে পারিব না।” মা ভাবিলেন, এমন সৃষ্টিছাড়া কথাও কখনো শোনা যায় নাই; কিন্তু সম্মত হইলেন।"
+          ],
+          "source": [
+            "অকস্মাৎ পুত্রের আগমনে তাহার বিধবা মাতা পুলকিত হইয়া উঠিলেন। তৎক্ষণাং ক্ষীর দধি রুইমাছের সন্ধানে দূরে নিকটে লোক দৌড়িল এবং পাড়াপ্রতিবেশীর মধ্যেও একটা আন্দোলন উপস্থিত হইল। \t\n আহারান্তে মা অপূর্বর বিবাহের প্রস্তাব উত্থাপন করিলেন। অপূর্ব সেজন্য প্রস্তুত হইয়া ছিল। কারণ, প্রস্তাব অনেক পূর্বেই ছিল, কিন্তু পুত্র নব্যতন্ত্রের নূতন ধুয়া ধরিয়া জেদ করিয়া বসিয়াছিল যে, ‘বি.এ পাস না করিয়া বিবাহ করিব না।’ এতকাল জননী সেইজন্য অপেক্ষা করিয়াছিলেন, অতএব এখন আর-কোনো ওজর করা মিথ্যা। অপূর্ব কহিল, “আগে পাত্রী দেখা হউক, তাহার পর স্থির হইবে।” মা কহিলেন, “পাত্রী দেখা হইয়াছে, সেজন্য তোকে ভাবিতে হইবে না।” অপূর্ব ওই ভাবনাটা নিজে ভাবিতে প্রস্তুত হইল এবং কহিল, “মেয়ে না দেখিয়া বিবাহ করিতে পারিব না।” মা ভাবিলেন, এমন সৃষ্টিছাড়া কথাও কখনো শোনা যায় নাই; কিন্তু সম্মত হইলেন।"
+          ]
+        },
+        {
+          "operation": "insert",
+          "canonical_paragraph_range": [
+            41,
+            41
+          ],
+          "source_paragraph_range": [
+            40,
+            41
+          ],
+          "canonical": [],
+          "source": [
+            "অতঃপর মৃন্ময়ীর মা এবং পল্লীর যত বর্ষীয়সীগণ সকলে মিলিয়া ভাবী কর্তব্য সম্বন্ধে মৃন্ময়ীকে অহর্নিশি উপদেশ দিতে লাগিল। ক্রীড়াসক্তি, দ্রুত গমন, উচ্চহাস্য, বালকদিগের সহিত আলাপ এবং ক্ষুধা-অনুসারে ভোজন সম্বন্ধে সকলেই নিষেধ পরামর্শ দিয়া বিবাহটাকে বিভীষিকারূপে প্রতিপন্ন করিতে সম্পূর্ণ কৃতকার্য হইল। উৎকণ্ঠিত শঙ্কিত হৃদয়ে মৃন্ময়ী মনে করিল, তাহার যাবজ্জীবন কারাদণ্ড এবং তদবসানে ফাঁসির হুকুম হইয়াছে।"
+          ]
+        }
+      ],
+      "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+      "scope": "Same pinned edition body repair; not rights/publication/audio approval"
+    },
+    {
+      "slug": "book-827fdc7aee",
+      "verified_at": "2026-10-01T21:33:54.662831+00:00",
+      "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-827fdc7aee-source-comparison.json",
+      "source_snapshot_sha256": "bae2b25eda9290b2a767f0b9b23c8f035889d2878c41d29c9d32050beb4a9a29",
+      "before_sha256": "d228351380e5eb1ce2c6c3d014b2c8f2eb9e3b0d4d1f92caeedd043c5d546b48",
+      "after_sha256": "9c611a0df7145bf3e479369cb952171eefc0146816dd89901c73504e5cc7893a",
+      "operations": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            7,
+            8
+          ],
+          "source_paragraph_range": [
+            7,
+            8
+          ],
+          "canonical": [
+            "শ্যামাচরণ সে কথায় কর্ণপাত করিতেন না। শ্যামাচরণ নিজের ছেলেদের কঠোর শাসনে রাখিতেন। কিন্তু ভবানীচরণের 'পরে তাঁহার কোনো শাসনই ছিল না। ইহা দেখিয়া সকলেই একবাক্যে বলিত, নিজের ছেলেদের চেয়ে ভবানীর প্রতিই তাঁহার বেশি স্নেহ। এমনি করিয়া ভবানীর পড়াশুনা কিছুই হইল না। এবং বিষয়বুদ্ধি সম্বন্ধে চিরদিন শিশুর মতো থাকিয়া দাদার উপর সম্পূর্ণ নির্ভর করিয়া তিনি বয়স কাটাইতে লাগিলেন। বিষয়কর্মে তাঁহাকে কোনো-দিন চিন্তা করিতে হইত না—কেবল মাঝে মাঝে এক-একদিন সই করিতে হইত। কেন সই করিতেছেন তাহা বুঝিবার চেষ্টা করিতেন না; কারণ, চেষ্টা করিলে কৃতকার্য হইতে পারিতেন না।"
+          ],
+          "source": [
+            "শ্যামাচরণ সে কথায় কর্ণপাত করিতেন না। শ্যামাচরণ নিজের ছেলেদের কঠোর শাসনে রাখিতেন। কিন্তু ভবানীচরণের ’পরে তাঁহার কোনো শাসনই ছিল না। ইহা দেখিয়া সকলেই একবাক্যে বলিত, নিজের ছেলেদের চেয়ে ভবানীর প্রতিই তাঁহার বেশি স্নেহ। এমনি করিয়া ভবানীর পড়াশুনা কিছুই হইল না। এবং বিষয়বুদ্ধি সম্বন্ধে চিরদিন শিশুর মতো থাকিয়া দাদার উপর সম্পূর্ণ নির্ভর করিয়া তিনি বয়স কাটাইতে লাগিলেন। বিষয়কর্মে তাঁহাকে কোনো-দিন চিন্তা করিতে হইত না—কেবল মাঝে মাঝে এক-একদিন সই করিতে হইত। কেন সই করিতেছেন তাহা বুঝিবার চেষ্টা করিতেন না; কারণ, চেষ্টা করিলে কৃতকার্য হইতে পারিতেন না।"
+          ]
+        },
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            26,
+            27
+          ],
+          "source_paragraph_range": [
+            26,
+            27
+          ],
+          "canonical": [
+            "বরাবর মাতার কাছে এই কথা শুনিয়া ভবানীচরণ মনে অত্যন্ত একটা ভরসা পাইলেন। তিনি নিজে অক্ষম বলিয়া এইরূপ আশ্বাসবাক্য তাঁহার পক্ষে অত্যন্ত সান্ত্বনার জিনিস। সতীসাধ্বীর বাক্য ফলিবেই, যাহা তাঁহারই তাহা আপনিই তাঁহার কাছে ফিরিয়া আসিবে, এ কথা তিনি নিশ্চয় স্থির করিয়া বসিয়া রহিলেন। মাতার মৃত্যুর পরে এ বিশ্বাস তাহার আরও দৃঢ় হইয়া উঠিল—কারণ মৃত্যুর বিচ্ছেদের মধ্য দিয়া মাতার পূূণ্যতেজ তাঁহার কাছে আরও অনেক বড়ো করিয়া প্রতিভাত হইল। দারিদ্র্যের সমস্ত অভাবপীড়ন যেন তাঁহার গায়েই বাজিত না। মনে হইত, এই-ষে অন্নবস্ত্রের কষ্ট, এই-যে পূর্বেকার চালচলনের ব্যত্যয়, এ যেন দু দিনের একটা অভিনয়মাত্র-এ কিছুই সত্য নহে। এইজন্য সাবেক ঢাকাই ধুতি ছিঁড়িয়া গেলে যখন কম দামের মোটা ধুতি তাঁহাকে কিনিয়া পরিতে হইল তখন তাঁহার হাসি পাইল। পূূজার সময় সাবেক কালের ধুমধাম চলিল না, নমোনম করিয়া কাজ সারিতে হইল; অভ্যাগতজন এই দরিদ্র আয়োজন দেখিয়া দীর্ঘনিশ্বাস ফেলিয়া সাবেক কালের কথা পাড়িল। ভবানীচরণ মনে মনে হাসিলেন; তিনি ভাবিলেন, 'ইহারা জানে না, এ-সমস্তই কেবল কিছুদিনের জন্য—তাহার পর এমন ধুম করিয়া একদিন পূজা হইবে যে, ইহাদের চক্ষুস্থির হইয়া যাইবে।' সেই ভবিষ্যতের নিশ্চিত সমারোহ তিনি এমনি প্রত্যক্ষের মতো দেখিতে পাইতেন যে, বর্তমান দৈন্য তাঁহার চোখেই পড়িত না।"
+          ],
+          "source": [
+            "বরাবর মাতার কাছে এই কথা শুনিয়া ভবানীচরণ মনে অত্যন্ত একটা ভরসা পাইলেন। তিনি নিজে অক্ষম বলিয়া এইরূপ আশ্বাসবাক্য তাঁহার পক্ষে অত্যন্ত সান্ত্বনার জিনিস। সতীসাধ্বীর বাক্য ফলিবেই, যাহা তাঁহারই তাহা আপনিই তাঁহার কাছে ফিরিয়া আসিবে, এ কথা তিনি নিশ্চয় স্থির করিয়া বসিয়া রহিলেন। মাতার মৃত্যুর পরে এ বিশ্বাস তাহার আরও দৃঢ় হইয়া উঠিল—কারণ মৃত্যুর বিচ্ছেদের মধ্য দিয়া মাতার পূূণ্যতেজ তাঁহার কাছে আরও অনেক বড়ো করিয়া প্রতিভাত হইল। দারিদ্র্যের সমস্ত অভাবপীড়ন যেন তাঁহার গায়েই বাজিত না। মনে হইত, এই-ষে অন্নবস্ত্রের কষ্ট, এই-যে পূর্বেকার চালচলনের ব্যত্যয়, এ যেন দু দিনের একটা অভিনয়মাত্র-এ কিছুই সত্য নহে। এইজন্য সাবেক ঢাকাই ধুতি ছিঁড়িয়া গেলে যখন কম দামের মোটা ধুতি তাঁহাকে কিনিয়া পরিতে হইল তখন তাঁহার হাসি পাইল। পূূজার সময় সাবেক কালের ধুমধাম চলিল না, নমোনম করিয়া কাজ সারিতে হইল; অভ্যাগতজন এই দরিদ্র আয়োজন দেখিয়া দীর্ঘনিশ্বাস ফেলিয়া সাবেক কালের কথা পাড়িল। ভবানীচরণ মনে মনে হাসিলেন; তিনি ভাবিলেন, ‘ইহারা জানে না, এ-সমস্তই কেবল কিছুদিনের জন্য—তাহার পর এমন ধুম করিয়া একদিন পূজা হইবে যে, ইহাদের চক্ষুস্থির হইয়া যাইবে।’ সেই ভবিষ্যতের নিশ্চিত সমারোহ তিনি এমনি প্রত্যক্ষের মতো দেখিতে পাইতেন যে, বর্তমান দৈন্য তাঁহার চোখেই পড়িত না।"
+          ]
+        },
+        {
+          "operation": "insert",
+          "canonical_paragraph_range": [
+            141,
+            141
+          ],
+          "source_paragraph_range": [
+            141,
+            142
+          ],
+          "canonical": [],
+          "source": [
+            "শৈলেন কহিল, “ইঁহাদের সঙ্গে আমাদের ভালো আলাপ নাই—আত্মীয়ের খবর কিছুই জানি না। সন্ধান করিব। কিন্তু, ইতিমধ্যে কী করা কর্তব্য।”"
+          ]
+        }
+      ],
+      "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+      "scope": "Same pinned edition body repair; not rights/publication/audio approval"
+    },
+    {
+      "slug": "book-b9d47814a8",
+      "verified_at": "2026-10-01T21:33:54.688933+00:00",
+      "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-b9d47814a8-source-comparison.json",
+      "source_snapshot_sha256": "e63b384921db6849593c75b3f78b6c359a65bc3a7cd65fd05b877797d62fe4cf",
+      "before_sha256": "1b2b340fb76990b99de7531f1ffe3b6edef56c172048e7b0d587c9271db8e2b2",
+      "after_sha256": "70bcf62c643f1c905d7a53ef72b5d180286249750cee6c237ac510b55931a27e",
+      "operations": [
+        {
+          "operation": "delete",
+          "canonical_paragraph_range": [
+            0,
+            2
+          ],
+          "source_paragraph_range": [
+            0,
+            0
+          ],
+          "canonical": [
+            "গল্প-দশক",
+            "১৮৯৫ (পৃ. ৩৯-৬১)"
+          ],
+          "source": []
+        },
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            11,
+            13
+          ],
+          "source_paragraph_range": [
+            9,
+            10
+          ],
+          "canonical": [
+            "গৃহিণী সচিবঃ সখী মিথঃ",
+            "প্রিয়শিষ্যা ললিতে কলাবিধৌ।"
+          ],
+          "source": [
+            "গৃহিণী সচিবঃ সখী মিথঃ\nপ্রিয়শিষ্যা ললিতে কলাবিধৌ।"
+          ]
+        },
+        {
+          "operation": "insert",
+          "canonical_paragraph_range": [
+            54,
+            54
+          ],
+          "source_paragraph_range": [
+            51,
+            52
+          ],
+          "canonical": [],
+          "source": [
+            "মনোরমা ঘরে আসিয়া বসিলেন। তাঁহার সহিত রোগিণীর অল্পস্বল্প আলাপ চলিতে লাগিল। এমন সময় ডাক্তারবাবু আসিয়া উপস্থিত হইলেন।"
+          ]
+        }
+      ],
+      "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+      "scope": "Same pinned edition body repair; not rights/publication/audio approval"
+    },
+    {
+      "slug": "book-4b944e64fa",
+      "verified_at": "2026-10-01T21:33:54.702558+00:00",
+      "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-4b944e64fa-source-comparison.json",
+      "source_snapshot_sha256": "d4563d61e1a112fd9907bfefc9ab3dabbeb34d3769f9e9b8bd121db7a5035b57",
+      "before_sha256": "167da21141ab55a5ea4c17f078f3e0940d5a44d3a9fff8d17355d7c6e2bf9622",
+      "after_sha256": "3d82f16d5c93e8c7e4de437f1a22424ca511edd5e7cc305e82f4c5a1b97d7d6a",
+      "operations": [
+        {
+          "operation": "insert",
+          "canonical_paragraph_range": [
+            4,
+            4
+          ],
+          "source_paragraph_range": [
+            4,
+            5
+          ],
+          "canonical": [],
+          "source": [
+            "আমিও নীলরতনের দৃষ্টান্তে উৎসাহিত হইয়া এক সময় বিশেষ সুবিধাযোগে কলিকাতায় পালাইয়া গেলাম। প্রথমে গ্রামের একটি আলাপী লোকের বাসায় ছিলাম, তাহার পরে বাপের কাছ হইতেও কিছু কিছু অধ্যয়নের সাহায্য পাইতে লাগিলাম। লেখাপড়া যথানিয়মে চলিতে লাগিল।"
+          ]
+        },
+        {
+          "operation": "insert",
+          "canonical_paragraph_range": [
+            16,
+            16
+          ],
+          "source_paragraph_range": [
+            17,
+            18
+          ],
+          "canonical": [],
+          "source": [
+            "রামলোচনবাবুর সঙ্গে আমার আলাপ হইল। সুরবালার সহিত বাল্যকালে আমার জানাশোনা ছিল তাহা রামলোচনবাবু জানিতেন কিনা জানি না, আমিও নূতন পরিচয়ে সে সম্বন্ধে কোনো কথা বলা সংগত বোধ করিলাম না। এবং সুরবালা যে কোনো কালে আমার জীবনের সঙ্গে কোনোরূপে জড়িত ছিল, সে কথা আমার ভালো করিয়া মনে উদয় হইল না।"
+          ]
+        }
+      ],
+      "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+      "scope": "Same pinned edition body repair; not rights/publication/audio approval"
+    },
+    {
+      "slug": "book-1090573dff",
+      "verified_at": "2026-10-01T21:34:00.930283+00:00",
+      "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-1090573dff-source-comparison.json",
+      "source_snapshot_sha256": "51faf7fe42dd040daf78909b707e6b63f3588157a1ca3112da4ca4808c9721b9",
+      "before_sha256": "05017ff20e10ee7109b97f4c09dd35dbc7bef0f3804d704fb3499bfacd736907",
+      "after_sha256": "7a20178933ca8553258d3b17e3f7cc9d90e805561fec68841151644a937a1582",
+      "operations": [
+        {
+          "operation": "insert",
+          "canonical_paragraph_range": [
+            38,
+            38
+          ],
+          "source_paragraph_range": [
+            38,
+            39
+          ],
+          "canonical": [],
+          "source": [
+            "কলিকাতায় মামার বাড়ি পৌঁছিয়া প্রথমত মামীর সঙ্গে আলাপ হইল। মামী এই অনাবশ্যক পরিবারবৃদ্ধিতে মনে-মনে যে বিশেষ সন্তুষ্ট হইয়াছিলেন তাহা বলিতে পারি না। তাঁহার নিজের তিনটি ছেলে লইয়া তিনি নিজের নিয়মে ঘরকন্না পাতিয়া বসিয়া আছেন, ইহার মধ্যে সহসা একটি তেরো বৎসরের অপরিচিত অশিক্ষিত পাড়াগেঁয়ে ছেলে ছাড়িয়া দিলে কিরূপ একটা বিপ্লবের সম্ভাবনা উপস্থিত হয়। বিশ্বম্ভরের এত বয়স হইল, তবু কিছুমাত্র যদি জ্ঞানকাণ্ড আছে।"
+          ]
+        },
+        {
+          "operation": "insert",
+          "canonical_paragraph_range": [
+            43,
+            43
+          ],
+          "source_paragraph_range": [
+            44,
+            45
+          ],
+          "canonical": [],
+          "source": [
+            "প্রকাণ্ড একটা ধাউস ঘুড়ি লইয়া বোঁ বোঁ শব্দে উড়াইয়া বেড়াইবার সেই মাঠ, ‘তাইরে নাইরে নাইরে না’ করিয়া উচ্চৈঃস্বরে স্বরচিত রাগিণী আলাপ করিয়া অকর্মণ্যভাবে ঘুরিয়া বেড়াইবার সেই নদীতীর, দিনের মধ্যে যখন-তখন ঝাঁপ দিয়া পড়িয়া সাঁতার কাটিবার সেই সংকীর্ণ স্রোতস্বিনী, সেই-সব দল-বল উপদ্রব স্বাধীনতা, এবং সর্বোপরি সেই অত্যাচারিণী অবিচারিণী মা অহর্নিশি তাহার নিরুপায় চিত্তকে আকর্ষণ করিত।"
+          ]
+        },
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            48,
+            49
+          ],
+          "source_paragraph_range": [
+            50,
+            51
+          ],
+          "canonical": [
+            "অসহ্য বোধ হওয়াতে একদিন 'ফটিক তাহার মামীর কাছে নিতান্ত 'অপরাধীর মতো গিয়া কহিল, “বই হারিয়ে ফেলেছি।”"
+          ],
+          "source": [
+            "অসহ্য বোধ হওয়াতে একদিন ‘ফটিক তাহার মামীর কাছে নিতান্ত ‘অপরাধীর মতো গিয়া কহিল, “বই হারিয়ে ফেলেছি।”"
+          ]
+        }
+      ],
+      "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+      "scope": "Same pinned edition body repair; not rights/publication/audio approval"
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "verified_at": "2026-10-01T21:34:00.942074+00:00",
+      "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-f5d593e1f4-source-comparison.json",
+      "source_snapshot_sha256": "58cc5368647e76dcc3f21028c86933b9bd3e19482d37c547be507bb2ab5a18d9",
+      "before_sha256": "1c6c50661763d7497213b1041ae809c1f63a1262387eacdbc0b0a3348fe8e350",
+      "after_sha256": "94aa1e3f4446f201905cd31429d5ee1e61eecc227df548ddaf6ad6539843260e",
+      "operations": [
+        {
+          "operation": "delete",
+          "canonical_paragraph_range": [
+            29,
+            30
+          ],
+          "source_paragraph_range": [
+            29,
+            29
+          ],
+          "canonical": [
+            "১২৯৮?"
+          ],
+          "source": []
+        }
+      ],
+      "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+      "scope": "Same pinned edition body repair; not rights/publication/audio approval"
+    },
+    {
+      "slug": "book-88ded9b47c",
+      "verified_at": "2026-10-01T21:34:00.963252+00:00",
+      "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-88ded9b47c-source-comparison.json",
+      "source_snapshot_sha256": "dbdb49314a37f8a54e7ea27bc2f37dd1ff918891852ddce3a4213f36f16a7180",
+      "before_sha256": "8df7cdf4a398bc3f1c5a9b185af9e995dffb0cf841ddee74b7068a33e10e0bc0",
+      "after_sha256": "1e68e249392f67ed03f4d451f533bb6b175f6f20d73020abc246afd82bf8ff93",
+      "operations": [
+        {
+          "operation": "delete",
+          "canonical_paragraph_range": [
+            0,
+            2
+          ],
+          "source_paragraph_range": [
+            0,
+            0
+          ],
+          "canonical": [
+            "গল্প-দশক",
+            "১৮৯৫ (পৃ. ১০২-১২০)"
+          ],
+          "source": []
+        },
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            30,
+            32
+          ],
+          "source_paragraph_range": [
+            28,
+            29
+          ],
+          "canonical": [
+            "দাসখৎ দিলেম লিখে শ্রীচরণে,",
+            "সকলে সাক্ষী থাকুক্‌ বৃন্দাবনে।"
+          ],
+          "source": [
+            "দাসখৎ দিলেম লিখে শ্রীচরণে,\nসকলে সাক্ষী থাকুক্‌ বৃন্দাবনে।"
+          ]
+        }
+      ],
+      "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+      "scope": "Same pinned edition body repair; not rights/publication/audio approval"
+    },
+    {
+      "slug": "book-5704b31005",
+      "verified_at": "2026-10-01T21:34:00.978203+00:00",
+      "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-5704b31005-source-comparison.json",
+      "source_snapshot_sha256": "427f7b853210dbc6e6a744ca03d24a399693aa226641c7d5b588c51117322682",
+      "before_sha256": "0dbf2e76d4ec6abc86074b1bc87a4d6d636d36fee22d9a8bbb4c29081ab693d8",
+      "after_sha256": "c9e4ed3927535c11a5d1d5a4729f0c8a1371952a33a6e0e6d36514b3d249b089",
+      "operations": [
+        {
+          "operation": "delete",
+          "canonical_paragraph_range": [
+            0,
+            2
+          ],
+          "source_paragraph_range": [
+            0,
+            0
+          ],
+          "canonical": [
+            "গল্প-দশক",
+            "১৮৯৫ (পৃ. ২৫-৩৮)"
+          ],
+          "source": []
+        }
+      ],
+      "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+      "scope": "Same pinned edition body repair; not rights/publication/audio approval"
+    },
+    {
+      "slug": "book-63afd5e9be",
+      "verified_at": "2026-10-01T21:34:00.991448+00:00",
+      "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-63afd5e9be-source-comparison.json",
+      "source_snapshot_sha256": "bdc0ea8609aa497a6812e18ba02b915d491a1b492202ec9185aaf7141b4a28d7",
+      "before_sha256": "d37de31dc44c9b8f23d559fd803aab1f4152130b0c261bf555197c99ecc86057",
+      "after_sha256": "01c529fdfa9dfce7f4cfbe1cf6f8532091019ffd0987f356755caafa96eebf15",
+      "operations": [
+        {
+          "operation": "delete",
+          "canonical_paragraph_range": [
+            52,
+            53
+          ],
+          "source_paragraph_range": [
+            52,
+            52
+          ],
+          "canonical": [
+            "১২৯৮?"
+          ],
+          "source": []
+        }
+      ],
+      "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+      "scope": "Same pinned edition body repair; not rights/publication/audio approval"
+    },
+    {
+      "slug": "book-2ddbed8293",
+      "verified_at": "2026-10-01T21:34:01.001145+00:00",
+      "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-2ddbed8293-source-comparison.json",
+      "source_snapshot_sha256": "7292d5b0b952ac33331764140a144833cf3068ae96c258f021f002f8b23a3481",
+      "before_sha256": "dafabb6cd468900154bca08a6d71f6f8ebe5f7302ccad153d4b4c9a438f6de99",
+      "after_sha256": "74ac1205e913eabe6ce1875724c0c9868a9fedb09cc3a18bd6b4c2e304bfbeb5",
+      "operations": [
+        {
+          "operation": "delete",
+          "canonical_paragraph_range": [
+            31,
+            32
+          ],
+          "source_paragraph_range": [
+            31,
+            31
+          ],
+          "canonical": [
+            "১২৯৮?"
+          ],
+          "source": []
+        }
+      ],
+      "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+      "scope": "Same pinned edition body repair; not rights/publication/audio approval"
+    }
+  ],
+  "changed_slugs": [
+    "book-a74c1a1451",
+    "book-d19e96859f",
+    "book-a4a369483f",
+    "book-2e468c4990",
+    "book-ac5a71075e",
+    "book-754da4eab8",
+    "book-a23625bf36",
+    "book-827fdc7aee",
+    "book-b9d47814a8",
+    "book-4b944e64fa",
+    "book-1090573dff",
+    "book-f5d593e1f4",
+    "book-88ded9b47c",
+    "book-5704b31005",
+    "book-63afd5e9be",
+    "book-2ddbed8293"
+  ]
+}

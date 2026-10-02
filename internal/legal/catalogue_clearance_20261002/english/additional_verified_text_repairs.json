@@ -1,0 +1,332 @@
+{
+  "repairs": [
+    {
+      "slug": "pride-and-prejudice",
+      "kind": "explicit_verified_current_edition_migration",
+      "old_chapter_count": 60,
+      "new_chapter_count": 61,
+      "old_identity": {
+        "source_hash": "fcf234e0476cc6af8b3f604399bf3d7c4b72931bdf2af276ab4cc78caf938d5c",
+        "content_hash": "bdf431c50329d7f3fd9d0fe5ac4026050fe2f76cdc553d392ca223f2c54c5568",
+        "provenance_hash": "d6a4a3e80cef639d4650f95d8322db7edfdf9200a52e401de2b5290cdcfe2184",
+        "source_url": "https://www.gutenberg.org/ebooks/1342",
+        "source_name": "Project Gutenberg"
+      },
+      "new_source_sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+      "new_content_sha256": "4b68459abff92d885d2d493ad052e8cdba6308ebf78f24508c6410cce683c276",
+      "removed_illustrations": 155,
+      "approval_transferred": false,
+      "prior_reader_chapter_bindings": [
+        {
+          "id": "chapter-001",
+          "old_content_sha256": "3e19fb75e8ba915bad01d7edde9938d666fe7195c8d62fea8e72cda2baa9a3c0",
+          "old_title": "Chapter I"
+        },
+        {
+          "id": "chapter-002",
+          "old_content_sha256": "38c28971eed0d156ef6fc91b46e0fb925eb9411235d368c975e8bf812cb67338",
+          "old_title": "CHAPTER II"
+        },
+        {
+          "id": "chapter-003",
+          "old_content_sha256": "1a68b3e6b0831a0f6f187c11ba64c98ebb524aed947fd7a030eac5572af516d1",
+          "old_title": "CHAPTER III"
+        },
+        {
+          "id": "chapter-004",
+          "old_content_sha256": "aa60d425de2f66d0080221e9348f40c819a8b846ed37c3778a7923ef5ccb2d29",
+          "old_title": "CHAPTER IV"
+        },
+        {
+          "id": "chapter-005",
+          "old_content_sha256": "c2ed1a417889962f6035c75d68cf5ce136bd8e1e89d0bb51cc566d6031bb10ff",
+          "old_title": "CHAPTER V"
+        },
+        {
+          "id": "chapter-006",
+          "old_content_sha256": "fc8887306bf5e7316fed01cd7c41fb57fbf750e2fed0f68cc7ceac74330234ed",
+          "old_title": "CHAPTER VI"
+        },
+        {
+          "id": "chapter-007",
+          "old_content_sha256": "4f581d9b2a0e27e008639b94f46486a0e653697fd41929e017705bf9c16f41a4",
+          "old_title": "CHAPTER VII"
+        },
+        {
+          "id": "chapter-008",
+          "old_content_sha256": "224728ab500539e0a11b74172161bc7fff669fb605f8aafeb5e548773ce5b0c0",
+          "old_title": "CHAPTER VIII"
+        },
+        {
+          "id": "chapter-009",
+          "old_content_sha256": "758ae421d8455bdcf5d3ba803e16aa3a229846609a70756d5d9d3e3400546423",
+          "old_title": "CHAPTER IX"
+        },
+        {
+          "id": "chapter-010",
+          "old_content_sha256": "cc56ccee3cdf54e4d1b0516b4d0d9a8e8745321ce07dda3abad054d7a9fdd86c",
+          "old_title": "CHAPTER X"
+        },
+        {
+          "id": "chapter-011",
+          "old_content_sha256": "306f537ea3ad49b926e1968ac64ad9e11483fd5f4f2a3de5bd9934f650c816eb",
+          "old_title": "CHAPTER XI"
+        },
+        {
+          "id": "chapter-012",
+          "old_content_sha256": "752c40f563f1f7dc15d6d959de0d9729b877bc6697a07b38e948f28666a4cc92",
+          "old_title": "CHAPTER XII"
+        },
+        {
+          "id": "chapter-013",
+          "old_content_sha256": "aca242c7d7f61c304d5ad0e93f417dfdf1989d74c96c2065ce9d62e21fd139f6",
+          "old_title": "CHAPTER XIII"
+        },
+        {
+          "id": "chapter-014",
+          "old_content_sha256": "f56abdb45972a4d22c5de9f942e0699079624193a78d803bacfe5b9da3bddedf",
+          "old_title": "CHAPTER XIV"
+        },
+        {
+          "id": "chapter-015",
+          "old_content_sha256": "e448f3043c92edb3c208e68bd38c8c8868ca0290e0ceb1a13b06757b033d376b",
+          "old_title": "CHAPTER XV"
+        },
+        {
+          "id": "chapter-016",
+          "old_content_sha256": "b5e895eef03355d47228ecd154fee1e805d74cc4c75ca40bb8d764f6cdcd3fc7",
+          "old_title": "CHAPTER XVI"
+        },
+        {
+          "id": "chapter-017",
+          "old_content_sha256": "a31a59df347516e666161dbd3f90d8c064363241779fd6eaf5d224d69286ddce",
+          "old_title": "CHAPTER XVII"
+        },
+        {
+          "id": "chapter-018",
+          "old_content_sha256": "9ff704ce22953dfd42217555e95c3bc803c2c2ad7c154350623106711aa7c232",
+          "old_title": "CHAPTER XVIII"
+        },
+        {
+          "id": "chapter-019",
+          "old_content_sha256": "61d184dff9f6f01297d94735bf56d51cd8cfc17aa916cd62a10634959611847e",
+          "old_title": "CHAPTER XIX"
+        },
+        {
+          "id": "chapter-020",
+          "old_content_sha256": "92f9586e720d4ed3fa5cb0509a1f57781b88eca0fff381274acb0fa19b3da2a2",
+          "old_title": "CHAPTER XX"
+        },
+        {
+          "id": "chapter-021",
+          "old_content_sha256": "4d68371a9250540d95d1ea8c79e79ab0386bcff706ec193ff54b15db467fdac9",
+          "old_title": "CHAPTER XXI"
+        },
+        {
+          "id": "chapter-022",
+          "old_content_sha256": "2ca81bd202acb8a9f768d419fbea9235f47fc5e122dc8eaece6878c870ced8c7",
+          "old_title": "CHAPTER XXII"
+        },
+        {
+          "id": "chapter-023",
+          "old_content_sha256": "e967b51b8f331317cafea4e2b257718554d6eecc3afa403e7f7b012d5b454503",
+          "old_title": "CHAPTER XXIII"
+        },
+        {
+          "id": "chapter-024",
+          "old_content_sha256": "d124f3031d7d506845c2b1c8453349fb7caee4be5d2776e7409284eb69f4a16b",
+          "old_title": "CHAPTER XXIV"
+        },
+        {
+          "id": "chapter-025",
+          "old_content_sha256": "25c46cf1d30880cd64c534718c15eee883ae5a2ed44846f28ec437e339dba9ff",
+          "old_title": "CHAPTER XXV"
+        },
+        {
+          "id": "chapter-026",
+          "old_content_sha256": "d0285f27826c37f7161b018c460b301d95d4ae55978fe0ea0d4ebfefb6d36f66",
+          "old_title": "CHAPTER XXVI"
+        },
+        {
+          "id": "chapter-027",
+          "old_content_sha256": "1c24e6b3ff83e94ba6abc72676b8f953722fc39920dff517333bcb503a7c5a11",
+          "old_title": "CHAPTER XXVII"
+        },
+        {
+          "id": "chapter-028",
+          "old_content_sha256": "0412c267677b0d913014c75f01c1571be5a09a04d93432c75e7ea344d36da215",
+          "old_title": "CHAPTER XXVIII"
+        },
+        {
+          "id": "chapter-029",
+          "old_content_sha256": "f9cfa96b7d61d4891d6bd4fd83c510d1ae1f2790842116e79d727196a3ca26e5",
+          "old_title": "CHAPTER XXIX"
+        },
+        {
+          "id": "chapter-030",
+          "old_content_sha256": "31e7855dc03f5b5b993125f46887cc3720617c61200187c477a7a0fd6317dc85",
+          "old_title": "CHAPTER XXX"
+        },
+        {
+          "id": "chapter-031",
+          "old_content_sha256": "b3909bd97818b1d151ad304da56bfb0ebb041c7cbf1b750d69a24a1061f688c3",
+          "old_title": "CHAPTER XXXI"
+        },
+        {
+          "id": "chapter-032",
+          "old_content_sha256": "9d99f61723437bf5eb04d26498a6a2af0df8d194bd0a6d95282e99fd1d3aa266",
+          "old_title": "CHAPTER XXXII"
+        },
+        {
+          "id": "chapter-033",
+          "old_content_sha256": "a72f5f6653ef61c2fa01b6962782abeaf680ad217b0ea3090e04b543ad22a5db",
+          "old_title": "CHAPTER XXXIII"
+        },
+        {
+          "id": "chapter-034",
+          "old_content_sha256": "93a619dc0b003c769adb739d68178d79fcd3c833f8892a1e1504b44cc8c42b52",
+          "old_title": "CHAPTER XXXIV"
+        },
+        {
+          "id": "chapter-035",
+          "old_content_sha256": "32824f6a8515e1cb70c9959a5e3005bf6c44c7a5b629ca141644ebc3ae32f809",
+          "old_title": "CHAPTER XXXV"
+        },
+        {
+          "id": "chapter-036",
+          "old_content_sha256": "4efab17ffd351f11194e9cfaf8380128b707c1560fd96c2da1e368a7eb3f62a4",
+          "old_title": "CHAPTER XXXVI"
+        },
+        {
+          "id": "chapter-037",
+          "old_content_sha256": "a5bac0876ef9725de0580ca0269e7258f1f690f79176fa81b1b3349255c32fd8",
+          "old_title": "CHAPTER XXXVII"
+        },
+        {
+          "id": "chapter-038",
+          "old_content_sha256": "50253775ad26b09da7569f6cf48a9b7a4b7825c1480611b126a4a44b9ec8a521",
+          "old_title": "CHAPTER XXXVIII"
+        },
+        {
+          "id": "chapter-039",
+          "old_content_sha256": "9f044eb279eefdc3c4145029ad1de3b23ae669238c3df8240a0bbf42567e3456",
+          "old_title": "CHAPTER XXXIX"
+        },
+        {
+          "id": "chapter-040",
+          "old_content_sha256": "f1685cffdbdbf468f6e3e8cc23f9ec9b0336d64bb1b98625a7e1ef2bef9fd719",
+          "old_title": "CHAPTER XL"
+        },
+        {
+          "id": "chapter-041",
+          "old_content_sha256": "dcbeeb0a210b9be6dbada05abaa66f2378c934377a5cadc4456ce1615a6800a0",
+          "old_title": "CHAPTER XLI"
+        },
+        {
+          "id": "chapter-042",
+          "old_content_sha256": "26bb3952588e5ad7736e31c4df441806bbda30c21dd745cc3448a693c8cd167f",
+          "old_title": "CHAPTER XLII"
+        },
+        {
+          "id": "chapter-043",
+          "old_content_sha256": "599644b2ca8ebf0eb90541bf2598a2ee2d8add7ac96d0e906b9e624c3994456e",
+          "old_title": "CHAPTER XLIII"
+        },
+        {
+          "id": "chapter-044",
+          "old_content_sha256": "0785878c59e3b510cabfeda572cfaf2fcdfcdcaac84fe401cd5b154cc58a64f6",
+          "old_title": "CHAPTER XLIV"
+        },
+        {
+          "id": "chapter-045",
+          "old_content_sha256": "8dea8fa0914c0e6a55d7784e45a875a81f2ce0fb8f5d31c2568fbeef960613c6",
+          "old_title": "CHAPTER XLV"
+        },
+        {
+          "id": "chapter-046",
+          "old_content_sha256": "f05f6efb457b2c420866d446572d39c8cc8e156b7982738fc7326b769c1823a9",
+          "old_title": "Chapter XLVI"
+        },
+        {
+          "id": "chapter-047",
+          "old_content_sha256": "c328f7546563673e7a35e83a31f1b6daa179b4941501ce2a910350b451d0f979",
+          "old_title": "CHAPTER XLVII"
+        },
+        {
+          "id": "chapter-048",
+          "old_content_sha256": "c2486416117ccd11e4fc54fbbb0696791fdf8c128cce5a0499ea0a7d4ea6266c",
+          "old_title": "CHAPTER XLVIII"
+        },
+        {
+          "id": "chapter-049",
+          "old_content_sha256": "d039cdab4ebdad982c3463510957e6245ff8ab4f35cd9968445e96c59062a08d",
+          "old_title": "CHAPTER XLIX"
+        },
+        {
+          "id": "chapter-050",
+          "old_content_sha256": "0147b7a27920071cef87a7305b21ae77ba730c1fe2e3db542b5986893675a4af",
+          "old_title": "CHAPTER L"
+        },
+        {
+          "id": "chapter-051",
+          "old_content_sha256": "f7887f351b25fcf12f2c3fd0ed34c0ef9af7adb67015aca39fccfde685d4a82c",
+          "old_title": "CHAPTER LI"
+        },
+        {
+          "id": "chapter-052",
+          "old_content_sha256": "a1812d0ce8134bf2c4e43a42c933433c6b99dccdd904e8bc2f2bfbf23c815893",
+          "old_title": "CHAPTER LII"
+        },
+        {
+          "id": "chapter-053",
+          "old_content_sha256": "35e60662362c9daf8aa8a0e21bb0051da10db575960852d2f56b8d61c83cb81d",
+          "old_title": "CHAPTER LIII"
+        },
+        {
+          "id": "chapter-054",
+          "old_content_sha256": "c7109db366ff42c461ee5a2212eff1d0be1061696ee659671ef21bb32e82b052",
+          "old_title": "CHAPTER LIV"
+        },
+        {
+          "id": "chapter-055",
+          "old_content_sha256": "9bf6dde71fe5bb8d99da998e79e585e2d8aaafca5ccf3d23b65c3089c522c088",
+          "old_title": "CHAPTER LV"
+        },
+        {
+          "id": "chapter-056",
+          "old_content_sha256": "34840b42f0ce84da121672c3d97e79ac6af70748d76d3903f00f26cd092e354c",
+          "old_title": "CHAPTER LVI"
+        },
+        {
+          "id": "chapter-057",
+          "old_content_sha256": "9472a919bd6cb45727dae39e94d504eef8cf037e8c99f08681d1e059eb991f15",
+          "old_title": "CHAPTER LVII"
+        },
+        {
+          "id": "chapter-058",
+          "old_content_sha256": "01f52b217fd4445c997ebf4c25742a1b7bcc760df392797b6843fa17e03fe7e0",
+          "old_title": "CHAPTER LVIII"
+        },
+        {
+          "id": "chapter-059",
+          "old_content_sha256": "fb1c9b02f5a7d966523c18610fd6044d9989b527750dc447e1488a174dff95fc",
+          "old_title": "CHAPTER LIX"
+        },
+        {
+          "id": "chapter-060",
+          "old_content_sha256": "bf12185475c8dce7d8119daf86876ee4bf00843fe1e06a16a4a9932a49f61476",
+          "old_title": "CHAPTER LX"
+        }
+      ],
+      "source_git_base": "8be3926fd9fc4526dec66d51b64d8ca72b2d0035"
+    },
+    {
+      "slug": "dracula",
+      "kind": "restore_original_preface",
+      "new_chapter_id": "chapter-000",
+      "chapter_count": 28,
+      "content_sha256": "bb3e6a9bc8229f003502f05024f8188accd6bacdaa555d55b6cdea33bd33053b",
+      "protected_rights_451_unchanged": true
+    }
+  ]
+}

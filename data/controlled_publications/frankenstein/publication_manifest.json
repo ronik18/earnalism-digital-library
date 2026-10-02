@@ -1,0 +1,242 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "frankenstein",
+  "title": "Frankenstein",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "7810cd483cffcf2cc8a1d8f0d5807931e69d4f48cd14149b8c76f88af82fead3",
+    "content_hash": "c83bc9742f100459a5bd329a9f048cb14e6356c7e43e2a423e71becc9ddc2b85",
+    "provenance_hash": "801a0d6f3dad09bb4a7d3b179eac4673f3f7ec3c05a8c63fc928fa1aa30e7a26",
+    "sanitized": true,
+    "chapter_count": 28,
+    "chapter_index_sha256": "16737bddb873d79d7dff0351173bef8b9912f87e1d5ab7453a64e832aec67671",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Letter 1. To Mrs. Saville, England",
+        "word_count": 1198,
+        "sha256": "5a9c472421e82e5c16ffd95468e1b5cd9d574971447a9a0e32394f6fa144ce0c"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "Letter 2. To Mrs. Saville, England",
+        "word_count": 1309,
+        "sha256": "7bf5b1efca3b6a2d475f18729a01bf9ebd99222d85fa2c00712c57db76b6f6f0"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "Letter 3. To Mrs. Saville, England",
+        "word_count": 296,
+        "sha256": "cbc5a87b8f28ef927b2d34024d6cf56d7a2bf9a15f17db478e2e4c6a8480abad"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "Letter 4. To Mrs. Saville, England",
+        "word_count": 2733,
+        "sha256": "d954ab4476e8dbfc2e2d349a8fdc58be5d99a042c8af6e03443bafca25d43d67"
+      },
+      {
+        "id": "chapter-005",
+        "order": 5,
+        "title": "Chapter 1",
+        "word_count": 1780,
+        "sha256": "4448c9b90306613455c8cf47737b1e06c3cb5678512769e2a420982cffd15e9f"
+      },
+      {
+        "id": "chapter-006",
+        "order": 6,
+        "title": "Chapter 2",
+        "word_count": 2211,
+        "sha256": "408137119865eaa4c45275e76c217524fe7ddc62ac6b96d42e22055220846afb"
+      },
+      {
+        "id": "chapter-007",
+        "order": 7,
+        "title": "Chapter 3",
+        "word_count": 2688,
+        "sha256": "ab195fa54d5dc159bdb0f733cf195eedebd55be2abed60bb7cf4f8a3db69c90f"
+      },
+      {
+        "id": "chapter-008",
+        "order": 8,
+        "title": "Chapter 4",
+        "word_count": 2537,
+        "sha256": "e93d92292fb9ad6342e6986be8ec402454554c5242d330ee2b7f56a60c4c33da"
+      },
+      {
+        "id": "chapter-009",
+        "order": 9,
+        "title": "Chapter 5",
+        "word_count": 2359,
+        "sha256": "b23858974dad52c8dd3506e8f31c289326cebf2dd4b54d6c01c74749e64b5be6"
+      },
+      {
+        "id": "chapter-010",
+        "order": 10,
+        "title": "Chapter 6",
+        "word_count": 2728,
+        "sha256": "495015ec56aebc1e1a510c8cd6467b77a8a78ff3fa92ef5b6db60747a0128124"
+      },
+      {
+        "id": "chapter-011",
+        "order": 11,
+        "title": "Chapter 7",
+        "word_count": 3566,
+        "sha256": "5d9c795cc0effac5965b3ed38ab87184af74f303e23a5ace48d15fc446a8834c"
+      },
+      {
+        "id": "chapter-012",
+        "order": 12,
+        "title": "Chapter 8",
+        "word_count": 3100,
+        "sha256": "879749adc3a932876164e3690834d092bbf9a8f0f9dbfdf4745bd8b5fb5b48c1"
+      },
+      {
+        "id": "chapter-013",
+        "order": 13,
+        "title": "Chapter 9",
+        "word_count": 2222,
+        "sha256": "6e5bd84d6570eeb8a6d84defa7aa6921f60b6032c634cdbf8850c6706279f50b"
+      },
+      {
+        "id": "chapter-014",
+        "order": 14,
+        "title": "Chapter 10",
+        "word_count": 2361,
+        "sha256": "80b9c145ee803a98c17f1fed61c6339d3e2caef5f593ee8d73e8d4c78bd867fe"
+      },
+      {
+        "id": "chapter-015",
+        "order": 15,
+        "title": "Chapter 11",
+        "word_count": 2905,
+        "sha256": "3557e5922b44bd933703726ea3fec98858e938a4df8234b51e6a0fc4b39a27b5"
+      },
+      {
+        "id": "chapter-016",
+        "order": 16,
+        "title": "Chapter 12",
+        "word_count": 2076,
+        "sha256": "36c703fd69f81671d0d72531657c4f66a8f1b49ed483456e6750e5aebe0d5e3a"
+      },
+      {
+        "id": "chapter-017",
+        "order": 17,
+        "title": "Chapter 13",
+        "word_count": 2038,
+        "sha256": "5ede90a1b9fccc792df2aafc76c77197d121ee51b534287013f2569f2f1afe46"
+      },
+      {
+        "id": "chapter-018",
+        "order": 18,
+        "title": "Chapter 14",
+        "word_count": 1853,
+        "sha256": "316be76462c4dcd64c696a4a66a016c4d837703441d4c6ddce01f02cec08aa8d"
+      },
+      {
+        "id": "chapter-019",
+        "order": 19,
+        "title": "Chapter 15",
+        "word_count": 3017,
+        "sha256": "d11298e7f38b94ece91480a6a8e3a95bba6d99088161a12f081da5a705bfdbb8"
+      },
+      {
+        "id": "chapter-020",
+        "order": 20,
+        "title": "Chapter 16",
+        "word_count": 3204,
+        "sha256": "ddb072ed4508f8c4b0f93bdbd90c14d1f9f7db9c449c245815fa5a291b3b5587"
+      },
+      {
+        "id": "chapter-021",
+        "order": 21,
+        "title": "Chapter 17",
+        "word_count": 1920,
+        "sha256": "7bf1e387298ae40cd175f4a295a5924e76f6aab2629a241b82f4d1fbe0de5759"
+      },
+      {
+        "id": "chapter-022",
+        "order": 22,
+        "title": "Chapter 18",
+        "word_count": 2853,
+        "sha256": "bc96e04cc9ac05330c633aaeaaad3b417bf8676f2049e37eb535e85793fdc261"
+      },
+      {
+        "id": "chapter-023",
+        "order": 23,
+        "title": "Chapter 19",
+        "word_count": 2615,
+        "sha256": "b771e49fb7b0aa8ca4353477198dee545127faeec34966c13b6c9ae158b9c5db"
+      },
+      {
+        "id": "chapter-024",
+        "order": 24,
+        "title": "Chapter 20",
+        "word_count": 3525,
+        "sha256": "f81c1b6ed8376b4ec5052678484e336fb429eab3cc0d2a54a2c8d15e73c6d8e6"
+      },
+      {
+        "id": "chapter-025",
+        "order": 25,
+        "title": "Chapter 21",
+        "word_count": 3745,
+        "sha256": "b5b4ad46ad4b97b480b564ac4d98fc4ced6b6e06964c877d9edb82aaf51dc2ec"
+      },
+      {
+        "id": "chapter-026",
+        "order": 26,
+        "title": "Chapter 22",
+        "word_count": 3424,
+        "sha256": "025c7c053d1dc937c32f5c204296b2d6393fbb3aab4ed5d38347a55a545678a9"
+      },
+      {
+        "id": "chapter-027",
+        "order": 27,
+        "title": "Chapter 23",
+        "word_count": 2597,
+        "sha256": "dd9cf156bab9e3b76a8ed69ec85b848e3113bfe32857ab73abaeec2e203af68b"
+      },
+      {
+        "id": "chapter-028",
+        "order": 28,
+        "title": "Chapter 24",
+        "word_count": 8251,
+        "sha256": "70b030cac2f3a8ab896a2ed7cb54d1d9802f4493d9e7827ed315b9cb9abc366a"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "dc06292e3e257f690c3017e88ded33d0b6baa8b778d1629f3074d1f76b5df449"
+  },
+  "reader_release": {
+    "status": "READY_FOR_APPROVAL",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566127/earnalism/covers/front/cover_3f8a6bb7-258b-4473-b14e-c68d2df58b29.png",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "0931fd10d69e503822d094a8f3cdb4469d4d784f4baff25e6434cc34ebfa1d20",
+    "reader_manifest": "2d7d0f01dcbc35eebc51a178b4eb72a9d766cfe5ec56d618113455ba72c16434",
+    "source_evidence": "dc06292e3e257f690c3017e88ded33d0b6baa8b778d1629f3074d1f76b5df449",
+    "approval_evidence": "2da12440ee6c9e3445589e5997f6cf889898e7dcfa91827c750218e1e4a4eccc"
+  },
+  "manifest_sha256": "ca4afb9405335914689bdc13787b9726f57a22f7502d4c786234c80ef5eb9bf5"
+}

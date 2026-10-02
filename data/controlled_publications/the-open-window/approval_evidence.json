@@ -1,10 +1,10 @@
 {
   "slug": "the-open-window",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "sprint1_open_window_all_release_gates_passed",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
@@ -65,5 +65,15 @@
     "vercel_frontend": "dpl_QheBLC5YexLoAnkWkwbFK6WM1oGG"
   },
   "production_proof_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_production_release_proof.json",
-  "approved_at": "2026-07-19T11:15:27Z"
+  "approved_at": "2026-07-19T11:15:27Z",
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "sprint1_open_window_all_release_gates_passed"
+  },
+  "publication_authorization_sha256": "483606fbed9f701455072911ef1cf25ddc9e7380d73ec0b81257e38cb303a00d",
+  "source_hash": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+  "content_hash": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "provenance_hash": "f0bf9362162e221f0aee69804a444f30366ea2d2c776a078e8d3226ba36d13e7",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00"
 }

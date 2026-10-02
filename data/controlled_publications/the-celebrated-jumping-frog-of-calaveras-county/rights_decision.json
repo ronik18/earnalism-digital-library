@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-celebrated-jumping-frog-of-calaveras-county-pg10947-noncover-text",
+  "edition_id": "the-celebrated-jumping-frog-of-calaveras-county",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "0dd92e37fbfdfa8de30399cefe6a3ce26218835e6c05f321970ae0789c93399c",
+    "reader_manifest": "0e726b59feff51c9c14a7c44ee54bfbfdf914ccd8bfd23c9857c5b086476c11a",
+    "source_evidence": "3e9d0284925415a32fdb7cfc8bc7d8864f896aeee4f89233141f6cb2a1802651",
+    "approval_evidence": "ebe54be1e4a0f772217db6bc4a73ac64438e09edb52aebf289c6aa6f059b90d7",
+    "checksum_manifest": "0939ef6da32c99487f893730019accd2b7861e6e72a22878c186759b41cbb40f",
+    "publication_manifest": "faf370067b9e4dd91be5708a6df99e78cac50762814a5ca3b6e121fc63dd8ddd"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:52:27.631967+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1910, verified lifetime collection publication 1869 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "c181ba405dd630ba5daf91f2ce1aab70104b4589ea75302f33be9ae4e453879d",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "4a96f50ad7df460f80f1b69ca814b7514d7f178d24e0079cd6fd8a04e5faba24",
+    "312ae97f2616ba41d9f6d4bfc87aa3218f3b867941194d139297099b423d512e",
+    "ba7046e7f129168c08c7e5cd22062185183badee2cc894daf81c1ea405927934"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

@@ -1,13 +1,204 @@
 {
   "slug": "the-door-in-the-wall",
   "source_url": "https://www.gutenberg.org/ebooks/11870",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #11870; The Door in the Wall selected complete H.G. Wells story/cycle from country of the blind; verified lifetime collection edition 1913; no translation/editorial/art imported",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "dd1e44d2ddf9f3a49bc10d51c90eb9a3dc5fde221d972bd59a4a3fd54e130ff6",
-  "content_hash": "b587a74512de6a7607f81bee7180c0529d8088d0bc6afd6222fb43c971bb5b83",
-  "provenance_hash": "ea1c878f2a5bb0147afe371b1d7fd60204e5596f1470483b9b716e53a2426415",
-  "rights_basis": "H.G. Wells died 1946; first published 1906. Public domain in India and the U.S.",
+  "source_hash": "4f5efdaf578c1b581fd748a5a6dc6d6895490ccc17f5af181171a0d6d6f41114",
+  "content_hash": "07c013cc12e20449cb1355abe745215f3f4d89e18949ef36aff7718c1f916499",
+  "provenance_hash": "ad66653119410414e374ce1820ef60485482754cf56b6cd7adbe841f494b6f9e",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1946, verified lifetime collection publication 1913 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-03T08:04:22.334556+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #11870",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/11870",
+      "resolved_url": "https://www.gutenberg.org/ebooks/11870",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:06.530990+00:00",
+      "response_sha256": "d2d96c440f71459b74770f4ca578766ab0a88d18a4fdf004df5b21174ee7bd44"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/11870.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/11870/pg11870.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:12.288469+00:00",
+      "response_sha256": "4f5efdaf578c1b581fd748a5a6dc6d6895490ccc17f5af181171a0d6d6f41114"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Wells, H. G. (Herbert George), 1866-1946"
+      ],
+      "Title": [
+        "The Country of the Blind, and Other Stories"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Country_of_the_Blind_and_Other_Stories"
+      ],
+      "Contents": [
+        "The jilting of Jane -- The cone -- The stolen bacillus -- The flowering of the strange orchid -- In the Avu Observatory -- Aepyornis Island -- The remarkable case of Davidson's eyes -- The Lord of the Dynamos -- The moth -- The treasure in the forest -- The story of the late Mr. Elvesham -- Under the knife -- The sea raiders -- The obliterated man -- The Plattner story -- The red room -- The purple Pileus -- A slip under the microscope -- The crystal egg -- The star -- The man who could work miracles -- A vision of judgment -- Jimmy Goggles the God -- Miss Winchelsea's heart -- A dream of Armageddon -- The valley of spiders -- The new accelerator -- The truth about Pyecraft -- The magic shop -- The empire of the ants -- The door in the wall -- The country of the blind -- The beautiful suit."
+      ],
+      "Credits": [
+        "E-text prepared by Paul Murray, Charles Bidwell, and Project Gutenberg Distributed Proofreaders"
+      ],
+      "Reading Level": [
+        "Reading ease score: 80.1 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Science fiction, English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "11870"
+      ],
+      "Release Date": [
+        "Apr 1, 2004"
+      ],
+      "Last Update": [
+        "Oct 28, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "3212 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 797533,
+          "length": 36107
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "dd1e44d2ddf9f3a49bc10d51c90eb9a3dc5fde221d972bd59a4a3fd54e130ff6",
+    "legacy_content_sha256": "b587a74512de6a7607f81bee7180c0529d8088d0bc6afd6222fb43c971bb5b83",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1946,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "d2d96c440f71459b74770f4ca578766ab0a88d18a4fdf004df5b21174ee7bd44",
+    "url": "https://www.gutenberg.org/ebooks/11870",
+    "author_catalog_strings": [
+      "Wells, H. G. (Herbert George), 1866-1946"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "07c013cc12e20449cb1355abe745215f3f4d89e18949ef36aff7718c1f916499"
+      }
+    ],
+    "content_sha256": "07c013cc12e20449cb1355abe745215f3f4d89e18949ef36aff7718c1f916499"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "dd1e44d2ddf9f3a49bc10d51c90eb9a3dc5fde221d972bd59a4a3fd54e130ff6",
+        "content_hash": "b587a74512de6a7607f81bee7180c0529d8088d0bc6afd6222fb43c971bb5b83",
+        "provenance_hash": "ea1c878f2a5bb0147afe371b1d7fd60204e5596f1470483b9b716e53a2426415",
+        "source_url": "https://www.gutenberg.org/ebooks/11870",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:48:17.188009+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1913,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/11870.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/11870/pg11870.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:12.288469+00:00",
+      "response_sha256": "4f5efdaf578c1b581fd748a5a6dc6d6895490ccc17f5af181171a0d6d6f41114"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 797533,
+          "length": 36107
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Wells, H. G. (Herbert George), 1866-1946",
+      "creator_death_year": 1946,
+      "selected_collection_publication_year": 1913,
+      "original_story_first_publication_year": null,
+      "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+      "bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Wells%2C%20H.%20G.%20%28Herbert%20George%29%2C%201866-1946",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Wells%2C%20H.%20G.%20%28Herbert%20George%29%2C%201866-1946",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:44:08.525863+00:00",
+        "response_sha256": "c1e19c068adee3d02b19a299a7958e0fd262a8076521c1f36ba967df6add6119"
+      },
+      "bibliographic_excerpt": "country of the blind, and other stories (T. Nelson and sons, 1913) (page images at HathiTrust) Wells, H. G. (Herbert George), 1866-1946: Coversations with an uncle (J. Lane;, 1895) , also by F. H. Townsend (page images at HathiTrust) Wells, H. G. (He",
+      "scope": "Named author selected story text only; other collection stories, separately authored editorial matter and all illustrations excluded."
+    },
+    "author_death_evidence": 1946,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1913,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "4f5efdaf578c1b581fd748a5a6dc6d6895490ccc17f5af181171a0d6d6f41114",
+    "content_sha256": "07c013cc12e20449cb1355abe745215f3f4d89e18949ef36aff7718c1f916499",
+    "year": 1913,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Wells%2C%20H.%20G.%20%28Herbert%20George%29%2C%201866-1946",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Wells%2C%20H.%20G.%20%28Herbert%20George%29%2C%201866-1946",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:08.525863+00:00",
+      "response_sha256": "c1e19c068adee3d02b19a299a7958e0fd262a8076521c1f36ba967df6add6119"
+    },
+    "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  }
 }

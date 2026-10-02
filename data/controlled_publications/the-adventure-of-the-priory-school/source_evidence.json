@@ -1,13 +1,206 @@
 {
   "slug": "the-adventure-of-the-priory-school",
   "source_url": "https://www.gutenberg.org/ebooks/108",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #108; The Adventure of the Priory School selected complete Arthur Conan Doyle story/cycle from return of Sherlock Holmes; verified lifetime collection edition 1905; no translation/editorial/art imported",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "1c0eeb56e57f62d657701f3711cd5aa6d470a38cf009da0602b3fbdf6f591635",
-  "content_hash": "f53e83470106d20a25b54ae5c640c8bc6a15fcdc2ab22a77347fc0cc1b025e64",
-  "provenance_hash": "8a4567cd207a26feaa1fbdc0b0d6057b3920ff8ea200a66fdd6e69c33d4b2e40",
-  "rights_basis": "Arthur Conan Doyle died 1930; first published 1904. Public domain in India and the U.S.",
+  "source_hash": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
+  "content_hash": "553f45169b6403cc9dec10718d50780fc6478fe3839ee317a64c61ee49dfc375",
+  "provenance_hash": "d675e3a1f221a44f48a2f6da85a2185142386928a52b31f19846066a4e78f30b",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1930, verified lifetime collection publication 1905 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-03T08:04:22.438267+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #108",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/108",
+      "resolved_url": "https://www.gutenberg.org/ebooks/108",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:31.258135+00:00",
+      "response_sha256": "1342352674167fe6b7b9e98aafdea8aba4737944a4a8a88b0856f31c4dc42287"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/108.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/108/pg108.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:36.762132+00:00",
+      "response_sha256": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Doyle, Arthur Conan, 1859-1930"
+      ],
+      "Title": [
+        "The Return of Sherlock Holmes"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Return_of_Sherlock_Holmes"
+      ],
+      "Contents": [
+        "The adventure of the empty house -- The adventure of the Norwood builder -- The adventure of the dancing men -- The adventure of the solitary cyclist -- The adventure of the priory school -- The adventure of Black Peter -- The adventure of Charles Augustus Milverton -- The adventure of the six Napoleons -- The adventure of the three students -- The adventure of the golden pince-nez -- The adventure of the missing three-quarter -- The adventure of the Abbey Grange -- The adventure of the second stain."
+      ],
+      "Credits": [
+        "An Anonymous Volunteer"
+      ],
+      "Reading Level": [
+        "Reading ease score: 81.8 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Holmes, Sherlock (Fictitious character) -- Fiction",
+        "Private investigators -- England -- Fiction",
+        "Detective and mystery stories, English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "108"
+      ],
+      "Release Date": [
+        "Mar 8, 2006"
+      ],
+      "Last Update": [
+        "Apr 25, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "21977 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 192587,
+          "length": 61859
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "1c0eeb56e57f62d657701f3711cd5aa6d470a38cf009da0602b3fbdf6f591635",
+    "legacy_content_sha256": "f53e83470106d20a25b54ae5c640c8bc6a15fcdc2ab22a77347fc0cc1b025e64",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1930,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "1342352674167fe6b7b9e98aafdea8aba4737944a4a8a88b0856f31c4dc42287",
+    "url": "https://www.gutenberg.org/ebooks/108",
+    "author_catalog_strings": [
+      "Doyle, Arthur Conan, 1859-1930"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "553f45169b6403cc9dec10718d50780fc6478fe3839ee317a64c61ee49dfc375"
+      }
+    ],
+    "content_sha256": "553f45169b6403cc9dec10718d50780fc6478fe3839ee317a64c61ee49dfc375"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "1c0eeb56e57f62d657701f3711cd5aa6d470a38cf009da0602b3fbdf6f591635",
+        "content_hash": "f53e83470106d20a25b54ae5c640c8bc6a15fcdc2ab22a77347fc0cc1b025e64",
+        "provenance_hash": "8a4567cd207a26feaa1fbdc0b0d6057b3920ff8ea200a66fdd6e69c33d4b2e40",
+        "source_url": "https://www.gutenberg.org/ebooks/108",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:48:17.188009+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1905,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/108.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/108/pg108.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:36.762132+00:00",
+      "response_sha256": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 192587,
+          "length": 61859
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Doyle, Arthur Conan, 1859-1930",
+      "creator_death_year": 1930,
+      "selected_collection_publication_year": 1905,
+      "original_story_first_publication_year": null,
+      "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+      "bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Doyle%2C%20Arthur%20Conan%2C%201859-1930",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Doyle%2C%20Arthur%20Conan%2C%201859-1930",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:44:11.614798+00:00",
+        "response_sha256": "9c80e664aca64bf1c0579db6cf406619322276bfe1dbd1370d2d3c920f836017"
+      },
+      "bibliographic_excerpt": "return of Sherlock Holmes (McClure, Phillips & co., 1905) (page images at HathiTrust) Doyle, Arthur Conan, 1859-1930: The return of Sherlock Holmes (George Newnes, Ltd., 1905) , also by Sidney Paget (page images at HathiTrust) Doyle, Arthur Conan, 18",
+      "scope": "Named author selected story text only; other collection stories, separately authored editorial matter and all illustrations excluded."
+    },
+    "author_death_evidence": 1930,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1905,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
+    "content_sha256": "553f45169b6403cc9dec10718d50780fc6478fe3839ee317a64c61ee49dfc375",
+    "year": 1905,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Doyle%2C%20Arthur%20Conan%2C%201859-1930",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Doyle%2C%20Arthur%20Conan%2C%201859-1930",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:11.614798+00:00",
+      "response_sha256": "9c80e664aca64bf1c0579db6cf406619322276bfe1dbd1370d2d3c920f836017"
+    },
+    "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  }
 }

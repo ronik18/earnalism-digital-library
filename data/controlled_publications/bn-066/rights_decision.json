@@ -1,0 +1,36 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-bn-066-1883-cc-by-sa-text-reader",
+  "edition_id": "bn-066",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "b006347dd0530cb1135f223883970738ad6419ff8ac630c68469973a90fb2df5",
+    "reader_manifest": "5cfb120000f1d0afe0fb6b618f408b0e23fb8e046dd209182b349a41581a589e",
+    "source_evidence": "227c479e011f38150820a341bed084e5c184cda97bc12c034d7093ce660ab0e8",
+    "approval_evidence": "074fd1b957a82f99c2a878efeee36aef228a858409813fa0ecd40ceaddba9c3d",
+    "checksum_manifest": "c18c0a527f81ef42bc49826f715e93ccae8e6bafebce7aa37d20432d5c6908af",
+    "publication_manifest": "4c471ac1c14297aee607550239808ef760127ad4af1735fb49ebc727fd3d578c"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-02T03:10:37.024181+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Exact Anandamath second edition1290/1883, Bankim Chandra Chattopadhyay; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1894; India Section22 literary term expired end1954. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
+  "evidence_sha256": [
+    "92c373d5136b1a43d34576321f302623699ea96927e930310d1e8fc90c5f37be",
+    "01ac5d08b252da92a339e44f96e3664ea78a02c986e3f9eb2ecdf246cb7cbf75",
+    "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "e02ba4317441ff3b89a869ee69e048c7993f65c700d823abe72919aa293c1aaf",
+    "d071dc021cf1af40b416c731e5c1074069e2b81a0a1f8810fa688bcba3ffb17c"
+  ],
+  "accepted_by": "Automated executor under explicit product-owner autonomous evidence-backed text-clearance delegation; not a human legal reviewer or signature.",
+  "conditions_satisfied": true
+}

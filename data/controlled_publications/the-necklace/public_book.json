@@ -44,7 +44,7 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 2847,
+      "word_count": 2907,
       "reading_minutes": 12,
       "language_hint": "en",
       "processing_status": "ready",
@@ -53,9 +53,9 @@
       "updated_at": "2026-07-03T20:07:47Z"
     }
   ],
-  "source_hash": "bc5f461772b5583801472773e623c39ee14a218ae50b87715e24aa14b026549c",
-  "content_hash": "11dd5fc25c6413ce85715a6e09f717af89defd4ee69e13739275588e5d4a152c",
-  "provenance_hash": "647161385ead777380d68a8dd5ab420a248a85641e663ed72e7980d2426ba78d",
+  "source_hash": "d90b8b53dd418a5063c2ae2469a426ede6f6914f64d4dd13c3eb2d97e7175f64",
+  "content_hash": "3edbc2bb4b1cfe0829cd6f499cd21b9f7de2f81d74c151e16e90bb6efab9d8fb",
+  "provenance_hash": "d6c07d6b7c29bf90dbfdd1f3e17f905057030002da549d06b893bf7b1a59fe5b",
   "rights_basis": "Guy de Maupassant died 1893; first published 1884. Public domain in India and the U.S.",
   "rights_tier": "A",
   "verification_status": "approved",
@@ -82,5 +82,6 @@
   "audiobook": {},
   "audiobook_assets_updated_at": "",
   "created_at": "2026-07-03T20:07:47Z",
-  "updated_at": "2026-07-03T20:07:47Z"
+  "updated_at": "2026-07-03T20:07:47Z",
+  "license_notice_sha256": "5fd324cb833ed8043ef853492f0affd0a655563bddef78aaccf88e90c63e3e0c"
 }

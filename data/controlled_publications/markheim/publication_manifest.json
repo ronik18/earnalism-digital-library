@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "markheim",
+  "title": "Markheim",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "4c397d6e1688b525c58c60ad565a63717feee1d0f7db36e69281919e6492aa16",
+    "content_hash": "66ecd743f5e28122df51b1f7d3ba2252032747351358ae05888ea30cc9b27ce8",
+    "provenance_hash": "c457f9ed792744f24fc57a9ba3fd8f59771c137d46d8a6865dfd60e0c45b800b",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "52996d2db29bc9d7391a1914c24a30896e0ece9e2201c747f6d7ab1e40473130",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Markheim",
+        "word_count": 6745,
+        "sha256": "a13b63904c1ad7246decc6f6e6159cd94e6a216bee88fc49d1ddeb8a82ab68c9"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "1d8cfb623424811f15ce7da3fc1850d23751cb181f194bb8e586b5658453c8af"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "26aa16c6668033195d8fb3bc39823d82241c13f293aa87dfd55ecd08756305d8",
+    "reader_manifest": "50b5435a1bd1cd25c59c17b2fed8e63ca5ce696047c1c7bb2830549867d3311d",
+    "source_evidence": "1d8cfb623424811f15ce7da3fc1850d23751cb181f194bb8e586b5658453c8af",
+    "approval_evidence": "6519befc8819b19fda170e2720aceed8bb32dd3cfd2cd3b48c1e1cee63d4abc3"
+  },
+  "manifest_sha256": "86f8c2d1a95d3070824566c820b6210ca2beaa90dbf07486b0ec125e5f820894"
+}

@@ -223,5 +223,6 @@
   "audio_url": "",
   "audiobook_release_mode": "",
   "audiobook_manuscript_sha256": "",
-  "audiobook_release_conveyor": {}
+  "audiobook_release_conveyor": {},
+  "license_notice_sha256": "31fa11780bb27be856378af18a5079360c2f1fa4082e6393908829ef8d466add"
 }

@@ -53,9 +53,9 @@
       "updated_at": "2026-07-03T20:07:48Z"
     }
   ],
-  "source_hash": "5c406033a5c3d1c4f7ccafb13ad5303d631cc19ad4403382407fcbb435e71d4a",
-  "content_hash": "57b2ef721088ddee8684f8f1d080065501760da3659ef86e11453d43e6355959",
-  "provenance_hash": "4d1aee24155cbed5d82ea7f1593935e34b402079c365c564814f4d1384445f10",
+  "source_hash": "d9a0cc1df0c41f87ffe61076e23383a4223369105223318542dca83914b156d4",
+  "content_hash": "53085b079b15213a5456edfb86198a6cefcdef68a877f3c3606fd0236a778dd3",
+  "provenance_hash": "eee350a2e949f04ac4cae07e82261f5781f5f0c674b3253f6cc0ff3efd3a9fef",
   "rights_basis": "Nathaniel Hawthorne died 1864; first published 1844. Public domain in India and the U.S.",
   "rights_tier": "A",
   "verification_status": "approved",

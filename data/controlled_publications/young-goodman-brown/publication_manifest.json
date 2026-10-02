@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "young-goodman-brown",
+  "title": "Young Goodman Brown",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "d9a0cc1df0c41f87ffe61076e23383a4223369105223318542dca83914b156d4",
+    "content_hash": "d2ab29cfa6447cfaca0f3c5028c71994c6de1b17810e5d5872b4c8cbf453335d",
+    "provenance_hash": "ab08f08eef1be82b0a051afc07322608480caa5ed9126ad769fe502f2bc8aec4",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "bfd744da3a48329b47fb154245e0ade3cdb9fc86b3972dc4094ddda5ce06c69a",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Young Goodman Brown",
+        "word_count": 5264,
+        "sha256": "3a1ee89d20d27b4c3f07c711a021191ab92f0f55a5aba4d3c4dd24ebaa71510a"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "ccc84e6bebc6a94eb0cc33cf00aeb2187d524d35950d32236491df0a33c45834"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "7c2efd7f7d0e3f6102a12aeee2dfc209970cedb51f364c099bb8b42cdd6b1e8f",
+    "reader_manifest": "ac19adcda295b2bdba56b620452d80486984190b178552c0e03eb3ec9da367b3",
+    "source_evidence": "ccc84e6bebc6a94eb0cc33cf00aeb2187d524d35950d32236491df0a33c45834",
+    "approval_evidence": "e99e5195a05cef5eb03296a86481439501f2677680cecfa618f6ca84e898ccd8"
+  },
+  "manifest_sha256": "017855ada8189ee2bf86331b1e3829ebff5bc55515e1b41709421dca460255af"
+}

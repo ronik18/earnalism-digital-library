@@ -1,13 +1,292 @@
 {
   "slug": "the-necklace",
-  "source_url": "https://www.gutenberg.org/ebooks/3080",
-  "source_name": "Project Gutenberg",
-  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "bc5f461772b5583801472773e623c39ee14a218ae50b87715e24aa14b026549c",
-  "content_hash": "11dd5fc25c6413ce85715a6e09f717af89defd4ee69e13739275588e5d4a152c",
-  "provenance_hash": "647161385ead777380d68a8dd5ab420a248a85641e663ed72e7980d2426ba78d",
-  "rights_basis": "Guy de Maupassant died 1893; first published 1884. Public domain in India and the U.S.",
+  "source_url": "https://en.wikisource.org/w/index.php?title=Stories_by_Foreign_Authors_(French_I)/The_Necklace&oldid=13522838",
+  "source_name": "NEW JonathanSturges1889 English translation in1917ScribnerStoriesByForeignAuthorsFrenchI; exactWikisource revision13522838 selectedstory only",
+  "source_license": "CC BY-SA4.0 transcription adaptation; separatelycleared underlying1889 JonathanSturges translation; actual attribution/change/sharealike/disclaimer obligations retained in hash-bound publiclicense_notice.json.",
+  "source_hash": "d90b8b53dd418a5063c2ae2469a426ede6f6914f64d4dd13c3eb2d97e7175f64",
+  "content_hash": "3edbc2bb4b1cfe0829cd6f499cd21b9f7de2f81d74c151e16e90bb6efab9d8fb",
+  "provenance_hash": "d6c07d6b7c29bf90dbfdd1f3e17f905057030002da549d06b893bf7b1a59fe5b",
+  "rights_basis": "NEW edition/translation: exact signed JonathanSturges1889 translation; primarysource explicitly1889copyrightHarper, preservedin1917Scribnerprintedcollection (1898collectioncopyright). UnderlyingMaupassant1850–1893 died1893; namedtranslatorSturges1864–1911 verifiedbyPrincetonUniversityLibrary primaryresearch. Translation lifetime1889publication; INSection22translatorlife+60elapsed1971. Originalauthor literarytext necessarilyexisted by the signed1889translation publication duringMaupassantlifetime; this is a verifiedpublication upperbound, NOT a claimedoriginal firstdate. ConservativeSection24upperbound1889+60alsoelapsed1949. Sourceheaderincorrect1884collectiondate NOT adopted. Fullselectedstory135paragraphs verified; CCBYSA4.0 source transcription obligations visiblybound. OldPG3080identity archived, noapproval transfer. Covers/audioexcluded; no runtime registry/live mutation.",
   "downloaded_at": "2026-06-03T08:04:21.999223+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "author_death_year": 1893,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "e917bd41436153db185be37668c1927902c24f3118d1dc262f9736b0b1fde2ed",
+    "url": "https://www.gutenberg.org/ebooks/3080",
+    "author_catalog_strings": [
+      "Maupassant, Guy de, 1850-1893"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "ee0e443ea8e7cc6c5cbd9327e74f6bf3cdbf4aabcf92f345c79a07ab643a3ae3"
+      }
+    ],
+    "content_sha256": "ee0e443ea8e7cc6c5cbd9327e74f6bf3cdbf4aabcf92f345c79a07ab643a3ae3"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "slug": "the-necklace",
+        "source_url": "https://www.gutenberg.org/ebooks/3080",
+        "source_name": "Project Gutenberg",
+        "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+        "source_hash": "bc5f461772b5583801472773e623c39ee14a218ae50b87715e24aa14b026549c",
+        "content_hash": "11dd5fc25c6413ce85715a6e09f717af89defd4ee69e13739275588e5d4a152c",
+        "provenance_hash": "647161385ead777380d68a8dd5ab420a248a85641e663ed72e7980d2426ba78d",
+        "rights_basis": "Guy de Maupassant died 1893; first published 1884. Public domain in India and the U.S.",
+        "downloaded_at": "2026-06-03T08:04:21.999223+00:00",
+        "source_format": "text/plain",
+        "reader_facing_boilerplate_removed": true,
+        "official_electronic_source_verification": {
+          "electronic_edition_id": "Project Gutenberg #3080",
+          "metadata_receipt": {
+            "requested_url": "https://www.gutenberg.org/ebooks/3080",
+            "resolved_url": "https://www.gutenberg.org/ebooks/3080",
+            "http_status": 200,
+            "accessed_at": "2026-10-01T21:04:46.309346+00:00",
+            "response_sha256": "e917bd41436153db185be37668c1927902c24f3118d1dc262f9736b0b1fde2ed"
+          },
+          "text_receipt": {
+            "requested_url": "https://www.gutenberg.org/ebooks/3080.txt.utf-8",
+            "resolved_url": "https://www.gutenberg.org/cache/epub/3080/pg3080.txt",
+            "http_status": 200,
+            "accessed_at": "2026-10-01T21:04:51.420572+00:00",
+            "response_sha256": "7ff5cc8bc112139baa8e14053bbc667230024bbdf3b5bb7befbbdfbb835666ce"
+          },
+          "bibliographic_metadata": {
+            "Author": [
+              "Maupassant, Guy de, 1850-1893"
+            ],
+            "Translator": [
+              "Henderson, A. E.",
+              "McMaster, Albert Cohn",
+              "Quesada, Louise Charlotte Garstin, 1864?-"
+            ],
+            "Title": [
+              "Original Short Stories — Volume 04"
+            ],
+            "Contents": [
+              "The moribond -- The gamekeeper -- The story of a farm girl -- The wreck -- Theodule Sabot's confession -- The wrong house -- The diamond necklace -- The Marquis de Fumerol -- The trip of the Horla -- Farewell -- The wolf -- The inn."
+            ],
+            "Credits": [
+              "David Widger"
+            ],
+            "Reading Level": [
+              "Reading ease score: 78.6 (7th grade). Fairly easy to read."
+            ],
+            "Language": [
+              "English"
+            ],
+            "LoC Class": [
+              "PQ: Language and Literatures: Romance literatures: French, Italian, Spanish, Portuguese"
+            ],
+            "Subject": [
+              "Short stories, French -- Translations into English"
+            ],
+            "Category": [
+              "Text"
+            ],
+            "eBook-No.": [
+              "3080"
+            ],
+            "Release Date": [
+              "Oct 3, 2004"
+            ],
+            "Last Update": [
+              "Aug 3, 2021"
+            ],
+            "Copyright": [
+              "Public domain in the USA."
+            ],
+            "Downloads": [
+              "2270 downloads in the last 30 days."
+            ]
+          },
+          "comparison": {
+            "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+            "status": "ALL_CHAPTERS_MATCH_SOURCE",
+            "matched_chapters": [
+              {
+                "chapter_id": "chapter-001",
+                "offset": 111842,
+                "length": 15811
+              }
+            ],
+            "nonmatching_chapters": [],
+            "complete_edition_proven": false,
+            "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+          },
+          "legacy_source_sha256": "bc5f461772b5583801472773e623c39ee14a218ae50b87715e24aa14b026549c",
+          "legacy_content_sha256": "11dd5fc25c6413ce85715a6e09f717af89defd4ee69e13739275588e5d4a152c",
+          "legacy_source_bytes_reproduced": false,
+          "checked_at": "2026-10-01T21:08:26.578512+00:00",
+          "publication_authorized": false,
+          "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+          "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+        },
+        "author_death_year": 1893,
+        "author_fact_evidence": {
+          "metadata_receipt_sha256": "e917bd41436153db185be37668c1927902c24f3118d1dc262f9736b0b1fde2ed",
+          "url": "https://www.gutenberg.org/ebooks/3080",
+          "author_catalog_strings": [
+            "Maupassant, Guy de, 1850-1893"
+          ],
+          "verified_at": "2026-10-01T21:08:26.578512+00:00",
+          "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+        },
+        "canonical_reader_identity": {
+          "chapter_count": 1,
+          "ordered_chapter_sha256": [
+            {
+              "id": "chapter-001",
+              "sha256": "ee0e443ea8e7cc6c5cbd9327e74f6bf3cdbf4aabcf92f345c79a07ab643a3ae3"
+            }
+          ],
+          "content_sha256": "ee0e443ea8e7cc6c5cbd9327e74f6bf3cdbf4aabcf92f345c79a07ab643a3ae3"
+        }
+      },
+      "superseded_at": "2026-10-02T03:06:41.362165+00:00",
+      "reason": "Intentional NEW translation/edition selection: previous PG#3080 namedtrio lacked exact selectedtranslator rights proof. No previous approval transferred; new JonathanSturges signed1889 story in1917Scribner sourcefacsimile transclusion separatelyverified.",
+      "archive": "internal/legal/catalogue_clearance_20261002/english/superseded_editions/the-necklace-pg3080.json"
+    },
+    {
+      "identity": {
+        "source_hash": "bc5f461772b5583801472773e623c39ee14a218ae50b87715e24aa14b026549c",
+        "content_hash": "11dd5fc25c6413ce85715a6e09f717af89defd4ee69e13739275588e5d4a152c",
+        "provenance_hash": "647161385ead777380d68a8dd5ab420a248a85641e663ed72e7980d2426ba78d",
+        "source_url": "https://en.wikisource.org/w/index.php?title=Stories_by_Foreign_Authors_(French_I)/The_Necklace&oldid=13522838",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-02T03:06:41.377578+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "source_type": "wikisource",
+  "source_revision": "13522838",
+  "actual_transcription_verification": {
+    "receipt": {
+      "requested_url": "https://en.wikisource.org/wiki/Stories_by_Foreign_Authors_(French_I)/The_Necklace",
+      "resolved_url": "https://en.wikisource.org/wiki/Stories_by_Foreign_Authors_(French_I)/The_Necklace",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:03:52.018026+00:00",
+      "response_sha256": "d90b8b53dd418a5063c2ae2469a426ede6f6914f64d4dd13c3eb2d97e7175f64"
+    },
+    "method": "All135 storyparagraphs including originaldropcap opening restored; entire sourceparagraphsequence first/last endpoints verified; title/byline/copyright furniture kept in legalfacts rather than Reader body; no narrative invented.",
+    "old_content_sha256": "11dd5fc25c6413ce85715a6e09f717af89defd4ee69e13739275588e5d4a152c",
+    "new_content_sha256": "3edbc2bb4b1cfe0829cd6f499cd21b9f7de2f81d74c151e16e90bb6efab9d8fb",
+    "complete_edition_proven": true
+  },
+  "selected_edition_publication_year": 1917,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-02T03:06:41.377578+00:00",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://en.wikisource.org/wiki/Stories_by_Foreign_Authors_(French_I)/The_Necklace",
+      "resolved_url": "https://en.wikisource.org/wiki/Stories_by_Foreign_Authors_(French_I)/The_Necklace",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:03:52.018026+00:00",
+      "response_sha256": "d90b8b53dd418a5063c2ae2469a426ede6f6914f64d4dd13c3eb2d97e7175f64"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 0,
+          "length": 16145
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "original_author_death_year": 1893,
+      "selected_edition_publication_year": 1917,
+      "original_first_publication_year": null,
+      "translation_publication_year": 1889,
+      "translators": [
+        {
+          "name": "Jonathan Sturges",
+          "birth_year": 1864,
+          "death_year": 1911,
+          "death_evidence": {
+            "requested_url": "https://graphicarts.princeton.edu/2015/06/18/jonathan-sturges/",
+            "resolved_url": "https://graphicarts.princeton.edu/2015/06/18/jonathan-sturges/",
+            "http_status": 200,
+            "accessed_at": "2026-10-02T03:04:35.193963+00:00",
+            "response_sha256": "92bea566a86c3347aa1b36a233f1188f7b79d43e11b4ace9e07089f9fe10aaf5"
+          }
+        }
+      ],
+      "edition_evidence": {
+        "requested_url": "https://en.wikisource.org/wiki/Stories_by_Foreign_Authors_(French_I)",
+        "resolved_url": "https://en.wikisource.org/wiki/Stories_by_Foreign_Authors_(French_I)",
+        "http_status": 200,
+        "accessed_at": "2026-10-02T03:04:34.811025+00:00",
+        "response_sha256": "0f4ad910fcaae6d94a3ab0fc3be0d12da42e6fd20a810b04839cb7ce7f1ad597"
+      },
+      "source_identity": {
+        "requested_url": "https://en.wikisource.org/wiki/Stories_by_Foreign_Authors_(French_I)/The_Necklace",
+        "resolved_url": "https://en.wikisource.org/wiki/Stories_by_Foreign_Authors_(French_I)/The_Necklace",
+        "http_status": 200,
+        "accessed_at": "2026-10-02T03:03:52.018026+00:00",
+        "response_sha256": "d90b8b53dd418a5063c2ae2469a426ede6f6914f64d4dd13c3eb2d97e7175f64"
+      },
+      "basis": "NEW edition/translation: exact signed JonathanSturges1889 translation; primarysource explicitly1889copyrightHarper, preservedin1917Scribnerprintedcollection (1898collectioncopyright). UnderlyingMaupassant1850–1893 died1893; namedtranslatorSturges1864–1911 verifiedbyPrincetonUniversityLibrary primaryresearch. Translation lifetime1889publication; INSection22translatorlife+60elapsed1971. Originalauthor literarytext necessarilyexisted by the signed1889translation publication duringMaupassantlifetime; this is a verifiedpublication upperbound, NOT a claimedoriginal firstdate. ConservativeSection24upperbound1889+60alsoelapsed1949. Sourceheaderincorrect1884collectiondate NOT adopted. Fullselectedstory135paragraphs verified; CCBYSA4.0 source transcription obligations visiblybound. OldPG3080identity archived, noapproval transfer. Covers/audioexcluded; no runtime registry/live mutation."
+    },
+    "author_death_evidence": 1893,
+    "translator": [
+      {
+        "name": "Jonathan Sturges",
+        "birth_year": 1864,
+        "death_year": 1911,
+        "death_evidence": {
+          "requested_url": "https://graphicarts.princeton.edu/2015/06/18/jonathan-sturges/",
+          "resolved_url": "https://graphicarts.princeton.edu/2015/06/18/jonathan-sturges/",
+          "http_status": 200,
+          "accessed_at": "2026-10-02T03:04:35.193963+00:00",
+          "response_sha256": "92bea566a86c3347aa1b36a233f1188f7b79d43e11b4ace9e07089f9fe10aaf5"
+        }
+      }
+    ],
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1917,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "d90b8b53dd418a5063c2ae2469a426ede6f6914f64d4dd13c3eb2d97e7175f64",
+    "content_sha256": "3edbc2bb4b1cfe0829cd6f499cd21b9f7de2f81d74c151e16e90bb6efab9d8fb",
+    "year": 1917,
+    "receipt": {
+      "requested_url": "https://graphicarts.princeton.edu/2015/06/18/jonathan-sturges/",
+      "resolved_url": "https://graphicarts.princeton.edu/2015/06/18/jonathan-sturges/",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:04:35.193963+00:00",
+      "response_sha256": "92bea566a86c3347aa1b36a233f1188f7b79d43e11b4ace9e07089f9fe10aaf5"
+    },
+    "basis": "NEW edition/translation: exact signed JonathanSturges1889 translation; primarysource explicitly1889copyrightHarper, preservedin1917Scribnerprintedcollection (1898collectioncopyright). UnderlyingMaupassant1850–1893 died1893; namedtranslatorSturges1864–1911 verifiedbyPrincetonUniversityLibrary primaryresearch. Translation lifetime1889publication; INSection22translatorlife+60elapsed1971. Originalauthor literarytext necessarilyexisted by the signed1889translation publication duringMaupassantlifetime; this is a verifiedpublication upperbound, NOT a claimedoriginal firstdate. ConservativeSection24upperbound1889+60alsoelapsed1949. Sourceheaderincorrect1884collectiondate NOT adopted. Fullselectedstory135paragraphs verified; CCBYSA4.0 source transcription obligations visiblybound. OldPG3080identity archived, noapproval transfer. Covers/audioexcluded; no runtime registry/live mutation.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  },
+  "translator_name": "Jonathan Sturges",
+  "translator_death_year": 1911
 }

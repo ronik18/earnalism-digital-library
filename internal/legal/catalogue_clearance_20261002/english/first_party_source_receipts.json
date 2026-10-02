@@ -1,0 +1,17 @@
+{
+  "first-party-bharat": {
+    "text_receipt": {
+      "source_kind": "existing owner-authored canonical manuscript",
+      "source_path": "data/controlled_publications/bharat-at-the-crossroads/chapters/chapter-001.json:content",
+      "accessed_at": "2026-10-02T03:00:15.643196+00:00",
+      "response_sha256": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+      "original_import_identity_reproduced": true,
+      "no_remote_source_claimed": true
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Ronik Basak (copyright owner original manuscript)"
+      ]
+    }
+  }
+}

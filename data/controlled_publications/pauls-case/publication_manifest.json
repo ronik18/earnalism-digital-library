@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "pauls-case",
+  "title": "Paul's Case",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "926b042528d42a6e8b0e062dfee1987fbbb4ddbe1ea6601d2b61fc77b452f521",
+    "content_hash": "3674aee90e9811565646f07f4763ff4a3fa742b26a74774d52c7d15cf5c014c7",
+    "provenance_hash": "ee2f34e521c214d7feb8bf6ac36d066e6db4619f6cc178d518136dc3eaa62f01",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "9a8d0e22d31c87d9c777404a315b06b2abf58fc1ac93caa818bda27ddee1b3de",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Paul's Case",
+        "word_count": 8563,
+        "sha256": "382d09c8a5b314c01572602056650184c56d6cfa949a06e11765cfcb9617c9c0"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "76767e72e36c865649b470d0d236359a98ff4050ce6603abf57594751c618f00"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "1c81f4df8f84172e05ddf59b996103bdca15e969ac4617b9d4eff500fb388cf0",
+    "reader_manifest": "989cf6568082995476b2800f2ff6d7c2c935619a3b69c75e9b6ce989f475aaf8",
+    "source_evidence": "76767e72e36c865649b470d0d236359a98ff4050ce6603abf57594751c618f00",
+    "approval_evidence": "a63672ee148e4049da609d1708645177fad3dd77d3475efa4014f076a9b913ad"
+  },
+  "manifest_sha256": "2f3ef40ac4a43db03c52c0cfd798d6773abe0959232b68b72e135e04df2e9b33"
+}

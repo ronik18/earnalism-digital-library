@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "bharat-at-the-crossroads",
+  "title": "Bharat at the Crossroads",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+    "content_hash": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+    "provenance_hash": "41300c1e70b2b43c0f17602acba1de96a1b3f5350e8dffd46c470ecdc9330343",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "d678941412755f397e04c70e5d1bbdc52e115f93ae54b903ef942e56a7a48189",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Bharat at the Crossroads",
+        "word_count": 34761,
+        "sha256": "fdfa8aee8c648f05ff1165e03d42c44c46324ad1e531e2c29790a6c02c700f02"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "52c92e6c6325c608bceec71928da428ac67be2b9d17c2c01ffc93c311fdd8e36"
+  },
+  "reader_release": {
+    "status": "READY_FOR_APPROVAL",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "d43368bb6648c531f45cfeaa3eb1a10629ecb79cfab2ed9cb40978e4fa8c60f2",
+    "reader_manifest": "16cd445544a45504dccb84344290caaf2ee7db3146ee7127637ddd1cd6ff3db6",
+    "source_evidence": "52c92e6c6325c608bceec71928da428ac67be2b9d17c2c01ffc93c311fdd8e36",
+    "approval_evidence": "f60fcd08294e604c01e078a9473272ac1c1fc6f6eab674517b205e463e6a3fe1"
+  },
+  "manifest_sha256": "b1a98b0ea4976a9fb4a5d51fb56d6a3c468d2f88ed375c091ead1849591a4e96"
+}

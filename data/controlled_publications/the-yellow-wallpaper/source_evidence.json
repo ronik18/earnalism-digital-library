@@ -1,13 +1,205 @@
 {
   "slug": "the-yellow-wallpaper",
   "source_url": "https://www.gutenberg.org/ebooks/1952",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #1952; The Yellow Wallpaper exact canonical source, underlying lifetime publication 1901; complete selected author text, no translation or independently authored artwork/editorial material imported",
   "source_license": "Public domain. Project Gutenberg transcription freely redistributable for any use including commercial.",
-  "source_hash": "ef4b3a11042ebd451e1abc73007c6d5f5fb9910ab2571db97d33457f1ddcfa00",
-  "content_hash": "5f145d1aff160976b72445c5f651d8030f3ede780aa1414a9c639afc2a4d7aae",
-  "provenance_hash": "5349c038b13af8d9809ae184e4d7ae4d54f3ad3ebce5ed13748776e22dd0a09c",
-  "rights_basis": "Author died 1935. Published 1892. Public domain in U.S. and worldwide.",
+  "source_hash": "20c7788eeae2fe3a0efd51a1f08b6723366a4be0778d65db219149a3522651d4",
+  "content_hash": "eb3707607672f6a9260383f8523dca5e089399e5121bd1a1961b34308c34273d",
+  "provenance_hash": "d4e074b4e73dcbd81ffa1ad9fa823367d6dd6a04ab012842c9b79ebcc96b3c03",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1935, verified lifetime collection publication 1901 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-02T18:57:36.023195+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #1952",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1952",
+      "resolved_url": "https://www.gutenberg.org/ebooks/1952",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:20.503022+00:00",
+      "response_sha256": "0ca6c5493eae71b3727e55c66dc1d4fe64f8a738bffbb30484383a22815f447a"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1952.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1952/pg1952.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:24.973958+00:00",
+      "response_sha256": "20c7788eeae2fe3a0efd51a1f08b6723366a4be0778d65db219149a3522651d4"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Gilman, Charlotte Perkins, 1860-1935"
+      ],
+      "Title": [
+        "The Yellow Wallpaper"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Yellow_Wallpaper"
+      ],
+      "Credits": [
+        "An Anonymous Volunteer and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 89.5 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Psychological fiction",
+        "Mentally ill women -- Fiction",
+        "Feminist fiction",
+        "Married women -- Psychology -- Fiction",
+        "Sex role -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "1952"
+      ],
+      "Release Date": [
+        "Nov 1, 1999"
+      ],
+      "Last Update": [
+        "Sep 16, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "46806 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 837,
+          "length": 31228
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "ef4b3a11042ebd451e1abc73007c6d5f5fb9910ab2571db97d33457f1ddcfa00",
+    "legacy_content_sha256": "5f145d1aff160976b72445c5f651d8030f3ede780aa1414a9c639afc2a4d7aae",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1935,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "0ca6c5493eae71b3727e55c66dc1d4fe64f8a738bffbb30484383a22815f447a",
+    "url": "https://www.gutenberg.org/ebooks/1952",
+    "author_catalog_strings": [
+      "Gilman, Charlotte Perkins, 1860-1935"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "eb3707607672f6a9260383f8523dca5e089399e5121bd1a1961b34308c34273d"
+      }
+    ],
+    "content_sha256": "eb3707607672f6a9260383f8523dca5e089399e5121bd1a1961b34308c34273d"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "ef4b3a11042ebd451e1abc73007c6d5f5fb9910ab2571db97d33457f1ddcfa00",
+        "content_hash": "5f145d1aff160976b72445c5f651d8030f3ede780aa1414a9c639afc2a4d7aae",
+        "provenance_hash": "5349c038b13af8d9809ae184e4d7ae4d54f3ad3ebce5ed13748776e22dd0a09c",
+        "source_url": "https://www.gutenberg.org/ebooks/1952",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:49:40.745164+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1901,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:49:40.745164+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1952.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1952/pg1952.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:24.973958+00:00",
+      "response_sha256": "20c7788eeae2fe3a0efd51a1f08b6723366a4be0778d65db219149a3522651d4"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 837,
+          "length": 31228
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Gilman, Charlotte Perkins, 1860-1935",
+      "creator_death_year": 1935,
+      "selected_collection_publication_year": 1901,
+      "original_story_first_publication_year": null,
+      "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+      "bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Gilman%2C%20Charlotte%20Perkins%2C%201860-1935",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Gilman%2C%20Charlotte%20Perkins%2C%201860-1935",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:44:30.626134+00:00",
+        "response_sha256": "de36b381f64ac3cee0e9c0d1ae57be868ccccd80aebe944ad840ffe72ff3ca99"
+      },
+      "bibliographic_excerpt": "yellow wall paper (Small, Maynard, 1901) (page images at HathiTrust) See also what's at your library , or elsewhere . Help with reading books -- Report a bad link -- Suggest a new listing Home -- Search -- New Listings -- Authors -- Titles -- Subject",
+      "scope": "Named creator complete selected literary text including available author prefatory/end matter; publisher/source furniture and illustrations excluded."
+    },
+    "author_death_evidence": 1935,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1901,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "20c7788eeae2fe3a0efd51a1f08b6723366a4be0778d65db219149a3522651d4",
+    "content_sha256": "eb3707607672f6a9260383f8523dca5e089399e5121bd1a1961b34308c34273d",
+    "year": 1901,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Gilman%2C%20Charlotte%20Perkins%2C%201860-1935",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Gilman%2C%20Charlotte%20Perkins%2C%201860-1935",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:30.626134+00:00",
+      "response_sha256": "de36b381f64ac3cee0e9c0d1ae57be868ccccd80aebe944ad840ffe72ff3ca99"
+    },
+    "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  }
 }

@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-acres-of-diamonds-pg368-noncover-text",
+  "edition_id": "acres-of-diamonds",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "f293b82b207f3de139619bb7828854f05d267fdfdfbb0a366e7dc770fb771085",
+    "reader_manifest": "c083501e4fd683fe9490a8d5b113ef524b57b3aecacc98fbf73caf44e3066d0c",
+    "source_evidence": "9371f2af833cbd9683e138e121b7c6ae77f17a18de6dd46cb4507a301a6eb29e",
+    "approval_evidence": "a54386bda74b327c7e14668245201c0f45fd883bf44ffb6a81b7caecff1ab14f",
+    "checksum_manifest": "75ead7a918732f6f416342bc290cbcf4a44b3ab5967e6a7db244124df5a922ca",
+    "publication_manifest": "c4109524d447e668a09bae384be6bba6fac1ee1fb292ab4cee230f0c935cc9f7"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-02T01:07:27.058549+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "All three named text creators verified separately; book publication1915 precedes every death; latest Conwell1925 plus60 ends1985. Source signature placeholder omitted as scan-furniture; genuine original author signature used only as creator evidence, never publication authorization.",
+  "evidence_sha256": [
+    "2cbcf33315b37eceec14c90fa449ccf5ebe3de227731bd8df92d49e404208e32",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "c987f22e9111b0c21c5526f282cf501a6959d6e1e83b99276e3256509ad80e14",
+    "a0b8613f5a9c0ee604b53d6aa68388084bdefbf24e1f5e9749aafe2c8448efa3",
+    "412d4000427790f40832d29be6bd49985d288ff4a9d48c2d5d866a50c62e27b0"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

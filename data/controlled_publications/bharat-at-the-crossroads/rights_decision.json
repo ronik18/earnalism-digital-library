@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-bharat-at-the-crossroads-first-party-noncover-text",
+  "edition_id": "bharat-at-the-crossroads",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "d43368bb6648c531f45cfeaa3eb1a10629ecb79cfab2ed9cb40978e4fa8c60f2",
+    "reader_manifest": "16cd445544a45504dccb84344290caaf2ee7db3146ee7127637ddd1cd6ff3db6",
+    "source_evidence": "52c92e6c6325c608bceec71928da428ac67be2b9d17c2c01ffc93c311fdd8e36",
+    "approval_evidence": "f60fcd08294e604c01e078a9473272ac1c1fc6f6eab674517b205e463e6a3fe1",
+    "checksum_manifest": "e4e52b57267d3dc2034809fa4b11239e46c4d6c9453f1ce50ed2cc8726719967",
+    "publication_manifest": "b46670c54290cf58722bf7451ad1f1f1cc7387106ef53d8ce0aceef0a90a9108"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-02T03:00:15.653216+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "First-party original manuscript permission under the actual owner autonomous text-clearance delegation; no public-domain/death/publication-expiry claim. Exact original source/content hash reproduced; cover display and audio uses excluded, no production registry or release activation.",
+  "evidence_sha256": [
+    "43d6f299ebff85e3947b2b8c9d15ab51d75c57bf49035c5e0c7ac67664b370be",
+    "69c840addcfe7cf86306f2fa27aa9325ae38c28575974562c99eb948263a062f",
+    "7993c9107f05db0061077075359daaf940f67d93cdeac0638b8b9e74858c79b6",
+    "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+    "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

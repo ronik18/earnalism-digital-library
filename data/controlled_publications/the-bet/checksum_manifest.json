@@ -1,14 +1,14 @@
 {
   "slug": "the-bet",
-  "generated_at": "2026-07-03T20:07:48Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "641fd33ad7f8a11860a22776b29386a61d53f0bd406f1c6da1bce3a6d9a0b8ca"
+      "sha256": "f9ec246aa2d21e0103525c91549a46ffc1ee7943eabe61efdbeb675430e8ce84"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "5ff3afa5c7ff7f0c0c0126121614a9cfb3dab21cedb8ebd1b93503bf89a8560a"
+      "file": "chapters/chapter-001.json",
+      "sha256": "b81dfae016d655767feda2545a6010f44b29968f1c2e6a585d2e91f518229b5d"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "db895dbd18f1cebbe264ec471b726368c1d41abbe7d9d329cb68569ee0947fbd"
+      "sha256": "745608145f56c1393f56057d9c1eb57fc949e0c80f784578855401b5ce717856"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "90ce66dabba5d345143750e291487bc466e775c36655b6b5b36c91e44516d80d"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "f8b9253b7b2e77b5a6fc588f9ff6fe8066dd7dcd32157728b4a758d0733c7aa3"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "e95906b22afb7282061e92e98abec46ebade0486547726312443d77703bb1aef"
+      "sha256": "fcca31f94efb0d51a1ddbc397cfffab5525baaa72e220091c2dbadcdc01f0f0b"
     }
   ]
 }

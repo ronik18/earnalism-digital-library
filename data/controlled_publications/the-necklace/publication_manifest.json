@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-necklace",
+  "title": "The Necklace",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "d90b8b53dd418a5063c2ae2469a426ede6f6914f64d4dd13c3eb2d97e7175f64",
+    "content_hash": "3edbc2bb4b1cfe0829cd6f499cd21b9f7de2f81d74c151e16e90bb6efab9d8fb",
+    "provenance_hash": "d6c07d6b7c29bf90dbfdd1f3e17f905057030002da549d06b893bf7b1a59fe5b",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "ec521579e90940da2a5a13d9317875fb0f9dadc3039bf8b693f57645b70c7c8c",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Necklace",
+        "word_count": 2907,
+        "sha256": "4aa2ba246d24176b4dcdcecadce5824792f9ed5b4675d60587730eac099ae782"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "2b1e7e4b671426a4228f7b605e2bc0707d918ea84525c81533e2bc70182c5df5"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "ee10f2cba3dbb3e1aae0f88b159f7bce85400bbb75a080233361fe8ea3797e50",
+    "reader_manifest": "6451694f87edfdb98d93d4abca5d36ccb910d0612ee42769a88e4cad3bb27c80",
+    "source_evidence": "2b1e7e4b671426a4228f7b605e2bc0707d918ea84525c81533e2bc70182c5df5",
+    "approval_evidence": "643b4129e6f5df66f7f643df0af5ddb041113b20f88f5ea3f19957f177e04a82"
+  },
+  "manifest_sha256": "e16e1fe9caec57773fc690d24bd172caf6965ffadd6ed77f85567f425005b6d0"
+}

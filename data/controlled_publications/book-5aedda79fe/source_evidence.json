@@ -1,14 +1,14 @@
 {
   "slug": "book-5aedda79fe",
-  "source_url": "https://bn.wikisource.org/wiki/গল্পগুচ্ছ_(প্রথম_খণ্ড)/শাস্তি",
+  "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%95%E0%A6%A5%E0%A6%BE-%E0%A6%9A%E0%A6%A4%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%AF%E0%A6%BC%2F%E0%A6%B6%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF&oldid=1624596",
   "source_name": "Bengali Wikisource",
   "source_license": "Underlying Bengali literary text is public domain in India and the U.S.; Wikisource transcription/source layer is reused under CC BY-SA terms.",
-  "source_hash": "7d6e7fef47811ea27f5cf67005046a67bda3a16b1da2e4c4ae17d465b4684e75",
-  "content_hash": "7d6504abe60d1617e7e656c2ca9b3ba0c9a908e38c9f5026d1468ed777f464dd",
+  "source_hash": "8dc30655e4bd2351ddf1642819c6c85fe0cc6290dc8aba5abb652035f267db42",
+  "content_hash": "e438383f30fc659409490628baa424cb42b3c9d54e700034d958d8ee989039d4",
   "provenance_hash": "f30f01be102d7e8bc6b8dcfb7fba23e44f0441a68bea11bd69b4cdc7c63f0f4a",
-  "rights_basis": "Author died 1941. Published 1893. Public domain in India and U.S.",
+  "rights_basis": "Exact Katha-Chatushtay original1301/1894 sole-author Rabindranath Tagore edition; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1941; India Section22 literary term expired end2001. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
   "downloaded_at": "2026-06-02T18:57:15.526481+00:00",
-  "source_format": "text/plain",
+  "source_format": "SHA-bound captured source rendering",
   "reader_facing_boilerplate_removed": true,
   "author_death_year": 1941,
   "author_fact_evidence": {
@@ -19,17 +19,74 @@
     "authority_response_sha256": "0048c2eaa3a43087f4e130b3e5153c9389111d9aed6d329cf12286ad158c0aa9",
     "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_EDITION_OR_PUBLICATION_APPROVAL"
   },
-  "verification_status": "pending",
-  "text_clearance_status": "PREPARED_EVIDENCE_NOT_AUTHORIZED",
+  "verification_status": "approved",
+  "text_clearance_status": "OWNER_DELEGATED_AUTOMATED_IN_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "50a4efe9fadf7e4f2937956bda8f1a0ba3f97b9c7a21e34ff3c9ed6fe9e7891b",
+    "reader_content_sha256": "e438383f30fc659409490628baa424cb42b3c9d54e700034d958d8ee989039d4",
     "chapter_count": 1,
     "chapter_content_sha256": {
-      "chapter-001": "50a4efe9fadf7e4f2937956bda8f1a0ba3f97b9c7a21e34ff3c9ed6fe9e7891b"
+      "chapter-001": "e438383f30fc659409490628baa424cb42b3c9d54e700034d958d8ee989039d4"
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  },
+  "reader_content_reconciliation": {
+    "status": "SOURCE_FURNITURE_REMOVED_ONLY",
+    "performed_at": "2026-10-01T21:08:27.473444+00:00",
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/source-furniture-repair-proposals.json",
+    "artifact_sha256": "63e8128394ae67e1620d02a5bce6ca6b14dd72f8230ed86b0d535ed69707baf7",
+    "before_content_sha256": "50a4efe9fadf7e4f2937956bda8f1a0ba3f97b9c7a21e34ff3c9ed6fe9e7891b",
+    "after_content_sha256": "dd4c555a93fd84d6bd0f666a5b0f724ab18f6d7d34ae99416066ffcc98e67f51",
+    "removed_source_furniture": [
+      "রবীন্দ্রনাথ ঠাকুর",
+      "গল্পগুচ্ছ",
+      "১৯৫০ (পৃ. ২৬১-২৭৩)",
+      "শাস্তি"
+    ],
+    "literary_words_changed": false,
+    "source_transcription_completeness": "EXACT_MATCH_FORMATTING_ONLY",
+    "scope": "READER_METADATA_FURNITURE_CLEANUP_NOT_PUBLICATION_OR_AUDIO_APPROVAL"
+  },
+  "original_publication_year": 1893,
+  "original_publication_evidence": {
+    "record": "internal/legal/catalogue_clearance_20261002/bengali/tagore-printed-first-publication-datelines.json",
+    "record_sha256": "3d0b1635e64ffbf7e4ad330ed86b2b77c01c3b85ca0054fcd1ef0a71ac02dfb3",
+    "printed_dateline": "শ্রাবণ ১৩০০",
+    "source_rendered_sha256": "519d3c3a7cc0a60054aa100f603db6acfdf8025960179e2e0b76eb5994ef255e",
+    "calendar_conversion": {
+      "bengali_year": 1300,
+      "offset": 593,
+      "gregorian_year": 1893,
+      "precision": "Gregorianyear only; month falls entirely within one year. No inferred exactday.",
+      "reference": "https://www.drikpanchang.com/festivals/pohela-boishakh/pohela-boishakh-date-time.html?year=0596"
+    },
+    "scope": "Underlyingwork firstpublication metadata only; sourceedition editorial/licence/publication authorization independently held."
+  },
+  "historical_import_hashes": {
+    "source_hash": "7d6e7fef47811ea27f5cf67005046a67bda3a16b1da2e4c4ae17d465b4684e75",
+    "content_hash": "7d6504abe60d1617e7e656c2ca9b3ba0c9a908e38c9f5026d1468ed777f464dd",
+    "source_url": "https://bn.wikisource.org/wiki/গল্পগুচ্ছ_(প্রথম_খণ্ড)/শাস্তি"
+  },
+  "edition_publication_year": 1894,
+  "original_edition_migration": {
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-5aedda79fe-original1894-edition-migration.json",
+    "source_title": "কথা-চতুষ্টয়/শাস্তি",
+    "source_revision": 1624596,
+    "contributors_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%95%E0%A6%A5%E0%A6%BE-%E0%A6%9A%E0%A6%A4%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%AF%E0%A6%BC%2F%E0%A6%B6%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF&action=history",
+    "scope": "Original1894 replacement, new identity; historical1950edition decision not reused"
+  },
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "source_snapshot_identity": {
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-5aedda79fe-original1894-source-comparison.json",
+    "sha256": "7104915c2e22bde3e8a5e50062dcb07dda6aadbf53aeada3b5ccbb7a907a8c7d",
+    "scope": "Actual captured original/source edition transclusions; parent revision alone does not freeze transcluded pages."
+  },
+  "edition_evidence": {
+    "edition": "Katha-Chatushtay original1301/1894 sole-author Rabindranath Tagore edition",
+    "primary_record": "internal/legal/catalogue_clearance_20261002/bengali/katha-chatushtay-primary-imprint-pages.json",
+    "record_sha256": "4dd7dc9b147b535ddc643a42b5ca22d7b146ad073be0880f28c3aebec1a3f7e4",
+    "scope": "Selected exact literary narrative and retained source notes only; no artwork, publisher matter, separately authored foreword or other edition authorized."
   }
 }

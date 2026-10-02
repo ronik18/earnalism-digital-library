@@ -53,9 +53,9 @@
       "updated_at": "2026-07-03T20:07:48Z"
     }
   ],
-  "source_hash": "2006e24206b918744a8a8a7589e883389759ccd9cbef93ae8ce260d633dab5d9",
-  "content_hash": "d08d7e830b28474c5d8ac3595444f376074e1e48ee9c2f8cc774dc8a1a91882a",
-  "provenance_hash": "d8fbdf6d75f8e5260b619728efb926a71e9166fb659a93fcf7216cda9caaf44a",
+  "source_hash": "31d4577d255806b92c6296419adddd5ca460bdb788743878a09ded1e19f4161a",
+  "content_hash": "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98",
+  "provenance_hash": "2ee318e47560589e69de19367a82467978af0cf4defd57691c9fb9276bbe5069",
   "rights_basis": "Kate Chopin died 1904; first published 1893. Public domain in India and the U.S.",
   "rights_tier": "A",
   "verification_status": "approved",

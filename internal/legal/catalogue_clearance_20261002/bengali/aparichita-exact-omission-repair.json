@@ -1,0 +1,39 @@
+{
+  "slug": "bn-027",
+  "scope": "EXACT_EXISTING1969TRANSCRIPTION_RECONCILIATION_NOT_PUBLICATION",
+  "performed_at": "2026-10-01T21:10:53.410753+00:00",
+  "before_content_sha256": "eef5d43b34d08757709f3f66ce5d3f74652b78f09c85481e3b957746c8071c61",
+  "after_content_sha256": "10e66b87301d70704d9841d23d9c874baab36958ee7e4003b2c3dee3b71c9fa7",
+  "pinned_parent_revision": 1655974,
+  "source_rendered_sha256": "ba72a4e4ea6ae27848bd8d4d0da2ac1fdd8bc23096ee787bcd8a7afd3fc0b872",
+  "source_receipt": {
+    "url": "https://bn.wikisource.org/w/api.php?action=parse&oldid=1655974&prop=text%7Cwikitext%7Clinks&format=json&formatversion=2",
+    "retrieved_at": "2026-10-01T21:03:04.490987+00:00",
+    "response_sha256": "0ddd6ec08562f784b2ec2c8d51f543955407f95779f86e8daa65cb302791f8c1"
+  },
+  "repairs": [
+    {
+      "kind": "replace",
+      "source_text": [
+        "কন্যাকে আশীর্বাদ করিবার জন্য যাহাকে পাঠানো হইল সে আমাদের বিনুদাদা, আমার পিস্‌তুতো ভাই। তাহার মত রুচি এবং দক্ষতার ’পরে আমি ষোলো-আনা নির্ভর করিতে পারি। বিনুদা ফিরিয়া আসিয়া বলিলেন, “মন্দ নয় হে! খাঁটি সোনা বটে!"
+      ],
+      "canonical_range": [
+        16,
+        17
+      ]
+    },
+    {
+      "kind": "insert",
+      "source_text": [
+        "মা ভালো-লাগা এবং মন্দ-লাগার মধ্যে দোমনা হইয়া ছিলেন। গাড়িতে আমি পুরুষমানুষ, তবু ইহার কিছুমাত্র সংকোচ নাই, বিশেষত এমন লোভীর মতো খাইতেছে, সেটা ঠিক তাঁর পছন্দ হইতেছিল না; অথচ ইহাকে বেহায়া বলিয়াও তাঁর ভ্রম হয় নাই। তাঁর মনে হইল, এ মেয়ের বয়স হইয়াছে কিন্তু শিক্ষা হয় নাই। মা হঠাৎ কারও সঙ্গে আলাপ করিতে পারেন না। মানুষের সঙ্গে দূরে দূরে থাকাই তাঁর অভ্যাস। এই মেয়েটির পরিচয় লইতে তাঁর খুব ইচ্ছা, কিন্তু স্বাভবিক বাধা কাটাইয়া উঠিতে পারিতেছিলেন না।"
+      ],
+      "canonical_range": [
+        84,
+        84
+      ]
+    }
+  ],
+  "source_match_after": "EXACT_MATCH_FORMATTING_ONLY",
+  "publication_authorized": false,
+  "audio_changes": 0
+}

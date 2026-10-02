@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "berenice",
+  "title": "Berenice",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e",
+    "content_hash": "cc8ce45fafe29474e2f5384ed604c86312654a7e731cf73a6b57eede6e298643",
+    "provenance_hash": "b61876575bc649e0399ccd6971850b7cb41b9d5aa65bd2637411231f3c542744",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "2b63dcdf50cf54c1a4126acde13172d2cc5674fb9030059ca47831d46b6ecf66",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Berenice",
+        "word_count": 3132,
+        "sha256": "0d1a5128d9876b8fd1cb18c5721d15dbcaa0ec46816223f6e3ad7f8deb61cc9d"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "17f0cb081b1f37f014bf8d701c3eeabf9459dfab32744d78bd09cd18ddfea5b7"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "c205138c303b3519e77c05a7b98d793b68272c52e225fdbc4fb351bafaa304b5",
+    "reader_manifest": "37da3217ee880206f6ff31d749dd3e417c4ef07e70b877bd1e7d6a273ea6773c",
+    "source_evidence": "17f0cb081b1f37f014bf8d701c3eeabf9459dfab32744d78bd09cd18ddfea5b7",
+    "approval_evidence": "382a0796a091a69570df4e7078c08ce2bfffb84739e4663184fef36d9e02b984"
+  },
+  "manifest_sha256": "8d0601ce64c357073b50031b1fd0f471475b57ab2baa90a2b04961749505cc71"
+}

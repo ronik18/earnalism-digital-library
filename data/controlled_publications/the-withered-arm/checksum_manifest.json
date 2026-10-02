@@ -1,14 +1,14 @@
 {
   "slug": "the-withered-arm",
-  "generated_at": "2026-07-03T20:07:49Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "de34d87038b46268b04e787ba6e0c518e7fcc627df1ebc3f3c8a494455451516"
+      "sha256": "e7b3fbd5734107cf43babf138f6efdb2cd5268332eaed3eb32103431ca25e829"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "d52378cb81a1b809a84c4065faaa80eaed4e861eb32e7d182d5139a0059d7a43"
+      "file": "chapters/chapter-001.json",
+      "sha256": "e1c0f5b69034aa8eea262cb7ee0bc0bb8d148c76df26fde1735272510ebe7e53"
     },
     {
       "file": "highlight_sync.json",
@@ -16,19 +16,19 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "9579fb565dede58157ee23cd1851b52caff5942d071804368164dbf61f3dac2f"
+      "sha256": "e3d5e6a016d3428ff0d03bc53ec7133b737920e8466a83a8b482b0b16546df8d"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "3b67da4e74b3f5a939d20759c399e252eb0ebda958d8899b17f59b4389e22a59"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "2fde117267249fb6a98ad38bd548c58a45ce3a371d01ed0196bfefc0c80459c3"
+      "sha256": "1b500afce3c2fd35345c9741cb9f4823bee2e31b77f2c8a210d3c1f8edc891bf"
     },
     {
       "file": "source_evidence.json",
-      "sha256": "d68605e66e4a4d9adb6783851f014337e244d26111c04949fd12357b21ccbbc9"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "62cbc49e83294f28b40a873818f1ef0c902775c2c6aecd5739cff6e8bcf1fafe"
+      "sha256": "5224d9d0c44411aa26a772d42affecac26974da89b8814daf0284eee8734b0e9"
     }
   ]
 }

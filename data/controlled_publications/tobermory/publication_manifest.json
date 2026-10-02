@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "tobermory",
+  "title": "Tobermory",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
+    "content_hash": "706a32b3527cc1bad6e20882b0b4ebc896491b53fa4bccefdfdb5d75c8ad56bf",
+    "provenance_hash": "510245507677ab08247655832f626a91de571aebf3daa728e3b140333a319bbe",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "282ee844813dc8a5dd4eb785d793274d1b787417b30e300a7eb89dff56d121de",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Tobermory",
+        "word_count": 2723,
+        "sha256": "bc788cf3827988218b6274834380854257319b2a989ab149f46392fe2a32c6b4"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "10c393797321da3dab2bf35625f7eae932cef495c47e51afc3113b4b1e6544bd"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "fbbf8cdcc3af43b8e952c1514b705ceee06f607adb3f8eb195bbf967c44fc84f",
+    "reader_manifest": "d93e440deb3c2c140845c4bde39f66b2ecd27ece7ab929572a413f90b1623d94",
+    "source_evidence": "10c393797321da3dab2bf35625f7eae932cef495c47e51afc3113b4b1e6544bd",
+    "approval_evidence": "ab26b41c70fec5803e45b560917c2ba9e08c91a0632fc58f1d89f80f51898ef9"
+  },
+  "manifest_sha256": "aa5825e524a1e7a1b9cb897c2aabf2f83f8d035b3854b025f25bbad898367f00"
+}

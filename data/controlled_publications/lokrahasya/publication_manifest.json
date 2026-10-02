@@ -3,14 +3,14 @@
   "schema_version": 1,
   "slug": "lokrahasya",
   "title": "লোকরহস্য",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
-    "source_hash": "260381cc03347b40db669d4de39b44e36807010b662b4ca9e02e0c5ae4100711",
-    "content_hash": "c9a08ae531d9158f05f71f07f343f165d3258519fcf180316fb6ef93c2055a77",
+    "source_hash": "2c536fb46b7a52f42f63c702effcd971d97059c56be4a6b5d7df642b4a8cddc1",
+    "content_hash": "c6ed32e15a45ecdf03b2a20ffbea427d89a4c5992f930b00358f563019522943",
     "provenance_hash": "df3b6e5a4f7028f73bdf0e473af7743f3f7b794ac95f21781780d3e491674b4e",
     "sanitized": true,
     "chapter_count": 16,
-    "chapter_index_sha256": "660ddad3799eb0fd510385c33f39a7c6653b08579ef8c05700373464a3d76e71",
+    "chapter_index_sha256": "ec037facc6cd34c6a4b515bb2872804a20ea0f9b2cedc8540943bd470550ea6e",
     "chapters": [
       {
         "id": "chapter-001",
@@ -51,15 +51,15 @@
         "id": "chapter-006",
         "order": 6,
         "title": "Chapter 6. ব্যাঘ্রাচার্য্য বৃহল্লাঙ্গুল",
-        "word_count": 3934,
-        "sha256": "999ef0316863a2e20f21b48741d946c80fc7970e9da354849185ab941abed876"
+        "word_count": 3968,
+        "sha256": "9f01d9376c96e5b57728a35881c086e1573750d47aa1aa2c6c53d54cfd19fb7a"
       },
       {
         "id": "chapter-007",
         "order": 7,
         "title": "Chapter 7. দাম্পত্য দণ্ডবিধির আইন",
-        "word_count": 2052,
-        "sha256": "6a0bce468731229bb9af7f08b320e0b8b5ca2c3ec03007d326107e8a4855ae65"
+        "word_count": 2336,
+        "sha256": "f95ebd00c4fa1802e2159ded6b5acd42b46b3be8962b4caa1134819ac5a63755"
       },
       {
         "id": "chapter-008",
@@ -79,8 +79,8 @@
         "id": "chapter-010",
         "order": 10,
         "title": "Chapter 10. বর্ষ সমালোচন",
-        "word_count": 793,
-        "sha256": "c52695765e74627c7739fc2d174e32e0c99d899821d0d0c54a1f175c3b41b1ed"
+        "word_count": 1027,
+        "sha256": "24dff5389aa5b8433362c21e375c4e0a66174096abc77f60f2561e9070d894c6"
       },
       {
         "id": "chapter-011",
@@ -100,8 +100,8 @@
         "id": "chapter-013",
         "order": 13,
         "title": "Chapter 13. হনুমদ্বাবুসংবাদ",
-        "word_count": 1275,
-        "sha256": "150d041aeed13a1b44375055fcd20e3c32ebe4e8b02bc03783bfd7a596e68dac"
+        "word_count": 1239,
+        "sha256": "24ec5f30bb117298dd34fdbf74a2f5a26f2bc3eaf641ee64e8c750b32ea3556a"
       },
       {
         "id": "chapter-014",
@@ -121,25 +121,23 @@
         "id": "chapter-016",
         "order": 16,
         "title": "Chapter 16. পাঠভেদ",
-        "word_count": 998,
-        "sha256": "8187f33b5430671c2a36679bc4755d47be4afc17053759ce94546dc00a812ebb"
+        "word_count": 973,
+        "sha256": "830243efdffe85719d05d8374c66cd0ee025ecfebde308688aaa83c62153b8b2"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "dd7dda059bb3d205050b344ebd33ce4ba4c73d0ae053f1a0919b9783f3509aae"
+    "evidence_sha256": "e051f8dd0a10613c832152c2c5ca550de54b82e9f8c5b38cb89990de3f27939c"
   },
   "reader_release": {
-    "status": "BLOCKED",
+    "status": "READY_FOR_APPROVAL",
     "exposed": false,
     "qa_status": "QA_PASSED",
     "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483123/earnalism/covers/front/cover_7450115f-db43-49ae-af14-feea82311d1f.jpg",
-    "blockers": [
-      "Rights: verification_status must be approved before publishing."
-    ]
+    "blockers": []
   },
   "audio_release": {
     "status": "NOT_REQUESTED",
@@ -151,10 +149,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "d822119402def9c45a369026a997ae519ab0dbd1243675d439ff346fde8a166a",
-    "reader_manifest": "9fa91e5cd205eac26c7f40aa362d53faae1becc0145f0c0fd9f36e99caa6657e",
-    "source_evidence": "dd7dda059bb3d205050b344ebd33ce4ba4c73d0ae053f1a0919b9783f3509aae",
-    "approval_evidence": "131bd2662834b25eacdaae08ca0bf79826d07d2b9938cce4d56c4056447140c8"
+    "public_book": "897b180613ed491b6b13d9a58d5655e81e46dce598bad5d26e187daadcc8820d",
+    "reader_manifest": "1a4616087ad7711c8a9b9e1a08e9fb007bf9b1cdab4a781fc2a65154446cb346",
+    "source_evidence": "e051f8dd0a10613c832152c2c5ca550de54b82e9f8c5b38cb89990de3f27939c",
+    "approval_evidence": "235f2dd13f1db92f618a30f7433fc1b942347c364432e64157f57083e2096ecb"
   },
-  "manifest_sha256": "aa8578dee09ac6d35de926488fcebfdd2815ec8ba5e3db8a388935267ba60561"
+  "manifest_sha256": "cb875ba3a1ebaa5b84f6f51420d5a977d1b782ea4fcd417a9e0702cf892df726"
 }

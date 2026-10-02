@@ -1,12 +1,22 @@
 {
   "slug": "the-luck-of-roaring-camp",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true
+  "audiobook_enabled": true,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "3cb4118ac750e0d9badee69fb397ee0e1fb3a7d97f5662399e5bf0d5d326671c",
+  "source_hash": "c19400f79c45463f6d35be61868b604f45dba60c4841769cb1f11543be1baee1",
+  "content_hash": "2f4e9381683289df36840cd2a5149325f8836f03786d853a4e8cff5788fcaea1",
+  "provenance_hash": "d0d1be361bd2386704a00d3cffadc1eb2c56495e6ad1101cd8a838ec11474d11",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00"
 }

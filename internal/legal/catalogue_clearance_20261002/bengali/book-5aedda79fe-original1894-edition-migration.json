@@ -1,0 +1,171 @@
+{
+  "chapter_id": "chapter-001",
+  "chapter_sha256": "dd4c555a93fd84d6bd0f666a5b0f724ab18f6d7d34ae99416066ffcc98e67f51",
+  "source_evidence": {
+    "slug": "book-5aedda79fe",
+    "source_url": "https://bn.wikisource.org/wiki/গল্পগুচ্ছ_(প্রথম_খণ্ড)/শাস্তি",
+    "source_name": "Bengali Wikisource",
+    "source_license": "Underlying Bengali literary text is public domain in India and the U.S.; Wikisource transcription/source layer is reused under CC BY-SA terms.",
+    "source_hash": "7d6e7fef47811ea27f5cf67005046a67bda3a16b1da2e4c4ae17d465b4684e75",
+    "content_hash": "7d6504abe60d1617e7e656c2ca9b3ba0c9a908e38c9f5026d1468ed777f464dd",
+    "provenance_hash": "f30f01be102d7e8bc6b8dcfb7fba23e44f0441a68bea11bd69b4cdc7c63f0f4a",
+    "rights_basis": "Author died 1941. Published 1893. Public domain in India and U.S.",
+    "downloaded_at": "2026-06-02T18:57:15.526481+00:00",
+    "source_format": "text/plain",
+    "reader_facing_boilerplate_removed": true,
+    "author_death_year": 1941,
+    "author_fact_evidence": {
+      "record": "internal/legal/bengali_text_preparation_20261002/author_fact_receipts.json",
+      "record_sha256": "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+      "author_id": "tagore",
+      "authority_url": "https://www.nobelprize.org/prizes/literature/1913/tagore/biographical/?print=1",
+      "authority_response_sha256": "0048c2eaa3a43087f4e130b3e5153c9389111d9aed6d329cf12286ad158c0aa9",
+      "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_EDITION_OR_PUBLICATION_APPROVAL"
+    },
+    "verification_status": "pending",
+    "text_clearance_status": "PREPARED_EVIDENCE_NOT_AUTHORIZED",
+    "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
+    "canonical_reader_identity": {
+      "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
+      "reader_content_sha256": "dd4c555a93fd84d6bd0f666a5b0f724ab18f6d7d34ae99416066ffcc98e67f51",
+      "chapter_count": 1,
+      "chapter_content_sha256": {
+        "chapter-001": "dd4c555a93fd84d6bd0f666a5b0f724ab18f6d7d34ae99416066ffcc98e67f51"
+      },
+      "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
+      "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+    },
+    "reader_content_reconciliation": {
+      "status": "SOURCE_FURNITURE_REMOVED_ONLY",
+      "performed_at": "2026-10-01T21:08:27.473444+00:00",
+      "artifact": "internal/legal/catalogue_clearance_20261002/bengali/source-furniture-repair-proposals.json",
+      "artifact_sha256": "63e8128394ae67e1620d02a5bce6ca6b14dd72f8230ed86b0d535ed69707baf7",
+      "before_content_sha256": "50a4efe9fadf7e4f2937956bda8f1a0ba3f97b9c7a21e34ff3c9ed6fe9e7891b",
+      "after_content_sha256": "dd4c555a93fd84d6bd0f666a5b0f724ab18f6d7d34ae99416066ffcc98e67f51",
+      "removed_source_furniture": [
+        "রবীন্দ্রনাথ ঠাকুর",
+        "গল্পগুচ্ছ",
+        "১৯৫০ (পৃ. ২৬১-২৭৩)",
+        "শাস্তি"
+      ],
+      "literary_words_changed": false,
+      "source_transcription_completeness": "EXACT_MATCH_FORMATTING_ONLY",
+      "scope": "READER_METADATA_FURNITURE_CLEANUP_NOT_PUBLICATION_OR_AUDIO_APPROVAL"
+    },
+    "original_publication_year": 1893,
+    "original_publication_evidence": {
+      "record": "internal/legal/catalogue_clearance_20261002/bengali/tagore-printed-first-publication-datelines.json",
+      "record_sha256": "3d0b1635e64ffbf7e4ad330ed86b2b77c01c3b85ca0054fcd1ef0a71ac02dfb3",
+      "printed_dateline": "শ্রাবণ ১৩০০",
+      "source_rendered_sha256": "519d3c3a7cc0a60054aa100f603db6acfdf8025960179e2e0b76eb5994ef255e",
+      "calendar_conversion": {
+        "bengali_year": 1300,
+        "offset": 593,
+        "gregorian_year": 1893,
+        "precision": "Gregorianyear only; month falls entirely within one year. No inferred exactday.",
+        "reference": "https://www.drikpanchang.com/festivals/pohela-boishakh/pohela-boishakh-date-time.html?year=0596"
+      },
+      "scope": "Underlyingwork firstpublication metadata only; sourceedition editorial/licence/publication authorization independently held."
+    }
+  },
+  "public_book": {
+    "id": "controlled-book-5aedda79fe",
+    "slug": "book-5aedda79fe",
+    "title": "শাস্তি",
+    "subtitle": "",
+    "author": "রবীন্দ্রনাথ ঠাকুর",
+    "category_slug": "literary-fiction",
+    "short_description": "একটি অন্যায় শাস্তির বিরুদ্ধে এক নারীর নীরব প্রতিরোধের মর্মান্তিক গল্প।",
+    "description": "Chandara is sentenced to death for a crime her husband committed. Her refusal to appeal — her silent act of defiance — is one of the most devastating protests in Bengali literature.",
+    "cover_url": "",
+    "cover_image_url": "",
+    "coverImage": "",
+    "cover_image": "",
+    "back_cover_url": "",
+    "back_cover_image_url": "",
+    "backCoverImage": "",
+    "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+    "dominant_color": "#24362E",
+    "estimated_reading_time": "12 min",
+    "formats": [
+      "Ebook"
+    ],
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "about_author": "রবীন্দ্রনাথ ঠাকুর (১৮৬১–১৯৪১) বাংলা সাহিত্যের শ্রেষ্ঠ কবি ও ছোটগল্পকার।",
+    "source_hash": "7d6e7fef47811ea27f5cf67005046a67bda3a16b1da2e4c4ae17d465b4684e75",
+    "content_hash": "7d6504abe60d1617e7e656c2ca9b3ba0c9a908e38c9f5026d1468ed777f464dd",
+    "provenance_hash": "f30f01be102d7e8bc6b8dcfb7fba23e44f0441a68bea11bd69b4cdc7c63f0f4a",
+    "rights_basis": "Author died 1941. Published 1893. Public domain in India and U.S.",
+    "rights_tier": "A",
+    "verification_status": "approved",
+    "qa_status": "QA_PASSED",
+    "approved_to_publish": true,
+    "publication_status": "LIVE_APPROVED",
+    "readerStatus": "reader_ready",
+    "publicationStatus": "live",
+    "isPublic": true,
+    "isLive": true,
+    "showInPublicLibrary": true,
+    "showInHomepage": false,
+    "allowPublicReading": true,
+    "allowCheckout": false,
+    "allowPayment": false,
+    "is_published": true,
+    "audio_enabled": true,
+    "audiobook_enabled": true,
+    "generate_audiobook": true,
+    "audiobook_provider": "historical_mapped_assets",
+    "audiobook_voice": "",
+    "audio_asset_slug": "book-5aedda79fe",
+    "audiobook_assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780570874/earnalism/audiobooks/ben/book-5aedda79fe/book-5aedda79fe.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780570875/earnalism/audiobooks/ben/book-5aedda79fe/book-5aedda79fe_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780570876/earnalism/audiobooks/ben/book-5aedda79fe/book-5aedda79fe_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780570877/earnalism/audiobooks/ben/book-5aedda79fe/book-5aedda79fe_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780570878/earnalism/audiobooks/ben/book-5aedda79fe/book-5aedda79fe_meta.json"
+    },
+    "audiobook": {
+      "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780570874/earnalism/audiobooks/ben/book-5aedda79fe/book-5aedda79fe.mp3",
+      "provider": "historical_mapped_assets",
+      "size": 0,
+      "duration_ms": 0,
+      "assets": {
+        "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780570874/earnalism/audiobooks/ben/book-5aedda79fe/book-5aedda79fe.mp3",
+        "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780570875/earnalism/audiobooks/ben/book-5aedda79fe/book-5aedda79fe_timestamps.json",
+        "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780570876/earnalism/audiobooks/ben/book-5aedda79fe/book-5aedda79fe_highlight.vtt",
+        "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780570877/earnalism/audiobooks/ben/book-5aedda79fe/book-5aedda79fe_chapters.json",
+        "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780570878/earnalism/audiobooks/ben/book-5aedda79fe/book-5aedda79fe_meta.json"
+      },
+      "updated_at": "2026-07-03T20:07:46Z"
+    },
+    "audiobook_assets_updated_at": "2026-07-03T20:07:46Z",
+    "created_at": "2026-07-03T20:07:46Z",
+    "updated_at": "2026-07-03T20:07:46Z",
+    "license_notice_sha256": "38eeac555299aaad53b3e1324b7b260eb3223b866b71208af18334b2cd4531ea"
+  },
+  "base_git_commit": "54267c4884d891afd2d8c6a9398bb8253fac023b",
+  "historical_bytes_location": "Git base commit and prior package history; no duplicate copyrighted narrative archive",
+  "old_chapter_file": "data/controlled_publications/book-5aedda79fe/chapters/chapter-001.json",
+  "original_source_receipt": "internal/legal/catalogue_clearance_20261002/bengali/book-5aedda79fe-original1894-source-comparison.json",
+  "migration_scope": "Intentional complete original1894 edition replacement; no assertion of textual equality and no approval transfer",
+  "removed_verified_source_furniture": [
+    "﻿শাস্তি।"
+  ],
+  "new_source_sha256": "8dc30655e4bd2351ddf1642819c6c85fe0cc6290dc8aba5abb652035f267db42",
+  "verified_at": "2026-10-02T03:09:23.373287+00:00",
+  "new_chapter_sha256": "e438383f30fc659409490628baa424cb42b3c9d54e700034d958d8ee989039d4"
+}

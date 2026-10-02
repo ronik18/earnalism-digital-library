@@ -1,14 +1,14 @@
 {
   "slug": "the-ransom-of-red-chief",
-  "generated_at": "2026-07-03T20:07:49Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "71a512b08d3e58cd5e72979b665d2a9d9b67e813c34edb4d730b3f5a4cbfef85"
+      "sha256": "6260c6fb2a25cb4fbefc79bec4f758a3d7120bbda2ec10ee495893d6d5393f06"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "3bee410d251dbfb5fd118935541e7e28df1f80de5dd81c311bbf794f46140284"
+      "file": "chapters/chapter-001.json",
+      "sha256": "e98a8e7d9dc6850ae09ddb72a681db65396eb0482c50ac53b1835ae05db15063"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "c938d5107d7d8cc56df5eea1b15ebd9151dbd57090efda38808fde5a4813e8a3"
+      "sha256": "98fc28370f9460e5cb5204faaedf649b45263cc9857181f2ba45fd67edce5e2d"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "6839c02acdde363ce63439107dbb1a6e8340d355c52c5f50945415d825ca3b29"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "9d644e3812d57a2927d9db3e0c6fee348a87e62fd0f15fa73d2ed7e8258d72bc"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "7da8bbd9f16959b911f522731799d9dc1f0ae5200bec04f98fe334f972d7a6f4"
+      "sha256": "d813e7c78e83490b6a2d887fd2aee81e94ba1f0d13ff1e2389ec134697473e37"
     }
   ]
 }

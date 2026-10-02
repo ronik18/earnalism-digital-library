@@ -1,14 +1,14 @@
 {
   "slug": "berenice",
-  "generated_at": "2026-07-03T20:07:47Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "5ec5eb0dfff0a98572f46f2eaf7b4c814601bf72fe6b190296eea5d4fac1df7f"
+      "sha256": "382a0796a091a69570df4e7078c08ce2bfffb84739e4663184fef36d9e02b984"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "6f53e3ed4ae16cf6091755bf0cf12483f253a3af54b2ed5abf4f624de64fe9e8"
+      "file": "chapters/chapter-001.json",
+      "sha256": "0d1a5128d9876b8fd1cb18c5721d15dbcaa0ec46816223f6e3ad7f8deb61cc9d"
     },
     {
       "file": "highlight_sync.json",
@@ -16,19 +16,19 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "a14d26c3053cc1d77487021b9f4c1d8e990f907a1f7822463be0578c9d80c8f1"
+      "sha256": "c205138c303b3519e77c05a7b98d793b68272c52e225fdbc4fb351bafaa304b5"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "9d8b2249fe7d9ddff1d4a642011e5419a5453aa817ef529317e08bca7bce6d4c"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "afc25b20fb523c25a4b2ef1e3746eca286c3e11c072c685bd5c6f56deb8c8be4"
+      "sha256": "37da3217ee880206f6ff31d749dd3e417c4ef07e70b877bd1e7d6a273ea6773c"
     },
     {
       "file": "source_evidence.json",
-      "sha256": "52fd2b3a7bd5b43f15219f34d3d86ade336dd9bf2a58d6e13a5bfe0e3f496267"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "554a960f827510e727aff095b73799e4c13a4283cf16e01a5dac8f47c1baa44b"
+      "sha256": "17f0cb081b1f37f014bf8d701c3eeabf9459dfab32744d78bd09cd18ddfea5b7"
     }
   ]
 }

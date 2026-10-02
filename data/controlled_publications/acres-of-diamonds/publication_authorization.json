@@ -1,0 +1,40 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "acres-of-diamonds",
+  "edition": "Project Gutenberg #368; complete Conwell/Shackleton book, with original JohnWanamaker appreciation;1915originalscan signature independently identified; no illustrations",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_ONLY_NON_COVER_COMPONENTS",
+  "source_sha256": "a0b8613f5a9c0ee604b53d6aa68388084bdefbf24e1f5e9749aafe2c8448efa3",
+  "content_sha256": "412d4000427790f40832d29be6bd49985d288ff4a9d48c2d5d866a50c62e27b0",
+  "chapter_sha256": {
+    "chapter-001": "3390bb9544142dc503a522d21ad959fa4c44d6123e20b7abceafe49ab0b6aebb",
+    "chapter-002": "4d904ef71f685a7071e6325a2d78521d76a24f125dc55e87edd1d580e6af7738",
+    "chapter-003": "22df1fd016a83573a7600658cad5f7168b481243eee255a7b5d3ac5b541ba169",
+    "chapter-004": "06430ae071e3f22559fcecb0f349c23c7f93adafc2cdc45f2d820ebe82eacd38",
+    "chapter-005": "8d141f8ed86374561b693a3b65081be4090f8e6687e7f7d76e46765bf0ec04ac",
+    "chapter-006": "ac6d6deef745e02db2184368f1f6f0953d2680c5b11beefc90676f4ae7565a14",
+    "chapter-007": "0bc43fb80cf74dbf37082e3a0acbf20193c7b7e4bbbb4760093c887bd441e897",
+    "chapter-008": "d872d5bbf2207f06c5f2107f93d6f3c849c73788d4a8715e52cc826dccd7f830",
+    "chapter-009": "aecb700e176be275ac49a75f5cfe5fcaca38d77310dfa19ea9c6ef659023bfc5",
+    "chapter-010": "6c71713ca787e4e013627f0128d7c45f6dc8faf28cc5cff7b91defaca006e43d",
+    "chapter-011": "560c691411ac158c4e02f6b7851548fcdad3256fb42d3dfc7fd5b8bfc83a31aa",
+    "chapter-012": "eeabcea35e427b6cfb2ced2c22071fac72610b02035db420aa91695de9c12e41"
+  },
+  "cover_provenance_sha256": null,
+  "cover_status": "DEFERRED_BY_OWNER_REQUEST_NO_COVER_DISPLAY_AUTHORIZED",
+  "authorized_by": "Automated executor under owner explicit autonomous clearance delegation; not a fabricated human or legal signature.",
+  "verified_at": "2026-10-02T01:07:27.058549+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Cover clearance/binding, trusted production registry acceptance, canonical controlled-live allowlist, actual runtime Reader readiness and protected gates must separately pass.",
+  "not_authorized": [
+    "cover_display",
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation"
+  ]
+}

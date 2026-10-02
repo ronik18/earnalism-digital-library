@@ -1,0 +1,47 @@
+[
+  {
+    "slug": "berenice",
+    "chapter": "chapter-001",
+    "old_chapter_sha256": "11b6a27d5d8a8483d4ce830486db7be6a1d60b04ff641a32d7fbe3e7506cb4b5",
+    "new_chapter_sha256": "cc8ce45fafe29474e2f5384ed604c86312654a7e731cf73a6b57eede6e298643",
+    "source_sha256": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e",
+    "verified_at": "2026-10-01T21:39:46.223432+00:00",
+    "publication_accepted": false
+  },
+  {
+    "slug": "pauls-case",
+    "chapter": "chapter-001",
+    "old_chapter_sha256": "65ff3653504da19e85d9bd2a72cd947d45868322085ff21d50c543f9166f3010",
+    "new_chapter_sha256": "3674aee90e9811565646f07f4763ff4a3fa742b26a74774d52c7d15cf5c014c7",
+    "source_sha256": "926b042528d42a6e8b0e062dfee1987fbbb4ddbe1ea6601d2b61fc77b452f521",
+    "verified_at": "2026-10-01T21:39:46.223432+00:00",
+    "publication_accepted": false
+  },
+  {
+    "slug": "the-five-orange-pips",
+    "chapter": "chapter-001",
+    "old_chapter_sha256": "5acebb7b0d479bdccf79828e96a9a86027e013d846621117ac027220e046dca8",
+    "new_chapter_sha256": "a48d83ab27f4aa1112764d09f0c25bf689eed6680b66f262d5b43b0446148d91",
+    "source_sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "verified_at": "2026-10-01T21:39:46.223432+00:00",
+    "publication_accepted": false
+  },
+  {
+    "slug": "the-red-headed-league",
+    "chapter": "chapter-001",
+    "old_chapter_sha256": "d877f8690760743769d4b36e1e47701e9d8b640cd1ea95d19eb1aae471333f79",
+    "new_chapter_sha256": "2c1aec29382ba3f1eb9dca23f37ec66fad34806264b221e183c38088db92524d",
+    "source_sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "verified_at": "2026-10-01T21:39:46.223432+00:00",
+    "publication_accepted": false
+  },
+  {
+    "slug": "the-monkeys-paw",
+    "chapter": "chapter-003",
+    "old_chapter_sha256": "7ad74f2ca75e5d2e5f1dbc0a43c440f9fb510cbcc32e739ec634b0cc21b30758",
+    "new_chapter_sha256": "db74529db5f371fc0a75923645482180431e6b1048605c14f48efba1e12e143c",
+    "source_sha256": "22f3431a7db6d9e210ffb446044739513475cb93992421d1b0d107f094d7408d",
+    "verified_at": "2026-10-01T21:39:46.223432+00:00",
+    "publication_accepted": false
+  }
+]

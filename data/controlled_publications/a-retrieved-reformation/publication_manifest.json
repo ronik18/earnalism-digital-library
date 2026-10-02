@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "a-retrieved-reformation",
+  "title": "A Retrieved Reformation",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "c963a7c08d104b1bb71930c8d122022ce908dbdc8f1f22e8af31e613520af686",
+    "content_hash": "58b55bd17afe0993ca5c8bdf25e2484619d9d8901193198440c80a999b4a6d82",
+    "provenance_hash": "7eb7426b50215956ca18227be3ff1bf76477e43c531765623ed3277fb2b8d400",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "ba9ad0cfc0e9f19bee999cf4772588635f0401c8c37099379905b9d23ef706a4",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "A Retrieved Reformation",
+        "word_count": 2821,
+        "sha256": "c68c083b811976723d26642f8471bd83564dc8be461a17155c1357a972879a6e"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "56142848634167ad07b32e76c88e288c885a9b6142e28e2df190833f1be797b7"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "dbb8aab792611bfcdb002e68401175cb07fb28b7eff3df45602b7f875015d9c3",
+    "reader_manifest": "81b8eccb9da780af7ea6f5f51b7ae540d2b84245f6558906fce407b348efb609",
+    "source_evidence": "56142848634167ad07b32e76c88e288c885a9b6142e28e2df190833f1be797b7",
+    "approval_evidence": "d8e7abe739856da81643bc99d70f15dedd44a8462dbc075eca99da8af97bc936"
+  },
+  "manifest_sha256": "7b3ee743971cb4f968eb72cbce8f3817fc0d2a2c0fdb5549eb79ca5198c71ad2"
+}

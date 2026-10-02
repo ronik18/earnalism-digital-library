@@ -1,0 +1,38 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-muchiram-gurer-jibanchorit-1944-cc-by-sa-text-reader",
+  "edition_id": "muchiram-gurer-jibanchorit",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "560150071849795255d6af4fcbca75ff627609ae74385652b25b6f9dfcb79c35",
+    "reader_manifest": "ef7c6d21000b4f9d7fd56fc8bbb4768016682ee70466bc87e4f20d1ff6a4cd20",
+    "source_evidence": "019f7fe8556e516fef78e6cb4ffc4f9e072ec70b8459f525a9d41dc5ce4e4950",
+    "approval_evidence": "ab826a72cb7775ff837fbbc880cf504dc0e019da1355dc1dea437ac56fb028bc",
+    "checksum_manifest": "c033566e16b4fe527508df40d58497b4b4f1e816995b020183bce0cf942c8b96",
+    "publication_manifest": "16b5fbb33897258230da26e972bb61fac79113192d23b185f2018c0f26c6f73e"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-02T03:10:37.024181+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Exact Muchiram Gurer Jibanchorit1944 second centenary edition edited Brajendra Nath Bandyopadhyay and Sajanikanta Das; foreword excluded,14 narrative chapters including source notes retained; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1962; India Section22 literary term expired end2022. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
+  "evidence_sha256": [
+    "9850cbb5f95139c0b5df713ef8e58b50d5823dc23f54a3d86828bef590688834",
+    "7d6ac82294e285eaaf525ff17076d72df0acadf0590e8b54e6356f0617538b45",
+    "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "23f7d1fa20062a5e03a64016228256d62c6d2fbedeee016f22ac293a4e7b65dc",
+    "dea445c190a4bf483f1a761fdad427becbae87fdbe4abc0e6bafb868a89d83ea",
+    "c78c5f7ef44ed30b38cc3a38956c546403b2a948dc0743a6b652977674bf8ff1",
+    "15e85c07b9253170cf5867946b36eb1e4d3e4d10391910985b6e416ecc5fc9ed"
+  ],
+  "accepted_by": "Automated executor under explicit product-owner autonomous evidence-backed text-clearance delegation; not a human legal reviewer or signature.",
+  "conditions_satisfied": true
+}

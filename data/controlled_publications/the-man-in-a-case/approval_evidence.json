@@ -1,12 +1,22 @@
 {
   "slug": "the-man-in-a-case",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true
+  "audiobook_enabled": true,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "acb572bfb7711d1ebb18a1836bccb21343e944f108d04a97a5676673974e84f9",
+  "source_hash": "ac5994c65da06e72823036764f85931ec908d1021e78e56886bc74d15971eac2",
+  "content_hash": "0879b82d827a6fc06defd69c8b9abb9b1df719c9378b3d86b3384cd39e22ef7a",
+  "provenance_hash": "e339656f0563e76fcc1da3da3c7c38d03866cfc65ba25cd66bddfe5c4dc4948c",
+  "verified_at": "2026-10-01T21:54:02.732252+00:00"
 }

@@ -1,0 +1,65 @@
+{
+  "receipt": {
+    "url": "https://bn.wikisource.org/w/api.php?action=query&generator=allpages&gapprefix=%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A7%8D%E0%A6%95%E0%A7%83%E0%A6%A4%E0%A6%BF+%28%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC%2C+%E0%A7%A7%E0%A7%AF%E0%A7%AB%E0%A7%A8%29%2F&gapnamespace=0&gaplimit=max&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2",
+    "retrieved_at": "2026-10-01T21:50:44.337855+00:00",
+    "response_sha256": "9dad83c4c82cd52d41ea679c5afff08c541eccc7fbcacff967ac7e5468c900c3"
+  },
+  "prefix": "নিষ্কৃতি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৫২)",
+  "leaves": [
+    {
+      "title": "নিষ্কৃতি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৫২)/এক",
+      "revision": 1910789,
+      "revision_timestamp": "2025-09-16T07:51:36Z",
+      "wikitext": "<pages index=\"নিষ্কৃতি - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=\"3\" to=\"9\" tosection=1 header=1/>"
+    },
+    {
+      "title": "নিষ্কৃতি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৫২)/দুই",
+      "revision": 1910793,
+      "revision_timestamp": "2025-09-16T07:51:38Z",
+      "wikitext": "<pages index=\"নিষ্কৃতি - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=9 to=15 fromsection=2 tosection=2 header=1/>"
+    },
+    {
+      "title": "নিষ্কৃতি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৫২)/তিন",
+      "revision": 1910792,
+      "revision_timestamp": "2025-09-16T07:51:38Z",
+      "wikitext": "<pages index=\"নিষ্কৃতি - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=15 to=22 fromsection=3 tosection=3 header=1/>"
+    },
+    {
+      "title": "নিষ্কৃতি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৫২)/চার",
+      "revision": 1910790,
+      "revision_timestamp": "2025-09-16T07:51:37Z",
+      "wikitext": "<pages index=\"নিষ্কৃতি - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=22 to=29 fromsection=4 header=1/>"
+    },
+    {
+      "title": "নিষ্কৃতি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৫২)/পাঁচ",
+      "revision": 1910795,
+      "revision_timestamp": "2025-09-16T07:51:39Z",
+      "wikitext": "<pages index=\"নিষ্কৃতি - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=30 to=37 header=1/>"
+    },
+    {
+      "title": "নিষ্কৃতি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৫২)/ছয়",
+      "revision": 1910791,
+      "revision_timestamp": "2025-09-16T07:51:38Z",
+      "wikitext": "<pages index=\"নিষ্কৃতি - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=38 to=45 header=1/>"
+    },
+    {
+      "title": "নিষ্কৃতি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৫২)/সাত",
+      "revision": 1910796,
+      "revision_timestamp": "2025-09-16T07:51:40Z",
+      "wikitext": "<pages index=\"নিষ্কৃতি - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=46 to=51 tosection=7 header=1/>"
+    },
+    {
+      "title": "নিষ্কৃতি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৫২)/আট",
+      "revision": 1910788,
+      "revision_timestamp": "2025-09-16T07:51:36Z",
+      "wikitext": "<pages index=\"নিষ্কৃতি - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=51 to=57 fromsection=8 tosection=8 header=1/>"
+    },
+    {
+      "title": "নিষ্কৃতি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৫২)/নয়",
+      "revision": 1910794,
+      "revision_timestamp": "2025-09-16T07:51:39Z",
+      "wikitext": "<pages index=\"নিষ্কৃতি - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=57 to=64 fromsection=9 header=1/>"
+    }
+  ],
+  "continuation": null
+}

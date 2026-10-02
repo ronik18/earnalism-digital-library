@@ -1,0 +1,26 @@
+[
+  {
+    "kind": "1873-facsimile",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/30/%E0%A6%87%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%BF%E0%A6%B0%E0%A6%BE_-_%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%AE%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0_%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC_%28%E0%A7%A7%E0%A7%AE%E0%A7%AD%E0%A7%A9%29.pdf",
+    "status": 200,
+    "sha256": "664191f5a7e2d8e6bbccd90d1c8ee947aa70f33b5924c1295d77b46f4114f067",
+    "bytes": 16564440,
+    "verified_at": "2026-10-01T21:14:28.768337+00:00"
+  },
+  {
+    "kind": "owner-front-cover",
+    "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270665/earnalism/covers/front/bn-060_front_1600x2400.png",
+    "status": 200,
+    "sha256": "dcbfc2996987baae482523e355aefa218a3d422c027127237daccbc700c34b88",
+    "bytes": 192403,
+    "verified_at": "2026-10-01T21:14:29.548417+00:00"
+  },
+  {
+    "kind": "owner-back-cover",
+    "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270666/earnalism/covers/back/bn-060_back_1600x2400.png",
+    "status": 200,
+    "sha256": "b5ed699a3ff0fbcee904ead6b2825904621fdb74165762a685a456f1a376aeed",
+    "bytes": 407126,
+    "verified_at": "2026-10-01T21:14:30.644566+00:00"
+  }
+]

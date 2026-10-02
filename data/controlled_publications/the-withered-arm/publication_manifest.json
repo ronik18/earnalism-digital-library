@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-withered-arm",
+  "title": "The Withered Arm",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "c2e80e062f09828cb87dd57ca8db79de7e4bb22cbbec178276fa50d2cd7caa53",
+    "content_hash": "12d3bf4e0b6a8682055242aa8ef4867d086c79257dcfc7f6c3592f1aea1a8ced",
+    "provenance_hash": "44ee41c0e15bf9a262bef891dc289a4fcc2bb89e47ed91f807f059dc5b88968b",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "c30a37e0ed980e00e5f43a388743ce797d87f04db6b9bccf2277b5c00cd48a78",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Withered Arm",
+        "word_count": 10529,
+        "sha256": "e1c0f5b69034aa8eea262cb7ee0bc0bb8d148c76df26fde1735272510ebe7e53"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "5224d9d0c44411aa26a772d42affecac26974da89b8814daf0284eee8734b0e9"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "e3d5e6a016d3428ff0d03bc53ec7133b737920e8466a83a8b482b0b16546df8d",
+    "reader_manifest": "1b500afce3c2fd35345c9741cb9f4823bee2e31b77f2c8a210d3c1f8edc891bf",
+    "source_evidence": "5224d9d0c44411aa26a772d42affecac26974da89b8814daf0284eee8734b0e9",
+    "approval_evidence": "e7b3fbd5734107cf43babf138f6efdb2cd5268332eaed3eb32103431ca25e829"
+  },
+  "manifest_sha256": "abd29e39a3aceacf49c3f667ff61360345c8220e883685a0f85de44a9f456bd5"
+}

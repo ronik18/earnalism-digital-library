@@ -2580,3 +2580,10 @@ Next generated prompt: Finish secure production sign-in and authenticated truste
 ## Bengali text preparation — 2026-10-02
 
 Author lifetime facts, transcription licensing, exact source edition and publication authorization are separate gates. Owner-designed covers still require explicit asset bindings. Source site licensing is not an accepted edition decision. Preserve legacy import hashes while binding actual current chapter hashes. A text-preparation manifest must not inherit stale audio approval; ordinary publication validation remains strict. Current canonical launch authority has 24 titles and paid commerce, so held-cohort audit must enforce package-local non-exposure rather than a historical three-title/global-commerce-off assumption.
+
+## Catalogue clearance 2026-10-02
+
+122 packages repaired; four local exact-edition text decisions, no live activation. Later editorial rights and ambiguous publication dates remain held. Repeatable static SEO generation must strip only its own generated fallback. CC-licensed delivered text must retain downstream license permissions.
+
+### Catalogue clearance final checkpoint
+103 local text decisions remain unexposed; covers deferred. Primary-source whole-work verification, immutable license notices, conservative India publication bounds and known-live runtime controls prevent false readiness. Damaged Eyesore glyphs and conflicting Kafka permissions remain held.

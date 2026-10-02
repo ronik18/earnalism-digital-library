@@ -1,10 +1,14 @@
 {
   "slug": "the-art-of-money-getting",
-  "generated_at": "2026-08-08T20:25:26Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "67b6de67fba80fa95778e9a581d0dd162dd37f79a2f722b6255fdec087b5af6b"
+      "sha256": "872ae423202a4b8f2235d07970f57ece66c251ad112b6212568f08f918dd6137"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "04edd10d202a6f1b8e7c1c35308f728f1768e1db656080fa9ae49d559761d21f"
     },
     {
       "file": "highlight_sync.json",
@@ -12,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "82191df2abb5e775be78134455a2e3dd7faf72bf4b67ae208ccc870ccf1d0b6f"
+      "sha256": "253c7b38ae5815549018228ab6723139dcce22f880f04ba1a3a70ce65e334d88"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "802fa215c5935f25ceefe9c94ef88067e8385906cc9c8a9b558ee6b67227fdf6"
     },
     {
       "file": "reader_manifest.json",
@@ -20,11 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "e1b3135f42b112aee673c2acc3b59ec273cc1d5f55eee9cf414d62a4b90d85d7"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "ca5f7b0a782a8bf6c6d3e04bb4ad20e9e97f387945f0fb899f6e2c1bc18b7105"
+      "sha256": "1de370a2d070b6d45231c688d02cce0bc8a3e9a0f2ee734807e54befd55d1034"
     }
   ]
 }

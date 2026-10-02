@@ -24,12 +24,41 @@
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "c72dcc9a084a75b70c14ed578248cfeb7c57960bdd356abf9317f74828456015",
+    "reader_content_sha256": "10e66b87301d70704d9841d23d9c874baab36958ee7e4003b2c3dee3b71c9fa7",
     "chapter_count": 1,
     "chapter_content_sha256": {
-      "chapter-001": "c72dcc9a084a75b70c14ed578248cfeb7c57960bdd356abf9317f74828456015"
+      "chapter-001": "10e66b87301d70704d9841d23d9c874baab36958ee7e4003b2c3dee3b71c9fa7"
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  },
+  "reader_content_reconciliation": {
+    "status": "SOURCE_FURNITURE_REMOVED_ONLY",
+    "performed_at": "2026-10-01T21:08:27.473444+00:00",
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/source-furniture-repair-proposals.json",
+    "artifact_sha256": "63e8128394ae67e1620d02a5bce6ca6b14dd72f8230ed86b0d535ed69707baf7",
+    "before_content_sha256": "c72dcc9a084a75b70c14ed578248cfeb7c57960bdd356abf9317f74828456015",
+    "after_content_sha256": "eef5d43b34d08757709f3f66ce5d3f74652b78f09c85481e3b957746c8071c61",
+    "removed_source_furniture": [
+      "গল্পগুচ্ছ",
+      "১৯৬৯ (পৃ. ৭০৭-৭১৮)"
+    ],
+    "literary_words_changed": false,
+    "source_transcription_completeness": "ADDITIONAL_SOURCE_COMPARISON_REQUIRED",
+    "scope": "READER_METADATA_FURNITURE_CLEANUP_NOT_PUBLICATION_OR_AUDIO_APPROVAL"
+  },
+  "exact_transcription_reconciliation": {
+    "record": "internal/legal/catalogue_clearance_20261002/bengali/aparichita-exact-omission-repair.json",
+    "record_sha256": "ded6c15294b1ca973f8b95f35bf1939e980c9293f65767a3ecab1193aa59dd59",
+    "status": "EXACT_MATCH_FORMATTING_ONLY_AFTER_RECORDED_REPAIRS",
+    "scope": "Same pinned1969 source, omitted paragraph restored and exact apostrophe transcription preserved; no legal/publication/audio approval."
+  },
+  "original_publication_year": 1914,
+  "original_publication_evidence": {
+    "record": "internal/legal/catalogue_clearance_20261002/bengali/tagore-volume3-printed-publication-datelines.json",
+    "record_sha256": "806b47cb8964633dcad588d37ce67306177faf79db885eabd0ca84aa7cc42e7e",
+    "printed_publication_dateline": "কার্তিক ১৩২১",
+    "calendar_inference": "Bengaliyear+593 for Jyaishtha/Ashwin/Kartik, Gregorianyearonly, noexactday",
+    "scope": "Underlyingwork publicationfact; ©VisvaBharati1969 editorialrights/CCtranscriptionconditions independently held"
   }
 }

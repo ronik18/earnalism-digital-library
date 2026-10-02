@@ -1,12 +1,22 @@
 {
   "slug": "pauls-case",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true
+  "audiobook_enabled": true,
+  "source_hash": "926b042528d42a6e8b0e062dfee1987fbbb4ddbe1ea6601d2b61fc77b452f521",
+  "content_hash": "3674aee90e9811565646f07f4763ff4a3fa742b26a74774d52c7d15cf5c014c7",
+  "provenance_hash": "ee2f34e521c214d7feb8bf6ac36d066e6db4619f6cc178d518136dc3eaa62f01",
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "421eb0f7b0f463a9622af812a170c90a38d87bdac4c5682dbe8d7866971e0baa",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00"
 }

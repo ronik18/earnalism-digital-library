@@ -1,0 +1,62 @@
+{
+  "receipt": {
+    "url": "https://bn.wikisource.org/w/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&titles=%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%A3%E0%A7%8D%E0%A6%9F%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29.djvu%7C%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%A3%E0%A7%8D%E0%A6%9F%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29.djvu%7C%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%A3%E0%A7%8D%E0%A6%9F%3A%E0%A6%95%E0%A6%A5%E0%A6%BE-%E0%A6%9A%E0%A6%A4%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%AF%E0%A6%BC.djvu%7C%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%98%E0%A6%A3%E0%A7%8D%E0%A6%9F%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95.djvu&format=json&formatversion=2",
+    "retrieved_at": "2026-10-01T21:01:58.634442+00:00",
+    "response_sha256": "449756fd3709332ce24d6f1a594d8ec429b3f0f580ca9990268969b26107c0c7"
+  },
+  "data": {
+    "batchcomplete": true,
+    "query": {
+      "pages": [
+        {
+          "ns": 102,
+          "title": "নির্ঘণ্ট:গল্প-দশক.djvu",
+          "missing": true
+        },
+        {
+          "ns": 102,
+          "title": "নির্ঘণ্ট:কথা-চতুষ্টয়.djvu",
+          "missing": true
+        },
+        {
+          "pageid": 15553,
+          "ns": 102,
+          "title": "নির্ঘণ্ট:গল্পগুচ্ছ (প্রথম খণ্ড).djvu",
+          "revisions": [
+            {
+              "revid": 1712030,
+              "parentid": 1703110,
+              "timestamp": "2022-12-15T06:45:28Z",
+              "slots": {
+                "main": {
+                  "contentmodel": "proofread-index",
+                  "contentformat": "text/x-wiki",
+                  "content": "{{:MediaWiki:Proofreadpage_index_template\n|wikidata_item=Q109833422\n|Title=\n|Subtitle=\n|Volume=\n|Issue=\n|Edition=\n|Author=\n|Foreword_Author=\n|Translator=\n|Editor=\n|Illustrator=\n|Lyricist=\n|Composer=\n|Singer=\n|Publisher=\n|Address=\n|Printer=\n|Year=\n|Source=djvu\n|Image=1\n|Progress=T\n|Pages=<pagelist \n1=\"প্রচ্ছদ\" \n2=\"প্রকাশক\" \n3=\"সূচীপত্র\" \n4=\"সূচীপত্র\" \n5=1\n/>\n|Volumes=\n|Remarks=﻿\n{{পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/৩}}\n{{পাতা:গল্পগুচ্ছ (প্রথম খণ্ড).djvu/৪}}\n|Notes={{রবিমাস রচনা}}\n|Header=\n|Footer=\n}}"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pageid": 15557,
+          "ns": 102,
+          "title": "নির্ঘণ্ট:গল্পগুচ্ছ (তৃতীয় খণ্ড).djvu",
+          "revisions": [
+            {
+              "revid": 1729465,
+              "parentid": 1680473,
+              "timestamp": "2023-04-08T02:49:19Z",
+              "slots": {
+                "main": {
+                  "contentmodel": "proofread-index",
+                  "contentformat": "text/x-wiki",
+                  "content": "{{:MediaWiki:Proofreadpage_index_template\n|wikidata_item=Q109834226\n|Title=\n|Subtitle=\n|Volume=\n|Issue=\n|Edition=\n|Author=\n|Foreword_Author=\n|Translator=\n|Editor=\n|Illustrator=\n|Lyricist=\n|Composer=\n|Singer=\n|Publisher=\n|Address=\n|Printer=\n|Year=\n|Source=djvu\n|Image=1\n|Progress=V\n|Pages=<pagelist \n1=\"প্রচ্ছদ\"\n2=\"প্রকাশক\" \n3=\"সূচীপত্র\" \n4=\"সূচীপত্র\" \n5=\"প্রচ্ছদ\"\n6=516\n/>\n|Volumes=\n|Remarks={{পাতা:গল্পগুচ্ছ (তৃতীয় খণ্ড).djvu/৩}}\n|Notes={{রবিমাস ১৪২৬ রচনা}}{{রবিমাস ১৪২৯ রচনা}}\n|Header=\n|Footer=\n}}"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

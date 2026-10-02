@@ -1,12 +1,22 @@
 {
   "slug": "the-outcasts-of-poker-flat",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true
+  "audiobook_enabled": true,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "465ceb3908928fad9deca80edcac48624204437bf40d118312f8382f934f8daf",
+  "source_hash": "c19400f79c45463f6d35be61868b604f45dba60c4841769cb1f11543be1baee1",
+  "content_hash": "c1d1338d73235b3f05c710e0b170b9a600b69956ca89220291e4ada43a6cef20",
+  "provenance_hash": "3aa18073d1a6f8d1d0384ae86c842d56ce2960bcab5030221b555004989e9662",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00"
 }

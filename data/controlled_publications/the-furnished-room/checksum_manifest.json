@@ -1,14 +1,14 @@
 {
   "slug": "the-furnished-room",
-  "generated_at": "2026-07-03T20:07:49Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "08f4fbe5c8b8306e897350ffcd98d8667652c236d94324a63cc34014165f4cc0"
+      "sha256": "803d3d89fb84da2deef8f13c74c63e4f5a1ee942b483f4ca66a380740216e2ca"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "b3f45f0121d99607534abaa35aa6d85a01a32605b146be37ee2b2644e2850d21"
+      "file": "chapters/chapter-001.json",
+      "sha256": "2240e696fdaafb2432241597b87dd397d4240cbd5c6e8480bb6a56639eb5e730"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "8523c9c692e963b2999503a20383c7d9abe8c79a76a8de7a44a8315ce0c69544"
+      "sha256": "9372e6eb392bdf832270ca6dbb47cfe9227128b0738fb892a339722b32e6667d"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "a5903bcaec2860039fc9f9b6fca445ca87337584e9bba5ca1196185ebf5ac957"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "9db184fde1517a30b982f0a40323a02e16e6070a3284361d1ea072c14b0839dd"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "744979fcae05023ed048c5719c82382587c7f772ba5fae8a1a11862111b818a2"
+      "sha256": "7c5dbe4f77cb2ccc194e5539eb5146c7c45135f974835ef7f1c72d7697f88444"
     }
   ]
 }

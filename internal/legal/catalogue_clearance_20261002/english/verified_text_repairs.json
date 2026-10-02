@@ -1,0 +1,34 @@
+{
+  "repairs": [
+    {
+      "schema_version": "earnalism.verified-text-repair-proposal.v1",
+      "slug": "frankenstein",
+      "source_edition": "Project Gutenberg #84 (do not substitute #41445 or #42324)",
+      "source_receipt_key": "84",
+      "source_exact_phrase_verified": true,
+      "reason": "Prior import parser treated first narrative line as part of chapter heading; every other chapter body matches current #84. Move literary phrase to body and restore semantic Chapter 11 title.",
+      "old_chapter_sha256": "3dcde904bd4d95fffbece76420e98f53c82724b0a4e4837d4c3d0b44a1cd1cc4",
+      "new_chapter_sha256": "b8dbd7fea59cfb285b249eaf8014323cd82c0f86c2622ababe7cf4b0a5bfdfed",
+      "prepend_exact_to_content": "“It is with considerable difficulty that I remember the original era of\n\n",
+      "replace_title_with": "Chapter 11",
+      "affected_paths": [
+        "chapters/chapter-015.json",
+        "reader_manifest.json",
+        "public_book.json",
+        "source_evidence.json",
+        "checksum_manifest.json",
+        "publication_manifest.json"
+      ],
+      "required_rebinding": [
+        "chapter content_hash/sanitizedSha256",
+        "ordered content aggregate",
+        "reader/public title metadata",
+        "source_evidence current official receipt",
+        "package manifest checksum"
+      ],
+      "publication_authority_conferred": false,
+      "cover_scope": "DEFERRED",
+      "audio_mutation_permitted": false
+    }
+  ]
+}

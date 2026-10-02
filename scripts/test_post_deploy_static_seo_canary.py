@@ -198,7 +198,7 @@ class HistoricalUnavailableSnapshotTests(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
         source_root = SCRIPT.parent.parent
-        files = ["frontend/scripts/generate-static-seo-snapshots.mjs", "frontend/scripts/verify-static-seo-snapshots.mjs", "frontend/scripts/unavailable-title-routes.mjs", "frontend/static-seo/controlled-publication-public.json", "frontend/static-seo/editorial-public.json", "frontend/public/index.html", "data/controlled_launch.json"]
+        files = ["frontend/scripts/static-seo-template.mjs", "frontend/scripts/generate-static-seo-snapshots.mjs", "frontend/scripts/verify-static-seo-snapshots.mjs", "frontend/scripts/unavailable-title-routes.mjs", "frontend/static-seo/controlled-publication-public.json", "frontend/static-seo/editorial-public.json", "frontend/public/index.html", "data/controlled_launch.json"]
         for relative in files:
             target = self.root / relative
             target.parent.mkdir(parents=True, exist_ok=True)

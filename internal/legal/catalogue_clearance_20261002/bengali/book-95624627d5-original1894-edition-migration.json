@@ -1,0 +1,172 @@
+{
+  "chapter_id": "chapter-001",
+  "chapter_sha256": "1237ca4ab5922ee04c464dd69b6d0e75b0da59fc17f977b8453d7cbc1265d67a",
+  "source_evidence": {
+    "slug": "book-95624627d5",
+    "source_url": "https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B_(%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE_%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1)/%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A7%80",
+    "source_name": "Bengali Wikisource",
+    "source_license": "Underlying Bengali literary text is public domain in India and the U.S.; Wikisource transcription/source layer is reused under CC BY-SA terms.",
+    "source_hash": "12e68ccb1f58102856edb86d24bb700eb18bd1bda6dee53b8711895d5d73b6a8",
+    "content_hash": "b17c4f3d8928510f6a9012b3e9e9333e8bdefa213da3a51b87f1ab17e2c5d6b5",
+    "provenance_hash": "531807dbbf7b3dc9cc8fe1f91beb726ba5d86f8be99aef9d4ea2d2f4b42806a9",
+    "rights_basis": "Author died 1941. Published 1901. Public domain in India and U.S.",
+    "downloaded_at": "2026-06-02T19:23:56.280289+00:00",
+    "source_format": "text/plain",
+    "reader_facing_boilerplate_removed": true,
+    "author_death_year": 1941,
+    "author_fact_evidence": {
+      "record": "internal/legal/bengali_text_preparation_20261002/author_fact_receipts.json",
+      "record_sha256": "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+      "author_id": "tagore",
+      "authority_url": "https://www.nobelprize.org/prizes/literature/1913/tagore/biographical/?print=1",
+      "authority_response_sha256": "0048c2eaa3a43087f4e130b3e5153c9389111d9aed6d329cf12286ad158c0aa9",
+      "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_EDITION_OR_PUBLICATION_APPROVAL"
+    },
+    "verification_status": "pending",
+    "text_clearance_status": "PREPARED_EVIDENCE_NOT_AUTHORIZED",
+    "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
+    "canonical_reader_identity": {
+      "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
+      "reader_content_sha256": "1237ca4ab5922ee04c464dd69b6d0e75b0da59fc17f977b8453d7cbc1265d67a",
+      "chapter_count": 1,
+      "chapter_content_sha256": {
+        "chapter-001": "1237ca4ab5922ee04c464dd69b6d0e75b0da59fc17f977b8453d7cbc1265d67a"
+      },
+      "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
+      "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+    },
+    "reader_content_reconciliation": {
+      "status": "SOURCE_FURNITURE_REMOVED_ONLY",
+      "performed_at": "2026-10-01T21:08:27.473444+00:00",
+      "artifact": "internal/legal/catalogue_clearance_20261002/bengali/source-furniture-repair-proposals.json",
+      "artifact_sha256": "63e8128394ae67e1620d02a5bce6ca6b14dd72f8230ed86b0d535ed69707baf7",
+      "before_content_sha256": "12e68ccb1f58102856edb86d24bb700eb18bd1bda6dee53b8711895d5d73b6a8",
+      "after_content_sha256": "1237ca4ab5922ee04c464dd69b6d0e75b0da59fc17f977b8453d7cbc1265d67a",
+      "removed_source_furniture": [
+        "রবীন্দ্রনাথ ঠাকুর",
+        "গল্পগুচ্ছ",
+        "১৯৫০ (পৃ. ২৩৫-২৫০)",
+        "মধ্যবর্তিনী"
+      ],
+      "literary_words_changed": false,
+      "source_transcription_completeness": "EXACT_MATCH_FORMATTING_ONLY",
+      "scope": "READER_METADATA_FURNITURE_CLEANUP_NOT_PUBLICATION_OR_AUDIO_APPROVAL"
+    },
+    "original_publication_year": 1893,
+    "original_publication_evidence": {
+      "record": "internal/legal/catalogue_clearance_20261002/bengali/tagore-printed-first-publication-datelines.json",
+      "record_sha256": "3d0b1635e64ffbf7e4ad330ed86b2b77c01c3b85ca0054fcd1ef0a71ac02dfb3",
+      "printed_dateline": "জ্যৈষ্ঠ ১৩০০",
+      "source_rendered_sha256": "3ee368962dbcdd11b7405b836e4ea51150a682123699a2389bd55ba77c6f331c",
+      "calendar_conversion": {
+        "bengali_year": 1300,
+        "offset": 593,
+        "gregorian_year": 1893,
+        "precision": "Gregorianyear only; month falls entirely within one year. No inferred exactday.",
+        "reference": "https://www.drikpanchang.com/festivals/pohela-boishakh/pohela-boishakh-date-time.html?year=0596"
+      },
+      "scope": "Underlyingwork firstpublication metadata only; sourceedition editorial/licence/publication authorization independently held."
+    }
+  },
+  "public_book": {
+    "id": "controlled-book-95624627d5",
+    "slug": "book-95624627d5",
+    "title": "মধ্যবর্তিনী",
+    "subtitle": "",
+    "author": "রবীন্দ্রনাথ ঠাকুর",
+    "category_slug": "literary-fiction",
+    "short_description": "দুই বন্ধুর মাঝে এক নারীর উপস্থিতি তৈরি করে এক জটিল মানসিক দ্বন্দ্বের গল্প।",
+    "description": "A woman stands between two friends — not through her own will, but through the projections of desire and rivalry. A subtle psychological study of male friendship and its limits.",
+    "cover_url": "",
+    "cover_image_url": "",
+    "coverImage": "",
+    "cover_image": "",
+    "back_cover_url": "",
+    "back_cover_image_url": "",
+    "backCoverImage": "",
+    "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+    "dominant_color": "#24362E",
+    "estimated_reading_time": "15 min",
+    "formats": [
+      "Ebook"
+    ],
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "about_author": "রবীন্দ্রনাথ ঠাকুর (১৮৬১–১৯৪১) বাংলা সাহিত্যের শ্রেষ্ঠ কবি ও ছোটগল্পকার।",
+    "source_hash": "12e68ccb1f58102856edb86d24bb700eb18bd1bda6dee53b8711895d5d73b6a8",
+    "content_hash": "b17c4f3d8928510f6a9012b3e9e9333e8bdefa213da3a51b87f1ab17e2c5d6b5",
+    "provenance_hash": "531807dbbf7b3dc9cc8fe1f91beb726ba5d86f8be99aef9d4ea2d2f4b42806a9",
+    "rights_basis": "Author died 1941. Published 1901. Public domain in India and U.S.",
+    "rights_tier": "A",
+    "verification_status": "approved",
+    "qa_status": "QA_PASSED",
+    "approved_to_publish": true,
+    "publication_status": "LIVE_APPROVED",
+    "readerStatus": "reader_ready",
+    "publicationStatus": "live",
+    "isPublic": true,
+    "isLive": true,
+    "showInPublicLibrary": true,
+    "showInHomepage": false,
+    "allowPublicReading": true,
+    "allowCheckout": false,
+    "allowPayment": false,
+    "is_published": true,
+    "audio_enabled": true,
+    "audiobook_enabled": true,
+    "generate_audiobook": true,
+    "audiobook_provider": "historical_mapped_assets",
+    "audiobook_voice": "",
+    "audio_asset_slug": "book-95624627d5",
+    "audiobook_assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780572393/earnalism/audiobooks/ben/book-95624627d5/book-95624627d5.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572394/earnalism/audiobooks/ben/book-95624627d5/book-95624627d5_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572394/earnalism/audiobooks/ben/book-95624627d5/book-95624627d5_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572395/earnalism/audiobooks/ben/book-95624627d5/book-95624627d5_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572396/earnalism/audiobooks/ben/book-95624627d5/book-95624627d5_meta.json"
+    },
+    "audiobook": {
+      "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780572393/earnalism/audiobooks/ben/book-95624627d5/book-95624627d5.mp3",
+      "provider": "historical_mapped_assets",
+      "size": 0,
+      "duration_ms": 0,
+      "assets": {
+        "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780572393/earnalism/audiobooks/ben/book-95624627d5/book-95624627d5.mp3",
+        "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572394/earnalism/audiobooks/ben/book-95624627d5/book-95624627d5_timestamps.json",
+        "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572394/earnalism/audiobooks/ben/book-95624627d5/book-95624627d5_highlight.vtt",
+        "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572395/earnalism/audiobooks/ben/book-95624627d5/book-95624627d5_chapters.json",
+        "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572396/earnalism/audiobooks/ben/book-95624627d5/book-95624627d5_meta.json"
+      },
+      "updated_at": "2026-07-03T20:07:46Z"
+    },
+    "audiobook_assets_updated_at": "2026-07-03T20:07:46Z",
+    "created_at": "2026-07-03T20:07:46Z",
+    "updated_at": "2026-07-03T20:07:46Z",
+    "license_notice_sha256": "68674f2f08a0b25b06a7531239a646d547decf193b34e42143a290bcd9a64fbc"
+  },
+  "base_git_commit": "54267c4884d891afd2d8c6a9398bb8253fac023b",
+  "historical_bytes_location": "Git base commit and prior package history; no duplicate copyrighted narrative archive",
+  "old_chapter_file": "data/controlled_publications/book-95624627d5/chapters/chapter-001.json",
+  "original_source_receipt": "internal/legal/catalogue_clearance_20261002/bengali/book-95624627d5-original1894-source-comparison.json",
+  "migration_scope": "Intentional complete original1894 edition replacement; no assertion of textual equality and no approval transfer",
+  "removed_verified_source_furniture": [
+    "কথা-চতুষ্টয়।",
+    "মধ্যবর্ত্তিনী।"
+  ],
+  "new_source_sha256": "04a23577d9da238ff5e156deacc7777f1c5f427515c39cbb045cef113c0e3736",
+  "verified_at": "2026-10-02T03:09:23.373287+00:00",
+  "new_chapter_sha256": "15ae2ea405a14c49965d03b6a329419ecb7e71297a3007be8530673587a03b06"
+}

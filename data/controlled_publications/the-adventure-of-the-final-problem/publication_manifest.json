@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-final-problem",
+  "title": "The Adventure of the Final Problem",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "509da3f8bbdc6c3857073e74911f628eef8fea557fcb5bca9e1713c846e43ec3",
+    "content_hash": "117d6a3c1729145f0d58f61c8f8f28a3cb007cb16557e9bc018534974fb108f8",
+    "provenance_hash": "17ef22e2d78f57f6a7d2ffd47e5ad37ea370070fe2cfcf36a81cc6c8e6a6670e",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "d2025bb50adb8ce24f41cf3d8298d738a976045b2aac2eae60b7ce8696838586",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Final Problem",
+        "word_count": 7180,
+        "sha256": "936596ce28eb8ac9d1d989e4fdcbfbba50b102b4a1e732f8718efa4647be3acb"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "c7961401f1165b6f2e828de48de24bfa20a55587e0adeda5b5db2000468f8f14"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "9b4e62e53fb3154be0309443ea2519611994f754505b87567624c4d2fc85f291",
+    "reader_manifest": "ea221aa0a291620db387c3a5e42d0d879b092fee9e33fcd6be5bfc000852857c",
+    "source_evidence": "c7961401f1165b6f2e828de48de24bfa20a55587e0adeda5b5db2000468f8f14",
+    "approval_evidence": "f850da778e71a455d62ddffaea73ccb0c78b3ebb88aa95d95473a54a747b8e4b"
+  },
+  "manifest_sha256": "482b39efddd8c64088a0c612c6623a943171e05b633b5601e3db04fda0a13ce7"
+}

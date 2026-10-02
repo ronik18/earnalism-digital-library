@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-ransom-of-red-chief-pg1595-noncover-text",
+  "edition_id": "the-ransom-of-red-chief",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "98fc28370f9460e5cb5204faaedf649b45263cc9857181f2ba45fd67edce5e2d",
+    "reader_manifest": "d03b73c89c5916380fa50ca2830e4afa9110a82722725f7cb1dad3a5371bf821",
+    "source_evidence": "d813e7c78e83490b6a2d887fd2aee81e94ba1f0d13ff1e2389ec134697473e37",
+    "approval_evidence": "6260c6fb2a25cb4fbefc79bec4f758a3d7120bbda2ec10ee495893d6d5393f06",
+    "checksum_manifest": "3c6742abde62f32aa64a089a8d4027d8eeea405a634709168581d434bfcd9b29",
+    "publication_manifest": "11dcc80257c8269c91d9310302a62a0865963e588070028e63043cfb873edda2"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:54:02.732252+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "IN text only. Verified publication no later than 1910; original-author life+60 ends 1970, or conservative posthumous-publication upper bound+60 ends no later than 1970; every selected translator/coauthor latest death 1910, life+60 ends 1970. All bounds have elapsed by actual review2026. Unknown original first date stays unknown; no inference from US-only PG status.",
+  "evidence_sha256": [
+    "6839c02acdde363ce63439107dbb1a6e8340d355c52c5f50945415d825ca3b29",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "a388a671e0b83a3dac9b697160f216cfce3eaf3c851dc1b7924cdf63ba36ba85",
+    "49437bc16c4d2d6577714e87c36156ae5434e320b201ad739a9464214df00d0b",
+    "d45168ed6ade657707793bb04303b91c6446c4f41be4ed49dc8c2226e3f59ae1"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

@@ -1,14 +1,14 @@
 {
   "slug": "the-man-with-the-twisted-lip",
-  "generated_at": "2026-07-03T20:07:49Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "ae13b0dec32e2f6534485cb5c65aa3716d7b04a90c7264aa6134a7c031bdaa12"
+      "sha256": "b44e114d7043d47eb38b8336697a382b6d810bb9f8e6f22f2262c8ccf2e4a76d"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "5adbca7532819aa8d43bb4babe17c5eb452e3798bafe9bffa9c14b70db3d5fab"
+      "file": "chapters/chapter-001.json",
+      "sha256": "eafe7f9e2e3fca9de6debaec2a5a38a7a8da82a911e7710fb96e89b61fc1871a"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "52d2cd0e80a523f162daa8013dacf1565d66683ebf75d0ae9fbb74d263ee7793"
+      "sha256": "4f40edcbb77d8ab78d24406506498c97f98265cfd92bafc0fadb538b8b0ed584"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "1618bd4a79bb8fb57981b4edf78c6656e3e33db66fa245cc4c0f726a97015ccc"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "ec87b73730def2a1d4368b653777b9ce05c6375af8f0470b38778209e5d80883"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "606818aa8c38f5c23d1e0cdbed67cafc33cc484a35d3140791fda73c09dbb5ec"
+      "sha256": "bdd8112d7640137977279366a8abd49557c088c9864be04a8d9b889627dca1e1"
     }
   ]
 }

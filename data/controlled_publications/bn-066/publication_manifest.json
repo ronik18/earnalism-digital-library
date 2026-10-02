@@ -3,353 +3,351 @@
   "schema_version": 1,
   "slug": "bn-066",
   "title": "আনন্দমঠ",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
-    "source_hash": "e760fa2eaf099b90fb6666a62e29f34a72bd84942bf22d487b7417dce60ba329",
-    "content_hash": "ec3352127f8065ec990f9c10f4a2a069a4a4f0c9e8793c7727b00306fa8d777f",
+    "source_hash": "77503ec5daf5f8d9d567d7ecf6543abbfd727658818391cc1c20d54d5627cbff",
+    "content_hash": "a6336c132fdb256bb963c8c5f1443707990203987266689077495a87c8a75543",
     "provenance_hash": "57717208ebcc8a365eedcb5e73bdcbab15d1108adad23dda28d85516e17bb979",
     "sanitized": true,
     "chapter_count": 46,
-    "chapter_index_sha256": "5c784071305690435914d70f8cc482251646f398e88be5a1aed96d2b6d4dea26",
+    "chapter_index_sha256": "60d76f18bb265341be8090afb8957f6722c28772078503acde8e90cc692acb94",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
-        "title": "Chapter 1. উপক্রমণিকা",
-        "word_count": 230,
-        "sha256": "5a6a1d2025efefb9edba8ab1eef5b1b75880689fbc5461dd9431ecc46488a9fe"
-      },
-      {
-        "id": "chapter-002",
-        "order": 2,
-        "title": "Chapter 2. দ্বিতীয় খণ্ড / প্রথম পরিচ্ছেদ",
-        "word_count": 842,
-        "sha256": "28512a13eb3c5280d9c07791b1fd0793ff37619f7b0080afee7f744ecc32865b"
-      },
-      {
-        "id": "chapter-003",
-        "order": 3,
-        "title": "Chapter 3. দ্বিতীয় খণ্ড / দ্বিতীয় পরিচ্ছেদ",
-        "word_count": 770,
-        "sha256": "de3e027198865778696d43758635d155b4866bc6701f606271ca18bead4719c4"
-      },
-      {
-        "id": "chapter-004",
-        "order": 4,
-        "title": "Chapter 4. দ্বিতীয় খণ্ড / তৃতীয় পরিচ্ছেদ",
-        "word_count": 402,
-        "sha256": "fc9638265b9eff5c7da3a91a2cd3abcd322bcdb6db11e4757db935d2bbbd5b05"
-      },
-      {
-        "id": "chapter-005",
-        "order": 5,
-        "title": "Chapter 5. দ্বিতীয় খণ্ড / চতুর্থ পরিচ্ছেদ",
-        "word_count": 1422,
-        "sha256": "957b4624e665afda665586a8c832cb857db5a25145f4e1f4ec522733bb6ed507"
-      },
-      {
-        "id": "chapter-006",
-        "order": 6,
-        "title": "Chapter 6. দ্বিতীয় খণ্ড / পঞ্চম পরিচ্ছেদ",
-        "word_count": 546,
-        "sha256": "428c13f8e7203583ae4fa417f8781cc4a6f763a2510f39db830c105f9ecb5b30"
-      },
-      {
-        "id": "chapter-007",
-        "order": 7,
-        "title": "Chapter 7. দ্বিতীয় খণ্ড / ষষ্ঠ পরিচ্ছেদ",
-        "word_count": 350,
-        "sha256": "14f456d4f0eefadd0cea9e01120d79495b915ca31542157ab5c430663fd045be"
-      },
-      {
-        "id": "chapter-008",
-        "order": 8,
-        "title": "Chapter 8. দ্বিতীয় খণ্ড / সপ্তম পরিচ্ছেদ",
-        "word_count": 525,
-        "sha256": "c22b74c440775f8ea2f62513026ec5352e685ae4b86135c44f2e1d6df58f82f0"
-      },
-      {
-        "id": "chapter-009",
-        "order": 9,
-        "title": "Chapter 9. দ্বিতীয় খণ্ড / অষ্টম পরিচ্ছেদ",
-        "word_count": 414,
-        "sha256": "8f5b6a117b497049a61887fefe15cc7badcf2e9a546dbf8e3ce0478de77f5ae8"
-      },
-      {
-        "id": "chapter-010",
-        "order": 10,
-        "title": "Chapter 10. দ্বিতীয় খণ্ড / নবম পরিচ্ছেদ",
-        "word_count": 658,
-        "sha256": "1452e658cb4d2938c96223690ccf7507faffbc7b932a8bf36209d8302ecd3db3"
-      },
-      {
-        "id": "chapter-011",
-        "order": 11,
-        "title": "Chapter 11. দ্বিতীয় খণ্ড / দশম পরিচ্ছেদ",
-        "word_count": 673,
-        "sha256": "bdcff548c905ce43f50f95db824e02e223c7d2966ca9156d0522e75ff89d68d0"
-      },
-      {
-        "id": "chapter-012",
-        "order": 12,
-        "title": "Chapter 12. দ্বিতীয় খণ্ড / একাদশ পরিচ্ছেদ",
-        "word_count": 1065,
-        "sha256": "abeb169ffff74f9ed95f5df2c2f0333cbd524c89dec787828e51ba04c08b7ef8"
-      },
-      {
-        "id": "chapter-013",
-        "order": 13,
-        "title": "Chapter 13. দ্বিতীয় খণ্ড / দ্বাদশ পরিচ্ছেদ",
-        "word_count": 755,
-        "sha256": "d4384627052774cb63c2fd15317a364befaf0f90da8478bd6c51caaacd74bc87"
-      },
-      {
-        "id": "chapter-014",
-        "order": 14,
-        "title": "Chapter 14. দ্বিতীয় খণ্ড / ত্রয়োদশ পরিচ্ছেদ",
-        "word_count": 864,
-        "sha256": "416e7be14510c34c1597522b46af9e75563f55c7501821d441814050237af64a"
-      },
-      {
-        "id": "chapter-015",
-        "order": 15,
-        "title": "Chapter 15. দ্বিতীয় খণ্ড / চতুর্দ্দশ পরিচ্ছেদ",
-        "word_count": 371,
-        "sha256": "62bc63c8dd9853e91e730be7a25eef1d670f50b8b425fae3dd3bad933a300f34"
-      },
-      {
-        "id": "chapter-016",
-        "order": 16,
-        "title": "Chapter 16. দ্বিতীয় খণ্ড / পঞ্চদশ পরিচ্ছেদ",
-        "word_count": 524,
-        "sha256": "04a3007cb8e0c19ab6ddd7bc3440246ca7b560f7a38c1a4ae3b0095c075d0831"
-      },
-      {
-        "id": "chapter-017",
-        "order": 17,
-        "title": "Chapter 17. দ্বিতীয় খণ্ড / ষোড়শ পরিচ্ছেদ",
-        "word_count": 450,
-        "sha256": "3813a2ff1241374fbda9ec4d19ced633004115d4768e20b3b455896cef124993"
-      },
-      {
-        "id": "chapter-018",
-        "order": 18,
-        "title": "Chapter 18. দ্বিতীয় খণ্ড / সপ্তদশ পরিচ্ছেদ",
-        "word_count": 782,
-        "sha256": "4fe04dacbd154e112757c22fc87bfd52ac605915bbd46f343a9de702099aa014"
-      },
-      {
-        "id": "chapter-019",
-        "order": 19,
-        "title": "Chapter 19. দ্বিতীয় খণ্ড / অষ্টাদশ পরিচ্ছেদ",
-        "word_count": 983,
-        "sha256": "c8e2dd5cef39ce2576e08f6f4212415639b121d9d5e967b1a2ff591924cf601b"
-      },
-      {
-        "id": "chapter-020",
-        "order": 20,
-        "title": "Chapter 20. দ্বিতীয় খণ্ড / ঊনবিংশ পরিচ্ছেদ",
-        "word_count": 864,
-        "sha256": "defadc7fff4a1857322f34e9a0c928b17f050672d5792f18f944428d811a9254"
-      },
-      {
-        "id": "chapter-021",
-        "order": 21,
-        "title": "Chapter 21. দ্বিতীয় খণ্ড / বিংশ পরিচ্ছেদ",
-        "word_count": 648,
-        "sha256": "87ce795d64494dddc752db5324f7e0ebe446da563295a605566de86d4e183ef7"
+        "title": "উপক্রমণিকা",
+        "word_count": 227,
+        "sha256": "371c67bc4b578ee9aa4c83a25a510e3ba378ddede8eba6b3d81725d248f29ce5"
       },
       {
         "id": "chapter-022",
-        "order": 22,
-        "title": "Chapter 22. প্রথম খণ্ড / প্রথম পরিচ্ছেদ",
-        "word_count": 1034,
-        "sha256": "1160dd7796bc42fe0384b674b0ffb95696943382a3e10f3ebe6bd1e9589b6e0f"
+        "order": 2,
+        "title": "প্রথম খণ্ড / প্রথম পরিচ্ছেদ",
+        "word_count": 1023,
+        "sha256": "9686024534d39a49c86c4e02d63d8b67be02805601fbfb8b90f3ae427e56bd18"
       },
       {
         "id": "chapter-023",
-        "order": 23,
-        "title": "Chapter 23. প্রথম খণ্ড / দ্বিতীয় পরিচ্ছেদ",
-        "word_count": 230,
-        "sha256": "71c5b55eed9e5b6930fa73143c76026b255eb420649085088b31941be0081535"
+        "order": 3,
+        "title": "প্রথম খণ্ড / দ্বিতীয় পরিচ্ছেদ",
+        "word_count": 225,
+        "sha256": "09ab0455686512c96b32e7edc250f5ac9408032ef7b878317fb705677f506bac"
       },
       {
         "id": "chapter-024",
-        "order": 24,
-        "title": "Chapter 24. প্রথম খণ্ড / তৃতীয় পরিচ্ছেদ",
-        "word_count": 415,
-        "sha256": "e1afa4e182ad0d6ff48cf774a559870e168008c9792ef7d9073745141379f780"
+        "order": 4,
+        "title": "প্রথম খণ্ড / তৃতীয় পরিচ্ছেদ",
+        "word_count": 407,
+        "sha256": "ca6950c5027197ba0c28973cb04e8a758292372148c6e511fa35eba6e6657157"
       },
       {
         "id": "chapter-025",
-        "order": 25,
-        "title": "Chapter 25. প্রথম খণ্ড / চতুর্থ পরিচ্ছেদ",
-        "word_count": 336,
-        "sha256": "ae4002e8b69e9e8c19237371f90cda7dc64e2d737f3062de8c6015bdc6431634"
+        "order": 5,
+        "title": "প্রথম খণ্ড / চতুর্থ পরিচ্ছেদ",
+        "word_count": 330,
+        "sha256": "a013fe9934a5913899e71ba1b666ec1573c0090a7a6cdcc7ba0959559ea0448a"
       },
       {
         "id": "chapter-026",
-        "order": 26,
-        "title": "Chapter 26. প্রথম খণ্ড / পঞ্চম পরিচ্ছেদ",
-        "word_count": 543,
-        "sha256": "39da134dd8d1c790104f69bd9738df9c3d21e19a778732855ff10b2dd19e50ed"
+        "order": 6,
+        "title": "প্রথম খণ্ড / পঞ্চম পরিচ্ছেদ",
+        "word_count": 533,
+        "sha256": "2d5fb7370a83b4f5b1a40e76c7afbe8c3e371e3d2f36c4bf362104b98d4f6529"
       },
       {
         "id": "chapter-027",
-        "order": 27,
-        "title": "Chapter 27. প্রথম খণ্ড / ষষ্ঠ পরিচ্ছেদ",
-        "word_count": 374,
-        "sha256": "81965f15bb18e7d3da00ea8bed03ab206225e42cfc8dcd99b7b001c504b7d3c7"
+        "order": 7,
+        "title": "প্রথম খণ্ড / ষষ্ঠ পরিচ্ছেদ",
+        "word_count": 361,
+        "sha256": "7fa5dcd8cbed1f8dbcd15e7bc3939a998414f35edcaed65fe6a2563c951586b9"
       },
       {
         "id": "chapter-028",
-        "order": 28,
-        "title": "Chapter 28. প্রথম খণ্ড / সপ্তম পরিচ্ছেদ",
-        "word_count": 561,
-        "sha256": "52eacd7f78aa3c0aa1ef3ccfbaf5a362957e8cee14965e7f7564dffa68f5bc4f"
+        "order": 8,
+        "title": "প্রথম খণ্ড / সপ্তম পরিচ্ছেদ",
+        "word_count": 553,
+        "sha256": "9c29f02c5e0c1dbc8137514fa890e2480d968acdbf4dbfbc8bd9fe166ddf05a8"
       },
       {
         "id": "chapter-029",
-        "order": 29,
-        "title": "Chapter 29. প্রথম খণ্ড / অষ্টম পরিচ্ছেদ",
-        "word_count": 761,
-        "sha256": "c60dae34b1d9da86541cdec699b9c752576f6e9d6e00de04ca9ef00455497d2a"
+        "order": 9,
+        "title": "প্রথম খণ্ড / অষ্টম পরিচ্ছেদ",
+        "word_count": 757,
+        "sha256": "ff8edf8e8a93e570e8255979e0561b4033269c44fdd57bd36914caad08e8f3f5"
       },
       {
         "id": "chapter-030",
-        "order": 30,
-        "title": "Chapter 30. প্রথম খণ্ড / নবম পরিচ্ছেদ",
-        "word_count": 214,
-        "sha256": "447ee996a613e1d1117bcb8967081a77c4ee88ff8fd35dee1f73d6585e7a8f66"
+        "order": 10,
+        "title": "প্রথম খণ্ড / নবম পরিচ্ছেদ",
+        "word_count": 207,
+        "sha256": "84a8067712ba70a32d5a3b1d297a5e95f7f9171e53b5b230f2d537e39cf6af76"
       },
       {
         "id": "chapter-031",
-        "order": 31,
-        "title": "Chapter 31. প্রথম খণ্ড / দশম পরিচ্ছেদ",
-        "word_count": 949,
-        "sha256": "1969b631e4086380679226c632b84aa3f27f3060224918d4d20c5021dd8d939a"
+        "order": 11,
+        "title": "প্রথম খণ্ড / দশম পরিচ্ছেদ",
+        "word_count": 914,
+        "sha256": "6706ceeff6932c50e3bac5b540e502d6bd105dd5e198a6716a2b8f5b2fa06a0c"
       },
       {
         "id": "chapter-032",
-        "order": 32,
-        "title": "Chapter 32. প্রথম খণ্ড / একাদশ পরিচ্ছেদ",
-        "word_count": 855,
-        "sha256": "0a14d1039289d6c1c23adbd9c646eb01c457dcd0e7aaeaa4f83696d6720fc9bd"
+        "order": 12,
+        "title": "প্রথম খণ্ড / একাদশ পরিচ্ছেদ",
+        "word_count": 832,
+        "sha256": "a57dd8661bdbad706fced744c72bc52b52d26570f8f20b27c5738200dd8c2c59"
       },
       {
         "id": "chapter-033",
-        "order": 33,
-        "title": "Chapter 33. প্রথম খণ্ড / দ্বাদশ পরিচ্ছেদ",
-        "word_count": 1917,
-        "sha256": "2fc2813b94b9cee116c29b6bba8a9c14093072d47e5c303f8f0eab72100a92da"
+        "order": 13,
+        "title": "প্রথম খণ্ড / দ্বাদশ পরিচ্ছেদ",
+        "word_count": 1875,
+        "sha256": "577747a1283bface951719eefc42a8e4a4f48c2bfecc49bdd1bfc31bc14c1907"
       },
       {
         "id": "chapter-034",
-        "order": 34,
-        "title": "Chapter 34. প্রথম খণ্ড / ত্রয়োদশ পরিচ্ছেদ",
-        "word_count": 502,
-        "sha256": "0f55c28d4a50de5cc591c40801fe46c4867be0edb05c8b9b190049e8327f146e"
+        "order": 14,
+        "title": "প্রথম খণ্ড / ত্রয়োদশ পরিচ্ছেদ",
+        "word_count": 494,
+        "sha256": "1ce485bdc9ef22ea638baccf07c6ea7142dbc1739f14bc2363f9bb9948a48f79"
       },
       {
         "id": "chapter-035",
-        "order": 35,
-        "title": "Chapter 35. প্রথম খণ্ড / চতুর্দ্দশ পরিচ্ছেদ",
-        "word_count": 391,
-        "sha256": "693c85220554734537fd477360baa1fdbf145315ed6fa1e85ffa850066a89eb4"
+        "order": 15,
+        "title": "প্রথম খণ্ড / চতুর্দ্দশ পরিচ্ছেদ",
+        "word_count": 382,
+        "sha256": "817f4ab044db067bab914784e822c674c7495393de33a0fa6dcd655272b10de9"
       },
       {
         "id": "chapter-036",
-        "order": 36,
-        "title": "Chapter 36. প্রথম খণ্ড / পঞ্চদশ পরিচ্ছেদ",
-        "word_count": 1687,
-        "sha256": "db3342c5e544f6c43e69ec6ebfba2ed4cf410314737248fbc0f3125fa9cd51a6"
+        "order": 16,
+        "title": "প্রথম খণ্ড / পঞ্চদশ পরিচ্ছেদ",
+        "word_count": 1638,
+        "sha256": "64b017e316161e66f55edc249d6b567d86cc878abf5333bdbb06f4a419ae1cb3"
       },
       {
         "id": "chapter-037",
-        "order": 37,
-        "title": "Chapter 37. প্রথম খণ্ড / ষোড়শ পরিচ্ছেদ",
-        "word_count": 631,
-        "sha256": "05cfa222f8159ede93bb7f495fc7ffc04c97b8c94c4d0bddb488a0e018718e04"
+        "order": 17,
+        "title": "প্রথম খণ্ড / ষোড়শ পরিচ্ছেদ",
+        "word_count": 611,
+        "sha256": "7c5229b758a3361e495170d0aa531c2d81560fe16b26455018253aff023f13ad"
       },
       {
         "id": "chapter-038",
-        "order": 38,
-        "title": "Chapter 38. প্রথম খণ্ড / সপ্তদশ পরিচ্ছেদ",
-        "word_count": 442,
-        "sha256": "01ba78d65f14ff229f81a1846a2ce2b69b04f802ad441b0f75b0474c0304f132"
+        "order": 18,
+        "title": "প্রথম খণ্ড / সপ্তদশ পরিচ্ছেদ",
+        "word_count": 434,
+        "sha256": "efbdff776a13eafe1b5fb72169f4202d9848f37ee9c7c494a0e5952fe24c0c4e"
       },
       {
         "id": "chapter-039",
-        "order": 39,
-        "title": "Chapter 39. প্রথম খণ্ড / অষ্টাদশ পরিচ্ছেদ",
-        "word_count": 482,
-        "sha256": "c4366f541d6e23ea679b3139ecf69bb3b4b4a0166b486c6b816f1fcc431ff255"
+        "order": 19,
+        "title": "প্রথম খণ্ড / অষ্টাদশ পরিচ্ছেদ",
+        "word_count": 469,
+        "sha256": "abf42f27c0ff5b5a140908de137addf5dae2dafed7a990e10c321af3e50f4ef0"
       },
       {
         "id": "chapter-040",
-        "order": 40,
-        "title": "Chapter 40. প্রথম খণ্ড / ঊনবিংশ পরিচ্ছেদ",
-        "word_count": 711,
-        "sha256": "76e474c4158779639e33c8c2244dc6e5a73ce0133022a50501c46197828de463"
+        "order": 20,
+        "title": "প্রথম খণ্ড / ঊনবিংশ পরিচ্ছেদ",
+        "word_count": 696,
+        "sha256": "dd75659e0d562126155e459b1f32cf5a880bd1a66e9b0c9a793688cef1945a46"
       },
       {
         "id": "chapter-041",
-        "order": 41,
-        "title": "Chapter 41. প্রথম খণ্ড / বিংশ পরিচ্ছেদ",
-        "word_count": 651,
-        "sha256": "9103538104f27cd4f93cb462c57695e7cd10de841fa078332ea26d3ee179a14b"
+        "order": 21,
+        "title": "প্রথম খণ্ড / বিংশ পরিচ্ছেদ",
+        "word_count": 647,
+        "sha256": "ae9283fd56d203ed729df63bec000e05ae2b600695eda65cca03fc21c2c9aee0"
       },
       {
         "id": "chapter-042",
-        "order": 42,
-        "title": "Chapter 42. প্রথম খণ্ড / একবিংশ পরিচ্ছেদ",
-        "word_count": 607,
-        "sha256": "b67e3460885bdd97b11dce21975c1c8a566694569d93881469e02d6b93921c6d"
-      },
-      {
-        "id": "chapter-043",
-        "order": 43,
-        "title": "Chapter 43. প্রথম খণ্ড / চতুর্ব্বিংশ পরিচ্ছেদ",
-        "word_count": 977,
-        "sha256": "6eea09e30ff46bc38a7eb46295fd3b739e27fd538e05f3ddcff3d68e0dab8044"
-      },
-      {
-        "id": "chapter-044",
-        "order": 44,
-        "title": "Chapter 44. প্রথম খণ্ড / ত্রয়োবিংশ পরিচ্ছেদ",
-        "word_count": 236,
-        "sha256": "1071121b97be85e3fc5542b9d2f7e55a6b69096b5f899fc6e7418d32d3f4a1a0"
+        "order": 22,
+        "title": "প্রথম খণ্ড / একবিংশ পরিচ্ছেদ",
+        "word_count": 589,
+        "sha256": "adf93bcfdca0a1bc50c7b3d78aec8b85bdf7c602d2297f30ec7efefddd21f6ac"
       },
       {
         "id": "chapter-045",
-        "order": 45,
-        "title": "Chapter 45. প্রথম খণ্ড / দ্বাবিংশ পরিচ্ছেদ",
-        "word_count": 343,
-        "sha256": "11b1714b4a7ba0bef2f0ba658895dc3647b26c9f06581fd82f1d554483a4787c"
+        "order": 23,
+        "title": "প্রথম খণ্ড / দ্বাবিংশ পরিচ্ছেদ",
+        "word_count": 337,
+        "sha256": "64774b16e7c873b5fce7fdcf6030c9520c9619f3f9617a2b6ecfb0d73fd1cbea"
+      },
+      {
+        "id": "chapter-044",
+        "order": 24,
+        "title": "প্রথম খণ্ড / ত্রয়োবিংশ পরিচ্ছেদ",
+        "word_count": 233,
+        "sha256": "2da3b4e9162a30a96c1873ca1bf948c3a49c62274b0f83b34b9032df56e21290"
+      },
+      {
+        "id": "chapter-043",
+        "order": 25,
+        "title": "প্রথম খণ্ড / চতুর্ব্বিংশ পরিচ্ছেদ",
+        "word_count": 967,
+        "sha256": "d3639c347b534318de031ded97c7575ba56cd5a255b0b734afb756169a0e329d"
       },
       {
         "id": "chapter-046",
+        "order": 26,
+        "title": "প্রথম খণ্ড / পঞ্চবিংশ পরিচ্ছেদ",
+        "word_count": 1439,
+        "sha256": "c27e75b4622a518426029493b7b6c3a80ba408e0fa50041427940bdb68a560b8"
+      },
+      {
+        "id": "chapter-002",
+        "order": 27,
+        "title": "দ্বিতীয় খণ্ড / প্রথম পরিচ্ছেদ",
+        "word_count": 835,
+        "sha256": "d0ca5b18a9cf784e8696057172d829c010d7a0e7ee9319957a2c46d64b248fb6"
+      },
+      {
+        "id": "chapter-003",
+        "order": 28,
+        "title": "দ্বিতীয় খণ্ড / দ্বিতীয় পরিচ্ছেদ",
+        "word_count": 761,
+        "sha256": "53d1296c1e2e7eb597b0cb922b161a0ec91489962c7abbcc3a9797d226cf4d74"
+      },
+      {
+        "id": "chapter-004",
+        "order": 29,
+        "title": "দ্বিতীয় খণ্ড / তৃতীয় পরিচ্ছেদ",
+        "word_count": 399,
+        "sha256": "4ea16b4e26b2dfc1e4d2c7810206207af0a385335c258d36a6e071691281f06a"
+      },
+      {
+        "id": "chapter-005",
+        "order": 30,
+        "title": "দ্বিতীয় খণ্ড / চতুর্থ পরিচ্ছেদ",
+        "word_count": 1411,
+        "sha256": "53dc985d24b00616bcf3e11d7429fdc2ef461a19270418dcf27a408a4b394b84"
+      },
+      {
+        "id": "chapter-006",
+        "order": 31,
+        "title": "দ্বিতীয় খণ্ড / পঞ্চম পরিচ্ছেদ",
+        "word_count": 531,
+        "sha256": "cd4db0c6096a7f37d12f748ae569316f704c806e957817dd4b68c1b7a4d2893d"
+      },
+      {
+        "id": "chapter-007",
+        "order": 32,
+        "title": "দ্বিতীয় খণ্ড / ষষ্ঠ পরিচ্ছেদ",
+        "word_count": 340,
+        "sha256": "1d5ef53de68e74d13d61a25fe126ea7486060ca402e8fad0f86577e08030a12a"
+      },
+      {
+        "id": "chapter-008",
+        "order": 33,
+        "title": "দ্বিতীয় খণ্ড / সপ্তম পরিচ্ছেদ",
+        "word_count": 518,
+        "sha256": "07b94e0105edf1d4075e96aa3dea076085d606f6927ae3fde3becc575041c9df"
+      },
+      {
+        "id": "chapter-009",
+        "order": 34,
+        "title": "দ্বিতীয় খণ্ড / অষ্টম পরিচ্ছেদ",
+        "word_count": 401,
+        "sha256": "8463263f0a2a9097bf0b690ef386227c1554e76b32716f6fb083818813db76bc"
+      },
+      {
+        "id": "chapter-010",
+        "order": 35,
+        "title": "দ্বিতীয় খণ্ড / নবম পরিচ্ছেদ",
+        "word_count": 646,
+        "sha256": "4027edf614030305d02f92b0776c32a2055cc0cf45dedfd3e3134d83d12377ab"
+      },
+      {
+        "id": "chapter-011",
+        "order": 36,
+        "title": "দ্বিতীয় খণ্ড / দশম পরিচ্ছেদ",
+        "word_count": 665,
+        "sha256": "e824f88e6475feeddb50c46e1da63ab29c52181f4118f49e986e37cfe0e92303"
+      },
+      {
+        "id": "chapter-012",
+        "order": 37,
+        "title": "দ্বিতীয় খণ্ড / একাদশ পরিচ্ছেদ",
+        "word_count": 1044,
+        "sha256": "ea9113e011cb06df0836e29c82a2aaebb0a00c5558caf8093ace0ddfedbda97e"
+      },
+      {
+        "id": "chapter-013",
+        "order": 38,
+        "title": "দ্বিতীয় খণ্ড / দ্বাদশ পরিচ্ছেদ",
+        "word_count": 749,
+        "sha256": "86a08ee3a14f4a69055dfe6809c78736076648779a71c1e2e450a0cd4df36d33"
+      },
+      {
+        "id": "chapter-014",
+        "order": 39,
+        "title": "দ্বিতীয় খণ্ড / ত্রয়োদশ পরিচ্ছেদ",
+        "word_count": 852,
+        "sha256": "584e3157eafa8f25f7fb2dbe159892334433cbcee721597342fbf9ee7932cb2f"
+      },
+      {
+        "id": "chapter-015",
+        "order": 40,
+        "title": "দ্বিতীয় খণ্ড / চতুর্দ্দশ পরিচ্ছেদ",
+        "word_count": 360,
+        "sha256": "6c55dba9e481d7c3ff582f0f7f66ab67f40235dbf4e5a6ad94fa91f694943375"
+      },
+      {
+        "id": "chapter-016",
+        "order": 41,
+        "title": "দ্বিতীয় খণ্ড / পঞ্চদশ পরিচ্ছেদ",
+        "word_count": 511,
+        "sha256": "6dcd66273402756b41ea361a174c48386357406e5f85c4a3218070552a04257a"
+      },
+      {
+        "id": "chapter-017",
+        "order": 42,
+        "title": "দ্বিতীয় খণ্ড / ষোড়শ পরিচ্ছেদ",
+        "word_count": 440,
+        "sha256": "b2e0c78e07d917619d71075ff04a48f37ce59e69b333824aaf004020aca67f5f"
+      },
+      {
+        "id": "chapter-018",
+        "order": 43,
+        "title": "দ্বিতীয় খণ্ড / সপ্তদশ পরিচ্ছেদ",
+        "word_count": 761,
+        "sha256": "2fd61515dda4a8d6faa9ec59bf31eb5ac25fd73183b704fe5a6b02f00d9293b2"
+      },
+      {
+        "id": "chapter-019",
+        "order": 44,
+        "title": "দ্বিতীয় খণ্ড / অষ্টাদশ পরিচ্ছেদ",
+        "word_count": 975,
+        "sha256": "4824983cf491591fb783ba9be967fb4d8d6df969bcb5ea249a8bf668537b5338"
+      },
+      {
+        "id": "chapter-020",
+        "order": 45,
+        "title": "দ্বিতীয় খণ্ড / ঊনবিংশ পরিচ্ছেদ",
+        "word_count": 840,
+        "sha256": "b17e1d5bc6ac9bf039e5a730f7c7eaadd0a3e70b8ed8147e6e2da1682dfce417"
+      },
+      {
+        "id": "chapter-021",
         "order": 46,
-        "title": "Chapter 46. প্রথম খণ্ড / পঞ্চবিংশ পরিচ্ছেদ",
-        "word_count": 1469,
-        "sha256": "e0965a4cbb0a9abfae69b7e95c9341a709bea5c24c2992d02756f09717b69c25"
+        "title": "দ্বিতীয় খণ্ড / বিংশ পরিচ্ছেদ",
+        "word_count": 627,
+        "sha256": "2736ec36d48565351cff69dc9d70331de211d38125538adbc3ce3b3c4c733ec5"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "0160df64cae091fae532c7ad7ab06ec765a157e5cf3e523570a9c95f9d311160"
+    "evidence_sha256": "227c479e011f38150820a341bed084e5c184cda97bc12c034d7093ce660ab0e8"
   },
   "reader_release": {
-    "status": "BLOCKED",
+    "status": "READY_FOR_APPROVAL",
     "exposed": false,
     "qa_status": "QA_PASSED",
     "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593362/earnalism/covers/front/cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
-    "blockers": [
-      "Rights: verification_status must be approved before publishing."
-    ]
+    "blockers": []
   },
   "audio_release": {
     "status": "NOT_REQUESTED",
@@ -361,10 +359,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "936693403ee66d8a9cac4764db113ffb47fde612d623ab5e877ecf15897c0d2d",
-    "reader_manifest": "507959314bb1cc28ce0a56e4e508e3a308e9333734521c19bad806f31ffd665c",
-    "source_evidence": "0160df64cae091fae532c7ad7ab06ec765a157e5cf3e523570a9c95f9d311160",
-    "approval_evidence": "1951beee89328c480dfcbd7bf1f065d93f09269b4a973141d0d3a1ec5be5720b"
+    "public_book": "b006347dd0530cb1135f223883970738ad6419ff8ac630c68469973a90fb2df5",
+    "reader_manifest": "5cfb120000f1d0afe0fb6b618f408b0e23fb8e046dd209182b349a41581a589e",
+    "source_evidence": "227c479e011f38150820a341bed084e5c184cda97bc12c034d7093ce660ab0e8",
+    "approval_evidence": "074fd1b957a82f99c2a878efeee36aef228a858409813fa0ecd40ceaddba9c3d"
   },
-  "manifest_sha256": "ca33578469cd934c2f24855a7100fab9603b518e9c882f52164504ed0ee78ddb"
+  "manifest_sha256": "ecf97f3b1fdd217983a44ed1f87b3931c1b8aba4ddb28b92eb06f6108ed8b77f"
 }

@@ -7,6 +7,11 @@ from pathlib import Path
 from typing import Any
 
 try:
+    from licensed_text import public_license_notice
+except ImportError:
+    from backend.licensed_text import public_license_notice
+
+try:
     from publication_manifest import manifest_reader_exposed, validate_manifest
 except ImportError:  # pragma: no cover
     from backend.publication_manifest import manifest_reader_exposed, validate_manifest
@@ -553,20 +558,31 @@ def dracula_artifact_validation_issues(artifact_dir: str = "") -> tuple[str, ...
     if normalize_upper(approval_evidence.get("qa_status")) not in {"QA_PASSED", "PASS", "PASSED"}:
         issues.append("approval_evidence.json qa_status is not QA_PASSED.")
 
+    # PG345 contains 27 numbered chapters and an author preface. Older packs
+    # omitted that preface; accept its explicit canonical unit without accepting
+    # arbitrary extra chapters or relaxing any publication/rights authority.
+    chapter_dir = base / "chapters"
+    preface = read_json_file(chapter_dir / "chapter-000.json")
+    has_preface = bool(preface)
+    expected_ids = (["chapter-000"] if has_preface else []) + [f"chapter-{index:03d}" for index in range(1, 28)]
+    if has_preface and (normalize_text(preface.get("id")) != "chapter-000"
+                       or normalize_text(preface.get("title")).lower() != "preface"
+                       or int(preface.get("order") or 0) != 1
+                       or not normalize_text(preface.get("content"))):
+        issues.append("Dracula author preface identity or order is invalid.")
     manifest_chapters = reader_manifest.get("chapters")
-    if int(reader_manifest.get("chapter_count") or 0) != 27:
-        issues.append("reader_manifest.json chapter_count is not 27.")
-    if not isinstance(manifest_chapters, list) or len(manifest_chapters) != 27:
-        issues.append("reader_manifest.json does not contain 27 chapter metadata records.")
+    if int(reader_manifest.get("chapter_count") or 0) != len(expected_ids):
+        issues.append("reader_manifest.json chapter_count does not match the selected Dracula layout.")
+    if not isinstance(manifest_chapters, list) or [chapter.get("id") for chapter in manifest_chapters] != expected_ids:
+        issues.append("reader_manifest.json does not contain the exact Dracula chapter sequence.")
     if reader_manifest.get("audio_enabled") is not False or reader_manifest.get("audiobook_enabled") is not False:
         issues.append("reader_manifest.json audio flags are not disabled.")
     if "chapter-001" not in (reader_manifest.get("preview_chapter_ids") or []):
         issues.append("reader_manifest.json does not unlock chapter-001 as preview.")
 
-    chapter_dir = base / "chapters"
     chapter_files = sorted(chapter_dir.glob("chapter-*.json"))
-    if len(chapter_files) != 27:
-        issues.append(f"Expected 27 Dracula chapter files, found {len(chapter_files)}.")
+    if [path.stem for path in chapter_files] != expected_ids:
+        issues.append("Dracula chapter files do not match the exact selected layout.")
     for index in range(1, 28):
         expected = chapter_dir / f"chapter-{index:03d}.json"
         chapter = read_json_file(expected)
@@ -575,7 +591,7 @@ def dracula_artifact_validation_issues(artifact_dir: str = "") -> tuple[str, ...
             continue
         if normalize_text(chapter.get("id")) != f"chapter-{index:03d}":
             issues.append(f"{expected.name} has the wrong id.")
-        if int(chapter.get("order") or 0) != index:
+        if int(chapter.get("order") or 0) != index + int(has_preface):
             issues.append(f"{expected.name} has the wrong order.")
         if not normalize_text(chapter.get("title")):
             issues.append(f"{expected.name} is missing title.")
@@ -1177,6 +1193,9 @@ def public_book_projection(book: dict[str, Any] | None) -> dict[str, Any] | None
     preview = live and can_expose_preview(book)
     audio = live and can_expose_audio(book)
     audio_status = "AVAILABLE" if audio else "NOT_AVAILABLE" if live else "BLOCKED_UNTIL_RIGHTS_QA"
+    notice = public_license_notice(controlled_artifact_dir(slug)) if live else None
+    if notice:
+        projected["text_license"] = notice
     projected.update(
         {
             "publication_status": status,

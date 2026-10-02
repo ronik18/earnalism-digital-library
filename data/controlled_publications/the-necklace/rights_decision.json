@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-necklace-sturges-wikisource-noncover-text",
+  "edition_id": "the-necklace",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "ee10f2cba3dbb3e1aae0f88b159f7bce85400bbb75a080233361fe8ea3797e50",
+    "reader_manifest": "6451694f87edfdb98d93d4abca5d36ccb910d0612ee42769a88e4cad3bb27c80",
+    "source_evidence": "2b1e7e4b671426a4228f7b605e2bc0707d918ea84525c81533e2bc70182c5df5",
+    "approval_evidence": "643b4129e6f5df66f7f643df0af5ddb041113b20f88f5ea3f19957f177e04a82",
+    "checksum_manifest": "5b8341ba49a133684a616a6e59dff8a9df0ac176a71ed4559de9e7fe96bf09d9",
+    "publication_manifest": "5f667a41be306055ea02daab1c5933c83d1a7a0b088f734c04449d3fce146293"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-02T03:06:41.377578+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "NEW edition/translation: exact signed JonathanSturges1889 translation; primarysource explicitly1889copyrightHarper, preservedin1917Scribnerprintedcollection (1898collectioncopyright). UnderlyingMaupassant1850–1893 died1893; namedtranslatorSturges1864–1911 verifiedbyPrincetonUniversityLibrary primaryresearch. Translation lifetime1889publication; INSection22translatorlife+60elapsed1971. Originalauthor literarytext necessarilyexisted by the signed1889translation publication duringMaupassantlifetime; this is a verifiedpublication upperbound, NOT a claimedoriginal firstdate. ConservativeSection24upperbound1889+60alsoelapsed1949. Sourceheaderincorrect1884collectiondate NOT adopted. Fullselectedstory135paragraphs verified; CCBYSA4.0 source transcription obligations visiblybound. OldPG3080identity archived, noapproval transfer. Covers/audioexcluded; no runtime registry/live mutation.",
+  "evidence_sha256": [
+    "dcb9d4c172924011beeb417227abacc75b4b7555c52be0a1d8a1704ab93b6c2b",
+    "7f6f4a8206808f480a5ef174c2502ea4d5da9532a1472c01703b03d16258fb42",
+    "86b2433c3579e0b83803eb959a3e79a3157919e00baae12148ab47a26ad23700",
+    "d90b8b53dd418a5063c2ae2469a426ede6f6914f64d4dd13c3eb2d97e7175f64",
+    "3edbc2bb4b1cfe0829cd6f499cd21b9f7de2f81d74c151e16e90bb6efab9d8fb"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

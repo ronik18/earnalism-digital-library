@@ -1,0 +1,29 @@
+{
+  "eyesore_pdf": {
+    "receipt": {
+      "requested_url": "https://upload.wikimedia.org/wikipedia/commons/8/84/Eyesore_-_Rabindranath_Tagore.pdf",
+      "resolved_url": "https://upload.wikimedia.org/wikipedia/commons/8/84/Eyesore_-_Rabindranath_Tagore.pdf",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T02:53:44.694617+00:00",
+      "response_sha256": "f8541bfb0533cad177eb3e416d8b8e5bbf2bde4d65161390f6f827501a19d0e8"
+    }
+  },
+  "hungry_original": {
+    "receipt": {
+      "requested_url": "https://en.wikisource.org/wiki/The_Modern_Review/Volume_7/Number_2/The_Hungry_Stones",
+      "resolved_url": "https://en.wikisource.org/wiki/The_Modern_Review/Volume_7/Number_2/The_Hungry_Stones",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T02:53:46.083814+00:00",
+      "response_sha256": "460def7301f415de4accfee8b7b60cbe0f421c83ed8a8dfb472d32139b757f4c"
+    }
+  },
+  "panna_author": {
+    "receipt": {
+      "requested_url": "https://en.wikisource.org/wiki/Author:Panna_Lal_Basu",
+      "resolved_url": "https://en.wikisource.org/wiki/Author:Panna_Lal_Basu",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T02:53:47.302389+00:00",
+      "response_sha256": "88dbab908f93b920aebe3c1bd1bb8328853a4c189714de01dbc1bad4f853f3be"
+    }
+  }
+}

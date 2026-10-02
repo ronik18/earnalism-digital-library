@@ -1,0 +1,37 @@
+{
+  "the-necklace": {
+    "original_author_death_year": 1893,
+    "selected_edition_publication_year": 1917,
+    "original_first_publication_year": null,
+    "translation_publication_year": 1889,
+    "translators": [
+      {
+        "name": "Jonathan Sturges",
+        "birth_year": 1864,
+        "death_year": 1911,
+        "death_evidence": {
+          "requested_url": "https://graphicarts.princeton.edu/2015/06/18/jonathan-sturges/",
+          "resolved_url": "https://graphicarts.princeton.edu/2015/06/18/jonathan-sturges/",
+          "http_status": 200,
+          "accessed_at": "2026-10-02T03:04:35.193963+00:00",
+          "response_sha256": "92bea566a86c3347aa1b36a233f1188f7b79d43e11b4ace9e07089f9fe10aaf5"
+        }
+      }
+    ],
+    "edition_evidence": {
+      "requested_url": "https://en.wikisource.org/wiki/Stories_by_Foreign_Authors_(French_I)",
+      "resolved_url": "https://en.wikisource.org/wiki/Stories_by_Foreign_Authors_(French_I)",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:04:34.811025+00:00",
+      "response_sha256": "0f4ad910fcaae6d94a3ab0fc3be0d12da42e6fd20a810b04839cb7ce7f1ad597"
+    },
+    "source_identity": {
+      "requested_url": "https://en.wikisource.org/wiki/Stories_by_Foreign_Authors_(French_I)/The_Necklace",
+      "resolved_url": "https://en.wikisource.org/wiki/Stories_by_Foreign_Authors_(French_I)/The_Necklace",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:03:52.018026+00:00",
+      "response_sha256": "d90b8b53dd418a5063c2ae2469a426ede6f6914f64d4dd13c3eb2d97e7175f64"
+    },
+    "basis": "NEW edition/translation: exact signed JonathanSturges1889 translation; primarysource explicitly1889copyrightHarper, preservedin1917Scribnerprintedcollection (1898collectioncopyright). UnderlyingMaupassant1850\u20131893 died1893; namedtranslatorSturges1864\u20131911 verifiedbyPrincetonUniversityLibrary primaryresearch. Translation lifetime1889publication; INSection22translatorlife+60elapsed1971. Originalauthor literarytext necessarilyexisted by the signed1889translation publication duringMaupassantlifetime; this is a verifiedpublication upperbound, NOT a claimedoriginal firstdate. ConservativeSection24upperbound1889+60alsoelapsed1949. Sourceheaderincorrect1884collectiondate NOT adopted. Fullselectedstory135paragraphs verified; CCBYSA4.0 source transcription obligations visiblybound. OldPG3080identity archived, noapproval transfer. Covers/audioexcluded; no runtime registry/live mutation."
+  }
+}

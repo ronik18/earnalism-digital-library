@@ -1,0 +1,72 @@
+{
+  "acres-of-diamonds": {
+    "creator_death_year": 1925,
+    "selected_edition_publication_year": 1915,
+    "source_scan_receipt": {
+      "requested_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Acres_of_diamonds_%28IA_acresofdiamonds01conw%29.pdf",
+      "resolved_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Acres_of_diamonds_%28IA_acresofdiamonds01conw%29.pdf",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:56:01.852434+00:00",
+      "response_sha256": "51403651c27c5d174c9a0cc938c61875866f8ddc8aca84be8964627d9dc7ab07"
+    },
+    "title_page": "Actual scanned PDFpage10: Harper&Brotherscopyright1915; PublishedOctober1915",
+    "appreciation_signature": "Actual scanned PDFpage16: His yoke fellow / JohnWanamaker; visually read now, not inferred from omitted metadata",
+    "signature_render_sha256": "373477f5360172977dea4928e55fee994db3306993e7ce50ec63ecf44d5780d0",
+    "creators": [
+      {
+        "name": "Russell H.Conwell",
+        "death_year": 1925,
+        "receipt": {
+          "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Conwell%2C%20Russell%20H.%2C%201843-1925",
+          "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Conwell%2C%20Russell%20H.%2C%201843-1925",
+          "http_status": 200,
+          "accessed_at": "2026-10-01T21:50:15.801770+00:00",
+          "response_sha256": "f22e619c10a76aaf042a3883b8e054ac53e9c1dd54db986aa0a8a8f45d47ad65"
+        }
+      },
+      {
+        "name": "Robert Shackleton",
+        "death_year": 1923,
+        "receipt": {
+          "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Shackleton%2C%20Robert%2C%201860-1923",
+          "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Shackleton%2C%20Robert%2C%201860-1923",
+          "http_status": 200,
+          "accessed_at": "2026-10-01T21:50:17.297533+00:00",
+          "response_sha256": "5c12611454e140714574aab899820466564ac130966852eacb1e3b7028284c7f"
+        }
+      },
+      {
+        "name": "John Wanamaker",
+        "death_year": 1922,
+        "receipt": {
+          "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Wanamaker%2C%20John%2C%201838-1922",
+          "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Wanamaker%2C%20John%2C%201838-1922",
+          "http_status": 200,
+          "accessed_at": "2026-10-01T21:58:53.641239+00:00",
+          "response_sha256": "ccc264fa114ee9f555b11bdae23326ed597921d38ebf099cace623277653593d"
+        }
+      }
+    ],
+    "basis": "All three named text creators verified separately; book publication1915 precedes every death; latest Conwell1925 plus60 ends1985. Source signature placeholder omitted as scan-furniture; genuine original author signature used only as creator evidence, never publication authorization."
+  },
+  "the-legend-of-sleepy-hollow": {
+    "creator_death_year": 1859,
+    "selected_edition_publication_year": 1820,
+    "primary_lifetime_collection_receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Irving%2C%20Washington%2C%201783-1859",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Irving%2C%20Washington%2C%201783-1859",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:51.215098+00:00",
+      "response_sha256": "9ca904bd991884cf7d4b2eaf62034fec488316547143c5469d3873201416a1b6"
+    },
+    "quoted_poem_creator": "Thomson,James,1700-1748; TheCastleofIndolence1748; actual primary bibliographic record",
+    "poem_creator_receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Thomson%2C%20James%2C%201700-1748",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Thomson%2C%20James%2C%201700-1748",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:54:28.992155+00:00",
+      "response_sha256": "ee6a3c90ef3dea39de0b03205ed7979782d0d009bde8fdb1cbcf1fac092b19e6"
+    },
+    "basis": "Irving selected story in verifiedSketchBook1820 lifetime edition, death1859+60 ends1919. Exact named CastleofIndolence epigraph byJamesThomson1700–1748 already published by1748: conservative latest-proven publication+60 ends1808 even if publication/death ordering uncertain. Neither original first-story date nor unsupported chronology invented."
+  }
+}

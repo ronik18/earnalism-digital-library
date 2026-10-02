@@ -1,13 +1,765 @@
 {
   "slug": "jane-eyre",
   "source_url": "https://www.gutenberg.org/ebooks/1260.txt.utf-8",
-  "source_name": "Earnalism historical import",
+  "source_name": "Project Gutenberg #1260 ServicePaton1897 textual Bronte edition; authorPreface and ThirdEditionNote plusall38chapters; Townsendart excluded",
   "source_license": "Public domain",
-  "source_hash": "802dc32d10d314a0a28199b198e8ef0bad893b423a27ae9230634a7da9e6d255",
-  "content_hash": "5cc894eb511a2514bf0738d3cd793c02cf47edd62e5fba379c5bcdb01ae5270e",
-  "provenance_hash": "450f48b21f51c81a517372835a2e4d5459b71787cdb7ceaa9f0f3d9709879907",
-  "rights_basis": "Public domain in India based on life plus 60 years; public domain in the U.S. based on original publication before 1931.",
+  "source_hash": "13414dee2951c3ee731d76d2ffd822016b2479c892162760c5d0eb2aa5fa7631",
+  "content_hash": "3358f1f098572ae4c1a40c2b57936dbfa165b7aeab6a1d14f776e35060c3e2fb",
+  "provenance_hash": "3e2f311e78bd18803c71f65f1d396e92b647d3aea784bb00038d1af072d91e43",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1855, original publication 1847; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-05-20T08:24:23.441450+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #1260",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1260",
+      "resolved_url": "https://www.gutenberg.org/ebooks/1260",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:06.310366+00:00",
+      "response_sha256": "fce6d07392a60dc60f144e8b52b0835c67edd501982787c337e9cc5ed8d6dc8c"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1260.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1260/pg1260.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:12.159480+00:00",
+      "response_sha256": "13414dee2951c3ee731d76d2ffd822016b2479c892162760c5d0eb2aa5fa7631"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Brontë, Charlotte, 1816-1855"
+      ],
+      "Illustrator": [
+        "Townsend, F. H. (Frederick Henry), 1868-1920"
+      ],
+      "Title": [
+        "Jane Eyre: An Autobiography"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Jane_Eyre"
+      ],
+      "Credits": [
+        "David Price"
+      ],
+      "Reading Level": [
+        "Reading ease score: 77.4 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Orphans -- Fiction",
+        "England -- Fiction",
+        "Young women -- Fiction",
+        "Love stories",
+        "Governesses -- Fiction",
+        "Fathers and daughters -- Fiction",
+        "Mentally ill women -- Fiction",
+        "Charity-schools -- Fiction",
+        "Married people -- Fiction",
+        "Country homes -- Fiction",
+        "Bildungsromans"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "1260"
+      ],
+      "Release Date": [
+        "Mar 1, 1998"
+      ],
+      "Last Update": [
+        "Sep 27, 2025"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "57519 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-000",
+          "offset": 1141,
+          "length": 4552
+        },
+        {
+          "chapter_id": "chapter-000-note",
+          "offset": 5720,
+          "length": 529
+        },
+        {
+          "chapter_id": "chapter-001",
+          "offset": 6260,
+          "length": 10797
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 17069,
+          "length": 15296
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 32378,
+          "length": 17496
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 49886,
+          "length": 31889
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 81786,
+          "length": 27635
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 109433,
+          "length": 15955
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 125401,
+          "length": 20060
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 145475,
+          "length": 16458
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 161945,
+          "length": 17707
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 179663,
+          "length": 23883
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 203558,
+          "length": 35221
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 238792,
+          "length": 22915
+        },
+        {
+          "chapter_id": "chapter-013",
+          "offset": 261721,
+          "length": 22144
+        },
+        {
+          "chapter_id": "chapter-014",
+          "offset": 283878,
+          "length": 27141
+        },
+        {
+          "chapter_id": "chapter-015",
+          "offset": 311031,
+          "length": 27391
+        },
+        {
+          "chapter_id": "chapter-016",
+          "offset": 338435,
+          "length": 21111
+        },
+        {
+          "chapter_id": "chapter-017",
+          "offset": 359560,
+          "length": 44983
+        },
+        {
+          "chapter_id": "chapter-018",
+          "offset": 404558,
+          "length": 33482
+        },
+        {
+          "chapter_id": "chapter-019",
+          "offset": 438053,
+          "length": 20400
+        },
+        {
+          "chapter_id": "chapter-020",
+          "offset": 458465,
+          "length": 31824
+        },
+        {
+          "chapter_id": "chapter-021",
+          "offset": 490302,
+          "length": 47393
+        },
+        {
+          "chapter_id": "chapter-022",
+          "offset": 537709,
+          "length": 15322
+        },
+        {
+          "chapter_id": "chapter-023",
+          "offset": 553046,
+          "length": 21037
+        },
+        {
+          "chapter_id": "chapter-024",
+          "offset": 574097,
+          "length": 38188
+        },
+        {
+          "chapter_id": "chapter-025",
+          "offset": 612298,
+          "length": 27007
+        },
+        {
+          "chapter_id": "chapter-026",
+          "offset": 639319,
+          "length": 23520
+        },
+        {
+          "chapter_id": "chapter-027",
+          "offset": 662854,
+          "length": 59580
+        },
+        {
+          "chapter_id": "chapter-028",
+          "offset": 722450,
+          "length": 36808
+        },
+        {
+          "chapter_id": "chapter-029",
+          "offset": 759272,
+          "length": 24500
+        },
+        {
+          "chapter_id": "chapter-030",
+          "offset": 783785,
+          "length": 20912
+        },
+        {
+          "chapter_id": "chapter-031",
+          "offset": 804711,
+          "length": 16911
+        },
+        {
+          "chapter_id": "chapter-032",
+          "offset": 821637,
+          "length": 25792
+        },
+        {
+          "chapter_id": "chapter-033",
+          "offset": 847445,
+          "length": 26517
+        },
+        {
+          "chapter_id": "chapter-034",
+          "offset": 873977,
+          "length": 50759
+        },
+        {
+          "chapter_id": "chapter-035",
+          "offset": 924750,
+          "length": 23276
+        },
+        {
+          "chapter_id": "chapter-036",
+          "offset": 948041,
+          "length": 21061
+        },
+        {
+          "chapter_id": "chapter-037",
+          "offset": 969118,
+          "length": 40001
+        },
+        {
+          "chapter_id": "chapter-038",
+          "offset": 1009147,
+          "length": 9723
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "802dc32d10d314a0a28199b198e8ef0bad893b423a27ae9230634a7da9e6d255",
+    "legacy_content_sha256": "5cc894eb511a2514bf0738d3cd793c02cf47edd62e5fba379c5bcdb01ae5270e",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1855,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "fce6d07392a60dc60f144e8b52b0835c67edd501982787c337e9cc5ed8d6dc8c",
+    "url": "https://www.gutenberg.org/ebooks/1260",
+    "author_catalog_strings": [
+      "Brontë, Charlotte, 1816-1855"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 40,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-000",
+        "sha256": "4c0919eb240e6bc48de82f8c4074811df85552bcc44bd4c064832b651de81ba8"
+      },
+      {
+        "id": "chapter-000-note",
+        "sha256": "0746f88a258c21eff5e3117a10baaa183fc6e0fb9cf59b427a28eabb0ddce8ad"
+      },
+      {
+        "id": "chapter-001",
+        "sha256": "e8dbfc636278c1f94e47284e4919556c8e7d4bbc4f68b104017c0fae7673013b"
+      },
+      {
+        "id": "chapter-002",
+        "sha256": "5f1a9bf15f4ac21ba59978225f596c6674917089f1a3f75c22f8387987f13f98"
+      },
+      {
+        "id": "chapter-003",
+        "sha256": "703cb0cc2a4ec7e3674da0394a82a68aec64b2c4746fa46b9db7068c2bd8cb77"
+      },
+      {
+        "id": "chapter-004",
+        "sha256": "98616ea06b8f9bbf3a98a8a11d2e72ee3383e865ca2dce5c4c5e160bbf1d71c4"
+      },
+      {
+        "id": "chapter-005",
+        "sha256": "ac36065e9e5584bf233caf4fc77453d677ad153549bef7caf40e80751f63611f"
+      },
+      {
+        "id": "chapter-006",
+        "sha256": "afa3430d3be14f41a0ee662dae340beb07b5f75f9116d925b18324dd560d975c"
+      },
+      {
+        "id": "chapter-007",
+        "sha256": "b9587060125f90cb5148573c295e64867ba280e1f38b46945413819d0abcad29"
+      },
+      {
+        "id": "chapter-008",
+        "sha256": "1ccef3f711a443d35916a54e97c1b7c8d7e28972cc040de37028bdd8a9a61a93"
+      },
+      {
+        "id": "chapter-009",
+        "sha256": "7cd59bb629fda302f384c22caf18c1c31cb896d3b2b5ccb4070f9bd26eb33ac5"
+      },
+      {
+        "id": "chapter-010",
+        "sha256": "540458078eb2d6abad8f76f2b55a945987963afebcf14bb2a3365ea1f541b6d0"
+      },
+      {
+        "id": "chapter-011",
+        "sha256": "63eedb8ae1bbefa5e1dbb802ffe39952eef07466706b94fe2e15e0504ce70f69"
+      },
+      {
+        "id": "chapter-012",
+        "sha256": "d8ae95f9601d3fee3b450094746a04da5c1ec749b8ab74fd35c01189ce904448"
+      },
+      {
+        "id": "chapter-013",
+        "sha256": "9400864a08a8168bef06870f2a5e18a6939ab05efcff62a6e169256d9a08744b"
+      },
+      {
+        "id": "chapter-014",
+        "sha256": "79d1e34b1bd3238b0c0544e5b48d8808ff6f7882e096c8dc2b593901c6a978a8"
+      },
+      {
+        "id": "chapter-015",
+        "sha256": "da2011f72d1b2641b75dd185b26f73cf1bd80c6dd1fbd4660b7d0f6fa4ee8199"
+      },
+      {
+        "id": "chapter-016",
+        "sha256": "4b540cde8f6ebf4ec7c4a9b9a296ea20b49c80dcf5a43dbe1ba79d9b5ebe938c"
+      },
+      {
+        "id": "chapter-017",
+        "sha256": "b626c4ee21ce97aa7dd5dfbab3503f7608ae45ef049491da5d5dcdbe70201fc6"
+      },
+      {
+        "id": "chapter-018",
+        "sha256": "d0222d7097dd3e5fd9934f40baba5055a3302a4af6f45e1054d611607a9d4433"
+      },
+      {
+        "id": "chapter-019",
+        "sha256": "a9b806c6c58b9a259f7fa86fb59c2da5cf74ca4dc5715fbecb63d524e969f061"
+      },
+      {
+        "id": "chapter-020",
+        "sha256": "a28592b0500b02183eceea468e059a685f61b7f6a3adb941c79cbe54886f0d25"
+      },
+      {
+        "id": "chapter-021",
+        "sha256": "6864f59e8293a4aad759d53498a339aca6459c9afa7b49467d497fec6ca09fc2"
+      },
+      {
+        "id": "chapter-022",
+        "sha256": "28b1bd9b426d0dcaa71de4c368ea01aba9e251f48d6755fc14d9541b1764f84f"
+      },
+      {
+        "id": "chapter-023",
+        "sha256": "b8523cec1b0bb6ac33a1ebf71ad717b85ad5cdb4319cc19d01e7f6f70a9bc32f"
+      },
+      {
+        "id": "chapter-024",
+        "sha256": "7e6bef6c799bdf59925e3a0af93cef028b73e032e431f4567afec9d4794c90b2"
+      },
+      {
+        "id": "chapter-025",
+        "sha256": "02b6f9ada470a83439019a1f7c1551851b55a39a24c2fc915931d878071cea37"
+      },
+      {
+        "id": "chapter-026",
+        "sha256": "1f4ffde0fac189e432723d513d8a77e7eb082f17f4125bf7467a1e0e53236f24"
+      },
+      {
+        "id": "chapter-027",
+        "sha256": "c70d581a9faca58bb1cc0e051e5bdf497a9e60c67642ab182635b224e501dafe"
+      },
+      {
+        "id": "chapter-028",
+        "sha256": "e0ce6d18cd6ce925b9aad2f6fd847c1bcda3dd1fcf1f06e798b378ff0f28189d"
+      },
+      {
+        "id": "chapter-029",
+        "sha256": "12e42f7828b9c75692d2f74bc7c2dd6b12079ffc023b10fa4f6801a64ea58810"
+      },
+      {
+        "id": "chapter-030",
+        "sha256": "209a5e1ba68e5d69c7d288f2bea4ba1c7f832e11454a933a2ae8bbd4703a618a"
+      },
+      {
+        "id": "chapter-031",
+        "sha256": "792b34677d6f02d444d4a55ae399956db7f58bd527eaac20aa68274c187d373d"
+      },
+      {
+        "id": "chapter-032",
+        "sha256": "b05e0956f220eecb7b7aa1a707c2515c59381513575f1d20aa790dda620dc9e4"
+      },
+      {
+        "id": "chapter-033",
+        "sha256": "1f959ccff80efebd9ae5af55daa0fe3ed96d0cb15871b93cdc80e24cd85095e0"
+      },
+      {
+        "id": "chapter-034",
+        "sha256": "0561d416601ee13e91b6b17d0f7587b3d8f564ff0089a6df4ab67706cdd7c213"
+      },
+      {
+        "id": "chapter-035",
+        "sha256": "2d5df1caa01814451131cafb338700ac7fd00e6eded236eaa820b9af35b9c0ba"
+      },
+      {
+        "id": "chapter-036",
+        "sha256": "2897257b5b496ebf1194f8524c10d2a6aec82155d2d29ebc94b7d2323226d7b9"
+      },
+      {
+        "id": "chapter-037",
+        "sha256": "be6e0fc0a931297a9de0e8764bdcddf17592ec930ce013cf3057db04299ea7d5"
+      },
+      {
+        "id": "chapter-038",
+        "sha256": "5026544a280ce3ed4996752bdd09516f05072731cfc1d6d09ae6ce6654a309e6"
+      }
+    ],
+    "content_sha256": "3358f1f098572ae4c1a40c2b57936dbfa165b7aeab6a1d14f776e35060c3e2fb"
+  },
+  "restored_author_prefatory_material": {
+    "verified_at": "2026-10-01T21:36:26.336521+00:00",
+    "source_sha256": "13414dee2951c3ee731d76d2ffd822016b2479c892162760c5d0eb2aa5fa7631",
+    "scope": "Same exact electronic edition, author-prefatory material restored verbatim; no rights/publication approval generated"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "802dc32d10d314a0a28199b198e8ef0bad893b423a27ae9230634a7da9e6d255",
+        "content_hash": "5cc894eb511a2514bf0738d3cd793c02cf47edd62e5fba379c5bcdb01ae5270e",
+        "provenance_hash": "450f48b21f51c81a517372835a2e4d5459b71787cdb7ceaa9f0f3d9709879907",
+        "source_url": "https://www.gutenberg.org/ebooks/1260.txt.utf-8",
+        "source_name": "Earnalism historical import"
+      },
+      "superseded_at": "2026-10-01T21:38:19.977641+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "original_publication_year": 1847,
+  "country_of_origin": "United Kingdom",
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:38:19.977641+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1260.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1260/pg1260.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:12.159480+00:00",
+      "response_sha256": "13414dee2951c3ee731d76d2ffd822016b2479c892162760c5d0eb2aa5fa7631"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 40,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-000",
+          "offset": 1141,
+          "length": 4552
+        },
+        {
+          "chapter_id": "chapter-000-note",
+          "offset": 5720,
+          "length": 529
+        },
+        {
+          "chapter_id": "chapter-001",
+          "offset": 6260,
+          "length": 10797
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 17069,
+          "length": 15296
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 32378,
+          "length": 17496
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 49886,
+          "length": 31889
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 81786,
+          "length": 27635
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 109433,
+          "length": 15955
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 125401,
+          "length": 20060
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 145475,
+          "length": 16458
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 161945,
+          "length": 17707
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 179663,
+          "length": 23883
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 203558,
+          "length": 35221
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 238792,
+          "length": 22915
+        },
+        {
+          "chapter_id": "chapter-013",
+          "offset": 261721,
+          "length": 22144
+        },
+        {
+          "chapter_id": "chapter-014",
+          "offset": 283878,
+          "length": 27141
+        },
+        {
+          "chapter_id": "chapter-015",
+          "offset": 311031,
+          "length": 27391
+        },
+        {
+          "chapter_id": "chapter-016",
+          "offset": 338435,
+          "length": 21111
+        },
+        {
+          "chapter_id": "chapter-017",
+          "offset": 359560,
+          "length": 44983
+        },
+        {
+          "chapter_id": "chapter-018",
+          "offset": 404558,
+          "length": 33482
+        },
+        {
+          "chapter_id": "chapter-019",
+          "offset": 438053,
+          "length": 20400
+        },
+        {
+          "chapter_id": "chapter-020",
+          "offset": 458465,
+          "length": 31824
+        },
+        {
+          "chapter_id": "chapter-021",
+          "offset": 490302,
+          "length": 47393
+        },
+        {
+          "chapter_id": "chapter-022",
+          "offset": 537709,
+          "length": 15322
+        },
+        {
+          "chapter_id": "chapter-023",
+          "offset": 553046,
+          "length": 21037
+        },
+        {
+          "chapter_id": "chapter-024",
+          "offset": 574097,
+          "length": 38188
+        },
+        {
+          "chapter_id": "chapter-025",
+          "offset": 612298,
+          "length": 27007
+        },
+        {
+          "chapter_id": "chapter-026",
+          "offset": 639319,
+          "length": 23520
+        },
+        {
+          "chapter_id": "chapter-027",
+          "offset": 662854,
+          "length": 59580
+        },
+        {
+          "chapter_id": "chapter-028",
+          "offset": 722450,
+          "length": 36808
+        },
+        {
+          "chapter_id": "chapter-029",
+          "offset": 759272,
+          "length": 24500
+        },
+        {
+          "chapter_id": "chapter-030",
+          "offset": 783785,
+          "length": 20912
+        },
+        {
+          "chapter_id": "chapter-031",
+          "offset": 804711,
+          "length": 16911
+        },
+        {
+          "chapter_id": "chapter-032",
+          "offset": 821637,
+          "length": 25792
+        },
+        {
+          "chapter_id": "chapter-033",
+          "offset": 847445,
+          "length": 26517
+        },
+        {
+          "chapter_id": "chapter-034",
+          "offset": 873977,
+          "length": 50759
+        },
+        {
+          "chapter_id": "chapter-035",
+          "offset": 924750,
+          "length": 23276
+        },
+        {
+          "chapter_id": "chapter-036",
+          "offset": 948041,
+          "length": 21061
+        },
+        {
+          "chapter_id": "chapter-037",
+          "offset": 969118,
+          "length": 40001
+        },
+        {
+          "chapter_id": "chapter-038",
+          "offset": 1009147,
+          "length": 9723
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "first_publication_evidence": {
+      "retrieval": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Bront%26euml%3B%2C+Charlotte%2C+1816-1855",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Bront%26euml%3B%2C+Charlotte%2C+1816-1855",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:37:24.149944+00:00",
+        "response_sha256": "d50fc8d862a4240a7a31170e4a0668e89cfd685ff871a9f9a7d54a4c80e45a0a"
+      },
+      "original_publication_year": 1847,
+      "verified_at": "2026-10-01T21:37:20.182007+00:00",
+      "scope": "Underlying author edition date; selected PG text includes actual author prefatory material; no illustrations authorized"
+    },
+    "author_death_evidence": [
+      "Brontë, Charlotte, 1816-1855"
+    ],
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "reader_repair_history": [
+    {
+      "verified_at": "2026-10-02T03:25:38.460120+00:00",
+      "reason": "Restored authentic author dedication/epigraph/addressee or full story opening from immutable exact source before claiming full selected text scope.",
+      "content_sha256": "4defd295f35d4b91136fca7598f0423b5a795a81083d6369b7409f24c87f02d9"
+    },
+    {
+      "verified_at": "2026-10-02T03:25:45.777143+00:00",
+      "reason": "Restored authentic author dedication/epigraph/addressee or full story opening from immutable exact source before claiming full selected text scope.",
+      "content_sha256": "4defd295f35d4b91136fca7598f0423b5a795a81083d6369b7409f24c87f02d9"
+    },
+    {
+      "verified_at": "2026-10-02T03:25:59.945714+00:00",
+      "reason": "Restored authentic author dedication/epigraph/addressee or full story opening from immutable exact source before claiming full selected text scope.",
+      "content_sha256": "3358f1f098572ae4c1a40c2b57936dbfa165b7aeab6a1d14f776e35060c3e2fb"
+    }
+  ]
 }

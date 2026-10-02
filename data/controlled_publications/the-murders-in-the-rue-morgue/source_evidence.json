@@ -1,13 +1,206 @@
 {
   "slug": "the-murders-in-the-rue-morgue",
   "source_url": "https://www.gutenberg.org/ebooks/2147",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #2147; selected Poe original story; historical lifetime publication 1841; no modern scholarly/editorial text imported",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "cb52ddf4a8617bb3331028ff932c34daf7f762a33ea13563cd5d7e983b095c11",
-  "content_hash": "e2683c1bec04ea4cc15f1777fe762bb4227daae89dea7fdbbbc1f9751d0b84bc",
-  "provenance_hash": "2434e19f68e93e8072b0659424b44b4fcf95b05de66fe6defec57cec10c9afb0",
-  "rights_basis": "Edgar Allan Poe died 1849; first published 1841. Public domain in India and the U.S.",
+  "source_hash": "c8d5fec040f1dc29be8d4e9cb7d3279b65bf894adea50544d99d400b2d587386",
+  "content_hash": "037fd47cc776d2825d701acc0c53900a99c383f611977f690899db4f68df3fb0",
+  "provenance_hash": "4ecc3f1f8dbff7480f90cf6f9ebc79ccc45b567f47aa64531f461e8e8d9724fe",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1849, verified lifetime collection publication 1841 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-03T08:04:21.855424+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #2147",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2147",
+      "resolved_url": "https://www.gutenberg.org/ebooks/2147",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:25.899682+00:00",
+      "response_sha256": "01f406139e1367ece964a4b6f85f337b95e06af73c9005822355d64f4984449d"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2147.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2147/pg2147.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:31.137299+00:00",
+      "response_sha256": "c8d5fec040f1dc29be8d4e9cb7d3279b65bf894adea50544d99d400b2d587386"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Poe, Edgar Allan, 1809-1849"
+      ],
+      "Contributor": [
+        "Lowell, James Russell, 1819-1891",
+        "Willis, Nathaniel Parker, 1806-1867"
+      ],
+      "Title": [
+        "The Works of Edgar Allan Poe — Volume 1"
+      ],
+      "Contents": [
+        "Edgar Allan Poe, an appreciation -- Life of Poe, by James Russell Lowell -- Death of Poe, by N. P. Willis -- The unparalleled adventures of one Hans Pfaal -- The gold-bug -- Four beasts in one -- The murders in the Rue Morgue -- The mystery of Marie Rogêt -- The balloon hoax -- MS. found in a bottle -- The oval portrait."
+      ],
+      "Credits": [
+        "David Widger and Carlo Traverso"
+      ],
+      "Reading Level": [
+        "Reading ease score: 65.2 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Fantasy fiction",
+        "Horror tales, American",
+        "American fiction -- 19th century",
+        "Poe, Edgar Allan, 1809-1849"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "2147"
+      ],
+      "Release Date": [
+        "Apr 1, 2000"
+      ],
+      "Last Update": [
+        "Aug 31, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "24243 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 263974,
+          "length": 78891
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "cb52ddf4a8617bb3331028ff932c34daf7f762a33ea13563cd5d7e983b095c11",
+    "legacy_content_sha256": "e2683c1bec04ea4cc15f1777fe762bb4227daae89dea7fdbbbc1f9751d0b84bc",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1849,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "01f406139e1367ece964a4b6f85f337b95e06af73c9005822355d64f4984449d",
+    "url": "https://www.gutenberg.org/ebooks/2147",
+    "author_catalog_strings": [
+      "Poe, Edgar Allan, 1809-1849"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "037fd47cc776d2825d701acc0c53900a99c383f611977f690899db4f68df3fb0"
+      }
+    ],
+    "content_sha256": "037fd47cc776d2825d701acc0c53900a99c383f611977f690899db4f68df3fb0"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "cb52ddf4a8617bb3331028ff932c34daf7f762a33ea13563cd5d7e983b095c11",
+        "content_hash": "e2683c1bec04ea4cc15f1777fe762bb4227daae89dea7fdbbbc1f9751d0b84bc",
+        "provenance_hash": "2434e19f68e93e8072b0659424b44b4fcf95b05de66fe6defec57cec10c9afb0",
+        "source_url": "https://www.gutenberg.org/ebooks/2147",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:52:27.631967+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1841,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:52:27.631967+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2147.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2147/pg2147.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:31.137299+00:00",
+      "response_sha256": "c8d5fec040f1dc29be8d4e9cb7d3279b65bf894adea50544d99d400b2d587386"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 263974,
+          "length": 78891
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Edgar Allan Poe",
+      "creator_death_year": 1849,
+      "lifetime_publication_year": 1841,
+      "primary_historical_bibliography_receipt": {
+        "requested_url": "https://www.eapoe.org/works/info/pt030.htm",
+        "resolved_url": "https://www.eapoe.org/works/info/pt030.htm",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:50:25.808614+00:00",
+        "response_sha256": "5c267425e6100f6651c06b3966895f05e69a21326ee66d344f6bd21d5337ad5f"
+      },
+      "historical_publication_excerpt": "Text-02b — “ The Murders in the Rue Morgue ” — April 1841 — Graham's — (Mabbott text B) Text-03 — “The Murders in the Rue Morgue” — 1842-1843 Text-03a — “The Murders in the Rue Morgue” — 1842 — TGAPP (manuscript of title only) — (The tale i",
+      "basis": "Historical printed-story publication verified before Poe death1849; selected RavenEdition text independently matches literal PG source; modern scholarly apparatus not imported."
+    },
+    "author_death_evidence": 1849,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1841,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "c8d5fec040f1dc29be8d4e9cb7d3279b65bf894adea50544d99d400b2d587386",
+    "content_sha256": "037fd47cc776d2825d701acc0c53900a99c383f611977f690899db4f68df3fb0",
+    "year": 1841,
+    "receipt": {
+      "requested_url": "https://www.eapoe.org/works/info/pt030.htm",
+      "resolved_url": "https://www.eapoe.org/works/info/pt030.htm",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:25.808614+00:00",
+      "response_sha256": "5c267425e6100f6651c06b3966895f05e69a21326ee66d344f6bd21d5337ad5f"
+    },
+    "basis": "Historical printed-story publication verified before Poe death1849; selected RavenEdition text independently matches literal PG source; modern scholarly apparatus not imported.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  }
 }

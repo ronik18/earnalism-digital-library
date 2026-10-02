@@ -1,0 +1,4084 @@
+{
+  "20872": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/20872",
+      "resolved_url": "https://www.gutenberg.org/ebooks/20872",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:25.495255+00:00",
+      "response_sha256": "cfbc03d078079e74f5ba6074d96424caaa4c10662694a5e1ef8e2adfe8477af7"
+    },
+    "bibliographic_metadata": {
+      "Editor": [
+        "O'Brien, Edward J. (Edward Joseph), 1890-1941"
+      ],
+      "Title": [
+        "The best short stories of 1917, and the yearbook of the American short story"
+      ],
+      "Contents": [
+        "Excursion / Edwina Stanton Babcock -- Onnie / Thomas Beer -- Cup of tea / Maxwell Struthers Burt -- Lonely places / Francis Buzzell -- Boys will be boys / Irvin S. Cobb -- Laughter / Charles Caldwell Dobie -- Emperor of Elam / H.G. Dwight -- Gay old dog / Edna Ferber -- Knight's move / Katharine Fullerton Gerould -- Jury of her peers / Susan Glaspell -- Bunker mouse / Frederick Stuart Greene -- Rainbow Pete / Richard Matthews Hallet -- Get ready the wreaths / Fannie Hurst -- Strange looking man / Fanny Kemble Johnson --Caller in the night / Burton Kline -- Interval / Vincent O'Sullivan -- Certain rich man / Lawrence Perry -- Path of glory / Mary Brecht Pulver -- Ching, ching, chinaman / Wilbur Daniel Steele -- None so blind / Mary Synon."
+      ],
+      "Credits": [
+        "Produced by Suzanne Lybarger, Chuck Greif and the Online Distributed Proofreading Team at www.pgdp.net"
+      ],
+      "Reading Level": [
+        "Reading ease score: 83.5 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Short stories, American",
+        "American fiction -- 20th century",
+        "Short stories -- 20th century -- Bibliography",
+        "Short stories -- 20th century -- Indexes"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "20872"
+      ],
+      "Release Date": [
+        "Mar 22, 2007"
+      ],
+      "Last Update": [
+        "Jan 1, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1958 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/20872.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/20872/pg20872.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:31.141940+00:00",
+      "response_sha256": "f011e7e8f943cee34701f2c807a35c34af76592307f213602470c9140461032f"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "1646": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1646",
+      "resolved_url": "https://www.gutenberg.org/ebooks/1646",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:33.706671+00:00",
+      "response_sha256": "9ba8c2647e4f5fc11ef42149e020a1bf32c1635339ad9d17b013f4bb273f2e56"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Henry, O., 1862-1910"
+      ],
+      "Title": [
+        "Roads of Destiny"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Roads_of_Destiny_(short_story_collection)"
+      ],
+      "Contents": [
+        "Roads of destiny -- The guardian of the accolade -- The discounters of money -- The enchanted profile -- \"Next to reading matter\" -- Art and the bronco -- Phoebe -- A doubled-dyed deceiver -- The passing of Black Engle -- A retrieved reformation -- Cherchez la femme -- Friends in San Rosario -- The fourth in Salvador -- The emancipation of Billy -- The enchanted Kiss -- A departmental case -- The renaissance at Charleroi -- On behalf of the management -- Whistling Dick's Christmas stocking -- The halberdier of the little Rheinschloss -- Two renegades -- The lonesome road."
+      ],
+      "Credits": [
+        "E-text prepared by John Bickers and Dagny and revised by Joseph E. Loewenstein, M.D."
+      ],
+      "Reading Level": [
+        "Reading ease score: 81.3 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "United States -- Social life and customs -- Fiction",
+        "Short stories, American"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "1646"
+      ],
+      "Release Date": [
+        "Feb 1, 1999"
+      ],
+      "Last Update": [
+        "Dec 31, 2020"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1825 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1646.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1646/pg1646.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:39.333359+00:00",
+      "response_sha256": "c963a7c08d104b1bb71930c8d122022ce908dbdc8f1f22e8af31e613520af686"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "346": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/346",
+      "resolved_url": "https://www.gutenberg.org/ebooks/346",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:43.380723+00:00",
+      "response_sha256": "e856f343d315dad26441e472334deead2cf53d121df18bf8fca8fbceb2602048"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Cather, Willa, 1873-1947"
+      ],
+      "Title": [
+        "The Troll Garden, and Selected Stories"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Troll_Garden"
+      ],
+      "Contents": [
+        "On the divide -- Eric Hermannson's soul -- The enchanted bluff -- The Bohemian girl -- Flavia and her artists -- The sculptor's funeral -- \"A death in the desert\" -- The garden lodge -- The marriage of Phaedra -- A Wagner matinee -- Paul's case."
+      ],
+      "Credits": [
+        "Produced by Judith Boss, and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 78.3 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Short stories",
+        "United States -- Social life and customs -- Fiction",
+        "Man-woman relationships -- Fiction",
+        "Nebraska -- Social life and customs -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "346"
+      ],
+      "Release Date": [
+        "Oct 1, 1995"
+      ],
+      "Last Update": [
+        "Jan 27, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1268 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/346.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/346/pg346.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:48.990243+00:00",
+      "response_sha256": "926b042528d42a6e8b0e062dfee1987fbbb4ddbe1ea6601d2b61fc77b452f521"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "368": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/368",
+      "resolved_url": "https://www.gutenberg.org/ebooks/368",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:51.502277+00:00",
+      "response_sha256": "a0b896e7c3f830e86d816a6cd6e7861d17895a8a0a49899b2d78d4d1d7813a88"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Conwell, Russell H., 1843-1925"
+      ],
+      "Contributor": [
+        "Shackleton, Robert, 1860-1923"
+      ],
+      "Title": [
+        "Acres of Diamonds: Our Every-day Opportunities"
+      ],
+      "Contents": [
+        "An appreciation -- Acres of diamonds -- His life and achievements -- Fifty years on the lecture platform."
+      ],
+      "Credits": [
+        "Produced by Charles Keller and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 73.9 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "BJ: Philosophy, Psychology, Religion: Ethics, Social usages, Etiquette, Religion"
+      ],
+      "Subject": [
+        "Success",
+        "Temple University",
+        "Conwell, Russell H., 1843-1925"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "368"
+      ],
+      "Release Date": [
+        "Jun 29, 2008"
+      ],
+      "Last Update": [
+        "Feb 26, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "2389 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/368.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/368/pg368.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:56.894794+00:00",
+      "response_sha256": "a0b8613f5a9c0ee604b53d6aa68388084bdefbf24e1f5e9749aafe2c8448efa3"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "11": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/11",
+      "resolved_url": "https://www.gutenberg.org/ebooks/11",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:59.732798+00:00",
+      "response_sha256": "838d3e1cbdad6b7b8f10ae8aabfe09a3c2eb472266182c1fbc664116566b1441"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Carroll, Lewis, 1832-1898"
+      ],
+      "Title": [
+        "Alice's Adventures in Wonderland"
+      ],
+      "Alternate Title": [
+        "Alice in Wonderland"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Alice%27s_Adventures_in_Wonderland"
+      ],
+      "Credits": [
+        "Arthur DiBianca and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 87.5 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature",
+        "PZ: Language and Literatures: Juvenile belles lettres"
+      ],
+      "Subject": [
+        "Fantasy fiction",
+        "Children's stories",
+        "Imaginary places -- Juvenile fiction",
+        "Alice (Fictitious character from Carroll) -- Juvenile fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "11"
+      ],
+      "Release Date": [
+        "Jun 27, 2008"
+      ],
+      "Last Update": [
+        "Jun 26, 2025"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "121510 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/11.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/11/pg11.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:04.864446+00:00",
+      "response_sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "41": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/41",
+      "resolved_url": "https://www.gutenberg.org/ebooks/41",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:24.937825+00:00",
+      "response_sha256": "30be0b1e882514f5433f298e63f8eccc2fef5a0b6efcfb28bb44fc4a0ea85f88"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Irving, Washington, 1783-1859"
+      ],
+      "Title": [
+        "The Legend of Sleepy Hollow"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Legend_of_Sleepy_Hollow"
+      ],
+      "Credits": [
+        "Ilana M. (Kingsley) Newby and Greg Newby"
+      ],
+      "Reading Level": [
+        "Reading ease score: 52.8 (10th to 12th grade). Somewhat difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Ghosts -- Fiction",
+        "New York (State) -- History -- 1775-1865 -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "41"
+      ],
+      "Release Date": [
+        "Jun 27, 2008"
+      ],
+      "Last Update": [
+        "Feb 10, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "31647 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/41.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/41/pg41.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:29.444170+00:00",
+      "response_sha256": "6847c02f49c9ff8a5e2a0e8f49842bf3bffc7f5a87216c895a6b64f26ecf9353"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "43": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/43",
+      "resolved_url": "https://www.gutenberg.org/ebooks/43",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:24.819800+00:00",
+      "response_sha256": "f1a21c3279ab365cb1bd4db2bf5b0fe4885b2b72b8d9390afa659ee1af80f264"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Stevenson, Robert Louis, 1850-1894"
+      ],
+      "Title": [
+        "The strange case of Dr. Jekyll and Mr. Hyde"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Strange_Case_of_Dr_Jekyll_and_Mr_Hyde"
+      ],
+      "Credits": [
+        "David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 75.4 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Science fiction",
+        "Horror tales",
+        "London (England) -- Fiction",
+        "Physicians -- Fiction",
+        "Psychological fiction",
+        "Self-experimentation in medicine -- Fiction",
+        "Multiple personality -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "43"
+      ],
+      "Release Date": [
+        "Jun 27, 2008"
+      ],
+      "Last Update": [
+        "May 12, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "69303 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/43.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/43/pg43.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:29.671323+00:00",
+      "response_sha256": "b43448a88391591f9cf82b25553df00faf47a2752a873185fcdd1156eebdb990"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "35": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/35",
+      "resolved_url": "https://www.gutenberg.org/ebooks/35",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:24.886802+00:00",
+      "response_sha256": "8a701df37a1d012b50a28d82e7315de63f26ac399bc08754939f8efdff452713"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Wells, H. G. (Herbert George), 1866-1946"
+      ],
+      "Title": [
+        "The Time Machine"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Time_Machine"
+      ],
+      "Reading Level": [
+        "Reading ease score: 79.5 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Science fiction",
+        "Time travel -- Fiction",
+        "Dystopias -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "35"
+      ],
+      "Release Date": [
+        "Oct 2, 2004"
+      ],
+      "Last Update": [
+        "Jun 16, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "27995 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/35.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/35/pg35.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:29.749784+00:00",
+      "response_sha256": "2892e919000e17c83e1dac51b30f4675db50536b644d7579fe8a89bb399a9bdc"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "55": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/55",
+      "resolved_url": "https://www.gutenberg.org/ebooks/55",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:30.983594+00:00",
+      "response_sha256": "5b008743b57144d50ff35143b720b89305aca939dc8ad10ca5bd11dd1ebdbf30"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Baum, L. Frank (Lyman Frank), 1856-1919"
+      ],
+      "Title": [
+        "The Wonderful Wizard of Oz"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Wonderful_Wizard_of_Oz",
+        "There is an improved edition of this title, eBook #43936"
+      ],
+      "Reading Level": [
+        "Reading ease score: 86.6 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PZ: Language and Literatures: Juvenile belles lettres"
+      ],
+      "Subject": [
+        "Oz (Imaginary place) -- Juvenile fiction",
+        "Fantasy literature",
+        "Courage -- Juvenile fiction",
+        "Home -- Juvenile fiction",
+        "Good and evil -- Juvenile fiction",
+        "Dreams -- Juvenile fiction",
+        "Gale, Dorothy (Fictitious character) -- Juvenile fiction",
+        "Cowardly Lion (Fictitious character) -- Juvenile fiction",
+        "Cyclones -- Juvenile fiction",
+        "Scarecrow (Fictitious character from Baum) -- Juvenile fiction",
+        "Toto (Fictitious character) -- Juvenile fiction",
+        "Witches -- Juvenile fiction",
+        "Wizard of Oz (Fictitious character) -- Juvenile fiction",
+        "Tin Woodman (Fictitious character) -- Juvenile fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "55"
+      ],
+      "Release Date": [
+        "Feb 1, 1993"
+      ],
+      "Last Update": [
+        "Dec 29, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "38924 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/55.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/55/pg55.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:36.135494+00:00",
+      "response_sha256": "969bffab7740d4d8a0bac332d78bd0152ad4a40a2efc52f06c74a9bb6120be75"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "84": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/84",
+      "resolved_url": "https://www.gutenberg.org/ebooks/84",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:31.154354+00:00",
+      "response_sha256": "88d110000408558531372c449a9943b5f15fc0650dc87c936ee82e3959d57d30"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Shelley, Mary Wollstonecraft, 1797-1851"
+      ],
+      "Title": [
+        "Frankenstein; or, the modern prometheus"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Frankenstein",
+        "There are improved editions of this title, eBook #41445 (1818 ed.) and #42324 (1831 ed.)."
+      ],
+      "Credits": [
+        "Judith Boss, Christy Phillips, Lynn Hanninen and David Meltzer. HTML version by Al Haines. Further corrections by Menno de Leeuw."
+      ],
+      "Reading Level": [
+        "Reading ease score: 65.0 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Science fiction",
+        "Horror tales",
+        "Gothic fiction",
+        "Scientists -- Fiction",
+        "Monsters -- Fiction",
+        "Frankenstein, Victor (Fictitious character) -- Fiction",
+        "Frankenstein's monster (Fictitious character) -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "84"
+      ],
+      "Release Date": [
+        "Oct 1, 1993"
+      ],
+      "Last Update": [
+        "Feb 10, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "146025 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/84.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/84/pg84.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:36.600593+00:00",
+      "response_sha256": "7810cd483cffcf2cc8a1d8f0d5807931e69d4f48cd14149b8c76f88af82fead3"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "108": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/108",
+      "resolved_url": "https://www.gutenberg.org/ebooks/108",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:31.258135+00:00",
+      "response_sha256": "1342352674167fe6b7b9e98aafdea8aba4737944a4a8a88b0856f31c4dc42287"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Doyle, Arthur Conan, 1859-1930"
+      ],
+      "Title": [
+        "The Return of Sherlock Holmes"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Return_of_Sherlock_Holmes"
+      ],
+      "Contents": [
+        "The adventure of the empty house -- The adventure of the Norwood builder -- The adventure of the dancing men -- The adventure of the solitary cyclist -- The adventure of the priory school -- The adventure of Black Peter -- The adventure of Charles Augustus Milverton -- The adventure of the six Napoleons -- The adventure of the three students -- The adventure of the golden pince-nez -- The adventure of the missing three-quarter -- The adventure of the Abbey Grange -- The adventure of the second stain."
+      ],
+      "Credits": [
+        "An Anonymous Volunteer"
+      ],
+      "Reading Level": [
+        "Reading ease score: 81.8 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Holmes, Sherlock (Fictitious character) -- Fiction",
+        "Private investigators -- England -- Fiction",
+        "Detective and mystery stories, English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "108"
+      ],
+      "Release Date": [
+        "Mar 8, 2006"
+      ],
+      "Last Update": [
+        "Apr 25, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "21977 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/108.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/108/pg108.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:36.762132+00:00",
+      "response_sha256": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "113": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/113",
+      "resolved_url": "https://www.gutenberg.org/ebooks/113",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:38.028470+00:00",
+      "response_sha256": "8f196353d1610f8d6d520c124bc1200204ed4639b93e9cfa9a5518bb87b06bc9"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Burnett, Frances Hodgson, 1849-1924"
+      ],
+      "Title": [
+        "The Secret Garden"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Secret_Garden"
+      ],
+      "Reading Level": [
+        "Reading ease score: 90.9 (5th grade). Very easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PZ: Language and Literatures: Juvenile belles lettres"
+      ],
+      "Subject": [
+        "Orphans -- Juvenile fiction",
+        "People with disabilities -- Juvenile fiction",
+        "Gardens -- Juvenile fiction",
+        "Yorkshire (England) -- Juvenile fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "113"
+      ],
+      "Release Date": [
+        "Mar 1, 1994"
+      ],
+      "Last Update": [
+        "Mar 15, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "17985 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/113.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/113/pg113.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:43.420943+00:00",
+      "response_sha256": "6b0bb5fbd0c4e873d2d22028da9d753cf3977d5f70ac58221556b28060badbf5"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "160": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/160",
+      "resolved_url": "https://www.gutenberg.org/ebooks/160",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:38.436945+00:00",
+      "response_sha256": "189fac1b504479dab2bd7daa6467234019c44d696c7a9484ef614d1de0289e90"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Chopin, Kate, 1850-1904"
+      ],
+      "Title": [
+        "The Awakening, and Selected Short Stories"
+      ],
+      "Contents": [
+        "The awakening -- Beyond the Bayou -- Maáme Pélagle -- Désirée's baby -- A respectable woman -- The kiss -- A pair of silk stockings -- The locket -- A reflection."
+      ],
+      "Credits": [
+        "Judith Boss and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 81.6 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Adultery -- Fiction",
+        "Women -- Louisiana -- New Orleans -- Social conditions -- Fiction",
+        "Self-actualization (Psychology) -- Fiction",
+        "New Orleans (La.) -- Fiction",
+        "Louisiana -- Social life and customs -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "160"
+      ],
+      "Release Date": [
+        "Mar 11, 2006"
+      ],
+      "Last Update": [
+        "Sep 2, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "14969 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/160.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/160/pg160.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:43.540665+00:00",
+      "response_sha256": "31d4577d255806b92c6296419adddd5ca460bdb788743878a09ded1e19f4161a"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "215": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/215",
+      "resolved_url": "https://www.gutenberg.org/ebooks/215",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:38.972738+00:00",
+      "response_sha256": "c99afed481fff4d12f65ec6bd118d61df86d89fa016230dd83000576636e4809"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "London, Jack, 1876-1916"
+      ],
+      "Title": [
+        "The call of the wild"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Call_of_the_Wild"
+      ],
+      "Credits": [
+        "Ryan, Kirstin, Linda and Rick Trapp and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 77.5 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Dogs -- Fiction",
+        "Adventure stories",
+        "Nature stories",
+        "Klondike River Valley (Yukon) -- Fiction",
+        "Sled dogs -- Fiction",
+        "Pet theft -- Fiction",
+        "Feral dogs -- Fiction",
+        "Animal welfare -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "215"
+      ],
+      "Release Date": [
+        "Jul 2, 2008"
+      ],
+      "Last Update": [
+        "Aug 4, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "19756 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/215.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/215/pg215.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:43.743462+00:00",
+      "response_sha256": "30f569c5671bba7bbc4a92ab6d8ee01a0d3be00f994819c77da62c28041eb8a2"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "269": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/269",
+      "resolved_url": "https://www.gutenberg.org/ebooks/269",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:45.352117+00:00",
+      "response_sha256": "bb6a25392e89f073a1088fa10b62b911aad3d61499cc7284d973ec6fecbe566c"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Saki, 1870-1916"
+      ],
+      "Title": [
+        "Beasts and Super-Beasts"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Beasts_and_Super-Beasts"
+      ],
+      "Contents": [
+        "The she-wolf -- Laura -- The boar-pig -- The Brogue -- The hen -- The open window -- The treasure-ship -- The cobweb -- The lull -- The unkindest blow -- The romancers -- The Schartz-Metterklume method -- The seventh pullet -- The blind spot -- Dusk -- A touch of realism -- Cousin Teresa -- The Yarkand manner -- The Byzantine omelette -- The Feast of Nemesis -- The dreamer -- The quince tree -- The forbidden buzzards -- The stake -- Clovis on parental responsibilities -- A holiday task -- The stalled ox -- The story-teller -- A defensive diamond -- The elk -- Down pens -- The name-day -- The lumber room -- Fur -- The philanthropist and the happy cat -- On approval."
+      ],
+      "Credits": [
+        "Transcribed from the 1914 John Lane, The Bodley Head edition by David Price"
+      ],
+      "Reading Level": [
+        "Reading ease score: 67.8 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Humorous stories",
+        "Supernatural -- Fiction",
+        "Short stories, English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "269"
+      ],
+      "Release Date": [
+        "May 1, 1995"
+      ],
+      "Last Update": [
+        "Dec 26, 2011"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "4783 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/269.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/269/pg269.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:50.335414+00:00",
+      "response_sha256": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "344": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/344",
+      "resolved_url": "https://www.gutenberg.org/ebooks/344",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:45.331774+00:00",
+      "response_sha256": "3a2ed87a6d147a0962e88d3c76a8a76091c917239ee132029056e0524a9e76fb"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Stevenson, Robert Louis, 1850-1894"
+      ],
+      "Title": [
+        "The Merry Men, and Other Tales and Fables"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Merry_Men_and_Other_Tales_and_Fables"
+      ],
+      "Contents": [
+        "The merry men -- Will o' the mill -- Markheim -- Thrawn Janet -- Olalla -- The treasure of Franchard."
+      ],
+      "Credits": [
+        "David Price"
+      ],
+      "Reading Level": [
+        "Reading ease score: 75.0 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Boys -- Fiction",
+        "Treasure troves -- Fiction",
+        "Paranormal fiction",
+        "Great Britain -- History -- 19th century -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "344"
+      ],
+      "Release Date": [
+        "Oct 1, 1995"
+      ],
+      "Last Update": [
+        "May 17, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1537 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/344.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/344/pg344.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:50.677676+00:00",
+      "response_sha256": "4c397d6e1688b525c58c60ad565a63717feee1d0f7db36e69281919e6492aa16"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "345": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/345",
+      "resolved_url": "https://www.gutenberg.org/ebooks/345",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:45.401315+00:00",
+      "response_sha256": "bcf205e4ea7d40c315911847bd68b655543ebb9bd1538eadcffef9278d8abcd2"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Stoker, Bram, 1847-1912"
+      ],
+      "Title": [
+        "Dracula"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Dracula"
+      ],
+      "Credits": [
+        "Chuck Greif and the Online Distributed Proofreading Team"
+      ],
+      "Reading Level": [
+        "Reading ease score: 86.3 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Horror tales",
+        "Epistolary fiction",
+        "Gothic fiction",
+        "Vampires -- Fiction",
+        "Dracula, Count (Fictitious character) -- Fiction",
+        "Transylvania (Romania) -- Fiction",
+        "Whitby (England) -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "345"
+      ],
+      "Release Date": [
+        "Oct 1, 1995"
+      ],
+      "Last Update": [
+        "Sep 24, 2025"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "76200 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/345.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/345/pg345.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:50.800115+00:00",
+      "response_sha256": "96cd16eacdbfebae8fdda5591f66e0cc8ee76be18e0cd1aca02bc00615782d28"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "512": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/512",
+      "resolved_url": "https://www.gutenberg.org/ebooks/512",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:51.868236+00:00",
+      "response_sha256": "12ba4335b43efe5056d082426a6c363cf8951bfa258b8fa8377d856749db86b2"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Hawthorne, Nathaniel, 1804-1864"
+      ],
+      "Title": [
+        "Mosses from an old manse"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Mosses_from_an_Old_Manse"
+      ],
+      "Contents": [
+        "The old manse -- The birthmark -- A select party -- Young Goodman Brown -- Rappaccini's daughter -- Mrs. Bullfrog -- Fire worship -- Buds and bird voices -- Monsieur du Miroir -- The hall of fantasy -- The celestial railroad -- The procession of life -- Feathertop: a moralized legend -- The new Adam and Eve -- Egotism; or, The bosom serpent -- The Christmas banquet -- Drowne's wooden image -- The intelligence office -- Roger Malvin's burial -- P.'s correspondence -- Earth's holocaust -- Passages from a relinquished work -- Sketches from memory -- The old apple dealer -- The artist of the beautiful -- A virtuoso's collection."
+      ],
+      "Credits": [
+        "Charles Keller",
+        "Charles Keller"
+      ],
+      "Reading Level": [
+        "Reading ease score: 63.7 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Short stories, American",
+        "New England -- Social life and customs -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "512"
+      ],
+      "Release Date": [
+        "Apr 1, 1996"
+      ],
+      "Last Update": [
+        "Nov 9, 2022"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "5887 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/512.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/512/pg512.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:57.734853+00:00",
+      "response_sha256": "d9a0cc1df0c41f87ffe61076e23383a4223369105223318542dca83914b156d4"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "583": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/583",
+      "resolved_url": "https://www.gutenberg.org/ebooks/583",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:52.168116+00:00",
+      "response_sha256": "5e46e61a79f86038112b254bb492aea977051c15384dee18a5f84be6b9e52947"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Collins, Wilkie, 1824-1889"
+      ],
+      "Title": [
+        "The Woman in White"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Woman_in_White_(novel)"
+      ],
+      "Reading Level": [
+        "Reading ease score: 78.5 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Inheritance and succession -- Fiction",
+        "England -- Fiction",
+        "Psychological fiction",
+        "Love stories",
+        "Country homes -- Fiction",
+        "Gothic fiction",
+        "Nobility -- Fiction",
+        "Deception -- Fiction",
+        "Art teachers -- Fiction",
+        "Psychiatric hospital patients -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "583"
+      ],
+      "Release Date": [
+        "Jul 1, 1996"
+      ],
+      "Last Update": [
+        "Jul 28, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "19309 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/583.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/583/pg583.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:58.010117+00:00",
+      "response_sha256": "c8cb8872f6c0a2a5b6489873c6c7b8c39f006c3fa44219738186a96f2c1d1254"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "834": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/834",
+      "resolved_url": "https://www.gutenberg.org/ebooks/834",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:52.350041+00:00",
+      "response_sha256": "495ba36cfc2aa06317a61e8b35ca543c483769f78eeaf22c2259373e18f69a1a"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Doyle, Arthur Conan, 1859-1930"
+      ],
+      "Title": [
+        "The Memoirs of Sherlock Holmes"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Memoirs_of_Sherlock_Holmes"
+      ],
+      "Contents": [
+        "Silver Blaze -- The yellow face -- The stock-broker's clerk -- The \"Gloria Scott\" -- The Musgrave ritual -- The Reigate puzzle -- The crooked man -- The resident patient -- The Greek interpreter -- The naval treaty -- The final problem."
+      ],
+      "Credits": [
+        "Angela M. Cable"
+      ],
+      "Reading Level": [
+        "Reading ease score: 80.1 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Holmes, Sherlock (Fictitious character) -- Fiction",
+        "Private investigators -- England -- Fiction",
+        "Detective and mystery stories, English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "834"
+      ],
+      "Release Date": [
+        "Mar 1, 1997"
+      ],
+      "Last Update": [
+        "Dec 2, 2023"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "20684 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/834.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/834/pg834.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:58.032540+00:00",
+      "response_sha256": "509da3f8bbdc6c3857073e74911f628eef8fea557fcb5bca9e1713c846e43ec3"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "902": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/902",
+      "resolved_url": "https://www.gutenberg.org/ebooks/902",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:59.500408+00:00",
+      "response_sha256": "3b85ac0793959e0dfc7b7cb8f5c108b60e769801cfd1b1ca2b6b5e3acfaaac89"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Wilde, Oscar, 1854-1900"
+      ],
+      "Title": [
+        "The Happy Prince, and Other Tales"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Happy_Prince_and_Other_Tales"
+      ],
+      "Contents": [
+        "The happy prince -- The nightingale and the rose -- The selfish giant -- The devoted friend -- The remarkable rocket."
+      ],
+      "Credits": [
+        "David Price and Paul Redmond"
+      ],
+      "Reading Level": [
+        "Reading ease score: 88.4 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature",
+        "PZ: Language and Literatures: Juvenile belles lettres"
+      ],
+      "Subject": [
+        "Fairy tales",
+        "Children's stories, English",
+        "Short stories, English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "902"
+      ],
+      "Release Date": [
+        "May 1, 1997"
+      ],
+      "Last Update": [
+        "Oct 25, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "9478 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/902.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/902/pg902.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:04.230290+00:00",
+      "response_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "839": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/839",
+      "resolved_url": "https://www.gutenberg.org/ebooks/839",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:59.343892+00:00",
+      "response_sha256": "49cd2b4ceddf97923ad71b0007d907bcc50457216a52aeff7ee0c80654bd314c"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Stevenson, Robert Louis, 1850-1894"
+      ],
+      "Title": [
+        "New Arabian Nights"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/New_Arabian_Nights"
+      ],
+      "Contents": [
+        "The Suicide Club -- The rajah's diamond -- The pavilion on the links -- A lodging for the night: a story of Francis Villon -- The Sire de Maletroit's door -- Providence and the guitar."
+      ],
+      "Credits": [
+        "David Price"
+      ],
+      "Reading Level": [
+        "Reading ease score: 77.6 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Fiction",
+        "Short stories",
+        "Adventure stories"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "839"
+      ],
+      "Release Date": [
+        "Mar 1, 1997"
+      ],
+      "Last Update": [
+        "Aug 24, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "949 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/839.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/839/pg839.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:04.718806+00:00",
+      "response_sha256": "8205ac009edcea995ee855585b05c223e22e1f53b00a96b2922d8a05d5f005bd"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "910": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/910",
+      "resolved_url": "https://www.gutenberg.org/ebooks/910",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:59.594858+00:00",
+      "response_sha256": "277a4cb85ff9b16b30e301e8df419728baf7e32b52cba8ce0ac11feed18cd4ee"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "London, Jack, 1876-1916"
+      ],
+      "Title": [
+        "White Fang"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/White_Fang"
+      ],
+      "Credits": [
+        "Credits: David Price"
+      ],
+      "Reading Level": [
+        "Reading ease score: 81.2 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Wolfdogs -- Fiction",
+        "Adventure stories",
+        "Canada, Northern -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "910"
+      ],
+      "Release Date": [
+        "May 1, 1997"
+      ],
+      "Last Update": [
+        "Aug 4, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "12118 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/910.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/910/pg910.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:04.926346+00:00",
+      "response_sha256": "3c7226d00fd9b169f0016635d0e461501620f343220ee18db7ca9f083f4ad3f4"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "1064": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1064",
+      "resolved_url": "https://www.gutenberg.org/ebooks/1064",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:05.747260+00:00",
+      "response_sha256": "71a08fa58d1e9892f142cc21f779961287760296e0431490ff2c76638b79bd54"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Poe, Edgar Allan, 1809-1849"
+      ],
+      "Title": [
+        "The Masque of the Red Death"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Masque_of_the_Red_Death"
+      ],
+      "Credits": [
+        "Produced by Levent Kurnaz.  HTML version by Al Haines."
+      ],
+      "Reading Level": [
+        "Reading ease score: 73.3 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Horror tales, American"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "1064"
+      ],
+      "Release Date": [
+        "Jun 6, 2010"
+      ],
+      "Last Update": [
+        "Sep 30, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "5700 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1064.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1064/pg1064.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:10.275501+00:00",
+      "response_sha256": "58e8a7186604d9693b0a49a2d131fa11b2a8ab0e14958df728883bbf35b42520"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "1342": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1342",
+      "resolved_url": "https://www.gutenberg.org/ebooks/1342",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:06.660381+00:00",
+      "response_sha256": "9d94053f32bfa304b1d83131db46992a2f6660563e815a333b8f7f6fdfc96875"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Austen, Jane, 1775-1817"
+      ],
+      "Title": [
+        "Pride and Prejudice"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Pride_and_Prejudice",
+        "This title is also available as eBook #42671 ."
+      ],
+      "Credits": [
+        "Chuck Greif and the Online Distributed Proofreading Team at www.pgdp.net (This file was produced from images available at The Internet Archive)"
+      ],
+      "Reading Level": [
+        "Reading ease score: 69.2 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "England -- Fiction",
+        "Young women -- Fiction",
+        "Love stories",
+        "Sisters -- Fiction",
+        "Domestic fiction",
+        "Courtship -- Fiction",
+        "Social classes -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "1342"
+      ],
+      "Release Date": [
+        "Jun 1, 1998"
+      ],
+      "Last Update": [
+        "Sep 29, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "190246 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1342.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1342/pg1342.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:12.101100+00:00",
+      "response_sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "1260": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1260",
+      "resolved_url": "https://www.gutenberg.org/ebooks/1260",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:06.310366+00:00",
+      "response_sha256": "fce6d07392a60dc60f144e8b52b0835c67edd501982787c337e9cc5ed8d6dc8c"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Brontë, Charlotte, 1816-1855"
+      ],
+      "Illustrator": [
+        "Townsend, F. H. (Frederick Henry), 1868-1920"
+      ],
+      "Title": [
+        "Jane Eyre: An Autobiography"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Jane_Eyre"
+      ],
+      "Credits": [
+        "David Price"
+      ],
+      "Reading Level": [
+        "Reading ease score: 77.4 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Orphans -- Fiction",
+        "England -- Fiction",
+        "Young women -- Fiction",
+        "Love stories",
+        "Governesses -- Fiction",
+        "Fathers and daughters -- Fiction",
+        "Mentally ill women -- Fiction",
+        "Charity-schools -- Fiction",
+        "Married people -- Fiction",
+        "Country homes -- Fiction",
+        "Bildungsromans"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "1260"
+      ],
+      "Release Date": [
+        "Mar 1, 1998"
+      ],
+      "Last Update": [
+        "Sep 27, 2025"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "57519 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1260.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1260/pg1260.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:12.159480+00:00",
+      "response_sha256": "13414dee2951c3ee731d76d2ffd822016b2479c892162760c5d0eb2aa5fa7631"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "1400": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1400",
+      "resolved_url": "https://www.gutenberg.org/ebooks/1400",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:11.840220+00:00",
+      "response_sha256": "3c27432836d87b3d2a321055c57ff6ae29f26708b1a4a32428c94a06f8d85895"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Dickens, Charles, 1812-1870"
+      ],
+      "Title": [
+        "Great Expectations"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Great_Expectations"
+      ],
+      "Credits": [
+        "An Anonymous Volunteer and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 77.1 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Orphans -- Fiction",
+        "England -- Fiction",
+        "Revenge -- Fiction",
+        "Bildungsromans",
+        "Young men -- Fiction",
+        "Man-woman relationships -- Fiction",
+        "Ex-convicts -- Fiction",
+        "Benefactors -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "1400"
+      ],
+      "Release Date": [
+        "Jul 1, 1998"
+      ],
+      "Last Update": [
+        "Dec 17, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "38268 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1400.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1400/pg1400.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:17.504473+00:00",
+      "response_sha256": "9a637118af8e953e9764ec603d9b0a032883384d465acac2e27966a80cf1c6f8"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "1595": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1595",
+      "resolved_url": "https://www.gutenberg.org/ebooks/1595",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:13.589893+00:00",
+      "response_sha256": "09c6d886d93d8da11c63527a76335073c0693b53d31c99b2dc3f7299d50faa39"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Henry, O., 1862-1910"
+      ],
+      "Title": [
+        "Whirligigs"
+      ],
+      "Contents": [
+        "The world and the door -- The theory and the hound -- The hypotheses of failure -- Calloway's code -- A matter of mean elevation -- \"Girl\" -- Sociology in serge and straw -- The ransom of Red Chief -- The marry month of May -- A technical error -- Suite homes and their romance -- The whirligig of life -- A sacrifice hit -- The roads we take -- A blackjack bargainer -- The song and the sergeant -- One dollar's worth -- A newspaper story -- Tommy's burglar -- A chaparral Christmas gift -- A little local colour -- Georgia's ruling -- Blind man's holiday -- Madame Bo-Peep, of the ranches."
+      ],
+      "Credits": [
+        "anonymous Project Gutenberg Volunteers and Joseph E. Loewenstein, M.D."
+      ],
+      "Reading Level": [
+        "Reading ease score: 81.9 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Fiction",
+        "Short stories, American"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "1595"
+      ],
+      "Release Date": [
+        "Jan 1, 1999"
+      ],
+      "Last Update": [
+        "Jun 28, 2023"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1808 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1595.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1595/pg1595.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:18.948868+00:00",
+      "response_sha256": "49437bc16c4d2d6577714e87c36156ae5434e320b201ad739a9464214df00d0b"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "1661": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1661",
+      "resolved_url": "https://www.gutenberg.org/ebooks/1661",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:13.631115+00:00",
+      "response_sha256": "d06aec994dcbdcdca5d88afd44a4982db1b26348a3404ef6c3d749267d17ff31"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Doyle, Arthur Conan, 1859-1930"
+      ],
+      "Title": [
+        "The Adventures of Sherlock Holmes"
+      ],
+      "Note": [
+        "There is an improved edition of this title, eBook #48320",
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Adventures_of_Sherlock_Holmes",
+        "Also available as audio book: #9551"
+      ],
+      "Contents": [
+        "A scandal in Bohemia -- The Red-headed League -- A case of identity -- The Boscombe Valley mystery -- The five orange pips -- The man with the twisted lip -- The adventure of the blue carbuncle -- The adventure of the speckled band -- The adventure of the engineer's thumb -- The adventure of the noble bachelor -- The adventure of the beryl coronet -- The adventure of the Copper Beeches."
+      ],
+      "Credits": [
+        "an anonymous Project Gutenberg volunteer and Jose Menendez"
+      ],
+      "Reading Level": [
+        "Reading ease score: 80.6 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Holmes, Sherlock (Fictitious character) -- Fiction",
+        "Private investigators -- England -- Fiction",
+        "Detective and mystery stories, English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "1661"
+      ],
+      "Release Date": [
+        "Mar 1, 1999"
+      ],
+      "Last Update": [
+        "Oct 10, 2023"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "96353 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1661.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1661/pg1661.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:18.989717+00:00",
+      "response_sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "1883": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1883",
+      "resolved_url": "https://www.gutenberg.org/ebooks/1883",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:19.060605+00:00",
+      "response_sha256": "2dc2e1cefa8edf0f8fd276f193a77ca2cee1567f5814e990024c87e1615f431a"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Chekhov, Anton Pavlovich, 1860-1904"
+      ],
+      "Translator": [
+        "Garnett, Constance, 1861-1946"
+      ],
+      "Title": [
+        "The Wife, and Other Stories"
+      ],
+      "Contents": [
+        "The wife -- Difficult people -- The grasshopper -- A dreary story -- The privy councillor -- The man in a case -- Gooseberries -- About love -- The lottery ticket."
+      ],
+      "Credits": [
+        "Produced by James Rusk and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 78.4 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PG: Language and Literatures: Slavic (including Russian), Languages and Literature"
+      ],
+      "Subject": [
+        "Short stories",
+        "Russia -- Social life and customs -- Fiction",
+        "Chekhov, Anton Pavlovich, 1860-1904 -- Translations into English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "1883"
+      ],
+      "Release Date": [
+        "Feb 26, 2006"
+      ],
+      "Last Update": [
+        "Jan 27, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "3977 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1883.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1883/pg1883.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:24.341561+00:00",
+      "response_sha256": "ac5994c65da06e72823036764f85931ec908d1021e78e56886bc74d15971eac2"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "1952": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1952",
+      "resolved_url": "https://www.gutenberg.org/ebooks/1952",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:20.503022+00:00",
+      "response_sha256": "0ca6c5493eae71b3727e55c66dc1d4fe64f8a738bffbb30484383a22815f447a"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Gilman, Charlotte Perkins, 1860-1935"
+      ],
+      "Title": [
+        "The Yellow Wallpaper"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Yellow_Wallpaper"
+      ],
+      "Credits": [
+        "An Anonymous Volunteer and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 89.5 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Psychological fiction",
+        "Mentally ill women -- Fiction",
+        "Feminist fiction",
+        "Married women -- Psychology -- Fiction",
+        "Sex role -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "1952"
+      ],
+      "Release Date": [
+        "Nov 1, 1999"
+      ],
+      "Last Update": [
+        "Sep 16, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "46806 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1952.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1952/pg1952.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:24.973958+00:00",
+      "response_sha256": "20c7788eeae2fe3a0efd51a1f08b6723366a4be0778d65db219149a3522651d4"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "1944": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1944",
+      "resolved_url": "https://www.gutenberg.org/ebooks/1944",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:20.518561+00:00",
+      "response_sha256": "dcb649633ea297df53cbe1af79ace2a10bd3e9a7e60d775a38975bbaf733ee7a"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Chekhov, Anton Pavlovich, 1860-1904"
+      ],
+      "Title": [
+        "The Witch, and Other Stories"
+      ],
+      "Contents": [
+        "The witch -- Peasant wives -- The post -- The new villa -- Dreams -- The pipe -- Agafya -- At Christmas time -- Gusev -- The student -- In the ravine -- The huntsman -- Happiness -- A Malefactor -- Peasants"
+      ],
+      "Credits": [
+        "Produced by James Rusk and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 80.1 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PG: Language and Literatures: Slavic (including Russian), Languages and Literature"
+      ],
+      "Subject": [
+        "Short stories",
+        "Russia -- Social life and customs -- Fiction",
+        "Chekhov, Anton Pavlovich, 1860-1904 -- Translations into English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "1944"
+      ],
+      "Release Date": [
+        "Feb 26, 2006"
+      ],
+      "Last Update": [
+        "Jan 27, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1533 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1944.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1944/pg1944.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:25.612114+00:00",
+      "response_sha256": "fd7c69daa6080772e42bb26c21330c1dc1c5fb3967f40c23789f51e5c260c82f"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "2147": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2147",
+      "resolved_url": "https://www.gutenberg.org/ebooks/2147",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:25.899682+00:00",
+      "response_sha256": "01f406139e1367ece964a4b6f85f337b95e06af73c9005822355d64f4984449d"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Poe, Edgar Allan, 1809-1849"
+      ],
+      "Contributor": [
+        "Lowell, James Russell, 1819-1891",
+        "Willis, Nathaniel Parker, 1806-1867"
+      ],
+      "Title": [
+        "The Works of Edgar Allan Poe — Volume 1"
+      ],
+      "Contents": [
+        "Edgar Allan Poe, an appreciation -- Life of Poe, by James Russell Lowell -- Death of Poe, by N. P. Willis -- The unparalleled adventures of one Hans Pfaal -- The gold-bug -- Four beasts in one -- The murders in the Rue Morgue -- The mystery of Marie Rogêt -- The balloon hoax -- MS. found in a bottle -- The oval portrait."
+      ],
+      "Credits": [
+        "David Widger and Carlo Traverso"
+      ],
+      "Reading Level": [
+        "Reading ease score: 65.2 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Fantasy fiction",
+        "Horror tales, American",
+        "American fiction -- 19th century",
+        "Poe, Edgar Allan, 1809-1849"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "2147"
+      ],
+      "Release Date": [
+        "Apr 1, 2000"
+      ],
+      "Last Update": [
+        "Aug 31, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "24243 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2147.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2147/pg2147.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:31.137299+00:00",
+      "response_sha256": "c8d5fec040f1dc29be8d4e9cb7d3279b65bf894adea50544d99d400b2d587386"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "2148": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2148",
+      "resolved_url": "https://www.gutenberg.org/ebooks/2148",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:26.514581+00:00",
+      "response_sha256": "773b3d37cc212e89aa9dfdf2389fcb679789752503a37ffd22803154d8667455"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Poe, Edgar Allan, 1809-1849"
+      ],
+      "Title": [
+        "The Works of Edgar Allan Poe — Volume 2"
+      ],
+      "Contents": [
+        "The purloined letter -- The thousand-and-second tale of Scheherezade -- A descent into the Maelström -- Von Kempelen and his discovery -- Mesmeric revelation -- The facts in the case of M. Valdemar -- The black cat -- The fall of the House of Usher -- Silence: a fable -- The masque of the Red Death -- The cask of Amontillado -- The imp of the perverse -- The island of the Fay -- The assignation -- The pit and the pendulum -- The premature burial -- The domain of Arnheim -- Landor's cottage -- William Wilson -- The tell-tale heart -- Berenice -- Eleonora."
+      ],
+      "Credits": [
+        "David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 65.0 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Short stories",
+        "Fantasy fiction",
+        "Horror tales, American",
+        "American fiction -- 19th century"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "2148"
+      ],
+      "Release Date": [
+        "Apr 1, 2000"
+      ],
+      "Last Update": [
+        "Aug 31, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "30902 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2148.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2148/pg2148.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:31.865916+00:00",
+      "response_sha256": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "2165": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2165",
+      "resolved_url": "https://www.gutenberg.org/ebooks/2165",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:27.142662+00:00",
+      "response_sha256": "eeed743e17b330730b9df4d492341da6322348d989782d540af7fe787e060436"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Eliot, George, 1819-1880"
+      ],
+      "Title": [
+        "The Lifted Veil"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Lifted_Veil_(novella)"
+      ],
+      "Credits": [
+        "David Price"
+      ],
+      "Reading Level": [
+        "Reading ease score: 57.6 (10th to 12th grade). Somewhat difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Psychological fiction",
+        "Paranormal fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "2165"
+      ],
+      "Release Date": [
+        "May 1, 2000"
+      ],
+      "Last Update": [
+        "Mar 10, 2022"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1768 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2165.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2165/pg2165.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:31.907284+00:00",
+      "response_sha256": "0e8114ea868e1ecd07e44a695c8723b819527170f96bf1811a782b2b440e05b5"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "2429": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2429",
+      "resolved_url": "https://www.gutenberg.org/ebooks/2429",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:32.722554+00:00",
+      "response_sha256": "23268dfd18d7e5c53c44004eccabd00396cb3ec9e1e0f7e0450c9e75fb9e333e"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "London, Jack, 1876-1916"
+      ],
+      "Title": [
+        "Lost Face"
+      ],
+      "Original Publication": [
+        "[S.l.] :  Mills and Boon,  1919"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Lost_Face"
+      ],
+      "Contents": [
+        "Lost face -- Trust -- To build a fire -- That spot -- Flush of gold -- The passing of Marcus O'Brien -- The wit of Porportuk."
+      ],
+      "Credits": [
+        "Transcribed from the 1919 Mills and Boon edition by David Price"
+      ],
+      "Reading Level": [
+        "Reading ease score: 82.3 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Short stories",
+        "Western stories",
+        "American fiction -- 20th century",
+        "Adventure stories, American"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "2429"
+      ],
+      "Release Date": [
+        "Dec 1, 2000"
+      ],
+      "Last Update": [
+        "Feb 19, 2016"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "2363 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2429.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2429/pg2429.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:37.763153+00:00",
+      "response_sha256": "1ffdf4b6e733fca15f7c4c57c409a6db4eb33129e8ff9a8f3dcc2867836b8c7d"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "2776": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2776",
+      "resolved_url": "https://www.gutenberg.org/ebooks/2776",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:33.516940+00:00",
+      "response_sha256": "8b04ea4b45ca85d18fc20b0848012c8ef6310bbe74f24c4ef326b0ec9207b508"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Henry, O., 1862-1910"
+      ],
+      "Title": [
+        "The Four Million"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Four_Million"
+      ],
+      "Contents": [
+        "Tobin's palm -- The gift of the magi -- A cosmopolite in a café -- Between rounds -- The skylight room -- A service of love -- The coming-out of Maggie -- Man about town -- The cop and the anthem -- An adjustment of nature -- Memoirs of a yellow dog -- The love-philtre of Ikey Schoenstein -- Mammon and the archer -- Springtime à la carte -- The green door -- From the cabby's seat -- An unfinished story -- The caliph, Cupid and the clock -- Sisters of the golden circle -- The romance of a busy broker -- After twenty years -- Lost on dress parade -- By courier -- The furnished room -- The brief début of Tildy."
+      ],
+      "Credits": [
+        "Project Gutenberg volunteers and revised by Joseph E. Loewenstein, M.D."
+      ],
+      "Reading Level": [
+        "Reading ease score: 81.5 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "New York (N.Y.) -- Social life and customs -- Fiction",
+        "Short stories, American"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "2776"
+      ],
+      "Release Date": [
+        "Aug 1, 2001"
+      ],
+      "Last Update": [
+        "Oct 21, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "4637 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2776.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2776/pg2776.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:38.547712+00:00",
+      "response_sha256": "6bb719852f2f0eb33db25613124d2d3c522dd3b879c187667ab31072bb2fb48d"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "2518": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2518",
+      "resolved_url": "https://www.gutenberg.org/ebooks/2518",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:33.562226+00:00",
+      "response_sha256": "5b2976a521bdb9b5f0143b709de80693e813f3189e3a9f926132ee40c3a36a0c"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Tagore, Rabindranath, 1861-1941"
+      ],
+      "Title": [
+        "The Hungry Stones, and Other Stories"
+      ],
+      "Note": [
+        "\"The stories contained in this volume were translated by several hands.\"--Preface"
+      ],
+      "Contents": [
+        "The hungry stones -- The victory -- Once there was a king -- The home-coming -- My lord, the baby -- The kingdom of cards -- The devotee -- Vision -- The babus of Nayanjore -- Living or dead? -- \"We crown thee king\" -- The renunciation -- The Cabuliwallah [The Fruitseller from Cabul]."
+      ],
+      "Credits": [
+        "Produced by Alev Akman, and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 80.4 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PK: Language and Literatures: Indo-Iranian literatures"
+      ],
+      "Subject": [
+        "India -- Social life and customs -- Fiction",
+        "Short stories, Bengali -- Translations into English",
+        "Tagore, Rabindranath, 1861-1941 -- Translations into English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "2518"
+      ],
+      "Release Date": [
+        "Feb 1, 2001"
+      ],
+      "Last Update": [
+        "Jan 26, 2013"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1271 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2518.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2518/pg2518.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:38.666140+00:00",
+      "response_sha256": "b998f1c836608d9c524da499f05b0e699103f8a9d28cceb3c57b0c4211340b10"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "2852": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2852",
+      "resolved_url": "https://www.gutenberg.org/ebooks/2852",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:39.595175+00:00",
+      "response_sha256": "ce2cd5680776992b8307af527306825964aa5f0f4add1d644fc0f93f0e457839"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Doyle, Arthur Conan, 1859-1930"
+      ],
+      "Title": [
+        "The Hound of the Baskervilles"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Hound_of_the_Baskervilles"
+      ],
+      "Credits": [
+        "Shreevatsa R, and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 80.9 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Holmes, Sherlock (Fictitious character) -- Fiction",
+        "Private investigators -- England -- Fiction",
+        "Dogs -- Fiction",
+        "Detective and mystery stories",
+        "Blessing and cursing -- Fiction",
+        "Dartmoor (England) -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "2852"
+      ],
+      "Release Date": [
+        "Oct 1, 2001"
+      ],
+      "Last Update": [
+        "Aug 4, 2025"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "31158 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2852.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2852/pg2852.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:44.717819+00:00",
+      "response_sha256": "f7c8c68729d32a5f6a04a5a9ad73d184176e66a6c76b3992c41c1ab47b427d98"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "3077": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/3077",
+      "resolved_url": "https://www.gutenberg.org/ebooks/3077",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:40.228735+00:00",
+      "response_sha256": "c6fbae1d1ee91321520051d7481310dde0c21e1409196abb5221b5061a067053"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Maupassant, Guy de, 1850-1893"
+      ],
+      "Translator": [
+        "Henderson, A. E.",
+        "McMaster, Albert Cohn",
+        "Quesada, Louise Charlotte Garstin, 1864?-"
+      ],
+      "Title": [
+        "Original Short Stories — Volume 01"
+      ],
+      "Contents": [
+        "Boule de Suif --Two friends -- The lancer's wife -- The prisoners -- Two little soldiers -- Father Milon -- A coup d'tat -- Lieutenant Lare's marriage --The horrible --Madame Parisse --Mademoiselle Fifi -- A duel."
+      ],
+      "Credits": [
+        "Produced by David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 77.5 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PQ: Language and Literatures: Romance literatures: French, Italian, Spanish, Portuguese"
+      ],
+      "Subject": [
+        "Short stories, French -- Translations into English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "3077"
+      ],
+      "Release Date": [
+        "Oct 3, 2004"
+      ],
+      "Last Update": [
+        "Jan 8, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1208 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/3077.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/3077/pg3077.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:45.242161+00:00",
+      "response_sha256": "73ab0a4fcb4dc62fc39ee7876d6e9a1fc0ae3c9443cdd2732b970bfd18c803bc"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "3056": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/3056",
+      "resolved_url": "https://www.gutenberg.org/ebooks/3056",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:40.174495+00:00",
+      "response_sha256": "b2bb1c192c1a10d1d01cae9d09d0963d75e795f38cf4519b06373d56e58e0fc8"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Hardy, Thomas, 1840-1928"
+      ],
+      "Title": [
+        "Wessex Tales"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Wessex_Tales"
+      ],
+      "Contents": [
+        "An imaginative woman -- The three strangers -- The withered arm -- Fellow-townsmen -- Interlopers at the Knap -- The distracted preacher."
+      ],
+      "Credits": [
+        "David Price"
+      ],
+      "Reading Level": [
+        "Reading ease score: 78.2 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "England -- Social life and customs -- 19th century -- Fiction",
+        "Wessex (England) -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "3056"
+      ],
+      "Release Date": [
+        "Feb 1, 2002"
+      ],
+      "Last Update": [
+        "Feb 4, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1037 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/3056.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/3056/pg3056.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:45.586386+00:00",
+      "response_sha256": "c2e80e062f09828cb87dd57ca8db79de7e4bb22cbbec178276fa50d2cd7caa53"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "3080": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/3080",
+      "resolved_url": "https://www.gutenberg.org/ebooks/3080",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:46.309346+00:00",
+      "response_sha256": "e917bd41436153db185be37668c1927902c24f3118d1dc262f9736b0b1fde2ed"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Maupassant, Guy de, 1850-1893"
+      ],
+      "Translator": [
+        "Henderson, A. E.",
+        "McMaster, Albert Cohn",
+        "Quesada, Louise Charlotte Garstin, 1864?-"
+      ],
+      "Title": [
+        "Original Short Stories — Volume 04"
+      ],
+      "Contents": [
+        "The moribond -- The gamekeeper -- The story of a farm girl -- The wreck -- Theodule Sabot's confession -- The wrong house -- The diamond necklace -- The Marquis de Fumerol -- The trip of the Horla -- Farewell -- The wolf -- The inn."
+      ],
+      "Credits": [
+        "David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 78.6 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PQ: Language and Literatures: Romance literatures: French, Italian, Spanish, Portuguese"
+      ],
+      "Subject": [
+        "Short stories, French -- Translations into English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "3080"
+      ],
+      "Release Date": [
+        "Oct 3, 2004"
+      ],
+      "Last Update": [
+        "Aug 3, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "2270 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/3080.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/3080/pg3080.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:51.420572+00:00",
+      "response_sha256": "7ff5cc8bc112139baa8e14053bbc667230024bbdf3b5bb7befbbdfbb835666ce"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "3688": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/3688",
+      "resolved_url": "https://www.gutenberg.org/ebooks/3688",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:46.749463+00:00",
+      "response_sha256": "f47ff6e8e72a30298bb62911b432f59310a3a9cf69b4d5fe52e00c403c037e61"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Saki, 1870-1916"
+      ],
+      "Author of introduction, etc.": [
+        "Milne, A. A. (Alan Alexander), 1882-1956"
+      ],
+      "Title": [
+        "The Chronicles of Clovis"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Chronicles_of_Clovis"
+      ],
+      "Contents": [
+        "Esmé -- The match-maker -- Tobermory -- Mrs. Packletide's tiger -- The stampeding of Lady Bastable -- The background -- Hermann the irascible: a story of the great weep -- The unrest-cure -- The jesting of Arlington Stringham -- Sredni Vashtar  -- Adrian -- The chaplet -- The quest -- Wratislav -- The Easter egg -- Filboid Studge, the story of a mouse that helped -- The music on the hill -- The story of St. Vespaluus -- The way to the dairy -- The peace offering -- The peace of Mowsle Barton -- The talking-out of Tarrington -- The hounds of fate -- The recessional -- A matter of sentiment -- The secret sin of Septimus Brope -- \"Ministers of Grace\" -- The remoulding of Groby Lington."
+      ],
+      "Credits": [
+        "Produced by Richard E. Henrich, Jr.  HTML version by Al Haines."
+      ],
+      "Reading Level": [
+        "Reading ease score: 67.1 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Short stories",
+        "Satire, English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "3688"
+      ],
+      "Release Date": [
+        "Jan 1, 2003"
+      ],
+      "Last Update": [
+        "Jan 8, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1590 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/3688.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/3688/pg3688.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:51.820470+00:00",
+      "response_sha256": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "3707": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/3707",
+      "resolved_url": "https://www.gutenberg.org/ebooks/3707",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:47.353138+00:00",
+      "response_sha256": "6a43c411612276f24dd6dae6d81b092cb12730292a9936eb644d98f8baf07e5d"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Henry, O., 1862-1910"
+      ],
+      "Title": [
+        "The Trimmed Lamp, and Other Stories of the Four Million"
+      ],
+      "Contents": [
+        "The trimmed lamp -- A Madison Square Arabian night -- The Rubaiyat of a Scotch highball -- The pendulum -- Two Thanksgiving day gentlemen -- The assessor of success -- The buyer from Cactus City -- The badge of policeman O'Roon -- Brickdust Row -- The making of a New Yorker -- Vanity and some sables -- The social triangle -- The purple dress -- The foreign policy of Company 99 -- The lost blend -- A Harlem tragedy -- \"The guilty party\"--An East side tragedy -- According to their lights -- A midsummer knight's dream -- The last leaf -- The count and the wedding guest -- The county of elusion -- The ferry of unfulfilment -- The tale of a tainted tenner -- Elsie in New York."
+      ],
+      "Credits": [
+        "Charles Franks, Greg Weeks, the Project Gutenberg Online Distributed Proofreading Team and Joseph E. Loewenstein, M.D."
+      ],
+      "Reading Level": [
+        "Reading ease score: 82.2 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Short stories",
+        "New York (N.Y.) -- Social life and customs -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "3707"
+      ],
+      "Release Date": [
+        "Feb 1, 2003"
+      ],
+      "Last Update": [
+        "Oct 24, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "2363 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/3707.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/3707/pg3707.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:52.463391+00:00",
+      "response_sha256": "cce090386057bb1fd68bdcda1323a6119c733e42b89cf02c31b35bf4eaff9884"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "5200": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/5200",
+      "resolved_url": "https://www.gutenberg.org/ebooks/5200",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:53.027640+00:00",
+      "response_sha256": "04b86cef7c5eaaa9a816bfe0d0f6532cc6bce24c30ab824ec63295f3acddd83b"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Kafka, Franz, 1883-1924"
+      ],
+      "Translator": [
+        "Wyllie, David (Translator)"
+      ],
+      "Title": [
+        "Metamorphosis"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Metamorphosis"
+      ],
+      "Reading Level": [
+        "Reading ease score: 68.9 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PT: Language and Literatures: Germanic, Scandinavian, and Icelandic literatures"
+      ],
+      "Subject": [
+        "Psychological fiction",
+        "Metamorphosis -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "5200"
+      ],
+      "Release Date": [
+        "Aug 17, 2005"
+      ],
+      "Last Update": [
+        "Jun 9, 2026"
+      ],
+      "Copyright": [
+        "Copyrighted. Read the copyright notice inside this book for details."
+      ],
+      "Downloads": [
+        "47294 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/5200.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/5200/pg5200.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:57.848678+00:00",
+      "response_sha256": "0933283a19a4daaef0d412e8f69c74fae126b0a946cb74b8f3c783a8e869830d"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "6373": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/6373",
+      "resolved_url": "https://www.gutenberg.org/ebooks/6373",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:53.358676+00:00",
+      "response_sha256": "c0f48a3238d5d4f0560f77bb650273821aa907413f5c6811ab39357b08abdfb0"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Harte, Bret, 1836-1902"
+      ],
+      "Title": [
+        "The Luck of Roaring Camp and Other Tales With Condensed Novels, Spanish and American Legends, and Earlier Papers"
+      ],
+      "Contents": [
+        "General introduction -- The luck of Roaring Camp and other sketches: The luck of Roaring camp. The outcasts of Poker Flat. Miggles. Tennessee's partner. The idyl of Red Gulch. Brown of Calaveras -- Condensed novels: Muck-a-Muck: a modern Indian novel. Selina Sedilla. The ninety-nine guardsmen. Miss Mix. Mr. Midshipman Breezy: a naval officer. Guy Heavystone, or \"Entire\": a muscular novel. John Jenkins, or, the smoker reformed. Fantine; after the French of Victor Hugo. \"La femme\"; after the French of M. Michelet. The dweller of the threshold. N N.: being a novel in the French paragraphic style. No title. Handsome is as handsome does. Lothaw, or, the adventures of a young gentleman in search of a religion. The haunted man: a Christmas story. Terence Denville. Mary McGillup. The hoodlum band; or, the boy chief, the infant politician, and the pirate prodigy -- Earlier sketches: M'liss: an idyl of Red Mountain. High-water mark. A lonely ride. The man of no account. Notes by flood and field. Waiting for the ship: a Fort Point idyl. A night at Wingdam -- Spanish and American legends: The legend of Monte del Diablo. The right eye of the commander. The legend of Devil's Point. The adventure of Padre Vicentio: a legend of San Francisco. The devil and the broker: a mediaeval legend. The ogress of silver land, or the diverting history of Prince Badfellah and Prince Bulleboye. The Christmas gift that came to Rupert: a story for little soldiers."
+      ],
+      "Credits": [
+        "Skip Doughty, Juliet Sutherland, Charles Franks and the Online Distributed Proofreading Team HTML file produced by David Widger Revised by Richard Tonsing."
+      ],
+      "Reading Level": [
+        "Reading ease score: 71.1 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Western stories",
+        "Frontier and pioneer life -- West (U.S.) -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "6373"
+      ],
+      "Release Date": [
+        "Aug 1, 2004"
+      ],
+      "Last Update": [
+        "Aug 28, 2022"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1682 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/6373.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/6373/pg6373.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:58.698241+00:00",
+      "response_sha256": "c19400f79c45463f6d35be61868b604f45dba60c4841769cb1f11543be1baee1"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "6435": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/6435",
+      "resolved_url": "https://www.gutenberg.org/ebooks/6435",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:54.085912+00:00",
+      "response_sha256": "5a1f5f9c9b791d5f6d1a80fb39d5168c8d85f74092f5cc7b212ec5cf6b26b7ce"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Taylor, Frederick Winslow, 1856-1915"
+      ],
+      "Title": [
+        "The Principles of Scientific Management"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Principles_of_Scientific_Management"
+      ],
+      "Credits": [
+        "Produced by Charles E. Nichols"
+      ],
+      "Reading Level": [
+        "Reading ease score: 47.8 (College-level). Difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "T: Technology"
+      ],
+      "Subject": [
+        "Industrial management",
+        "Industrial engineering",
+        "Management"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "6435"
+      ],
+      "Release Date": [
+        "Sep 1, 2004"
+      ],
+      "Last Update": [
+        "Nov 4, 2011"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "4977 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/6435.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/6435/pg6435.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:59.225027+00:00",
+      "response_sha256": "1f504a9abe674ee616f13bf1db66ec25cbb1be0ff5fd9bfe70ab8593aa08a3b2"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "8581": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/8581",
+      "resolved_url": "https://www.gutenberg.org/ebooks/8581",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:00.148567+00:00",
+      "response_sha256": "585ff7e582b76b91dbfe41d0d5d9d9ff3fda1e604bb6137ff9d3eb88e11834f9"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Barnum, P. T. (Phineas Taylor), 1810-1891"
+      ],
+      "Title": [
+        "The art of money getting :  or, golden rules for making money"
+      ],
+      "Credits": [
+        "Produced by Wayne N. Keyser in honor of his Parents, Clifton B. and Esther N. Keyser; and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 64.6 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "HF: Social sciences: Commerce"
+      ],
+      "Subject": [
+        "Success",
+        "Success in business"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "8581"
+      ],
+      "Release Date": [
+        "Jul 1, 2005"
+      ],
+      "Last Update": [
+        "Feb 4, 2013"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "10246 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/8581.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/8581/pg8581.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:04.582466+00:00",
+      "response_sha256": "ccf68ee545e68995f88d4cd2f534ecae9bf731b8996118d34b5a10bfc4958061"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "7213": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/7213",
+      "resolved_url": "https://www.gutenberg.org/ebooks/7213",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:59.380040+00:00",
+      "response_sha256": "336c4da46aaadab5e770eae358c31f6253b9b509a9a19f5b902fc6ca323299ed"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Ford, Henry, 1863-1947",
+        "Crowther, Samuel, 1880-1947"
+      ],
+      "Title": [
+        "My Life and Work"
+      ],
+      "Contents": [
+        "Introduction: What is the idea? -- The beginning of business -- What I learned about business -- Starting the real business -- The secret of manufacturing and serving -- Getting into production -- Machines and men -- The terror of the machine -- Wages -- Why not always have good business? -- How cheaply can things be made? -- Money and goods -- Money: master or servant? -- Why be poor? -- The tractor and power farming -- Why charity? -- The railroads -- Things in general -- Democracy and industry -- What we may expect."
+      ],
+      "Credits": [
+        "Produced by Marvin Hodges, Tom Allen, Tonya Allen, Eric Eldred, Charles Franks, and the DP Team"
+      ],
+      "Reading Level": [
+        "Reading ease score: 69.5 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "HD: Social sciences: Economic history and conditions, Production"
+      ],
+      "Subject": [
+        "Industrialists -- United States -- Biography",
+        "Ford, Henry, 1863-1947",
+        "Ford Motor Company -- History",
+        "Automobile industry and trade -- United States -- History",
+        "Automobiles -- History",
+        "Businesspeople -- United States -- Biography"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "7213"
+      ],
+      "Release Date": [
+        "Jan 1, 2005"
+      ],
+      "Last Update": [
+        "Dec 30, 2020"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "4491 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/7213.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/7213/pg7213.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:04.738731+00:00",
+      "response_sha256": "f01c925ba4a15ccc6a5aa706418cf94149ddd7d8f390c65d132b8675435b00cf"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "10007": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/10007",
+      "resolved_url": "https://www.gutenberg.org/ebooks/10007",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:00.788370+00:00",
+      "response_sha256": "23a6cfda08b054fe6d7054047670cfeadbae600ef0f40c1adc2f53617fbf8c1a"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Le Fanu, Joseph Sheridan, 1814-1873"
+      ],
+      "Title": [
+        "Carmilla"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Carmilla"
+      ],
+      "Credits": [
+        "Suzanne Shell, Sjaani and PG Distributed Proofreaders"
+      ],
+      "Reading Level": [
+        "Reading ease score: 76.7 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Young women -- Fiction",
+        "Vampires -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "10007"
+      ],
+      "Release Date": [
+        "Nov 1, 2003"
+      ],
+      "Last Update": [
+        "Oct 28, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "15136 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/10007.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/10007/pg10007.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:05.523264+00:00",
+      "response_sha256": "f751453ef6ad9363a7e31f63b8d4ef830c7ea20a2aba465a59fb6fbee6bbddca"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "12122": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/12122",
+      "resolved_url": "https://www.gutenberg.org/ebooks/12122",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:07.016130+00:00",
+      "response_sha256": "00845b95a2909cee3db20b6caf83707ee24cdd8d25a579f5b532484f2860d345"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Jacobs, W. W. (William Wymark), 1863-1943"
+      ],
+      "Illustrator": [
+        "Greiffenhagen, Maurice, 1862-1931",
+        "Richards, Amy, active 1896-1918"
+      ],
+      "Title": [
+        "The Monkey's Paw The Lady of the Barge and Others, Part 2."
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Monkey%27s_Paw"
+      ],
+      "Credits": [
+        "Produced by David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 83.4 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Horror tales",
+        "Wishes -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "12122"
+      ],
+      "Release Date": [
+        "Apr 1, 2004"
+      ],
+      "Last Update": [
+        "Oct 28, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "8434 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/12122.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/12122/pg12122.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:11.240432+00:00",
+      "response_sha256": "22f3431a7db6d9e210ffb446044739513475cb93992421d1b0d107f094d7408d"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "10947": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/10947",
+      "resolved_url": "https://www.gutenberg.org/ebooks/10947",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:06.630429+00:00",
+      "response_sha256": "f756f6ba9ff46ff20ad7e802165a6c2ae3dad3c9cf2dc5e40570da1e387a97a1"
+    },
+    "bibliographic_metadata": {
+      "Editor": [
+        "Jessup, Alexander, 1871-"
+      ],
+      "Contributor": [
+        "Bunner, H. C. (Henry Cuyler), 1855-1896",
+        "Chester, George Randolph, 1869-1924",
+        "Cooke, Grace MacGowan, 1863-1944",
+        "Curtis, George William, 1824-1892",
+        "Edwards, Harry Stillwell, 1855-1938",
+        "Hale, Edward Everett, 1822-1909",
+        "Harte, Bret, 1836-1902",
+        "Hastings, Wells, 1879-1923",
+        "Henry, O., 1862-1910",
+        "Holmes, Oliver Wendell, 1809-1894",
+        "Johnston, Richard Malcolm, 1822-1898",
+        "Kirkland, Caroline M. (Caroline Matilda), 1801-1864",
+        "Lampton, William J. (William James), -1917",
+        "Leslie, Eliza, 1787-1858",
+        "Morris, George Pope, 1802-1864",
+        "Poe, Edgar Allan, 1809-1849",
+        "Stockton, Frank R., 1834-1902",
+        "Twain, Mark, 1835-1910"
+      ],
+      "Title": [
+        "The Best American Humorous Short Stories"
+      ],
+      "Note": [
+        "Edited and introduced by Alexander Jessup"
+      ],
+      "Contents": [
+        "The little Frenchman and his water lots / G.P. Morris -- The angel of the odd / E.A. Poe -- The schoolmaster's progress / Caroline M.S. Kirkland -- The Watkinson evening / Eliza Leslie -- Titbottom's spectacles / G.W. Curtis -- My double; and how he undid me / E.E. Hale -- A visit to the asylum for aged and decayed punsters / O.W. Holmes -- The celebrated jumping frog of Calaveras county / Mark Twain -- Elder Brown's backslide / H.S. Edwards -- The hotel experience of Mr. Pink Fluker / R.M. Johnston -- The nice people / H.C. Bunner -- The Buller-Podington compact / F.R. Stockton -- Colonel Starbottle for the plaintiff / B. Harte -- The duplicity of Hargraves / O. Henry -- Bargain day at Tutt House / G.R. Chester -- A call / Grace M. Cooke -- How the widow won the deacon / W.J. Lampton -- Gideon / W. Hastings."
+      ],
+      "Credits": [
+        "Etext produced by Keith M. Eckrich and PG Distributed Proofreaders; HTML file produced by David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 70.0 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Short stories, American"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "10947"
+      ],
+      "Release Date": [
+        "Feb 1, 2004"
+      ],
+      "Last Update": [
+        "Oct 28, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "2473 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/10947.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/10947/pg10947.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:11.970202+00:00",
+      "response_sha256": "312ae97f2616ba41d9f6d4bfc87aa3218f3b867941194d139297099b423d512e"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "11870": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/11870",
+      "resolved_url": "https://www.gutenberg.org/ebooks/11870",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:06.530990+00:00",
+      "response_sha256": "d2d96c440f71459b74770f4ca578766ab0a88d18a4fdf004df5b21174ee7bd44"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Wells, H. G. (Herbert George), 1866-1946"
+      ],
+      "Title": [
+        "The Country of the Blind, and Other Stories"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Country_of_the_Blind_and_Other_Stories"
+      ],
+      "Contents": [
+        "The jilting of Jane -- The cone -- The stolen bacillus -- The flowering of the strange orchid -- In the Avu Observatory -- Aepyornis Island -- The remarkable case of Davidson's eyes -- The Lord of the Dynamos -- The moth -- The treasure in the forest -- The story of the late Mr. Elvesham -- Under the knife -- The sea raiders -- The obliterated man -- The Plattner story -- The red room -- The purple Pileus -- A slip under the microscope -- The crystal egg -- The star -- The man who could work miracles -- A vision of judgment -- Jimmy Goggles the God -- Miss Winchelsea's heart -- A dream of Armageddon -- The valley of spiders -- The new accelerator -- The truth about Pyecraft -- The magic shop -- The empire of the ants -- The door in the wall -- The country of the blind -- The beautiful suit."
+      ],
+      "Credits": [
+        "E-text prepared by Paul Murray, Charles Bidwell, and Project Gutenberg Distributed Proofreaders"
+      ],
+      "Reading Level": [
+        "Reading ease score: 80.1 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Science fiction, English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "11870"
+      ],
+      "Release Date": [
+        "Apr 1, 2004"
+      ],
+      "Last Update": [
+        "Oct 28, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "3212 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/11870.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/11870/pg11870.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:12.288469+00:00",
+      "response_sha256": "4f5efdaf578c1b581fd748a5a6dc6d6895490ccc17f5af181171a0d6d6f41114"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "13409": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/13409",
+      "resolved_url": "https://www.gutenberg.org/ebooks/13409",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:12.729470+00:00",
+      "response_sha256": "f666ed43eb36872564931cce2f7062b7a23c359ce7abb7cb433573c0a1c021fb"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Chekhov, Anton Pavlovich, 1860-1904"
+      ],
+      "Translator": [
+        "Garnett, Constance, 1861-1946"
+      ],
+      "Title": [
+        "The Horse-Stealers and Other Stories"
+      ],
+      "Contents": [
+        "The horse-stealers -- Ward no. 6 -- The Petchenyeg -- A dead body -- A happy ending -- The looking-glass -- Old age -- Darkness -- The Beggar -- A story without a title -- In trouble -- Frost -- A slander -- Minds in ferment -- Gone astray -- An avenger -- The jeune premier -- A defenceless creature -- An enigmatic nature -- A happy man -- A troublesome visitor -- An actor's end."
+      ],
+      "Credits": [
+        "Text file produced by James Rusk HTML file produced by David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 81.5 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PG: Language and Literatures: Slavic (including Russian), Languages and Literature"
+      ],
+      "Subject": [
+        "Russia -- Social life and customs -- Fiction",
+        "Chekhov, Anton Pavlovich, 1860-1904 -- Translations into English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "13409"
+      ],
+      "Release Date": [
+        "Sep 9, 2004"
+      ],
+      "Last Update": [
+        "Oct 28, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1251 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/13409.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/13409/pg13409.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:17.821228+00:00",
+      "response_sha256": "cc2cd8a8655d24f2e39cbebd531abcb347213b0a7e9208c5ac9670c43a142ab8"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "13416": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/13416",
+      "resolved_url": "https://www.gutenberg.org/ebooks/13416",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:13.772911+00:00",
+      "response_sha256": "41812d4426e4c4aadfc7767cc45c83081ec494555e945606653323e1754cb81e"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Chekhov, Anton Pavlovich, 1860-1904"
+      ],
+      "Translator": [
+        "Garnett, Constance, 1861-1946"
+      ],
+      "Title": [
+        "The Darling and Other Stories"
+      ],
+      "Contents": [
+        "The Darling -- Ariadne -- Anyuta -- The Two Volodyas -- The Trousseau -- The Helpmate -- Talent -- An Artist's Story -- Three Years."
+      ],
+      "Credits": [
+        "Produced by James Rusk.  HTML version by Al Haines"
+      ],
+      "Reading Level": [
+        "Reading ease score: 79.3 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PG: Language and Literatures: Slavic (including Russian), Languages and Literature"
+      ],
+      "Subject": [
+        "Russia -- Social life and customs -- Fiction",
+        "Chekhov, Anton Pavlovich, 1860-1904 -- Translations into English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "13416"
+      ],
+      "Release Date": [
+        "Sep 9, 2004"
+      ],
+      "Last Update": [
+        "Oct 28, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1415 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/13416.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/13416/pg13416.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:18.796955+00:00",
+      "response_sha256": "518cdaabeea113109967b4c6ad0ed2f4cae23bc390bdcd4eac7a8a4519634f9b"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "13707": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/13707",
+      "resolved_url": "https://www.gutenberg.org/ebooks/13707",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:13.835313+00:00",
+      "response_sha256": "9963da793aa9512c4040150d3d154e2f07a9650b0d3de95fd455429111c539eb"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Hawthorne, Nathaniel, 1804-1864"
+      ],
+      "Title": [
+        "Twice-told tales"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Twice-Told_Tales"
+      ],
+      "Contents": [
+        "The gray champion -- Sunday at home -- The wedding-knell -- The minister's black veil -- The Maypole of Merry Mount -- The gentle boy -- Mr. Higginbotham's catastrophe -- Little Annie's ramble -- Wakefield -- A rill from the town pump -- The Great Carbuncle -- The prophetic pictures -- David Swan -- Sights from a steeple -- The Hollow of the three hills -- The toll-gatherer's day -- The vision of the fountain -- Fancy's show-box -- Dr. Heidegger's experiment -- Legends of the Province House: Howe's masquerade. Edward Randolph's portrait. Lady Eleanore's mantle. Old Esther Dudley -- The haunted mind -- The village uncle -- The ambitious guest -- The sister-years -- The White Old Maid -- Peter Goldthwaite's treasure -- Chippings with a chisel -- The Shaker bridal -- Night-sketches -- Endicott and the Red Cross -- The Lily's quest -- Footprints on the seashore -- Edward Fane's rosebud -- The threefold destiny."
+      ],
+      "Credits": [
+        "Rick Niles, John Hagerson, and the Online Distributed Proofreading Team"
+      ],
+      "Reading Level": [
+        "Reading ease score: 63.8 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Short stories",
+        "New England -- Social life and customs -- Fiction",
+        "Historical fiction, American"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "13707"
+      ],
+      "Release Date": [
+        "Oct 11, 2004"
+      ],
+      "Last Update": [
+        "Oct 28, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "3282 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/13707.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/13707/pg13707.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:19.275676+00:00",
+      "response_sha256": "256624faf1f612edc47dd0a0ecc9717bd15074baea33e8a9f32bc66f3f04b50b"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "35997": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/35997",
+      "resolved_url": "https://www.gutenberg.org/ebooks/35997",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:19.343736+00:00",
+      "response_sha256": "83cbc2946e9cd7dea303c59f23ea5ded576377db86b1bf6a6f9384694942b26b"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Kipling, Rudyard, 1865-1936"
+      ],
+      "Title": [
+        "The Jungle Book"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Jungle_Book",
+        "There is an improved edition of this title, eBook #236"
+      ],
+      "Credits": [
+        "Suzanne Shell, Ernest Schaal, and the Online Distributed Proofreading Team"
+      ],
+      "Reading Level": [
+        "Reading ease score: 86.6 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Short stories",
+        "Animals -- Fiction",
+        "Jungles -- Fiction",
+        "India -- Fiction",
+        "Jungle animals -- Fiction",
+        "Mowgli (Fictitious character) -- Fiction",
+        "Adventure stories, English",
+        "Feral children -- Fiction",
+        "India -- History -- 19th century -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "35997"
+      ],
+      "Release Date": [
+        "Apr 30, 2011"
+      ],
+      "Last Update": [
+        "Nov 8, 2023"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1489 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/35997.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/35997/pg35997.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:24.387975+00:00",
+      "response_sha256": "702dcf213efccf27768778ff44434f78557d1e7d2ba7a532899bec64633e55ca"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "55283": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/55283",
+      "resolved_url": "https://www.gutenberg.org/ebooks/55283",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:20.316656+00:00",
+      "response_sha256": "2b395c3e0ceea5b6f6fac15b6948295d9a1be695cdc3edd552c54b252e480c34"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Chekhov, Anton Pavlovich, 1860-1904"
+      ],
+      "Translator": [
+        "Koteliansky, S. S. (Samuel Solomonovitch), 1880-1955",
+        "Murry, John Middleton, 1889-1957"
+      ],
+      "LoC No.": [
+        "16006396"
+      ],
+      "Title": [
+        "The Bet, and other stories"
+      ],
+      "Contents": [
+        "The bet -- A tedious story -- The fit -- Misfortune -- After the theatre -- That wretched boy -- Enemies -- A trifling occurrence -- A gentleman friend -- Overwhelming sensations -- Expensive lessons -- A living calendar -- Old age."
+      ],
+      "Credits": [
+        "Produced by Marc D'Hooghe at Free Literature (online soon in an extended version,also linking to free sources for education worldwide ... MOOC's, educational materials,...) Images generously made available by the Internet Archive.)"
+      ],
+      "Reading Level": [
+        "Reading ease score: 82.1 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PG: Language and Literatures: Slavic (including Russian), Languages and Literature"
+      ],
+      "Subject": [
+        "Short stories, Russian -- Translations into English",
+        "Russian fiction -- Translations into English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "55283"
+      ],
+      "Release Date": [
+        "Aug 7, 2017"
+      ],
+      "Last Update": [
+        "Oct 23, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "2734 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/55283.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/55283/pg55283.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:25.415610+00:00",
+      "response_sha256": "7f46ed4a590c1b37ba965a4cea6ec3e344382e1b3abe044d04f96896337c4ac9"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "59844": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/59844",
+      "resolved_url": "https://www.gutenberg.org/ebooks/59844",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:20.903901+00:00",
+      "response_sha256": "43cb6eb9031e924fce3c7aa02edd4991592a1ed23634666d07653a18bf2655e7"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Wattles, W. D. (Wallace Delois), 1860-1911"
+      ],
+      "LoC No.": [
+        "10009439"
+      ],
+      "Title": [
+        "The Science of Getting Rich"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Science_of_Getting_Rich"
+      ],
+      "Contents": [
+        "The right to be rich -- There is a science of getting rich -- Is opportunity monopolized? -- The first principle in the science of getting rich -- Increasing life -- How riches come to you -- Gratitude -- Thinking in the certain way -- How to use the will -- Further use of the will -- Acting in the certain way -- Efficient action -- Getting into the right business -- The impression of increase -- The advancing man -- Some cautions, and concluding observations -- A summary of the science of getting rich."
+      ],
+      "Credits": [
+        "Produced by Craig Kirkwood and the Online Distributed Proofreading Team at www.pgdp.net (This file was produced from images generously made available by The Internet Archive)"
+      ],
+      "Reading Level": [
+        "Reading ease score: 62.7 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "BJ: Philosophy, Psychology, Religion: Ethics, Social usages, Etiquette, Religion"
+      ],
+      "Subject": [
+        "Success",
+        "New Thought",
+        "Wealth"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "59844"
+      ],
+      "Release Date": [
+        "Jun 30, 2019"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "7498 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/59844.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/59844/pg59844.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:25.631683+00:00",
+      "response_sha256": "adc3fb17f24801597561e992d858e124c8d9b4c6e3bf7593d713e7a71d252744"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "60976": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/60976",
+      "resolved_url": "https://www.gutenberg.org/ebooks/60976",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:25.920686+00:00",
+      "response_sha256": "0545683f37db94ae22ce0c46c648b5e1a11401d1e6177e880bb23de2c9b0fe55"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Irving, Washington, 1783-1859"
+      ],
+      "Illustrator": [
+        "Rackham, Arthur, 1867-1939"
+      ],
+      "Title": [
+        "Rip Van Winkle"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Rip_Van_Winkle"
+      ],
+      "Credits": [
+        "Produced by Sue Clark and the Online Distributed Proofreading Team at www.pgdp.net (This file was produced from images generously made available by The Internet Archive)"
+      ],
+      "Reading Level": [
+        "Reading ease score: 62.9 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PZ: Language and Literatures: Juvenile belles lettres",
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Fantasy fiction",
+        "New York (State) -- History -- 1775-1865 -- Fiction",
+        "Catskill Mountains Region (N.Y.) -- History -- 18th century -- Fiction",
+        "Van Winkle, Rip (Fictitious character) -- Fiction",
+        "Hudson River (N.Y. and N.J.) -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "60976"
+      ],
+      "Release Date": [
+        "Dec 20, 2019"
+      ],
+      "Last Update": [
+        "Oct 17, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "7641 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/60976.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/60976/pg60976.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:30.361233+00:00",
+      "response_sha256": "3085b99a7b6a9d5f527dfb97351c858a6f7fc97f2c654570f5defbbfb50e5042"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  },
+  "64317": {
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/64317",
+      "resolved_url": "https://www.gutenberg.org/ebooks/64317",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:27.073335+00:00",
+      "response_sha256": "9c49efe224aa30f2751c3837b564ec6a220f0945cb97563c4f16301d40b43608"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Fitzgerald, F. Scott (Francis Scott), 1896-1940"
+      ],
+      "Title": [
+        "The Great Gatsby"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Great_Gatsby"
+      ],
+      "Credits": [
+        "Produced by Alex Cabal for the Standard Ebooks project, based on a transcription produced for Project Gutenberg Australia."
+      ],
+      "Reading Level": [
+        "Reading ease score: 81.6 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Psychological fiction",
+        "First loves -- Fiction",
+        "Married women -- Fiction",
+        "Rich people -- Fiction",
+        "Long Island (N.Y.) -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "64317"
+      ],
+      "Release Date": [
+        "Jan 17, 2021"
+      ],
+      "Last Update": [
+        "Jan 26, 2025"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "51183 downloads in the last 30 days."
+      ]
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/64317.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/64317/pg64317.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:32.100709+00:00",
+      "response_sha256": "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35"
+    },
+    "gutenberg_license_scope": "US status only; India territorial/component clearance independently required",
+    "approval_conferred": false
+  }
+}

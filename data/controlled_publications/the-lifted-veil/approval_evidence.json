@@ -1,12 +1,22 @@
 {
   "slug": "the-lifted-veil",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true
+  "audiobook_enabled": true,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "0d52710c092563bb704a9dc97cfbad7eb230881722e219335a84954f93eb699c",
+  "source_hash": "0e8114ea868e1ecd07e44a695c8723b819527170f96bf1811a782b2b440e05b5",
+  "content_hash": "bff60f1c99b4b49f2acf25a64ccd63a3f553d26ba07855552352fa82b72ca60c",
+  "provenance_hash": "6a6d5cbde710b8ae9a8451cd9f9aaf67f51f27c06aaf21d0895ea9bc42ec16bd",
+  "verified_at": "2026-10-01T21:52:27.631967+00:00"
 }

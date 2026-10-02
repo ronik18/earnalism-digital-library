@@ -1,13 +1,234 @@
 {
   "slug": "ward-no-6",
   "source_url": "https://www.gutenberg.org/ebooks/13409",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #13409; exact selected canonical text; all original author/translator/coauthor rights considered separately; historical publication upper bound 1921",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "d105256944cc16cf2d440209e9d086608457234990d68addc3350a5a9b80e512",
-  "content_hash": "1289360732f7dc04fce81d0675a38c361391675746174274a40f8f088f1747f8",
-  "provenance_hash": "9df41865d01bfebd92c589f2c103d8dce9ecce3ee29d868e8d9798dd04237b49",
-  "rights_basis": "Anton Chekhov died 1904; first published 1892. Public domain in India and the U.S.",
+  "source_hash": "cc2cd8a8655d24f2e39cbebd531abcb347213b0a7e9208c5ac9670c43a142ab8",
+  "content_hash": "1f9a4802733cb866631842b14ce1bed2d501b2294d1881b8d19e71b7d8452447",
+  "provenance_hash": "8cc37ace78f391060e0cb5cca3be211fb9aca2889b87e8fa87d46f5e224a82c7",
+  "rights_basis": "IN text only. Verified publication no later than 1921; original-author life+60 ends 1964, or conservative posthumous-publication upper bound+60 ends no later than 1981; every selected translator/coauthor latest death 1946, life+60 ends 2006. All bounds have elapsed by actual review2026. Unknown original first date stays unknown; no inference from US-only PG status.",
   "downloaded_at": "2026-06-03T08:04:21.920352+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #13409",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/13409",
+      "resolved_url": "https://www.gutenberg.org/ebooks/13409",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:12.729470+00:00",
+      "response_sha256": "f666ed43eb36872564931cce2f7062b7a23c359ce7abb7cb433573c0a1c021fb"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/13409.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/13409/pg13409.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:17.821228+00:00",
+      "response_sha256": "cc2cd8a8655d24f2e39cbebd531abcb347213b0a7e9208c5ac9670c43a142ab8"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Chekhov, Anton Pavlovich, 1860-1904"
+      ],
+      "Translator": [
+        "Garnett, Constance, 1861-1946"
+      ],
+      "Title": [
+        "The Horse-Stealers and Other Stories"
+      ],
+      "Contents": [
+        "The horse-stealers -- Ward no. 6 -- The Petchenyeg -- A dead body -- A happy ending -- The looking-glass -- Old age -- Darkness -- The Beggar -- A story without a title -- In trouble -- Frost -- A slander -- Minds in ferment -- Gone astray -- An avenger -- The jeune premier -- A defenceless creature -- An enigmatic nature -- A happy man -- A troublesome visitor -- An actor's end."
+      ],
+      "Credits": [
+        "Text file produced by James Rusk HTML file produced by David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 81.5 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PG: Language and Literatures: Slavic (including Russian), Languages and Literature"
+      ],
+      "Subject": [
+        "Russia -- Social life and customs -- Fiction",
+        "Chekhov, Anton Pavlovich, 1860-1904 -- Translations into English"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "13409"
+      ],
+      "Release Date": [
+        "Sep 9, 2004"
+      ],
+      "Last Update": [
+        "Oct 28, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1251 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 37108,
+          "length": 120581
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "d105256944cc16cf2d440209e9d086608457234990d68addc3350a5a9b80e512",
+    "legacy_content_sha256": "1289360732f7dc04fce81d0675a38c361391675746174274a40f8f088f1747f8",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1904,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "f666ed43eb36872564931cce2f7062b7a23c359ce7abb7cb433573c0a1c021fb",
+    "url": "https://www.gutenberg.org/ebooks/13409",
+    "author_catalog_strings": [
+      "Chekhov, Anton Pavlovich, 1860-1904"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "1f9a4802733cb866631842b14ce1bed2d501b2294d1881b8d19e71b7d8452447"
+      }
+    ],
+    "content_sha256": "1f9a4802733cb866631842b14ce1bed2d501b2294d1881b8d19e71b7d8452447"
+  },
+  "canonical_chapter_restoration": {
+    "verified_at": "2026-10-01T21:23:53.140488+00:00",
+    "source_receipt_sha256": "cc2cd8a8655d24f2e39cbebd531abcb347213b0a7e9208c5ac9670c43a142ab8",
+    "chapter_id": "chapter-001",
+    "source_boundary_start": "WARD NO. 6",
+    "source_boundary_end_excluded": "THE PETCHENYEG",
+    "transformation": "Exact source section; preserve paragraph boundaries and unwrap physical line breaks; no lexical changes",
+    "legacy_content_sha256_preserved": "1289360732f7dc04fce81d0675a38c361391675746174274a40f8f088f1747f8",
+    "current_reader_content_sha256": "1f9a4802733cb866631842b14ce1bed2d501b2294d1881b8d19e71b7d8452447",
+    "scope": "MISSING_CANONICAL_TEXT_RESTORATION_ONLY_NOT_RIGHTS_OR_PUBLICATION_APPROVAL"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "d105256944cc16cf2d440209e9d086608457234990d68addc3350a5a9b80e512",
+        "content_hash": "1289360732f7dc04fce81d0675a38c361391675746174274a40f8f088f1747f8",
+        "provenance_hash": "9df41865d01bfebd92c589f2c103d8dce9ecce3ee29d868e8d9798dd04237b49",
+        "source_url": "https://www.gutenberg.org/ebooks/13409",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:54:02.732252+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1921,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:54:02.732252+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/13409.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/13409/pg13409.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:17.821228+00:00",
+      "response_sha256": "cc2cd8a8655d24f2e39cbebd531abcb347213b0a7e9208c5ac9670c43a142ab8"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 37108,
+          "length": 120581
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "original_author_death_year": 1904,
+      "latest_selected_creator_death_year": 1946,
+      "verified_text_publication_upper_bound": 1921,
+      "original_first_publication_year": null,
+      "exact_creator_metadata": [
+        "Chekhov, Anton Pavlovich, 1860-1904",
+        "Garnett, Constance, 1861-1946"
+      ],
+      "translators": [
+        "Garnett, Constance, 1861-1946"
+      ],
+      "primary_bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Garnett%2C%20Constance%2C%201861-1946",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Garnett%2C%20Constance%2C%201861-1946",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:50:14.296970+00:00",
+        "response_sha256": "30c8854184496fa1556969d05351e305c07a56d925b1054ed5e83822eb620888"
+      },
+      "bibliographic_excerpt": "horse-stealers and other stories (Chatto & Windus, 1921) , also by Anton Pavlovich Chekhov (page images at HathiTrust) Garnett, Constance, 1861-1946: Horsestealers and other stories (The Macmillan Company, 1921) , also by Anton Pavlovich Chekhov (page images at HathiTru",
+      "legal_policy_receipt": {
+        "requested_url": "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+        "resolved_url": "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:51:37.140288+00:00",
+        "response_sha256": "87edb85c6014f6a6415051b982461a708dd901d65b6a6047fc5f5b8080960fe3"
+      },
+      "basis": "IN text only. Verified publication no later than 1921; original-author life+60 ends 1964, or conservative posthumous-publication upper bound+60 ends no later than 1981; every selected translator/coauthor latest death 1946, life+60 ends 2006. All bounds have elapsed by actual review2026. Unknown original first date stays unknown; no inference from US-only PG status.",
+      "scope": "Selected story/complete narrative including documented creators; collection translators note, other stories, art, editor matter not imported."
+    },
+    "author_death_evidence": 1904,
+    "translator": [
+      "Garnett, Constance, 1861-1946"
+    ],
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1921,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "cc2cd8a8655d24f2e39cbebd531abcb347213b0a7e9208c5ac9670c43a142ab8",
+    "content_sha256": "1f9a4802733cb866631842b14ce1bed2d501b2294d1881b8d19e71b7d8452447",
+    "year": 1921,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Garnett%2C%20Constance%2C%201861-1946",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Garnett%2C%20Constance%2C%201861-1946",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:14.296970+00:00",
+      "response_sha256": "30c8854184496fa1556969d05351e305c07a56d925b1054ed5e83822eb620888"
+    },
+    "basis": "IN text only. Verified publication no later than 1921; original-author life+60 ends 1964, or conservative posthumous-publication upper bound+60 ends no later than 1981; every selected translator/coauthor latest death 1946, life+60 ends 2006. All bounds have elapsed by actual review2026. Unknown original first date stays unknown; no inference from US-only PG status.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  },
+  "translator_name": "Garnett, Constance, 1861-1946",
+  "translator_death_year": 1946
 }

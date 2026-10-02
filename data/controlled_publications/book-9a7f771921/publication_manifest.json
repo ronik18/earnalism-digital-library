@@ -3,21 +3,21 @@
   "schema_version": 1,
   "slug": "book-9a7f771921",
   "title": "কর্মফল",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
     "source_hash": "3f3c089d1d1e2d5101210bbee5e39208f311bb193b92d2c80a085675f64a96ea",
     "content_hash": "374e251418df4bbbde6b24fd9f42ebd845ecdf565870ac05cdd807a720884bde",
     "provenance_hash": "fa83ecf75220478166c99b2041930f461b3e26ed7bb5b6926b8128dec5b45d68",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "0d845b0933b6a48ec13fa8549abb36f6153706e798b294142bfdbb62aa9476c0",
+    "chapter_index_sha256": "26172457dfa7c488842319ede5fc7efe66f70af265d84183b12f5b65e380250c",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "কর্মফল",
-        "word_count": 9636,
-        "sha256": "dfbea2a841536c6a8198f82138241623a5dd5b4cd606227cdb7fc230f144cdba"
+        "word_count": 9468,
+        "sha256": "184f7a8915d7450ef5a74e81bfcf8d112dcdd27410a276476fe87115cfe5b969"
       }
     ]
   },
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "8873eef1d0e797f11bbd6c1778c548dec19ad0c341fa54c4b25ac18c50ed0b76"
+    "evidence_sha256": "854078f80cb8139bb8dfc289f602b4049eb5cdcf43cd0bdbd62a8843049b363d"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -48,10 +48,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "af33ff6d37409930a8d4884725f6cc43d7ff42b2932e333b592e954282e844cd",
-    "reader_manifest": "c845368e22db621b29e7c52b2f75b5dc2b27f5536136d83394dc60991c2cd39f",
-    "source_evidence": "8873eef1d0e797f11bbd6c1778c548dec19ad0c341fa54c4b25ac18c50ed0b76",
+    "public_book": "43f8f513f770656dc93ac1a45fabf65f56c23196fb14bdfb041e97efba6fb41d",
+    "reader_manifest": "bd70712a155a7d498bbc4163795d6b7108008de4065b170296ae6525fc6a8cd2",
+    "source_evidence": "854078f80cb8139bb8dfc289f602b4049eb5cdcf43cd0bdbd62a8843049b363d",
     "approval_evidence": "4230a34bfbdd1268354466fb58adad76950d56d78c68a05838583b484ced3c5b"
   },
-  "manifest_sha256": "b716cd74c739fb618802de1bf6e18eb3f49cb1074f9d7a3ea6211b64f9a2c908"
+  "manifest_sha256": "b2dbf988b4c874261702b62f27bd3fc31ff7d6efa36242576e530e1f99606a46"
 }

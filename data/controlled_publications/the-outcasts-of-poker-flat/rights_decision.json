@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-outcasts-of-poker-flat-pg6373-noncover-text",
+  "edition_id": "the-outcasts-of-poker-flat",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "4a1b434878128e5d92d899410fe2a855567c9f76f8f4a867ae52803aabf46f63",
+    "reader_manifest": "fc3ef77b3f34a37bde15de882b8f5951d067c416186ff039de403e0c0434dc96",
+    "source_evidence": "127b169655a643274fd13d506bfe081d0d00766cfdabaca5e90065b3f837475f",
+    "approval_evidence": "8d61f6985f976c2596d7d4c33cc104aabf3be969fe23e47137201350d5ffa6ac",
+    "checksum_manifest": "bd04242861f378e161fcb601a68d9c369f2a5cf4900385e6e6e1fa8c4f63db7a",
+    "publication_manifest": "7e8c4785c0e24ee221ceb5caf91952b905bf4800ecf84ca2d3e67dc70eb07265"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:48:17.188009+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1902, verified lifetime collection publication 1870 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "465ceb3908928fad9deca80edcac48624204437bf40d118312f8382f934f8daf",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "c19400f79c45463f6d35be61868b604f45dba60c4841769cb1f11543be1baee1",
+    "c1d1338d73235b3f05c710e0b170b9a600b69956ca89220291e4ada43a6cef20"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

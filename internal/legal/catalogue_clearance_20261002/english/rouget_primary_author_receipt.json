@@ -1,0 +1,9 @@
+{
+  "receipt": {
+    "requested_url": "https://en.wikisource.org/wiki/Author:Claude_Joseph_Rouget_de_Lisle",
+    "resolved_url": "https://en.wikisource.org/wiki/Author:Claude_Joseph_Rouget_de_Lisle",
+    "http_status": 200,
+    "accessed_at": "2026-10-02T03:12:04.765753+00:00",
+    "response_sha256": "7d4bf036b5125a283dc17ea6d1571213d223ec8d2986dd8f621563e094037be7"
+  }
+}

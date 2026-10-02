@@ -1,14 +1,14 @@
 {
   "slug": "the-adventure-of-the-second-stain",
-  "generated_at": "2026-07-03T20:07:48Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "1d1d42dc49907bdfd0bd795334b2872200b6cb7d1087e447bea531f2b5a70c42"
+      "sha256": "b3c9c7a15ca30c6d848bf5bd0beae2c04b2ef82b1455831a6b67d9d33831f969"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "6e41f069efff92278c08bd731f52f741cbfcec433a5bebca4610611aa005949c"
+      "file": "chapters/chapter-001.json",
+      "sha256": "0368a6a2ff680cc06cadd9183fa1fbe29d1481f3e788399ca752e9da4151899a"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "2591588e73feb486b0ab14e38859ab067722734803e07c92ee9600376204d836"
+      "sha256": "ab6b183bc20ce64a8fc996e28693e9a40f82a7a3229e058d9cfb2bb02302caee"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "d9d7799750a0b5bdb6f9f435a14121459b1c5b1b0963dbec3b118482f28f7535"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "7b7b11e059d635a5719f884789c55821b9f7be136f283ab847ccbf7ed88b21b1"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "a16004f487784e610c693972d03b84a801a36b315c0b7659f222909ddad280fe"
+      "sha256": "11c1b2af9299faf8f16652d4c0faec6029d70cd3446779012f9dfc4714db28b6"
     }
   ]
 }

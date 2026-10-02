@@ -1,0 +1,95 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-call-of-the-wild",
+  "title": "The Call of the Wild",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "30f569c5671bba7bbc4a92ab6d8ee01a0d3be00f994819c77da62c28041eb8a2",
+    "content_hash": "4b029c10c8cff516ed6f07f1928e55775ed7fd8d3d03dcf61f7ace0c55e8aa90",
+    "provenance_hash": "1b5fc691bbf0965c93b281e1d6e97565fe6e624006b39cad8b0821fa07e9e188",
+    "sanitized": true,
+    "chapter_count": 7,
+    "chapter_index_sha256": "976ea5421fa1d682cb167cef69e337208c0e97e08357ff290107053670e59a9f",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Chapter I. Into the Primitive",
+        "word_count": 3780,
+        "sha256": "71c29b8ed3ce67f4555e559f50e4c0a8b168f6141d33544d00c8c5328eb6ad4f"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "Chapter II. The Law of Club and Fang",
+        "word_count": 3335,
+        "sha256": "34f7ba4576960b5cb86c78356cc38edaf5967301196144a21b8a0da7987a6b82"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "Chapter III. The Dominant Primordial Beast",
+        "word_count": 5183,
+        "sha256": "e21beb19bc59ec60bfdb00ac0122eed417e05bc00d74504496d49dfa7f9cbb53"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "Chapter IV. Who Has Won to Mastership",
+        "word_count": 3233,
+        "sha256": "409a1a0979d57a7b667c11d5128346408022cae6b768720553219bbfe2248dab"
+      },
+      {
+        "id": "chapter-005",
+        "order": 5,
+        "title": "Chapter V. The Toil of Trace and Trail",
+        "word_count": 5409,
+        "sha256": "e81cc475678f8a636a757113a53f784289320f5072dfa2e4e34968b11e337602"
+      },
+      {
+        "id": "chapter-006",
+        "order": 6,
+        "title": "Chapter VI. For the Love of a Man",
+        "word_count": 4805,
+        "sha256": "b261d8a03bc8375a1ae58dfa1a8efe5e1dc98802032ba87c5ec5da8ab03ff828"
+      },
+      {
+        "id": "chapter-007",
+        "order": 7,
+        "title": "Chapter VII. The Sounding of the Call",
+        "word_count": 6256,
+        "sha256": "9d5d60a37d58901ce1916cfcdaf0c5a615d403ed6c4fda9349ba03d164479f6c"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "863a94b8e03a42f5833e86e3b323b324e4fa4c2abe4f1a92b697f6df147653dc"
+  },
+  "reader_release": {
+    "status": "READY_FOR_APPROVAL",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779568766/earnalism/covers/front/cover_32a20edc-5097-4d64-98d0-fb3d29487a9d.png",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "9cfad084c383e924e1c61afc0cde51361a93f48ebd289250d0b7140cc704ca7f",
+    "reader_manifest": "8b04260e291ac4388ee26bc65cb1fb3bff1d1cae80659afd0762af70688e2180",
+    "source_evidence": "863a94b8e03a42f5833e86e3b323b324e4fa4c2abe4f1a92b697f6df147653dc",
+    "approval_evidence": "29488c1742db1bd039d4299bd7eb592a6230ed2b516658ead3146265b733601e"
+  },
+  "manifest_sha256": "9a80d695bc3e93e2aa08e3bae735c5f23c81c2703e49d3ccccd6fbb5c6a03664"
+}

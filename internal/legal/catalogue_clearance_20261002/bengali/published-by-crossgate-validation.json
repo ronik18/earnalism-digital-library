@@ -1,0 +1,41 @@
+{
+  "titles": [
+    {
+      "slug": "book-5461971092",
+      "rights": "APPROVED",
+      "noncover_blockers": [],
+      "reader_exposed": false,
+      "held_cover_blockers": [
+        "Front cover is required."
+      ]
+    },
+    {
+      "slug": "book-5704b31005",
+      "rights": "APPROVED",
+      "noncover_blockers": [],
+      "reader_exposed": false,
+      "held_cover_blockers": [
+        "Front cover is required."
+      ]
+    },
+    {
+      "slug": "book-b9d47814a8",
+      "rights": "APPROVED",
+      "noncover_blockers": [],
+      "reader_exposed": false,
+      "held_cover_blockers": [
+        "Front cover is required."
+      ]
+    },
+    {
+      "slug": "book-ef193ffc52",
+      "rights": "APPROVED",
+      "noncover_blockers": [],
+      "reader_exposed": false,
+      "held_cover_blockers": [
+        "Front cover is required."
+      ]
+    }
+  ],
+  "scope": "Actual edition upperbounds, not guessed firstpublication dates; canonical source bytes and reader identity bound"
+}

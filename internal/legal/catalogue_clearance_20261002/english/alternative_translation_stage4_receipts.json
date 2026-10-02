@@ -1,0 +1,38 @@
+{
+  "boyd_irish": {
+    "error": "HTTP Error 307: Temporary Redirect"
+  },
+  "boyd_google": {
+    "error": "HTTP Error 429: Too Many Requests"
+  },
+  "johnston_api1": {
+    "receipt": {
+      "requested_url": "https://viurrspace.ca/server/api/core/bitstreams/a7d24518-6fe7-4289-8574-cb3422068e1e/content",
+      "resolved_url": "https://www.viurrspace.ca/server/api/core/bitstreams/a7d24518-6fe7-4289-8574-cb3422068e1e/content",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:07:49.948279+00:00",
+      "response_sha256": "ff61ba371e8e70738cfcd99b9c3732219a34382bfd93b3767d373ea7cfd277e6"
+    },
+    "is_pdf": true
+  },
+  "johnston_api2": {
+    "receipt": {
+      "requested_url": "https://www.viurrspace.ca/server/api/core/bitstreams/a7d24518-6fe7-4289-8574-cb3422068e1e/content",
+      "resolved_url": "https://www.viurrspace.ca/server/api/core/bitstreams/a7d24518-6fe7-4289-8574-cb3422068e1e/content",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:07:48.992064+00:00",
+      "response_sha256": "ff61ba371e8e70738cfcd99b9c3732219a34382bfd93b3767d373ea7cfd277e6"
+    },
+    "is_pdf": true
+  },
+  "boyd_google_html": {
+    "receipt": {
+      "requested_url": "https://books.google.com/books?id=wJY4AQAAIAAJ",
+      "resolved_url": "https://books.google.co.in/books?id=wJY4AQAAIAAJ&redir_esc=y",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:07:47.854880+00:00",
+      "response_sha256": "c4d1f96d5c1a46c59aa7afe5f7692cd798c9ef27a8f5311de3b4f710cd8c1819"
+    },
+    "is_pdf": false
+  }
+}

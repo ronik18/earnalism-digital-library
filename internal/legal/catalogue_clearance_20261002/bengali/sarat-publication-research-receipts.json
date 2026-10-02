@@ -1,0 +1,23 @@
+[
+  {
+    "url": "https://en.banglapedia.org/index.php/Chattopadhyay%2C_Sharat_Chandra",
+    "status": "CURRENT_CONTENT_NOT_VALIDATED",
+    "error": "Current response lacks actual biography (Hello World :-))"
+  },
+  {
+    "url": "https://www.parabaas.com/translation/database/authors/texts/saratchandra.html",
+    "retrieved_at": "2026-10-01T21:07:37.211026+00:00",
+    "response_sha256": "6d8f4c95e711264038b836613cba7508bd6d1829085d87918a4411dfa68afa3c",
+    "actual_content_verification": "Sarat biography present",
+    "publication_facts": [
+      {
+        "term": "Baradidi",
+        "source_context": " short story was published in 1903 under his uncle's name Surendranath Ganguli. Baradidi , a novella, rather a long short-story, was published in 1907, now under his own name, in Bharati . While in Burma, he continued revising the drafts of many of his writings that he had first penned down at Bhaga"
+      },
+      {
+        "term": "Devdas",
+        "source_context": "ished. He has been en extremely popular author ever since. Among his novels are Devdas (written in 1901 but published in 1917), Parineeta (1914), Biraj Bou (1914), Palli-Samaj (1916), Srikanta (in four parts; 1917, 1918, 1927, 1933), Charitraheen (1917), Grihadaha (1919), Pather-Dabi (1926), Shesh P"
+      }
+    ]
+  }
+]

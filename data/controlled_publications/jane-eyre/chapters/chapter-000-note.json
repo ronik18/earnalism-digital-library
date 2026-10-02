@@ -1,0 +1,18 @@
+{
+  "id": "chapter-000-note",
+  "bookSlug": "jane-eyre",
+  "order": 2,
+  "title": "Note to the Third Edition",
+  "language": "en",
+  "content": "I avail myself of the opportunity which a third edition of “Jane Eyre” affords me, of again addressing a word to the Public, to explain that my claim to the title of novelist rests on this one work alone. If, therefore, the authorship of other works of fiction has been attributed to me, an honour is awarded where it is not merited; and consequently, denied where it is justly due.\n\nThis explanation will serve to rectify mistakes which may already have been made, and to prevent future errors.\n\nCURRER BELL.\n\n_April_ 13_th_, 1848.",
+  "content_hash": "0746f88a258c21eff5e3117a10baaa183fc6e0fb9cf59b427a28eabb0ddce8ad",
+  "sanitizedSha256": "0746f88a258c21eff5e3117a10baaa183fc6e0fb9cf59b427a28eabb0ddce8ad",
+  "sourceSha256": "13414dee2951c3ee731d76d2ffd822016b2479c892162760c5d0eb2aa5fa7631",
+  "word_count": 93,
+  "reading_minutes": 1,
+  "is_preview": true,
+  "has_images": false,
+  "image_count": 0,
+  "processing_status": "ready",
+  "processing_warnings": []
+}

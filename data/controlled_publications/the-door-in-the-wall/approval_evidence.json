@@ -1,12 +1,22 @@
 {
   "slug": "the-door-in-the-wall",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_PENDING_ASSET_MAPPING",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": false
+  "audiobook_enabled": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "33cf7d83a7e031921baea63dc6c896eb80809cad8fe93afbbe302e6bacfed3f9",
+  "source_hash": "4f5efdaf578c1b581fd748a5a6dc6d6895490ccc17f5af181171a0d6d6f41114",
+  "content_hash": "07c013cc12e20449cb1355abe745215f3f4d89e18949ef36aff7718c1f916499",
+  "provenance_hash": "ad66653119410414e374ce1820ef60485482754cf56b6cd7adbe841f494b6f9e",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00"
 }

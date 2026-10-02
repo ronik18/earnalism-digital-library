@@ -1,12 +1,22 @@
 {
   "slug": "the-adventure-of-charles-augustus-milverton",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true
+  "audiobook_enabled": true,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "afc5c5221c6fb1539d4e6430478a41caa73ee372ae50c9a3eed6684056b94d90",
+  "source_hash": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
+  "content_hash": "4c3e8db14fb33f2af6ab065a2978766a4a1ab2ef57508fb67f72285e9457b1a5",
+  "provenance_hash": "d4450fa9dd88e419191a951b0fc3b3d86332e0221814b6a27bbb9f9cdd305167",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00"
 }

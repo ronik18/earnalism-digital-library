@@ -1,12 +1,22 @@
 {
   "slug": "the-red-headed-league",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true
+  "audiobook_enabled": true,
+  "source_hash": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+  "content_hash": "2c1aec29382ba3f1eb9dca23f37ec66fad34806264b221e183c38088db92524d",
+  "provenance_hash": "d239f5ae4a44eac1aeeb837c3baec2619bba6e35b6528c5f567c72bebdabf740",
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "ac23e989c18c28f5c2b95c3d38ee7ac0e40478931087b4c3baff8a977efe03ba",
+  "verified_at": "2026-10-01T21:48:34.443341+00:00"
 }

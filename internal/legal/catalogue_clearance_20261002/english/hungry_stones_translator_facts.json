@@ -1,0 +1,46 @@
+{
+  "hungry-stones": {
+    "original_author_death_year": 1941,
+    "selected_edition_publication_year": 1916,
+    "original_first_publication_year": null,
+    "translators": [
+      {
+        "name": "Panna Lal Basu",
+        "birth_year": 1881,
+        "death_year": 1956,
+        "evidence": "Actual signed February1910 ModernReview story with Panna Lal Basu, Bangabasi College, Jan1910; actual1916 collection-story source explicitly attributes selected translation to him and identifies author revision before collection publication; retrieved author bibliographic record1881\u20131956."
+      }
+    ],
+    "basis": "Selected story ONLY from exact Project Gutenberg#2518, not whole mixed-translator anthology. Verified1916 Macmillan collection publication during RabindranathTagore1861\u20131941 lifetime; PannaLalBasu1881\u20131956 original translation1910 and author revision1916. IndiaSection22 original author term expired2001 and named selected translator term2016; original Bengali first-publication year not asserted here. Modern scholarly/headnote/art and all other separately-translated collection stories excluded. ActualPG source remains selected electronic text; Wikisource receipts prove identity/facts, not imported transcription. Cover/audio excluded; no runtime approval.",
+    "primary_receipts": [
+      {
+        "requested_url": "https://en.wikisource.org/wiki/The_Modern_Review/Volume_7/Number_2/The_Hungry_Stones",
+        "resolved_url": "https://en.wikisource.org/wiki/The_Modern_Review/Volume_7/Number_2/The_Hungry_Stones",
+        "http_status": 200,
+        "accessed_at": "2026-10-02T02:53:46.083814+00:00",
+        "response_sha256": "460def7301f415de4accfee8b7b60cbe0f421c83ed8a8dfb472d32139b757f4c"
+      },
+      {
+        "requested_url": "https://en.wikisource.org/wiki/Author:Panna_Lal_Basu",
+        "resolved_url": "https://en.wikisource.org/wiki/Author:Panna_Lal_Basu",
+        "http_status": 200,
+        "accessed_at": "2026-10-02T02:53:47.302389+00:00",
+        "response_sha256": "88dbab908f93b920aebe3c1bd1bb8328853a4c189714de01dbc1bad4f853f3be"
+      },
+      {
+        "requested_url": "https://en.wikisource.org/wiki/The_Hungry_Stones_and_Other_Stories/The_Hungry_Stones",
+        "resolved_url": "https://en.wikisource.org/wiki/The_Hungry_Stones_and_Other_Stories/The_Hungry_Stones",
+        "http_status": 200,
+        "accessed_at": "2026-10-02T02:59:12.456198+00:00",
+        "response_sha256": "9b3e954807de9750159648bfbaa1ddd07bea642365e6c16a782312723a2b713f"
+      },
+      {
+        "requested_url": "https://en.wikisource.org/wiki/The_Hungry_Stones_and_Other_Stories",
+        "resolved_url": "https://en.wikisource.org/wiki/The_Hungry_Stones_and_Other_Stories",
+        "http_status": 200,
+        "accessed_at": "2026-10-02T03:01:06.335891+00:00",
+        "response_sha256": "487360de74e775b6a7fd36cdf9b1e2ceeba9f7dbe5db36ffd67ebd7c3b45aa59"
+      }
+    ]
+  }
+}

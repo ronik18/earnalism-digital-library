@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-charles-augustus-milverton",
+  "title": "The Adventure of Charles Augustus Milverton",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
+    "content_hash": "4c3e8db14fb33f2af6ab065a2978766a4a1ab2ef57508fb67f72285e9457b1a5",
+    "provenance_hash": "d4450fa9dd88e419191a951b0fc3b3d86332e0221814b6a27bbb9f9cdd305167",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "3d3479919695f254f54d7138ddea05cf4cb330f3461da22ee471ea36c875b8bf",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of Charles Augustus Milverton",
+        "word_count": 6698,
+        "sha256": "dad84c8f45f5b4d6f98b376dd8f3842512db81d059efa874eb4754bc4aca270c"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "7580b5840d2c9cbe091045a8a53d88c08e2de2ce17e404bbdcadb198ebb940c7"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "e7ab82d28cad336a4ccf074193b13a7407ec81dd11ef36c548921939cc1a48c7",
+    "reader_manifest": "0beac03a946d457458357f76ad1f6fc10b3f852be696cbd8f2115a11d195ec21",
+    "source_evidence": "7580b5840d2c9cbe091045a8a53d88c08e2de2ce17e404bbdcadb198ebb940c7",
+    "approval_evidence": "aa67e21c3cc0a46e56a1ee99d9f330e2147d11088487111d74fab77fa5dc2152"
+  },
+  "manifest_sha256": "32dd62a6c17ec7cabc24da85e712d20f3f53b2327c5b08612dba344aa67ec000"
+}

@@ -1,0 +1,25 @@
+{
+  "retrieved_at": "2026-10-02T02:54:02.426052+00:00",
+  "retrieval_method": "Authenticated research executor web-reader cached institutional encyclopedia pages; historical death facts, not direct HTTP200/raw response byte receipt.",
+  "facts": [
+    {
+      "name": "Akshay Chandra Sarkar",
+      "death_year": 1917,
+      "source_url": "https://bn.banglapedia.org/index.php/সরকার,_অক্ষয়চন্দ্র",
+      "source_revision": 10347,
+      "excerpt": "১৯১৭ সালের ২ অক্টোবর তাঁর মৃত্যু হয়।",
+      "provider": "Banglapedia, Asiatic Society of Bangladesh",
+      "article_author": "Muhammad Saiful Islam"
+    },
+    {
+      "name": "Rajkrishna Mukhopadhyay",
+      "death_year": 1886,
+      "source_url": "https://en.banglapedia.org/index.php?title=Mukhopadhyay,_Rajkrishna",
+      "source_revision": 4247,
+      "excerpt": "Mukhopadhyay, Rajkrishna (1845-1886) essayist",
+      "provider": "Banglapedia, Asiatic Society of Bangladesh",
+      "article_author": "Tanjina Khan Munni"
+    }
+  ],
+  "unsupported_direct_response_not_used": true
+}

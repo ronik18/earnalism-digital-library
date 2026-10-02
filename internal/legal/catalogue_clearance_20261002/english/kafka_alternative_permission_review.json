@@ -1,0 +1,25 @@
+{
+  "slug": "the-metamorphosis",
+  "status": "COMMERCIAL_TRANSLATOR_PERMISSION_BLOCKED",
+  "alternative_source_url": "https://www.viurrspace.ca/server/api/core/bitstreams/a7d24518-6fe7-4289-8574-cb3422068e1e/content",
+  "alternative_source_sha256": "ff61ba371e8e70738cfcd99b9c3732219a34382bfd93b3767d373ea7cfd277e6",
+  "alternative_translator": "Ian Johnston",
+  "primary_pdf_declaration": "This document is in the public domain.",
+  "contradictory_primary_publisher_evidence": {
+    "url": "https://richerresourcespublications.com/translator/ian-johnston",
+    "verified_at": "2026-10-02T03:24:54.996997+00:00",
+    "method": "Web reader cached primary publisher biography, tool returned full118lines; direct urllibHTTP403, no rawbodySHA or direct200claimed",
+    "direct_fetch_status": 403,
+    "source_lines": [
+      38,
+      39
+    ],
+    "restriction_excerpt": "These materials are freely available to anyone who wishes to download them other than for commercial book publication.",
+    "context": "Line39listsTheMetamorphosisandotherKafkaamongtranslatorpublishedworks. Contemporary primary restriction contradicts unqualified author-depositedPDF declaration; edition/time scope requires resolution.",
+    "verifier": "Automated source-reader under ownerdelegation; no humanlegalreview"
+  },
+  "decision": "No automatic India commercial translation grant inferred from conflicting primary declarations; current Wyllie package remains held, no edition approval transferred.",
+  "exact_remaining_action": "Obtain explicit edition-bound commercial publication permission/clarification from translator or rights holder resolving publisher exclusion of commercial book publication.",
+  "production_activation": false,
+  "audio_authorized": false
+}

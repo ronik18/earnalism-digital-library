@@ -1,0 +1,18 @@
+[
+  {
+    "slug": "great-expectations",
+    "source_sha256": "9a637118af8e953e9764ec603d9b0a032883384d465acac2e27966a80cf1c6f8",
+    "content_sha256": "2a8d0a202ea5c45af789296120a0fba52ffc09d7d7b536ebd9219521d508d40e",
+    "chapter_count": 59,
+    "verified_at": "2026-10-01T21:41:03.519387+00:00",
+    "publication_accepted": false
+  },
+  {
+    "slug": "the-time-machine",
+    "source_sha256": "2892e919000e17c83e1dac51b30f4675db50536b644d7579fe8a89bb399a9bdc",
+    "content_sha256": "b9e67357d69352f3e18b2ceb03d55609ffe59dfa48277ff9aff76dc2fa63d488",
+    "chapter_count": 17,
+    "verified_at": "2026-10-01T21:41:03.519387+00:00",
+    "publication_accepted": false
+  }
+]

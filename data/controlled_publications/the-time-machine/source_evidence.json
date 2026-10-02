@@ -1,13 +1,563 @@
 {
   "slug": "the-time-machine",
   "source_url": "https://www.gutenberg.org/ebooks/35.txt.utf-8",
-  "source_name": "Earnalism historical import",
+  "source_name": "Project Gutenberg #35; The Time Machine exact canonical source, underlying lifetime publication 1895; complete selected author text, no translation or independently authored artwork/editorial material imported",
   "source_license": "Underlying literary text is public domain in the United States; original work first published in 1895.",
-  "source_hash": "c7aeb98aa3143ae724283da3a0a74aef602537073f8c8f06ae0e1d22c0a38968",
-  "content_hash": "86f6463ed64691c02e7b927ae73e94d76027d3f3c4f82c6a18c17310020325ba",
-  "provenance_hash": "b7acc90769cf6bd7d1f99038cd336e48007db2e8d55469954243660d07d7efa6",
-  "rights_basis": "H. G. Wells died in 1946, so the original literary work is public domain in India under life plus 60 years. Original publication in 1895 supports U.S. public-domain status.",
+  "source_hash": "2892e919000e17c83e1dac51b30f4675db50536b644d7579fe8a89bb399a9bdc",
+  "content_hash": "b9e67357d69352f3e18b2ceb03d55609ffe59dfa48277ff9aff76dc2fa63d488",
+  "provenance_hash": "be25fc11babef7b88a7aba9016d7f2e3eec275ca424830cc22388ca8e1ad0e0c",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1946, verified lifetime collection publication 1895 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-05-24T04:46:57.262459+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #35",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/35",
+      "resolved_url": "https://www.gutenberg.org/ebooks/35",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:24.886802+00:00",
+      "response_sha256": "8a701df37a1d012b50a28d82e7315de63f26ac399bc08754939f8efdff452713"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/35.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/35/pg35.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:29.749784+00:00",
+      "response_sha256": "2892e919000e17c83e1dac51b30f4675db50536b644d7579fe8a89bb399a9bdc"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Wells, H. G. (Herbert George), 1866-1946"
+      ],
+      "Title": [
+        "The Time Machine"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Time_Machine"
+      ],
+      "Reading Level": [
+        "Reading ease score: 79.5 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Science fiction",
+        "Time travel -- Fiction",
+        "Dystopias -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "35"
+      ],
+      "Release Date": [
+        "Oct 2, 2004"
+      ],
+      "Last Update": [
+        "Jun 16, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "27995 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1188,
+          "length": 9752
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 10957,
+          "length": 7489
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 18479,
+          "length": 11049
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 29549,
+          "length": 11625
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 41196,
+          "length": 9289
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 50512,
+          "length": 12532
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 63065,
+          "length": 12459
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 75543,
+          "length": 23325
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 98886,
+          "length": 11766
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 110672,
+          "length": 13725
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 124432,
+          "length": 13642
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 138096,
+          "length": 13938
+        },
+        {
+          "chapter_id": "chapter-013",
+          "offset": 152070,
+          "length": 5907
+        },
+        {
+          "chapter_id": "chapter-014",
+          "offset": 158002,
+          "length": 10373
+        },
+        {
+          "chapter_id": "chapter-015",
+          "offset": 168408,
+          "length": 2627
+        },
+        {
+          "chapter_id": "chapter-016",
+          "offset": 171057,
+          "length": 7410
+        },
+        {
+          "chapter_id": "chapter-017",
+          "offset": 178477,
+          "length": 1528
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "c7aeb98aa3143ae724283da3a0a74aef602537073f8c8f06ae0e1d22c0a38968",
+    "legacy_content_sha256": "86f6463ed64691c02e7b927ae73e94d76027d3f3c4f82c6a18c17310020325ba",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1946,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "8a701df37a1d012b50a28d82e7315de63f26ac399bc08754939f8efdff452713",
+    "url": "https://www.gutenberg.org/ebooks/35",
+    "author_catalog_strings": [
+      "Wells, H. G. (Herbert George), 1866-1946"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 17,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "ff1fa7efcb35d79e41b83f66ff52d18736e3af4d00b52def6588a9faf78ed47d"
+      },
+      {
+        "id": "chapter-002",
+        "sha256": "2113d8ad7b3091c44659f4a67560f14adcba33028ddf8bd7df344363deb61ca8"
+      },
+      {
+        "id": "chapter-003",
+        "sha256": "06708012234cd4056469952cb250c8b5cab49f6759656c5304e8dc2821e0b479"
+      },
+      {
+        "id": "chapter-004",
+        "sha256": "40d5a68212994d78f866f8b1ddc9266d1b9aad57f596c5dda5becac9cd2ccdba"
+      },
+      {
+        "id": "chapter-005",
+        "sha256": "88a3a5ebae5d264535ff7fa49c6707d234d66a737b22703ee2fd74682edc7a87"
+      },
+      {
+        "id": "chapter-006",
+        "sha256": "8d1ffca02a1cf9fd602ee6f563b3db38e8e743816700ed9fe8c0aa5b5888cba4"
+      },
+      {
+        "id": "chapter-007",
+        "sha256": "45aca23365620eed577a80558486c8902d5161f8e54f5072fe1299bb8c6461a2"
+      },
+      {
+        "id": "chapter-008",
+        "sha256": "12e394d0a46743b0ef2a024c53809a9e5128220d572a48ab3320ebd23d642c86"
+      },
+      {
+        "id": "chapter-009",
+        "sha256": "9ee82556ec8b270d28af137bb778bf269ef32233e4ac57ab5db5bd9519b77ea1"
+      },
+      {
+        "id": "chapter-010",
+        "sha256": "1aa14457387c8c72b9fba2a2b56a43fa639b195edcd2e531f837c3da211dfe19"
+      },
+      {
+        "id": "chapter-011",
+        "sha256": "32a1cd21290ec3f121808cda82401d9a1cb10434dbc307e553df849ff8cb90b8"
+      },
+      {
+        "id": "chapter-012",
+        "sha256": "e4e0daa54b6e57949ea5750924fce318b38bb41867f0216c13b385148052839c"
+      },
+      {
+        "id": "chapter-013",
+        "sha256": "69fe0c7dfb3fcb54646c88a6ed43ec178622a79958c691ae748637d4c3aef520"
+      },
+      {
+        "id": "chapter-014",
+        "sha256": "4c6beb9bf62d2ed7670c5ed43c614b2156eecfe01be11d9782505ca212cdd97f"
+      },
+      {
+        "id": "chapter-015",
+        "sha256": "3a68c98a2f07704b6ee6b012a0ff7dda81b534c93e9cec82017ff27ae5fa44a7"
+      },
+      {
+        "id": "chapter-016",
+        "sha256": "5cb2fa2a0bf3b72f336a6c5d31c05879479a1fa936926eca1ab7d2c78be3a555"
+      },
+      {
+        "id": "chapter-017",
+        "sha256": "ef675e8a4077b5e93c07f9e71102cf66ff51711a28be1ab22fef05bc1f78782b"
+      }
+    ],
+    "content_sha256": "b9e67357d69352f3e18b2ceb03d55609ffe59dfa48277ff9aff76dc2fa63d488"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "c7aeb98aa3143ae724283da3a0a74aef602537073f8c8f06ae0e1d22c0a38968",
+        "content_hash": "86f6463ed64691c02e7b927ae73e94d76027d3f3c4f82c6a18c17310020325ba",
+        "provenance_hash": "b7acc90769cf6bd7d1f99038cd336e48007db2e8d55469954243660d07d7efa6"
+      },
+      "superseded_at": "2026-10-01T21:41:03.519387+00:00",
+      "reason": "Explicit current verified same-Gutenberg-ID textual edition reconciliation, allsourcechapters; historical approvals not transferred"
+    }
+  ],
+  "same_edition_text_reconciliation": {
+    "verified_at": "2026-10-01T21:41:03.519387+00:00",
+    "old_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "d73789d8031cb88e0922217efc8f22cadb740f28e5b97ad591ef70754f160738"
+      },
+      {
+        "id": "chapter-002",
+        "sha256": "27abac843db7691ff591feba266476242a4450eec3fe83c1e9a19f486a0d936a"
+      },
+      {
+        "id": "chapter-003",
+        "sha256": "8213f16ba05785aaf1f170623db53f3d0f899db36b5df694f4dd16a308b1891d"
+      },
+      {
+        "id": "chapter-004",
+        "sha256": "45bd631779ff17859758a5ef60235bd2cf6d176d52b0368f16b4d8edc0bdf8d7"
+      },
+      {
+        "id": "chapter-005",
+        "sha256": "980683c22188e919d7cf769d435b6fded1fdaabc4c88b0638e13a436ea84125f"
+      },
+      {
+        "id": "chapter-006",
+        "sha256": "2e41d7ecb10a28259fc02b24d4331d119050546c21226506e2eda930789feb86"
+      },
+      {
+        "id": "chapter-007",
+        "sha256": "78e08ea339ebbd34838470a9758aa4dbfea4175bfb4fec7be48dd0eb68cf2959"
+      },
+      {
+        "id": "chapter-008",
+        "sha256": "2b7b5e3352b784e625f04900f7ea8fbfdda45c8ddd0aaf7676f2be86cf9d47a7"
+      },
+      {
+        "id": "chapter-009",
+        "sha256": "0286a872d96f55004016ae309b09d77134de9bcd8c525ccda2efd12df8d018cf"
+      },
+      {
+        "id": "chapter-010",
+        "sha256": "d179d6ff39703fd424855c9bfc2e3805aa24bd52ef3fb611b1f1b1161fc2ca18"
+      },
+      {
+        "id": "chapter-011",
+        "sha256": "8429dbad8f53198ddd5d675a06188757017b8089cb8b001d5e531b6f86e420d3"
+      },
+      {
+        "id": "chapter-012",
+        "sha256": "c9cb651da3e3873d6cd7708a7970cb570d9cfd910530a4dcb3d19ea6ea074ea9"
+      },
+      {
+        "id": "chapter-013",
+        "sha256": "c2052e473278033f73ac6a0cebddd2ffdd14b7e013d622f2ce306637fd40ff43"
+      },
+      {
+        "id": "chapter-014",
+        "sha256": "e0cfab2dfcf3a4914b77775cf4ba3625c80e1346ce153417debcb326cc1bc0d3"
+      },
+      {
+        "id": "chapter-015",
+        "sha256": "e73e22bc54ee43efac15e14e13a1bda603ff11f17c958e3bef066734ace67b5f"
+      },
+      {
+        "id": "chapter-016",
+        "sha256": "74234e88500de74936d9438385f8301b9b23fdcaa274815fc40d83d86cabb147"
+      }
+    ],
+    "new_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "ff1fa7efcb35d79e41b83f66ff52d18736e3af4d00b52def6588a9faf78ed47d"
+      },
+      {
+        "id": "chapter-002",
+        "sha256": "2113d8ad7b3091c44659f4a67560f14adcba33028ddf8bd7df344363deb61ca8"
+      },
+      {
+        "id": "chapter-003",
+        "sha256": "06708012234cd4056469952cb250c8b5cab49f6759656c5304e8dc2821e0b479"
+      },
+      {
+        "id": "chapter-004",
+        "sha256": "40d5a68212994d78f866f8b1ddc9266d1b9aad57f596c5dda5becac9cd2ccdba"
+      },
+      {
+        "id": "chapter-005",
+        "sha256": "88a3a5ebae5d264535ff7fa49c6707d234d66a737b22703ee2fd74682edc7a87"
+      },
+      {
+        "id": "chapter-006",
+        "sha256": "8d1ffca02a1cf9fd602ee6f563b3db38e8e743816700ed9fe8c0aa5b5888cba4"
+      },
+      {
+        "id": "chapter-007",
+        "sha256": "45aca23365620eed577a80558486c8902d5161f8e54f5072fe1299bb8c6461a2"
+      },
+      {
+        "id": "chapter-008",
+        "sha256": "12e394d0a46743b0ef2a024c53809a9e5128220d572a48ab3320ebd23d642c86"
+      },
+      {
+        "id": "chapter-009",
+        "sha256": "9ee82556ec8b270d28af137bb778bf269ef32233e4ac57ab5db5bd9519b77ea1"
+      },
+      {
+        "id": "chapter-010",
+        "sha256": "1aa14457387c8c72b9fba2a2b56a43fa639b195edcd2e531f837c3da211dfe19"
+      },
+      {
+        "id": "chapter-011",
+        "sha256": "32a1cd21290ec3f121808cda82401d9a1cb10434dbc307e553df849ff8cb90b8"
+      },
+      {
+        "id": "chapter-012",
+        "sha256": "e4e0daa54b6e57949ea5750924fce318b38bb41867f0216c13b385148052839c"
+      },
+      {
+        "id": "chapter-013",
+        "sha256": "69fe0c7dfb3fcb54646c88a6ed43ec178622a79958c691ae748637d4c3aef520"
+      },
+      {
+        "id": "chapter-014",
+        "sha256": "4c6beb9bf62d2ed7670c5ed43c614b2156eecfe01be11d9782505ca212cdd97f"
+      },
+      {
+        "id": "chapter-015",
+        "sha256": "3a68c98a2f07704b6ee6b012a0ff7dda81b534c93e9cec82017ff27ae5fa44a7"
+      },
+      {
+        "id": "chapter-016",
+        "sha256": "5cb2fa2a0bf3b72f336a6c5d31c05879479a1fa936926eca1ab7d2c78be3a555"
+      },
+      {
+        "id": "chapter-017",
+        "sha256": "ef675e8a4077b5e93c07f9e71102cf66ff51711a28be1ab22fef05bc1f78782b"
+      }
+    ],
+    "scope": "All16Wellssections plus actualEpilogue restored aschapter017",
+    "no_historical_approval_transferred": true
+  },
+  "selected_edition_publication_year": 1895,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:49:40.745164+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/35.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/35/pg35.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:29.749784+00:00",
+      "response_sha256": "2892e919000e17c83e1dac51b30f4675db50536b644d7579fe8a89bb399a9bdc"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 17,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1188,
+          "length": 9752
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 10957,
+          "length": 7489
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 18479,
+          "length": 11049
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 29549,
+          "length": 11625
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 41196,
+          "length": 9289
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 50512,
+          "length": 12532
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 63065,
+          "length": 12459
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 75543,
+          "length": 23325
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 98886,
+          "length": 11766
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 110672,
+          "length": 13725
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 124432,
+          "length": 13642
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 138096,
+          "length": 13938
+        },
+        {
+          "chapter_id": "chapter-013",
+          "offset": 152070,
+          "length": 5907
+        },
+        {
+          "chapter_id": "chapter-014",
+          "offset": 158002,
+          "length": 10373
+        },
+        {
+          "chapter_id": "chapter-015",
+          "offset": 168408,
+          "length": 2627
+        },
+        {
+          "chapter_id": "chapter-016",
+          "offset": 171057,
+          "length": 7410
+        },
+        {
+          "chapter_id": "chapter-017",
+          "offset": 178477,
+          "length": 1528
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Wells, H. G. (Herbert George), 1866-1946",
+      "creator_death_year": 1946,
+      "selected_collection_publication_year": 1895,
+      "original_story_first_publication_year": null,
+      "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+      "bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Wells%2C%20H.%20G.%20%28Herbert%20George%29%2C%201866-1946",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Wells%2C%20H.%20G.%20%28Herbert%20George%29%2C%201866-1946",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:44:08.525863+00:00",
+        "response_sha256": "c1e19c068adee3d02b19a299a7958e0fd262a8076521c1f36ba967df6add6119"
+      },
+      "bibliographic_excerpt": "Time Machine (based on an 1898 edition) Gutenberg text HTML at Bartleby Wells, H. G. (Herbert George), 1866-1946: The Time Machine: An Invention (London: W. Heinemann, 1895) (page images at HathiTrust) Wells, H. G. (Herbert George), 1866-1946: The Ti",
+      "scope": "Named creator complete selected literary text including available author prefatory/end matter; publisher/source furniture and illustrations excluded."
+    },
+    "author_death_evidence": 1946,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1895,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "2892e919000e17c83e1dac51b30f4675db50536b644d7579fe8a89bb399a9bdc",
+    "content_sha256": "b9e67357d69352f3e18b2ceb03d55609ffe59dfa48277ff9aff76dc2fa63d488",
+    "year": 1895,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Wells%2C%20H.%20G.%20%28Herbert%20George%29%2C%201866-1946",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Wells%2C%20H.%20G.%20%28Herbert%20George%29%2C%201866-1946",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:08.525863+00:00",
+      "response_sha256": "c1e19c068adee3d02b19a299a7958e0fd262a8076521c1f36ba967df6add6119"
+    },
+    "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  }
 }

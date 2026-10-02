@@ -101,8 +101,18 @@ def test_dracula_index_is_uniform_and_publisher_catalog_is_not_reader_content():
 
     for artifact_root in artifact_roots:
         manifest = json.loads((artifact_root / "reader_manifest.json").read_text(encoding="utf-8"))
-        assert [chapter["title"] for chapter in manifest["chapters"]] == expected_titles
-        index_entries = build_chapter_index_entries(manifest["chapters"])
+        narrative = manifest["chapters"]
+        if artifact_root == ROOT / "data" / "controlled_publications" / "dracula":
+            # Exact-source repair restores Stoker's literary prefatory note;
+            # the 27 historical narrative IDs/titles remain unchanged.
+            assert narrative[0]["id"] == "chapter-000"
+            assert narrative[0]["title"] == "Preface"
+            assert len(narrative) == 28
+            preface = json.loads((artifact_root / "chapters/chapter-000.json").read_text())
+            assert "All needless matters have been eliminated" in preface["content"]
+            narrative = narrative[1:]
+        assert [chapter["title"] for chapter in narrative] == expected_titles
+        index_entries = build_chapter_index_entries(narrative)
         assert [index_entries[index - 1]["index_title"] for index in (5, 9, 10, 11, 13, 15)] == [
             "Mina Murray’s Correspondence",
             "Mina Harker’s Correspondence",

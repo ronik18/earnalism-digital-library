@@ -1,0 +1,53 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "woman-in-white",
+  "edition": "Project Gutenberg #583; The Woman in White exact canonical source, underlying lifetime publication 1860; complete selected author text, no translation or independently authored artwork/editorial material imported",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_ONLY_NON_COVER_COMPONENTS",
+  "source_sha256": "c8cb8872f6c0a2a5b6489873c6c7b8c39f006c3fa44219738186a96f2c1d1254",
+  "content_sha256": "f359435d90032e1ceee2a65bd58033c7375017bf813696d8965b4171e68c2962",
+  "chapter_sha256": {
+    "chapter-001": "a18d55438fd850a26a53534232498d58d6a04a59d0b9e93f87f10dc553fba44a",
+    "chapter-002": "927292e6ec46a4b4ee77e398fe6aa5d118ddb34d0b1f1b2b18be0f0bb65ccac1",
+    "chapter-003": "e8e5cd016f06aadd2427379b43c06b669257393c549ca068c8e856ed5dd8e42f",
+    "chapter-004": "563b41d9c56b0f55d47b30499bbd3a3aaf4a25ca9a88bd2fd31145461bfdb778",
+    "chapter-005": "4f2dca4cfddd1cf5c3e94f7daaabcdc0370517d523ddc01f17b54fd1d67621fe",
+    "chapter-006": "1e515351406da22a4db99c66c59e83d4d1712cf0eff71f32be870e05b339c4d2",
+    "chapter-007": "fea7fc335d082bf63fc77645bda854dd893b53a2ac021f96cfea82162b48d70a",
+    "chapter-008": "3c5e3997e9d07e0fccbdba8320205707ef2332baf7a1094570cb6feb4d2f27ab",
+    "chapter-009": "b667b890332079a1d84b7fc0c69f49dab7330c0a4ea03ba97f9e25d7eba43bb4",
+    "chapter-010": "64b6394cddca33c912660161991a71bd108922c95ab25374666d11563afff7e4",
+    "chapter-011": "6e2af377933dce1c23c74d0d1c394d19b4b9491318e4e939ef75f68ea9e843cb",
+    "chapter-012": "4f3035b634555ba3a55116c3deba9a178a570cc758385759310e64eb6c1295d9",
+    "chapter-013": "b02644f40efd51535a24097be490cba6e93ec006af280f76433cc965b47ae203",
+    "chapter-014": "09cd2fa1f0ac4ac0145a60e870a0b40db6ead4f57e7f7789b7935d1acf93823c",
+    "chapter-015": "6226930e0a37dc3018948bf750dd80034143b5d5c9f183f6950887bc1a41fc49",
+    "chapter-016": "85aad17fe47a5548f173a1a1adb13e38eb7537ac529209b0ca20a625d5ead06f",
+    "chapter-017": "15107f5138d6106c72a4ebcc8889b66b6f3ea67880049523c082fb7805a98d99",
+    "chapter-018": "3194ce4ebec2bf2f55affd3be969b39a126b085d780bdd6b9450e03fcb2432a8",
+    "chapter-019": "5c2bd1e38a20fa263a40b9bc646dc30c29a5dfdbfb671487e67e285d9ba0ba1e",
+    "chapter-020": "2b0d4a9175246b3d6bbc92dfa928e247398940f9191816561f51eb767bf7796e",
+    "chapter-021": "a96aa36927ac25fe21aa19e2267d52a28d2b446d484488e3960584269ced448b",
+    "chapter-022": "3cd272668419f278d27080010a2462fe9f379ccf5ff71eac0c8e4a26b6b05f8c",
+    "chapter-023": "c65ddc925607b824ad68406fc42fee1bcbe00abc03e2e1deb0af11908965c3ed",
+    "chapter-024": "7ba8ff94961deaa2136e67678c35fe36a7f672d3237c2f03f3ec49d26b5bc497",
+    "chapter-025": "7f1233bfe7826a523eabbd86e99a1bcd382934f3cd16297b8cac18ef9c1eb7a0"
+  },
+  "cover_provenance_sha256": null,
+  "cover_status": "DEFERRED_BY_OWNER_REQUEST_NO_COVER_DISPLAY_AUTHORIZED",
+  "authorized_by": "Automated executor under owner explicit autonomous clearance delegation; not a fabricated human or legal signature.",
+  "verified_at": "2026-10-01T21:49:40.745164+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Cover clearance/binding, trusted production registry acceptance, canonical controlled-live allowlist, actual runtime Reader readiness and protected gates must separately pass.",
+  "not_authorized": [
+    "cover_display",
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation"
+  ]
+}

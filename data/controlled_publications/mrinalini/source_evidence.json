@@ -3,12 +3,12 @@
   "source_url": "https://bn.wikisource.org/wiki/%E0%A6%AE%E0%A7%83%E0%A6%A3%E0%A6%BE%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%80_(%E0%A7%A7%E0%A7%AE%E0%A7%AD%E0%A7%AA)",
   "source_name": "Bengali Wikisource",
   "source_license": "Underlying Bengali literary text is public domain in India and the U.S.; Bengali Wikisource transcription/source layer is reused under CC BY-SA terms.",
-  "source_hash": "10521fb1355328e87b7cd91ea6dea76b3879861447ce0f0322725f519d8fc75b",
-  "content_hash": "193c208f03b3d962982824d90e4cbf7c45d9046532f1f1fc368b50564a6d1741",
+  "source_hash": "9e04c5d5b16bbd623edac1de47cd0e61f561a820cd6d7200b23450117558ee80",
+  "content_hash": "390c5936e44b799952e1e84917bca07aea7183f96880e91a6b3fc74ec7fa3560",
   "provenance_hash": "b05500820083927f8dba4600248b5e553d88ef9383d5e730e202903c31cf7de0",
-  "rights_basis": "Author died 1894. Original publication 1869. Public domain in India and the U.S.; source evidence kept internal/admin-only.",
+  "rights_basis": "Exact Mrinalini third1874 author edition, Bankim Chandra Chattopadhyay; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1894; India Section22 literary term expired end1954. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
   "downloaded_at": "2026-06-03T08:51:47.896886+00:00",
-  "source_format": "text/plain",
+  "source_format": "SHA-bound multi-chapter rendering receipt, with per-chapter actual rendered HTML SHA/revisions",
   "reader_facing_boilerplate_removed": true,
   "author_death_year": 1894,
   "author_fact_evidence": {
@@ -27,12 +27,12 @@
     "source_edition": "মৃণালিনী (১৮৭৪); the source title page identifies the 1874 third edition",
     "scope": "EXISTING_REVIEWED_PUBLICATION_FACT_ONLY; SOURCE_COMPARISON_AND_LICENSE_OBLIGATIONS_REMAIN_TITLE_SPECIFIC"
   },
-  "verification_status": "pending",
-  "text_clearance_status": "PREPARED_EVIDENCE_NOT_AUTHORIZED",
+  "verification_status": "approved",
+  "text_clearance_status": "OWNER_DELEGATED_AUTOMATED_IN_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "3c8a2b72cb5781b463b759f9495ee6c286f3150e5eba38800e232f06e65093d9",
+    "reader_content_sha256": "390c5936e44b799952e1e84917bca07aea7183f96880e91a6b3fc74ec7fa3560",
     "chapter_count": 46,
     "chapter_content_sha256": {
       "chapter-001": "ae39ccf3089476e6ca7841274e2e94c6f54099a9f518fa4e18401c4ce34fab48",
@@ -42,11 +42,11 @@
       "chapter-005": "ae8986893015b607d53c4922d41d424a31db6365d985966d58804da77f188c50",
       "chapter-006": "bff1f632ed61b332e5446a0a8c414531faf48d87ecca9ff5b38f46c8989b5ccc",
       "chapter-007": "5b2a37eab8799d1edc46080687efaffad8885e78e3d9e548c261730cd1aff980",
-      "chapter-008": "37c0a316f95f279ba1efa11f5d395ef0c043159922c21c472968106f8d4947a2",
+      "chapter-008": "b91d92ef491b57453b6d6c2ba8e8298f4760255c8372dc20081823ce60a241ae",
       "chapter-009": "772ed3c3b0c9009a2c03ac55228a84292178629f58c7da41748b5b7da1c05b5e",
-      "chapter-010": "85c3402de2df60494e00ebea0762217f0715fd916aeb5f3f0d0ab42de2b8e7a3",
+      "chapter-010": "52fac808abb9b1cf3f6a2b4ccacb9af208a5812e29a960e37b8dda1a19e22a67",
       "chapter-011": "edcdc0ebf1e2aa2e18c2a2cbca009bc681d82a60027f6a0e060077f88ba39cba",
-      "chapter-012": "daeca1fa5d9bd0d87d0243d8ff6c9525c318dae0c8e4a3901fb14e85064b49e6",
+      "chapter-012": "cd605bcef13d65f39572175d6086ab7ae99f4a33e95d753da55b215ad3b3a979",
       "chapter-013": "6d1493e06355316373c0e073de788ba8bb5ebce8c92e4aa2bf36e3b9a2232a11",
       "chapter-014": "df2484feedaf538a2aca9e750dc529b7007494fd1ed0c1481a2f8a335e3931d6",
       "chapter-015": "8f14695ee3615a1ac2ba5b5f32e36d747fea4867558b879bc1a4b59482d56554",
@@ -59,7 +59,7 @@
       "chapter-022": "b1337e08c62282bdb22d073f42c34ef0a0414ea2a23dfb07956b511dd1d4da6a",
       "chapter-023": "3c390c7f13ad48f4410e184202bf1f77b88a03009a2836741a6797bba2567786",
       "chapter-024": "41390beb4f37da727d20836f591f3840b21508d38ce469c6422d9255288ad664",
-      "chapter-025": "07ccd37bf1c3922a1bdf97ec4fe53c669471b10e2eb2cc226613f8132669f281",
+      "chapter-025": "acf54097a490763b6f1d85bebcd10808acdd3d2645e7a7706040cbc883f0718f",
       "chapter-026": "d2ec28a6d83b00051bdcd5912ff92aac29e2bcee53c4c3f95a63e0a9b1020864",
       "chapter-027": "a4629e2baaf66fdf0d81e6b2e04d9ca58a3f9102e032ced962d7bcad54f05717",
       "chapter-028": "5c2addc5d82aa2405080a582aa409ae77711902bd6df39e5116cc50c285af8f4",
@@ -72,10 +72,10 @@
       "chapter-035": "73965490cb7c6effcf679da204350abb85443e903f91ff1556ef987199748766",
       "chapter-036": "a50352dc36e56e9a7df8b18806139ed3ea2871314f60f4cd1b38fb1d206134a9",
       "chapter-037": "3270e42339b7b2b444abeeada7320a7043ca73c6a61abb811c3008dd79887fc9",
-      "chapter-038": "fbe93f89f4daab9d675ed45d8af42215dd8061311107e2b0a2532f6d99812b36",
+      "chapter-038": "87a86bff2900a663ddf9a4bb1f757318e7dbdca21e200085ed091ebe79d2a52f",
       "chapter-039": "1d4f1a638ec876989fa0825179dfb3d0571520332a91bb627160429512d7e27c",
-      "chapter-040": "3ba0914b35828f9e3e01f1384fad07d5f6fd7a9d9a97d8425509eacf3aedfa60",
-      "chapter-041": "76c39a7e30b075a894ef6c1daca308d723952b4ac33d7d05c71bafde3afcd052",
+      "chapter-040": "b8efa493bcad250f637b97ac206d3e560821b761e9034f0d18f3ded0f18c5e10",
+      "chapter-041": "dfa6bd81f06431453b8cc6a993330e0feec530e32e0ea009653ede59f497a4f9",
       "chapter-042": "3eed6021c502da6fda9e9ef680481fca05b25df79200b717532ceb13ae974334",
       "chapter-043": "527138c3a8538e02de4b51597fd579932280c228f9aa29ae66e73212bc2a36f8",
       "chapter-044": "25a4932b039bdf3c64a1cc043e7782d1a2a1fde3ee6c4d13b7ec9573c57db4bb",
@@ -84,5 +84,27 @@
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  },
+  "full_rendered_multichapter_repair": {
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/multichapter-narrow-source-repairs.json",
+    "scope": "Same edition source paragraphs, with original notes/verse retained; no rights approval"
+  },
+  "historical_import_hashes": {
+    "source_hash": "10521fb1355328e87b7cd91ea6dea76b3879861447ce0f0322725f519d8fc75b",
+    "content_hash": "193c208f03b3d962982824d90e4cbf7c45d9046532f1f1fc368b50564a6d1741",
+    "source_url": "https://bn.wikisource.org/wiki/%E0%A6%AE%E0%A7%83%E0%A6%A3%E0%A6%BE%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%80_(%E0%A7%A7%E0%A7%AE%E0%A7%AD%E0%A7%AA)"
+  },
+  "edition_publication_year": 1874,
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "source_snapshot_identity": {
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/mrinalini-multichapter-source-comparison.json",
+    "sha256": "d0977454db66b5a3bceeb2a0bdd9bfa8d2c1ccff014811153141ab124d12e70f",
+    "scope": "Actual captured original/source edition transclusions; parent revision alone does not freeze transcluded pages."
+  },
+  "edition_evidence": {
+    "edition": "Mrinalini third1874 author edition, Bankim Chandra Chattopadhyay",
+    "primary_record": "internal/legal/catalogue_clearance_20261002/bengali/mrinalini-primary-imprint-pages.json",
+    "record_sha256": "17c3499fdd190453e3ba8bb291ccee825e8cf5e3a811bdf69a181d64f3a8a86d",
+    "scope": "Selected exact literary narrative and retained source notes only; no artwork, publisher matter, separately authored foreword or other edition authorized."
   }
 }

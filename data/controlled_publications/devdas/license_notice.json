@@ -1,0 +1,30 @@
+{
+  "schema_version": "earnalism.text-license.v1",
+  "slug": "devdas",
+  "license": "CC-BY-SA-4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "attribution": "দেবদাস / Devdas by Sarat Chandra Chattopadhyay; Bengali Wikisource transcription and its contributors, credited through the exact edition/source revision and its scanned-page contributor histories.",
+  "changes": "Source/import headings and publication furniture omitted. Exact source-backed missing paragraphs, chapter order and typographical punctuation corrected where recorded. No new literary text composed.",
+  "scope": "CC BY-SA4.0 applies only to source-derived transcription and formatting, not independently owned covers, Earnalism branding, software or unrelated material. Underlying literary/edition rights and publication authorization are separate release gates.",
+  "disclaimer": "Delivered licensed text may be copied, printed and reused under CC BY-SA4.0 attribution and ShareAlike terms. This notice itself grants no publication, cover or audiobook authorization.",
+  "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%A6%E0%A7%87%E0%A6%AC%E0%A6%A6%E0%A6%BE%E0%A6%B8+%28%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC%29&oldid=1971877",
+  "contributors_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%A6%E0%A7%87%E0%A6%AC%E0%A6%A6%E0%A6%BE%E0%A6%B8+%28%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC%29&action=history",
+  "chapter_sha256": [
+    "09927b7c9d1292d93de6b75858e61e598b115d1975f92a53b9f155f1b47ac95b",
+    "a63e0a4fdf3e1e50b08965697ef3870ced70376e2a791aa84fd0f763b8b01f49",
+    "953a298cc9754616dc17a0730570777802792892efdf5a92da04fed7e4796f9c",
+    "d3bf93dd86d6fc03c1fc51892e01a950a715307352a470bcf3d23e189ca411d9",
+    "e64f0da72d7ed67b1f170917c1f6d8463eb12ef7444707586ce311653b3f0c56",
+    "8364f7b9518589d00de1500d3509723edcfbb195048b986690774464188b06dc",
+    "dc8a3410f8ed47fe4179f27998bb500a5b1b0fa79aaa5cde0b66a5b3a0015bde",
+    "561950ca61d7778fd8ad724c7e98ea825d3a1f1e555e7546675860609a0c733c",
+    "48493e3dc5bf79d5cb41981f4341e97bb2b75d0102f539098c4efb5d7fe50fc8",
+    "432c74a4ee4530900b31dbdf047791ac93ec02d1d3e1bd3f691cfe80dda37789",
+    "28c0b77351a702f6393863339132e7d5f39bf221931ee91517f11da986878efa",
+    "275ce9fa4df39737e878df16a68a39f90a01c0e9ffc221455e6eea8dd49397be",
+    "91ca0452010eaf23cc2944691d9a99ce9e2dffc07198154997b8347438654a60",
+    "fa501a8ee2cc6a27377bd98bbf2c75e7e35c1de81f61ac86624c00c46919862b",
+    "5722298c96677b30f0c01baeb035fc8b34587a40bef9b3a0db91d19621319a9c",
+    "6ee15e4f40e94adddf275a31842795bfaba28f72d701385d3bede440833db1e8"
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "hound-of-the-baskervilles",
+  "title": "The Hound of the Baskervilles",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "f7c8c68729d32a5f6a04a5a9ad73d184176e66a6c76b3992c41c1ab47b427d98",
+    "content_hash": "8b5f77d0835acdbcbd3d0e16c5bb6e0b7bff96cefc97aab3fcffd8ae4c83be74",
+    "provenance_hash": "bef529c72f8daac68ef0e1a624d92a188adf094673eaae00d3a3f269d69d14a5",
+    "sanitized": true,
+    "chapter_count": 16,
+    "chapter_index_sha256": "2b5233fd7d40e6fd693e1ecec0476804cfb75eab0bf390545386b3b29ff5760c",
+    "chapters": [
+      {
+        "id": "chapter-000",
+        "order": 1,
+        "title": "Author Dedication",
+        "word_count": 37,
+        "sha256": "5e0d9d8e490aedc9f9f6ee2dcf4a0fb52d3031f1cd8346acf6041cf9c9ac3c5c"
+      },
+      {
+        "id": "chapter-001",
+        "order": 2,
+        "title": "Chapter 1.",
+        "word_count": 2265,
+        "sha256": "c7c95fe7e917e0580ea776fb17ecd3de82ca1118db522708687c134b8af917e3"
+      },
+      {
+        "id": "chapter-002",
+        "order": 3,
+        "title": "Chapter 2.",
+        "word_count": 3855,
+        "sha256": "ad1899550a0d0aa57e5e79bf4d1780f4b3f2dc56f0d0ed24de3cef4ec8c1295a"
+      },
+      {
+        "id": "chapter-003",
+        "order": 4,
+        "title": "Chapter 3.",
+        "word_count": 2902,
+        "sha256": "669774ea70dd2d0221fb863415d77b2c3221d007d64aa0cef5f5a05ed4432f31"
+      },
+      {
+        "id": "chapter-004",
+        "order": 5,
+        "title": "Chapter 4.",
+        "word_count": 4063,
+        "sha256": "f331d68795f3b62d579132c3f73bef73cc9275ad8ffea425b2f9953701b1cdfe"
+      },
+      {
+        "id": "chapter-005",
+        "order": 6,
+        "title": "Chapter 5.",
+        "word_count": 3420,
+        "sha256": "a898038d4d861177479eccf755c6af6fb1a9fb7c8dd3b9da4346986a6530e805"
+      },
+      {
+        "id": "chapter-006",
+        "order": 7,
+        "title": "Chapter 6.",
+        "word_count": 3492,
+        "sha256": "6a0c742da8a61f23720d2ceb29de00f738b8283713eb5eee54345efb46fa6fcf"
+      },
+      {
+        "id": "chapter-007",
+        "order": 8,
+        "title": "Chapter 7.",
+        "word_count": 4974,
+        "sha256": "fedc460af0a10e94de1d74103f6d6eb6b52d6e49b7fcac1f41ba5f235881bb07"
+      },
+      {
+        "id": "chapter-008",
+        "order": 9,
+        "title": "Chapter 8.",
+        "word_count": 2762,
+        "sha256": "3ef984f5a234f8ced706d61584985bf3c1fc07c4bc7ef2f17fa5f2f7d57581b6"
+      },
+      {
+        "id": "chapter-009",
+        "order": 10,
+        "title": "Chapter 9.",
+        "word_count": 6666,
+        "sha256": "d5ad93f2a353e8061da0e3e7173ac1820585678644a9f1a193eec6e189b18371"
+      },
+      {
+        "id": "chapter-010",
+        "order": 11,
+        "title": "Chapter 10.",
+        "word_count": 3673,
+        "sha256": "0f5c549d171fcd413093095ba4bde34c911bbd907c90bfb8835fecc2d7d351d8"
+      },
+      {
+        "id": "chapter-011",
+        "order": 12,
+        "title": "Chapter 11.",
+        "word_count": 4576,
+        "sha256": "407c8532064f1b68e315f0ed92095147c35826032e0fb3d65e02b7494fcb3c11"
+      },
+      {
+        "id": "chapter-012",
+        "order": 13,
+        "title": "Chapter 12.",
+        "word_count": 4871,
+        "sha256": "e3aa06957e08b9e99c0138fd0e9d72c30316f0c5de77cd7ca30d438fcf20d756"
+      },
+      {
+        "id": "chapter-013",
+        "order": 14,
+        "title": "Chapter 13.",
+        "word_count": 3446,
+        "sha256": "8324d0d7c5d39baaee098d24200a9e8870aa3c4bf3d6f3f46d1b600101399a57"
+      },
+      {
+        "id": "chapter-014",
+        "order": 15,
+        "title": "Chapter 14.",
+        "word_count": 4181,
+        "sha256": "19ad9f5062c6e986768d2c431e4f6ff34d3098aa0443e828c63ba29b1fac9d5a"
+      },
+      {
+        "id": "chapter-015",
+        "order": 16,
+        "title": "Chapter 15.",
+        "word_count": 4087,
+        "sha256": "c8c266fbea4d77406365b65f39207333fa6f0602d98bb112f5d5c30783179d58"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "a19ddcc50dc3872f56c48b3f939b353455da844e6d43c43eed564a0bdf1fb186"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "3be33b9ebfb5bdbb114a0c74eee3339dc3198169cd4033a34f3dc7878fe4f359",
+    "reader_manifest": "77d4aec57d2df43826f61dbff666d9514dcc1f02b807ad41c8815a85b62f2842",
+    "source_evidence": "a19ddcc50dc3872f56c48b3f939b353455da844e6d43c43eed564a0bdf1fb186",
+    "approval_evidence": "aad6bded922435c7d343a85d2565caef098ec01e9ae660e3842d0936e7805e2b"
+  },
+  "manifest_sha256": "695986545a55949917aa12cb16d98c84b3f8f02f2e0df40bcf6dc260077933b3"
+}

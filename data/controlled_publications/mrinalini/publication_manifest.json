@@ -3,14 +3,14 @@
   "schema_version": 1,
   "slug": "mrinalini",
   "title": "মৃণালিনী",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
-    "source_hash": "10521fb1355328e87b7cd91ea6dea76b3879861447ce0f0322725f519d8fc75b",
-    "content_hash": "193c208f03b3d962982824d90e4cbf7c45d9046532f1f1fc368b50564a6d1741",
+    "source_hash": "9e04c5d5b16bbd623edac1de47cd0e61f561a820cd6d7200b23450117558ee80",
+    "content_hash": "390c5936e44b799952e1e84917bca07aea7183f96880e91a6b3fc74ec7fa3560",
     "provenance_hash": "b05500820083927f8dba4600248b5e553d88ef9383d5e730e202903c31cf7de0",
     "sanitized": true,
     "chapter_count": 46,
-    "chapter_index_sha256": "ce1448768ca5ab8af847533b1e769bcefa1a7219a176b201f493ebfe8ccd84b1",
+    "chapter_index_sha256": "283f387a691d2f3b34b3144913e48cd3f2e828eba7ef870cd832fede3909a60f",
     "chapters": [
       {
         "id": "chapter-001",
@@ -65,8 +65,8 @@
         "id": "chapter-008",
         "order": 8,
         "title": "Chapter 8. প্রথম খণ্ড / অষ্টম পরিচ্ছেদ",
-        "word_count": 560,
-        "sha256": "f96e37029b39c53c84ab1a6a96a57585e317e6425650babc3f137176da5ef949"
+        "word_count": 577,
+        "sha256": "8972ef019fd52914d7afa14c9c796ddaca5c3962f3cfa5d64e6983c01ad1dfd5"
       },
       {
         "id": "chapter-009",
@@ -79,8 +79,8 @@
         "id": "chapter-010",
         "order": 10,
         "title": "Chapter 10. দ্বিতীয় খণ্ড / দ্বিতীয় পরিচ্ছেদ",
-        "word_count": 607,
-        "sha256": "aa175625905ad9b39c31377ed7c0b82c6a98784bdec0c6eb83747a5715e62918"
+        "word_count": 626,
+        "sha256": "7a8e7600b03ef42044f4ba3b9d3d238618a8ec0c6f37e9312a5737bb9644f952"
       },
       {
         "id": "chapter-011",
@@ -93,8 +93,8 @@
         "id": "chapter-012",
         "order": 12,
         "title": "Chapter 12. দ্বিতীয় খণ্ড / চতুর্থ পরিচ্ছেদ",
-        "word_count": 393,
-        "sha256": "46c598807bfb676e1fd80322a02cdcd61c9eb05218b8e69af3eeed9ada6a62b3"
+        "word_count": 433,
+        "sha256": "4bbcaa5961de436f8b828d2f8c18a4f6a2f9f2b6ea3d5a487f804fcd1f05fcc6"
       },
       {
         "id": "chapter-013",
@@ -184,8 +184,8 @@
         "id": "chapter-025",
         "order": 25,
         "title": "Chapter 25. তৃতীয় খণ্ড / পঞ্চম পরিচ্ছেদ",
-        "word_count": 449,
-        "sha256": "98e6f7de14317a740444ab209db4cabba930c1bb0e82d7c1605183af5caa7d57"
+        "word_count": 463,
+        "sha256": "c7167ef43e869b1a8532999ffd1fc4c309884b23b63e4bd698ac0cbfa74751af"
       },
       {
         "id": "chapter-026",
@@ -275,8 +275,8 @@
         "id": "chapter-038",
         "order": 38,
         "title": "Chapter 38. চতুর্থ খণ্ড / অষ্টম পরিচ্ছেদ",
-        "word_count": 456,
-        "sha256": "2240c61dd3c3c85d724214369ca559ffcca273b09d5111841e9b687d28e9b01d"
+        "word_count": 429,
+        "sha256": "e4b6a11a6622a54864ed7323533474c20ddfa1246fbdcece33c2802d352fa845"
       },
       {
         "id": "chapter-039",
@@ -289,15 +289,15 @@
         "id": "chapter-040",
         "order": 40,
         "title": "Chapter 40. চতুর্থ খণ্ড / দশম পরিচ্ছেদ",
-        "word_count": 413,
-        "sha256": "07c6f7d255b4bac13e3e6c6da91c6a845d580313696c713ee56c226bf6740cab"
+        "word_count": 567,
+        "sha256": "96e586200967807b40059275c150b1b21236bbba1a0056bd5c6a5c61aebdd331"
       },
       {
         "id": "chapter-041",
         "order": 41,
         "title": "Chapter 41. চতুর্থ খণ্ড / একাদশ পরিচ্ছেদ",
-        "word_count": 750,
-        "sha256": "2fc3e826fd57dbb9937684cc5b7fe2d47487ddc664cce8f920c49c496e617cd2"
+        "word_count": 767,
+        "sha256": "13ae7550cd6a951b48ea7b9b96b3e4eed4dd1af27e2d6de51c57097d7c17c62b"
       },
       {
         "id": "chapter-042",
@@ -337,19 +337,17 @@
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "f2db36a3a22c64aa7c4f4049940d1fd21051f841605c044a13f260ada9dc937c"
+    "evidence_sha256": "d361d2a57e36d6cf70c84f1b5803a99306467116f44e200cfc16659e0145e94f"
   },
   "reader_release": {
-    "status": "BLOCKED",
+    "status": "READY_FOR_APPROVAL",
     "exposed": false,
     "qa_status": "QA_PASSED",
     "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483135/earnalism/covers/front/cover_89e10113-f181-4484-a021-eff76348710d.jpg",
-    "blockers": [
-      "Rights: verification_status must be approved before publishing."
-    ]
+    "blockers": []
   },
   "audio_release": {
     "status": "NOT_REQUESTED",
@@ -361,10 +359,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "11b154497df6a393e91668de6181694ba6d058919fbf7c5b2c142b1076505d49",
-    "reader_manifest": "2f0ea214cd1d5f7fb8d76e10fed3b6095915aa9d9ec70318cc3f040a7815b4e2",
-    "source_evidence": "f2db36a3a22c64aa7c4f4049940d1fd21051f841605c044a13f260ada9dc937c",
-    "approval_evidence": "951213f7dfc097795dc2ce113946a7bd1acda5d4fc008dffabbccbae8a5f582b"
+    "public_book": "3f9895115cba6effd21b3ca7f3ac8b0139d6cd4f539eb8fa095c83a94edd8374",
+    "reader_manifest": "8a9a8219266814455b8d1f811493e913e8007524f642a5bb7302026aaa57144e",
+    "source_evidence": "d361d2a57e36d6cf70c84f1b5803a99306467116f44e200cfc16659e0145e94f",
+    "approval_evidence": "fefa18b1eb51647f948716249c159428baecb63885e9a2d559f928aba2260e72"
   },
-  "manifest_sha256": "9bf748cb66a94368b1a0bd51009dd70d2776667d318da5878ef47dcc70e9e750"
+  "manifest_sha256": "5daad2bdbc887c3904f9df59a99edc0dc5115eb6f2bf6c2589ec62b8247644df"
 }

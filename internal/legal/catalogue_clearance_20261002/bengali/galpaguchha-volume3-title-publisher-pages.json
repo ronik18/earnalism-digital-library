@@ -1,0 +1,71 @@
+{
+  "receipt": {
+    "url": "https://bn.wikisource.org/w/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&titles=%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29.djvu%2F%E0%A7%A8%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29.djvu%2F%E0%A7%A7%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29.djvu%2F%E0%A7%AB&format=json&formatversion=2",
+    "retrieved_at": "2026-10-01T21:14:24.808000+00:00",
+    "response_sha256": "9d3ab37b3a381b09b396fe176002bb08fd7dc0a64564067dd7459ba62203f92d"
+  },
+  "data": {
+    "batchcomplete": true,
+    "query": {
+      "pages": [
+        {
+          "pageid": 16173,
+          "ns": 104,
+          "title": "পাতা:গল্পগুচ্ছ (তৃতীয় খণ্ড).djvu/২",
+          "revisions": [
+            {
+              "revid": 1813078,
+              "parentid": 1738739,
+              "timestamp": "2024-05-05T15:24:38Z",
+              "slots": {
+                "main": {
+                  "contentmodel": "proofread-page",
+                  "contentformat": "text/x-wiki",
+                  "content": "<noinclude><pagequality level=\"3\" user=\"Bodhisattwa\" /></noinclude>{{center|বিশ্বভারতী সংস্করণ জানুয়ারি ১৯২৭<br />\nপুনর্‌মুদ্রণ বৈশাখ ১৩৪২, চৈত্র ১৩৫৩, চৈত্র ১৩৫৬<br />\nবৈশাখ ১৩৬৪, শ্রাবণ ১৩৬৭<br />\nআষাঢ় ১৩৭৬: ১৮৯১ শক<br />\n{{dhr|8em}}\nগল্পগুচ্ছের তৃতীয় খণ্ডে, ১৩১০ পৌষ হইতে<br />\n১৩৪০ কার্তিকের মধ্যে প্রকাশিত গল্পগুলি<br />\nপ্রকাশের কালক্রমে সংকলিত হইল<br />\nপ্রত্যেক গল্পের শেষে প্রকাশকাল মুদ্রিত\n{{dhr|8em}}\n© বিশ্বভারতী ১৯৬৯\n{{dhr|8em}}\nপ্রকাশক বিশ্বভারতী গ্রন্থনবিভাগ<br />\n৫ দ্বারকানাথ ঠাকুর লেন। কলিকাতা ৭<br />\nমুদ্রক শ্রীকালীচরণ পাল<br />\nনবজীবন প্রেস। ৬৬ গ্রে স্ট্রীট। কলিকাতা ৬<br />\n৫.১}}<noinclude></noinclude>"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pageid": 54481,
+          "ns": 104,
+          "title": "পাতা:গল্পগুচ্ছ (তৃতীয় খণ্ড).djvu/১",
+          "revisions": [
+            {
+              "revid": 1682932,
+              "parentid": 1679257,
+              "timestamp": "2022-06-10T17:38:00Z",
+              "slots": {
+                "main": {
+                  "contentmodel": "proofread-page",
+                  "contentformat": "text/x-wiki",
+                  "content": "<noinclude><pagequality level=\"4\" user=\"Bodhisattwa\" /></noinclude>{{dhr|3em}}\n{{C|{{xxx-larger|'''গল্পগুচ্ছ'''}}}}\n{{dhr|2em}}\n{{C|{{xxx-larger|'''রবীন্দ্রনাথ ঠাকুর'''}}}}\n{{dhr|10em}}\n{{C|[[চিত্র:Visva-Bharati_University_logo.svg|80px]]}}\n{{C|{{larger|তৃ তী য় খ ণ্ড}}}}\n{{dhr|10em}}\n{{C|{{x-larger|বিশ্বভারতী গ্রন্থনবিভাগ}}}}\n{{dhr}}\n{{C|{{x-larger|কলিকাতা}}}}\n{{dhr|3em}}<noinclude></noinclude>"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pageid": 54484,
+          "ns": 104,
+          "title": "পাতা:গল্পগুচ্ছ (তৃতীয় খণ্ড).djvu/৫",
+          "revisions": [
+            {
+              "revid": 1417689,
+              "parentid": 1414689,
+              "timestamp": "2019-07-06T14:07:19Z",
+              "slots": {
+                "main": {
+                  "contentmodel": "proofread-page",
+                  "contentformat": "text/x-wiki",
+                  "content": "<noinclude><pagequality level=\"4\" user=\"Mohaguru\" /></noinclude>{{c|{{larger|গল্পগুচ্ছ}}\n\n{{xx-larger|তৃতীয় খণ্ড}}}}<noinclude></noinclude>"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,13 +1,236 @@
 {
   "slug": "the-principles-of-scientific-management",
   "source_url": "https://www.gutenberg.org/ebooks/6435",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #6435 Taylor 1911 monograph; Introduction and ChaptersI-II including FinestType subsection",
   "source_license": "Public domain; commercial use allowed in the United States.",
-  "source_hash": "cdc35806ba1cf7fbecfd0e9a62d7f7bac1f36a796ed2ff1883ee150d88e46865",
-  "content_hash": "a68caf0990ca361ef8755e3f79cde0be2c9bb621ee6488bec85dbe66a880e474",
-  "provenance_hash": "34bc32b93b612a6b064be5d98af9a2a066f33196290068561ab450979cf79050",
-  "rights_basis": "Public domain; official catalog marks copyright status as Public domain in the USA; source text header permits reuse in the United States.",
+  "source_hash": "1f504a9abe674ee616f13bf1db66ec25cbb1be0ff5fd9bfe70ab8593aa08a3b2",
+  "content_hash": "288b62bc7442e85367b7ca05290f466dee7a0314d7f0ab3d3252cc39618850df",
+  "provenance_hash": "b6e46635dcd809120020e0324737c74996924b29a83ee411ce7171935c1d2948",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1915, original publication 1911; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-08T20:18:00.492293+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #6435",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/6435",
+      "resolved_url": "https://www.gutenberg.org/ebooks/6435",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:54.085912+00:00",
+      "response_sha256": "5a1f5f9c9b791d5f6d1a80fb39d5168c8d85f74092f5cc7b212ec5cf6b26b7ce"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/6435.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/6435/pg6435.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:59.225027+00:00",
+      "response_sha256": "1f504a9abe674ee616f13bf1db66ec25cbb1be0ff5fd9bfe70ab8593aa08a3b2"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Taylor, Frederick Winslow, 1856-1915"
+      ],
+      "Title": [
+        "The Principles of Scientific Management"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Principles_of_Scientific_Management"
+      ],
+      "Credits": [
+        "Produced by Charles E. Nichols"
+      ],
+      "Reading Level": [
+        "Reading ease score: 47.8 (College-level). Difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "T: Technology"
+      ],
+      "Subject": [
+        "Industrial management",
+        "Industrial engineering",
+        "Management"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "6435"
+      ],
+      "Release Date": [
+        "Sep 1, 2004"
+      ],
+      "Last Update": [
+        "Nov 4, 2011"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "4977 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1014,
+          "length": 4718
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 5781,
+          "length": 30517
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 36350,
+          "length": 649
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 37039,
+          "length": 170726
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "cdc35806ba1cf7fbecfd0e9a62d7f7bac1f36a796ed2ff1883ee150d88e46865",
+    "legacy_content_sha256": "a68caf0990ca361ef8755e3f79cde0be2c9bb621ee6488bec85dbe66a880e474",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1915,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "5a1f5f9c9b791d5f6d1a80fb39d5168c8d85f74092f5cc7b212ec5cf6b26b7ce",
+    "url": "https://www.gutenberg.org/ebooks/6435",
+    "author_catalog_strings": [
+      "Taylor, Frederick Winslow, 1856-1915"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 4,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "d32f0bdd8af72e44a868496b9b366d89d354ea1a6fbf3338e2945fd2844a3a4b"
+      },
+      {
+        "id": "chapter-002",
+        "sha256": "d3bce9820aacf3f0c3a82d2a40931e82095f705f26d4312cb0836141496f63ae"
+      },
+      {
+        "id": "chapter-003",
+        "sha256": "d3dc6737ae6dc38a609951e5642ccb70160e08b0ebe71beb82569b3ce62b5a0b"
+      },
+      {
+        "id": "chapter-004",
+        "sha256": "ce03794ec55aecc0783b58cb64c4f2e54548bdb89ea538afc221bc9ed428ee1f"
+      }
+    ],
+    "content_sha256": "288b62bc7442e85367b7ca05290f466dee7a0314d7f0ab3d3252cc39618850df"
+  },
+  "canonical_chapter_restoration": {
+    "verified_at": "2026-10-01T21:23:53.140488+00:00",
+    "source_receipt_sha256": "1f504a9abe674ee616f13bf1db66ec25cbb1be0ff5fd9bfe70ab8593aa08a3b2",
+    "chapter_id": "chapter-004",
+    "source_boundary_start": "THE FINEST TYPE OF ORDINARY MANAGEMENT",
+    "source_boundary_end_excluded": "*** END OF THE PROJECT GUTENBERG",
+    "transformation": "Exact source section; preserve paragraph boundaries and unwrap physical line breaks; no lexical changes",
+    "legacy_content_sha256_preserved": "a68caf0990ca361ef8755e3f79cde0be2c9bb621ee6488bec85dbe66a880e474",
+    "current_reader_content_sha256": "288b62bc7442e85367b7ca05290f466dee7a0314d7f0ab3d3252cc39618850df",
+    "scope": "MISSING_CANONICAL_TEXT_RESTORATION_ONLY_NOT_RIGHTS_OR_PUBLICATION_APPROVAL"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "cdc35806ba1cf7fbecfd0e9a62d7f7bac1f36a796ed2ff1883ee150d88e46865",
+        "content_hash": "a68caf0990ca361ef8755e3f79cde0be2c9bb621ee6488bec85dbe66a880e474",
+        "provenance_hash": "34bc32b93b612a6b064be5d98af9a2a066f33196290068561ab450979cf79050",
+        "source_url": "https://www.gutenberg.org/ebooks/6435",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:35:50.622637+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "original_publication_year": 1911,
+  "country_of_origin": "United States",
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:35:50.622637+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/6435.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/6435/pg6435.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:59.225027+00:00",
+      "response_sha256": "1f504a9abe674ee616f13bf1db66ec25cbb1be0ff5fd9bfe70ab8593aa08a3b2"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 4,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1014,
+          "length": 4718
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 5781,
+          "length": 30517
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 36350,
+          "length": 649
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 37039,
+          "length": 170726
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "first_publication_evidence": {
+      "source_url": "https://www.gutenberg.org/ebooks/6435",
+      "source_sha256": "1f504a9abe674ee616f13bf1db66ec25cbb1be0ff5fd9bfe70ab8593aa08a3b2",
+      "verified_at": "2026-10-01T21:35:50.484609+00:00",
+      "original_publication_year": 1911,
+      "scope": "Original English author text and author introduction/preface only; publisher advertisements excluded",
+      "title_page_fact": "1911",
+      "boundary": "Full four ordered source units through Gutenberg END"
+    },
+    "author_death_evidence": [
+      "Taylor, Frederick Winslow, 1856-1915"
+    ],
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  }
 }

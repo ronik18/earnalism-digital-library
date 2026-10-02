@@ -1,0 +1,47 @@
+name: Catalogue clearance evidence 20261002
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'internal/legal/catalogue_clearance_20261002/**'
+      - 'scripts/verify_catalogue_clearance_batch.py'
+      - 'scripts/prepare_inactive_reader_segment_plans.py'
+      - 'scripts/test_prepare_inactive_reader_segment_plans.py'
+      - 'scripts/reconcile_*_source_evidence.py'
+      - 'scripts/test_reconcile_*_source_evidence.py'
+      - 'scripts/publication_manifest_conveyor.py'
+      - 'backend/rights_engine.py'
+      - 'backend/catalog_truth.py'
+      - 'backend/tests/test_backend_catalog_truth.py'
+      - 'backend/tests/test_api_public_catalog_projection.py'
+      - 'backend/publication_manifest.py'
+      - 'backend/tests/test_rights_engine.py'
+      - 'backend/licensed_text.py'
+      - 'backend/tests/test_licensed_text.py'
+      - 'backend/tests/test_publication_manifest.py'
+      - '.github/workflows/catalogue-clearance-20261002.yml'
+permissions:
+  contents: read
+jobs:
+  held-edition-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Install existing validation dependencies
+        run: |
+          python -m pip install -r backend/requirements-runtime.txt
+          python -m pip install beautifulsoup4 pytest
+      - name: Validate immutable evidence and fail-closed preparation
+        run: |
+          python -m unittest scripts.test_reconcile_bengali_source_evidence scripts.test_reconcile_english_source_evidence scripts.test_prepare_inactive_reader_segment_plans -v
+          python -m pytest backend/tests/test_licensed_text.py backend/tests/test_publication_manifest.py backend/tests/test_rights_engine.py -q
+          python -m pytest backend/tests/test_rights_decision_gate.py backend/tests/test_backend_catalog_truth.py backend/tests/test_api_public_catalog_projection.py backend/tests/test_catalog_exclusion_parity.py backend/tests/test_reader_segment_promotion_safeguards.py -q
+          python scripts/verify_catalogue_clearance_batch.py
+          python scripts/prepare_inactive_reader_segment_plans.py --output /tmp/inactive-reader-segment-plans.json
+          git diff --check

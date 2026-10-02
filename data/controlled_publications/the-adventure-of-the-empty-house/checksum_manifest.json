@@ -1,14 +1,14 @@
 {
   "slug": "the-adventure-of-the-empty-house",
-  "generated_at": "2026-07-03T20:07:48Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "2ed89c30eeed40144a511d282b5a7ea5c5f1462fea12f5ae803884eca4aaef1f"
+      "sha256": "e639b9f7212a098d3d0add590b7fc5534ba95b671f3160696163e8fc1422453b"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "8231ec864f1979f11e0f408bf533888c8ec0b85dc143d32f7cd9e56394a2b488"
+      "file": "chapters/chapter-001.json",
+      "sha256": "8e904b0c25559f73a98dd1884bdc447f4a567057905f19f2fe2270890a8cea9b"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "b63b4d826395bc802b4bfde37f98d277eeb44673862b202faa9e022ad494be7b"
+      "sha256": "8739f75c7d611542a56e4f9962ea53188788b114d807ba84471f7204e7b13614"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "e5e127587d0aa04b1adfe6c78bca68eaa302355c656fe05b199e7e70bbf06888"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "d6f2d3cc631c88b2ac6b6e6d45b5df8e743e21035fa081702148b0f89c396257"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "1e97d33c69253a1322ddec44d72832feef63eec6c9f83fb0620aebc350cb6036"
+      "sha256": "792c5e307b468ee13ea9dd6c536c3d16646c2d0794a7139fed7a37a7efe86b56"
     }
   ]
 }

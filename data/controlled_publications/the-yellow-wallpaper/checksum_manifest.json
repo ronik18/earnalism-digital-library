@@ -1,14 +1,14 @@
 {
   "slug": "the-yellow-wallpaper",
-  "generated_at": "2026-07-12T07:04:07Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "90c68577f9ae380459a07bfe55d20f76600647086d2befc12d8c6c0456542f1f"
+      "sha256": "07270912a4644c2aefdd3d44e90ab774a325c3a2ef5c2711a2397c64c7e293d5"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "89381517c32e162fe447cf41a4d2293f70b8854c50696d44e4992321a0b3ea25"
+      "file": "chapters/chapter-001.json",
+      "sha256": "51306183ddbab8218525a1f2b1635f8af0016639c08abd1052788fd7f3498b53"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "90c8958326339f7979fa40e9914107476f39adf89cea16a585e34c3e5688ff2a"
+      "sha256": "b2bfe01a50e5382ee6484254992c0d0092301853fcdcf3ce66dbb6d08f229b7e"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "3203988ca4c0596b3cf0679ae0a56f275b1f21ab84949a1d80e418e5e2070548"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "5beb34f8788d0f5b5c4da0fbf331edef96e71d4874d102fa961b0b19124a637c"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "3a926569e8d46c8b198371f5d77bb633a6a41fa73d73e2f54ff5c636580cb8a4"
+      "sha256": "8256d27ab4039529143278e3956dccd29bbbc63c0d3261108e6165fd5c26bc58"
     }
   ]
 }

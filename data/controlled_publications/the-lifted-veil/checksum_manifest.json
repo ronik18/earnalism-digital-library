@@ -1,14 +1,22 @@
 {
   "slug": "the-lifted-veil",
-  "generated_at": "2026-07-03T20:07:47Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "fb5f2baededb0dfa7fb5f9489ecd6390b9ad8542ba2f2096e3c63d9cc55d1dfb"
+      "sha256": "3978f97e8445674292bd6ad743ae6340f8dbe17790a5ab6f2e0b9f396657b7ca"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "7727cdc7d36b0bc49ccae3c9c975b83da4403bbcafcfd3931f83e77b14951200"
+      "file": "chapters/chapter-000.json",
+      "sha256": "26d3c73adaf315536e740f52fea7d951bb2e35fbf265215a947250ce788bc4fa"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "50aaf3b3ac3880dca08bd5ab8b5b2fb869761885937251ba51694379e3adc523"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "aa9ce42d5bceef133265f1bd9bdf3d9c8ca70fd7128c0f19719bf130a905a1c2"
     },
     {
       "file": "highlight_sync.json",
@@ -16,23 +24,19 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "af4782533a36ed1362bef06a292438f3082f87df1c97dd46fd8393345df4e8cb"
+      "sha256": "97929fa7fa0a1650a83c5022e7100765ab43253e6e0545bef6eedba9b8b40b41"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "0d52710c092563bb704a9dc97cfbad7eb230881722e219335a84954f93eb699c"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "9db3e6b1e0d52ff3c6cbe25cb20595b66ff51b34337ca44cfe04b0beffa218b8"
+      "sha256": "5a602b94ee01b76ac62326d017e2945a3dbde7d2db0aa1726664ce42595a311f"
     },
     {
       "file": "source_evidence.json",
-      "sha256": "af6a6662de70d0ab939eef192e75533c5c3052d8f5ffe5b829c62ed78731116e"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "fa2128719bfb107386fb0e44fa8a8ce721cf435a737ff738bf9552db5d7ec292"
-    },
-    {
-      "file": "chapters/chapter-002.json",
-      "sha256": "54cca76528a8f61f8024406bd99e019e0c6e30c13cf60ca0a04bb41f11c47b6e"
+      "sha256": "dea40fc6a8c4debb22fe8d2024a41cc7d10f14c6679f8690efdb9de0f0405cf1"
     }
   ]
 }

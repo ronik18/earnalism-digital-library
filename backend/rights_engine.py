@@ -15,6 +15,10 @@ RIGHTS_METADATA_FIELDS = [
     "author_name",
     "author_death_year",
     "original_publication_year",
+    "publication_upper_bound_year",
+    "publication_upper_bound_evidence",
+    "source_sha256",
+    "content_sha256",
     "country_of_origin",
     "source_url",
     "source_name",
@@ -143,6 +147,38 @@ def rights_metadata_for_book(book: dict[str, Any]) -> dict[str, Any]:
     return metadata
 
 
+def _verified_expired_publication_bound(metadata: dict[str, Any], *, current_year: int) -> bool:
+    """A documented published-by bound is not a fabricated original first date.
+
+    India-only: require the conservative publication+60 bound to have expired,
+    in addition to the independent author/translator/edition checks below.
+    Evidence is bound to the exact selected source and manuscript identity.
+    """
+    evidence = metadata.get("publication_upper_bound_evidence")
+    if not isinstance(evidence, dict) or _lower(metadata.get("publication_region")) not in REGION_INDIA:
+        return False
+    year = _year(metadata.get("publication_upper_bound_year"))
+    if not year or year + 60 >= current_year or evidence.get("year") != year:
+        return False
+    for name in ("source_sha256", "content_sha256"):
+        digest = metadata.get(name)
+        if not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest) or evidence.get(name) != digest:
+            return False
+    receipt = evidence.get("receipt")
+    if not isinstance(receipt, dict) or receipt.get("http_status") != 200:
+        return False
+    try:
+        accessed_at = datetime.fromisoformat(_text(receipt.get("accessed_at")).replace("Z", "+00:00"))
+    except ValueError:
+        return False
+    if accessed_at.tzinfo is None or accessed_at.year > current_year:
+        return False
+    url = urlparse(_text(receipt.get("requested_url")))
+    return bool(url.scheme == "https" and url.hostname and not url.username and not url.password
+        and re.fullmatch(r"[0-9a-f]{64}", _text(receipt.get("response_sha256")))
+        and _text(receipt.get("accessed_at")) and _text(evidence.get("basis")))
+
+
 def evaluate_rights(book: dict[str, Any], *, current_year: int | None = None) -> RightsDecision:
     current_year = current_year or _current_year()
     metadata = rights_metadata_for_book(book)
@@ -179,7 +215,7 @@ def evaluate_rights(book: dict[str, Any], *, current_year: int | None = None) ->
     elif not _is_public_domain_india(author_death_year, current_year=current_year):
         issues.append("author is not deterministically public domain in India.")
 
-    if not first_party_original and original_publication_year is None:
+    if not first_party_original and original_publication_year is None and not _verified_expired_publication_bound(metadata, current_year=current_year):
         issues.append("original_publication_year is required.")
         quarantine_only = True
 

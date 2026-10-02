@@ -3,11 +3,39 @@
   "title": "Jane Eyre",
   "author": "Charlotte Brontë",
   "language": "en",
-  "chapter_count": 38,
+  "chapter_count": 40,
   "chapters": [
     {
-      "id": "chapter-001",
+      "id": "chapter-000",
       "order": 1,
+      "title": "Preface",
+      "word_count": 807,
+      "reading_minutes": 3,
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "language_hint": "en",
+      "updated_at": "2026-10-02T03:25:38.460120+00:00"
+    },
+    {
+      "id": "chapter-000-note",
+      "order": 2,
+      "title": "Note to the Third Edition",
+      "word_count": 93,
+      "reading_minutes": 1,
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "language_hint": "en",
+      "updated_at": "2026-10-02T03:25:59.945714+00:00"
+    },
+    {
+      "id": "chapter-001",
+      "order": 3,
       "title": "CHAPTER I",
       "is_preview": true,
       "has_images": false,
@@ -22,7 +50,7 @@
     },
     {
       "id": "chapter-002",
-      "order": 2,
+      "order": 4,
       "title": "CHAPTER II",
       "is_preview": true,
       "has_images": false,
@@ -37,7 +65,7 @@
     },
     {
       "id": "chapter-003",
-      "order": 3,
+      "order": 5,
       "title": "CHAPTER III",
       "is_preview": true,
       "has_images": false,
@@ -52,7 +80,7 @@
     },
     {
       "id": "chapter-004",
-      "order": 4,
+      "order": 6,
       "title": "CHAPTER IV",
       "is_preview": true,
       "has_images": false,
@@ -67,7 +95,7 @@
     },
     {
       "id": "chapter-005",
-      "order": 5,
+      "order": 7,
       "title": "CHAPTER V",
       "is_preview": true,
       "has_images": false,
@@ -82,7 +110,7 @@
     },
     {
       "id": "chapter-006",
-      "order": 6,
+      "order": 8,
       "title": "CHAPTER VI",
       "is_preview": true,
       "has_images": false,
@@ -97,7 +125,7 @@
     },
     {
       "id": "chapter-007",
-      "order": 7,
+      "order": 9,
       "title": "CHAPTER VII",
       "is_preview": true,
       "has_images": false,
@@ -112,7 +140,7 @@
     },
     {
       "id": "chapter-008",
-      "order": 8,
+      "order": 10,
       "title": "CHAPTER VIII",
       "is_preview": true,
       "has_images": false,
@@ -127,7 +155,7 @@
     },
     {
       "id": "chapter-009",
-      "order": 9,
+      "order": 11,
       "title": "CHAPTER IX",
       "is_preview": true,
       "has_images": false,
@@ -142,7 +170,7 @@
     },
     {
       "id": "chapter-010",
-      "order": 10,
+      "order": 12,
       "title": "CHAPTER X",
       "is_preview": true,
       "has_images": false,
@@ -157,7 +185,7 @@
     },
     {
       "id": "chapter-011",
-      "order": 11,
+      "order": 13,
       "title": "CHAPTER XI",
       "is_preview": true,
       "has_images": false,
@@ -172,7 +200,7 @@
     },
     {
       "id": "chapter-012",
-      "order": 12,
+      "order": 14,
       "title": "CHAPTER XII",
       "is_preview": true,
       "has_images": false,
@@ -187,7 +215,7 @@
     },
     {
       "id": "chapter-013",
-      "order": 13,
+      "order": 15,
       "title": "CHAPTER XIII",
       "is_preview": true,
       "has_images": false,
@@ -202,7 +230,7 @@
     },
     {
       "id": "chapter-014",
-      "order": 14,
+      "order": 16,
       "title": "CHAPTER XIV",
       "is_preview": true,
       "has_images": false,
@@ -217,7 +245,7 @@
     },
     {
       "id": "chapter-015",
-      "order": 15,
+      "order": 17,
       "title": "CHAPTER XV",
       "is_preview": true,
       "has_images": false,
@@ -232,7 +260,7 @@
     },
     {
       "id": "chapter-016",
-      "order": 16,
+      "order": 18,
       "title": "CHAPTER XVI",
       "is_preview": true,
       "has_images": false,
@@ -247,7 +275,7 @@
     },
     {
       "id": "chapter-017",
-      "order": 17,
+      "order": 19,
       "title": "CHAPTER XVII",
       "is_preview": true,
       "has_images": false,
@@ -262,7 +290,7 @@
     },
     {
       "id": "chapter-018",
-      "order": 18,
+      "order": 20,
       "title": "CHAPTER XVIII",
       "is_preview": true,
       "has_images": false,
@@ -277,7 +305,7 @@
     },
     {
       "id": "chapter-019",
-      "order": 19,
+      "order": 21,
       "title": "CHAPTER XIX",
       "is_preview": true,
       "has_images": false,
@@ -292,7 +320,7 @@
     },
     {
       "id": "chapter-020",
-      "order": 20,
+      "order": 22,
       "title": "CHAPTER XX",
       "is_preview": true,
       "has_images": false,
@@ -307,7 +335,7 @@
     },
     {
       "id": "chapter-021",
-      "order": 21,
+      "order": 23,
       "title": "CHAPTER XXI",
       "is_preview": true,
       "has_images": false,
@@ -322,7 +350,7 @@
     },
     {
       "id": "chapter-022",
-      "order": 22,
+      "order": 24,
       "title": "CHAPTER XXII",
       "is_preview": true,
       "has_images": false,
@@ -337,7 +365,7 @@
     },
     {
       "id": "chapter-023",
-      "order": 23,
+      "order": 25,
       "title": "CHAPTER XXIII",
       "is_preview": true,
       "has_images": false,
@@ -352,7 +380,7 @@
     },
     {
       "id": "chapter-024",
-      "order": 24,
+      "order": 26,
       "title": "CHAPTER XXIV",
       "is_preview": true,
       "has_images": false,
@@ -367,7 +395,7 @@
     },
     {
       "id": "chapter-025",
-      "order": 25,
+      "order": 27,
       "title": "CHAPTER XXV",
       "is_preview": true,
       "has_images": false,
@@ -382,7 +410,7 @@
     },
     {
       "id": "chapter-026",
-      "order": 26,
+      "order": 28,
       "title": "CHAPTER XXVI",
       "is_preview": true,
       "has_images": false,
@@ -397,7 +425,7 @@
     },
     {
       "id": "chapter-027",
-      "order": 27,
+      "order": 29,
       "title": "CHAPTER XXVII",
       "is_preview": true,
       "has_images": false,
@@ -412,7 +440,7 @@
     },
     {
       "id": "chapter-028",
-      "order": 28,
+      "order": 30,
       "title": "CHAPTER XXVIII",
       "is_preview": true,
       "has_images": false,
@@ -427,7 +455,7 @@
     },
     {
       "id": "chapter-029",
-      "order": 29,
+      "order": 31,
       "title": "CHAPTER XXIX",
       "is_preview": true,
       "has_images": false,
@@ -442,7 +470,7 @@
     },
     {
       "id": "chapter-030",
-      "order": 30,
+      "order": 32,
       "title": "CHAPTER XXX",
       "is_preview": true,
       "has_images": false,
@@ -457,7 +485,7 @@
     },
     {
       "id": "chapter-031",
-      "order": 31,
+      "order": 33,
       "title": "CHAPTER XXXI",
       "is_preview": true,
       "has_images": false,
@@ -472,7 +500,7 @@
     },
     {
       "id": "chapter-032",
-      "order": 32,
+      "order": 34,
       "title": "CHAPTER XXXII",
       "is_preview": true,
       "has_images": false,
@@ -487,7 +515,7 @@
     },
     {
       "id": "chapter-033",
-      "order": 33,
+      "order": 35,
       "title": "CHAPTER XXXIII",
       "is_preview": true,
       "has_images": false,
@@ -502,7 +530,7 @@
     },
     {
       "id": "chapter-034",
-      "order": 34,
+      "order": 36,
       "title": "CHAPTER XXXIV",
       "is_preview": true,
       "has_images": false,
@@ -517,7 +545,7 @@
     },
     {
       "id": "chapter-035",
-      "order": 35,
+      "order": 37,
       "title": "CHAPTER XXXV",
       "is_preview": true,
       "has_images": false,
@@ -532,7 +560,7 @@
     },
     {
       "id": "chapter-036",
-      "order": 36,
+      "order": 38,
       "title": "CHAPTER XXXVI",
       "is_preview": true,
       "has_images": false,
@@ -547,7 +575,7 @@
     },
     {
       "id": "chapter-037",
-      "order": 37,
+      "order": 39,
       "title": "CHAPTER XXXVII",
       "is_preview": true,
       "has_images": false,
@@ -562,7 +590,7 @@
     },
     {
       "id": "chapter-038",
-      "order": 38,
+      "order": 40,
       "title": "CHAPTER XXXVIII—CONCLUSION",
       "is_preview": true,
       "has_images": false,
@@ -577,6 +605,8 @@
     }
   ],
   "preview_chapter_ids": [
+    "chapter-000",
+    "chapter-000-note",
     "chapter-001",
     "chapter-002",
     "chapter-003",

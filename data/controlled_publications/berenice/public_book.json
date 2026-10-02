@@ -44,8 +44,8 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 3211,
-      "reading_minutes": 14,
+      "word_count": 3132,
+      "reading_minutes": 13,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
@@ -53,9 +53,9 @@
       "updated_at": "2026-07-03T20:07:47Z"
     }
   ],
-  "source_hash": "de65134685ef354f51cfd071587face0fbd7296e09bc5dc9a693179f0b0ab253",
-  "content_hash": "a63a4c21c87b7ee5a1bff8c6e100feefdf9dafd2fe39203b1df4173dcd8f5dc7",
-  "provenance_hash": "f4d2fe8067652c02eecde243c12e29f771e8c6d033c1b7d4f5ec879cf6a628d7",
+  "source_hash": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e",
+  "content_hash": "cc8ce45fafe29474e2f5384ed604c86312654a7e731cf73a6b57eede6e298643",
+  "provenance_hash": "b61876575bc649e0399ccd6971850b7cb41b9d5aa65bd2637411231f3c542744",
   "rights_basis": "Edgar Allan Poe died 1849; first published 1835. Public domain in India and the U.S.",
   "rights_tier": "A",
   "verification_status": "approved",

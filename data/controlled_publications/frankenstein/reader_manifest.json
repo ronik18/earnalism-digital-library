@@ -12,13 +12,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 1199,
+      "word_count": 1198,
       "reading_minutes": 5,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
       "uploaded_at": "2026-07-03T20:07:47Z",
-      "updated_at": "2026-07-03T20:07:47Z"
+      "updated_at": "2026-10-02T03:25:38.460120+00:00"
     },
     {
       "id": "chapter-002",
@@ -218,12 +218,12 @@
     {
       "id": "chapter-015",
       "order": 15,
-      "title": "Chapter 11. “It is with considerable difficulty that I remember the original era of",
+      "title": "Chapter 11",
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 2896,
-      "reading_minutes": 13,
+      "word_count": 2905,
+      "reading_minutes": 12,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],

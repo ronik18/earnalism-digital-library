@@ -1,14 +1,14 @@
 {
   "slug": "the-purloined-letter",
-  "generated_at": "2026-07-03T20:07:49Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "12d785fc5c7091756b9ef88ab34c19c8e94e90f29843b108045d97bd0f042ed9"
+      "sha256": "2234e7301f2766040d7bf292604213a8213a10f0d411cf1b53a802bfed761844"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "485b89a0872f1a7815a4b4261110a6987709c51eedddb49c50c677ea6eb050b2"
+      "file": "chapters/chapter-001.json",
+      "sha256": "341d1f690a29b56e7d975ed77977370a21e28cd15bf9c432888757ee3f9380f9"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "b3a63ad3cb0a48702a5fa94009c2ff4eb9357291bb39bbf820ba72b3a6f22170"
+      "sha256": "1a73f7773fc04e88d4e0750118b3e19a33fdf1fb44d507b31349a05e9b9bb1d5"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "3c75563cdff2ab7acd23828746882c0eb6bc323ebc797e683adf3af2d943cb8b"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "bd42da9003f879eea7c3746be87d491085f336a51b1363ed44d61f35d3402f33"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "23d67370acaeb2f78188f15d55ef5c4512147b593a17d8c55d071629474bdc95"
+      "sha256": "8fa89d00dcd477025822aa3fb9510f691e8cf11723f403c9b1674ecd036a6a0f"
     }
   ]
 }

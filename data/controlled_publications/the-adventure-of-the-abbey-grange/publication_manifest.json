@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-abbey-grange",
+  "title": "The Adventure of the Abbey Grange",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
+    "content_hash": "3ab754df655e74c016007890d7d3f30c776a6618864501d3e066d9c6f10ff7ce",
+    "provenance_hash": "c75dcaf0216bde7b3f528d069d07e5560b40577f2b48bb8a6148e780243167ae",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "b62f0defba91b496657f04003a728396cb86f570fbef3e190a5a7f8a01818f95",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Abbey Grange",
+        "word_count": 9233,
+        "sha256": "64157f3db639a48dadb1f501fb1336824120adeda9dbfd23087533249da164ab"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "2ea653102e409fd21b57cfeb0ab27ac32a8245c4ffbf48aef9f1089acff6b13e"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "409e82a8a72ce8d1eac6693e64aef0302c10b727e08386d931bbad547e89bb46",
+    "reader_manifest": "bc9ea797dc69442e009bddccf9476ed6c12d27a968768bda6bd04878745459c3",
+    "source_evidence": "2ea653102e409fd21b57cfeb0ab27ac32a8245c4ffbf48aef9f1089acff6b13e",
+    "approval_evidence": "83ac7bfe8782d7286ffa4af8956de0b2052a62ddad92f38df3d9c2c13eae287e"
+  },
+  "manifest_sha256": "d5c76c3d8ca70b6f67e426a85ac1d2edfffcc942d097e8ff0211859cf9716c64"
+}

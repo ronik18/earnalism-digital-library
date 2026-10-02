@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-blue-carbuncle",
+  "title": "The Adventure of the Blue Carbuncle",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "content_hash": "22f789b09fdde1521b0f78827fc5549ca91a4091747856ce209c31ac2431aad9",
+    "provenance_hash": "a6ea872c8078ca8588f1e7f7d6069e791391614d0e98ea06a3c63fbd8059ac81",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "21695784fbebbd8a48ab7ff873f3a08d1419b692c626d90fdf6b242a9eafe14c",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Blue Carbuncle",
+        "word_count": 7894,
+        "sha256": "d98fe6fa4985ca9fa05a7e4f8a6ce5e3d7646db1547c5c3e373dba184a6f6f64"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "533a4c7db9015add0ebcebd84ca262689e39cc316aaf1717a5d56407811ffc02"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "e9a9c6883787540d7049e4c962bb9c4ce488c0223ada8be6205ddc5cf41434e0",
+    "reader_manifest": "f32bd6eddf5ce3b187a963e77b5dac9c136270380db888fa71c1373d4e52b96d",
+    "source_evidence": "533a4c7db9015add0ebcebd84ca262689e39cc316aaf1717a5d56407811ffc02",
+    "approval_evidence": "1e582a15d3e07793295c2363b5958d847f1a2de68c70594cf2b55c4fa712e762"
+  },
+  "manifest_sha256": "69814b079f590691e2e9f800bdc8ad1fa1c1820d958e771d0ece585c68993490"
+}

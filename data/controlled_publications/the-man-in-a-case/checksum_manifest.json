@@ -1,14 +1,14 @@
 {
   "slug": "the-man-in-a-case",
-  "generated_at": "2026-07-03T20:07:49Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "1571c64769f6d9dbe3fc7bde03bf46221af77428ee98e8320c70d4ee3f2b14de"
+      "sha256": "18a5e4d79ab446ae76aa0880f2a236b791a9f5a3d7afb42114841b363b1cf0f8"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "ea6bb374917c656cedc1c0503c88d98e5b4e7a4b628ee49649dcfb9fb034afe5"
+      "file": "chapters/chapter-001.json",
+      "sha256": "91fe6eb0e770e743a46d29bf4f7901340c71be0eb2e43542bef68cc85ae73cf8"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "47449d254cdb75729d7343cb4edb2f994b1e01eea54b63b9751109d1017c03db"
+      "sha256": "4a27a94dffde4f8365ce5a38b079d8cc38611d4c28c22f4eb621d26d76d89a96"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "acb572bfb7711d1ebb18a1836bccb21343e944f108d04a97a5676673974e84f9"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "ab1f06d66d7f65a4a862b99a8e23c43a2e66579b43fab0ca89d340edb183344f"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "90e79541a3067517b762ac7633e792d93ef5324e19728643b66f26e8c467c77d"
+      "sha256": "095ac34a3b3e5c609f5a97d9a2dbf83cffb29361e5574d83ab305c3634af3a27"
     }
   ]
 }

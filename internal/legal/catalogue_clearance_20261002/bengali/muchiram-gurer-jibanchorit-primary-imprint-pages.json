@@ -1,0 +1,206 @@
+{
+  "slug": "muchiram-gurer-jibanchorit",
+  "index": "মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf",
+  "receipt": {
+    "url": "https://bn.wikisource.org/w/api.php?action=query&prop=revisions&titles=%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AE%E0%A7%81%E0%A6%9A%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AE+%E0%A6%97%E0%A7%81%E0%A6%A1%E0%A6%BC%E0%A7%87%E0%A6%B0+%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A6%A8%E0%A6%9A%E0%A6%B0%E0%A6%BF%E0%A6%A4+-+%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%AE%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.pdf%2F%E0%A7%A7%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AE%E0%A7%81%E0%A6%9A%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AE+%E0%A6%97%E0%A7%81%E0%A6%A1%E0%A6%BC%E0%A7%87%E0%A6%B0+%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A6%A8%E0%A6%9A%E0%A6%B0%E0%A6%BF%E0%A6%A4+-+%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%AE%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.pdf%2F%E0%A7%A8%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AE%E0%A7%81%E0%A6%9A%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AE+%E0%A6%97%E0%A7%81%E0%A6%A1%E0%A6%BC%E0%A7%87%E0%A6%B0+%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A6%A8%E0%A6%9A%E0%A6%B0%E0%A6%BF%E0%A6%A4+-+%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%AE%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.pdf%2F%E0%A7%A9%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AE%E0%A7%81%E0%A6%9A%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AE+%E0%A6%97%E0%A7%81%E0%A6%A1%E0%A6%BC%E0%A7%87%E0%A6%B0+%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A6%A8%E0%A6%9A%E0%A6%B0%E0%A6%BF%E0%A6%A4+-+%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%AE%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.pdf%2F%E0%A7%AA%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AE%E0%A7%81%E0%A6%9A%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AE+%E0%A6%97%E0%A7%81%E0%A6%A1%E0%A6%BC%E0%A7%87%E0%A6%B0+%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A6%A8%E0%A6%9A%E0%A6%B0%E0%A6%BF%E0%A6%A4+-+%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%AE%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.pdf%2F%E0%A7%AB%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AE%E0%A7%81%E0%A6%9A%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AE+%E0%A6%97%E0%A7%81%E0%A6%A1%E0%A6%BC%E0%A7%87%E0%A6%B0+%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A6%A8%E0%A6%9A%E0%A6%B0%E0%A6%BF%E0%A6%A4+-+%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%AE%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.pdf%2F%E0%A7%AC&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2",
+    "retrieved_at": "2026-10-01T22:16:59.611273+00:00",
+    "response_sha256": "8d6a7404934f045e2c6ad80134ed901d729c24e5a22db772ecda0be82b912a1a"
+  },
+  "pages": [
+    {
+      "pageid": 804221,
+      "ns": 104,
+      "title": "পাতা:মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf/১",
+      "revisions": [
+        {
+          "revid": 1667363,
+          "parentid": 0,
+          "timestamp": "2022-01-31T14:30:26Z",
+          "slots": {
+            "main": {
+              "contentmodel": "proofread-page",
+              "contentformat": "text/x-wiki",
+              "content": "<noinclude><pagequality level=\"0\" user=\"Bodhisattwa\" /></noinclude><noinclude></noinclude>"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pageid": 804222,
+      "ns": 104,
+      "title": "পাতা:মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf/২",
+      "revisions": [
+        {
+          "revid": 1667364,
+          "parentid": 0,
+          "timestamp": "2022-01-31T14:30:38Z",
+          "slots": {
+            "main": {
+              "contentmodel": "proofread-page",
+              "contentformat": "text/x-wiki",
+              "content": "<noinclude><pagequality level=\"0\" user=\"Bodhisattwa\" /></noinclude><noinclude></noinclude>"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pageid": 804223,
+      "ns": 104,
+      "title": "পাতা:মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf/৩",
+      "revisions": [
+        {
+          "revid": 1667365,
+          "parentid": 0,
+          "timestamp": "2022-01-31T14:30:49Z",
+          "slots": {
+            "main": {
+              "contentmodel": "proofread-page",
+              "contentformat": "text/x-wiki",
+              "content": "<noinclude><pagequality level=\"0\" user=\"Bodhisattwa\" /></noinclude><noinclude></noinclude>"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pageid": 804224,
+      "ns": 104,
+      "title": "পাতা:মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf/৪",
+      "revisions": [
+        {
+          "revid": 1667366,
+          "parentid": 0,
+          "timestamp": "2022-01-31T14:31:32Z",
+          "slots": {
+            "main": {
+              "contentmodel": "proofread-page",
+              "contentformat": "text/x-wiki",
+              "content": "<noinclude><pagequality level=\"0\" user=\"Bodhisattwa\" /></noinclude><noinclude></noinclude>"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pageid": 804225,
+      "ns": 104,
+      "title": "পাতা:মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf/৬",
+      "revisions": [
+        {
+          "revid": 1667367,
+          "parentid": 0,
+          "timestamp": "2022-01-31T14:31:49Z",
+          "slots": {
+            "main": {
+              "contentmodel": "proofread-page",
+              "contentformat": "text/x-wiki",
+              "content": "<noinclude><pagequality level=\"0\" user=\"Bodhisattwa\" /></noinclude><noinclude></noinclude>"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pageid": 879543,
+      "ns": 104,
+      "title": "পাতা:মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf/৫",
+      "revisions": [
+        {
+          "revid": 1956242,
+          "parentid": 1956241,
+          "timestamp": "2026-06-11T01:07:49Z",
+          "slots": {
+            "main": {
+              "contentmodel": "proofread-page",
+              "contentformat": "text/x-wiki",
+              "content": "<noinclude><pagequality level=\"4\" user=\"Bodhisattwa\" /></noinclude>{{dhr}}\n{{কেন্দ্র|{{u|বঙ্কিম-শতবার্ষিক সংস্করণ}}}}\n{{dhr|13em}}\n{{কেন্দ্র|{{x-larger|মুচিরাম গুড়ের জীবনচরিত}}}}\n{{কেন্দ্র|[ ১২৯০ সালে মুদ্রিত প্রথম সংস্করণ হইতে ]}}\n{{dhr|15em}}<noinclude></noinclude>"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pageid": 803809,
+      "ns": 104,
+      "title": "পাতা:মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf/১০",
+      "revisions": [
+        {
+          "revid": 1962377,
+          "parentid": 1956249,
+          "timestamp": "2026-06-11T14:38:16Z",
+          "slots": {
+            "main": {
+              "contentmodel": "proofread-page",
+              "contentformat": "text/x-wiki",
+              "content": "<noinclude><pagequality level=\"3\" user=\"কমলেশ মণ্ডল\" /></noinclude>{{dhr|10em}}\n{{কেন্দ্র|{{larger|'''বিজ্ঞাপন'''}}}}\n\n{{ফাঁক}}পাঠকদিগকে বলিয়া দেওয়া আবশ্যক যে, এই গ্রন্থ কোন ব্যক্তিবিশেষ বা শ্রেণীবিশেষের লোককে লক্ষ্য করিয়া লিখিত হয় নাই। সাধারণ সমাজ ভিন্ন, কাহারও প্রতি ইহাতে ব্যঙ্গ নাই। ইহাতে পাঠক যেরূপ মনুষ্যচরিত্র দেখিবেন, সেরূপ মনুষ্যচরিত্র সকল সমাজে, সকল কালেই বিদ্যমান। আধুনিক বাঙ্গালী সমাজ, এই গ্রন্থের বিশেষ লক্ষ্য বটে; কিন্তু তৎস্থিত কোন ব্যক্তিবিশেষ বা শ্রেণীবিশেষ তাহার লক্ষ্য নহে। যদি কেহ বিবেচনা করেন যে, তিনিই ইহার লক্ষ্য, তবে ভরসা করি, তিনি কথাটা মনে মনেই রাখিবেন। প্রকাশে তাঁহার গৌরব বৃদ্ধির সম্ভাবনা দেখি না।\n{{dhr|10em}}<noinclude></noinclude>"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pageid": 879544,
+      "ns": 104,
+      "title": "পাতা:মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf/৭",
+      "revisions": [
+        {
+          "revid": 1956246,
+          "parentid": 1956245,
+          "timestamp": "2026-06-11T01:11:09Z",
+          "slots": {
+            "main": {
+              "contentmodel": "proofread-page",
+              "contentformat": "text/x-wiki",
+              "content": "<noinclude><pagequality level=\"4\" user=\"Bodhisattwa\" /></noinclude>{{dhr|2em}}\n{{কেন্দ্র|<poem>{{xxxx-larger|'''মুচিরাম গুড়ের জীবনচরিত'''}}\n{{dhr}}\n{{x-larger|বঙ্কিমচন্দ্র চট্টোপাধ্যায়}}\n[১৮৮৪ খ্রীষ্টাব্দে প্রথম প্রকাশিত]\n{{dhr|13em}}\nসম্পাদক:\n{{larger|শ্রীব্রজেন্দ্রনাথ বন্দ্যোপাধ্যায়}}\n{{larger|শ্রীসজনীকান্ত দাস}}\n{{dhr|13em}}\n{{larger|বঙ্গীয়-সাহিত্য-পরিষৎ}}\n২৪৩।১; আপার সারকুলার রোড\nকলিকাতা</poem>}}\n{{dhr|2em}}<noinclude></noinclude>"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pageid": 879545,
+      "ns": 104,
+      "title": "পাতা:মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf/৮",
+      "revisions": [
+        {
+          "revid": 1956247,
+          "parentid": 1955834,
+          "timestamp": "2026-06-11T01:12:15Z",
+          "slots": {
+            "main": {
+              "contentmodel": "proofread-page",
+              "contentformat": "text/x-wiki",
+              "content": "<noinclude><pagequality level=\"4\" user=\"Bodhisattwa\" /></noinclude>{{কেন্দ্র|<poem>প্রকাশক\nশ্রীরামকমল সিংহ\nবঙ্গীয়-সাহিত্য-পরিষৎ\nকলিকাতা\n{{dhr|12em}}\nপ্রথম সংস্করণ—ভাদ্র, ১৩৪৬\nদ্বিতীয় সংস্করণ—ভাদ্র, ১৩৫১\n{{larger|মূল্য আট আনা}}\n{{dhr|12em}}\nমুদ্রাকর—শ্রীনিবারণচন্দ্র দাস\nপ্রবাসী প্রেস, ১২০।২ আপার সারকুলার রোড, কলিকাতা\n৫—১০।৬।১৯৪৪</poem>}}<noinclude></noinclude>"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pageid": 879571,
+      "ns": 104,
+      "title": "পাতা:মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf/৯",
+      "revisions": [
+        {
+          "revid": 1986545,
+          "parentid": 1984575,
+          "timestamp": "2026-06-26T20:35:23Z",
+          "slots": {
+            "main": {
+              "contentmodel": "proofread-page",
+              "contentformat": "text/x-wiki",
+              "content": "<noinclude><pagequality level=\"3\" user=\"কমলেশ মণ্ডল\" /></noinclude>{{কেন্দ্র|{{larger|'''ভূমিকা'''}}}}\n\n{{ফাঁক}}১২৮৭ বঙ্গাব্দের আশ্বিন মাসে (১৮৮০ খ্রীষ্টাব্দের সেপ্টেম্বরে) ‘বঙ্গদর্শনে’ (পৃষ্ঠা ২৪১-২৬৪) “মুচিরাম গুড়ের জীবনচরিত” প্রকাশিত হয়। ইহা “শ্রীদর্পনারায়ণ পূতিতুণ্ড প্রণীত” বলিয়া উল্লিখিত ছিল। ঐ সময়ে বঙ্কিমচন্দ্র হুগলীর ডেপুটি ম্যাজিস‍্ট্রেট ছিলেন; মানসম্ভ্রম এবং অর্থাগমের দিক্ দিয়া তখন তাঁহার জীবন খুবই সুখপ্রদ ছিল বলিতে হইবে, এখানেই তিনি বর্দ্ধমানের বিভাগীয় কমিশনারের অস্থায়ী পার্সন্যাল অ্যাসিস্টাণ্ট নিযুক্ত হন। ঠিক এই কালেই মুচিরাম-জাতীয় জীবেদের প্রতি তিনি কেন এরূপ বিষদৃষ্টি নিক্ষেপ করেন, তাহা বুঝা কঠিন। বঙ্কিমের এক জন জীবনীকার তাঁহার অ্যাসিস্টাণ্ট সেক্রেটারি পদলাভ ও পদচ্যুতির সহিত এই রচনাকে সম্পর্কিত করিয়াছেন, কিন্তু তাহা ঠিক নহে। ১২৯০ বঙ্গাব্দে ‘মুচিরাম গুড়ের জীবনচরিত’ পুস্তকাকারে প্রকাশিত হইবার পূর্ব্বেই যদিও তিনি সেক্রেটারি পদের গ্রহণ ও পরিত্যাগের বিরক্তিকর অবস্থার সহিত পরিচিত হইয়া-ছিলেন, ‘মুচিরাম’ রচিত হয় তাঁহার সেক্রেটারি হইবার অন্ততঃ এক বৎসর পূর্ব্বে। এই প্রসঙ্গে শ্রীযুক্ত অক্ষয়কুমার দত্তগুপ্ত তাঁহার ‘বঙ্কিমচন্দ্র’ (১৩২৭) পুস্তকের ২৭৪ পৃষ্ঠায় লিখিয়াছেন—\n\n{{blockquote|...রাজপদে অনেক অযোগ্য ব্যক্তি সৌভাগ্যবলে অনুচিত সম্মান লাভ করে বটে এবং হয়ত যোগ্যতর অনেক ব্যক্তিও নানা ঘটনাচক্রে উপযুক্তরূপ সম্মান ও পদোন্নতি প্রাপ্ত হয়েন না, কিন্তু বঙ্কিমচন্দ্র নিজ জীবনে সরকারের নিকট হইতে কখনও অনাদর পান নাই। এমত অবস্থায় মুচিরামের সৃষ্টি কেন এ প্রশ্ন অনেকেরই মনে উঠিতে পারে। তিনি নিজ সার্ব্বিসে এবং হয়ত নিজ ষ্টেশনেই নিজের পার্শ্বে অনেক মুচিরাম, ঘটিরাম দেখিয়াছিলেন। তাহাদের ক্রিয়াকলাপ ও তাহাদের মধ্যে কাহারও কাহারও সরকারে প্রতিপত্তি নিশ্চয়ই তাঁহার মনে হাস্যরসের উদ্রেক করিয়াছিল। মুচিরামে বঙ্কিম পাঠকগণকে সেই হাস্যরসের ভাগ দিয়াছেন। অবশ্য ইহাতে হাস্যের সঙ্গে যে বিদ্রূপের বিষজ্বালা মিশ্রিত আছে তাহা অস্বীকার করা যায় না।}}\n\n{{ফাঁক}}বঙ্কিমচন্দ্রের জীবিতকালে ‘মুচিরাম গুড়ের জীবনচরিতে’র একটি মাত্র সংস্করণ “কলিকাতা, ৩৭ নং মেছুয়াবাজার ষ্ট্রীট—বীণাযন্ত্রে শ্রীশরচ্চন্দ্র দেব কর্তৃক মুদ্রিত” ও “শ্রীউমাচরণ বন্দ্যোপাধ্যায় কর্ত্তৃক প্রকাশিত” হইয়াছিল। পৃষ্ঠা-সংখ্যা ছিল ৪৭।\n\n{{ফাঁক}}‘বঙ্গদর্শন’ হইতে পুনর্মুদ্রণের সময়ে “নবম পরিচ্ছেদে”র শিরোনামাটি (পৃ. ১৭) ভ্রমক্রমে বাদ পড়িয়াছিল।<noinclude></noinclude>"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "additional_receipt": {
+    "url": "https://bn.wikisource.org/w/api.php?action=query&prop=revisions&titles=%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AE%E0%A7%81%E0%A6%9A%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AE+%E0%A6%97%E0%A7%81%E0%A6%A1%E0%A6%BC%E0%A7%87%E0%A6%B0+%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A6%A8%E0%A6%9A%E0%A6%B0%E0%A6%BF%E0%A6%A4+-+%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%AE%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.pdf%2F%E0%A7%AD%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AE%E0%A7%81%E0%A6%9A%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AE+%E0%A6%97%E0%A7%81%E0%A6%A1%E0%A6%BC%E0%A7%87%E0%A6%B0+%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A6%A8%E0%A6%9A%E0%A6%B0%E0%A6%BF%E0%A6%A4+-+%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%AE%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.pdf%2F%E0%A7%AE%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AE%E0%A7%81%E0%A6%9A%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AE+%E0%A6%97%E0%A7%81%E0%A6%A1%E0%A6%BC%E0%A7%87%E0%A6%B0+%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A6%A8%E0%A6%9A%E0%A6%B0%E0%A6%BF%E0%A6%A4+-+%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%AE%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.pdf%2F%E0%A7%AF%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AE%E0%A7%81%E0%A6%9A%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AE+%E0%A6%97%E0%A7%81%E0%A6%A1%E0%A6%BC%E0%A7%87%E0%A6%B0+%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A6%A8%E0%A6%9A%E0%A6%B0%E0%A6%BF%E0%A6%A4+-+%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%AE%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.pdf%2F%E0%A7%A7%E0%A7%A6&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2",
+    "retrieved_at": "2026-10-02T02:55:55.000965+00:00",
+    "response_sha256": "936200232c9f11ec2cf4b22e3994bd7700387b4dd2508b7d058becb633720c3f"
+  }
+}

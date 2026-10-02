@@ -1,14 +1,22 @@
 {
   "slug": "hungry-stones",
-  "generated_at": "2026-07-01T10:36:20Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "670a6b6676d67d887ef93e45a873b8cf1c3f7e14a59623a8388b652ecee277a1"
+      "sha256": "ef5bed805e2c6b1b476a1bb9c6d79028d4986540ca2ba17d0f09eb82fc33b344"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "657471e8be7a442278c25034bcf2e780432caaa8d3ef4b49e4654f7c598d3377"
     },
     {
       "file": "public_book.json",
-      "sha256": "99cff479fbff5b997cca23cf5354159770bcad3a9a743e10a88c70a8c88bf14e"
+      "sha256": "0004e4c8caecb2f45b911e0f2352a777ffe93d8f62fbc0bf1d234e4efc2466d2"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "4366e983e278311b4f19d74df1447ddfefca4483c5a7c33dcc5c98b83339cf59"
     },
     {
       "file": "reader_manifest.json",
@@ -16,11 +24,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "97f59f1cd3e360d8e6845bbb1f5a279103693ae6c745cb01d91b869c59dcb9df"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "f14c05f70ab9af0060b61682195341e17ee7f5638cb6196e15adb8e9c58292ca"
+      "sha256": "0eb0b74650c6ed3aabefc3856beee96866f2831feb75f3b1837faba6238fa26d"
     }
   ]
 }

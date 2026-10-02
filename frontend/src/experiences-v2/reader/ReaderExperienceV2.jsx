@@ -8,6 +8,8 @@ import ExperienceShell from "../shared/ExperienceShell";
 import "./reader-v2.css";
 import "./reader-v2.mobile.css";
 import BookCoverImage from "../../components/BookCoverImage";
+import LicensedTextNotice from "../../components/LicensedTextNotice";
+import { approvedTextLicense } from "../../lib/textLicense";
 import { PUBLIC_PREVIEW_COPY } from "../../lib/publicAccessCopy";
 import { loadReaderNotebook, readerNotebookKey, saveReaderNotebook } from "../../lib/readerNotebook";
 import {
@@ -210,7 +212,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
             : <ExperiencePanel eyebrow="Reading Pass"><p>{model.readingPass}</p><button type="button" onClick={() => onNavigate?.(model.visualFixture ? "signin" : "passes")}>{model.visualFixture ? "Sign in to check balance" : "Extend Reading Time"}</button></ExperiencePanel>}
         </aside>
 
-        <article className="reader-v2__canvas" data-reader-theme={settings.theme} data-reader-language={language} aria-busy={busy} lang={model.language || undefined}>
+        <article className="reader-v2__canvas" data-licensed-text={approvedTextLicense(model.book) ? "true" : undefined} data-reader-theme={settings.theme} data-reader-language={language} aria-busy={busy} lang={model.language || undefined}>
           <header className="reader-v2__chapter">
             <span aria-live="polite" aria-atomic="true">{model.chapterEyebrow}</span>
             <div className="reader-v2__toolbar">
@@ -244,6 +246,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
             {model.pageErrorRetryable && <button type="button" onClick={() => requestPage(navigationPage)}>Retry page</button>}
           </p>}
           {model.statusMessage && <p className="reader-v2__status" role="status">{model.statusMessage}</p>}
+          <LicensedTextNotice book={model.book} />
           <footer className="reader-v2__continuation">
             <span>{atEnd ? "You have reached the end of this book." : page <= 3 ? PUBLIC_PREVIEW_COPY : `Page ${page} of ${totalPages}`}</span>
             <nav aria-label="Page navigation">

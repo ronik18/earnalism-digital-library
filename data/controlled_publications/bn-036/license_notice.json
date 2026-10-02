@@ -1,0 +1,28 @@
+{
+  "schema_version": "earnalism.text-license.v1",
+  "slug": "bn-036",
+  "license": "CC-BY-SA-4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "attribution": "মেজদিদি by শরৎচন্দ্র চট্টোপাধ্যায়; Bengali Wikisource transcription and its contributors, credited through the exact edition/source revision and its scanned-page contributor histories.",
+  "changes": "Source/import headings and publication furniture omitted. Exact source-backed missing paragraphs, chapter order and typographical punctuation corrected where recorded. No new literary text composed.",
+  "scope": "CC BY-SA4.0 applies only to source-derived transcription and formatting, not independently owned covers, Earnalism branding, software or unrelated material. Underlying literary/edition rights and publication authorization are separate release gates.",
+  "disclaimer": "Delivered licensed text may be copied, printed and reused under CC BY-SA4.0 attribution and ShareAlike terms. This notice itself grants no publication, cover or audiobook authorization.",
+  "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%AE%E0%A7%87%E0%A6%9C%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF+%28%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC%2C+%E0%A7%A7%E0%A7%AF%E0%A7%AC%E0%A7%A9%29&oldid=1996454",
+  "contributors_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%AE%E0%A7%87%E0%A6%9C%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF+%28%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC%2C+%E0%A7%A7%E0%A7%AF%E0%A7%AC%E0%A7%A9%29&action=history",
+  "chapter_sha256": [
+    "c3b0c1656462ef328113d0be71fa0d9af2ad7bb15c058f3a762e4b69cbd6cc81",
+    "ebddc8a7763868e3d7f1d4e8ab6a60862caf5b9b340f54a118825f29a080ea5b",
+    "02223461713d91bd58a15031e22c8446c7f31b1ee5a8b3458a71107e9492fd8a",
+    "3f8f99462d09c3ccb22650d7d1f578f786d5c7c6973962cd1caae22e02c0fcef",
+    "ebb8ae4a21642ac6dd318d1279e78b765a552bba820c041978b5661df3fcaa0a",
+    "06fd4bfed8b0dc59291e8d39526fccf299a601a8b3bdb039b3a7393c1403a381",
+    "10bb90d23c3f497aba543ac3ce2095218fdcd313a29df6da116c78765a2c8c4e",
+    "2721a9b732149633b2e704f9666bfc6beaacac71705abb32ab0c81fb1d64117e",
+    "98d3e87e9fcca6136348e36123d7265a39b6987bd21df71a5bcdd0d2f60a1178",
+    "1b9db5abae19950acc6880e1a71f44dd2f80b0bc4b3df0c76e0478ec06556410",
+    "3e136858fb2435cd90270cc1a8a5819f568657e8a1dc319213fb2e0b2ae502ab",
+    "933f514cd024e2459cba25f90d29feb1a7c81eb10c380a5ee4a34d05b06ca3c0",
+    "50d6a9198b6406875b1bb7fd0f5ec7fc8821ad3d55d0bf1a89c1f0a60b9e3dcb",
+    "eca9253f8414833f31653439f1ea7d7a9b630ca4e24264a653cd41e739fb968b"
+  ]
+}

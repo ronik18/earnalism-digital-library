@@ -1,0 +1,4 @@
+# Byte-preserved primary-source receipts: upstream HTML contains trailing spaces.
+# Keep receipt hashes reproducible; normal source-code whitespace checks remain active.
+internal/legal/catalogue_clearance_20261002/bengali/book-0deb35c750-pinned-rendered-source.html -text whitespace=-blank-at-eol
+internal/legal/catalogue_clearance_20261002/bengali/book-c7f3ce526c-pinned-rendered-source.html -text whitespace=-blank-at-eol

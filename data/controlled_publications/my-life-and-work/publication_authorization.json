@@ -1,0 +1,48 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "my-life-and-work",
+  "edition": "Project Gutenberg #7213; exact selected canonical text; all original author/translator/coauthor rights considered separately; historical publication upper bound 1922",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_ONLY_NON_COVER_COMPONENTS",
+  "source_sha256": "f01c925ba4a15ccc6a5aa706418cf94149ddd7d8f390c65d132b8675435b00cf",
+  "content_sha256": "8309a5246622002f4fceef9f19e8e26218f0a06320cf53197a91296e0ee21c86",
+  "chapter_sha256": {
+    "chapter-001": "35d0e0af2b20f272b5126b827abd30e3dfd2e0fcd5b9e76210a418f942a3adff",
+    "chapter-002": "3875b63b6bd7eca5e7f210acf850df6165107467e799db960baa3364352144ee",
+    "chapter-003": "f1e341a75ac012884a468e3843aeef357a7d724c748a7c3f9a7206a2678f13fb",
+    "chapter-004": "778605fcc6b89e0e269b55261c8576875c6fd55b9ce0f8de81731c6368853725",
+    "chapter-005": "a3711a9b617569348e43e0389de82f084dc20b45152e9ff14609e40375da6e1b",
+    "chapter-006": "ca435d0cf473d7fb60ffcc0369a3087e25f84f844a68a916e6f272102dba516b",
+    "chapter-007": "4c1f3c5d3bf6e9a01a47243f46d3ff75d354f6341f9705e797095af43fc5c8e2",
+    "chapter-008": "235acbc290db006ca7895d772993f31f476165e9f8526111b4ec4b94a02a5a50",
+    "chapter-009": "2ae9063bb584d140fc1b0c93f06925a32d229101be3c7585b13ed184da762a79",
+    "chapter-010": "c0478e248b52e7bdb83d02d95b260e05ffe8713f7560d6a0ff9231897e0ebba5",
+    "chapter-011": "89e917a3df0e6a8460ec5ee1c10229d367b814a3a9ebe35f561db04f15a0f0a6",
+    "chapter-012": "919c9301c74a4bc85d7e441e433147fa9c30a4285492399ce0cf46c6f14b8306",
+    "chapter-013": "2b2f4ab1f0c4b4bf21933c8a0c92b4d0451604fc870adf272dfab327c42000ff",
+    "chapter-014": "29db71aa2d312829f209f3abd81df4a84cebcee47eaa148abfb50fcde1851011",
+    "chapter-015": "03217495e52aef1b622629a41dcc0ead6fbae125f30efeb40128ce314c930aa7",
+    "chapter-016": "a39968a9dfb2afbbe5216d559840656ab847469a505da9fd06f5ec69c3b98550",
+    "chapter-017": "ac1c4cb0ea7c9e7aefcc7301ed1a3d3fe415253ce35e3fa67d764ebea56ecfc2",
+    "chapter-018": "aafa4292d9cbdb23ca2ce35912d4676cbccf52dcd22ac5079ed00aac383c24e2",
+    "chapter-019": "071bc9b4d8c50a692a0542c4ccf5f91b434b07c9c0c8046fa51cb74ceef52f42",
+    "chapter-020": "346cce753523cc3d025903d1a229cf836456a32c0264c1bb8612820f6259b315"
+  },
+  "cover_provenance_sha256": null,
+  "cover_status": "DEFERRED_BY_OWNER_REQUEST_NO_COVER_DISPLAY_AUTHORIZED",
+  "authorized_by": "Automated executor under owner explicit autonomous clearance delegation; not a fabricated human or legal signature.",
+  "verified_at": "2026-10-01T21:54:02.732252+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Cover clearance/binding, trusted production registry acceptance, canonical controlled-live allowlist, actual runtime Reader readiness and protected gates must separately pass.",
+  "not_authorized": [
+    "cover_display",
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation"
+  ]
+}

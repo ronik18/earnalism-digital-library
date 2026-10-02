@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-boule-de-suif-boyd-standardebooks-noncover-text",
+  "edition_id": "boule-de-suif",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "db8fb2830f1a80ca53412a290536144ebe7da7376f2ad1a68ea3345daaf4f318",
+    "reader_manifest": "7ceb1427724c7c40b9df103f8aa183c832b98d260f869d13aa374ee5cea25838",
+    "source_evidence": "225fe86c8b92193d630722356c2b1069f1415aa6360c750cb954191a70cbfa9f",
+    "approval_evidence": "9cc911790c568d41a952a3e11ffcfe6018f054e1898578003c778f42e835d9b7",
+    "checksum_manifest": "9f42048b054b1a520c3321cc181907e9c8eac129d9fe6429ddbc5545d98602ec",
+    "publication_manifest": "ac8dc67b114605bbd2b9a6546cabb6f2de411dbf11a89991b78128d8c35d3650"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-02T03:12:53.006298+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "NEW exactErnestBoyd translation,1922KnopfVolume1 explicitlytranslatedbyBoyd inprimaryGoogleBooks metadata, StandardEbooks270paragraph story sourcecomment identifiesexactprintedvolume. UniversityTexasRansomCenter independentlyidentifiesErnestAugustusBoyd1887–1946; lifetime1922translation INSection22life+60expired2006. OriginalMaupassant1850–1893 text and FrenchMarseillaiseRougetdeLisle1760–1836 quotation provenpublished by1922; conservativeSection24latestpublished bound1922+60elapsed1982, noinventedoriginalfirstdate. CC0 1.0 worldwidegrant covers upstreameditorial/transcription adaptation, NOTthirdpartyart/cover. Completewhole selectedstory270paragraphs includinglyrics, nointro/endnotesadded. OldPG3077identityarchived, noprivateapprovaltransfer; cover/audioexcluded andruntimeheld.",
+  "evidence_sha256": [
+    "20fb37565e905e459b84bafc9fadf4e781d71b31a52756ba47700568a7b5c2a8",
+    "b5870a258c0a952f9db6b02c4dd5593f6a537b0b761cfe9155e0405213faad3e",
+    "282eb00635835dba3c10d66a5a9c4d302a436d4323d9ccdc4e40b30287f936ce",
+    "605a186f96870d1993b84199ed14709b833597c9eeac78d2d7fc69c2f454b554",
+    "fc3455677ff33b41f70012df7239691fb56b8bdd977ea187f524b0c2a863d079"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

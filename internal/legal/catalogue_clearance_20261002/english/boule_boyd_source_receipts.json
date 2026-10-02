@@ -1,0 +1,19 @@
+{
+  "standardebooks-boule-boyd": {
+    "text_receipt": {
+      "requested_url": "https://raw.githubusercontent.com/standardebooks/guy-de-maupassant_short-fiction_various-translators/master/src/epub/text/boule-de-suif.xhtml",
+      "resolved_url": "https://raw.githubusercontent.com/standardebooks/guy-de-maupassant_short-fiction_various-translators/master/src/epub/text/boule-de-suif.xhtml",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:04:35.325055+00:00",
+      "response_sha256": "605a186f96870d1993b84199ed14709b833597c9eeac78d2d7fc69c2f454b554"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Maupassant,Guyde,1850-1893"
+      ],
+      "Translator": [
+        "Boyd,ErnestAugustus,1887-1946"
+      ]
+    }
+  }
+}

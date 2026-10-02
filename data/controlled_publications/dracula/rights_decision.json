@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-dracula-pg345-noncover-text",
+  "edition_id": "dracula",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "e6955179cbed23986d257cf957378767493cf554b295c9d31d3e27700743b3d7",
+    "reader_manifest": "f51512441063fa5b19c8af4e6cb1130c9eda98897a242163416ec09fc321068d",
+    "source_evidence": "6322c3822db62956da4b1fac653e74bbbf02f79f39554bc236199605764f0cd9",
+    "approval_evidence": "530e4680a54206e656d9a517aee66ecd2002cc31465ef50e2003718ddcdd078a",
+    "checksum_manifest": "8f90eea59177b5b25a5054ab6c65fbef81f0eefe9ba04617e7c2e3b682559592",
+    "publication_manifest": "180d73176c03b8662d9ea7ebc1157db7303703898d58938e0d791929fe1107bb"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:52:27.631967+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1912, verified lifetime collection publication 1897 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "d67d7785d0a31feb7fa50d5dd2233eee643734062bee7226be8bba3fb4d14fa5",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "4a96f50ad7df460f80f1b69ca814b7514d7f178d24e0079cd6fd8a04e5faba24",
+    "96cd16eacdbfebae8fdda5591f66e0cc8ee76be18e0cd1aca02bc00615782d28",
+    "0ab0060ec9b89c62f3d33b57b08831aca532dc79aea59d9cd7f83cc0f2d1e1d0"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

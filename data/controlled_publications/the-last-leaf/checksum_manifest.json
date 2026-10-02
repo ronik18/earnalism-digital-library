@@ -1,14 +1,18 @@
 {
   "slug": "the-last-leaf",
-  "generated_at": "2026-07-12T07:04:07Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
-      "file": "approval_evidence.json",
-      "sha256": "5437d5fe63064e0285b7a3812aa9508f5352a5c879384f55b64dc8aa47bd79ee"
+      "file": "approval_evidence 2.json",
+      "sha256": "e4e07e7895fc94f495d641a83cf0dba9cbb4921e1bfe5eedd1eb5dcb16d023e7"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "a6933d874f08dd29ec86266e4aa92c516c00f11112c25d0c8b278af20db7f63f"
+      "file": "approval_evidence.json",
+      "sha256": "7996079600f47d4a2d4f4c464f0dc965c6ddb7a76fbc948da920a1d8af55d08e"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "f341245317464de578e0b7d21b54de270d7d189bce9d9068403e51d9f86afd2b"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +20,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "4ccef2d65df98f0d40cec1c62fa6853494f19131855e57018c8a0b58cb15365d"
+      "sha256": "8729f73b7b1f20a72e728ddde43d8edb8f244c2414096d19af602b364a2f6487"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "f7dd18c75a7ae20c808f7f4a32bf00c6de5199d5bf3d0006c7037ecb2de033cd"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +32,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "a8cad1ea38f5a794cf608d2b7fd2a397ca94a5471f14a3dc76ca0aeff5a7eafb"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "6cd5c963e4f4279e3b20e80ae6871ac5261b2506220a02b871c1b7c884962c7b"
+      "sha256": "72060f5e2666756e16495d949ac66911724a0742899ba767571168b44a776bd7"
     }
   ]
 }

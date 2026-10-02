@@ -1,13 +1,199 @@
 {
   "slug": "the-masque-of-the-red-death",
   "source_url": "https://www.gutenberg.org/ebooks/1064",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #1064; selected Poe original story; historical lifetime publication 1842; no modern scholarly/editorial text imported",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "2264be57608b30c4af99db7b1d430accae5a7c4d9da738ac04651f7ef74bc266",
-  "content_hash": "8e292e23a73729319a17d9aac397303b6311d97a0ede19a80514922c114c1dd0",
-  "provenance_hash": "fccc97a08521519d711236c769280c844fb91a421fca2976bfe8b149bbab6db1",
-  "rights_basis": "Edgar Allan Poe died 1849; first published 1842. Public domain in India and the U.S.",
+  "source_hash": "58e8a7186604d9693b0a49a2d131fa11b2a8ab0e14958df728883bbf35b42520",
+  "content_hash": "c517483495ef7266f533d077036a8e83bba53dc33cac60580cd895e757f637e3",
+  "provenance_hash": "134975b99b925552968ba69c64940ac5f867b5d19e983e21bd76276dbc5d0142",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1849, verified lifetime collection publication 1842 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-03T08:04:21.858867+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #1064",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1064",
+      "resolved_url": "https://www.gutenberg.org/ebooks/1064",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:05.747260+00:00",
+      "response_sha256": "71a08fa58d1e9892f142cc21f779961287760296e0431490ff2c76638b79bd54"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1064.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1064/pg1064.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:10.275501+00:00",
+      "response_sha256": "58e8a7186604d9693b0a49a2d131fa11b2a8ab0e14958df728883bbf35b42520"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Poe, Edgar Allan, 1809-1849"
+      ],
+      "Title": [
+        "The Masque of the Red Death"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Masque_of_the_Red_Death"
+      ],
+      "Credits": [
+        "Produced by Levent Kurnaz.  HTML version by Al Haines."
+      ],
+      "Reading Level": [
+        "Reading ease score: 73.3 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Horror tales, American"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "1064"
+      ],
+      "Release Date": [
+        "Jun 6, 2010"
+      ],
+      "Last Update": [
+        "Sep 30, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "5700 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 906,
+          "length": 13697
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "2264be57608b30c4af99db7b1d430accae5a7c4d9da738ac04651f7ef74bc266",
+    "legacy_content_sha256": "8e292e23a73729319a17d9aac397303b6311d97a0ede19a80514922c114c1dd0",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1849,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "71a08fa58d1e9892f142cc21f779961287760296e0431490ff2c76638b79bd54",
+    "url": "https://www.gutenberg.org/ebooks/1064",
+    "author_catalog_strings": [
+      "Poe, Edgar Allan, 1809-1849"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "c517483495ef7266f533d077036a8e83bba53dc33cac60580cd895e757f637e3"
+      }
+    ],
+    "content_sha256": "c517483495ef7266f533d077036a8e83bba53dc33cac60580cd895e757f637e3"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "2264be57608b30c4af99db7b1d430accae5a7c4d9da738ac04651f7ef74bc266",
+        "content_hash": "8e292e23a73729319a17d9aac397303b6311d97a0ede19a80514922c114c1dd0",
+        "provenance_hash": "fccc97a08521519d711236c769280c844fb91a421fca2976bfe8b149bbab6db1",
+        "source_url": "https://www.gutenberg.org/ebooks/1064",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:52:27.631967+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1842,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:52:27.631967+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1064.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1064/pg1064.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:10.275501+00:00",
+      "response_sha256": "58e8a7186604d9693b0a49a2d131fa11b2a8ab0e14958df728883bbf35b42520"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 906,
+          "length": 13697
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Edgar Allan Poe",
+      "creator_death_year": 1849,
+      "lifetime_publication_year": 1842,
+      "primary_historical_bibliography_receipt": {
+        "requested_url": "https://www.eapoe.org/Works/info/pt038.htm",
+        "resolved_url": "https://www.eapoe.org/Works/info/pt038.htm",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:50:22.768174+00:00",
+        "response_sha256": "8b47167b86297a08110fce0a3c0045bee8216c044f0c4fea3367cc0907a82033"
+      },
+      "historical_publication_excerpt": "Text-02b — “ The Mask of the Red Death. A Fantasy. ” — May 1842 — Graham's — (Mabbott text A) Text-03 — “The Mask of the Red Death.” — 1842 Text-03a — “The Mask of the Red Death” — 1842 — TGAPP (manuscript of title only) — (The title is lis",
+      "basis": "Historical printed-story publication verified before Poe death1849; selected RavenEdition text independently matches literal PG source; modern scholarly apparatus not imported."
+    },
+    "author_death_evidence": 1849,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1842,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "58e8a7186604d9693b0a49a2d131fa11b2a8ab0e14958df728883bbf35b42520",
+    "content_sha256": "c517483495ef7266f533d077036a8e83bba53dc33cac60580cd895e757f637e3",
+    "year": 1842,
+    "receipt": {
+      "requested_url": "https://www.eapoe.org/Works/info/pt038.htm",
+      "resolved_url": "https://www.eapoe.org/Works/info/pt038.htm",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:22.768174+00:00",
+      "response_sha256": "8b47167b86297a08110fce0a3c0045bee8216c044f0c4fea3367cc0907a82033"
+    },
+    "basis": "Historical printed-story publication verified before Poe death1849; selected RavenEdition text independently matches literal PG source; modern scholarly apparatus not imported.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  }
 }

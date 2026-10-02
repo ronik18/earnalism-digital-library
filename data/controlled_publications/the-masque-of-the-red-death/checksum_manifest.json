@@ -1,14 +1,18 @@
 {
   "slug": "the-masque-of-the-red-death",
-  "generated_at": "2026-07-12T07:04:07Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
-      "file": "approval_evidence.json",
-      "sha256": "7610a9cdc8fd218cadc524f332c1ad67c5161bb6bcb715f46eac90e27c413677"
+      "file": "approval_evidence 2.json",
+      "sha256": "9a0405a6e5ca46a57cc4fb0b79f6965e129001f2bcbf692544eb1c1da9ec71d6"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "8603626260ffb7888825569e3f326e7c5e656d371860da5ad6c1422d8cb25e2d"
+      "file": "approval_evidence.json",
+      "sha256": "d897301476c3d5efc0932d0caab402fd3da600012e43042921ffb28ce8180944"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "2df5040f80f4204a85826e5fcd3e5cddf501a4f9bcaed2175bdcb6b7cbf79008"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +20,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "6f262a70cde6b33baa22371aee5f511f3cb0def6ea3aabfe01637d34ba344237"
+      "sha256": "02639ccf1ac7fcf677ce6cf700bf69a6ce39598bec70658285ed9ee3edafeeb9"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "83be9ac6714a1943449958d5516c084da7aaf955b1cb97bc2ba2f043711b15fa"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +32,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "2412dc45bd1472e58217d8f6186482b1acb48f4780e8790172fa644c8752d03c"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "2d82010af3e039ba5e9ca47cb8deec9f76128470cae7386c02259575f73f61d2"
+      "sha256": "bceb16f5f428ac45dba3a98572877d5758710efbd555a5cd7fa093ca4ee79677"
     }
   ]
 }

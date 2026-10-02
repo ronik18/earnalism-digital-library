@@ -1,0 +1,136 @@
+{
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "titles": [
+    {
+      "slug": "book-88ded9b47c",
+      "edition": "Galpa-Dashak original1302/1895 sole-author Rabindranath Tagore edition",
+      "source_comparison": "EXACT_COMPLETE_SOURCE_VERIFIED",
+      "text_clearance": "COMPLETE_LOCAL_IN_TEXT_ONLY",
+      "runtime_exposed": false,
+      "cover_status": "DEFERRED"
+    },
+    {
+      "slug": "book-5704b31005",
+      "edition": "Galpa-Dashak original1302/1895 sole-author Rabindranath Tagore edition",
+      "source_comparison": "EXACT_COMPLETE_SOURCE_VERIFIED",
+      "text_clearance": "COMPLETE_LOCAL_IN_TEXT_ONLY",
+      "runtime_exposed": false,
+      "cover_status": "DEFERRED"
+    },
+    {
+      "slug": "book-bfc51280b3",
+      "edition": "Galpa-Dashak original1302/1895 sole-author Rabindranath Tagore edition",
+      "source_comparison": "EXACT_COMPLETE_SOURCE_VERIFIED",
+      "text_clearance": "COMPLETE_LOCAL_IN_TEXT_ONLY",
+      "runtime_exposed": false,
+      "cover_status": "DEFERRED"
+    },
+    {
+      "slug": "book-ef193ffc52",
+      "edition": "Galpa-Dashak original1302/1895 sole-author Rabindranath Tagore edition",
+      "source_comparison": "EXACT_COMPLETE_SOURCE_VERIFIED",
+      "text_clearance": "COMPLETE_LOCAL_IN_TEXT_ONLY",
+      "runtime_exposed": false,
+      "cover_status": "DEFERRED"
+    },
+    {
+      "slug": "book-b9d47814a8",
+      "edition": "Galpa-Dashak original1302/1895 sole-author Rabindranath Tagore edition",
+      "source_comparison": "EXACT_COMPLETE_SOURCE_VERIFIED",
+      "text_clearance": "COMPLETE_LOCAL_IN_TEXT_ONLY",
+      "runtime_exposed": false,
+      "cover_status": "DEFERRED"
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "edition": "Galpa-Dashak original1302/1895 sole-author Rabindranath Tagore edition",
+      "source_comparison": "EXACT_COMPLETE_SOURCE_VERIFIED",
+      "text_clearance": "COMPLETE_LOCAL_IN_TEXT_ONLY",
+      "runtime_exposed": false,
+      "cover_status": "DEFERRED"
+    },
+    {
+      "slug": "book-5461971092",
+      "edition": "Katha-Chatushtay original1301/1894 sole-author Rabindranath Tagore edition",
+      "source_comparison": "EXACT_COMPLETE_SOURCE_VERIFIED",
+      "text_clearance": "COMPLETE_LOCAL_IN_TEXT_ONLY",
+      "runtime_exposed": false,
+      "cover_status": "DEFERRED"
+    },
+    {
+      "slug": "book-95624627d5",
+      "edition": "Katha-Chatushtay original1301/1894 sole-author Rabindranath Tagore edition",
+      "source_comparison": "EXACT_COMPLETE_SOURCE_VERIFIED",
+      "text_clearance": "COMPLETE_LOCAL_IN_TEXT_ONLY",
+      "runtime_exposed": false,
+      "cover_status": "DEFERRED"
+    },
+    {
+      "slug": "book-5aedda79fe",
+      "edition": "Katha-Chatushtay original1301/1894 sole-author Rabindranath Tagore edition",
+      "source_comparison": "EXACT_COMPLETE_SOURCE_VERIFIED",
+      "text_clearance": "COMPLETE_LOCAL_IN_TEXT_ONLY",
+      "runtime_exposed": false,
+      "cover_status": "DEFERRED"
+    },
+    {
+      "slug": "book-a23625bf36",
+      "edition": "Katha-Chatushtay original1301/1894 sole-author Rabindranath Tagore edition",
+      "source_comparison": "EXACT_COMPLETE_SOURCE_VERIFIED",
+      "text_clearance": "COMPLETE_LOCAL_IN_TEXT_ONLY",
+      "runtime_exposed": false,
+      "cover_status": "DEFERRED"
+    },
+    {
+      "slug": "bn-035",
+      "edition": "BoroDidi Ashadh1329/1922 Sarat Chandra author edition",
+      "source_comparison": "EXACT_COMPLETE_SOURCE_VERIFIED",
+      "text_clearance": "COMPLETE_LOCAL_IN_TEXT_ONLY",
+      "runtime_exposed": false,
+      "cover_status": "DEFERRED"
+    },
+    {
+      "slug": "bn-059",
+      "edition": "Kamalakanter Daptar expanded1885 edition, Bankim with explicitly credited Akshay Chandra Sarkar and Rajkrishna Mukhopadhyay essays",
+      "source_comparison": "EXACT_COMPLETE_SOURCE_VERIFIED",
+      "text_clearance": "COMPLETE_LOCAL_IN_TEXT_ONLY",
+      "runtime_exposed": false,
+      "cover_status": "DEFERRED"
+    },
+    {
+      "slug": "bn-066",
+      "edition": "Anandamath second edition1290/1883, Bankim Chandra Chattopadhyay",
+      "source_comparison": "EXACT_COMPLETE_SOURCE_VERIFIED",
+      "text_clearance": "COMPLETE_LOCAL_IN_TEXT_ONLY",
+      "runtime_exposed": false,
+      "cover_status": "DEFERRED"
+    },
+    {
+      "slug": "mrinalini",
+      "edition": "Mrinalini third1874 author edition, Bankim Chandra Chattopadhyay",
+      "source_comparison": "EXACT_COMPLETE_SOURCE_VERIFIED",
+      "text_clearance": "COMPLETE_LOCAL_IN_TEXT_ONLY",
+      "runtime_exposed": false,
+      "cover_status": "DEFERRED"
+    },
+    {
+      "slug": "lokrahasya",
+      "edition": "Lokrahasya1939 centenary edition edited Brajendra Nath Bandyopadhyay and Sajanikanta Das; separately authored foreword excluded",
+      "source_comparison": "EXACT_COMPLETE_SOURCE_VERIFIED",
+      "text_clearance": "COMPLETE_LOCAL_IN_TEXT_ONLY",
+      "runtime_exposed": false,
+      "cover_status": "DEFERRED"
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "edition": "Muchiram Gurer Jibanchorit1944 second centenary edition edited Brajendra Nath Bandyopadhyay and Sajanikanta Das; foreword excluded,14 narrative chapters including source notes retained",
+      "source_comparison": "EXACT_COMPLETE_SOURCE_VERIFIED",
+      "text_clearance": "COMPLETE_LOCAL_IN_TEXT_ONLY",
+      "runtime_exposed": false,
+      "cover_status": "DEFERRED"
+    }
+  ],
+  "count": 16,
+  "root_indira_separately_owned": true,
+  "runtime_activation": false
+}

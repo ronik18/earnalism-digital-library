@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "rip-van-winkle",
+  "title": "Rip Van Winkle",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "3085b99a7b6a9d5f527dfb97351c858a6f7fc97f2c654570f5defbbfb50e5042",
+    "content_hash": "2011555cdb66a9be1a30c4fa4a31ca08393c0492f3dc94b62b8d83f0853f13ef",
+    "provenance_hash": "3828640b72ac06bf1884fbd427e1185eb0a45542ac514dc10f59cbbb64aac314",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "423caac3a219281c8bb50ddd72a48a692847e16a5559f1d4b8d539f2d72efff8",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Rip Van Winkle",
+        "word_count": 6773,
+        "sha256": "111a1b6e69273cf876626624c38cb36ac27798df89bfb1c7a25f079fe755e98a"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "bef16a7c5dbf06b20febd0fc4c8ee36a2dcc2ee0aac08220b10d8526f0ac33c7"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "ed29cd99f0b9c6474984ca06eb9e802703523e19916498c9b0536b149bdeb4ca",
+    "reader_manifest": "d7b2ec1e2256154939f2c549c7e014437069a1db446baef249a4ac464b0ff094",
+    "source_evidence": "bef16a7c5dbf06b20febd0fc4c8ee36a2dcc2ee0aac08220b10d8526f0ac33c7",
+    "approval_evidence": "4168ff1092fa23555ad4932b73a3cf48fb9fd16ce0f52291f23561bb448a19bd"
+  },
+  "manifest_sha256": "4b2dd7cc56212ee6f81c2c8021d0d7ac98ee5677b1c66163801d4e83bf88c4ad"
+}

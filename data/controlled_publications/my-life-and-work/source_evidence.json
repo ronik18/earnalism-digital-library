@@ -1,13 +1,489 @@
 {
   "slug": "my-life-and-work",
   "source_url": "https://www.gutenberg.org/ebooks/7213",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #7213; exact selected canonical text; all original author/translator/coauthor rights considered separately; historical publication upper bound 1922",
   "source_license": "Public domain; commercial use allowed in the United States.",
-  "source_hash": "0d6d9463085c9411e41dd19eed8fe9c8678708490bff6f17764224a6a4d701e5",
-  "content_hash": "732f86e53656c3ea2354d306f42616d82af69aae60c40845a651b2ee8ff7e7e8",
-  "provenance_hash": "88e5a40d94c44697246fb1cc266abef38a9ff8a954b546ff41313497a684ec01",
-  "rights_basis": "Public domain; official catalog marks copyright status as Public domain in the USA; source text header permits reuse in the United States.",
+  "source_hash": "f01c925ba4a15ccc6a5aa706418cf94149ddd7d8f390c65d132b8675435b00cf",
+  "content_hash": "8309a5246622002f4fceef9f19e8e26218f0a06320cf53197a91296e0ee21c86",
+  "provenance_hash": "5262402600885bc8f37e8972883a373a3d4f7fd966f8321c9ba5b0cdd6b36af3",
+  "rights_basis": "IN text only. Verified publication no later than 1922; original-author life+60 ends 2007, or conservative posthumous-publication upper bound+60 ends no later than 1982; every selected translator/coauthor latest death 1947, life+60 ends 2007. All bounds have elapsed by actual review2026. Unknown original first date stays unknown; no inference from US-only PG status.",
   "downloaded_at": "2026-06-08T20:17:55.633502+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #7213",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/7213",
+      "resolved_url": "https://www.gutenberg.org/ebooks/7213",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:59.380040+00:00",
+      "response_sha256": "336c4da46aaadab5e770eae358c31f6253b9b509a9a19f5b902fc6ca323299ed"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/7213.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/7213/pg7213.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:04.738731+00:00",
+      "response_sha256": "f01c925ba4a15ccc6a5aa706418cf94149ddd7d8f390c65d132b8675435b00cf"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Ford, Henry, 1863-1947",
+        "Crowther, Samuel, 1880-1947"
+      ],
+      "Title": [
+        "My Life and Work"
+      ],
+      "Contents": [
+        "Introduction: What is the idea? -- The beginning of business -- What I learned about business -- Starting the real business -- The secret of manufacturing and serving -- Getting into production -- Machines and men -- The terror of the machine -- Wages -- Why not always have good business? -- How cheaply can things be made? -- Money and goods -- Money: master or servant? -- Why be poor? -- The tractor and power farming -- Why charity? -- The railroads -- Things in general -- Democracy and industry -- What we may expect."
+      ],
+      "Credits": [
+        "Produced by Marvin Hodges, Tom Allen, Tonya Allen, Eric Eldred, Charles Franks, and the DP Team"
+      ],
+      "Reading Level": [
+        "Reading ease score: 69.5 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "HD: Social sciences: Economic history and conditions, Production"
+      ],
+      "Subject": [
+        "Industrialists -- United States -- Biography",
+        "Ford, Henry, 1863-1947",
+        "Ford Motor Company -- History",
+        "Automobile industry and trade -- United States -- History",
+        "Automobiles -- History",
+        "Businesspeople -- United States -- Biography"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "7213"
+      ],
+      "Release Date": [
+        "Jan 1, 2005"
+      ],
+      "Last Update": [
+        "Dec 30, 2020"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "4491 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1619,
+          "length": 36376
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 38032,
+          "length": 21485
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 59559,
+          "length": 25988
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 85587,
+          "length": 31304
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 116943,
+          "length": 23519
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 140497,
+          "length": 25095
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 165621,
+          "length": 22120
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 187780,
+          "length": 23920
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 211720,
+          "length": 27654
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 239421,
+          "length": 18000
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 257464,
+          "length": 27133
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 284625,
+          "length": 23340
+        },
+        {
+          "chapter_id": "chapter-013",
+          "offset": 308004,
+          "length": 26283
+        },
+        {
+          "chapter_id": "chapter-014",
+          "offset": 334314,
+          "length": 19993
+        },
+        {
+          "chapter_id": "chapter-015",
+          "offset": 354350,
+          "length": 19758
+        },
+        {
+          "chapter_id": "chapter-016",
+          "offset": 374133,
+          "length": 29166
+        },
+        {
+          "chapter_id": "chapter-017",
+          "offset": 403326,
+          "length": 21740
+        },
+        {
+          "chapter_id": "chapter-018",
+          "offset": 425098,
+          "length": 33919
+        },
+        {
+          "chapter_id": "chapter-019",
+          "offset": 459055,
+          "length": 24688
+        },
+        {
+          "chapter_id": "chapter-020",
+          "offset": 483775,
+          "length": 36141
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "0d6d9463085c9411e41dd19eed8fe9c8678708490bff6f17764224a6a4d701e5",
+    "legacy_content_sha256": "732f86e53656c3ea2354d306f42616d82af69aae60c40845a651b2ee8ff7e7e8",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 20,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "35d0e0af2b20f272b5126b827abd30e3dfd2e0fcd5b9e76210a418f942a3adff"
+      },
+      {
+        "id": "chapter-002",
+        "sha256": "3875b63b6bd7eca5e7f210acf850df6165107467e799db960baa3364352144ee"
+      },
+      {
+        "id": "chapter-003",
+        "sha256": "f1e341a75ac012884a468e3843aeef357a7d724c748a7c3f9a7206a2678f13fb"
+      },
+      {
+        "id": "chapter-004",
+        "sha256": "778605fcc6b89e0e269b55261c8576875c6fd55b9ce0f8de81731c6368853725"
+      },
+      {
+        "id": "chapter-005",
+        "sha256": "a3711a9b617569348e43e0389de82f084dc20b45152e9ff14609e40375da6e1b"
+      },
+      {
+        "id": "chapter-006",
+        "sha256": "ca435d0cf473d7fb60ffcc0369a3087e25f84f844a68a916e6f272102dba516b"
+      },
+      {
+        "id": "chapter-007",
+        "sha256": "4c1f3c5d3bf6e9a01a47243f46d3ff75d354f6341f9705e797095af43fc5c8e2"
+      },
+      {
+        "id": "chapter-008",
+        "sha256": "235acbc290db006ca7895d772993f31f476165e9f8526111b4ec4b94a02a5a50"
+      },
+      {
+        "id": "chapter-009",
+        "sha256": "2ae9063bb584d140fc1b0c93f06925a32d229101be3c7585b13ed184da762a79"
+      },
+      {
+        "id": "chapter-010",
+        "sha256": "c0478e248b52e7bdb83d02d95b260e05ffe8713f7560d6a0ff9231897e0ebba5"
+      },
+      {
+        "id": "chapter-011",
+        "sha256": "89e917a3df0e6a8460ec5ee1c10229d367b814a3a9ebe35f561db04f15a0f0a6"
+      },
+      {
+        "id": "chapter-012",
+        "sha256": "919c9301c74a4bc85d7e441e433147fa9c30a4285492399ce0cf46c6f14b8306"
+      },
+      {
+        "id": "chapter-013",
+        "sha256": "2b2f4ab1f0c4b4bf21933c8a0c92b4d0451604fc870adf272dfab327c42000ff"
+      },
+      {
+        "id": "chapter-014",
+        "sha256": "29db71aa2d312829f209f3abd81df4a84cebcee47eaa148abfb50fcde1851011"
+      },
+      {
+        "id": "chapter-015",
+        "sha256": "03217495e52aef1b622629a41dcc0ead6fbae125f30efeb40128ce314c930aa7"
+      },
+      {
+        "id": "chapter-016",
+        "sha256": "a39968a9dfb2afbbe5216d559840656ab847469a505da9fd06f5ec69c3b98550"
+      },
+      {
+        "id": "chapter-017",
+        "sha256": "ac1c4cb0ea7c9e7aefcc7301ed1a3d3fe415253ce35e3fa67d764ebea56ecfc2"
+      },
+      {
+        "id": "chapter-018",
+        "sha256": "aafa4292d9cbdb23ca2ce35912d4676cbccf52dcd22ac5079ed00aac383c24e2"
+      },
+      {
+        "id": "chapter-019",
+        "sha256": "071bc9b4d8c50a692a0542c4ccf5f91b434b07c9c0c8046fa51cb74ceef52f42"
+      },
+      {
+        "id": "chapter-020",
+        "sha256": "346cce753523cc3d025903d1a229cf836456a32c0264c1bb8612820f6259b315"
+      }
+    ],
+    "content_sha256": "8309a5246622002f4fceef9f19e8e26218f0a06320cf53197a91296e0ee21c86"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "0d6d9463085c9411e41dd19eed8fe9c8678708490bff6f17764224a6a4d701e5",
+        "content_hash": "732f86e53656c3ea2354d306f42616d82af69aae60c40845a651b2ee8ff7e7e8",
+        "provenance_hash": "88e5a40d94c44697246fb1cc266abef38a9ff8a954b546ff41313497a684ec01"
+      },
+      "superseded_at": "2026-10-01T21:41:35.457721+00:00",
+      "reason": "Same exact electronic ID full chapter body reconciled from uniquely matching first/last18word anchors; no approvals transferred"
+    }
+  ],
+  "anchor_bounded_text_restoration": {
+    "verified_at": "2026-10-01T21:41:35.457721+00:00",
+    "chapters": [
+      {
+        "chapter_id": "chapter-007",
+        "old_sha256": "b78adacc3ebfca0507648145d8d003a4867d9a637c3bdd2e417ac3f0302e8cab",
+        "new_sha256": "4c1f3c5d3bf6e9a01a47243f46d3ff75d354f6341f9705e797095af43fc5c8e2",
+        "source_start": 166056,
+        "source_end": 188208,
+        "first_18_words_exact_unique": true,
+        "last_18_words_exact_unique": true
+      }
+    ],
+    "publication_authorized": false
+  },
+  "author_death_year": 1947,
+  "selected_edition_publication_year": 1922,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:54:02.732252+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/7213.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/7213/pg7213.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:04.738731+00:00",
+      "response_sha256": "f01c925ba4a15ccc6a5aa706418cf94149ddd7d8f390c65d132b8675435b00cf"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 20,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1619,
+          "length": 36376
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 38032,
+          "length": 21485
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 59559,
+          "length": 25988
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 85587,
+          "length": 31304
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 116943,
+          "length": 23519
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 140497,
+          "length": 25095
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 165621,
+          "length": 22120
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 187780,
+          "length": 23920
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 211720,
+          "length": 27654
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 239421,
+          "length": 18000
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 257464,
+          "length": 27133
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 284625,
+          "length": 23340
+        },
+        {
+          "chapter_id": "chapter-013",
+          "offset": 308004,
+          "length": 26283
+        },
+        {
+          "chapter_id": "chapter-014",
+          "offset": 334314,
+          "length": 19993
+        },
+        {
+          "chapter_id": "chapter-015",
+          "offset": 354350,
+          "length": 19758
+        },
+        {
+          "chapter_id": "chapter-016",
+          "offset": 374133,
+          "length": 29166
+        },
+        {
+          "chapter_id": "chapter-017",
+          "offset": 403326,
+          "length": 21740
+        },
+        {
+          "chapter_id": "chapter-018",
+          "offset": 425098,
+          "length": 33919
+        },
+        {
+          "chapter_id": "chapter-019",
+          "offset": 459055,
+          "length": 24688
+        },
+        {
+          "chapter_id": "chapter-020",
+          "offset": 483775,
+          "length": 36141
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "original_author_death_year": 1947,
+      "latest_selected_creator_death_year": 1947,
+      "verified_text_publication_upper_bound": 1922,
+      "original_first_publication_year": null,
+      "exact_creator_metadata": [
+        "Ford, Henry, 1863-1947",
+        "Crowther, Samuel, 1880-1947"
+      ],
+      "translators": [],
+      "primary_bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Crowther%2C%20Samuel%2C%201880-1947",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Crowther%2C%20Samuel%2C%201880-1947",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:50:16.106342+00:00",
+        "response_sha256": "31bad066ebdb5ffcfb1fccb5068bd7090200f44b552c251c05e2ef9401ed761a"
+      },
+      "bibliographic_excerpt": "life and work. (Doubleday, Page & company, 1922) , also by Henry Ford (page images at HathiTrust) Crowther, Samuel, 1880-1947: My life and work (Doubleday, Page & company, 1926) , also by Henry Ford (page images at HathiTrust) Crowther, Samuel, 1880-1947: My life and wo",
+      "legal_policy_receipt": {
+        "requested_url": "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+        "resolved_url": "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:51:37.140288+00:00",
+        "response_sha256": "87edb85c6014f6a6415051b982461a708dd901d65b6a6047fc5f5b8080960fe3"
+      },
+      "basis": "IN text only. Verified publication no later than 1922; original-author life+60 ends 2007, or conservative posthumous-publication upper bound+60 ends no later than 1982; every selected translator/coauthor latest death 1947, life+60 ends 2007. All bounds have elapsed by actual review2026. Unknown original first date stays unknown; no inference from US-only PG status.",
+      "scope": "Selected story/complete narrative including documented creators; collection translators note, other stories, art, editor matter not imported."
+    },
+    "author_death_evidence": 1947,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1922,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "f01c925ba4a15ccc6a5aa706418cf94149ddd7d8f390c65d132b8675435b00cf",
+    "content_sha256": "8309a5246622002f4fceef9f19e8e26218f0a06320cf53197a91296e0ee21c86",
+    "year": 1922,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Crowther%2C%20Samuel%2C%201880-1947",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Crowther%2C%20Samuel%2C%201880-1947",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:16.106342+00:00",
+      "response_sha256": "31bad066ebdb5ffcfb1fccb5068bd7090200f44b552c251c05e2ef9401ed761a"
+    },
+    "basis": "IN text only. Verified publication no later than 1922; original-author life+60 ends 2007, or conservative posthumous-publication upper bound+60 ends no later than 1982; every selected translator/coauthor latest death 1947, life+60 ends 2007. All bounds have elapsed by actual review2026. Unknown original first date stays unknown; no inference from US-only PG status.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  }
 }

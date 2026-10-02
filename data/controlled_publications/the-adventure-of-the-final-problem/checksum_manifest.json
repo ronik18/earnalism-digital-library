@@ -1,14 +1,14 @@
 {
   "slug": "the-adventure-of-the-final-problem",
-  "generated_at": "2026-07-03T20:07:48Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "ab7d4ee9765e9a29ef9bafaa3e59b5e2b0794a5351c922789ab0130463704d7f"
+      "sha256": "f850da778e71a455d62ddffaea73ccb0c78b3ebb88aa95d95473a54a747b8e4b"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "03a09630155e3c777387402201b4966dce0c1db0bab862ce008910e3638b48c4"
+      "file": "chapters/chapter-001.json",
+      "sha256": "936596ce28eb8ac9d1d989e4fdcbfbba50b102b4a1e732f8718efa4647be3acb"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "b7839853e0ca389837f45587a1a3812114c34c9ed8269f670b7ff6b85ebe67a5"
+      "sha256": "9b4e62e53fb3154be0309443ea2519611994f754505b87567624c4d2fc85f291"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "849b10a17dc746a05f93cedaa1187a88f76665a01b8bcbf874d4ac8dc0b37e58"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "a2783c4db5cd1a2f11f46a99ffdee11abd23150db21151a83bdef3c43fd415a8"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "6fd983bde17e2bebecd4be3e135062f7d55b37792c845752f54ddc70c98cb942"
+      "sha256": "c7961401f1165b6f2e828de48de24bfa20a55587e0adeda5b5db2000468f8f14"
     }
   ]
 }

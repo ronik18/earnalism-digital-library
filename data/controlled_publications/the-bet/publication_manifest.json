@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-bet",
+  "title": "The Bet",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "7f46ed4a590c1b37ba965a4cea6ec3e344382e1b3abe044d04f96896337c4ac9",
+    "content_hash": "72b8e903ed62116f25575d77840b923f132f7c0e13e257f9a0821179cc1c7a0d",
+    "provenance_hash": "dda8e1c68983c69e610c27011c0fcf578b60fa6cb89a2e2b3cf31542e5f03075",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "59bcf501e14e84658f3fb17989f269c51af6221dfe3f21e5b10b1ece396d8a05",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Bet",
+        "word_count": 2720,
+        "sha256": "b81dfae016d655767feda2545a6010f44b29968f1c2e6a585d2e91f518229b5d"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "fcca31f94efb0d51a1ddbc397cfffab5525baaa72e220091c2dbadcdc01f0f0b"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "745608145f56c1393f56057d9c1eb57fc949e0c80f784578855401b5ce717856",
+    "reader_manifest": "def84e82f3afd63484493e8386233f0eaae08eca2e81926f117e413c6964046b",
+    "source_evidence": "fcca31f94efb0d51a1ddbc397cfffab5525baaa72e220091c2dbadcdc01f0f0b",
+    "approval_evidence": "f9ec246aa2d21e0103525c91549a46ffc1ee7943eabe61efdbeb675430e8ce84"
+  },
+  "manifest_sha256": "acf05a109361fcd33a0d2ff5fa850335e5b0519cc271a6a9935b52ef451dad48"
+}

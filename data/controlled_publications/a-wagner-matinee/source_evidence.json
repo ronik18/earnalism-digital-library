@@ -1,13 +1,207 @@
 {
   "slug": "a-wagner-matinee",
   "source_url": "https://www.gutenberg.org/ebooks/346",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #346; A Wagner Matinee selected complete Willa Cather story/cycle from Troll Garden; verified lifetime collection edition 1905; no translation/editorial/art imported",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "0fcf30f0d708bfe3dbde73b23676faf5cc7ae069dcb76fb23ad3e4cd2b353bb3",
-  "content_hash": "b2f80c6bef9230701b586cb9f75fd159fb9cdddd338aa5dc181f802390ad258a",
-  "provenance_hash": "7387f9fb2c7162dd6ef8b7e5b6b0699a397f5fdfb5ecaa00384efa1ee631acb4",
-  "rights_basis": "Willa Cather died 1947; first published 1904. Public domain in India and the U.S.",
+  "source_hash": "926b042528d42a6e8b0e062dfee1987fbbb4ddbe1ea6601d2b61fc77b452f521",
+  "content_hash": "70f9c11e3bba0acef0eec8581c2e314d3a6155ed1ec2acab3908fca3b0162251",
+  "provenance_hash": "dc3a5e7752f279382964c58abb3519faa4185a9a0dd42f6ed83a7fc9ae59a49a",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1947, verified lifetime collection publication 1905 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-03T08:04:22.199826+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #346",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/346",
+      "resolved_url": "https://www.gutenberg.org/ebooks/346",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:43.380723+00:00",
+      "response_sha256": "e856f343d315dad26441e472334deead2cf53d121df18bf8fca8fbceb2602048"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/346.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/346/pg346.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:48.990243+00:00",
+      "response_sha256": "926b042528d42a6e8b0e062dfee1987fbbb4ddbe1ea6601d2b61fc77b452f521"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Cather, Willa, 1873-1947"
+      ],
+      "Title": [
+        "The Troll Garden, and Selected Stories"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Troll_Garden"
+      ],
+      "Contents": [
+        "On the divide -- Eric Hermannson's soul -- The enchanted bluff -- The Bohemian girl -- Flavia and her artists -- The sculptor's funeral -- \"A death in the desert\" -- The garden lodge -- The marriage of Phaedra -- A Wagner matinee -- Paul's case."
+      ],
+      "Credits": [
+        "Produced by Judith Boss, and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 78.3 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Short stories",
+        "United States -- Social life and customs -- Fiction",
+        "Man-woman relationships -- Fiction",
+        "Nebraska -- Social life and customs -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "346"
+      ],
+      "Release Date": [
+        "Oct 1, 1995"
+      ],
+      "Last Update": [
+        "Jan 27, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1268 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 402567,
+          "length": 18573
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "0fcf30f0d708bfe3dbde73b23676faf5cc7ae069dcb76fb23ad3e4cd2b353bb3",
+    "legacy_content_sha256": "b2f80c6bef9230701b586cb9f75fd159fb9cdddd338aa5dc181f802390ad258a",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1947,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "e856f343d315dad26441e472334deead2cf53d121df18bf8fca8fbceb2602048",
+    "url": "https://www.gutenberg.org/ebooks/346",
+    "author_catalog_strings": [
+      "Cather, Willa, 1873-1947"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "70f9c11e3bba0acef0eec8581c2e314d3a6155ed1ec2acab3908fca3b0162251"
+      }
+    ],
+    "content_sha256": "70f9c11e3bba0acef0eec8581c2e314d3a6155ed1ec2acab3908fca3b0162251"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "0fcf30f0d708bfe3dbde73b23676faf5cc7ae069dcb76fb23ad3e4cd2b353bb3",
+        "content_hash": "b2f80c6bef9230701b586cb9f75fd159fb9cdddd338aa5dc181f802390ad258a",
+        "provenance_hash": "7387f9fb2c7162dd6ef8b7e5b6b0699a397f5fdfb5ecaa00384efa1ee631acb4",
+        "source_url": "https://www.gutenberg.org/ebooks/346",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:48:17.188009+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1905,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/346.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/346/pg346.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:48.990243+00:00",
+      "response_sha256": "926b042528d42a6e8b0e062dfee1987fbbb4ddbe1ea6601d2b61fc77b452f521"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 402567,
+          "length": 18573
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Cather, Willa, 1873-1947",
+      "creator_death_year": 1947,
+      "selected_collection_publication_year": 1905,
+      "original_story_first_publication_year": null,
+      "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+      "bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Cather%2C%20Willa%2C%201873-1947",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Cather%2C%20Willa%2C%201873-1947",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:44:10.808817+00:00",
+        "response_sha256": "e32e4a62747018f52bf1888c03de5688607b57ff78b62b2afe924d0e9aa74ce5"
+      },
+      "bibliographic_excerpt": "Troll Garden (New York: McClure, Phillips and Co., 1905) (HTML and page images at unl.edu) Cather, Willa, 1873-1947: The Troll Garden and Selected Stories (Gutenberg text) Cather, Willa, 1873-1947, contrib.: The Work of Stephen Crane (12 volumes, wit",
+      "scope": "Named author selected story text only; other collection stories, separately authored editorial matter and all illustrations excluded."
+    },
+    "author_death_evidence": 1947,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1905,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "926b042528d42a6e8b0e062dfee1987fbbb4ddbe1ea6601d2b61fc77b452f521",
+    "content_sha256": "70f9c11e3bba0acef0eec8581c2e314d3a6155ed1ec2acab3908fca3b0162251",
+    "year": 1905,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Cather%2C%20Willa%2C%201873-1947",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Cather%2C%20Willa%2C%201873-1947",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:10.808817+00:00",
+      "response_sha256": "e32e4a62747018f52bf1888c03de5688607b57ff78b62b2afe924d0e9aa74ce5"
+    },
+    "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  }
 }

@@ -24,12 +24,98 @@
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "73789e5480cf2f077ad75c01ed713e5f350480f5e493d4886d4a1f8cabc22f2a",
+    "reader_content_sha256": "9c611a0df7145bf3e479369cb952171eefc0146816dd89901c73504e5cc7893a",
     "chapter_count": 1,
     "chapter_content_sha256": {
-      "chapter-001": "73789e5480cf2f077ad75c01ed713e5f350480f5e493d4886d4a1f8cabc22f2a"
+      "chapter-001": "9c611a0df7145bf3e479369cb952171eefc0146816dd89901c73504e5cc7893a"
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  },
+  "reader_content_reconciliation": {
+    "status": "SOURCE_FURNITURE_REMOVED_ONLY",
+    "performed_at": "2026-10-01T21:08:27.473444+00:00",
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/source-furniture-repair-proposals.json",
+    "artifact_sha256": "63e8128394ae67e1620d02a5bce6ca6b14dd72f8230ed86b0d535ed69707baf7",
+    "before_content_sha256": "73789e5480cf2f077ad75c01ed713e5f350480f5e493d4886d4a1f8cabc22f2a",
+    "after_content_sha256": "d228351380e5eb1ce2c6c3d014b2c8f2eb9e3b0d4d1f92caeedd043c5d546b48",
+    "removed_source_furniture": [
+      "রবীন্দ্রনাথ ঠাকুর",
+      "গল্পগুচ্ছ",
+      "১৯৬৯ (পৃ. ৫৮৪-৬১২)",
+      "রাসমণির ছেলে"
+    ],
+    "literary_words_changed": false,
+    "source_transcription_completeness": "ADDITIONAL_SOURCE_COMPARISON_REQUIRED",
+    "scope": "READER_METADATA_FURNITURE_CLEANUP_NOT_PUBLICATION_OR_AUDIO_APPROVAL"
+  },
+  "original_publication_year": 1911,
+  "original_publication_evidence": {
+    "record": "internal/legal/catalogue_clearance_20261002/bengali/tagore-volume3-printed-publication-datelines.json",
+    "record_sha256": "806b47cb8964633dcad588d37ce67306177faf79db885eabd0ca84aa7cc42e7e",
+    "printed_publication_dateline": "আশ্বিন ১৩১৮",
+    "calendar_inference": "Bengaliyear+593 for Jyaishtha/Ashwin/Kartik, Gregorianyearonly, noexactday",
+    "scope": "Underlyingwork publicationfact; ©VisvaBharati1969 editorialrights/CCtranscriptionconditions independently held"
+  },
+  "exact_source_delta_repair": {
+    "slug": "book-827fdc7aee",
+    "verified_at": "2026-10-01T21:33:54.662831+00:00",
+    "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-827fdc7aee-source-comparison.json",
+    "source_snapshot_sha256": "bae2b25eda9290b2a767f0b9b23c8f035889d2878c41d29c9d32050beb4a9a29",
+    "before_sha256": "d228351380e5eb1ce2c6c3d014b2c8f2eb9e3b0d4d1f92caeedd043c5d546b48",
+    "after_sha256": "9c611a0df7145bf3e479369cb952171eefc0146816dd89901c73504e5cc7893a",
+    "operations": [
+      {
+        "operation": "replace",
+        "canonical_paragraph_range": [
+          7,
+          8
+        ],
+        "source_paragraph_range": [
+          7,
+          8
+        ],
+        "canonical": [
+          "শ্যামাচরণ সে কথায় কর্ণপাত করিতেন না। শ্যামাচরণ নিজের ছেলেদের কঠোর শাসনে রাখিতেন। কিন্তু ভবানীচরণের 'পরে তাঁহার কোনো শাসনই ছিল না। ইহা দেখিয়া সকলেই একবাক্যে বলিত, নিজের ছেলেদের চেয়ে ভবানীর প্রতিই তাঁহার বেশি স্নেহ। এমনি করিয়া ভবানীর পড়াশুনা কিছুই হইল না। এবং বিষয়বুদ্ধি সম্বন্ধে চিরদিন শিশুর মতো থাকিয়া দাদার উপর সম্পূর্ণ নির্ভর করিয়া তিনি বয়স কাটাইতে লাগিলেন। বিষয়কর্মে তাঁহাকে কোনো-দিন চিন্তা করিতে হইত না—কেবল মাঝে মাঝে এক-একদিন সই করিতে হইত। কেন সই করিতেছেন তাহা বুঝিবার চেষ্টা করিতেন না; কারণ, চেষ্টা করিলে কৃতকার্য হইতে পারিতেন না।"
+        ],
+        "source": [
+          "শ্যামাচরণ সে কথায় কর্ণপাত করিতেন না। শ্যামাচরণ নিজের ছেলেদের কঠোর শাসনে রাখিতেন। কিন্তু ভবানীচরণের ’পরে তাঁহার কোনো শাসনই ছিল না। ইহা দেখিয়া সকলেই একবাক্যে বলিত, নিজের ছেলেদের চেয়ে ভবানীর প্রতিই তাঁহার বেশি স্নেহ। এমনি করিয়া ভবানীর পড়াশুনা কিছুই হইল না। এবং বিষয়বুদ্ধি সম্বন্ধে চিরদিন শিশুর মতো থাকিয়া দাদার উপর সম্পূর্ণ নির্ভর করিয়া তিনি বয়স কাটাইতে লাগিলেন। বিষয়কর্মে তাঁহাকে কোনো-দিন চিন্তা করিতে হইত না—কেবল মাঝে মাঝে এক-একদিন সই করিতে হইত। কেন সই করিতেছেন তাহা বুঝিবার চেষ্টা করিতেন না; কারণ, চেষ্টা করিলে কৃতকার্য হইতে পারিতেন না।"
+        ]
+      },
+      {
+        "operation": "replace",
+        "canonical_paragraph_range": [
+          26,
+          27
+        ],
+        "source_paragraph_range": [
+          26,
+          27
+        ],
+        "canonical": [
+          "বরাবর মাতার কাছে এই কথা শুনিয়া ভবানীচরণ মনে অত্যন্ত একটা ভরসা পাইলেন। তিনি নিজে অক্ষম বলিয়া এইরূপ আশ্বাসবাক্য তাঁহার পক্ষে অত্যন্ত সান্ত্বনার জিনিস। সতীসাধ্বীর বাক্য ফলিবেই, যাহা তাঁহারই তাহা আপনিই তাঁহার কাছে ফিরিয়া আসিবে, এ কথা তিনি নিশ্চয় স্থির করিয়া বসিয়া রহিলেন। মাতার মৃত্যুর পরে এ বিশ্বাস তাহার আরও দৃঢ় হইয়া উঠিল—কারণ মৃত্যুর বিচ্ছেদের মধ্য দিয়া মাতার পূূণ্যতেজ তাঁহার কাছে আরও অনেক বড়ো করিয়া প্রতিভাত হইল। দারিদ্র্যের সমস্ত অভাবপীড়ন যেন তাঁহার গায়েই বাজিত না। মনে হইত, এই-ষে অন্নবস্ত্রের কষ্ট, এই-যে পূর্বেকার চালচলনের ব্যত্যয়, এ যেন দু দিনের একটা অভিনয়মাত্র-এ কিছুই সত্য নহে। এইজন্য সাবেক ঢাকাই ধুতি ছিঁড়িয়া গেলে যখন কম দামের মোটা ধুতি তাঁহাকে কিনিয়া পরিতে হইল তখন তাঁহার হাসি পাইল। পূূজার সময় সাবেক কালের ধুমধাম চলিল না, নমোনম করিয়া কাজ সারিতে হইল; অভ্যাগতজন এই দরিদ্র আয়োজন দেখিয়া দীর্ঘনিশ্বাস ফেলিয়া সাবেক কালের কথা পাড়িল। ভবানীচরণ মনে মনে হাসিলেন; তিনি ভাবিলেন, 'ইহারা জানে না, এ-সমস্তই কেবল কিছুদিনের জন্য—তাহার পর এমন ধুম করিয়া একদিন পূজা হইবে যে, ইহাদের চক্ষুস্থির হইয়া যাইবে।' সেই ভবিষ্যতের নিশ্চিত সমারোহ তিনি এমনি প্রত্যক্ষের মতো দেখিতে পাইতেন যে, বর্তমান দৈন্য তাঁহার চোখেই পড়িত না।"
+        ],
+        "source": [
+          "বরাবর মাতার কাছে এই কথা শুনিয়া ভবানীচরণ মনে অত্যন্ত একটা ভরসা পাইলেন। তিনি নিজে অক্ষম বলিয়া এইরূপ আশ্বাসবাক্য তাঁহার পক্ষে অত্যন্ত সান্ত্বনার জিনিস। সতীসাধ্বীর বাক্য ফলিবেই, যাহা তাঁহারই তাহা আপনিই তাঁহার কাছে ফিরিয়া আসিবে, এ কথা তিনি নিশ্চয় স্থির করিয়া বসিয়া রহিলেন। মাতার মৃত্যুর পরে এ বিশ্বাস তাহার আরও দৃঢ় হইয়া উঠিল—কারণ মৃত্যুর বিচ্ছেদের মধ্য দিয়া মাতার পূূণ্যতেজ তাঁহার কাছে আরও অনেক বড়ো করিয়া প্রতিভাত হইল। দারিদ্র্যের সমস্ত অভাবপীড়ন যেন তাঁহার গায়েই বাজিত না। মনে হইত, এই-ষে অন্নবস্ত্রের কষ্ট, এই-যে পূর্বেকার চালচলনের ব্যত্যয়, এ যেন দু দিনের একটা অভিনয়মাত্র-এ কিছুই সত্য নহে। এইজন্য সাবেক ঢাকাই ধুতি ছিঁড়িয়া গেলে যখন কম দামের মোটা ধুতি তাঁহাকে কিনিয়া পরিতে হইল তখন তাঁহার হাসি পাইল। পূূজার সময় সাবেক কালের ধুমধাম চলিল না, নমোনম করিয়া কাজ সারিতে হইল; অভ্যাগতজন এই দরিদ্র আয়োজন দেখিয়া দীর্ঘনিশ্বাস ফেলিয়া সাবেক কালের কথা পাড়িল। ভবানীচরণ মনে মনে হাসিলেন; তিনি ভাবিলেন, ‘ইহারা জানে না, এ-সমস্তই কেবল কিছুদিনের জন্য—তাহার পর এমন ধুম করিয়া একদিন পূজা হইবে যে, ইহাদের চক্ষুস্থির হইয়া যাইবে।’ সেই ভবিষ্যতের নিশ্চিত সমারোহ তিনি এমনি প্রত্যক্ষের মতো দেখিতে পাইতেন যে, বর্তমান দৈন্য তাঁহার চোখেই পড়িত না।"
+        ]
+      },
+      {
+        "operation": "insert",
+        "canonical_paragraph_range": [
+          141,
+          141
+        ],
+        "source_paragraph_range": [
+          141,
+          142
+        ],
+        "canonical": [],
+        "source": [
+          "শৈলেন কহিল, “ইঁহাদের সঙ্গে আমাদের ভালো আলাপ নাই—আত্মীয়ের খবর কিছুই জানি না। সন্ধান করিব। কিন্তু, ইতিমধ্যে কী করা কর্তব্য।”"
+        ]
+      }
+    ],
+    "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+    "scope": "Same pinned edition body repair; not rights/publication/audio approval"
   }
 }

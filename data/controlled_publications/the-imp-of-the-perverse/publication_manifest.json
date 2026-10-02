@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-imp-of-the-perverse",
+  "title": "The Imp of the Perverse",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e",
+    "content_hash": "e92577c21fa4292e3494ee1404796d429ac88083d758f667bad859b912eeb5b0",
+    "provenance_hash": "6ac6e344f4500a937e9681276de2328fd187c0a053875a0cbdbdd290336a943b",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "de66b218f5cef14268d0c59b77546ffc9d7163e872fa4fba14acafb8622b2097",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Imp of the Perverse",
+        "word_count": 2430,
+        "sha256": "aa182ebdd6c3ad74a8a44eb617dc89b727610c9dc2a6506170b6c1f32517da20"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "a5b7558fee89b645393a7bed29c953869b7df45010060e5be20ed4cf5de9098f"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "105772a0f4a631d556560583c2da537c54ed976aaf6e1d83c660b1a90c98fecf",
+    "reader_manifest": "b42f53a2bfa22df75cdfb206e67b9732a0b116cc13696bb2919429ec40f8a0f8",
+    "source_evidence": "a5b7558fee89b645393a7bed29c953869b7df45010060e5be20ed4cf5de9098f",
+    "approval_evidence": "bee1c9bac36ac67f784d259bdfe51157ccec322b964e4b14b791bb1406150cf0"
+  },
+  "manifest_sha256": "f672fdc38067eb378ed583173d8b288b60660ad5fe5915d536a1cb0d6efaa89c"
+}

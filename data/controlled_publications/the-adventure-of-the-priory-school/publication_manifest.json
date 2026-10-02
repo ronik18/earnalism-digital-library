@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-priory-school",
+  "title": "The Adventure of the Priory School",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
+    "content_hash": "553f45169b6403cc9dec10718d50780fc6478fe3839ee317a64c61ee49dfc375",
+    "provenance_hash": "d675e3a1f221a44f48a2f6da85a2185142386928a52b31f19846066a4e78f30b",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "3a23fe61f542e6e93f95bd3b9754c98c175297f6197974438ad3c64b74930fd1",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Priory School",
+        "word_count": 11551,
+        "sha256": "b10b2a88e25156966addb6dc3324bb46ad6a5e1ba5d846435b2240d180f09ace"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "3053cb8eefecdc991f9c47db34cf5916814bbb37ce05224aa8b815120640f252"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "200768acdb552a81b702adad6d118582da2b09140f12527eded28508cf6a1b88",
+    "reader_manifest": "cbff7910d185de3e698aeefd838daa6c9c44a08ad29d43499b8b8f2c05ed6ab6",
+    "source_evidence": "3053cb8eefecdc991f9c47db34cf5916814bbb37ce05224aa8b815120640f252",
+    "approval_evidence": "3118ec6ffbc17340f2d4baf4bd400594d449f7ce57e6b51412b8864897763ff2"
+  },
+  "manifest_sha256": "650a1a6ecd2f1a94cdc665445a9e81b0e3f5edddb1d885f1267e454b01c9a6c3"
+}

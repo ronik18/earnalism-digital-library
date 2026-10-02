@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "fact_count": 12,
+  "authority": "Rabindra Tirtha, West Bengal HIDCO institutional Tagore chronology",
+  "facts": [
+    {
+      "slug": "book-63afd5e9be",
+      "title_alias": "Dena Paona",
+      "publication_year": 1891,
+      "date_as_recorded": "May,1891",
+      "publication": "Hitabadi",
+      "authority_event_url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/event/VZlSXRlVONlUspFWOdVMXJ1aKVVVB1TP#event_434",
+      "authority_receipt": {
+        "url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/search",
+        "retrieved_at": "2026-10-01T21:04:18.966131+00:00",
+        "response_sha256": "e014a280fe4c69b7f62df30186eca8d378bc82d18025bfad5bfb231c1b534837",
+        "status": 200,
+        "authority": "Rabindra Tirtha, West Bengal Housing Infrastructure Development Corporation; publication chronology, distinguish composition from publication",
+        "first_publication_facts_bound": false
+      },
+      "evidence_type": "EXPLICIT_FIRST_SHORT_STORIES_PUBLICATION_ENTRY",
+      "source_excerpt": "Rabindranath contributes the first Bengali short stories to the weekly Hitabadi starting from May, 1891.",
+      "source_list_row": "Dena Paona May,1891",
+      "scope": "Underlying Bengali work first-publication fact; not validation of later scanned edition or transcription licence.",
+      "fact_status": "VERIFIED_TITLE_PUBLICATION_FACT"
+    },
+    {
+      "slug": "book-ac5a71075e",
+      "title_alias": "Postmaster",
+      "publication_year": 1891,
+      "date_as_recorded": "May,1891",
+      "publication": "Hitabadi",
+      "authority_event_url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/event/VZlSXRlVONlUspFWOdVMXJ1aKVVVB1TP#event_434",
+      "authority_receipt": {
+        "url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/search",
+        "retrieved_at": "2026-10-01T21:04:18.966131+00:00",
+        "response_sha256": "e014a280fe4c69b7f62df30186eca8d378bc82d18025bfad5bfb231c1b534837",
+        "status": 200,
+        "authority": "Rabindra Tirtha, West Bengal Housing Infrastructure Development Corporation; publication chronology, distinguish composition from publication",
+        "first_publication_facts_bound": false
+      },
+      "evidence_type": "EXPLICIT_FIRST_SHORT_STORIES_PUBLICATION_ENTRY",
+      "source_excerpt": "Rabindranath contributes the first Bengali short stories to the weekly Hitabadi starting from May, 1891.",
+      "source_list_row": "Postmaster May,1891",
+      "scope": "Underlying Bengali work first-publication fact; not validation of later scanned edition or transcription licence.",
+      "fact_status": "VERIFIED_TITLE_PUBLICATION_FACT"
+    },
+    {
+      "slug": "book-d19e96859f",
+      "title_alias": "Ginni",
+      "publication_year": 1891,
+      "date_as_recorded": "May,1891",
+      "publication": "Hitabadi",
+      "authority_event_url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/event/VZlSXRlVONlUspFWOdVMXJ1aKVVVB1TP#event_434",
+      "authority_receipt": {
+        "url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/search",
+        "retrieved_at": "2026-10-01T21:04:18.966131+00:00",
+        "response_sha256": "e014a280fe4c69b7f62df30186eca8d378bc82d18025bfad5bfb231c1b534837",
+        "status": 200,
+        "authority": "Rabindra Tirtha, West Bengal Housing Infrastructure Development Corporation; publication chronology, distinguish composition from publication",
+        "first_publication_facts_bound": false
+      },
+      "evidence_type": "EXPLICIT_FIRST_SHORT_STORIES_PUBLICATION_ENTRY",
+      "source_excerpt": "Rabindranath contributes the first Bengali short stories to the weekly Hitabadi starting from May, 1891.",
+      "source_list_row": "Ginni May,1891",
+      "scope": "Underlying Bengali work first-publication fact; not validation of later scanned edition or transcription licence.",
+      "fact_status": "VERIFIED_TITLE_PUBLICATION_FACT"
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "title_alias": "Ramkanaier Nirbuddhita",
+      "publication_year": 1891,
+      "date_as_recorded": "May,1891",
+      "publication": "Hitabadi",
+      "authority_event_url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/event/VZlSXRlVONlUspFWOdVMXJ1aKVVVB1TP#event_434",
+      "authority_receipt": {
+        "url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/search",
+        "retrieved_at": "2026-10-01T21:04:18.966131+00:00",
+        "response_sha256": "e014a280fe4c69b7f62df30186eca8d378bc82d18025bfad5bfb231c1b534837",
+        "status": 200,
+        "authority": "Rabindra Tirtha, West Bengal Housing Infrastructure Development Corporation; publication chronology, distinguish composition from publication",
+        "first_publication_facts_bound": false
+      },
+      "evidence_type": "EXPLICIT_FIRST_SHORT_STORIES_PUBLICATION_ENTRY",
+      "source_excerpt": "Rabindranath contributes the first Bengali short stories to the weekly Hitabadi starting from May, 1891.",
+      "source_list_row": "Ramkanaier Nirbuddhita May,1891",
+      "scope": "Underlying Bengali work first-publication fact; not validation of later scanned edition or transcription licence.",
+      "fact_status": "VERIFIED_TITLE_PUBLICATION_FACT"
+    },
+    {
+      "slug": "book-2ddbed8293",
+      "title_alias": "Byabodhan",
+      "publication_year": 1891,
+      "date_as_recorded": "May,1891",
+      "publication": "Hitabadi",
+      "authority_event_url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/event/VZlSXRlVONlUspFWOdVMXJ1aKVVVB1TP#event_434",
+      "authority_receipt": {
+        "url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/search",
+        "retrieved_at": "2026-10-01T21:04:18.966131+00:00",
+        "response_sha256": "e014a280fe4c69b7f62df30186eca8d378bc82d18025bfad5bfb231c1b534837",
+        "status": 200,
+        "authority": "Rabindra Tirtha, West Bengal Housing Infrastructure Development Corporation; publication chronology, distinguish composition from publication",
+        "first_publication_facts_bound": false
+      },
+      "evidence_type": "EXPLICIT_FIRST_SHORT_STORIES_PUBLICATION_ENTRY",
+      "source_excerpt": "Rabindranath contributes the first Bengali short stories to the weekly Hitabadi starting from May, 1891.",
+      "source_list_row": "Byabodhan May,1891",
+      "scope": "Underlying Bengali work first-publication fact; not validation of later scanned edition or transcription licence.",
+      "fact_status": "VERIFIED_TITLE_PUBLICATION_FACT"
+    },
+    {
+      "slug": "book-754da4eab8",
+      "title_alias": "Taraprasanner Kirti",
+      "publication_year": 1891,
+      "date_as_recorded": "May,1891",
+      "publication": "Hitabadi",
+      "authority_event_url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/event/VZlSXRlVONlUspFWOdVMXJ1aKVVVB1TP#event_434",
+      "authority_receipt": {
+        "url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/search",
+        "retrieved_at": "2026-10-01T21:04:18.966131+00:00",
+        "response_sha256": "e014a280fe4c69b7f62df30186eca8d378bc82d18025bfad5bfb231c1b534837",
+        "status": 200,
+        "authority": "Rabindra Tirtha, West Bengal Housing Infrastructure Development Corporation; publication chronology, distinguish composition from publication",
+        "first_publication_facts_bound": false
+      },
+      "evidence_type": "EXPLICIT_FIRST_SHORT_STORIES_PUBLICATION_ENTRY",
+      "source_excerpt": "Rabindranath contributes the first Bengali short stories to the weekly Hitabadi starting from May, 1891.",
+      "source_list_row": "Taraprasanner Kirti May,1891",
+      "scope": "Underlying Bengali work first-publication fact; not validation of later scanned edition or transcription licence.",
+      "fact_status": "VERIFIED_TITLE_PUBLICATION_FACT"
+    },
+    {
+      "slug": "book-0deb35c750",
+      "title_alias": "Khata",
+      "date_as_recorded": "May,1891",
+      "publication": "Hitabadi",
+      "authority_event_url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/event/VZlSXRlVONlUspFWOdVMXJ1aKVVVB1TP#event_434",
+      "authority_receipt": {
+        "url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/search",
+        "retrieved_at": "2026-10-01T21:04:18.966131+00:00",
+        "response_sha256": "e014a280fe4c69b7f62df30186eca8d378bc82d18025bfad5bfb231c1b534837",
+        "status": 200,
+        "authority": "Rabindra Tirtha, West Bengal Housing Infrastructure Development Corporation; publication chronology, distinguish composition from publication",
+        "first_publication_facts_bound": false
+      },
+      "evidence_type": "EXPLICIT_FIRST_SHORT_STORIES_PUBLICATION_ENTRY",
+      "source_excerpt": "Rabindranath contributes the first Bengali short stories to the weekly Hitabadi starting from May, 1891.",
+      "source_list_row": "Khata May,1891",
+      "scope": "Underlying Bengali work first-publication fact; not validation of later scanned edition or transcription licence.",
+      "fact_status": "FIRST_PUBLICATION_YEAR_DISPUTED_DO_NOT_BIND",
+      "claimed_publication_year": 1891,
+      "contrary_primary_scan_evidence": {
+        "record": "internal/legal/catalogue_clearance_20261002/bengali/galpaguchha-volume1-title-publisher-pages.json",
+        "record_sha256": "26fa62905b573768e4607a79c3d0f6828bddf280162762ffc507c5f8dc4cdb06",
+        "finding": "Publisher note explicitly states1298Hitabadi publication is probable/uncertain, and confirms first book publication15Phalgun1300. Government chronology1891 is not treated as unequivocal originalfirstyear.",
+        "lifetime_publication_established": true
+      }
+    },
+    {
+      "slug": "book-c7f3ce526c",
+      "title_alias": "Khokababur Pratyabartan",
+      "publication_year": 1891,
+      "date_as_recorded": "30th  November,  1891",
+      "authority_event_url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/event/VZlSXRlVONlUspFWOdVMXJ1aKVVVB1TP#event_466",
+      "authority_receipt": {
+        "url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/search",
+        "retrieved_at": "2026-10-01T21:04:18.966131+00:00",
+        "response_sha256": "e014a280fe4c69b7f62df30186eca8d378bc82d18025bfad5bfb231c1b534837",
+        "status": 200,
+        "authority": "Rabindra Tirtha, West Bengal Housing Infrastructure Development Corporation; publication chronology, distinguish composition from publication",
+        "first_publication_facts_bound": false
+      },
+      "evidence_type": "EXPLICIT_TITLE_JOURNAL_PUBLICATION_ENTRY",
+      "source_excerpt": "The Sadhana magazine published by the Tagores. As usual Rabindranath at the helm. After Bankimchandra's Bangadarshan , Sadhana is the greatest literary magazine of contemporary Bengal and remains a landmark. Rabindranath writes as many as 40 of the 92 pages of the inaugural issue of Sadhana . His contributions include the famous short story Khokababur Pratyabartan and the first of the 11 instalments of Europe Jatrir Diary .",
+      "scope": "Title-specific contemporaneous publication date in institutional chronology; exact sourced transcription/edition independently held.",
+      "fact_status": "VERIFIED_TITLE_PUBLICATION_FACT"
+    },
+    {
+      "slug": "book-a23625bf36",
+      "title_alias": "delightful story Samapti",
+      "publication_year": 1893,
+      "date_as_recorded": "30th  September,  1893",
+      "authority_event_url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/event/VZlSXRFWwJlUspFWOdVMXJ1aKVVVB1TP#event_529",
+      "authority_receipt": {
+        "url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/search",
+        "retrieved_at": "2026-10-01T21:04:18.966131+00:00",
+        "response_sha256": "e014a280fe4c69b7f62df30186eca8d378bc82d18025bfad5bfb231c1b534837",
+        "status": 200,
+        "authority": "Rabindra Tirtha, West Bengal Housing Infrastructure Development Corporation; publication chronology, distinguish composition from publication",
+        "first_publication_facts_bound": false
+      },
+      "evidence_type": "EXPLICIT_TITLE_JOURNAL_PUBLICATION_ENTRY",
+      "source_excerpt": "The delightful story Samapti published in the Puja issue of Sadhana .",
+      "scope": "Title-specific contemporaneous publication date in institutional chronology; exact sourced transcription/edition independently held.",
+      "fact_status": "VERIFIED_TITLE_PUBLICATION_FACT"
+    },
+    {
+      "slug": "book-88ded9b47c",
+      "title_alias": "short story Manbhanjan",
+      "publication_year": 1895,
+      "date_as_recorded": "April,  1895",
+      "authority_event_url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/event/VZlSXRlVONlYHZEWOdVMXJ1aKVVVB1TP#event_549",
+      "authority_receipt": {
+        "url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/search",
+        "retrieved_at": "2026-10-01T21:04:18.966131+00:00",
+        "response_sha256": "e014a280fe4c69b7f62df30186eca8d378bc82d18025bfad5bfb231c1b534837",
+        "status": 200,
+        "authority": "Rabindra Tirtha, West Bengal Housing Infrastructure Development Corporation; publication chronology, distinguish composition from publication",
+        "first_publication_facts_bound": false
+      },
+      "evidence_type": "EXPLICIT_TITLE_JOURNAL_PUBLICATION_ENTRY",
+      "source_excerpt": "The short story Manbhanjan written by Rabindranath appears in the Baisakh issue of Sadhana .",
+      "scope": "Title-specific contemporaneous publication date in institutional chronology; exact sourced transcription/edition independently held.",
+      "fact_status": "VERIFIED_TITLE_PUBLICATION_FACT"
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "title_alias": "Kshudita Passhan",
+      "publication_year": 1895,
+      "date_as_recorded": "July,  1895",
+      "authority_event_url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/event/VZlSXRlVONlYHZEWOdVMXJ1aKVVVB1TP#event_649",
+      "authority_receipt": {
+        "url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/search",
+        "retrieved_at": "2026-10-01T21:04:18.966131+00:00",
+        "response_sha256": "e014a280fe4c69b7f62df30186eca8d378bc82d18025bfad5bfb231c1b534837",
+        "status": 200,
+        "authority": "Rabindra Tirtha, West Bengal Housing Infrastructure Development Corporation; publication chronology, distinguish composition from publication",
+        "first_publication_facts_bound": false
+      },
+      "evidence_type": "EXPLICIT_TITLE_JOURNAL_PUBLICATION_ENTRY",
+      "source_excerpt": "In Sadhana ( Sravana issue), Rabindranath contributes quite a few pieces as usual, but the highlight of the issue is, of course, the great short story Kshudita Passhan , probably written much earlier.",
+      "scope": "Title-specific contemporaneous publication date in institutional chronology; exact sourced transcription/edition independently held.",
+      "fact_status": "VERIFIED_TITLE_PUBLICATION_FACT"
+    },
+    {
+      "slug": "book-bfc51280b3",
+      "title_alias": "moving short story Atithi",
+      "publication_year": 1895,
+      "date_as_recorded": "October,  1895",
+      "authority_event_url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/event/VZlSXRlVONlYHZEWOdVMXJ1aKVVVB1TP#event_660",
+      "authority_receipt": {
+        "url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/search",
+        "retrieved_at": "2026-10-01T21:04:18.966131+00:00",
+        "response_sha256": "e014a280fe4c69b7f62df30186eca8d378bc82d18025bfad5bfb231c1b534837",
+        "status": 200,
+        "authority": "Rabindra Tirtha, West Bengal Housing Infrastructure Development Corporation; publication chronology, distinguish composition from publication",
+        "first_publication_facts_bound": false
+      },
+      "evidence_type": "EXPLICIT_TITLE_JOURNAL_PUBLICATION_ENTRY",
+      "source_excerpt": "Besides other writings, the last issue of Sadhana magazine contains the moving short story Atithi and Vidyasagar Charit written by Rabindranath.",
+      "scope": "Title-specific contemporaneous publication date in institutional chronology; exact sourced transcription/edition independently held.",
+      "fact_status": "VERIFIED_TITLE_PUBLICATION_FACT"
+    }
+  ],
+  "composition_dates_not_used_as_publication": true,
+  "unresolved_date_exception": {
+    "slug": "book-1090573dff",
+    "chronology_publication": "January1893 Poush issue",
+    "action": "Corroborate exact original journal issue before binding an original-publication year; Bengali/Gregorian issue-year ambiguity retained."
+  },
+  "publication_authorizations_issued": 0,
+  "verified_fact_count": 11,
+  "disputed_first_publication_fact_count": 1
+}

@@ -44,18 +44,18 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 14440,
+      "word_count": 14861,
       "reading_minutes": 61,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
       "uploaded_at": "2026-07-03T20:07:47Z",
-      "updated_at": "2026-07-03T20:07:47Z"
+      "updated_at": "2026-10-02T03:12:52.976638+00:00"
     }
   ],
-  "source_hash": "17c514dce10d194bfbb13b4d9196eafd3a3ae310b38180de42d3a5693bddd0a7",
-  "content_hash": "54085892457bf65ed5f9394fb722eee54f71123d9622b0b40f1ec45ad76707d5",
-  "provenance_hash": "74feca75082c4263690808b2747e72216034cb633ff078c20196bccc3523a1fb",
+  "source_hash": "605a186f96870d1993b84199ed14709b833597c9eeac78d2d7fc69c2f454b554",
+  "content_hash": "fc3455677ff33b41f70012df7239691fb56b8bdd977ea187f524b0c2a863d079",
+  "provenance_hash": "c6a35f6c4294cc3e83b99a01a86bd7a67fdc3fb280b0392d644056abbd5b10f9",
   "rights_basis": "Guy de Maupassant died 1893; first published 1880. Public domain in India and the U.S.",
   "rights_tier": "A",
   "verification_status": "approved",
@@ -101,5 +101,22 @@
   },
   "audiobook_assets_updated_at": "2026-07-03T20:07:47Z",
   "created_at": "2026-07-03T20:07:47Z",
-  "updated_at": "2026-07-03T20:07:47Z"
+  "updated_at": "2026-07-03T20:07:47Z",
+  "translator": "Ernest Augustus Boyd",
+  "license_notice": {
+    "schema_version": "earnalism.text-license.v1",
+    "slug": "boule-de-suif",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "attribution": "Boule de Suif by Guy de Maupassant, English translation by Ernest Augustus Boyd, selected1922Knopfedition. Electronic transcription/editorial formatting from StandardEbooks contributors.",
+    "changes": "Complete story text including quoted French song retained; title/navigation/editorial styling removed and paragraphs adapted. Replaces a different uncleared translation; no approval transfer.",
+    "scope": "CC0 dedication covers upstream editorial transcription. Historical original and Boyd translation separately cleared for India; excludes Earnalism covers, marks, software and all audio. CC0 imposes no share-alike obligation.",
+    "disclaimer": "No contributor endorsement or warranty. Underlying historical works territorial rights remain separately evaluated.",
+    "source_url": "https://standardebooks.org/ebooks/guy-de-maupassant/short-fiction/various-translators",
+    "contributors_url": "https://github.com/standardebooks/guy-de-maupassant_short-fiction_various-translators/commits/master/src/epub/text/boule-de-suif.xhtml",
+    "chapter_sha256": [
+      "fc3455677ff33b41f70012df7239691fb56b8bdd977ea187f524b0c2a863d079"
+    ]
+  },
+  "license_notice_sha256": "05c1dafbc6f4160feab764badc309b8e3fe484e0f0c877bc3c68678dca4e85bd"
 }

@@ -1,11 +1,21 @@
 {
   "slug": "woman-in-white",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "reading_only_public_domain_batch_1",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
   "allowCheckout": false,
-  "allowPayment": false
+  "allowPayment": false,
+  "source_hash": "c8cb8872f6c0a2a5b6489873c6c7b8c39f006c3fa44219738186a96f2c1d1254",
+  "content_hash": "f359435d90032e1ceee2a65bd58033c7375017bf813696d8965b4171e68c2962",
+  "provenance_hash": "c28dca8892148e76c0f28ff691626473495ca7e0bc54eb3ca3132eabe78d626f",
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "reading_only_public_domain_batch_1"
+  },
+  "publication_authorization_sha256": "e6771da5c21c9cf14d8c13291879e888e91073580aca54b977c1ef20b5549088",
+  "verified_at": "2026-10-01T21:49:40.745164+00:00"
 }

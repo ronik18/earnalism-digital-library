@@ -1,10 +1,10 @@
 {
   "slug": "muchiram-gurer-jibanchorit",
-  "approved_to_publish": false,
+  "approved_to_publish": true,
   "rights_tier": "A",
-  "verification_status": "pending",
+  "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "sprint1_evidence_reconciliation_hold",
+  "approval_scope": "OWNER_DELEGATED_AUTOMATED_IN_EDITION_BOUND_TEXT_READER_ONLY_COVER_DEFERRED",
   "audiobook_use_approved": true,
   "audiobook_use_approval_scope": "owner-authorized production evaluation and customer playback in IN, subject to verified rights, authorized recording or TTS licensing, budget, QA, and release gates",
   "audiobook_use_approved_by": "Ronik",
@@ -25,5 +25,9 @@
   "audio_qa_status": "",
   "endpoint_url": "",
   "provider": "",
-  "version": ""
+  "version": "",
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "source_hash": "d88c2efe3dc6d15fb103a9df394a4dfa194a54234ca11c9c1e49d1ecca924034",
+  "content_hash": "095e2308975c18cba636058aad414a457161f5754bd6f6f282537bdaebe23801",
+  "publication_authorization_sha256": "15e85c07b9253170cf5867946b36eb1e4d3e4d10391910985b6e416ecc5fc9ed"
 }

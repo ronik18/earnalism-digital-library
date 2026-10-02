@@ -1,0 +1,287 @@
+{
+  "receipt": {
+    "url": "https://bn.wikisource.org/w/api.php?action=query&generator=allpages&gapprefix=%E0%A6%86%E0%A6%A8%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%AE%E0%A6%A0+%28%E0%A7%A7%E0%A7%AE%E0%A7%AE%E0%A7%A9%29%2F&gapnamespace=0&gaplimit=max&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2",
+    "retrieved_at": "2026-10-01T21:49:04.738761+00:00",
+    "response_sha256": "2c21448fec473baf35931e90a839650c6dc1d8bbbc25b8d02df5c53018b6c774"
+  },
+  "prefix": "আনন্দমঠ (১৮৮৩)",
+  "leaves": [
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/উপক্রমণিকা",
+      "revision": 1790852,
+      "revision_timestamp": "2023-12-02T02:44:53Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"11\" to=\"12\" header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/প্রথম পরিচ্ছেদ",
+      "revision": 1790892,
+      "revision_timestamp": "2023-12-02T02:45:11Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"13\" to=\"18\" tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/দ্বিতীয় পরিচ্ছেদ",
+      "revision": 1790887,
+      "revision_timestamp": "2023-12-02T02:45:09Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"18\" fromsection=B to=\"19\" tosection= A header=1/>"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/তৃতীয় পরিচ্ছেদ",
+      "revision": 1790881,
+      "revision_timestamp": "2023-12-02T02:45:06Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"19\" fromsection=B to=\"21\" header=1/>"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/চতুর্থ পরিচ্ছেদ",
+      "revision": 1790878,
+      "revision_timestamp": "2023-12-02T02:45:05Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"22\" to=\"24\" tosection= A header=1/>"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/পঞ্চম পরিচ্ছেদ",
+      "revision": 1790891,
+      "revision_timestamp": "2023-12-02T02:45:10Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"24\" fromsection=B to=\"26\" header=1/>"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/ষষ্ঠ পরিচ্ছেদ",
+      "revision": 1790894,
+      "revision_timestamp": "2023-12-02T02:45:11Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"27\" to=\"28\" header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/সপ্তম পরিচ্ছেদ",
+      "revision": 1790897,
+      "revision_timestamp": "2023-12-02T02:45:13Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"29\" to=\"31\" header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/অষ্টম পরিচ্ছেদ",
+      "revision": 1790873,
+      "revision_timestamp": "2023-12-02T02:45:03Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"32\" to=\"35\" header=1/>"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/নবম পরিচ্ছেদ",
+      "revision": 1790888,
+      "revision_timestamp": "2023-12-02T02:45:09Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"36\" to=\"37\" tosection=A header=1/>"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/দশম পরিচ্ছেদ",
+      "revision": 1790884,
+      "revision_timestamp": "2023-12-02T02:45:07Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"37\" fromsection=B to=\"43\" tosection= A header=1/>"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/একাদশ পরিচ্ছেদ",
+      "revision": 1790877,
+      "revision_timestamp": "2023-12-02T02:45:04Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"43\" fromsection=B to=\"48\" tosection=A header=1/>"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/দ্বাদশ পরিচ্ছেদ",
+      "revision": 1790885,
+      "revision_timestamp": "2023-12-02T02:45:08Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"48\" fromsection=B to=\"59\" tosection=A header=1/>"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/ত্রয়োদশ পরিচ্ছেদ",
+      "revision": 1790882,
+      "revision_timestamp": "2023-12-02T02:45:06Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"59\" fromsection=B to=\"62\" tosection=A header=1/>"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/চতুর্দ্দশ পরিচ্ছেদ",
+      "revision": 1790879,
+      "revision_timestamp": "2023-12-02T02:45:05Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"62\" fromsection=B to=\"64\" tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/পঞ্চদশ পরিচ্ছেদ",
+      "revision": 1790889,
+      "revision_timestamp": "2023-12-02T02:45:09Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"64\" fromsection=B to=\"73\" tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/ষোড়শ পরিচ্ছেদ",
+      "revision": 1790895,
+      "revision_timestamp": "2023-12-02T02:45:12Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"73\" fromsection=B to=\"76\" tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/সপ্তদশ পরিচ্ছেদ",
+      "revision": 1790896,
+      "revision_timestamp": "2023-12-02T02:45:12Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"76\" fromsection=B to=\"78\" header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/অষ্টাদশ পরিচ্ছেদ",
+      "revision": 1790874,
+      "revision_timestamp": "2023-12-02T02:45:03Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"79\" to=\"81\" tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/প্রথম পরিচ্ছেদ",
+      "revision": 1790867,
+      "revision_timestamp": "2023-12-02T02:45:00Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"112\" to=\"116\" tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/দ্বিতীয় পরিচ্ছেদ",
+      "revision": 1790863,
+      "revision_timestamp": "2023-12-02T02:44:59Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=116 fromsection= B to=120 tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/ঊনবিংশ পরিচ্ছেদ",
+      "revision": 1790875,
+      "revision_timestamp": "2023-12-02T02:45:04Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"81\" fromsection= B to=\"85\" tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/বিংশ পরিচ্ছেদ",
+      "revision": 1790893,
+      "revision_timestamp": "2023-12-02T02:45:11Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"85\" fromsection= B to=\"89\" tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/একবিংশ পরিচ্ছেদ",
+      "revision": 1790876,
+      "revision_timestamp": "2023-12-02T02:45:04Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"89\" fromsection= B to=\"92\" tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/দ্বাবিংশ পরিচ্ছেদ",
+      "revision": 1790886,
+      "revision_timestamp": "2023-12-02T02:45:08Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"92\" fromsection= B to=\"95\" tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/ত্রয়োবিংশ পরিচ্ছেদ",
+      "revision": 1790883,
+      "revision_timestamp": "2023-12-02T02:45:07Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"95\" fromsection= B to=\"96\" tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/চতুর্ব্বিংশ পরিচ্ছেদ",
+      "revision": 1790880,
+      "revision_timestamp": "2023-12-02T02:45:06Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"96\" fromsection= B to=\"102\" tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/পঞ্চবিংশ পরিচ্ছেদ",
+      "revision": 1790890,
+      "revision_timestamp": "2023-12-02T02:45:10Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"102\" fromsection= B to=\"111\" header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/তৃতীয় পরিচ্ছেদ",
+      "revision": 1790859,
+      "revision_timestamp": "2023-12-02T02:44:57Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=120 fromsection= B to=123 tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/চতুর্থ পরিচ্ছেদ",
+      "revision": 1790857,
+      "revision_timestamp": "2023-12-02T02:44:55Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=123 fromsection= B to=131 tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/পঞ্চম পরিচ্ছেদ",
+      "revision": 1790866,
+      "revision_timestamp": "2023-12-02T02:45:00Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=131 fromsection= B to=135 tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/ষষ্ঠ পরিচ্ছেদ",
+      "revision": 1790869,
+      "revision_timestamp": "2023-12-02T02:45:01Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=135 fromsection= B to=136 header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/সপ্তম পরিচ্ছেদ",
+      "revision": 1790872,
+      "revision_timestamp": "2023-12-02T02:45:02Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=137 to=140 tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/অষ্টম পরিচ্ছেদ",
+      "revision": 1790853,
+      "revision_timestamp": "2023-12-02T02:44:53Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=140 fromsection= B to=142 tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/নবম পরিচ্ছেদ",
+      "revision": 1790864,
+      "revision_timestamp": "2023-12-02T02:44:59Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=142 fromsection= B to=146 tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/দশম পরিচ্ছেদ",
+      "revision": 1790861,
+      "revision_timestamp": "2023-12-02T02:44:58Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=146 fromsection= B to=150 tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/একাদশ পরিচ্ছেদ",
+      "revision": 1790856,
+      "revision_timestamp": "2023-12-02T02:44:55Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=150 fromsection= B to=155 tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/দ্বাদশ পরিচ্ছেদ",
+      "revision": 1790862,
+      "revision_timestamp": "2023-12-02T02:44:58Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=155 fromsection= B to=160 tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/ত্রয়োদশ পরিচ্ছেদ",
+      "revision": 1790860,
+      "revision_timestamp": "2023-12-02T02:44:57Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=160 fromsection= B to=164 tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/চতুর্দ্দশ পরিচ্ছেদ",
+      "revision": 1790858,
+      "revision_timestamp": "2023-12-02T02:44:56Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=164 fromsection= B to=166 tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/পঞ্চদশ পরিচ্ছেদ",
+      "revision": 1790865,
+      "revision_timestamp": "2023-12-02T02:44:59Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=166 fromsection= B to=169 header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/ষোড়শ পরিচ্ছেদ",
+      "revision": 1790870,
+      "revision_timestamp": "2023-12-02T02:45:02Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=170 to=172 tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/সপ্তদশ পরিচ্ছেদ",
+      "revision": 1790871,
+      "revision_timestamp": "2023-12-02T02:45:02Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=172 fromsection=B to=176 tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/অষ্টাদশ পরিচ্ছেদ",
+      "revision": 1790854,
+      "revision_timestamp": "2023-12-02T02:44:54Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=176 fromsection=B to=182 tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/ঊনবিংশ পরিচ্ছেদ",
+      "revision": 1790855,
+      "revision_timestamp": "2023-12-02T02:44:54Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=182 fromsection=B to=187 tosection=A header=1 />"
+    },
+    {
+      "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/বিংশ পরিচ্ছেদ",
+      "revision": 1790868,
+      "revision_timestamp": "2023-12-02T02:45:01Z",
+      "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=187 fromsection=B to=190 header=1 />"
+    }
+  ],
+  "continuation": null
+}

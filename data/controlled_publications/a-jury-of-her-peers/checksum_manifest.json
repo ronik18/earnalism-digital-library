@@ -1,14 +1,18 @@
 {
   "slug": "a-jury-of-her-peers",
-  "generated_at": "2026-07-03T20:07:47Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
-      "file": "approval_evidence.json",
+      "file": "approval_evidence 2.json",
       "sha256": "8331d96cb874efae307edb87c6cf5bbaac8500316f9542e3ece99cf939ec2314"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "deb279236ad4828254633bd9de7a34b2a0edd37af71f61a23acf07fa3143c0e0"
+      "file": "approval_evidence.json",
+      "sha256": "78062654f968996741f2bfc9a9e04d8d752bcc4abe1e4236e76992906a51e030"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "e4862dcb02fba2b825fed92c4827b2b17a895f0e72477d0e9afb610e48a82f33"
     },
     {
       "file": "highlight_sync.json",
@@ -16,19 +20,19 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "8b9194363c90cc4cbf20d9e4e9b51d1974dccc19a86ec794ef80d48c7318820b"
+      "sha256": "b82e70003afef1b495f898f478d2b9dfe76cde8a4fb43bf6bf4ed681f9553670"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "fd6a5800a854a3712d86784e3babbe6101ad71e45637f9d21df3a0d0bb29a5b9"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "166fda075f9846a733e0cba75ea3184bed741bfc609d4f932044c9757b60c805"
+      "sha256": "7f0eeb65154f0874d3644b6102316b0fa790fe5b699796d71a04c6dde1f96c46"
     },
     {
       "file": "source_evidence.json",
-      "sha256": "6981129be89ede2062496a9e1838f638186886d10e87ee2ad08a64502cb388a4"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "12cc5306572184aef6faaac6d809b591659b31672ce70eeaf6cb1292de5c391a"
+      "sha256": "265033de82f6fbb6e75bcc885604086608b0c43353d905221bf904263ccde59d"
     }
   ]
 }

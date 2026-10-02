@@ -1,0 +1,27 @@
+{
+  "slug": "bn-031",
+  "parent_source_receipt": {
+    "url": "https://bn.wikisource.org/w/api.php?action=parse&oldid=1943388&prop=text%7Cwikitext&format=json&formatversion=2",
+    "retrieved_at": "2026-10-01T21:38:42.467185+00:00",
+    "response_sha256": "4e81022f6cdfb18a45fda99e70079e595ac1f8e78907eee623ee5c26cd034852"
+  },
+  "parent_wikitext": "<pages index=\"শরৎ-সাহিত্য-সংগ্রহ (ত্রয়োদশ সম্ভার) - শরৎচন্দ্র চট্টোপাধ্যায় (১৯৬০).pdf\" from=323 to=324 header=1/>\n{{AuxTOC|\n{{c|{{xx-larger|'''সূচীপত্র'''}}}}\n{{Table| title=পরিচ্ছেদ| page=পৃষ্ঠা}}\n{{Table| title=[[শরৎ-সাহিত্য-সংগ্রহ (ত্রয়োদশ সম্ভার)/মহেশ/১|১]]| page={{pli|311|14}}}}\n{{Table| title=[[শরৎ-সাহিত্য-সংগ্রহ (ত্রয়োদশ সম্ভার)/মহেশ/২|২]]| page={{pli|316|14}}}}\n{{Table| title=[[শরৎ-সাহিত্য-সংগ্রহ (ত্রয়োদশ সম্ভার)/মহেশ/৩|৩]]| page={{pli|318|14}}}}\n}}",
+  "render_receipt": {
+    "url": "https://bn.wikisource.org/w/api.php",
+    "request_method": "POST",
+    "action": "parse read-only same pinned definitions, final extractor retains post-transclusion prose/notes/verse tables",
+    "request_text_sha256": "27dc9357fff2d6c7b9b424019794426dc20724e58671c24cad17e83adbc4ce7a",
+    "response_sha256": "b2702279fca4138369e3e2e05c68b23c932446037f1bd8a6f28aa2f67bdf0777",
+    "retrieved_at": "2026-10-02T02:55:44.264504+00:00"
+  },
+  "rendered_source_sha256": "9525305007eac3aedc8212ec685025c72eeff2a97af19a6cd50a9476c84bb997",
+  "source_paragraphs": [
+    "মহেশ",
+    "পরিচ্ছেদ (মূল গ্রন্থে নেই)",
+    "সূচীপত্র",
+    "পরিচ্ছেদ \n১ \n২ \n৩"
+  ],
+  "source_furniture": [],
+  "publication_authorized": false,
+  "scope": "Final full wrapper source extraction, includes literary text outside ProofreadPage div, notes and verse; no canonical edition substitution"
+}

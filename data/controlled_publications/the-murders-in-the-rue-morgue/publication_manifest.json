@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-murders-in-the-rue-morgue",
+  "title": "The Murders in the Rue Morgue",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "c8d5fec040f1dc29be8d4e9cb7d3279b65bf894adea50544d99d400b2d587386",
+    "content_hash": "037fd47cc776d2825d701acc0c53900a99c383f611977f690899db4f68df3fb0",
+    "provenance_hash": "4ecc3f1f8dbff7480f90cf6f9ebc79ccc45b567f47aa64531f461e8e8d9724fe",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "7deaa0567170bf568379bace6a202a7171bc8f01126f8f4c1ff2383a4922c59b",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Murders in the Rue Morgue",
+        "word_count": 13882,
+        "sha256": "2d192711e96bedbfe22fa1a161311019c6a0c5176409122e72a3b99918ac027f"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "8b9cbbe71c93271bbc8602eae1d025e6264c7f612575232bb28a3658fbf6abd1"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "66b5b4bb3d065f0da757b9570c0c91668939aeff95b7a560828a0a8afc8404e5",
+    "reader_manifest": "155ab2bd8bf62422a44c9d4c5d3b7523e654cb0a13d64609d512e0f6b36d2ab3",
+    "source_evidence": "8b9cbbe71c93271bbc8602eae1d025e6264c7f612575232bb28a3658fbf6abd1",
+    "approval_evidence": "33baf896ef21690526175c622cb86e391eb7c95fc82959ac77ce09ca84175a32"
+  },
+  "manifest_sha256": "0d870be64f81f9dc36ccd09943b7002fa0cdd476dafb75ae585f91a78ca53e1d"
+}

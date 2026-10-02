@@ -44,7 +44,7 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 2915,
+      "word_count": 2838,
       "reading_minutes": 13,
       "language_hint": "ben",
       "processing_status": "ready",
@@ -53,10 +53,10 @@
       "updated_at": "2026-07-03T20:07:46Z"
     }
   ],
-  "source_hash": "08e48da6bb28ab20a543f422d867bb4c8df3f4ea3c108590144e58aa3be3566b",
-  "content_hash": "938feb779bee24998461bf4da3daf77e9823cc429867f64807859a30ef84fb6f",
+  "source_hash": "cdae6110a68862a54c7a0155459d97158c254463eaee3169388ca9cea0b7737e",
+  "content_hash": "1e68e249392f67ed03f4d451f533bb6b175f6f20d73020abc246afd82bf8ff93",
   "provenance_hash": "02079f8c7a3fcfe9713b44a7e0e706ba9588d426d9ba853112ecb2943de2f7a5",
-  "rights_basis": "Author died 1941. Published 1900. Public domain in India and U.S.",
+  "rights_basis": "Exact Galpa-Dashak original1302/1895 sole-author Rabindranath Tagore edition; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1941; India Section22 literary term expired end2001. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
@@ -101,5 +101,12 @@
   },
   "audiobook_assets_updated_at": "2026-07-03T20:07:46Z",
   "created_at": "2026-07-03T20:07:46Z",
-  "updated_at": "2026-07-03T20:07:46Z"
+  "updated_at": "2026-07-03T20:07:46Z",
+  "license_notice_sha256": "62d902a217eec736122790ea3b137b0b4f4b8fc1046d7e1cc9b8a0d31e8924df",
+  "historical_import_hashes": {
+    "source_hash": "08e48da6bb28ab20a543f422d867bb4c8df3f4ea3c108590144e58aa3be3566b",
+    "content_hash": "938feb779bee24998461bf4da3daf77e9823cc429867f64807859a30ef84fb6f"
+  },
+  "publication_authorization_sha256": "3df4b76319b0163a6c11d52a4704e4b062fb9e9b68f351d7acd705425d2c84bb",
+  "verified_at": "2026-10-02T03:10:37.024181+00:00"
 }

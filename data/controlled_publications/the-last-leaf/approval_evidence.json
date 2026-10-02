@@ -1,12 +1,22 @@
 {
   "slug": "the-last-leaf",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": false
+  "audiobook_enabled": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "f7dd18c75a7ae20c808f7f4a32bf00c6de5199d5bf3d0006c7037ecb2de033cd",
+  "source_hash": "cce090386057bb1fd68bdcda1323a6119c733e42b89cf02c31b35bf4eaff9884",
+  "content_hash": "e3a825f58d8a086967586988d7eeaf902fbb415b53cd164340d935f98d7645f7",
+  "provenance_hash": "934cb651a633e8a20ab5b21de25e998f2da2c408ec2cbcc8a1d9a0a0c69652b5",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00"
 }

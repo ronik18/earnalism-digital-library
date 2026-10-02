@@ -1,0 +1,15 @@
+{
+  "schema_version": "earnalism.text-license.v1",
+  "slug": "the-most-dangerous-game",
+  "license": "CC-BY-SA-4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "attribution": "The Most Dangerous Game — Richard Connell. Transcription adapted from English Wikisource contributors, O. Henry Memorial Award Prize Stories of1924, pp71–92.",
+  "changes": "Page numbers, page/title/byline and source navigation furniture omitted; zero-width page markers removed, paragraph formatting adapted and one pre-emdash spacing corrected. No literary wording invented.",
+  "scope": "Reused transcription and its formatting adaptation only, under the same CC BY-SA4.0 license; excludes Earnalism covers/trademarks/software and unrelated metadata.",
+  "disclaimer": "Offered without warranties under the CC BY-SA4.0 disclaimer. No contributor endorsement implied.",
+  "source_url": "https://en.wikisource.org/w/index.php?title=O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game&oldid=12072546",
+  "contributors_url": "https://en.wikisource.org/w/index.php?title=O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game&action=history",
+  "chapter_sha256": [
+    "8590d829e9f5d5b6ddf5dd7d131d5be1e2de353f0d3637ece79b88aa5f283ea7"
+  ]
+}

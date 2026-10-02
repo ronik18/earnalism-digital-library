@@ -3,58 +3,51 @@
   "schema_version": 1,
   "slug": "the-selfish-giant",
   "title": "The Selfish Giant",
-  "generated_at": "2026-08-16T06:45:34Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "041b7a7d28b42f553ae23277588cee366952c83c2b9108c401a3fa4dd90e76b9",
-    "content_hash": "58578923656c4e97b29509721be5a4e4a26e7d9240e464eebb8a0841576fe9f8",
-    "provenance_hash": "d426354bb000f4b72606e782483eb2882f5510e7e12087388d667120d1ba8053",
+    "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+    "content_hash": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+    "provenance_hash": "1e08883215a0343a9dd6f8c53242fd4af41d62450aa24e424712188e8d79af16",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "a292f8555471fbfe175a22c912a6bad2fb7babf533abb9e3aaf2d6a8ad5a5d28",
+    "chapter_index_sha256": "df819243768475866804306135ce3f50b793fdc8e66012d6e8c8fb0db1e02db0",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "The Selfish Giant",
-        "word_count": 1678,
-        "sha256": "c4d06e692633441ba05e0c2bfa7ee1e476c02045df9bb884d0f3ca6810cc753d"
+        "word_count": 1652,
+        "sha256": "12c1db2943a0b57aea333ed1870472ea8332d457093d4255185385a7a157e3b1"
       }
     ]
   },
   "rights": {
     "status": "APPROVED",
     "tier": "A",
-    "publication_region": "in",
-    "evidence_sha256": "489eb8ea5d0db8e8c55b2586fc8fdfb29b8cfb7c487a814f785187aacef689f4"
+    "publication_region": "india",
+    "evidence_sha256": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d"
   },
   "reader_release": {
-    "status": "APPROVED",
-    "exposed": true,
+    "status": "READY_FOR_APPROVAL",
+    "exposed": false,
     "qa_status": "QA_PASSED",
     "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267898/earnalism/covers/front/the-selfish-giant_front_1600x2400.png",
     "blockers": []
   },
   "audio_release": {
-    "status": "APPROVED",
-    "exposed": true,
-    "required_for_reader_release": false,
-    "qa_status": "QA_PASSED",
-    "audio_sha256": "824944d0c068b4f4f45cb750e018918b2af55c5e043cd29417ce2a756e9a4c67",
-    "candidate_fingerprint": "92a24c3442fe5ad637e72be523f52baded74d0390a256e3b5d5865bdb3f3d96e",
-    "delivery_mode": "SERVER_OWNED_CONVEYOR",
-    "public_endpoint": "/api/reader/book/the-selfish-giant/audiobook",
-    "discovery_exposed": false,
-    "blockers": []
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
   },
   "commerce_release": {
     "status": "NOT_REQUESTED",
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "796c11191413e8b66e606a3846a491f8ab0763855783a118a1d8840270a18ea0",
-    "reader_manifest": "aedb9cb50bf14839e2bf32a3c6d267ea24b0ff220fe8334069298f4a96bf6eae",
-    "source_evidence": "489eb8ea5d0db8e8c55b2586fc8fdfb29b8cfb7c487a814f785187aacef689f4",
-    "approval_evidence": "6685cd9a36ebf4a130a445837d594198416c97ed6bcb6f2e565b46270eaa7edb"
+    "public_book": "280107213b6dc993f98d7915f353e36b73b3bb70494f70e7bec5bc44d1a77d7e",
+    "reader_manifest": "0f7603ff4f6723bfddad1a540800f9ddc9f1499ac85604bf077d0f56eb659259",
+    "source_evidence": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d",
+    "approval_evidence": "612a84ee34975b41a8f4a06459938c117dfa2d1cd69435050062555052a9c553"
   },
-  "manifest_sha256": "947d997515d3ef7434ef2a750e0ef2f6ed1a8e0b5445216ff21e8e8d4570d2d2"
+  "manifest_sha256": "9d3552d44a57f42b8530a02c3f3014554689efb88087dcc40d6fb3bb277c4381"
 }

@@ -1,0 +1,20 @@
+{
+  "dangerous": {
+    "receipt": {
+      "requested_url": "https://en.wikisource.org/wiki/O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game",
+      "resolved_url": "https://en.wikisource.org/wiki/O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:54:47.140339+00:00",
+      "response_sha256": "77c9fc421bd4d7742794edc9dd48b7f80eb70c0b73b969d4ef099d4ff9e4808f"
+    }
+  },
+  "eyesore": {
+    "receipt": {
+      "requested_url": "https://en.wikisource.org/wiki/Eyesore",
+      "resolved_url": "https://en.wikisource.org/wiki/Eyesore",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:54:48.369840+00:00",
+      "response_sha256": "bc7dc7e2f8f6fd989243a29adde1521a249db452e86d3012676e9784179bfa3e"
+    }
+  }
+}

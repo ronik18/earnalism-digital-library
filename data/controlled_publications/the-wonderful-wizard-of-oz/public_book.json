@@ -38,8 +38,21 @@
   "about_author": "L. Frank Baum (1856–1919) was an American author best known for his children's fantasy series beginning with The Wonderful Wizard of Oz, published in 1900.",
   "chapters": [
     {
-      "id": "chapter-001",
+      "id": "chapter-000",
       "order": 1,
+      "title": "Introduction",
+      "word_count": 183,
+      "reading_minutes": 1,
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "language_hint": "en"
+    },
+    {
+      "id": "chapter-001",
+      "order": 2,
       "title": "Chapter I. The Cyclone",
       "is_preview": true,
       "has_images": false,
@@ -54,7 +67,7 @@
     },
     {
       "id": "chapter-002",
-      "order": 2,
+      "order": 3,
       "title": "Chapter II",
       "is_preview": true,
       "has_images": false,
@@ -69,7 +82,7 @@
     },
     {
       "id": "chapter-003",
-      "order": 3,
+      "order": 4,
       "title": "Chapter III. How Dorothy Saved the Scarecrow",
       "is_preview": true,
       "has_images": false,
@@ -84,7 +97,7 @@
     },
     {
       "id": "chapter-004",
-      "order": 4,
+      "order": 5,
       "title": "Chapter IV. The Road Through the Forest",
       "is_preview": true,
       "has_images": false,
@@ -99,7 +112,7 @@
     },
     {
       "id": "chapter-005",
-      "order": 5,
+      "order": 6,
       "title": "Chapter V",
       "is_preview": true,
       "has_images": false,
@@ -114,7 +127,7 @@
     },
     {
       "id": "chapter-006",
-      "order": 6,
+      "order": 7,
       "title": "Chapter VI. The Cowardly Lion",
       "is_preview": true,
       "has_images": false,
@@ -129,7 +142,7 @@
     },
     {
       "id": "chapter-007",
-      "order": 7,
+      "order": 8,
       "title": "Chapter VII",
       "is_preview": true,
       "has_images": false,
@@ -144,7 +157,7 @@
     },
     {
       "id": "chapter-008",
-      "order": 8,
+      "order": 9,
       "title": "Chapter VIII. The Deadly Poppy Field",
       "is_preview": true,
       "has_images": false,
@@ -159,7 +172,7 @@
     },
     {
       "id": "chapter-009",
-      "order": 9,
+      "order": 10,
       "title": "Chapter IX",
       "is_preview": true,
       "has_images": false,
@@ -174,7 +187,7 @@
     },
     {
       "id": "chapter-010",
-      "order": 10,
+      "order": 11,
       "title": "Chapter X",
       "is_preview": true,
       "has_images": false,
@@ -189,7 +202,7 @@
     },
     {
       "id": "chapter-011",
-      "order": 11,
+      "order": 12,
       "title": "Chapter XI. The Wonderful City of Oz",
       "is_preview": true,
       "has_images": false,
@@ -204,7 +217,7 @@
     },
     {
       "id": "chapter-012",
-      "order": 12,
+      "order": 13,
       "title": "Chapter XII",
       "is_preview": true,
       "has_images": false,
@@ -219,7 +232,7 @@
     },
     {
       "id": "chapter-013",
-      "order": 13,
+      "order": 14,
       "title": "Chapter XIII. The Rescue",
       "is_preview": true,
       "has_images": false,
@@ -234,7 +247,7 @@
     },
     {
       "id": "chapter-014",
-      "order": 14,
+      "order": 15,
       "title": "Chapter XIV. The Winged Monkeys",
       "is_preview": true,
       "has_images": false,
@@ -249,7 +262,7 @@
     },
     {
       "id": "chapter-015",
-      "order": 15,
+      "order": 16,
       "title": "Chapter XV",
       "is_preview": true,
       "has_images": false,
@@ -264,7 +277,7 @@
     },
     {
       "id": "chapter-016",
-      "order": 16,
+      "order": 17,
       "title": "Chapter XVI",
       "is_preview": true,
       "has_images": false,
@@ -279,7 +292,7 @@
     },
     {
       "id": "chapter-017",
-      "order": 17,
+      "order": 18,
       "title": "Chapter XVII. How the Balloon Was Launched",
       "is_preview": true,
       "has_images": false,
@@ -294,7 +307,7 @@
     },
     {
       "id": "chapter-018",
-      "order": 18,
+      "order": 19,
       "title": "Chapter XVIII",
       "is_preview": true,
       "has_images": false,
@@ -309,7 +322,7 @@
     },
     {
       "id": "chapter-019",
-      "order": 19,
+      "order": 20,
       "title": "Chapter XIX",
       "is_preview": true,
       "has_images": false,
@@ -324,7 +337,7 @@
     },
     {
       "id": "chapter-020",
-      "order": 20,
+      "order": 21,
       "title": "Chapter XX. The Dainty China Country",
       "is_preview": true,
       "has_images": false,
@@ -339,7 +352,7 @@
     },
     {
       "id": "chapter-021",
-      "order": 21,
+      "order": 22,
       "title": "Chapter XXI",
       "is_preview": true,
       "has_images": false,
@@ -354,7 +367,7 @@
     },
     {
       "id": "chapter-022",
-      "order": 22,
+      "order": 23,
       "title": "Chapter XXII",
       "is_preview": true,
       "has_images": false,
@@ -369,7 +382,7 @@
     },
     {
       "id": "chapter-023",
-      "order": 23,
+      "order": 24,
       "title": "Chapter XXIII. Glinda The Good Witch Grants Dorothy’s Wish",
       "is_preview": true,
       "has_images": false,
@@ -384,7 +397,7 @@
     },
     {
       "id": "chapter-024",
-      "order": 24,
+      "order": 25,
       "title": "Chapter XXIV. Home Again",
       "is_preview": true,
       "has_images": false,
@@ -398,9 +411,9 @@
       "updated_at": "2026-07-03T20:07:47Z"
     }
   ],
-  "source_hash": "20b4fa5a47c6e23b6093c2eedbf5d0b2930c6eefe5c8646e009a98bd0131c85e",
-  "content_hash": "1256f90f4c8943940d6520a4322fe67ddb2d6537d1ae8577b8a4be713531291c",
-  "provenance_hash": "b79ac47434fc029bf7c4110ee5f38fb9b705ccb6c83a3fcbc49cef7d0a9d9df0",
+  "source_hash": "969bffab7740d4d8a0bac332d78bd0152ad4a40a2efc52f06c74a9bb6120be75",
+  "content_hash": "4b174cd456358387fe1bbd65667a783ae52d7b4f0475f1c570a80132c847b18e",
+  "provenance_hash": "6efb24dec4a20c5a0bd3aa7b7411cb80ed158b480c20e460f859928630548a2d",
   "rights_basis": "Author died in 1919. Work published in 1900, well before 1928. Public domain in the U.S. under pre-1928 publication rule and in most jurisdictions under life plus 70 years.",
   "rights_tier": "A",
   "verification_status": "approved",

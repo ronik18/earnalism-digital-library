@@ -1,0 +1,28 @@
+{
+  "schema_version": "earnalism.text-license.v1",
+  "slug": "muchiram-gurer-jibanchorit",
+  "license": "CC-BY-SA-4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "attribution": "মুচিরাম গুড়ের জীবনচরিত by বঙ্কিমচন্দ্র চট্টোপাধ্যায়; Bengali Wikisource transcription and its contributors, credited through the exact edition/source revision and its scanned-page contributor histories.",
+  "changes": "Source/import headings and publication furniture omitted. Exact source-backed missing paragraphs, chapter order and typographical punctuation corrected where recorded. No new literary text composed.",
+  "scope": "CC BY-SA4.0 applies only to source-derived transcription and formatting, not independently owned covers, Earnalism branding, software or unrelated material. Underlying literary/edition rights and publication authorization are separate release gates.",
+  "disclaimer": "Delivered licensed text may be copied, printed and reused under CC BY-SA4.0 attribution and ShareAlike terms. This notice itself grants no publication, cover or audiobook authorization.",
+  "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%AE%E0%A7%81%E0%A6%9A%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AE+%E0%A6%97%E0%A7%81%E0%A6%A1%E0%A6%BC%E0%A7%87%E0%A6%B0+%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A6%A8%E0%A6%9A%E0%A6%B0%E0%A6%BF%E0%A6%A4+%28%E0%A7%A7%E0%A7%AF%E0%A7%AA%E0%A7%AA%29&oldid=1972146",
+  "contributors_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%AE%E0%A7%81%E0%A6%9A%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AE+%E0%A6%97%E0%A7%81%E0%A6%A1%E0%A6%BC%E0%A7%87%E0%A6%B0+%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A6%A8%E0%A6%9A%E0%A6%B0%E0%A6%BF%E0%A6%A4+%28%E0%A7%A7%E0%A7%AF%E0%A7%AA%E0%A7%AA%29&action=history",
+  "chapter_sha256": [
+    "2da278011f7705b08e941479981aa83558e56b1c6a3d40f30b14fb8a6f23092e",
+    "9c57d79295766ee6651f2193a7d5266e5cfd816ace6621fbe77211cb8240df28",
+    "1d63b6afec450a31a696ebab5c9d81624f43a3cb89e2174bd23445177d4ad496",
+    "2507c591f5a1018933b6cbb9ac622c999d6b7b605187b029ce462ee0850e248a",
+    "de6bd01c17c55dc0bc577d98af6f4211533da81e438b4a8d9f96743beb648c79",
+    "7c6d87f6f3acc2113e84da621bacd917b901db8ded81bf51bcbf1f652e3d58e1",
+    "4ca42337a9618bc37ac23f01f9f543d9e4b47cf4ede7fa59e594b815a09fdbed",
+    "dd6f112b7a80ee08887b8554ce9be8860362bd9617c98c9d2efb51f7b5c88b65",
+    "3c8d62be2f1924251284d7db79ad10d0573b4c30337d7772cc74771aeaf3e852",
+    "c5756735fcc91e34956d65b47b22c50b59511db757244f3b375dc2cf16f2bf62",
+    "561171c2844a4372450ddddbcdf8cbeb079d4d56e7ff9f0ec148967a4230975e",
+    "e42831ad15f5261b1d70b160e6c8e34f01ae7e4a135a30c3b8e64d4e91cd76a0",
+    "99fa49be3e5da764b80dea4e8d66ae3df503c0f69f4d0a4bde33e55b63a1167c",
+    "7e10484a0e5bd8f8595231f771062da9d1b7e0b407b5a9643a33b369a58b1a33"
+  ]
+}

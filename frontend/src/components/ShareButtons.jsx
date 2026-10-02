@@ -1,3 +1,4 @@
+import { canonicalShareUrl } from "../lib/socialSharing";
 import { toast } from "sonner";
 import { Facebook, Link as LinkIcon, MessageCircle, Twitter, Linkedin } from "lucide-react";
 
@@ -9,7 +10,7 @@ import { Facebook, Link as LinkIcon, MessageCircle, Twitter, Linkedin } from "lu
  *  - testIdPrefix: optional override for data-testid prefix
  */
 export default function ShareButtons({ title = "", variant = "product", testIdPrefix = "share", labelled = false }) {
-  const url = typeof window !== "undefined" ? window.location.href : "";
+  const url = typeof window !== "undefined" ? canonicalShareUrl(window.location.href) : "";
   const encUrl = encodeURIComponent(url);
   const encText = encodeURIComponent(title);
 
@@ -47,7 +48,7 @@ export default function ShareButtons({ title = "", variant = "product", testIdPr
       </a>
       {variant === "article" && (
         <a
-          href={`https://twitter.com/intent/tweet?url=${encUrl}&text=${encText}`}
+          href={`https://x.com/intent/tweet?url=${encUrl}&text=${encText}`}
           target="_blank" rel="noreferrer"
           aria-label="Share on X"
           data-testid={`${testIdPrefix}-twitter`}

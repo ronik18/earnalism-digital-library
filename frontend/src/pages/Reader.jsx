@@ -7,6 +7,8 @@ import { toast } from 'sonner';
 import ReaderUpsellPrompt from '../components/Funnel/ReaderUpsellPrompt';
 import ReaderAudiobookPanel from '../components/ReaderAudiobookPanel';
 import SecureReader from '../components/SecureReader';
+import LicensedTextNotice from '../components/LicensedTextNotice';
+import { approvedTextLicense } from '../lib/textLicense';
 import { trackFunnelEvent } from '../lib/funnelAnalytics';
 import { canShowReaderFinishPrompt, markReaderFinishPromptShown } from '../lib/funnelOffers';
 import { DRACULA_CTA_EVENTS, LIVE_APPROVED_SLUG } from '../lib/controlledLaunch';
@@ -619,6 +621,8 @@ function hasGeneratedAudioEnabled(book = {}, bookId = '') {
 
 function rightsForBook(book = {}, userName = 'Reader') {
   const title = book?.title || '';
+  const licence = approvedTextLicense(book);
+  if (licence) { const label = licence.license === 'CC0-1.0' ? 'CC0 1.0' : 'CC BY-SA 4.0'; return { licenseMetadata: `${label} · transcription only`, licenseNotice: `${licence.attribution} ${licence.changes} ${licence.scope}`, footerText: `Transcription: ${label} · see attribution and licence`, watermarkText: `Earnalism · ${label} transcription` }; }
   if (/bharat at the crossroads/i.test(title) || book?.slug === 'bharat-at-the-crossroads') {
     return {
       licenseMetadata: 'Bharat at the Crossroads - Original Earnalism Digital Edition',
@@ -922,6 +926,8 @@ export default function Reader() {
   const requestedCanonicalPageIndex = Math.max(1, Number(readerUrlSearch.get('p')) || 1);
 
   const [book, setBook] = useState(null);
+  const licensedTextRef = useRef(false);
+  licensedTextRef.current = Boolean(approvedTextLicense(book));
   const [chapter, setChapter] = useState(null);
   const [chapters, setChapters] = useState([]);
   const [activeChapterId, setActiveChapterId] = useState(chapterId);
@@ -1284,17 +1290,18 @@ export default function Reader() {
 
     setSessionId(id);
 
-    const onContextMenu = (event) => event.preventDefault();
+    const onContextMenu = (event) => { if (!licensedTextRef.current) event.preventDefault(); };
     const onKeyDown = (event) => {
       const blockedCombo = (event.ctrlKey || event.metaKey) && ['s', 'u', 'a', 'p', 'S', 'U', 'A', 'P'].includes(event.key);
       const blockedKey = event.key === 'F12' || event.key === 'PrintScreen';
 
-      if (blockedCombo || blockedKey) {
+      if (!licensedTextRef.current && (blockedCombo || blockedKey)) {
         event.preventDefault();
         event.stopPropagation();
       }
     };
     const onCopy = (event) => {
+      if (licensedTextRef.current) return;
       event.preventDefault();
       event.clipboardData.setData('text/plain', 'Content is protected © Earnalism');
     };
@@ -3446,6 +3453,7 @@ export default function Reader() {
       ref={scrollContainerRef}
       className={readerThemeClass}
       data-testid="reader-page"
+      data-licensed-text={Boolean(approvedTextLicense(book))}
       data-reader-language={isBengali ? 'bn' : 'en'}
       style={{
         '--reader-font-size': FONT_SIZES[fontSizeIdx].size,
@@ -3637,6 +3645,7 @@ export default function Reader() {
 
             {isContentPage || isReferencePage ? (
               <SecureReader
+                licensedText={Boolean(approvedTextLicense(book))}
                 sessionId={sessionId}
                 userName={readerUserName}
                 userEmail={readerUserEmail}
@@ -3648,6 +3657,7 @@ export default function Reader() {
                 html={displayedHtml}
                 blurred={contentBlurred}
                 lang={isBengali ? 'bn' : 'en'}
+                licenseAttribution={<LicensedTextNotice book={book} />}
                 licenseNotice={rightsCopy.licenseNotice}
                 licenseMetadata={rightsCopy.licenseMetadata}
                 watermarkText={rightsCopy.watermarkText}
@@ -3658,12 +3668,13 @@ export default function Reader() {
                   lineHeight: contentLineHeight,
                   color: colors.text,
                   transition: 'filter 300ms ease',
-                  userSelect: 'none',
-                  WebkitUserSelect: 'none',
+                  userSelect: approvedTextLicense(book) ? 'text' : 'none',
+                  WebkitUserSelect: approvedTextLicense(book) ? 'text' : 'none',
                 }}
               />
             ) : isChapterIndexPage ? (
               <SecureReader
+                licensedText={Boolean(approvedTextLicense(book))}
                 sessionId={sessionId}
                 userName={readerUserName}
                 userEmail={readerUserEmail}
@@ -3671,6 +3682,7 @@ export default function Reader() {
                 chapterId={activeChapterId || chapterId || chapter?.id}
                 title={`${book?.title || 'Earnalism'} · Contents`}
                 blurred={contentBlurred}
+                licenseAttribution={<LicensedTextNotice book={book} />}
                 licenseNotice={rightsCopy.licenseNotice}
                 licenseMetadata={rightsCopy.licenseMetadata}
                 watermarkText={rightsCopy.watermarkText}
@@ -3686,6 +3698,7 @@ export default function Reader() {
               </SecureReader>
             ) : (
               <SecureReader
+                licensedText={Boolean(approvedTextLicense(book))}
                 sessionId={sessionId}
                 userName={readerUserName}
                 userEmail={readerUserEmail}
@@ -3694,6 +3707,7 @@ export default function Reader() {
                 title={`${book?.title || 'Earnalism'} · ${currentPageLabel}`}
                 className="reader-cover-page"
                 blurred={contentBlurred}
+                licenseAttribution={<LicensedTextNotice book={book} />}
                 licenseNotice={rightsCopy.licenseNotice}
                 licenseMetadata={rightsCopy.licenseMetadata}
                 watermarkText={rightsCopy.watermarkText}

@@ -1,14 +1,14 @@
 {
   "slug": "the-door-in-the-wall",
-  "generated_at": "2026-07-03T20:07:47Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "c29c1e66d076a9434184b532f8ac21e5dedab4f9f80dfb48d0ed43fc9a8bc02c"
+      "sha256": "22401614de7fb638411b29d972600f7d81412b3ddbc4b44ab65b77f00d892d32"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "8158e044722da337a3aea2b89e65521e8e6da28c19704cfec632a4d04a9fe79f"
+      "file": "chapters/chapter-001.json",
+      "sha256": "cb189b4877fabea21abfa29695a81ba7ee2414bcb96d9b42f01056e584899181"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "14c01462e1d03849d166d34678fa5d9e55d63f410b0a90dd95feafde5bc93afa"
+      "sha256": "a4d8130fc7a91c1834339e2beecc494d35edce045abe17b9d4c9514718223370"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "33cf7d83a7e031921baea63dc6c896eb80809cad8fe93afbbe302e6bacfed3f9"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "e47492184a8e2c28c9f0279c73c471476abac7e7045696ac35177d0721413cdc"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "fbae279433d37ef9a92b29e2f192a0c031a84caa70ea889a46d0b95ad2ebdc21"
+      "sha256": "5f95f07da0020846363bd4d44110a7e864dee4ead86a9060cde304233cadbedf"
     }
   ]
 }

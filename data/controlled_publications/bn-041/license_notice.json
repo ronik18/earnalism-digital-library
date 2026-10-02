@@ -1,0 +1,20 @@
+{
+  "schema_version": "earnalism.text-license.v1",
+  "slug": "bn-041",
+  "license": "CC-BY-SA-4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "attribution": "আঁধারে আলো by শরৎচন্দ্র চট্টোপাধ্যায়; Bengali Wikisource transcription and its contributors, credited through the exact edition/source revision and its scanned-page contributor histories.",
+  "changes": "Source/import headings and publication furniture omitted. Exact source-backed missing paragraphs, chapter order and typographical punctuation corrected where recorded. No new literary text composed.",
+  "scope": "CC BY-SA4.0 applies only to source-derived transcription and formatting, not independently owned covers, Earnalism branding, software or unrelated material. Underlying literary/edition rights and publication authorization are separate release gates.",
+  "disclaimer": "Delivered licensed text may be copied, printed and reused under CC BY-SA4.0 attribution and ShareAlike terms. This notice itself grants no publication, cover or audiobook authorization.",
+  "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%AE%E0%A7%87%E0%A6%9C%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF+%28%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC%2C+%E0%A7%A7%E0%A7%AF%E0%A7%AC%E0%A7%A9%29%2F%E0%A6%86%E0%A6%81%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A7%87+%E0%A6%86%E0%A6%B2%E0%A7%8B&oldid=1996453",
+  "contributors_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%AE%E0%A7%87%E0%A6%9C%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF+%28%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC%2C+%E0%A7%A7%E0%A7%AF%E0%A7%AC%E0%A7%A9%29%2F%E0%A6%86%E0%A6%81%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A7%87+%E0%A6%86%E0%A6%B2%E0%A7%8B&action=history",
+  "chapter_sha256": [
+    "c3b0c1656462ef328113d0be71fa0d9af2ad7bb15c058f3a762e4b69cbd6cc81",
+    "ebddc8a7763868e3d7f1d4e8ab6a60862caf5b9b340f54a118825f29a080ea5b",
+    "02223461713d91bd58a15031e22c8446c7f31b1ee5a8b3458a71107e9492fd8a",
+    "3f8f99462d09c3ccb22650d7d1f578f786d5c7c6973962cd1caae22e02c0fcef",
+    "ebb8ae4a21642ac6dd318d1279e78b765a552bba820c041978b5661df3fcaa0a",
+    "06fd4bfed8b0dc59291e8d39526fccf299a601a8b3bdb039b3a7393c1403a381"
+  ]
+}

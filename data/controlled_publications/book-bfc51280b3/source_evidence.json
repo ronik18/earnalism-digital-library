@@ -3,12 +3,12 @@
   "source_url": "https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95/%E0%A6%85%E0%A6%A4%E0%A6%BF%E0%A6%A5%E0%A6%BF",
   "source_name": "Bengali Wikisource",
   "source_license": "Underlying Bengali literary text is public domain in India and the U.S.; Wikisource transcription/source layer is reused under CC BY-SA terms.",
-  "source_hash": "be2d2b6e792ddbcbdba81a9ee2e10eb3d06bdd8832e10eb2719b72ad3ac776d3",
-  "content_hash": "2602659bd47e8258b6bf8505d09bb87b168e18c7069b85a3b98bcf38c2c31553",
+  "source_hash": "8f1f2a961acb409204fb156ee641849b58bd464564b5fa07e4d7d8ed197c75b0",
+  "content_hash": "7325737829098f327b54cc74400d74a0bf53ebdfe1ab20f69daebdf52ebcef62",
   "provenance_hash": "fef6633281952ea288a19a83e33369b351f48a58f0e2f0df57c32ba302a70cdc",
-  "rights_basis": "Author died 1941. Published 1895. Public domain in India and U.S.",
+  "rights_basis": "Exact Galpa-Dashak original1302/1895 sole-author Rabindranath Tagore edition; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1941; India Section22 literary term expired end2001. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
   "downloaded_at": "2026-06-02T19:23:53.922083+00:00",
-  "source_format": "text/plain",
+  "source_format": "SHA-bound captured source rendering",
   "reader_facing_boilerplate_removed": true,
   "author_death_year": 1941,
   "author_fact_evidence": {
@@ -19,17 +19,90 @@
     "authority_response_sha256": "0048c2eaa3a43087f4e130b3e5153c9389111d9aed6d329cf12286ad158c0aa9",
     "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_EDITION_OR_PUBLICATION_APPROVAL"
   },
-  "verification_status": "pending",
-  "text_clearance_status": "PREPARED_EVIDENCE_NOT_AUTHORIZED",
+  "verification_status": "approved",
+  "text_clearance_status": "OWNER_DELEGATED_AUTOMATED_IN_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "be2d2b6e792ddbcbdba81a9ee2e10eb3d06bdd8832e10eb2719b72ad3ac776d3",
+    "reader_content_sha256": "7325737829098f327b54cc74400d74a0bf53ebdfe1ab20f69daebdf52ebcef62",
     "chapter_count": 1,
     "chapter_content_sha256": {
-      "chapter-001": "be2d2b6e792ddbcbdba81a9ee2e10eb3d06bdd8832e10eb2719b72ad3ac776d3"
+      "chapter-001": "7325737829098f327b54cc74400d74a0bf53ebdfe1ab20f69daebdf52ebcef62"
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  },
+  "reader_content_reconciliation": {
+    "status": "SOURCE_FURNITURE_REMOVED_ONLY",
+    "performed_at": "2026-10-01T21:08:27.473444+00:00",
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/source-furniture-repair-proposals.json",
+    "artifact_sha256": "63e8128394ae67e1620d02a5bce6ca6b14dd72f8230ed86b0d535ed69707baf7",
+    "before_content_sha256": "be2d2b6e792ddbcbdba81a9ee2e10eb3d06bdd8832e10eb2719b72ad3ac776d3",
+    "after_content_sha256": "032ff5d70e9acb1d78f47b8379b0f515faac56c5605fa1620093f10030f9cb56",
+    "removed_source_furniture": [
+      "রবীন্দ্রনাথ ঠাকুর"
+    ],
+    "literary_words_changed": false,
+    "source_transcription_completeness": "ADDITIONAL_SOURCE_COMPARISON_REQUIRED",
+    "scope": "READER_METADATA_FURNITURE_CLEANUP_NOT_PUBLICATION_OR_AUDIO_APPROVAL"
+  },
+  "original_publication_year": 1895,
+  "original_publication_evidence": {
+    "record": "internal/legal/catalogue_clearance_20261002/bengali/tagore-publication-facts.json",
+    "record_sha256": "132bb707cf39f0596a3aa27f5d5d368f415ba947a133f06103f4a361407f37a5",
+    "authority_event_url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/event/VZlSXRlVONlYHZEWOdVMXJ1aKVVVB1TP#event_660",
+    "year": 1895,
+    "date_as_recorded": "October,  1895",
+    "evidence_type": "EXPLICIT_TITLE_JOURNAL_PUBLICATION_ENTRY",
+    "scope": "Underlying Bengali work publication fact only; later source edition/transcription obligations independently held."
+  },
+  "full_rendered_exact_repair": {
+    "slug": "book-bfc51280b3",
+    "verified_at": "2026-10-01T21:46:35.855664+00:00",
+    "before_sha256": "032ff5d70e9acb1d78f47b8379b0f515faac56c5605fa1620093f10030f9cb56",
+    "after_sha256": "7325737829098f327b54cc74400d74a0bf53ebdfe1ab20f69daebdf52ebcef62",
+    "source": "internal/legal/catalogue_clearance_20261002/bengali/book-bfc51280b3-complete-source-comparison.json",
+    "source_sha256": "4ec4c162b5bf60fe15a5999187149c6958a86ded7a927a4e0ad4e571878f51b6",
+    "changes": [
+      {
+        "operation": "delete",
+        "canonical_paragraph_range": [
+          0,
+          3
+        ],
+        "source_paragraph_range": [
+          0,
+          0
+        ],
+        "canonical": [
+          "গল্প-দশক",
+          "১৮৯৫ (পৃ. ১৮৯--)",
+          "অতিথি।"
+        ],
+        "source": []
+      }
+    ],
+    "source_heading_not_body": [
+      "অতিথি।"
+    ],
+    "scope": "Exact pinned edition paragraphs/import furniture only; no invented words or publication authorization"
+  },
+  "historical_import_hashes": {
+    "source_hash": "be2d2b6e792ddbcbdba81a9ee2e10eb3d06bdd8832e10eb2719b72ad3ac776d3",
+    "content_hash": "2602659bd47e8258b6bf8505d09bb87b168e18c7069b85a3b98bcf38c2c31553",
+    "source_url": "https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95/%E0%A6%85%E0%A6%A4%E0%A6%BF%E0%A6%A5%E0%A6%BF"
+  },
+  "edition_publication_year": 1895,
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "source_snapshot_identity": {
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-bfc51280b3-final-source-comparison.json",
+    "sha256": "e9aa058ace47768ce7719edf9bdf78ae1a94175c2475fe0015544ae014c16911",
+    "scope": "Actual captured original/source edition transclusions; parent revision alone does not freeze transcluded pages."
+  },
+  "edition_evidence": {
+    "edition": "Galpa-Dashak original1302/1895 sole-author Rabindranath Tagore edition",
+    "primary_record": "internal/legal/catalogue_clearance_20261002/bengali/galpa-dashak-edition-title-pages.json",
+    "record_sha256": "4a101e1fe9a73ea196fbf82b7fda9b44ef84e7da7ecc484ac9a10e96dd4e22f4",
+    "scope": "Selected exact literary narrative and retained source notes only; no artwork, publisher matter, separately authored foreword or other edition authorized."
   }
 }

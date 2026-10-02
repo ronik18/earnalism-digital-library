@@ -3,21 +3,21 @@
   "schema_version": 1,
   "slug": "book-2e468c4990",
   "title": "কাবুলিওয়ালা",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
     "source_hash": "b0580e325d637dbd74661db1f98dbfff0ca27700d64a7f2420fc735629ce2337",
     "content_hash": "72aeb222d118f8f36dbe7a1648851d98e5b9a4f60988a3c8732f0cc5b7161f27",
     "provenance_hash": "b490b659a0ff953ae53d8fd7272be692c5cf7ad868a62269b7a77c407bf62b0f",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "79a9c4ee245f59f92baa12b3e62d843034f7c0a9fd1ea8dfbee3f5ced334b536",
+    "chapter_index_sha256": "2b40f464f4b54260511781f6f37855234ee50381de8129d79cba505bdac75520",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "Full Text",
-        "word_count": 2284,
-        "sha256": "be44bfa8b526c5e14504d541698811031c6be8120f5754d48931723290afe9f0"
+        "word_count": 2344,
+        "sha256": "a88774e4139fb3e2205a0f8f4ee6afc3895409b47d8763b69c3d4f6344268bcf"
       }
     ]
   },
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "04b4ceb7be95739829d45a2bb93b63eaadd1ed978aa491824c15ac2db12ee21b"
+    "evidence_sha256": "47c4b2dc89d7a6b2d345c7d64350ed510884746b176a174780391f592d89014b"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,7 +33,6 @@
     "qa_status": "QA_PASSED",
     "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783227062/earnalism/covers/front/book-2e468c4990_front_1600x2400.png",
     "blockers": [
-      "Rights: original_publication_year is required.",
       "Rights: verification_status must be approved before publishing."
     ]
   },
@@ -47,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "b5bfced7584149979cb28b78226e02b461511b9ec395c9b3781c17015bc4a4e5",
-    "reader_manifest": "b084ca12f1743804cb17b420ab41bb2896a5770d6ac748990db4f662838a35dc",
-    "source_evidence": "04b4ceb7be95739829d45a2bb93b63eaadd1ed978aa491824c15ac2db12ee21b",
+    "public_book": "b559a6035effbfd12f2f7acb0d568e85d27e673a467ea60634b437a1dd242709",
+    "reader_manifest": "7869c31b7c799c19e776756b3bc9343cbb888f8587925d3966a79dd157a04dfc",
+    "source_evidence": "47c4b2dc89d7a6b2d345c7d64350ed510884746b176a174780391f592d89014b",
     "approval_evidence": "c0405541dec47dd7a73a38f073cc455de537fe1b059f24aab70dbdaf58051068"
   },
-  "manifest_sha256": "54d3a7034ac4b5242155d27721cdc684cc68bd63879850565c653b91aca69a4a"
+  "manifest_sha256": "62ac2746a6d6dfad9498a44fb8e9b2d81fea9f6f6044a5536343d2f9a457c479"
 }

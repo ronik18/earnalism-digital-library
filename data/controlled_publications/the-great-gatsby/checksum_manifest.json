@@ -1,46 +1,50 @@
 {
   "slug": "the-great-gatsby",
-  "generated_at": "2026-08-16T14:30:00Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "ecc44aaa3e95a0449f97f0ba39f1bd349d69ab4a90da8585296a3ca682460cbd"
+      "sha256": "c6101124ec129bd44da115a841cf9051e38f4d06c000d8c9ecda2ebaf69e73df"
+    },
+    {
+      "file": "chapters/chapter-000.json",
+      "sha256": "77bf8a76e425bc7cbb0ed33c641f547841dd2849271b2f64f6df49e7a9b64861"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "2705a5ed44d84620d719b5a1e2585bbec8114e5a8933b340a5fcf43538d7543c"
+      "sha256": "45c3e0373c1fd8b3c5b32d48d4d8d735441424ee71bbe7f103423533fc6aae63"
     },
     {
       "file": "chapters/chapter-002.json",
-      "sha256": "dbf49e3d2422dda121b6faaf76c995f3d40798795fbbec28b10e9d3b050618a0"
+      "sha256": "8993d610624add69ab150a59c169c4b9b757d3810aec9df8674c8a751280d412"
     },
     {
       "file": "chapters/chapter-003.json",
-      "sha256": "8ca61a4e395f910d0f5c5298b42758e2bb41b359af74573e57d610ab3f3ed81d"
+      "sha256": "36705f15c9ca6b6cd841485b43456aa9c38ecc67f6a4816054f7b3bfed68ed3b"
     },
     {
       "file": "chapters/chapter-004.json",
-      "sha256": "fc4639fc1a2191f13e945817ed2280440d4caff4411cb546a5a8d9665e6dd318"
+      "sha256": "03ae2d9e7327e2be41ca8d263e179e341061fb9669f43ba00dbc7676e31f9d69"
     },
     {
       "file": "chapters/chapter-005.json",
-      "sha256": "36c5c00da5af92a4975567c56236aa527e0046a873acc99d9b46af069ce67427"
+      "sha256": "dee00928b0dd556bdbf80ccfcd307904cd909b4bf5c0cd15db4d8f7b947c1e68"
     },
     {
       "file": "chapters/chapter-006.json",
-      "sha256": "307f1d24f12522902b0bf7552313daf21b496361a86f2bfc806ce2b9b8dd2f24"
+      "sha256": "89873a952e81402c246bab28438d3578e49d0e7f41b6483c84785695157721a3"
     },
     {
       "file": "chapters/chapter-007.json",
-      "sha256": "6590968adea1aed365517dd192414e1a09906589f39369628287f3ee7da35308"
+      "sha256": "dd8448b1ed252dffbdeca627d55d084ecf319efb699b4393e022514817ead2a0"
     },
     {
       "file": "chapters/chapter-008.json",
-      "sha256": "8e907745215441bde9ea2f24a6c377586fe9b3459cc82d5c13b01d84a83ae86d"
+      "sha256": "bc19ec61f61517ae46b7626e5d97fffe46e1e47f943388ec9faec79d562856ef"
     },
     {
       "file": "chapters/chapter-009.json",
-      "sha256": "9641e892fcb1bfefd53e20b4919747b1c6b0b2d4065fdc0877707fcaef077dbf"
+      "sha256": "d475a9724ba4cb46caa499825ee3a1c53d409c42a02f2ab4d77a687be67e62b9"
     },
     {
       "file": "highlight_sync.json",
@@ -48,11 +52,15 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "b6503b1ff504c2b781675a20b32a2811d0005e38fe0d3c4d81e60953671f834a"
+      "sha256": "5fbbad6448aba0525184df8c422ffb60c4ba54d979d1167d0bffb0da262c2bbd"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "b6f95ba5c2fe97e9d2ad63cc50121a496fabef5ea535be0eb5fd6767c70e6e74"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "66ace521d8850547175804562bfddf4f097aefe310ef2f0c50aed16bf50d69b6"
+      "sha256": "f544166427c91bb2b8546484bf0c811761345f2ec8f1c73c00afad88411fcb4c"
     },
     {
       "file": "reader_repair_evidence.json",
@@ -60,7 +68,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "334604b641e0693604ad5956de935acd8208bf1b4ee7112bcdbd07aa2569f3f3"
+      "sha256": "93a1e5eab7ce62def0ef60ba3a2ae6e56ed964c688c1f2a827f3e88664a30874"
     }
   ]
 }

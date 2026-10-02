@@ -219,6 +219,7 @@ class PublicBookOut(BaseModel):
     cta_label: str = ""
     secondary_cta_label: str = ""
     public_json_ld_enabled: bool = False
+    text_license: Optional[Dict[str, str]] = None
     source_note: str = ""
     rights_note: str = ""
 

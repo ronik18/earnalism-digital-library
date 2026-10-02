@@ -38,8 +38,21 @@
   "about_author": "George Eliot (Mary Ann Evans, 1819–1880) was an English novelist, one of the leading writers of the Victorian era, celebrated for Middlemarch.",
   "chapters": [
     {
-      "id": "chapter-001",
+      "id": "chapter-000",
       "order": 1,
+      "title": "Author Epigraph",
+      "word_count": 25,
+      "reading_minutes": 1,
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "language_hint": "en"
+    },
+    {
+      "id": "chapter-001",
+      "order": 2,
       "title": "CHAPTER I",
       "is_preview": true,
       "has_images": false,
@@ -54,7 +67,7 @@
     },
     {
       "id": "chapter-002",
-      "order": 2,
+      "order": 3,
       "title": "CHAPTER II",
       "is_preview": true,
       "has_images": false,
@@ -68,9 +81,9 @@
       "updated_at": "2026-07-03T20:07:47Z"
     }
   ],
-  "source_hash": "53fcae1e2c80c9265a01a5d40a3e35bb661e311018ba965982306be7bf3abff6",
-  "content_hash": "219375fc5342ed68872f60e0aa9cd130666c6b09fbbab4add27a550d9c6f068e",
-  "provenance_hash": "6a1c7c08efed73d87d76e7e99145d2df2166ad241cba7e35396022c6ff7b4469",
+  "source_hash": "0e8114ea868e1ecd07e44a695c8723b819527170f96bf1811a782b2b440e05b5",
+  "content_hash": "bff60f1c99b4b49f2acf25a64ccd63a3f553d26ba07855552352fa82b72ca60c",
+  "provenance_hash": "6a6d5cbde710b8ae9a8451cd9f9aaf67f51f27c06aaf21d0895ea9bc42ec16bd",
   "rights_basis": "Author died 1880. Published 1859. Public domain in U.S. and worldwide.",
   "rights_tier": "A",
   "verification_status": "approved",

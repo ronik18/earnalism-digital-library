@@ -1,13 +1,206 @@
 {
   "slug": "feathertop",
   "source_url": "https://www.gutenberg.org/ebooks/512",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #512; Feathertop selected complete Nathaniel Hawthorne story/cycle from Mosses from an old manse; verified lifetime collection edition 1846; no translation/editorial/art imported",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "85a78b4e74dc88dd691687eddd599571e215524da97a6a85b6500ac16ef05636",
-  "content_hash": "f5450bba2ac3ccb0f570a34f3ecf914465b6dbb81ecf248fb1a9a07b03065e9c",
-  "provenance_hash": "d4ff427ea8ab960cfd26f22d43ec28355535d97a75927c94c6586e96d6ddb46c",
-  "rights_basis": "Nathaniel Hawthorne died 1864; first published 1852. Public domain in India and the U.S.",
+  "source_hash": "d9a0cc1df0c41f87ffe61076e23383a4223369105223318542dca83914b156d4",
+  "content_hash": "58a42de53474f8dd703147ade7e6ab0fe9d082e6d6272bcc669ec7f178664915",
+  "provenance_hash": "6628642a03785d0a5a6a87c8d5094dcde9e34daabddd38b1cc1283483b97b42f",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1864, verified lifetime collection publication 1846 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-03T08:04:22.420347+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #512",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/512",
+      "resolved_url": "https://www.gutenberg.org/ebooks/512",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:51.868236+00:00",
+      "response_sha256": "12ba4335b43efe5056d082426a6c363cf8951bfa258b8fa8377d856749db86b2"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/512.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/512/pg512.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:57.734853+00:00",
+      "response_sha256": "d9a0cc1df0c41f87ffe61076e23383a4223369105223318542dca83914b156d4"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Hawthorne, Nathaniel, 1804-1864"
+      ],
+      "Title": [
+        "Mosses from an old manse"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Mosses_from_an_Old_Manse"
+      ],
+      "Contents": [
+        "The old manse -- The birthmark -- A select party -- Young Goodman Brown -- Rappaccini's daughter -- Mrs. Bullfrog -- Fire worship -- Buds and bird voices -- Monsieur du Miroir -- The hall of fantasy -- The celestial railroad -- The procession of life -- Feathertop: a moralized legend -- The new Adam and Eve -- Egotism; or, The bosom serpent -- The Christmas banquet -- Drowne's wooden image -- The intelligence office -- Roger Malvin's burial -- P.'s correspondence -- Earth's holocaust -- Passages from a relinquished work -- Sketches from memory -- The old apple dealer -- The artist of the beautiful -- A virtuoso's collection."
+      ],
+      "Credits": [
+        "Charles Keller",
+        "Charles Keller"
+      ],
+      "Reading Level": [
+        "Reading ease score: 63.7 (8th & 9th grade). Neither easy nor difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Short stories, American",
+        "New England -- Social life and customs -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "512"
+      ],
+      "Release Date": [
+        "Apr 1, 1996"
+      ],
+      "Last Update": [
+        "Nov 9, 2022"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "5887 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 397860,
+          "length": 43750
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "85a78b4e74dc88dd691687eddd599571e215524da97a6a85b6500ac16ef05636",
+    "legacy_content_sha256": "f5450bba2ac3ccb0f570a34f3ecf914465b6dbb81ecf248fb1a9a07b03065e9c",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1864,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "12ba4335b43efe5056d082426a6c363cf8951bfa258b8fa8377d856749db86b2",
+    "url": "https://www.gutenberg.org/ebooks/512",
+    "author_catalog_strings": [
+      "Hawthorne, Nathaniel, 1804-1864"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "58a42de53474f8dd703147ade7e6ab0fe9d082e6d6272bcc669ec7f178664915"
+      }
+    ],
+    "content_sha256": "58a42de53474f8dd703147ade7e6ab0fe9d082e6d6272bcc669ec7f178664915"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "85a78b4e74dc88dd691687eddd599571e215524da97a6a85b6500ac16ef05636",
+        "content_hash": "f5450bba2ac3ccb0f570a34f3ecf914465b6dbb81ecf248fb1a9a07b03065e9c",
+        "provenance_hash": "d4ff427ea8ab960cfd26f22d43ec28355535d97a75927c94c6586e96d6ddb46c",
+        "source_url": "https://www.gutenberg.org/ebooks/512",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:48:17.188009+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1846,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/512.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/512/pg512.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:57.734853+00:00",
+      "response_sha256": "d9a0cc1df0c41f87ffe61076e23383a4223369105223318542dca83914b156d4"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 397860,
+          "length": 43750
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Hawthorne, Nathaniel, 1804-1864",
+      "creator_death_year": 1864,
+      "selected_collection_publication_year": 1846,
+      "original_story_first_publication_year": null,
+      "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+      "bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Hawthorne%2C%20Nathaniel%2C%201804-1864",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Hawthorne%2C%20Nathaniel%2C%201804-1864",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:44:21.460712+00:00",
+        "response_sha256": "5f534b270df1cd6a37504402fba43c3bee5cfb327ab9ed9949cf550ecac6b9cc"
+      },
+      "bibliographic_excerpt": "Mosses from an old manse. (U.S. book co., 1824) (page images at HathiTrust) Hawthorne, Nathaniel, 1804-1864: Mosses from an old manse (Wiley and Putnam, 1846) , also by Joel Tyler Headley (page images at HathiTrust) Hawthorne, Nathaniel, 1804-1864: M",
+      "scope": "Named author selected story text only; other collection stories, separately authored editorial matter and all illustrations excluded."
+    },
+    "author_death_evidence": 1864,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1846,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "d9a0cc1df0c41f87ffe61076e23383a4223369105223318542dca83914b156d4",
+    "content_sha256": "58a42de53474f8dd703147ade7e6ab0fe9d082e6d6272bcc669ec7f178664915",
+    "year": 1846,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Hawthorne%2C%20Nathaniel%2C%201804-1864",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Hawthorne%2C%20Nathaniel%2C%201804-1864",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:21.460712+00:00",
+      "response_sha256": "5f534b270df1cd6a37504402fba43c3bee5cfb327ab9ed9949cf550ecac6b9cc"
+    },
+    "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  }
 }

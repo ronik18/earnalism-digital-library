@@ -1,0 +1,72 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-metamorphosis",
+  "title": "The Metamorphosis",
+  "generated_at": "2026-10-02T03:02:58.696821+00:00",
+  "content": {
+    "source_hash": "4668a0a73a218a2f7ce39133432c411bc4acdf307c6d40ce300bfee15750d56c",
+    "content_hash": "7f7b0c9985633cfcc77657523a5ee407a8e7727403d7dcf4a42e4b52e90ca887",
+    "provenance_hash": "431004b47ba51f77b0d84594f1e919da208aaada82d076852d67010839124edd",
+    "sanitized": true,
+    "chapter_count": 3,
+    "chapter_index_sha256": "b78275f5abf88e815b750a7c1dff93e2e9d65e1a0d80269b97d38ef29544b679",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "I",
+        "word_count": 7256,
+        "sha256": "cb557359c26e78cd780db0b88d5a64abb1293f72512772c7ac61c3ce65b6d91d"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "II",
+        "word_count": 7566,
+        "sha256": "55e10e2dc8fd8355db044d69199d9ccddd05429060b81a3473f952f5960aac9e"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "III",
+        "word_count": 7514,
+        "sha256": "9ac218d4e247ed077b1d22bb99afd7f2f284a66e6a615c4d23f6dec14429c6eb"
+      }
+    ]
+  },
+  "rights": {
+    "status": "QUARANTINE",
+    "tier": "C",
+    "publication_region": "in",
+    "evidence_sha256": "ba25bb57963db95f192e96f1e96b5a7873bedaaf4d04c4d4abe4c19252f52ae3"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "RIGHTS_REVIEW_REQUIRED",
+    "cover_url": "https://theearnalism.com/assets/books/the-metamorphosis/front-cover.webp",
+    "blockers": [
+      "Rights: modern or unknown translation rights block publishing until separately verified.",
+      "Rights: Tier C rights block all publishing.",
+      "Rights: verification_status must be approved before publishing.",
+      "Reader QA must pass."
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "73ce6de1adfd1d67cd5d3f8497c0f3f50d1dd2917e90c00a4e934d6e495d4da5",
+    "reader_manifest": "9fa204723dbec66cf06547b52aacd54a2208c1fa037b2638a51314f942c1990f",
+    "source_evidence": "ba25bb57963db95f192e96f1e96b5a7873bedaaf4d04c4d4abe4c19252f52ae3",
+    "approval_evidence": "06f1c670cba4205c9e6592839202a99e579f3c7358bd5f2f9940e5f68245ad81"
+  },
+  "manifest_sha256": "6d2874dedd00f60c2864bef613bb7455dc5640e73a7f9edbc28ec538e01bfda6"
+}

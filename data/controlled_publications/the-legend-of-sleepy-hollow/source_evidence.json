@@ -1,13 +1,206 @@
 {
   "slug": "the-legend-of-sleepy-hollow",
   "source_url": "https://www.gutenberg.org/ebooks/41",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #41; complete Irving story, including source epigraph from JamesThomson CastleofIndolence1748; all textual contributors independently considered",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "8bb82877a5f11221b4aad10ee6b048d7171f48e5a4b600d67c57839fcfb873a4",
-  "content_hash": "b461d1dc8d09ff6030890e130f5386489dc3f9764d7c6df2319a5dda60e0c80c",
-  "provenance_hash": "27d2f82e0abdc3be14e8a647096b5a9e59acc561cfa42ed50f1e5af6b363eea5",
-  "rights_basis": "Washington Irving died 1859; first published 1820. Public domain in India and the U.S.",
+  "source_hash": "6847c02f49c9ff8a5e2a0e8f49842bf3bffc7f5a87216c895a6b64f26ecf9353",
+  "content_hash": "a06cbf5814b796114271076984e1e56da57612f28bd8758ea5e34f0c631b1aa3",
+  "provenance_hash": "b7475b107e7e4aab2574668b585f93f84e1e4bb1b919cb6a0995e4f656188db8",
+  "rights_basis": "Irving selected story in verifiedSketchBook1820 lifetime edition, death1859+60 ends1919. Exact named CastleofIndolence epigraph byJamesThomson1700–1748 already published by1748: conservative latest-proven publication+60 ends1808 even if publication/death ordering uncertain. Neither original first-story date nor unsupported chronology invented.",
   "downloaded_at": "2026-06-03T08:04:22.051784+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #41",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/41",
+      "resolved_url": "https://www.gutenberg.org/ebooks/41",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:24.937825+00:00",
+      "response_sha256": "30be0b1e882514f5433f298e63f8eccc2fef5a0b6efcfb28bb44fc4a0ea85f88"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/41.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/41/pg41.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:29.444170+00:00",
+      "response_sha256": "6847c02f49c9ff8a5e2a0e8f49842bf3bffc7f5a87216c895a6b64f26ecf9353"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Irving, Washington, 1783-1859"
+      ],
+      "Title": [
+        "The Legend of Sleepy Hollow"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Legend_of_Sleepy_Hollow"
+      ],
+      "Credits": [
+        "Ilana M. (Kingsley) Newby and Greg Newby"
+      ],
+      "Reading Level": [
+        "Reading ease score: 52.8 (10th to 12th grade). Somewhat difficult to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Ghosts -- Fiction",
+        "New York (State) -- History -- 1775-1865 -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "41"
+      ],
+      "Release Date": [
+        "Jun 27, 2008"
+      ],
+      "Last Update": [
+        "Feb 10, 2026"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "31647 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 893,
+          "length": 69538
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "8bb82877a5f11221b4aad10ee6b048d7171f48e5a4b600d67c57839fcfb873a4",
+    "legacy_content_sha256": "b461d1dc8d09ff6030890e130f5386489dc3f9764d7c6df2319a5dda60e0c80c",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1859,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "30be0b1e882514f5433f298e63f8eccc2fef5a0b6efcfb28bb44fc4a0ea85f88",
+    "url": "https://www.gutenberg.org/ebooks/41",
+    "author_catalog_strings": [
+      "Irving, Washington, 1783-1859"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "a06cbf5814b796114271076984e1e56da57612f28bd8758ea5e34f0c631b1aa3"
+      }
+    ],
+    "content_sha256": "a06cbf5814b796114271076984e1e56da57612f28bd8758ea5e34f0c631b1aa3"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "8bb82877a5f11221b4aad10ee6b048d7171f48e5a4b600d67c57839fcfb873a4",
+        "content_hash": "b461d1dc8d09ff6030890e130f5386489dc3f9764d7c6df2319a5dda60e0c80c",
+        "provenance_hash": "27d2f82e0abdc3be14e8a647096b5a9e59acc561cfa42ed50f1e5af6b363eea5",
+        "source_url": "https://www.gutenberg.org/ebooks/41",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-02T01:07:27.058549+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1820,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-02T01:07:27.058549+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/41.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/41/pg41.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:29.444170+00:00",
+      "response_sha256": "6847c02f49c9ff8a5e2a0e8f49842bf3bffc7f5a87216c895a6b64f26ecf9353"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 893,
+          "length": 69538
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator_death_year": 1859,
+      "selected_edition_publication_year": 1820,
+      "primary_lifetime_collection_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Irving%2C%20Washington%2C%201783-1859",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Irving%2C%20Washington%2C%201783-1859",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:44:51.215098+00:00",
+        "response_sha256": "9ca904bd991884cf7d4b2eaf62034fec488316547143c5469d3873201416a1b6"
+      },
+      "quoted_poem_creator": "Thomson,James,1700-1748; TheCastleofIndolence1748; actual primary bibliographic record",
+      "poem_creator_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Thomson%2C%20James%2C%201700-1748",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Thomson%2C%20James%2C%201700-1748",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:54:28.992155+00:00",
+        "response_sha256": "ee6a3c90ef3dea39de0b03205ed7979782d0d009bde8fdb1cbcf1fac092b19e6"
+      },
+      "basis": "Irving selected story in verifiedSketchBook1820 lifetime edition, death1859+60 ends1919. Exact named CastleofIndolence epigraph byJamesThomson1700–1748 already published by1748: conservative latest-proven publication+60 ends1808 even if publication/death ordering uncertain. Neither original first-story date nor unsupported chronology invented."
+    },
+    "author_death_evidence": 1859,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1820,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "6847c02f49c9ff8a5e2a0e8f49842bf3bffc7f5a87216c895a6b64f26ecf9353",
+    "content_sha256": "a06cbf5814b796114271076984e1e56da57612f28bd8758ea5e34f0c631b1aa3",
+    "year": 1820,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Irving%2C%20Washington%2C%201783-1859",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Irving%2C%20Washington%2C%201783-1859",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:51.215098+00:00",
+      "response_sha256": "9ca904bd991884cf7d4b2eaf62034fec488316547143c5469d3873201416a1b6"
+    },
+    "basis": "Irving selected story in verifiedSketchBook1820 lifetime edition, death1859+60 ends1919. Exact named CastleofIndolence epigraph byJamesThomson1700–1748 already published by1748: conservative latest-proven publication+60 ends1808 even if publication/death ordering uncertain. Neither original first-story date nor unsupported chronology invented.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  }
 }

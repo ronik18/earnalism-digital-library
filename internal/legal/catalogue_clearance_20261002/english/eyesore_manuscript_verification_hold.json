@@ -1,0 +1,45 @@
+{
+  "slug": "eyesore-chokher-bali",
+  "status": "MANUSCRIPT_VERIFICATION_INCOMPLETE",
+  "verified_at": "2026-10-02T03:45:43.223522+00:00",
+  "canonical_chapters": 39,
+  "selected_edition_chapters": 53,
+  "missing_canonical_chapters": [
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53
+  ],
+  "actual_source_receipt": "eyesore_original_volume_receipt.json",
+  "original_volume_sha256": "57debae5d70ca75f424acf2ce437e014f2601c8380d34189411f8363d1ce9b2b",
+  "independent_original_scan_review": [
+    {
+      "physical_page": 343,
+      "printed_page": 323,
+      "chapter": 41,
+      "finding": "Left-edge abrasion removes initial letter strokes on multiple lines; enlarged original does not independently establish every reconstructed glyph."
+    },
+    {
+      "physical_page": 340,
+      "printed_page": 320,
+      "chapter": 40,
+      "finding": "Right edge faded/clipped terminal glyphs require independent same-edition proof before acceptance."
+    }
+  ],
+  "temporary_transcription_packet": "/tmp/earnalism-eyesore-transcription-assistance",
+  "packet_is_release_evidence": false,
+  "next_engineering_action": "Resolve specific damaged glyphs against another independent scan of the same 1914 Modern Review translation, complete second review, then bind all 53 chapters and actual CC BY-SA transcription notice. Do not accept context reconstruction as exact source proof.",
+  "covers_deferred": true,
+  "audio_unchanged": true,
+  "no_local_accepted_rights_record": true
+}

@@ -1,23 +1,23 @@
 {
   "slug": "the-great-gatsby",
   "source_url": "https://www.gutenberg.org/cache/epub/64317/pg64317.txt",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #64317; exact selected original-author text; verified lifetime work publication 1925; excludes anthology editor/art and other title components",
   "source_license": "Underlying work public domain in India; source furniture internal only.",
   "source_hash": "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35",
-  "content_hash": "4f6579e08ebba7b91e4a92bf134f29c0a79b7c5575125351a20684c4ff8688ec",
-  "provenance_hash": "bfd4a08c6d91bec76bbdb15e9edc73b1b2e7f6a582a87a5f79b6e4c37e9068ab",
-  "rights_basis": "F. Scott Fitzgerald died in 1940. Under Section 22 of the Copyright Act, 1957 (India), copyright in a literary work subsists until sixty years from the beginning of the calendar year following the author's death; the term therefore expired in India at the end of 2000 and the work entered the public domain there on 1 January 2001. Territory: IN.",
+  "content_hash": "8cdf90ce5cf418a4d40e7e822c734f52c2392c648e19537cd097b38a53050e34",
+  "provenance_hash": "90df34dc504b7e22287b7044b27d48b80f7773e13aa70b403c7829ce7cf33426",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1940, verified lifetime collection publication 1925 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-05-25T20:09:51.426847+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
   "author_name": "F. Scott Fitzgerald",
   "author_death_year": 1940,
-  "original_publication_year": 1925,
+  "original_publication_year": null,
   "rights_tier": "A",
-  "verification_status": "reader_repair_verified",
-  "publication_region": "IN",
-  "verified_at": "2026-08-16T14:30:00Z",
-  "qa_status": "READER_REPAIR_PASSED_COVER_BLOCKED",
+  "verification_status": "approved",
+  "publication_region": "India",
+  "verified_at": "2026-10-01T21:52:27.631967+00:00",
+  "qa_status": "QA_PASSED",
   "source_hash_domain": "exact_download_bytes",
   "content_hash_domain": "chapter_text_utf8_joined_by_double_lf",
   "provenance_hash_domain": "source_url_lf_source_name_lf_license_class_lf_content_hash",
@@ -125,5 +125,323 @@
   "source_download_url": "https://www.gutenberg.org/cache/epub/64317/pg64317.txt",
   "rights_statute": "Copyright Act, 1957 (India), Section 22",
   "rights_statute_url": "https://www.indiacode.nic.in/show-data?actid=AC_CEN_9_30_00006_195714_1517807321712&orderno=23&sectionId=14525&sectionno=22",
-  "raw_source_archive": "content/books/the-great-gatsby/raw/pg64317.txt"
+  "raw_source_archive": "content/books/the-great-gatsby/raw/pg64317.txt",
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #64317",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/64317",
+      "resolved_url": "https://www.gutenberg.org/ebooks/64317",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:27.073335+00:00",
+      "response_sha256": "9c49efe224aa30f2751c3837b564ec6a220f0945cb97563c4f16301d40b43608"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/64317.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/64317/pg64317.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:32.100709+00:00",
+      "response_sha256": "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Fitzgerald, F. Scott (Francis Scott), 1896-1940"
+      ],
+      "Title": [
+        "The Great Gatsby"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Great_Gatsby"
+      ],
+      "Credits": [
+        "Produced by Alex Cabal for the Standard Ebooks project, based on a transcription produced for Project Gutenberg Australia."
+      ],
+      "Reading Level": [
+        "Reading ease score: 81.6 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PS: Language and Literatures: American and Canadian literature"
+      ],
+      "Subject": [
+        "Psychological fiction",
+        "First loves -- Fiction",
+        "Married women -- Fiction",
+        "Rich people -- Fiction",
+        "Long Island (N.Y.) -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "64317"
+      ],
+      "Release Date": [
+        "Jan 17, 2021"
+      ],
+      "Last Update": [
+        "Jan 26, 2025"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "51183 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1202,
+          "length": 32882
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 34088,
+          "length": 23494
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 57587,
+          "length": 32420
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 90011,
+          "length": 30451
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 120465,
+          "length": 23413
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 143882,
+          "length": 22699
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 166586,
+          "length": 48843
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 215435,
+          "length": 25383
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 240822,
+          "length": 28315
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35",
+    "legacy_content_sha256": "4f6579e08ebba7b91e4a92bf134f29c0a79b7c5575125351a20684c4ff8688ec",
+    "legacy_source_bytes_reproduced": true,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "9c49efe224aa30f2751c3837b564ec6a220f0945cb97563c4f16301d40b43608",
+    "url": "https://www.gutenberg.org/ebooks/64317",
+    "author_catalog_strings": [
+      "Fitzgerald, F. Scott (Francis Scott), 1896-1940"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 10,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-000",
+        "sha256": "8e042f367cf8d6d00cff551155f51835958d370ffc18dc1d32b034fb2134afb0"
+      },
+      {
+        "id": "chapter-001",
+        "sha256": "e18f148e1a4c37a974853160cbcde26b38bb540990f026ea2c3b6598b48fb991"
+      },
+      {
+        "id": "chapter-002",
+        "sha256": "c88bbfd8975bfda97c07dae3d8464bcffa0775ee598af3d31cb0813cde4df32f"
+      },
+      {
+        "id": "chapter-003",
+        "sha256": "b6830f0fe1e12a07b0afd008fe6096618e4edca6583106610c3db895f8c9d424"
+      },
+      {
+        "id": "chapter-004",
+        "sha256": "f14a9c319d9cd6585be3aff2ee3bc8fb596b415309c0fdb9bd1f1cbe09d8bda3"
+      },
+      {
+        "id": "chapter-005",
+        "sha256": "7ff88b9272c934215b40f480ec2479be280d4a7f0cf910864f3791f21f42591a"
+      },
+      {
+        "id": "chapter-006",
+        "sha256": "5460677bf721f9da48c9cb1ef22f4077ae5fd937619820de8b6659dfba00ca4c"
+      },
+      {
+        "id": "chapter-007",
+        "sha256": "1232638642e738d518e4fe06e365cf3b9fdbc4e263abc4ab39a628878ae5cfb3"
+      },
+      {
+        "id": "chapter-008",
+        "sha256": "da9e62381cb1d73f6659f43f4b89209534f995f2748fba1e985ccbb123fc5e87"
+      },
+      {
+        "id": "chapter-009",
+        "sha256": "ffc56f967c7b9e2e9b619aaf8ce8b005f446be9b0cf48bfd53d2d1ef39efebe6"
+      }
+    ],
+    "content_sha256": "8cdf90ce5cf418a4d40e7e822c734f52c2392c648e19537cd097b38a53050e34"
+  },
+  "selected_edition_publication_year": 1925,
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/64317.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/64317/pg64317.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:32.100709+00:00",
+      "response_sha256": "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 9,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1202,
+          "length": 32882
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 34088,
+          "length": 23494
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 57587,
+          "length": 32420
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 90011,
+          "length": 30451
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 120465,
+          "length": 23413
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 143882,
+          "length": 22699
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 166586,
+          "length": 48843
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 215435,
+          "length": 25383
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 240822,
+          "length": 28315
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator_death_year": 1940,
+      "selected_edition_publication_year": 1925,
+      "original_first_publication_year": null,
+      "primary_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Fitzgerald%2C%20F.%20Scott%20%28Francis%20Scott%29%2C%201896-1940",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Fitzgerald%2C%20F.%20Scott%20%28Francis%20Scott%29%2C%201896-1940",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:50:13.648756+00:00",
+        "response_sha256": "e20846217b755026e9ea6021ee600c35ac15a39d3d51577afba3e25580ccf554"
+      },
+      "bibliographic_excerpt": "Gatsby (1925) (Gutenberg text) Fitzgerald, F. Scott (Francis Scott), 1896-1940: The Great Gatsby (first edition; New York: C. Scribner's Sons, 1925) page images at HathiTrust multiple formats at archive.org Fitzgerald, F. Scott (Francis Scott), 1896-1940: Tales of the Jazz Age (1922) (Gutenberg text",
+      "basis": "Verified work publication during creator lifetime; selected publication year is not claimed as first publication.",
+      "scope": "Complete selected original-author narrative and verified same-author prefatory matter; anthology editors, art and separately attributed epigraph/dedication excluded unless specifically verified."
+    },
+    "author_death_evidence": 1940,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "historical_unverified_import_claims": {
+    "original_publication_year": 1925
+  },
+  "publication_upper_bound_year": 1925,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35",
+    "content_sha256": "8cdf90ce5cf418a4d40e7e822c734f52c2392c648e19537cd097b38a53050e34",
+    "year": 1925,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Fitzgerald%2C%20F.%20Scott%20%28Francis%20Scott%29%2C%201896-1940",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Fitzgerald%2C%20F.%20Scott%20%28Francis%20Scott%29%2C%201896-1940",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:13.648756+00:00",
+      "response_sha256": "e20846217b755026e9ea6021ee600c35ac15a39d3d51577afba3e25580ccf554"
+    },
+    "basis": "Verified work publication during creator lifetime; selected publication year is not claimed as first publication.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  },
+  "reader_repair_history": [
+    {
+      "verified_at": "2026-10-02T03:25:45.777143+00:00",
+      "reason": "Restored authentic author dedication/epigraph/addressee or full story opening from immutable exact source before claiming full selected text scope.",
+      "content_sha256": "8cdf90ce5cf418a4d40e7e822c734f52c2392c648e19537cd097b38a53050e34"
+    },
+    {
+      "verified_at": "2026-10-02T03:25:59.945714+00:00",
+      "reason": "Restored authentic author dedication/epigraph/addressee or full story opening from immutable exact source before claiming full selected text scope.",
+      "content_sha256": "8cdf90ce5cf418a4d40e7e822c734f52c2392c648e19537cd097b38a53050e34"
+    }
+  ],
+  "reader_qa_verification": {
+    "verified_at": "2026-10-02T03:27:00.105888+00:00",
+    "verifier": "Automated source and package verifier under owner delegation",
+    "checks": [
+      "Actual immutable source bytes reproduce declared hash",
+      "Entire canonical chapter bodies match ordered source",
+      "Declared chapter count equals existing chapter files",
+      "Every chapter content hash reproduces actual UTF8 text",
+      "Independent whole-work boundary evidence includes actual beginning/end/author matter"
+    ],
+    "source_sha256": "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35",
+    "content_sha256": "8cdf90ce5cf418a4d40e7e822c734f52c2392c648e19537cd097b38a53050e34",
+    "result": "PASS",
+    "scope": "TEXT_READER_STRUCTURE_AND_SOURCE_COMPLETENESS_ONLY_NOT_COVER_AUDIO_OR_PRODUCTION_QA"
+  }
 }

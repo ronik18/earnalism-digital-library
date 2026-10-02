@@ -1,0 +1,16 @@
+{
+  "receipt": {
+    "requested_url": "https://api.github.com/repos/standardebooks/guy-de-maupassant_short-fiction_various-translators/contents",
+    "resolved_url": "https://api.github.com/repos/standardebooks/guy-de-maupassant_short-fiction_various-translators/contents",
+    "http_status": 200,
+    "accessed_at": "2026-10-02T03:07:13.489470+00:00",
+    "response_sha256": "2e9e9be744d3bfb5e4eb24b02ee205fca82af0e48106b4600d14a737439a7879"
+  },
+  "files": [
+    "LICENSE.md",
+    "images",
+    "production-notes.md",
+    "se-lint-ignore.xml",
+    "src"
+  ]
+}

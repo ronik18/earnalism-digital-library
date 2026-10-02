@@ -1,14 +1,14 @@
 {
   "slug": "the-adventure-of-the-copper-beeches",
-  "generated_at": "2026-07-03T20:07:48Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "88a437397ceee8a6c19e81a7cdbe39443927ea9d4108405ccb9836637b96141f"
+      "sha256": "ab1963f2a2a1d8a3036d6167bb367e395d9067eac615c8e31d271ad53d11bd83"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "8d938164ba5d66cca51d3b83af02229f68337365032f7df03f407fa46e3d9cf3"
+      "file": "chapters/chapter-001.json",
+      "sha256": "efb161b0c7565f76a70d40e8c0642816d1dd7bc56e703174634c0ff74b23944f"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "85bd9967b58713025a8d49125c15231cba2652b121590be5a4ead8a23ec3ff00"
+      "sha256": "f151cf4cc9bc066dcaf10f4323d586cfb2bcff100ec5a3b6bae9bab39b2b1bc4"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "631f4a07c5e6602747ba3182e4e94523521ae957cba9dbb0192467f1c19d75fb"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "8fd7316ebad8a5fab5c1c09fe78f7d8ee6de9e8e1e97acf7f37b9b2be7cfa666"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "cb638e7ce5ab378f9d8651da9f5c9ce0a087580c50095f917780a06d9927d9ed"
+      "sha256": "5ce37061a88264ecc615379cf3f268f73a8519d51da7db38e9fa985888dd8c7d"
     }
   ]
 }

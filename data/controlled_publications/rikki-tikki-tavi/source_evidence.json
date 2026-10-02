@@ -1,13 +1,232 @@
 {
   "slug": "rikki-tikki-tavi",
   "source_url": "https://www.gutenberg.org/ebooks/35997",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #35997; Rikki-Tikki-Tavi exact canonical source, underlying lifetime publication 1894; complete selected author text, no translation or independently authored artwork/editorial material imported",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "9fb989d890306e186ad819ae9917d27b053bad992c2910b016dbf5540b28faf9",
-  "content_hash": "213c2a4d8a06ab1ef0a043434d8026e50b6a01eff59a8ec74287afaf2c0f9ff7",
-  "provenance_hash": "50b412128c232ff4cb8be5219da80cc52acbdcbecb4a58dfd0a934dc6514dde3",
-  "rights_basis": "Rudyard Kipling died 1936; first published 1894. Public domain in India and the U.S.",
+  "source_hash": "702dcf213efccf27768778ff44434f78557d1e7d2ba7a532899bec64633e55ca",
+  "content_hash": "5278ec9aad39e461bbdb35db8bfce162e01e25ff7b2e532f00d198b6e52f5837",
+  "provenance_hash": "71b80cc91175e5e65cd71a377343b3c5e97a646e5bbc1faef0ecf59b69d49a9d",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1936, verified lifetime collection publication 1894 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-03T08:04:22.479465+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #35997",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/35997",
+      "resolved_url": "https://www.gutenberg.org/ebooks/35997",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:19.343736+00:00",
+      "response_sha256": "83cbc2946e9cd7dea303c59f23ea5ded576377db86b1bf6a6f9384694942b26b"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/35997.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/35997/pg35997.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:24.387975+00:00",
+      "response_sha256": "702dcf213efccf27768778ff44434f78557d1e7d2ba7a532899bec64633e55ca"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Kipling, Rudyard, 1865-1936"
+      ],
+      "Title": [
+        "The Jungle Book"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/The_Jungle_Book",
+        "There is an improved edition of this title, eBook #236"
+      ],
+      "Credits": [
+        "Suzanne Shell, Ernest Schaal, and the Online Distributed Proofreading Team"
+      ],
+      "Reading Level": [
+        "Reading ease score: 86.6 (6th grade). Easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Short stories",
+        "Animals -- Fiction",
+        "Jungles -- Fiction",
+        "India -- Fiction",
+        "Jungle animals -- Fiction",
+        "Mowgli (Fictitious character) -- Fiction",
+        "Adventure stories, English",
+        "Feral children -- Fiction",
+        "India -- History -- 19th century -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "35997"
+      ],
+      "Release Date": [
+        "Apr 30, 2011"
+      ],
+      "Last Update": [
+        "Nov 8, 2023"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "1489 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-000",
+          "offset": 168912,
+          "length": 368
+        },
+        {
+          "chapter_id": "chapter-001",
+          "offset": 169300,
+          "length": 31289
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "9fb989d890306e186ad819ae9917d27b053bad992c2910b016dbf5540b28faf9",
+    "legacy_content_sha256": "213c2a4d8a06ab1ef0a043434d8026e50b6a01eff59a8ec74287afaf2c0f9ff7",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1936,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "83cbc2946e9cd7dea303c59f23ea5ded576377db86b1bf6a6f9384694942b26b",
+    "url": "https://www.gutenberg.org/ebooks/35997",
+    "author_catalog_strings": [
+      "Kipling, Rudyard, 1865-1936"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 2,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-000",
+        "sha256": "4346ccf9d83348e11342889f8868a90bb3ecf64f58073c92e0544ef41d387b0d"
+      },
+      {
+        "id": "chapter-001",
+        "sha256": "3efa2d3b97865dd06d93163029c23cd0243b29bc97fb059bbb28ccfc065aee83"
+      }
+    ],
+    "content_sha256": "5278ec9aad39e461bbdb35db8bfce162e01e25ff7b2e532f00d198b6e52f5837"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "9fb989d890306e186ad819ae9917d27b053bad992c2910b016dbf5540b28faf9",
+        "content_hash": "213c2a4d8a06ab1ef0a043434d8026e50b6a01eff59a8ec74287afaf2c0f9ff7",
+        "provenance_hash": "50b412128c232ff4cb8be5219da80cc52acbdcbecb4a58dfd0a934dc6514dde3"
+      },
+      "superseded_at": "2026-10-01T21:42:12.553107+00:00",
+      "reason": "Same verified Gutenberg ID illustrated-edition narrative restored in full, illustration captions and publisher/trademark furniture removed; no prior approval transferred"
+    }
+  ],
+  "edition_migration_evidence": {
+    "verified_at": "2026-10-01T21:42:12.553107+00:00",
+    "same_electronic_id": 35997,
+    "old_chapter_sha256": "6c0e5ab6390ed2b3fbf7f064e8bef012e0ee3012c14b69a165b2bd8df6773e17",
+    "selected_scope": "Openingverse + complete Rikki narrative and Darzeechant; Toomai excluded",
+    "illustration_caption_transformation": "Balanced Illustration bracket blocks removed; no artwork imported",
+    "source_sha256": "702dcf213efccf27768778ff44434f78557d1e7d2ba7a532899bec64633e55ca",
+    "new_content_sha256": "5278ec9aad39e461bbdb35db8bfce162e01e25ff7b2e532f00d198b6e52f5837",
+    "publication_authorized": false
+  },
+  "selected_edition_publication_year": 1894,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:49:40.745164+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/35997.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/35997/pg35997.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:24.387975+00:00",
+      "response_sha256": "702dcf213efccf27768778ff44434f78557d1e7d2ba7a532899bec64633e55ca"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 2,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-000",
+          "offset": 168912,
+          "length": 368
+        },
+        {
+          "chapter_id": "chapter-001",
+          "offset": 169300,
+          "length": 31289
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Kipling, Rudyard, 1865-1936",
+      "creator_death_year": 1936,
+      "selected_collection_publication_year": 1894,
+      "original_story_first_publication_year": null,
+      "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+      "bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Kipling%2C%20Rudyard%2C%201865-1936",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Kipling%2C%20Rudyard%2C%201865-1936",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:45:15.583634+00:00",
+        "response_sha256": "2bddabd3349964f8acbcca1692ae25f62fca9c3280ab36bf56c63ad2781215b2"
+      },
+      "bibliographic_excerpt": "Jungle Book (multiple editions) Kipling, Rudyard, 1865-1936: The Jungle Book (New York: The Century Co., 1894) , illust. by W. H. Drake and Paul Frenzeny (page images at Florida) Kipling, Rudyard, 1865-1936: The Jungle Book (9-story selection; New Yo",
+      "scope": "Named creator complete selected literary text including available author prefatory/end matter; publisher/source furniture and illustrations excluded."
+    },
+    "author_death_evidence": 1936,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1894,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "702dcf213efccf27768778ff44434f78557d1e7d2ba7a532899bec64633e55ca",
+    "content_sha256": "5278ec9aad39e461bbdb35db8bfce162e01e25ff7b2e532f00d198b6e52f5837",
+    "year": 1894,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Kipling%2C%20Rudyard%2C%201865-1936",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Kipling%2C%20Rudyard%2C%201865-1936",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:45:15.583634+00:00",
+      "response_sha256": "2bddabd3349964f8acbcca1692ae25f62fca9c3280ab36bf56c63ad2781215b2"
+    },
+    "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  }
 }

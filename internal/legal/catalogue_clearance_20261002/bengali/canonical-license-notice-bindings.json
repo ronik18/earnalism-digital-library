@@ -1,0 +1,321 @@
+{
+  "scope": "Transcription-license delivery preparation only; no underlying-rights approval inferred",
+  "titles": [
+    {
+      "slug": "bn-027",
+      "notice_sha256": "5d17b74d579b826c369928b3910c039842144c3b2f34ef32614ca8f0b4f99990",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%85%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%9A%E0%A6%BF%E0%A6%A4%E0%A6%BE&oldid=1655974",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "bn-031",
+      "notice_sha256": "1dd3d8f8f81f38fbf0182bcac1fd4c84ec3ce93923e4380c6d1f6163e9cfa743",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%B6%E0%A6%B0%E0%A7%8E-%E0%A6%B8%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF-%E0%A6%B8%E0%A6%82%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B9+%28%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%AF%E0%A6%BC%E0%A7%8B%E0%A6%A6%E0%A6%B6+%E0%A6%B8%E0%A6%AE%E0%A7%8D%E0%A6%AD%E0%A6%BE%E0%A6%B0%29%2F%E0%A6%AE%E0%A6%B9%E0%A7%87%E0%A6%B6&oldid=1943388",
+      "chapters": 3,
+      "production_authorized": false
+    },
+    {
+      "slug": "bn-035",
+      "notice_sha256": "0f9f6cae57e92deb5473bf556c12cb6be663a9833b87fddd340279f1f6e5c8d8",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%AC%E0%A6%A1%E0%A6%BC%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF+%28%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC%29&oldid=1971979",
+      "chapters": 10,
+      "production_authorized": false
+    },
+    {
+      "slug": "bn-036",
+      "notice_sha256": "d766e8de974ea99b6e0300b675e6ca70325d3915e90c7bfb19cc97d462d4d626",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%AE%E0%A7%87%E0%A6%9C%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF+%28%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC%2C+%E0%A7%A7%E0%A7%AF%E0%A7%AC%E0%A7%A9%29&oldid=1996454",
+      "chapters": 14,
+      "production_authorized": false
+    },
+    {
+      "slug": "bn-041",
+      "notice_sha256": "50a45273715ec3b49761e47ccb788ded0dced8b08c13626b30ec92b8d35f7dad",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%AE%E0%A7%87%E0%A6%9C%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF+%28%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC%2C+%E0%A7%A7%E0%A7%AF%E0%A7%AC%E0%A7%A9%29%2F%E0%A6%86%E0%A6%81%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A7%87+%E0%A6%86%E0%A6%B2%E0%A7%8B&oldid=1996453",
+      "chapters": 6,
+      "production_authorized": false
+    },
+    {
+      "slug": "bn-059",
+      "notice_sha256": "da382ceb704d5f59678f382d659d7251ea639ae4d0457c7a6636b5e6b5f4ba34",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%95%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4+%28%E0%A7%A7%E0%A7%AE%E0%A7%AE%E0%A7%AB%29%2F%E0%A6%95%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0+%E0%A6%A6%E0%A6%AA%E0%A7%8D%E0%A6%A4%E0%A6%B0&oldid=1972181",
+      "chapters": 13,
+      "production_authorized": false
+    },
+    {
+      "slug": "bn-066",
+      "notice_sha256": "e02ba4317441ff3b89a869ee69e048c7993f65c700d823abe72919aa293c1aaf",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%86%E0%A6%A8%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%AE%E0%A6%A0+%28%E0%A7%A7%E0%A7%AE%E0%A7%AE%E0%A7%A9%29&oldid=1971681",
+      "chapters": 46,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-0986aeb7e3",
+      "notice_sha256": "0963df21fccbffd3f061665d07c80c27401eacda336996cae5583c97e2aca0db",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%B9%E0%A7%88%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%80&oldid=1655973",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-0deb35c750",
+      "notice_sha256": "256ad1db5950fea4d0e00c0206e96bc56ba7287fcb08f3141a05f570d92599c9",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%96%E0%A6%BE%E0%A6%A4%E0%A6%BE&oldid=1666949",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-0fbdaa730e",
+      "notice_sha256": "463d91327963916e5f650837633704407e2e54d1d3e88f70f2a4193e70a35bab",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%97%E0%A7%81%E0%A6%AA%E0%A7%8D%E0%A6%A4%E0%A6%A7%E0%A6%A8&oldid=1679401",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-1090573dff",
+      "notice_sha256": "147a5589c0a697656ead565d81eb0f0b8a5ab4110460677e5ce05443a7b67bed",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%9B%E0%A7%81%E0%A6%9F%E0%A6%BF&oldid=1666941",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-2ddbed8293",
+      "notice_sha256": "3321c6a9d1e4747de085c8981efd2ae9be203e37afae8296b83e5b2e58da275d",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%A7%E0%A6%BE%E0%A6%A8&oldid=1666919",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-2e468c4990",
+      "notice_sha256": "bffd19c88a2685f2fd7c4a33f0133dfab7c49d6f9db6bfc0a9a8ffcc7f1ea2b4",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%95%E0%A6%BE%E0%A6%AC%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%B2%E0%A6%BE&oldid=1990818",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-4968248842",
+      "notice_sha256": "1cb225ce2693310f0dde219f5272c9fc5474ac53a20b5b9a27dc231d724ecc97",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29.djvu%2F%E0%A7%A8%E0%A7%AB%E0%A7%AE&oldid=1680021",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-4b944e64fa",
+      "notice_sha256": "168350bc87b600f7cca3bc9e8e06ff7acebd8fe09e7aa259a80e52e84207ede9",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%8F%E0%A6%95%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BF&oldid=1666936",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-5461971092",
+      "notice_sha256": "9fb58d071f101b9d09c029b1863f12700e5c93aff5a78299f444d9757944f3d9",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%95%E0%A6%A5%E0%A6%BE-%E0%A6%9A%E0%A6%A4%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%AF%E0%A6%BC%2F%E0%A6%AE%E0%A7%87%E0%A6%98+%E0%A6%93+%E0%A6%B0%E0%A7%8C%E0%A6%A6%E0%A7%8D%E0%A6%B0&oldid=1624595",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-5704b31005",
+      "notice_sha256": "1fc9cf8fae864434f95bc34656a96672c55d852f3dfdad4a1f386a1a1cc4e01c",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95%2F%E0%A6%AC%E0%A6%BF%E0%A6%9A%E0%A6%BE%E0%A6%B0%E0%A6%95&oldid=1624865",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-5aedda79fe",
+      "notice_sha256": "11580606132df04efe314dc7837f1a56bf30d3ecff200157ccf73d07e56f639a",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%95%E0%A6%A5%E0%A6%BE-%E0%A6%9A%E0%A6%A4%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%AF%E0%A6%BC%2F%E0%A6%B6%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BF&oldid=1624596",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-63afd5e9be",
+      "notice_sha256": "5a7dab2a963ed1255df0c1c48415df01939992816bcf304d9b3116cd87e448e8",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%A6%E0%A7%87%E0%A6%A8%E0%A6%BE%E0%A6%AA%E0%A6%BE%E0%A6%93%E0%A6%A8%E0%A6%BE&oldid=1666911",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-754da4eab8",
+      "notice_sha256": "5f76af44b813d9de724bcf5a78b363ac187fdfd49ef15e198d6220d64b59fdab",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%B8%E0%A6%A8%E0%A7%8D%E0%A6%A8%E0%A7%87%E0%A6%B0+%E0%A6%95%E0%A7%80%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BF&oldid=1666938",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-827fdc7aee",
+      "notice_sha256": "6543defe258f5a4102ba3e4555e0f6f9f7019696855c0e2f34b2e70ae13cc0a5",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A6%AE%E0%A6%A3%E0%A6%BF%E0%A6%B0+%E0%A6%9B%E0%A7%87%E0%A6%B2%E0%A7%87&oldid=1655971",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-88ded9b47c",
+      "notice_sha256": "62d902a217eec736122790ea3b137b0b4f4b8fc1046d7e1cc9b8a0d31e8924df",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95%2F%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%AD%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A6%A8&oldid=1624866",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-95624627d5",
+      "notice_sha256": "e503d85df42e2430e541d2e4ee3aa76c80bb160eb0668a14e5844840acc5cb30",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%95%E0%A6%A5%E0%A6%BE-%E0%A6%9A%E0%A6%A4%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%AF%E0%A6%BC%2F%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A7%80&oldid=1624594",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-9a7f771921",
+      "notice_sha256": "ccb20fa8af549b7795af80e2e99044164f921f2c1003c550af77dcf370a669e3",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%AB%E0%A6%B2&oldid=1682933",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-a23625bf36",
+      "notice_sha256": "80a43ff341a40f6be6d29f47ed616c034cba32b2f11aa7c32d6f55a98009037c",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%95%E0%A6%A5%E0%A6%BE-%E0%A6%9A%E0%A6%A4%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%AF%E0%A6%BC%2F%E0%A6%B8%E0%A6%AE%E0%A6%BE%E0%A6%AA%E0%A7%8D%E0%A6%A4%E0%A6%BF&oldid=1624597",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-a4a369483f",
+      "notice_sha256": "2abf8e0042dc007c4da68f996aad57d4990f795a2f5bcc93f450aee40a2ef43e",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%B8%E0%A6%AE%E0%A7%8D%E0%A6%AA%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%BF-%E0%A6%B8%E0%A6%AE%E0%A6%B0%E0%A7%8D%E0%A6%AA%E0%A6%A3&oldid=1666920",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-a74c1a1451",
+      "notice_sha256": "2eebba5d28744ae3e83f1bac83ca7a570099ca0b2a49143e3941a8a2e5935f1d",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%A6%E0%A6%BE%E0%A6%B2%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE&oldid=1666931",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-ac5a71075e",
+      "notice_sha256": "4f98949b82c9b97732d27304b6f79acd3d2b0e50bbab2906bac8a192da3760a2",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%AA%E0%A7%8B%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A7%8D%E2%80%8C%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BE%E0%A6%B0&oldid=1666946",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-b9d47814a8",
+      "notice_sha256": "f1ac3625973babd286341ca2741993fac8bcf3b4b012df4407640e02a37807d8",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95%2F%E0%A6%A8%E0%A6%BF%E0%A6%B6%E0%A7%80%E0%A6%A5%E0%A7%87&oldid=1624862",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-bfc51280b3",
+      "notice_sha256": "fa7c4240ef27d5841accdc545b5820e4e2aafe4c2cf73935eecaaee187355699",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95%2F%E0%A6%85%E0%A6%A4%E0%A6%BF%E0%A6%A5%E0%A6%BF&oldid=1613158",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-c307a57868",
+      "notice_sha256": "a25f88f0d220c3f8a70e10398aafe7a57c98911cbef093a45b1a27c1cc89bcba",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%80%E0%A6%B0+%E0%A6%AA%E0%A6%A4%E0%A7%8D%E0%A6%B0&oldid=1679403",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-c7f3ce526c",
+      "notice_sha256": "43ab518e7f33bc9ce5ff5da622928cd076b53d1460b7d8443af8bfe4e6a32fa7",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%96%E0%A7%8B%E0%A6%95%E0%A6%BE%E0%A6%AC%E0%A6%BE%E0%A6%AC%E0%A7%81%E0%A6%B0+%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%A8&oldid=1666937",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-c85323409f",
+      "notice_sha256": "f9410246c91563aaf6712885f345eed35d3ca83e02ee536728eb98e699cab055",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A6%BF%E0%A6%A4+%E0%A6%93+%E0%A6%AE%E0%A7%83%E0%A6%A4&oldid=1666924",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-d19e96859f",
+      "notice_sha256": "bfbbe2fec6f94f18dce7dc6ff3b913135ebe2cb1247f249a092967fc01d48b16",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%97%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A8%E0%A6%BF&oldid=1666927",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-d2fe532e1c",
+      "notice_sha256": "b314dc39985333193e73f9ebc269441133754f2b23bdab964a41f6ff9ef83f86",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A3%E0%A6%AE%E0%A7%83%E0%A6%97&oldid=1666926",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "notice_sha256": "9d6a668ee2f18d24efab07443ea5c57b637411dcd981c9023c1911dd5623f626",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95%2F%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%81%E0%A6%A7%E0%A6%BF%E0%A6%A4+%E0%A6%AA%E0%A6%BE%E0%A6%B7%E0%A6%BE%E0%A6%A3&oldid=1624859",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-ef193ffc52",
+      "notice_sha256": "b0e2fb951e430611642fc000bc2d7b3e929ff1679621f8624b1a75618f945bf2",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95%2F%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF&oldid=1624861",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "notice_sha256": "90395a2e031ec3f01d5e762de77f773e69366a5650d2200f83a06b2c4dcc9bc6",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A6%BE%E0%A6%87%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%B0+%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AC%E0%A7%81%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BF%E0%A6%A4%E0%A6%BE&oldid=1666940",
+      "chapters": 1,
+      "production_authorized": false
+    },
+    {
+      "slug": "book-fbdf2991ab",
+      "notice_sha256": "a9c8600f9626f882a792d83021c60ea0ec68345352da61082d6504d7f062ade6",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%B8%E0%A7%81%E0%A6%AD%E0%A6%BE&oldid=1949059",
+      "chapters": 4,
+      "production_authorized": false
+    },
+    {
+      "slug": "devdas",
+      "notice_sha256": "a59f30290d52f182578ffba6ea13885bd733072d894e1003908033acfe0f13b5",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%A6%E0%A7%87%E0%A6%AC%E0%A6%A6%E0%A6%BE%E0%A6%B8+%28%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC%29&oldid=1971877",
+      "chapters": 16,
+      "production_authorized": false
+    },
+    {
+      "slug": "lokrahasya",
+      "notice_sha256": "4f4a62c163fe662c298635e5e3397883fc609a0cab1635b614a25abd466d16c3",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%B2%E0%A7%8B%E0%A6%95%E0%A6%B0%E0%A6%B9%E0%A6%B8%E0%A7%8D%E0%A6%AF+%28%E0%A7%A7%E0%A7%AF%E0%A7%A9%E0%A7%AF%29&oldid=1972226",
+      "chapters": 16,
+      "production_authorized": false
+    },
+    {
+      "slug": "mrinalini",
+      "notice_sha256": "5daf71034572bf90bf766d4c93d2632d518986f0cc96cd916f987ac0fe3ca3c9",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%AE%E0%A7%83%E0%A6%A3%E0%A6%BE%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%80+%28%E0%A7%A7%E0%A7%AE%E0%A7%AD%E0%A7%AA%29&oldid=1972154",
+      "chapters": 46,
+      "production_authorized": false
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "notice_sha256": "c78c5f7ef44ed30b38cc3a38956c546403b2a948dc0743a6b652977674bf8ff1",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%AE%E0%A7%81%E0%A6%9A%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AE+%E0%A6%97%E0%A7%81%E0%A6%A1%E0%A6%BC%E0%A7%87%E0%A6%B0+%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A6%A8%E0%A6%9A%E0%A6%B0%E0%A6%BF%E0%A6%A4+%28%E0%A7%A7%E0%A7%AF%E0%A7%AA%E0%A7%AA%29&oldid=1972146",
+      "chapters": 14,
+      "production_authorized": false
+    },
+    {
+      "slug": "nishkriti",
+      "notice_sha256": "31fa11780bb27be856378af18a5079360c2f1fa4082e6393908829ef8d466add",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A7%8D%E0%A6%95%E0%A7%83%E0%A6%A4%E0%A6%BF+%28%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC%2C+%E0%A7%A7%E0%A7%AF%E0%A7%AB%E0%A7%A8%29&oldid=1971910",
+      "chapters": 9,
+      "production_authorized": false
+    },
+    {
+      "slug": "pather-panchali",
+      "notice_sha256": "ec6c163070c272029027b207adfb22dc8f2820c853f86758b4b0b4587c3e79f6",
+      "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%AA%E0%A6%A5%E0%A7%87%E0%A6%B0+%E0%A6%AA%E0%A6%BE%E0%A6%81%E0%A6%9A%E0%A6%BE%E0%A6%B2%E0%A7%80%2F%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A7%87%E0%A6%A6&oldid=1745130",
+      "chapters": 12,
+      "production_authorized": false
+    }
+  ],
+  "count": 45
+}

@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-adventure-of-the-empty-house",
+  "title": "The Adventure of the Empty House",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
+    "content_hash": "9972e85ba4bfd20b80ea948f864a5c06b7c1e104af1e3b586fe69bd9b76fed3e",
+    "provenance_hash": "6efa0d16932bb1e93c51f3d3495e1f965778ed2fc61b6071e2c5732e4b56d2bd",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "a92bee993b3fe55388a83dae1b8e483796e4d4d4a1d15bccca862529d9b753ad",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Adventure of the Empty House",
+        "word_count": 8755,
+        "sha256": "8e904b0c25559f73a98dd1884bdc447f4a567057905f19f2fe2270890a8cea9b"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "792c5e307b468ee13ea9dd6c536c3d16646c2d0794a7139fed7a37a7efe86b56"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "8739f75c7d611542a56e4f9962ea53188788b114d807ba84471f7204e7b13614",
+    "reader_manifest": "1f1c880da817e5811384c653bce7f44d9cca213d69b2303ed01387d5bd47440e",
+    "source_evidence": "792c5e307b468ee13ea9dd6c536c3d16646c2d0794a7139fed7a37a7efe86b56",
+    "approval_evidence": "e639b9f7212a098d3d0add590b7fc5534ba95b671f3160696163e8fc1422453b"
+  },
+  "manifest_sha256": "46bde4864cab67b9af17b5e22d928c2ab7f51a4c1377f1bf174d117eabe46f5f"
+}

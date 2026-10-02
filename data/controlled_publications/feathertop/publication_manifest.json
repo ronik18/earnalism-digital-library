@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "feathertop",
+  "title": "Feathertop",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "d9a0cc1df0c41f87ffe61076e23383a4223369105223318542dca83914b156d4",
+    "content_hash": "58a42de53474f8dd703147ade7e6ab0fe9d082e6d6272bcc669ec7f178664915",
+    "provenance_hash": "6628642a03785d0a5a6a87c8d5094dcde9e34daabddd38b1cc1283483b97b42f",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "8d8a46f71f849eddfad15811da2fb208f3d9af1a8fbe321cadafdf30f1eb66ff",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Feathertop",
+        "word_count": 7844,
+        "sha256": "59a7bd373a8996cea90350deb009a90e8b08745bde35f2f75cf099c202dd9cb6"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "e495e5cace2e727e74ee8948816542801d5e80afbe82b9a1f2a29c0d123fdf45"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "e8abb7dc2a591390ffeb8b06d526ff1fb704f15d8c2e5489aa7c3fad17b93e88",
+    "reader_manifest": "5e0c41f2d1f8cfbfc31d1012196ee5514218fef77b8f70db94393d62d842aed8",
+    "source_evidence": "e495e5cace2e727e74ee8948816542801d5e80afbe82b9a1f2a29c0d123fdf45",
+    "approval_evidence": "113dfb29d9e8a90a98d96873a98d9b19d3aa4015bc4134597e288d39b21c49a9"
+  },
+  "manifest_sha256": "743ed0e9500c2a26597c78e389147a7ce57a6b5e31a8fb59eb90a040d95a0178"
+}

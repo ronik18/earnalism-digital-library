@@ -1,0 +1,610 @@
+{
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
+  "scope": "Final45 own packages; rootIndira excluded; heldcover/otherrights failures retained",
+  "titles": [
+    {
+      "slug": "bn-027",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267436/earnalism/covers/front/bn-027_front_1600x2400.png",
+        "blockers": [
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "bn-031",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267401/earnalism/covers/front/bn-031_front_1600x2400.png",
+        "blockers": [
+          "Rights: original_publication_year is required.",
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "bn-035",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270682/earnalism/covers/front/bn-035_front_1600x2400.png",
+        "blockers": [
+          "Rights: original_publication_year is required."
+        ]
+      }
+    },
+    {
+      "slug": "bn-036",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270682/earnalism/covers/front/bn-036_front_1600x2400.png",
+        "blockers": [
+          "Rights: original_publication_year is required.",
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "bn-041",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270649/earnalism/covers/front/bn-041_front_1600x2400.png",
+        "blockers": [
+          "Rights: original_publication_year is required.",
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "bn-059",
+      "exit_code": 0,
+      "manifest": {
+        "status": "READY_FOR_APPROVAL",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593318/earnalism/covers/front/cover_4b3ab0ba-eeaa-4c8b-b186-72e03fd39cad.png",
+        "blockers": []
+      }
+    },
+    {
+      "slug": "bn-066",
+      "exit_code": 0,
+      "manifest": {
+        "status": "READY_FOR_APPROVAL",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593362/earnalism/covers/front/cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
+        "blockers": []
+      }
+    },
+    {
+      "slug": "book-0986aeb7e3",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "",
+        "blockers": [
+          "Front cover is required.",
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "book-0deb35c750",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783227002/earnalism/covers/front/book-0deb35c750_front_1600x2400.png",
+        "blockers": [
+          "Rights: original_publication_year is required.",
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "book-0fbdaa730e",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "",
+        "blockers": [
+          "Front cover is required.",
+          "Rights: original_publication_year is required.",
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "book-1090573dff",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "",
+        "blockers": [
+          "Front cover is required.",
+          "Rights: original_publication_year is required.",
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "book-2ddbed8293",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783226974/earnalism/covers/front/book-2ddbed8293_front_1600x2400.png",
+        "blockers": [
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "book-2e468c4990",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783227062/earnalism/covers/front/book-2e468c4990_front_1600x2400.png",
+        "blockers": [
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "book-4968248842",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "",
+        "blockers": [
+          "Front cover is required.",
+          "Rights: original_publication_year is required.",
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "book-4b944e64fa",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "",
+        "blockers": [
+          "Front cover is required.",
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "book-5461971092",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "",
+        "blockers": [
+          "Front cover is required.",
+          "Rights: original_publication_year is required."
+        ]
+      }
+    },
+    {
+      "slug": "book-5704b31005",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "",
+        "blockers": [
+          "Front cover is required.",
+          "Rights: original_publication_year is required."
+        ]
+      }
+    },
+    {
+      "slug": "book-5aedda79fe",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "",
+        "blockers": [
+          "Front cover is required."
+        ]
+      }
+    },
+    {
+      "slug": "book-63afd5e9be",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779453498/earnalism/covers/front/cover_7d71638e-e3a9-44ca-a477-6d6d03d28925.png",
+        "blockers": [
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "book-754da4eab8",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779944796/earnalism/covers/front/cover_80f395d4-f8a5-49a2-b4b4-1b52f93dcc89.png",
+        "blockers": [
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "book-827fdc7aee",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "",
+        "blockers": [
+          "Front cover is required.",
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "book-88ded9b47c",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "",
+        "blockers": [
+          "Front cover is required."
+        ]
+      }
+    },
+    {
+      "slug": "book-95624627d5",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "",
+        "blockers": [
+          "Front cover is required."
+        ]
+      }
+    },
+    {
+      "slug": "book-9a7f771921",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "",
+        "blockers": [
+          "Front cover is required.",
+          "Rights: original_publication_year is required.",
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "book-a23625bf36",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "",
+        "blockers": [
+          "Front cover is required."
+        ]
+      }
+    },
+    {
+      "slug": "book-a4a369483f",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "",
+        "blockers": [
+          "Front cover is required.",
+          "Rights: original_publication_year is required.",
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "book-a74c1a1451",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779945878/earnalism/covers/front/cover_7c93ccd6-e997-42c8-b104-6672dbe670b6.png",
+        "blockers": [
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "book-ac5a71075e",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "",
+        "blockers": [
+          "Front cover is required.",
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "book-b9d47814a8",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "",
+        "blockers": [
+          "Front cover is required.",
+          "Rights: original_publication_year is required."
+        ]
+      }
+    },
+    {
+      "slug": "book-bfc51280b3",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "",
+        "blockers": [
+          "Front cover is required."
+        ]
+      }
+    },
+    {
+      "slug": "book-c307a57868",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "",
+        "blockers": [
+          "Front cover is required.",
+          "Rights: original_publication_year is required.",
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "book-c7f3ce526c",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779561896/earnalism/covers/front/cover_cb4f1262-45e4-4741-ae4d-5cb2dc9de847.png",
+        "blockers": [
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "book-c85323409f",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "",
+        "blockers": [
+          "Front cover is required.",
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "book-d19e96859f",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779342197/earnalism/covers/front/cover_ff96c6fb-bcad-4a11-aba2-f31f6fe69e41.png",
+        "blockers": [
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "book-d2fe532e1c",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779944544/earnalism/covers/front/cover_e664a300-63cc-4103-a9a8-bc1fa8f83d2a.png",
+        "blockers": [
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "exit_code": 0,
+      "manifest": {
+        "status": "READY_FOR_APPROVAL",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1784226492/earnalism/covers/front/book-edfcf810c5_front_1024x1536.webp",
+        "blockers": []
+      }
+    },
+    {
+      "slug": "book-ef193ffc52",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "",
+        "blockers": [
+          "Front cover is required.",
+          "Rights: original_publication_year is required."
+        ]
+      }
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779944684/earnalism/covers/front/cover_5dfb07a4-361f-4b48-aac7-a4a819e1c7b4.png",
+        "blockers": [
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "book-fbdf2991ab",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "",
+        "blockers": [
+          "Front cover is required.",
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "devdas",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "",
+        "blockers": [
+          "Front cover is required.",
+          "Rights: original_publication_year is required.",
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "lokrahasya",
+      "exit_code": 0,
+      "manifest": {
+        "status": "READY_FOR_APPROVAL",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483123/earnalism/covers/front/cover_7450115f-db43-49ae-af14-feea82311d1f.jpg",
+        "blockers": []
+      }
+    },
+    {
+      "slug": "mrinalini",
+      "exit_code": 0,
+      "manifest": {
+        "status": "READY_FOR_APPROVAL",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483135/earnalism/covers/front/cover_89e10113-f181-4484-a021-eff76348710d.jpg",
+        "blockers": []
+      }
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "exit_code": 0,
+      "manifest": {
+        "status": "READY_FOR_APPROVAL",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482980/earnalism/covers/front/cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+        "blockers": []
+      }
+    },
+    {
+      "slug": "nishkriti",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273654/earnalism/covers/front/nishkriti_front_1600x2400.png",
+        "blockers": [
+          "Rights: original_publication_year is required.",
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    },
+    {
+      "slug": "pather-panchali",
+      "exit_code": 1,
+      "manifest": {
+        "status": "BLOCKED",
+        "exposed": false,
+        "qa_status": "QA_PASSED",
+        "cover_url": "",
+        "blockers": [
+          "Front cover is required.",
+          "Rights: original_publication_year is required.",
+          "Rights: verification_status must be approved before publishing."
+        ]
+      }
+    }
+  ]
+}

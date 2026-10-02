@@ -1,0 +1,22 @@
+{
+  "the-most-dangerous-game": {
+    "creator_death_year": 1949,
+    "selected_edition_publication_year": 1924,
+    "original_first_publication_year": null,
+    "edition_titlepage_receipt": {
+      "requested_url": "https://en.wikisource.org/wiki/O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game",
+      "resolved_url": "https://en.wikisource.org/wiki/O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:54:47.140339+00:00",
+      "response_sha256": "77c9fc421bd4d7742794edc9dd48b7f80eb70c0b73b969d4ef099d4ff9e4808f"
+    },
+    "creator_receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Connell%2C%20Richard%2C%201893-1949",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Connell%2C%20Richard%2C%201893-1949",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:56:05.065383+00:00",
+      "response_sha256": "2aaa3491186ec637a27cec2a0bc42ee091b7ad7daa60524ece12cb2870919d1a"
+    },
+    "basis": "RichardConnell1893\u20131949; verified1924story anthology during lifetime, INSection22 term elapsed2009. Exactrevision12072546transcription reused with actualfooterCCBYSA4.0 and hash-bound publiclicense obligations."
+  }
+}

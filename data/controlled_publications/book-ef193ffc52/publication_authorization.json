@@ -1,0 +1,23 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "book-ef193ffc52",
+  "edition": "Galpa-Dashak original1302/1895 sole-author Rabindranath Tagore edition",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_ONLY",
+  "source_sha256": "dc05ca7f4ee113326288f0ba21f2fd9c9cc09854a1d2936e45a829b8482c45a6",
+  "content_sha256": "7423a95d1cc99f56c7156f038feebfc630a97d777908ef0d778d5ca0cd833175",
+  "chapter_sha256": {
+    "chapter-001": "7423a95d1cc99f56c7156f038feebfc630a97d777908ef0d778d5ca0cd833175"
+  },
+  "rights_decision_id": "india-20261002-book-ef193ffc52-1895-cc-by-sa-text-reader",
+  "license_notice_sha256": "b0e2fb951e430611642fc000bc2d7b3e929ff1679621f8624b1a75618f945bf2",
+  "cover_provenance_status": "COVER_BINDING_DEFERRED_NOT_AUTHORIZED_BY_THIS_TEXT_ONLY_RECORD",
+  "authorized_by": "Automated executor under explicit product-owner autonomous evidence-backed text-clearance delegation; not a human legal reviewer or signature.",
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Covers, production rights registry, controlled allowlist, runtime readiness and protected checks are separate fail-closed gates."
+}

@@ -1,14 +1,14 @@
 {
   "slug": "a-wagner-matinee",
-  "generated_at": "2026-07-03T20:07:48Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "cf8741c7e7c7ef7e2c862c9e63359824b2125f40f15d6c111b16c491add01099"
+      "sha256": "edebd7fa37898563d91d8acd6d12c6747350f8d72aa9ec505a428ff16131e57b"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "386f691a16cd7443d6ad3bda71221dbec2c343dbbbeb6352be808f5829660961"
+      "file": "chapters/chapter-001.json",
+      "sha256": "33659bf3a26d3beb32cb021b11559ba9f6be0a97eb3deae950947f637edb3241"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "3a7886f07fa9895b64c858caa5240c6d935adb8fc9e894cca5503fb06a428a32"
+      "sha256": "dfc22eb5a3bf9d4934f3c09f3eb9bbc4201898f0fccdddd7d47b81bf9b4b7c93"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "94ec7910ae6b4528125422f88bec9bf3033262d6c42005cb3d3125e61fd57eb7"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "c59954e1575c9a8e025b8f80dcb4009e6b28d641f0d554a6b549b3b3ae15d488"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "9cbd9fe333b76136c9d0c55044655605eb03f8658528bad31a6b7bd38ce0adde"
+      "sha256": "a1d255a266ca79f2b2b4930189044852d12ff2b69292aa111e080bcaa4d1047a"
     }
   ]
 }

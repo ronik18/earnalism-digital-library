@@ -158,12 +158,12 @@
       "updated_at": "2026-07-03T20:07:46Z"
     }
   ],
-  "source_hash": "20fd4394099662a7126b388fe2c242b5cd947fefe9ca280e808375bdadd77d9a",
-  "content_hash": "8dc1e281ed72c9583923b9782b528d75daf6099f17b9f340e3e54c42d7b3d14d",
-  "provenance_hash": "2a9758446d81273f4a807d409237967beed5e587269d6113a6574f6231869f9f",
+  "source_hash": "664191f5a7e2d8e6bbccd90d1c8ee947aa70f33b5924c1295d77b46f4114f067",
+  "content_hash": "69d972ddd3fea936806a641d96a6287930b569536c0049eb8ef2f4b61d790065",
+  "provenance_hash": "4b74464474f354b0fd452628b3dfbacdd814b9c95c5e891c1c9499c97772742d",
   "rights_basis": "Author died 1894. Published 1873. Public domain checks are enforced by the Earnalism import pipeline; source evidence kept internal/admin-only.",
   "rights_tier": "A",
-  "verification_status": "pending",
+  "verification_status": "approved",
   "qa_status": "QA_PASSED",
   "approved_to_publish": false,
   "publication_status": "RIGHTS_REVIEW",
@@ -205,5 +205,6 @@
   "audio_qa_status": "",
   "audiobook_release_mode": "",
   "audiobook_manuscript_sha256": "",
-  "audiobook_release_conveyor": {}
+  "audiobook_release_conveyor": {},
+  "license_notice_sha256": "727e2c3014cdb5b7b12452f085e775d944d10fece82c2414b235c0eafacda3dc"
 }

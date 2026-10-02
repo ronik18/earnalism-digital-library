@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "the-wonderful-wizard-of-oz",
+    "chapter_id": "chapter-000",
+    "title": "Introduction",
+    "source_sha256": "969bffab7740d4d8a0bac332d78bd0152ad4a40a2efc52f06c74a9bb6120be75",
+    "content_sha256": "4ee081287a4c325cee637bfe8e20b68826d485b5819af4fe77963c991cf9b684",
+    "verified_at": "2026-10-01T21:36:26.336521+00:00"
+  },
+  {
+    "slug": "jane-eyre",
+    "chapter_id": "chapter-000",
+    "title": "Preface",
+    "source_sha256": "13414dee2951c3ee731d76d2ffd822016b2479c892162760c5d0eb2aa5fa7631",
+    "content_sha256": "f07af3d97d465dc74de450dfb9c44d2a47ddd8a94d5f5aeb466b46157f8f7319",
+    "verified_at": "2026-10-01T21:36:26.336521+00:00"
+  },
+  {
+    "slug": "jane-eyre",
+    "chapter_id": "chapter-000-note",
+    "title": "Note to the Third Edition",
+    "source_sha256": "13414dee2951c3ee731d76d2ffd822016b2479c892162760c5d0eb2aa5fa7631",
+    "content_sha256": "0746f88a258c21eff5e3117a10baaa183fc6e0fb9cf59b427a28eabb0ddce8ad",
+    "verified_at": "2026-10-01T21:36:26.336521+00:00"
+  }
+]

@@ -239,7 +239,7 @@
       "word_count": 1787
     }
   ],
-  "content_hash": "adaad32e67a022024f647efcfd8b02639eab6716a526e6045e85d8d648fc529c",
+  "content_hash": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
   "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
   "cover_dimensions": {
     "back": [
@@ -274,7 +274,7 @@
     "Engage with the text in a clean digital format.",
     "Read without unrelated source-file boilerplate."
   ],
-  "provenance_hash": "87eec37fc864c1d5b323d47468e1ed2547510c408ff97b400185fd13834a6c51",
+  "provenance_hash": "8d472e6cdc272f1b341c183654a57eab65f521f9a26ed0bb3b30ee93a7354468",
   "publicationStatus": "live",
   "publication_status": "LIVE_APPROVED",
   "qa_status": "QA_PASSED",
@@ -285,7 +285,7 @@
   "showInHomepage": false,
   "showInPublicLibrary": true,
   "slug": "sredni-vashtar",
-  "source_hash": "089628df1446736886ddae93252fc070854ec17606ade714a70ba77b55e6ea02",
+  "source_hash": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
   "subtitle": "",
   "title": "Sredni Vashtar",
   "updated_at": "2026-07-14T09:33:44Z",

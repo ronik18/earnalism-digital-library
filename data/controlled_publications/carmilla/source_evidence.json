@@ -1,13 +1,193 @@
 {
   "slug": "carmilla",
   "source_url": "https://www.gutenberg.org/ebooks/10007",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #10007; Carmilla exact canonical source, underlying lifetime publication 1872; complete selected author text, no translation or independently authored artwork/editorial material imported",
   "source_license": "Public-domain repository source; repository boilerplate removed from reader edition.",
-  "source_hash": "78e7f997e45a31d35a792805a1aec2800a896adee030c9b459f2357aee8db2c5",
-  "content_hash": "5b54ba7acab17ed4c6819f91a713736b22adaedf797fac9425e5d1ecbd90fa4b",
-  "provenance_hash": "212316f0e50b7ac69139ffd3e400ec93f73f1b2c270fb581e1cdf8d8d0a7f87e",
-  "rights_basis": "public_domain",
+  "source_hash": "f751453ef6ad9363a7e31f63b8d4ef830c7ea20a2aba465a59fb6fbee6bbddca",
+  "content_hash": "6d6a61c0239972fd2b3be28f3d531b800f2bff6c555d8b3d5357e03e997a416a",
+  "provenance_hash": "715bfbeefcae394130b8d4815a851e5a60ef3fe8b44efcba059e53882fe5531c",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1873, verified lifetime collection publication 1872 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-07-01T10:36:20Z",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #10007",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/10007",
+      "resolved_url": "https://www.gutenberg.org/ebooks/10007",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:00.788370+00:00",
+      "response_sha256": "23a6cfda08b054fe6d7054047670cfeadbae600ef0f40c1adc2f53617fbf8c1a"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/10007.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/10007/pg10007.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:05.523264+00:00",
+      "response_sha256": "f751453ef6ad9363a7e31f63b8d4ef830c7ea20a2aba465a59fb6fbee6bbddca"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Le Fanu, Joseph Sheridan, 1814-1873"
+      ],
+      "Title": [
+        "Carmilla"
+      ],
+      "Note": [
+        "Wikipedia page about this book: en.wikipedia.org/wiki/Carmilla"
+      ],
+      "Credits": [
+        "Suzanne Shell, Sjaani and PG Distributed Proofreaders"
+      ],
+      "Reading Level": [
+        "Reading ease score: 76.7 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "PR: Language and Literatures: English literature"
+      ],
+      "Subject": [
+        "Young women -- Fiction",
+        "Vampires -- Fiction"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "10007"
+      ],
+      "Release Date": [
+        "Nov 1, 2003"
+      ],
+      "Last Update": [
+        "Oct 28, 2024"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "15136 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1300,
+          "length": 154601
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "78e7f997e45a31d35a792805a1aec2800a896adee030c9b459f2357aee8db2c5",
+    "legacy_content_sha256": "5b54ba7acab17ed4c6819f91a713736b22adaedf797fac9425e5d1ecbd90fa4b",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 1,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "6d6a61c0239972fd2b3be28f3d531b800f2bff6c555d8b3d5357e03e997a416a"
+      }
+    ],
+    "content_sha256": "6d6a61c0239972fd2b3be28f3d531b800f2bff6c555d8b3d5357e03e997a416a"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "78e7f997e45a31d35a792805a1aec2800a896adee030c9b459f2357aee8db2c5",
+        "content_hash": "5b54ba7acab17ed4c6819f91a713736b22adaedf797fac9425e5d1ecbd90fa4b",
+        "provenance_hash": "212316f0e50b7ac69139ffd3e400ec93f73f1b2c270fb581e1cdf8d8d0a7f87e",
+        "source_url": "https://www.gutenberg.org/ebooks/10007",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:49:40.745164+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "author_death_year": 1873,
+  "selected_edition_publication_year": 1872,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:49:40.745164+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/10007.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/10007/pg10007.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:05.523264+00:00",
+      "response_sha256": "f751453ef6ad9363a7e31f63b8d4ef830c7ea20a2aba465a59fb6fbee6bbddca"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1300,
+          "length": 154601
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Le Fanu, Joseph Sheridan, 1814-1873",
+      "creator_death_year": 1873,
+      "selected_collection_publication_year": 1872,
+      "original_story_first_publication_year": null,
+      "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+      "bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Le%20Fanu%2C%20Joseph%20Sheridan%2C%201814-1873",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Le%20Fanu%2C%20Joseph%20Sheridan%2C%201814-1873",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:44:36.365449+00:00",
+        "response_sha256": "3fc67bc3f219a3f0538775675b2a878d0932c8134e4901a170c5c6d3beeab280"
+      },
+      "bibliographic_excerpt": "Glass Darkly (3 volumes; London: R. Bentley and Son, 1872) Volume I: Gutenberg text Volume II: Gutenberg text Volume II: Gutenberg text Le Fanu, Joseph Sheridan, 1814-1873: J. S. Le Fanu's Ghostly Tales (Gutenberg compilation of short stories and nov",
+      "scope": "Named creator complete selected literary text including available author prefatory/end matter; publisher/source furniture and illustrations excluded."
+    },
+    "author_death_evidence": 1873,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1872,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "f751453ef6ad9363a7e31f63b8d4ef830c7ea20a2aba465a59fb6fbee6bbddca",
+    "content_sha256": "6d6a61c0239972fd2b3be28f3d531b800f2bff6c555d8b3d5357e03e997a416a",
+    "year": 1872,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Le%20Fanu%2C%20Joseph%20Sheridan%2C%201814-1873",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Le%20Fanu%2C%20Joseph%20Sheridan%2C%201814-1873",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:36.365449+00:00",
+      "response_sha256": "3fc67bc3f219a3f0538775675b2a878d0932c8134e4901a170c5c6d3beeab280"
+    },
+    "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  }
 }

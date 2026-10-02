@@ -1,14 +1,14 @@
 {
   "slug": "markheim",
-  "generated_at": "2026-07-03T20:07:48Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "af6638f61e6b0780e7eb26faa18b41161df2170c7b593482f917c18d44e73bcd"
+      "sha256": "6519befc8819b19fda170e2720aceed8bb32dd3cfd2cd3b48c1e1cee63d4abc3"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "b11d226c2c29b2930e2daa1217b8170620480faae162aaee5438d16bf12d6506"
+      "file": "chapters/chapter-001.json",
+      "sha256": "a13b63904c1ad7246decc6f6e6159cd94e6a216bee88fc49d1ddeb8a82ab68c9"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "985b64f8b2c66860aae7ab3be6f6476e4a0c88e5eb9e8fff69bbb2e42d649754"
+      "sha256": "26aa16c6668033195d8fb3bc39823d82241c13f293aa87dfd55ecd08756305d8"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "3f5b98c0b00f8a555adfdb542dd66f52c2b95cf2ed880c6ffd6688b42bd04d9c"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "f808648c7eb140725e870fac94706f669b2a15cc194956a842ceec42edf31850"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "1a2f4f17a4029a41c0032ec665dccd6fde6292fddcbb11162d6296db5ed88672"
+      "sha256": "1d8cfb623424811f15ce7da3fc1850d23751cb181f194bb8e586b5658453c8af"
     }
   ]
 }

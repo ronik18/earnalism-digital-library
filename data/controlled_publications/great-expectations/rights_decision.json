@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-great-expectations-pg1400-noncover-text",
+  "edition_id": "great-expectations",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "bb86c6246731bc503e21ed049d6c7418043c2b0f772fe0e291d7e1d68a043b57",
+    "reader_manifest": "bfc15ce642b90bfefe9d8ac2372f4f806a273de585108f3f54ed26059c99eded",
+    "source_evidence": "b83145cb7c02a291078baaee3c9b90adcc322bade481d588b4ccdfbf2076abbe",
+    "approval_evidence": "6d34baa1a8ac731a89b90b39571aff2b09e18a99634177d2def42343f4ae1e08",
+    "checksum_manifest": "c6a620b7dbb9c2a2628a23331e1fd5c62b383e2d30f1974c6b1e36c28485deaf",
+    "publication_manifest": "8d4b0a0dc4713e5b6bdf8abb2880baaa122f041a4ca5a49320646a4a43e5178f"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:49:40.745164+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1870, verified lifetime collection publication 1861 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "1f28f158d416d86cdb0e61ade4a0a2a85c0239fbcbe48362a8d15c495b2e42a3",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ddff4d02c636c57500215604f778bd3b8b9883d5ca9d5de89dc1480b29fa52c3",
+    "9a637118af8e953e9764ec603d9b0a032883384d465acac2e27966a80cf1c6f8",
+    "2a8d0a202ea5c45af789296120a0fba52ffc09d7d7b536ebd9219521d508d40e"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

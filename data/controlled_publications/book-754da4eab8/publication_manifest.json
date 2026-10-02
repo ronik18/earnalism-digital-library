@@ -3,21 +3,21 @@
   "schema_version": 1,
   "slug": "book-754da4eab8",
   "title": "তারাপ্রসন্নের কীর্তি",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
     "source_hash": "e653edb7643d3ff6e459be5d8d07572bb172a4aaf88ad40c6e310241820e3974",
     "content_hash": "b728d67ba152884f2ba70358ebc683a57e0d5d982cf1c2893cc110fde8d9a224",
     "provenance_hash": "4121d3fe360b2b4f9ccf1abc0367f97abecffb1cad4b19390072cdaa3e617fab",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "7baa9f15797caecd4430014a224b79ad718c6a6a801d6454830acd6c95f88f06",
+    "chapter_index_sha256": "5e7a27e4c89a7ac4e14c24e275dd37719663ec3f0bfb3b512b270c397ccc7b0c",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "Full Text",
-        "word_count": 1836,
-        "sha256": "d7b0e2f6881f0b7f384f5d13b8185addb6e949360572cbaa05718f710a75f027"
+        "word_count": 1821,
+        "sha256": "792ccaa6a088345f00a2f69bcd46da8749989dd35dfe05eff64662685e749e7c"
       }
     ]
   },
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "d67c872ccb4eef6981a061f81ed2578c7af956130b2f6c1547227c04b5af2509"
+    "evidence_sha256": "fc91b9c6733434623644cf96758caa5c4b6b068e5f505fc5a300d34d6b91a140"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,7 +33,6 @@
     "qa_status": "QA_PASSED",
     "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779944796/earnalism/covers/front/cover_80f395d4-f8a5-49a2-b4b4-1b52f93dcc89.png",
     "blockers": [
-      "Rights: original_publication_year is required.",
       "Rights: verification_status must be approved before publishing."
     ]
   },
@@ -47,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "7b75ade5a33168742a8456d378a36c9337cab9aa020b5fe2237f443f48babff1",
-    "reader_manifest": "9ae8ae89c75d17a1548d00ec5f41a5ca3c768ecbc432003c842b6db82760c468",
-    "source_evidence": "d67c872ccb4eef6981a061f81ed2578c7af956130b2f6c1547227c04b5af2509",
+    "public_book": "81324c5db7e7ef155cd32cbaa0d6b4ed59b6bb0a7cb7901e3aaac28f31d67495",
+    "reader_manifest": "5d540c77fdb0e3fb7afbc730f9bc95dfa6c67d6d4d08707ddeaf0424930d14ad",
+    "source_evidence": "fc91b9c6733434623644cf96758caa5c4b6b068e5f505fc5a300d34d6b91a140",
     "approval_evidence": "d880aa0b52a627ae329cc48fe3ced0b35171dd30e529fd42b95ec9a1c7c9f20d"
   },
-  "manifest_sha256": "e488be1255a3702ffc42f6e8baf261eeb83ff90644092f5e02459fb269ae98a9"
+  "manifest_sha256": "a81cfbffcb5ef849fb8270dac877f63a1893be3ef4f651494cd02540c24aa9e1"
 }

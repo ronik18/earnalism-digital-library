@@ -10,7 +10,7 @@ from backend import server
 
 
 def test_public_book_out_drops_private_catalog_fields():
-    artifact = catalog_truth.load_dracula_artifact_book(include_content=True)
+    artifact = catalog_truth.load_controlled_artifact_book("a-ghost-story", include_content=True)
     assert artifact is not None
     artifact["rights_metadata"] = {"rights_tier": "A"}
     artifact["audiobook_assets"] = {"mp3": "https://cdn.example.com/dracula.mp3"}
@@ -19,7 +19,7 @@ def test_public_book_out_drops_private_catalog_fields():
     dumped = server.PublicBookOut.model_validate(projected).model_dump()
 
     serialized = str(dumped)
-    assert dumped["slug"] == "dracula"
+    assert dumped["slug"] == "a-ghost-story"
     assert dumped["reader_enabled"] is True
     assert dumped["preview_enabled"] is True
     assert dumped["audio_enabled"] is False

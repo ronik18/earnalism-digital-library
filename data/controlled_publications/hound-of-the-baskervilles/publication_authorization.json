@@ -1,0 +1,44 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "hound-of-the-baskervilles",
+  "edition": "Project Gutenberg #2852; The Hound of the Baskervilles exact canonical source, underlying lifetime publication 1902; complete selected author text, no translation or independently authored artwork/editorial material imported",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_ONLY_NON_COVER_COMPONENTS",
+  "source_sha256": "f7c8c68729d32a5f6a04a5a9ad73d184176e66a6c76b3992c41c1ab47b427d98",
+  "content_sha256": "8b5f77d0835acdbcbd3d0e16c5bb6e0b7bff96cefc97aab3fcffd8ae4c83be74",
+  "chapter_sha256": {
+    "chapter-000": "45e02619ff964a611449ca66c0a777bbd2ae59ca55f0c000ba4a72b071c32e27",
+    "chapter-001": "90246b60816b2f4d3561c80d727e365af1ef4f995048e2e81ffe70830da01d68",
+    "chapter-002": "b4b06148d8ab8f3a39f129021ea53cb30f1c27b2dd338d5d5f31fd1ddd6d7b8c",
+    "chapter-003": "fa07f460f1d478d7ef2530c4fc4ab62dac378ce79e3957dd41f916af8a380b38",
+    "chapter-004": "15fcbfbe8949a0ee9dcb4c0fb2d677b2017d07f4ec5e20c75709ca65bb74d268",
+    "chapter-005": "e1180666f64162e64b7b7b7a4a8b1319e95c912b1e0ad983f7cc3d6d5facd231",
+    "chapter-006": "072b6355839ab85e16cf0531172c617a0f66d0a5c14075ca6a446441b5bc4dcf",
+    "chapter-007": "0736c650d20e457f4d3ab087e14dc0e522cb92312e5b7c2223d5154f26e87d74",
+    "chapter-008": "855fc3bb50c1418bbed043368221288c8d40828e70735d9f7b95b7eafb3222c6",
+    "chapter-009": "8e9c496f6b06dad41b5b74f9ddfc0fbbefeaad590df0028c7d7cae4516514725",
+    "chapter-010": "6060453997a3973294f5d4cd4717b9aaa1bc52a1f5b026a0dc2711e977ae99bf",
+    "chapter-011": "6251990c704d9b4fb0d21b8ad9080fabc4819b860c051d51232701843ce4aa4a",
+    "chapter-012": "336212a1f1165a9f27e8698aa6e799f0ce9ff16126a91046fcb4da3d130904c5",
+    "chapter-013": "fb608fed9bdaf59c04b3e089d0a267689c84eaac0bbe391b0f0ec37062ed8ccd",
+    "chapter-014": "115a927c1f10dda4e08d6e6127260293a0b2ff9180ae260c80e288af1a531fe6",
+    "chapter-015": "26bf44c4356286ba19eb97e755c39fb7a91c930a9789759c0a7d4e20a9f14b40"
+  },
+  "cover_provenance_sha256": null,
+  "cover_status": "DEFERRED_BY_OWNER_REQUEST_NO_COVER_DISPLAY_AUTHORIZED",
+  "authorized_by": "Automated executor under owner explicit autonomous clearance delegation; not a fabricated human or legal signature.",
+  "verified_at": "2026-10-02T03:25:59.945714+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Cover clearance/binding, trusted production registry acceptance, canonical controlled-live allowlist, actual runtime Reader readiness and protected gates must separately pass.",
+  "not_authorized": [
+    "cover_display",
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation"
+  ]
+}

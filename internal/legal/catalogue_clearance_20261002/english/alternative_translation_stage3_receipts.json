@@ -1,0 +1,20 @@
+{
+  "boyd_colophon": {
+    "receipt": {
+      "requested_url": "https://raw.githubusercontent.com/standardebooks/guy-de-maupassant_short-fiction_various-translators/master/src/epub/text/colophon.xhtml",
+      "resolved_url": "https://raw.githubusercontent.com/standardebooks/guy-de-maupassant_short-fiction_various-translators/master/src/epub/text/colophon.xhtml",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:05:27.530632+00:00",
+      "response_sha256": "c312f0c8349d6049e7183e736fb17d1e6d9b7a21955fb1a052d9ad659d403409"
+    }
+  },
+  "johnston_university_record": {
+    "receipt": {
+      "requested_url": "https://www.viurrspace.ca/entities/publication/1a06c508-2670-484b-a177-c85f6c474b8c",
+      "resolved_url": "https://www.viurrspace.ca/entities/publication/1a06c508-2670-484b-a177-c85f6c474b8c",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:05:29.051888+00:00",
+      "response_sha256": "3934e1bccfa6a96318c59f368f3ac335560f8505cef3d255875dadcafa83147d"
+    }
+  }
+}

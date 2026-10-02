@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-yellow-wallpaper",
+  "title": "The Yellow Wallpaper",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "20c7788eeae2fe3a0efd51a1f08b6723366a4be0778d65db219149a3522651d4",
+    "content_hash": "eb3707607672f6a9260383f8523dca5e089399e5121bd1a1961b34308c34273d",
+    "provenance_hash": "d4e074b4e73dcbd81ffa1ad9fa823367d6dd6a04ab012842c9b79ebcc96b3c03",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "fbab8c72457f7901543a83675c91cd9ae07c2ce80ee5e53d354c952517f279a3",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Yellow Wallpaper",
+        "word_count": 6225,
+        "sha256": "51306183ddbab8218525a1f2b1635f8af0016639c08abd1052788fd7f3498b53"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "8256d27ab4039529143278e3956dccd29bbbc63c0d3261108e6165fd5c26bc58"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "b2bfe01a50e5382ee6484254992c0d0092301853fcdcf3ce66dbb6d08f229b7e",
+    "reader_manifest": "4124fac958f1ab3c4729f52d96234e2560d1f98587b3386cb9a13c75c7f6ade4",
+    "source_evidence": "8256d27ab4039529143278e3956dccd29bbbc63c0d3261108e6165fd5c26bc58",
+    "approval_evidence": "07270912a4644c2aefdd3d44e90ab774a325c3a2ef5c2711a2397c64c7e293d5"
+  },
+  "manifest_sha256": "4c7c1e44e1a9a237eeb18f6857d5eac10e6abefe5e93aa25c2ff20d17502b64f"
+}

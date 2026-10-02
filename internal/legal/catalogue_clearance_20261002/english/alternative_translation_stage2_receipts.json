@@ -1,0 +1,56 @@
+{
+  "necklace_collection": {
+    "receipt": {
+      "requested_url": "https://en.wikisource.org/wiki/Stories_by_Foreign_Authors_(French_I)",
+      "resolved_url": "https://en.wikisource.org/wiki/Stories_by_Foreign_Authors_(French_I)",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:04:34.811025+00:00",
+      "response_sha256": "0f4ad910fcaae6d94a3ab0fc3be0d12da42e6fd20a810b04839cb7ce7f1ad597"
+    }
+  },
+  "sturges_princeton": {
+    "receipt": {
+      "requested_url": "https://graphicarts.princeton.edu/2015/06/18/jonathan-sturges/",
+      "resolved_url": "https://graphicarts.princeton.edu/2015/06/18/jonathan-sturges/",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:04:35.193963+00:00",
+      "response_sha256": "92bea566a86c3347aa1b36a233f1188f7b79d43e11b4ace9e07089f9fe10aaf5"
+    }
+  },
+  "boyd_primary": {
+    "receipt": {
+      "requested_url": "https://standardebooks.org/ebooks/guy-de-maupassant/short-fiction/various-translators",
+      "resolved_url": "https://standardebooks.org/ebooks/guy-de-maupassant/short-fiction/various-translators",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:04:35.053720+00:00",
+      "response_sha256": "cfbb3905d2c3d114f7c0e3bba7c6d2742cde026b5447b5b29e5bc393646ca3cc"
+    }
+  },
+  "boyd_metadata": {
+    "receipt": {
+      "requested_url": "https://raw.githubusercontent.com/standardebooks/guy-de-maupassant_short-fiction_various-translators/master/src/epub/content.opf",
+      "resolved_url": "https://raw.githubusercontent.com/standardebooks/guy-de-maupassant_short-fiction_various-translators/master/src/epub/content.opf",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:04:34.765788+00:00",
+      "response_sha256": "f67fa8986fce1498f159373ec288b49c2e2cd97f4d1e12e429d86b8818d9b6d8"
+    }
+  },
+  "boyd_story": {
+    "receipt": {
+      "requested_url": "https://raw.githubusercontent.com/standardebooks/guy-de-maupassant_short-fiction_various-translators/master/src/epub/text/boule-de-suif.xhtml",
+      "resolved_url": "https://raw.githubusercontent.com/standardebooks/guy-de-maupassant_short-fiction_various-translators/master/src/epub/text/boule-de-suif.xhtml",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:04:35.325055+00:00",
+      "response_sha256": "605a186f96870d1993b84199ed14709b833597c9eeac78d2d7fc69c2f454b554"
+    }
+  },
+  "johnston_university": {
+    "receipt": {
+      "requested_url": "https://www.viurrspace.ca/bitstreams/a7d24518-6fe7-4289-8574-cb3422068e1e/download",
+      "resolved_url": "https://www.viurrspace.ca/bitstreams/a7d24518-6fe7-4289-8574-cb3422068e1e/download",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:04:43.913734+00:00",
+      "response_sha256": "3934e1bccfa6a96318c59f368f3ac335560f8505cef3d255875dadcafa83147d"
+    }
+  }
+}

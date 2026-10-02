@@ -1,0 +1,55 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-door-in-the-wall",
+  "title": "The Door in the Wall",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "4f5efdaf578c1b581fd748a5a6dc6d6895490ccc17f5af181171a0d6d6f41114",
+    "content_hash": "07c013cc12e20449cb1355abe745215f3f4d89e18949ef36aff7718c1f916499",
+    "provenance_hash": "ad66653119410414e374ce1820ef60485482754cf56b6cd7adbe841f494b6f9e",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "93093763978bffee3cdb810ef939682278a75331404b4ebd2346c1000783c090",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Door in the Wall",
+        "word_count": 6750,
+        "sha256": "cb189b4877fabea21abfa29695a81ba7ee2414bcb96d9b42f01056e584899181"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "5f95f07da0020846363bd4d44110a7e864dee4ead86a9060cde304233cadbedf"
+  },
+  "reader_release": {
+    "status": "BLOCKED",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "",
+    "blockers": [
+      "Front cover is required."
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "a4d8130fc7a91c1834339e2beecc494d35edce045abe17b9d4c9514718223370",
+    "reader_manifest": "2fab757bd4355d1586e6a9272fded5f8491f30332203878f35c4bc58613bebf6",
+    "source_evidence": "5f95f07da0020846363bd4d44110a7e864dee4ead86a9060cde304233cadbedf",
+    "approval_evidence": "22401614de7fb638411b29d972600f7d81412b3ddbc4b44ab65b77f00d892d32"
+  },
+  "manifest_sha256": "04bcda241f3eb81a93d3450e6bc5260285fe0d962fe49e6296bcb68cc3dc5758"
+}

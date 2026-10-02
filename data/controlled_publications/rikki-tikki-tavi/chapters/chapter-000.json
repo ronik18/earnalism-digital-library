@@ -1,0 +1,18 @@
+{
+  "id": "chapter-000",
+  "bookSlug": "rikki-tikki-tavi",
+  "order": 1,
+  "title": "Opening Verse",
+  "language": "en",
+  "content": "At the hole where he went in\n        Red-Eye called to Wrinkle-Skin.\n        Hear what little Red-Eye saith:\n        \"Nag, come up and dance with death!\"\n\n        Eye to eye and head to head,\n            (_Keep the measure, Nag._)\n        This shall end when one is dead;\n            (_At thy pleasure, Nag._)\n        Turn for turn and twist for twist--\n            (_Run and hide thee, Nag._)\n        Hah! The hooded Death has missed!\n            (_Woe betide thee, Nag!_)",
+  "content_hash": "4346ccf9d83348e11342889f8868a90bb3ecf64f58073c92e0544ef41d387b0d",
+  "sanitizedSha256": "4346ccf9d83348e11342889f8868a90bb3ecf64f58073c92e0544ef41d387b0d",
+  "sourceSha256": "702dcf213efccf27768778ff44434f78557d1e7d2ba7a532899bec64633e55ca",
+  "word_count": 67,
+  "reading_minutes": 1,
+  "is_preview": true,
+  "has_images": false,
+  "image_count": 0,
+  "processing_status": "ready",
+  "processing_warnings": []
+}

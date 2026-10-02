@@ -1,14 +1,14 @@
 {
   "slug": "the-adventure-of-the-noble-bachelor",
-  "generated_at": "2026-07-03T20:07:48Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "7dca17ef07fce415a1409888343f4591d064b5dfa08d2e64bf944e3cdd996be8"
+      "sha256": "d9db60ff54d3f4dae40d9c5f1c7eac8f26b6afe1c9b10382bc5a90931ed7e79c"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "6f7059f92481478bd67cbd5937278a2ddffe2aa606200406b456495a84564f47"
+      "file": "chapters/chapter-001.json",
+      "sha256": "d5f1bab33abefc73c66bdf98daa5551facc5006d4e37b2d6349279dd031a7ebd"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "478397fd8a553d2f1edb70c9eb71a62a0e3fa0e46acf7c9fdacddfd2b9022e6c"
+      "sha256": "b761b16086d9b2c05f305867713f128dd183368a3983325b9a0b11fe7af4eee1"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "7831a32032c09dbead44eb6ee66b571efa780303f1df9a08e488fba3ee318a7a"
     },
     {
       "file": "reader_manifest.json",
@@ -24,11 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "6e6b0ccfd6963491854cca2a75c1d9f5ea9507b32f428b65f93d4eb4c6f19b9a"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "1a7d51325928b8b53f559d804623fd9ce2798d1dd501ab7ac3e685f545996788"
+      "sha256": "93c3a027d65ea851e7ad7ce8bc46a34363a4b88ad6a45737c1f4cdd4ec565bb6"
     }
   ]
 }

@@ -3,21 +3,21 @@
   "schema_version": 1,
   "slug": "book-ac5a71075e",
   "title": "পোস্টমাস্টার",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
     "source_hash": "b03136231d5436607a7b3c3ff298b1037d5061724e1042cf8fab24eb3bf94460",
     "content_hash": "d9e2dab4904d87a1d516f1c668364f12d17087f781a572d8ee01c0e23cccc830",
     "provenance_hash": "3ef4323bf1f198b0e48ad9c6913c497b02ab567b889fcdb0ae439ab003d4a5a3",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "ff17955316d6189aaa9385ff6d9bba53829f7324ecfd47aa44396e6dc8819357",
+    "chapter_index_sha256": "46af0117f0a85059902b4888edf3a475cf5799c45b9d17316dbf00b076534a90",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "পোস্টমাস্টার",
-        "word_count": 1697,
-        "sha256": "7ef8366a1361806b91ac6ee7819f5368ecf3b0d2bfd14ad660dedbd00f6ddee8"
+        "word_count": 1650,
+        "sha256": "e7eecfe8074ed5cf4d984513df3557d28ba28db30b9fc7be0bff8074ba81047a"
       }
     ]
   },
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "91a8e910cdc1ad96f0e63194368f1cca89aea306950ff3af2b6ab04f8f0c456c"
+    "evidence_sha256": "936d05047b596b6476d4c9e9bc492716d5efdfb38117cde9279cf298fa00f507"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -34,7 +34,6 @@
     "cover_url": "",
     "blockers": [
       "Front cover is required.",
-      "Rights: original_publication_year is required.",
       "Rights: verification_status must be approved before publishing."
     ]
   },
@@ -48,10 +47,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "cd294fd005dd14706ee78c28c646a7ba4dfd665b78e399ee99139acb541c2aa7",
-    "reader_manifest": "faa238cf2907b0c55047743e41a35fa8a07ee236acbf0272ed62ad7637d5f331",
-    "source_evidence": "91a8e910cdc1ad96f0e63194368f1cca89aea306950ff3af2b6ab04f8f0c456c",
+    "public_book": "ad9c61594b044ef648076d08de290a8e48ff2ed9c70d3e9ff2fd9586ff74832b",
+    "reader_manifest": "3deaac645cbc2f7170a6a4ae7dc46a8fd5fc0ad4a4d0c70072f2cb9108306d44",
+    "source_evidence": "936d05047b596b6476d4c9e9bc492716d5efdfb38117cde9279cf298fa00f507",
     "approval_evidence": "e56435185db7a7702d39e19e1e9979521e93fa021bd8027b3525628a77051c92"
   },
-  "manifest_sha256": "4e1b945aaca21db714dea55916c5492701d3f263328f778d1996095930c80dec"
+  "manifest_sha256": "48c82c2300b816129b32cabb6c82095fa862342e114e8f0172b1c8dc9e8c8f42"
 }

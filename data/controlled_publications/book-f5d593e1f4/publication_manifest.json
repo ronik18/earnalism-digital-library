@@ -3,21 +3,21 @@
   "schema_version": 1,
   "slug": "book-f5d593e1f4",
   "title": "রামকানাইয়ের নির্বুদ্ধিতা",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
     "source_hash": "1c6c50661763d7497213b1041ae809c1f63a1262387eacdbc0b0a3348fe8e350",
     "content_hash": "0fbaa0cb48c5a35910ebee2891591d340c1e8b4f6e7e37b3c4af1070fe4827eb",
     "provenance_hash": "96f13b64e75d574e6c94fa79a186f39f4bdeed875c52c7b9c6dacb55c1e06d5d",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "30283a0a6bb180e6a7f2cdb77b945ecdfb212bf32e69513237ea633e2070dd6e",
+    "chapter_index_sha256": "23da45b9ba221062698cfc92026ff4ba3d68283952c226413c6b7d558d176b35",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "Full Text",
-        "word_count": 1399,
-        "sha256": "eae6c1b5730045e027b42151dc0177d2d54dc941ed6fbce8f9bc03cb6fca2e6c"
+        "word_count": 1393,
+        "sha256": "9017532e16fb8b4df257d2e6a9cc921edf760724673efbb63defb65a5cfe7ff0"
       }
     ]
   },
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "fd3c07bb67430a1b5d5d9a51c3e7211dd628c57f8c43a6d08218e56f45559ab6"
+    "evidence_sha256": "49c868c0678e4678ea34d24d70ed60cd22e45273e68c0e3a35bb9da1071d96cf"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,7 +33,6 @@
     "qa_status": "QA_PASSED",
     "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779944684/earnalism/covers/front/cover_5dfb07a4-361f-4b48-aac7-a4a819e1c7b4.png",
     "blockers": [
-      "Rights: original_publication_year is required.",
       "Rights: verification_status must be approved before publishing."
     ]
   },
@@ -47,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "5b9eabc269db16b653048d92eb25dbbaa09f125e1aa1b090a9025f77a9a89e41",
-    "reader_manifest": "a9a2d2809e3099fba25e12685af8f4e7995a3d1e3d1e20bb5ca993b7bbac85de",
-    "source_evidence": "fd3c07bb67430a1b5d5d9a51c3e7211dd628c57f8c43a6d08218e56f45559ab6",
+    "public_book": "6dd6b06e6da44774297d4da8b8bae320e6762898be6bd8590a96ff78de55dc4a",
+    "reader_manifest": "bfdd712c4ac2356f2c3d101a5f8a55592d02bd0fda2f1f45d18e63d73ef1a15e",
+    "source_evidence": "49c868c0678e4678ea34d24d70ed60cd22e45273e68c0e3a35bb9da1071d96cf",
     "approval_evidence": "275f78297ecf04acf828286b92c25d87fea3591b445b211efa6bbc227c4f31f5"
   },
-  "manifest_sha256": "91d8a7f6b2b632061ea01ab43a3f0c2189269e4b866fc223eb9569d52b57a8b4"
+  "manifest_sha256": "0254e5b03c603e147052333c1838d7831bc8d7a6763a502ef3fe5b0dd546d6db"
 }

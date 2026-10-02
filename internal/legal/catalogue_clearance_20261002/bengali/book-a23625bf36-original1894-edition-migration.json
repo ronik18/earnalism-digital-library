@@ -1,0 +1,211 @@
+{
+  "chapter_id": "chapter-001",
+  "chapter_sha256": "06fb2616eec901111bc3f9bf8ed8e157fede7f51fe5f5d73e5468217425daf14",
+  "source_evidence": {
+    "slug": "book-a23625bf36",
+    "source_url": "https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B_(%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE_%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1)/%E0%A6%B8%E0%A6%AE%E0%A6%BE%E0%A6%AA%E0%A7%8D%E0%A6%A4%E0%A6%BF",
+    "source_name": "Bengali Wikisource",
+    "source_license": "Underlying Bengali literary text is public domain in India and the U.S.; Wikisource transcription/source layer is reused under CC BY-SA terms.",
+    "source_hash": "08cf726a1c9f2acef4bb94a1228d4a5c22fe429d501b623d3a23853e1d645343",
+    "content_hash": "039054ed00bbbcfd67cf830434e41f40f2e05b93223400c16045883d1acc980f",
+    "provenance_hash": "50aae4c36dd08647c5fadecb1e7b6b5f6c58f438d1a150634dbb930433dcd4c4",
+    "rights_basis": "Underlying original Bengali work was published during Rabindranath Tagore’s lifetime; author death1941 is independently evidenced. India Copyright Act section22 lifetime literary-work term is sixty years from the calendar year following death. This preparation does not authorize newer editorial material or waive CC BY-SA4.0 transcription obligations; edition/publication approval remains held.",
+    "downloaded_at": "2026-06-02T19:23:49.010395+00:00",
+    "source_format": "text/plain",
+    "reader_facing_boilerplate_removed": true,
+    "author_death_year": 1941,
+    "author_fact_evidence": {
+      "record": "internal/legal/bengali_text_preparation_20261002/author_fact_receipts.json",
+      "record_sha256": "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+      "author_id": "tagore",
+      "authority_url": "https://www.nobelprize.org/prizes/literature/1913/tagore/biographical/?print=1",
+      "authority_response_sha256": "0048c2eaa3a43087f4e130b3e5153c9389111d9aed6d329cf12286ad158c0aa9",
+      "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_EDITION_OR_PUBLICATION_APPROVAL"
+    },
+    "verification_status": "pending",
+    "text_clearance_status": "PREPARED_EVIDENCE_NOT_AUTHORIZED",
+    "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
+    "canonical_reader_identity": {
+      "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
+      "reader_content_sha256": "06fb2616eec901111bc3f9bf8ed8e157fede7f51fe5f5d73e5468217425daf14",
+      "chapter_count": 1,
+      "chapter_content_sha256": {
+        "chapter-001": "06fb2616eec901111bc3f9bf8ed8e157fede7f51fe5f5d73e5468217425daf14"
+      },
+      "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
+      "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+    },
+    "reader_content_reconciliation": {
+      "status": "SOURCE_FURNITURE_REMOVED_ONLY",
+      "performed_at": "2026-10-01T21:08:27.473444+00:00",
+      "artifact": "internal/legal/catalogue_clearance_20261002/bengali/source-furniture-repair-proposals.json",
+      "artifact_sha256": "63e8128394ae67e1620d02a5bce6ca6b14dd72f8230ed86b0d535ed69707baf7",
+      "before_content_sha256": "4de96523c8c1c9ab9f76c03996e854516ce9add44a5ec3f43a1771af508c9621",
+      "after_content_sha256": "ef308dc5c4a4af5e47b4238db35bc11acbb7c8a50089c904f876398227583905",
+      "removed_source_furniture": [
+        "রবীন্দ্রনাথ ঠাকুর",
+        "গল্পগুচ্ছ",
+        "১৯৫০ (পৃ. ২৭৭-২৯৯)",
+        "সমাপ্তি"
+      ],
+      "literary_words_changed": false,
+      "source_transcription_completeness": "ADDITIONAL_SOURCE_COMPARISON_REQUIRED",
+      "scope": "READER_METADATA_FURNITURE_CLEANUP_NOT_PUBLICATION_OR_AUDIO_APPROVAL"
+    },
+    "original_publication_year": 1893,
+    "original_publication_evidence": {
+      "record": "internal/legal/catalogue_clearance_20261002/bengali/tagore-publication-facts.json",
+      "record_sha256": "132bb707cf39f0596a3aa27f5d5d368f415ba947a133f06103f4a361407f37a5",
+      "authority_event_url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/event/VZlSXRFWwJlUspFWOdVMXJ1aKVVVB1TP#event_529",
+      "year": 1893,
+      "date_as_recorded": "30th  September,  1893",
+      "evidence_type": "EXPLICIT_TITLE_JOURNAL_PUBLICATION_ENTRY",
+      "scope": "Underlying Bengali work publication fact only; later source edition/transcription obligations independently held."
+    },
+    "exact_source_delta_repair": {
+      "slug": "book-a23625bf36",
+      "verified_at": "2026-10-01T21:33:54.587802+00:00",
+      "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-a23625bf36-source-comparison.json",
+      "source_snapshot_sha256": "49ba0c39355ce2cd4d313c9d4541b3552ee9bf10799f11acc3f7f5276579ac64",
+      "before_sha256": "ef308dc5c4a4af5e47b4238db35bc11acbb7c8a50089c904f876398227583905",
+      "after_sha256": "06fb2616eec901111bc3f9bf8ed8e157fede7f51fe5f5d73e5468217425daf14",
+      "operations": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            17,
+            19
+          ],
+          "source_paragraph_range": [
+            17,
+            18
+          ],
+          "canonical": [
+            "অকস্মাৎ পুত্রের আগমনে তাহার বিধবা মাতা পুলকিত হইয়া উঠিলেন। তৎক্ষণাং ক্ষীর দধি রুইমাছের সন্ধানে দূরে নিকটে লোক দৌড়িল এবং পাড়াপ্রতিবেশীর মধ্যেও একটা আন্দোলন উপস্থিত হইল।",
+            "আহারান্তে মা অপূর্বর বিবাহের প্রস্তাব উত্থাপন করিলেন। অপূর্ব সেজন্য প্রস্তুত হইয়া ছিল। কারণ, প্রস্তাব অনেক পূর্বেই ছিল, কিন্তু পুত্র নব্যতন্ত্রের নূতন ধুয়া ধরিয়া জেদ করিয়া বসিয়াছিল যে, ‘বি.এ পাস না করিয়া বিবাহ করিব না।’ এতকাল জননী সেইজন্য অপেক্ষা করিয়াছিলেন, অতএব এখন আর-কোনো ওজর করা মিথ্যা। অপূর্ব কহিল, “আগে পাত্রী দেখা হউক, তাহার পর স্থির হইবে।” মা কহিলেন, “পাত্রী দেখা হইয়াছে, সেজন্য তোকে ভাবিতে হইবে না।” অপূর্ব ওই ভাবনাটা নিজে ভাবিতে প্রস্তুত হইল এবং কহিল, “মেয়ে না দেখিয়া বিবাহ করিতে পারিব না।” মা ভাবিলেন, এমন সৃষ্টিছাড়া কথাও কখনো শোনা যায় নাই; কিন্তু সম্মত হইলেন।"
+          ],
+          "source": [
+            "অকস্মাৎ পুত্রের আগমনে তাহার বিধবা মাতা পুলকিত হইয়া উঠিলেন। তৎক্ষণাং ক্ষীর দধি রুইমাছের সন্ধানে দূরে নিকটে লোক দৌড়িল এবং পাড়াপ্রতিবেশীর মধ্যেও একটা আন্দোলন উপস্থিত হইল। \t\n আহারান্তে মা অপূর্বর বিবাহের প্রস্তাব উত্থাপন করিলেন। অপূর্ব সেজন্য প্রস্তুত হইয়া ছিল। কারণ, প্রস্তাব অনেক পূর্বেই ছিল, কিন্তু পুত্র নব্যতন্ত্রের নূতন ধুয়া ধরিয়া জেদ করিয়া বসিয়াছিল যে, ‘বি.এ পাস না করিয়া বিবাহ করিব না।’ এতকাল জননী সেইজন্য অপেক্ষা করিয়াছিলেন, অতএব এখন আর-কোনো ওজর করা মিথ্যা। অপূর্ব কহিল, “আগে পাত্রী দেখা হউক, তাহার পর স্থির হইবে।” মা কহিলেন, “পাত্রী দেখা হইয়াছে, সেজন্য তোকে ভাবিতে হইবে না।” অপূর্ব ওই ভাবনাটা নিজে ভাবিতে প্রস্তুত হইল এবং কহিল, “মেয়ে না দেখিয়া বিবাহ করিতে পারিব না।” মা ভাবিলেন, এমন সৃষ্টিছাড়া কথাও কখনো শোনা যায় নাই; কিন্তু সম্মত হইলেন।"
+          ]
+        },
+        {
+          "operation": "insert",
+          "canonical_paragraph_range": [
+            41,
+            41
+          ],
+          "source_paragraph_range": [
+            40,
+            41
+          ],
+          "canonical": [],
+          "source": [
+            "অতঃপর মৃন্ময়ীর মা এবং পল্লীর যত বর্ষীয়সীগণ সকলে মিলিয়া ভাবী কর্তব্য সম্বন্ধে মৃন্ময়ীকে অহর্নিশি উপদেশ দিতে লাগিল। ক্রীড়াসক্তি, দ্রুত গমন, উচ্চহাস্য, বালকদিগের সহিত আলাপ এবং ক্ষুধা-অনুসারে ভোজন সম্বন্ধে সকলেই নিষেধ পরামর্শ দিয়া বিবাহটাকে বিভীষিকারূপে প্রতিপন্ন করিতে সম্পূর্ণ কৃতকার্য হইল। উৎকণ্ঠিত শঙ্কিত হৃদয়ে মৃন্ময়ী মনে করিল, তাহার যাবজ্জীবন কারাদণ্ড এবং তদবসানে ফাঁসির হুকুম হইয়াছে।"
+          ]
+        }
+      ],
+      "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+      "scope": "Same pinned edition body repair; not rights/publication/audio approval"
+    }
+  },
+  "public_book": {
+    "id": "controlled-book-a23625bf36",
+    "slug": "book-a23625bf36",
+    "title": "সমাপ্তি",
+    "subtitle": "",
+    "author": "রবীন্দ্রনাথ ঠাকুর",
+    "category_slug": "literary-fiction",
+    "short_description": "একটি দুরন্ত মেয়ের বিয়ে ও তার নতুন জীবনে মানিয়ে নেওয়ার হাস্যরসাত্মক ও মার্মিক কাহিনি।",
+    "description": "Mrinal, a tomboyish village girl, is married to a gentle scholar. Her wild nature and his bookish world collide in a story of unexpected tenderness and growth.",
+    "cover_url": "",
+    "cover_image_url": "",
+    "coverImage": "",
+    "cover_image": "",
+    "back_cover_url": "",
+    "back_cover_image_url": "",
+    "backCoverImage": "",
+    "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+    "dominant_color": "#24362E",
+    "estimated_reading_time": "23 min",
+    "formats": [
+      "Ebook"
+    ],
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "about_author": "রবীন্দ্রনাথ ঠাকুর (১৮৬১–১৯৪১) বাংলা সাহিত্যের শ্রেষ্ঠ কবি ও ছোটগল্পকার।",
+    "source_hash": "08cf726a1c9f2acef4bb94a1228d4a5c22fe429d501b623d3a23853e1d645343",
+    "content_hash": "039054ed00bbbcfd67cf830434e41f40f2e05b93223400c16045883d1acc980f",
+    "provenance_hash": "50aae4c36dd08647c5fadecb1e7b6b5f6c58f438d1a150634dbb930433dcd4c4",
+    "rights_basis": "Author died 1941. Published 1893. Public domain in India and U.S.",
+    "rights_tier": "A",
+    "verification_status": "approved",
+    "qa_status": "QA_PASSED",
+    "approved_to_publish": true,
+    "publication_status": "LIVE_APPROVED",
+    "readerStatus": "reader_ready",
+    "publicationStatus": "live",
+    "isPublic": true,
+    "isLive": true,
+    "showInPublicLibrary": true,
+    "showInHomepage": false,
+    "allowPublicReading": true,
+    "allowCheckout": false,
+    "allowPayment": false,
+    "is_published": true,
+    "audio_enabled": true,
+    "audiobook_enabled": true,
+    "generate_audiobook": true,
+    "audiobook_provider": "historical_mapped_assets",
+    "audiobook_voice": "",
+    "audio_asset_slug": "book-a23625bf36",
+    "audiobook_assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780574330/earnalism/audiobooks/ben/book-a23625bf36/book-a23625bf36.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780574334/earnalism/audiobooks/ben/book-a23625bf36/book-a23625bf36_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780574337/earnalism/audiobooks/ben/book-a23625bf36/book-a23625bf36_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780574337/earnalism/audiobooks/ben/book-a23625bf36/book-a23625bf36_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780574338/earnalism/audiobooks/ben/book-a23625bf36/book-a23625bf36_meta.json"
+    },
+    "audiobook": {
+      "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780574330/earnalism/audiobooks/ben/book-a23625bf36/book-a23625bf36.mp3",
+      "provider": "historical_mapped_assets",
+      "size": 0,
+      "duration_ms": 0,
+      "assets": {
+        "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780574330/earnalism/audiobooks/ben/book-a23625bf36/book-a23625bf36.mp3",
+        "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780574334/earnalism/audiobooks/ben/book-a23625bf36/book-a23625bf36_timestamps.json",
+        "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780574337/earnalism/audiobooks/ben/book-a23625bf36/book-a23625bf36_highlight.vtt",
+        "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780574337/earnalism/audiobooks/ben/book-a23625bf36/book-a23625bf36_chapters.json",
+        "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780574338/earnalism/audiobooks/ben/book-a23625bf36/book-a23625bf36_meta.json"
+      },
+      "updated_at": "2026-07-03T20:07:46Z"
+    },
+    "audiobook_assets_updated_at": "2026-07-03T20:07:46Z",
+    "created_at": "2026-07-03T20:07:46Z",
+    "updated_at": "2026-07-03T20:07:46Z",
+    "license_notice_sha256": "8e9945e5a0987fd8d5541177221fb3b8404a67cf15593797cd48f1839e14f0a5"
+  },
+  "base_git_commit": "54267c4884d891afd2d8c6a9398bb8253fac023b",
+  "historical_bytes_location": "Git base commit and prior package history; no duplicate copyrighted narrative archive",
+  "old_chapter_file": "data/controlled_publications/book-a23625bf36/chapters/chapter-001.json",
+  "original_source_receipt": "internal/legal/catalogue_clearance_20261002/bengali/book-a23625bf36-original1894-source-comparison.json",
+  "migration_scope": "Intentional complete original1894 edition replacement; no assertion of textual equality and no approval transfer",
+  "removed_verified_source_furniture": [
+    "﻿সমাপ্তি।"
+  ],
+  "new_source_sha256": "5b6c9df28dc526a4343b46f86e967ba064689454de7df7e8b0436cca39fb4f33",
+  "verified_at": "2026-10-02T03:09:23.373287+00:00",
+  "new_chapter_sha256": "70d901082eb8e6a475caa558d83601f509a61847b9260ffc1c95d2db935d9ae5"
+}
