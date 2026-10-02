@@ -1,0 +1,48 @@
+{
+  "schema": "earnalism.inactive-candidate-package-review.v1",
+  "recorded_on": "2026-10-02",
+  "slug": "the-student",
+  "status": "PASS_INACTIVE_PACKAGE_ONLY",
+  "publication_or_integration_approval": false,
+  "bound_commit": "b4e55bf38b0d1ffdfe482e2aced9fe7d8d431feb",
+  "bound_tree": "53aced413e5eefedf9728c8ceebcb242c09b4406",
+  "packet": {
+    "manifest_sha256": "c458110dcd00f85988c9024def085c871023d2140b32386559f0a88f00c80d05",
+    "receipt_sha256": "24d6e29d255f84d640ad7c8f87bd20aba70d3a4a4760c98880fb7676924c1dba",
+    "candidate_binding_sha256": "392c0ec2a07bfd0d100f0c7229b855d7a71c926dec254274f950c221e40e23c5",
+    "source_inventory_sha256": "016fe48b97e8be609fc81aa96d329d27ebba98816868063df5fb2c00edca7683",
+    "validation_sha256": "a263ab12c39298cc36b81f6c4f832dde69bc55b58a9b59fc364bf31767964b8c"
+  },
+  "independent_reviews": {
+    "review_a": "PASS_INACTIVE_PACKAGE_ONLY",
+    "review_b": "PASS_INACTIVE_PACKAGE_READINESS_ONLY",
+    "controlled_publication_hashes": "PASS_10_OF_10",
+    "content_source_hashes": "PASS_4_OF_4",
+    "controlled_checksum_entries": "PASS_7_OF_7",
+    "original_and_derivative_cover_bindings": "PASS",
+    "canonical_chapter_text_identity": "PASS"
+  },
+  "effective_candidate_contract": {
+    "territories": [
+      "IN"
+    ],
+    "commercial_text_reader_only": true,
+    "publication_approval": false,
+    "production_activation": false,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "audio_media_urls": [],
+    "listen_or_listener_exposure": false,
+    "checkout_or_payment": false,
+    "registry_allowlist_or_projection_mutation": false
+  },
+  "preservation": {
+    "existing_rights_text_licence_chapters_and_versions_preserved": true,
+    "historical_audio_positive_markers_documented_but_not_propagated": true,
+    "original_cover_variant_held": true,
+    "cover_or_audio_right_added": false,
+    "approval_or_runtime_fact_inferred": false
+  },
+  "remaining_hold": "NO_COVER_DISPLAY_OR_PUBLICATION_APPROVAL_FACT_EXISTS_FOR_THE_REVIEWED_DERIVATIVES",
+  "next_exact_action": "Do not integrate or activate the-student. Retain the reviewed inactive packet and move to the next distinct evidence-rich title while awaiting an explicit cover-display/publication approval fact."
+}

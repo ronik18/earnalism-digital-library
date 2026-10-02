@@ -16,7 +16,7 @@
   "next_prepared": [],
   "next_held": {
     "the-most-dangerous-game": "Specific cover-footer review conflict",
-    "the-student": "Original cover remains held; corrected inactive derivatives pass two exact-pixel reviews, but publication binding is not prepared and historical audio markers must be disabled",
+    "the-student": "Original cover remains held; corrected inactive derivatives and fail-closed inactive package pass two independent reviews, but cover-display/publication approval is absent and must not be inferred",
     "the-art-of-money-getting": "Concrete internal status badge/text occlusion and truncated back copy",
     "bn-035": "Broken Bengali glyph shaping/text occlusion/status badge",
     "alices-adventures-in-wonderland": "Unverified Lewis Carroll quote attribution on back cover"
@@ -51,7 +51,7 @@
     "next_cohort_static_snapshots": 106,
     "next_cohort_static_snapshot_assertions": 2256
   },
-  "next_action": "Prepare an isolated inactive the-student candidate binding from the preserved text package and twice-reviewed deterministic cover derivatives. Explicitly set audio_enabled and audiobook_enabled false in the candidate, preserve original cover provenance and all existing rights/content facts, and obtain two independent exact-package reviews before any serialized registry, allowlist, merge, or production mutation. Keep the original cover variant and the-most-dangerous-game held.",
+  "next_action": "Retain the-student on its precise missing cover-display/publication-approval hold despite its twice-reviewed inactive package; do not infer approval or mutate registry/allowlists. Move to the-art-of-money-getting as the next distinct evidence-rich title: recover and hash exact persisted original cover bytes, inventory preserved source/text/licence/chapters and approval facts, and determine whether its badge/occlusion/truncation conflict can be repaired deterministically without new approval inference. Keep the-most-dangerous-game held.",
   "ci_repair_receipt": "static-contract-ci-repair.json",
   "routing_assessment": "Earlier missing-mapping404/config-blocker inference withdrawn; generatedfilesystem snapshot routes before rewrites. Exactdeployedpaths unobserved; canarystillrequired.",
   "final_regression_repair": "final-regression-repair.json",
@@ -60,5 +60,6 @@
   "next_delivery_derivatives": "next-delivery-derivative-receipt.json",
   "next_cohort_serialized_integration": "next-cohort-serialized-integration.json",
   "pr509_production_reconciliation": "pr509-production-reconciliation.json",
-  "the_student_inactive_cover_derivative_review": "the-student-inactive-cover-derivative-review.json"
+  "the_student_inactive_cover_derivative_review": "the-student-inactive-cover-derivative-review.json",
+  "the_student_inactive_candidate_package_review": "the-student-inactive-candidate-package-review.json"
 }
