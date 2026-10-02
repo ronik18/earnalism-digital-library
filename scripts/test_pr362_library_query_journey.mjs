@@ -30,16 +30,16 @@ const books = [
 ];
 // Add the exact reviewed near-ready release fixtures from the safe public
 // metadata contract. Keep the independent held/malformed/audio fixtures above.
-const nearReadySlugs = ["a-horseman-in-the-sky", "a-mystery-of-heroism", "a-scandal-in-bohemia", "jekyll-and-hyde", "love-of-life", "the-bishop", "the-fall-of-the-house-of-usher", "the-lady-with-the-dog", "the-man-who-would-be-king", "the-open-boat", "the-pit-and-the-pendulum", "the-stolen-white-elephant", "an-occurrence-at-owl-creek-bridge", "the-enchanted-april", "the-happy-prince", "picture-of-dorian-gray", "dracula"];
+const nearReadySlugs = ["a-horseman-in-the-sky", "a-mystery-of-heroism", "a-scandal-in-bohemia", "jekyll-and-hyde", "love-of-life", "the-bishop", "the-fall-of-the-house-of-usher", "the-lady-with-the-dog", "the-man-who-would-be-king", "the-open-boat", "the-pit-and-the-pendulum", "the-stolen-white-elephant", "an-occurrence-at-owl-creek-bridge", "the-enchanted-april", "the-happy-prince", "picture-of-dorian-gray", "dracula", "muchiram-gurer-jibanchorit", "bn-059", "the-call-of-the-wild"];
 const publicContract = JSON.parse(readFileSync(new URL("../frontend/static-seo/controlled-publication-public.json", import.meta.url), "utf8"));
 for (const slug of nearReadySlugs) {
   const source = publicContract.publications.find((row) => row.slug === slug);
   assert.ok(source, `Reviewed release ${slug} must have a public metadata contract`);
   assert.equal(books.some((row) => row.slug === slug), false, `Duplicate fixture ${slug}`);
-  books.push({ ...source, language: "en", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: `/book/${slug}`, reader_url: `/reader/${slug}`, preview_enabled: true, preview_url: `/reader/${slug}`, chapters: [{ id: "chapter-001", is_preview: true }] });
+  books.push({ ...source, language: ["muchiram-gurer-jibanchorit", "bn-059"].includes(slug) ? "bn" : "en", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: `/book/${slug}`, reader_url: `/reader/${slug}`, preview_enabled: true, preview_url: `/reader/${slug}`, chapters: [{ id: "chapter-001", is_preview: true }] });
 }
 const expectedHeaderUrl = "?language=bn&availability=reader-ready";
-const apiEligibleSlugs = ["radharani", "book-edfcf810c5"];
+const apiEligibleSlugs = ["radharani", "book-edfcf810c5", "muchiram-gurer-jibanchorit", "bn-059"];
 const fallbackEligibleSlugs = [];
 const ineligibleSlugs = ["frankenstein", "reader-disabled-edition", "kshudhita-pashan"];
 const readerApprovedWithoutPreviewSlugs = ["book-d19e96859f", "book-f5d593e1f4"];
