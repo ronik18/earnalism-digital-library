@@ -1,0 +1,12 @@
+{
+  "schema": "earnalism.controlled-launch.delta-candidate.v1",
+  "source_main": "c9df35dda7a463f6cb5580ef900068e4cc6b6408",
+  "slug": "the-call-of-the-wild",
+  "territory": "IN",
+  "operation": "APPEND_IF_ABSENT_AFTER_EXACT_REGISTRY_BINDING",
+  "root_and_backend_parity_required": true,
+  "applied": false,
+  "production_observed": false,
+  "audio_exposed": false,
+  "note": "Candidate only. Root/backend controlled-launch files remain unmodified in this isolated lane."
+}

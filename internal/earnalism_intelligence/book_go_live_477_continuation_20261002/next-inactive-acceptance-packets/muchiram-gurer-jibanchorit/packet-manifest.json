@@ -1,0 +1,31 @@
+{
+  "schema": "earnalism.muchiram-isolated-acceptance-packet.v1",
+  "slug": "muchiram-gurer-jibanchorit",
+  "base_main_commit": "c9df35dda7a463f6cb5580ef900068e4cc6b6408",
+  "base_main_tree": "0fbeb558b855ff37a1b439a09ca66d60ba2f24b3",
+  "state": "READY_FOR_SERIALIZED_ROOT_RECONCILIATION",
+  "files": {
+    "README.md": "9df9bb430a23dc7fc322e93fde4b1c90f1939ac28bca6149446e39ef36d7f0b2",
+    "validation-receipt.json": "f1597767566babb65611f06429c140b6a9b3f464345b169399fca8f0cc9d5055",
+    "bootstrap-plan-delta.json": "d1d719bbd1c98379bf726dd05ea0e9004d520edc73a33032457c11e7cddaa209",
+    "candidate-public-projection.json": "0726ed64d5b60655e593753c1fdd1540ae8220321c79eb258311e79ec1024156",
+    "overlay/data/controlled_publications/muchiram-gurer-jibanchorit/checksum_manifest.json": "74c9fe9d044625752819587673e11b459f55f74d147b5c4a899b254118c877cf",
+    "overlay/data/controlled_publications/muchiram-gurer-jibanchorit/rights_decision.json": "2dfc028395df0c0d2b266a428967ddd7cec1fd0b57e8fd15b75da7431c88e30b",
+    "overlay/data/controlled_publications/muchiram-gurer-jibanchorit/publication_manifest.json": "c5951af809000af1577916f49609d50e24560bbe18c12c2848af689bee327da2",
+    "overlay/data/controlled_publications/muchiram-gurer-jibanchorit/public_book.json": "8822aea5c2f3ace8ed78dc8f276ae2aac5579ea152b2b51918706aef3e0d57f3",
+    "overlay/data/controlled_publications/muchiram-gurer-jibanchorit/approval_evidence.json": "c75f39bd45521e71bf9d478d161cfae273165bc40c7b71ab118181771de71c72",
+    "overlay/data/controlled_publications/muchiram-gurer-jibanchorit/publication_authorization.json": "1252c5b2e2141ee3c3e0c9ad8876a1e11bd249385f3ac02649a8998853c9565e",
+    "overlay/data/controlled_publications/muchiram-gurer-jibanchorit/cover_provenance.json": "46fda8c5ef3dfd79d87194717e799b8fa6ee34b09fcd9d1b545114f71c2d647a",
+    "overlay/data/controlled_publications/muchiram-gurer-jibanchorit/covers/front.png": "abbed38055fd673d0171eb9eeaf49fb887013d46d12573cf7b38109c683dbbc9",
+    "overlay/data/controlled_publications/muchiram-gurer-jibanchorit/covers/back.png": "47fb5b354455a7a5cff855b4ca69c1b194832bc8798d3d01842d8e9886a8d58b",
+    "overlay/data/controlled_publications/muchiram-gurer-jibanchorit/covers/delivery-front.webp": "4d1ef04fa60e470c808ef761d253af1e4245cf27b8496c9b55adfa5927658a92",
+    "overlay/data/controlled_publications/muchiram-gurer-jibanchorit/covers/delivery-back.webp": "fbefa1187750293733628e09c18113b4f85855d9966272f5257134673eea2800",
+    "overlay/frontend/public/assets/books/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit-front-abbed380.webp": "4d1ef04fa60e470c808ef761d253af1e4245cf27b8496c9b55adfa5927658a92",
+    "overlay/frontend/public/assets/books/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit-back-47fb5b35.webp": "fbefa1187750293733628e09c18113b4f85855d9966272f5257134673eea2800"
+  },
+  "canonical_mutations": 0,
+  "registry_mutations": 0,
+  "allowlist_mutations": 0,
+  "production_mutations": 0,
+  "production_observed": false
+}

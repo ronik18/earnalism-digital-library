@@ -1,0 +1,97 @@
+{
+  "schema": "earnalism.book-go-live.bootstrap-plan-delta.v1",
+  "slug": "muchiram-gurer-jibanchorit",
+  "base_main": {
+    "commit": "c9df35dda7a463f6cb5580ef900068e4cc6b6408",
+    "tree": "0fbeb558b855ff37a1b439a09ca66d60ba2f24b3"
+  },
+  "packet_state": "READY_FOR_SERIALIZED_ROOT_RECONCILIATION",
+  "canonical_mutations_performed": 0,
+  "registry_mutations_performed": 0,
+  "allowlist_mutations_performed": 0,
+  "production_mutations_performed": 0,
+  "production_observation": "NOT_RUN",
+  "decision": {
+    "id": "india-20261002-muchiram-gurer-jibanchorit-reader-cover-display-reviewed",
+    "sha256": "2dfc028395df0c0d2b266a428967ddd7cec1fd0b57e8fd15b75da7431c88e30b",
+    "territories": ["IN"],
+    "uses": [
+      "catalog_metadata",
+      "cover_display",
+      "reader_preview",
+      "reader_delivery",
+      "reading_pass_session",
+      "reading_pass_renewal"
+    ],
+    "audio_authorized": false
+  },
+  "serialized_preconditions": [
+    "Reconcile current origin/main, all open PRs, running Actions and issue #477 immediately before mutation.",
+    "Finish truthful deployment, canary and canonical-version readback for merged PR #508; do not overlap production mutations.",
+    "Verify every packet hash and ensure no later title-specific evidence dispute supersedes either independent derivative review.",
+    "Require one integration authority for registry, root/backend mirrors, launch allowlists, static public projection, merge and production verification."
+  ],
+  "proposed_operations": [
+    {
+      "order": 1,
+      "operation": "COPY_EXACT_PACKAGE",
+      "source": "acceptance-packet/overlay/data/controlled_publications/muchiram-gurer-jibanchorit",
+      "destinations": [
+        "data/controlled_publications/muchiram-gurer-jibanchorit",
+        "backend/data/controlled_publications/muchiram-gurer-jibanchorit"
+      ],
+      "preserve": ["source_evidence.json", "reader_manifest.json", "license_notice.json", "highlight_sync.json", "chapters/", "covers/front.png", "covers/back.png", "created_at", "updated_at", "source_hash", "content_hash"]
+    },
+    {
+      "order": 2,
+      "operation": "COPY_EXACT_DELIVERY_ASSETS",
+      "source": "acceptance-packet/overlay/frontend/public/assets/books/muchiram-gurer-jibanchorit",
+      "destination": "frontend/public/assets/books/muchiram-gurer-jibanchorit",
+      "front_sha256": "4d1ef04fa60e470c808ef761d253af1e4245cf27b8496c9b55adfa5927658a92",
+      "back_sha256": "fbefa1187750293733628e09c18113b4f85855d9966272f5257134673eea2800"
+    },
+    {
+      "order": 3,
+      "operation": "ADD_ACCEPTED_REGISTRY_DIGEST",
+      "path": "backend/data/rights_decision_registry.json",
+      "accepted_records_entry": {
+        "india-20261002-muchiram-gurer-jibanchorit-reader-cover-display-reviewed": "2dfc028395df0c0d2b266a428967ddd7cec1fd0b57e8fd15b75da7431c88e30b"
+      },
+      "commercial_batch_disposition_entry": {
+        "controlled-muchiram-gurer-jibanchorit": {
+          "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+          "decision_id": "india-20261002-muchiram-gurer-jibanchorit-reader-cover-display-reviewed",
+          "production_readback": "NOT_RUN",
+          "authority": "issue #477 comment 5949652699; exact original and delivery-cover reviews; release candidate pending protected CI/deployment"
+        }
+      }
+    },
+    {
+      "order": 4,
+      "operation": "EXPAND_CONTROLLED_READER_ALLOWLISTS",
+      "paths": ["data/controlled_launch.json", "backend/data/controlled_launch.json", "frontend/src/lib/controlledLaunch.js"],
+      "slug": "muchiram-gurer-jibanchorit",
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "audio_enabled": false,
+      "jurisdiction": "IN"
+    },
+    {
+      "order": 5,
+      "operation": "REGENERATE_PUBLIC_CONTRACTS",
+      "candidate_projection": "acceptance-packet/candidate-public-projection.json",
+      "generated_targets": ["frontend/static-seo/controlled-publication-public.json", "frontend/public/sitemap.xml"],
+      "required_truth": "India commercial text Reader; canonical pages 1-3 preview; page 4+ entitlement; listener/audio disabled"
+    },
+    {
+      "order": 6,
+      "operation": "UPDATE_EXACT_COUNT_AND_CANARY_FIXTURES",
+      "required_checks": ["root/backend package parity", "rights registry digest", "canonical bootstrap", "static SEO", "Reader route", "territory denial", "entitlement boundary", "listener disabled", "audio URL absent"]
+    },
+    {
+      "order": 7,
+      "operation": "NORMAL_PROTECTED_RELEASE",
+      "required_sequence": ["two independent exact-head reviews", "protected CI PASS", "normal merge", "deployment observation", "production canary", "truthful canonical-version readback"]
+    }
+  ],
+  "forbidden_in_this_packet": ["canonical branch mutation", "rights registry mutation", "launch allowlist mutation", "PR creation", "deployment configuration mutation", "production mutation", "audio exposure", "payment or entitlement-policy changes", "invented owner, legal-review or production facts"]
+}

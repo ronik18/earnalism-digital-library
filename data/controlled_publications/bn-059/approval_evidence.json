@@ -4,8 +4,8 @@
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "OWNER_DELEGATED_AUTOMATED_IN_EDITION_BOUND_TEXT_READER_ONLY_COVER_DEFERRED",
-  "audio_public_release": "PUBLIC_AUDIO_RELEASE_BLOCKED_QA_REQUIRED",
+  "approval_scope": "OWNER_DELEGATED_AUTOMATED_EXACT_IN_TEXT_AND_COVER_COMPONENT_PREPARATION",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
   "audiobook_enabled": false,
@@ -17,13 +17,55 @@
     "approval_scope": "historical_admin_import_reconstruction",
     "verified_at": null
   },
-  "hold_reason": "Title-level source/text and/or license/asset evidence is incomplete; see data/title_rights_evidence/bengali-bankim-cohort-1.json. This is a fail-closed package state, not a new rights acceptance decision.",
   "audio_qa_status": "",
   "endpoint_url": "",
   "provider": "",
   "version": "",
-  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "verified_at": "2026-10-02T15:52:11.964982+00:00",
   "source_hash": "59b705ade59945af3d9dda854e63053a73b9d60a2fcf50127b0be27c315ee147",
   "content_hash": "123bbd5c1c19edbf30eb6291a6bb5954e02128745d401846ce6d7512c60fdb21",
-  "publication_authorization_sha256": "11e53198a277a620032435a76d82df27117821c99fce6802a531d7c326d7a1a3"
+  "publication_authorization_sha256": "ad6c62d5c77548fe20596f33175287324ee7418326213603b7d613d769a2cf54",
+  "cover_provenance_sha256": "ad88f29c1aa0b28781fa0c8b98912461b3874ccdd27789bbe74805149d2dff5f",
+  "cover_delivery_derivation_sha256": "83cfd778e23096d0f65d4bd3e64dd314ef733918c53738cc88de923c98c2796c",
+  "cover_front_qa_status": "PASS",
+  "cover_back_qa_status": "PASS",
+  "independent_reviews": [
+    {
+      "path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/next-review-1-independent-review1.json",
+      "sha256": "45ef02f7d971391292f382562a8505f056d97e319e76b4fb8def1aa59e56aa7b",
+      "conclusion": "ACCEPT_EXACT_PROPOSED_COMPONENT_SCOPE_FOR_SERIALIZED_LOCAL_ACCEPTANCE"
+    },
+    {
+      "path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/next-review-3-bn-059.json",
+      "sha256": "1537cccaa4b2e311f05dddcc1c53a20430665edf0bb52940104bf9574f5559c7",
+      "conclusion": "ACCEPT_INACTIVE_PROPOSED_COMPONENT_EVIDENCE"
+    },
+    {
+      "path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/next-delivery-independent-review-a.json",
+      "sha256": "cf23735abaa64a0491c3aa901b44a0031796d11a80af5f57df7ca184dba80fe5",
+      "conclusion": "PASS_EXACT_DELIVERY_DERIVATIVE"
+    },
+    {
+      "path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/next-delivery-independent-review-b.json",
+      "sha256": "2f632f6c41b71356dfa7da370c7aaca7eda24d27a59e75284275762295a6b0ba",
+      "conclusion": "PASS_EXACT_DELIVERY_DERIVATIVE"
+    }
+  ],
+  "audiobook_use_approved": false,
+  "audiobook_use_approval_source": "",
+  "audiobook_use_approved_at": "",
+  "historical_text_only_approval_preserved": {
+    "approved_to_publish": true,
+    "rights_tier": "A",
+    "verification_status": "approved",
+    "qa_status": "QA_PASSED",
+    "approval_scope": "OWNER_DELEGATED_AUTOMATED_IN_EDITION_BOUND_TEXT_READER_ONLY_COVER_DEFERRED",
+    "verified_at": "2026-10-02T03:10:37.024181+00:00"
+  },
+  "activation_derivation": {
+    "owner_directive": "issue #477 comment 5949652699",
+    "scope": "serialized IN text-reader/cover integration candidate",
+    "production_observed": false,
+    "runtime_observed": false
+  }
 }

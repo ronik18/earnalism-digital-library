@@ -44,10 +44,19 @@ INDIA_TEXT_RELEASE_SLUGS = {
     "picture-of-dorian-gray",
     "dracula",
     "book-edfcf810c5",
+    "muchiram-gurer-jibanchorit",
+    "bn-059",
+    "the-call-of-the-wild",
 }
 
 
-REVIEWED_20261002_SLUGS = {"dracula", "book-edfcf810c5"}
+REVIEWED_20261002_SLUGS = {
+    "dracula",
+    "book-edfcf810c5",
+    "muchiram-gurer-jibanchorit",
+    "bn-059",
+    "the-call-of-the-wild",
+}
 
 NEAR_READY_20261001_SLUGS = {
     "a-horseman-in-the-sky",
@@ -111,7 +120,7 @@ def test_owner_exclusion_tombstone_is_mirrored_exactly():
     }
 
 
-def test_backend_controlled_launch_opens_only_the_twenty_six_approved_india_text_titles_and_no_audio():
+def test_backend_controlled_launch_opens_only_the_twenty_nine_approved_india_text_titles_and_no_audio():
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     backend_audio = set(backend_launch["audio_enabled_slugs"])
 
@@ -140,7 +149,7 @@ def test_india_commercial_text_release_is_mirrored_and_audio_remains_disabled():
         assert launch["audio_enabled_slugs"] == []
 
 
-def test_twenty_six_title_release_uses_commercial_mode_and_keeps_checkout_audio_disabled():
+def test_twenty_nine_title_release_uses_commercial_mode_and_keeps_checkout_audio_disabled():
     root_launch = load_json(ROOT_CONTROLLED_LAUNCH)
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     expected_modes = {slug: "COMMERCIAL_ENTITLEMENT" for slug in INDIA_TEXT_RELEASE_SLUGS}
@@ -154,7 +163,7 @@ def test_twenty_six_title_release_uses_commercial_mode_and_keeps_checkout_audio_
         assert launch["public_audio_exposure_enabled"] is False
 
 
-def test_twenty_six_title_release_has_hash_bound_reading_pass_rights_and_published_reader_manifests():
+def test_twenty_nine_title_release_has_hash_bound_reading_pass_rights_and_published_reader_manifests():
     launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     registry, revoked = load_production_registry()
     commercial_slugs = tuple(sorted(INDIA_TEXT_RELEASE_SLUGS))
@@ -186,7 +195,14 @@ def test_twenty_six_title_release_has_hash_bound_reading_pass_rights_and_publish
             or (slug == "the-adventures-of-sherlock-holmes" and "identity was not provided" in record["accepted_by"])
             or (slug == "agentic-ai-with-python" and record["accepted_by"].startswith("Ronik Basak, direct owner release instruction;"))
             or (slug in NEAR_READY_20261001_SLUGS and record["accepted_by"].startswith("Codex under Ronik Basak direct autonomous safe near-ready release instruction."))
-            or (slug in REVIEWED_20261002_SLUGS and record["accepted_by"].startswith("Automated serialized integration controller under the product owner directive in issue #477 comment 5949652699"))
+            or (
+                slug in REVIEWED_20261002_SLUGS
+                and record["accepted_by"].startswith((
+                    "Automated serialized integration controller under the product owner directive in issue #477 comment 5949652699",
+                    "Automated isolated acceptance-preparation worker under the product-owner directive in issue #477 comment 5949652699",
+                    "Automated isolated acceptance-preparation worker under the product owner directive in issue #477 comment 5949652699",
+                ))
+            )
         )
         if slug in {"the-adventures-of-sherlock-holmes", "agentic-ai-with-python"} | NEAR_READY_20261001_SLUGS | REVIEWED_20261002_SLUGS:
             assert record["territories"] == ["IN"]

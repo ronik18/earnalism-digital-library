@@ -1,6 +1,6 @@
 {
   "slug": "muchiram-gurer-jibanchorit",
-  "generated_at": "2026-10-02T03:11:07.553066+00:00",
+  "generated_at": "2026-10-02T15:46:20Z",
   "files": [
     {
       "file": "approval_evidence 2.json",
@@ -8,7 +8,7 @@
     },
     {
       "file": "approval_evidence.json",
-      "sha256": "ab826a72cb7775ff837fbbc880cf504dc0e019da1355dc1dea437ac56fb028bc"
+      "sha256": "c75f39bd45521e71bf9d478d161cfae273165bc40c7b71ab118181771de71c72"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -67,6 +67,26 @@
       "sha256": "c846cf9cbc40b330b657c9877bb307729707acc37ca6813dfa563a3e51ce3413"
     },
     {
+      "file": "cover_provenance.json",
+      "sha256": "46fda8c5ef3dfd79d87194717e799b8fa6ee34b09fcd9d1b545114f71c2d647a"
+    },
+    {
+      "file": "covers/back.png",
+      "sha256": "47fb5b354455a7a5cff855b4ca69c1b194832bc8798d3d01842d8e9886a8d58b"
+    },
+    {
+      "file": "covers/delivery-back.webp",
+      "sha256": "fbefa1187750293733628e09c18113b4f85855d9966272f5257134673eea2800"
+    },
+    {
+      "file": "covers/delivery-front.webp",
+      "sha256": "4d1ef04fa60e470c808ef761d253af1e4245cf27b8496c9b55adfa5927658a92"
+    },
+    {
+      "file": "covers/front.png",
+      "sha256": "abbed38055fd673d0171eb9eeaf49fb887013d46d12573cf7b38109c683dbbc9"
+    },
+    {
       "file": "highlight_sync.json",
       "sha256": "b1f7fda41647a4f3cb1b7bf2709a459355e59850e90e7e44239f13fdaa270f2e"
     },
@@ -76,11 +96,15 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "560150071849795255d6af4fcbca75ff627609ae74385652b25b6f9dfcb79c35"
+      "sha256": "8822aea5c2f3ace8ed78dc8f276ae2aac5579ea152b2b51918706aef3e0d57f3"
     },
     {
       "file": "publication_authorization.json",
-      "sha256": "15e85c07b9253170cf5867946b36eb1e4d3e4d10391910985b6e416ecc5fc9ed"
+      "sha256": "1252c5b2e2141ee3c3e0c9ad8876a1e11bd249385f3ac02649a8998853c9565e"
+    },
+    {
+      "file": "publication_manifest.json",
+      "sha256": "c5951af809000af1577916f49609d50e24560bbe18c12c2848af689bee327da2"
     },
     {
       "file": "reader_manifest.json",

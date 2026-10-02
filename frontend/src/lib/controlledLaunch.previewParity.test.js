@@ -85,9 +85,10 @@ describe("controlled launch preview parity", () => {
     })).toBe(false);
   });
 
-  test("does not revive Dracula from a bundled fallback while the release is held", () => {
-    expect(canShowStartReading(DRACULA_FALLBACK_BOOK)).toBe(false);
-    expect(canShowPreview(DRACULA_FALLBACK_BOOK)).toBe(false);
+  test("uses the approved Dracula fallback only while its controlled release remains allowlisted", () => {
+    expect(PUBLIC_READER_RELEASED_SLUGS).toContain("dracula");
+    expect(canShowStartReading(DRACULA_FALLBACK_BOOK)).toBe(true);
+    expect(canShowPreview(DRACULA_FALLBACK_BOOK)).toBe(true);
   });
 
   test("allows an explicitly approved audiobook projection", () => {

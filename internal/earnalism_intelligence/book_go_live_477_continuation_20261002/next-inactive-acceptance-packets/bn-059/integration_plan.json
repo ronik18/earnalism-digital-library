@@ -1,0 +1,66 @@
+{
+  "schema": "earnalism.serialized-acceptance-integration-plan.v1",
+  "slug": "bn-059",
+  "baseline_main": "c9df35dda7a463f6cb5580ef900068e4cc6b6408",
+  "baseline_tree": "0fbeb558b855ff37a1b439a09ca66d60ba2f24b3",
+  "packet_state": "ACCEPTED_LOCAL_PACKET_READY_FOR_SERIALIZED_ROOT_APPLICATION",
+  "application_performed": false,
+  "canonical_mutations": 0,
+  "registry_mutations": 0,
+  "allowlist_mutations": 0,
+  "production_mutations": 0,
+  "package_targets": [
+    "data/controlled_publications/bn-059",
+    "backend/data/controlled_publications/bn-059"
+  ],
+  "asset_targets": [
+    "frontend/public/assets/books/bn-059/bn-059-front-a7b9f12c.webp",
+    "frontend/public/assets/books/bn-059/bn-059-back-19f0e455.webp"
+  ],
+  "registry_delta": {
+    "path": "backend/data/rights_decision_registry.json",
+    "accepted_records_add": {
+      "india-20261002-bn-059-reader-cover-display-reviewed": "df21f16960c872106574fc3e63f905a6eec0e280cda11dcfd23bb48cb9cb6c5b"
+    }
+  },
+  "bootstrap_delta": {
+    "path": "backend/data/approved_reader_bootstrap.json",
+    "titles_append": {
+      "slug": "bn-059",
+      "decision_id": "india-20261002-bn-059-reader-cover-display-reviewed",
+      "record_sha256": "df21f16960c872106574fc3e63f905a6eec0e280cda11dcfd23bb48cb9cb6c5b"
+    }
+  },
+  "controlled_launch_delta": {
+    "paths": [
+      "data/controlled_launch.json",
+      "backend/data/controlled_launch.json"
+    ],
+    "title_access_modes_add": {
+      "bn-059": "COMMERCIAL_ENTITLEMENT"
+    },
+    "live_approved_slugs_append": "bn-059",
+    "audio_enabled_slugs_change": null
+  },
+  "frontend_allowlist_delta": {
+    "path": "frontend/src/lib/controlledLaunch.js",
+    "controlled_slugs_append": "bn-059",
+    "audio_slugs_change": null
+  },
+  "static_public_projection": "packet/public_projection.json",
+  "required_serialized_post_apply": [
+    "Reconcile exact current main/open PRs/running Actions before applying.",
+    "Recompute every registry/bootstrap/allowlist-derived checksum and the production-surface fingerprint.",
+    "Run package, rights-gate, launch-parity, Reader/Pass, static projection, build and protected normal checks.",
+    "Merge only through protected checks; then verify deploy, India canary and truthful canonical-version readback."
+  ],
+  "scope_guards": {
+    "territory": "IN",
+    "text_reader_commercial_entitlement_only": true,
+    "audio_enabled": false,
+    "payments_or_entitlement_policy_changed": false,
+    "deployment_configuration_changed": false,
+    "human_approval_inferred": false,
+    "production_observed": false
+  }
+}

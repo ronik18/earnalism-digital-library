@@ -4,12 +4,12 @@
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "OWNER_DELEGATED_AUTOMATED_IN_EDITION_BOUND_TEXT_READER_ONLY_COVER_DEFERRED",
-  "audiobook_use_approved": true,
+  "approval_scope": "OWNER_DELEGATED_AUTOMATED_EXACT_IN_TEXT_AND_COVER_COMPONENT_PREPARATION",
+  "audiobook_use_approved": false,
   "audiobook_use_approval_scope": "owner-authorized production evaluation and customer playback in IN, subject to verified rights, authorized recording or TTS licensing, budget, QA, and release gates",
   "audiobook_use_approved_by": "Ronik",
   "audiobook_use_approved_at": "2026-08-07",
-  "audio_public_release": "PUBLIC_AUDIO_RELEASE_BLOCKED_QA_REQUIRED",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
   "audiobook_enabled": false,
@@ -21,7 +21,6 @@
     "approval_scope": "historical_admin_import_reconstruction",
     "verified_at": null
   },
-  "hold_reason": "Title-level source/text and/or license/asset evidence is incomplete; see data/title_rights_evidence/bengali-bankim-cohort-1.json. This is a fail-closed package state, not a new rights acceptance decision.",
   "audio_qa_status": "",
   "endpoint_url": "",
   "provider": "",
@@ -29,5 +28,20 @@
   "verified_at": "2026-10-02T03:10:37.024181+00:00",
   "source_hash": "d88c2efe3dc6d15fb103a9df394a4dfa194a54234ca11c9c1e49d1ecca924034",
   "content_hash": "095e2308975c18cba636058aad414a457161f5754bd6f6f282537bdaebe23801",
-  "publication_authorization_sha256": "15e85c07b9253170cf5867946b36eb1e4d3e4d10391910985b6e416ecc5fc9ed"
+  "publication_authorization_sha256": "1252c5b2e2141ee3c3e0c9ad8876a1e11bd249385f3ac02649a8998853c9565e",
+  "cover_provenance_sha256": "46fda8c5ef3dfd79d87194717e799b8fa6ee34b09fcd9d1b545114f71c2d647a",
+  "cover_front_qa_status": "PASS",
+  "cover_back_qa_status": "PASS",
+  "independent_reviews": [
+    {
+      "path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/next-delivery-independent-review-a.json",
+      "sha256": "cf23735abaa64a0491c3aa901b44a0031796d11a80af5f57df7ca184dba80fe5",
+      "conclusion": "PASS_EXACT_DELIVERY_DERIVATIVE_PRESERVATION"
+    },
+    {
+      "path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/next-delivery-independent-review-b.json",
+      "sha256": "2f632f6c41b71356dfa7da370c7aaca7eda24d27a59e75284275762295a6b0ba",
+      "conclusion": "PASS_EXACT_DELIVERY_DERIVATIVE_PRESERVATION"
+    }
+  ]
 }

@@ -42,7 +42,7 @@ const states = [
   ["mobile-navigation-768", "/", 768, 1024, "navigation"], ["mobile-navigation-landscape", "/", 844, 390, "navigation"], ["mobile-navigation-1024", "/", 1024, 768, "navigation"], ["mobile-navigation-1279", "/", 1279, 800, "navigation"],
   ["book-detail-desktop", populatedBookRoute, 1440, 1000, "book"],
   ["book-detail-mobile", populatedBookRoute, 390, 844, "book"],
-  ["book-detail-held-desktop", "/book/dracula", 1440, 1000, "held-book"], ["book-detail-held-mobile", "/book/dracula", 390, 844, "held-book"],
+  ["book-detail-held-desktop", "/book/the-selfish-giant", 1440, 1000, "held-book"], ["book-detail-held-mobile", "/book/the-selfish-giant", 390, 844, "held-book"],
   ["reader-desktop", readerFixtureRoute, 1440, 1000, "reader"],
   ["reader-mobile", readerFixtureRoute, 390, 844, "reader"], ["listener-desktop", "/listener/a-ghost-story?visual-fixture=1", 1440, 1000, "listener"],
   ["listener-mobile", "/listener/a-ghost-story?visual-fixture=1", 390, 844, "listener"], ["about-mobile", "/about", 390, 844, "about"],

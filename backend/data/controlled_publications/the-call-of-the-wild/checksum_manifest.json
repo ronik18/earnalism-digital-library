@@ -1,54 +1,90 @@
 {
   "slug": "the-call-of-the-wild",
-  "generated_at": "2026-07-12T07:04:07Z",
+  "generated_at": "2026-10-02T15:47:04Z",
   "files": [
     {
-      "file": "approval_evidence.json",
-      "sha256": "c354fbd9ed94a896bab75b38db6470a1898b0aa5486433e7686a00f48e3359bd"
+      "file": "approval_evidence 2.json",
+      "sha256": "309552c46b979bc9de8cc7f4e9eb18718530f76a9a8b2d12721e357cbcc24328"
     },
     {
-      "file": "checksum_manifest.json",
-      "sha256": "a345bc7f13c5c737043db4c0caaa9e4e09fd70ec6005d0eeb9620720c8b1b781"
+      "file": "approval_evidence.json",
+      "sha256": "35952901209737cf6cba9cbb09ec634d2e9a1e7c6beab5a22e1f36edcab065f3"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "71c29b8ed3ce67f4555e559f50e4c0a8b168f6141d33544d00c8c5328eb6ad4f"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "34f7ba4576960b5cb86c78356cc38edaf5967301196144a21b8a0da7987a6b82"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "e21beb19bc59ec60bfdb00ac0122eed417e05bc00d74504496d49dfa7f9cbb53"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "409a1a0979d57a7b667c11d5128346408022cae6b768720553219bbfe2248dab"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "e81cc475678f8a636a757113a53f784289320f5072dfa2e4e34968b11e337602"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "b261d8a03bc8375a1ae58dfa1a8efe5e1dc98802032ba87c5ec5da8ab03ff828"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "9d5d60a37d58901ce1916cfcdaf0c5a615d403ed6c4fda9349ba03d164479f6c"
+    },
+    {
+      "file": "cover_delivery_derivation.json",
+      "sha256": "f9e5a38ad9f0a7a8f15db8cedfbf6b1f4786102923d6b778c5117009d5d70efd"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "2a9ab835df747329d8e541489afd26ec0cb45c8dfd9ca5aac5f077ec12c02866"
+    },
+    {
+      "file": "covers/back.png",
+      "sha256": "8d86df1735a5ddbc6e44330805bcbd5aed28884d2fa01b2fa5c633fc28648a17"
+    },
+    {
+      "file": "covers/front.png",
+      "sha256": "94d7d690b177fc6ee3eb8d60e6ef031c878c355905a25b94d24ac5ca08560068"
+    },
+    {
+      "file": "covers/the-call-of-the-wild-back-8d86df17.webp",
+      "sha256": "cbac7b5b951e8f8c3c2b172ece299cd2479e2c6b1985ac5da7501aebe809c6b3"
+    },
+    {
+      "file": "covers/the-call-of-the-wild-front-94d7d690.webp",
+      "sha256": "6bc8b585e11bfde7fdd29dbe1da4407fe1fe666a69d1e5ea32e5e431d495eb75"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "7df67693212667112f689afef2b4d7a86aca94fb28db8337d50430c363224640"
     },
     {
       "file": "public_book.json",
-      "sha256": "e6ccc48019c97806a17b1c71dddb4e470c2cccc7b3df65e4d14db932ad307bd3"
+      "sha256": "994372cc9291ec686818459af125f566a844cb40b1c862352074bdb99ef658ec"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "95e6feb9e773f09292a20254532e25af3a1176f4cb791dd0fc051e56e65f5982"
     },
     {
       "file": "reader_manifest.json",
       "sha256": "8b04260e291ac4388ee26bc65cb1fb3bff1d1cae80659afd0762af70688e2180"
     },
     {
+      "file": "rights_decision_prior_noncover_text.json",
+      "sha256": "39ed99121fc56b81248ad4125662b2f44c9851ec7e08ba0d9a7f992d2f59f79b"
+    },
+    {
       "file": "source_evidence.json",
-      "sha256": "3fa6593fa727ec7a5377e9dfa779fa8f23f266a06daa662b12227a46c8125074"
-    },
-    {
-      "file": "chapters/chapter-001.json",
-      "sha256": "6d79eee71ac41547fbe23bdc7250473c1868051787a8d605f5fe9d3efd8969aa"
-    },
-    {
-      "file": "chapters/chapter-002.json",
-      "sha256": "85a04d7f532cdf4e15b71493a0de30090a6b0a8908da6bac44bcb6b047b09ebc"
-    },
-    {
-      "file": "chapters/chapter-003.json",
-      "sha256": "8ba0a40fdaaf3cb1c15b5d498375707719e899743ad6551fc82b7b044f4ac0b8"
-    },
-    {
-      "file": "chapters/chapter-004.json",
-      "sha256": "b4adb989f475c4c58b762b216c5d9635a44ade6a0baa1ec18e330ee1e67604f6"
-    },
-    {
-      "file": "chapters/chapter-005.json",
-      "sha256": "aac6ca51376c74fedc3876a7016d203dc3c0b580c4f3d927889d08b16648e808"
-    },
-    {
-      "file": "chapters/chapter-006.json",
-      "sha256": "32b77444b59e61644567b1dbc8610cb6ea8b5de14b09bea286d1709de1d5d762"
-    },
-    {
-      "file": "chapters/chapter-007.json",
-      "sha256": "59be36960f8dd4b68726c442c7a6c1fe08a7791a1ed345444ff2b12c7f8bd064"
+      "sha256": "863a94b8e03a42f5833e86e3b323b324e4fa4c2abe4f1a92b697f6df147653dc"
     }
   ]
 }

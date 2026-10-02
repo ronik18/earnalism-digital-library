@@ -11,14 +11,17 @@ Allow: /reader/a-scandal-in-bohemia
 Allow: /reader/a-white-heron
 Allow: /reader/agentic-ai-with-python
 Allow: /reader/an-occurrence-at-owl-creek-bridge
+Allow: /reader/bn-059
 Allow: /reader/book-edfcf810c5
 Allow: /reader/dracula
 Allow: /reader/jekyll-and-hyde
 Allow: /reader/love-of-life
+Allow: /reader/muchiram-gurer-jibanchorit
 Allow: /reader/picture-of-dorian-gray
 Allow: /reader/radharani
 Allow: /reader/the-adventures-of-sherlock-holmes
 Allow: /reader/the-bishop
+Allow: /reader/the-call-of-the-wild
 Allow: /reader/the-canterville-ghost
 Allow: /reader/the-enchanted-april
 Allow: /reader/the-fall-of-the-house-of-usher

@@ -149,20 +149,35 @@ class StaticSeoCanaryTests(unittest.TestCase):
         ), patch.object(MODULE, "fetch_protected_api", side_effect=[
             (200, {"slug": "dracula", "access": {"authenticated": False, "can_read_paid": False}}, "https://theearnalism.com/api/reader/book/dracula/manifest"),
             (200, {"slug": "book-edfcf810c5", "access": {"authenticated": False, "can_read_paid": False}}, "https://theearnalism.com/api/reader/book/book-edfcf810c5/manifest"),
+            (200, {"slug": "muchiram-gurer-jibanchorit", "access": {"authenticated": False, "can_read_paid": False}}, "https://theearnalism.com/api/reader/book/muchiram-gurer-jibanchorit/manifest"),
+            (200, {"slug": "bn-059", "access": {"authenticated": False, "can_read_paid": False}}, "https://theearnalism.com/api/reader/book/bn-059/manifest"),
+            (200, {"slug": "the-call-of-the-wild", "access": {"authenticated": False, "can_read_paid": False}}, "https://theearnalism.com/api/reader/book/the-call-of-the-wild/manifest"),
             (503, {"detail": {"code": "SEGMENTS_NOT_READY"}}, "https://theearnalism.com/api/reading-pass/books/the-adventures-of-sherlock-holmes/manifest"),
             (200, {"detail": {"code": "SEGMENTS_NOT_READY"}}, "https://theearnalism.com/api/reading-pass/books/the-canterville-ghost/manifest"),
             (200, {"book_slug": "dracula", "version": "retained-version", "segmentation_version": "retained-segmentation", "total_pages": 276, "public_preview_pages": 3, "chapters": [{"chapter_id": f"chapter-{index:03d}"} for index in range(28)]}, "https://theearnalism.com/api/reading-pass/books/dracula/manifest"),
             (200, {"book_slug": "book-edfcf810c5", "version": "retained-version", "segmentation_version": "retained-segmentation", "total_pages": 9, "public_preview_pages": 3, "chapters": [{"chapter_id": "chapter-001"}]}, "https://theearnalism.com/api/reading-pass/books/book-edfcf810c5/manifest"),
+            (200, {"book_slug": "muchiram-gurer-jibanchorit", "version": "retained-version", "segmentation_version": "retained-segmentation", "total_pages": 14, "public_preview_pages": 3, "chapters": [{"chapter_id": f"chapter-{index:03d}"} for index in range(1, 15)]}, "https://theearnalism.com/api/reading-pass/books/muchiram-gurer-jibanchorit/manifest"),
+            (200, {"book_slug": "bn-059", "version": "retained-version", "segmentation_version": "retained-segmentation", "total_pages": 13, "public_preview_pages": 3, "chapters": [{"chapter_id": chapter_id} for chapter_id in MODULE.PROTECTED_API_CHECKS["/api/reading-pass/books/bn-059/manifest"]["expected_chapter_ids"]]}, "https://theearnalism.com/api/reading-pass/books/bn-059/manifest"),
+            (200, {"book_slug": "the-call-of-the-wild", "version": "retained-version", "segmentation_version": "retained-segmentation", "total_pages": 7, "public_preview_pages": 3, "chapters": [{"chapter_id": f"chapter-{index:03d}"} for index in range(1, 8)]}, "https://theearnalism.com/api/reading-pass/books/the-call-of-the-wild/manifest"),
         ]):
             report = MODULE.run("https://theearnalism.com", 1)
         self.assertEqual(report["result"], "FAIL")
-        self.assertEqual([row["result"] for row in report["protected_apis"]], ["PASS", "PASS", "PASS", "FAIL", "PASS", "PASS"])
+        self.assertEqual(
+            [row["result"] for row in report["protected_apis"]],
+            ["PASS", "PASS", "PASS", "PASS", "PASS", "PASS", "FAIL", "PASS", "PASS", "PASS", "PASS", "PASS"],
+        )
 
     def test_exact_canonical_manifests_require_actual_version_pages_and_chapters(self):
-        for slug, count in [("dracula", 28), ("book-edfcf810c5", 1)]:
+        for slug, count, total_pages in [
+            ("dracula", 28, 276),
+            ("book-edfcf810c5", 1, 9),
+            ("muchiram-gurer-jibanchorit", 14, 14),
+            ("bn-059", 13, 13),
+            ("the-call-of-the-wild", 7, 7),
+        ]:
             route = "/api/reading-pass/books/" + slug + "/manifest"
             policy = MODULE.PROTECTED_API_CHECKS[route]
-            payload = {"book_slug": slug, "version": "preserved-version", "segmentation_version": "operator-existing-version", "total_pages": 276 if slug == "dracula" else 9, "public_preview_pages": 3, "chapters": [{"chapter_id": chapter_id} for chapter_id in policy["expected_chapter_ids"]]}
+            payload = {"book_slug": slug, "version": "preserved-version", "segmentation_version": "operator-existing-version", "total_pages": total_pages, "public_preview_pages": 3, "chapters": [{"chapter_id": chapter_id} for chapter_id in policy["expected_chapter_ids"]]}
             result = MODULE.inspect_protected_api(route, policy, 200, payload, "https://theearnalism.com" + route)
             self.assertEqual(result["result"], "PASS")
             self.assertEqual(result["observed_canonical_version"], "preserved-version")

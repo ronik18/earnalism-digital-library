@@ -1,0 +1,63 @@
+{
+  "schema": "earnalism.book-go-live.acceptance-prep.v1",
+  "slug": "the-call-of-the-wild",
+  "prepared_at": "2026-10-02T15:47:04Z",
+  "source_main": "c9df35dda7a463f6cb5580ef900068e4cc6b6408",
+  "state": "ISOLATED_ACCEPTED_PACKAGE_READY_WITH_BACKEND_PREIMAGE_VERSIONING_HOLD",
+  "decision": {
+    "decision_id": "india-20261002-the-call-of-the-wild-reader-cover-display-reviewed",
+    "decision_file_sha256": "023e559cb9f348f592722a8e4be29daee528867ebb86cbb86ed93a7ac86257cf",
+    "record_sha256": "a278a6fe107423bf2f96c6c61e04f2dc08f16f646a840408f5622fcde0035171",
+    "territories": ["IN"],
+    "uses": [
+      "catalog_metadata",
+      "cover_display",
+      "reader_preview",
+      "reader_delivery",
+      "reading_pass_session",
+      "reading_pass_renewal"
+    ],
+    "audio_authorized": false,
+    "production_activation_authorized": false
+  },
+  "package_bindings": {
+    "approval_evidence.json": "35952901209737cf6cba9cbb09ec634d2e9a1e7c6beab5a22e1f36edcab065f3",
+    "checksum_manifest.json": "8228e98db170856caefb761e253f1e00ddb9f314130b4c1f64e1b6b02afad241",
+    "cover_delivery_derivation.json": "f9e5a38ad9f0a7a8f15db8cedfbf6b1f4786102923d6b778c5117009d5d70efd",
+    "cover_provenance.json": "2a9ab835df747329d8e541489afd26ec0cb45c8dfd9ca5aac5f077ec12c02866",
+    "public_book.json": "994372cc9291ec686818459af125f566a844cb40b1c862352074bdb99ef658ec",
+    "publication_authorization.json": "95e6feb9e773f09292a20254532e25af3a1176f4cb791dd0fc051e56e65f5982",
+    "publication_manifest.json": "3e1a7fcc426ed636358fdd5fd6cb5dee54b46cba2b8203b1d1b9e0dc6224e8b1",
+    "reader_manifest.json": "8b04260e291ac4388ee26bc65cb1fb3bff1d1cae80659afd0762af70688e2180",
+    "rights_decision.json": "023e559cb9f348f592722a8e4be29daee528867ebb86cbb86ed93a7ac86257cf",
+    "rights_decision_prior_noncover_text.json": "39ed99121fc56b81248ad4125662b2f44c9851ec7e08ba0d9a7f992d2f59f79b",
+    "source_evidence.json": "863a94b8e03a42f5833e86e3b323b324e4fa4c2abe4f1a92b697f6df147653dc",
+    "covers/front.png": "94d7d690b177fc6ee3eb8d60e6ef031c878c355905a25b94d24ac5ca08560068",
+    "covers/back.png": "8d86df1735a5ddbc6e44330805bcbd5aed28884d2fa01b2fa5c633fc28648a17",
+    "covers/the-call-of-the-wild-front-94d7d690.webp": "6bc8b585e11bfde7fdd29dbe1da4407fe1fe666a69d1e5ea32e5e431d495eb75",
+    "covers/the-call-of-the-wild-back-8d86df17.webp": "cbac7b5b951e8f8c3c2b172ece299cd2479e2c6b1985ac5da7501aebe809c6b3"
+  },
+  "validation": {
+    "result": "PASS",
+    "package_files": 24,
+    "checksum_entries": 21,
+    "immutable_root_files_checked": 10,
+    "manifest_validation": "PASS",
+    "six_authorized_IN_uses": "PASS",
+    "US_reader_delivery": "DENIED",
+    "IN_audio_stream": "DENIED",
+    "audio_release": "NOT_REQUESTED_UNEXPOSED",
+    "root_registry_allowlist_bootstrap_public_projection_config_mutated": false,
+    "isolated_backend_candidate_mirrors_root": true,
+    "merged_main_backend_preimage_manifested": true
+  },
+  "unapplied_deltas": [
+    "registry-binding-candidate.json",
+    "controlled-launch-delta.json",
+    "backend-promotion-delta.json",
+    "backend-preimage-manifest.json",
+    "bootstrap-plan-delta.json",
+    "public-projection-entry.json"
+  ],
+  "next_exact_action": "Serialized integration authority independently reviews this exact packet and first archives/versions the distinct merged-main backend preimage using backend-preimage-manifest.json. Only then apply the root/backend package promotion, registry binding, parity allowlists, bootstrap entry and generated public projection in one focused existing integration lane before protected CI. No production or runtime fact is claimed here."
+}

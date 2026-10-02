@@ -1,0 +1,29 @@
+{
+  "schema": "earnalism.static-seo-public-projection-plan.v1",
+  "slug": "bn-059",
+  "generated_from": {
+    "data/controlled_publications/bn-059/public_book.json": "12f430579299912a2db091a3f6f67f423774a38635c928c24daf8017a0e2e8eb",
+    "data/controlled_publications/bn-059/reader_manifest.json": "f6e6fb365561b7f796fa52ad190d6d16a4f7c409c1b5e6ebb648f833b768a2da",
+    "data/controlled_publications/bn-059/source_evidence.json": "1ae73ff80e4a9ded7b57617b2ce5a92c689b0e70f6f98f55cb3302fbfb00f082",
+    "data/controlled_publications/bn-059/approval_evidence.json": "53b2701896df370f3b6d6c3f037ebf8fabfb22a16e90e592f7e796ff331cc8e1",
+    "data/controlled_publications/bn-059/publication_manifest.json": "a600e96aef36f5c38402e38cf87d47059a87b508f45eb4e4719a74d82c977954"
+  },
+  "publication": {
+    "slug": "bn-059",
+    "title": "কমলাকান্তের দপ্তর",
+    "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+    "cover_url": "https://theearnalism.com/assets/books/bn-059/bn-059-front-a7b9f12c.webp",
+    "chapter_count": 13,
+    "source_display_name": "Bengali Wikisource",
+    "approved_rights_display_state": "approved_tier_a",
+    "text_preview_limit_canonical_pages": 3,
+    "audio_public_preview_seconds": 0,
+    "audio_availability_state": "disabled",
+    "canonical_routes": {
+      "book": "/book/bn-059",
+      "reader": "/reader/bn-059",
+      "listener": "/listener/bn-059"
+    }
+  },
+  "production_observed": false
+}

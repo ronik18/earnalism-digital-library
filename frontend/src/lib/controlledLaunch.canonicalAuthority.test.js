@@ -30,7 +30,10 @@ describe("frontend release mirror", () => {
       expect(publication.reader_release).toMatchObject({ status: "APPROVED", exposed: true });
       expect(publication.audio_release).toMatchObject({ status: "NOT_REQUESTED", exposed: false, required_for_reader_release: false });
       expect(publicBook.slug).toBe(slug);
-      expect(publicBook.publication_status).toBe("LIVE_APPROVED");
+      // Accepted packages may intentionally retain their reviewed pre-activation
+      // source status. The backend projects LIVE_APPROVED only after this
+      // controlled-launch allowlist and the release manifests all pass.
+      expect(["LIVE_APPROVED", "READY_FOR_ACTIVATION_GLOBAL_GATE"]).toContain(publicBook.publication_status);
       expect(readerManifest.slug).toBe(slug);
       expect(rightsDecision.status).toBe("ACCEPTED");
     }

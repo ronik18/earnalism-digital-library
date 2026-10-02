@@ -150,11 +150,11 @@ async function assertCurrentControlledLaunchResults(page, name) {
   await page.goto(`${baseUrl.replace(/\/$/, "")}/library?listening=hidden`, { waitUntil: "domcontentloaded" });
   await referenceSurface(page).waitFor();
   // Preserve the existing ten-edition shelf. Traverse its real controls before
-  // asserting the complete, independently reviewed 26-edition release scope.
+  // asserting the complete, independently reviewed 29-edition release scope.
   const fixtureOrder = books.filter((book) => releasedSlugs.includes(book.slug)).map((book) => book.slug);
-  assert.equal(fixtureOrder.length, 26, "The current release fixture must contain exactly 26 approved editions");
+  assert.equal(fixtureOrder.length, 29, "The current release fixture must contain exactly 29 approved editions");
   await assertDisplayedSlugs(page, fixtureOrder.slice(0, 10));
-  for (const [nextCount, shownCount] of [[10, 20], [6, 26]]) {
+  for (const [nextCount, shownCount] of [[10, 20], [9, 29]]) {
     const previousCount = shownCount - nextCount;
     const more = referenceSurface(page).getByRole("button", { name: `Show ${nextCount} more editions in Live now`, exact: true });
     await more.click();

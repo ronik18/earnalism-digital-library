@@ -1,0 +1,31 @@
+{
+  "schema": "earnalism.static-seo-public.entry-candidate.v1",
+  "source_main": "c9df35dda7a463f6cb5580ef900068e4cc6b6408",
+  "generated_from": {
+    "data/controlled_publications/the-call-of-the-wild/public_book.json": "994372cc9291ec686818459af125f566a844cb40b1c862352074bdb99ef658ec",
+    "data/controlled_publications/the-call-of-the-wild/reader_manifest.json": "8b04260e291ac4388ee26bc65cb1fb3bff1d1cae80659afd0762af70688e2180",
+    "data/controlled_publications/the-call-of-the-wild/source_evidence.json": "863a94b8e03a42f5833e86e3b323b324e4fa4c2abe4f1a92b697f6df147653dc",
+    "data/controlled_publications/the-call-of-the-wild/approval_evidence.json": "35952901209737cf6cba9cbb09ec634d2e9a1e7c6beab5a22e1f36edcab065f3",
+    "data/controlled_publications/the-call-of-the-wild/publication_manifest.json": "3e1a7fcc426ed636358fdd5fd6cb5dee54b46cba2b8203b1d1b9e0dc6224e8b1"
+  },
+  "entry": {
+    "slug": "the-call-of-the-wild",
+    "title": "The Call of the Wild",
+    "author": "Jack London",
+    "cover_url": "https://theearnalism.com/assets/books/the-call-of-the-wild/the-call-of-the-wild-front-94d7d690.webp",
+    "chapter_count": 7,
+    "source_display_name": "Rights-cleared edition",
+    "approved_rights_display_state": "approved_tier_a",
+    "text_preview_limit_canonical_pages": 3,
+    "audio_public_preview_seconds": 0,
+    "audio_availability_state": "disabled",
+    "canonical_routes": {
+      "book": "/book/the-call-of-the-wild",
+      "reader": "/reader/the-call-of-the-wild",
+      "listener": "/listener/the-call-of-the-wild"
+    }
+  },
+  "requires_controlled_launch_allowlist": true,
+  "applied": false,
+  "production_observed": false
+}

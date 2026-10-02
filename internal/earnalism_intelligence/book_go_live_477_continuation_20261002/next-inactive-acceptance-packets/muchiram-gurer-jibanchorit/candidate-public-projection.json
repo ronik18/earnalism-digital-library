@@ -1,0 +1,31 @@
+{
+  "schema_version": "earnalism.static-seo-public.candidate.v1",
+  "candidate_only": true,
+  "canonical_allowlist_mutated": false,
+  "production_observed": false,
+  "publication": {
+    "slug": "muchiram-gurer-jibanchorit",
+    "title": "মুচিরাম গুড়ের জীবনচরিত",
+    "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+    "cover_url": "https://theearnalism.com/assets/books/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit-front-abbed380.webp",
+    "chapter_count": 14,
+    "source_display_name": "Bengali Wikisource",
+    "approved_rights_display_state": "approved_tier_a",
+    "text_preview_limit_canonical_pages": 3,
+    "audio_public_preview_seconds": 0,
+    "audio_availability_state": "disabled",
+    "canonical_routes": {
+      "book": "/book/muchiram-gurer-jibanchorit",
+      "reader": "/reader/muchiram-gurer-jibanchorit",
+      "listener": "/listener/muchiram-gurer-jibanchorit"
+    }
+  },
+  "binding": {
+    "public_book_sha256": "8822aea5c2f3ace8ed78dc8f276ae2aac5579ea152b2b51918706aef3e0d57f3",
+    "reader_manifest_sha256": "ef7c6d21000b4f9d7fd56fc8bbb4768016682ee70466bc87e4f20d1ff6a4cd20",
+    "source_evidence_sha256": "019f7fe8556e516fef78e6cb4ffc4f9e072ec70b8459f525a9d41dc5ce4e4950",
+    "approval_evidence_sha256": "c75f39bd45521e71bf9d478d161cfae273165bc40c7b71ab118181771de71c72",
+    "publication_manifest_sha256": "c5951af809000af1577916f49609d50e24560bbe18c12c2848af689bee327da2",
+    "rights_decision_sha256": "2dfc028395df0c0d2b266a428967ddd7cec1fd0b57e8fd15b75da7431c88e30b"
+  }
+}

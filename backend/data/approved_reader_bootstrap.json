@@ -136,6 +136,21 @@
       "slug": "book-edfcf810c5",
       "decision_id": "india-20261002-book-edfcf810c5-reader-cover-display-reviewed",
       "record_sha256": "6de4a0e68e50aa11e1ae57850cac61699bbe2e1b810502e8f52ba280d51a8a0b"
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "decision_id": "india-20261002-muchiram-gurer-jibanchorit-reader-cover-display-reviewed",
+      "record_sha256": "4bf969237f4b5506cf944d7b8f30202f1208acd3cc30d08d4e38cab24ae6e4e6"
+    },
+    {
+      "slug": "bn-059",
+      "decision_id": "india-20261002-bn-059-reader-cover-display-reviewed",
+      "record_sha256": "df21f16960c872106574fc3e63f905a6eec0e280cda11dcfd23bb48cb9cb6c5b"
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "decision_id": "india-20261002-the-call-of-the-wild-reader-cover-display-reviewed",
+      "record_sha256": "a278a6fe107423bf2f96c6c61e04f2dc08f16f646a840408f5622fcde0035171"
     }
   ]
 }

@@ -1,0 +1,22 @@
+{
+  "schema": "earnalism.isolated-acceptance-validation.v1",
+  "slug": "bn-059",
+  "baseline_main": "c9df35dda7a463f6cb5580ef900068e4cc6b6408",
+  "baseline_tree": "0fbeb558b855ff37a1b439a09ca66d60ba2f24b3",
+  "publication_manifest_issues": [],
+  "controlled_artifact_issues": [],
+  "controlled_reader_issues": [],
+  "checksum_mismatches": [],
+  "rights_gate": {
+    "catalog_cta": "PASS",
+    "reader_manifest": "PASS",
+    "reader_chapter": "PASS",
+    "reading_pass_session_start": "PASS",
+    "reading_pass_lease_renewal": "PASS",
+    "audio_manifest": "DENY_USE_NOT_AUTHORIZED"
+  },
+  "immutable_source_license_reader_and_13_chapters_preserved": true,
+  "production_observed": false,
+  "runtime_observed": false,
+  "canonical_application_performed": false
+}
