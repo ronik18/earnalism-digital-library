@@ -19,6 +19,8 @@ jobs:
     timeout-minutes: 15
     env:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -31,6 +33,17 @@ jobs:
       - run: npm ci --prefix frontend --legacy-peer-deps
       - run: npm run build --prefix frontend
       - run: npm install -g vercel@62.1.0
+      - name: Use existing Vercel project linkage
+        run: |
+          test -n "${VERCEL_ORG_ID}" && test -n "${VERCEL_PROJECT_ID}"
+          mkdir -p .vercel
+          node - <<'NODE'
+          const fs = require('fs');
+          fs.writeFileSync('.vercel/project.json', JSON.stringify({
+            orgId: process.env.VERCEL_ORG_ID,
+            projectId: process.env.VERCEL_PROJECT_ID,
+          }));
+          NODE
       - name: Verify actual source deployment manifest
         run: |
           test -n "${VERCEL_TOKEN}"
