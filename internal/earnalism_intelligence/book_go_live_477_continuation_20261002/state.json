@@ -17,9 +17,10 @@
   "next_held": {
     "the-most-dangerous-game": "Specific cover-footer review conflict",
     "the-student": "Original cover remains held; corrected inactive derivatives and fail-closed inactive package pass two independent reviews, but cover-display/publication approval is absent and must not be inferred",
-    "the-art-of-money-getting": "Original cover held; deterministic inactive derivatives prepared and double-render exact, but two reviews and cover-display/publication approval remain absent",
-    "bn-035": "Original cover held; deterministic RAQM/Noto inactive derivatives repair shaping/occlusion/badge and double-render exact, but two reviews and cover-display/publication approval remain absent",
-    "alices-adventures-in-wonderland": "Original back cover held for unsupported Lewis Carroll quote; removal-only inactive derivative double-renders exact, but two reviews and cover-display/publication approval remain absent"
+    "the-art-of-money-getting": "Two independent inactive visual/copy reviews PASS; authoritative cover-display/publication approval still absent. Retain hold; do not rerun unchanged evidence.",
+    "bn-035": "Two independent inactive visual/copy reviews PASS; authoritative cover-display/publication approval still absent. Retain hold; do not rerun unchanged evidence.",
+    "alices-adventures-in-wonderland": "Two independent inactive visual/copy reviews PASS; authoritative cover-display/publication approval still absent. Retain hold; do not rerun unchanged evidence.",
+    "bn-060": "Final bounded layout-only v2 has independent PASS/HOLD disagreement over back-cover fragments; no component acceptance. Do not rerun unchanged covers."
   },
   "validation": {
     "local_tests_passed": 98,
@@ -51,7 +52,7 @@
     "next_cohort_static_snapshots": 106,
     "next_cohort_static_snapshot_assertions": 2256
   },
-  "next_action": "Run two independent exact-pixel/package reviews for each newly prepared inactive derivative: the-art-of-money-getting, bn-035, and alices-adventures-in-wonderland. Preserve originals and exact receipts; do not integrate any title because authoritative records still withhold cover-display/publication approval. After reviews, scan the remaining evidence-rich queue for a title with an existing genuine cover-display/publication approval fact; retain all unresolved titles and the-most-dangerous-game on hold without repeat work.",
+  "next_action": "Retain all holds; no unchanged retries or new activation PR. Resume onboarding only with new exact cleared-source/Reader package evidence for a missing title, genuine cover-display/publication acceptance for reviewed inactive repairs, or new cover evidence resolving bn-060/the-most-dangerous-game disagreement.",
   "ci_repair_receipt": "static-contract-ci-repair.json",
   "routing_assessment": "Earlier missing-mapping404/config-blocker inference withdrawn; generatedfilesystem snapshot routes before rewrites. Exactdeployedpaths unobserved; canarystillrequired.",
   "final_regression_repair": "final-regression-repair.json",
@@ -62,5 +63,8 @@
   "pr509_production_reconciliation": "pr509-production-reconciliation.json",
   "the_student_inactive_cover_derivative_review": "the-student-inactive-cover-derivative-review.json",
   "the_student_inactive_candidate_package_review": "the-student-inactive-candidate-package-review.json",
-  "next_held_inactive_derivative_prep": "next-held-inactive-derivative-prep.json"
+  "next_held_inactive_derivative_prep": "next-held-inactive-derivative-prep.json",
+  "next_distinct_candidate": null,
+  "reviewed_repairs_next_candidate": "reviewed-repairs-next-bn060.json",
+  "current_prepared_evidence_queue": "EXHAUSTED_SAFE_ACTIVATION_CANDIDATES_WITH_CURRENT_EVIDENCE"
 }

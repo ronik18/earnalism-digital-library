@@ -1,0 +1,85 @@
+{
+  "schema": "earnalism.alice-inactive-cover-derivative.v1",
+  "slug": "alices-adventures-in-wonderland",
+  "repository_head_inspected": "657c772ed6cff3a248791802094c084490e07685",
+  "scope": "ISOLATED_INACTIVE_DERIVATIVE_ONLY",
+  "source_package": {
+    "text_source": "Project Gutenberg #11, Millennium Fulcrum Edition3.0, Carroll narrative, no illustrations",
+    "source_url": "https://www.gutenberg.org/ebooks/11",
+    "source_license": "Public domain. Project Gutenberg transcription is freely redistributable for any use including commercial.",
+    "source_sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+    "content_sha256": "5629f655398205d45c0b7bba128ada0849d46e5148aa9b6553636f7d4d7e8812",
+    "provenance_sha256": "83edea9b276d54e81189bc2db63c16cbaf4d70f84bc948986c64aa20000f1ae5",
+    "chapter_count": 12,
+    "checksum_entries_verified": 18,
+    "checksum_mismatches": [],
+    "territory": "IN",
+    "rights_decision": "india-20261002-alices-adventures-in-wonderland-pg11-noncover-text",
+    "rights_decision_scope": "NON_COVER_TEXT_ONLY",
+    "audio_enabled": false,
+    "audiobook_enabled": false
+  },
+  "original_covers": {
+    "front": {
+      "persisted_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902722/earnalism/covers/front/cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
+      "local_file": "original-front.png",
+      "sha256": "15c92a333213db88902d003164570e7f8c58040e689dfe0acfc6b6e7a1ff2811",
+      "bytes": 3174029,
+      "dimensions": [1024, 1536]
+    },
+    "back": {
+      "persisted_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902735/earnalism/covers/back/back_cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
+      "local_file": "original-back.png",
+      "sha256": "22318a92b3de98f2f2d68402d36255142107ff500f24de2022fcaf14a43f0e6f",
+      "bytes": 3492903,
+      "dimensions": [1024, 1536]
+    }
+  },
+  "removed_copy": {
+    "text": "Imagination is the only weapon in the war against reality.",
+    "attribution": "Lewis Carroll",
+    "repository_evidence": "ABSENT_FROM_REPRESENTED_CHAPTERS_AND_PACKAGE_EVIDENCE; PRESENT_ONLY_IN_ORIGINAL_BACK_COVER_BITMAP_AND_PAIR_C_HOLD_REVIEW",
+    "origin_status": "UNVERIFIED"
+  },
+  "replacement_copy": {
+    "source_file": "data/controlled_publications/alices-adventures-in-wonderland/public_book.json",
+    "source_component_sha256": "245188f965b58da793650daa0afc5a2eff80a0a935f15a36b2334d76a72447dc",
+    "source_field": "short_description",
+    "text": "A curious girl tumbles down a rabbit hole into a fantastical world of illogical creatures and absurd rules.",
+    "new_copy_authored": false,
+    "cover_approval_inferred": false
+  },
+  "derivative": {
+    "file": "render-a/alices-adventures-in-wonderland-back-corrected.png",
+    "sha256": "3838ee24fac30cd4f9e3147eda722cb43fef349de19b6e0cdd6be659f58d5c54",
+    "bytes": 3122954,
+    "dimensions": [1024, 1536],
+    "render_script": "render.sh",
+    "render_script_sha256": "9ade066b326293c8b8b209660fd1aaf906394b29bb5577028bee7b5f506c5c76",
+    "font": "frontend/public/assets/fonts/eb-garamond-400.ttf",
+    "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+    "double_render_sha256": [
+      "3838ee24fac30cd4f9e3147eda722cb43fef349de19b6e0cdd6be659f58d5c54",
+      "3838ee24fac30cd4f9e3147eda722cb43fef349de19b6e0cdd6be659f58d5c54"
+    ],
+    "double_render_identical": true,
+    "quote_and_attribution_removed": true
+  },
+  "mutations": {
+    "repository": false,
+    "branch": false,
+    "issue": false,
+    "registry": false,
+    "allowlist": false,
+    "production": false,
+    "network": false,
+    "paid_generation": false
+  },
+  "remaining_blockers": [
+    "INDEPENDENT_EXACT_PIXEL_REVIEW_REQUIRED",
+    "EXACT_COVER_PROVENANCE_HASH_BINDING_AND_COVER_DISPLAY_ACCEPTANCE_REQUIRED",
+    "FRESH_ALL_COMPONENT_DECISION_REQUIRED",
+    "TRUSTED_RUNTIME_REGISTRY_AND_CONTROLLED_LAUNCH_PROMOTION_REQUIRED",
+    "PROTECTED_CHECKS_DEPLOYMENT_CANARY_AND_TRUTHFUL_INDIA_READBACK_REQUIRED"
+  ]
+}

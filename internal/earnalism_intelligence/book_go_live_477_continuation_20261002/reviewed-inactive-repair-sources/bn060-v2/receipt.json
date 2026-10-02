@@ -1,0 +1,101 @@
+{
+  "scope": "INACTIVE_ONLY_NO_NEW_APPROVAL_OR_PUBLICATION_FACT",
+  "source_metadata_sha256": "860d1efe328898188179a4257709cecdd2795359160f94865b0cc40682e2da34",
+  "metadata": {
+    "title": "ইন্দিরা",
+    "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+    "short_description": "স্বামীর কাছে পরিচয় হারানো ইন্দিরার পুনরায় নিজেকে প্রতিষ্ঠিত করার রোমাঞ্চকর কাহিনি।"
+  },
+  "raqm": true,
+  "outputs": {
+    "front": {
+      "sha256": "409d9f42599f4980d90f4e5fa122324d439226806b0cac4bef31f34b91e06ddf",
+      "bytes": 115477,
+      "original_sha256": "dcbfc2996987baae482523e355aefa218a3d422c027127237daccbc700c34b88",
+      "repair_panels": [
+        [
+          300,
+          740,
+          1300,
+          1160
+        ],
+        [
+          225,
+          1875,
+          1370,
+          2040
+        ]
+      ],
+      "text_boxes": [
+        [
+          625,
+          820,
+          974,
+          970
+        ],
+        [
+          531,
+          1030,
+          1069,
+          1096
+        ]
+      ],
+      "outside_pixels_identical": true,
+      "dimensions": [
+        1600,
+        2400
+      ]
+    },
+    "back": {
+      "sha256": "1213e892a6c5f4a6fac5a1f85d57b13d9589e3083f9b679f9b3c7ff4ff40dd9d",
+      "bytes": 145937,
+      "original_sha256": "b5ed699a3ff0fbcee904ead6b2825904621fdb74165762a685a456f1a376aeed",
+      "repair_panels": [
+        [
+          185,
+          195,
+          1415,
+          1720
+        ]
+      ],
+      "text_boxes": [
+        [
+          625,
+          340,
+          974,
+          490
+        ],
+        [
+          531,
+          590,
+          1069,
+          656
+        ],
+        [
+          308,
+          890,
+          1292,
+          968
+        ],
+        [
+          369,
+          1035,
+          1230,
+          1122
+        ],
+        [
+          529,
+          1180,
+          1070,
+          1255
+        ]
+      ],
+      "outside_pixels_identical": true,
+      "dimensions": [
+        1600,
+        2400
+      ]
+    }
+  },
+  "preservation": "All original pixels outside listed opaque repair panels remain byte-identical in decoded RGB. Art behind defective typography within panels is covered; no new illustration is introduced."
+}
