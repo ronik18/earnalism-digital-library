@@ -132,7 +132,7 @@ class StaticSeoCanaryTests(unittest.TestCase):
             "/api/reading-pass/books/the-adventures-of-sherlock-holmes/manifest",
             "/api/reading-pass/books/the-canterville-ghost/manifest",
         }
-        self.assertEqual(set(MODULE.PROTECTED_API_CHECKS) - {"/api/reader/book/dracula/manifest", "/api/reader/book/book-edfcf810c5/manifest"}, expected)
+        self.assertEqual({route for route, policy in MODULE.PROTECTED_API_CHECKS.items() if policy["expected_status"] == 503}, expected)
         for route in expected:
             result = MODULE.inspect_protected_api(
                 route,
@@ -151,10 +151,31 @@ class StaticSeoCanaryTests(unittest.TestCase):
             (200, {"slug": "book-edfcf810c5", "access": {"authenticated": False, "can_read_paid": False}}, "https://theearnalism.com/api/reader/book/book-edfcf810c5/manifest"),
             (503, {"detail": {"code": "SEGMENTS_NOT_READY"}}, "https://theearnalism.com/api/reading-pass/books/the-adventures-of-sherlock-holmes/manifest"),
             (200, {"detail": {"code": "SEGMENTS_NOT_READY"}}, "https://theearnalism.com/api/reading-pass/books/the-canterville-ghost/manifest"),
+            (200, {"book_slug": "dracula", "version": "retained-version", "segmentation_version": "retained-segmentation", "total_pages": 276, "public_preview_pages": 3, "chapters": [{"chapter_id": f"chapter-{index:03d}"} for index in range(28)]}, "https://theearnalism.com/api/reading-pass/books/dracula/manifest"),
+            (200, {"book_slug": "book-edfcf810c5", "version": "retained-version", "segmentation_version": "retained-segmentation", "total_pages": 9, "public_preview_pages": 3, "chapters": [{"chapter_id": "chapter-001"}]}, "https://theearnalism.com/api/reading-pass/books/book-edfcf810c5/manifest"),
         ]):
             report = MODULE.run("https://theearnalism.com", 1)
         self.assertEqual(report["result"], "FAIL")
-        self.assertEqual([row["result"] for row in report["protected_apis"]], ["PASS", "PASS", "PASS", "FAIL"])
+        self.assertEqual([row["result"] for row in report["protected_apis"]], ["PASS", "PASS", "PASS", "FAIL", "PASS", "PASS"])
+
+    def test_exact_canonical_manifests_require_actual_version_pages_and_chapters(self):
+        for slug, count in [("dracula", 28), ("book-edfcf810c5", 1)]:
+            route = "/api/reading-pass/books/" + slug + "/manifest"
+            policy = MODULE.PROTECTED_API_CHECKS[route]
+            payload = {"book_slug": slug, "version": "preserved-version", "segmentation_version": "operator-existing-version", "total_pages": 276 if slug == "dracula" else 9, "public_preview_pages": 3, "chapters": [{"chapter_id": chapter_id} for chapter_id in policy["expected_chapter_ids"]]}
+            result = MODULE.inspect_protected_api(route, policy, 200, payload, "https://theearnalism.com" + route)
+            self.assertEqual(result["result"], "PASS")
+            self.assertEqual(result["observed_canonical_version"], "preserved-version")
+            for field, value in [("book_slug", "wrong-title"), ("version", ""), ("segmentation_version", None), ("total_pages", 3), ("total_pages", True), ("public_preview_pages", 4), ("chapters", []), ("chapters", [{}] * count)]:
+                with self.subTest(slug=slug, field=field, value=value):
+                    result = MODULE.inspect_protected_api(route, policy, 200, {**payload, field: value}, "https://theearnalism.com" + route)
+                    self.assertEqual(result["result"], "FAIL")
+                    self.assertIsNone(result["observed_canonical_version"])
+            result = MODULE.inspect_protected_api(route, policy, 503, {"detail": {"code": "SEGMENTS_NOT_READY"}}, "https://theearnalism.com" + route)
+            self.assertEqual(result["result"], "FAIL")
+            result = MODULE.inspect_protected_api(route, policy, 451, {"detail": {"code": "RELEASE_TERRITORY_DENIED", "country": "US", "allowed_countries": ["IN"]}}, "https://theearnalism.com" + route)
+            self.assertEqual(result["india_backend_contract"], "NOT_RUN_FROM_NON_IN")
+            self.assertIsNone(result["observed_canonical_version"])
 
     def test_explicit_overseas_edge_denial_does_not_claim_india_readback(self):
         for route, policy in MODULE.PROTECTED_API_CHECKS.items():

@@ -90,6 +90,16 @@ PROTECTED_API_CHECKS = {
         "expected_status": 503,
         "expected_code": "SEGMENTS_NOT_READY",
     },
+    "/api/reading-pass/books/dracula/manifest": {
+        "expected_status": 200, "expected_code": "", "kind": "canonical_manifest",
+        "expected_slug": "dracula", "expected_chapters": 28,
+        "expected_chapter_ids": [f"chapter-{index:03d}" for index in range(28)],
+    },
+    "/api/reading-pass/books/book-edfcf810c5/manifest": {
+        "expected_status": 200, "expected_code": "", "kind": "canonical_manifest",
+        "expected_slug": "book-edfcf810c5", "expected_chapters": 1,
+        "expected_chapter_ids": ["chapter-001"],
+    },
 }
 
 
@@ -222,7 +232,20 @@ def inspect_protected_api(route: str, policy: dict[str, object], status: int, pa
         failures.append(f"expected HTTP {expected_status}, got {status}")
     if urlsplit(url).path.rstrip("/") != route.rstrip("/"):
         failures.append(f"protected request redirected to unexpected path: {urlsplit(url).path}")
-    if not overseas_denial and expected_status == 200:
+    if not overseas_denial and expected_status == 200 and policy.get("kind") == "canonical_manifest":
+        if not isinstance(payload, dict) or payload.get("book_slug") != policy.get("expected_slug"):
+            failures.append("canonical manifest must identify the exact released edition")
+        for field in ("version", "segmentation_version"):
+            if not isinstance(payload, dict) or not isinstance(payload.get(field), str) or not payload[field].strip():
+                failures.append(f"canonical manifest must expose the observed {field}")
+        pages = payload.get("total_pages") if isinstance(payload, dict) else None
+        if type(pages) is not int or pages <= 3 or pages < policy["expected_chapters"] or type(payload.get("public_preview_pages")) is not int or payload.get("public_preview_pages") != 3:
+            failures.append("canonical manifest must retain the three-page preview boundary and complete page count")
+        chapters = payload.get("chapters") if isinstance(payload, dict) else None
+        if (not isinstance(chapters, list) or len(chapters) != policy.get("expected_chapters")
+            or [chapter.get("chapter_id") if isinstance(chapter, dict) else None for chapter in chapters] != policy.get("expected_chapter_ids")):
+            failures.append("canonical manifest must preserve the exact edition chapter count")
+    elif not overseas_denial and expected_status == 200:
         if not isinstance(payload, dict) or payload.get("slug") != policy.get("expected_slug"):
             failures.append("reader manifest must identify the exact released edition")
         access = payload.get("access") if isinstance(payload, dict) else None
@@ -239,6 +262,7 @@ def inspect_protected_api(route: str, policy: dict[str, object], status: int, pa
         "error_code": code,
         "observed_country": country,
         "india_backend_contract": "NOT_RUN_FROM_NON_IN" if overseas_denial else "CHECKED",
+        "observed_canonical_version": payload.get("version") if not failures and not overseas_denial and policy.get("kind") == "canonical_manifest" and isinstance(payload, dict) else None,
         "failures": failures,
         "result": "PASS" if not failures else "FAIL",
     }

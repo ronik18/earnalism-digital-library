@@ -1,0 +1,134 @@
+{
+  "schema": "earnalism.next-cohort.delivery-derivatives.independent-review.v1",
+  "reviewer": "agent /root/next_covers_review_b",
+  "recorded_at": "2026-10-02T15:03:33.003083+00:00",
+  "scope": "Independent deterministic-byte, dimensions/mode and comparative visual QA only; not a human approval or publication/rights acceptance.",
+  "preparation_receipt_sha256": "d4807c04288078d80f65bed150c3596675d5c4c01cf06ab44f7a17c63dbe9680",
+  "status": "PASS",
+  "cover_count": 6,
+  "review_rows": [
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "side": "front",
+      "original_sha256": "abbed38055fd673d0171eb9eeaf49fb887013d46d12573cf7b38109c683dbbc9",
+      "derivative_sha256": "4d1ef04fa60e470c808ef761d253af1e4245cf27b8496c9b55adfa5927658a92",
+      "original_bytes": 3132862,
+      "derivative_bytes": 511004,
+      "resolution": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "deterministic_recipe_pass": true,
+      "original_preview": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/muchiram-gurer-jibanchorit/front-original-review-b-512.png",
+      "derivative_preview": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/muchiram-gurer-jibanchorit/front-decoded-review-512.png"
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "side": "back",
+      "original_sha256": "47fb5b354455a7a5cff855b4ca69c1b194832bc8798d3d01842d8e9886a8d58b",
+      "derivative_sha256": "fbefa1187750293733628e09c18113b4f85855d9966272f5257134673eea2800",
+      "original_bytes": 2963238,
+      "derivative_bytes": 474196,
+      "resolution": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "deterministic_recipe_pass": true,
+      "original_preview": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/muchiram-gurer-jibanchorit/back-original-review-b-512.png",
+      "derivative_preview": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/muchiram-gurer-jibanchorit/back-decoded-review-512.png"
+    },
+    {
+      "slug": "bn-059",
+      "side": "front",
+      "original_sha256": "a7b9f12cea7354f2e3c52d78fe0233efebfeb2f95b15520ae16ef582d24d54a3",
+      "derivative_sha256": "424cdccfac26c51cf0e0aae4ad6e1a106b2a5388c977e47458ce59cfde134111",
+      "original_bytes": 3148064,
+      "derivative_bytes": 489904,
+      "resolution": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "deterministic_recipe_pass": true,
+      "original_preview": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/bn-059/front-original-review-b-512.png",
+      "derivative_preview": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/bn-059/front-decoded-review-512.png"
+    },
+    {
+      "slug": "bn-059",
+      "side": "back",
+      "original_sha256": "19f0e4556b414d8da37ee29d3a69bfa0ca976f3ea4ec32968523a4276fb558db",
+      "derivative_sha256": "b0554c53580f0817ca4f20bca918ec8aac09f8b8502f213ed2d5e6aa87367349",
+      "original_bytes": 2925243,
+      "derivative_bytes": 433236,
+      "resolution": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "deterministic_recipe_pass": true,
+      "original_preview": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/bn-059/back-original-review-b-512.png",
+      "derivative_preview": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/bn-059/back-decoded-review-512.png"
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "side": "front",
+      "original_sha256": "94d7d690b177fc6ee3eb8d60e6ef031c878c355905a25b94d24ac5ca08560068",
+      "derivative_sha256": "6bc8b585e11bfde7fdd29dbe1da4407fe1fe666a69d1e5ea32e5e431d495eb75",
+      "original_bytes": 2990916,
+      "derivative_bytes": 417222,
+      "resolution": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "deterministic_recipe_pass": true,
+      "original_preview": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/the-call-of-the-wild/front-original-review-b-512.png",
+      "derivative_preview": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/the-call-of-the-wild/front-decoded-review-512.png"
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "side": "back",
+      "original_sha256": "8d86df1735a5ddbc6e44330805bcbd5aed28884d2fa01b2fa5c633fc28648a17",
+      "derivative_sha256": "cbac7b5b951e8f8c3c2b172ece299cd2479e2c6b1985ac5da7501aebe809c6b3",
+      "original_bytes": 2501050,
+      "derivative_bytes": 326216,
+      "resolution": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "deterministic_recipe_pass": true,
+      "original_preview": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/the-call-of-the-wild/back-original-review-b-512.png",
+      "derivative_preview": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/the-call-of-the-wild/back-decoded-review-512.png"
+    }
+  ],
+  "findings": {
+    "muchiram-gurer-jibanchorit": {
+      "front": "Correct Bengali title মুচিরাম গুড়ের জীবনচরিত and author বঙ্কিমচন্দ্র চট্টোপাধ্যায় readable; thematic graphical scene intact, footer unobscured; no clipping, internal badge or audio claim.",
+      "back": "Supplied complete Bengali blurb, decorative headline, author and enterprise footer preserved and readable at 512px preview; original and derivative show no visible material degradation or clipping."
+    },
+    "bn-059": {
+      "front": "Correct Bengali title কমলাকান্তের দপ্তর and author বঙ্কিমচন্দ্র চট্টোপাধ্যায় readable; illustrated literary scene intact, footer unobscured; no clipping, internal badge or audio claim.",
+      "back": "Supplied Bengali text block, author and enterprise footer intact and legible; coherent spacing and no visible material degradation compared with original."
+    },
+    "the-call-of-the-wild": {
+      "front": "The Call of the Wild and Jack London correct and readable; canine wilderness illustration intact; footer readable with no clipping or internal/audio badge.",
+      "back": "Canine/human wilderness art and title-author/enterprise footer intact, legible and separated; exact original comparison shows no visible material degradation or text loss."
+    }
+  },
+  "substantial_disputes": [],
+  "all_original_hashes_preserved_after_visual_inspection": true,
+  "all_derivative_hashes_preserved_after_visual_inspection": true,
+  "all_full_resolution_decoded_png_hashes_match": true,
+  "visual_method": "Individually viewed 512x768 PNG previews of every original and corresponding exact derivative-decoded image. Source WebP files were never passed to view_image.",
+  "canonical_mutations": 0,
+  "registry_mutations": 0,
+  "allowlist_mutations": 0,
+  "production_mutations": 0,
+  "network_gets": 0,
+  "paid_calls": 0,
+  "publication_authorized": false,
+  "next_action": "Root sole integration authority may checksum-bind these reviewed delivery derivatives in a later authorized candidate; preserve original cover/source/license/chapter facts and rerun complete artifact/decision validation after rebinding."
+}

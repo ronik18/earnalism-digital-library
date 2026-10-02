@@ -1,0 +1,39 @@
+{
+  "schema": "earnalism.book-go-live-canonical-reader-initialization-repair.v1",
+  "recorded_at": "2026-10-02T15:09:26.426983+00:00",
+  "previous_head": "8ee74badd5423af47d824c86b70f9f7be7e132b3",
+  "source_main": "57ad1cfe9ceb2331871be3c7c2ee1e8c64ad2edd",
+  "problem": "New26titleallowlist and exact2approved packages lacked entries in existing24title canonical-page initializer; absent canonical pointers leave realReader503 while metadata alone canpass. Actualproduction pointer stateUNKNOWN.",
+  "serialized_change": "Appendexact2accepted decisionids/digests to existing bootstrap plan; all24priorentries/settings/source/rights/cover/chapters/versions retained; existing audited routine unchanged and preserves anypointer/activeversion/revocation/archive/operatorcandidate.",
+  "computed_isolated_readbacks": {
+    "dracula": {
+      "canonical_pages": 276,
+      "source_units": 28,
+      "version": "c5ca8b92f7cb48363c097703"
+    },
+    "book-edfcf810c5": {
+      "canonical_pages": 9,
+      "source_units": 1,
+      "version": "6d937006c016b798385a9fc5"
+    }
+  },
+  "tests": {
+    "actual_initializer_manifest_page_handlers": 39,
+    "canonical_canary": 26,
+    "database": "ISOLATED_FAKE_DB_NO_PRODUCTION_DATA",
+    "guest_pages_1_and_3": "PASS_HASH_AND_VERSION",
+    "guest_page_4": "401_AUTH_REQUIRED",
+    "all_version_history_and_integrity_holds": "PRESERVED",
+    "combined_normal_backend_policy_gate": 53,
+    "normal_ci_harness": "Existing backend-policy dynamic gate now runs controlledlaunchparity and actual bootstrap tests together, preserving reporter semantics."
+  },
+  "independent_reviews": [
+    "journey_repair canonicalcanary PASS",
+    "independent_gate_review exactplan/tests/canonicalcanary PASS"
+  ],
+  "manual_production_observation": "NOT_RUN_NOT_MANUFACTURED",
+  "production_canonical_versions": "UNKNOWN",
+  "new_live_verified": 0,
+  "next_prepared": "6smaller deliverycovers for3distinctinactiveproposals checksum-bound, deterministic and twoindependentvisualreviews PASS; originalcovers retained. Noacceptance orliveexposure inferred.",
+  "next_action": "Inspect exactnewPR508 normalprotectedchecks, mergeonlyPASS; observe normalbackenddeploy (backendwatchpattern applies) andfrontenddeploy/canary; exact canonical GETreadback orstrict manual-observationwaiver onlywith clean source+activeReader andnoinferred productionfact. Thenserialize next3acceptance usingexactdurablederivativebytes/reviews."
+}

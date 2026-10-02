@@ -29,7 +29,7 @@
     "protected_ci": "AWAITING_EXACT_REPAIRED_HEAD",
     "canary": "NOT_RUN",
     "production": "NOT_RUN",
-    "canary_unit_tests_passed": 25,
+    "canary_unit_tests_passed": 26,
     "static_snapshot_assertions_passed": 2064,
     "static_snapshots": 97,
     "required_local_uat_tests_passed": 28,
@@ -43,12 +43,16 @@
     "focused_final_regression_tests": 29,
     "previous_exact_head_regression": "PASS",
     "previous_exact_head_seamless": "FAIL_STALE_ISOLATED_LIBRARY_FIXTURE",
-    "final_owner_review_unit_tests": 39
+    "final_owner_review_unit_tests": 39,
+    "canonical_bootstrap_tests": 39,
+    "production_canonical_versions": "UNKNOWN",
+    "combined_backend_policy_tests": 53
   },
-  "next_action": "Publish to existing PR508, inspect exact new-head protected normal checks; normal merge only onpass then deployment revision/canary/canonical-version readback. Three next distinct reviewed proposals remain inactive.",
+  "next_action": "Inspect exactnewPR508 normalprotectedchecks, mergeonlyPASS; observe normalbackenddeploy (backendwatchpattern applies) andfrontenddeploy/canary; exact canonical GETreadback orstrict manual-observationwaiver onlywith clean source+activeReader andnoinferred productionfact. Thenserialize next3acceptance usingexactdurablederivativebytes/reviews.",
   "ci_repair_receipt": "static-contract-ci-repair.json",
   "routing_assessment": "Earlier missing-mapping404/config-blocker inference withdrawn; generatedfilesystem snapshot routes before rewrites. Exactdeployedpaths unobserved; canarystillrequired.",
   "final_regression_repair": "final-regression-repair.json",
   "latest_reviewed_previous_head": "7b1c0b10e391eb80f47149da15dad5e7ceaa6566",
-  "latest_ci_repair": "library-journey-and-observed-snapshot-repair.json"
+  "latest_ci_repair": "canonical-reader-initialization-repair.json",
+  "next_delivery_derivatives": "next-delivery-derivative-receipt.json"
 }

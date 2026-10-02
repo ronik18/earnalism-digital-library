@@ -3049,6 +3049,16 @@
         "production_readback": "NOT_RUN",
         "next_action": "Publish to existing PR508, inspect exact new-head protected normal checks; normal merge only onpass then deployment revision/canary/canonical-version readback. Three next distinct reviewed proposals remain inactive.",
         "evidence": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/library-journey-and-observed-snapshot-repair.json"
+      },
+      "book_go_live_477_canonical_reader_repair": {
+        "evidence": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/canonical-reader-initialization-repair.json",
+        "isolated_test_readback": {
+          "canonical_pages": 9,
+          "source_units": 1,
+          "version": "6d937006c016b798385a9fc5"
+        },
+        "production_canonical_version": "UNKNOWN",
+        "next_action": "Inspect exactnewPR508 normalprotectedchecks, mergeonlyPASS; observe normalbackenddeploy (backendwatchpattern applies) andfrontenddeploy/canary; exact canonical GETreadback orstrict manual-observationwaiver onlywith clean source+activeReader andnoinferred productionfact. Thenserialize next3acceptance usingexactdurablederivativebytes/reviews."
       }
     },
     "book-ef193ffc52": {
@@ -5043,6 +5053,16 @@
         "production_readback": "NOT_RUN",
         "next_action": "Publish to existing PR508, inspect exact new-head protected normal checks; normal merge only onpass then deployment revision/canary/canonical-version readback. Three next distinct reviewed proposals remain inactive.",
         "evidence": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/library-journey-and-observed-snapshot-repair.json"
+      },
+      "book_go_live_477_canonical_reader_repair": {
+        "evidence": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/canonical-reader-initialization-repair.json",
+        "isolated_test_readback": {
+          "canonical_pages": 276,
+          "source_units": 28,
+          "version": "c5ca8b92f7cb48363c097703"
+        },
+        "production_canonical_version": "UNKNOWN",
+        "next_action": "Inspect exactnewPR508 normalprotectedchecks, mergeonlyPASS; observe normalbackenddeploy (backendwatchpattern applies) andfrontenddeploy/canary; exact canonical GETreadback orstrict manual-observationwaiver onlywith clean source+activeReader andnoinferred productionfact. Thenserialize next3acceptance usingexactdurablederivativebytes/reviews."
       }
     },
     "pride-and-prejudice": {
@@ -11586,6 +11606,6 @@
     "new_live_verified": 0,
     "production_readback": "NOT_RUN",
     "evidence": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/state.json",
-    "next_action": "Publish to existing PR508, inspect exact new-head protected normal checks; normal merge only onpass then deployment revision/canary/canonical-version readback. Three next distinct reviewed proposals remain inactive."
+    "next_action": "Inspect exactnewPR508 normalprotectedchecks, mergeonlyPASS; observe normalbackenddeploy (backendwatchpattern applies) andfrontenddeploy/canary; exact canonical GETreadback orstrict manual-observationwaiver onlywith clean source+activeReader andnoinferred productionfact. Thenserialize next3acceptance usingexactdurablederivativebytes/reviews."
   }
 }
