@@ -2587,3 +2587,6 @@ Author lifetime facts, transcription licensing, exact source edition and publica
 
 ### Catalogue clearance final checkpoint
 103 local text decisions remain unexposed; covers deferred. Primary-source whole-work verification, immutable license notices, conservative India publication bounds and known-live runtime controls prevent false readiness. Damaged Eyesore glyphs and conflicting Kafka permissions remain held.
+
+### Vercel prebuilt packaging
+Source deployments succeeding do not prove prebuilt file selection. Validate includeFiles, generated filePathMap and external symlink targets against the actual CLI manifest; preserve generated-output exclusions with a narrow required-asset exception.

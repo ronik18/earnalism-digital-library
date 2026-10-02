@@ -162,9 +162,9 @@ jobs:
           fi
           echo "scope_base=${before_sha}"
           echo "scope_head=${GITHUB_SHA}"
-          if git diff --quiet "${before_sha}" "${GITHUB_SHA}" -- frontend; then
+          if git diff --quiet "${before_sha}" "${GITHUB_SHA}" -- frontend .vercelignore scripts/verify_vercel_packaging.py; then
             echo "enabled=false" >> "${GITHUB_OUTPUT}"
-            echo "Vercel frontend deploy skipped: no frontend files changed."
+            echo "Vercel frontend deploy skipped: no frontend or packaging files changed."
           elif [[ -n "${VERCEL_TOKEN}" && -n "${VERCEL_ORG_ID}" && -n "${VERCEL_PROJECT_ID}" ]]; then
             echo "enabled=true" >> "${GITHUB_OUTPUT}"
           else
@@ -219,6 +219,25 @@ jobs:
             args+=(--scope "${VERCEL_SCOPE}")
           fi
           vercel "${args[@]}"
+
+      - name: Verify source and prebuilt function packaging
+        if: steps.vercel-check.outputs.enabled == 'true'
+        shell: bash
+        run: |
+          python3 -m unittest scripts.test_verify_vercel_packaging -v
+          vercel deploy --dry --format=json --token "${VERCEL_TOKEN}" > /tmp/vercel-source-manifest.json
+          python3 scripts/verify_vercel_packaging.py --manifest /tmp/vercel-source-manifest.json --output /tmp/vercel-source-packaging.json
+          vercel deploy --prebuilt --prod --dry --format=json --token "${VERCEL_TOKEN}" > /tmp/vercel-prebuilt-manifest.json
+          python3 scripts/verify_vercel_packaging.py --manifest /tmp/vercel-prebuilt-manifest.json --prebuilt --compare /tmp/vercel-source-packaging.json --output /tmp/vercel-prebuilt-packaging.json
+
+      - name: Publish function packaging evidence
+        if: steps.vercel-check.outputs.enabled == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: vercel-function-packaging-${{ github.sha }}
+          path: |
+            /tmp/vercel-source-packaging.json
+            /tmp/vercel-prebuilt-packaging.json
 
       - name: Deploy frontend to Vercel production
         if: steps.vercel-check.outputs.enabled == 'true'

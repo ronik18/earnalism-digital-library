@@ -1,0 +1,39 @@
+name: Vercel function packaging
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.vercelignore'
+      - 'frontend/vercel.json'
+      - 'frontend/api/**'
+      - 'scripts/verify_vercel_packaging.py'
+      - 'scripts/test_verify_vercel_packaging.py'
+      - '.github/workflows/vercel-packaging.yml'
+      - '.github/workflows/regression.yml'
+permissions:
+  contents: read
+jobs:
+  packaging:
+    name: function packaging guard
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - run: python3 -m unittest scripts.test_verify_vercel_packaging -v
+      - run: npm ci --prefix frontend --legacy-peer-deps
+      - run: npm run build --prefix frontend
+      - run: npm install -g vercel@62.1.0
+      - name: Verify actual source deployment manifest
+        run: |
+          vercel deploy --dry --format=json > /tmp/vercel-source-manifest.json
+          python3 scripts/verify_vercel_packaging.py --manifest /tmp/vercel-source-manifest.json --output /tmp/vercel-source-packaging.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vercel-source-packaging-${{ github.event.pull_request.head.sha }}
+          path: /tmp/vercel-source-packaging.json
