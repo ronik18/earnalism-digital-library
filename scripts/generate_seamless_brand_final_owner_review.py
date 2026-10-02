@@ -438,6 +438,37 @@ def validate_input_authority(inputs, current_head, package_head, production_sha,
     return "PASS" if inputs["current_pr_head"] == current_head == package_head else "PASS_CARRIED_FORWARD_EVIDENCE_ONLY"
 
 
+def validated_static_snapshot_summary(inputs, report_path):
+    """Bind the displayed counts to the inspected report and exact build routes."""
+    authority = inputs.get("static_snapshot", {})
+    report_path = Path(report_path).resolve()
+    if Path(authority.get("path", "")).resolve() != report_path or not report_path.is_file():
+        raise ValueError("Bound static snapshot report is missing or differs")
+    if authority.get("sha256") != sha256(report_path):
+        raise ValueError("Bound static snapshot report SHA differs")
+    report = json_load(report_path)
+    manifest_path = (ROOT / "frontend/build/static-seo-snapshot-manifest.json").resolve()
+    if Path(report.get("snapshot_manifest_path", "")).resolve() != manifest_path or not manifest_path.is_file():
+        raise ValueError("Bound static snapshot build manifest is missing or differs")
+    if report.get("snapshot_manifest_sha256") != sha256(manifest_path):
+        raise ValueError("Bound static snapshot build manifest SHA differs")
+    routes = [entry.get("route") for entry in json_load(manifest_path).get("routes", [])]
+    records = report.get("records", [])
+    count = len(routes)
+    if not count or any(not isinstance(route, str) or not route.startswith("/") for route in routes) or len(set(routes)) != count:
+        raise ValueError("Static snapshot build routes are missing or duplicated")
+    if not isinstance(records, list) or len(records) != count or sorted(entry.get("route", "") for entry in records) != sorted(routes) or any(entry.get("result") != "PASS" for entry in records):
+        raise ValueError("Inspected static snapshot records differ from build routes")
+    summary = {key: authority.get(key) for key in ("expected", "inspected", "passing")}
+    report_counts = [report.get(key) for key in ("expected_snapshot_count", "inspected_snapshot_count", "passing_snapshot_count")]
+    if authority.get("result") != "PASS" or report.get("result") != "PASS" or any(type(value) is not int or value != count for value in [*summary.values(), *report_counts]):
+        raise ValueError("Static snapshot observed counts are missing or inconsistent")
+    for key in ("failing_snapshot_count", "historical_alternate_logo_count", "bordered_card_logo_wrapper_count", "inline_logo_transform_count", "generic_home_fallback_count", "sensitive_data_exposure_count"):
+        if type(report.get(key)) is not int or report[key] != 0:
+            raise ValueError(f"Static snapshot report fails: {key}")
+    return summary
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--inputs", required=True)
@@ -456,6 +487,7 @@ def main():
         raise ValueError("Current production authority differs")
     inputs = json_load(manifest_path)
     input_result = validate_input_authority(inputs, current_head, args.pr_head, args.production_surface_sha, args.canonical_logo_sha)
+    static_summary = validated_static_snapshot_summary(inputs, inputs_dir / "static-snapshot-brand-results.json")
     chromium_source = Path(inputs["chromium"]["output_path"]); firefox_source = Path(inputs["firefox"]["summary_path"]).parent; webkit_source = Path(inputs["webkit"]["summary_path"]).parent
     for source in [chromium_source, firefox_source, webkit_source]:
         if not source.is_dir(): raise ValueError(f"Referenced source is missing: {source}")
@@ -480,7 +512,7 @@ def main():
     route_inventory_path = inputs["route_inventory"]["path"]
     route_inventory = json.loads(Path(route_inventory_path).read_text())
     customer_route_count = sum(1 for route in route_inventory.get("routes", []) if route.get("classification") != "NOT_FOUND")
-    executive = {"pr_number": int(args.pr_number), "current_pr_head": args.pr_head, "production_implementation_head": PRODUCTION_EVIDENCE_HEAD, "production_surface_sha256": args.production_surface_sha, "canonical_logo_sha256": args.canonical_logo_sha, "owner_brand_decision": "EARNALISM_SEAMLESS_PAPER_MASTHEAD_V1", "palette_decision": "EARNALISM_GILDED_BURGUNDY_V1", "active_customer_route_count": customer_route_count, "chromium": summary_counts(chromium_summary), "firefox": summary_counts(firefox_summary), "webkit": summary_counts(webkit_summary), "static_snapshots": {"expected": 142, "inspected": 142, "passing": 142}, "duplicate_logo_usage": 0, "transform_based_logo_usage": 0, "logo_card_usage": 0, "clipped_logo_usage": 0, "clipped_control_states": 0, "multiple_header_states": 0, "horizontal_overflow_states": 0, "console_page_request_errors": "0/0/0", "reader_safety": "PASS", "listener_safety": "PASS", "mobile_menu_result": "PASS", "library_filter_result": "PASS", "zoom_result": "PASS", "error_404_410_contract": "PASS", "rendered_ui_defects": 0, "production_mutations": 0, "current_owner_gate": "OWNER_SEAMLESS_BRAND_AND_GILDED_BURGUNDY_APPROVAL_REQUIRED", "package_classification": "LOCAL_OWNER_REVIEW_CANDIDATE"}
+    executive = {"pr_number": int(args.pr_number), "current_pr_head": args.pr_head, "production_implementation_head": PRODUCTION_EVIDENCE_HEAD, "production_surface_sha256": args.production_surface_sha, "canonical_logo_sha256": args.canonical_logo_sha, "owner_brand_decision": "EARNALISM_SEAMLESS_PAPER_MASTHEAD_V1", "palette_decision": "EARNALISM_GILDED_BURGUNDY_V1", "active_customer_route_count": customer_route_count, "chromium": summary_counts(chromium_summary), "firefox": summary_counts(firefox_summary), "webkit": summary_counts(webkit_summary), "static_snapshots": static_summary, "duplicate_logo_usage": 0, "transform_based_logo_usage": 0, "logo_card_usage": 0, "clipped_logo_usage": 0, "clipped_control_states": 0, "multiple_header_states": 0, "horizontal_overflow_states": 0, "console_page_request_errors": "0/0/0", "reader_safety": "PASS", "listener_safety": "PASS", "mobile_menu_result": "PASS", "library_filter_result": "PASS", "zoom_result": "PASS", "error_404_410_contract": "PASS", "rendered_ui_defects": 0, "production_mutations": 0, "current_owner_gate": "OWNER_SEAMLESS_BRAND_AND_GILDED_BURGUNDY_APPROVAL_REQUIRED", "package_classification": "LOCAL_OWNER_REVIEW_CANDIDATE"}
     json_write(package / "executive-summary.json", executive); json_write(package / "visual-decision-checklist.json", visual_checklist())
     render_html(package, executive, chromium_states, optical); contact_sheet(package, chromium_states); render_pdf(package, executive, chromium_states)
     provenance = {"pr_number": int(args.pr_number), "package_generation_head": args.pr_head, "tree_sha": git("rev-parse", "HEAD^{tree}"), "production_implementation_head": PRODUCTION_EVIDENCE_HEAD, "final_evidence_input_head": inputs["current_pr_head"], "final_evidence_input_manifest_sha256": sha256(manifest_path), "final_evidence_input_validation": input_result, "production_surface_sha256": args.production_surface_sha, "canonical_logo_sha256": args.canonical_logo_sha, "route_inventory_sha256": inputs["route_inventory"]["sha256"], "state_manifest_sha256": inputs["state_manifest"]["sha256"], "cross_browser_contract_sha256": inputs["cross_browser_contract"]["sha256"], "browsers": {key: value.get("version") for key, value in browser_results.items()}, "operating_system": platform.system(), "playwright_version": subprocess.check_output(["node", "-e", "process.stdout.write(require('playwright/package.json').version)"], cwd=ROOT, text=True), "capture_tool_sha256": sha256(ROOT / "scripts/capture_seamless_brand_owner_review.mjs"), "generator_sha256": sha256(__file__), "validator_sha256": sha256(ROOT / "scripts/validate_seamless_brand_final_owner_review.py"), "source_checkpoint_heads": inputs.get("prerequisite_checkpoint_heads", []), "fixture_shas": sorted({record.get("private_fixture", {}).get("fixture_sha256") for record in chromium_states if record.get("private_fixture", {}).get("fixture_sha256")}), "generation_timestamp": datetime.now(timezone.utc).isoformat(), "package_classification": "LOCAL_OWNER_REVIEW_CANDIDATE"}

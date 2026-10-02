@@ -1,0 +1,150 @@
+{
+  "schema": "earnalism.next-cohort-readonly-handoff.v1",
+  "observed_at": "2026-10-02T14:53:54.291090+00:00",
+  "canonical_mutations": 0,
+  "network_gets": 0,
+  "paid_calls": 0,
+  "cohort": [
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "candidate": "/workspace/scratch/181ef0a25f05/next-pair-a/candidate/muchiram-gurer-jibanchorit",
+      "decision_sha256": "bb5fec01a56866597cdc808b2fe4f82cf42373b883c98558a7123188083f7215",
+      "decision_status": "PENDING_REVIEW",
+      "chapter_count": 14,
+      "distinct_independent_reviews": [
+        {
+          "reviewer": "next_pair_c independent automated reviewer",
+          "receipt": "next-review-2-muchiram-gurer-jibanchorit.json",
+          "receipt_sha256": "ea0741110bac96ba460ecc80a5de9233081a3ab41330ee6bb17c7afa7aaa438b",
+          "verified_file_bindings": 28,
+          "verified_component_bindings": 0
+        },
+        {
+          "reviewer": "next_pair_b",
+          "receipt": "next-review-5-muchiram-reviewer2.json",
+          "receipt_sha256": "95181dbad87a24bd547d0ec675a61e897ac7c8a4f2850479846863accb07e2cf",
+          "verified_file_bindings": 28,
+          "verified_component_bindings": 0
+        }
+      ],
+      "preservation_or_binding_errors": [],
+      "exact_covers": [
+        {
+          "side": "front",
+          "sha256": "abbed38055fd673d0171eb9eeaf49fb887013d46d12573cf7b38109c683dbbc9",
+          "bytes": 3132862
+        },
+        {
+          "side": "back",
+          "sha256": "47fb5b354455a7a5cff855b4ca69c1b194832bc8798d3d01842d8e9886a8d58b",
+          "bytes": 2963238
+        }
+      ],
+      "existing_prior_rights_preserve": "india-20261002-muchiram-gurer-jibanchorit-1944-cc-by-sa-text-reader",
+      "missing_source_or_original_cover_evidence": [],
+      "remaining_release_work": [
+        "Derive performant delivery covers from verified originals; visually review exact derivatives and bind provenance/checksums without replacing originals.",
+        "After current PR508 completes, root serializes new all-component accepted decision and registry digest; preserve prior decision record and text/license/source/chapters.",
+        "Root/backend current packages, controlled launch allowlists/public projection/staticSEO/sitemap and exact-size assertions updated consistently; current versions preserved.",
+        "Two independent exact final-candidate reviews; protected checks; normal merge; actual deployment/canary and canonical-version trusted-India Reader/pass readback."
+      ]
+    },
+    {
+      "slug": "bn-059",
+      "candidate": "/workspace/scratch/181ef0a25f05/next-pair-b/integration/candidates/bn-059",
+      "decision_sha256": "1fd2d65eb75c3cfc756d1fff9dd4db28283a7bd4c780306b74c42bddec135630",
+      "decision_status": "PROPOSED",
+      "chapter_count": 13,
+      "distinct_independent_reviews": [
+        {
+          "reviewer": "next_pair_a independent reviewer1",
+          "receipt": "next-review-1-independent-review1.json",
+          "receipt_sha256": "45ef02f7d971391292f382562a8505f056d97e319e76b4fb8def1aa59e56aa7b",
+          "verified_file_bindings": 0,
+          "verified_component_bindings": 10
+        },
+        {
+          "reviewer": "next_pair_c independent automated reviewer",
+          "receipt": "next-review-3-bn-059.json",
+          "receipt_sha256": "1537cccaa4b2e311f05dddcc1c53a20430665edf0bb52940104bf9574f5559c7",
+          "verified_file_bindings": 26,
+          "verified_component_bindings": 0
+        }
+      ],
+      "preservation_or_binding_errors": [],
+      "exact_covers": [
+        {
+          "side": "front",
+          "sha256": "a7b9f12cea7354f2e3c52d78fe0233efebfeb2f95b15520ae16ef582d24d54a3",
+          "bytes": 3148064
+        },
+        {
+          "side": "back",
+          "sha256": "19f0e4556b414d8da37ee29d3a69bfa0ca976f3ea4ec32968523a4276fb558db",
+          "bytes": 2925243
+        }
+      ],
+      "existing_prior_rights_preserve": "india-20261002-bn-059-1885-cc-by-sa-text-reader",
+      "missing_source_or_original_cover_evidence": [],
+      "remaining_release_work": [
+        "Derive performant delivery covers from verified originals; visually review exact derivatives and bind provenance/checksums without replacing originals.",
+        "After current PR508 completes, root serializes new all-component accepted decision and registry digest; preserve prior decision record and text/license/source/chapters.",
+        "Root/backend current packages, controlled launch allowlists/public projection/staticSEO/sitemap and exact-size assertions updated consistently; current versions preserved.",
+        "Two independent exact final-candidate reviews; protected checks; normal merge; actual deployment/canary and canonical-version trusted-India Reader/pass readback."
+      ]
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "candidate": "/workspace/scratch/181ef0a25f05/next-pair-c/inactive-candidates/the-call-of-the-wild",
+      "decision_sha256": "5f47c928a34a215399587dcf22ffa625aa1c768ef77656c3a6148d260ebefc7b",
+      "decision_status": "PROPOSED",
+      "chapter_count": 7,
+      "distinct_independent_reviews": [
+        {
+          "reviewer": "next_pair_a independent reviewer1",
+          "receipt": "next-review-6-call-wild-corrected-reviewer1.json",
+          "receipt_sha256": "cacda28a6ea9566450d9f55bc7622446e91e867d334f31389181f4ffec8e26c8",
+          "verified_file_bindings": 0,
+          "verified_component_bindings": 9
+        },
+        {
+          "reviewer": "next_pair_b",
+          "receipt": "next-review-7-callwild-reviewer2.json",
+          "receipt_sha256": "614168c364339fd5aea55ceb0e8784582c27e2a1b029d7095f9c8100795c29b2",
+          "verified_file_bindings": 20,
+          "verified_component_bindings": 0
+        }
+      ],
+      "preservation_or_binding_errors": [],
+      "exact_covers": [
+        {
+          "side": "front",
+          "sha256": "94d7d690b177fc6ee3eb8d60e6ef031c878c355905a25b94d24ac5ca08560068",
+          "bytes": 2990916
+        },
+        {
+          "side": "back",
+          "sha256": "8d86df1735a5ddbc6e44330805bcbd5aed28884d2fa01b2fa5c633fc28648a17",
+          "bytes": 2501050
+        }
+      ],
+      "existing_prior_rights_preserve": "india-20261002-the-call-of-the-wild-pg215-noncover-text",
+      "missing_source_or_original_cover_evidence": [],
+      "remaining_release_work": [
+        "Derive performant delivery covers from verified originals; visually review exact derivatives and bind provenance/checksums without replacing originals.",
+        "After current PR508 completes, root serializes new all-component accepted decision and registry digest; preserve prior decision record and text/license/source/chapters.",
+        "Root/backend current packages, controlled launch allowlists/public projection/staticSEO/sitemap and exact-size assertions updated consistently; current versions preserved.",
+        "Two independent exact final-candidate reviews; protected checks; normal merge; actual deployment/canary and canonical-version trusted-India Reader/pass readback."
+      ]
+    }
+  ],
+  "material_correction": "Muchiram persisted recovery inventory is stale: its one-review-pending state is superseded by two exact passing receipts next-review-2 and next-review-5, freshly hash-reconciled. No third review or re-download is necessary for original proposal.",
+  "held_unchanged": [
+    "the-most-dangerous-game: concrete cover-footer review conflict"
+  ],
+  "single_authority": "Root only; no additional task/PR and no acceptance while current PR508 remains active.",
+  "notes": [
+    "Call of the Wild historical not_authorized cover_display remains evidence; new reviewed acceptance must supersede that restricted scope explicitly rather than fabricate old approval.",
+    "Derived assets or changed publication package components require updated exact bindings and new final reviews; original proposal reviews cannot automatically authorize changed bytes."
+  ]
+}

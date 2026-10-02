@@ -1,0 +1,33 @@
+{
+  "schema": "earnalism.book-go-live-exact-head-ci-repair.v1",
+  "observed_at": "2026-10-02T14:55:49.968721+00:00",
+  "previous_head": "7b1c0b10e391eb80f47149da15dad5e7ceaa6566",
+  "previous_tree": "129f29a7074cbc87013a5608a5fbfe219d435e71",
+  "ci_pass": [
+    "regression gate",
+    "Auth",
+    "Editorial",
+    "Recovery",
+    "Blog and Reader",
+    "coordination"
+  ],
+  "remaining_failed_run": 37019229688,
+  "genuine_failure": "Isolated Library journey expected only radharani, correctly rendered book-edfcf810c5 as second approved Bengali edition; linked shelf expectations stale24",
+  "repairs": [
+    "Exact public-contract Dracula fixture and explicit26-title10-20-26 shelf/focus traversal; both canonical Bengali Reader results; held pipeline/malformed/audio/fallback gates retained",
+    "Owner-review executive summary now uses exact hash-bound inspection report/build manifest and unique PASS route counts; fabricated historical142 removed"
+  ],
+  "independent_reviews": [
+    "journey_repair: summary generator/tests PASS",
+    "independent_gate_review: journey fixture PASS"
+  ],
+  "validation": [
+    "Journey syntax and offline26-title/held/audio fixture assertions PASS",
+    "Final owner-review suite39tests PASS, including8 count/report/manifest/privacy negative cases"
+  ],
+  "frontend_production_surface_changed": false,
+  "runtime_source_license_chapters_cover_registry_changed": false,
+  "new_live_verified": 0,
+  "production_readback": "NOT_RUN",
+  "next_action": "Publish to existing PR508, inspect exact new-head protected normal checks; normal merge only onpass then deployment revision/canary/canonical-version readback. Three next distinct reviewed proposals remain inactive."
+}

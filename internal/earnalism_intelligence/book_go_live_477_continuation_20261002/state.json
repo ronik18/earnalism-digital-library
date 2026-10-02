@@ -40,10 +40,15 @@
     "workflow_contract_tests": 46,
     "production_build": "PASS",
     "static_assertions": 2064,
-    "focused_final_regression_tests": 29
+    "focused_final_regression_tests": 29,
+    "previous_exact_head_regression": "PASS",
+    "previous_exact_head_seamless": "FAIL_STALE_ISOLATED_LIBRARY_FIXTURE",
+    "final_owner_review_unit_tests": 39
   },
-  "next_action": "Normal protected checks on exact updated existingPR508; no oldhead substitution. Merge two-title candidate only on pass, then deployed revision/canary/canonical-version readback. Next3distinct proposals remain inactive until serialized exact acceptance; missing rewrites alone are not a blocker.",
+  "next_action": "Publish to existing PR508, inspect exact new-head protected normal checks; normal merge only onpass then deployment revision/canary/canonical-version readback. Three next distinct reviewed proposals remain inactive.",
   "ci_repair_receipt": "static-contract-ci-repair.json",
   "routing_assessment": "Earlier missing-mapping404/config-blocker inference withdrawn; generatedfilesystem snapshot routes before rewrites. Exactdeployedpaths unobserved; canarystillrequired.",
-  "final_regression_repair": "final-regression-repair.json"
+  "final_regression_repair": "final-regression-repair.json",
+  "latest_reviewed_previous_head": "7b1c0b10e391eb80f47149da15dad5e7ceaa6566",
+  "latest_ci_repair": "library-journey-and-observed-snapshot-repair.json"
 }

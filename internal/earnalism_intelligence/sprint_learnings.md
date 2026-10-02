@@ -2608,3 +2608,5 @@ Accepted exact rights and configured publication remain separate. Inventory must
 Do not infer confirmed404 or campaign exhaustion from missing explicit rewrites: Vercel checks filesystem first and the build generates directory indexes per safe publication. Preserve exact current28-unit Dracula edition and immutable frozen27narrative baseline via explicit hash-bound overlay; never delete accepted original Preface to satisfy stale test. Real production path and canonical-version observations remain separate gates.
 
 - 2026-10-02 #477: public release projection must bind exact approved publication manifests, not historical package draft labels. Required validated license attribution is public; private evidence keys remain forbidden. Six isolated final assertions repaired; exact protected CI and deployed readback pending.
+
+- 2026-10-02 #477: after full regression passes, browser journey fixtures must match exact approved26/Bengali scope while preserving independent held/audio cases. Evidence executive snapshot counts must derive from hash-bound actual report/manifest, never historical fixed142. Two source reviews and39tests pass; production unobserved.
