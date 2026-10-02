@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { ImageOff, ImagePlus } from "lucide-react";
-import { api } from "../../lib/api";
+import { api, formatError } from "../../lib/api";
 import { imageUrlCandidates, optimizedImageUrl } from "../../lib/images";
 
 const ACCEPTED = {
@@ -58,7 +58,7 @@ export default function CoverUpload({
         onSuccess?.(data);
       } catch (err) {
         setStatus("error");
-        setError(err.response?.data?.detail || err.message || "Cover upload failed");
+        setError(formatError(err.response?.data?.detail || err.message || "Cover upload failed"));
       }
     },
     [bookId, kind, onSuccess],
@@ -127,7 +127,7 @@ export default function CoverUpload({
               <div className="mt-1 text-[0.72rem] text-charcoal-soft">Uploading… {progress}%</div>
             </div>
           )}
-          {status === "done" && <div className="mt-2 text-[0.72rem] text-burgundy">Cover uploaded for canonical review.</div>}
+          {status === "done" && <div className="mt-2 text-[0.72rem] text-burgundy">Cover saved as a review candidate. Saving the book is not required to retain this upload. Publication requires separate canonical review.</div>}
           {status === "error" && <div className="mt-2 text-[0.72rem] text-burgundy">{error}</div>}
         </div>
       </div>
