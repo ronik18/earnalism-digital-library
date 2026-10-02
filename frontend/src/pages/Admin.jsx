@@ -714,6 +714,21 @@ function BooksAdmin() {
   const [cats, setCats] = useState([]);
   const [editing, setEditing] = useState(null);
   const [featured, setFeatured] = useState("");
+  const [loadingEditor, setLoadingEditor] = useState(false);
+
+  const openEditor = async (slug) => {
+    setLoadingEditor(true);
+    try {
+      // Inventory summaries omit chapter bodies. Never PUT that truncated
+      // representation back over the stored manuscript when saving metadata.
+      const { data } = await api.get(`/admin/books/${encodeURIComponent(slug)}`);
+      setEditing(data);
+    } catch (err) {
+      toast.error(formatError(err.response?.data?.detail));
+    } finally {
+      setLoadingEditor(false);
+    }
+  };
 
   const load = async () => {
     const [booksResult, catsResult, featuredResult] = await Promise.allSettled([
@@ -796,7 +811,7 @@ function BooksAdmin() {
               <div className="text-xs text-charcoal-soft mt-1">Buy URL: {b.buy_url ? "set" : <span className="text-burgundy">empty</span>}</div>
               <PublishingWorkflowPanel book={b} />
               <div className="flex items-center gap-2 mt-3 flex-wrap">
-                <button onClick={() => setEditing({ ...b })} className="text-xs uppercase tracking-wider text-burgundy hover:underline" data-testid={`edit-${b.slug}`}><Edit3 size={12} className="inline mr-1" /> Edit</button>
+                <button onClick={() => openEditor(b.slug)} disabled={loadingEditor} className="text-xs uppercase tracking-wider text-burgundy hover:underline disabled:opacity-60" data-testid={`edit-${b.slug}`}><Edit3 size={12} className="inline mr-1" /> Edit</button>
                 <button onClick={() => del(b.slug)} className="text-xs uppercase tracking-wider text-charcoal-soft hover:text-burgundy" data-testid={`delete-${b.slug}`}><Trash2 size={12} className="inline mr-1" /> Delete</button>
                 <button onClick={() => setFeat(b.slug)} className={`text-xs uppercase tracking-wider ml-auto ${featured === b.slug ? "text-gold" : "text-charcoal-soft hover:text-burgundy"}`} data-testid={`feature-${b.slug}`}>
                   <Star size={12} className="inline mr-1" />{featured === b.slug ? "Featured" : "Feature"}
@@ -1144,6 +1159,7 @@ function BookEditor({ book, cats, onClose, onSave, onPreviewReader }) {
               <input type="checkbox" checked={Boolean(f.is_published)} onChange={(e) => setF({ ...f, is_published: e.target.checked })} />
               Published
             </label>
+            <p className="mt-2 text-xs text-charcoal-soft">Cover uploads are saved separately for review. For a held title, save metadata as a draft; publication still requires the release checks.</p>
           </Field>
           <Field label="Short description" wide><textarea rows={2} className="input-elegant" value={f.short_description} onChange={(e) => setF({ ...f, short_description: e.target.value })} /></Field>
           <Field label="Description" wide><textarea rows={4} className="input-elegant" value={f.description} onChange={(e) => setF({ ...f, description: e.target.value })} /></Field>
@@ -1177,6 +1193,7 @@ function BookEditor({ book, cats, onClose, onSave, onPreviewReader }) {
           )}
           <div className="flex justify-end gap-3 ml-auto">
             <button onClick={onClose} className="btn-secondary">Cancel</button>
+            {f.is_published && <button onClick={() => onSave({ ...f, is_published: false }, isNew ? null : book.slug)} disabled={!String(f.title || "").trim()} className="btn-secondary disabled:opacity-60" data-testid="save-book-draft">Save as draft</button>}
             <button onClick={() => onSave(f, isNew ? null : book.slug)} disabled={saveBlocked || !String(f.title || "").trim()} className="btn-primary disabled:opacity-60" data-testid="save-book">Save</button>
           </div>
         </div>
