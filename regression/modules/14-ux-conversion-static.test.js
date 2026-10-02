@@ -325,11 +325,12 @@ describe("UX conversion static signals", () => {
     expect(controlledLaunch).toContain('DRACULA_COVER_IMAGE = "/assets/books/dracula/dracula-front-cover.webp"');
     expect(controlledLaunch).toContain('DRACULA_BACK_COVER_IMAGE = "/assets/books/dracula/dracula-back-cover.webp"');
     expect(controlledLaunch).toContain("cover_image_url: DRACULA_COVER_IMAGE");
-    expect(controlledLaunch).toContain("cover_url: DRACULA_COVER_IMAGE");
     expect(controlledLaunch).toContain("thumbnail_url: DRACULA_COVER_IMAGE");
     expect(controlledLaunch).toContain("back_cover_image_url: DRACULA_BACK_COVER_IMAGE");
-    expect(controlledLaunch).toContain("back_cover_url: DRACULA_BACK_COVER_IMAGE");
     expect(controlledLaunch).toContain("back_cover_thumbnail_url: DRACULA_BACK_COVER_IMAGE");
+    const currentDraculaMerge = controlledLaunch.split("export function mergeDraculaBook(book)")[1].split("export function readingPassUrl")[0];
+    expect(currentDraculaMerge).toContain("...book");
+    expect(currentDraculaMerge).not.toMatch(/(?:cover_image_url|cover_url|thumbnail_url|back_cover_image_url|back_cover_url|back_cover_thumbnail_url):\s*DRACULA_(?:BACK_)?COVER_IMAGE/);
     expect(staticSnapshotGenerator).toContain("const coverImage = book.cover_url ? absolute(book.cover_url) : brandImage;");
     expect(staticSnapshotGenerator).toContain("image: coverImage");
     expect(bookDetail).toContain("publicBook?.cover_image_url");

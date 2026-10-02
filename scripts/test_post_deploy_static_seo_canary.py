@@ -103,6 +103,17 @@ class StaticSeoCanaryTests(unittest.TestCase):
         for changed in ({**payload, "slug": "another-title"}, {**payload, "audio_enabled": True}, {**payload, "access": {"authenticated": False, "can_read_paid": True}}):
             self.assertEqual(MODULE.inspect_protected_api(route, MODULE.PROTECTED_API_CHECKS[route], 200, changed, "https://theearnalism.com" + route)["result"], "FAIL")
 
+    def test_bengali_exact_guest_manifest_and_disabled_listener_remain_fail_closed(self):
+        route = "/api/reader/book/book-edfcf810c5/manifest"
+        payload = {"slug": "book-edfcf810c5", "audio_enabled": False, "audiobook_enabled": False, "access": {"authenticated": False, "can_read_paid": False}}
+        self.assertEqual(MODULE.inspect_protected_api(route, MODULE.PROTECTED_API_CHECKS[route], 200, payload, "https://theearnalism.com" + route)["result"], "PASS")
+        for changed in ({**payload, "slug": "dracula"}, {**payload, "audiobook_enabled": True}, {**payload, "access": {"authenticated": True, "can_read_paid": False}}, {**payload, "access": {"authenticated": False, "can_read_paid": True}}):
+            self.assertEqual(MODULE.inspect_protected_api(route, MODULE.PROTECTED_API_CHECKS[route], 200, changed, "https://theearnalism.com" + route)["result"], "FAIL")
+        audio = page(title="Listen to ক্ষুধিত পাষাণ | The Earnalism", description="Listening is not available for ক্ষুধিত পাষাণ in the current release.", h1="ক্ষুধিত পাষাণ", canonical="https://theearnalism.com/book/book-edfcf810c5", robots="noindex,follow", body="Listening is not available for ক্ষুধিত পাষাণ in the current release. " + ACCESS, links="<a href='/book/book-edfcf810c5'>Book details</a>")
+        self.assertEqual(self.inspect("/listener/book-edfcf810c5", audio)["result"], "PASS")
+        for extra in ("<audio src='/sample.mp3'></audio>", "<button>Play</button>", '<script type="application/ld+json">{"@type":"Audiobook"}</script>'):
+            self.assertEqual(self.inspect("/listener/book-edfcf810c5", audio.replace("</main>", extra + "</main>"))["result"], "FAIL")
+
     def test_protected_api_contract_does_not_globally_allow_451_or_503(self):
         route = "/api/reader/book/dracula/manifest"
         policy = MODULE.PROTECTED_API_CHECKS[route]
@@ -121,7 +132,7 @@ class StaticSeoCanaryTests(unittest.TestCase):
             "/api/reading-pass/books/the-adventures-of-sherlock-holmes/manifest",
             "/api/reading-pass/books/the-canterville-ghost/manifest",
         }
-        self.assertEqual(set(MODULE.PROTECTED_API_CHECKS) - {"/api/reader/book/dracula/manifest"}, expected)
+        self.assertEqual(set(MODULE.PROTECTED_API_CHECKS) - {"/api/reader/book/dracula/manifest", "/api/reader/book/book-edfcf810c5/manifest"}, expected)
         for route in expected:
             result = MODULE.inspect_protected_api(
                 route,
@@ -137,12 +148,13 @@ class StaticSeoCanaryTests(unittest.TestCase):
             MODULE, "inspect_route", return_value={"result": "PASS"}
         ), patch.object(MODULE, "fetch_protected_api", side_effect=[
             (200, {"slug": "dracula", "access": {"authenticated": False, "can_read_paid": False}}, "https://theearnalism.com/api/reader/book/dracula/manifest"),
+            (200, {"slug": "book-edfcf810c5", "access": {"authenticated": False, "can_read_paid": False}}, "https://theearnalism.com/api/reader/book/book-edfcf810c5/manifest"),
             (503, {"detail": {"code": "SEGMENTS_NOT_READY"}}, "https://theearnalism.com/api/reading-pass/books/the-adventures-of-sherlock-holmes/manifest"),
             (200, {"detail": {"code": "SEGMENTS_NOT_READY"}}, "https://theearnalism.com/api/reading-pass/books/the-canterville-ghost/manifest"),
         ]):
             report = MODULE.run("https://theearnalism.com", 1)
         self.assertEqual(report["result"], "FAIL")
-        self.assertEqual([row["result"] for row in report["protected_apis"]], ["PASS", "PASS", "FAIL"])
+        self.assertEqual([row["result"] for row in report["protected_apis"]], ["PASS", "PASS", "PASS", "FAIL"])
 
     def test_explicit_overseas_edge_denial_does_not_claim_india_readback(self):
         for route, policy in MODULE.PROTECTED_API_CHECKS.items():
@@ -221,7 +233,7 @@ class HistoricalUnavailableSnapshotTests(unittest.TestCase):
         manifest = json.loads((self.root / "frontend/build/static-seo-snapshot-manifest.json").read_text())
         held = [r for r in manifest["routes"] if r["snapshot_classification"] == "RELEASE_HELD"]
         self.assertEqual(len(held), 3)
-        for route in ("/book/dracula", "/reader/dracula", "/listener/dracula"):
+        for route in ("/book/dracula", "/reader/dracula", "/listener/dracula", "/book/book-edfcf810c5", "/reader/book-edfcf810c5", "/listener/book-edfcf810c5"):
             html = (self.root / "frontend/build" / route.lstrip("/") / "index.html").read_text()
             report = MODULE.inspect_route(route, MODULE.ROUTES[route], 200, {}, html, "https://theearnalism.com" + route)
             self.assertEqual(report["result"], "PASS", report)

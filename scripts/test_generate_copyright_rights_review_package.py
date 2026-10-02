@@ -44,12 +44,12 @@ class CopyrightRightsReviewPackageTests(unittest.TestCase):
         self.assertEqual(package["inventory_summary"]["title_count"], len(expected))
         self.assertEqual(package["inventory_summary"]["accepted_rights_record_count"], len(MODULE.read_json(MODULE.REGISTRY)["accepted_records"]))
         self.assertEqual(package["inventory_summary"]["live_accepted_rights_record_count"], len(MODULE.read_json(MODULE.ROOT_LAUNCH)["live_approved_slugs"]))
-        self.assertEqual(package["inventory_summary"]["rights_accepted_unexposed_count"], 1)
+        self.assertEqual(package["inventory_summary"]["rights_accepted_unexposed_count"], 0)
         self.assertEqual(package["conclusion"], "INDIA_RELEASE_EVIDENCE_COMPLETE_FOR_CONTROLLED_ALLOWLIST")
         accepted = {title["slug"] for title in package["titles"] if title["title_release_status"] == "ACCEPTED_FOR_CONTROLLED_RELEASE"}
-        self.assertEqual(accepted, {"a-ghost-story", "the-tell-tale-heart", "radharani", "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost", "the-adventures-of-sherlock-holmes", "agentic-ai-with-python", "a-horseman-in-the-sky", "a-mystery-of-heroism", "a-scandal-in-bohemia", "jekyll-and-hyde", "love-of-life", "the-bishop", "the-fall-of-the-house-of-usher", "the-lady-with-the-dog", "the-man-who-would-be-king", "the-open-boat", "the-pit-and-the-pendulum", "the-stolen-white-elephant", "an-occurrence-at-owl-creek-bridge", "the-enchanted-april", "the-happy-prince", "picture-of-dorian-gray", "dracula"})
+        self.assertEqual(accepted, {"a-ghost-story", "the-tell-tale-heart", "radharani", "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost", "the-adventures-of-sherlock-holmes", "agentic-ai-with-python", "a-horseman-in-the-sky", "a-mystery-of-heroism", "a-scandal-in-bohemia", "jekyll-and-hyde", "love-of-life", "the-bishop", "the-fall-of-the-house-of-usher", "the-lady-with-the-dog", "the-man-who-would-be-king", "the-open-boat", "the-pit-and-the-pendulum", "the-stolen-white-elephant", "an-occurrence-at-owl-creek-bridge", "the-enchanted-april", "the-happy-prince", "picture-of-dorian-gray", "dracula", "book-edfcf810c5"})
         rights_accepted_unexposed = {title["slug"] for title in package["titles"] if title["title_release_status"] == "RIGHTS_ACCEPTED_UNEXPOSED"}
-        self.assertEqual(rights_accepted_unexposed, {"book-edfcf810c5"})
+        self.assertEqual(rights_accepted_unexposed, set())
 
     def test_component_schema_and_pilot_scope_are_fail_closed(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -88,7 +88,7 @@ class CopyrightRightsReviewPackageTests(unittest.TestCase):
         registry = MODULE.read_json(MODULE.REGISTRY)
         live = set(MODULE.read_json(MODULE.ROOT_LAUNCH)["live_approved_slugs"])
         dracula = MODULE.title_inventory("dracula", {}, registry, live)
-        held = MODULE.title_inventory("book-edfcf810c5", {}, registry, live)
+        held = MODULE.title_inventory("book-edfcf810c5", {}, registry, live - {"book-edfcf810c5"})
         self.assertEqual(dracula["title_release_status"], "ACCEPTED_FOR_CONTROLLED_RELEASE")
         self.assertEqual(held["title_release_status"], "RIGHTS_ACCEPTED_UNEXPOSED")
         self.assertEqual(held["jurisdictions_assessed"], ["IN"])

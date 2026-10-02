@@ -3009,6 +3009,11 @@
         "source_text_license_cover_package_registry_preserved": true,
         "production_observed": false,
         "next_action": "Complete protected exact-head checks and isolated runtime fixtures for Dracula-only PR508. Keep Bengali edition held for route-support blocker. Then verify deployment/canary/canonical-version readback before next distinct reviewed cohort."
+      },
+      "book_go_live_477_route_hold_superseded": {
+        "timestamp": "2026-10-02T13:58:52.485178+00:00",
+        "assessment": "Earlier confirmed routing failure withdrawn; exact two-title candidate restored withoutdeploymentconfig edits. Deployed path verification pending.",
+        "evidence": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/restored-two-title-and-chapter-fixture.json"
       }
     },
     "book-ef193ffc52": {
@@ -4961,6 +4966,13 @@
       "book_go_live_477_runtime_app_repair": {
         "timestamp": "2026-10-02T13:42:53.890063+00:00",
         "evidence": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/runtime-fixture-and-app-repair.json",
+        "production_observed": false
+      },
+      "book_go_live_477_chapter_fixture": {
+        "timestamp": "2026-10-02T13:58:52.485178+00:00",
+        "expected_current_units": 28,
+        "frozenhistoricalunits": 27,
+        "source_preserved": true,
         "production_observed": false
       }
     },

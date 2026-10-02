@@ -3,9 +3,10 @@
   "source_main": "57ad1cfe9ceb2331871be3c7c2ee1e8c64ad2edd",
   "owner_directive": "https://github.com/ronik18/earnalism-digital-library/issues/477#issuecomment-5949652699",
   "integration_candidate_slugs": [
-    "dracula"
+    "dracula",
+    "book-edfcf810c5"
   ],
-  "configured_candidate_count": 25,
+  "configured_candidate_count": 26,
   "deployed_verified_new_titles": 0,
   "production_readback": "NOT_RUN",
   "audio_exposure": false,
@@ -24,19 +25,23 @@
     "alices-adventures-in-wonderland": "Unverified Lewis Carroll quote attribution on back cover"
   },
   "validation": {
-    "local_tests_passed": 84,
-    "protected_ci": "NEW_HEAD_REQUIRED_AFTER_RUNTIME_REPORT_AND_APP_REPAIR",
+    "local_tests_passed": 98,
+    "protected_ci": "AWAITING_EXACT_REPAIRED_HEAD",
     "canary": "NOT_RUN",
     "production": "NOT_RUN",
-    "canary_unit_tests_passed": 24,
-    "static_snapshot_assertions_passed": 2000,
-    "static_snapshots": 94,
-    "required_local_uat_tests_passed": 28
+    "canary_unit_tests_passed": 25,
+    "static_snapshot_assertions_passed": 2064,
+    "static_snapshots": 97,
+    "required_local_uat_tests_passed": 28,
+    "backend_rights_and_chapter_tests": 98,
+    "required_local_uat_tests": 28,
+    "frontend_tests": 48,
+    "static_regression_tests": 63,
+    "workflow_contract_tests": 46,
+    "production_build": "PASS",
+    "static_assertions": 2064
   },
-  "next_action": "Normal protected exact-new-head checks on existing PR508, including isolated runtime and full frontend fixtures. Merge only if pass; then deploy/canary/canonical-version verification. No config override or waived runtime gates.",
+  "next_action": "Normal protected checks on exact updated existingPR508; no oldhead substitution. Merge two-title candidate only on pass, then deployed revision/canary/canonical-version readback. Next3distinct proposals remain inactive until serialized exact acceptance; missing rewrites alone are not a blocker.",
   "ci_repair_receipt": "static-contract-ci-repair.json",
-  "held_reviewed_integration_candidates": {
-    "book-edfcf810c5": "Production book/reader/listener exact route mappings absent; generic slug routes target404. Deployment configuration changes prohibited by owner scope. Preserved reviewed preparation; removed server/frontend/public projection exposure."
-  },
-  "next_prepared_route_hold": "Muchiram, bn-059, Call of the Wild lack production exact route mappings; retain inactive proposals while deployment config changes are outside scope."
+  "routing_assessment": "Earlier missing-mapping404/config-blocker inference withdrawn; generatedfilesystem snapshot routes before rewrites. Exactdeployedpaths unobserved; canarystillrequired."
 }

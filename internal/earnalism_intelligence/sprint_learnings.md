@@ -2602,3 +2602,7 @@ Static generation is not production route reachability. Two reviewers identified
 ## Book GO-LIVE 477 runtime/app integration — 2026-10-02
 
 Accepted exact rights and configured publication remain separate. Inventory must derive territory from the current accepted decision when admin dispositions omit it, retain digest/component/revocation gates, and mark off-allowlist titles unexposed. Static released pages need matching API-gated app routes after hydration; detail helpers must preserve exact approved cover aliases rather than replace them with legacy artwork.
+
+## Book GO-LIVE477 routing correction/currentchapterfixture — 2026-10-02
+
+Do not infer confirmed404 or campaign exhaustion from missing explicit rewrites: Vercel checks filesystem first and the build generates directory indexes per safe publication. Preserve exact current28-unit Dracula edition and immutable frozen27narrative baseline via explicit hash-bound overlay; never delete accepted original Preface to satisfy stale test. Real production path and canonical-version observations remain separate gates.

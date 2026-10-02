@@ -43,6 +43,7 @@ INDIA_TEXT_RELEASE_SLUGS = {
     "the-happy-prince",
     "picture-of-dorian-gray",
     "dracula",
+    "book-edfcf810c5",
 }
 
 
@@ -369,16 +370,3 @@ def test_yugalanguriya_publication_package_is_archived_and_remains_held():
     assert "yugalanguriya" not in launch["audio_enabled_slugs"]
     assert "yugalanguriya" not in backend_launch["audio_enabled_slugs"]
     assert registry["pilot_dispositions"]["controlled-yugalanguriya"]["status"] == "HOLD"
-
-
-def test_reviewed_bengali_edition_remains_held_pending_production_route_support():
-    slug = "book-edfcf810c5"
-    for launch in (load_json(ROOT_CONTROLLED_LAUNCH), load_json(BACKEND_CONTROLLED_LAUNCH)):
-        assert slug not in launch["live_approved_slugs"]
-        assert slug not in launch["audio_enabled_slugs"]
-    frontend = (ROOT / "frontend/src/lib/controlledLaunch.js").read_text()
-    allowlist = frontend.split("PUBLIC_READER_RELEASED_SLUGS = Object.freeze([", 1)[1].split("]);", 1)[0]
-    assert slug not in allowlist
-    projection = load_json(ROOT / "frontend/static-seo/controlled-publication-public.json")
-    assert slug not in {p["slug"] for p in projection["publications"]}
-    assert active_runtime_package(slug).is_dir()

@@ -1,4 +1,5 @@
 import json
+import hashlib
 from copy import deepcopy
 from pathlib import Path
 
@@ -102,15 +103,20 @@ def test_dracula_index_is_uniform_and_publisher_catalog_is_not_reader_content():
     for artifact_root in artifact_roots:
         manifest = json.loads((artifact_root / "reader_manifest.json").read_text(encoding="utf-8"))
         narrative = manifest["chapters"]
-        if artifact_root == ROOT / "data" / "controlled_publications" / "dracula":
-            # Exact-source repair restores Stoker's literary prefatory note;
-            # the 27 historical narrative IDs/titles remain unchanged.
-            assert narrative[0]["id"] == "chapter-000"
-            assert narrative[0]["title"] == "Preface"
-            assert len(narrative) == 28
-            preface = json.loads((artifact_root / "chapters/chapter-000.json").read_text())
-            assert "All needless matters have been eliminated" in preface["content"]
-            narrative = narrative[1:]
+        # Both current mirrors restore Stoker's literary prefatory note;
+        # the 27 historical narrative IDs/titles remain unchanged.
+        assert narrative[0]["id"] == "chapter-000"
+        assert narrative[0]["title"] == "Preface"
+        assert len(narrative) == 28
+        preface = json.loads((artifact_root / "chapters/chapter-000.json").read_text())
+        assert "All needless matters have been eliminated" in preface["content"]
+        assert hashlib.sha256((artifact_root / "chapters/chapter-000.json").read_bytes()).hexdigest() == "0379e9cb8ef91acbdad8ad7dc134b38940ffd9fead72d634b44623bec20ed39c"
+        assert hashlib.sha256((artifact_root / "reader_manifest.json").read_bytes()).hexdigest() == "f51512441063fa5b19c8af4e6cb1130c9eda98897a242163416ec09fc321068d"
+        source = json.loads((artifact_root / "source_evidence.json").read_text())
+        assert source["source_hash"] == "96cd16eacdbfebae8fdda5591f66e0cc8ee76be18e0cd1aca02bc00615782d28"
+        assert [chapter["id"] for chapter in narrative] == ["chapter-000"] + [f"chapter-{index:03d}" for index in range(1, 28)]
+        assert [chapter["order"] for chapter in narrative] == list(range(1, 29))
+        narrative = narrative[1:]
         assert [chapter["title"] for chapter in narrative] == expected_titles
         index_entries = build_chapter_index_entries(narrative)
         assert [index_entries[index - 1]["index_title"] for index in (5, 9, 10, 11, 13, 15)] == [
@@ -151,8 +157,21 @@ def test_catalog_wide_reader_indexes_are_complete_and_deterministic():
         "manifest_slug": "a-horseman-in-the-sky", "chapter_count": 1,
         "chapters": [{"id": "chapter-001", "order": 1}],
     })
-    import hashlib
     assert hashlib.sha256((CONTROLLED_ROOT / "a-horseman-in-the-sky/reader_manifest.json").read_bytes()).hexdigest() == "fcf6313edcaaac648fbc96dcb446bca87b5c5a79118606e3556905d681406748"
+    # Current accepted exact-source overlay includes the author Preface. Keep
+    # the frozen 27-chapter baseline untouched and bind this change to its
+    # reviewed manifest digest instead of learning expectations from candidates.
+    historical_dracula = next(package for package in inventory["packages"] if package["package_key"] == "dracula")
+    assert historical_dracula["chapter_count"] == 27
+    current_inventory["packages"] = [
+        {**package, "chapter_count": 28,
+         "chapters": [{"id": "chapter-000", "order": 1}] + [
+             {"id": f"chapter-{index:03d}", "order": index + 1}
+             for index in range(1, 28)
+         ]} if package["package_key"] == "dracula" else package
+        for package in current_inventory["packages"]
+    ]
+    assert hashlib.sha256((CONTROLLED_ROOT / "dracula/reader_manifest.json").read_bytes()).hexdigest() == "f51512441063fa5b19c8af4e6cb1130c9eda98897a242163416ec09fc321068d"
     current_inventory["expected_manifest_count"] = len(current_inventory["packages"])
     current_inventory["expected_chapter_count"] = sum(
         package["chapter_count"] for package in current_inventory["packages"]

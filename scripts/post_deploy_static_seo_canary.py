@@ -50,6 +50,7 @@ ROUTES = {
     "/book/dracula": {"kind": "book", "canonical": "/book/dracula", "robots": "index,follow", "title": "Dracula"},
     "/reader/dracula": {"kind": "reader", "canonical": "/book/dracula", "robots": "noindex,follow", "title": "Dracula"},
     "/listener/dracula": {"kind": "disabled_listener", "canonical": "/book/dracula", "robots": "noindex,follow", "title": "Dracula"},
+    "/listener/book-edfcf810c5": {"kind": "disabled_listener", "canonical": "/book/book-edfcf810c5", "robots": "noindex,follow", "title": "ক্ষুধিত পাষাণ"},
     "/book/the-selfish-giant": {"kind": "historical_unavailable", "canonical": "/book/the-selfish-giant", "robots": "noindex,nofollow", "title": "The Selfish Giant"},
     "/reader/the-selfish-giant": {"kind": "historical_unavailable", "canonical": "/book/the-selfish-giant", "robots": "noindex,nofollow", "title": "The Selfish Giant"},
     "/listener/the-selfish-giant": {"kind": "historical_unavailable", "canonical": "/book/the-selfish-giant", "robots": "noindex,nofollow", "title": "The Selfish Giant"},
@@ -75,6 +76,11 @@ PROTECTED_API_CHECKS = {
         "expected_status": 200,
         "expected_code": "",
         "expected_slug": "dracula",
+    },
+    "/api/reader/book/book-edfcf810c5/manifest": {
+        "expected_status": 200,
+        "expected_code": "",
+        "expected_slug": "book-edfcf810c5",
     },
     "/api/reading-pass/books/the-adventures-of-sherlock-holmes/manifest": {
         "expected_status": 503,

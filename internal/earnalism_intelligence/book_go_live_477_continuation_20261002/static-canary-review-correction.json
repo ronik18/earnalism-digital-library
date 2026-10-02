@@ -1,0 +1,16 @@
+{
+  "supersedes": "static-canary-review.json route-mapping blocker conclusion",
+  "conclusion": "NO_CONFIRMED_ROUTING_BLOCKER_MISSING_EXPLICIT_REWRITE_INSUFFICIENT",
+  "official_source": "https://vercel.com/docs/project-configuration/vercel-json",
+  "official_findings": [
+    "Filesystem precedence before rewrites",
+    "rewrites check filesystem by default"
+  ],
+  "repository_framework": "create-react-app",
+  "output_directory": "build",
+  "candidate_static_files": "Earlier exact26build had book/reader/listener book-edfcf810c5/index.html",
+  "actual_Vercel_build_manifest": "NOT_PRESENT_LOCALLY",
+  "next_cheapest_exact_proof": "Inspect or generate exact candidate Vercel BuildOutput config.json and static files; filesystem handler precedes generic404 rewrites, directory index normalization resolves all3public paths. No deployment/config/secrets necessary if CLI build available.",
+  "canonical_mutations": 0,
+  "deployment_observed": false
+}
