@@ -843,6 +843,13 @@ function publishIssues(book) {
   const issues = [];
   if (!String(book?.title || "").trim()) issues.push("Title is required.");
   if (!book?.is_published) return issues;
+  const rights = book?.rights_metadata || {};
+  const requiredRights = ["source_name", "source_license", "source_url", "author_death_year", "original_publication_year", "rights_tier", "verified_at"];
+  requiredRights.forEach((key) => {
+    if (rights[key] == null || String(rights[key]).trim() === "") {
+      issues.push(`Rights metadata required: ${key.replaceAll("_", " ")}.`);
+    }
+  });
   if (!book.cover_image_url) issues.push("Front cover is required before publishing.");
   (book.chapters || []).forEach((chapter) => {
     const status = processingStatus(chapter);
@@ -1159,7 +1166,7 @@ function BookEditor({ book, cats, onClose, onSave, onPreviewReader }) {
               <input type="checkbox" checked={Boolean(f.is_published)} onChange={(e) => setF({ ...f, is_published: e.target.checked })} />
               Published
             </label>
-            <p className="mt-2 text-xs text-charcoal-soft">Cover uploads are saved separately for review. For a held title, save metadata as a draft; publication still requires the release checks.</p>
+            <p className="mt-2 text-xs text-charcoal-soft">Cover uploads are saved separately for review. This title is missing required rights metadata, so use <strong>Save as draft</strong>; publication remains blocked until the release checks pass.</p>
           </Field>
           <Field label="Short description" wide><textarea rows={2} className="input-elegant" value={f.short_description} onChange={(e) => setF({ ...f, short_description: e.target.value })} /></Field>
           <Field label="Description" wide><textarea rows={4} className="input-elegant" value={f.description} onChange={(e) => setF({ ...f, description: e.target.value })} /></Field>
