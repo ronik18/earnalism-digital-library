@@ -1,0 +1,9 @@
+{
+  "receipt": {
+    "requested_url": "https://research.hrc.utexas.edu/bookshopdoor/signature.cfm?item=156",
+    "resolved_url": "https://research.hrc.utexas.edu/bookshopdoor/signature.cfm?item=156",
+    "http_status": 200,
+    "accessed_at": "2026-10-02T03:09:24.367756+00:00",
+    "response_sha256": "7a7b817a12bd4cf604061cb33c9ff2a3e216f9e203ef52de4855fad9130f553f"
+  }
+}

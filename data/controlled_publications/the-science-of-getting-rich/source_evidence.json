@@ -1,12 +1,12 @@
 {
   "slug": "the-science-of-getting-rich",
   "source_url": "https://www.gutenberg.org/ebooks/59844",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #59844 Wattles 1910 original English text; Preface and all17chapters; publisher advertisements excluded",
   "source_license": "Public domain; commercial use allowed in the United States.",
-  "source_hash": "4de04867ec7814f6e7053582eaf50ad3c6817256d06141a5cee93c64f499557b",
-  "content_hash": "f1c0da0283105f7047177d0c5bc4dff6c4b3d15b44b3010684b168913ac1b6b6",
-  "provenance_hash": "cec823ac05c245b9b381ecf9bcc94972858e756d31fb8da46a07a8aa7ebe5461",
-  "rights_basis": "Wallace D. Wattles died in 1911. Under section 22 of India's Copyright Act, the literary-work term ran for 60 years from the beginning of the calendar year following his death and expired on 31 December 1971. The work is public domain for the India-scoped release.",
+  "source_hash": "adc3fb17f24801597561e992d858e124c8d9b4c6e3bf7593d713e7a71d252744",
+  "content_hash": "55a8e552b9f74640c7bccc1d05db9d5197ec9dd3af558aceb4f9d3ea73d4949b",
+  "provenance_hash": "2097ecf8e327a71b78cb7f061799a9cd8e02f94a30ff18cfab56d911487e0195",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1911, original publication 1910; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-08T20:17:52.848539+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -15,9 +15,9 @@
   "original_publication_year": 1910,
   "rights_tier": "A",
   "verification_status": "approved",
-  "publication_region": "IN",
-  "verified_at": "2026-08-15T23:13:35Z",
-  "qa_status": "READY_FOR_APPROVAL",
+  "publication_region": "India",
+  "verified_at": "2026-10-01T21:35:50.622637+00:00",
+  "qa_status": "QA_PASSED",
   "source_snapshot_url": "https://www.gutenberg.org/cache/epub/59844/pg59844.txt",
   "source_hash_domain": "official_plaintext_utf8_normalized_lf_no_trailing_space_exact_bytes",
   "source_snapshot_path": "raw/source.txt",
@@ -307,5 +307,165 @@
       }
     ],
     "content_sha256": "55a8e552b9f74640c7bccc1d05db9d5197ec9dd3af558aceb4f9d3ea73d4949b"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "4de04867ec7814f6e7053582eaf50ad3c6817256d06141a5cee93c64f499557b",
+        "content_hash": "f1c0da0283105f7047177d0c5bc4dff6c4b3d15b44b3010684b168913ac1b6b6",
+        "provenance_hash": "cec823ac05c245b9b381ecf9bcc94972858e756d31fb8da46a07a8aa7ebe5461",
+        "source_url": "https://www.gutenberg.org/ebooks/59844",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:35:50.622637+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "country_of_origin": "United States",
+  "source_type": "gutenberg",
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/59844.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/59844/pg59844.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:25.631683+00:00",
+      "response_sha256": "adc3fb17f24801597561e992d858e124c8d9b4c6e3bf7593d713e7a71d252744"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 18,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 2129,
+          "length": 2584
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 4747,
+          "length": 5100
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 9896,
+          "length": 6186
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 16124,
+          "length": 6802
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 22991,
+          "length": 9088
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 32108,
+          "length": 9305
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 41450,
+          "length": 8432
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 49907,
+          "length": 6185
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 56136,
+          "length": 7241
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 63411,
+          "length": 7572
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 71020,
+          "length": 8450
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 79510,
+          "length": 8680
+        },
+        {
+          "chapter_id": "chapter-013",
+          "offset": 88222,
+          "length": 7174
+        },
+        {
+          "chapter_id": "chapter-014",
+          "offset": 95444,
+          "length": 6454
+        },
+        {
+          "chapter_id": "chapter-015",
+          "offset": 101940,
+          "length": 6448
+        },
+        {
+          "chapter_id": "chapter-016",
+          "offset": 108420,
+          "length": 6659
+        },
+        {
+          "chapter_id": "chapter-017",
+          "offset": 115137,
+          "length": 7507
+        },
+        {
+          "chapter_id": "chapter-018",
+          "offset": 122699,
+          "length": 2871
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "first_publication_evidence": {
+      "source_url": "https://www.gutenberg.org/ebooks/59844",
+      "source_sha256": "adc3fb17f24801597561e992d858e124c8d9b4c6e3bf7593d713e7a71d252744",
+      "verified_at": "2026-10-01T21:35:50.612832+00:00",
+      "original_publication_year": 1910,
+      "scope": "Original English author text and author introduction/preface only; publisher advertisements excluded",
+      "title_page_fact": "COPYRIGHT, APRIL 1, 1910 BY WALLACE D. WATTLES",
+      "boundary": "Author Preface and all17chapters; followed only by publisher Further Aids Towards Getting Rich Right advertising"
+    },
+    "author_death_evidence": [
+      "Wattles, W. D. (Wallace Delois), 1860-1911"
+    ],
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "reader_qa_verification": {
+    "verified_at": "2026-10-02T03:27:00.105888+00:00",
+    "verifier": "Automated source and package verifier under owner delegation",
+    "checks": [
+      "Actual immutable source bytes reproduce declared hash",
+      "Entire canonical chapter bodies match ordered source",
+      "Declared chapter count equals existing chapter files",
+      "Every chapter content hash reproduces actual UTF8 text",
+      "Independent whole-work boundary evidence includes actual beginning/end/author matter"
+    ],
+    "source_sha256": "adc3fb17f24801597561e992d858e124c8d9b4c6e3bf7593d713e7a71d252744",
+    "content_sha256": "55a8e552b9f74640c7bccc1d05db9d5197ec9dd3af558aceb4f9d3ea73d4949b",
+    "result": "PASS",
+    "scope": "TEXT_READER_STRUCTURE_AND_SOURCE_COMPLETENESS_ONLY_NOT_COVER_AUDIO_OR_PRODUCTION_QA"
   }
 }

@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-woman-in-white-pg583-noncover-text",
+  "edition_id": "woman-in-white",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "0286507f66d390a5e059e44da7e906725b87da28a69f1ed565f5f4cad8ea9ba9",
+    "reader_manifest": "09c43a09e62c55add70652fdc379abafc7b5dbf21bf0c099f37357f0e4f0d30d",
+    "source_evidence": "df67a3cffcc579f4934b1e948a8ce69dd854f3c36b2a7c8f0f4a4c66e8ea589b",
+    "approval_evidence": "94fd0f892db8fcd561ce5af31de96afebc563234306e84ce3afdbfc09292aaec",
+    "checksum_manifest": "39549a781ecefbfea074c76429f2df5c8d6b5902fe575914bda39550cd61a6a9",
+    "publication_manifest": "863edeee60e2fdfe93f5594b6b84b2ebdf709f76d82458e9e764320f4538bed5"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:49:40.745164+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1889, verified lifetime collection publication 1860 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "e6771da5c21c9cf14d8c13291879e888e91073580aca54b977c1ef20b5549088",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ddff4d02c636c57500215604f778bd3b8b9883d5ca9d5de89dc1480b29fa52c3",
+    "c8cb8872f6c0a2a5b6489873c6c7b8c39f006c3fa44219738186a96f2c1d1254",
+    "f359435d90032e1ceee2a65bd58033c7375017bf813696d8965b4171e68c2962"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

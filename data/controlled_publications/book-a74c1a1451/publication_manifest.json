@@ -3,21 +3,21 @@
   "schema_version": 1,
   "slug": "book-a74c1a1451",
   "title": "দালিয়া",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
     "source_hash": "f5679559b9a30f93368556f83d22f64501d6be7ffab6138c7c889fea22fca731",
     "content_hash": "8cb3e87c1abe91327409b50bd85d7362169277ac440fc7c0cabc7112b6ace2af",
     "provenance_hash": "c75c475c302d85b60accce952a8d6ed70d6715a69bd64bbd223c896a46005616",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "3ee18af4c0a5008d330f86971ce95141922a6c3e2736508818e3e408d85156f4",
+    "chapter_index_sha256": "eb6b9efa88a1bbcff9faaa50d50af89197b2f1e45027525dba6cc22b4ff65957",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "Full Text",
-        "word_count": 2203,
-        "sha256": "f58dc37b80f787222d00ca5471a8e20346f0ad118e3369fb8d793e3b2c1a7a5e"
+        "word_count": 2283,
+        "sha256": "1885319d222e72eda98a5b36fe2b3ee0497d39d24f519c4949f4421e8b925ea4"
       }
     ]
   },
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "549a28ac10416c78266eb7741b009b503fd1a58cf3e5c7ad46e95e1bade0334d"
+    "evidence_sha256": "013b5de95ba744a65b93b09a0bcf101bf0af9703648402d4dcbc62bd61700535"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -46,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "4eabaf7cfb17c156064d9f974b28826b82d3d905419404726dfb2ecd464bc9c7",
-    "reader_manifest": "ff12192bfcff9d3442b2fa566acf8f0a54f571cca8458c1c6d6cf8be9047a76d",
-    "source_evidence": "549a28ac10416c78266eb7741b009b503fd1a58cf3e5c7ad46e95e1bade0334d",
+    "public_book": "223617d1efe764aa16a8f44e15a726495153440ff3ec7f1885c397bc48d8f2a6",
+    "reader_manifest": "fa4bc3a2b67fd0d872cd7f8bc94c31f68a6a74c93c0f9440eac7f616a34fe811",
+    "source_evidence": "013b5de95ba744a65b93b09a0bcf101bf0af9703648402d4dcbc62bd61700535",
     "approval_evidence": "54cde3566121818f9e2a978e8aa11a0b03af4be13b99915bbfc24beb60da07c5"
   },
-  "manifest_sha256": "68be34b4ef3f4cb463158fe6365614d35869fa15cd8e6061ba8dbe380420a36e"
+  "manifest_sha256": "a702dcd5d9ce3676741f170dc6d77ac1f9cb1801332d1604d8fa143b2c0bfa19"
 }

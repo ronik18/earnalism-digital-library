@@ -1,22 +1,22 @@
 {
   "slug": "the-most-dangerous-game",
-  "source_url": "https://en.wikisource.org/wiki/O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game",
-  "source_name": "Wikisource",
-  "source_license": "Underlying 1924 story is public domain in the U.S. and India; Wikisource transcription/source layer is reused under CC BY-SA terms.",
-  "source_hash": "213e4a287408e7c78cb14a5d94dfcc519a378c710ca8739601220f6d51df52b1",
-  "content_hash": "42abf60a854bbec5d5aad3c065927c6f62aad640e6791f1bb77b66f804ffdafa",
-  "provenance_hash": "3b5ee0d41aa18483dcdfb61242320186bb3026289fcd84a90cdb9ec14b1600ab",
-  "rights_basis": "Richard Connell died in 1949 and the story was first published in 1924. Public domain in India and the U.S.; canonical title corrected from manifest alias.",
+  "source_url": "https://en.wikisource.org/w/index.php?title=O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game&oldid=12072546",
+  "source_name": "English Wikisource exact revision12072546;1924 O.HenryMemorialAward collection story; RichardConnell underlying text; CC BY-SA4.0 transcription, no art/editor introduction",
+  "source_license": "CC BY-SA 4.0 transcription adaptation; underlying RichardConnell literary text separately cleared IN; attribution, change notice, same-license and warranty disclaimer retained visibly in bound license_notice.json.",
+  "source_hash": "77c9fc421bd4d7742794edc9dd48b7f80eb70c0b73b969d4ef099d4ff9e4808f",
+  "content_hash": "8590d829e9f5d5b6ddf5dd7d131d5be1e2de353f0d3637ece79b88aa5f283ea7",
+  "provenance_hash": "a17bd1897d9e21f8697fcf0accfb5971849f0532b443076b1800a841f7f1125c",
+  "rights_basis": "RichardConnell1893–1949; verified1924story anthology during lifetime, INSection22 term elapsed2009. Exactrevision12072546transcription reused with actualfooterCCBYSA4.0 and hash-bound publiclicense obligations.",
   "downloaded_at": "2026-06-03T08:04:22.491684+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
   "author_name": "Richard Connell",
   "author_death_year": 1949,
-  "original_publication_year": 1924,
+  "original_publication_year": null,
   "rights_tier": "A",
   "verification_status": "approved",
-  "publication_region": "IN",
-  "verified_at": "2026-08-15T22:12:42Z",
+  "publication_region": "India",
+  "verified_at": "2026-10-01T21:59:52.152491+00:00",
   "qa_status": "QA_PASSED",
   "source_hash_domain": "utf8_text_normalized_lf_trimmed_terminal_whitespace",
   "content_hash_domain": "canonical_content_chapter_json_list_sorted_keys_utf8",
@@ -36,5 +36,107 @@
   "requires_attribution": true,
   "requires_share_alike": true,
   "required_attribution": "Text transcription adapted from Wikisource contributors, “The Most Dangerous Game,” https://en.wikisource.org/wiki/O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game, under CC BY-SA 4.0, https://creativecommons.org/licenses/by-sa/4.0/. The underlying 1924 story by Richard Connell is public domain in India and the United States.",
-  "attribution_location": "reader_edition_credits_not_narrative"
+  "attribution_location": "reader_edition_credits_not_narrative",
+  "source_type": "wikisource",
+  "source_revision": "12072546",
+  "actual_transcription_verification": {
+    "receipt": {
+      "requested_url": "https://en.wikisource.org/wiki/O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game",
+      "resolved_url": "https://en.wikisource.org/wiki/O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:54:47.140339+00:00",
+      "response_sha256": "77c9fc421bd4d7742794edc9dd48b7f80eb70c0b73b969d4ef099d4ff9e4808f"
+    },
+    "method": "Exact whole-story extraction of all211 narrative paragraphs; page/title/byline/page-number/zero-width furniture removed; first/last narrative boundaries verified; one prior spacing divergence before emdash repaired from exact revision",
+    "old_chapter_sha256": "0fc44f09b5da4dccf181357f25ec32c1b21a9aada4391e51e811bfcd057930d6",
+    "new_chapter_sha256": "8590d829e9f5d5b6ddf5dd7d131d5be1e2de353f0d3637ece79b88aa5f283ea7",
+    "complete_edition_proven": true
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "213e4a287408e7c78cb14a5d94dfcc519a378c710ca8739601220f6d51df52b1",
+        "content_hash": "42abf60a854bbec5d5aad3c065927c6f62aad640e6791f1bb77b66f804ffdafa",
+        "provenance_hash": "3b5ee0d41aa18483dcdfb61242320186bb3026289fcd84a90cdb9ec14b1600ab",
+        "source_url": "https://en.wikisource.org/w/index.php?title=O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game&oldid=12072546",
+        "source_name": "Wikisource"
+      },
+      "superseded_at": "2026-10-01T21:59:52.152491+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1924,
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://en.wikisource.org/wiki/O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game",
+      "resolved_url": "https://en.wikisource.org/wiki/O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:54:47.140339+00:00",
+      "response_sha256": "77c9fc421bd4d7742794edc9dd48b7f80eb70c0b73b969d4ef099d4ff9e4808f"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 0,
+          "length": 44149
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator_death_year": 1949,
+      "selected_edition_publication_year": 1924,
+      "original_first_publication_year": null,
+      "edition_titlepage_receipt": {
+        "requested_url": "https://en.wikisource.org/wiki/O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game",
+        "resolved_url": "https://en.wikisource.org/wiki/O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:54:47.140339+00:00",
+        "response_sha256": "77c9fc421bd4d7742794edc9dd48b7f80eb70c0b73b969d4ef099d4ff9e4808f"
+      },
+      "creator_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Connell%2C%20Richard%2C%201893-1949",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Connell%2C%20Richard%2C%201893-1949",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:56:05.065383+00:00",
+        "response_sha256": "2aaa3491186ec637a27cec2a0bc42ee091b7ad7daa60524ece12cb2870919d1a"
+      },
+      "basis": "RichardConnell1893–1949; verified1924story anthology during lifetime, INSection22 term elapsed2009. Exactrevision12072546transcription reused with actualfooterCCBYSA4.0 and hash-bound publiclicense obligations."
+    },
+    "author_death_evidence": 1949,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "historical_unverified_import_claims": {
+    "original_publication_year": 1924
+  },
+  "publication_upper_bound_year": 1924,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "77c9fc421bd4d7742794edc9dd48b7f80eb70c0b73b969d4ef099d4ff9e4808f",
+    "content_sha256": "8590d829e9f5d5b6ddf5dd7d131d5be1e2de353f0d3637ece79b88aa5f283ea7",
+    "year": 1924,
+    "receipt": {
+      "requested_url": "https://en.wikisource.org/wiki/O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game",
+      "resolved_url": "https://en.wikisource.org/wiki/O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:54:47.140339+00:00",
+      "response_sha256": "77c9fc421bd4d7742794edc9dd48b7f80eb70c0b73b969d4ef099d4ff9e4808f"
+    },
+    "basis": "RichardConnell1893–1949; verified1924story anthology during lifetime, INSection22 term elapsed2009. Exactrevision12072546transcription reused with actualfooterCCBYSA4.0 and hash-bound publiclicense obligations.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  }
 }

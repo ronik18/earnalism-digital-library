@@ -1,12 +1,22 @@
 {
   "slug": "markheim",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true
+  "audiobook_enabled": true,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "3f5b98c0b00f8a555adfdb542dd66f52c2b95cf2ed880c6ffd6688b42bd04d9c",
+  "source_hash": "4c397d6e1688b525c58c60ad565a63717feee1d0f7db36e69281919e6492aa16",
+  "content_hash": "66ecd743f5e28122df51b1f7d3ba2252032747351358ae05888ea30cc9b27ce8",
+  "provenance_hash": "c457f9ed792744f24fc57a9ba3fd8f59771c137d46d8a6865dfd60e0c45b800b",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00"
 }

@@ -1,78 +1,86 @@
 {
   "slug": "bn-059",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "d6db593a56a46eff10ebac7ae3a4bbced7ad993fc411bf1f73e145c9911c8def"
+      "sha256": "f4169f78d6e5bc6f7078e19faa2e41444a503df143acfb359ea5de48ef427db8"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "8c29f213c30fdf0879de50a60e6d5415e4563e400a23c0355a59cc8761b2b421"
+      "sha256": "64e6f6ec258e8499367236b10462e8fb75325d3a2d120d9ebebe4ff9522e95bb"
     },
     {
       "file": "chapters/chapter-002.json",
-      "sha256": "8568cbeb31aa14e744f9dee674b4d110decc8fd9f3ba0df0f17d24f58d23db4a"
+      "sha256": "373b1cb355283d2b6d1b7cae45441f54a7cf951c9e741e49647280c140f1006a"
     },
     {
       "file": "chapters/chapter-003.json",
-      "sha256": "b2f07b8a8e743a5521c9f4cad2befefbf383f62f8d93a18a1d1cdfa5067a9405"
+      "sha256": "0152c9543a83ca9ee50a4f32b95ef567720f8655ea1ac1663fdfa0027e81cce7"
     },
     {
       "file": "chapters/chapter-004.json",
-      "sha256": "464e80f9170b7af4852a779dbe158b174f4891db4db672c6250b8dec204989fb"
+      "sha256": "9139632373e63df2645f1336582c32c3d56463ba037caa057da93d4ee9b12f23"
     },
     {
       "file": "chapters/chapter-005.json",
-      "sha256": "f9f8d83212e59747058f4b10be9e3ca2973e1a892d34b5d13897074ec5733ddf"
+      "sha256": "c52980a11c0ba880fade5685515cac34cf0138f8dd0ddd388648445171db7a35"
     },
     {
       "file": "chapters/chapter-006.json",
-      "sha256": "480f9f6ef1d733bb974e796bf8bb887b89b48cf43055f02c2b11859c4e83d408"
+      "sha256": "cccdb37662034e81e53a3835bd832a20e83db0519fdd2902622b49a0ae22734d"
     },
     {
       "file": "chapters/chapter-007.json",
-      "sha256": "68bd0c68fccac84837fb66db95bbfc664f1894c3ddcbd0ded467e71cdf4ef533"
+      "sha256": "54dca2e9fe61035bbf40f7b58cf5e693d31eaa6b1f4584c9b0c8ad84fbedbc92"
     },
     {
       "file": "chapters/chapter-008.json",
-      "sha256": "4746877f99673f1cf6ed3597bedc9eebe1fcdeabbd6f5128ad25392caf1d5614"
+      "sha256": "bcc1283e772e1764b8d51f8824ee825f456ae10b21a8f366a6911ed7f8376860"
     },
     {
       "file": "chapters/chapter-009.json",
-      "sha256": "b24c613b2453250453b892c17eace6879ebb5da448721c83208994614e0c1b0e"
+      "sha256": "d2b95d5e12bbd1f1b2aa9a4021bf7615b0d75166452a8deef67fc28653e7cc9a"
     },
     {
       "file": "chapters/chapter-010.json",
-      "sha256": "8cfa5692dcf5e638b22ee3b9bfad9ddde0114bc3d929a345ff78d38c02e965b2"
+      "sha256": "783deac0177444e968d3f86790e384fa8b69dddb43dec17d9988ad79422ef83e"
     },
     {
       "file": "chapters/chapter-011.json",
-      "sha256": "bcceb5deb8b1f416d97b259bce027a82752ab91740a86b14858d2eb89107fe95"
+      "sha256": "8e338dabf9a50bae72dd5091d851be77329daf22e8e1aa7a0e6a37b7f57b36a6"
     },
     {
       "file": "chapters/chapter-012.json",
-      "sha256": "52ab9cd8039d948a5bb19843be76c2c2eae1f1f912b88c0bf927de0f14942ec1"
+      "sha256": "f5c20085b18df5539254c40ea4af2d388229e6bc5c92e49280516eef8336d042"
     },
     {
       "file": "chapters/chapter-013.json",
-      "sha256": "17e2754c628e1f42dc1e967fad8ca49d205aaf4463e0dab5fca30d715f026944"
+      "sha256": "f64b88a5d08b6d33909c568f386ba97f1e4ced0a946fe8bdb2118329f39de3af"
     },
     {
       "file": "highlight_sync.json",
       "sha256": "33a3d73da12182d74b50e3fb68a8b6cca5ce60a1499fe0ad89ccb4b8684a40b3"
     },
     {
+      "file": "license_notice.json",
+      "sha256": "da382ceb704d5f59678f382d659d7251ea639ae4d0457c7a6636b5e6b5f4ba34"
+    },
+    {
       "file": "public_book.json",
-      "sha256": "f87518fbbbaef478eb62d5a3fe0e8fef20fca379e5facf83ec31ff391e42100f"
+      "sha256": "22b93c2f0661b3e844a647811ebb68225e8aa92e33173a3fc7cf99dc6a2c255a"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "11e53198a277a620032435a76d82df27117821c99fce6802a531d7c326d7a1a3"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "bf22b148fb0515b2c21fcc0f14543331e84f77783199c7453bce7365d5ec6338"
+      "sha256": "f6e6fb365561b7f796fa52ad190d6d16a4f7c409c1b5e6ebb648f833b768a2da"
     },
     {
       "file": "source_evidence.json",
-      "sha256": "05e3581eb6f354831a360e019d4bdefbc2959ad8c01a89eb6ce4d18ead507be0"
+      "sha256": "1ae73ff80e4a9ded7b57617b2ce5a92c689b0e70f6f98f55cb3302fbfb00f082"
     }
   ]
 }

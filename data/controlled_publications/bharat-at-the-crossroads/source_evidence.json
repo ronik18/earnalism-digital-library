@@ -1,15 +1,76 @@
 {
   "slug": "bharat-at-the-crossroads",
-  "source_name": "Reo Enterprise",
+  "source_name": "First-party original Earnalism manuscript by Ronik Basak; exact existing source/content identity, copyright reserved to Reo Enterprise",
   "source_type": "original_work_internal_admin_source",
   "source_license": "Original work; copyright reserved to Reo Enterprise.",
   "source_hash": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
   "content_hash": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
-  "provenance_hash": "272d8f84c8a0b974759463212c60531491030193cd47b57504f106756d06c5da",
-  "rights_basis": "Original work authored by Ronik Basak; copyright reserved to Reo Enterprise.",
+  "provenance_hash": "41300c1e70b2b43c0f17602acba1de96a1b3f5350e8dffd46c470ecdc9330343",
+  "rights_basis": "First-party original manuscript permission under the actual owner autonomous text-clearance delegation; no public-domain/death/publication-expiry claim. Exact original source/content hash reproduced; cover display and audio uses excluded, no production registry or release activation.",
   "reader_facing_boilerplate_removed": true,
   "source_url": "",
   "word_count": 34761,
   "commercial_use_allowed": true,
-  "generated_at": "2026-08-08T00:00:00Z"
+  "generated_at": "2026-08-08T00:00:00Z",
+  "author_death_year": null,
+  "selected_edition_publication_year": null,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-02T03:00:15.653216+00:00",
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "source_kind": "existing owner-authored canonical manuscript",
+      "source_path": "data/controlled_publications/bharat-at-the-crossroads/chapters/chapter-001.json:content",
+      "accessed_at": "2026-10-02T03:00:15.643196+00:00",
+      "response_sha256": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+      "original_import_identity_reproduced": true,
+      "no_remote_source_claimed": true
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 0,
+          "length": 234414
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "first_party_permission_evidence": {
+      "ownership_basis": "Existing canonical source explicitly identifies original work authored by Ronik Basak; copyright reserved to Reo Enterprise. Current owner expressly delegates autonomous text publication clearance of available English/Bengali books. A new text-only authorization is recorded; historical audio-only authorization is NOT reused or broadened.",
+      "rights_holder": "Reo Enterprise",
+      "creator": "Ronik Basak",
+      "basis": "First-party original manuscript permission under the actual owner autonomous text-clearance delegation; no public-domain/death/publication-expiry claim. Exact original source/content hash reproduced; cover display and audio uses excluded, no production registry or release activation.",
+      "verified_at": "2026-10-02T03:00:15.643196+00:00",
+      "chapter_count": 1,
+      "source_hash": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7"
+    },
+    "author_death_evidence": null,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "copyright_owner": "Reo Enterprise",
+  "owner_attestation": {
+    "ownership_basis": "Existing canonical source explicitly identifies original work authored by Ronik Basak; copyright reserved to Reo Enterprise. Current owner expressly delegates autonomous text publication clearance of available English/Bengali books. A new text-only authorization is recorded; historical audio-only authorization is NOT reused or broadened.",
+    "rights_holder": "Reo Enterprise",
+    "creator": "Ronik Basak",
+    "basis": "First-party original manuscript permission under the actual owner autonomous text-clearance delegation; no public-domain/death/publication-expiry claim. Exact original source/content hash reproduced; cover display and audio uses excluded, no production registry or release activation.",
+    "verified_at": "2026-10-02T03:00:15.643196+00:00",
+    "chapter_count": 1,
+    "source_hash": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7"
+  }
 }

@@ -1,30 +1,38 @@
 {
   "slug": "boule-de-suif",
-  "generated_at": "2026-07-03T20:07:47Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "6c8c5b1cc405099f58f97282411f728b5a6a97deb2fa5d8cf1812e4ee5d3bd64"
+      "sha256": "9cc911790c568d41a952a3e11ffcfe6018f054e1898578003c778f42e835d9b7"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "6178078176770d176dc9796758222e78ff877b95a50ad1543848d13bf3914258"
+      "sha256": "76e8c9a29a04032a875cfffb4501c9a7dd9054a71cc52f7643971fc33f4c6663"
     },
     {
       "file": "highlight_sync.json",
       "sha256": "6734794508685a3e5a81cf385f0641fd91652a912abf27065e9d26f589777c95"
     },
     {
+      "file": "license_notice.json",
+      "sha256": "05c1dafbc6f4160feab764badc309b8e3fe484e0f0c877bc3c68678dca4e85bd"
+    },
+    {
       "file": "public_book.json",
-      "sha256": "671991b89c5f19c642b96e2b4ee40f794f6c09da5fa50593560747b24fbc98d4"
+      "sha256": "db8fb2830f1a80ca53412a290536144ebe7da7376f2ad1a68ea3345daaf4f318"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "20fb37565e905e459b84bafc9fadf4e781d71b31a52756ba47700568a7b5c2a8"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "2e2823f176e58697f497a1238dcb721c1d829515c7e9668f45a2f83f9f022750"
+      "sha256": "7ceb1427724c7c40b9df103f8aa183c832b98d260f869d13aa374ee5cea25838"
     },
     {
       "file": "source_evidence.json",
-      "sha256": "a1ebd933ff36e63fe9afbd4186c92fa00116739505ef6f57499227321ba4caba"
+      "sha256": "225fe86c8b92193d630722356c2b1069f1415aa6360c750cb954191a70cbfa9f"
     }
   ]
 }

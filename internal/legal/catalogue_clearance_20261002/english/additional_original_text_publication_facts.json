@@ -1,0 +1,147 @@
+{
+  "dracula": {
+    "creator_death_year": 1912,
+    "selected_edition_publication_year": 1897,
+    "original_first_publication_year": null,
+    "primary_receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Stoker%2C%20Bram%2C%201847-1912",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Stoker%2C%20Bram%2C%201847-1912",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:11.937936+00:00",
+      "response_sha256": "20d5c8a9ccde1d9506b6c308dfee8cdde38d880779db8682e7977b5907115911"
+    },
+    "bibliographic_excerpt": "Dracula (based on the A. Constable edition, 1897) (Gutenberg text) Stoker, Bram, 1847-1912: Dracula (New York: Grosset and Dunlap, c1897) Gutenberg text and audio multiple formats at archive.org Stoker, Bram, 1847-1912: Dracula's Guest (single story) (HTML at eastoftheweb.com) Stoker, Bram, 1847-191",
+    "basis": "Verified work publication during creator lifetime; selected publication year is not claimed as first publication.",
+    "scope": "Complete selected original-author narrative and verified same-author prefatory matter; anthology editors, art and separately attributed epigraph/dedication excluded unless specifically verified."
+  },
+  "the-great-gatsby": {
+    "creator_death_year": 1940,
+    "selected_edition_publication_year": 1925,
+    "original_first_publication_year": null,
+    "primary_receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Fitzgerald%2C%20F.%20Scott%20%28Francis%20Scott%29%2C%201896-1940",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Fitzgerald%2C%20F.%20Scott%20%28Francis%20Scott%29%2C%201896-1940",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:13.648756+00:00",
+      "response_sha256": "e20846217b755026e9ea6021ee600c35ac15a39d3d51577afba3e25580ccf554"
+    },
+    "bibliographic_excerpt": "Gatsby (1925) (Gutenberg text) Fitzgerald, F. Scott (Francis Scott), 1896-1940: The Great Gatsby (first edition; New York: C. Scribner's Sons, 1925) page images at HathiTrust multiple formats at archive.org Fitzgerald, F. Scott (Francis Scott), 1896-1940: Tales of the Jazz Age (1922) (Gutenberg text",
+    "basis": "Verified work publication during creator lifetime; selected publication year is not claimed as first publication.",
+    "scope": "Complete selected original-author narrative and verified same-author prefatory matter; anthology editors, art and separately attributed epigraph/dedication excluded unless specifically verified."
+  },
+  "the-monkeys-paw": {
+    "creator_death_year": 1943,
+    "selected_edition_publication_year": 1902,
+    "original_first_publication_year": null,
+    "primary_receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Jacobs%2C%20W.%20W.%20%28William%20Wymark%29%2C%201863-1943",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Jacobs%2C%20W.%20W.%20%28William%20Wymark%29%2C%201863-1943",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:12.760348+00:00",
+      "response_sha256": "3e7a1fa196fb222b185431a4eb38f7a7ee8b80061f42d76b8fc3b1d03fc30066"
+    },
+    "bibliographic_excerpt": "Lady of the Barge , illust. by Maurice Greiffenhagen and James Frank Sullivan (Gutenberg multiple formats) Jacobs, W. W. (William Wymark), 1863-1943: The Lady of the Barge (based on the 1902 Harper edition, with added illustrations from magazine publications) , illust. by Maurice Greiffenhagen, Will",
+    "basis": "Verified work publication during creator lifetime; selected publication year is not claimed as first publication.",
+    "scope": "Complete selected original-author narrative and verified same-author prefatory matter; anthology editors, art and separately attributed epigraph/dedication excluded unless specifically verified."
+  },
+  "the-celebrated-jumping-frog-of-calaveras-county": {
+    "creator_death_year": 1910,
+    "selected_edition_publication_year": 1869,
+    "original_first_publication_year": null,
+    "primary_receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Twain%2C%20Mark%2C%201835-1910",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Twain%2C%20Mark%2C%201835-1910",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:34.848181+00:00",
+      "response_sha256": "7143336bf6e38b1c2863302f9b386063ee80ab49414836362fbc1d164ebb5d4f"
+    },
+    "bibliographic_excerpt": "Jumping Frog of Calaveras County, and Other Sketches (New York: C. H. Webb, 1869) (multiple formats at archive.org) Twain, Mark, 1835-1910: Chapters From My Autobiography (as published in issues of the North American Review) (Gutenberg text) Twain, Mark, 1835-1910: Christian Science (Gutenberg text)",
+    "basis": "Verified work publication during creator lifetime; selected publication year is not claimed as first publication.",
+    "scope": "Complete selected original-author narrative and verified same-author prefatory matter; anthology editors, art and separately attributed epigraph/dedication excluded unless specifically verified."
+  },
+  "the-lifted-veil": {
+    "creator_death_year": 1880,
+    "selected_edition_publication_year": 1870,
+    "original_first_publication_year": null,
+    "primary_receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Eliot%2C%20George%2C%201819-1880",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Eliot%2C%20George%2C%201819-1880",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:47.586333+00:00",
+      "response_sha256": "6130841e6bf5a0263ffa9cd5c20c03367448c9102545046db96753103ebc449b"
+    },
+    "bibliographic_excerpt": "veil lifted : Brother Jacob (D. Estes, 1870) (page images at HathiTrust) Eliot, George, 1819-1880: Miscellaneous essays ; Impressions of Theophrastus Such ; The veil lifted ; Brother Jacob (Estes and Lauriat, 1888) (page images at HathiTrust) Eliot, George, 1819-1880: Miscellaneous essays; Impressio",
+    "basis": "Verified work publication during creator lifetime; selected publication year is not claimed as first publication.",
+    "scope": "Complete selected original-author narrative and verified same-author prefatory matter; anthology editors, art and separately attributed epigraph/dedication excluded unless specifically verified."
+  },
+  "berenice": {
+    "creator": "Edgar Allan Poe",
+    "creator_death_year": 1849,
+    "lifetime_publication_year": 1835,
+    "primary_historical_bibliography_receipt": {
+      "requested_url": "https://www.eapoe.org/works/info/pt011.htm",
+      "resolved_url": "https://www.eapoe.org/works/info/pt011.htm",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:20.000678+00:00",
+      "response_sha256": "a39fc1ed6c785544996ca1366ecbedbdc09c77f994f4f39e3b73e02f9da2bcb3"
+    },
+    "historical_publication_excerpt": "Text-02b — “ Berenice — A Tale ” — March 1835 — Southern Literary Messenger — (Mabbott text A) ( The Poe Log , p. 149 , states that the March issue was available about April 17, 1835.) Text-03 — “Berenice — A Tale” Text-03a — “ Berenice — A",
+    "basis": "Historical printed-story publication verified before Poe death1849; selected RavenEdition text independently matches literal PG source; modern scholarly apparatus not imported."
+  },
+  "the-masque-of-the-red-death": {
+    "creator": "Edgar Allan Poe",
+    "creator_death_year": 1849,
+    "lifetime_publication_year": 1842,
+    "primary_historical_bibliography_receipt": {
+      "requested_url": "https://www.eapoe.org/Works/info/pt038.htm",
+      "resolved_url": "https://www.eapoe.org/Works/info/pt038.htm",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:22.768174+00:00",
+      "response_sha256": "8b47167b86297a08110fce0a3c0045bee8216c044f0c4fea3367cc0907a82033"
+    },
+    "historical_publication_excerpt": "Text-02b — “ The Mask of the Red Death. A Fantasy. ” — May 1842 — Graham's — (Mabbott text A) Text-03 — “The Mask of the Red Death.” — 1842 Text-03a — “The Mask of the Red Death” — 1842 — TGAPP (manuscript of title only) — (The title is lis",
+    "basis": "Historical printed-story publication verified before Poe death1849; selected RavenEdition text independently matches literal PG source; modern scholarly apparatus not imported."
+  },
+  "the-murders-in-the-rue-morgue": {
+    "creator": "Edgar Allan Poe",
+    "creator_death_year": 1849,
+    "lifetime_publication_year": 1841,
+    "primary_historical_bibliography_receipt": {
+      "requested_url": "https://www.eapoe.org/works/info/pt030.htm",
+      "resolved_url": "https://www.eapoe.org/works/info/pt030.htm",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:25.808614+00:00",
+      "response_sha256": "5c267425e6100f6651c06b3966895f05e69a21326ee66d344f6bd21d5337ad5f"
+    },
+    "historical_publication_excerpt": "Text-02b — “ The Murders in the Rue Morgue ” — April 1841 — Graham's — (Mabbott text B) Text-03 — “The Murders in the Rue Morgue” — 1842-1843 Text-03a — “The Murders in the Rue Morgue” — 1842 — TGAPP (manuscript of title only) — (The tale i",
+    "basis": "Historical printed-story publication verified before Poe death1849; selected RavenEdition text independently matches literal PG source; modern scholarly apparatus not imported."
+  },
+  "the-purloined-letter": {
+    "creator": "Edgar Allan Poe",
+    "creator_death_year": 1849,
+    "lifetime_publication_year": 1844,
+    "primary_historical_bibliography_receipt": {
+      "requested_url": "https://www.eapoe.org/works/info/pt051.htm",
+      "resolved_url": "https://www.eapoe.org/works/info/pt051.htm",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:21.662920+00:00",
+      "response_sha256": "a4c43fd5e4eb4852bda40383ab37094d4363d7905625e839ecab00d68fbf8a73"
+    },
+    "historical_publication_excerpt": "Text-02b — “ The Purloined Letter ” — 1844 — The Gift for 1845 (probably available by October 1844) — (Mabbott text A) Text-03 — “The Purloined Letter” — 1844-1849 Text-03a — “The Purloined Letter” — 1844-1845 — (a presumed revised version ",
+    "basis": "Historical printed-story publication verified before Poe death1849; selected RavenEdition text independently matches literal PG source; modern scholarly apparatus not imported."
+  },
+  "the-imp-of-the-perverse": {
+    "creator": "Edgar Allan Poe",
+    "creator_death_year": 1849,
+    "lifetime_publication_year": 1845,
+    "primary_historical_bibliography_receipt": {
+      "requested_url": "https://www.eapoe.org/WORKS/info/pt060.htm",
+      "resolved_url": "https://www.eapoe.org/WORKS/info/pt060.htm",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:51:34.171019+00:00",
+      "response_sha256": "b948ffb944d6fc201e6f447b2379cc539daac2a4d9dceff476e38f4576a2a146"
+    },
+    "historical_publication_excerpt": "Text-02b — “ The Imp of the Perverse ” — July 1845 — Graham's — (Mabbott text A) Text-03 — “The Imp of the Perverse” — 1845 Text-03a — “The Imp of the Perverse” — mid-late 1845 — revised manuscript, no longer surviving, but presumably refle",
+    "basis": "Historical printed-story publication verified before Poe death1849; selected RavenEdition text independently matches literal PG source; modern scholarly apparatus not imported."
+  }
+}

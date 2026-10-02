@@ -53,9 +53,9 @@
       "updated_at": "2026-07-03T20:07:49Z"
     }
   ],
-  "source_hash": "2264be57608b30c4af99db7b1d430accae5a7c4d9da738ac04651f7ef74bc266",
-  "content_hash": "8e292e23a73729319a17d9aac397303b6311d97a0ede19a80514922c114c1dd0",
-  "provenance_hash": "fccc97a08521519d711236c769280c844fb91a421fca2976bfe8b149bbab6db1",
+  "source_hash": "58e8a7186604d9693b0a49a2d131fa11b2a8ab0e14958df728883bbf35b42520",
+  "content_hash": "c517483495ef7266f533d077036a8e83bba53dc33cac60580cd895e757f637e3",
+  "provenance_hash": "134975b99b925552968ba69c64940ac5f867b5d19e983e21bd76276dbc5d0142",
   "rights_basis": "Edgar Allan Poe died 1849; first published 1842. Public domain in India and the U.S.",
   "rights_tier": "A",
   "verification_status": "approved",

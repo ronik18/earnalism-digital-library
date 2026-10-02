@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "the-bet",
   "title": "The Bet",
-  "generated_at": "2026-10-01T21:08:32.061834+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "35a9b8d90a0313a1e129715e179023051ed043b569e2d6f69d50d5a60e3e5fe2",
-    "content_hash": "8ecb474057e0f376df471ae3b52ee18bfe7f0f24e31b3e683b4929af6d57045e",
-    "provenance_hash": "d73ddc380058122db42e10b77dbc124fa00a25b67670e19c5fa35e0eaa66e2c0",
+    "source_hash": "7f46ed4a590c1b37ba965a4cea6ec3e344382e1b3abe044d04f96896337c4ac9",
+    "content_hash": "72b8e903ed62116f25575d77840b923f132f7c0e13e257f9a0821179cc1c7a0d",
+    "provenance_hash": "dda8e1c68983c69e610c27011c0fcf578b60fa6cb89a2e2b3cf31542e5f03075",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "8799927e10fee947a8dc99f0e8ecb8dfc4d2c4f919684e5f1b600e946775da75",
+    "chapter_index_sha256": "59bcf501e14e84658f3fb17989f269c51af6221dfe3f21e5b10b1ece396d8a05",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "The Bet",
         "word_count": 2720,
-        "sha256": "e95906b22afb7282061e92e98abec46ebade0486547726312443d77703bb1aef"
+        "sha256": "b81dfae016d655767feda2545a6010f44b29968f1c2e6a585d2e91f518229b5d"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "f2a42a7b20a7c109f7320118926f8ef31b398dcb2a3744e0d47d34a339e4e2c7"
+    "publication_region": "india",
+    "evidence_sha256": "fcca31f94efb0d51a1ddbc397cfffab5525baaa72e220091c2dbadcdc01f0f0b"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "db895dbd18f1cebbe264ec471b726368c1d41abbe7d9d329cb68569ee0947fbd",
+    "public_book": "745608145f56c1393f56057d9c1eb57fc949e0c80f784578855401b5ce717856",
     "reader_manifest": "def84e82f3afd63484493e8386233f0eaae08eca2e81926f117e413c6964046b",
-    "source_evidence": "f2a42a7b20a7c109f7320118926f8ef31b398dcb2a3744e0d47d34a339e4e2c7",
-    "approval_evidence": "641fd33ad7f8a11860a22776b29386a61d53f0bd406f1c6da1bce3a6d9a0b8ca"
+    "source_evidence": "fcca31f94efb0d51a1ddbc397cfffab5525baaa72e220091c2dbadcdc01f0f0b",
+    "approval_evidence": "f9ec246aa2d21e0103525c91549a46ffc1ee7943eabe61efdbeb675430e8ce84"
   },
-  "manifest_sha256": "aed9f40fc6efd7438e4b1699373390bfb1e0381454403dd1fc549fcd45f672bc"
+  "manifest_sha256": "acf05a109361fcd33a0d2ff5fa850335e5b0519cc271a6a9935b52ef451dad48"
 }

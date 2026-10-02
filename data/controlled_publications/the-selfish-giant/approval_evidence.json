@@ -1,10 +1,10 @@
 {
   "slug": "the-selfish-giant",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "batch2_checksum_bound_audio_release_reconciliation",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
@@ -64,5 +64,15 @@
   "browser_gate_status": "PASS",
   "browser_playback_advanced": true,
   "release_blockers": [],
-  "reconciled_at": "2026-08-16T06:45:34Z"
+  "reconciled_at": "2026-08-16T06:45:34Z",
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "batch2_checksum_bound_audio_release_reconciliation"
+  },
+  "publication_authorization_sha256": "ea7a7a575a8825e29c65008817b4865ba6b498f380393fe79719fa34b9e73e83",
+  "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+  "content_hash": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+  "provenance_hash": "1e08883215a0343a9dd6f8c53242fd4af41d62450aa24e424712188e8d79af16",
+  "verified_at": "2026-10-01T21:34:27.335291+00:00"
 }

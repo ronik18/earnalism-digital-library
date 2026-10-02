@@ -1,10 +1,10 @@
 {
   "slug": "ward-no-6",
-  "generated_at": "2026-07-03T20:07:47Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "90a0557fe3430be831172eb890dd84f196ca6bf9fe25e59b3d7c8bfd4c00bedd"
+      "sha256": "dca2bc9971f91ecbafe8aa8e60ed032d6ad45aa7e265df29399c573cfba32b4c"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "6a590a00d8ee2766728a1de56fdece75f46d1e7f292b8fdfac1bec0f2cf8cf1e"
+      "sha256": "6de1004077977344ab43ae8aa753e975c2fe4c49b4ecb676f910d778ab2ae85f"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "b97c03a9379c1b4acfbe3588fc054e86e1050fca44539bfdb12f69f3571d0354"
     },
     {
       "file": "reader_manifest.json",
@@ -24,7 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "e6a05dce4be355416276dab6ed44f0fef87e7a1a39696fac7d85813dd28f9bdb"
+      "sha256": "6f3708f0567a048154a8af95476a90a3619f5dd246d3b55c35e4890bb94a92f5"
     }
   ]
 }

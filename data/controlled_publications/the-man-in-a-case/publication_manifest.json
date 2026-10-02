@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "the-man-in-a-case",
   "title": "The Man in a Case",
-  "generated_at": "2026-10-01T21:08:33.185542+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "4a49f5472e5ce0b39d5022c5e2bf23188cd76f58aa6b3344541cb7b2d9e2173a",
-    "content_hash": "bc9e31688c165ba14e19a48e2b2429792f33e93501255d1a81de39072d16baa4",
-    "provenance_hash": "969075fa229f71f1239b1c51fc96f39f4f6b5c4a9a59b1c126762b4758c38089",
+    "source_hash": "ac5994c65da06e72823036764f85931ec908d1021e78e56886bc74d15971eac2",
+    "content_hash": "0879b82d827a6fc06defd69c8b9abb9b1df719c9378b3d86b3384cd39e22ef7a",
+    "provenance_hash": "e339656f0563e76fcc1da3da3c7c38d03866cfc65ba25cd66bddfe5c4dc4948c",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "cd8c36230be0825ac2c32379255fb546d7be8e589f6a1d730c76fb08aa52e446",
+    "chapter_index_sha256": "e2e7859811556059ed9a1e5347f396bf4a8f43aee70ae301d4cf0a4a64a2d593",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "The Man in a Case",
         "word_count": 5335,
-        "sha256": "90e79541a3067517b762ac7633e792d93ef5324e19728643b66f26e8c467c77d"
+        "sha256": "91fe6eb0e770e743a46d29bf4f7901340c71be0eb2e43542bef68cc85ae73cf8"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "a1c04996d466ba3f8bcf3d2a9626e214f7417a2b6a4ba7f416d68c9d92393126"
+    "publication_region": "india",
+    "evidence_sha256": "095ac34a3b3e5c609f5a97d9a2dbf83cffb29361e5574d83ab305c3634af3a27"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "47449d254cdb75729d7343cb4edb2f994b1e01eea54b63b9751109d1017c03db",
+    "public_book": "4a27a94dffde4f8365ce5a38b079d8cc38611d4c28c22f4eb621d26d76d89a96",
     "reader_manifest": "6c3fea2af3ed7a015e0aba5c93e0d38247ed1411a14555a8b40df9d09d63dbcf",
-    "source_evidence": "a1c04996d466ba3f8bcf3d2a9626e214f7417a2b6a4ba7f416d68c9d92393126",
-    "approval_evidence": "1571c64769f6d9dbe3fc7bde03bf46221af77428ee98e8320c70d4ee3f2b14de"
+    "source_evidence": "095ac34a3b3e5c609f5a97d9a2dbf83cffb29361e5574d83ab305c3634af3a27",
+    "approval_evidence": "18a5e4d79ab446ae76aa0880f2a236b791a9f5a3d7afb42114841b363b1cf0f8"
   },
-  "manifest_sha256": "31cec6a9154743354071f1a13a177535ad8af7febfc03d7038500b784988c4d8"
+  "manifest_sha256": "159c9a5eb0abda06cc157fa74cab39cd2538e0ecdd24537139599ec50c0614f2"
 }

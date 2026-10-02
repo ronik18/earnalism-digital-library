@@ -4,9 +4,13 @@
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_AUTOMATED_IN_EDITION_BOUND_TEXT_READER_ONLY_COVER_DEFERRED",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true
+  "audiobook_enabled": true,
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "source_hash": "8dc30655e4bd2351ddf1642819c6c85fe0cc6290dc8aba5abb652035f267db42",
+  "content_hash": "e438383f30fc659409490628baa424cb42b3c9d54e700034d958d8ee989039d4",
+  "publication_authorization_sha256": "bd3b355e43de4f0f3ff6e9dfc73c30385fc6da6b92756cba67418b9d1640a2d5"
 }

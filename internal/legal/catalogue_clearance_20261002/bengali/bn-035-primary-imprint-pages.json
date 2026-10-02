@@ -1,0 +1,125 @@
+{
+  "slug": "bn-035",
+  "index": "বড়দিদি-শরৎচন্দ্র চট্টোপাধ্যায়.djvu",
+  "receipt": {
+    "url": "https://bn.wikisource.org/w/api.php?action=query&prop=revisions&titles=%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AC%E0%A6%A1%E0%A6%BC%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF-%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%A7%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AC%E0%A6%A1%E0%A6%BC%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF-%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%A8%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AC%E0%A6%A1%E0%A6%BC%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF-%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%A9%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AC%E0%A6%A1%E0%A6%BC%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF-%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%AA%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AC%E0%A6%A1%E0%A6%BC%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF-%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%AB%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AC%E0%A6%A1%E0%A6%BC%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF-%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%AC&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2",
+    "retrieved_at": "2026-10-01T22:17:08.275329+00:00",
+    "response_sha256": "6fc3dab98b71f6840d2db021df9ed02d8126858f1d51403ca0376fc71fe4caf2"
+  },
+  "pages": [
+    {
+      "pageid": 14638,
+      "ns": 104,
+      "title": "পাতা:বড়দিদি-শরৎচন্দ্র চট্টোপাধ্যায়.djvu/২",
+      "revisions": [
+        {
+          "revid": 1127983,
+          "parentid": 46822,
+          "timestamp": "2018-07-10T15:47:28Z",
+          "slots": {
+            "main": {
+              "contentmodel": "proofread-page",
+              "contentformat": "text/x-wiki",
+              "content": "<noinclude><pagequality level=\"0\" user=\"Bodhisattwa\" /></noinclude><noinclude></noinclude>"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pageid": 14639,
+      "ns": 104,
+      "title": "পাতা:বড়দিদি-শরৎচন্দ্র চট্টোপাধ্যায়.djvu/৪",
+      "revisions": [
+        {
+          "revid": 948522,
+          "parentid": 49145,
+          "timestamp": "2018-07-08T01:27:40Z",
+          "slots": {
+            "main": {
+              "contentmodel": "proofread-page",
+              "contentformat": "text/x-wiki",
+              "content": "<noinclude><pagequality level=\"4\" user=\"Nazmus Sakib Rabbi\" /></noinclude>{{block center|width=400px|\n{{dhr|5em}}\n{{left|<big><big><big>'''{{larger|উপ}}<sub>{{x-larger|হার}}</sub>'''</big></big></big>}}\n{{dhr|10em}}\n{{float right|\n{{rule|15em}}\n\n\n\n{{rule|12em}}\n\n\n\n{{rule|8em}}\n\n\n\n{{rule|5em}}}}\n{{dhr|10em}}}}<noinclude></noinclude>"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pageid": 14640,
+      "ns": 104,
+      "title": "পাতা:বড়দিদি-শরৎচন্দ্র চট্টোপাধ্যায়.djvu/১",
+      "revisions": [
+        {
+          "revid": 1794933,
+          "parentid": 948523,
+          "timestamp": "2023-12-24T04:24:00Z",
+          "slots": {
+            "main": {
+              "contentmodel": "proofread-page",
+              "contentformat": "text/x-wiki",
+              "content": "<noinclude><pagequality level=\"4\" user=\"Nazmus Sakib Rabbi\" /></noinclude>{{xxx-larger|'''বড়দিদি'''}}\n{{dhr|15em}}\n{{c|{{xx-larger|'''শ্রীশরৎচন্দ্র চট্টোপাধ্যায়'''}}}}\n{{dhr|10em}}\n{{c|আষাঢ়, ১৩২৯}}\n{{dhr|5em}}\n{{right|{{larger|'''মূল্য এক টাকা'''}}}}\n{{dhr|3em}}<noinclude></noinclude>"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pageid": 14655,
+      "ns": 104,
+      "title": "পাতা:বড়দিদি-শরৎচন্দ্র চট্টোপাধ্যায়.djvu/৬",
+      "revisions": [
+        {
+          "revid": 948524,
+          "parentid": 49115,
+          "timestamp": "2018-07-08T01:28:00Z",
+          "slots": {
+            "main": {
+              "contentmodel": "proofread-page",
+              "contentformat": "text/x-wiki",
+              "content": "<noinclude><pagequality level=\"4\" user=\"Nazmus Sakib Rabbi\" /></noinclude>{{dhr|3em}}\n{{c|{{xxx-larger|'''বড়দিদি'''}}}}\n{{dhr|1em}}\n{{c|{{xx-larger|'''প্রথম পরিচ্ছেদ'''}}}}\n{{dhr|1em}}\n\n{{gap}}এ পৃথিবীতে এক সম্প্রদায়ের লোক আছে, তাহারা যেন খড়ের আগুন। দপ্ করিয়া জ্বলিয়া উঠিতেও পারে, আবার খপ্ করিয়া নিবিয়া যাইতেও পারে। তাহাদিগের পিছনে সদা-সর্ব্বদা একজন লোক থাকা প্রয়োজন,– সে যেন আবশ্যক অনুসারে, খড় যোগাইয়া দেয়।\n\n{{gap}}গৃহস্থ-কন্যারা মাটির দীপ সাজাইবার সময় যেমন তৈল এবং শলিতা দেয়, তেমনি তাহার গায়ে একটি কাটি দিয়া দেয়। প্রদীপের শিখা যখন কমিয়া আসিতে থাকে,– এই ক্ষুদ্র কাটিটির তখন বড় প্রয়োজন,– উস্কাইয়া দিতে হয়; এটি না হইলে তৈল এবং শলিতাসত্ত্বেও প্রদীপের জ্বলা চলে না।\n\n{{gap}}সুরেন্দ্রনাথের প্রকৃতিও কতকটা এইরূপ। বল, বুদ্ধি, ভরসা তাহার সব আছে, তবু সে একা কোন কাজ সম্পূর্ণ করিতে পারে না। খানিকটা কাজ সে যেমন উৎসাহের সহিত করিতে পারে, বাকিটুকু সে তেমনি নীরব আলস্যভরে ছাড়িয়া দিয়া চুপ করিয়া বসিয়া থাকিতে পারে। তখনই একজন লোকের প্রয়োজন– সে উস্কাইয়া দিবে।{{nop}}<noinclude></noinclude>"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pageid": 14960,
+      "ns": 104,
+      "title": "পাতা:বড়দিদি-শরৎচন্দ্র চট্টোপাধ্যায়.djvu/৩",
+      "revisions": [
+        {
+          "revid": 1976556,
+          "parentid": 1744879,
+          "timestamp": "2026-06-21T16:02:32Z",
+          "slots": {
+            "main": {
+              "contentmodel": "proofread-page",
+              "contentformat": "text/x-wiki",
+              "content": "<noinclude><pagequality level=\"4\" user=\"Pmlineditor\" /></noinclude>{{block center|width=450px|\n{{dhr}}\n[[File:পল্লী-সমাজ পৃষ্ঠা ৩ প্রকাশক চিত্র.JPG|250px]]\n{{dhr|5em}}\n{{overfloat image\n | image = [[File:বড়দিদি-শরৎচন্দ্র চট্টোপাধ্যায় p3.jpg|300px|center]]\n | width = 300px\n | item1 = {{c|{{xx-larger|অষ্টম সংস্করণ}}}}\n | x1    = 150\n | y1    = 15\n}}\n{{dhr|5em}}\n{{block right|{{c|প্রিণ্টার—অবিনাশচন্দ্র মণ্ডল<br/>\n<big>'''“সিদ্ধেশ্বর প্রেস্‌”'''</big><br/>\n৭৭ নং হরিঘোষের ষ্ট্রীট্‌,<br/>\nকলিকাতা}}}}}}<noinclude></noinclude>"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pageid": 14961,
+      "ns": 104,
+      "title": "পাতা:বড়দিদি-শরৎচন্দ্র চট্টোপাধ্যায়.djvu/৫",
+      "revisions": [
+        {
+          "revid": 1128057,
+          "parentid": 277157,
+          "timestamp": "2018-07-10T15:47:40Z",
+          "slots": {
+            "main": {
+              "contentmodel": "proofread-page",
+              "contentformat": "text/x-wiki",
+              "content": "<noinclude><pagequality level=\"0\" user=\"Bodhisattwa\" /></noinclude><noinclude></noinclude>"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": "earnalism.text-license.v1",
+  "slug": "book-d2fe532e1c",
+  "license": "CC-BY-SA-4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "attribution": "স্বর্ণমৃগ by রবীন্দ্রনাথ ঠাকুর; Bengali Wikisource transcription and its contributors, credited through the exact edition/source revision and its scanned-page contributor histories.",
+  "changes": "Source/import headings and publication furniture omitted. Exact source-backed missing paragraphs, chapter order and typographical punctuation corrected where recorded. No new literary text composed.",
+  "scope": "CC BY-SA4.0 applies only to source-derived transcription and formatting, not independently owned covers, Earnalism branding, software or unrelated material. Underlying literary/edition rights and publication authorization are separate release gates.",
+  "disclaimer": "Delivered licensed text may be copied, printed and reused under CC BY-SA4.0 attribution and ShareAlike terms. This notice itself grants no publication, cover or audiobook authorization.",
+  "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A3%E0%A6%AE%E0%A7%83%E0%A6%97&oldid=1666926",
+  "contributors_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A3%E0%A6%AE%E0%A7%83%E0%A6%97&action=history",
+  "chapter_sha256": [
+    "72993ab7512f9c11850415005744dc512616849870b11c8d9753aa4599411bfe"
+  ]
+}

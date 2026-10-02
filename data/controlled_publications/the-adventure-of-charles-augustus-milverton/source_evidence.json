@@ -1,12 +1,12 @@
 {
   "slug": "the-adventure-of-charles-augustus-milverton",
   "source_url": "https://www.gutenberg.org/ebooks/108",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #108; The Adventure of Charles Augustus Milverton selected complete Arthur Conan Doyle story/cycle from return of Sherlock Holmes; verified lifetime collection edition 1905; no translation/editorial/art imported",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "2821fd715a52eb3293bbe0363ce49b1057b55af7999d59be9ee09548db90fefe",
-  "content_hash": "d1250da3fea3ec9bc6da2e9f9fe8a6b1ad8c8f71f1c1ee6460297071320316da",
-  "provenance_hash": "57dcfcba138fe3d9d3741402100a5cf67aeabf7a3a4c420665891617f7844c70",
-  "rights_basis": "Arthur Conan Doyle died 1930; first published 1904. Public domain in India and the U.S.",
+  "source_hash": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
+  "content_hash": "4c3e8db14fb33f2af6ab065a2978766a4a1ab2ef57508fb67f72285e9457b1a5",
+  "provenance_hash": "d4450fa9dd88e419191a951b0fc3b3d86332e0221814b6a27bbb9f9cdd305167",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1930, verified lifetime collection publication 1905 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-03T08:04:22.376955+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -112,9 +112,121 @@
     "ordered_chapter_sha256": [
       {
         "id": "chapter-001",
-        "sha256": "040974b7d7653078a87ade6b3d011a1ea17e9759a9a853d8fc6ccba6dc1056f6"
+        "sha256": "4c3e8db14fb33f2af6ab065a2978766a4a1ab2ef57508fb67f72285e9457b1a5"
       }
     ],
-    "content_sha256": "040974b7d7653078a87ade6b3d011a1ea17e9759a9a853d8fc6ccba6dc1056f6"
+    "content_sha256": "4c3e8db14fb33f2af6ab065a2978766a4a1ab2ef57508fb67f72285e9457b1a5"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "2821fd715a52eb3293bbe0363ce49b1057b55af7999d59be9ee09548db90fefe",
+        "content_hash": "d1250da3fea3ec9bc6da2e9f9fe8a6b1ad8c8f71f1c1ee6460297071320316da",
+        "provenance_hash": "57dcfcba138fe3d9d3741402100a5cf67aeabf7a3a4c420665891617f7844c70",
+        "source_url": "https://www.gutenberg.org/ebooks/108",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:48:17.188009+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1905,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/108.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/108/pg108.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:36.762132+00:00",
+      "response_sha256": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 299000,
+          "length": 35417
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Doyle, Arthur Conan, 1859-1930",
+      "creator_death_year": 1930,
+      "selected_collection_publication_year": 1905,
+      "original_story_first_publication_year": null,
+      "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+      "bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Doyle%2C%20Arthur%20Conan%2C%201859-1930",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Doyle%2C%20Arthur%20Conan%2C%201859-1930",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:44:11.614798+00:00",
+        "response_sha256": "9c80e664aca64bf1c0579db6cf406619322276bfe1dbd1370d2d3c920f836017"
+      },
+      "bibliographic_excerpt": "return of Sherlock Holmes (McClure, Phillips & co., 1905) (page images at HathiTrust) Doyle, Arthur Conan, 1859-1930: The return of Sherlock Holmes (George Newnes, Ltd., 1905) , also by Sidney Paget (page images at HathiTrust) Doyle, Arthur Conan, 18",
+      "scope": "Named author selected story text only; other collection stories, separately authored editorial matter and all illustrations excluded."
+    },
+    "author_death_evidence": 1930,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE",
+    "whole_work_boundary_evidence": {
+      "source_sha256": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
+      "content_sha256": "4c3e8db14fb33f2af6ab065a2978766a4a1ab2ef57508fb67f72285e9457b1a5",
+      "opening_anchor": "It is years since the incidents of which I speak took place",
+      "next_work_boundary": "THE ADVENTURE OF THE SIX NAPOLEONS",
+      "extraction": "All paragraphs between actual selected story heading and next story heading; NFC/whitespace only",
+      "verified_at": "2026-10-02T03:22:38.932059+00:00"
+    }
+  },
+  "original_publication_year": null,
+  "reader_repair_history": [
+    {
+      "previous_content_sha256": "040974b7d7653078a87ade6b3d011a1ea17e9759a9a853d8fc6ccba6dc1056f6",
+      "new_content_sha256": "4c3e8db14fb33f2af6ab065a2978766a4a1ab2ef57508fb67f72285e9457b1a5",
+      "verified_at": "2026-10-02T03:22:38.932059+00:00",
+      "reason": "Whole-work boundary inspection restored actual omitted opening narrative and visiting-card heading from same immutable PG108 source; entire selected story through next-story boundary preserved."
+    },
+    {
+      "verified_at": "2026-10-02T03:25:45.777143+00:00",
+      "reason": "Restored authentic author dedication/epigraph/addressee or full story opening from immutable exact source before claiming full selected text scope.",
+      "content_sha256": "4c3e8db14fb33f2af6ab065a2978766a4a1ab2ef57508fb67f72285e9457b1a5"
+    },
+    {
+      "verified_at": "2026-10-02T03:25:59.945714+00:00",
+      "reason": "Restored authentic author dedication/epigraph/addressee or full story opening from immutable exact source before claiming full selected text scope.",
+      "content_sha256": "4c3e8db14fb33f2af6ab065a2978766a4a1ab2ef57508fb67f72285e9457b1a5"
+    }
+  ],
+  "publication_upper_bound_year": 1905,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
+    "content_sha256": "4c3e8db14fb33f2af6ab065a2978766a4a1ab2ef57508fb67f72285e9457b1a5",
+    "year": 1905,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Doyle%2C%20Arthur%20Conan%2C%201859-1930",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Doyle%2C%20Arthur%20Conan%2C%201859-1930",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:11.614798+00:00",
+      "response_sha256": "9c80e664aca64bf1c0579db6cf406619322276bfe1dbd1370d2d3c920f836017"
+    },
+    "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
   }
 }

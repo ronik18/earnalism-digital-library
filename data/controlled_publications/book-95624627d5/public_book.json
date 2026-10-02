@@ -44,7 +44,7 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 3567,
+      "word_count": 3575,
       "reading_minutes": 15,
       "language_hint": "ben",
       "processing_status": "ready",
@@ -53,10 +53,10 @@
       "updated_at": "2026-07-03T20:07:46Z"
     }
   ],
-  "source_hash": "12e68ccb1f58102856edb86d24bb700eb18bd1bda6dee53b8711895d5d73b6a8",
-  "content_hash": "b17c4f3d8928510f6a9012b3e9e9333e8bdefa213da3a51b87f1ab17e2c5d6b5",
+  "source_hash": "04a23577d9da238ff5e156deacc7777f1c5f427515c39cbb045cef113c0e3736",
+  "content_hash": "15ae2ea405a14c49965d03b6a329419ecb7e71297a3007be8530673587a03b06",
   "provenance_hash": "531807dbbf7b3dc9cc8fe1f91beb726ba5d86f8be99aef9d4ea2d2f4b42806a9",
-  "rights_basis": "Author died 1941. Published 1901. Public domain in India and U.S.",
+  "rights_basis": "Exact Katha-Chatushtay original1301/1894 sole-author Rabindranath Tagore edition; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1941; India Section22 literary term expired end2001. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
@@ -101,5 +101,9 @@
   },
   "audiobook_assets_updated_at": "2026-07-03T20:07:46Z",
   "created_at": "2026-07-03T20:07:46Z",
-  "updated_at": "2026-07-03T20:07:46Z"
+  "updated_at": "2026-07-03T20:07:46Z",
+  "license_notice_sha256": "e503d85df42e2430e541d2e4ee3aa76c80bb160eb0668a14e5844840acc5cb30",
+  "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%95%E0%A6%A5%E0%A6%BE-%E0%A6%9A%E0%A6%A4%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%AF%E0%A6%BC%2F%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A7%80&oldid=1624594",
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "publication_authorization_sha256": "aa2e03a3604dfa05a66204b1055b8c736152983a034c6efdd610711833bbefab"
 }

@@ -1,12 +1,12 @@
 {
   "slug": "the-man-in-a-case",
   "source_url": "https://www.gutenberg.org/ebooks/1883",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #1883; exact selected canonical text; all original author/translator/coauthor rights considered separately; historical publication upper bound 1918",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "4a49f5472e5ce0b39d5022c5e2bf23188cd76f58aa6b3344541cb7b2d9e2173a",
-  "content_hash": "bc9e31688c165ba14e19a48e2b2429792f33e93501255d1a81de39072d16baa4",
-  "provenance_hash": "969075fa229f71f1239b1c51fc96f39f4f6b5c4a9a59b1c126762b4758c38089",
-  "rights_basis": "Anton Chekhov died 1904; first published 1898. Public domain in India and the U.S.",
+  "source_hash": "ac5994c65da06e72823036764f85931ec908d1021e78e56886bc74d15971eac2",
+  "content_hash": "0879b82d827a6fc06defd69c8b9abb9b1df719c9378b3d86b3384cd39e22ef7a",
+  "provenance_hash": "e339656f0563e76fcc1da3da3c7c38d03866cfc65ba25cd66bddfe5c4dc4948c",
+  "rights_basis": "IN text only. Verified publication no later than 1918; original-author life+60 ends 1964, or conservative posthumous-publication upper bound+60 ends no later than 1978; every selected translator/coauthor latest death 1946, life+60 ends 2006. All bounds have elapsed by actual review2026. Unknown original first date stays unknown; no inference from US-only PG status.",
   "downloaded_at": "2026-06-03T08:04:22.110313+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -116,5 +116,109 @@
       }
     ],
     "content_sha256": "0879b82d827a6fc06defd69c8b9abb9b1df719c9378b3d86b3384cd39e22ef7a"
-  }
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "4a49f5472e5ce0b39d5022c5e2bf23188cd76f58aa6b3344541cb7b2d9e2173a",
+        "content_hash": "bc9e31688c165ba14e19a48e2b2429792f33e93501255d1a81de39072d16baa4",
+        "provenance_hash": "969075fa229f71f1239b1c51fc96f39f4f6b5c4a9a59b1c126762b4758c38089",
+        "source_url": "https://www.gutenberg.org/ebooks/1883",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:54:02.732252+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1918,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:54:02.732252+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1883.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1883/pg1883.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:24.341561+00:00",
+      "response_sha256": "ac5994c65da06e72823036764f85931ec908d1021e78e56886bc74d15971eac2"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 335852,
+          "length": 29097
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "original_author_death_year": 1904,
+      "latest_selected_creator_death_year": 1946,
+      "verified_text_publication_upper_bound": 1918,
+      "original_first_publication_year": null,
+      "exact_creator_metadata": [
+        "Chekhov, Anton Pavlovich, 1860-1904",
+        "Garnett, Constance, 1861-1946"
+      ],
+      "translators": [
+        "Garnett, Constance, 1861-1946"
+      ],
+      "primary_bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Garnett%2C%20Constance%2C%201861-1946",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Garnett%2C%20Constance%2C%201861-1946",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:50:14.296970+00:00",
+        "response_sha256": "30c8854184496fa1556969d05351e305c07a56d925b1054ed5e83822eb620888"
+      },
+      "bibliographic_excerpt": "wife, and other stories (The Macmillan Company, 1918) , also by Anton Pavlovich Chekhov (page images at HathiTrust) Garnett, Constance, 1861-1946: The wife, and other stories (Willey book company, 1918) , also by Anton Pavlovich Chekhov (page images at HathiTrust) Garne",
+      "legal_policy_receipt": {
+        "requested_url": "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+        "resolved_url": "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:51:37.140288+00:00",
+        "response_sha256": "87edb85c6014f6a6415051b982461a708dd901d65b6a6047fc5f5b8080960fe3"
+      },
+      "basis": "IN text only. Verified publication no later than 1918; original-author life+60 ends 1964, or conservative posthumous-publication upper bound+60 ends no later than 1978; every selected translator/coauthor latest death 1946, life+60 ends 2006. All bounds have elapsed by actual review2026. Unknown original first date stays unknown; no inference from US-only PG status.",
+      "scope": "Selected story/complete narrative including documented creators; collection translators note, other stories, art, editor matter not imported."
+    },
+    "author_death_evidence": 1904,
+    "translator": [
+      "Garnett, Constance, 1861-1946"
+    ],
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1918,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "ac5994c65da06e72823036764f85931ec908d1021e78e56886bc74d15971eac2",
+    "content_sha256": "0879b82d827a6fc06defd69c8b9abb9b1df719c9378b3d86b3384cd39e22ef7a",
+    "year": 1918,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Garnett%2C%20Constance%2C%201861-1946",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Garnett%2C%20Constance%2C%201861-1946",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:14.296970+00:00",
+      "response_sha256": "30c8854184496fa1556969d05351e305c07a56d925b1054ed5e83822eb620888"
+    },
+    "basis": "IN text only. Verified publication no later than 1918; original-author life+60 ends 1964, or conservative posthumous-publication upper bound+60 ends no later than 1978; every selected translator/coauthor latest death 1946, life+60 ends 2006. All bounds have elapsed by actual review2026. Unknown original first date stays unknown; no inference from US-only PG status.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  },
+  "translator_name": "Garnett, Constance, 1861-1946",
+  "translator_death_year": 1946
 }

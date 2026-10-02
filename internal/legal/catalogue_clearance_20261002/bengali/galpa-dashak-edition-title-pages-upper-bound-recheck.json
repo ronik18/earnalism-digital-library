@@ -1,0 +1,207 @@
+{
+  "receipt": {
+    "requested_url": "https://bn.wikisource.org/w/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&titles=%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%A7%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%A8%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%A9%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AA%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AB%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AC%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AD%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AE%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AF%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%A7%E0%A7%A6&format=json&formatversion=2",
+    "resolved_url": "https://bn.wikisource.org/w/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&titles=%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%A7%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%A8%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%A9%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AA%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AB%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AC%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AD%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AE%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AF%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%A7%E0%A7%A6&format=json&formatversion=2",
+    "http_status": 200,
+    "accessed_at": "2026-10-02T03:28:47.562887+00:00",
+    "response_sha256": "b41aa41b46da32301a70863cd4326376d32ac0e115fa0bba8cffb1105bb91a8f"
+  },
+  "data": {
+    "batchcomplete": true,
+    "query": {
+      "pages": [
+        {
+          "pageid": 266352,
+          "ns": 104,
+          "title": "পাতা:গল্প-দশক - রবীন্দ্রনাথ ঠাকুর.pdf/১",
+          "revisions": [
+            {
+              "revid": 888979,
+              "parentid": 565929,
+              "timestamp": "2017-09-11T07:20:58Z",
+              "slots": {
+                "main": {
+                  "contentmodel": "proofread-page",
+                  "contentformat": "text/x-wiki",
+                  "content": "<noinclude><pagequality level=\"4\" user=\"Bodhisattwa\" /></noinclude>{{dhr|15em}}\n{{c|{{xxxx-larger|'''গল্প-দশক'''}}}}\n{{dhr|15em}}<noinclude></noinclude>"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pageid": 266353,
+          "ns": 104,
+          "title": "পাতা:গল্প-দশক - রবীন্দ্রনাথ ঠাকুর.pdf/২",
+          "revisions": [
+            {
+              "revid": 949759,
+              "parentid": 565930,
+              "timestamp": "2018-07-08T09:56:04Z",
+              "slots": {
+                "main": {
+                  "contentmodel": "proofread-page",
+                  "contentformat": "text/x-wiki",
+                  "content": "<noinclude><pagequality level=\"0\" user=\"Mahir256\" /></noinclude><noinclude></noinclude>"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pageid": 266354,
+          "ns": 104,
+          "title": "পাতা:গল্প-দশক - রবীন্দ্রনাথ ঠাকুর.pdf/৩",
+          "revisions": [
+            {
+              "revid": 1818525,
+              "parentid": 1636008,
+              "timestamp": "2024-05-19T04:57:20Z",
+              "slots": {
+                "main": {
+                  "contentmodel": "proofread-page",
+                  "contentformat": "text/x-wiki",
+                  "content": "<noinclude><pagequality level=\"3\" user=\"Bodhisattwa\" /></noinclude>{{কেন্দ্র|{{xxxx-larger|'''গল্প-দশক'''}}}}\n{{dhr|2em}}\n{{কেন্দ্র|[[File:গল্প-দশক - রবীন্দ্রনাথ ঠাকুর (page 3 crop).jpg|140px|গল্প-দশক - রবীন্দ্রনাথ ঠাকুর (page 3 crop)]]}}\n{{dhr|2em}}\n{{কেন্দ্র|{{xx-larger|শ্রীরবীন্দ্রনাথ ঠাকুর}}\n\n{{x-larger|প্রণীত।}}\n{{dhr|2em}}\n[[File:গল্প-দশক - রবীন্দ্রনাথ ঠাকুর (page 4 crop).jpg|140px|গল্প-দশক - রবীন্দ্রনাথ ঠাকুর (page 4 crop)]]\n{{dhr|2em}}\n{{xx-larger|কলিকাতা;}}\n\n১৩৭ নং বৃন্দাবন বসুর লেন, সাহিত্য-যন্ত্রে<br/>\nশ্রীগােপালচন্দ্র রায় কর্তৃক মুদ্রিত <br/> \nও <br/>\n৬ নং দ্বারকানাথ ঠাকুরের লেন হইতে <br/>\nশ্রীকালিদাস চক্রবর্তী কর্তৃক প্রকাশিত।\n{{dhr}}\n{{rule|5em}}\n{{dhr}}\n১৩০২।\n\n::::{{gap}}মূল্য ১।০ পাঁচ সিকা মাত্র।\n}}\n{{dhr|2em}}<noinclude></noinclude>"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pageid": 266355,
+          "ns": 104,
+          "title": "পাতা:গল্প-দশক - রবীন্দ্রনাথ ঠাকুর.pdf/৪",
+          "revisions": [
+            {
+              "revid": 949760,
+              "parentid": 565931,
+              "timestamp": "2018-07-08T09:56:05Z",
+              "slots": {
+                "main": {
+                  "contentmodel": "proofread-page",
+                  "contentformat": "text/x-wiki",
+                  "content": "<noinclude><pagequality level=\"0\" user=\"Mahir256\" /></noinclude><noinclude></noinclude>"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pageid": 266356,
+          "ns": 104,
+          "title": "পাতা:গল্প-দশক - রবীন্দ্রনাথ ঠাকুর.pdf/৫",
+          "revisions": [
+            {
+              "revid": 1636009,
+              "parentid": 1486301,
+              "timestamp": "2021-08-25T17:35:14Z",
+              "slots": {
+                "main": {
+                  "contentmodel": "proofread-page",
+                  "contentformat": "text/x-wiki",
+                  "content": "<noinclude><pagequality level=\"4\" user=\"Himshekhroy\" /></noinclude>{{dhr|15em}}\n\n\n{{কেন্দ্র|{{xx-larger|'''উৎসর্গ।'''}}}}\n\n{{কেন্দ্র|[[File:গল্প-দশক - রবীন্দ্রনাথ ঠাকুর (page 4 crop).jpg|140px|গল্প-দশক - রবীন্দ্রনাথ ঠাকুর (page 4 crop)]]}}\n\n{{c|\nপরম স্নেহাস্পদ শ্রীমান্ আশুতােষ চৌধুরীর<br/>\nকরকমলে এই গ্রন্থ উপহৃত হইল।}}\n{{dhr|5em}}\n\n{{center|<table><tr><td>১৫ই ভাদ্র।<br/>১৩০২।</td><td>[[চিত্র:Curly bracket right.svg|12px]]</td> <td>{{gap}}{{gap}}গ্রন্থকার।</td></tr></table>}}\n\n\n\n{{dhr|5em}}<noinclude></noinclude>"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pageid": 266357,
+          "ns": 104,
+          "title": "পাতা:গল্প-দশক - রবীন্দ্রনাথ ঠাকুর.pdf/৬",
+          "revisions": [
+            {
+              "revid": 949761,
+              "parentid": 565932,
+              "timestamp": "2018-07-08T09:56:06Z",
+              "slots": {
+                "main": {
+                  "contentmodel": "proofread-page",
+                  "contentformat": "text/x-wiki",
+                  "content": "<noinclude><pagequality level=\"0\" user=\"Mahir256\" /></noinclude><noinclude></noinclude>"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pageid": 266358,
+          "ns": 104,
+          "title": "পাতা:গল্প-দশক - রবীন্দ্রনাথ ঠাকুর.pdf/৭",
+          "revisions": [
+            {
+              "revid": 1773721,
+              "parentid": 1773609,
+              "timestamp": "2023-09-12T06:21:22Z",
+              "slots": {
+                "main": {
+                  "contentmodel": "proofread-page",
+                  "contentformat": "text/x-wiki",
+                  "content": "<noinclude><pagequality level=\"4\" user=\"Shahriar Kabir Pavel\" /></noinclude>{{block center|width=300px|\n{{কেন্দ্র|{{x-larger|সূচীপত্র}}}}\n\n{{rule|5em}}\n\n{{dotted TOC page listing||{{smaller|বিষয়}}|{{smaller|পৃষ্ঠা}}|dottext=|entry-width=12em}}\n{{dotted TOC page listing||[[গল্প-দশক/প্রায়শ্চিত্ত|প্রায়শ্চিত্ত]]|[[পাতা:গল্প-দশক - রবীন্দ্রনাথ ঠাকুর.pdf/৯|১]]|dottext=…{{gap|6em}}…|entry-width=12em}}\n{{dotted TOC page listing||[[গল্প-দশক/বিচারক|বিচারক]]|[[পাতা:গল্প-দশক - রবীন্দ্রনাথ ঠাকুর.pdf/৩৩|২৫]]|dottext=…{{gap|6em}}…|entry-width=12em}}\n{{dotted TOC page listing||[[গল্প-দশক/নিশীথে|নিশীথে]]|[[পাতা:গল্প-দশক - রবীন্দ্রনাথ ঠাকুর.pdf/৪৭|৩৯]]|dottext=…{{gap|6em}}…|entry-width=12em}}\n{{dotted TOC page listing||[[গল্প-দশক/আপদ|আপদ]]|[[পাতা:গল্প-দশক - রবীন্দ্রনাথ ঠাকুর.pdf/৭০|৬২]]|dottext=…{{gap|6em}}…|entry-width=12em}}\n{{dotted TOC page listing||[[গল্প-দশক/দিদি|দিদি]]|[[পাতা:গল্প-দশক - রবীন্দ্রনাথ ঠাকুর.pdf/৯০|৮২]]|dottext=…{{gap|6em}}…|entry-width=12em}}\n{{dotted TOC page listing||[[গল্প-দশক/মানভঞ্জন|মানভঞ্জন]]|[[পাতা:গল্প-দশক - রবীন্দ্রনাথ ঠাকুর.pdf/১১০|১০২]]|dottext=…{{gap|6em}}…|entry-width=12em}}\n{{dotted TOC page listing||[[গল্প-দশক/ঠাকুর্দ্দা|ঠাকুর্দ্দা]]|[[পাতা:গল্প-দশক - রবীন্দ্রনাথ ঠাকুর.pdf/১২৯|১২১]]|dottext=…{{gap|6em}}…|entry-width=12em}}\n{{dotted TOC page listing||[[গল্প-দশক/প্রতিহিংসা|প্রতিহিংসা]]|[[পাতা:গল্প-দশক - রবীন্দ্রনাথ ঠাকুর.pdf/১৪৭|১৩৯]]|dottext=…{{gap|6em}}…|entry-width=12em}}\n{{dotted TOC page listing||[[গল্প-দশক/ক্ষুধিত পাষাণ|ক্ষুধিত পাষাণ]]|[[পাতা:গল্প-দশক - রবীন্দ্রনাথ ঠাকুর.pdf/১৭৩|১৬৫]]|dottext=…{{gap|6em}}…|entry-width=12em}}\n{{dotted TOC page listing||[[গল্প-দশক/অতিথি|অতিথি]]|[[পাতা:গল্প-দশক - রবীন্দ্রনাথ ঠাকুর.pdf/১৯৭|১৮৯]]|dottext=…{{gap|6em}}…|entry-width=12em}}\n\n{{dhr|4em}}\n{{rule|5em}}\n{{dhr|3em}}\n}}<noinclude></noinclude>"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pageid": 266359,
+          "ns": 104,
+          "title": "পাতা:গল্প-দশক - রবীন্দ্রনাথ ঠাকুর.pdf/৮",
+          "revisions": [
+            {
+              "revid": 949762,
+              "parentid": 565933,
+              "timestamp": "2018-07-08T09:56:08Z",
+              "slots": {
+                "main": {
+                  "contentmodel": "proofread-page",
+                  "contentformat": "text/x-wiki",
+                  "content": "<noinclude><pagequality level=\"0\" user=\"Mahir256\" /></noinclude><noinclude></noinclude>"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pageid": 266360,
+          "ns": 104,
+          "title": "পাতা:গল্প-দশক - রবীন্দ্রনাথ ঠাকুর.pdf/৯",
+          "revisions": [
+            {
+              "revid": 1662583,
+              "parentid": 1418731,
+              "timestamp": "2021-12-29T06:42:00Z",
+              "slots": {
+                "main": {
+                  "contentmodel": "proofread-page",
+                  "contentformat": "text/x-wiki",
+                  "content": "<noinclude><pagequality level=\"4\" user=\"Shahriar Kabir Pavel\" /></noinclude>{{কেন্দ্র|{{x-larger|গল্প-দশক।}}}}\n\n{{কেন্দ্র|{{larger|প্রায়শ্চিত্ত।}}}}\n\n{{কেন্দ্র|প্রথম পরিচ্ছেদ।}}\n\n\nস্বর্গ ও মর্তের মাঝখানে একটা অনির্দ্দেশ্য অরাজক স্থান আছে, যেখানে ত্রিশঙ্কু রাজা ভাসিয়া বেড়াইতেছেন; যেখানে আকাশকুসুমের অজস্র আবাদ হইয়া থাকে। সেই বায়ুদূর্গবেষ্টিত মহাদেশের নাম “হইলে-হইতে পারিত”। যাঁহারা মহৎ কার্য্য করিয়া অমরতা লাভ করিয়াছেন তাঁহারা ধন্য হইয়াছেন, যাহারা সামান্য ক্ষমতা লইয়া সাধারণ মানবের মধ্যে সাধারণভাবে সংসারের প্রাত্যহিক কর্ত্তব্য সাধনে সহায়তা করিতেছেন, তাঁহারাও ধন্য; কিন্তু যাঁহারা অদৃষ্টের ভ্রমক্রমে হঠাৎ দুয়ের মাঝখানে পড়িয়াছেন তাঁহাদের আর কোন উপায় নাই! তাঁহারা একটা কিছু হইলে হইতে পারিতেন কিন্তু সেই কারণেই তাঁহাদের পক্ষে কিছু একটা হওয়া সর্ব্বাপেক্ষা অসম্ভব।\n{{nop}}<noinclude></noinclude>"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pageid": 266361,
+          "ns": 104,
+          "title": "পাতা:গল্প-দশক - রবীন্দ্রনাথ ঠাকুর.pdf/১০",
+          "revisions": [
+            {
+              "revid": 1738137,
+              "parentid": 1473388,
+              "timestamp": "2023-04-12T15:48:23Z",
+              "slots": {
+                "main": {
+                  "contentmodel": "proofread-page",
+                  "contentformat": "text/x-wiki",
+                  "content": "<noinclude><pagequality level=\"4\" user=\"Shahriar Kabir Pavel\" />{{rh|২|গল্প-দশক।|}}</noinclude>﻿{{gap}}আমাদের অনাথবন্ধু সেই মধ্যদেশবিলম্বিত বিধিবিড়ম্বিত যুবক। সকলেরই বিশ্বাস তিনি ইচ্ছা করিলে সকল বিষয়েই কৃতকার্য্য হইতে পারিতেন। কিন্তু কোন কালে তিনি ইচ্ছাও করিলেন না, এবং কোন বিষয়ে তিনি কৃতকার্য্যও হইলেন না এবং সকলের বিশ্বাস তাঁহার প্রতি অটল রহিয়া গেল। সকলে বলিল তিনি পরীক্ষায় ফার্ষ্ট হইবেন, তিনি আর পরীক্ষা দিলেন না। সকলের বিশ্বাস, চাকরিতে প্রবিষ্ট হইলে যে কোন ডিপার্টমেণ্টের উচ্চতম স্থান তিনি অনায়াসে গ্রহণ করিতে পরিবেন,—তিনি কোন চাকরিই গ্রহণ করিলেন না। সাধারণ লোকের প্রতি তাঁহার বিশেষ অবজ্ঞা, কারণ তাহারা অত্যন্ত সামান্য; অসাধারণ লোকের প্রতি তাঁহার কিছুমাত্র শ্রদ্ধা ছিল না, কারণ মনে করিলেই তিনি তাহাদের অপেক্ষা অসাধারণতর হইতে পারিতেন।\n\n﻿{{gap}}অনাথবন্ধুর সমস্ত খ্যাতিপ্রতিপত্তিসুখসম্পদসৌভাগ্য দেশকালাতীত অনসম্ভবতার ভাণ্ডারে নিহিত ছিল—বিধাতা কেবল বাস্তবরাজ্যে তাঁহাকে একটি ধনী শ্বশুর এবং একটি সুশীলা স্ত্রী দান করিয়াছিলেন। স্ত্রীর নাম বিন্ধ্যবাসিনী।\n\n﻿{{gap}}স্ত্রীর নামটি অনাথবন্ধু পছন্দ করেন নাই এবং স্ত্রীটিকেও রূপে গুণে তিনি আপন যোগ্য জ্ঞান করিতেন না, কিন্তু বিন্ধ্যবাসিনীর মনে স্বামিসৌভাগ্যগর্ব্বের সীমা ছিল না। সকল স্ত্রীর সকল স্বামীর অপেক্ষা তাঁহার স্বামী যে সকল বিষয়ে শ্রেষ্ঠ, এ সম্বন্ধে তাঁহার কোন সন্দেহ ছিল না এবং<noinclude></noinclude>"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "scope": "Actual primary printed edition establishes published-by year only, not original firstpublicationdate"
+}

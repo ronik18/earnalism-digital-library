@@ -1,12 +1,12 @@
 {
   "slug": "rip-van-winkle",
   "source_url": "https://www.gutenberg.org/ebooks/60976",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #60976; Rip Van Winkle exact canonical source, underlying lifetime publication 1820; complete selected author text, no translation or independently authored artwork/editorial material imported",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "2498820aafa64ce1ba7fe577338b4e4f680aa95ed1cf5944ad61ca9e4a255c66",
-  "content_hash": "879951dca445b3fb065612687474f9eff66c80ef0abec75958c3666a6498f02b",
-  "provenance_hash": "e07b6c4fccb9b68c35366f1794098a99f881384baca70c7f61d05eb7abe2fffa",
-  "rights_basis": "Washington Irving died 1859; first published 1819. Public domain in India and the U.S.",
+  "source_hash": "3085b99a7b6a9d5f527dfb97351c858a6f7fc97f2c654570f5defbbfb50e5042",
+  "content_hash": "2011555cdb66a9be1a30c4fa4a31ca08393c0492f3dc94b62b8d83f0853f13ef",
+  "provenance_hash": "3828640b72ac06bf1884fbd427e1185eb0a45542ac514dc10f59cbbb64aac314",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1859, verified lifetime collection publication 1820 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-03T08:04:22.036927+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -80,11 +80,15 @@
     },
     "comparison": {
       "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
-      "status": "SOURCE_TEXT_DIFFERS",
-      "matched_chapters": [],
-      "nonmatching_chapters": [
-        "chapter-001"
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 7469,
+          "length": 38251
+        }
       ],
+      "nonmatching_chapters": [],
       "complete_edition_proven": false,
       "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
     },
@@ -111,9 +115,103 @@
     "ordered_chapter_sha256": [
       {
         "id": "chapter-001",
-        "sha256": "525d6c0f3df1a5d2d89831695f279fb2e0e4bf7028b4c8ede0ac1d9fc9dd6a49"
+        "sha256": "2011555cdb66a9be1a30c4fa4a31ca08393c0492f3dc94b62b8d83f0853f13ef"
       }
     ],
-    "content_sha256": "525d6c0f3df1a5d2d89831695f279fb2e0e4bf7028b4c8ede0ac1d9fc9dd6a49"
+    "content_sha256": "2011555cdb66a9be1a30c4fa4a31ca08393c0492f3dc94b62b8d83f0853f13ef"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "2498820aafa64ce1ba7fe577338b4e4f680aa95ed1cf5944ad61ca9e4a255c66",
+        "content_hash": "879951dca445b3fb065612687474f9eff66c80ef0abec75958c3666a6498f02b",
+        "provenance_hash": "e07b6c4fccb9b68c35366f1794098a99f881384baca70c7f61d05eb7abe2fffa"
+      },
+      "superseded_at": "2026-10-01T21:42:12.553107+00:00",
+      "reason": "Same verified Gutenberg ID illustrated-edition narrative restored in full, illustration captions and publisher/trademark furniture removed; no prior approval transferred"
+    }
+  ],
+  "edition_migration_evidence": {
+    "verified_at": "2026-10-01T21:42:12.553107+00:00",
+    "same_electronic_id": 60976,
+    "old_chapter_sha256": "525d6c0f3df1a5d2d89831695f279fb2e0e4bf7028b4c8ede0ac1d9fc9dd6a49",
+    "selected_scope": "Complete Irving narrative and author endnotes; publisherprinting/transcribernotes excluded",
+    "illustration_caption_transformation": "Balanced Illustration bracket blocks removed; no artwork imported",
+    "source_sha256": "3085b99a7b6a9d5f527dfb97351c858a6f7fc97f2c654570f5defbbfb50e5042",
+    "new_content_sha256": "2011555cdb66a9be1a30c4fa4a31ca08393c0492f3dc94b62b8d83f0853f13ef",
+    "publication_authorized": false
+  },
+  "selected_edition_publication_year": 1820,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:49:40.745164+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/60976.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/60976/pg60976.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:30.361233+00:00",
+      "response_sha256": "3085b99a7b6a9d5f527dfb97351c858a6f7fc97f2c654570f5defbbfb50e5042"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 7469,
+          "length": 38251
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Irving, Washington, 1783-1859",
+      "creator_death_year": 1859,
+      "selected_collection_publication_year": 1820,
+      "original_story_first_publication_year": null,
+      "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+      "bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Irving%2C%20Washington%2C%201783-1859",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Irving%2C%20Washington%2C%201783-1859",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:44:51.215098+00:00",
+        "response_sha256": "9ca904bd991884cf7d4b2eaf62034fec488316547143c5469d3873201416a1b6"
+      },
+      "bibliographic_excerpt": "sketch book of Geoffrey Crayon, gent. (G.P. Putnam, 1857) (page images at HathiTrust) Irving, Washington, 1783-1859: The sketch book of Geoffrey Crayon, Gent. (John Murray ...., 1820) , also by C. Roworth, W. Pople, and John Murray (page images at Ha",
+      "scope": "Named creator complete selected literary text including available author prefatory/end matter; publisher/source furniture and illustrations excluded."
+    },
+    "author_death_evidence": 1859,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1820,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "3085b99a7b6a9d5f527dfb97351c858a6f7fc97f2c654570f5defbbfb50e5042",
+    "content_sha256": "2011555cdb66a9be1a30c4fa4a31ca08393c0492f3dc94b62b8d83f0853f13ef",
+    "year": 1820,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Irving%2C%20Washington%2C%201783-1859",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Irving%2C%20Washington%2C%201783-1859",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:51.215098+00:00",
+      "response_sha256": "9ca904bd991884cf7d4b2eaf62034fec488316547143c5469d3873201416a1b6"
+    },
+    "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
   }
 }

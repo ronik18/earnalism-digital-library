@@ -43,9 +43,9 @@
       "updated_at": "2026-07-01T10:36:20Z"
     }
   ],
-  "source_hash": "78e7f997e45a31d35a792805a1aec2800a896adee030c9b459f2357aee8db2c5",
-  "content_hash": "5b54ba7acab17ed4c6819f91a713736b22adaedf797fac9425e5d1ecbd90fa4b",
-  "provenance_hash": "212316f0e50b7ac69139ffd3e400ec93f73f1b2c270fb581e1cdf8d8d0a7f87e",
+  "source_hash": "f751453ef6ad9363a7e31f63b8d4ef830c7ea20a2aba465a59fb6fbee6bbddca",
+  "content_hash": "6d6a61c0239972fd2b3be28f3d531b800f2bff6c555d8b3d5357e03e997a416a",
+  "provenance_hash": "715bfbeefcae394130b8d4815a851e5a60ef3fe8b44efcba059e53882fe5531c",
   "rights_basis": "public_domain",
   "rights_tier": "A",
   "verification_status": "approved",

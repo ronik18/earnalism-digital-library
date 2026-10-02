@@ -63,5 +63,12 @@
       "finding": "Publisher note explicitly states1298Hitabadi publication is probable/uncertain, and confirms first book publication15Phalgun1300. Government chronology1891 is not treated as unequivocal originalfirstyear.",
       "lifetime_publication_established": true
     }
+  },
+  "verified_lifetime_publication_year": 1894,
+  "verified_lifetime_publication_evidence": {
+    "primary_record": "internal/legal/catalogue_clearance_20261002/bengali/galpaguchha-volume1-title-publisher-pages.json",
+    "sha256": "26fa62905b573768e4607a79c3d0f6828bddf280162762ffc507c5f8dc4cdb06",
+    "statement": "Primary publisher explicitly distinguishes uncertain earlier Hitabadi publication from definite first book publication15Phalgun1300; Gregorian1894 is during Tagore lifetime. Earliest periodical date remains uncertain and is not invented.",
+    "scope": "India ordinary lifetime-published literary-work term fact only; does not clear later1950editorial layer."
   }
 }

@@ -28,10 +28,10 @@
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "bc2f42bef06d86e0d32e26fb5c04bc4265db06b98db1ec1a18e2e335b3f5358a",
+    "reader_content_sha256": "14477848f49b5cdeb93ffbe8e909a53372c022bcd93ab638c86aad6e1aec9dfb",
     "chapter_count": 16,
     "chapter_content_sha256": {
-      "chapter-001": "0f40d942647f7e31a313a057fd75644016c64d663c2360cf50a1d2437371c23e",
+      "chapter-001": "09927b7c9d1292d93de6b75858e61e598b115d1975f92a53b9f155f1b47ac95b",
       "chapter-002": "a63e0a4fdf3e1e50b08965697ef3870ced70376e2a791aa84fd0f763b8b01f49",
       "chapter-003": "953a298cc9754616dc17a0730570777802792892efdf5a92da04fed7e4796f9c",
       "chapter-004": "d3bf93dd86d6fc03c1fc51892e01a950a715307352a470bcf3d23e189ca411d9",
@@ -46,9 +46,13 @@
       "chapter-013": "91ca0452010eaf23cc2944691d9a99ce9e2dffc07198154997b8347438654a60",
       "chapter-014": "fa501a8ee2cc6a27377bd98bbf2c75e7e35c1de81f61ac86624c00c46919862b",
       "chapter-015": "5722298c96677b30f0c01baeb035fc8b34587a40bef9b3a0db91d19621319a9c",
-      "chapter-016": "e520e25a494f262ae7bb399a2387b85d0320412a7688f303d43007382653fbf8"
+      "chapter-016": "6ee15e4f40e94adddf275a31842795bfaba28f72d701385d3bede440833db1e8"
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  },
+  "full_rendered_multichapter_repair": {
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/multichapter-narrow-source-repairs.json",
+    "scope": "Same edition source paragraphs, with original notes/verse retained; no rights approval"
   }
 }

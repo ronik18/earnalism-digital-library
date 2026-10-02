@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-purloined-letter-pg2148-noncover-text",
+  "edition_id": "the-purloined-letter",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "1a73f7773fc04e88d4e0750118b3e19a33fdf1fb44d507b31349a05e9b9bb1d5",
+    "reader_manifest": "ce8cf215f1ae71d760b80329b62a0fe6463d4aabca80bd457c93ffe782f2dd06",
+    "source_evidence": "8fa89d00dcd477025822aa3fb9510f691e8cf11723f403c9b1674ecd036a6a0f",
+    "approval_evidence": "2234e7301f2766040d7bf292604213a8213a10f0d411cf1b53a802bfed761844",
+    "checksum_manifest": "de99a5eb3c0fe3766950f47ef5017ad19542f3ce40c4e47552fb955729b3402d",
+    "publication_manifest": "91ea6d3d1e07113fdee52b36cffd2bcdbc8f4dceb6e1ae3531042370917a7598"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:52:27.631967+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1849, verified lifetime collection publication 1844 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "3c75563cdff2ab7acd23828746882c0eb6bc323ebc797e683adf3af2d943cb8b",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "4a96f50ad7df460f80f1b69ca814b7514d7f178d24e0079cd6fd8a04e5faba24",
+    "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e",
+    "eb1b8f204ad8a0764e59d823c68fa470020d236a9d60138a406ee3f89ebdc669"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

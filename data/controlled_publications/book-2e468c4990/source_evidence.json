@@ -24,10 +24,10 @@
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "9def1585322b7867981a24ee20cf16bb50a6bd85e0c65c930975290e9b456220",
+    "reader_content_sha256": "7ea410462889bee273fb5e206e2dbefd6f551c3282861aa542d772e9f321d6f8",
     "chapter_count": 1,
     "chapter_content_sha256": {
-      "chapter-001": "9def1585322b7867981a24ee20cf16bb50a6bd85e0c65c930975290e9b456220"
+      "chapter-001": "7ea410462889bee273fb5e206e2dbefd6f551c3282861aa542d772e9f321d6f8"
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
@@ -63,5 +63,16 @@
       "reference": "https://www.drikpanchang.com/festivals/pohela-boishakh/pohela-boishakh-date-time.html?year=0596"
     },
     "scope": "Underlyingwork firstpublication metadata only; sourceedition editorial/licence/publication authorization independently held."
+  },
+  "exact_source_delta_repair": {
+    "slug": "book-2e468c4990",
+    "verified_at": "2026-10-01T21:33:54.519302+00:00",
+    "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-2e468c4990-source-comparison.json",
+    "source_snapshot_sha256": "1a01784c9fffd9bf55e88c503f295fe5b60354e0647049692a968d0729add52c",
+    "before_sha256": "7ea410462889bee273fb5e206e2dbefd6f551c3282861aa542d772e9f321d6f8",
+    "after_sha256": "7ea410462889bee273fb5e206e2dbefd6f551c3282861aa542d772e9f321d6f8",
+    "operations": [],
+    "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+    "scope": "Same pinned edition body repair; not rights/publication/audio approval"
   }
 }

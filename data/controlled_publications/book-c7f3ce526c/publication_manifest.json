@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "book-c7f3ce526c",
   "title": "খোকাবাবুর প্রত্যাবর্তন",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
     "source_hash": "e6482b11503e888e9e9a2e5233cce17d2476164d8894433b520ecad24db04a05",
     "content_hash": "30747ea77e55c1a8b6227802d6e89078e79b2c348970d55960080001e376a954",
@@ -46,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "357801e5f4d1e1c2a42431aea619aa4ae71e3a614bff92f5b298bc7b08b43cd0",
+    "public_book": "a737c56bb14be259598b209fbc56bfdf7cd84d36b9a6a651a52e4e0968d7a188",
     "reader_manifest": "af076626ab68baf3324206153f3e264871090dc7f2c57b0a32bbfaeb872d14e0",
     "source_evidence": "f11e742532b82a814675cc3de9b54b1b4626765d6bcbfdd4d8a0b1e946b44e49",
     "approval_evidence": "d1b06d96a2167cb7788c168156dd8999b7ca5449dec9c4bbf06b8a22a6262ae2"
   },
-  "manifest_sha256": "fa65bca7cacd3a5db71e6a8eb953bdc464a3b88c95a117925d8808eefbdbfbec"
+  "manifest_sha256": "9c31ab954183963ced09106f571fdafaba720503ad23cb8a6cf59d329166f29b"
 }

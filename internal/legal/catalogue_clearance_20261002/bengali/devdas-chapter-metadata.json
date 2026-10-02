@@ -1,0 +1,107 @@
+{
+  "receipt": {
+    "url": "https://bn.wikisource.org/w/api.php?action=query&generator=allpages&gapprefix=%E0%A6%A6%E0%A7%87%E0%A6%AC%E0%A6%A6%E0%A6%BE%E0%A6%B8+%28%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC%29%2F&gapnamespace=0&gaplimit=max&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2",
+    "retrieved_at": "2026-10-01T21:49:31.125973+00:00",
+    "response_sha256": "836316aab53b842dc86bef433d2b6017877c1ce0739a9d546a6aece1660a7d9a"
+  },
+  "prefix": "দেবদাস (শরৎচন্দ্র চট্টোপাধ্যায়)",
+  "leaves": [
+    {
+      "title": "দেবদাস (শরৎচন্দ্র চট্টোপাধ্যায়)/প্রথম পরিচ্ছেদ",
+      "revision": 1935226,
+      "revision_timestamp": "2026-01-25T15:20:31Z",
+      "wikitext": "<pages index=\"দেবদাস - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=5 to=12 tosection=\"১\" header=1 />"
+    },
+    {
+      "title": "দেবদাস (শরৎচন্দ্র চট্টোপাধ্যায়)/দ্বিতীয় পরিচ্ছেদ",
+      "revision": 1935222,
+      "revision_timestamp": "2026-01-25T15:20:29Z",
+      "wikitext": "<pages index=\"দেবদাস - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=12 fromsection=\"২\" to=16 tosection=\"২\" header=1 />"
+    },
+    {
+      "title": "দেবদাস (শরৎচন্দ্র চট্টোপাধ্যায়)/তৃতীয় পরিচ্ছেদ",
+      "revision": 1935218,
+      "revision_timestamp": "2026-01-25T15:20:28Z",
+      "wikitext": "<pages index=\"দেবদাস - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=16 fromsection=\"৩\" to=19 header=1 />"
+    },
+    {
+      "title": "দেবদাস (শরৎচন্দ্র চট্টোপাধ্যায়)/চতুর্থ পরিচ্ছেদ",
+      "revision": 1935216,
+      "revision_timestamp": "2026-01-25T15:20:27Z",
+      "wikitext": "<pages index=\"দেবদাস - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=20 to=23 tosection=\"৪\" header=1 />"
+    },
+    {
+      "title": "দেবদাস (শরৎচন্দ্র চট্টোপাধ্যায়)/পঞ্চম পরিচ্ছেদ",
+      "revision": 1935225,
+      "revision_timestamp": "2026-01-25T15:20:30Z",
+      "wikitext": "<pages index=\"দেবদাস - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=23 fromsection=\"৫\" to=31 header=1 />"
+    },
+    {
+      "title": "দেবদাস (শরৎচন্দ্র চট্টোপাধ্যায়)/ষষ্ঠ পরিচ্ছেদ",
+      "revision": 1935227,
+      "revision_timestamp": "2026-01-25T15:20:31Z",
+      "wikitext": "<pages index=\"দেবদাস - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=32 to=35 tosection=\"৬\" header=1 />"
+    },
+    {
+      "title": "দেবদাস (শরৎচন্দ্র চট্টোপাধ্যায়)/সপ্তম পরিচ্ছেদ",
+      "revision": 1935229,
+      "revision_timestamp": "2026-01-25T15:20:32Z",
+      "wikitext": "<pages index=\"দেবদাস - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=35 fromsection=\"৭\" to=41 tosection=\"৭\" header=1 />"
+    },
+    {
+      "title": "দেবদাস (শরৎচন্দ্র চট্টোপাধ্যায়)/অষ্টম পরিচ্ছেদ",
+      "revision": 1935214,
+      "revision_timestamp": "2026-01-25T15:20:26Z",
+      "wikitext": "<pages index=\"দেবদাস - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=41 fromsection=\"৮\" to=47 tosection=\"৮\" header=1 />"
+    },
+    {
+      "title": "দেবদাস (শরৎচন্দ্র চট্টোপাধ্যায়)/নবম পরিচ্ছেদ",
+      "revision": 1935223,
+      "revision_timestamp": "2026-01-25T15:20:30Z",
+      "wikitext": "<pages index=\"দেবদাস - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=47 fromsection=\"৯\" to=54 tosection=\"৯\" header=1 />"
+    },
+    {
+      "title": "দেবদাস (শরৎচন্দ্র চট্টোপাধ্যায়)/দশম পরিচ্ছেদ",
+      "revision": 1935220,
+      "revision_timestamp": "2026-01-25T15:20:29Z",
+      "wikitext": "<pages index=\"দেবদাস - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=54 fromsection=\"১০\" to=60 tosection=\"১০\" header=1 />"
+    },
+    {
+      "title": "দেবদাস (শরৎচন্দ্র চট্টোপাধ্যায়)/একাদশ পরিচ্ছেদ",
+      "revision": 1935215,
+      "revision_timestamp": "2026-01-25T15:20:27Z",
+      "wikitext": "<pages index=\"দেবদাস - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=60 fromsection=\"১১\" to=63 tosection=\"১১\" header=1 />"
+    },
+    {
+      "title": "দেবদাস (শরৎচন্দ্র চট্টোপাধ্যায়)/দ্বাদশ পরিচ্ছেদ",
+      "revision": 1935221,
+      "revision_timestamp": "2026-01-25T15:20:29Z",
+      "wikitext": "<pages index=\"দেবদাস - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=63 fromsection=\"১২\" to=72 tosection=\"১২\" header=1 />"
+    },
+    {
+      "title": "দেবদাস (শরৎচন্দ্র চট্টোপাধ্যায়)/ত্রয়োদশ পরিচ্ছেদ",
+      "revision": 1935219,
+      "revision_timestamp": "2026-01-25T15:20:28Z",
+      "wikitext": "<pages index=\"দেবদাস - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=72 fromsection=\"১৩\" to=82 tosection=\"১৩\" header=1 />"
+    },
+    {
+      "title": "দেবদাস (শরৎচন্দ্র চট্টোপাধ্যায়)/চতুর্দশ পরিচ্ছেদ",
+      "revision": 1935217,
+      "revision_timestamp": "2026-01-25T15:20:27Z",
+      "wikitext": "<pages index=\"দেবদাস - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=82 fromsection=\"১৪\" to=88 header=1 />"
+    },
+    {
+      "title": "দেবদাস (শরৎচন্দ্র চট্টোপাধ্যায়)/পঞ্চদশ পরিচ্ছেদ",
+      "revision": 1935224,
+      "revision_timestamp": "2026-01-25T15:20:30Z",
+      "wikitext": "<pages index=\"দেবদাস - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=89 to=100 tosection=\"১৫\" header=1 />"
+    },
+    {
+      "title": "দেবদাস (শরৎচন্দ্র চট্টোপাধ্যায়)/ষোড়শ পরিচ্ছেদ",
+      "revision": 1935228,
+      "revision_timestamp": "2026-01-25T15:20:31Z",
+      "wikitext": "<pages index=\"দেবদাস - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=100 fromsection=\"১৬\" to=110 header=1 />"
+    }
+  ],
+  "continuation": null
+}

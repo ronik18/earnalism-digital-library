@@ -1,14 +1,14 @@
 {
   "slug": "the-murders-in-the-rue-morgue",
-  "generated_at": "2026-07-03T20:07:49Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "dd7d47e182fd0af117c062d12718c897841640775fa387cbb4d13ca9448b3aee"
+      "sha256": "33baf896ef21690526175c622cb86e391eb7c95fc82959ac77ce09ca84175a32"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "6c780d1c2d7d47298c47a43916a4587c37091f9dad1553e3839ac7db7738b29b"
+      "sha256": "2d192711e96bedbfe22fa1a161311019c6a0c5176409122e72a3b99918ac027f"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "84037d9506bf608a9ad29f78bc9ff099f337bf9e2ac9352da1fb9fceab4cb6ff"
+      "sha256": "66b5b4bb3d065f0da757b9570c0c91668939aeff95b7a560828a0a8afc8404e5"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "4b4a5613ae7c40ed54f845c1740c830e0a3156f753c6617515f8c7526ac8bf46"
     },
     {
       "file": "reader_manifest.json",
@@ -24,7 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "835fc828db2535aa7e58c3b968d55fb43a8a8cb3296dc9b1061af054ba8f21a1"
+      "sha256": "8b9cbbe71c93271bbc8602eae1d025e6264c7f612575232bb28a3658fbf6abd1"
     }
   ]
 }

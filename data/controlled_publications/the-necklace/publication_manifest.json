@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "the-necklace",
   "title": "The Necklace",
-  "generated_at": "2026-10-01T21:08:33.704143+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "bc5f461772b5583801472773e623c39ee14a218ae50b87715e24aa14b026549c",
-    "content_hash": "11dd5fc25c6413ce85715a6e09f717af89defd4ee69e13739275588e5d4a152c",
-    "provenance_hash": "647161385ead777380d68a8dd5ab420a248a85641e663ed72e7980d2426ba78d",
+    "source_hash": "d90b8b53dd418a5063c2ae2469a426ede6f6914f64d4dd13c3eb2d97e7175f64",
+    "content_hash": "3edbc2bb4b1cfe0829cd6f499cd21b9f7de2f81d74c151e16e90bb6efab9d8fb",
+    "provenance_hash": "d6c07d6b7c29bf90dbfdd1f3e17f905057030002da549d06b893bf7b1a59fe5b",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "a9b0a6dfb0ab7125c3447b45936fa8d839b808ef2f54ec1c0f1c0bd7d6519102",
+    "chapter_index_sha256": "ec521579e90940da2a5a13d9317875fb0f9dadc3039bf8b693f57645b70c7c8c",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "The Necklace",
-        "word_count": 2847,
-        "sha256": "ff0b4e463d678a5c7161e306db8f8f9da332df67db69d9bc481c84bacc3b1495"
+        "word_count": 2907,
+        "sha256": "4aa2ba246d24176b4dcdcecadce5824792f9ed5b4675d60587730eac099ae782"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "a434ff5e1e9f034f44ba124e4a0ff2c2f509444f537241b3e4876784e9a8bdfc"
+    "publication_region": "india",
+    "evidence_sha256": "2b1e7e4b671426a4228f7b605e2bc0707d918ea84525c81533e2bc70182c5df5"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "a17ac9c46b8762c24cc4096a1717ade26a9922913d0dc2fd0fd266a708e184ad",
-    "reader_manifest": "970649ffc577d7b802bc31981bf7215c06e3bc57dbf4d24e7075774233ca0cdb",
-    "source_evidence": "a434ff5e1e9f034f44ba124e4a0ff2c2f509444f537241b3e4876784e9a8bdfc",
-    "approval_evidence": "4298df9ca6de14ddb2f8d09c16eae4be10861cc669446d61c7f42cf80633b955"
+    "public_book": "ee10f2cba3dbb3e1aae0f88b159f7bce85400bbb75a080233361fe8ea3797e50",
+    "reader_manifest": "6451694f87edfdb98d93d4abca5d36ccb910d0612ee42769a88e4cad3bb27c80",
+    "source_evidence": "2b1e7e4b671426a4228f7b605e2bc0707d918ea84525c81533e2bc70182c5df5",
+    "approval_evidence": "643b4129e6f5df66f7f643df0af5ddb041113b20f88f5ea3f19957f177e04a82"
   },
-  "manifest_sha256": "a49517ef53a8ffdd7efbed42914567d25badec17e2b05e2a9491d452bf417681"
+  "manifest_sha256": "e16e1fe9caec57773fc690d24bd172caf6965ffadd6ed77f85567f425005b6d0"
 }

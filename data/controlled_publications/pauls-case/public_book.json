@@ -44,7 +44,7 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 8574,
+      "word_count": 8563,
       "reading_minutes": 36,
       "language_hint": "en",
       "processing_status": "ready",
@@ -53,9 +53,9 @@
       "updated_at": "2026-07-03T20:07:47Z"
     }
   ],
-  "source_hash": "91d773236f32e0fc615e5efc326c5aec8aa7c4984cd2c9a6dc0a626d954676fb",
-  "content_hash": "9f6c9dbd187c102c629cfc21b94af323200799e8a9784a431b93c3b5650c16f9",
-  "provenance_hash": "78d6cd8d5fcee7138329fddc0af062fdb4d05bc2b7e651986e2c525894a5e9d9",
+  "source_hash": "926b042528d42a6e8b0e062dfee1987fbbb4ddbe1ea6601d2b61fc77b452f521",
+  "content_hash": "3674aee90e9811565646f07f4763ff4a3fa742b26a74774d52c7d15cf5c014c7",
+  "provenance_hash": "ee2f34e521c214d7feb8bf6ac36d066e6db4619f6cc178d518136dc3eaa62f01",
   "rights_basis": "Willa Cather died 1947; first published 1905. Public domain in India and the U.S.",
   "rights_tier": "A",
   "verification_status": "approved",

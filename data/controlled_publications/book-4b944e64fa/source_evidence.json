@@ -24,10 +24,10 @@
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "167da21141ab55a5ea4c17f078f3e0940d5a44d3a9fff8d17355d7c6e2bf9622",
+    "reader_content_sha256": "3d82f16d5c93e8c7e4de437f1a22424ca511edd5e7cc305e82f4c5a1b97d7d6a",
     "chapter_count": 1,
     "chapter_content_sha256": {
-      "chapter-001": "167da21141ab55a5ea4c17f078f3e0940d5a44d3a9fff8d17355d7c6e2bf9622"
+      "chapter-001": "3d82f16d5c93e8c7e4de437f1a22424ca511edd5e7cc305e82f4c5a1b97d7d6a"
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
@@ -63,5 +63,47 @@
       "reference": "https://www.drikpanchang.com/festivals/pohela-boishakh/pohela-boishakh-date-time.html?year=0596"
     },
     "scope": "Underlyingwork firstpublication metadata only; sourceedition editorial/licence/publication authorization independently held."
+  },
+  "exact_source_delta_repair": {
+    "slug": "book-4b944e64fa",
+    "verified_at": "2026-10-01T21:33:54.702558+00:00",
+    "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-4b944e64fa-source-comparison.json",
+    "source_snapshot_sha256": "d4563d61e1a112fd9907bfefc9ab3dabbeb34d3769f9e9b8bd121db7a5035b57",
+    "before_sha256": "167da21141ab55a5ea4c17f078f3e0940d5a44d3a9fff8d17355d7c6e2bf9622",
+    "after_sha256": "3d82f16d5c93e8c7e4de437f1a22424ca511edd5e7cc305e82f4c5a1b97d7d6a",
+    "operations": [
+      {
+        "operation": "insert",
+        "canonical_paragraph_range": [
+          4,
+          4
+        ],
+        "source_paragraph_range": [
+          4,
+          5
+        ],
+        "canonical": [],
+        "source": [
+          "আমিও নীলরতনের দৃষ্টান্তে উৎসাহিত হইয়া এক সময় বিশেষ সুবিধাযোগে কলিকাতায় পালাইয়া গেলাম। প্রথমে গ্রামের একটি আলাপী লোকের বাসায় ছিলাম, তাহার পরে বাপের কাছ হইতেও কিছু কিছু অধ্যয়নের সাহায্য পাইতে লাগিলাম। লেখাপড়া যথানিয়মে চলিতে লাগিল।"
+        ]
+      },
+      {
+        "operation": "insert",
+        "canonical_paragraph_range": [
+          16,
+          16
+        ],
+        "source_paragraph_range": [
+          17,
+          18
+        ],
+        "canonical": [],
+        "source": [
+          "রামলোচনবাবুর সঙ্গে আমার আলাপ হইল। সুরবালার সহিত বাল্যকালে আমার জানাশোনা ছিল তাহা রামলোচনবাবু জানিতেন কিনা জানি না, আমিও নূতন পরিচয়ে সে সম্বন্ধে কোনো কথা বলা সংগত বোধ করিলাম না। এবং সুরবালা যে কোনো কালে আমার জীবনের সঙ্গে কোনোরূপে জড়িত ছিল, সে কথা আমার ভালো করিয়া মনে উদয় হইল না।"
+        ]
+      }
+    ],
+    "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+    "scope": "Same pinned edition body repair; not rights/publication/audio approval"
   }
 }

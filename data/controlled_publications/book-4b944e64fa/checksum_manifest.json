@@ -1,6 +1,6 @@
 {
   "slug": "book-4b944e64fa",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "files": [
     {
       "file": "approval_evidence 2.json",
@@ -12,23 +12,27 @@
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "1dcd8918d197b62f4a033e60574023cc2ee0de9543f7a404235fb4c8577d1317"
+      "sha256": "6feb9927db483a3fa60873e480d3e509b7751f4efac101abcf276eb9d46b9205"
     },
     {
       "file": "highlight_sync.json",
       "sha256": "ffddf5da362104ca04f373598227e8c669534800a7764d48f9386944ecf361b6"
     },
     {
+      "file": "license_notice.json",
+      "sha256": "168350bc87b600f7cca3bc9e8e06ff7acebd8fe09e7aa259a80e52e84207ede9"
+    },
+    {
       "file": "public_book.json",
-      "sha256": "d8f472d0c43c4d3eade8184508d01828d2309cf8dc44d5d83bee51b1cbe6ad5f"
+      "sha256": "e260a218e1927f97c360240fdd9e139bbf2c3a6968b3fdd40aeab155b1a42550"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "b7ce3031863083230ca923a13c6a0a24c4aeaa919ca234bb6f756517a0ee32fb"
+      "sha256": "128bc37895a128219ed03cb49b6c690ef4edd3f9b20fc777f0b53a890bbda589"
     },
     {
       "file": "source_evidence.json",
-      "sha256": "db72627bc265e4faf67279e70472a52f4b566f2a9cd2e5bb8e7c65e35c13ba40"
+      "sha256": "f78e34707b6bac552767c0fd57ba25db2b7c4cc4073c08800ef1009554d70f6c"
     }
   ]
 }

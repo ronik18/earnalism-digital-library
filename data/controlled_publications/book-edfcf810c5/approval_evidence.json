@@ -4,12 +4,16 @@
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_AUTOMATED_IN_EDITION_BOUND_TEXT_READER_ONLY_COVER_DEFERRED",
   "audiobook_use_approved": true,
   "audiobook_use_approval_source": "AUTHORIZE_SPRINT1_AUTONOMOUS_GO_LIVE_LOOP_V3_WITH_OPTIMIZED_DECISIONING_AND_175_USD_CAP",
   "audiobook_use_approved_at": "2026-07-13T07:30:39Z",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": false
+  "audiobook_enabled": false,
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "source_hash": "4e4f92326d92da407a564d61c67f18583795ccc176de35e04eeaa05652017c78",
+  "content_hash": "d9249c44925bc65221d731727c5f35e557a13144feabe843f649d3dd5d249a34",
+  "publication_authorization_sha256": "0f80a6bc269d8d080fe759b1fa1c7303483e183badb4b9801935ec1ab49419cc"
 }

@@ -1,14 +1,14 @@
 {
   "slug": "book-95624627d5",
-  "source_url": "https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B_(%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE_%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1)/%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A7%80",
+  "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%95%E0%A6%A5%E0%A6%BE-%E0%A6%9A%E0%A6%A4%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%AF%E0%A6%BC%2F%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A7%80&oldid=1624594",
   "source_name": "Bengali Wikisource",
   "source_license": "Underlying Bengali literary text is public domain in India and the U.S.; Wikisource transcription/source layer is reused under CC BY-SA terms.",
-  "source_hash": "12e68ccb1f58102856edb86d24bb700eb18bd1bda6dee53b8711895d5d73b6a8",
-  "content_hash": "b17c4f3d8928510f6a9012b3e9e9333e8bdefa213da3a51b87f1ab17e2c5d6b5",
+  "source_hash": "04a23577d9da238ff5e156deacc7777f1c5f427515c39cbb045cef113c0e3736",
+  "content_hash": "15ae2ea405a14c49965d03b6a329419ecb7e71297a3007be8530673587a03b06",
   "provenance_hash": "531807dbbf7b3dc9cc8fe1f91beb726ba5d86f8be99aef9d4ea2d2f4b42806a9",
-  "rights_basis": "Author died 1941. Published 1901. Public domain in India and U.S.",
+  "rights_basis": "Exact Katha-Chatushtay original1301/1894 sole-author Rabindranath Tagore edition; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1941; India Section22 literary term expired end2001. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
   "downloaded_at": "2026-06-02T19:23:56.280289+00:00",
-  "source_format": "text/plain",
+  "source_format": "SHA-bound captured source rendering",
   "reader_facing_boilerplate_removed": true,
   "author_death_year": 1941,
   "author_fact_evidence": {
@@ -19,15 +19,15 @@
     "authority_response_sha256": "0048c2eaa3a43087f4e130b3e5153c9389111d9aed6d329cf12286ad158c0aa9",
     "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_EDITION_OR_PUBLICATION_APPROVAL"
   },
-  "verification_status": "pending",
-  "text_clearance_status": "PREPARED_EVIDENCE_NOT_AUTHORIZED",
+  "verification_status": "approved",
+  "text_clearance_status": "OWNER_DELEGATED_AUTOMATED_IN_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "1237ca4ab5922ee04c464dd69b6d0e75b0da59fc17f977b8453d7cbc1265d67a",
+    "reader_content_sha256": "15ae2ea405a14c49965d03b6a329419ecb7e71297a3007be8530673587a03b06",
     "chapter_count": 1,
     "chapter_content_sha256": {
-      "chapter-001": "1237ca4ab5922ee04c464dd69b6d0e75b0da59fc17f977b8453d7cbc1265d67a"
+      "chapter-001": "15ae2ea405a14c49965d03b6a329419ecb7e71297a3007be8530673587a03b06"
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
@@ -63,5 +63,30 @@
       "reference": "https://www.drikpanchang.com/festivals/pohela-boishakh/pohela-boishakh-date-time.html?year=0596"
     },
     "scope": "Underlyingwork firstpublication metadata only; sourceedition editorial/licence/publication authorization independently held."
+  },
+  "historical_import_hashes": {
+    "source_hash": "12e68ccb1f58102856edb86d24bb700eb18bd1bda6dee53b8711895d5d73b6a8",
+    "content_hash": "b17c4f3d8928510f6a9012b3e9e9333e8bdefa213da3a51b87f1ab17e2c5d6b5",
+    "source_url": "https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B_(%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE_%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1)/%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A7%80"
+  },
+  "edition_publication_year": 1894,
+  "original_edition_migration": {
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-95624627d5-original1894-edition-migration.json",
+    "source_title": "কথা-চতুষ্টয়/মধ্যবর্ত্তিনী",
+    "source_revision": 1624594,
+    "contributors_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%95%E0%A6%A5%E0%A6%BE-%E0%A6%9A%E0%A6%A4%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%AF%E0%A6%BC%2F%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A7%80&action=history",
+    "scope": "Original1894 replacement, new identity; historical1950edition decision not reused"
+  },
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "source_snapshot_identity": {
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-95624627d5-original1894-source-comparison.json",
+    "sha256": "97ad2a5edb1b2a38833851334263121865a8bf1670715c05f2a140c5b10e38fc",
+    "scope": "Actual captured original/source edition transclusions; parent revision alone does not freeze transcluded pages."
+  },
+  "edition_evidence": {
+    "edition": "Katha-Chatushtay original1301/1894 sole-author Rabindranath Tagore edition",
+    "primary_record": "internal/legal/catalogue_clearance_20261002/bengali/katha-chatushtay-primary-imprint-pages.json",
+    "record_sha256": "4dd7dc9b147b535ddc643a42b5ca22d7b146ad073be0880f28c3aebec1a3f7e4",
+    "scope": "Selected exact literary narrative and retained source notes only; no artwork, publisher matter, separately authored foreword or other edition authorized."
   }
 }

@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "the-last-leaf",
   "title": "The Last Leaf",
-  "generated_at": "2026-10-01T21:08:32.873350+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "3b86fb4d8aae47c9471240ba708f681dc16aec5b34d97976faa9a642339290ba",
-    "content_hash": "750d93c0a95a22e2d6fc3dbb827cf25a24324830c96720906724aa3cd27f728f",
-    "provenance_hash": "034931b10a219ccaaf22f3d7e299ae6936c765abe784f30fb28b65149235e759",
+    "source_hash": "cce090386057bb1fd68bdcda1323a6119c733e42b89cf02c31b35bf4eaff9884",
+    "content_hash": "e3a825f58d8a086967586988d7eeaf902fbb415b53cd164340d935f98d7645f7",
+    "provenance_hash": "934cb651a633e8a20ab5b21de25e998f2da2c408ec2cbcc8a1d9a0a0c69652b5",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "e05c334e9ecfcc411e1f9bec5f90e2c32caf0a0e67670135f81cdc2afe7a7bef",
+    "chapter_index_sha256": "5e0f18ad11127487ea7fa4578be36c7a44d5c64b15aa85ae8303e78169475b16",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "The Last Leaf",
         "word_count": 2402,
-        "sha256": "6cd5c963e4f4279e3b20e80ae6871ac5261b2506220a02b871c1b7c884962c7b"
+        "sha256": "f341245317464de578e0b7d21b54de270d7d189bce9d9068403e51d9f86afd2b"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "741a4f7782f4007f4b8de79dd126b67f84843ac791f0f853d1ec872eac421a96"
+    "publication_region": "india",
+    "evidence_sha256": "72060f5e2666756e16495d949ac66911724a0742899ba767571168b44a776bd7"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "4ccef2d65df98f0d40cec1c62fa6853494f19131855e57018c8a0b58cb15365d",
+    "public_book": "8729f73b7b1f20a72e728ddde43d8edb8f244c2414096d19af602b364a2f6487",
     "reader_manifest": "cd7a86a387312fedf34085d7b130b9d91d3890966316f9e33a0c4d8c5acdc36d",
-    "source_evidence": "741a4f7782f4007f4b8de79dd126b67f84843ac791f0f853d1ec872eac421a96",
-    "approval_evidence": "5437d5fe63064e0285b7a3812aa9508f5352a5c879384f55b64dc8aa47bd79ee"
+    "source_evidence": "72060f5e2666756e16495d949ac66911724a0742899ba767571168b44a776bd7",
+    "approval_evidence": "7996079600f47d4a2d4f4c464f0dc965c6ddb7a76fbc948da920a1d8af55d08e"
   },
-  "manifest_sha256": "83b60a5ce4294920a20260f6871d8871d7fbb30069eb3eecd38a6b5cdba46b52"
+  "manifest_sha256": "245c08da9cf999c38e2c402ce79b3bb0678d87dffafb6d0fdd2be4867731e4bd"
 }

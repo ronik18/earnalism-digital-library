@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "the-ambitious-guest",
   "title": "The Ambitious Guest",
-  "generated_at": "2026-10-01T21:08:31.892423+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "e5575209af8f67db282d16c1adb0e224aacaee4e9abb122ccdbb0a8e60ceaf45",
-    "content_hash": "ec3d20e545a161c6382ab30e8ac0ea73e9c86e2f68dd51e2ebddeb89be9b8d9a",
-    "provenance_hash": "6fe8763590e16b3bb0e993d1556589fc7fbd19c3586132d55e8e84eb1077d0ec",
+    "source_hash": "256624faf1f612edc47dd0a0ecc9717bd15074baea33e8a9f32bc66f3f04b50b",
+    "content_hash": "dbfd78d5760dd08bf9bcdec9424bd63065b649bdb0feb1df817a953cdf7af784",
+    "provenance_hash": "f2f085245ddcb0c2d0a0d818fdef63649ad0e8a3e566daecd94da146a422b8bb",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "9c198f642b7d91e961324255a75f4b806970d095665ed1bceaa0e8c88c81860b",
+    "chapter_index_sha256": "5609065086c6c7ccbda40a0d5c3760619df636ff26fd22212e43477b46c66eab",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "The Ambitious Guest",
         "word_count": 3285,
-        "sha256": "344fe1a9fac580c744df699ee7f0acbbbc04ac7e130e708b8a3056729e7d881b"
+        "sha256": "441e27f512cee1faa4ec5513e22ffc748b80b1313950ff2c5c509a5e32437f56"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "737907e7532c63e3ef906cd615f74be68f3075a0324b33c1f2028f11292167c6"
+    "publication_region": "india",
+    "evidence_sha256": "2be43bb3ffeec41e7bdd7efae673d63e2c3ad80f85a44a569b1e149cd16c82e1"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "9aa9aff83c8ac5a1967d0c85d45391d2e040f9959300e077bb3381120b718c3e",
+    "public_book": "d0c6f92b964b126788df3a9dac2034d752d3839494a53462ff6085066ee08809",
     "reader_manifest": "c187b34b8cd39ce509ff237856cd7d6bdd9274b79789f46759af590b1c78e786",
-    "source_evidence": "737907e7532c63e3ef906cd615f74be68f3075a0324b33c1f2028f11292167c6",
-    "approval_evidence": "db4c1757772f927d4f164c215d46b2f695d9dbd6e573874d8436434a5c482619"
+    "source_evidence": "2be43bb3ffeec41e7bdd7efae673d63e2c3ad80f85a44a569b1e149cd16c82e1",
+    "approval_evidence": "e7b51600b3865ae8083e3abda2d2400a84440815e1e1dbda6768e6b3bb1106f0"
   },
-  "manifest_sha256": "bd0aaad03f2d4548aa3083c634daab31dd5a9e682bb2afa268c7f16b23750959"
+  "manifest_sha256": "66567b46c5073204ae0a81ad4a71952a161c1867ffe16f5b7fb77aef23c6a4e2"
 }

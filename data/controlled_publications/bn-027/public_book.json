@@ -100,5 +100,6 @@
   "audio_qa_status": "",
   "audiobook_release_mode": "",
   "audiobook_manuscript_sha256": "",
-  "audiobook_release_conveyor": {}
+  "audiobook_release_conveyor": {},
+  "license_notice_sha256": "5d17b74d579b826c369928b3910c039842144c3b2f34ef32614ca8f0b4f99990"
 }

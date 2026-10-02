@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-speckled-band-pg1661-noncover-text",
+  "edition_id": "the-speckled-band",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "bb6e1b4c00d3d1206cbd4fc887bcba1bef02153eac0c7e358a0c303b0c5a7e2c",
+    "reader_manifest": "99c60761cc3dbf0e4128e1c6e470f171de69e5f8aba4fc6dd006941a110ad41e",
+    "source_evidence": "88b303686beac1f47b3c0444557c62085a1719bfc7a72fa8360693de1648d7f2",
+    "approval_evidence": "816fb718e8e3c2c509b8fff980094da614461ba92c0e3b12dfecd23e9db098fb",
+    "checksum_manifest": "6dbc422ce31114a541502fa96aa831ebc2b1d50ad7385e910be540745e7a3474",
+    "publication_manifest": "c89ac557b6d457364475e9408e2475ddc41fe643658a2c1ba188b4827ad5f6e6"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:48:34.443341+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1930, verified lifetime collection publication 1892 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "e20fd31ddb29f4161febcd7e1db0a5cf535f5cd6bbe8e6cf28d8bbad2975870c",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "0e79857c177b111777a6034258d2094a25682248fef0bdd8bd7df7e1b0a45251",
+    "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "ef46d27a97d829def7dbb2935f56aa044ea42ee2122b2f137d8d515cc50cf535"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

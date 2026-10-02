@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-bn-059-1885-cc-by-sa-text-reader",
+  "edition_id": "bn-059",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "22b93c2f0661b3e844a647811ebb68225e8aa92e33173a3fc7cf99dc6a2c255a",
+    "reader_manifest": "f6e6fb365561b7f796fa52ad190d6d16a4f7c409c1b5e6ebb648f833b768a2da",
+    "source_evidence": "1ae73ff80e4a9ded7b57617b2ce5a92c689b0e70f6f98f55cb3302fbfb00f082",
+    "approval_evidence": "f4169f78d6e5bc6f7078e19faa2e41444a503df143acfb359ea5de48ef427db8",
+    "checksum_manifest": "03b3b184d8cbc9646ae6b29dc510dec0bd1daf85db0bf9d7e515f8a2c8377af5",
+    "publication_manifest": "fdde81322f8b10ee78bddf0f7fae5bc1576fa8e89b91c70f479215f79b2076c8"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-02T03:10:37.024181+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Exact Kamalakanter Daptar expanded1885 edition, Bankim with explicitly credited Akshay Chandra Sarkar and Rajkrishna Mukhopadhyay essays; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1917; India Section22 literary term expired end1977. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
+  "evidence_sha256": [
+    "3c52fa5eb56db9c714f4ae66fc1aaae12e6e08b152448e8cbe9a8fd4fc7b9380",
+    "bf079eaa8a911bc585ed6c01e0d5517cef4ea545ba9ff1974f5d32cb601d04d3",
+    "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "d79b6d17c1ea5750f19e68b9572cb482cebdd61ac4bb4b2645f59d664f83b823",
+    "da382ceb704d5f59678f382d659d7251ea639ae4d0457c7a6636b5e6b5f4ba34",
+    "11e53198a277a620032435a76d82df27117821c99fce6802a531d7c326d7a1a3"
+  ],
+  "accepted_by": "Automated executor under explicit product-owner autonomous evidence-backed text-clearance delegation; not a human legal reviewer or signature.",
+  "conditions_satisfied": true
+}

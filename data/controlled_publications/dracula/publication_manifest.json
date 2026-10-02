@@ -3,14 +3,14 @@
   "schema_version": 1,
   "slug": "dracula",
   "title": "Dracula",
-  "generated_at": "2026-10-01T21:13:50.978415+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "3dbe1845a822271cd2b887ebb81301b05844f8fa24133b915e30da35e915483a",
-    "content_hash": "5a546ad219d6886b3a43abcfe64f67147ff10db9b3ba2d5c501d89f3a0bb38f4",
-    "provenance_hash": "790858fe254f38fc4ffa55eeda37579df04b747294663521484d62d30e553fd7",
+    "source_hash": "96cd16eacdbfebae8fdda5591f66e0cc8ee76be18e0cd1aca02bc00615782d28",
+    "content_hash": "0ab0060ec9b89c62f3d33b57b08831aca532dc79aea59d9cd7f83cc0f2d1e1d0",
+    "provenance_hash": "caac3453e61b32e2f4fd44d5551589a91afedabb5a7710178f20b2a6ed85fa30",
     "sanitized": true,
     "chapter_count": 28,
-    "chapter_index_sha256": "7af29ccc4ac15d54ad6324209d6a379b5cf245086e0f5046b2b20b78d7d3c4de",
+    "chapter_index_sha256": "e265aec599ccca0e0b277646ca94130088700030c5cb750b84f87ecfa23fe4cd",
     "chapters": [
       {
         "id": "chapter-000",
@@ -24,207 +24,204 @@
         "order": 2,
         "title": "CHAPTER I. JONATHAN HARKER’S JOURNAL",
         "word_count": 5745,
-        "sha256": "756150e22e1fbdaa0fa50f434de47fd85952c8a043d9ef180adc121349910575"
+        "sha256": "6b6bb1a8b8ace4256785baf236bbd781fffd774bc688faff9f91ec4d6ae1ab4d"
       },
       {
         "id": "chapter-002",
         "order": 3,
         "title": "CHAPTER II. JONATHAN HARKER’S JOURNAL-- continued",
         "word_count": 5521,
-        "sha256": "07c1b1abff4b56154e66fa7db3e51fd2d7ddfed6afce0201fbc4c045fd3350d7"
+        "sha256": "cfd84f5af8254adf7f1b1e3791f8c543ea23d5b497b6c66c036e2505d4623500"
       },
       {
         "id": "chapter-003",
         "order": 4,
         "title": "CHAPTER III. JONATHAN HARKER’S JOURNAL-- continued",
         "word_count": 5740,
-        "sha256": "39d4a54218803ba8ed9964bca706dd45ae163a61a03cab3a19217d37e0386be6"
+        "sha256": "5c0bfe5318af5a0e12cf483a648d94d067ce89939ae8d4c7282c626e90525033"
       },
       {
         "id": "chapter-004",
         "order": 5,
         "title": "CHAPTER IV. JONATHAN HARKER’S JOURNAL-- continued",
         "word_count": 5874,
-        "sha256": "aec1be286497f273121373f58f4a950d2b2fb5033f9c6513058d53392fd858fb"
+        "sha256": "c45c2f952dc1245365a779be9c8dcfb159befb3badae8074a21442647d3327a6"
       },
       {
         "id": "chapter-005",
         "order": 6,
         "title": "CHAPTER V. MINA MURRAY’S CORRESPONDENCE",
         "word_count": 3643,
-        "sha256": "5bcb2b7d8f1b20c0938c517b286cd734922a2df6d430ba6b8ec3db0dae83436c"
+        "sha256": "567c6fbc78e6ed853e68dfbfaa9f53e8202b60229fabb8a2ad4331c065684dba"
       },
       {
         "id": "chapter-006",
         "order": 7,
         "title": "CHAPTER VI. MINA MURRAY’S JOURNAL",
         "word_count": 5790,
-        "sha256": "8e842e5e3da8e2885807080565a204c5752609537b5fa02a24d66e850012a77a"
+        "sha256": "d566bd9bbf5ed220a5aff73c58c8cc4c6e3d5863bbae37e79abdc09c1ba67dc9"
       },
       {
         "id": "chapter-007",
         "order": 8,
         "title": "CHAPTER VII. CUTTING FROM “THE DAILYGRAPH,” 8 AUGUST",
         "word_count": 5620,
-        "sha256": "171620c5b64961e02fa308ff00c992e869df7ee62edce2f9ef4bdaf63a869536"
+        "sha256": "40e9cf69690a37481ac5983dc3bd9c5785db2ae39d341b4b81cc4c4a5e1210f6"
       },
       {
         "id": "chapter-008",
         "order": 9,
         "title": "CHAPTER VIII. MINA MURRAY’S JOURNAL",
         "word_count": 6369,
-        "sha256": "17dc333007c61237ac74e1faaebcc25d8a2f1d0ab7c00e00d94325a14ff61a7f"
+        "sha256": "4afa3e154a1c1c1d40ddf03b1d09de25bd280f7eff6fb44a19db88473a6d2908"
       },
       {
         "id": "chapter-009",
         "order": 10,
         "title": "CHAPTER IX. MINA HARKER’S CORRESPONDENCE",
         "word_count": 5994,
-        "sha256": "ccacf311a81aacdc7251fe415f65a390c23c6d2b005f17312822d2d54beebfcc"
+        "sha256": "b5b89bf3e656d274b5f169762bbe60d54a9af8cf0bad88f325fcd3cf8c42a797"
       },
       {
         "id": "chapter-010",
         "order": 11,
         "title": "CHAPTER X. DR. SEWARD’S DIARY",
         "word_count": 6003,
-        "sha256": "42cb101ae5b1289f01f70f7f5b285d9aff8768b64afdd11d8609370ec2338da4"
+        "sha256": "4639093caf8fc2d2d9fa9a553786c758631a7b697fb2971f88bee5fd5687bdae"
       },
       {
         "id": "chapter-011",
         "order": 12,
         "title": "CHAPTER XI. LUCY WESTENRA’S DIARY",
         "word_count": 5259,
-        "sha256": "c46cd5fc0f4dbfc1a0bd9e9da97527673906ca8d7494e6dfb1449b26d3076d96"
+        "sha256": "01d544e051b5862fe86bc42dbf45092581f0d26fd24910aa9bca85bbd5deabe7"
       },
       {
         "id": "chapter-012",
         "order": 13,
         "title": "CHAPTER XII. DR. SEWARD’S DIARY",
         "word_count": 7377,
-        "sha256": "6b7636bc4e07c310fba2bd658917174d4040783b2ce1d0625550f2a8188e2a1e"
+        "sha256": "336bbc45ce541b7fb33ad3a4140d588819e0061785b52881f2d3b39a93b9eeb7"
       },
       {
         "id": "chapter-013",
         "order": 14,
         "title": "CHAPTER XIII. DR. SEWARD’S DIARY",
         "word_count": 6678,
-        "sha256": "79f188e6915bf3698be04c94ab2011cba1640202e5dca1865e63334b0cdb3b4d"
+        "sha256": "cf41a5d2062d28f09eeaec7b7627e014eaa83dbdc064a9ac6e698198898ecaca"
       },
       {
         "id": "chapter-014",
         "order": 15,
         "title": "CHAPTER XIV. MINA HARKER’S JOURNAL",
         "word_count": 6521,
-        "sha256": "620f1f8928c99499d0cd2ae9bf70c9aade6862aef616c654053a4372bb597e2e"
+        "sha256": "489bb4310435504befa3b40dcb18d0e18a4e2415e003cb353ebab7d55eaafc5c"
       },
       {
         "id": "chapter-015",
         "order": 16,
         "title": "CHAPTER XV. DR. SEWARD’S DIARY",
         "word_count": 5871,
-        "sha256": "ba76aaa2d8cce03e5592de9478183b34271a0ea292fdb328c5bab096bfdbc711"
+        "sha256": "f39ac1f1ddf5508bce2164bcbee0e4e72554c8a7e5d32c2903bf007422a5fcb8"
       },
       {
         "id": "chapter-016",
         "order": 17,
         "title": "CHAPTER XVI. DR. SEWARD’S DIARY-- continued",
         "word_count": 4610,
-        "sha256": "6bb02168932149d7ef9aec62bdb3f57e94da140743c4110b96337711baf27960"
+        "sha256": "a5161921707fae6d714fcab98990789ea1f776bf2d2b2e878ea49677ffa409c2"
       },
       {
         "id": "chapter-017",
         "order": 18,
         "title": "CHAPTER XVII. DR. SEWARD’S DIARY-- continued",
         "word_count": 5660,
-        "sha256": "802bb86716620da2778d4963da842034709075f5841a841ae8e2f03771a5cfa6"
+        "sha256": "2f03c971c7ea1e5a964c0da2b7b359623429c3f9f1607a0dc3677b5720215b82"
       },
       {
         "id": "chapter-018",
         "order": 19,
         "title": "CHAPTER XVIII. DR. SEWARD’S DIARY",
         "word_count": 6999,
-        "sha256": "fed770c199a9db2a5aff539da9c2a7b64d7e002d2ee2075c7afa93962fd697b6"
+        "sha256": "87f4d1de2f7e4a7b8fbf42ae22634eb9af76bb2c5ff79c95229ae7a1107a1d83"
       },
       {
         "id": "chapter-019",
         "order": 20,
         "title": "CHAPTER XIX. JONATHAN HARKER’S JOURNAL",
         "word_count": 5730,
-        "sha256": "bf15a3fe7fda0916fa6acc386bfe69e78a14325393738a1b90929cfb6df873e0"
+        "sha256": "cbb926021fc858db64b27e93710fea696dc6c8b5739a9f682a532a5250be02ac"
       },
       {
         "id": "chapter-020",
         "order": 21,
         "title": "CHAPTER XX. JONATHAN HARKER’S JOURNAL",
         "word_count": 6009,
-        "sha256": "d258db175acad18d99fbe3f449b559045d606b4e059c7a80d47d742cc00bc13f"
+        "sha256": "649b901979d5f1670fea4b0f6c6ebc0253d50cddefd15f51db65812717da9a4b"
       },
       {
         "id": "chapter-021",
         "order": 22,
         "title": "CHAPTER XXI. DR. SEWARD’S DIARY",
         "word_count": 6243,
-        "sha256": "0f9e8686cc86481f0bd99c88493bbf5feabc53a546983b44bae15322e002e21d"
+        "sha256": "47d6a5956008f8691ef693209f0e5d92d46eacc8e397cc56d922605a9a2e5d1f"
       },
       {
         "id": "chapter-022",
         "order": 23,
         "title": "CHAPTER XXII. JONATHAN HARKER’S JOURNAL",
         "word_count": 5495,
-        "sha256": "c7a8c452450170479543434863da5ceac7887c97c657a70a6a171e58ec41bbce"
+        "sha256": "8b745a17a39efdf0dc921193b4956e9ada042f3d12fd7f13f5b72aec3d4fb82f"
       },
       {
         "id": "chapter-023",
         "order": 24,
         "title": "CHAPTER XXIII. DR. SEWARD’S DIARY",
         "word_count": 5725,
-        "sha256": "e3962b14251eb0cd3beeda4950ed9fac96f18093f384fc801ce7f297d60767c5"
+        "sha256": "73b58b6758cc947dc30c2ecee35a96befbdc190a24c58dbd66c311056f9b860f"
       },
       {
         "id": "chapter-024",
         "order": 25,
         "title": "CHAPTER XXIV. DR. SEWARD’S PHONOGRAPH DIARY, SPOKEN BY VAN HELSING",
         "word_count": 6353,
-        "sha256": "9b1abe840b94f764a8c84b98459aff72a4149417eb1080b0cd86163ed4c7c727"
+        "sha256": "8b285e3267b83b4fcf0f5ae3094102338ba0444fc0ba7d44bede2c27e03e1904"
       },
       {
         "id": "chapter-025",
         "order": 26,
         "title": "CHAPTER XXV. DR. SEWARD’S DIARY",
         "word_count": 6323,
-        "sha256": "a72cc4c9d11d0ce203f76e092ea73c24624e9a1e4f5a576d1a173a258fd8f583"
+        "sha256": "dc7bd93c1153f68d2dde9f3244bd4cd22bf98349b84bcb31ae10c9188348d020"
       },
       {
         "id": "chapter-026",
         "order": 27,
         "title": "CHAPTER XXVI. DR. SEWARD’S DIARY",
         "word_count": 7222,
-        "sha256": "e302eaa5a86fcffb7d71c470c4f7de563dd18340131244023e80fc2352e87298"
+        "sha256": "001559f7486f9e2a9424e76d0c6b79bd4aaa2b6818e4b887e31e1f2ffa01ceb4"
       },
       {
         "id": "chapter-027",
         "order": 28,
         "title": "CHAPTER XXVII. MINA HARKER’S JOURNAL",
         "word_count": 7938,
-        "sha256": "2246487a33f989e601ad5908a597643b0ed1021183e2e45eb03540546900b88f"
+        "sha256": "6019f4f2e7472398196bc0b93dccc73d2b748f2971f144eb7d67454e2a73da3f"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "7a89c9471e66e1628a0566c325e7a7335527d9cc0cd24263cb547473e93b7ecc"
+    "publication_region": "india",
+    "evidence_sha256": "6322c3822db62956da4b1fac653e74bbbf02f79f39554bc236199605764f0cd9"
   },
   "reader_release": {
-    "status": "BLOCKED",
+    "status": "READY_FOR_APPROVAL",
     "exposed": false,
     "qa_status": "QA_PASSED",
     "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779946033/earnalism/covers/front/cover_630df84e-eba7-491a-aedc-f857d29c9000.png",
-    "blockers": [
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
-    ]
+    "blockers": []
   },
   "audio_release": {
     "status": "NOT_REQUESTED",
@@ -236,10 +233,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "eebe3dedcadfa81099d97e0923807b214af64c0fc61983b5ba6252992c5cbc3e",
+    "public_book": "e6955179cbed23986d257cf957378767493cf554b295c9d31d3e27700743b3d7",
     "reader_manifest": "f51512441063fa5b19c8af4e6cb1130c9eda98897a242163416ec09fc321068d",
-    "source_evidence": "7a89c9471e66e1628a0566c325e7a7335527d9cc0cd24263cb547473e93b7ecc",
-    "approval_evidence": "edd40ccba60553473d19febe988b7f8d05ecd51cb0c1cec055c493587a471fa7"
+    "source_evidence": "6322c3822db62956da4b1fac653e74bbbf02f79f39554bc236199605764f0cd9",
+    "approval_evidence": "530e4680a54206e656d9a517aee66ecd2002cc31465ef50e2003718ddcdd078a"
   },
-  "manifest_sha256": "07fee79bc94e79911542e80d5fbf288e14021832bd259b6c3730f9f4f479b4aa"
+  "manifest_sha256": "2daa10b8d56830774ca36b3594804125ffea73c95c29046abc3d8d2081d9efad"
 }

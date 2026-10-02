@@ -28,10 +28,10 @@
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "1c6c50661763d7497213b1041ae809c1f63a1262387eacdbc0b0a3348fe8e350",
+    "reader_content_sha256": "94aa1e3f4446f201905cd31429d5ee1e61eecc227df548ddaf6ad6539843260e",
     "chapter_count": 1,
     "chapter_content_sha256": {
-      "chapter-001": "1c6c50661763d7497213b1041ae809c1f63a1262387eacdbc0b0a3348fe8e350"
+      "chapter-001": "94aa1e3f4446f201905cd31429d5ee1e61eecc227df548ddaf6ad6539843260e"
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
@@ -45,5 +45,32 @@
     "date_as_recorded": "May,1891",
     "evidence_type": "EXPLICIT_FIRST_SHORT_STORIES_PUBLICATION_ENTRY",
     "scope": "Underlying Bengali work publication fact only; later source edition/transcription obligations independently held."
+  },
+  "exact_source_delta_repair": {
+    "slug": "book-f5d593e1f4",
+    "verified_at": "2026-10-01T21:34:00.942074+00:00",
+    "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-f5d593e1f4-source-comparison.json",
+    "source_snapshot_sha256": "58cc5368647e76dcc3f21028c86933b9bd3e19482d37c547be507bb2ab5a18d9",
+    "before_sha256": "1c6c50661763d7497213b1041ae809c1f63a1262387eacdbc0b0a3348fe8e350",
+    "after_sha256": "94aa1e3f4446f201905cd31429d5ee1e61eecc227df548ddaf6ad6539843260e",
+    "operations": [
+      {
+        "operation": "delete",
+        "canonical_paragraph_range": [
+          29,
+          30
+        ],
+        "source_paragraph_range": [
+          29,
+          29
+        ],
+        "canonical": [
+          "১২৯৮?"
+        ],
+        "source": []
+      }
+    ],
+    "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+    "scope": "Same pinned edition body repair; not rights/publication/audio approval"
   }
 }

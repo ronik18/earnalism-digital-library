@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "the-outcasts-of-poker-flat",
   "title": "The Outcasts of Poker Flat",
-  "generated_at": "2026-10-01T21:08:33.862911+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "33981862ad30151ecb5c3224bbe5482be150e0d6868bc1355c3b3ec919dc39a1",
-    "content_hash": "68844ac3c0ca7badcbaf95b7945501fb789b7dfc9206eb0ed10c6cbea6b34ad6",
-    "provenance_hash": "503a0270772e6f2f78dc22b13bf53a6e1eddf1a5632b028117bb113d6f7a78f2",
+    "source_hash": "c19400f79c45463f6d35be61868b604f45dba60c4841769cb1f11543be1baee1",
+    "content_hash": "c1d1338d73235b3f05c710e0b170b9a600b69956ca89220291e4ada43a6cef20",
+    "provenance_hash": "3aa18073d1a6f8d1d0384ae86c842d56ce2960bcab5030221b555004989e9662",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "e08e1e3fa32c746e2f8411be3678f2ab5d9560987b7aa291bc61725a5ca29ebf",
+    "chapter_index_sha256": "602ef2859c9f8c5e5b7d92472e3201b2a551516e782bc5aaad1bf7eec17fc96c",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "The Outcasts of Poker Flat",
         "word_count": 4090,
-        "sha256": "0aad8317f1e4689fdca6a28416795297a73cbfbb30736d8399fa926c4cf68498"
+        "sha256": "ff013f8d4ad981146a8b58a2afee891ca5506641bca1dba4ef02595696deb45e"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "f19bcc7d1c5ff3401321cd3fa9f6ea5aaedde295e36be1d8332797f6fe92f44e"
+    "publication_region": "india",
+    "evidence_sha256": "127b169655a643274fd13d506bfe081d0d00766cfdabaca5e90065b3f837475f"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "18f0f53c139be991b3af1fd94c6dfb84bee7905e4f467020a126c503fbac7953",
+    "public_book": "4a1b434878128e5d92d899410fe2a855567c9f76f8f4a867ae52803aabf46f63",
     "reader_manifest": "fc3ef77b3f34a37bde15de882b8f5951d067c416186ff039de403e0c0434dc96",
-    "source_evidence": "f19bcc7d1c5ff3401321cd3fa9f6ea5aaedde295e36be1d8332797f6fe92f44e",
-    "approval_evidence": "82e8deedd2fa06ad67edf7f5996fb8f4b66af429f01ec6a6af9bfaf51f6e817c"
+    "source_evidence": "127b169655a643274fd13d506bfe081d0d00766cfdabaca5e90065b3f837475f",
+    "approval_evidence": "8d61f6985f976c2596d7d4c33cc104aabf3be969fe23e47137201350d5ffa6ac"
   },
-  "manifest_sha256": "584e8133028b96dbabb30770a8471b01740f91081f5dd384a4a00524de71d7e4"
+  "manifest_sha256": "43e8d7a2e59fc3e06f9d7d55f5c7e1ba986214a30fe93e4a0cd2b195e80232f7"
 }

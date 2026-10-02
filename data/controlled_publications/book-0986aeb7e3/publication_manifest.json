@@ -3,21 +3,21 @@
   "schema_version": 1,
   "slug": "book-0986aeb7e3",
   "title": "হৈমন্তী",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
     "source_hash": "f3d11b36d1ca572a7fbae5e7e765afe4f834c6c5a4d60a1ec83bfd84c33d0eb6",
     "content_hash": "e4f1997b2afb99d713363043c730084c26f66421856dcefc2e8f9e9dbad74d13",
     "provenance_hash": "e2f991986f3739cec4987de40fae4a32290d6e30d363f2b01cc081e96141abc4",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "bd0d3fad7dadf84261b4a052344c1536ac6eeb39b00a34ec01e819810d93da18",
+    "chapter_index_sha256": "44cdbaab9d4315235a407168aaa8b4b7d89e8ec128b7dc3e518eca92c85d8db7",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "হৈমন্তী",
         "word_count": 3935,
-        "sha256": "216dfd58922a9c572fbeaf75e6430e1cb88f93d83ca5cb16dab4fc16e6036582"
+        "sha256": "f7349c1ee66806ba02a9043f1bb64054bfb1893e28cac5ef569cc2e5e6cd9b4b"
       }
     ]
   },
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "3df873570a1c505e7518340471379915cb83b9a7f6c46e9c84b0c461efddaa7b"
+    "evidence_sha256": "b61c9301dc79b646813907525113463481c72fa44075f747ed2e7bd3f1f37590"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -47,10 +47,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "62a103b01f7ba36ef46d0589a0035f199e1a928bc19f3f956a0fcbfd5d99147b",
+    "public_book": "51a83bd65a0645935955d63b262b27d9db0833ecc5a8d2e0108c7dd502e44421",
     "reader_manifest": "63036f48dd58a5449e8c8604638047ba64e580c4c781238b4e9be3b5b7985b81",
-    "source_evidence": "3df873570a1c505e7518340471379915cb83b9a7f6c46e9c84b0c461efddaa7b",
+    "source_evidence": "b61c9301dc79b646813907525113463481c72fa44075f747ed2e7bd3f1f37590",
     "approval_evidence": "38d37f80eadb5bedfe43578d83898fbaf7b0f5f2b5c2c00dd81ae5e25a8f89d1"
   },
-  "manifest_sha256": "38e3596c5beeba222a075709be4acb77e2856388b25d96b754dc5b955ba02f1e"
+  "manifest_sha256": "930b0f3eb58855428e1cd8fa2a3d4b5bed7957d6605c4ae187e7c9c107d4fc24"
 }

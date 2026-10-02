@@ -5,12 +5,12 @@
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
-    "public_book": "0c92ac381141912d13f1ae5b4d1d7eae27e52fecf378672efa66e1937b97b00d",
+    "public_book": "c9c7472c67232de4c9eba6b94428b107b4c00b6156552c2122bfa6a0bfb6cd7e",
     "reader_manifest": "81b6c23e716ea4d26fae26cc8e9e3e7e37637fd0c9fb1619dccb7a94d0ab7676",
     "source_evidence": "9e4efacc3dbd251ea18aacd5805d781c1f64a450bea0225fae4ba6a394a97e99",
     "approval_evidence": "8e598a926cb96af13684a3985d1143cf9ac5fb0a973eec11746a211462769d1c",
-    "checksum_manifest": "5e8cb9647372acea4d58c7b6c353e2f17b9f4ce127e4e8126fcf42a91c939fe3",
-    "publication_manifest": "fdb774f00f38cf4d1ab328d6027530f215efb5465a7063e88c68597f5c231d77"
+    "checksum_manifest": "30ae8fbcdd611de9b8a93e295713970add3b3fbd281c5df9d5a470d4fd146a37",
+    "publication_manifest": "96452297fd2db13b70a3ba31a5b4a1d827d354ddd64a771b830e56c828c74f2b"
   },
   "territories": [
     "IN"

@@ -24,10 +24,10 @@
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "33d523d47ed2037b94b1dee44bf8a074ccb662de0e051223c6efd33e20844dff",
+    "reader_content_sha256": "adc335cf0ab77780d10c8e1c8535d7acae90cafbc38ffd4767d85414b58e7c4f",
     "chapter_count": 1,
     "chapter_content_sha256": {
-      "chapter-001": "33d523d47ed2037b94b1dee44bf8a074ccb662de0e051223c6efd33e20844dff"
+      "chapter-001": "adc335cf0ab77780d10c8e1c8535d7acae90cafbc38ffd4767d85414b58e7c4f"
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
@@ -56,5 +56,13 @@
     "printed_publication_dateline": "জ্যৈষ্ঠ ১৩২১",
     "calendar_inference": "Bengaliyear+593 for Jyaishtha/Ashwin/Kartik, Gregorianyearonly, noexactday",
     "scope": "Underlyingwork publicationfact; ©VisvaBharati1969 editorialrights/CCtranscriptionconditions independently held"
+  },
+  "complete_rendered_source_repair": {
+    "slug": "book-0986aeb7e3",
+    "before_sha256": "33d523d47ed2037b94b1dee44bf8a074ccb662de0e051223c6efd33e20844dff",
+    "after_sha256": "adc335cf0ab77780d10c8e1c8535d7acae90cafbc38ffd4767d85414b58e7c4f",
+    "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-0986aeb7e3-complete-source-comparison.json",
+    "source_artifact_sha256": "7899e84701593ffd5e7430500a984c1a5adabd3d08c5031f0696bbfb98aaba3f",
+    "scope": "Exact typographical apostrophe repair, no literary words added or removed"
   }
 }

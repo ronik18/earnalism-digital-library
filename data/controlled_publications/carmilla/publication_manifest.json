@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "carmilla",
   "title": "Carmilla",
-  "generated_at": "2026-10-01T21:08:29.461808+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "78e7f997e45a31d35a792805a1aec2800a896adee030c9b459f2357aee8db2c5",
-    "content_hash": "5b54ba7acab17ed4c6819f91a713736b22adaedf797fac9425e5d1ecbd90fa4b",
-    "provenance_hash": "212316f0e50b7ac69139ffd3e400ec93f73f1b2c270fb581e1cdf8d8d0a7f87e",
+    "source_hash": "f751453ef6ad9363a7e31f63b8d4ef830c7ea20a2aba465a59fb6fbee6bbddca",
+    "content_hash": "6d6a61c0239972fd2b3be28f3d531b800f2bff6c555d8b3d5357e03e997a416a",
+    "provenance_hash": "715bfbeefcae394130b8d4815a851e5a60ef3fe8b44efcba059e53882fe5531c",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "968a41ab1ea9a824a3b6e03317734dfb024e7f1514ffc62f916d6ebe0f39adde",
+    "chapter_index_sha256": "11fb68c936504e51e22c509f04e0dc077c52fd4240cb0ca842a1425e5ff4a520",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "CHAPTER XVI. Conclusion",
         "word_count": 28115,
-        "sha256": "9404d42991bbbc93c8efd47e63eddf83e8a757e4bf7f164285207c96959b25ea"
+        "sha256": "171025cebd31026dbb2c9035f32f9f887ad4d72492c8dc1f51dde1675c71a9dd"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "0617b3c19e2d0ac1328cc2b83b4ff5c17c2f26fae97a7194f6d2fbca3a952550"
+    "publication_region": "india",
+    "evidence_sha256": "ef616d05e36d43ac6321d316df676ececfd21ce107f0db2aec269f42a2219d0e"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,10 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: author_death_year is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -49,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "6ade179e7ac88d7f35378f06fd365392e353790eb50669554e6ed0647c4a0486",
+    "public_book": "2d364ec1ab6fc2d19310b5c97847eccabf9398db0a96f4d16fc9ce028ccc3f6d",
     "reader_manifest": "03f705e249d9d7368c38e0404019b98aae1dbfbd8776c383a51d4e76fdd69a0a",
-    "source_evidence": "0617b3c19e2d0ac1328cc2b83b4ff5c17c2f26fae97a7194f6d2fbca3a952550",
-    "approval_evidence": "5a01e4c097ede1a7d7edcfaf6153d3ed33c54371ef89c783fbc2bd4386a8ba50"
+    "source_evidence": "ef616d05e36d43ac6321d316df676ececfd21ce107f0db2aec269f42a2219d0e",
+    "approval_evidence": "8040cbfecaa295b39316792028b310be6d05708731b30d645dc397a2cd3ca270"
   },
-  "manifest_sha256": "2be9c10ae3861bf84be19b7d4ca09f9c6877a3f159a3e7dfa4faa22623a53334"
+  "manifest_sha256": "14289c80855efe72a8d4a5942d6d1eff2736089044ba2b2361c3ef1970abb7f6"
 }

@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "pride-and-prejudice",
   "title": "Pride and Prejudice",
-  "generated_at": "2026-10-01T21:19:39.153654+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
     "source_hash": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
     "content_hash": "4b68459abff92d885d2d493ad052e8cdba6308ebf78f24508c6410cce683c276",
@@ -464,10 +464,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "0c92ac381141912d13f1ae5b4d1d7eae27e52fecf378672efa66e1937b97b00d",
+    "public_book": "c9c7472c67232de4c9eba6b94428b107b4c00b6156552c2122bfa6a0bfb6cd7e",
     "reader_manifest": "81b6c23e716ea4d26fae26cc8e9e3e7e37637fd0c9fb1619dccb7a94d0ab7676",
     "source_evidence": "9e4efacc3dbd251ea18aacd5805d781c1f64a450bea0225fae4ba6a394a97e99",
     "approval_evidence": "8e598a926cb96af13684a3985d1143cf9ac5fb0a973eec11746a211462769d1c"
   },
-  "manifest_sha256": "18d47c25bc072bd57ac736df1d0c1c3e3f79907df80b7665f17fc58b8a6df771"
+  "manifest_sha256": "e8835118ec0e9dc6d316a48ebb489fb854635a4aa4e6e0e899abd82d7b7527f6"
 }

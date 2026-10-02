@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-hungry-stones-pg2518-noncover-text",
+  "edition_id": "hungry-stones",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "0004e4c8caecb2f45b911e0f2352a777ffe93d8f62fbc0bf1d234e4efc2466d2",
+    "reader_manifest": "3429caf619cc3b3e68d6d907a9c8b0a5cdebd31bcf1a92e457dc1b69e09a6b12",
+    "source_evidence": "0eb0b74650c6ed3aabefc3856beee96866f2831feb75f3b1837faba6238fa26d",
+    "approval_evidence": "ef5bed805e2c6b1b476a1bb9c6d79028d4986540ca2ba17d0f09eb82fc33b344",
+    "checksum_manifest": "d58b2c60e7f094a31154148ff24da14a3bd8bb5b93fed91c9bf988c8f73d99c5",
+    "publication_manifest": "bf774a54ba82f6658d83b6b40f972590e6e1def655a3c00af5ffd71edbbfbba7"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-02T03:01:33.068986+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Selected story ONLY from exact Project Gutenberg#2518, not whole mixed-translator anthology. Verified1916 Macmillan collection publication during RabindranathTagore1861–1941 lifetime; PannaLalBasu1881–1956 original translation1910 and author revision1916. IndiaSection22 original author term expired2001 and named selected translator term2016; original Bengali first-publication year not asserted here. Modern scholarly/headnote/art and all other separately-translated collection stories excluded. ActualPG source remains selected electronic text; Wikisource receipts prove identity/facts, not imported transcription. Cover/audio excluded; no runtime approval.",
+  "evidence_sha256": [
+    "4366e983e278311b4f19d74df1447ddfefca4483c5a7c33dcc5c98b83339cf59",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "9b1afae10a46be49031c78a50af883a79905f5067d4eaa72cd0fa83f295df8e1",
+    "b998f1c836608d9c524da499f05b0e699103f8a9d28cceb3c57b0c4211340b10",
+    "48e430eef0498e74365f215d7ce7f7484e7207b52a177fd4bea46d0f534a0f28"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

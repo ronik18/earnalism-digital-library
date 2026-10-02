@@ -1,12 +1,22 @@
 {
   "slug": "the-most-dangerous-game",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": false
+  "audiobook_enabled": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "e59b3e387a2fc5cada1741339208f95c093af694db839e5cabaebb2543e53753",
+  "source_hash": "77c9fc421bd4d7742794edc9dd48b7f80eb70c0b73b969d4ef099d4ff9e4808f",
+  "content_hash": "8590d829e9f5d5b6ddf5dd7d131d5be1e2de353f0d3637ece79b88aa5f283ea7",
+  "provenance_hash": "a17bd1897d9e21f8697fcf0accfb5971849f0532b443076b1800a841f7f1125c",
+  "verified_at": "2026-10-01T21:59:52.152491+00:00"
 }

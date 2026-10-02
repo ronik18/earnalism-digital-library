@@ -3,21 +3,21 @@
   "schema_version": 1,
   "slug": "book-1090573dff",
   "title": "ছুটি",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
     "source_hash": "2a7983ee9d64179f285d4afe42a05057462f8b807292cfd52e8ae535605bb4c0",
     "content_hash": "6ed7b7e1000d05a647baef98bbbea0e3fefbef59841acdac257010703eeb88de",
     "provenance_hash": "eb211ebd652d87f3d7edb09aa47f38186bcce2901ecb4066477446af4aea9c40",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "87c28e1052bc6c1ae3b0a22f4a9e5080005368bfe11b3e5329d66b91b683486f",
+    "chapter_index_sha256": "418fc36a2db490e539c40a3871dac8fadd8c738a233ca66a0349b8d708beb5f4",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "ছুটি",
-        "word_count": 1776,
-        "sha256": "1c71afa0bea7f0de3ae234196746af3b505d6779cabc95944024d0cf24a578cc"
+        "word_count": 1891,
+        "sha256": "937699631a82fe35695a2930558a1a2bfdbe2879e9c10e466fdeb568a93942e6"
       }
     ]
   },
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "d5354075d3038b25682b6bc4fd8fd32ce1c256e3e5e4a5abb4c4091560b42997"
+    "evidence_sha256": "36cb07ce0883064b031a51a65cab5cd607fca60b2bddf6bb8eae48d3f951eb22"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -48,10 +48,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "375bffe19cd170093359a760e06f9cc44fa0cf4a8e9045eac6db648f202df3dc",
-    "reader_manifest": "5f2fca2d019332df96829f69d2304ca455dc5a4b0e98c9acb680b5a9b3419481",
-    "source_evidence": "d5354075d3038b25682b6bc4fd8fd32ce1c256e3e5e4a5abb4c4091560b42997",
+    "public_book": "a9585a80cefb351e9b552d7aec50ee2f93f5bfa9cfc24d729f92b10fcf0a6e8b",
+    "reader_manifest": "3e156de038a885fd90bec9153b1f828b47518a68a6913c6610dd56bebde72db0",
+    "source_evidence": "36cb07ce0883064b031a51a65cab5cd607fca60b2bddf6bb8eae48d3f951eb22",
     "approval_evidence": "e5302f69f629fa84967160d72cca2c69780c7e5c89cad5a16324ae1a1c679da7"
   },
-  "manifest_sha256": "b6c21c572f62c1aa262e84a08ed9ede021568747e28024faf38177dc0257d325"
+  "manifest_sha256": "9d339dc68394d61ab426be34ed35241bc12a0921518fdff4d82b9d310e6ba61e"
 }

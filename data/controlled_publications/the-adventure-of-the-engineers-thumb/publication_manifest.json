@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "the-adventure-of-the-engineers-thumb",
   "title": "The Adventure of the Engineer's Thumb",
-  "generated_at": "2026-10-01T21:08:31.373116+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "0a430ed09fb1ae520258e09ff18b49f4b53274301a20a76e517280b6be327861",
-    "content_hash": "a6aada95decc4f51b9563cf2ae9d928434298e484d158fb62cac729c85422946",
-    "provenance_hash": "8aab0fffcd582e9fd7601030b845d72895f46a9a7ca8fbd7acf451fff31486b7",
+    "source_hash": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "content_hash": "f6f792136e2e98f7b86af2ca679364332ac9b60639ec750298e4ea0ad003ff85",
+    "provenance_hash": "e28ea78a2394d15d30acf5d5540784e2b5d329c909a9263c70f28209632ae4e8",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "b6072337ea836efe36aec0a87adcbf1863c2ca44d8c9667a0a4f1903c02786e9",
+    "chapter_index_sha256": "e867c07773e0502590efff2f0d60e0abfee0d9e9d03eff1251550f246eb1c997",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "The Adventure of the Engineer's Thumb",
         "word_count": 8328,
-        "sha256": "7323c35e43db9fef07f912532e800533d23a6ceb5ac8dedf6715d910a4fd2921"
+        "sha256": "83e9c55accab30628b4cb885aeb606e913e48a005d2e33251630a3102b4ff31d"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "0340a6ead6176ebf23f1632e240115e4301a7ed7c56fcacfb052d7d4c08368b8"
+    "publication_region": "india",
+    "evidence_sha256": "ee1cda919caaeb5e059292afa917706c55674b63cc9edbadc0c9988852086d7a"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "cb75b90fa9b8e613fb36a802fe44be29ec7c3210f49edea2fedab7003a4acf8d",
+    "public_book": "35e7f2b8650d71134abbd771b2fece206332c81af94bb9587a2c2dbb9193c9c7",
     "reader_manifest": "b68287906770bc6db0b99930ab4473900ef42c31b051095a5ee5d9ab0a218569",
-    "source_evidence": "0340a6ead6176ebf23f1632e240115e4301a7ed7c56fcacfb052d7d4c08368b8",
-    "approval_evidence": "de78ff2a98e0f1c817977b680d3cd5cf89098df63d204522d1c7114a621faa6a"
+    "source_evidence": "ee1cda919caaeb5e059292afa917706c55674b63cc9edbadc0c9988852086d7a",
+    "approval_evidence": "a7c8aafed671c590e8c346227731d90fb040727033d66f7d51a72fb65b640443"
   },
-  "manifest_sha256": "35fd18ab3c49dabbd2f0b764ad2a697a1e2246cf9cb3a512864d8464ea53cfef"
+  "manifest_sha256": "c15002d7c316200ed6a50738dfa948f0909c9f6e61a4c9f2d0a3f42ba751b72b"
 }

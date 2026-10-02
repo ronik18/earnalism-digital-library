@@ -3,11 +3,24 @@
   "title": "The Lifted Veil",
   "author": "George Eliot",
   "language": "en",
-  "chapter_count": 2,
+  "chapter_count": 3,
   "chapters": [
     {
-      "id": "chapter-001",
+      "id": "chapter-000",
       "order": 1,
+      "title": "Author Epigraph",
+      "word_count": 25,
+      "reading_minutes": 1,
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "language_hint": "en"
+    },
+    {
+      "id": "chapter-001",
+      "order": 2,
       "title": "CHAPTER I",
       "is_preview": true,
       "has_images": false,
@@ -22,7 +35,7 @@
     },
     {
       "id": "chapter-002",
-      "order": 2,
+      "order": 3,
       "title": "CHAPTER II",
       "is_preview": true,
       "has_images": false,
@@ -37,6 +50,7 @@
     }
   ],
   "preview_chapter_ids": [
+    "chapter-000",
     "chapter-001",
     "chapter-002"
   ],

@@ -44,8 +44,8 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 8217,
-      "reading_minutes": 35,
+      "word_count": 8079,
+      "reading_minutes": 34,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
@@ -53,9 +53,9 @@
       "updated_at": "2026-07-03T20:07:47Z"
     }
   ],
-  "source_hash": "c19fcfb420fe99571e830c0794a0625d72ac2c74630ca7e4af2ec49202ec2b43",
-  "content_hash": "a9ef4839bef2ff5bf3c8f3ea7765dd131a04f0b3deda047c75efec96419b4325",
-  "provenance_hash": "5a10292b91d399e8422ccba67274a1cc3fb9c8d5667d2ca6d7212c4a3a6ccfc9",
+  "source_hash": "f011e7e8f943cee34701f2c807a35c34af76592307f213602470c9140461032f",
+  "content_hash": "386356e64157eb7fba8cb30c7728b47030be0d025794fd9b31a40e2a42e8d087",
+  "provenance_hash": "021f0de8b56b29ff222241daf69b4b76681ddfa367d02d777f3ebcbef022f0dc",
   "rights_basis": "Susan Glaspell died 1948; first published 1917. Public domain in India and the U.S.",
   "rights_tier": "A",
   "verification_status": "approved",

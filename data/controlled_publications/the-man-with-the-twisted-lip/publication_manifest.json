@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "the-man-with-the-twisted-lip",
   "title": "The Man with the Twisted Lip",
-  "generated_at": "2026-10-01T21:08:33.256150+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "b69b28057f04b091388b4fd21ad6f8ac05144724fc8711284969b3b05ed67557",
-    "content_hash": "8adb78db9dbc3697ba2b2bdb2bac619dee099515fc22fa9ce4d794391f618485",
-    "provenance_hash": "33e7ddbc481995a6ee4b59701b23e8ca96c1c8648855e18050c0d17d72f00c52",
+    "source_hash": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "content_hash": "f0e6366f6ce8e3de3b12836de3d36ecb744e90541da6021fcf8141a52173d2a4",
+    "provenance_hash": "04e951a9f6a7742788b169e40a99bff49eca488bb4fbf3d6af1ad9e96a2f5a13",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "d8b591d10796449e449e01d7df035b35121a466c54acca3db35809094d512d7c",
+    "chapter_index_sha256": "52a865981e3abe237a66bbfc7d6c3292bddba6d45a707a01d35d7dd5c63a5a8d",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "The Man with the Twisted Lip",
         "word_count": 9268,
-        "sha256": "606818aa8c38f5c23d1e0cdbed67cafc33cc484a35d3140791fda73c09dbb5ec"
+        "sha256": "eafe7f9e2e3fca9de6debaec2a5a38a7a8da82a911e7710fb96e89b61fc1871a"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "acf1de07cf6f39556bc775eab899faff85d734e3f9d9b5339dd7fda14a160f2b"
+    "publication_region": "india",
+    "evidence_sha256": "bdd8112d7640137977279366a8abd49557c088c9864be04a8d9b889627dca1e1"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "52d2cd0e80a523f162daa8013dacf1565d66683ebf75d0ae9fbb74d263ee7793",
+    "public_book": "4f40edcbb77d8ab78d24406506498c97f98265cfd92bafc0fadb538b8b0ed584",
     "reader_manifest": "ea45dff003d561890ca214a027343eca0a2a606dc9e9f6d2f1783d9844ecaa53",
-    "source_evidence": "acf1de07cf6f39556bc775eab899faff85d734e3f9d9b5339dd7fda14a160f2b",
-    "approval_evidence": "ae13b0dec32e2f6534485cb5c65aa3716d7b04a90c7264aa6134a7c031bdaa12"
+    "source_evidence": "bdd8112d7640137977279366a8abd49557c088c9864be04a8d9b889627dca1e1",
+    "approval_evidence": "b44e114d7043d47eb38b8336697a382b6d810bb9f8e6f22f2262c8ccf2e4a76d"
   },
-  "manifest_sha256": "64630216f41d1bbabc667b5920c5c16339752c702d61773ec8255c79512a5a35"
+  "manifest_sha256": "d2a53523c7d051c4bf63a1a88460da5241178eb44c8409b300b8976245ef2b1c"
 }

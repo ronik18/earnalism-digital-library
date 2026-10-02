@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "hungry-stones",
   "title": "Kshudhita Pashan / The Hungry Stones",
-  "generated_at": "2026-10-01T21:08:30.053226+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "45e3dd5a02b2de0fb77f694a2de16648d59b622aefc5facc34ba8b4dff5bb1c5",
-    "content_hash": "ec0aa0ad99a7784b2be3229f357f781d7ee4c00929eded08561c0ebec676b1e6",
-    "provenance_hash": "914f5193aa1a57e545963be3a2771662d79aa2e015a654a0338232bcd7859ec8",
+    "source_hash": "b998f1c836608d9c524da499f05b0e699103f8a9d28cceb3c57b0c4211340b10",
+    "content_hash": "48e430eef0498e74365f215d7ce7f7484e7207b52a177fd4bea46d0f534a0f28",
+    "provenance_hash": "c4990ca3a73e5ce181339651abdcf139c87011a5a9ead190b18e4a8d2b8c7ad7",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "7bd06e8a6ec75eb1bc9bb89751bcc42609c445448aad0f299aff2016f783f1ae",
+    "chapter_index_sha256": "4838bcb36b370f9556e47195a34f2c41c4cb1fa693c0fb4946c29ded919400a5",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "The Hungry Stones",
         "word_count": 4793,
-        "sha256": "f14c05f70ab9af0060b61682195341e17ee7f5638cb6196e15adb8e9c58292ca"
+        "sha256": "657471e8be7a442278c25034bcf2e780432caaa8d3ef4b49e4654f7c598d3377"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "cf871a75013250214e93f0e3480bdc43411ea4af230852886f960e8dd5b1b0a3"
+    "publication_region": "india",
+    "evidence_sha256": "0eb0b74650c6ed3aabefc3856beee96866f2831feb75f3b1837faba6238fa26d"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "99cff479fbff5b997cca23cf5354159770bcad3a9a743e10a88c70a8c88bf14e",
+    "public_book": "0004e4c8caecb2f45b911e0f2352a777ffe93d8f62fbc0bf1d234e4efc2466d2",
     "reader_manifest": "3429caf619cc3b3e68d6d907a9c8b0a5cdebd31bcf1a92e457dc1b69e09a6b12",
-    "source_evidence": "cf871a75013250214e93f0e3480bdc43411ea4af230852886f960e8dd5b1b0a3",
-    "approval_evidence": "670a6b6676d67d887ef93e45a873b8cf1c3f7e14a59623a8388b652ecee277a1"
+    "source_evidence": "0eb0b74650c6ed3aabefc3856beee96866f2831feb75f3b1837faba6238fa26d",
+    "approval_evidence": "ef5bed805e2c6b1b476a1bb9c6d79028d4986540ca2ba17d0f09eb82fc33b344"
   },
-  "manifest_sha256": "2174e76f00479da148ac62aa653cc8e8d1fde4c825167c7e327b39118b5ac5b0"
+  "manifest_sha256": "e903ad163c921bad537290fcfd8ed4c9d7a346a0bc25b86bb8867a58faf9c008"
 }

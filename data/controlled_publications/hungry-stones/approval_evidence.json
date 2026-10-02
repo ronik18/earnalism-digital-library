@@ -1,11 +1,21 @@
 {
   "slug": "hungry-stones",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "reading_only_public_domain_batch_1",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
   "allowCheckout": false,
-  "allowPayment": false
+  "allowPayment": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "reading_only_public_domain_batch_1"
+  },
+  "publication_authorization_sha256": "4366e983e278311b4f19d74df1447ddfefca4483c5a7c33dcc5c98b83339cf59",
+  "source_hash": "b998f1c836608d9c524da499f05b0e699103f8a9d28cceb3c57b0c4211340b10",
+  "content_hash": "48e430eef0498e74365f215d7ce7f7484e7207b52a177fd4bea46d0f534a0f28",
+  "provenance_hash": "c4990ca3a73e5ce181339651abdcf139c87011a5a9ead190b18e4a8d2b8c7ad7",
+  "verified_at": "2026-10-02T03:01:33.068986+00:00"
 }

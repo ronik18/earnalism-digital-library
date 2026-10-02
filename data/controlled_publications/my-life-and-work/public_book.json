@@ -134,7 +134,7 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 4076,
+      "word_count": 4046,
       "reading_minutes": 17,
       "language_hint": "en",
       "processing_status": "ready",
@@ -338,9 +338,9 @@
       "updated_at": "2026-07-03T20:07:48Z"
     }
   ],
-  "source_hash": "0d6d9463085c9411e41dd19eed8fe9c8678708490bff6f17764224a6a4d701e5",
-  "content_hash": "732f86e53656c3ea2354d306f42616d82af69aae60c40845a651b2ee8ff7e7e8",
-  "provenance_hash": "88e5a40d94c44697246fb1cc266abef38a9ff8a954b546ff41313497a684ec01",
+  "source_hash": "f01c925ba4a15ccc6a5aa706418cf94149ddd7d8f390c65d132b8675435b00cf",
+  "content_hash": "8309a5246622002f4fceef9f19e8e26218f0a06320cf53197a91296e0ee21c86",
+  "provenance_hash": "5262402600885bc8f37e8972883a373a3d4f7fd966f8321c9ba5b0cdd6b36af3",
   "rights_basis": "Public domain; official catalog marks copyright status as Public domain in the USA; source text header permits reuse in the United States.",
   "rights_tier": "A",
   "verification_status": "approved",

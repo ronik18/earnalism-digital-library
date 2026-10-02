@@ -1,0 +1,47 @@
+{
+  "necklace_sturges": {
+    "receipt": {
+      "requested_url": "https://en.wikisource.org/wiki/Stories_by_Foreign_Authors_(French_I)/The_Necklace",
+      "resolved_url": "https://en.wikisource.org/wiki/Stories_by_Foreign_Authors_(French_I)/The_Necklace",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:03:52.018026+00:00",
+      "response_sha256": "d90b8b53dd418a5063c2ae2469a426ede6f6914f64d4dd13c3eb2d97e7175f64"
+    }
+  },
+  "sturges_author": {
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Sturges%2C%20Jonathan%2C%201864-1911",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Sturges%2C%20Jonathan%2C%201864-1911",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:03:52.536445+00:00",
+      "response_sha256": "f71b897d870171fe525f2e0b130d050930e77b965476d721f9968caa60b57d1f"
+    }
+  },
+  "metamorphosis_johnston": {
+    "receipt": {
+      "requested_url": "https://johnstoniatexts.x10host.com/kafka/metamorphosis.htm",
+      "resolved_url": "https://johnstoniatexts.x10host.com/cgi-sys/suspendedpage.cgi",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:03:53.492813+00:00",
+      "response_sha256": "4073430ff4c1999093152b208885822a50b66412c4a5c657529d22abbf369b36"
+    }
+  },
+  "boule_boyd": {
+    "receipt": {
+      "requested_url": "https://www.gutenberg.org/cache/epub/21327/pg21327.txt",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/21327/pg21327.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:03:53.413401+00:00",
+      "response_sha256": "09395352ccf6ddb926dffb3f01a8c91f6434433e1c7a44a347eadb82b7f4d80c"
+    }
+  },
+  "maupassant_upenn": {
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Maupassant%2C%20Guy%20de%2C%201850-1893",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Maupassant%2C%20Guy%20de%2C%201850-1893",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:04:05.502048+00:00",
+      "response_sha256": "d3066008d960c4e310f410fd76ea5425bb5a2ac3327a767cb6f99eb0f0f0c8d5"
+    }
+  }
+}

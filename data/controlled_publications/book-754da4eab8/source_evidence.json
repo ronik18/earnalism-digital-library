@@ -24,10 +24,10 @@
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "d6e3d8e1d549f99e83222524eceb580ee3cf01f4b0321f84c819d6ed16d8dc89",
+    "reader_content_sha256": "3df32a2645f82e70db984a4fb39e39d3193a65146d89c2f40b791a64c9bedef9",
     "chapter_count": 1,
     "chapter_content_sha256": {
-      "chapter-001": "d6e3d8e1d549f99e83222524eceb580ee3cf01f4b0321f84c819d6ed16d8dc89"
+      "chapter-001": "3df32a2645f82e70db984a4fb39e39d3193a65146d89c2f40b791a64c9bedef9"
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
@@ -58,5 +58,16 @@
     "date_as_recorded": "May,1891",
     "evidence_type": "EXPLICIT_FIRST_SHORT_STORIES_PUBLICATION_ENTRY",
     "scope": "Underlying Bengali work publication fact only; later source edition/transcription obligations independently held."
+  },
+  "exact_source_delta_repair": {
+    "slug": "book-754da4eab8",
+    "verified_at": "2026-10-01T21:33:54.547278+00:00",
+    "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-754da4eab8-source-comparison.json",
+    "source_snapshot_sha256": "6610ec5d1aaedbb049f9c629e3124bde799fbf10c3f152c8629accdbae3e4a28",
+    "before_sha256": "3df32a2645f82e70db984a4fb39e39d3193a65146d89c2f40b791a64c9bedef9",
+    "after_sha256": "3df32a2645f82e70db984a4fb39e39d3193a65146d89c2f40b791a64c9bedef9",
+    "operations": [],
+    "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+    "scope": "Same pinned edition body repair; not rights/publication/audio approval"
   }
 }

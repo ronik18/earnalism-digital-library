@@ -5,12 +5,12 @@
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
-    "public_book": "0b44e473913a449757882ec6277235bc5b78f37c4f19fb8d89417fd3664f7853",
+    "public_book": "245188f965b58da793650daa0afc5a2eff80a0a935f15a36b2334d76a72447dc",
     "reader_manifest": "b4884654a495c628c64916819dff635597f5afdb10b0ecaf46f6c88b3f8dd288",
     "source_evidence": "5878c960420a5fe11b19bf526baeccb12f4b6776054d604d176e89ef36ff59e5",
     "approval_evidence": "2a09f96b2296ed45e201a33875fcaece77b4a90a72013d7cb66761e19159ac4c",
-    "checksum_manifest": "ae875edca1c3624a89006150b1ea6605b995b8a857310cfc1051bdd182c458f2",
-    "publication_manifest": "5d13e62c45e44790b3fee24765c48e46444af60ab00af8c46c99615173e0d3b9"
+    "checksum_manifest": "9e2c4bc61af210f4a7b0c2ce1585abb85bf745689b719097f470f58c41d6f754",
+    "publication_manifest": "9f70629729c57d7fdd12b9e000e57ea289c12cd6876cd8efdcbf22a532ba10c5"
   },
   "territories": [
     "IN"

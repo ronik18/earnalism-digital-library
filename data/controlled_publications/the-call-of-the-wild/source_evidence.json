@@ -1,12 +1,12 @@
 {
   "slug": "the-call-of-the-wild",
   "source_url": "https://www.gutenberg.org/ebooks/215.txt.utf-8",
-  "source_name": "Earnalism historical import",
+  "source_name": "Project Gutenberg #215; The Call of the Wild exact canonical source, underlying lifetime publication 1903; complete selected author text, no translation or independently authored artwork/editorial material imported",
   "source_license": "Underlying literary text is public domain in the United States; original work first published in 1903.",
-  "source_hash": "e446f6fca02fb231d502760a82af57631256a51631c55421fb4a6c4891daf78a",
-  "content_hash": "71dff1f58d48cd71957425bc2a4a9ebba42925495feeb18eea9d4ffe15072d85",
-  "provenance_hash": "49b53124c009c2338bd90289a3568d59b71cae17e3f61451afaf4a6e76024714",
-  "rights_basis": "Jack London died in 1916, so the original literary work is public domain in India under life plus 60 years. Original publication in 1903 supports U.S. public-domain status.",
+  "source_hash": "30f569c5671bba7bbc4a92ab6d8ee01a0d3be00f994819c77da62c28041eb8a2",
+  "content_hash": "4b029c10c8cff516ed6f07f1928e55775ed7fd8d3d03dcf61f7ace0c55e8aa90",
+  "provenance_hash": "1b5fc691bbf0965c93b281e1d6e97565fe6e624006b39cad8b0821fa07e9e188",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1916, verified lifetime collection publication 1903 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-05-24T04:14:18.062170+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -172,5 +172,121 @@
       }
     ],
     "content_sha256": "4b029c10c8cff516ed6f07f1928e55775ed7fd8d3d03dcf61f7ace0c55e8aa90"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "e446f6fca02fb231d502760a82af57631256a51631c55421fb4a6c4891daf78a",
+        "content_hash": "71dff1f58d48cd71957425bc2a4a9ebba42925495feeb18eea9d4ffe15072d85",
+        "provenance_hash": "49b53124c009c2338bd90289a3568d59b71cae17e3f61451afaf4a6e76024714",
+        "source_url": "https://www.gutenberg.org/ebooks/215.txt.utf-8",
+        "source_name": "Earnalism historical import"
+      },
+      "superseded_at": "2026-10-01T21:49:40.745164+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1903,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:49:40.745164+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/215.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/215/pg215.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:43.743462+00:00",
+      "response_sha256": "30f569c5671bba7bbc4a92ab6d8ee01a0d3be00f994819c77da62c28041eb8a2"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 7,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1167,
+          "length": 20531
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 21736,
+          "length": 18272
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 40052,
+          "length": 28289
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 68380,
+          "length": 17464
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 85884,
+          "length": 29521
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 115440,
+          "length": 26325
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 141804,
+          "length": 34227
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "London, Jack, 1876-1916",
+      "creator_death_year": 1916,
+      "selected_collection_publication_year": 1903,
+      "original_story_first_publication_year": null,
+      "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+      "bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=London%2C%20Jack%2C%201876-1916",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=London%2C%20Jack%2C%201876-1916",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:44:23.846222+00:00",
+        "response_sha256": "8b68b83eb917b4943bedc11ce2911ee0e860d396b24dd5aabf960d1603987434"
+      },
+      "bibliographic_excerpt": "The Call of the Wild (multiple editions) London, Jack, 1876-1916: The Call of the Wild (Gutenberg text, illustrated HTML, and audio) London, Jack, 1876-1916: The Call of the Wild (London: W. Heinemann, 1903), illust. by Philip R. Goodwin, Charles Liv",
+      "scope": "Named creator complete selected literary text including available author prefatory/end matter; publisher/source furniture and illustrations excluded."
+    },
+    "author_death_evidence": 1916,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1903,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "30f569c5671bba7bbc4a92ab6d8ee01a0d3be00f994819c77da62c28041eb8a2",
+    "content_sha256": "4b029c10c8cff516ed6f07f1928e55775ed7fd8d3d03dcf61f7ace0c55e8aa90",
+    "year": 1903,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=London%2C%20Jack%2C%201876-1916",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=London%2C%20Jack%2C%201876-1916",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:23.846222+00:00",
+      "response_sha256": "8b68b83eb917b4943bedc11ce2911ee0e860d396b24dd5aabf960d1603987434"
+    },
+    "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
   }
 }

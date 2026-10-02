@@ -1,12 +1,22 @@
 {
   "slug": "jane-eyre",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true
+  "audiobook_enabled": true,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "7bd366028f75641d3415cd1176bde5cbfa9e54118f9c793571515bb712e65abb",
+  "source_hash": "13414dee2951c3ee731d76d2ffd822016b2479c892162760c5d0eb2aa5fa7631",
+  "content_hash": "3358f1f098572ae4c1a40c2b57936dbfa165b7aeab6a1d14f776e35060c3e2fb",
+  "provenance_hash": "3e2f311e78bd18803c71f65f1d396e92b647d3aea784bb00038d1af072d91e43",
+  "verified_at": "2026-10-01T21:38:19.977641+00:00"
 }

@@ -1,102 +1,15 @@
 {
   "slug": "boule-de-suif",
-  "source_url": "https://www.gutenberg.org/ebooks/3077",
-  "source_name": "Project Gutenberg",
-  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "17c514dce10d194bfbb13b4d9196eafd3a3ae310b38180de42d3a5693bddd0a7",
-  "content_hash": "54085892457bf65ed5f9394fb722eee54f71123d9622b0b40f1ec45ad76707d5",
-  "provenance_hash": "74feca75082c4263690808b2747e72216034cb633ff078c20196bccc3523a1fb",
-  "rights_basis": "Guy de Maupassant died 1893; first published 1880. Public domain in India and the U.S.",
+  "source_url": "https://raw.githubusercontent.com/standardebooks/guy-de-maupassant_short-fiction_various-translators/master/src/epub/text/boule-de-suif.xhtml",
+  "source_name": "NEW ErnestBoyd1922Knopf English translation; exactStandardEbooks selectedstory XML sourceSHA; upstreameditorialCC0",
+  "source_license": "CC0 1.0 Universal dedication for upstream editorial transcription; historical Boyd translation separately cleared for IN.",
+  "source_hash": "605a186f96870d1993b84199ed14709b833597c9eeac78d2d7fc69c2f454b554",
+  "content_hash": "fc3455677ff33b41f70012df7239691fb56b8bdd977ea187f524b0c2a863d079",
+  "provenance_hash": "c6a35f6c4294cc3e83b99a01a86bd7a67fdc3fb280b0392d644056abbd5b10f9",
+  "rights_basis": "NEW exactErnestBoyd translation,1922KnopfVolume1 explicitlytranslatedbyBoyd inprimaryGoogleBooks metadata, StandardEbooks270paragraph story sourcecomment identifiesexactprintedvolume. UniversityTexasRansomCenter independentlyidentifiesErnestAugustusBoyd1887–1946; lifetime1922translation INSection22life+60expired2006. OriginalMaupassant1850–1893 text and FrenchMarseillaiseRougetdeLisle1760–1836 quotation provenpublished by1922; conservativeSection24latestpublished bound1922+60elapsed1982, noinventedoriginalfirstdate. CC0 1.0 worldwidegrant covers upstreameditorial/transcription adaptation, NOTthirdpartyart/cover. Completewhole selectedstory270paragraphs includinglyrics, nointro/endnotesadded. OldPG3077identityarchived, noprivateapprovaltransfer; cover/audioexcluded andruntimeheld.",
   "downloaded_at": "2026-06-03T08:04:22.017008+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
-  "official_electronic_source_verification": {
-    "electronic_edition_id": "Project Gutenberg #3077",
-    "metadata_receipt": {
-      "requested_url": "https://www.gutenberg.org/ebooks/3077",
-      "resolved_url": "https://www.gutenberg.org/ebooks/3077",
-      "http_status": 200,
-      "accessed_at": "2026-10-01T21:04:40.228735+00:00",
-      "response_sha256": "c6fbae1d1ee91321520051d7481310dde0c21e1409196abb5221b5061a067053"
-    },
-    "text_receipt": {
-      "requested_url": "https://www.gutenberg.org/ebooks/3077.txt.utf-8",
-      "resolved_url": "https://www.gutenberg.org/cache/epub/3077/pg3077.txt",
-      "http_status": 200,
-      "accessed_at": "2026-10-01T21:04:45.242161+00:00",
-      "response_sha256": "73ab0a4fcb4dc62fc39ee7876d6e9a1fc0ae3c9443cdd2732b970bfd18c803bc"
-    },
-    "bibliographic_metadata": {
-      "Author": [
-        "Maupassant, Guy de, 1850-1893"
-      ],
-      "Translator": [
-        "Henderson, A. E.",
-        "McMaster, Albert Cohn",
-        "Quesada, Louise Charlotte Garstin, 1864?-"
-      ],
-      "Title": [
-        "Original Short Stories — Volume 01"
-      ],
-      "Contents": [
-        "Boule de Suif --Two friends -- The lancer's wife -- The prisoners -- Two little soldiers -- Father Milon -- A coup d'tat -- Lieutenant Lare's marriage --The horrible --Madame Parisse --Mademoiselle Fifi -- A duel."
-      ],
-      "Credits": [
-        "Produced by David Widger"
-      ],
-      "Reading Level": [
-        "Reading ease score: 77.5 (7th grade). Fairly easy to read."
-      ],
-      "Language": [
-        "English"
-      ],
-      "LoC Class": [
-        "PQ: Language and Literatures: Romance literatures: French, Italian, Spanish, Portuguese"
-      ],
-      "Subject": [
-        "Short stories, French -- Translations into English"
-      ],
-      "Category": [
-        "Text"
-      ],
-      "eBook-No.": [
-        "3077"
-      ],
-      "Release Date": [
-        "Oct 3, 2004"
-      ],
-      "Last Update": [
-        "Jan 8, 2021"
-      ],
-      "Copyright": [
-        "Public domain in the USA."
-      ],
-      "Downloads": [
-        "1208 downloads in the last 30 days."
-      ]
-    },
-    "comparison": {
-      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
-      "status": "ALL_CHAPTERS_MATCH_SOURCE",
-      "matched_chapters": [
-        {
-          "chapter_id": "chapter-001",
-          "offset": 16488,
-          "length": 83413
-        }
-      ],
-      "nonmatching_chapters": [],
-      "complete_edition_proven": false,
-      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
-    },
-    "legacy_source_sha256": "17c514dce10d194bfbb13b4d9196eafd3a3ae310b38180de42d3a5693bddd0a7",
-    "legacy_content_sha256": "54085892457bf65ed5f9394fb722eee54f71123d9622b0b40f1ec45ad76707d5",
-    "legacy_source_bytes_reproduced": false,
-    "checked_at": "2026-10-01T21:08:26.578512+00:00",
-    "publication_authorized": false,
-    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
-    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
-  },
   "author_death_year": 1893,
   "author_fact_evidence": {
     "metadata_receipt_sha256": "c6fbae1d1ee91321520051d7481310dde0c21e1409196abb5221b5061a067053",
@@ -116,5 +29,283 @@
       }
     ],
     "content_sha256": "cb001dd5a0ddd4e2fae9483736ff69e4145ae05d25b2d50d42217300b45edd85"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "slug": "boule-de-suif",
+        "source_url": "https://www.gutenberg.org/ebooks/3077",
+        "source_name": "Project Gutenberg",
+        "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+        "source_hash": "17c514dce10d194bfbb13b4d9196eafd3a3ae310b38180de42d3a5693bddd0a7",
+        "content_hash": "54085892457bf65ed5f9394fb722eee54f71123d9622b0b40f1ec45ad76707d5",
+        "provenance_hash": "74feca75082c4263690808b2747e72216034cb633ff078c20196bccc3523a1fb",
+        "rights_basis": "Guy de Maupassant died 1893; first published 1880. Public domain in India and the U.S.",
+        "downloaded_at": "2026-06-03T08:04:22.017008+00:00",
+        "source_format": "text/plain",
+        "reader_facing_boilerplate_removed": true,
+        "official_electronic_source_verification": {
+          "electronic_edition_id": "Project Gutenberg #3077",
+          "metadata_receipt": {
+            "requested_url": "https://www.gutenberg.org/ebooks/3077",
+            "resolved_url": "https://www.gutenberg.org/ebooks/3077",
+            "http_status": 200,
+            "accessed_at": "2026-10-01T21:04:40.228735+00:00",
+            "response_sha256": "c6fbae1d1ee91321520051d7481310dde0c21e1409196abb5221b5061a067053"
+          },
+          "text_receipt": {
+            "requested_url": "https://www.gutenberg.org/ebooks/3077.txt.utf-8",
+            "resolved_url": "https://www.gutenberg.org/cache/epub/3077/pg3077.txt",
+            "http_status": 200,
+            "accessed_at": "2026-10-01T21:04:45.242161+00:00",
+            "response_sha256": "73ab0a4fcb4dc62fc39ee7876d6e9a1fc0ae3c9443cdd2732b970bfd18c803bc"
+          },
+          "bibliographic_metadata": {
+            "Author": [
+              "Maupassant, Guy de, 1850-1893"
+            ],
+            "Translator": [
+              "Henderson, A. E.",
+              "McMaster, Albert Cohn",
+              "Quesada, Louise Charlotte Garstin, 1864?-"
+            ],
+            "Title": [
+              "Original Short Stories — Volume 01"
+            ],
+            "Contents": [
+              "Boule de Suif --Two friends -- The lancer's wife -- The prisoners -- Two little soldiers -- Father Milon -- A coup d'tat -- Lieutenant Lare's marriage --The horrible --Madame Parisse --Mademoiselle Fifi -- A duel."
+            ],
+            "Credits": [
+              "Produced by David Widger"
+            ],
+            "Reading Level": [
+              "Reading ease score: 77.5 (7th grade). Fairly easy to read."
+            ],
+            "Language": [
+              "English"
+            ],
+            "LoC Class": [
+              "PQ: Language and Literatures: Romance literatures: French, Italian, Spanish, Portuguese"
+            ],
+            "Subject": [
+              "Short stories, French -- Translations into English"
+            ],
+            "Category": [
+              "Text"
+            ],
+            "eBook-No.": [
+              "3077"
+            ],
+            "Release Date": [
+              "Oct 3, 2004"
+            ],
+            "Last Update": [
+              "Jan 8, 2021"
+            ],
+            "Copyright": [
+              "Public domain in the USA."
+            ],
+            "Downloads": [
+              "1208 downloads in the last 30 days."
+            ]
+          },
+          "comparison": {
+            "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+            "status": "ALL_CHAPTERS_MATCH_SOURCE",
+            "matched_chapters": [
+              {
+                "chapter_id": "chapter-001",
+                "offset": 16488,
+                "length": 83413
+              }
+            ],
+            "nonmatching_chapters": [],
+            "complete_edition_proven": false,
+            "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+          },
+          "legacy_source_sha256": "17c514dce10d194bfbb13b4d9196eafd3a3ae310b38180de42d3a5693bddd0a7",
+          "legacy_content_sha256": "54085892457bf65ed5f9394fb722eee54f71123d9622b0b40f1ec45ad76707d5",
+          "legacy_source_bytes_reproduced": false,
+          "checked_at": "2026-10-01T21:08:26.578512+00:00",
+          "publication_authorized": false,
+          "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+          "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+        },
+        "author_death_year": 1893,
+        "author_fact_evidence": {
+          "metadata_receipt_sha256": "c6fbae1d1ee91321520051d7481310dde0c21e1409196abb5221b5061a067053",
+          "url": "https://www.gutenberg.org/ebooks/3077",
+          "author_catalog_strings": [
+            "Maupassant, Guy de, 1850-1893"
+          ],
+          "verified_at": "2026-10-01T21:08:26.578512+00:00",
+          "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+        },
+        "canonical_reader_identity": {
+          "chapter_count": 1,
+          "ordered_chapter_sha256": [
+            {
+              "id": "chapter-001",
+              "sha256": "cb001dd5a0ddd4e2fae9483736ff69e4145ae05d25b2d50d42217300b45edd85"
+            }
+          ],
+          "content_sha256": "cb001dd5a0ddd4e2fae9483736ff69e4145ae05d25b2d50d42217300b45edd85"
+        }
+      },
+      "superseded_at": "2026-10-02T03:12:52.976638+00:00",
+      "reason": "Intentional NEW verifiedErnestBoyd1922Knopf translation selection, exact completeStandardEbooks270paragraph source explicitlylinked tothatprintedvolume; previousPG3077trio notrights-cleared and noapprovaltransferred. Oldtext retained inGit history, notnewtrackedduplicate.",
+      "archive": "internal/legal/catalogue_clearance_20261002/english/superseded_editions/boule-de-suif-pg3077.json"
+    },
+    {
+      "identity": {
+        "source_hash": "17c514dce10d194bfbb13b4d9196eafd3a3ae310b38180de42d3a5693bddd0a7",
+        "content_hash": "54085892457bf65ed5f9394fb722eee54f71123d9622b0b40f1ec45ad76707d5",
+        "provenance_hash": "74feca75082c4263690808b2747e72216034cb633ff078c20196bccc3523a1fb",
+        "source_url": "https://raw.githubusercontent.com/standardebooks/guy-de-maupassant_short-fiction_various-translators/master/src/epub/text/boule-de-suif.xhtml",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-02T03:12:53.006298+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "source_type": "standardebooks",
+  "translator_name": "Ernest Augustus Boyd",
+  "translator_death_year": 1946,
+  "actual_transcription_verification": {
+    "receipt": {
+      "requested_url": "https://raw.githubusercontent.com/standardebooks/guy-de-maupassant_short-fiction_various-translators/master/src/epub/text/boule-de-suif.xhtml",
+      "resolved_url": "https://raw.githubusercontent.com/standardebooks/guy-de-maupassant_short-fiction_various-translators/master/src/epub/text/boule-de-suif.xhtml",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:04:35.325055+00:00",
+      "response_sha256": "605a186f96870d1993b84199ed14709b833597c9eeac78d2d7fc69c2f454b554"
+    },
+    "method": "All270 selectedstoryparagraphs INCLUDING FrenchMarseillaise verse, XMLparagraph descendantorderexact; no omittedarticletextoutsideparagraphs excepttitle verified. Entire beginning/terminalsentence verified, typographyformattingonly.",
+    "old_content_sha256": "54085892457bf65ed5f9394fb722eee54f71123d9622b0b40f1ec45ad76707d5",
+    "new_content_sha256": "fc3455677ff33b41f70012df7239691fb56b8bdd977ea187f524b0c2a863d079",
+    "complete_edition_proven": true
+  },
+  "selected_edition_publication_year": 1922,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-02T03:12:53.006298+00:00",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://raw.githubusercontent.com/standardebooks/guy-de-maupassant_short-fiction_various-translators/master/src/epub/text/boule-de-suif.xhtml",
+      "resolved_url": "https://raw.githubusercontent.com/standardebooks/guy-de-maupassant_short-fiction_various-translators/master/src/epub/text/boule-de-suif.xhtml",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:04:35.325055+00:00",
+      "response_sha256": "605a186f96870d1993b84199ed14709b833597c9eeac78d2d7fc69c2f454b554"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 0,
+          "length": 86586
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "original_author_death_year": 1893,
+      "selected_edition_publication_year": 1922,
+      "original_first_publication_year": null,
+      "translators": [
+        {
+          "name": "Ernest Augustus Boyd",
+          "birth_year": 1887,
+          "death_year": 1946,
+          "evidence": {
+            "requested_url": "https://research.hrc.utexas.edu/bookshopdoor/signature.cfm?item=156",
+            "resolved_url": "https://research.hrc.utexas.edu/bookshopdoor/signature.cfm?item=156",
+            "http_status": 200,
+            "accessed_at": "2026-10-02T03:09:24.367756+00:00",
+            "response_sha256": "7a7b817a12bd4cf604061cb33c9ff2a3e216f9e203ef52de4855fad9130f553f"
+          }
+        }
+      ],
+      "ancillary_text_creators": [
+        {
+          "name": "Claude Joseph Rouget de Lisle",
+          "death_year": 1836,
+          "component": "Quoted original FrenchMarseillaise lyrics",
+          "evidence": {
+            "requested_url": "https://en.wikisource.org/wiki/Author:Claude_Joseph_Rouget_de_Lisle",
+            "resolved_url": "https://en.wikisource.org/wiki/Author:Claude_Joseph_Rouget_de_Lisle",
+            "http_status": 200,
+            "accessed_at": "2026-10-02T03:12:04.765753+00:00",
+            "response_sha256": "7d4bf036b5125a283dc17ea6d1571213d223ec8d2986dd8f621563e094037be7"
+          }
+        }
+      ],
+      "edition_source_metadata": {
+        "requested_url": "https://books.google.com/books?id=wJY4AQAAIAAJ",
+        "resolved_url": "https://books.google.co.in/books?id=wJY4AQAAIAAJ&redir_esc=y",
+        "http_status": 200,
+        "accessed_at": "2026-10-02T03:07:47.854880+00:00",
+        "response_sha256": "c4d1f96d5c1a46c59aa7afe5f7692cd798c9ef27a8f5311de3b4f710cd8c1819"
+      },
+      "source_mapping": {
+        "requested_url": "https://raw.githubusercontent.com/standardebooks/guy-de-maupassant_short-fiction_various-translators/master/src/epub/content.opf",
+        "resolved_url": "https://raw.githubusercontent.com/standardebooks/guy-de-maupassant_short-fiction_various-translators/master/src/epub/content.opf",
+        "http_status": 200,
+        "accessed_at": "2026-10-02T03:04:34.765788+00:00",
+        "response_sha256": "f67fa8986fce1498f159373ec288b49c2e2cd97f4d1e12e429d86b8818d9b6d8"
+      },
+      "editorial_cc0_grant": {
+        "requested_url": "https://raw.githubusercontent.com/standardebooks/guy-de-maupassant_short-fiction_various-translators/master/src/epub/content.opf",
+        "resolved_url": "https://raw.githubusercontent.com/standardebooks/guy-de-maupassant_short-fiction_various-translators/master/src/epub/content.opf",
+        "http_status": 200,
+        "accessed_at": "2026-10-02T03:04:34.765788+00:00",
+        "response_sha256": "f67fa8986fce1498f159373ec288b49c2e2cd97f4d1e12e429d86b8818d9b6d8"
+      },
+      "basis": "NEW exactErnestBoyd translation,1922KnopfVolume1 explicitlytranslatedbyBoyd inprimaryGoogleBooks metadata, StandardEbooks270paragraph story sourcecomment identifiesexactprintedvolume. UniversityTexasRansomCenter independentlyidentifiesErnestAugustusBoyd1887–1946; lifetime1922translation INSection22life+60expired2006. OriginalMaupassant1850–1893 text and FrenchMarseillaiseRougetdeLisle1760–1836 quotation provenpublished by1922; conservativeSection24latestpublished bound1922+60elapsed1982, noinventedoriginalfirstdate. CC0 1.0 worldwidegrant covers upstreameditorial/transcription adaptation, NOTthirdpartyart/cover. Completewhole selectedstory270paragraphs includinglyrics, nointro/endnotesadded. OldPG3077identityarchived, noprivateapprovaltransfer; cover/audioexcluded andruntimeheld."
+    },
+    "author_death_evidence": 1893,
+    "translator": [
+      {
+        "name": "Ernest Augustus Boyd",
+        "birth_year": 1887,
+        "death_year": 1946,
+        "evidence": {
+          "requested_url": "https://research.hrc.utexas.edu/bookshopdoor/signature.cfm?item=156",
+          "resolved_url": "https://research.hrc.utexas.edu/bookshopdoor/signature.cfm?item=156",
+          "http_status": 200,
+          "accessed_at": "2026-10-02T03:09:24.367756+00:00",
+          "response_sha256": "7a7b817a12bd4cf604061cb33c9ff2a3e216f9e203ef52de4855fad9130f553f"
+        }
+      }
+    ],
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1922,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "605a186f96870d1993b84199ed14709b833597c9eeac78d2d7fc69c2f454b554",
+    "content_sha256": "fc3455677ff33b41f70012df7239691fb56b8bdd977ea187f524b0c2a863d079",
+    "year": 1922,
+    "receipt": {
+      "requested_url": "https://books.google.com/books?id=wJY4AQAAIAAJ",
+      "resolved_url": "https://books.google.co.in/books?id=wJY4AQAAIAAJ&redir_esc=y",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:07:47.854880+00:00",
+      "response_sha256": "c4d1f96d5c1a46c59aa7afe5f7692cd798c9ef27a8f5311de3b4f710cd8c1819"
+    },
+    "basis": "NEW exactErnestBoyd translation,1922KnopfVolume1 explicitlytranslatedbyBoyd inprimaryGoogleBooks metadata, StandardEbooks270paragraph story sourcecomment identifiesexactprintedvolume. UniversityTexasRansomCenter independentlyidentifiesErnestAugustusBoyd1887–1946; lifetime1922translation INSection22life+60expired2006. OriginalMaupassant1850–1893 text and FrenchMarseillaiseRougetdeLisle1760–1836 quotation provenpublished by1922; conservativeSection24latestpublished bound1922+60elapsed1982, noinventedoriginalfirstdate. CC0 1.0 worldwidegrant covers upstreameditorial/transcription adaptation, NOTthirdpartyart/cover. Completewhole selectedstory270paragraphs includinglyrics, nointro/endnotesadded. OldPG3077identityarchived, noprivateapprovaltransfer; cover/audioexcluded andruntimeheld.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
   }
 }

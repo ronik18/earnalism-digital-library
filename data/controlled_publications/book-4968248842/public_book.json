@@ -44,7 +44,7 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 1249,
+      "word_count": 1447,
       "reading_minutes": 6,
       "language_hint": "ben",
       "processing_status": "ready",
@@ -53,8 +53,8 @@
       "updated_at": "2026-07-03T20:07:46Z"
     }
   ],
-  "source_hash": "c8c13f43f5790d3ac90b69ee2d75d6b5f04d967ab300d0214e0053862d1bad0f",
-  "content_hash": "fbb6cf013c8923df7c691e56e5dd33e9134ce73286df7869d27b7378ec85051d",
+  "source_hash": "cb3d80d5f61528dcf6532bf1eb99efe01b84417c64274196b3c2aa813f2b975b",
+  "content_hash": "8ba8be9114a9a9a8c4d0fdb6242975bfd2345b8e8e441b495c34c443ece1051b",
   "provenance_hash": "8f84b8f4a21e9847bb0ad4420976e85ecf8cc573fb3b6bd0924d02c5a9532a70",
   "rights_basis": "Author died 1941. Published 1921. Public domain in India and U.S.",
   "rights_tier": "A",
@@ -101,5 +101,12 @@
   },
   "audiobook_assets_updated_at": "2026-07-03T20:07:46Z",
   "created_at": "2026-07-03T20:07:46Z",
-  "updated_at": "2026-07-03T20:07:46Z"
+  "updated_at": "2026-07-03T20:07:46Z",
+  "historical_import_hashes": {
+    "source_hash": "c8c13f43f5790d3ac90b69ee2d75d6b5f04d967ab300d0214e0053862d1bad0f",
+    "content_hash": "fbb6cf013c8923df7c691e56e5dd33e9134ce73286df7869d27b7378ec85051d",
+    "source_url": null
+  },
+  "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29.djvu%2F%E0%A7%A8%E0%A7%AB%E0%A7%AE&oldid=1680021",
+  "license_notice_sha256": "1cb225ce2693310f0dde219f5272c9fc5474ac53a20b5b9a27dc231d724ecc97"
 }

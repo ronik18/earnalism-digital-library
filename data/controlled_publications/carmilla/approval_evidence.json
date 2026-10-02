@@ -1,11 +1,21 @@
 {
   "slug": "carmilla",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "reading_only_public_domain_batch_1",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
   "allowCheckout": false,
-  "allowPayment": false
+  "allowPayment": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "reading_only_public_domain_batch_1"
+  },
+  "publication_authorization_sha256": "d61695c0550971585e75e5e8435d0b088bb20a9ca70ecfc80c0e60a0732848cf",
+  "source_hash": "f751453ef6ad9363a7e31f63b8d4ef830c7ea20a2aba465a59fb6fbee6bbddca",
+  "content_hash": "6d6a61c0239972fd2b3be28f3d531b800f2bff6c555d8b3d5357e03e997a416a",
+  "provenance_hash": "715bfbeefcae394130b8d4815a851e5a60ef3fe8b44efcba059e53882fe5531c",
+  "verified_at": "2026-10-01T21:49:40.745164+00:00"
 }

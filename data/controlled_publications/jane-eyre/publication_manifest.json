@@ -3,288 +3,302 @@
   "schema_version": 1,
   "slug": "jane-eyre",
   "title": "Jane Eyre",
-  "generated_at": "2026-10-01T21:08:30.144490+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "802dc32d10d314a0a28199b198e8ef0bad893b423a27ae9230634a7da9e6d255",
-    "content_hash": "5cc894eb511a2514bf0738d3cd793c02cf47edd62e5fba379c5bcdb01ae5270e",
-    "provenance_hash": "450f48b21f51c81a517372835a2e4d5459b71787cdb7ceaa9f0f3d9709879907",
+    "source_hash": "13414dee2951c3ee731d76d2ffd822016b2479c892162760c5d0eb2aa5fa7631",
+    "content_hash": "3358f1f098572ae4c1a40c2b57936dbfa165b7aeab6a1d14f776e35060c3e2fb",
+    "provenance_hash": "3e2f311e78bd18803c71f65f1d396e92b647d3aea784bb00038d1af072d91e43",
     "sanitized": true,
-    "chapter_count": 38,
-    "chapter_index_sha256": "2a6b1ec168d9ae68561b43ec4f4081268f763a441f6e0734b0f0d31bc23204d4",
+    "chapter_count": 40,
+    "chapter_index_sha256": "f13ed595dd19e148ef74bd6a8fc11c89631bcf0ea392cee10655322d246ddbfa",
     "chapters": [
       {
-        "id": "chapter-001",
+        "id": "chapter-000",
         "order": 1,
+        "title": "Preface",
+        "word_count": 807,
+        "sha256": "67766d17c0853d2b6b4b0cca4da1426a46e3178d6d7a8575afff0181bb75f9e8"
+      },
+      {
+        "id": "chapter-000-note",
+        "order": 2,
+        "title": "Note to the Third Edition",
+        "word_count": 93,
+        "sha256": "8877a31f44d922d01ea771b307c948238ce8743bd997ecce8c6efd37b83ada3e"
+      },
+      {
+        "id": "chapter-001",
+        "order": 3,
         "title": "CHAPTER I",
         "word_count": 1948,
-        "sha256": "a537fc29b9e78713374e919a69865530b3ae2ee2ab4405218d7171cb56283db3"
+        "sha256": "94624b49c7bdb9b0c9307540add5ca3e028fd93f9fef248e1687b20b6ba7a614"
       },
       {
         "id": "chapter-002",
-        "order": 2,
+        "order": 4,
         "title": "CHAPTER II",
         "word_count": 2776,
-        "sha256": "abe3994aa26747faa6066f566a2abd585bb452827751c383a3ac0fbfabb23cde"
+        "sha256": "943d13806f8afcf326f0f9bbeb788a5f56ab06160ecebc25035329e0ad18e09f"
       },
       {
         "id": "chapter-003",
-        "order": 3,
+        "order": 5,
         "title": "CHAPTER III",
         "word_count": 3228,
-        "sha256": "9f1340c5ac5d1b4aa097c9313ac8ebb5771e8936b93aa439b3cee302d1dc40f5"
+        "sha256": "f74f41467ec32e3b8be49b3804b450e30e53b4d953ce47690915e78cd4485792"
       },
       {
         "id": "chapter-004",
-        "order": 4,
+        "order": 6,
         "title": "CHAPTER IV",
         "word_count": 5865,
-        "sha256": "f1bd41c5153f8884525f03de38cce92ec41f999b8b7273ef3c1cab3b498679f5"
+        "sha256": "33a98e27bb12d933a8b35501c08e1ffeb4fce92567e64a3947b10f127d99dc08"
       },
       {
         "id": "chapter-005",
-        "order": 5,
+        "order": 7,
         "title": "CHAPTER V",
         "word_count": 5028,
-        "sha256": "c3a35f3124a8c167aa948ab81f74e950fb9eff574f98461d007deac7703623d9"
+        "sha256": "e72228e5e6b3903d50909ec41f1bcd4aa3addc5a436affee5e33ec15af18c789"
       },
       {
         "id": "chapter-006",
-        "order": 6,
+        "order": 8,
         "title": "CHAPTER VI",
         "word_count": 2921,
-        "sha256": "2e0f8ae3104171926214cbeef1efc80d0b2dfc958a886f5f6cbecc531ae35f1d"
+        "sha256": "f308f9d3728df0b940305da714ca3e94354c4525c646c9d39ad145f893f322e8"
       },
       {
         "id": "chapter-007",
-        "order": 7,
+        "order": 9,
         "title": "CHAPTER VII",
         "word_count": 3603,
-        "sha256": "422325d0296c576ed8b27c54ada49f4cae5ffdab7f7203dbed66b1c521475f0b"
+        "sha256": "374848efba7a6601aba0e00757e6ce8a6ba9f4f8442a822a2d9c263a9f4fce57"
       },
       {
         "id": "chapter-008",
-        "order": 8,
+        "order": 10,
         "title": "CHAPTER VIII",
         "word_count": 3013,
-        "sha256": "b764fe9d79d5e11860712fbfe907ba3d414b8f13f204cb0104038fe38afab51c"
+        "sha256": "ccc54d519b5db12c4fc56511aad68999bbec5fc95372ae8464843a1c9ce19a6a"
       },
       {
         "id": "chapter-009",
-        "order": 9,
+        "order": 11,
         "title": "CHAPTER IX",
         "word_count": 3267,
-        "sha256": "470e5f9d75b0ec0dde0bb5b6531ccc03294e90d4912e824ab4b90391c3bd26c7"
+        "sha256": "ea3691b2292438661545a87cb0ecd949824b0b478f5ce3c1a6672ee1bdc6995c"
       },
       {
         "id": "chapter-010",
-        "order": 10,
+        "order": 12,
         "title": "CHAPTER X",
         "word_count": 4397,
-        "sha256": "03570d805c69eaa8db9b11b2f8b5da0904d5d386a2f8c0430d9769bea75d004c"
+        "sha256": "71e8b63c7a712aaa37e1a94269a2a6212d04d2be6c3c0eeef45a12f83a9de5a0"
       },
       {
         "id": "chapter-011",
-        "order": 11,
+        "order": 13,
         "title": "CHAPTER XI",
         "word_count": 6525,
-        "sha256": "16344667961de0eb13bef69e2eaf70ebf2bb6d544a5c2ec9aeeb479f58a8d4fb"
+        "sha256": "a29fbd86772c35fd8597a1262fc1ee02e681a708de6d3216e63e148b5a63ca4c"
       },
       {
         "id": "chapter-012",
-        "order": 12,
+        "order": 14,
         "title": "CHAPTER XII",
         "word_count": 4202,
-        "sha256": "8ce52e37c55a70f1d3b4a21db3744b1c54a1440185b67c17b5beb9763a3f6f86"
+        "sha256": "5a237e5e268f0a84a4b88b9b09d73f8cff654627f04458fc7875f7afd94319d4"
       },
       {
         "id": "chapter-013",
-        "order": 13,
+        "order": 15,
         "title": "CHAPTER XIII",
         "word_count": 4065,
-        "sha256": "2acb16016e6ca1d0ff7849fc145dd1995310d980e8c1ee14cf6d541e72fc6117"
+        "sha256": "060acfad9645973167b32680eed7b2879ff050e14e3e884133f8476bc3ed0db9"
       },
       {
         "id": "chapter-014",
-        "order": 14,
+        "order": 16,
         "title": "CHAPTER XIV",
         "word_count": 4969,
-        "sha256": "f4689a5c7cddc1ea6f2f19365a0871ad29696ecb6fbf040a8a9e78c53b1763bd"
+        "sha256": "5c0d21533e3de5a7c3843832f8f3f4e66b61452606329bb8d4de5cf9e8994838"
       },
       {
         "id": "chapter-015",
-        "order": 15,
+        "order": 17,
         "title": "CHAPTER XV",
         "word_count": 5056,
-        "sha256": "b496aebb2105caa1bc2b4ba156c9bb90d432c23952012ae884c13e8b217fa12f"
+        "sha256": "3d286ef6d8df39a291226ed3d4fec82d3996b9c46092843045552db8889d0300"
       },
       {
         "id": "chapter-016",
-        "order": 16,
+        "order": 18,
         "title": "CHAPTER XVI",
         "word_count": 3790,
-        "sha256": "862737ec3b5f625619737392106ef4cce6959584dafe341bd5650ee1294ea0f0"
+        "sha256": "e83038807d02716e324b1e37fe4cfd8db5d504e890bffca864e0f78ccd547a93"
       },
       {
         "id": "chapter-017",
-        "order": 17,
+        "order": 19,
         "title": "CHAPTER XVII",
         "word_count": 8151,
-        "sha256": "9cc11103e58868b0366e20f48ad5a123ff8069b653ad37684e314e77942f3745"
+        "sha256": "65e9d2cf4e2d8afe8349552a5e205e3b54b551d0d87ee3322ceb15ec283f6833"
       },
       {
         "id": "chapter-018",
-        "order": 18,
+        "order": 20,
         "title": "CHAPTER XVIII",
         "word_count": 5928,
-        "sha256": "db052bc0931bf3f7fccaeeed12b8e6a8c8c8141358e083de908b7893a2fc253b"
+        "sha256": "54139475973a40d88c2188de5a2e3f486459146d1fac7ba610b90522823b2c98"
       },
       {
         "id": "chapter-019",
-        "order": 19,
+        "order": 21,
         "title": "CHAPTER XIX",
         "word_count": 3828,
-        "sha256": "39e87b6469cd2da6006c1aa3f5e9bd5b8565daf115e9a976f12458f5d2fd31fc"
+        "sha256": "3b0084fcd69b62df85720588c43381053c63acb10aff476eeb3fb7e3ced63e0c"
       },
       {
         "id": "chapter-020",
-        "order": 20,
+        "order": 22,
         "title": "CHAPTER XX",
         "word_count": 5889,
-        "sha256": "d0c8f3a6fc73bba72045f7c7f6188cea2e9dc1505e2041f98baf5bd5d0c845c5"
+        "sha256": "8c787daf9e277f299df0af5ee2e13d3009242bfdab2062a6f2e46ecfa07519c9"
       },
       {
         "id": "chapter-021",
-        "order": 21,
+        "order": 23,
         "title": "CHAPTER XXI",
         "word_count": 8879,
-        "sha256": "1deb0343ded2a6b2a7e5a06fec24fbd2b1d1553b088a6b42a2661913bd4cd878"
+        "sha256": "86684d909049c83f735a8fce7f3413a1111208b60a3fdcfa2f69c5a78c2cc397"
       },
       {
         "id": "chapter-022",
-        "order": 22,
+        "order": 24,
         "title": "CHAPTER XXII",
         "word_count": 2931,
-        "sha256": "4fa84636b9bb8f0fe9b5bbbf7f2565b460b4c5d35bde4c809c2f329aae7a6aeb"
+        "sha256": "e43bfd89e1aad3f853a93d3fc2d5e442206b0869505756941ab97ae9dbab3526"
       },
       {
         "id": "chapter-023",
-        "order": 23,
+        "order": 25,
         "title": "CHAPTER XXIII",
         "word_count": 3998,
-        "sha256": "48cfdc804ede9c872c89bfa33fdec94d7cb2c06d16a11b6b4feb0136c8a5abb0"
+        "sha256": "d2558539b230f53266df0b06266ffb85de4eb17f6783861d8a9bdfa1c5cc0fcb"
       },
       {
         "id": "chapter-024",
-        "order": 24,
+        "order": 26,
         "title": "CHAPTER XXIV",
         "word_count": 7248,
-        "sha256": "3f44cb7b396f0146172cf4d0e75b8e7eaa232b96e5b302b6c615e7a729dd26a6"
+        "sha256": "f8cf93eb8bc7e5a14651aec32ff961d44f5a7bc428b6648f676e76c755334220"
       },
       {
         "id": "chapter-025",
-        "order": 25,
+        "order": 27,
         "title": "CHAPTER XXV",
         "word_count": 5067,
-        "sha256": "da6cdb8e5fa5d522410c6c84bd951f4ab3d3a488e5e928c31f07870788bb9d93"
+        "sha256": "7b17162aabcf366820d35a94b8c6f28ee7e714afd302f3d5fd970c621ef28242"
       },
       {
         "id": "chapter-026",
-        "order": 26,
+        "order": 28,
         "title": "CHAPTER XXVI",
         "word_count": 4305,
-        "sha256": "9654299880f901cc521352e6a211201e460f3b5af8302192604f76c36e32781a"
+        "sha256": "dc130a0fa2e59036558874f2b79db876e1147fe3e9d293fef5be836034b3cece"
       },
       {
         "id": "chapter-027",
-        "order": 27,
+        "order": 29,
         "title": "CHAPTER XXVII",
         "word_count": 11280,
-        "sha256": "d9aad54008a46746978b7abb9ab8706e2ba351363ed30e2e1b81337c66c96489"
+        "sha256": "b7b41df416a407141f880c77e875629ff14b4e6d3d1793cfca2e8dc328f60c27"
       },
       {
         "id": "chapter-028",
-        "order": 28,
+        "order": 30,
         "title": "CHAPTER XXVIII",
         "word_count": 6981,
-        "sha256": "256e44c7bcfe74625173970293133a5871a0b80c77526eddd0d7ad5719637c6f"
+        "sha256": "59ec99e92841999f2cdc9f519efdc117d05329b4450f526db785f9ea89619340"
       },
       {
         "id": "chapter-029",
-        "order": 29,
+        "order": 31,
         "title": "CHAPTER XXIX",
         "word_count": 4588,
-        "sha256": "eda86dcabb3f8762910eb4f81b0e9b552167ef360e0f02ee398027cfcd8833ed"
+        "sha256": "5a7a9da12cc5bae9f4af11bb48194e9282db58e0f326a7e0eb0ed4f69bb86214"
       },
       {
         "id": "chapter-030",
-        "order": 30,
+        "order": 32,
         "title": "CHAPTER XXX",
         "word_count": 3757,
-        "sha256": "1019bf594c25115cab6c0cd5221f411b8c1203bdb3e98fd3d9d449b9952746a1"
+        "sha256": "9ce7b0533b29c6897ec2083e26b0de56c5d991495aba7de5447d5b15400e7a61"
       },
       {
         "id": "chapter-031",
-        "order": 31,
+        "order": 33,
         "title": "CHAPTER XXXI",
         "word_count": 3142,
-        "sha256": "a43da628c0cf45b2d028382d86dfd4f310e87e00908560001fa33a19d6520773"
+        "sha256": "407afa5a39a59716abda3c6f54fba369bc017df13cb12760bec01dd6e405316c"
       },
       {
         "id": "chapter-032",
-        "order": 32,
+        "order": 34,
         "title": "CHAPTER XXXII",
         "word_count": 4626,
-        "sha256": "cca045b92c7f6ac3e76d7e0aee1d5857367e0d4f5ffbc91ae875a8af3da07947"
+        "sha256": "2c510b5f19a85d4edaffcdec424a92fc648e6bb8717071069bad1e30ff158c99"
       },
       {
         "id": "chapter-033",
-        "order": 33,
+        "order": 35,
         "title": "CHAPTER XXXIII",
         "word_count": 4866,
-        "sha256": "9981a67c3bd2d8e7e31c8419cfee3dec81ce6fe1dc2484e9de3976e31846ee7f"
+        "sha256": "8fd0aa5c211ac2ba96b8ef0dcb7220fee3814819b84136b64b97b6dd7dcf12bb"
       },
       {
         "id": "chapter-034",
-        "order": 34,
+        "order": 36,
         "title": "CHAPTER XXXIV",
         "word_count": 9366,
-        "sha256": "657be0558edb067ec83376a3f1fe1333e72712f4ab2dad6a87c9db6855d4a6bd"
+        "sha256": "d05ac30fc978f471353b2ab6cae0315e108d411fb949c042b0e3ddc45d3d80fd"
       },
       {
         "id": "chapter-035",
-        "order": 35,
+        "order": 37,
         "title": "CHAPTER XXXV",
         "word_count": 4380,
-        "sha256": "0f7a5ccddeccf29501cf9407fd8bb2547031ba10383d55dc291a7919075b6c5a"
+        "sha256": "521a3b3642c5eb53a25cd098a279fc8fcec8f3b10170a12c26b160654c209b5e"
       },
       {
         "id": "chapter-036",
-        "order": 36,
+        "order": 38,
         "title": "CHAPTER XXXVI",
         "word_count": 3982,
-        "sha256": "369428543a87d942d8cb5e8b90ee930c463ee6c94c764a5f78989d87d026eb46"
+        "sha256": "32f33196853674ce55a7728942baca62f090c71e8939e17e5f2e5ab34e66f34e"
       },
       {
         "id": "chapter-037",
-        "order": 37,
+        "order": 39,
         "title": "CHAPTER XXXVII",
         "word_count": 7536,
-        "sha256": "ba5293e6e4cc4f2d8f2df645c4a9ef7981b5a82e3538a82558863230a894dbe6"
+        "sha256": "887b725ac8230eec12193f42397d50d034ecb63ac14883555ee1a149dbc43415"
       },
       {
         "id": "chapter-038",
-        "order": 38,
+        "order": 40,
         "title": "CHAPTER XXXVIII—CONCLUSION",
         "word_count": 1845,
-        "sha256": "5328b8fb14964582422ef6324f745d1ead784b371c8f6ab6ed7abf6d0933968d"
+        "sha256": "e3bcaeed5ccaa395ba9710dcf92288bb02d16eb71af77247a1cb1cb310627ed6"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "aa71c28acaada55f10c94f55a41d6cd79f9098f44f1020d9288423aff577a195"
+    "publication_region": "india",
+    "evidence_sha256": "3e24ed622a6cbeb745391edb448fdd166c562609d6b0455ffdbcf1d379097d19"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -292,9 +306,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -307,10 +319,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "27805f9e0b61e7b5e0702ea4c80c5d6da223eeda2f8f9014b0bec2701048c179",
-    "reader_manifest": "af2afbff61aebd3f644f82aa636e5e823b3d003e334042a526ade67fa70222ac",
-    "source_evidence": "aa71c28acaada55f10c94f55a41d6cd79f9098f44f1020d9288423aff577a195",
-    "approval_evidence": "7e50e03d139bbf61e03f45a57f1c55b97a4ec0372a1ecfea56a30812ee8232c1"
+    "public_book": "d84fe3cd0a59e91190e1553069b52a8de83a58ab585bc9b0c4f857a8d9a3bf3a",
+    "reader_manifest": "9f08e7131b6cbbb9f9ee837856c519603c33ceb7f48fcef7c82e75a5e4332ca4",
+    "source_evidence": "3e24ed622a6cbeb745391edb448fdd166c562609d6b0455ffdbcf1d379097d19",
+    "approval_evidence": "a5bacbd94430b06f6e3446f5881d1ff81cc2206cb6af55a59cefa316cad1d7be"
   },
-  "manifest_sha256": "8183763261b2cd6961e6b4e52b9f18480ecbbb62569afdcb41e3e387c1246051"
+  "manifest_sha256": "db971d7084dd446fc52959be4daa31f182097747e938ca3d18ecb3aec2f57ef1"
 }

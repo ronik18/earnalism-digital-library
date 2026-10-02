@@ -1,14 +1,14 @@
 {
   "slug": "the-adventure-of-the-dancing-men",
-  "generated_at": "2026-07-03T20:07:48Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "3da9d8f39d619b927cc521213be3852c5cc6d0ca9c1ea003b024e5040e1e0150"
+      "sha256": "a9be5c83b492e8c1bb4045c12803d9737b0938d442c2a7a51f45fcb22c5c7593"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "adc1f34904f89bb11bc1dcd18238e2be0916d8797d2e0ea6e1139cbb2a4b731e"
+      "sha256": "5b7574b2e714da6389e3c62bdd4c008be8f74bf415260a390466da26c7c8a01c"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "6013f808c58faa17d3f6585e457c5f47782caf3fc78643ee110cfa7d1f314aca"
+      "sha256": "e99801513354fc1a7b694f7d88ba60d3ef59ea540fc946d093e448232613ce05"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "09c79821b9cc4a4d76609ad0b389b3d70450cc24d7ce31deb233d2474982a7df"
     },
     {
       "file": "reader_manifest.json",
@@ -24,7 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "fa2db37fced58127ba79ea578f4f1ed82b091899812b7cbf047fada330e5de89"
+      "sha256": "5d07c7970ebcf39c820ce96df969a1721b4c076ef1b9c860e597c432a4e71420"
     }
   ]
 }

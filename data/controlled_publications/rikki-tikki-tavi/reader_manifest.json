@@ -3,25 +3,39 @@
   "title": "Rikki-Tikki-Tavi",
   "author": "Rudyard Kipling",
   "language": "en",
-  "chapter_count": 1,
+  "chapter_count": 2,
   "chapters": [
     {
-      "id": "chapter-001",
+      "id": "chapter-000",
       "order": 1,
-      "title": "Rikki-Tikki-Tavi",
+      "title": "Opening Verse",
+      "word_count": 67,
+      "reading_minutes": 1,
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 2909,
-      "reading_minutes": 13,
-      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "language_hint": "en"
+    },
+    {
+      "id": "chapter-001",
+      "order": 2,
+      "title": "Rikki-Tikki-Tavi",
+      "word_count": 5831,
+      "reading_minutes": 24,
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
       "processing_status": "ready",
       "processing_warnings": [],
       "uploaded_at": "2026-07-03T20:07:47Z",
-      "updated_at": "2026-07-03T20:07:47Z"
+      "updated_at": "2026-07-03T20:07:47Z",
+      "language_hint": "en"
     }
   ],
   "preview_chapter_ids": [
+    "chapter-000",
     "chapter-001"
   ],
   "audio_enabled": false,

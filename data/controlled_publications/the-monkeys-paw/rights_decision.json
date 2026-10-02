@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-monkeys-paw-pg12122-noncover-text",
+  "edition_id": "the-monkeys-paw",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "b071d802fbdce64e46a62b8603544d44c6e10defaa231aa65312f6d3693eb231",
+    "reader_manifest": "46d0c427c820fe37b06797be3fbeef43db9b028190fe4c809656292831b6d0a2",
+    "source_evidence": "b8c3bd37e31d8b6f8217104a2e67ac983b6311cc7f834697f3f2821c59015554",
+    "approval_evidence": "457c9c72d4a871b8f1b51a08487f4eed724466cef2150b998ce7a096155039f1",
+    "checksum_manifest": "0742714b1d0f0b9d4aeb418526d1fdeebfeccfa0ecef9986106c4acf68b9bd29",
+    "publication_manifest": "912c621265b21ae3184f8adb165f163605e9158daff00881380a88b674beb3e6"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:52:27.631967+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1943, verified lifetime collection publication 1902 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "aa96817040374a4b176aed02a61a2429ab3e1ab894fd96a65bd6c685482355de",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "4a96f50ad7df460f80f1b69ca814b7514d7f178d24e0079cd6fd8a04e5faba24",
+    "22f3431a7db6d9e210ffb446044739513475cb93992421d1b0d107f094d7408d",
+    "48bf28c4bea8019bab01a7040d1acce9a6694d783ccfacacca3a2702a5ae0389"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

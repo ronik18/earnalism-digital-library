@@ -1,0 +1,23 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "book-a23625bf36",
+  "edition": "Katha-Chatushtay original1301/1894 sole-author Rabindranath Tagore edition",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_ONLY",
+  "source_sha256": "5b6c9df28dc526a4343b46f86e967ba064689454de7df7e8b0436cca39fb4f33",
+  "content_sha256": "70d901082eb8e6a475caa558d83601f509a61847b9260ffc1c95d2db935d9ae5",
+  "chapter_sha256": {
+    "chapter-001": "70d901082eb8e6a475caa558d83601f509a61847b9260ffc1c95d2db935d9ae5"
+  },
+  "rights_decision_id": "india-20261002-book-a23625bf36-1894-cc-by-sa-text-reader",
+  "license_notice_sha256": "80a43ff341a40f6be6d29f47ed616c034cba32b2f11aa7c32d6f55a98009037c",
+  "cover_provenance_status": "COVER_BINDING_DEFERRED_NOT_AUTHORIZED_BY_THIS_TEXT_ONLY_RECORD",
+  "authorized_by": "Automated executor under explicit product-owner autonomous evidence-backed text-clearance delegation; not a human legal reviewer or signature.",
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Covers, production rights registry, controlled allowlist, runtime readiness and protected checks are separate fail-closed gates."
+}

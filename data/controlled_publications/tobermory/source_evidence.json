@@ -1,12 +1,12 @@
 {
   "slug": "tobermory",
   "source_url": "https://www.gutenberg.org/ebooks/3688",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #3688; Tobermory selected complete Saki story/cycle from chronicles of Clovis; verified lifetime collection edition 1912; no translation/editorial/art imported",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "c0abb8304ec61d1f36e5fec7972cac04bf3616016be5786927f7715b3f60923d",
-  "content_hash": "8918088acb7f9dd15022f86a8047cb7c6a6373273670491bb9048a3a76a01456",
-  "provenance_hash": "88cf527a80243e135ebb503f7ee1381abd3750d9a5716ebe6a89d4366f458c48",
-  "rights_basis": "Saki died 1916; first published 1911. Public domain in India and the U.S.",
+  "source_hash": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
+  "content_hash": "706a32b3527cc1bad6e20882b0b4ebc896491b53fa4bccefdfdb5d75c8ad56bf",
+  "provenance_hash": "510245507677ab08247655832f626a91de571aebf3daa728e3b140333a319bbe",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1916, verified lifetime collection publication 1912 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-03T08:04:22.285290+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -118,5 +118,91 @@
       }
     ],
     "content_sha256": "706a32b3527cc1bad6e20882b0b4ebc896491b53fa4bccefdfdb5d75c8ad56bf"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "c0abb8304ec61d1f36e5fec7972cac04bf3616016be5786927f7715b3f60923d",
+        "content_hash": "8918088acb7f9dd15022f86a8047cb7c6a6373273670491bb9048a3a76a01456",
+        "provenance_hash": "88cf527a80243e135ebb503f7ee1381abd3750d9a5716ebe6a89d4366f458c48",
+        "source_url": "https://www.gutenberg.org/ebooks/3688",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:48:17.188009+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1912,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/3688.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/3688/pg3688.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:51.820470+00:00",
+      "response_sha256": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 22694,
+          "length": 16163
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Saki, 1870-1916",
+      "creator_death_year": 1916,
+      "selected_collection_publication_year": 1912,
+      "original_story_first_publication_year": null,
+      "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+      "bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Saki%2C%201870-1916",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Saki%2C%201870-1916",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:44:03.644528+00:00",
+        "response_sha256": "8868eab96ea90377916366f71f0aadece4c74c87fa9ebf065e8cd66d4229fe00"
+      },
+      "bibliographic_excerpt": "chronicles of Clovis (Viking Press, 1928) (page images at HathiTrust) Saki, 1870-1916: The chronicles of Clovis (John Lane:, 1912) (page images at HathiTrust) Saki, 1870-1916: The chronicles of Clovis (Viking Press, 1929) (page images at HathiTrust) ",
+      "scope": "Named author selected story text only; other collection stories, separately authored editorial matter and all illustrations excluded."
+    },
+    "author_death_evidence": 1916,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1912,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
+    "content_sha256": "706a32b3527cc1bad6e20882b0b4ebc896491b53fa4bccefdfdb5d75c8ad56bf",
+    "year": 1912,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Saki%2C%201870-1916",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Saki%2C%201870-1916",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:03.644528+00:00",
+      "response_sha256": "8868eab96ea90377916366f71f0aadece4c74c87fa9ebf065e8cd66d4229fe00"
+    },
+    "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
   }
 }

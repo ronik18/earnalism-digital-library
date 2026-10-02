@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "book-88ded9b47c",
   "title": "মানভঞ্জন",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
-    "source_hash": "08e48da6bb28ab20a543f422d867bb4c8df3f4ea3c108590144e58aa3be3566b",
-    "content_hash": "938feb779bee24998461bf4da3daf77e9823cc429867f64807859a30ef84fb6f",
+    "source_hash": "cdae6110a68862a54c7a0155459d97158c254463eaee3169388ca9cea0b7737e",
+    "content_hash": "1e68e249392f67ed03f4d451f533bb6b175f6f20d73020abc246afd82bf8ff93",
     "provenance_hash": "02079f8c7a3fcfe9713b44a7e0e706ba9588d426d9ba853112ecb2943de2f7a5",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "570524c28ca92a888683bdc7df2f8d1ad00e09f1a2c232e963642ba2e382552d",
+    "chapter_index_sha256": "143712c87d5523270da63569bda20968fcdf431f25ad8d1b869e945745aa9986",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "মানভঞ্জন",
-        "word_count": 2842,
-        "sha256": "80e6c3bfc6f1548d2d88bce92f7096b121c5b149817b77ff7a68a6407a6b484e"
+        "word_count": 2838,
+        "sha256": "478f9f98d39397d525dbfc947b819c7a508e2f93b7f60aba2bf3e6464a33359a"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "efc1e10cdedc475959c924ff36c651e33f0cc226de157a9c7381e3c8b023b228"
+    "evidence_sha256": "7bc4d4d8d94c9e02cb589a5c8db6a98149bb9fe0284e4630f4ed807f8ab08355"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,8 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: verification_status must be approved before publishing."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -47,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "83eafc31ecb4d2dc023f4b41a3cf549e958fc44d6549fecbe732db228a3dbcb5",
-    "reader_manifest": "59906d63b8129cb9381f14696681296966c2b079e6aa4c5de219c861b5375a11",
-    "source_evidence": "efc1e10cdedc475959c924ff36c651e33f0cc226de157a9c7381e3c8b023b228",
-    "approval_evidence": "7ee58470899eb7edcabcbcb9b8d8dd36860a2f735d90a280319f9ef137e5a027"
+    "public_book": "0cb06792d2743400f1c55bee1ae64ce2144f23755bbfba8afecf7b29dd1b2118",
+    "reader_manifest": "7fafbc1b4b3b922f55ab3adba3cf7f7b904b56981191837c465f3e55d25bb5cf",
+    "source_evidence": "7bc4d4d8d94c9e02cb589a5c8db6a98149bb9fe0284e4630f4ed807f8ab08355",
+    "approval_evidence": "ea4a5c88598eabc468c8acb2ff3ab34b255e4916923e5acdbb78e4dc658a0cec"
   },
-  "manifest_sha256": "9eea17fb763d26045e00419a7cd79a4eed8f72c3f76cd2545af2ef09aa670ab3"
+  "manifest_sha256": "94f9e6437ec17831c5ad156fb1cd0c1849abd6e18252130587070b357fc2f593"
 }

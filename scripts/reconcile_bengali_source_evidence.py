@@ -31,16 +31,33 @@ def fold(value: str) -> str:
 def paragraphs(html: str, title: str) -> tuple[list[str],list[dict]]:
     from bs4 import BeautifulSoup
     soup=BeautifulSoup(html,'html.parser')
-    body=soup.select_one('.prp-pages-output') or soup.select_one('.mw-parser-output') or soup
-    for n in body.select('table, .ws-noexport, .noprint, .pagenum, .mw-editsection, script, style, sup.reference, .wikisource-header'):
+    body=soup.select_one('.mw-parser-output') or soup
+    # Original literary notes can sit in a references list outside transcluded prose.
+    # Keep their text separately instead of proposing deletion from the edition.
+    notes=[]
+    for note in soup.select('.reference-text'):
+        for br in note.find_all('br'):br.replace_with('\n')
+        text=note.get_text('',strip=False).strip()
+        if fold(text):notes.append('↑ '+text)
+    for n in body.select('table.headertemplate, table.toc, .headertemplate, .references, .ws-noexport, .noprint, .pagenum, .mw-editsection, script, style, sup.reference, .wikisource-header, .wikisource-header-template, .pagetext-header, .pagetext-footer'):
         n.decompose()
-    result=[p.get_text('',strip=False).strip() for p in body.find_all('p')]
+    # ProofreadPage may emit literary text directly between page markers, outside p.
+    # Preserve those nodes; using find_all('p') silently truncates valid editions.
+    for n in body.select('.__nop, .wst-nop, .wst-dhr'):
+        n.replace_with('\n\n')
+    for n in body.find_all('p'):
+        n.insert_before('\n\n');n.insert_after('\n\n')
+    for n in body.find_all(['td','th']):
+        n.insert_before('\n');n.insert_after('\n')
+    for n in body.find_all('br'):n.replace_with('\n')
+    result=[p.strip() for p in re.split(r'\n\s*\n',body.get_text('',strip=False))]
     result=[p for p in result if fold(p)]
     furniture=[]
     while result and fold(result[0])==fold(title.rsplit('/',1)[-1]):
         furniture.append({'kind':'standalone_title','text':result.pop(0)})
     if result and re.fullmatch(r'[০-৯]{4}[?।]?',fold(result[-1])):
         furniture.append({'kind':'source_dateline_not_verified_first_publication','text':result.pop()})
+    result.extend(notes)
     return result,furniture
 
 
@@ -91,16 +108,20 @@ def main():
             'license_conditions':['public attribution with source/permalink/contributors','license link','specific change notice','ShareAlike','no additional restrictions on licensed transcription'],
             'publication_decision_workflow':'Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.',
             'audio_authorized':False}
-        snapshot=args.output/(slug+'-source-comparison.json')
+        snapshot=args.output/(slug+'-final-source-comparison.json')
+        if not snapshot.exists():snapshot=args.output/(slug+'-complete-source-comparison.json')
+        if not snapshot.exists():snapshot=args.output/(slug+'-source-comparison.json')
         if snapshot.exists():
             content=json.loads(snapshot.read_text())
-            content['comparison']=difference('\n\n'.join(texts),content.get('source_paragraphs',[]))
-            if content.get('identity')!=identity:
-                content.setdefault('identity_before_reader_repairs',content.get('identity'))
-                content.setdefault('comparison_before_reader_repairs',content.get('comparison'))
-                content['identity']=identity
-                content['comparison']=difference('\n\n'.join(texts),content.get('source_paragraphs',[]))
-                # Existing source evidence files remain immutable; matrix compares current reader bytes.
+            source_paragraphs=list(content.get('source_paragraphs',[]))
+            chapter_titles=[c['title'] for c in identity['chapters']]
+            if len(chapter_titles)>1 and all(t.isdigit() for t in chapter_titles):
+                source_paragraphs=[v for v in source_paragraphs if v not in chapter_titles]
+            canonical_text='\n\n'.join(texts)
+            if source_paragraphs and re.sub(r'[\s-]+','',fold(source_paragraphs[0]).rstrip('।.'))==re.sub(r'[\s-]+','',fold(row['title']).rstrip('।.')) and not fold(canonical_text).startswith(fold(source_paragraphs[0])):
+                source_paragraphs=source_paragraphs[1:]
+            content['comparison']=difference(canonical_text,source_paragraphs)
+            # Existing source files remain immutable; only the current matrix is refreshed.
         elif args.fetch and row['source'].get('revision_id') and len(identity['chapters'])<=3:
             print('Fetching pinned source '+slug,flush=True)
             try:
@@ -136,6 +157,41 @@ def main():
         else:
             result['source_comparison']=row['source_comparison']
             result['noncover_status']='MULTICHAPTER_EXACT_EDITION_RECONCILIATION_REQUIRED'
+        source_current=json.loads((package/'source_evidence.json').read_text())
+        result['canonical_source_sha256']=source_current.get('source_hash')
+        if source_current.get('verified_lifetime_publication_year'):
+            result['underlying_rights']='LIFETIME_PUBLICATION_EVIDENCE_COMPLETE'
+            result['first_periodical_publication_year']='DISPUTED_NOT_INVENTED; definite lifetime book publication evidenced'
+            if result['source_comparison'].get('status')=='EXACT_MATCH_FORMATTING_ONLY':result['noncover_status']='OBJECTIVE_SOURCE_AND_WORK_RIGHTS_COMPLETE_EDITION_EDITORIAL_EVIDENCE_REQUIRED'
+        multi=args.output/(slug+'-multichapter-source-comparison.json')
+        if multi.exists():
+            m=json.loads(multi.read_text());checks=m['comparisons'];complete=all(c['comparison']['status']=='EXACT_MATCH_FORMATTING_ONLY' for c in checks)
+            result['source_comparison']={'status':'EXACT_MATCH_FORMATTING_ONLY' if complete else 'SOURCE_RECONCILIATION_REQUIRED','chapters_verified':len(checks),'artifact':str(multi.relative_to(ROOT))}
+            result['noncover_status']='EXACT_CURRENT_SOURCE_COMPLETE_EDITION_LAYER_EVIDENCE_REQUIRED' if complete else 'SOURCE_TEXT_REPAIR_REQUIRED'
+        if source_current.get('original_edition_migration'):
+            result['source_comparison']={'status':'EXACT_MATCH_FORMATTING_ONLY','scope':'Intentional original1894 edition replacement, historical variant identity preserved; not equality to oldedition','artifact':source_current['original_edition_migration']['artifact']}
+            result['edition']=source_current.get('edition_evidence',{}).get('edition','Original1894 Katha-Chatushtay')
+        if slug=='book-4968248842':
+            result['source_comparison']={'status':'EXACT_MATCH_FORMATTING_ONLY','artifact':'internal/legal/catalogue_clearance_20261002/bengali/balai-final-full-manuscript-source.json','scope':'Actual Balai scan258–261; wrong Sanskar parent mapping corrected, later1969 edition rights separately held'}
+        result['license_notice_bound']=(package/'license_notice.json').exists()
+        result['remaining_gates']=[]
+        if (package/'rights_decision.json').exists():
+            decision=json.loads((package/'rights_decision.json').read_text())
+            result['local_rights_decision']=decision.get('status')
+            if decision.get('status')=='ACCEPTED':
+                result['noncover_status']='LOCAL_IN_TEXT_CLEARANCE_COMPLETE_RUNTIME_ACTIVATION_HELD'
+                result['remaining_gates']=['Production rights registry and runtime activation separately held']
+        elif result['source_comparison'].get('status') not in ['EXACT_MATCH_FORMATTING_ONLY','EXACT_SAME_EDITION_14_CHAPTERS_RESTORED']:
+            result['remaining_gates'].append('Exact source text/chapter reconciliation engineering required')
+        if not result.get('local_rights_decision') and result['noncover_status'].startswith(('OBJECTIVE','EXACT_CURRENT')):
+            result['remaining_gates'].append('Exact edition editorial-rights scope must be evidenced before local acceptance')
+        if not result.get('local_rights_decision') and result['source_comparison'].get('status')=='EXACT_MATCH_FORMATTING_ONLY':
+            result['noncover_status']='SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED'
+            result['remaining_gates']=['Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition.']
+        if slug=='pather-panchali':
+            result['noncover_status']='INCOMPLETE_EDITION_SOURCE_EXTERNAL_HOLD'
+            result['remaining_gates']=['Current12sourcechapters exact; historical1952seventh-edition35chapterTOC lacks verified remaining23chaptertranscriptions and exact selected complete-edition identity. No invented source chapters.']
+        if result['cover_binding_deferred']:result['cover_gate']='DEFERRED_OWNER_INSTRUCTION'
         rows.append(result)
     report={'schema_version':1,'generated_at':datetime.now(timezone.utc).isoformat(),'scope':'BENGALI_TEXT_ONLY_SOURCE_RECONCILIATION_PROPOSALS_NO_PUBLICATION',
         'batch_definition':{'bankim':['bn-059','bn-060','bn-066','lokrahasya','mrinalini','muchiram-gurer-jibanchorit'],'tagore_single_story':'Existing pinned exact source per title','sarat':'Existing source editions independently reconciled','bibhutibhushan':'1952 seventh edition index conflict not reassigned to 1929'},

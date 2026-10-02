@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-01T21:23:28.947956+00:00",
-  "scope": "FINAL_BENGALI_TEXT_RECONCILIATION_WITH_INDIRA_LOCAL_CLEARANCE_NO_RUNTIME_ACTIVATION",
+  "generated_at": "2026-10-02T03:29:49.549572+00:00",
+  "scope": "BENGALI_TEXT_ONLY_SOURCE_RECONCILIATION_PROPOSALS_NO_PUBLICATION",
   "batch_definition": {
     "bankim": [
       "bn-059",
@@ -120,9 +120,14 @@
         "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-027-source-comparison.json",
-      "source_rendered_sha256": "ba72a4e4ea6ae27848bd8d4d0da2ac1fdd8bc23096ee787bcd8a7afd3fc0b872",
-      "noncover_status": "OBJECTIVE_SOURCE_AND_WORK_RIGHTS_COMPLETE_LICENCE_IMPLEMENTATION_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-027-final-source-comparison.json",
+      "source_rendered_sha256": "6d74f6031b0221eedbb702e5a4fd2c2fe54d54908605f13fe7aac990e0c21bc8",
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "c72dcc9a084a75b70c14ed578248cfeb7c57960bdd356abf9317f74828456015",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ]
     },
     {
       "slug": "bn-031",
@@ -131,31 +136,31 @@
       "identity": {
         "source_sha256": "b4cbab54263d2bd9c717525c55e300dda3ae2385329ae93ff716461a0fe20dea",
         "declared_content_sha256": "8253da5e5f081952e702b8ca1e2ba9c82b15bd3210b8605f2c515b1b75a81417",
-        "content_two_newlines_sha256": "3df89c7c65ab5fcd096cc7f51cf9450b70e1150e5b8a7f10f97f0ca30b932a97",
-        "content_one_newline_sha256": "5782f97602bbd01e81507123ccb3b59ae0bb06741d6b846f4a4c3d003b37312b",
+        "content_two_newlines_sha256": "4c8dbbd06f5b019938081ea8bd60511b9b29e61fbe561725039c8b5f0100feaf",
+        "content_one_newline_sha256": "07d6cd4ca6c5d640ae470e0ccce091e47cc076e4a1b0663100c2ee3592e093ef",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "Chapter 1. ১",
-            "content_sha256": "652e01c81029c8aaf76304c1543698dd7a6b3ab6da0bbceb6c07e3eb3dc74fd2",
-            "file_sha256": "10b838021ac01089d5a354b2bec9f7fcd560df7734a9b6fb25d5221e1357ae32",
+            "content_sha256": "7ca11299e343da8b0bfc85313baea74957b97d15def97cc77f1a2c976578d908",
+            "file_sha256": "4d8a4b74f93a0184160b46c0af095687d3a7c2c824e03562b0173cda6cf64e41",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-002",
             "order": 2,
             "title": "Chapter 2. ২",
-            "content_sha256": "a62d0e3d7c8314a9d4483f69611efe109f4bd138714155267c48398142c969aa",
-            "file_sha256": "7bcfb96aa8a65763b17f2a99a76e5619368e60d0236d899c7c3053deb84d09cf",
+            "content_sha256": "1bd6af2f36928e7a0ace6c0770806ece7fe19763a0b52072f4126d8ee332c777",
+            "file_sha256": "06a4539528173a14af25adfff8ced41858abd19cbd5e174e7ee8e143519b0c5b",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-003",
             "order": 3,
             "title": "Chapter 3. ৩",
-            "content_sha256": "b2ed3ae3b0d546b26aa2cbcb52bbd3f49f937e4803f65823d978ccf5ee6baadd",
-            "file_sha256": "148116e68d501d359089f851c482be4157164147e1a095b09249e2fbf3b2d8ba",
+            "content_sha256": "effb16d7c64064c4929092db039c5ae9b1ffc6a5a3eb4978c7b9b1579bd6ced7",
+            "file_sha256": "d96f422c237dbe6e57716a3300725d5003056ac04af5bd149c222165c049a8cc",
             "declared_hash_matches": true
           }
         ]
@@ -227,104 +232,107 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 111,
-        "source_paragraph_count": 0,
-        "exact_paragraph_ratio": 0.0,
-        "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "chapters_verified": 3,
+        "artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-031-multichapter-source-comparison.json"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-031-source-comparison.json",
-      "source_rendered_sha256": "8cdf30b58fd50259625adbdbfcc87d714b090cb28783e0c41a5c37095abde24a",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-031-final-source-comparison.json",
+      "source_rendered_sha256": "9525305007eac3aedc8212ec685025c72eeff2a97af19a6cd50a9476c84bb997",
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "b4cbab54263d2bd9c717525c55e300dda3ae2385329ae93ff716461a0fe20dea",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ]
     },
     {
       "slug": "bn-035",
       "title": "বড়দিদি",
       "author": "শরৎচন্দ্র চট্টোপাধ্যায়",
       "identity": {
-        "source_sha256": "b8293f34ad941e8624829ce105f659a4e60c10404b851012f4fc524f4c3c3470",
-        "declared_content_sha256": "83a9a52394531aa54eb99bf0da287a130701c5ea1a31a73c44ef04131c808ddc",
-        "content_two_newlines_sha256": "f7cf21f360e40751999a1b79763003a491660adc45e15b2ce893156e6f82cb6d",
-        "content_one_newline_sha256": "4ad37e980c555bfe269fb21414f25a2e2c5a6b1b5cf792152dd53c59393593a4",
+        "source_sha256": "d97c0e751be06664a52eb6ca1a09d0e6e72d937a96d6c4c6ac9c96cda66f4ce9",
+        "declared_content_sha256": "c8216c11a20f474ab5d95102950c52fe2cf8e30ea5a98c429427445a15ee572c",
+        "content_two_newlines_sha256": "c8216c11a20f474ab5d95102950c52fe2cf8e30ea5a98c429427445a15ee572c",
+        "content_one_newline_sha256": "379d9f2037d30e93b4b39612e5456dc974ecb31fb43ca748f354dbff03a7920c",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "Chapter 1. প্রথম পরিচ্ছেদ",
-            "content_sha256": "58f536ee4adfe33b8485d36f22a2bf9d5841b24a9cf8a1b854aa6611056a811e",
-            "file_sha256": "384d8ad35525e86247ff4c1a5dce1ddb7b2b44da5ebbf64f8c024e2cc2fc4118",
+            "content_sha256": "79887160142020e79cb05a31a7c3511f3d3be13dd22f626b68f62170e1bb49de",
+            "file_sha256": "8b8d61b5e8d8ea872a4ddd62ff269ebb7ae47ab19886f165eb5461ce1f7832cf",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-002",
             "order": 2,
             "title": "Chapter 2. দ্বিতীয় পরিচ্ছেদ",
-            "content_sha256": "60148b5a52ca95892c7d14d81cc177ff8bd4b18a1447dde6a217f173837b7d7f",
-            "file_sha256": "0c99290f4bd70dae4cd2d48591ff2c38e9698df551325a31505bdcb278088458",
+            "content_sha256": "553a68600ed96db9da1125561c4801069d639ea63b6645b71ba55f6d5c1ec72a",
+            "file_sha256": "dd26feef4ad0d7a008e77cf94447b62d141f81f0787c73ff84ad1135ffe4bc5e",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-003",
             "order": 3,
             "title": "Chapter 3. তৃতীয় পরিচ্ছেদ",
-            "content_sha256": "ea7556f92abb3f50ecaf96bbb9f4ecec19ae5b96c7562552ac3d68463a1369ab",
-            "file_sha256": "5f1b2700efe096da53e430af41e04fef3b1094392be1cf46504cccd49c7d328c",
+            "content_sha256": "e9acfa9e770a5580ccfee2ec5278711457f11ef2afc120882852deccd5cc63a1",
+            "file_sha256": "659c8481e4743512a7e5af1fdb82b130eaa669a49c8081a1b4eacc8c4cb61963",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-004",
             "order": 4,
             "title": "Chapter 4. চতুর্থ পরিচ্ছেদ",
-            "content_sha256": "dde0193f9787f77403377ada95c794c9ab92787903aa04384342c7f30bcb9861",
-            "file_sha256": "8d4a9d55ce82a6f2f3e5cdb981a49ed7d6a0c7b582c6ebc2440a93e217d661c4",
+            "content_sha256": "588f1f24037ad98b2f2f1e2752fcfe4289582124e41e206fe8240adff70ff4bd",
+            "file_sha256": "6af0f4316fcc6ef2bd487e73bb09111d997bddb3c34dd9a205f5e96d5b108d39",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-005",
             "order": 5,
             "title": "Chapter 5. পঞ্চম পরিচ্ছেদ",
-            "content_sha256": "1fff632d33a7892f96b01fdead031df70c12a850fc1e796765692e69bfed0c48",
-            "file_sha256": "6d0d599732db7c87a3a95de0e1bfefed03efc3e1abd74e5b7d46d94e6265bf31",
+            "content_sha256": "7314b92e8847add0b355cd1d685b7452ba22f67f7e5b2f7a7ee35b5923a17aa9",
+            "file_sha256": "2b533682d3af2bbb7e7b008ce9001b65c113ed80dca4ccc1fd93c0c0d58d02de",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-006",
             "order": 6,
             "title": "Chapter 6. ষষ্ঠ পরিচ্ছেদ",
-            "content_sha256": "bcbfafd96d23d31565fa2cf60f072afc787d19d88b02cf3bc05a36debaff6fd2",
-            "file_sha256": "8edcda60d77744f688d4bfa954976d63005bd0d6b9bf6922e69b9c9b663617c7",
+            "content_sha256": "187671beb1ee4174b23e4d3ac6802c4939e0d61a339fbfc293f2ce3cb8b30446",
+            "file_sha256": "19ef40eb701519b6ae82a5bae9e2aaa2dcaae1234afa1673bec3ec6246017905",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-007",
             "order": 7,
             "title": "Chapter 7. সপ্তম পরিচ্ছেদ",
-            "content_sha256": "2d0d942f6d97d20b7e0bbf1e6e7058372e1fc0b6f098b90dd410754b5f7641da",
-            "file_sha256": "01bfa18eb8f8f4398e505e81ddf1ec1da2232a13657ce4493d30832a2735d308",
+            "content_sha256": "3988140b3ac6a1c343f54b8723e84e59af9a1232295f0e4d6207c4b835f9ec59",
+            "file_sha256": "61f2c8a5f7b6da44e283dea384c6266ed0fa0bda112f52278b250adadd5720ba",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-008",
             "order": 8,
             "title": "Chapter 8. অষ্টম পরিচ্ছেদ",
-            "content_sha256": "cfedb46fb9cbaf4f7ba234c97f1b261971254c7980ceb2740818bffe2fda4903",
-            "file_sha256": "02555b0ca0c324eae49e015156a04d4d647bedc20316161755c2287371adbc45",
+            "content_sha256": "d06eef2a2615904081baf9d1adf34a57f94045f2c40044a0f5f97b66e81d0123",
+            "file_sha256": "b779bc2e719702f61de35c73efd8e71919c3dd9ccce34c7c344d3618e1d50fb2",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-009",
             "order": 9,
             "title": "Chapter 9. নবম পরিচ্ছেদ",
-            "content_sha256": "74550ed97287d8f19dd13aeea5dce85071ada8a23404f1c1df6da1b431e0e2e6",
-            "file_sha256": "e521786693f8b4ca140e1b0e43e68b1111436d4868cc5493547938f67b3bc0a5",
+            "content_sha256": "67a12a9a26b869b051258cc2b64b40589405e45f88a5686e0f815450cd85d451",
+            "file_sha256": "58c760f8b38fcc0ccf72dc5276bb5e7da50e4795a0205a51d66b269e0b5d043a",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-010",
             "order": 10,
             "title": "Chapter 10. দশম পরিচ্ছেদ",
-            "content_sha256": "62f5814b903f29395a502d63b7b187f9ab15e562551178443d745e99799ecbb6",
-            "file_sha256": "dd40adb77529aff23035dad9dcfc14e48c5b0ff3722fa249dc3ce7fdb79227bc",
+            "content_sha256": "7d357d54f1f160bbf15bb4ce42def6e251272751747b19a4b3eeedec23f505eb",
+            "file_sha256": "d05249da8437ed1a9eea0361a47834f36868cc73f78e316855e2ca0415c2c6c6",
             "declared_hash_matches": true
           }
         ]
@@ -406,10 +414,17 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "EXACT_SOURCE_COMPARISON_REQUIRED",
-        "current_source_paragraph_comparison": "DIFFERENT_OR_MULTICHAPTER_SOURCE_REQUIRES_COMPARISON"
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "chapters_verified": 10,
+        "artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-035-multichapter-source-comparison.json"
       },
-      "noncover_status": "MULTICHAPTER_EXACT_EDITION_RECONCILIATION_REQUIRED"
+      "noncover_status": "LOCAL_IN_TEXT_CLEARANCE_COMPLETE_RUNTIME_ACTIVATION_HELD",
+      "canonical_source_sha256": "d97c0e751be06664a52eb6ca1a09d0e6e72d937a96d6c4c6ac9c96cda66f4ce9",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Production rights registry and runtime activation separately held"
+      ],
+      "local_rights_decision": "ACCEPTED"
     },
     {
       "slug": "bn-036",
@@ -418,119 +433,119 @@
       "identity": {
         "source_sha256": "146b869c20ef86c23668192cea41613bff875db98da39218473e429a8dca86f6",
         "declared_content_sha256": "6b869827921c94a1c573cde448bafff75f8c18470a795f6984a91d4b93b87afd",
-        "content_two_newlines_sha256": "91c62971f9d93a2b51dc08ec1396d104bdd62c15426f1a0c234943f5129265d0",
-        "content_one_newline_sha256": "69ddc125281e0d675c884d217436e5823595caef2dbfa76256a1483ff58839f5",
+        "content_two_newlines_sha256": "75a80cd1b0c2637a8eb061988c8d28139994f9bcfb7bbed59a1a930bf64c56f9",
+        "content_one_newline_sha256": "0d00f96e2de550bfa9b4f5132d176414b1e91ccb4c60c9f6246b3f7a82c0014b",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "Chapter 1. আঁধারে আলো / এক",
-            "content_sha256": "5a01f541baaa1718ee89629604218276b4d550a071e05cd59fc5109dce02a548",
-            "file_sha256": "61e973ebea31dee1c16151f893a66217969edd6e6c25c23882ecbd3a38a7e867",
+            "content_sha256": "c3b0c1656462ef328113d0be71fa0d9af2ad7bb15c058f3a762e4b69cbd6cc81",
+            "file_sha256": "0b838974c75d1b445f27b51e0955287edebc29b0440e75a65f3224ad768fb12a",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-002",
             "order": 2,
             "title": "Chapter 2. আঁধারে আলো / দুই",
-            "content_sha256": "f5d02c648c8a63bf2e9470c7048278c7f50fb3764bca27d4fd0572a489c08120",
-            "file_sha256": "0f5dbab86b3fc33c8d51fe8fd9435dc1136c186b2f7ddeeb983eefce0ca0b4db",
+            "content_sha256": "ebddc8a7763868e3d7f1d4e8ab6a60862caf5b9b340f54a118825f29a080ea5b",
+            "file_sha256": "ce31024d3bfccb14f15decbc2a8c9a32b42916c324324c3ead4a646cdadd0603",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-003",
             "order": 3,
             "title": "Chapter 3. আঁধারে আলো / তিন",
-            "content_sha256": "5f09ac4afa4210a0901318fb3f6e028c2943b6e581e1cd6e32aff149c800e173",
-            "file_sha256": "f5a1a042bb1cc02e295b79a4c0aceda3ac1aa1670a776a10a6c2a1e1d88ca9f8",
+            "content_sha256": "02223461713d91bd58a15031e22c8446c7f31b1ee5a8b3458a71107e9492fd8a",
+            "file_sha256": "79b5c2f7c60436b7a6c5fb9a5d12a3a6c1c88ff229fea2f26c0de45ad390f3a6",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-004",
             "order": 4,
             "title": "Chapter 4. আঁধারে আলো / চার",
-            "content_sha256": "fde490b318490d9aee8cbbdcf403a898d90eefb4a42b37f6143c3b898aa477a6",
-            "file_sha256": "64fdb5f431f43d0ee4cfc2c850c640a569d18af169dda804d4b99d21c6d7d433",
+            "content_sha256": "3f8f99462d09c3ccb22650d7d1f578f786d5c7c6973962cd1caae22e02c0fcef",
+            "file_sha256": "6d5a81cdd767ee51fb168b5f9ba7e3a5c1af245a16d20b3dcec6b435207e5879",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-005",
             "order": 5,
             "title": "Chapter 5. আঁধারে আলো / পাঁচ",
-            "content_sha256": "715941ffe3251aa3c82ad1f092e41c216822bc70cb4f0e4bb7bbbcecab65d489",
-            "file_sha256": "cf00ddc7253ca6bcf2885a6114a736fbc46fbe86ebad6f569008772e371be83f",
+            "content_sha256": "ebb8ae4a21642ac6dd318d1279e78b765a552bba820c041978b5661df3fcaa0a",
+            "file_sha256": "bc322e1b188466ae75288f88f74537fbb50656d9eac435d37bfd74d5ad1c3e99",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-006",
             "order": 6,
             "title": "Chapter 6. আঁধারে আলো / ছয়",
-            "content_sha256": "d2090f15e3bd928cd0fff8ea84dc08d86e96d4d0bf20f10d0a1070c8951e9065",
-            "file_sha256": "a79257dffa1b15855b61ac5505d91bae5e11a97b48878971dc9a09caaaf5ef11",
+            "content_sha256": "06fd4bfed8b0dc59291e8d39526fccf299a601a8b3bdb039b3a7393c1403a381",
+            "file_sha256": "e666cd7d054bb7090fac9bf897b7300a2e314d576bc2d04e6c888533e7dec683",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-007",
             "order": 7,
             "title": "Chapter 7. মেজদিদি / এক",
-            "content_sha256": "cdd3796d1d7653c9b71ceae61fff3b180fb51604c9dae5bc56c8635d9c7ac6a2",
-            "file_sha256": "60ca58545bad84cb44a3509fd27601676cf51496987c405dc0381626f50c4151",
+            "content_sha256": "10bb90d23c3f497aba543ac3ce2095218fdcd313a29df6da116c78765a2c8c4e",
+            "file_sha256": "0ed36c484ca19cfd40da7a1d237d1aa3241c57a617450ba21e8ca04abb037f08",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-008",
             "order": 8,
             "title": "Chapter 8. মেজদিদি / দুই",
-            "content_sha256": "3f4f8a3aa80e9a40e5d3517ff09118594cfc692c85e32a3b6d5bd490728d1c24",
-            "file_sha256": "8dc927378058d9ae61025085e2d7073ee0d24f8564e98ab11b8c2af7aefee4db",
+            "content_sha256": "2721a9b732149633b2e704f9666bfc6beaacac71705abb32ab0c81fb1d64117e",
+            "file_sha256": "5c8584c3760c5ae7658254f53ae8b6c0bf9db2af28556b677bbf072832e6cdd6",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-009",
             "order": 9,
             "title": "Chapter 9. মেজদিদি / তিন",
-            "content_sha256": "95e66dcbbacfa8bea48624da9a6554f81f1947940440a8172e3d1ff14cd97cb9",
-            "file_sha256": "ecda0a04b298190d46c7639b18c28bbb10a28e84fa236324c115f39ecb0445c9",
+            "content_sha256": "98d3e87e9fcca6136348e36123d7265a39b6987bd21df71a5bcdd0d2f60a1178",
+            "file_sha256": "abc259997226fe4d0d1219a8328410314c04fa0fb5680459e1c4c4ba92ade07f",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-010",
             "order": 10,
             "title": "Chapter 10. মেজদিদি / চার",
-            "content_sha256": "1d33e7e9ba7347a97f4464cc7be288aab72099fa685da048440db6c6b5451a8a",
-            "file_sha256": "8f603f0be141008ddef46bc6f8592cbc42eaa81d0db4405bc01a1c2a00b256b2",
+            "content_sha256": "1b9db5abae19950acc6880e1a71f44dd2f80b0bc4b3df0c76e0478ec06556410",
+            "file_sha256": "8d0cf514bb89e2b330a0398b03e9f3232fbded7b268dfe210e15fe592ee06c76",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-011",
             "order": 11,
             "title": "Chapter 11. মেজদিদি / পাঁচ",
-            "content_sha256": "6a91553ec06b41fca4f4fb0a88f13871f9abe11368cd7c5f35d58ea67e1bf560",
-            "file_sha256": "1efcef191b62dbe28527d486d3bb4f6f85f003c2c0f68224ea07dcd011036335",
+            "content_sha256": "3e136858fb2435cd90270cc1a8a5819f568657e8a1dc319213fb2e0b2ae502ab",
+            "file_sha256": "40129f0a6bf1949981e12815208d40e6fd9cdc945664b3949f26cba9cf252470",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-012",
             "order": 12,
             "title": "Chapter 12. মেজদিদি / ছয়",
-            "content_sha256": "7834efda0f189b75cf48bb52fd943bde5a2811b675b185fc6463f9d69b907ea8",
-            "file_sha256": "cc7a2f723d315c696844cf07833b7a4a4176dd4397e48b7b211aa86b3d0bb1cd",
+            "content_sha256": "933f514cd024e2459cba25f90d29feb1a7c81eb10c380a5ee4a34d05b06ca3c0",
+            "file_sha256": "92031c86447b88c4feff79df275c3d6b631873e725b351a264794e8e4caee7de",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-013",
             "order": 13,
             "title": "Chapter 13. মেজদিদি / সাত",
-            "content_sha256": "16e822b4b64730cfb0bb1ecc5600c2026deea675631b5d7bc7729e0b9e4cb4af",
-            "file_sha256": "6c0f12330a331cb7e7aa5d5f276de01dd3d1a15e7b41cfc22854e85d309e21ef",
+            "content_sha256": "50d6a9198b6406875b1bb7fd0f5ec7fc8821ad3d55d0bf1a89c1f0a60b9e3dcb",
+            "file_sha256": "bcbe417759abec21d7d30a983474fd648306025002e3a9903d503e2925f4e91d",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-014",
             "order": 14,
             "title": "Chapter 14. মেজদিদি / আট",
-            "content_sha256": "ead74d920c697bcea31780a0d3eb5a112311abcaa14bb99916d6298348293bd0",
-            "file_sha256": "deae3f3f18a7875d80387b69511e31eaba8e7a22c124707624d5f3344f3ff74e",
+            "content_sha256": "eca9253f8414833f31653439f1ea7d7a9b630ca4e24264a653cd41e739fb968b",
+            "file_sha256": "d6e591093e2305d2ff561f4573dc26ac47dffae73049396ba1c8b2c177a5c068",
             "declared_hash_matches": true
           }
         ]
@@ -609,10 +624,16 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "EXACT_SOURCE_COMPARISON_REQUIRED",
-        "current_source_paragraph_comparison": "DIFFERENT_OR_MULTICHAPTER_SOURCE_REQUIRES_COMPARISON"
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "chapters_verified": 14,
+        "artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-036-multichapter-source-comparison.json"
       },
-      "noncover_status": "MULTICHAPTER_EXACT_EDITION_RECONCILIATION_REQUIRED"
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "146b869c20ef86c23668192cea41613bff875db98da39218473e429a8dca86f6",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ]
     },
     {
       "slug": "bn-041",
@@ -621,55 +642,55 @@
       "identity": {
         "source_sha256": "c7639924d0638986453e3ab15aa949220b38a0ae1edc1619d44370d733e046d7",
         "declared_content_sha256": "45f66af7c4420dc81e5fdb8f66337383b4d6e1ccc6ddc32aa17ac555d8e0ba88",
-        "content_two_newlines_sha256": "a75406b86812bdf3f3e5ea17ee49e741a7723c636303d849932005f60b84bfac",
-        "content_one_newline_sha256": "43ed9643abf746e45e74ef51f5e8e6e3595c5425aacf531473c3d9b9f4204ec6",
+        "content_two_newlines_sha256": "21f2d5505df9c86e919cf0a50db8e63c98bcab61e18ecf836e556a6e6555773f",
+        "content_one_newline_sha256": "aa17d9c05e8760ef799734e9761b5e28af996a0c76ac6ebabbc0f0a2588e629c",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "Chapter 1. এক",
-            "content_sha256": "165adec540b11c92f75d58da93a4e8ac9b886d105f2aa088885a6b4861dfdc9c",
-            "file_sha256": "46592063fd4ad9cd4bd17bacbfd0f52b877ce52ada9b31e9c650c5bea7a67671",
+            "content_sha256": "c3b0c1656462ef328113d0be71fa0d9af2ad7bb15c058f3a762e4b69cbd6cc81",
+            "file_sha256": "263c30d75b4fe7bebe9483d674b9822224604395692bb0d8b42ea15300f3fb45",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-002",
             "order": 2,
             "title": "Chapter 2. দুই",
-            "content_sha256": "79290f6d18842952aaa2d53c8157cadbc87664b5b57a3e2b1949a5319f7bc8f4",
-            "file_sha256": "cdb3b0a00a622d6c251cb79c3a2923b37aee67f52edc2cf159ee443ca83f3a01",
+            "content_sha256": "ebddc8a7763868e3d7f1d4e8ab6a60862caf5b9b340f54a118825f29a080ea5b",
+            "file_sha256": "f35bf8e14fa4dc9aba66c49e04b21910cce504d4304e967f39e454f0d1343678",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-003",
             "order": 3,
             "title": "Chapter 3. তিন",
-            "content_sha256": "c8ea1df076498d992ffe276f1fe5f7924d20e0fde9c7bee325299e5cdfc7997b",
-            "file_sha256": "1a44cbc4e044fc41df4c41e6991cec5b7451c79ea8c48d1fe9f04fdf3e075fc9",
+            "content_sha256": "02223461713d91bd58a15031e22c8446c7f31b1ee5a8b3458a71107e9492fd8a",
+            "file_sha256": "041da159d23225f66c5d3736c83124463c87252957d54d7f62cc5898dcd04c08",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-004",
             "order": 4,
             "title": "Chapter 4. চার",
-            "content_sha256": "bb123504a0ea1db21c03e52bbb6d91c2b43fbb817f7bae9d590b33f585a68c4e",
-            "file_sha256": "668ca2f9033ac614cda9cade9ff3470bda8afb711aa5c038f098b99678a3e8df",
+            "content_sha256": "3f8f99462d09c3ccb22650d7d1f578f786d5c7c6973962cd1caae22e02c0fcef",
+            "file_sha256": "c4beee0dd87cd28382e869e27dd46c6ce936607c47e3e72373e433f1490996cb",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-005",
             "order": 5,
             "title": "Chapter 5. পাঁচ",
-            "content_sha256": "382dcb99b3eb5d5b0cfb49c88800260037d10720b8a36dc286e83d9259c01312",
-            "file_sha256": "65e40d4863a58e076f4ba57cbf990def0425243f470f339109e996b671c20a23",
+            "content_sha256": "ebb8ae4a21642ac6dd318d1279e78b765a552bba820c041978b5661df3fcaa0a",
+            "file_sha256": "270a7b19c722d93b50e9d1f2071223be16ff86123f46b0b3bd19d85ad8e68ea0",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-006",
             "order": 6,
             "title": "Chapter 6. ছয়",
-            "content_sha256": "f5e0725c8e9aaea6bac11654f8dc08b41e6e4965f6065e39d449efd27fb08502",
-            "file_sha256": "d1bed1d1a8b1bde234522f0f3cfc1042aa6e8fec4a04d97dd5470a67796bf9b7",
+            "content_sha256": "06fd4bfed8b0dc59291e8d39526fccf299a601a8b3bdb039b3a7393c1403a381",
+            "file_sha256": "69397e9fe5dfee1a66970e92f5eb4a98516fb9a932ba35fad640437256bd01de",
             "declared_hash_matches": true
           }
         ]
@@ -744,122 +765,129 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "EXACT_SOURCE_COMPARISON_REQUIRED"
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "chapters_verified": 6,
+        "artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-041-multichapter-source-comparison.json"
       },
-      "noncover_status": "MULTICHAPTER_EXACT_EDITION_RECONCILIATION_REQUIRED"
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "c7639924d0638986453e3ab15aa949220b38a0ae1edc1619d44370d733e046d7",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ]
     },
     {
       "slug": "bn-059",
       "title": "কমলাকান্তের দপ্তর",
       "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
       "identity": {
-        "source_sha256": "9efae8fe7a3d58fb20c46491f8be3a869422c7ffcbc31b0ce3eb47c8f528b8a1",
-        "declared_content_sha256": "3ab439de3efeda9d506ffa50795473ce3ced5de88849bb38a0c943db73c27387",
-        "content_two_newlines_sha256": "e51980ac2949353f4fea1294e37fbdcf3158cc6111aa552d171224b410b97bb5",
-        "content_one_newline_sha256": "b1b905092c99729cf996db230c14b5543edfa12f4144e2d048b59f96c4850f47",
+        "source_sha256": "59b705ade59945af3d9dda854e63053a73b9d60a2fcf50127b0be27c315ee147",
+        "declared_content_sha256": "123bbd5c1c19edbf30eb6291a6bb5954e02128745d401846ce6d7512c60fdb21",
+        "content_two_newlines_sha256": "123bbd5c1c19edbf30eb6291a6bb5954e02128745d401846ce6d7512c60fdb21",
+        "content_one_newline_sha256": "490db6feb70cfadf39116c4ff91d0e438e785c5489fa83134b8bb8523dd5e7b0",
         "chapters": [
           {
             "id": "chapter-011",
             "order": 1,
             "title": "প্রথম সংখ্যা",
-            "content_sha256": "8e1f623d971a6e168dc04bc974e92421ae6809dc828603c5d0551eee02ac7679",
-            "file_sha256": "bcceb5deb8b1f416d97b259bce027a82752ab91740a86b14858d2eb89107fe95",
+            "content_sha256": "6e100abcbfaf07f34d6d827d4d86e5df67672e9e0e8d584853c9f39fad015f54",
+            "file_sha256": "8e338dabf9a50bae72dd5091d851be77329daf22e8e1aa7a0e6a37b7f57b36a6",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-008",
             "order": 2,
             "title": "দ্বিতীয় সংখ্যা",
-            "content_sha256": "9c93c48f56cf7d71705b4219411debbf857a1c59e9801053bdf7bef9d1fd448a",
-            "file_sha256": "4746877f99673f1cf6ed3597bedc9eebe1fcdeabbd6f5128ad25392caf1d5614",
+            "content_sha256": "2447daf1bd2f297b64e66df74ebeea2e24c9644adcaf3a7df91a32949a5962c0",
+            "file_sha256": "bcc1283e772e1764b8d51f8824ee825f456ae10b21a8f366a6911ed7f8376860",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-004",
             "order": 3,
             "title": "তৃতীয় সংখ্যা",
-            "content_sha256": "a04bcbdcfc139596f2aad724fd8144b9783d67c2a2a12fe1abb9f6dbe5d3803a",
-            "file_sha256": "464e80f9170b7af4852a779dbe158b174f4891db4db672c6250b8dec204989fb",
+            "content_sha256": "f7946b6819268c9179a678630c6e826e2bb6efae51eb4657e6a7ddfa852f7353",
+            "file_sha256": "9139632373e63df2645f1336582c32c3d56463ba037caa057da93d4ee9b12f23",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-003",
             "order": 4,
             "title": "চতুর্থ সংখ্যা",
-            "content_sha256": "ab301887f452374e5e8eb43d49d7ad22a1b6c0015367ad98f9c12af312b3835f",
-            "file_sha256": "b2f07b8a8e743a5521c9f4cad2befefbf383f62f8d93a18a1d1cdfa5067a9405",
+            "content_sha256": "6bc3bb351427876e50474b9a1eec1cca173983f2ae77ccf29c784a4f6cb6a221",
+            "file_sha256": "0152c9543a83ca9ee50a4f32b95ef567720f8655ea1ac1663fdfa0027e81cce7",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-010",
             "order": 5,
             "title": "পঞ্চম সংখ্যা",
-            "content_sha256": "96a3bb93ea6e4484de991958928c7a7fd7e77d59c092fff88f6c2e732c87cc6a",
-            "file_sha256": "8cfa5692dcf5e638b22ee3b9bfad9ddde0114bc3d929a345ff78d38c02e965b2",
+            "content_sha256": "3e036cdd5fabbcf8b388a4e956fd56b97779c4ca18c0a6b16075dfe92c6bbf29",
+            "file_sha256": "783deac0177444e968d3f86790e384fa8b69dddb43dec17d9988ad79422ef83e",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-012",
             "order": 6,
             "title": "ষষ্ঠ সংখ্যা",
-            "content_sha256": "1102a72be55bdf8e51e7fdc5baca274c179aaa770bb43ae15a65a850e5f10605",
-            "file_sha256": "52ab9cd8039d948a5bb19843be76c2c2eae1f1f912b88c0bf927de0f14942ec1",
+            "content_sha256": "3fc4df5185d2a209784bfb18396adf49fc0aed238564d5d19cb107e3d91b6c42",
+            "file_sha256": "f5c20085b18df5539254c40ea4af2d388229e6bc5c92e49280516eef8336d042",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-013",
             "order": 7,
             "title": "সপ্তম সংখ্যা",
-            "content_sha256": "1887bc299d841297deacd3d89c8b75a53d3c60f3a9d747a6c49f90a6e337f344",
-            "file_sha256": "17e2754c628e1f42dc1e967fad8ca49d205aaf4463e0dab5fca30d715f026944",
+            "content_sha256": "8791439978bef7c49f067984b43a8a58b7371930cc37dd670b32f2a7bf143e47",
+            "file_sha256": "f64b88a5d08b6d33909c568f386ba97f1e4ced0a946fe8bdb2118329f39de3af",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-001",
             "order": 8,
             "title": "অষ্টম সংখ্যা",
-            "content_sha256": "e04f746c0690e5124ca07c222dff6e0e7597eaaebe2dabea845a3a4c5efe97e9",
-            "file_sha256": "8c29f213c30fdf0879de50a60e6d5415e4563e400a23c0355a59cc8761b2b421",
+            "content_sha256": "753f0ed8bca92c98b863f81bed1b6c744009dce77e9959137c7b3ad592cea047",
+            "file_sha256": "64e6f6ec258e8499367236b10462e8fb75325d3a2d120d9ebebe4ff9522e95bb",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-009",
             "order": 9,
             "title": "নবম সংখ্যা",
-            "content_sha256": "cf5cae83724948224b0305738e8a6476d4593311dbecf125b10727ca09eb725d",
-            "file_sha256": "b24c613b2453250453b892c17eace6879ebb5da448721c83208994614e0c1b0e",
+            "content_sha256": "eb70cd62e377022b51f76d746949a6259aa20a6135eaa3dab25246632027f428",
+            "file_sha256": "d2b95d5e12bbd1f1b2aa9a4021bf7615b0d75166452a8deef67fc28653e7cc9a",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-006",
             "order": 10,
             "title": "দশম সংখ্যা",
-            "content_sha256": "46ed8cde89d44354166d39f82ab5c010ee91a803f9381415b1a9ce5713a6a1b5",
-            "file_sha256": "480f9f6ef1d733bb974e796bf8bb887b89b48cf43055f02c2b11859c4e83d408",
+            "content_sha256": "4da21913ac97f92d5e5fb1f4e6148468a041e2dc05831e5f5e7e6b63227ad710",
+            "file_sha256": "cccdb37662034e81e53a3835bd832a20e83db0519fdd2902622b49a0ae22734d",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-002",
             "order": 11,
             "title": "একাদশ সংখ্যা",
-            "content_sha256": "547858c3556ac9ac2f96fb4e070cdc641c712739d0b9b6a722c9f75e211ca28e",
-            "file_sha256": "8568cbeb31aa14e744f9dee674b4d110decc8fd9f3ba0df0f17d24f58d23db4a",
+            "content_sha256": "d3019ba58943c24c011bb75736dbe1d2fd632380cc97a9b4812a5a2debdfd729",
+            "file_sha256": "373b1cb355283d2b6d1b7cae45441f54a7cf951c9e741e49647280c140f1006a",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-007",
             "order": 12,
             "title": "দ্বাদশ সংখ্যা",
-            "content_sha256": "d92deb3e4f49539aada28dc548adda51fb89abff578433b3e12541421f85a804",
-            "file_sha256": "68bd0c68fccac84837fb66db95bbfc664f1894c3ddcbd0ded467e71cdf4ef533",
+            "content_sha256": "ff761605da4bb4995efde6673ab55821013ecd63f3b524b0a8ef106e5002ba45",
+            "file_sha256": "54dca2e9fe61035bbf40f7b58cf5e693d31eaa6b1f4584c9b0c8ad84fbedbc92",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-005",
             "order": 13,
             "title": "ত্রয়োদশ সংখ্যা",
-            "content_sha256": "a661e637ee68f25cebca25ec99abe9d613d7ade07286b9e6415d48d6b7aaf2fd",
-            "file_sha256": "f9f8d83212e59747058f4b10be9e3ca2973e1a892d34b5d13897074ec5733ddf",
+            "content_sha256": "dcc77d7c8d86fdf35c4ae92a0e0ea691d4e9b00322f34b9155bf19032a59384c",
+            "file_sha256": "c52980a11c0ba880fade5685515cac34cf0138f8dd0ddd388648445171db7a35",
             "declared_hash_matches": true
           }
         ]
@@ -927,10 +955,17 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "EXACT_SOURCE_COMPARISON_REQUIRED",
-        "current_source_paragraph_comparison": "DIFFERENT_OR_MULTICHAPTER_SOURCE_REQUIRES_COMPARISON"
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "chapters_verified": 13,
+        "artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-059-multichapter-source-comparison.json"
       },
-      "noncover_status": "MULTICHAPTER_EXACT_EDITION_RECONCILIATION_REQUIRED"
+      "noncover_status": "LOCAL_IN_TEXT_CLEARANCE_COMPLETE_RUNTIME_ACTIVATION_HELD",
+      "canonical_source_sha256": "59b705ade59945af3d9dda854e63053a73b9d60a2fcf50127b0be27c315ee147",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Production rights registry and runtime activation separately held"
+      ],
+      "local_rights_decision": "ACCEPTED"
     },
     {
       "slug": "bn-060",
@@ -1067,7 +1102,7 @@
         "facsimile_page_references": [],
         "edition_identity_status": "EXACT_FACSIMILE_AND_EDITORIAL_LAYER_REVIEW_REQUIRED"
       },
-      "canonical_packages_mutated": true,
+      "canonical_packages_mutated": false,
       "underlying_rights": "LIFETIME_PUBLICATION_EVIDENCE_COMPLETE",
       "edition": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩); source title page identifies the 1873 edition and says the text was excerpted from বঙ্গদর্শন",
       "original_publication_evidence": 1873,
@@ -1079,578 +1114,397 @@
         "ShareAlike",
         "no additional restrictions on licensed transcription"
       ],
-      "publication_decision_workflow": "OWNER_DELEGATED_AUTOMATED_EXACT_EDITION_TEXT_ONLY_ACCEPTANCE_NO_PRODUCTION_REGISTRY_OR_LIVE_APPROVAL",
+      "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "EXISTING_EXACT_SOURCE_EVIDENCE_REVALIDATED",
-        "evidence_file": "data/title_rights_evidence/bengali-bankim-cohort-1.json",
-        "evidence_file_sha256": "6aa201278a3420414ab1c348bd24b19ff4cf1b539595e142dd64696152c5eccf",
-        "source_edition": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩), British Library scan transcription",
-        "source_facsimile_pdf_sha256": "664191f5a7e2d8e6bbccd90d1c8ee947aa70f33b5924c1295d77b46f4114f067",
-        "chapter_references": [
-          {
-            "chapter": 1,
-            "source_child_page_revision": 1910625,
-            "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/প্রথম_পরিচ্ছেদ&oldid=1910625",
-            "canonical_chapter_sha256": "c2404852ee9da94b41a4a989edec3f7738397b2ddc98bf6acea225c81eddebe2",
-            "result": "FACSIMILE_CONFIRMED_PAGE_BOUNDARY_SPLITS_JOINED: printed page 4 ends খাই and page 5 begins তেছে; printed page 8 ends লা and page 9 begins ঠির. The canonical readings খাইতেছে and লাঠির follow the continuous source words.",
-            "facsimile_printed_pages": [
-              4,
-              5,
-              8,
-              9
-            ],
-            "facsimile_pdf_pages": [
-              6,
-              7,
-              10,
-              11
-            ]
-          },
-          {
-            "chapter": 2,
-            "source_child_page_revision": 1910623,
-            "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/দ্বিতীয়_পরিচ্ছেদ&oldid=1910623",
-            "canonical_chapter_sha256": "7356cad0f3c20205c6650d52098bb90dac59336c56b0bce0ef1a53f9fa10e302",
-            "result": "MATCH_AFTER_SOURCE_HEADING_REMOVAL"
-          },
-          {
-            "chapter": 3,
-            "source_child_page_revision": 1910622,
-            "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/তৃতীয়_পরিচ্ছেদ&oldid=1910622",
-            "canonical_chapter_sha256": "43d496cba105a53b39f27e207d6ae73e6dbdecbd35506202c3d831b1ecd6d555",
-            "result": "MATCH_AFTER_SOURCE_HEADING_REMOVAL"
-          },
-          {
-            "chapter": 4,
-            "source_child_page_revision": 1910621,
-            "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/চতুর্থ_পরিচ্ছেদ&oldid=1910621",
-            "canonical_chapter_sha256": "520e555b325a8d1a722f3534484eb41b5fe58129f651188523c09d65032e195f",
-            "result": "FACSIMILE_CONFIRMED_PAGE_BOUNDARY_SPLITS_JOINED: printed page 23 ends অ and page 24 begins ধিক; printed page 25 ends আ and page 26 begins মাকে. The canonical readings অধিক and আমাকে preserve the continuous source words.",
-            "facsimile_printed_pages": [
-              23,
-              24,
-              25,
-              26
-            ],
-            "facsimile_pdf_pages": [
-              25,
-              26,
-              27,
-              28
-            ]
-          },
-          {
-            "chapter": 5,
-            "source_child_page_revision": 1910624,
-            "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/পঞ্চম_পরিচ্ছেদ&oldid=1910624",
-            "canonical_chapter_sha256": "494cee46a4461eaebc67b68e81c447f31831296723e21e1024e5d9500694868a",
-            "result": "MATCH_AFTER_SOURCE_HEADING_REMOVAL"
-          },
-          {
-            "chapter": 6,
-            "source_child_page_revision": 1910626,
-            "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/ষষ্ঠ_পরিচ্ছেদ&oldid=1910626",
-            "canonical_chapter_sha256": "1ff67f3b84c1f1e61ac885e90327dc232ec0ce1b49f46b3d635e036bc297429d",
-            "result": "SOURCE_OMISSION_RESTORED_AND_PAGE_BOUNDARY_SPLIT_JOINED: the facsimile-confirmed two-paragraph continuation is present; printed page 32 ends করি and page 33 begins য়াই, supporting the canonical continuous reading করিয়াই.",
-            "facsimile_printed_pages": [
-              32,
-              33
-            ],
-            "facsimile_pdf_pages": [
-              34,
-              35
-            ]
-          },
-          {
-            "chapter": 7,
-            "source_child_page_revision": 1910627,
-            "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/সপ্তম_পরিচ্ছেদ&oldid=1910627",
-            "canonical_chapter_sha256": "8a15e0ef3f75e2c3a4d9701b16e445d40205ee2391b5b13777162bac33342afc",
-            "result": "MATCH_AFTER_SOURCE_HEADING_REMOVAL"
-          },
-          {
-            "chapter": 8,
-            "source_child_page_revision": 1910620,
-            "source_revision_url": "https://bn.wikisource.org/w/index.php?title=ইন্দিরা_(বঙ্কিমচন্দ্র_চট্টোপাধ্যায়,_১৮৭৩)/অষ্টম_পরিচ্ছেদ&oldid=1910620",
-            "canonical_chapter_sha256": "d32caf511e719a5e8ae6f776f0dbec32bdcbcf17200fcf184d451dadc0bace3e",
-            "result": "MATCH_AFTER_SOURCE_FURNITURE_REMOVAL"
-          }
-        ],
-        "all_chapter_hashes_match": true,
-        "current_source_paragraph_comparison": "DIFFERENT_OR_MULTICHAPTER_SOURCE_REQUIRES_COMPARISON"
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "chapters_verified": 8,
+        "artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-060-multichapter-source-comparison.json"
       },
-      "noncover_status": "TEXT_CLEARANCE_COMPLETE_RUNTIME_ACTIVATION_HELD",
-      "pre_clearance_review": {
-        "noncover_status": "OBJECTIVE_SOURCE_AND_WORK_RIGHTS_COMPLETE_LICENCE_IMPLEMENTATION_REQUIRED",
-        "identity": {
-          "source_sha256": "664191f5a7e2d8e6bbccd90d1c8ee947aa70f33b5924c1295d77b46f4114f067",
-          "declared_content_sha256": "69d972ddd3fea936806a641d96a6287930b569536c0049eb8ef2f4b61d790065",
-          "content_two_newlines_sha256": "69d972ddd3fea936806a641d96a6287930b569536c0049eb8ef2f4b61d790065",
-          "content_one_newline_sha256": "f327ffdf08c13085462db4a7c4bf0f2a315a3e4a577cc2f01c3a93b3fdaa2d0b",
-          "chapters": [
-            {
-              "id": "chapter-001",
-              "order": 1,
-              "title": "Chapter 1. প্রথম পরিচ্ছেদ",
-              "content_sha256": "c2404852ee9da94b41a4a989edec3f7738397b2ddc98bf6acea225c81eddebe2",
-              "file_sha256": "2293b8b33a4deee66ee955140f17730786e5f76e2fbfb45f1f7d9f2fc51a0256",
-              "declared_hash_matches": true
-            },
-            {
-              "id": "chapter-002",
-              "order": 2,
-              "title": "Chapter 2. দ্বিতীয় পরিচ্ছেদ",
-              "content_sha256": "7356cad0f3c20205c6650d52098bb90dac59336c56b0bce0ef1a53f9fa10e302",
-              "file_sha256": "70ac9626e1e34773041c0ef01b3eb4ad16c1f087858154c7b79e928727788bbb",
-              "declared_hash_matches": true
-            },
-            {
-              "id": "chapter-003",
-              "order": 3,
-              "title": "Chapter 3. তৃতীয় পরিচ্ছেদ",
-              "content_sha256": "43d496cba105a53b39f27e207d6ae73e6dbdecbd35506202c3d831b1ecd6d555",
-              "file_sha256": "e1cf858f18fdbdeece53f319fafac6886d55ab9953f605ca44f078f6c1c4ff6e",
-              "declared_hash_matches": true
-            },
-            {
-              "id": "chapter-004",
-              "order": 4,
-              "title": "Chapter 4. চতুর্থ পরিচ্ছেদ",
-              "content_sha256": "520e555b325a8d1a722f3534484eb41b5fe58129f651188523c09d65032e195f",
-              "file_sha256": "a3ffb67735da8446041a00e49eecd5da11081d6754546cfba48b4870d2811572",
-              "declared_hash_matches": true
-            },
-            {
-              "id": "chapter-005",
-              "order": 5,
-              "title": "Chapter 5. পঞ্চম পরিচ্ছেদ",
-              "content_sha256": "494cee46a4461eaebc67b68e81c447f31831296723e21e1024e5d9500694868a",
-              "file_sha256": "1d1c3adac84a293e59f172ecc4de63e7efb214d4533a2888e07db8accde8330f",
-              "declared_hash_matches": true
-            },
-            {
-              "id": "chapter-006",
-              "order": 6,
-              "title": "Chapter 6. ষষ্ঠ পরিচ্ছেদ",
-              "content_sha256": "1ff67f3b84c1f1e61ac885e90327dc232ec0ce1b49f46b3d635e036bc297429d",
-              "file_sha256": "ec8e8251fde679c8ed5fa0d7a9518755a5801abdef0821b327fffe182c1f7d54",
-              "declared_hash_matches": true
-            },
-            {
-              "id": "chapter-007",
-              "order": 7,
-              "title": "Chapter 7. সপ্তম পরিচ্ছেদ",
-              "content_sha256": "8a15e0ef3f75e2c3a4d9701b16e445d40205ee2391b5b13777162bac33342afc",
-              "file_sha256": "a7d35ad28aadb5b1202c02f12ce64a7c429b33d8b8e2629e6c46d26185800e39",
-              "declared_hash_matches": true
-            },
-            {
-              "id": "chapter-008",
-              "order": 8,
-              "title": "Chapter 8. অষ্টম পরিচ্ছেদ",
-              "content_sha256": "d32caf511e719a5e8ae6f776f0dbec32bdcbcf17200fcf184d451dadc0bace3e",
-              "file_sha256": "e1938414f2a944c498e74aeb2965d67fb0861dcfd6c6a767eceeb398abf0fb92",
-              "declared_hash_matches": true
-            }
-          ]
-        },
-        "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity."
-      },
-      "current_identity": {
-        "status": "TEXT_CLEARANCE_COMPLETE_RUNTIME_ACTIVATION_HELD",
-        "source_identity": "PASS",
-        "edition_identity": "PASS",
-        "rights": "PASS_IN_TEXT_ONLY",
-        "cover_provenance": "PASS_BOUND_OWNER_ASSETS",
-        "publication_authorization": "PASS_EDITION_BOUND_OWNER_DELEGATION",
-        "license_delivery": "IMPLEMENTED_TESTED",
-        "reader_manifest": "READY_FOR_APPROVAL",
-        "reader_exposed": false,
-        "registered_in_production_rights_registry": false,
-        "live_allowlist_changed": false,
-        "audio_exposed": false,
-        "canonical_rights_decision_sha256": "ef13c99abc9682321e1f8f9ee3e6822a2657993d46828d144fb0e0300a1d4267",
-        "runtime_blocker": "Inactive canonical Reading Pass segments must be prepared/promoted through the existing authorized admin workflow and runtime validated before controlled launch. No production customer/data writes performed."
-      },
-      "license_implementation": "IMMUTABLE_CC_BY_SA_NOTICE_AND_RUNTIME_DELIVERED_TEXT_PERMISSIONS_IMPLEMENTED"
+      "noncover_status": "LOCAL_IN_TEXT_CLEARANCE_COMPLETE_RUNTIME_ACTIVATION_HELD",
+      "canonical_source_sha256": "664191f5a7e2d8e6bbccd90d1c8ee947aa70f33b5924c1295d77b46f4114f067",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Production rights registry and runtime activation separately held"
+      ],
+      "local_rights_decision": "ACCEPTED"
     },
     {
       "slug": "bn-066",
       "title": "আনন্দমঠ",
       "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
       "identity": {
-        "source_sha256": "e760fa2eaf099b90fb6666a62e29f34a72bd84942bf22d487b7417dce60ba329",
-        "declared_content_sha256": "ec3352127f8065ec990f9c10f4a2a069a4a4f0c9e8793c7727b00306fa8d777f",
-        "content_two_newlines_sha256": "4c92a684dc74068dc225c6480405cfbf07e1f9ebf40039725561b16114039cc0",
-        "content_one_newline_sha256": "4af08b423ea229b5ec3bfec3651f550d41592dda367736a3175a52356e266b3e",
+        "source_sha256": "77503ec5daf5f8d9d567d7ecf6543abbfd727658818391cc1c20d54d5627cbff",
+        "declared_content_sha256": "a6336c132fdb256bb963c8c5f1443707990203987266689077495a87c8a75543",
+        "content_two_newlines_sha256": "a6336c132fdb256bb963c8c5f1443707990203987266689077495a87c8a75543",
+        "content_one_newline_sha256": "8ac0cba09c11590724ff0009193be834f32ebba2272a7e0fc6009f02f6c6f0c0",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "উপক্রমণিকা",
-            "content_sha256": "fa7fb76b0d4de6f25f3dba8d9a4348088c1464716b07611df1f6f0c94dd29891",
-            "file_sha256": "6cd65c2a75c00d18e724f4192edc859dce0b983b8f8136ee722e98793446f6a1",
+            "content_sha256": "4c875f5b744c7fbea421857fd512fe98e94cdf5a2213cd2651bfbaebb03955cc",
+            "file_sha256": "371c67bc4b578ee9aa4c83a25a510e3ba378ddede8eba6b3d81725d248f29ce5",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-022",
             "order": 2,
             "title": "প্রথম খণ্ড / প্রথম পরিচ্ছেদ",
-            "content_sha256": "6d0b81a45059577172020a562899165b266fc07342e28d446436904545bf252f",
-            "file_sha256": "cc44867ccf9a0389c568ada3db06da6b26b31bb9250cb0c05a68af1caf0e56c1",
+            "content_sha256": "f0a3f72852a32364d57428496b094eef59ce59f2f20850f3d9421c59f924b5f4",
+            "file_sha256": "9686024534d39a49c86c4e02d63d8b67be02805601fbfb8b90f3ae427e56bd18",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-023",
             "order": 3,
             "title": "প্রথম খণ্ড / দ্বিতীয় পরিচ্ছেদ",
-            "content_sha256": "37bdb3a9cfbea4ec31af7ad61cb7e9c5ba03c19c94f4fe7854fe2bc56da8da08",
-            "file_sha256": "0bf74edd3dd2e63149a63510e16eb3cde5acd54edeb010ea07b290e59514e63f",
+            "content_sha256": "bc29d7690192260ed902532c915f20cdb45db91ead10b6b3a3b907a6ea729bcd",
+            "file_sha256": "09ab0455686512c96b32e7edc250f5ac9408032ef7b878317fb705677f506bac",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-024",
             "order": 4,
             "title": "প্রথম খণ্ড / তৃতীয় পরিচ্ছেদ",
-            "content_sha256": "0c082c65fd9fefaded819cca7272c978ca01a9dfd70d85813b8140a8551ad8e2",
-            "file_sha256": "2cc462398e43770b6a8a759187f9694b40dcce1191b3ddf7f97c297944e5ec65",
+            "content_sha256": "ea31eab4e0995e42608d6429fe6e832ebab6b2946d61b4e3cb36bb07ee9d5591",
+            "file_sha256": "ca6950c5027197ba0c28973cb04e8a758292372148c6e511fa35eba6e6657157",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-025",
             "order": 5,
             "title": "প্রথম খণ্ড / চতুর্থ পরিচ্ছেদ",
-            "content_sha256": "6f5e858e97fd520bdf0830505785c24d310d4a7e041799a63c37b133ad0515c3",
-            "file_sha256": "c70e5f2c1f94f4d4d746206c7407090a1fa76c6acac14e929e503a460a15f18c",
+            "content_sha256": "b5bf2cbfe7e4c9014e85729a1f84d23a4cff5027541c7d25887580f4017a8802",
+            "file_sha256": "a013fe9934a5913899e71ba1b666ec1573c0090a7a6cdcc7ba0959559ea0448a",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-026",
             "order": 6,
             "title": "প্রথম খণ্ড / পঞ্চম পরিচ্ছেদ",
-            "content_sha256": "6be12309eaffa6a37d864bafdc64aec6c31d1c0b10710fc4b45b566761bdc58e",
-            "file_sha256": "285e26a975207ded7bdc13b49bf04f72719011ff85d6d170faf057f123c1e8a3",
+            "content_sha256": "ec712b2980bbbf11242d0d2e91e07d07b85c3ed2636d8d0d144bafb15688ceb4",
+            "file_sha256": "2d5fb7370a83b4f5b1a40e76c7afbe8c3e371e3d2f36c4bf362104b98d4f6529",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-027",
             "order": 7,
             "title": "প্রথম খণ্ড / ষষ্ঠ পরিচ্ছেদ",
-            "content_sha256": "0f1d37432b7ed9c0739f69dc536ab424e09209753574b5a05b6a2fbb1bc674d8",
-            "file_sha256": "066cc6041ac9b0a4aa2326e636aac53d673b79e7582f1d62a3b12f4f02adbaef",
+            "content_sha256": "980313ce8a7606cd39a5af8dfa35c5f8c4c86650178790f8f9a74f338baf4c33",
+            "file_sha256": "7fa5dcd8cbed1f8dbcd15e7bc3939a998414f35edcaed65fe6a2563c951586b9",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-028",
             "order": 8,
             "title": "প্রথম খণ্ড / সপ্তম পরিচ্ছেদ",
-            "content_sha256": "431236030885471356995c0bfef90f94b429ba1aaa857ba9ff13707f39aea42d",
-            "file_sha256": "341b93865662d2419ff320453bc8382e1fd8409c53400ba68cefdc04f46b14e2",
+            "content_sha256": "3b1c800a923b16dc96f2493bf0533b2d4e5f5432ba22930421d7a1208b25a26e",
+            "file_sha256": "9c29f02c5e0c1dbc8137514fa890e2480d968acdbf4dbfbc8bd9fe166ddf05a8",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-029",
             "order": 9,
             "title": "প্রথম খণ্ড / অষ্টম পরিচ্ছেদ",
-            "content_sha256": "a96c1bffa78f8b77d8816d8a85352098cf468593064e93424fb58251a57d9af9",
-            "file_sha256": "54c9353995503132ec0245dd13fe069f77b69f528a31ed40e615883ff3add0a2",
+            "content_sha256": "b12e21f68f4dadeafd3a9dc640bc52163da2e8a77ab6d15038eb1047cb34f22d",
+            "file_sha256": "ff8edf8e8a93e570e8255979e0561b4033269c44fdd57bd36914caad08e8f3f5",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-030",
             "order": 10,
             "title": "প্রথম খণ্ড / নবম পরিচ্ছেদ",
-            "content_sha256": "8ff726177c9343a4b75c529c2a585e11d0825ea1fe5b7d533e59009f2e6af1c7",
-            "file_sha256": "9f997b6768e444852cfae64d1467e6318debfa5c145f075b52f5206669bb5fb0",
+            "content_sha256": "a1897864feb591e2a7c56247c6463b4f27b2f7539288a74dae78205975a31614",
+            "file_sha256": "84a8067712ba70a32d5a3b1d297a5e95f7f9171e53b5b230f2d537e39cf6af76",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-031",
             "order": 11,
             "title": "প্রথম খণ্ড / দশম পরিচ্ছেদ",
-            "content_sha256": "61c79ee94e587b9e2d4b1bc1cf1d97f490f0ee9e6d410c697c725554ecad41dc",
-            "file_sha256": "e4844a62cdea63e00cfb29f59f4193b38738af8b9919b148134100b86478770d",
+            "content_sha256": "52e64f9179aa490d715deba81b3904ae9fc870aa7ee36b0bcc5a33b852188f22",
+            "file_sha256": "6706ceeff6932c50e3bac5b540e502d6bd105dd5e198a6716a2b8f5b2fa06a0c",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-032",
             "order": 12,
             "title": "প্রথম খণ্ড / একাদশ পরিচ্ছেদ",
-            "content_sha256": "254af39249b1037212e08f39ae1f1e9902f0f0ad5aa4d3498e85844e1a37b5d3",
-            "file_sha256": "59d76ad50b41e73fac4787e8bb84d56af32c1a6998c8946082106851b688aa88",
+            "content_sha256": "a6ce99559198b2a49e658ae4c105109d2e093af924be9a6ade479a5a8b8f80f5",
+            "file_sha256": "a57dd8661bdbad706fced744c72bc52b52d26570f8f20b27c5738200dd8c2c59",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-033",
             "order": 13,
             "title": "প্রথম খণ্ড / দ্বাদশ পরিচ্ছেদ",
-            "content_sha256": "289e04861891f41e422600b12eead3e54706d16483b312ca6c5e1dbf497ef613",
-            "file_sha256": "b0e993b4fd60dae10939b3ae3dad175e32bd8ad3c935245233c6679e64d376eb",
+            "content_sha256": "fb21d2166196b08bc616d6a8cf86cee82a47e976a6819875fc95256d653007b6",
+            "file_sha256": "577747a1283bface951719eefc42a8e4a4f48c2bfecc49bdd1bfc31bc14c1907",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-034",
             "order": 14,
             "title": "প্রথম খণ্ড / ত্রয়োদশ পরিচ্ছেদ",
-            "content_sha256": "d8647211d9bf64e9c8677f98ebefff8b0552ebfb770069af64a6329d854fbce3",
-            "file_sha256": "723ecccf2ade0d9667dc4dae3dc72a297548f81e36a4d50fb0fc0357cfadbd53",
+            "content_sha256": "b5634df757d3da1d8e7847e16e5d3daea529a67373513e74ae8462ec46e3297b",
+            "file_sha256": "1ce485bdc9ef22ea638baccf07c6ea7142dbc1739f14bc2363f9bb9948a48f79",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-035",
             "order": 15,
             "title": "প্রথম খণ্ড / চতুর্দ্দশ পরিচ্ছেদ",
-            "content_sha256": "80ed5a612bf52d19060ef2ea5f2392071aa77a9e1c176fa173d6359bf762516c",
-            "file_sha256": "e199fadb6e15023033f53cac5ee32b8d7b167c847e9cb742d609c8a64f334add",
+            "content_sha256": "f5c89a6f6c56c15548d29a34599e25a18cb31b0843eb133e7144c00970cd92dd",
+            "file_sha256": "817f4ab044db067bab914784e822c674c7495393de33a0fa6dcd655272b10de9",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-036",
             "order": 16,
             "title": "প্রথম খণ্ড / পঞ্চদশ পরিচ্ছেদ",
-            "content_sha256": "7422561644d5b14c09d72f2b9716189e7cef39936dcf0bfbc2aa52ddc8c87595",
-            "file_sha256": "3c938a011f8ada0ce007a17143652af7029736ceb7c61cde7eef7da9ada0511d",
+            "content_sha256": "934a2ec3bf4521637ff44e43083e8ffee2c5252162419de757c7853733af980a",
+            "file_sha256": "64b017e316161e66f55edc249d6b567d86cc878abf5333bdbb06f4a419ae1cb3",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-037",
             "order": 17,
             "title": "প্রথম খণ্ড / ষোড়শ পরিচ্ছেদ",
-            "content_sha256": "3cd832e1f061782bd9f3c919a0434f78aef26886d502091bd48234dc5600c29c",
-            "file_sha256": "590917deae857b3da49b66ec89ed273ea38e0c014e0ff85cb40510f39e84bf96",
+            "content_sha256": "730bf2b787e3e01eabc1f1aa535aff2e6f9fad79faa6db7a027b3f8424c80f65",
+            "file_sha256": "7c5229b758a3361e495170d0aa531c2d81560fe16b26455018253aff023f13ad",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-038",
             "order": 18,
             "title": "প্রথম খণ্ড / সপ্তদশ পরিচ্ছেদ",
-            "content_sha256": "47f08e6d0530302d7730c131189a974caa674519e59bbce799cd7f84566e5cec",
-            "file_sha256": "ede0bca83cd1c0a424b217565d608c4c0e41f001057cc30d6ee263ab20d2d977",
+            "content_sha256": "f6d0b10f9ef728cd50aa4046093b98429084d26c2831b1333ac6ac63a0999d39",
+            "file_sha256": "efbdff776a13eafe1b5fb72169f4202d9848f37ee9c7c494a0e5952fe24c0c4e",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-039",
             "order": 19,
             "title": "প্রথম খণ্ড / অষ্টাদশ পরিচ্ছেদ",
-            "content_sha256": "dbbf7cf142a952c57fa31207a46c6553e7e0a8062a5c98e56c45b447835481f6",
-            "file_sha256": "1628d120f1fbedf044233e51ffc5c49d0c0f22c39144fa7b69de71c09562a396",
+            "content_sha256": "a63ed167ad8fd3726171bbf49ce8e20b358e97e78ced0a5e0c0759970a57c227",
+            "file_sha256": "abf42f27c0ff5b5a140908de137addf5dae2dafed7a990e10c321af3e50f4ef0",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-040",
             "order": 20,
             "title": "প্রথম খণ্ড / ঊনবিংশ পরিচ্ছেদ",
-            "content_sha256": "ac5293a129dbc04a9b383b75c17a32096d2a9e5dcef4bf75d174098a32257f78",
-            "file_sha256": "1564666c24c971c556ce5ca72325cf8be29e8f73984209b47d33b41aa43dadfd",
+            "content_sha256": "8fa32c22969489306c433eb6c558a0a93aa10084271f4e530e0417895f374991",
+            "file_sha256": "dd75659e0d562126155e459b1f32cf5a880bd1a66e9b0c9a793688cef1945a46",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-041",
             "order": 21,
             "title": "প্রথম খণ্ড / বিংশ পরিচ্ছেদ",
-            "content_sha256": "4b31dad1cff994faf38a56bb250855ca4574fb99aa14c8602485737bf99a7f6f",
-            "file_sha256": "ac9dd9589e28ddd2179c663d98a795d936d688e736bdff3c9c42730d38ba0b85",
+            "content_sha256": "ce97299ec688c7dd07108d8bdd5305e48e7ee34bcadd581c13e02c6d8e487d61",
+            "file_sha256": "ae9283fd56d203ed729df63bec000e05ae2b600695eda65cca03fc21c2c9aee0",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-042",
             "order": 22,
             "title": "প্রথম খণ্ড / একবিংশ পরিচ্ছেদ",
-            "content_sha256": "f5e78828a7e652b0a96f8aaccff0ee1c72d4d1656a2cc0f2adc65312c6bb4cb9",
-            "file_sha256": "2ae21504f389394b57beeda2158b4d768244a576af934f8fb1aa311597cf8cd6",
+            "content_sha256": "3ba4de2348df8ef77a7e2b1ea96e7e4c75e41b31f19a178f2d474ee1fe3a729c",
+            "file_sha256": "adf93bcfdca0a1bc50c7b3d78aec8b85bdf7c602d2297f30ec7efefddd21f6ac",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-045",
             "order": 23,
             "title": "প্রথম খণ্ড / দ্বাবিংশ পরিচ্ছেদ",
-            "content_sha256": "74b6009ec077626cdab7b0f377067bd69abc975488124ca855a6154d624111b8",
-            "file_sha256": "0d2bdf6b0125df331a8d1fc9ebb8e3de6efb106c7998f643a697dcc34c562b74",
+            "content_sha256": "f89c1c06eff4826ae238549bfa603d195bdeee0bf14b8c734aa448b71b72d695",
+            "file_sha256": "64774b16e7c873b5fce7fdcf6030c9520c9619f3f9617a2b6ecfb0d73fd1cbea",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-044",
             "order": 24,
             "title": "প্রথম খণ্ড / ত্রয়োবিংশ পরিচ্ছেদ",
-            "content_sha256": "a49350d0f2d05d57c322e303ef81553a0909ee797051b9b2a52a83a73777b369",
-            "file_sha256": "2107eab439f6ee190fb5a71105898c15e39b6fa44ea7e01ab992f3efdbfb2571",
+            "content_sha256": "d2cdfd49349895d3ff3ae721b18560df4d11413b4ff41111f78bd520fbc21516",
+            "file_sha256": "2da3b4e9162a30a96c1873ca1bf948c3a49c62274b0f83b34b9032df56e21290",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-043",
             "order": 25,
             "title": "প্রথম খণ্ড / চতুর্ব্বিংশ পরিচ্ছেদ",
-            "content_sha256": "da1f29dbb0cdda472d8f136f75888981d46ee63958d71b62bf7a76fbe2186ef8",
-            "file_sha256": "f8b993acb4e3eac9f10d4d03e9364e0c24d70299d5a45ed323ff73e0bf365aef",
+            "content_sha256": "592fa23f3add19063e2b7bd024eb76967a80604d877a8d72e4d341caeca22f12",
+            "file_sha256": "d3639c347b534318de031ded97c7575ba56cd5a255b0b734afb756169a0e329d",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-046",
             "order": 26,
             "title": "প্রথম খণ্ড / পঞ্চবিংশ পরিচ্ছেদ",
-            "content_sha256": "ae63680b84b25f2c40ea1242a422c80605d5005eea86cd1cf0d30a3f51126c6d",
-            "file_sha256": "2f1e615a1d2a0d7499753eabdc600101481552c104d92a1fe68120bbb460cb63",
+            "content_sha256": "d1373bad15e66dccad31ae285b97b315d05945c287d664bee2c2da07aabb3b0f",
+            "file_sha256": "c27e75b4622a518426029493b7b6c3a80ba408e0fa50041427940bdb68a560b8",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-002",
             "order": 27,
             "title": "দ্বিতীয় খণ্ড / প্রথম পরিচ্ছেদ",
-            "content_sha256": "62a7bd2b2fbeab622a89c3c77d3452b72da505cc4600f68b0f59cef0585cfbdf",
-            "file_sha256": "95046039b7b0e88f8717f88d1e84073cbe7324ffd1d95aff8451658449727778",
+            "content_sha256": "7c6e2ca55b5601e9d2dd4fe4b60cbd628dc6c2ceb7b23d3c1fadf603ec7eedcf",
+            "file_sha256": "d0ca5b18a9cf784e8696057172d829c010d7a0e7ee9319957a2c46d64b248fb6",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-003",
             "order": 28,
             "title": "দ্বিতীয় খণ্ড / দ্বিতীয় পরিচ্ছেদ",
-            "content_sha256": "8999e78bea5bbc1715d3b404fe66972ca64dcc52c3363cead8f1a1d68bf53aa6",
-            "file_sha256": "ee7f41a336b9d8191a7f5d4f9ce34f20f31208610921ccf7b985f20e1768c2ca",
+            "content_sha256": "399c0920c95ab77beae4a9e1cab5be6e266f1cadb1a961deea54269e57217d53",
+            "file_sha256": "53d1296c1e2e7eb597b0cb922b161a0ec91489962c7abbcc3a9797d226cf4d74",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-004",
             "order": 29,
             "title": "দ্বিতীয় খণ্ড / তৃতীয় পরিচ্ছেদ",
-            "content_sha256": "51803ed1e51cee9243de914f165f44ca5a807da278c1ecd66674fdb70bfb29dc",
-            "file_sha256": "376ef4964669d2e1a212a2283a2f7d48140a3aed2bacfc253f1c983858a8d784",
+            "content_sha256": "bcd5c042bc463a7398d3a0d708edb06854192f9f98fc00d5fc2d01df78075c0f",
+            "file_sha256": "4ea16b4e26b2dfc1e4d2c7810206207af0a385335c258d36a6e071691281f06a",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-005",
             "order": 30,
             "title": "দ্বিতীয় খণ্ড / চতুর্থ পরিচ্ছেদ",
-            "content_sha256": "72f3838d1cbddaba261d9a8cde63ba42847a79f4c17c9787eb6b6246e91ef1bb",
-            "file_sha256": "800a4f3ea255dfabce9cbaacc4773f7c17eee222aea4f7112de8f1061a5fd161",
+            "content_sha256": "0afa26d6ba29efe57bf0e7522f66da9e006ccfad0b1569b9c753b815453911e6",
+            "file_sha256": "53dc985d24b00616bcf3e11d7429fdc2ef461a19270418dcf27a408a4b394b84",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-006",
             "order": 31,
             "title": "দ্বিতীয় খণ্ড / পঞ্চম পরিচ্ছেদ",
-            "content_sha256": "16d0ade8edd5ccb731ab891c1eb404830ed1db98aeae6c9638043b4fa7354205",
-            "file_sha256": "754fc9c66a6c886f67125fe9029f3b031ce41c3522252807f686485c0b2db69d",
+            "content_sha256": "859a7e932f27a25da6e81d3d2190d156a26d698bbe3506b4a2b8b84e267b055f",
+            "file_sha256": "cd4db0c6096a7f37d12f748ae569316f704c806e957817dd4b68c1b7a4d2893d",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-007",
             "order": 32,
             "title": "দ্বিতীয় খণ্ড / ষষ্ঠ পরিচ্ছেদ",
-            "content_sha256": "da42e1657ded85becb87e39af5e4b16f0e8e3effefb4f5996eba29af50f9dae6",
-            "file_sha256": "6fb26464befa2c512b77ea1224c9d8db69cd4217e3c2829ba28d8da8feb7da17",
+            "content_sha256": "dc761dcca7e21a60cb9af4de0c31e326a421bd62faa3d1f9703d2a11f83414fd",
+            "file_sha256": "1d5ef53de68e74d13d61a25fe126ea7486060ca402e8fad0f86577e08030a12a",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-008",
             "order": 33,
             "title": "দ্বিতীয় খণ্ড / সপ্তম পরিচ্ছেদ",
-            "content_sha256": "8681e5423a52394efbeda8661b2469ae4238a6e184aa0edd345784b3835c23a8",
-            "file_sha256": "f9f1edbafd9df2c5c58d05834fcf2294583bd62d9317d731b6aa9eb0fff7ee6c",
+            "content_sha256": "c1ebe9e59913dde6e3f90289b2de21e14373701cfb3535c15210d8f996df9c5a",
+            "file_sha256": "07b94e0105edf1d4075e96aa3dea076085d606f6927ae3fde3becc575041c9df",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-009",
             "order": 34,
             "title": "দ্বিতীয় খণ্ড / অষ্টম পরিচ্ছেদ",
-            "content_sha256": "c89a7d28d4c96db68638ce603621d1d2fafe4281b9495061427c160f4647c098",
-            "file_sha256": "5d8cd9d79979416c575750b974b6a79514c3598506e4c3ea2507d143b9a36a4f",
+            "content_sha256": "ca590b69ea58a8887e092dbe8e1e6ed44ab6cddeb12801c78681c45cf94584ca",
+            "file_sha256": "8463263f0a2a9097bf0b690ef386227c1554e76b32716f6fb083818813db76bc",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-010",
             "order": 35,
             "title": "দ্বিতীয় খণ্ড / নবম পরিচ্ছেদ",
-            "content_sha256": "81d2ad0a6c9393b8833495fcfe50c8174200d0b6d380e17e37b55203646f69ba",
-            "file_sha256": "68fb4c945f1888b5e9b7c89cef4cd1bed5a35101bd59c2b334ff6489a35c4987",
+            "content_sha256": "008d0e42d0b6607fd87e461d33835d84c8e08271de8b5398a52013949d839ade",
+            "file_sha256": "4027edf614030305d02f92b0776c32a2055cc0cf45dedfd3e3134d83d12377ab",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-011",
             "order": 36,
             "title": "দ্বিতীয় খণ্ড / দশম পরিচ্ছেদ",
-            "content_sha256": "c6db07ed430da96abd916c1962df0fac54128f5750609376df95855d846dd514",
-            "file_sha256": "2bbcb63eafdd83ed7cac705b8561ae66ccfd5efd3461945db4d210d394740340",
+            "content_sha256": "417d97c653786e1678d7fe3ba97556b77809f6980c95fcaca9d1b20d681c0e2c",
+            "file_sha256": "e824f88e6475feeddb50c46e1da63ab29c52181f4118f49e986e37cfe0e92303",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-012",
             "order": 37,
             "title": "দ্বিতীয় খণ্ড / একাদশ পরিচ্ছেদ",
-            "content_sha256": "3bf991ed07e0df0f5067571735a541ff43994c87c89e948f1dc5bcbc5624ac4d",
-            "file_sha256": "b0c15d9b7226e6e7a2301bb3add4997f112a7f1734b46cde9c4ec14053ab1bf0",
+            "content_sha256": "249b9896f085c42127cd291f5e27d728a801cd0c0ab07325991430e08149e514",
+            "file_sha256": "ea9113e011cb06df0836e29c82a2aaebb0a00c5558caf8093ace0ddfedbda97e",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-013",
             "order": 38,
             "title": "দ্বিতীয় খণ্ড / দ্বাদশ পরিচ্ছেদ",
-            "content_sha256": "4a2ff0d4a9ae67693da268dfbbc137ef4c104369294d0730f4075e8d8ed9e094",
-            "file_sha256": "0d38bb339af5f074bf435f77b018cd0019b112f2c74fbc5d828bc9996ed75457",
+            "content_sha256": "e939af5bbae60c319617d55b6ffdec0b0426506c240e52768372389cea211cac",
+            "file_sha256": "86a08ee3a14f4a69055dfe6809c78736076648779a71c1e2e450a0cd4df36d33",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-014",
             "order": 39,
             "title": "দ্বিতীয় খণ্ড / ত্রয়োদশ পরিচ্ছেদ",
-            "content_sha256": "e1e00fd5f2d43f5fa435bec6cc8eb1dd23324845bb0c550f992ed7470a673a23",
-            "file_sha256": "de8e6b831eeecd48768b194be0dc7ae46f48142b587d033a9665e0b9ad2623d7",
+            "content_sha256": "e7a8851ffe9a641979db8d92325d9942780a0053ab5da8030dced4f8566d9dc4",
+            "file_sha256": "584e3157eafa8f25f7fb2dbe159892334433cbcee721597342fbf9ee7932cb2f",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-015",
             "order": 40,
             "title": "দ্বিতীয় খণ্ড / চতুর্দ্দশ পরিচ্ছেদ",
-            "content_sha256": "7172991ca8724b3c65528a3f639ecdfffd48a6ad77cbeaeb6e75b6abf9a1275e",
-            "file_sha256": "4c7cec5385fe6effde893e5aaf79d79ec83d5ae096478d52f45d19b71f9b5eba",
+            "content_sha256": "34f5e75907de9e89c50ea5e78212b6e8d615eb963555d836ede4da18c04fbf20",
+            "file_sha256": "6c55dba9e481d7c3ff582f0f7f66ab67f40235dbf4e5a6ad94fa91f694943375",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-016",
             "order": 41,
             "title": "দ্বিতীয় খণ্ড / পঞ্চদশ পরিচ্ছেদ",
-            "content_sha256": "aef5dec1d14c4ec4c6537668fe5becbc06234ba47cb6ba94a0ce83af92b71708",
-            "file_sha256": "a11054fd9a353fccf7d08a5cec87ca8b853263e90960912b2e5c9c1715e2b5de",
+            "content_sha256": "175dbf98f76d87d8e746580f62b2b4eb9bd9e54bd752f315a38134cedfede043",
+            "file_sha256": "6dcd66273402756b41ea361a174c48386357406e5f85c4a3218070552a04257a",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-017",
             "order": 42,
             "title": "দ্বিতীয় খণ্ড / ষোড়শ পরিচ্ছেদ",
-            "content_sha256": "bb99c718c9dcaababf0363209fe8c1a9de2436f036e5ee61169576ca4cb6ff3e",
-            "file_sha256": "e975715c75e5fd8eb7e0f4fd3e9e7eac2c0f5c8459240ab43d21629c352007e4",
+            "content_sha256": "79d5a4e08e694d4f30eb2531f27046872802bfa134a7f550955f4d96633e1802",
+            "file_sha256": "b2e0c78e07d917619d71075ff04a48f37ce59e69b333824aaf004020aca67f5f",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-018",
             "order": 43,
             "title": "দ্বিতীয় খণ্ড / সপ্তদশ পরিচ্ছেদ",
-            "content_sha256": "5c84474f5102a2553da18f442404e54ba1d71e74dc320acd74518bbd12864e32",
-            "file_sha256": "670ddc9c2c92e108050ba2661fc25a751e1c37d60058bfcfe7febef61bc5b808",
+            "content_sha256": "363e4e59633c99c03a8ae3356c5249643001647f70d7f385d4096530290d7579",
+            "file_sha256": "2fd61515dda4a8d6faa9ec59bf31eb5ac25fd73183b704fe5a6b02f00d9293b2",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-019",
             "order": 44,
             "title": "দ্বিতীয় খণ্ড / অষ্টাদশ পরিচ্ছেদ",
-            "content_sha256": "9c3fd0251b550ec5a889f70a6b562e6c1ca6d195ab1e7e06ccbbfe56cb3ce704",
-            "file_sha256": "12a32deece75e28456c7d024047cb24a524bf82f0cd6d4246f19ac6abe4a5ee4",
+            "content_sha256": "3feee9599bed7e238e844422be7cbe085cd2445787ab2f4ab7d8de83e7e7663a",
+            "file_sha256": "4824983cf491591fb783ba9be967fb4d8d6df969bcb5ea249a8bf668537b5338",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-020",
             "order": 45,
             "title": "দ্বিতীয় খণ্ড / ঊনবিংশ পরিচ্ছেদ",
-            "content_sha256": "8848b1e35435f6e20efd843a9f21897489af29dffb99ef79cf1cf15abd18feaf",
-            "file_sha256": "d9b1696a5c424171efbcdf758e587a5e16c717c675520f24737899ce553af74e",
+            "content_sha256": "45586fc47c5f80e7a2f582414decbf5176429c437723db1c1629b2db39ae37ed",
+            "file_sha256": "b17e1d5bc6ac9bf039e5a730f7c7eaadd0a3e70b8ed8147e6e2da1682dfce417",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-021",
             "order": 46,
             "title": "দ্বিতীয় খণ্ড / বিংশ পরিচ্ছেদ",
-            "content_sha256": "9bc6dba9e5717853121bd3fdaa76c3150816557014cd9c185497f563c9c376f4",
-            "file_sha256": "a66b35ea5a64976e062cc7d8a6c05279d2bb2364e05f3b8ad0510f153065c0fc",
+            "content_sha256": "1a73965cdb8e47c7a3ad4519813c525d518c6be91c8e0d4b83077e9962c27a1d",
+            "file_sha256": "2736ec36d48565351cff69dc9d70331de211d38125538adbc3ce3b3c4c733ec5",
             "declared_hash_matches": true
           }
         ]
@@ -1805,10 +1659,17 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "EXACT_SOURCE_COMPARISON_REQUIRED",
-        "current_source_paragraph_comparison": "DIFFERENT_OR_MULTICHAPTER_SOURCE_REQUIRES_COMPARISON"
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "chapters_verified": 46,
+        "artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json"
       },
-      "noncover_status": "MULTICHAPTER_EXACT_EDITION_RECONCILIATION_REQUIRED"
+      "noncover_status": "LOCAL_IN_TEXT_CLEARANCE_COMPLETE_RUNTIME_ACTIVATION_HELD",
+      "canonical_source_sha256": "77503ec5daf5f8d9d567d7ecf6543abbfd727658818391cc1c20d54d5627cbff",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Production rights registry and runtime activation separately held"
+      ],
+      "local_rights_decision": "ACCEPTED"
     },
     {
       "slug": "book-0986aeb7e3",
@@ -1817,15 +1678,15 @@
       "identity": {
         "source_sha256": "f3d11b36d1ca572a7fbae5e7e765afe4f834c6c5a4d60a1ec83bfd84c33d0eb6",
         "declared_content_sha256": "e4f1997b2afb99d713363043c730084c26f66421856dcefc2e8f9e9dbad74d13",
-        "content_two_newlines_sha256": "33d523d47ed2037b94b1dee44bf8a074ccb662de0e051223c6efd33e20844dff",
-        "content_one_newline_sha256": "33d523d47ed2037b94b1dee44bf8a074ccb662de0e051223c6efd33e20844dff",
+        "content_two_newlines_sha256": "adc335cf0ab77780d10c8e1c8535d7acae90cafbc38ffd4767d85414b58e7c4f",
+        "content_one_newline_sha256": "adc335cf0ab77780d10c8e1c8535d7acae90cafbc38ffd4767d85414b58e7c4f",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "হৈমন্তী",
-            "content_sha256": "33d523d47ed2037b94b1dee44bf8a074ccb662de0e051223c6efd33e20844dff",
-            "file_sha256": "216dfd58922a9c572fbeaf75e6430e1cb88f93d83ca5cb16dab4fc16e6036582",
+            "content_sha256": "adc335cf0ab77780d10c8e1c8535d7acae90cafbc38ffd4767d85414b58e7c4f",
+            "file_sha256": "f7349c1ee66806ba02a9043f1bb64054bfb1893e28cac5ef569cc2e5e6cd9b4b",
             "declared_hash_matches": true
           }
         ]
@@ -1908,15 +1769,21 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
         "canonical_paragraph_count": 121,
-        "source_paragraph_count": 13,
-        "exact_paragraph_ratio": 0.19402985074626866,
+        "source_paragraph_count": 121,
+        "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-0986aeb7e3-source-comparison.json",
-      "source_rendered_sha256": "3b8378ef4002376061c4a68aa57a4fadbe08faf29ed20d39f3e2458e2ad917a6",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-0986aeb7e3-final-source-comparison.json",
+      "source_rendered_sha256": "bf0af5fe2c0b0b075d18c2c2b264ae70023e1f61613af0be465c4a13617a4eae",
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "f3d11b36d1ca572a7fbae5e7e765afe4f834c6c5a4d60a1ec83bfd84c33d0eb6",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ],
+      "cover_gate": "DEFERRED_OWNER_INSTRUCTION"
     },
     {
       "slug": "book-0deb35c750",
@@ -1989,7 +1856,7 @@
         "edition_identity_status": "EXACT_FACSIMILE_AND_EDITORIAL_LAYER_REVIEW_REQUIRED"
       },
       "canonical_packages_mutated": true,
-      "underlying_rights": "TITLE_FIRST_PUBLICATION_FACT_REQUIRED",
+      "underlying_rights": "LIFETIME_PUBLICATION_EVIDENCE_COMPLETE",
       "edition": "গল্পগুচ্ছ (প্রথম খণ্ড)/খাতা",
       "original_publication_evidence": null,
       "transcription_license": "CC-BY-SA-4.0",
@@ -2009,9 +1876,15 @@
         "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-0deb35c750-source-comparison.json",
-      "source_rendered_sha256": "60afafabef59f59b08c843bfbd7e2d80370c08ada580cae1ec26121482268ae1",
-      "noncover_status": "EDITION_PUBLICATION_FACT_AND_LICENCE_IMPLEMENTATION_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-0deb35c750-final-source-comparison.json",
+      "source_rendered_sha256": "903a4a4d5d906d07ef46baef868b9464c4d5184cbeecac9104c1be31881bf188",
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "81d68d7027dc2f7da5bf8a8faa40e25eb44978565615ff747af4215b396acb13",
+      "first_periodical_publication_year": "DISPUTED_NOT_INVENTED; definite lifetime book publication evidenced",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ]
     },
     {
       "slug": "book-0fbdaa730e",
@@ -2020,15 +1893,15 @@
       "identity": {
         "source_sha256": "473952a838282182f8610338ed5bbdc57a659794eb159896e99061a0963b12a7",
         "declared_content_sha256": "393ff4b22559500271456bd1769d04603d7eb3b393aed1b4d3679194024e2da5",
-        "content_two_newlines_sha256": "69f79b777c0fe3a3ca5590f5dd94fce8563a2e471ad358e7e27de95ae46da52e",
-        "content_one_newline_sha256": "69f79b777c0fe3a3ca5590f5dd94fce8563a2e471ad358e7e27de95ae46da52e",
+        "content_two_newlines_sha256": "2fb11243919995bfc3b37ff5457d06e9f673d9d8f9d54da8bac8532e4a26f055",
+        "content_one_newline_sha256": "2fb11243919995bfc3b37ff5457d06e9f673d9d8f9d54da8bac8532e4a26f055",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "গুপ্তধন",
-            "content_sha256": "69f79b777c0fe3a3ca5590f5dd94fce8563a2e471ad358e7e27de95ae46da52e",
-            "file_sha256": "c8dba1e3565b227404eb76aeba01ceefb5361ac08229aff1533107a4cec3681f",
+            "content_sha256": "2fb11243919995bfc3b37ff5457d06e9f673d9d8f9d54da8bac8532e4a26f055",
+            "file_sha256": "3b250026677a596fa67cd0db885494c6be6a408934b0c7ecd952bef0eb28dd6d",
             "declared_hash_matches": true
           }
         ]
@@ -2098,15 +1971,21 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 158,
-        "source_paragraph_count": 143,
-        "exact_paragraph_ratio": 0.9169435215946844,
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "canonical_paragraph_count": 156,
+        "source_paragraph_count": 156,
+        "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-0fbdaa730e-source-comparison.json",
-      "source_rendered_sha256": "21489e25dceae323e946fec08881ce7fd334d657f179c0b48d6a30da63bb2272",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-0fbdaa730e-final-source-comparison.json",
+      "source_rendered_sha256": "7c6d5dbf8f2ad97ee3a2c3bc4f799f48806b969f767744692127b9f915c79403",
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "473952a838282182f8610338ed5bbdc57a659794eb159896e99061a0963b12a7",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ],
+      "cover_gate": "DEFERRED_OWNER_INSTRUCTION"
     },
     {
       "slug": "book-1090573dff",
@@ -2115,15 +1994,15 @@
       "identity": {
         "source_sha256": "2a7983ee9d64179f285d4afe42a05057462f8b807292cfd52e8ae535605bb4c0",
         "declared_content_sha256": "6ed7b7e1000d05a647baef98bbbea0e3fefbef59841acdac257010703eeb88de",
-        "content_two_newlines_sha256": "05017ff20e10ee7109b97f4c09dd35dbc7bef0f3804d704fb3499bfacd736907",
-        "content_one_newline_sha256": "05017ff20e10ee7109b97f4c09dd35dbc7bef0f3804d704fb3499bfacd736907",
+        "content_two_newlines_sha256": "7a20178933ca8553258d3b17e3f7cc9d90e805561fec68841151644a937a1582",
+        "content_one_newline_sha256": "7a20178933ca8553258d3b17e3f7cc9d90e805561fec68841151644a937a1582",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "ছুটি",
-            "content_sha256": "05017ff20e10ee7109b97f4c09dd35dbc7bef0f3804d704fb3499bfacd736907",
-            "file_sha256": "1c71afa0bea7f0de3ae234196746af3b505d6779cabc95944024d0cf24a578cc",
+            "content_sha256": "7a20178933ca8553258d3b17e3f7cc9d90e805561fec68841151644a937a1582",
+            "file_sha256": "937699631a82fe35695a2930558a1a2bfdbe2879e9c10e466fdeb568a93942e6",
             "declared_hash_matches": true
           }
         ]
@@ -2194,15 +2073,21 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 72,
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "canonical_paragraph_count": 74,
         "source_paragraph_count": 74,
-        "exact_paragraph_ratio": 0.9726027397260274,
+        "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-1090573dff-source-comparison.json",
-      "source_rendered_sha256": "8b0545b2a9d197b2a08e8b17963aeadc5f6b57eb788559d644a44acf3d053e64",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-1090573dff-final-source-comparison.json",
+      "source_rendered_sha256": "4929b322b0fa99583ed175de72dcf7b69b737c53b60df46baecd64e95642d4e1",
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "2a7983ee9d64179f285d4afe42a05057462f8b807292cfd52e8ae535605bb4c0",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ],
+      "cover_gate": "DEFERRED_OWNER_INSTRUCTION"
     },
     {
       "slug": "book-2ddbed8293",
@@ -2211,15 +2096,15 @@
       "identity": {
         "source_sha256": "cdbc256917a94c371850044ac4b03a7b5d8f5de55f55dda7f09914f8e879dda6",
         "declared_content_sha256": "e084b718398439b633fa93a3e175ad2d48289d32bdc7fb2dc1523a239ba84335",
-        "content_two_newlines_sha256": "dafabb6cd468900154bca08a6d71f6f8ebe5f7302ccad153d4b4c9a438f6de99",
-        "content_one_newline_sha256": "dafabb6cd468900154bca08a6d71f6f8ebe5f7302ccad153d4b4c9a438f6de99",
+        "content_two_newlines_sha256": "74ac1205e913eabe6ce1875724c0c9868a9fedb09cc3a18bd6b4c2e304bfbeb5",
+        "content_one_newline_sha256": "74ac1205e913eabe6ce1875724c0c9868a9fedb09cc3a18bd6b4c2e304bfbeb5",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "Full Text",
-            "content_sha256": "dafabb6cd468900154bca08a6d71f6f8ebe5f7302ccad153d4b4c9a438f6de99",
-            "file_sha256": "e5bd74b8003018cefc4e7ae2d41dce8ca3af684148f4b014d9c21e2003021198",
+            "content_sha256": "74ac1205e913eabe6ce1875724c0c9868a9fedb09cc3a18bd6b4c2e304bfbeb5",
+            "file_sha256": "6c2a5feddaee36199eb8b23da5a4ea8fb3f97c35e924a7aac64459f41d494c52",
             "declared_hash_matches": true
           }
         ]
@@ -2314,15 +2199,20 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 32,
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "canonical_paragraph_count": 31,
         "source_paragraph_count": 31,
-        "exact_paragraph_ratio": 0.9841269841269841,
+        "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-2ddbed8293-source-comparison.json",
-      "source_rendered_sha256": "eb2788ca36bdd5aa198e02e9d02cbd8c7e8c8cc5e756f9394e187ddc414d902d",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-2ddbed8293-final-source-comparison.json",
+      "source_rendered_sha256": "da97ea1202d379ea11460ac308e6e111dfd75a8286524961a00ebea1b52ccb66",
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "cdbc256917a94c371850044ac4b03a7b5d8f5de55f55dda7f09914f8e879dda6",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ]
     },
     {
       "slug": "book-2e468c4990",
@@ -2331,15 +2221,15 @@
       "identity": {
         "source_sha256": "b0580e325d637dbd74661db1f98dbfff0ca27700d64a7f2420fc735629ce2337",
         "declared_content_sha256": "72aeb222d118f8f36dbe7a1648851d98e5b9a4f60988a3c8732f0cc5b7161f27",
-        "content_two_newlines_sha256": "9def1585322b7867981a24ee20cf16bb50a6bd85e0c65c930975290e9b456220",
-        "content_one_newline_sha256": "9def1585322b7867981a24ee20cf16bb50a6bd85e0c65c930975290e9b456220",
+        "content_two_newlines_sha256": "7ea410462889bee273fb5e206e2dbefd6f551c3282861aa542d772e9f321d6f8",
+        "content_one_newline_sha256": "7ea410462889bee273fb5e206e2dbefd6f551c3282861aa542d772e9f321d6f8",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "Full Text",
-            "content_sha256": "9def1585322b7867981a24ee20cf16bb50a6bd85e0c65c930975290e9b456220",
-            "file_sha256": "9b877331ed34042e50612b7366bc1da422ae85eeaadec1e5742af12ef55df8fe",
+            "content_sha256": "7ea410462889bee273fb5e206e2dbefd6f551c3282861aa542d772e9f321d6f8",
+            "file_sha256": "a88774e4139fb3e2205a0f8f4ee6afc3895409b47d8763b69c3d4f6344268bcf",
             "declared_hash_matches": true
           }
         ]
@@ -2428,32 +2318,37 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 67,
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "canonical_paragraph_count": 69,
         "source_paragraph_count": 69,
-        "exact_paragraph_ratio": 0.9705882352941176,
+        "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-2e468c4990-source-comparison.json",
-      "source_rendered_sha256": "a0b30871ea239d6efd8a021fb41d7ead56e60328e2489b2ee218bb83e38c8a72",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-2e468c4990-final-source-comparison.json",
+      "source_rendered_sha256": "c36b31958538fc09aeb5cc3d225c277e857b12f49c552da07c59423825556ed5",
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "b0580e325d637dbd74661db1f98dbfff0ca27700d64a7f2420fc735629ce2337",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ]
     },
     {
       "slug": "book-4968248842",
       "title": "বলাই",
       "author": "রবীন্দ্রনাথ ঠাকুর",
       "identity": {
-        "source_sha256": "c8c13f43f5790d3ac90b69ee2d75d6b5f04d967ab300d0214e0053862d1bad0f",
-        "declared_content_sha256": "fbb6cf013c8923df7c691e56e5dd33e9134ce73286df7869d27b7378ec85051d",
-        "content_two_newlines_sha256": "255f16f0ec9bfcb9ed769c79d178731cb5a141b3209a41b25ef7ee8d3303a8c8",
-        "content_one_newline_sha256": "255f16f0ec9bfcb9ed769c79d178731cb5a141b3209a41b25ef7ee8d3303a8c8",
+        "source_sha256": "cb3d80d5f61528dcf6532bf1eb99efe01b84417c64274196b3c2aa813f2b975b",
+        "declared_content_sha256": "8ba8be9114a9a9a8c4d0fdb6242975bfd2345b8e8e441b495c34c443ece1051b",
+        "content_two_newlines_sha256": "8ba8be9114a9a9a8c4d0fdb6242975bfd2345b8e8e441b495c34c443ece1051b",
+        "content_one_newline_sha256": "8ba8be9114a9a9a8c4d0fdb6242975bfd2345b8e8e441b495c34c443ece1051b",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "বলাই",
-            "content_sha256": "255f16f0ec9bfcb9ed769c79d178731cb5a141b3209a41b25ef7ee8d3303a8c8",
-            "file_sha256": "f29ccf4287357c1dd1f2fa540912a75fa1702091e18f4396f39441f548265209",
+            "content_sha256": "8ba8be9114a9a9a8c4d0fdb6242975bfd2345b8e8e441b495c34c443ece1051b",
+            "file_sha256": "1d5c0f29825bf205e5f9e54bab65b482a9d66fa3d8d6ad0ccd5e1487bab45808",
             "declared_hash_matches": true
           }
         ]
@@ -2518,15 +2413,19 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 30,
-        "source_paragraph_count": 30,
-        "exact_paragraph_ratio": 0.9333333333333333,
-        "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "artifact": "internal/legal/catalogue_clearance_20261002/bengali/balai-final-full-manuscript-source.json",
+        "scope": "Actual Balai scan258–261; wrong Sanskar parent mapping corrected, later1969 edition rights separately held"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-4968248842-source-comparison.json",
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-4968248842-complete-source-comparison.json",
       "source_rendered_sha256": "97e3e3f7236a360d244bd68fecbd6ef10709ae2f7b885a88c3b6b66a6c06f778",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "cb3d80d5f61528dcf6532bf1eb99efe01b84417c64274196b3c2aa813f2b975b",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ],
+      "cover_gate": "DEFERRED_OWNER_INSTRUCTION"
     },
     {
       "slug": "book-4b944e64fa",
@@ -2535,15 +2434,15 @@
       "identity": {
         "source_sha256": "daa29dda065503bfc19385c12779f2cba28f20287a07854e0356d0611f5e1538",
         "declared_content_sha256": "ae7e8fcd4e2a8230f767a61992476c887cda3b61b6cf07ddb4eb4b486bfa1820",
-        "content_two_newlines_sha256": "167da21141ab55a5ea4c17f078f3e0940d5a44d3a9fff8d17355d7c6e2bf9622",
-        "content_one_newline_sha256": "167da21141ab55a5ea4c17f078f3e0940d5a44d3a9fff8d17355d7c6e2bf9622",
+        "content_two_newlines_sha256": "3d82f16d5c93e8c7e4de437f1a22424ca511edd5e7cc305e82f4c5a1b97d7d6a",
+        "content_one_newline_sha256": "3d82f16d5c93e8c7e4de437f1a22424ca511edd5e7cc305e82f4c5a1b97d7d6a",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "একরাত্রি",
-            "content_sha256": "167da21141ab55a5ea4c17f078f3e0940d5a44d3a9fff8d17355d7c6e2bf9622",
-            "file_sha256": "1dcd8918d197b62f4a033e60574023cc2ee0de9543f7a404235fb4c8577d1317",
+            "content_sha256": "3d82f16d5c93e8c7e4de437f1a22424ca511edd5e7cc305e82f4c5a1b97d7d6a",
+            "file_sha256": "6feb9927db483a3fa60873e480d3e509b7751f4efac101abcf276eb9d46b9205",
             "declared_hash_matches": true
           }
         ]
@@ -2632,32 +2531,38 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 43,
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "canonical_paragraph_count": 45,
         "source_paragraph_count": 45,
-        "exact_paragraph_ratio": 0.9772727272727273,
+        "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-4b944e64fa-source-comparison.json",
-      "source_rendered_sha256": "97b9b439ea9079d8c062b204584639c886d5837775802420640fe414161b450d",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-4b944e64fa-final-source-comparison.json",
+      "source_rendered_sha256": "4d0f4bd2aca9004c80a7d47bec4adb7f9ea3186979e3fdf50bd333babaf8f5cd",
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "daa29dda065503bfc19385c12779f2cba28f20287a07854e0356d0611f5e1538",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ],
+      "cover_gate": "DEFERRED_OWNER_INSTRUCTION"
     },
     {
       "slug": "book-5461971092",
       "title": "মেঘ ও রৌদ্র",
       "author": "রবীন্দ্রনাথ ঠাকুর",
       "identity": {
-        "source_sha256": "208a553fc4eb8ac6e6de42a4f65a71da855d6e0ddd4b2d2259f8d15809845d16",
-        "declared_content_sha256": "35286f73e2006c6041d9fba9ef6450ae5998f3959d91d67fdf428ceca8b66402",
-        "content_two_newlines_sha256": "3e60b9f12e219a85c516fe615662ffaf0f254d13ae9b12217ceacac14b1eb89b",
-        "content_one_newline_sha256": "3e60b9f12e219a85c516fe615662ffaf0f254d13ae9b12217ceacac14b1eb89b",
+        "source_sha256": "64f24065cac61aa5366209ad4e18beea4412951fa49921d928ed1544d394335c",
+        "declared_content_sha256": "30815757cb482e262bc1a039e0db5b902149cbc4a9fbe1e0144978122353d9c5",
+        "content_two_newlines_sha256": "30815757cb482e262bc1a039e0db5b902149cbc4a9fbe1e0144978122353d9c5",
+        "content_one_newline_sha256": "30815757cb482e262bc1a039e0db5b902149cbc4a9fbe1e0144978122353d9c5",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "মেঘ ও রৌদ্র",
-            "content_sha256": "3e60b9f12e219a85c516fe615662ffaf0f254d13ae9b12217ceacac14b1eb89b",
-            "file_sha256": "547ecd15b3e7efe00649fd7b353e43f2e23296279d6717452a0be027e7fd8007",
+            "content_sha256": "30815757cb482e262bc1a039e0db5b902149cbc4a9fbe1e0144978122353d9c5",
+            "file_sha256": "14cbcdc61014a865e509b3a1aebe7496312afcaece4b9670af4f2e6b655a73fd",
             "declared_hash_matches": true
           }
         ]
@@ -2721,32 +2626,39 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 168,
-        "source_paragraph_count": 154,
-        "exact_paragraph_ratio": 0.9254658385093167,
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "canonical_paragraph_count": 167,
+        "source_paragraph_count": 167,
+        "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-5461971092-source-comparison.json",
-      "source_rendered_sha256": "aa8b01c9fad0102f1d44d4864acd2cab18f52f2207e29c480e3fa067dd2d4fcd",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-5461971092-final-source-comparison.json",
+      "source_rendered_sha256": "64f24065cac61aa5366209ad4e18beea4412951fa49921d928ed1544d394335c",
+      "noncover_status": "LOCAL_IN_TEXT_CLEARANCE_COMPLETE_RUNTIME_ACTIVATION_HELD",
+      "canonical_source_sha256": "64f24065cac61aa5366209ad4e18beea4412951fa49921d928ed1544d394335c",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Production rights registry and runtime activation separately held"
+      ],
+      "local_rights_decision": "ACCEPTED",
+      "cover_gate": "DEFERRED_OWNER_INSTRUCTION"
     },
     {
       "slug": "book-5704b31005",
       "title": "বিচারক",
       "author": "রবীন্দ্রনাথ ঠাকুর",
       "identity": {
-        "source_sha256": "79651c9122ab96a7dd31b5213fbf6158213d69eb1c8a800fe30bf5f91bc3f277",
-        "declared_content_sha256": "8055f5c411a3091c17cb0bdddff8c4d426db8acb81332b311712e4c0c9e1dc23",
-        "content_two_newlines_sha256": "0dbf2e76d4ec6abc86074b1bc87a4d6d636d36fee22d9a8bbb4c29081ab693d8",
-        "content_one_newline_sha256": "0dbf2e76d4ec6abc86074b1bc87a4d6d636d36fee22d9a8bbb4c29081ab693d8",
+        "source_sha256": "57835bba9d270aa0c3f31ee280b2ae789f0528be1adfa29815a45826e23e466b",
+        "declared_content_sha256": "c9e4ed3927535c11a5d1d5a4729f0c8a1371952a33a6e0e6d36514b3d249b089",
+        "content_two_newlines_sha256": "c9e4ed3927535c11a5d1d5a4729f0c8a1371952a33a6e0e6d36514b3d249b089",
+        "content_one_newline_sha256": "c9e4ed3927535c11a5d1d5a4729f0c8a1371952a33a6e0e6d36514b3d249b089",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "বিচারক",
-            "content_sha256": "0dbf2e76d4ec6abc86074b1bc87a4d6d636d36fee22d9a8bbb4c29081ab693d8",
-            "file_sha256": "b04ebe5a090b45348b576e0e37a6f4ce7c7b7a5a86fbc11a447158b808da9a0f",
+            "content_sha256": "c9e4ed3927535c11a5d1d5a4729f0c8a1371952a33a6e0e6d36514b3d249b089",
+            "file_sha256": "e0325632daa997c635a64d46073efbf6d8fda511635e9b4ababfa3bab79dfd5c",
             "declared_hash_matches": true
           }
         ]
@@ -2811,32 +2723,39 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 42,
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "canonical_paragraph_count": 40,
         "source_paragraph_count": 40,
-        "exact_paragraph_ratio": 0.975609756097561,
+        "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-5704b31005-source-comparison.json",
-      "source_rendered_sha256": "3eaba05ac03f7452d33c429d6aaebb0e69557795483eb936c688b2a14dde258e",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-5704b31005-final-source-comparison.json",
+      "source_rendered_sha256": "57835bba9d270aa0c3f31ee280b2ae789f0528be1adfa29815a45826e23e466b",
+      "noncover_status": "LOCAL_IN_TEXT_CLEARANCE_COMPLETE_RUNTIME_ACTIVATION_HELD",
+      "canonical_source_sha256": "57835bba9d270aa0c3f31ee280b2ae789f0528be1adfa29815a45826e23e466b",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Production rights registry and runtime activation separately held"
+      ],
+      "local_rights_decision": "ACCEPTED",
+      "cover_gate": "DEFERRED_OWNER_INSTRUCTION"
     },
     {
       "slug": "book-5aedda79fe",
       "title": "শাস্তি",
       "author": "রবীন্দ্রনাথ ঠাকুর",
       "identity": {
-        "source_sha256": "7d6e7fef47811ea27f5cf67005046a67bda3a16b1da2e4c4ae17d465b4684e75",
-        "declared_content_sha256": "7d6504abe60d1617e7e656c2ca9b3ba0c9a908e38c9f5026d1468ed777f464dd",
-        "content_two_newlines_sha256": "dd4c555a93fd84d6bd0f666a5b0f724ab18f6d7d34ae99416066ffcc98e67f51",
-        "content_one_newline_sha256": "dd4c555a93fd84d6bd0f666a5b0f724ab18f6d7d34ae99416066ffcc98e67f51",
+        "source_sha256": "8dc30655e4bd2351ddf1642819c6c85fe0cc6290dc8aba5abb652035f267db42",
+        "declared_content_sha256": "e438383f30fc659409490628baa424cb42b3c9d54e700034d958d8ee989039d4",
+        "content_two_newlines_sha256": "e438383f30fc659409490628baa424cb42b3c9d54e700034d958d8ee989039d4",
+        "content_one_newline_sha256": "e438383f30fc659409490628baa424cb42b3c9d54e700034d958d8ee989039d4",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "শাস্তি",
-            "content_sha256": "dd4c555a93fd84d6bd0f666a5b0f724ab18f6d7d34ae99416066ffcc98e67f51",
-            "file_sha256": "1710d1c8597100528ee632be10ab25c44427318bf4555cb4d46fc756655b8446",
+            "content_sha256": "e438383f30fc659409490628baa424cb42b3c9d54e700034d958d8ee989039d4",
+            "file_sha256": "7c7245bf98948f0a5dc8cc96a1472c384e05b5715df0d6c64e86ab46721ce845",
             "declared_hash_matches": true
           }
         ]
@@ -2894,7 +2813,7 @@
       },
       "canonical_packages_mutated": true,
       "underlying_rights": "LIFETIME_PUBLICATION_EVIDENCE_COMPLETE",
-      "edition": "গল্পগুচ্ছ (প্রথম খণ্ড)/শাস্তি",
+      "edition": "Katha-Chatushtay original1301/1894 sole-author Rabindranath Tagore edition",
       "original_publication_evidence": {
         "slug": "book-5aedda79fe",
         "publication_year": 1893,
@@ -2926,14 +2845,19 @@
       "audio_authorized": false,
       "source_comparison": {
         "status": "EXACT_MATCH_FORMATTING_ONLY",
-        "canonical_paragraph_count": 101,
-        "source_paragraph_count": 100,
-        "exact_paragraph_ratio": 0.9850746268656716,
-        "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
+        "scope": "Intentional original1894 edition replacement, historical variant identity preserved; not equality to oldedition",
+        "artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-5aedda79fe-original1894-edition-migration.json"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-5aedda79fe-source-comparison.json",
-      "source_rendered_sha256": "519d3c3a7cc0a60054aa100f603db6acfdf8025960179e2e0b76eb5994ef255e",
-      "noncover_status": "OBJECTIVE_SOURCE_AND_WORK_RIGHTS_COMPLETE_LICENCE_IMPLEMENTATION_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-5aedda79fe-final-source-comparison.json",
+      "source_rendered_sha256": "badc3f703bfa73662657416e919336ed1964f9d687219bd596c4e2bdf52142a8",
+      "noncover_status": "LOCAL_IN_TEXT_CLEARANCE_COMPLETE_RUNTIME_ACTIVATION_HELD",
+      "canonical_source_sha256": "8dc30655e4bd2351ddf1642819c6c85fe0cc6290dc8aba5abb652035f267db42",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Production rights registry and runtime activation separately held"
+      ],
+      "local_rights_decision": "ACCEPTED",
+      "cover_gate": "DEFERRED_OWNER_INSTRUCTION"
     },
     {
       "slug": "book-63afd5e9be",
@@ -2942,15 +2866,15 @@
       "identity": {
         "source_sha256": "5e68c5acaac3fdbf53b959032927fe034d693ef82f27cff017d78199d1467d5c",
         "declared_content_sha256": "128565a95b6a90cad6a9ee84561f38f483a33b6db875aa7a13b4084bb4e47b99",
-        "content_two_newlines_sha256": "d37de31dc44c9b8f23d559fd803aab1f4152130b0c261bf555197c99ecc86057",
-        "content_one_newline_sha256": "d37de31dc44c9b8f23d559fd803aab1f4152130b0c261bf555197c99ecc86057",
+        "content_two_newlines_sha256": "01c529fdfa9dfce7f4cfbe1cf6f8532091019ffd0987f356755caafa96eebf15",
+        "content_one_newline_sha256": "01c529fdfa9dfce7f4cfbe1cf6f8532091019ffd0987f356755caafa96eebf15",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "Full Text",
-            "content_sha256": "d37de31dc44c9b8f23d559fd803aab1f4152130b0c261bf555197c99ecc86057",
-            "file_sha256": "5d3a387d5ac6fc89b114999f767a165add9779c1c681dd7a9a29f9cfd743b40b",
+            "content_sha256": "01c529fdfa9dfce7f4cfbe1cf6f8532091019ffd0987f356755caafa96eebf15",
+            "file_sha256": "860f6e049e1ec53cfff86b206427e6cb058eb35a96266b895de2c51df1758819",
             "declared_hash_matches": true
           }
         ]
@@ -3045,15 +2969,20 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 53,
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "canonical_paragraph_count": 52,
         "source_paragraph_count": 52,
-        "exact_paragraph_ratio": 0.9904761904761905,
+        "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-63afd5e9be-source-comparison.json",
-      "source_rendered_sha256": "b878c0d36eeca253bf5825d530a927c96d5de5d835197ce322553d10675b69f0",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-63afd5e9be-final-source-comparison.json",
+      "source_rendered_sha256": "353a610711ed8ad68075746aa78e00cbd325d3209b6a45c9f8f6d005bae4f12f",
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "5e68c5acaac3fdbf53b959032927fe034d693ef82f27cff017d78199d1467d5c",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ]
     },
     {
       "slug": "book-754da4eab8",
@@ -3062,15 +2991,15 @@
       "identity": {
         "source_sha256": "e653edb7643d3ff6e459be5d8d07572bb172a4aaf88ad40c6e310241820e3974",
         "declared_content_sha256": "b728d67ba152884f2ba70358ebc683a57e0d5d982cf1c2893cc110fde8d9a224",
-        "content_two_newlines_sha256": "d6e3d8e1d549f99e83222524eceb580ee3cf01f4b0321f84c819d6ed16d8dc89",
-        "content_one_newline_sha256": "d6e3d8e1d549f99e83222524eceb580ee3cf01f4b0321f84c819d6ed16d8dc89",
+        "content_two_newlines_sha256": "3df32a2645f82e70db984a4fb39e39d3193a65146d89c2f40b791a64c9bedef9",
+        "content_one_newline_sha256": "3df32a2645f82e70db984a4fb39e39d3193a65146d89c2f40b791a64c9bedef9",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "Full Text",
-            "content_sha256": "d6e3d8e1d549f99e83222524eceb580ee3cf01f4b0321f84c819d6ed16d8dc89",
-            "file_sha256": "530ca9a31d9eb2b3fb1752cfeec26a79d4f12126144d189696c2f5ccb0ac15d8",
+            "content_sha256": "3df32a2645f82e70db984a4fb39e39d3193a65146d89c2f40b791a64c9bedef9",
+            "file_sha256": "792ccaa6a088345f00a2f69bcd46da8749989dd35dfe05eff64662685e749e7c",
             "declared_hash_matches": true
           }
         ]
@@ -3165,15 +3094,20 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 52,
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "canonical_paragraph_count": 51,
         "source_paragraph_count": 51,
-        "exact_paragraph_ratio": 0.9902912621359223,
+        "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-754da4eab8-source-comparison.json",
-      "source_rendered_sha256": "c8cd71cb85a23333a75bd75905851f3433d81100c60f997827fe9e0247d9a896",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-754da4eab8-final-source-comparison.json",
+      "source_rendered_sha256": "a725da9a7a1c60a86e99ff4083b1de503f966dddb85793245d7b572f93a860b0",
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "e653edb7643d3ff6e459be5d8d07572bb172a4aaf88ad40c6e310241820e3974",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ]
     },
     {
       "slug": "book-827fdc7aee",
@@ -3182,15 +3116,15 @@
       "identity": {
         "source_sha256": "73789e5480cf2f077ad75c01ed713e5f350480f5e493d4886d4a1f8cabc22f2a",
         "declared_content_sha256": "d06687a9cc39eaae8bb09cd5273c9a0047606893924392c225fa1db72a50863b",
-        "content_two_newlines_sha256": "d228351380e5eb1ce2c6c3d014b2c8f2eb9e3b0d4d1f92caeedd043c5d546b48",
-        "content_one_newline_sha256": "d228351380e5eb1ce2c6c3d014b2c8f2eb9e3b0d4d1f92caeedd043c5d546b48",
+        "content_two_newlines_sha256": "9c611a0df7145bf3e479369cb952171eefc0146816dd89901c73504e5cc7893a",
+        "content_one_newline_sha256": "9c611a0df7145bf3e479369cb952171eefc0146816dd89901c73504e5cc7893a",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "রাসমণির ছেলে",
-            "content_sha256": "d228351380e5eb1ce2c6c3d014b2c8f2eb9e3b0d4d1f92caeedd043c5d546b48",
-            "file_sha256": "db030866ce65882bbeaf082daf4dde5f7901520d0deea070fad646b0bea8f841",
+            "content_sha256": "9c611a0df7145bf3e479369cb952171eefc0146816dd89901c73504e5cc7893a",
+            "file_sha256": "4f4159e2ef57e6e2e1c7c96f1a2f81d0f27286979fe326d6dd1e506d9ec1d44d",
             "declared_hash_matches": true
           }
         ]
@@ -3273,32 +3207,38 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 195,
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "canonical_paragraph_count": 196,
         "source_paragraph_count": 196,
-        "exact_paragraph_ratio": 0.9872122762148338,
+        "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-827fdc7aee-source-comparison.json",
-      "source_rendered_sha256": "d6e66a71ab9879f44d111c4e120b881cf2302df4bb4faa8d31e323bfe9c3ebb4",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-827fdc7aee-final-source-comparison.json",
+      "source_rendered_sha256": "5107ae3612a0a322670ff9f339774891add35b4e2c6a773eb2e63839bd373aef",
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "73789e5480cf2f077ad75c01ed713e5f350480f5e493d4886d4a1f8cabc22f2a",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ],
+      "cover_gate": "DEFERRED_OWNER_INSTRUCTION"
     },
     {
       "slug": "book-88ded9b47c",
       "title": "মানভঞ্জন",
       "author": "রবীন্দ্রনাথ ঠাকুর",
       "identity": {
-        "source_sha256": "08e48da6bb28ab20a543f422d867bb4c8df3f4ea3c108590144e58aa3be3566b",
-        "declared_content_sha256": "938feb779bee24998461bf4da3daf77e9823cc429867f64807859a30ef84fb6f",
-        "content_two_newlines_sha256": "8df7cdf4a398bc3f1c5a9b185af9e995dffb0cf841ddee74b7068a33e10e0bc0",
-        "content_one_newline_sha256": "8df7cdf4a398bc3f1c5a9b185af9e995dffb0cf841ddee74b7068a33e10e0bc0",
+        "source_sha256": "cdae6110a68862a54c7a0155459d97158c254463eaee3169388ca9cea0b7737e",
+        "declared_content_sha256": "1e68e249392f67ed03f4d451f533bb6b175f6f20d73020abc246afd82bf8ff93",
+        "content_two_newlines_sha256": "1e68e249392f67ed03f4d451f533bb6b175f6f20d73020abc246afd82bf8ff93",
+        "content_one_newline_sha256": "1e68e249392f67ed03f4d451f533bb6b175f6f20d73020abc246afd82bf8ff93",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "মানভঞ্জন",
-            "content_sha256": "8df7cdf4a398bc3f1c5a9b185af9e995dffb0cf841ddee74b7068a33e10e0bc0",
-            "file_sha256": "80e6c3bfc6f1548d2d88bce92f7096b121c5b149817b77ff7a68a6407a6b484e",
+            "content_sha256": "1e68e249392f67ed03f4d451f533bb6b175f6f20d73020abc246afd82bf8ff93",
+            "file_sha256": "478f9f98d39397d525dbfc947b819c7a508e2f93b7f60aba2bf3e6464a33359a",
             "declared_hash_matches": true
           }
         ]
@@ -3381,32 +3321,39 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 64,
-        "source_paragraph_count": 61,
-        "exact_paragraph_ratio": 0.96,
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "canonical_paragraph_count": 61,
+        "source_paragraph_count": 62,
+        "exact_paragraph_ratio": 0.975609756097561,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-88ded9b47c-source-comparison.json",
-      "source_rendered_sha256": "1846dcbbe976d84db7f7c9210d7bcf62db4bebcdcced7f8c390c239aa64e9990",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-88ded9b47c-final-source-comparison.json",
+      "source_rendered_sha256": "cdae6110a68862a54c7a0155459d97158c254463eaee3169388ca9cea0b7737e",
+      "noncover_status": "LOCAL_IN_TEXT_CLEARANCE_COMPLETE_RUNTIME_ACTIVATION_HELD",
+      "canonical_source_sha256": "cdae6110a68862a54c7a0155459d97158c254463eaee3169388ca9cea0b7737e",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Production rights registry and runtime activation separately held"
+      ],
+      "local_rights_decision": "ACCEPTED",
+      "cover_gate": "DEFERRED_OWNER_INSTRUCTION"
     },
     {
       "slug": "book-95624627d5",
       "title": "মধ্যবর্তিনী",
       "author": "রবীন্দ্রনাথ ঠাকুর",
       "identity": {
-        "source_sha256": "12e68ccb1f58102856edb86d24bb700eb18bd1bda6dee53b8711895d5d73b6a8",
-        "declared_content_sha256": "b17c4f3d8928510f6a9012b3e9e9333e8bdefa213da3a51b87f1ab17e2c5d6b5",
-        "content_two_newlines_sha256": "1237ca4ab5922ee04c464dd69b6d0e75b0da59fc17f977b8453d7cbc1265d67a",
-        "content_one_newline_sha256": "1237ca4ab5922ee04c464dd69b6d0e75b0da59fc17f977b8453d7cbc1265d67a",
+        "source_sha256": "04a23577d9da238ff5e156deacc7777f1c5f427515c39cbb045cef113c0e3736",
+        "declared_content_sha256": "15ae2ea405a14c49965d03b6a329419ecb7e71297a3007be8530673587a03b06",
+        "content_two_newlines_sha256": "15ae2ea405a14c49965d03b6a329419ecb7e71297a3007be8530673587a03b06",
+        "content_one_newline_sha256": "15ae2ea405a14c49965d03b6a329419ecb7e71297a3007be8530673587a03b06",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "মধ্যবর্তিনী",
-            "content_sha256": "1237ca4ab5922ee04c464dd69b6d0e75b0da59fc17f977b8453d7cbc1265d67a",
-            "file_sha256": "e96ab6b2cdb938aaf6a2206a1c9b13073322887d20510a1ef6d14a928344843e",
+            "content_sha256": "15ae2ea405a14c49965d03b6a329419ecb7e71297a3007be8530673587a03b06",
+            "file_sha256": "3b0bffbddad6044c7deb3108f00f10404127c3ea1a9d2aa31991916b6b1d02e6",
             "declared_hash_matches": true
           }
         ]
@@ -3464,7 +3411,7 @@
       },
       "canonical_packages_mutated": true,
       "underlying_rights": "LIFETIME_PUBLICATION_EVIDENCE_COMPLETE",
-      "edition": "গল্পগুচ্ছ (প্রথম খণ্ড)/মধ্যবর্তিনী",
+      "edition": "Katha-Chatushtay original1301/1894 sole-author Rabindranath Tagore edition",
       "original_publication_evidence": {
         "slug": "book-95624627d5",
         "publication_year": 1893,
@@ -3496,14 +3443,19 @@
       "audio_authorized": false,
       "source_comparison": {
         "status": "EXACT_MATCH_FORMATTING_ONLY",
-        "canonical_paragraph_count": 101,
-        "source_paragraph_count": 101,
-        "exact_paragraph_ratio": 1.0,
-        "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
+        "scope": "Intentional original1894 edition replacement, historical variant identity preserved; not equality to oldedition",
+        "artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-95624627d5-original1894-edition-migration.json"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-95624627d5-source-comparison.json",
-      "source_rendered_sha256": "3ee368962dbcdd11b7405b836e4ea51150a682123699a2389bd55ba77c6f331c",
-      "noncover_status": "OBJECTIVE_SOURCE_AND_WORK_RIGHTS_COMPLETE_LICENCE_IMPLEMENTATION_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-95624627d5-final-source-comparison.json",
+      "source_rendered_sha256": "5bc1a46371785392e2daccb4df006062b152206e8e8c98f50a21974df6965203",
+      "noncover_status": "LOCAL_IN_TEXT_CLEARANCE_COMPLETE_RUNTIME_ACTIVATION_HELD",
+      "canonical_source_sha256": "04a23577d9da238ff5e156deacc7777f1c5f427515c39cbb045cef113c0e3736",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Production rights registry and runtime activation separately held"
+      ],
+      "local_rights_decision": "ACCEPTED",
+      "cover_gate": "DEFERRED_OWNER_INSTRUCTION"
     },
     {
       "slug": "book-9a7f771921",
@@ -3512,15 +3464,15 @@
       "identity": {
         "source_sha256": "3f3c089d1d1e2d5101210bbee5e39208f311bb193b92d2c80a085675f64a96ea",
         "declared_content_sha256": "374e251418df4bbbde6b24fd9f42ebd845ecdf565870ac05cdd807a720884bde",
-        "content_two_newlines_sha256": "509de3c2c334561eba92a7dd1746ccb7a39494800509cbc91efd7a808128f88a",
-        "content_one_newline_sha256": "509de3c2c334561eba92a7dd1746ccb7a39494800509cbc91efd7a808128f88a",
+        "content_two_newlines_sha256": "f674d6c5f677e7aff20b734ad982bcf347d7fd0fdee13dfad55810f5d217a7e9",
+        "content_one_newline_sha256": "f674d6c5f677e7aff20b734ad982bcf347d7fd0fdee13dfad55810f5d217a7e9",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "কর্মফল",
-            "content_sha256": "509de3c2c334561eba92a7dd1746ccb7a39494800509cbc91efd7a808128f88a",
-            "file_sha256": "a84a0e6fc400f8703fa38c5b1c549d85143760667b79534079f78cf958a4588d",
+            "content_sha256": "f674d6c5f677e7aff20b734ad982bcf347d7fd0fdee13dfad55810f5d217a7e9",
+            "file_sha256": "184f7a8915d7450ef5a74e81bfcf8d112dcdd27410a276476fe87115cfe5b969",
             "declared_hash_matches": true
           }
         ]
@@ -3584,32 +3536,38 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 523,
-        "source_paragraph_count": 519,
-        "exact_paragraph_ratio": 0.9923224568138196,
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "canonical_paragraph_count": 520,
+        "source_paragraph_count": 520,
+        "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-9a7f771921-source-comparison.json",
-      "source_rendered_sha256": "25a2dabed2d665bc99573bcf2a3055265f5324b875cc6eb4110072ec87f615ab",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-9a7f771921-final-source-comparison.json",
+      "source_rendered_sha256": "7572b11c53976f9a440c4d8170388b58e7a14d720cae249db2408175159bc279",
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "3f3c089d1d1e2d5101210bbee5e39208f311bb193b92d2c80a085675f64a96ea",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ],
+      "cover_gate": "DEFERRED_OWNER_INSTRUCTION"
     },
     {
       "slug": "book-a23625bf36",
       "title": "সমাপ্তি",
       "author": "রবীন্দ্রনাথ ঠাকুর",
       "identity": {
-        "source_sha256": "08cf726a1c9f2acef4bb94a1228d4a5c22fe429d501b623d3a23853e1d645343",
-        "declared_content_sha256": "039054ed00bbbcfd67cf830434e41f40f2e05b93223400c16045883d1acc980f",
-        "content_two_newlines_sha256": "ef308dc5c4a4af5e47b4238db35bc11acbb7c8a50089c904f876398227583905",
-        "content_one_newline_sha256": "ef308dc5c4a4af5e47b4238db35bc11acbb7c8a50089c904f876398227583905",
+        "source_sha256": "5b6c9df28dc526a4343b46f86e967ba064689454de7df7e8b0436cca39fb4f33",
+        "declared_content_sha256": "70d901082eb8e6a475caa558d83601f509a61847b9260ffc1c95d2db935d9ae5",
+        "content_two_newlines_sha256": "70d901082eb8e6a475caa558d83601f509a61847b9260ffc1c95d2db935d9ae5",
+        "content_one_newline_sha256": "70d901082eb8e6a475caa558d83601f509a61847b9260ffc1c95d2db935d9ae5",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "সমাপ্তি",
-            "content_sha256": "ef308dc5c4a4af5e47b4238db35bc11acbb7c8a50089c904f876398227583905",
-            "file_sha256": "92cf425cb2535fe2a1fd1ac30760abac0174c7ed87a265342db9e0500456c06c",
+            "content_sha256": "70d901082eb8e6a475caa558d83601f509a61847b9260ffc1c95d2db935d9ae5",
+            "file_sha256": "5473e0d9a3d647a6fd2848eca5714eb256d5b0e47db8e503d6f424e47ea86533",
             "declared_hash_matches": true
           }
         ]
@@ -3667,7 +3625,7 @@
       },
       "canonical_packages_mutated": true,
       "underlying_rights": "LIFETIME_PUBLICATION_EVIDENCE_COMPLETE",
-      "edition": "গল্পগুচ্ছ (প্রথম খণ্ড)/সমাপ্তি",
+      "edition": "Katha-Chatushtay original1301/1894 sole-author Rabindranath Tagore edition",
       "original_publication_evidence": {
         "slug": "book-a23625bf36",
         "title_alias": "delightful story Samapti",
@@ -3698,15 +3656,20 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 149,
-        "source_paragraph_count": 149,
-        "exact_paragraph_ratio": 0.9865771812080537,
-        "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "scope": "Intentional original1894 edition replacement, historical variant identity preserved; not equality to oldedition",
+        "artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-a23625bf36-original1894-edition-migration.json"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-a23625bf36-source-comparison.json",
-      "source_rendered_sha256": "c72cfc0fa37266fb3d1154f32f36b3126814baebb7e17453ec20b5618b6ca36b",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-a23625bf36-final-source-comparison.json",
+      "source_rendered_sha256": "e552fb84671605d9667a1ce1d5a5fbb341aa29853a81eb90f48431161987c782",
+      "noncover_status": "LOCAL_IN_TEXT_CLEARANCE_COMPLETE_RUNTIME_ACTIVATION_HELD",
+      "canonical_source_sha256": "5b6c9df28dc526a4343b46f86e967ba064689454de7df7e8b0436cca39fb4f33",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Production rights registry and runtime activation separately held"
+      ],
+      "local_rights_decision": "ACCEPTED",
+      "cover_gate": "DEFERRED_OWNER_INSTRUCTION"
     },
     {
       "slug": "book-a4a369483f",
@@ -3715,15 +3678,15 @@
       "identity": {
         "source_sha256": "72f4422557a1cc965b07fde5fe64d27a2764ede21e3a13582b7b953745927efc",
         "declared_content_sha256": "161ed4395559eb73370b8550089542e789ea906f1451a5315535eaef9173ddcd",
-        "content_two_newlines_sha256": "0a2e376c16d281797c890eec9910998db636774f8842469db6a1bf1859956997",
-        "content_one_newline_sha256": "0a2e376c16d281797c890eec9910998db636774f8842469db6a1bf1859956997",
+        "content_two_newlines_sha256": "2791f6f8c912c34fdfa49276a0737dd3f9868a339e016ac6913ef155a32d5a5e",
+        "content_one_newline_sha256": "2791f6f8c912c34fdfa49276a0737dd3f9868a339e016ac6913ef155a32d5a5e",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "সম্পত্তি সমর্পণ",
-            "content_sha256": "0a2e376c16d281797c890eec9910998db636774f8842469db6a1bf1859956997",
-            "file_sha256": "97cfc7471fe7816a6373539a3ee680ecb135186cfcc7279233a6cc9fa2f7b1a5",
+            "content_sha256": "2791f6f8c912c34fdfa49276a0737dd3f9868a339e016ac6913ef155a32d5a5e",
+            "file_sha256": "aaf3d6f93fd7faf8909e1ab50ced53a7f9ff465639d94bd74f52a20b8768cbf4",
             "declared_hash_matches": true
           }
         ]
@@ -3794,15 +3757,21 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
         "canonical_paragraph_count": 95,
         "source_paragraph_count": 95,
-        "exact_paragraph_ratio": 0.9789473684210527,
+        "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-a4a369483f-source-comparison.json",
-      "source_rendered_sha256": "54790a1cc3879ae0805932d85f1ed94f7248cb5c6ae652e173b2bb8e34f21439",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-a4a369483f-final-source-comparison.json",
+      "source_rendered_sha256": "7071f1e06464a8782e07529fe26d202b4cd08ed6e2924383e94b9c936f746fff",
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "72f4422557a1cc965b07fde5fe64d27a2764ede21e3a13582b7b953745927efc",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ],
+      "cover_gate": "DEFERRED_OWNER_INSTRUCTION"
     },
     {
       "slug": "book-a74c1a1451",
@@ -3811,15 +3780,15 @@
       "identity": {
         "source_sha256": "f5679559b9a30f93368556f83d22f64501d6be7ffab6138c7c889fea22fca731",
         "declared_content_sha256": "8cb3e87c1abe91327409b50bd85d7362169277ac440fc7c0cabc7112b6ace2af",
-        "content_two_newlines_sha256": "be0295b8f495a65b8779388a3e1b3f9fc1287b8d561974ce3ac231e9061849c6",
-        "content_one_newline_sha256": "be0295b8f495a65b8779388a3e1b3f9fc1287b8d561974ce3ac231e9061849c6",
+        "content_two_newlines_sha256": "a44a51eac95a9f28493c4b267ba8ec59c9fc5b35b4038de3f9cdb9fc4728eb71",
+        "content_one_newline_sha256": "a44a51eac95a9f28493c4b267ba8ec59c9fc5b35b4038de3f9cdb9fc4728eb71",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "Full Text",
-            "content_sha256": "be0295b8f495a65b8779388a3e1b3f9fc1287b8d561974ce3ac231e9061849c6",
-            "file_sha256": "f58dc37b80f787222d00ca5471a8e20346f0ad118e3369fb8d793e3b2c1a7a5e",
+            "content_sha256": "a44a51eac95a9f28493c4b267ba8ec59c9fc5b35b4038de3f9cdb9fc4728eb71",
+            "file_sha256": "1885319d222e72eda98a5b36fe2b3ee0497d39d24f519c4949f4421e8b925ea4",
             "declared_hash_matches": true
           }
         ]
@@ -3908,15 +3877,20 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 100,
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "canonical_paragraph_count": 101,
         "source_paragraph_count": 101,
-        "exact_paragraph_ratio": 0.9950248756218906,
+        "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-a74c1a1451-source-comparison.json",
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-a74c1a1451-final-source-comparison.json",
       "source_rendered_sha256": "02f95654db8b91cf5f113fb7fe3beb38901b1944abb861d4bbd01dc72c47e452",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "f5679559b9a30f93368556f83d22f64501d6be7ffab6138c7c889fea22fca731",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ]
     },
     {
       "slug": "book-ac5a71075e",
@@ -3925,15 +3899,15 @@
       "identity": {
         "source_sha256": "b03136231d5436607a7b3c3ff298b1037d5061724e1042cf8fab24eb3bf94460",
         "declared_content_sha256": "d9e2dab4904d87a1d516f1c668364f12d17087f781a572d8ee01c0e23cccc830",
-        "content_two_newlines_sha256": "4790aaef767305f7ef7d4058c659f287a7ffbae496145ea6c9017ea2dc54e91e",
-        "content_one_newline_sha256": "4790aaef767305f7ef7d4058c659f287a7ffbae496145ea6c9017ea2dc54e91e",
+        "content_two_newlines_sha256": "90cd4381bb0e8f3ba2d3d0a8f5cbbe86b5db07c1ee1b480e57c1e13a1c0f0723",
+        "content_one_newline_sha256": "90cd4381bb0e8f3ba2d3d0a8f5cbbe86b5db07c1ee1b480e57c1e13a1c0f0723",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "পোস্টমাস্টার",
-            "content_sha256": "4790aaef767305f7ef7d4058c659f287a7ffbae496145ea6c9017ea2dc54e91e",
-            "file_sha256": "63be572c5f889d4813f6f701a58168df52151131336ddb66afd481bbc059fcde",
+            "content_sha256": "90cd4381bb0e8f3ba2d3d0a8f5cbbe86b5db07c1ee1b480e57c1e13a1c0f0723",
+            "file_sha256": "e7eecfe8074ed5cf4d984513df3557d28ba28db30b9fc7be0bff8074ba81047a",
             "declared_hash_matches": true
           }
         ]
@@ -4028,32 +4002,38 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 34,
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "canonical_paragraph_count": 33,
         "source_paragraph_count": 33,
-        "exact_paragraph_ratio": 0.9850746268656716,
+        "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-ac5a71075e-source-comparison.json",
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-ac5a71075e-final-source-comparison.json",
       "source_rendered_sha256": "bb6a8016b4c2776da3e3ec626af779afd31b05281bb6962784a0139216b1ef8b",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "b03136231d5436607a7b3c3ff298b1037d5061724e1042cf8fab24eb3bf94460",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ],
+      "cover_gate": "DEFERRED_OWNER_INSTRUCTION"
     },
     {
       "slug": "book-b9d47814a8",
       "title": "নিশীথে",
       "author": "রবীন্দ্রনাথ ঠাকুর",
       "identity": {
-        "source_sha256": "6aa5605fb8527c091dc73ddc3ff7f857cd7d3e046e8da03750a9178a82f27b75",
-        "declared_content_sha256": "ee1ad578c70de41e5726395741bdbd61d5adbb058737b6c6c1feea2feb1484c2",
-        "content_two_newlines_sha256": "1b2b340fb76990b99de7531f1ffe3b6edef56c172048e7b0d587c9271db8e2b2",
-        "content_one_newline_sha256": "1b2b340fb76990b99de7531f1ffe3b6edef56c172048e7b0d587c9271db8e2b2",
+        "source_sha256": "83b8640bd78b76a076eb4ce3bf0309d8d7eb78d21b593305a807b95b5e70d06e",
+        "declared_content_sha256": "70bcf62c643f1c905d7a53ef72b5d180286249750cee6c237ac510b55931a27e",
+        "content_two_newlines_sha256": "70bcf62c643f1c905d7a53ef72b5d180286249750cee6c237ac510b55931a27e",
+        "content_one_newline_sha256": "70bcf62c643f1c905d7a53ef72b5d180286249750cee6c237ac510b55931a27e",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "নিশীথে",
-            "content_sha256": "1b2b340fb76990b99de7531f1ffe3b6edef56c172048e7b0d587c9271db8e2b2",
-            "file_sha256": "a57fc2254642fd19a8e8f04b7e8dc947ec5ef01fd715b6f4f18e1ca1557690ef",
+            "content_sha256": "70bcf62c643f1c905d7a53ef72b5d180286249750cee6c237ac510b55931a27e",
+            "file_sha256": "6b9c1ebc176883edf68c4d1fbc2e37f245d877a78926116abef880d434152391",
             "declared_hash_matches": true
           }
         ]
@@ -4118,32 +4098,39 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 94,
-        "source_paragraph_count": 92,
-        "exact_paragraph_ratio": 0.967741935483871,
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "canonical_paragraph_count": 92,
+        "source_paragraph_count": 93,
+        "exact_paragraph_ratio": 0.9837837837837838,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-b9d47814a8-source-comparison.json",
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-b9d47814a8-final-source-comparison.json",
       "source_rendered_sha256": "83b8640bd78b76a076eb4ce3bf0309d8d7eb78d21b593305a807b95b5e70d06e",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "noncover_status": "LOCAL_IN_TEXT_CLEARANCE_COMPLETE_RUNTIME_ACTIVATION_HELD",
+      "canonical_source_sha256": "83b8640bd78b76a076eb4ce3bf0309d8d7eb78d21b593305a807b95b5e70d06e",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Production rights registry and runtime activation separately held"
+      ],
+      "local_rights_decision": "ACCEPTED",
+      "cover_gate": "DEFERRED_OWNER_INSTRUCTION"
     },
     {
       "slug": "book-bfc51280b3",
       "title": "অতিথি",
       "author": "রবীন্দ্রনাথ ঠাকুর",
       "identity": {
-        "source_sha256": "be2d2b6e792ddbcbdba81a9ee2e10eb3d06bdd8832e10eb2719b72ad3ac776d3",
-        "declared_content_sha256": "2602659bd47e8258b6bf8505d09bb87b168e18c7069b85a3b98bcf38c2c31553",
-        "content_two_newlines_sha256": "032ff5d70e9acb1d78f47b8379b0f515faac56c5605fa1620093f10030f9cb56",
-        "content_one_newline_sha256": "032ff5d70e9acb1d78f47b8379b0f515faac56c5605fa1620093f10030f9cb56",
+        "source_sha256": "8f1f2a961acb409204fb156ee641849b58bd464564b5fa07e4d7d8ed197c75b0",
+        "declared_content_sha256": "7325737829098f327b54cc74400d74a0bf53ebdfe1ab20f69daebdf52ebcef62",
+        "content_two_newlines_sha256": "7325737829098f327b54cc74400d74a0bf53ebdfe1ab20f69daebdf52ebcef62",
+        "content_one_newline_sha256": "7325737829098f327b54cc74400d74a0bf53ebdfe1ab20f69daebdf52ebcef62",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "অতিথি",
-            "content_sha256": "032ff5d70e9acb1d78f47b8379b0f515faac56c5605fa1620093f10030f9cb56",
-            "file_sha256": "fa2be96ebf569e4913521af46613fbb242d66fcd7b1e563edd492fe7612e2505",
+            "content_sha256": "7325737829098f327b54cc74400d74a0bf53ebdfe1ab20f69daebdf52ebcef62",
+            "file_sha256": "8244194ed83e17c9aede6267928e7cd619b253590691c8381d78f4ce9db9a3ab",
             "declared_hash_matches": true
           }
         ]
@@ -4225,15 +4212,22 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 85,
-        "source_paragraph_count": 81,
-        "exact_paragraph_ratio": 0.9759036144578314,
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "canonical_paragraph_count": 82,
+        "source_paragraph_count": 82,
+        "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-bfc51280b3-source-comparison.json",
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-bfc51280b3-final-source-comparison.json",
       "source_rendered_sha256": "8f1f2a961acb409204fb156ee641849b58bd464564b5fa07e4d7d8ed197c75b0",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "noncover_status": "LOCAL_IN_TEXT_CLEARANCE_COMPLETE_RUNTIME_ACTIVATION_HELD",
+      "canonical_source_sha256": "8f1f2a961acb409204fb156ee641849b58bd464564b5fa07e4d7d8ed197c75b0",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Production rights registry and runtime activation separately held"
+      ],
+      "local_rights_decision": "ACCEPTED",
+      "cover_gate": "DEFERRED_OWNER_INSTRUCTION"
     },
     {
       "slug": "book-c307a57868",
@@ -4320,15 +4314,21 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
         "canonical_paragraph_count": 110,
-        "source_paragraph_count": 108,
-        "exact_paragraph_ratio": 0.981651376146789,
+        "source_paragraph_count": 109,
+        "exact_paragraph_ratio": 0.9863013698630136,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-c307a57868-source-comparison.json",
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-c307a57868-final-source-comparison.json",
       "source_rendered_sha256": "9737ca73c31c94a465eec97e245f9d4c6542be6907da5833073553d42959761d",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "0fefda3a0973af62047a64c30c531984d9cdc7efbeabd46a2d97fe7a47f5f7af",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ],
+      "cover_gate": "DEFERRED_OWNER_INSTRUCTION"
     },
     {
       "slug": "book-c7f3ce526c",
@@ -4440,9 +4440,14 @@
         "exact_paragraph_ratio": 0.9781021897810219,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-c7f3ce526c-source-comparison.json",
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-c7f3ce526c-final-source-comparison.json",
       "source_rendered_sha256": "53a42deffdd1bb2c3411a0689b51f9a6f4adaa34ab812b0ea8318906bb7025df",
-      "noncover_status": "OBJECTIVE_SOURCE_AND_WORK_RIGHTS_COMPLETE_LICENCE_IMPLEMENTATION_REQUIRED"
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "e6482b11503e888e9e9a2e5233cce17d2476164d8894433b520ecad24db04a05",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ]
     },
     {
       "slug": "book-c85323409f",
@@ -4554,9 +4559,15 @@
         "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-c85323409f-source-comparison.json",
-      "source_rendered_sha256": "8d237b47862a2f068fbc79ccc1d779c1fb902b644c58d164edbf334da1153f58",
-      "noncover_status": "OBJECTIVE_SOURCE_AND_WORK_RIGHTS_COMPLETE_LICENCE_IMPLEMENTATION_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-c85323409f-final-source-comparison.json",
+      "source_rendered_sha256": "f787424c896572af043d147b8da0d1bf19ccb3de2c6e2518f50b55a2f17385f8",
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "a3a670cd1107f63ab6b8df62ff5077d6245e4cfdcb772db39b78ca9e40c5a392",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ],
+      "cover_gate": "DEFERRED_OWNER_INSTRUCTION"
     },
     {
       "slug": "book-d19e96859f",
@@ -4565,15 +4576,15 @@
       "identity": {
         "source_sha256": "3c184ef8918fee4686c3ac93e17c12d7108617099c70425948cdd7cbf36b68d5",
         "declared_content_sha256": "021462a46f1c87fb984bd68c0d90ff022123dacc236e876ee97baee87ff065fa",
-        "content_two_newlines_sha256": "3c184ef8918fee4686c3ac93e17c12d7108617099c70425948cdd7cbf36b68d5",
-        "content_one_newline_sha256": "3c184ef8918fee4686c3ac93e17c12d7108617099c70425948cdd7cbf36b68d5",
+        "content_two_newlines_sha256": "013a0c4f7ac3e2e4fdbe80732c951c728d6d8e231e278a1ce856a66c87925c77",
+        "content_one_newline_sha256": "013a0c4f7ac3e2e4fdbe80732c951c728d6d8e231e278a1ce856a66c87925c77",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "Full Text",
-            "content_sha256": "3c184ef8918fee4686c3ac93e17c12d7108617099c70425948cdd7cbf36b68d5",
-            "file_sha256": "26d10f7e8eecae197da20254ff5b5be5ff1c083a55051c1e343259505550d845",
+            "content_sha256": "013a0c4f7ac3e2e4fdbe80732c951c728d6d8e231e278a1ce856a66c87925c77",
+            "file_sha256": "0a71d45f03c68baac94c556637e0f5876d83bb03487d10b0efd49f1f2450b39f",
             "declared_hash_matches": true
           }
         ]
@@ -4668,15 +4679,20 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 28,
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "canonical_paragraph_count": 27,
         "source_paragraph_count": 27,
-        "exact_paragraph_ratio": 0.9818181818181818,
+        "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-d19e96859f-source-comparison.json",
-      "source_rendered_sha256": "34e5374e3ec73357f82f38d5c481277a02a2a8f6aed552d6377c7634cbadb4dd",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-d19e96859f-final-source-comparison.json",
+      "source_rendered_sha256": "7b44c95f570779259cee13fbab332480d119073885e797ecb3b6916ba414c2be",
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "3c184ef8918fee4686c3ac93e17c12d7108617099c70425948cdd7cbf36b68d5",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ]
     },
     {
       "slug": "book-d2fe532e1c",
@@ -4788,26 +4804,31 @@
         "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-d2fe532e1c-source-comparison.json",
-      "source_rendered_sha256": "cf0960a0286aad1ce966c0e98100a72c94eb4ea83c54205f23de0a7329b57c6e",
-      "noncover_status": "OBJECTIVE_SOURCE_AND_WORK_RIGHTS_COMPLETE_LICENCE_IMPLEMENTATION_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-d2fe532e1c-final-source-comparison.json",
+      "source_rendered_sha256": "847ed03dbe705364821f423afb663e0d7d84c6a8dd193c0a7b64ce0ebbadb989",
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "a23c3d63f7dcaff1ac404b313a056def8dc39813360642fe883a618a10aa7d64",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ]
     },
     {
       "slug": "book-edfcf810c5",
       "title": "ক্ষুধিত পাষাণ",
       "author": "রবীন্দ্রনাথ ঠাকুর",
       "identity": {
-        "source_sha256": "2591896f7fd678dafae394be36f7c60f39f240d5ac74e5806b5570982b5d96d7",
-        "declared_content_sha256": "12bc09cce1802df3c03d94ec8dee67e3feedc7fe754887b8e6cdb3acce02e614",
-        "content_two_newlines_sha256": "2591896f7fd678dafae394be36f7c60f39f240d5ac74e5806b5570982b5d96d7",
-        "content_one_newline_sha256": "2591896f7fd678dafae394be36f7c60f39f240d5ac74e5806b5570982b5d96d7",
+        "source_sha256": "4e4f92326d92da407a564d61c67f18583795ccc176de35e04eeaa05652017c78",
+        "declared_content_sha256": "d9249c44925bc65221d731727c5f35e557a13144feabe843f649d3dd5d249a34",
+        "content_two_newlines_sha256": "d9249c44925bc65221d731727c5f35e557a13144feabe843f649d3dd5d249a34",
+        "content_one_newline_sha256": "d9249c44925bc65221d731727c5f35e557a13144feabe843f649d3dd5d249a34",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "ক্ষুধিত পাষাণ",
-            "content_sha256": "2591896f7fd678dafae394be36f7c60f39f240d5ac74e5806b5570982b5d96d7",
-            "file_sha256": "41b21a65fe7d0be19bd30e7ad632849a72f28356a441ee258845249ba3b3ca67",
+            "content_sha256": "d9249c44925bc65221d731727c5f35e557a13144feabe843f649d3dd5d249a34",
+            "file_sha256": "63927f1257960f8a4651063b641feaed09eabb8f60da080e26d854456057f706",
             "declared_hash_matches": true
           }
         ]
@@ -4890,32 +4911,38 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 57,
-        "source_paragraph_count": 60,
-        "exact_paragraph_ratio": 0.9743589743589743,
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "canonical_paragraph_count": 59,
+        "source_paragraph_count": 59,
+        "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-edfcf810c5-source-comparison.json",
-      "source_rendered_sha256": "674e1b3b6f647c31f1d3cf47463a50b7d74101c059462664f342341bef21c2c3",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-edfcf810c5-final-source-comparison.json",
+      "source_rendered_sha256": "4e4f92326d92da407a564d61c67f18583795ccc176de35e04eeaa05652017c78",
+      "noncover_status": "LOCAL_IN_TEXT_CLEARANCE_COMPLETE_RUNTIME_ACTIVATION_HELD",
+      "canonical_source_sha256": "4e4f92326d92da407a564d61c67f18583795ccc176de35e04eeaa05652017c78",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Production rights registry and runtime activation separately held"
+      ],
+      "local_rights_decision": "ACCEPTED"
     },
     {
       "slug": "book-ef193ffc52",
       "title": "দিদি",
       "author": "রবীন্দ্রনাথ ঠাকুর",
       "identity": {
-        "source_sha256": "7c41b5ea9b6dd62a8cd4828141cda63cd9c86803357268bc25c411554d182b33",
-        "declared_content_sha256": "a3390f2b02edbd02d8b0ad171173488bb8f6fa6649a94886f4a0b92b5324ac36",
-        "content_two_newlines_sha256": "43885e55f61b67583a029f7f4f7ac99848d68abdef5e0e95228b384ccb2a2f9f",
-        "content_one_newline_sha256": "43885e55f61b67583a029f7f4f7ac99848d68abdef5e0e95228b384ccb2a2f9f",
+        "source_sha256": "dc05ca7f4ee113326288f0ba21f2fd9c9cc09854a1d2936e45a829b8482c45a6",
+        "declared_content_sha256": "7423a95d1cc99f56c7156f038feebfc630a97d777908ef0d778d5ca0cd833175",
+        "content_two_newlines_sha256": "7423a95d1cc99f56c7156f038feebfc630a97d777908ef0d778d5ca0cd833175",
+        "content_one_newline_sha256": "7423a95d1cc99f56c7156f038feebfc630a97d777908ef0d778d5ca0cd833175",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "দিদি",
-            "content_sha256": "43885e55f61b67583a029f7f4f7ac99848d68abdef5e0e95228b384ccb2a2f9f",
-            "file_sha256": "8b8ca0a72cafb888a0fe00f95e487cb4fb6ec3b68b51617e109b3a996645a025",
+            "content_sha256": "7423a95d1cc99f56c7156f038feebfc630a97d777908ef0d778d5ca0cd833175",
+            "file_sha256": "45de1e01f29af4a0553878359330b6552f7fb2f7fe3d84cff4652d8c64d4b43e",
             "declared_hash_matches": true
           }
         ]
@@ -4980,15 +5007,22 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 88,
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "canonical_paragraph_count": 85,
         "source_paragraph_count": 85,
-        "exact_paragraph_ratio": 0.9826589595375722,
+        "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-ef193ffc52-source-comparison.json",
-      "source_rendered_sha256": "77c43aa9fb77d2db54d34702fb3214acc2c0c546afa679d629c1108bdcc1dcae",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-ef193ffc52-final-source-comparison.json",
+      "source_rendered_sha256": "dc05ca7f4ee113326288f0ba21f2fd9c9cc09854a1d2936e45a829b8482c45a6",
+      "noncover_status": "LOCAL_IN_TEXT_CLEARANCE_COMPLETE_RUNTIME_ACTIVATION_HELD",
+      "canonical_source_sha256": "dc05ca7f4ee113326288f0ba21f2fd9c9cc09854a1d2936e45a829b8482c45a6",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Production rights registry and runtime activation separately held"
+      ],
+      "local_rights_decision": "ACCEPTED",
+      "cover_gate": "DEFERRED_OWNER_INSTRUCTION"
     },
     {
       "slug": "book-f5d593e1f4",
@@ -4997,15 +5031,15 @@
       "identity": {
         "source_sha256": "1c6c50661763d7497213b1041ae809c1f63a1262387eacdbc0b0a3348fe8e350",
         "declared_content_sha256": "0fbaa0cb48c5a35910ebee2891591d340c1e8b4f6e7e37b3c4af1070fe4827eb",
-        "content_two_newlines_sha256": "1c6c50661763d7497213b1041ae809c1f63a1262387eacdbc0b0a3348fe8e350",
-        "content_one_newline_sha256": "1c6c50661763d7497213b1041ae809c1f63a1262387eacdbc0b0a3348fe8e350",
+        "content_two_newlines_sha256": "94aa1e3f4446f201905cd31429d5ee1e61eecc227df548ddaf6ad6539843260e",
+        "content_one_newline_sha256": "94aa1e3f4446f201905cd31429d5ee1e61eecc227df548ddaf6ad6539843260e",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "Full Text",
-            "content_sha256": "1c6c50661763d7497213b1041ae809c1f63a1262387eacdbc0b0a3348fe8e350",
-            "file_sha256": "eae6c1b5730045e027b42151dc0177d2d54dc941ed6fbce8f9bc03cb6fca2e6c",
+            "content_sha256": "94aa1e3f4446f201905cd31429d5ee1e61eecc227df548ddaf6ad6539843260e",
+            "file_sha256": "9017532e16fb8b4df257d2e6a9cc921edf760724673efbb63defb65a5cfe7ff0",
             "declared_hash_matches": true
           }
         ]
@@ -5100,15 +5134,20 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 30,
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "canonical_paragraph_count": 29,
         "source_paragraph_count": 29,
-        "exact_paragraph_ratio": 0.9830508474576272,
+        "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-f5d593e1f4-source-comparison.json",
-      "source_rendered_sha256": "0f032bfb67c5fa0acb24ccdc4a15fb0a4f953214fe414faffd962539247a80d8",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-f5d593e1f4-final-source-comparison.json",
+      "source_rendered_sha256": "9313c8dc71e6233cf797e4db7e1d6b13c045d9b7dc3af12e90a01675871f17b8",
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "1c6c50661763d7497213b1041ae809c1f63a1262387eacdbc0b0a3348fe8e350",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ]
     },
     {
       "slug": "book-fbdf2991ab",
@@ -5117,31 +5156,39 @@
       "identity": {
         "source_sha256": "339d2f719c65f10dce5f2dc37515789c4f1165969aaabe0089d28f138c240617",
         "declared_content_sha256": "dd75d3c98cd7eb156fa5c5fb6e0464d89e0a487692e860b4992975dd39e824de",
-        "content_two_newlines_sha256": "c302bdc3c8afe6199fbdec18c213f6bfa0d8ac7c066e50e4bb669ca32a55fd5d",
-        "content_one_newline_sha256": "4c54921efc2b9f73e8d2b6a12e1ceb549fde9894f82942ddbc2555305a5d5477",
+        "content_two_newlines_sha256": "18ec97c45e457f8bdb395b1046ca0adb4a59f37af82384cb14529b72e835ce48",
+        "content_one_newline_sha256": "fce3f4fcf62162476e52cc6ece926b2f73fbef02d9e872dc2da055f37be28501",
         "chapters": [
           {
-            "id": "chapter-001",
+            "id": "chapter-004",
             "order": 1,
+            "title": "১",
+            "content_sha256": "3831067c86b55d694a4dc55e260b970b5cbaa427d8aaf094a1ceb8a6ec7eb913",
+            "file_sha256": "305732819d20eabd3b5716dc72021f9d04ae10e0d0d36a1f8191281ba9dde52c",
+            "declared_hash_matches": true
+          },
+          {
+            "id": "chapter-001",
+            "order": 2,
             "title": "২",
             "content_sha256": "806d5cd3027f2861cee9f2fb7e841420b58f2d1522cd1e2128706046f0fcf501",
-            "file_sha256": "0adb55b41cd19312a65663bf2279de7bcfd6162879cf10d656c3ae2625293c27",
+            "file_sha256": "783bfdf4a092bba8efebf87a3cd5308a4f7f66f337b7842ef1281542d9348149",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-002",
-            "order": 2,
+            "order": 3,
             "title": "৩",
             "content_sha256": "535b7fa7163881470ac79322dcf5cb09c379108a6117040537358d8ff950dc16",
-            "file_sha256": "17e2753b0af003a631d69325833b49e78e63251c343db0ffbd7490a5ac41736e",
+            "file_sha256": "1e995a5637977c58457638f40c5bc8079914d1499f6cadacd01c711152ce286d",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-003",
-            "order": 3,
+            "order": 4,
             "title": "৪",
             "content_sha256": "1367b22486044fa3f4959acaea64a9d294d28a17004d927009e37065dd82e30b",
-            "file_sha256": "ce7b9ff66178a1ac4f3c9a2800e718398cadacf16d664f669dbb0e39f9b3ea3d",
+            "file_sha256": "243fe67a4f5f8ee91973c7990ce7bb9dc0e59034e28e202c41f1f0b54fef501a",
             "declared_hash_matches": true
           }
         ]
@@ -5230,15 +5277,21 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "SOURCE_RECONCILIATION_REQUIRED",
-        "canonical_paragraph_count": 32,
-        "source_paragraph_count": 41,
-        "exact_paragraph_ratio": 0.8767123287671232,
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "canonical_paragraph_count": 38,
+        "source_paragraph_count": 38,
+        "exact_paragraph_ratio": 1.0,
         "folding": "NFC, BOM/zero-width space removal and whitespace only; no letters/punctuation changed"
       },
-      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-fbdf2991ab-source-comparison.json",
-      "source_rendered_sha256": "bdb9cc486b09774bdc5077649941238cd92b464e05e5b52292375a602fbb7c58",
-      "noncover_status": "SOURCE_TEXT_REPAIR_REQUIRED"
+      "comparison_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-fbdf2991ab-final-source-comparison.json",
+      "source_rendered_sha256": "8cedfb34d9d5efe7c573c4eb6f8fb8d6f9bcbbf0e81ad28a6bbb28f0d3015ddc",
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "339d2f719c65f10dce5f2dc37515789c4f1165969aaabe0089d28f138c240617",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ],
+      "cover_gate": "DEFERRED_OWNER_INSTRUCTION"
     },
     {
       "slug": "devdas",
@@ -5247,15 +5300,15 @@
       "identity": {
         "source_sha256": "0091b1d4a93df523779db334ccc52e390a673ca7adf88fd716d954f4c0782fcb",
         "declared_content_sha256": "752b8541f36e788ddcd7265a26fd37aba89035d364e8f920414da38a72ec27af",
-        "content_two_newlines_sha256": "bc2f42bef06d86e0d32e26fb5c04bc4265db06b98db1ec1a18e2e335b3f5358a",
-        "content_one_newline_sha256": "12fc2ef2fb937acd6ce9af76d6d1ee566af6c448a7a15a17a113afe2bf8ef1f7",
+        "content_two_newlines_sha256": "14477848f49b5cdeb93ffbe8e909a53372c022bcd93ab638c86aad6e1aec9dfb",
+        "content_one_newline_sha256": "5272477bb61ab88532d13106fb83920bc9087aaafe4e8e3000c0588134a8d0d3",
         "chapters": [
           {
             "id": "chapter-001",
             "order": 1,
             "title": "প্রথম পরিচ্ছেদ",
-            "content_sha256": "0f40d942647f7e31a313a057fd75644016c64d663c2360cf50a1d2437371c23e",
-            "file_sha256": "cff3a9a8b51d5db016b81031d7171c3b5f0aa31eed476a3a90b06e1ee32b5641",
+            "content_sha256": "09927b7c9d1292d93de6b75858e61e598b115d1975f92a53b9f155f1b47ac95b",
+            "file_sha256": "5468c1b95059c58c17434d99a7bc534b639038222b0206eed9d897e2530ad374",
             "declared_hash_matches": true
           },
           {
@@ -5374,8 +5427,8 @@
             "id": "chapter-016",
             "order": 16,
             "title": "ষোড়শ পরিচ্ছেদ",
-            "content_sha256": "e520e25a494f262ae7bb399a2387b85d0320412a7688f303d43007382653fbf8",
-            "file_sha256": "4f98282acac036096cb674b9a5701e9ce62c439e84cab38a7da994f6dc007e08",
+            "content_sha256": "6ee15e4f40e94adddf275a31842795bfaba28f72d701385d3bede440833db1e8",
+            "file_sha256": "5d5989eb1125cc836ec34ed70620cd8723ca5a9bbc24bca85e88360ffe9944bb",
             "declared_hash_matches": true
           }
         ]
@@ -5469,20 +5522,27 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "EXACT_SOURCE_COMPARISON_REQUIRED",
-        "current_source_paragraph_comparison": "DIFFERENT_OR_MULTICHAPTER_SOURCE_REQUIRES_COMPARISON"
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "chapters_verified": 16,
+        "artifact": "internal/legal/catalogue_clearance_20261002/bengali/devdas-multichapter-source-comparison.json"
       },
-      "noncover_status": "MULTICHAPTER_EXACT_EDITION_RECONCILIATION_REQUIRED"
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "0091b1d4a93df523779db334ccc52e390a673ca7adf88fd716d954f4c0782fcb",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ],
+      "cover_gate": "DEFERRED_OWNER_INSTRUCTION"
     },
     {
       "slug": "lokrahasya",
       "title": "লোকরহস্য",
       "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
       "identity": {
-        "source_sha256": "260381cc03347b40db669d4de39b44e36807010b662b4ca9e02e0c5ae4100711",
-        "declared_content_sha256": "c9a08ae531d9158f05f71f07f343f165d3258519fcf180316fb6ef93c2055a77",
-        "content_two_newlines_sha256": "2c2bc214485736496d17282c9c1fccd0d2f55d952889a3eacfe3737d6401df84",
-        "content_one_newline_sha256": "04d885d048988264f3d7fcd614e3ea71d46572748d97b7df136eea6434552cf7",
+        "source_sha256": "2c536fb46b7a52f42f63c702effcd971d97059c56be4a6b5d7df642b4a8cddc1",
+        "declared_content_sha256": "c6ed32e15a45ecdf03b2a20ffbea427d89a4c5992f930b00358f563019522943",
+        "content_two_newlines_sha256": "c6ed32e15a45ecdf03b2a20ffbea427d89a4c5992f930b00358f563019522943",
+        "content_one_newline_sha256": "2d7034089f0b3c8977c5e2abdcd257bf981d94f083c3911f87c4cc0ee516ca4f",
         "chapters": [
           {
             "id": "chapter-001",
@@ -5528,16 +5588,16 @@
             "id": "chapter-006",
             "order": 6,
             "title": "Chapter 6. ব্যাঘ্রাচার্য্য বৃহল্লাঙ্গুল",
-            "content_sha256": "21ae6636ae5977bfa869473d1487c3cc754587d6f26c5b57ef4339aa55e9a3f8",
-            "file_sha256": "999ef0316863a2e20f21b48741d946c80fc7970e9da354849185ab941abed876",
+            "content_sha256": "3ad29d39908abc6655d06f7e3bc0fedec9a4702f7ae3de30fba496a29410f95f",
+            "file_sha256": "9f01d9376c96e5b57728a35881c086e1573750d47aa1aa2c6c53d54cfd19fb7a",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-007",
             "order": 7,
             "title": "Chapter 7. দাম্পত্য দণ্ডবিধির আইন",
-            "content_sha256": "1f8c3ac3bb80e995200fde7c3b66c9463b541ed7f6dad23fb64cbd22af48f540",
-            "file_sha256": "6a0bce468731229bb9af7f08b320e0b8b5ca2c3ec03007d326107e8a4855ae65",
+            "content_sha256": "32c76d54e0cf04f36984a029b6e0a17dbfcc27db6dd69acf9a888be8e05db422",
+            "file_sha256": "f95ebd00c4fa1802e2159ded6b5acd42b46b3be8962b4caa1134819ac5a63755",
             "declared_hash_matches": true
           },
           {
@@ -5560,8 +5620,8 @@
             "id": "chapter-010",
             "order": 10,
             "title": "Chapter 10. বর্ষ সমালোচন",
-            "content_sha256": "763829b78e243cf507b965bf937a18242b3464ff0b67d7cff3ba24f6c4a93c4f",
-            "file_sha256": "c52695765e74627c7739fc2d174e32e0c99d899821d0d0c54a1f175c3b41b1ed",
+            "content_sha256": "d70f464f1994a2227b944d59df831eca9b2ee5c4161b66d624c26613ab487f3d",
+            "file_sha256": "24dff5389aa5b8433362c21e375c4e0a66174096abc77f60f2561e9070d894c6",
             "declared_hash_matches": true
           },
           {
@@ -5584,8 +5644,8 @@
             "id": "chapter-013",
             "order": 13,
             "title": "Chapter 13. হনুমদ্বাবুসংবাদ",
-            "content_sha256": "0d3af34ac004f154108952e71f2200b9eaeebf408fe994892b09563599f856cf",
-            "file_sha256": "150d041aeed13a1b44375055fcd20e3c32ebe4e8b02bc03783bfd7a596e68dac",
+            "content_sha256": "0c3c9292ecaf155a50c70d36adbe07fcd1073ba169bf54efd6ff63eae925edab",
+            "file_sha256": "24ec5f30bb117298dd34fdbf74a2f5a26f2bc3eaf641ee64e8c750b32ea3556a",
             "declared_hash_matches": true
           },
           {
@@ -5608,8 +5668,8 @@
             "id": "chapter-016",
             "order": 16,
             "title": "Chapter 16. পাঠভেদ",
-            "content_sha256": "79863cf99d49f3992f0294207371401efb3b6adf8a6dd8b74164cae952a2d04a",
-            "file_sha256": "8187f33b5430671c2a36679bc4755d47be4afc17053759ce94546dc00a812ebb",
+            "content_sha256": "8a596d46b799d3896bc9b5b55b50fbdccd52baf575aafaa21f9f5ad2278344a8",
+            "file_sha256": "830243efdffe85719d05d8374c66cd0ee025ecfebde308688aaa83c62153b8b2",
             "declared_hash_matches": true
           }
         ]
@@ -5690,20 +5750,27 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "EXACT_SOURCE_COMPARISON_REQUIRED",
-        "current_source_paragraph_comparison": "DIFFERENT_OR_MULTICHAPTER_SOURCE_REQUIRES_COMPARISON"
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "chapters_verified": 16,
+        "artifact": "internal/legal/catalogue_clearance_20261002/bengali/lokrahasya-multichapter-source-comparison.json"
       },
-      "noncover_status": "MULTICHAPTER_EXACT_EDITION_RECONCILIATION_REQUIRED"
+      "noncover_status": "LOCAL_IN_TEXT_CLEARANCE_COMPLETE_RUNTIME_ACTIVATION_HELD",
+      "canonical_source_sha256": "2c536fb46b7a52f42f63c702effcd971d97059c56be4a6b5d7df642b4a8cddc1",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Production rights registry and runtime activation separately held"
+      ],
+      "local_rights_decision": "ACCEPTED"
     },
     {
       "slug": "mrinalini",
       "title": "মৃণালিনী",
       "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
       "identity": {
-        "source_sha256": "10521fb1355328e87b7cd91ea6dea76b3879861447ce0f0322725f519d8fc75b",
-        "declared_content_sha256": "193c208f03b3d962982824d90e4cbf7c45d9046532f1f1fc368b50564a6d1741",
-        "content_two_newlines_sha256": "3c8a2b72cb5781b463b759f9495ee6c286f3150e5eba38800e232f06e65093d9",
-        "content_one_newline_sha256": "91a689b9f8234e440d2e79f8f5caa2e108a901a4c652255015112a3decd91698",
+        "source_sha256": "9e04c5d5b16bbd623edac1de47cd0e61f561a820cd6d7200b23450117558ee80",
+        "declared_content_sha256": "390c5936e44b799952e1e84917bca07aea7183f96880e91a6b3fc74ec7fa3560",
+        "content_two_newlines_sha256": "390c5936e44b799952e1e84917bca07aea7183f96880e91a6b3fc74ec7fa3560",
+        "content_one_newline_sha256": "d25292d7a23ff8f517643595fd221d9710bd8574e552022cd3ba8153d1a790ca",
         "chapters": [
           {
             "id": "chapter-001",
@@ -5765,8 +5832,8 @@
             "id": "chapter-008",
             "order": 8,
             "title": "Chapter 8. প্রথম খণ্ড / অষ্টম পরিচ্ছেদ",
-            "content_sha256": "37c0a316f95f279ba1efa11f5d395ef0c043159922c21c472968106f8d4947a2",
-            "file_sha256": "f96e37029b39c53c84ab1a6a96a57585e317e6425650babc3f137176da5ef949",
+            "content_sha256": "b91d92ef491b57453b6d6c2ba8e8298f4760255c8372dc20081823ce60a241ae",
+            "file_sha256": "8972ef019fd52914d7afa14c9c796ddaca5c3962f3cfa5d64e6983c01ad1dfd5",
             "declared_hash_matches": true
           },
           {
@@ -5781,8 +5848,8 @@
             "id": "chapter-010",
             "order": 10,
             "title": "Chapter 10. দ্বিতীয় খণ্ড / দ্বিতীয় পরিচ্ছেদ",
-            "content_sha256": "85c3402de2df60494e00ebea0762217f0715fd916aeb5f3f0d0ab42de2b8e7a3",
-            "file_sha256": "aa175625905ad9b39c31377ed7c0b82c6a98784bdec0c6eb83747a5715e62918",
+            "content_sha256": "52fac808abb9b1cf3f6a2b4ccacb9af208a5812e29a960e37b8dda1a19e22a67",
+            "file_sha256": "7a8e7600b03ef42044f4ba3b9d3d238618a8ec0c6f37e9312a5737bb9644f952",
             "declared_hash_matches": true
           },
           {
@@ -5797,8 +5864,8 @@
             "id": "chapter-012",
             "order": 12,
             "title": "Chapter 12. দ্বিতীয় খণ্ড / চতুর্থ পরিচ্ছেদ",
-            "content_sha256": "daeca1fa5d9bd0d87d0243d8ff6c9525c318dae0c8e4a3901fb14e85064b49e6",
-            "file_sha256": "46c598807bfb676e1fd80322a02cdcd61c9eb05218b8e69af3eeed9ada6a62b3",
+            "content_sha256": "cd605bcef13d65f39572175d6086ab7ae99f4a33e95d753da55b215ad3b3a979",
+            "file_sha256": "4bbcaa5961de436f8b828d2f8c18a4f6a2f9f2b6ea3d5a487f804fcd1f05fcc6",
             "declared_hash_matches": true
           },
           {
@@ -5901,8 +5968,8 @@
             "id": "chapter-025",
             "order": 25,
             "title": "Chapter 25. তৃতীয় খণ্ড / পঞ্চম পরিচ্ছেদ",
-            "content_sha256": "07ccd37bf1c3922a1bdf97ec4fe53c669471b10e2eb2cc226613f8132669f281",
-            "file_sha256": "98e6f7de14317a740444ab209db4cabba930c1bb0e82d7c1605183af5caa7d57",
+            "content_sha256": "acf54097a490763b6f1d85bebcd10808acdd3d2645e7a7706040cbc883f0718f",
+            "file_sha256": "c7167ef43e869b1a8532999ffd1fc4c309884b23b63e4bd698ac0cbfa74751af",
             "declared_hash_matches": true
           },
           {
@@ -6005,8 +6072,8 @@
             "id": "chapter-038",
             "order": 38,
             "title": "Chapter 38. চতুর্থ খণ্ড / অষ্টম পরিচ্ছেদ",
-            "content_sha256": "fbe93f89f4daab9d675ed45d8af42215dd8061311107e2b0a2532f6d99812b36",
-            "file_sha256": "2240c61dd3c3c85d724214369ca559ffcca273b09d5111841e9b687d28e9b01d",
+            "content_sha256": "87a86bff2900a663ddf9a4bb1f757318e7dbdca21e200085ed091ebe79d2a52f",
+            "file_sha256": "e4b6a11a6622a54864ed7323533474c20ddfa1246fbdcece33c2802d352fa845",
             "declared_hash_matches": true
           },
           {
@@ -6021,16 +6088,16 @@
             "id": "chapter-040",
             "order": 40,
             "title": "Chapter 40. চতুর্থ খণ্ড / দশম পরিচ্ছেদ",
-            "content_sha256": "3ba0914b35828f9e3e01f1384fad07d5f6fd7a9d9a97d8425509eacf3aedfa60",
-            "file_sha256": "07c6f7d255b4bac13e3e6c6da91c6a845d580313696c713ee56c226bf6740cab",
+            "content_sha256": "b8efa493bcad250f637b97ac206d3e560821b761e9034f0d18f3ded0f18c5e10",
+            "file_sha256": "96e586200967807b40059275c150b1b21236bbba1a0056bd5c6a5c61aebdd331",
             "declared_hash_matches": true
           },
           {
             "id": "chapter-041",
             "order": 41,
             "title": "Chapter 41. চতুর্থ খণ্ড / একাদশ পরিচ্ছেদ",
-            "content_sha256": "76c39a7e30b075a894ef6c1daca308d723952b4ac33d7d05c71bafde3afcd052",
-            "file_sha256": "2fc3e826fd57dbb9937684cc5b7fe2d47487ddc664cce8f920c49c496e617cd2",
+            "content_sha256": "dfa6bd81f06431453b8cc6a993330e0feec530e32e0ea009653ede59f497a4f9",
+            "file_sha256": "13ae7550cd6a951b48ea7b9b96b3e4eed4dd1af27e2d6de51c57097d7c17c62b",
             "declared_hash_matches": true
           },
           {
@@ -6226,20 +6293,27 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "EXACT_SOURCE_COMPARISON_REQUIRED",
-        "current_source_paragraph_comparison": "DIFFERENT_OR_MULTICHAPTER_SOURCE_REQUIRES_COMPARISON"
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "chapters_verified": 46,
+        "artifact": "internal/legal/catalogue_clearance_20261002/bengali/mrinalini-multichapter-source-comparison.json"
       },
-      "noncover_status": "MULTICHAPTER_EXACT_EDITION_RECONCILIATION_REQUIRED"
+      "noncover_status": "LOCAL_IN_TEXT_CLEARANCE_COMPLETE_RUNTIME_ACTIVATION_HELD",
+      "canonical_source_sha256": "9e04c5d5b16bbd623edac1de47cd0e61f561a820cd6d7200b23450117558ee80",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Production rights registry and runtime activation separately held"
+      ],
+      "local_rights_decision": "ACCEPTED"
     },
     {
       "slug": "muchiram-gurer-jibanchorit",
       "title": "মুচিরাম গুড়ের জীবনচরিত",
       "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
       "identity": {
-        "source_sha256": "733466ffdadc8f5c0172023edd5c0ba7327387d65d0c46b1b881a26e303e800a",
-        "declared_content_sha256": "dea6e37479af7c2067c5929999da22f8b2f49aeb2d0abd9741da4e7f01e6ba48",
-        "content_two_newlines_sha256": "8511c1660f17a312df1d8a7f8e27b6425599517e2d6220a1cb869d29ff1d1b43",
-        "content_one_newline_sha256": "1c144c1ef4da76f578b231e2171bd1e8597ef45fc4f00bca6feb68e545109332",
+        "source_sha256": "d88c2efe3dc6d15fb103a9df394a4dfa194a54234ca11c9c1e49d1ecca924034",
+        "declared_content_sha256": "095e2308975c18cba636058aad414a457161f5754bd6f6f282537bdaebe23801",
+        "content_two_newlines_sha256": "095e2308975c18cba636058aad414a457161f5754bd6f6f282537bdaebe23801",
+        "content_one_newline_sha256": "be95cdc5c01ff937f234d89afa1e9fb292c00fc8ad7bfec956802a194539a1b7",
         "chapters": [
           {
             "id": "chapter-001",
@@ -6349,8 +6423,8 @@
             "id": "chapter-014",
             "order": 14,
             "title": "চতুর্দ্দশ পরিচ্ছেদ",
-            "content_sha256": "886ff68b3f3a3ce35524cf1b35e78e2589ac0be752844881683b0252fd0b7afe",
-            "file_sha256": "fc8ac6f15caf087eeea66842e6347d2abb5ab73b3e15fd0be53c108f3683c0f3",
+            "content_sha256": "7e10484a0e5bd8f8595231f771062da9d1b7e0b407b5a9643a33b369a58b1a33",
+            "file_sha256": "c846cf9cbc40b330b657c9877bb307729707acc37ca6813dfa563a3e51ce3413",
             "declared_hash_matches": true
           }
         ]
@@ -6443,10 +6517,17 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "EXACT_SAME_EDITION_14_CHAPTERS_RESTORED",
-        "artifact": "internal/legal/catalogue_clearance_20261002/bengali/muchiram-fourteen-chapter-source-comparison.json"
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "chapters_verified": 14,
+        "artifact": "internal/legal/catalogue_clearance_20261002/bengali/muchiram-gurer-jibanchorit-multichapter-source-comparison.json"
       },
-      "noncover_status": "OBJECTIVE_SOURCE_AND_WORK_RIGHTS_COMPLETE_EDITORIAL_EVIDENCE_AND_LICENCE_IMPLEMENTATION_REQUIRED"
+      "noncover_status": "LOCAL_IN_TEXT_CLEARANCE_COMPLETE_RUNTIME_ACTIVATION_HELD",
+      "canonical_source_sha256": "d88c2efe3dc6d15fb103a9df394a4dfa194a54234ca11c9c1e49d1ecca924034",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Production rights registry and runtime activation separately held"
+      ],
+      "local_rights_decision": "ACCEPTED"
     },
     {
       "slug": "nishkriti",
@@ -6608,10 +6689,16 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "EXACT_SOURCE_COMPARISON_REQUIRED",
-        "current_source_paragraph_comparison": "DIFFERENT_OR_MULTICHAPTER_SOURCE_REQUIRES_COMPARISON"
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "chapters_verified": 9,
+        "artifact": "internal/legal/catalogue_clearance_20261002/bengali/nishkriti-multichapter-source-comparison.json"
       },
-      "noncover_status": "MULTICHAPTER_EXACT_EDITION_RECONCILIATION_REQUIRED"
+      "noncover_status": "SOURCE_COMPLETE_LATER_EDITION_ORIGINAL_NARRATIVE_IDENTITY_EVIDENCE_REQUIRED",
+      "canonical_source_sha256": "bc5b99f4e931e55e74ad67a6999a0c8835ca0de99b65d994761a71229546d0cd",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Exact selected later printed-edition narrative must be evidenced against original/lifetime text, or independently authored editorial/transcription additions cleared; author death alone does not bind this edition."
+      ]
     },
     {
       "slug": "pather-panchali",
@@ -6620,8 +6707,8 @@
       "identity": {
         "source_sha256": "0f3626226a1ecc776a89670b8a9e53d2a6c4ee373afab6be0fa387ae59f90c8f",
         "declared_content_sha256": "51a3175817002fb99a5cdf88b6e51819855b6c92a985558071fe1df0bde33435",
-        "content_two_newlines_sha256": "77bbc0ac1cb7c0548efb0139c13fa50252dfeff32503edb74f8ee6a857f0d751",
-        "content_one_newline_sha256": "828e1c48aedcff2feb45a4f265242fab76545e1fabae73da06b0a5c0d6d189e6",
+        "content_two_newlines_sha256": "2f652feaa37874e03a4725e6331c57bb48132f2f3c52e22a041d0e60a6482d16",
+        "content_one_newline_sha256": "ae17282ab25aa860650c8e1b1e9f390c9d9fa39b1d3180767e71b88d70af211b",
         "chapters": [
           {
             "id": "chapter-001",
@@ -6675,8 +6762,8 @@
             "id": "chapter-007",
             "order": 7,
             "title": "সপ্তম পরিচ্ছেদ",
-            "content_sha256": "9b8f07a86b2e7ad9695e31698e07427630d4db0ba5f40af9fb8ad493c8659f87",
-            "file_sha256": "61b5c1ed17727417e70c3c6cc418b2ed47990f9ce66334d258dda0be96130fa9",
+            "content_sha256": "5ff0ab04ec7b92ad5407055896c58e5171c388d33be249e6a823030b5633346c",
+            "file_sha256": "2744694c90ba564f1210534840a0b0c298628263f3c18cb5eb259cdeaa8019d5",
             "declared_hash_matches": true
           },
           {
@@ -6740,15 +6827,22 @@
       "publication_decision_workflow": "Exact evidence-bound automated acceptance may truthfully identify executor under direct owner delegation only after all objective licence/identity conditions pass; no invented human identity.",
       "audio_authorized": false,
       "source_comparison": {
-        "status": "EXACT_SOURCE_COMPARISON_REQUIRED"
+        "status": "EXACT_MATCH_FORMATTING_ONLY",
+        "chapters_verified": 12,
+        "artifact": "internal/legal/catalogue_clearance_20261002/bengali/pather-panchali-multichapter-source-comparison.json"
       },
-      "noncover_status": "MULTICHAPTER_EXACT_EDITION_RECONCILIATION_REQUIRED"
+      "noncover_status": "INCOMPLETE_EDITION_SOURCE_EXTERNAL_HOLD",
+      "canonical_source_sha256": "0f3626226a1ecc776a89670b8a9e53d2a6c4ee373afab6be0fa387ae59f90c8f",
+      "license_notice_bound": true,
+      "remaining_gates": [
+        "Current12sourcechapters exact; historical1952seventh-edition35chapterTOC lacks verified remaining23chaptertranscriptions and exact selected complete-edition identity. No invented source chapters."
+      ],
+      "cover_gate": "DEFERRED_OWNER_INSTRUCTION"
     }
   ],
   "count": 46,
   "published": 0,
   "audio_changes": 0,
   "canonical_package_changes": 36,
-  "legal_clearance_not_inferred_from_cover_or_author_death": true,
-  "final_reconciled_at": "2026-10-01T21:31:02.704018+00:00"
+  "legal_clearance_not_inferred_from_cover_or_author_death": true
 }

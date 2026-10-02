@@ -1,0 +1,95 @@
+{
+  "receipt": {
+    "url": "https://bn.wikisource.org/w/api.php?action=query&generator=allpages&gapprefix=%E0%A6%AE%E0%A7%81%E0%A6%9A%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AE+%E0%A6%97%E0%A7%81%E0%A6%A1%E0%A6%BC%E0%A7%87%E0%A6%B0+%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A6%A8%E0%A6%9A%E0%A6%B0%E0%A6%BF%E0%A6%A4+%28%E0%A7%A7%E0%A7%AF%E0%A7%AA%E0%A7%AA%29%2F&gapnamespace=0&gaplimit=max&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2",
+    "retrieved_at": "2026-10-01T21:51:05.263111+00:00",
+    "response_sha256": "95ef18f149e0b4e4f719ec7c8756c73d262afeb0ed9484d45a0e798cf9d45578"
+  },
+  "prefix": "মুচিরাম গুড়ের জীবনচরিত (১৯৪৪)",
+  "leaves": [
+    {
+      "title": "মুচিরাম গুড়ের জীবনচরিত (১৯৪৪)/প্রথম পরিচ্ছেদ",
+      "revision": 1946560,
+      "revision_timestamp": "2026-05-05T07:42:07Z",
+      "wikitext": "<pages index=\"মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=11 to=13 tosection=A header=1/>"
+    },
+    {
+      "title": "মুচিরাম গুড়ের জীবনচরিত (১৯৪৪)/দ্বিতীয় পরিচ্ছেদ",
+      "revision": 1946563,
+      "revision_timestamp": "2026-05-05T07:45:53Z",
+      "wikitext": "<pages index=\"মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=13 to=14 fromsection=B tosection=A header=1/>"
+    },
+    {
+      "title": "মুচিরাম গুড়ের জীবনচরিত (১৯৪৪)/তৃতীয় পরিচ্ছেদ",
+      "revision": 1956133,
+      "revision_timestamp": "2026-06-10T15:11:26Z",
+      "wikitext": "<pages index=\"মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=14 to=16 fromsection=B  header=1/>"
+    },
+    {
+      "title": "মুচিরাম গুড়ের জীবনচরিত (১৯৪৪)/চতুর্থ পরিচ্ছেদ",
+      "revision": 1956136,
+      "revision_timestamp": "2026-06-10T15:12:44Z",
+      "wikitext": "<pages index=\"মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=17 to=18 tosection=A  header=1/>"
+    },
+    {
+      "title": "মুচিরাম গুড়ের জীবনচরিত (১৯৪৪)/পঞ্চম পরিচ্ছেদ",
+      "revision": 1956138,
+      "revision_timestamp": "2026-06-10T15:14:44Z",
+      "wikitext": "<pages index=\"মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=18 to=19 fromsection=\"B\" tosection=A  header=1/>"
+    },
+    {
+      "title": "মুচিরাম গুড়ের জীবনচরিত (১৯৪৪)/ষষ্ঠ পরিচ্ছেদ",
+      "revision": 1956139,
+      "revision_timestamp": "2026-06-10T15:16:49Z",
+      "wikitext": "<pages index=\"মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=19 to=21 fromsection=\"B\" tosection=A  header=1/>"
+    },
+    {
+      "title": "মুচিরাম গুড়ের জীবনচরিত (১৯৪৪)/সপ্তম পরিচ্ছেদ",
+      "revision": 1956142,
+      "revision_timestamp": "2026-06-10T15:22:09Z",
+      "wikitext": "<pages index=\"মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=21 to=23 fromsection=\"B\" tosection=\"A\"  header=1/>"
+    },
+    {
+      "title": "মুচিরাম গুড়ের জীবনচরিত (১৯৪৪)/অষ্টম পরিচ্ছেদ",
+      "revision": 1956143,
+      "revision_timestamp": "2026-06-10T15:23:02Z",
+      "wikitext": "<pages index=\"মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=23 to=24 fromsection=\"B\"  header=1/>"
+    },
+    {
+      "title": "মুচিরাম গুড়ের জীবনচরিত (১৯৪৪)/নবম পরিচ্ছেদ",
+      "revision": 1956146,
+      "revision_timestamp": "2026-06-10T15:30:30Z",
+      "wikitext": "<pages index=\"মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=25 to=26 tosection=\"A\"  header=1/>"
+    },
+    {
+      "title": "মুচিরাম গুড়ের জীবনচরিত (১৯৪৪)/দশম পরিচ্ছেদ",
+      "revision": 1956148,
+      "revision_timestamp": "2026-06-10T15:32:39Z",
+      "wikitext": "<pages index=\"মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=26 to=28 fromsection=\"B\" tosection=\"A\" header=1/>"
+    },
+    {
+      "title": "মুচিরাম গুড়ের জীবনচরিত (১৯৪৪)/একাদশ পরিচ্ছেদ",
+      "revision": 1956150,
+      "revision_timestamp": "2026-06-10T15:34:50Z",
+      "wikitext": "<pages index=\"মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=28 to=29 fromsection=\"B\" tosection=\"A\" header=1/>"
+    },
+    {
+      "title": "মুচিরাম গুড়ের জীবনচরিত (১৯৪৪)/দ্বাদশ পরিচ্ছেদ",
+      "revision": 1956214,
+      "revision_timestamp": "2026-06-10T19:17:16Z",
+      "wikitext": "<pages index=\"মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=29 to=31 fromsection=\"B\" tosection=\"A\" header=1/>"
+    },
+    {
+      "title": "মুচিরাম গুড়ের জীবনচরিত (১৯৪৪)/ত্রয়োদশ পরিচ্ছেদ",
+      "revision": 1956240,
+      "revision_timestamp": "2026-06-11T01:04:05Z",
+      "wikitext": "<pages index=\"মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=31 to=32 fromsection=\"B\" header=1/>"
+    },
+    {
+      "title": "মুচিরাম গুড়ের জীবনচরিত (১৯৪৪)/চতুর্দ্দশ পরিচ্ছেদ",
+      "revision": 1956238,
+      "revision_timestamp": "2026-06-11T01:02:17Z",
+      "wikitext": "<pages index=\"মুচিরাম গুড়ের জীবনচরিত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=33 to=40 header=1/>"
+    }
+  ],
+  "continuation": null
+}

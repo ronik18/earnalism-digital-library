@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "rappaccinis-daughter",
   "title": "Rappaccini's Daughter",
-  "generated_at": "2026-10-01T21:08:30.569738+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "5c406033a5c3d1c4f7ccafb13ad5303d631cc19ad4403382407fcbb435e71d4a",
-    "content_hash": "57b2ef721088ddee8684f8f1d080065501760da3659ef86e11453d43e6355959",
-    "provenance_hash": "4d1aee24155cbed5d82ea7f1593935e34b402079c365c564814f4d1384445f10",
+    "source_hash": "d9a0cc1df0c41f87ffe61076e23383a4223369105223318542dca83914b156d4",
+    "content_hash": "53085b079b15213a5456edfb86198a6cefcdef68a877f3c3606fd0236a778dd3",
+    "provenance_hash": "eee350a2e949f04ac4cae07e82261f5781f5f0c674b3253f6cc0ff3efd3a9fef",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "5534c8c5b8077f01d46c90de904c89fa4fe64ba694f633f5a965af068404d326",
+    "chapter_index_sha256": "605a6e8b4147c16a8ceff68dc0ea2a30c64c2c6faae5e57acda03bc752c01947",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "Rappaccini's Daughter",
         "word_count": 11465,
-        "sha256": "440b993aabe5291db3d86fd941fe05efa33e2d5a788818a55cdeac278481ccc2"
+        "sha256": "50348b8a65615cc1bad1a75e926dc03d6e267b06fdc5bfb820b27287075cf5de"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "4c77ceb5aabfafc5345f8a547a2a65821b54dfc10c864133b346b84a4cb684a0"
+    "publication_region": "india",
+    "evidence_sha256": "cd1a207f0f8120f5664e5a4c794d2dca677cd4a3d03a69328adeba1d8504786a"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "4e2c753fbc8f3b363219bb062aad488ebd6f9e845061a86445b2d7d0a5d56eb8",
+    "public_book": "dc07aafb2ee0c677e1dc3719d981a173135020064515cbd81e33c290166f0443",
     "reader_manifest": "4c0a1d82c5aacfae3ce8c0ec906b28e17279794c281bd5ebfdfc6ad505b6803d",
-    "source_evidence": "4c77ceb5aabfafc5345f8a547a2a65821b54dfc10c864133b346b84a4cb684a0",
-    "approval_evidence": "08c1111d9d2079d4d87d35ed9fe0086408fa15d5f6dc06f42ae17db16c3823b5"
+    "source_evidence": "cd1a207f0f8120f5664e5a4c794d2dca677cd4a3d03a69328adeba1d8504786a",
+    "approval_evidence": "7d56b24a814371f21d7d1d547e38ea4a6f44ceacb7defda043a97bb023cb5930"
   },
-  "manifest_sha256": "9be20f30e75991839cd8175f8a99e21701c17796c8ab49a48b684c79d41ef04d"
+  "manifest_sha256": "3c6651ff575b1bcd4c22e195e904677597b20d0039436e0be86a67155bec40d3"
 }

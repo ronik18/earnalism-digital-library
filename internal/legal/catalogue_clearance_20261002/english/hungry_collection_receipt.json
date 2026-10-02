@@ -1,0 +1,9 @@
+{
+  "receipt": {
+    "requested_url": "https://en.wikisource.org/wiki/The_Hungry_Stones_and_Other_Stories",
+    "resolved_url": "https://en.wikisource.org/wiki/The_Hungry_Stones_and_Other_Stories",
+    "http_status": 200,
+    "accessed_at": "2026-10-02T03:01:06.335891+00:00",
+    "response_sha256": "487360de74e775b6a7fd36cdf9b1e2ceeba9f7dbe5db36ffd67ebd7c3b45aa59"
+  }
+}

@@ -53,9 +53,9 @@
       "updated_at": "2026-07-03T20:07:49Z"
     }
   ],
-  "source_hash": "032a7fa2066e75ee2743f96015af671d54d83c1dcf16aa0e164056ab23b34b27",
-  "content_hash": "5fcd6d4c4bae12a4355d733daa70626c9c4740ba4c8854453a6da5641ff7bf31",
-  "provenance_hash": "50445647f700eb377e6c8f1761347a031cf15bd29da15e2db11ae5a2ea0b2bc2",
+  "source_hash": "fd7c69daa6080772e42bb26c21330c1dc1c5fb3967f40c23789f51e5c260c82f",
+  "content_hash": "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90",
+  "provenance_hash": "79c7266b8fe7cc1d7a378b394054a464856b4a84ef8c1af45b9edf6c3b43d6bb",
   "rights_basis": "Anton Chekhov died 1904; first published 1894. Public domain in India and the U.S.",
   "rights_tier": "A",
   "verification_status": "approved",

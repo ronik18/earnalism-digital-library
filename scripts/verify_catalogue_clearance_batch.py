@@ -28,6 +28,9 @@ def verify(root=ROOT,base='8be3926fd9fc4526dec66d51b64d8ca72b2d0035'):
         if slug in live:issues.append(f'Live package modified: {slug}')
         manifest=json.loads((p/'publication_manifest.json').read_text())
         issues.extend(f'{slug}: {v}' for v in validate_manifest(manifest))
+        for name in ('public_book','reader_manifest','source_evidence','approval_evidence'):
+            actual=hashlib.sha256((p/(name+'.json')).read_bytes()).hexdigest()
+            if manifest.get('artifacts',{}).get(name)!=actual:issues.append(f'{slug}: stale publication artifact {name}')
         if not checksum_manifest_matches(p):issues.append(f'{slug}: invalid checksum bundle')
         if manifest['reader_release']['exposed'] or manifest['audio_release']['exposed']:issues.append(f'{slug}: held preparation exposed a release')
         for chapter in json.loads((p/'public_book.json').read_text())['chapters']:
@@ -37,15 +40,24 @@ def verify(root=ROOT,base='8be3926fd9fc4526dec66d51b64d8ca72b2d0035'):
                 continue
             c=json.loads(chapter_path.read_text())
             if hashlib.sha256(c['content'].encode()).hexdigest()!=c['content_hash']:issues.append(f"{slug}/{chapter['id']}: content checksum mismatch")
+            manifest_chapter=next((row for row in manifest.get('content',{}).get('chapters',[]) if row.get('id')==chapter['id']),None)
+            if not manifest_chapter or manifest_chapter.get('sha256')!=hashlib.sha256(chapter_path.read_bytes()).hexdigest():issues.append(f"{slug}/{chapter['id']}: stale publication chapter binding")
         decision_path=p/'rights_decision.json'
         if decision_path.is_file():
             record=json.loads(decision_path.read_text())
             if record.get('status')=='ACCEPTED':
+                if manifest.get('rights',{}).get('status') != 'APPROVED':issues.append(f'{slug}: accepted local text record contradicts canonical publication rights')
+                source=json.loads((p/'source_evidence.json').read_text());book=json.loads((p/'public_book.json').read_text())
+                bodies=[json.loads((p/'chapters'/(meta['id']+'.json')).read_text())['content'] for meta in sorted(book['chapters'],key=lambda m:m['order'])]
+                actual_content=hashlib.sha256('\n\n'.join(bodies).encode()).hexdigest()
+                if source.get('content_hash') != actual_content or book.get('content_hash') != actual_content:issues.append(f'{slug}: accepted selected manuscript aggregate identity mismatch')
+                noncover_blockers=[v for v in manifest['reader_release'].get('blockers',[]) if 'cover' not in v.lower()]
+                if noncover_blockers:issues.append(f'{slug}: unresolved non-cover publication blockers: {noncover_blockers}')
                 components={name:hashlib.sha256((p/(name+'.json')).read_bytes()).hexdigest() for name in ('public_book','reader_manifest','source_evidence','approval_evidence','checksum_manifest','publication_manifest')}
                 for name in record['components']:
                     path=p/(name+'.json')
                     if path.is_file() and hashlib.sha256(path.read_bytes()).hexdigest()!=record['components'][name]:issues.append(f'{slug}: stale accepted component {name}')
-                for use,should_pass in (('reader_preview',True),('audio_stream',False)):
+                for use,should_pass in (('reader_preview',True),('reader_delivery',True),('reading_pass_session',True),('reading_pass_renewal',True),('audio_stream',False),('audio_download',False)):
                     verdict=evaluate_accepted_record(record,edition_id=slug,operator_id='reo-enterprise',country='IN',country_trusted=True,use=use,required_components=components,accepted_records={record['decision_id']:record_sha256(record)},revoked_decision_ids=frozenset(),now=datetime.now(timezone.utc))
                     if verdict.passed!=should_pass:issues.append(f'{slug}: decision scope invalid for {use}: {verdict.reasons}')
         statuses[slug]=manifest['reader_release']['status']

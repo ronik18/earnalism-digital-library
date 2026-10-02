@@ -1,12 +1,12 @@
 {
   "slug": "the-adventure-of-the-empty-house",
   "source_url": "https://www.gutenberg.org/ebooks/108",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #108; The Adventure of the Empty House selected complete Arthur Conan Doyle story/cycle from return of Sherlock Holmes; verified lifetime collection edition 1905; no translation/editorial/art imported",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "ee5dd7cf242158b7805d53f7d1c251893c338689056297a6e0a3fb23aca5f2b6",
-  "content_hash": "6bf0c63b087dee0ced53a0c8c74c637bf13e11aeda9ca65846a2d801c06dee21",
-  "provenance_hash": "d115aa91dc3a3bb82e642e4cc6cb2d0d02e207d6e0da6b19447bdbe11e3f2a2a",
-  "rights_basis": "Arthur Conan Doyle died 1930; first published 1903. Public domain in India and the U.S.",
+  "source_hash": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
+  "content_hash": "9972e85ba4bfd20b80ea948f864a5c06b7c1e104af1e3b586fe69bd9b76fed3e",
+  "provenance_hash": "6efa0d16932bb1e93c51f3d3495e1f965778ed2fc61b6071e2c5732e4b56d2bd",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1930, verified lifetime collection publication 1905 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-03T08:04:22.314264+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -116,5 +116,91 @@
       }
     ],
     "content_sha256": "9972e85ba4bfd20b80ea948f864a5c06b7c1e104af1e3b586fe69bd9b76fed3e"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "ee5dd7cf242158b7805d53f7d1c251893c338689056297a6e0a3fb23aca5f2b6",
+        "content_hash": "6bf0c63b087dee0ced53a0c8c74c637bf13e11aeda9ca65846a2d801c06dee21",
+        "provenance_hash": "d115aa91dc3a3bb82e642e4cc6cb2d0d02e207d6e0da6b19447bdbe11e3f2a2a",
+        "source_url": "https://www.gutenberg.org/ebooks/108",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:48:17.188009+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1905,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/108.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/108/pg108.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:36.762132+00:00",
+      "response_sha256": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1400,
+          "length": 47266
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Doyle, Arthur Conan, 1859-1930",
+      "creator_death_year": 1930,
+      "selected_collection_publication_year": 1905,
+      "original_story_first_publication_year": null,
+      "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+      "bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Doyle%2C%20Arthur%20Conan%2C%201859-1930",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Doyle%2C%20Arthur%20Conan%2C%201859-1930",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:44:11.614798+00:00",
+        "response_sha256": "9c80e664aca64bf1c0579db6cf406619322276bfe1dbd1370d2d3c920f836017"
+      },
+      "bibliographic_excerpt": "return of Sherlock Holmes (McClure, Phillips & co., 1905) (page images at HathiTrust) Doyle, Arthur Conan, 1859-1930: The return of Sherlock Holmes (George Newnes, Ltd., 1905) , also by Sidney Paget (page images at HathiTrust) Doyle, Arthur Conan, 18",
+      "scope": "Named author selected story text only; other collection stories, separately authored editorial matter and all illustrations excluded."
+    },
+    "author_death_evidence": 1930,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1905,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
+    "content_sha256": "9972e85ba4bfd20b80ea948f864a5c06b7c1e104af1e3b586fe69bd9b76fed3e",
+    "year": 1905,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Doyle%2C%20Arthur%20Conan%2C%201859-1930",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Doyle%2C%20Arthur%20Conan%2C%201859-1930",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:11.614798+00:00",
+      "response_sha256": "9c80e664aca64bf1c0579db6cf406619322276bfe1dbd1370d2d3c920f836017"
+    },
+    "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
   }
 }

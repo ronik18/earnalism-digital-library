@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-adventure-of-the-greek-interpreter-pg834-noncover-text",
+  "edition_id": "the-adventure-of-the-greek-interpreter",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "ddce8bcb7e105a046987bcc5a793aa3510085f3db7d37bfe77ca794320b2b6df",
+    "reader_manifest": "65b89a3fd16271b3c1af60b67672aec9432d867ca4168a3e8f9027190657685c",
+    "source_evidence": "c96f18526aeae2c316fbb45e972720dccbcbc59c16f423be5ceb20dea6e4c52e",
+    "approval_evidence": "c7166be089d345bec5aeaf77fb7705f18317df9a542c84e8851c90d234272c0e",
+    "checksum_manifest": "98bac0c607d9e455154f7ac6fd836a5f357fe9bbbd642da268a66b01eddc4bda",
+    "publication_manifest": "cd70eeea3dff622a884ae45651e2e41ab529a80fbfb6759e04fdba65165d5fe5"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:48:17.188009+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1930, verified lifetime collection publication 1894 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "d3f1244de6ad42511865dee21a8c6176dd37fdcb0586f7dfaaad545a93a6680a",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "509da3f8bbdc6c3857073e74911f628eef8fea557fcb5bca9e1713c846e43ec3",
+    "dbe1e0f797d1ecc4374a5a87761e0b3d23d41607c40c41500ffeef98154297ab"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

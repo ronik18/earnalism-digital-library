@@ -1,0 +1,30 @@
+{
+  "schema_version": "earnalism.text-license.v1",
+  "slug": "lokrahasya",
+  "license": "CC-BY-SA-4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "attribution": "লোকরহস্য by বঙ্কিমচন্দ্র চট্টোপাধ্যায়; Bengali Wikisource transcription and its contributors, credited through the exact edition/source revision and its scanned-page contributor histories.",
+  "changes": "Source/import headings and publication furniture omitted. Exact source-backed missing paragraphs, chapter order and typographical punctuation corrected where recorded. No new literary text composed.",
+  "scope": "CC BY-SA4.0 applies only to source-derived transcription and formatting, not independently owned covers, Earnalism branding, software or unrelated material. Underlying literary/edition rights and publication authorization are separate release gates.",
+  "disclaimer": "Delivered licensed text may be copied, printed and reused under CC BY-SA4.0 attribution and ShareAlike terms. This notice itself grants no publication, cover or audiobook authorization.",
+  "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%B2%E0%A7%8B%E0%A6%95%E0%A6%B0%E0%A6%B9%E0%A6%B8%E0%A7%8D%E0%A6%AF+%28%E0%A7%A7%E0%A7%AF%E0%A7%A9%E0%A7%AF%29&oldid=1972226",
+  "contributors_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%B2%E0%A7%8B%E0%A6%95%E0%A6%B0%E0%A6%B9%E0%A6%B8%E0%A7%8D%E0%A6%AF+%28%E0%A7%A7%E0%A7%AF%E0%A7%A9%E0%A7%AF%29&action=history",
+  "chapter_sha256": [
+    "729a0ec8c88e8cb5de85698b032b40886a6ac47f0bb08b6b980682744377c1ef",
+    "619ab8c5384adbfa816179f9d8a0776bb13d1f08c555a25215813235cd4e46f7",
+    "39dd197a1ccf93e36781c6ed5dc374b4f97514222fadf665e8f02e564189e4be",
+    "07373c51e0df6d2e5222d038c99b56f696c50b11c6667b17a3cea1c6d940476c",
+    "e908dc63447c4191d6edfee2787858a8fc052758e7226b00d40aed06770b1c90",
+    "3ad29d39908abc6655d06f7e3bc0fedec9a4702f7ae3de30fba496a29410f95f",
+    "32c76d54e0cf04f36984a029b6e0a17dbfcc27db6dd69acf9a888be8e05db422",
+    "5628f612b22513c49148b53b7dc52aa26b1e2c67f29bba0585af989cbe233e5d",
+    "deb0cd9746bb517cc7a206302b7331bfdbe255474b76738920672db59755013e",
+    "d70f464f1994a2227b944d59df831eca9b2ee5c4161b66d624c26613ab487f3d",
+    "93be984a04423686dd6ed15f0721120048c3bef211b0c95a1bf33696f469a76c",
+    "c46a3bb7a8bcdb19f215410bbfce96e779d756dc9406a817fec932b824f478c9",
+    "0c3c9292ecaf155a50c70d36adbe07fcd1073ba169bf54efd6ff63eae925edab",
+    "ae245e65f7679a7423fd11e437661cbfdf3d7ace87c5cab4d40c6e20a8d0ba28",
+    "80bacae9079c0f1c73a888b665c28760ebc6d8e5b969d24f54b26400aa7afd3e",
+    "8a596d46b799d3896bc9b5b55b50fbdccd52baf575aafaa21f9f5ad2278344a8"
+  ]
+}

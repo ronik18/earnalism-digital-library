@@ -1,0 +1,17 @@
+{
+  "schema_version": "earnalism.text-license.v1",
+  "slug": "bn-031",
+  "license": "CC-BY-SA-4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "attribution": "মহেশ by শরৎচন্দ্র চট্টোপাধ্যায়; Bengali Wikisource transcription and its contributors, credited through the exact edition/source revision and its scanned-page contributor histories.",
+  "changes": "Source/import headings and publication furniture omitted. Exact source-backed missing paragraphs, chapter order and typographical punctuation corrected where recorded. No new literary text composed.",
+  "scope": "CC BY-SA4.0 applies only to source-derived transcription and formatting, not independently owned covers, Earnalism branding, software or unrelated material. Underlying literary/edition rights and publication authorization are separate release gates.",
+  "disclaimer": "Delivered licensed text may be copied, printed and reused under CC BY-SA4.0 attribution and ShareAlike terms. This notice itself grants no publication, cover or audiobook authorization.",
+  "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%B6%E0%A6%B0%E0%A7%8E-%E0%A6%B8%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF-%E0%A6%B8%E0%A6%82%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B9+%28%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%AF%E0%A6%BC%E0%A7%8B%E0%A6%A6%E0%A6%B6+%E0%A6%B8%E0%A6%AE%E0%A7%8D%E0%A6%AD%E0%A6%BE%E0%A6%B0%29%2F%E0%A6%AE%E0%A6%B9%E0%A7%87%E0%A6%B6&oldid=1943388",
+  "contributors_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%B6%E0%A6%B0%E0%A7%8E-%E0%A6%B8%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A4%E0%A7%8D%E0%A6%AF-%E0%A6%B8%E0%A6%82%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%B9+%28%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%AF%E0%A6%BC%E0%A7%8B%E0%A6%A6%E0%A6%B6+%E0%A6%B8%E0%A6%AE%E0%A7%8D%E0%A6%AD%E0%A6%BE%E0%A6%B0%29%2F%E0%A6%AE%E0%A6%B9%E0%A7%87%E0%A6%B6&action=history",
+  "chapter_sha256": [
+    "7ca11299e343da8b0bfc85313baea74957b97d15def97cc77f1a2c976578d908",
+    "1bd6af2f36928e7a0ace6c0770806ece7fe19763a0b52072f4126d8ee332c777",
+    "effb16d7c64064c4929092db039c5ae9b1ffc6a5a3eb4978c7b9b1579bd6ced7"
+  ]
+}

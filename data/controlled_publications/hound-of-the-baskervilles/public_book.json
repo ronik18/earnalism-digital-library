@@ -28,8 +28,22 @@
   "about_author": "",
   "chapters": [
     {
-      "id": "chapter-001",
+      "id": "chapter-000",
       "order": 1,
+      "title": "Author Dedication",
+      "word_count": 37,
+      "reading_minutes": 1,
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "language_hint": "en",
+      "updated_at": "2026-10-02T03:25:38.460120+00:00"
+    },
+    {
+      "id": "chapter-001",
+      "order": 2,
       "title": "Chapter 1.",
       "is_preview": true,
       "has_images": false,
@@ -44,7 +58,7 @@
     },
     {
       "id": "chapter-002",
-      "order": 2,
+      "order": 3,
       "title": "Chapter 2.",
       "is_preview": true,
       "has_images": false,
@@ -59,7 +73,7 @@
     },
     {
       "id": "chapter-003",
-      "order": 3,
+      "order": 4,
       "title": "Chapter 3.",
       "is_preview": true,
       "has_images": false,
@@ -74,7 +88,7 @@
     },
     {
       "id": "chapter-004",
-      "order": 4,
+      "order": 5,
       "title": "Chapter 4.",
       "is_preview": true,
       "has_images": false,
@@ -89,7 +103,7 @@
     },
     {
       "id": "chapter-005",
-      "order": 5,
+      "order": 6,
       "title": "Chapter 5.",
       "is_preview": true,
       "has_images": false,
@@ -104,7 +118,7 @@
     },
     {
       "id": "chapter-006",
-      "order": 6,
+      "order": 7,
       "title": "Chapter 6.",
       "is_preview": true,
       "has_images": false,
@@ -119,7 +133,7 @@
     },
     {
       "id": "chapter-007",
-      "order": 7,
+      "order": 8,
       "title": "Chapter 7.",
       "is_preview": true,
       "has_images": false,
@@ -134,7 +148,7 @@
     },
     {
       "id": "chapter-008",
-      "order": 8,
+      "order": 9,
       "title": "Chapter 8.",
       "is_preview": true,
       "has_images": false,
@@ -149,7 +163,7 @@
     },
     {
       "id": "chapter-009",
-      "order": 9,
+      "order": 10,
       "title": "Chapter 9.",
       "is_preview": true,
       "has_images": false,
@@ -164,7 +178,7 @@
     },
     {
       "id": "chapter-010",
-      "order": 10,
+      "order": 11,
       "title": "Chapter 10.",
       "is_preview": true,
       "has_images": false,
@@ -179,7 +193,7 @@
     },
     {
       "id": "chapter-011",
-      "order": 11,
+      "order": 12,
       "title": "Chapter 11.",
       "is_preview": true,
       "has_images": false,
@@ -194,7 +208,7 @@
     },
     {
       "id": "chapter-012",
-      "order": 12,
+      "order": 13,
       "title": "Chapter 12.",
       "is_preview": true,
       "has_images": false,
@@ -209,7 +223,7 @@
     },
     {
       "id": "chapter-013",
-      "order": 13,
+      "order": 14,
       "title": "Chapter 13.",
       "is_preview": true,
       "has_images": false,
@@ -224,7 +238,7 @@
     },
     {
       "id": "chapter-014",
-      "order": 14,
+      "order": 15,
       "title": "Chapter 14.",
       "is_preview": true,
       "has_images": false,
@@ -239,7 +253,7 @@
     },
     {
       "id": "chapter-015",
-      "order": 15,
+      "order": 16,
       "title": "Chapter 15.",
       "is_preview": true,
       "has_images": false,
@@ -253,9 +267,9 @@
       "updated_at": "2026-07-01T10:36:20Z"
     }
   ],
-  "source_hash": "d3f65a1d363c9f72666a61e2a88f60696a8620a7d823dbf25e106ecc0655d251",
-  "content_hash": "4d5747626319130ea531bdf107b6e424bb7d7e7f5caeda6590b7ca42cc7a970f",
-  "provenance_hash": "e670e797cfe9b0f6b4f47e916492de8a731d557bec00bcb5f3a4e1352f40edab",
+  "source_hash": "f7c8c68729d32a5f6a04a5a9ad73d184176e66a6c76b3992c41c1ab47b427d98",
+  "content_hash": "8b5f77d0835acdbcbd3d0e16c5bb6e0b7bff96cefc97aab3fcffd8ae4c83be74",
+  "provenance_hash": "bef529c72f8daac68ef0e1a624d92a188adf094673eaae00d3a3f269d69d14a5",
   "rights_basis": "public_domain",
   "rights_tier": "A",
   "verification_status": "approved",

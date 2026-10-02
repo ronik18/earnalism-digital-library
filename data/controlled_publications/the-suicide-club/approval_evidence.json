@@ -1,12 +1,22 @@
 {
   "slug": "the-suicide-club",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true
+  "audiobook_enabled": true,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "4a9531455d43c572bbd483a17123159cf11338fba1649db23da57a3660fe04fe",
+  "source_hash": "8205ac009edcea995ee855585b05c223e22e1f53b00a96b2922d8a05d5f005bd",
+  "content_hash": "43116bd2508f624562da844230418d70ed14eab3533f8173ff310e27b98fe814",
+  "provenance_hash": "800ced5e8d56dc32ab1dea0ca063c7a62351e10c12976aec47799ffdf188a6a0",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00"
 }

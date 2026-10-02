@@ -1,10 +1,10 @@
 {
   "slug": "bn-059",
-  "approved_to_publish": false,
+  "approved_to_publish": true,
   "rights_tier": "A",
-  "verification_status": "pending",
+  "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "sprint1_evidence_reconciliation_hold",
+  "approval_scope": "OWNER_DELEGATED_AUTOMATED_IN_EDITION_BOUND_TEXT_READER_ONLY_COVER_DEFERRED",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_BLOCKED_QA_REQUIRED",
   "allowCheckout": false,
   "allowPayment": false,
@@ -21,5 +21,9 @@
   "audio_qa_status": "",
   "endpoint_url": "",
   "provider": "",
-  "version": ""
+  "version": "",
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "source_hash": "59b705ade59945af3d9dda854e63053a73b9d60a2fcf50127b0be27c315ee147",
+  "content_hash": "123bbd5c1c19edbf30eb6291a6bb5954e02128745d401846ce6d7512c60fdb21",
+  "publication_authorization_sha256": "11e53198a277a620032435a76d82df27117821c99fce6802a531d7c326d7a1a3"
 }

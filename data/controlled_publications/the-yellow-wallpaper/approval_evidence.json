@@ -1,12 +1,22 @@
 {
   "slug": "the-yellow-wallpaper",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": false
+  "audiobook_enabled": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "3203988ca4c0596b3cf0679ae0a56f275b1f21ab84949a1d80e418e5e2070548",
+  "source_hash": "20c7788eeae2fe3a0efd51a1f08b6723366a4be0778d65db219149a3522651d4",
+  "content_hash": "eb3707607672f6a9260383f8523dca5e089399e5121bd1a1961b34308c34273d",
+  "provenance_hash": "d4e074b4e73dcbd81ffa1ad9fa823367d6dd6a04ab012842c9b79ebcc96b3c03",
+  "verified_at": "2026-10-01T21:49:40.745164+00:00"
 }

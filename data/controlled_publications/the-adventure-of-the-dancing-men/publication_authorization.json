@@ -1,0 +1,29 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "the-adventure-of-the-dancing-men",
+  "edition": "Project Gutenberg #108; The Adventure of the Dancing Men selected complete Arthur Conan Doyle story/cycle from return of Sherlock Holmes; verified lifetime collection edition 1905; no translation/editorial/art imported",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_ONLY_NON_COVER_COMPONENTS",
+  "source_sha256": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
+  "content_sha256": "d07a8a9586d4ff3f724556ae02eb4075eb6a4da0d316295ab6db531d173a5dec",
+  "chapter_sha256": {
+    "chapter-001": "d07a8a9586d4ff3f724556ae02eb4075eb6a4da0d316295ab6db531d173a5dec"
+  },
+  "cover_provenance_sha256": null,
+  "cover_status": "DEFERRED_BY_OWNER_REQUEST_NO_COVER_DISPLAY_AUTHORIZED",
+  "authorized_by": "Automated executor under owner explicit autonomous clearance delegation; not a fabricated human or legal signature.",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Cover clearance/binding, trusted production registry acceptance, canonical controlled-live allowlist, actual runtime Reader readiness and protected gates must separately pass.",
+  "not_authorized": [
+    "cover_display",
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation"
+  ]
+}

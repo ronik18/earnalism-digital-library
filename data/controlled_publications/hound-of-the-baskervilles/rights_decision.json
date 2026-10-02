@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-hound-of-the-baskervilles-pg2852-noncover-text",
+  "edition_id": "hound-of-the-baskervilles",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "3be33b9ebfb5bdbb114a0c74eee3339dc3198169cd4033a34f3dc7878fe4f359",
+    "reader_manifest": "77d4aec57d2df43826f61dbff666d9514dcc1f02b807ad41c8815a85b62f2842",
+    "source_evidence": "a19ddcc50dc3872f56c48b3f939b353455da844e6d43c43eed564a0bdf1fb186",
+    "approval_evidence": "aad6bded922435c7d343a85d2565caef098ec01e9ae660e3842d0936e7805e2b",
+    "checksum_manifest": "b48223be005730dfe2139c5940736580e99662e5a29f8c8c8b70b7cff72c4abf",
+    "publication_manifest": "c6d045dac4d0c4557cbced9110f2ed21b8253830b7c50cb905660b8fb408d744"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:49:40.745164+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1930, verified lifetime collection publication 1902 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "676055a58282b452d02091f52713687645dd587aaa8e26a05958b2d671f7895f",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ddff4d02c636c57500215604f778bd3b8b9883d5ca9d5de89dc1480b29fa52c3",
+    "f7c8c68729d32a5f6a04a5a9ad73d184176e66a6c76b3992c41c1ab47b427d98",
+    "a4c277427a8dde48aaed09af09fa04717cc65c65548fab0ecd0da79c67db7e0b"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

@@ -1,14 +1,14 @@
 {
   "slug": "rappaccinis-daughter",
-  "generated_at": "2026-07-03T20:07:48Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "08c1111d9d2079d4d87d35ed9fe0086408fa15d5f6dc06f42ae17db16c3823b5"
+      "sha256": "7d56b24a814371f21d7d1d547e38ea4a6f44ceacb7defda043a97bb023cb5930"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "440b993aabe5291db3d86fd941fe05efa33e2d5a788818a55cdeac278481ccc2"
+      "sha256": "50348b8a65615cc1bad1a75e926dc03d6e267b06fdc5bfb820b27287075cf5de"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "4e2c753fbc8f3b363219bb062aad488ebd6f9e845061a86445b2d7d0a5d56eb8"
+      "sha256": "dc07aafb2ee0c677e1dc3719d981a173135020064515cbd81e33c290166f0443"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "db877cda6a9cd5f5d9a15da34229cdf74d4a2a7aa0be6f92a157272300f4b0ed"
     },
     {
       "file": "reader_manifest.json",
@@ -24,7 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "4c77ceb5aabfafc5345f8a547a2a65821b54dfc10c864133b346b84a4cb684a0"
+      "sha256": "cd1a207f0f8120f5664e5a4c794d2dca677cd4a3d03a69328adeba1d8504786a"
     }
   ]
 }

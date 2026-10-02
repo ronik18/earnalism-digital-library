@@ -1,12 +1,12 @@
 {
   "slug": "the-lifted-veil",
   "source_url": "https://www.gutenberg.org/ebooks/2165",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #2165; exact selected original-author text; verified lifetime work publication 1870; excludes anthology editor/art and other title components",
   "source_license": "Public domain. Project Gutenberg transcription freely redistributable for any use including commercial.",
-  "source_hash": "53fcae1e2c80c9265a01a5d40a3e35bb661e311018ba965982306be7bf3abff6",
-  "content_hash": "219375fc5342ed68872f60e0aa9cd130666c6b09fbbab4add27a550d9c6f068e",
-  "provenance_hash": "6a1c7c08efed73d87d76e7e99145d2df2166ad241cba7e35396022c6ff7b4469",
-  "rights_basis": "Author died 1880. Published 1859. Public domain in U.S. and worldwide.",
+  "source_hash": "0e8114ea868e1ecd07e44a695c8723b819527170f96bf1811a782b2b440e05b5",
+  "content_hash": "bff60f1c99b4b49f2acf25a64ccd63a3f553d26ba07855552352fa82b72ca60c",
+  "provenance_hash": "6a6d5cbde710b8ae9a8451cd9f9aaf67f51f27c06aaf21d0895ea9bc42ec16bd",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1880, verified lifetime collection publication 1870 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-02T18:58:06.267495+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -76,6 +76,11 @@
       "status": "ALL_CHAPTERS_MATCH_SOURCE",
       "matched_chapters": [
         {
+          "chapter_id": "chapter-000",
+          "offset": 789,
+          "length": 148
+        },
+        {
           "chapter_id": "chapter-001",
           "offset": 948,
           "length": 51163
@@ -109,8 +114,12 @@
     "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
   },
   "canonical_reader_identity": {
-    "chapter_count": 2,
+    "chapter_count": 3,
     "ordered_chapter_sha256": [
+      {
+        "id": "chapter-000",
+        "sha256": "f70b8c1e424e8b219c21c85dede7a054d34b658089c331ca62f17dcf7267459c"
+      },
       {
         "id": "chapter-001",
         "sha256": "2a4daea30e9fdd8dcea28cd90b4546aebee6225d6ed02a574da79b2eb40bc2cf"
@@ -120,6 +129,106 @@
         "sha256": "f44f0ee02c1be2380576d972d094e803bddcaf3d062e72ab0bf1dbaf279b5b36"
       }
     ],
-    "content_sha256": "a9eb52e570e8d5c52f5a0bb7d9775eb587c68d58a9e794a7dd7c60c6ba14df09"
+    "content_sha256": "bff60f1c99b4b49f2acf25a64ccd63a3f553d26ba07855552352fa82b72ca60c"
+  },
+  "restored_author_prefatory_material": {
+    "verified_at": "2026-10-01T21:52:07.261830+00:00",
+    "source_sha256": "0e8114ea868e1ecd07e44a695c8723b819527170f96bf1811a782b2b440e05b5",
+    "scope": "Same exact electronic edition, author-prefatory material restored verbatim; no rights/publication approval generated"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "53fcae1e2c80c9265a01a5d40a3e35bb661e311018ba965982306be7bf3abff6",
+        "content_hash": "219375fc5342ed68872f60e0aa9cd130666c6b09fbbab4add27a550d9c6f068e",
+        "provenance_hash": "6a1c7c08efed73d87d76e7e99145d2df2166ad241cba7e35396022c6ff7b4469",
+        "source_url": "https://www.gutenberg.org/ebooks/2165",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:52:27.631967+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1870,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:52:27.631967+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2165.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2165/pg2165.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:31.907284+00:00",
+      "response_sha256": "0e8114ea868e1ecd07e44a695c8723b819527170f96bf1811a782b2b440e05b5"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 3,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-000",
+          "offset": 789,
+          "length": 148
+        },
+        {
+          "chapter_id": "chapter-001",
+          "offset": 948,
+          "length": 51163
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 52123,
+          "length": 47411
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator_death_year": 1880,
+      "selected_edition_publication_year": 1870,
+      "original_first_publication_year": null,
+      "primary_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Eliot%2C%20George%2C%201819-1880",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Eliot%2C%20George%2C%201819-1880",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:44:47.586333+00:00",
+        "response_sha256": "6130841e6bf5a0263ffa9cd5c20c03367448c9102545046db96753103ebc449b"
+      },
+      "bibliographic_excerpt": "veil lifted : Brother Jacob (D. Estes, 1870) (page images at HathiTrust) Eliot, George, 1819-1880: Miscellaneous essays ; Impressions of Theophrastus Such ; The veil lifted ; Brother Jacob (Estes and Lauriat, 1888) (page images at HathiTrust) Eliot, George, 1819-1880: Miscellaneous essays; Impressio",
+      "basis": "Verified work publication during creator lifetime; selected publication year is not claimed as first publication.",
+      "scope": "Complete selected original-author narrative and verified same-author prefatory matter; anthology editors, art and separately attributed epigraph/dedication excluded unless specifically verified."
+    },
+    "author_death_evidence": 1880,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1870,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "0e8114ea868e1ecd07e44a695c8723b819527170f96bf1811a782b2b440e05b5",
+    "content_sha256": "bff60f1c99b4b49f2acf25a64ccd63a3f553d26ba07855552352fa82b72ca60c",
+    "year": 1870,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Eliot%2C%20George%2C%201819-1880",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Eliot%2C%20George%2C%201819-1880",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:47.586333+00:00",
+      "response_sha256": "6130841e6bf5a0263ffa9cd5c20c03367448c9102545046db96753103ebc449b"
+    },
+    "basis": "Verified work publication during creator lifetime; selected publication year is not claimed as first publication.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
   }
 }

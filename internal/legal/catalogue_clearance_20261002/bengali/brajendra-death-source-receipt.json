@@ -1,0 +1,13 @@
+{
+  "evidence_type": "WEB_READER_CACHED_INSTITUTIONAL_EXCERPT_NOT_DIRECT_HTTP_BODY",
+  "source_url": "https://en.banglapedia.org/index.php/Bandyopadhyay,_Brajendra_Nath",
+  "source_revision_url": "https://en.banglapedia.org/index.php?title=Bandyopadhyay,_Brajendra_Nath&oldid=609",
+  "source_last_edited": "2021-06-17",
+  "accessed_at": "2026-10-01T21:47:00.147067+00:00",
+  "person": "Brajendra Nath Bandyopadhyay",
+  "death_date": "1952-10-03",
+  "evidence_excerpt": "He died on 3 October 1952.",
+  "excerpt_sha256": "e74e42510496d210b4b840ba5eb299e762d3fa17310aa361dd099a9bf2e52c5b",
+  "verification": "Primary institutional article retrieved via browser web reader; biography identifies editor, names co-edited Bankim works with Sajani Kanta Das, and explicitly states death date. Direct requests returned a non-article 15-byte body; no HTTP200 article-body or full-response hash claimed.",
+  "scope": "Historical death fact only; contributor binding to each exact edition remains independently required."
+}

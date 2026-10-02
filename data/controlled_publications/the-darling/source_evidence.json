@@ -1,12 +1,12 @@
 {
   "slug": "the-darling",
   "source_url": "https://www.gutenberg.org/ebooks/13416",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #13416; exact selected canonical text; all original author/translator/coauthor rights considered separately; historical publication upper bound 1916",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "447caa75d91256a4028eb69688345d10f5a0d76c971b39961a0e159e1a159ba1",
-  "content_hash": "669f2abf5030d78bc962625a87b9a6a5ca3bafaeed02df6c833613c04109b73f",
-  "provenance_hash": "8bdfc026d5b2f3904082594b36192c265c6b95cd0a4c5414f545645e113e63ea",
-  "rights_basis": "Anton Chekhov died 1904; first published 1899. Public domain in India and the U.S.",
+  "source_hash": "518cdaabeea113109967b4c6ad0ed2f4cae23bc390bdcd4eac7a8a4519634f9b",
+  "content_hash": "22944ec0e518269ee5676b6fca3c8d7a38f7a0f60083ac84a29b6d7e30714360",
+  "provenance_hash": "cc7d495d3dc3ffd8072cb07cd18cae9bfcdbbd841a272ac696b4b1026e2af0f3",
+  "rights_basis": "IN text only. Verified publication no later than 1916; original-author life+60 ends 1964, or conservative posthumous-publication upper bound+60 ends no later than 1976; every selected translator/coauthor latest death 1946, life+60 ends 2006. All bounds have elapsed by actual review2026. Unknown original first date stays unknown; no inference from US-only PG status.",
   "downloaded_at": "2026-06-03T08:04:22.103723+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -115,5 +115,109 @@
       }
     ],
     "content_sha256": "22944ec0e518269ee5676b6fca3c8d7a38f7a0f60083ac84a29b6d7e30714360"
-  }
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "447caa75d91256a4028eb69688345d10f5a0d76c971b39961a0e159e1a159ba1",
+        "content_hash": "669f2abf5030d78bc962625a87b9a6a5ca3bafaeed02df6c833613c04109b73f",
+        "provenance_hash": "8bdfc026d5b2f3904082594b36192c265c6b95cd0a4c5414f545645e113e63ea",
+        "source_url": "https://www.gutenberg.org/ebooks/13416",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:54:02.732252+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1916,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:54:02.732252+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/13416.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/13416/pg13416.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:05:18.796955+00:00",
+      "response_sha256": "518cdaabeea113109967b4c6ad0ed2f4cae23bc390bdcd4eac7a8a4519634f9b"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1151,
+          "length": 26896
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "original_author_death_year": 1904,
+      "latest_selected_creator_death_year": 1946,
+      "verified_text_publication_upper_bound": 1916,
+      "original_first_publication_year": null,
+      "exact_creator_metadata": [
+        "Chekhov, Anton Pavlovich, 1860-1904",
+        "Garnett, Constance, 1861-1946"
+      ],
+      "translators": [
+        "Garnett, Constance, 1861-1946"
+      ],
+      "primary_bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Garnett%2C%20Constance%2C%201861-1946",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Garnett%2C%20Constance%2C%201861-1946",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:50:14.296970+00:00",
+        "response_sha256": "30c8854184496fa1556969d05351e305c07a56d925b1054ed5e83822eb620888"
+      },
+      "bibliographic_excerpt": "darling, and other stories. (Macmillan, 1917) , also by Anton Pavlovich Chekhov (page images at HathiTrust) Garnett, Constance, 1861-1946: The darling, and other stories (Chatto and Windus, 1916) , also by Anton Pavlovich Chekhov (page images at HathiTrust) Garnett, Con",
+      "legal_policy_receipt": {
+        "requested_url": "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+        "resolved_url": "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:51:37.140288+00:00",
+        "response_sha256": "87edb85c6014f6a6415051b982461a708dd901d65b6a6047fc5f5b8080960fe3"
+      },
+      "basis": "IN text only. Verified publication no later than 1916; original-author life+60 ends 1964, or conservative posthumous-publication upper bound+60 ends no later than 1976; every selected translator/coauthor latest death 1946, life+60 ends 2006. All bounds have elapsed by actual review2026. Unknown original first date stays unknown; no inference from US-only PG status.",
+      "scope": "Selected story/complete narrative including documented creators; collection translators note, other stories, art, editor matter not imported."
+    },
+    "author_death_evidence": 1904,
+    "translator": [
+      "Garnett, Constance, 1861-1946"
+    ],
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1916,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "518cdaabeea113109967b4c6ad0ed2f4cae23bc390bdcd4eac7a8a4519634f9b",
+    "content_sha256": "22944ec0e518269ee5676b6fca3c8d7a38f7a0f60083ac84a29b6d7e30714360",
+    "year": 1916,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Garnett%2C%20Constance%2C%201861-1946",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Garnett%2C%20Constance%2C%201861-1946",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:14.296970+00:00",
+      "response_sha256": "30c8854184496fa1556969d05351e305c07a56d925b1054ed5e83822eb620888"
+    },
+    "basis": "IN text only. Verified publication no later than 1916; original-author life+60 ends 1964, or conservative posthumous-publication upper bound+60 ends no later than 1976; every selected translator/coauthor latest death 1946, life+60 ends 2006. All bounds have elapsed by actual review2026. Unknown original first date stays unknown; no inference from US-only PG status.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  },
+  "translator_name": "Garnett, Constance, 1861-1946",
+  "translator_death_year": 1946
 }

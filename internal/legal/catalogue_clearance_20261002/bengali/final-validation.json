@@ -1,0 +1,11 @@
+{
+  "verified_at": "2026-10-02T03:12:40.439971+00:00",
+  "bengali_package_issues": [],
+  "local_own_clearances": 16,
+  "root_owned_indira_clearance": 1,
+  "focused_source_tests": "14 PASS",
+  "all_bengali_actual_manifest_chapter_checksum_rights_bindings": "PASS",
+  "whole_batch_report": "/tmp/bengali-current-validation.json; English transient errors are owned separately",
+  "reader_exposed": false,
+  "audio_exposed": false
+}

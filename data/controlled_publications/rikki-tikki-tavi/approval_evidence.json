@@ -1,12 +1,22 @@
 {
   "slug": "rikki-tikki-tavi",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true
+  "audiobook_enabled": true,
+  "source_hash": "702dcf213efccf27768778ff44434f78557d1e7d2ba7a532899bec64633e55ca",
+  "content_hash": "5278ec9aad39e461bbdb35db8bfce162e01e25ff7b2e532f00d198b6e52f5837",
+  "provenance_hash": "71b80cc91175e5e65cd71a377343b3c5e97a646e5bbc1faef0ecf59b69d49a9d",
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "ec062a9f2d9009136900fb71577e435a83079f06212c06b4d931a88c673820b5",
+  "verified_at": "2026-10-01T21:49:40.745164+00:00"
 }

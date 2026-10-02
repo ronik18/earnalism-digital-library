@@ -1,12 +1,22 @@
 {
   "slug": "boule-de-suif",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true
+  "audiobook_enabled": true,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "20fb37565e905e459b84bafc9fadf4e781d71b31a52756ba47700568a7b5c2a8",
+  "source_hash": "605a186f96870d1993b84199ed14709b833597c9eeac78d2d7fc69c2f454b554",
+  "content_hash": "fc3455677ff33b41f70012df7239691fb56b8bdd977ea187f524b0c2a863d079",
+  "provenance_hash": "c6a35f6c4294cc3e83b99a01a86bd7a67fdc3fb280b0392d644056abbd5b10f9",
+  "verified_at": "2026-10-02T03:12:53.006298+00:00"
 }

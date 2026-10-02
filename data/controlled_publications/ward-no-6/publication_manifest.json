@@ -3,11 +3,11 @@
   "schema_version": 1,
   "slug": "ward-no-6",
   "title": "Ward No. 6",
-  "generated_at": "2026-10-01T21:23:53.140488+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "d105256944cc16cf2d440209e9d086608457234990d68addc3350a5a9b80e512",
-    "content_hash": "1289360732f7dc04fce81d0675a38c361391675746174274a40f8f088f1747f8",
-    "provenance_hash": "9df41865d01bfebd92c589f2c103d8dce9ecce3ee29d868e8d9798dd04237b49",
+    "source_hash": "cc2cd8a8655d24f2e39cbebd531abcb347213b0a7e9208c5ac9670c43a142ab8",
+    "content_hash": "1f9a4802733cb866631842b14ce1bed2d501b2294d1881b8d19e71b7d8452447",
+    "provenance_hash": "8cc37ace78f391060e0cb5cca3be211fb9aca2889b87e8fa87d46f5e224a82c7",
     "sanitized": true,
     "chapter_count": 1,
     "chapter_index_sha256": "1bd83b025ca8caf1630d6e1caa5395cbc533ac61f03497a44b05e2583d4ed276",
@@ -22,10 +22,10 @@
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "e6a05dce4be355416276dab6ed44f0fef87e7a1a39696fac7d85813dd28f9bdb"
+    "publication_region": "india",
+    "evidence_sha256": "6f3708f0567a048154a8af95476a90a3619f5dd246d3b55c35e4890bb94a92f5"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "6a590a00d8ee2766728a1de56fdece75f46d1e7f292b8fdfac1bec0f2cf8cf1e",
+    "public_book": "6de1004077977344ab43ae8aa753e975c2fe4c49b4ecb676f910d778ab2ae85f",
     "reader_manifest": "7a073766331a925269d1c5ad8b18167b7ad6e63a833d4d1b0b962386cca4255a",
-    "source_evidence": "e6a05dce4be355416276dab6ed44f0fef87e7a1a39696fac7d85813dd28f9bdb",
-    "approval_evidence": "90a0557fe3430be831172eb890dd84f196ca6bf9fe25e59b3d7c8bfd4c00bedd"
+    "source_evidence": "6f3708f0567a048154a8af95476a90a3619f5dd246d3b55c35e4890bb94a92f5",
+    "approval_evidence": "dca2bc9971f91ecbafe8aa8e60ed032d6ad45aa7e265df29399c573cfba32b4c"
   },
-  "manifest_sha256": "c4e27cab5fa8228b2175736e0a51507c8ccf281ad7bb31bfea6f2b47cdbb9ae1"
+  "manifest_sha256": "4da16fe3e29739162fc7eeed700d7b37530c44f9cc4042a34c844b8f4194cada"
 }

@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "the-five-orange-pips",
   "title": "The Five Orange Pips",
-  "generated_at": "2026-10-01T21:08:32.578492+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "5d37ae2d72dd6654476af65bcaeabefeb7d0f105910f7e0070803fce1e6a767e",
-    "content_hash": "879efaad73ff552d7c0b7bafc862306936c5aaa1d278dd9e89ecc3a3c9e5c213",
-    "provenance_hash": "eb6e24a5e4ee9a56708d8001f1736cdb05ec1f31bbe72be7739b0536b91dc6bb",
+    "source_hash": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "content_hash": "a48d83ab27f4aa1112764d09f0c25bf689eed6680b66f262d5b43b0446148d91",
+    "provenance_hash": "12bd4d5f2822a75a94ef47db4ee81600d1585d125a5d9c24f39ca59d2dd25816",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "f1bde04d4b299f0dfe4dec258a5dbda1566190cec76651528352b31f794e23af",
+    "chapter_index_sha256": "32673e70aa6fe853ee6fc91435137c379c00080d03f0fcd428f52daafc7731aa",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "The Five Orange Pips",
-        "word_count": 7342,
-        "sha256": "73e4e3c28a0aa9601d88c8ee192f32bce6feb3aceea92420ff4b902ddff4dbf5"
+        "word_count": 7314,
+        "sha256": "dd5bf1bbfe4e275fed297e16bd6dbfe6082bb83c23f7abf4c469d9d1411826cf"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "0eb7b39c379dd31d1e365d6b2492bd7bdbf0dd292b3c112cf57b32fcdfc268a8"
+    "publication_region": "india",
+    "evidence_sha256": "3237bbed5355eb3f2f586c3e82ebe06d86a1c13a42352c1e38601a9e43514a13"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "480c8f53eeda7665a0311ea1eed7023da609552547297fc5b14f54ba186a00c0",
-    "reader_manifest": "9e660d67515f7bd0a8ef45402eace1039a6cd3dc81cc75eeb210390fccf72210",
-    "source_evidence": "0eb7b39c379dd31d1e365d6b2492bd7bdbf0dd292b3c112cf57b32fcdfc268a8",
-    "approval_evidence": "23e79fc9ba56f77e3ddad9f8af4fe79761766f188cbec45dbe02144d8de6c1ad"
+    "public_book": "e1684e642901d9c76913606cb6f5776f7dc24357b444782e6f4efdf6f96228f4",
+    "reader_manifest": "82c39af8cc22a655bace9a1a173c5a05f49eafe181842e94c8deaa9f5f60abdd",
+    "source_evidence": "3237bbed5355eb3f2f586c3e82ebe06d86a1c13a42352c1e38601a9e43514a13",
+    "approval_evidence": "eade6b1f4e3f8c644b0d6aa0c9f79a075b84d2c39f0883c15b642b43b4737974"
   },
-  "manifest_sha256": "2be73685b0e277a14569d16fad0eea29a8b774e599422f2009f2563115af1553"
+  "manifest_sha256": "2541a8bd64cda3e6d142b14360142a34c01057385ee871f6bc5c20af8c0ab0f5"
 }

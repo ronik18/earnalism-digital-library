@@ -1,10 +1,10 @@
 {
   "slug": "sredni-vashtar",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "sprint1_local_release_packet_all_gates_passed",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
@@ -69,5 +69,15 @@
     "endpoint_proof": "20edbe05236ab8f87ca8a5563148ed9a86a98f92399c85d2c5d1db008e6b6771"
   },
   "release_blockers": [],
-  "approved_at": "2026-07-14T09:33:44Z"
+  "approved_at": "2026-07-14T09:33:44Z",
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "sprint1_local_release_packet_all_gates_passed"
+  },
+  "publication_authorization_sha256": "20bb6b3ae3075433c2ed8396f101642442b34b51d51ce5c195074b222435712a",
+  "source_hash": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
+  "content_hash": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+  "provenance_hash": "8d472e6cdc272f1b341c183654a57eab65f521f9a26ed0bb3b30ee93a7354468",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00"
 }

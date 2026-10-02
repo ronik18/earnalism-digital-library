@@ -44,7 +44,7 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 1776,
+      "word_count": 1891,
       "reading_minutes": 8,
       "language_hint": "ben",
       "processing_status": "ready",
@@ -101,5 +101,6 @@
   },
   "audiobook_assets_updated_at": "2026-07-03T20:07:46Z",
   "created_at": "2026-07-03T20:07:46Z",
-  "updated_at": "2026-07-03T20:07:46Z"
+  "updated_at": "2026-07-03T20:07:46Z",
+  "license_notice_sha256": "147a5589c0a697656ead565d81eb0f0b8a5ab4110460677e5ce05443a7b67bed"
 }

@@ -1,0 +1,83 @@
+{
+  "receipt": {
+    "url": "https://bn.wikisource.org/w/api.php?action=query&generator=allpages&gapprefix=%E0%A6%AA%E0%A6%A5%E0%A7%87%E0%A6%B0+%E0%A6%AA%E0%A6%BE%E0%A6%81%E0%A6%9A%E0%A6%BE%E0%A6%B2%E0%A7%80%2F&gapnamespace=0&gaplimit=max&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2",
+    "retrieved_at": "2026-10-01T21:54:51.925136+00:00",
+    "response_sha256": "48c434ced0c001b084a6f80eb074de56a9924e21637dc26352103a6c5bfa2a3d"
+  },
+  "prefix": "পথের পাঁচালী",
+  "leaves": [
+    {
+      "title": "পথের পাঁচালী/প্রথম পরিচ্ছেদ",
+      "revision": 1745130,
+      "revision_timestamp": "2023-05-06T04:57:03Z",
+      "wikitext": "<pages index=\"পথের পাঁচালী.djvu\" from=7 to=11 tosection=A header=1/>"
+    },
+    {
+      "title": "পথের পাঁচালী/দ্বিতীয় পরিচ্ছেদ",
+      "revision": 1608488,
+      "revision_timestamp": "2021-07-18T23:24:05Z",
+      "wikitext": "<pages index=\"পথের পাঁচালী.djvu\" from=11 to=14 fromsection=B tosection=A header=1/>"
+    },
+    {
+      "title": "পথের পাঁচালী/তৃতীয় পরিচ্ছেদ",
+      "revision": 1608495,
+      "revision_timestamp": "2021-07-18T23:39:55Z",
+      "wikitext": "<pages index=\"পথের পাঁচালী.djvu\" from=14 to=18 fromsection=B tosection=A header=1/>"
+    },
+    {
+      "title": "পথের পাঁচালী/চতুর্থ পরিচ্ছেদ",
+      "revision": 1608496,
+      "revision_timestamp": "2021-07-18T23:40:18Z",
+      "wikitext": "<pages index=\"পথের পাঁচালী.djvu\" from=18 to=22 fromsection=B tosection=A header=1/>"
+    },
+    {
+      "title": "পথের পাঁচালী/পঞ্চম পরিচ্ছেদ",
+      "revision": 1608913,
+      "revision_timestamp": "2021-07-19T19:28:58Z",
+      "wikitext": "<pages index=\"পথের পাঁচালী.djvu\" from=22 to=24 fromsection=B header=1/>"
+    },
+    {
+      "title": "পথের পাঁচালী/ষষ্ঠ পরিচ্ছেদ",
+      "revision": 1608975,
+      "revision_timestamp": "2021-07-20T17:19:26Z",
+      "wikitext": "<pages index=\"পথের পাঁচালী.djvu\" from=25 to=29 header=1/>"
+    },
+    {
+      "title": "পথের পাঁচালী/সপ্তম পরিচ্ছেদ",
+      "revision": 1844070,
+      "revision_timestamp": "2024-11-23T07:33:47Z",
+      "wikitext": "<pages index=\"পথের পাঁচালী.djvu\" from=30 to=34 tosection=A header=1/>"
+    },
+    {
+      "title": "পথের পাঁচালী/অষ্টম পরিচ্ছেদ",
+      "revision": 1844101,
+      "revision_timestamp": "2024-11-23T10:26:58Z",
+      "wikitext": "<pages index=\"পথের পাঁচালী.djvu\" from=34 to=39 fromsection=B tosection=A header=1/>"
+    },
+    {
+      "title": "পথের পাঁচালী/নবম পরিচ্ছেদ",
+      "revision": 1844135,
+      "revision_timestamp": "2024-11-23T14:43:58Z",
+      "wikitext": "<pages index=\"পথের পাঁচালী.djvu\" from=39 to=44 fromsection=B tosection=A header=1/>"
+    },
+    {
+      "title": "পথের পাঁচালী/দশম পরিচ্ছেদ",
+      "revision": 1844165,
+      "revision_timestamp": "2024-11-23T16:44:08Z",
+      "wikitext": "<pages index=\"পথের পাঁচালী.djvu\" from=44 to=51 fromsection=B tosection=A header=1/>"
+    },
+    {
+      "title": "পথের পাঁচালী/একাদশ পরিচ্ছেদ",
+      "revision": 1844355,
+      "revision_timestamp": "2024-11-24T09:35:59Z",
+      "wikitext": "<pages index=\"পথের পাঁচালী.djvu\" from=51 to=55 fromsection=B header=1/>"
+    },
+    {
+      "title": "পথের পাঁচালী/দ্বাদশ পরিচ্ছেদ",
+      "revision": 1896425,
+      "revision_timestamp": "2025-07-17T16:39:31Z",
+      "wikitext": "<pages index=\"পথের পাঁচালী.djvu\" from=56 to=64 tosection=A header=1/>"
+    }
+  ],
+  "continuation": null
+}

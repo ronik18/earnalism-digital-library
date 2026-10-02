@@ -1,6 +1,6 @@
 {
   "slug": "pride-and-prejudice",
-  "generated_at": "2026-10-01T21:19:39.153654+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
@@ -256,7 +256,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "0c92ac381141912d13f1ae5b4d1d7eae27e52fecf378672efa66e1937b97b00d"
+      "sha256": "c9c7472c67232de4c9eba6b94428b107b4c00b6156552c2122bfa6a0bfb6cd7e"
     },
     {
       "file": "publication_authorization.json",

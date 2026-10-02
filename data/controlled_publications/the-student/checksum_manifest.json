@@ -1,14 +1,14 @@
 {
   "slug": "the-student",
-  "generated_at": "2026-07-03T20:07:49Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "4b1aad52062e04aa8c6d87072d16c1379a15800d2f349eadeeef1000ae19b0eb"
+      "sha256": "955649b36bc37be200063d33fbd70687f578b1da2142b610acfe203e0be68b18"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "2831060443c651368848707b46ce1188ba3886dbb946eec86483c322fc643d37"
+      "sha256": "6ab4a3f5e7cbe52f40787b7d54a026c6e4cc16b5ed2e163067f689ae097dfea1"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "aa71e62a5aa8a39a6d7c8945d9d5d45c07e57077ece03823b9d2420a7ddecb47"
+      "sha256": "b033960f7131bbab83eeed26ef84a13dc3309f18440467e86cf144183fc4189e"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "67236f204812f462255354a2d35c5f20baaddc49eecbb7010036c5cd93e1ef96"
     },
     {
       "file": "reader_manifest.json",
@@ -24,7 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "deb4ee7847fd3cfebed56a2555a98a5e3bf9301692739a7e72b374b849a39ef5"
+      "sha256": "0bc62a4920342e7fd0845770fbdf73e9693347c3172250c4b5aaff120d149700"
     }
   ]
 }

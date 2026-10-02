@@ -20,6 +20,8 @@ def enabled_release_fixture_for_legacy_contract_cases(request, monkeypatch):
     """Keep eligibility-unit fixtures distinct from the shipped release hold."""
     if request.node.name in {
         "test_shared_controlled_launch_config_matches_backend_and_audit",
+        "test_live_artifact_pack_is_self_contained_for_truth_gate",
+        "test_held_dracula_preface_is_valid_structure_not_publication_authority",
         "test_live_approved_mongo_query_preserves_rights_and_search_or",
         "test_server_controlled_public_query_uses_catalog_truth",
         "test_public_release_scope_denies_held_titles_and_never_reopens_historical_manifest_slugs",
@@ -199,12 +201,12 @@ def test_projection_removes_private_rights_audio_and_chapter_content():
 def test_live_artifact_pack_is_self_contained_for_truth_gate(monkeypatch):
     monkeypatch.setattr(catalog_truth, "evidence_for_book", lambda _book: {})
 
-    artifact = catalog_truth.load_dracula_artifact_book(include_content=True)
+    artifact = catalog_truth.load_controlled_artifact_book("a-ghost-story", include_content=True)
 
     assert artifact is not None
-    assert artifact["slug"] == "dracula"
-    assert len(artifact["chapters"]) == 27
-    assert artifact["source_url"] == "https://www.gutenberg.org/ebooks/345"
+    assert artifact["slug"] == "a-ghost-story"
+    assert len(artifact["chapters"]) == 1
+    assert artifact["source_url"] == "https://www.gutenberg.org/ebooks/3189"
     assert artifact["source_hash"]
     assert artifact["content_hash"]
     assert artifact["provenance_hash"]
@@ -222,7 +224,7 @@ def test_live_artifact_pack_is_self_contained_for_truth_gate(monkeypatch):
     assert "rights_metadata" not in projected
     assert "audiobook_assets" not in projected
 
-    status = catalog_truth.dracula_artifact_status()
+    status = catalog_truth.controlled_artifact_status("a-ghost-story")
     assert status["self_contained_for_truth_gate"] is True
     assert status["fallback_requires_legacy_output_evidence"] is False
 
@@ -852,3 +854,18 @@ def test_api_audit_fails_if_dracula_detail_returns_404(monkeypatch):
     result = run_api_audit(mapping, monkeypatch)
 
     assert any("/books/dracula did not return 200" in blocker for blocker in result["summary"]["launch_blockers"])
+
+
+def test_held_dracula_preface_is_valid_structure_not_publication_authority(tmp_path):
+    import shutil
+    source = catalog_truth.controlled_artifact_dir("dracula")
+    target = tmp_path / "dracula"
+    shutil.copytree(source, target)
+    issues = catalog_truth.dracula_artifact_validation_issues(str(target))
+    assert not any("chapter_count" in issue or "chapter sequence" in issue or "wrong order" in issue or "selected layout" in issue for issue in issues)
+    assert any("approved_to_publish" in issue for issue in issues)
+    assert catalog_truth.load_dracula_artifact_book(artifact_dir=target) is None
+    shutil.copyfile(target / "chapters/chapter-027.json", target / "chapters/chapter-028.json")
+    catalog_truth.clear_controlled_artifact_caches()
+    issues = catalog_truth.dracula_artifact_validation_issues(str(target))
+    assert any("exact selected layout" in issue for issue in issues)

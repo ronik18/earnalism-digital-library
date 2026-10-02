@@ -3,12 +3,12 @@
   "source_url": "https://bn.wikisource.org/wiki/%E0%A6%95%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4_(%E0%A7%A7%E0%A7%AE%E0%A7%AE%E0%A7%AB)/%E0%A6%95%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0_%E0%A6%A6%E0%A6%AA%E0%A7%8D%E0%A6%A4%E0%A6%B0",
   "source_name": "Bengali Wikisource",
   "source_license": "Underlying Bengali literary text is public domain in India and the U.S.; Bengali Wikisource transcription/source layer is reused under CC BY-SA terms.",
-  "source_hash": "9efae8fe7a3d58fb20c46491f8be3a869422c7ffcbc31b0ce3eb47c8f528b8a1",
-  "content_hash": "3ab439de3efeda9d506ffa50795473ce3ced5de88849bb38a0c943db73c27387",
+  "source_hash": "59b705ade59945af3d9dda854e63053a73b9d60a2fcf50127b0be27c315ee147",
+  "content_hash": "123bbd5c1c19edbf30eb6291a6bb5954e02128745d401846ce6d7512c60fdb21",
   "provenance_hash": "41369de7a0fc46a56d1ac62c5451e323cd8a59fcd52830d652f3fdb2f419fbd0",
-  "rights_basis": "Author died 1894. Published 1875. Public domain checks are enforced by the Earnalism import pipeline; source evidence kept internal/admin-only.",
+  "rights_basis": "Exact Kamalakanter Daptar expanded1885 edition, Bankim with explicitly credited Akshay Chandra Sarkar and Rajkrishna Mukhopadhyay essays; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1917; India Section22 literary term expired end1977. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
   "downloaded_at": "2026-06-04T16:51:08.740580+00:00",
-  "source_format": "text/plain",
+  "source_format": "SHA-bound multi-chapter rendering receipt, with per-chapter actual rendered HTML SHA/revisions",
   "reader_facing_boilerplate_removed": true,
   "author_death_year": 1894,
   "author_fact_evidence": {
@@ -27,27 +27,27 @@
     "source_edition": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর; 1885 expanded second-edition source page",
     "scope": "EXISTING_REVIEWED_PUBLICATION_FACT_ONLY; SOURCE_COMPARISON_AND_LICENSE_OBLIGATIONS_REMAIN_TITLE_SPECIFIC"
   },
-  "verification_status": "pending",
-  "text_clearance_status": "PREPARED_EVIDENCE_NOT_AUTHORIZED",
+  "verification_status": "approved",
+  "text_clearance_status": "OWNER_DELEGATED_AUTOMATED_IN_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "e51980ac2949353f4fea1294e37fbdcf3158cc6111aa552d171224b410b97bb5",
+    "reader_content_sha256": "123bbd5c1c19edbf30eb6291a6bb5954e02128745d401846ce6d7512c60fdb21",
     "chapter_count": 13,
     "chapter_content_sha256": {
-      "chapter-011": "8e1f623d971a6e168dc04bc974e92421ae6809dc828603c5d0551eee02ac7679",
-      "chapter-008": "9c93c48f56cf7d71705b4219411debbf857a1c59e9801053bdf7bef9d1fd448a",
-      "chapter-004": "a04bcbdcfc139596f2aad724fd8144b9783d67c2a2a12fe1abb9f6dbe5d3803a",
-      "chapter-003": "ab301887f452374e5e8eb43d49d7ad22a1b6c0015367ad98f9c12af312b3835f",
-      "chapter-010": "96a3bb93ea6e4484de991958928c7a7fd7e77d59c092fff88f6c2e732c87cc6a",
-      "chapter-012": "1102a72be55bdf8e51e7fdc5baca274c179aaa770bb43ae15a65a850e5f10605",
-      "chapter-013": "1887bc299d841297deacd3d89c8b75a53d3c60f3a9d747a6c49f90a6e337f344",
-      "chapter-001": "e04f746c0690e5124ca07c222dff6e0e7597eaaebe2dabea845a3a4c5efe97e9",
-      "chapter-009": "cf5cae83724948224b0305738e8a6476d4593311dbecf125b10727ca09eb725d",
-      "chapter-006": "46ed8cde89d44354166d39f82ab5c010ee91a803f9381415b1a9ce5713a6a1b5",
-      "chapter-002": "547858c3556ac9ac2f96fb4e070cdc641c712739d0b9b6a722c9f75e211ca28e",
-      "chapter-007": "d92deb3e4f49539aada28dc548adda51fb89abff578433b3e12541421f85a804",
-      "chapter-005": "a661e637ee68f25cebca25ec99abe9d613d7ade07286b9e6415d48d6b7aaf2fd"
+      "chapter-011": "6e100abcbfaf07f34d6d827d4d86e5df67672e9e0e8d584853c9f39fad015f54",
+      "chapter-008": "2447daf1bd2f297b64e66df74ebeea2e24c9644adcaf3a7df91a32949a5962c0",
+      "chapter-004": "f7946b6819268c9179a678630c6e826e2bb6efae51eb4657e6a7ddfa852f7353",
+      "chapter-003": "6bc3bb351427876e50474b9a1eec1cca173983f2ae77ccf29c784a4f6cb6a221",
+      "chapter-010": "3e036cdd5fabbcf8b388a4e956fd56b97779c4ca18c0a6b16075dfe92c6bbf29",
+      "chapter-012": "3fc4df5185d2a209784bfb18396adf49fc0aed238564d5d19cb107e3d91b6c42",
+      "chapter-013": "8791439978bef7c49f067984b43a8a58b7371930cc37dd670b32f2a7bf143e47",
+      "chapter-001": "753f0ed8bca92c98b863f81bed1b6c744009dce77e9959137c7b3ad592cea047",
+      "chapter-009": "eb70cd62e377022b51f76d746949a6259aa20a6135eaa3dab25246632027f428",
+      "chapter-006": "4da21913ac97f92d5e5fb1f4e6148468a041e2dc05831e5f5e7e6b63227ad710",
+      "chapter-002": "d3019ba58943c24c011bb75736dbe1d2fd632380cc97a9b4812a5a2debdfd729",
+      "chapter-007": "ff761605da4bb4995efde6673ab55821013ecd63f3b524b0a8ef106e5002ba45",
+      "chapter-005": "dcc77d7c8d86fdf35c4ae92a0e0ea691d4e9b00322f34b9155bf19032a59384c"
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
@@ -58,5 +58,27 @@
     "chapter_ids_preserved": true,
     "literary_content_bytes_unchanged": true,
     "scope": "ReaderTOC/ordercorrection only; sourceedition rights/completeness andpublication remainheld"
+  },
+  "full_rendered_multichapter_repair": {
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/multichapter-narrow-source-repairs.json",
+    "scope": "Same edition source paragraphs, with original notes/verse retained; no rights approval"
+  },
+  "historical_import_hashes": {
+    "source_hash": "9efae8fe7a3d58fb20c46491f8be3a869422c7ffcbc31b0ce3eb47c8f528b8a1",
+    "content_hash": "3ab439de3efeda9d506ffa50795473ce3ced5de88849bb38a0c943db73c27387",
+    "source_url": "https://bn.wikisource.org/wiki/%E0%A6%95%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4_(%E0%A7%A7%E0%A7%AE%E0%A7%AE%E0%A7%AB)/%E0%A6%95%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0_%E0%A6%A6%E0%A6%AA%E0%A7%8D%E0%A6%A4%E0%A6%B0"
+  },
+  "edition_publication_year": 1885,
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "source_snapshot_identity": {
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-059-multichapter-source-comparison.json",
+    "sha256": "bf079eaa8a911bc585ed6c01e0d5517cef4ea545ba9ff1974f5d32cb601d04d3",
+    "scope": "Actual captured original/source edition transclusions; parent revision alone does not freeze transcluded pages."
+  },
+  "edition_evidence": {
+    "edition": "Kamalakanter Daptar expanded1885 edition, Bankim with explicitly credited Akshay Chandra Sarkar and Rajkrishna Mukhopadhyay essays",
+    "primary_record": "internal/legal/catalogue_clearance_20261002/bengali/bn-059-primary-imprint-pages.json",
+    "record_sha256": "3c52fa5eb56db9c714f4ae66fc1aaae12e6e08b152448e8cbe9a8fd4fc7b9380",
+    "scope": "Selected exact literary narrative and retained source notes only; no artwork, publisher matter, separately authored foreword or other edition authorized."
   }
 }

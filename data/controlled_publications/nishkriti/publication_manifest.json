@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "nishkriti",
   "title": "নিষ্কৃতি",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
     "source_hash": "bc5b99f4e931e55e74ad67a6999a0c8835ca0de99b65d994761a71229546d0cd",
     "content_hash": "cdb373751bb4dabafa6e6b4aff5f00213c876c35f22feb981ba64b8d9f4246bf",
@@ -103,10 +103,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "adabab5489d5528337ac1046f5149eff46996ec0576476997881fbd28c320180",
+    "public_book": "3bbf95940b6238e1f973695fff83bde4c832d0f730487efb4961c4ad07c73489",
     "reader_manifest": "a47ee2e6cb45ca40e74ff441371f3397d06e9ce24a191c77fa155396937850b5",
     "source_evidence": "9421496918727ee6da6d3af10fda225a53056cfe5b9495a6420f7e57d86c1b96",
     "approval_evidence": "35ea07be669e75a733f37892e1e09f4c3d4a46d16b4b7d8a3c0c2950a0b7fff7"
   },
-  "manifest_sha256": "b65a8f85b5e4eb7db2761bf419aded0f4bb566a91024841539c4225c85474761"
+  "manifest_sha256": "c3d6e947b06783a36c8ac286f93488ca535197e46a3a893da557bf043f367786"
 }

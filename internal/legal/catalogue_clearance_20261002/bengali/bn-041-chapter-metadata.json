@@ -1,0 +1,47 @@
+{
+  "receipt": {
+    "url": "https://bn.wikisource.org/w/api.php?action=query&generator=allpages&gapprefix=%E0%A6%AE%E0%A7%87%E0%A6%9C%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF+%28%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC%2C+%E0%A7%A7%E0%A7%AF%E0%A7%AC%E0%A7%A9%29%2F%E0%A6%86%E0%A6%81%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A7%87+%E0%A6%86%E0%A6%B2%E0%A7%8B%2F&gapnamespace=0&gaplimit=max&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2",
+    "retrieved_at": "2026-10-01T21:48:23.056027+00:00",
+    "response_sha256": "48eeed87e15221840d40034a0745caba1bd97c2e93c5d5471d961c73cc1ddd1c"
+  },
+  "prefix": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/আঁধারে আলো",
+  "leaves": [
+    {
+      "title": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/আঁধারে আলো/এক",
+      "revision": 1996451,
+      "revision_timestamp": "2026-08-28T02:58:14Z",
+      "wikitext": "<pages index=\"মেজদিদি - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=41 to=43 fromsection=B header=1 />"
+    },
+    {
+      "title": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/আঁধারে আলো/দুই",
+      "revision": 1937033,
+      "revision_timestamp": "2026-01-29T15:01:37Z",
+      "wikitext": "<pages index=\"মেজদিদি - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=44 to=45 tosection=2 header=1 />"
+    },
+    {
+      "title": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/আঁধারে আলো/তিন",
+      "revision": 1937032,
+      "revision_timestamp": "2026-01-29T15:01:37Z",
+      "wikitext": "<pages index=\"মেজদিদি - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=45 fromsection=3 to=49 tosection=3 header=1 />"
+    },
+    {
+      "title": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/আঁধারে আলো/চার",
+      "revision": 1937030,
+      "revision_timestamp": "2026-01-29T15:01:37Z",
+      "wikitext": "<pages index=\"মেজদিদি - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=49 fromsection=4 to=51 tosection=4 header=1 />"
+    },
+    {
+      "title": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/আঁধারে আলো/পাঁচ",
+      "revision": 1937034,
+      "revision_timestamp": "2026-01-29T15:01:37Z",
+      "wikitext": "<pages index=\"মেজদিদি - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=51 fromsection=5 to=59 tosection=5 header=1 />"
+    },
+    {
+      "title": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/আঁধারে আলো/ছয়",
+      "revision": 1937031,
+      "revision_timestamp": "2026-01-29T15:01:37Z",
+      "wikitext": "<pages index=\"মেজদিদি - শরৎচন্দ্র চট্টোপাধ্যায়.pdf\" from=59 fromsection=6 to=64 header=1 />"
+    }
+  ],
+  "continuation": null
+}

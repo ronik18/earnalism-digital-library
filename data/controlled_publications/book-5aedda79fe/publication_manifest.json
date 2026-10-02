@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "book-5aedda79fe",
   "title": "শাস্তি",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
-    "source_hash": "7d6e7fef47811ea27f5cf67005046a67bda3a16b1da2e4c4ae17d465b4684e75",
-    "content_hash": "7d6504abe60d1617e7e656c2ca9b3ba0c9a908e38c9f5026d1468ed777f464dd",
+    "source_hash": "8dc30655e4bd2351ddf1642819c6c85fe0cc6290dc8aba5abb652035f267db42",
+    "content_hash": "e438383f30fc659409490628baa424cb42b3c9d54e700034d958d8ee989039d4",
     "provenance_hash": "f30f01be102d7e8bc6b8dcfb7fba23e44f0441a68bea11bd69b4cdc7c63f0f4a",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "6808decd3350791d2acdb7746f002842a2b5db266e4ab0222e3f72b6581285a1",
+    "chapter_index_sha256": "cbd4ab4cc9d12eee92886cc3a1915203e1ca5111fc04585b93b3598c0999d3e1",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "শাস্তি",
-        "word_count": 2905,
-        "sha256": "1710d1c8597100528ee632be10ab25c44427318bf4555cb4d46fc756655b8446"
+        "word_count": 2923,
+        "sha256": "7c7245bf98948f0a5dc8cc96a1472c384e05b5715df0d6c64e86ab46721ce845"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "37ccdc376f46c78b95071e1ff01e5736fbf4c2dfa4c257349bfccbdb28f25fdf"
+    "evidence_sha256": "5e55b8f2d036d893b4eebfbf41f2919b5bc172c0179ebc3d0193aa9a5ba50dee"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,8 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: verification_status must be approved before publishing."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -47,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "bf1d4bd08a4275a0f756dc8d607c397958e040de39de4cb4b7c22523b3bfc59f",
-    "reader_manifest": "6868dc951ea5dffc411e9a88d98103728269635ba1248e313f10567db1182778",
-    "source_evidence": "37ccdc376f46c78b95071e1ff01e5736fbf4c2dfa4c257349bfccbdb28f25fdf",
-    "approval_evidence": "cc1cb72ea294c1ad8c84c6e7b34eb43bc10647d9b63960376096458d464aab57"
+    "public_book": "c5a3368e0c165ed5667514eadef62b4315129f4c80804225d2826bef389c8164",
+    "reader_manifest": "2bf22e76ebcc765ae312f2e42e024903ed527246c3953158b1a4323db9720102",
+    "source_evidence": "5e55b8f2d036d893b4eebfbf41f2919b5bc172c0179ebc3d0193aa9a5ba50dee",
+    "approval_evidence": "b6bd44fd7d70b23cb534f72429e93124dce7386ae38ccf8c043507d7dadcf7fb"
   },
-  "manifest_sha256": "2d303e1e2a8e87e7cad9e24e5aa5779badccbbde7fb2ef8642916b828f8fb4d3"
+  "manifest_sha256": "90c65841bdce04acfa24678c4a45e88912d10923fb8a209d4dd3812b0a8f7784"
 }

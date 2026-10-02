@@ -1,14 +1,14 @@
 {
   "slug": "the-adventure-of-the-abbey-grange",
-  "generated_at": "2026-07-03T20:07:48Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "fde45d9254bdcf1b5630641721e689424c3286b71bea8fef441ad10ad0204f5d"
+      "sha256": "83ac7bfe8782d7286ffa4af8956de0b2052a62ddad92f38df3d9c2c13eae287e"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "2360511a0640687e6d235126a785d302f4aad53d5d951c9527986bf49ddebcc8"
+      "sha256": "64157f3db639a48dadb1f501fb1336824120adeda9dbfd23087533249da164ab"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "afafaaafc62201ce4f8ac961a357ef993757b903212698f6829a939dd9f81cd1"
+      "sha256": "409e82a8a72ce8d1eac6693e64aef0302c10b727e08386d931bbad547e89bb46"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "aca5ce28ea663e940afaa621fa7e93fc409e653e3ae7177172dd39abc7c059e7"
     },
     {
       "file": "reader_manifest.json",
@@ -24,7 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "ad35721d931d74d4905e789289cafa7ecdb4aee92ec7bb72ce96f5fe8490f482"
+      "sha256": "2ea653102e409fd21b57cfeb0ab27ac32a8245c4ffbf48aef9f1089acff6b13e"
     }
   ]
 }

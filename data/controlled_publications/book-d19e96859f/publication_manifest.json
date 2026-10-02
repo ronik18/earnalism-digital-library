@@ -3,21 +3,21 @@
   "schema_version": 1,
   "slug": "book-d19e96859f",
   "title": "গিন্নি",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
     "source_hash": "3c184ef8918fee4686c3ac93e17c12d7108617099c70425948cdd7cbf36b68d5",
     "content_hash": "021462a46f1c87fb984bd68c0d90ff022123dacc236e876ee97baee87ff065fa",
     "provenance_hash": "a2c7815b2c7477def2684e3e374b5d1db23d18888e6f9769dd9efbdf6c8a0717",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "1c594749b2586104574de9b75ff77aa890879909b11f7783eaf42e1af709281c",
+    "chapter_index_sha256": "1f5994834d7355e43ee8880885521e223fbd78cd10290c270eb7e92d248ae3ea",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "Full Text",
-        "word_count": 1000,
-        "sha256": "26d10f7e8eecae197da20254ff5b5be5ff1c083a55051c1e343259505550d845"
+        "word_count": 997,
+        "sha256": "0a71d45f03c68baac94c556637e0f5876d83bb03487d10b0efd49f1f2450b39f"
       }
     ]
   },
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "7e234e65023c7219716f0e7a7b19719c8508fe3163dac2e73a2146b17ac66a7d"
+    "evidence_sha256": "6c339bd998c2d6aa67c7004c42ab4adf5c6dd9e41147e245cd74448f4e99e88f"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -46,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "1cce39252afbf783f60e960113fdc837d5a3a511b1b17a9c7f3c9af678f41af2",
-    "reader_manifest": "572b407f2559bb96af06a247f72d1333ba84531774265184e7ee62b18fa1d3fa",
-    "source_evidence": "7e234e65023c7219716f0e7a7b19719c8508fe3163dac2e73a2146b17ac66a7d",
+    "public_book": "6c711d3ca97ce6f5aec5d5b420e374a88878f79cbc3669435f60650d931685e5",
+    "reader_manifest": "b27c8a73c41ac411594c7fb708027b6cf45edfd39d277eb7d87172b5ce36ca26",
+    "source_evidence": "6c339bd998c2d6aa67c7004c42ab4adf5c6dd9e41147e245cd74448f4e99e88f",
     "approval_evidence": "76453786385926e62d3168a96f301cdc88d8a3d5c48d896272e39c3684911a3d"
   },
-  "manifest_sha256": "4db11b19ec08d25f86eaae107cb5649f07e243ab79990464d1e68906a7585931"
+  "manifest_sha256": "6c53cb3c114b3ed875548bec321ec7de50d5ba583ecf1f6c922def8b74763f69"
 }

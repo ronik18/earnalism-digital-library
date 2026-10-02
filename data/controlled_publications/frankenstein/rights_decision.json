@@ -5,12 +5,12 @@
   "operator_id": "reo-enterprise",
   "status": "ACCEPTED",
   "components": {
-    "public_book": "105971ebf3b835311acaf2619767020ee1118136017a735ab47a4448a0b75450",
-    "reader_manifest": "0a616cf5e248085c7b6733f651cadd469d76287a27d03a7390d7873967023d6e",
-    "source_evidence": "3dd90b4858364fa6ab260065879151145383f0d5015fa33994440077875feb82",
-    "approval_evidence": "2bf3725626a6e7552b4e0ae5142e5814d784de075fd9345adefa017f5f8c0ab4",
-    "checksum_manifest": "1c83f2a43f4a4af58e7ccd08c6bac0bcca8d5ffe4808c7e8163d9018e64720ea",
-    "publication_manifest": "2c7bcbb13eb9b0ac70e1bb899a3c121bce42f0148fb4f3c3b70bbf0d4f57fb2a"
+    "public_book": "0931fd10d69e503822d094a8f3cdb4469d4d784f4baff25e6434cc34ebfa1d20",
+    "reader_manifest": "2d7d0f01dcbc35eebc51a178b4eb72a9d766cfe5ec56d618113455ba72c16434",
+    "source_evidence": "dc06292e3e257f690c3017e88ded33d0b6baa8b778d1629f3074d1f76b5df449",
+    "approval_evidence": "2da12440ee6c9e3445589e5997f6cf889898e7dcfa91827c750218e1e4a4eccc",
+    "checksum_manifest": "54c83749b848ff53f92d82b819ad017d9752fef493002bd1da4c5eefc0a553f2",
+    "publication_manifest": "aae06c06c9502a2c1304a36a652a06e3d0b02f910de6c67b43d33d7f35736e26"
   },
   "territories": [
     "IN"

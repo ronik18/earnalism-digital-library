@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-my-life-and-work-pg7213-noncover-text",
+  "edition_id": "my-life-and-work",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "2faf1163819daeb497195cfdaff83b499a502cc94d18f796a56bed157268dfad",
+    "reader_manifest": "8abb80566e377a38ba0730ffb69c7dc0fbb53358c6e0908492d968fea1313acd",
+    "source_evidence": "1d5f331b74b4ac24ba559209d4d1c8ca3543a1cdc274a71bdf14bb2022b7d4b7",
+    "approval_evidence": "a610b3cb1227bdc214dcbbfb0d2350e8c3b67feafd79d3d3898ddca494a3f056",
+    "checksum_manifest": "8c6ba3b2ea21b64cde337c1d973efb4be674b2aabd0e944e73c7c00cc641dde5",
+    "publication_manifest": "971de38325cf31af7d5ec1976732d8138e0a371bb3e35e79bb013224cd81a745"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:54:02.732252+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "IN text only. Verified publication no later than 1922; original-author life+60 ends 2007, or conservative posthumous-publication upper bound+60 ends no later than 1982; every selected translator/coauthor latest death 1947, life+60 ends 2007. All bounds have elapsed by actual review2026. Unknown original first date stays unknown; no inference from US-only PG status.",
+  "evidence_sha256": [
+    "779dfe499ca31d64aa4ddb2459efec18f16954bc335c7ab5ce770a191570fdce",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "a388a671e0b83a3dac9b697160f216cfce3eaf3c851dc1b7924cdf63ba36ba85",
+    "f01c925ba4a15ccc6a5aa706418cf94149ddd7d8f390c65d132b8675435b00cf",
+    "8309a5246622002f4fceef9f19e8e26218f0a06320cf53197a91296e0ee21c86"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

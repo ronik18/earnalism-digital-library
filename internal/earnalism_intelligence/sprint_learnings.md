@@ -2584,3 +2584,6 @@ Author lifetime facts, transcription licensing, exact source edition and publica
 ## Catalogue clearance 2026-10-02
 
 122 packages repaired; four local exact-edition text decisions, no live activation. Later editorial rights and ambiguous publication dates remain held. Repeatable static SEO generation must strip only its own generated fallback. CC-licensed delivered text must retain downstream license permissions.
+
+### Catalogue clearance final checkpoint
+103 local text decisions remain unexposed; covers deferred. Primary-source whole-work verification, immutable license notices, conservative India publication bounds and known-live runtime controls prevent false readiness. Damaged Eyesore glyphs and conflicting Kafka permissions remain held.

@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "pauls-case",
   "title": "Paul's Case",
-  "generated_at": "2026-10-01T21:08:30.383894+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "91d773236f32e0fc615e5efc326c5aec8aa7c4984cd2c9a6dc0a626d954676fb",
-    "content_hash": "9f6c9dbd187c102c629cfc21b94af323200799e8a9784a431b93c3b5650c16f9",
-    "provenance_hash": "78d6cd8d5fcee7138329fddc0af062fdb4d05bc2b7e651986e2c525894a5e9d9",
+    "source_hash": "926b042528d42a6e8b0e062dfee1987fbbb4ddbe1ea6601d2b61fc77b452f521",
+    "content_hash": "3674aee90e9811565646f07f4763ff4a3fa742b26a74774d52c7d15cf5c014c7",
+    "provenance_hash": "ee2f34e521c214d7feb8bf6ac36d066e6db4619f6cc178d518136dc3eaa62f01",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "dfb1df4ed794e2f77cfc91f2c4fc2ea96775cb7f9023aeca394592a7b9e72da4",
+    "chapter_index_sha256": "9a8d0e22d31c87d9c777404a315b06b2abf58fc1ac93caa818bda27ddee1b3de",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "Paul's Case",
-        "word_count": 8574,
-        "sha256": "012800a583234fc2e6b833b1cd06b4a5daa9d0000f0333aa0182743cad0a6c28"
+        "word_count": 8563,
+        "sha256": "382d09c8a5b314c01572602056650184c56d6cfa949a06e11765cfcb9617c9c0"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "8c6d582abf17196f978315ac742b6406b4f8b92e48adaaadf34c8e39e5ffb2c5"
+    "publication_region": "india",
+    "evidence_sha256": "76767e72e36c865649b470d0d236359a98ff4050ce6603abf57594751c618f00"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "a4ed4ad9ef29baf39d455c28a100236eebbdd8c28f36794b3cd65888c738c594",
-    "reader_manifest": "0ae2f387edef1df668b150ebe5bc12d1ae17e59064998c222c220c4519f64db7",
-    "source_evidence": "8c6d582abf17196f978315ac742b6406b4f8b92e48adaaadf34c8e39e5ffb2c5",
-    "approval_evidence": "ccfd5d84d02bcd792ee09a1f4c441d90f0fcd4eb0236496a5e8f3ef558960041"
+    "public_book": "1c81f4df8f84172e05ddf59b996103bdca15e969ac4617b9d4eff500fb388cf0",
+    "reader_manifest": "989cf6568082995476b2800f2ff6d7c2c935619a3b69c75e9b6ce989f475aaf8",
+    "source_evidence": "76767e72e36c865649b470d0d236359a98ff4050ce6603abf57594751c618f00",
+    "approval_evidence": "a63672ee148e4049da609d1708645177fad3dd77d3475efa4014f076a9b913ad"
   },
-  "manifest_sha256": "f02061b0888294c507a7784114073c5eabbd93c6032a991dfc83c2060f937f04"
+  "manifest_sha256": "2f3ef40ac4a43db03c52c0cfd798d6773abe0959232b68b72e135e04df2e9b33"
 }

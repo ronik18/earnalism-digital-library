@@ -622,7 +622,7 @@ function hasGeneratedAudioEnabled(book = {}, bookId = '') {
 function rightsForBook(book = {}, userName = 'Reader') {
   const title = book?.title || '';
   const licence = approvedTextLicense(book);
-  if (licence) return { licenseMetadata: 'CC BY-SA 4.0 · transcription only', licenseNotice: `${licence.attribution} ${licence.changes} ${licence.scope}`, footerText: 'Transcription: CC BY-SA 4.0 · see attribution and licence', watermarkText: 'Earnalism · CC BY-SA transcription' };
+  if (licence) { const label = licence.license === 'CC0-1.0' ? 'CC0 1.0' : 'CC BY-SA 4.0'; return { licenseMetadata: `${label} · transcription only`, licenseNotice: `${licence.attribution} ${licence.changes} ${licence.scope}`, footerText: `Transcription: ${label} · see attribution and licence`, watermarkText: `Earnalism · ${label} transcription` }; }
   if (/bharat at the crossroads/i.test(title) || book?.slug === 'bharat-at-the-crossroads') {
     return {
       licenseMetadata: 'Bharat at the Crossroads - Original Earnalism Digital Edition',

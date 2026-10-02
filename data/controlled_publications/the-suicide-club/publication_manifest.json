@@ -3,11 +3,11 @@
   "schema_version": 1,
   "slug": "the-suicide-club",
   "title": "The Suicide Club",
-  "generated_at": "2026-10-01T21:23:53.140488+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "36f2eab8f19108f05a306169130f8bddc9c21c23725e7c12a330ac18cfdb9e39",
-    "content_hash": "42592fc8597ac69e604f61b3930d46848712033a3d5ca427d02a7234952e36e3",
-    "provenance_hash": "06055fded54812b2a06957fef8e55de7d89f2d115b9cc403a8ca1d834aa330a6",
+    "source_hash": "8205ac009edcea995ee855585b05c223e22e1f53b00a96b2922d8a05d5f005bd",
+    "content_hash": "43116bd2508f624562da844230418d70ed14eab3533f8173ff310e27b98fe814",
+    "provenance_hash": "800ced5e8d56dc32ab1dea0ca063c7a62351e10c12976aec47799ffdf188a6a0",
     "sanitized": true,
     "chapter_count": 1,
     "chapter_index_sha256": "5fcfa6915649b26b2161e1d35a7177d489490f06de7d2e08e049adeb2bf96300",
@@ -22,10 +22,10 @@
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "fe39aa75581aebebd21cdbd698750da20f8859c472e7e5a3b8c4c20400f195b8"
+    "publication_region": "india",
+    "evidence_sha256": "31ada81b78969f19601408f7ac5c98db8389eef4f47de5c34e9d844e412ac2b6"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "e67f15efe65d99d5188f5e9f9a32a288858a8a197731ccd63e6dde6d8498e0a9",
+    "public_book": "8437baffb6a017ba0f5a1846beb3c3cdd7eed583bb6840e7343babb44b27d46e",
     "reader_manifest": "42fb66939ed7a42ed60042f5a84b2d8a3d08dfafecf0e0011c55850e58f5bcfe",
-    "source_evidence": "fe39aa75581aebebd21cdbd698750da20f8859c472e7e5a3b8c4c20400f195b8",
-    "approval_evidence": "2e4a1bc9da26af5876d1301394bbff413ac7e3ebf59c060e1c6cc72127c93959"
+    "source_evidence": "31ada81b78969f19601408f7ac5c98db8389eef4f47de5c34e9d844e412ac2b6",
+    "approval_evidence": "01d7b0ab504012ac563531c0ac16f05bb15de62f1180c73b984a75c321e01b82"
   },
-  "manifest_sha256": "e1b7e8e822dd3eafd7770dcfea5e73f1a474bd23ef9a1d49c7f335e055549e89"
+  "manifest_sha256": "4ebf0817fa384ccee5430b6634dd97e4908362866362648ad38bd24b4e6f640b"
 }

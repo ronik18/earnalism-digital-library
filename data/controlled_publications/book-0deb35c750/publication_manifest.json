@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "book-0deb35c750",
   "title": "খাতা",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
     "source_hash": "81d68d7027dc2f7da5bf8a8faa40e25eb44978565615ff747af4215b396acb13",
     "content_hash": "f377ea836992c1f446d96cdac06abf5a2e2ad2ec300d68fad33950b4c6075ee8",
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "0261661235f7de18d6dc08a02c620aad2664c2256d360c20144f6979b207ccdc"
+    "evidence_sha256": "58814e30b7e4888c46024c86f197c0f021ea439062752adbf9fa68cdf86e190b"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -47,10 +47,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "afeaa6f020aff2080af4fbc9392cdb80957ccba27dffe651597cd9b2b0f6b620",
+    "public_book": "d9f7e7fdb732666be84d709dd981c0d6a697b886a7c168d2753b025939bea020",
     "reader_manifest": "fdbbb989abebba85a0c4028f9ca96d0cef144a9c59b1f4d342caac4bc20d5890",
-    "source_evidence": "0261661235f7de18d6dc08a02c620aad2664c2256d360c20144f6979b207ccdc",
+    "source_evidence": "58814e30b7e4888c46024c86f197c0f021ea439062752adbf9fa68cdf86e190b",
     "approval_evidence": "0624942ae48f22620e2fcf4447c5b5ddc2171af8c379a212c58748ebf6009bb5"
   },
-  "manifest_sha256": "9e72064037100991b07ea6b1b2395937bda372a359d35609b4fb52e88cda0e0b"
+  "manifest_sha256": "6cef191e838dad69b59a1ed5e79bb98776698ee2875aba52e383f384b9d5745b"
 }

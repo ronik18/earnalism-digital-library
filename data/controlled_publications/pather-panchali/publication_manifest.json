@@ -3,14 +3,14 @@
   "schema_version": 1,
   "slug": "pather-panchali",
   "title": "পথের পাঁচালী / Pather Panchali",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
     "source_hash": "0f3626226a1ecc776a89670b8a9e53d2a6c4ee373afab6be0fa387ae59f90c8f",
     "content_hash": "51a3175817002fb99a5cdf88b6e51819855b6c92a985558071fe1df0bde33435",
     "provenance_hash": "6bd378cf51938be88b825f1cfa3866a19868167db9792c22511a4797af5fef5a",
     "sanitized": true,
     "chapter_count": 12,
-    "chapter_index_sha256": "8f5d3dfeec24f26470c78a58e00db7f1eb7e8efc4aea3f025bf0b512c81e144e",
+    "chapter_index_sha256": "130532a3812697cce073124312177b63baa8a9ce80af13285dbbb9e00f73cfc7",
     "chapters": [
       {
         "id": "chapter-001",
@@ -58,8 +58,8 @@
         "id": "chapter-007",
         "order": 7,
         "title": "সপ্তম পরিচ্ছেদ",
-        "word_count": 1525,
-        "sha256": "61b5c1ed17727417e70c3c6cc418b2ed47990f9ce66334d258dda0be96130fa9"
+        "word_count": 1451,
+        "sha256": "2744694c90ba564f1210534840a0b0c298628263f3c18cb5eb259cdeaa8019d5"
       },
       {
         "id": "chapter-008",
@@ -102,7 +102,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "1fb70e981fbd1050b12db990f0b592146fd1488e82a7aed9769c4501e83e5887"
+    "evidence_sha256": "5ec52903c31bec5dace05398b0293dbb947d1f69f8c79a2a69a473109b852447"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -125,10 +125,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "fc4144dc1126cd8a1a13ff196d8dbb688006e6af6cd735ecc62e01011596f4c6",
-    "reader_manifest": "ce1bd80e41d650d7efc95130e528e13275c59196da0581f58361b07f012c6054",
-    "source_evidence": "1fb70e981fbd1050b12db990f0b592146fd1488e82a7aed9769c4501e83e5887",
+    "public_book": "cee3488a8453e908d2c75589b327b55b4ac1c123a6b6dfb2de39aaa2542fc45d",
+    "reader_manifest": "a318f2414e068c373880a85d9d2dd2774217033779b57d8ef17c86056a60f18e",
+    "source_evidence": "5ec52903c31bec5dace05398b0293dbb947d1f69f8c79a2a69a473109b852447",
     "approval_evidence": "d030a1788f1de0a77de3d8de5429408176cfc10a39b91a8c4a6775d36c6e9618"
   },
-  "manifest_sha256": "bf12b348ac811d38f3f763379793cb2ff34207afe0589331551f1b3fa88e98a0"
+  "manifest_sha256": "0248edf9537f3b93e60cc4788efafdf2b9ed55a6d2b486770f13394531175b8f"
 }

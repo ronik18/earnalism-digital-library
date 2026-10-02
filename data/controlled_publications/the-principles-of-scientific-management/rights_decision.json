@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-principles-of-scientific-management-pg6435-noncover-text",
+  "edition_id": "the-principles-of-scientific-management",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "93b4217905842a3d4b8f0532844b4f6b588fd1a8f480c9503f8671a1e3eca92c",
+    "reader_manifest": "87a47f53b9dbcbae66a09bee4bcc5769f4b5f584ef9bdfc4ab31b65959c3318f",
+    "source_evidence": "e6b091fd0aebe2517dd1e2b6c8e8ef14d5ea6d6540daa66c33e0ba27a9ef2380",
+    "approval_evidence": "810c7d5c17b71c69c3370d7a0c1181d08a696d3e2ebd125fc1cdb16fbb28bd45",
+    "checksum_manifest": "efe654d6e82a14d4d15a426612f06eee874dd1d1a877c4aaf7fc2cdb6c12eea2",
+    "publication_manifest": "ba70b2f5395bd9537fc3e7c5c0a80ba8b6a40ef67f384eb4032879ddebba8f9e"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:35:50.622637+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1915, original publication 1911; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "a836e5339f4f15b0aa61cccd35d2da8edfb25cd0250b1d45d41f57a2c150af60",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "2aaee1427a4611db85d2365a96ec11ec103f7438c956d97f5231124791e0657d",
+    "1f504a9abe674ee616f13bf1db66ec25cbb1be0ff5fd9bfe70ab8593aa08a3b2",
+    "288b62bc7442e85367b7ca05290f466dee7a0314d7f0ab3d3252cc39618850df"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

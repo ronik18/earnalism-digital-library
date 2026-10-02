@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "book-c85323409f",
   "title": "জীবিত ও মৃত",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
     "source_hash": "a3a670cd1107f63ab6b8df62ff5077d6245e4cfdcb772db39b78ca9e40c5a392",
     "content_hash": "86f190d8981591db6470e84d7a543d9fb4b6c7079c033e71a026e2d949c6a2d2",
@@ -47,10 +47,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "5ac7433e9d2fbf3dffba0cf023dc242e84828106778da46eb805f6e7ffc56a85",
+    "public_book": "950f0a0206a178736121acee523681688cd112de1b9c93ee3355471f35f5f3c6",
     "reader_manifest": "bfb48415b9d17f042550e12c0f7978e3bd678fac4950ea4e46260c47031c9157",
     "source_evidence": "498d65e3db0cf7ce3f754d449d223ccabe4b28a0c6f8f7396ba44368b76f9f80",
     "approval_evidence": "a4f5b6c4f05a2fff369c9e4fe04e5c3295e77886802889c7b5be0c69ec7dac68"
   },
-  "manifest_sha256": "26c63bd138b08747ac825bcc58fba5700df6a0d066ad66580d4ab2afd53d38d4"
+  "manifest_sha256": "2e340db7f9143e81ca4b9601ecc3e3016e57da6db1e0b4ef09e6ce5da3a0f912"
 }

@@ -1,0 +1,53 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "white-fang",
+  "edition": "Project Gutenberg #910; White Fang exact canonical source, underlying lifetime publication 1906; complete selected author text, no translation or independently authored artwork/editorial material imported",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_ONLY_NON_COVER_COMPONENTS",
+  "source_sha256": "3c7226d00fd9b169f0016635d0e461501620f343220ee18db7ca9f083f4ad3f4",
+  "content_sha256": "1cc0fc8e2a082b85ecb6eaaa5932b09d2c554f4ae1df4233903373bbc2025ccd",
+  "chapter_sha256": {
+    "chapter-001": "3e9ccea0aa78c8d6fe64aefb49a97b24baa27031cb4bc63b805248460b260ef1",
+    "chapter-002": "e835e4eb425370836537779193135e0cef5e4f62f7fa27d4943b15d9f8d3eaf4",
+    "chapter-003": "246115f74563d51774bae922d7f145dff9adb90869fb73c12c6ee2e3df7ef366",
+    "chapter-004": "97fe1b385cbad11e11223bbe1708dfd3e10be82dbdefb3c7c2393d1eee52e828",
+    "chapter-005": "224a518e3fcd02be251329cb36aeb843ac29378614058db37deb612d8fac3125",
+    "chapter-006": "cb57a99b86ef490751d068bb0947bc2be2c313c2962e4b784935c5647e65e5d0",
+    "chapter-007": "d93274887d59a86fa99a498c03e66108f76bdc5a50f456ebd9c6316cf35bccde",
+    "chapter-008": "dcbd2c0e51ae440fca04d4b6d34247e84cfecd8db8adfb6421fcb843f6a34ab3",
+    "chapter-009": "90e11d0b21a4906073f2c2f122c5936bc5c2c342a29360e3ad31f75d385e73a4",
+    "chapter-010": "78079707219c3c4abeb0ffa93c6bee4ee31c9a528382ddb10fab3ffbfe3c208b",
+    "chapter-011": "4c5b6436ac0788e5dd291e5b401157e7476756c75b6fa368e4488821a497b6b4",
+    "chapter-012": "7e5ed37f46846371e04ee2ab7dce9e865e0a07a4c4efdceb345a9fd80fe3e0ec",
+    "chapter-013": "1397f50534dc5c6a835f83d34e24a0f4c13c05c7322e66a55c6cbf68b35f60fc",
+    "chapter-014": "ddc0aa5724a5c22cfc99d5eb9d42e042b9d566f1d6a042879c9407342fcc7a9e",
+    "chapter-015": "93ce450649cae46146df946dcc016ffc71b015aef521048650625b566340a74f",
+    "chapter-016": "97b53929fc6ce30651be83f2043e4da1d5f819d816ba247084b26e9d08d3fe96",
+    "chapter-017": "cb1c78f63b646b6f180e5a72486d6d0134833e64af7519a9307a4d6b6af64020",
+    "chapter-018": "6a6534a903ab1d910c3d5292eab3f078a797cf680b72580e129a65599a5eb1e1",
+    "chapter-019": "2792a8432a203f7303961dc6634566827b491d552a2e4292d8cf0ad2b0c8786b",
+    "chapter-020": "ce71d1ebbcc79f924ad89574e56da31a8be79fb8397101f477c1677a73fbdcc1",
+    "chapter-021": "74261d98ddc8201e339bef0ef331914512d35c3f5a9afbc48945e1e73257ddbb",
+    "chapter-022": "33316867ba63d22f80872ddaee557c64cbd32a0e25dad5b60ab5fcea3d574b37",
+    "chapter-023": "e8048e316f3ed3ce72574718739a72ba28c6dd0e10639ffa2f2b08e0838402cf",
+    "chapter-024": "680fd7492bc2b4e27bb7ae43770546c839ce07022b0cf37ac06862dae8e16cfc",
+    "chapter-025": "4a49b742b87f0f022735cceac5df409400fc0500f3b0f9bd003983ada33d6fcd"
+  },
+  "cover_provenance_sha256": null,
+  "cover_status": "DEFERRED_BY_OWNER_REQUEST_NO_COVER_DISPLAY_AUTHORIZED",
+  "authorized_by": "Automated executor under owner explicit autonomous clearance delegation; not a fabricated human or legal signature.",
+  "verified_at": "2026-10-01T21:49:40.745164+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Cover clearance/binding, trusted production registry acceptance, canonical controlled-live allowlist, actual runtime Reader readiness and protected gates must separately pass.",
+  "not_authorized": [
+    "cover_display",
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation"
+  ]
+}

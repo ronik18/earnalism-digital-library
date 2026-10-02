@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "the-speckled-band",
   "title": "The Speckled Band",
-  "generated_at": "2026-10-01T21:08:34.484426+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "6e1a4b7da706a2b3e55ea0be17cf1e2acf6894db69ee6e7974a47d2188bfbb8c",
-    "content_hash": "78c18a18063608bbe008f0b933a47113f21852166857877e5e1d9c770ca621e8",
-    "provenance_hash": "ef4ae9f1cec1960e924230c7208b4d2471297535df3466e5d219d2ca1bc5115e",
+    "source_hash": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "content_hash": "ef46d27a97d829def7dbb2935f56aa044ea42ee2122b2f137d8d515cc50cf535",
+    "provenance_hash": "f207ef976b18aa24b7b94728c4788715d76a21ffacb9548b6a4009d360ab1d1a",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "304869dbb5529fd61ec24cfe18076f1b75a58fb44acc269f3efb6336679aba7f",
+    "chapter_index_sha256": "014d5ed71a40106ffc38dcb25cc69959a2ffe0efff5eb1d7eb3fc3d4ecdd65b7",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "The Speckled Band",
         "word_count": 9867,
-        "sha256": "c644ef48e9feafca7c3444b42aad83689bcf341def0eb8cdf009ffe89b4b646f"
+        "sha256": "04ef038bf83876438b1b3f458ae5cc04d1081ac69c66357ef816bf5f478bb2f3"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "e69d6c994b2a9d4d69a4234fabfe1494d22959a1a4d41b612fa51d6e7f9efc39"
+    "publication_region": "india",
+    "evidence_sha256": "88b303686beac1f47b3c0444557c62085a1719bfc7a72fa8360693de1648d7f2"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "6e1120bf494c15f1fef26342c0be6ae20c9d7f88294ce35594c4558b175b2770",
+    "public_book": "bb6e1b4c00d3d1206cbd4fc887bcba1bef02153eac0c7e358a0c303b0c5a7e2c",
     "reader_manifest": "99c60761cc3dbf0e4128e1c6e470f171de69e5f8aba4fc6dd006941a110ad41e",
-    "source_evidence": "e69d6c994b2a9d4d69a4234fabfe1494d22959a1a4d41b612fa51d6e7f9efc39",
-    "approval_evidence": "b7fffa83d48248f0a1720495b91e41eef8c21ebce981e6311fec1ba4a9a65f54"
+    "source_evidence": "88b303686beac1f47b3c0444557c62085a1719bfc7a72fa8360693de1648d7f2",
+    "approval_evidence": "816fb718e8e3c2c509b8fff980094da614461ba92c0e3b12dfecd23e9db098fb"
   },
-  "manifest_sha256": "65c1b85af2e57af7c3f6c4d1489fbac1ca145736a69880b10e115a24cfb2f6c3"
+  "manifest_sha256": "eefb243b71e23a1180f6ffe7516923c94bd35a4d1ceed8e886208d0f1a0a84c5"
 }

@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "the-adventure-of-the-dancing-men",
   "title": "The Adventure of the Dancing Men",
-  "generated_at": "2026-10-01T21:08:31.236801+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "f8acdaa228e5ed8f8f5672316f2c6044c44da568fa9398e65a1267456b6a1774",
-    "content_hash": "924f60975fb2a9e147ac51b8abba1a0d1bee1efa475de9ece38615ac615fc755",
-    "provenance_hash": "17c0db286dcfaf0b34d86e4c47731ee963af1444b0a00f85d12d76981c1c4853",
+    "source_hash": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
+    "content_hash": "d07a8a9586d4ff3f724556ae02eb4075eb6a4da0d316295ab6db531d173a5dec",
+    "provenance_hash": "0fcc5dead13ae8b13a44b92ed82bcaad02322ccc82d17ff8b4b2c6d449a4f806",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "ae28d1471a10fdce3c79561d7bd9f6d06abec471d0c5235e8b3ecfb1880185d8",
+    "chapter_index_sha256": "5103e371d07204387cb3bae928e71e2f1f5a7beca62e0f0909f42fd5bd573d8f",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "The Adventure of the Dancing Men",
         "word_count": 9716,
-        "sha256": "adc1f34904f89bb11bc1dcd18238e2be0916d8797d2e0ea6e1139cbb2a4b731e"
+        "sha256": "5b7574b2e714da6389e3c62bdd4c008be8f74bf415260a390466da26c7c8a01c"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "fa2db37fced58127ba79ea578f4f1ed82b091899812b7cbf047fada330e5de89"
+    "publication_region": "india",
+    "evidence_sha256": "5d07c7970ebcf39c820ce96df969a1721b4c076ef1b9c860e597c432a4e71420"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "6013f808c58faa17d3f6585e457c5f47782caf3fc78643ee110cfa7d1f314aca",
+    "public_book": "e99801513354fc1a7b694f7d88ba60d3ef59ea540fc946d093e448232613ce05",
     "reader_manifest": "6098017128f3731f6de658aca414ccfdfde59def471407c10816e6a2cbe37179",
-    "source_evidence": "fa2db37fced58127ba79ea578f4f1ed82b091899812b7cbf047fada330e5de89",
-    "approval_evidence": "3da9d8f39d619b927cc521213be3852c5cc6d0ca9c1ea003b024e5040e1e0150"
+    "source_evidence": "5d07c7970ebcf39c820ce96df969a1721b4c076ef1b9c860e597c432a4e71420",
+    "approval_evidence": "a9be5c83b492e8c1bb4045c12803d9737b0938d442c2a7a51f45fcb22c5c7593"
   },
-  "manifest_sha256": "ee96dd44fdb128569c9caa307b8c47d92d70917920d2a51c70442ba0b594daf0"
+  "manifest_sha256": "9ae0cca03c184e0c212a683226fe47af1824be11be281d8bd0fdf134dde82bfd"
 }

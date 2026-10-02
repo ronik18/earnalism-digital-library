@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-adventure-of-the-second-stain-pg108-noncover-text",
+  "edition_id": "the-adventure-of-the-second-stain",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "ab6b183bc20ce64a8fc996e28693e9a40f82a7a3229e058d9cfb2bb02302caee",
+    "reader_manifest": "970818cfdaf247e9e4811e4886d75656464b52954e7358282fbc99eba848a9cb",
+    "source_evidence": "11c1b2af9299faf8f16652d4c0faec6029d70cd3446779012f9dfc4714db28b6",
+    "approval_evidence": "b3c9c7a15ca30c6d848bf5bd0beae2c04b2ef82b1455831a6b67d9d33831f969",
+    "checksum_manifest": "0955ea464915e018f3bade1316644cbae5de982b22bb946920f7ff45c8cd92b8",
+    "publication_manifest": "1898d0b4e91b298faa154a858f582ec224eec248e66b95d9e46d677417b0aa54"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:48:17.188009+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1930, verified lifetime collection publication 1905 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "d9d7799750a0b5bdb6f9f435a14121459b1c5b1b0963dbec3b118482f28f7535",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
+    "0ee60bab476492b1a0925dbb6d857db42d4cb9c89647f9440ad14819f212bb88"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

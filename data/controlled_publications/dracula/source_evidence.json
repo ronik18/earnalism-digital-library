@@ -1,12 +1,12 @@
 {
   "slug": "dracula",
   "source_url": "https://www.gutenberg.org/ebooks/345",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #345; exact selected original-author text; verified lifetime work publication 1897; excludes anthology editor/art and other title components",
   "source_license": "Public domain. Project Gutenberg transcription is freely redistributable for any use including commercial.",
-  "source_hash": "3dbe1845a822271cd2b887ebb81301b05844f8fa24133b915e30da35e915483a",
-  "content_hash": "5a546ad219d6886b3a43abcfe64f67147ff10db9b3ba2d5c501d89f3a0bb38f4",
-  "provenance_hash": "790858fe254f38fc4ffa55eeda37579df04b747294663521484d62d30e553fd7",
-  "rights_basis": "Author died in 1912. Work published in 1897, well before 1928. Public domain in the U.S. under pre-1928 publication rule and in most jurisdictions under life plus 70 years.",
+  "source_hash": "96cd16eacdbfebae8fdda5591f66e0cc8ee76be18e0cd1aca02bc00615782d28",
+  "content_hash": "0ab0060ec9b89c62f3d33b57b08831aca532dc79aea59d9cd7f83cc0f2d1e1d0",
+  "provenance_hash": "caac3453e61b32e2f4fd44d5551589a91afedabb5a7710178f20b2a6ed85fa30",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1912, verified lifetime collection publication 1897 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-05-25T20:09:54.197446+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -361,5 +361,225 @@
       }
     ],
     "content_sha256": "0ab0060ec9b89c62f3d33b57b08831aca532dc79aea59d9cd7f83cc0f2d1e1d0"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "3dbe1845a822271cd2b887ebb81301b05844f8fa24133b915e30da35e915483a",
+        "content_hash": "5a546ad219d6886b3a43abcfe64f67147ff10db9b3ba2d5c501d89f3a0bb38f4",
+        "provenance_hash": "790858fe254f38fc4ffa55eeda37579df04b747294663521484d62d30e553fd7",
+        "source_url": "https://www.gutenberg.org/ebooks/345",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:52:27.631967+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1897,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:52:27.631967+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/345.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/345/pg345.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:50.800115+00:00",
+      "response_sha256": "96cd16eacdbfebae8fdda5591f66e0cc8ee76be18e0cd1aca02bc00615782d28"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 28,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-000",
+          "offset": 2110,
+          "length": 456
+        },
+        {
+          "chapter_id": "chapter-001",
+          "offset": 2611,
+          "length": 30625
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 33287,
+          "length": 28490
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 61829,
+          "length": 29816
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 91696,
+          "length": 30315
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 122022,
+          "length": 18088
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 140144,
+          "length": 29300
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 169497,
+          "length": 30130
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 199663,
+          "length": 32752
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 232427,
+          "length": 30306
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 262744,
+          "length": 30820
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 293576,
+          "length": 26970
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 320578,
+          "length": 37915
+        },
+        {
+          "chapter_id": "chapter-013",
+          "offset": 358507,
+          "length": 34222
+        },
+        {
+          "chapter_id": "chapter-014",
+          "offset": 392764,
+          "length": 32646
+        },
+        {
+          "chapter_id": "chapter-015",
+          "offset": 425422,
+          "length": 29779
+        },
+        {
+          "chapter_id": "chapter-016",
+          "offset": 455246,
+          "length": 23895
+        },
+        {
+          "chapter_id": "chapter-017",
+          "offset": 479187,
+          "length": 29108
+        },
+        {
+          "chapter_id": "chapter-018",
+          "offset": 508329,
+          "length": 35952
+        },
+        {
+          "chapter_id": "chapter-019",
+          "offset": 544320,
+          "length": 29460
+        },
+        {
+          "chapter_id": "chapter-020",
+          "offset": 573818,
+          "length": 31232
+        },
+        {
+          "chapter_id": "chapter-021",
+          "offset": 605082,
+          "length": 32215
+        },
+        {
+          "chapter_id": "chapter-022",
+          "offset": 637337,
+          "length": 28108
+        },
+        {
+          "chapter_id": "chapter-023",
+          "offset": 665479,
+          "length": 29542
+        },
+        {
+          "chapter_id": "chapter-024",
+          "offset": 695088,
+          "length": 32095
+        },
+        {
+          "chapter_id": "chapter-025",
+          "offset": 727215,
+          "length": 32651
+        },
+        {
+          "chapter_id": "chapter-026",
+          "offset": 759899,
+          "length": 37179
+        },
+        {
+          "chapter_id": "chapter-027",
+          "offset": 797115,
+          "length": 40706
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator_death_year": 1912,
+      "selected_edition_publication_year": 1897,
+      "original_first_publication_year": null,
+      "primary_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Stoker%2C%20Bram%2C%201847-1912",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Stoker%2C%20Bram%2C%201847-1912",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:50:11.937936+00:00",
+        "response_sha256": "20d5c8a9ccde1d9506b6c308dfee8cdde38d880779db8682e7977b5907115911"
+      },
+      "bibliographic_excerpt": "Dracula (based on the A. Constable edition, 1897) (Gutenberg text) Stoker, Bram, 1847-1912: Dracula (New York: Grosset and Dunlap, c1897) Gutenberg text and audio multiple formats at archive.org Stoker, Bram, 1847-1912: Dracula's Guest (single story) (HTML at eastoftheweb.com) Stoker, Bram, 1847-191",
+      "basis": "Verified work publication during creator lifetime; selected publication year is not claimed as first publication.",
+      "scope": "Complete selected original-author narrative and verified same-author prefatory matter; anthology editors, art and separately attributed epigraph/dedication excluded unless specifically verified."
+    },
+    "author_death_evidence": 1912,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1897,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "96cd16eacdbfebae8fdda5591f66e0cc8ee76be18e0cd1aca02bc00615782d28",
+    "content_sha256": "0ab0060ec9b89c62f3d33b57b08831aca532dc79aea59d9cd7f83cc0f2d1e1d0",
+    "year": 1897,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Stoker%2C%20Bram%2C%201847-1912",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Stoker%2C%20Bram%2C%201847-1912",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:11.937936+00:00",
+      "response_sha256": "20d5c8a9ccde1d9506b6c308dfee8cdde38d880779db8682e7977b5907115911"
+    },
+    "basis": "Verified work publication during creator lifetime; selected publication year is not claimed as first publication.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
   }
 }

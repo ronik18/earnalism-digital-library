@@ -1,14 +1,14 @@
 {
   "slug": "the-luck-of-roaring-camp",
-  "generated_at": "2026-07-03T20:07:49Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "0608e478c31600287c183d42551cb40d2dc455ebdac48eb9fbead4620decd15e"
+      "sha256": "a1a57e98332c44ff740ac86311c0ab44a3d102b918e2067363297a894340d484"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "0de4c55a9ec34ccfe1a7bff8496caef3baf891938474693ca9c0d851820d7dae"
+      "sha256": "04e03292f90a30a5cacc6062540e0bf8dd51d08b4ae323af1b2f3c5071223020"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "234eee0e8cb4631154e077e859477dae39e2bb0ecaaa755da7601f2c6ae7e064"
+      "sha256": "e64d48ae5525baa26e63f22b95146cd7660d0347cebb3cb6a5058e5431bf3deb"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "3cb4118ac750e0d9badee69fb397ee0e1fb3a7d97f5662399e5bf0d5d326671c"
     },
     {
       "file": "reader_manifest.json",
@@ -24,7 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "4666766824c4bc17b691fe4462b285113f5aea3cace5a670ec80af3c86dc6512"
+      "sha256": "020d74ba9a84fbc8e07f0fdfe3d0c14ee9eff1f13574bd4eeacc5e0a0c6254fc"
     }
   ]
 }

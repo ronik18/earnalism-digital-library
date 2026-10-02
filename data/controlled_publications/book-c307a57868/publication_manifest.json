@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "book-c307a57868",
   "title": "স্ত্রীর পত্র",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
     "source_hash": "0fefda3a0973af62047a64c30c531984d9cdc7efbeabd46a2d97fe7a47f5f7af",
     "content_hash": "7a71b70f908ec6ac628c298ea7c46492efb8cfc3febc16c145a6f6ad27b38286",
@@ -48,10 +48,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "fabdd7197912eb0abf8dca49b9501802393ef487b381e2c59422d2a299dc9915",
+    "public_book": "e4be7b917bd41379bff6c4fbc06d68cf70d15b6d2857e383b735d25998978159",
     "reader_manifest": "84771004912e1a2cd7092828e95e5f16f4366a2850039fa9d0d8c32d4f7dd71d",
     "source_evidence": "6ebe8328bafb779b09f64ac4a475c074de1b223271f5a728e319f6c50be7e8d7",
     "approval_evidence": "21626dcb637a02acf152b41be82c7f3bfcdc8f3a9a87461e1ff889ae733cdcea"
   },
-  "manifest_sha256": "e1007dc212492b303c124042607de973f86eeccb90d5e8741ebbb77eef02edbd"
+  "manifest_sha256": "c8a4d8c51405bfc5da3ac148530ff3fd213cbd7193ce63cef16ff4a151b2f531"
 }

@@ -1,0 +1,15 @@
+{
+  "schema_version": "earnalism.text-license.v1",
+  "slug": "book-95624627d5",
+  "license": "CC-BY-SA-4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "attribution": "মধ্যবর্তিনী by রবীন্দ্রনাথ ঠাকুর; Bengali Wikisource transcription and its contributors, credited through the exact edition/source revision and its scanned-page contributor histories.",
+  "changes": "Source/import headings and publication furniture omitted. Exact source-backed missing paragraphs, chapter order and typographical punctuation corrected where recorded. No new literary text composed.",
+  "scope": "CC BY-SA4.0 applies only to source-derived transcription and formatting, not independently owned covers, Earnalism branding, software or unrelated material. Underlying literary/edition rights and publication authorization are separate release gates.",
+  "disclaimer": "Delivered licensed text may be copied, printed and reused under CC BY-SA4.0 attribution and ShareAlike terms. This notice itself grants no publication, cover or audiobook authorization.",
+  "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%95%E0%A6%A5%E0%A6%BE-%E0%A6%9A%E0%A6%A4%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%AF%E0%A6%BC%2F%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A7%80&oldid=1624594",
+  "contributors_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%95%E0%A6%A5%E0%A6%BE-%E0%A6%9A%E0%A6%A4%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%AF%E0%A6%BC%2F%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A7%80&action=history",
+  "chapter_sha256": [
+    "15ae2ea405a14c49965d03b6a329419ecb7e71297a3007be8530673587a03b06"
+  ]
+}

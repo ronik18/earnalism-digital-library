@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "book-d2fe532e1c",
   "title": "স্বর্ণমৃগ",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
     "source_hash": "a23c3d63f7dcaff1ac404b313a056def8dc39813360642fe883a618a10aa7d64",
     "content_hash": "ab597e18a4093bce3b8fd7321bc17c02198c74363e75bd05744f0186aeba9313",
@@ -46,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "ebeb082421d1ed4c7ff34bb4b42d0b18327ae790b67f8016a72255cc015caa2a",
+    "public_book": "6695715941e923e908f725e13c1fae40f0330abf2d2b58030b08fa6521387e93",
     "reader_manifest": "6802cf1af31662262e51a75c778e4ed497795417e47eb5c0519ad6701843af95",
     "source_evidence": "6247e1c394964b09d59ce960e729f072f71b07fae63ed3c358063f4d5f9832ad",
     "approval_evidence": "2f73b8116991b9bc93900f7880c580d84629126899861dfb2cd87bf05e24c221"
   },
-  "manifest_sha256": "dd8173270abc684024dcbd90aa0633a8f6c80cd63401a928c995edf51ad6b317"
+  "manifest_sha256": "74ed7f45eae48a3d752baa297e6b731bc408d32219ac37fae4c6624a1c32deb2"
 }

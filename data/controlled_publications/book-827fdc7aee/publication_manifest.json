@@ -3,21 +3,21 @@
   "schema_version": 1,
   "slug": "book-827fdc7aee",
   "title": "রাসমণির ছেলে",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
     "source_hash": "73789e5480cf2f077ad75c01ed713e5f350480f5e493d4886d4a1f8cabc22f2a",
     "content_hash": "d06687a9cc39eaae8bb09cd5273c9a0047606893924392c225fa1db72a50863b",
     "provenance_hash": "1346c562712008039c3581f121ef749ca1b540fd1a8db8ed11735b03eb6ccaf3",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "4c7f7a4e93afa26c8cbf1d2fb2648937c7cae8f63c2febfb555c4708796ca4a4",
+    "chapter_index_sha256": "bdd377b49edf0806ac3e87abeca284cf18d10b5ea17a928c5c415a3761a2448e",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "রাসমণির ছেলে",
-        "word_count": 10430,
-        "sha256": "db030866ce65882bbeaf082daf4dde5f7901520d0deea070fad646b0bea8f841"
+        "word_count": 10449,
+        "sha256": "4f4159e2ef57e6e2e1c7c96f1a2f81d0f27286979fe326d6dd1e506d9ec1d44d"
       }
     ]
   },
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "58ff1b6f917b0cedc1256dbb7c2917ac366dc44b2fb048f3d01b4c76cac3f09a"
+    "evidence_sha256": "244f17bea06a0352705d8aa9d36a8e22903a41deefa919cc1bfc0ea795e20d67"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -47,10 +47,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "ae3d9b92b4cac8f3941e90d2b4bb249c442fc62282e106dc524adf96ea72cc50",
-    "reader_manifest": "81e918735847de126eac78195f4abf4b4dff24c9946c98f1173d2da50597f94a",
-    "source_evidence": "58ff1b6f917b0cedc1256dbb7c2917ac366dc44b2fb048f3d01b4c76cac3f09a",
+    "public_book": "491ad48bd88c0d20ef2921c139ba581f911ca11bb879b55e084cb011ac027bbe",
+    "reader_manifest": "eece908c96374fe080a4141c2bea5e380e478093fb3086f4aa5ff571a962b55f",
+    "source_evidence": "244f17bea06a0352705d8aa9d36a8e22903a41deefa919cc1bfc0ea795e20d67",
     "approval_evidence": "aa96ddddc1290cbd2de44a412b3845d2300524a6198f27c418eac5eb54666494"
   },
-  "manifest_sha256": "bdaafbfa1bf5f2153edbae09fb4fe8c6115a6a511c2ba9413166c19f5e01c0cc"
+  "manifest_sha256": "90a92f7360bf84c5d2888075b6823d340114c0ba9815e0876fc42c7b50021799"
 }

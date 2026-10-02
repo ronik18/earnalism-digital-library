@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-most-dangerous-game-wikisource-noncover-text",
+  "edition_id": "the-most-dangerous-game",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "b0ed393c79ccb57c12133cdf6bdced2bd2b835d8cc4e8c79af7004f0937ed38c",
+    "reader_manifest": "dcc6a45067337a47776013768468dc54e0c52db88b1062f2f48d9bef7b747f3b",
+    "source_evidence": "9fb0e5109ae412dd377d5e9805c2919e011924a27cec2815d4540bb5b485ef91",
+    "approval_evidence": "56a19886fa34e2e28e0f821c602b3032ee4d45e7367f1b4e5197d3e841875c28",
+    "checksum_manifest": "41d22aff0385a02b95e2fdc31218808bf4a6767708a66a059f2401632d3413ea",
+    "publication_manifest": "23a5a61e367dbf3d59adc761ebbd3f6e59c691aa5e0f5da8b764662b61dcf268"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:59:52.152491+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "RichardConnell1893–1949; verified1924story anthology during lifetime, INSection22 term elapsed2009. Exactrevision12072546transcription reused with actualfooterCCBYSA4.0 and hash-bound publiclicense obligations.",
+  "evidence_sha256": [
+    "e59b3e387a2fc5cada1741339208f95c093af694db839e5cabaebb2543e53753",
+    "937c98f28132bda0636ceaf2e71bc6b6dfaa4cd0c33e680257ab63781b5e7982",
+    "4c5185c3a1ac66fd2c2e0eb178b692840b759ec82c91ce9c96b4d1f9689580b1",
+    "77c9fc421bd4d7742794edc9dd48b7f80eb70c0b73b969d4ef099d4ff9e4808f",
+    "8590d829e9f5d5b6ddf5dd7d131d5be1e2de353f0d3637ece79b88aa5f283ea7"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

@@ -1,0 +1,297 @@
+{
+  "source_evidence": {
+    "slug": "boule-de-suif",
+    "source_url": "https://www.gutenberg.org/ebooks/3077",
+    "source_name": "Project Gutenberg",
+    "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+    "source_hash": "17c514dce10d194bfbb13b4d9196eafd3a3ae310b38180de42d3a5693bddd0a7",
+    "content_hash": "54085892457bf65ed5f9394fb722eee54f71123d9622b0b40f1ec45ad76707d5",
+    "provenance_hash": "74feca75082c4263690808b2747e72216034cb633ff078c20196bccc3523a1fb",
+    "rights_basis": "Guy de Maupassant died 1893; first published 1880. Public domain in India and the U.S.",
+    "downloaded_at": "2026-06-03T08:04:22.017008+00:00",
+    "source_format": "text/plain",
+    "reader_facing_boilerplate_removed": true,
+    "official_electronic_source_verification": {
+      "electronic_edition_id": "Project Gutenberg #3077",
+      "metadata_receipt": {
+        "requested_url": "https://www.gutenberg.org/ebooks/3077",
+        "resolved_url": "https://www.gutenberg.org/ebooks/3077",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:04:40.228735+00:00",
+        "response_sha256": "c6fbae1d1ee91321520051d7481310dde0c21e1409196abb5221b5061a067053"
+      },
+      "text_receipt": {
+        "requested_url": "https://www.gutenberg.org/ebooks/3077.txt.utf-8",
+        "resolved_url": "https://www.gutenberg.org/cache/epub/3077/pg3077.txt",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:04:45.242161+00:00",
+        "response_sha256": "73ab0a4fcb4dc62fc39ee7876d6e9a1fc0ae3c9443cdd2732b970bfd18c803bc"
+      },
+      "bibliographic_metadata": {
+        "Author": [
+          "Maupassant, Guy de, 1850-1893"
+        ],
+        "Translator": [
+          "Henderson, A. E.",
+          "McMaster, Albert Cohn",
+          "Quesada, Louise Charlotte Garstin, 1864?-"
+        ],
+        "Title": [
+          "Original Short Stories — Volume 01"
+        ],
+        "Contents": [
+          "Boule de Suif --Two friends -- The lancer's wife -- The prisoners -- Two little soldiers -- Father Milon -- A coup d'tat -- Lieutenant Lare's marriage --The horrible --Madame Parisse --Mademoiselle Fifi -- A duel."
+        ],
+        "Credits": [
+          "Produced by David Widger"
+        ],
+        "Reading Level": [
+          "Reading ease score: 77.5 (7th grade). Fairly easy to read."
+        ],
+        "Language": [
+          "English"
+        ],
+        "LoC Class": [
+          "PQ: Language and Literatures: Romance literatures: French, Italian, Spanish, Portuguese"
+        ],
+        "Subject": [
+          "Short stories, French -- Translations into English"
+        ],
+        "Category": [
+          "Text"
+        ],
+        "eBook-No.": [
+          "3077"
+        ],
+        "Release Date": [
+          "Oct 3, 2004"
+        ],
+        "Last Update": [
+          "Jan 8, 2021"
+        ],
+        "Copyright": [
+          "Public domain in the USA."
+        ],
+        "Downloads": [
+          "1208 downloads in the last 30 days."
+        ]
+      },
+      "comparison": {
+        "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+        "status": "ALL_CHAPTERS_MATCH_SOURCE",
+        "matched_chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "offset": 16488,
+            "length": 83413
+          }
+        ],
+        "nonmatching_chapters": [],
+        "complete_edition_proven": false,
+        "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+      },
+      "legacy_source_sha256": "17c514dce10d194bfbb13b4d9196eafd3a3ae310b38180de42d3a5693bddd0a7",
+      "legacy_content_sha256": "54085892457bf65ed5f9394fb722eee54f71123d9622b0b40f1ec45ad76707d5",
+      "legacy_source_bytes_reproduced": false,
+      "checked_at": "2026-10-01T21:08:26.578512+00:00",
+      "publication_authorized": false,
+      "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+      "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+    },
+    "author_death_year": 1893,
+    "author_fact_evidence": {
+      "metadata_receipt_sha256": "c6fbae1d1ee91321520051d7481310dde0c21e1409196abb5221b5061a067053",
+      "url": "https://www.gutenberg.org/ebooks/3077",
+      "author_catalog_strings": [
+        "Maupassant, Guy de, 1850-1893"
+      ],
+      "verified_at": "2026-10-01T21:08:26.578512+00:00",
+      "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+    },
+    "canonical_reader_identity": {
+      "chapter_count": 1,
+      "ordered_chapter_sha256": [
+        {
+          "id": "chapter-001",
+          "sha256": "cb001dd5a0ddd4e2fae9483736ff69e4145ae05d25b2d50d42217300b45edd85"
+        }
+      ],
+      "content_sha256": "cb001dd5a0ddd4e2fae9483736ff69e4145ae05d25b2d50d42217300b45edd85"
+    }
+  },
+  "public_book": {
+    "id": "controlled-boule-de-suif",
+    "slug": "boule-de-suif",
+    "title": "Boule de Suif",
+    "subtitle": "",
+    "author": "Guy de Maupassant",
+    "category_slug": "history-strategy",
+    "short_description": "A prostitute saves her respectable travelling companions — who promptly forget their debt and despise her again.",
+    "description": "During the Franco-Prussian War, a group of bourgeois travellers pressure Boule de Suif into sleeping with a Prussian officer to secure their release — then treat her with contempt the moment she has served their purpose. Maupassant's masterpiece of class hypocrisy.",
+    "cover_url": "",
+    "cover_image_url": "",
+    "coverImage": "",
+    "cover_image": "",
+    "back_cover_url": "",
+    "back_cover_image_url": "",
+    "backCoverImage": "",
+    "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+    "dominant_color": "#4A1C27",
+    "estimated_reading_time": "61 min",
+    "formats": [
+      "Ebook"
+    ],
+    "benefits": [
+      "Read a legally cleared digital text.",
+      "Enjoy a clean, structured reading format.",
+      "Access a render-safe ebook prepared for web reading."
+    ],
+    "who_for": [
+      "General readers",
+      "Students and lifelong learners",
+      "Users who prefer structured digital reading"
+    ],
+    "learnings": [
+      "Understand the major themes and structure of the work.",
+      "Engage with the text in a clean digital format.",
+      "Read without unrelated source-file boilerplate."
+    ],
+    "about_author": "Guy de Maupassant (1850–1893) was a French master of the short story, celebrated for psychological precision and ironic twists.",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Boule de Suif",
+        "is_preview": true,
+        "has_images": false,
+        "image_count": 0,
+        "word_count": 14440,
+        "reading_minutes": 61,
+        "language_hint": "en",
+        "processing_status": "ready",
+        "processing_warnings": [],
+        "uploaded_at": "2026-07-03T20:07:47Z",
+        "updated_at": "2026-07-03T20:07:47Z"
+      }
+    ],
+    "source_hash": "17c514dce10d194bfbb13b4d9196eafd3a3ae310b38180de42d3a5693bddd0a7",
+    "content_hash": "54085892457bf65ed5f9394fb722eee54f71123d9622b0b40f1ec45ad76707d5",
+    "provenance_hash": "74feca75082c4263690808b2747e72216034cb633ff078c20196bccc3523a1fb",
+    "rights_basis": "Guy de Maupassant died 1893; first published 1880. Public domain in India and the U.S.",
+    "rights_tier": "A",
+    "verification_status": "approved",
+    "qa_status": "QA_PASSED",
+    "approved_to_publish": true,
+    "publication_status": "LIVE_APPROVED",
+    "readerStatus": "reader_ready",
+    "publicationStatus": "live",
+    "isPublic": true,
+    "isLive": true,
+    "showInPublicLibrary": true,
+    "showInHomepage": false,
+    "allowPublicReading": true,
+    "allowCheckout": false,
+    "allowPayment": false,
+    "is_published": true,
+    "audio_enabled": true,
+    "audiobook_enabled": true,
+    "generate_audiobook": true,
+    "audiobook_provider": "historical_mapped_assets",
+    "audiobook_voice": "",
+    "audio_asset_slug": "boule-de-suif",
+    "audiobook_assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780592008/earnalism/audiobooks/en/boule-de-suif/boule-de-suif.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592012/earnalism/audiobooks/en/boule-de-suif/boule-de-suif_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592013/earnalism/audiobooks/en/boule-de-suif/boule-de-suif_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592014/earnalism/audiobooks/en/boule-de-suif/boule-de-suif_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592014/earnalism/audiobooks/en/boule-de-suif/boule-de-suif_meta.json"
+    },
+    "audiobook": {
+      "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780592008/earnalism/audiobooks/en/boule-de-suif/boule-de-suif.mp3",
+      "provider": "historical_mapped_assets",
+      "size": 0,
+      "duration_ms": 0,
+      "assets": {
+        "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780592008/earnalism/audiobooks/en/boule-de-suif/boule-de-suif.mp3",
+        "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592012/earnalism/audiobooks/en/boule-de-suif/boule-de-suif_timestamps.json",
+        "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592013/earnalism/audiobooks/en/boule-de-suif/boule-de-suif_highlight.vtt",
+        "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592014/earnalism/audiobooks/en/boule-de-suif/boule-de-suif_chapters.json",
+        "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780592014/earnalism/audiobooks/en/boule-de-suif/boule-de-suif_meta.json"
+      },
+      "updated_at": "2026-07-03T20:07:47Z"
+    },
+    "audiobook_assets_updated_at": "2026-07-03T20:07:47Z",
+    "created_at": "2026-07-03T20:07:47Z",
+    "updated_at": "2026-07-03T20:07:47Z"
+  },
+  "reader_manifest": {
+    "slug": "boule-de-suif",
+    "title": "Boule de Suif",
+    "author": "Guy de Maupassant",
+    "language": "en",
+    "chapter_count": 1,
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Boule de Suif",
+        "is_preview": true,
+        "has_images": false,
+        "image_count": 0,
+        "word_count": 14440,
+        "reading_minutes": 61,
+        "language_hint": "en",
+        "processing_status": "ready",
+        "processing_warnings": [],
+        "uploaded_at": "2026-07-03T20:07:47Z",
+        "updated_at": "2026-07-03T20:07:47Z"
+      }
+    ],
+    "preview_chapter_ids": [
+      "chapter-001"
+    ],
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "generated_at": "2026-07-03T20:07:47Z"
+  },
+  "approval_evidence": {
+    "slug": "boule-de-suif",
+    "approved_to_publish": true,
+    "rights_tier": "A",
+    "verification_status": "approved",
+    "qa_status": "QA_PASSED",
+    "approval_scope": "historical_admin_import_reconstruction",
+    "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+    "allowCheckout": false,
+    "allowPayment": false,
+    "audiobook_enabled": true
+  },
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "bookSlug": "boule-de-suif",
+      "order": 1,
+      "title": "Boule de Suif",
+      "language": "en",
+      "content_hash": "cb001dd5a0ddd4e2fae9483736ff69e4145ae05d25b2d50d42217300b45edd85",
+      "sourceSha256": "17c514dce10d194bfbb13b4d9196eafd3a3ae310b38180de42d3a5693bddd0a7",
+      "sanitizedSha256": "cb001dd5a0ddd4e2fae9483736ff69e4145ae05d25b2d50d42217300b45edd85",
+      "word_count": 14440,
+      "reading_minutes": 61,
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z",
+      "archived_content_sha256": "cb001dd5a0ddd4e2fae9483736ff69e4145ae05d25b2d50d42217300b45edd85",
+      "git_history_reference": {
+        "commit": "54267c4884d891afd2d8c6a9398bb8253fac023b",
+        "path": "data/controlled_publications/boule-de-suif/chapters/chapter-001.json"
+      }
+    }
+  ],
+  "superseded_at": "2026-10-02T03:12:52.976638+00:00",
+  "reason": "Intentional NEW verifiedErnestBoyd1922Knopf translation selection, exact completeStandardEbooks270paragraph source explicitlylinked tothatprintedvolume; previousPG3077trio notrights-cleared and noapprovaltransferred. Oldtext retained inGit history, notnewtrackedduplicate."
+}

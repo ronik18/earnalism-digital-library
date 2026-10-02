@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "the-imp-of-the-perverse",
   "title": "The Imp of the Perverse",
-  "generated_at": "2026-10-01T21:08:32.799563+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "596cf1c38d455304f0df2163666ee8c12691292e23b61f0a8f74914f67b01b2e",
-    "content_hash": "6902c40654ed82160028cc915dacce07a8959e45a40beef469829aa6b420eb41",
-    "provenance_hash": "697f0e1ce450200e5e9c6787ba85ec53c45d939654964c7f04b36f620c4f8a40",
+    "source_hash": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e",
+    "content_hash": "e92577c21fa4292e3494ee1404796d429ac88083d758f667bad859b912eeb5b0",
+    "provenance_hash": "6ac6e344f4500a937e9681276de2328fd187c0a053875a0cbdbdd290336a943b",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "e29a0e0627cc71875865515ff4056e1a7dbe03b9657458f281c79f80a21eca94",
+    "chapter_index_sha256": "de66b218f5cef14268d0c59b77546ffc9d7163e872fa4fba14acafb8622b2097",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "The Imp of the Perverse",
         "word_count": 2430,
-        "sha256": "bbce0a00add361ab719d9f97e7d630c0989bef4c074348b70500a8a5bc9bdd01"
+        "sha256": "aa182ebdd6c3ad74a8a44eb617dc89b727610c9dc2a6506170b6c1f32517da20"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "c5ae819cb965b42b03e65157724c9eeccc0999e0bb77cac599a02b8d7661e154"
+    "publication_region": "india",
+    "evidence_sha256": "a5b7558fee89b645393a7bed29c953869b7df45010060e5be20ed4cf5de9098f"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "24b22c5e5d2631d7dd5551a1cb95acad422d6d9454d5c0f70608972d3c7b222c",
+    "public_book": "105772a0f4a631d556560583c2da537c54ed976aaf6e1d83c660b1a90c98fecf",
     "reader_manifest": "b42f53a2bfa22df75cdfb206e67b9732a0b116cc13696bb2919429ec40f8a0f8",
-    "source_evidence": "c5ae819cb965b42b03e65157724c9eeccc0999e0bb77cac599a02b8d7661e154",
-    "approval_evidence": "e33cac9a4c50a73e70104ae773954315695ce18a6eb44e1a37ae5f881239e65f"
+    "source_evidence": "a5b7558fee89b645393a7bed29c953869b7df45010060e5be20ed4cf5de9098f",
+    "approval_evidence": "bee1c9bac36ac67f784d259bdfe51157ccec322b964e4b14b791bb1406150cf0"
   },
-  "manifest_sha256": "c42e58ea92d7aa8e79306daccc4edab36c43512de1e90931bbc00e0de0118609"
+  "manifest_sha256": "f672fdc38067eb378ed583173d8b288b60660ad5fe5915d536a1cb0d6efaa89c"
 }

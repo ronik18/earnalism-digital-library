@@ -3,35 +3,42 @@
   "schema_version": 1,
   "slug": "book-fbdf2991ab",
   "title": "সুভা",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
     "source_hash": "339d2f719c65f10dce5f2dc37515789c4f1165969aaabe0089d28f138c240617",
     "content_hash": "dd75d3c98cd7eb156fa5c5fb6e0464d89e0a487692e860b4992975dd39e824de",
     "provenance_hash": "1af9c66ee6e4b505c0944685e3a49902c40e9645675362cbc04aec3f927286f5",
     "sanitized": true,
-    "chapter_count": 3,
-    "chapter_index_sha256": "b537dfbb195bd922e27633d3d1a72b78a79172f9a22e510a22321082867c3282",
+    "chapter_count": 4,
+    "chapter_index_sha256": "677b6db1fb9258e5f2f6d49c3a3e785533f1edd762fdbb358c191a0ea7af047d",
     "chapters": [
       {
-        "id": "chapter-001",
+        "id": "chapter-004",
         "order": 1,
+        "title": "১",
+        "word_count": 335,
+        "sha256": "305732819d20eabd3b5716dc72021f9d04ae10e0d0d36a1f8191281ba9dde52c"
+      },
+      {
+        "id": "chapter-001",
+        "order": 2,
         "title": "২",
         "word_count": 439,
-        "sha256": "0adb55b41cd19312a65663bf2279de7bcfd6162879cf10d656c3ae2625293c27"
+        "sha256": "783bfdf4a092bba8efebf87a3cd5308a4f7f66f337b7842ef1281542d9348149"
       },
       {
         "id": "chapter-002",
-        "order": 2,
+        "order": 3,
         "title": "৩",
         "word_count": 374,
-        "sha256": "17e2753b0af003a631d69325833b49e78e63251c343db0ffbd7490a5ac41736e"
+        "sha256": "1e995a5637977c58457638f40c5bc8079914d1499f6cadacd01c711152ce286d"
       },
       {
         "id": "chapter-003",
-        "order": 3,
+        "order": 4,
         "title": "৪",
         "word_count": 620,
-        "sha256": "ce7b9ff66178a1ac4f3c9a2800e718398cadacf16d664f669dbb0e39f9b3ea3d"
+        "sha256": "243fe67a4f5f8ee91973c7990ce7bb9dc0e59034e28e202c41f1f0b54fef501a"
       }
     ]
   },
@@ -39,7 +46,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "8695e460acc0bc47f7cd73cc591aba16cd814a6fa87260e73be448cb2f5d453d"
+    "evidence_sha256": "36f92e7f26b72697104735173512d06716cee4dd858900036cfdde0717cb14dc"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -61,10 +68,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "9309288674baa83e9f849278a017c3aab9da0091e922c4ceb0b31243d7143aaf",
-    "reader_manifest": "5d9b1d272bd272cdac662e599d049fe1813cac19ccbe04326c57b46d096e5138",
-    "source_evidence": "8695e460acc0bc47f7cd73cc591aba16cd814a6fa87260e73be448cb2f5d453d",
+    "public_book": "9aef1c0f785b182c74ecc32021fda1be5d384f2437a665722e4de9a5369cf213",
+    "reader_manifest": "4a175a1227d101b7dce5f7186c9d49b5c2c6ba7800cabf4291fdd17365d4dafa",
+    "source_evidence": "36f92e7f26b72697104735173512d06716cee4dd858900036cfdde0717cb14dc",
     "approval_evidence": "a7790132239c2848d2f5a6e5d3f448373e25f7891a64939df5884fae9527f985"
   },
-  "manifest_sha256": "d4af34e2543a92b8b2074b922cc4f3d425750ecf1f9c2d9ded0ee2315bb1a4d3"
+  "manifest_sha256": "e3ce05dbf4ba4dc5878dd4dd788c370ee883d75b75dc985b28de3cf5b2370c89"
 }

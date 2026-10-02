@@ -44,7 +44,7 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 1385,
+      "word_count": 1353,
       "reading_minutes": 6,
       "language_hint": "ben",
       "processing_status": "ready",
@@ -59,7 +59,7 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 737,
+      "word_count": 728,
       "reading_minutes": 4,
       "language_hint": "ben",
       "processing_status": "ready",
@@ -74,7 +74,7 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 1185,
+      "word_count": 1170,
       "reading_minutes": 5,
       "language_hint": "ben",
       "processing_status": "ready",
@@ -142,5 +142,6 @@
       2400
     ]
   },
-  "cover_semantic_match_score": 9.8
+  "cover_semantic_match_score": 9.8,
+  "license_notice_sha256": "1dd3d8f8f81f38fbf0182bcac1fd4c84ec3ce93923e4380c6d1f6163e9cfa743"
 }

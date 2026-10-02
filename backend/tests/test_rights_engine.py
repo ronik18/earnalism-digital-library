@@ -368,3 +368,47 @@ def test_server_routes_keep_all_required_rights_enforcement_calls():
 
     for expected in expected_calls:
         assert expected in source
+
+
+def publication_bound_book(**overrides):
+    evidence = {
+        'year': 1918, 'source_sha256': 'a' * 64, 'content_sha256': 'b' * 64,
+        'basis': 'Actual selected 1918 printed edition; not an asserted first publication date',
+        'receipt': {'requested_url': 'https://library.example.org/edition/1918', 'http_status': 200,
+                    'accessed_at': '2026-10-02T00:00:00+00:00', 'response_sha256': 'c' * 64},
+    }
+    metadata = {'original_publication_year': None, 'publication_region': 'India',
+                'publication_upper_bound_year': 1918, 'publication_upper_bound_evidence': evidence,
+                'source_sha256': 'a' * 64, 'content_sha256': 'b' * 64}
+    metadata.update(overrides)
+    return approved_book(rights_metadata=metadata)
+
+
+def test_bound_selected_publication_does_not_invent_first_date():
+    result = evaluate_rights(publication_bound_book(), current_year=2026)
+    assert result.approved
+    assert result.metadata['original_publication_year'] is None
+
+
+@pytest.mark.parametrize('change', [
+    {'publication_upper_bound_evidence': {}},
+    {'source_sha256': 'd' * 64},
+    {'content_sha256': 'd' * 64},
+    {'publication_region': 'global'},
+    {'publication_upper_bound_year': 1966},
+    {'author_death_year': 2000},
+    {'translator_name': 'Modern translator', 'translator_death_year': None},
+])
+def test_publication_bound_keeps_independent_rights_gates(change):
+    assert not evaluate_rights(publication_bound_book(**change), current_year=2026).approved
+
+
+@pytest.mark.parametrize('receipt_change', [
+    {'http_status': 404}, {'requested_url': 'http://library.example.org/edition'},
+    {'response_sha256': ''}, {'accessed_at': ''}, {'accessed_at': 'not-a-timestamp'},
+    {'accessed_at': '2027-01-01T00:00:00+00:00'},
+])
+def test_publication_bound_requires_actual_primary_receipt(receipt_change):
+    book = publication_bound_book()
+    book['rights_metadata']['publication_upper_bound_evidence']['receipt'].update(receipt_change)
+    assert not evaluate_rights(book, current_year=2026).approved

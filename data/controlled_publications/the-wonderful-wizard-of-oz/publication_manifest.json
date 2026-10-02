@@ -3,190 +3,197 @@
   "schema_version": 1,
   "slug": "the-wonderful-wizard-of-oz",
   "title": "The Wonderful Wizard of Oz",
-  "generated_at": "2026-10-01T21:08:34.872462+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "20b4fa5a47c6e23b6093c2eedbf5d0b2930c6eefe5c8646e009a98bd0131c85e",
-    "content_hash": "1256f90f4c8943940d6520a4322fe67ddb2d6537d1ae8577b8a4be713531291c",
-    "provenance_hash": "b79ac47434fc029bf7c4110ee5f38fb9b705ccb6c83a3fcbc49cef7d0a9d9df0",
+    "source_hash": "969bffab7740d4d8a0bac332d78bd0152ad4a40a2efc52f06c74a9bb6120be75",
+    "content_hash": "4b174cd456358387fe1bbd65667a783ae52d7b4f0475f1c570a80132c847b18e",
+    "provenance_hash": "6efb24dec4a20c5a0bd3aa7b7411cb80ed158b480c20e460f859928630548a2d",
     "sanitized": true,
-    "chapter_count": 24,
-    "chapter_index_sha256": "4ae30f756bd32c1ffbbde20052fee32f928aacd1a1b7170193fa57d25a66e2bb",
+    "chapter_count": 25,
+    "chapter_index_sha256": "fe24e431518489af3530060278941f84fcf3ce3ac15ffe6f39c2e853a629b134",
     "chapters": [
       {
-        "id": "chapter-001",
+        "id": "chapter-000",
         "order": 1,
+        "title": "Introduction",
+        "word_count": 183,
+        "sha256": "118662968ffae09a39b945b4e23611134f002de106fc175769bcc6b0d3f23171"
+      },
+      {
+        "id": "chapter-001",
+        "order": 2,
         "title": "Chapter I. The Cyclone",
         "word_count": 1148,
-        "sha256": "1b0ebe7f55608d007a5f2a7322840434ec457587bed832f100ebf91433036bda"
+        "sha256": "47eba6c96f51a6bcb2bde839312a2a487dfd7cbbefb64d9fd8f26f9e09b8a2a3"
       },
       {
         "id": "chapter-002",
-        "order": 2,
+        "order": 3,
         "title": "Chapter II",
         "word_count": 2010,
-        "sha256": "00ad06d50ac54ec8158f19bf652cf6eae0e2a13d2a3a469bfd1b922a20256d32"
+        "sha256": "8c32e4ea4ce72dca82dafc112f750adeadaa8371715022e01ce15f2209c828ca"
       },
       {
         "id": "chapter-003",
-        "order": 3,
+        "order": 4,
         "title": "Chapter III. How Dorothy Saved the Scarecrow",
         "word_count": 1971,
-        "sha256": "792d576b7eec4a42f7ff7a9d399450101c9638b74eb222c3eec4b035119a009d"
+        "sha256": "7a5162887dd0f1d7caedb9c389c09af052cb7662aa9bf88cfc1a833b3ff681bd"
       },
       {
         "id": "chapter-004",
-        "order": 4,
+        "order": 5,
         "title": "Chapter IV. The Road Through the Forest",
         "word_count": 1440,
-        "sha256": "23ae8319af7ab2310960278012708e46fbf51245532e6a08a26dc43301b72941"
+        "sha256": "b2abb71a6657d4996d40a5153fd6fc9da28645cf213b7905aca12ef368da5104"
       },
       {
         "id": "chapter-005",
-        "order": 5,
+        "order": 6,
         "title": "Chapter V",
         "word_count": 2064,
-        "sha256": "9775e6b0a376005e09d7c0fa3190823eac77b3b5b0e2324ca5db7eed599287d3"
+        "sha256": "0671e6fb23eb9bee17bea9ec34f735227af6907fc09821014116cd78fe4dc103"
       },
       {
         "id": "chapter-006",
-        "order": 6,
+        "order": 7,
         "title": "Chapter VI. The Cowardly Lion",
         "word_count": 1528,
-        "sha256": "1e592388c4bf32feda556132082709909679a019d1d4ef258d32df938f118ec0"
+        "sha256": "7f544ecf190fc44e24bf9da2ae9c1ca721f061cd4e84600beb25c911b586ca10"
       },
       {
         "id": "chapter-007",
-        "order": 7,
+        "order": 8,
         "title": "Chapter VII",
         "word_count": 1817,
-        "sha256": "6c0902729c661f2463a6c5199ae50ad5e719dc2ef70d32fa54f17e3618b7c82a"
+        "sha256": "059ce4904d10f05ba6174dd9de4121239844e98dbf6e9f71bd905291bc6cf369"
       },
       {
         "id": "chapter-008",
-        "order": 8,
+        "order": 9,
         "title": "Chapter VIII. The Deadly Poppy Field",
         "word_count": 1940,
-        "sha256": "15b9c75f32756f56532f0920e95df83af00b1a0d0008ac0a860a48b11343b879"
+        "sha256": "e82cab6532aec3f5cbc81525475862a79efb7477da2be5a4fa5702df7fa72ffc"
       },
       {
         "id": "chapter-009",
-        "order": 9,
+        "order": 10,
         "title": "Chapter IX",
         "word_count": 1392,
-        "sha256": "beb5d0ba3c2416d67e2e6d2410bbadb4debab8338c7d4d95bf6c9262f8e6529f"
+        "sha256": "ccd55e81a04d06cf466ac4efed76bb3c41f20df66fe5a7a28b37bd0f3f1b489f"
       },
       {
         "id": "chapter-010",
-        "order": 10,
+        "order": 11,
         "title": "Chapter X",
         "word_count": 1960,
-        "sha256": "ce8d682ec38fb81c0014e876f752ee95ee078b842dd2dd25d508e608b10a7d22"
+        "sha256": "e405c6479f80643ffae80cb112237daba55b94308d0e2489a8196e991f91db82"
       },
       {
         "id": "chapter-011",
-        "order": 11,
+        "order": 12,
         "title": "Chapter XI. The Wonderful City of Oz",
         "word_count": 3614,
-        "sha256": "32ed8fea3faad3cd6f59490a95ddd3a5266bba0f954f193d5dc50d34fc17c4a8"
+        "sha256": "1548a87a716c760b5bf4ac9334e185ac3b9692e099dbcc892a5241dfcd53e076"
       },
       {
         "id": "chapter-012",
-        "order": 12,
+        "order": 13,
         "title": "Chapter XII",
         "word_count": 3686,
-        "sha256": "ea50b919cc2cec74fd6ba2cc2ab991bd2adfaf5a933fc0878a3c4cb81aee22d8"
+        "sha256": "19a281cd8265ea71bad736152d21a3c9ceb3ad4631d6c314391caa016cbdcb52"
       },
       {
         "id": "chapter-013",
-        "order": 13,
+        "order": 14,
         "title": "Chapter XIII. The Rescue",
         "word_count": 1197,
-        "sha256": "1f09b97fc98dd641b0cf3bb6e2e2dd6061ac2fd81cbbe120649bc4ee115a2d09"
+        "sha256": "a33c3e949883bab750a4a3fed0b1d7a8ccb466b741b11d49f656ecae48632eff"
       },
       {
         "id": "chapter-014",
-        "order": 14,
+        "order": 15,
         "title": "Chapter XIV. The Winged Monkeys",
         "word_count": 1892,
-        "sha256": "32bf93b2f33a51684d30fb5509a79d139722d2747022396dfd645caec0f5f7bb"
+        "sha256": "71a15fe2fc31371944909ddb9c70caef653f4bc6262ab488bbb4c7a793138574"
       },
       {
         "id": "chapter-015",
-        "order": 15,
+        "order": 16,
         "title": "Chapter XV",
         "word_count": 2796,
-        "sha256": "81b94d7738c08ffeb1ba184b6c1a8d266d85e56f1d69151a641b8275657bf941"
+        "sha256": "c0c5044d71a15d20ef413473916b6d263ce4bc07fc8d9ad9c309a7ba41d2c9d9"
       },
       {
         "id": "chapter-016",
-        "order": 16,
+        "order": 17,
         "title": "Chapter XVI",
         "word_count": 942,
-        "sha256": "a168470cdafef72c53ea750caafd3dfc58643a3b7402901ec1d1796475da8c55"
+        "sha256": "ef577dfed5d075f8f90c31f1bb82a24957be8718b9718cfdb28f7fd8df376554"
       },
       {
         "id": "chapter-017",
-        "order": 17,
+        "order": 18,
         "title": "Chapter XVII. How the Balloon Was Launched",
         "word_count": 1160,
-        "sha256": "9b6455ab9ef7b1e99822a9901c072ed0963ac79a2baaf0321a6b84cb679e1711"
+        "sha256": "4765b4825ee8014b8d6dcd96d2bd31174087f11e3f52ed19fbe830d63963af60"
       },
       {
         "id": "chapter-018",
-        "order": 18,
+        "order": 19,
         "title": "Chapter XVIII",
         "word_count": 1173,
-        "sha256": "8465acf3ef5a3e6dacfd8f17f107853ac6a0e3b140ee6b4ddf34947bd2cc59e4"
+        "sha256": "665d674b8eb7dcf30ebee5f00c38877b12e9f874f0d708371a82803d7743a605"
       },
       {
         "id": "chapter-019",
-        "order": 19,
+        "order": 20,
         "title": "Chapter XIX",
         "word_count": 1019,
-        "sha256": "7951701e09ae067c995428a81e5b0bacdd50ec1e65e5be97eb3c4edeffcf3ea7"
+        "sha256": "89627bd9ec55bd369f6805538ea2d1dbe8073f6c7c4776199776ef332f62d7d8"
       },
       {
         "id": "chapter-020",
-        "order": 20,
+        "order": 21,
         "title": "Chapter XX. The Dainty China Country",
         "word_count": 1518,
-        "sha256": "06c05cc429fb380be52e6f3ffd51b326051b95495c1b50b1a5ce6439eb5592e3"
+        "sha256": "06ded42ac082874263b58c4c80c0bd0be859c2506b762035f8dff7bbe3480954"
       },
       {
         "id": "chapter-021",
-        "order": 21,
+        "order": 22,
         "title": "Chapter XXI",
         "word_count": 901,
-        "sha256": "e8b9c70866d0585f19319c7b13f5c3f2d230832bd89ef56299bc0fb5e76e40b2"
+        "sha256": "06d09334a48d348344d7f21da5ada91c6f949903cfbec602e80c7fe55e7d8f84"
       },
       {
         "id": "chapter-022",
-        "order": 22,
+        "order": 23,
         "title": "Chapter XXII",
         "word_count": 944,
-        "sha256": "83f0a613a13736b901dca3b19344b93b7823dae0392e12c0be28099066719392"
+        "sha256": "bc298db53227232ae528e897fc85091c706904bd1d4cfdbb32127f089496d5dd"
       },
       {
         "id": "chapter-023",
-        "order": 23,
+        "order": 24,
         "title": "Chapter XXIII. Glinda The Good Witch Grants Dorothy’s Wish",
         "word_count": 1252,
-        "sha256": "57eaefac8b87229ca226d5a76e923ec3f10c5487b9049f65d0eb0bc0b9f46ef0"
+        "sha256": "bf4ed5e7ebf8b5402a9d58545161150f084443e3f5b95234445dde15dfb3acec"
       },
       {
         "id": "chapter-024",
-        "order": 24,
+        "order": 25,
         "title": "Chapter XXIV. Home Again",
         "word_count": 75,
-        "sha256": "96aab5ee0649a534096d41b40e497fceee1c4b9400d36d04192da0992c5328a8"
+        "sha256": "64c9fab6b003c799f01caadbb2b4a1278149c092467b0f65a1647d35cf382386"
       }
     ]
   },
   "rights": {
     "status": "APPROVED",
     "tier": "A",
-    "publication_region": "in",
-    "evidence_sha256": "d1c06157d9cc727c67ee9f8d21da9b0025dd177a0ae2e3a0da5415928b3046b6"
+    "publication_region": "india",
+    "evidence_sha256": "7ec444ed90caa41fb950757933ee7399ef94fceab855bdd8c3e52a6806358ec5"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -207,10 +214,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "10425c89fbe666638516db0681d1dad5172bd499ecc8b6f9337fe9ee791812c5",
-    "reader_manifest": "48a6523189b097c56f295fb59b6fe93f0c03c65dbea2bc26b5c3557e5ddb6910",
-    "source_evidence": "d1c06157d9cc727c67ee9f8d21da9b0025dd177a0ae2e3a0da5415928b3046b6",
-    "approval_evidence": "825d869ab62e7fa4dc8352d54fca3c4d8101842441d20fad39d235a1b2ca245d"
+    "public_book": "2df5b76950fd3c72456607a7e8942cdf71aeab5bc4f70c040296637f60753452",
+    "reader_manifest": "496a0323acfc6d68dbc5bb5b434c1adef33e18cf3260372585494ccb6fee26af",
+    "source_evidence": "7ec444ed90caa41fb950757933ee7399ef94fceab855bdd8c3e52a6806358ec5",
+    "approval_evidence": "310686fe16930425d0de93fd297565f860bbd6adb797494feacc6a365bb92c21"
   },
-  "manifest_sha256": "765c053d82fb107811ec3105f04ec8941f790cd6ae16c9f05ed42eba68f31723"
+  "manifest_sha256": "71868f40da9403d8a1f735d47b8f7af501d264f1e4ed3bf3509d3b56058b992a"
 }

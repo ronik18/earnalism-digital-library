@@ -1,0 +1,74 @@
+{
+  "receipt": {
+    "requested_url": "https://bn.wikisource.org/w/api.php?action=query&prop=revisions&titles=%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%95%E0%A6%A5%E0%A6%BE-%E0%A6%9A%E0%A6%A4%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%AF%E0%A6%BC+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%A7%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%95%E0%A6%A5%E0%A6%BE-%E0%A6%9A%E0%A6%A4%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%AF%E0%A6%BC+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%A8%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%95%E0%A6%A5%E0%A6%BE-%E0%A6%9A%E0%A6%A4%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%AF%E0%A6%BC+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%A9&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2",
+    "resolved_url": "https://bn.wikisource.org/w/api.php?action=query&prop=revisions&titles=%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%95%E0%A6%A5%E0%A6%BE-%E0%A6%9A%E0%A6%A4%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%AF%E0%A6%BC+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%A7%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%95%E0%A6%A5%E0%A6%BE-%E0%A6%9A%E0%A6%A4%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%AF%E0%A6%BC+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%A8%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%95%E0%A6%A5%E0%A6%BE-%E0%A6%9A%E0%A6%A4%E0%A7%81%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%AF%E0%A6%BC+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%A9&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2",
+    "http_status": 200,
+    "accessed_at": "2026-10-02T03:28:56.239408+00:00",
+    "response_sha256": "6c32dab22d6136b03ba0eb9ca389bf0dad36bf8018577fb09f6e99493a02c8c3"
+  },
+  "data": {
+    "batchcomplete": true,
+    "query": {
+      "pages": [
+        {
+          "pageid": 254059,
+          "ns": 104,
+          "title": "পাতা:কথা-চতুষ্টয় - রবীন্দ্রনাথ ঠাকুর.pdf/১",
+          "revisions": [
+            {
+              "revid": 1615824,
+              "parentid": 1473189,
+              "timestamp": "2021-08-08T18:43:03Z",
+              "slots": {
+                "main": {
+                  "contentmodel": "proofread-page",
+                  "contentformat": "text/x-wiki",
+                  "content": "<noinclude><pagequality level=\"4\" user=\"Mohaguru\" /></noinclude>{{কেন্দ্র|{{xxxx-larger|﻿কথা-চতুষ্টয়।}}}}\n\n{{কেন্দ্র|[[File:কথা-চতুষ্টয় - রবীন্দ্রনাথ ঠাকুর (page 1 crop).jpg|150px]]}}\n\n{{কেন্দ্র|{{xxx-larger|শ্রীরবীন্দ্রনাথ ঠাকুর}}}}\n{{কেন্দ্র|{{x-larger|প্রণীত।}}}}\n\n\n{{কেন্দ্র|[[File:কথা-চতুষ্টয় - রবীন্দ্রনাথ ঠাকুর (page 2 crop).jpg|100px]]}}\n\n\n{{কেন্দ্র|{{x-larger|কলিকাতা;}}}}\n\n{{center|১৩/৭নং বৃন্দাবন বসুর লেন, সাহিত্য-যন্ত্রে}}\n{{center|শ্রীযজ্ঞেশ্বর ঘোষ কর্তৃক মুদ্রিত}}\n{{center|ও}}\n{{center|৬নং দ্বারকানাথ ঠাকুরের লেন হইতে}}\n{{center|শ্রীকালিদাস চক্রবর্ত্তী কর্তৃক প্রকাশিত।}}\n\n{{center|১৩০১।}}<noinclude></noinclude>"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pageid": 254060,
+          "ns": 104,
+          "title": "পাতা:কথা-চতুষ্টয় - রবীন্দ্রনাথ ঠাকুর.pdf/২",
+          "revisions": [
+            {
+              "revid": 949532,
+              "parentid": 557717,
+              "timestamp": "2018-07-08T09:47:23Z",
+              "slots": {
+                "main": {
+                  "contentmodel": "proofread-page",
+                  "contentformat": "text/x-wiki",
+                  "content": "<noinclude><pagequality level=\"0\" user=\"Mahir256\" /></noinclude><noinclude></noinclude>"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "pageid": 254061,
+          "ns": 104,
+          "title": "পাতা:কথা-চতুষ্টয় - রবীন্দ্রনাথ ঠাকুর.pdf/৩",
+          "revisions": [
+            {
+              "revid": 1841361,
+              "parentid": 1794598,
+              "timestamp": "2024-11-15T03:54:09Z",
+              "slots": {
+                "main": {
+                  "contentmodel": "proofread-page",
+                  "contentformat": "text/x-wiki",
+                  "content": "<noinclude><pagequality level=\"4\" user=\"Mohaguru\" /></noinclude>{{dhr|10em}}\n{{block center|width=400px|\n{{কেন্দ্র|{{xx-larger|সূচী}}}}\n{{Dotted TOC page listing|১।|[[কথা-চতুষ্টয়/মধ্যবর্ত্তিনী|মধ্যবর্ত্তিনী]]|[[পাতা:কথা-চতুষ্টয় - রবীন্দ্রনাথ ঠাকুর.pdf/৫|১]]|symbol=...|space=4}}\n{{Dotted TOC page listing|২।|[[কথা-চতুষ্টয়/শাস্তি|শাস্তি]]|[[পাতা:কথা-চতুষ্টয় - রবীন্দ্রনাথ ঠাকুর.pdf/২৯|২৫]]|symbol=...|space=4}}\n{{Dotted TOC page listing|৩।|[[কথা-চতুষ্টয়/সমাপ্তি|সমাপ্তি]]|[[পাতা:কথা-চতুষ্টয় - রবীন্দ্রনাথ ঠাকুর.pdf/৪৯|৪৫]]|symbol=...|space=4}}\n{{Dotted TOC page listing|৪।|[[কথা-চতুষ্টয়/মেঘ ও রৌদ্র|মেঘ ও রৌদ্র]]|[[পাতা:কথা-চতুষ্টয় - রবীন্দ্রনাথ ঠাকুর.pdf/৮৬|৮২]]|symbol=...|space=4}}}}\n{{dhr}}\n{{rule|3em}}\n{{dhr|10em}}<noinclude></noinclude>"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "scope": "Actual primary printed edition establishes published-by year only, not original firstpublicationdate"
+}

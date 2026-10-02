@@ -1,12 +1,22 @@
 {
   "slug": "a-jury-of-her-peers",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true
+  "audiobook_enabled": true,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "fd6a5800a854a3712d86784e3babbe6101ad71e45637f9d21df3a0d0bb29a5b9",
+  "source_hash": "f011e7e8f943cee34701f2c807a35c34af76592307f213602470c9140461032f",
+  "content_hash": "386356e64157eb7fba8cb30c7728b47030be0d025794fd9b31a40e2a42e8d087",
+  "provenance_hash": "021f0de8b56b29ff222241daf69b4b76681ddfa367d02d777f3ebcbef022f0dc",
+  "verified_at": "2026-10-01T21:34:27.335291+00:00"
 }

@@ -3,39 +3,36 @@
   "schema_version": 1,
   "slug": "sredni-vashtar",
   "title": "Sredni Vashtar",
-  "generated_at": "2026-10-01T21:08:30.780410+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "089628df1446736886ddae93252fc070854ec17606ade714a70ba77b55e6ea02",
-    "content_hash": "adaad32e67a022024f647efcfd8b02639eab6716a526e6045e85d8d648fc529c",
-    "provenance_hash": "87eec37fc864c1d5b323d47468e1ed2547510c408ff97b400185fd13834a6c51",
+    "source_hash": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
+    "content_hash": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+    "provenance_hash": "8d472e6cdc272f1b341c183654a57eab65f521f9a26ed0bb3b30ee93a7354468",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "a2a03e9aa7fd65342bae8c8ccc54e75cac6bb3743b480c75c31c48d034c493f9",
+    "chapter_index_sha256": "51c62b78889787d8f6e93517b6fa6db9330b0a786b2b0a61e533b4b323e45999",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "Sredni Vashtar",
         "word_count": 1787,
-        "sha256": "1479bad3f14cc9c48bf4c415d49f848933ba65436fe2b5b1efda0156be8d1260"
+        "sha256": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "3ad3c7f6c13562a5283dac91442ef5ff18d8c6e5374a7bb37efa18641aea8d73"
+    "publication_region": "india",
+    "evidence_sha256": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f"
   },
   "reader_release": {
-    "status": "BLOCKED",
+    "status": "READY_FOR_APPROVAL",
     "exposed": false,
     "qa_status": "QA_PASSED",
     "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
-    "blockers": [
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
-    ]
+    "blockers": []
   },
   "audio_release": {
     "status": "IN_PROGRESS",
@@ -47,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "31ca9d07e3fa8e594daf8e1ce1af839226fb526a3bb07a51bc5962d8bc899c92",
+    "public_book": "c027b799066b584a244c9025086df028d7a9ef65c5d7e812735b27e64420c59f",
     "reader_manifest": "2ccf2bae7a65d944946f1cf4ca5a5f8b4011408638d67cc95e7f8bf6eca3ab54",
-    "source_evidence": "3ad3c7f6c13562a5283dac91442ef5ff18d8c6e5374a7bb37efa18641aea8d73",
-    "approval_evidence": "7d02c5428a1b63f6639424b87271ebffb00675e24df2ea36c124afa2f46c494a"
+    "source_evidence": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
+    "approval_evidence": "d2eec4f08fcd81f7156fc122a1c9fb20dd96ef0cde660c69801b03bfd9a000d3"
   },
-  "manifest_sha256": "03508bb8487a67bf8a7f3c16294a0e3ea5043fbf4f91c35a118ada6d903384d0"
+  "manifest_sha256": "8da1395cffb08e0eba4e6fb2f36a544a7d2cb0aa61c27c47a13a283bdd264d8c"
 }

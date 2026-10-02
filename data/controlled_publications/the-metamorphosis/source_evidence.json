@@ -14,7 +14,7 @@
   "author_death_year": 1924,
   "original_publication_year": 1915,
   "rights_tier": "C",
-  "verification_status": "blocked",
+  "verification_status": "quarantine",
   "publication_region": "IN",
   "verified_at": "",
   "qa_status": "RIGHTS_REVIEW_REQUIRED",
@@ -155,5 +155,26 @@
       }
     ],
     "content_sha256": "f10743e0510cb420ec7a1e8bb5ad40e1b3190c90373ec9a14d585f0d17830a83"
-  }
+  },
+  "historical_import_commercial_use_claim": false,
+  "text_license_review": {
+    "slug": "the-metamorphosis",
+    "verified_at": "2026-10-02T03:02:06.914290+00:00",
+    "edition": "Project Gutenberg#5200 DavidWyllie translation",
+    "source_receipt": {
+      "requested_url": "https://www.gutenberg.org/cache/epub/5200/pg5200.txt",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/5200/pg5200.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T02:59:14.410868+00:00",
+      "response_sha256": "0933283a19a4daaef0d412e8f69c74fae126b0a946cb74b8f3c783a8e869830d"
+    },
+    "explicit_copyrighted_notice": true,
+    "source_contains_title_specific_grant_independent_of_pg_terms": false,
+    "source_permission_scope": "Generic fullPGlicence controls copyrighted electronic works under1.E.3; publisher expressly restricts public-domain/no-trademark escape1.C to individual works unprotected by UScopyright. Source explicitly copyrighted; no India-specific expiration or direct separate commercial translation licence located.",
+    "commercial_route_available_only_conditionally": "1.E.8 sets20%gross-profit royalty and required refund/retention/fulllicence obligations;1.E.9 permits written alternative permission. Current strippedreader and ReadingPass architecture do not implement or prove these conditions. This audit does not create new financial obligations, altercommerce or pretend compliance.",
+    "exact_missing_evidence": "A genuine licence/grant for this exactWyllie translation covering commercial India Reader distribution on currentEarnalismterms, OR evidence that all applicablePG copyrighted-work commercial obligations are met. Kafka original death1924 cannotclear Wyllie translation.",
+    "decision": "LEGAL_LICENSE_TERMS_BLOCKED_NO_LOCAL_ACCEPTANCE",
+    "boilerplate_policy": "Do not strip contractual conditions from a copyrighted translation and call itpublicdomain."
+  },
+  "text_clearance_status": "LEGAL_LICENSE_TERMS_BLOCKED"
 }

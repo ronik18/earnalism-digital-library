@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "the-country-of-the-blind",
   "title": "The Country of the Blind",
-  "generated_at": "2026-10-01T21:08:32.366374+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "9c3a181e89c3cba35cc6f55c71aff374a2348b64cc26aba3fbb9e999e8a7676c",
-    "content_hash": "9733617f1c7378d6d529652708dd58f8f0c6f106b449a5e317464e8b7d7e0095",
-    "provenance_hash": "e4d674d5122b9110ce1dd6ce2d82449c096b1912afde09b23cd4f45a9aad3c76",
+    "source_hash": "4f5efdaf578c1b581fd748a5a6dc6d6895490ccc17f5af181171a0d6d6f41114",
+    "content_hash": "a03d0c0fa2909265a3c2fe7026299860ffee3d49c0285d23e34b87eefc155386",
+    "provenance_hash": "7d8be11f5115451645163b93dbdaa8cd42968fa90251c70ba7815fd1ad4f2e3b",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "e52a4eab4ad2bb3d1577028ae6db2b442ae331b6abce23634c2f89bfca6ef260",
+    "chapter_index_sha256": "2dd09d494c6d673b5ec2c201ad046c9e82fa952cbfb831021a7c4fa6a77d21a8",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "The Country of the Blind",
         "word_count": 9570,
-        "sha256": "4b67f4dbca39a6208440b978ee0ca7715ff3ab7be00540e59a1512b0fa1743f6"
+        "sha256": "cc65d1fb0a33ce89c6bd4ec90e3ff811fbff5b8787071b6720842936fd9cc20b"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "baaf5c80ac20c86814915c160d99c0468b4d60ed6a38a1267a94bc5fb5089588"
+    "publication_region": "india",
+    "evidence_sha256": "0569f68514b0c03e954e46c398faac2de0f7dae752cb94a3f3accd3d4f8d23d3"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "1dc6022ee78fe065dc905d2047d2adddcd0eb2c014921e4632ce1d4f9758d1f5",
+    "public_book": "857f99959077175e5794be439a31d47c84a7512c479eb0e34139e4efa3465b0d",
     "reader_manifest": "e661454cb8aa855d31007c42465fdd7499411b967e680cb85d8d46a789d9694f",
-    "source_evidence": "baaf5c80ac20c86814915c160d99c0468b4d60ed6a38a1267a94bc5fb5089588",
-    "approval_evidence": "ba17737ee2cb2ea95ab3a66a109dcb4a1d36ac6437fdf7bf2c6cb006d64b4940"
+    "source_evidence": "0569f68514b0c03e954e46c398faac2de0f7dae752cb94a3f3accd3d4f8d23d3",
+    "approval_evidence": "128b7553db8a4d64df98345756055b44cd8223448f7c50f2304455772e3f8f59"
   },
-  "manifest_sha256": "a496387791fb5735d80365f26efbbc72994f161fc3ebec45806ae1f687dba324"
+  "manifest_sha256": "457adcb03b7c328775ed124dcb2280522e88c3b43ca9f38c4f2476f88ab43926"
 }

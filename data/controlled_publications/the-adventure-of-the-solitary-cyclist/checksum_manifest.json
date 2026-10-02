@@ -1,14 +1,14 @@
 {
   "slug": "the-adventure-of-the-solitary-cyclist",
-  "generated_at": "2026-07-03T20:07:48Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "a7ae152f064ca056bcd63fd8265e8469ed1791a4b725e3062eb8181776d17f6a"
+      "sha256": "8d13108b4c4dda28b78239a873ff25186b4eb51f87ec2c467297cdccd1dda272"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "643e2566369fb83520477a8e70b595992cf98891d194347aaa4ada9570f12f24"
+      "sha256": "c9c191055227e38401d2af0d490c44862797d649ab3fa368a0919742fba376fb"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "90819a624a4ff958b0a80fa2f72c62fc0e4c0bcc46ac2968f94314b368864307"
+      "sha256": "a821637407efad9b51f91573cbefa3627ec96fa4674717e326a695a2849d450d"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "cdbbaf900ca5505db7a4ebd111490ba790dfdae427a2fc38896fdfce1d04bc44"
     },
     {
       "file": "reader_manifest.json",
@@ -24,7 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "f885fde2b330fcc253c357413d354c6261ce1debf422015c9f1ab9449ea5854a"
+      "sha256": "3da2cca157d6240bf0cf62c7b6eff35a467e32fe808e931069388e49391c430f"
     }
   ]
 }

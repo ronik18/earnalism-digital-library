@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-book-5461971092-1894-cc-by-sa-text-reader",
+  "edition_id": "book-5461971092",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "9549e0ba3426c7e09daa2a5d4b48872962bd42d9a779a2e50bb69a7974f02ccc",
+    "reader_manifest": "11c6c34b6f0c68bbb02292eb2baa7d146a05829b74c67430764176ba784a5ad4",
+    "source_evidence": "e3d9514270078f56e31eeff627ebae9cb475c001087d1685a22fa7f0d7ab2cd8",
+    "approval_evidence": "0d26c36232878d81190e461fbc3854c4fba1e62e9ce513d89fbce33b57e23fd6",
+    "checksum_manifest": "36933f109b1cf81f8c621ca2a7eb99912f8b1a0a908aa13c52fd562563b2a89e",
+    "publication_manifest": "b6dc16f1186cd9683d65f2c9df6058d9ed590ee13c47d2f0a70f397d36502acd"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-02T03:10:37.024181+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Exact Katha-Chatushtay original1301/1894 sole-author Rabindranath Tagore edition; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1941; India Section22 literary term expired end2001. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
+  "evidence_sha256": [
+    "4dd7dc9b147b535ddc643a42b5ca22d7b146ad073be0880f28c3aebec1a3f7e4",
+    "ebf0c68d10e5d991da123496ceea63db71b53f10344dac562f285489c9dcaf82",
+    "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "9fb58d071f101b9d09c029b1863f12700e5c93aff5a78299f444d9757944f3d9",
+    "453ac5b50b139763b6b4b5f09c570ff299d98bfa6211281ddd54cd2c32349fde",
+    "98f38f3aa3edf1483775b55801ceb8ab921691c0099e25bd3774aa05040b27ec"
+  ],
+  "accepted_by": "Automated executor under explicit product-owner autonomous evidence-backed text-clearance delegation; not a human legal reviewer or signature.",
+  "conditions_satisfied": true
+}

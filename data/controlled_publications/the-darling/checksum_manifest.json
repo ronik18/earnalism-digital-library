@@ -1,14 +1,14 @@
 {
   "slug": "the-darling",
-  "generated_at": "2026-07-03T20:07:47Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "e08661096cc750017871e2006e545777d7eb9178e61804caf9f734d04af7bc6a"
+      "sha256": "589a09f7205c778913599ff48d3ffdce6bd0a93034f1965a58165a9936032567"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "40b95bf8eeeb0975744d43e53dc3b3eccb35ad08996f6a81a0c55f00f7823635"
+      "sha256": "4ae26971ea448c27776ba8f04749942cb3715ac3e65800b37742f82378fa1f95"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "4a1f171ba339c00aaea539dab2c1921473f1318f898757b81166c11cbd6659a4"
+      "sha256": "ba59cf4a7d56d801e75d66d83318c9afb849ddda648ac6f1a5f18c4d2085ea8d"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "358eb14897e5dbb03a16f5b9340d0f20999c73f64e488cee633732a5f29c9e57"
     },
     {
       "file": "reader_manifest.json",
@@ -24,7 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "5d9c94f9d12dc6a3210c5158e642855c96ff13add1c2560f74aea4e3f1a2ce39"
+      "sha256": "9feeafead532941be169e2e309e082960a24e4ebc84b8f40d45e2433ff67e4cd"
     }
   ]
 }

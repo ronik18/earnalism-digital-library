@@ -1,12 +1,12 @@
 {
   "slug": "the-withered-arm",
   "source_url": "https://www.gutenberg.org/ebooks/3056",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #3056; The Withered Arm exact canonical source, underlying lifetime publication 1888; complete selected author text, no translation or independently authored artwork/editorial material imported",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "b9697ff53faa2aa6ace3c91156126068c302e360124aff1633e1cb319a471bc1",
-  "content_hash": "fb42b9f8bea73e8b961a09fee5f4baaffada54127880695f2792456d9ebf7cd2",
-  "provenance_hash": "653acab377c282abd241e7cd35d1d6b93c2300570ea63473d4321c8af5c7164d",
-  "rights_basis": "Thomas Hardy died 1928; first published 1888. Public domain in India and the U.S.",
+  "source_hash": "c2e80e062f09828cb87dd57ca8db79de7e4bb22cbbec178276fa50d2cd7caa53",
+  "content_hash": "12d3bf4e0b6a8682055242aa8ef4867d086c79257dcfc7f6c3592f1aea1a8ced",
+  "provenance_hash": "44ee41c0e15bf9a262bef891dc289a4fcc2bb89e47ed91f807f059dc5b88968b",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1928, verified lifetime collection publication 1888 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-03T08:04:22.281501+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -76,11 +76,15 @@
     },
     "comparison": {
       "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
-      "status": "SOURCE_TEXT_DIFFERS",
-      "matched_chapters": [],
-      "nonmatching_chapters": [
-        "chapter-001"
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 103254,
+          "length": 58516
+        }
       ],
+      "nonmatching_chapters": [],
       "complete_edition_proven": false,
       "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
     },
@@ -107,9 +111,103 @@
     "ordered_chapter_sha256": [
       {
         "id": "chapter-001",
-        "sha256": "688a38410e62c99b7f1536322d5fe487dd9db8a0336adb2ab5d479448ca16172"
+        "sha256": "12d3bf4e0b6a8682055242aa8ef4867d086c79257dcfc7f6c3592f1aea1a8ced"
       }
     ],
-    "content_sha256": "688a38410e62c99b7f1536322d5fe487dd9db8a0336adb2ab5d479448ca16172"
+    "content_sha256": "12d3bf4e0b6a8682055242aa8ef4867d086c79257dcfc7f6c3592f1aea1a8ced"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "b9697ff53faa2aa6ace3c91156126068c302e360124aff1633e1cb319a471bc1",
+        "content_hash": "fb42b9f8bea73e8b961a09fee5f4baaffada54127880695f2792456d9ebf7cd2",
+        "provenance_hash": "653acab377c282abd241e7cd35d1d6b93c2300570ea63473d4321c8af5c7164d"
+      },
+      "superseded_at": "2026-10-01T21:42:12.553107+00:00",
+      "reason": "Same verified Gutenberg ID illustrated-edition narrative restored in full, illustration captions and publisher/trademark furniture removed; no prior approval transferred"
+    }
+  ],
+  "edition_migration_evidence": {
+    "verified_at": "2026-10-01T21:42:12.553107+00:00",
+    "same_electronic_id": 3056,
+    "old_chapter_sha256": "688a38410e62c99b7f1536322d5fe487dd9db8a0336adb2ab5d479448ca16172",
+    "selected_scope": "All9Hardy narrative chapters; originalmagazine attribution kept in internal evidence only",
+    "illustration_caption_transformation": "Balanced Illustration bracket blocks removed; no artwork imported",
+    "source_sha256": "c2e80e062f09828cb87dd57ca8db79de7e4bb22cbbec178276fa50d2cd7caa53",
+    "new_content_sha256": "12d3bf4e0b6a8682055242aa8ef4867d086c79257dcfc7f6c3592f1aea1a8ced",
+    "publication_authorized": false
+  },
+  "selected_edition_publication_year": 1888,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:49:40.745164+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/3056.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/3056/pg3056.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:45.586386+00:00",
+      "response_sha256": "c2e80e062f09828cb87dd57ca8db79de7e4bb22cbbec178276fa50d2cd7caa53"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 103254,
+          "length": 58516
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Hardy, Thomas, 1840-1928",
+      "creator_death_year": 1928,
+      "selected_collection_publication_year": 1888,
+      "original_story_first_publication_year": null,
+      "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+      "bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Hardy%2C%20Thomas%2C%201840-1928",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Hardy%2C%20Thomas%2C%201840-1928",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:44:40.475148+00:00",
+        "response_sha256": "4ad2aa91271626c8d8fd658b28ea17fb3bc690b92c263141af5105cb2660ac65"
+      },
+      "bibliographic_excerpt": "Wessex tales ... (Harper & brothers, 1896) (page images at HathiTrust) Hardy, Thomas, 1840-1928: Wessex tales, strange lively, and commonplace (Harper & brothers, 1888) (page images at HathiTrust) Hardy, Thomas, 1840-1928: Wessex tales : strange, liv",
+      "scope": "Named creator complete selected literary text including available author prefatory/end matter; publisher/source furniture and illustrations excluded."
+    },
+    "author_death_evidence": 1928,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1888,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "c2e80e062f09828cb87dd57ca8db79de7e4bb22cbbec178276fa50d2cd7caa53",
+    "content_sha256": "12d3bf4e0b6a8682055242aa8ef4867d086c79257dcfc7f6c3592f1aea1a8ced",
+    "year": 1888,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Hardy%2C%20Thomas%2C%201840-1928",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Hardy%2C%20Thomas%2C%201840-1928",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:40.475148+00:00",
+      "response_sha256": "4ad2aa91271626c8d8fd658b28ea17fb3bc690b92c263141af5105cb2660ac65"
+    },
+    "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
   }
 }

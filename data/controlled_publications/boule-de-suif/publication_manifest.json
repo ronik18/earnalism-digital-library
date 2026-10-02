@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "boule-de-suif",
   "title": "Boule de Suif",
-  "generated_at": "2026-10-01T21:08:29.384957+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "17c514dce10d194bfbb13b4d9196eafd3a3ae310b38180de42d3a5693bddd0a7",
-    "content_hash": "54085892457bf65ed5f9394fb722eee54f71123d9622b0b40f1ec45ad76707d5",
-    "provenance_hash": "74feca75082c4263690808b2747e72216034cb633ff078c20196bccc3523a1fb",
+    "source_hash": "605a186f96870d1993b84199ed14709b833597c9eeac78d2d7fc69c2f454b554",
+    "content_hash": "fc3455677ff33b41f70012df7239691fb56b8bdd977ea187f524b0c2a863d079",
+    "provenance_hash": "c6a35f6c4294cc3e83b99a01a86bd7a67fdc3fb280b0392d644056abbd5b10f9",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "1b020bfd41e4ec06d4ba7ff82aab77a0465579d3e026a8ccf10f9c43c3f462a1",
+    "chapter_index_sha256": "2ba6195ef113ca3b3210711c5d41efba0ecc7510249dba92c869c03e8e3db4f8",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "Boule de Suif",
-        "word_count": 14440,
-        "sha256": "6178078176770d176dc9796758222e78ff877b95a50ad1543848d13bf3914258"
+        "word_count": 14861,
+        "sha256": "76e8c9a29a04032a875cfffb4501c9a7dd9054a71cc52f7643971fc33f4c6663"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "a1ebd933ff36e63fe9afbd4186c92fa00116739505ef6f57499227321ba4caba"
+    "publication_region": "india",
+    "evidence_sha256": "225fe86c8b92193d630722356c2b1069f1415aa6360c750cb954191a70cbfa9f"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "671991b89c5f19c642b96e2b4ee40f794f6c09da5fa50593560747b24fbc98d4",
-    "reader_manifest": "2e2823f176e58697f497a1238dcb721c1d829515c7e9668f45a2f83f9f022750",
-    "source_evidence": "a1ebd933ff36e63fe9afbd4186c92fa00116739505ef6f57499227321ba4caba",
-    "approval_evidence": "6c8c5b1cc405099f58f97282411f728b5a6a97deb2fa5d8cf1812e4ee5d3bd64"
+    "public_book": "db8fb2830f1a80ca53412a290536144ebe7da7376f2ad1a68ea3345daaf4f318",
+    "reader_manifest": "7ceb1427724c7c40b9df103f8aa183c832b98d260f869d13aa374ee5cea25838",
+    "source_evidence": "225fe86c8b92193d630722356c2b1069f1415aa6360c750cb954191a70cbfa9f",
+    "approval_evidence": "9cc911790c568d41a952a3e11ffcfe6018f054e1898578003c778f42e835d9b7"
   },
-  "manifest_sha256": "fba957dfa8aa95bdc7153017e868025a53ba562d0bd687219a1ee85707b45f88"
+  "manifest_sha256": "b60311a7d89d05bb2a20c6ff88c23afe23c1fa59be577a3432482aad9a3d2df2"
 }

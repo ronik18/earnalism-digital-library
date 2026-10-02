@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "book-bfc51280b3",
   "title": "অতিথি",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
-    "source_hash": "be2d2b6e792ddbcbdba81a9ee2e10eb3d06bdd8832e10eb2719b72ad3ac776d3",
-    "content_hash": "2602659bd47e8258b6bf8505d09bb87b168e18c7069b85a3b98bcf38c2c31553",
+    "source_hash": "8f1f2a961acb409204fb156ee641849b58bd464564b5fa07e4d7d8ed197c75b0",
+    "content_hash": "7325737829098f327b54cc74400d74a0bf53ebdfe1ab20f69daebdf52ebcef62",
     "provenance_hash": "fef6633281952ea288a19a83e33369b351f48a58f0e2f0df57c32ba302a70cdc",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "5e0dca527275a87fa50d89d7b9cf855f6b8f6f0eaaba970b7a5d09e230280194",
+    "chapter_index_sha256": "d1e9ff78119e21eb9785d07754efd133b7e0f4baae869a857a095f55abcd010b",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "অতিথি",
-        "word_count": 5003,
-        "sha256": "fa2be96ebf569e4913521af46613fbb242d66fcd7b1e563edd492fe7612e2505"
+        "word_count": 4998,
+        "sha256": "8244194ed83e17c9aede6267928e7cd619b253590691c8381d78f4ce9db9a3ab"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "b92311b56c12dfd0bf7f6678ab4f80586b03851ff2238ac4f7603ae4d0a5a666"
+    "evidence_sha256": "992d0db644023dfcc76a0b21d329bc758ebc3e7757b5bef3a63f1cea92024070"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,8 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: verification_status must be approved before publishing."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -47,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "f9c4066da21ac597247d146c144459ce93e95b7b76d0de6a905d774f772989f3",
-    "reader_manifest": "f99bd6badf03a202b2d934146d6f0260b95c57c82f8db894f461c0105e1f67a0",
-    "source_evidence": "b92311b56c12dfd0bf7f6678ab4f80586b03851ff2238ac4f7603ae4d0a5a666",
-    "approval_evidence": "0a0d2f7adc996cc1d8330ce89e0d0b579c1f6014937780f79587b9e4f0d487ef"
+    "public_book": "0d94d3fe9727da1c05c6a099410bf553bdebb0b51d4e6f0d408362a633204703",
+    "reader_manifest": "94cae90d1355e250e300249ad82a5ab12ecb327ae833c9b49304926922a64206",
+    "source_evidence": "992d0db644023dfcc76a0b21d329bc758ebc3e7757b5bef3a63f1cea92024070",
+    "approval_evidence": "ca5b27e461b3d495ab11ea0ec258e73c510ace0367535127ed18fbd38dd748f0"
   },
-  "manifest_sha256": "6f3aac54b0b880d66243987f37786443c7b0a4fde4907b7979ce440deabb1088"
+  "manifest_sha256": "1280ea90cb1669c6bd5bb2dfc92376661c4e215a41fd2be690c84d52c5b93b52"
 }

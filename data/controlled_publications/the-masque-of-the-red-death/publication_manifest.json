@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "the-masque-of-the-red-death",
   "title": "The Masque of the Red Death",
-  "generated_at": "2026-10-01T21:08:33.328808+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "2264be57608b30c4af99db7b1d430accae5a7c4d9da738ac04651f7ef74bc266",
-    "content_hash": "8e292e23a73729319a17d9aac397303b6311d97a0ede19a80514922c114c1dd0",
-    "provenance_hash": "fccc97a08521519d711236c769280c844fb91a421fca2976bfe8b149bbab6db1",
+    "source_hash": "58e8a7186604d9693b0a49a2d131fa11b2a8ab0e14958df728883bbf35b42520",
+    "content_hash": "c517483495ef7266f533d077036a8e83bba53dc33cac60580cd895e757f637e3",
+    "provenance_hash": "134975b99b925552968ba69c64940ac5f867b5d19e983e21bd76276dbc5d0142",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "487f4080a587fa8d39b14bb4d801b461b3e538cfae46108178e60cc19d01fabe",
+    "chapter_index_sha256": "3670c93eadd1bc6d66f1f6c2f1dcb862a04f5c39ef59953deee58606e81d69b8",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "The Masque of the Red Death",
         "word_count": 2421,
-        "sha256": "2d82010af3e039ba5e9ca47cb8deec9f76128470cae7386c02259575f73f61d2"
+        "sha256": "2df5040f80f4204a85826e5fcd3e5cddf501a4f9bcaed2175bdcb6b7cbf79008"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "f322466f64cc83988920b03f9cd937680f2a514d139bd4592675b79f558fd218"
+    "publication_region": "india",
+    "evidence_sha256": "bceb16f5f428ac45dba3a98572877d5758710efbd555a5cd7fa093ca4ee79677"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "6f262a70cde6b33baa22371aee5f511f3cb0def6ea3aabfe01637d34ba344237",
+    "public_book": "02639ccf1ac7fcf677ce6cf700bf69a6ce39598bec70658285ed9ee3edafeeb9",
     "reader_manifest": "74ba7f40ec93bbfa308835132ca8ff677e3c95ffa8e985127753b090b3766b57",
-    "source_evidence": "f322466f64cc83988920b03f9cd937680f2a514d139bd4592675b79f558fd218",
-    "approval_evidence": "7610a9cdc8fd218cadc524f332c1ad67c5161bb6bcb715f46eac90e27c413677"
+    "source_evidence": "bceb16f5f428ac45dba3a98572877d5758710efbd555a5cd7fa093ca4ee79677",
+    "approval_evidence": "d897301476c3d5efc0932d0caab402fd3da600012e43042921ffb28ce8180944"
   },
-  "manifest_sha256": "9205ebc30f29ffe1dd17c1caf709c3146451bef0c653bfb23ca1177e9d3dcc4b"
+  "manifest_sha256": "2f810dfd2ed3a0d8e9e56add3ae8a8663d4ea349763d82ceefef73d4ff66f89f"
 }

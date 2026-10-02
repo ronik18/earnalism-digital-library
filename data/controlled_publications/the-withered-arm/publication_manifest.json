@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "the-withered-arm",
   "title": "The Withered Arm",
-  "generated_at": "2026-10-01T21:08:34.793967+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "b9697ff53faa2aa6ace3c91156126068c302e360124aff1633e1cb319a471bc1",
-    "content_hash": "fb42b9f8bea73e8b961a09fee5f4baaffada54127880695f2792456d9ebf7cd2",
-    "provenance_hash": "653acab377c282abd241e7cd35d1d6b93c2300570ea63473d4321c8af5c7164d",
+    "source_hash": "c2e80e062f09828cb87dd57ca8db79de7e4bb22cbbec178276fa50d2cd7caa53",
+    "content_hash": "12d3bf4e0b6a8682055242aa8ef4867d086c79257dcfc7f6c3592f1aea1a8ced",
+    "provenance_hash": "44ee41c0e15bf9a262bef891dc289a4fcc2bb89e47ed91f807f059dc5b88968b",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "341ddb46b8d761dc2605ea173c6c6ef221c1ca4cc84c4bfdffcf793ba703d168",
+    "chapter_index_sha256": "c30a37e0ed980e00e5f43a388743ce797d87f04db6b9bccf2277b5c00cd48a78",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "The Withered Arm",
-        "word_count": 10749,
-        "sha256": "62cbc49e83294f28b40a873818f1ef0c902775c2c6aecd5739cff6e8bcf1fafe"
+        "word_count": 10529,
+        "sha256": "e1c0f5b69034aa8eea262cb7ee0bc0bb8d148c76df26fde1735272510ebe7e53"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "6b99551aee6b55f31be60fedda128974bdb33a199b0e6e0791b09792aa3bae1e"
+    "publication_region": "india",
+    "evidence_sha256": "5224d9d0c44411aa26a772d42affecac26974da89b8814daf0284eee8734b0e9"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "9579fb565dede58157ee23cd1851b52caff5942d071804368164dbf61f3dac2f",
-    "reader_manifest": "2fde117267249fb6a98ad38bd548c58a45ce3a371d01ed0196bfefc0c80459c3",
-    "source_evidence": "6b99551aee6b55f31be60fedda128974bdb33a199b0e6e0791b09792aa3bae1e",
-    "approval_evidence": "de34d87038b46268b04e787ba6e0c518e7fcc627df1ebc3f3c8a494455451516"
+    "public_book": "e3d5e6a016d3428ff0d03bc53ec7133b737920e8466a83a8b482b0b16546df8d",
+    "reader_manifest": "1b500afce3c2fd35345c9741cb9f4823bee2e31b77f2c8a210d3c1f8edc891bf",
+    "source_evidence": "5224d9d0c44411aa26a772d42affecac26974da89b8814daf0284eee8734b0e9",
+    "approval_evidence": "e7b3fbd5734107cf43babf138f6efdb2cd5268332eaed3eb32103431ca25e829"
   },
-  "manifest_sha256": "e2cbef7cd544ac6e17870c0d25b9bd0aecb45647e33450dd11a33e9f904b4839"
+  "manifest_sha256": "abd29e39a3aceacf49c3f667ff61360345c8220e883685a0f85de44a9f456bd5"
 }

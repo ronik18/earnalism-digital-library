@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-five-orange-pips-pg1661-noncover-text",
+  "edition_id": "the-five-orange-pips",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "e1684e642901d9c76913606cb6f5776f7dc24357b444782e6f4efdf6f96228f4",
+    "reader_manifest": "82c39af8cc22a655bace9a1a173c5a05f49eafe181842e94c8deaa9f5f60abdd",
+    "source_evidence": "3237bbed5355eb3f2f586c3e82ebe06d86a1c13a42352c1e38601a9e43514a13",
+    "approval_evidence": "eade6b1f4e3f8c644b0d6aa0c9f79a075b84d2c39f0883c15b642b43b4737974",
+    "checksum_manifest": "bb54d524bf95ad458ada8f7380a1eeaa95ab5af78f8d4b0377b0f50bd68c9bbd",
+    "publication_manifest": "016f93a8ef6a166ca6434ab329c2691b432bfc1c295222fffbc4c8dc01873263"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:48:34.443341+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1930, verified lifetime collection publication 1892 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "4c4a5818fce6369b69cdf5be5a6aeb903d0d98dc2322c9a6bae143c92b05c325",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "0e79857c177b111777a6034258d2094a25682248fef0bdd8bd7df7e1b0a45251",
+    "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "a48d83ab27f4aa1112764d09f0c25bf689eed6680b66f262d5b43b0446148d91"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

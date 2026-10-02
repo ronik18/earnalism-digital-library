@@ -3,21 +3,21 @@
   "schema_version": 1,
   "slug": "the-art-of-money-getting",
   "title": "The Art of Money Getting",
-  "generated_at": "2026-10-01T21:08:31.979128+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "0baf572e0ec351e47504ab1d49fb646be164ab6db13d0024cda7567b58dad287",
-    "content_hash": "907586f92b4df67b3576f66b89d9c1434bd09200aec7d25926d4fb8253a6761e",
-    "provenance_hash": "c49460dc49b55ce9b4340e04c2844835981ac4f7042ac2d31c830079fc679dc6",
+    "source_hash": "ccf68ee545e68995f88d4cd2f534ecae9bf731b8996118d34b5a10bfc4958061",
+    "content_hash": "f3c4db2a3c551518ebd4302e7409797eb49f0ff94470ebfbc4b800b900a44b61",
+    "provenance_hash": "fc4034680d03df4989f6ab56d58d5f93407218847ffe6cf743d5ee107f185f59",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "6b9aa50d5c4af082d3d408bf4c30dd501aa1b48313da6f3bef6c08ad52d456fd",
+    "chapter_index_sha256": "93d7357e05352d8ba963bdf4391f41fa7e1d7f6fabd2f5f5790bede2200da4b3",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "The Art of Money Getting",
         "word_count": 13564,
-        "sha256": "ca5f7b0a782a8bf6c6d3e04bb4ad20e9e97f387945f0fb899f6e2c1bc18b7105"
+        "sha256": "04edd10d202a6f1b8e7c1c35308f728f1768e1db656080fa9ae49d559761d21f"
       }
     ]
   },
@@ -25,7 +25,7 @@
     "status": "APPROVED",
     "tier": "A",
     "publication_region": "in",
-    "evidence_sha256": "d01f157a4a2c7733d95b008b365e4a6710ddc7b6b6e2ddd28fb576e0426b13ee"
+    "evidence_sha256": "1de370a2d070b6d45231c688d02cce0bc8a3e9a0f2ee734807e54befd55d1034"
   },
   "reader_release": {
     "status": "READY_FOR_APPROVAL",
@@ -44,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "82191df2abb5e775be78134455a2e3dd7faf72bf4b67ae208ccc870ccf1d0b6f",
+    "public_book": "253c7b38ae5815549018228ab6723139dcce22f880f04ba1a3a70ce65e334d88",
     "reader_manifest": "29536b26759f9e967efac4eba42447cb6b17943f9ee99bb797b48bba76e10fec",
-    "source_evidence": "d01f157a4a2c7733d95b008b365e4a6710ddc7b6b6e2ddd28fb576e0426b13ee",
-    "approval_evidence": "67b6de67fba80fa95778e9a581d0dd162dd37f79a2f722b6255fdec087b5af6b"
+    "source_evidence": "1de370a2d070b6d45231c688d02cce0bc8a3e9a0f2ee734807e54befd55d1034",
+    "approval_evidence": "872ae423202a4b8f2235d07970f57ece66c251ad112b6212568f08f918dd6137"
   },
-  "manifest_sha256": "8b0b1703254fc79f768eb7786417d99a0a0b8d40671d8569005603aeae42ae57"
+  "manifest_sha256": "809b624cefe8adbc000f15534fcfe369fa9026e8eef610c0e30eeadf0fd8113c"
 }

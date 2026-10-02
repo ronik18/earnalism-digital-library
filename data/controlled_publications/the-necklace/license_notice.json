@@ -1,0 +1,15 @@
+{
+  "schema_version": "earnalism.text-license.v1",
+  "slug": "the-necklace",
+  "license": "CC-BY-SA-4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "attribution": "The Necklace, Guy de Maupassant; English translation by Jonathan Sturges,1889. Transcription adapted from English Wikisource contributors, Stories byForeignAuthors—FrenchI,1917Scribnerprintededition,1898collectioncopyright, selectedstory1889copyright.",
+  "changes": "Page-number/zero-width/title/byline/copyright/source-navigation furniture omitted; drop-cap opening joined and paragraph formatting adapted; complete story wording preserved. Replaces a different un-cleared translation, no approval transfer.",
+  "scope": "Reused transcription and formatting adaptation under sameCCBYSA4.0; excludes Earnalismcovers/trademarks/software.",
+  "disclaimer": "Offered without warranties underCCBYSA4.0; no contributorendorsement.",
+  "source_url": "https://en.wikisource.org/w/index.php?title=Stories_by_Foreign_Authors_(French_I)/The_Necklace&oldid=13522838",
+  "contributors_url": "https://en.wikisource.org/w/index.php?title=Stories_by_Foreign_Authors_(French_I)/The_Necklace&action=history",
+  "chapter_sha256": [
+    "3edbc2bb4b1cfe0829cd6f499cd21b9f7de2f81d74c151e16e90bb6efab9d8fb"
+  ]
+}

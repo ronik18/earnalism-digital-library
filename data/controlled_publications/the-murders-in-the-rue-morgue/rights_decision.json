@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-murders-in-the-rue-morgue-pg2147-noncover-text",
+  "edition_id": "the-murders-in-the-rue-morgue",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "66b5b4bb3d065f0da757b9570c0c91668939aeff95b7a560828a0a8afc8404e5",
+    "reader_manifest": "155ab2bd8bf62422a44c9d4c5d3b7523e654cb0a13d64609d512e0f6b36d2ab3",
+    "source_evidence": "8b9cbbe71c93271bbc8602eae1d025e6264c7f612575232bb28a3658fbf6abd1",
+    "approval_evidence": "33baf896ef21690526175c622cb86e391eb7c95fc82959ac77ce09ca84175a32",
+    "checksum_manifest": "7d20029bd3fde6280d1181eb63e0e4106fb2a16a70f819d0d850a72c6ea7b8ab",
+    "publication_manifest": "8c0aaa494f4db75888c00fd7b53061547684f3e34502d22b6620712c5c5ede91"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:52:27.631967+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1849, verified lifetime collection publication 1841 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "4b4a5613ae7c40ed54f845c1740c830e0a3156f753c6617515f8c7526ac8bf46",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "4a96f50ad7df460f80f1b69ca814b7514d7f178d24e0079cd6fd8a04e5faba24",
+    "c8d5fec040f1dc29be8d4e9cb7d3279b65bf894adea50544d99d400b2d587386",
+    "037fd47cc776d2825d701acc0c53900a99c383f611977f690899db4f68df3fb0"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

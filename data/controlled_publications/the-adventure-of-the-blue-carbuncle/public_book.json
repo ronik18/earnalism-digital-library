@@ -53,9 +53,9 @@
       "updated_at": "2026-07-03T20:07:48Z"
     }
   ],
-  "source_hash": "8a37410ac7374823466af3ed1332e7b85235aca89e4c39cc12bd9834696cbddc",
-  "content_hash": "2b480523e8ff22604f51984f6fbd495a5ab02b7213247985a4ca18de1a2c22fe",
-  "provenance_hash": "0ee937916f54c6bc72d06dddc2cd8f2af82a7a1671389d63349552ccbc82972e",
+  "source_hash": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+  "content_hash": "22f789b09fdde1521b0f78827fc5549ca91a4091747856ce209c31ac2431aad9",
+  "provenance_hash": "a6ea872c8078ca8588f1e7f7d6069e791391614d0e98ea06a3c63fbd8059ac81",
   "rights_basis": "Arthur Conan Doyle died 1930; first published 1892. Public domain in India and the U.S.",
   "rights_tier": "A",
   "verification_status": "approved",

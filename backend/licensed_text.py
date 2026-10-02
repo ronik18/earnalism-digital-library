@@ -15,13 +15,22 @@ def public_license_notice(package_dir):
         notice = json.loads(raw)
         if notice.get("schema_version") != "earnalism.text-license.v1" or notice.get("slug") != book.get("slug"):
             return None
-        if notice.get("license") != "CC-BY-SA-4.0" or notice.get("license_url") != "https://creativecommons.org/licenses/by-sa/4.0/":
+        license_urls = {"CC-BY-SA-4.0": "https://creativecommons.org/licenses/by-sa/4.0/",
+                        "CC0-1.0": "https://creativecommons.org/publicdomain/zero/1.0/"}
+        license_id = notice.get("license")
+        if license_id not in license_urls or notice.get("license_url") != license_urls[license_id]:
             return None
         if not all(isinstance(notice.get(k), str) and notice[k].strip() for k in ("attribution", "changes", "scope", "disclaimer")):
             return None
         for key in ("source_url", "contributors_url"):
             parsed = urlparse(notice.get(key, ""))
-            if parsed.scheme != "https" or parsed.hostname not in {"bn.wikisource.org", "en.wikisource.org"}:
+            if parsed.scheme != "https" or parsed.username or parsed.password:
+                return None
+            if license_id == "CC-BY-SA-4.0":
+                if parsed.hostname not in {"bn.wikisource.org", "en.wikisource.org"}:
+                    return None
+            elif not (parsed.hostname == "standardebooks.org" or
+                      parsed.hostname in {"github.com", "raw.githubusercontent.com"} and parsed.path.startswith("/standardebooks/")):
                 return None
         chapters = sorted(book.get("chapters") or [], key=lambda c: c.get("order", 0))
         actual = []

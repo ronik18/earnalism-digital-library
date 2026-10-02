@@ -236,7 +236,7 @@
       "id": "chapter-014",
       "order": 14,
       "title": "চতুর্দ্দশ পরিচ্ছেদ",
-      "word_count": 921,
+      "word_count": 925,
       "reading_minutes": 5,
       "is_preview": false,
       "has_images": false,
@@ -248,14 +248,14 @@
       "language_hint": "ben"
     }
   ],
-  "source_hash": "733466ffdadc8f5c0172023edd5c0ba7327387d65d0c46b1b881a26e303e800a",
-  "content_hash": "dea6e37479af7c2067c5929999da22f8b2f49aeb2d0abd9741da4e7f01e6ba48",
+  "source_hash": "d88c2efe3dc6d15fb103a9df394a4dfa194a54234ca11c9c1e49d1ecca924034",
+  "content_hash": "095e2308975c18cba636058aad414a457161f5754bd6f6f282537bdaebe23801",
   "provenance_hash": "5684356538fbb400de644b128c8ac1307bf46f737170d77dec156e1e1ac5f8a4",
-  "rights_basis": "Author died 1894. Original publication 1884. Public domain in India and the U.S.; source evidence kept internal/admin-only.",
+  "rights_basis": "Exact Muchiram Gurer Jibanchorit1944 second centenary edition edited Brajendra Nath Bandyopadhyay and Sajanikanta Das; foreword excluded,14 narrative chapters including source notes retained; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1962; India Section22 literary term expired end2022. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
   "rights_tier": "A",
-  "verification_status": "pending",
+  "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approved_to_publish": false,
+  "approved_to_publish": true,
   "publication_status": "RIGHTS_REVIEW",
   "readerStatus": "rights_review",
   "publicationStatus": "hold",
@@ -285,5 +285,8 @@
   "audiobook_release_mode": "",
   "audiobook_manuscript_sha256": "",
   "audiobook_release_conveyor": {},
-  "chapter_count": 14
+  "chapter_count": 14,
+  "license_notice_sha256": "c78c5f7ef44ed30b38cc3a38956c546403b2a948dc0743a6b652977674bf8ff1",
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "publication_authorization_sha256": "15e85c07b9253170cf5867946b36eb1e4d3e4d10391910985b6e416ecc5fc9ed"
 }

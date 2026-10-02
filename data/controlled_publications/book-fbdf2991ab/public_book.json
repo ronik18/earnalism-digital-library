@@ -38,49 +38,64 @@
   "about_author": "রবীন্দ্রনাথ ঠাকুর (১৮৬১–১৯৪১) বাংলা সাহিত্যের শ্রেষ্ঠ কবি ও ছোটগল্পকার।",
   "chapters": [
     {
-      "id": "chapter-001",
+      "id": "chapter-004",
       "order": 1,
-      "title": "২",
+      "title": "১",
+      "word_count": 335,
+      "reading_minutes": 2,
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-10-01T21:46:35.968993+00:00",
+      "updated_at": "2026-10-01T21:46:35.968993+00:00",
+      "language_hint": "ben"
+    },
+    {
+      "id": "chapter-001",
+      "order": 2,
+      "title": "২",
       "word_count": 439,
       "reading_minutes": 2,
-      "language_hint": "ben",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
       "processing_status": "ready",
       "processing_warnings": [],
       "uploaded_at": "2026-07-03T20:07:46Z",
-      "updated_at": "2026-07-03T20:07:46Z"
+      "updated_at": "2026-07-03T20:07:46Z",
+      "language_hint": "ben"
     },
     {
       "id": "chapter-002",
-      "order": 2,
+      "order": 3,
       "title": "৩",
+      "word_count": 374,
+      "reading_minutes": 2,
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 374,
-      "reading_minutes": 2,
-      "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
       "uploaded_at": "2026-07-03T20:07:46Z",
-      "updated_at": "2026-07-03T20:07:46Z"
+      "updated_at": "2026-07-03T20:07:46Z",
+      "language_hint": "ben"
     },
     {
       "id": "chapter-003",
-      "order": 3,
+      "order": 4,
       "title": "৪",
-      "is_preview": true,
-      "has_images": false,
-      "image_count": 0,
       "word_count": 620,
       "reading_minutes": 3,
-      "language_hint": "ben",
+      "is_preview": false,
+      "has_images": false,
+      "image_count": 0,
       "processing_status": "ready",
       "processing_warnings": [],
       "uploaded_at": "2026-07-03T20:07:46Z",
-      "updated_at": "2026-07-03T20:07:46Z"
+      "updated_at": "2026-07-03T20:07:46Z",
+      "language_hint": "ben"
     }
   ],
   "source_hash": "339d2f719c65f10dce5f2dc37515789c4f1165969aaabe0089d28f138c240617",
@@ -131,5 +146,7 @@
   },
   "audiobook_assets_updated_at": "2026-07-03T20:07:46Z",
   "created_at": "2026-07-03T20:07:46Z",
-  "updated_at": "2026-07-03T20:07:46Z"
+  "updated_at": "2026-07-03T20:07:46Z",
+  "chapter_count": 4,
+  "license_notice_sha256": "a9c8600f9626f882a792d83021c60ea0ec68345352da61082d6504d7f062ade6"
 }

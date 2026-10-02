@@ -1,12 +1,12 @@
 {
   "slug": "the-secret-garden",
   "source_url": "https://www.gutenberg.org/ebooks/113.txt.utf-8",
-  "source_name": "Earnalism historical import",
+  "source_name": "Project Gutenberg #113; The Secret Garden exact canonical source, underlying lifetime publication 1911; complete selected author text, no translation or independently authored artwork/editorial material imported",
   "source_license": "Public domain",
-  "source_hash": "e475a847f75aff163a517afd457be284ebd08a236c000a4c5961a478bfa5366d",
-  "content_hash": "eb5f0ece1bc11cc989d1b801a925a85ffbd6b002ad2eaff26cdf19fbb12135ad",
-  "provenance_hash": "b53587d5e59b45c73a64b03fd14fb82c2e9715c8df52d354733a569d5c9ec510",
-  "rights_basis": "Public domain in India based on life plus 60 years; public domain in the U.S. based on original publication before 1931.",
+  "source_hash": "6b0bb5fbd0c4e873d2d22028da9d753cf3977d5f70ac58221556b28060badbf5",
+  "content_hash": "027d79093c1a71f7824fb7e21ecfaea67e5f46eb47f2e6c5358a44a34382404a",
+  "provenance_hash": "b2d4bcc9e3e66ca0a445dea3a7aaf91e89b6327a262096a1233b7e65aef747ee",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1924, verified lifetime collection publication 1911 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-05-20T08:24:30.953321+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -345,5 +345,221 @@
       }
     ],
     "content_sha256": "027d79093c1a71f7824fb7e21ecfaea67e5f46eb47f2e6c5358a44a34382404a"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "e475a847f75aff163a517afd457be284ebd08a236c000a4c5961a478bfa5366d",
+        "content_hash": "eb5f0ece1bc11cc989d1b801a925a85ffbd6b002ad2eaff26cdf19fbb12135ad",
+        "provenance_hash": "b53587d5e59b45c73a64b03fd14fb82c2e9715c8df52d354733a569d5c9ec510",
+        "source_url": "https://www.gutenberg.org/ebooks/113.txt.utf-8",
+        "source_name": "Earnalism historical import"
+      },
+      "superseded_at": "2026-10-01T21:49:40.745164+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1911,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:49:40.745164+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/113.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/113/pg113.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:43.420943+00:00",
+      "response_sha256": "6b0bb5fbd0c4e873d2d22028da9d753cf3977d5f70ac58221556b28060badbf5"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 27,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1745,
+          "length": 10033
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 11820,
+          "length": 14352
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 26202,
+          "length": 7748
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 33970,
+          "length": 28073
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 62078,
+          "length": 11501
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 73630,
+          "length": 11913
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 85579,
+          "length": 10573
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 96196,
+          "length": 14098
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 110348,
+          "length": 16439
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 126806,
+          "length": 19626
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 146475,
+          "length": 12934
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 159454,
+          "length": 13431
+        },
+        {
+          "chapter_id": "chapter-013",
+          "offset": 172913,
+          "length": 21406
+        },
+        {
+          "chapter_id": "chapter-014",
+          "offset": 194347,
+          "length": 19193
+        },
+        {
+          "chapter_id": "chapter-015",
+          "offset": 213567,
+          "length": 20475
+        },
+        {
+          "chapter_id": "chapter-016",
+          "offset": 234077,
+          "length": 12260
+        },
+        {
+          "chapter_id": "chapter-017",
+          "offset": 246362,
+          "length": 12000
+        },
+        {
+          "chapter_id": "chapter-018",
+          "offset": 258406,
+          "length": 11487
+        },
+        {
+          "chapter_id": "chapter-019",
+          "offset": 269922,
+          "length": 18626
+        },
+        {
+          "chapter_id": "chapter-020",
+          "offset": 288603,
+          "length": 13712
+        },
+        {
+          "chapter_id": "chapter-021",
+          "offset": 302346,
+          "length": 17603
+        },
+        {
+          "chapter_id": "chapter-022",
+          "offset": 319987,
+          "length": 8510
+        },
+        {
+          "chapter_id": "chapter-023",
+          "offset": 328519,
+          "length": 21258
+        },
+        {
+          "chapter_id": "chapter-024",
+          "offset": 349809,
+          "length": 21172
+        },
+        {
+          "chapter_id": "chapter-025",
+          "offset": 371007,
+          "length": 12537
+        },
+        {
+          "chapter_id": "chapter-026",
+          "offset": 383574,
+          "length": 16202
+        },
+        {
+          "chapter_id": "chapter-027",
+          "offset": 399806,
+          "length": 27243
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Burnett, Frances Hodgson, 1849-1924",
+      "creator_death_year": 1924,
+      "selected_collection_publication_year": 1911,
+      "original_story_first_publication_year": null,
+      "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+      "bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Burnett%2C%20Frances%20Hodgson%2C%201849-1924",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Burnett%2C%20Frances%20Hodgson%2C%201849-1924",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:45:11.100127+00:00",
+        "response_sha256": "900283a1224f63b23e4b01927f13c506398adc2048287678c178ee0d67b2c1d1"
+      },
+      "bibliographic_excerpt": "The Secret Garden (New York: F. A. Stokes Co., c1911) Gutenberg text and illustrated HTML multiple formats at archive.org page images at HathiTrust page images at LOC Burnett, Frances Hodgson, 1849-1924: The Shuttle (Gutenberg text and Librivox audio",
+      "scope": "Named creator complete selected literary text including available author prefatory/end matter; publisher/source furniture and illustrations excluded."
+    },
+    "author_death_evidence": 1924,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1911,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "6b0bb5fbd0c4e873d2d22028da9d753cf3977d5f70ac58221556b28060badbf5",
+    "content_sha256": "027d79093c1a71f7824fb7e21ecfaea67e5f46eb47f2e6c5358a44a34382404a",
+    "year": 1911,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Burnett%2C%20Frances%20Hodgson%2C%201849-1924",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Burnett%2C%20Frances%20Hodgson%2C%201849-1924",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:45:11.100127+00:00",
+      "response_sha256": "900283a1224f63b23e4b01927f13c506398adc2048287678c178ee0d67b2c1d1"
+    },
+    "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
   }
 }

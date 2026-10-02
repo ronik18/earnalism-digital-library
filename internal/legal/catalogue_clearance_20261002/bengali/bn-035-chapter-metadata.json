@@ -1,0 +1,71 @@
+{
+  "receipt": {
+    "url": "https://bn.wikisource.org/w/api.php?action=query&generator=allpages&gapprefix=%E0%A6%AC%E0%A6%A1%E0%A6%BC%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF+%28%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC%29%2F&gapnamespace=0&gaplimit=max&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2",
+    "retrieved_at": "2026-10-01T21:47:40.275163+00:00",
+    "response_sha256": "79aaa5d6219ad076c85785960923bed77606fefb51f40d290c65f328c0e41df8"
+  },
+  "prefix": "বড়দিদি (শরৎচন্দ্র চট্টোপাধ্যায়)",
+  "leaves": [
+    {
+      "title": "বড়দিদি (শরৎচন্দ্র চট্টোপাধ্যায়)/প্রথম পরিচ্ছেদ",
+      "revision": 1924207,
+      "revision_timestamp": "2025-11-26T14:13:08Z",
+      "wikitext": "<pages index=\"বড়দিদি-শরৎচন্দ্র চট্টোপাধ্যায়.djvu\" from=\"6\" to=\"10\" header=1 />"
+    },
+    {
+      "title": "বড়দিদি (শরৎচন্দ্র চট্টোপাধ্যায়)/দশম পরিচ্ছেদ",
+      "revision": 1924203,
+      "revision_timestamp": "2025-11-26T14:13:06Z",
+      "wikitext": "<pages index=\"বড়দিদি-শরৎচন্দ্র চট্টোপাধ্যায়.djvu\" from=\"76\" to=\"77\" header=1 />"
+    },
+    {
+      "title": "বড়দিদি (শরৎচন্দ্র চট্টোপাধ্যায়)/চতুর্থ পরিচ্ছেদ",
+      "revision": 1924201,
+      "revision_timestamp": "2025-11-26T14:13:06Z",
+      "wikitext": "<pages index=\"বড়দিদি-শরৎচন্দ্র চট্টোপাধ্যায়.djvu\" from=\"26\" to=\"33\" header=1 />"
+    },
+    {
+      "title": "বড়দিদি (শরৎচন্দ্র চট্টোপাধ্যায়)/দ্বিতীয় পরিচ্ছেদ",
+      "revision": 1924204,
+      "revision_timestamp": "2025-11-26T14:13:07Z",
+      "wikitext": "<pages index=\"বড়দিদি-শরৎচন্দ্র চট্টোপাধ্যায়.djvu\" from=\"11\" to=\"18\" tosection= E18  header=1 />"
+    },
+    {
+      "title": "বড়দিদি (শরৎচন্দ্র চট্টোপাধ্যায়)/তৃতীয় পরিচ্ছেদ",
+      "revision": 1924202,
+      "revision_timestamp": "2025-11-26T14:13:06Z",
+      "wikitext": "<pages index=\"বড়দিদি-শরৎচন্দ্র চট্টোপাধ্যায়.djvu\" from=\"18\" fromsection=A18 to=\"25\" header=1 />"
+    },
+    {
+      "title": "বড়দিদি (শরৎচন্দ্র চট্টোপাধ্যায়)/পঞ্চম পরিচ্ছেদ",
+      "revision": 1924206,
+      "revision_timestamp": "2025-11-26T14:13:07Z",
+      "wikitext": "<pages index=\"বড়দিদি-শরৎচন্দ্র চট্টোপাধ্যায়.djvu\" from=\"34\" to=\"44\" tosection= I44  header=1 />"
+    },
+    {
+      "title": "বড়দিদি (শরৎচন্দ্র চট্টোপাধ্যায়)/ষষ্ঠ পরিচ্ছেদ",
+      "revision": 1924208,
+      "revision_timestamp": "2025-11-26T14:13:08Z",
+      "wikitext": "<pages index=\"বড়দিদি-শরৎচন্দ্র চট্টোপাধ্যায়.djvu\" from=\"44\" fromsection= G44 to=\"51\" tosection= G51  header=1 />"
+    },
+    {
+      "title": "বড়দিদি (শরৎচন্দ্র চট্টোপাধ্যায়)/সপ্তম পরিচ্ছেদ",
+      "revision": 1924209,
+      "revision_timestamp": "2025-11-26T14:13:08Z",
+      "wikitext": "<pages index=\"বড়দিদি-শরৎচন্দ্র চট্টোপাধ্যায়.djvu\" from=\"51\" fromsection=F51 to=\"56\" tosection= D56  header=1 />"
+    },
+    {
+      "title": "বড়দিদি (শরৎচন্দ্র চট্টোপাধ্যায়)/অষ্টম পরিচ্ছেদ",
+      "revision": 1924200,
+      "revision_timestamp": "2025-11-26T14:13:06Z",
+      "wikitext": "<pages index=\"বড়দিদি-শরৎচন্দ্র চট্টোপাধ্যায়.djvu\" from=\"56\" fromsection=B56 to=\"67\" tosection= D67  header=1 />"
+    },
+    {
+      "title": "বড়দিদি (শরৎচন্দ্র চট্টোপাধ্যায়)/নবম পরিচ্ছেদ",
+      "revision": 1924205,
+      "revision_timestamp": "2025-11-26T14:13:07Z",
+      "wikitext": "<pages index=\"বড়দিদি-শরৎচন্দ্র চট্টোপাধ্যায়.djvu\" from=\"67\" fromsection= B67 to=\"75\"   header=1 />"
+    }
+  ],
+  "continuation": null
+}

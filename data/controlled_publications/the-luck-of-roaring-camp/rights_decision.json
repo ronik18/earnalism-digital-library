@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-luck-of-roaring-camp-pg6373-noncover-text",
+  "edition_id": "the-luck-of-roaring-camp",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "e64d48ae5525baa26e63f22b95146cd7660d0347cebb3cb6a5058e5431bf3deb",
+    "reader_manifest": "a525fc6b97d2929d65cdb7ec801406b889aff6d28b0974ba5e9765229e9d55dd",
+    "source_evidence": "020d74ba9a84fbc8e07f0fdfe3d0c14ee9eff1f13574bd4eeacc5e0a0c6254fc",
+    "approval_evidence": "a1a57e98332c44ff740ac86311c0ab44a3d102b918e2067363297a894340d484",
+    "checksum_manifest": "620be064a247a3875d0cdb8223f1b1a32dcb285fb26821bb91a51eefc6aabee2",
+    "publication_manifest": "d521c18cd8fe65e5c47161b493a3e78e71ce974161f0bafa8e5d4e76db5d9209"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:48:17.188009+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1902, verified lifetime collection publication 1870 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "3cb4118ac750e0d9badee69fb397ee0e1fb3a7d97f5662399e5bf0d5d326671c",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "c19400f79c45463f6d35be61868b604f45dba60c4841769cb1f11543be1baee1",
+    "2f4e9381683289df36840cd2a5149325f8836f03786d853a4e8cff5788fcaea1"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

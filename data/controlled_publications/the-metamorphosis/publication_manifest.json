@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-metamorphosis",
   "title": "The Metamorphosis",
-  "generated_at": "2026-10-01T21:08:33.401652+00:00",
+  "generated_at": "2026-10-02T03:02:58.696821+00:00",
   "content": {
     "source_hash": "4668a0a73a218a2f7ce39133432c411bc4acdf307c6d40ce300bfee15750d56c",
     "content_hash": "7f7b0c9985633cfcc77657523a5ee407a8e7727403d7dcf4a42e4b52e90ca887",
@@ -39,7 +39,7 @@
     "status": "QUARANTINE",
     "tier": "C",
     "publication_region": "in",
-    "evidence_sha256": "63cacce4232f9367996d57ebcce396308a98b2534ee4f3d6c35325e010227272"
+    "evidence_sha256": "ba25bb57963db95f192e96f1e96b5a7873bedaaf4d04c4d4abe4c19252f52ae3"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -65,8 +65,8 @@
   "artifacts": {
     "public_book": "73ce6de1adfd1d67cd5d3f8497c0f3f50d1dd2917e90c00a4e934d6e495d4da5",
     "reader_manifest": "9fa204723dbec66cf06547b52aacd54a2208c1fa037b2638a51314f942c1990f",
-    "source_evidence": "63cacce4232f9367996d57ebcce396308a98b2534ee4f3d6c35325e010227272",
+    "source_evidence": "ba25bb57963db95f192e96f1e96b5a7873bedaaf4d04c4d4abe4c19252f52ae3",
     "approval_evidence": "06f1c670cba4205c9e6592839202a99e579f3c7358bd5f2f9940e5f68245ad81"
   },
-  "manifest_sha256": "e33eae73ffe29601e2e1f8b295cf312edff021bcd60165c6b14768a38952e612"
+  "manifest_sha256": "6d2874dedd00f60c2864bef613bb7455dc5640e73a7f9edbc28ec538e01bfda6"
 }

@@ -3,21 +3,21 @@
   "schema_version": 1,
   "slug": "book-2ddbed8293",
   "title": "ব্যবধান",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
     "source_hash": "cdbc256917a94c371850044ac4b03a7b5d8f5de55f55dda7f09914f8e879dda6",
     "content_hash": "e084b718398439b633fa93a3e175ad2d48289d32bdc7fb2dc1523a239ba84335",
     "provenance_hash": "a615b2b2f9f7f9396277a860225099322937501a56d8020ad45678c6a595a15e",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "8f3355615ec02a53524164369cc0fac27c4dae76cc0ce9044d959f4e6f55b912",
+    "chapter_index_sha256": "408533e27f46da9986e5623155491fb51771b8c985cc8e9bec6542b4fc42b212",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "Full Text",
-        "word_count": 1301,
-        "sha256": "e5bd74b8003018cefc4e7ae2d41dce8ca3af684148f4b014d9c21e2003021198"
+        "word_count": 1300,
+        "sha256": "6c2a5feddaee36199eb8b23da5a4ea8fb3f97c35e924a7aac64459f41d494c52"
       }
     ]
   },
@@ -25,7 +25,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "228b5383620aeb9afb0773074dddcb9f3c36aa93ba289d1dac49f650bfece35d"
+    "evidence_sha256": "fa70bfd218b5963153c3446edde92e6c646d07bf534d46e6aad4b33c3cf84740"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -46,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "a78be470f23643e48a756aa5e442c98742207bf497c9bdbe39969658f2f80353",
-    "reader_manifest": "f1e085ef6c08c8c1da97acc9a6889e503511709ecd52f6ddaf40b7a7910cea8a",
-    "source_evidence": "228b5383620aeb9afb0773074dddcb9f3c36aa93ba289d1dac49f650bfece35d",
+    "public_book": "9dbed29ebdada130e105a8735d537388a72826b97574cff9b7f3ed9b14e06cab",
+    "reader_manifest": "e8a8834232cb7290f1fa2689f4c5bcc57389d9e95ae8b5f6539185876cde7a29",
+    "source_evidence": "fa70bfd218b5963153c3446edde92e6c646d07bf534d46e6aad4b33c3cf84740",
     "approval_evidence": "54d61527580f952fe743769551b280bf92b4fadde571bc64745de28eb6c5431a"
   },
-  "manifest_sha256": "31fc1208c4f5fbbb7e0b1b285c824f9500e79a8cc544dbbcc123e27bd1833119"
+  "manifest_sha256": "0e9ef9c35debd6a5e3a03f0551bcb0c74b8a241d8938bbab04da74a0a4b15deb"
 }

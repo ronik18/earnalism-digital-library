@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "bn-027",
   "title": "অপরিচিতা",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
     "source_hash": "c72dcc9a084a75b70c14ed578248cfeb7c57960bdd356abf9317f74828456015",
     "content_hash": "8c5f7931df3930b2030f8ea5dcc8c3f697eacf52f220a181c953430d59843349",
@@ -46,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "e5ea8cce0dab455bad79db3944d07e7047c523c10d68661b5b52b7162621cf5b",
+    "public_book": "5be9643e2243b40f7326e0bbcec1b55a73b4d7f7bdc0b7fe2bfcc73bc38c2848",
     "reader_manifest": "3040446d85deb0a0f0322b11f5c08c9d81bb9023739c3e43a6231247f852bfec",
     "source_evidence": "5f876f4676901ed482810a8b40ea7871a2990691c8bd964c491d97ca29371139",
     "approval_evidence": "a75f4df3db0661a7f0f46bbd8c3b1b8065bba66eb7d3e5c27e41d4879082b23e"
   },
-  "manifest_sha256": "9fbb6f85590dd6c40a88c8afa0fdea8e88a51ccd04920b39c5d09602d9287dbd"
+  "manifest_sha256": "209efaa530a1d105477b9f1c9096d6f925cb2dab56b8977e5c849de285e33d99"
 }

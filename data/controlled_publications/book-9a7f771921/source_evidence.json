@@ -24,10 +24,10 @@
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "509de3c2c334561eba92a7dd1746ccb7a39494800509cbc91efd7a808128f88a",
+    "reader_content_sha256": "f674d6c5f677e7aff20b734ad982bcf347d7fd0fdee13dfad55810f5d217a7e9",
     "chapter_count": 1,
     "chapter_content_sha256": {
-      "chapter-001": "509de3c2c334561eba92a7dd1746ccb7a39494800509cbc91efd7a808128f88a"
+      "chapter-001": "f674d6c5f677e7aff20b734ad982bcf347d7fd0fdee13dfad55810f5d217a7e9"
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
@@ -46,5 +46,68 @@
     "literary_words_changed": false,
     "source_transcription_completeness": "ADDITIONAL_SOURCE_COMPARISON_REQUIRED",
     "scope": "READER_METADATA_FURNITURE_CLEANUP_NOT_PUBLICATION_OR_AUDIO_APPROVAL"
+  },
+  "full_rendered_exact_repair": {
+    "slug": "book-9a7f771921",
+    "verified_at": "2026-10-01T21:46:35.936433+00:00",
+    "before_sha256": "509de3c2c334561eba92a7dd1746ccb7a39494800509cbc91efd7a808128f88a",
+    "after_sha256": "f674d6c5f677e7aff20b734ad982bcf347d7fd0fdee13dfad55810f5d217a7e9",
+    "source": "internal/legal/catalogue_clearance_20261002/bengali/book-9a7f771921-complete-source-comparison.json",
+    "source_sha256": "eb3efb7a43b4b2fa8f4f7cb2dab72c7c17d7a56127bec7bb8bd5c2b3b86e850b",
+    "changes": [
+      {
+        "operation": "delete",
+        "canonical_paragraph_range": [
+          0,
+          1
+        ],
+        "source_paragraph_range": [
+          0,
+          0
+        ],
+        "canonical": [
+          "১৯৬৯ (পৃ. প্রচ্ছদ-৫৪৫)"
+        ],
+        "source": []
+      },
+      {
+        "operation": "replace",
+        "canonical_paragraph_range": [
+          181,
+          183
+        ],
+        "source_paragraph_range": [
+          180,
+          181
+        ],
+        "canonical": [
+          "বিধু। ওগো, এতবড়ো সত্যপ্রতিজ্ঞ যুধিষ্ঠির হলে সংসার চলে না। সতীশের এখন বয়স হয়েছে, তাকে জলপানি যা দাও তাতে ধার না করে তার চলে কী করে বলো দেখি।",
+          "মন্মথ। যার যেরূপ সাধ্য তার চেয়ে চাল বড়ো করলে কারোই চলে না— ফকিরেরও না, বাদশারও না।"
+        ],
+        "source": [
+          "বিধু। ওগো, এতবড়ো সত্যপ্রতিজ্ঞ যুধিষ্ঠির হলে সংসার চলে না। সতীশের এখন বয়স হয়েছে, তাকে জলপানি যা দাও তাতে ধার না করে তার চলে কী করে বলো দেখি।\n মন্মথ। যার যেরূপ সাধ্য তার চেয়ে চাল বড়ো করলে কারোই চলে না— ফকিরেরও না, বাদশারও না।"
+        ]
+      },
+      {
+        "operation": "replace",
+        "canonical_paragraph_range": [
+          430,
+          432
+        ],
+        "source_paragraph_range": [
+          428,
+          429
+        ],
+        "canonical": [
+          "সতীশ। না মেসোমশাই, আজ আর থিয়েটার না। এই দেখো, দীর্ঘকাল পরে মিস্টার ভাদুড়ির কাছ হতে আমি নিমন্ত্রণ পেয়েছি। তোমার দানপত্রের ফল দেখো। সংসারের উপর আমার ধিক্কার জন্মে গেছে, মেলোমশায়। আমি তোমার সে তালুক নেব না।",
+          "শশধর। কেন, সতীশ।"
+        ],
+        "source": [
+          "সতীশ। না মেসোমশাই, আজ আর থিয়েটার না। এই দেখো, দীর্ঘকাল পরে মিস্টার ভাদুড়ির কাছ হতে আমি নিমন্ত্রণ পেয়েছি। তোমার দানপত্রের ফল দেখো। সংসারের উপর আমার ধিক্কার জন্মে গেছে, মেলোমশায়। আমি তোমার সে তালুক নেব না।\n শশধর। কেন, সতীশ।"
+        ]
+      }
+    ],
+    "source_heading_not_body": [],
+    "scope": "Exact pinned edition paragraphs/import furniture only; no invented words or publication authorization"
   }
 }

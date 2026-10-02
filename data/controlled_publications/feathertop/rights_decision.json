@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-feathertop-pg512-noncover-text",
+  "edition_id": "feathertop",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "e8abb7dc2a591390ffeb8b06d526ff1fb704f15d8c2e5489aa7c3fad17b93e88",
+    "reader_manifest": "5e0c41f2d1f8cfbfc31d1012196ee5514218fef77b8f70db94393d62d842aed8",
+    "source_evidence": "e495e5cace2e727e74ee8948816542801d5e80afbe82b9a1f2a29c0d123fdf45",
+    "approval_evidence": "113dfb29d9e8a90a98d96873a98d9b19d3aa4015bc4134597e288d39b21c49a9",
+    "checksum_manifest": "f464d36ea36c311f3cac911199a5ab110dd6acff32f3c977b5fb9d43de1eab72",
+    "publication_manifest": "ee65aef5fd293dc86333a63285aea2adb874ab85212e90d4c3a9dff15b3cf463"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:48:17.188009+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1864, verified lifetime collection publication 1846 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "cd60a13f1a3a71d74f35a5284b05f764ae24c830ee993ce7ac704e6c98d55015",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "d9a0cc1df0c41f87ffe61076e23383a4223369105223318542dca83914b156d4",
+    "58a42de53474f8dd703147ade7e6ab0fe9d082e6d6272bcc669ec7f178664915"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

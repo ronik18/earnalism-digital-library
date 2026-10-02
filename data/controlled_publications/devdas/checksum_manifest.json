@@ -1,6 +1,6 @@
 {
   "slug": "devdas",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
@@ -8,7 +8,7 @@
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "cff3a9a8b51d5db016b81031d7171c3b5f0aa31eed476a3a90b06e1ee32b5641"
+      "sha256": "5468c1b95059c58c17434d99a7bc534b639038222b0206eed9d897e2530ad374"
     },
     {
       "file": "chapters/chapter-002.json",
@@ -68,19 +68,23 @@
     },
     {
       "file": "chapters/chapter-016.json",
-      "sha256": "4f98282acac036096cb674b9a5701e9ce62c439e84cab38a7da994f6dc007e08"
+      "sha256": "5d5989eb1125cc836ec34ed70620cd8723ca5a9bbc24bca85e88360ffe9944bb"
+    },
+    {
+      "file": "license_notice.json",
+      "sha256": "a59f30290d52f182578ffba6ea13885bd733072d894e1003908033acfe0f13b5"
     },
     {
       "file": "public_book.json",
-      "sha256": "916b4c273355466434b951506dec2b92aaae034d2f02b8e69306bcac609075e4"
+      "sha256": "cb018622ae67b6f9f5c3e048b5dcf39843e005aa97850a2bb48c49b77323df0e"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "7fd589c629759806eb98321a28b95d1e1d4d33d2311d8f5dbb61fd2c79c1c2ff"
+      "sha256": "7cc46c20142452920913373900fe5013fadf6c65a4b27998a7fe4df0d583e4e4"
     },
     {
       "file": "source_evidence.json",
-      "sha256": "8b9e1f9f72a93fc6d3068b74066ac2a718b640e5a356a262e673f5bf1368e552"
+      "sha256": "106c3fa4caf721233ce14d3b432f08e7c19e259b5a961961e1baef031b5f25af"
     }
   ]
 }

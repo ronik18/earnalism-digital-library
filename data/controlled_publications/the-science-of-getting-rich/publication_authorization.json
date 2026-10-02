@@ -1,0 +1,46 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "the-science-of-getting-rich",
+  "edition": "Project Gutenberg #59844 Wattles 1910 original English text; Preface and all17chapters; publisher advertisements excluded",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_ONLY_NON_COVER_COMPONENTS",
+  "source_sha256": "adc3fb17f24801597561e992d858e124c8d9b4c6e3bf7593d713e7a71d252744",
+  "content_sha256": "55a8e552b9f74640c7bccc1d05db9d5197ec9dd3af558aceb4f9d3ea73d4949b",
+  "chapter_sha256": {
+    "chapter-001": "0339c89621a322cdad8e50e0fbd7a9508f6a8bc48a16045f2f24a45e0b0c9a58",
+    "chapter-002": "1fc3a23022b7b949f62c31e5ac332e3fb3c0ba6626f4bac2d0b459d2c41c63c6",
+    "chapter-003": "cc2926c1d62647a483ec0612a42466a1f766b817232bc67adfce76246b5105eb",
+    "chapter-004": "0ad051b4408531e1b5c34c9e30849823a2517befcd97055e171bd2db74b8bf41",
+    "chapter-005": "6ef3c5f491dc18ec4c74bb1799685af77616d32294d850d1ccd69cbf97bce06c",
+    "chapter-006": "448e1a3a5d0814f8b96d50eaf16cdbd7bbd61734b9ca01fc29b63aa1bef0961e",
+    "chapter-007": "d29cfdf64909a1165961d097ec12c949e938d03a6cb36ea25ce6cf792497301c",
+    "chapter-008": "3a0116b5aea3a26032d361f7ea34a9d6ed1750366a829559132e9433b9c9b116",
+    "chapter-009": "7e3e692873c0c584fa47f724e9b44d24469b3727ac6062f9c46ca919559258e5",
+    "chapter-010": "6ea8523874594a6b027e1fd0db4d897a101e31bde7eb15bb16ed34a8735c40f4",
+    "chapter-011": "8ea8dc98fb9a125b3cf4fae404e76ffbb812ee056db367847ba486283ddf4aaf",
+    "chapter-012": "a9e067da0eaad981cb8d3468ea0cb2efac4bcb2b03ef0d0fefef172d5d87c7b0",
+    "chapter-013": "446132c59ee07f2941010430ace7f77fb965c87754e1a52f6af26ff2d8e9be3c",
+    "chapter-014": "d0c6fb51d59a2f969011edd5ad650e717afab32552e7cbb1728e397f5c9e38f4",
+    "chapter-015": "634fc59399f4999ca3330608b56828af1ac84e30b02b624b1e9255f5268d2680",
+    "chapter-016": "09abacbf0a35100e2b033dd5680c38e3acc94832d55ba6ba4c450200091bb091",
+    "chapter-017": "cbe6d3806cbbe424fbccd3a7a4eece1e2224e88f5d81b7f6d05aa7c38b0d7922",
+    "chapter-018": "3871c5dffea3c043c738c62a5d55f26ec6b9ada974de505966f27a64d54548bb"
+  },
+  "cover_provenance_sha256": null,
+  "cover_status": "DEFERRED_BY_OWNER_REQUEST_NO_COVER_DISPLAY_AUTHORIZED",
+  "authorized_by": "Automated executor under owner explicit autonomous clearance delegation; not a fabricated human or legal signature.",
+  "verified_at": "2026-10-01T21:35:50.622637+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Cover clearance/binding, trusted production registry acceptance, canonical controlled-live allowlist, actual runtime Reader readiness and protected gates must separately pass.",
+  "not_authorized": [
+    "cover_display",
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation"
+  ]
+}

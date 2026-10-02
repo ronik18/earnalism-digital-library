@@ -1,6 +1,6 @@
 {
   "slug": "book-c85323409f",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "files": [
     {
       "file": "approval_evidence 2.json",
@@ -19,8 +19,12 @@
       "sha256": "f595444eb1de4da88124c13770587d116c9a76d0abb417ac9f374951560cc415"
     },
     {
+      "file": "license_notice.json",
+      "sha256": "f9410246c91563aaf6712885f345eed35d3ca83e02ee536728eb98e699cab055"
+    },
+    {
       "file": "public_book.json",
-      "sha256": "5ac7433e9d2fbf3dffba0cf023dc242e84828106778da46eb805f6e7ffc56a85"
+      "sha256": "950f0a0206a178736121acee523681688cd112de1b9c93ee3355471f35f5f3c6"
     },
     {
       "file": "reader_manifest.json",

@@ -1,0 +1,194 @@
+{
+  "carmilla": {
+    "creator": "Le Fanu, Joseph Sheridan, 1814-1873",
+    "creator_death_year": 1873,
+    "selected_collection_publication_year": 1872,
+    "original_story_first_publication_year": null,
+    "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+    "bibliographic_receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Le%20Fanu%2C%20Joseph%20Sheridan%2C%201814-1873",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Le%20Fanu%2C%20Joseph%20Sheridan%2C%201814-1873",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:36.365449+00:00",
+      "response_sha256": "3fc67bc3f219a3f0538775675b2a878d0932c8134e4901a170c5c6d3beeab280"
+    },
+    "bibliographic_excerpt": "Glass Darkly (3 volumes; London: R. Bentley and Son, 1872) Volume I: Gutenberg text Volume II: Gutenberg text Volume II: Gutenberg text Le Fanu, Joseph Sheridan, 1814-1873: J. S. Le Fanu's Ghostly Tales (Gutenberg compilation of short stories and nov",
+    "scope": "Named creator complete selected literary text including available author prefatory/end matter; publisher/source furniture and illustrations excluded."
+  },
+  "great-expectations": {
+    "creator": "Dickens, Charles, 1812-1870",
+    "creator_death_year": 1870,
+    "selected_collection_publication_year": 1861,
+    "original_story_first_publication_year": null,
+    "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+    "bibliographic_receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Dickens%2C%20Charles%2C%201812-1870",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Dickens%2C%20Charles%2C%201812-1870",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:45:04.691197+00:00",
+      "response_sha256": "890a6305863908832b5583c1862df9e5624a206cd48ace3f6050e9f5fc8d1154"
+    },
+    "bibliographic_excerpt": "Great Expectations (3 volumes; London: Chapman and Hall, 1861) Volume I: multiple formats at archive.org Volume II: multiple formats at archive.org Volume III: multiple formats at archive.org all volumes: page images at HathiTrust Dickens, Charles, 1",
+    "scope": "Named creator complete selected literary text including available author prefatory/end matter; publisher/source furniture and illustrations excluded."
+  },
+  "hound-of-the-baskervilles": {
+    "creator": "Doyle, Arthur Conan, 1859-1930",
+    "creator_death_year": 1930,
+    "selected_collection_publication_year": 1902,
+    "original_story_first_publication_year": null,
+    "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+    "bibliographic_receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Doyle%2C%20Arthur%20Conan%2C%201859-1930",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Doyle%2C%20Arthur%20Conan%2C%201859-1930",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:11.614798+00:00",
+      "response_sha256": "9c80e664aca64bf1c0579db6cf406619322276bfe1dbd1370d2d3c920f836017"
+    },
+    "bibliographic_excerpt": "hound of the Baskervilles (P.F. Collier, 1902) (page images at HathiTrust) Doyle, Arthur Conan, 1859-1930: The hound of the Baskervilles : another adventure of Sherlock Holmes (Grosset & Dunlap, 1921) (page images at HathiTrust) Doyle, Arthur Conan, ",
+    "scope": "Named creator complete selected literary text including available author prefatory/end matter; publisher/source furniture and illustrations excluded."
+  },
+  "rikki-tikki-tavi": {
+    "creator": "Kipling, Rudyard, 1865-1936",
+    "creator_death_year": 1936,
+    "selected_collection_publication_year": 1894,
+    "original_story_first_publication_year": null,
+    "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+    "bibliographic_receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Kipling%2C%20Rudyard%2C%201865-1936",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Kipling%2C%20Rudyard%2C%201865-1936",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:45:15.583634+00:00",
+      "response_sha256": "2bddabd3349964f8acbcca1692ae25f62fca9c3280ab36bf56c63ad2781215b2"
+    },
+    "bibliographic_excerpt": "Jungle Book (multiple editions) Kipling, Rudyard, 1865-1936: The Jungle Book (New York: The Century Co., 1894) , illust. by W. H. Drake and Paul Frenzeny (page images at Florida) Kipling, Rudyard, 1865-1936: The Jungle Book (9-story selection; New Yo",
+    "scope": "Named creator complete selected literary text including available author prefatory/end matter; publisher/source furniture and illustrations excluded."
+  },
+  "rip-van-winkle": {
+    "creator": "Irving, Washington, 1783-1859",
+    "creator_death_year": 1859,
+    "selected_collection_publication_year": 1820,
+    "original_story_first_publication_year": null,
+    "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+    "bibliographic_receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Irving%2C%20Washington%2C%201783-1859",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Irving%2C%20Washington%2C%201783-1859",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:51.215098+00:00",
+      "response_sha256": "9ca904bd991884cf7d4b2eaf62034fec488316547143c5469d3873201416a1b6"
+    },
+    "bibliographic_excerpt": "sketch book of Geoffrey Crayon, gent. (G.P. Putnam, 1857) (page images at HathiTrust) Irving, Washington, 1783-1859: The sketch book of Geoffrey Crayon, Gent. (John Murray ...., 1820) , also by C. Roworth, W. Pople, and John Murray (page images at Ha",
+    "scope": "Named creator complete selected literary text including available author prefatory/end matter; publisher/source furniture and illustrations excluded."
+  },
+  "the-call-of-the-wild": {
+    "creator": "London, Jack, 1876-1916",
+    "creator_death_year": 1916,
+    "selected_collection_publication_year": 1903,
+    "original_story_first_publication_year": null,
+    "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+    "bibliographic_receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=London%2C%20Jack%2C%201876-1916",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=London%2C%20Jack%2C%201876-1916",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:23.846222+00:00",
+      "response_sha256": "8b68b83eb917b4943bedc11ce2911ee0e860d396b24dd5aabf960d1603987434"
+    },
+    "bibliographic_excerpt": "The Call of the Wild (multiple editions) London, Jack, 1876-1916: The Call of the Wild (Gutenberg text, illustrated HTML, and audio) London, Jack, 1876-1916: The Call of the Wild (London: W. Heinemann, 1903), illust. by Philip R. Goodwin, Charles Liv",
+    "scope": "Named creator complete selected literary text including available author prefatory/end matter; publisher/source furniture and illustrations excluded."
+  },
+  "the-secret-garden": {
+    "creator": "Burnett, Frances Hodgson, 1849-1924",
+    "creator_death_year": 1924,
+    "selected_collection_publication_year": 1911,
+    "original_story_first_publication_year": null,
+    "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+    "bibliographic_receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Burnett%2C%20Frances%20Hodgson%2C%201849-1924",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Burnett%2C%20Frances%20Hodgson%2C%201849-1924",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:45:11.100127+00:00",
+      "response_sha256": "900283a1224f63b23e4b01927f13c506398adc2048287678c178ee0d67b2c1d1"
+    },
+    "bibliographic_excerpt": "The Secret Garden (New York: F. A. Stokes Co., c1911) Gutenberg text and illustrated HTML multiple formats at archive.org page images at HathiTrust page images at LOC Burnett, Frances Hodgson, 1849-1924: The Shuttle (Gutenberg text and Librivox audio",
+    "scope": "Named creator complete selected literary text including available author prefatory/end matter; publisher/source furniture and illustrations excluded."
+  },
+  "the-time-machine": {
+    "creator": "Wells, H. G. (Herbert George), 1866-1946",
+    "creator_death_year": 1946,
+    "selected_collection_publication_year": 1895,
+    "original_story_first_publication_year": null,
+    "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+    "bibliographic_receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Wells%2C%20H.%20G.%20%28Herbert%20George%29%2C%201866-1946",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Wells%2C%20H.%20G.%20%28Herbert%20George%29%2C%201866-1946",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:08.525863+00:00",
+      "response_sha256": "c1e19c068adee3d02b19a299a7958e0fd262a8076521c1f36ba967df6add6119"
+    },
+    "bibliographic_excerpt": "Time Machine (based on an 1898 edition) Gutenberg text HTML at Bartleby Wells, H. G. (Herbert George), 1866-1946: The Time Machine: An Invention (London: W. Heinemann, 1895) (page images at HathiTrust) Wells, H. G. (Herbert George), 1866-1946: The Ti",
+    "scope": "Named creator complete selected literary text including available author prefatory/end matter; publisher/source furniture and illustrations excluded."
+  },
+  "the-withered-arm": {
+    "creator": "Hardy, Thomas, 1840-1928",
+    "creator_death_year": 1928,
+    "selected_collection_publication_year": 1888,
+    "original_story_first_publication_year": null,
+    "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+    "bibliographic_receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Hardy%2C%20Thomas%2C%201840-1928",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Hardy%2C%20Thomas%2C%201840-1928",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:40.475148+00:00",
+      "response_sha256": "4ad2aa91271626c8d8fd658b28ea17fb3bc690b92c263141af5105cb2660ac65"
+    },
+    "bibliographic_excerpt": "Wessex tales ... (Harper & brothers, 1896) (page images at HathiTrust) Hardy, Thomas, 1840-1928: Wessex tales, strange lively, and commonplace (Harper & brothers, 1888) (page images at HathiTrust) Hardy, Thomas, 1840-1928: Wessex tales : strange, liv",
+    "scope": "Named creator complete selected literary text including available author prefatory/end matter; publisher/source furniture and illustrations excluded."
+  },
+  "the-yellow-wallpaper": {
+    "creator": "Gilman, Charlotte Perkins, 1860-1935",
+    "creator_death_year": 1935,
+    "selected_collection_publication_year": 1901,
+    "original_story_first_publication_year": null,
+    "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+    "bibliographic_receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Gilman%2C%20Charlotte%20Perkins%2C%201860-1935",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Gilman%2C%20Charlotte%20Perkins%2C%201860-1935",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:30.626134+00:00",
+      "response_sha256": "de36b381f64ac3cee0e9c0d1ae57be868ccccd80aebe944ad840ffe72ff3ca99"
+    },
+    "bibliographic_excerpt": "yellow wall paper (Small, Maynard, 1901) (page images at HathiTrust) See also what's at your library , or elsewhere . Help with reading books -- Report a bad link -- Suggest a new listing Home -- Search -- New Listings -- Authors -- Titles -- Subject",
+    "scope": "Named creator complete selected literary text including available author prefatory/end matter; publisher/source furniture and illustrations excluded."
+  },
+  "white-fang": {
+    "creator": "London, Jack, 1876-1916",
+    "creator_death_year": 1916,
+    "selected_collection_publication_year": 1906,
+    "original_story_first_publication_year": null,
+    "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+    "bibliographic_receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=London%2C%20Jack%2C%201876-1916",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=London%2C%20Jack%2C%201876-1916",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:23.846222+00:00",
+      "response_sha256": "8b68b83eb917b4943bedc11ce2911ee0e860d396b24dd5aabf960d1603987434"
+    },
+    "bibliographic_excerpt": "White Fang (Gutenberg text and illustrated HTML) London, Jack, 1876-1916: White Fang (New York and London: Macmillan, 1906) (multiple formats at archive.org) London, Jack, 1876-1916: Yllätys y. m. Kertomuksia Alaskasta (in Finnish; Helskini: Otava, 1",
+    "scope": "Named creator complete selected literary text including available author prefatory/end matter; publisher/source furniture and illustrations excluded."
+  },
+  "woman-in-white": {
+    "creator": "Collins, Wilkie, 1824-1889",
+    "creator_death_year": 1889,
+    "selected_collection_publication_year": 1860,
+    "original_story_first_publication_year": null,
+    "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+    "bibliographic_receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Collins%2C%20Wilkie%2C%201824-1889",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Collins%2C%20Wilkie%2C%201824-1889",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:54.580833+00:00",
+      "response_sha256": "736e05ddbcbfe0989673cbbbb09c06ac3a1c85dbff5ac9f16b6a66ffe1901246"
+    },
+    "bibliographic_excerpt": "woman in white (The Century co., 1906) (page images at HathiTrust) Collins, Wilkie, 1824-1889: The woman in white (S. Low, Son & Co., 1860) (page images at HathiTrust) Collins, Wilkie, 1824-1889: The woman in white (Scribner, 1908) (page images at Ha",
+    "scope": "Named creator complete selected literary text including available author prefatory/end matter; publisher/source furniture and illustrations excluded."
+  }
+}

@@ -4,9 +4,9 @@ Canonical Integration Lane; starting main `8be3926fd9fc4526dec66d51b64d8ca72b2d0
 
 ## Outcome
 
-Inspected 90 non-live English packages and 47 Bengali targets, including one explicitly excluded title. Repaired 122 non-live packages (85 English, 37 Bengali). Cover-only cases remain deferred. The authoritative 24-title live allowlist, exclusions, production rights registry and zero-title audio live state are unchanged.
+Inspected 90 English catalogue rows (including two superseded aliases) and 47 Bengali targets (46 non-live candidates and one explicitly excluded title). Canonical repairs currently cover 133 non-live packages. Cover-only cases remain deferred. The authoritative 24-title live allowlist, exclusions, production rights registry and zero-title audio live state are unchanged.
 
-Four exact-edition text decisions are accepted **locally**, not activated: Alice’s Adventures in Wonderland (PG11), Frankenstein (PG84), Pride and Prejudice (PG1342 selected Austen narrative), and Indira (1873 eight-chapter source). See `english/noncover_text_clearances.json` and `bengali/indira-text-clearance-result.json`. No acceptance of all inspected titles is implied. Their current held publication manifests are intentional; inactive segment plans are preparation, not production promotion.
+Current local exact-edition text decisions and remaining non-cover holds are enumerated in `combined-current-matrix.json`, with detailed source/edition evidence in both language matrices. Local acceptance is **not** runtime registration, activation or customer exposure. Existing released titles are not counted as new. Inactive segment plans are hash-only preparation, not production promotion.
 
 ## Evidence
 
@@ -19,8 +19,20 @@ Four exact-edition text decisions are accepted **locally**, not activated: Alice
 
 ## Validation
 
-Canonical npm install; frontend 96 suites / 599 tests; production build; 94 SEO snapshots / 2017 assertions; regression 124 passed / 4 skipped; English 14 focused tests; Bengali 8 focused tests; licensed-text/publication 15 tests; repeatable static SEO template 2 tests. Batch validator: all 122 changed packages pass structural, checksum and exposure checks. Logo evidence: 108 states at six widths, zero overflow/runtime defects, official image unchanged.
+Canonical npm install; frontend 97 suites / 608 tests; production build; 94 SEO snapshots / 2017 assertions; deterministic local PR regression 124 passed / 4 skipped. Backend licensed-text/publication/rights tests: 60 passed; runtime release/catalogue tests: 110 passed; standalone Reader delivery tests: 3 passed. Source reconciliation and inactive-plan tests: 38 passed. Batch validation requires accepted text records to agree with canonical publication rights and permits only deferred cover blockers. Logo evidence: 108 states at six widths, zero overflow/runtime defects, official image unchanged. Required CI is evaluated on the final pushed head, separately from these local results.
 
 ## Release boundaries
 
 No customer data, payment/entitlement enforcement, audio release or live approval change. Local source decisions do not substitute for production registry registration, cover completeness or exact runtime promotion gates. Source-linked later editorial revisions remain distinct legal blockers. Do not refresh accepted checksum bundles blindly: accepted records are excluded to avoid circular bindings.
+
+## Verified publication bounds and licensed text
+
+Unknown first-publication dates remain unknown. A separately named published-by upper bound may satisfy the India-only chronology gate only with actual primary HTTP200 evidence, exact source/manuscript hashes, and an expired conservative publication-plus-60 bound; independent author, translator and editorial checks remain mandatory. This does not create a modern-translator permission exception. The proposed Ian Johnston Kafka translation remains held because its PDF declaration conflicts with the publisher's commercial-publication restriction.
+
+CC BY-SA 4.0 and CC0 1.0 transcription contributions have distinct immutable notices and delivery treatment. No false ShareAlike requirement is applied to CC0; notices do not authorize covers or other assets. Complete-work boundary checks are distinct from ordered substring containment, and omitted author openings, prefaces, dedications, epigraphs and footnotes are repaired only from actual source evidence.
+
+## Final non-cover checkpoint
+
+103 local India text acceptances: 86 English and 17 Bengali. Eyesore remains held for precise damaged-glyph/full-manuscript verification; Kafka remains held for contradictory commercial translation permissions. 28 Bengali editions retain unresolved original-edition/editorial identity evidence; Pather Panchali lacks 23 of the historically declared 35 chapters. Two English aliases are superseded, not new titles. None is represented as production activation.
+
+The historical Dracula structural validator now accepts its verified author preface plus the same 27 numbered chapters, while rejecting unexpected chapters and preserving the independent approval/rights denial. Positive runtime controls use genuinely live A Ghost Story rather than held Dracula; the old positive Dracula projection assertion also failed on the exact starting main.

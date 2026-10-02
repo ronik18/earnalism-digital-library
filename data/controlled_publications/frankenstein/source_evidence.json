@@ -4,8 +4,8 @@
   "source_name": "Project Gutenberg #84 electronic narrative, four letters and24chapters; no substitution of #41445/#42324",
   "source_license": "Public domain",
   "source_hash": "7810cd483cffcf2cc8a1d8f0d5807931e69d4f48cd14149b8c76f88af82fead3",
-  "content_hash": "53b45539400716c4cca3295c9bffef1f744179cc7e4a56cd5e4f983b1c4f53ef",
-  "provenance_hash": "bd3168b7919492bae2a96cbbdd36d2e2b747ff6456d38d97e7578c49a83d3bb6",
+  "content_hash": "c83bc9742f100459a5bd329a9f048cb14e6356c7e43e2a423e71becc9ddc2b85",
+  "provenance_hash": "801a0d6f3dad09bb4a7d3b179eac4673f3f7ec3c05a8c63fc928fa1aa30e7a26",
   "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1851, original publication 1818; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-05-20T08:24:42.583836+00:00",
   "source_format": "text/plain",
@@ -187,7 +187,7 @@
     "ordered_chapter_sha256": [
       {
         "id": "chapter-001",
-        "sha256": "35999c1161c9dfc1c47e9e52e030ad3d7932e8f87bae0b2c5afbf10b7cb4a638"
+        "sha256": "418633c5bc4533e399904ec022a4e8b329817f90678de2c8ed538c789d282e0f"
       },
       {
         "id": "chapter-002",
@@ -298,7 +298,7 @@
         "sha256": "bb039592fcbdedc4b3b2bcc272f3f64f186addcaee21df97a21ee84a455f2a23"
       }
     ],
-    "content_sha256": "53b45539400716c4cca3295c9bffef1f744179cc7e4a56cd5e4f983b1c4f53ef"
+    "content_sha256": "c83bc9742f100459a5bd329a9f048cb14e6356c7e43e2a423e71becc9ddc2b85"
   },
   "author_and_first_publication_evidence": {
     "record_path": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json",
@@ -746,5 +746,22 @@
     "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
     "audio": "NOT_AUTHORIZED",
     "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
-  }
+  },
+  "reader_repair_history": [
+    {
+      "verified_at": "2026-10-02T03:25:38.460120+00:00",
+      "reason": "Restored authentic author dedication/epigraph/addressee or full story opening from immutable exact source before claiming full selected text scope.",
+      "content_sha256": "c83bc9742f100459a5bd329a9f048cb14e6356c7e43e2a423e71becc9ddc2b85"
+    },
+    {
+      "verified_at": "2026-10-02T03:25:45.777143+00:00",
+      "reason": "Restored authentic author dedication/epigraph/addressee or full story opening from immutable exact source before claiming full selected text scope.",
+      "content_sha256": "c83bc9742f100459a5bd329a9f048cb14e6356c7e43e2a423e71becc9ddc2b85"
+    },
+    {
+      "verified_at": "2026-10-02T03:25:59.945714+00:00",
+      "reason": "Restored authentic author dedication/epigraph/addressee or full story opening from immutable exact source before claiming full selected text scope.",
+      "content_sha256": "c83bc9742f100459a5bd329a9f048cb14e6356c7e43e2a423e71becc9ddc2b85"
+    }
+  ]
 }

@@ -34,7 +34,7 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 1600,
+      "word_count": 1540,
       "reading_minutes": 7,
       "language_hint": "bn",
       "processing_status": "ready",
@@ -259,7 +259,7 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 2269,
+      "word_count": 2232,
       "reading_minutes": 10,
       "language_hint": "bn",
       "processing_status": "ready",
@@ -295,5 +295,6 @@
   "audiobook_assets": {},
   "audiobook": {},
   "created_at": "2026-07-01T10:36:20Z",
-  "updated_at": "2026-07-01T10:36:22Z"
+  "updated_at": "2026-07-01T10:36:22Z",
+  "license_notice_sha256": "a59f30290d52f182578ffba6ea13885bd733072d894e1003908033acfe0f13b5"
 }

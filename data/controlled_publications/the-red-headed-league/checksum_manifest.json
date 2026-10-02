@@ -1,14 +1,14 @@
 {
   "slug": "the-red-headed-league",
-  "generated_at": "2026-07-03T20:07:49Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "c4e86e2697f7f156f03e4cb3490ef894d93363c540d32f068ffb9cd8237a37fc"
+      "sha256": "b0d0a997eb00c24c5d843d599ec74918db7ed9ffd61278a88b6ecf5ab09a40f2"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "9193f7c35d1cd49e445000349d10fc1ba9d69249169381c9fb2eb2920a8fc922"
+      "sha256": "01ea52f707fc620b3e9fd573708edaa43eb0f118da05690864e89c6b8b5a018e"
     },
     {
       "file": "highlight_sync.json",
@@ -16,15 +16,19 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "77cbbee453fd218ecdd14470be94057e8f82a82cd053acda666c1f1dbcd3f6e0"
+      "sha256": "54345e887627b0ab852db67b5f23b842e7d31b1e437a5603b1a52a0860ab249b"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "ac23e989c18c28f5c2b95c3d38ee7ac0e40478931087b4c3baff8a977efe03ba"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "c7779fb3a85b5b407fe8fd55423a74e7656de0ffa4c977a815bc78e654b0ea2a"
+      "sha256": "b4ad02b3945347d18af0fbc8c4e6dd6260f9c6a94ec875c283624c1b59e87486"
     },
     {
       "file": "source_evidence.json",
-      "sha256": "ad0116555438b07ae78930d2c4121d9edce96094a04dcb1627abfe576d873f2e"
+      "sha256": "2076a8139b901ab26937009d373e3ca1fd4d5e9ff7a3fa79744766c6d896c58a"
     }
   ]
 }

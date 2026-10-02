@@ -1,0 +1,30 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "rikki-tikki-tavi",
+  "edition": "Project Gutenberg #35997; Rikki-Tikki-Tavi exact canonical source, underlying lifetime publication 1894; complete selected author text, no translation or independently authored artwork/editorial material imported",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_ONLY_NON_COVER_COMPONENTS",
+  "source_sha256": "702dcf213efccf27768778ff44434f78557d1e7d2ba7a532899bec64633e55ca",
+  "content_sha256": "5278ec9aad39e461bbdb35db8bfce162e01e25ff7b2e532f00d198b6e52f5837",
+  "chapter_sha256": {
+    "chapter-000": "4346ccf9d83348e11342889f8868a90bb3ecf64f58073c92e0544ef41d387b0d",
+    "chapter-001": "3efa2d3b97865dd06d93163029c23cd0243b29bc97fb059bbb28ccfc065aee83"
+  },
+  "cover_provenance_sha256": null,
+  "cover_status": "DEFERRED_BY_OWNER_REQUEST_NO_COVER_DISPLAY_AUTHORIZED",
+  "authorized_by": "Automated executor under owner explicit autonomous clearance delegation; not a fabricated human or legal signature.",
+  "verified_at": "2026-10-01T21:49:40.745164+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Cover clearance/binding, trusted production registry acceptance, canonical controlled-live allowlist, actual runtime Reader readiness and protected gates must separately pass.",
+  "not_authorized": [
+    "cover_display",
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation"
+  ]
+}

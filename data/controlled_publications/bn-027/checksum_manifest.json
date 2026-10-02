@@ -1,6 +1,6 @@
 {
   "slug": "bn-027",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
@@ -15,8 +15,12 @@
       "sha256": "6bdce3c66110529937d10d12750c1345f40ede4803af28a2f4b51e7c3f1bf976"
     },
     {
+      "file": "license_notice.json",
+      "sha256": "5d17b74d579b826c369928b3910c039842144c3b2f34ef32614ca8f0b4f99990"
+    },
+    {
       "file": "public_book.json",
-      "sha256": "e5ea8cce0dab455bad79db3944d07e7047c523c10d68661b5b52b7162621cf5b"
+      "sha256": "5be9643e2243b40f7326e0bbcec1b55a73b4d7f7bdc0b7fe2bfcc73bc38c2848"
     },
     {
       "file": "reader_manifest.json",

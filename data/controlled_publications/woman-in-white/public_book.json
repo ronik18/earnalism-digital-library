@@ -94,7 +94,7 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 9575,
+      "word_count": 9500,
       "reading_minutes": 40,
       "language_hint": "en",
       "processing_status": "ready",
@@ -403,9 +403,9 @@
       "updated_at": "2026-07-01T10:36:20Z"
     }
   ],
-  "source_hash": "4cd6eea24d65d0aff7ff70e5b2ef74a0653d52a4e2eed8c6c3a9bd332e3ba9a1",
-  "content_hash": "de195bde3be096db2abcbebc33011f65e50239d2e3b225bfb951ed179c6872e3",
-  "provenance_hash": "bbbb9aea8e3edee66086d9fa4759626775d18b4d036f54cd773458e5b3961290",
+  "source_hash": "c8cb8872f6c0a2a5b6489873c6c7b8c39f006c3fa44219738186a96f2c1d1254",
+  "content_hash": "f359435d90032e1ceee2a65bd58033c7375017bf813696d8965b4171e68c2962",
+  "provenance_hash": "c28dca8892148e76c0f28ff691626473495ca7e0bc54eb3ca3132eabe78d626f",
   "rights_basis": "public_domain",
   "rights_tier": "A",
   "verification_status": "approved",

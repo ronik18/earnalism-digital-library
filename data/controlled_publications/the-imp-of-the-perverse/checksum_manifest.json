@@ -1,14 +1,14 @@
 {
   "slug": "the-imp-of-the-perverse",
-  "generated_at": "2026-07-03T20:07:49Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "e33cac9a4c50a73e70104ae773954315695ce18a6eb44e1a37ae5f881239e65f"
+      "sha256": "bee1c9bac36ac67f784d259bdfe51157ccec322b964e4b14b791bb1406150cf0"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "bbce0a00add361ab719d9f97e7d630c0989bef4c074348b70500a8a5bc9bdd01"
+      "sha256": "aa182ebdd6c3ad74a8a44eb617dc89b727610c9dc2a6506170b6c1f32517da20"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "24b22c5e5d2631d7dd5551a1cb95acad422d6d9454d5c0f70608972d3c7b222c"
+      "sha256": "105772a0f4a631d556560583c2da537c54ed976aaf6e1d83c660b1a90c98fecf"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "39ab73ee37ead2ec7fb8928fbd416b587fbb4b98568e02a4bb089b5bc74b76ce"
     },
     {
       "file": "reader_manifest.json",
@@ -24,7 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "c5ae819cb965b42b03e65157724c9eeccc0999e0bb77cac599a02b8d7661e154"
+      "sha256": "a5b7558fee89b645393a7bed29c953869b7df45010060e5be20ed4cf5de9098f"
     }
   ]
 }

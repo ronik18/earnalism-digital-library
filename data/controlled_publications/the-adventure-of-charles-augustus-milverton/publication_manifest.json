@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "the-adventure-of-charles-augustus-milverton",
   "title": "The Adventure of Charles Augustus Milverton",
-  "generated_at": "2026-10-01T21:08:30.852426+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "2821fd715a52eb3293bbe0363ce49b1057b55af7999d59be9ee09548db90fefe",
-    "content_hash": "d1250da3fea3ec9bc6da2e9f9fe8a6b1ad8c8f71f1c1ee6460297071320316da",
-    "provenance_hash": "57dcfcba138fe3d9d3741402100a5cf67aeabf7a3a4c420665891617f7844c70",
+    "source_hash": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a",
+    "content_hash": "4c3e8db14fb33f2af6ab065a2978766a4a1ab2ef57508fb67f72285e9457b1a5",
+    "provenance_hash": "d4450fa9dd88e419191a951b0fc3b3d86332e0221814b6a27bbb9f9cdd305167",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "8f0cf4c269199ee48d4f565e75c704351ee0ea2acb62f82aef88a04b1839522d",
+    "chapter_index_sha256": "3d3479919695f254f54d7138ddea05cf4cb330f3461da22ee471ea36c875b8bf",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "The Adventure of Charles Augustus Milverton",
-        "word_count": 6618,
-        "sha256": "499a4148c37036c7df570ac4894f8c2c4fca0a036c4833feaf185fecb8033163"
+        "word_count": 6698,
+        "sha256": "dad84c8f45f5b4d6f98b376dd8f3842512db81d059efa874eb4754bc4aca270c"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "07984f26545bebb4a0160cfc28c9eaab75d442e62f6b33f0f9c24b1a25ce607f"
+    "publication_region": "india",
+    "evidence_sha256": "7580b5840d2c9cbe091045a8a53d88c08e2de2ce17e404bbdcadb198ebb940c7"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "8cb87f3346a0d371bcaf9710d2a76c726353b771fe0485fbfc929d46adbc8262",
-    "reader_manifest": "9ea0e2da0296f71732f02c5eaa361012347e1c109038f3eb8924c791993015f4",
-    "source_evidence": "07984f26545bebb4a0160cfc28c9eaab75d442e62f6b33f0f9c24b1a25ce607f",
-    "approval_evidence": "ef6c5eb63aca69920fb6b954718cc7b5101ba109dd5fd08573c303908e5b83cf"
+    "public_book": "e7ab82d28cad336a4ccf074193b13a7407ec81dd11ef36c548921939cc1a48c7",
+    "reader_manifest": "0beac03a946d457458357f76ad1f6fc10b3f852be696cbd8f2115a11d195ec21",
+    "source_evidence": "7580b5840d2c9cbe091045a8a53d88c08e2de2ce17e404bbdcadb198ebb940c7",
+    "approval_evidence": "aa67e21c3cc0a46e56a1ee99d9f330e2147d11088487111d74fab77fa5dc2152"
   },
-  "manifest_sha256": "4e5256ec28682653f5d380e209655bad7017db47f23b999e7c5ec9aa356542c6"
+  "manifest_sha256": "32dd62a6c17ec7cabc24da85e712d20f3f53b2327c5b08612dba344aa67ec000"
 }

@@ -76,7 +76,12 @@ export default function SecureReader({
   const issuedAt = useMemo(() => new Date().toISOString(), []);
   const watermarkIdentity = userName || (userEmail ? userEmail.split("@")[0] : "Reader");
   const watermarkText = customWatermarkText || `Earnalism Reading Edition · ${watermarkIdentity} · ${issuedAt.slice(0, 10)}`;
-  const footerText = customFooterText || `Licensed reading copy - Redistribution prohibited`;
+  const footerText = customFooterText || (licensedText
+    ? "Identified transcription: permissions follow its displayed text licence"
+    : "Licensed reading copy - Redistribution prohibited");
+  const effectiveLicenseNotice = licensedText && licenseNotice === DEFAULT_LICENSE_NOTICE
+    ? "The identified transcription may be copied, shared and adapted under its displayed text licence. Separate cover art, branding and software are not included."
+    : licenseNotice;
 
   const report = (eventType, metadata = {}) => {
     countsRef.current[eventType] = (countsRef.current[eventType] || 0) + 1;
@@ -188,10 +193,10 @@ export default function SecureReader({
       <footer className="secure-reader__page-footer" aria-label="Licensed reading notice">
         <span>{footerText}</span>
         {licenseAttribution}
-        {licenseNotice && (
+        {effectiveLicenseNotice && (
           <details className="secure-reader__legal">
             <summary>Terms</summary>
-            <p>{licenseNotice}</p>
+            <p>{effectiveLicenseNotice}</p>
           </details>
         )}
       </footer>

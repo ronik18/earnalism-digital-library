@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "book-a23625bf36",
   "title": "সমাপ্তি",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
-    "source_hash": "08cf726a1c9f2acef4bb94a1228d4a5c22fe429d501b623d3a23853e1d645343",
-    "content_hash": "039054ed00bbbcfd67cf830434e41f40f2e05b93223400c16045883d1acc980f",
+    "source_hash": "5b6c9df28dc526a4343b46f86e967ba064689454de7df7e8b0436cca39fb4f33",
+    "content_hash": "70d901082eb8e6a475caa558d83601f509a61847b9260ffc1c95d2db935d9ae5",
     "provenance_hash": "50aae4c36dd08647c5fadecb1e7b6b5f6c58f438d1a150634dbb930433dcd4c4",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "fac8e37a5008b02484f2d7d3e700503c4243d2343c37dc72b6432a2557718f55",
+    "chapter_index_sha256": "10d2cc9153bd611ddc9921b6ca292d70902cd1aa5531532a799d51e1890cd112",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "সমাপ্তি",
-        "word_count": 5494,
-        "sha256": "92cf425cb2535fe2a1fd1ac30760abac0174c7ed87a265342db9e0500456c06c"
+        "word_count": 5618,
+        "sha256": "5473e0d9a3d647a6fd2848eca5714eb256d5b0e47db8e503d6f424e47ea86533"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "9fe225f6a80748eda261012f42b5a1c97c3a50fd634089702a61f52864c5b483"
+    "evidence_sha256": "67da23e545734240a2883972e9d9884ee48402e35957305c43dc81788979ab09"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,8 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: verification_status must be approved before publishing."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -47,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "3abda2469ea4861e8df301069484b498458739e207046a795197e54bd4f58902",
-    "reader_manifest": "3fe4c85bbde9142f75e65181a338c6eb9f4c232042092c7edb401ceae71b4712",
-    "source_evidence": "9fe225f6a80748eda261012f42b5a1c97c3a50fd634089702a61f52864c5b483",
-    "approval_evidence": "9f63f6b7e698f60b56253d7841a4ca42c756c1974984973b1e35828317af9cb7"
+    "public_book": "117a3c88b4cccd1ab653bb13ee7001a9c5e5ce4d25acd943c6314149c4155cf5",
+    "reader_manifest": "c8721fbbf1a41a8829dd966495a19f55da04d791764c76764bf23f3d4c12922f",
+    "source_evidence": "67da23e545734240a2883972e9d9884ee48402e35957305c43dc81788979ab09",
+    "approval_evidence": "b23c2d2d7bae41ed8e21234bb1e148a777af4a4803f72ca1ef23863d8171a49b"
   },
-  "manifest_sha256": "f9896b23106b057343a2f586bf618d2cc8cb34fb1cef88615624776d647ba295"
+  "manifest_sha256": "f8383702f20cea87c84f431b7bddc1603ff7ea539d865d40b9718f3019478aa5"
 }

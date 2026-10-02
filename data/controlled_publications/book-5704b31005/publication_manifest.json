@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "book-5704b31005",
   "title": "বিচারক",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:29:04.433484+00:00",
   "content": {
-    "source_hash": "79651c9122ab96a7dd31b5213fbf6158213d69eb1c8a800fe30bf5f91bc3f277",
-    "content_hash": "8055f5c411a3091c17cb0bdddff8c4d426db8acb81332b311712e4c0c9e1dc23",
+    "source_hash": "57835bba9d270aa0c3f31ee280b2ae789f0528be1adfa29815a45826e23e466b",
+    "content_hash": "c9e4ed3927535c11a5d1d5a4729f0c8a1371952a33a6e0e6d36514b3d249b089",
     "provenance_hash": "e9cff373d3c3941dba5847b5004e2359b0041827d2117e41c7acb345b76e7bc1",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "61c451b1bb618f4b9f12296154c8e73e57db8f393ab3688ba77408343eb758be",
+    "chapter_index_sha256": "a601910dd71d4b09df362a0dcf6df46b530e20b9191cbf54b756010ee69917d9",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "বিচারক",
-        "word_count": 1993,
-        "sha256": "b04ebe5a090b45348b576e0e37a6f4ce7c7b7a5a86fbc11a447158b808da9a0f"
+        "word_count": 1989,
+        "sha256": "e0325632daa997c635a64d46073efbf6d8fda511635e9b4ababfa3bab79dfd5c"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "69318eed1fa2981b2466aa423d951a0ec57c4d0fff7af7ab9433bfb4549d88bd"
+    "publication_region": "india",
+    "evidence_sha256": "f7d3ac1cbe169532038b008d48c0313290cedca638d23c7696d75d3a0c072f3b"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verification_status must be approved before publishing."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "8a7c8f09fc3d85a696e1044a3d1f1cf264fa0da166e6c997c73379d4198d90af",
-    "reader_manifest": "fd959d6a34c8fc95cb61d2bdb87d5ad23f05f2f4811d579bc9d545b72bf8acc0",
-    "source_evidence": "69318eed1fa2981b2466aa423d951a0ec57c4d0fff7af7ab9433bfb4549d88bd",
-    "approval_evidence": "bd7b06c58b8eb1efa01ec1d051f60d79463205c51027615a924603eba0980bd5"
+    "public_book": "73d297eb09b65551a68803f08d904da7cc3954d3c741f0d1bf93fa773bb718aa",
+    "reader_manifest": "30a6f7d1ad377e9418e87c83720e57e549861a0b0868776d237f8ae831450d91",
+    "source_evidence": "f7d3ac1cbe169532038b008d48c0313290cedca638d23c7696d75d3a0c072f3b",
+    "approval_evidence": "d2b774922bd708847bc7bcb801488662bfe5ee82c9d68aa573d7cb21c72224dc"
   },
-  "manifest_sha256": "9650374d529b4314393868e26fcce4acdbc8740070d2ff7604a62fffdd62c912"
+  "manifest_sha256": "197fa800d4464fa505dec2c09aac6187431903c11d687fb070e026a3c85b41a0"
 }

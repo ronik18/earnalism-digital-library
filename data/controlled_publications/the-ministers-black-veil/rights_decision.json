@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-ministers-black-veil-pg13707-noncover-text",
+  "edition_id": "the-ministers-black-veil",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "e89616cef4b147399870c56de46b53b60ec431a902347ef123ec25cde50578fb",
+    "reader_manifest": "18837b2475de3590609b6d47a9f4df411db0f0a5cd8042d7cec85878693f11e0",
+    "source_evidence": "eefb8cfcf6250d4ca1cfc520f9bdf71ffb69928cc48151f1a92565afa260b4c7",
+    "approval_evidence": "f0561952f7797ba13005f6961d26fadae769e4576c224a54dcf983af85593e41",
+    "checksum_manifest": "c200d8fb8308fdf43a66031aef990a501f9aed86212c37bbbb0592afcd9c720d",
+    "publication_manifest": "50e4a9d36ce0a612385d4013e8c7c9cb1399abec35a529d3990fa374aaadf505"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:48:17.188009+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1864, verified lifetime collection publication 1837 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "28ec24bbef4985ac88b7ac7780580d97925eec3cf1bf699fc88ef9be89553931",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "256624faf1f612edc47dd0a0ecc9717bd15074baea33e8a9f32bc66f3f04b50b",
+    "087dcd5245d6cd1625aee1d1b02dc3e8e6fef94602439d1cc3ef8d42df48f346"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

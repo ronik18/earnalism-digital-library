@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "the-furnished-room",
   "title": "The Furnished Room",
-  "generated_at": "2026-10-01T21:08:32.652674+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "d684d8a0b1f05e3d9fcc773a1865638899d10056ae68982e9bfb8cc16bfe0596",
-    "content_hash": "31f02252aef36b093080d6896220b58079628e8f6c15a00c1c575c8e5b6f2830",
-    "provenance_hash": "28234022f7b918ca569e0f1b59cb57bba80e54ce149e25ed61ba044ee2104046",
+    "source_hash": "6bb719852f2f0eb33db25613124d2d3c522dd3b879c187667ab31072bb2fb48d",
+    "content_hash": "0321583d3c06c815889a095d7fb18b751f4b3d35b6b79e17ad46c4a18d72a11e",
+    "provenance_hash": "8b0dfe28e43d81d5c0fa6158e6195bc68448f1ff0a9958baefb2e0b4cefdbafa",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "568ca50c4a5166910fa48c77cd0b5cafab4b3f28606d257761bf6f45e8019d7d",
+    "chapter_index_sha256": "4e2110b4d7016ad948c5e449080b069787245c71ba67a6b6387ac14f986e4504",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "The Furnished Room",
         "word_count": 2490,
-        "sha256": "744979fcae05023ed048c5719c82382587c7f772ba5fae8a1a11862111b818a2"
+        "sha256": "2240e696fdaafb2432241597b87dd397d4240cbd5c6e8480bb6a56639eb5e730"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "7084bcac45d4d84e59945de17367edcc3054be54c0c11fb3ddac5cb4a8e88a32"
+    "publication_region": "india",
+    "evidence_sha256": "7c5dbe4f77cb2ccc194e5539eb5146c7c45135f974835ef7f1c72d7697f88444"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "8523c9c692e963b2999503a20383c7d9abe8c79a76a8de7a44a8315ce0c69544",
+    "public_book": "9372e6eb392bdf832270ca6dbb47cfe9227128b0738fb892a339722b32e6667d",
     "reader_manifest": "8b8fdef98d50d1511e2c4b636064c39a934c2872b44ddb9e89b2e4af9896dee1",
-    "source_evidence": "7084bcac45d4d84e59945de17367edcc3054be54c0c11fb3ddac5cb4a8e88a32",
-    "approval_evidence": "08f4fbe5c8b8306e897350ffcd98d8667652c236d94324a63cc34014165f4cc0"
+    "source_evidence": "7c5dbe4f77cb2ccc194e5539eb5146c7c45135f974835ef7f1c72d7697f88444",
+    "approval_evidence": "803d3d89fb84da2deef8f13c74c63e4f5a1ee942b483f4ca66a380740216e2ca"
   },
-  "manifest_sha256": "c1cf9ba6b74d6cd2bbfdf9c8323a948b8613a4d2088b2b9e73f19fb680dc60f8"
+  "manifest_sha256": "192f070a0fa10ac9f978381eeaf6802ac9aa1f9d1dc44871efe21f6b8ce3fa1a"
 }

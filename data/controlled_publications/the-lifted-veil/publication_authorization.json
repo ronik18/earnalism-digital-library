@@ -1,0 +1,31 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "the-lifted-veil",
+  "edition": "Project Gutenberg #2165; exact selected original-author text; verified lifetime work publication 1870; excludes anthology editor/art and other title components",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_ONLY_NON_COVER_COMPONENTS",
+  "source_sha256": "0e8114ea868e1ecd07e44a695c8723b819527170f96bf1811a782b2b440e05b5",
+  "content_sha256": "bff60f1c99b4b49f2acf25a64ccd63a3f553d26ba07855552352fa82b72ca60c",
+  "chapter_sha256": {
+    "chapter-000": "f70b8c1e424e8b219c21c85dede7a054d34b658089c331ca62f17dcf7267459c",
+    "chapter-001": "2a4daea30e9fdd8dcea28cd90b4546aebee6225d6ed02a574da79b2eb40bc2cf",
+    "chapter-002": "f44f0ee02c1be2380576d972d094e803bddcaf3d062e72ab0bf1dbaf279b5b36"
+  },
+  "cover_provenance_sha256": null,
+  "cover_status": "DEFERRED_BY_OWNER_REQUEST_NO_COVER_DISPLAY_AUTHORIZED",
+  "authorized_by": "Automated executor under owner explicit autonomous clearance delegation; not a fabricated human or legal signature.",
+  "verified_at": "2026-10-01T21:52:27.631967+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Cover clearance/binding, trusted production registry acceptance, canonical controlled-live allowlist, actual runtime Reader readiness and protected gates must separately pass.",
+  "not_authorized": [
+    "cover_display",
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation"
+  ]
+}

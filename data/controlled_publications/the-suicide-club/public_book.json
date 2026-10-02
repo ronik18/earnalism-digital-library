@@ -53,9 +53,9 @@
       "updated_at": "2026-07-03T20:07:49Z"
     }
   ],
-  "source_hash": "36f2eab8f19108f05a306169130f8bddc9c21c23725e7c12a330ac18cfdb9e39",
-  "content_hash": "42592fc8597ac69e604f61b3930d46848712033a3d5ca427d02a7234952e36e3",
-  "provenance_hash": "06055fded54812b2a06957fef8e55de7d89f2d115b9cc403a8ca1d834aa330a6",
+  "source_hash": "8205ac009edcea995ee855585b05c223e22e1f53b00a96b2922d8a05d5f005bd",
+  "content_hash": "43116bd2508f624562da844230418d70ed14eab3533f8173ff310e27b98fe814",
+  "provenance_hash": "800ced5e8d56dc32ab1dea0ca063c7a62351e10c12976aec47799ffdf188a6a0",
   "rights_basis": "Robert Louis Stevenson died 1894; first published 1882. Public domain in India and the U.S.",
   "rights_tier": "A",
   "verification_status": "approved",

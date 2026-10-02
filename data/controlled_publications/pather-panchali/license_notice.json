@@ -1,0 +1,26 @@
+{
+  "schema_version": "earnalism.text-license.v1",
+  "slug": "pather-panchali",
+  "license": "CC-BY-SA-4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "attribution": "পথের পাঁচালী / Pather Panchali by Bibhutibhushan Bandyopadhyay; Bengali Wikisource transcription and its contributors, credited through the exact edition/source revision and its scanned-page contributor histories.",
+  "changes": "Source/import headings and publication furniture omitted. Exact source-backed missing paragraphs, chapter order and typographical punctuation corrected where recorded. No new literary text composed.",
+  "scope": "CC BY-SA4.0 applies only to source-derived transcription and formatting, not independently owned covers, Earnalism branding, software or unrelated material. Underlying literary/edition rights and publication authorization are separate release gates.",
+  "disclaimer": "Delivered licensed text may be copied, printed and reused under CC BY-SA4.0 attribution and ShareAlike terms. This notice itself grants no publication, cover or audiobook authorization.",
+  "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%AA%E0%A6%A5%E0%A7%87%E0%A6%B0+%E0%A6%AA%E0%A6%BE%E0%A6%81%E0%A6%9A%E0%A6%BE%E0%A6%B2%E0%A7%80%2F%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A7%87%E0%A6%A6&oldid=1745130",
+  "contributors_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%AA%E0%A6%A5%E0%A7%87%E0%A6%B0+%E0%A6%AA%E0%A6%BE%E0%A6%81%E0%A6%9A%E0%A6%BE%E0%A6%B2%E0%A7%80%2F%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE+%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A7%87%E0%A6%A6&action=history",
+  "chapter_sha256": [
+    "fd5cf00eebb16aac870c583c6ddb3484dbc5dd5370912dde157a2697bff0f82a",
+    "d8c50346fefae677176ec0e78d7ea6f64f4bab311670547891a7b689c9e8f987",
+    "510492d9ded4ed1dd19b5c715de15c51064c34467611cc711d08cf4e533312ea",
+    "781f936c8f627d45a29b4045d28589965a37ba02efb84ea7a6efaf89240adb27",
+    "cccbe2d40202bce4fcb31ab8bc7f277e4ae45dd6d0458506570cdce8c5f488b7",
+    "c4428af70d76ab01abe545cd216e08d0f389bac2397581f60cf9ad8694c8b16e",
+    "5ff0ab04ec7b92ad5407055896c58e5171c388d33be249e6a823030b5633346c",
+    "939aa75d61e40b8da90c553bdfd5222cf04da4efc57eac07b881f2509bc190d0",
+    "bf7c2d857d5442dfecf9f4f64e7b08550e7e557c2ce2c6a5e399c3475c92063f",
+    "151273a0e46f5bef1a33126924dfc462b89197117fa37da1a8e3c6d16a88b411",
+    "17c5d3d6d05bfa6159c3f58e471189d82bc2d4087306c8cc80e6ef0a78d6f55e",
+    "44d013b02eb6434e614d4e4a107e39ae74f192fd989344983fc9fce6ac89de06"
+  ]
+}

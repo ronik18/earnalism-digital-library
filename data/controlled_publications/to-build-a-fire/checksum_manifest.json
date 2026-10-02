@@ -1,14 +1,14 @@
 {
   "slug": "to-build-a-fire",
-  "generated_at": "2026-07-03T20:07:49Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "f40d49f77443aaffd9b2874cc77247555bad7335f7e741e7fa31e04b75c463bd"
+      "sha256": "545ecff360a986191b9ef4270567fa3b49a8a2e6ffa688be1ab28e9d32e69b1a"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "0bd1457cf6198d4dcf172044d1dabf3d989636df872d99fa34597c4df81d9e14"
+      "sha256": "1e02a3f41485f8d1dca766d6549e8346dee7ad269f4105318117d3223a362847"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "0eb1789863e4c283b01bf398d3db323d453fd5e6a143b0013d29acb08363b0df"
+      "sha256": "70cd14fb629a2b2f4fa64e9fa4ac4bb70e445e29d17cc5563c68cdcf019216d4"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "a63d6b7a8a671eefd91d445f969e416988a58206511dae5b058bb3aa00194932"
     },
     {
       "file": "reader_manifest.json",
@@ -24,7 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "b41a1b877f3069131e8e7c203ea1f4b7b5b0926700284f190db699f3588b9fb5"
+      "sha256": "95aa7ded523bfe178bcd6b51a22067f5e9ae95c6e99a85bdabbd9217b2c95fed"
     }
   ]
 }

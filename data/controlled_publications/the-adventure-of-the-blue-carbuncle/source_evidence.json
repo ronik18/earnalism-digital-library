@@ -1,12 +1,12 @@
 {
   "slug": "the-adventure-of-the-blue-carbuncle",
   "source_url": "https://www.gutenberg.org/ebooks/1661",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #1661; The Adventure of the Blue Carbuncle selected complete Arthur Conan Doyle story/cycle from Adventures of Sherlock Holmes; verified lifetime collection edition 1892; no translation/editorial/art imported",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "8a37410ac7374823466af3ed1332e7b85235aca89e4c39cc12bd9834696cbddc",
-  "content_hash": "2b480523e8ff22604f51984f6fbd495a5ab02b7213247985a4ca18de1a2c22fe",
-  "provenance_hash": "0ee937916f54c6bc72d06dddc2cd8f2af82a7a1671389d63349552ccbc82972e",
-  "rights_basis": "Arthur Conan Doyle died 1930; first published 1892. Public domain in India and the U.S.",
+  "source_hash": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+  "content_hash": "22f789b09fdde1521b0f78827fc5549ca91a4091747856ce209c31ac2431aad9",
+  "provenance_hash": "a6ea872c8078ca8588f1e7f7d6069e791391614d0e98ea06a3c63fbd8059ac81",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1930, verified lifetime collection publication 1892 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-03T08:04:22.123548+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -118,5 +118,91 @@
       }
     ],
     "content_sha256": "22f789b09fdde1521b0f78827fc5549ca91a4091747856ce209c31ac2431aad9"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "8a37410ac7374823466af3ed1332e7b85235aca89e4c39cc12bd9834696cbddc",
+        "content_hash": "2b480523e8ff22604f51984f6fbd495a5ab02b7213247985a4ca18de1a2c22fe",
+        "provenance_hash": "0ee937916f54c6bc72d06dddc2cd8f2af82a7a1671389d63349552ccbc82972e",
+        "source_url": "https://www.gutenberg.org/ebooks/1661",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:48:34.443341+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1892,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:48:34.443341+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1661.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1661/pg1661.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:18.989717+00:00",
+      "response_sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 273690,
+          "length": 41858
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Doyle, Arthur Conan, 1859-1930",
+      "creator_death_year": 1930,
+      "selected_collection_publication_year": 1892,
+      "original_story_first_publication_year": null,
+      "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+      "bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Doyle%2C%20Arthur%20Conan%2C%201859-1930",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Doyle%2C%20Arthur%20Conan%2C%201859-1930",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:44:11.614798+00:00",
+        "response_sha256": "9c80e664aca64bf1c0579db6cf406619322276bfe1dbd1370d2d3c920f836017"
+      },
+      "bibliographic_excerpt": "Adventures of Sherlock Holmes (Gutenberg text and audio) Doyle, Arthur Conan, 1859-1930: Adventures of Sherlock Holmes (illustrated; New York: Harper and Bros., c1892) (Gutenberg text and illustrated HTML) Doyle, Arthur Conan, 1859-1930: Beyond the C",
+      "scope": "Named author selected story text only; other collection stories, separately authored editorial matter and all illustrations excluded."
+    },
+    "author_death_evidence": 1930,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1892,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0",
+    "content_sha256": "22f789b09fdde1521b0f78827fc5549ca91a4091747856ce209c31ac2431aad9",
+    "year": 1892,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Doyle%2C%20Arthur%20Conan%2C%201859-1930",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Doyle%2C%20Arthur%20Conan%2C%201859-1930",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:11.614798+00:00",
+      "response_sha256": "9c80e664aca64bf1c0579db6cf406619322276bfe1dbd1370d2d3c920f836017"
+    },
+    "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
   }
 }

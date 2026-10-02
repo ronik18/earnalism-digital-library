@@ -1,14 +1,14 @@
 {
   "slug": "the-outcasts-of-poker-flat",
-  "generated_at": "2026-07-03T20:07:49Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "82e8deedd2fa06ad67edf7f5996fb8f4b66af429f01ec6a6af9bfaf51f6e817c"
+      "sha256": "8d61f6985f976c2596d7d4c33cc104aabf3be969fe23e47137201350d5ffa6ac"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "0aad8317f1e4689fdca6a28416795297a73cbfbb30736d8399fa926c4cf68498"
+      "sha256": "ff013f8d4ad981146a8b58a2afee891ca5506641bca1dba4ef02595696deb45e"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "18f0f53c139be991b3af1fd94c6dfb84bee7905e4f467020a126c503fbac7953"
+      "sha256": "4a1b434878128e5d92d899410fe2a855567c9f76f8f4a867ae52803aabf46f63"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "465ceb3908928fad9deca80edcac48624204437bf40d118312f8382f934f8daf"
     },
     {
       "file": "reader_manifest.json",
@@ -24,7 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "f19bcc7d1c5ff3401321cd3fa9f6ea5aaedde295e36be1d8332797f6fe92f44e"
+      "sha256": "127b169655a643274fd13d506bfe081d0d00766cfdabaca5e90065b3f837475f"
     }
   ]
 }

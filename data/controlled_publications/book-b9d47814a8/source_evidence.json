@@ -3,12 +3,12 @@
   "source_url": "https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95/%E0%A6%A8%E0%A6%BF%E0%A6%B6%E0%A7%80%E0%A6%A5%E0%A7%87",
   "source_name": "Bengali Wikisource",
   "source_license": "Underlying Bengali literary text is public domain in India and the U.S.; Wikisource transcription/source layer is reused under CC BY-SA terms.",
-  "source_hash": "6aa5605fb8527c091dc73ddc3ff7f857cd7d3e046e8da03750a9178a82f27b75",
-  "content_hash": "ee1ad578c70de41e5726395741bdbd61d5adbb058737b6c6c1feea2feb1484c2",
+  "source_hash": "83b8640bd78b76a076eb4ce3bf0309d8d7eb78d21b593305a807b95b5e70d06e",
+  "content_hash": "70bcf62c643f1c905d7a53ef72b5d180286249750cee6c237ac510b55931a27e",
   "provenance_hash": "5df1f60d195d79ab370b01099d7428775261f3be0631eaadc52490965ca532ba",
-  "rights_basis": "Author died 1941. Published 1895. Public domain in India and U.S.",
+  "rights_basis": "Exact Galpa-Dashak original1302/1895 sole-author Rabindranath Tagore edition; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1941; India Section22 literary term expired end2001. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
   "downloaded_at": "2026-06-02T19:24:03.262670+00:00",
-  "source_format": "text/plain",
+  "source_format": "SHA-bound captured source rendering",
   "reader_facing_boilerplate_removed": true,
   "author_death_year": 1941,
   "author_fact_evidence": {
@@ -19,15 +19,15 @@
     "authority_response_sha256": "0048c2eaa3a43087f4e130b3e5153c9389111d9aed6d329cf12286ad158c0aa9",
     "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_EDITION_OR_PUBLICATION_APPROVAL"
   },
-  "verification_status": "pending",
-  "text_clearance_status": "PREPARED_EVIDENCE_NOT_AUTHORIZED",
+  "verification_status": "approved",
+  "text_clearance_status": "OWNER_DELEGATED_AUTOMATED_IN_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "1b2b340fb76990b99de7531f1ffe3b6edef56c172048e7b0d587c9271db8e2b2",
+    "reader_content_sha256": "70bcf62c643f1c905d7a53ef72b5d180286249750cee6c237ac510b55931a27e",
     "chapter_count": 1,
     "chapter_content_sha256": {
-      "chapter-001": "1b2b340fb76990b99de7531f1ffe3b6edef56c172048e7b0d587c9271db8e2b2"
+      "chapter-001": "70bcf62c643f1c905d7a53ef72b5d180286249750cee6c237ac510b55931a27e"
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
@@ -45,5 +45,99 @@
     "literary_words_changed": false,
     "source_transcription_completeness": "ADDITIONAL_SOURCE_COMPARISON_REQUIRED",
     "scope": "READER_METADATA_FURNITURE_CLEANUP_NOT_PUBLICATION_OR_AUDIO_APPROVAL"
+  },
+  "exact_source_delta_repair": {
+    "slug": "book-b9d47814a8",
+    "verified_at": "2026-10-01T21:33:54.688933+00:00",
+    "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-b9d47814a8-source-comparison.json",
+    "source_snapshot_sha256": "e63b384921db6849593c75b3f78b6c359a65bc3a7cd65fd05b877797d62fe4cf",
+    "before_sha256": "1b2b340fb76990b99de7531f1ffe3b6edef56c172048e7b0d587c9271db8e2b2",
+    "after_sha256": "70bcf62c643f1c905d7a53ef72b5d180286249750cee6c237ac510b55931a27e",
+    "operations": [
+      {
+        "operation": "delete",
+        "canonical_paragraph_range": [
+          0,
+          2
+        ],
+        "source_paragraph_range": [
+          0,
+          0
+        ],
+        "canonical": [
+          "গল্প-দশক",
+          "১৮৯৫ (পৃ. ৩৯-৬১)"
+        ],
+        "source": []
+      },
+      {
+        "operation": "replace",
+        "canonical_paragraph_range": [
+          11,
+          13
+        ],
+        "source_paragraph_range": [
+          9,
+          10
+        ],
+        "canonical": [
+          "গৃহিণী সচিবঃ সখী মিথঃ",
+          "প্রিয়শিষ্যা ললিতে কলাবিধৌ।"
+        ],
+        "source": [
+          "গৃহিণী সচিবঃ সখী মিথঃ\nপ্রিয়শিষ্যা ললিতে কলাবিধৌ।"
+        ]
+      },
+      {
+        "operation": "insert",
+        "canonical_paragraph_range": [
+          54,
+          54
+        ],
+        "source_paragraph_range": [
+          51,
+          52
+        ],
+        "canonical": [],
+        "source": [
+          "মনোরমা ঘরে আসিয়া বসিলেন। তাঁহার সহিত রোগিণীর অল্পস্বল্প আলাপ চলিতে লাগিল। এমন সময় ডাক্তারবাবু আসিয়া উপস্থিত হইলেন।"
+        ]
+      }
+    ],
+    "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+    "scope": "Same pinned edition body repair; not rights/publication/audio approval"
+  },
+  "historical_import_hashes": {
+    "source_hash": "6aa5605fb8527c091dc73ddc3ff7f857cd7d3e046e8da03750a9178a82f27b75",
+    "content_hash": "ee1ad578c70de41e5726395741bdbd61d5adbb058737b6c6c1feea2feb1484c2",
+    "source_url": "https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95/%E0%A6%A8%E0%A6%BF%E0%A6%B6%E0%A7%80%E0%A6%A5%E0%A7%87"
+  },
+  "edition_publication_year": 1895,
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "source_snapshot_identity": {
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-b9d47814a8-final-source-comparison.json",
+    "sha256": "df16e5f5ba3b40fb73a8f9a206ad3f5e2cd1dd85a984e693951f29b7b671d6d2",
+    "scope": "Actual captured original/source edition transclusions; parent revision alone does not freeze transcluded pages."
+  },
+  "edition_evidence": {
+    "edition": "Galpa-Dashak original1302/1895 sole-author Rabindranath Tagore edition",
+    "primary_record": "internal/legal/catalogue_clearance_20261002/bengali/galpa-dashak-edition-title-pages.json",
+    "record_sha256": "4a101e1fe9a73ea196fbf82b7fda9b44ef84e7da7ecc484ac9a10e96dd4e22f4",
+    "scope": "Selected exact literary narrative and retained source notes only; no artwork, publisher matter, separately authored foreword or other edition authorized."
+  },
+  "publication_region": "India",
+  "publication_upper_bound_year": 1895,
+  "publication_upper_bound_evidence": {
+    "year": 1895,
+    "source_sha256": "83b8640bd78b76a076eb4ce3bf0309d8d7eb78d21b593305a807b95b5e70d06e",
+    "content_sha256": "70bcf62c643f1c905d7a53ef72b5d180286249750cee6c237ac510b55931a27e",
+    "receipt": {
+      "requested_url": "https://bn.wikisource.org/w/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&titles=%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%A7%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%A8%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%A9%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AA%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AB%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AC%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AD%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AE%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AF%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%A7%E0%A7%A6&format=json&formatversion=2",
+      "resolved_url": "https://bn.wikisource.org/w/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&titles=%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%A7%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%A8%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%A9%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AA%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AB%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AC%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AD%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AE%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%AF%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95+-+%E0%A6%B0%E0%A6%AC%E0%A7%80%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%A5+%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0.pdf%2F%E0%A7%A7%E0%A7%A6&format=json&formatversion=2",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:28:47.562887+00:00",
+      "response_sha256": "b41aa41b46da32301a70863cd4326376d32ac0e115fa0bba8cffb1105bb91a8f"
+    },
+    "basis": "Actual original1895 sole-author Tagore printed sourceedition: published-by upperbound, not an invented firstpublication date."
   }
 }

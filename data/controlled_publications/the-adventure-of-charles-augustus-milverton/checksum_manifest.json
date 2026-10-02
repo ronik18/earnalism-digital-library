@@ -1,14 +1,14 @@
 {
   "slug": "the-adventure-of-charles-augustus-milverton",
-  "generated_at": "2026-07-03T20:07:48Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "ef6c5eb63aca69920fb6b954718cc7b5101ba109dd5fd08573c303908e5b83cf"
+      "sha256": "aa67e21c3cc0a46e56a1ee99d9f330e2147d11088487111d74fab77fa5dc2152"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "499a4148c37036c7df570ac4894f8c2c4fca0a036c4833feaf185fecb8033163"
+      "sha256": "dad84c8f45f5b4d6f98b376dd8f3842512db81d059efa874eb4754bc4aca270c"
     },
     {
       "file": "highlight_sync.json",
@@ -16,15 +16,19 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "8cb87f3346a0d371bcaf9710d2a76c726353b771fe0485fbfc929d46adbc8262"
+      "sha256": "e7ab82d28cad336a4ccf074193b13a7407ec81dd11ef36c548921939cc1a48c7"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "6663f1a654cc590af75792e428d55b27e060e421c6204c184b9a3a35788d83b9"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "9ea0e2da0296f71732f02c5eaa361012347e1c109038f3eb8924c791993015f4"
+      "sha256": "0beac03a946d457458357f76ad1f6fc10b3f852be696cbd8f2115a11d195ec21"
     },
     {
       "file": "source_evidence.json",
-      "sha256": "07984f26545bebb4a0160cfc28c9eaab75d442e62f6b33f0f9c24b1a25ce607f"
+      "sha256": "7580b5840d2c9cbe091045a8a53d88c08e2de2ce17e404bbdcadb198ebb940c7"
     }
   ]
 }

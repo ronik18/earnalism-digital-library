@@ -1,0 +1,20 @@
+{
+  "the-principles-of-scientific-management": {
+    "source_url": "https://www.gutenberg.org/ebooks/6435",
+    "source_sha256": "1f504a9abe674ee616f13bf1db66ec25cbb1be0ff5fd9bfe70ab8593aa08a3b2",
+    "verified_at": "2026-10-01T21:35:50.484609+00:00",
+    "original_publication_year": 1911,
+    "scope": "Original English author text and author introduction/preface only; publisher advertisements excluded",
+    "title_page_fact": "1911",
+    "boundary": "Full four ordered source units through Gutenberg END"
+  },
+  "the-science-of-getting-rich": {
+    "source_url": "https://www.gutenberg.org/ebooks/59844",
+    "source_sha256": "adc3fb17f24801597561e992d858e124c8d9b4c6e3bf7593d713e7a71d252744",
+    "verified_at": "2026-10-01T21:35:50.612832+00:00",
+    "original_publication_year": 1910,
+    "scope": "Original English author text and author introduction/preface only; publisher advertisements excluded",
+    "title_page_fact": "COPYRIGHT, APRIL 1, 1910 BY WALLACE D. WATTLES",
+    "boundary": "Author Preface and all17chapters; followed only by publisher Further Aids Towards Getting Rich Right advertising"
+  }
+}

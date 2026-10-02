@@ -1,14 +1,14 @@
 {
   "slug": "the-adventure-of-the-blue-carbuncle",
-  "generated_at": "2026-07-03T20:07:48Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "2cb6989d8f241d945e069a6a22d9d75ad2534ab80a9e7fdcb67bfa3565e74bc7"
+      "sha256": "1e582a15d3e07793295c2363b5958d847f1a2de68c70594cf2b55c4fa712e762"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "211044d68c58cad4de2e4071a6be9e856615880675a360bb356c4062a150e4ea"
+      "sha256": "d98fe6fa4985ca9fa05a7e4f8a6ce5e3d7646db1547c5c3e373dba184a6f6f64"
     },
     {
       "file": "highlight_sync.json",
@@ -16,7 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "dc2a5a960704e36f0c1f0b8e0367464be529835687d1c7f6c75b7e584113aa9d"
+      "sha256": "e9a9c6883787540d7049e4c962bb9c4ce488c0223ada8be6205ddc5cf41434e0"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "96144fcc963734d47689dfeca712812628d8b84c70432ead8cb0c40e22bd3fe6"
     },
     {
       "file": "reader_manifest.json",
@@ -24,7 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "fd0a6d502f5c965cf63ad8032791659ec58f8162f3d0d714c1c57e9633366571"
+      "sha256": "533a4c7db9015add0ebcebd84ca262689e39cc316aaf1717a5d56407811ffc02"
     }
   ]
 }

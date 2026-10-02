@@ -74,8 +74,8 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 1306,
-      "reading_minutes": 6,
+      "word_count": 1275,
+      "reading_minutes": 5,
       "language_hint": "en",
       "processing_status": "ready",
       "processing_warnings": [],
@@ -83,9 +83,9 @@
       "updated_at": "2026-07-03T20:07:48Z"
     }
   ],
-  "source_hash": "e435de0511bd61d2373a445b0c5e054b747072357b5373e27b7a4b8a5b40cd01",
-  "content_hash": "249f95e4db53ad41f61ced9377faa84de5a03582a16a4981abb930a332b3f8b7",
-  "provenance_hash": "5b2327365f44a6dc03ee055a83af545ba77e65716a3a3b5e1032a0b25ef084b7",
+  "source_hash": "22f3431a7db6d9e210ffb446044739513475cb93992421d1b0d107f094d7408d",
+  "content_hash": "48bf28c4bea8019bab01a7040d1acce9a6694d783ccfacacca3a2702a5ae0389",
+  "provenance_hash": "87d5e1db8a3e325c890052f97fd7458589e84e2e643002d47a48c7cde97e4df6",
   "rights_basis": "Author died 1943. Published 1902. Pre-1928 publication supports U.S. public-domain status.",
   "rights_tier": "A",
   "verification_status": "approved",

@@ -1,12 +1,22 @@
 {
   "slug": "tobermory",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true
+  "audiobook_enabled": true,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "29ca1c6386463b8b3051b5201080a86b9e055350c339360f18ac16e6c6c17474",
+  "source_hash": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
+  "content_hash": "706a32b3527cc1bad6e20882b0b4ebc896491b53fa4bccefdfdb5d75c8ad56bf",
+  "provenance_hash": "510245507677ab08247655832f626a91de571aebf3daa728e3b140333a319bbe",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00"
 }

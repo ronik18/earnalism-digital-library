@@ -45,7 +45,7 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 1678,
+      "word_count": 1652,
       "reading_minutes": 7,
       "language_hint": "en",
       "processing_status": "ready",
@@ -54,10 +54,10 @@
       "updated_at": "2026-07-03T20:07:49Z"
     }
   ],
-  "source_hash": "041b7a7d28b42f553ae23277588cee366952c83c2b9108c401a3fa4dd90e76b9",
-  "content_hash": "58578923656c4e97b29509721be5a4e4a26e7d9240e464eebb8a0841576fe9f8",
+  "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+  "content_hash": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
   "audiobook_manuscript_sha256": "0ec24ecbd6d5d594e74131b529b4e3d3ece31ae9f4130210f3c120c9db1ea62d",
-  "provenance_hash": "d426354bb000f4b72606e782483eb2882f5510e7e12087388d667120d1ba8053",
+  "provenance_hash": "1e08883215a0343a9dd6f8c53242fd4af41d62450aa24e424712188e8d79af16",
   "rights_basis": "Oscar Wilde died 1900; first published 1888. Public domain in India and the U.S.",
   "rights_metadata": {
     "work_title": "The Selfish Giant",

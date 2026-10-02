@@ -24,10 +24,10 @@
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "05017ff20e10ee7109b97f4c09dd35dbc7bef0f3804d704fb3499bfacd736907",
+    "reader_content_sha256": "7a20178933ca8553258d3b17e3f7cc9d90e805561fec68841151644a937a1582",
     "chapter_count": 1,
     "chapter_content_sha256": {
-      "chapter-001": "05017ff20e10ee7109b97f4c09dd35dbc7bef0f3804d704fb3499bfacd736907"
+      "chapter-001": "7a20178933ca8553258d3b17e3f7cc9d90e805561fec68841151644a937a1582"
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
@@ -48,5 +48,64 @@
     "literary_words_changed": false,
     "source_transcription_completeness": "ADDITIONAL_SOURCE_COMPARISON_REQUIRED",
     "scope": "READER_METADATA_FURNITURE_CLEANUP_NOT_PUBLICATION_OR_AUDIO_APPROVAL"
+  },
+  "exact_source_delta_repair": {
+    "slug": "book-1090573dff",
+    "verified_at": "2026-10-01T21:34:00.930283+00:00",
+    "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-1090573dff-source-comparison.json",
+    "source_snapshot_sha256": "51faf7fe42dd040daf78909b707e6b63f3588157a1ca3112da4ca4808c9721b9",
+    "before_sha256": "05017ff20e10ee7109b97f4c09dd35dbc7bef0f3804d704fb3499bfacd736907",
+    "after_sha256": "7a20178933ca8553258d3b17e3f7cc9d90e805561fec68841151644a937a1582",
+    "operations": [
+      {
+        "operation": "insert",
+        "canonical_paragraph_range": [
+          38,
+          38
+        ],
+        "source_paragraph_range": [
+          38,
+          39
+        ],
+        "canonical": [],
+        "source": [
+          "কলিকাতায় মামার বাড়ি পৌঁছিয়া প্রথমত মামীর সঙ্গে আলাপ হইল। মামী এই অনাবশ্যক পরিবারবৃদ্ধিতে মনে-মনে যে বিশেষ সন্তুষ্ট হইয়াছিলেন তাহা বলিতে পারি না। তাঁহার নিজের তিনটি ছেলে লইয়া তিনি নিজের নিয়মে ঘরকন্না পাতিয়া বসিয়া আছেন, ইহার মধ্যে সহসা একটি তেরো বৎসরের অপরিচিত অশিক্ষিত পাড়াগেঁয়ে ছেলে ছাড়িয়া দিলে কিরূপ একটা বিপ্লবের সম্ভাবনা উপস্থিত হয়। বিশ্বম্ভরের এত বয়স হইল, তবু কিছুমাত্র যদি জ্ঞানকাণ্ড আছে।"
+        ]
+      },
+      {
+        "operation": "insert",
+        "canonical_paragraph_range": [
+          43,
+          43
+        ],
+        "source_paragraph_range": [
+          44,
+          45
+        ],
+        "canonical": [],
+        "source": [
+          "প্রকাণ্ড একটা ধাউস ঘুড়ি লইয়া বোঁ বোঁ শব্দে উড়াইয়া বেড়াইবার সেই মাঠ, ‘তাইরে নাইরে নাইরে না’ করিয়া উচ্চৈঃস্বরে স্বরচিত রাগিণী আলাপ করিয়া অকর্মণ্যভাবে ঘুরিয়া বেড়াইবার সেই নদীতীর, দিনের মধ্যে যখন-তখন ঝাঁপ দিয়া পড়িয়া সাঁতার কাটিবার সেই সংকীর্ণ স্রোতস্বিনী, সেই-সব দল-বল উপদ্রব স্বাধীনতা, এবং সর্বোপরি সেই অত্যাচারিণী অবিচারিণী মা অহর্নিশি তাহার নিরুপায় চিত্তকে আকর্ষণ করিত।"
+        ]
+      },
+      {
+        "operation": "replace",
+        "canonical_paragraph_range": [
+          48,
+          49
+        ],
+        "source_paragraph_range": [
+          50,
+          51
+        ],
+        "canonical": [
+          "অসহ্য বোধ হওয়াতে একদিন 'ফটিক তাহার মামীর কাছে নিতান্ত 'অপরাধীর মতো গিয়া কহিল, “বই হারিয়ে ফেলেছি।”"
+        ],
+        "source": [
+          "অসহ্য বোধ হওয়াতে একদিন ‘ফটিক তাহার মামীর কাছে নিতান্ত ‘অপরাধীর মতো গিয়া কহিল, “বই হারিয়ে ফেলেছি।”"
+        ]
+      }
+    ],
+    "comparison": "EXACT_MATCH_FORMATTING_ONLY",
+    "scope": "Same pinned edition body repair; not rights/publication/audio approval"
   }
 }

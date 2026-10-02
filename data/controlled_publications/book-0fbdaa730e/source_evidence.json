@@ -24,10 +24,10 @@
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "69f79b777c0fe3a3ca5590f5dd94fce8563a2e471ad358e7e27de95ae46da52e",
+    "reader_content_sha256": "2fb11243919995bfc3b37ff5457d06e9f673d9d8f9d54da8bac8532e4a26f055",
     "chapter_count": 1,
     "chapter_content_sha256": {
-      "chapter-001": "69f79b777c0fe3a3ca5590f5dd94fce8563a2e471ad358e7e27de95ae46da52e"
+      "chapter-001": "2fb11243919995bfc3b37ff5457d06e9f673d9d8f9d54da8bac8532e4a26f055"
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
@@ -48,5 +48,13 @@
     "literary_words_changed": false,
     "source_transcription_completeness": "ADDITIONAL_SOURCE_COMPARISON_REQUIRED",
     "scope": "READER_METADATA_FURNITURE_CLEANUP_NOT_PUBLICATION_OR_AUDIO_APPROVAL"
+  },
+  "complete_rendered_source_repair": {
+    "slug": "book-0fbdaa730e",
+    "before_sha256": "69f79b777c0fe3a3ca5590f5dd94fce8563a2e471ad358e7e27de95ae46da52e",
+    "after_sha256": "2fb11243919995bfc3b37ff5457d06e9f673d9d8f9d54da8bac8532e4a26f055",
+    "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-0fbdaa730e-complete-source-comparison.json",
+    "source_artifact_sha256": "bdadfed03280b5bdb92319522fda02ac8c0be89ae10a9a26270966b2a0a0d556",
+    "scope": "Exact typographical apostrophe repair, no literary words added or removed"
   }
 }

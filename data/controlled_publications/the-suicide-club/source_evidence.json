@@ -1,12 +1,12 @@
 {
   "slug": "the-suicide-club",
   "source_url": "https://www.gutenberg.org/ebooks/839",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #839; The Suicide Club selected complete Robert Louis Stevenson story/cycle from New Arabian nights; verified lifetime collection edition 1882; no translation/editorial/art imported",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "36f2eab8f19108f05a306169130f8bddc9c21c23725e7c12a330ac18cfdb9e39",
-  "content_hash": "42592fc8597ac69e604f61b3930d46848712033a3d5ca427d02a7234952e36e3",
-  "provenance_hash": "06055fded54812b2a06957fef8e55de7d89f2d115b9cc403a8ca1d834aa330a6",
-  "rights_basis": "Robert Louis Stevenson died 1894; first published 1882. Public domain in India and the U.S.",
+  "source_hash": "8205ac009edcea995ee855585b05c223e22e1f53b00a96b2922d8a05d5f005bd",
+  "content_hash": "43116bd2508f624562da844230418d70ed14eab3533f8173ff310e27b98fe814",
+  "provenance_hash": "800ced5e8d56dc32ab1dea0ca063c7a62351e10c12976aec47799ffdf188a6a0",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1894, verified lifetime collection publication 1882 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-03T08:04:22.410682+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -127,5 +127,91 @@
     "legacy_content_sha256_preserved": "42592fc8597ac69e604f61b3930d46848712033a3d5ca427d02a7234952e36e3",
     "current_reader_content_sha256": "43116bd2508f624562da844230418d70ed14eab3533f8173ff310e27b98fe814",
     "scope": "MISSING_CANONICAL_TEXT_RESTORATION_ONLY_NOT_RIGHTS_OR_PUBLICATION_APPROVAL"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "36f2eab8f19108f05a306169130f8bddc9c21c23725e7c12a330ac18cfdb9e39",
+        "content_hash": "42592fc8597ac69e604f61b3930d46848712033a3d5ca427d02a7234952e36e3",
+        "provenance_hash": "06055fded54812b2a06957fef8e55de7d89f2d115b9cc403a8ca1d834aa330a6",
+        "source_url": "https://www.gutenberg.org/ebooks/839",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:48:17.188009+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1882,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/839.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/839/pg839.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:04.718806+00:00",
+      "response_sha256": "8205ac009edcea995ee855585b05c223e22e1f53b00a96b2922d8a05d5f005bd"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 2112,
+          "length": 153525
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Stevenson, Robert Louis, 1850-1894",
+      "creator_death_year": 1894,
+      "selected_collection_publication_year": 1882,
+      "original_story_first_publication_year": null,
+      "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+      "bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Stevenson%2C%20Robert%20Louis%2C%201850-1894",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Stevenson%2C%20Robert%20Louis%2C%201850-1894",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:44:47.102861+00:00",
+        "response_sha256": "a43096acc25205983dde78eda6c61c6ab55ca728f75912926a0b1d5cb3a90e7f"
+      },
+      "bibliographic_excerpt": "New Arabian nights (C. Scribner's Sons, 1905) (page images at HathiTrust) Stevenson, Robert Louis, 1850-1894: New Arabian nights (Chatto & Windus, 1882) (page images at HathiTrust) Stevenson, Robert Louis, 1850-1894: New Arabian nights (Collins Clear",
+      "scope": "Named author selected story text only; other collection stories, separately authored editorial matter and all illustrations excluded."
+    },
+    "author_death_evidence": 1894,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1882,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "8205ac009edcea995ee855585b05c223e22e1f53b00a96b2922d8a05d5f005bd",
+    "content_sha256": "43116bd2508f624562da844230418d70ed14eab3533f8173ff310e27b98fe814",
+    "year": 1882,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Stevenson%2C%20Robert%20Louis%2C%201850-1894",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Stevenson%2C%20Robert%20Louis%2C%201850-1894",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:44:47.102861+00:00",
+      "response_sha256": "a43096acc25205983dde78eda6c61c6ab55ca728f75912926a0b1d5cb3a90e7f"
+    },
+    "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
   }
 }

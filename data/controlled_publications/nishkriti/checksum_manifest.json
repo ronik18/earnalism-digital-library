@@ -1,6 +1,6 @@
 {
   "slug": "nishkriti",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
@@ -47,8 +47,12 @@
       "sha256": "3494992681f7752e0f598914bd57623667d7d2ecfe39f92300c742ce0f4058ef"
     },
     {
+      "file": "license_notice.json",
+      "sha256": "31fa11780bb27be856378af18a5079360c2f1fa4082e6393908829ef8d466add"
+    },
+    {
       "file": "public_book.json",
-      "sha256": "adabab5489d5528337ac1046f5149eff46996ec0576476997881fbd28c320180"
+      "sha256": "3bbf95940b6238e1f973695fff83bde4c832d0f730487efb4961c4ad07c73489"
     },
     {
       "file": "reader_manifest.json",

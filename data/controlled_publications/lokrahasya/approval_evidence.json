@@ -1,10 +1,10 @@
 {
   "slug": "lokrahasya",
-  "approved_to_publish": false,
+  "approved_to_publish": true,
   "rights_tier": "A",
-  "verification_status": "pending",
+  "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "sprint1_evidence_reconciliation_hold",
+  "approval_scope": "OWNER_DELEGATED_AUTOMATED_IN_EDITION_BOUND_TEXT_READER_ONLY_COVER_DEFERRED",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_BLOCKED_QA_REQUIRED",
   "allowCheckout": false,
   "allowPayment": false,
@@ -21,5 +21,9 @@
     "approval_scope": "historical_admin_import_reconstruction",
     "verified_at": null
   },
-  "hold_reason": "Title-level source/text and/or license/asset evidence is incomplete; see data/title_rights_evidence/bengali-bankim-cohort-1.json. This is a fail-closed package state, not a new rights acceptance decision."
+  "hold_reason": "Title-level source/text and/or license/asset evidence is incomplete; see data/title_rights_evidence/bengali-bankim-cohort-1.json. This is a fail-closed package state, not a new rights acceptance decision.",
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "source_hash": "2c536fb46b7a52f42f63c702effcd971d97059c56be4a6b5d7df642b4a8cddc1",
+  "content_hash": "c6ed32e15a45ecdf03b2a20ffbea427d89a4c5992f930b00358f563019522943",
+  "publication_authorization_sha256": "bc9081e1ab567b27eed76ee08ffa1b75630948125a1755771988133e7347380b"
 }

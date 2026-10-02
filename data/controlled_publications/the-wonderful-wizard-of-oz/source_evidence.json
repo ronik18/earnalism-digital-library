@@ -1,12 +1,12 @@
 {
   "slug": "the-wonderful-wizard-of-oz",
   "source_url": "https://www.gutenberg.org/ebooks/55",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #55 Baum1900 English narrative; authorIntroduction and24chapters; noillustrations imported",
   "source_license": "Public domain. Project Gutenberg transcription is freely redistributable for any use including commercial.",
-  "source_hash": "20b4fa5a47c6e23b6093c2eedbf5d0b2930c6eefe5c8646e009a98bd0131c85e",
-  "content_hash": "1256f90f4c8943940d6520a4322fe67ddb2d6537d1ae8577b8a4be713531291c",
-  "provenance_hash": "b79ac47434fc029bf7c4110ee5f38fb9b705ccb6c83a3fcbc49cef7d0a9d9df0",
-  "rights_basis": "Author died in 1919. Work published in 1900, well before 1928. Public domain in the U.S. under pre-1928 publication rule and in most jurisdictions under life plus 70 years.",
+  "source_hash": "969bffab7740d4d8a0bac332d78bd0152ad4a40a2efc52f06c74a9bb6120be75",
+  "content_hash": "4b174cd456358387fe1bbd65667a783ae52d7b4f0475f1c570a80132c847b18e",
+  "provenance_hash": "6efb24dec4a20c5a0bd3aa7b7411cb80ed158b480c20e460f859928630548a2d",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1919, original publication 1900; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-05-25T20:10:02.942458+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -15,8 +15,8 @@
   "original_publication_year": 1900,
   "rights_tier": "A",
   "verification_status": "approved",
-  "publication_region": "IN",
-  "verified_at": "2026-07-03T20:07:47Z",
+  "publication_region": "India",
+  "verified_at": "2026-10-01T21:38:19.977641+00:00",
   "qa_status": "QA_PASSED",
   "official_electronic_source_verification": {
     "electronic_edition_id": "Project Gutenberg #55",
@@ -93,6 +93,11 @@
       "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
       "status": "ALL_CHAPTERS_MATCH_SOURCE",
       "matched_chapters": [
+        {
+          "chapter_id": "chapter-000",
+          "offset": 1890,
+          "length": 1147
+        },
         {
           "chapter_id": "chapter-001",
           "offset": 3087,
@@ -236,8 +241,12 @@
     "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
   },
   "canonical_reader_identity": {
-    "chapter_count": 24,
+    "chapter_count": 25,
     "ordered_chapter_sha256": [
+      {
+        "id": "chapter-000",
+        "sha256": "4ee081287a4c325cee637bfe8e20b68826d485b5819af4fe77963c991cf9b684"
+      },
       {
         "id": "chapter-001",
         "sha256": "6b2ea04eb2b5feb63d6b63a2c67707607d2295825b3e1820f5132d3c1533ae08"
@@ -335,6 +344,192 @@
         "sha256": "7bc57e0cc9ae0e4ecc9fedd4f922f9a1df0ea7435d9b177a4fe8d8a2e8ae7a78"
       }
     ],
-    "content_sha256": "955047c0d3ff957160495d64305f770e946482015600a11524a756027b98ca69"
+    "content_sha256": "4b174cd456358387fe1bbd65667a783ae52d7b4f0475f1c570a80132c847b18e"
+  },
+  "restored_author_prefatory_material": {
+    "verified_at": "2026-10-01T21:36:26.336521+00:00",
+    "source_sha256": "969bffab7740d4d8a0bac332d78bd0152ad4a40a2efc52f06c74a9bb6120be75",
+    "scope": "Same exact electronic edition, author-prefatory material restored verbatim; no rights/publication approval generated"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "20b4fa5a47c6e23b6093c2eedbf5d0b2930c6eefe5c8646e009a98bd0131c85e",
+        "content_hash": "1256f90f4c8943940d6520a4322fe67ddb2d6537d1ae8577b8a4be713531291c",
+        "provenance_hash": "b79ac47434fc029bf7c4110ee5f38fb9b705ccb6c83a3fcbc49cef7d0a9d9df0",
+        "source_url": "https://www.gutenberg.org/ebooks/55",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:38:19.977641+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "country_of_origin": "United States",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/55.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/55/pg55.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:36.135494+00:00",
+      "response_sha256": "969bffab7740d4d8a0bac332d78bd0152ad4a40a2efc52f06c74a9bb6120be75"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 25,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-000",
+          "offset": 1890,
+          "length": 1147
+        },
+        {
+          "chapter_id": "chapter-001",
+          "offset": 3087,
+          "length": 5939
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 9038,
+          "length": 10545
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 19628,
+          "length": 10202
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 29870,
+          "length": 7407
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 37288,
+          "length": 10332
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 47650,
+          "length": 7754
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 55417,
+          "length": 9391
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 64845,
+          "length": 9981
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 74838,
+          "length": 7230
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 82079,
+          "length": 10057
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 92173,
+          "length": 18593
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 110779,
+          "length": 18915
+        },
+        {
+          "chapter_id": "chapter-013",
+          "offset": 129719,
+          "length": 6276
+        },
+        {
+          "chapter_id": "chapter-014",
+          "offset": 136027,
+          "length": 9858
+        },
+        {
+          "chapter_id": "chapter-015",
+          "offset": 145897,
+          "length": 14312
+        },
+        {
+          "chapter_id": "chapter-016",
+          "offset": 160222,
+          "length": 4847
+        },
+        {
+          "chapter_id": "chapter-017",
+          "offset": 165112,
+          "length": 5828
+        },
+        {
+          "chapter_id": "chapter-018",
+          "offset": 170955,
+          "length": 6126
+        },
+        {
+          "chapter_id": "chapter-019",
+          "offset": 177094,
+          "length": 5327
+        },
+        {
+          "chapter_id": "chapter-020",
+          "offset": 182458,
+          "length": 8085
+        },
+        {
+          "chapter_id": "chapter-021",
+          "offset": 190556,
+          "length": 4715
+        },
+        {
+          "chapter_id": "chapter-022",
+          "offset": 195285,
+          "length": 5022
+        },
+        {
+          "chapter_id": "chapter-023",
+          "offset": 200366,
+          "length": 6549
+        },
+        {
+          "chapter_id": "chapter-024",
+          "offset": 206940,
+          "length": 377
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "first_publication_evidence": {
+      "url": "https://www.loc.gov/item/03032405/",
+      "original_publication_year": 1900,
+      "verified_at": "2026-10-01T21:37:20.182007+00:00",
+      "verification_method": "Actual web tool Library of Congress primary item retrieval; directJSON HTTP403; nofullresponsebytehashclaimed",
+      "excerpt": "Chicago ; New York : Geo. M. Hill Co., 1900.",
+      "excerpt_sha256": "66423b95649ca377fb8d902fe2ee5d23b722670ffc2860df5373b5cc3be7cba1",
+      "scope": "Baum original narrative andauthorIntroduction; noDenslowart imported"
+    },
+    "author_death_evidence": [
+      "Baum, L. Frank (Lyman Frank), 1856-1919"
+    ],
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
   }
 }

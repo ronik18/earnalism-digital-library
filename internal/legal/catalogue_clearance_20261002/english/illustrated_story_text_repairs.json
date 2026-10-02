@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "rikki-tikki-tavi",
+    "source_sha256": "702dcf213efccf27768778ff44434f78557d1e7d2ba7a532899bec64633e55ca",
+    "content_sha256": "5278ec9aad39e461bbdb35db8bfce162e01e25ff7b2e532f00d198b6e52f5837",
+    "old_chapter_sha256": "6c0e5ab6390ed2b3fbf7f064e8bef012e0ee3012c14b69a165b2bd8df6773e17",
+    "verified_at": "2026-10-01T21:42:12.553107+00:00",
+    "reader_exposed": false,
+    "publication_accepted": false
+  },
+  {
+    "slug": "rip-van-winkle",
+    "source_sha256": "3085b99a7b6a9d5f527dfb97351c858a6f7fc97f2c654570f5defbbfb50e5042",
+    "content_sha256": "2011555cdb66a9be1a30c4fa4a31ca08393c0492f3dc94b62b8d83f0853f13ef",
+    "old_chapter_sha256": "525d6c0f3df1a5d2d89831695f279fb2e0e4bf7028b4c8ede0ac1d9fc9dd6a49",
+    "verified_at": "2026-10-01T21:42:12.553107+00:00",
+    "reader_exposed": false,
+    "publication_accepted": false
+  },
+  {
+    "slug": "the-withered-arm",
+    "source_sha256": "c2e80e062f09828cb87dd57ca8db79de7e4bb22cbbec178276fa50d2cd7caa53",
+    "content_sha256": "12d3bf4e0b6a8682055242aa8ef4867d086c79257dcfc7f6c3592f1aea1a8ced",
+    "old_chapter_sha256": "688a38410e62c99b7f1536322d5fe487dd9db8a0336adb2ab5d479448ca16172",
+    "verified_at": "2026-10-01T21:42:12.553107+00:00",
+    "reader_exposed": false,
+    "publication_accepted": false
+  }
+]

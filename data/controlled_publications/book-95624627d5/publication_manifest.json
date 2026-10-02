@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "book-95624627d5",
   "title": "মধ্যবর্তিনী",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
-    "source_hash": "12e68ccb1f58102856edb86d24bb700eb18bd1bda6dee53b8711895d5d73b6a8",
-    "content_hash": "b17c4f3d8928510f6a9012b3e9e9333e8bdefa213da3a51b87f1ab17e2c5d6b5",
+    "source_hash": "04a23577d9da238ff5e156deacc7777f1c5f427515c39cbb045cef113c0e3736",
+    "content_hash": "15ae2ea405a14c49965d03b6a329419ecb7e71297a3007be8530673587a03b06",
     "provenance_hash": "531807dbbf7b3dc9cc8fe1f91beb726ba5d86f8be99aef9d4ea2d2f4b42806a9",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "acc16fe06da74629279f98314e6a03b562798060e7c709637072cae4aae1d533",
+    "chapter_index_sha256": "639dde35d95d358b4eb9eaea76042488324f6daa75042cef0c8448ea2c41d3c1",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "মধ্যবর্তিনী",
-        "word_count": 3567,
-        "sha256": "e96ab6b2cdb938aaf6a2206a1c9b13073322887d20510a1ef6d14a928344843e"
+        "word_count": 3575,
+        "sha256": "3b0bffbddad6044c7deb3108f00f10404127c3ea1a9d2aa31991916b6b1d02e6"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "b9f4aaf06cddd669762d63ec4fff609f464730d37605d3be34ec9de3393d8ccb"
+    "evidence_sha256": "e7a5336e4fa07cd76f739b82c3df55580cade1d9af14fc2cbc1702896d92049f"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,8 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: verification_status must be approved before publishing."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -47,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "ff45affe46c69257bc253ef5d649e6d507e185b088b6eda2d3cfa3e49300a0d7",
-    "reader_manifest": "ffa8196b3c27c3b570685a2f44876d22a9da71db451e3a59d207fbf5f9d31ce7",
-    "source_evidence": "b9f4aaf06cddd669762d63ec4fff609f464730d37605d3be34ec9de3393d8ccb",
-    "approval_evidence": "cb5cbd7d5d00a3c8c63dc75ec47e51dcea5a08a7543ac891888a65d54a5b2ea3"
+    "public_book": "796dd7ee4f51e77ed132df7bdfe5f131b4e6baecb3d136f8d88665d0da363c79",
+    "reader_manifest": "6e571547a5c64e176095fbb078e29f9b51cda80f0783a2b961929ee609ddc044",
+    "source_evidence": "e7a5336e4fa07cd76f739b82c3df55580cade1d9af14fc2cbc1702896d92049f",
+    "approval_evidence": "d1dc767587a4908d8a83e34c00972cea048d03ac271c914c3267c5c43bf5e200"
   },
-  "manifest_sha256": "fe13c16a04e54193ee8cff1bcbbf1d7456ce8f5b9f9b5a71ba4b018a5104ab88"
+  "manifest_sha256": "652c1c6abb71b579240a0559016c841e99fb4d4c6139825f22612f43428e1acd"
 }

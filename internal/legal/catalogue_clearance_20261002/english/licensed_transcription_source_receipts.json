@@ -1,0 +1,18 @@
+{
+  "wikisource-most-dangerous-game": {
+    "text_receipt": {
+      "requested_url": "https://en.wikisource.org/wiki/O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game",
+      "resolved_url": "https://en.wikisource.org/wiki/O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:54:47.140339+00:00",
+      "response_sha256": "77c9fc421bd4d7742794edc9dd48b7f80eb70c0b73b969d4ef099d4ff9e4808f"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Connell, Richard, 1893-1949"
+      ],
+      "Translator": []
+    },
+    "transcription_revision": "12072546"
+  }
+}

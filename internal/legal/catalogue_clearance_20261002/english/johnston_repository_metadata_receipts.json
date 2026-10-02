@@ -1,0 +1,20 @@
+{
+  "bitstream": {
+    "receipt": {
+      "requested_url": "https://www.viurrspace.ca/server/api/core/bitstreams/a7d24518-6fe7-4289-8574-cb3422068e1e",
+      "resolved_url": "https://www.viurrspace.ca/server/api/core/bitstreams/a7d24518-6fe7-4289-8574-cb3422068e1e",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:14:09.153436+00:00",
+      "response_sha256": "f37c463c98401099f85484fa98af1f628c16ac2f8c259b6f59604238e7929894"
+    }
+  },
+  "bundle": {
+    "receipt": {
+      "requested_url": "https://www.viurrspace.ca/server/api/core/bitstreams/a7d24518-6fe7-4289-8574-cb3422068e1e/bundle",
+      "resolved_url": "https://www.viurrspace.ca/server/api/core/bitstreams/a7d24518-6fe7-4289-8574-cb3422068e1e/bundle",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:14:12.903144+00:00",
+      "response_sha256": "efb03361e1583cc9a7f5b512630895fa90e06b483ffd885505a1932ed7ad3940"
+    }
+  }
+}

@@ -1,0 +1,2971 @@
+{
+  "repairs": [
+    {
+      "slug": "bn-035",
+      "chapter": "chapter-001",
+      "before_sha256": "58f536ee4adfe33b8485d36f22a2bf9d5841b24a9cf8a1b854aa6611056a811e",
+      "after_sha256": "79887160142020e79cb05a31a7c3511f3d3be13dd22f626b68f62170e1bb49de",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-035-multichapter-source-comparison.json",
+      "source_artifact_sha256": "adddd412afe444a99038e7587f67667451d7176aa54fef100232858576b60866",
+      "matched_source": "বড়দিদি (শরৎচন্দ্র চট্টোপাধ্যায়)/প্রথম পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৯২২ (পৃ. ১-৫)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:32.822579+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-035",
+      "chapter": "chapter-002",
+      "before_sha256": "60148b5a52ca95892c7d14d81cc177ff8bd4b18a1447dde6a217f173837b7d7f",
+      "after_sha256": "553a68600ed96db9da1125561c4801069d639ea63b6645b71ba55f6d5c1ec72a",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-035-multichapter-source-comparison.json",
+      "source_artifact_sha256": "adddd412afe444a99038e7587f67667451d7176aa54fef100232858576b60866",
+      "matched_source": "বড়দিদি (শরৎচন্দ্র চট্টোপাধ্যায়)/দ্বিতীয় পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৯২২ (পৃ. ৬-১৩)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:32.827949+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-035",
+      "chapter": "chapter-003",
+      "before_sha256": "ea7556f92abb3f50ecaf96bbb9f4ecec19ae5b96c7562552ac3d68463a1369ab",
+      "after_sha256": "e9acfa9e770a5580ccfee2ec5278711457f11ef2afc120882852deccd5cc63a1",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-035-multichapter-source-comparison.json",
+      "source_artifact_sha256": "adddd412afe444a99038e7587f67667451d7176aa54fef100232858576b60866",
+      "matched_source": "বড়দিদি (শরৎচন্দ্র চট্টোপাধ্যায়)/তৃতীয় পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৯২২ (পৃ. ১৩-২০)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            18,
+            19
+          ],
+          "source_paragraph_range": [
+            18,
+            19
+          ],
+          "canonical": [
+            "শুধু তাহাই নহে। এই নূতন জীবটির জন্য মাধবীকে আজকাল খুবই সতর্ক থাকিতে হয়, বড় বেশী খোঁজ লইতে হয়। সে যদি সব জিনিস চাহিয়া লইত, তাহা হইলেও মাধবীর অর্দ্ধেক পরিশ্রম কমিয়া যাইত; সে যে নিজের কোন জিনিসই চাহে না— এইটিই বড় ভাবনার কথা। প্রথমে সে জানিতে পারে নাই যে, সুরেন্দ্রনাথ নিতান্ত অন্যমনস্ক প্রকৃতির লোক! প্রাতঃকালে চা ঠাণ্ডা হইয়া যায়, সে হয় ত খায় না! জলখাবার হয়ত স্পর্শ করিতেও তাহার মনে থাকে না, হয় ত বা কুকুরের মুখে তুলিয়া দিয়া সে চলিয়া যায়। খাইতে বসিয়া অন্ন-ব্যঞ্জনের সে কোন সম্মানই রাখে না, পাশে ঠেলিয়া নীচে ফেলিয়া সরাইয়া রাখিয়া যায়; যেন কোন দ্রব্যই তাহার মনে ধরে না! ভৃত্যেরা আসিয়া কহে, “মাষ্টারবাবু পাগলা, কিছু দেখে না, কিছু জানে না— বই নিয়েই ব'সে আছে।”"
+          ],
+          "source": [
+            "শুধু তাহাই নহে। এই নূতন জীবটির জন্য মাধবীকে আজকাল খুবই সতর্ক থাকিতে হয়, বড় বেশী খোঁজ লইতে হয়। সে যদি সব জিনিস চাহিয়া লইত, তাহা হইলেও মাধবীর অর্দ্ধেক পরিশ্রম কমিয়া যাইত; সে যে নিজের কোন জিনিসই চাহে না— এইটিই বড় ভাবনার কথা। প্রথমে সে জানিতে পারে নাই যে, সুরেন্দ্রনাথ নিতান্ত অন্যমনস্ক প্রকৃতির লোক! প্রাতঃকালে চা ঠাণ্ডা হইয়া যায়, সে হয় ত খায় না! জলখাবার হয়ত স্পর্শ করিতেও তাহার মনে থাকে না, হয় ত বা কুকুরের মুখে তুলিয়া দিয়া সে চলিয়া যায়। খাইতে বসিয়া অন্ন-ব্যঞ্জনের সে কোন সম্মানই রাখে না, পাশে ঠেলিয়া নীচে ফেলিয়া সরাইয়া রাখিয়া যায়; যেন কোন দ্রব্যই তাহার মনে ধরে না! ভৃত্যেরা আসিয়া কহে, “মাষ্টারবাবু পাগলা, কিছু দেখে না, কিছু জানে না— বই নিয়েই ব’সে আছে।”"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:32.838026+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-035",
+      "chapter": "chapter-004",
+      "before_sha256": "dde0193f9787f77403377ada95c794c9ab92787903aa04384342c7f30bcb9861",
+      "after_sha256": "588f1f24037ad98b2f2f1e2752fcfe4289582124e41e206fe8240adff70ff4bd",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-035-multichapter-source-comparison.json",
+      "source_artifact_sha256": "adddd412afe444a99038e7587f67667451d7176aa54fef100232858576b60866",
+      "matched_source": "বড়দিদি (শরৎচন্দ্র চট্টোপাধ্যায়)/চতুর্থ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৯২২ (পৃ. ২১-২৮)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:32.843312+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-035",
+      "chapter": "chapter-005",
+      "before_sha256": "1fff632d33a7892f96b01fdead031df70c12a850fc1e796765692e69bfed0c48",
+      "after_sha256": "7314b92e8847add0b355cd1d685b7452ba22f67f7e5b2f7a7ee35b5923a17aa9",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-035-multichapter-source-comparison.json",
+      "source_artifact_sha256": "adddd412afe444a99038e7587f67667451d7176aa54fef100232858576b60866",
+      "matched_source": "বড়দিদি (শরৎচন্দ্র চট্টোপাধ্যায়)/পঞ্চম পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৯২২ (পৃ. ২৯-৩৯)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            41,
+            42
+          ],
+          "source_paragraph_range": [
+            41,
+            42
+          ],
+          "canonical": [
+            "“এই চার মাস ধ'রে ক্রমাগত ভুল?”"
+          ],
+          "source": [
+            "“এই চার মাস ধ’রে ক্রমাগত ভুল?”"
+          ]
+        },
+        {
+          "operation": "insert",
+          "canonical_paragraph_range": [
+            100,
+            100
+          ],
+          "source_paragraph_range": [
+            100,
+            101
+          ],
+          "canonical": [],
+          "source": [
+            "ব্রজরাজবাবু কহিলেন, “তাহার পিতার সহিত আজ আলাপ হইল। তিনি সে কথা সমস্ত বলিলেন। এই বৎসর পশ্চিমের বিশ্ববিদ্যালয়ে সর্ব্বোচ্চ সম্মানের সহিত সুরেন এম্‌, এ পাশ করিলে, বিলাত যাইতে চাহিয়াছিল, কিন্তু নিতান্ত অন্যমনস্ক প্রকৃতির লোক বলিয়া তাঁহার পিতা সাহস করিয়া পাঠাইতে চাহেন নাই; তাই রাগ করিয়া পলাইয়া আসিয়াছিল। সে ভাল হইলে, তিনি বাটী লইয়া যাইবেন।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:32.849866+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-035",
+      "chapter": "chapter-006",
+      "before_sha256": "bcbfafd96d23d31565fa2cf60f072afc787d19d88b02cf3bc05a36debaff6fd2",
+      "after_sha256": "187671beb1ee4174b23e4d3ac6802c4939e0d61a339fbfc293f2ce3cb8b30446",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-035-multichapter-source-comparison.json",
+      "source_artifact_sha256": "adddd412afe444a99038e7587f67667451d7176aa54fef100232858576b60866",
+      "matched_source": "বড়দিদি (শরৎচন্দ্র চট্টোপাধ্যায়)/ষষ্ঠ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৯২২ (পৃ. ৩৯-৪৬)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:32.854580+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-035",
+      "chapter": "chapter-007",
+      "before_sha256": "2d0d942f6d97d20b7e0bbf1e6e7058372e1fc0b6f098b90dd410754b5f7641da",
+      "after_sha256": "3988140b3ac6a1c343f54b8723e84e59af9a1232295f0e4d6207c4b835f9ec59",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-035-multichapter-source-comparison.json",
+      "source_artifact_sha256": "adddd412afe444a99038e7587f67667451d7176aa54fef100232858576b60866",
+      "matched_source": "বড়দিদি (শরৎচন্দ্র চট্টোপাধ্যায়)/সপ্তম পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৯২২ (পৃ. ৪৬-৫১)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:32.858580+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-035",
+      "chapter": "chapter-008",
+      "before_sha256": "cfedb46fb9cbaf4f7ba234c97f1b261971254c7980ceb2740818bffe2fda4903",
+      "after_sha256": "d06eef2a2615904081baf9d1adf34a57f94045f2c40044a0f5f97b66e81d0123",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-035-multichapter-source-comparison.json",
+      "source_artifact_sha256": "adddd412afe444a99038e7587f67667451d7176aa54fef100232858576b60866",
+      "matched_source": "বড়দিদি (শরৎচন্দ্র চট্টোপাধ্যায়)/অষ্টম পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৯২২ (পৃ. ৫১-৬২)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:32.865700+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-035",
+      "chapter": "chapter-009",
+      "before_sha256": "74550ed97287d8f19dd13aeea5dce85071ada8a23404f1c1df6da1b431e0e2e6",
+      "after_sha256": "67a12a9a26b869b051258cc2b64b40589405e45f88a5686e0f815450cd85d451",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-035-multichapter-source-comparison.json",
+      "source_artifact_sha256": "adddd412afe444a99038e7587f67667451d7176aa54fef100232858576b60866",
+      "matched_source": "বড়দিদি (শরৎচন্দ্র চট্টোপাধ্যায়)/নবম পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৯২২ (পৃ. ৬২-৭০)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:32.871821+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-035",
+      "chapter": "chapter-010",
+      "before_sha256": "62f5814b903f29395a502d63b7b187f9ab15e562551178443d745e99799ecbb6",
+      "after_sha256": "7d357d54f1f160bbf15bb4ce42def6e251272751747b19a4b3eeedec23f505eb",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-035-multichapter-source-comparison.json",
+      "source_artifact_sha256": "adddd412afe444a99038e7587f67667451d7176aa54fef100232858576b60866",
+      "matched_source": "বড়দিদি (শরৎচন্দ্র চট্টোপাধ্যায়)/দশম পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৯২২ (পৃ. ৭১-বিজ্ঞাপন)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            2,
+            3
+          ],
+          "source_paragraph_range": [
+            2,
+            3
+          ],
+          "canonical": [
+            "সন্ধ্যার পর উজ্জ্বল দীপালোকে সুরেন্দ্রনাথ মাধবীর মুখের পানে চাহিল। পায়ের কাছে শান্তি বসিয়া আছে, সে যেন শুনিতে না পায়, হাত দিয়া তাই মাধবীর মুখ আপনার মুখের কাছে টানিয়া আনিয়া বলিল, “বড়দিদি, সেদিনের কথা মনে পড়ে, যেদিন তুমি আমাকে তাড়িয়ে দিয়েছিলে? আমি তাই এখন শোধ নিয়েচি, তোমাকেও তাড়িয়ে দিয়েছিলাম, কেমন, শোধ হ'ল ত?” মুহুর্ত্তের মধ্যে মাধবী চৈতন্য হারাইয়া লুণ্ঠিত-মস্তক সুরেন্দ্রের স্কন্ধের পার্শ্বে রাখিল,– যখন জ্ঞান হইল, তখন বাটীময় ক্রন্দনের রোল উঠিয়াছে।"
+          ],
+          "source": [
+            "সন্ধ্যার পর উজ্জ্বল দীপালোকে সুরেন্দ্রনাথ মাধবীর মুখের পানে চাহিল। পায়ের কাছে শান্তি বসিয়া আছে, সে যেন শুনিতে না পায়, হাত দিয়া তাই মাধবীর মুখ আপনার মুখের কাছে টানিয়া আনিয়া বলিল, “বড়দিদি, সেদিনের কথা মনে পড়ে, যেদিন তুমি আমাকে তাড়িয়ে দিয়েছিলে? আমি তাই এখন শোধ নিয়েচি, তোমাকেও তাড়িয়ে দিয়েছিলাম, কেমন, শোধ হ’ল ত?” মুহুর্ত্তের মধ্যে মাধবী চৈতন্য হারাইয়া লুণ্ঠিত-মস্তক সুরেন্দ্রের স্কন্ধের পার্শ্বে রাখিল,— যখন জ্ঞান হইল, তখন বাটীময় ক্রন্দনের রোল উঠিয়াছে।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:32.875732+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-036",
+      "chapter": "chapter-001",
+      "before_sha256": "5a01f541baaa1718ee89629604218276b4d550a071e05cd59fc5109dce02a548",
+      "after_sha256": "c3b0c1656462ef328113d0be71fa0d9af2ad7bb15c058f3a762e4b69cbd6cc81",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-036-multichapter-source-comparison.json",
+      "source_artifact_sha256": "bc662fae42ae5e525a5ba72d25ab24bc88e835880f18d63a27416cf9238c0b3b",
+      "matched_source": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/আঁধারে আলো/এক",
+      "removed_metadata": [
+        "১৯৬৩ (পৃ. ৪১-৪৩)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:32.884037+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-036",
+      "chapter": "chapter-002",
+      "before_sha256": "f5d02c648c8a63bf2e9470c7048278c7f50fb3764bca27d4fd0572a489c08120",
+      "after_sha256": "ebddc8a7763868e3d7f1d4e8ab6a60862caf5b9b340f54a118825f29a080ea5b",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-036-multichapter-source-comparison.json",
+      "source_artifact_sha256": "bc662fae42ae5e525a5ba72d25ab24bc88e835880f18d63a27416cf9238c0b3b",
+      "matched_source": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/আঁধারে আলো/দুই",
+      "removed_metadata": [
+        "১৯৬৩ (পৃ. ৪৪-৪৫)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:32.886111+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-036",
+      "chapter": "chapter-003",
+      "before_sha256": "5f09ac4afa4210a0901318fb3f6e028c2943b6e581e1cd6e32aff149c800e173",
+      "after_sha256": "02223461713d91bd58a15031e22c8446c7f31b1ee5a8b3458a71107e9492fd8a",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-036-multichapter-source-comparison.json",
+      "source_artifact_sha256": "bc662fae42ae5e525a5ba72d25ab24bc88e835880f18d63a27416cf9238c0b3b",
+      "matched_source": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/আঁধারে আলো/তিন",
+      "removed_metadata": [
+        "১৯৬৩ (পৃ. ৪৫-৪৯)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            2,
+            5
+          ],
+          "source_paragraph_range": [
+            2,
+            4
+          ],
+          "canonical": [
+            "জাহ্নবীতটে উপর্য্যুপরি আজ সাতদিন উভয়ের চারি চক্ষু মিলিয়াছে, কিন্তু যেখানে চাহনিতে কথা হয়, সেখানে মুখের কথাকে মূক হইয়া থাকিতে হয়। এই অপরিচিত রূপসী যেই হোন, তিনি যে চোখ দিয়া কথা কহিতে শিক্ষা করিয়াছেন, এবং সে-বিদ্যায় পারদর্শী সত্যর অন্তর্য্যামী তাহা নিভৃত অন্তরের মধ্যে অনুভব করিতে পারিয়া ছিল।",
+            "সেদিন স্নান করিয়া সে কতকটা অন্যমনস্কের মত বাসায় ফিরিতেছিল, হঠাৎ তাহার কানো গেল, ‘একবার শুনুন।’ মুখ তুলিয়া দেখিল, রেলওয়ে লাইনের ওপারে সেই রমণী দাঁড়াইয়া আছেন। তাঁহার বাম বক্ষে জলপূর্ণ ক্ষুদ্র পিতলের কলস, দক্ষিণ হস্তে সিক্তবস্ত্র। মাথা নাড়িয়া ইঙ্গিতে আহ্বান করিলেন। সত্য এদিক-ওদিক চাহিয়া কাছে গিয়া দাঁড়াইল, তিনি উৎসুক-চক্ষে চাহিয়া মৃদুকণ্ঠে বলিলেন, আমার ঝি আজ আসেনি, দয়া করে একটু যদি এগিয়ে দেন ত বড়ো ভাল হয়।",
+            "অন্যদিন তিনি দাসী সঙ্গে করিয়া আসেন, আজ একা। সত্যের মনের মধ্যে দ্বিধা জাগিল, কাজটা ভাল নয় বলিয়া একবার মনেও হইল, কিন্তু সে ’না’ বলিতে পারিল না। রমণী তাহার মনের ভাব অনুমান করিয়া একটু হাসিলেন। এ হাসি যাহারা হাসিতে জানে, সংসারে তাহদের অপ্রাপ্য কিছুই নাই। সত্য তৎক্ষণাৎ 'চলুন' বলিয়া উহার অনুসরণ করিল। দুই-চারি পা অগ্রসর হইয়া রমণী আবার কথা কহিলেন, ঝির অসুখ, সে আসতে পারলে না, কিন্তু আমিও গঙ্গাস্নান না করে থাকতে পারি নে,—আপনারও দেখচি এ বদ্‌ অভ্যাস আছে।"
+          ],
+          "source": [
+            "জাহ্নবীতটে উপর্য্যুপরি আজ সাতদিন উভয়ের চারি চক্ষু মিলিয়াছে, কিন্তু যেখানে চাহনিতে কথা হয়, সেখানে মুখের কথাকে মূক হইয়া থাকিতে হয়। এই অপরিচিত রূপসী যেই হোন, তিনি যে চোখ দিয়া কথা কহিতে শিক্ষা করিয়াছেন, এবং সে-বিদ্যায় পারদর্শী সত্যর অন্তর্য্যামী তাহা নিভৃত অন্তরের মধ্যে অনুভব করিতে পারিয়া ছিল।\n ﻿ সেদিন স্নান করিয়া সে কতকটা অন্যমনস্কের মত বাসায় ফিরিতেছিল, হঠাৎ তাহার কানো গেল, ‘একবার শুনুন।’ মুখ তুলিয়া দেখিল, রেলওয়ে লাইনের ওপারে সেই রমণী দাঁড়াইয়া আছেন। তাঁহার বাম বক্ষে জলপূর্ণ ক্ষুদ্র পিতলের কলস, দক্ষিণ হস্তে সিক্তবস্ত্র। মাথা নাড়িয়া ইঙ্গিতে আহ্বান করিলেন। সত্য এদিক-ওদিক চাহিয়া কাছে গিয়া দাঁড়াইল, তিনি উৎসুক-চক্ষে চাহিয়া মৃদুকণ্ঠে বলিলেন, আমার ঝি আজ আসেনি, দয়া করে একটু যদি এগিয়ে দেন ত বড়ো ভাল হয়।",
+            "অন্যদিন তিনি দাসী সঙ্গে করিয়া আসেন, আজ একা। সত্যের মনের মধ্যে দ্বিধা জাগিল, কাজটা ভাল নয় বলিয়া একবার মনেও হইল, কিন্তু সে ‘না’ বলিতে পারিল না। রমণী তাহার মনের ভাব অনুমান করিয়া একটু হাসিলেন। এ হাসি যাহারা হাসিতে জানে, সংসারে তাহদের অপ্রাপ্য কিছুই নাই। সত্য তৎক্ষণাৎ ‘চলুন’ বলিয়া উহার অনুসরণ করিল। দুই-চারি পা অগ্রসর হইয়া রমণী আবার কথা কহিলেন, ঝির অসুখ, সে আসতে পারলে না, কিন্তু আমিও গঙ্গাস্নান না করে থাকতে পারি নে,—আপনারও দেখচি এ বদ্‌ অভ্যাস আছে।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:32.903989+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-036",
+      "chapter": "chapter-004",
+      "before_sha256": "fde490b318490d9aee8cbbdcf403a898d90eefb4a42b37f6143c3b898aa477a6",
+      "after_sha256": "3f8f99462d09c3ccb22650d7d1f578f786d5c7c6973962cd1caae22e02c0fcef",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-036-multichapter-source-comparison.json",
+      "source_artifact_sha256": "bc662fae42ae5e525a5ba72d25ab24bc88e835880f18d63a27416cf9238c0b3b",
+      "matched_source": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/আঁধারে আলো/চার",
+      "removed_metadata": [
+        "১৯৬৩ (পৃ. ৪৯-৫১)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            1,
+            3
+          ],
+          "source_paragraph_range": [
+            1,
+            2
+          ],
+          "canonical": [
+            "জ্ঞানীরা কহিয়াছেন, অসম্ভব। কাণ্ড চোখে দেখিলেও বলিবে না, কারণ, অজ্ঞানীরা বিশ্বাস করে না। এই অপরাধেই শ্রীমন্ত বেচারা নাকি মশানে গিয়াছিল। সে যাই হোক, ইহা অতি সত্য কথা, সত্য পাকটি সেদিন বাসায় ফিরিয়া টেনিসন্‌ পড়িয়াছিল এবং ডন্‌ জুয়ানের ব্যাংলা তর্জমা করিতে বসিয়াছিল। অতবড় ছেলে, কিন্তু একবারও এ ংশয়ের কণামাত্রও তাহার মনে উঠে নাই যে, দিনের বেলা সহরের থে-ঘাটে এমন অদ্ভূত প্রেমের বান ডাকা সম্ভব কি না, কিংবা সে",
+            "বানের স্রোতে গা ভাসাইতে চলা নিরাপদ কি না।"
+          ],
+          "source": [
+            "জ্ঞানীরা কহিয়াছেন, অসম্ভব। কাণ্ড চোখে দেখিলেও বলিবে না, কারণ, অজ্ঞানীরা বিশ্বাস করে না। এই অপরাধেই শ্রীমন্ত বেচারা নাকি মশানে গিয়াছিল। সে যাই হোক, ইহা অতি সত্য কথা, সত্য পাকটি সেদিন বাসায় ফিরিয়া টেনিসন্‌ পড়িয়াছিল এবং ডন্‌ জুয়ানের ব্যাংলা তর্জমা করিতে বসিয়াছিল। অতবড় ছেলে, কিন্তু একবারও এ ংশয়ের কণামাত্রও তাহার মনে উঠে নাই যে, দিনের বেলা সহরের থে-ঘাটে এমন অদ্ভূত প্রেমের বান ডাকা সম্ভব কি না, কিংবা সে\n ﻿বানের স্রোতে গা ভাসাইতে চলা নিরাপদ কি না।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:32.906244+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-036",
+      "chapter": "chapter-005",
+      "before_sha256": "715941ffe3251aa3c82ad1f092e41c216822bc70cb4f0e4bb7bbbcecab65d489",
+      "after_sha256": "ebb8ae4a21642ac6dd318d1279e78b765a552bba820c041978b5661df3fcaa0a",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-036-multichapter-source-comparison.json",
+      "source_artifact_sha256": "bc662fae42ae5e525a5ba72d25ab24bc88e835880f18d63a27416cf9238c0b3b",
+      "matched_source": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/আঁধারে আলো/পাঁচ",
+      "removed_metadata": [
+        "১৯৬৩ (পৃ. ৫১-৫৯)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            3,
+            5
+          ],
+          "source_paragraph_range": [
+            3,
+            4
+          ],
+          "canonical": [
+            "সে গলিটা জানে বটে, কিন্তু আর কিছু চেনে না। কাহার বাড়ি",
+            "কোথায় বাড়ি, কিছুই জানে না। মনে করিলে অনুশোচনায় আত্মাগ্নানিতে হৃদয় দগ্ধ হইয়া যায়। কেন সে সেদিন যায় নাই, কেন সেই সনির্বন্ধ অনুরোধ উপেক্ষা করিয়াছিল?"
+          ],
+          "source": [
+            "সে গলিটা জানে বটে, কিন্তু আর কিছু চেনে না। কাহার বাড়ি\n ﻿কোথায় বাড়ি, কিছুই জানে না। মনে করিলে অনুশোচনায় আত্মাগ্নানিতে হৃদয় দগ্ধ হইয়া যায়। কেন সে সেদিন যায় নাই, কেন সেই সনির্বন্ধ অনুরোধ উপেক্ষা করিয়াছিল?"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:32.912366+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-036",
+      "chapter": "chapter-006",
+      "before_sha256": "d2090f15e3bd928cd0fff8ea84dc08d86e96d4d0bf20f10d0a1070c8951e9065",
+      "after_sha256": "06fd4bfed8b0dc59291e8d39526fccf299a601a8b3bdb039b3a7393c1403a381",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-036-multichapter-source-comparison.json",
+      "source_artifact_sha256": "bc662fae42ae5e525a5ba72d25ab24bc88e835880f18d63a27416cf9238c0b3b",
+      "matched_source": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/আঁধারে আলো/ছয়",
+      "removed_metadata": [
+        "১৯৬৩ (পৃ. ৫৯-৬৪)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            7,
+            9
+          ],
+          "source_paragraph_range": [
+            7,
+            8
+          ],
+          "canonical": [
+            "সত্যি। আচ্ছা, দেখচ ত, বল দেখি, ওদের মধ্যে সবচেয়ে কোন্‌টিকে",
+            "তোমার পছন্দ হয়?"
+          ],
+          "source": [
+            "সত্যি। আচ্ছা, দেখচ ত, বল দেখি, ওদের মধ্যে সবচেয়ে কোন্‌টিকে\n তোমার পছন্দ হয়?"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:32.916925+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-036",
+      "chapter": "chapter-007",
+      "before_sha256": "cdd3796d1d7653c9b71ceae61fff3b180fb51604c9dae5bc56c8635d9c7ac6a2",
+      "after_sha256": "10bb90d23c3f497aba543ac3ce2095218fdcd313a29df6da116c78765a2c8c4e",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-036-multichapter-source-comparison.json",
+      "source_artifact_sha256": "bc662fae42ae5e525a5ba72d25ab24bc88e835880f18d63a27416cf9238c0b3b",
+      "matched_source": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/মেজদিদি/এক",
+      "removed_metadata": [
+        "১৯৬৩ (পৃ. ৫-৮)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:32.920014+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-036",
+      "chapter": "chapter-008",
+      "before_sha256": "3f4f8a3aa80e9a40e5d3517ff09118594cfc692c85e32a3b6d5bd490728d1c24",
+      "after_sha256": "2721a9b732149633b2e704f9666bfc6beaacac71705abb32ab0c81fb1d64117e",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-036-multichapter-source-comparison.json",
+      "source_artifact_sha256": "bc662fae42ae5e525a5ba72d25ab24bc88e835880f18d63a27416cf9238c0b3b",
+      "matched_source": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/মেজদিদি/দুই",
+      "removed_metadata": [
+        "১৯৬৩ (পৃ. ৮-১০)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            2,
+            4
+          ],
+          "source_paragraph_range": [
+            2,
+            3
+          ],
+          "canonical": [
+            "পাশের দোতলা বাড়িটা মেজভাই বিপিনের। ছোটভায়ের অনেক দিন মৃত্যু হইয়াছিল। বিপিনেরও ধান-চালের কারবার। তাঁহার অবস্থা ভাল, কিন্তু বড়ভাই নবীনের সমান নয়। তথাপি ইহার বাড়িটাই দোতলা। মেজবৌ হেমাঙ্গিনী শহরের মেয়ে। তিনি দাসদাসী রাখিয়া, লোকজন খাওয়াইয়া, জাঁকজমকে থাকিতে ভালবাসেন। পয়সা বাঁচাইয়া গরিবী চালে চলে না বলিয়াই বছর-চারেক পূর্বে দুই জায়ে কলহ করিয়া পৃথক হইয়াছিলেন। সেই অবধি প্রকাশ্যে কলহ অনেকবার হইয়াছে, অনেকবার মিটিয়াছে, কিন্তু মনোমালিন্য একদিনের জন্যও ঘুচে নাই। কারণ, সেটা বড়-জা কাদম্বিনীর একলার হাতে। তিনি পাকা লোক, ঠিক বুঝিতেন, ভাঙা হাঁড়ি জোড়া লাগে না। কিন্তু মেজবৌ অত পাকা নয়, অমন করিয়া বুঝিতেও পারিতেন না। ঝগড়াটা প্রথমে তিনিই করিয়া ফেলিতেন বটে, কিন্তু তিনিই মিটাইবার জন্য, কথা কহিবার জন্য, খাওয়াইবার জন্য ভিতরে ভিতরে ছাঁট্‌-ফট্‌ করিয়া একদিন আস্তে আস্তে কাছে আসিয়া বসিতেন। শেষে হাতে-পায়ে পড়িয়া কাঁদিয়া-কাঁটিয়া, ঘাট মানিয়া, বড়-জাকে নিজের ঘরে ধরিয়া আনিয়া ভাব করিতেন। এমনই করিয়া দুই জায়ের অনেকদিন কাটিয়াছে। আজ বেলা তিনটা সাড়ে-তিনটার সময় হেমাঙ্গিনী এবাড়িতে আসিয়া উপস্থিত হইলেন। কুপের পাশ্বে সিমেণ্ট-বাঁধান বেদীর উপর রোদে বসিয়া কেষ্ট সাবান দিয়া একরাশ কাপড় পরিষ্কার করিতেছিল, কাদম্বিনী দূরে দাঁড়াইয়া, অল্প সাবান ও",
+            "অধিক গায়ের জোরে কাপড় কাচিবার কৌশলটা শিখাইয়া দিতেছিলেন। মেজ-জাকে দেখিবামাত্রই বলিয়া উঠিলেন, মাগো, ছোঁড়াটা কি নোংরা কাপড়-চোপড় নিয়েই এসেচে।"
+          ],
+          "source": [
+            "পাশের দোতলা বাড়িটা মেজভাই বিপিনের। ছোটভায়ের অনেক দিন মৃত্যু হইয়াছিল। বিপিনেরও ধান-চালের কারবার। তাঁহার অবস্থা ভাল, কিন্তু বড়ভাই নবীনের সমান নয়। তথাপি ইহার বাড়িটাই দোতলা। মেজবৌ হেমাঙ্গিনী শহরের মেয়ে। তিনি দাসদাসী রাখিয়া, লোকজন খাওয়াইয়া, জাঁকজমকে থাকিতে ভালবাসেন। পয়সা বাঁচাইয়া গরিবী চালে চলে না বলিয়াই বছর-চারেক পূর্বে দুই জায়ে কলহ করিয়া পৃথক হইয়াছিলেন। সেই অবধি প্রকাশ্যে কলহ অনেকবার হইয়াছে, অনেকবার মিটিয়াছে, কিন্তু মনোমালিন্য একদিনের জন্যও ঘুচে নাই। কারণ, সেটা বড়-জা কাদম্বিনীর একলার হাতে। তিনি পাকা লোক, ঠিক বুঝিতেন, ভাঙা হাঁড়ি জোড়া লাগে না। কিন্তু মেজবৌ অত পাকা নয়, অমন করিয়া বুঝিতেও পারিতেন না। ঝগড়াটা প্রথমে তিনিই করিয়া ফেলিতেন বটে, কিন্তু তিনিই মিটাইবার জন্য, কথা কহিবার জন্য, খাওয়াইবার জন্য ভিতরে ভিতরে ছাঁট্‌-ফট্‌ করিয়া একদিন আস্তে আস্তে কাছে আসিয়া বসিতেন। শেষে হাতে-পায়ে পড়িয়া কাঁদিয়া-কাঁটিয়া, ঘাট মানিয়া, বড়-জাকে নিজের ঘরে ধরিয়া আনিয়া ভাব করিতেন। এমনই করিয়া দুই জায়ের অনেকদিন কাটিয়াছে। আজ বেলা তিনটা সাড়ে-তিনটার সময় হেমাঙ্গিনী এবাড়িতে আসিয়া উপস্থিত হইলেন। কুপের পাশ্বে সিমেণ্ট-বাঁধান বেদীর উপর রোদে বসিয়া কেষ্ট সাবান দিয়া একরাশ কাপড় পরিষ্কার করিতেছিল, কাদম্বিনী দূরে দাঁড়াইয়া, অল্প সাবান ও\n ﻿অধিক গায়ের জোরে কাপড় কাচিবার কৌশলটা শিখাইয়া দিতেছিলেন। মেজ-জাকে দেখিবামাত্রই বলিয়া উঠিলেন, মাগো, ছোঁড়াটা কি নোংরা কাপড়-চোপড় নিয়েই এসেচে।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:32.923080+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-036",
+      "chapter": "chapter-009",
+      "before_sha256": "95e66dcbbacfa8bea48624da9a6554f81f1947940440a8172e3d1ff14cd97cb9",
+      "after_sha256": "98d3e87e9fcca6136348e36123d7265a39b6987bd21df71a5bcdd0d2f60a1178",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-036-multichapter-source-comparison.json",
+      "source_artifact_sha256": "bc662fae42ae5e525a5ba72d25ab24bc88e835880f18d63a27416cf9238c0b3b",
+      "matched_source": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/মেজদিদি/তিন",
+      "removed_metadata": [
+        "১৯৬৩ (পৃ. ১০-১৩)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            2,
+            4
+          ],
+          "source_paragraph_range": [
+            2,
+            3
+          ],
+          "canonical": [
+            "কি দিয়ে খেলি?",
+            "কেষ্ট তেমনিভাবে বলিল, রুইমাছের মুড়োর তরকারি, সন্দেশ, রসগো-"
+          ],
+          "source": [
+            "কি দিয়ে খেলি?\n ﻿ কেষ্ট তেমনিভাবে বলিল, রুইমাছের মুড়োর তরকারি, সন্দেশ, রসগো-"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:32.926008+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-036",
+      "chapter": "chapter-010",
+      "before_sha256": "1d33e7e9ba7347a97f4464cc7be288aab72099fa685da048440db6c6b5451a8a",
+      "after_sha256": "1b9db5abae19950acc6880e1a71f44dd2f80b0bc4b3df0c76e0478ec06556410",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-036-multichapter-source-comparison.json",
+      "source_artifact_sha256": "bc662fae42ae5e525a5ba72d25ab24bc88e835880f18d63a27416cf9238c0b3b",
+      "matched_source": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/মেজদিদি/চার",
+      "removed_metadata": [
+        "১৯৬৩ (পৃ. ১৩-১৬)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            3,
+            5
+          ],
+          "source_paragraph_range": [
+            3,
+            4
+          ],
+          "canonical": [
+            "কে আমি রে? আয়, ঘরে এসে বোস।",
+            "কেষ্ট সসঙ্কোচে ঘরে ঢুকিয়া দেওয়াল ঘেঁষিয়া দাঁড়াইল। হেমাঙ্গিনী উঠিয়া বসিয়া সস্নেহে কাছে ডাকিয়া জিজ্ঞাসা করিলেন, কেন রে কেষ্ট?"
+          ],
+          "source": [
+            "কে আমি রে? আয়, ঘরে এসে বোস।\n ﻿ কেষ্ট সসঙ্কোচে ঘরে ঢুকিয়া দেওয়াল ঘেঁষিয়া দাঁড়াইল। হেমাঙ্গিনী উঠিয়া বসিয়া সস্নেহে কাছে ডাকিয়া জিজ্ঞাসা করিলেন, কেন রে কেষ্ট?"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:32.928788+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-036",
+      "chapter": "chapter-011",
+      "before_sha256": "6a91553ec06b41fca4f4fb0a88f13871f9abe11368cd7c5f35d58ea67e1bf560",
+      "after_sha256": "3e136858fb2435cd90270cc1a8a5819f568657e8a1dc319213fb2e0b2ae502ab",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-036-multichapter-source-comparison.json",
+      "source_artifact_sha256": "bc662fae42ae5e525a5ba72d25ab24bc88e835880f18d63a27416cf9238c0b3b",
+      "matched_source": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/মেজদিদি/পাঁচ",
+      "removed_metadata": [
+        "১৯৬৩ (পৃ. ১৬-২০)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            7,
+            9
+          ],
+          "source_paragraph_range": [
+            7,
+            8
+          ],
+          "canonical": [
+            "কেষ্ট চুপ করিয়া রহিল। হেমাঙ্গিনী আঁচলে চোখ মুছিয়া বলিলেন,",
+            "আমার মাথার দিব্যি রইল ভাই, আজ থেকে আমাকে তোর সেই মরা মা ব’লে মনে করবি।"
+          ],
+          "source": [
+            "কেষ্ট চুপ করিয়া রহিল। হেমাঙ্গিনী আঁচলে চোখ মুছিয়া বলিলেন,\n  ﻿আমার মাথার দিব্যি রইল ভাই, আজ থেকে আমাকে তোর সেই মরা মা ব’লে মনে করবি।"
+          ]
+        },
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            11,
+            12
+          ],
+          "source_paragraph_range": [
+            10,
+            11
+          ],
+          "canonical": [
+            "কাদম্বিনী প্রশ্ন করিলেন, তোমার ছেলেটিকে ডেকে এনে আমি যদি এমনি করে বলি, তোমার মানটি থাকে কোথায় শুনি? তুমি এমন করে ‘নাই' দিলে আমি তাকে শাসন করি কি করে বল দেখি?"
+          ],
+          "source": [
+            "কাদম্বিনী প্রশ্ন করিলেন, তোমার ছেলেটিকে ডেকে এনে আমি যদি এমনি করে বলি, তোমার মানটি থাকে কোথায় শুনি? তুমি এমন করে ‘নাই’ দিলে আমি তাকে শাসন করি কি করে বল দেখি?"
+          ]
+        },
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            21,
+            22
+          ],
+          "source_paragraph_range": [
+            20,
+            21
+          ],
+          "canonical": [
+            "কাদম্বিনী সদর্পে বলিলেন, কেমন হ’ল তা। কার জোরে এত তেজ শুনি? আজ আমি স্পষ্ট বলে দিচ্ছি, মেজবৌ, ওকে তুমি একশ'বার ডেকো না। আমাদের ভাইবোনের কথার মধ্যে থেকো না।"
+          ],
+          "source": [
+            "কাদম্বিনী সদর্পে বলিলেন, কেমন হ’ল তা। কার জোরে এত তেজ শুনি? আজ আমি স্পষ্ট বলে দিচ্ছি, মেজবৌ, ওকে তুমি একশ’বার ডেকো না। আমাদের ভাইবোনের কথার মধ্যে থেকো না।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:32.933125+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-036",
+      "chapter": "chapter-012",
+      "before_sha256": "7834efda0f189b75cf48bb52fd943bde5a2811b675b185fc6463f9d69b907ea8",
+      "after_sha256": "933f514cd024e2459cba25f90d29feb1a7c81eb10c380a5ee4a34d05b06ca3c0",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-036-multichapter-source-comparison.json",
+      "source_artifact_sha256": "bc662fae42ae5e525a5ba72d25ab24bc88e835880f18d63a27416cf9238c0b3b",
+      "matched_source": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/মেজদিদি/ছয়",
+      "removed_metadata": [
+        "১৯৬৩ (পৃ. ২০-২৩)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            10,
+            12
+          ],
+          "source_paragraph_range": [
+            10,
+            11
+          ],
+          "canonical": [
+            "তাহার খাওয়া প্রায় অর্দ্ধেক অগ্রসর হইয়াছিল, এমন সময় উমা বহির্বাটী হইতে ভ্রান্তভাবে ছুটিয়া আসিয়া নিঃশব্দ ইঙ্গিতে জানাইল-",
+            "বাবা আসছেন যে!"
+          ],
+          "source": [
+            "তাহার খাওয়া প্রায় অর্দ্ধেক অগ্রসর হইয়াছিল, এমন সময় উমা বহির্বাটী হইতে ভ্রান্তভাবে ছুটিয়া আসিয়া নিঃশব্দ ইঙ্গিতে জানাইল-\n ﻿বাবা আসছেন যে!"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:32.936035+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-036",
+      "chapter": "chapter-013",
+      "before_sha256": "16e822b4b64730cfb0bb1ecc5600c2026deea675631b5d7bc7729e0b9e4cb4af",
+      "after_sha256": "50d6a9198b6406875b1bb7fd0f5ec7fc8821ad3d55d0bf1a89c1f0a60b9e3dcb",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-036-multichapter-source-comparison.json",
+      "source_artifact_sha256": "bc662fae42ae5e525a5ba72d25ab24bc88e835880f18d63a27416cf9238c0b3b",
+      "matched_source": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/মেজদিদি/সাত",
+      "removed_metadata": [
+        "১৯৬৩ (পৃ. ২৩-২৫)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            6,
+            8
+          ],
+          "source_paragraph_range": [
+            6,
+            7
+          ],
+          "canonical": [
+            "কথাটা শেষ হইবার পূর্ব্বেই হেমাঙ্গিনী কহিলেন, সব জানি, ছেলেমানুষটি নই যে, গুরুজনদের মান-মর্য্যাদা বুঝি নে। কিন্তু ছোঁড়াটাকে ভালবাসি বলেই যেন ওঁরা আমাকে দেখিয়ে দেখিয়ে ওকে",
+            "দিবারাত্র বিঁধতে থাকেন। তাঁহার কণ্ঠস্বর কিছু নরম শুনাইল। কারণ, হঠাৎ ভাসুরের সম্বন্ধে শ্লেষ করিয়া ফেলিয়া তিনি নিজেই মনে অপ্রতিভ হইয়াছিলেন। কিন্তু তাঁহারও গায়ের জ্বালাটা নাকি বড় জ্বলিতেছিল, তাই রাগ সামলাইতে পারেন নাই।"
+          ],
+          "source": [
+            "কথাটা শেষ হইবার পূর্ব্বেই হেমাঙ্গিনী কহিলেন, সব জানি, ছেলেমানুষটি নই যে, গুরুজনদের মান-মর্য্যাদা বুঝি নে। কিন্তু ছোঁড়াটাকে ভালবাসি বলেই যেন ওঁরা আমাকে দেখিয়ে দেখিয়ে ওকে\n দিবারাত্র বিঁধতে থাকেন। তাঁহার কণ্ঠস্বর কিছু নরম শুনাইল। কারণ, হঠাৎ ভাসুরের সম্বন্ধে শ্লেষ করিয়া ফেলিয়া তিনি নিজেই মনে অপ্রতিভ হইয়াছিলেন। কিন্তু তাঁহারও গায়ের জ্বালাটা নাকি বড় জ্বলিতেছিল, তাই রাগ সামলাইতে পারেন নাই।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:32.938672+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-036",
+      "chapter": "chapter-014",
+      "before_sha256": "ead74d920c697bcea31780a0d3eb5a112311abcaa14bb99916d6298348293bd0",
+      "after_sha256": "eca9253f8414833f31653439f1ea7d7a9b630ca4e24264a653cd41e739fb968b",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-036-multichapter-source-comparison.json",
+      "source_artifact_sha256": "bc662fae42ae5e525a5ba72d25ab24bc88e835880f18d63a27416cf9238c0b3b",
+      "matched_source": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/মেজদিদি/আট",
+      "removed_metadata": [
+        "১৯৬৩ (পৃ. ২৫-৪০)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            4,
+            6
+          ],
+          "source_paragraph_range": [
+            4,
+            5
+          ],
+          "canonical": [
+            "যাঃ-সেরে যাবে, বলিয়া ললিত মায়ের বুকের উপর একটা হাত রাখিল। মা ছেলের হাতখানি হাতে লইয়া চুপ করিয়া রহিলেন।",
+            "জ্বরের উপর এই স্পর্শ তাঁহার সর্বাঙ্গ জুড়াইয়া দিতে লাগিল। ইচ্ছা করিতে লাগিল, এমন করিয়া বহুক্ষণ কাটান। কিন্তু একটু পরেই ললিত উস্‌খুস্‌ করিতে লাগিল, পুতুল-নাচ হয়ত এতক্ষণে শুরু হইয়া গিয়াছে মনে করিয়া, ভিটরে ভিটরে তাহার চিত্ত অস্থির হইয়া উঠিল।"
+          ],
+          "source": [
+            "যাঃ-সেরে যাবে, বলিয়া ললিত মায়ের বুকের উপর একটা হাত রাখিল। মা ছেলের হাতখানি হাতে লইয়া চুপ করিয়া রহিলেন।\n জ্বরের উপর এই স্পর্শ তাঁহার সর্বাঙ্গ জুড়াইয়া দিতে লাগিল। ইচ্ছা করিতে লাগিল, এমন করিয়া বহুক্ষণ কাটান। কিন্তু একটু পরেই ললিত উস্‌খুস্‌ করিতে লাগিল, পুতুল-নাচ হয়ত এতক্ষণে শুরু হইয়া গিয়াছে মনে করিয়া, ভিটরে ভিটরে তাহার চিত্ত অস্থির হইয়া উঠিল।"
+          ]
+        },
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            53,
+            54
+          ],
+          "source_paragraph_range": [
+            52,
+            53
+          ],
+          "canonical": [
+            "কেষ্ট মুখ নামাইয়া শুধু 'যাচ্ছি’ বলিয়াই চলিয়া গেল। সে চলিয়া গলে হেমাঙ্গিনী নিজীবের মত বিছানার একধারে শুইয়া পড়িয়া অফুটে ক্রুদ্ধস্বরে বলিয়া উঠিলেন, একশ’বার বলি হতভাগাকে, আসিসনে আমার কাছে—তবু 'মেজদি’। শিবুকে বলে দিস্‌ত উমা, ওকে না আর ঢুকতে দেয়।"
+          ],
+          "source": [
+            "কেষ্ট মুখ নামাইয়া শুধু ‘যাচ্ছি’ বলিয়াই চলিয়া গেল। সে চলিয়া গলে হেমাঙ্গিনী নিজীবের মত বিছানার একধারে শুইয়া পড়িয়া অফুটে ক্রুদ্ধস্বরে বলিয়া উঠিলেন, একশ’বার বলি হতভাগাকে, আসিসনে আমার কাছে—তবু ‘মেজদি’। শিবুকে বলে দিস্‌ত উমা, ওকে না আর ঢুকতে দেয়।"
+          ]
+        },
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            79,
+            80
+          ],
+          "source_paragraph_range": [
+            78,
+            79
+          ],
+          "canonical": [
+            "কাদম্বিনী আরো বেশী হাত-মুখ নাড়িয়া কহিলেন, বেশ হয়েচে খুব সৎকার হয়েচে! তোমার শেখানোর গুণে আদায়ী টাকা চুরি করতে শিখেচে-আর দু'দিন কাছে ডেকে আরো দুটো শলাপরামর্শ দাও, তা হলে সিন্দুক ভাঙতে, সিঁদ কাটতেও শিখবে।"
+          ],
+          "source": [
+            "কাদম্বিনী আরো বেশী হাত-মুখ নাড়িয়া কহিলেন, বেশ হয়েচে খুব সৎকার হয়েচে! তোমার শেখানোর গুণে আদায়ী টাকা চুরি করতে শিখেচে-আর দু’দিন কাছে ডেকে আরো দুটো শলাপরামর্শ দাও, তা হলে সিন্দুক ভাঙতে, সিঁদ কাটতেও শিখবে।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:32.951823+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-041",
+      "chapter": "chapter-001",
+      "before_sha256": "165adec540b11c92f75d58da93a4e8ac9b886d105f2aa088885a6b4861dfdc9c",
+      "after_sha256": "c3b0c1656462ef328113d0be71fa0d9af2ad7bb15c058f3a762e4b69cbd6cc81",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-041-multichapter-source-comparison.json",
+      "source_artifact_sha256": "cdef0238933aa0c6b26b09d4d36a1edb60d2c2b4714806574b772609bebf051b",
+      "matched_source": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/আঁধারে আলো/এক",
+      "removed_metadata": [
+        "মেজদিদি",
+        "১৯৬৩ (পৃ. ৪১-৪৩)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:32.958585+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-041",
+      "chapter": "chapter-002",
+      "before_sha256": "79290f6d18842952aaa2d53c8157cadbc87664b5b57a3e2b1949a5319f7bc8f4",
+      "after_sha256": "ebddc8a7763868e3d7f1d4e8ab6a60862caf5b9b340f54a118825f29a080ea5b",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-041-multichapter-source-comparison.json",
+      "source_artifact_sha256": "cdef0238933aa0c6b26b09d4d36a1edb60d2c2b4714806574b772609bebf051b",
+      "matched_source": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/আঁধারে আলো/দুই",
+      "removed_metadata": [
+        "মেজদিদি",
+        "১৯৬৩ (পৃ. ৪৪-৪৫)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:32.960563+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-041",
+      "chapter": "chapter-003",
+      "before_sha256": "c8ea1df076498d992ffe276f1fe5f7924d20e0fde9c7bee325299e5cdfc7997b",
+      "after_sha256": "02223461713d91bd58a15031e22c8446c7f31b1ee5a8b3458a71107e9492fd8a",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-041-multichapter-source-comparison.json",
+      "source_artifact_sha256": "cdef0238933aa0c6b26b09d4d36a1edb60d2c2b4714806574b772609bebf051b",
+      "matched_source": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/আঁধারে আলো/তিন",
+      "removed_metadata": [
+        "মেজদিদি",
+        "১৯৬৩ (পৃ. ৪৫-৪৯)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            2,
+            5
+          ],
+          "source_paragraph_range": [
+            2,
+            4
+          ],
+          "canonical": [
+            "জাহ্নবীতটে উপর্য্যুপরি আজ সাতদিন উভয়ের চারি চক্ষু মিলিয়াছে, কিন্তু যেখানে চাহনিতে কথা হয়, সেখানে মুখের কথাকে মূক হইয়া থাকিতে হয়। এই অপরিচিত রূপসী যেই হোন, তিনি যে চোখ দিয়া কথা কহিতে শিক্ষা করিয়াছেন, এবং সে-বিদ্যায় পারদর্শী সত্যর অন্তর্য্যামী তাহা নিভৃত অন্তরের মধ্যে অনুভব করিতে পারিয়া ছিল।",
+            "সেদিন স্নান করিয়া সে কতকটা অন্যমনস্কের মত বাসায় ফিরিতেছিল, হঠাৎ তাহার কানো গেল, ‘একবার শুনুন।’ মুখ তুলিয়া দেখিল, রেলওয়ে লাইনের ওপারে সেই রমণী দাঁড়াইয়া আছেন। তাঁহার বাম বক্ষে জলপূর্ণ ক্ষুদ্র পিতলের কলস, দক্ষিণ হস্তে সিক্তবস্ত্র। মাথা নাড়িয়া ইঙ্গিতে আহ্বান করিলেন। সত্য এদিক-ওদিক চাহিয়া কাছে গিয়া দাঁড়াইল, তিনি উৎসুক-চক্ষে চাহিয়া মৃদুকণ্ঠে বলিলেন, আমার ঝি আজ আসেনি, দয়া করে একটু যদি এগিয়ে দেন ত বড়ো ভাল হয়।",
+            "অন্যদিন তিনি দাসী সঙ্গে করিয়া আসেন, আজ একা। সত্যের মনের মধ্যে দ্বিধা জাগিল, কাজটা ভাল নয় বলিয়া একবার মনেও হইল, কিন্তু সে ’না’ বলিতে পারিল না। রমণী তাহার মনের ভাব অনুমান করিয়া একটু হাসিলেন। এ হাসি যাহারা হাসিতে জানে, সংসারে তাহদের অপ্রাপ্য কিছুই নাই। সত্য তৎক্ষণাৎ 'চলুন' বলিয়া উহার অনুসরণ করিল। দুই-চারি পা অগ্রসর হইয়া রমণী আবার কথা কহিলেন, ঝির অসুখ, সে আসতে পারলে না, কিন্তু আমিও গঙ্গাস্নান না করে থাকতে পারি নে,—আপনারও দেখচি এ বদ্‌ অভ্যাস আছে।"
+          ],
+          "source": [
+            "জাহ্নবীতটে উপর্য্যুপরি আজ সাতদিন উভয়ের চারি চক্ষু মিলিয়াছে, কিন্তু যেখানে চাহনিতে কথা হয়, সেখানে মুখের কথাকে মূক হইয়া থাকিতে হয়। এই অপরিচিত রূপসী যেই হোন, তিনি যে চোখ দিয়া কথা কহিতে শিক্ষা করিয়াছেন, এবং সে-বিদ্যায় পারদর্শী সত্যর অন্তর্য্যামী তাহা নিভৃত অন্তরের মধ্যে অনুভব করিতে পারিয়া ছিল।\n ﻿ সেদিন স্নান করিয়া সে কতকটা অন্যমনস্কের মত বাসায় ফিরিতেছিল, হঠাৎ তাহার কানো গেল, ‘একবার শুনুন।’ মুখ তুলিয়া দেখিল, রেলওয়ে লাইনের ওপারে সেই রমণী দাঁড়াইয়া আছেন। তাঁহার বাম বক্ষে জলপূর্ণ ক্ষুদ্র পিতলের কলস, দক্ষিণ হস্তে সিক্তবস্ত্র। মাথা নাড়িয়া ইঙ্গিতে আহ্বান করিলেন। সত্য এদিক-ওদিক চাহিয়া কাছে গিয়া দাঁড়াইল, তিনি উৎসুক-চক্ষে চাহিয়া মৃদুকণ্ঠে বলিলেন, আমার ঝি আজ আসেনি, দয়া করে একটু যদি এগিয়ে দেন ত বড়ো ভাল হয়।",
+            "অন্যদিন তিনি দাসী সঙ্গে করিয়া আসেন, আজ একা। সত্যের মনের মধ্যে দ্বিধা জাগিল, কাজটা ভাল নয় বলিয়া একবার মনেও হইল, কিন্তু সে ‘না’ বলিতে পারিল না। রমণী তাহার মনের ভাব অনুমান করিয়া একটু হাসিলেন। এ হাসি যাহারা হাসিতে জানে, সংসারে তাহদের অপ্রাপ্য কিছুই নাই। সত্য তৎক্ষণাৎ ‘চলুন’ বলিয়া উহার অনুসরণ করিল। দুই-চারি পা অগ্রসর হইয়া রমণী আবার কথা কহিলেন, ঝির অসুখ, সে আসতে পারলে না, কিন্তু আমিও গঙ্গাস্নান না করে থাকতে পারি নে,—আপনারও দেখচি এ বদ্‌ অভ্যাস আছে।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:32.978220+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-041",
+      "chapter": "chapter-004",
+      "before_sha256": "bb123504a0ea1db21c03e52bbb6d91c2b43fbb817f7bae9d590b33f585a68c4e",
+      "after_sha256": "3f8f99462d09c3ccb22650d7d1f578f786d5c7c6973962cd1caae22e02c0fcef",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-041-multichapter-source-comparison.json",
+      "source_artifact_sha256": "cdef0238933aa0c6b26b09d4d36a1edb60d2c2b4714806574b772609bebf051b",
+      "matched_source": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/আঁধারে আলো/চার",
+      "removed_metadata": [
+        "মেজদিদি",
+        "১৯৬৩ (পৃ. ৪৯-৫১)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            1,
+            3
+          ],
+          "source_paragraph_range": [
+            1,
+            2
+          ],
+          "canonical": [
+            "জ্ঞানীরা কহিয়াছেন, অসম্ভব। কাণ্ড চোখে দেখিলেও বলিবে না, কারণ, অজ্ঞানীরা বিশ্বাস করে না। এই অপরাধেই শ্রীমন্ত বেচারা নাকি মশানে গিয়াছিল। সে যাই হোক, ইহা অতি সত্য কথা, সত্য পাকটি সেদিন বাসায় ফিরিয়া টেনিসন্‌ পড়িয়াছিল এবং ডন্‌ জুয়ানের ব্যাংলা তর্জমা করিতে বসিয়াছিল। অতবড় ছেলে, কিন্তু একবারও এ ংশয়ের কণামাত্রও তাহার মনে উঠে নাই যে, দিনের বেলা সহরের থে-ঘাটে এমন অদ্ভূত প্রেমের বান ডাকা সম্ভব কি না, কিংবা সে",
+            "বানের স্রোতে গা ভাসাইতে চলা নিরাপদ কি না।"
+          ],
+          "source": [
+            "জ্ঞানীরা কহিয়াছেন, অসম্ভব। কাণ্ড চোখে দেখিলেও বলিবে না, কারণ, অজ্ঞানীরা বিশ্বাস করে না। এই অপরাধেই শ্রীমন্ত বেচারা নাকি মশানে গিয়াছিল। সে যাই হোক, ইহা অতি সত্য কথা, সত্য পাকটি সেদিন বাসায় ফিরিয়া টেনিসন্‌ পড়িয়াছিল এবং ডন্‌ জুয়ানের ব্যাংলা তর্জমা করিতে বসিয়াছিল। অতবড় ছেলে, কিন্তু একবারও এ ংশয়ের কণামাত্রও তাহার মনে উঠে নাই যে, দিনের বেলা সহরের থে-ঘাটে এমন অদ্ভূত প্রেমের বান ডাকা সম্ভব কি না, কিংবা সে\n ﻿বানের স্রোতে গা ভাসাইতে চলা নিরাপদ কি না।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:32.980212+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-041",
+      "chapter": "chapter-005",
+      "before_sha256": "382dcb99b3eb5d5b0cfb49c88800260037d10720b8a36dc286e83d9259c01312",
+      "after_sha256": "ebb8ae4a21642ac6dd318d1279e78b765a552bba820c041978b5661df3fcaa0a",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-041-multichapter-source-comparison.json",
+      "source_artifact_sha256": "cdef0238933aa0c6b26b09d4d36a1edb60d2c2b4714806574b772609bebf051b",
+      "matched_source": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/আঁধারে আলো/পাঁচ",
+      "removed_metadata": [
+        "মেজদিদি",
+        "১৯৬৩ (পৃ. ৫১-৫৯)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            3,
+            5
+          ],
+          "source_paragraph_range": [
+            3,
+            4
+          ],
+          "canonical": [
+            "সে গলিটা জানে বটে, কিন্তু আর কিছু চেনে না। কাহার বাড়ি",
+            "কোথায় বাড়ি, কিছুই জানে না। মনে করিলে অনুশোচনায় আত্মাগ্নানিতে হৃদয় দগ্ধ হইয়া যায়। কেন সে সেদিন যায় নাই, কেন সেই সনির্বন্ধ অনুরোধ উপেক্ষা করিয়াছিল?"
+          ],
+          "source": [
+            "সে গলিটা জানে বটে, কিন্তু আর কিছু চেনে না। কাহার বাড়ি\n ﻿কোথায় বাড়ি, কিছুই জানে না। মনে করিলে অনুশোচনায় আত্মাগ্নানিতে হৃদয় দগ্ধ হইয়া যায়। কেন সে সেদিন যায় নাই, কেন সেই সনির্বন্ধ অনুরোধ উপেক্ষা করিয়াছিল?"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:32.986075+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-041",
+      "chapter": "chapter-006",
+      "before_sha256": "f5e0725c8e9aaea6bac11654f8dc08b41e6e4965f6065e39d449efd27fb08502",
+      "after_sha256": "06fd4bfed8b0dc59291e8d39526fccf299a601a8b3bdb039b3a7393c1403a381",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-041-multichapter-source-comparison.json",
+      "source_artifact_sha256": "cdef0238933aa0c6b26b09d4d36a1edb60d2c2b4714806574b772609bebf051b",
+      "matched_source": "মেজদিদি (শরৎচন্দ্র চট্টোপাধ্যায়, ১৯৬৩)/আঁধারে আলো/ছয়",
+      "removed_metadata": [
+        "মেজদিদি",
+        "১৯৬৩ (পৃ. ৫৯-৬৪)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            7,
+            9
+          ],
+          "source_paragraph_range": [
+            7,
+            8
+          ],
+          "canonical": [
+            "সত্যি। আচ্ছা, দেখচ ত, বল দেখি, ওদের মধ্যে সবচেয়ে কোন্‌টিকে",
+            "তোমার পছন্দ হয়?"
+          ],
+          "source": [
+            "সত্যি। আচ্ছা, দেখচ ত, বল দেখি, ওদের মধ্যে সবচেয়ে কোন্‌টিকে\n তোমার পছন্দ হয়?"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:32.990189+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-059",
+      "chapter": "chapter-001",
+      "before_sha256": "e04f746c0690e5124ca07c222dff6e0e7597eaaebe2dabea845a3a4c5efe97e9",
+      "after_sha256": "753f0ed8bca92c98b863f81bed1b6c744009dce77e9959137c7b3ad592cea047",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-059-multichapter-source-comparison.json",
+      "source_artifact_sha256": "72b1eb6a9a60a1405beb60b322a12c8aaa101a0b5d47b9ffc1421d74f746fae2",
+      "matched_source": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/অষ্টম সংখ্যা",
+      "removed_metadata": [
+        "কমলাকান্ত",
+        "১৮৮৫ (পৃ. ৯৪-১১০)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.001949+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-059",
+      "chapter": "chapter-002",
+      "before_sha256": "547858c3556ac9ac2f96fb4e070cdc641c712739d0b9b6a722c9f75e211ca28e",
+      "after_sha256": "d3019ba58943c24c011bb75736dbe1d2fd632380cc97a9b4812a5a2debdfd729",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-059-multichapter-source-comparison.json",
+      "source_artifact_sha256": "72b1eb6a9a60a1405beb60b322a12c8aaa101a0b5d47b9ffc1421d74f746fae2",
+      "matched_source": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/একাদশ সংখ্যা",
+      "removed_metadata": [
+        "কমলাকান্ত",
+        "১৮৮৫ (পৃ. ১৩৭-১৪৩)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.005211+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-059",
+      "chapter": "chapter-003",
+      "before_sha256": "ab301887f452374e5e8eb43d49d7ad22a1b6c0015367ad98f9c12af312b3835f",
+      "after_sha256": "6bc3bb351427876e50474b9a1eec1cca173983f2ae77ccf29c784a4f6cb6a221",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-059-multichapter-source-comparison.json",
+      "source_artifact_sha256": "72b1eb6a9a60a1405beb60b322a12c8aaa101a0b5d47b9ffc1421d74f746fae2",
+      "matched_source": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/চতুর্থ সংখ্যা",
+      "removed_metadata": [
+        "কমলাকান্ত",
+        "১৮৮৫ (পৃ. ৩৬-৪৩)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.008630+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-059",
+      "chapter": "chapter-004",
+      "before_sha256": "a04bcbdcfc139596f2aad724fd8144b9783d67c2a2a12fe1abb9f6dbe5d3803a",
+      "after_sha256": "f7946b6819268c9179a678630c6e826e2bb6efae51eb4657e6a7ddfa852f7353",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-059-multichapter-source-comparison.json",
+      "source_artifact_sha256": "72b1eb6a9a60a1405beb60b322a12c8aaa101a0b5d47b9ffc1421d74f746fae2",
+      "matched_source": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/তৃতীয় সংখ্যা",
+      "removed_metadata": [
+        "কমলাকান্ত",
+        "১৮৮৫ (পৃ. ২৭-৩৫)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            4,
+            6
+          ],
+          "source_paragraph_range": [
+            4,
+            5
+          ],
+          "canonical": [
+            "আমি এই হিতবাদ মতে অমত করি না; বরং আমি ইহার অনুমোদক, তবে, আপনারা জানেন কি না বলিতে পারি না, আমি এক জন সুযোগ্য দার্শনিক। আমি এই হিতবাদ দর্শন অবলম্বন করিয়া, কিছু ভাঙ্গিয়া, কিছু গড়িয়া, একটি নূতন দর্শনশাস্ত্র প্রণয়ন করিয়াছি। প্রকৃত পক্ষে, তাহা বাঙ্গালায় প্রচলিত হিতবাদ দর্শনের নূতন ব্যাখ্যা মাত্র। তাহার স্থুল মর্ম্ম আমি সংক্ষেপতঃ লিপিবদ্ধ করিতেছি। প্রাচীন প্রথানুসারে দর্শনটি সূত্রাকারে লিখিত হইয়াছে। এবং আমি স্বয়ংই সূত্রের ভাষ্য করিয়া তাহার সঙ্গে সঙ্গে লিখিয়াছি। বাঙ্গালাতেই সূত্রগুলি লিখিত হইয়াছে। আমি যে অসংস্কৃতজ্ঞ, এমত কেহ মনে করিবেন না। তবে সংস্কৃতে সূত্রগুলি কয় জন বুঝিতে পারিবে? অতএব, সাধারণ পাঠকের প্রতি অনুকূল হইয়া",
+            "বাঙ্গালাতেই সমস্ত কার্য্য নির্ব্বাহ করিয়াছি। সে সূত্র-গ্রন্থের সারাংশ এই;—"
+          ],
+          "source": [
+            "আমি এই হিতবাদ মতে অমত করি না; বরং আমি ইহার অনুমোদক, তবে, আপনারা জানেন কি না বলিতে পারি না, আমি এক জন সুযোগ্য দার্শনিক। আমি এই হিতবাদ দর্শন অবলম্বন করিয়া, কিছু ভাঙ্গিয়া, কিছু গড়িয়া, একটি নূতন দর্শনশাস্ত্র প্রণয়ন করিয়াছি। প্রকৃত পক্ষে, তাহা বাঙ্গালায় প্রচলিত হিতবাদ দর্শনের নূতন ব্যাখ্যা মাত্র। তাহার স্থুল মর্ম্ম আমি সংক্ষেপতঃ লিপিবদ্ধ করিতেছি। প্রাচীন প্রথানুসারে দর্শনটি সূত্রাকারে লিখিত হইয়াছে। এবং আমি স্বয়ংই সূত্রের ভাষ্য করিয়া তাহার সঙ্গে সঙ্গে লিখিয়াছি। বাঙ্গালাতেই সূত্রগুলি লিখিত হইয়াছে। আমি যে অসংস্কৃতজ্ঞ, এমত কেহ মনে করিবেন না। তবে সংস্কৃতে সূত্রগুলি কয় জন বুঝিতে পারিবে? অতএব, সাধারণ পাঠকের প্রতি অনুকূল হইয়া \n বাঙ্গালাতেই সমস্ত কার্য্য নির্ব্বাহ করিয়াছি। সে সূত্র-গ্রন্থের সারাংশ এই;—"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.013190+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-059",
+      "chapter": "chapter-005",
+      "before_sha256": "a661e637ee68f25cebca25ec99abe9d613d7ade07286b9e6415d48d6b7aaf2fd",
+      "after_sha256": "dcc77d7c8d86fdf35c4ae92a0e0ea691d4e9b00322f34b9155bf19032a59384c",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-059-multichapter-source-comparison.json",
+      "source_artifact_sha256": "72b1eb6a9a60a1405beb60b322a12c8aaa101a0b5d47b9ffc1421d74f746fae2",
+      "matched_source": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/ত্রয়োদশ সংখ্যা",
+      "removed_metadata": [
+        "কমলাকান্ত",
+        "১৮৮৫ (পৃ. ১৬১-১৭২)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            8,
+            10
+          ],
+          "source_paragraph_range": [
+            8,
+            9
+          ],
+          "canonical": [
+            "“দেখ, আমি চোর বটে, কিন্তু আমি কি সাধ করিয়া চোর হইয়াছি? খাইতে পাইলে কে চোর হয়? দেখ, যাঁহারা বড় বড় সাধু, চোরের নামে শিহরিয়া উঠেন, তাহারা অনেকে চোরের অপেক্ষাও অধার্ম্মিক। তাঁহাদের চুরি করিবার প্রয়োজন নাই বলিয়াই চুরি করেন না। কিন্তু তাঁহাদের প্রয়োজনাতীত ধন থাকিতেও চোরের প্রতি যে মুখ তুলিয়া চাহেন না, ইহাতেই চোরে চুরি করে। অধর্ম্ম চোরের নহে-চোরে যে চুরি করে, সে অধর্ম্ম কৃপণ ধনীর। চোর দোষী বটে, কিন্তু কৃপণ ধনী তদপেক্ষা শত গুণে দোষী। চোরের দণ্ড হয়; চুরির মূল ষে কৃপণ, তাহার দণ্ড হয় না কেন?",
+            "“দেখ, আমি প্রাচীরে প্রাচীরে মেও মেও করিয়া বেড়াই, কেহ আমাকে মাছের কাঁটাখানাও ফেলিয়া দেয় না। মাছের কাঁটা, পাতের ভাত, নরদামায় ফেলিয়া দেয়, জলে ফেলিয়া দেয়, তথাপি আমাকে ডাকিয়া দেয় না। তোমাদের পেট ভরা, আমার পেটের ক্ষুধা কি প্রকারে জানিবে! হায়! দরিদ্রের জন্য ব্যথিত হইলে তোমাদের কি কিছু অগৌরব আছে? আমার মত দরিদ্রের ব্যথায় ব্যথিত হওয়া, লজ্জার কথা সন্দেহ নাই। যে কখন অন্ধকে মুষ্টি-ভিক্ষা দেয় না, সেও একটা বড় রাজা ফাঁপরে পড়িলে রাত্রে ঘুযায় না—সকলেই পরের ব্যথায় ব্যথিত হইতে রাজি। তবে ছোটলোকের দুঃখে কাতর! ছি! কে হইবে?"
+          ],
+          "source": [
+            "“দেখ, আমি চোর বটে, কিন্তু আমি কি সাধ করিয়া চোর হইয়াছি? খাইতে পাইলে কে চোর হয়? দেখ, যাঁহারা বড় বড় সাধু, চোরের নামে শিহরিয়া উঠেন, তাহারা অনেকে চোরের অপেক্ষাও অধার্ম্মিক। তাঁহাদের চুরি করিবার প্রয়োজন নাই বলিয়াই চুরি করেন না। কিন্তু তাঁহাদের প্রয়োজনাতীত ধন থাকিতেও চোরের প্রতি যে মুখ তুলিয়া চাহেন না, ইহাতেই চোরে চুরি করে। অধর্ম্ম চোরের নহে-চোরে যে চুরি করে, সে অধর্ম্ম কৃপণ ধনীর। চোর দোষী বটে, কিন্তু কৃপণ ধনী তদপেক্ষা শত গুণে দোষী। চোরের দণ্ড হয়; চুরির মূল ষে কৃপণ, তাহার দণ্ড হয় না কেন? \n “দেখ, আমি প্রাচীরে প্রাচীরে মেও মেও করিয়া বেড়াই, কেহ আমাকে মাছের কাঁটাখানাও ফেলিয়া দেয় না। মাছের কাঁটা, পাতের ভাত, নরদামায় ফেলিয়া দেয়, জলে ফেলিয়া দেয়, তথাপি আমাকে ডাকিয়া দেয় না। তোমাদের পেট ভরা, আমার পেটের ক্ষুধা কি প্রকারে জানিবে! হায়! দরিদ্রের জন্য ব্যথিত হইলে তোমাদের কি কিছু অগৌরব আছে? আমার মত দরিদ্রের ব্যথায় ব্যথিত হওয়া, লজ্জার কথা সন্দেহ নাই। যে কখন অন্ধকে মুষ্টি-ভিক্ষা দেয় না, সেও একটা বড় রাজা ফাঁপরে পড়িলে রাত্রে ঘুযায় না—সকলেই পরের ব্যথায় ব্যথিত হইতে রাজি। তবে ছোটলোকের দুঃখে কাতর! ছি! কে হইবে?"
+          ]
+        },
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            11,
+            13
+          ],
+          "source_paragraph_range": [
+            10,
+            11
+          ],
+          "canonical": [
+            "“দেখ, আমাদিগের দশা দেখ, দেখ প্রাচীরে প্রাচীরে, প্রাঙ্গণে প্রাঙ্গণে, প্রাসাদে প্রাসাদে, মেও মেও করিয়া আমরা চারি দিক্ দৃষ্টি করিতেছি—কেহ আমাদিগকে মাছের কাঁটাখানা ফেলিয়া দেয় না। যদি কেহ তোমাদের সোহাগের বিড়াল হইতে পারিল–গৃহমার্জার হইয়া, বৃদ্ধের নিকট যুবতী ভার্য্যার সহোদর, বা মূর্খ ধনীর কাছে সতরঞ্চ খেলওয়ারের স্থানীয় হইয়া থাকিতে পারিল—তবেই তাহার পুষ্টি। তাহার লেজ ফুলে, গায়ে লোম হয়, এবং তাহাদের রূপের ছটা দেখিয়া, অনেক মার্জার কবি হইয়া পড়ে।",
+            "“আর আমাদিগের দশা দেখ—আহারাভাবে উদর কৃশ, অস্থি পরিদৃশ্যমান, লাঙ্গল বিনত, দাঁত বাহির হইয়াছে—জিহ্বা ঝুলিয়া পড়িয়াছে—অবিরত আহারাভাবে ডাকিতেছি, “মেও! মেও! খাইতে পাই না!—” আমাদের কাল চামড়া দেখিয়া ঘৃণা করিও না! এ পৃথিবীর মৎস্য মাংসে আমাদের কিছু অধিকার আছে। খাইতে দাও—নছিলে চুরি করিব।’ আমাদের কৃষ্ণ চর্ম্ম, শুষ্ক মুখ, ক্ষীণ সকরুণ মেও মেও শুনিয়া তোমাদিগের কি দুঃখ হয় না? চোরের দণ্ড আছে, নির্দ্দয়তার কি দণ্ড নাই? দরিদ্রের আহার সংগ্রহের দণ্ড আছে, ধনীর কার্পণ্যের দণ্ড নাই কেন? তুমি কমলাকান্ত, দূরদর্শী, কেন না আফিঙ্গখোর, তুমিও কি দেখিতে পাও না যে, ধনীর দোষেই দরিদ্রে চোর হয়? পাঁচ শত দরিদ্রকে বঞ্চিত করিয়া এক জনে পাঁচ শত লোকের আহার্ষ্য সংগ্রহ করিবে কেন? যদি করিল, তবে সে তাহার খাইয়া যাহা বাহিয়া পড়ে, তাহা দরিদ্রকে দিবে না কেন? যদি না দেয়, তবে দরিদ্র অবশ্য তাহার নিকট হইতে চুরি করিবে; কেন না অনাহারে মরিয়া যাইবার জন্য এ পৃথিবীতে কেহ আইসে নাই।”"
+          ],
+          "source": [
+            "“দেখ, আমাদিগের দশা দেখ, দেখ প্রাচীরে প্রাচীরে, প্রাঙ্গণে প্রাঙ্গণে, প্রাসাদে প্রাসাদে, মেও মেও করিয়া আমরা চারি দিক্ দৃষ্টি করিতেছি—কেহ আমাদিগকে মাছের কাঁটাখানা ফেলিয়া দেয় না। যদি কেহ তোমাদের সোহাগের বিড়াল হইতে পারিল–গৃহমার্জার হইয়া, বৃদ্ধের নিকট যুবতী ভার্য্যার সহোদর, বা মূর্খ ধনীর কাছে সতরঞ্চ খেলওয়ারের স্থানীয় হইয়া থাকিতে পারিল—তবেই তাহার পুষ্টি। তাহার লেজ ফুলে, গায়ে লোম হয়, এবং তাহাদের রূপের ছটা দেখিয়া, অনেক মার্জার কবি হইয়া পড়ে। \n “আর আমাদিগের দশা দেখ—আহারাভাবে উদর কৃশ, অস্থি পরিদৃশ্যমান, লাঙ্গল বিনত, দাঁত বাহির হইয়াছে—জিহ্বা ঝুলিয়া পড়িয়াছে—অবিরত আহারাভাবে ডাকিতেছি, “মেও! মেও! খাইতে পাই না!—” আমাদের কাল চামড়া দেখিয়া ঘৃণা করিও না! এ পৃথিবীর মৎস্য মাংসে আমাদের কিছু অধিকার আছে। খাইতে দাও—নছিলে চুরি করিব।’ আমাদের কৃষ্ণ চর্ম্ম, শুষ্ক মুখ, ক্ষীণ সকরুণ মেও মেও শুনিয়া তোমাদিগের কি দুঃখ হয় না? চোরের দণ্ড আছে, নির্দ্দয়তার কি দণ্ড নাই? দরিদ্রের আহার সংগ্রহের দণ্ড আছে, ধনীর কার্পণ্যের দণ্ড নাই কেন? তুমি কমলাকান্ত, দূরদর্শী, কেন না আফিঙ্গখোর, তুমিও কি দেখিতে পাও না যে, ধনীর দোষেই দরিদ্রে চোর হয়? পাঁচ শত দরিদ্রকে বঞ্চিত করিয়া এক জনে পাঁচ শত লোকের আহার্ষ্য সংগ্রহ করিবে কেন? যদি করিল, তবে সে তাহার খাইয়া যাহা বাহিয়া পড়ে, তাহা দরিদ্রকে দিবে না কেন? যদি না দেয়, তবে দরিদ্র অবশ্য তাহার ﻿নিকট হইতে চুরি করিবে; কেন না অনাহারে মরিয়া যাইবার জন্য এ পৃথিবীতে কেহ আইসে নাই।”"
+          ]
+        },
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            17,
+            21
+          ],
+          "source_paragraph_range": [
+            15,
+            17
+          ],
+          "canonical": [
+            "মার্জ্জারী মহাশয়া বলিলেন, “চোরকে ফাঁসি দেও, তাহাতেও আমার আপত্তি নাই, কিন্তু তাহার সঙ্গে আর একটি নিয়ম কর। যে বিচারক চোরকে সাজা দিবেন, তিনি আগে তিন দিবস উপবাস করিবেন। তাহাতে যদি তাঁহার চুরি করিয়া খাইতে ইচ্ছা না করে, তবে তিনি স্বচ্ছন্দে চোরকে ফাঁসি দিবেন। তুমি আমাকে মারিতে লাঠি তুলিয়াছিলে, তুমি অদ্য হইতে তিন দিন উপবাস করিয়া দেখ। তুমি যদি ইতিমধ্যে নশীবাবুর ভাণ্ডার-ঘরে ধরা না পড়, তবে আমাকে ঠেঙ্গাইয়া মারিও, আমি আপত্তি করিব না।”",
+            "বিজ্ঞ লোকের মত এই যে, যখন বিচারে পরাস্ত হইবে, তখন গম্ভীরভাবে উপদেশ প্রদান করিবে। আমি সেই প্রথানুসারে মার্জারকে বলিলাম যে, “এ সকল অতি নীতিবিরুদ্ধ কথা, ইহার আন্দোলনেও পাপ আছে। তুমি এ সকল দুশ্চিন্তা পরিত্যাগ করিয়া ধর্ম্মাচরণে মন দাও। তুমি যদি চাহ, তবে পাঠার্থে তোমাকে আমি নিউমান ও পার্করের গ্রন্থ দিতে পারি। আর কমলাকান্তের দপ্তর পড়িলেও কিছু উপকার হইতে পারে—আর কিছু হউক বা না হউক, আফিঙ্গের অসীম মহিমা বুঝিতে পারবে। এক্ষণে স্বস্থানে গমন কর, প্রসন্ন কাল কিছু ছানা দিবে বলিয়াছে জলযোগের সময় আসিও, উভয়ে ভাগ করিয়া খাইব। অদ্য আর কাহারও হাঁড়ি খাইও না; বরং ক্ষুধায় যদি নিতান্ত অধীরা হও, তবে পুনর্ব্বার আসিও, এক সরিষাভোর আফিঙ্গ দিব।”",
+            "মার্জার বলিল “আফিঙ্গে বিশেষ প্রয়োজন নাই, তবে হাঁড়ি খাওয়ার কথা, ক্ষুধানুসারে বিবেচনা করা যাইবে।”",
+            "মার্জার বিদায় হইল। একটি পতিত আত্মাকে অন্ধকার হইতে আলোকে আনিয়াছি, ভাবিয়া কমলাকান্ত পাদ্রির বড় আনন্দ হইল।"
+          ],
+          "source": [
+            "মার্জ্জারী মহাশয়া বলিলেন, “চোরকে ফাঁসি দেও, তাহাতেও আমার আপত্তি নাই, কিন্তু তাহার সঙ্গে আর একটি নিয়ম কর। যে বিচারক চোরকে সাজা দিবেন, তিনি আগে তিন দিবস উপবাস করিবেন। তাহাতে যদি তাঁহার চুরি করিয়া খাইতে ইচ্ছা না করে, তবে তিনি স্বচ্ছন্দে চোরকে ফাঁসি দিবেন। তুমি আমাকে মারিতে লাঠি তুলিয়াছিলে, তুমি অদ্য হইতে তিন দিন উপবাস করিয়া দেখ। তুমি যদি ইতিমধ্যে নশীবাবুর ভাণ্ডার-ঘরে ধরা না পড়, তবে আমাকে ঠেঙ্গাইয়া মারিও, আমি আপত্তি করিব না।” \n বিজ্ঞ লোকের মত এই যে, যখন বিচারে পরাস্ত হইবে, তখন গম্ভীরভাবে উপদেশ প্রদান করিবে। আমি সেই প্রথানুসারে মার্জারকে বলিলাম যে, “এ সকল অতি নীতিবিরুদ্ধ কথা, ইহার আন্দোলনেও পাপ আছে। তুমি এ সকল দুশ্চিন্তা পরিত্যাগ করিয়া ধর্ম্মাচরণে মন দাও। তুমি যদি চাহ, তবে পাঠার্থে তোমাকে আমি নিউমান ও পার্করের গ্রন্থ দিতে পারি। আর কমলাকান্তের দপ্তর পড়িলেও কিছু উপকার হইতে পারে—আর কিছু হউক বা না হউক, আফিঙ্গের অসীম মহিমা বুঝিতে পারবে। এক্ষণে স্বস্থানে গমন কর, প্রসন্ন কাল কিছু ছানা দিবে বলিয়াছে জলযোগের সময় আসিও, উভয়ে ভাগ করিয়া খাইব। অদ্য আর কাহারও হাঁড়ি খাইও না; বরং ক্ষুধায় যদি নিতান্ত অধীরা হও, তবে পুনর্ব্বার আসিও, এক সরিষাভোর আফিঙ্গ দিব।”",
+            "মার্জার বলিল “আফিঙ্গে বিশেষ প্রয়োজন নাই, তবে হাঁড়ি খাওয়ার কথা, ক্ষুধানুসারে বিবেচনা করা যাইবে।”\n  মার্জার বিদায় হইল। একটি পতিত আত্মাকে অন্ধকার হইতে আলোকে আনিয়াছি, ভাবিয়া কমলাকান্ত পাদ্রির বড় আনন্দ হইল।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.018835+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-059",
+      "chapter": "chapter-006",
+      "before_sha256": "46ed8cde89d44354166d39f82ab5c010ee91a803f9381415b1a9ce5713a6a1b5",
+      "after_sha256": "4da21913ac97f92d5e5fb1f4e6148468a041e2dc05831e5f5e7e6b63227ad710",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-059-multichapter-source-comparison.json",
+      "source_artifact_sha256": "72b1eb6a9a60a1405beb60b322a12c8aaa101a0b5d47b9ffc1421d74f746fae2",
+      "matched_source": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/দশম সংখ্যা",
+      "removed_metadata": [
+        "কমলাকান্ত",
+        "১৮৮৫ (পৃ. ১২০-১৩৬)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            33,
+            34
+          ],
+          "source_paragraph_range": [
+            33,
+            34
+          ],
+          "canonical": [
+            "দোকানদার ডাকিতেছেন—“আয় কালা বালক Experimental Science খাবি আয়। দেখ, ১নম্বর এক্সপেরিমেণ্ট—ঘুসি; ইহাতে দাঁত উপড়ে, মাথা ফাটে এবং হাড় ভাঙ্গে। আমরা এ সকল এক্সপেরিমেণ্ট বিনামূল্যে দেখাইয়া থাকি—পরের মাথা বা নরম হাড় পাইলেই হইল। আমরা স্থূল পদার্থের সংযোগ বিয়োগ সাধনে পটু—রাসায়নিক বলে, বা বৈদ্যুতীয় বলে, বা চৌম্বুক বলে, জড়পদার্থের বিশ্লেষণেই সুদক্ষ—কিন্তু সর্ব্বাপেক্ষা মুষ্ট্যাঘাতের বলে মস্তকাদির বিশ্লেষণেই আমরা কৃতকার্য্য। মাধ্যাকর্ষণ, যৌগিকাকর্ষণ, চৌম্বুকাকর্ষণ প্রভৃতি নানাবিধ আকর্ষণের কথা আমরা অবগত আছি, কিন্তু সর্ব্বাপেক্ষা কেশাকর্ষণেই আমরা কৃতবিদ্য। এই সংসারে জড়পদার্থের নানাবিধ যোগ দেখা যায়; যথা বায়ুতে অম্লজান ও যবক্ষারজানের সামান্য যোগ, জলে জলজান ও অম্লজানের রাসায়নিক 'যোগ, আর তোমাদিগের পৃষ্ঠে, আমাদের হস্তে, মুষ্টিযোগ। অতএব, এই সকল আশ্চর্য্য ব্যাপার দেখিবে যদি, মাথা বাড়াইয়া দাও; এক্সপেরিমেণ্ট করিব। দেখিবে, গ্রাবিটেশ্যনের বলে এই সকল নারিকেলাদি তোমাদের মস্তকে পড়িবে। পর্কশন্‌ নামক অদ্ভুত শাব্দিক রহস্যেরও পরিচয় পাইবে, এবং দেখিবে, তোমার মস্তিষ্কস্থিত স্নায়ব পদার্থের গুণে তুমি বেদনা অনুভূত করিবে।"
+          ],
+          "source": [
+            "দোকানদার ডাকিতেছেন—“আয় কালা বালক Experimental Science খাবি আয়। দেখ, ১নম্বর এক্সপেরিমেণ্ট—ঘুসি; ইহাতে দাঁত উপড়ে, মাথা ফাটে এবং হাড় ভাঙ্গে। আমরা এ সকল এক্সপেরিমেণ্ট বিনামূল্যে দেখাইয়া থাকি—পরের মাথা বা নরম হাড় পাইলেই হইল। আমরা স্থূল পদার্থের সংযোগ বিয়োগ সাধনে পটু—রাসায়নিক বলে, বা বৈদ্যুতীয় বলে, বা চৌম্বুক বলে, জড়পদার্থের বিশ্লেষণেই সুদক্ষ—কিন্তু সর্ব্বাপেক্ষা মুষ্ট্যাঘাতের বলে মস্তকাদির বিশ্লেষণেই আমরা কৃতকার্য্য। মাধ্যাকর্ষণ, যৌগিকাকর্ষণ, চৌম্বুকাকর্ষণ প্রভৃতি নানাবিধ আকর্ষণের কথা আমরা অবগত আছি, কিন্তু সর্ব্বাপেক্ষা কেশাকর্ষণেই আমরা কৃতবিদ্য। এই সংসারে জড়পদার্থের নানাবিধ যোগ দেখা যায়; যথা বায়ুতে অম্লজান ও যবক্ষারজানের সামান্য যোগ, জলে জলজান ও অম্লজানের রাসায়নিক ‘যোগ, আর তোমাদিগের পৃষ্ঠে, আমাদের হস্তে, মুষ্টিযোগ। অতএব, এই সকল আশ্চর্য্য ব্যাপার দেখিবে যদি, মাথা বাড়াইয়া দাও; এক্সপেরিমেণ্ট করিব। দেখিবে, গ্রাবিটেশ্যনের বলে এই সকল নারিকেলাদি তোমাদের মস্তকে পড়িবে। পর্কশন্‌ নামক অদ্ভুত শাব্দিক রহস্যেরও পরিচয় পাইবে, এবং দেখিবে, তোমার মস্তিষ্কস্থিত স্নায়ব পদার্থের গুণে তুমি বেদনা অনুভূত করিবে।"
+          ]
+        },
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            56,
+            58
+          ],
+          "source_paragraph_range": [
+            56,
+            57
+          ],
+          "canonical": [
+            "↑ নৈয়ায়িকেরা বলেন, অভাব চতুর্ব্বিধ; অন্যান্যাভাব, প্রাগভাব, ধ্বংসাভাব, আর অত্যন্তাভাব।",
+            "শ্রীকমলাকান্ত।"
+          ],
+          "source": [
+            "↑ নৈয়ায়িকেরা বলেন, অভাব চতুর্ব্বিধ; অন্যান্যাভাব, প্রাগভাব, ধ্বংসাভাব, আর অত্যন্তাভাব। \nশ্রীকমলাকান্ত।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.035217+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-059",
+      "chapter": "chapter-007",
+      "before_sha256": "d92deb3e4f49539aada28dc548adda51fb89abff578433b3e12541421f85a804",
+      "after_sha256": "ff761605da4bb4995efde6673ab55821013ecd63f3b524b0a8ef106e5002ba45",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-059-multichapter-source-comparison.json",
+      "source_artifact_sha256": "72b1eb6a9a60a1405beb60b322a12c8aaa101a0b5d47b9ffc1421d74f746fae2",
+      "matched_source": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/দ্বাদশ সংখ্যা",
+      "removed_metadata": [
+        "কমলাকান্ত",
+        "১৮৮৫ (পৃ. ১৪৪-১৬০)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            3,
+            4
+          ],
+          "source_paragraph_range": [
+            3,
+            4
+          ],
+          "canonical": [
+            "কমলাকান্ত। “এসো এসো বঁধু এসো।'"
+          ],
+          "source": [
+            "কমলাকান্ত। “এসো এসো বঁধু এসো।’"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.042465+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-059",
+      "chapter": "chapter-008",
+      "before_sha256": "9c93c48f56cf7d71705b4219411debbf857a1c59e9801053bdf7bef9d1fd448a",
+      "after_sha256": "2447daf1bd2f297b64e66df74ebeea2e24c9644adcaf3a7df91a32949a5962c0",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-059-multichapter-source-comparison.json",
+      "source_artifact_sha256": "72b1eb6a9a60a1405beb60b322a12c8aaa101a0b5d47b9ffc1421d74f746fae2",
+      "matched_source": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/দ্বিতীয় সংখ্যা",
+      "removed_metadata": [
+        "কমলাকান্ত",
+        "১৮৮৫ (পৃ. ১২-২৬)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            20,
+            22
+          ],
+          "source_paragraph_range": [
+            20,
+            21
+          ],
+          "canonical": [
+            "↑ কমলাকান্ত বোধ হয়, পুরোহিতকে ডোম বলিতেছে। কেন না পুরোহিতেই বিবাহ দেয়। উঃ কি পাষণ্ড!—",
+            "ভীষ্মদেব।"
+          ],
+          "source": [
+            "↑ কমলাকান্ত বোধ হয়, পুরোহিতকে ডোম বলিতেছে। কেন না পুরোহিতেই বিবাহ দেয়। উঃ কি পাষণ্ড!—\n\nভীষ্মদেব।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.048808+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-059",
+      "chapter": "chapter-009",
+      "before_sha256": "cf5cae83724948224b0305738e8a6476d4593311dbecf125b10727ca09eb725d",
+      "after_sha256": "eb70cd62e377022b51f76d746949a6259aa20a6135eaa3dab25246632027f428",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-059-multichapter-source-comparison.json",
+      "source_artifact_sha256": "72b1eb6a9a60a1405beb60b322a12c8aaa101a0b5d47b9ffc1421d74f746fae2",
+      "matched_source": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/নবম সংখ্যা",
+      "removed_metadata": [
+        "কমলাকান্ত",
+        "১৮৮৫ (পৃ. ১১১-১১৯)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.053060+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-059",
+      "chapter": "chapter-010",
+      "before_sha256": "96a3bb93ea6e4484de991958928c7a7fd7e77d59c092fff88f6c2e732c87cc6a",
+      "after_sha256": "3e036cdd5fabbcf8b388a4e956fd56b97779c4ca18c0a6b16075dfe92c6bbf29",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-059-multichapter-source-comparison.json",
+      "source_artifact_sha256": "72b1eb6a9a60a1405beb60b322a12c8aaa101a0b5d47b9ffc1421d74f746fae2",
+      "matched_source": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/পঞ্চম সংখ্যা",
+      "removed_metadata": [
+        "কমলাকান্ত",
+        "১৮৮৫ (পৃ. ৪৪-৬১)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.060769+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-059",
+      "chapter": "chapter-011",
+      "before_sha256": "8e1f623d971a6e168dc04bc974e92421ae6809dc828603c5d0551eee02ac7679",
+      "after_sha256": "6e100abcbfaf07f34d6d827d4d86e5df67672e9e0e8d584853c9f39fad015f54",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-059-multichapter-source-comparison.json",
+      "source_artifact_sha256": "72b1eb6a9a60a1405beb60b322a12c8aaa101a0b5d47b9ffc1421d74f746fae2",
+      "matched_source": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/প্রথম সংখ্যা",
+      "removed_metadata": [
+        "কমলাকান্ত",
+        "১৮৮৫ (পৃ. ৫-১১)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.063995+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-059",
+      "chapter": "chapter-012",
+      "before_sha256": "1102a72be55bdf8e51e7fdc5baca274c179aaa770bb43ae15a65a850e5f10605",
+      "after_sha256": "3fc4df5185d2a209784bfb18396adf49fc0aed238564d5d19cb107e3d91b6c42",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-059-multichapter-source-comparison.json",
+      "source_artifact_sha256": "72b1eb6a9a60a1405beb60b322a12c8aaa101a0b5d47b9ffc1421d74f746fae2",
+      "matched_source": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/ষষ্ঠ সংখ্যা",
+      "removed_metadata": [
+        "কমলাকান্ত",
+        "১৮৮৫ (পৃ. ৬২-৮৩)"
+      ],
+      "changes": [
+        {
+          "operation": "insert",
+          "canonical_paragraph_range": [
+            32,
+            32
+          ],
+          "source_paragraph_range": [
+            32,
+            33
+          ],
+          "canonical": [],
+          "source": [
+            "তুমি তোমার রূপ-গৌরবে গর্ব্বিতা হইয়া যেখানে সেখানে ও রূপের ছড়াছড়ি করিও না। যখন পুত্র-শোকাতুরা মাতা বক্ষে করাঘাত করিয়া তোমার দিকে লক্ষ্য করিয়া ক্রন্দন করিতে থাকে, তখন তুমি তাহার কাছে রূপ দেখাইয়া কি করিবে? তখন কলঙ্কিনি! তোমার রূপরাশি গাঢ় মেঘান্তরালে লুক্কায়িত করিয়া রাখিও। যখন সংসার-জ্বালাজালে লোকে দগ্ধ হইয়া, তোমার দরবারে আসিয়া অভিযোগ করিবে, তখন তোমার সৌন্দর্য্য-বিকাশ তাহার কাছে করিও না; যে সংসারদগ্ধ, তাহার পক্ষে সে সৌন্দর্য্য তীব্র বিষ-ক্ষেপ রূপ হইবে। বরং রক্ত রাগে তাহার সহিত আলাপ করিও। যে সকলকে ঘৃণা করিয়াছে, কাহারও প্রীতি সে সহ্য করিতে পারে না।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.073480+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-059",
+      "chapter": "chapter-013",
+      "before_sha256": "1887bc299d841297deacd3d89c8b75a53d3c60f3a9d747a6c49f90a6e337f344",
+      "after_sha256": "8791439978bef7c49f067984b43a8a58b7371930cc37dd670b32f2a7bf143e47",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-059-multichapter-source-comparison.json",
+      "source_artifact_sha256": "72b1eb6a9a60a1405beb60b322a12c8aaa101a0b5d47b9ffc1421d74f746fae2",
+      "matched_source": "কমলাকান্ত (১৮৮৫)/কমলাকান্তের দপ্তর/সপ্তম সংখ্যা",
+      "removed_metadata": [
+        "কমলাকান্ত",
+        "১৮৮৫ (পৃ. ৮৪-৯৩)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.078451+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-001",
+      "before_sha256": "fa7fb76b0d4de6f25f3dba8d9a4348088c1464716b07611df1f6f0c94dd29891",
+      "after_sha256": "4c875f5b744c7fbea421857fd512fe98e94cdf5a2213cd2651bfbaebb03955cc",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/উপক্রমণিকা",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১-২)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.088403+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-002",
+      "before_sha256": "62a7bd2b2fbeab622a89c3c77d3452b72da505cc4600f68b0f59cef0585cfbdf",
+      "after_sha256": "7c6e2ca55b5601e9d2dd4fe4b60cbd628dc6c2ceb7b23d3c1fadf603ec7eedcf",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/প্রথম পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১০২-১০৬)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.092357+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-003",
+      "before_sha256": "8999e78bea5bbc1715d3b404fe66972ca64dcc52c3363cead8f1a1d68bf53aa6",
+      "after_sha256": "399c0920c95ab77beae4a9e1cab5be6e266f1cadb1a961deea54269e57217d53",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/দ্বিতীয় পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১০৬-১১০)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.096021+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-004",
+      "before_sha256": "51803ed1e51cee9243de914f165f44ca5a807da278c1ecd66674fdb70bfb29dc",
+      "after_sha256": "bcd5c042bc463a7398d3a0d708edb06854192f9f98fc00d5fc2d01df78075c0f",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/তৃতীয় পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১১০-১১৩)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.098684+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-005",
+      "before_sha256": "72f3838d1cbddaba261d9a8cde63ba42847a79f4c17c9787eb6b6246e91ef1bb",
+      "after_sha256": "0afa26d6ba29efe57bf0e7522f66da9e006ccfad0b1569b9c753b815453911e6",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/চতুর্থ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১১৩-১২১)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            2,
+            4
+          ],
+          "source_paragraph_range": [
+            2,
+            3
+          ],
+          "canonical": [
+            "ঠাকুরুণ দিদি ভবানন্দকে দেখিয়া, শশব্যস্তে বস্ত্রাদি সামলাইতে লাগিলেন। মস্তকের মোহন চূড়া খুলিয়া ফেলিবেন ইচ্ছা ছিল, কিন্তু সুবিধা হইল না, কেন না সকড়ি হাত। নিষেকমসৃণ সেই চিকুরজাল—হায়! তাহাতে পূজার সময় একটী বকফুল পড়িয়া-",
+            "ছিল!—বস্ত্রাঞ্চলে ঢাকিতে যত্ন করিলেন; বস্ত্রাঞ্চল ঢাকিতে সক্ষম হইল না, কেন না ঠাকুরুণটী এক খানি পাঁচ হাত কাপড় পরিয়া ছিলেন। সেই পাঁচ হাত কাপড় প্রথমে গুরুভারপ্রণত উদরপ্রদেশ বেষ্টন করিয়া আসিতে প্রায় নিঃশেষ হইয়া পড়িয়াছিল, তার পরে দুঃসহ ভারগ্রস্ত হৃদয়মণ্ডলেরও কিছু আবরু পর্দ্দা রক্ষা করিতে হইয়াছে। শেষে ঘাড়ে পৌঁছিয়া বস্ত্রাঞ্চল জবাব দিল। কাণের উপর উঠিয়া বলিল আর যাইতে পারি না। অগত্যা পরম ব্রীড়াবতী গৌরী ঠাকুরাণী কথিত বস্ত্রাঞ্চলকে কাণের কাছে ধরিয়া রাখিলেন। এবং ভবিষ্যতে আট হাত কাপড় কিনিবার জন্য মনে মনে দৃঢ় প্রতিজ্ঞাবদ্ধ হইয়া বলিলেন “কে গোঁসাই ঠাকুর? এস এস! আমায় আবার প্রাতঃপ্রণাম কেন ভাই?”"
+          ],
+          "source": [
+            "ঠাকুরুণ দিদি ভবানন্দকে দেখিয়া, শশব্যস্তে বস্ত্রাদি সামলাইতে লাগিলেন। মস্তকের মোহন চূড়া খুলিয়া ফেলিবেন ইচ্ছা ছিল, কিন্তু সুবিধা হইল না, কেন না সকড়ি হাত। নিষেকমসৃণ সেই চিকুরজাল—হায়! তাহাতে পূজার সময় একটী বকফুল পড়িয়া-\n ছিল!—বস্ত্রাঞ্চলে ঢাকিতে যত্ন করিলেন; বস্ত্রাঞ্চল ঢাকিতে সক্ষম হইল না, কেন না ঠাকুরুণটী এক খানি পাঁচ হাত কাপড় পরিয়া ছিলেন। সেই পাঁচ হাত কাপড় প্রথমে গুরুভারপ্রণত উদরপ্রদেশ বেষ্টন করিয়া আসিতে প্রায় নিঃশেষ হইয়া পড়িয়াছিল, তার পরে দুঃসহ ভারগ্রস্ত হৃদয়মণ্ডলেরও কিছু আবরু পর্দ্দা রক্ষা করিতে হইয়াছে। শেষে ঘাড়ে পৌঁছিয়া বস্ত্রাঞ্চল জবাব দিল। কাণের উপর উঠিয়া বলিল আর যাইতে পারি না। অগত্যা পরম ব্রীড়াবতী গৌরী ঠাকুরাণী কথিত বস্ত্রাঞ্চলকে কাণের কাছে ধরিয়া রাখিলেন। এবং ভবিষ্যতে আট হাত কাপড় কিনিবার জন্য মনে মনে দৃঢ় প্রতিজ্ঞাবদ্ধ হইয়া বলিলেন “কে গোঁসাই ঠাকুর? এস এস! আমায় আবার প্রাতঃপ্রণাম কেন ভাই?”"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.104685+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-006",
+      "before_sha256": "16d0ade8edd5ccb731ab891c1eb404830ed1db98aeae6c9638043b4fa7354205",
+      "after_sha256": "859a7e932f27a25da6e81d3d2190d156a26d698bbe3506b4a2b8b84e267b055f",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/পঞ্চম পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১২১-১২৫)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.107680+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-007",
+      "before_sha256": "da42e1657ded85becb87e39af5e4b16f0e8e3effefb4f5996eba29af50f9dae6",
+      "after_sha256": "dc761dcca7e21a60cb9af4de0c31e326a421bd62faa3d1f9703d2a11f83414fd",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/ষষ্ঠ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১২৫-১২৬)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            1,
+            3
+          ],
+          "source_paragraph_range": [
+            1,
+            2
+          ],
+          "canonical": [
+            "রজনী অতি ঘোর তমোময়ী। তাহাতে সেই অরণ্য অতি বিস্তৃত, একেবারে জনশূন্য, অতিশয় নিবিড়, বৃক্ষলতায় দুর্ভেদ্য, বন্যপশুরও গমনাগমনের বিরোধী। বিশাল, জনশূন্য, অন্ধকার, দুর্ভেদ্য, নীরব! রবের মধ্যে দূরে ব্যাঘ্রের হুঙ্কার অথবা অন্য শ্বাপদের ক্ষুধা ভীতি বা আস্ফালনের বিকট শব্দ। কদাচিৎ কোন বৃহৎ পক্ষীর পক্ষকম্পন, কদাচিৎ তাড়িত এবং তাড়নকারী, বধ্য এবং বধকারী পশুদিগের দ্রুতগমন শব্দ। সেই বিজনে অন্ধকারে ভগ্ন অট্টালিকার উপর বসিয়া একা ভবানন্দ। তাঁহার পক্ষে তখন যেন পৃথিবী নাই, অথবা কেবল ভয়ের উপাদানময়ী হইয়া আছেন। সেই সময়ে ভবানন্দ কপালে হাত দিয়া ভাবিতেছিলেন; স্পন্দ নাই, নিশ্বাস নাই, ভয় নাই, অতি প্রগাঢ় চিন্তায় নিমগ্ন। মনে মনে বলিতেছিলেন, “যাহা ভবিতব্য তাহা অবশ্য হইবে। আমি ভাগীরথীজলতরঙ্গসমীপে ক্ষুদ্র গজের মত ইন্দ্রিয় স্রোতে ভাসিয়া",
+            "গেলাম, ইহাই আমার দুঃখ। একমুহূর্ত্তে দেহের ধ্বংস হইতে পারে,―দেহের ধ্বংসেই ইন্দ্রিয়ের ধ্বংস―আমি সেই ইন্দ্রিয়ের বশীভূত হইলাম? আমার মরণ শ্রেয়। ধর্ম্ম ত্যাগী? ছি! মরিব!” এমন সময়ে পেচক মাথার উপর মৃদু গম্ভীর শব্দ করিল। ভবানন্দ তখন মুক্তকণ্ঠে বলিতে লাগিলেন “ও কি শব্দ? কাণে যেন গেল, যেন যম আমায় ডাকিতেছে। আমি জানি না কে শব্দ করিল, কে আমায় ডাকিল, কে আমায় বিধি দিল, কে মরিতে বলিল! পুণ্যময়ি অনন্তে! তুমি শব্দময়ী, কিন্তু তোমার শব্দের তো মর্ম্ম আমি বুঝিতে পারিতেছি না। আমায় ধর্ম্মে মতি দাও, আমার পাপ হইতে নিরত কর। ধর্ম্মে, হে গুরুদেব! ধর্ম্মে যেন আমার মতি থাকে।”"
+          ],
+          "source": [
+            "রজনী অতি ঘোর তমোময়ী। তাহাতে সেই অরণ্য অতি বিস্তৃত, একেবারে জনশূন্য, অতিশয় নিবিড়, বৃক্ষলতায় দুর্ভেদ্য, বন্যপশুরও গমনাগমনের বিরোধী। বিশাল, জনশূন্য, অন্ধকার, দুর্ভেদ্য, নীরব! রবের মধ্যে দূরে ব্যাঘ্রের হুঙ্কার অথবা অন্য শ্বাপদের ক্ষুধা ভীতি বা আস্ফালনের বিকট শব্দ। কদাচিৎ কোন বৃহৎ পক্ষীর পক্ষকম্পন, কদাচিৎ তাড়িত এবং তাড়নকারী, বধ্য এবং বধকারী পশুদিগের দ্রুতগমন শব্দ। সেই বিজনে অন্ধকারে ভগ্ন অট্টালিকার উপর বসিয়া একা ভবানন্দ। তাঁহার পক্ষে তখন যেন পৃথিবী নাই, অথবা কেবল ভয়ের উপাদানময়ী হইয়া আছেন। সেই সময়ে ভবানন্দ কপালে হাত দিয়া ভাবিতেছিলেন; স্পন্দ নাই, নিশ্বাস নাই, ভয় নাই, অতি প্রগাঢ় চিন্তায় নিমগ্ন। মনে মনে বলিতেছিলেন, “যাহা ভবিতব্য তাহা অবশ্য হইবে। আমি ভাগীরথীজলতরঙ্গসমীপে ক্ষুদ্র গজের মত ইন্দ্রিয় স্রোতে ভাসিয়া\n ﻿গেলাম, ইহাই আমার দুঃখ। একমুহূর্ত্তে দেহের ধ্বংস হইতে পারে,―দেহের ধ্বংসেই ইন্দ্রিয়ের ধ্বংস―আমি সেই ইন্দ্রিয়ের বশীভূত হইলাম? আমার মরণ শ্রেয়। ধর্ম্ম ত্যাগী? ছি! মরিব!” এমন সময়ে পেচক মাথার উপর মৃদু গম্ভীর শব্দ করিল। ভবানন্দ তখন মুক্তকণ্ঠে বলিতে লাগিলেন “ও কি শব্দ? কাণে যেন গেল, যেন যম আমায় ডাকিতেছে। আমি জানি না কে শব্দ করিল, কে আমায় ডাকিল, কে আমায় বিধি দিল, কে মরিতে বলিল! পুণ্যময়ি অনন্তে! তুমি শব্দময়ী, কিন্তু তোমার শব্দের তো মর্ম্ম আমি বুঝিতে পারিতেছি না। আমায় ধর্ম্মে মতি দাও, আমার পাপ হইতে নিরত কর। ধর্ম্মে, হে গুরুদেব! ধর্ম্মে যেন আমার মতি থাকে।”"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.110158+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-008",
+      "before_sha256": "8681e5423a52394efbeda8661b2469ae4238a6e184aa0edd345784b3835c23a8",
+      "after_sha256": "c1ebe9e59913dde6e3f90289b2de21e14373701cfb3535c15210d8f996df9c5a",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/সপ্তম পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১২৭-১৩০)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.113099+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-009",
+      "before_sha256": "c89a7d28d4c96db68638ce603621d1d2fafe4281b9495061427c160f4647c098",
+      "after_sha256": "ca590b69ea58a8887e092dbe8e1e6ed44ab6cddeb12801c78681c45cf94584ca",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/অষ্টম পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১৩০-১৩২)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            0,
+            2
+          ],
+          "source_paragraph_range": [
+            0,
+            1
+          ],
+          "canonical": [
+            "ক্রমে সন্তানসম্প্রদায়মধ্যে সম্বাদ প্রচারিত হইল যে সত্যানন্দ আসিয়াছেন, সন্তানদিগের সঙ্গে কি কথা কহিবেন, এই বলিয়া তিনি সকলকে আহ্বান করিয়াছেন। তখন দলে দলে সন্তানসম্প্রদায় অজয়তীরে আসিয়া সমবেত হইতে লাগিল। জ্যোৎস্নারাত্রিতে অজয়সৈকতপার্শ্বে বৃহৎ কাননমধ্যে আম্র, পনস, তাল, তিন্তিড়ী, অশ্বত্থ, বেল, বট, শাল্মলী প্রভৃতি বৃক্ষাদি রঞ্জিত মহাগহনে দশ সহস্র সশস্ত্র সন্তান সমবেত হইল। তখন সকলেই পরস্পরের মুখে সত্যানন্দের আগমনবার্তা শ্রবণ করিয়া মহা কোলাহলধ্বনি করিতে লাগিল। সত্যানন্দ কি জন্য কোথায় গিয়াছিলেন, তাহা সাধারণে জানিত না। প্রবাদ এই যে তিনি সন্তানদিগের মঙ্গলকামনায় তপস্যার্থ হিমালয়ে প্রস্থান করিয়াছিলেন। আজ সকলে কাণাকাণি করিতে লাগিল “মহারাজের তপঃসিদ্ধি হইয়াছে―আমাদের রাজ্য হইবে।” তখন বড় কোলাহল হইতে লাগিল। কেহ চীৎকার করিতে লাগিল “মার, মার,",
+            "নেড়ে মার!” কেহ বলিল “জয় জয়! মহারাজ কি জয়!” কেহ গায়িল “হরে মুররে মধুকৈটভারে!” কেহ গায়িল “বন্দে মাতরং!”, কেহ বলে―ভাই এমন দিন কি হইবে, তুচ্ছ বাঙ্গালি হইয়া রণক্ষেত্রে এ শরীর পাত করিব? কেহ বলে ভাই এমন দিন কি হইবে, মসজিদ ভাঙ্গিয়া রাধামাধবের মন্দির গড়িব? কেহ বলে ভাই এমন দিন কি হইবে, আপনার ধন আপনি খাইব? দশ সহস্র নরকণ্ঠের কলকল রব, মধু্র বায়ুসন্তাড়িত বৃক্ষপত্ররাশির মর্ম্মর, সৈকতবাহিনী তরঙ্গিণীর মৃদু মৃদু তর তর রব, নীল আকাশে চন্দ্র তারা শ্বেত মেঘরাশি, শ্যামল ধরণীতলে হরিৎ কানন, স্বচ্ছ নদী, শ্বেত সৈকত, ফুল্ল কুসুমদাম। আর মধ্যে মধ্যে সেই সর্ব্বজনমনোরম “বন্দে মাতরং।” তখন সত্যানন্দ আসিয়া সেই সমবেত সন্তানমণ্ডলীর মধ্যে দাঁড়াইলেন। তখন সেই দশ সহস্র সন্তানমন্তক বৃক্ষবিচ্ছেদপতিত চন্দ্রকিরণে প্রভাসিত হইয়া শ্যামলতৃণভূমে প্রণত হইল। অতি উচ্চৈঃস্বরে অশ্রুপূর্ণলোচনে উভয় বাহু ঊর্দ্ধে উত্তোলন করিয়া সত্যানন্দ বলিলেন,"
+          ],
+          "source": [
+            "ক্রমে সন্তানসম্প্রদায়মধ্যে সম্বাদ প্রচারিত হইল যে সত্যানন্দ আসিয়াছেন, সন্তানদিগের সঙ্গে কি কথা কহিবেন, এই বলিয়া তিনি সকলকে আহ্বান করিয়াছেন। তখন দলে দলে সন্তানসম্প্রদায় অজয়তীরে আসিয়া সমবেত হইতে লাগিল। জ্যোৎস্নারাত্রিতে অজয়সৈকতপার্শ্বে বৃহৎ কাননমধ্যে আম্র, পনস, তাল, তিন্তিড়ী, অশ্বত্থ, বেল, বট, শাল্মলী প্রভৃতি বৃক্ষাদি রঞ্জিত মহাগহনে দশ সহস্র সশস্ত্র সন্তান সমবেত হইল। তখন সকলেই পরস্পরের মুখে সত্যানন্দের আগমনবার্তা শ্রবণ করিয়া মহা কোলাহলধ্বনি করিতে লাগিল। সত্যানন্দ কি জন্য কোথায় গিয়াছিলেন, তাহা সাধারণে জানিত না। প্রবাদ এই যে তিনি সন্তানদিগের মঙ্গলকামনায় তপস্যার্থ হিমালয়ে প্রস্থান করিয়াছিলেন। আজ সকলে কাণাকাণি করিতে লাগিল “মহারাজের তপঃসিদ্ধি হইয়াছে―আমাদের রাজ্য হইবে।” তখন বড় কোলাহল হইতে লাগিল। কেহ চীৎকার করিতে লাগিল “মার, মার,\n নেড়ে মার!” কেহ বলিল “জয় জয়! মহারাজ কি জয়!” কেহ গায়িল “হরে মুররে মধুকৈটভারে!” কেহ গায়িল “বন্দে মাতরং!”, কেহ বলে―ভাই এমন দিন কি হইবে, তুচ্ছ বাঙ্গালি হইয়া রণক্ষেত্রে এ শরীর পাত করিব? কেহ বলে ভাই এমন দিন কি হইবে, মসজিদ ভাঙ্গিয়া রাধামাধবের মন্দির গড়িব? কেহ বলে ভাই এমন দিন কি হইবে, আপনার ধন আপনি খাইব? দশ সহস্র নরকণ্ঠের কলকল রব, মধু্র বায়ুসন্তাড়িত বৃক্ষপত্ররাশির মর্ম্মর, সৈকতবাহিনী তরঙ্গিণীর মৃদু মৃদু তর তর রব, নীল আকাশে চন্দ্র তারা শ্বেত মেঘরাশি, শ্যামল ধরণীতলে হরিৎ কানন, স্বচ্ছ নদী, শ্বেত সৈকত, ফুল্ল কুসুমদাম। আর মধ্যে মধ্যে সেই সর্ব্বজনমনোরম “বন্দে মাতরং।” তখন সত্যানন্দ আসিয়া সেই সমবেত সন্তানমণ্ডলীর মধ্যে দাঁড়াইলেন। তখন সেই দশ সহস্র সন্তানমন্তক বৃক্ষবিচ্ছেদপতিত চন্দ্রকিরণে প্রভাসিত হইয়া শ্যামলতৃণভূমে প্রণত হইল। অতি উচ্চৈঃস্বরে অশ্রুপূর্ণলোচনে উভয় বাহু ঊর্দ্ধে উত্তোলন করিয়া সত্যানন্দ বলিলেন,"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.115876+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-010",
+      "before_sha256": "81d2ad0a6c9393b8833495fcfe50c8174200d0b6d380e17e37b55203646f69ba",
+      "after_sha256": "008d0e42d0b6607fd87e461d33835d84c8e08271de8b5398a52013949d839ade",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/নবম পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১৩২-১৩৬)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            0,
+            2
+          ],
+          "source_paragraph_range": [
+            0,
+            1
+          ],
+          "canonical": [
+            "“গুড়ুম্‌ গুড়ুম্‌ গুম্।” ইংরেজের কামান ডাকিল। সেই শব্দ বিশাল কানন কম্পিত করিয়া প্রতিধ্বনিত হইল, “গুড়ুম্‌ গুড়ুম্‌ গুম।” অজয়ের বাঁকে বাঁকে ফিরিয়া সেই ধ্বনি দুরস্থ আকাশপ্রান্ত হইতে প্রতিক্ষিপ্ত হইল। গুড়ুম্‌ গুড়ুম্‌ গুম্‌!”",
+            "অজয়পারে দূরস্থ কাননান্তরের মধ্যে প্রবেশ করিয়া সেই ধ্বনি আবার ডাকিতে লাগিল “গুড়ুম্‌ গুড়ুম্‌ গুম্!” সত্যানন্দ আদেশ করিলেন, তোমরা দেখ কিসের তোপ। কয়েকজন সন্তান তৎক্ষণাৎ অশ্বারোহণ করিয়া দেখিতে ছুটিল, কিন্তু তাহারা কানন হইতে বাহির হইয়া কিছু দূর গেলেই শ্রাবণের ধারার ন্যায় গোলা তাহাদের উপর বৃষ্টি হইল, তাহারা অশ্বসহিত আহত হইয়া সকলেই প্রাণত্যাগ করিল! দূর হইতে সত্যানন্দ তাহা দেখিলেন। বলিলেন “উচ্চ বৃক্ষে উঠ, দেখ কি” তিনি বলিবার অগ্রেই জীবানন্দ বৃক্ষে আরোহণ করিয়া প্রভাতকিরণে দেখিতেছিলেন, তিনি বৃক্ষের উপরিস্থ শাখা হইতে ডাকিয়া বলিলেন “তোপ ইংরেজের।” সত্যানন্দ জিজ্ঞাসা করিলেন “অশ্বারোহী না পদাতি?”"
+          ],
+          "source": [
+            "“গুড়ুম্‌ গুড়ুম্‌ গুম্।” ইংরেজের কামান ডাকিল। সেই শব্দ বিশাল কানন কম্পিত করিয়া প্রতিধ্বনিত হইল, “গুড়ুম্‌ গুড়ুম্‌ গুম।” অজয়ের বাঁকে বাঁকে ফিরিয়া সেই ধ্বনি দুরস্থ আকাশপ্রান্ত হইতে প্রতিক্ষিপ্ত হইল। গুড়ুম্‌ গুড়ুম্‌ গুম্‌!”\n অজয়পারে দূরস্থ কাননান্তরের মধ্যে প্রবেশ করিয়া সেই ধ্বনি আবার ডাকিতে লাগিল “গুড়ুম্‌ গুড়ুম্‌ গুম্!” সত্যানন্দ আদেশ করিলেন, তোমরা দেখ কিসের তোপ। কয়েকজন সন্তান তৎক্ষণাৎ অশ্বারোহণ করিয়া দেখিতে ছুটিল, কিন্তু তাহারা কানন হইতে বাহির হইয়া কিছু দূর গেলেই শ্রাবণের ধারার ন্যায় গোলা তাহাদের উপর বৃষ্টি হইল, তাহারা অশ্বসহিত আহত হইয়া সকলেই প্রাণত্যাগ করিল! দূর হইতে সত্যানন্দ তাহা দেখিলেন। বলিলেন “উচ্চ বৃক্ষে উঠ, দেখ কি” তিনি বলিবার অগ্রেই জীবানন্দ বৃক্ষে আরোহণ করিয়া প্রভাতকিরণে দেখিতেছিলেন, তিনি বৃক্ষের উপরিস্থ শাখা হইতে ডাকিয়া বলিলেন “তোপ ইংরেজের।” সত্যানন্দ জিজ্ঞাসা করিলেন “অশ্বারোহী না পদাতি?”"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.119400+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-011",
+      "before_sha256": "c6db07ed430da96abd916c1962df0fac54128f5750609376df95855d846dd514",
+      "after_sha256": "417d97c653786e1678d7fe3ba97556b77809f6980c95fcaca9d1b20d681c0e2c",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/দশম পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১৩৬-১৪০)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.122709+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-012",
+      "before_sha256": "3bf991ed07e0df0f5067571735a541ff43994c87c89e948f1dc5bcbc5624ac4d",
+      "after_sha256": "249b9896f085c42127cd291f5e27d728a801cd0c0ab07325991430e08149e514",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/একাদশ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১৪০-১৪৫)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            1,
+            3
+          ],
+          "source_paragraph_range": [
+            1,
+            2
+          ],
+          "canonical": [
+            "জীবানন্দ চাহিয়া দেখিল সম্মুখে ভবানন্দ। ভবানন্দ বলিল “জীবানন্দ পুলে লইয়া যাও, রক্ষা নাই।” তখন ধীরে ধীরে পিছে হঠিতে হঠিতে সন্তানসেনা পুলের পারে চলিল। কিন্তু পুল পাইয়া বহুসংখ্যক সন্তান একেবারে পুলের ভিতর প্রবেশ করায় ইংরেজের তোপ সুযোগ পাইল। পুল একেবারে ঝাঁটাইতে লাগিল। সন্তানের দল বিনষ্ট হইতে লাগিল। ভবানন্দ জীবানন্দ ধীরানন্দ একত্র। একটা তোপের দৌরাত্ম্যে ভয়ানক সন্তানক্ষয় হইতেছিল। ভবানন্দ বলিল, “জীবানন্দ, ধীরানন্দ, এস তরবারি ঘুরাইয়া আমরা তিন জন এই তোপটা দখল করি।” তখন তিন জনে তরবারি ঘুরাইরা সেই তোপের নিকটবর্ত্তী তোলন্দাজ সেনা বধ করিল। তখন আর আর সন্তানগণ তাহাদের সাহায্যে",
+            "আসিল। তোপটা ভবনন্দের দখল হইল। তোপ দখল করিয়া ভবানন্দ তাহার উপর উঠিয়া বসিল। করতালি দিয়া বলিল, “বল বন্দে মাতরং।” সকলে গায়িল “বন্দে মাতরং।” ভবানন্দ বলিল, “জীবানন্দ এই তোপে ঘুরাইয়া বেটাদের লুচির ময়দা তৈয়ার করি।” সন্তানেরা সকলে ধরিয়া তোপ ঘুরাইল। তখন তোপ উচ্চনাদে বৈষ্ণবের কর্ণে যেন হরি হরি শব্দে ডাকিতে লাগিল। বহুতর সিপাহী তাহাতে মরিতে লাগিল। ভবানন্দ সেই তোপ টানিয়া আনিয়া পুলের মুখে স্থাপন করিয়া বলিল “তোমরা দুই জনে সন্তানসেনা সারি দিয়া পুল পার করিয়া লইয়া যাও, আমি একা এই ব্যূহমুখ রক্ষা করিব―তোপ চালাইবার জন্য আমার কাছে জন কয় গোলন্দাজ দিয়া যাও।” কুড়িজন বাছা বাছা সন্তান ভবানন্দের কাছে রহিল।"
+          ],
+          "source": [
+            "জীবানন্দ চাহিয়া দেখিল সম্মুখে ভবানন্দ। ভবানন্দ বলিল “জীবানন্দ পুলে লইয়া যাও, রক্ষা নাই।” তখন ধীরে ধীরে পিছে হঠিতে হঠিতে সন্তানসেনা পুলের পারে চলিল। কিন্তু পুল পাইয়া বহুসংখ্যক সন্তান একেবারে পুলের ভিতর প্রবেশ করায় ইংরেজের তোপ সুযোগ পাইল। পুল একেবারে ঝাঁটাইতে লাগিল। সন্তানের দল বিনষ্ট হইতে লাগিল। ভবানন্দ জীবানন্দ ধীরানন্দ একত্র। একটা তোপের দৌরাত্ম্যে ভয়ানক সন্তানক্ষয় হইতেছিল। ভবানন্দ বলিল, “জীবানন্দ, ধীরানন্দ, এস তরবারি ঘুরাইয়া আমরা তিন জন এই তোপটা দখল করি।” তখন তিন জনে তরবারি ঘুরাইরা সেই তোপের নিকটবর্ত্তী তোলন্দাজ সেনা বধ করিল। তখন আর আর সন্তানগণ তাহাদের সাহায্যে\n আসিল। তোপটা ভবনন্দের দখল হইল। তোপ দখল করিয়া ভবানন্দ তাহার উপর উঠিয়া বসিল। করতালি দিয়া বলিল, “বল বন্দে মাতরং।” সকলে গায়িল “বন্দে মাতরং।” ভবানন্দ বলিল, “জীবানন্দ এই তোপে ঘুরাইয়া বেটাদের লুচির ময়দা তৈয়ার করি।” সন্তানেরা সকলে ধরিয়া তোপ ঘুরাইল। তখন তোপ উচ্চনাদে বৈষ্ণবের কর্ণে যেন হরি হরি শব্দে ডাকিতে লাগিল। বহুতর সিপাহী তাহাতে মরিতে লাগিল। ভবানন্দ সেই তোপ টানিয়া আনিয়া পুলের মুখে স্থাপন করিয়া বলিল “তোমরা দুই জনে সন্তানসেনা সারি দিয়া পুল পার করিয়া লইয়া যাও, আমি একা এই ব্যূহমুখ রক্ষা করিব―তোপ চালাইবার জন্য আমার কাছে জন কয় গোলন্দাজ দিয়া যাও।” কুড়িজন বাছা বাছা সন্তান ভবানন্দের কাছে রহিল।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.128107+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-013",
+      "before_sha256": "4a2ff0d4a9ae67693da268dfbbc137ef4c104369294d0730f4075e8d8ed9e094",
+      "after_sha256": "e939af5bbae60c319617d55b6ffdec0b0426506c240e52768372389cea211cac",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/দ্বাদশ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১৪৫-১৫০)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            0,
+            2
+          ],
+          "source_paragraph_range": [
+            0,
+            1
+          ],
+          "canonical": [
+            "রণজয়ের পর, অজয়তীরে সত্যানন্দকে ঘেরিয়া বিজয়ী বীরবর্গ",
+            "নানা উৎসব করিতে লাগিল। কেবল সত্যানন্দ বিমর্ষ, ভবানন্দের জন্য।"
+          ],
+          "source": [
+            "রণজয়ের পর, অজয়তীরে সত্যানন্দকে ঘেরিয়া বিজয়ী বীরবর্গ\n নানা উৎসব করিতে লাগিল। কেবল সত্যানন্দ বিমর্ষ, ভবানন্দের জন্য।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.131802+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-014",
+      "before_sha256": "e1e00fd5f2d43f5fa435bec6cc8eb1dd23324845bb0c550f992ed7470a673a23",
+      "after_sha256": "e7a8851ffe9a641979db8d92325d9942780a0053ab5da8030dced4f8566d9dc4",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/ত্রয়োদশ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১৫০-১৫৪)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            1,
+            3
+          ],
+          "source_paragraph_range": [
+            1,
+            2
+          ],
+          "canonical": [
+            "দলে দলে ত্রস্ত মুসলমানেরা নগরাভিমুখে ধাবিত হইল।",
+            "যেখানে মহারাজ বীরভূমাধিপতি আসাদ-উল্‌ জমান বাহাদুর রাজসিংহাসনে সুখে আসীন, সেই খানেই দারুণ রাজ্যধ্বংসসূচক বার্ত্তা পৌঁছিল। তখন অতি ব্যস্তে চারিদিকে রাজপুরুষেরা ছুটিল, রাজার অবশিষ্ট সিপাহী সুসজ্জিত হইয়া নগররক্ষার্থে শ্রেণীবদ্ধ হইল। রাজনগরের গড়ের ঘাটে ঘাটে, প্রকোষ্ঠ সকলে রক্ষকবর্গ সশস্ত্রে অতি সাবধানে, দ্বাররক্ষায় নিযুক্ত হইল। রাজধানী মধ্যে সমস্ত লোক সমস্তরাত্রি জাগরণ করিয়া, কি হয় কি হয় চিন্তা করিতে লাগিল। হিন্দুরা বলিতে লাগিল “আসুক সন্ন্যাসীরা আসুক, মা দুর্গা করুন, হিন্দুর অদৃষ্টে সেই দিন হউক।” মুসলমানের বলিতে লাগিল “আল্লা আকবর! এতনা রোজের পর কোরাণসরিফ বেবাক কি ঝুঁটো হলো; মোরা যে পাঁচু ওয়াক্ত নমাজ করি, তা এই তেলককাটা হেঁদুর দল ফতে করতে নারলাম। দুনিয়া সব ফাঁকি।” এইরূপে কেহ ক্রন্দন, কেহ হাস্য করিয়া সকলেই ঘোরতর আগ্রহের সহিত রাত্রি কাটাইতে লাগিল।"
+          ],
+          "source": [
+            "দলে দলে ত্রস্ত মুসলমানেরা নগরাভিমুখে ধাবিত হইল।\n যেখানে মহারাজ বীরভূমাধিপতি আসাদ-উল্‌ জমান বাহাদুর রাজসিংহাসনে সুখে আসীন, সেই খানেই দারুণ রাজ্যধ্বংসসূচক বার্ত্তা পৌঁছিল। তখন অতি ব্যস্তে চারিদিকে রাজপুরুষেরা ছুটিল, রাজার অবশিষ্ট সিপাহী সুসজ্জিত হইয়া নগররক্ষার্থে শ্রেণীবদ্ধ হইল। রাজনগরের গড়ের ঘাটে ঘাটে, প্রকোষ্ঠ সকলে রক্ষকবর্গ সশস্ত্রে অতি সাবধানে, দ্বাররক্ষায় নিযুক্ত হইল। রাজধানী মধ্যে সমস্ত লোক সমস্তরাত্রি জাগরণ করিয়া, কি হয় কি হয় চিন্তা করিতে লাগিল। হিন্দুরা বলিতে লাগিল “আসুক সন্ন্যাসীরা আসুক, মা দুর্গা করুন, হিন্দুর অদৃষ্টে সেই দিন হউক।” মুসলমানের বলিতে লাগিল “আল্লা আকবর! এতনা রোজের পর কোরাণসরিফ বেবাক কি ঝুঁটো হলো; মোরা যে পাঁচু ওয়াক্ত নমাজ করি, তা এই তেলককাটা হেঁদুর দল ফতে করতে নারলাম। দুনিয়া সব ফাঁকি।” এইরূপে কেহ ক্রন্দন, কেহ হাস্য করিয়া সকলেই ঘোরতর আগ্রহের সহিত রাত্রি কাটাইতে লাগিল।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.135889+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-015",
+      "before_sha256": "7172991ca8724b3c65528a3f639ecdfffd48a6ad77cbeaeb6e75b6abf9a1275e",
+      "after_sha256": "34f5e75907de9e89c50ea5e78212b6e8d615eb963555d836ede4da18c04fbf20",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/চতুর্দ্দশ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১৫৪-১৫৬)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            1,
+            3
+          ],
+          "source_paragraph_range": [
+            1,
+            2
+          ],
+          "canonical": [
+            "জীবানন্দ ভবানন্দের কাছে কল্যাণীর জীবন রক্ষা বৃত্তান্ত সকল অবগত হইয়াছিল—এবং তাহার বর্ত্তমান বাসস্থানও সর্ব্বস্থান-",
+            "বিচারিণী শান্তির কাছে শুনিয়াছিল। ক্রমে ক্রমে সকল মহেন্দ্রকে শুনাইতে লাগিল।"
+          ],
+          "source": [
+            "জীবানন্দ ভবানন্দের কাছে কল্যাণীর জীবন রক্ষা বৃত্তান্ত সকল অবগত হইয়াছিল—এবং তাহার বর্ত্তমান বাসস্থানও সর্ব্বস্থান-\n বিচারিণী শান্তির কাছে শুনিয়াছিল। ক্রমে ক্রমে সকল মহেন্দ্রকে শুনাইতে লাগিল।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.138470+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-016",
+      "before_sha256": "aef5dec1d14c4ec4c6537668fe5becbc06234ba47cb6ba94a0ce83af92b71708",
+      "after_sha256": "175dbf98f76d87d8e746580f62b2b4eb9bd9e54bd752f315a38134cedfede043",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/পঞ্চদশ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১৫৬-১৫৯)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            0,
+            2
+          ],
+          "source_paragraph_range": [
+            0,
+            1
+          ],
+          "canonical": [
+            "পদচিহ্নে নূতন দুর্গমধ্যে আজ সুখে সমবেত, মহেন্দ্র, কল্যাণী, জীবানন্দ, শান্তি, নিমাই, নিমাইয়ের স্বামী, সুকুমারী। সকলে সুখে সম্মিলিত। শান্তি নবীনানন্দের বেশে আসিয়াছিলেন। কল্যাণীকে যে রাত্রে আপন কুটীরে আনেন, সেই রাত্রে বারণ",
+            "করিয়াছিলেন, যে নবীনানন্দ যে স্ত্রীলোক এ কথা কল্যাণী স্বামীর সাক্ষাতে প্রকাশ না করুন। একদিন কল্যাণী তাঁহাকে অন্তঃপুরে ডাকিয়া পাঠাইলেন। নবীনানন্দ অন্তঃপুরমধ্যে প্রবেশ করিলেন। ভৃত্যগণ বারণ করিল, শুনিলেন না।"
+          ],
+          "source": [
+            "পদচিহ্নে নূতন দুর্গমধ্যে আজ সুখে সমবেত, মহেন্দ্র, কল্যাণী, জীবানন্দ, শান্তি, নিমাই, নিমাইয়ের স্বামী, সুকুমারী। সকলে সুখে সম্মিলিত। শান্তি নবীনানন্দের বেশে আসিয়াছিলেন। কল্যাণীকে যে রাত্রে আপন কুটীরে আনেন, সেই রাত্রে বারণ\n করিয়াছিলেন, যে নবীনানন্দ যে স্ত্রীলোক এ কথা কল্যাণী স্বামীর সাক্ষাতে প্রকাশ না করুন। একদিন কল্যাণী তাঁহাকে অন্তঃপুরে ডাকিয়া পাঠাইলেন। নবীনানন্দ অন্তঃপুরমধ্যে প্রবেশ করিলেন। ভৃত্যগণ বারণ করিল, শুনিলেন না।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.141588+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-017",
+      "before_sha256": "bb99c718c9dcaababf0363209fe8c1a9de2436f036e5ee61169576ca4cb6ff3e",
+      "after_sha256": "79d5a4e08e694d4f30eb2531f27046872802bfa134a7f550955f4d96633e1802",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/ষোড়শ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১৬০-১৬২)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.144205+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-018",
+      "before_sha256": "5c84474f5102a2553da18f442404e54ba1d71e74dc320acd74518bbd12864e32",
+      "after_sha256": "363e4e59633c99c03a8ae3356c5249643001647f70d7f385d4096530290d7579",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/সপ্তদশ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১৬২-১৬৬)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            2,
+            4
+          ],
+          "source_paragraph_range": [
+            2,
+            3
+          ],
+          "canonical": [
+            "চিকন রকম রসকলির উপর খয়েরের টিপ কাটিয়া তৎকালপ্রচলিত ফুর ফুরে কোঁকড়া কোঁকড়া কতকগুলো ঝাঁপটার গোছায় চাদমুখ খানি ঢাকিয়া, শান্তি একটী সারঙ্গ হস্তে বৈষ্ণবী বেশে, ইংরেজশিবিরে দর্শন দিল। দেখিয়া ভ্রমরকৃষ্ণশ্মশ্রুযুক্ত সিপাহীরা বড় মাতিয়া গেল। কেহ টপ্পা, কেহ গজল, কেহ শ্যামাবিষয়,",
+            "কেহ কৃষ্ণবিষয়, ফরমাস করিয়া শুনিল? কেহ চাল দিল, কেহ দাল দিল; কেহ মিষ্ট দিল, কেহ পয়সা দিল, কেহ সিকি দিল। বৈষ্ণবী তখন শিবিরের অবস্থা স্বচক্ষে সবিশেষ দেখিয়া, চলিয়া যায়, সিপাহীরা জিজ্ঞাসা করিল “আবার কবে আসিবে?” বৈষ্ণবী বলিল “তা জানি না, আমার বাড়ী ঢের দূর।” সিপাহীরা জিজ্ঞাসা করিল “কত দূর?” বৈষ্ণবী বলিল “আমার বাড়ী পদচিহ্নে” এখন সেই দিন মেজর উড পদচিহ্নের কিছু খবর লইতেছিলেন। একজন সিপাহী তাহা জানিত। বৈষ্ণবীকে ডাকিয়া কাপ্তেন সাহেবের কাছে লইয়া গেল। কাপ্তেন সাহেব তাহাকে মেজর উডের কাছে লইয়া গেল! মেজর উডের কাছে গিয়া বৈষ্ণবী মধুর হাসি হাসিয়া, মর্ম্মভেদী কটাক্ষে উড সাহেবের মাথা ঘুরাইয়া দিয়া, খঞ্জনীতে আঘাত করিয়া, গান ধরিল।"
+          ],
+          "source": [
+            "চিকন রকম রসকলির উপর খয়েরের টিপ কাটিয়া তৎকালপ্রচলিত ফুর ফুরে কোঁকড়া কোঁকড়া কতকগুলো ঝাঁপটার গোছায় চাদমুখ খানি ঢাকিয়া, শান্তি একটী সারঙ্গ হস্তে বৈষ্ণবী বেশে, ইংরেজশিবিরে দর্শন দিল। দেখিয়া ভ্রমরকৃষ্ণশ্মশ্রুযুক্ত সিপাহীরা বড় মাতিয়া গেল। কেহ টপ্পা, কেহ গজল, কেহ শ্যামাবিষয়,\n কেহ কৃষ্ণবিষয়, ফরমাস করিয়া শুনিল? কেহ চাল দিল, কেহ দাল দিল; কেহ মিষ্ট দিল, কেহ পয়সা দিল, কেহ সিকি দিল। বৈষ্ণবী তখন শিবিরের অবস্থা স্বচক্ষে সবিশেষ দেখিয়া, চলিয়া যায়, সিপাহীরা জিজ্ঞাসা করিল “আবার কবে আসিবে?” বৈষ্ণবী বলিল “তা জানি না, আমার বাড়ী ঢের দূর।” সিপাহীরা জিজ্ঞাসা করিল “কত দূর?” বৈষ্ণবী বলিল “আমার বাড়ী পদচিহ্নে” এখন সেই দিন মেজর উড পদচিহ্নের কিছু খবর লইতেছিলেন। একজন সিপাহী তাহা জানিত। বৈষ্ণবীকে ডাকিয়া কাপ্তেন সাহেবের কাছে লইয়া গেল। কাপ্তেন সাহেব তাহাকে মেজর উডের কাছে লইয়া গেল! মেজর উডের কাছে গিয়া বৈষ্ণবী মধুর হাসি হাসিয়া, মর্ম্মভেদী কটাক্ষে উড সাহেবের মাথা ঘুরাইয়া দিয়া, খঞ্জনীতে আঘাত করিয়া, গান ধরিল।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.148114+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-019",
+      "before_sha256": "9c3fd0251b550ec5a889f70a6b562e6c1ca6d195ab1e7e06ccbbfe56cb3ce704",
+      "after_sha256": "3feee9599bed7e238e844422be7cbe085cd2445787ab2f4ab7d8de83e7e7663a",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/অষ্টাদশ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১৬৬-১৭২)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            0,
+            2
+          ],
+          "source_paragraph_range": [
+            0,
+            1
+          ],
+          "canonical": [
+            "উড্‌ পাকা ইংরেজ। ঘাটিতে ঘাটিতে, তাহার লোক ছিল। শীঘ্র তাহার নিকটে খবর পৌঁছিল, যে সেই বৈষ্ণবীটা লিণ্ডলে সাহেবকে ফেলিয়া দিয়া আপনি ঘোড়ায় চড়িয়া কোথায় চলিয়া গিয়াছে। শুনিয়াই মেজর উড্‌ বলিলেন “An imp of Satan! Strike the tents.\"",
+            "তখন ঠক্ ঠক্ খটা খট্‌ তাম্বুর খোঁটায় মুগুরের ঘা পড়িতে লাগিল। মেঘরচিত অমরাবতীর ন্যায় বস্ত্রনগরী অন্তর্হিতা হইল। মাল গাড়িতে বোঝাই হইল। মানুষ ঘোড়ায় অথবা আপনার পায়ে। হিন্দু মুসলমান মাদরাজী গোরা বন্দুক ঘাড়ে মস্‌ মস্ করিয়া চলিল। কামানের গাড়ি ঘড়োর ঘড়োর করিতে করিতে চলিল।"
+          ],
+          "source": [
+            "উড্‌ পাকা ইংরেজ। ঘাটিতে ঘাটিতে, তাহার লোক ছিল। শীঘ্র তাহার নিকটে খবর পৌঁছিল, যে সেই বৈষ্ণবীটা লিণ্ডলে সাহেবকে ফেলিয়া দিয়া আপনি ঘোড়ায় চড়িয়া কোথায় চলিয়া গিয়াছে। শুনিয়াই মেজর উড্‌ বলিলেন “An imp of Satan! Strike the tents.\"\n  তখন ঠক্ ঠক্ খটা খট্‌ তাম্বুর খোঁটায় মুগুরের ঘা পড়িতে লাগিল। মেঘরচিত অমরাবতীর ন্যায় বস্ত্রনগরী অন্তর্হিতা হইল। মাল গাড়িতে বোঝাই হইল। মানুষ ঘোড়ায় অথবা আপনার পায়ে। হিন্দু মুসলমান মাদরাজী গোরা বন্দুক ঘাড়ে মস্‌ মস্ করিয়া চলিল। কামানের গাড়ি ঘড়োর ঘড়োর করিতে করিতে চলিল।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.153138+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-020",
+      "before_sha256": "8848b1e35435f6e20efd843a9f21897489af29dffb99ef79cf1cf15abd18feaf",
+      "after_sha256": "45586fc47c5f80e7a2f582414decbf5176429c437723db1c1629b2db39ae37ed",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/ঊনবিংশ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১৭২-১৭৭)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.157142+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-021",
+      "before_sha256": "9bc6dba9e5717853121bd3fdaa76c3150816557014cd9c185497f563c9c376f4",
+      "after_sha256": "1a73965cdb8e47c7a3ad4519813c525d518c6be91c8e0d4b83077e9962c27a1d",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/বিংশ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১৭৭-১৮০)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            6,
+            8
+          ],
+          "source_paragraph_range": [
+            6,
+            7
+          ],
+          "canonical": [
+            "শুনিয়া সত্যানন্দ তীব্র মর্ম্মপীড়ায় কাতর হইলেন। বলিলেন",
+            "“হে প্রভু! যদি হিন্দুরাজ্য স্থাপিত হইবে না, তবে কে রাজা হইবে? আবাব কি মুসলমান রাজা হইবে?”"
+          ],
+          "source": [
+            "শুনিয়া সত্যানন্দ তীব্র মর্ম্মপীড়ায় কাতর হইলেন। বলিলেন\n “হে প্রভু! যদি হিন্দুরাজ্য স্থাপিত হইবে না, তবে কে রাজা হইবে? আবাব কি মুসলমান রাজা হইবে?”"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.160573+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-022",
+      "before_sha256": "6d0b81a45059577172020a562899165b266fc07342e28d446436904545bf252f",
+      "after_sha256": "f0a3f72852a32364d57428496b094eef59ce59f2f20850f3d9421c59f924b5f4",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/প্রথম পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ৩-৮)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.165395+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-023",
+      "before_sha256": "37bdb3a9cfbea4ec31af7ad61cb7e9c5ba03c19c94f4fe7854fe2bc56da8da08",
+      "after_sha256": "bc29d7690192260ed902532c915f20cdb45db91ead10b6b3a3b907a6ea729bcd",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/দ্বিতীয় পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ৮-৯)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            0,
+            2
+          ],
+          "source_paragraph_range": [
+            0,
+            1
+          ],
+          "canonical": [
+            "মহেন্দ্র চলিয়া গেল। কল্যাণী একা বালিকা লইয়া সেই জনশূন্যস্থানে প্রায়-অন্ধকার কুটীরমধ্যে চারিদিক্‌ নিরীক্ষণ করিতেছিলেন। তাঁহার মনে মনে বড় ভয় হইতেছিল। কেহ কোথাও নাই, মনুষ্যমাত্রের কোন শব্দ পাওয়া যায় না, কেবল শৃগাল-কুক্কুরের রব। ভাবিতেছিলেন, কেন তাঁহাকে যাইতে দিলাম, না হয় আর কিছুক্ষণ ক্ষুধা তৃষ্ণা সহ্য করিতাম। মনে করিলেন, চারিদিকের দ্বার রুদ্ধ করিয়া বসি। কিন্তু একটী দ্বারেও কপাট বা অর্গল নাই। এইরূপ চারিদিক্ চাহিয়া দেখিতে দেখিতে সম্মুখস্থ দ্বারে একটা কি ছায়ার মত দেখিলেন। মনুষ্যাকৃতি",
+            "বোধ হয়, কিন্তু মনুষ্যও বোধ হয় না। অতিশয় শুষ্ক, শীর্ণ, অতিশয় কৃষ্ণবর্ণ, উলঙ্গ, বিকটাকার মনুষ্যের মত কি আসিয়া দ্বারে দাঁড়াইল। কিছুক্ষণ পরে সেই ছায়া যেন একটা হাত তুলিল, অস্থিচর্ম্মবিশিষ্ট, অতি দীর্ঘ, শুষ্ক হস্তের দীর্ঘ শুষ্ক অঙ্গুলি দ্বারা কাহাকে যেন সঙ্কেত করিয়া ডাকিল। কল্যাণীর প্রাণ শুকাইল। তখন সেইরূপ আর একটা ছায়া—শুষ্ক, কৃষ্ণবর্ণ, দীর্ঘাকার, উলঙ্গ,—প্রথম ছায়ার পাশে আসিয়া দাঁড়াইল। তার পর আর একটা আসিল। তার পর আরও একটা আসিল। কত আসিল। ধীরে ধীরে নিঃশব্দে তাহারা গৃহমধ্যে প্রবেশ করিতে লাগিল। সেই প্রায়-অন্ধকার গৃহ নিশীথ শ্মশানের মত ভয়ঙ্কর হইয়া উঠিল। তখন সেই প্রেতবৎ মূর্ত্তিসকল কল্যাণী এবং তাঁহার কন্যাকে ঘিরিয়া দাঁড়াইল। কল্যাণী প্রায় মূর্চ্ছিতা হইলেন। কৃষ্ণবর্ণ শীর্ণ পুরুষেরা তখন কল্যাণী এবং তাঁহার কন্যাকে ধরিয়া তুলিয়া, গৃহের বাহির করিয়া, মাঠ পার হইয়া এক জঙ্গলমধ্যে প্রবেশ করিল।"
+          ],
+          "source": [
+            "মহেন্দ্র চলিয়া গেল। কল্যাণী একা বালিকা লইয়া সেই জনশূন্যস্থানে প্রায়-অন্ধকার কুটীরমধ্যে চারিদিক্‌ নিরীক্ষণ করিতেছিলেন। তাঁহার মনে মনে বড় ভয় হইতেছিল। কেহ কোথাও নাই, মনুষ্যমাত্রের কোন শব্দ পাওয়া যায় না, কেবল শৃগাল-কুক্কুরের রব। ভাবিতেছিলেন, কেন তাঁহাকে যাইতে দিলাম, না হয় আর কিছুক্ষণ ক্ষুধা তৃষ্ণা সহ্য করিতাম। মনে করিলেন, চারিদিকের দ্বার রুদ্ধ করিয়া বসি। কিন্তু একটী দ্বারেও কপাট বা অর্গল নাই। এইরূপ চারিদিক্ চাহিয়া দেখিতে দেখিতে সম্মুখস্থ দ্বারে একটা কি ছায়ার মত দেখিলেন। মনুষ্যাকৃতি\n বোধ হয়, কিন্তু মনুষ্যও বোধ হয় না। অতিশয় শুষ্ক, শীর্ণ, অতিশয় কৃষ্ণবর্ণ, উলঙ্গ, বিকটাকার মনুষ্যের মত কি আসিয়া দ্বারে দাঁড়াইল। কিছুক্ষণ পরে সেই ছায়া যেন একটা হাত তুলিল, অস্থিচর্ম্মবিশিষ্ট, অতি দীর্ঘ, শুষ্ক হস্তের দীর্ঘ শুষ্ক অঙ্গুলি দ্বারা কাহাকে যেন সঙ্কেত করিয়া ডাকিল। কল্যাণীর প্রাণ শুকাইল। তখন সেইরূপ আর একটা ছায়া—শুষ্ক, কৃষ্ণবর্ণ, দীর্ঘাকার, উলঙ্গ,—প্রথম ছায়ার পাশে আসিয়া দাঁড়াইল। তার পর আর একটা আসিল। তার পর আরও একটা আসিল। কত আসিল। ধীরে ধীরে নিঃশব্দে তাহারা গৃহমধ্যে প্রবেশ করিতে লাগিল। সেই প্রায়-অন্ধকার গৃহ নিশীথ শ্মশানের মত ভয়ঙ্কর হইয়া উঠিল। তখন সেই প্রেতবৎ মূর্ত্তিসকল কল্যাণী এবং তাঁহার কন্যাকে ঘিরিয়া দাঁড়াইল। কল্যাণী প্রায় মূর্চ্ছিতা হইলেন। কৃষ্ণবর্ণ শীর্ণ পুরুষেরা তখন কল্যাণী এবং তাঁহার কন্যাকে ধরিয়া তুলিয়া, গৃহের বাহির করিয়া, মাঠ পার হইয়া এক জঙ্গলমধ্যে প্রবেশ করিল।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.167480+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-024",
+      "before_sha256": "0c082c65fd9fefaded819cca7272c978ca01a9dfd70d85813b8140a8551ad8e2",
+      "after_sha256": "ea31eab4e0995e42608d6429fe6e832ebab6b2946d61b4e3cb36bb07ee9d5591",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/তৃতীয় পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ৯-১১)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            0,
+            2
+          ],
+          "source_paragraph_range": [
+            0,
+            1
+          ],
+          "canonical": [
+            "যে বনমধ্যে দস্যুরা কল্যাণীকে নামাইল, সে বন অতি মনোহর। আলো নাই, শোভা দেখে এমন চক্ষুও নাই, দরিদ্রের হৃদয়ান্তর্গত",
+            "সৌন্দর্য্যের ন্যায় সে বনের সৌন্দর্য্য অদৃষ্ট রহিল। দেশে আহার থাকুক বা না থাকুক—বনে ফুল আছে, ফুলের গন্ধে সে অন্ধকারেও আলো বোধ হইতেছিল। মধ্যে পরিষ্কৃত সুকোমল শষ্পাবৃত ভূমিখণ্ডে দস্যুরা কল্যাণী ও তাঁহার কন্যাকে নামাইল। তাহারা তাহাদিগকে ঘিরিয়া বসিল। তখন তাহারা বাদানুবাদ করিতে লাগিল যে, ইহাদিগকে লইয়া কি করা যায়—যে কিছু অলঙ্কার কল্যাণীর সঙ্গে ছিল, তাহা পূর্ব্বেই তাহারা হস্তগত করিয়াছিল। একদল তাহার বিভাগে ব্যতিব্যস্ত। অলঙ্কারগুলি বিভক্ত হইলে, একজন দস্যু বলিল, “আমরা সোণা রূপা লইয়া কি করিব, একখানা গহনা লইয়া কেহ আমাকে এক মুটা চাল দাও, ক্ষুধায় প্রাণ যায়—আজ কেবল গাছের পাতা খাইয়া আছি।” একজন এই কথা বলিলে সকলেই সেইরূপ বলিয়া গোল করিতে লাগিল। “চাল দাও”, “চাল দাও”, “ক্ষুধায় প্রাণ যায়, সোণা রূপা চাহি না।” দলপতি তাহাদিগকে থামাইতে লাগিল, কিন্তু কেহ থামে না, ক্রমে উচ্চ উচ্চ কথা হইতে লাগিল, গালাগালি হইতে লাগিল, মারামারির উপক্রম। যে, যে অলঙ্কার ভাগে পাইয়াছিল, সে, সে অলঙ্কার রাগে তাহার দলপতির গায়ে ছুড়িয়া মারিল। দলপতি দুই এক জনকে মারিল, তখন সকলে দলপতিকে আক্রমণ করিয়া তাহাকে আঘাত করিতে লাগিল। দলপতি অনাহারে শীর্ণ এবং ক্লিষ্ট ছিল, দুই এক আঘাতেই ভূপতিত হইয়া প্রাণত্যাগ করিল। তখন ক্ষুধিত, রুষ্ট, উত্তেজিত, জ্ঞানশূন্য দস্যুদলের মধ্যে একজন বলিল, “শৃগাল কুক্কুরের মাংস খাইয়াছি, ক্ষুধায় প্রাণ যায়, এস ভাই, আজ এই বেটাকে খাই।” তখন সকলে “জয় কালি” বলিয়া উচ্চনাদ করিয়া উঠিল। “বম্ কালি! আজ নরমাংস খাইব!” এই বলিয়া সেই বিশীর্ণদেহ কৃষ্ণকায় প্রেতবৎ মূর্ত্তিসকল অন্ধকারে খলখল হাস্য করিয়া, করতালি দিয়া নাচিতে আরম্ভ করিল। দলপতির দেহ পোড়াইবার জন্য একজন অগ্নি জ্বালিতে প্রবৃত্ত হইল। শুষ্ক লতা, কাষ্ঠ, তৃণ আহরণ করিয়া চক্‌মকি সোলার আগুন করিয়া, সেই তৃণকাষ্ঠ জ্বালিয়া দিল। তখন অল্প অল্প অগ্নি জ্বলিতে জ্বলিতে পার্শ্ববর্ত্তী আম্র, জম্বীর, পনস, তাল, তিন্তিড়ী, খর্জ্জূর প্রভৃতির শ্যামল পল্লবরাজি, অল্প অল্প প্রভাসিত হইতে লাগিল। কোথাও পাতা আলোতে জ্বলিতে লাগিল, কোথাও ঘাস উজ্জ্বল হইল। কোথাও অন্ধকার আরও গাঢ় হইল। অগ্নি প্রস্তুত হইলে, একজন মৃতশবের পা ধরিয়া টানিয়া আগুনে ফেলিতে গেল। তখন আর একজন বলিল, “রাখ ভাই রাখ, রও, রও, যদি মহামাংস খাইয়াই আজ প্রাণ রাখিতে হইবে, তবে এই বুড়ার শুক্‌ন মাংস কেন খাই? আজ যাহা লুঠিয়া আনিয়াছি, তাহাই খাইব; এস ঐ কচি মেয়েটাকে পোড়াইয়া খাই।” আর একজন বলিল, “যাহা হয় পোড়া বাপু, আর ক্ষুধা সয় না।” তখন সকলে লোলুপ হইয়া যেখানে কল্যাণী কন্যা শুইয়াছিল, সেই দিকে চাহিল। দেখিল যে, সে স্থান শূন্য, কন্যাও নাই, মাতাও নাই। দস্যুদিগের বিবাদের সময় সুযোগ দেখিয়া, কল্যাণী কন্যা কোলে করিয়া, কন্যার মুখে স্তনটি দিয়া, বনমধ্যে পলাইয়াছে। শিকার পলাইয়াছে দেখিয়া মার্‌ মার্‌ শব্দ করিয়া, সেই প্রেতমূর্ত্তি দস্যুদল চারিদিকে ছুটিল। অবস্থাবিশেষে মনুষ্য হিংস্র জন্তুমাত্র।"
+          ],
+          "source": [
+            "যে বনমধ্যে দস্যুরা কল্যাণীকে নামাইল, সে বন অতি মনোহর। আলো নাই, শোভা দেখে এমন চক্ষুও নাই, দরিদ্রের হৃদয়ান্তর্গত\n সৌন্দর্য্যের ন্যায় সে বনের সৌন্দর্য্য অদৃষ্ট রহিল। দেশে আহার থাকুক বা না থাকুক—বনে ফুল আছে, ফুলের গন্ধে সে অন্ধকারেও আলো বোধ হইতেছিল। মধ্যে পরিষ্কৃত সুকোমল শষ্পাবৃত ভূমিখণ্ডে দস্যুরা কল্যাণী ও তাঁহার কন্যাকে নামাইল। তাহারা তাহাদিগকে ঘিরিয়া বসিল। তখন তাহারা বাদানুবাদ করিতে লাগিল যে, ইহাদিগকে লইয়া কি করা যায়—যে কিছু অলঙ্কার কল্যাণীর সঙ্গে ছিল, তাহা পূর্ব্বেই তাহারা হস্তগত করিয়াছিল। একদল তাহার বিভাগে ব্যতিব্যস্ত। অলঙ্কারগুলি বিভক্ত হইলে, একজন দস্যু বলিল, “আমরা সোণা রূপা লইয়া কি করিব, একখানা গহনা লইয়া কেহ আমাকে এক মুটা চাল দাও, ক্ষুধায় প্রাণ যায়—আজ কেবল গাছের পাতা খাইয়া আছি।” একজন এই কথা বলিলে সকলেই সেইরূপ বলিয়া গোল করিতে লাগিল। “চাল দাও”, “চাল দাও”, “ক্ষুধায় প্রাণ যায়, সোণা রূপা চাহি না।” দলপতি তাহাদিগকে থামাইতে লাগিল, কিন্তু কেহ থামে না, ক্রমে উচ্চ উচ্চ কথা হইতে লাগিল, গালাগালি হইতে লাগিল, মারামারির উপক্রম। যে, যে অলঙ্কার ভাগে পাইয়াছিল, সে, সে অলঙ্কার রাগে তাহার দলপতির গায়ে ছুড়িয়া মারিল। দলপতি দুই এক জনকে মারিল, তখন সকলে দলপতিকে আক্রমণ করিয়া তাহাকে আঘাত করিতে লাগিল। দলপতি অনাহারে শীর্ণ এবং ক্লিষ্ট ছিল, দুই এক আঘাতেই ভূপতিত হইয়া প্রাণত্যাগ করিল। তখন ক্ষুধিত, রুষ্ট, উত্তেজিত, জ্ঞানশূন্য দস্যুদলের মধ্যে একজন বলিল, “শৃগাল কুক্কুরের মাংস খাইয়াছি, ক্ষুধায় প্রাণ যায়, এস ভাই, আজ এই বেটাকে খাই।” তখন সকলে “জয় কালি” বলিয়া উচ্চনাদ করিয়া উঠিল। “বম্ কালি! আজ নরমাংস খাইব!” এই বলিয়া সেই বিশীর্ণদেহ কৃষ্ণকায় প্রেতবৎ মূর্ত্তিসকল অন্ধকারে খলখল হাস্য করিয়া, করতালি দিয়া নাচিতে আরম্ভ করিল। দলপতির দেহ পোড়াইবার জন্য একজন অগ্নি জ্বালিতে প্রবৃত্ত হইল। শুষ্ক লতা, কাষ্ঠ, তৃণ আহরণ করিয়া চক্‌মকি সোলার আগুন করিয়া, সেই তৃণকাষ্ঠ জ্বালিয়া দিল। তখন অল্প অল্প অগ্নি জ্বলিতে জ্বলিতে পার্শ্ববর্ত্তী আম্র, জম্বীর, পনস, তাল, তিন্তিড়ী, খর্জ্জূর প্রভৃতির শ্যামল পল্লবরাজি, অল্প অল্প প্রভাসিত হইতে লাগিল। কোথাও পাতা আলোতে জ্বলিতে লাগিল, কোথাও ঘাস উজ্জ্বল হইল। কোথাও অন্ধকার আরও গাঢ় হইল। অগ্নি প্রস্তুত হইলে, একজন মৃতশবের পা ধরিয়া টানিয়া আগুনে ফেলিতে গেল। তখন আর একজন বলিল, “রাখ ভাই রাখ, রও, রও, যদি মহামাংস খাইয়াই আজ প্রাণ রাখিতে হইবে, তবে এই বুড়ার শুক্‌ন মাংস কেন খাই? আজ যাহা লুঠিয়া আনিয়াছি, তাহাই খাইব; এস ঐ কচি মেয়েটাকে পোড়াইয়া খাই।” আর একজন বলিল, “যাহা হয় পোড়া বাপু, আর ক্ষুধা সয় না।” তখন সকলে লোলুপ হইয়া যেখানে কল্যাণী কন্যা শুইয়াছিল, সেই দিকে চাহিল। দেখিল যে, সে স্থান শূন্য, কন্যাও নাই, মাতাও নাই। দস্যুদিগের বিবাদের সময় সুযোগ দেখিয়া, কল্যাণী কন্যা কোলে করিয়া, কন্যার মুখে স্তনটি দিয়া, বনমধ্যে পলাইয়াছে। শিকার পলাইয়াছে দেখিয়া মার্‌ মার্‌ শব্দ করিয়া, সেই প্রেতমূর্ত্তি দস্যুদল চারিদিকে ছুটিল। অবস্থাবিশেষে মনুষ্য হিংস্র জন্তুমাত্র।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.170361+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-025",
+      "before_sha256": "6f5e858e97fd520bdf0830505785c24d310d4a7e041799a63c37b133ad0515c3",
+      "after_sha256": "b5bf2cbfe7e4c9014e85729a1f84d23a4cff5027541c7d25887580f4017a8802",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/চতুর্থ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১২-১৪)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.172680+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-026",
+      "before_sha256": "6be12309eaffa6a37d864bafdc64aec6c31d1c0b10710fc4b45b566761bdc58e",
+      "after_sha256": "ec712b2980bbbf11242d0d2e91e07d07b85c3ed2636d8d0d144bafb15688ceb4",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/পঞ্চম পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১৪-১৬)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            1,
+            3
+          ],
+          "source_paragraph_range": [
+            1,
+            2
+          ],
+          "canonical": [
+            "কল্যাণী প্রথমে কিছুই বুঝিতে পারিলেন না, তার পর ক্রমে ক্রমে মনের কিছু স্থৈর্য্য হইলে, গলায় আঁচল দিয়া সেই তাঁহাকে একটি",
+            "প্রণাম করিলেন। তিনি সুমঙ্গল আশীর্ব্বাদ করিয়া, গৃহান্তর হইতে একটি সুগন্ধ মৃৎপাত্র বাহির করিয়া, সেই জ্বলন্ত অগ্নিতে দুগ্ধ উত্তপ্ত করিলেন। দুগ্ধ তপ্ত হইলে কল্যাণীকে তাহা দিয়া বলিলেন,"
+          ],
+          "source": [
+            "কল্যাণী প্রথমে কিছুই বুঝিতে পারিলেন না, তার পর ক্রমে ক্রমে মনের কিছু স্থৈর্য্য হইলে, গলায় আঁচল দিয়া সেই তাঁহাকে একটি\n প্রণাম করিলেন। তিনি সুমঙ্গল আশীর্ব্বাদ করিয়া, গৃহান্তর হইতে একটি সুগন্ধ মৃৎপাত্র বাহির করিয়া, সেই জ্বলন্ত অগ্নিতে দুগ্ধ উত্তপ্ত করিলেন। দুগ্ধ তপ্ত হইলে কল্যাণীকে তাহা দিয়া বলিলেন,"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.175691+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-027",
+      "before_sha256": "0f1d37432b7ed9c0739f69dc536ab424e09209753574b5a05b6a2fbb1bc674d8",
+      "after_sha256": "980313ce8a7606cd39a5af8dfa35c5f8c4c86650178790f8f9a74f338baf4c33",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/ষষ্ঠ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১৭-১৮)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.178016+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-028",
+      "before_sha256": "431236030885471356995c0bfef90f94b429ba1aaa857ba9ff13707f39aea42d",
+      "after_sha256": "3b1c800a923b16dc96f2493bf0533b2d4e5f5432ba22930421d7a1208b25a26e",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/সপ্তম পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ১৯-২১)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.181032+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-029",
+      "before_sha256": "a96c1bffa78f8b77d8816d8a85352098cf468593064e93424fb58251a57d9af9",
+      "after_sha256": "b12e21f68f4dadeafd3a9dc640bc52163da2e8a77ab6d15038eb1047cb34f22d",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/অষ্টম পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ২২-২৫)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.184675+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-030",
+      "before_sha256": "8ff726177c9343a4b75c529c2a585e11d0825ea1fe5b7d533e59009f2e6af1c7",
+      "after_sha256": "a1897864feb591e2a7c56247c6463b4f27b2f7539288a74dae78205975a31614",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/নবম পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ২৬-২৭)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.186432+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-031",
+      "before_sha256": "61c79ee94e587b9e2d4b1bc1cf1d97f490f0ee9e6d410c697c725554ecad41dc",
+      "after_sha256": "52e64f9179aa490d715deba81b3904ae9fc870aa7ee36b0bcc5a33b852188f22",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/দশম পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ২৭-৩৩)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.190837+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-032",
+      "before_sha256": "254af39249b1037212e08f39ae1f1e9902f0f0ad5aa4d3498e85844e1a37b5d3",
+      "after_sha256": "a6ce99559198b2a49e658ae4c105109d2e093af924be9a6ade479a5a8b8f80f5",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/একাদশ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ৩৩-৩৮)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            0,
+            2
+          ],
+          "source_paragraph_range": [
+            0,
+            1
+          ],
+          "canonical": [
+            "রাত্রি প্রভাত হইয়াছে। সেই জনহীন কানন,—এতক্ষণ অন্ধকার, শব্দহীন ছিল—এখন আলোকময়—পক্ষিকুজনশব্দিত হইয়া আনন্দময় হইল। সেই আনন্দময় প্রভাতে আনন্দময় কাননে, “আনন্দমঠে”, সত্যানন্দ ঠাকুর হরিণচর্ম্মে বসিয়া সন্ধ্যাহ্নিক করিতেছেন। কাছে বসিয়া জীবানন্দ। এমন সময়ে ভবানন্দ মহেন্দ্র সিংহকে সঙ্গে লইয়া আসিয়া উপস্থিত হইল। ব্রহ্মচারী বিনাবাক্যব্যয়ে সন্ধ্যাহ্নিক করিতে লাগিলেন, কেহ কোন কথা কহিতে সাহস করিল না। পরে সন্ধ্যাহ্নিক সমাপন হইলে, ভবানন্দ,",
+            "জীবানন্দ উভয়ে তাঁহাকে প্রণাম করিলেন এবং পদধূলি গ্রহণপূর্ব্বক বিনীতভাবে উপবেশন করিলেন। তখন সত্যানন্দ ভবানন্দকে ইঙ্গিত করিয়া বাহিরে লইয়া গেলেন। কি কথোপকথন হইল, তাহা আমরা জানি না। তাহার পর উভয়ে মন্দিরে প্রত্যাবর্ত্তন করিলে, ব্রহ্মচারী সকরুণ সহাস্য বদনে মহেন্দ্রকে বলিলেন, “বাবা, তোমার দুঃখে আমি অত্যন্ত কাতর হইয়াছি, কেবল সেই দীনবন্ধুর কৃপায় তোমার স্ত্রী কন্যাকে কাল রাত্রিতে আমি রক্ষা করিতে পারিয়াছিলাম।” এই বলিয়া ব্রহ্মচারী কল্যাণীর রক্ষাবৃত্তান্ত বর্ণিত করিলেন। তার পর বলিলেন যে, “চল তাহারা যেখানে আছে তোমাকে সেখানে লইয়া যাই।”"
+          ],
+          "source": [
+            "রাত্রি প্রভাত হইয়াছে। সেই জনহীন কানন,—এতক্ষণ অন্ধকার, শব্দহীন ছিল—এখন আলোকময়—পক্ষিকুজনশব্দিত হইয়া আনন্দময় হইল। সেই আনন্দময় প্রভাতে আনন্দময় কাননে, “আনন্দমঠে”, সত্যানন্দ ঠাকুর হরিণচর্ম্মে বসিয়া সন্ধ্যাহ্নিক করিতেছেন। কাছে বসিয়া জীবানন্দ। এমন সময়ে ভবানন্দ মহেন্দ্র সিংহকে সঙ্গে লইয়া আসিয়া উপস্থিত হইল। ব্রহ্মচারী বিনাবাক্যব্যয়ে সন্ধ্যাহ্নিক করিতে লাগিলেন, কেহ কোন কথা কহিতে সাহস করিল না। পরে সন্ধ্যাহ্নিক সমাপন হইলে, ভবানন্দ,\n জীবানন্দ উভয়ে তাঁহাকে প্রণাম করিলেন এবং পদধূলি গ্রহণপূর্ব্বক বিনীতভাবে উপবেশন করিলেন। তখন সত্যানন্দ ভবানন্দকে ইঙ্গিত করিয়া বাহিরে লইয়া গেলেন। কি কথোপকথন হইল, তাহা আমরা জানি না। তাহার পর উভয়ে মন্দিরে প্রত্যাবর্ত্তন করিলে, ব্রহ্মচারী সকরুণ সহাস্য বদনে মহেন্দ্রকে বলিলেন, “বাবা, তোমার দুঃখে আমি অত্যন্ত কাতর হইয়াছি, কেবল সেই দীনবন্ধুর কৃপায় তোমার স্ত্রী কন্যাকে কাল রাত্রিতে আমি রক্ষা করিতে পারিয়াছিলাম।” এই বলিয়া ব্রহ্মচারী কল্যাণীর রক্ষাবৃত্তান্ত বর্ণিত করিলেন। তার পর বলিলেন যে, “চল তাহারা যেখানে আছে তোমাকে সেখানে লইয়া যাই।”"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.195655+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-033",
+      "before_sha256": "289e04861891f41e422600b12eead3e54706d16483b312ca6c5e1dbf497ef613",
+      "after_sha256": "fb21d2166196b08bc616d6a8cf86cee82a47e976a6819875fc95256d653007b6",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/দ্বাদশ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ৩৮-৪৯)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.203337+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-034",
+      "before_sha256": "d8647211d9bf64e9c8677f98ebefff8b0552ebfb770069af64a6329d854fbce3",
+      "after_sha256": "b5634df757d3da1d8e7847e16e5d3daea529a67373513e74ae8462ec46e3297b",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/ত্রয়োদশ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ৪৯-৫২)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            0,
+            2
+          ],
+          "source_paragraph_range": [
+            0,
+            1
+          ],
+          "canonical": [
+            "এদিকে রাজধানীতে রাজপথে বড় হুলস্থূল পড়িয়া গেল। রব উঠিল যে, রাজসরকার হইতে কলিকাতায় যে খাজনা চালান যাইতেছিল, সন্ন্যাসীরা তাহা মারিয়া লইয়াছে। তখন রাজাজ্ঞানুসারে সন্ন্যাসী ধরিতে সিপাহী বরকন্দাজ ছুটিতে লাগিল। এখন সেই দুর্ভিক্ষ-পীড়িত প্রদেশে সে সময়ে প্রকৃত সন্ন্যাসী বড় ছিল না। কেন না তাহারা ভিক্ষোপজীবী; লোকে আপনি খাইতে পায় না, সন্ন্যাসীকে ভিক্ষা দিবে কে? অতএব প্রকৃত সন্ন্যাসী যাহারা তাহারা সকলেই পেটের দায়ে কাশী প্রয়াগাদি অঞ্চলে পলায়ন করিয়াছিল। কেবল সন্তানেরা ইচ্ছানুসারে সন্ন্যাসিবেশ",
+            "ধারণ করিত, প্রয়োজন হইলে পরিত্যাগ করিত। আজ গোলযোগ দেখিয়া অনেকেই সন্ন্যাসীর বেশ পরিত্যাগ করিল। এজন্য বুভুক্ষু রাজানুচরবর্গ কোথাও সন্ন্যাসী না পাইয়া কেবল গৃহস্থদিগের হাঁড়ি কলসী ভাঙ্গিয়া উদর অর্দ্ধপূরণপূর্ব্বক প্রতিনিবৃত্ত হইল। কেবল সত্যানন্দ কোন কালে গৈরিকবসন পরিত্যাগ করিতেন না।"
+          ],
+          "source": [
+            "এদিকে রাজধানীতে রাজপথে বড় হুলস্থূল পড়িয়া গেল। রব উঠিল যে, রাজসরকার হইতে কলিকাতায় যে খাজনা চালান যাইতেছিল, সন্ন্যাসীরা তাহা মারিয়া লইয়াছে। তখন রাজাজ্ঞানুসারে সন্ন্যাসী ধরিতে সিপাহী বরকন্দাজ ছুটিতে লাগিল। এখন সেই দুর্ভিক্ষ-পীড়িত প্রদেশে সে সময়ে প্রকৃত সন্ন্যাসী বড় ছিল না। কেন না তাহারা ভিক্ষোপজীবী; লোকে আপনি খাইতে পায় না, সন্ন্যাসীকে ভিক্ষা দিবে কে? অতএব প্রকৃত সন্ন্যাসী যাহারা তাহারা সকলেই পেটের দায়ে কাশী প্রয়াগাদি অঞ্চলে পলায়ন করিয়াছিল। কেবল সন্তানেরা ইচ্ছানুসারে সন্ন্যাসিবেশ\n ধারণ করিত, প্রয়োজন হইলে পরিত্যাগ করিত। আজ গোলযোগ দেখিয়া অনেকেই সন্ন্যাসীর বেশ পরিত্যাগ করিল। এজন্য বুভুক্ষু রাজানুচরবর্গ কোথাও সন্ন্যাসী না পাইয়া কেবল গৃহস্থদিগের হাঁড়ি কলসী ভাঙ্গিয়া উদর অর্দ্ধপূরণপূর্ব্বক প্রতিনিবৃত্ত হইল। কেবল সত্যানন্দ কোন কালে গৈরিকবসন পরিত্যাগ করিতেন না।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.206329+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-035",
+      "before_sha256": "80ed5a612bf52d19060ef2ea5f2392071aa77a9e1c176fa173d6359bf762516c",
+      "after_sha256": "f5c89a6f6c56c15548d29a34599e25a18cb31b0843eb133e7144c00970cd92dd",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/চতুর্দ্দশ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ৫২-৫৪)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.208724+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-036",
+      "before_sha256": "7422561644d5b14c09d72f2b9716189e7cef39936dcf0bfbc2aa52ddc8c87595",
+      "after_sha256": "934a2ec3bf4521637ff44e43083e8ffee2c5252162419de757c7853733af980a",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/পঞ্চদশ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ৫৪-৬৩)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            0,
+            2
+          ],
+          "source_paragraph_range": [
+            0,
+            1
+          ],
+          "canonical": [
+            "ব্রহ্মচারীর গান অনেকে শুনিয়াছিল। অন্যান্য লোকের মধ্যে জীবানন্দের কাণে সে গান গেল। মহেন্দ্রের অনুবর্ত্তী হইবার তাহার প্রতি আদেশ ছিল, ইহা পাঠকের স্মরণ থাকিতে পারে।",
+            "পথিমধ্যে একটি স্ত্রীলোকের সঙ্গে সাক্ষাৎ হইয়াছিল। সে সাত দিন খায় নাই, রাস্তার ধারে পড়িয়াছিল। তাহার জীবনদান জন্য জীবানন্দ দণ্ড দুই বিলম্ব করিয়াছিলেন। মাগীকে বাঁচাইয়া তাহাকে অতি কদর্য ভাষায় গালি দিতে দিতে (বিলম্বের অপরাধ তার) এখন আসিতেছিলেন। দেখিলেন, প্রভুকে মুসলমানে ধরিয়া লইয়া যাইতেছে—প্রভু গান গায়িতে গায়িতে চলিয়াছেন।"
+          ],
+          "source": [
+            "ব্রহ্মচারীর গান অনেকে শুনিয়াছিল। অন্যান্য লোকের মধ্যে জীবানন্দের কাণে সে গান গেল। মহেন্দ্রের অনুবর্ত্তী হইবার তাহার প্রতি আদেশ ছিল, ইহা পাঠকের স্মরণ থাকিতে পারে।\n পথিমধ্যে একটি স্ত্রীলোকের সঙ্গে সাক্ষাৎ হইয়াছিল। সে সাত দিন খায় নাই, রাস্তার ধারে পড়িয়াছিল। তাহার জীবনদান জন্য জীবানন্দ দণ্ড দুই বিলম্ব করিয়াছিলেন। মাগীকে বাঁচাইয়া তাহাকে অতি কদর্য ভাষায় গালি দিতে দিতে (বিলম্বের অপরাধ তার) এখন আসিতেছিলেন। দেখিলেন, প্রভুকে মুসলমানে ধরিয়া লইয়া যাইতেছে—প্রভু গান গায়িতে গায়িতে চলিয়াছেন।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.215401+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-037",
+      "before_sha256": "3cd832e1f061782bd9f3c919a0434f78aef26886d502091bd48234dc5600c29c",
+      "after_sha256": "730bf2b787e3e01eabc1f1aa535aff2e6f9fad79faa6db7a027b3f8424c80f65",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/ষোড়শ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ৬৩-৬৬)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            0,
+            2
+          ],
+          "source_paragraph_range": [
+            0,
+            1
+          ],
+          "canonical": [
+            "সে স্ত্রীলোকের বয়স প্রায় পঁচিশ বৎসর, কিন্তু দেখিলে নিমাইয়ের অপেক্ষা অধিকবয়স্কা বলিয়া বোধ হয় না। মলিন, গ্রন্থিযুক্ত বসন পরিয়া সেই গৃহমধ্যে প্রবেশ করিলে, বোধ হইল যেন, গৃহ আলো হইল। বোধ হইল, পাতায় ঢাকা কোন গাছের কত ফুলের কুঁড়ি ছিল, হঠাৎ ফুটিয়া উঠিল; বোধ হইল যেন কোথায় গোলাপজলের কার্ব্বা মুখ আঁটা ছিল, কে কার্ব্বা ভাঙ্গিয়া ফেলিল। যেন কে নিবান আগুনে ধূপ ধূনা গুগ‍্গুল ফেলিয়া দিল। সে রূপসী গৃহমধ্যে প্রবেশ করিয়া ইতস্ততঃ স্বামীর অন্বেষণ করিতে লাগিল, প্রথমে ত দেখিতে পাইল না। তার পর দেখিল, গৃহপ্রাঙ্গণে একটী ক্ষুদ্র বৃক্ষ আছে, আম্রের কাণ্ডে মাথা রাখিয়া জীবানন্দ কাঁদিতেছেন। সেই রূপসী তাঁহার নিকটে গিয়া ধীরে ধীরে তাঁহার হস্তধারণ করিল। বলি না যে তাহার চক্ষে জল আসিল",
+            "না, জগদীশ্বর জানেন, যে তাহার চক্ষে যে স্রোতঃ আসিয়াছিল, বহিলে তাহা জীবানন্দকে ভাসাইয়া দিত; কিন্তু সে তাহা বহিতে দিল না। জীবানন্দের হাত হাতে লইয়া বলিল, “ছি, কাঁদিও না; আমি জানি, তুমি আমার জন্য কাঁদিতেছ, আমার জন্য তুমি কাঁদিও না—তুমি যে প্রকারে আমাকে রাখিয়াছ, আমি তাহাতেই সুখী।”"
+          ],
+          "source": [
+            "সে স্ত্রীলোকের বয়স প্রায় পঁচিশ বৎসর, কিন্তু দেখিলে নিমাইয়ের অপেক্ষা অধিকবয়স্কা বলিয়া বোধ হয় না। মলিন, গ্রন্থিযুক্ত বসন পরিয়া সেই গৃহমধ্যে প্রবেশ করিলে, বোধ হইল যেন, গৃহ আলো হইল। বোধ হইল, পাতায় ঢাকা কোন গাছের কত ফুলের কুঁড়ি ছিল, হঠাৎ ফুটিয়া উঠিল; বোধ হইল যেন কোথায় গোলাপজলের কার্ব্বা মুখ আঁটা ছিল, কে কার্ব্বা ভাঙ্গিয়া ফেলিল। যেন কে নিবান আগুনে ধূপ ধূনা গুগ‍্গুল ফেলিয়া দিল। সে রূপসী গৃহমধ্যে প্রবেশ করিয়া ইতস্ততঃ স্বামীর অন্বেষণ করিতে লাগিল, প্রথমে ত দেখিতে পাইল না। তার পর দেখিল, গৃহপ্রাঙ্গণে একটী ক্ষুদ্র বৃক্ষ আছে, আম্রের কাণ্ডে মাথা রাখিয়া জীবানন্দ কাঁদিতেছেন। সেই রূপসী তাঁহার নিকটে গিয়া ধীরে ধীরে তাঁহার হস্তধারণ করিল। বলি না যে তাহার চক্ষে জল আসিল\n না, জগদীশ্বর জানেন, যে তাহার চক্ষে যে স্রোতঃ আসিয়াছিল, বহিলে তাহা জীবানন্দকে ভাসাইয়া দিত; কিন্তু সে তাহা বহিতে দিল না। জীবানন্দের হাত হাতে লইয়া বলিল, “ছি, কাঁদিও না; আমি জানি, তুমি আমার জন্য কাঁদিতেছ, আমার জন্য তুমি কাঁদিও না—তুমি যে প্রকারে আমাকে রাখিয়াছ, আমি তাহাতেই সুখী।”"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.218651+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-038",
+      "before_sha256": "47f08e6d0530302d7730c131189a974caa674519e59bbce799cd7f84566e5cec",
+      "after_sha256": "f6d0b10f9ef728cd50aa4046093b98429084d26c2831b1333ac6ac63a0999d39",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/সপ্তদশ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ৬৬-৬৮)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            1,
+            3
+          ],
+          "source_paragraph_range": [
+            1,
+            2
+          ],
+          "canonical": [
+            "ধীরানন্দ বলিলেন, “কিছু গোলযোগ বোধ হইতেছে। কালিকার কাণ্ডটার জন্য নেড়েরা গেরুয়া কাপড় দেখিতেছে, আর ধরিতেছে। অপরাপর সন্তানগণ আজ সকলেই গৈরিক বসন ত্যাগ করিয়াছে। কেবল সত্যানন্দ প্রভু গেরুয়া পরিয়া একা",
+            "নগরাভিমুখে গিয়াছেন। কি জানি, যদি তিনি মুসলমানের হাতে পড়েন।”"
+          ],
+          "source": [
+            "ধীরানন্দ বলিলেন, “কিছু গোলযোগ বোধ হইতেছে। কালিকার কাণ্ডটার জন্য নেড়েরা গেরুয়া কাপড় দেখিতেছে, আর ধরিতেছে। অপরাপর সন্তানগণ আজ সকলেই গৈরিক বসন ত্যাগ করিয়াছে। কেবল সত্যানন্দ প্রভু গেরুয়া পরিয়া একা\n নগরাভিমুখে গিয়াছেন। কি জানি, যদি তিনি মুসলমানের হাতে পড়েন।”"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.221365+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-039",
+      "before_sha256": "dbbf7cf142a952c57fa31207a46c6553e7e0a8062a5c98e56c45b447835481f6",
+      "after_sha256": "a63ed167ad8fd3726171bbf49ce8e20b358e97e78ced0a5e0c0759970a57c227",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/অষ্টাদশ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ৬৯-৭১)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.224113+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-040",
+      "before_sha256": "ac5293a129dbc04a9b383b75c17a32096d2a9e5dcef4bf75d174098a32257f78",
+      "after_sha256": "8fa32c22969489306c433eb6c558a0a93aa10084271f4e530e0417895f374991",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/ঊনবিংশ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ৭১-৭৫)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.227536+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-041",
+      "before_sha256": "4b31dad1cff994faf38a56bb250855ca4574fb99aa14c8602485737bf99a7f6f",
+      "after_sha256": "ce97299ec688c7dd07108d8bdd5305e48e7ee34bcadd581c13e02c6d8e487d61",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/বিংশ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ৭৫-৭৯)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.230935+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-042",
+      "before_sha256": "f5e78828a7e652b0a96f8aaccff0ee1c72d4d1656a2cc0f2adc65312c6bb4cb9",
+      "after_sha256": "3ba4de2348df8ef77a7e2b1ea96e7e4c75e41b31f19a178f2d474ee1fe3a729c",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/একবিংশ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ৭৯-৮২)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            9,
+            11
+          ],
+          "source_paragraph_range": [
+            9,
+            10
+          ],
+          "canonical": [
+            "সত্য। যে এ ব্রত গ্রহণ করে, তাহার স্ত্রী, পুত্র, কন্যা, স্বজনবর্গ কারও সঙ্গে সম্বন্ধ রাখিতে নাই। স্ত্রী, পুত্র, কন্যার মুখ দেখিলেও প্রায়শ্চিত্ত আছে। যত দিন না সন্তানের মানস সিদ্ধ হয়, তত দিন, তুমি কন্যার মুখ দেখিতে পাইবে না। অতএব",
+            "যদি সন্তানধর্ম্ম গ্রহণ স্থির হইয়া থাকে, তবে কন্যার সন্ধান জানিয়া কি করিবে? দেখিতে ত পাইবে না।"
+          ],
+          "source": [
+            "সত্য। যে এ ব্রত গ্রহণ করে, তাহার স্ত্রী, পুত্র, কন্যা, স্বজনবর্গ কারও সঙ্গে সম্বন্ধ রাখিতে নাই। স্ত্রী, পুত্র, কন্যার মুখ দেখিলেও প্রায়শ্চিত্ত আছে। যত দিন না সন্তানের মানস সিদ্ধ হয়, তত দিন, তুমি কন্যার মুখ দেখিতে পাইবে না। অতএব\n যদি সন্তানধর্ম্ম গ্রহণ স্থির হইয়া থাকে, তবে কন্যার সন্ধান জানিয়া কি করিবে? দেখিতে ত পাইবে না।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.234175+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-043",
+      "before_sha256": "da1f29dbb0cdda472d8f136f75888981d46ee63958d71b62bf7a76fbe2186ef8",
+      "after_sha256": "592fa23f3add19063e2b7bd024eb76967a80604d877a8d72e4d341caeca22f12",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/চতুর্ব্বিংশ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ৮৬-৯২)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            0,
+            2
+          ],
+          "source_paragraph_range": [
+            0,
+            1
+          ],
+          "canonical": [
+            "মহেন্দ্র সত্যানন্দের পাদবন্দনা করিয়া বিদায় হইলে, তাহার সঙ্গে যে দ্বিতীয় শিষ্য সেই দিন দীক্ষিত হইয়াছিলেন, তিনি আসিয়া সত্যানন্দকে প্রণাম করিলেন। সত্যানন্দ আশীর্ব্বাদ করিয়া কৃষ্ণাজিনের উপর বসিতে অনুমতি করিলেন। পরে",
+            "অন্যান্য মিষ্ট কথার পর বলিলেন, “কেমন কৃষ্ণে তোমার গাঢ় ভক্তি আছে কি না?”"
+          ],
+          "source": [
+            "মহেন্দ্র সত্যানন্দের পাদবন্দনা করিয়া বিদায় হইলে, তাহার সঙ্গে যে দ্বিতীয় শিষ্য সেই দিন দীক্ষিত হইয়াছিলেন, তিনি আসিয়া সত্যানন্দকে প্রণাম করিলেন। সত্যানন্দ আশীর্ব্বাদ করিয়া কৃষ্ণাজিনের উপর বসিতে অনুমতি করিলেন। পরে\n অন্যান্য মিষ্ট কথার পর বলিলেন, “কেমন কৃষ্ণে তোমার গাঢ় ভক্তি আছে কি না?”"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.238976+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-044",
+      "before_sha256": "a49350d0f2d05d57c322e303ef81553a0909ee797051b9b2a52a83a73777b369",
+      "after_sha256": "d2cdfd49349895d3ff3ae721b18560df4d11413b4ff41111f78bd520fbc21516",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/ত্রয়োবিংশ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ৮৫-৮৬)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            2,
+            4
+          ],
+          "source_paragraph_range": [
+            2,
+            3
+          ],
+          "canonical": [
+            "মহেন্দ্র শুনিয়া বিস্মিত ও বিমর্ষ হইলেন। কিছু বলিলেন না। ব্রহ্মচারী বলিতে লাগিলেন, “এক্ষণে আমাদিগের আশ্রয় নাই, এমন স্থান নাই যে প্রবল সেনা আসিয়া আমাদিগকে অব-",
+            "রোধ করিলে আমরা খাদ্য সংগ্রহ করিয়া, দ্বার রুদ্ধ করিয়া দশ দিন নির্ব্বিঘ্নে থাকিব। আমাদিগের গড় নাই। তোমার অট্টালিকা আছে, তোমার গ্রাম তোমার অধিকার। আমার ইচ্ছা সেইখানে একটি গড় প্রস্তুত করি। পরিখা প্রাচীরের দ্বারা পদচিহ্ন বেষ্টিত করিয়া মাঝে মাঝে তাহাতে ঘাঁটি বসাইয়া দিলে আর বাঁধের উপর কামান বসাইয়া দিলে উত্তম গড় প্রস্তুত হইতে পারিবে। তুমি গৃহে গিয়া বাস কর, ক্রমে ক্রমে দুই হাজার সন্তান সেখানে গিয়া উপস্থিত হইবে। তাহাদিগের দ্বারা গড় ঘাঁটির বাঁধ এই সকল তৈয়ার করিতে থাকিবে। তুমি সেখানে উত্তম লৌহনির্ম্মিত এক ঘর প্রস্তুত করাইবে। সেখানে সন্তানদিগের অর্থের ভাণ্ডার হইবে। সুবর্ণে পূর্ণ সিন্দুক সকল তোমার কাছে একে একে প্রেরণ করিব। তুমি সেই সকল অর্থের দ্বারা এই সকল কার্য্য নির্ব্বাহ করিবে। আর আমি নানা স্থান হইতে কৃতকর্ম্মা শিল্পী সকল আনাইতেছি। শিল্পী সকল আসিলে তুমি পদচিহ্নে কারখানা স্থাপন করিবে। সেখানে কামান, গোলা, বারুদ, বন্দুক প্রস্তুত করাইবে। এই জন্য তোমাকে গৃহে যাইতে বলিতেছি।"
+          ],
+          "source": [
+            "মহেন্দ্র শুনিয়া বিস্মিত ও বিমর্ষ হইলেন। কিছু বলিলেন না। ব্রহ্মচারী বলিতে লাগিলেন, “এক্ষণে আমাদিগের আশ্রয় নাই, এমন স্থান নাই যে প্রবল সেনা আসিয়া আমাদিগকে অব-\n রোধ করিলে আমরা খাদ্য সংগ্রহ করিয়া, দ্বার রুদ্ধ করিয়া দশ দিন নির্ব্বিঘ্নে থাকিব। আমাদিগের গড় নাই। তোমার অট্টালিকা আছে, তোমার গ্রাম তোমার অধিকার। আমার ইচ্ছা সেইখানে একটি গড় প্রস্তুত করি। পরিখা প্রাচীরের দ্বারা পদচিহ্ন বেষ্টিত করিয়া মাঝে মাঝে তাহাতে ঘাঁটি বসাইয়া দিলে আর বাঁধের উপর কামান বসাইয়া দিলে উত্তম গড় প্রস্তুত হইতে পারিবে। তুমি গৃহে গিয়া বাস কর, ক্রমে ক্রমে দুই হাজার সন্তান সেখানে গিয়া উপস্থিত হইবে। তাহাদিগের দ্বারা গড় ঘাঁটির বাঁধ এই সকল তৈয়ার করিতে থাকিবে। তুমি সেখানে উত্তম লৌহনির্ম্মিত এক ঘর প্রস্তুত করাইবে। সেখানে সন্তানদিগের অর্থের ভাণ্ডার হইবে। সুবর্ণে পূর্ণ সিন্দুক সকল তোমার কাছে একে একে প্রেরণ করিব। তুমি সেই সকল অর্থের দ্বারা এই সকল কার্য্য নির্ব্বাহ করিবে। আর আমি নানা স্থান হইতে কৃতকর্ম্মা শিল্পী সকল আনাইতেছি। শিল্পী সকল আসিলে তুমি পদচিহ্নে কারখানা স্থাপন করিবে। সেখানে কামান, গোলা, বারুদ, বন্দুক প্রস্তুত করাইবে। এই জন্য তোমাকে গৃহে যাইতে বলিতেছি।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.241152+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-045",
+      "before_sha256": "74b6009ec077626cdab7b0f377067bd69abc975488124ca855a6154d624111b8",
+      "after_sha256": "f89c1c06eff4826ae238549bfa603d195bdeee0bf14b8c734aa448b71b72d695",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/দ্বাবিংশ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ৮২-৮৫)"
+      ],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            0,
+            2
+          ],
+          "source_paragraph_range": [
+            0,
+            1
+          ],
+          "canonical": [
+            "সত্যানন্দ কথাবার্ত্তা সমাপনান্তে মহেন্দ্রের সহিত সেই মঠস্থ দেবালয়াভ্যন্তরে, যেখানে সেই অপূর্ব্ব শোভাময় প্রকাণ্ডাকার চতুর্ভুজমুর্ত্তি বিরাজিত, তথায় প্রবেশ করিলেন। সেখানে তখন",
+            "অপূর্ব্ব শোভা। রজত, স্বর্ণ ও রত্নে রঞ্জিত বহুবিধ প্রদীপে, মন্দির আলোকিত হইয়াছে। রাশি রাশি পুষ্প স্তূপাকারে শোভা করিয়া মন্দির আমোদিত করিতেছিল। মন্দিরে আর একজন উপবেশন করিয়া মৃদু “হরে মুরারে” শব্দ করিতেছিল। সত্যানন্দ মন্দিরমধ্যে প্রবেশ করিবামাত্র গোত্রোত্থান করিয়া প্রণাম করিল। ব্রহ্মচারী জিজ্ঞাসা করিলেন,"
+          ],
+          "source": [
+            "সত্যানন্দ কথাবার্ত্তা সমাপনান্তে মহেন্দ্রের সহিত সেই মঠস্থ দেবালয়াভ্যন্তরে, যেখানে সেই অপূর্ব্ব শোভাময় প্রকাণ্ডাকার চতুর্ভুজমুর্ত্তি বিরাজিত, তথায় প্রবেশ করিলেন। সেখানে তখন\n অপূর্ব্ব শোভা। রজত, স্বর্ণ ও রত্নে রঞ্জিত বহুবিধ প্রদীপে, মন্দির আলোকিত হইয়াছে। রাশি রাশি পুষ্প স্তূপাকারে শোভা করিয়া মন্দির আমোদিত করিতেছিল। মন্দিরে আর একজন উপবেশন করিয়া মৃদু “হরে মুরারে” শব্দ করিতেছিল। সত্যানন্দ মন্দিরমধ্যে প্রবেশ করিবামাত্র গোত্রোত্থান করিয়া প্রণাম করিল। ব্রহ্মচারী জিজ্ঞাসা করিলেন,"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.243687+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-066",
+      "chapter": "chapter-046",
+      "before_sha256": "ae63680b84b25f2c40ea1242a422c80605d5005eea86cd1cf0d30a3f51126c6d",
+      "after_sha256": "d1373bad15e66dccad31ae285b97b315d05945c287d664bee2c2da07aabb3b0f",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "source_artifact_sha256": "a0927f62855b050d6b80493e8c2dac1d8814fc0164043c0ae308c51df98c9457",
+      "matched_source": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/পঞ্চবিংশ পরিচ্ছেদ",
+      "removed_metadata": [
+        "১৮৮৩ (পৃ. ৯২-১০১)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.249969+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "devdas",
+      "chapter": "chapter-001",
+      "before_sha256": "0f40d942647f7e31a313a057fd75644016c64d663c2360cf50a1d2437371c23e",
+      "after_sha256": "09927b7c9d1292d93de6b75858e61e598b115d1975f92a53b9f155f1b47ac95b",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/devdas-multichapter-source-comparison.json",
+      "source_artifact_sha256": "06f49b77a312d656d4780ba3f80f6f5f37349b6c86e07c9293e9bd73f1c8630e",
+      "matched_source": "দেবদাস (শরৎচন্দ্র চট্টোপাধ্যায়)/প্রথম পরিচ্ছেদ",
+      "removed_metadata": [],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            46,
+            47
+          ],
+          "source_paragraph_range": [
+            46,
+            47
+          ],
+          "canonical": [
+            "পার্ব্বতীর পিতার নাম নীলকণ্ঠ চক্রবর্তী। চক্রবর্তী মহাশয় জমিদারদের প্রতিবেশী অর্থাৎ মুখুয্যে মহাশয়ের খুব বড় বাড়ির পার্শ্বে তাঁহার ছোট এবং পুরাতন সেকেলে ইঁটের বাড়ি। তাঁহার দু-দশ বিঘা জমিজমা আছে, দু'-চার ঘর যজমান আছে, জমিদারবাড়ির আশা-প্রত্যাশাটা আছে,—বেশ স্বচ্ছন্দ পরিবার—বেশ দিন কাটে।"
+          ],
+          "source": [
+            "পার্ব্বতীর পিতার নাম নীলকণ্ঠ চক্রবর্তী। চক্রবর্তী মহাশয় জমিদারদের প্রতিবেশী অর্থাৎ মুখুয্যে মহাশয়ের খুব বড় বাড়ির পার্শ্বে তাঁহার ছোট এবং পুরাতন সেকেলে ইঁটের বাড়ি। তাঁহার দু-দশ বিঘা জমিজমা আছে, দু’—চার ঘর যজমান আছে, জমিদারবাড়ির আশা-প্রত্যাশাটা আছে,—বেশ স্বচ্ছন্দ পরিবার—বেশ দিন কাটে।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.273083+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "devdas",
+      "chapter": "chapter-016",
+      "before_sha256": "e520e25a494f262ae7bb399a2387b85d0320412a7688f303d43007382653fbf8",
+      "after_sha256": "6ee15e4f40e94adddf275a31842795bfaba28f72d701385d3bede440833db1e8",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/devdas-multichapter-source-comparison.json",
+      "source_artifact_sha256": "06f49b77a312d656d4780ba3f80f6f5f37349b6c86e07c9293e9bd73f1c8630e",
+      "matched_source": "দেবদাস (শরৎচন্দ্র চট্টোপাধ্যায়)/ষোড়শ পরিচ্ছেদ",
+      "removed_metadata": [],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            60,
+            61
+          ],
+          "source_paragraph_range": [
+            60,
+            61
+          ],
+          "canonical": [
+            "হাতে নীলপাথর দেওয়া আংটি—দাম আন্দাজ দেড় শ', গায়ে একজোড়া শাল—দাম আন্দাজ দুই শ'। জামাকাপড় ইত্যাদি সমস্তই লিখিয়া লইলেন। চৌধুরীমহাশয় ও মহেন্দ্রনাথ উভয়েই উপস্থিত ছিলেন। তালসোনাপুর নাম শুনিয়া মহেন্দ্র কহিল, ছোটমার বাপের বাড়ির লোক, তিনি দেখলে—"
+          ],
+          "source": [
+            "হাতে নীলপাথর দেওয়া আংটি—দাম আন্দাজ দেড় শ’, গায়ে একজোড়া শাল—দাম আন্দাজ দুই শ'। জামাকাপড় ইত্যাদি সমস্তই লিখিয়া লইলেন। চৌধুরীমহাশয় ও মহেন্দ্রনাথ উভয়েই উপস্থিত ছিলেন। তালসোনাপুর নাম শুনিয়া মহেন্দ্র কহিল, ছোটমার বাপের বাড়ির লোক, তিনি দেখলে—"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.357588+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "mrinalini",
+      "chapter": "chapter-008",
+      "before_sha256": "37c0a316f95f279ba1efa11f5d395ef0c043159922c21c472968106f8d4947a2",
+      "after_sha256": "b91d92ef491b57453b6d6c2ba8e8298f4760255c8372dc20081823ce60a241ae",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/mrinalini-multichapter-source-comparison.json",
+      "source_artifact_sha256": "1497c5ff8caef8d32bc29d146cc0729eeaf11f104da71256ed8e27f17e775e1b",
+      "matched_source": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/অষ্টম পরিচ্ছেদ",
+      "removed_metadata": [],
+      "changes": [
+        {
+          "operation": "insert",
+          "canonical_paragraph_range": [
+            11,
+            11
+          ],
+          "source_paragraph_range": [
+            11,
+            12
+          ],
+          "canonical": [],
+          "source": [
+            "হৃষীকেশ কহিলেন, “মণিমালিনীর সহিত কুলটার আলাপ কি?”"
+          ]
+        },
+        {
+          "operation": "insert",
+          "canonical_paragraph_range": [
+            15,
+            15
+          ],
+          "source_paragraph_range": [
+            16,
+            17
+          ],
+          "canonical": [],
+          "source": [
+            "মৃণালিনী কহিলেন “সখি, মণিমালিনি, তুমি চিরায়ুষ্মতী হও। আমার সহিত আলাপ করিও না—তােমার পিতার নিষেধ।”"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.398574+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "mrinalini",
+      "chapter": "chapter-010",
+      "before_sha256": "85c3402de2df60494e00ebea0762217f0715fd916aeb5f3f0d0ab42de2b8e7a3",
+      "after_sha256": "52fac808abb9b1cf3f6a2b4ccacb9af208a5812e29a960e37b8dda1a19e22a67",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/mrinalini-multichapter-source-comparison.json",
+      "source_artifact_sha256": "1497c5ff8caef8d32bc29d146cc0729eeaf11f104da71256ed8e27f17e775e1b",
+      "matched_source": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/দ্বিতীয় পরিচ্ছেদ",
+      "removed_metadata": [],
+      "changes": [
+        {
+          "operation": "insert",
+          "canonical_paragraph_range": [
+            4,
+            4
+          ],
+          "source_paragraph_range": [
+            4,
+            5
+          ],
+          "canonical": [],
+          "source": [
+            "ব্রাহ্মণ বস্তুতঃ অনেকেরই কথা কাণে তুলেন না—কেন না তিনি বধির। হেমচন্দ্র ভাবিলেন ব্রাহ্মণ অভিমান প্রযুক্ত ভৃত্যের আলাপ গ্রহণ করেন না। এজন্য স্বয়ং তৎসম্ভাষণে গেলেন। ব্রাহ্মণকে প্রণাম করিলেন।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.407565+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "mrinalini",
+      "chapter": "chapter-012",
+      "before_sha256": "daeca1fa5d9bd0d87d0243d8ff6c9525c318dae0c8e4a3901fb14e85064b49e6",
+      "after_sha256": "cd605bcef13d65f39572175d6086ab7ae99f4a33e95d753da55b215ad3b3a979",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/mrinalini-multichapter-source-comparison.json",
+      "source_artifact_sha256": "1497c5ff8caef8d32bc29d146cc0729eeaf11f104da71256ed8e27f17e775e1b",
+      "matched_source": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/চতুর্থ পরিচ্ছেদ",
+      "removed_metadata": [],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            1,
+            2
+          ],
+          "source_paragraph_range": [
+            1,
+            2
+          ],
+          "canonical": [
+            "বিস্ময়জনক বলিয়া বোধ হইতে লাগিল। প্রথমতঃ তাঁহার বয়ঃক্রম দুরনুমেয়, সহজে তাঁহাকে বালিকা বলিয়া বোধ হইত, কিন্তু কখন কখন মনোরমাকে অতিশয় গাম্ভীর্য্যশালিনী দেখিতেন। মনোরমা কি অদ্যাপিও কুমারী? হেমচন্দ্র এক দিন কথোপকথনচ্ছলে মনোরমাকে জিজ্ঞাসা করিলেন, “মনোরমে, তোমার শশুর বাটী কোথা?” মনোরমা কহিল, “বলিতে পারি না।” আর এক দিন জিজ্ঞাসা করিয়াছিলেন, “মনোরমা। তুমি কয় বৎসরের হইয়াছ?” মনোরমা তাহাতেও উত্তর দিয়াছিলেন, “বলিতে পারি না।”"
+          ],
+          "source": [
+            "হেমচন্দ্র কিছু দিন উপবনগৃহে বাস করিলেন। জনার্দ্দনের সহিত প্রত্যহ সাক্ষাৎ হইত; কিন্ত ব্রাহ্মণের বধিরতা প্রযুক্ত ইঙ্গিতে আলাপ হইত মাত্র। মনোরমার সহিতও সর্ব্বদা সাক্ষাৎ হইত, মনোরমা কখন তাঁহার সহিত উপযাচিকা হইয়া কথা কহিতেন; কখন বা বাক্যব্যয় না করিয়া স্থানান্তরে চলিয়া যাইতেন। বস্ততঃ মনোরমার প্রকৃতি তাঁহার পক্ষে অধিকতর\n বিস্ময়জনক বলিয়া বোধ হইতে লাগিল। প্রথমতঃ তাঁহার বয়ঃক্রম দুরনুমেয়, সহজে তাঁহাকে বালিকা বলিয়া বোধ হইত, কিন্তু কখন কখন মনোরমাকে অতিশয় গাম্ভীর্য্যশালিনী দেখিতেন। মনোরমা কি অদ্যাপিও কুমারী? হেমচন্দ্র এক দিন কথোপকথনচ্ছলে মনোরমাকে জিজ্ঞাসা করিলেন, “মনোরমে, তোমার শশুর বাটী কোথা?” মনোরমা কহিল, “বলিতে পারি না।” আর এক দিন জিজ্ঞাসা করিয়াছিলেন, “মনোরমা। তুমি কয় বৎসরের হইয়াছ?” মনোরমা তাহাতেও উত্তর দিয়াছিলেন, “বলিতে পারি না।”"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.417601+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "mrinalini",
+      "chapter": "chapter-025",
+      "before_sha256": "07ccd37bf1c3922a1bdf97ec4fe53c669471b10e2eb2cc226613f8132669f281",
+      "after_sha256": "acf54097a490763b6f1d85bebcd10808acdd3d2645e7a7706040cbc883f0718f",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/mrinalini-multichapter-source-comparison.json",
+      "source_artifact_sha256": "1497c5ff8caef8d32bc29d146cc0729eeaf11f104da71256ed8e27f17e775e1b",
+      "matched_source": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/পঞ্চম পরিচ্ছেদ",
+      "removed_metadata": [],
+      "changes": [
+        {
+          "operation": "insert",
+          "canonical_paragraph_range": [
+            19,
+            19
+          ],
+          "source_paragraph_range": [
+            19,
+            20
+          ],
+          "canonical": [],
+          "source": [
+            "হেমচন্দ্র মুখোত্তোলন করিলেন। মুখ দেখিয়া মাধবাচার্য্যও ভীত হইলেন। মাধবাচার্য্য কহিলেন, “আমার সহিত আলাপ কর। ক্রোধ হইয়া থাকে তাহা ব্যক্ত কর।”"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.448060+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "mrinalini",
+      "chapter": "chapter-038",
+      "before_sha256": "fbe93f89f4daab9d675ed45d8af42215dd8061311107e2b0a2532f6d99812b36",
+      "after_sha256": "87a86bff2900a663ddf9a4bb1f757318e7dbdca21e200085ed091ebe79d2a52f",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/mrinalini-multichapter-source-comparison.json",
+      "source_artifact_sha256": "1497c5ff8caef8d32bc29d146cc0729eeaf11f104da71256ed8e27f17e775e1b",
+      "matched_source": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/অষ্টম পরিচ্ছেদ",
+      "removed_metadata": [],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            2,
+            5
+          ],
+          "source_paragraph_range": [
+            2,
+            3
+          ],
+          "canonical": [
+            "এইরূপে পূর্ব্বাচলের সূর্য্য মধ্যাকাশে, মধ্যাকাশের সূর্য পশ্চিমে গেলেন। সন্ধ্যা হইল। গিরিজায়া দেখিলেন যে তখনও মৃণালিনী গৃহে প্রত্যাগমন করিবার লক্ষণ প্রকাশ করিতেছেন না। গিরিজায়া বিশেষ চঞ্চল হইলেন। পূর্ব্বরাত্র জাগরণ গিয়াছে—এ রাত্রেও জাগরণের আকার। গিরিজায়া কিছু বলিলেন না—বৃক্ষপল্লব সংগ্রহ করিয়া সোপানোপরি আপন",
+            "মৃণালিনীর সুখ কি?",
+            "১৬৭"
+          ],
+          "source": [
+            "এইরূপে পূর্ব্বাচলের সূর্য্য মধ্যাকাশে, মধ্যাকাশের সূর্য পশ্চিমে গেলেন। সন্ধ্যা হইল। গিরিজায়া দেখিলেন যে তখনও মৃণালিনী গৃহে প্রত্যাগমন করিবার লক্ষণ প্রকাশ করিতেছেন না। গিরিজায়া বিশেষ চঞ্চল হইলেন। পূর্ব্বরাত্র জাগরণ গিয়াছে—এ রাত্রেও জাগরণের আকার। গিরিজায়া কিছু বলিলেন না—বৃক্ষপল্লব সংগ্রহ করিয়া সোপানোপরি আপন মৃণালিনীর সুখ কি?১৬৭"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.485242+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "mrinalini",
+      "chapter": "chapter-040",
+      "before_sha256": "3ba0914b35828f9e3e01f1384fad07d5f6fd7a9d9a97d8425509eacf3aedfa60",
+      "after_sha256": "b8efa493bcad250f637b97ac206d3e560821b761e9034f0d18f3ded0f18c5e10",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/mrinalini-multichapter-source-comparison.json",
+      "source_artifact_sha256": "1497c5ff8caef8d32bc29d146cc0729eeaf11f104da71256ed8e27f17e775e1b",
+      "matched_source": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/দশম পরিচ্ছেদ",
+      "removed_metadata": [],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            0,
+            1
+          ],
+          "source_paragraph_range": [
+            0,
+            3
+          ],
+          "canonical": [
+            "উভয়ে মোক্ষোন্মুখ অশ্রুজল কষ্টে নিবারিত করিলেন; তখন কতবার উভয়ের মুখপ্রতি চাহিয়া অনর্থক মধুর হাসি হাসিলেন—সে হাসির অর্থ “আমি এখন কত সুখী।” পরে যখন প্রভাতোদয়সূচক পক্ষিগণ রব করিয়া উঠিল, তখন কতবার উভয়েই বিস্মিত হইয়া ভাবিলেন যে “আজি এখনই রাত্রি পোহাইল কেন?”—আর সেই নগরমধ্যে যবনবিপ্লবের যে কোলাহল উচ্ছ্বসিতসমুদ্রের বীচিরববৎ উঠিতেছিল—আজি হৃদয় সাগরের তরঙ্গরবে সে রব ডুবিয়া গেল।"
+          ],
+          "source": [
+            "প্রেম—নানা প্রকার।",
+            "আনন্দাশ্রু-প্লাবিত-বদনা মৃণালিনীকে হেমচন্দ্র হস্ত ধরিয়া উপবন গৃহাভিমুখে লইয়া চলিলেন। হেমচন্দ্র মৃণালিনীকে একবার অপমানিতা, তিরস্কৃতা, ব্যথিতা, করিয়া ত্যাগ করিয়া গিয়াছিলেন আবার আপনিই আসিয়া তাঁহাকে হৃদয়ে গ্রহণ করিলেন,—ইহা দেখিয়া গিরিজায়া বিস্মিত হইল; কিন্তু মৃণালিনী একটি কথাও জিজ্ঞাসা করিলেন না—একটি কথাও কহিলেন না। আনন্দ-পরিপ্লববিবশা হইয়া বসনে অশ্রুস্রুতি আবরিত করিয়া চলিলেন। গিরিজায়াকে ডাকিতে হইল না—সে স্বয়ং অন্তরে থাকিয়া সঙ্গে সঙ্গে চলিল।",
+            "উপবনবাটিকায় মৃণালিনী আসিলে তখন উভয়ে বহুদিনের হৃদয়ের কথা সকল ব্যক্ত করিতে লাগিলেন। তখন হেমচন্দ্র, যে যে ঘটনায় মৃণালিনীর প্রতি তাঁহার চিত্তের বিরাগ হইয়াছিল, আর যে যে কারণে সেই বিরাগের ধ্বংস হইয়াছে তাহা বলিলেন। তখন মৃণালিনী যে প্রকারে হৃষীকেশের গৃহ ত্যাগ করিয়া ছিলেন, যে প্রকারে নবদ্বীপে আসিয়াছিলেন সেই সকল তখন উভয়েই পূর্ব্বোদিত কত হৃদয়ের ভাব পরস্পরের নিকট ব্যক্ত করিতে লাগিলেন। তখন উভয়েই কত ভবিষ্যৎ সম্বন্ধে কল্পনা করিতে লাগিলেন। তখন কতই নূতন নূতন প্রতিজ্ঞায় বদ্ধ হইতে লাগিলেন। তখন উভয়ে নিতান্ত নিষ্প্রয়োজনীয় কত কথাই অতি আবশ্যকীয় কথার ন্যায় আগ্রহ সহকারে ব্যক্ত করিতে লাগিলেন। তখন কতবার ১৭২মৃণালিনী।উভয়ে মোক্ষোন্মুখ অশ্রুজল কষ্টে নিবারিত করিলেন; তখন কতবার উভয়ের মুখপ্রতি চাহিয়া অনর্থক মধুর হাসি হাসিলেন—সে হাসির অর্থ “আমি এখন কত সুখী।” পরে যখন প্রভাতোদয়সূচক পক্ষিগণ রব করিয়া উঠিল, তখন কতবার উভয়েই বিস্মিত হইয়া ভাবিলেন যে “আজি এখনই রাত্রি পোহাইল কেন?”—আর সেই নগরমধ্যে যবনবিপ্লবের যে কোলাহল উচ্ছ্বসিতসমুদ্রের বীচিরববৎ উঠিতেছিল—আজি হৃদয় সাগরের তরঙ্গরবে সে রব ডুবিয়া গেল।"
+          ]
+        },
+        {
+          "operation": "insert",
+          "canonical_paragraph_range": [
+            5,
+            5
+          ],
+          "source_paragraph_range": [
+            7,
+            8
+          ],
+          "canonical": [],
+          "source": [
+            "দিগ্বিজয় এবার সকাতরে কহিল, “গিরিজায়া আমাকে একেবারে ভুলিয়া গেলে?”  গিরিজায়া বলিল “তোর সঙ্গে আমার সঙ্গে কোন্ পুরুষে আলাপ রে মিন্সে!”"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.496069+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "mrinalini",
+      "chapter": "chapter-041",
+      "before_sha256": "76c39a7e30b075a894ef6c1daca308d723952b4ac33d7d05c71bafde3afcd052",
+      "after_sha256": "dfa6bd81f06431453b8cc6a993330e0feec530e32e0ea009653ede59f497a4f9",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/mrinalini-multichapter-source-comparison.json",
+      "source_artifact_sha256": "1497c5ff8caef8d32bc29d146cc0729eeaf11f104da71256ed8e27f17e775e1b",
+      "matched_source": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/একাদশ পরিচ্ছেদ",
+      "removed_metadata": [],
+      "changes": [
+        {
+          "operation": "insert",
+          "canonical_paragraph_range": [
+            3,
+            3
+          ],
+          "source_paragraph_range": [
+            3,
+            4
+          ],
+          "canonical": [],
+          "source": [
+            "যে আলাপ হইতেছিল তাহাতে গিরিজায় বিস্মিত ও প্রীত হইতেছিল। মৃণালিনীকে জিজ্ঞাসা করিল।—“তা এত দিন এমন কথা প্রকাশ কর নাই কি জন্য?”"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.502421+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "lokrahasya",
+      "chapter": "chapter-006",
+      "before_sha256": "21ae6636ae5977bfa869473d1487c3cc754587d6f26c5b57ef4339aa55e9a3f8",
+      "after_sha256": "3ad29d39908abc6655d06f7e3bc0fedec9a4702f7ae3de30fba496a29410f95f",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/lokrahasya-multichapter-source-comparison.json",
+      "source_artifact_sha256": "9e68ff5101b70c7775519d8050c13a18e82bddfcc5d02a6ba746fe3727a7f1b1",
+      "matched_source": "লোকরহস্য (১৯৩৯)/ব্যাঘ্রাচার্য্য বৃহল্লাঙ্গুল",
+      "removed_metadata": [],
+      "changes": [
+        {
+          "operation": "insert",
+          "canonical_paragraph_range": [
+            3,
+            3
+          ],
+          "source_paragraph_range": [
+            3,
+            4
+          ],
+          "canonical": [],
+          "source": [
+            "“এক্ষণে হে ভ্রাতৃবৃন্দ। আমরা যে প্রয়োজন সম্পাদনার্থ সমবেত হইয়াছি, তাহা সংক্ষেপে বিবৃত করি। আপনারা সকলেই অবগত আছেন যে, এই সুন্দরবনের ব্যাঘ্রসমাজে বিদ্যার চর্চা ক্রমে লোপ পাইতেছে। আমাদিগের বিশেষ অভিলাষ হইয়াছে, আমরা বিদ্বান হইব। কেন না, আজি কালি সকলেই বিদ্বান হইতেছে। আমরাও হইব। বিদ্যার আলোচনার জন্য এই ব্যাঘ্রসমাজ সংস্থাপিত হইয়াছে। এক্ষণে আমার বক্তব্য এই যে, আপনারা ইহার অনুমোদন করুন।”"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.571284+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "lokrahasya",
+      "chapter": "chapter-007",
+      "before_sha256": "1f8c3ac3bb80e995200fde7c3b66c9463b541ed7f6dad23fb64cbd22af48f540",
+      "after_sha256": "32c76d54e0cf04f36984a029b6e0a17dbfcc27db6dd69acf9a888be8e05db422",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/lokrahasya-multichapter-source-comparison.json",
+      "source_artifact_sha256": "9e68ff5101b70c7775519d8050c13a18e82bddfcc5d02a6ba746fe3727a7f1b1",
+      "matched_source": "লোকরহস্য (১৯৩৯)/দাম্পত্য দণ্ডবিধির আইন",
+      "removed_metadata": [],
+      "changes": [
+        {
+          "operation": "insert",
+          "canonical_paragraph_range": [
+            0,
+            0
+          ],
+          "source_paragraph_range": [
+            0,
+            13
+          ],
+          "canonical": [],
+          "source": [
+            "আমরা স্ত্রীজাতি, নিরীহ ভালমানুষ বলিয়া আজি কালি আমাদিগের উপর বড় অত্যাচার হইতেছে। পুরুষের এক্ষণে বড় স্পর্দ্ধা হইয়াছে, ভর্ত্তৃগণ স্ত্রীকে আর মানে না, স্ত্রীলোকদিগের পুরাতন স্বত্ব সকল লুপ্ত হইতেছে, কেহই আর স্ত্রীর আজ্ঞার বশবর্ত্তী নহে। এই সকল বিষয়ের সুনিয়ম করিবার জন্য আমরা স্ত্রীস্বত্বরক্ষিণী সভা সংস্থাপিতা করিয়াছি। সে সভায় পরিচয় যদি সাধারণে সবিশেষ অবগত না থাকেন, তবে তাহার বিজ্ঞাপনী পশ্চাৎ প্রকাশ করিব। এক্ষণে বক্তব্য এই যে, আমাদিগের স্বত্বরক্ষার্থ সভা হইতে একটি বিশেষ সদুপায় হইয়াছে। আমরা এ বিষয়ে ভারতবর্ষীয় গবর্ণমেণ্টে আবেদনপত্র প্রেরণ করিয়াছি। এবং তৎসমভিব্যাহারে ভর্ত্তৃশাসনার্থ একটি দাম্পত্য দণ্ডবিধির আইনের পাণ্ডুলিপি প্রেরণ করিয়াছি।",
+            "সকলের স্বত্ত্ব রক্ষার্থ যেখানে প্রত্যহ আইনের সৃষ্টি হইতেছে, সেখানে আমাদিগের চিরন্তন স্বত্ব রক্ষার্থ কোন আইন হয় না কেন? অতএব এই আইন সত্বরে পাস হইবে, এই কামনায় স্বামিগণকে অবগত করিবার জন্য আমি তাহা বঙ্গদর্শনে প্রচার করিলাম। অনেক বাবুলোক বাঙ্গালাতে আইন ভাল বুঝিতে পারেন না, বিশেষতঃ আইনের বাঙ্গালা অনুবাদ সচরাচর ভাল হয় না, এবং আইন আদৌ ইংরাজিতেই প্রণীত হইয়াছিল, এবং ইহার বাঙ্গালা অনুবাদটি ভাল হয় নাই, স্থানে স্থানে ইংরাজির সঙ্গে ইহার প্রভেদ আছে, অতএব আমরা ইংরাজি বাঙ্গালা দুই পাঠাইলাম। ভরসা করি, বঙ্গদর্শনকারক একবার আমাদিগের অনুরোধে ইংরাজির প্রতি বিরাগ ত্যাগ করিয়া ইংরাজিসমেত এই আইন প্রচার করিবেন। সকলেই দেখিবেন যে, এই আইনটিতে নূতন কিছু নাই; সাবেক Lex Non Scripta কেবল লিপিবদ্ধ হইয়াছে মাত্র।”",
+            "শ্রীমতী অনৃতসুন্দরী দাসী।",
+            "স্ত্রীস্বত্বরক্ষিণী সভার সম্পাদিকা।",
+            "THE MATRIMONIAL PENAL CODE",
+            "CHAPTER I",
+            "INTRODUCTION",
+            "Whereas it is expedient to provide & special Penal Code for the coercion of refractory husbands and others who dispute the supreme authority of Woman, it is hereby enacted as follows:",
+            "1. This Act shall be entitled the “Matrimonial Penal Code” and shall take effect on all natives of India in the married state.",
+            "CHAPTER II",
+            "DEFINITIONS",
+            "2. A husband is a piece of moving and moveable property at the absolute disposal of a woman.",
+            "দাম্পত্য দণ্ডবিধির আইন"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.583328+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "lokrahasya",
+      "chapter": "chapter-010",
+      "before_sha256": "763829b78e243cf507b965bf937a18242b3464ff0b67d7cff3ba24f6c4a93c4f",
+      "after_sha256": "d70f464f1994a2227b944d59df831eca9b2ee5c4161b66d624c26613ab487f3d",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/lokrahasya-multichapter-source-comparison.json",
+      "source_artifact_sha256": "9e68ff5101b70c7775519d8050c13a18e82bddfcc5d02a6ba746fe3727a7f1b1",
+      "matched_source": "লোকরহস্য (১৯৩৯)/বর্ষ সমালোচন",
+      "removed_metadata": [],
+      "changes": [
+        {
+          "operation": "insert",
+          "canonical_paragraph_range": [
+            6,
+            6
+          ],
+          "source_paragraph_range": [
+            6,
+            7
+          ],
+          "canonical": [],
+          "source": [
+            "এ বার বিচারালয় সকলের কার্য্যের আমরা বিশেষ সুখ্যাতি করিতে পারিলাম না। সত্য বটে যে, যে নালিশ করিয়াছে, তাহার বিচার হইয়াছে বা হইবে, এমন উদ্যোগ আছে, কিন্তু যাহারা নালিশ করে নাই, তাহাদের পক্ষে কোন বিচার হয় নাই। আমরা ইহা বুঝিতে পারি না; যেখানে সাধারণ বিচারালয়, সেখানে নালিশ করুক বা না করুক, বিচার চাই। কেহ রৌদ্র চাহুক বা না চাহুক, সূর্য্যদেব সর্ব্বত্র রৌদ্র করিয়া থাকেন, কেহ বৃষ্টি চাহুক বা না চাহুক, মেঘ ক্ষেত্রে ক্ষেত্রে বৃষ্টি করিয়া থাকেন, এবং কেহ বিচার চাহুক বা না চাহুক, বিচারকের উচিত, গৃহে গৃহে ঢুকিয়া বিচার করিয়া আসেন। যদি কেহ বলেন যে, বিচারকগণ এরূপ বিচারার্থ গৃহে গৃহে প্রবেশ করিতে গেলে গৃহস্থগণের সম্মার্জনী সকল অকস্মাৎ বিঘ্ন ঘটাইতে পারে, তাহাঁতে আমাদের বক্তব্য যে, গবর্ণমেণ্টের কর্ম্মচারিগণ সম্মার্জনীকে তাদৃশ ভয় করেন না— সম্মার্জনীর সঙ্গে নিম্নশ্রেণীর হাকিমদিগের বিলক্ষণ পরিচয় আছে, এবং প্রায় প্রত্যহ ইহার সঙ্গে তাঁহাদের আলাপ হইয়া থাকে। যেমন ময়ূর সর্পপ্রিয়, ইঁহারাও তেমনি সম্মার্জনীপ্রিয়— দেখিলেই প্রায় ভক্ষণ করিয়া থাকেন। আমরা এমনও শুনিয়াছি যে, গবর্ণমেণ্টের কোন অধস্তন কর্ম্মচারী প্রস্তাব করিয়াছেন যে, যেমন উচ্চশ্রেণীর কর্ম্মচারিগণের পুরস্কারের জন্য “অর্ডর অব দি ষ্টার অব ইণ্ডিয়া” সংস্থাপিত করা হইয়াছে, সেইরূপ নিম্নশ্রেণীর কর্ম্মচারিগণের জন্য “অর্ডর অব দি ব্রুম্‌ষ্টিক্” সংস্থাপিত করা হউক। এবং বিশেষ বিশেষ গুণবান্ ডিপুটি এবং সবজজ প্রভৃতিকে বাছিয়া বাছিয়া লাকলাইনের দড়িতে এই মহারত্নটিকে বাঁধিয়া তাঁহাদিগের গলদেশে লম্বমান করিয়া দেওয়া হউক। তাঁহাদের চাপকান চেন চাদরবিভূষিত সদাকম্পবান্ বক্ষে ইহা অপূর্ব্ব শোভা ধারণ করিবে। রাজপ্রসাদস্বরূপ প্রদত্ত হইলে ইহা যে সাদরে গৃহীত হইবে, তাহা আমরা শপথ করিয়া বলিতে পারি। আমাদের কেবল আশঙ্কা এই যে, এত উমেদওয়ার যুটিবে যে, ঝাঁটার সঙ্কুলান করা ভার হইবে।"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T01:07:33.595458+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-031",
+      "chapter": "chapter-001",
+      "before_sha256": "652e01c81029c8aaf76304c1543698dd7a6b3ab6da0bbceb6c07e3eb3dc74fd2",
+      "after_sha256": "7ca11299e343da8b0bfc85313baea74957b97d15def97cc77f1a2c976578d908",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-031-multichapter-source-comparison.json",
+      "source_artifact_sha256": "ef309cce5e1d98cb448b6139cf037ee1c099159a239d8c68aa237806283ae370",
+      "matched_source": "শরৎ-সাহিত্য-সংগ্রহ (ত্রয়োদশ সম্ভার)/মহেশ/১",
+      "removed_metadata": [
+        "শরৎ-সাহিত্য-সংগ্রহ",
+        "১৯৬০ (পৃ. ৩১১-৩১৫)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.665555+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-031",
+      "chapter": "chapter-002",
+      "before_sha256": "a62d0e3d7c8314a9d4483f69611efe109f4bd138714155267c48398142c969aa",
+      "after_sha256": "1bd6af2f36928e7a0ace6c0770806ece7fe19763a0b52072f4126d8ee332c777",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-031-multichapter-source-comparison.json",
+      "source_artifact_sha256": "ef309cce5e1d98cb448b6139cf037ee1c099159a239d8c68aa237806283ae370",
+      "matched_source": "শরৎ-সাহিত্য-সংগ্রহ (ত্রয়োদশ সম্ভার)/মহেশ/২",
+      "removed_metadata": [
+        "শরৎ-সাহিত্য-সংগ্রহ",
+        "১৯৬০ (পৃ. ৩১৬-৩১৮)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.668460+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "bn-031",
+      "chapter": "chapter-003",
+      "before_sha256": "b2ed3ae3b0d546b26aa2cbcb52bbd3f49f937e4803f65823d978ccf5ee6baadd",
+      "after_sha256": "effb16d7c64064c4929092db039c5ae9b1ffc6a5a3eb4978c7b9b1579bd6ced7",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-031-multichapter-source-comparison.json",
+      "source_artifact_sha256": "ef309cce5e1d98cb448b6139cf037ee1c099159a239d8c68aa237806283ae370",
+      "matched_source": "শরৎ-সাহিত্য-সংগ্রহ (ত্রয়োদশ সম্ভার)/মহেশ/৩",
+      "removed_metadata": [
+        "শরৎ-সাহিত্য-সংগ্রহ",
+        "১৯৬০ (পৃ. ৩১৮-৩২২)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T01:07:33.673004+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "lokrahasya",
+      "chapter": "chapter-013",
+      "before_sha256": "0d3af34ac004f154108952e71f2200b9eaeebf408fe994892b09563599f856cf",
+      "after_sha256": "0c3c9292ecaf155a50c70d36adbe07fcd1073ba169bf54efd6ff63eae925edab",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/lokrahasya-multichapter-source-comparison.json",
+      "source_artifact_sha256": "2ddc84560511c8f13b2df9d184bd89cc7e28995868af0bb9ecd998adb6250b9f",
+      "matched_source": "লোকরহস্য (১৯৩৯)/হনুমদ্বাবুসংবাদ",
+      "removed_metadata": [
+        "ব্রজেন্দ্রনাথ বন্দ্যোপাধ্যায়, সজনীকান্ত দাস সম্পাদিত",
+        "১৯৩৯ (পৃ. ৭০-৭৫)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T03:06:08.053663+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "lokrahasya",
+      "chapter": "chapter-016",
+      "before_sha256": "79863cf99d49f3992f0294207371401efb3b6adf8a6dd8b74164cae952a2d04a",
+      "after_sha256": "8a596d46b799d3896bc9b5b55b50fbdccd52baf575aafaa21f9f5ad2278344a8",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/lokrahasya-multichapter-source-comparison.json",
+      "source_artifact_sha256": "2ddc84560511c8f13b2df9d184bd89cc7e28995868af0bb9ecd998adb6250b9f",
+      "matched_source": "লোকরহস্য (১৯৩৯)/পাঠভেদ",
+      "removed_metadata": [
+        "ব্রজেন্দ্রনাথ বন্দ্যোপাধ্যায়, সজনীকান্ত দাস সম্পাদিত",
+        "১৯৩৯ (পৃ. ৯৩-৯৬)"
+      ],
+      "changes": [],
+      "verified_at": "2026-10-02T03:06:08.063606+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "chapter": "chapter-014",
+      "before_sha256": "886ff68b3f3a3ce35524cf1b35e78e2589ac0be752844881683b0252fd0b7afe",
+      "after_sha256": "7e10484a0e5bd8f8595231f771062da9d1b7e0b407b5a9643a33b369a58b1a33",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/muchiram-gurer-jibanchorit-multichapter-source-comparison.json",
+      "source_artifact_sha256": "c011347b572351c1695b02b60a8e34cf22fab1bdba4f5df765faa601c924e80b",
+      "matched_source": "মুচিরাম গুড়ের জীবনচরিত (১৯৪৪)/চতুর্দ্দশ পরিচ্ছেদ",
+      "removed_metadata": [],
+      "changes": [
+        {
+          "operation": "insert",
+          "canonical_paragraph_range": [
+            31,
+            31
+          ],
+          "source_paragraph_range": [
+            31,
+            33
+          ],
+          "canonical": [],
+          "source": [
+            "↑ গ্রামে",
+            "↑ দুর্ভিক্ষ"
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T03:06:08.147936+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    },
+    {
+      "slug": "pather-panchali",
+      "chapter": "chapter-007",
+      "before_sha256": "9b8f07a86b2e7ad9695e31698e07427630d4db0ba5f40af9fb8ad493c8659f87",
+      "after_sha256": "5ff0ab04ec7b92ad5407055896c58e5171c388d33be249e6a823030b5633346c",
+      "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/pather-panchali-multichapter-source-comparison.json",
+      "source_artifact_sha256": "b9ca2f3b3ff05fc718a5281cd10c19c79779029cc539f8b038605aed8765d32e",
+      "matched_source": "পথের পাঁচালী/সপ্তম পরিচ্ছেদ",
+      "removed_metadata": [],
+      "changes": [
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            19,
+            20
+          ],
+          "source_paragraph_range": [
+            19,
+            20
+          ],
+          "canonical": [
+            "নবীন পালিত বলিল—ও হোলো খরগোস, খোকা খরগোস। এখানে খড়ের ঝোপে খরগোস থাকে, তাই। বালক বর্ণপরিচয়ে ‘খ'-এ খরগোসের ছবি দেখিয়াছে, কিন্তু তাহা যে জীবন্ত অবস্থায় এ রকম লাফাইয়া পালায় বা তাহা আবার সাধারণ চক্ষুতে দেখিতে পাওয়া যায়, এ কথা সে কখনো ভাবে নাই।"
+          ],
+          "source": [
+            "নবীন পালিত বলিল—ও হোলো খরগোস, খোকা খরগোস। এখানে খড়ের ঝোপে খরগোস থাকে, তাই। বালক বর্ণপরিচয়ে ‘খ’—এ খরগোসের ছবি দেখিয়াছে, কিন্তু তাহা যে জীবন্ত অবস্থায় এ রকম লাফাইয়া পালায় বা তাহা আবার সাধারণ চক্ষুতে দেখিতে পাওয়া যায়, এ কথা সে কখনো ভাবে নাই।"
+          ]
+        },
+        {
+          "operation": "replace",
+          "canonical_paragraph_range": [
+            32,
+            33
+          ],
+          "source_paragraph_range": [
+            32,
+            35
+          ],
+          "canonical": [
+            "Here lies Edwin Lermor, The only son of John & Mrs. Lermor, Born May 13, 1853, Died April 27, 1860."
+          ],
+          "source": [
+            "Here lies Edwin Lermor,",
+            "The only son of John & Mrs. Lermor,",
+            "Born May 13, 1853, Died April 27, 1860."
+          ]
+        }
+      ],
+      "verified_at": "2026-10-02T03:06:08.188877+00:00",
+      "scope": "Exact same edition narrow source-backed insertions/punctuation/import metadata; no publication approval"
+    }
+  ],
+  "still_requires_context": []
+}

@@ -3,144 +3,148 @@
   "schema_version": 1,
   "slug": "the-time-machine",
   "title": "The Time Machine",
-  "generated_at": "2026-10-01T21:08:34.717156+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "c7aeb98aa3143ae724283da3a0a74aef602537073f8c8f06ae0e1d22c0a38968",
-    "content_hash": "86f6463ed64691c02e7b927ae73e94d76027d3f3c4f82c6a18c17310020325ba",
-    "provenance_hash": "b7acc90769cf6bd7d1f99038cd336e48007db2e8d55469954243660d07d7efa6",
+    "source_hash": "2892e919000e17c83e1dac51b30f4675db50536b644d7579fe8a89bb399a9bdc",
+    "content_hash": "b9e67357d69352f3e18b2ceb03d55609ffe59dfa48277ff9aff76dc2fa63d488",
+    "provenance_hash": "be25fc11babef7b88a7aba9016d7f2e3eec275ca424830cc22388ca8e1ad0e0c",
     "sanitized": true,
-    "chapter_count": 16,
-    "chapter_index_sha256": "3310ff8a19b448d494959d227577ee1c2aa1b1321ed292e579ff0782f8b8ab7b",
+    "chapter_count": 17,
+    "chapter_index_sha256": "01ba906bd6179ce8d78e7492d7b081c77eda6c0bd71990fc8162b92baae01ca2",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "I. Introduction",
-        "word_count": 1694,
-        "sha256": "ec54e8d6abfbea5fa18a96a06cb68777151021fad0fb2511e084b68143bd7693"
+        "word_count": 1680,
+        "sha256": "5026ca0b8c4e8b2528a0d439430eb02dee85f578fc4ad47c6f5fb0207d8f0f1c"
       },
       {
         "id": "chapter-002",
         "order": 2,
         "title": "II. The Machine",
-        "word_count": 1353,
-        "sha256": "0d9b215765f1cf9bdba709a7d0475ff82b17082eb9cda61f444c507912ae2302"
+        "word_count": 1335,
+        "sha256": "724f755fedc1f1561afeaf6d65a8d68d4f7cc44103552e28ba06c1b8f5d550d0"
       },
       {
         "id": "chapter-003",
         "order": 3,
         "title": "III. The Time Traveller Returns",
-        "word_count": 2042,
-        "sha256": "04fa6dbc3212e88f51b68643085bf11d53d81933f282332fe1eef681a3be1c35"
+        "word_count": 1983,
+        "sha256": "62208249328b765d8dc6cb53a875640c4208293c65e0b9b3ccb905104434ea18"
       },
       {
         "id": "chapter-004",
         "order": 4,
         "title": "IV. Time Travelling",
-        "word_count": 2105,
-        "sha256": "06ac862eda572faa1bc221d4322d740cb113cd17834c39f6ea2f871edf06964c"
+        "word_count": 2086,
+        "sha256": "0e690367577b44e7d92a2beb6222894ccb41fd424c9497db2a3faa012579c4c3"
       },
       {
         "id": "chapter-005",
         "order": 5,
         "title": "V. In the Golden Age",
-        "word_count": 1661,
-        "sha256": "cd148470d070a8ba9daaa288172a89114e9b48f79f27edb350dabac152cb4cab"
+        "word_count": 1653,
+        "sha256": "8e2effd2b09a9769a053a5b4c7a8083f09c85be111d077ab56e8a32e7a08c858"
       },
       {
         "id": "chapter-006",
         "order": 6,
         "title": "VI. The Sunset of Mankind",
-        "word_count": 2204,
-        "sha256": "09d45f9fab05ca1812124884442b5bcbbdd9ca143b46a36bb508310c87ad43cb"
+        "word_count": 2183,
+        "sha256": "13cf9aad33dfa3f6dd07eebbce0c47018daae6c28ff3a1e5f366969cec18008a"
       },
       {
         "id": "chapter-007",
         "order": 7,
         "title": "VII. A Sudden Shock",
-        "word_count": 2333,
-        "sha256": "66bfc61f35303cae0828ff6053b04bc62655db0fd684976bcc72ed6af99f22da"
+        "word_count": 2321,
+        "sha256": "fb7e644639826d0a660e33c6be6b6fc02066c459e63c9d86390989f92c07ef1b"
       },
       {
         "id": "chapter-008",
         "order": 8,
         "title": "VIII. Explanation",
-        "word_count": 4212,
-        "sha256": "cfe407cc5aa1d561ed463b4f589402670a72e8197a4f3b75d22cc3cb37de51cb"
+        "word_count": 4181,
+        "sha256": "84fcc02f2dcf70b049e5d274469848c4d92bd2fa5396b4fdc5b5a06854c14450"
       },
       {
         "id": "chapter-009",
         "order": 9,
         "title": "IX. The Morlocks",
-        "word_count": 2163,
-        "sha256": "3bcd1ef377cd0a89d21699e9356512a16a8d90740fb6e28fceedc3b5d37e2b2d"
+        "word_count": 2154,
+        "sha256": "2cc6a284e98a1b2125554ebb493f8ed7acb83c506c40502caad0dfbf238fc3a7"
       },
       {
         "id": "chapter-010",
         "order": 10,
         "title": "X. When Night Came",
-        "word_count": 2533,
-        "sha256": "5b7c4ff6d5544687d93d2176ac20f022713abba439bfe607c196a5daa747bd80"
+        "word_count": 2519,
+        "sha256": "a1405ca9e737a803891c8000448bd1c02cbb834f05cc85e8ed0d8594daf9942e"
       },
       {
         "id": "chapter-011",
         "order": 11,
         "title": "XI. The Palace of Green Porcelain",
-        "word_count": 2482,
-        "sha256": "b6c05d934d24bf78cd9a1f34a87df9bb6d13a9f7f57e615dbec965474cd95d4c"
+        "word_count": 2465,
+        "sha256": "340946cfedb8ab01062ca8fb8533722667929dc402d2afdc8965f91205d6009f"
       },
       {
         "id": "chapter-012",
         "order": 12,
-        "title": "XII",
-        "word_count": 2648,
-        "sha256": "4b00dc32f80a32858246ec194f1b45308e7d9e3778892f938948d2a185423a63"
+        "title": "XII. In the Darkness",
+        "word_count": 2638,
+        "sha256": "d153389de53546d2f8b44c3f9e5b17978362bf40bac5ca2e9be696885bdc6957"
       },
       {
         "id": "chapter-013",
         "order": 13,
-        "title": "XIII",
-        "word_count": 1078,
-        "sha256": "345db188fa16280e3115b2553cbed94b70252bff025a6b76b997c7a2ea272431"
+        "title": "XIII. The Trap of the White Sphinx",
+        "word_count": 1066,
+        "sha256": "d22476bd98c946ce4947c2e88893655eb74285abc0d68480a014d9271e816e5d"
       },
       {
         "id": "chapter-014",
         "order": 14,
         "title": "XIV. The Further Vision",
-        "word_count": 1913,
-        "sha256": "b9bf851c3546350b62c1c799d76b22e8fca38177180cafb921669a6fa49667c8"
+        "word_count": 1900,
+        "sha256": "16c807905844fb20e320a58dc2fb59f3fe1dc0e626ada5a428bc779f38c1b871"
       },
       {
         "id": "chapter-015",
         "order": 15,
         "title": "XV. The Time Traveller’s Return",
-        "word_count": 482,
-        "sha256": "007c974179ab0abb7e79e4918f1b28828908ad2ddf86138c811792bb77e8d6f7"
+        "word_count": 480,
+        "sha256": "827d1b25fda62266b3e3e11c0230daa7020daa34ecbae14dc7cedb4a44c14b49"
       },
       {
         "id": "chapter-016",
         "order": 16,
-        "title": "XVI",
-        "word_count": 1704,
-        "sha256": "06d51ab9b8ad4f5837c2e4b15b66695e8683c5974c3d6337728a32006fedbf06"
+        "title": "XVI. After the Story",
+        "word_count": 1389,
+        "sha256": "9065f35c40f3494e41d57045c34168bd940245f076e07b9875b6af8a0859139e"
+      },
+      {
+        "id": "chapter-017",
+        "order": 17,
+        "title": "Epilogue",
+        "word_count": 277,
+        "sha256": "556c5d180a99eafaeae363ce34e04fa09d30fb96900de8ed69dee1f5c0f64f04"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "fae4c69f673fb4359c537887d037d54ea41fef71f59350ec66bc4b94cf8ed0a0"
+    "publication_region": "india",
+    "evidence_sha256": "010c2fd7d0fa5ae1370f081876448c94a9bad177df7fe0b621b0f91c39af0cf5"
   },
   "reader_release": {
-    "status": "BLOCKED",
+    "status": "READY_FOR_APPROVAL",
     "exposed": false,
     "qa_status": "QA_PASSED",
     "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566866/earnalism/covers/front/cover_d4cb4472-7e0a-4bad-ab89-05f7d7ace821.png",
-    "blockers": [
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
-    ]
+    "blockers": []
   },
   "audio_release": {
     "status": "NOT_REQUESTED",
@@ -152,10 +156,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "7897989ddd3e062ad5c2e43c6c3e15d609d7fd168121e890d7b6593cc804ed8b",
-    "reader_manifest": "6060790337140fea316ae120bbeedf6c736324ba1e4dcda8ba0f78baeca0338d",
-    "source_evidence": "fae4c69f673fb4359c537887d037d54ea41fef71f59350ec66bc4b94cf8ed0a0",
-    "approval_evidence": "25a44ca7f7beb7b06bbf2fbd75fa9983ce843ea5a19267790e248a8399fbe521"
+    "public_book": "546cb6c3b6cb45721004e8fc49d224caa6fafe63bce5f2de2d86f25c8683dd22",
+    "reader_manifest": "1874f35f864ccffa65a9d7e38312c3f84df7fd8880120db0ac4ead237d1d913a",
+    "source_evidence": "010c2fd7d0fa5ae1370f081876448c94a9bad177df7fe0b621b0f91c39af0cf5",
+    "approval_evidence": "46616e21e94de57e61f5ef13efcbc5361626bb77e649e9381736daed29a15905"
   },
-  "manifest_sha256": "6b66adece486d5b881b2df1f829e4ef8c95f31808fe9ec20d14aac12322dd896"
+  "manifest_sha256": "d8fd828f6e3171de2dff3d973f172ca0e5105431a0137c184453bc0028005082"
 }

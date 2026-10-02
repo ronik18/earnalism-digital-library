@@ -1,0 +1,18 @@
+[
+  {
+    "slug": "book-0986aeb7e3",
+    "before_sha256": "33d523d47ed2037b94b1dee44bf8a074ccb662de0e051223c6efd33e20844dff",
+    "after_sha256": "adc335cf0ab77780d10c8e1c8535d7acae90cafbc38ffd4767d85414b58e7c4f",
+    "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-0986aeb7e3-complete-source-comparison.json",
+    "source_artifact_sha256": "7899e84701593ffd5e7430500a984c1a5adabd3d08c5031f0696bbfb98aaba3f",
+    "scope": "Exact typographical apostrophe repair, no literary words added or removed"
+  },
+  {
+    "slug": "book-0fbdaa730e",
+    "before_sha256": "69f79b777c0fe3a3ca5590f5dd94fce8563a2e471ad358e7e27de95ae46da52e",
+    "after_sha256": "2fb11243919995bfc3b37ff5457d06e9f673d9d8f9d54da8bac8532e4a26f055",
+    "source_artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-0fbdaa730e-complete-source-comparison.json",
+    "source_artifact_sha256": "bdadfed03280b5bdb92319522fda02ac8c0be89ae10a9a26270966b2a0a0d556",
+    "scope": "Exact typographical apostrophe repair, no literary words added or removed"
+  }
+]

@@ -1,22 +1,30 @@
 {
   "slug": "the-most-dangerous-game",
-  "generated_at": "2026-08-15T22:12:42Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "29bbd460abb519131fdaaa3106d18619b54b510dd666fe206f48ca5ba964793a"
+      "sha256": "56a19886fa34e2e28e0f821c602b3032ee4d45e7367f1b4e5197d3e841875c28"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "1927ff96289930c691938cf8948700d1f7324ef50166879f5f476258eb17c2fc"
+      "sha256": "4a46c5f4adfd77d68a8d1df281e9fa8581217a3a73593677434a82f3b728f0a0"
     },
     {
       "file": "highlight_sync.json",
       "sha256": "f4cc65845dbdec62f6f71c376c358d9a592556698b05309fad5c3689db01918c"
     },
     {
+      "file": "license_notice.json",
+      "sha256": "1822103ef4f55d4a3df141bcf9c536195b8a34d22bcaba9a9349484d4d74f8fa"
+    },
+    {
       "file": "public_book.json",
-      "sha256": "8a355e19863ed866ef613b8be5d832ff5866f43e6c241e9efafebe4c3eaf5438"
+      "sha256": "b0ed393c79ccb57c12133cdf6bdced2bd2b835d8cc4e8c79af7004f0937ed38c"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "e59b3e387a2fc5cada1741339208f95c093af694db839e5cabaebb2543e53753"
     },
     {
       "file": "reader_manifest.json",
@@ -24,7 +32,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "9a0ad9c1a9521d9b0a5b5fc5737d191d2525a16a133d3f806614faee38f2b6bd"
+      "sha256": "9fb0e5109ae412dd377d5e9805c2919e011924a27cec2815d4540bb5b485ef91"
     }
   ]
 }

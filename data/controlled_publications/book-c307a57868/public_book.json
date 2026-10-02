@@ -101,5 +101,6 @@
   },
   "audiobook_assets_updated_at": "2026-07-03T20:07:46Z",
   "created_at": "2026-07-03T20:07:46Z",
-  "updated_at": "2026-07-03T20:07:46Z"
+  "updated_at": "2026-07-03T20:07:46Z",
+  "license_notice_sha256": "a25f88f0d220c3f8a70e10398aafe7a57c98911cbef093a45b1a27c1cc89bcba"
 }

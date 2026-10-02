@@ -53,9 +53,9 @@
       "updated_at": "2026-07-03T20:07:47Z"
     }
   ],
-  "source_hash": "0baf572e0ec351e47504ab1d49fb646be164ab6db13d0024cda7567b58dad287",
-  "content_hash": "907586f92b4df67b3576f66b89d9c1434bd09200aec7d25926d4fb8253a6761e",
-  "provenance_hash": "c49460dc49b55ce9b4340e04c2844835981ac4f7042ac2d31c830079fc679dc6",
+  "source_hash": "ccf68ee545e68995f88d4cd2f534ecae9bf731b8996118d34b5a10bfc4958061",
+  "content_hash": "f3c4db2a3c551518ebd4302e7409797eb49f0ff94470ebfbc4b800b900a44b61",
+  "provenance_hash": "fc4034680d03df4989f6ab56d58d5f93407218847ffe6cf743d5ee107f185f59",
   "rights_basis": "Public domain; official catalog marks copyright status as Public domain in the USA; source text header permits reuse in the United States.",
   "rights_tier": "A",
   "verification_status": "approved",

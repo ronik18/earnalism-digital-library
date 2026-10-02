@@ -1,6 +1,6 @@
 {
   "slug": "tobermory",
-  "generated_at": "2026-07-03T20:07:47Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence 2.json",
@@ -8,11 +8,11 @@
     },
     {
       "file": "approval_evidence.json",
-      "sha256": "f786548cc90242e76f12ac16f5fa953befed0f93f788fcfa5001fbff2b6e5ae1"
+      "sha256": "ab26b41c70fec5803e45b560917c2ba9e08c91a0632fc58f1d89f80f51898ef9"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "b00117523393fc5ac87acca8e57e34c88cfd56a99282d4a668234867c771a0cf"
+      "sha256": "bc788cf3827988218b6274834380854257319b2a989ab149f46392fe2a32c6b4"
     },
     {
       "file": "highlight_sync.json",
@@ -20,7 +20,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "b940af4b316505d236c4af567932d3afa8a2fe3f8b24744b23d4bd7c24f7afae"
+      "sha256": "fbbf8cdcc3af43b8e952c1514b705ceee06f607adb3f8eb195bbf967c44fc84f"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "29ca1c6386463b8b3051b5201080a86b9e055350c339360f18ac16e6c6c17474"
     },
     {
       "file": "reader_manifest.json",
@@ -28,7 +32,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "cb1d4332ee2fe4461c662484e2bf9f42e7b7846d2fbfd70233d96598cd932cc7"
+      "sha256": "10c393797321da3dab2bf35625f7eae932cef495c47e51afc3113b4b1e6544bd"
     }
   ]
 }

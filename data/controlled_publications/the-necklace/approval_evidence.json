@@ -1,12 +1,22 @@
 {
   "slug": "the-necklace",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": false
+  "audiobook_enabled": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "dcb9d4c172924011beeb417227abacc75b4b7555c52be0a1d8a1704ab93b6c2b",
+  "source_hash": "d90b8b53dd418a5063c2ae2469a426ede6f6914f64d4dd13c3eb2d97e7175f64",
+  "content_hash": "3edbc2bb4b1cfe0829cd6f499cd21b9f7de2f81d74c151e16e90bb6efab9d8fb",
+  "provenance_hash": "d6c07d6b7c29bf90dbfdd1f3e17f905057030002da549d06b893bf7b1a59fe5b",
+  "verified_at": "2026-10-02T03:06:41.377578+00:00"
 }

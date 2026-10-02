@@ -1,0 +1,145 @@
+{
+  "garnett": {
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Garnett%2C%20Constance%2C%201861-1946",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Garnett%2C%20Constance%2C%201861-1946",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:14.296970+00:00",
+      "response_sha256": "30c8854184496fa1556969d05351e305c07a56d925b1054ed5e83822eb620888"
+    },
+    "creator": "Garnett, Constance, 1861-1946",
+    "url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Garnett%2C%20Constance%2C%201861-1946"
+  },
+  "jacobs": {
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Jacobs%2C%20W.%20W.%20%28William%20Wymark%29%2C%201863-1943",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Jacobs%2C%20W.%20W.%20%28William%20Wymark%29%2C%201863-1943",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:12.760348+00:00",
+      "response_sha256": "3e7a1fa196fb222b185431a4eb38f7a7ee8b80061f42d76b8fc3b1d03fc30066"
+    },
+    "creator": "Jacobs, W. W. (William Wymark), 1863-1943",
+    "url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Jacobs%2C%20W.%20W.%20%28William%20Wymark%29%2C%201863-1943"
+  },
+  "stoker": {
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Stoker%2C%20Bram%2C%201847-1912",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Stoker%2C%20Bram%2C%201847-1912",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:11.937936+00:00",
+      "response_sha256": "20d5c8a9ccde1d9506b6c308dfee8cdde38d880779db8682e7977b5907115911"
+    },
+    "creator": "Stoker, Bram, 1847-1912",
+    "url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Stoker%2C%20Bram%2C%201847-1912"
+  },
+  "fitzgerald": {
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Fitzgerald%2C%20F.%20Scott%20%28Francis%20Scott%29%2C%201896-1940",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Fitzgerald%2C%20F.%20Scott%20%28Francis%20Scott%29%2C%201896-1940",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:13.648756+00:00",
+      "response_sha256": "e20846217b755026e9ea6021ee600c35ac15a39d3d51577afba3e25580ccf554"
+    },
+    "creator": "Fitzgerald, F. Scott (Francis Scott), 1896-1940",
+    "url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Fitzgerald%2C%20F.%20Scott%20%28Francis%20Scott%29%2C%201896-1940"
+  },
+  "twain": {
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Twain%2C%20Mark%2C%201835-1910",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Twain%2C%20Mark%2C%201835-1910",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:34.848181+00:00",
+      "response_sha256": "7143336bf6e38b1c2863302f9b386063ee80ab49414836362fbc1d164ebb5d4f"
+    },
+    "creator": "Twain, Mark, 1835-1910",
+    "url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Twain%2C%20Mark%2C%201835-1910"
+  },
+  "crowther": {
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Crowther%2C%20Samuel%2C%201880-1947",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Crowther%2C%20Samuel%2C%201880-1947",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:16.106342+00:00",
+      "response_sha256": "31bad066ebdb5ffcfb1fccb5068bd7090200f44b552c251c05e2ef9401ed761a"
+    },
+    "creator": "Crowther, Samuel, 1880-1947",
+    "url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Crowther%2C%20Samuel%2C%201880-1947"
+  },
+  "conwell": {
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Conwell%2C%20Russell%20H.%2C%201843-1925",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Conwell%2C%20Russell%20H.%2C%201843-1925",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:15.801770+00:00",
+      "response_sha256": "f22e619c10a76aaf042a3883b8e054ac53e9c1dd54db986aa0a8a8f45d47ad65"
+    },
+    "creator": "Conwell, Russell H., 1843-1925",
+    "url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Conwell%2C%20Russell%20H.%2C%201843-1925"
+  },
+  "shackleton": {
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Shackleton%2C%20Robert%2C%201860-1923",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Shackleton%2C%20Robert%2C%201860-1923",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:17.297533+00:00",
+      "response_sha256": "5c12611454e140714574aab899820466564ac130966852eacb1e3b7028284c7f"
+    },
+    "creator": "Shackleton, Robert, 1860-1923",
+    "url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Shackleton%2C%20Robert%2C%201860-1923"
+  },
+  "poe_berenice": {
+    "receipt": {
+      "requested_url": "https://www.eapoe.org/works/info/pt011.htm",
+      "resolved_url": "https://www.eapoe.org/works/info/pt011.htm",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:20.000678+00:00",
+      "response_sha256": "a39fc1ed6c785544996ca1366ecbedbdc09c77f994f4f39e3b73e02f9da2bcb3"
+    },
+    "creator": null,
+    "url": "https://www.eapoe.org/works/info/pt011.htm"
+  },
+  "poe_purloined": {
+    "receipt": {
+      "requested_url": "https://www.eapoe.org/works/info/pt051.htm",
+      "resolved_url": "https://www.eapoe.org/works/info/pt051.htm",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:21.662920+00:00",
+      "response_sha256": "a4c43fd5e4eb4852bda40383ab37094d4363d7905625e839ecab00d68fbf8a73"
+    },
+    "creator": null,
+    "url": "https://www.eapoe.org/works/info/pt051.htm"
+  },
+  "poe_masque": {
+    "receipt": {
+      "requested_url": "https://www.eapoe.org/Works/info/pt038.htm",
+      "resolved_url": "https://www.eapoe.org/Works/info/pt038.htm",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:22.768174+00:00",
+      "response_sha256": "8b47167b86297a08110fce0a3c0045bee8216c044f0c4fea3367cc0907a82033"
+    },
+    "creator": null,
+    "url": "https://www.eapoe.org/Works/info/pt038.htm"
+  },
+  "poe_murders": {
+    "receipt": {
+      "requested_url": "https://www.eapoe.org/works/info/pt030.htm",
+      "resolved_url": "https://www.eapoe.org/works/info/pt030.htm",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:25.808614+00:00",
+      "response_sha256": "5c267425e6100f6651c06b3966895f05e69a21326ee66d344f6bd21d5337ad5f"
+    },
+    "creator": null,
+    "url": "https://www.eapoe.org/works/info/pt030.htm"
+  },
+  "poe_imp": {
+    "receipt": {
+      "requested_url": "https://www.eapoe.org/works/info/pt053.htm",
+      "resolved_url": "https://www.eapoe.org/works/info/pt053.htm",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:25.796782+00:00",
+      "response_sha256": "c1be7b965f9503b3fd4e8c5da1cb0775a86ddad10ade852732a9b95f2b28443a"
+    },
+    "creator": null,
+    "url": "https://www.eapoe.org/works/info/pt053.htm"
+  }
+}

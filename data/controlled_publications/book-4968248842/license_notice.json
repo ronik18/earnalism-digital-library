@@ -1,0 +1,15 @@
+{
+  "schema_version": "earnalism.text-license.v1",
+  "slug": "book-4968248842",
+  "license": "CC-BY-SA-4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "attribution": "বলাই by রবীন্দ্রনাথ ঠাকুর; Bengali Wikisource transcription and its contributors, credited through the exact edition/source revision and its scanned-page contributor histories.",
+  "changes": "Wrong historical Sanskar text corrected to actual Balai from the same1969printededition scan258–261, independently identified by its printedTOC. Historical wrong text/source hashes preserved internally. No literary text composed.",
+  "scope": "CC BY-SA4.0 applies only to source-derived transcription and formatting, not independently owned covers, Earnalism branding, software or unrelated material. Underlying literary/edition rights and publication authorization are separate release gates.",
+  "disclaimer": "Delivered licensed text may be copied, printed and reused under CC BY-SA4.0 attribution and ShareAlike terms. This notice itself grants no publication, cover or audiobook authorization.",
+  "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29.djvu%2F%E0%A7%A8%E0%A7%AB%E0%A7%AE&oldid=1680021",
+  "contributors_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29.djvu%2F%E0%A7%A8%E0%A7%AB%E0%A7%AE&action=history",
+  "chapter_sha256": [
+    "8ba8be9114a9a9a8c4d0fdb6242975bfd2345b8e8e441b495c34c443ece1051b"
+  ]
+}

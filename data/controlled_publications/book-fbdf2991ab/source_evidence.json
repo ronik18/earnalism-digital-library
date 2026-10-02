@@ -24,9 +24,10 @@
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "c302bdc3c8afe6199fbdec18c213f6bfa0d8ac7c066e50e4bb669ca32a55fd5d",
-    "chapter_count": 3,
+    "reader_content_sha256": "18ec97c45e457f8bdb395b1046ca0adb4a59f37af82384cb14529b72e835ce48",
+    "chapter_count": 4,
     "chapter_content_sha256": {
+      "chapter-004": "3831067c86b55d694a4dc55e260b970b5cbaa427d8aaf094a1ceb8a6ec7eb913",
       "chapter-001": "806d5cd3027f2861cee9f2fb7e841420b58f2d1522cd1e2128706046f0fcf501",
       "chapter-002": "535b7fa7163881470ac79322dcf5cb09c379108a6117040537358d8ff950dc16",
       "chapter-003": "1367b22486044fa3f4959acaea64a9d294d28a17004d927009e37065dd82e30b"
@@ -48,5 +49,35 @@
       "reference": "https://www.drikpanchang.com/festivals/pohela-boishakh/pohela-boishakh-date-time.html?year=0596"
     },
     "scope": "Underlyingwork firstpublication metadata only; sourceedition editorial/licence/publication authorization independently held."
+  },
+  "full_rendered_exact_repair": {
+    "slug": "book-fbdf2991ab",
+    "verified_at": "2026-10-01T21:46:35.968993+00:00",
+    "source": "internal/legal/catalogue_clearance_20261002/bengali/book-fbdf2991ab-complete-source-comparison.json",
+    "source_sha256": "4920141103b227e7be5744936b671531c11650db9e1a6b5a35a742397c08913d",
+    "repair": "Restored missing originalsection1 from6exact sourceparagraphs; existingchapterIDs retained forsections2–4; originalpreviewcount preserved; structural numericmarkers mappedtochaptermetadata",
+    "ordered_chapters": [
+      [
+        "chapter-004",
+        "১",
+        "3831067c86b55d694a4dc55e260b970b5cbaa427d8aaf094a1ceb8a6ec7eb913"
+      ],
+      [
+        "chapter-001",
+        "২",
+        "806d5cd3027f2861cee9f2fb7e841420b58f2d1522cd1e2128706046f0fcf501"
+      ],
+      [
+        "chapter-002",
+        "৩",
+        "535b7fa7163881470ac79322dcf5cb09c379108a6117040537358d8ff950dc16"
+      ],
+      [
+        "chapter-003",
+        "৪",
+        "1367b22486044fa3f4959acaea64a9d294d28a17004d927009e37065dd82e30b"
+      ]
+    ],
+    "scope": "Reader content preparation only, no release authorization"
   }
 }

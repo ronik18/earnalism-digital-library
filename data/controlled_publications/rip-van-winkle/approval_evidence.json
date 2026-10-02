@@ -1,12 +1,22 @@
 {
   "slug": "rip-van-winkle",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true
+  "audiobook_enabled": true,
+  "source_hash": "3085b99a7b6a9d5f527dfb97351c858a6f7fc97f2c654570f5defbbfb50e5042",
+  "content_hash": "2011555cdb66a9be1a30c4fa4a31ca08393c0492f3dc94b62b8d83f0853f13ef",
+  "provenance_hash": "3828640b72ac06bf1884fbd427e1185eb0a45542ac514dc10f59cbbb64aac314",
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "39b1b1f431fcbd9ff255fcc6a075134c75f7d791246115a9581c073603e978f9",
+  "verified_at": "2026-10-01T21:49:40.745164+00:00"
 }

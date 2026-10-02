@@ -1,12 +1,12 @@
 {
   "slug": "a-jury-of-her-peers",
   "source_url": "https://www.gutenberg.org/ebooks/20872",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #20872 selected Glaspell story, 1917 narrative only; anthology editorial matter excluded",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "c19fcfb420fe99571e830c0794a0625d72ac2c74630ca7e4af2ec49202ec2b43",
-  "content_hash": "a9ef4839bef2ff5bf3c8f3ea7765dd131a04f0b3deda047c75efec96419b4325",
-  "provenance_hash": "5a10292b91d399e8422ccba67274a1cc3fb9c8d5667d2ca6d7212c4a3a6ccfc9",
-  "rights_basis": "Susan Glaspell died 1948; first published 1917. Public domain in India and the U.S.",
+  "source_hash": "f011e7e8f943cee34701f2c807a35c34af76592307f213602470c9140461032f",
+  "content_hash": "386356e64157eb7fba8cb30c7728b47030be0d025794fd9b31a40e2a42e8d087",
+  "provenance_hash": "021f0de8b56b29ff222241daf69b4b76681ddfa367d02d777f3ebcbef022f0dc",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1948, original publication 1917; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-03T08:04:22.503048+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -104,5 +104,83 @@
       }
     ],
     "content_sha256": "174c89fb3060de3479e5beed24c45b23fd7e15f9daf42ba9650c148e540ce6b6"
+  },
+  "reader_text_furniture_removal": {
+    "verified_at": "2026-10-01T21:34:27.321920+00:00",
+    "old_chapter_sha256": "386356e64157eb7fba8cb30c7728b47030be0d025794fd9b31a40e2a42e8d087",
+    "new_chapter_sha256": "386356e64157eb7fba8cb30c7728b47030be0d025794fd9b31a40e2a42e8d087",
+    "transformation": "Remove From Every Week source attribution furniture"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "c19fcfb420fe99571e830c0794a0625d72ac2c74630ca7e4af2ec49202ec2b43",
+        "content_hash": "a9ef4839bef2ff5bf3c8f3ea7765dd131a04f0b3deda047c75efec96419b4325",
+        "provenance_hash": "5a10292b91d399e8422ccba67274a1cc3fb9c8d5667d2ca6d7212c4a3a6ccfc9",
+        "source_url": "https://www.gutenberg.org/ebooks/20872",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:34:12.271563+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "author_death_year": 1948,
+  "original_publication_year": 1917,
+  "country_of_origin": "United States",
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:34:27.335291+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/20872.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/20872/pg20872.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:31.141940+00:00",
+      "response_sha256": "f011e7e8f943cee34701f2c807a35c34af76592307f213602470c9140461032f"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 495397,
+          "length": 43972
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "first_publication_evidence": {
+      "source": "Project Gutenberg #20872 actual narrative heading and copyright notice",
+      "response_sha256": "f011e7e8f943cee34701f2c807a35c34af76592307f213602470c9140461032f",
+      "verified_at": "2026-10-01T21:34:27.321920+00:00",
+      "excerpt": "Copyright, 1917, by The Crowell Publishing Company. Copyright, 1918, by Susan Glaspell Cook.",
+      "original_publication_year": 1917,
+      "author_death_year": 1948,
+      "author_death_receipt": {
+        "url": "https://www.gutenberg.org/ebooks/authors/search/?query=Susan_Glaspell",
+        "resolved_url": "https://www.gutenberg.org/ebooks/authors/search/?query=Susan_Glaspell",
+        "http_status": 200,
+        "response_sha256": "d7a8e0a82c4d74b0d8d7548adc9b6e8b8191bfac974372a6e29b47405ed53b14",
+        "verified_at": "2026-10-01T21:33:35.634077+00:00"
+      },
+      "scope": "Selected Glaspell story only; O’Brien anthology introduction/criticism and other contributors excluded"
+    },
+    "author_death_evidence": null,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
   }
 }

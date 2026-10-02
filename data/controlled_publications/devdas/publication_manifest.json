@@ -3,21 +3,21 @@
   "schema_version": 1,
   "slug": "devdas",
   "title": "দেবদাস / Devdas",
-  "generated_at": "2026-10-01T20:07:48.333211+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "content": {
     "source_hash": "0091b1d4a93df523779db334ccc52e390a673ca7adf88fd716d954f4c0782fcb",
     "content_hash": "752b8541f36e788ddcd7265a26fd37aba89035d364e8f920414da38a72ec27af",
     "provenance_hash": "3e5be4dcdfd4d39e84b8e1c9555313032c83706379a0ab40d259691a7747f682",
     "sanitized": true,
     "chapter_count": 16,
-    "chapter_index_sha256": "2a8a9a60d84f31411acc8290ad38ba6b74cf2ef4e2aa29e7bde6e64c42b59b0e",
+    "chapter_index_sha256": "009a94cbc08a1385bf926a85d2c6f3434871cb4259c9f062fd44dfcf08097344",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "প্রথম পরিচ্ছেদ",
-        "word_count": 1600,
-        "sha256": "cff3a9a8b51d5db016b81031d7171c3b5f0aa31eed476a3a90b06e1ee32b5641"
+        "word_count": 1540,
+        "sha256": "5468c1b95059c58c17434d99a7bc534b639038222b0206eed9d897e2530ad374"
       },
       {
         "id": "chapter-002",
@@ -121,8 +121,8 @@
         "id": "chapter-016",
         "order": 16,
         "title": "ষোড়শ পরিচ্ছেদ",
-        "word_count": 2269,
-        "sha256": "4f98282acac036096cb674b9a5701e9ce62c439e84cab38a7da994f6dc007e08"
+        "word_count": 2232,
+        "sha256": "5d5989eb1125cc836ec34ed70620cd8723ca5a9bbc24bca85e88360ffe9944bb"
       }
     ]
   },
@@ -130,7 +130,7 @@
     "status": "QUARANTINE",
     "tier": "A",
     "publication_region": "global",
-    "evidence_sha256": "8b9e1f9f72a93fc6d3068b74066ac2a718b640e5a356a262e673f5bf1368e552"
+    "evidence_sha256": "106c3fa4caf721233ce14d3b432f08e7c19e259b5a961961e1baef031b5f25af"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -153,10 +153,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "916b4c273355466434b951506dec2b92aaae034d2f02b8e69306bcac609075e4",
-    "reader_manifest": "7fd589c629759806eb98321a28b95d1e1d4d33d2311d8f5dbb61fd2c79c1c2ff",
-    "source_evidence": "8b9e1f9f72a93fc6d3068b74066ac2a718b640e5a356a262e673f5bf1368e552",
+    "public_book": "cb018622ae67b6f9f5c3e048b5dcf39843e005aa97850a2bb48c49b77323df0e",
+    "reader_manifest": "7cc46c20142452920913373900fe5013fadf6c65a4b27998a7fe4df0d583e4e4",
+    "source_evidence": "106c3fa4caf721233ce14d3b432f08e7c19e259b5a961961e1baef031b5f25af",
     "approval_evidence": "059fc4db36a82b76eb5fc0384c8f99ea0ab1433620e134c05b5401117f60cfaa"
   },
-  "manifest_sha256": "3386787fed602a9dad1658a238067ff82683b8fec3a185dc333bcb7df74d3a76"
+  "manifest_sha256": "fd3676287c004a373db0d3b9e6a82b58f8834add6d64dc07603dbd0f6605d317"
 }

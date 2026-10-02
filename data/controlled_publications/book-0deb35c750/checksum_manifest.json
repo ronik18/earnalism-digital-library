@@ -1,6 +1,6 @@
 {
   "slug": "book-0deb35c750",
-  "generated_at": "2026-10-01T21:16:37.084971+00:00",
+  "generated_at": "2026-10-02T03:11:07.553066+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
@@ -16,11 +16,11 @@
     },
     {
       "file": "license_notice.json",
-      "sha256": "0096cded0fa318d53b247c12a81ff7387705142f582617ae047d05a03505b1bd"
+      "sha256": "256ad1db5950fea4d0e00c0206e96bc56ba7287fcb08f3141a05f570d92599c9"
     },
     {
       "file": "public_book.json",
-      "sha256": "afeaa6f020aff2080af4fbc9392cdb80957ccba27dffe651597cd9b2b0f6b620"
+      "sha256": "d9f7e7fdb732666be84d709dd981c0d6a697b886a7c168d2753b025939bea020"
     },
     {
       "file": "reader_manifest.json",
@@ -28,7 +28,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "0261661235f7de18d6dc08a02c620aad2664c2256d360c20144f6979b207ccdc"
+      "sha256": "58814e30b7e4888c46024c86f197c0f021ea439062752adbf9fa68cdf86e190b"
     }
   ]
 }

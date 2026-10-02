@@ -1,12 +1,12 @@
 {
   "slug": "the-purloined-letter",
   "source_url": "https://www.gutenberg.org/ebooks/2148",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #2148; selected Poe original story; historical lifetime publication 1844; no modern scholarly/editorial text imported",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "99de013d9419389e884e72a91328bc815ac35158c71aaf703d57b9f0a4de836b",
-  "content_hash": "cd6b9310551df3ad1a0618cff3295671a7b120a29d4e7084b21ac26019fcda82",
-  "provenance_hash": "5c62101e10697153b9580b73f755beb9b87e52472ec5b56742eab750433cc711",
-  "rights_basis": "Edgar Allan Poe died 1849; first published 1844. Public domain in India and the U.S.",
+  "source_hash": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e",
+  "content_hash": "eb1b8f204ad8a0764e59d823c68fa470020d236a9d60138a406ee3f89ebdc669",
+  "provenance_hash": "0d661b71d28690735fed5c6a75e00424e855affdd1480314dcdbdb6b9d7b7185",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1849, verified lifetime collection publication 1844 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-03T08:04:22.168135+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -114,5 +114,89 @@
       }
     ],
     "content_sha256": "eb1b8f204ad8a0764e59d823c68fa470020d236a9d60138a406ee3f89ebdc669"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "99de013d9419389e884e72a91328bc815ac35158c71aaf703d57b9f0a4de836b",
+        "content_hash": "cd6b9310551df3ad1a0618cff3295671a7b120a29d4e7084b21ac26019fcda82",
+        "provenance_hash": "5c62101e10697153b9580b73f755beb9b87e52472ec5b56742eab750433cc711",
+        "source_url": "https://www.gutenberg.org/ebooks/2148",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:52:27.631967+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1844,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:52:27.631967+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2148.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2148/pg2148.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:31.865916+00:00",
+      "response_sha256": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1600,
+          "length": 40328
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Edgar Allan Poe",
+      "creator_death_year": 1849,
+      "lifetime_publication_year": 1844,
+      "primary_historical_bibliography_receipt": {
+        "requested_url": "https://www.eapoe.org/works/info/pt051.htm",
+        "resolved_url": "https://www.eapoe.org/works/info/pt051.htm",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:50:21.662920+00:00",
+        "response_sha256": "a4c43fd5e4eb4852bda40383ab37094d4363d7905625e839ecab00d68fbf8a73"
+      },
+      "historical_publication_excerpt": "Text-02b — “ The Purloined Letter ” — 1844 — The Gift for 1845 (probably available by October 1844) — (Mabbott text A) Text-03 — “The Purloined Letter” — 1844-1849 Text-03a — “The Purloined Letter” — 1844-1845 — (a presumed revised version ",
+      "basis": "Historical printed-story publication verified before Poe death1849; selected RavenEdition text independently matches literal PG source; modern scholarly apparatus not imported."
+    },
+    "author_death_evidence": 1849,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1844,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e",
+    "content_sha256": "eb1b8f204ad8a0764e59d823c68fa470020d236a9d60138a406ee3f89ebdc669",
+    "year": 1844,
+    "receipt": {
+      "requested_url": "https://www.eapoe.org/works/info/pt051.htm",
+      "resolved_url": "https://www.eapoe.org/works/info/pt051.htm",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:50:21.662920+00:00",
+      "response_sha256": "a4c43fd5e4eb4852bda40383ab37094d4363d7905625e839ecab00d68fbf8a73"
+    },
+    "basis": "Historical printed-story publication verified before Poe death1849; selected RavenEdition text independently matches literal PG source; modern scholarly apparatus not imported.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
   }
 }

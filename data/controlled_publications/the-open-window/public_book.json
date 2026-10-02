@@ -238,7 +238,7 @@
       "word_count": 1219
     }
   ],
-  "content_hash": "8a5f82edf94305333080dc160175cb82c865c6acb498216f15616ac90295042d",
+  "content_hash": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
   "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png",
   "cover_dimensions": {
     "back": [
@@ -273,7 +273,7 @@
     "Engage with the text in a clean digital format.",
     "Read without unrelated source-file boilerplate."
   ],
-  "provenance_hash": "21e38f6081034d3d8731db585a96fdf014731375175eae0c279eca43415fe9a4",
+  "provenance_hash": "f0bf9362162e221f0aee69804a444f30366ea2d2c776a078e8d3226ba36d13e7",
   "publicationStatus": "live",
   "publication_status": "LIVE_APPROVED",
   "qa_status": "QA_PASSED",
@@ -284,7 +284,7 @@
   "showInHomepage": false,
   "showInPublicLibrary": true,
   "slug": "the-open-window",
-  "source_hash": "a107f7212542030d90e15e1b7daeeee6dcef9a77ea18887ce009afbf61457078",
+  "source_hash": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
   "subtitle": "",
   "title": "The Open Window",
   "updated_at": "2026-07-19T10:15:00Z",

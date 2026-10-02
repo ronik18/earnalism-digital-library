@@ -1,0 +1,59 @@
+{
+  "receipt": {
+    "url": "https://bn.wikisource.org/w/api.php?action=query&generator=allpages&gapprefix=%E0%A6%87%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%BF%E0%A6%B0%E0%A6%BE+%28%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%AE%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC%2C+%E0%A7%A7%E0%A7%AE%E0%A7%AD%E0%A7%A9%29%2F&gapnamespace=0&gaplimit=max&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2",
+    "retrieved_at": "2026-10-01T21:51:25.432322+00:00",
+    "response_sha256": "89777d366165757de9905bf2dbf93fdf0ec549eff76d163683d01c2f6cd95540"
+  },
+  "prefix": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩)",
+  "leaves": [
+    {
+      "title": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩)/প্রথম পরিচ্ছেদ",
+      "revision": 1910625,
+      "revision_timestamp": "2025-09-16T06:59:40Z",
+      "wikitext": "<pages index=\"ইন্দিরা - বঙ্কিমচন্দ্র চট্টোপাধ্যায় (১৮৭৩).pdf\" from=3 to=11 tosection=A11 header=1 />"
+    },
+    {
+      "title": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩)/দ্বিতীয় পরিচ্ছেদ",
+      "revision": 1910623,
+      "revision_timestamp": "2025-09-16T06:59:39Z",
+      "wikitext": "<pages index=\"ইন্দিরা - বঙ্কিমচন্দ্র চট্টোপাধ্যায় (১৮৭৩).pdf\" from=11 to=18 fromsection=B11 tosection=A18 header=1 />"
+    },
+    {
+      "title": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩)/তৃতীয় পরিচ্ছেদ",
+      "revision": 1910622,
+      "revision_timestamp": "2025-09-16T06:59:39Z",
+      "wikitext": "<pages index=\"ইন্দিরা - বঙ্কিমচন্দ্র চট্টোপাধ্যায় (১৮৭৩).pdf\" from=18 to=23 fromsection=B18 header=1 />"
+    },
+    {
+      "title": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩)/চতুর্থ পরিচ্ছেদ",
+      "revision": 1910621,
+      "revision_timestamp": "2025-09-16T06:59:39Z",
+      "wikitext": "<pages index=\"ইন্দিরা - বঙ্কিমচন্দ্র চট্টোপাধ্যায় (১৮৭৩).pdf\" from=24 to=29 tosection=A29 header=1 />"
+    },
+    {
+      "title": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩)/পঞ্চম পরিচ্ছেদ",
+      "revision": 1910624,
+      "revision_timestamp": "2025-09-16T06:59:40Z",
+      "wikitext": "<pages index=\"ইন্দিরা - বঙ্কিমচন্দ্র চট্টোপাধ্যায় (১৮৭৩).pdf\" from=29 to=32 fromsection=B29 tosection=A32 header=1 />"
+    },
+    {
+      "title": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩)/ষষ্ঠ পরিচ্ছেদ",
+      "revision": 1910626,
+      "revision_timestamp": "2025-09-16T06:59:41Z",
+      "wikitext": "<pages index=\"ইন্দিরা - বঙ্কিমচন্দ্র চট্টোপাধ্যায় (১৮৭৩).pdf\" from=32 to=35 fromsection=B32 tosection=A35 header=1 />"
+    },
+    {
+      "title": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩)/সপ্তম পরিচ্ছেদ",
+      "revision": 1910627,
+      "revision_timestamp": "2025-09-16T06:59:41Z",
+      "wikitext": "<pages index=\"ইন্দিরা - বঙ্কিমচন্দ্র চট্টোপাধ্যায় (১৮৭৩).pdf\" from=35 to=40 fromsection=B35 tosection=A40 header=1 />"
+    },
+    {
+      "title": "ইন্দিরা (বঙ্কিমচন্দ্র চট্টোপাধ্যায়, ১৮৭৩)/অষ্টম পরিচ্ছেদ",
+      "revision": 1910620,
+      "revision_timestamp": "2025-09-16T06:59:38Z",
+      "wikitext": "<pages index=\"ইন্দিরা - বঙ্কিমচন্দ্র চট্টোপাধ্যায় (১৮৭৩).pdf\" from=40 to=47 fromsection=B40  header=1 />"
+    }
+  ],
+  "continuation": null
+}

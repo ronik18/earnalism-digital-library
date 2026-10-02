@@ -58,5 +58,6 @@
     "restored_source_chapters": 12,
     "current_chapters": 14,
     "method": "Existing first two chapter paragraphs match pinned edition; appended only remaining exact same-edition child chapter text. No literary content generated; preview remains first two chapters; held publication unchanged."
-  }
+  },
+  "additional_exact_source_repairs": "internal/legal/catalogue_clearance_20261002/bengali/additional-exact-source-repairs.json"
 }

@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "book-a74c1a1451",
+    "status": "EXACT_MATCH_FORMATTING_ONLY",
+    "rendered_sha256": "02f95654db8b91cf5f113fb7fe3beb38901b1944abb861d4bbd01dc72c47e452"
+  },
+  {
+    "slug": "book-ac5a71075e",
+    "status": "EXACT_MATCH_FORMATTING_ONLY",
+    "rendered_sha256": "bb6a8016b4c2776da3e3ec626af779afd31b05281bb6962784a0139216b1ef8b"
+  },
+  {
+    "slug": "book-b9d47814a8",
+    "status": "EXACT_MATCH_FORMATTING_ONLY",
+    "rendered_sha256": "83b8640bd78b76a076eb4ce3bf0309d8d7eb78d21b593305a807b95b5e70d06e"
+  },
+  {
+    "slug": "book-bfc51280b3",
+    "status": "SOURCE_RECONCILIATION_REQUIRED",
+    "rendered_sha256": "8f1f2a961acb409204fb156ee641849b58bd464564b5fa07e4d7d8ed197c75b0"
+  },
+  {
+    "slug": "book-c307a57868",
+    "status": "EXACT_MATCH_FORMATTING_ONLY",
+    "rendered_sha256": "9737ca73c31c94a465eec97e245f9d4c6542be6907da5833073553d42959761d"
+  },
+  {
+    "slug": "book-c7f3ce526c",
+    "status": "EXACT_MATCH_FORMATTING_ONLY",
+    "rendered_sha256": "53a42deffdd1bb2c3411a0689b51f9a6f4adaa34ab812b0ea8318906bb7025df"
+  }
+]

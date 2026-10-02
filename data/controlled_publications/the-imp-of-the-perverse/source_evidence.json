@@ -1,12 +1,12 @@
 {
   "slug": "the-imp-of-the-perverse",
   "source_url": "https://www.gutenberg.org/ebooks/2148",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #2148; selected Poe original story; historical lifetime publication 1845; no modern scholarly/editorial text imported",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "596cf1c38d455304f0df2163666ee8c12691292e23b61f0a8f74914f67b01b2e",
-  "content_hash": "6902c40654ed82160028cc915dacce07a8959e45a40beef469829aa6b420eb41",
-  "provenance_hash": "697f0e1ce450200e5e9c6787ba85ec53c45d939654964c7f04b36f620c4f8a40",
-  "rights_basis": "Edgar Allan Poe died 1849; first published 1845. Public domain in India and the U.S.",
+  "source_hash": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e",
+  "content_hash": "e92577c21fa4292e3494ee1404796d429ac88083d758f667bad859b912eeb5b0",
+  "provenance_hash": "6ac6e344f4500a937e9681276de2328fd187c0a053875a0cbdbdd290336a943b",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1849, verified lifetime collection publication 1845 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-03T08:04:22.423797+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -114,5 +114,89 @@
       }
     ],
     "content_sha256": "e92577c21fa4292e3494ee1404796d429ac88083d758f667bad859b912eeb5b0"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "596cf1c38d455304f0df2163666ee8c12691292e23b61f0a8f74914f67b01b2e",
+        "content_hash": "6902c40654ed82160028cc915dacce07a8959e45a40beef469829aa6b420eb41",
+        "provenance_hash": "697f0e1ce450200e5e9c6787ba85ec53c45d939654964c7f04b36f620c4f8a40",
+        "source_url": "https://www.gutenberg.org/ebooks/2148",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:52:27.631967+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1845,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:52:27.631967+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2148.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2148/pg2148.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:31.865916+00:00",
+      "response_sha256": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 266855,
+          "length": 13849
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Edgar Allan Poe",
+      "creator_death_year": 1849,
+      "lifetime_publication_year": 1845,
+      "primary_historical_bibliography_receipt": {
+        "requested_url": "https://www.eapoe.org/WORKS/info/pt060.htm",
+        "resolved_url": "https://www.eapoe.org/WORKS/info/pt060.htm",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:51:34.171019+00:00",
+        "response_sha256": "b948ffb944d6fc201e6f447b2379cc539daac2a4d9dceff476e38f4576a2a146"
+      },
+      "historical_publication_excerpt": "Text-02b — “ The Imp of the Perverse ” — July 1845 — Graham's — (Mabbott text A) Text-03 — “The Imp of the Perverse” — 1845 Text-03a — “The Imp of the Perverse” — mid-late 1845 — revised manuscript, no longer surviving, but presumably refle",
+      "basis": "Historical printed-story publication verified before Poe death1849; selected RavenEdition text independently matches literal PG source; modern scholarly apparatus not imported."
+    },
+    "author_death_evidence": 1849,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1845,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e",
+    "content_sha256": "e92577c21fa4292e3494ee1404796d429ac88083d758f667bad859b912eeb5b0",
+    "year": 1845,
+    "receipt": {
+      "requested_url": "https://www.eapoe.org/WORKS/info/pt060.htm",
+      "resolved_url": "https://www.eapoe.org/WORKS/info/pt060.htm",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:51:34.171019+00:00",
+      "response_sha256": "b948ffb944d6fc201e6f447b2379cc539daac2a4d9dceff476e38f4576a2a146"
+    },
+    "basis": "Historical printed-story publication verified before Poe death1849; selected RavenEdition text independently matches literal PG source; modern scholarly apparatus not imported.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
   }
 }

@@ -24,14 +24,18 @@
   "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
   "canonical_reader_identity": {
     "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
-    "reader_content_sha256": "3df89c7c65ab5fcd096cc7f51cf9450b70e1150e5b8a7f10f97f0ca30b932a97",
+    "reader_content_sha256": "4c8dbbd06f5b019938081ea8bd60511b9b29e61fbe561725039c8b5f0100feaf",
     "chapter_count": 3,
     "chapter_content_sha256": {
-      "chapter-001": "652e01c81029c8aaf76304c1543698dd7a6b3ab6da0bbceb6c07e3eb3dc74fd2",
-      "chapter-002": "a62d0e3d7c8314a9d4483f69611efe109f4bd138714155267c48398142c969aa",
-      "chapter-003": "b2ed3ae3b0d546b26aa2cbcb52bbd3f49f937e4803f65823d978ccf5ee6baadd"
+      "chapter-001": "7ca11299e343da8b0bfc85313baea74957b97d15def97cc77f1a2c976578d908",
+      "chapter-002": "1bd6af2f36928e7a0ace6c0770806ece7fe19763a0b52072f4126d8ee332c777",
+      "chapter-003": "effb16d7c64064c4929092db039c5ae9b1ffc6a5a3eb4978c7b9b1579bd6ced7"
     },
     "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
     "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  },
+  "full_rendered_multichapter_repair": {
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/multichapter-narrow-source-repairs.json",
+    "scope": "Same edition source paragraphs, with original notes/verse retained; no rights approval"
   }
 }

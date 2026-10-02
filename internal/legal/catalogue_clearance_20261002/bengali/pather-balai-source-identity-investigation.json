@@ -1,0 +1,43 @@
+{
+  "receipt": {
+    "url": "https://bn.wikisource.org/w/api.php?action=query&prop=revisions&titles=%E0%A6%AA%E0%A6%A5%E0%A7%87%E0%A6%B0+%E0%A6%AA%E0%A6%BE%E0%A6%81%E0%A6%9A%E0%A6%BE%E0%A6%B2%E0%A7%80%2F%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%AF%E0%A6%BC%E0%A7%8B%E0%A6%A6%E0%A6%B6+%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A7%87%E0%A6%A6%7C%E0%A6%AA%E0%A6%A5%E0%A7%87%E0%A6%B0+%E0%A6%AA%E0%A6%BE%E0%A6%81%E0%A6%9A%E0%A6%BE%E0%A6%B2%E0%A7%80%2F%E0%A6%9A%E0%A6%A4%E0%A7%81%E0%A6%B0%E0%A7%8D%E0%A6%A6%E0%A6%B6+%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A7%87%E0%A6%A6%7C%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B+%28%E0%A6%A4%E0%A7%83%E0%A6%A4%E0%A7%80%E0%A6%AF%E0%A6%BC+%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1%29%2F%E0%A6%AC%E0%A6%B2%E0%A6%BE%E0%A6%87&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2",
+    "retrieved_at": "2026-10-01T21:57:45.020195+00:00",
+    "response_sha256": "5abac859ae19cb915102c54e059d9f8640b0b0b514be5629fd68dfeb6f6530c9"
+  },
+  "response": {
+    "batchcomplete": true,
+    "query": {
+      "pages": [
+        {
+          "ns": 0,
+          "title": "পথের পাঁচালী/চতুর্দশ পরিচ্ছেদ",
+          "missing": true
+        },
+        {
+          "ns": 0,
+          "title": "পথের পাঁচালী/ত্রয়োদশ পরিচ্ছেদ",
+          "missing": true
+        },
+        {
+          "pageid": 807687,
+          "ns": 0,
+          "title": "গল্পগুচ্ছ (তৃতীয় খণ্ড)/বলাই",
+          "revisions": [
+            {
+              "revid": 1680208,
+              "parentid": 0,
+              "timestamp": "2022-05-22T09:56:09Z",
+              "slots": {
+                "main": {
+                  "contentmodel": "wikitext",
+                  "contentformat": "text/x-wiki",
+                  "content": "<pages index=\"গল্পগুচ্ছ (তৃতীয় খণ্ড).djvu\" from=254 to=257 header=1/>"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

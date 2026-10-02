@@ -1,12 +1,12 @@
 {
   "slug": "a-retrieved-reformation",
   "source_url": "https://www.gutenberg.org/ebooks/1646",
-  "source_name": "Project Gutenberg",
+  "source_name": "Project Gutenberg #1646; A Retrieved Reformation selected complete O. Henry story/cycle from Roads of destiny; verified lifetime collection edition 1909; no translation/editorial/art imported",
   "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
-  "source_hash": "03fc9a36b9e316f3c2d02902dd5cddcacd1724ac42b9602827f8914ead6c27b3",
-  "content_hash": "26333f5658cfcb36488d5d64200a0db57a6693bcea82c1bcbcef7a41d35be761",
-  "provenance_hash": "1ee6272d06c799a412b12b5e694682891db8412ddd256b677456862eb46d4e71",
-  "rights_basis": "O. Henry died 1910; first published 1903. Public domain in India and the U.S.",
+  "source_hash": "c963a7c08d104b1bb71930c8d122022ce908dbdc8f1f22e8af31e613520af686",
+  "content_hash": "58b55bd17afe0993ca5c8bdf25e2484619d9d8901193198440c80a999b4a6d82",
+  "provenance_hash": "7eb7426b50215956ca18227be3ff1bf76477e43c531765623ed3277fb2b8d400",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1910, verified lifetime collection publication 1909 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
   "downloaded_at": "2026-06-03T08:04:21.874505+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true,
@@ -115,5 +115,91 @@
       }
     ],
     "content_sha256": "58b55bd17afe0993ca5c8bdf25e2484619d9d8901193198440c80a999b4a6d82"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "03fc9a36b9e316f3c2d02902dd5cddcacd1724ac42b9602827f8914ead6c27b3",
+        "content_hash": "26333f5658cfcb36488d5d64200a0db57a6693bcea82c1bcbcef7a41d35be761",
+        "provenance_hash": "1ee6272d06c799a412b12b5e694682891db8412ddd256b677456862eb46d4e71",
+        "source_url": "https://www.gutenberg.org/ebooks/1646",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-01T21:48:17.188009+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "selected_edition_publication_year": 1909,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/1646.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/1646/pg1646.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:39.333359+00:00",
+      "response_sha256": "c963a7c08d104b1bb71930c8d122022ce908dbdc8f1f22e8af31e613520af686"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 231890,
+          "length": 15712
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Henry, O., 1862-1910",
+      "creator_death_year": 1910,
+      "selected_collection_publication_year": 1909,
+      "original_story_first_publication_year": null,
+      "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+      "bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Henry%2C%20O.%2C%201862-1910",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Henry%2C%20O.%2C%201862-1910",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:43:57.605869+00:00",
+        "response_sha256": "cce6208396d154308bcb396a5d0a93d8dbaa3c3b987591ab79af2c6a91a136eb"
+      },
+      "bibliographic_excerpt": "Roads of destiny (Doubleday, Page & company, for Review of reviews co., 1917) (page images at HathiTrust) Henry, O., 1862-1910: Roads of destiny ([Doubleday ; for review of review], 1909) (page images at HathiTrust) Henry, O., 1862-1910: Roads of des",
+      "scope": "Named author selected story text only; other collection stories, separately authored editorial matter and all illustrations excluded."
+    },
+    "author_death_evidence": 1910,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1909,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "c963a7c08d104b1bb71930c8d122022ce908dbdc8f1f22e8af31e613520af686",
+    "content_sha256": "58b55bd17afe0993ca5c8bdf25e2484619d9d8901193198440c80a999b4a6d82",
+    "year": 1909,
+    "receipt": {
+      "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Henry%2C%20O.%2C%201862-1910",
+      "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Henry%2C%20O.%2C%201862-1910",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:43:57.605869+00:00",
+      "response_sha256": "cce6208396d154308bcb396a5d0a93d8dbaa3c3b987591ab79af2c6a91a136eb"
+    },
+    "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
   }
 }

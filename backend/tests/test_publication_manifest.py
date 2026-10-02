@@ -135,9 +135,23 @@ def test_canterville_ghost_is_published_for_preview_and_waits_for_checkout_activ
     ) is not None
 
 
-def test_checksum_bound_approved_audio_is_a_separate_exposed_lane():
+def test_checksum_bound_approved_audio_is_a_separate_exposed_lane(tmp_path):
+    # Explicit test-local approval; the actual canonical title remains held.
+    import shutil
+    from scripts.publication_manifest_conveyor import _checksum_entries
+    fixture = tmp_path / "the-selfish-giant"
+    shutil.copytree(ROOT / "data" / "controlled_publications" / "the-selfish-giant", fixture)
+    approval_path = fixture / "approval_evidence.json"
+    approval = json.loads(approval_path.read_text())
+    approval["approved_to_publish"] = True
+    approval["approval_scope"] = "TEST_LOCAL_ONLY_NOT_PRODUCTION_AUTHORIZATION"
+    approval_path.write_text(json.dumps(approval))
+    checksum_path = fixture / "checksum_manifest.json"
+    checksum = json.loads(checksum_path.read_text())
+    checksum["files"] = _checksum_entries(fixture)
+    checksum_path.write_text(json.dumps(checksum))
     manifest = build_manifest(
-        ROOT / "data" / "controlled_publications" / "the-selfish-giant",
+        fixture,
         publish_approved=True,
         generated_at="2026-08-16T06:45:34Z",
     )
@@ -251,3 +265,40 @@ def test_agentic_ai_reader_package_is_exposed_only_through_the_controlled_text_r
     assert all(chapter.get("content") for chapter in book["chapters"])
     assert book.get("audio_enabled") is False
     assert book.get("audiobook_enabled") is False
+
+
+def test_checksum_conveyor_avoids_rights_decision_cycle(tmp_path):
+    from scripts.publication_manifest_conveyor import _checksum_entries
+    (tmp_path / "public_book.json").write_text('{"slug":"test"}')
+    (tmp_path / "publication_authorization.json").write_text('{"scope":"text"}')
+    (tmp_path / "rights_decision.json").write_text('{"components":{"checksum_manifest":"bound"}}')
+    (tmp_path / "checksum_manifest.json").write_text('{}')
+    (tmp_path / "publication_manifest.json").write_text('{}')
+    (tmp_path / "chapters").mkdir()
+    (tmp_path / "chapters" / "rights_decision.json").write_text('{"content":"A chapter filename is not a root decision"}')
+    first = _checksum_entries(tmp_path)
+    assert {row["file"] for row in first} == {"public_book.json", "publication_authorization.json", "chapters/rights_decision.json"}
+    (tmp_path / "rights_decision.json").write_text('{"components":{"checksum_manifest":"final-bound-digest"}}')
+    assert _checksum_entries(tmp_path) == first
+    (tmp_path / "public_book.json").write_text('{"slug":"different-edition"}')
+    assert _checksum_entries(tmp_path) != first
+
+
+def test_bound_publication_year_is_distinct_from_original_first_date(tmp_path):
+    import shutil
+    package = ROOT / 'data/controlled_publications/the-necklace'
+    target = tmp_path / 'the-necklace'
+    shutil.copytree(package, target)
+    source_path = target / 'source_evidence.json'
+    source = json.loads(source_path.read_text())
+    assert source['original_publication_year'] is None
+    assert source['publication_upper_bound_year'] == 1917
+    manifest = build_manifest(target)
+    assert manifest['rights']['status'] == 'APPROVED'
+    assert manifest['reader_release']['exposed'] is False
+    assert manifest['audio_release']['exposed'] is False
+    source['publication_upper_bound_evidence']['content_sha256'] = '0' * 64
+    source_path.write_text(json.dumps(source))
+    manifest = build_manifest(target)
+    assert manifest['rights']['status'] != 'APPROVED'
+    assert any('original_publication_year' in value for value in manifest['reader_release']['blockers'])

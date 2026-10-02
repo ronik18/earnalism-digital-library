@@ -1,12 +1,22 @@
 {
   "slug": "the-imp-of-the-perverse",
-  "approved_to_publish": true,
+  "approved_to_publish": false,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true
+  "audiobook_enabled": true,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "39ab73ee37ead2ec7fb8928fbd416b587fbb4b98568e02a4bb089b5bc74b76ce",
+  "source_hash": "159989d413c3240447627d0964a15ad10e4535ba1d25e0468c02f9ecdab9e12e",
+  "content_hash": "e92577c21fa4292e3494ee1404796d429ac88083d758f667bad859b912eeb5b0",
+  "provenance_hash": "6ac6e344f4500a937e9681276de2328fd187c0a053875a0cbdbdd290336a943b",
+  "verified_at": "2026-10-01T21:52:27.631967+00:00"
 }

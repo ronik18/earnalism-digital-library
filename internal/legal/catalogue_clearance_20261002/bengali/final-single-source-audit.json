@@ -1,0 +1,20 @@
+{
+  "receipt": {
+    "url": "https://bn.wikisource.org/w/api.php",
+    "request_method": "POST",
+    "action": "parse read-only same pinned definitions, final extractor retains post-transclusion prose/notes/verse tables",
+    "request_text_sha256": "b0a2f79ca432216b7113f33bdd13cbcb02b5586c818cf6e233d4118102c6a637",
+    "response_sha256": "5a53a17933bdc0de849d0c6887f110f52d3c372037d38ba72f4fda423e39011f",
+    "retrieved_at": "2026-10-02T03:02:39.049937+00:00"
+  },
+  "titles": [
+    {
+      "slug": "book-f5d593e1f4",
+      "paragraphs": 30
+    },
+    {
+      "slug": "book-fbdf2991ab",
+      "paragraphs": 42
+    }
+  ]
+}

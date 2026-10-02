@@ -44,3 +44,11 @@ The second command reuses `/tmp/earnalism-english-source-reconciliation` raw sna
 ## Missing chapter restoration
 
 `missing_chapter_restorations.json` records actual official source section boundaries and hashes for the restored scientific-management chapter 004, the Suicide Club selected cycle, and Ward No. 6 (Constance Garnett translation). Their dangling metadata was not deleted to conceal narrative loss. All restored bodies match the exact source; text-only preparation remains unexposed and does not create territorial rights or publication approval for these titles.
+
+## Current superseding checkpoint
+
+The current matrix covers 90 non-live English packages. 86 now carry local accepted, edition-bound **non-cover text** decisions and authorizations under the current owner delegation; these are not production registry entries or live approvals. Each ready matrix row links current source/body/chapter identities to independent whole-work boundary evidence in `current_whole_work_boundary_verification.json`; containment alone remains explicitly insufficient. All 86 current publication manifests report rights APPROVED; cover/publication deployment and runtime gates remain separate.
+
+The four remaining rows are Eyesore (39/53 canonical chapters, damaged-source glyph verification incomplete), Metamorphosis (commercial translation permission unresolved, including contradictory primary Johnston permission declarations), and two empty superseded aliases for already-live canonical titles. `eyesore_manuscript_verification_hold.json` records actual original-volume review and the precise engineering hold. No partial OCR draft has been installed as cleared text. `kafka_alternative_permission_review.json` preserves the primary conflicting permission evidence.
+
+This section supersedes the earlier intermediate counts and three-title description above. Current focused source tests: 19 passed. Milverton now restores its omitted opening; Gatsby, Jane Eyre, Hound and Frankenstein restore actual author matter from their same verified editions. No cover, audio or runtime publication authorization was broadened.

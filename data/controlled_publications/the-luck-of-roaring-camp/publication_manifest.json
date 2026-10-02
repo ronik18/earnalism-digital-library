@@ -3,29 +3,29 @@
   "schema_version": 1,
   "slug": "the-luck-of-roaring-camp",
   "title": "The Luck of Roaring Camp",
-  "generated_at": "2026-10-01T21:08:33.108466+00:00",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "content": {
-    "source_hash": "d64c82d8f35d3e817f9c8f75d0a500fe408f85e519258f7a902fc565e1fc8264",
-    "content_hash": "e8cf5138f084af3e5b585c5f3512192549d5f778e98275fd9be1208a5d394472",
-    "provenance_hash": "179a519aaf069211f7157fae4c280d1b07bb911a506178cff2e25f889e79e7dd",
+    "source_hash": "c19400f79c45463f6d35be61868b604f45dba60c4841769cb1f11543be1baee1",
+    "content_hash": "2f4e9381683289df36840cd2a5149325f8836f03786d853a4e8cff5788fcaea1",
+    "provenance_hash": "d0d1be361bd2386704a00d3cffadc1eb2c56495e6ad1101cd8a838ec11474d11",
     "sanitized": true,
     "chapter_count": 1,
-    "chapter_index_sha256": "99e7bd5b90001bf211766a865d05c57b71a87f87b3c016f63a3759014a003d05",
+    "chapter_index_sha256": "7d11b0a7e13be73af61d5335e1197d8786c3359dcff5ae12aaf536d4f355ac35",
     "chapters": [
       {
         "id": "chapter-001",
         "order": 1,
         "title": "The Luck of Roaring Camp",
         "word_count": 4188,
-        "sha256": "0de4c55a9ec34ccfe1a7bff8496caef3baf891938474693ca9c0d851820d7dae"
+        "sha256": "04e03292f90a30a5cacc6062540e0bf8dd51d08b4ae323af1b2f3c5071223020"
       }
     ]
   },
   "rights": {
-    "status": "QUARANTINE",
+    "status": "APPROVED",
     "tier": "A",
-    "publication_region": "global",
-    "evidence_sha256": "4666766824c4bc17b691fe4462b285113f5aea3cace5a670ec80af3c86dc6512"
+    "publication_region": "india",
+    "evidence_sha256": "020d74ba9a84fbc8e07f0fdfe3d0c14ee9eff1f13574bd4eeacc5e0a0c6254fc"
   },
   "reader_release": {
     "status": "BLOCKED",
@@ -33,9 +33,7 @@
     "qa_status": "QA_PASSED",
     "cover_url": "",
     "blockers": [
-      "Front cover is required.",
-      "Rights: original_publication_year is required.",
-      "Rights: verified_at is required for approved rights metadata."
+      "Front cover is required."
     ]
   },
   "audio_release": {
@@ -48,10 +46,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "234eee0e8cb4631154e077e859477dae39e2bb0ecaaa755da7601f2c6ae7e064",
+    "public_book": "e64d48ae5525baa26e63f22b95146cd7660d0347cebb3cb6a5058e5431bf3deb",
     "reader_manifest": "a525fc6b97d2929d65cdb7ec801406b889aff6d28b0974ba5e9765229e9d55dd",
-    "source_evidence": "4666766824c4bc17b691fe4462b285113f5aea3cace5a670ec80af3c86dc6512",
-    "approval_evidence": "0608e478c31600287c183d42551cb40d2dc455ebdac48eb9fbead4620decd15e"
+    "source_evidence": "020d74ba9a84fbc8e07f0fdfe3d0c14ee9eff1f13574bd4eeacc5e0a0c6254fc",
+    "approval_evidence": "a1a57e98332c44ff740ac86311c0ab44a3d102b918e2067363297a894340d484"
   },
-  "manifest_sha256": "8311c84207214859b0c1dae8c51f76a39158b855646ce15a9a546a3e4772e28b"
+  "manifest_sha256": "f41a330ed76f7f86a26fcb99ebc2c29750ade18eb0d4d225604d9a08d593c07c"
 }

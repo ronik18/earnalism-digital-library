@@ -1,0 +1,27 @@
+{
+  "schema_version": "earnalism.text-license.v1",
+  "slug": "bn-059",
+  "license": "CC-BY-SA-4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "attribution": "কমলাকান্তের দপ্তর by বঙ্কিমচন্দ্র চট্টোপাধ্যায়; included essays Chandraloke by Akshay Chandra Sarkar and Striloker Rup by Rajkrishna Mukhopadhyay, credited in the exact1885authorpreface; Bengali Wikisource transcription and its contributors, credited through the exact edition/source revision and its scanned-page contributor histories.",
+  "changes": "Source/import headings and publication furniture omitted. Exact source-backed missing paragraphs, chapter order and typographical punctuation corrected where recorded. No new literary text composed.",
+  "scope": "CC BY-SA4.0 applies only to source-derived transcription and formatting, not independently owned covers, Earnalism branding, software or unrelated material. Underlying literary/edition rights and publication authorization are separate release gates.",
+  "disclaimer": "Delivered licensed text may be copied, printed and reused under CC BY-SA4.0 attribution and ShareAlike terms. This notice itself grants no publication, cover or audiobook authorization.",
+  "source_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%95%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4+%28%E0%A7%A7%E0%A7%AE%E0%A7%AE%E0%A7%AB%29%2F%E0%A6%95%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0+%E0%A6%A6%E0%A6%AA%E0%A7%8D%E0%A6%A4%E0%A6%B0&oldid=1972181",
+  "contributors_url": "https://bn.wikisource.org/w/index.php?title=%E0%A6%95%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4+%28%E0%A7%A7%E0%A7%AE%E0%A7%AE%E0%A7%AB%29%2F%E0%A6%95%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0+%E0%A6%A6%E0%A6%AA%E0%A7%8D%E0%A6%A4%E0%A6%B0&action=history",
+  "chapter_sha256": [
+    "6e100abcbfaf07f34d6d827d4d86e5df67672e9e0e8d584853c9f39fad015f54",
+    "2447daf1bd2f297b64e66df74ebeea2e24c9644adcaf3a7df91a32949a5962c0",
+    "f7946b6819268c9179a678630c6e826e2bb6efae51eb4657e6a7ddfa852f7353",
+    "6bc3bb351427876e50474b9a1eec1cca173983f2ae77ccf29c784a4f6cb6a221",
+    "3e036cdd5fabbcf8b388a4e956fd56b97779c4ca18c0a6b16075dfe92c6bbf29",
+    "3fc4df5185d2a209784bfb18396adf49fc0aed238564d5d19cb107e3d91b6c42",
+    "8791439978bef7c49f067984b43a8a58b7371930cc37dd670b32f2a7bf143e47",
+    "753f0ed8bca92c98b863f81bed1b6c744009dce77e9959137c7b3ad592cea047",
+    "eb70cd62e377022b51f76d746949a6259aa20a6135eaa3dab25246632027f428",
+    "4da21913ac97f92d5e5fb1f4e6148468a041e2dc05831e5f5e7e6b63227ad710",
+    "d3019ba58943c24c011bb75736dbe1d2fd632380cc97a9b4812a5a2debdfd729",
+    "ff761605da4bb4995efde6673ab55821013ecd63f3b524b0a8ef106e5002ba45",
+    "dcc77d7c8d86fdf35c4ae92a0e0ea691d4e9b00322f34b9155bf19032a59384c"
+  ]
+}

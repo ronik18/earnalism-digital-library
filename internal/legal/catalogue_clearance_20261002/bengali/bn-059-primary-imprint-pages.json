@@ -1,0 +1,125 @@
+{
+  "slug": "bn-059",
+  "index": "কমলাকান্ত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu",
+  "receipt": {
+    "url": "https://bn.wikisource.org/w/api.php?action=query&prop=revisions&titles=%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%95%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4+-+%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%AE%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%A7%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%95%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4+-+%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%AE%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%A8%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%95%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4+-+%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%AE%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%A9%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%95%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4+-+%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%AE%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%AA%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%95%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4+-+%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%AE%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%AB%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%95%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4+-+%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%AE%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%AC&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2",
+    "retrieved_at": "2026-10-01T21:59:39.734419+00:00",
+    "response_sha256": "1996325dba311a3fbd4b1950f0c1e44930311f1abd8f3f2ceae4e7c81a4cb339"
+  },
+  "pages": [
+    {
+      "pageid": 14726,
+      "ns": 104,
+      "title": "পাতা:কমলাকান্ত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu/২",
+      "revisions": [
+        {
+          "revid": 949538,
+          "parentid": 46934,
+          "timestamp": "2018-07-08T09:47:47Z",
+          "slots": {
+            "main": {
+              "contentmodel": "proofread-page",
+              "contentformat": "text/x-wiki",
+              "content": "<noinclude><pagequality level=\"0\" user=\"Bodhisattwa\" /></noinclude><noinclude></noinclude>"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pageid": 14727,
+      "ns": 104,
+      "title": "পাতা:কমলাকান্ত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu/১",
+      "revisions": [
+        {
+          "revid": 786657,
+          "parentid": 46937,
+          "timestamp": "2017-06-25T16:11:29Z",
+          "slots": {
+            "main": {
+              "contentmodel": "proofread-page",
+              "contentformat": "text/x-wiki",
+              "content": "<noinclude><pagequality level=\"0\" user=\"Bodhisattwa\" /></noinclude><noinclude></noinclude>"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pageid": 14731,
+      "ns": 104,
+      "title": "পাতা:কমলাকান্ত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu/৪",
+      "revisions": [
+        {
+          "revid": 949539,
+          "parentid": 46940,
+          "timestamp": "2018-07-08T09:47:49Z",
+          "slots": {
+            "main": {
+              "contentmodel": "proofread-page",
+              "contentformat": "text/x-wiki",
+              "content": "<noinclude><pagequality level=\"0\" user=\"Bodhisattwa\" /></noinclude><noinclude></noinclude>"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pageid": 92369,
+      "ns": 104,
+      "title": "পাতা:কমলাকান্ত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu/৩",
+      "revisions": [
+        {
+          "revid": 1973544,
+          "parentid": 1894917,
+          "timestamp": "2026-06-16T14:53:46Z",
+          "slots": {
+            "main": {
+              "contentmodel": "proofread-page",
+              "contentformat": "text/x-wiki",
+              "content": "<noinclude><pagequality level=\"4\" user=\"Nokib Sarkar\" /></noinclude>{{center|{{xxxx-larger|'''কমলাকান্ত।'''}}\n\nঅর্থাৎ}}\n\n{{block center|<poem>\n১। কমলাকান্তের দপ্তর।\n২। কমলাকান্তের পত্র।\n৩। কমলাকান্তের জোবানবন্দী।</poem>}}\n{{dhr}}\n{{custom rule|sp|40|fy1|40|sp|40}}\n{{dhr}}\n{{center|{{xxx-larger|'''শ্রীবঙ্কিমচন্দ্র চট্টোপাধ্যায়'''}}\n\n{{larger|প্রণীত।}}\n{{dhr|2em}}\n{{rule|5em}}\n{{dhr|2em}}\n{{x-larger|'''কলিকাতা'''}}<br/>\n৩৭ নং মেছুয়াবাজার ষ্ট্রীট—বীণাযন্ত্রে<br/>\nশ্রীশরচ্চন্দ্র দেব দ্বারা মুদ্রিত<br/>\nও<br/>\n২ নং ভবানীচরণ দত্তের লেন হইতে<br/>\nশ্রীউমাচরণ বন্দ্যোপাধ্যায় কর্ত্তৃক<br/>\nপ্রকাশিত।\n{{dhr}}\n{{rule|4em}}\n{{dhr}}\n১২৯২\n\nমূল্য ১০ টাকা।}}<noinclude></noinclude>"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pageid": 92370,
+      "ns": 104,
+      "title": "পাতা:কমলাকান্ত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu/৫",
+      "revisions": [
+        {
+          "revid": 1794641,
+          "parentid": 1773258,
+          "timestamp": "2023-12-24T04:20:08Z",
+          "slots": {
+            "main": {
+              "contentmodel": "proofread-page",
+              "contentformat": "text/x-wiki",
+              "content": "<noinclude><pagequality level=\"4\" user=\"Nokib Sarkar\" /></noinclude>{{center|{{x-larger|বিজ্ঞাপন।}}}}\n\n{{gap}}এই গ্রন্থ কেবল “কমলাকান্তের দপ্তরের” পুনঃ সংস্করণ নহে। “কমলাকান্তের দপ্তর” ভিন্ন ইহাতে “কমলাকান্তের পত্র ও কমলাকান্তের জোবানবন্দী” এই দুইখানি নূতন গ্রন্থ আছে।\n\n{{gap}}কমলাকান্তের দপ্তরেও দুইটি নূতন প্রবন্ধ এবার বেশী আছে। “চন্দ্রালোকে,” এবং “স্ত্রীলোকের রূপ” এই দুইটি প্রবন্ধ কমলাকান্তের দপ্তরের প্রথম সংস্করণে পরিত্যাগ করা গিয়াছিল। তাহার কারণ এই যে, ঐ দুইটি আমার প্রণীত নহে। “চন্দ্রালোকে” আমার প্রিয় সুহৃৎ শ্রীমান্ বাবু {{wdl|Q4701806|অক্ষয়চন্দ্র সরকারের}} রচিত; এবং “স্ত্রীলোকের রূপ” আমার প্রিয় সুহৃৎ শ্রীমান বাবু {{wdl|Q27184066|রাজকৃষ্ণ মুখোপাধ্যায়ের}} রচিত। উঁহারা স্ব স্ব রচনার সঙ্গে ঐ প্রবন্ধদ্বয় পুর্নমুদ্রিত করিবেন, এই ইচ্ছায়, আমি কমলাকান্তের দপ্তরের প্রথম সংস্করণে ঐ দুইটি পরিত্যাগ করিয়াছিলাম। এক্ষণে লেখকদিগের নিকট জানিয়াছি যে, তাঁহারা ঐ দুইটি প্রবন্ধ নিজে নিজে পুনর্মুদ্রিত করিবার কোন সম্ভাবনা নাই। অতএব, তাঁহাদের<noinclude></noinclude>"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "pageid": 92371,
+      "ns": 104,
+      "title": "পাতা:কমলাকান্ত - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu/৬",
+      "revisions": [
+        {
+          "revid": 1894919,
+          "parentid": 1711663,
+          "timestamp": "2025-07-11T15:37:01Z",
+          "slots": {
+            "main": {
+              "contentmodel": "proofread-page",
+              "contentformat": "text/x-wiki",
+              "content": "<noinclude><pagequality level=\"4\" user=\"Nokib Sarkar\" />{{center|৵৹﻿}}</noinclude>ইচ্ছানুসারে, ঐ দুইটি প্রবন্ধ কমলাকান্তের দপ্তরের দ্বিতীয় সংস্করণ-ভুক্ত করা গেল।\n\n{{gap}}কমলাকান্তের পত্র তিনখানি মাত্র বঙ্গ-দর্শনে প্রকাশিত হয়। তিনখানি ভাঙ্গিয়া এখন চারিখানি হইয়াছে। “বুড়া বয়সের কথা” যদিও বঙ্গদর্শনে কমলাকান্তের নামযুক্ত হইয়া প্রকাশিত হয় নাই, তথাপি উহার মর্ম্ম কমলাকান্তি বলিয়া উহাও “কমলাকান্তের পত্র” মধ্যে সন্নিবেশিত করি। মোটে পাঁচখানি।\n\n{{gap}}“কমলাকান্তের জোবানবন্দী’ সমেত সর্ব্বশুদ্ধ আটটি নূতন পুনর্মুদ্রিত করা গেল। গ্রন্থের আাকার অনেক বাড়িয়াছে বলিয়া এবং অন্যান্য কারণেও গ্রন্থের মূল্যও বৃদ্ধি করিতে বাধ্য হইয়াছি।\n\n{{right|{{larger|শ্রীবঙ্কিমচন্দ্র চট্টোপাধ্যায়।}}}}\n{{dhr|2em}}\n{{rule|5em}}<noinclude></noinclude>"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

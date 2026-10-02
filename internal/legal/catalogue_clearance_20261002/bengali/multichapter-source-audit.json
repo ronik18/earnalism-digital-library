@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "bn-035",
+    "source_leaf_count": 10,
+    "canonical_chapter_count": 10,
+    "exact_existing_chapters": 10
+  },
+  {
+    "slug": "bn-036",
+    "source_leaf_count": 14,
+    "canonical_chapter_count": 14,
+    "exact_existing_chapters": 14
+  },
+  {
+    "slug": "bn-041",
+    "source_leaf_count": 6,
+    "canonical_chapter_count": 6,
+    "exact_existing_chapters": 6
+  },
+  {
+    "slug": "devdas",
+    "source_leaf_count": 16,
+    "canonical_chapter_count": 16,
+    "exact_existing_chapters": 16
+  },
+  {
+    "slug": "nishkriti",
+    "source_leaf_count": 9,
+    "canonical_chapter_count": 9,
+    "exact_existing_chapters": 9
+  },
+  {
+    "slug": "muchiram-gurer-jibanchorit",
+    "source_leaf_count": 14,
+    "canonical_chapter_count": 14,
+    "exact_existing_chapters": 13
+  },
+  {
+    "slug": "bn-060",
+    "source_leaf_count": 8,
+    "canonical_chapter_count": 8,
+    "exact_existing_chapters": 8
+  },
+  {
+    "slug": "bn-031",
+    "source_leaf_count": 3,
+    "canonical_chapter_count": 3,
+    "exact_existing_chapters": 3
+  }
+]
