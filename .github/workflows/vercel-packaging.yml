@@ -17,6 +17,8 @@ jobs:
     name: function packaging guard
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -31,7 +33,8 @@ jobs:
       - run: npm install -g vercel@62.1.0
       - name: Verify actual source deployment manifest
         run: |
-          vercel deploy --dry --format=json > /tmp/vercel-source-manifest.json
+          test -n "${VERCEL_TOKEN}"
+          vercel deploy --dry --format=json --token "${VERCEL_TOKEN}" > /tmp/vercel-source-manifest.json
           python3 scripts/verify_vercel_packaging.py --manifest /tmp/vercel-source-manifest.json --output /tmp/vercel-source-packaging.json
       - uses: actions/upload-artifact@v4
         with:
