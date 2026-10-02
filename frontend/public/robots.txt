@@ -11,6 +11,7 @@ Allow: /reader/a-scandal-in-bohemia
 Allow: /reader/a-white-heron
 Allow: /reader/agentic-ai-with-python
 Allow: /reader/an-occurrence-at-owl-creek-bridge
+Allow: /reader/dracula
 Allow: /reader/jekyll-and-hyde
 Allow: /reader/love-of-life
 Allow: /reader/picture-of-dorian-gray

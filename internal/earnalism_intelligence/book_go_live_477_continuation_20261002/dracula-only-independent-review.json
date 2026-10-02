@@ -1,0 +1,11 @@
+{
+  "conclusion": "ACCEPT_DRACULA_ONLY_PR_CANDIDATE",
+  "configured_editions": 25,
+  "dracula_allowed": true,
+  "bengali_canonical_runtime_hold": true,
+  "bengali_frontend_allowlist_and_static_projection_absent": true,
+  "preserved_packages_registry_source_and_license": "PASS",
+  "audio_disabled": true,
+  "production_runtime": "NOT_RUN",
+  "canonical_mutations": 0
+}

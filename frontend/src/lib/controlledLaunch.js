@@ -32,7 +32,6 @@ export const PUBLIC_READER_RELEASED_SLUGS = Object.freeze([
   "the-happy-prince",
   "picture-of-dorian-gray",
   "dracula",
-  "book-edfcf810c5",
 ]);
 // The India text launch does not offer paid Reading Passes until the live
 // Razorpay, consumer-remedy, and accounting surface has been independently

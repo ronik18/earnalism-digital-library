@@ -1,0 +1,56 @@
+{
+  "slug": "bn-059",
+  "recorded_at": "2026-10-02T13:31:45.179317+00:00",
+  "network_gets": 0,
+  "covers_reused": {
+    "front": {
+      "original_path": "/workspace/scratch/181ef0a25f05/next-pair-b/bn-059-front.png",
+      "candidate_path": "/workspace/scratch/181ef0a25f05/next-pair-b/integration/candidates/bn-059/covers/front.png",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593318/earnalism/covers/front/cover_4b3ab0ba-eeaa-4c8b-b186-72e03fd39cad.png",
+      "expected_sha256": "a7b9f12cea7354f2e3c52d78fe0233efebfeb2f95b15520ae16ef582d24d54a3",
+      "original_intact": true,
+      "candidate_intact": true
+    },
+    "back": {
+      "original_path": "/workspace/scratch/181ef0a25f05/next-pair-b/bn-059-back.png",
+      "candidate_path": "/workspace/scratch/181ef0a25f05/next-pair-b/integration/candidates/bn-059/covers/back.png",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593329/earnalism/covers/back/back_cover_4b3ab0ba-eeaa-4c8b-b186-72e03fd39cad.png",
+      "expected_sha256": "19f0e4556b414d8da37ee29d3a69bfa0ca976f3ea4ec32968523a4276fb558db",
+      "original_intact": true,
+      "candidate_intact": true
+    }
+  },
+  "checksum_errors": [],
+  "immutable_errors": [],
+  "chapter_errors": [],
+  "reviews": [
+    {
+      "path": "/workspace/scratch/181ef0a25f05/next-pair-a/independent-review1.json",
+      "receipt_sha256": "45ef02f7d971391292f382562a8505f056d97e319e76b4fb8def1aa59e56aa7b",
+      "reviewer": "next_pair_a independent reviewer1",
+      "conclusion": "ACCEPT_EXACT_PROPOSED_COMPONENT_SCOPE_FOR_SERIALIZED_LOCAL_ACCEPTANCE",
+      "decision_matches": true,
+      "review_snapshot_errors": []
+    },
+    {
+      "path": "/workspace/scratch/181ef0a25f05/next-pair-c/independent-reviews/bn-059.json",
+      "receipt_sha256": "1537cccaa4b2e311f05dddcc1c53a20430665edf0bb52940104bf9574f5559c7",
+      "reviewer": "next_pair_c independent automated reviewer",
+      "conclusion": "ACCEPT_INACTIVE_PROPOSED_COMPONENT_EVIDENCE",
+      "decision_matches": true,
+      "review_snapshot_errors": []
+    }
+  ],
+  "production_ready": false,
+  "canonical_mutations": 0,
+  "registry_mutations": 0,
+  "state": "EXACT_PRIOR_BYTES_AND_TWO_REVIEWS_RECONCILED_INACTIVE_CANDIDATE_READY_FOR_SERIALIZED_CONTROLLER_ACTION",
+  "chapter_count": 13,
+  "decision_sha256": "1fd2d65eb75c3cfc756d1fff9dd4db28283a7bd4c780306b74c42bddec135630",
+  "candidate": "/workspace/scratch/181ef0a25f05/next-pair-b/integration/candidates/bn-059",
+  "pending_release_gates": [
+    "Fresh serialized local acceptance and optimized cover derivation review",
+    "Production registry and controlled allowlist integration",
+    "Protected CI/deployment/canary and authenticated trusted-India reader/pass QA"
+  ]
+}

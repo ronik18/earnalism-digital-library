@@ -2594,3 +2594,7 @@ Source deployments succeeding do not prove prebuilt file selection. Validate inc
 ## Book GO-LIVE 477 continuation — 2026-10-02
 
 Recover the existing checkout/candidates when bridge task actions are unavailable. Clear the sole existing PR before integration. Preserve exact source/licence facts and encode existing covers deterministically; compare original→derivative hashes rather than infer attribution from visual similarity. Parallel preparation remains separate from serialized activation. Local rights evaluation is not production or entitlement UAT.
+
+## Book GO-LIVE 477 route support hold — 2026-10-02
+
+Static generation is not production route reachability. Two reviewers identified the Bengali edition lacks explicit route mappings while generic slug routes target404. Preserve its exact preparation but remove launch exposure when deployment configuration is outside owner scope; advance the independently routable edition through the existing PR.

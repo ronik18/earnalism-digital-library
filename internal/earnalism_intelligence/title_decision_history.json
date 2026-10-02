@@ -2994,6 +2994,21 @@
         "new_live_verified": 0,
         "production_readback": "NOT_RUN",
         "evidence": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/state.json"
+      },
+      "book_go_live_477_route_hold": {
+        "timestamp": "2026-10-02T13:32:29.786076+00:00",
+        "parent_head": "983b4b9b6da0cded8365aed5a71018029d453762",
+        "held_slug": "book-edfcf810c5",
+        "reason": "Production book/reader/listener exact route mappings absent; generic slug routes target404. Deployment configuration changes prohibited by owner scope. Preserved reviewed preparation; removed server/frontend/public projection exposure.",
+        "independent_reviewers": [
+          "release_review",
+          "cohort_select"
+        ],
+        "remaining_candidate": "dracula",
+        "deployment_configuration_changed": false,
+        "source_text_license_cover_package_registry_preserved": true,
+        "production_observed": false,
+        "next_action": "Complete protected exact-head checks and isolated runtime fixtures for Dracula-only PR508. Keep Bengali edition held for route-support blocker. Then verify deployment/canary/canonical-version readback before next distinct reviewed cohort."
       }
     },
     "book-ef193ffc52": {
@@ -4940,7 +4955,8 @@
         ],
         "new_live_verified": 0,
         "production_readback": "NOT_RUN",
-        "evidence": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/state.json"
+        "evidence": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/state.json",
+        "next_action": "Dracula-only existing PR508 after Bengali route-support hold; exact-head protected checks and isolated Reader fixtures required before merge/deployment/readback."
       }
     },
     "pride-and-prejudice": {
