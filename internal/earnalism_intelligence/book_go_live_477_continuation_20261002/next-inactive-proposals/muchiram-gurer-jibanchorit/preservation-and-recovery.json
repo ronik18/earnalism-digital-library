@@ -1,0 +1,37 @@
+{
+  "slug": "muchiram-gurer-jibanchorit",
+  "source_main": "57ad1cfe9ceb2331871be3c7c2ee1e8c64ad2edd",
+  "state": "INACTIVE_PROPOSAL_NOT_RUNTIME_ACCEPTED",
+  "preserved_or_exact_recovery_files": {
+    "reader_manifest.json": "ef7c6d21000b4f9d7fd56fc8bbb4768016682ee70466bc87e4f20d1ff6a4cd20",
+    "approval_evidence 2.json": "7cb4e8248f7984bfadc3787b8be6eb7edb10a61db2ed9034deb83ef7dc5cdc49",
+    "license_notice.json": "c78c5f7ef44ed30b38cc3a38956c546403b2a948dc0743a6b652977674bf8ff1",
+    "source_evidence.json": "019f7fe8556e516fef78e6cb4ffc4f9e072ec70b8459f525a9d41dc5ce4e4950",
+    "highlight_sync.json": "b1f7fda41647a4f3cb1b7bf2709a459355e59850e90e7e44239f13fdaa270f2e",
+    "chapters/chapter-008.json": "2d49c1b2a3492a5d3454f48f1b563df39d2672f0facaab2d9a96631405bcbdac",
+    "chapters/chapter-003.json": "8981b0859bf3cd3dffe6c582a32d833b1ac24153f4b8d2e11e058b98547d4b29",
+    "chapters/chapter-012.json": "1235a2e3901185fc3a60f51338829ce905764c2c949c60cabebb47d6bc7102b9",
+    "chapters/chapter-001.json": "c6a56abd3ca27dcb83417018f74e66ef45b491eacb83ed9d000bbb292f712da4",
+    "chapters/chapter-013.json": "7baa7a09d7a400cf587de482c494039df5ae52216efe52dfeaf9fef7960f5d5c",
+    "chapters/chapter-014.json": "c846cf9cbc40b330b657c9877bb307729707acc37ca6813dfa563a3e51ce3413",
+    "chapters/chapter-002.json": "9172cf08cd6fe0009a376beb1911bfde55386e42385aa351f19388ee7e08834b",
+    "chapters/chapter-005.json": "f60085e0dfe0f2caede7562e93f89c0eda99be553b7c6e80f4c3360c79e00877",
+    "chapters/chapter-007.json": "a21596d82467a31917b3efe9eb2185d6d2bd718b6a06cd2deafa0a5c2fbf1e07",
+    "chapters/chapter-006.json": "8c33308e96ff7ba2f8f91fd8fe083bfb6e3865f4c84a1a90404f2efdf7a4ae5e",
+    "chapters/chapter-011.json": "e4622866cdcf9ee775e356237cb34f8e30702cb168d4f9b83eb06ee1df03273e",
+    "chapters/chapter-004.json": "de98c1d95dccde4de2aa6a3a0a6396b8f6053d78300afe74bee1934f5328f698",
+    "chapters/chapter-010.json": "f7f2d6b158f9f2a9ff9d9d47b7764538ddfe315a3d64f27b7219393d29a52f23",
+    "chapters/chapter-009.json": "c109786417f562c379d0083f772c07a2cdb312bec346ea1de41cf1a2393ca4b4",
+    "covers/back.png": {
+      "sha256": "47fb5b354455a7a5cff855b4ca69c1b194832bc8798d3d01842d8e9886a8d58b",
+      "exact_candidate_path": "/workspace/scratch/181ef0a25f05/next-pair-a/candidate/muchiram-gurer-jibanchorit/covers/back.png",
+      "require_exact_recovery_before_acceptance": true
+    },
+    "covers/front.png": {
+      "sha256": "abbed38055fd673d0171eb9eeaf49fb887013d46d12573cf7b38109c683dbbc9",
+      "exact_candidate_path": "/workspace/scratch/181ef0a25f05/next-pair-a/candidate/muchiram-gurer-jibanchorit/covers/front.png",
+      "require_exact_recovery_before_acceptance": true
+    }
+  },
+  "next": "Recover exact candidate cover bytes by bound URLs/hash; review all snapshot hashes before local acceptance. Never infer missing source/rights facts. Original source/chapter/licence bytes remain canonical unchanged."
+}

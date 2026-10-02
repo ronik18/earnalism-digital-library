@@ -1,0 +1,285 @@
+{
+  "schema": "earnalism.delivery-derivative.independent-visual-review.v1",
+  "reviewer": "independent-agent-next-covers-review-a",
+  "recorded_at": "2026-10-02T15:02:50.499038+00:00",
+  "review_scope": "Six isolated inactive next-cohort delivery WebP files, original-to-derivative hash/dimensions/recipe validation and all original/decoded derivative PNG 512px previews compared visually. No publication/rights acceptance or production observation.",
+  "result": "PASS",
+  "substantial_disputes": [],
+  "authority_constraints": {
+    "canonical_mutations": 0,
+    "registry_mutations": 0,
+    "allowlist_mutations": 0,
+    "production_mutations": 0,
+    "network_gets": 0,
+    "paid_calls": 0,
+    "owner_approval_inferred": false
+  },
+  "hash_and_deterministic_recipe_verification": [
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "side": "front",
+      "original_hash_matches": true,
+      "derivative_hash_matches": true,
+      "original_size_matches": true,
+      "derivative_size_matches": true,
+      "original_dimensions": [
+        1024,
+        1536
+      ],
+      "derivative_dimensions": [
+        1024,
+        1536
+      ],
+      "derivative_mode": "RGB",
+      "reencoding_identical": true,
+      "decoded_png_matches": true
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "side": "back",
+      "original_hash_matches": true,
+      "derivative_hash_matches": true,
+      "original_size_matches": true,
+      "derivative_size_matches": true,
+      "original_dimensions": [
+        1024,
+        1536
+      ],
+      "derivative_dimensions": [
+        1024,
+        1536
+      ],
+      "derivative_mode": "RGB",
+      "reencoding_identical": true,
+      "decoded_png_matches": true
+    },
+    {
+      "slug": "bn-059",
+      "side": "front",
+      "original_hash_matches": true,
+      "derivative_hash_matches": true,
+      "original_size_matches": true,
+      "derivative_size_matches": true,
+      "original_dimensions": [
+        1024,
+        1536
+      ],
+      "derivative_dimensions": [
+        1024,
+        1536
+      ],
+      "derivative_mode": "RGB",
+      "reencoding_identical": true,
+      "decoded_png_matches": true
+    },
+    {
+      "slug": "bn-059",
+      "side": "back",
+      "original_hash_matches": true,
+      "derivative_hash_matches": true,
+      "original_size_matches": true,
+      "derivative_size_matches": true,
+      "original_dimensions": [
+        1024,
+        1536
+      ],
+      "derivative_dimensions": [
+        1024,
+        1536
+      ],
+      "derivative_mode": "RGB",
+      "reencoding_identical": true,
+      "decoded_png_matches": true
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "side": "front",
+      "original_hash_matches": true,
+      "derivative_hash_matches": true,
+      "original_size_matches": true,
+      "derivative_size_matches": true,
+      "original_dimensions": [
+        1024,
+        1536
+      ],
+      "derivative_dimensions": [
+        1024,
+        1536
+      ],
+      "derivative_mode": "RGB",
+      "reencoding_identical": true,
+      "decoded_png_matches": true
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "side": "back",
+      "original_hash_matches": true,
+      "derivative_hash_matches": true,
+      "original_size_matches": true,
+      "derivative_size_matches": true,
+      "original_dimensions": [
+        1024,
+        1536
+      ],
+      "derivative_dimensions": [
+        1024,
+        1536
+      ],
+      "derivative_mode": "RGB",
+      "reencoding_identical": true,
+      "decoded_png_matches": true
+    }
+  ],
+  "post_inspection_verification": [
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "side": "front",
+      "original_unchanged_after_inspection": true,
+      "derivative_unchanged_after_inspection": true
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "side": "back",
+      "original_unchanged_after_inspection": true,
+      "derivative_unchanged_after_inspection": true
+    },
+    {
+      "slug": "bn-059",
+      "side": "front",
+      "original_unchanged_after_inspection": true,
+      "derivative_unchanged_after_inspection": true
+    },
+    {
+      "slug": "bn-059",
+      "side": "back",
+      "original_unchanged_after_inspection": true,
+      "derivative_unchanged_after_inspection": true
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "side": "front",
+      "original_unchanged_after_inspection": true,
+      "derivative_unchanged_after_inspection": true
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "side": "back",
+      "original_unchanged_after_inspection": true,
+      "derivative_unchanged_after_inspection": true
+    }
+  ],
+  "visual_reviews": [
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "result": "PASS",
+      "covers": [
+        {
+          "side": "front",
+          "original_sha256": "abbed38055fd673d0171eb9eeaf49fb887013d46d12573cf7b38109c683dbbc9",
+          "derivative_sha256": "4d1ef04fa60e470c808ef761d253af1e4245cf27b8496c9b55adfa5927658a92",
+          "original_dimensions": [
+            1024,
+            1536
+          ],
+          "derivative_dimensions": [
+            1024,
+            1536
+          ],
+          "derivative_only_review": "Bengali title মুচিরাম গুড়ের জীবনচরিত and author বঙ্কিমচন্দ্র চট্টোপাধ্যায় readable; thematic satirical colonial office illustration retained. Footer unobstructed.",
+          "status_badges_audio_claims_or_obvious_occlusion_seen": false
+        },
+        {
+          "side": "back",
+          "original_sha256": "47fb5b354455a7a5cff855b4ca69c1b194832bc8798d3d01842d8e9886a8d58b",
+          "derivative_sha256": "fbefa1187750293733628e09c18113b4f85855d9966272f5257134673eea2800",
+          "original_dimensions": [
+            1024,
+            1536
+          ],
+          "derivative_dimensions": [
+            1024,
+            1536
+          ],
+          "derivative_only_review": "Bengali blurb, author and footer readable and complete within image bounds; no derivative cropping or layout/content change compared with original.",
+          "status_badges_audio_claims_or_obvious_occlusion_seen": false
+        }
+      ],
+      "scope_limit": "Confirms delivery derivative preserves already prepared original cover visuals; does not create new rights or owner approval facts."
+    },
+    {
+      "slug": "bn-059",
+      "result": "PASS",
+      "covers": [
+        {
+          "side": "front",
+          "original_sha256": "a7b9f12cea7354f2e3c52d78fe0233efebfeb2f95b15520ae16ef582d24d54a3",
+          "derivative_sha256": "424cdccfac26c51cf0e0aae4ad6e1a106b2a5388c977e47458ce59cfde134111",
+          "original_dimensions": [
+            1024,
+            1536
+          ],
+          "derivative_dimensions": [
+            1024,
+            1536
+          ],
+          "derivative_only_review": "Bengali title কমলাকান্তের দপ্তর and author বঙ্কিমচন্দ্র চট্টোপাধ্যায় readable; illustrated historical scene retained. Footer unobstructed.",
+          "status_badges_audio_claims_or_obvious_occlusion_seen": false
+        },
+        {
+          "side": "back",
+          "original_sha256": "19f0e4556b414d8da37ee29d3a69bfa0ca976f3ea4ec32968523a4276fb558db",
+          "derivative_sha256": "b0554c53580f0817ca4f20bca918ec8aac09f8b8502f213ed2d5e6aa87367349",
+          "original_dimensions": [
+            1024,
+            1536
+          ],
+          "derivative_dimensions": [
+            1024,
+            1536
+          ],
+          "derivative_only_review": "Bengali blurb, author and footer readable; serif glyphs retained without broken shaping or overlapping decoration. Derivative visually preserves original.",
+          "status_badges_audio_claims_or_obvious_occlusion_seen": false
+        }
+      ],
+      "scope_limit": "Confirms delivery derivative preserves already prepared original cover visuals; does not create new rights or owner approval facts."
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "result": "PASS",
+      "covers": [
+        {
+          "side": "front",
+          "original_sha256": "94d7d690b177fc6ee3eb8d60e6ef031c878c355905a25b94d24ac5ca08560068",
+          "derivative_sha256": "6bc8b585e11bfde7fdd29dbe1da4407fe1fe666a69d1e5ea32e5e431d495eb75",
+          "original_dimensions": [
+            1024,
+            1536
+          ],
+          "derivative_dimensions": [
+            1024,
+            1536
+          ],
+          "derivative_only_review": "The Call of the Wild and Jack London readable, wolf/mountain/moon illustration retained and footer unobstructed.",
+          "status_badges_audio_claims_or_obvious_occlusion_seen": false
+        },
+        {
+          "side": "back",
+          "original_sha256": "8d86df1735a5ddbc6e44330805bcbd5aed28884d2fa01b2fa5c633fc28648a17",
+          "derivative_sha256": "cbac7b5b951e8f8c3c2b172ece299cd2479e2c6b1985ac5da7501aebe809c6b3",
+          "original_dimensions": [
+            1024,
+            1536
+          ],
+          "derivative_dimensions": [
+            1024,
+            1536
+          ],
+          "derivative_only_review": "Illustrated dog and man scene retained; exact title, author and footer readable at bottom without truncation or overlap.",
+          "status_badges_audio_claims_or_obvious_occlusion_seen": false
+        }
+      ],
+      "scope_limit": "Confirms delivery derivative preserves already prepared original cover visuals; does not create new rights or owner approval facts."
+    }
+  ],
+  "next_required_action": "Root authority may rebind validated delivery derivatives into isolated proposal packages and obtain exact package integration reviews; inactive status and original owner/source/license/chapter facts remain preserved until serialized acceptance."
+}

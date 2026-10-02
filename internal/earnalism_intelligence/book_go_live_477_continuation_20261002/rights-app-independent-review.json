@@ -1,0 +1,9 @@
+{
+  "conclusion": "ACCEPT_RIGHTS_REPORT_AND_DRACULA_APP_REPAIRS_UNDER_NORMAL_CI",
+  "rights_generator": "Exact territory fallback retains active digest/component/revocation gate; rights-only held Bengali not runtime released",
+  "required_UAT_module_batch": "28_PASS",
+  "focused_rights_tests": "5_PASS",
+  "App": "Only3Dracula unavailable overrides removed; original API-gated generic BookDetail ReaderV2 ListenerV2 preserved; Selfish Giant3holds retained",
+  "synthetic_fixture_additional_test": "Failure not referenced by exact required workflow/shell tests; recorded only, no mutation",
+  "canonical_mutations": 0
+}

@@ -1,0 +1,35 @@
+{
+  "slug": "bn-059",
+  "source_main": "57ad1cfe9ceb2331871be3c7c2ee1e8c64ad2edd",
+  "state": "INACTIVE_PROPOSAL_NOT_RUNTIME_ACCEPTED",
+  "preserved_or_exact_recovery_files": {
+    "reader_manifest.json": "f6e6fb365561b7f796fa52ad190d6d16a4f7c409c1b5e6ebb648f833b768a2da",
+    "license_notice.json": "da382ceb704d5f59678f382d659d7251ea639ae4d0457c7a6636b5e6b5f4ba34",
+    "source_evidence.json": "1ae73ff80e4a9ded7b57617b2ce5a92c689b0e70f6f98f55cb3302fbfb00f082",
+    "highlight_sync.json": "33a3d73da12182d74b50e3fb68a8b6cca5ce60a1499fe0ad89ccb4b8684a40b3",
+    "chapters/chapter-008.json": "bcc1283e772e1764b8d51f8824ee825f456ae10b21a8f366a6911ed7f8376860",
+    "chapters/chapter-003.json": "0152c9543a83ca9ee50a4f32b95ef567720f8655ea1ac1663fdfa0027e81cce7",
+    "chapters/chapter-012.json": "f5c20085b18df5539254c40ea4af2d388229e6bc5c92e49280516eef8336d042",
+    "chapters/chapter-001.json": "64e6f6ec258e8499367236b10462e8fb75325d3a2d120d9ebebe4ff9522e95bb",
+    "chapters/chapter-013.json": "f64b88a5d08b6d33909c568f386ba97f1e4ced0a946fe8bdb2118329f39de3af",
+    "chapters/chapter-002.json": "373b1cb355283d2b6d1b7cae45441f54a7cf951c9e741e49647280c140f1006a",
+    "chapters/chapter-005.json": "c52980a11c0ba880fade5685515cac34cf0138f8dd0ddd388648445171db7a35",
+    "chapters/chapter-007.json": "54dca2e9fe61035bbf40f7b58cf5e693d31eaa6b1f4584c9b0c8ad84fbedbc92",
+    "chapters/chapter-006.json": "cccdb37662034e81e53a3835bd832a20e83db0519fdd2902622b49a0ae22734d",
+    "chapters/chapter-011.json": "8e338dabf9a50bae72dd5091d851be77329daf22e8e1aa7a0e6a37b7f57b36a6",
+    "chapters/chapter-004.json": "9139632373e63df2645f1336582c32c3d56463ba037caa057da93d4ee9b12f23",
+    "chapters/chapter-010.json": "783deac0177444e968d3f86790e384fa8b69dddb43dec17d9988ad79422ef83e",
+    "chapters/chapter-009.json": "d2b95d5e12bbd1f1b2aa9a4021bf7615b0d75166452a8deef67fc28653e7cc9a",
+    "covers/back.png": {
+      "sha256": "19f0e4556b414d8da37ee29d3a69bfa0ca976f3ea4ec32968523a4276fb558db",
+      "exact_candidate_path": "/workspace/scratch/181ef0a25f05/next-pair-b/integration/candidates/bn-059/covers/back.png",
+      "require_exact_recovery_before_acceptance": true
+    },
+    "covers/front.png": {
+      "sha256": "a7b9f12cea7354f2e3c52d78fe0233efebfeb2f95b15520ae16ef582d24d54a3",
+      "exact_candidate_path": "/workspace/scratch/181ef0a25f05/next-pair-b/integration/candidates/bn-059/covers/front.png",
+      "require_exact_recovery_before_acceptance": true
+    }
+  },
+  "next": "Recover exact candidate cover bytes by bound URLs/hash; review all snapshot hashes before local acceptance. Never infer missing source/rights facts. Original source/chapter/licence bytes remain canonical unchanged."
+}

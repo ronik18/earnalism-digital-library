@@ -1,0 +1,54 @@
+{
+  "schema": "earnalism.exact-cover-delivery-derivation.v1",
+  "assets": [
+    {
+      "kind": "front",
+      "source_file": "covers/front.png",
+      "source_sha256": "5596e41956c1317fa5f182c8ba61ac5be8f69a23489d132470bd82ebba425aff",
+      "derivative_file": "frontend/public/assets/books/dracula/dracula-front-5596e419.webp",
+      "derivative_sha256": "ce4f87523c251cf413bebf50c088901a25415b30e92d67fd96aaed9297a33041",
+      "source_bytes": 2964184,
+      "derivative_bytes": 428832,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "recipe": {
+        "mode": "RGB",
+        "format": "WEBP",
+        "quality": 90,
+        "method": 6,
+        "pillow_version": "12.3.0"
+      },
+      "url": "https://theearnalism.com/assets/books/dracula/dracula-front-5596e419.webp",
+      "production_observed": false,
+      "review_status": "PENDING_INDEPENDENT_VISUAL_REVIEW"
+    },
+    {
+      "kind": "back",
+      "source_file": "covers/back.png",
+      "source_sha256": "c35004ef7169e877889c5e6d9d75949d72c09b6102d0a2e0d2542d265993a5c1",
+      "derivative_file": "frontend/public/assets/books/dracula/dracula-back-c35004ef.webp",
+      "derivative_sha256": "c2523a2fcf0723073489caecb73642ddddc4ff206cc26bbf52760ee590bc6076",
+      "source_bytes": 2972067,
+      "derivative_bytes": 455764,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "recipe": {
+        "mode": "RGB",
+        "format": "WEBP",
+        "quality": 90,
+        "method": 6,
+        "pillow_version": "12.3.0"
+      },
+      "url": "https://theearnalism.com/assets/books/dracula/dracula-back-c35004ef.webp",
+      "production_observed": false,
+      "review_status": "PENDING_INDEPENDENT_VISUAL_REVIEW"
+    }
+  ],
+  "original_authorization_preserved": true,
+  "production_observed": false,
+  "runtime_observed": false
+}

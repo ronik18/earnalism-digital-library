@@ -1,0 +1,44 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-most-dangerous-game-reader-cover-display-proposed",
+  "edition_id": "the-most-dangerous-game",
+  "operator_id": "reo-enterprise",
+  "status": "REVIEW_REQUIRED",
+  "components": {
+    "public_book": "c5dee19fbf19022597aa81a54ef8de5a6cf5a4077a56a9cf441c27403740a57c",
+    "reader_manifest": "dcc6a45067337a47776013768468dc54e0c52db88b1062f2f48d9bef7b747f3b",
+    "source_evidence": "9fb0e5109ae412dd377d5e9805c2919e011924a27cec2815d4540bb5b485ef91",
+    "approval_evidence": "f26a857f2a3ef7d792d71431f06d3c2898aa32db1133fbc54303c92c98eaa21c",
+    "checksum_manifest": "9d6e1b0e5a3e57ed1b2cf6c23d1a241215242f713c967852da5d40a06662d588",
+    "publication_manifest": "1f63223b8e2eeb7856210fcc4489cf7569a82c2907ed54dababf75766878fdf4",
+    "cover_provenance": "38be50684c9fd1a95af7cdf65fc93c19d14c88f2a2a47c4a62427bae91afa70d",
+    "cover_front_asset": "a8bd7587cbbdd9f5ff8a23d9aa8a258bfa08a9ce110228002f37f52b1f2f0d8c",
+    "cover_back_asset": "182c419386cdc057a8ac96c3b0ab7d5d935a948e179c812a954bfd41215329fd",
+    "text_license_notice": "1822103ef4f55d4a3df141bcf9c536195b8a34d22bcaba9a9349484d4d74f8fa"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:59:52.152491+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "RichardConnell1893–1949; verified1924story anthology during lifetime, INSection22 term elapsed2009. Exactrevision12072546transcription reused with actualfooterCCBYSA4.0 and hash-bound publiclicense obligations. Exact first-party cover proposal; independent component review and production gates remain pending.",
+  "evidence_sha256": [
+    "e59b3e387a2fc5cada1741339208f95c093af694db839e5cabaebb2543e53753",
+    "937c98f28132bda0636ceaf2e71bc6b6dfaa4cd0c33e680257ab63781b5e7982",
+    "4c5185c3a1ac66fd2c2e0eb178b692840b759ec82c91ce9c96b4d1f9689580b1",
+    "77c9fc421bd4d7742794edc9dd48b7f80eb70c0b73b969d4ef099d4ff9e4808f",
+    "8590d829e9f5d5b6ddf5dd7d131d5be1e2de353f0d3637ece79b88aa5f283ea7",
+    "b16c954a4cf48da51d0f284dac23fa1ccb3bdff21e8d7ebaca4478e1d5950c51",
+    "38be50684c9fd1a95af7cdf65fc93c19d14c88f2a2a47c4a62427bae91afa70d"
+  ],
+  "accepted_by": "",
+  "conditions_satisfied": false
+}

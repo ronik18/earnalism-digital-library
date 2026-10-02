@@ -1,0 +1,78 @@
+{
+  "slug": "the-call-of-the-wild",
+  "generated_at": "2026-10-02T13:14:15.083668+00:00",
+  "files": [
+    {
+      "file": "approval_evidence 2.json",
+      "sha256": "309552c46b979bc9de8cc7f4e9eb18718530f76a9a8b2d12721e357cbcc24328"
+    },
+    {
+      "file": "approval_evidence.json",
+      "sha256": "29488c1742db1bd039d4299bd7eb592a6230ed2b516658ead3146265b733601e"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "71c29b8ed3ce67f4555e559f50e4c0a8b168f6141d33544d00c8c5328eb6ad4f"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "34f7ba4576960b5cb86c78356cc38edaf5967301196144a21b8a0da7987a6b82"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "e21beb19bc59ec60bfdb00ac0122eed417e05bc00d74504496d49dfa7f9cbb53"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "409a1a0979d57a7b667c11d5128346408022cae6b768720553219bbfe2248dab"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "e81cc475678f8a636a757113a53f784289320f5072dfa2e4e34968b11e337602"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "b261d8a03bc8375a1ae58dfa1a8efe5e1dc98802032ba87c5ec5da8ab03ff828"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "9d5d60a37d58901ce1916cfcdaf0c5a615d403ed6c4fda9349ba03d164479f6c"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "a7e3b58d197e818724f0525841d05f44e3567d92d7fd9fade94f0d47a58a65ef"
+    },
+    {
+      "file": "covers/back.png",
+      "sha256": "8d86df1735a5ddbc6e44330805bcbd5aed28884d2fa01b2fa5c633fc28648a17"
+    },
+    {
+      "file": "covers/front.png",
+      "sha256": "94d7d690b177fc6ee3eb8d60e6ef031c878c355905a25b94d24ac5ca08560068"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "7df67693212667112f689afef2b4d7a86aca94fb28db8337d50430c363224640"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "33231d018bf66af86b281ae58c2926fabd4c9d4de77e88ec9485165e17c9479c"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "b9d36af1e911c11cd9f7a5fe48fff7ecc909896b943ec484df4b29f4919e3b5d"
+    },
+    {
+      "file": "publication_manifest.json",
+      "sha256": "3dd9ac59bcf95d67bc961df47cfe8637ad0ff15ad11f53ee6fa04df42a49c174"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "8b04260e291ac4388ee26bc65cb1fb3bff1d1cae80659afd0762af70688e2180"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "863a94b8e03a42f5833e86e3b323b324e4fa4c2abe4f1a92b697f6df147653dc"
+    }
+  ]
+}

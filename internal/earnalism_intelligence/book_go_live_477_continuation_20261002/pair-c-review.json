@@ -1,0 +1,109 @@
+[
+  {
+    "slug": "alices-adventures-in-wonderland",
+    "package_issues": [],
+    "chapter_count": 12,
+    "component_matches": {
+      "public_book": true,
+      "reader_manifest": true,
+      "source_evidence": true,
+      "approval_evidence": true,
+      "checksum_manifest": true,
+      "publication_manifest": true
+    },
+    "source_hash": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+    "content_hash": "5629f655398205d45c0b7bba128ada0849d46e5148aa9b6553636f7d4d7e8812",
+    "covers": {
+      "cover_url": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902722/earnalism/covers/front/cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
+        "path": "/workspace/scratch/181ef0a25f05/next-pair-c/alices-adventures-in-wonderland-cover_url.png",
+        "sha256": "15c92a333213db88902d003164570e7f8c58040e689dfe0acfc6b6e7a1ff2811",
+        "bytes": 3174029,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "http_status": 200
+      },
+      "back_cover_url": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902735/earnalism/covers/back/back_cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
+        "path": "/workspace/scratch/181ef0a25f05/next-pair-c/alices-adventures-in-wonderland-back_cover_url.png",
+        "sha256": "22318a92b3de98f2f2d68402d36255142107ff500f24de2022fcaf14a43f0e6f",
+        "bytes": 3492903,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "http_status": 200
+      }
+    },
+    "owner_cover_fact": "Reused existing all-front/back designed-by-owner declaration controller-corrections.json; no specific external protected component identified.",
+    "visual_review": {
+      "front": "PASS legible correct title/author, thematic graphic, no unsupported live badge, no clipping",
+      "back": "HOLD: attributed quotation \"Imagination is the only weapon in the war against reality.\" \u2014 Lewis Carroll is absent from represented canonical chapters and has no supporting attribution evidence in package. Remove unsupported quote or establish exact source. Otherwise typography/art readable."
+    },
+    "remaining_blockers": [
+      "UNSUPPORTED_BACK_COVER_QUOTATION_ATTRIBUTION",
+      "EXACT_COVER_PROVENANCE_HASH_BINDING_AND_COVER_DISPLAY_ACCEPTANCE_REQUIRED",
+      "FRESH_ALL_COMPONENT_DECISION_REQUIRED",
+      "TRUSTED_RUNTIME_REGISTRY_PROMOTION_AND_READER_READBACK_REQUIRED"
+    ],
+    "text_source_verification": "Existing official source receipt: all represented chapters match ordered NFC/whitespace-normalized source; not full-edition completeness proof.",
+    "overlay_provenance": "Existing bitmap alone does not independently prove deterministic overlay creation; reuse owner-art fact, do not infer generator method.",
+    "performance": "Original PNG 2.5-3.5 MB; use Cloudinary responsive card/feature transforms, no original-image replacement needed.",
+    "candidate_readiness": "HOLD_BACK_COVER_COPY_REPAIR"
+  },
+  {
+    "slug": "the-call-of-the-wild",
+    "package_issues": [],
+    "chapter_count": 7,
+    "component_matches": {
+      "public_book": true,
+      "reader_manifest": true,
+      "source_evidence": true,
+      "approval_evidence": true,
+      "checksum_manifest": true,
+      "publication_manifest": true
+    },
+    "source_hash": "30f569c5671bba7bbc4a92ab6d8ee01a0d3be00f994819c77da62c28041eb8a2",
+    "content_hash": "4b029c10c8cff516ed6f07f1928e55775ed7fd8d3d03dcf61f7ace0c55e8aa90",
+    "covers": {
+      "cover_url": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779568766/earnalism/covers/front/cover_32a20edc-5097-4d64-98d0-fb3d29487a9d.png",
+        "path": "/workspace/scratch/181ef0a25f05/next-pair-c/the-call-of-the-wild-cover_url.png",
+        "sha256": "94d7d690b177fc6ee3eb8d60e6ef031c878c355905a25b94d24ac5ca08560068",
+        "bytes": 2990916,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "http_status": 200
+      },
+      "back_cover_url": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779568843/earnalism/covers/back/back_cover_32a20edc-5097-4d64-98d0-fb3d29487a9d.png",
+        "path": "/workspace/scratch/181ef0a25f05/next-pair-c/the-call-of-the-wild-back_cover_url.png",
+        "sha256": "8d86df1735a5ddbc6e44330805bcbd5aed28884d2fa01b2fa5c633fc28648a17",
+        "bytes": 2501050,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "http_status": 200
+      }
+    },
+    "owner_cover_fact": "Reused existing all-front/back designed-by-owner declaration controller-corrections.json; no specific external protected component identified.",
+    "visual_review": {
+      "front": "PASS legible correct title/author, thematic graphic, no unsupported live badge, no clipping",
+      "back": "PASS legible correct title/author, thematic graphic, no clipping"
+    },
+    "remaining_blockers": [
+      "EXACT_COVER_PROVENANCE_HASH_BINDING_AND_COVER_DISPLAY_ACCEPTANCE_REQUIRED",
+      "FRESH_ALL_COMPONENT_DECISION_REQUIRED",
+      "TRUSTED_RUNTIME_REGISTRY_PROMOTION_AND_READER_READBACK_REQUIRED"
+    ],
+    "text_source_verification": "Existing official source receipt: all represented chapters match ordered NFC/whitespace-normalized source; not full-edition completeness proof.",
+    "overlay_provenance": "Existing bitmap alone does not independently prove deterministic overlay creation; reuse owner-art fact, do not infer generator method.",
+    "performance": "Original PNG 2.5-3.5 MB; use Cloudinary responsive card/feature transforms, no original-image replacement needed.",
+    "candidate_readiness": "READY_FOR_INACTIVE_ALL_COMPONENT_PREPARATION"
+  }
+]

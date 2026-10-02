@@ -1,0 +1,99 @@
+{
+  "schema": "earnalism.cover-provenance.v1",
+  "slug": "dracula",
+  "status": "ACCEPTED_LOCAL_COMPONENT_PREPARATION_ONLY",
+  "reviewed_at": "2026-10-02T10:59:08.961449+00:00",
+  "original_creator": "Repository/product owner; no additional identity inferred",
+  "owner_declaration": {
+    "statement": "Owner states all front and back covers are designed by the owner.",
+    "path": "/tmp/earnalism-main-approved-integration/internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+    "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "scope": "COVER_DESIGN_ONLY_NOT_TEXT_RIGHTS_OR_RUNTIME_RELEASE"
+  },
+  "edition_binding": {
+    "source_sha256": "96cd16eacdbfebae8fdda5591f66e0cc8ee76be18e0cd1aca02bc00615782d28",
+    "reader_content_sha256": "0ab0060ec9b89c62f3d33b57b08831aca532dc79aea59d9cd7f83cc0f2d1e1d0",
+    "chapter_count": 28,
+    "text_decision_id": "india-20261002-dracula-pg345-noncover-text",
+    "scope": "Same verified author Preface plus 27 numbered chapters; no edition/source change"
+  },
+  "original_assets_preserved": {
+    "front": {
+      "path": "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-7/current-front-cover.png",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779946033/earnalism/covers/front/cover_630df84e-eba7-491a-aedc-f857d29c9000.png",
+      "sha256": "5596e41956c1317fa5f182c8ba61ac5be8f69a23489d132470bd82ebba425aff",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "size_bytes": 2964184,
+      "http_status": 200
+    },
+    "back": {
+      "path": "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-7/current-back-cover.png",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779946054/earnalism/covers/back/back_cover_630df84e-eba7-491a-aedc-f857d29c9000.png",
+      "sha256": "c35004ef7169e877889c5e6d9d75949d72c09b6102d0a2e0d2542d265993a5c1",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "size_bytes": 2972067,
+      "http_status": 200
+    }
+  },
+  "byte_receipt": {
+    "path": "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-7/current-cover-receipts.json",
+    "sha256": "2c6c19d74dde27ea4533d030f06ad07807d91d2157218f035ba67fab7fa1af44",
+    "method": "One GET per exact URL; redirects disabled"
+  },
+  "visual_qa": {
+    "path": "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-7/cover-qa.json",
+    "sha256": "ae9bf3c8e8bc4b0f2ae570f72da8f3e20046da3a7e618ac2ea9785c3084345d6",
+    "status": "PASS_REQUESTED_SCOPE",
+    "independent_review": "TWO_EXACT_FACTUAL_REVIEWS_COMPLETED"
+  },
+  "commercial_cover_display_permission_basis": "Proposed first-party commercial display by the owner-designed Earnalism venture under the existing issue #477 owner GO-LIVE directive; no rights inference from the CDN URL, title similarity or quality scores.",
+  "commercial_use_authorized": true,
+  "commercial_use_status": "ACCEPTED_LOCAL_IN_COVER_DISPLAY_PRODUCTION_GATE_PENDING",
+  "audio_authorized": false,
+  "runtime_release_authorized": false,
+  "binding_hold": "Local exact component scope accepted; canonical integration, production registry, backend/allowlist and actual runtime release gates remain pending.",
+  "third_party_component_claim": "No third-party artwork/licence claim added and no outside-rights dispute asserted. Creation method and source-layer history are not fabricated.",
+  "assets": [
+    {
+      "kind": "owner-front-cover",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779946033/earnalism/covers/front/cover_630df84e-eba7-491a-aedc-f857d29c9000.png",
+      "sha256": "5596e41956c1317fa5f182c8ba61ac5be8f69a23489d132470bd82ebba425aff",
+      "status": 200,
+      "bytes": 2964184,
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "kind": "owner-back-cover",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779946054/earnalism/covers/back/back_cover_630df84e-eba7-491a-aedc-f857d29c9000.png",
+      "sha256": "c35004ef7169e877889c5e6d9d75949d72c09b6102d0a2e0d2542d265993a5c1",
+      "status": 200,
+      "bytes": 2972067,
+      "width": 1024,
+      "height": 1536
+    }
+  ],
+  "preparation_status": "LOCAL_EVIDENCE_ACCEPTED_PRODUCTION_INACTIVE",
+  "acceptance_status": "ACCEPTED_LOCAL_FIRST_PARTY_COMPONENT_SCOPE",
+  "independent_reviews": [
+    {
+      "path": "book-go-live-477/reviewers/reviewer-1/worker7-proposal-review.json",
+      "sha256": "7a9e6e24ae45b062430fdf8adf2f283ece909f4da754d2d04e4d59431adb4336",
+      "conclusion": "ACCEPT_EXACT_COVER_EVIDENCE_AND_UNAPPLIED_PROPOSAL_FOR_SERIALIZED_INTEGRATION_REVIEW"
+    },
+    {
+      "path": "book-go-live-477/reviewers/reviewer-2/worker-7-proposal-review.json",
+      "sha256": "c060a1f7c11b4c820b88a4f8f76470d8bbc007d3b8206a1e228d99f9e5bba8d5",
+      "conclusion": "ACCEPT_EXACT_COVER_EVIDENCE_AND_UNAPPLIED_PROPOSAL_FOR_SERIALIZED_INTEGRATION_REVIEW"
+    }
+  ],
+  "accepted_by": "Automated serialized integration controller under the product owner directive in issue #477 comment 5949652699, after two independent automated evidence reviews; no human legal signature inferred.",
+  "accepted_at": "2026-10-02T11:09:42.609100+00:00",
+  "publication_activation_authorized": false
+}

@@ -1,0 +1,22 @@
+{
+  "conclusion": "ACCEPT_RESTORED_26_TITLE_PR_CANDIDATE_NORMAL_GATES",
+  "configured_and_static_publication_count": 26,
+  "titles": {
+    "dracula": {
+      "immutable_text_license_reader_files": 31,
+      "IN_only": true,
+      "registered_exact_record": true,
+      "audio_false": true
+    },
+    "book-edfcf810c5": {
+      "immutable_text_license_reader_files": 5,
+      "IN_only": true,
+      "registered_exact_record": true,
+      "audio_false": true
+    }
+  },
+  "workflow_fingerprint_pair": "e3cf821eeaf199dc819e259606502abfcd470ade8b207d3e8fa249a01b916937",
+  "route_blocker_withdrawn": "OfficialVercel filesystem precedence, no confirmed404 frommissingexplicitrewrites",
+  "production_verified": false,
+  "canonical_mutations": 0
+}

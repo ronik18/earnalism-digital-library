@@ -1,0 +1,8 @@
+{
+  "reviewer": "root automated visual inspection",
+  "scope": "decoded exact optimized bytes viewed in session; legible title/author/back blurb, unchanged composition and size",
+  "visual_result": "PASS",
+  "front_sha256": "ce4f87523c251cf413bebf50c088901a25415b30e92d67fd96aaed9297a33041",
+  "back_sha256": "c2523a2fcf0723073489caecb73642ddddc4ff206cc26bbf52760ee590bc6076",
+  "production_observation": false
+}

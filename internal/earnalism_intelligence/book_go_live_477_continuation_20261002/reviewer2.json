@@ -1,0 +1,27 @@
+{
+  "conclusion": "ACCEPT_PR_CANDIDATE_UNDER_NORMAL_CI_GATES",
+  "all26_reader_binding_validation": "PASS",
+  "existing_registry_bindings_unchanged": true,
+  "added_slugs": [
+    "book-edfcf810c5",
+    "dracula"
+  ],
+  "titles": {
+    "dracula": {
+      "immutable_files": 31,
+      "backend_root_parity": true,
+      "IN_only": true,
+      "audio_off": true
+    },
+    "book-edfcf810c5": {
+      "immutable_files": 5,
+      "backend_root_parity": true,
+      "IN_only": true,
+      "audio_off": true,
+      "license_valid": true
+    }
+  },
+  "optimized_derivative_hashes": "PASS",
+  "delivery_budget_note": "428832/455764-byte full-resolution WEBPs exceed 180KB feature target; original assets preserved and production performance not observed. Actual normal CI performance checks remain.",
+  "actual_runtime_and_production": "NOT_RUN"
+}

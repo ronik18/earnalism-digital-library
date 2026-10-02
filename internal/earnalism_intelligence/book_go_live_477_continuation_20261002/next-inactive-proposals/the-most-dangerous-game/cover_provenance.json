@@ -1,0 +1,45 @@
+{
+  "slug": "the-most-dangerous-game",
+  "status": "LOCAL_COMPONENT_PROPOSAL_INDEPENDENT_REVIEWS_PENDING",
+  "owner": "Ronik Basak",
+  "owner_design_attestation": "Owner states all front and back covers are designed by the owner.",
+  "owner_statement_source": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+  "retained_first_party_generator_audit": "internal/earnalism_intelligence/english_25_title_generated_cover_audit.json",
+  "assets": [
+    {
+      "kind": "front",
+      "url": "https://theearnalism.com/assets/books/the-most-dangerous-game/front-cover.webp",
+      "sha256": "a8bd7587cbbdd9f5ff8a23d9aa8a258bfa08a9ce110228002f37f52b1f2f0d8c",
+      "bytes": 19740,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "local_path": "covers/front.webp"
+    },
+    {
+      "kind": "back",
+      "url": "https://theearnalism.com/assets/books/the-most-dangerous-game/back-cover.webp",
+      "sha256": "182c419386cdc057a8ac96c3b0ab7d5d935a948e179c812a954bfd41215329fd",
+      "bytes": 22088,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "local_path": "covers/back.webp"
+    }
+  ],
+  "visual_qa": {
+    "status": "PASS_REQUESTED_SCOPE",
+    "method": "Actual exact front/back pixels inspected by cohort-select agent",
+    "findings": [
+      "Readable correct title and author",
+      "Graphical island/hunt composition",
+      "Accurate untruncated back synopsis",
+      "No live/audio/rights badges"
+    ]
+  },
+  "independent_reviews": [],
+  "publication_activation_authorized": false,
+  "audio_authorized": false
+}

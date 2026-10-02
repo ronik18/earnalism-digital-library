@@ -1,0 +1,47 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-bn-059-reader-cover-display-proposal",
+  "edition_id": "bn-059",
+  "operator_id": "reo-enterprise",
+  "status": "PROPOSED",
+  "components": {
+    "public_book": "a3e0a6780a0691b6c751aac990238d1ad2a925e29c35165ab557248e72c21ee4",
+    "reader_manifest": "f6e6fb365561b7f796fa52ad190d6d16a4f7c409c1b5e6ebb648f833b768a2da",
+    "source_evidence": "1ae73ff80e4a9ded7b57617b2ce5a92c689b0e70f6f98f55cb3302fbfb00f082",
+    "approval_evidence": "1aa7dc1a578176241b7ec2e380c54fd170f580b1ed215cec5f3a5cead1035d25",
+    "checksum_manifest": "6de2e415a8f0a61aa1028d6c8296d11c8c003064e6f2059903508b020b9fbddb",
+    "publication_manifest": "c06dee8f7a53212bf936c88a56883afdc3df4feb2700bbbd72bcd89daf1d4e82",
+    "cover_provenance": "8bc12fa9b03b53a11a968c9c14b9bc56ba4dd31262e0f0308133c196c43d55ee",
+    "cover_front_asset": "a7b9f12cea7354f2e3c52d78fe0233efebfeb2f95b15520ae16ef582d24d54a3",
+    "cover_back_asset": "19f0e4556b414d8da37ee29d3a69bfa0ca976f3ea4ec32968523a4276fb558db",
+    "text_license_notice": "da382ceb704d5f59678f382d659d7251ea639ae4d0457c7a6636b5e6b5f4ba34"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-02T13:07:23.118995+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Reuse existing exact India text decision india-20261002-bn-059-1885-cc-by-sa-text-reader; its literature/source/transcription facts and license conditions remain unchanged. Add the recorded first-party owner-design declaration and exact current front/back cover bytes, visually checked by preparation worker with no specifically identified external protected component. Scope is IN catalogue metadata, exact cover display and text Reader/Pass only; audio, other editions/territories and production activation are excluded. This is a proposed inactive local preparation record; runtime registry and release gates remain separate.",
+  "evidence_sha256": [
+    "3c52fa5eb56db9c714f4ae66fc1aaae12e6e08b152448e8cbe9a8fd4fc7b9380",
+    "bf079eaa8a911bc585ed6c01e0d5517cef4ea545ba9ff1974f5d32cb601d04d3",
+    "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "d79b6d17c1ea5750f19e68b9572cb482cebdd61ac4bb4b2645f59d664f83b823",
+    "da382ceb704d5f59678f382d659d7251ea639ae4d0457c7a6636b5e6b5f4ba34",
+    "11e53198a277a620032435a76d82df27117821c99fce6802a531d7c326d7a1a3",
+    "b825587d4a8f1d5b061cd93f091137ff29768be6b937efbc3394dd10a9b047b7",
+    "76d1315c2b07ad7642a2ecaa5f2a531db7ecd201eaf72d34c94e2d97a7d60de4",
+    "8bc12fa9b03b53a11a968c9c14b9bc56ba4dd31262e0f0308133c196c43d55ee"
+  ],
+  "accepted_by": "",
+  "conditions_satisfied": false,
+  "proposed_by": "Automated serialized integration controller under the product owner directive in issue #477 comment 5949652699, pending two independent automated evidence reviews; no human legal signature inferred."
+}

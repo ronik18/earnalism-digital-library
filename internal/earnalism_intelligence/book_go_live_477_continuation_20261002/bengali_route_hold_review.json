@@ -1,0 +1,23 @@
+{
+  "launch_parity": true,
+  "counts": [
+    25,
+    25
+  ],
+  "bengali_not_live": [
+    true,
+    true
+  ],
+  "bengali_access_removed": [
+    true,
+    true
+  ],
+  "reader_exposed": false,
+  "live_book": false,
+  "projection_count": 25,
+  "projection_removed": true,
+  "projection_hashes_match": true,
+  "fingerprint": "d89d4d2950ba5d294ea0aef9f3c273cc928b583909fc622b654f3b9a984d5de7",
+  "fingerprint_matches_both_authorities": true,
+  "production_observed": false
+}

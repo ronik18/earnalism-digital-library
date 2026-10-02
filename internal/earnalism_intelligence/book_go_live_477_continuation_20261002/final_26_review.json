@@ -1,0 +1,29 @@
+{
+  "production_observed": false,
+  "configured_count": 26,
+  "titles": {
+    "dracula": {
+      "decision_digest": "7978495dce52efc499d82bce531291299cd9a34625a0ffb5bd578afa60ea618f",
+      "IN_only": true,
+      "checksum_and_mirror_parity": true,
+      "reader_candidate_eligible": true
+    },
+    "book-edfcf810c5": {
+      "decision_digest": "6de4a0e68e50aa11e1ae57850cac61699bbe2e1b810502e8f52ba280d51a8a0b",
+      "IN_only": true,
+      "checksum_and_mirror_parity": true,
+      "reader_candidate_eligible": true
+    }
+  },
+  "workflow_fingerprint": "e3cf821eeaf199dc819e259606502abfcd470ade8b207d3e8fa249a01b916937",
+  "immutable_candidate_files_verified": 42,
+  "reviewed_paths": {
+    "frontend/src/App.js": "82aa0ee02cf26aed30b299f5a929b61b4f8bd3b706374ef7c293a44ceea01641",
+    "frontend/src/lib/controlledLaunch.js": "6ca57344d759520049ef19adb37d3c84f39d26bb8552bb41a38c510879060105",
+    "frontend/src/bookDetailDirectRoute.test.js": "a684334cc6b1a79c47e22214ce83ebf470e04e4280da2fd505dc8454ae743fb8",
+    "scripts/generate_copyright_rights_review_package.py": "bbf944cfdcd63ce73fb9be9aa8895ee1396b1bf970b676c15fa464f35c25d517",
+    "scripts/test_generate_copyright_rights_review_package.py": "e878ae6b72df50c4929ec8af19a0f3ec93808504d6e0b0d5a7c9e17ff5b8f156",
+    "backend/tests/test_chapter_index.py": "7742068ece1ebcac3699fd9eff8073bf809b6bbc1e62fc1eb2aff118bafdfd16"
+  },
+  "deployment_config_changed": false
+}

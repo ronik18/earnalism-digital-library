@@ -1,0 +1,42 @@
+{
+  "schema": "earnalism.exact-owner-cover-proposal.v1",
+  "slug": "bn-059",
+  "status": "PROPOSED_NOT_ACCEPTED",
+  "owner_design_statement": "Owner states all front and back covers are designed by the owner.",
+  "owner_design_statement_receipt": "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-7/owner-cover-declaration-receipt.json",
+  "owner_design_statement_scope": "Reuse recorded all-front-and-back owner cover creation fact only; no new signature or production permission inferred.",
+  "assets": [
+    {
+      "kind": "owner-front-cover",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593318/earnalism/covers/front/cover_4b3ab0ba-eeaa-4c8b-b186-72e03fd39cad.png",
+      "sha256": "a7b9f12cea7354f2e3c52d78fe0233efebfeb2f95b15520ae16ef582d24d54a3",
+      "status": 200,
+      "bytes": 3148064,
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "kind": "owner-back-cover",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593329/earnalism/covers/back/back_cover_4b3ab0ba-eeaa-4c8b-b186-72e03fd39cad.png",
+      "sha256": "19f0e4556b414d8da37ee29d3a69bfa0ca976f3ea4ec32968523a4276fb558db",
+      "status": 200,
+      "bytes": 2925243,
+      "width": 1024,
+      "height": 1536
+    }
+  ],
+  "visual_qa": {
+    "reviewer": "next_pair_b",
+    "status": "PASS_VISUAL_ONLY",
+    "visible_defects": [],
+    "pipeline_deterministic_overlay": "NOT_PROVEN_BY_RASTER_INSPECTION",
+    "independent_review": "NOT_RUN_PENDING_TWO_INDEPENDENT_REVIEWS"
+  },
+  "independent_reviews": [],
+  "audio_authorized": false,
+  "publication_activation_authorized": false,
+  "preparation_status": "PROPOSED_INACTIVE_PENDING_REVIEWS",
+  "acceptance_status": "PROPOSED_NOT_ACCEPTED",
+  "proposed_by": "Automated serialized integration controller under the product owner directive in issue #477 comment 5949652699, pending two independent automated evidence reviews; no human legal signature inferred.",
+  "proposed_at": "2026-10-02T13:07:23.118995+00:00"
+}

@@ -101,6 +101,42 @@ pass("production Chromium count is bound to packaged state manifest", () => {
   const report = JSON.parse(result.stdout);
   assert.ok(report.failures.includes("Chromium evidence incomplete"), JSON.stringify(report.failures));
 });
+function staticSummaryProbe(mutate = () => {}) {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "seamless-static-count-authority-"));
+  try {
+    const manifestPath = path.join(dir, "frontend/build/static-seo-snapshot-manifest.json");
+    const reportPath = path.join(dir, "static-snapshot-brand-results.json");
+    const inputsPath = path.join(dir, "inputs.json");
+    const routes = Array.from({ length: 97 }, (_, index) => ({ route: `/fixture-${index}` }));
+    write(manifestPath, { routes });
+    const report = { snapshot_manifest_path: manifestPath, snapshot_manifest_sha256: sha(manifestPath), expected_snapshot_count: 97, inspected_snapshot_count: 97, passing_snapshot_count: 97, failing_snapshot_count: 0, historical_alternate_logo_count: 0, bordered_card_logo_wrapper_count: 0, inline_logo_transform_count: 0, generic_home_fallback_count: 0, sensitive_data_exposure_count: 0, records: routes.map(({ route }) => ({ route, result: "PASS" })), result: "PASS" };
+    write(reportPath, report);
+    const inputs = { static_snapshot: { path: reportPath, sha256: sha(reportPath), expected: 97, inspected: 97, passing: 97, result: "PASS" } };
+    mutate({ inputs, report, manifestPath, reportPath });
+    write(reportPath, report); write(inputsPath, inputs);
+    const code = "import importlib.util,json,sys; from pathlib import Path; spec=importlib.util.spec_from_file_location('seamless_generator',sys.argv[1]); module=importlib.util.module_from_spec(spec); spec.loader.exec_module(module); module.ROOT=Path(sys.argv[2]); print(json.dumps(module.validated_static_snapshot_summary(json.loads(Path(sys.argv[3]).read_text()),sys.argv[4])))";
+    return spawnSync(python, ["-c", code, path.join(root, "scripts/generate_seamless_brand_final_owner_review.py"), dir, inputsPath, reportPath], { cwd: root, encoding: "utf8" });
+  } finally { fs.rmSync(dir, { recursive: true, force: true }); }
+}
+function staticSummaryFails(name, mutate) {
+  pass(name, () => {
+    const result = staticSummaryProbe(mutate);
+    assert.notEqual(result.status, 0, `${name} should fail`);
+    assert.match(result.stderr, /ValueError:/, result.stderr);
+  });
+}
+pass("static executive summary carries observed 97 counts", () => {
+  const result = staticSummaryProbe();
+  assert.equal(result.status, 0, result.stderr);
+  assert.deepEqual(JSON.parse(result.stdout), { expected: 97, inspected: 97, passing: 97 });
+});
+staticSummaryFails("static summary missing observed count fails", ({ inputs }) => { delete inputs.static_snapshot.inspected; });
+staticSummaryFails("static summary stale 142 count fails", ({ inputs }) => { inputs.static_snapshot.expected = 142; });
+staticSummaryFails("static summary stale report hash fails", ({ inputs }) => { inputs.static_snapshot.sha256 = "0".repeat(64); });
+staticSummaryFails("static summary stale build manifest hash fails", ({ manifestPath }) => { write(manifestPath, { routes: [{ route: "/changed" }] }); });
+staticSummaryFails("static summary missing inspection record fails", ({ inputs, report, reportPath }) => { report.records.pop(); write(reportPath, report); inputs.static_snapshot.sha256 = sha(reportPath); });
+staticSummaryFails("static summary failing inspection record fails", ({ inputs, report, reportPath }) => { report.records[0].result = "FAIL"; write(reportPath, report); inputs.static_snapshot.sha256 = sha(reportPath); });
+staticSummaryFails("static summary failed privacy counter fails", ({ inputs, report, reportPath }) => { report.sensitive_data_exposure_count = 1; write(reportPath, report); inputs.static_snapshot.sha256 = sha(reportPath); });
 let realPackageValidationResult = "NOT_APPLICABLE";
 if (realPackage) { pass("complete real local package passes", () => assert.equal(validate(realPackage, false).status, 0)); realPackageValidationResult = "PASS"; }
 const report = { schema_version: 1, result: "PASS", test_case_count: executedCaseNames.length, executed_case_names: executedCaseNames, required_case_names: requiredCaseNames, missing_required_case_names: requiredCaseNames.filter(name => !executedCaseNames.includes(name)), duplicate_case_names: executedCaseNames.filter((name, index) => executedCaseNames.indexOf(name) !== index), real_package_path: realPackage, real_package_validation_executed: Boolean(realPackage), real_package_validation_result: realPackageValidationResult, validator_path: validator, python_executable: python, python_version: `${interpreter.stdout}${interpreter.stderr}`.trim(), generated_timestamp: new Date().toISOString() };

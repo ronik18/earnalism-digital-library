@@ -31,6 +31,8 @@ export const PUBLIC_READER_RELEASED_SLUGS = Object.freeze([
   "the-enchanted-april",
   "the-happy-prince",
   "picture-of-dorian-gray",
+  "dracula",
+  "book-edfcf810c5",
 ]);
 // The India text launch does not offer paid Reading Passes until the live
 // Razorpay, consumer-remedy, and accounting surface has been independently
@@ -278,12 +280,7 @@ export function mergeDraculaBook(book) {
   return {
     ...DRACULA_FALLBACK_BOOK,
     ...book,
-    cover_image_url: DRACULA_COVER_IMAGE,
-    cover_url: DRACULA_COVER_IMAGE,
-    thumbnail_url: DRACULA_COVER_IMAGE,
-    back_cover_image_url: DRACULA_BACK_COVER_IMAGE,
-    back_cover_url: DRACULA_BACK_COVER_IMAGE,
-    back_cover_thumbnail_url: DRACULA_BACK_COVER_IMAGE,
+    // The current API edition owns exact cover aliases; historical display assets must not replace them.
     chapters: Array.isArray(book.chapters) && book.chapters.length > 0
       ? book.chapters
       : DRACULA_FALLBACK_BOOK.chapters,

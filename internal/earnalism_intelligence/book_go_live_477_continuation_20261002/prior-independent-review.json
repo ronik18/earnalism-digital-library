@@ -1,0 +1,100 @@
+{
+  "dracula": {
+    "immutable_files": 34,
+    "parity_errors": [],
+    "licensed_notice_valid": "NOT_REQUIRED",
+    "decision_scope": {
+      "schema_version": "earnalism.rights-decision.v1",
+      "decision_id": "india-20261002-dracula-reader-cover-display-reviewed",
+      "edition_id": "dracula",
+      "operator_id": "reo-enterprise",
+      "status": "ACCEPTED",
+      "territories": [
+        "IN"
+      ],
+      "uses": [
+        "catalog_metadata",
+        "cover_display",
+        "reader_preview",
+        "reader_delivery",
+        "reading_pass_session",
+        "reading_pass_renewal"
+      ],
+      "valid_from": "2026-10-02T11:09:42.609100+00:00",
+      "valid_until": "2036-10-02T00:00:00+00:00",
+      "basis": "Reuse existing exact India text decision india-20261002-dracula-pg345-noncover-text; its literature/source/transcription facts and license conditions remain unchanged. Add the recorded first-party owner-design declaration and exact current front/back cover bytes, independently verified with no specifically identified external protected component. Scope is IN catalogue metadata, exact cover display and text Reader/Pass only; audio, other editions/territories and production activation are excluded. This is an accepted local preparation record; runtime registry and release gates remain separate.",
+      "evidence_sha256": [
+        "d67d7785d0a31feb7fa50d5dd2233eee643734062bee7226be8bba3fb4d14fa5",
+        "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+        "4a96f50ad7df460f80f1b69ca814b7514d7f178d24e0079cd6fd8a04e5faba24",
+        "96cd16eacdbfebae8fdda5591f66e0cc8ee76be18e0cd1aca02bc00615782d28",
+        "0ab0060ec9b89c62f3d33b57b08831aca532dc79aea59d9cd7f83cc0f2d1e1d0",
+        "dedc02151bfa349d4a8f3b655291e29a7526ef76d234d61ab0f70707176ace29",
+        "7ed1c887f9b051fd751bb71d274459a28ea4c6dc643d92a3a547fcc5a58ad262",
+        "8424662cca0b1bda6e1810129c63127261c51886ae5cf608d21aa6a72a81a7ab",
+        "7a9e6e24ae45b062430fdf8adf2f283ece909f4da754d2d04e4d59431adb4336",
+        "c060a1f7c11b4c820b88a4f8f76470d8bbc007d3b8206a1e228d99f9e5bba8d5"
+      ],
+      "accepted_by": "Automated serialized integration controller under the product owner directive in issue #477 comment 5949652699, after two independent automated evidence reviews; no human legal signature inferred.",
+      "conditions_satisfied": true
+    },
+    "book_authority": {
+      "audio_enabled": false,
+      "audiobook_enabled": false,
+      "isPublic": true,
+      "isLive": true,
+      "allowCheckout": false,
+      "allowPayment": false,
+      "publication_status": "READY_FOR_ACTIVATION_GLOBAL_GATE"
+    }
+  },
+  "book-edfcf810c5": {
+    "immutable_files": 8,
+    "parity_errors": [],
+    "licensed_notice_valid": true,
+    "decision_scope": {
+      "schema_version": "earnalism.rights-decision.v1",
+      "decision_id": "india-20261002-book-edfcf810c5-reader-cover-display-reviewed",
+      "edition_id": "book-edfcf810c5",
+      "operator_id": "reo-enterprise",
+      "status": "ACCEPTED",
+      "territories": [
+        "IN"
+      ],
+      "uses": [
+        "catalog_metadata",
+        "cover_display",
+        "reader_preview",
+        "reader_delivery",
+        "reading_pass_session",
+        "reading_pass_renewal"
+      ],
+      "valid_from": "2026-10-02T11:01:20.120944+00:00",
+      "valid_until": "2036-10-02T00:00:00+00:00",
+      "basis": "Reuse existing exact India text decision india-20261002-book-edfcf810c5-1895-cc-by-sa-text-reader; its literature/source/transcription facts and license conditions remain unchanged. Add the recorded first-party owner-design declaration and exact current front/back cover bytes, independently verified with no specifically identified external protected component. Scope is IN catalogue metadata, exact cover display and text Reader/Pass only; audio, other editions/territories and production activation are excluded. This is an accepted local preparation record; runtime registry and release gates remain separate.",
+      "evidence_sha256": [
+        "4a101e1fe9a73ea196fbf82b7fda9b44ef84e7da7ecc484ac9a10e96dd4e22f4",
+        "e824fa8a23dddcfd3b68d9d02af0754538dd42ec81989af1985a0aa047aa6b0b",
+        "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+        "9d6a668ee2f18d24efab07443ea5c57b637411dcd981c9023c1911dd5623f626",
+        "0f80a6bc269d8d080fe759b1fa1c7303483e183badb4b9801935ec1ab49419cc",
+        "7e1c46ba64cea5b783c19a9c89ae262fbb73731693f8c152fb2b77baa19b98a1",
+        "47ca52eae1ddd23fce3635278b347d24c30a1f1259958631d026a5be9e97ecd9",
+        "ec0c689a98d3909dd0efe98f2208c38a99727eddd67592bcba6c27f4527ced09",
+        "1f23bcbc00474f550bda54e027b8d5f8780a7c3e1d63295ad25bfd9c358e6304",
+        "1ed356121a69558cef657c0092a121c9484292abc06f9bceea7611c2c5eea577"
+      ],
+      "accepted_by": "Automated serialized integration controller under the product owner directive in issue #477 comment 5949652699, after two independent automated evidence reviews; no human legal signature inferred.",
+      "conditions_satisfied": true
+    },
+    "book_authority": {
+      "audio_enabled": false,
+      "audiobook_enabled": false,
+      "isPublic": true,
+      "isLive": true,
+      "allowCheckout": false,
+      "allowPayment": false,
+      "publication_status": "READY_FOR_ACTIVATION_GLOBAL_GATE"
+    }
+  }
+}

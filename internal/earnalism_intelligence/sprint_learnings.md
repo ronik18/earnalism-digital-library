@@ -2590,3 +2590,25 @@ Author lifetime facts, transcription licensing, exact source edition and publica
 
 ### Vercel prebuilt packaging
 Source deployments succeeding do not prove prebuilt file selection. Validate includeFiles, generated filePathMap and external symlink targets against the actual CLI manifest; preserve generated-output exclusions with a narrow required-asset exception.
+
+## Book GO-LIVE 477 continuation — 2026-10-02
+
+Recover the existing checkout/candidates when bridge task actions are unavailable. Clear the sole existing PR before integration. Preserve exact source/licence facts and encode existing covers deterministically; compare original→derivative hashes rather than infer attribution from visual similarity. Parallel preparation remains separate from serialized activation. Local rights evaluation is not production or entitlement UAT.
+
+## Book GO-LIVE 477 route support hold — 2026-10-02
+
+Static generation is not production route reachability. Two reviewers identified the Bengali edition lacks explicit route mappings while generic slug routes target404. Preserve its exact preparation but remove launch exposure when deployment configuration is outside owner scope; advance the independently routable edition through the existing PR.
+
+## Book GO-LIVE 477 runtime/app integration — 2026-10-02
+
+Accepted exact rights and configured publication remain separate. Inventory must derive territory from the current accepted decision when admin dispositions omit it, retain digest/component/revocation gates, and mark off-allowlist titles unexposed. Static released pages need matching API-gated app routes after hydration; detail helpers must preserve exact approved cover aliases rather than replace them with legacy artwork.
+
+## Book GO-LIVE477 routing correction/currentchapterfixture — 2026-10-02
+
+Do not infer confirmed404 or campaign exhaustion from missing explicit rewrites: Vercel checks filesystem first and the build generates directory indexes per safe publication. Preserve exact current28-unit Dracula edition and immutable frozen27narrative baseline via explicit hash-bound overlay; never delete accepted original Preface to satisfy stale test. Real production path and canonical-version observations remain separate gates.
+
+- 2026-10-02 #477: public release projection must bind exact approved publication manifests, not historical package draft labels. Required validated license attribution is public; private evidence keys remain forbidden. Six isolated final assertions repaired; exact protected CI and deployed readback pending.
+
+- 2026-10-02 #477: after full regression passes, browser journey fixtures must match exact approved26/Bengali scope while preserving independent held/audio cases. Evidence executive snapshot counts must derive from hash-bound actual report/manifest, never historical fixed142. Two source reviews and39tests pass; production unobserved.
+
+- 2026-10-02 #477: metadataReader200 is not canonicalReader readiness. Each exactnewapprovedtitle requires existing audited absent-pointer initialization plan or observed existingvalidversion. Extend exactplanbindings, test actualhandlers/allhistoryholds, strengthen observedversion canary; neverrewriteexistingpointer orinferproductionfrom isolated276/9page computations. Next3deliveryderivatives now two-reviewed/inactive.

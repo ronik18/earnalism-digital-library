@@ -126,6 +126,16 @@
       "slug": "picture-of-dorian-gray",
       "decision_id": "india-20261001-picture-of-dorian-gray-owner-text-reader",
       "record_sha256": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea"
+    },
+    {
+      "slug": "dracula",
+      "decision_id": "india-20261002-dracula-reader-cover-display-reviewed",
+      "record_sha256": "7978495dce52efc499d82bce531291299cd9a34625a0ffb5bd578afa60ea618f"
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "decision_id": "india-20261002-book-edfcf810c5-reader-cover-display-reviewed",
+      "record_sha256": "6de4a0e68e50aa11e1ae57850cac61699bbe2e1b810502e8f52ba280d51a8a0b"
     }
   ]
 }

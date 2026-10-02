@@ -1,0 +1,21 @@
+{
+  "scope": [
+    "frontend/src/App.js",
+    "frontend/src/bookDetailDirectRoute.test.js",
+    "regression/modules/14-ux-conversion-static.test.js"
+  ],
+  "file_sha256": {
+    "frontend/src/App.js": "82aa0ee02cf26aed30b299f5a929b61b4f8bd3b706374ef7c293a44ceea01641",
+    "frontend/src/bookDetailDirectRoute.test.js": "26e8d0207bc42ec059eb88b80fe08a157fdccede7b5e99ce4dbe047d21de8859",
+    "regression/modules/14-ux-conversion-static.test.js": "0d50c3b4e83d22d590635704cb62f7ef3884812c007e6a9d5775f3d5030b9ea6"
+  },
+  "checks": {
+    "diff_check": "PASS",
+    "regression_js_syntax": "PASS",
+    "targeted_native_node_assertions": "PASS_ROUTE_OVERRIDES_6_SNAPSHOTS_UNKNOWN_404",
+    "jest": "NOT_RUN_DEPENDENCIES_ABSENT_NO_INSTALL"
+  },
+  "review": "BookDetail respects PUBLIC_READER_EXPOSURE_ENABLED and API; ReaderV2 requests slug-bound server manifest; ListenerV2 returns Listening unavailable when listenerReleasePresentation(book).canRender=false, protected package fetch requires granted audio lease; no media exposed by route repair.",
+  "deployment_configuration_or_entitlement_changes": false,
+  "next": "Exact hosted CI then controller fingerprint and protected publish."
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": "earnalism.exact-owner-cover-provenance.v1",
+  "slug": "muchiram-gurer-jibanchorit",
+  "status": "EXACT_OWNER_FACT_BOUND_PENDING_INDEPENDENT_REVIEW",
+  "owner_design_statement": "Owner states all front and back covers are designed by the owner.",
+  "owner": "Ronik Basak",
+  "owner_fact_receipt_path": "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-7/owner-cover-declaration-receipt.json",
+  "owner_fact_receipt_sha256": "fd3cfb400529dfd2be865703f9e61e7e97e4481518934727223e60cfab67dc92",
+  "scope": "Existing global all-front/back owner declaration applied to exact mapped downloaded bytes; no new ownership assertion",
+  "assets": [
+    {
+      "side": "front",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482980/earnalism/covers/front/cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+      "path": "/workspace/scratch/181ef0a25f05/next-pair-a/muchiram-gurer-jibanchorit-front.png",
+      "sha256": "abbed38055fd673d0171eb9eeaf49fb887013d46d12573cf7b38109c683dbbc9",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "bytes": 3132862
+    },
+    {
+      "side": "back",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483024/earnalism/covers/back/back_cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+      "path": "/workspace/scratch/181ef0a25f05/next-pair-a/muchiram-gurer-jibanchorit-back.png",
+      "sha256": "47fb5b354455a7a5cff855b4ca69c1b194832bc8798d3d01842d8e9886a8d58b",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "bytes": 2963238
+    }
+  ],
+  "visual_review": {
+    "reviewer": "next_pair_a automated worker",
+    "status": "PASS",
+    "receipt": "/workspace/scratch/181ef0a25f05/next-pair-a/integrity.json",
+    "receipt_sha256": "59cb68801762d4287f2074b09713ae9d7f7f1158765d5f945a7556b52bd92c41",
+    "independent_reviews": []
+  },
+  "production_activation_authorized": false,
+  "audio_authorized": false
+}

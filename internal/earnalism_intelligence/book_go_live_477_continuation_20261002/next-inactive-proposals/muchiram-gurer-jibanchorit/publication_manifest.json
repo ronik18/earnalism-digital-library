@@ -1,0 +1,157 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "muchiram-gurer-jibanchorit",
+  "title": "মুচিরাম গুড়ের জীবনচরিত",
+  "generated_at": "2026-10-02T13:07:16.401300+00:00",
+  "content": {
+    "source_hash": "d88c2efe3dc6d15fb103a9df394a4dfa194a54234ca11c9c1e49d1ecca924034",
+    "content_hash": "095e2308975c18cba636058aad414a457161f5754bd6f6f282537bdaebe23801",
+    "provenance_hash": "5684356538fbb400de644b128c8ac1307bf46f737170d77dec156e1e1ac5f8a4",
+    "sanitized": true,
+    "chapter_count": 14,
+    "chapter_index_sha256": "774b48d52201fb21c4cf40a8ae9b880d1c64bdcd727c5b978253d6bd9b0ae799",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Chapter 1. প্রথম পরিচ্ছেদ",
+        "word_count": 561,
+        "sha256": "c6a56abd3ca27dcb83417018f74e66ef45b491eacb83ed9d000bbb292f712da4"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "Chapter 2. দ্বিতীয় পরিচ্ছেদ",
+        "word_count": 352,
+        "sha256": "9172cf08cd6fe0009a376beb1911bfde55386e42385aa351f19388ee7e08834b"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "তৃতীয় পরিচ্ছেদ",
+        "word_count": 631,
+        "sha256": "8981b0859bf3cd3dffe6c582a32d833b1ac24153f4b8d2e11e058b98547d4b29"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "চতুর্থ পরিচ্ছেদ",
+        "word_count": 313,
+        "sha256": "de98c1d95dccde4de2aa6a3a0a6396b8f6053d78300afe74bee1934f5328f698"
+      },
+      {
+        "id": "chapter-005",
+        "order": 5,
+        "title": "পঞ্চম পরিচ্ছেদ",
+        "word_count": 267,
+        "sha256": "f60085e0dfe0f2caede7562e93f89c0eda99be553b7c6e80f4c3360c79e00877"
+      },
+      {
+        "id": "chapter-006",
+        "order": 6,
+        "title": "ষষ্ঠ পরিচ্ছেদ",
+        "word_count": 517,
+        "sha256": "8c33308e96ff7ba2f8f91fd8fe083bfb6e3865f4c84a1a90404f2efdf7a4ae5e"
+      },
+      {
+        "id": "chapter-007",
+        "order": 7,
+        "title": "সপ্তম পরিচ্ছেদ",
+        "word_count": 518,
+        "sha256": "a21596d82467a31917b3efe9eb2185d6d2bd718b6a06cd2deafa0a5c2fbf1e07"
+      },
+      {
+        "id": "chapter-008",
+        "order": 8,
+        "title": "অষ্টম পরিচ্ছেদ",
+        "word_count": 412,
+        "sha256": "2d49c1b2a3492a5d3454f48f1b563df39d2672f0facaab2d9a96631405bcbdac"
+      },
+      {
+        "id": "chapter-009",
+        "order": 9,
+        "title": "নবম পরিচ্ছেদ",
+        "word_count": 368,
+        "sha256": "c109786417f562c379d0083f772c07a2cdb312bec346ea1de41cf1a2393ca4b4"
+      },
+      {
+        "id": "chapter-010",
+        "order": 10,
+        "title": "দশম পরিচ্ছেদ",
+        "word_count": 620,
+        "sha256": "f7f2d6b158f9f2a9ff9d9d47b7764538ddfe315a3d64f27b7219393d29a52f23"
+      },
+      {
+        "id": "chapter-011",
+        "order": 11,
+        "title": "একাদশ পরিচ্ছেদ",
+        "word_count": 203,
+        "sha256": "e4622866cdcf9ee775e356237cb34f8e30702cb168d4f9b83eb06ee1df03273e"
+      },
+      {
+        "id": "chapter-012",
+        "order": 12,
+        "title": "দ্বাদশ পরিচ্ছেদ",
+        "word_count": 383,
+        "sha256": "1235a2e3901185fc3a60f51338829ce905764c2c949c60cabebb47d6bc7102b9"
+      },
+      {
+        "id": "chapter-013",
+        "order": 13,
+        "title": "ত্রয়োদশ পরিচ্ছেদ",
+        "word_count": 438,
+        "sha256": "7baa7a09d7a400cf587de482c494039df5ae52216efe52dfeaf9fef7960f5d5c"
+      },
+      {
+        "id": "chapter-014",
+        "order": 14,
+        "title": "চতুর্দ্দশ পরিচ্ছেদ",
+        "word_count": 925,
+        "sha256": "c846cf9cbc40b330b657c9877bb307729707acc37ca6813dfa563a3e51ce3413"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "IN",
+    "evidence_sha256": "019f7fe8556e516fef78e6cb4ffc4f9e072ec70b8459f525a9d41dc5ce4e4950",
+    "exact_decision_id": "india-20261002-muchiram-gurer-jibanchorit-reader-cover-display-next-pair-proposed",
+    "production_registration": "PENDING"
+  },
+  "reader_release": {
+    "status": "READY_FOR_APPROVAL",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482980/earnalism/covers/front/cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "6e6bcf591266b4fc21a88c8f39448639d5cf148fcb3f7123a0ff703e82f1675a",
+    "reader_manifest": "ef7c6d21000b4f9d7fd56fc8bbb4768016682ee70466bc87e4f20d1ff6a4cd20",
+    "source_evidence": "019f7fe8556e516fef78e6cb4ffc4f9e072ec70b8459f525a9d41dc5ce4e4950",
+    "approval_evidence": "84fc47babe5edbda549fa574eaff7d60d0d8c196bcf0ad55d803b21bdc0d71e2",
+    "cover_provenance": "38c91b126418cad8d47e24edd41e0a40a9efd2d978bda66031ab1957dbb6224c",
+    "publication_authorization": "bd3ae3addfefdd8fbd4b8ac650ee1d94b9848873f18f4736a6c9b9791bb94ce3"
+  },
+  "manifest_sha256": "4bfe593b01ee37197f8194ea142bd15ec5f80e8eb5a2b8518e30af04ddf6cd09",
+  "cover_release": {
+    "status": "WORKER_VISUAL_PASS_INDEPENDENT_REVIEW_PENDING",
+    "territories": [
+      "IN"
+    ],
+    "front_sha256": "abbed38055fd673d0171eb9eeaf49fb887013d46d12573cf7b38109c683dbbc9",
+    "back_sha256": "47fb5b354455a7a5cff855b4ca69c1b194832bc8798d3d01842d8e9886a8d58b",
+    "production_activation": false
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "slug": "muchiram-gurer-jibanchorit",
+  "reconciled_at": "2026-10-02T13:31:53.646362+00:00",
+  "candidate": "/workspace/scratch/181ef0a25f05/next-pair-a/candidate/muchiram-gurer-jibanchorit",
+  "candidate_decision_sha256": "bb5fec01a56866597cdc808b2fe4f82cf42373b883c98558a7123188083f7215",
+  "candidate_decision_status": "PENDING_REVIEW",
+  "cover_assets": [
+    {
+      "side": "front",
+      "recorded_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482980/earnalism/covers/front/cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+      "reused_existing_path": "/workspace/scratch/181ef0a25f05/next-pair-a/candidate/muchiram-gurer-jibanchorit/covers/front.png",
+      "isolated_copy": "/workspace/scratch/181ef0a25f05/next-pair-a/recovered-exact-covers/front.png",
+      "sha256": "abbed38055fd673d0171eb9eeaf49fb887013d46d12573cf7b38109c683dbbc9",
+      "bytes": 3132862,
+      "fresh_get_count": 0
+    },
+    {
+      "side": "back",
+      "recorded_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483024/earnalism/covers/back/back_cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+      "reused_existing_path": "/workspace/scratch/181ef0a25f05/next-pair-a/candidate/muchiram-gurer-jibanchorit/covers/back.png",
+      "isolated_copy": "/workspace/scratch/181ef0a25f05/next-pair-a/recovered-exact-covers/back.png",
+      "sha256": "47fb5b354455a7a5cff855b4ca69c1b194832bc8798d3d01842d8e9886a8d58b",
+      "bytes": 2963238,
+      "fresh_get_count": 0
+    }
+  ],
+  "checksum_mismatches": [],
+  "immutable_source_reader_chapters_license": {
+    "reader_manifest.json": true,
+    "license_notice.json": true,
+    "source_evidence.json": true,
+    "highlight_sync.json": true,
+    "chapters/chapter-008.json": true,
+    "chapters/chapter-003.json": true,
+    "chapters/chapter-012.json": true,
+    "chapters/chapter-001.json": true,
+    "chapters/chapter-013.json": true,
+    "chapters/chapter-014.json": true,
+    "chapters/chapter-002.json": true,
+    "chapters/chapter-005.json": true,
+    "chapters/chapter-007.json": true,
+    "chapters/chapter-006.json": true,
+    "chapters/chapter-011.json": true,
+    "chapters/chapter-004.json": true,
+    "chapters/chapter-010.json": true,
+    "chapters/chapter-009.json": true
+  },
+  "fresh_exact_independent_reviews": [
+    {
+      "reviewer": "next_pair_b",
+      "path": "/workspace/scratch/181ef0a25f05/next-pair-b/muchiram-reviewer2.json",
+      "sha256": "95181dbad87a24bd547d0ec675a61e897ac7c8a4f2850479846863accb07e2cf",
+      "conclusion": "ACCEPT_INACTIVE_PROPOSAL_FOR_CONTROLLER_RECONCILIATION",
+      "stale_file_bindings": []
+    }
+  ],
+  "distinct_independent_review_count": 1,
+  "readiness": "EXACT_ASSETS_RECOVERED_ONE_DISTINCT_INDEPENDENT_REVIEW_SECOND_REVIEW_PENDING",
+  "reader_chapters": 14,
+  "source_hash": "d88c2efe3dc6d15fb103a9df394a4dfa194a54234ca11c9c1e49d1ecca924034",
+  "content_hash": "095e2308975c18cba636058aad414a457161f5754bd6f6f282537bdaebe23801",
+  "license_notice_sha256": "c78c5f7ef44ed30b38cc3a38956c546403b2a948dc0743a6b652977674bf8ff1",
+  "new_gets": 0,
+  "canonical_mutations": 0,
+  "registry_mutations": 0,
+  "production_mutations": 0,
+  "paid_calls": 0,
+  "next_action": "Second distinct independent exact review; reconcile PR508 completion before serialized local acceptance/integration."
+}

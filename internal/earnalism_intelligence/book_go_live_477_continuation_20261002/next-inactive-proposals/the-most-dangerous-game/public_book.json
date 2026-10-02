@@ -1,0 +1,98 @@
+{
+  "id": "controlled-the-most-dangerous-game",
+  "slug": "the-most-dangerous-game",
+  "title": "The Most Dangerous Game",
+  "subtitle": "The Most Dangerous Game",
+  "author": "Richard Connell",
+  "category_slug": "literary-fiction",
+  "short_description": "A big-game hunter is shipwrecked on an island where a Russian general hunts humans for sport.",
+  "description": "Rainsford falls off a yacht and swims to Ship Trap Island, where General Zaroff hunts shipwrecked men as the only quarry worthy of his skill. Rainsford must survive three days in the jungle. The most widely anthologised thriller in American literature.",
+  "cover_url": "https://theearnalism.com/assets/books/the-most-dangerous-game/front-cover.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-most-dangerous-game/front-cover.webp",
+  "coverImage": "https://theearnalism.com/assets/books/the-most-dangerous-game/front-cover.webp",
+  "cover_image": "https://theearnalism.com/assets/books/the-most-dangerous-game/front-cover.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-most-dangerous-game/back-cover.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-most-dangerous-game/back-cover.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/the-most-dangerous-game/back-cover.webp",
+  "cover_status": "EARNALISM_GENERATED_GRAPHICAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "34 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Richard Connell (1893–1949) was an American author and journalist, best known for The Most Dangerous Game.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Most Dangerous Game",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 7990,
+      "reading_minutes": 34,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "updated_at": "2026-08-15T22:12:42Z"
+    }
+  ],
+  "source_hash": "77c9fc421bd4d7742794edc9dd48b7f80eb70c0b73b969d4ef099d4ff9e4808f",
+  "content_hash": "8590d829e9f5d5b6ddf5dd7d131d5be1e2de353f0d3637ece79b88aa5f283ea7",
+  "provenance_hash": "a17bd1897d9e21f8697fcf0accfb5971849f0532b443076b1800a841f7f1125c",
+  "rights_basis": "Richard Connell died in 1949 and the story was first published in 1924. Public domain in India and the U.S.; canonical title corrected from manifest alias.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "READY_FOR_INDEPENDENT_COMPONENT_REVIEW",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "draft",
+  "isPublic": false,
+  "isLive": false,
+  "showInPublicLibrary": false,
+  "showInHomepage": false,
+  "allowPublicReading": false,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": false,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_provider": "",
+  "audiobook_voice": "",
+  "audio_asset_slug": "",
+  "created_at": "2026-07-03T20:07:49Z",
+  "updated_at": "2026-08-15T22:12:42Z",
+  "cover_dimensions": {
+    "front": [
+      800,
+      1200
+    ],
+    "back": [
+      800,
+      1200
+    ]
+  },
+  "requires_attribution": true,
+  "requires_share_alike": true,
+  "required_attribution": "Text transcription adapted from Wikisource contributors, “The Most Dangerous Game,” https://en.wikisource.org/wiki/O._Henry_Memorial_Award_Prize_Stories_of_1924/The_Most_Dangerous_Game, under CC BY-SA 4.0, https://creativecommons.org/licenses/by-sa/4.0/. The underlying 1924 story by Richard Connell is public domain in India and the United States.",
+  "license_notice_sha256": "1822103ef4f55d4a3df141bcf9c536195b8a34d22bcaba9a9349484d4d74f8fa",
+  "publication_authorization_sha256": "e38e7e40c3a75d55219c7093d479a109485acafd0616e08dc82c2be34f67054f"
+}

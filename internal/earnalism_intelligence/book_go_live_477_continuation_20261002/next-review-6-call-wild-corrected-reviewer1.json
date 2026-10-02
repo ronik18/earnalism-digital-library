@@ -1,0 +1,68 @@
+{
+  "reviewer": "next_pair_a independent reviewer1",
+  "reviewed_at": "2026-10-02T13:17:46.244196+00:00",
+  "candidate": "/workspace/scratch/181ef0a25f05/next-pair-c/inactive-candidates/the-call-of-the-wild",
+  "conclusion": "ACCEPT_EXACT_PROPOSED_COMPONENT_SCOPE_FOR_SERIALIZED_LOCAL_ACCEPTANCE",
+  "candidate_decision_status": "PROPOSED",
+  "decision_file_sha256": "5f47c928a34a215399587dcf22ffa625aa1c768ef77656c3a6148d260ebefc7b",
+  "component_actual_sha256": {
+    "public_book": "33231d018bf66af86b281ae58c2926fabd4c9d4de77e88ec9485165e17c9479c",
+    "reader_manifest": "8b04260e291ac4388ee26bc65cb1fb3bff1d1cae80659afd0762af70688e2180",
+    "source_evidence": "863a94b8e03a42f5833e86e3b323b324e4fa4c2abe4f1a92b697f6df147653dc",
+    "approval_evidence": "29488c1742db1bd039d4299bd7eb592a6230ed2b516658ead3146265b733601e",
+    "checksum_manifest": "c69dd35fdd2342de6ed3950a7ddc84e5cb216a243af851d6335ed72417e6ef5f",
+    "publication_manifest": "3dd9ac59bcf95d67bc961df47cfe8637ad0ff15ad11f53ee6fa04df42a49c174",
+    "cover_provenance": "a7e3b58d197e818724f0525841d05f44e3567d92d7fd9fade94f0d47a58a65ef",
+    "cover_front_asset": "94d7d690b177fc6ee3eb8d60e6ef031c878c355905a25b94d24ac5ca08560068",
+    "cover_back_asset": "8d86df1735a5ddbc6e44330805bcbd5aed28884d2fa01b2fa5c633fc28648a17"
+  },
+  "checksum_mismatches": [],
+  "decision_component_mismatches": [],
+  "cover_asset_sha256": {
+    "covers/back.png": "8d86df1735a5ddbc6e44330805bcbd5aed28884d2fa01b2fa5c633fc28648a17",
+    "covers/front.png": "94d7d690b177fc6ee3eb8d60e6ef031c878c355905a25b94d24ac5ca08560068"
+  },
+  "cover_provenance_sha256": "a7e3b58d197e818724f0525841d05f44e3567d92d7fd9fade94f0d47a58a65ef",
+  "cover_binding_mismatches": [],
+  "immutable_text_reader_source_license": {
+    "reader_manifest.json": true,
+    "source_evidence.json": true,
+    "highlight_sync.json": true,
+    "chapters/chapter-003.json": true,
+    "chapters/chapter-001.json": true,
+    "chapters/chapter-002.json": true,
+    "chapters/chapter-005.json": true,
+    "chapters/chapter-007.json": true,
+    "chapters/chapter-006.json": true,
+    "chapters/chapter-004.json": true
+  },
+  "manifest_issues": [],
+  "reader_exposed": false,
+  "audio_exposed": false,
+  "audio_status": "NOT_REQUESTED",
+  "public_flags": {
+    "isPublic": false,
+    "isLive": false,
+    "is_published": false,
+    "audio_enabled": false,
+    "audiobook_enabled": false
+  },
+  "visual_review": "Actual exact front/back pixels inspected; correct readable title/author, complete text where provided, graphical thematic cover, no internal LIVE/status/audio claim or clipping. MostDangerous uses symbolic graphical island/hunt geometry; no raster production-method assertion.",
+  "owner_fact": "Recorded existing all-front/back owner creation declaration reused; no new ownership demand.",
+  "notes": [],
+  "production_ready": false,
+  "activation_authorized_by_review": false,
+  "next_action": "Fresh hash-bound local acceptance after second independent review; production gates and readbacks remain.",
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "territories": [
+    "IN"
+  ],
+  "review_scope": "Fresh corrected six-use India inactive proposal; supersedes old text-only stale-hash observation."
+}

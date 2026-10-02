@@ -1,0 +1,126 @@
+{
+  "bn-035": {
+    "title": "বড়দিদি",
+    "checksum_file_count": 17,
+    "checksum_mismatches": [],
+    "decision_component_mismatches": [],
+    "decision_id": "india-20261002-bn-035-1922-cc-by-sa-text-reader",
+    "territories": [
+      "IN"
+    ],
+    "covers": {
+      "front": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270682/earnalism/covers/front/bn-035_front_1600x2400.png",
+        "path": "/workspace/scratch/181ef0a25f05/next-pair-b/bn-035-front.png",
+        "sha256": "ffb58e131d7b216d6c56c018dd3941a0a92c02e45a3a8ee6f553443c1df92cb7",
+        "size": [
+          1600,
+          2400
+        ],
+        "bytes": 189384
+      },
+      "back": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270683/earnalism/covers/back/bn-035_back_1600x2400.png",
+        "path": "/workspace/scratch/181ef0a25f05/next-pair-b/bn-035-back.png",
+        "sha256": "38a13d0d6a16e4cc6e58d228bb2fcb12702b571a3ae8d0667b7a685220653aee",
+        "size": [
+          1600,
+          2400
+        ],
+        "bytes": 415293
+      }
+    },
+    "manifest_schema_issues": [],
+    "chapter_count": 10,
+    "chapter_hash_mismatches": [],
+    "authorization_chapter_mismatches": [],
+    "chapter_orders": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "cover_owner_attestation_reused": "Owner states all front and back covers are designed by the owner.",
+    "attestation_receipt": "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-7/owner-cover-declaration-receipt.json",
+    "production_activated": false,
+    "ready_for_activation": false,
+    "cover_visual_status": "FAIL",
+    "visible_cover_defects": [
+      "Bengali shaping defects with dotted-circle marks on front author and back excerpt",
+      "Gold circle artwork overlaps front author/title and back excerpt",
+      "Stale LIVE CONTROLLED RELEASE front badge"
+    ],
+    "blockers": [
+      "COVER_REPAIR_REQUIRED"
+    ],
+    "notes": "Existing edition-bound India text acceptance retained. Cover visual review does not prove deterministic text overlay pipeline. Source/legal research not repeated. Full image optimization should precede public delivery."
+  },
+  "bn-059": {
+    "title": "কমলাকান্তের দপ্তর",
+    "checksum_file_count": 20,
+    "checksum_mismatches": [],
+    "decision_component_mismatches": [],
+    "decision_id": "india-20261002-bn-059-1885-cc-by-sa-text-reader",
+    "territories": [
+      "IN"
+    ],
+    "covers": {
+      "front": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593318/earnalism/covers/front/cover_4b3ab0ba-eeaa-4c8b-b186-72e03fd39cad.png",
+        "path": "/workspace/scratch/181ef0a25f05/next-pair-b/bn-059-front.png",
+        "sha256": "a7b9f12cea7354f2e3c52d78fe0233efebfeb2f95b15520ae16ef582d24d54a3",
+        "size": [
+          1024,
+          1536
+        ],
+        "bytes": 3148064
+      },
+      "back": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593329/earnalism/covers/back/back_cover_4b3ab0ba-eeaa-4c8b-b186-72e03fd39cad.png",
+        "path": "/workspace/scratch/181ef0a25f05/next-pair-b/bn-059-back.png",
+        "sha256": "19f0e4556b414d8da37ee29d3a69bfa0ca976f3ea4ec32968523a4276fb558db",
+        "size": [
+          1024,
+          1536
+        ],
+        "bytes": 2925243
+      }
+    },
+    "manifest_schema_issues": [],
+    "chapter_count": 13,
+    "chapter_hash_mismatches": [],
+    "authorization_chapter_mismatches": [],
+    "chapter_orders": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "cover_owner_attestation_reused": "Owner states all front and back covers are designed by the owner.",
+    "attestation_receipt": "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-7/owner-cover-declaration-receipt.json",
+    "production_activated": false,
+    "ready_for_activation": false,
+    "cover_visual_status": "PASS_VISUAL_ONLY",
+    "visible_cover_defects": [],
+    "blockers": [
+      "EXACT_COVER_BINDING_AND_EXTENDED_DECISION_PENDING_TWO_REVIEWS",
+      "PRODUCTION_REGISTRY_ALLOWLIST_ACTIVATION_AND_AUTHENTICATED_READER_QA_PENDING"
+    ],
+    "notes": "Existing edition-bound India text acceptance retained. Cover visual review does not prove deterministic text overlay pipeline. Source/legal research not repeated. Full image optimization should precede public delivery."
+  }
+}

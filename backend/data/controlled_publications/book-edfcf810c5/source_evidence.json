@@ -3,13 +3,107 @@
   "source_url": "https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95/%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%81%E0%A6%A7%E0%A6%BF%E0%A6%A4_%E0%A6%AA%E0%A6%BE%E0%A6%B7%E0%A6%BE%E0%A6%A3",
   "source_name": "Bengali Wikisource",
   "source_license": "Underlying Bengali literary text is public domain in India and the U.S.; Wikisource transcription/source layer is reused under CC BY-SA terms.",
-  "source_hash": "2591896f7fd678dafae394be36f7c60f39f240d5ac74e5806b5570982b5d96d7",
-  "content_hash": "12bc09cce1802df3c03d94ec8dee67e3feedc7fe754887b8e6cdb3acce02e614",
+  "source_hash": "4e4f92326d92da407a564d61c67f18583795ccc176de35e04eeaa05652017c78",
+  "content_hash": "d9249c44925bc65221d731727c5f35e557a13144feabe843f649d3dd5d249a34",
   "provenance_hash": "c204c2faa373044ae1e5476b61cc0102027b5d2615e3bfca930781591c9270db",
-  "rights_basis": "Author died 1941. Published 1895. Public domain in India and U.S.",
+  "rights_basis": "Exact Galpa-Dashak original1302/1895 sole-author Rabindranath Tagore edition; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1941; India Section22 literary term expired end2001. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
   "downloaded_at": "2026-06-02T19:23:57.096370+00:00",
-  "source_format": "text/plain",
+  "source_format": "SHA-bound captured source rendering",
   "reader_facing_boilerplate_removed": true,
   "reader_content_repaired_at": "2026-07-23T11:10:13Z",
-  "reader_content_repair": "removed_source_frontmatter_through_canonical_title_page"
+  "reader_content_repair": "removed_source_frontmatter_through_canonical_title_page",
+  "author_death_year": 1941,
+  "author_fact_evidence": {
+    "record": "internal/legal/bengali_text_preparation_20261002/author_fact_receipts.json",
+    "record_sha256": "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "author_id": "tagore",
+    "authority_url": "https://www.nobelprize.org/prizes/literature/1913/tagore/biographical/?print=1",
+    "authority_response_sha256": "0048c2eaa3a43087f4e130b3e5153c9389111d9aed6d329cf12286ad158c0aa9",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_EDITION_OR_PUBLICATION_APPROVAL"
+  },
+  "verification_status": "approved",
+  "text_clearance_status": "OWNER_DELEGATED_AUTOMATED_IN_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
+  "canonical_reader_identity": {
+    "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
+    "reader_content_sha256": "d9249c44925bc65221d731727c5f35e557a13144feabe843f649d3dd5d249a34",
+    "chapter_count": 1,
+    "chapter_content_sha256": {
+      "chapter-001": "d9249c44925bc65221d731727c5f35e557a13144feabe843f649d3dd5d249a34"
+    },
+    "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
+    "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  },
+  "original_publication_year": 1895,
+  "original_publication_evidence": {
+    "record": "internal/legal/catalogue_clearance_20261002/bengali/tagore-publication-facts.json",
+    "record_sha256": "132bb707cf39f0596a3aa27f5d5d368f415ba947a133f06103f4a361407f37a5",
+    "authority_event_url": "https://www.rabindratirtha-wbhidcoltd.co.in/Rabisarani/event/VZlSXRlVONlYHZEWOdVMXJ1aKVVVB1TP#event_649",
+    "year": 1895,
+    "date_as_recorded": "July,  1895",
+    "evidence_type": "EXPLICIT_TITLE_JOURNAL_PUBLICATION_ENTRY",
+    "scope": "Underlying Bengali work publication fact only; later source edition/transcription obligations independently held."
+  },
+  "full_rendered_exact_repair": {
+    "slug": "book-edfcf810c5",
+    "verified_at": "2026-10-01T21:46:35.962142+00:00",
+    "before_sha256": "2591896f7fd678dafae394be36f7c60f39f240d5ac74e5806b5570982b5d96d7",
+    "after_sha256": "d9249c44925bc65221d731727c5f35e557a13144feabe843f649d3dd5d249a34",
+    "source": "internal/legal/catalogue_clearance_20261002/bengali/book-edfcf810c5-complete-source-comparison.json",
+    "source_sha256": "43f8c82f2c7a4a3dcde3c11971d1c375ce797dabe4021dfce744f296fe148e2d",
+    "changes": [
+      {
+        "operation": "insert",
+        "canonical_paragraph_range": [
+          0,
+          0
+        ],
+        "source_paragraph_range": [
+          0,
+          1
+        ],
+        "canonical": [],
+        "source": [
+          "আমি এবং আমার আত্মীয় পূজার ছুটিতে দেশভ্রমণ সারিয়া কলিকাতায় ফিরিয়া আসিতেছিলাম এমন সময় রেলগাড়িতে বাবুটির সঙ্গে দেখা হয়। তাঁহার বেশভূষা দেখিয়া প্রথমটা তাঁহাকে পশ্চিমদেশীয় মুসলমান বলিয়া ভ্রম হইয়াছিল। তাঁহার কথাবার্তা শুনিয়া আরও ধাঁধাঁ লাগিয়া যায়। পৃথিবীর সকল বিষয়েই এমন করিয়া আলাপ করিতে লাগিলেন যেন তাঁহার সহিত প্রথম পরামর্শ করিয়া বিশ্ববিধাতা সকল কাজ করিয়া থাকেন। বিশ্বসংসারের ভিতরে ভিতরে যে এমন সকল অশ্রুতপূর্ব্ব নিগূঢ় ঘটনা ঘটিতেছিল, রশিয়ান্‌রা যে এতদুর অগ্রসর হইয়াছে, ইংরাজদের যে এমন সকল গোপন মৎলব আছে, দেশীয় রাজাদের মধ্যে যে একটা খিচুড়ি পাকিয়া উঠিয়াছে, এ সমস্ত কিছুই না জানিয়া আমরা সম্পূর্ণ নিশ্চিন্ত হইয়া ছিলাম। আমাদের নবপরিচিত আলাপীটি ঈষৎ হাসিয়া কহিলেন, There happen more things in heaven and earth, Horatio, than are reported in your newspapers. আমরা এই প্রথম ঘর ছাড়িয়া বাহির হইয়াছি, সুতরাং লোকটির রকম-সকম দেখিয়া অবাক হইয়া গেলাম। লোকটা সামান্য উপলক্ষে কখনো বিজ্ঞান বলে, কখনো বেদের ব্যাখ্যা করে, আবার হঠাৎ কখনো পার্সি বয়েৎ আওড়াইতে থাকে; বিজ্ঞান, বেদ এবং পার্সিভাষায় আমাদের কোনরূপ অধিকার না থাকাতে তাঁহার প্রতি আমাদের ভক্তি উত্তরোত্তর বাড়িতে লাগিল। এমন কি, আমার থিয়সফিষ্ট্‌ আত্মীয়টির মনে দৃঢ় বিশ্বাস হইল যে, আমাদের এই সহযাত্রীটির সহিত কোন এক রকমের অলৌকিক ব্যাপারের কিছু একটা যোগ আছে; কোন একটা অপূর্ব্ব ম্যাগ্নেটিজম্ অথবা দৈবশক্তি, অথবা সূক্ষ্ম শরীর, অথবা ঐ ভাবের একটা কিছু। তিনি এই অসামান্য লোকের সমস্ত সামান্য কথাও ভক্তিবিহ্বল মুগ্ধভাবে শুনিতেছিলেন এবং গোপনে নোট করিয়া লইতেছিলেন। আমার ভাবে বোধ হইল, অসামান্য ব্যক্তিটিও গোপনে তাহা বুঝিতে পারিয়াছিলেন, এবং কিছু খুসী হইয়াছিলেন।"
+        ]
+      },
+      {
+        "operation": "insert",
+        "canonical_paragraph_range": [
+          15,
+          15
+        ],
+        "source_paragraph_range": [
+          16,
+          17
+        ],
+        "canonical": [],
+        "source": [
+          "সিঁড়ির উপরে সম্মুখের ঘরটি অতি বৃহৎ। তিন সারি বড় বড় থামের উপর কারুকার্যখচিত খিলানে বিস্তীর্ণ ছাদ ধরিয়া রাখিয়াছে। এই প্রকাণ্ড ঘরটি আপনার বিপুল শূন্যতা ভরে অহর্নিশি গম্‌গম্‌ করিতে থাকে। সে দিন সন্ধ্যার প্রাক্কালে তখনো প্রদীপ জ্বালানো হয় নাই। দরজা ঠেলিয়া আমি সেই বৃহৎ ঘরে যেমন প্রবেশ করিলাম অমনি মনে হইল ঘরের মধ্যে যেন ভারি একটা বিপ্লব বাধিয়া গেল—যেন হঠাৎ সভা ভঙ্গ করিয়া চারিদিকের দরজা জান্‌লা ঘর পথ বারান্দা দিয়া কে কোন্ দিকে পালাইল তাহার ঠিকানা নাই। আমি কোথাও কিছু না দেখিতে পাইয়া অবাক্‌ হইয়া দাঁড়াইয়া রহিলাম। শরীর এক প্রকার আবেশে রোমাঞ্চিত হইয়া উঠিল। যেন বহুদিবসের লুপ্তাবশিষ্ট মাথাঘষা ও আতরের মৃদু গন্ধ আমার নাসার মধ্যে প্রবেশ করিতে লাগিল। আমি সেই দীপহীন জনহীন প্রকাণ্ড ঘরের প্রাচীন প্রস্তরস্তম্ভশ্রেণীর মাঝখানে দাঁড়াইয়া শুনিতে পাইলাম—ঝর্ঝর শব্দে ফোয়ারার জল শাদা পাথরের উপরে আসিয়া পড়িতেছে, সেতারে কি সুর বাজিতেছে বুঝিতে পারিতেছি না, কোথাও বা স্বর্ণভূষণের শিঞ্জিত, কোথাও বা নুপুরের নিক্কণ, কখন বা বৃহৎ তাম্রঘণ্টায় প্রহর বাজিবার শব্দ, অতি দূরে নহবতের আলাপ, বাতাসে দোদুল্যমান ঝাড়ের স্ফটিক দোলকগুলির ঠুনঠুন ধ্বনি, বারান্দা হইতে খাঁচার বুলবুলের গান, বাগান হইতে পোষ সারসের ডাক আমার চতুর্দ্দিক একটা প্রেতলোকের রাগিণী সৃষ্টি করিতে লাগিল।"
+        ]
+      }
+    ],
+    "source_heading_not_body": [
+      "ক্ষুধিত পাষাণ।"
+    ],
+    "scope": "Exact pinned edition paragraphs/import furniture only; no invented words or publication authorization"
+  },
+  "historical_import_hashes": {
+    "source_hash": "2591896f7fd678dafae394be36f7c60f39f240d5ac74e5806b5570982b5d96d7",
+    "content_hash": "12bc09cce1802df3c03d94ec8dee67e3feedc7fe754887b8e6cdb3acce02e614",
+    "source_url": "https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95/%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%81%E0%A6%A7%E0%A6%BF%E0%A6%A4_%E0%A6%AA%E0%A6%BE%E0%A6%B7%E0%A6%BE%E0%A6%A3"
+  },
+  "edition_publication_year": 1895,
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "source_snapshot_identity": {
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/book-edfcf810c5-final-source-comparison.json",
+    "sha256": "e824fa8a23dddcfd3b68d9d02af0754538dd42ec81989af1985a0aa047aa6b0b",
+    "scope": "Actual captured original/source edition transclusions; parent revision alone does not freeze transcluded pages."
+  },
+  "edition_evidence": {
+    "edition": "Galpa-Dashak original1302/1895 sole-author Rabindranath Tagore edition",
+    "primary_record": "internal/legal/catalogue_clearance_20261002/bengali/galpa-dashak-edition-title-pages.json",
+    "record_sha256": "4a101e1fe9a73ea196fbf82b7fda9b44ef84e7da7ecc484ac9a10e96dd4e22f4",
+    "scope": "Selected exact literary narrative and retained source notes only; no artwork, publisher matter, separately authored foreword or other edition authorized."
+  }
 }

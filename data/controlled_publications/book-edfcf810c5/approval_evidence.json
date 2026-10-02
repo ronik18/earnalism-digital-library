@@ -4,16 +4,42 @@
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "OWNER_DELEGATED_AUTOMATED_IN_EDITION_BOUND_TEXT_READER_ONLY_COVER_DEFERRED",
-  "audiobook_use_approved": true,
-  "audiobook_use_approval_source": "AUTHORIZE_SPRINT1_AUTONOMOUS_GO_LIVE_LOOP_V3_WITH_OPTIMIZED_DECISIONING_AND_175_USD_CAP",
-  "audiobook_use_approved_at": "2026-07-13T07:30:39Z",
+  "approval_scope": "OWNER_DELEGATED_AUTOMATED_EXACT_IN_TEXT_AND_COVER_COMPONENT_PREPARATION",
+  "audiobook_use_approved": false,
+  "audiobook_use_approval_source": "",
+  "audiobook_use_approved_at": "",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
   "audiobook_enabled": false,
-  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "verified_at": "2026-10-02T11:01:20.120944+00:00",
   "source_hash": "4e4f92326d92da407a564d61c67f18583795ccc176de35e04eeaa05652017c78",
   "content_hash": "d9249c44925bc65221d731727c5f35e557a13144feabe843f649d3dd5d249a34",
-  "publication_authorization_sha256": "0f80a6bc269d8d080fe759b1fa1c7303483e183badb4b9801935ec1ab49419cc"
+  "publication_authorization_sha256": "f027dab9926b4970e7f55d1eaaa049f188a6fd92d85bc94fd0d388b6bd3e511d",
+  "cover_provenance_sha256": "ec0c689a98d3909dd0efe98f2208c38a99727eddd67592bcba6c27f4527ced09",
+  "cover_front_qa_status": "PASS",
+  "cover_back_qa_status": "PASS",
+  "independent_reviews": [
+    {
+      "path": "book-go-live-477/reviewers/reviewer-1/worker6-proposal-review.json",
+      "sha256": "1f23bcbc00474f550bda54e027b8d5f8780a7c3e1d63295ad25bfd9c358e6304",
+      "conclusion": "ACCEPT_EVIDENCE_PREPARATION_ONLY_FULL_SCOPE_RECORD_REMAINS_UNACCEPTED_AND_RUNTIME_HELD"
+    },
+    {
+      "path": "book-go-live-477/reviewers/reviewer-2/worker-6-proposal-review.json",
+      "sha256": "1ed356121a69558cef657c0092a121c9484292abc06f9bceea7611c2c5eea577",
+      "conclusion": "ACCEPT_EXACT_COVER_EVIDENCE_AND_UNAPPLIED_PROPOSAL_FOR_SERIALIZED_INTEGRATION_REVIEW"
+    }
+  ],
+  "historical_audio_approval_metadata_not_current_authority": {
+    "audiobook_use_approved": true,
+    "audiobook_use_approval_source": "AUTHORIZE_SPRINT1_AUTONOMOUS_GO_LIVE_LOOP_V3_WITH_OPTIMIZED_DECISIONING_AND_175_USD_CAP",
+    "audiobook_use_approved_at": "2026-07-13T07:30:39Z"
+  },
+  "activation_derivation": {
+    "owner_directive": "issue #477 comment 5949652699",
+    "scope": "serialized IN text-reader/cover integration candidate",
+    "production_observed": false,
+    "runtime_observed": false
+  }
 }

@@ -1,0 +1,156 @@
+{
+  "the-art-of-money-getting": {
+    "prepared_package": "/tmp/earnalism-main-approved-integration/data/controlled_publications/the-art-of-money-getting",
+    "checksum_mismatches": [],
+    "chapter_count": 1,
+    "source_hash": "ccf68ee545e68995f88d4cd2f534ecae9bf731b8996118d34b5a10bfc4958061",
+    "content_hash": "f3c4db2a3c551518ebd4302e7409797eb49f0ff94470ebfbc4b800b900a44b61",
+    "text_decision_id": "india-20261002-the-art-of-money-getting-pg8581-noncover-text",
+    "covers": [
+      {
+        "side": "front",
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273638/earnalism/covers/front/the-art-of-money-getting_front_1600x2400.png",
+        "path": "/workspace/scratch/181ef0a25f05/next-pair-a/the-art-of-money-getting-front.png",
+        "sha256": "0c1d69427d4fb59f6a844abda7caf06113476d5fe548afcf0293c5ba12a53616",
+        "dimensions": [
+          1600,
+          2400
+        ],
+        "bytes": 201688
+      },
+      {
+        "side": "back",
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273639/earnalism/covers/back/the-art-of-money-getting_back_1600x2400.png",
+        "path": "/workspace/scratch/181ef0a25f05/next-pair-a/the-art-of-money-getting-back.png",
+        "sha256": "96877955ed3ef8a0a9d86353a76584c881b513d6ea50ba09443e028adf66b5be",
+        "dimensions": [
+          1600,
+          2400
+        ],
+        "bytes": 394767
+      }
+    ],
+    "source_integrity_evidence": {
+      "source_byte_receipt": {
+        "requested_url": "https://www.gutenberg.org/ebooks/8581.txt.utf-8",
+        "resolved_url": "https://www.gutenberg.org/cache/epub/8581/pg8581.txt",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:05:04.582466+00:00",
+        "response_sha256": "ccf68ee545e68995f88d4cd2f534ecae9bf731b8996118d34b5a10bfc4958061"
+      },
+      "whole_narrative_coverage": "PASS",
+      "chapter_count": 1,
+      "chapter_comparison": {
+        "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+        "status": "ALL_CHAPTERS_MATCH_SOURCE",
+        "matched_chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "offset": 1083,
+            "length": 74656
+          }
+        ],
+        "nonmatching_chapters": [],
+        "complete_edition_proven": false,
+        "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+      },
+      "first_publication_evidence": {
+        "url": "https://www.kpl.gov/catalog/item/?i=ent://ERC_215_8682/0/215_8682:HOOPLA:17274052",
+        "verified_at": "2026-10-01T21:34:27.321920+00:00",
+        "verification_method": "Actual web tool page retrieval; direct urllib HTTP403 retained separately; no full HTML byte hash claimed",
+        "excerpt": "was first published in book form in 1880",
+        "excerpt_sha256": "f09e30152dd3f0d55c885ac1aa22d705fd10acba61f15d54176e4bb3d9ea5cb0",
+        "original_publication_year": 1880,
+        "scope": "Underlying Barnum text publication only; 2024 Rick Carlile annotations and audiobook not imported or authorized"
+      },
+      "author_death_evidence": [
+        "Barnum, P. T. (Phineas Taylor), 1810-1891"
+      ],
+      "translator": "NONE_SELECTED",
+      "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+      "illustrations": "NONE_IMPORTED",
+      "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+      "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+      "audio": "NOT_AUTHORIZED",
+      "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+    },
+    "audio_flags_in_prepared_public_book": {
+      "audio_enabled": true,
+      "audiobook_enabled": true,
+      "audio_status": "AVAILABLE",
+      "audio_url": "https://api.theearnalism.com/api/reader/book/the-art-of-money-getting/audiobook"
+    },
+    "decision_component_mismatches": [],
+    "owner_design_provenance": {
+      "reused_record": "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-7/owner-cover-declaration-receipt.json",
+      "scope": "Recorded owner statement applies all current mapped front/back cover designs; no new confirmation needed. Exact downloaded bytes bound above."
+    },
+    "visual_status": "FAIL",
+    "visual_defects": [
+      "Front contains internal status text LIVE CONTROLLED RELEASE.",
+      "Gold coin graphics cross cream title/author and long back text, reducing contrast.",
+      "Back excerpt ends mid-sentence at Those who really and overlaps author line."
+    ],
+    "next_action": "Repair exact front/back artwork and short complete blurb; build reader-only inactive candidate with historical audio stripped, rebind fresh component hashes, independent review and serialized runtime promotion.",
+    "activation_status": "NOT_AUTHORIZED_OR_ATTEMPTED_BY_THIS_WORKER"
+  },
+  "muchiram-gurer-jibanchorit": {
+    "prepared_package": "/tmp/earnalism-main-approved-integration/data/controlled_publications/muchiram-gurer-jibanchorit",
+    "checksum_mismatches": [],
+    "chapter_count": 14,
+    "source_hash": "d88c2efe3dc6d15fb103a9df394a4dfa194a54234ca11c9c1e49d1ecca924034",
+    "content_hash": "095e2308975c18cba636058aad414a457161f5754bd6f6f282537bdaebe23801",
+    "text_decision_id": "india-20261002-muchiram-gurer-jibanchorit-1944-cc-by-sa-text-reader",
+    "covers": [
+      {
+        "side": "front",
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482980/earnalism/covers/front/cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+        "path": "/workspace/scratch/181ef0a25f05/next-pair-a/muchiram-gurer-jibanchorit-front.png",
+        "sha256": "abbed38055fd673d0171eb9eeaf49fb887013d46d12573cf7b38109c683dbbc9",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "bytes": 3132862
+      },
+      {
+        "side": "back",
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483024/earnalism/covers/back/back_cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+        "path": "/workspace/scratch/181ef0a25f05/next-pair-a/muchiram-gurer-jibanchorit-back.png",
+        "sha256": "47fb5b354455a7a5cff855b4ca69c1b194832bc8798d3d01842d8e9886a8d58b",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "bytes": 2963238
+      }
+    ],
+    "source_integrity_evidence": {
+      "verified_at": "2026-10-01T21:22:46.646041+00:00",
+      "source_edition": "মুচিরাম গুড়ের জীবনচরিত (১৯৪৪)",
+      "source_record": "internal/legal/catalogue_clearance_20261002/bengali/muchiram-fourteen-chapter-source-comparison.json",
+      "source_record_sha256": "d0db88d4447c3c0e7930fea95cbd604e42226223c3b02b2b15076dae5852470c",
+      "previous_chapters": 2,
+      "verified_same_edition_existing_chapters": 2,
+      "restored_source_chapters": 12,
+      "current_chapters": 14,
+      "method": "Existing first two chapter paragraphs match pinned edition; appended only remaining exact same-edition child chapter text. No literary content generated; preview remains first two chapters; held publication unchanged."
+    },
+    "audio_flags_in_prepared_public_book": {
+      "audio_enabled": false,
+      "audiobook_enabled": false,
+      "audio_status": null,
+      "audio_url": ""
+    },
+    "decision_component_mismatches": [],
+    "owner_design_provenance": {
+      "reused_record": "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-7/owner-cover-declaration-receipt.json",
+      "scope": "Recorded owner statement applies all current mapped front/back cover designs; no new confirmation needed. Exact downloaded bytes bound above."
+    },
+    "visual_status": "PASS_WITH_PERFORMANCE_TRANSFORM_REQUIRED",
+    "visual_defects": [],
+    "visual_notes": "Legible exact Bengali title and Bankim author; themed colonial clerk scene; complete Bengali blurb; no visible clipping or internal release-status words. Artwork-only source or deterministic overlay provenance not inferred from raster.",
+    "next_action": "Advance existing 14 chapter text/license packet to scratch inactive reader-only candidate with exact cover hashes and transformed thumbnails; fresh all-component acceptance, independent review, serialized runtime promotion. Preserve CC BY-SA delivered-text notice.",
+    "activation_status": "NOT_AUTHORIZED_OR_ATTEMPTED_BY_THIS_WORKER"
+  }
+}

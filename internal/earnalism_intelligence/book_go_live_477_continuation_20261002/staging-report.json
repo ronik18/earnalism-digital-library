@@ -1,0 +1,410 @@
+{
+  "production_observed": false,
+  "runtime_observed": false,
+  "local_gate_tests": {
+    "dracula": {
+      "catalog_cta:IN:trusted=True": {
+        "passed": true,
+        "reasons": []
+      },
+      "catalog_cta:US:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_NOT_AUTHORIZED"
+        ]
+      },
+      "catalog_cta:IN:trusted=False": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+        ]
+      },
+      "reader_manifest:IN:trusted=True": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest:US:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_manifest:IN:trusted=False": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+        ]
+      },
+      "reader_preview:IN:trusted=True": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_preview:US:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_preview:IN:trusted=False": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+        ]
+      },
+      "reader_chapter:IN:trusted=True": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter:US:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter:IN:trusted=False": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+        ]
+      },
+      "reading_pass_page:IN:trusted=True": {
+        "passed": true,
+        "reasons": []
+      },
+      "reading_pass_page:US:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_NOT_AUTHORIZED"
+        ]
+      },
+      "reading_pass_page:IN:trusted=False": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+        ]
+      },
+      "reading_pass_session_start:IN:trusted=True": {
+        "passed": true,
+        "reasons": []
+      },
+      "reading_pass_session_start:US:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_NOT_AUTHORIZED"
+        ]
+      },
+      "reading_pass_session_start:IN:trusted=False": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+        ]
+      },
+      "reading_pass_session_transfer:IN:trusted=True": {
+        "passed": true,
+        "reasons": []
+      },
+      "reading_pass_session_transfer:US:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_NOT_AUTHORIZED"
+        ]
+      },
+      "reading_pass_session_transfer:IN:trusted=False": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+        ]
+      },
+      "reading_pass_lease_renewal:IN:trusted=True": {
+        "passed": true,
+        "reasons": []
+      },
+      "reading_pass_lease_renewal:US:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_NOT_AUTHORIZED"
+        ]
+      },
+      "reading_pass_lease_renewal:IN:trusted=False": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+        ]
+      },
+      "audio_manifest:IN:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "audio_manifest:US:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_NOT_AUTHORIZED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "audio_manifest:IN:trusted=False": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_UNTRUSTED_OR_UNSUPPORTED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "audio_download:IN:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "audio_download:US:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_NOT_AUTHORIZED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "audio_download:IN:trusted=False": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_UNTRUSTED_OR_UNSUPPORTED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      }
+    },
+    "book-edfcf810c5": {
+      "catalog_cta:IN:trusted=True": {
+        "passed": true,
+        "reasons": []
+      },
+      "catalog_cta:US:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_NOT_AUTHORIZED"
+        ]
+      },
+      "catalog_cta:IN:trusted=False": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+        ]
+      },
+      "reader_manifest:IN:trusted=True": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest:US:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_manifest:IN:trusted=False": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+        ]
+      },
+      "reader_preview:IN:trusted=True": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_preview:US:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_preview:IN:trusted=False": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+        ]
+      },
+      "reader_chapter:IN:trusted=True": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter:US:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter:IN:trusted=False": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+        ]
+      },
+      "reading_pass_page:IN:trusted=True": {
+        "passed": true,
+        "reasons": []
+      },
+      "reading_pass_page:US:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_NOT_AUTHORIZED"
+        ]
+      },
+      "reading_pass_page:IN:trusted=False": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+        ]
+      },
+      "reading_pass_session_start:IN:trusted=True": {
+        "passed": true,
+        "reasons": []
+      },
+      "reading_pass_session_start:US:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_NOT_AUTHORIZED"
+        ]
+      },
+      "reading_pass_session_start:IN:trusted=False": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+        ]
+      },
+      "reading_pass_session_transfer:IN:trusted=True": {
+        "passed": true,
+        "reasons": []
+      },
+      "reading_pass_session_transfer:US:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_NOT_AUTHORIZED"
+        ]
+      },
+      "reading_pass_session_transfer:IN:trusted=False": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+        ]
+      },
+      "reading_pass_lease_renewal:IN:trusted=True": {
+        "passed": true,
+        "reasons": []
+      },
+      "reading_pass_lease_renewal:US:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_NOT_AUTHORIZED"
+        ]
+      },
+      "reading_pass_lease_renewal:IN:trusted=False": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+        ]
+      },
+      "audio_manifest:IN:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "audio_manifest:US:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_NOT_AUTHORIZED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "audio_manifest:IN:trusted=False": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_UNTRUSTED_OR_UNSUPPORTED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "audio_download:IN:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "audio_download:US:trusted=True": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_NOT_AUTHORIZED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "audio_download:IN:trusted=False": {
+        "passed": false,
+        "reasons": [
+          "TERRITORY_UNTRUSTED_OR_UNSUPPORTED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      }
+    }
+  },
+  "packages": {
+    "dracula": {
+      "candidate_checksum_sha256": "31a691ab060696ace1e4d79558bdd1f611c7f5d0c9530c41b30d9fe47df62566",
+      "derived_decision_sha256": "7978495dce52efc499d82bce531291299cd9a34625a0ffb5bd578afa60ea618f",
+      "immutable_files_verified": 34,
+      "reader_validation_issues": [],
+      "immutable_exception": "Public cover URL aliases changed; separate checksum-bound cover_delivery_derivation records encoding. Original provenance, PNG, source, chapters, reader and authorization unchanged"
+    },
+    "book-edfcf810c5": {
+      "candidate_checksum_sha256": "8fa31e46d27ec0aa32245e6560ee3f856f4440021bbfc30e2a449ee316038ab9",
+      "derived_decision_sha256": "6de4a0e68e50aa11e1ae57850cac61699bbe2e1b810502e8f52ba280d51a8a0b",
+      "immutable_files_verified": 8,
+      "reader_validation_issues": []
+    }
+  },
+  "release_condition": "Exact-head CI, trusted-IN authenticated browser/Pass fixtures, deployment and production readback remain required. This staging is not a customer-ready assertion.",
+  "delivery_derivatives": [
+    {
+      "kind": "front",
+      "source_file": "covers/front.png",
+      "source_sha256": "5596e41956c1317fa5f182c8ba61ac5be8f69a23489d132470bd82ebba425aff",
+      "derivative_file": "frontend/public/assets/books/dracula/dracula-front-5596e419.webp",
+      "derivative_sha256": "ce4f87523c251cf413bebf50c088901a25415b30e92d67fd96aaed9297a33041",
+      "source_bytes": 2964184,
+      "derivative_bytes": 428832,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "recipe": {
+        "mode": "RGB",
+        "format": "WEBP",
+        "quality": 90,
+        "method": 6,
+        "pillow_version": "12.3.0"
+      },
+      "url": "https://theearnalism.com/assets/books/dracula/dracula-front-5596e419.webp",
+      "production_observed": false,
+      "review_status": "PENDING_INDEPENDENT_VISUAL_REVIEW"
+    },
+    {
+      "kind": "back",
+      "source_file": "covers/back.png",
+      "source_sha256": "c35004ef7169e877889c5e6d9d75949d72c09b6102d0a2e0d2542d265993a5c1",
+      "derivative_file": "frontend/public/assets/books/dracula/dracula-back-c35004ef.webp",
+      "derivative_sha256": "c2523a2fcf0723073489caecb73642ddddc4ff206cc26bbf52760ee590bc6076",
+      "source_bytes": 2972067,
+      "derivative_bytes": 455764,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "recipe": {
+        "mode": "RGB",
+        "format": "WEBP",
+        "quality": 90,
+        "method": 6,
+        "pillow_version": "12.3.0"
+      },
+      "url": "https://theearnalism.com/assets/books/dracula/dracula-back-c35004ef.webp",
+      "production_observed": false,
+      "review_status": "PENDING_INDEPENDENT_VISUAL_REVIEW"
+    }
+  ]
+}

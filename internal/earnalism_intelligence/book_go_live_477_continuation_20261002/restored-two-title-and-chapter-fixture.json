@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-10-02T13:58:52.485178+00:00",
+  "parent_head": "9cfa1e461d464bb3894689e3b10c4357a321df85",
+  "routing_correction": "Withdraw earlier confirmed404/config-blocker and exhaustion inference. OfficialVercel filesystem precedence permits generated directory-index snapshots before rewrites. Current exact production build includes all six two-title snapshots. Real deployed bare/trailing routes remain unobserved and required by canary.",
+  "routing_source": "https://vercel.com/docs/project-configuration/vercel-json",
+  "restored_candidate_slugs": [
+    "dracula",
+    "book-edfcf810c5"
+  ],
+  "configured_count": 26,
+  "chapter_fixture_repair": "Preserve frozen historical27-chapter fixture, apply explicit pinned current Preface+27=28 overlay; preserve source/reader/license and publisher-catalog exclusions.",
+  "validation": {
+    "backend_rights_and_chapter_tests": 98,
+    "required_local_uat_tests": 28,
+    "frontend_tests": 48,
+    "static_regression_tests": 63,
+    "workflow_contract_tests": 46,
+    "production_build": "PASS",
+    "static_snapshots": 97,
+    "static_assertions": 2064,
+    "canary_tests": 25
+  },
+  "production_verified_new_titles": 0,
+  "production_readback": "NOT_RUN",
+  "deployment_configuration_changed": false,
+  "next_exact_action": "Normal protected checks on exact updated existingPR508; no oldhead substitution. Merge two-title candidate only on pass, then deployed revision/canary/canonical-version readback. Next3distinct proposals remain inactive until serialized exact acceptance; missing rewrites alone are not a blocker.",
+  "independent_final_canary_review": "release_review authored two-title scoped guest/audio checks; cohort_select independently accepted, productionNOT_RUN"
+}

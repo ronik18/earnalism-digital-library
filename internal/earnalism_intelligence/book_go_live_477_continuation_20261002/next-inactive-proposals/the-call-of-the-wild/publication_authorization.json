@@ -1,0 +1,35 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "the-call-of-the-wild",
+  "edition": "Project Gutenberg #215; The Call of the Wild exact canonical source, underlying lifetime publication 1903; complete selected author text, no translation or independently authored artwork/editorial material imported",
+  "territories": [
+    "IN"
+  ],
+  "scope": "PROPOSED_IN_TEXT_CATALOG_COVER_PASS_NO_AUDIO",
+  "source_sha256": "30f569c5671bba7bbc4a92ab6d8ee01a0d3be00f994819c77da62c28041eb8a2",
+  "content_sha256": "4b029c10c8cff516ed6f07f1928e55775ed7fd8d3d03dcf61f7ace0c55e8aa90",
+  "chapter_sha256": {
+    "chapter-001": "6ea8f908301e78416b40583c2c62e822463a20e841e52a6496b5e0388eb31124",
+    "chapter-002": "98127e9f574ecae3026499e0769a680854598689d26dbc93a19f5008251c05a7",
+    "chapter-003": "b4264259c059d87d53535b1aabd00f00c70779cd5001fafd1edf0646a8ffaf8e",
+    "chapter-004": "a965824fe166c058d5bf74b6bb62caa5e3ea2c0d913fb7a83d46a697ddd7a101",
+    "chapter-005": "3a23f434c7742466496005457bd83b847ee8655c2e4fa926109140ba670bcfad",
+    "chapter-006": "309bebb9c1ff96b56842f848e0f56032d1198552af856d1d4941f7365e9b87fc",
+    "chapter-007": "a0f7e7ed798258e92dbbeca9091e0009a9f39b2458b60585bb1b1d3ed0b74191"
+  },
+  "cover_provenance_sha256": "a7e3b58d197e818724f0525841d05f44e3567d92d7fd9fade94f0d47a58a65ef",
+  "cover_status": "PROPOSED_EXACT_OWNER_BYTES_PENDING_TWO_INDEPENDENT_REVIEWS",
+  "authorized_by": "Automated executor under owner explicit autonomous clearance delegation; not a fabricated human or legal signature.",
+  "verified_at": "2026-10-01T21:49:40.745164+00:00",
+  "publication_authorized": false,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Cover clearance/binding, trusted production registry acceptance, canonical controlled-live allowlist, actual runtime Reader readiness and protected gates must separately pass.",
+  "not_authorized": [
+    "cover_display",
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation"
+  ]
+}

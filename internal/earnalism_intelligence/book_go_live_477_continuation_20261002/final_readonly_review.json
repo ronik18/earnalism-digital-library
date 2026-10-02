@@ -1,0 +1,12 @@
+{
+  "reviewed_paths": {
+    "frontend/src/App.js": "82aa0ee02cf26aed30b299f5a929b61b4f8bd3b706374ef7c293a44ceea01641",
+    "frontend/src/lib/controlledLaunch.js": "fd512d5e8b8b8b41d57f714f128dbb8021525e3b6f958a51e78526ab4631705f",
+    "frontend/src/bookDetailDirectRoute.test.js": "a684334cc6b1a79c47e22214ce83ebf470e04e4280da2fd505dc8454ae743fb8",
+    "scripts/generate_copyright_rights_review_package.py": "bbf944cfdcd63ce73fb9be9aa8895ee1396b1bf970b676c15fa464f35c25d517",
+    "scripts/test_generate_copyright_rights_review_package.py": "f2033816f0e7f4bb928f16dd6de342b9c53e3a6ff9c710f974d62336f4886c69",
+    "backend/tests/test_chapter_index.py": "7742068ece1ebcac3699fd9eff8073bf809b6bbc1e62fc1eb2aff118bafdfd16"
+  },
+  "production_observed": false,
+  "frozen_inventory_sha256": "9a1f1edbbbd6d6ea758bb16ca649c3e1ece3ebd2d337f325c04b3bac96d0846f"
+}

@@ -325,11 +325,12 @@ describe("UX conversion static signals", () => {
     expect(controlledLaunch).toContain('DRACULA_COVER_IMAGE = "/assets/books/dracula/dracula-front-cover.webp"');
     expect(controlledLaunch).toContain('DRACULA_BACK_COVER_IMAGE = "/assets/books/dracula/dracula-back-cover.webp"');
     expect(controlledLaunch).toContain("cover_image_url: DRACULA_COVER_IMAGE");
-    expect(controlledLaunch).toContain("cover_url: DRACULA_COVER_IMAGE");
     expect(controlledLaunch).toContain("thumbnail_url: DRACULA_COVER_IMAGE");
     expect(controlledLaunch).toContain("back_cover_image_url: DRACULA_BACK_COVER_IMAGE");
-    expect(controlledLaunch).toContain("back_cover_url: DRACULA_BACK_COVER_IMAGE");
     expect(controlledLaunch).toContain("back_cover_thumbnail_url: DRACULA_BACK_COVER_IMAGE");
+    const currentDraculaMerge = controlledLaunch.split("export function mergeDraculaBook(book)")[1].split("export function readingPassUrl")[0];
+    expect(currentDraculaMerge).toContain("...book");
+    expect(currentDraculaMerge).not.toMatch(/(?:cover_image_url|cover_url|thumbnail_url|back_cover_image_url|back_cover_url|back_cover_thumbnail_url):\s*DRACULA_(?:BACK_)?COVER_IMAGE/);
     expect(staticSnapshotGenerator).toContain("const coverImage = book.cover_url ? absolute(book.cover_url) : brandImage;");
     expect(staticSnapshotGenerator).toContain("image: coverImage");
     expect(bookDetail).toContain("publicBook?.cover_image_url");
@@ -1770,8 +1771,8 @@ describe("UX conversion static signals", () => {
     expect(bookHtml).not.toContain("Preview every book before you pay");
   });
 
-  test("built historical title snapshots preserve unavailable access when build output exists", () => {
-    for (const [slug, title] of [["dracula", "Dracula"], ["the-selfish-giant", "The Selfish Giant"]]) {
+  test("built held Selfish Giant snapshots preserve unavailable access when build output exists", () => {
+    for (const [slug, title] of [["the-selfish-giant", "The Selfish Giant"]]) {
       for (const kind of ["book", "reader", "listener"]) {
         const html = readOptional(`frontend/build/${kind}/${slug}/index.html`);
         if (!html) {
@@ -1783,6 +1784,32 @@ describe("UX conversion static signals", () => {
         expect(canonicalHref(html)).toBe(`https://theearnalism.com/book/${slug}`);
         expect(html).toContain("No book text, reader session, or audio is available from this page.");
         expect(html).not.toMatch(/reader-ready edition|Read the 3-page preview|"@type"\s*:\s*"(?:Book|Audiobook)"|<(?:audio|video|iframe|button)\b/i);
+      }
+    }
+  });
+
+  test("built released Dracula snapshots preserve reader access and unavailable audio", () => {
+    for (const kind of ["book", "reader", "listener"]) {
+      const html = readOptional(`frontend/build/${kind}/dracula/index.html`);
+      if (!html) {
+        expect(staticSnapshotGenerator).toContain("publicationPages(safe.books)");
+        continue;
+      }
+      expect(canonicalHref(html)).toBe("https://theearnalism.com/book/dracula");
+      expect(html).not.toContain("Dracula unavailable | The Earnalism");
+      expect(html).not.toContain("No book text, reader session, or audio is available from this page.");
+      if (kind === "book") {
+        expect(html).toContain("Dracula by Bram Stoker");
+        expect(html).toContain("Read the 3-page preview");
+        expect(html).toContain('"@type":"Book"');
+      } else {
+        expect(metaContent(html, "name", "robots")).toBe("noindex,follow");
+        if (kind === "listener") {
+          expect(html).toContain("Listening is not available for Dracula in the current release.");
+          expect(html).not.toMatch(/<(?:audio|video|iframe)\b|"@type"\s*:\s*"Audiobook"/i);
+        } else {
+          expect(html).toContain("Read Dracula");
+        }
       }
     }
   });

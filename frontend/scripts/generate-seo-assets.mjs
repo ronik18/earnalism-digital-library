@@ -1,5 +1,6 @@
 import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -155,35 +156,32 @@ async function fetchJson(endpoint) {
 }
 
 async function loadLocalControlledBooks() {
-  const controlledDir = path.join(rootDir, "data", "controlled_publications");
   const books = [];
-  let entries = [];
   try {
-    entries = await readdir(controlledDir, { withFileTypes: true });
-  } catch {
-    return books;
-  }
-
-  for (const entry of entries) {
-    if (!entry.isDirectory()) continue;
-    const slug = entry.name.trim().toLowerCase();
-    if (!controlledLiveSlugs.has(slug)) continue;
-    try {
-      const book = JSON.parse(await readFile(path.join(controlledDir, slug, "public_book.json"), "utf8"));
-      if (
-        book?.slug
-        && book.is_published !== false
-        && book.publication_status === "LIVE_APPROVED"
-        && book.allowCheckout !== true
-        && book.allowPayment !== true
-      ) {
-        books.push(book);
-      }
-    } catch (error) {
-      console.warn(`[seo] Could not load local controlled book ${slug}: ${error.message}`);
+    // The public projection is already derived from exact approved package
+    // authority. Verify every provenance binding before using its safe slugs;
+    // historical draft flags cannot override a current approved manifest.
+    const contract = JSON.parse(await readFile(path.join(rootDir, "frontend/static-seo/controlled-publication-public.json"), "utf8"));
+    if (contract.schema_version !== "earnalism.static-seo-public.v2" || !Array.isArray(contract.publications) || !contract.generated_from || !Object.keys(contract.generated_from).length) return books;
+    for (const [relative, expected] of Object.entries(contract.generated_from)) {
+      const resolved = path.resolve(rootDir, relative);
+      if (!resolved.startsWith(rootDir + path.sep) || !/^[a-f0-9]{64}$/.test(expected)) return [];
+      const actual = createHash("sha256").update(await readFile(resolved)).digest("hex");
+      if (actual !== expected) return [];
     }
+    for (const publication of contract.publications) {
+      const slug = String(publication.slug || "").trim();
+      if (!controlledLiveSlugs.has(slug) || !/^[a-z0-9-]+$/.test(slug)) continue;
+      const directory = path.join(rootDir, "data/controlled_publications", slug);
+      const manifest = JSON.parse(await readFile(path.join(directory, "publication_manifest.json"), "utf8"));
+      if (manifest.slug !== slug || manifest.reader_release?.status !== "APPROVED" || manifest.reader_release?.exposed !== true || manifest.reader_release?.qa_status !== "QA_PASSED" || manifest.reader_release?.blockers?.length !== 0 || manifest.rights?.status !== "APPROVED") continue;
+      const metadata = JSON.parse(await readFile(path.join(directory, "public_book.json"), "utf8"));
+      books.push({slug, is_published: true, category_slug: metadata.category_slug, updated_at: metadata.updated_at, created_at: metadata.created_at});
+    }
+  } catch (error) {
+    console.warn(`[seo] Could not verify local publication projection: ${error.message}`);
+    return [];
   }
-
   return books;
 }
 
@@ -230,10 +228,12 @@ async function main() {
   }
   const books = Array.from(booksBySlug.values());
 
+  const verifiedLocalSlugs = new Set(localControlledBooks.map((book) => book.slug));
   const publishedBooks = books.filter((book) => (
     book?.slug
     && book.is_published !== false
     && controlledLiveSlugs.has(book.slug)
+    && verifiedLocalSlugs.has(book.slug)
   ));
   if (!controlledLaunchConfigAvailable) {
     console.warn("[seo] Controlled launch config is unavailable; generating a fail-closed sitemap without publication routes.");

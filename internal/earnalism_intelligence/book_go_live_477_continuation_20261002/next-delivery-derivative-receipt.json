@@ -1,0 +1,246 @@
+{
+  "schema": "earnalism.next-cohort.delivery-derivatives.v1",
+  "recorded_at": "2026-10-02T14:59:50.511475+00:00",
+  "state": "ISOLATED_INACTIVE_DERIVATIVES_TWO_INDEPENDENT_REVIEWS_PASS",
+  "canonical_mutations": 0,
+  "registry_mutations": 0,
+  "allowlist_mutations": 0,
+  "production_mutations": 0,
+  "network_gets": 0,
+  "paid_calls": 0,
+  "pil_version": "12.3.0",
+  "cohort": [
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "inactive_proposal_decision_sha256": "bb5fec01a56866597cdc808b2fe4f82cf42373b883c98558a7123188083f7215",
+      "covers": [
+        {
+          "side": "front",
+          "original_path": "/workspace/scratch/181ef0a25f05/next-pair-a/candidate/muchiram-gurer-jibanchorit/covers/front.png",
+          "original_sha256": "abbed38055fd673d0171eb9eeaf49fb887013d46d12573cf7b38109c683dbbc9",
+          "original_bytes": 3132862,
+          "derivative_path": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit-front-abbed380.webp",
+          "derivative_sha256": "4d1ef04fa60e470c808ef761d253af1e4245cf27b8496c9b55adfa5927658a92",
+          "derivative_bytes": 511004,
+          "decoded_review_png": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/muchiram-gurer-jibanchorit/front-decoded-review.png",
+          "resolution": [
+            1024,
+            1536
+          ],
+          "mode": "RGB",
+          "recipe": {
+            "format": "WEBP",
+            "quality": 90,
+            "method": 6,
+            "resize": false
+          },
+          "original_unchanged": true,
+          "deterministic_second_encoding_identical": true,
+          "decoded_full_resolution_png_sha256": "011db82c1157e5138b302215b84f86e8375ee30999db7aae46c2e824d2364553",
+          "inspection_preview_512_png": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/muchiram-gurer-jibanchorit/front-decoded-review-512.png",
+          "inspection_preview_768_png": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/muchiram-gurer-jibanchorit/front-decoded-review-768.png",
+          "persisted_derivative_path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/next-inactive-delivery-derivatives/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit-front-abbed380.webp"
+        },
+        {
+          "side": "back",
+          "original_path": "/workspace/scratch/181ef0a25f05/next-pair-a/candidate/muchiram-gurer-jibanchorit/covers/back.png",
+          "original_sha256": "47fb5b354455a7a5cff855b4ca69c1b194832bc8798d3d01842d8e9886a8d58b",
+          "original_bytes": 2963238,
+          "derivative_path": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit-back-47fb5b35.webp",
+          "derivative_sha256": "fbefa1187750293733628e09c18113b4f85855d9966272f5257134673eea2800",
+          "derivative_bytes": 474196,
+          "decoded_review_png": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/muchiram-gurer-jibanchorit/back-decoded-review.png",
+          "resolution": [
+            1024,
+            1536
+          ],
+          "mode": "RGB",
+          "recipe": {
+            "format": "WEBP",
+            "quality": 90,
+            "method": 6,
+            "resize": false
+          },
+          "original_unchanged": true,
+          "deterministic_second_encoding_identical": true,
+          "decoded_full_resolution_png_sha256": "9b57e7fb7eb41151cceffefb5b1a720a2c1bdc395d4be6c809390f3d9c1718ed",
+          "inspection_preview_512_png": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/muchiram-gurer-jibanchorit/back-decoded-review-512.png",
+          "inspection_preview_768_png": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/muchiram-gurer-jibanchorit/back-decoded-review-768.png",
+          "persisted_derivative_path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/next-inactive-delivery-derivatives/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit-back-47fb5b35.webp"
+        }
+      ],
+      "source_license_reader_chapters_preserved": true,
+      "publication_authorized": false,
+      "registry_mutations": 0,
+      "visual_review": "PREPARATION_WORKER_PASS_EXACT_DERIVATIVE_DECODED_PIXELS_PENDING_ROOT_AND_INDEPENDENT_FINAL_REVIEW",
+      "rebinding_required": [
+        "public_book delivery front/back URLs or paths",
+        "cover_provenance derivative mapping originals untouched",
+        "approval_evidence derivative review evidence only without invented owner or human approval",
+        "checksum_manifest derivative entries plus changed metadata hashes",
+        "publication_manifest artifact hashes and approval binding",
+        "rights_decision.components for every changed file plus independent registry digest after root acceptance"
+      ],
+      "visual_findings": {
+        "front": "Readable correct title and author; graphical thematic illustration; no clipping, status badge or audio claim.",
+        "back": "Retained coherent exact cover content; readable complete supplied text and footer; no clipping, occlusion or audio claim.",
+        "substantial_derivative_dispute": false
+      }
+    },
+    {
+      "slug": "bn-059",
+      "inactive_proposal_decision_sha256": "1fd2d65eb75c3cfc756d1fff9dd4db28283a7bd4c780306b74c42bddec135630",
+      "covers": [
+        {
+          "side": "front",
+          "original_path": "/workspace/scratch/181ef0a25f05/next-pair-b/integration/candidates/bn-059/covers/front.png",
+          "original_sha256": "a7b9f12cea7354f2e3c52d78fe0233efebfeb2f95b15520ae16ef582d24d54a3",
+          "original_bytes": 3148064,
+          "derivative_path": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/bn-059/bn-059-front-a7b9f12c.webp",
+          "derivative_sha256": "424cdccfac26c51cf0e0aae4ad6e1a106b2a5388c977e47458ce59cfde134111",
+          "derivative_bytes": 489904,
+          "decoded_review_png": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/bn-059/front-decoded-review.png",
+          "resolution": [
+            1024,
+            1536
+          ],
+          "mode": "RGB",
+          "recipe": {
+            "format": "WEBP",
+            "quality": 90,
+            "method": 6,
+            "resize": false
+          },
+          "original_unchanged": true,
+          "deterministic_second_encoding_identical": true,
+          "decoded_full_resolution_png_sha256": "766a2b3626455e874029278d0f774268782001ba7901beb519b5a5faae4bb0fc",
+          "inspection_preview_512_png": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/bn-059/front-decoded-review-512.png",
+          "inspection_preview_768_png": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/bn-059/front-decoded-review-768.png",
+          "persisted_derivative_path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/next-inactive-delivery-derivatives/bn-059/bn-059-front-a7b9f12c.webp"
+        },
+        {
+          "side": "back",
+          "original_path": "/workspace/scratch/181ef0a25f05/next-pair-b/integration/candidates/bn-059/covers/back.png",
+          "original_sha256": "19f0e4556b414d8da37ee29d3a69bfa0ca976f3ea4ec32968523a4276fb558db",
+          "original_bytes": 2925243,
+          "derivative_path": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/bn-059/bn-059-back-19f0e455.webp",
+          "derivative_sha256": "b0554c53580f0817ca4f20bca918ec8aac09f8b8502f213ed2d5e6aa87367349",
+          "derivative_bytes": 433236,
+          "decoded_review_png": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/bn-059/back-decoded-review.png",
+          "resolution": [
+            1024,
+            1536
+          ],
+          "mode": "RGB",
+          "recipe": {
+            "format": "WEBP",
+            "quality": 90,
+            "method": 6,
+            "resize": false
+          },
+          "original_unchanged": true,
+          "deterministic_second_encoding_identical": true,
+          "decoded_full_resolution_png_sha256": "d9050c376e53a873ecedebe1b644de005d6177784462b9e50838a268b5c31fc6",
+          "inspection_preview_512_png": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/bn-059/back-decoded-review-512.png",
+          "inspection_preview_768_png": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/bn-059/back-decoded-review-768.png",
+          "persisted_derivative_path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/next-inactive-delivery-derivatives/bn-059/bn-059-back-19f0e455.webp"
+        }
+      ],
+      "source_license_reader_chapters_preserved": true,
+      "publication_authorized": false,
+      "registry_mutations": 0,
+      "visual_review": "PREPARATION_WORKER_PASS_EXACT_DERIVATIVE_DECODED_PIXELS_PENDING_ROOT_AND_INDEPENDENT_FINAL_REVIEW",
+      "rebinding_required": [
+        "public_book delivery front/back URLs or paths",
+        "cover_provenance derivative mapping originals untouched",
+        "approval_evidence derivative review evidence only without invented owner or human approval",
+        "checksum_manifest derivative entries plus changed metadata hashes",
+        "publication_manifest artifact hashes and approval binding",
+        "rights_decision.components for every changed file plus independent registry digest after root acceptance"
+      ],
+      "visual_findings": {
+        "front": "Readable correct title and author; graphical thematic illustration; no clipping, status badge or audio claim.",
+        "back": "Retained coherent exact cover content; readable complete supplied text and footer; no clipping, occlusion or audio claim.",
+        "substantial_derivative_dispute": false
+      }
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "inactive_proposal_decision_sha256": "5f47c928a34a215399587dcf22ffa625aa1c768ef77656c3a6148d260ebefc7b",
+      "covers": [
+        {
+          "side": "front",
+          "original_path": "/workspace/scratch/181ef0a25f05/next-pair-c/inactive-candidates/the-call-of-the-wild/covers/front.png",
+          "original_sha256": "94d7d690b177fc6ee3eb8d60e6ef031c878c355905a25b94d24ac5ca08560068",
+          "original_bytes": 2990916,
+          "derivative_path": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/the-call-of-the-wild/the-call-of-the-wild-front-94d7d690.webp",
+          "derivative_sha256": "6bc8b585e11bfde7fdd29dbe1da4407fe1fe666a69d1e5ea32e5e431d495eb75",
+          "derivative_bytes": 417222,
+          "decoded_review_png": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/the-call-of-the-wild/front-decoded-review.png",
+          "resolution": [
+            1024,
+            1536
+          ],
+          "mode": "RGB",
+          "recipe": {
+            "format": "WEBP",
+            "quality": 90,
+            "method": 6,
+            "resize": false
+          },
+          "original_unchanged": true,
+          "deterministic_second_encoding_identical": true,
+          "decoded_full_resolution_png_sha256": "d35a6fb98bb505669738093dd1d532852477f427290900495fff2dc0ac8adce4",
+          "inspection_preview_512_png": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/the-call-of-the-wild/front-decoded-review-512.png",
+          "inspection_preview_768_png": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/the-call-of-the-wild/front-decoded-review-768.png",
+          "persisted_derivative_path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/next-inactive-delivery-derivatives/the-call-of-the-wild/the-call-of-the-wild-front-94d7d690.webp"
+        },
+        {
+          "side": "back",
+          "original_path": "/workspace/scratch/181ef0a25f05/next-pair-c/inactive-candidates/the-call-of-the-wild/covers/back.png",
+          "original_sha256": "8d86df1735a5ddbc6e44330805bcbd5aed28884d2fa01b2fa5c633fc28648a17",
+          "original_bytes": 2501050,
+          "derivative_path": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/the-call-of-the-wild/the-call-of-the-wild-back-8d86df17.webp",
+          "derivative_sha256": "cbac7b5b951e8f8c3c2b172ece299cd2479e2c6b1985ac5da7501aebe809c6b3",
+          "derivative_bytes": 326216,
+          "decoded_review_png": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/the-call-of-the-wild/back-decoded-review.png",
+          "resolution": [
+            1024,
+            1536
+          ],
+          "mode": "RGB",
+          "recipe": {
+            "format": "WEBP",
+            "quality": 90,
+            "method": 6,
+            "resize": false
+          },
+          "original_unchanged": true,
+          "deterministic_second_encoding_identical": true,
+          "decoded_full_resolution_png_sha256": "7165d476b94b3bbb02c1be2ef5874916baa8b38bd7fb6376c8f457aed27bb8dd",
+          "inspection_preview_512_png": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/the-call-of-the-wild/back-decoded-review-512.png",
+          "inspection_preview_768_png": "/workspace/scratch/181ef0a25f05/next-cohort-delivery-derivatives/the-call-of-the-wild/back-decoded-review-768.png",
+          "persisted_derivative_path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/next-inactive-delivery-derivatives/the-call-of-the-wild/the-call-of-the-wild-back-8d86df17.webp"
+        }
+      ],
+      "source_license_reader_chapters_preserved": true,
+      "publication_authorized": false,
+      "registry_mutations": 0,
+      "visual_review": "PREPARATION_WORKER_PASS_EXACT_DERIVATIVE_DECODED_PIXELS_PENDING_ROOT_AND_INDEPENDENT_FINAL_REVIEW",
+      "rebinding_required": [
+        "public_book delivery front/back URLs or paths",
+        "cover_provenance derivative mapping originals untouched",
+        "approval_evidence derivative review evidence only without invented owner or human approval",
+        "checksum_manifest derivative entries plus changed metadata hashes",
+        "publication_manifest artifact hashes and approval binding",
+        "rights_decision.components for every changed file plus independent registry digest after root acceptance"
+      ],
+      "visual_findings": {
+        "front": "Readable correct title and author; graphical thematic illustration; no clipping, status badge or audio claim.",
+        "back": "Retained coherent exact cover content; readable complete supplied text and footer; no clipping, occlusion or audio claim.",
+        "substantial_derivative_dispute": false
+      }
+    }
+  ],
+  "verification": "Every original hash unchanged; same1024x1536 RGB decoding; second deterministic WebP encoding byte-identical; all6 outputs below500KiB. Temporary PNG previews only used for inspection."
+}

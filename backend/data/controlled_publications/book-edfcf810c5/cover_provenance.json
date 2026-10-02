@@ -1,0 +1,73 @@
+{
+  "schema_version": "earnalism.cover-provenance.v1",
+  "slug": "book-edfcf810c5",
+  "preparation_status": "LOCAL_EVIDENCE_ACCEPTED_PRODUCTION_INACTIVE",
+  "basis": "Existing owner statement says all front and back Earnalism covers were designed by the owner. Independent review of these exact retained assets found graphical content-themed legible artwork and no specifically identified outside protected component. One fresh current GET per asset reproduces both exact historical hashes. NOT_INFERRED in the old design-only audit is not an identified licensing dispute. This first-party binding candidate reuses that declaration and does not invent a new human signature or legal review.",
+  "owner_identity": "Repository/product owner; no additional identity inferred",
+  "owner_design_evidence": {
+    "record": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+    "record_sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "slug": "book-edfcf810c5",
+    "statement": "Owner states all front and back covers are designed by the owner.",
+    "prior_scope_preserved": "COVER_DESIGN_ONLY; NOT_TEXT_RIGHTS_OR_PUBLICATION_AUTHORIZATION",
+    "prior_third_party_component_clearance_value_preserved": "NOT_INFERRED"
+  },
+  "assets": [
+    {
+      "kind": "owner-front-cover",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1784226492/earnalism/covers/front/book-edfcf810c5_front_1024x1536.webp",
+      "status": 200,
+      "sha256": "884ddea11547201fbf6b58c6a34aee9cfdaff00d715123806c4e9baf164af839",
+      "bytes": 224502,
+      "width": 1024,
+      "height": 1536,
+      "image_format": "WEBP",
+      "verified_at": "2026-10-02T10:43:59.617982+00:00",
+      "historical_hash_matches": true
+    },
+    {
+      "kind": "owner-back-cover",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1784226493/earnalism/covers/back/book-edfcf810c5_back_1024x1536.webp",
+      "status": 200,
+      "sha256": "506b5b5a924dbf9500ddaa672cf4d826a4dc46df30c114dd4910e22dad36282a",
+      "bytes": 137980,
+      "width": 1024,
+      "height": 1536,
+      "image_format": "WEBP",
+      "verified_at": "2026-10-02T10:43:59.618707+00:00",
+      "historical_hash_matches": true
+    }
+  ],
+  "historical_pair_evidence": {
+    "path": "/tmp/earnalism-main-approved-integration/internal/audiobook_lab/sprint1_publication/cover_linkage/book_edfcf810c5_devdas_provider_free_audit_20260723.json",
+    "sha256": "2117a5bddd2fdb21bfa70a6e8e91b7a738274e4b9a30fc83ceb24b0c8dd92990"
+  },
+  "fresh_fetch_receipt_sha256": "9eebb7e0105857c99662fc8bece21ad9be30603118b8d3fa87787af39ff6576f",
+  "automated_visual_verification_sha256": "682ae7205672efd17f6587beeee00ba8e6d0c4c1d78f63463707ace050db77c9",
+  "independent_prior_review1_evidence": {
+    "original_path": "/workspace/scratch/006ea59bb0f7/book-go-live-477/reviewers/reviewer-1/review.json",
+    "snapshot_path": "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-6/reviewer-1-prior-snapshot.json",
+    "sha256": "469227f147e89a12b6c23a4d85a77219f235f9a29ade555c6ed376d13281cc83"
+  },
+  "specific_outside_protected_component_identified": false,
+  "proposed_cover_display_territories": [
+    "IN"
+  ],
+  "audio_authorized": false,
+  "publication_activation_authorized": false,
+  "acceptance_status": "ACCEPTED_LOCAL_FIRST_PARTY_COMPONENT_SCOPE",
+  "independent_reviews": [
+    {
+      "path": "book-go-live-477/reviewers/reviewer-1/worker6-proposal-review.json",
+      "sha256": "1f23bcbc00474f550bda54e027b8d5f8780a7c3e1d63295ad25bfd9c358e6304",
+      "conclusion": "ACCEPT_EVIDENCE_PREPARATION_ONLY_FULL_SCOPE_RECORD_REMAINS_UNACCEPTED_AND_RUNTIME_HELD"
+    },
+    {
+      "path": "book-go-live-477/reviewers/reviewer-2/worker-6-proposal-review.json",
+      "sha256": "1ed356121a69558cef657c0092a121c9484292abc06f9bceea7611c2c5eea577",
+      "conclusion": "ACCEPT_EXACT_COVER_EVIDENCE_AND_UNAPPLIED_PROPOSAL_FOR_SERIALIZED_INTEGRATION_REVIEW"
+    }
+  ],
+  "accepted_by": "Automated serialized integration controller under the product owner directive in issue #477 comment 5949652699, after two independent automated evidence reviews; no human legal signature inferred.",
+  "accepted_at": "2026-10-02T11:01:20.120944+00:00"
+}

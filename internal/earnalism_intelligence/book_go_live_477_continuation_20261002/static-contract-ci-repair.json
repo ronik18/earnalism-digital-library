@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-10-02T13:29:40.506889+00:00",
+  "reviewed_parent": "68ee054e15969e6a133b95a415d5886e6d703569",
+  "reviewed_parent_tree": "d0e823c31d33d35e7c740dbcaa376841407dd3e2",
+  "pr": 508,
+  "failure": "Four exact-head CI lanes found stale static publication contracts; regression historical-unavailable expectations also retained released Dracula. Browser fixture stages did not run.",
+  "correction": "Public-safe projection has 26 exact configured editions; Dracula is released book/reader with disabled listener; Selfish Giant remains held. Guest manifest enforces no paid access and audio disabled; territorial denials remain scoped.",
+  "validation": {
+    "backend_tests": 83,
+    "canary_unit_tests": 24,
+    "static_snapshots": 97,
+    "static_assertions": 2064,
+    "failures": 0,
+    "diff_check": "PASS"
+  },
+  "deployment_configuration_changed": false,
+  "production_observed": false,
+  "next_action": "Normal exact-new-head checks on existing PR508, resolve genuine fixture failures, merge only through protected checks; then verify deployed revision/canary/canonical version. Three next inactive reviewed proposals remain ready for exact asset recovery."
+}

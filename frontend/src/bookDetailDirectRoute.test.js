@@ -1,3 +1,4 @@
+import { mergeDraculaBook } from "./lib/controlledLaunch";
 import fs from "fs";
 import path from "path";
 
@@ -32,8 +33,13 @@ describe("approved Book Detail direct-route contract", () => {
     expect(rewrites).toContainEqual({ source: "/product", destination: "/api/removed-content?path=/product" });
   });
 
-  test("serves the historical Dracula book URL through the app's truthful unavailable route", () => {
-    expect(app).toContain('<Route path="/book/dracula" element={<UnavailableTitle />} />');
+  test("serves released Dracula through the existing API-gated Book Detail, Reader and Listener routes", () => {
+    ["book", "reader", "listener"].forEach((kind) => {
+      expect(app).not.toContain(`<Route path="/${kind}/dracula"`);
+    });
+    expect(app).toContain('<Route path="/book/:slug" element={<BookDetail />} />');
+    expect(app).toContain('<Route path="/reader/:slug" element={<ReaderV2 />} />');
+    expect(app).toContain('<Route path="/listener/:slug" element={<ListenerV2 />} />');
     const rewrites = vercel.rewrites || [];
     const genericNotFound = rewrites.findIndex((rule) => rule.source === "/book/:slug" && rule.destination === "/api/not-found");
     ["/book/dracula", "/book/dracula/"].forEach((source) => {
@@ -44,7 +50,9 @@ describe("approved Book Detail direct-route contract", () => {
   });
 
   test("serves the historical Selfish Giant URL through the safe unavailable route", () => {
-    expect(app).toContain('<Route path="/book/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />');
+    ["book", "reader", "listener"].forEach((kind) => {
+      expect(app).toContain(`<Route path="/${kind}/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />`);
+    });
     const rewrites = vercel.rewrites || [];
     const genericNotFound = rewrites.findIndex((rule) => rule.source === "/book/:slug" && rule.destination === "/api/not-found");
     ["/book/the-selfish-giant", "/book/the-selfish-giant/"].forEach((source) => {
@@ -87,4 +95,22 @@ describe("approved Book Detail direct-route contract", () => {
     expect(detail).toContain("The underlying Bengali literary work");
     expect(detail).toContain("This does not license Earnalism’s separate cover art");
   });
+});
+
+
+test("Dracula detail preserves exact current API cover bytes instead of legacy artwork aliases", () => {
+  const current = {
+    slug: "dracula",
+    cover_image_url: "https://theearnalism.com/assets/books/dracula/dracula-front-5596e419.webp",
+    cover_url: "https://theearnalism.com/assets/books/dracula/dracula-front-5596e419.webp",
+    thumbnail_url: "https://theearnalism.com/assets/books/dracula/dracula-front-5596e419.webp",
+    back_cover_image_url: "https://theearnalism.com/assets/books/dracula/dracula-back-c35004ef.webp",
+    back_cover_url: "https://theearnalism.com/assets/books/dracula/dracula-back-c35004ef.webp",
+    back_cover_thumbnail_url: "https://theearnalism.com/assets/books/dracula/dracula-back-c35004ef.webp",
+    chapters: [{ id: "preface", title: "Preface" }],
+  };
+  const rendered = mergeDraculaBook(current);
+  Object.keys(current).forEach((key) => expect(rendered[key]).toEqual(current[key]));
+  expect(rendered.audiobook_enabled).toBe(false);
+  expect(rendered.generate_audiobook).toBe(false);
 });

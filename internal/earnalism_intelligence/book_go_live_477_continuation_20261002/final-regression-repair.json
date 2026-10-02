@@ -1,0 +1,18 @@
+{
+  "schema": "earnalism.book-go-live-ci-repair.v1",
+  "reviewed_head": "8a1ddc9d67ebf690ecf3c797143f3f536c8c51da",
+  "failure": "Six final regression assertions: title count, sitemap and blanket source_url prohibition",
+  "repairs": [
+    "Exact approved publication manifest and four artifact hashes drive public projection and sitemap; historical package flags preserved",
+    "26-title explicit expectation; no held proposals added",
+    "Only validated direct text_license.source_url omitted from forbidden-key traversal; all private sibling/nested keys still checked"
+  ],
+  "independent_reviews": [
+    "release_review: metadata exception PASS",
+    "cohort_select: SEO generators PASS"
+  ],
+  "local_validation": "29 focused regression tests PASS; static public contract fresh",
+  "production_observed": false,
+  "new_live_verified": 0,
+  "next_action": "Publish to existing PR508; await exact-head protected checks, then normal merge/deployed revision/canary/canonical-version readback."
+}
