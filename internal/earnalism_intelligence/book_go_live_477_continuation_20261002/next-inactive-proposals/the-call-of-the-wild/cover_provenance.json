@@ -1,0 +1,43 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-call-of-the-wild",
+  "owner_design_fact": {
+    "source": "/workspace/scratch/006ea59bb0f7/book-go-live-477/controller-corrections.json",
+    "sha256": "24e8f7f409db65ab0c4b5f3bf1a1d10072f3c6634d765ba2abfb118740a569b6",
+    "statement": "Owner states all front and back covers are designed by the owner."
+  },
+  "assets": [
+    {
+      "kind": "owner-front-cover",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779568766/earnalism/covers/front/cover_32a20edc-5097-4d64-98d0-fb3d29487a9d.png",
+      "sha256": "94d7d690b177fc6ee3eb8d60e6ef031c878c355905a25b94d24ac5ca08560068",
+      "status": 200,
+      "bytes": 2990916,
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "kind": "owner-back-cover",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779568843/earnalism/covers/back/back_cover_32a20edc-5097-4d64-98d0-fb3d29487a9d.png",
+      "sha256": "8d86df1735a5ddbc6e44330805bcbd5aed28884d2fa01b2fa5c633fc28648a17",
+      "status": 200,
+      "bytes": 2501050,
+      "width": 1024,
+      "height": 1536
+    }
+  ],
+  "visual_qa": {
+    "front": "PASS legible correct title/author, thematic graphic, no unsupported live badge, no clipping",
+    "back": "PASS legible correct title/author, thematic graphic, no clipping"
+  },
+  "visual_receipt_sha256": "01484b8aa7d77d6dbe7e52c6e36fcb7761662e506a2d84cc578295f8259429ee",
+  "status": "EXACT_BYTES_BOUND_PENDING_INDEPENDENT_REVIEWS",
+  "audio_authorized": false,
+  "publication_activation_authorized": false,
+  "territories": [
+    "IN"
+  ],
+  "independent_reviews": [],
+  "existing_noncover_decision_preserved": true,
+  "limitation": "No acceptance fabricated before independent reviews; no deterministic-overlay method inferred from bitmap alone."
+}

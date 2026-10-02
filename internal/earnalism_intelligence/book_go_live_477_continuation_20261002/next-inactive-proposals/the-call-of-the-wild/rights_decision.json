@@ -1,0 +1,43 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-call-of-the-wild-reader-cover-display-proposed",
+  "edition_id": "the-call-of-the-wild",
+  "operator_id": "reo-enterprise",
+  "status": "PROPOSED",
+  "components": {
+    "public_book": "33231d018bf66af86b281ae58c2926fabd4c9d4de77e88ec9485165e17c9479c",
+    "reader_manifest": "8b04260e291ac4388ee26bc65cb1fb3bff1d1cae80659afd0762af70688e2180",
+    "source_evidence": "863a94b8e03a42f5833e86e3b323b324e4fa4c2abe4f1a92b697f6df147653dc",
+    "approval_evidence": "29488c1742db1bd039d4299bd7eb592a6230ed2b516658ead3146265b733601e",
+    "checksum_manifest": "c69dd35fdd2342de6ed3950a7ddc84e5cb216a243af851d6335ed72417e6ef5f",
+    "publication_manifest": "3dd9ac59bcf95d67bc961df47cfe8637ad0ff15ad11f53ee6fa04df42a49c174",
+    "cover_provenance": "a7e3b58d197e818724f0525841d05f44e3567d92d7fd9fade94f0d47a58a65ef",
+    "cover_front_asset": "94d7d690b177fc6ee3eb8d60e6ef031c878c355905a25b94d24ac5ca08560068",
+    "cover_back_asset": "8d86df1735a5ddbc6e44330805bcbd5aed28884d2fa01b2fa5c633fc28648a17"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-02T13:14:15.083668+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Proposed reuse of existing exact IN noncover text acceptance and recorded owner-design fact, bound to exact downloaded covers. Pending two actual independent reviews; IN text/catalog/cover/Pass only, no audio or production activation.",
+  "evidence_sha256": [
+    "6c194e13f518925891c1b1510996d620a496de63dba88ddec680311f7db3e85b",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ddff4d02c636c57500215604f778bd3b8b9883d5ca9d5de89dc1480b29fa52c3",
+    "30f569c5671bba7bbc4a92ab6d8ee01a0d3be00f994819c77da62c28041eb8a2",
+    "4b029c10c8cff516ed6f07f1928e55775ed7fd8d3d03dcf61f7ace0c55e8aa90",
+    "39ed99121fc56b81248ad4125662b2f44c9851ec7e08ba0d9a7f992d2f59f79b",
+    "a7e3b58d197e818724f0525841d05f44e3567d92d7fd9fade94f0d47a58a65ef"
+  ],
+  "accepted_by": "",
+  "conditions_satisfied": false
+}

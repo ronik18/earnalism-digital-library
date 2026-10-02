@@ -1,0 +1,59 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-most-dangerous-game",
+  "title": "The Most Dangerous Game",
+  "generated_at": "2026-10-02T13:07:39.818747+00:00",
+  "content": {
+    "source_hash": "77c9fc421bd4d7742794edc9dd48b7f80eb70c0b73b969d4ef099d4ff9e4808f",
+    "content_hash": "8590d829e9f5d5b6ddf5dd7d131d5be1e2de353f0d3637ece79b88aa5f283ea7",
+    "provenance_hash": "a17bd1897d9e21f8697fcf0accfb5971849f0532b443076b1800a841f7f1125c",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "8b28d14f4dc3840e15a4db4f30fa5cb8d147f54f7e147ac096f6731ee24ef088",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Most Dangerous Game",
+        "word_count": 7990,
+        "sha256": "4a46c5f4adfd77d68a8d1df281e9fa8581217a3a73593677434a82f3b728f0a0"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "IN",
+    "evidence_sha256": "9fb0e5109ae412dd377d5e9805c2919e011924a27cec2815d4540bb5b485ef91",
+    "exact_decision_id": "india-20261002-the-most-dangerous-game-reader-cover-display-proposed",
+    "production_registration": "PENDING"
+  },
+  "reader_release": {
+    "status": "READY_FOR_APPROVAL",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/the-most-dangerous-game/front-cover.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "c5dee19fbf19022597aa81a54ef8de5a6cf5a4077a56a9cf441c27403740a57c",
+    "reader_manifest": "dcc6a45067337a47776013768468dc54e0c52db88b1062f2f48d9bef7b747f3b",
+    "source_evidence": "9fb0e5109ae412dd377d5e9805c2919e011924a27cec2815d4540bb5b485ef91",
+    "approval_evidence": "f26a857f2a3ef7d792d71431f06d3c2898aa32db1133fbc54303c92c98eaa21c",
+    "cover_provenance": "38be50684c9fd1a95af7cdf65fc93c19d14c88f2a2a47c4a62427bae91afa70d",
+    "publication_authorization": "e38e7e40c3a75d55219c7093d479a109485acafd0616e08dc82c2be34f67054f",
+    "cover_front_asset": "a8bd7587cbbdd9f5ff8a23d9aa8a258bfa08a9ce110228002f37f52b1f2f0d8c",
+    "cover_back_asset": "182c419386cdc057a8ac96c3b0ab7d5d935a948e179c812a954bfd41215329fd"
+  },
+  "manifest_sha256": "9658baec69da210e3e666d78121cb2df01460894f631bc9c4ff601d39e4b7201"
+}

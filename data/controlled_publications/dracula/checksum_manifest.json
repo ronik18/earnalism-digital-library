@@ -1,10 +1,10 @@
 {
   "slug": "dracula",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-10-02T13:00:00Z",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "530e4680a54206e656d9a517aee66ecd2002cc31465ef50e2003718ddcdd078a"
+      "sha256": "25222b31c0b2557ac0d613352b03bd835ce9dac0931bd5c14d411198a0bcd32f"
     },
     {
       "file": "chapters/chapter-000.json",
@@ -119,16 +119,40 @@
       "sha256": "6019f4f2e7472398196bc0b93dccc73d2b748f2971f144eb7d67454e2a73da3f"
     },
     {
+      "file": "cover_delivery_derivation.json",
+      "sha256": "06482a8cd6e4d31e73262f510d663ebeb078d0564cec13a4467de0b5f62df7c7"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "8424662cca0b1bda6e1810129c63127261c51886ae5cf608d21aa6a72a81a7ab"
+    },
+    {
+      "file": "covers/back.png",
+      "sha256": "c35004ef7169e877889c5e6d9d75949d72c09b6102d0a2e0d2542d265993a5c1"
+    },
+    {
+      "file": "covers/dracula-back-c35004ef.webp",
+      "sha256": "c2523a2fcf0723073489caecb73642ddddc4ff206cc26bbf52760ee590bc6076"
+    },
+    {
+      "file": "covers/dracula-front-5596e419.webp",
+      "sha256": "ce4f87523c251cf413bebf50c088901a25415b30e92d67fd96aaed9297a33041"
+    },
+    {
+      "file": "covers/front.png",
+      "sha256": "5596e41956c1317fa5f182c8ba61ac5be8f69a23489d132470bd82ebba425aff"
+    },
+    {
       "file": "highlight_sync.json",
       "sha256": "0a2e1050867364dd156d8e144037a9469508939031fff8610776b89a1b393f9a"
     },
     {
       "file": "public_book.json",
-      "sha256": "e6955179cbed23986d257cf957378767493cf554b295c9d31d3e27700743b3d7"
+      "sha256": "dc0393eca8f912b9dfe556c9f4d2de78410aa23827f28b432d4de782588936ac"
     },
     {
       "file": "publication_authorization.json",
-      "sha256": "d67d7785d0a31feb7fa50d5dd2233eee643734062bee7226be8bba3fb4d14fa5"
+      "sha256": "582b43208f0cddda7ff9828649e94b809be689394bcb49b06c966a80ca504507"
     },
     {
       "file": "reader_manifest.json",

@@ -1,0 +1,22 @@
+{
+  "dracula": {
+    "registry_digest": "7978495dce52efc499d82bce531291299cd9a34625a0ffb5bd578afa60ea618f",
+    "territories": [
+      "IN"
+    ],
+    "checksum_verified": true,
+    "mirror_parity": true,
+    "runtime_rights_tests": 18,
+    "production_observed": false
+  },
+  "book-edfcf810c5": {
+    "registry_digest": "6de4a0e68e50aa11e1ae57850cac61699bbe2e1b810502e8f52ba280d51a8a0b",
+    "territories": [
+      "IN"
+    ],
+    "checksum_verified": true,
+    "mirror_parity": true,
+    "runtime_rights_tests": 18,
+    "production_observed": false
+  }
+}

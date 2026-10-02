@@ -1,0 +1,47 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-muchiram-gurer-jibanchorit-reader-cover-display-next-pair-proposed",
+  "edition_id": "muchiram-gurer-jibanchorit",
+  "operator_id": "reo-enterprise",
+  "status": "PENDING_REVIEW",
+  "components": {
+    "public_book": "6e6bcf591266b4fc21a88c8f39448639d5cf148fcb3f7123a0ff703e82f1675a",
+    "reader_manifest": "ef7c6d21000b4f9d7fd56fc8bbb4768016682ee70466bc87e4f20d1ff6a4cd20",
+    "source_evidence": "019f7fe8556e516fef78e6cb4ffc4f9e072ec70b8459f525a9d41dc5ce4e4950",
+    "approval_evidence": "84fc47babe5edbda549fa574eaff7d60d0d8c196bcf0ad55d803b21bdc0d71e2",
+    "checksum_manifest": "90885df837665b5e0ed2b650d2a73f4f7cc5b582c33db9f190a21c7a9a0a78ac",
+    "publication_manifest": "9c217680551a0f3d4ec336a8fb9d9ea3f4914045fe9bd5c8cb2be4f0e3ee52f0",
+    "cover_provenance": "38c91b126418cad8d47e24edd41e0a40a9efd2d978bda66031ab1957dbb6224c",
+    "cover_front_asset": "abbed38055fd673d0171eb9eeaf49fb887013d46d12573cf7b38109c683dbbc9",
+    "cover_back_asset": "47fb5b354455a7a5cff855b4ca69c1b194832bc8798d3d01842d8e9886a8d58b",
+    "text_license_notice": "c78c5f7ef44ed30b38cc3a38956c546403b2a948dc0743a6b652977674bf8ff1"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-02T13:07:16.401300+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Proposed reuse of exact accepted India text decision india-20261002-muchiram-gurer-jibanchorit-1944-cc-by-sa-text-reader plus existing owner design declaration bound to exact front/back downloaded bytes. Independent review and serialized activation gates pending; no audio.",
+  "evidence_sha256": [
+    "9850cbb5f95139c0b5df713ef8e58b50d5823dc23f54a3d86828bef590688834",
+    "7d6ac82294e285eaaf525ff17076d72df0acadf0590e8b54e6356f0617538b45",
+    "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "23f7d1fa20062a5e03a64016228256d62c6d2fbedeee016f22ac293a4e7b65dc",
+    "dea445c190a4bf483f1a761fdad427becbae87fdbe4abc0e6bafb868a89d83ea",
+    "c78c5f7ef44ed30b38cc3a38956c546403b2a948dc0743a6b652977674bf8ff1",
+    "15e85c07b9253170cf5867946b36eb1e4d3e4d10391910985b6e416ecc5fc9ed",
+    "ed99594c3f46561351ce311b478bce313b98741acfba7ffba6c21999788a8d11",
+    "fd3cfb400529dfd2be865703f9e61e7e97e4481518934727223e60cfab67dc92",
+    "38c91b126418cad8d47e24edd41e0a40a9efd2d978bda66031ab1957dbb6224c"
+  ],
+  "accepted_by": "",
+  "conditions_satisfied": false
+}

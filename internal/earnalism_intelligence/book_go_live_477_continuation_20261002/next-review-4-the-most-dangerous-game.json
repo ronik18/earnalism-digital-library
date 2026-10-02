@@ -1,0 +1,72 @@
+{
+  "reviewer": "next_pair_c independent automated reviewer",
+  "slug": "the-most-dangerous-game",
+  "candidate": "/workspace/scratch/181ef0a25f05/cohort-select/candidates/the-most-dangerous-game",
+  "reviewed_at": "2026-10-02T13:09:20.266328+00:00",
+  "conclusion": "HOLD",
+  "checksum_matches": {
+    "approval_evidence.json": true,
+    "chapters/chapter-001.json": true,
+    "cover_provenance.json": true,
+    "covers/back.webp": true,
+    "covers/front.webp": true,
+    "highlight_sync.json": true,
+    "license_notice.json": true,
+    "public_book.json": true,
+    "publication_authorization.json": true,
+    "publication_manifest.json": true,
+    "reader_manifest.json": true,
+    "source_evidence.json": true
+  },
+  "component_matches": {
+    "public_book": true,
+    "reader_manifest": true,
+    "source_evidence": true,
+    "approval_evidence": true,
+    "checksum_manifest": true,
+    "publication_manifest": true,
+    "cover_provenance": true,
+    "cover_front_asset": true,
+    "cover_back_asset": true,
+    "text_license_notice": true
+  },
+  "immutable_source_reader_chapters_license": {
+    "reader_manifest.json": true,
+    "license_notice.json": true,
+    "source_evidence.json": true,
+    "highlight_sync.json": true,
+    "chapters/chapter-001.json": true
+  },
+  "scope_IN_text_catalog_cover_pass_no_audio": true,
+  "inactive": true,
+  "manifest_issues": [],
+  "visual_qa": {
+    "actual_exact_pixels_inspected": true,
+    "defects": [
+      "Back cover horizontal gold divider crosses READ WITHIN THE EARNALISM DIGITAL LIBRARY text baseline, visually colliding with the text. Move separator away or remove line."
+    ],
+    "front": "PASS owner-designed geometric graphical cover; no unsupported motif gate",
+    "back": "HOLD divider text collision"
+  },
+  "candidate_rights_status": "REVIEW_REQUIRED",
+  "candidate_pending_no_fake_acceptance": true,
+  "production_acceptance_or_activation": false,
+  "canonical_mutations": 0,
+  "file_sha256": {
+    "reader_manifest.json": "dcc6a45067337a47776013768468dc54e0c52db88b1062f2f48d9bef7b747f3b",
+    "publication_manifest.json": "1f63223b8e2eeb7856210fcc4489cf7569a82c2907ed54dababf75766878fdf4",
+    "approval_evidence.json": "f26a857f2a3ef7d792d71431f06d3c2898aa32db1133fbc54303c92c98eaa21c",
+    "rights_decision.json": "20d5c58196cb9b66e0ec9b9f250d073193ba1b9e2bfda3cd505c78596ec298fb",
+    "license_notice.json": "1822103ef4f55d4a3df141bcf9c536195b8a34d22bcaba9a9349484d4d74f8fa",
+    "cover_provenance.json": "38be50684c9fd1a95af7cdf65fc93c19d14c88f2a2a47c4a62427bae91afa70d",
+    "publication_authorization.json": "e38e7e40c3a75d55219c7093d479a109485acafd0616e08dc82c2be34f67054f",
+    "public_book.json": "c5dee19fbf19022597aa81a54ef8de5a6cf5a4077a56a9cf441c27403740a57c",
+    "source_evidence.json": "9fb0e5109ae412dd377d5e9805c2919e011924a27cec2815d4540bb5b485ef91",
+    "checksum_manifest.json": "9d6e1b0e5a3e57ed1b2cf6c23d1a241215242f713c967852da5d40a06662d588",
+    "highlight_sync.json": "f4cc65845dbdec62f6f71c376c358d9a592556698b05309fad5c3689db01918c",
+    "chapters/chapter-001.json": "4a46c5f4adfd77d68a8d1df281e9fa8581217a3a73593677434a82f3b728f0a0",
+    "covers/back.webp": "182c419386cdc057a8ac96c3b0ab7d5d935a948e179c812a954bfd41215329fd",
+    "covers/front.webp": "a8bd7587cbbdd9f5ff8a23d9aa8a258bfa08a9ce110228002f37f52b1f2f0d8c"
+  },
+  "next_action": "Repair concrete back-cover divider/footer collision, then rerun two independent exact reviews"
+}

@@ -28,7 +28,9 @@
     "india-20261001-an-occurrence-at-owl-creek-bridge-owner-text-reader": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff",
     "india-20261001-the-enchanted-april-owner-text-reader": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be",
     "india-20261001-the-happy-prince-owner-text-reader": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45",
-    "india-20261001-picture-of-dorian-gray-owner-text-reader": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea"
+    "india-20261001-picture-of-dorian-gray-owner-text-reader": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea",
+    "india-20261002-dracula-reader-cover-display-reviewed": "7978495dce52efc499d82bce531291299cd9a34625a0ffb5bd578afa60ea618f",
+    "india-20261002-book-edfcf810c5-reader-cover-display-reviewed": "6de4a0e68e50aa11e1ae57850cac61699bbe2e1b810502e8f52ba280d51a8a0b"
   },
   "historical_records": {
     "superseded_runtime_bindings": {
@@ -275,7 +277,19 @@
         "IN"
       ],
       "access_mode": "COMMERCIAL_ENTITLEMENT"
+    },
+    "controlled-dracula": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "decision_id": "india-20261002-dracula-reader-cover-display-reviewed",
+      "production_readback": "NOT_RUN",
+      "authority": "issue #477 comment 5949652699; exact local component reviewers; release candidate pending protected CI/deployment"
+    },
+    "controlled-book-edfcf810c5": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "decision_id": "india-20261002-book-edfcf810c5-reader-cover-display-reviewed",
+      "production_readback": "NOT_RUN",
+      "authority": "issue #477 comment 5949652699; exact local component reviewers; release candidate pending protected CI/deployment"
     }
   },
-  "non_activation_note": "Twenty-four exact controlled India text editions are source-approved for 3-page preview and existing Reading Pass entitlement from page 4. Sixteen near-ready editions reuse prior source and artwork; Agentic retains its corrected owner-authorized edition. Production delivery still requires independent deployed runtime and active canonical version/readback gates. Audio remains disabled."
+  "non_activation_note": "Twenty-six exact controlled India text editions are configured in this reviewed release candidate for the existing preview and Reading Pass path. The two 20261002 additions remain pending protected CI, deployment, canary and active-version production readback. Existing source approvals, customer records and versions are preserved. Audio remains disabled."
 }

@@ -1,0 +1,57 @@
+{
+  "titles": [
+    {
+      "slug": "the-student",
+      "canonical_modified": false,
+      "source_acceptance": "REUSED_PR504_NON_COVER_ONLY",
+      "owner_cover_declaration": "Reused global owner all-front/back designed attestation from internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+      "assets": [
+        {
+          "path": "/workspace/scratch/181ef0a25f05/cohort-select/the-student-cover_url.png",
+          "sha256": "852b0ec54f013b2c24c63514e21d524ea7b42fc1151de16f5ecbc7aa624825db",
+          "bytes": 182766
+        },
+        {
+          "path": "/workspace/scratch/181ef0a25f05/cohort-select/the-student-back_cover_url.png",
+          "sha256": "c48024e8f29f6efdf32474199e4178a477bde4c6bd5624eb619bf911fdb9da25",
+          "bytes": 376249
+        }
+      ],
+      "status": "HELD_CONCRETE_COVER_DEFECTS",
+      "defects": [
+        "Front LIVE CONTROLLED RELEASE badge contradicts unactivated runtime state.",
+        "Gold foreground blobs reduce author/front and back excerpt legibility.",
+        "Back excerpt ends with Needles and is visibly truncated."
+      ],
+      "next_action": "Repair existing owner cover badge/layout/excerpt; inspect repaired exact assets once; no source rerun."
+    },
+    {
+      "slug": "the-most-dangerous-game",
+      "canonical_modified": false,
+      "source_acceptance": "REUSED_PR504_NON_COVER_ONLY",
+      "owner_cover_declaration": "Reused global owner all-front/back designed attestation from internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+      "assets": [
+        {
+          "path": "/workspace/scratch/181ef0a25f05/cohort-select/the-most-dangerous-game-cover_url.webp",
+          "sha256": "a8bd7587cbbdd9f5ff8a23d9aa8a258bfa08a9ce110228002f37f52b1f2f0d8c",
+          "bytes": 19740
+        },
+        {
+          "path": "/workspace/scratch/181ef0a25f05/cohort-select/the-most-dangerous-game-back_cover_url.webp",
+          "sha256": "182c419386cdc057a8ac96c3b0ab7d5d935a948e179c812a954bfd41215329fd",
+          "bytes": 22088
+        }
+      ],
+      "status": "COVER_QA_PASS_PROPOSAL_READY_FOR_INACTIVE_BINDING",
+      "visual_findings": [
+        "Correct readable title The Most Dangerous Game and author Richard Connell.",
+        "Simple graphical island/hunt geometry; not typography-only.",
+        "Back synopsis accurately describes stranded hunter and general hunting humans; no truncation.",
+        "No exposed/live/audio/rights claim.",
+        "800x1200 WEBP pair matches retained first-party graphical generator audit and below card/feature budget."
+      ],
+      "license_check": "backend.licensed_text.public_license_notice returned valid hash/chapter-bound CC-BY-SA4.0 notice; canonical Reader V2 renders LicensedTextNotice and licensed text print exemption. Actual production readback pending.",
+      "next_action": "Build inactive cover-bound reader-only packet, disable historical audio markers, two independent reviews, serialized acceptance/allowlist/bootstrap and protected deployment."
+    }
+  ]
+}

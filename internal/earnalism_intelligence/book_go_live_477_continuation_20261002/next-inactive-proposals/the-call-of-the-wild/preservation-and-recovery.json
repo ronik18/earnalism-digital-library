@@ -1,0 +1,30 @@
+{
+  "slug": "the-call-of-the-wild",
+  "source_main": "57ad1cfe9ceb2331871be3c7c2ee1e8c64ad2edd",
+  "state": "INACTIVE_PROPOSAL_NOT_RUNTIME_ACCEPTED",
+  "preserved_or_exact_recovery_files": {
+    "reader_manifest.json": "8b04260e291ac4388ee26bc65cb1fb3bff1d1cae80659afd0762af70688e2180",
+    "approval_evidence 2.json": "309552c46b979bc9de8cc7f4e9eb18718530f76a9a8b2d12721e357cbcc24328",
+    "approval_evidence.json": "29488c1742db1bd039d4299bd7eb592a6230ed2b516658ead3146265b733601e",
+    "source_evidence.json": "863a94b8e03a42f5833e86e3b323b324e4fa4c2abe4f1a92b697f6df147653dc",
+    "highlight_sync.json": "7df67693212667112f689afef2b4d7a86aca94fb28db8337d50430c363224640",
+    "chapters/chapter-003.json": "e21beb19bc59ec60bfdb00ac0122eed417e05bc00d74504496d49dfa7f9cbb53",
+    "chapters/chapter-001.json": "71c29b8ed3ce67f4555e559f50e4c0a8b168f6141d33544d00c8c5328eb6ad4f",
+    "chapters/chapter-002.json": "34f7ba4576960b5cb86c78356cc38edaf5967301196144a21b8a0da7987a6b82",
+    "chapters/chapter-005.json": "e81cc475678f8a636a757113a53f784289320f5072dfa2e4e34968b11e337602",
+    "chapters/chapter-007.json": "9d5d60a37d58901ce1916cfcdaf0c5a615d403ed6c4fda9349ba03d164479f6c",
+    "chapters/chapter-006.json": "b261d8a03bc8375a1ae58dfa1a8efe5e1dc98802032ba87c5ec5da8ab03ff828",
+    "chapters/chapter-004.json": "409a1a0979d57a7b667c11d5128346408022cae6b768720553219bbfe2248dab",
+    "covers/back.png": {
+      "sha256": "8d86df1735a5ddbc6e44330805bcbd5aed28884d2fa01b2fa5c633fc28648a17",
+      "exact_candidate_path": "/workspace/scratch/181ef0a25f05/next-pair-c/inactive-candidates/the-call-of-the-wild/covers/back.png",
+      "require_exact_recovery_before_acceptance": true
+    },
+    "covers/front.png": {
+      "sha256": "94d7d690b177fc6ee3eb8d60e6ef031c878c355905a25b94d24ac5ca08560068",
+      "exact_candidate_path": "/workspace/scratch/181ef0a25f05/next-pair-c/inactive-candidates/the-call-of-the-wild/covers/front.png",
+      "require_exact_recovery_before_acceptance": true
+    }
+  },
+  "next": "Recover exact candidate cover bytes by bound URLs/hash; review all snapshot hashes before local acceptance. Never infer missing source/rights facts. Original source/chapter/licence bytes remain canonical unchanged."
+}

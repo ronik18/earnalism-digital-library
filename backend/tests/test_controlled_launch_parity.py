@@ -42,8 +42,12 @@ INDIA_TEXT_RELEASE_SLUGS = {
     "the-enchanted-april",
     "the-happy-prince",
     "picture-of-dorian-gray",
+    "dracula",
+    "book-edfcf810c5",
 }
 
+
+REVIEWED_20261002_SLUGS = {"dracula", "book-edfcf810c5"}
 
 NEAR_READY_20261001_SLUGS = {
     "a-horseman-in-the-sky",
@@ -107,7 +111,7 @@ def test_owner_exclusion_tombstone_is_mirrored_exactly():
     }
 
 
-def test_backend_controlled_launch_opens_only_the_twenty_four_approved_india_text_titles_and_no_audio():
+def test_backend_controlled_launch_opens_only_the_twenty_six_approved_india_text_titles_and_no_audio():
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     backend_audio = set(backend_launch["audio_enabled_slugs"])
 
@@ -136,7 +140,7 @@ def test_india_commercial_text_release_is_mirrored_and_audio_remains_disabled():
         assert launch["audio_enabled_slugs"] == []
 
 
-def test_twenty_four_title_release_uses_commercial_mode_and_keeps_checkout_audio_disabled():
+def test_twenty_six_title_release_uses_commercial_mode_and_keeps_checkout_audio_disabled():
     root_launch = load_json(ROOT_CONTROLLED_LAUNCH)
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     expected_modes = {slug: "COMMERCIAL_ENTITLEMENT" for slug in INDIA_TEXT_RELEASE_SLUGS}
@@ -150,7 +154,7 @@ def test_twenty_four_title_release_uses_commercial_mode_and_keeps_checkout_audio
         assert launch["public_audio_exposure_enabled"] is False
 
 
-def test_twenty_four_title_release_has_hash_bound_reading_pass_rights_and_published_reader_manifests():
+def test_twenty_six_title_release_has_hash_bound_reading_pass_rights_and_published_reader_manifests():
     launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     registry, revoked = load_production_registry()
     commercial_slugs = tuple(sorted(INDIA_TEXT_RELEASE_SLUGS))
@@ -182,8 +186,9 @@ def test_twenty_four_title_release_has_hash_bound_reading_pass_rights_and_publis
             or (slug == "the-adventures-of-sherlock-holmes" and "identity was not provided" in record["accepted_by"])
             or (slug == "agentic-ai-with-python" and record["accepted_by"].startswith("Ronik Basak, direct owner release instruction;"))
             or (slug in NEAR_READY_20261001_SLUGS and record["accepted_by"].startswith("Codex under Ronik Basak direct autonomous safe near-ready release instruction."))
+            or (slug in REVIEWED_20261002_SLUGS and record["accepted_by"].startswith("Automated serialized integration controller under the product owner directive in issue #477 comment 5949652699"))
         )
-        if slug in {"the-adventures-of-sherlock-holmes", "agentic-ai-with-python"} | NEAR_READY_20261001_SLUGS:
+        if slug in {"the-adventures-of-sherlock-holmes", "agentic-ai-with-python"} | NEAR_READY_20261001_SLUGS | REVIEWED_20261002_SLUGS:
             assert record["territories"] == ["IN"]
             assert set(record["uses"]) == {
                 "catalog_metadata", "cover_display", "reader_preview", "reader_delivery",
@@ -240,6 +245,35 @@ def test_a_ghost_story_is_a_known_live_runtime_audit_control():
             now=datetime.now(timezone.utc),
         )
         assert verdict.passed is True, (action, verdict.reasons)
+
+
+def test_reviewed_cohort_denies_country_spoof_audio_tamper_and_revocation():
+    registry, revoked = load_production_registry()
+    for slug in REVIEWED_20261002_SLUGS:
+        package = active_runtime_package(slug)
+        record = load_json(package / "rights_decision.json")
+        components = {
+            name.removesuffix(".json"): hashlib.sha256((package / name).read_bytes()).hexdigest()
+            for name in ("public_book.json", "reader_manifest.json", "source_evidence.json",
+                         "approval_evidence.json", "checksum_manifest.json", "publication_manifest.json")
+        }
+        for action in ("catalog_cta", "reader_preview", "reader_chapter", "reading_pass_page",
+                       "reading_pass_session_start", "reading_pass_lease_renewal", "audio_manifest"):
+            for country, trusted in (("IN", True), ("US", True), ("IN", False)):
+                verdict = evaluate_runtime_path(
+                    action, record=record, edition_id=slug, operator_id="reo-enterprise",
+                    country=country, country_trusted=trusted, required_components=components,
+                    accepted_records=registry, revoked_decision_ids=revoked, now=datetime.now(timezone.utc),
+                )
+                assert verdict.passed is (country == "IN" and trusted and action != "audio_manifest")
+        for changed, revoked_ids in (({**components, "reader_manifest": "0" * 64}, revoked),
+                                     (components, frozenset({record["decision_id"]}))):
+            verdict = evaluate_runtime_path(
+                "reading_pass_page", record=record, edition_id=slug, operator_id="reo-enterprise",
+                country="IN", country_trusted=True, required_components=changed,
+                accepted_records=registry, revoked_decision_ids=revoked_ids, now=datetime.now(timezone.utc),
+            )
+            assert verdict.passed is False
 
 
 def test_sherlock_is_bound_to_the_exact_owner_approved_text_reader_edition_only():

@@ -2982,7 +2982,19 @@
       "public_reader_status": "UNEXPOSED_NOT_ACTIVATED",
       "current_source_sha256": "4e4f92326d92da407a564d61c67f18583795ccc176de35e04eeaa05652017c78",
       "current_content_sha256": "d9249c44925bc65221d731727c5f35e557a13144feabe843f649d3dd5d249a34",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates.",
+      "book_go_live_477_continuation": {
+        "timestamp": "2026-10-02T13:12:00.742606+00:00",
+        "decision": "BOOK_GO_LIVE_477_REVIEWED_TWO_TITLE_INTEGRATION_CANDIDATE",
+        "source_main": "57ad1cfe9ceb2331871be3c7c2ee1e8c64ad2edd",
+        "slugs": [
+          "dracula",
+          "book-edfcf810c5"
+        ],
+        "new_live_verified": 0,
+        "production_readback": "NOT_RUN",
+        "evidence": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/state.json"
+      }
     },
     "book-ef193ffc52": {
       "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",
@@ -4917,7 +4929,19 @@
       },
       "current_source_sha256": "96cd16eacdbfebae8fdda5591f66e0cc8ee76be18e0cd1aca02bc00615782d28",
       "current_content_sha256": "0ab0060ec9b89c62f3d33b57b08831aca532dc79aea59d9cd7f83cc0f2d1e1d0",
-      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates."
+      "next_action": "Keep cover-only review deferred; do not promote without the separate canonical runtime gates.",
+      "book_go_live_477_continuation": {
+        "timestamp": "2026-10-02T13:12:00.742606+00:00",
+        "decision": "BOOK_GO_LIVE_477_REVIEWED_TWO_TITLE_INTEGRATION_CANDIDATE",
+        "source_main": "57ad1cfe9ceb2331871be3c7c2ee1e8c64ad2edd",
+        "slugs": [
+          "dracula",
+          "book-edfcf810c5"
+        ],
+        "new_live_verified": 0,
+        "production_readback": "NOT_RUN",
+        "evidence": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/state.json"
+      }
     },
     "pride-and-prejudice": {
       "latest_decision": "LOCAL_IN_TEXT_ACCEPTED_COVER_DEFERRED_RUNTIME_HOLD",

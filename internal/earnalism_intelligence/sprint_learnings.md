@@ -2590,3 +2590,7 @@ Author lifetime facts, transcription licensing, exact source edition and publica
 
 ### Vercel prebuilt packaging
 Source deployments succeeding do not prove prebuilt file selection. Validate includeFiles, generated filePathMap and external symlink targets against the actual CLI manifest; preserve generated-output exclusions with a narrow required-asset exception.
+
+## Book GO-LIVE 477 continuation — 2026-10-02
+
+Recover the existing checkout/candidates when bridge task actions are unavailable. Clear the sole existing PR before integration. Preserve exact source/licence facts and encode existing covers deterministically; compare original→derivative hashes rather than infer attribution from visual similarity. Parallel preparation remains separate from serialized activation. Local rights evaluation is not production or entitlement UAT.
