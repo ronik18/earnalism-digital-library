@@ -8,6 +8,8 @@ from pathlib import Path
 import subprocess
 import tempfile
 import unittest
+from unittest.mock import patch
+from copy import deepcopy
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -40,14 +42,14 @@ class CopyrightRightsReviewPackageTests(unittest.TestCase):
         )
         self.assertEqual([item["slug"] for item in package["titles"]], expected)
         self.assertEqual(package["inventory_summary"]["title_count"], len(expected))
-        self.assertEqual(package["inventory_summary"]["accepted_rights_record_count"], 27)
-        self.assertEqual(package["inventory_summary"]["live_accepted_rights_record_count"], 24)
-        self.assertEqual(package["inventory_summary"]["rights_accepted_unexposed_count"], 0)
+        self.assertEqual(package["inventory_summary"]["accepted_rights_record_count"], len(MODULE.read_json(MODULE.REGISTRY)["accepted_records"]))
+        self.assertEqual(package["inventory_summary"]["live_accepted_rights_record_count"], len(MODULE.read_json(MODULE.ROOT_LAUNCH)["live_approved_slugs"]))
+        self.assertEqual(package["inventory_summary"]["rights_accepted_unexposed_count"], 1)
         self.assertEqual(package["conclusion"], "INDIA_RELEASE_EVIDENCE_COMPLETE_FOR_CONTROLLED_ALLOWLIST")
         accepted = {title["slug"] for title in package["titles"] if title["title_release_status"] == "ACCEPTED_FOR_CONTROLLED_RELEASE"}
-        self.assertEqual(accepted, {"a-ghost-story", "the-tell-tale-heart", "radharani", "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost", "the-adventures-of-sherlock-holmes", "agentic-ai-with-python", "a-horseman-in-the-sky", "a-mystery-of-heroism", "a-scandal-in-bohemia", "jekyll-and-hyde", "love-of-life", "the-bishop", "the-fall-of-the-house-of-usher", "the-lady-with-the-dog", "the-man-who-would-be-king", "the-open-boat", "the-pit-and-the-pendulum", "the-stolen-white-elephant", "an-occurrence-at-owl-creek-bridge", "the-enchanted-april", "the-happy-prince", "picture-of-dorian-gray"})
+        self.assertEqual(accepted, {"a-ghost-story", "the-tell-tale-heart", "radharani", "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost", "the-adventures-of-sherlock-holmes", "agentic-ai-with-python", "a-horseman-in-the-sky", "a-mystery-of-heroism", "a-scandal-in-bohemia", "jekyll-and-hyde", "love-of-life", "the-bishop", "the-fall-of-the-house-of-usher", "the-lady-with-the-dog", "the-man-who-would-be-king", "the-open-boat", "the-pit-and-the-pendulum", "the-stolen-white-elephant", "an-occurrence-at-owl-creek-bridge", "the-enchanted-april", "the-happy-prince", "picture-of-dorian-gray", "dracula"})
         rights_accepted_unexposed = {title["slug"] for title in package["titles"] if title["title_release_status"] == "RIGHTS_ACCEPTED_UNEXPOSED"}
-        self.assertEqual(rights_accepted_unexposed, set())
+        self.assertEqual(rights_accepted_unexposed, {"book-edfcf810c5"})
 
     def test_component_schema_and_pilot_scope_are_fail_closed(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -81,6 +83,28 @@ class CopyrightRightsReviewPackageTests(unittest.TestCase):
         self.assertFalse(package["technical_fail_closed_evidence"]["public_audio_exposure_enabled"])
         self.assertIn("INDIA_RELEASE_EVIDENCE_COMPLETE_FOR_CONTROLLED_ALLOWLIST", packet)
         self.assertIn("Chapter V", packet)
+
+    def test_exact_decision_facts_allow_rights_inventory_but_not_held_activation(self):
+        registry = MODULE.read_json(MODULE.REGISTRY)
+        live = set(MODULE.read_json(MODULE.ROOT_LAUNCH)["live_approved_slugs"])
+        dracula = MODULE.title_inventory("dracula", {}, registry, live)
+        held = MODULE.title_inventory("book-edfcf810c5", {}, registry, live)
+        self.assertEqual(dracula["title_release_status"], "ACCEPTED_FOR_CONTROLLED_RELEASE")
+        self.assertEqual(held["title_release_status"], "RIGHTS_ACCEPTED_UNEXPOSED")
+        self.assertEqual(held["jurisdictions_assessed"], ["IN"])
+        decision = MODULE.read_json(MODULE.controlled_package_dir("dracula") / "rights_decision.json")
+        broken = deepcopy(registry)
+        broken["accepted_records"][decision["decision_id"]] = "0" * 64
+        self.assertFalse(MODULE.accepted_controlled_release("dracula", MODULE.controlled_package_dir("dracula"), ["IN"], broken))
+        real_digest = MODULE.digest
+        def tampered_component(path):
+            return "0" * 64 if Path(path).name == "public_book.json" else real_digest(path)
+        with patch.object(MODULE, "digest", side_effect=tampered_component):
+            self.assertFalse(MODULE.accepted_controlled_release("dracula", MODULE.controlled_package_dir("dracula"), ["IN"], registry))
+        revoked = deepcopy(registry)
+        revoked["revoked_decision_ids"].append(decision["decision_id"])
+        self.assertFalse(MODULE.accepted_controlled_release("dracula", MODULE.controlled_package_dir("dracula"), ["IN"], revoked))
+        self.assertFalse(MODULE.accepted_controlled_release("dracula", MODULE.controlled_package_dir("dracula"), ["US"], registry))
 
     def test_malformed_chapter_asset_metadata_never_becomes_positive_visual_evidence(self) -> None:
         self.assertFalse(MODULE.chapter_declares_visual_asset({"image_count": "1"}))

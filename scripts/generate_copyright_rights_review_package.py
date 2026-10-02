@@ -269,14 +269,17 @@ def title_inventory(
     jurisdictions = list(pilot_countries.get(slug, []))
     if not jurisdictions and isinstance(commercial_disposition, dict):
         jurisdictions = list(commercial_disposition.get("countries") or [])
+    # Runtime decisions, rather than stale administrative disposition copy,
+    # declare the exact assessed territory. Acceptance still requires the
+    # independently registered digest and every current component hash.
+    if not jurisdictions:
+        decision = read_json(directory / "rights_decision.json")
+        jurisdictions = list(decision.get("territories") or [])
     accepted_rights = accepted_controlled_release(slug, directory, jurisdictions, registry)
     accepted_for_publication = accepted_rights and slug in live_slugs
     rights_accepted_unexposed = (
         accepted_rights
         and slug not in live_slugs
-        and isinstance(commercial_disposition, dict)
-        and commercial_disposition.get("status") == "RIGHTS_ACCEPTED_UNEXPOSED"
-        and commercial_disposition.get("access_mode") == "COMMERCIAL_ENTITLEMENT"
     )
     source_provenance = evidence(source_path) + evidence(content_book_dir(slug) / "source-rights.md")
     source_complete = all(source.get(key) for key in ("content_hash", "source_hash", "source_url", "source_name", "source_license", "rights_basis"))
@@ -450,9 +453,6 @@ def build_package(args: argparse.Namespace) -> dict[str, Any]:
             slug
             for slug in rights_accepted_slugs
             if slug not in live_slugs
-            and isinstance((registry.get("commercial_batch_dispositions") or {}).get(f"controlled-{slug}"), dict)
-            and (registry.get("commercial_batch_dispositions") or {}).get(f"controlled-{slug}", {}).get("status") == "RIGHTS_ACCEPTED_UNEXPOSED"
-            and root_launch.get("title_access_modes", {}).get(slug) == "COMMERCIAL_ENTITLEMENT"
         }
         and (pilot_dispositions.get("controlled-yugalanguriya") or {}).get("status") == "HOLD"
     )

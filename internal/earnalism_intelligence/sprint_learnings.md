@@ -2598,3 +2598,7 @@ Recover the existing checkout/candidates when bridge task actions are unavailabl
 ## Book GO-LIVE 477 route support hold — 2026-10-02
 
 Static generation is not production route reachability. Two reviewers identified the Bengali edition lacks explicit route mappings while generic slug routes target404. Preserve its exact preparation but remove launch exposure when deployment configuration is outside owner scope; advance the independently routable edition through the existing PR.
+
+## Book GO-LIVE 477 runtime/app integration — 2026-10-02
+
+Accepted exact rights and configured publication remain separate. Inventory must derive territory from the current accepted decision when admin dispositions omit it, retain digest/component/revocation gates, and mark off-allowlist titles unexposed. Static released pages need matching API-gated app routes after hydration; detail helpers must preserve exact approved cover aliases rather than replace them with legacy artwork.

@@ -25,16 +25,18 @@
   },
   "validation": {
     "local_tests_passed": 84,
-    "protected_ci": "FAILED_PARENT_STATIC_CONTRACT_REPAIRED_AWAITING_NEW_HEAD",
+    "protected_ci": "NEW_HEAD_REQUIRED_AFTER_RUNTIME_REPORT_AND_APP_REPAIR",
     "canary": "NOT_RUN",
     "production": "NOT_RUN",
     "canary_unit_tests_passed": 24,
     "static_snapshot_assertions_passed": 2000,
-    "static_snapshots": 94
+    "static_snapshots": 94,
+    "required_local_uat_tests_passed": 28
   },
-  "next_action": "Complete protected exact-head checks and isolated runtime fixtures for Dracula-only PR508. Keep Bengali edition held for route-support blocker. Then verify deployment/canary/canonical-version readback before next distinct reviewed cohort.",
+  "next_action": "Normal protected exact-new-head checks on existing PR508, including isolated runtime and full frontend fixtures. Merge only if pass; then deploy/canary/canonical-version verification. No config override or waived runtime gates.",
   "ci_repair_receipt": "static-contract-ci-repair.json",
   "held_reviewed_integration_candidates": {
     "book-edfcf810c5": "Production book/reader/listener exact route mappings absent; generic slug routes target404. Deployment configuration changes prohibited by owner scope. Preserved reviewed preparation; removed server/frontend/public projection exposure."
-  }
+  },
+  "next_prepared_route_hold": "Muchiram, bn-059, Call of the Wild lack production exact route mappings; retain inactive proposals while deployment config changes are outside scope."
 }

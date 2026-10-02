@@ -4957,6 +4957,11 @@
         "production_readback": "NOT_RUN",
         "evidence": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/state.json",
         "next_action": "Dracula-only existing PR508 after Bengali route-support hold; exact-head protected checks and isolated Reader fixtures required before merge/deployment/readback."
+      },
+      "book_go_live_477_runtime_app_repair": {
+        "timestamp": "2026-10-02T13:42:53.890063+00:00",
+        "evidence": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/runtime-fixture-and-app-repair.json",
+        "production_observed": false
       }
     },
     "pride-and-prejudice": {

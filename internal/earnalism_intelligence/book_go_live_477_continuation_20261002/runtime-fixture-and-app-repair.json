@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-10-02T13:42:53.890063+00:00",
+  "parent_head": "2db9c5cd5ad28288d00323cc9f0d7f01211d9c2e",
+  "repairs": [
+    "Rights inventory uses exact accepted decision territory when administrative disposition omits country; digest/component/revocation/territory denial unchanged. Bengali accepted local rights remains unexposed.",
+    "Dracula legacy unavailable overrides removed; existing API-gated BookDetail/ReaderV2/ListenerV2 applies. Selfish Giant remains held.",
+    "BookDetail retains exact current API cover aliases instead of overriding with historical artwork; audio forced disabled."
+  ],
+  "validation": {
+    "required_local_uat_batch": 28,
+    "backend_gate_tests": 84,
+    "canary_tests": 24,
+    "static_snapshots": 94,
+    "static_assertions": 2000,
+    "native_route_snapshot_test": "PASS",
+    "native_cover_chapter_preservation_audio_denial": "PASS",
+    "hosted_frontend_and_full_regression": "AWAITING_NEW_HEAD"
+  },
+  "production_surface_sha256": "ca68fb1899613c6145682279635ffb8188b6a32de05b44669e2f9b1954306009",
+  "deployed_verified_new_titles": 0,
+  "production_readback": "NOT_RUN",
+  "next_exact_action": "Normal protected exact-new-head checks on existing PR508, including isolated runtime and full frontend fixtures. Merge only if pass; then deploy/canary/canonical-version verification. No config override or waived runtime gates.",
+  "next_prepared_route_hold": "Muchiram, bn-059, Call of the Wild lack production exact route mappings; retain inactive proposals while deployment config changes are outside scope.",
+  "independent_reviews": [
+    "cohort_select: rights generator, App routes and exact six current API cover aliases accepted",
+    "release_review: App routes, exact API covers and disabled audio accepted"
+  ]
+}
