@@ -1,0 +1,18 @@
+{
+  "schema": "earnalism.approved-reader-bootstrap.delta-candidate.v1",
+  "source_main": "c9df35dda7a463f6cb5580ef900068e4cc6b6408",
+  "operation": "APPEND_IF_ABSENT",
+  "entry": {
+    "slug": "the-call-of-the-wild",
+    "decision_id": "india-20261002-the-call-of-the-wild-reader-cover-display-reviewed",
+    "record_sha256": "a278a6fe107423bf2f96c6c61e04f2dc08f16f646a840408f5622fcde0035171"
+  },
+  "bootstrap_only": true,
+  "territory": "IN",
+  "target_characters": 3200,
+  "preserve_active_pointer_if_present": true,
+  "preserve_versions_and_history": true,
+  "applied": false,
+  "runtime_observed": false,
+  "production_observed": false
+}

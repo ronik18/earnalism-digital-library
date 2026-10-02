@@ -82,6 +82,21 @@ PROTECTED_API_CHECKS = {
         "expected_code": "",
         "expected_slug": "book-edfcf810c5",
     },
+    "/api/reader/book/muchiram-gurer-jibanchorit/manifest": {
+        "expected_status": 200,
+        "expected_code": "",
+        "expected_slug": "muchiram-gurer-jibanchorit",
+    },
+    "/api/reader/book/bn-059/manifest": {
+        "expected_status": 200,
+        "expected_code": "",
+        "expected_slug": "bn-059",
+    },
+    "/api/reader/book/the-call-of-the-wild/manifest": {
+        "expected_status": 200,
+        "expected_code": "",
+        "expected_slug": "the-call-of-the-wild",
+    },
     "/api/reading-pass/books/the-adventures-of-sherlock-holmes/manifest": {
         "expected_status": 503,
         "expected_code": "SEGMENTS_NOT_READY",
@@ -99,6 +114,25 @@ PROTECTED_API_CHECKS = {
         "expected_status": 200, "expected_code": "", "kind": "canonical_manifest",
         "expected_slug": "book-edfcf810c5", "expected_chapters": 1,
         "expected_chapter_ids": ["chapter-001"],
+    },
+    "/api/reading-pass/books/muchiram-gurer-jibanchorit/manifest": {
+        "expected_status": 200, "expected_code": "", "kind": "canonical_manifest",
+        "expected_slug": "muchiram-gurer-jibanchorit", "expected_chapters": 14,
+        "expected_chapter_ids": [f"chapter-{index:03d}" for index in range(1, 15)],
+    },
+    "/api/reading-pass/books/bn-059/manifest": {
+        "expected_status": 200, "expected_code": "", "kind": "canonical_manifest",
+        "expected_slug": "bn-059", "expected_chapters": 13,
+        "expected_chapter_ids": [
+            "chapter-011", "chapter-008", "chapter-004", "chapter-003", "chapter-010",
+            "chapter-012", "chapter-013", "chapter-001", "chapter-009", "chapter-006",
+            "chapter-002", "chapter-007", "chapter-005",
+        ],
+    },
+    "/api/reading-pass/books/the-call-of-the-wild/manifest": {
+        "expected_status": 200, "expected_code": "", "kind": "canonical_manifest",
+        "expected_slug": "the-call-of-the-wild", "expected_chapters": 7,
+        "expected_chapter_ids": [f"chapter-{index:03d}" for index in range(1, 8)],
     },
 }
 

@@ -54,6 +54,9 @@ const CURRENT_RELEASED_SLUGS = [
   "picture-of-dorian-gray",
   "dracula",
   "book-edfcf810c5",
+  "muchiram-gurer-jibanchorit",
+  "bn-059",
+  "the-call-of-the-wild",
 ];
 const BOILERPLATE_RE = /Project Gutenberg|Gutenberg-tm|START OF THE PROJECT|END OF THE PROJECT|Wikisource|Category:|Creative Commons|Download as|Edit this page/i;
 const AUDIO_FIELDS = ["audio_enabled", "audiobook_enabled", "generate_audiobook"];

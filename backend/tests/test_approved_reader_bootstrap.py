@@ -14,7 +14,13 @@ from backend.tests.test_reader_segment_promotion_safeguards import Collection, C
 
 
 SLUG = "a-horseman-in-the-sky"
-NEW_RELEASE_SLUGS = ("dracula", "book-edfcf810c5")
+NEW_RELEASE_SLUGS = (
+    "dracula",
+    "book-edfcf810c5",
+    "muchiram-gurer-jibanchorit",
+    "bn-059",
+    "the-call-of-the-wild",
+)
 RELEASE_SLUGS = (SLUG, *NEW_RELEASE_SLUGS)
 ACTOR = "system:owner-authorized-reader-bootstrap-v1"
 PLAN_PATH = Path(server.__file__).parent / "data" / "approved_reader_bootstrap.json"
@@ -73,7 +79,7 @@ def setup(monkeypatch, slug=SLUG):
 def test_persisted_plan_exactly_matches_approved_scope_and_registered_decisions():
     plan = json.loads(PLAN_PATH.read_text())
     titles = plan["titles"]
-    assert len(titles) == 26
+    assert len(titles) == 29
     assert len({entry["slug"] for entry in titles}) == len(titles)
     assert {entry["slug"] for entry in titles} == set(server.CONTROLLED_LIVE_BOOK_SLUGS)
     accepted, revoked = server.load_production_registry()

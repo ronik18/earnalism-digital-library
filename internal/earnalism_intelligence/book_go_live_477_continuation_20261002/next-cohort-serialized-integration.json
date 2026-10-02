@@ -1,0 +1,83 @@
+{
+  "schema": "earnalism.book-go-live-477.serialized-next-cohort.v1",
+  "base_main": "c9df35dda7a463f6cb5580ef900068e4cc6b6408",
+  "base_tree": "0fbeb558b855ff37a1b439a09ca66d60ba2f24b3",
+  "prior_release": {
+    "pull_request": 508,
+    "merge_commit": "c9df35dda7a463f6cb5580ef900068e4cc6b6408",
+    "railway_deployment_id": "6a842796-64f4-4409-ad1a-e39704adc53c",
+    "railway_status": "SUCCESS",
+    "runtime_initialization": {
+      "dracula": "PRESERVED_EXISTING_ACTIVE_VERSION",
+      "book-edfcf810c5": "PRESERVED_EXISTING_ACTIVE_VERSION"
+    },
+    "public_surface": "PASS_AFTER_PROPAGATION_WITH_TWO_EXACT_READ_ONLY_TIMEOUT_RETRIES",
+    "india_canonical_version_readback": "NOT_RUN_FROM_NON_IN",
+    "observed_canonical_versions": {
+      "dracula": null,
+      "book-edfcf810c5": null
+    },
+    "conditional_observation_waiver": "APPLIED_ONLY_TO_UNAVAILABLE_INDIA_OBSERVATION",
+    "issue_receipt_comment": 5956233725
+  },
+  "cohort": [
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "decision_id": "india-20261002-muchiram-gurer-jibanchorit-reader-cover-display-reviewed",
+      "decision_file_sha256": "2dfc028395df0c0d2b266a428967ddd7cec1fd0b57e8fd15b75da7431c88e30b",
+      "canonical_record_sha256": "4bf969237f4b5506cf944d7b8f30202f1208acd3cc30d08d4e38cab24ae6e4e6",
+      "hash_reconciliation": "The isolated plan labelled the raw decision-file digest as the registry digest. Integration recomputed the trusted canonical record digest with rights_decision_gate.record_sha256; no decision fields changed.",
+      "chapters": 14
+    },
+    {
+      "slug": "bn-059",
+      "decision_id": "india-20261002-bn-059-reader-cover-display-reviewed",
+      "decision_file_sha256": "f198582d878b50fe32f3038551f237647e269a4ccbce32836ae3f23792e4fecc",
+      "canonical_record_sha256": "df21f16960c872106574fc3e63f905a6eec0e280cda11dcfd23bb48cb9cb6c5b",
+      "chapters": 13
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "decision_id": "india-20261002-the-call-of-the-wild-reader-cover-display-reviewed",
+      "decision_file_sha256": "023e559cb9f348f592722a8e4be29daee528867ebb86cbb86ed93a7ac86257cf",
+      "canonical_record_sha256": "a278a6fe107423bf2f96c6c61e04f2dc08f16f646a840408f5622fcde0035171",
+      "chapters": 7,
+      "backend_preimage_archive": "next-inactive-backend-preimages/the-call-of-the-wild/c9df35dda7a463f6cb5580ef900068e4cc6b6408",
+      "backend_preimage_file_count": 12,
+      "backend_preimage_manifest_sha256": "1bf64eecf06af0b8ef52113f79202d9b341e43b19606ccd8afcdf667115b3948"
+    }
+  ],
+  "scope": {
+    "territory": "IN",
+    "text_access_mode": "COMMERCIAL_ENTITLEMENT",
+    "preview_pages": 3,
+    "audio_enabled": false,
+    "payments_changed": false,
+    "entitlement_policy_changed": false,
+    "deployment_configuration_changed": false,
+    "production_mutation_performed": false
+  },
+  "preservation": {
+    "source_text_license_chapters": "BYTE_EXACT_TO_ACCEPTED_PACKETS",
+    "original_cover_bytes": "PRESERVED",
+    "delivery_derivatives": "EXACT_REVIEWED_HASHES",
+    "prior_rights_records": "PRESERVED",
+    "prior_backend_content_version": "ARCHIVED_BYTE_EXACT_FOR_THE_CALL_OF_THE_WILD"
+  },
+  "local_validation": {
+    "rights_launch_bootstrap_chapter_and_canary_tests": 231,
+    "subtests": 55,
+    "frontend_test_suites": 97,
+    "frontend_tests": 609,
+    "production_build": "PASS",
+    "static_snapshots": 106,
+    "static_snapshot_assertions": 2256,
+    "result": "PASS"
+  },
+  "activation_model": "Accepted package source records retain READY_FOR_ACTIVATION_GLOBAL_GATE; the reviewed controlled-launch allowlist plus accepted rights and approved/exposed publication manifests authorize the backend LIVE_APPROVED projection, matching merged Dracula and book-edfcf810c5.",
+  "integration_state": "LOCAL_SERIALIZED_CANDIDATE_AWAITING_TWO_FINAL_EXACT_TREE_REVIEWS_AND_NORMAL_PROTECTED_CHECKS",
+  "held": {
+    "the-most-dangerous-game": "Specific cover-footer review conflict remains unresolved"
+  },
+  "next_exact_action": "Freeze the exact local tree, obtain two independent final reviews, then publish only the existing integration branch and open one focused PR for normal protected checks."
+}

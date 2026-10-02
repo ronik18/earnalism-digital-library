@@ -1,0 +1,11 @@
+{
+  "schema": "earnalism.rights-decision-registry-binding-candidate.v1",
+  "source_main": "c9df35dda7a463f6cb5580ef900068e4cc6b6408",
+  "decision_id": "india-20261002-the-call-of-the-wild-reader-cover-display-reviewed",
+  "record_sha256": "a278a6fe107423bf2f96c6c61e04f2dc08f16f646a840408f5622fcde0035171",
+  "decision_file_sha256": "023e559cb9f348f592722a8e4be29daee528867ebb86cbb86ed93a7ac86257cf",
+  "operation": "ADD_IF_ABSENT_AND_EXACT",
+  "applied": false,
+  "production_observed": false,
+  "note": "Candidate only. The trusted registry remains unmodified in this isolated lane."
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "earnalism.controlled-publication.backend-preimage.v1",
+  "source_main": "c9df35dda7a463f6cb5580ef900068e4cc6b6408",
+  "slug": "the-call-of-the-wild",
+  "files": {
+    "approval_evidence.json": "c354fbd9ed94a896bab75b38db6470a1898b0aa5486433e7686a00f48e3359bd",
+    "chapters/chapter-001.json": "6d79eee71ac41547fbe23bdc7250473c1868051787a8d605f5fe9d3efd8969aa",
+    "chapters/chapter-002.json": "85a04d7f532cdf4e15b71493a0de30090a6b0a8908da6bac44bcb6b047b09ebc",
+    "chapters/chapter-003.json": "8ba0a40fdaaf3cb1c15b5d498375707719e899743ad6551fc82b7b044f4ac0b8",
+    "chapters/chapter-004.json": "b4adb989f475c4c58b762b216c5d9635a44ade6a0baa1ec18e330ee1e67604f6",
+    "chapters/chapter-005.json": "aac6ca51376c74fedc3876a7016d203dc3c0b580c4f3d927889d08b16648e808",
+    "chapters/chapter-006.json": "32b77444b59e61644567b1dbc8610cb6ea8b5de14b09bea286d1709de1d5d762",
+    "chapters/chapter-007.json": "59be36960f8dd4b68726c442c7a6c1fe08a7791a1ed345444ff2b12c7f8bd064",
+    "checksum_manifest.json": "5f3f903f9892535ccb7c4601601dbfc80b79e881cc0a0e00b3686b17b76049de",
+    "public_book.json": "e6ccc48019c97806a17b1c71dddb4e470c2cccc7b3df65e4d14db932ad307bd3",
+    "reader_manifest.json": "8b04260e291ac4388ee26bc65cb1fb3bff1d1cae80659afd0762af70688e2180",
+    "source_evidence.json": "3fa6593fa727ec7a5377e9dfa779fa8f23f266a06daa662b12227a46c8125074"
+  },
+  "preservation": "Exact bytes remain addressable at source_main. A later serialized backend promotion must archive/version these exact hashes before replacing the runtime package.",
+  "production_mutation": false
+}

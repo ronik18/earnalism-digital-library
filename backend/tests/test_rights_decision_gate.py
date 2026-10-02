@@ -61,7 +61,7 @@ def runtime_verdict(action: str, record: dict | None, registry: dict[str, str] |
     return evaluate_runtime_path(action, **arguments)
 
 
-def test_real_registry_retains_historical_records_and_binds_current_twenty_six_title_release():
+def test_real_registry_retains_historical_records_and_binds_current_twenty_nine_title_release():
     registry, revoked = load_production_registry()
     payload = json.loads(PRODUCTION_REGISTRY_PATH.read_text(encoding="utf-8"))
 
@@ -95,6 +95,9 @@ def test_real_registry_retains_historical_records_and_binds_current_twenty_six_t
         "india-20261001-picture-of-dorian-gray-owner-text-reader",
         "india-20261002-dracula-reader-cover-display-reviewed",
         "india-20261002-book-edfcf810c5-reader-cover-display-reviewed",
+        "india-20261002-muchiram-gurer-jibanchorit-reader-cover-display-reviewed",
+        "india-20261002-bn-059-reader-cover-display-reviewed",
+        "india-20261002-the-call-of-the-wild-reader-cover-display-reviewed",
     }
     current_runtime_release_slugs = (
         "a-ghost-story",
@@ -123,6 +126,9 @@ def test_real_registry_retains_historical_records_and_binds_current_twenty_six_t
         "picture-of-dorian-gray",
         "dracula",
         "book-edfcf810c5",
+        "muchiram-gurer-jibanchorit",
+        "bn-059",
+        "the-call-of-the-wild",
     )
     for slug in current_runtime_release_slugs:
         decision = json.loads(

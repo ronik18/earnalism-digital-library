@@ -1,0 +1,13 @@
+{
+  "schema": "earnalism.controlled-publication.backend-promotion-candidate.v1",
+  "source_main": "c9df35dda7a463f6cb5580ef900068e4cc6b6408",
+  "slug": "the-call-of-the-wild",
+  "source_package": "data/controlled_publications/the-call-of-the-wild",
+  "operation": "SERIALIZED_PROMOTION_AFTER_RECONCILING_DISTINCT_EXISTING_BACKEND_VERSION",
+  "immutable_root_source_reader_chapters_preserved": true,
+  "existing_backend_preimage_hash_manifest": "backend-preimage-manifest.json",
+  "existing_backend_package_preserved_at_source_main": true,
+  "applied": false,
+  "production_observed": false,
+  "note": "Merged main contains a materially distinct backend historical package. The isolated overlay mirrors the accepted root candidate for validation, but the integration authority must archive/version the exact backend preimage before applying this delta."
+}

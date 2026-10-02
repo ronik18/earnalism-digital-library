@@ -1,10 +1,10 @@
 {
   "slug": "bn-059",
-  "generated_at": "2026-10-02T03:11:07.553066+00:00",
+  "generated_at": "2026-10-02T15:52:11.964982+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "f4169f78d6e5bc6f7078e19faa2e41444a503df143acfb359ea5de48ef427db8"
+      "sha256": "53b2701896df370f3b6d6c3f037ebf8fabfb22a16e90e592f7e796ff331cc8e1"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -59,6 +59,30 @@
       "sha256": "f64b88a5d08b6d33909c568f386ba97f1e4ced0a946fe8bdb2118329f39de3af"
     },
     {
+      "file": "cover_delivery_derivation.json",
+      "sha256": "83cfd778e23096d0f65d4bd3e64dd314ef733918c53738cc88de923c98c2796c"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "ad88f29c1aa0b28781fa0c8b98912461b3874ccdd27789bbe74805149d2dff5f"
+    },
+    {
+      "file": "covers/back.png",
+      "sha256": "19f0e4556b414d8da37ee29d3a69bfa0ca976f3ea4ec32968523a4276fb558db"
+    },
+    {
+      "file": "covers/bn-059-back-19f0e455.webp",
+      "sha256": "b0554c53580f0817ca4f20bca918ec8aac09f8b8502f213ed2d5e6aa87367349"
+    },
+    {
+      "file": "covers/bn-059-front-a7b9f12c.webp",
+      "sha256": "424cdccfac26c51cf0e0aae4ad6e1a106b2a5388c977e47458ce59cfde134111"
+    },
+    {
+      "file": "covers/front.png",
+      "sha256": "a7b9f12cea7354f2e3c52d78fe0233efebfeb2f95b15520ae16ef582d24d54a3"
+    },
+    {
       "file": "highlight_sync.json",
       "sha256": "33a3d73da12182d74b50e3fb68a8b6cca5ce60a1499fe0ad89ccb4b8684a40b3"
     },
@@ -68,11 +92,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "22b93c2f0661b3e844a647811ebb68225e8aa92e33173a3fc7cf99dc6a2c255a"
+      "sha256": "12f430579299912a2db091a3f6f67f423774a38635c928c24daf8017a0e2e8eb"
     },
     {
       "file": "publication_authorization.json",
-      "sha256": "11e53198a277a620032435a76d82df27117821c99fce6802a531d7c326d7a1a3"
+      "sha256": "ad6c62d5c77548fe20596f33175287324ee7418326213603b7d613d769a2cf54"
     },
     {
       "file": "reader_manifest.json",

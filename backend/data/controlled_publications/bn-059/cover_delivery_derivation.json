@@ -1,0 +1,69 @@
+{
+  "schema": "earnalism.exact-cover-delivery-derivation.v1",
+  "slug": "bn-059",
+  "assets": [
+    {
+      "kind": "front",
+      "source_file": "covers/front.png",
+      "source_sha256": "a7b9f12cea7354f2e3c52d78fe0233efebfeb2f95b15520ae16ef582d24d54a3",
+      "derivative_file": "frontend/public/assets/books/bn-059/bn-059-front-a7b9f12c.webp",
+      "derivative_package_file": "covers/bn-059-front-a7b9f12c.webp",
+      "derivative_sha256": "424cdccfac26c51cf0e0aae4ad6e1a106b2a5388c977e47458ce59cfde134111",
+      "source_bytes": 3148064,
+      "derivative_bytes": 489904,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "recipe": {
+        "mode": "RGB",
+        "format": "WEBP",
+        "quality": 90,
+        "method": 6,
+        "pillow_version": "12.3.0"
+      },
+      "url": "https://theearnalism.com/assets/books/bn-059/bn-059-front-a7b9f12c.webp",
+      "production_observed": false,
+      "review_status": "TWO_INDEPENDENT_DERIVATIVE_REVIEWS_PASS"
+    },
+    {
+      "kind": "back",
+      "source_file": "covers/back.png",
+      "source_sha256": "19f0e4556b414d8da37ee29d3a69bfa0ca976f3ea4ec32968523a4276fb558db",
+      "derivative_file": "frontend/public/assets/books/bn-059/bn-059-back-19f0e455.webp",
+      "derivative_package_file": "covers/bn-059-back-19f0e455.webp",
+      "derivative_sha256": "b0554c53580f0817ca4f20bca918ec8aac09f8b8502f213ed2d5e6aa87367349",
+      "source_bytes": 2925243,
+      "derivative_bytes": 433236,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "recipe": {
+        "mode": "RGB",
+        "format": "WEBP",
+        "quality": 90,
+        "method": 6,
+        "pillow_version": "12.3.0"
+      },
+      "url": "https://theearnalism.com/assets/books/bn-059/bn-059-back-19f0e455.webp",
+      "production_observed": false,
+      "review_status": "TWO_INDEPENDENT_DERIVATIVE_REVIEWS_PASS"
+    }
+  ],
+  "independent_delivery_reviews": [
+    {
+      "path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/next-delivery-independent-review-a.json",
+      "sha256": "cf23735abaa64a0491c3aa901b44a0031796d11a80af5f57df7ca184dba80fe5",
+      "result": "PASS"
+    },
+    {
+      "path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/next-delivery-independent-review-b.json",
+      "sha256": "2f632f6c41b71356dfa7da370c7aaca7eda24d27a59e75284275762295a6b0ba",
+      "result": "PASS"
+    }
+  ],
+  "original_authorization_preserved": true,
+  "production_observed": false,
+  "runtime_observed": false
+}

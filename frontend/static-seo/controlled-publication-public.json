@@ -2,7 +2,7 @@
   "schema_version": "earnalism.static-seo-public.v2",
   "public_release_held": false,
   "generated_from": {
-    "data/controlled_launch.json": "30bb860d70f1c1dca8ac2c2913a051fd777f2518b7ccb446da1a6b7399c351da",
+    "data/controlled_launch.json": "02ed2e881c637e807acbf29c39875e2f04cb39ebea38c49be15ea470e16a4bd6",
     "data/controlled_publications/a-ghost-story/public_book.json": "993dbc5804da73144872935f9d43d2471afa200ac688e9b690fcf7f3e44a9338",
     "data/controlled_publications/a-ghost-story/reader_manifest.json": "043416f20760f32bd6ce0f401025bfa9230e7e9c76f8fc6a86b1b0b143b302c1",
     "data/controlled_publications/a-ghost-story/source_evidence.json": "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b",
@@ -38,6 +38,11 @@
     "data/controlled_publications/an-occurrence-at-owl-creek-bridge/source_evidence.json": "3243e4e6f0b4cc47d72bd0b3b5b43f0724ef8af8875f6fa1cd74264218b32be1",
     "data/controlled_publications/an-occurrence-at-owl-creek-bridge/approval_evidence.json": "397e92e48ebdf882998540c67e7f09a39bb59fc148d62b0817bfeee9dcb7ae34",
     "data/controlled_publications/an-occurrence-at-owl-creek-bridge/publication_manifest.json": "2881932ca8285343a44fdd48b4637a326f156094bfe03fcecad8eb98294dccaf",
+    "data/controlled_publications/bn-059/public_book.json": "12f430579299912a2db091a3f6f67f423774a38635c928c24daf8017a0e2e8eb",
+    "data/controlled_publications/bn-059/reader_manifest.json": "f6e6fb365561b7f796fa52ad190d6d16a4f7c409c1b5e6ebb648f833b768a2da",
+    "data/controlled_publications/bn-059/source_evidence.json": "1ae73ff80e4a9ded7b57617b2ce5a92c689b0e70f6f98f55cb3302fbfb00f082",
+    "data/controlled_publications/bn-059/approval_evidence.json": "53b2701896df370f3b6d6c3f037ebf8fabfb22a16e90e592f7e796ff331cc8e1",
+    "data/controlled_publications/bn-059/publication_manifest.json": "a600e96aef36f5c38402e38cf87d47059a87b508f45eb4e4719a74d82c977954",
     "data/controlled_publications/book-edfcf810c5/public_book.json": "d0bb4ec1fd8cf065fb26b5cef0d382490305a6b6ddd2568e6218f864430ac986",
     "data/controlled_publications/book-edfcf810c5/reader_manifest.json": "78e25b2d1a5ef845b2b4ed6f390857ee10ddc0d210e8ed1078e87569a85805bd",
     "data/controlled_publications/book-edfcf810c5/source_evidence.json": "b2a8e0a62cd8abc25e88127adf58c22495c6c8687f43c0090ad495db67539fed",
@@ -58,6 +63,11 @@
     "data/controlled_publications/love-of-life/source_evidence.json": "2d0fa5ed6528d05841da0e262170b789178070fb6160efbbdca8ec2bd8914124",
     "data/controlled_publications/love-of-life/approval_evidence.json": "b36aada3baa735af83d16d451861db2f4f653f09054c71cf889e617b4c3443a5",
     "data/controlled_publications/love-of-life/publication_manifest.json": "6107d1629ca295c1e3f785716c48a84c1fcbb3586ad65a5558d3f86679d0df6e",
+    "data/controlled_publications/muchiram-gurer-jibanchorit/public_book.json": "8822aea5c2f3ace8ed78dc8f276ae2aac5579ea152b2b51918706aef3e0d57f3",
+    "data/controlled_publications/muchiram-gurer-jibanchorit/reader_manifest.json": "ef7c6d21000b4f9d7fd56fc8bbb4768016682ee70466bc87e4f20d1ff6a4cd20",
+    "data/controlled_publications/muchiram-gurer-jibanchorit/source_evidence.json": "019f7fe8556e516fef78e6cb4ffc4f9e072ec70b8459f525a9d41dc5ce4e4950",
+    "data/controlled_publications/muchiram-gurer-jibanchorit/approval_evidence.json": "c75f39bd45521e71bf9d478d161cfae273165bc40c7b71ab118181771de71c72",
+    "data/controlled_publications/muchiram-gurer-jibanchorit/publication_manifest.json": "c5951af809000af1577916f49609d50e24560bbe18c12c2848af689bee327da2",
     "data/controlled_publications/picture-of-dorian-gray/public_book.json": "73406a82723f6a990f1d55ccab838270a15ad4c24cd44d93f4da5a6f495228ee",
     "data/controlled_publications/picture-of-dorian-gray/reader_manifest.json": "6a7653d407d43a0e8e51b1831e3f622c914bd3700f77ba104a6bbdbc85b83d09",
     "data/controlled_publications/picture-of-dorian-gray/source_evidence.json": "4a89b5e09914efd550ae2d058d60e96aad90c42d79a6f301093ddfd9c7666faf",
@@ -78,6 +88,11 @@
     "data/controlled_publications/the-bishop/source_evidence.json": "051f49bdacb42dc4dae3476392b740e04d71664c95ab7413d71f361550bb1e7b",
     "data/controlled_publications/the-bishop/approval_evidence.json": "8828c4617b1c4d22ef66821816b7c9bb190df1be95374e8f721642164ba92a3e",
     "data/controlled_publications/the-bishop/publication_manifest.json": "4d5b124fce6ff16746b8e14e01d7b4f52d2213995068415b598280193dfa640c",
+    "data/controlled_publications/the-call-of-the-wild/public_book.json": "994372cc9291ec686818459af125f566a844cb40b1c862352074bdb99ef658ec",
+    "data/controlled_publications/the-call-of-the-wild/reader_manifest.json": "8b04260e291ac4388ee26bc65cb1fb3bff1d1cae80659afd0762af70688e2180",
+    "data/controlled_publications/the-call-of-the-wild/source_evidence.json": "863a94b8e03a42f5833e86e3b323b324e4fa4c2abe4f1a92b697f6df147653dc",
+    "data/controlled_publications/the-call-of-the-wild/approval_evidence.json": "35952901209737cf6cba9cbb09ec634d2e9a1e7c6beab5a22e1f36edcab065f3",
+    "data/controlled_publications/the-call-of-the-wild/publication_manifest.json": "3e1a7fcc426ed636358fdd5fd6cb5dee54b46cba2b8203b1d1b9e0dc6224e8b1",
     "data/controlled_publications/the-canterville-ghost/public_book.json": "16fd86b7c71515176f9721e21bda36ef3ea6bee1e81f5a4ca939024ff181bfc0",
     "data/controlled_publications/the-canterville-ghost/reader_manifest.json": "a9dd15b839ece73acbcb0e93bf5f9f11de30523f73b60356739f18d535e4f5f3",
     "data/controlled_publications/the-canterville-ghost/source_evidence.json": "94fe16603a0ee2ce43bdb4e3a8695673e32e4cbeae6c49676dc083416b70b5fb",
@@ -255,6 +270,23 @@
       }
     },
     {
+      "slug": "bn-059",
+      "title": "কমলাকান্তের দপ্তর",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "cover_url": "https://theearnalism.com/assets/books/bn-059/bn-059-front-a7b9f12c.webp",
+      "chapter_count": 13,
+      "source_display_name": "Bengali Wikisource",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/bn-059",
+        "reader": "/reader/bn-059",
+        "listener": "/listener/bn-059"
+      }
+    },
+    {
       "slug": "book-edfcf810c5",
       "title": "ক্ষুধিত পাষাণ",
       "author": "রবীন্দ্রনাথ ঠাকুর",
@@ -323,6 +355,23 @@
       }
     },
     {
+      "slug": "muchiram-gurer-jibanchorit",
+      "title": "মুচিরাম গুড়ের জীবনচরিত",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "cover_url": "https://theearnalism.com/assets/books/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit-front-abbed380.webp",
+      "chapter_count": 14,
+      "source_display_name": "Bengali Wikisource",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/muchiram-gurer-jibanchorit",
+        "reader": "/reader/muchiram-gurer-jibanchorit",
+        "listener": "/listener/muchiram-gurer-jibanchorit"
+      }
+    },
+    {
       "slug": "picture-of-dorian-gray",
       "title": "The Picture of Dorian Gray",
       "author": "Oscar Wilde",
@@ -388,6 +437,23 @@
         "book": "/book/the-bishop",
         "reader": "/reader/the-bishop",
         "listener": "/listener/the-bishop"
+      }
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "title": "The Call of the Wild",
+      "author": "Jack London",
+      "cover_url": "https://theearnalism.com/assets/books/the-call-of-the-wild/the-call-of-the-wild-front-94d7d690.webp",
+      "chapter_count": 7,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-call-of-the-wild",
+        "reader": "/reader/the-call-of-the-wild",
+        "listener": "/listener/the-call-of-the-wild"
       }
     },
     {

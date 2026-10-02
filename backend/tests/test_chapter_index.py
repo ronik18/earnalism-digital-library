@@ -172,6 +172,41 @@ def test_catalog_wide_reader_indexes_are_complete_and_deterministic():
         for package in current_inventory["packages"]
     ]
     assert hashlib.sha256((CONTROLLED_ROOT / "dracula/reader_manifest.json").read_bytes()).hexdigest() == "f51512441063fa5b19c8af4e6cb1130c9eda98897a242163416ec09fc321068d"
+    # The reviewed bn-059 acceptance packet preserves its exact source
+    # ordering rather than sorting chapter IDs. Keep the frozen historical
+    # fixture unchanged and bind this explicit current overlay to the
+    # accepted manifest digest.
+    bn_059_ordered_ids = [
+        "chapter-011", "chapter-008", "chapter-004", "chapter-003", "chapter-010",
+        "chapter-012", "chapter-013", "chapter-001", "chapter-009", "chapter-006",
+        "chapter-002", "chapter-007", "chapter-005",
+    ]
+    current_inventory["packages"] = [
+        {
+            **package,
+            "chapters": [
+                {"id": chapter_id, "order": index}
+                for index, chapter_id in enumerate(bn_059_ordered_ids, start=1)
+            ],
+        } if package["package_key"] == "bn-059" else package
+        for package in current_inventory["packages"]
+    ]
+    assert hashlib.sha256((CONTROLLED_ROOT / "bn-059/reader_manifest.json").read_bytes()).hexdigest() == "f6e6fb365561b7f796fa52ad190d6d16a4f7c409c1b5e6ebb648f833b768a2da"
+    # Muchiram's accepted source replaces the historical two-chapter
+    # placeholder with the reviewed fourteen-chapter edition. Preserve the
+    # frozen fixture and bind this current overlay to that exact manifest.
+    current_inventory["packages"] = [
+        {
+            **package,
+            "chapter_count": 14,
+            "chapters": [
+                {"id": f"chapter-{index:03d}", "order": index}
+                for index in range(1, 15)
+            ],
+        } if package["package_key"] == "muchiram-gurer-jibanchorit" else package
+        for package in current_inventory["packages"]
+    ]
+    assert hashlib.sha256((CONTROLLED_ROOT / "muchiram-gurer-jibanchorit/reader_manifest.json").read_bytes()).hexdigest() == "ef7c6d21000b4f9d7fd56fc8bbb4768016682ee70466bc87e4f20d1ff6a4cd20"
     current_inventory["expected_manifest_count"] = len(current_inventory["packages"])
     current_inventory["expected_chapter_count"] = sum(
         package["chapter_count"] for package in current_inventory["packages"]

@@ -1,10 +1,10 @@
 {
   "slug": "the-call-of-the-wild",
-  "approved_to_publish": false,
+  "approved_to_publish": true,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
+  "approval_scope": "OWNER_DELEGATED_AUTOMATED_EXACT_IN_TEXT_AND_COVER_COMPONENT_PREPARATION",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
@@ -14,9 +14,46 @@
     "verification_status": "approved",
     "approval_scope": "historical_admin_import_reconstruction"
   },
-  "publication_authorization_sha256": "6c194e13f518925891c1b1510996d620a496de63dba88ddec680311f7db3e85b",
+  "publication_authorization_sha256": "95e6feb9e773f09292a20254532e25af3a1176f4cb791dd0fc051e56e65f5982",
   "source_hash": "30f569c5671bba7bbc4a92ab6d8ee01a0d3be00f994819c77da62c28041eb8a2",
   "content_hash": "4b029c10c8cff516ed6f07f1928e55775ed7fd8d3d03dcf61f7ace0c55e8aa90",
   "provenance_hash": "1b5fc691bbf0965c93b281e1d6e97565fe6e624006b39cad8b0821fa07e9e188",
-  "verified_at": "2026-10-01T21:49:40.745164+00:00"
+  "verified_at": "2026-10-02T15:47:04Z",
+  "cover_provenance_sha256": "2a9ab835df747329d8e541489afd26ec0cb45c8dfd9ca5aac5f077ec12c02866",
+  "cover_delivery_derivation_sha256": "f9e5a38ad9f0a7a8f15db8cedfbf6b1f4786102923d6b778c5117009d5d70efd",
+  "cover_front_qa_status": "PASS",
+  "cover_back_qa_status": "PASS",
+  "independent_reviews": [
+    {
+      "path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/next-review-6-call-wild-corrected-reviewer1.json",
+      "sha256": "cacda28a6ea9566450d9f55bc7622446e91e867d334f31389181f4ffec8e26c8",
+      "conclusion": "ACCEPT_EXACT_PROPOSED_COMPONENT_SCOPE_FOR_SERIALIZED_LOCAL_ACCEPTANCE"
+    },
+    {
+      "path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/next-review-7-callwild-reviewer2.json",
+      "sha256": "614168c364339fd5aea55ceb0e8784582c27e2a1b029d7095f9c8100795c29b2",
+      "conclusion": "ACCEPT_INACTIVE_PROPOSAL_FOR_CONTROLLER_RECONCILIATION"
+    }
+  ],
+  "delivery_reviews": [
+    {
+      "path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/next-delivery-independent-review-a.json",
+      "sha256": "cf23735abaa64a0491c3aa901b44a0031796d11a80af5f57df7ca184dba80fe5",
+      "conclusion": "PASS"
+    },
+    {
+      "path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/next-delivery-independent-review-b.json",
+      "sha256": "2f632f6c41b71356dfa7da370c7aaca7eda24d27a59e75284275762295a6b0ba",
+      "conclusion": "PASS"
+    }
+  ],
+  "audiobook_use_approved": false,
+  "audiobook_use_approval_source": "",
+  "audiobook_use_approved_at": "",
+  "activation_derivation": {
+    "owner_directive": "issue #477 comment 5949652699",
+    "scope": "serialized IN text-reader/cover integration candidate",
+    "production_observed": false,
+    "runtime_observed": false
+  }
 }

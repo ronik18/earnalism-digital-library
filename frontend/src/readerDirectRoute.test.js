@@ -35,34 +35,32 @@ describe("approved Reader direct-route contract", () => {
     });
   });
 
-  test("keeps the historical Dracula Reader and Listener URLs on the safe unavailable route", () => {
-    expect(app).toContain('<Route path="/reader/dracula" element={<UnavailableTitle />} />');
-    expect(app).toContain('<Route path="/listener/dracula" element={<UnavailableTitle />} />');
+  test("keeps the approved Dracula Reader and disabled Listener static routes ahead of generic 404 policy", () => {
+    expect(app).not.toContain('<Route path="/reader/dracula" element={<UnavailableTitle />} />');
+    expect(app).not.toContain('<Route path="/listener/dracula" element={<UnavailableTitle />} />');
     const rewrites = vercel.rewrites || [];
     const genericNotFound = rewrites.findIndex((rule) => rule.source === "/reader/:slug" && rule.destination === "/api/not-found");
     const genericListenerNotFound = rewrites.findIndex((rule) => rule.source === "/listener/:slug" && rule.destination === "/api/not-found");
     ["/reader/dracula", "/reader/dracula/"].forEach((source) => {
-      const index = rewrites.findIndex((rule) => rule.source === source && rule.destination === "/index.html");
+      const index = rewrites.findIndex((rule) => rule.source === source && rule.destination === "/reader/dracula/index.html");
       expect(index).toBeGreaterThanOrEqual(0);
       expect(index).toBeLessThan(genericNotFound);
     });
     ["/listener/dracula", "/listener/dracula/"].forEach((source) => {
-      const index = rewrites.findIndex((rule) => rule.source === source && rule.destination === "/index.html");
+      const index = rewrites.findIndex((rule) => rule.source === source && rule.destination === "/listener/dracula/index.html");
       expect(index).toBeGreaterThanOrEqual(0);
       expect(index).toBeLessThan(genericListenerNotFound);
     });
   });
 
-  test("held historical Reader and Listener routes retain the shared public shell", () => {
+  test("held Selfish Giant Reader and Listener routes retain the shared public shell", () => {
     const layoutStart = app.indexOf("<Route element={<Layout />}");
     const standaloneStart = app.indexOf("{/* Standalone full-screen routes", layoutStart);
     expect(layoutStart).toBeGreaterThanOrEqual(0);
     expect(standaloneStart).toBeGreaterThan(layoutStart);
     const publicRoutes = app.slice(layoutStart, standaloneStart);
     [
-      '<Route path="/reader/dracula" element={<UnavailableTitle />} />',
       '<Route path="/reader/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />',
-      '<Route path="/listener/dracula" element={<UnavailableTitle />} />',
       '<Route path="/listener/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />',
     ].forEach((route) => expect(publicRoutes).toContain(route));
   });
@@ -89,10 +87,10 @@ describe("approved Reader direct-route contract", () => {
     });
   });
 
-  test("keeps cross-browser review on a live populated detail while checking Dracula as held", () => {
+  test("keeps cross-browser review on a live populated detail while checking Selfish Giant as held", () => {
     const crossBrowserReview = read("../scripts/verify_exact_primary_cross_browser.mjs");
     expect(crossBrowserReview).toContain('publicReaderExposureEnabled ? "a-white-heron" : "dracula"');
-    expect(crossBrowserReview).toContain('["book-detail-held-desktop", "/book/dracula"');
+    expect(crossBrowserReview).toContain('["book-detail-held-desktop", "/book/the-selfish-giant"');
     expect(crossBrowserReview).toContain('"held-book": ["[data-testid=unavailable-title-page]"]');
   });
 });
