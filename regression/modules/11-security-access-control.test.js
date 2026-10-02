@@ -1,3 +1,4 @@
+const { publicMetadataKeys } = require("../lib/public-metadata-policy");
 const { apiUrl, frontendUrl } = require("../utils/envGuard");
 const { request, apiRequest, apiGet } = require("../utils/http");
 const fixture = require("../fixtures/books.manifest.json");
@@ -16,17 +17,6 @@ const forbiddenPublicKeys = new Set([
   "reviewer_comments",
 ]);
 
-function collectKeys(value, out = []) {
-  if (Array.isArray(value)) {
-    value.forEach((item) => collectKeys(item, out));
-  } else if (value && typeof value === "object") {
-    for (const key of Object.keys(value)) {
-      out.push(key);
-      collectKeys(value[key], out);
-    }
-  }
-  return out;
-}
 
 describe("Security, Privacy & Access Control", () => {
   test("public responses include baseline security headers", async () => {
@@ -50,7 +40,7 @@ describe("Security, Privacy & Access Control", () => {
       expect([401, 403, 404]).toContain((await apiGet(`/books/${slug}`)).status);
     }
     const books = (await apiGet("/books")).data;
-    const leakedKeys = collectKeys(books).filter((key) => forbiddenPublicKeys.has(key.toLowerCase()));
+    const leakedKeys = publicMetadataKeys(books).filter((key) => forbiddenPublicKeys.has(key.toLowerCase()));
     expect(leakedKeys).toEqual([]);
   });
 

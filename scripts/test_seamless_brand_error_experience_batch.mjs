@@ -14,13 +14,15 @@ test("prior manifest IDs remain present", () => assert.ok(manifest.states.length
 test("reverse-order filter executes in manifest order", () => assert.deepEqual(selectStateRecords(manifest, [...ids].reverse()).map((s) => s.id), ids));
 test("404 route is not a real route", () => assert.equal(manifest.states.filter((s) => s.route === "/__seamless-brand-review-not-found-344__").length, 2));
 test("selected 410 route exists in tombstone authority", () => assert.match(fs.readFileSync(path.join(root, "scripts/serve_frontend_build.js"), "utf8"), /patterned-wrap-dress/));
-test("static SEO contract exposes only the twenty-four accepted India text releases", () => {
+test("static SEO contract exposes only the twenty-six accepted India text releases", () => {
   const contract = JSON.parse(fs.readFileSync(path.join(root, "frontend/static-seo/controlled-publication-public.json"), "utf8"));
   assert.equal(contract.public_release_held, false);
   assert.deepEqual(
     contract.publications.map((publication) => publication.slug).sort(),
     [
       "a-ghost-story",
+      "book-edfcf810c5",
+      "dracula",
       "a-white-heron",
       "agentic-ai-with-python",
       "radharani",

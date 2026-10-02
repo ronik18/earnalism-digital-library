@@ -39,9 +39,11 @@
     "static_regression_tests": 63,
     "workflow_contract_tests": 46,
     "production_build": "PASS",
-    "static_assertions": 2064
+    "static_assertions": 2064,
+    "focused_final_regression_tests": 29
   },
   "next_action": "Normal protected checks on exact updated existingPR508; no oldhead substitution. Merge two-title candidate only on pass, then deployed revision/canary/canonical-version readback. Next3distinct proposals remain inactive until serialized exact acceptance; missing rewrites alone are not a blocker.",
   "ci_repair_receipt": "static-contract-ci-repair.json",
-  "routing_assessment": "Earlier missing-mapping404/config-blocker inference withdrawn; generatedfilesystem snapshot routes before rewrites. Exactdeployedpaths unobserved; canarystillrequired."
+  "routing_assessment": "Earlier missing-mapping404/config-blocker inference withdrawn; generatedfilesystem snapshot routes before rewrites. Exactdeployedpaths unobserved; canarystillrequired.",
+  "final_regression_repair": "final-regression-repair.json"
 }

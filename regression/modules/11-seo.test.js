@@ -197,6 +197,80 @@ describe("Crawler-visible controlled-release SEO snapshots", () => {
     expect(robots).toContain(`Sitemap: ${SITE_URL}/sitemap.xml`);
   });
 
+  test("sitemap authority requires exact projection hashes, approved manifest and live allowlist", () => {
+    const os = require("os");
+    const crypto = require("crypto");
+    const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "seo-authority-"));
+    try {
+      const script = path.join(temporary, "frontend/scripts/generate-seo-assets.mjs");
+      fs.mkdirSync(path.dirname(script), { recursive: true });
+      fs.copyFileSync(path.join(ROOT, "frontend/scripts/generate-seo-assets.mjs"), script);
+      const packageDir = path.join(temporary, "data/controlled_publications/approved-story");
+      fs.mkdirSync(packageDir, { recursive: true });
+      const write = (relative, value) => { const destination = path.join(temporary, relative); fs.mkdirSync(path.dirname(destination), { recursive: true }); fs.writeFileSync(destination, JSON.stringify(value)); };
+      const metadataPath = "data/controlled_publications/approved-story/public_book.json";
+      write(metadataPath, { slug: "approved-story", publication_status: "DRAFT", is_published: false });
+      const digest = crypto.createHash("sha256").update(fs.readFileSync(path.join(temporary, metadataPath))).digest("hex");
+      const projection = { schema_version: "earnalism.static-seo-public.v2", generated_from: { [metadataPath]: digest }, publications: [{ slug: "approved-story" }] };
+      write("frontend/static-seo/controlled-publication-public.json", projection);
+      const launch = { public_reader_exposure_enabled: true, live_approved_slugs: ["approved-story"] };
+      write("data/controlled_launch.json", launch);
+      const manifest = { slug: "approved-story", rights: { status: "APPROVED" }, reader_release: { status: "APPROVED", exposed: true, qa_status: "QA_PASSED", blockers: [] } };
+      write("data/controlled_publications/approved-story/publication_manifest.json", manifest);
+      const output = path.join(temporary, "output");
+      const generate = () => { execFileSync(process.execPath, [script], { env: { ...process.env, SEO_ASSETS_OUTPUT_DIR: output, REACT_APP_BACKEND_URL: "", REACT_APP_API_URL: "", SEO_API_BASE_URL: "" }, stdio: "pipe" }); return fs.readFileSync(path.join(output, "sitemap.xml"), "utf8"); };
+      expect(generate()).toContain("/book/approved-story");
+      write(metadataPath, { slug: "approved-story", title: "unbound mutation" });
+      expect(generate()).not.toContain("/book/approved-story");
+      write(metadataPath, { slug: "approved-story", publication_status: "DRAFT", is_published: false });
+      write("data/controlled_publications/approved-story/publication_manifest.json", { ...manifest, reader_release: { ...manifest.reader_release, exposed: false } });
+      expect(generate()).not.toContain("/book/approved-story");
+      write("data/controlled_publications/approved-story/publication_manifest.json", manifest);
+      write("data/controlled_launch.json", { ...launch, live_approved_slugs: [] });
+      expect(generate()).not.toContain("/book/approved-story");
+    } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+  });
+
+  test("public contract builder rejects blocked manifests and altered exact artifacts", () => {
+    const os = require("os");
+    const crypto = require("crypto");
+    const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "public-contract-authority-"));
+    try {
+      const script = path.join(temporary, "scripts/generate_static_seo_public_contract.mjs");
+      fs.mkdirSync(path.dirname(script), { recursive: true });
+      fs.copyFileSync(path.join(ROOT, "scripts/generate_static_seo_public_contract.mjs"), script);
+      const directory = path.join(temporary, "data/controlled_publications/approved-story");
+      fs.mkdirSync(directory, { recursive: true });
+      fs.mkdirSync(path.join(temporary, "frontend/static-seo"), { recursive: true });
+      fs.writeFileSync(path.join(temporary, "data/controlled_launch.json"), JSON.stringify({ public_reader_exposure_enabled: true, live_approved_slugs: ["approved-story"] }));
+      const records = {
+        public_book: { slug: "approved-story", title: "Story", author: "Author", publication_status: "DRAFT", is_published: false, audio_enabled: false, audiobook_enabled: false },
+        reader_manifest: { slug: "approved-story", chapter_count: 1, chapters: [{ id: "chapter-001" }] },
+        source_evidence: { source_hash: "a".repeat(64), content_hash: "b".repeat(64), source_name: "Internal edition; review evidence" },
+        approval_evidence: { approved_to_publish: true },
+      };
+      const artifacts = {};
+      for (const [name, record] of Object.entries(records)) {
+        const bytes = JSON.stringify(record);
+        fs.writeFileSync(path.join(directory, name + ".json"), bytes);
+        artifacts[name] = crypto.createHash("sha256").update(bytes).digest("hex");
+      }
+      const manifest = { slug: "approved-story", artifacts, content: { source_hash: "a".repeat(64), content_hash: "b".repeat(64), chapter_count: 1 }, rights: { status: "APPROVED", tier: "A" }, reader_release: { status: "APPROVED", exposed: true, qa_status: "QA_PASSED", blockers: [] }, audio_release: { exposed: false } };
+      const writeManifest = (value) => fs.writeFileSync(path.join(directory, "publication_manifest.json"), JSON.stringify(value));
+      writeManifest(manifest);
+      const run = () => execFileSync(process.execPath, [script], { stdio: "pipe" });
+      expect(run).not.toThrow();
+      const projection = JSON.parse(fs.readFileSync(path.join(temporary, "frontend/static-seo/controlled-publication-public.json"), "utf8"));
+      expect(projection.publications[0].source_display_name).toBe("Rights-cleared edition");
+      expect(projection.generated_from["data/controlled_publications/approved-story/publication_manifest.json"]).toMatch(/^[a-f0-9]{64}$/);
+      writeManifest({ ...manifest, reader_release: { ...manifest.reader_release, blockers: ["unresolved"] } });
+      expect(run).toThrow();
+      writeManifest(manifest);
+      fs.writeFileSync(path.join(directory, "public_book.json"), JSON.stringify({ ...records.public_book, title: "Unbound mutation" }));
+      expect(run).toThrow();
+    } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+  });
+
   test("the static SEO contract is data-driven, fresh, and contains no protected publication data", () => {
     expect(() => execFileSync(process.execPath, ["scripts/generate_static_seo_public_contract.mjs", "--check"], {
       cwd: ROOT,

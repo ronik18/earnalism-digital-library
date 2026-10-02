@@ -1,3 +1,4 @@
+const { publicMetadataKeys } = require("../lib/public-metadata-policy");
 const fs = require("fs");
 const path = require("path");
 
@@ -15,11 +16,6 @@ function sampleBooks(books) {
   return isGoLive() ? books.slice(0, GO_LIVE_BOOK_LIMIT) : books.slice(0, Number(process.env.REGRESSION_PR_BOOK_LIMIT || 8));
 }
 
-function nestedKeys(value) {
-  if (Array.isArray(value)) return value.flatMap(nestedKeys);
-  if (!value || typeof value !== "object") return [];
-  return Object.entries(value).flatMap(([key, item]) => [key, ...nestedKeys(item)]);
-}
 
 describe("Book Integrity & Content Fidelity", () => {
   test("public books endpoint returns published metadata only", async () => {
@@ -37,7 +33,7 @@ describe("Book Integrity & Content Fidelity", () => {
       expect(book.is_published).not.toBe(false);
       expect(book.rights_metadata).toBeUndefined();
       expect(book.upload_notes).toBeUndefined();
-      expect(nestedKeys(book).join(" ")).not.toMatch(/\b(?:source_url|reviewer|private_notes|password_hash|token)\b/i);
+      expect(publicMetadataKeys(book).join(" ")).not.toMatch(/\b(?:source_url|reviewer|private_notes|password_hash|token)\b/i);
     }
   });
 

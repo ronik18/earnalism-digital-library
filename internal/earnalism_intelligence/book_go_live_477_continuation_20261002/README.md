@@ -9,3 +9,7 @@ Routing correction: absent explicit rewrite is not a confirmed404 or config-chan
 Muchiram, bn-059 and Call of the Wild retain inactive proposals and independent passing reviews. Exact Muchiram/bn-059 covers reconciled from intact persisted files with zero GETs; recovery inventories/reviews saved here. Most Dangerous Game remains held for concrete cover-footer conflict. No proposal automatically grants runtime publication. No duplicate external tasks or PR, paid generation, rights inference or unchanged evidence-dead retries.
 
 Next action: reconcile current exact PR508 head, protected checks and isolated Reader/Pass/security fixtures. Merge only on pass; verify deployed revision/canary/canonical-version readback before any live-ready claim. Then serialize exact acceptance of the three distinct next proposals. Preserve all substantial disputes and audio-disabled state.
+
+Final isolated regression repair: exact approved manifests/artifact hashes drive the 26-title sitemap/projection; validated required public-license credit is retained while private keys remain forbidden. Both independent source reviews pass and 29 focused tests pass. Protected checks on the next exact head remain required; production is unobserved.
+
+Seamless exact-head CI independently reached an additional explicit stale 24-title error-experience assertion; corrected to exact26 without replacing the assertion with a self-derived list. Production build PASS:97snapshots/2064assertions.
