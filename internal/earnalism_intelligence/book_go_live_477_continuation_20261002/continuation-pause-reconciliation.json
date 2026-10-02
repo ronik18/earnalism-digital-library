@@ -1,0 +1,25 @@
+{
+  "schema": "earnalism.book-go-live-continuation-pause.v1",
+  "reconciled_at": "2026-10-02T19:28:34Z",
+  "main_sha": "514c9ebcfd95fd69e5cece864e9360c5d21ee7c5",
+  "integration_predecessor_sha": "a4676faa9f9939f8624265bfb85b17931a2acf60",
+  "pr508": {
+    "merged": true,
+    "merge_sha": "c9df35dda7a463f6cb5580ef900068e4cc6b6408",
+    "current_head": "ea3458d5aa78c01f98d25025adc6fad0ab2eab77"
+  },
+  "open_pr_count": 0,
+  "running_actions_count": 0,
+  "queued_actions_count": 0,
+  "other_active_agent_count": 0,
+  "latest_evidence_comment": "https://github.com/ronik18/earnalism-digital-library/issues/477#issuecomment-5959607803",
+  "new_candidate_evidence": false,
+  "status": "PAUSED_FULLY_BLOCKED_PENDING_NEW_EVIDENCE",
+  "pause_confirmed": true,
+  "reason": "Existing prepared evidence queue has no safe activation candidate; repeated unchanged work is prohibited. All substantial review disputes and missing cover-display/publication authority remain held.",
+  "next_action": "Retain all holds; no unchanged retries or new activation PR. Resume onboarding only with new exact cleared-source/Reader package evidence for a missing title, genuine cover-display/publication acceptance for reviewed inactive repairs, or new cover evidence resolving bn-060/the-most-dangerous-game disagreement.",
+  "new_external_tasks": 0,
+  "new_prs": 0,
+  "production_mutations": 0,
+  "audio_exposed": false
+}

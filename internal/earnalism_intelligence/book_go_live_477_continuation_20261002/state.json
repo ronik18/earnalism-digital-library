@@ -66,5 +66,7 @@
   "next_held_inactive_derivative_prep": "next-held-inactive-derivative-prep.json",
   "next_distinct_candidate": null,
   "reviewed_repairs_next_candidate": "reviewed-repairs-next-bn060.json",
-  "current_prepared_evidence_queue": "EXHAUSTED_SAFE_ACTIVATION_CANDIDATES_WITH_CURRENT_EVIDENCE"
+  "current_prepared_evidence_queue": "EXHAUSTED_SAFE_ACTIVATION_CANDIDATES_WITH_CURRENT_EVIDENCE",
+  "continuation_status": "PAUSED_FULLY_BLOCKED_PENDING_NEW_EVIDENCE",
+  "continuation_pause_receipt": "continuation-pause-reconciliation.json"
 }
