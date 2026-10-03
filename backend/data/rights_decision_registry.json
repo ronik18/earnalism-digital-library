@@ -1,6 +1,6 @@
 {
   "schema_version": "earnalism.rights-decision-registry.v1",
-  "registry_id": "india-twenty-nine-title-commercial-entitlement-reader-20261002",
+  "registry_id": "india-thirty-three-title-commercial-entitlement-reader-20261003",
   "accepted_records": {
     "india-20260922-a-ghost-story-reader-release": "caa2538805f8388e3216affae04aa6e3a941541395296d7bab17ed34fd725107",
     "india-20260922-the-tell-tale-heart-reader-release": "39010bea33d4b43790f98af1758fdeadc20625d4ab8df01e247bb143788bec39",
@@ -33,7 +33,11 @@
     "india-20261002-book-edfcf810c5-reader-cover-display-reviewed": "6de4a0e68e50aa11e1ae57850cac61699bbe2e1b810502e8f52ba280d51a8a0b",
     "india-20261002-muchiram-gurer-jibanchorit-reader-cover-display-reviewed": "4bf969237f4b5506cf944d7b8f30202f1208acd3cc30d08d4e38cab24ae6e4e6",
     "india-20261002-bn-059-reader-cover-display-reviewed": "df21f16960c872106574fc3e63f905a6eec0e280cda11dcfd23bb48cb9cb6c5b",
-    "india-20261002-the-call-of-the-wild-reader-cover-display-reviewed": "a278a6fe107423bf2f96c6c61e04f2dc08f16f646a840408f5622fcde0035171"
+    "india-20261002-the-call-of-the-wild-reader-cover-display-reviewed": "a278a6fe107423bf2f96c6c61e04f2dc08f16f646a840408f5622fcde0035171",
+    "india-20261003-the-student-reader-cover-display-reviewed": "aa5f14c6d0ea1aa49f83c81127bbc6bf8f900314827dc5e6151669c86bfa2f24",
+    "india-20261003-the-art-of-money-getting-reader-cover-display-reviewed": "09a110bbb1ba6983743cd2e7566726e753c85b2cdd56715de3a6ca83dbf13dc7",
+    "india-20261003-bn-035-1922-text-reader-exact-cover": "6d197c694a86768a3ffdc74d8f65e6833375519f6b79cdd296bc307119ae17c7",
+    "india-20261003-alices-adventures-in-wonderland-reader-cover-display-reviewed": "cc0a571b73f1ae4b4e19cfeb62c1b88b152fb2145a8f6c943d51156387fad5ae"
   },
   "historical_records": {
     "superseded_runtime_bindings": {
@@ -322,7 +326,47 @@
       "decision_id": "india-20261002-the-call-of-the-wild-reader-cover-display-reviewed",
       "production_readback": "NOT_RUN",
       "authority": "issue #477 comment 5949652699; exact original and delivery-cover reviews; archived backend preimage; release candidate pending protected CI/deployment"
+    },
+    "controlled-the-student": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "decision_id": "india-20261003-the-student-reader-cover-display-reviewed",
+      "production_readback": "NOT_RUN",
+      "authority": "owner prospective acceptance instruction 2026-10-03; two independent exact evidence reviews; normal protected release gates pending"
+    },
+    "controlled-the-art-of-money-getting": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "decision_id": "india-20261003-the-art-of-money-getting-reader-cover-display-reviewed",
+      "production_readback": "NOT_RUN",
+      "authority": "owner prospective acceptance instruction 2026-10-03; two independent exact evidence reviews; normal protected release gates pending"
+    },
+    "controlled-bn-035": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "decision_id": "india-20261003-bn-035-1922-text-reader-exact-cover",
+      "production_readback": "NOT_RUN",
+      "authority": "owner prospective acceptance instruction 2026-10-03; two independent exact evidence reviews; normal protected release gates pending"
+    },
+    "controlled-alices-adventures-in-wonderland": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "decision_id": "india-20261003-alices-adventures-in-wonderland-reader-cover-display-reviewed",
+      "production_readback": "NOT_RUN",
+      "authority": "owner prospective acceptance instruction 2026-10-03; two independent exact evidence reviews; normal protected release gates pending"
     }
   },
-  "non_activation_note": "Twenty-nine exact controlled India text editions are configured for the existing preview and Reading Pass path. Dracula and book-edfcf810c5 passed protected CI and deployed; their India canonical-version fields remain explicitly unobserved from this non-India controller under the conditional observation waiver recorded in issue #477 comment 5956233725. The three later 20261002 additions remain pending protected CI, deployment, canary and truthful active-version readback. Existing source approvals, customer records and versions are preserved. Audio remains disabled."
+  "non_activation_note": "Thirty-three exact India text editions are configured as a release candidate; four Oct3 additions remain pending protected checks/deployment/canary. Production observations and canonical versions are not inferred. Audio disabled; existing versions preserved."
 }

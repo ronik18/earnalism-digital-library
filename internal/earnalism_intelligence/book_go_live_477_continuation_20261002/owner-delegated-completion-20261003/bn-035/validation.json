@@ -1,0 +1,235 @@
+{
+  "slug": "bn-035",
+  "status": "PASS_LOCAL_IDENTITY_AND_EVIDENCE_BINDING_PENDING_TWO_NEW_INDEPENDENT_REVIEWS",
+  "preimage_component_count": 6,
+  "preimage_checksum_count": 17,
+  "checks": [
+    {
+      "kind": "preimage_decision_component",
+      "file": "public_book.json",
+      "sha256": "5356ea9d89eb2539798a05d37106db47a8b19d4a027f81e0e1b2c80f7beae7e2",
+      "status": "PASS"
+    },
+    {
+      "kind": "preimage_decision_component",
+      "file": "reader_manifest.json",
+      "sha256": "b1a64daa1c5bdd26b24544de0911bb687429cdab2cfd8382b5cc6dcd99ab81f3",
+      "status": "PASS"
+    },
+    {
+      "kind": "preimage_decision_component",
+      "file": "source_evidence.json",
+      "sha256": "da0efa2033f4137eabe66bffeb1ea159c314c1c06fbc491989308ef08389b812",
+      "status": "PASS"
+    },
+    {
+      "kind": "preimage_decision_component",
+      "file": "approval_evidence.json",
+      "sha256": "db4cb818ce5228c52049f14201176f6c9a22de851efb9123c965f8a4bf6b5c8b",
+      "status": "PASS"
+    },
+    {
+      "kind": "preimage_decision_component",
+      "file": "checksum_manifest.json",
+      "sha256": "9c5fbd1f79b7093e5ae06275c1b11b725b273e9133b541a2dc2ca57c734897e8",
+      "status": "PASS"
+    },
+    {
+      "kind": "preimage_decision_component",
+      "file": "publication_manifest.json",
+      "sha256": "f5f3f0d79c1743254065595e6d2e23b27993fd027f4b3e46a4001c8950f105bb",
+      "status": "PASS"
+    },
+    {
+      "kind": "preimage_checksum",
+      "file": "approval_evidence.json",
+      "sha256": "db4cb818ce5228c52049f14201176f6c9a22de851efb9123c965f8a4bf6b5c8b",
+      "status": "PASS"
+    },
+    {
+      "kind": "preimage_checksum",
+      "file": "chapters/chapter-001.json",
+      "sha256": "8b8d61b5e8d8ea872a4ddd62ff269ebb7ae47ab19886f165eb5461ce1f7832cf",
+      "status": "PASS"
+    },
+    {
+      "kind": "preimage_checksum",
+      "file": "chapters/chapter-002.json",
+      "sha256": "dd26feef4ad0d7a008e77cf94447b62d141f81f0787c73ff84ad1135ffe4bc5e",
+      "status": "PASS"
+    },
+    {
+      "kind": "preimage_checksum",
+      "file": "chapters/chapter-003.json",
+      "sha256": "659c8481e4743512a7e5af1fdb82b130eaa669a49c8081a1b4eacc8c4cb61963",
+      "status": "PASS"
+    },
+    {
+      "kind": "preimage_checksum",
+      "file": "chapters/chapter-004.json",
+      "sha256": "6af0f4316fcc6ef2bd487e73bb09111d997bddb3c34dd9a205f5e96d5b108d39",
+      "status": "PASS"
+    },
+    {
+      "kind": "preimage_checksum",
+      "file": "chapters/chapter-005.json",
+      "sha256": "2b533682d3af2bbb7e7b008ce9001b65c113ed80dca4ccc1fd93c0c0d58d02de",
+      "status": "PASS"
+    },
+    {
+      "kind": "preimage_checksum",
+      "file": "chapters/chapter-006.json",
+      "sha256": "19ef40eb701519b6ae82a5bae9e2aaa2dcaae1234afa1673bec3ec6246017905",
+      "status": "PASS"
+    },
+    {
+      "kind": "preimage_checksum",
+      "file": "chapters/chapter-007.json",
+      "sha256": "61f2c8a5f7b6da44e283dea384c6266ed0fa0bda112f52278b250adadd5720ba",
+      "status": "PASS"
+    },
+    {
+      "kind": "preimage_checksum",
+      "file": "chapters/chapter-008.json",
+      "sha256": "b779bc2e719702f61de35c73efd8e71919c3dd9ccce34c7c344d3618e1d50fb2",
+      "status": "PASS"
+    },
+    {
+      "kind": "preimage_checksum",
+      "file": "chapters/chapter-009.json",
+      "sha256": "58c760f8b38fcc0ccf72dc5276bb5e7da50e4795a0205a51d66b269e0b5d043a",
+      "status": "PASS"
+    },
+    {
+      "kind": "preimage_checksum",
+      "file": "chapters/chapter-010.json",
+      "sha256": "d05249da8437ed1a9eea0361a47834f36868cc73f78e316855e2ca0415c2c6c6",
+      "status": "PASS"
+    },
+    {
+      "kind": "preimage_checksum",
+      "file": "highlight_sync.json",
+      "sha256": "3b4e3c6225aed4e7bfb433a896fd324c210f7e71593f6128b2152624f31964fb",
+      "status": "PASS"
+    },
+    {
+      "kind": "preimage_checksum",
+      "file": "license_notice.json",
+      "sha256": "0f9f6cae57e92deb5473bf556c12cb6be663a9833b87fddd340279f1f6e5c8d8",
+      "status": "PASS"
+    },
+    {
+      "kind": "preimage_checksum",
+      "file": "public_book.json",
+      "sha256": "5356ea9d89eb2539798a05d37106db47a8b19d4a027f81e0e1b2c80f7beae7e2",
+      "status": "PASS"
+    },
+    {
+      "kind": "preimage_checksum",
+      "file": "publication_authorization.json",
+      "sha256": "b75a1fab91c4909eb9806e00573f744e8ccbd0bf653ae4c030bd1bd337726a17",
+      "status": "PASS"
+    },
+    {
+      "kind": "preimage_checksum",
+      "file": "reader_manifest.json",
+      "sha256": "b1a64daa1c5bdd26b24544de0911bb687429cdab2cfd8382b5cc6dcd99ab81f3",
+      "status": "PASS"
+    },
+    {
+      "kind": "preimage_checksum",
+      "file": "source_evidence.json",
+      "sha256": "da0efa2033f4137eabe66bffeb1ea159c314c1c06fbc491989308ef08389b812",
+      "status": "PASS"
+    },
+    {
+      "kind": "primary_or_source_record",
+      "file": "internal/legal/bengali_text_preparation_20261002/author_fact_receipts.json",
+      "sha256": "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+      "status": "PASS"
+    },
+    {
+      "kind": "primary_or_source_record",
+      "file": "internal/legal/catalogue_clearance_20261002/bengali/bn-035-multichapter-source-comparison.json",
+      "sha256": "f11917468b84b6b4fa9c73dc07a466fb4691fb70389fe48662c9eda0c3af34f9",
+      "status": "PASS"
+    },
+    {
+      "kind": "primary_or_source_record",
+      "file": "internal/legal/catalogue_clearance_20261002/bengali/bn-035-primary-imprint-pages.json",
+      "sha256": "1b35fe1eb64edecb32c990a34b83da69824c4e0d9e9d316c71bd06ecd785fa8c",
+      "status": "PASS"
+    }
+  ],
+  "chapter_count": 10,
+  "all_chapter_content_hashes": "PASS",
+  "reader_aggregate_sha256": "c8216c11a20f474ab5d95102950c52fe2cf8e30ea5a98c429427445a15ee572c",
+  "existing_source_comparison": {
+    "canonical_chapter_count": 10,
+    "source_leaf_count": 10,
+    "all_existing_exact": true,
+    "artifact_sha256": "f11917468b84b6b4fa9c73dc07a466fb4691fb70389fe48662c9eda0c3af34f9"
+  },
+  "assets": {
+    "front": {
+      "original_file": "covers/front-original.png",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270682/earnalism/covers/front/bn-035_front_1600x2400.png",
+      "original_sha256": "ffb58e131d7b216d6c56c018dd3941a0a92c02e45a3a8ee6f553443c1df92cb7",
+      "accepted_file": "covers/bn-035-front-fc455a18.png",
+      "accepted_sha256": "fc455a183f3443fc2511410428b92772df759d88b07ab021b36275e96055b93d",
+      "accepted_bytes": 79640,
+      "dimensions": [
+        1600,
+        2400
+      ],
+      "delivery_url": "https://theearnalism.com/assets/books/bn-035/bn-035-front-fc455a18.png",
+      "delivery_mode": "EXACT_REVIEWED_PNG_BYTES_NO_NEW_RECOMPRESSION",
+      "production_observed": false
+    },
+    "back": {
+      "original_file": "covers/back-original.png",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270683/earnalism/covers/back/bn-035_back_1600x2400.png",
+      "original_sha256": "38a13d0d6a16e4cc6e58d228bb2fcb12702b571a3ae8d0667b7a685220653aee",
+      "accepted_file": "covers/bn-035-back-0cbeb592.png",
+      "accepted_sha256": "0cbeb592415616262a46a818bc663f0226588c1f89d1fc9c9794e9469ab4c706",
+      "accepted_bytes": 126672,
+      "dimensions": [
+        1600,
+        2400
+      ],
+      "delivery_url": "https://theearnalism.com/assets/books/bn-035/bn-035-back-0cbeb592.png",
+      "delivery_mode": "EXACT_REVIEWED_PNG_BYTES_NO_NEW_RECOMPRESSION",
+      "production_observed": false
+    }
+  },
+  "new_component_bindings": {
+    "source_evidence": "da0efa2033f4137eabe66bffeb1ea159c314c1c06fbc491989308ef08389b812",
+    "publication_manifest": "9a92c853bd0163bf775cdcfd720df5a7722f0eea3cb3634429d5e6d881a169f0",
+    "reader_manifest": "b1a64daa1c5bdd26b24544de0911bb687429cdab2cfd8382b5cc6dcd99ab81f3",
+    "approval_evidence": "895dcb6d7c02a2ebbad6f2e21c20a68fd1a0a9c97db1e9669b1b6fc8ae0c45e2",
+    "public_book": "f7d9193bf3b44d0693894ef6fffd2250438031f4a27c8e50165282a0fae98117",
+    "checksum_manifest": "16f63c0363d72bd1bba528c5c793869df80200e03e4fd81500a1fbb0ba5138ea",
+    "cover_provenance": "dc1ace10542ffb1d85056a65daedf97924cd3cab478fccbd1d8fe769d92669bc"
+  },
+  "decision_file_sha256": "cc7bb48eb12b3589ca4033d944993dd5891e528ff806800d77a2bfbd84d3a544",
+  "decision_canonical_registry_sha256": "cb646d915efb88a90772cd6994f932a1305bcc391a3753d011884e65f72f9ba5",
+  "unchanged_files": [
+    "chapters/chapter-001.json",
+    "chapters/chapter-002.json",
+    "chapters/chapter-003.json",
+    "chapters/chapter-004.json",
+    "chapters/chapter-005.json",
+    "chapters/chapter-006.json",
+    "chapters/chapter-007.json",
+    "chapters/chapter-008.json",
+    "chapters/chapter-009.json",
+    "chapters/chapter-010.json",
+    "highlight_sync.json",
+    "license_notice.json",
+    "reader_manifest.json",
+    "source_evidence.json"
+  ],
+  "audio_exposed": false,
+  "shared_repository_mutations": false,
+  "next_gate": "TWO_INDEPENDENT_NEW_PACKAGE_BINDING_REVIEWS_THEN_SERIALIZED_INTEGRATION"
+}

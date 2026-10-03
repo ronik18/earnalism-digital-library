@@ -1,0 +1,43 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-bn-035-1922-text-reader-exact-cover",
+  "edition_id": "bn-035",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "source_evidence": "da0efa2033f4137eabe66bffeb1ea159c314c1c06fbc491989308ef08389b812",
+    "publication_manifest": "9a92c853bd0163bf775cdcfd720df5a7722f0eea3cb3634429d5e6d881a169f0",
+    "reader_manifest": "b1a64daa1c5bdd26b24544de0911bb687429cdab2cfd8382b5cc6dcd99ab81f3",
+    "approval_evidence": "895dcb6d7c02a2ebbad6f2e21c20a68fd1a0a9c97db1e9669b1b6fc8ae0c45e2",
+    "public_book": "f7d9193bf3b44d0693894ef6fffd2250438031f4a27c8e50165282a0fae98117",
+    "checksum_manifest": "16f63c0363d72bd1bba528c5c793869df80200e03e4fd81500a1fbb0ba5138ea",
+    "cover_provenance": "dc1ace10542ffb1d85056a65daedf97924cd3cab478fccbd1d8fe769d92669bc"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "cover_display",
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T03:59:44.363178+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Exact BoroDidi Ashadh1329/1922 Sarat Chandra author edition; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1938; India Section22 literary term expired end1998. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held. Earlier cover deferral superseded prospectively for these exact reviewed components under the 2026-10-03 owner instruction. Source/literary/license rights unchanged; audio and other editions excluded. Serialized runtime release gates remain held.",
+  "evidence_sha256": [
+    "1b35fe1eb64edecb32c990a34b83da69824c4e0d9e9d316c71bd06ecd785fa8c",
+    "f11917468b84b6b4fa9c73dc07a466fb4691fb70389fe48662c9eda0c3af34f9",
+    "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "0f9f6cae57e92deb5473bf556c12cb6be663a9833b87fddd340279f1f6e5c8d8",
+    "b75a1fab91c4909eb9806e00573f744e8ccbd0bf653ae4c030bd1bd337726a17",
+    "dc1ace10542ffb1d85056a65daedf97924cd3cab478fccbd1d8fe769d92669bc",
+    "2a74da07b5b5a5b972168240c905668aa1c0892e035ee671626efcc4c6de95bf",
+    "0619258bca8b1b081a36ebce7bba1ab43ed82c74810653bf2922ced78b7fd1fe",
+    "9db4673c7c01fb18469ec498ace5583abf4d2a30d33d57efcf4826a39a7672c1"
+  ],
+  "accepted_by": "Automated bn-035 acceptance-preparation executor under explicit 2026-10-03 prospective owner delegation and issue #477 comment 5949652699. No human legal reviewer, signature or production observation is claimed.",
+  "conditions_satisfied": true
+}

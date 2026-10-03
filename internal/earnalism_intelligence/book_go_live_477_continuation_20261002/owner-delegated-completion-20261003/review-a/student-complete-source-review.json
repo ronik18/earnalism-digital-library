@@ -1,0 +1,20 @@
+{
+  "schema": "earnalism.independent-selected-story-boundary-verification.v1",
+  "reviewer": "Independent automated reviewer A",
+  "slug": "the-student",
+  "recorded_on": "2026-10-03",
+  "status": "PASS_EXACT_COMPLETE_SELECTED_NARRATIVE",
+  "source_url": "https://www.gutenberg.org/cache/epub/1944/pg1944.txt",
+  "source_sha256": "fd7c69daa6080772e42bb26c21330c1dc1c5fb3967f40c23789f51e5c260c82f",
+  "source_bytes": 439539,
+  "source_file": "/workspace/scratch/181ef0a25f05/new-acceptance-review-a/pg1944-verified-source.txt",
+  "selection_start_heading": "THE STUDENT",
+  "selection_end_next_heading": "IN THE RAVINE",
+  "normalized_whitespace_nfc_equality": true,
+  "chapter_content_sha256": "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90",
+  "method": "One permitted read-only recovery GET. Exact expected official source bytes; complete body after last THE STUDENT heading through next IN THE RAVINE heading compared to exact canonical chapter under NFC plus whitespace only, no lexical/punctuation normalization.",
+  "unchanged_reader_chapter": true,
+  "historical_content_raw_source_sha256": "50cd842bb537b627a1cd4b8c2190f171b9312508b7a3613cb77379d6fb012e09",
+  "historical_content_raw_scope": "Only selected-story import preimage, not the official collection source. Preserved and not substituted.",
+  "production_observed": false
+}

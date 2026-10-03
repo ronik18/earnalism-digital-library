@@ -1,0 +1,35 @@
+{
+  "schema": "earnalism.independent-cover-delivery-review.v1",
+  "slug": "the-student",
+  "reviewer": "Independent automated reviewer A",
+  "recorded_on": "2026-10-03",
+  "status": "PASS_EXACT_WEBP_DELIVERY_DECODE_AND_VISUAL_COMPLIANCE",
+  "assets": {
+    "front": {
+      "sha256": "7c5504f1e334973eef65969715d5d2f7bd459c4400cdf569f4b89a3bd50de04e",
+      "bytes": 21466,
+      "dimensions": [
+        800,
+        1200
+      ]
+    },
+    "back": {
+      "sha256": "47c93f26fed5564a34188fdde072f1242728f56c5f1af75a8ec445fe3250ffc3",
+      "bytes": 34462,
+      "dimensions": [
+        800,
+        1200
+      ]
+    }
+  },
+  "checks": {
+    "complete_decode": "PASS",
+    "front_title_author": "READABLE_COMPLETE",
+    "back_copy": "READABLE_COMPLETE",
+    "no_new_clipping_or_artifacts": "PASS",
+    "small_delivery_budget": "PASS"
+  },
+  "scope": "Bounded deterministic delivery only; accepted original PNG components unchanged. Updated derivation/decision package still requires binding check.",
+  "production_observed": false,
+  "delivery_receipt_sha256": "f0f665c33b428a7792efca61c2ddca444e680aae8f2745f5b2f80189faa02fdc"
+}

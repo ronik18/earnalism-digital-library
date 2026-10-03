@@ -1,14 +1,30 @@
 {
   "slug": "the-art-of-money-getting",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-10-03T04:12:32.330374+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "872ae423202a4b8f2235d07970f57ece66c251ad112b6212568f08f918dd6137"
+      "sha256": "b01828f02b11eed2f6540fe0c7d36276f3a7eb0bd020fedbfe8779093aa3c627"
     },
     {
       "file": "chapters/chapter-001.json",
       "sha256": "04edd10d202a6f1b8e7c1c35308f728f1768e1db656080fa9ae49d559761d21f"
+    },
+    {
+      "file": "cover_delivery_derivation.json",
+      "sha256": "a9fb9bda228e99127d71ca26801f56c8341f279bc994c0c497a4d5e4dd742a22"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "0c6f089010c28c16ed21fe97b51cc3a62943fecaa7accfdac7d9e8a11eafdcbf"
+    },
+    {
+      "file": "covers/back.png",
+      "sha256": "06296b292fc91f246ab4c6420e5b8e41f4f21aa0f1929234ea7ecbe718b80b4a"
+    },
+    {
+      "file": "covers/front.png",
+      "sha256": "337639ad0378bec91318d03711bbb0a1603cc7628587cc53158241d81de5c109"
     },
     {
       "file": "highlight_sync.json",
@@ -16,19 +32,31 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "253c7b38ae5815549018228ab6723139dcce22f880f04ba1a3a70ce65e334d88"
+      "sha256": "5c93a7dcd6ebb991b4cf97b3898091081e1632b70c7499511011b7ef3c5c26d1"
     },
     {
       "file": "publication_authorization.json",
-      "sha256": "802fa215c5935f25ceefe9c94ef88067e8385906cc9c8a9b558ee6b67227fdf6"
+      "sha256": "7a957a9ce6b7bd8dd69e5fa8c529303ca363317cfa0b375cdcf58f3d961e638e"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "29536b26759f9e967efac4eba42447cb6b17943f9ee99bb797b48bba76e10fec"
+      "sha256": "3837eeaad4e421a65e2a2a4034407e4054c2183f6d2cbba33c1b7453bd9f3291"
+    },
+    {
+      "file": "review_evidence/artmoney-delivery-review-a.json",
+      "sha256": "20a39d64886bd053c9f7b6518e380957ca47990b2837c4d4d0c30624b38715cd"
+    },
+    {
+      "file": "review_evidence/artmoney-delivery-review-b.json",
+      "sha256": "fdb24286a7f7b5d646871ec49d014c32959c29d430bd5ab33e3b1b0a6f578644"
     },
     {
       "file": "source_evidence.json",
       "sha256": "1de370a2d070b6d45231c688d02cce0bc8a3e9a0f2ee734807e54befd55d1034"
+    },
+    {
+      "file": "source_integrity_validation.json",
+      "sha256": "df30c8ea0997c9d1f221d9ca7290fdcd319bdec4f45778e774e442454f15a804"
     }
   ]
 }

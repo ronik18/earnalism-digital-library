@@ -1,0 +1,125 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "alices-adventures-in-wonderland",
+  "owner_design_fact": {
+    "source": "/workspace/scratch/006ea59bb0f7/book-go-live-477/controller-corrections.json",
+    "sha256": "24e8f7f409db65ab0c4b5f3bf1a1d10072f3c6634d765ba2abfb118740a569b6",
+    "statement": "Owner states all front and back covers are designed by the owner.",
+    "scope": "COVER_DESIGN_ONLY_NOT_TEXT_RIGHTS_OR_RUNTIME_RELEASE"
+  },
+  "owner_design_fact_preservation": "Existing campaign-wide owner-design declaration retained unchanged; no ownership/right facts newly inferred.",
+  "edition_binding": {
+    "source_sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+    "reader_content_sha256": "5629f655398205d45c0b7bba128ada0849d46e5148aa9b6553636f7d4d7e8812",
+    "chapter_count": 12,
+    "text_decision_id": "india-20261002-alices-adventures-in-wonderland-pg11-noncover-text",
+    "scope": "Same exact twelve-chapter text, source evidence and historical versions retained."
+  },
+  "assets": [
+    {
+      "kind": "owner-front-cover",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902722/earnalism/covers/front/cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
+      "sha256": "15c92a333213db88902d003164570e7f8c58040e689dfe0acfc6b6e7a1ff2811",
+      "bytes": 3174029,
+      "width": 1024,
+      "height": 1536,
+      "candidate_path": "covers/alices-adventures-in-wonderland-front-15c92a33.png",
+      "delivery_url": "https://theearnalism.com/assets/books/alices-adventures-in-wonderland/alices-adventures-in-wonderland-front-15c92a33.png",
+      "lineage": "Exact unchanged owner cover bytes"
+    },
+    {
+      "kind": "owner-back-cover-original",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902735/earnalism/covers/back/back_cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
+      "sha256": "22318a92b3de98f2f2d68402d36255142107ff500f24de2022fcaf14a43f0e6f",
+      "bytes": 3492903,
+      "width": 1024,
+      "height": 1536,
+      "candidate_path": "covers/original-back.png",
+      "display_authorized": false,
+      "reason": "Unverified quotation/attribution removed by exact reviewed derivative"
+    },
+    {
+      "kind": "owner-back-cover-removal-only-derivative",
+      "sha256": "3838ee24fac30cd4f9e3147eda722cb43fef349de19b6e0cdd6be659f58d5c54",
+      "bytes": 3122954,
+      "width": 1024,
+      "height": 1536,
+      "candidate_path": "covers/alices-adventures-in-wonderland-back-3838ee24.png",
+      "delivery_url": "https://theearnalism.com/assets/books/alices-adventures-in-wonderland/alices-adventures-in-wonderland-back-3838ee24.png",
+      "parent_sha256": "22318a92b3de98f2f2d68402d36255142107ff500f24de2022fcaf14a43f0e6f",
+      "lineage": "Existing verified metadata description replaces unsupported quotation; illustration/artwork retained, no new authored copy or generation."
+    }
+  ],
+  "derivative_receipt": {
+    "path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/reviewed-inactive-repair-sources/alice/receipt.json",
+    "sha256": "3adc829fcc313be80d68f06248e3841853b6361ae47f4e1821d097d760d4fc4b",
+    "recovered_sha256": "3838ee24fac30cd4f9e3147eda722cb43fef349de19b6e0cdd6be659f58d5c54",
+    "exact_reviewed_hash_reproduced": true,
+    "script_path_substitution_only": true,
+    "original_render_script_sha256": "9ade066b326293c8b8b209660fd1aaf906394b29bb5577028bee7b5f506c5c76",
+    "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027"
+  },
+  "visual_review_reuse": {
+    "record_path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/reviewed-repairs-next-bn060.json",
+    "record_sha256": "0619258bca8b1b081a36ebce7bba1ab43ed82c74810653bf2922ced78b7fd1fe",
+    "a": "PASS_INACTIVE_ONLY",
+    "b": "PASS_INACTIVE_ONLY",
+    "new_visual_reviews_run": false,
+    "scope": "Exact recovered unchanged previously reviewed components; independent new acceptance/package review remains required."
+  },
+  "removed_copy": {
+    "text": "Imagination is the only weapon in the war against reality.",
+    "attribution": "Lewis Carroll",
+    "repository_evidence": "ABSENT_FROM_REPRESENTED_CHAPTERS_AND_PACKAGE_EVIDENCE; PRESENT_ONLY_IN_ORIGINAL_BACK_COVER_BITMAP_AND_PAIR_C_HOLD_REVIEW",
+    "origin_status": "UNVERIFIED"
+  },
+  "replacement_copy": {
+    "source_file": "data/controlled_publications/alices-adventures-in-wonderland/public_book.json",
+    "source_component_sha256": "245188f965b58da793650daa0afc5a2eff80a0a935f15a36b2334d76a72447dc",
+    "source_field": "short_description",
+    "text": "A curious girl tumbles down a rabbit hole into a fantastical world of illogical creatures and absurd rules.",
+    "new_copy_authored": false,
+    "cover_approval_inferred": false
+  },
+  "territories": [
+    "IN"
+  ],
+  "commercial_use_authorized": true,
+  "status": "ACCEPTED_LOCAL_COMPONENT_PREPARATION_ONLY",
+  "accepted_by": "Automated serialized integration controller under the product owner directive in issue #477 comment 5949652699 and the direct prospective acceptance instruction 2026-10-03; no human signature inferred.",
+  "accepted_at": "2026-10-03T04:12:32.330374+00:00",
+  "prior_procedural_deferral_superseded_by": "Owner explicit prospective acceptance delegation 2026-10-03; prior records preserved in preimages.",
+  "audio_authorized": false,
+  "runtime_release_authorized": false,
+  "publication_activation_authorized": false,
+  "limitation": "No source, legal signature, visual review, production delivery/readback, full-edition or runtime observation manufactured.",
+  "delivery_remediation": {
+    "receipt_sha256": "d3a3fd2c1a1d2a3367063ade99074a9a896258d2a6316c1d47a041678e22c84e",
+    "status": "TWO_FRESH_EXACT_DELIVERY_REVIEWS_PASS",
+    "source_acceptance_unchanged": true,
+    "front_and_back_original_png_preserved": true,
+    "bounded_remediation_attempt": 1,
+    "source_assets": {
+      "front": "15c92a333213db88902d003164570e7f8c58040e689dfe0acfc6b6e7a1ff2811",
+      "back": "3838ee24fac30cd4f9e3147eda722cb43fef349de19b6e0cdd6be659f58d5c54"
+    },
+    "delivery_assets": {
+      "front": "5fa6ee0698360743214ad601df0a73b6181ec168346a6bb0580edea2a6c30a2e",
+      "back": "a588597bb1f38dd1d8bdc777167d825ea157ba1856efdc6d1f4b2968e7a99bf8"
+    },
+    "independent_reviews": [
+      {
+        "path": "evidence/alice-delivery-review-a.json",
+        "sha256": "1399981c10b0f0aaa93ff245f2676f192b00ae09c4528f0e290700215fc5fcef",
+        "result": "PASS"
+      },
+      {
+        "path": "evidence/alice-delivery-review-b.json",
+        "sha256": "3afb6e0614e6c61dc941f5076c8d42d2bb11cdf6672634af3fd78acafb1bb8cb",
+        "result": "PASS"
+      }
+    ],
+    "accepted_delivery_component_sha256": "34149ba85f2b8b78e39e42da8f115c191a2653a41e7c25dd9046c5e0f2520cbe"
+  },
+  "production_observed": false
+}

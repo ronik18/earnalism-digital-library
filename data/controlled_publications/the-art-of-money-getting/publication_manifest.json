@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-art-of-money-getting",
   "title": "The Art of Money Getting",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-10-03T04:12:32.330374+00:00",
   "content": {
     "source_hash": "ccf68ee545e68995f88d4cd2f534ecae9bf731b8996118d34b5a10bfc4958061",
     "content_hash": "f3c4db2a3c551518ebd4302e7409797eb49f0ff94470ebfbc4b800b900a44b61",
@@ -28,14 +28,14 @@
     "evidence_sha256": "1de370a2d070b6d45231c688d02cce0bc8a3e9a0f2ee734807e54befd55d1034"
   },
   "reader_release": {
-    "status": "READY_FOR_APPROVAL",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273638/earnalism/covers/front/the-art-of-money-getting_front_1600x2400.png",
+    "cover_url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-337639ad-800.webp",
     "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -44,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "253c7b38ae5815549018228ab6723139dcce22f880f04ba1a3a70ce65e334d88",
-    "reader_manifest": "29536b26759f9e967efac4eba42447cb6b17943f9ee99bb797b48bba76e10fec",
+    "public_book": "5c93a7dcd6ebb991b4cf97b3898091081e1632b70c7499511011b7ef3c5c26d1",
+    "reader_manifest": "3837eeaad4e421a65e2a2a4034407e4054c2183f6d2cbba33c1b7453bd9f3291",
     "source_evidence": "1de370a2d070b6d45231c688d02cce0bc8a3e9a0f2ee734807e54befd55d1034",
-    "approval_evidence": "872ae423202a4b8f2235d07970f57ece66c251ad112b6212568f08f918dd6137"
+    "approval_evidence": "b01828f02b11eed2f6540fe0c7d36276f3a7eb0bd020fedbfe8779093aa3c627"
   },
-  "manifest_sha256": "809b624cefe8adbc000f15534fcfe369fa9026e8eef610c0e30eeadf0fd8113c"
+  "manifest_sha256": "ace585b0a821dde1b06181a218dcb76a757da8f78e45f793a9dd7d0efdcfa1d8"
 }

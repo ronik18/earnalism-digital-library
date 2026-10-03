@@ -1,0 +1,23 @@
+{
+  "schema": "earnalism.independent-exact-cover-review.v1",
+  "reviewer": "Independent reviewer B automated executor",
+  "slug": "the-student",
+  "recorded_on": "2026-10-03",
+  "status": "PASS_FRESH_VISUAL_EXACT_NEW_COMPONENTS",
+  "front_sha256": "3fcf62ed1bbb278156ebef7101cd5c1b988a754368529566a1e9d3cfffd5d2fd",
+  "back_sha256": "343fa412c76a916c70f2f893465f9c337f1d464b326bb08fb5d2a08351762ab1",
+  "receipt_sha256": "1cf8b07bbc675b40e63ac73d0de143fb6e87a6cce2d2d84071f0e0bd30bf9bb1",
+  "checks": {
+    "full_PNG_decode": "PASS",
+    "run1_vs_separate_verification_byte_identity": "PASS",
+    "RGB_pixels_outside_documented_masks_unchanged": "PASS",
+    "exact_existing_metadata_copy": "PASS",
+    "title_author_and_back_copy_legible_complete": "PASS",
+    "footer_safe_and_no_text_occlusion": "PASS",
+    "false_LIVE_audio_or_rights_claim_absent": "PASS"
+  },
+  "earlier_back_run2": "TRUNCATED_CORRUPTED_FILE_EXCLUDED_PRESERVED_NOT_REVIEWED_OR_ACCEPTED",
+  "scope": "Exact visual and lineage review only; no publication or production observation. Independent new package binding review remains required.",
+  "historical_derivative_reviews_reused": false,
+  "production_observed": false
+}

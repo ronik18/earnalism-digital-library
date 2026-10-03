@@ -1,0 +1,57 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-the-art-of-money-getting-reader-cover-display-reviewed",
+  "edition_id": "the-art-of-money-getting",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "39d671eeeecf68b94d20560130723986131377df22d84f276afab8e03bdb2bbf",
+    "reader_manifest": "3837eeaad4e421a65e2a2a4034407e4054c2183f6d2cbba33c1b7453bd9f3291",
+    "source_evidence": "1de370a2d070b6d45231c688d02cce0bc8a3e9a0f2ee734807e54befd55d1034",
+    "approval_evidence": "5ec63f60366cc5a3712c665bd12d1518d07d919eb766de5b1157c7cf05315d6d",
+    "checksum_manifest": "a1b4f71289cd7fc1f6d1d4a7e98928aefb8f52616703301fc7f38a8347464b52",
+    "publication_manifest": "dfe56b99f53446db4cdb90a6a1f600bbe34d147a27675d18c63a1e4624511ce5",
+    "cover_provenance": "06313ba396a15f6ae2d9a272b01d0eedff59c63623f4215bb634cb68e9ad1bd0",
+    "cover_front_asset": "337639ad0378bec91318d03711bbb0a1603cc7628587cc53158241d81de5c109",
+    "cover_back_asset": "06296b292fc91f246ab4c6420e5b8e41f4f21aa0f1929234ea7ecbe718b80b4a",
+    "cover_delivery_derivation": "a9fb9bda228e99127d71ca26801f56c8341f279bc994c0c497a4d5e4dd742a22",
+    "cover_front_delivery": "b1fd6a8d2b2f6a22f5eb6e2f76ed3602c5093757f82610a77ff7c2da4984f4f2",
+    "cover_back_delivery": "42d362be686b5a23656c87b49f29e4850f02a08311374ef8fd195a93b343aeb8",
+    "cover_delivery_review_a": "20a39d64886bd053c9f7b6518e380957ca47990b2837c4d4d0c30624b38715cd",
+    "cover_delivery_review_b": "fdb24286a7f7b5d646871ec49d014c32959c29d430bd5ab33e3b1b0a6f578644"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T04:03:12.455271+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Reuse existing India text decision india-20261002-the-art-of-money-getting-pg8581-noncover-text without transferring historical approvals. Existing Barnum source, text/rights/license facts and content are unchanged. Add exact owner-designed front/back derivative lineage, byte-identical two-review passing PNGs, full selected-work source equality and new prospective automated cover/publication acceptance under owner delegation 2026-10-03. IN commercial text Reader and cover display only; audio and other editions/territories excluded; integration and production gates separate. One bounded 800x1200 WebP delivery derivation has two fresh independent exact-hash visual/decode/legibility reviews PASS, now bound to this local draft. No production state inferred.",
+  "evidence_sha256": [
+    "802fa215c5935f25ceefe9c94ef88067e8385906cc9c8a9b558ee6b67227fdf6",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "9c3ad2f058cfabcc8df405127e0ed9db895b07bc81221fdd48d6681bc7d9999e",
+    "ccf68ee545e68995f88d4cd2f534ecae9bf731b8996118d34b5a10bfc4958061",
+    "f3c4db2a3c551518ebd4302e7409797eb49f0ff94470ebfbc4b800b900a44b61",
+    "a875fdbf276a67ee0749c12498108203f23cde50f4021842f06389028edc6567",
+    "802fa215c5935f25ceefe9c94ef88067e8385906cc9c8a9b558ee6b67227fdf6",
+    "4878e356f1b77ead3d89ecc17a9965cda10ca1077d14e574dc5d81be69c6a446",
+    "0619258bca8b1b081a36ebce7bba1ab43ed82c74810653bf2922ced78b7fd1fe",
+    "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "df30c8ea0997c9d1f221d9ca7290fdcd319bdec4f45778e774e442454f15a804",
+    "7fe0ac96ab06b85b5f333ad288c7dcc7e672c71f3550d678b1b4afcfce6c3b74",
+    "20a39d64886bd053c9f7b6518e380957ca47990b2837c4d4d0c30624b38715cd",
+    "fdb24286a7f7b5d646871ec49d014c32959c29d430bd5ab33e3b1b0a6f578644",
+    "06313ba396a15f6ae2d9a272b01d0eedff59c63623f4215bb634cb68e9ad1bd0",
+    "a9fb9bda228e99127d71ca26801f56c8341f279bc994c0c497a4d5e4dd742a22"
+  ],
+  "accepted_by": "Automated title-preparation executor under the owner prospective cover-component/publication acceptance delegation of 2026-10-03 for issue #477, superseding the procedural cover deferral; no human approval, legal signature, or production observation inferred.",
+  "conditions_satisfied": true
+}

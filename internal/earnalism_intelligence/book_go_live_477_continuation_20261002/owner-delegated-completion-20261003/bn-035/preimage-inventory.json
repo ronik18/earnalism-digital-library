@@ -1,0 +1,27 @@
+{
+  "slug": "bn-035",
+  "files": {
+    "approval_evidence.json": "db4cb818ce5228c52049f14201176f6c9a22de851efb9123c965f8a4bf6b5c8b",
+    "chapters/chapter-001.json": "8b8d61b5e8d8ea872a4ddd62ff269ebb7ae47ab19886f165eb5461ce1f7832cf",
+    "chapters/chapter-002.json": "dd26feef4ad0d7a008e77cf94447b62d141f81f0787c73ff84ad1135ffe4bc5e",
+    "chapters/chapter-003.json": "659c8481e4743512a7e5af1fdb82b130eaa669a49c8081a1b4eacc8c4cb61963",
+    "chapters/chapter-004.json": "6af0f4316fcc6ef2bd487e73bb09111d997bddb3c34dd9a205f5e96d5b108d39",
+    "chapters/chapter-005.json": "2b533682d3af2bbb7e7b008ce9001b65c113ed80dca4ccc1fd93c0c0d58d02de",
+    "chapters/chapter-006.json": "19ef40eb701519b6ae82a5bae9e2aaa2dcaae1234afa1673bec3ec6246017905",
+    "chapters/chapter-007.json": "61f2c8a5f7b6da44e283dea384c6266ed0fa0bda112f52278b250adadd5720ba",
+    "chapters/chapter-008.json": "b779bc2e719702f61de35c73efd8e71919c3dd9ccce34c7c344d3618e1d50fb2",
+    "chapters/chapter-009.json": "58c760f8b38fcc0ccf72dc5276bb5e7da50e4795a0205a51d66b269e0b5d043a",
+    "chapters/chapter-010.json": "d05249da8437ed1a9eea0361a47834f36868cc73f78e316855e2ca0415c2c6c6",
+    "checksum_manifest.json": "9c5fbd1f79b7093e5ae06275c1b11b725b273e9133b541a2dc2ca57c734897e8",
+    "highlight_sync.json": "3b4e3c6225aed4e7bfb433a896fd324c210f7e71593f6128b2152624f31964fb",
+    "license_notice.json": "0f9f6cae57e92deb5473bf556c12cb6be663a9833b87fddd340279f1f6e5c8d8",
+    "public_book.json": "5356ea9d89eb2539798a05d37106db47a8b19d4a027f81e0e1b2c80f7beae7e2",
+    "publication_authorization.json": "b75a1fab91c4909eb9806e00573f744e8ccbd0bf653ae4c030bd1bd337726a17",
+    "publication_manifest.json": "f5f3f0d79c1743254065595e6d2e23b27993fd027f4b3e46a4001c8950f105bb",
+    "reader_manifest.json": "b1a64daa1c5bdd26b24544de0911bb687429cdab2cfd8382b5cc6dcd99ab81f3",
+    "rights_decision.json": "477efa88e3b29f414c9f8053b6d9faadaf41021de37b8efaf18b3110b910a933",
+    "source_evidence.json": "da0efa2033f4137eabe66bffeb1ea159c314c1c06fbc491989308ef08389b812"
+  },
+  "backend_preimage_present": false,
+  "canonical_source_preserved": true
+}

@@ -1,0 +1,42 @@
+{
+  "schema": "earnalism.independent-exact-package-review.v1",
+  "reviewer": "Independent reviewer B",
+  "slug": "the-student",
+  "status": "PASS_EXACT_LOCAL_COMPONENT_PACKAGE_PENDING_SERIALIZED_RELEASE",
+  "decision_file_sha256": "dc7b505976fc0d3f82e32281c197920cd62f5e03a5a67e6810935fc18193ee7f",
+  "decision_canonical_registry_sha256": "d3450952aae1edc68385a093cc6475af3a3b635b459d2b38efac866801920565",
+  "component_bindings": 12,
+  "checksum_entries": 9,
+  "checks": {
+    "strict_IN_gate_all6_uses": "PASS_PREPARED_REGISTRY_SIMULATION",
+    "unchanged_source_chapter_reader_highlight": "PASS",
+    "complete_selected_story_between_THE_STUDENT_and_IN_THE_RAVINE": "PASS_NFC_WHITESPACE_EQUALITY_OFFICIAL_EXACT_SOURCE",
+    "preserved_original_control_content_versions_and_cover_bytes": "PASS",
+    "2real_newPNG_and2real_WebP_visual_review_refs_bound": "PASS",
+    "original_new_derivative_delivery_byte_hashes": "PASS",
+    "draft_noaudio_and_correct800x1200_delivery_dimensions": "PASS",
+    "owner_prospective_authority_nohuman_orproduction_facts": "PASS"
+  },
+  "full_candidate_file_hashes": {
+    "approval_evidence.json": "7464c5a9ee82eeea492df7b693d8647e1c1810b0b46db8624577e4830606008a",
+    "chapters/chapter-001.json": "6ab4a3f5e7cbe52f40787b7d54a026c6e4cc16b5ed2e163067f689ae097dfea1",
+    "checksum_manifest.json": "47c32dcd035948a2dc7b6b5122175acb5c1f8fe828f8b7b5e6c09bd31833d130",
+    "cover_delivery_derivation.json": "f0f665c33b428a7792efca61c2ddca444e680aae8f2745f5b2f80189faa02fdc",
+    "cover_provenance.json": "ade1e3feab401bceb5aeb60e74db4578dcee7e5326bf9d4da4b4883b6602158b",
+    "highlight_sync.json": "bc843a767d245ed23d5b73c4704579b95f716c3325eba6edc3433ac6376da3ed",
+    "public_book.json": "b701b26a0c821f3c0e9a42def5cfb1ca79a071ee00abb00860252911084b777a",
+    "publication_authorization.json": "8c37677ea38638140396e0eeda6649b765e9daa3483fee408175b64f065a424d",
+    "publication_manifest.json": "ba6c9c0818fe5055cf33c4724944a659497d4925e8860a14b46dfcc23507e64d",
+    "reader_manifest.json": "8fe807a4936a240950d242a8084a8e4e0049b35e85087991e7567d5f10f16812",
+    "rights_decision.json": "dc7b505976fc0d3f82e32281c197920cd62f5e03a5a67e6810935fc18193ee7f",
+    "source_evidence.json": "0bc62a4920342e7fd0845770fbdf73e9693347c3172250c4b5aaff120d149700"
+  },
+  "audio_authorized": false,
+  "production_observed": false,
+  "remaining_gates": [
+    "SERIALIZED_INTEGRATION",
+    "PROTECTED_CI",
+    "NORMAL_MERGE_DEPLOY_CANARY",
+    "TRUTHFUL_READBACK"
+  ]
+}

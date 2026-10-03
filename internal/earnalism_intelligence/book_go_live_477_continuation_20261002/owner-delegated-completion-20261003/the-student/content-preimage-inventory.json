@@ -1,0 +1,22 @@
+[
+  {
+    "file": "content/books/the-student/source-rights.md",
+    "sha256": "9eed93c6896899dcc87cc17d90bf49fdef6826ef6215945366482fb7dc4e5d11",
+    "bytes": 775
+  },
+  {
+    "file": "content/books/the-student/book.json",
+    "sha256": "3187616ce69d1fb7782625cfa74c5e39901835df658e418876d1fbe746328225",
+    "bytes": 1054
+  },
+  {
+    "file": "content/books/the-student/chapters/001-the-student.json",
+    "sha256": "839d6edd10536c2a3c4cd961620899db2308e2ab24bac32bf0d9ecb7423f1cf3",
+    "bytes": 9212
+  },
+  {
+    "file": "content/books/the-student/raw/source.txt",
+    "sha256": "50cd842bb537b627a1cd4b8c2190f171b9312508b7a3613cb77379d6fb012e09",
+    "bytes": 8422
+  }
+]

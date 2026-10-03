@@ -1,0 +1,81 @@
+{
+  "slug": "bn-035",
+  "source_url": "https://bn.wikisource.org/wiki/%E0%A6%AC%E0%A6%A1%E0%A6%BC%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF_(%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0_%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC)",
+  "source_name": "Bengali Wikisource",
+  "source_license": "Underlying Bengali literary text is public domain in India and the U.S.; Bengali Wikisource transcription/source layer is reused under CC BY-SA terms.",
+  "source_hash": "d97c0e751be06664a52eb6ca1a09d0e6e72d937a96d6c4c6ac9c96cda66f4ce9",
+  "content_hash": "c8216c11a20f474ab5d95102950c52fe2cf8e30ea5a98c429427445a15ee572c",
+  "provenance_hash": "d42ff926f33d5e525d6fcdd683f2165ab2e43bceeb9d3868e863960c55d94c1f",
+  "rights_basis": "Exact BoroDidi Ashadh1329/1922 Sarat Chandra author edition; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1938; India Section22 literary term expired end1998. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
+  "downloaded_at": "2026-06-04T16:51:08.510739+00:00",
+  "source_format": "SHA-bound multi-chapter rendering receipt, with per-chapter actual rendered HTML SHA/revisions",
+  "reader_facing_boilerplate_removed": true,
+  "author_death_year": 1938,
+  "author_fact_evidence": {
+    "record": "internal/legal/bengali_text_preparation_20261002/author_fact_receipts.json",
+    "record_sha256": "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "author_id": "sarat-chandra",
+    "authority_url": "https://www.wbtourism.gov.in/legends-view-byId/63e0abae50952a1a1b0e9601/SARAT%2520CHANDRA%2520CHATTOPADHYAY%2520%25281876%2520-%25201938%2529",
+    "authority_response_sha256": "e904b67f5fb45db2c99b0ba2882a8d5f501cff12127ff7cb6a6c167298d1e7ff",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_EDITION_OR_PUBLICATION_APPROVAL"
+  },
+  "verification_status": "approved",
+  "text_clearance_status": "OWNER_DELEGATED_AUTOMATED_IN_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
+  "canonical_reader_identity": {
+    "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
+    "reader_content_sha256": "c8216c11a20f474ab5d95102950c52fe2cf8e30ea5a98c429427445a15ee572c",
+    "chapter_count": 10,
+    "chapter_content_sha256": {
+      "chapter-001": "79887160142020e79cb05a31a7c3511f3d3be13dd22f626b68f62170e1bb49de",
+      "chapter-002": "553a68600ed96db9da1125561c4801069d639ea63b6645b71ba55f6d5c1ec72a",
+      "chapter-003": "e9acfa9e770a5580ccfee2ec5278711457f11ef2afc120882852deccd5cc63a1",
+      "chapter-004": "588f1f24037ad98b2f2f1e2752fcfe4289582124e41e206fe8240adff70ff4bd",
+      "chapter-005": "7314b92e8847add0b355cd1d685b7452ba22f67f7e5b2f7a7ee35b5923a17aa9",
+      "chapter-006": "187671beb1ee4174b23e4d3ac6802c4939e0d61a339fbfc293f2ce3cb8b30446",
+      "chapter-007": "3988140b3ac6a1c343f54b8723e84e59af9a1232295f0e4d6207c4b835f9ec59",
+      "chapter-008": "d06eef2a2615904081baf9d1adf34a57f94045f2c40044a0f5f97b66e81d0123",
+      "chapter-009": "67a12a9a26b869b051258cc2b64b40589405e45f88a5686e0f815450cd85d451",
+      "chapter-010": "7d357d54f1f160bbf15bb4ce42def6e251272751747b19a4b3eeedec23f505eb"
+    },
+    "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
+    "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  },
+  "full_rendered_multichapter_repair": {
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/multichapter-narrow-source-repairs.json",
+    "scope": "Same edition source paragraphs, with original notes/verse retained; no rights approval"
+  },
+  "historical_import_hashes": {
+    "source_hash": "b8293f34ad941e8624829ce105f659a4e60c10404b851012f4fc524f4c3c3470",
+    "content_hash": "83a9a52394531aa54eb99bf0da287a130701c5ea1a31a73c44ef04131c808ddc",
+    "source_url": "https://bn.wikisource.org/wiki/%E0%A6%AC%E0%A6%A1%E0%A6%BC%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF_(%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0_%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC)"
+  },
+  "edition_publication_year": 1922,
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "source_snapshot_identity": {
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/bn-035-multichapter-source-comparison.json",
+    "sha256": "f11917468b84b6b4fa9c73dc07a466fb4691fb70389fe48662c9eda0c3af34f9",
+    "scope": "Actual captured original/source edition transclusions; parent revision alone does not freeze transcluded pages."
+  },
+  "edition_evidence": {
+    "edition": "BoroDidi Ashadh1329/1922 Sarat Chandra author edition",
+    "primary_record": "internal/legal/catalogue_clearance_20261002/bengali/bn-035-primary-imprint-pages.json",
+    "record_sha256": "1b35fe1eb64edecb32c990a34b83da69824c4e0d9e9d316c71bd06ecd785fa8c",
+    "scope": "Selected exact literary narrative and retained source notes only; no artwork, publisher matter, separately authored foreword or other edition authorized."
+  },
+  "publication_upper_bound_year": 1922,
+  "publication_upper_bound_evidence": {
+    "year": 1922,
+    "source_sha256": "d97c0e751be06664a52eb6ca1a09d0e6e72d937a96d6c4c6ac9c96cda66f4ce9",
+    "content_sha256": "c8216c11a20f474ab5d95102950c52fe2cf8e30ea5a98c429427445a15ee572c",
+    "receipt": {
+      "requested_url": "https://bn.wikisource.org/w/api.php?action=query&prop=revisions&titles=%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AC%E0%A6%A1%E0%A6%BC%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF-%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%A7%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AC%E0%A6%A1%E0%A6%BC%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF-%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%A8%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AC%E0%A6%A1%E0%A6%BC%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF-%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%A9%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AC%E0%A6%A1%E0%A6%BC%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF-%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%AA%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AC%E0%A6%A1%E0%A6%BC%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF-%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%AB%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AC%E0%A6%A1%E0%A6%BC%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF-%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%AC&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2",
+      "resolved_url": "https://bn.wikisource.org/w/api.php?action=query&prop=revisions&titles=%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AC%E0%A6%A1%E0%A6%BC%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF-%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%A7%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AC%E0%A6%A1%E0%A6%BC%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF-%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%A8%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AC%E0%A6%A1%E0%A6%BC%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF-%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%A9%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AC%E0%A6%A1%E0%A6%BC%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF-%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%AA%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AC%E0%A6%A1%E0%A6%BC%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF-%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%AB%7C%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%3A%E0%A6%AC%E0%A6%A1%E0%A6%BC%E0%A6%A6%E0%A6%BF%E0%A6%A6%E0%A6%BF-%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0+%E0%A6%9A%E0%A6%9F%E0%A7%8D%E0%A6%9F%E0%A7%8B%E0%A6%AA%E0%A6%BE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AF%E0%A6%BC.djvu%2F%E0%A7%AC&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2",
+      "http_status": 200,
+      "accessed_at": "2026-10-02T03:25:33.650596+00:00",
+      "response_sha256": "6fc3dab98b71f6840d2db021df9ed02d8126858f1d51403ca0376fc71fe4caf2"
+    },
+    "basis": "Actual BoroDidi Ashadh1329/1922 source author edition; published-by upper bound, not inferred original first date."
+  },
+  "publication_region": "India"
+}

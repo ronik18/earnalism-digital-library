@@ -10,7 +10,9 @@ Allow: /reader/a-mystery-of-heroism
 Allow: /reader/a-scandal-in-bohemia
 Allow: /reader/a-white-heron
 Allow: /reader/agentic-ai-with-python
+Allow: /reader/alices-adventures-in-wonderland
 Allow: /reader/an-occurrence-at-owl-creek-bridge
+Allow: /reader/bn-035
 Allow: /reader/bn-059
 Allow: /reader/book-edfcf810c5
 Allow: /reader/dracula
@@ -20,6 +22,7 @@ Allow: /reader/muchiram-gurer-jibanchorit
 Allow: /reader/picture-of-dorian-gray
 Allow: /reader/radharani
 Allow: /reader/the-adventures-of-sherlock-holmes
+Allow: /reader/the-art-of-money-getting
 Allow: /reader/the-bishop
 Allow: /reader/the-call-of-the-wild
 Allow: /reader/the-canterville-ghost
@@ -32,6 +35,7 @@ Allow: /reader/the-man-who-would-be-king
 Allow: /reader/the-open-boat
 Allow: /reader/the-pit-and-the-pendulum
 Allow: /reader/the-stolen-white-elephant
+Allow: /reader/the-student
 Allow: /reader/the-tell-tale-heart
 Disallow: /reader/
 Disallow: /secure-reader-test

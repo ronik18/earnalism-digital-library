@@ -1,0 +1,142 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "the-student",
+  "status": "ACCEPTED_LOCAL_COMPONENT_PREPARATION_ONLY",
+  "owner_design_fact": {
+    "path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+    "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "statement": "Owner states all front and back covers are designed by the owner."
+  },
+  "edition_binding": {
+    "source_sha256": "fd7c69daa6080772e42bb26c21330c1dc1c5fb3967f40c23789f51e5c260c82f",
+    "reader_content_sha256": "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90",
+    "chapter_count": 1,
+    "text_decision_id": "india-20261002-the-student-pg1944-noncover-text"
+  },
+  "original_assets_preserved": {
+    "front": {
+      "path": "/workspace/scratch/181ef0a25f05/student-acceptance-20261003/the-student-cover_url.png",
+      "sha256": "852b0ec54f013b2c24c63514e21d524ea7b42fc1151de16f5ecbc7aa624825db",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267888/earnalism/covers/front/the-student_front_1600x2400.png",
+      "bytes": 182766,
+      "width": 1600,
+      "height": 2400
+    },
+    "back": {
+      "path": "/workspace/scratch/181ef0a25f05/student-acceptance-20261003/the-student-back_cover_url.png",
+      "sha256": "c48024e8f29f6efdf32474199e4178a477bde4c6bd5624eb619bf911fdb9da25",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267889/earnalism/covers/back/the-student_back_1600x2400.png",
+      "bytes": 376249,
+      "width": 1600,
+      "height": 2400
+    }
+  },
+  "original_variant_status": "HELD_FALSE_STATUS_ORNAMENT_OCCLUSION_TRUNCATED_COPY",
+  "derivatives": {
+    "front": {
+      "path": "/workspace/scratch/181ef0a25f05/student-acceptance-20261003/candidate-front-run1.png",
+      "sha256": "3fcf62ed1bbb278156ebef7101cd5c1b988a754368529566a1e9d3cfffd5d2fd",
+      "bytes": 113556,
+      "width": 1600,
+      "height": 2400,
+      "changed_region_rectangles": [
+        [
+          215,
+          705,
+          1385,
+          1265
+        ],
+        [
+          180,
+          1830,
+          1420,
+          2140
+        ]
+      ],
+      "unchanged_pixels_outside_masks": "PASS"
+    },
+    "back": {
+      "path": "/workspace/scratch/181ef0a25f05/student-acceptance-20261003/candidate-back-run1.png",
+      "sha256": "343fa412c76a916c70f2f893465f9c337f1d464b326bb08fb5d2a08351762ab1",
+      "bytes": 171512,
+      "width": 1600,
+      "height": 2400,
+      "changed_region_rectangles": [
+        [
+          95,
+          70,
+          1505,
+          2160
+        ]
+      ],
+      "unchanged_pixels_outside_masks": "PASS"
+    }
+  },
+  "derivative_receipt": {
+    "path": "/workspace/scratch/181ef0a25f05/student-acceptance-20261003/candidate-cover-receipt.json",
+    "sha256": "1cf8b07bbc675b40e63ac73d0de143fb6e87a6cce2d2d84071f0e0bd30bf9bb1"
+  },
+  "renderer": {
+    "path": "/workspace/scratch/181ef0a25f05/student-acceptance-20261003/render.py",
+    "sha256": "d1e46ee4ab3f9920418e21d36f3ec7104450dd6a572c772de80c47b25cadb3a0"
+  },
+  "commercial_use_authorized": true,
+  "commercial_use_status": "ACCEPTED_LOCAL_IN_COVER_DISPLAY_PRODUCTION_GATE_PENDING",
+  "territories": [
+    "IN"
+  ],
+  "audio_authorized": false,
+  "runtime_release_authorized": false,
+  "publication_activation_authorized": false,
+  "accepted_by": "Automated serialized integration controller under the product owner directive in issue #477 comment 5949652699 and the direct prospective acceptance instruction 2026-10-03; no human signature inferred.",
+  "accepted_at": "2026-10-03T04:12:32.330374+00:00",
+  "independent_reviews": [
+    {
+      "path": "/workspace/scratch/181ef0a25f05/new-acceptance-review-a/student-visual-review.json",
+      "sha256": "1b9f416eae00b8590ca605e87823867f0a88498d5210d6a2020747050f97c6a3",
+      "conclusion": "PASS_EXACT_NEW_VISUAL_COVER_REVIEW"
+    },
+    {
+      "path": "/workspace/scratch/181ef0a25f05/new-acceptance-review-b-20261003/student-new-visual-review-b.json",
+      "sha256": "c1d33c7d7a5a83225a619e1b8eea6122d7dbaa927961665e614daf44c170c5b2",
+      "conclusion": "PASS_EXACT_NEW_VISUAL_COVER_REVIEW"
+    }
+  ],
+  "delivery_reviews": [
+    {
+      "path": "/workspace/scratch/181ef0a25f05/new-acceptance-review-a/student-delivery-review.json",
+      "sha256": "3a3c98e66cfaee8f29c3b58c846c3e1867922b898e5029c526a1bfc7d3f44178",
+      "conclusion": "PASS_EXACT_WEBP_DELIVERY_VISUAL_REVIEW"
+    },
+    {
+      "path": "/workspace/scratch/181ef0a25f05/new-acceptance-review-b-20261003/student-delivery-review-b.json",
+      "sha256": "4d663174434da7e2630c720974a9720f08d3871d3968b0c618d06e4cafcb9ae7",
+      "conclusion": "PASS_EXACT_WEBP_DELIVERY_VISUAL_REVIEW"
+    }
+  ],
+  "delivery_assets": {
+    "front": {
+      "source_path": "/workspace/scratch/181ef0a25f05/student-acceptance-20261003/candidate-front-run1.png",
+      "source_sha256": "3fcf62ed1bbb278156ebef7101cd5c1b988a754368529566a1e9d3cfffd5d2fd",
+      "path": "/workspace/scratch/181ef0a25f05/student-acceptance-20261003/delivery-front.webp",
+      "sha256": "7c5504f1e334973eef65969715d5d2f7bd459c4400cdf569f4b89a3bd50de04e",
+      "bytes": 21466,
+      "width": 800,
+      "height": 1200,
+      "url": "/assets/books/the-student/front-7c5504f1.webp"
+    },
+    "back": {
+      "source_path": "/workspace/scratch/181ef0a25f05/student-acceptance-20261003/candidate-back-run1.png",
+      "source_sha256": "343fa412c76a916c70f2f893465f9c337f1d464b326bb08fb5d2a08351762ab1",
+      "path": "/workspace/scratch/181ef0a25f05/student-acceptance-20261003/delivery-back.webp",
+      "sha256": "47c93f26fed5564a34188fdde072f1242728f56c5f1af75a8ec445fe3250ffc3",
+      "bytes": 34462,
+      "width": 800,
+      "height": 1200,
+      "url": "/assets/books/the-student/back-47c93f26.webp"
+    }
+  },
+  "delivery_receipt_sha256": "f0f665c33b428a7792efca61c2ddca444e680aae8f2745f5b2f80189faa02fdc",
+  "limitation": "New derivative hashes. Prior review conclusions apply only to now-unavailable prior derivative bytes. No third-party component, human signature, production fact or new rights fact inferred.",
+  "production_observed": false
+}

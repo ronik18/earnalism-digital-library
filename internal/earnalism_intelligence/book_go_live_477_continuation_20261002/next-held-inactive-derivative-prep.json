@@ -1,0 +1,54 @@
+{
+  "schema": "earnalism.next-held-inactive-derivative-prep.v1",
+  "recorded_on": "2026-10-02",
+  "publication_or_integration_approval": false,
+  "network_or_paid_generation_calls": 0,
+  "repository_registry_allowlist_or_production_mutations": 0,
+  "titles": {
+    "the-art-of-money-getting": {
+      "original_front_sha256": "0c1d69427d4fb59f6a844abda7caf06113476d5fe548afcf0293c5ba12a53616",
+      "original_back_sha256": "96877955ed3ef8a0a9d86353a76584c881b513d6ea50ba09443e028adf66b5be",
+      "original_dimensions": "1600x2400",
+      "inactive_front_sha256": "337639ad0378bec91318d03711bbb0a1603cc7628587cc53158241d81de5c109",
+      "inactive_front_bytes": 123863,
+      "inactive_back_sha256": "06296b292fc91f246ab4c6420e5b8e41f4f21aa0f1929234ea7ecbe718b80b4a",
+      "inactive_back_bytes": 198864,
+      "receipt_sha256": "4878e356f1b77ead3d89ecc17a9965cda10ca1077d14e574dc5d81be69c6a446",
+      "double_render_byte_exact": true,
+      "repair": "Removed false release badge, separated coin art from title and author, and replaced truncated copy with a complete exact source excerpt",
+      "remaining_hold": "TWO_REVIEWS_AND_GENUINE_COVER_DISPLAY_PUBLICATION_APPROVAL_REQUIRED"
+    },
+    "bn-035": {
+      "original_front_sha256": "ffb58e131d7b216d6c56c018dd3941a0a92c02e45a3a8ee6f553443c1df92cb7",
+      "original_back_sha256": "38a13d0d6a16e4cc6e58d228bb2fcb12702b571a3ae8d0667b7a685220653aee",
+      "original_dimensions": "1600x2400",
+      "inactive_front_sha256": "fc455a183f3443fc2511410428b92772df759d88b07ab021b36275e96055b93d",
+      "inactive_front_bytes": 79640,
+      "inactive_back_sha256": "0cbeb592415616262a46a818bc663f0226588c1f89d1fc9c9794e9469ab4c706",
+      "inactive_back_bytes": 126672,
+      "receipt_sha256": "2a74da07b5b5a5b972168240c905668aa1c0892e035ee671626efcc4c6de95bf",
+      "double_render_byte_exact": true,
+      "repair": "Bound repository Noto Bengali through RAQM and HarfBuzz, removed dotted-circle shaping failures and stale badge, separated ornament from text, and used exact complete stored metadata",
+      "remaining_hold": "TWO_REVIEWS_AND_GENUINE_COVER_DISPLAY_PUBLICATION_APPROVAL_REQUIRED"
+    },
+    "alices-adventures-in-wonderland": {
+      "original_front_sha256": "15c92a333213db88902d003164570e7f8c58040e689dfe0acfc6b6e7a1ff2811",
+      "original_back_sha256": "22318a92b3de98f2f2d68402d36255142107ff500f24de2022fcaf14a43f0e6f",
+      "original_dimensions": "1024x1536",
+      "inactive_front": "UNCHANGED_ORIGINAL_FRONT",
+      "inactive_back_sha256": "3838ee24fac30cd4f9e3147eda722cb43fef349de19b6e0cdd6be659f58d5c54",
+      "inactive_back_bytes": 3122954,
+      "receipt_sha256": "3adc829fcc313be80d68f06248e3841853b6361ae47f4e1821d097d760d4fc4b",
+      "double_render_byte_exact": true,
+      "repair": "Removed unsupported quote and Lewis Carroll attribution; replaced only with exact stored short description and no new copy",
+      "remaining_hold": "TWO_REVIEWS_AND_GENUINE_COVER_DISPLAY_PUBLICATION_APPROVAL_REQUIRED"
+    }
+  },
+  "shared_truth": {
+    "authoritative_publication_records_withhold_cover_display": true,
+    "production_activation_withheld": true,
+    "audio_remains_disabled_and_unexposed": true,
+    "approval_facts_inferred": false
+  },
+  "next_exact_action": "Obtain two independent reviews of each exact inactive derivative and package. Even on PASS, keep all three inactive until a genuine cover-display/publication approval fact exists; then serialize only one integration delta through the canonical authority."
+}

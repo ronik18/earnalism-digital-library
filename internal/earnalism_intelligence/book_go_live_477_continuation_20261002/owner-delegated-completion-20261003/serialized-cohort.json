@@ -1,0 +1,129 @@
+{
+  "schema": "earnalism.serialized-oct3-cohort.v1",
+  "generated_at": "2026-10-03T04:12:32.330374+00:00",
+  "cohort": [
+    {
+      "slug": "the-student",
+      "decision_id": "india-20261003-the-student-reader-cover-display-reviewed",
+      "canonical_record_sha256": "aa5f14c6d0ea1aa49f83c81127bbc6bf8f900314827dc5e6151669c86bfa2f24",
+      "assets": {
+        "front": {
+          "url": "https://theearnalism.com/assets/books/the-student/front-7c5504f1.webp",
+          "path": "frontend/public/assets/books/the-student/front-7c5504f1.webp",
+          "sha256": "7c5504f1e334973eef65969715d5d2f7bd459c4400cdf569f4b89a3bd50de04e",
+          "bytes": 21466,
+          "dimensions": [
+            800,
+            1200
+          ]
+        },
+        "back": {
+          "url": "https://theearnalism.com/assets/books/the-student/back-47c93f26.webp",
+          "path": "frontend/public/assets/books/the-student/back-47c93f26.webp",
+          "sha256": "47c93f26fed5564a34188fdde072f1242728f56c5f1af75a8ec445fe3250ffc3",
+          "bytes": 34462,
+          "dimensions": [
+            800,
+            1200
+          ]
+        }
+      },
+      "source_and_chapters": "BYTE_IDENTICAL",
+      "production_observation": "NOT_RUN"
+    },
+    {
+      "slug": "the-art-of-money-getting",
+      "decision_id": "india-20261003-the-art-of-money-getting-reader-cover-display-reviewed",
+      "canonical_record_sha256": "09a110bbb1ba6983743cd2e7566726e753c85b2cdd56715de3a6ca83dbf13dc7",
+      "assets": {
+        "front": {
+          "url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-337639ad-800.webp",
+          "path": "frontend/public/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-337639ad-800.webp",
+          "sha256": "b1fd6a8d2b2f6a22f5eb6e2f76ed3602c5093757f82610a77ff7c2da4984f4f2",
+          "bytes": 22292,
+          "dimensions": [
+            800,
+            1200
+          ]
+        },
+        "back": {
+          "url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-back-06296b29-800.webp",
+          "path": "frontend/public/assets/books/the-art-of-money-getting/the-art-of-money-getting-back-06296b29-800.webp",
+          "sha256": "42d362be686b5a23656c87b49f29e4850f02a08311374ef8fd195a93b343aeb8",
+          "bytes": 43404,
+          "dimensions": [
+            800,
+            1200
+          ]
+        }
+      },
+      "source_and_chapters": "BYTE_IDENTICAL",
+      "production_observation": "NOT_RUN"
+    },
+    {
+      "slug": "bn-035",
+      "decision_id": "india-20261003-bn-035-1922-text-reader-exact-cover",
+      "canonical_record_sha256": "6d197c694a86768a3ffdc74d8f65e6833375519f6b79cdd296bc307119ae17c7",
+      "assets": {
+        "front": {
+          "url": "https://theearnalism.com/assets/books/bn-035/bn-035-front-fc455a18.png",
+          "path": "frontend/public/assets/books/bn-035/bn-035-front-fc455a18.png",
+          "sha256": "fc455a183f3443fc2511410428b92772df759d88b07ab021b36275e96055b93d",
+          "bytes": 79640,
+          "dimensions": [
+            1600,
+            2400
+          ]
+        },
+        "back": {
+          "url": "https://theearnalism.com/assets/books/bn-035/bn-035-back-0cbeb592.png",
+          "path": "frontend/public/assets/books/bn-035/bn-035-back-0cbeb592.png",
+          "sha256": "0cbeb592415616262a46a818bc663f0226588c1f89d1fc9c9794e9469ab4c706",
+          "bytes": 126672,
+          "dimensions": [
+            1600,
+            2400
+          ]
+        }
+      },
+      "source_and_chapters": "BYTE_IDENTICAL",
+      "production_observation": "NOT_RUN"
+    },
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "decision_id": "india-20261003-alices-adventures-in-wonderland-reader-cover-display-reviewed",
+      "canonical_record_sha256": "cc0a571b73f1ae4b4e19cfeb62c1b88b152fb2145a8f6c943d51156387fad5ae",
+      "assets": {
+        "front": {
+          "url": "https://theearnalism.com/assets/books/alices-adventures-in-wonderland/alices-adventures-in-wonderland-front-15c92a33.webp",
+          "path": "frontend/public/assets/books/alices-adventures-in-wonderland/alices-adventures-in-wonderland-front-15c92a33.webp",
+          "sha256": "5fa6ee0698360743214ad601df0a73b6181ec168346a6bb0580edea2a6c30a2e",
+          "bytes": 75730,
+          "dimensions": [
+            600,
+            900
+          ]
+        },
+        "back": {
+          "url": "https://theearnalism.com/assets/books/alices-adventures-in-wonderland/alices-adventures-in-wonderland-back-3838ee24.webp",
+          "path": "frontend/public/assets/books/alices-adventures-in-wonderland/alices-adventures-in-wonderland-back-3838ee24.webp",
+          "sha256": "a588597bb1f38dd1d8bdc777167d825ea157ba1856efdc6d1f4b2968e7a99bf8",
+          "bytes": 167392,
+          "dimensions": [
+            800,
+            1200
+          ]
+        }
+      },
+      "source_and_chapters": "BYTE_IDENTICAL",
+      "production_observation": "NOT_RUN"
+    }
+  ],
+  "production_mutation_performed": false,
+  "audio_exposed": false,
+  "runtime_fixture_remediation": {
+    "artmoney": "Declarative live-approved candidate workflow aligned with accepted manifest and existing runtime projection; no observed production state or version inferred.",
+    "student": "Exact short story segments into three preview pages; retains unchanged page-four authentication policy.",
+    "inventory": "New reviewed unchanged main Reader sources added via explicit hash-bound fixture overlays; frozen historical fixture untouched."
+  }
+}

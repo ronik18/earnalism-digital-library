@@ -1,0 +1,71 @@
+{
+  "schema": "earnalism.inactive-cover-derivative-receipt.v1",
+  "slug": "the-art-of-money-getting",
+  "state": "INACTIVE_SCRATCH_CANDIDATE_NOT_APPROVED_OR_PROMOTED",
+  "method": "deterministic local Pillow mask-and-typeset derivative; no image generation, network, or paid call",
+  "originals": {
+    "front": {
+      "path": "/workspace/scratch/181ef0a25f05/artmoney-inactive-derivative/original-front.png",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273638/earnalism/covers/front/the-art-of-money-getting_front_1600x2400.png",
+      "sha256": "0c1d69427d4fb59f6a844abda7caf06113476d5fe548afcf0293c5ba12a53616",
+      "dimensions": [
+        1600,
+        2400
+      ],
+      "bytes": 201688
+    },
+    "back": {
+      "path": "/workspace/scratch/181ef0a25f05/artmoney-inactive-derivative/original-back.png",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273639/earnalism/covers/back/the-art-of-money-getting_back_1600x2400.png",
+      "sha256": "96877955ed3ef8a0a9d86353a76584c881b513d6ea50ba09443e028adf66b5be",
+      "dimensions": [
+        1600,
+        2400
+      ],
+      "bytes": 394767
+    }
+  },
+  "repairs": [
+    "Removed internal LIVE CONTROLLED RELEASE badge without adding a release claim.",
+    "Placed title and author on an opaque panel so decorative coins cannot cross text.",
+    "Replaced truncated/occluded back copy with a complete exact excerpt already present in the controlled chapter source."
+  ],
+  "source_excerpt": "In the United States, where we have more land than people, it is not at all difficult for persons in good health to make money. In this comparatively new field there are so many avenues of success open, so many vocations which are not crowded, that any person of either sex who is willing, at least for the time being, to engage in any respectable occupation that offers, may find lucrative employment.",
+  "font_files": {
+    "serif": {
+      "path": "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
+      "sha256": "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab"
+    },
+    "serif_bold": {
+      "path": "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf",
+      "sha256": "847b33e13925f19ff87e4d934d6b3cf7cac35ce16424f6f670e40c2f377cf2df"
+    }
+  },
+  "renders": {
+    "front_run1": {
+      "path": "/workspace/scratch/181ef0a25f05/artmoney-inactive-derivative/inactive-front-run1.png",
+      "sha256": "337639ad0378bec91318d03711bbb0a1603cc7628587cc53158241d81de5c109",
+      "bytes": 123863
+    },
+    "front_run2": {
+      "path": "/workspace/scratch/181ef0a25f05/artmoney-inactive-derivative/inactive-front-run2.png",
+      "sha256": "337639ad0378bec91318d03711bbb0a1603cc7628587cc53158241d81de5c109",
+      "bytes": 123863
+    },
+    "back_run1": {
+      "path": "/workspace/scratch/181ef0a25f05/artmoney-inactive-derivative/inactive-back-run1.png",
+      "sha256": "06296b292fc91f246ab4c6420e5b8e41f4f21aa0f1929234ea7ecbe718b80b4a",
+      "bytes": 198864
+    },
+    "back_run2": {
+      "path": "/workspace/scratch/181ef0a25f05/artmoney-inactive-derivative/inactive-back-run2.png",
+      "sha256": "06296b292fc91f246ab4c6420e5b8e41f4f21aa0f1929234ea7ecbe718b80b4a",
+      "bytes": 198864
+    }
+  },
+  "double_render_byte_identity": "PASS",
+  "cover_display_approved": false,
+  "publication_approved": false,
+  "production_activation_authorized": false,
+  "next_gate": "Two independent visual/source reviews, then genuine cover-display and publication acceptance before any repository or runtime mutation."
+}

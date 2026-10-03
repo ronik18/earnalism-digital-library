@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-art-of-money-getting",
+  "title": "The Art of Money Getting",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "ccf68ee545e68995f88d4cd2f534ecae9bf731b8996118d34b5a10bfc4958061",
+    "content_hash": "f3c4db2a3c551518ebd4302e7409797eb49f0ff94470ebfbc4b800b900a44b61",
+    "provenance_hash": "fc4034680d03df4989f6ab56d58d5f93407218847ffe6cf743d5ee107f185f59",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "93d7357e05352d8ba963bdf4391f41fa7e1d7f6fabd2f5f5790bede2200da4b3",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Art of Money Getting",
+        "word_count": 13564,
+        "sha256": "04edd10d202a6f1b8e7c1c35308f728f1768e1db656080fa9ae49d559761d21f"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "in",
+    "evidence_sha256": "1de370a2d070b6d45231c688d02cce0bc8a3e9a0f2ee734807e54befd55d1034"
+  },
+  "reader_release": {
+    "status": "READY_FOR_APPROVAL",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273638/earnalism/covers/front/the-art-of-money-getting_front_1600x2400.png",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "253c7b38ae5815549018228ab6723139dcce22f880f04ba1a3a70ce65e334d88",
+    "reader_manifest": "29536b26759f9e967efac4eba42447cb6b17943f9ee99bb797b48bba76e10fec",
+    "source_evidence": "1de370a2d070b6d45231c688d02cce0bc8a3e9a0f2ee734807e54befd55d1034",
+    "approval_evidence": "872ae423202a4b8f2235d07970f57ece66c251ad112b6212568f08f918dd6137"
+  },
+  "manifest_sha256": "809b624cefe8adbc000f15534fcfe369fa9026e8eef610c0e30eeadf0fd8113c"
+}

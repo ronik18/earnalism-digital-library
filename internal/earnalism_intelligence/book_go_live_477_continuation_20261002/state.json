@@ -1,35 +1,33 @@
 {
   "schema": "earnalism.book-go-live-477-continuation.v1",
-  "source_main": "c9df35dda7a463f6cb5580ef900068e4cc6b6408",
+  "source_main": "514c9ebcfd95fd69e5cece864e9360c5d21ee7c5",
   "owner_directive": "https://github.com/ronik18/earnalism-digital-library/issues/477#issuecomment-5949652699",
   "integration_candidate_slugs": [
-    "muchiram-gurer-jibanchorit",
-    "bn-059",
-    "the-call-of-the-wild"
+    "the-student",
+    "the-art-of-money-getting",
+    "bn-035",
+    "alices-adventures-in-wonderland"
   ],
-  "configured_candidate_count": 29,
-  "deployed_verified_new_titles": 2,
-  "production_readback": "PR508_DEPLOYED_ACTIVE_VERSIONS_PRESERVED; INDIA_CANONICAL_VERSION_NOT_RUN_FROM_NON_IN",
+  "configured_candidate_count": 33,
+  "deployed_verified_new_titles": 5,
+  "production_readback": "PR509_DEPLOYED; MUCHIRAM_GURER_JIBANCHARIT_BN_059_AND_THE_CALL_OF_THE_WILD_ACTIVE_UNDER_CONDITIONAL_MANUAL_OBSERVATION_WAIVER; INDIA_CANONICAL_VERSIONS_NULL_NOT_RUN_FROM_NON_IN",
   "audio_exposure": false,
   "existing_versions_preserved": true,
   "new_external_tasks": 0,
-  "next_prepared": [
-    "muchiram-gurer-jibanchorit",
-    "bn-059",
-    "the-call-of-the-wild"
-  ],
+  "next_prepared": [],
   "next_held": {
     "the-most-dangerous-game": "Specific cover-footer review conflict",
-    "the-student": "Concrete front status badge/contrast and truncated back copy",
-    "the-art-of-money-getting": "Concrete internal status badge/text occlusion and truncated back copy",
-    "bn-035": "Broken Bengali glyph shaping/text occlusion/status badge",
-    "alices-adventures-in-wonderland": "Unverified Lewis Carroll quote attribution on back cover"
+    "the-student": "Original cover remains held; corrected inactive derivatives and fail-closed inactive package pass two independent reviews, but cover-display/publication approval is absent and must not be inferred",
+    "the-art-of-money-getting": "Two independent inactive visual/copy reviews PASS; authoritative cover-display/publication approval still absent. Retain hold; do not rerun unchanged evidence.",
+    "bn-035": "Two independent inactive visual/copy reviews PASS; authoritative cover-display/publication approval still absent. Retain hold; do not rerun unchanged evidence.",
+    "alices-adventures-in-wonderland": "Two independent inactive visual/copy reviews PASS; authoritative cover-display/publication approval still absent. Retain hold; do not rerun unchanged evidence.",
+    "bn-060": "Final bounded layout-only v2 has independent PASS/HOLD disagreement over back-cover fragments; no component acceptance. Do not rerun unchanged covers."
   },
   "validation": {
     "local_tests_passed": 98,
-    "protected_ci": "PR508_PASS; NEXT_COHORT_NOT_YET_PUBLISHED",
-    "canary": "PR508_PASS_AFTER_TWO_EXACT_READ_ONLY_TIMEOUT_RETRIES",
-    "production": "PR508_RAILWAY_SUCCESS_FRONTEND_PROPAGATED",
+    "protected_ci": "PR509_EXACT_HEAD_68F8C36FA86454330489C705A576AF64F2D60885_ALL_SEVEN_REQUIRED_CHECKS_PASS",
+    "canary": "PR509_FRONTEND_AND_BACKEND_CANARIES_PASS_ON_MERGE_514C9EBCFD95FD69E5CECE864E9360C5D21EE7C5",
+    "production": "PR509_RAILWAY_DEPLOYMENT_41A7CDA1_E1F1_4968_BBDE_B010EF7E44E4_SUCCESS; FRONTEND_DEPLOY_AND_PRODUCTION_CANARY_PASS",
     "canary_unit_tests_passed": 26,
     "static_snapshot_assertions_passed": 2064,
     "static_snapshots": 97,
@@ -46,7 +44,7 @@
     "previous_exact_head_seamless": "FAIL_STALE_ISOLATED_LIBRARY_FIXTURE",
     "final_owner_review_unit_tests": 39,
     "canonical_bootstrap_tests": 39,
-    "production_canonical_versions": "UNKNOWN",
+    "production_canonical_versions": "NOT_RUN_FROM_NON_IN",
     "combined_backend_policy_tests": 53,
     "next_cohort_rights_launch_bootstrap_chapter_canary_tests": 231,
     "next_cohort_subtests": 55,
@@ -55,12 +53,22 @@
     "next_cohort_static_snapshots": 106,
     "next_cohort_static_snapshot_assertions": 2256
   },
-  "next_action": "Freeze the serialized three-title exact tree, obtain two independent final reviews, then publish only the existing integration branch and open one focused PR. Merge/deploy only on protected PASS; keep India canonical versions truthful and nullable outside India.",
+  "next_action": "Two independent final exact integration-tree reviews, protected normal PR checks, merge/deploy/canary; prepare distinct source-ready next cover cohort in isolated scratch only.",
   "ci_repair_receipt": "static-contract-ci-repair.json",
   "routing_assessment": "Earlier missing-mapping404/config-blocker inference withdrawn; generatedfilesystem snapshot routes before rewrites. Exactdeployedpaths unobserved; canarystillrequired.",
   "final_regression_repair": "final-regression-repair.json",
   "latest_reviewed_previous_head": "7b1c0b10e391eb80f47149da15dad5e7ceaa6566",
   "latest_ci_repair": "canonical-reader-initialization-repair.json",
   "next_delivery_derivatives": "next-delivery-derivative-receipt.json",
-  "next_cohort_serialized_integration": "next-cohort-serialized-integration.json"
+  "next_cohort_serialized_integration": "next-cohort-serialized-integration.json",
+  "pr509_production_reconciliation": "pr509-production-reconciliation.json",
+  "the_student_inactive_cover_derivative_review": "the-student-inactive-cover-derivative-review.json",
+  "the_student_inactive_candidate_package_review": "the-student-inactive-candidate-package-review.json",
+  "next_held_inactive_derivative_prep": "next-held-inactive-derivative-prep.json",
+  "next_distinct_candidate": null,
+  "reviewed_repairs_next_candidate": "reviewed-repairs-next-bn060.json",
+  "current_prepared_evidence_queue": "FOUR_PASSING_LOCAL_CANDIDATES_AND_DISTINCT_NEW_COVER_WORK_AVAILABLE",
+  "continuation_status": "ACTIVE_NEW_OWNER_DELEGATION_COHORT_PENDING_PROTECTED_RELEASE",
+  "continuation_pause_receipt": "continuation-pause-reconciliation.json",
+  "owner_delegated_completion": "owner-delegated-completion-20261003/serialized-cohort.json"
 }

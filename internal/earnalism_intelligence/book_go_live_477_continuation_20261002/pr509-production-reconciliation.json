@@ -1,0 +1,81 @@
+{
+  "schema": "earnalism.book-go-live-477-production-reconciliation.v1",
+  "recorded_on": "2026-10-02",
+  "pr": "https://github.com/ronik18/earnalism-digital-library/pull/509",
+  "reviewed_head": "68f8c36fa86454330489c705a576af64f2d60885",
+  "reviewed_tree": "f748057b9286fe16694eb598a583713c3cfdbd6b",
+  "merge_commit": "514c9ebcfd95fd69e5cece864e9360c5d21ee7c5",
+  "protected_checks": {
+    "result": "PASS",
+    "count": 7,
+    "checks": [
+      "coordination gate",
+      "Blog and Reader regression gate",
+      "Editorial regression gate",
+      "Recovery regression gate",
+      "GO LIVE regression gate",
+      "Exact primary design gate",
+      "Seamless regression gate"
+    ]
+  },
+  "frontend": {
+    "workflow_run": 37041620031,
+    "deployment_job": "PASS",
+    "production_canary_job": "PASS",
+    "artifact_id": 11242344925,
+    "artifact_sha256": "a7e8225a3efb6fc00a8cf4b1fa07b343c0a402ccd6f7f3008ba143cfe5aa97d7",
+    "removed_route_canary": "PASS",
+    "static_seo_canary": "PASS",
+    "production_regression_canary": "PASS",
+    "new_book_and_reader_routes": {
+      "muchiram-gurer-jibanchorit": "HTTP_200_PASS",
+      "bn-059": "HTTP_200_PASS",
+      "the-call-of-the-wild": "HTTP_200_PASS"
+    }
+  },
+  "backend": {
+    "railway_project_id": "a8533934-35c4-463e-9f43-577a9ac391ee",
+    "railway_environment_id": "580b250c-80ee-48ad-bfbe-fa4e31a6b378",
+    "railway_service_id": "5af42e7e-f518-4f6a-b602-d9950866501f",
+    "deployment_id": "41a7cda1-e1f1-4968-bbde-b010ef7e44e4",
+    "deployment_status": "SUCCESS",
+    "deployment_commit": "514c9ebcfd95fd69e5cece864e9360c5d21ee7c5",
+    "native_canary_workflow_run": 37042738495,
+    "native_canary_job": 110956573887,
+    "health": "PASS",
+    "reading_pass_contract": "PASS_PAGES_3_AUDIO_0",
+    "cors": "PASS",
+    "untrusted_reader_contract": "PASS_FIVE_HTTP_451_RESPONSES_FROM_US_EDGE"
+  },
+  "release_scope": {
+    "territory": "IN",
+    "commercial_text_reader": true,
+    "audio_exposed": false,
+    "new_titles": [
+      "muchiram-gurer-jibanchorit",
+      "bn-059",
+      "the-call-of-the-wild"
+    ]
+  },
+  "production_observation": {
+    "controller_country": "US",
+    "reader_and_reading_pass_result": "HTTP_451_RELEASE_TERRITORY_DENIED",
+    "allowed_countries": [
+      "IN"
+    ],
+    "observed_canonical_versions": {
+      "muchiram-gurer-jibanchorit": null,
+      "bn-059": null,
+      "the-call-of-the-wild": null
+    },
+    "india_backend_contract": "NOT_RUN_FROM_NON_IN",
+    "manual_production_observation_waiver": "APPLIED_CONDITIONALLY_AFTER_EXACT_COMPLETE_INTEGRITY_CLEAN_SOURCE_AND_CLEAN_ACTIVE_BOOK_READER_VALIDATION",
+    "inferred_production_facts": false
+  },
+  "listener_routes": {
+    "muchiram-gurer-jibanchorit": "HTTP_200_TRUTHFUL_UNAVAILABLE_NO_MEDIA_CONTROLS",
+    "bn-059": "HTTP_200_TRUTHFUL_UNAVAILABLE_NO_MEDIA_CONTROLS",
+    "the-call-of-the-wild": "HTTP_200_TRUTHFUL_UNAVAILABLE_NO_MEDIA_CONTROLS"
+  },
+  "next_exact_action": "Keep the-most-dangerous-game held. Recover and hash the exact persisted original The Student cover bytes, inventory its preserved source/text/licence/chapters, and obtain two independent reviews before any registry, allowlist, merge, or production mutation."
+}

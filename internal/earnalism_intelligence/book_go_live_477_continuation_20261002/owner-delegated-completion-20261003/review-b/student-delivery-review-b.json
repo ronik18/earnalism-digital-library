@@ -1,0 +1,19 @@
+{
+  "schema": "earnalism.independent-cover-delivery-review.v1",
+  "reviewer": "Independent reviewer B",
+  "slug": "the-student",
+  "status": "PASS_EXACT_DERIVED_DELIVERY_VISUAL",
+  "front_sha256": "7c5504f1e334973eef65969715d5d2f7bd459c4400cdf569f4b89a3bd50de04e",
+  "back_sha256": "47c93f26fed5564a34188fdde072f1242728f56c5f1af75a8ec445fe3250ffc3",
+  "receipt_sha256": "f0f665c33b428a7792efca61c2ddca444e680aae8f2745f5b2f80189faa02fdc",
+  "checks": {
+    "full_decode_dimensions": "PASS_800X1200",
+    "title_author_and_full_back_copy_legible": "PASS",
+    "footer_safe_and_no_ornament_text_collision": "PASS",
+    "composition_no_crop_regression": "PASS",
+    "false_live_audio_rights_claim_absent": "PASS"
+  },
+  "source_accepted_PNG_unchanged": true,
+  "production_observed": false,
+  "package_binding_review": "PENDING_FINAL_BINDINGS"
+}

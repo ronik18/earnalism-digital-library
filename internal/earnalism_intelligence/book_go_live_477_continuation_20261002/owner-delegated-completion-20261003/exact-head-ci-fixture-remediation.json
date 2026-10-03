@@ -1,0 +1,24 @@
+{
+  "schema": "earnalism.exact-head-ci-fixture-remediation.v1",
+  "failed_head": "d605e91e4126fa5bbda6a8e385a8fb002a216130",
+  "failed_run": 37096717409,
+  "failed_job": 111128035782,
+  "failure": "Copyright rights review test retains explicit old29-title accepted set; exactly four reviewed new slugs are reported as unexpected.",
+  "new_remediation": "Add only four reviewed canonical slugs to independent audit expected set and matching CURRENT_RELEASED_SLUGS regression fixture; all historical held/audio/source assertions retained.",
+  "source_assets_acceptance_registry_runtime_changed": false,
+  "isolated_real_mongo_reader_checks": {
+    "passed": 224,
+    "source": "failed-head job logs before later fixture failure"
+  },
+  "focused_validation": {
+    "copyright_and_related_contracts": {
+      "tests": 28,
+      "result": "PASS"
+    },
+    "reader_content_quality": {
+      "tests": 6,
+      "result": "PASS"
+    }
+  },
+  "next_action": "Same PR510 new exact-head protected normal checks; no unchanged rerun or parallel PR. Deployment/production readback remains pending."
+}

@@ -1,0 +1,187 @@
+{
+  "id": "controlled-the-art-of-money-getting",
+  "slug": "the-art-of-money-getting",
+  "title": "The Art of Money Getting",
+  "subtitle": "Golden Rules for Making Money",
+  "author": "P. T. Barnum",
+  "category_slug": "business",
+  "short_description": "A clean digital reading edition of P. T. Barnum's business classic.",
+  "description": "A text-only reader edition prepared from a legally cleared public-domain source for business and entrepreneurship readers.",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273638/earnalism/covers/front/the-art-of-money-getting_front_1600x2400.png",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273638/earnalism/covers/front/the-art-of-money-getting_front_1600x2400.png",
+  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273638/earnalism/covers/front/the-art-of-money-getting_front_1600x2400.png",
+  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273638/earnalism/covers/front/the-art-of-money-getting_front_1600x2400.png",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273639/earnalism/covers/back/the-art-of-money-getting_back_1600x2400.png",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273639/earnalism/covers/back/the-art-of-money-getting_back_1600x2400.png",
+  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273639/earnalism/covers/back/the-art-of-money-getting_back_1600x2400.png",
+  "cover_status": "CLOUDINARY_ASSIGNED",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "57 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a clean, boilerplate-free business classic.",
+    "Use a focused reader edition without source-file distractions.",
+    "Review practical reflections on earning, thrift, persistence, and enterprise."
+  ],
+  "who_for": [
+    "Business and entrepreneurship readers",
+    "Students of classic enterprise writing",
+    "Readers interested in historical advice on money and work"
+  ],
+  "learnings": [
+    "Classic views on saving, effort, and business judgment.",
+    "Historical language around enterprise and personal discipline.",
+    "A compact public-domain text prepared for web reading."
+  ],
+  "about_author": "P. T. Barnum was an American showman, promoter, and entrepreneur whose writings often turned personal business experience into practical advice.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Art of Money Getting",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 13564,
+      "reading_minutes": 57,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
+    }
+  ],
+  "source_hash": "0baf572e0ec351e47504ab1d49fb646be164ab6db13d0024cda7567b58dad287",
+  "content_hash": "907586f92b4df67b3576f66b89d9c1434bd09200aec7d25926d4fb8253a6761e",
+  "provenance_hash": "c49460dc49b55ce9b4340e04c2844835981ac4f7042ac2d31c830079fc679dc6",
+  "rights_basis": "Public domain; official catalog marks copyright status as Public domain in the USA; source text header permits reuse in the United States.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": false,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "the-art-of-money-getting",
+  "audiobook_assets": {
+    "mp3": "/api/reader/book/the-art-of-money-getting/audiobook"
+  },
+  "audiobook": {
+    "url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks-prod-v2-236e72b043e2/audiobooks/the-art-of-money-getting/the-art-of-money-getting_bm_george.mp3",
+    "provider": "kokoro",
+    "model": "hexgrad/Kokoro-82M",
+    "voice": "bm_george",
+    "size": 66469005,
+    "duration_ms": 5539056,
+    "release_gate": "APPROVED",
+    "qa_status": "QA_PASSED",
+    "assets": {
+      "mp3": "https://api.theearnalism.com/api/reader/book/the-art-of-money-getting/audiobook"
+    }
+  },
+  "audiobook_assets_updated_at": "",
+  "created_at": "2026-07-03T20:07:47Z",
+  "updated_at": "2026-07-03T20:07:47Z",
+  "cover_dimensions": {
+    "front": [
+      1600,
+      2400
+    ],
+    "back": [
+      1600,
+      2400
+    ]
+  },
+  "cover_semantic_match_score": 9.8,
+  "audio_status": "AVAILABLE",
+  "audiobook_release_gate": "APPROVED",
+  "audio_qa_status": "QA_PASSED",
+  "audio_url": "https://api.theearnalism.com/api/reader/book/the-art-of-money-getting/audiobook",
+  "audiobook_release_conveyor": {
+    "schema_version": "earnalism.audiobook_release_conveyor.v1",
+    "release_request_id": "the-art-of-money-getting-bm-george-final",
+    "reader_release_approved": true,
+    "audio_release_approved": true,
+    "audio_public_release": "APPROVED",
+    "audio_qa_status": "QA_PASSED",
+    "audio_object_key": "audiobooks/the-art-of-money-getting/the-art-of-money-getting_bm_george.mp3",
+    "audio_sha256": "f1f15b7624fce6e2b813efc3bbcbe1e2dbdacb9dec996b5909c42b4142b56ccc",
+    "audio_size_bytes": 66469005,
+    "duration_seconds": 5539.056,
+    "manuscript_sha256": "907586f92b4df67b3576f66b89d9c1434bd09200aec7d25926d4fb8253a6761e",
+    "provider": "kokoro",
+    "model": "hexgrad/Kokoro-82M",
+    "voice": "bm_george",
+    "qa": {
+      "asr_score": 0.989859470369884,
+      "coverage": 1.0,
+      "first_span_score": 1.0,
+      "last_span_score": 1.0,
+      "listening_score": 9.0,
+      "listening_confidence": 0.9,
+      "fatal_flags": [],
+      "blockers": [],
+      "ordered_content_integrity": true,
+      "sync_tier": "AUDIO_ONLY_NO_SYNC"
+    },
+    "storage": {
+      "store": "prod",
+      "bucket": "earnalism-audiobooks-prod-v2-236e72b043e2",
+      "key": "audiobooks/the-art-of-money-getting/the-art-of-money-getting_bm_george.mp3"
+    }
+  },
+  "publication_workflow": {
+    "schema_name": "earnalism-publication-workflow",
+    "schema_version": 2,
+    "rights": {
+      "tier": "A",
+      "verification_status": "APPROVED",
+      "publication_region": "IN"
+    },
+    "audio": {
+      "status": "AVAILABLE",
+      "release_status": "LIVE",
+      "qa_status": "QA_PASSED"
+    },
+    "qa": {
+      "status": "QA_PASSED"
+    },
+    "publication": {
+      "state": "LIVE_APPROVED",
+      "published_at": "",
+      "publication_version": "",
+      "reader_exposed": true,
+      "audio_exposed": true
+    },
+    "release": {
+      "rights_status": "APPROVED",
+      "content_status": "READY",
+      "reader_release": "LIVE",
+      "audio_release": "LIVE"
+    },
+    "demand": {},
+    "ingestion": {},
+    "edition": {},
+    "visual": {},
+    "cost": {},
+    "audit": {
+      "migration_source": "audiobook_release_conveyor_v1"
+    }
+  },
+  "sync_tier": "AUDIO_ONLY_NO_SYNC"
+}

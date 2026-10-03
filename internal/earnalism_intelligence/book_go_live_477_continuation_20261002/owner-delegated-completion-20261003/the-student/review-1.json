@@ -1,0 +1,23 @@
+{
+  "schema": "earnalism.independent-cover-visual-review.v1",
+  "reviewer": "Independent automated reviewer A",
+  "recorded_on": "2026-10-03",
+  "slug": "the-student",
+  "status": "PASS_EXACT_NEW_INACTIVE_COVER_COMPONENTS",
+  "front_sha256": "3fcf62ed1bbb278156ebef7101cd5c1b988a754368529566a1e9d3cfffd5d2fd",
+  "back_sha256": "343fa412c76a916c70f2f893465f9c337f1d464b326bb08fb5d2a08351762ab1",
+  "receipt_sha256": "1cf8b07bbc675b40e63ac73d0de143fb6e87a6cce2d2d84071f0e0bd30bf9bb1",
+  "fresh_visual_inspection": true,
+  "findings": [
+    "Title and author read fully without art/text collision.",
+    "False LIVE marker removed; no fabricated release state appears.",
+    "Back exact existing short_description and description are readable and complete.",
+    "Original graphical front artwork retained beyond declared masks.",
+    "Independent RGB comparison confirms byte-equivalent pixels outside documented mask rectangles.",
+    "Frozen run1 and separate verification render are byte-identical and decode completely."
+  ],
+  "excluded_evidence": "Earlier candidate-back-run2.png truncated; not used or accepted. Corrected receipt explicitly excludes it.",
+  "package_or_publication_review": "PENDING_NEW_PACKAGE_BINDING_REVIEW",
+  "publication_or_production_activation_by_this_review": false,
+  "human_approval_or_production_observation_inferred": false
+}

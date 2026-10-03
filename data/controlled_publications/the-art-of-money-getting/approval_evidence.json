@@ -1,26 +1,56 @@
 {
   "slug": "the-art-of-money-getting",
-  "approved_to_publish": false,
+  "approved_to_publish": true,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
-  "audio_public_release": "APPROVED",
+  "approval_scope": "OWNER_DELEGATED_AUTOMATED_EXACT_IN_TEXT_AND_REVIEWED_COVER_COMPONENT_PREPARATION",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true,
-  "audio_enabled": true,
-  "audio_status": "AVAILABLE",
-  "audiobook_release_gate": "APPROVED",
-  "audio_qa_status": "QA_PASSED",
+  "audiobook_enabled": false,
+  "audio_enabled": false,
+  "audio_status": "NOT_REQUESTED",
+  "audiobook_release_gate": "NOT_REQUESTED",
+  "audio_qa_status": "NOT_RUN",
   "historical_admin_import_claim": {
     "approved_to_publish": true,
     "verification_status": "approved",
     "approval_scope": "historical_admin_import_reconstruction"
   },
-  "publication_authorization_sha256": "802fa215c5935f25ceefe9c94ef88067e8385906cc9c8a9b558ee6b67227fdf6",
+  "publication_authorization_sha256": "7a957a9ce6b7bd8dd69e5fa8c529303ca363317cfa0b375cdcf58f3d961e638e",
   "source_hash": "ccf68ee545e68995f88d4cd2f534ecae9bf731b8996118d34b5a10bfc4958061",
   "content_hash": "f3c4db2a3c551518ebd4302e7409797eb49f0ff94470ebfbc4b800b900a44b61",
   "provenance_hash": "fc4034680d03df4989f6ab56d58d5f93407218847ffe6cf743d5ee107f185f59",
-  "verified_at": "2026-10-01T21:34:27.335291+00:00"
+  "verified_at": "2026-10-03T04:03:12.455271+00:00",
+  "cover_provenance_sha256": "0c6f089010c28c16ed21fe97b51cc3a62943fecaa7accfdac7d9e8a11eafdcbf",
+  "cover_delivery_derivation_sha256": "a9fb9bda228e99127d71ca26801f56c8341f279bc994c0c497a4d5e4dd742a22",
+  "source_integrity_validation_sha256": "df30c8ea0997c9d1f221d9ca7290fdcd319bdec4f45778e774e442454f15a804",
+  "accepted_by": "Automated title-preparation executor under the owner prospective cover-component/publication acceptance delegation of 2026-10-03 for issue #477, superseding the procedural cover deferral; no human approval, legal signature, or production observation inferred.",
+  "audiobook_use_approved": false,
+  "audiobook_use_approval_source": "",
+  "audiobook_use_approved_at": "",
+  "activation_derivation": {
+    "owner_directive": "issue #477 comment 5949652699 plus direct owner prospective acceptance instruction 2026-10-03",
+    "scope": "serialized IN text Reader/cover integration candidate",
+    "production_observed": false,
+    "runtime_observed": false
+  },
+  "cover_front_qa_status": "PASS",
+  "cover_back_qa_status": "PASS",
+  "cover_delivery_visual_qa_status": "TWO_INDEPENDENT_FRESH_EXACT_WEBP_REVIEWS_PASS",
+  "delivery_reviews": [
+    {
+      "reviewer": "A",
+      "file": "review_evidence/artmoney-delivery-review-a.json",
+      "sha256": "20a39d64886bd053c9f7b6518e380957ca47990b2837c4d4d0c30624b38715cd",
+      "result": "PASS_EXACT_WEBP_DELIVERY_DECODE_AND_VISUAL_COMPLIANCE"
+    },
+    {
+      "reviewer": "B",
+      "file": "review_evidence/artmoney-delivery-review-b.json",
+      "sha256": "fdb24286a7f7b5d646871ec49d014c32959c29d430bd5ab33e3b1b0a6f578644",
+      "result": "PASS_EXACT_DERIVED_DELIVERY_VISUAL"
+    }
+  ]
 }

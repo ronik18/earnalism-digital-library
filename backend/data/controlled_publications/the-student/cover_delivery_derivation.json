@@ -1,0 +1,28 @@
+{
+  "schema": "earnalism.cover-delivery-derivation.v1",
+  "slug": "the-student",
+  "state": "INACTIVE_NEW_DELIVERY_PENDING_TWO_VISUAL_REVIEWS",
+  "method": "Verified accepted-candidate PNG resized800x1200LANCZOS,WebPquality72method6; no paid call or new art",
+  "assets": {
+    "front": {
+      "source_path": "/workspace/scratch/181ef0a25f05/student-acceptance-20261003/candidate-front-run1.png",
+      "source_sha256": "3fcf62ed1bbb278156ebef7101cd5c1b988a754368529566a1e9d3cfffd5d2fd",
+      "path": "/workspace/scratch/181ef0a25f05/student-acceptance-20261003/delivery-front.webp",
+      "sha256": "7c5504f1e334973eef65969715d5d2f7bd459c4400cdf569f4b89a3bd50de04e",
+      "bytes": 21466,
+      "width": 800,
+      "height": 1200,
+      "url": "/assets/books/the-student/front-7c5504f1.webp"
+    },
+    "back": {
+      "source_path": "/workspace/scratch/181ef0a25f05/student-acceptance-20261003/candidate-back-run1.png",
+      "source_sha256": "343fa412c76a916c70f2f893465f9c337f1d464b326bb08fb5d2a08351762ab1",
+      "path": "/workspace/scratch/181ef0a25f05/student-acceptance-20261003/delivery-back.webp",
+      "sha256": "47c93f26fed5564a34188fdde072f1242728f56c5f1af75a8ec445fe3250ffc3",
+      "bytes": 34462,
+      "width": 800,
+      "height": 1200,
+      "url": "/assets/books/the-student/back-47c93f26.webp"
+    }
+  }
+}

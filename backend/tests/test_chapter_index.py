@@ -207,6 +207,19 @@ def test_catalog_wide_reader_indexes_are_complete_and_deterministic():
         for package in current_inventory["packages"]
     ]
     assert hashlib.sha256((CONTROLLED_ROOT / "muchiram-gurer-jibanchorit/reader_manifest.json").read_bytes()).hexdigest() == "ef7c6d21000b4f9d7fd56fc8bbb4768016682ee70466bc87e4f20d1ff6a4cd20"
+    # New runtime mirrors use the unchanged, independently reviewed root sources
+    # present at main 514c9ebc. Bind explicit overlays, preserving the old fixture.
+    for package_key, chapter_count, manifest_sha256 in [
+        ("the-student", 1, "8fe807a4936a240950d242a8084a8e4e0049b35e85087991e7567d5f10f16812"),
+        ("bn-035", 10, "b1a64daa1c5bdd26b24544de0911bb687429cdab2cfd8382b5cc6dcd99ab81f3"),
+    ]:
+        assert hashlib.sha256((CONTROLLED_ROOT / package_key / "reader_manifest.json").read_bytes()).hexdigest() == manifest_sha256
+        current_inventory["packages"].append({
+            "package_key": package_key, "manifest_slug": package_key,
+            "chapter_count": chapter_count,
+            "chapters": [{"id": f"chapter-{index:03d}", "order": index}
+                         for index in range(1, chapter_count + 1)],
+        })
     current_inventory["expected_manifest_count"] = len(current_inventory["packages"])
     current_inventory["expected_chapter_count"] = sum(
         package["chapter_count"] for package in current_inventory["packages"]

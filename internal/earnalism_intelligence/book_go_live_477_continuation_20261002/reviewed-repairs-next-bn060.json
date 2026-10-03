@@ -1,0 +1,85 @@
+{
+  "schema": "earnalism.reviewed-inactive-repairs-and-next-candidate.v1",
+  "recorded_on": "2026-10-03",
+  "source_main": "514c9ebcfd95fd69e5cece864e9360c5d21ee7c5",
+  "integration_branch_head": "8d3413b6e11a87e80934ad633369e5402e7cd9ce",
+  "reconciliation": {
+    "open_prs": 0,
+    "running_actions": 0,
+    "canonical_worktree": "/tmp/earnalism-main-approved-integration",
+    "canonical_reconciled": true,
+    "prior_local_history_preserved_on": "codex/preserved-local-pre509-90a886c3"
+  },
+  "inactive_reviews": {
+    "the-art-of-money-getting": {
+      "a": "PASS_INACTIVE_ONLY",
+      "b": "PASS_INACTIVE_ONLY",
+      "hold": "COVER_DISPLAY_PUBLICATION_ACCEPTANCE_ABSENT"
+    },
+    "bn-035": {
+      "a": "PASS_INACTIVE_ONLY",
+      "b": "PASS_INACTIVE_ONLY",
+      "hold": "COVER_DISPLAY_PUBLICATION_ACCEPTANCE_ABSENT"
+    },
+    "alices-adventures-in-wonderland": {
+      "a": "PASS_INACTIVE_ONLY",
+      "b": "PASS_INACTIVE_ONLY",
+      "hold": "COVER_DISPLAY_ACCEPTANCE_AND_FRESH_ALL_COMPONENT_DECISION_ABSENT"
+    }
+  },
+  "queue_scan": {
+    "controlled_packages": 162,
+    "live": 29,
+    "inactive": 133,
+    "noncover_authorizations": 84,
+    "text_only_authorizations": 14,
+    "no_authorization": 35,
+    "unique_inactive_accepted_cover_display_candidate": "bn-060"
+  },
+  "bn060": {
+    "title": "ইন্দিরা",
+    "existing_decision": "india-20261002-bn-060-1873-cc-by-sa-text-reader",
+    "cover_display_explicitly_accepted": true,
+    "publication_authorized": true,
+    "production_activation": false,
+    "component_hashes": "PASS_7_OF_7",
+    "checksum_entries": "PASS_16_OF_16",
+    "chapters": "PASS_8_OF_8",
+    "reader_aggregate_sha256": "69d972ddd3fea936806a641d96a6287930b569536c0049eb8ef2f4b61d790065",
+    "recovered_original_front_sha256": "dcbfc2996987baae482523e355aefa218a3d422c027127237daccbc700c34b88",
+    "recovered_original_back_sha256": "b5ed699a3ff0fbcee904ead6b2825904621fdb74165762a685a456f1a376aeed",
+    "original_visual_review_a": "HOLD",
+    "original_visual_review_b": "HOLD",
+    "defects": [
+      "false live release badge",
+      "Bengali shaping artifacts",
+      "ornament text occlusion",
+      "truncated or import-furniture back copy"
+    ],
+    "layout_only_repair_supported_by_existing_authorization": true,
+    "new_hashes_require_explicit_component_binding": true,
+    "derivative_v2": {
+      "front_sha256": "409d9f42599f4980d90f4e5fa122324d439226806b0cac4bef31f34b91e06ddf",
+      "back_sha256": "1213e892a6c5f4a6fac5a1f85d57b13d9589e3083f9b679f9b3c7ff4ff40dd9d",
+      "review_a": "PASS_PREPARATION",
+      "review_b": "HOLD_BACK_COVER_QUALITY",
+      "disposition": "HELD_REVIEW_DISPUTE",
+      "reason": "Partial gold bead interrupts back card border; detached lower rules read as unfinished fragments.",
+      "old_versions_preserved": true
+    }
+  },
+  "audio_exposed": false,
+  "registry_allowlist_or_production_mutation": false,
+  "next_action": "Retain all holds; no unchanged retries or new activation PR. Resume onboarding only with new exact cleared-source/Reader package evidence for a missing title, genuine cover-display/publication acceptance for reviewed inactive repairs, or new cover evidence resolving bn-060/the-most-dangerous-game disagreement.",
+  "outside_controlled_scan": {
+    "catalogue_titles": 231,
+    "outside_controlled_packages": 69,
+    "content_book_directories": 160,
+    "content_directories_outside_controlled": 0,
+    "outside_titles_cleared_source_or_reader_package_present": 0,
+    "outside_titles_chapter_count": 0,
+    "clearance_matrix_rows": 136,
+    "clearance_rows_outside_controlled": 0,
+    "next_safe_activation_candidate": null
+  }
+}

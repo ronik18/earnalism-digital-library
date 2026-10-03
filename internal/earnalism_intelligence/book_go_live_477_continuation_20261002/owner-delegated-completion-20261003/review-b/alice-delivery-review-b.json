@@ -1,0 +1,20 @@
+{
+  "schema": "earnalism.independent-cover-delivery-review.v1",
+  "reviewer": "Independent reviewer B",
+  "slug": "alices-adventures-in-wonderland",
+  "status": "PASS_EXACT_DERIVED_DELIVERY_VISUAL",
+  "front_sha256": "5fa6ee0698360743214ad601df0a73b6181ec168346a6bb0580edea2a6c30a2e",
+  "back_sha256": "a588597bb1f38dd1d8bdc777167d825ea157ba1856efdc6d1f4b2968e7a99bf8",
+  "receipt_sha256": "d3a3fd2c1a1d2a3367063ade99074a9a896258d2a6316c1d47a041678e22c84e",
+  "checks": {
+    "decode_dimensions": "PASS_FRONT600X900_BACK800X1200",
+    "title_and_author_legible": "PASS",
+    "back_copy_and_footer_legible": "PASS",
+    "unsupported_quote_removal_preserved": "PASS",
+    "composition_and_no_crop_regression": "PASS",
+    "false_live_audio_claim_absent": "PASS"
+  },
+  "source_accepted_PNG_unchanged": true,
+  "production_observed": false,
+  "package_binding_review": "PENDING_FINAL_FROZEN_BINDINGS"
+}

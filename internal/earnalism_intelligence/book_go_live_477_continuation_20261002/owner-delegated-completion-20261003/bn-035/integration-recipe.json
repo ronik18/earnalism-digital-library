@@ -1,0 +1,22 @@
+{
+  "slug": "bn-035",
+  "candidate_root": "/workspace/scratch/181ef0a25f05/bn035-acceptance-20261003/candidate",
+  "source_package": "/workspace/scratch/181ef0a25f05/bn035-acceptance-20261003/candidate/data/controlled_publications/bn-035",
+  "preimages": "/workspace/scratch/181ef0a25f05/bn035-acceptance-20261003/preimages",
+  "backend_preimage_present": false,
+  "steps": [
+    "Archive preimages and inventory under campaign ledger before replacing authoritative package. Preserve original content/books bytes untouched.",
+    "Review exact new package independently twice; existing visual reviews are reused only for unchanged accepted PNG hashes.",
+    "Copy candidate data/controlled_publications/bn-035 to canonical package and backend mirror (new directory; no old backend state exists).",
+    "Copy exact reviewed PNG assets to frontend/public/assets/books/bn-035; no new compression/review needed for byte-identical delivery.",
+    "Register new decision in root/backend production registry using canonical decision hash, never raw file SHA.",
+    "Add bn-035 to existing root/backend/frontend controlled launch and existing canonical Reader bootstrap only; no policy/config/schema changes.",
+    "Maintain approved/exposed publication manifest with source record READY_FOR_ACTIVATION_GLOBAL_GATE; controlled launch projects runtime LIVE_APPROVED.",
+    "Run meaningful rights/launch/bootstrap/runtime/audio-hidden/static checks and two exact-tree reviews; publish sole existing branch only after passes.",
+    "Merge through protected normal checks, verify exact deploy/canary, perform truthful version readback; do not manufacture IN customer observations."
+  ],
+  "decision_id": "india-20261003-bn-035-1922-text-reader-exact-cover",
+  "decision_canonical_registry_sha256": "cb646d915efb88a90772cd6994f932a1305bcc391a3753d011884e65f72f9ba5",
+  "registry_allowlist_production_mutated": false,
+  "prepared_at": "2026-10-03T03:59:44.363178+00:00"
+}

@@ -1,0 +1,238 @@
+{
+  "slug": "alices-adventures-in-wonderland",
+  "verified_at": "2026-10-02T03:42:22.383004+00:00",
+  "selected_edition_scope": "Project Gutenberg #11, Millennium Fulcrum Edition3.0, Carroll narrative, no illustrations",
+  "raw_source_sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+  "reader_aggregate_sha256": "5629f655398205d45c0b7bba128ada0849d46e5148aa9b6553636f7d4d7e8812",
+  "chapter_count": 12,
+  "ordered_chapter_hashes": {
+    "chapter-001": "104b7e3c2477c11fdc4e40b3fb9a12076626f568fb7aaa167f8523c9d102850d",
+    "chapter-002": "a2fb4e154be7dfd612ecfd52252285cf5b68ef1f0d5f22d9efd05adbf28f8d5e",
+    "chapter-003": "8abac900f8019473191aa983bc099869e95af3f6337bf741f4f3ad4eb964c785",
+    "chapter-004": "761d82ed79944f4da40c4d397b38afac3cfc94597a1fdc31807333e6da5b41c2",
+    "chapter-005": "7e5b6c5ada1474bc92f29a9632c2efa071ce154afe84d213c7f0f6dcc2ca89b3",
+    "chapter-006": "a55b64a4102259c5fd45c2321cbda43e3b62a09610a468964cd81f572fc340ca",
+    "chapter-007": "88713e0483ca657522d8f7b15ac9db785eaba44418015a8a1da6a334cf449e38",
+    "chapter-008": "41dbcdb545ee4e39a2a66c66f0f5763ef7c0a9e7510938afdf3219a1ad7a5d5b",
+    "chapter-009": "9eb262d5d18b68081aa87e2f2b2f2017d04b70d759ce6efdc31b9606217ba284",
+    "chapter-010": "c2e46a40d898143de31c82bc7f4c2ad6bc31d1261c613bdfdd0ab643ef7312b8",
+    "chapter-011": "b5c24d555b38ba5640bfda65ae3788ea728023e8109f0912b50b8862a2946db4",
+    "chapter-012": "ed41d07cab3b03a857470f3b55f29834d98d8cedafb5eea1ef02b240449727f1"
+  },
+  "source_boundary_before_first": "ot located in the United States, you will have to check the laws of the country where you are located before using this eBook. Title: Alice's Adventures in Wonderland Author: Lewis Carroll Release date: June 27, 2008 [eBook #11] Most recently updated: June 26, 2025 Language: English Other information and formats: www.gutenberg.org/ebooks/11 Credits: Arthur DiBianca and David Widger *** START OF THE PROJECT GUTENBERG EBOOK ALICE'S ADVENTURES IN WONDERLAND *** [Illustration] Alice’s Adventures in Wonderland by Lewis Carroll THE MILLENNIUM FULCRUM EDITION 3.0 Contents CHAPTER I. Down the Rabbit-Hole CHAPTER II. The Pool of Tears CHAPTER III. A Caucus-Race and a Long Tale CHAPTER IV. The Rabbit Sends in a Little Bill CHAPTER V. Advice from a Caterpillar CHAPTER VI. Pig and Pepper CHAPTER VII. A Mad Tea-Party CHAPTER VIII. The Queen’s Croquet-Ground CHAPTER IX. The Mock Turtle’s Story CHAPTER X. The Lobster Quadrille CHAPTER XI. Who Stole the Tarts? CHAPTER XII. Alice’s Evidence CHAPTER I. ",
+  "first_body_anchor": "Down the Rabbit-Hole\n\nAlice was beginning to get very tired of sitting by her sister on the\n\nbank, and of having nothing to do: once or twice she had peeped into\n\nthe book her sister was reading, but ",
+  "last_body_anchor": "th many a strange tale,\n\nperhaps even with the dream of Wonderland of long ago: and how she\n\nwould feel with all their simple sorrows, and find a pleasure in all\n\ntheir simple joys, remembering her own child-life, and the happy summer\n\ndays.\n\nTHE END",
+  "source_boundary_after_last": " *** END OF THE PROJECT GUTENBERG EBOOK ALICE'S ADVENTURES IN WONDERLAND *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in these works, so the Foundation (and you!) can copy and distribute it in the United States without permission and without paying copyright royalties. Special rules, set forth in the General Terms of Use part of this license, apply to copying and distributing Project Gutenberg™ electronic works to protect the PROJECT GUTENBERG™ concept and trademark. Project Gutenberg is a registered trademark, and may not be used if you charge for an eBook, except by following the terms of the trademark license, including paying royalties for use of the Project Gutenberg trademark. If you do not charge anything for copies of this eBook, complying with the trademark license is very easy. You may use this eBook for nearly any purpose such as creation of derivative works, reports, performances and research. Project Gutenberg eBooks may be modified and printed and given away—you may do practically ANYTHING in the United Sta",
+  "internal_gaps": [
+    {
+      "between": [
+        "chapter-001",
+        "chapter-002"
+      ],
+      "text": " CHAPTER II. The Pool of Tears ",
+      "sha256": "104c2fb1a5fe24579440ec60c5983eff7cb39bdb61ea4eb7afa5741f61496760",
+      "length": 31
+    },
+    {
+      "between": [
+        "chapter-002",
+        "chapter-003"
+      ],
+      "text": " CHAPTER III. ",
+      "sha256": "cd5f8adc746552a76af9c50bd1da82abbf63b943cc560b2c58d6fa612d8485b6",
+      "length": 14
+    },
+    {
+      "between": [
+        "chapter-003",
+        "chapter-004"
+      ],
+      "text": " CHAPTER IV. ",
+      "sha256": "9aa6c9ccbba830b82018c6f4ad4f4228fbdaf10972086d6266a9fe98be5db132",
+      "length": 13
+    },
+    {
+      "between": [
+        "chapter-004",
+        "chapter-005"
+      ],
+      "text": " CHAPTER V. ",
+      "sha256": "30dcd6a6be1f48146ececf524c4d7d040e557e25966ec582902dfb591cd83503",
+      "length": 12
+    },
+    {
+      "between": [
+        "chapter-005",
+        "chapter-006"
+      ],
+      "text": " CHAPTER VI. ",
+      "sha256": "8c780f99e734cd2a82130597bfd0a468b1c0b996ffcff744d355e0431015eb72",
+      "length": 13
+    },
+    {
+      "between": [
+        "chapter-006",
+        "chapter-007"
+      ],
+      "text": " CHAPTER VII. A Mad Tea-Party ",
+      "sha256": "3b7c2fe52e87563e1e7fc922d04dbf8c069a6902df53437817b5a3ea1020dcfb",
+      "length": 30
+    },
+    {
+      "between": [
+        "chapter-007",
+        "chapter-008"
+      ],
+      "text": " CHAPTER VIII. The Queen’s Croquet-Ground ",
+      "sha256": "4043e2423ee0e6b88ab63fd61a727d37c959a41c422db949aee888c889516c3e",
+      "length": 42
+    },
+    {
+      "between": [
+        "chapter-008",
+        "chapter-009"
+      ],
+      "text": " CHAPTER IX. The Mock Turtle’s Story ",
+      "sha256": "5b20d98cff07c1d027447af954d5711b735c6acc2eec37e9485762e6ba65dc84",
+      "length": 37
+    },
+    {
+      "between": [
+        "chapter-009",
+        "chapter-010"
+      ],
+      "text": " CHAPTER X. The Lobster Quadrille ",
+      "sha256": "8b6895dc4d367fb713d6d57b1351b68fe6fe660ff1114b9b4dec0359a8506171",
+      "length": 34
+    },
+    {
+      "between": [
+        "chapter-010",
+        "chapter-011"
+      ],
+      "text": " CHAPTER XI. ",
+      "sha256": "28168e88f4e61791a3411029bec5e4f836f482e936f21d0196684538e214c387",
+      "length": 13
+    },
+    {
+      "between": [
+        "chapter-011",
+        "chapter-012"
+      ],
+      "text": " CHAPTER XII. Alice’s Evidence ",
+      "sha256": "d73eaab285a77e594eb793ed7d31861ed9de474866578cb0b15f924332d1a92e",
+      "length": 31
+    }
+  ],
+  "whole_narrative_coverage_review": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/11.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/11/pg11.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:03:04.864446+00:00",
+      "response_sha256": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 12,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1380,
+          "length": 11330
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 12741,
+          "length": 10869
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 23624,
+          "length": 9136
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 32773,
+          "length": 13829
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 46614,
+          "length": 11766
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 58393,
+          "length": 13729
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 72152,
+          "length": 12546
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 84740,
+          "length": 13557
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 98334,
+          "length": 12502
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 110870,
+          "length": 11264
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 122147,
+          "length": 10291
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 132469,
+          "length": 11501
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "first_publication_evidence": {
+      "error": "HTTP Error 403: Forbidden",
+      "british_library_verification": {
+        "requested_url": "https://searcharchives.bl.uk/catalog/032-002102746",
+        "resolved_url": "https://searcharchives.bl.uk/catalog/032-002102746",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:05:38.057951+00:00",
+        "response_sha256": "27cd6382fc1206d32cfe307326ccfcb94aa33be94a574635b3644f87aa8c1c12",
+        "original_publication_year": 1865,
+        "author_death_year": 1898,
+        "scope": "WORK_FIRST_PUBLICATION_AND_AUTHOR_FACTS; not Gutenberg physical-edition identity or cover",
+        "context_quote": "published in 1865",
+        "review_status": "VERIFIED_PRIMARY_LIBRARY_RECORD"
+      }
+    },
+    "author_death_evidence": [
+      "Carroll, Lewis, 1832-1898"
+    ],
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "NONE_IMPORTED",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "containment_alone_complete": false,
+  "reconciled_on": "2026-10-03",
+  "receipt_preserved_from": "internal/legal/catalogue_clearance_20261002/english/current_whole_work_boundary_verification.json",
+  "receipt_file_sha256": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e",
+  "reuse_status": "EXACT_CHAPTER_AND_SOURCE_IDENTITY_BINDING_VERIFIED_NO_REPEATED_SOURCE_FETCH",
+  "no_new_complete_edition_claim": true
+}

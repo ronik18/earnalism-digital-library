@@ -1,0 +1,69 @@
+{
+  "schema": "earnalism.inactive-cover-derivative-review.v1",
+  "recorded_on": "2026-10-02",
+  "slug": "the-student",
+  "status": "INACTIVE_COVER_DERIVATIVES_REVIEWED_PASS",
+  "publication_approval": false,
+  "original_variant_status": "HELD",
+  "source_and_text": {
+    "source": "Project Gutenberg #1944",
+    "source_receipt_sha256": "fd7c69daa6080772e42bb26c21330c1dc1c5fb3967f40c23789f51e5c260c82f",
+    "chapter_content_sha256": "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90",
+    "narrative_chapters": 1,
+    "controlled_checksum_manifest": "7_OF_7_PASS",
+    "accepted_text_only_decision": "india-20261002-the-student-pg1944-noncover-text",
+    "source_or_rights_rerun_required": false
+  },
+  "preserved_originals": {
+    "front": {
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267888/earnalism/covers/front/the-student_front_1600x2400.png",
+      "width": 1600,
+      "height": 2400,
+      "bytes": 182766,
+      "sha256": "852b0ec54f013b2c24c63514e21d524ea7b42fc1151de16f5ecbc7aa624825db"
+    },
+    "back": {
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267889/earnalism/covers/back/the-student_back_1600x2400.png",
+      "width": 1600,
+      "height": 2400,
+      "bytes": 376249,
+      "sha256": "c48024e8f29f6efdf32474199e4178a477bde4c6bd5624eb619bf911fdb9da25"
+    },
+    "unchanged": true,
+    "hold_reasons": [
+      "false LIVE CONTROLLED RELEASE badge",
+      "ornament text occlusion",
+      "mid-sentence back-copy truncation"
+    ]
+  },
+  "inactive_derivatives": {
+    "front_png": {
+      "width": 1600,
+      "height": 2400,
+      "bytes": 219768,
+      "sha256": "c816a21c0ee9113d221efe4724457fdf6e2f6df134523aba7c0c37bc9ae86f9b"
+    },
+    "front_svg_sha256": "5af1867bc06108709e9bc819fb0fd33aeaa76bb3cd2c838c08b7a44b4b65065a",
+    "back_png": {
+      "width": 1600,
+      "height": 2400,
+      "bytes": 300570,
+      "sha256": "73b77cce894cbd36fcbb2d7c0e5af05b9163b53b6b0638d770b38f96826bde95"
+    },
+    "back_svg_sha256": "cae7351b2b95ff3fed2d53361f6d50ce4b9a49b4fec246b91ba68cf13ed4480f",
+    "receipt_sha256": "2229fb034150eb266e739e60f6ff6b38df69f702ddd8fcdff299838497b89bdf",
+    "render": "LOCAL_DETERMINISTIC_INKSCAPE_1_2_2",
+    "network_fetches": 0,
+    "paid_or_image_generation_calls": 0
+  },
+  "independent_reviews": {
+    "review_a": "PASS_INACTIVE_DERIVATIVE_ONLY",
+    "review_b": "PASS_INACTIVE_DERIVATIVE_ONLY",
+    "byte_exact_rerender": "PASS",
+    "repository_copy_exact": "PASS",
+    "visual_safe_area": "PASS",
+    "false_status_claim_absent": "PASS",
+    "audio_or_rights_claim_absent": "PASS"
+  },
+  "remaining_gate": "Create an isolated inactive candidate binding with audio_enabled=false and audiobook_enabled=false, bind exact derivative and original provenance hashes, then obtain two independent exact-package reviews before any registry or launch mutation."
+}
