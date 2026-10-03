@@ -56,11 +56,17 @@ function snapshotManifest() {
   return JSON.parse(read("frontend/build/static-seo-snapshot-manifest.json"));
 }
 
+// Match browser-visible text while retaining escaped production HTML.
+function decodeHtmlText(value) {
+  const entities = { amp: "&", lt: "<", gt: ">", quot: '"', "#39": "'" };
+  return String(value).replace(/&(amp|lt|gt|quot|#39);/g, (_entity, name) => entities[name]);
+}
+
 function metaContent(html, attr, value) {
   const tag = html.match(new RegExp(`<meta\\s+[^>]*${attr}=["']${value}["'][^>]*>`, "i"));
   if (!tag) return "";
   const content = tag[0].match(/content=["']([^"']*)["']/i);
-  return content ? content[1] : "";
+  return content ? decodeHtmlText(content[1]) : "";
 }
 
 function canonicalHref(html) {
@@ -72,7 +78,7 @@ function canonicalHref(html) {
 
 function titleText(html) {
   const title = html.match(/<title>\s*([\s\S]*?)\s*<\/title>/i);
-  return title ? title[1].replace(/\s+/g, " ").trim() : "";
+  return title ? decodeHtmlText(title[1]).replace(/\s+/g, " ").trim() : "";
 }
 
 function jsonLdObjects(html) {

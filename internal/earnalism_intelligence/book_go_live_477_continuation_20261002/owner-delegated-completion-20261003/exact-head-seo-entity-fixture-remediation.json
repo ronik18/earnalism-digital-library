@@ -1,0 +1,16 @@
+{
+  "schema": "earnalism.exact-head-seo-fixture-remediation.v1",
+  "failed_head": "f9d2c2bdad4adf55a0606a90d6376ade70195b41",
+  "failed_run": 37097196024,
+  "failed_job": 111129427122,
+  "failure": "SEO regression test compares raw escaped HTML title Alice&#39;s with browser-visible apostrophe text; generator escaping is correct.",
+  "new_remediation": "Decode only generator-supported HTML text entities in regression title/meta extractors before existing exact semantic comparisons. Production generator/escaping/metadata/assets remain unchanged.",
+  "protected_gate_weakened": false,
+  "exact_untrusted_raw_html_escaping_preserved": true,
+  "focused_validation": {
+    "tests": 15,
+    "suites": 2,
+    "result": "PASS"
+  },
+  "next_action": "Protected normal checks on materially changed exact head of same PR510; no parallel PR or unchanged rerun."
+}
