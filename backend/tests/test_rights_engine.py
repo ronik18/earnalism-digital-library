@@ -318,7 +318,11 @@ def test_admin_rights_report_endpoint_requires_admin_auth():
 
 def test_publishing_create_and_update_paths_call_publish_gate():
     server = server_module()
-    book = approved_book(rights_metadata={"source_license": ""})
+    book = approved_book(
+        slug="rights-gate-fixture",
+        cover_image_url="https://cdn.example.test/cover.jpg",
+        rights_metadata={"source_license": ""},
+    )
 
     with pytest.raises(server.HTTPException) as create_exc:
         server._assert_publishable(book)
