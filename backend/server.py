@@ -1028,7 +1028,10 @@ async def _active_admin_from_payload(payload: dict) -> Optional[dict]:
     subject = payload.get("sub")
     if not isinstance(subject, str) or not subject:
         return None
-    user = await db.users.find_one({"id": subject}, {"_id": 0})
+    users = getattr(db, "users", None)
+    if users is None:
+        return None
+    user = await users.find_one({"id": subject}, {"_id": 0})
     if not user or user.get("role") != "admin":
         return None
     if user.get("status") in {"blocked", "disabled", "inactive", "revoked"}:

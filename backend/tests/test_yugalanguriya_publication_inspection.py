@@ -84,8 +84,16 @@ class ReadOnlyCollection:
         raise AssertionError("publication inspector must not create indexes")
 
 
+class AdminUsers:
+    async def find_one(self, query, *_args, **_kwargs):
+        if query == {"id": "test"}:
+            return {"id": "test", "email": "admin@example.com", "role": "admin", "status": "active"}
+        return None
+
+
 def fake_db(*, pointer=(), manifests=(), segments=(), sessions=(), pointer_options=None, manifest_options=None):
     return SimpleNamespace(
+        users=AdminUsers(),
         reader_segment_activation_state=ReadOnlyCollection(pointer, **(pointer_options or {})),
         reader_segment_manifests=ReadOnlyCollection(manifests, **(manifest_options or {})),
         reader_content_segments=ReadOnlyCollection(segments),
