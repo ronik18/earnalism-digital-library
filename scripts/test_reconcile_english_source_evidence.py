@@ -65,7 +65,8 @@ class EvidenceTests(unittest.TestCase):
     if component.exists():self.assertEqual(digest,m.sha(component.read_bytes()))
     else:
      self.assertNotIn(name,required_components)
-     self.assertRegex(digest,r'^[0-9a-f]{64}   ordered=m.load(package/'reader_manifest.json')['chapters']
+     self.assertRegex(digest,r'^[0-9a-f]{64}$')
+   ordered=m.load(package/'reader_manifest.json')['chapters']
    chapters=[m.load(package/'chapters'/(x['id']+'.json')) for x in ordered]
    self.assertEqual(authority['content_sha256'],m.sha('\n\n'.join(x['content'] for x in chapters).encode()))
    self.assertEqual(authority['chapter_sha256'],{x['id']:m.sha(x['content'].encode()) for x in chapters})

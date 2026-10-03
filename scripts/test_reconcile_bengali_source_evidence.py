@@ -125,7 +125,8 @@ class FinalClearanceBindingsTests(unittest.TestCase):
                     self.assertEqual(value,hashlib.sha256(component.read_bytes()).hexdigest())
                 else:
                     self.assertNotIn(name,required_components)
-                    self.assertRegex(value,r'^[0-9a-f]{64}            auth=json.loads((package/'publication_authorization.json').read_text())
+                    self.assertRegex(value,r'^[0-9a-f]{64}$')
+            auth=json.loads((package/'publication_authorization.json').read_text())
             self.assertFalse(auth['audio_authorized'])
             self.assertFalse(auth['production_activation_authorized_by_this_file'])
             self.assertIn('TEXT_READER',auth['scope'])
