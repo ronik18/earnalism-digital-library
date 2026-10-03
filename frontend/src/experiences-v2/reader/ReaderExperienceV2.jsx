@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Bookmark, ChevronLeft, ChevronRight, Clock3, Minus, Plus, Settings2, StickyNote, X } from "lucide-react";
 import ExperienceBottomNavigation from "../shared/ExperienceBottomNavigation";
 import ExperienceHeader from "../shared/ExperienceHeader";
@@ -181,13 +181,29 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
     const next = Math.max(0, Math.min(READER_TEXT_SIZE_REM_STEPS.length - 1, textSizeStep + step));
     updateTextSize(READER_TEXT_SIZE_REM_STEPS[next]);
   };
-  const requestPage = (requestedPage) => {
+  const requestPage = useCallback((requestedPage) => {
     const target = Number(requestedPage);
     if (busy || !Number.isInteger(target) || target < 1 || target > totalPages || target === page) return;
     // Navigation requests never grant access. The route authorizes protected
     // pages before it fetches or displays their contents.
     onRequestPage?.(target);
-  };
+  }, [busy, totalPages, page, onRequestPage]);
+
+  const [pageTurn, setPageTurn] = useState({ page, direction: "next" });
+  if (pageTurn.page !== page) setPageTurn({ page, direction: page < pageTurn.page ? "previous" : "next" });
+  const canvasRef = useRef(null);
+  useEffect(() => { canvasRef.current?.scrollTo?.({ top: 0, behavior: "instant" }); }, [page]);
+  useEffect(() => {
+    const onKeyDown = (event) => {
+      if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey || settingsOpen || notebookOpen) return;
+      const target = event.target;
+      if (target instanceof HTMLElement && (target.isContentEditable || target.closest('input, textarea, select, button, a, [role="slider"], [role="combobox"], [role="listbox"], [role="menu"], [role="tablist"], audio, video, [contenteditable="true"]'))) return;
+      if (event.key === "ArrowLeft" && navigationPage > 1) { event.preventDefault(); requestPage(navigationPage - 1); }
+      if (event.key === "ArrowRight" && !atEnd) { event.preventDefault(); requestPage(navigationPage + 1); }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [requestPage, navigationPage, atEnd, settingsOpen, notebookOpen]);
 
   return (
     <ExperienceShell className="reader-v2" labelledBy="reader-v2-title">
@@ -212,7 +228,10 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
             : <ExperiencePanel eyebrow="Reading Pass"><p>{model.readingPass}</p><button type="button" onClick={() => onNavigate?.(model.visualFixture ? "signin" : "passes")}>{model.visualFixture ? "Sign in to check balance" : "Extend Reading Time"}</button></ExperiencePanel>}
         </aside>
 
-        <article className="reader-v2__canvas" data-licensed-text={approvedTextLicense(model.book) ? "true" : undefined} data-reader-theme={settings.theme} data-reader-language={language} aria-busy={busy} lang={model.language || undefined}>
+        <div className="reader-v2__page-frame">
+          <button className="reader-v2__page-arrow reader-v2__page-arrow--previous" type="button" aria-label="Previous page" disabled={busy || navigationPage <= 1} onClick={() => requestPage(navigationPage - 1)}><ChevronLeft size={22} strokeWidth={1.6} aria-hidden="true" /></button>
+          <button className="reader-v2__page-arrow reader-v2__page-arrow--next" type="button" aria-label="Next page" disabled={busy || atEnd} onClick={() => requestPage(navigationPage + 1)}><ChevronRight size={22} strokeWidth={1.6} aria-hidden="true" /></button>
+        <article ref={canvasRef} className="reader-v2__canvas" data-licensed-text={approvedTextLicense(model.book) ? "true" : undefined} data-reader-theme={settings.theme} data-reader-language={language} aria-busy={busy} lang={model.language || undefined}>
           <header className="reader-v2__chapter">
             <span aria-live="polite" aria-atomic="true">{model.chapterEyebrow}</span>
             <div className="reader-v2__toolbar">
@@ -236,7 +255,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
           </section>}
           <label className="reader-v2__page-selector">Go to page<select aria-label="Go to page" value={page} disabled={busy} onChange={(event) => requestPage(event.target.value)}>{Array.from({ length: totalPages }, (_, index) => <option key={index + 1} value={index + 1}>Page {index + 1}</option>)}</select></label>
           {model.pendingPage && <p className="reader-v2__page-loading" role="status">Opening page {model.pendingPage}…</p>}
-          <div key={page} className="reader-v2__page-content" data-testid="reader-page-content">
+          <div key={page} className={`reader-v2__page-content reader-v2__page-content--${pageTurn.direction}`} data-testid="reader-page-content">
             <div className="reader-v2__body" data-testid="reader-reading-text" style={{ fontSize: formatRem(textSizeRem), lineHeight, fontFamily, fontWeight }}>
               {model.content ?? (model.paragraphs || []).map((paragraph, index) => <p key={`${index}-${paragraph.slice(0, 16)}`}>{paragraph}</p>)}
             </div>
@@ -255,6 +274,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
             </nav>
           </footer>
         </article>
+        </div>
 
         <aside id="reader-notebook" className="reader-v2__context" data-notebook-open={notebookOpen} aria-label="Notes and bookmarks" onKeyDown={(event) => { if (event.key === "Escape" && notebookOpen) closeNotebook(); }}>
           <button type="button" className="reader-v2__notebook-close" onClick={closeNotebook} aria-label="Close notes and bookmarks"><X size={18} /></button>
