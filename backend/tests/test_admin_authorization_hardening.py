@@ -71,6 +71,7 @@ def test_forged_admin_claim_for_user_cannot_access_admin_or_optional_admin_path(
     {"status": "blocked"},
     {"status": "disabled"},
     {"status": "inactive"},
+    {"status": "revoked"},
     {"is_active": False},
     {"admin_active": False},
 ])
@@ -78,6 +79,16 @@ def test_disabled_or_invalidated_admin_loses_existing_token(monkeypatch, status_
     admin = {"id": "admin-1", "email": "admin@example.com", "role": "admin", **status_field}
     monkeypatch.setattr(server, "db", SimpleNamespace(users=Users([admin])))
     creds = credentials_for(admin["id"])
+
+    with pytest.raises(HTTPException) as exc:
+        run(server.require_admin(creds, None))
+    assert exc.value.status_code == 403
+    assert run(server.optional_principal(request(), creds)) is None
+
+
+def test_deleted_admin_loses_existing_token(monkeypatch):
+    monkeypatch.setattr(server, "db", SimpleNamespace(users=Users([])))
+    creds = credentials_for("deleted-admin")
 
     with pytest.raises(HTTPException) as exc:
         run(server.require_admin(creds, None))
