@@ -1017,6 +1017,29 @@ def create_token(sub: str, email: str) -> str:
     }
     return jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALG)
 
+
+async def _active_admin_from_payload(payload: dict) -> Optional[dict]:
+    """Resolve admin authority from current server-side state.
+
+    The signed role claim is only a routing hint. It is never sufficient to
+    grant administrator access because a user can be demoted or disabled
+    after a token is issued.
+    """
+    subject = payload.get("sub")
+    if not isinstance(subject, str) or not subject:
+        return None
+    users = getattr(db, "users", None)
+    if users is None:
+        return None
+    user = await users.find_one({"id": subject}, {"_id": 0})
+    if not user or user.get("role") != "admin":
+        return None
+    if user.get("status") in {"blocked", "disabled", "inactive", "revoked"}:
+        return None
+    if user.get("is_active") is False or user.get("admin_active") is False:
+        return None
+    return user
+
 def create_user_token(sub: str, email: str, session_id: str, device_fingerprint: str) -> str:
     payload = {
         "sub": sub,
@@ -1257,7 +1280,10 @@ async def require_admin(
         raise HTTPException(status_code=401, detail="Invalid token")
     if payload.get("role") != "admin":
         raise HTTPException(status_code=403, detail="Admin access required")
-    return payload
+    admin = await _active_admin_from_payload(payload)
+    if not admin:
+        raise HTTPException(status_code=403, detail="Admin access required")
+    return {**payload, "id": admin.get("id"), "email": admin.get("email"), "role": "admin"}
 
 
 async def require_user(
@@ -1340,7 +1366,10 @@ async def optional_principal(
         return None
     role = payload.get("role")
     if role == "admin":
-        return {"role": "admin", "id": payload.get("sub"), "email": payload.get("email")}
+        admin = await _active_admin_from_payload(payload)
+        if not admin:
+            return None
+        return {**admin, "role": "admin", "id": admin.get("id"), "email": admin.get("email")}
     if role == "user":
         u = await _cached_user_doc(payload.get("sub"))
         if not u:
@@ -6824,6 +6853,13 @@ async def login(payload: LoginIn):
     user = await db.users.find_one({"email": email}, {"_id": 0})
     if not user or not verify_password(payload.password, user.get("password_hash")):
         raise HTTPException(status_code=401, detail="Invalid email or password")
+    if (
+        user.get("role") != "admin"
+        or user.get("status") in {"blocked", "disabled", "inactive", "revoked"}
+        or user.get("is_active") is False
+        or user.get("admin_active") is False
+    ):
+        raise HTTPException(status_code=403, detail="Admin access required")
     token = create_token(user["id"], user["email"])
     return TokenOut(token=token, email=user["email"], role=user.get("role", "admin"))
 

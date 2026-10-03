@@ -58,6 +58,13 @@ class ReadOnlyCollection:
         raise AssertionError("release preflight must not create indexes")
 
 
+class AdminUsers:
+    async def find_one(self, query, *_args, **_kwargs):
+        if query == {"id": "test"}:
+            return {"id": "test", "email": "admin@example.com", "role": "admin", "status": "active"}
+        return None
+
+
 class UnfilteredReadOnlyCollection(ReadOnlyCollection):
     """Simulate a malformed driver result that does not honour the projection."""
 
@@ -71,6 +78,7 @@ class ReadOnlyDatabase:
         self.index_response = index_response
         self.fail_command = fail_command
         self.commands = []
+        self.users = AdminUsers()
         self.reader_segment_activation_state = ReadOnlyCollection(pointers)
         self.reader_segment_manifests = ReadOnlyCollection(manifests)
 
