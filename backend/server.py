@@ -387,6 +387,7 @@ try:
         canonical_cover_kind,
         content_addressed_cover_candidate_asset_id,
         validate_book_cover,
+        validate_raster_upload,
     )
 except ImportError:  # pragma: no cover - supports package-style test imports
     from backend.config.book_cover import (
@@ -394,6 +395,7 @@ except ImportError:  # pragma: no cover - supports package-style test imports
         canonical_cover_kind,
         content_addressed_cover_candidate_asset_id,
         validate_book_cover,
+        validate_raster_upload,
     )
 
 try:
@@ -9194,15 +9196,17 @@ async def admin_upload_image(
         if file.content_type not in _ALLOWED_COVER_TYPES:
             raise HTTPException(status_code=400, detail="Unsupported image type")
         body = await file.read()
-        if len(body) > ADMIN_MEDIA_UPLOAD_MAX_BYTES:
-            raise HTTPException(status_code=400, detail=f"Image must be under {ADMIN_MEDIA_UPLOAD_MAX_BYTES} bytes")
+        try:
+            validation = validate_raster_upload(body, file.content_type or "", ADMIN_MEDIA_UPLOAD_MAX_BYTES)
+        except ValueError as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
         _ensure_cloudinary()
         try:
             from config.cloudinary import upload_image  # type: ignore
         except Exception as e:
             raise HTTPException(status_code=503, detail=f"Image pipeline unavailable: {e}")
         result = upload_image(body, folder="earnalism/journal")
-    return {"url": result["url"], "width": result.get("width"), "height": result.get("height")}
+    return {"url": result["url"], "width": validation["width"], "height": validation["height"]}
 
 
 # ---------- Admin: Categories ----------
