@@ -3094,7 +3094,7 @@ export default function Reader() {
     const onPageNavigationKeyDown = (event) => {
       if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
       const target = event.target;
-      if (target instanceof HTMLElement && (target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(target.tagName))) return;
+      if (target instanceof HTMLElement && (target.isContentEditable || target.closest('input, textarea, select, button, [role="slider"], [role="combobox"], [role="listbox"], [role="menu"], audio, video, [contenteditable="true"]'))) return;
       if (event.key === 'ArrowLeft' && canPrev) {
         event.preventDefault();
         goPrev();

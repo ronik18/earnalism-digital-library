@@ -2158,6 +2158,18 @@
 .reader-page-nav--previous { grid-column: 1; grid-row: 1; }
 .reader-page-nav--next { grid-column: 3; grid-row: 1; }
 
+.reader-page-shell {
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+}
+
+.reader-canvas.page-enter { animation-duration: 280ms; }
+
+@media (min-width: 1025px) {
+  .reader-page-nav--previous { justify-self: end; }
+  .reader-page-nav--next { justify-self: start; }
+}
+
 @media (max-width: 1024px) {
   .reader-page-nav {
     position: fixed;
@@ -2174,6 +2186,7 @@
 }
 
 @media (max-width: 640px) {
+  .reader-page-shell { padding-bottom: 4.5rem; }
   .reader-page-nav {
     top: auto;
     bottom: calc(5.7rem + env(safe-area-inset-bottom));
