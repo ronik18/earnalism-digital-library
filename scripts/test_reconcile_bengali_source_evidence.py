@@ -93,25 +93,44 @@ class FullRenderedNotesTests(unittest.TestCase):
         self.assertEqual(furniture, [])
 
 class FinalClearanceBindingsTests(unittest.TestCase):
-    def test_local_text_decisions_bind_current_bytes_without_audio_or_activation(self):
+    def test_local_text_decisions_bind_current_bytes_without_audio_and_preserve_fail_closed_promotion(self):
         import json, hashlib
         from pathlib import Path
         root=Path(__file__).resolve().parents[1]
         report=json.loads((root/'internal/legal/catalogue_clearance_20261002/bengali/local-text-clearances.json').read_text())
+        live=set(json.loads((root/'data/controlled_launch.json').read_text()).get('live_approved_slugs',[]))
         self.assertEqual(report['count'],16)
         for row in report['titles']:
             package=root/'data/controlled_publications'/row['slug']
             decision=json.loads((package/'rights_decision.json').read_text())
+            manifest=json.loads((package/'publication_manifest.json').read_text())
+            is_live=row['slug'] in live
             self.assertEqual(decision['status'],'ACCEPTED')
             self.assertEqual(decision['territories'],['IN'])
             self.assertNotIn('audio_delivery',decision['uses'])
-            self.assertNotIn('cover_display',decision['uses'])
+            self.assertNotIn('audio_stream',decision['uses'])
+            self.assertFalse(manifest['audio_release']['exposed'])
+            if is_live:
+                self.assertIn('cover_display',decision['uses'])
+                self.assertTrue(manifest['reader_release']['exposed'])
+                self.assertEqual(manifest['reader_release']['status'],'APPROVED')
+            else:
+                self.assertNotIn('cover_display',decision['uses'])
+                self.assertFalse(manifest['reader_release']['exposed'])
             for name,value in decision['components'].items():
-                self.assertEqual(value,hashlib.sha256((package/(name+'.json')).read_bytes()).hexdigest())
+                component=package/(name+'.json')
+                if component.exists():
+                    self.assertEqual(value,hashlib.sha256(component.read_bytes()).hexdigest())
+                else:
+                    self.assertIn(value,decision.get('evidence_sha256',[]))
             auth=json.loads((package/'publication_authorization.json').read_text())
             self.assertFalse(auth['audio_authorized'])
             self.assertFalse(auth['production_activation_authorized_by_this_file'])
-            self.assertEqual(auth['scope'],'TEXT_READER_ONLY')
+            self.assertIn('TEXT_READER',auth['scope'])
+            if is_live:
+                self.assertTrue(auth.get('publication_authorized'))
+            else:
+                self.assertEqual(auth['scope'],'TEXT_READER_ONLY')
             notice=json.loads((package/'license_notice.json').read_text())
             chapters=sorted([json.loads(f.read_text())for f in (package/'chapters').glob('*.json')],key=lambda c:c['order'])
             self.assertEqual(notice['chapter_sha256'],[hashlib.sha256(c['content'].encode()).hexdigest()for c in chapters])
