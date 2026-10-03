@@ -1,0 +1,83 @@
+{
+  "schema": "earnalism.cover-provenance.v1",
+  "slug": "bn-035",
+  "status": "ACCEPTED_LOCAL_COMPONENT_PREPARATION_ONLY",
+  "accepted_at": "2026-10-03T04:12:32.330374+00:00",
+  "accepted_by": "Automated serialized integration controller under the product owner directive in issue #477 comment 5949652699 and the direct prospective acceptance instruction 2026-10-03; no human signature inferred.",
+  "original_creator": "Repository/product owner; no additional identity inferred",
+  "owner_declaration": {
+    "statement": "Owner states all front and back covers are designed by the owner.",
+    "path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+    "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "scope": "COVER_DESIGN_ONLY_NOT_TEXT_RIGHTS_OR_RUNTIME_RELEASE"
+  },
+  "owner_delegation": {
+    "owner_directive": "https://github.com/ronik18/earnalism-digital-library/issues/477#issuecomment-5949652699",
+    "prospective_owner_instruction_date": "2026-10-03",
+    "prospective_owner_instruction": "I authorize prospective, evidence-based cover-component and publication acceptance under my owner delegation, superseding the earlier procedural cover deferral for this campaign. Accept only exact components with proven provenance, derivative lineage and passing compliance evidence. Preserve prior decisions and record the actual new automated acceptance; never invent rights, human approval or production observations.",
+    "authority_scope": "Exact evidence-backed IN commercial text Reader/catalogue/cover components; no audio, no invented rights or production observations."
+  },
+  "edition_binding": {
+    "source_sha256": "d97c0e751be06664a52eb6ca1a09d0e6e72d937a96d6c4c6ac9c96cda66f4ce9",
+    "reader_content_sha256": "c8216c11a20f474ab5d95102950c52fe2cf8e30ea5a98c429427445a15ee572c",
+    "chapter_count": 10,
+    "text_decision_id": "india-20261002-bn-035-1922-cc-by-sa-text-reader",
+    "scope": "Same exact 1922 edition and prepared 10 chapters; no source/version change"
+  },
+  "assets": {
+    "front": {
+      "original_file": "covers/front-original.png",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270682/earnalism/covers/front/bn-035_front_1600x2400.png",
+      "original_sha256": "ffb58e131d7b216d6c56c018dd3941a0a92c02e45a3a8ee6f553443c1df92cb7",
+      "accepted_file": "covers/bn-035-front-fc455a18.png",
+      "accepted_sha256": "fc455a183f3443fc2511410428b92772df759d88b07ab021b36275e96055b93d",
+      "accepted_bytes": 79640,
+      "dimensions": [
+        1600,
+        2400
+      ],
+      "delivery_url": "https://theearnalism.com/assets/books/bn-035/bn-035-front-fc455a18.png",
+      "delivery_mode": "EXACT_REVIEWED_PNG_BYTES_NO_NEW_RECOMPRESSION",
+      "production_observed": false
+    },
+    "back": {
+      "original_file": "covers/back-original.png",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270683/earnalism/covers/back/bn-035_back_1600x2400.png",
+      "original_sha256": "38a13d0d6a16e4cc6e58d228bb2fcb12702b571a3ae8d0667b7a685220653aee",
+      "accepted_file": "covers/bn-035-back-0cbeb592.png",
+      "accepted_sha256": "0cbeb592415616262a46a818bc663f0226588c1f89d1fc9c9794e9469ab4c706",
+      "accepted_bytes": 126672,
+      "dimensions": [
+        1600,
+        2400
+      ],
+      "delivery_url": "https://theearnalism.com/assets/books/bn-035/bn-035-back-0cbeb592.png",
+      "delivery_mode": "EXACT_REVIEWED_PNG_BYTES_NO_NEW_RECOMPRESSION",
+      "production_observed": false
+    }
+  },
+  "derivative_lineage": {
+    "receipt_path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/reviewed-inactive-repair-sources/bn035/receipt.json",
+    "receipt_sha256": "2a74da07b5b5a5b972168240c905668aa1c0892e035ee671626efcc4c6de95bf",
+    "renderer_path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/reviewed-inactive-repair-sources/bn035/render.py",
+    "renderer_sha256": "751aa40535bb04b4fff5f04850995e03ef7bd47af6419943f51133007a6f80d3",
+    "process": "Existing deterministic redesigned cover using repository Noto Bengali fonts, RAQM/HarfBuzz and exact preimage title/author/description. Recovery changed only filesystem path; regenerated PNG matches both reviewed exact hashes. Original covers are retained byte-exact. No paid generation.",
+    "recovered_original_hashes_verified": true,
+    "accepted_hashes_match_previously_reviewed_outputs": true
+  },
+  "visual_qa": {
+    "status": "PASS_REQUESTED_SCOPE",
+    "independent_reviews": "TWO_PRIOR_PASS_REUSED_UNCHANGED",
+    "record_path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/reviewed-repairs-next-bn060.json",
+    "record_sha256": "0619258bca8b1b081a36ebce7bba1ab43ed82c74810653bf2922ced78b7fd1fe",
+    "record_pointer": "inactive_reviews.bn-035",
+    "scope": "Exact inactive derivative pixels/copy; these reviews do not themselves grant acceptance."
+  },
+  "commercial_cover_display_permission_basis": "Actual first-party prospective owner delegation superseding earlier procedural cover deferral, plus exact owner-design declaration and verified derivative lineage; not inferred from CDN or title.",
+  "commercial_use_authorized": true,
+  "commercial_use_status": "ACCEPTED_LOCAL_IN_COVER_DISPLAY_PRODUCTION_GATE_PENDING",
+  "audio_authorized": false,
+  "runtime_release_authorized": false,
+  "production_observed": false,
+  "third_party_component_claim": "No third-party artwork license or source-layer identity inferred."
+}

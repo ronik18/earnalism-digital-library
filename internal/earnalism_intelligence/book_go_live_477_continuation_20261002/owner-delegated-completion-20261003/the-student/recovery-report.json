@@ -1,0 +1,85 @@
+{
+  "slug": "the-student",
+  "owner_delegation_status": "NEW_EXPLICIT_PROSPECTIVE_COVER_PUBLICATION_AUTHORITY_EXISTS_20261003",
+  "text_rights_status": "REUSE_ACCEPTED_EXACT_TEXT_DECISION_NO_RESEARCH_RERUN",
+  "controlled_checksum_entries": [
+    {
+      "file": "approval_evidence.json",
+      "expected": "955649b36bc37be200063d33fbd70687f578b1da2142b610acfe203e0be68b18",
+      "actual": "955649b36bc37be200063d33fbd70687f578b1da2142b610acfe203e0be68b18",
+      "pass": true
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "expected": "6ab4a3f5e7cbe52f40787b7d54a026c6e4cc16b5ed2e163067f689ae097dfea1",
+      "actual": "6ab4a3f5e7cbe52f40787b7d54a026c6e4cc16b5ed2e163067f689ae097dfea1",
+      "pass": true
+    },
+    {
+      "file": "highlight_sync.json",
+      "expected": "bc843a767d245ed23d5b73c4704579b95f716c3325eba6edc3433ac6376da3ed",
+      "actual": "bc843a767d245ed23d5b73c4704579b95f716c3325eba6edc3433ac6376da3ed",
+      "pass": true
+    },
+    {
+      "file": "public_book.json",
+      "expected": "b033960f7131bbab83eeed26ef84a13dc3309f18440467e86cf144183fc4189e",
+      "actual": "b033960f7131bbab83eeed26ef84a13dc3309f18440467e86cf144183fc4189e",
+      "pass": true
+    },
+    {
+      "file": "publication_authorization.json",
+      "expected": "67236f204812f462255354a2d35c5f20baaddc49eecbb7010036c5cd93e1ef96",
+      "actual": "67236f204812f462255354a2d35c5f20baaddc49eecbb7010036c5cd93e1ef96",
+      "pass": true
+    },
+    {
+      "file": "reader_manifest.json",
+      "expected": "8fe807a4936a240950d242a8084a8e4e0049b35e85087991e7567d5f10f16812",
+      "actual": "8fe807a4936a240950d242a8084a8e4e0049b35e85087991e7567d5f10f16812",
+      "pass": true
+    },
+    {
+      "file": "source_evidence.json",
+      "expected": "0bc62a4920342e7fd0845770fbdf73e9693347c3172250c4b5aaff120d149700",
+      "actual": "0bc62a4920342e7fd0845770fbdf73e9693347c3172250c4b5aaff120d149700",
+      "pass": true
+    }
+  ],
+  "preserved_originals": [
+    {
+      "kind": "front",
+      "path": "/workspace/scratch/181ef0a25f05/student-acceptance-20261003/the-student-cover_url.png",
+      "sha256": "852b0ec54f013b2c24c63514e21d524ea7b42fc1151de16f5ecbc7aa624825db",
+      "expected": "852b0ec54f013b2c24c63514e21d524ea7b42fc1151de16f5ecbc7aa624825db",
+      "pass": true,
+      "bytes": 182766
+    },
+    {
+      "kind": "back",
+      "path": "/workspace/scratch/181ef0a25f05/student-acceptance-20261003/the-student-back_cover_url.png",
+      "sha256": "c48024e8f29f6efdf32474199e4178a477bde4c6bd5624eb619bf911fdb9da25",
+      "expected": "c48024e8f29f6efdf32474199e4178a477bde4c6bd5624eb619bf911fdb9da25",
+      "pass": true,
+      "bytes": 376249
+    }
+  ],
+  "derivative_recovery_scan": {
+    "png_svg_files_hashed": 463,
+    "matches": [],
+    "persisted_recipe_or_packet": "NONE_PRESENT_IN_CHECKED_GIT_HISTORY_OR_RESTORED_WORKSPACE"
+  },
+  "status": "HOLD_EXACT_REVIEWED_DERIVATIVE_BYTES_AND_RENDER_SOURCES_UNRECOVERABLE",
+  "reason": "Previous reviews remain historical facts but cannot bind an unavailable asset to new acceptance. No acceptance is fabricated. Missing bytes are not a new rights objection.",
+  "expected_missing_sha256": [
+    "5af1867bc06108709e9bc819fb0fd33aeaa76bb3cd2c838c08b7a44b4b65065a",
+    "73b77cce894cbd36fcbb2d7c0e5af05b9163b53b6b0638d770b38f96826bde95",
+    "c816a21c0ee9113d221efe4724457fdf6e2f6df134523aba7c0c37bc9ae86f9b",
+    "cae7351b2b95ff3fed2d53361f6d50ce4b9a49b4fec246b91ba68cf13ed4480f"
+  ],
+  "network_fetches": 0,
+  "paid_generation": 0,
+  "visual_reviews_repeated": 0,
+  "source_text_license_chapters_and_versions_changed": false,
+  "registry_allowlist_mutation": false
+}

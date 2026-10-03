@@ -1,0 +1,53 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-the-student-reader-cover-display-reviewed",
+  "edition_id": "the-student",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "b701b26a0c821f3c0e9a42def5cfb1ca79a071ee00abb00860252911084b777a",
+    "reader_manifest": "8fe807a4936a240950d242a8084a8e4e0049b35e85087991e7567d5f10f16812",
+    "source_evidence": "0bc62a4920342e7fd0845770fbdf73e9693347c3172250c4b5aaff120d149700",
+    "approval_evidence": "7464c5a9ee82eeea492df7b693d8647e1c1810b0b46db8624577e4830606008a",
+    "checksum_manifest": "47c32dcd035948a2dc7b6b5122175acb5c1f8fe828f8b7b5e6c09bd31833d130",
+    "publication_manifest": "ba6c9c0818fe5055cf33c4724944a659497d4925e8860a14b46dfcc23507e64d",
+    "cover_provenance": "ade1e3feab401bceb5aeb60e74db4578dcee7e5326bf9d4da4b4883b6602158b",
+    "cover_delivery_derivation": "f0f665c33b428a7792efca61c2ddca444e680aae8f2745f5b2f80189faa02fdc",
+    "cover_front_original_asset": "852b0ec54f013b2c24c63514e21d524ea7b42fc1151de16f5ecbc7aa624825db",
+    "cover_front_delivery_asset": "7c5504f1e334973eef65969715d5d2f7bd459c4400cdf569f4b89a3bd50de04e",
+    "cover_back_original_asset": "c48024e8f29f6efdf32474199e4178a477bde4c6bd5624eb619bf911fdb9da25",
+    "cover_back_delivery_asset": "47c93f26fed5564a34188fdde072f1242728f56c5f1af75a8ec445fe3250ffc3"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T04:08:07.814537+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "IN text only. Verified publication no later than 1918; original-author life+60 ends 1964, or conservative posthumous-publication upper bound+60 ends no later than 1978; every selected translator/coauthor latest death 1946, life+60 ends 2006. All bounds have elapsed by actual review2026. Unknown original first date stays unknown; no inference from US-only PG status. Existing selected-source/text/license/chapters facts unchanged. The owner 2026-10-03 prospective delegation supersedes procedural cover deferral. Bind exact verified owner originals and new layout-only derivatives; no new third-party art, rights fact or human approval is invented. IN text Reader/cover preparation only; production gates remain separate.",
+  "evidence_sha256": [
+    "67236f204812f462255354a2d35c5f20baaddc49eecbb7010036c5cd93e1ef96",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "a388a671e0b83a3dac9b697160f216cfce3eaf3c851dc1b7924cdf63ba36ba85",
+    "fd7c69daa6080772e42bb26c21330c1dc1c5fb3967f40c23789f51e5c260c82f",
+    "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90",
+    "1cf8b07bbc675b40e63ac73d0de143fb6e87a6cce2d2d84071f0e0bd30bf9bb1",
+    "d1e46ee4ab3f9920418e21d36f3ec7104450dd6a572c772de80c47b25cadb3a0",
+    "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "ade1e3feab401bceb5aeb60e74db4578dcee7e5326bf9d4da4b4883b6602158b",
+    "1b9f416eae00b8590ca605e87823867f0a88498d5210d6a2020747050f97c6a3",
+    "c1d33c7d7a5a83225a619e1b8eea6122d7dbaa927961665e614daf44c170c5b2",
+    "3a3c98e66cfaee8f29c3b58c846c3e1867922b898e5029c526a1bfc7d3f44178",
+    "4d663174434da7e2630c720974a9720f08d3871d3968b0c618d06e4cafcb9ae7",
+    "f0f665c33b428a7792efca61c2ddca444e680aae8f2745f5b2f80189faa02fdc"
+  ],
+  "accepted_by": "Automated serialized integration controller under the product owner directive in issue #477 comment 5949652699 and explicit 2026-10-03 prospective cover/publication delegation; no human legal signature inferred.",
+  "conditions_satisfied": true
+}

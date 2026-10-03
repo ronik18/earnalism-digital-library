@@ -1,0 +1,32 @@
+{
+  "schema": "earnalism.independent-cover-delivery-review.v1",
+  "slug": "alices-adventures-in-wonderland",
+  "reviewer": "Independent automated reviewer A",
+  "recorded_on": "2026-10-03",
+  "status": "PASS_EXACT_WEBP_DELIVERY_DECODE_AND_VISUAL_COMPLIANCE",
+  "front": {
+    "sha256": "5fa6ee0698360743214ad601df0a73b6181ec168346a6bb0580edea2a6c30a2e",
+    "bytes": 75730,
+    "dimensions": [
+      600,
+      900
+    ]
+  },
+  "back": {
+    "sha256": "a588597bb1f38dd1d8bdc777167d825ea157ba1856efdc6d1f4b2968e7a99bf8",
+    "bytes": 167392,
+    "dimensions": [
+      800,
+      1200
+    ]
+  },
+  "checks": {
+    "complete_decode": "PASS",
+    "front_title_author": "READABLE_COMPLETE",
+    "back_copy": "READABLE_COMPLETE_WITH_EXACT_REPLACEMENT",
+    "no_new_clipping_or_artifacts": "PASS",
+    "small_delivery_budget": "PASS"
+  },
+  "scope": "Bounded deterministic delivery only; original component identity and prior visuals reused. Updated derivation/decision package still requires binding check.",
+  "production_observed": false
+}

@@ -1,0 +1,58 @@
+{
+  "schema": "earnalism.oct3-exact-integration-validation.v1",
+  "reviewed_tree": "67bf535ac1bd0137c326025b29ffeebcfe60f2f4",
+  "final_review_receipts": [
+    {
+      "path": "final-integration-review-a.json",
+      "sha256": "dcb71871bc659d23458ea937b4f85861068c9ebf7e6ba89602d442826b526ae5",
+      "reviewed_tree": "67bf535ac1bd0137c326025b29ffeebcfe60f2f4",
+      "result": "PASS"
+    },
+    {
+      "path": "final-integrated-tree-review-b.json",
+      "sha256": "13d0e889d77a8ef3e0cfefcaedbcf533bbbcba94ab6477515a085070e0b45d17",
+      "reviewed_tree": "67bf535ac1bd0137c326025b29ffeebcfe60f2f4",
+      "result": "PASS"
+    }
+  ],
+  "tests": {
+    "backend_targeted": {
+      "passed": 232,
+      "failed": 0
+    },
+    "frontend_initial": {
+      "suites": 97,
+      "passed_suites": 95,
+      "passed_tests": 607,
+      "failed_suites": 2,
+      "remediation": "Two genuine inventory/static-contract fixture failures resolved; 5 tests in both suites now PASS."
+    },
+    "production_build": "PASS",
+    "static_seo": {
+      "snapshots": 118,
+      "assertions": 2512,
+      "failed": 0
+    },
+    "workflow_provenance": {
+      "cases": 46,
+      "result": "PASS"
+    },
+    "explicit_error_release_fixture": {
+      "cases": 21,
+      "result": "PASS"
+    },
+    "library_journey_syntax": "PASS; runtime exercised by normal protected browser gate"
+  },
+  "raw_source_archives": "Exact bytes retained including CRLF/trailing whitespace; no whitespace normalization of provenance evidence. Code/package JSON diff whitespace check clean.",
+  "optional_historical_bengali_validator": "Seven stale held-bn-059 expectations conflict with already merged PR509; module untouched and not in normal protected pipeline. No rights gate weakened.",
+  "remaining_global_gate": "NORMAL_PROTECTED_EXACT_HEAD_CI_MERGE_DEPLOY_CANARY",
+  "production_observed": false,
+  "canonical_versions": null,
+  "audio_exposed": false,
+  "next_distinct_cohort": [
+    "the-open-window",
+    "the-selfish-giant",
+    "sredni-vashtar"
+  ],
+  "next_action": "Finish normal exact-head release of four priority editions, then act only on two new passing independent next-cohort reviews; substantial disputes terminally held/excluded."
+}

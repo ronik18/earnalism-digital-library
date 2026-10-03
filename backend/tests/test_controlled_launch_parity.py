@@ -47,6 +47,10 @@ INDIA_TEXT_RELEASE_SLUGS = {
     "muchiram-gurer-jibanchorit",
     "bn-059",
     "the-call-of-the-wild",
+    "the-student",
+    "the-art-of-money-getting",
+    "bn-035",
+    "alices-adventures-in-wonderland",
 }
 
 
@@ -56,6 +60,10 @@ REVIEWED_20261002_SLUGS = {
     "muchiram-gurer-jibanchorit",
     "bn-059",
     "the-call-of-the-wild",
+    "the-student",
+    "the-art-of-money-getting",
+    "bn-035",
+    "alices-adventures-in-wonderland",
 }
 
 NEAR_READY_20261001_SLUGS = {
@@ -120,7 +128,7 @@ def test_owner_exclusion_tombstone_is_mirrored_exactly():
     }
 
 
-def test_backend_controlled_launch_opens_only_the_twenty_nine_approved_india_text_titles_and_no_audio():
+def test_backend_controlled_launch_opens_only_the_thirty_three_approved_india_text_titles_and_no_audio():
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     backend_audio = set(backend_launch["audio_enabled_slugs"])
 
@@ -149,7 +157,7 @@ def test_india_commercial_text_release_is_mirrored_and_audio_remains_disabled():
         assert launch["audio_enabled_slugs"] == []
 
 
-def test_twenty_nine_title_release_uses_commercial_mode_and_keeps_checkout_audio_disabled():
+def test_thirty_three_title_release_uses_commercial_mode_and_keeps_checkout_audio_disabled():
     root_launch = load_json(ROOT_CONTROLLED_LAUNCH)
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     expected_modes = {slug: "COMMERCIAL_ENTITLEMENT" for slug in INDIA_TEXT_RELEASE_SLUGS}
@@ -163,7 +171,7 @@ def test_twenty_nine_title_release_uses_commercial_mode_and_keeps_checkout_audio
         assert launch["public_audio_exposure_enabled"] is False
 
 
-def test_twenty_nine_title_release_has_hash_bound_reading_pass_rights_and_published_reader_manifests():
+def test_thirty_three_title_release_has_hash_bound_reading_pass_rights_and_published_reader_manifests():
     launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     registry, revoked = load_production_registry()
     commercial_slugs = tuple(sorted(INDIA_TEXT_RELEASE_SLUGS))

@@ -1,0 +1,13 @@
+{
+  "slug": "alices-adventures-in-wonderland",
+  "source_url": "https://www.gutenberg.org/ebooks/11",
+  "source_name": "Project Gutenberg",
+  "source_license": "Public domain. Project Gutenberg transcription is freely redistributable for any use including commercial.",
+  "source_hash": "49c44704fee971be4aff3b6ebf4764b9aabf0c1f338ca72942216a301205bd8d",
+  "content_hash": "37e99a24d25aea8914744cf4717c7f7540303fa0aff01db75b1143f6fb637447",
+  "provenance_hash": "4e19e7841da7de8d46afb025c7a8365520bcaf525b9c309a766bd7fb755a2c09",
+  "rights_basis": "Author died in 1898. Work published in 1865, well before 1928. Public domain in the U.S. under pre-1928 publication rule and in most jurisdictions under life plus 70 years.",
+  "downloaded_at": "2026-05-25T20:09:49.154423+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

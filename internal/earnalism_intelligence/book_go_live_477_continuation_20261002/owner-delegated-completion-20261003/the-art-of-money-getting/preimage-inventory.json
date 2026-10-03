@@ -1,0 +1,78 @@
+{
+  "root": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "872ae423202a4b8f2235d07970f57ece66c251ad112b6212568f08f918dd6137"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "04edd10d202a6f1b8e7c1c35308f728f1768e1db656080fa9ae49d559761d21f"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "1ccab053bdaa0d80100543ca052f469f6b72b9537ae92d4f39b5438fd3b93a55"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "1230bdd0be1880eb2cb1f43206c7eb8e44fd2161641843615134ef3343e6662a"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "253c7b38ae5815549018228ab6723139dcce22f880f04ba1a3a70ce65e334d88"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "802fa215c5935f25ceefe9c94ef88067e8385906cc9c8a9b558ee6b67227fdf6"
+    },
+    {
+      "file": "publication_manifest.json",
+      "sha256": "428fd1c5c0ef2d2a29af170047add4d98be463089a03385de9df56efee384bdf"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "29536b26759f9e967efac4eba42447cb6b17943f9ee99bb797b48bba76e10fec"
+    },
+    {
+      "file": "rights_decision.json",
+      "sha256": "a875fdbf276a67ee0749c12498108203f23cde50f4021842f06389028edc6567"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "1de370a2d070b6d45231c688d02cce0bc8a3e9a0f2ee734807e54befd55d1034"
+    }
+  ],
+  "backend": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "546bbdc22678190b44a9654407fe758ef7b1d50d348d856a5d36f38485641943"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "ca5f7b0a782a8bf6c6d3e04bb4ad20e9e97f387945f0fb899f6e2c1bc18b7105"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "8bae6f1af7994abdd69046cf80a6627dcd5f7eed668d743f71b3ee7e4fc10d1a"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "1230bdd0be1880eb2cb1f43206c7eb8e44fd2161641843615134ef3343e6662a"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "82191df2abb5e775be78134455a2e3dd7faf72bf4b67ae208ccc870ccf1d0b6f"
+    },
+    {
+      "file": "publication_manifest.json",
+      "sha256": "35421706e5c0838971f48f7316821a6441e546c61541a3f75e2ae27b7603a92d"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "29536b26759f9e967efac4eba42447cb6b17943f9ee99bb797b48bba76e10fec"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "e1b3135f42b112aee673c2acc3b59ec273cc1d5f55eee9cf414d62a4b90d85d7"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "the-student",
+  "edition": "Project Gutenberg #1944; exact selected canonical text; all original author/translator/coauthor rights considered separately; historical publication upper bound 1918",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_ONLY_NON_COVER_COMPONENTS",
+  "source_sha256": "fd7c69daa6080772e42bb26c21330c1dc1c5fb3967f40c23789f51e5c260c82f",
+  "content_sha256": "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90",
+  "chapter_sha256": {
+    "chapter-001": "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90"
+  },
+  "cover_provenance_sha256": null,
+  "cover_status": "DEFERRED_BY_OWNER_REQUEST_NO_COVER_DISPLAY_AUTHORIZED",
+  "authorized_by": "Automated executor under owner explicit autonomous clearance delegation; not a fabricated human or legal signature.",
+  "verified_at": "2026-10-01T21:54:02.732252+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Cover clearance/binding, trusted production registry acceptance, canonical controlled-live allowlist, actual runtime Reader readiness and protected gates must separately pass.",
+  "not_authorized": [
+    "cover_display",
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation"
+  ]
+}

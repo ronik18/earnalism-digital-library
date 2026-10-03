@@ -1,0 +1,22 @@
+{
+  "slug": "the-student",
+  "approved_to_publish": false,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": true,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "67236f204812f462255354a2d35c5f20baaddc49eecbb7010036c5cd93e1ef96",
+  "source_hash": "fd7c69daa6080772e42bb26c21330c1dc1c5fb3967f40c23789f51e5c260c82f",
+  "content_hash": "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90",
+  "provenance_hash": "79c7266b8fe7cc1d7a378b394054a464856b4a84ef8c1af45b9edf6c3b43d6bb",
+  "verified_at": "2026-10-01T21:54:02.732252+00:00"
+}

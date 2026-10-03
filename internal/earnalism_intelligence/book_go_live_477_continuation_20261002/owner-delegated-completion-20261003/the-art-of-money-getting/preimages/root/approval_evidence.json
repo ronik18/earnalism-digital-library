@@ -1,0 +1,26 @@
+{
+  "slug": "the-art-of-money-getting",
+  "approved_to_publish": false,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
+  "audio_public_release": "APPROVED",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": true,
+  "audio_enabled": true,
+  "audio_status": "AVAILABLE",
+  "audiobook_release_gate": "APPROVED",
+  "audio_qa_status": "QA_PASSED",
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "802fa215c5935f25ceefe9c94ef88067e8385906cc9c8a9b558ee6b67227fdf6",
+  "source_hash": "ccf68ee545e68995f88d4cd2f534ecae9bf731b8996118d34b5a10bfc4958061",
+  "content_hash": "f3c4db2a3c551518ebd4302e7409797eb49f0ff94470ebfbc4b800b900a44b61",
+  "provenance_hash": "fc4034680d03df4989f6ab56d58d5f93407218847ffe6cf743d5ee107f185f59",
+  "verified_at": "2026-10-01T21:34:27.335291+00:00"
+}

@@ -1,0 +1,16 @@
+{
+  "slug": "bn-035",
+  "approved_to_publish": true,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "OWNER_DELEGATED_AUTOMATED_IN_EDITION_BOUND_TEXT_READER_ONLY_COVER_DEFERRED",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_PENDING_ASSET_MAPPING",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "source_hash": "d97c0e751be06664a52eb6ca1a09d0e6e72d937a96d6c4c6ac9c96cda66f4ce9",
+  "content_hash": "c8216c11a20f474ab5d95102950c52fe2cf8e30ea5a98c429427445a15ee572c",
+  "publication_authorization_sha256": "b75a1fab91c4909eb9806e00573f744e8ccbd0bf653ae4c030bd1bd337726a17"
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-alices-adventures-in-wonderland-pg11-noncover-text",
+  "edition_id": "alices-adventures-in-wonderland",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "245188f965b58da793650daa0afc5a2eff80a0a935f15a36b2334d76a72447dc",
+    "reader_manifest": "b4884654a495c628c64916819dff635597f5afdb10b0ecaf46f6c88b3f8dd288",
+    "source_evidence": "5878c960420a5fe11b19bf526baeccb12f4b6776054d604d176e89ef36ff59e5",
+    "approval_evidence": "2a09f96b2296ed45e201a33875fcaece77b4a90a72013d7cb66761e19159ac4c",
+    "checksum_manifest": "9e2c4bc61af210f4a7b0c2ce1585abb85bf745689b719097f470f58c41d6f754",
+    "publication_manifest": "9f70629729c57d7fdd12b9e000e57ea289c12cd6876cd8efdcbf22a532ba10c5"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:19:39.153654+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1898, original publication 1865; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "469a7f6ddd8202ef12e1c1e8f72e6d346887297737652e65c38baa8ff71ede16",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "a8c4b8b3a116e154c2ac028f048d81b06f0068ddbee5008827bf50693bcd12d9",
+    "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+    "5629f655398205d45c0b7bba128ada0849d46e5148aa9b6553636f7d4d7e8812"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

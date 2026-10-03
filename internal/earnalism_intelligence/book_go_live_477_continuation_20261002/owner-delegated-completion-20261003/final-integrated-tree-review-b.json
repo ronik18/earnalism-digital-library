@@ -1,0 +1,83 @@
+{
+  "schema": "earnalism.independent-final-integration-review.v1",
+  "reviewer": "Independent reviewer B automated executor",
+  "recorded_on": "2026-10-03",
+  "status": "PASS_EXACT_INTEGRATED_RELEASE_CANDIDATE",
+  "reviewed_git_tree": "67bf535ac1bd0137c326025b29ffeebcfe60f2f4",
+  "initial_reviewed_tree": "dd5d2023c9e4ab3d2c10d0e0e1b992c990237c80",
+  "base_main": "514c9ebcfd95fd69e5cece864e9360c5d21ee7c5",
+  "integration_predecessor": "aa8104432746118b20469857cfd8112e9808b444",
+  "cohort": [
+    {
+      "slug": "the-student",
+      "decision_id": "india-20261003-the-student-reader-cover-display-reviewed",
+      "decision_file_sha256": "b2c11fd36d71b24ddf7c6cd59e4561f94e2442299dc78d647e68a30d9e9498eb",
+      "canonical_registry_sha256": "aa5f14c6d0ea1aa49f83c81127bbc6bf8f900314827dc5e6151669c86bfa2f24",
+      "component_count": 12,
+      "checksum_count": 9,
+      "chapter_count": 1,
+      "publication_manifest_sha256": "c0faf85bf515699eb8dd59dca7e816da640856a48d99a25d5991fa7fdef1a7a5"
+    },
+    {
+      "slug": "the-art-of-money-getting",
+      "decision_id": "india-20261003-the-art-of-money-getting-reader-cover-display-reviewed",
+      "decision_file_sha256": "2af3109706aa08cf25979dbafb39895f4694cd4e1b1c1af9586eadb2fff56014",
+      "canonical_registry_sha256": "09a110bbb1ba6983743cd2e7566726e753c85b2cdd56715de3a6ca83dbf13dc7",
+      "component_count": 14,
+      "checksum_count": 14,
+      "chapter_count": 1,
+      "publication_manifest_sha256": "459cec0b1f2931f8ff034c1c6a867de9581d4eb11f63d00af4ea570c39952522"
+    },
+    {
+      "slug": "bn-035",
+      "decision_id": "india-20261003-bn-035-1922-text-reader-exact-cover",
+      "decision_file_sha256": "a4848d50339a0194b0f0a8f489354e7d52666154f998f459f51b8a1e301a7555",
+      "canonical_registry_sha256": "6d197c694a86768a3ffdc74d8f65e6833375519f6b79cdd296bc307119ae17c7",
+      "component_count": 7,
+      "checksum_count": 22,
+      "chapter_count": 10,
+      "publication_manifest_sha256": "3f13f4ec9d821c830a1fbf577b12efd32b626f386f178d6f144b4dc51a4c5271"
+    },
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "decision_id": "india-20261003-alices-adventures-in-wonderland-reader-cover-display-reviewed",
+      "decision_file_sha256": "f08a1f655972c171c6d79bd1f6e6bbd6c70fc8b5615a640be7afbf190e2cc2e6",
+      "canonical_registry_sha256": "cc0a571b73f1ae4b4e19cfeb62c1b88b152fb2145a8f6c943d51156387fad5ae",
+      "component_count": 12,
+      "checksum_count": 29,
+      "chapter_count": 12,
+      "publication_manifest_sha256": "8f1c1240f873ca95f1259ef838e0b3764fb26ed63e7cd387f033b29c8cf6a461"
+    }
+  ],
+  "checks": {
+    "strict_registered_gate_all6_IN_uses_each_title": "PASS",
+    "audio_stream_download_each_denied": "PASS",
+    "root_backend_entire_package_parity": "PASS",
+    "45_component_and74_checksum_entries": "PASS",
+    "24_root_chapter_files_and_source_evidence_unchanged_vs_main": "PASS",
+    "87_preserved_root_backend_preimage_files_exact_vs_predecessor": "PASS",
+    "originals_derivative_lineage_and_real_independent_visual_reviews": "PASS_REUSED_UNCHANGED_REVIEWED_BYTES",
+    "8_delivery_hashes_dimensions_budget": "PASS",
+    "bootstrap_exact_canonical_registry_bindings": "PASS",
+    "33_slug_allowlist_exactly4_distinct_additions_no_duplicate": "PASS",
+    "existing_territory_audio_entitlement_payment_policy_unchanged": "PASS",
+    "static_contract_33titles_and_generated_source_hashes": "PASS",
+    "no_paid_provider_calls_new_rights_orhuman_approval_facts_inferred": "PASS",
+    "production_observation_NOT_RUN_no_versions_fabricated": "PASS",
+    "workflow_fingerprint_only_review_constants_no_deployment_configuration_change": "PASS",
+    "two_browser_fixture_updates_preserve_held_malformed_audio_checks": "PASS",
+    "restricted_runtime_implementation_paths_unchanged": "PASS",
+    "unstaged_tree_changes_absent": "PASS"
+  },
+  "acceptance_vs_observation": "LIVE_APPROVED/exposed flags are declarative release-candidate eligibility required by unchanged runtime; production observations/canonical versions remain separately NOT_RUN. ArtMoney nested workflow activation corrected and rebound, no runtime implementation/policy change.",
+  "review_performed": "Read-only exact tree/diffs, independent hash/registry/gate/source/preimage/asset checks. Parent reported test suites; this review does not falsely attribute those executions to reviewer B.",
+  "holds": [],
+  "release_remaining_gates": [
+    "EXACT_HEAD_PROTECTED_CI",
+    "NORMAL_MERGE",
+    "MERGED_MAIN_DEPLOYMENT_AND_CANARY",
+    "TRUTHFUL_CANONICAL_VERSION_READBACK"
+  ],
+  "production_released_by_this_review": false,
+  "audio_exposed": false
+}

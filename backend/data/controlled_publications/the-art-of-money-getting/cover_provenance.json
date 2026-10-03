@@ -1,0 +1,82 @@
+{
+  "schema": "earnalism.cover-provenance.v1",
+  "slug": "the-art-of-money-getting",
+  "status": "ACCEPTED_LOCAL_COMPONENT_PREPARATION_ONLY",
+  "accepted_at": "2026-10-03T04:12:32.330374+00:00",
+  "accepted_by": "Automated serialized integration controller under the product owner directive in issue #477 comment 5949652699 and the direct prospective acceptance instruction 2026-10-03; no human signature inferred.",
+  "original_creator": "Repository/product owner; no additional identity inferred",
+  "owner_declaration": {
+    "statement": "Owner states all front and back covers are designed by the owner.",
+    "path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+    "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "scope": "COVER_DESIGN_ONLY"
+  },
+  "original_assets_preserved": {
+    "front": {
+      "sha256": "0c1d69427d4fb59f6a844abda7caf06113476d5fe548afcf0293c5ba12a53616",
+      "bytes": 201688,
+      "preserved_file": "preserved-originals/front.png"
+    },
+    "back": {
+      "sha256": "96877955ed3ef8a0a9d86353a76584c881b513d6ea50ba09443e028adf66b5be",
+      "bytes": 394767,
+      "preserved_file": "preserved-originals/back.png"
+    }
+  },
+  "original_urls": {
+    "front": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273638/earnalism/covers/front/the-art-of-money-getting_front_1600x2400.png",
+    "back": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273639/earnalism/covers/back/the-art-of-money-getting_back_1600x2400.png"
+  },
+  "derivative_lineage": {
+    "receipt_path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/reviewed-inactive-repair-sources/artmoney/receipt.json",
+    "receipt_sha256": "4878e356f1b77ead3d89ecc17a9965cda10ca1077d14e574dc5d81be69c6a446",
+    "generator_path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/reviewed-inactive-repair-sources/artmoney/render.py",
+    "generator_sha256": "5275eba44622b61d4754def68b8060eaa27b2fd5ebb0ec88db164b658cf2643a",
+    "method": "Recover exact retained originals and replay persisted generator once; resulting PNG byte hashes exactly equal the already two-review passing candidate. No new art, model or paid generation.",
+    "front_sha256": "337639ad0378bec91318d03711bbb0a1603cc7628587cc53158241d81de5c109",
+    "back_sha256": "06296b292fc91f246ab4c6420e5b8e41f4f21aa0f1929234ea7ecbe718b80b4a",
+    "hash_reproduction": "PASS"
+  },
+  "independent_visual_reviews": {
+    "path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/reviewed-repairs-next-bn060.json",
+    "sha256": "0619258bca8b1b081a36ebce7bba1ab43ed82c74810653bf2922ced78b7fd1fe",
+    "review_a": "PASS_INACTIVE_ONLY",
+    "review_b": "PASS_INACTIVE_ONLY",
+    "unchanged_reviews_reused": true,
+    "scope": "Exact reviewed derivative images; new acceptance/package bindings require independent review before integration."
+  },
+  "commercial_use_authorized": true,
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "cover_display"
+  ],
+  "third_party_component_claim": "No third-party artwork/license claimed. Owner-design declaration and retained derivative lineage are the basis; CDN ownership or quality scores are not treated as provenance.",
+  "publication_activation_authorized": false,
+  "audio_authorized": false,
+  "runtime_release_authorized": false,
+  "evidence_recovery_warning": {
+    "current_back_url_sha256": "479a9a5c2907938abe44c40708e2cfd8ccd26a6fd4397a9e449cfe5ea1fcf729",
+    "expected_original_back_sha256": "96877955ed3ef8a0a9d86353a76584c881b513d6ea50ba09443e028adf66b5be",
+    "current_back_url_bytes": 380928,
+    "substitution_performed": false,
+    "retained_original_exact_bytes_used": true
+  },
+  "delivery_reviews": [
+    {
+      "reviewer": "A",
+      "file": "review_evidence/artmoney-delivery-review-a.json",
+      "sha256": "20a39d64886bd053c9f7b6518e380957ca47990b2837c4d4d0c30624b38715cd",
+      "result": "PASS_EXACT_WEBP_DELIVERY_DECODE_AND_VISUAL_COMPLIANCE"
+    },
+    {
+      "reviewer": "B",
+      "file": "review_evidence/artmoney-delivery-review-b.json",
+      "sha256": "fdb24286a7f7b5d646871ec49d014c32959c29d430bd5ab33e3b1b0a6f578644",
+      "result": "PASS_EXACT_DERIVED_DELIVERY_VISUAL"
+    }
+  ],
+  "delivery_derivation_sha256": "a9fb9bda228e99127d71ca26801f56c8341f279bc994c0c497a4d5e4dd742a22",
+  "production_observed": false
+}

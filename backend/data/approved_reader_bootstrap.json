@@ -151,6 +151,26 @@
       "slug": "the-call-of-the-wild",
       "decision_id": "india-20261002-the-call-of-the-wild-reader-cover-display-reviewed",
       "record_sha256": "a278a6fe107423bf2f96c6c61e04f2dc08f16f646a840408f5622fcde0035171"
+    },
+    {
+      "slug": "the-student",
+      "decision_id": "india-20261003-the-student-reader-cover-display-reviewed",
+      "record_sha256": "aa5f14c6d0ea1aa49f83c81127bbc6bf8f900314827dc5e6151669c86bfa2f24"
+    },
+    {
+      "slug": "the-art-of-money-getting",
+      "decision_id": "india-20261003-the-art-of-money-getting-reader-cover-display-reviewed",
+      "record_sha256": "09a110bbb1ba6983743cd2e7566726e753c85b2cdd56715de3a6ca83dbf13dc7"
+    },
+    {
+      "slug": "bn-035",
+      "decision_id": "india-20261003-bn-035-1922-text-reader-exact-cover",
+      "record_sha256": "6d197c694a86768a3ffdc74d8f65e6833375519f6b79cdd296bc307119ae17c7"
+    },
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "decision_id": "india-20261003-alices-adventures-in-wonderland-reader-cover-display-reviewed",
+      "record_sha256": "cc0a571b73f1ae4b4e19cfeb62c1b88b152fb2145a8f6c943d51156387fad5ae"
     }
   ]
 }

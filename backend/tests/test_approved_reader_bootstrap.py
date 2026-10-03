@@ -20,6 +20,10 @@ NEW_RELEASE_SLUGS = (
     "muchiram-gurer-jibanchorit",
     "bn-059",
     "the-call-of-the-wild",
+    "the-student",
+    "the-art-of-money-getting",
+    "bn-035",
+    "alices-adventures-in-wonderland",
 )
 RELEASE_SLUGS = (SLUG, *NEW_RELEASE_SLUGS)
 ACTOR = "system:owner-authorized-reader-bootstrap-v1"
@@ -79,7 +83,7 @@ def setup(monkeypatch, slug=SLUG):
 def test_persisted_plan_exactly_matches_approved_scope_and_registered_decisions():
     plan = json.loads(PLAN_PATH.read_text())
     titles = plan["titles"]
-    assert len(titles) == 29
+    assert len(titles) == 33
     assert len({entry["slug"] for entry in titles}) == len(titles)
     assert {entry["slug"] for entry in titles} == set(server.CONTROLLED_LIVE_BOOK_SLUGS)
     accepted, revoked = server.load_production_registry()
@@ -111,7 +115,11 @@ def test_exact_approved_source_initializes_once_and_real_manifest_is_readable(mo
 
     first, manifest, previews, retained, second = asyncio.run(run())
     assert first[0]["status"] == "INITIALIZED"
-    assert manifest["book_slug"] == slug and manifest["total_pages"] > 3
+    assert manifest["book_slug"] == slug
+    if slug == "the-student":
+        assert manifest["total_pages"] == 3  # Complete short story under the existing segmentation policy.
+    else:
+        assert manifest["total_pages"] > 3
     assert manifest["version"] == first[0]["version"]
     assert manifest["public_preview_pages"] == 3
     assert [chapter["chapter_id"] for chapter in manifest["chapters"]] == [

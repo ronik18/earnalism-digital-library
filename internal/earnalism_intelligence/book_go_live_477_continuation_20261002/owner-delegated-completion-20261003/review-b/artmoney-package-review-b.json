@@ -1,0 +1,46 @@
+{
+  "schema": "earnalism.independent-exact-package-review.v1",
+  "reviewer": "Independent reviewer B",
+  "slug": "the-art-of-money-getting",
+  "status": "PASS_EXACT_LOCAL_COMPONENT_PACKAGE_PENDING_SERIALIZED_RELEASE",
+  "decision_file_sha256": "4f50a0db33053936730a9148cde5dfbc5becad7b233d4cf35e305ca96a442ca4",
+  "decision_canonical_registry_sha256": "7fd25695d101b8908337919021821d347ce421ec634a6afe0c437fa0da43eae0",
+  "component_bindings": 14,
+  "checksum_entries": 14,
+  "checks": {
+    "strict_IN_gate_all6_uses": "PASS_PREPARED_REGISTRY_SIMULATION",
+    "unchanged_source_and_chapter_complete_sourcebody_equality": "PASS",
+    "root_backend_preimages_and_newmirror_exact": "PASS",
+    "original_back_CDN_mismatch_disclosed_and_exact_retained_original_used": "PASS",
+    "prior2visual_and_new2deliveryreviews_hash_bound": "PASS",
+    "prospective_owner_authority_truthful_automated_acceptance": "PASS",
+    "stale_audio_removed_and_draft_noobservedproduction_claim": "PASS"
+  },
+  "full_candidate_file_hashes": {
+    "approval_evidence.json": "5ec63f60366cc5a3712c665bd12d1518d07d919eb766de5b1157c7cf05315d6d",
+    "chapters/chapter-001.json": "04edd10d202a6f1b8e7c1c35308f728f1768e1db656080fa9ae49d559761d21f",
+    "checksum_manifest.json": "a1b4f71289cd7fc1f6d1d4a7e98928aefb8f52616703301fc7f38a8347464b52",
+    "cover_delivery_derivation.json": "a9fb9bda228e99127d71ca26801f56c8341f279bc994c0c497a4d5e4dd742a22",
+    "cover_provenance.json": "06313ba396a15f6ae2d9a272b01d0eedff59c63623f4215bb634cb68e9ad1bd0",
+    "covers/back.png": "06296b292fc91f246ab4c6420e5b8e41f4f21aa0f1929234ea7ecbe718b80b4a",
+    "covers/front.png": "337639ad0378bec91318d03711bbb0a1603cc7628587cc53158241d81de5c109",
+    "highlight_sync.json": "1230bdd0be1880eb2cb1f43206c7eb8e44fd2161641843615134ef3343e6662a",
+    "public_book.json": "39d671eeeecf68b94d20560130723986131377df22d84f276afab8e03bdb2bbf",
+    "publication_authorization.json": "b9b92cd14fb4966c53d6d75a015134f3189bbf1f89c9969ccc87b90f7d13d439",
+    "publication_manifest.json": "dfe56b99f53446db4cdb90a6a1f600bbe34d147a27675d18c63a1e4624511ce5",
+    "reader_manifest.json": "3837eeaad4e421a65e2a2a4034407e4054c2183f6d2cbba33c1b7453bd9f3291",
+    "review_evidence/artmoney-delivery-review-a.json": "20a39d64886bd053c9f7b6518e380957ca47990b2837c4d4d0c30624b38715cd",
+    "review_evidence/artmoney-delivery-review-b.json": "fdb24286a7f7b5d646871ec49d014c32959c29d430bd5ab33e3b1b0a6f578644",
+    "rights_decision.json": "4f50a0db33053936730a9148cde5dfbc5becad7b233d4cf35e305ca96a442ca4",
+    "source_evidence.json": "1de370a2d070b6d45231c688d02cce0bc8a3e9a0f2ee734807e54befd55d1034",
+    "source_integrity_validation.json": "df30c8ea0997c9d1f221d9ca7290fdcd319bdec4f45778e774e442454f15a804"
+  },
+  "audio_authorized": false,
+  "production_observed": false,
+  "remaining_gates": [
+    "SERIALIZED_INTEGRATION",
+    "PROTECTED_CI",
+    "NORMAL_MERGE_DEPLOY_CANARY",
+    "TRUTHFUL_READBACK"
+  ]
+}

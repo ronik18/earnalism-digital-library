@@ -1,0 +1,32 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "bn-035",
+  "edition": "BoroDidi Ashadh1329/1922 Sarat Chandra author edition",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_ONLY",
+  "source_sha256": "d97c0e751be06664a52eb6ca1a09d0e6e72d937a96d6c4c6ac9c96cda66f4ce9",
+  "content_sha256": "c8216c11a20f474ab5d95102950c52fe2cf8e30ea5a98c429427445a15ee572c",
+  "chapter_sha256": {
+    "chapter-001": "79887160142020e79cb05a31a7c3511f3d3be13dd22f626b68f62170e1bb49de",
+    "chapter-002": "553a68600ed96db9da1125561c4801069d639ea63b6645b71ba55f6d5c1ec72a",
+    "chapter-003": "e9acfa9e770a5580ccfee2ec5278711457f11ef2afc120882852deccd5cc63a1",
+    "chapter-004": "588f1f24037ad98b2f2f1e2752fcfe4289582124e41e206fe8240adff70ff4bd",
+    "chapter-005": "7314b92e8847add0b355cd1d685b7452ba22f67f7e5b2f7a7ee35b5923a17aa9",
+    "chapter-006": "187671beb1ee4174b23e4d3ac6802c4939e0d61a339fbfc293f2ce3cb8b30446",
+    "chapter-007": "3988140b3ac6a1c343f54b8723e84e59af9a1232295f0e4d6207c4b835f9ec59",
+    "chapter-008": "d06eef2a2615904081baf9d1adf34a57f94045f2c40044a0f5f97b66e81d0123",
+    "chapter-009": "67a12a9a26b869b051258cc2b64b40589405e45f88a5686e0f815450cd85d451",
+    "chapter-010": "7d357d54f1f160bbf15bb4ce42def6e251272751747b19a4b3eeedec23f505eb"
+  },
+  "rights_decision_id": "india-20261002-bn-035-1922-cc-by-sa-text-reader",
+  "license_notice_sha256": "0f9f6cae57e92deb5473bf556c12cb6be663a9833b87fddd340279f1f6e5c8d8",
+  "cover_provenance_status": "COVER_BINDING_DEFERRED_NOT_AUTHORIZED_BY_THIS_TEXT_ONLY_RECORD",
+  "authorized_by": "Automated executor under explicit product-owner autonomous evidence-backed text-clearance delegation; not a human legal reviewer or signature.",
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Covers, production rights registry, controlled allowlist, runtime readiness and protected checks are separate fail-closed gates."
+}

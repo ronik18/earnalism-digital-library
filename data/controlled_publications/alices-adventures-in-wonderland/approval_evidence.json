@@ -1,10 +1,10 @@
 {
   "slug": "alices-adventures-in-wonderland",
-  "approved_to_publish": false,
+  "approved_to_publish": true,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
+  "approval_scope": "OWNER_DELEGATED_EXACT_IN_TEXT_AND_REVIEWED_COVER_DELIVERY_COMPONENT_ACCEPTANCE_LOCAL_PREPARATION",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_BLOCKED_QA_REQUIRED",
   "allowCheckout": false,
   "allowPayment": false,
@@ -18,9 +18,17 @@
     "verification_status": "approved",
     "approval_scope": "historical_admin_import_reconstruction"
   },
-  "publication_authorization_sha256": "469a7f6ddd8202ef12e1c1e8f72e6d346887297737652e65c38baa8ff71ede16",
+  "publication_authorization_sha256": "57396f754f1a984d7e1925abf31b5c3c84b1daeadcf2f755fe2e05305909d66d",
   "source_hash": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
   "content_hash": "5629f655398205d45c0b7bba128ada0849d46e5148aa9b6553636f7d4d7e8812",
   "provenance_hash": "83edea9b276d54e81189bc2db63c16cbaf4d70f84bc948986c64aa20000f1ae5",
-  "verified_at": "2026-10-01T21:19:39.153654+00:00"
+  "verified_at": "2026-10-03T03:59:10.144223+00:00",
+  "publication_activation_authorized": false,
+  "cover_provenance_sha256": "a6a0ea01a76ca5eb29ce5568fd2f719e9904f07b9c123f1cf41faeaeebe7495c",
+  "activation_derivation": {
+    "owner_directive": "issue #477 comment 5949652699 plus direct owner prospective acceptance instruction 2026-10-03",
+    "scope": "serialized IN text Reader/cover integration candidate",
+    "production_observed": false,
+    "runtime_observed": false
+  }
 }

@@ -1,10 +1,10 @@
 {
   "slug": "alices-adventures-in-wonderland",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-10-03T04:12:32.330374+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "2a09f96b2296ed45e201a33875fcaece77b4a90a72013d7cb66761e19159ac4c"
+      "sha256": "2cfbff30786dea2a11c9b5cf6833de0f997ae8cee0159b827a223b49d9b9c1d7"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -55,16 +55,60 @@
       "sha256": "dc47a09ddfac3d793b58a627b30a5e9938c36c5879741fa0003650d1760b5c33"
     },
     {
+      "file": "cover_delivery_derivation.json",
+      "sha256": "34149ba85f2b8b78e39e42da8f115c191a2653a41e7c25dd9046c5e0f2520cbe"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "a6a0ea01a76ca5eb29ce5568fd2f719e9904f07b9c123f1cf41faeaeebe7495c"
+    },
+    {
+      "file": "covers/alices-adventures-in-wonderland-back-3838ee24.png",
+      "sha256": "3838ee24fac30cd4f9e3147eda722cb43fef349de19b6e0cdd6be659f58d5c54"
+    },
+    {
+      "file": "covers/alices-adventures-in-wonderland-back-3838ee24.webp",
+      "sha256": "a588597bb1f38dd1d8bdc777167d825ea157ba1856efdc6d1f4b2968e7a99bf8"
+    },
+    {
+      "file": "covers/alices-adventures-in-wonderland-front-15c92a33.png",
+      "sha256": "15c92a333213db88902d003164570e7f8c58040e689dfe0acfc6b6e7a1ff2811"
+    },
+    {
+      "file": "covers/alices-adventures-in-wonderland-front-15c92a33.webp",
+      "sha256": "5fa6ee0698360743214ad601df0a73b6181ec168346a6bb0580edea2a6c30a2e"
+    },
+    {
+      "file": "covers/original-back.png",
+      "sha256": "22318a92b3de98f2f2d68402d36255142107ff500f24de2022fcaf14a43f0e6f"
+    },
+    {
+      "file": "covers/original-front.png",
+      "sha256": "15c92a333213db88902d003164570e7f8c58040e689dfe0acfc6b6e7a1ff2811"
+    },
+    {
+      "file": "evidence/alice-delivery-review-a.json",
+      "sha256": "1399981c10b0f0aaa93ff245f2676f192b00ae09c4528f0e290700215fc5fcef"
+    },
+    {
+      "file": "evidence/alice-delivery-review-b.json",
+      "sha256": "3afb6e0614e6c61dc941f5076c8d42d2bb11cdf6672634af3fd78acafb1bb8cb"
+    },
+    {
+      "file": "evidence/whole-narrative-boundary-reuse.json",
+      "sha256": "9be1358700356beb5b43b49757819aea4698948f15ddcd38961dd320e3eb768e"
+    },
+    {
       "file": "highlight_sync.json",
       "sha256": "fb96a7aced05433c8bc5892633eed9d69df5f9640d5c2795483da6c51d17ebf4"
     },
     {
       "file": "public_book.json",
-      "sha256": "245188f965b58da793650daa0afc5a2eff80a0a935f15a36b2334d76a72447dc"
+      "sha256": "2c277c2dca87282f95874abb405a39a46ec885beebab89b162bd785b34f099ab"
     },
     {
       "file": "publication_authorization.json",
-      "sha256": "469a7f6ddd8202ef12e1c1e8f72e6d346887297737652e65c38baa8ff71ede16"
+      "sha256": "57396f754f1a984d7e1925abf31b5c3c84b1daeadcf2f755fe2e05305909d66d"
     },
     {
       "file": "reader_manifest.json",

@@ -1,0 +1,16 @@
+{
+  "schema": "earnalism.selected-work-integrity-validation.v1",
+  "slug": "the-art-of-money-getting",
+  "verified_at": "2026-10-03T04:03:12.455271+00:00",
+  "source_sha256": "ccf68ee545e68995f88d4cd2f534ecae9bf731b8996118d34b5a10bfc4958061",
+  "chapter_count": 1,
+  "chapter_content_sha256": "f3c4db2a3c551518ebd4302e7409797eb49f0ff94470ebfbc4b800b900a44b61",
+  "whole_selected_work": "PASS",
+  "method": "Exact complete source body from first narrative sentence through final Barnum sentence equals canonical chapter under NFC + whitespace only. No lexical or punctuation normalization. Header credits/title furniture and trailing Gutenberg attribution/license excluded.",
+  "first_text": "In the United States, where we have more land than people, it is not at all difficult for persons in good health to make money. In this comparatively new field there are so many av",
+  "last_text": "kind. To all men and women, therefore, do I conscientiously say, make money honestly, and not otherwise, for Shakespeare has truly said, \"He that wants money, means, and content, is without three good friends.\"",
+  "source_end_boundary": "Immediately before End of Project Gutenberg's The Art of Money Getting, by P. T. Barnum",
+  "boilerplate_in_reader": false,
+  "source_or_chapter_changed": false,
+  "production_observed": false
+}

@@ -36,6 +36,10 @@ export const PUBLIC_READER_RELEASED_SLUGS = Object.freeze([
   "muchiram-gurer-jibanchorit",
   "bn-059",
   "the-call-of-the-wild",
+  "the-student",
+  "the-art-of-money-getting",
+  "bn-035",
+  "alices-adventures-in-wonderland",
 ]);
 // The India text launch does not offer paid Reading Passes until the live
 // Razorpay, consumer-remedy, and accounting surface has been independently

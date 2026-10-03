@@ -1,0 +1,19 @@
+{
+  "schema": "earnalism.independent-cover-delivery-review.v1",
+  "reviewer": "Independent reviewer B",
+  "slug": "the-art-of-money-getting",
+  "status": "PASS_EXACT_DERIVED_DELIVERY_VISUAL",
+  "front_sha256": "b1fd6a8d2b2f6a22f5eb6e2f76ed3602c5093757f82610a77ff7c2da4984f4f2",
+  "back_sha256": "42d362be686b5a23656c87b49f29e4850f02a08311374ef8fd195a93b343aeb8",
+  "checks": {
+    "full_decode_and_dimensions": "PASS_800X1200",
+    "title_and_author_legible": "PASS",
+    "complete_source_excerpt_and_footer_legible": "PASS",
+    "no_ornament_text_collision_or_truncation": "PASS",
+    "composition_preserved": "PASS",
+    "false_live_audio_rights_claim_absent": "PASS"
+  },
+  "source_accepted_PNG_unchanged": true,
+  "production_observed": false,
+  "package_binding_review": "PENDING_FINAL_BINDINGS"
+}

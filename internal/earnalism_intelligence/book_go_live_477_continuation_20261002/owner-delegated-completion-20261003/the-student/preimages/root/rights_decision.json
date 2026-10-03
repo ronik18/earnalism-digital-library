@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-student-pg1944-noncover-text",
+  "edition_id": "the-student",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "b033960f7131bbab83eeed26ef84a13dc3309f18440467e86cf144183fc4189e",
+    "reader_manifest": "8fe807a4936a240950d242a8084a8e4e0049b35e85087991e7567d5f10f16812",
+    "source_evidence": "0bc62a4920342e7fd0845770fbdf73e9693347c3172250c4b5aaff120d149700",
+    "approval_evidence": "955649b36bc37be200063d33fbd70687f578b1da2142b610acfe203e0be68b18",
+    "checksum_manifest": "7e49c883c02bff9ca503ff9888c7240af4846829f6baac5f8a0c8116a2986c00",
+    "publication_manifest": "eb653f45d133296dbbf987b3f341f7932da3adcf28847cf35b14193dc1ec0971"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:54:02.732252+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "IN text only. Verified publication no later than 1918; original-author life+60 ends 1964, or conservative posthumous-publication upper bound+60 ends no later than 1978; every selected translator/coauthor latest death 1946, life+60 ends 2006. All bounds have elapsed by actual review2026. Unknown original first date stays unknown; no inference from US-only PG status.",
+  "evidence_sha256": [
+    "67236f204812f462255354a2d35c5f20baaddc49eecbb7010036c5cd93e1ef96",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "a388a671e0b83a3dac9b697160f216cfce3eaf3c851dc1b7924cdf63ba36ba85",
+    "fd7c69daa6080772e42bb26c21330c1dc1c5fb3967f40c23789f51e5c260c82f",
+    "903608a2d7a18a56ede70f69bbba9f90bd89e1e1eb4a67676bf4f82858b21b90"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

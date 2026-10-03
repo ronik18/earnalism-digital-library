@@ -1,0 +1,53 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-alices-adventures-in-wonderland-reader-cover-display-reviewed",
+  "edition_id": "alices-adventures-in-wonderland",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "c3f5069de63cafe13578aed7c5ccd0e183b7a4acf34449ad9a7d489b850a2cd4",
+    "reader_manifest": "b4884654a495c628c64916819dff635597f5afdb10b0ecaf46f6c88b3f8dd288",
+    "source_evidence": "5878c960420a5fe11b19bf526baeccb12f4b6776054d604d176e89ef36ff59e5",
+    "approval_evidence": "4d78dc98b5119819dbd1e4352aa3428adab40be00d2925a7007a4ae8c0af2ab6",
+    "checksum_manifest": "f8cae9d53d4d28dca4cd17520bd34eb0007f62564f3845815059b2480b950436",
+    "publication_manifest": "23ecca0bdad7d6a780f2055752c5c569e0d45264dd2148f758991fc1778a8db1",
+    "cover_provenance": "1148ceb5425c390d73533384600e7b722ca1faa7242f97f5f8a49c519e3b35db",
+    "cover_delivery_derivation": "34149ba85f2b8b78e39e42da8f115c191a2653a41e7c25dd9046c5e0f2520cbe",
+    "cover_front_original_asset": "15c92a333213db88902d003164570e7f8c58040e689dfe0acfc6b6e7a1ff2811",
+    "cover_back_original_asset": "22318a92b3de98f2f2d68402d36255142107ff500f24de2022fcaf14a43f0e6f",
+    "cover_front_delivery_asset": "5fa6ee0698360743214ad601df0a73b6181ec168346a6bb0580edea2a6c30a2e",
+    "cover_back_delivery_asset": "a588597bb1f38dd1d8bdc777167d825ea157ba1856efdc6d1f4b2968e7a99bf8"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T03:59:10.144223+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Reuse exact previously accepted India twelve-chapter text scope india-20261002-alices-adventures-in-wonderland-pg11-noncover-text; source, text, license, narrative/chapter identities and limitations retained unchanged. Add existing owner-design declaration, exact recovered original front and removal-only back derivative with persisted lineage and two unchanged passing visual/copy reviews. New owner prospective component/publication delegation supersedes procedural cover deferral. No audio, other editions/territories, paid-pass policy or production activation authorized by this preparation record. Original exact PNG acceptance preserved; optimized WebP hashes passed two fresh independent exact decode/legibility/copy reviews and are accepted locally for preparation; final serialized production/package release gates remain separate.",
+  "evidence_sha256": [
+    "469a7f6ddd8202ef12e1c1e8f72e6d346887297737652e65c38baa8ff71ede16",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "a8c4b8b3a116e154c2ac028f048d81b06f0068ddbee5008827bf50693bcd12d9",
+    "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+    "5629f655398205d45c0b7bba128ada0849d46e5148aa9b6553636f7d4d7e8812",
+    "4f5bfd9d78bfff0232b0fef565274b4bf43c6480acb347dd7fc8bac1e2c87481",
+    "7214944de2364fee3af43a95e461413e1c02c4a5a2ebc8a247e5b162018902da",
+    "9dee544365eff2a2a80c4f11f943e994c354b28d409c7978e11dec1ffc980a92",
+    "0619258bca8b1b081a36ebce7bba1ab43ed82c74810653bf2922ced78b7fd1fe",
+    "3adc829fcc313be80d68f06248e3841853b6361ae47f4e1821d097d760d4fc4b",
+    "d3a3fd2c1a1d2a3367063ade99074a9a896258d2a6316c1d47a041678e22c84e",
+    "9be1358700356beb5b43b49757819aea4698948f15ddcd38961dd320e3eb768e",
+    "1399981c10b0f0aaa93ff245f2676f192b00ae09c4528f0e290700215fc5fcef",
+    "3afb6e0614e6c61dc941f5076c8d42d2bb11cdf6672634af3fd78acafb1bb8cb"
+  ],
+  "accepted_by": "Automated isolated preparation executor under the owner prospective cover-component/publication acceptance delegation of 2026-10-03 and issue #477 directive comment 5949652699; no human/legal signature or production observation inferred. Serialized controller promotion and independent exact package review remain separate gates.",
+  "conditions_satisfied": true
+}

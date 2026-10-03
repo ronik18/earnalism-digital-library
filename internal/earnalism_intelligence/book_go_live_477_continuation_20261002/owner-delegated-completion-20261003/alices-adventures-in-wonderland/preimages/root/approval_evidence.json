@@ -1,0 +1,26 @@
+{
+  "slug": "alices-adventures-in-wonderland",
+  "approved_to_publish": false,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_BLOCKED_QA_REQUIRED",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "audio_qa_status": "",
+  "endpoint_url": "",
+  "provider": "",
+  "version": "",
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "469a7f6ddd8202ef12e1c1e8f72e6d346887297737652e65c38baa8ff71ede16",
+  "source_hash": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
+  "content_hash": "5629f655398205d45c0b7bba128ada0849d46e5148aa9b6553636f7d4d7e8812",
+  "provenance_hash": "83edea9b276d54e81189bc2db63c16cbaf4d70f84bc948986c64aa20000f1ae5",
+  "verified_at": "2026-10-01T21:19:39.153654+00:00"
+}

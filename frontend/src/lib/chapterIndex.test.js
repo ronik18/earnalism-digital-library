@@ -43,10 +43,11 @@ describe('chapter index contract', () => {
     // Yugalanguriya's 10-chapter package remains archived and held, outside the
     // active inventory. That inventory includes Sherlock Holmes' approved
     // 12-chapter package added in PR #470.
-    // The current controlled-publication tree contains 97 reader manifests.
+    // The current controlled-publication tree contains 99 reader manifests.
     // The accepted bn-059 package replaces its one-page placeholder with the
-    // exact reviewed 13-chapter source, bringing the audited total to 776.
-    expect(manifests).toHaveLength(97);
+    // exact reviewed 13-chapter source, bringing the previous audited total to 776. The unchanged Student and
+    // bn-035 runtime mirrors add one and ten reviewed chapters respectively.
+    expect(manifests).toHaveLength(99);
 
     let auditedChapters = 0;
     manifests.forEach((manifestPath) => {
@@ -60,6 +61,6 @@ describe('chapter index contract', () => {
       expect(first.every((entry) => entry.index_contract === CHAPTER_INDEX_CONTRACT_VERSION)).toBe(true);
       auditedChapters += first.length;
     });
-    expect(auditedChapters).toBe(776);
+    expect(auditedChapters).toBe(787);
   });
 });

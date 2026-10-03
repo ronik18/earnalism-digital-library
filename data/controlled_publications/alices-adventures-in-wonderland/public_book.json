@@ -7,14 +7,14 @@
   "category_slug": "young-readers",
   "short_description": "A curious girl tumbles down a rabbit hole into a fantastical world of illogical creatures and absurd rules.",
   "description": "This public-domain edition of Carroll's 1865 novel is prepared for structured digital reading on Earnalism.",
-  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902722/earnalism/covers/front/cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
-  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902722/earnalism/covers/front/cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
-  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902722/earnalism/covers/front/cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
-  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902722/earnalism/covers/front/cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
-  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902735/earnalism/covers/back/back_cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
-  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902735/earnalism/covers/back/back_cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
-  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902735/earnalism/covers/back/back_cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
-  "cover_status": "CLOUDINARY_ASSIGNED",
+  "cover_url": "https://theearnalism.com/assets/books/alices-adventures-in-wonderland/alices-adventures-in-wonderland-front-15c92a33.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/alices-adventures-in-wonderland/alices-adventures-in-wonderland-front-15c92a33.webp",
+  "coverImage": "https://theearnalism.com/assets/books/alices-adventures-in-wonderland/alices-adventures-in-wonderland-front-15c92a33.webp",
+  "cover_image": "https://theearnalism.com/assets/books/alices-adventures-in-wonderland/alices-adventures-in-wonderland-front-15c92a33.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/alices-adventures-in-wonderland/alices-adventures-in-wonderland-back-3838ee24.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/alices-adventures-in-wonderland/alices-adventures-in-wonderland-back-3838ee24.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/alices-adventures-in-wonderland/alices-adventures-in-wonderland-back-3838ee24.webp",
+  "cover_status": "EXACT_FIRST_PARTY_REVIEWED_WEBP_DELIVERY_PREPARED",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "115 min",
   "formats": [
@@ -221,19 +221,19 @@
   "source_hash": "01b38ea4c710a84bc18d0bd41271a5a1a92b94e97b2812f4dece97d4a694725e",
   "content_hash": "5629f655398205d45c0b7bba128ada0849d46e5148aa9b6553636f7d4d7e8812",
   "provenance_hash": "83edea9b276d54e81189bc2db63c16cbaf4d70f84bc948986c64aa20000f1ae5",
-  "rights_basis": "Author died in 1898. Work published in 1865, well before 1928. Public domain in the U.S. under pre-1928 publication rule and in most jurisdictions under life plus 70 years.",
+  "rights_basis": "Exact accepted India text edition and proven owner-designed cover components under delegated campaign authority.",
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
   "approved_to_publish": true,
-  "publication_status": "LIVE_APPROVED",
+  "publication_status": "READY_FOR_ACTIVATION_GLOBAL_GATE",
   "readerStatus": "reader_ready",
-  "publicationStatus": "live",
+  "publicationStatus": "draft",
   "isPublic": true,
   "isLive": true,
-  "showInPublicLibrary": true,
+  "showInPublicLibrary": false,
   "showInHomepage": false,
-  "allowPublicReading": true,
+  "allowPublicReading": false,
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
@@ -257,5 +257,17 @@
   "audio_url": "",
   "audiobook_release_mode": "",
   "audiobook_manuscript_sha256": "",
-  "audiobook_release_conveyor": {}
+  "audiobook_release_conveyor": {},
+  "approval_scope": "OWNER_DELEGATED_EXACT_IN_TEXT_AND_COVER_COMPONENT_ACCEPTANCE_LOCAL_PREPARATION",
+  "cover_dimensions": {
+    "front": [
+      600,
+      900
+    ],
+    "back": [
+      800,
+      1200
+    ]
+  },
+  "publication_authorization_sha256": "57396f754f1a984d7e1925abf31b5c3c84b1daeadcf2f755fe2e05305909d66d"
 }

@@ -1,0 +1,90 @@
+{
+  "schema": "earnalism.exact-cover-delivery-derivation.v1",
+  "slug": "alices-adventures-in-wonderland",
+  "assets": [
+    {
+      "kind": "front",
+      "source_file": "covers/alices-adventures-in-wonderland-front-15c92a33.png",
+      "source_sha256": "15c92a333213db88902d003164570e7f8c58040e689dfe0acfc6b6e7a1ff2811",
+      "derivative_file": "frontend/public/assets/books/alices-adventures-in-wonderland/alices-adventures-in-wonderland-front-15c92a33.webp",
+      "derivative_sha256": "5fa6ee0698360743214ad601df0a73b6181ec168346a6bb0580edea2a6c30a2e",
+      "source_bytes": 3174029,
+      "derivative_bytes": 75730,
+      "dimensions": [
+        600,
+        900
+      ],
+      "recipe": {
+        "mode": "RGB",
+        "format": "WEBP",
+        "quality": 40,
+        "method": 6,
+        "resize": [
+          600,
+          900
+        ],
+        "resampling": "LANCZOS",
+        "pillow_version": "12.3.0"
+      },
+      "url": "https://theearnalism.com/assets/books/alices-adventures-in-wonderland/alices-adventures-in-wonderland-front-15c92a33.webp",
+      "production_observed": false,
+      "review_status": "TWO_FRESH_EXACT_DELIVERY_REVIEWS_PASS"
+    },
+    {
+      "kind": "back",
+      "source_file": "covers/alices-adventures-in-wonderland-back-3838ee24.png",
+      "source_sha256": "3838ee24fac30cd4f9e3147eda722cb43fef349de19b6e0cdd6be659f58d5c54",
+      "derivative_file": "frontend/public/assets/books/alices-adventures-in-wonderland/alices-adventures-in-wonderland-back-3838ee24.webp",
+      "derivative_sha256": "a588597bb1f38dd1d8bdc777167d825ea157ba1856efdc6d1f4b2968e7a99bf8",
+      "source_bytes": 3122954,
+      "derivative_bytes": 167392,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "recipe": {
+        "mode": "RGB",
+        "format": "WEBP",
+        "quality": 60,
+        "method": 6,
+        "resize": [
+          800,
+          1200
+        ],
+        "resampling": "LANCZOS",
+        "pillow_version": "12.3.0"
+      },
+      "url": "https://theearnalism.com/assets/books/alices-adventures-in-wonderland/alices-adventures-in-wonderland-back-3838ee24.webp",
+      "production_observed": false,
+      "review_status": "TWO_FRESH_EXACT_DELIVERY_REVIEWS_PASS"
+    }
+  ],
+  "production_observed": false,
+  "runtime_observed": false,
+  "review_status": "TWO_FRESH_EXACT_DELIVERY_REVIEWS_PASS",
+  "bounded_remediation_attempt": 1,
+  "parameter_selection": {
+    "initial_suggestion": {
+      "dimensions": [
+        800,
+        1200
+      ],
+      "quality": 72,
+      "front_bytes": 184178,
+      "back_bytes": 191516
+    },
+    "reason": "Measured over80KBfront180KBback; same single bounded remediation with deterministic size-calibrated encodes."
+  },
+  "independent_reviews": [
+    {
+      "path": "evidence/alice-delivery-review-a.json",
+      "sha256": "1399981c10b0f0aaa93ff245f2676f192b00ae09c4528f0e290700215fc5fcef",
+      "result": "PASS"
+    },
+    {
+      "path": "evidence/alice-delivery-review-b.json",
+      "sha256": "3afb6e0614e6c61dc941f5076c8d42d2bb11cdf6672634af3fd78acafb1bb8cb",
+      "result": "PASS"
+    }
+  ]
+}

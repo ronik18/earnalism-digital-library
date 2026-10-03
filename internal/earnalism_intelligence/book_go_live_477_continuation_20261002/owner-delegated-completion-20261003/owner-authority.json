@@ -1,0 +1,15 @@
+{
+  "schema": "earnalism.owner-delegated-completion-authority.v1",
+  "recorded_at": "2026-10-03T04:12:32.330374+00:00",
+  "owner_directive": "https://github.com/ronik18/earnalism-digital-library/issues/477#issuecomment-5949652699",
+  "new_owner_instruction": "2026-10-03 direct user instruction in the existing campaign conversation",
+  "explicit_scope": "Prospective evidence-based cover-component and publication acceptance; supersedes earlier procedural cover deferral only. Accept exact proven components, preserve prior decisions, never invent rights/human approval/production observation.",
+  "completion_policy": "Complete feasible editions; otherwise remove the edition from this active plan with exact blockers, preserving every source/asset/decision/version. No unchanged retries, paid generation or parallel integration PR.",
+  "territory": "IN",
+  "commercial_text_reader_only": true,
+  "audio_exposed": false,
+  "base_main": "514c9ebcfd95fd69e5cece864e9360c5d21ee7c5",
+  "integration_predecessor": "aa8104432746118b20469857cfd8112e9808b444",
+  "serialization_authority": "root integration controller",
+  "production_observed": false
+}

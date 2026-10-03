@@ -1,0 +1,45 @@
+{
+  "schema": "earnalism.independent-frozen-preparation-binding-review.v1",
+  "reviewer": "Independent automated reviewer A",
+  "recorded_on": "2026-10-03",
+  "status": "PASS_LOCAL_BINDINGS_PENDING_ROOT_ACTIVATED_TREE",
+  "titles": {
+    "alices-adventures-in-wonderland": {
+      "status": "PASS_FROZEN_PACKAGE_EXACT",
+      "decision_file_sha256": "3c7ab076c25b953bf08026cdf7c2d3e3f93af3792802c466d52f3c6dbd8b2c02",
+      "decision_record_sha256": "f3fc46487faf32bca96299c7e3c327cef3f29e0f335eef3cce8d510125d56610",
+      "checksum_count": 29,
+      "all_checksums_and_components": "PASS",
+      "strict_all6_IN_scope_simulation": "PASS",
+      "fresh_small_delivery_decode_visual": "PASS",
+      "source_chapter_preimages_preserved": "PASS",
+      "draft_not_exposed": "PASS",
+      "production_observed": false
+    },
+    "the-art-of-money-getting": {
+      "status": "PASS_FROZEN_PACKAGE_EXACT",
+      "decision_file_sha256": "5dcdc0ef9c41b7980b0746b915795e21dc7394dfd3b404bd0b736d068754af96",
+      "decision_record_sha256": "1ca8d74abb680dc9a81219cf37525c7c31e36ff0ea9229cda67f313fef1c3051",
+      "checksum_count": 12,
+      "all_checksums_and_components": "PASS",
+      "strict_all6_IN_scope_simulation": "PASS",
+      "fresh_small_delivery_decode_visual": "PASS",
+      "source_chapter_preimages_preserved": "PASS",
+      "draft_not_exposed": "PASS",
+      "production_observed": false
+    },
+    "bn-035": {
+      "status": "PASS_FROZEN_PACKAGE_EXACT",
+      "decision_file_sha256": "cc7bb48eb12b3589ca4033d944993dd5891e528ff806800d77a2bfbd84d3a544",
+      "decision_record_sha256": "cb646d915efb88a90772cd6994f932a1305bcc391a3753d011884e65f72f9ba5",
+      "checksum_count": 22,
+      "all_checksums_and_components": "PASS",
+      "strict_all6_IN_scope_simulation": "PASS",
+      "fresh_small_delivery_decode_visual": "UNCHANGED_EXACT_PRIOR_VISUALS_PNG_WITHIN_BUDGET",
+      "source_chapter_preimages_preserved": "PASS",
+      "draft_not_exposed": "PASS",
+      "production_observed": false,
+      "whole_selected_source": "Independent NFC/whitespace equality of every canonical chapter to complete source_paragraphs_for_reader, all10leaf/10chapters plus content hashes PASS. Persisted comparison receipt exactf1191746...34f9."
+    }
+  }
+}

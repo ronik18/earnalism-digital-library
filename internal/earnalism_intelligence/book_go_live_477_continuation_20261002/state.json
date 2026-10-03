@@ -3,11 +3,12 @@
   "source_main": "514c9ebcfd95fd69e5cece864e9360c5d21ee7c5",
   "owner_directive": "https://github.com/ronik18/earnalism-digital-library/issues/477#issuecomment-5949652699",
   "integration_candidate_slugs": [
-    "muchiram-gurer-jibanchorit",
-    "bn-059",
-    "the-call-of-the-wild"
+    "the-student",
+    "the-art-of-money-getting",
+    "bn-035",
+    "alices-adventures-in-wonderland"
   ],
-  "configured_candidate_count": 29,
+  "configured_candidate_count": 33,
   "deployed_verified_new_titles": 5,
   "production_readback": "PR509_DEPLOYED; MUCHIRAM_GURER_JIBANCHARIT_BN_059_AND_THE_CALL_OF_THE_WILD_ACTIVE_UNDER_CONDITIONAL_MANUAL_OBSERVATION_WAIVER; INDIA_CANONICAL_VERSIONS_NULL_NOT_RUN_FROM_NON_IN",
   "audio_exposure": false,
@@ -52,7 +53,7 @@
     "next_cohort_static_snapshots": 106,
     "next_cohort_static_snapshot_assertions": 2256
   },
-  "next_action": "Retain all holds; no unchanged retries or new activation PR. Resume onboarding only with new exact cleared-source/Reader package evidence for a missing title, genuine cover-display/publication acceptance for reviewed inactive repairs, or new cover evidence resolving bn-060/the-most-dangerous-game disagreement.",
+  "next_action": "Two independent final exact integration-tree reviews, protected normal PR checks, merge/deploy/canary; prepare distinct source-ready next cover cohort in isolated scratch only.",
   "ci_repair_receipt": "static-contract-ci-repair.json",
   "routing_assessment": "Earlier missing-mapping404/config-blocker inference withdrawn; generatedfilesystem snapshot routes before rewrites. Exactdeployedpaths unobserved; canarystillrequired.",
   "final_regression_repair": "final-regression-repair.json",
@@ -66,7 +67,8 @@
   "next_held_inactive_derivative_prep": "next-held-inactive-derivative-prep.json",
   "next_distinct_candidate": null,
   "reviewed_repairs_next_candidate": "reviewed-repairs-next-bn060.json",
-  "current_prepared_evidence_queue": "EXHAUSTED_SAFE_ACTIVATION_CANDIDATES_WITH_CURRENT_EVIDENCE",
-  "continuation_status": "PAUSED_FULLY_BLOCKED_PENDING_NEW_EVIDENCE",
-  "continuation_pause_receipt": "continuation-pause-reconciliation.json"
+  "current_prepared_evidence_queue": "FOUR_PASSING_LOCAL_CANDIDATES_AND_DISTINCT_NEW_COVER_WORK_AVAILABLE",
+  "continuation_status": "ACTIVE_NEW_OWNER_DELEGATION_COHORT_PENDING_PROTECTED_RELEASE",
+  "continuation_pause_receipt": "continuation-pause-reconciliation.json",
+  "owner_delegated_completion": "owner-delegated-completion-20261003/serialized-cohort.json"
 }

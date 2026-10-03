@@ -32,7 +32,11 @@
     "book-edfcf810c5": "COMMERCIAL_ENTITLEMENT",
     "muchiram-gurer-jibanchorit": "COMMERCIAL_ENTITLEMENT",
     "bn-059": "COMMERCIAL_ENTITLEMENT",
-    "the-call-of-the-wild": "COMMERCIAL_ENTITLEMENT"
+    "the-call-of-the-wild": "COMMERCIAL_ENTITLEMENT",
+    "the-student": "COMMERCIAL_ENTITLEMENT",
+    "the-art-of-money-getting": "COMMERCIAL_ENTITLEMENT",
+    "bn-035": "COMMERCIAL_ENTITLEMENT",
+    "alices-adventures-in-wonderland": "COMMERCIAL_ENTITLEMENT"
   },
   "launch_compliance_jurisdiction": "IN",
   "live_approved_slugs": [
@@ -64,7 +68,11 @@
     "book-edfcf810c5",
     "muchiram-gurer-jibanchorit",
     "bn-059",
-    "the-call-of-the-wild"
+    "the-call-of-the-wild",
+    "the-student",
+    "the-art-of-money-getting",
+    "bn-035",
+    "alices-adventures-in-wonderland"
   ],
   "pipeline_slugs": [
     "kshudhita-pashan"

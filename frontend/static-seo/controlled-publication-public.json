@@ -2,7 +2,7 @@
   "schema_version": "earnalism.static-seo-public.v2",
   "public_release_held": false,
   "generated_from": {
-    "data/controlled_launch.json": "02ed2e881c637e807acbf29c39875e2f04cb39ebea38c49be15ea470e16a4bd6",
+    "data/controlled_launch.json": "b82133072b1dc862ad98a0b1bd90c627fd3f685ace31b4843f5d278047281a87",
     "data/controlled_publications/a-ghost-story/public_book.json": "993dbc5804da73144872935f9d43d2471afa200ac688e9b690fcf7f3e44a9338",
     "data/controlled_publications/a-ghost-story/reader_manifest.json": "043416f20760f32bd6ce0f401025bfa9230e7e9c76f8fc6a86b1b0b143b302c1",
     "data/controlled_publications/a-ghost-story/source_evidence.json": "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b",
@@ -33,11 +33,21 @@
     "data/controlled_publications/agentic-ai-with-python/source_evidence.json": "c21bb049f395d0a88c6912136974140341db4b6ecd631395aad36609ded48386",
     "data/controlled_publications/agentic-ai-with-python/approval_evidence.json": "1d34313e08796c09cb8d3a9a0e9a343c59fce01028bdaa47e846cf25f505d308",
     "data/controlled_publications/agentic-ai-with-python/publication_manifest.json": "3b50f1958f2cd12453165b08086901c9d56c8eb66d6869953637dc4b3bbb8879",
+    "data/controlled_publications/alices-adventures-in-wonderland/public_book.json": "2c277c2dca87282f95874abb405a39a46ec885beebab89b162bd785b34f099ab",
+    "data/controlled_publications/alices-adventures-in-wonderland/reader_manifest.json": "b4884654a495c628c64916819dff635597f5afdb10b0ecaf46f6c88b3f8dd288",
+    "data/controlled_publications/alices-adventures-in-wonderland/source_evidence.json": "5878c960420a5fe11b19bf526baeccb12f4b6776054d604d176e89ef36ff59e5",
+    "data/controlled_publications/alices-adventures-in-wonderland/approval_evidence.json": "2cfbff30786dea2a11c9b5cf6833de0f997ae8cee0159b827a223b49d9b9c1d7",
+    "data/controlled_publications/alices-adventures-in-wonderland/publication_manifest.json": "8f1c1240f873ca95f1259ef838e0b3764fb26ed63e7cd387f033b29c8cf6a461",
     "data/controlled_publications/an-occurrence-at-owl-creek-bridge/public_book.json": "cb2393c098ba17ceae6ad8a9fdb9d4e0e78f4a9f67529f8ad1c3bcd2a363c6bb",
     "data/controlled_publications/an-occurrence-at-owl-creek-bridge/reader_manifest.json": "791870c247a3b38ab2b35aaf32c148e76b42f1ccb4f954f1225a5c1e8b144ce5",
     "data/controlled_publications/an-occurrence-at-owl-creek-bridge/source_evidence.json": "3243e4e6f0b4cc47d72bd0b3b5b43f0724ef8af8875f6fa1cd74264218b32be1",
     "data/controlled_publications/an-occurrence-at-owl-creek-bridge/approval_evidence.json": "397e92e48ebdf882998540c67e7f09a39bb59fc148d62b0817bfeee9dcb7ae34",
     "data/controlled_publications/an-occurrence-at-owl-creek-bridge/publication_manifest.json": "2881932ca8285343a44fdd48b4637a326f156094bfe03fcecad8eb98294dccaf",
+    "data/controlled_publications/bn-035/public_book.json": "469025b6f5e75970af21e17a1e56cec7c6289cd81f618a442b61c9461ba7151b",
+    "data/controlled_publications/bn-035/reader_manifest.json": "b1a64daa1c5bdd26b24544de0911bb687429cdab2cfd8382b5cc6dcd99ab81f3",
+    "data/controlled_publications/bn-035/source_evidence.json": "da0efa2033f4137eabe66bffeb1ea159c314c1c06fbc491989308ef08389b812",
+    "data/controlled_publications/bn-035/approval_evidence.json": "e84f49ebd12a31b604ada6c9cf3d7bbd2811604b3eea802df29b94ebcc76023c",
+    "data/controlled_publications/bn-035/publication_manifest.json": "3f13f4ec9d821c830a1fbf577b12efd32b626f386f178d6f144b4dc51a4c5271",
     "data/controlled_publications/bn-059/public_book.json": "12f430579299912a2db091a3f6f67f423774a38635c928c24daf8017a0e2e8eb",
     "data/controlled_publications/bn-059/reader_manifest.json": "f6e6fb365561b7f796fa52ad190d6d16a4f7c409c1b5e6ebb648f833b768a2da",
     "data/controlled_publications/bn-059/source_evidence.json": "1ae73ff80e4a9ded7b57617b2ce5a92c689b0e70f6f98f55cb3302fbfb00f082",
@@ -83,6 +93,11 @@
     "data/controlled_publications/the-adventures-of-sherlock-holmes/source_evidence.json": "a2d6c8c617d5d21238767685e7f430536d02459d579ffe37e09a9145066599b5",
     "data/controlled_publications/the-adventures-of-sherlock-holmes/approval_evidence.json": "3a4bb1af8591ce96ec9d1830750098d016122f9b78bbe9699b7213e43e4f9fea",
     "data/controlled_publications/the-adventures-of-sherlock-holmes/publication_manifest.json": "40da8f2bf212b75e7843bac0c132534424dc0161a537d2ed000c5245e6523387",
+    "data/controlled_publications/the-art-of-money-getting/public_book.json": "5c93a7dcd6ebb991b4cf97b3898091081e1632b70c7499511011b7ef3c5c26d1",
+    "data/controlled_publications/the-art-of-money-getting/reader_manifest.json": "3837eeaad4e421a65e2a2a4034407e4054c2183f6d2cbba33c1b7453bd9f3291",
+    "data/controlled_publications/the-art-of-money-getting/source_evidence.json": "1de370a2d070b6d45231c688d02cce0bc8a3e9a0f2ee734807e54befd55d1034",
+    "data/controlled_publications/the-art-of-money-getting/approval_evidence.json": "b01828f02b11eed2f6540fe0c7d36276f3a7eb0bd020fedbfe8779093aa3c627",
+    "data/controlled_publications/the-art-of-money-getting/publication_manifest.json": "459cec0b1f2931f8ff034c1c6a867de9581d4eb11f63d00af4ea570c39952522",
     "data/controlled_publications/the-bishop/public_book.json": "794334d5ae17091ddf01e863dff215674831e0ee3a250ad54553bc1d1f578791",
     "data/controlled_publications/the-bishop/reader_manifest.json": "42a7984591f6da7aec6d9fbb56fdd62ff813c1d38277a08a4594592da0efea4c",
     "data/controlled_publications/the-bishop/source_evidence.json": "051f49bdacb42dc4dae3476392b740e04d71664c95ab7413d71f361550bb1e7b",
@@ -143,6 +158,11 @@
     "data/controlled_publications/the-stolen-white-elephant/source_evidence.json": "3604c82d994c47602b76c49a0a1e8b028b704646eadb813481791a28d70dc4b6",
     "data/controlled_publications/the-stolen-white-elephant/approval_evidence.json": "3358f1172e13c791e50802ffd6a1898f15690aaa0a893afe9233e54d076a3f50",
     "data/controlled_publications/the-stolen-white-elephant/publication_manifest.json": "4a8efaeccf7858192911a8310ae831466d7e7c539d8dac2f31caf80253689af2",
+    "data/controlled_publications/the-student/public_book.json": "423028610602c72dbbad3b8efd709a407a168294da45ba71af1fd8a2fb61341d",
+    "data/controlled_publications/the-student/reader_manifest.json": "8fe807a4936a240950d242a8084a8e4e0049b35e85087991e7567d5f10f16812",
+    "data/controlled_publications/the-student/source_evidence.json": "0bc62a4920342e7fd0845770fbdf73e9693347c3172250c4b5aaff120d149700",
+    "data/controlled_publications/the-student/approval_evidence.json": "ffde2b1912d716d0be0a597abe02178582adba325933eb435a2caf198a739b13",
+    "data/controlled_publications/the-student/publication_manifest.json": "c0faf85bf515699eb8dd59dca7e816da640856a48d99a25d5991fa7fdef1a7a5",
     "data/controlled_publications/the-tell-tale-heart/public_book.json": "87c5058f9226fceb945c264f070629d99884fa54381c23342b091c953f30e6eb",
     "data/controlled_publications/the-tell-tale-heart/reader_manifest.json": "f50a47eb83a43e1dc763a8bf7310e4d7cfff7f828c8e8cb2b66b2c58d0e9357f",
     "data/controlled_publications/the-tell-tale-heart/source_evidence.json": "32c5f6aff23758db159fd3ecf5c13bf9201a6a689948d3a9fdf03fcadf09100f",
@@ -253,6 +273,23 @@
       }
     },
     {
+      "slug": "alices-adventures-in-wonderland",
+      "title": "Alice's Adventures in Wonderland",
+      "author": "Lewis Carroll",
+      "cover_url": "https://theearnalism.com/assets/books/alices-adventures-in-wonderland/alices-adventures-in-wonderland-front-15c92a33.webp",
+      "chapter_count": 12,
+      "source_display_name": "Project Gutenberg #11, Millennium Fulcrum Edition3.0, Carroll narrative, no illustrations",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/alices-adventures-in-wonderland",
+        "reader": "/reader/alices-adventures-in-wonderland",
+        "listener": "/listener/alices-adventures-in-wonderland"
+      }
+    },
+    {
       "slug": "an-occurrence-at-owl-creek-bridge",
       "title": "An Occurrence at Owl Creek Bridge",
       "author": "Ambrose Bierce",
@@ -267,6 +304,23 @@
         "book": "/book/an-occurrence-at-owl-creek-bridge",
         "reader": "/reader/an-occurrence-at-owl-creek-bridge",
         "listener": "/listener/an-occurrence-at-owl-creek-bridge"
+      }
+    },
+    {
+      "slug": "bn-035",
+      "title": "বড়দিদি",
+      "author": "শরৎচন্দ্র চট্টোপাধ্যায়",
+      "cover_url": "https://theearnalism.com/assets/books/bn-035/bn-035-front-fc455a18.png",
+      "chapter_count": 10,
+      "source_display_name": "Bengali Wikisource",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/bn-035",
+        "reader": "/reader/bn-035",
+        "listener": "/listener/bn-035"
       }
     },
     {
@@ -420,6 +474,23 @@
         "book": "/book/the-adventures-of-sherlock-holmes",
         "reader": "/reader/the-adventures-of-sherlock-holmes",
         "listener": "/listener/the-adventures-of-sherlock-holmes"
+      }
+    },
+    {
+      "slug": "the-art-of-money-getting",
+      "title": "The Art of Money Getting",
+      "author": "P. T. Barnum",
+      "cover_url": "https://theearnalism.com/assets/books/the-art-of-money-getting/the-art-of-money-getting-front-337639ad-800.webp",
+      "chapter_count": 1,
+      "source_display_name": "Project Gutenberg #8581 Barnum original English text only, no modern annotations",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-art-of-money-getting",
+        "reader": "/reader/the-art-of-money-getting",
+        "listener": "/listener/the-art-of-money-getting"
       }
     },
     {
@@ -624,6 +695,23 @@
         "book": "/book/the-stolen-white-elephant",
         "reader": "/reader/the-stolen-white-elephant",
         "listener": "/listener/the-stolen-white-elephant"
+      }
+    },
+    {
+      "slug": "the-student",
+      "title": "The Student",
+      "author": "Anton Chekhov",
+      "cover_url": "https://theearnalism.com/assets/books/the-student/front-7c5504f1.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-student",
+        "reader": "/reader/the-student",
+        "listener": "/listener/the-student"
       }
     },
     {

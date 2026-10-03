@@ -1,0 +1,135 @@
+{
+  "schema": "earnalism.inactive-cover-derivative-receipt.v1",
+  "slug": "the-student",
+  "created_on": "2026-10-03",
+  "state": "INACTIVE_NEW_CANDIDATE_PENDING_TWO_NEW_VISUAL_AND_PACKAGE_REVIEWS",
+  "method": "One bounded deterministic local mask-and-typeset layout-only remediation from verified owner originals; no image generation or paid call",
+  "originals": {
+    "front": {
+      "path": "/workspace/scratch/181ef0a25f05/student-acceptance-20261003/the-student-cover_url.png",
+      "sha256": "852b0ec54f013b2c24c63514e21d524ea7b42fc1151de16f5ecbc7aa624825db",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267888/earnalism/covers/front/the-student_front_1600x2400.png",
+      "bytes": 182766,
+      "width": 1600,
+      "height": 2400
+    },
+    "back": {
+      "path": "/workspace/scratch/181ef0a25f05/student-acceptance-20261003/the-student-back_cover_url.png",
+      "sha256": "c48024e8f29f6efdf32474199e4178a477bde4c6bd5624eb619bf911fdb9da25",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267889/earnalism/covers/back/the-student_back_1600x2400.png",
+      "bytes": 376249,
+      "width": 1600,
+      "height": 2400
+    }
+  },
+  "renders": {
+    "front": {
+      "path": "/workspace/scratch/181ef0a25f05/student-acceptance-20261003/candidate-front-run1.png",
+      "sha256": "3fcf62ed1bbb278156ebef7101cd5c1b988a754368529566a1e9d3cfffd5d2fd",
+      "bytes": 113556,
+      "width": 1600,
+      "height": 2400,
+      "changed_region_rectangles": [
+        [
+          215,
+          705,
+          1385,
+          1265
+        ],
+        [
+          180,
+          1830,
+          1420,
+          2140
+        ]
+      ],
+      "unchanged_pixels_outside_masks": "PASS"
+    },
+    "back": {
+      "path": "/workspace/scratch/181ef0a25f05/student-acceptance-20261003/candidate-back-run1.png",
+      "sha256": "343fa412c76a916c70f2f893465f9c337f1d464b326bb08fb5d2a08351762ab1",
+      "bytes": 171512,
+      "width": 1600,
+      "height": 2400,
+      "changed_region_rectangles": [
+        [
+          95,
+          70,
+          1505,
+          2160
+        ]
+      ],
+      "unchanged_pixels_outside_masks": "PASS"
+    }
+  },
+  "double_render_byte_identity": "PASS_RUN1_AND_SEPARATE_FINAL_VERIFICATION_RENDER",
+  "font_files": {
+    "serif": {
+      "path": "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
+      "sha256": "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab"
+    }
+  },
+  "copy": {
+    "title": "The Student",
+    "author": "Anton Chekhov",
+    "short_description": "A seminary student tells the story of Peter's denial of Christ — and watches an old woman weep as if it happened yesterday.",
+    "description": "In five pages, Chekhov achieves what theologians spend lifetimes on — the felt continuity of human suffering and consolation across nineteen centuries. Chekhov called it his favourite story."
+  },
+  "copy_basis": "Exact existing public_book metadata; no new text claims",
+  "originals_unchanged": true,
+  "previous_reviewed_derivatives": "Unavailable after restore; historical reviews do not apply to this new candidate",
+  "network_fetches": 0,
+  "paid_generation": 0,
+  "cover_display_approved": false,
+  "publication_approved": false,
+  "production_activation_authorized": false,
+  "audio_authorized": false,
+  "production_observed": false,
+  "owner_declaration": {
+    "path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+    "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "statement": "Owner states all front and back covers are designed by the owner."
+  },
+  "verification_renders": {
+    "front": {
+      "path": "/workspace/scratch/181ef0a25f05/student-acceptance-20261003/candidate-front-verification.png",
+      "sha256": "3fcf62ed1bbb278156ebef7101cd5c1b988a754368529566a1e9d3cfffd5d2fd",
+      "bytes": 113556,
+      "width": 1600,
+      "height": 2400,
+      "changed_region_rectangles": [
+        [
+          215,
+          705,
+          1385,
+          1265
+        ],
+        [
+          180,
+          1830,
+          1420,
+          2140
+        ]
+      ],
+      "unchanged_pixels_outside_masks": "PASS"
+    },
+    "back": {
+      "path": "/workspace/scratch/181ef0a25f05/student-acceptance-20261003/candidate-back-verification.png",
+      "sha256": "343fa412c76a916c70f2f893465f9c337f1d464b326bb08fb5d2a08351762ab1",
+      "bytes": 171512,
+      "width": 1600,
+      "height": 2400,
+      "changed_region_rectangles": [
+        [
+          95,
+          70,
+          1505,
+          2160
+        ]
+      ],
+      "unchanged_pixels_outside_masks": "PASS"
+    }
+  },
+  "earlier_run2_artifact_status": "BACK_RUN2_TRUNCATED_AFTER_ORIGINAL_GENERATOR_COMPLETION_DO_NOT_USE",
+  "exact_reviewed_candidate_frozen": true
+}
