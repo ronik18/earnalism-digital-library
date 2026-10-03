@@ -1,0 +1,13 @@
+{
+  "schema": "earnalism.conditional52.fixture-proposal-validation.v1",
+  "canonical_mutations": 0,
+  "git_apply_check": "PASS",
+  "four_file_syntax": "PASS",
+  "unchanged_historical_jest_tests": {"passed": 5, "conditional_release_tests_not_run": 2},
+  "unchanged_copyright_tests": {"passed": 4},
+  "brand_preintegration": {"unchanged_manifest_checks_passed": 5, "new52_inventory_gate": "EXPECTED_FAIL_ON_REAL_EXISTING33"},
+  "new52_runtime_release_tests": "PENDING_ROOT_EXACT_INTEGRATION_AND_REGENERATED_PROJECTION",
+  "browser_or_production_observation": "NOT_PERFORMED",
+  "historical_reports_modified": false,
+  "patch_sha256": "85dcab2ae1b6807df1cc100abd69d6bf9e1e81793b49648c121de761e4dea89a"
+}

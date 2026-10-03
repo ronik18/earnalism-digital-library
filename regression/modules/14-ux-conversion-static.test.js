@@ -1771,19 +1771,32 @@ describe("UX conversion static signals", () => {
     expect(bookHtml).not.toContain("Preview every book before you pay");
   });
 
-  test("built held Selfish Giant snapshots preserve unavailable access when build output exists", () => {
-    for (const [slug, title] of [["the-selfish-giant", "The Selfish Giant"]]) {
-      for (const kind of ["book", "reader", "listener"]) {
-        const html = readOptional(`frontend/build/${kind}/${slug}/index.html`);
-        if (!html) {
-          expect(staticSnapshotGenerator).toContain("unavailablePages(safe.unavailableRoutes)");
-          continue;
-        }
-        expect(html).toContain(`<title>${title} unavailable | The Earnalism</title>`);
-        expect(metaContent(html, "name", "robots")).toBe("noindex,nofollow");
-        expect(canonicalHref(html)).toBe(`https://theearnalism.com/book/${slug}`);
-        expect(html).toContain("No book text, reader session, or audio is available from this page.");
-        expect(html).not.toMatch(/reader-ready edition|Read the 3-page preview|"@type"\s*:\s*"(?:Book|Audiobook)"|<(?:audio|video|iframe|button)\b/i);
+  test("retired Selfish Giant unavailable overrides cannot shadow the current release", () => {
+    const heldRoutes = readOptional("frontend/scripts/unavailable-title-routes.mjs");
+    expect(heldRoutes).not.toContain('slug: "the-selfish-giant"');
+    expect(heldRoutes).toContain("Historical unavailable routes must be reconciled before activating their title release.");
+  });
+
+  test("built released Selfish Giant snapshots enforce Reader access and disabled audio", () => {
+    const slug = "the-selfish-giant";
+    for (const kind of ["book", "reader", "listener"]) {
+      const html = readOptional(`frontend/build/${kind}/${slug}/index.html`);
+      if (!html) {
+        expect(staticSnapshotGenerator).toContain("publicationPages(safe.books)");
+        continue;
+      }
+      expect(canonicalHref(html)).toBe(`https://theearnalism.com/book/${slug}`);
+      expect(html).not.toContain("The Selfish Giant unavailable | The Earnalism");
+      expect(html).not.toContain("No book text, reader session, or audio is available from this page.");
+      expect(html).not.toMatch(/<(?:audio|video|iframe)\b|"@type"\s*:\s*"Audiobook"/i);
+      if (kind === "book") {
+        expect(metaContent(html, "name", "robots")).toBe("index,follow");
+        expect(html).toContain("The Selfish Giant by Oscar Wilde");
+        expect(html).toContain("Read the 3-page preview");
+        expect(html).toContain('"@type":"Book"');
+      } else {
+        expect(metaContent(html, "name", "robots")).toBe("noindex,follow");
+        expect(html).toContain(kind === "reader" ? "Read The Selfish Giant" : "Listening is not available for The Selfish Giant in the current release.");
       }
     }
   });

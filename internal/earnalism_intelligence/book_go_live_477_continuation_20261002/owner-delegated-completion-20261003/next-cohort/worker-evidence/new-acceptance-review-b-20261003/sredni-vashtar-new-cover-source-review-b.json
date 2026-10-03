@@ -1,0 +1,108 @@
+{
+  "schema": "earnalism.independent.exact-cover-and-source-review.v1",
+  "reviewer": "independent_reviewer_B",
+  "reviewed_on": "2026-10-03",
+  "slug": "sredni-vashtar",
+  "disposition": "PASS_VISUAL_DELIVERY_PROVENANCE_AND_EXISTING_COMPLETE_TEXT",
+  "scope": "Independent actual new PNG/WebP visual review and derivative/source provenance review only; no acceptance, canonical package mutation, production observation or release.",
+  "assets": {
+    "front": {
+      "original": {
+        "file": "/workspace/scratch/181ef0a25f05/sredni-preparation-20261003/front-cover-current.png",
+        "sha256": "28acd2dadefe6b665f06c992fa86543814245a825a1a8c6e225263fc240829ac",
+        "bytes": 185325
+      },
+      "layout": {
+        "file": "/workspace/scratch/181ef0a25f05/sredni-preparation-20261003/candidate-front-run1.png",
+        "sha256": "d6e93dc6a19f8901d69c66aadeaf630088a6235305f0f3799476153a08d3beae",
+        "bytes": 113823
+      },
+      "delivery": {
+        "file": "/workspace/scratch/181ef0a25f05/sredni-preparation-20261003/delivery-front.webp",
+        "sha256": "d946f65fa5d2c843b7d572a3374435c5fe52a3308cf620395e49fb36e0b6cb55",
+        "bytes": 20932
+      }
+    },
+    "back": {
+      "original": {
+        "file": "/workspace/scratch/181ef0a25f05/sredni-preparation-20261003/back-cover-current.png",
+        "sha256": "e74da10d4d84a8752ee9ed630ebc560635a0f0247ea65e7dd36e27eff782b01c",
+        "bytes": 378809
+      },
+      "layout": {
+        "file": "/workspace/scratch/181ef0a25f05/sredni-preparation-20261003/candidate-back-run1.png",
+        "sha256": "24ca0f1813af6cf4d989a2393fbd3671e4b2426c620bf65249a4693a494650c3",
+        "bytes": 268201
+      },
+      "delivery": {
+        "file": "/workspace/scratch/181ef0a25f05/sredni-preparation-20261003/delivery-back.webp",
+        "sha256": "c532935242fc0da1ab7a4526752dc1b1392a2f0cf17e3616d25cff644ee82351",
+        "bytes": 65832
+      }
+    }
+  },
+  "evidence_files": {
+    "candidate-cover-receipt.json": "bfae2b19d7f41d2f63ae783bb13d09864716561540009908d9b4489a29ed4bf4",
+    "delivery-receipt.json": "f3deee99367ed73958ca7dfd1ea7969a230f23e018cd61c03b01672556acc1db",
+    "render.py": "c8303b10cd48a38e0d180d13eb1d02e204dac0952f41d36993c3a84791c962d5",
+    "prior-cover_http_receipts.json": "a9e142b01850d4f9d1227657882e7479ceb108f341bf2db3c6ad5d4c7cd6ae51",
+    "prior-cover_review.json": "a8c56359ba9217cb626c48bb3e914b4398ad41cdabc92802a4b7c7fec4e9f704",
+    "proposed-cover-binding.json": "f788789885abe29c15338d7fa74f5024c7f62f8def0c7c8aa786b49e9730385b"
+  },
+  "actual_visual_inspection": {
+    "method": "Actual decoded front/back delivery WebPs inspected with view_image; source layout PNGs decoded and derivative lineage verified.",
+    "title_author": "PASS legible deterministic overlays without decoration crossing lettering",
+    "copy": "PASS exact complete selected-source opening excerpt, readable and no midword cutoff",
+    "status_badge": "PASS permanent edition label does not claim LIVE or observed release",
+    "footer": "PASS intact Earnalism identity and complete footer, no clipped text",
+    "graphical_art": "PASS existing owner graphical circle/line artwork retained outside masks; not typography-only",
+    "delivery": "PASS fully decoded 800x1200 WebPs with fronts below80000 and backs below180000 bytes"
+  },
+  "derivative_lineage": {
+    "original_bytes_exact_verified": "PASS",
+    "rgb_pixels_outside_recorded_masks_unchanged": "PASS",
+    "paid_generation": 0,
+    "new_art": false,
+    "owner_declaration": {
+      "path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+      "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+      "recorded_statement": "Owner states all front and back covers are designed by the owner."
+    },
+    "category_for_prospective_acceptance": "approved_legacy_graphical_cover_with_deterministic_overlay",
+    "policy_sha256": "db09fc34a416d99c2ad3283ba320e6198cc42007f6fb19c8f78468466a714f32",
+    "fallback_literal_compliance_claim": false,
+    "generic_motif_disposition": "Existing generic collection motif is disclosed; no unlicensed art, false synopsis or title interference remains in these exact derivative bytes. No story-specific art or human acceptance invented.",
+    "double_render_byte_identity": "PASS"
+  },
+  "existing_text_review": {
+    "disposition": "PASS_REUSE_UNCHANGED_COMPLETE_SELECTED_STORY",
+    "artifact": "internal/legal/catalogue_clearance_20261002/english/current_whole_work_boundary_verification.json",
+    "artifact_sha256": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e",
+    "raw_source_sha256": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
+    "reader_aggregate_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+    "ordered_chapter_hashes": {
+      "chapter-001": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06"
+    },
+    "complete_selected_narrative": "PASS",
+    "boundary_before_first": "it. Old gentlemen with bad memories said it reminded them of Disraeli. It was Eleanor's friend, Gertrude Ilpton, who drew her attention to Arlington's newest outbreak. Eleanor in these days avoided the morning papers. \"It's very modern, and I suppose very clever,\" she observed. \"Of course it's clever,\" said Gertrude; \"all Lady Isobel's sayings are clever, and luckily they bear repeating.\" \"Are you sure it's one of her sayings?\" asked Eleanor. \"My dear, I've heard her say it dozens of times.\" \"So that is where he gets his humour,\" said Eleanor slowly, and the hard lines deepened round her mouth. The death of Eleanor Stringham from an overdose of chloral, occurring at the end of a rather uneventful season, excited a certain amount of unobtrusive speculation. Clovis, who perhaps exaggerated the importance of curry in the home, hinted at domestic sorrow. And of course Arlington never knew. It was the tragedy of his life that he should miss the fullest effect of his jesting. SREDNI VASHTAR ",
+    "boundary_after_last": " ADRIAN A CHAPTER IN ACCLIMATIZATION His baptismal register spoke of him pessimistically as John Henry, but he had left that behind with the other maladies of infancy, and his friends knew him under the front-name of Adrian. His mother lived in Bethnal Green, which was not altogether his fault; one can discourage too much history in one's family, but one cannot always prevent geography. And, after all, the Bethnal Green habit has this virtue--that it is seldom transmitted to the next generation. Adrian lived in a roomlet which came under the auspicious constellation of W. How he lived was to a great extent a mystery even to himself; his struggle for existence probably coincided in many material details with the rather dramatic accounts he gave of it to sympathetic acquaintances. All that is definitely known is that he now and then emerged from the struggle to dine at the Ritz or Carlton, correctly garbed and with a correctly critical appetite. On these occasions he was usually the guest of Lucas Croyden, an amiable worldling, who had three thousand a year and a taste for introducing impossible people to irreproachable cookery. Like most men who combine three thousand a year with an",
+    "internal_gaps": [],
+    "anthology_complete_claim": false,
+    "historical_containment_limitation_preserved": true,
+    "illustrations_translation_editorial_imported": false,
+    "fresh_source_fetch": false
+  },
+  "unresolved_current_package_paperwork": [
+    "No prospective component acceptance yet; require two actual independent new receipts and new exact package binding review.",
+    "Correct final delivered cover_dimensions to800x1200; preserve1600x2400 original/layout metadata separately.",
+    "Remove current active audio metadata; preserve historical audio evidence in archives and keep false flags/empty exposure.",
+    "Prospective full package not prepared yet.",
+    "Replace old two-year public prognosis with exact source five-year opening paragraph.",
+    "Normalize graphical fallback wording to truthful approved owner legacy graphical art classification; retain prior generic-theme objection."
+  ],
+  "production_observed": false,
+  "audio_authorized": false,
+  "acceptance_created": false,
+  "registry_allowlist_mutated": false,
+  "next_action": "After other independent PASS and root authorization, create actual prospective acceptance using existing rights evidence and rebind exact corrected package; integration remains serialized."
+}

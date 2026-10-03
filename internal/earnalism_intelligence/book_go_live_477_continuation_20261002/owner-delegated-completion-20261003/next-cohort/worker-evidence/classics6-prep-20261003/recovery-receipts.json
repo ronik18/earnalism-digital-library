@@ -1,0 +1,158 @@
+[
+  {
+    "slug": "the-time-machine",
+    "kind": "back_cover_url",
+    "persisted_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566887/earnalism/covers/back/back_cover_d4cb4472-7e0a-4bad-ab89-05f7d7ace821.png",
+    "file": "/workspace/scratch/181ef0a25f05/classics6-prep-20261003/the-time-machine/assets/original-back.png",
+    "sha256": "982e280d4e7a9c7859ac9f071fb20dac6f4fe7f382e1a724d96bea036af2f015",
+    "bytes": 2481452,
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "status": 200
+  },
+  {
+    "slug": "frankenstein",
+    "kind": "cover_url",
+    "persisted_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566127/earnalism/covers/front/cover_3f8a6bb7-258b-4473-b14e-c68d2df58b29.png",
+    "file": "/workspace/scratch/181ef0a25f05/classics6-prep-20261003/frankenstein/assets/original-front.png",
+    "sha256": "a7a5d9825545a40c1c440bccd20ee0fb2b3d262e8347ca8960705cdf66fc5339",
+    "bytes": 2796541,
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "status": 200
+  },
+  {
+    "slug": "the-time-machine",
+    "kind": "cover_url",
+    "persisted_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566866/earnalism/covers/front/cover_d4cb4472-7e0a-4bad-ab89-05f7d7ace821.png",
+    "file": "/workspace/scratch/181ef0a25f05/classics6-prep-20261003/the-time-machine/assets/original-front.png",
+    "sha256": "5eb21ec7c4e3aa4a75c1d3e51de7f78f172850b450d80cc06ca7ebe54f5f9997",
+    "bytes": 3526546,
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "status": 200
+  },
+  {
+    "slug": "frankenstein",
+    "kind": "back_cover_url",
+    "persisted_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566151/earnalism/covers/back/back_cover_3f8a6bb7-258b-4473-b14e-c68d2df58b29.png",
+    "file": "/workspace/scratch/181ef0a25f05/classics6-prep-20261003/frankenstein/assets/original-back.png",
+    "sha256": "367406570864a5cce196cedad3c5564f36c66c565a95afa370c8443bf38c63b6",
+    "bytes": 2303465,
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "status": 200
+  },
+  {
+    "slug": "the-great-gatsby",
+    "kind": "cover_url",
+    "persisted_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779565318/earnalism/covers/front/cover_82440320-0910-4dfe-97de-540153139e00.png",
+    "file": "/workspace/scratch/181ef0a25f05/classics6-prep-20261003/the-great-gatsby/assets/original-front.png",
+    "sha256": "8d98a278f5e09cdbfcb03c064424c6c0f221c3fc230be24e7b502affb915bb2a",
+    "bytes": 2521135,
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "status": 200
+  },
+  {
+    "slug": "the-great-gatsby",
+    "kind": "back_cover_url",
+    "persisted_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779565331/earnalism/covers/back/back_cover_82440320-0910-4dfe-97de-540153139e00.png",
+    "file": "/workspace/scratch/181ef0a25f05/classics6-prep-20261003/the-great-gatsby/assets/original-back.png",
+    "sha256": "b2696f4c8247fdc0bbb25a277e73a6eee757e0fa7e9083d176e0a98a7744c402",
+    "bytes": 1994760,
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "status": 200
+  },
+  {
+    "slug": "pride-and-prejudice",
+    "kind": "back_cover_url",
+    "persisted_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780293039/earnalism/covers/back/back_cover_e54439f8-2bfa-4d96-a4d1-bc7397e76f44.png",
+    "file": "/workspace/scratch/181ef0a25f05/classics6-prep-20261003/pride-and-prejudice/assets/original-back.png",
+    "sha256": "fbb0d3c37fcaeec50ae49921b5bd9d46ab44189f7ebbd2a93f26c1f47798faa8",
+    "bytes": 3170484,
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "status": 200
+  },
+  {
+    "slug": "the-secret-garden",
+    "kind": "cover_url",
+    "persisted_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779947920/earnalism/covers/front/cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c.png",
+    "file": "/workspace/scratch/181ef0a25f05/classics6-prep-20261003/the-secret-garden/assets/original-front.png",
+    "sha256": "39799997d58307c85b83908d0f5121e9b67e496158ae8c77eef5402e6e20b577",
+    "bytes": 3516819,
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "status": 200
+  },
+  {
+    "slug": "the-secret-garden",
+    "kind": "back_cover_url",
+    "persisted_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779947939/earnalism/covers/back/back_cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c.png",
+    "file": "/workspace/scratch/181ef0a25f05/classics6-prep-20261003/the-secret-garden/assets/original-back.png",
+    "sha256": "dedb7dcca9cef92470b93a54b9e46f92b68c48e901a7523bec7fe71bbc43f396",
+    "bytes": 3382301,
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "status": 200
+  },
+  {
+    "slug": "great-expectations",
+    "kind": "back_cover_url",
+    "persisted_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780292677/earnalism/covers/back/back_cover_ff32fe6a-9f1a-402b-935d-c5dff918b8a0.png",
+    "file": "/workspace/scratch/181ef0a25f05/classics6-prep-20261003/great-expectations/assets/original-back.png",
+    "sha256": "6bc57298528f3b0addbab1e8f0cdc1bd570358fd1d472d508ea430e11397da4a",
+    "bytes": 3302955,
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "status": 200
+  },
+  {
+    "slug": "pride-and-prejudice",
+    "kind": "cover_url",
+    "persisted_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780293034/earnalism/covers/front/cover_e54439f8-2bfa-4d96-a4d1-bc7397e76f44.png",
+    "file": "/workspace/scratch/181ef0a25f05/classics6-prep-20261003/pride-and-prejudice/assets/original-front.png",
+    "sha256": "480db270e262b166bdd91ffd5dc1df03c2bd63d79e632634a1dc0c419be1dfc9",
+    "bytes": 3014363,
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "status": 200
+  },
+  {
+    "slug": "great-expectations",
+    "kind": "cover_url",
+    "persisted_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780292673/earnalism/covers/front/cover_ff32fe6a-9f1a-402b-935d-c5dff918b8a0.png",
+    "file": "/workspace/scratch/181ef0a25f05/classics6-prep-20261003/great-expectations/assets/original-front.png",
+    "sha256": "faeb4440529f863bee85f04342db1da56bdfa209c0e642b9b6ff9d552df8013a",
+    "bytes": 3164717,
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "status": 200
+  }
+]

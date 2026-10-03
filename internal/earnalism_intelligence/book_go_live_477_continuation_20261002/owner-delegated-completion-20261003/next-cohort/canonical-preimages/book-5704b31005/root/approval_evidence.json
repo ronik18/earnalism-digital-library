@@ -1,0 +1,23 @@
+{
+  "slug": "book-5704b31005",
+  "approved_to_publish": true,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "OWNER_DELEGATED_AUTOMATED_IN_EDITION_BOUND_TEXT_READER_ONLY_COVER_DEFERRED",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": true,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "rights_tier": "A",
+    "verification_status": "approved",
+    "qa_status": "QA_PASSED",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "source_hash": "57835bba9d270aa0c3f31ee280b2ae789f0528be1adfa29815a45826e23e466b",
+  "content_hash": "c9e4ed3927535c11a5d1d5a4729f0c8a1371952a33a6e0e6d36514b3d249b089",
+  "publication_authorization_sha256": "8492830be5d4cec1996381e2d94cf25353bd75f92a843524b26d535356c74218"
+}

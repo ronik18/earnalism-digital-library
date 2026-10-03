@@ -1,0 +1,9 @@
+{
+  "slug": "the-principles-of-scientific-management",
+  "status": "DROPPED_ACTIVE_PLAN_ONE_BOUNDED_REPAIR_FAILURE",
+  "reason": "('the-principles-of-scientific-management', 'front', 106180, 'DELIVERY_BUDGET_FAILED_ONE_ATTEMPT_NO_RETRY')",
+  "attempts": 1,
+  "source_originals_decisions_preserved": true,
+  "paid_calls": 0,
+  "production_mutations": false
+}

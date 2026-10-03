@@ -1,0 +1,166 @@
+{
+  "schema": "earnalism.reader-source-order-only-remedy.v1",
+  "slug": "lokrahasya",
+  "package_version": "20261003-source-page-order-v2",
+  "performed_at": "2026-10-03T05:37:29.874988+00:00",
+  "attempt": 1,
+  "status": "PROPOSED_PENDING_TWO_INDEPENDENT_EXACT_ORDER_BINDING_REVIEWS",
+  "prior_proposal_inventory_canonical_sha256": "e3e0963dac9774c1e212aa3e50cf743c6a46161a81c67f754857c9643e3a4599",
+  "prior_content_hash": "c6ed32e15a45ecdf03b2a20ffbea427d89a4c5992f930b00358f563019522943",
+  "new_content_hash": "a7ff73c827d016dc6faafca1f3151c0ebf565187c1ff8b6a924c461cce129e20",
+  "source_hash_unchanged": "2c536fb46b7a52f42f63c702effcd971d97059c56be4a6b5d7df642b4a8cddc1",
+  "owner_basis_receipt_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+  "source_page_order_review_sha256": "8732ab1085ff2ccbcc12e570bb4dcd0b242b85a96290d7e15b83185acddbcf4f",
+  "source_page_order_review_path": "/workspace/scratch/181ef0a25f05/new-acceptance-review-a/bengali-source-order-review-a-v1.json",
+  "mapping": [
+    {
+      "id": "chapter-006",
+      "new_order": 1,
+      "new_title": "ব্যাঘ্রাচার্য্য বৃহল্লাঙ্গুল",
+      "prior_order": 6,
+      "prior_title": "Chapter 6. ব্যাঘ্রাচার্য্য বৃহল্লাঙ্গুল",
+      "body_sha256": "3ad29d39908abc6655d06f7e3bc0fedec9a4702f7ae3de30fba496a29410f95f",
+      "source_sha256": "260381cc03347b40db669d4de39b44e36807010b662b4ca9e02e0c5ae4100711"
+    },
+    {
+      "id": "chapter-008",
+      "new_order": 2,
+      "new_title": "ইংরাজস্তোত্র",
+      "prior_order": 8,
+      "prior_title": "Chapter 8. ইংরাজস্তোত্র",
+      "body_sha256": "5628f612b22513c49148b53b7dc52aa26b1e2c67f29bba0585af989cbe233e5d",
+      "source_sha256": "260381cc03347b40db669d4de39b44e36807010b662b4ca9e02e0c5ae4100711"
+    },
+    {
+      "id": "chapter-001",
+      "new_order": 3,
+      "new_title": "বাবু",
+      "prior_order": 1,
+      "prior_title": "Chapter 1. বাবু",
+      "body_sha256": "729a0ec8c88e8cb5de85698b032b40886a6ac47f0bb08b6b980682744377c1ef",
+      "source_sha256": "260381cc03347b40db669d4de39b44e36807010b662b4ca9e02e0c5ae4100711"
+    },
+    {
+      "id": "chapter-002",
+      "new_order": 4,
+      "new_title": "গর্দ্দভ",
+      "prior_order": 2,
+      "prior_title": "Chapter 2. গর্দ্দভ",
+      "body_sha256": "619ab8c5384adbfa816179f9d8a0776bb13d1f08c555a25215813235cd4e46f7",
+      "source_sha256": "260381cc03347b40db669d4de39b44e36807010b662b4ca9e02e0c5ae4100711"
+    },
+    {
+      "id": "chapter-007",
+      "new_order": 5,
+      "new_title": "দাম্পত্য দণ্ডবিধির আইন",
+      "prior_order": 7,
+      "prior_title": "Chapter 7. দাম্পত্য দণ্ডবিধির আইন",
+      "body_sha256": "32c76d54e0cf04f36984a029b6e0a17dbfcc27db6dd69acf9a888be8e05db422",
+      "source_sha256": "260381cc03347b40db669d4de39b44e36807010b662b4ca9e02e0c5ae4100711"
+    },
+    {
+      "id": "chapter-011",
+      "new_order": 6,
+      "new_title": "বসন্ত এবং বিরহ",
+      "prior_order": 11,
+      "prior_title": "Chapter 11. বসন্ত এবং বিরহ",
+      "body_sha256": "93be984a04423686dd6ed15f0721120048c3bef211b0c95a1bf33696f469a76c",
+      "source_sha256": "260381cc03347b40db669d4de39b44e36807010b662b4ca9e02e0c5ae4100711"
+    },
+    {
+      "id": "chapter-004",
+      "new_order": 7,
+      "new_title": "সুবর্ণগোলক",
+      "prior_order": 4,
+      "prior_title": "Chapter 4. সুবর্ণগোলক",
+      "body_sha256": "07373c51e0df6d2e5222d038c99b56f696c50b11c6667b17a3cea1c6d940476c",
+      "source_sha256": "260381cc03347b40db669d4de39b44e36807010b662b4ca9e02e0c5ae4100711"
+    },
+    {
+      "id": "chapter-009",
+      "new_order": 8,
+      "new_title": "রামায়ণের সমালোচন",
+      "prior_order": 9,
+      "prior_title": "Chapter 9. রামায়ণের সমালোচন",
+      "body_sha256": "deb0cd9746bb517cc7a206302b7331bfdbe255474b76738920672db59755013e",
+      "source_sha256": "260381cc03347b40db669d4de39b44e36807010b662b4ca9e02e0c5ae4100711"
+    },
+    {
+      "id": "chapter-010",
+      "new_order": 9,
+      "new_title": "বর্ষ সমালোচন",
+      "prior_order": 10,
+      "prior_title": "Chapter 10. বর্ষ সমালোচন",
+      "body_sha256": "d70f464f1994a2227b944d59df831eca9b2ee5c4161b66d624c26613ab487f3d",
+      "source_sha256": "260381cc03347b40db669d4de39b44e36807010b662b4ca9e02e0c5ae4100711"
+    },
+    {
+      "id": "chapter-012",
+      "new_order": 10,
+      "new_title": "কোন “স্পেশিয়ালের” পত্র",
+      "prior_order": 12,
+      "prior_title": "Chapter 12. কোন “স্পেশিয়ালের” পত্র",
+      "body_sha256": "c46a3bb7a8bcdb19f215410bbfce96e779d756dc9406a817fec932b824f478c9",
+      "source_sha256": "260381cc03347b40db669d4de39b44e36807010b662b4ca9e02e0c5ae4100711"
+    },
+    {
+      "id": "chapter-015",
+      "new_order": 11,
+      "new_title": "BRANSONISM",
+      "prior_order": 15,
+      "prior_title": "Chapter 15. BRANSONISM",
+      "body_sha256": "80bacae9079c0f1c73a888b665c28760ebc6d8e5b969d24f54b26400aa7afd3e",
+      "source_sha256": "260381cc03347b40db669d4de39b44e36807010b662b4ca9e02e0c5ae4100711"
+    },
+    {
+      "id": "chapter-013",
+      "new_order": 12,
+      "new_title": "হনুমদ্বাবুসংবাদ",
+      "prior_order": 13,
+      "prior_title": "Chapter 13. হনুমদ্বাবুসংবাদ",
+      "body_sha256": "0c3c9292ecaf155a50c70d36adbe07fcd1073ba169bf54efd6ff63eae925edab",
+      "source_sha256": "260381cc03347b40db669d4de39b44e36807010b662b4ca9e02e0c5ae4100711"
+    },
+    {
+      "id": "chapter-005",
+      "new_order": 13,
+      "new_title": "গ্রাম্য কথা",
+      "prior_order": 5,
+      "prior_title": "Chapter 5. গ্রাম্য কথা",
+      "body_sha256": "e908dc63447c4191d6edfee2787858a8fc052758e7226b00d40aed06770b1c90",
+      "source_sha256": "260381cc03347b40db669d4de39b44e36807010b662b4ca9e02e0c5ae4100711"
+    },
+    {
+      "id": "chapter-003",
+      "new_order": 14,
+      "new_title": "বাঙ্গালা সাহিত্যের আদর",
+      "prior_order": 3,
+      "prior_title": "Chapter 3. বাঙ্গালা সাহিত্যের আদর",
+      "body_sha256": "39dd197a1ccf93e36781c6ed5dc374b4f97514222fadf665e8f02e564189e4be",
+      "source_sha256": "260381cc03347b40db669d4de39b44e36807010b662b4ca9e02e0c5ae4100711"
+    },
+    {
+      "id": "chapter-014",
+      "new_order": 15,
+      "new_title": "NEW YEAR’S DAY",
+      "prior_order": 14,
+      "prior_title": "Chapter 14. NEW YEAR’S DAY",
+      "body_sha256": "ae245e65f7679a7423fd11e437661cbfdf3d7ace87c5cab4d40c6e20a8d0ba28",
+      "source_sha256": "260381cc03347b40db669d4de39b44e36807010b662b4ca9e02e0c5ae4100711"
+    },
+    {
+      "id": "chapter-016",
+      "new_order": 16,
+      "new_title": "পাঠভেদ",
+      "prior_order": 16,
+      "prior_title": "Chapter 16. পাঠভেদ",
+      "body_sha256": "8a596d46b799d3896bc9b5b55b50fbdccd52baf575aafaa21f9f5ad2278344a8",
+      "source_sha256": "260381cc03347b40db669d4de39b44e36807010b662b4ca9e02e0c5ae4100711"
+    }
+  ],
+  "raw_source_body_rights_facts_cover_assets_unchanged": true,
+  "artwork_repairs": 0,
+  "fetches": 0,
+  "actual_acceptance_or_production_mutations": false,
+  "historical_sync_preserved_and_audio_disabled": true
+}

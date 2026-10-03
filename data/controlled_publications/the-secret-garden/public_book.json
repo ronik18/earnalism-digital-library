@@ -7,14 +7,14 @@
   "category_slug": "children-classics",
   "short_description": "A children’s classic about healing, friendship, nature, and renewal.",
   "description": "This cleaned text-only public-domain edition is prepared for structured digital reading on Earnalism.",
-  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779947920/earnalism/covers/front/cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c.png",
-  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779947920/earnalism/covers/front/cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c.png",
-  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779947920/earnalism/covers/front/cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c.png",
-  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779947920/earnalism/covers/front/cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c.png",
-  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779947939/earnalism/covers/back/back_cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c.png",
-  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779947939/earnalism/covers/back/back_cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c.png",
-  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779947939/earnalism/covers/back/back_cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c.png",
-  "cover_status": "CLOUDINARY_ASSIGNED",
+  "cover_url": "https://theearnalism.com/assets/books/the-secret-garden/the-secret-garden-front-39799997.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-secret-garden/the-secret-garden-front-39799997.webp",
+  "coverImage": "https://theearnalism.com/assets/books/the-secret-garden/the-secret-garden-front-39799997.webp",
+  "cover_image": "https://theearnalism.com/assets/books/the-secret-garden/the-secret-garden-front-39799997.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-secret-garden/the-secret-garden-back-dedb7dcc.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-secret-garden/the-secret-garden-back-dedb7dcc.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/the-secret-garden/the-secret-garden-back-dedb7dcc.webp",
+  "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "348 min",
   "formats": [
@@ -446,14 +446,14 @@
   "source_hash": "6b0bb5fbd0c4e873d2d22028da9d753cf3977d5f70ac58221556b28060badbf5",
   "content_hash": "027d79093c1a71f7824fb7e21ecfaea67e5f46eb47f2e6c5358a44a34382404a",
   "provenance_hash": "b2d4bcc9e3e66ca0a445dea3a7aaf91e89b6327a262096a1233b7e65aef747ee",
-  "rights_basis": "Public domain in India based on life plus 60 years; public domain in the U.S. based on original publication before 1931.",
+  "rights_basis": "Exact India text/edition rights are preserved from the archived predecessor and unchanged source/chapter/license records. Ronik Basak directly provided the owner-held copyright and publication provenance for the exact owner-created cover components; two independent passing source/art preparations bind the reviewed derivatives and deliveries. Prospective automated acceptance supersedes earlier procedural cover deferral for these components only. No human approval, other source/edition rights, unknown original construction method, audio grant or production observation inferred.",
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
   "approved_to_publish": true,
   "publication_status": "LIVE_APPROVED",
   "readerStatus": "reader_ready",
-  "publicationStatus": "live",
+  "publicationStatus": "published",
   "isPublic": true,
   "isLive": true,
   "showInPublicLibrary": true,
@@ -472,5 +472,23 @@
   "audiobook": {},
   "audiobook_assets_updated_at": "",
   "created_at": "2026-07-03T20:07:48Z",
-  "updated_at": "2026-07-03T20:07:48Z"
+  "updated_at": "2026-07-03T20:07:48Z",
+  "cover_category": "LEGACY_OWNER_DESIGNED_GRAPHICAL_COVER_DELIVERY_DERIVATIVE",
+  "cover_dimensions": {
+    "front": [
+      600,
+      900
+    ],
+    "back": [
+      800,
+      1200
+    ]
+  },
+  "audiobook_use_approved": false,
+  "cover_provenance_sha256": "5f14249b3307f606c2f00517c55fb18c232fa50dbee1fd888c5508dc76293977",
+  "publication_authorization_sha256": "26fec4c562c0c24f4c4be3d9e3b7df8c41defc32feb8a934980efe7b0167046d",
+  "reader_enabled": true,
+  "preview_enabled": true,
+  "release_gate_status": "READY_BEHIND_SERIALIZED_GLOBAL_RELEASE_GATE",
+  "production_observed": false
 }

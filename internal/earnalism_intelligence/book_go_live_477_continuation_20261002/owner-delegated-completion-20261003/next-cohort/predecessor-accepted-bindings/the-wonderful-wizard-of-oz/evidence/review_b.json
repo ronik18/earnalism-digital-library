@@ -1,0 +1,50 @@
+{
+  "slug": "the-wonderful-wizard-of-oz",
+  "reviewer": "Independent Codex reviewer B",
+  "reviewed_at": "2026-10-03T05:54:21.634503+00:00",
+  "disposition": "PASS_FRESH_PREPARATION_UNACCEPTED_NOT_RELEASED",
+  "decision_raw_sha256": "2f3f4d19c6920fa90f9523833e4faa180f9b9a7bb1aa25e0d4214eb20abdf035",
+  "decision_components": {
+    "public_book": "cb40f95dd344ca07bf9ae2ddbe611f8acb1fb284bedc9dab1678402d04ba615b",
+    "reader_manifest": "2323b65af075000645cd7ac0f3f841f4583ac1407ddefd849a1cbc7b06795d71",
+    "source_evidence": "7ec444ed90caa41fb950757933ee7399ef94fceab855bdd8c3e52a6806358ec5",
+    "approval_evidence": "062f8f43299a2adea910b6ece3b202527978e464992acefbe811d9df877498eb",
+    "checksum_manifest": "a487ccb0753145074a83e502162b4e4b40d8d2d1ce7aeefd5d46d5d148e2b9e7",
+    "publication_manifest": "d0cb9fb0882363748b17bc16c2e701d3a8d77d15693bfa955b3b7f10875459bb",
+    "cover_provenance": "6270d6ca21fb06c3b9b18438674ade59ffc750ad73bf4f4c71324bf02521e2e4",
+    "cover_delivery_derivation": "c815944d45b1664634b3680544680b6da3c36de93a0a966fd7454d0c99177e73",
+    "cover_front_original_asset": "80fbd30875f8b715fb580732f9eef2d46bc7ddc74d50cd41d5276dbfd60ec32a",
+    "cover_front_delivery_asset": "33ecb0dbd64dd974cbcc0a36ea6efacde0b4a5b3eb9123b7f1c1f97b1b0154b6",
+    "cover_back_original_asset": "29204906556020adbbdb10a89b7fd9b26f08703f6327a0de63cdb0d50b8821fc",
+    "cover_back_delivery_asset": "02d62ca44ac984c5a078ab2298d5fdc513861b7876374043d3ffa3b812ced107",
+    "owner_artwork_declaration": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264"
+  },
+  "checksum_entries": 42,
+  "source_preservation": "Exactunchanged source/highlight/25chapters includingauthorIntro; allhashes/aggregate/first-last/24heading-onlygaps match complete priorproof; no freshsourceGET or inferred fullphysicaledition beyond selectedPG55",
+  "prior_complete_boundary_proof_sha256": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e",
+  "assets": [
+    {
+      "side": "front",
+      "original": "80fbd30875f8b715fb580732f9eef2d46bc7ddc74d50cd41d5276dbfd60ec32a",
+      "delivery": "33ecb0dbd64dd974cbcc0a36ea6efacde0b4a5b3eb9123b7f1c1f97b1b0154b6",
+      "bytes": 72988,
+      "fullframe_no_art_change": true
+    },
+    {
+      "side": "back",
+      "original": "29204906556020adbbdb10a89b7fd9b26f08703f6327a0de63cdb0d50b8821fc",
+      "delivery": "02d62ca44ac984c5a078ab2298d5fdc513861b7876374043d3ffa3b812ced107",
+      "bytes": 67348,
+      "fullframe_no_art_change": true
+    }
+  ],
+  "visual_actual_original_png_and_delivered_webp": "PASS: fullframe content-themed owner art, correct legible title/author/footer, intact frame. Actualcompressed title/footer remain legible; no falseLIVE/audio claims, unquoted fantasyplacenames used as graphical thematiccopy.",
+  "owner_artwork_directive_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+  "original_art_and_glyph_creation_method": "UNKNOWN_NOT_INFERRED; exact ownercopyright/publicationprovenance accepted as userdirected, no extra externalrights/method investigation",
+  "active_audio_claims": [],
+  "root_backend_exact_mirror": true,
+  "production_observed": false,
+  "actual_acceptance_by_B": false,
+  "canonical_mutations": false,
+  "source_downloads_renders_paid_calls_by_B": 0
+}

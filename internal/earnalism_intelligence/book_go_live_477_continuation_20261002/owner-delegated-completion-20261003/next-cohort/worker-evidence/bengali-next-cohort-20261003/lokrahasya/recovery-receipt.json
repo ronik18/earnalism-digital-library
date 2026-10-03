@@ -1,0 +1,35 @@
+{
+  "slug": "lokrahasya",
+  "retrieved_at": "2026-10-03T04:48:49.364553+00:00",
+  "requests": [
+    {
+      "kind": "front",
+      "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/lokrahasya/front-original.jpg",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483123/earnalism/covers/front/cover_7450115f-db43-49ae-af14-feea82311d1f.jpg",
+      "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483123/earnalism/covers/front/cover_7450115f-db43-49ae-af14-feea82311d1f.jpg",
+      "http_status": 200,
+      "sha256": "cac3711a7984c8eb066e048e1b7917c2d2931a5916ac0643e6dab555fefd1406",
+      "bytes": 301442,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "get_count": 1
+    },
+    {
+      "kind": "back",
+      "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/lokrahasya/back-original.jpg",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483129/earnalism/covers/back/back_cover_7450115f-db43-49ae-af14-feea82311d1f.jpg",
+      "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483129/earnalism/covers/back/back_cover_7450115f-db43-49ae-af14-feea82311d1f.jpg",
+      "http_status": 200,
+      "sha256": "64fddc39b201883c0fd3fd109724389f4efb51e4a031b32594eac2d406a604cc",
+      "bytes": 279280,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "get_count": 1
+    }
+  ],
+  "status": "RECOVERED_EXACT_ACTUAL_BYTES_NOT_ASSUMED_HISTORICAL_HASH_MATCH"
+}

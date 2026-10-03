@@ -20,6 +20,7 @@ from backend.rights_decision_gate import load_production_registry, record_sha256
 ROOT = Path(__file__).resolve().parents[2]
 GUARDED_AUDIO_SLUGS = ("the-selfish-giant",)
 HISTORICAL_AUDIO_SLUGS = ("a-white-heron", "the-selfish-giant")
+HISTORICAL_SELFISH_GIANT = ROOT / "backend" / "tests" / "fixtures" / "legacy-selfish-giant-20261003"
 
 
 class ConveyorBooks:
@@ -74,54 +75,51 @@ def test_batch2_packets_are_packaged_for_railway_and_byte_identical(slug: str):
             assert catalog_truth.file_sha256(backend_dir / f"{component}.json") == expected
 
 
-@pytest.mark.parametrize("slug", GUARDED_AUDIO_SLUGS)
-def test_batch2_historical_audio_packages_remain_unexposed(slug: str):
+def test_selfish_giant_exact_accepted_text_keeps_historical_audio_unexposed():
+    slug = "the-selfish-giant"
     artifact_dir = ROOT / "backend" / "data" / "controlled_publications" / slug
     assert catalog_truth.controlled_artifact_validation_issues(slug, str(artifact_dir)) == ()
-
     public = catalog_truth.read_json_file(artifact_dir / "public_book.json")
-    assert public["audio_enabled"] is True
-    assert public["audiobook_enabled"] is True
-    assert public["audiobook_release_mode"] == "SERVER_OWNED_CONVEYOR"
-    assert "backblazeb2.com" not in str(public)
+    assert public["audio_enabled"] is False and public["audiobook_enabled"] is False
     assert slug not in catalog_truth.AUDIO_ENABLED_SLUGS
-
-    book = catalog_truth.load_controlled_artifact_book(
-        slug,
-        include_content=False,
-        artifact_dir=artifact_dir,
-    )
-
-    if slug == "a-white-heron":
-        assert book is None
-        return
-
+    book = catalog_truth.load_controlled_artifact_book(slug, include_content=False, artifact_dir=artifact_dir)
     assert book is not None
-    assert catalog_truth.can_expose_reader(book) is False
+    assert catalog_truth.can_expose_reader(book) is True
     assert catalog_truth.can_expose_audio(book) is False
-
     projection = catalog_truth.public_book_projection(book)
-    assert projection is not None
-    assert projection["reader_enabled"] is False
-    assert projection["audio_enabled"] is False
-    assert projection["audiobook_enabled"] is False
+    assert projection is not None and projection["reader_enabled"] is True
+    assert projection["audio_enabled"] is False and projection["audiobook_enabled"] is False
     assert projection["audio_url"] == ""
+    publication = catalog_truth.read_json_file(artifact_dir / "publication_manifest.json")
+    assert publication["audio_release"]["status"] == "NOT_REQUESTED"
+    assert publication["audio_release"]["exposed"] is False
 
-    approval = catalog_truth.read_json_file(artifact_dir / "approval_evidence.json")
-    evidence = catalog_truth.read_json_file(artifact_dir / "production_audio_evidence.json")
+
+def test_selfish_giant_historical_audio_observation_preimage_is_preserved_only():
+    # Historical observations remain exact evidence, not fresh production facts.
+    inventory = json.loads((ROOT / "backend/tests/fixtures/legacy-selfish-giant-20261003.inventory.json").read_text())
+    assert inventory["purpose"] == "TEST_ONLY_EXACT_HISTORICAL_PREIMAGE_NOT_PRODUCTION_AUTHORIZATION_OR_RELEASE"
+    for row in inventory["files"]:
+        assert catalog_truth.file_sha256(HISTORICAL_SELFISH_GIANT / row["file"]) == row["sha256"]
+    public = catalog_truth.read_json_file(HISTORICAL_SELFISH_GIANT / "public_book.json")
+    assert public["audio_enabled"] is True and public["audiobook_enabled"] is True
+    assert public["audiobook_release_mode"] == "SERVER_OWNED_CONVEYOR"
+    approval = catalog_truth.read_json_file(HISTORICAL_SELFISH_GIANT / "approval_evidence.json")
+    evidence = catalog_truth.read_json_file(HISTORICAL_SELFISH_GIANT / "production_audio_evidence.json")
     assert approval["candidate_fingerprint"] == evidence["candidate_fingerprint"]
     assert approval["audio_sha256"] == evidence["audio_sha256"]
     assert approval["release_blockers"] == []
     assert evidence["production_audio"]["range_status"] == 206
     assert evidence["production_audio"]["content_type"] == "audio/mpeg"
     assert evidence["browser"]["playback_advanced"] is True
-
-    publication = catalog_truth.read_json_file(artifact_dir / "publication_manifest.json")
-    assert publication["audio_release"]["discovery_exposed"] is False
+    publication = catalog_truth.read_json_file(HISTORICAL_SELFISH_GIANT / "publication_manifest.json")
+    assert publication["audio_release"] == {
+        "status": "IN_PROGRESS", "exposed": False, "required_for_reader_release": False,
+    }
 
 
 @pytest.mark.parametrize("slug", HISTORICAL_AUDIO_SLUGS)
-def test_historical_database_audio_claim_cannot_admit_title_outside_release_allowlist(monkeypatch, slug: str):
+def test_historical_database_audio_claim_cannot_admit_audio_to_text_release(monkeypatch, slug: str):
     release = {
         "slug": slug,
         "audio_enabled": True,
@@ -152,12 +150,20 @@ def test_historical_database_audio_claim_cannot_admit_title_outside_release_allo
 
     manifest = asyncio.run(server._reader_book_manifest_doc(slug))
 
-    if slug == "a-white-heron":
-        assert manifest is not None
-        assert "backblazeb2.com" not in json.dumps(manifest)
-        assert catalog_truth.can_expose_audio(manifest.get("book", {})) is False
-    else:
-        assert manifest is None
+    assert manifest is not None
+    assert "backblazeb2.com" not in json.dumps(manifest)
+    assert catalog_truth.can_expose_audio(manifest.get("book", {})) is False
+    assert manifest["audio"]["enabled"] is False
+
+
+@pytest.mark.parametrize("slug", HISTORICAL_AUDIO_SLUGS)
+def test_historical_audio_claim_cannot_bypass_missing_text_release_allowlist(monkeypatch, slug):
+    monkeypatch.setattr(server, "_is_controlled_public_slug", lambda _slug: False)
+    monkeypatch.setattr(server, "db", SimpleNamespace(books=ConveyorBooks(slug, {
+        "slug": slug, "is_published": True, "approved_to_publish": True,
+        "publication_status": "LIVE_APPROVED", "audiobook_enabled": True,
+    })))
+    assert asyncio.run(server._reader_book_manifest_doc(slug)) is None
 
 
 def test_batch2_server_owned_audio_does_not_enter_static_home_listening_shelf():

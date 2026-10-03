@@ -1,0 +1,62 @@
+{
+  "slug": "dsires-baby",
+  "generated_at": "2026-10-03T04:59:53.954767+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "2892f0b840893bc79c4ba6026a527b9b2bd5a02f2cf5c1314ac5a95de102bdf8"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "4c5f2ef8b4ba48d637ac19f0317c4dcb713d70577e49f6f51ae17999579b019b"
+    },
+    {
+      "file": "cover_delivery_derivation.json",
+      "sha256": "feb006057f91cd260d56db1c3c455eca58bce40ae3192cd94a5a798425c9fb6a"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "db0c2086dd4c2139c89540e355d44b8a27547afff6b3685cc6a24650113a55ac"
+    },
+    {
+      "file": "covers/back.png",
+      "sha256": "5a845c98786371fc1e671585701cf513c1142fbb5119337aff3d0a02497cff00"
+    },
+    {
+      "file": "covers/front.png",
+      "sha256": "c965ecd734bdb2d7966946f2cb3be4af131832266c31a3900f8e8d9375c667d1"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "11b60f5ca19e9fabb00a130253b197b9d842de217c0c66b6b9999f5160b093e2"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "37a881b69b0f644f3265cd986c80633b5dd7911d8fcd6fc6b05b156041dbe39f"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "27c6630eab60364ad581a27438d3438b3afb26926090df2684e9a9e2ac7a3fad"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb"
+    },
+    {
+      "file": "source_integrity_validation.json",
+      "sha256": "52683b6ef48451afe01c74f56481119e5b40663e1e27a141436108953d302444"
+    },
+    {
+      "file": "evidence/review_a.json",
+      "sha256": "8d4eeb102ce88faf6eb6697393afb1b579ca29bb4e1083419e44b60295a8ef64"
+    },
+    {
+      "file": "evidence/review_b.json",
+      "sha256": "1c712c31011ca2f17c9790823fd81e26a7c811c852197a34992483622db39bf4"
+    }
+  ]
+}

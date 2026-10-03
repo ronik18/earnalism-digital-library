@@ -1,0 +1,261 @@
+{
+  "schema": "earnalism.next-prospective-accepted-cohort.v1",
+  "actual_acceptance_at": "2026-10-03T04:59:53.954767+00:00",
+  "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+  "base_current_pr_head": "915f96572afd0aadeeff415c2e392563adb30024",
+  "canonical_mutations": 0,
+  "production_observed": false,
+  "audio_exposed": false,
+  "global_gate": "SERIAL_INTEGRATION_AFTER_PR510_AND_NORMAL_PROTECTED_CI_MERGE_DEPLOY_CANARY",
+  "cohort": [
+    {
+      "slug": "the-open-window",
+      "decision_id": "india-20261003-the-open-window-exact-reader-cover-prospective-accepted",
+      "canonical_record_sha256": "2540d80bbbb1ef066eaebdb1896bd87d4f3e94a8bafa1fe082508b37acb9b946",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/the-open-window/the-open-window-front-fd16c968.webp",
+          "sha256": "fd16c96883897722c2da7c49e2012dd9e5a3771bf2f99d11b89a29add60a8960",
+          "bytes": 34778,
+          "dimensions": [
+            800,
+            1200
+          ],
+          "url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-fd16c968.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/the-open-window/the-open-window-back-6c87ea0a.webp",
+          "sha256": "6c87ea0a562e727b5527711f6f279bf9b95cad6a0817d15e36f783fd87016e76",
+          "bytes": 79852,
+          "dimensions": [
+            800,
+            1200
+          ],
+          "url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-back-6c87ea0a.webp"
+        }
+      },
+      "reviews": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "545e4f764da46785a577943e3abe0f48c09660f4c1e84b7fa6709221c168daa0"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff"
+        }
+      },
+      "publication_authorization_sha256": "75a78c71325b48b3f882711b21cacd98cec7a2856ecc8f95499ee6cb5d2e997e",
+      "source_and_chapters": "BYTE_IDENTICAL_TO_REVIEWED_PROPOSAL",
+      "disposition": "READY_BEHIND_NAMED_GLOBAL_GATE",
+      "production_observed": false
+    },
+    {
+      "slug": "the-selfish-giant",
+      "decision_id": "india-20261003-the-selfish-giant-exact-reader-cover-prospective-accepted",
+      "canonical_record_sha256": "e93f0254b8a00faabac7e0a232116cf134c4fa7d6691c38577d908ffc6af13d2",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
+          "sha256": "777a773d9cebbf236f9bfb79d52d35ca7206c59fc38eb04d85a84abc480d98cd",
+          "bytes": 35612,
+          "dimensions": [
+            800,
+            1200
+          ],
+          "url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/the-selfish-giant/the-selfish-giant-back-14b00709.webp",
+          "sha256": "14b007092896bd2d0e4396ba0ecb1e430650a7aa772f855a347a6269daa75e60",
+          "bytes": 85306,
+          "dimensions": [
+            800,
+            1200
+          ],
+          "url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-14b00709.webp"
+        }
+      },
+      "reviews": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "d31da6ba7bc92b767391b180d85d2ab4e1aa163253b38a3cf18bd96de897fcb3"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "15fb24b5a76ab9dac2cbbcccf29b72cb1a0aabc6cd7cf8d9c4a9e11776ced68d"
+        }
+      },
+      "publication_authorization_sha256": "6a79a9d4828858df62f0239f911f9d6c6d154da87ad035aba481f91f23cae251",
+      "source_and_chapters": "BYTE_IDENTICAL_TO_REVIEWED_PROPOSAL",
+      "disposition": "READY_BEHIND_NAMED_GLOBAL_GATE",
+      "production_observed": false
+    },
+    {
+      "slug": "sredni-vashtar",
+      "decision_id": "india-20261003-sredni-vashtar-exact-reader-cover-prospective-accepted",
+      "canonical_record_sha256": "08bed3c8e636096640250b4aeaf5c73a40bef96872839a8a678f1b49216ae822",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/sredni-vashtar/front-d946f65f.webp",
+          "sha256": "d946f65fa5d2c843b7d572a3374435c5fe52a3308cf620395e49fb36e0b6cb55",
+          "bytes": 20932,
+          "dimensions": [
+            800,
+            1200
+          ],
+          "url": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/sredni-vashtar/back-c5329352.webp",
+          "sha256": "c532935242fc0da1ab7a4526752dc1b1392a2f0cf17e3616d25cff644ee82351",
+          "bytes": 65832,
+          "dimensions": [
+            800,
+            1200
+          ],
+          "url": "https://theearnalism.com/assets/books/sredni-vashtar/back-c5329352.webp"
+        }
+      },
+      "reviews": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "cbb2b42bd8aa85419549eaf838e9884069889482ae7bd8fd5d5280e34ab55f59"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "91c752175d2b576a1b43269645b72511a23eadd5d6200df0c65a1ee1d3794c0a"
+        }
+      },
+      "publication_authorization_sha256": "1a84d6e201eda4f3c1055f835f541b103ec1264e8bb5236bdbed46b6d2b22705",
+      "source_and_chapters": "BYTE_IDENTICAL_TO_REVIEWED_PROPOSAL",
+      "disposition": "READY_BEHIND_NAMED_GLOBAL_GATE",
+      "production_observed": false
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "decision_id": "india-20261003-the-cop-and-the-anthem-exact-reader-cover-prospective-accepted",
+      "canonical_record_sha256": "5644c08acfb9143646455c632346909c11d459ec2160c0ae4ef3ac5be9893d94",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+          "sha256": "b2243f117df70253f59a995f7aba59c747da08d51187d94d79ff2e84e10f06de",
+          "bytes": 24996,
+          "dimensions": [
+            800,
+            1200
+          ],
+          "url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-inactive.webp",
+          "sha256": "5f6497fd5616e8913891f73d47aa6ff08b6c7db338cefd05f81b71332241dcde",
+          "bytes": 37340,
+          "dimensions": [
+            800,
+            1200
+          ],
+          "url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-inactive.webp"
+        }
+      },
+      "reviews": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "2eaf07760acf658f9c176461fe425ad4fa7c4fb372a26124968cd6cee43ee10a"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "b4c6472a288af36d58459dea6619df7ffcab6fb64a2eadc22c366e9959e52097"
+        }
+      },
+      "publication_authorization_sha256": "380b4383c013f13bc04b2516d773843e90219b9b9e2aafabe3b6d0a9f9a81ae2",
+      "source_and_chapters": "BYTE_IDENTICAL_TO_REVIEWED_PROPOSAL",
+      "disposition": "READY_BEHIND_NAMED_GLOBAL_GATE",
+      "production_observed": false
+    },
+    {
+      "slug": "dsires-baby",
+      "decision_id": "india-20261003-dsires-baby-exact-reader-cover-prospective-accepted",
+      "canonical_record_sha256": "10a6cb28a3535778a44d18f9971bf98f50769e0b3ee0a3d05c61b1867fbc101e",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+          "sha256": "6a8cd3859df2febf9a54e4900cb8fd7ab6eb78ca0ab1e4f2c0e5cb7d0b9d8cbe",
+          "bytes": 21064,
+          "dimensions": [
+            800,
+            1200
+          ],
+          "url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/dsires-baby/dsires-baby-back-5a845c98-800.webp",
+          "sha256": "8a8630c4d1c52d9bc451ee90bdfc90ef653be29a9446d983732bde5e1ca00a65",
+          "bytes": 37294,
+          "dimensions": [
+            800,
+            1200
+          ],
+          "url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-back-5a845c98-800.webp"
+        }
+      },
+      "reviews": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "8d4eeb102ce88faf6eb6697393afb1b579ca29bb4e1083419e44b60295a8ef64"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "1c712c31011ca2f17c9790823fd81e26a7c811c852197a34992483622db39bf4"
+        }
+      },
+      "publication_authorization_sha256": "ae81a367e93bba8b660073fbd73899d5c7ca1bf29fd3f07d3ef8df15df017ffe",
+      "source_and_chapters": "BYTE_IDENTICAL_TO_REVIEWED_PROPOSAL",
+      "disposition": "READY_BEHIND_NAMED_GLOBAL_GATE",
+      "production_observed": false
+    },
+    {
+      "slug": "the-science-of-getting-rich",
+      "decision_id": "india-20261003-the-science-of-getting-rich-exact-reader-cover-prospective-accepted",
+      "canonical_record_sha256": "97d7b86a4fcf4b5ea13e4ebeb15a3414e74880c182516bbec5c2a782d1397fe1",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/the-science-of-getting-rich/front-5ee48b1d.webp",
+          "sha256": "5ee48b1d245c70b1b8495f9a6b98636cc798d2bea96ff54aa4c3d6fa27becb28",
+          "bytes": 60052,
+          "dimensions": [
+            600,
+            900
+          ],
+          "url": "https://theearnalism.com/assets/books/the-science-of-getting-rich/front-5ee48b1d.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/the-science-of-getting-rich/back-bda88117.webp",
+          "sha256": "bda88117bdb0d7208f51afa3cab6dce74875f83943ebf7c2a74409a6a29477c4",
+          "bytes": 64860,
+          "dimensions": [
+            600,
+            900
+          ],
+          "url": "https://theearnalism.com/assets/books/the-science-of-getting-rich/back-bda88117.webp"
+        }
+      },
+      "reviews": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "e17b3d56b4e6f0f6177965822910d19550debe93090c198d5a21e3fac5419400"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "4817d7c5123f319dfb08bc552fd4548d24896bb23964f11bd12d719c941eb98a"
+        }
+      },
+      "publication_authorization_sha256": "e769162a30fe0ad7a670567b5a7c5716c1ed170811915555729287043e6846c6",
+      "source_and_chapters": "BYTE_IDENTICAL_TO_REVIEWED_PROPOSAL",
+      "disposition": "READY_BEHIND_NAMED_GLOBAL_GATE",
+      "production_observed": false
+    }
+  ],
+  "binding_correction_at": "2026-10-03T05:09:02.199961+00:00",
+  "preserved_prior_stage": "next-accepted-cohort-20261003-v3",
+  "fresh_accepted_binding_review_status": "PENDING_TWO_INDEPENDENT_REVIEWS"
+}

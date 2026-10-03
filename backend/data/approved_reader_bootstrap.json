@@ -171,6 +171,101 @@
       "slug": "alices-adventures-in-wonderland",
       "decision_id": "india-20261003-alices-adventures-in-wonderland-reader-cover-display-reviewed",
       "record_sha256": "cc0a571b73f1ae4b4e19cfeb62c1b88b152fb2145a8f6c943d51156387fad5ae"
+    },
+    {
+      "slug": "dsires-baby",
+      "decision_id": "india-20261003-dsires-baby-exact-reader-cover-prospective-accepted",
+      "record_sha256": "57db9bcdde0fe46ae9c0acc3d09785bc8a75195f2cded12e6c1aceca796b3ecf"
+    },
+    {
+      "slug": "sredni-vashtar",
+      "decision_id": "india-20261003-sredni-vashtar-exact-reader-cover-prospective-accepted",
+      "record_sha256": "fd7320d44bc2f41134e5475ad93e5c4873c6bd739afe9e2a845858e24be9acb6"
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "decision_id": "india-20261003-the-cop-and-the-anthem-exact-reader-cover-prospective-accepted",
+      "record_sha256": "b49d3490005727588f63161d9fd10e7a9eec82f04c33274c1712273e3656bc55"
+    },
+    {
+      "slug": "the-open-window",
+      "decision_id": "india-20261003-the-open-window-exact-reader-cover-prospective-accepted",
+      "record_sha256": "c50c87abb79a36605fcda119cde846baeee8089d24921685277709dbaee0b0d5"
+    },
+    {
+      "slug": "the-selfish-giant",
+      "decision_id": "india-20261003-the-selfish-giant-exact-reader-cover-prospective-accepted",
+      "record_sha256": "80bdf11720255bb247bd55afdff73c09ea21f1cc4a013862667ae66a5409c550"
+    },
+    {
+      "slug": "the-science-of-getting-rich",
+      "decision_id": "india-20261003-the-science-of-getting-rich-exact-reader-cover-prospective-accepted",
+      "record_sha256": "e8ede6f82279947511c93ecff9f6828e6fadb027bb3bea21f9b85da8fc6f8567"
+    },
+    {
+      "slug": "bn-066",
+      "decision_id": "india-20261003-bn-066-exact-reader-cover-prospective-accepted",
+      "record_sha256": "f36de6cdbee86a1c80fc0fcc8c5e17eef7cdf2aec458992e36ae2f2ac035e6f1"
+    },
+    {
+      "slug": "lokrahasya",
+      "decision_id": "india-20261003-lokrahasya-exact-reader-cover-prospective-accepted",
+      "record_sha256": "49c5894d1e746ed53711643a68c98f54eabc939cbf88307a5556fccfd9b79a36"
+    },
+    {
+      "slug": "mrinalini",
+      "decision_id": "india-20261003-mrinalini-exact-reader-cover-prospective-accepted",
+      "record_sha256": "6a0aa9812889f4989bbf004debc20e2dfca800c15a97abbb990f514469c79cbf"
+    },
+    {
+      "slug": "frankenstein",
+      "decision_id": "india-20261003-frankenstein-exact-reader-cover-prospective-accepted",
+      "record_sha256": "0bfe3c7f5c78620216cb4f65e05eedf7c9faf52a521edccdf272c014b7c05bb3"
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "decision_id": "india-20261003-pride-and-prejudice-exact-reader-cover-prospective-accepted",
+      "record_sha256": "a437c17426c3bd6567c3050be8f550c5be46a4554d5e7e94bc0715dafb13b328"
+    },
+    {
+      "slug": "the-great-gatsby",
+      "decision_id": "india-20261003-the-great-gatsby-exact-reader-cover-prospective-accepted",
+      "record_sha256": "f17b90358e98262ca18747e81d40ea0cc4d75f4b7074c35131f299127e76df34"
+    },
+    {
+      "slug": "the-secret-garden",
+      "decision_id": "india-20261003-the-secret-garden-exact-reader-cover-prospective-accepted",
+      "record_sha256": "60cf63f5b0176ad3bf06c791851aa90be74be827feb1fa6fd145ff1a56badb65"
+    },
+    {
+      "slug": "the-time-machine",
+      "decision_id": "india-20261003-the-time-machine-exact-reader-cover-prospective-accepted",
+      "record_sha256": "f142d82b591c9f91c656d03b904133db2b8ee46f5c504bd949e3204117bbd27e"
+    },
+    {
+      "slug": "acres-of-diamonds",
+      "decision_id": "india-20261003-acres-of-diamonds-exact-reader-cover-prospective-accepted",
+      "record_sha256": "f40a580d70199d348903af65598fb8e522845bcd66d7a6842374ba33ece2ffda"
+    },
+    {
+      "slug": "my-life-and-work",
+      "decision_id": "india-20261003-my-life-and-work-exact-reader-cover-prospective-accepted",
+      "record_sha256": "49002844e6106f70325af06cc1d5bbf2452018a4fa1bbe2aab63f3b1f4814080"
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "decision_id": "india-20261003-the-principles-of-scientific-management-exact-reader-cover-prospective-accepted",
+      "record_sha256": "172c65e11230dfe6d05537e6a550cece29f312733f3dd8fc05689f617e4dc6bc"
+    },
+    {
+      "slug": "the-wonderful-wizard-of-oz",
+      "decision_id": "india-20261003-the-wonderful-wizard-of-oz-exact-reader-cover-prospective-accepted",
+      "record_sha256": "36b0f7498f3b93168db1b7b30fe9864041f0e303cb74ce211f377701907696e1"
+    },
+    {
+      "slug": "book-5704b31005",
+      "decision_id": "india-20261003-book-5704b31005-exact-reader-cover-prospective-accepted",
+      "record_sha256": "c469a1b1109688361c09eac0dd9996bd0abccea687213f5d90e83601652ac84e"
     }
   ]
 }

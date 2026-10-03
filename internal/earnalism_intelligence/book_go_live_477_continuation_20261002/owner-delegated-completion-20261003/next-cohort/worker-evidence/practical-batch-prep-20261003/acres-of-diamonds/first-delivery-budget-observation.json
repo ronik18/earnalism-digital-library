@@ -1,0 +1,9 @@
+{
+  "slug": "acres-of-diamonds",
+  "status": "DROPPED_ACTIVE_PLAN_ONE_BOUNDED_REPAIR_FAILURE",
+  "reason": "('acres-of-diamonds', 'front', 106536, 'DELIVERY_BUDGET_FAILED_ONE_ATTEMPT_NO_RETRY')",
+  "attempts": 1,
+  "source_originals_decisions_preserved": true,
+  "paid_calls": 0,
+  "production_mutations": false
+}

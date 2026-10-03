@@ -1,0 +1,51 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-dsires-baby-exact-reader-cover-prospective-accepted",
+  "edition_id": "dsires-baby",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "6d42cff7df041f4a8ca73aab975db7bbd4428b7dc548c3bbc384860b273d3606",
+    "reader_manifest": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee",
+    "source_evidence": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb",
+    "approval_evidence": "f44588abe2524c06341d1a85488f30065a661bf16a268a409fa68464be045cab",
+    "checksum_manifest": "99bfdec10d756a479535846834c1bb37ebf7edc3dc297fa01cdd01def4de972f",
+    "publication_manifest": "fb1cb084f5c570dc24743522fd23cbcab7a8afb04d4c7fed177091c43c3a2de8",
+    "cover_provenance": "d062d0f93c0509f535e8b32653a9731af276fb80e63523b915e5d9f977d96243",
+    "cover_delivery_derivation": "feb006057f91cd260d56db1c3c455eca58bce40ae3192cd94a5a798425c9fb6a",
+    "cover_front_asset": "c965ecd734bdb2d7966946f2cb3be4af131832266c31a3900f8e8d9375c667d1",
+    "cover_back_asset": "5a845c98786371fc1e671585701cf513c1142fbb5119337aff3d0a02497cff00",
+    "cover_front_delivery": "6a8cd3859df2febf9a54e4900cb8fd7ab6eb78ca0ab1e4f2c0e5cb7d0b9d8cbe",
+    "cover_back_delivery": "8a8630c4d1c52d9bc451ee90bdfc90ef653be29a9446d983732bde5e1ca00a65",
+    "publication_authorization": "ae81a367e93bba8b660073fbd73899d5c7ca1bf29fd3f07d3ef8df15df017ffe",
+    "acceptance_review_a": "8d4eeb102ce88faf6eb6697393afb1b579ca29bb4e1083419e44b60295a8ef64",
+    "acceptance_review_b": "1c712c31011ca2f17c9790823fd81e26a7c811c852197a34992483622db39bf4"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T04:59:53.954767+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Existing exact accepted India text source/edition clearance is preserved in the archived predecessor and unchanged source/chapter records. Actual prospective acceptance additionally covers these exact owner-designed preserved-artwork derivatives, proven licensed deterministic typography and reviewed deliveries after two independent passing source/provenance/pixel/package reviews under the owner delegation. The predecessor non-cover deferral is prospectively superseded for these exact components only. Audio remains excluded; no rights, human signature, other edition or production observation inferred. Final release remains behind serialized protected normal gates.",
+  "evidence_sha256": [
+    "3d530252d7452a2ddc892f5d0406f60db23d0cbfa207c71265d01b095f6c77f0",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "31d4577d255806b92c6296419adddd5ca460bdb788743878a09ded1e19f4161a",
+    "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98",
+    "8d4eeb102ce88faf6eb6697393afb1b579ca29bb4e1083419e44b60295a8ef64",
+    "1c712c31011ca2f17c9790823fd81e26a7c811c852197a34992483622db39bf4",
+    "ae81a367e93bba8b660073fbd73899d5c7ca1bf29fd3f07d3ef8df15df017ffe",
+    "d062d0f93c0509f535e8b32653a9731af276fb80e63523b915e5d9f977d96243"
+  ],
+  "accepted_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+  "conditions_satisfied": true
+}

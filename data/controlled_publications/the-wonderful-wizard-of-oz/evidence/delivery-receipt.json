@@ -1,0 +1,31 @@
+{
+  "schema": "earnalism.cover-delivery-derivation.v1",
+  "slug": "the-wonderful-wizard-of-oz",
+  "state": "INACTIVE_UNACCEPTED_PENDING_TWO_NEW_EXACT_REVIEWS",
+  "assets": {
+    "front": {
+      "source_sha256": "80fbd30875f8b715fb580732f9eef2d46bc7ddc74d50cd41d5276dbfd60ec32a",
+      "path": "/workspace/scratch/181ef0a25f05/wizard-preparation-20261003/delivery/front-delivery.webp",
+      "sha256": "33ecb0dbd64dd974cbcc0a36ea6efacde0b4a5b3eb9123b7f1c1f97b1b0154b6",
+      "bytes": 72988,
+      "width": 500,
+      "height": 750,
+      "url": "/assets/books/the-wonderful-wizard-of-oz/front-33ecb0db.webp"
+    },
+    "back": {
+      "source_sha256": "29204906556020adbbdb10a89b7fd9b26f08703f6327a0de63cdb0d50b8821fc",
+      "path": "/workspace/scratch/181ef0a25f05/wizard-preparation-20261003/delivery/back-delivery.webp",
+      "sha256": "02d62ca44ac984c5a078ab2298d5fdc513861b7876374043d3ffa3b812ced107",
+      "bytes": 67348,
+      "width": 500,
+      "height": 750,
+      "url": "/assets/books/the-wonderful-wizard-of-oz/back-02d62ca4.webp"
+    }
+  },
+  "recipe": "Original exactRGB owner PNG→500x750LANCZOSWebPquality45method6; fullframe no crop/no newart/no copychange",
+  "renderer_sha256": "ff3cf668b08e534adaefd57998208efa3422efcdf01aa9d25a8aabcc0d662a59",
+  "card_budget_bytes": 80000,
+  "paid_calls": 0,
+  "art_repairs": 0,
+  "acceptance_or_activation": false
+}

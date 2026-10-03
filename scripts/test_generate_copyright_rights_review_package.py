@@ -24,6 +24,9 @@ TREE = "5397b78b4475bdef5a22f52ff1125a4fe4e77dca"
 SURFACE = "314c040f16aaf12931b1b340ae1d222bb87037e6291f1e3752173b98365326d0"
 
 
+CURRENT_RELEASED_SLUGS = {'the-gift-of-the-magi', 'a-scandal-in-bohemia', 'the-time-machine', 'a-horseman-in-the-sky', 'a-white-heron', 'the-student', 'the-tell-tale-heart', 'frankenstein', 'dsires-baby', 'jekyll-and-hyde', 'the-adventures-of-sherlock-holmes', 'the-secret-garden', 'book-5704b31005', 'muchiram-gurer-jibanchorit', 'the-science-of-getting-rich', 'bn-035', 'sredni-vashtar', 'an-occurrence-at-owl-creek-bridge', 'the-lady-with-the-dog', 'pride-and-prejudice', 'dracula', 'the-selfish-giant', 'the-art-of-money-getting', 'the-fall-of-the-house-of-usher', 'the-wonderful-wizard-of-oz', 'the-stolen-white-elephant', 'the-canterville-ghost', 'the-man-who-would-be-king', 'the-happy-prince', 'my-life-and-work', 'the-open-boat', 'the-pit-and-the-pendulum', 'a-mystery-of-heroism', 'bn-066', 'mrinalini', 'radharani', 'acres-of-diamonds', 'the-bishop', 'bn-059', 'the-enchanted-april', 'a-ghost-story', 'the-great-gatsby', 'the-cop-and-the-anthem', 'the-open-window', 'love-of-life', 'agentic-ai-with-python', 'lokrahasya', 'picture-of-dorian-gray', 'the-call-of-the-wild', 'alices-adventures-in-wonderland', 'the-principles-of-scientific-management', 'book-edfcf810c5'}
+PROSPECTIVE_READER_RELEASE_SLUGS = ('dsires-baby', 'sredni-vashtar', 'the-cop-and-the-anthem', 'the-open-window', 'the-selfish-giant', 'the-science-of-getting-rich', 'bn-066', 'lokrahasya', 'mrinalini', 'frankenstein', 'pride-and-prejudice', 'the-great-gatsby', 'the-secret-garden', 'the-time-machine', 'acres-of-diamonds', 'my-life-and-work', 'the-principles-of-scientific-management', 'the-wonderful-wizard-of-oz', 'book-5704b31005')
+
 class CopyrightRightsReviewPackageTests(unittest.TestCase):
     def build(self, output: Path) -> dict:
         result = subprocess.run(
@@ -47,9 +50,24 @@ class CopyrightRightsReviewPackageTests(unittest.TestCase):
         self.assertEqual(package["inventory_summary"]["rights_accepted_unexposed_count"], 0)
         self.assertEqual(package["conclusion"], "INDIA_RELEASE_EVIDENCE_COMPLETE_FOR_CONTROLLED_ALLOWLIST")
         accepted = {title["slug"] for title in package["titles"] if title["title_release_status"] == "ACCEPTED_FOR_CONTROLLED_RELEASE"}
-        self.assertEqual(accepted, {"a-ghost-story", "the-tell-tale-heart", "radharani", "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost", "the-adventures-of-sherlock-holmes", "agentic-ai-with-python", "a-horseman-in-the-sky", "a-mystery-of-heroism", "a-scandal-in-bohemia", "jekyll-and-hyde", "love-of-life", "the-bishop", "the-fall-of-the-house-of-usher", "the-lady-with-the-dog", "the-man-who-would-be-king", "the-open-boat", "the-pit-and-the-pendulum", "the-stolen-white-elephant", "an-occurrence-at-owl-creek-bridge", "the-enchanted-april", "the-happy-prince", "picture-of-dorian-gray", "dracula", "book-edfcf810c5", "muchiram-gurer-jibanchorit", "bn-059", "the-call-of-the-wild", "the-student", "the-art-of-money-getting", "bn-035", "alices-adventures-in-wonderland"})
+        self.assertEqual(accepted, CURRENT_RELEASED_SLUGS)
+        self.assertEqual(len(accepted), 52)
         rights_accepted_unexposed = {title["slug"] for title in package["titles"] if title["title_release_status"] == "RIGHTS_ACCEPTED_UNEXPOSED"}
         self.assertEqual(rights_accepted_unexposed, set())
+
+    def test_new_prospective_packages_bind_exact_registered_reader_only_decisions(self) -> None:
+        registry = MODULE.read_json(MODULE.REGISTRY)
+        for slug in PROSPECTIVE_READER_RELEASE_SLUGS:
+            with self.subTest(slug=slug):
+                directory = MODULE.controlled_package_dir(slug)
+                decision = MODULE.read_json(directory / "rights_decision.json")
+                publication = MODULE.read_json(directory / "publication_manifest.json")
+                self.assertEqual(decision["decision_id"], f"india-20261003-{slug}-exact-reader-cover-prospective-accepted")
+                self.assertEqual(decision["territories"], ["IN"])
+                self.assertTrue(MODULE.accepted_controlled_release(slug, directory, ["IN"], registry))
+                self.assertFalse(MODULE.accepted_controlled_release(slug, directory, ["US"], registry))
+                self.assertTrue(publication["reader_release"]["exposed"])
+                self.assertFalse(publication["audio_release"]["exposed"])
 
     def test_component_schema_and_pilot_scope_are_fail_closed(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

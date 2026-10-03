@@ -1,0 +1,651 @@
+{
+  "schema": "earnalism.classics-inactive-preparation.v1",
+  "slug": "the-secret-garden",
+  "status": "ACCEPTED_EXACT_COMPONENT_PREPARATION_INDIA_TEXT_READER_ONLY",
+  "prepared_at": "2026-10-03T04:56:14.077640+00:00",
+  "category": "LEGACY_OWNER_DESIGNED_GRAPHICAL_COVER_DELIVERY_DERIVATIVE",
+  "owner_design_fact": {
+    "source": "/workspace/scratch/006ea59bb0f7/book-go-live-477/controller-corrections.json",
+    "sha256": "24e8f7f409db65ab0c4b5f3bf1a1d10072f3c6634d765ba2abfb118740a569b6",
+    "statement": "Owner states all front and back covers are designed by the owner.",
+    "scope": "COVER_DESIGN_ONLY_NOT_TEXT_RIGHTS_OR_RUNTIME_RELEASE"
+  },
+  "original_generation_method": "NOT_INFERRED",
+  "title_author_gate": {
+    "required_unconditionally": true,
+    "stored_title": "The Secret Garden",
+    "stored_author": "Frances Hodgson Burnett",
+    "licensed_deterministic_typography_overlay": true,
+    "font_file": "frontend/public/assets/fonts/eb-garamond-400.ttf",
+    "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+    "independent_exact_review_required": true,
+    "font_license_file": "frontend/public/assets/fonts/EB-GARAMOND-OFL.txt",
+    "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7"
+  },
+  "source_binding": {
+    "existing_text_decision_id": "india-20261002-the-secret-garden-pg113-noncover-text",
+    "source_sha256": "6b0bb5fbd0c4e873d2d22028da9d753cf3977d5f70ac58221556b28060badbf5",
+    "content_sha256": "027d79093c1a71f7824fb7e21ecfaea67e5f46eb47f2e6c5358a44a34382404a",
+    "chapter_count": 27,
+    "all_content_hashes_match_exact_boundary_receipt": true,
+    "boundary_receipt_path": "internal/legal/catalogue_clearance_20261002/english/current_whole_work_boundary_verification.json",
+    "boundary_receipt_file_sha256": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e",
+    "existing_selected_narrative_complete_boundary_evidence_reused": true,
+    "no_new_source_fetch": true,
+    "containment_alone_not_treated_as_complete": true
+  },
+  "boundary_receipt": {
+    "slug": "the-secret-garden",
+    "verified_at": "2026-10-02T03:42:25.348431+00:00",
+    "selected_edition_scope": "Project Gutenberg #113; The Secret Garden exact canonical source, underlying lifetime publication 1911; complete selected author text, no translation or independently authored artwork/editorial material imported",
+    "raw_source_sha256": "6b0bb5fbd0c4e873d2d22028da9d753cf3977d5f70ac58221556b28060badbf5",
+    "reader_aggregate_sha256": "027d79093c1a71f7824fb7e21ecfaea67e5f46eb47f2e6c5358a44a34382404a",
+    "chapter_count": 27,
+    "ordered_chapter_hashes": {
+      "chapter-001": "436678ed945b234545d12dc84c7f1edda9549a6cf99ac3b12fb459b42e6c1b79",
+      "chapter-002": "19a76dda8e10d0b4be33a899336a532fbc7e5ffb435d86767f09edc2408a41f9",
+      "chapter-003": "5d0daa564e172b9d9d6a91b6ede887e08e3f6dd8103fcf81f6e98cf2ca904473",
+      "chapter-004": "5fca348aa3f5c2ff8dfb2230b1434c136f15b34a52878a6315fa902736b89191",
+      "chapter-005": "ceb224bf64d268175a9623c3590dd61f3fb010e3a48e65631e01d195fc496f6b",
+      "chapter-006": "42c5a3f0cba8843f7f9f6d25e759f644664a17581a828aa8a98abe6a56d3872b",
+      "chapter-007": "fc9879c9f06930b6a8cbe1463624f383b81374239574f74720bbda728ebe4694",
+      "chapter-008": "54818f72284a343a11125a1a3e045b4f75655dc8b27a0348616cb893c820882d",
+      "chapter-009": "328272781a5bb9482fb470b3e71843678fa65a70881da441f8808609b1e7df59",
+      "chapter-010": "0841bf40e6ae19f20f88f6d7c40615239a4a490434b84e040e5b7a40321eda96",
+      "chapter-011": "ab891e1e7683aa6b26545c5df85defbdfd54d85a779964f54a50f62540f8dc56",
+      "chapter-012": "f430e13cd3e4d07b188512664157abb717f580053f8f0d24ce1739d2f28f7071",
+      "chapter-013": "d017703dfa905d3decf09e8cb8425d0fbcbc6de7883f9fdc60162140bc2c3d5c",
+      "chapter-014": "54c4f27022c80f4a2fc525e353fad3e80610cfb688dd037a323409981db29057",
+      "chapter-015": "8756f6821b6d926a12306ec2b34b29ae6138ec1003df22369a01c87e8b72a1a3",
+      "chapter-016": "ab58506cea7534f7d43afbc6581c8ebf806f8a5ae8dd4639c5a828029d45ad20",
+      "chapter-017": "dd8667bb6de6325ae81e8e5633a024c2eaabd92f2af2288a5fcfa9b70e8c89b4",
+      "chapter-018": "c5f52b161e506ecf6bdb4349b5c96f348c5144d6f578153130258329dcbd0971",
+      "chapter-019": "6a984125cdeb213c6fa546f5c84a440041b5a3ded8835821ce9609cdc47764a6",
+      "chapter-020": "c115d132c201a173054a5d2a4c9eda0894ab27face0b567a56076bffa5b6ef65",
+      "chapter-021": "e9b8b30427f99aedd636a24bfd162da9a0218316b539e2276c255403a28246d5",
+      "chapter-022": "42ed868de557540c22df1f94877476a0f9ba1f1285f1b8550e6c0029b0c2f921",
+      "chapter-023": "7a3edf697c08e7cee6b07c11e287cff1333da759a8f90cc64672068f3c286426",
+      "chapter-024": "edc533cba88bea5ecff2c9d76608cf9dae13c7b0193f06ccca9f9f308bd79952",
+      "chapter-025": "257d573c3f60c849e151db719708272a378267536b75eca371ded53e4d0d63e1",
+      "chapter-026": "f9acf8ef3031cd5339a37caee2347d9a4553838554cb2a39af6f509f82206074",
+      "chapter-027": "cae4b67fe003e66fa657c443bd6a89946e796ecb445a61e90c65c3fbf9449b00"
+    },
+    "source_boundary_before_first": "OOK THE SECRET GARDEN *** THE SECRET GARDEN by Frances Hodgson Burnett _Author of “The Shuttle,” “The Making of a Marchioness,” “The Methods of Lady Walderhurst,” “The Lass o’ Lowries,” “Through One Administration,” “Little Lord Fauntleroy,” “A Lady of Quality,” etc._ Contents I. THERE IS NO ONE LEFT II. MISTRESS MARY QUITE CONTRARY III. ACROSS THE MOOR IV. MARTHA V. THE CRY IN THE CORRIDOR VI. “THERE WAS SOMEONE CRYING—THERE WAS!” VII. THE KEY TO THE GARDEN VIII. THE ROBIN WHO SHOWED THE WAY IX. THE STRANGEST HOUSE ANYONE EVER LIVED IN X. DICKON XI. THE NEST OF THE MISSEL THRUSH XII. “MIGHT I HAVE A BIT OF EARTH?” XIII. “I AM COLIN” XIV. A YOUNG RAJAH XV. NEST BUILDING XVI. “I WON’T!” SAID MARY XVII. A TANTRUM XVIII. “THA’ MUNNOT WASTE NO TIME” XIX. “IT HAS COME!” XX. “I SHALL LIVE FOREVER—AND EVER—AND EVER!” XXI. BEN WEATHERSTAFF XXII. WHEN THE SUN WENT DOWN XXIII. MAGIC XXIV. “LET THEM LAUGH” XXV. THE CURTAIN XXVI. “IT’S MOTHER!” XXVII. IN THE GARDEN CHAPTER I. THERE IS NO ONE LEFT ",
+    "first_body_anchor": "When Mary Lennox was sent to Misselthwaite Manor to live with her uncle\n\neverybody said she was the most disagreeable-looking child ever seen.\n\nIt was true, too. She had a little thin face and a littl",
+    "last_body_anchor": "ss the lawn came the Master of Misselthwaite and he looked as many\n\nof them had never seen him. And by his side with his head up in the air\n\nand his eyes full of laughter walked as strongly and steadily as any\n\nboy in Yorkshire—Master Colin!\n\nTHE END",
+    "source_boundary_after_last": " *** END OF THE PROJECT GUTENBERG EBOOK THE SECRET GARDEN *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in these works, so the Foundation (and you!) can copy and distribute it in the United States without permission and without paying copyright royalties. Special rules, set forth in the General Terms of Use part of this license, apply to copying and distributing Project Gutenberg™ electronic works to protect the PROJECT GUTENBERG™ concept and trademark. Project Gutenberg is a registered trademark, and may not be used if you charge for an eBook, except by following the terms of the trademark license, including paying royalties for use of the Project Gutenberg trademark. If you do not charge anything for copies of this eBook, complying with the trademark license is very easy. You may use this eBook for nearly any purpose such as creation of derivative works, reports, performances and research. Project Gutenberg eBooks may be modified and printed and given away—you may do practically ANYTHING in the United States with eBooks",
+    "internal_gaps": [
+      {
+        "between": [
+          "chapter-001",
+          "chapter-002"
+        ],
+        "text": " CHAPTER II. MISTRESS MARY QUITE CONTRARY ",
+        "sha256": "47357dadfc136169c29df156286c498b68b6e53bfee5071f9aaed83362402272",
+        "length": 42
+      },
+      {
+        "between": [
+          "chapter-002",
+          "chapter-003"
+        ],
+        "text": " CHAPTER III. ACROSS THE MOOR ",
+        "sha256": "d2ff8d5fe048f523889b919a6b7d3e797824b66bc706eb9face367f5172c3163",
+        "length": 30
+      },
+      {
+        "between": [
+          "chapter-003",
+          "chapter-004"
+        ],
+        "text": " CHAPTER IV. MARTHA ",
+        "sha256": "6d1f1eb6e5c1e2b0649c8c90050b845498695f97c0e6154c92c3b77118483dda",
+        "length": 20
+      },
+      {
+        "between": [
+          "chapter-004",
+          "chapter-005"
+        ],
+        "text": " CHAPTER V THE CRY IN THE CORRIDOR ",
+        "sha256": "ba6615299e23ba05c5449466f768b9bd26e5145cfba8872ed1698c3db992dd24",
+        "length": 35
+      },
+      {
+        "between": [
+          "chapter-005",
+          "chapter-006"
+        ],
+        "text": " CHAPTER VI. “THERE WAS SOMEONE CRYING—THERE WAS!” ",
+        "sha256": "1460d02cd6e9a391028a198ae06b15177aef00b8589b6ab6edf3cdaf7ed06c2f",
+        "length": 51
+      },
+      {
+        "between": [
+          "chapter-006",
+          "chapter-007"
+        ],
+        "text": " CHAPTER VII. THE KEY TO THE GARDEN ",
+        "sha256": "d8110a0e9e88328ddc763af312cd89c4411dbce2f047d38ce38be79e57cd8fd5",
+        "length": 36
+      },
+      {
+        "between": [
+          "chapter-007",
+          "chapter-008"
+        ],
+        "text": " CHAPTER VIII. THE ROBIN WHO SHOWED THE WAY ",
+        "sha256": "4e58b7a2f9d7927b667b9315a9deedc3f632b37b0731903c3168d2c056834f5f",
+        "length": 44
+      },
+      {
+        "between": [
+          "chapter-008",
+          "chapter-009"
+        ],
+        "text": " CHAPTER IX. THE STRANGEST HOUSE ANYONE EVER LIVED IN ",
+        "sha256": "24d15237cc518f4139718d830df43c5c137297645cc0c4412139941df1724d7b",
+        "length": 54
+      },
+      {
+        "between": [
+          "chapter-009",
+          "chapter-010"
+        ],
+        "text": " CHAPTER X. DICKON ",
+        "sha256": "be55322f83ac355c655b9dbf901a6ad2a2ba974a43b25dc5783890fea5638b2f",
+        "length": 19
+      },
+      {
+        "between": [
+          "chapter-010",
+          "chapter-011"
+        ],
+        "text": " CHAPTER XI. THE NEST OF THE MISSEL THRUSH ",
+        "sha256": "49b8fad929224d902eb44d1938c64ed411c544601586e55c22e6d3db5423d4d2",
+        "length": 43
+      },
+      {
+        "between": [
+          "chapter-011",
+          "chapter-012"
+        ],
+        "text": " CHAPTER XII. “MIGHT I HAVE A BIT OF EARTH?” ",
+        "sha256": "3a806c80d6f52a68a201bfe5183e102966314a6465cf2a5253386a348f288706",
+        "length": 45
+      },
+      {
+        "between": [
+          "chapter-012",
+          "chapter-013"
+        ],
+        "text": " CHAPTER XIII. “I AM COLIN” ",
+        "sha256": "6799993dcb259c0b29830db9288ea3c095d31f8f6b450defd109a4f668bc2b43",
+        "length": 28
+      },
+      {
+        "between": [
+          "chapter-013",
+          "chapter-014"
+        ],
+        "text": " CHAPTER XIV. A YOUNG RAJAH ",
+        "sha256": "f8a4ba4168316d327284e01bdde539568762c44f2bcf03ebe0f743f57a547a2c",
+        "length": 28
+      },
+      {
+        "between": [
+          "chapter-014",
+          "chapter-015"
+        ],
+        "text": " CHAPTER XV. NEST BUILDING ",
+        "sha256": "fcf9ce97a1c425f7e87d9355f5c591dca6728a6c9f9f9b7cbffa00c0a2505376",
+        "length": 27
+      },
+      {
+        "between": [
+          "chapter-015",
+          "chapter-016"
+        ],
+        "text": " CHAPTER XVI. “I WON’T!” SAID MARY ",
+        "sha256": "5d247e20f8ea21354432813b2a514781c0203cbc64edf940febeaf8edd7fa60a",
+        "length": 35
+      },
+      {
+        "between": [
+          "chapter-016",
+          "chapter-017"
+        ],
+        "text": " CHAPTER XVII. A TANTRUM ",
+        "sha256": "1cfcf9bf6a4d61e0106b4cc807e47e14a3eba0948f9657cfb3ce474e1da43ead",
+        "length": 25
+      },
+      {
+        "between": [
+          "chapter-017",
+          "chapter-018"
+        ],
+        "text": " CHAPTER XVIII. “THA’ MUNNOT WASTE NO TIME” ",
+        "sha256": "e197ca2ea611314887a29cf2777a0439e19aed35ae32fc4195ed601c28e5773d",
+        "length": 44
+      },
+      {
+        "between": [
+          "chapter-018",
+          "chapter-019"
+        ],
+        "text": " CHAPTER XIX. “IT HAS COME!” ",
+        "sha256": "e26a1cf588b14e2db234faef518a548dc783302f1e5f018b3574335d9d977505",
+        "length": 29
+      },
+      {
+        "between": [
+          "chapter-019",
+          "chapter-020"
+        ],
+        "text": " CHAPTER XX. “I SHALL LIVE FOREVER—AND EVER—AND EVER!” ",
+        "sha256": "cf063e9729f973abf8eea1f8d705e68dcc2e985dbcd27cd62f11965ec4cf7eef",
+        "length": 55
+      },
+      {
+        "between": [
+          "chapter-020",
+          "chapter-021"
+        ],
+        "text": " CHAPTER XXI. BEN WEATHERSTAFF ",
+        "sha256": "2da80d2c005dc7219f0fbf14f6860aa7ff8c9b6828b07c3e551ed3f2e2aad8de",
+        "length": 31
+      },
+      {
+        "between": [
+          "chapter-021",
+          "chapter-022"
+        ],
+        "text": " CHAPTER XXII. WHEN THE SUN WENT DOWN ",
+        "sha256": "c06302e4779687059e73562b77fdf3b372171139f50858e67a7c19d85245a4eb",
+        "length": 38
+      },
+      {
+        "between": [
+          "chapter-022",
+          "chapter-023"
+        ],
+        "text": " CHAPTER XXIII. MAGIC ",
+        "sha256": "1b54fb653c86243e87b9f7444e205c29cc1bf9b543bc317230a51cf146de61f7",
+        "length": 22
+      },
+      {
+        "between": [
+          "chapter-023",
+          "chapter-024"
+        ],
+        "text": " CHAPTER XXIV. “LET THEM LAUGH” ",
+        "sha256": "3ed52428277e9b30308bef49872632e36f63c66e8d41a2f65135fbc8503af83e",
+        "length": 32
+      },
+      {
+        "between": [
+          "chapter-024",
+          "chapter-025"
+        ],
+        "text": " CHAPTER XXV. THE CURTAIN ",
+        "sha256": "8e1477f088a5112264630f7fde33f1bb02c652130b539c8cef53bffccc43bef8",
+        "length": 26
+      },
+      {
+        "between": [
+          "chapter-025",
+          "chapter-026"
+        ],
+        "text": " CHAPTER XXVI. “IT’S MOTHER!” ",
+        "sha256": "da397ce235d797d76c7933c0b81ea8f18c0c9e5f7d2c8bb9ffa83dcd167a4b60",
+        "length": 30
+      },
+      {
+        "between": [
+          "chapter-026",
+          "chapter-027"
+        ],
+        "text": " CHAPTER XXVII. IN THE GARDEN ",
+        "sha256": "3c877f91ffbcf24ba1208d7126cc7112968c362e145b523b094665b4ba896812",
+        "length": 30
+      }
+    ],
+    "whole_narrative_coverage_review": {
+      "source_byte_receipt": {
+        "requested_url": "https://www.gutenberg.org/ebooks/113.txt.utf-8",
+        "resolved_url": "https://www.gutenberg.org/cache/epub/113/pg113.txt",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:03:43.420943+00:00",
+        "response_sha256": "6b0bb5fbd0c4e873d2d22028da9d753cf3977d5f70ac58221556b28060badbf5"
+      },
+      "whole_narrative_coverage": "PASS",
+      "chapter_count": 27,
+      "chapter_comparison": {
+        "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+        "status": "ALL_CHAPTERS_MATCH_SOURCE",
+        "matched_chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "offset": 1745,
+            "length": 10033
+          },
+          {
+            "chapter_id": "chapter-002",
+            "offset": 11820,
+            "length": 14352
+          },
+          {
+            "chapter_id": "chapter-003",
+            "offset": 26202,
+            "length": 7748
+          },
+          {
+            "chapter_id": "chapter-004",
+            "offset": 33970,
+            "length": 28073
+          },
+          {
+            "chapter_id": "chapter-005",
+            "offset": 62078,
+            "length": 11501
+          },
+          {
+            "chapter_id": "chapter-006",
+            "offset": 73630,
+            "length": 11913
+          },
+          {
+            "chapter_id": "chapter-007",
+            "offset": 85579,
+            "length": 10573
+          },
+          {
+            "chapter_id": "chapter-008",
+            "offset": 96196,
+            "length": 14098
+          },
+          {
+            "chapter_id": "chapter-009",
+            "offset": 110348,
+            "length": 16439
+          },
+          {
+            "chapter_id": "chapter-010",
+            "offset": 126806,
+            "length": 19626
+          },
+          {
+            "chapter_id": "chapter-011",
+            "offset": 146475,
+            "length": 12934
+          },
+          {
+            "chapter_id": "chapter-012",
+            "offset": 159454,
+            "length": 13431
+          },
+          {
+            "chapter_id": "chapter-013",
+            "offset": 172913,
+            "length": 21406
+          },
+          {
+            "chapter_id": "chapter-014",
+            "offset": 194347,
+            "length": 19193
+          },
+          {
+            "chapter_id": "chapter-015",
+            "offset": 213567,
+            "length": 20475
+          },
+          {
+            "chapter_id": "chapter-016",
+            "offset": 234077,
+            "length": 12260
+          },
+          {
+            "chapter_id": "chapter-017",
+            "offset": 246362,
+            "length": 12000
+          },
+          {
+            "chapter_id": "chapter-018",
+            "offset": 258406,
+            "length": 11487
+          },
+          {
+            "chapter_id": "chapter-019",
+            "offset": 269922,
+            "length": 18626
+          },
+          {
+            "chapter_id": "chapter-020",
+            "offset": 288603,
+            "length": 13712
+          },
+          {
+            "chapter_id": "chapter-021",
+            "offset": 302346,
+            "length": 17603
+          },
+          {
+            "chapter_id": "chapter-022",
+            "offset": 319987,
+            "length": 8510
+          },
+          {
+            "chapter_id": "chapter-023",
+            "offset": 328519,
+            "length": 21258
+          },
+          {
+            "chapter_id": "chapter-024",
+            "offset": 349809,
+            "length": 21172
+          },
+          {
+            "chapter_id": "chapter-025",
+            "offset": 371007,
+            "length": 12537
+          },
+          {
+            "chapter_id": "chapter-026",
+            "offset": 383574,
+            "length": 16202
+          },
+          {
+            "chapter_id": "chapter-027",
+            "offset": 399806,
+            "length": 27243
+          }
+        ],
+        "nonmatching_chapters": [],
+        "complete_edition_proven": false,
+        "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+      },
+      "lifetime_publication_evidence": {
+        "creator": "Burnett, Frances Hodgson, 1849-1924",
+        "creator_death_year": 1924,
+        "selected_collection_publication_year": 1911,
+        "original_story_first_publication_year": null,
+        "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+        "bibliographic_receipt": {
+          "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Burnett%2C%20Frances%20Hodgson%2C%201849-1924",
+          "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Burnett%2C%20Frances%20Hodgson%2C%201849-1924",
+          "http_status": 200,
+          "accessed_at": "2026-10-01T21:45:11.100127+00:00",
+          "response_sha256": "900283a1224f63b23e4b01927f13c506398adc2048287678c178ee0d67b2c1d1"
+        },
+        "bibliographic_excerpt": "The Secret Garden (New York: F. A. Stokes Co., c1911) Gutenberg text and illustrated HTML multiple formats at archive.org page images at HathiTrust page images at LOC Burnett, Frances Hodgson, 1849-1924: The Shuttle (Gutenberg text and Librivox audio",
+        "scope": "Named creator complete selected literary text including available author prefatory/end matter; publisher/source furniture and illustrations excluded."
+      },
+      "author_death_evidence": 1924,
+      "translator": "NONE_SELECTED",
+      "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+      "illustrations": "NONE_IMPORTED",
+      "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+      "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+      "audio": "NOT_AUTHORIZED",
+      "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+    },
+    "containment_alone_complete": false
+  },
+  "cover_quote_checks": [
+    {
+      "quote": "Where you tend a rose, my lad, a thistle cannot grow",
+      "chapter": "chapter-027.json",
+      "chapter_file_sha256": "62850c1568cba7dbf02f8bb29cb56bee6ccefe6335c5bf0099e6c603314f8ffe",
+      "comparison": "Whitespace, Markdown italic markers, and sentence-flow case normalization: the original source line begins A thistle; the retained cover uses a thistle. Lexical quote remains unchanged; original comparison wording is preserved in the predecessor."
+    }
+  ],
+  "assets": [
+    {
+      "kind": "front",
+      "source_file": "covers/original-front.png",
+      "source_sha256": "39799997d58307c85b83908d0f5121e9b67e496158ae8c77eef5402e6e20b577",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779947920/earnalism/covers/front/cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c.png",
+      "source_bytes": 3516819,
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "licensed_deterministic_overlay": {
+        "file": "covers/the-secret-garden-front-deterministic.png",
+        "sha256": "108a7bcd15bf6a4f7a622f262465b0bc54584c2f2a81cb768d22c68bb9fce8ff",
+        "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+        "text_title": "The Secret Garden",
+        "text_author": "Frances Hodgson Burnett",
+        "mask_rectangle": [
+          45,
+          45,
+          979,
+          560
+        ],
+        "pixels_outside_mask_exactly_preserved": true,
+        "attempt": 1
+      },
+      "file": "covers/the-secret-garden-front-39799997.webp",
+      "sha256": "06a6366d1dace4db8c21ab716667d5650ac0a6143758ed08024af5b7d3aa0bc5",
+      "bytes": 53790,
+      "dimensions": [
+        600,
+        900
+      ],
+      "url": "https://theearnalism.com/assets/books/the-secret-garden/the-secret-garden-front-39799997.webp",
+      "recipe": {
+        "format": "WEBP",
+        "mode": "RGB",
+        "resize": [
+          600,
+          900
+        ],
+        "quality": 40,
+        "method": 6,
+        "resampling": "LANCZOS",
+        "pillow_version": "12.3.0"
+      },
+      "parameter_calibration": [
+        {
+          "dimensions": [
+            600,
+            900
+          ],
+          "quality": 40,
+          "bytes": 53790
+        }
+      ],
+      "review_status": "TWO_INDEPENDENT_NEW_EXACT_VISUAL_DELIVERY_REVIEWS_REQUIRED",
+      "production_observed": false
+    },
+    {
+      "kind": "back",
+      "source_file": "covers/original-back.png",
+      "source_sha256": "dedb7dcca9cef92470b93a54b9e46f92b68c48e901a7523bec7fe71bbc43f396",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779947939/earnalism/covers/back/back_cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c.png",
+      "source_bytes": 3382301,
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "licensed_deterministic_overlay": {
+        "file": "covers/the-secret-garden-back-deterministic.png",
+        "sha256": "710466837e4bd8163105f79325cc844f095e7099de401d95b465da07b628bbf2",
+        "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+        "text_title": "The Secret Garden",
+        "text_author": "Frances Hodgson Burnett",
+        "mask_rectangle": [
+          55,
+          1260,
+          969,
+          1460
+        ],
+        "pixels_outside_mask_exactly_preserved": true,
+        "attempt": 1
+      },
+      "file": "covers/the-secret-garden-back-dedb7dcc.webp",
+      "sha256": "be310c30275d7fc20d2f893032d9373fed1912146d4604c6e4b0fb7593820a27",
+      "bytes": 144890,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "url": "https://theearnalism.com/assets/books/the-secret-garden/the-secret-garden-back-dedb7dcc.webp",
+      "recipe": {
+        "format": "WEBP",
+        "mode": "RGB",
+        "resize": [
+          800,
+          1200
+        ],
+        "quality": 60,
+        "method": 6,
+        "resampling": "LANCZOS",
+        "pillow_version": "12.3.0"
+      },
+      "parameter_calibration": [
+        {
+          "dimensions": [
+            800,
+            1200
+          ],
+          "quality": 60,
+          "bytes": 144890
+        }
+      ],
+      "review_status": "TWO_INDEPENDENT_NEW_EXACT_VISUAL_DELIVERY_REVIEWS_REQUIRED",
+      "production_observed": false
+    }
+  ],
+  "cover_typography_remediation_attempts": 1,
+  "cover_copy_repair_attempts": 0,
+  "delivery_preparation_attempts": 1,
+  "no_new_artwork_or_generation": true,
+  "source_license_and_versions_preserved": true,
+  "archived_historical_duplicate_approval_files": [],
+  "publication_accepted": true,
+  "cover_display_accepted": true,
+  "audio_authorized": false,
+  "production_observed": false,
+  "runtime_fallback_conformance_claimed": false,
+  "actual_acceptance": {
+    "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+    "accepted_at": "2026-10-03T05:34:11.386246+00:00",
+    "independent_reviews": {
+      "review_a": {
+        "file": "evidence/review_a.json",
+        "sha256": "0f72494328632cf157a108de8568a0493a6af1c57fefecaa77583f3cc4627b5c"
+      },
+      "review_b": {
+        "file": "evidence/review_b.json",
+        "sha256": "fa8c2d43c53f2ebe4db5c2ab2e20ebc8addeb59f9725bbec1f1bb0b32c822a97"
+      },
+      "source_review_b": {
+        "file": "evidence/source_review_b.json",
+        "sha256": "e7160391d77b3e1f89dec5481949d5211d86420fb3dcd56c7129798a98bac0d7"
+      }
+    },
+    "production_observed": false,
+    "final_binding_review_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK"
+  }
+}

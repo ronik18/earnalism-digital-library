@@ -1,0 +1,108 @@
+{
+  "schema": "earnalism.independent.exact-cover-source-proposal-review.v1",
+  "reviewer": "independent_reviewer_B",
+  "reviewed_on": "2026-10-03",
+  "slug": "dsires-baby",
+  "disposition": "PASS_VISUAL_DELIVERY_PROVENANCE_COMPLETE_TEXT_PACKAGE_PAPERWORK_PENDING",
+  "assets": {
+    "front": {
+      "original": {
+        "file": "/workspace/scratch/181ef0a25f05/desire-prep-20261003/recovered/front.png",
+        "sha256": "7c30a3bdab00204933779a30caba9a049cd76fd7400e83323c96f20051b9106c",
+        "bytes": 191430
+      },
+      "png": {
+        "file": "/workspace/scratch/181ef0a25f05/desire-prep-20261003/inactive-candidate/covers/front.png",
+        "sha256": "c965ecd734bdb2d7966946f2cb3be4af131832266c31a3900f8e8d9375c667d1",
+        "bytes": 117974
+      },
+      "webp": {
+        "file": "/workspace/scratch/181ef0a25f05/desire-prep-20261003/frontend/public/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+        "sha256": "6a8cd3859df2febf9a54e4900cb8fd7ab6eb78ca0ab1e4f2c0e5cb7d0b9d8cbe",
+        "bytes": 21064
+      }
+    },
+    "back": {
+      "original": {
+        "file": "/workspace/scratch/181ef0a25f05/desire-prep-20261003/recovered/back.png",
+        "sha256": "1cfc152cef9d59cd7434966ec0a0fbd482b28f09e317846827bc09a8c29a442a",
+        "bytes": 387869
+      },
+      "png": {
+        "file": "/workspace/scratch/181ef0a25f05/desire-prep-20261003/inactive-candidate/covers/back.png",
+        "sha256": "5a845c98786371fc1e671585701cf513c1142fbb5119337aff3d0a02497cff00",
+        "bytes": 180923
+      },
+      "webp": {
+        "file": "/workspace/scratch/181ef0a25f05/desire-prep-20261003/frontend/public/assets/books/dsires-baby/dsires-baby-back-5a845c98-800.webp",
+        "sha256": "8a8630c4d1c52d9bc451ee90bdfc90ef653be29a9446d983732bde5e1ca00a65",
+        "bytes": 37294
+      }
+    }
+  },
+  "actual_visual_inspection": {
+    "method": "All four actual new front/back PNG and compressed WebP images inspected via view_image",
+    "title_author": "PASS legible exact title/author; Desire accents correctly rendered",
+    "source_excerpt": "PASS complete exact source paragraphs; no clipped phrase or new synopsis fact",
+    "footer": "PASS entire Earnalism identity footer visible",
+    "release_truth": "PASS no LIVE label, no observed production assertion",
+    "graphical_legacy_art": "PASS preserved original gold circle/line graphic outside deterministic masks; generic aesthetic limitation disclosed, no plain typography-only substitute",
+    "delivery": "PASS WebPs fully decode800x1200, both per-title front<80000/back<180000"
+  },
+  "lineage": {
+    "sha256_verified": true,
+    "original_png_to_new_png_rgb_unchanged_outside_masks": "PASS",
+    "one_bounded_layout_repair": true,
+    "new_art": false,
+    "paid_generation": false,
+    "owner_evidence": {
+      "path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+      "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+      "recorded_statement": "Owner states all front and back covers are designed by the owner."
+    },
+    "source_classification": "OWNER_DESIGNED_LEGACY_GRAPHICAL_DERIVATIVE",
+    "literal_runtime_fallback_policy_conformance_claimed": false,
+    "rights_from_CDN_inferred": false
+  },
+  "source_review": {
+    "disposition": "PASS_REUSE_UNCHANGED_COMPLETE_SELECTED_STORY",
+    "whole_boundary_artifact": "internal/legal/catalogue_clearance_20261002/english/current_whole_work_boundary_verification.json",
+    "whole_boundary_sha256": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e",
+    "source_sha256": "31d4577d255806b92c6296419adddd5ca460bdb788743878a09ded1e19f4161a",
+    "chapter_content_sha256": "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98",
+    "whole_selected_narrative": "PASS",
+    "boundary_before_first": "’s. The years were falling away from her. Ma’ame Pélagie had been conversing with her brother and his friends. Then she turned and walked away; stopping to listen awhile to the music which La Petite was making. But it was only for a moment. She went on around the curve of the veranda, where she found herself alone. She stayed there, erect, holding to the banister rail and looking out calmly in the distance across the fields. She was dressed in black, with the white kerchief she always wore folded across her bosom. Her thick, glossy hair rose like a silver diadem from her brow. In her deep, dark eyes smouldered the light of fires that would never flame. She had grown very old. Years instead of months seemed to have passed over her since the night she bade farewell to her visions. Poor Ma’ame Pélagie! How could it be different! While the outward pressure of a young and joyous existence had forced her footsteps into the light, her soul had stayed in the shadow of the ruin. DÉSIRÉE’S BABY ",
+    "boundary_after_last": " A RESPECTABLE WOMAN Mrs. Baroda was a little provoked to learn that her husband expected his friend, Gouvernail, up to spend a week or two on the plantation. They had entertained a good deal during the winter; much of the time had also been passed in New Orleans in various forms of mild dissipation. She was looking forward to a period of unbroken rest, now, and undisturbed tête-à-tête with her husband, when he informed her that Gouvernail was coming up to stay a week or two. This was a man she had heard much of but never seen. He had been her husband’s college friend; was now a journalist, and in no sense a society man or “a man about town,” which were, perhaps, some of the reasons she had never met him. But she had unconsciously formed an image of him in her mind. She pictured him tall, slim, cynical; with eye-glasses, and his hands in his pockets; and she did not like him. Gouvernail was slim enough, but he wasn’t very tall nor very cynical; neither did he wear eyeglasses nor carry his hands in his pockets. And she rather liked him when he first presented himself. But why she liked him she could not explain satisfactorily to herself when she partly attempted to do so. She could ",
+    "internal_gaps": [],
+    "source_chapter_highlight_exact_prior_root": true,
+    "anthology_completeness_asserted": false,
+    "source_refetched_by_reviewer": false,
+    "desire_archived_whole_source_independent_header_to_header_equality": "PASS"
+  },
+  "preservation": {
+    "root_backend_preimages": 17,
+    "byte_identity_vs_current_canonical": "PASS",
+    "license_source_versions_prior_decisions_artwork": "PRESERVED"
+  },
+  "current_package": {
+    "decision_sha256": "89ec348616ec53dc4f2aba524ae907ae0969f6dea45d3259c834a588b4857877",
+    "components": 12,
+    "checksums": "PASS",
+    "component_hashes": "PASS",
+    "manifest_artifact_bindings": "PASS",
+    "actual_delivery_dimensions": "PASS800x1200",
+    "rights_basis": "Exact preserved prior IN text basis; no extra rights facts asserted",
+    "publication_acceptance": "PROPOSEDconditionsfalse, current public/reader draftinactive",
+    "effective_audio_metadata": "PrimarymetadataPASS; duplicateapproval_evidence2 must be archive-only",
+    "cover_provenance_sha256": "8a9d332bc7cbd6bfb54e111eafcf3be83817d166405a96ffb3c116d4e149bdd3",
+    "source_integrity_validation_sha256": "52683b6ef48451afe01c74f56481119e5b40663e1e27a141436108953d302444"
+  },
+  "remaining_gates": [
+    "Remove checksum-bound approval_evidence2 with old active audio approval from current candidate; preserve original in existing preimages, rebind exact decision/checksum.",
+    "Two independent real reviews; root actual prospective acceptance and new exact package bindings",
+    "Fresh accepted package two reviews; serialized registry/allowlist protected CI/deploy/canary/truthful readback"
+  ],
+  "acceptance_created": false,
+  "production_observed": false,
+  "canonical_mutations": false
+}

@@ -7,7 +7,14 @@
   "category_slug": "adventure",
   "short_description": "মুসলিম আক্রমণের পটভূমিতে একটি বীরত্বপূর্ণ প্রেমকাহিনি।",
   "description": "Set against the backdrop of Muslim invasions of medieval Bengal, Mrinalini is a historical romance of love, patriotism and sacrifice — Bankim blending history with passion.",
-  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "cover_url": "https://theearnalism.com/assets/books/mrinalini/mrinalini-front-77b2a78d.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/mrinalini/mrinalini-front-77b2a78d.webp",
+  "coverImage": "https://theearnalism.com/assets/books/mrinalini/mrinalini-front-77b2a78d.webp",
+  "cover_image": "https://theearnalism.com/assets/books/mrinalini/mrinalini-front-77b2a78d.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/mrinalini/mrinalini-back-6de23839.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/mrinalini/mrinalini-back-6de23839.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/mrinalini/mrinalini-back-6de23839.webp",
+  "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
   "dominant_color": "#24362E",
   "estimated_reading_time": "127 min",
   "formats": [
@@ -42,8 +49,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-002",
@@ -57,8 +64,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-003",
@@ -72,8 +79,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-004",
@@ -87,8 +94,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-005",
@@ -102,8 +109,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-006",
@@ -117,8 +124,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-007",
@@ -132,8 +139,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-008",
@@ -142,13 +149,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 560,
+      "word_count": 577,
       "reading_minutes": 3,
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-009",
@@ -162,8 +169,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-010",
@@ -172,13 +179,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 607,
+      "word_count": 626,
       "reading_minutes": 3,
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-011",
@@ -192,8 +199,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-012",
@@ -202,13 +209,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 393,
+      "word_count": 433,
       "reading_minutes": 2,
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-013",
@@ -222,8 +229,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-014",
@@ -237,8 +244,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-015",
@@ -252,8 +259,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-016",
@@ -267,8 +274,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-017",
@@ -282,8 +289,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-018",
@@ -297,8 +304,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-019",
@@ -312,8 +319,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-020",
@@ -327,8 +334,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-021",
@@ -342,8 +349,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-022",
@@ -357,8 +364,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-023",
@@ -372,8 +379,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-024",
@@ -387,8 +394,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-025",
@@ -397,13 +404,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 449,
+      "word_count": 463,
       "reading_minutes": 2,
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-026",
@@ -417,8 +424,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-027",
@@ -432,8 +439,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-028",
@@ -447,8 +454,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-029",
@@ -462,8 +469,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-030",
@@ -477,8 +484,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
     },
     {
       "id": "chapter-031",
@@ -492,8 +499,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-032",
@@ -507,8 +514,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-033",
@@ -522,8 +529,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-034",
@@ -537,8 +544,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-035",
@@ -552,8 +559,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-036",
@@ -567,8 +574,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-037",
@@ -582,8 +589,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-038",
@@ -592,13 +599,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 456,
+      "word_count": 429,
       "reading_minutes": 2,
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-039",
@@ -612,8 +619,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-040",
@@ -622,13 +629,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 413,
+      "word_count": 567,
       "reading_minutes": 2,
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-041",
@@ -637,13 +644,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 750,
+      "word_count": 767,
       "reading_minutes": 4,
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-042",
@@ -657,8 +664,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-043",
@@ -672,8 +679,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-044",
@@ -687,8 +694,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-045",
@@ -702,8 +709,8 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     },
     {
       "id": "chapter-046",
@@ -717,45 +724,53 @@
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
-      "uploaded_at": "2026-07-03T18:46:48Z",
-      "updated_at": "2026-07-03T18:46:48Z"
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
     }
   ],
-  "source_hash": "10521fb1355328e87b7cd91ea6dea76b3879861447ce0f0322725f519d8fc75b",
-  "content_hash": "193c208f03b3d962982824d90e4cbf7c45d9046532f1f1fc368b50564a6d1741",
+  "source_hash": "9e04c5d5b16bbd623edac1de47cd0e61f561a820cd6d7200b23450117558ee80",
+  "content_hash": "390c5936e44b799952e1e84917bca07aea7183f96880e91a6b3fc74ec7fa3560",
   "provenance_hash": "b05500820083927f8dba4600248b5e553d88ef9383d5e730e202903c31cf7de0",
-  "rights_basis": "Author died 1894. Original publication 1869. Public domain in India and the U.S.; source evidence kept internal/admin-only.",
+  "rights_basis": "Exact India text/edition rights are preserved from the archived predecessor and unchanged source/chapter/license records. Ronik Basak directly provided the owner-held copyright and publication provenance for the exact owner-created cover components; two independent passing source/art preparations bind the reviewed derivatives and deliveries. Prospective automated acceptance supersedes earlier procedural cover deferral for these components only. No human approval, other source/edition rights, unknown original construction method, audio grant or production observation inferred.",
   "rights_tier": "A",
-  "verification_status": "pending",
+  "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approved_to_publish": false,
-  "publication_status": "RIGHTS_REVIEW",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
   "readerStatus": "rights_review",
-  "publicationStatus": "hold",
-  "isPublic": false,
-  "isLive": false,
-  "showInPublicLibrary": false,
+  "publicationStatus": "published",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
   "showInHomepage": false,
-  "allowPublicReading": false,
+  "allowPublicReading": true,
   "allowCheckout": false,
   "allowPayment": false,
-  "is_published": false,
+  "is_published": true,
+  "created_at": "2026-07-03T20:07:47Z",
+  "updated_at": "2026-07-03T20:07:47Z",
+  "license_notice_sha256": "5daf71034572bf90bf766d4c93d2632d518986f0cc96cd916f987ac0fe3ca3c9",
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "publication_authorization_sha256": "9be72f83c284fe4f3389dffe126ab111e94a2fe66fcd93b3aa40a573bebf817b",
+  "cover_dimensions": {
+    "front": [
+      450,
+      675
+    ],
+    "back": [
+      450,
+      675
+    ]
+  },
   "audio_enabled": false,
   "audiobook_enabled": false,
   "generate_audiobook": false,
-  "audiobook_provider": "",
-  "audiobook_voice": "",
-  "audio_asset_slug": "",
-  "audiobook_assets_updated_at": "",
-  "created_at": "2026-07-03T18:46:48Z",
-  "updated_at": "2026-07-03T18:46:48Z",
   "audiobook_assets": {},
   "audiobook": {},
-  "audiobook_package": {},
-  "audio_url": "",
-  "audiobook_release_gate": "",
-  "audio_qa_status": "",
-  "audiobook_release_mode": "",
-  "audiobook_manuscript_sha256": "",
-  "audiobook_release_conveyor": {}
+  "cover_provenance_sha256": "dba148e5b06e7509a825a180c2d71049139e5e1f53e19c40d6bf67129144a82e",
+  "audiobook_use_approved": false,
+  "reader_enabled": true,
+  "preview_enabled": true,
+  "release_gate_status": "READY_BEHIND_SERIALIZED_GLOBAL_RELEASE_GATE",
+  "production_observed": false
 }

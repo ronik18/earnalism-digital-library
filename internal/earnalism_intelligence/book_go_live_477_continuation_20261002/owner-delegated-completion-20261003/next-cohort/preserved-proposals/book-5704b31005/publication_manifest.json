@@ -1,0 +1,59 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "book-5704b31005",
+  "title": "বিচারক",
+  "generated_at": "2026-10-03T05:45:35.963016+00:00",
+  "content": {
+    "source_hash": "57835bba9d270aa0c3f31ee280b2ae789f0528be1adfa29815a45826e23e466b",
+    "content_hash": "c9e4ed3927535c11a5d1d5a4729f0c8a1371952a33a6e0e6d36514b3d249b089",
+    "provenance_hash": "e9cff373d3c3941dba5847b5004e2359b0041827d2117e41c7acb345b76e7bc1",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "a601910dd71d4b09df362a0dcf6df46b530e20b9191cbf54b756010ee69917d9",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "বিচারক",
+        "word_count": 1989,
+        "sha256": "e0325632daa997c635a64d46073efbf6d8fda511635e9b4ababfa3bab79dfd5c"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "f7d3ac1cbe169532038b008d48c0313290cedca638d23c7696d75d3a0c072f3b"
+  },
+  "reader_release": {
+    "status": "READY_FOR_APPROVAL",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-8f64cc7c.webp",
+    "blockers": [
+      "TWO_EXACT_COMPONENT_REVIEWS_AND_ACTUAL_PROSPECTIVE_ACCEPTANCE_REQUIRED"
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "license_notice": "1fc9cf8fae864434f95bc34656a96672c55d852f3dfdad4a1f386a1a1cc4e01c",
+    "source_evidence": "f7d3ac1cbe169532038b008d48c0313290cedca638d23c7696d75d3a0c072f3b",
+    "source_integrity_validation": "89eac8e38ab78c63ae74dc799b89c6fe6fef9aa5755e55c645c94a1dd7ea11f6",
+    "reader_manifest": "6c7daced7a35b9f20ba2f8828e5636d7c644e6ceb272f1707871adafb5a2b759",
+    "publication_authorization": "270311f5a1b29fd49ed2c5e2b50bfff7004439b537d91dd8e2de678e69615467",
+    "approval_evidence": "439cba2b2a0eb7acce8eddebe3bb1e78a0d250949812e140ab4249aa55cc4b76",
+    "public_book": "1e06b7ce1b81bc98b3677fc5e5999aa41862fbbd5a736d5755543b85ba660819",
+    "cover_provenance": "11b9a5b36b710e84941171ad69d3975ae9230e17af120a8af53d59ad1609aa59"
+  },
+  "manifest_sha256": "1e85e1011669415b468f0320bb3395053f761b5ad287d58bc7b1cafcb852d757"
+}

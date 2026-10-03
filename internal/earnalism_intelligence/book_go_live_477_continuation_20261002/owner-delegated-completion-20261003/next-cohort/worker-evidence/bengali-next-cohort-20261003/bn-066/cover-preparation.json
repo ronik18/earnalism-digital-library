@@ -1,0 +1,124 @@
+{
+  "schema": "earnalism.bengali-owner-cover-bounded-copy-preparation.v1",
+  "slug": "bn-066",
+  "metadata_binding": {
+    "title": "আনন্দমঠ",
+    "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+    "short_description": "বাংলার সন্তান সন্ন্যাসীদের ঔপনিবেশিক শাসনের বিরুদ্ধে অভ্যুত্থানের রোমহর্ষক উপাখ্যান।",
+    "about_author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায় (১৮৩৮–১৮৯৪) আধুনিক বাংলা সাহিত্যের জনক।"
+  },
+  "metadata_sha256": "b006347dd0530cb1135f223883970738ad6419ff8ac630c68469973a90fb2df5",
+  "method": "One bounded title/author typography overlay on each front using repository Noto fonts and RAQM, combined with back copy-zone overlay replaces unbound decorative quotation and old summary with exact existing metadata only; illustrations outside documented zones remain byte-equivalent RGB. No new art or prose, no inferred generation method.",
+  "one_bounded_remediation_attempt": 1,
+  "fonts": [
+    {
+      "path": "frontend/src/assets/fonts/noto-serif-bengali-600.ttf",
+      "sha256": "001257778d27c2763978b2361c6999d7d1b736f943abc2bdeb4fa1a3e79b2d38",
+      "required_codepoints_pass": true
+    },
+    {
+      "path": "frontend/src/assets/fonts/noto-sans-bengali-500.ttf",
+      "sha256": "1a886eb72d67c7e5de47db26891b8cdbc5619f2442c656450f14eee6329f10c9",
+      "required_codepoints_pass": true
+    }
+  ],
+  "raqm_shaping_pass": true,
+  "assets": {
+    "front": {
+      "original": {
+        "kind": "front",
+        "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/bn-066/front-original.png",
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593362/earnalism/covers/front/cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
+        "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593362/earnalism/covers/front/cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
+        "http_status": 200,
+        "sha256": "80df6089ecc48a52aa5872e54dcb49dabb284927c4d3419f0e0af4388a4669db",
+        "bytes": 3038678,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "get_count": 1
+      },
+      "prepared_png": {
+        "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/bn-066/front-prepared.png",
+        "sha256": "38b4f0042aa68c3a9784a2319b81f3a60e4d294ac2371a08e5d413746b8e5438",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "bytes": 2424939
+      },
+      "delivery": {
+        "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/bn-066/front-delivery.webp",
+        "sha256": "3a9f74e8c01e9832259dc0d6afa9e5b120235feab79fa1bf27029654679cc1dd",
+        "dimensions": [
+          450,
+          675
+        ],
+        "bytes": 57098,
+        "budget": 80000,
+        "recipe": "RGB; Lanczos450x675; WebPquality82method6"
+      },
+      "repair_zones": [
+        [
+          100,
+          40,
+          924,
+          375
+        ]
+      ],
+      "outside_repair_zones_exact_rgb_identity": true,
+      "licensed_deterministic_front_title_author_overlay": true
+    },
+    "back": {
+      "original": {
+        "kind": "back",
+        "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/bn-066/back-original.png",
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593370/earnalism/covers/back/back_cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
+        "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593370/earnalism/covers/back/back_cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
+        "http_status": 200,
+        "sha256": "4ce56c183557761ee78cc1e12737a7366034aa19fd397c844ba27fd71ed3c6cd",
+        "bytes": 2754432,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "get_count": 1
+      },
+      "prepared_png": {
+        "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/bn-066/back-prepared.png",
+        "sha256": "3d37668bbaddb757636b6bbd1cb7dccedd750bd208ca2e6027e8b1f23e9e1dcc",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "bytes": 1956202
+      },
+      "delivery": {
+        "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/bn-066/back-delivery.webp",
+        "sha256": "aa31dbe34c7e4e89b9a1bba4e6aa00c0d4e0cd9832bf1dd58179385181416dd3",
+        "dimensions": [
+          450,
+          675
+        ],
+        "bytes": 45348,
+        "budget": 180000,
+        "recipe": "RGB; Lanczos450x675; WebPquality82method6"
+      },
+      "repair_zones": [
+        [
+          160,
+          130,
+          885,
+          720
+        ]
+      ],
+      "outside_repair_zones_exact_rgb_identity": true,
+      "licensed_deterministic_front_title_author_overlay": false
+    }
+  },
+  "renderer_sha256": "2a138ef5c1bba0e252d4337f0960875dfea7d7cc7cd6995410b76a3c32ab522a",
+  "paid_generation_calls": 0,
+  "approval_or_activation_claim": false,
+  "next_gate": "TWO_FRESH_EXACT_PIXEL_DELIVERY_COPY_PACKAGE_REVIEWS"
+}

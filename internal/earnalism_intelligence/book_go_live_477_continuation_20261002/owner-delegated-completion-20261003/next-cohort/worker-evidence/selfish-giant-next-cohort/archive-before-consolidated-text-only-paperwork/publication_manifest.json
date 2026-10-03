@@ -1,0 +1,58 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-selfish-giant",
+  "title": "The Selfish Giant",
+  "generated_at": "2026-10-03T04:20:29.339226+00:00",
+  "content": {
+    "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+    "content_hash": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+    "provenance_hash": "1e08883215a0343a9dd6f8c53242fd4af41d62450aa24e424712188e8d79af16",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "df819243768475866804306135ce3f50b793fdc8e66012d6e8c8fb0db1e02db0",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Selfish Giant",
+        "word_count": 1652,
+        "sha256": "12c1db2943a0b57aea333ed1870472ea8332d457093d4255185385a7a157e3b1"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d"
+  },
+  "reader_release": {
+    "status": "READY_FOR_APPROVAL",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
+    "blockers": [
+      "TWO_FRESH_EXACT_REPAIR_DELIVERY_PACKAGE_REVIEWS_AND_ACTUAL_ACCEPTANCE_REQUIRED"
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "production_audio_evidence": "5e23b03ab04c4d318d78fbd6bb8becafe284407fb6ecd7c61998d6a0c180cc42",
+    "source_evidence": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d",
+    "reader_manifest": "d5ce7da734364efdd9a2bd6eace1ee2df66bcfa0dcf7ea4e99d49502b330fc9c",
+    "publication_authorization": "16514ed5af14d72f8eddfbd6d5896ad4f0cc28181b4f8e21b351a065dd49fa0c",
+    "approval_evidence": "c325df28d2a57c94b9124e95f241f9992d5ac821452c0dd592b35f03f6ac7e3e",
+    "public_book": "ee2954132cfc8a9f8f1926eb6a36159011f0d9a6b60a41c5878b9de51c8c4330",
+    "cover_provenance": "becaa05505a87f54f017f6ef2d80a921196ed281993a22a72bd2b1c3f4dd536c"
+  },
+  "manifest_sha256": "e67e91dbdd1db5c4a6075e405f70496cb3ca43b7ec77aefa9a3dc49fa7dfb1ac"
+}

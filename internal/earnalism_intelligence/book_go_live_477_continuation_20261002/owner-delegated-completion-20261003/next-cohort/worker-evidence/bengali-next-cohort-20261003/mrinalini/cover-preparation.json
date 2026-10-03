@@ -1,0 +1,124 @@
+{
+  "schema": "earnalism.bengali-owner-cover-bounded-copy-preparation.v1",
+  "slug": "mrinalini",
+  "metadata_binding": {
+    "title": "মৃণালিনী",
+    "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+    "short_description": "মুসলিম আক্রমণের পটভূমিতে একটি বীরত্বপূর্ণ প্রেমকাহিনি।",
+    "about_author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায় (১৮৩৮–১৮৯৪) আধুনিক বাংলা সাহিত্যের জনক।"
+  },
+  "metadata_sha256": "3f9895115cba6effd21b3ca7f3ac8b0139d6cd4f539eb8fa095c83a94edd8374",
+  "method": "One bounded title/author typography overlay on each front using repository Noto fonts and RAQM, combined with back copy-zone overlay replaces unbound decorative quotation and old summary with exact existing metadata only; illustrations outside documented zones remain byte-equivalent RGB. No new art or prose, no inferred generation method.",
+  "one_bounded_remediation_attempt": 1,
+  "fonts": [
+    {
+      "path": "frontend/src/assets/fonts/noto-serif-bengali-600.ttf",
+      "sha256": "001257778d27c2763978b2361c6999d7d1b736f943abc2bdeb4fa1a3e79b2d38",
+      "required_codepoints_pass": true
+    },
+    {
+      "path": "frontend/src/assets/fonts/noto-sans-bengali-500.ttf",
+      "sha256": "1a886eb72d67c7e5de47db26891b8cdbc5619f2442c656450f14eee6329f10c9",
+      "required_codepoints_pass": true
+    }
+  ],
+  "raqm_shaping_pass": true,
+  "assets": {
+    "front": {
+      "original": {
+        "kind": "front",
+        "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/mrinalini/front-original.jpg",
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483135/earnalism/covers/front/cover_89e10113-f181-4484-a021-eff76348710d.jpg",
+        "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483135/earnalism/covers/front/cover_89e10113-f181-4484-a021-eff76348710d.jpg",
+        "http_status": 200,
+        "sha256": "a9aae2f4a6a0179e9d2398d0cd66b2933e28e208eaf6d34b00be436d4de77ae7",
+        "bytes": 334870,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "get_count": 1
+      },
+      "prepared_png": {
+        "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/mrinalini/front-prepared.png",
+        "sha256": "460af8701800b9275c39f668515d496f1af65c5955986be3ad43ec59a3ed8557",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "bytes": 2194982
+      },
+      "delivery": {
+        "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/mrinalini/front-delivery.webp",
+        "sha256": "77b2a78d8c42e25e54ca6715a5c6eb92c0e90e79c50d6f93f1a16af3f11e99a4",
+        "dimensions": [
+          450,
+          675
+        ],
+        "bytes": 62400,
+        "budget": 80000,
+        "recipe": "RGB; Lanczos450x675; WebPquality82method6"
+      },
+      "repair_zones": [
+        [
+          65,
+          35,
+          959,
+          410
+        ]
+      ],
+      "outside_repair_zones_exact_rgb_identity": true,
+      "licensed_deterministic_front_title_author_overlay": true
+    },
+    "back": {
+      "original": {
+        "kind": "back",
+        "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/mrinalini/back-original.jpg",
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483143/earnalism/covers/back/back_cover_89e10113-f181-4484-a021-eff76348710d.jpg",
+        "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483143/earnalism/covers/back/back_cover_89e10113-f181-4484-a021-eff76348710d.jpg",
+        "http_status": 200,
+        "sha256": "613a77912b59f9a94df525066773a1d618c1a023ad0813efc585f695032139f8",
+        "bytes": 360809,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "get_count": 1
+      },
+      "prepared_png": {
+        "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/mrinalini/back-prepared.png",
+        "sha256": "f23a9251ee054148e05b5b076831c8b02d9b078bf4b3dc59d5d2ae538e67e1cc",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "bytes": 1479385
+      },
+      "delivery": {
+        "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/mrinalini/back-delivery.webp",
+        "sha256": "6de2383961fe8d47a97982da8c29f57a41dde2b0bdcaef6bd38f07d17a0355ee",
+        "dimensions": [
+          450,
+          675
+        ],
+        "bytes": 41938,
+        "budget": 180000,
+        "recipe": "RGB; Lanczos450x675; WebPquality82method6"
+      },
+      "repair_zones": [
+        [
+          135,
+          280,
+          895,
+          900
+        ]
+      ],
+      "outside_repair_zones_exact_rgb_identity": true,
+      "licensed_deterministic_front_title_author_overlay": false
+    }
+  },
+  "renderer_sha256": "2a138ef5c1bba0e252d4337f0960875dfea7d7cc7cd6995410b76a3c32ab522a",
+  "paid_generation_calls": 0,
+  "approval_or_activation_claim": false,
+  "next_gate": "TWO_FRESH_EXACT_PIXEL_DELIVERY_COPY_PACKAGE_REVIEWS"
+}

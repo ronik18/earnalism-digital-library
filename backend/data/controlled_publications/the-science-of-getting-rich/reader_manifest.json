@@ -296,8 +296,8 @@
     "chapter-017",
     "chapter-018"
   ],
-  "audio_enabled": false,
-  "audiobook_enabled": false,
   "generated_at": "2026-08-15T23:13:35Z",
-  "reader_release_status": "READY_FOR_APPROVAL"
+  "reader_release_status": "READY_FOR_APPROVAL",
+  "audio_enabled": false,
+  "audiobook_enabled": false
 }

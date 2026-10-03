@@ -1,0 +1,105 @@
+{
+  "schema": "earnalism.cover-provenance.v1",
+  "slug": "mrinalini",
+  "status": "PROPOSED_PENDING_TWO_EXACT_REVIEWS_NOT_ACCEPTED",
+  "owner_declaration": {
+    "statement": "Owner states all front and back covers are designed by the owner.",
+    "path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+    "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "scope": "Original design declaration only; no generation method or additional author identity inferred."
+  },
+  "prospective_owner_delegation": "User Oct3 explicit evidence-based cover/publication acceptance superseding prior procedural cover deferral in existing issue477 campaign; fresh evidence reviews remain required.",
+  "edition_binding": {
+    "text_decision_id": "india-20261002-mrinalini-1874-cc-by-sa-text-reader",
+    "source_sha256": "9e04c5d5b16bbd623edac1de47cd0e61f561a820cd6d7200b23450117558ee80",
+    "content_sha256": "390c5936e44b799952e1e84917bca07aea7183f96880e91a6b3fc74ec7fa3560",
+    "chapter_count": 46
+  },
+  "assets": {
+    "front": {
+      "original_file": "covers/front-original.jpg",
+      "original_sha256": "a9aae2f4a6a0179e9d2398d0cd66b2933e28e208eaf6d34b00be436d4de77ae7",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483135/earnalism/covers/front/cover_89e10113-f181-4484-a021-eff76348710d.jpg",
+      "prepared_file": "covers/front-prepared.png",
+      "prepared_sha256": "460af8701800b9275c39f668515d496f1af65c5955986be3ad43ec59a3ed8557",
+      "delivery_file": "covers/front-delivery.webp",
+      "delivery_sha256": "77b2a78d8c42e25e54ca6715a5c6eb92c0e90e79c50d6f93f1a16af3f11e99a4",
+      "delivery_url": "https://theearnalism.com/assets/books/mrinalini/mrinalini-front-77b2a78d.webp",
+      "delivery_bytes": 62400,
+      "delivery_dimensions": [
+        450,
+        675
+      ],
+      "production_observed": false
+    },
+    "back": {
+      "original_file": "covers/back-original.jpg",
+      "original_sha256": "613a77912b59f9a94df525066773a1d618c1a023ad0813efc585f695032139f8",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483143/earnalism/covers/back/back_cover_89e10113-f181-4484-a021-eff76348710d.jpg",
+      "prepared_file": "covers/back-prepared.png",
+      "prepared_sha256": "f23a9251ee054148e05b5b076831c8b02d9b078bf4b3dc59d5d2ae538e67e1cc",
+      "delivery_file": "covers/back-delivery.webp",
+      "delivery_sha256": "6de2383961fe8d47a97982da8c29f57a41dde2b0bdcaef6bd38f07d17a0355ee",
+      "delivery_url": "https://theearnalism.com/assets/books/mrinalini/mrinalini-back-6de23839.webp",
+      "delivery_bytes": 41938,
+      "delivery_dimensions": [
+        450,
+        675
+      ],
+      "production_observed": false
+    }
+  },
+  "derivative_lineage": {
+    "recovery_receipt_sha256": "529a191b4a1d8f23d590d86f7e702306de52e84a3fd09fb1f0a976a180c8f225",
+    "cover_preparation_sha256": "69c10bfb2fe6adce40ebe0e1e10c46c1845cf91a1b78fdd6b7a6dbf9732e8ee3",
+    "renderer_sha256": "2a138ef5c1bba0e252d4337f0960875dfea7d7cc7cd6995410b76a3c32ab522a",
+    "method": "One bounded title/author typography overlay on each front using repository Noto fonts and RAQM, combined with back copy-zone overlay replaces unbound decorative quotation and old summary with exact existing metadata only; illustrations outside documented zones remain byte-equivalent RGB. No new art or prose, no inferred generation method.",
+    "original_illustration_outside_masks_pixel_identity": true,
+    "one_bounded_combined_remediation_attempt": 1,
+    "metadata_binding": {
+      "title": "মৃণালিনী",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "short_description": "মুসলিম আক্রমণের পটভূমিতে একটি বীরত্বপূর্ণ প্রেমকাহিনি।",
+      "about_author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায় (১৮৩৮–১৮৯৪) আধুনিক বাংলা সাহিত্যের জনক।"
+    },
+    "font_licenses": [
+      {
+        "path": "frontend/src/assets/fonts/noto-serif-bengali-600.ttf",
+        "sha256": "001257778d27c2763978b2361c6999d7d1b736f943abc2bdeb4fa1a3e79b2d38",
+        "embedded_copyright_and_license_url": [
+          {
+            "name_id": 0,
+            "value": "Copyright 2025 The Noto Project Authors (https://github.com/notofonts/bengali)"
+          },
+          {
+            "name_id": 14,
+            "value": "https://openfontlicense.org"
+          }
+        ],
+        "required_codepoint_and_raqm_checks": "PASS",
+        "new_font_method_claim": "Exact repository font files only; no inferred third-party generation method."
+      },
+      {
+        "path": "frontend/src/assets/fonts/noto-sans-bengali-500.ttf",
+        "sha256": "1a886eb72d67c7e5de47db26891b8cdbc5619f2442c656450f14eee6329f10c9",
+        "embedded_copyright_and_license_url": [
+          {
+            "name_id": 0,
+            "value": "Copyright 2025 The Noto Project Authors (https://github.com/notofonts/bengali)"
+          },
+          {
+            "name_id": 14,
+            "value": "https://openfontlicense.org"
+          }
+        ],
+        "required_codepoint_and_raqm_checks": "PASS",
+        "new_font_method_claim": "Exact repository font files only; no inferred third-party generation method."
+      }
+    ]
+  },
+  "independent_reviews": [],
+  "commercial_use_authorized": false,
+  "audio_authorized": false,
+  "runtime_release_authorized": false,
+  "production_observed": false
+}

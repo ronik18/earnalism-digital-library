@@ -1,0 +1,235 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-secret-garden",
+  "title": "The Secret Garden",
+  "generated_at": "2026-10-03T05:34:11.386246+00:00",
+  "content": {
+    "source_hash": "6b0bb5fbd0c4e873d2d22028da9d753cf3977d5f70ac58221556b28060badbf5",
+    "content_hash": "027d79093c1a71f7824fb7e21ecfaea67e5f46eb47f2e6c5358a44a34382404a",
+    "provenance_hash": "b2d4bcc9e3e66ca0a445dea3a7aaf91e89b6327a262096a1233b7e65aef747ee",
+    "sanitized": true,
+    "chapter_count": 27,
+    "chapter_index_sha256": "ff04c37a8245440a21526ed50342cbd15a1403a1579de80ba5e199714ef4fb12",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "CHAPTER I. THERE IS NO ONE LEFT",
+        "word_count": 1908,
+        "sha256": "7fb3849e44507f24ac5aa4e812280874910aaa780693a337995daf9572fc64cb"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "CHAPTER II. MISTRESS MARY QUITE CONTRARY",
+        "word_count": 2768,
+        "sha256": "190fa7d43447be6b70918a09e483b324d1f9648bfdde1e67031a76ece3d0a590"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "CHAPTER III. ACROSS THE MOOR",
+        "word_count": 1494,
+        "sha256": "92e02d764e8e323ff5a086ea3ec0cd81b83e7afc11a98fbde95d3b1047068498"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "CHAPTER IV. MARTHA",
+        "word_count": 5449,
+        "sha256": "4f453b856b158c08983f8a612e51dd1ffc54d2f353dee8dd9657b60b9a172b7d"
+      },
+      {
+        "id": "chapter-005",
+        "order": 5,
+        "title": "CHAPTER V. THE CRY IN THE CORRIDOR",
+        "word_count": 2266,
+        "sha256": "8e7e9574ea980788ba1be2d224ac2a14101947ab7f05dcf54542a262050ddd1d"
+      },
+      {
+        "id": "chapter-006",
+        "order": 6,
+        "title": "CHAPTER VI. “THERE WAS SOMEONE CRYING—THERE WAS!”",
+        "word_count": 2299,
+        "sha256": "cc0301e02df6350519e4469a27b1d2ab5d63696dc772e0299eb66d9bc1777578"
+      },
+      {
+        "id": "chapter-007",
+        "order": 7,
+        "title": "CHAPTER VII. THE KEY TO THE GARDEN",
+        "word_count": 2038,
+        "sha256": "11bec6f67c7e2641d4fd56457f14d61d8907e923bed62c52ded887e8d1c80766"
+      },
+      {
+        "id": "chapter-008",
+        "order": 8,
+        "title": "CHAPTER VIII. THE ROBIN WHO SHOWED THE WAY",
+        "word_count": 2777,
+        "sha256": "0a3cee4ef1c6044318c351bb6546f1b687ba829cdd46572f145db4523f564349"
+      },
+      {
+        "id": "chapter-009",
+        "order": 9,
+        "title": "CHAPTER IX. THE STRANGEST HOUSE ANYONE EVER LIVED IN",
+        "word_count": 3171,
+        "sha256": "138b601bba02ce5eb4c1dbcf9ea37aaa7bd945524a006e47561e31d8276f1519"
+      },
+      {
+        "id": "chapter-010",
+        "order": 10,
+        "title": "CHAPTER X. DICKON",
+        "word_count": 3855,
+        "sha256": "496c1bc62b04c3e0124707084a41f88f6dbe790eb4d4da4ce9b3751d95de85ef"
+      },
+      {
+        "id": "chapter-011",
+        "order": 11,
+        "title": "CHAPTER XI. THE NEST OF THE MISSEL THRUSH",
+        "word_count": 2543,
+        "sha256": "21d2470899a64725eddde1a994a6e172a89a1f9711b6843256f9db209da7da45"
+      },
+      {
+        "id": "chapter-012",
+        "order": 12,
+        "title": "CHAPTER XII. “MIGHT I HAVE A BIT OF EARTH?”",
+        "word_count": 2646,
+        "sha256": "1cc792f90aac0974337125ece99ebac8f66cae2719e0edd498a480bda86b7b6a"
+      },
+      {
+        "id": "chapter-013",
+        "order": 13,
+        "title": "CHAPTER XIII. “I AM COLIN”",
+        "word_count": 4269,
+        "sha256": "8a411c9b5015d1366da51d28ff7c614ed88894f87d2370a7736a26bbf4f28575"
+      },
+      {
+        "id": "chapter-014",
+        "order": 14,
+        "title": "CHAPTER XIV. A YOUNG RAJAH",
+        "word_count": 3810,
+        "sha256": "b1c40669588e163f3b65e45984170e7b312e9dc0746cc2aaf4333d2820afffe4"
+      },
+      {
+        "id": "chapter-015",
+        "order": 15,
+        "title": "CHAPTER XV. NEST BUILDING",
+        "word_count": 4055,
+        "sha256": "ecb72f77413b6a6622b1433eb2bbda5c41e8b23541a4327a76cccc21b112e284"
+      },
+      {
+        "id": "chapter-016",
+        "order": 16,
+        "title": "CHAPTER XVI. “I WON’T!” SAID MARY",
+        "word_count": 2440,
+        "sha256": "866aa3646fde6348565eee97bb70d7f2e31310aec5f88b0b1f7498e208d63f93"
+      },
+      {
+        "id": "chapter-017",
+        "order": 17,
+        "title": "CHAPTER XVII. A TANTRUM",
+        "word_count": 2361,
+        "sha256": "1f710dab7e1345810dc00ce734cbc6e274cf8071fd0d28494be29643d6b023dc"
+      },
+      {
+        "id": "chapter-018",
+        "order": 18,
+        "title": "CHAPTER XVIII. “THA’ MUNNOT WASTE NO TIME”",
+        "word_count": 2279,
+        "sha256": "f520e12821a24fd0ab2a27eff33381d8a810a5292df9dd13484ad8f00a29d3a6"
+      },
+      {
+        "id": "chapter-019",
+        "order": 19,
+        "title": "CHAPTER XIX. “IT HAS COME!”",
+        "word_count": 3607,
+        "sha256": "c5dc46261eaa745adf5a507bc6d41a3886f00f4e473b7c26d823bd3630d9b565"
+      },
+      {
+        "id": "chapter-020",
+        "order": 20,
+        "title": "CHAPTER XX. “I SHALL LIVE FOREVER—AND EVER—AND EVER!”",
+        "word_count": 2592,
+        "sha256": "f669f89aa8c8f31eb6de6ce7cdc5a66544a60d4c939892a0137b172d6143d657"
+      },
+      {
+        "id": "chapter-021",
+        "order": 21,
+        "title": "CHAPTER XXI. BEN WEATHERSTAFF",
+        "word_count": 3349,
+        "sha256": "4ef9b1fa984ec925e121bdc847655c64fa554a32e49bbb7cdbcacc3b0984f9fe"
+      },
+      {
+        "id": "chapter-022",
+        "order": 22,
+        "title": "CHAPTER XXII. WHEN THE SUN WENT DOWN",
+        "word_count": 1664,
+        "sha256": "24bd128009b25400f60e4fc99dd3854215836782f56fcb0a4fe43a18befc339f"
+      },
+      {
+        "id": "chapter-023",
+        "order": 23,
+        "title": "CHAPTER XXIII. MAGIC",
+        "word_count": 4097,
+        "sha256": "ea2026c2590be6092f4efae2e6c25cd1f73ccf3d2296a240352c7acaac75f1e8"
+      },
+      {
+        "id": "chapter-024",
+        "order": 24,
+        "title": "CHAPTER XXIV. “LET THEM LAUGH”",
+        "word_count": 4041,
+        "sha256": "df1b1ca2935e40a6941ff2c4a438fa0755430a55e19f351c4fdf38fdb8413cde"
+      },
+      {
+        "id": "chapter-025",
+        "order": 25,
+        "title": "CHAPTER XXV. THE CURTAIN",
+        "word_count": 2420,
+        "sha256": "6d08bbca9aa723d62bf4ab8053208791c50332bab44eb0c633dd62fa6721711c"
+      },
+      {
+        "id": "chapter-026",
+        "order": 26,
+        "title": "CHAPTER XXVI. “IT’S MOTHER!”",
+        "word_count": 3137,
+        "sha256": "7393d75dc511f932199b651bf168b76afe4ed236873ab4a6fe73db860cd7bf67"
+      },
+      {
+        "id": "chapter-027",
+        "order": 27,
+        "title": "CHAPTER XXVII. IN THE GARDEN",
+        "word_count": 5215,
+        "sha256": "62850c1568cba7dbf02f8bb29cb56bee6ccefe6335c5bf0099e6c603314f8ffe"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "d4fba2e016dc99ebbab2950c7f63186ec154e408da4d4acb09a82fa8ef959852"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/the-secret-garden/the-secret-garden-front-39799997.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "37837f8c9f460187e07f34b41fd582d732de060cd9b5773faedfc9f3c432235c",
+    "reader_manifest": "75d9899ba4ecf348e9bc75da118a4b0ac3aa9cb1e595e8598e3541f9154dff4f",
+    "source_evidence": "d4fba2e016dc99ebbab2950c7f63186ec154e408da4d4acb09a82fa8ef959852",
+    "approval_evidence": "d497c904e2ab22a1dede97671b4ff0de831ad375870bc284005f44aff8f555a4"
+  },
+  "manifest_sha256": "0467bf1ea5be8d9993919ec472860e901210ce9e9aea1b96e30e83a797737c25"
+}

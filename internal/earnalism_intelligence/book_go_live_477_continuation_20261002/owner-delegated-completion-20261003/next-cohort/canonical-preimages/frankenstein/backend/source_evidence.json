@@ -1,0 +1,13 @@
+{
+  "slug": "frankenstein",
+  "source_url": "https://www.gutenberg.org/ebooks/84.txt.utf-8",
+  "source_name": "Earnalism historical import",
+  "source_license": "Public domain",
+  "source_hash": "b338859650bae7d8c9a83c4905cc794ef2ef03ada59aa725a41cdf429d8aa844",
+  "content_hash": "ad32d25982275cdda7f1418d676facf933c537fd09e1971e6909dfca39e57346",
+  "provenance_hash": "6ae5f74cb8540270f2278372055e1898913c2d3811079f9d098d487b130f40dd",
+  "rights_basis": "Public domain in India based on life plus 60 years; public domain in the U.S. based on original publication before 1931.",
+  "downloaded_at": "2026-05-20T08:24:42.583836+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

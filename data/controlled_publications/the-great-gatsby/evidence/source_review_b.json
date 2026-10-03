@@ -1,0 +1,91 @@
+{
+  "reviewer": "Independent Codex reviewer B",
+  "slug": "the-great-gatsby",
+  "disposition": "PASS_COMPLETE_EXACT_SELECTED_AUTHOR_BODY",
+  "primary_source_path": "/tmp/earnalism-main-approved-integration/content/books/the-great-gatsby/raw/pg64317.txt",
+  "primary_source_sha256": "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35",
+  "primary_source_recovery_receipt_sha256": null,
+  "source_downloads_by_B": 0,
+  "no_chapter_or_source_mutation": true,
+  "all_ordered_chapter_matches": [
+    {
+      "id": "chapter-000",
+      "offset": 990,
+      "length": 209,
+      "content_sha256": "8e042f367cf8d6d00cff551155f51835958d370ffc18dc1d32b034fb2134afb0"
+    },
+    {
+      "id": "chapter-001",
+      "offset": 1202,
+      "length": 32882,
+      "content_sha256": "e18f148e1a4c37a974853160cbcde26b38bb540990f026ea2c3b6598b48fb991"
+    },
+    {
+      "id": "chapter-002",
+      "offset": 34088,
+      "length": 23494,
+      "content_sha256": "c88bbfd8975bfda97c07dae3d8464bcffa0775ee598af3d31cb0813cde4df32f"
+    },
+    {
+      "id": "chapter-003",
+      "offset": 57587,
+      "length": 32420,
+      "content_sha256": "b6830f0fe1e12a07b0afd008fe6096618e4edca6583106610c3db895f8c9d424"
+    },
+    {
+      "id": "chapter-004",
+      "offset": 90011,
+      "length": 30451,
+      "content_sha256": "f14a9c319d9cd6585be3aff2ee3bc8fb596b415309c0fdb9bd1f1cbe09d8bda3"
+    },
+    {
+      "id": "chapter-005",
+      "offset": 120465,
+      "length": 23413,
+      "content_sha256": "7ff88b9272c934215b40f480ec2479be280d4a7f0cf910864f3791f21f42591a"
+    },
+    {
+      "id": "chapter-006",
+      "offset": 143882,
+      "length": 22699,
+      "content_sha256": "5460677bf721f9da48c9cb1ef22f4077ae5fd937619820de8b6659dfba00ca4c"
+    },
+    {
+      "id": "chapter-007",
+      "offset": 166586,
+      "length": 48843,
+      "content_sha256": "1232638642e738d518e4fe06e365cf3b9fdbc4e263abc4ab39a628878ae5cfb3"
+    },
+    {
+      "id": "chapter-008",
+      "offset": 215435,
+      "length": 25383,
+      "content_sha256": "da9e62381cb1d73f6659f43f4b89209534f995f2748fba1e985ccbb123fc5e87"
+    },
+    {
+      "id": "chapter-009",
+      "offset": 240822,
+      "length": 28315,
+      "content_sha256": "ffc56f967c7b9e2e9b619aaf8ce8b005f446be9b0cf48bfd53d2d1ef39efebe6"
+    }
+  ],
+  "prefix_after_PG_start": "*** START OF THE PROJECT GUTENBERG EBOOK THE GREAT GATSBY *** The Great Gatsby by F. Scott Fitzgerald Table of Contents I II III IV V VI VII VIII IX ",
+  "internal_gaps": [
+    " I ",
+    " II ",
+    " III ",
+    " IV ",
+    " V ",
+    " VI ",
+    " VII ",
+    " VIII ",
+    " IX "
+  ],
+  "ending_after_last": " *** END OF THE PROJECT GUTENBERG EBOOK THE GREAT GATSBY *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works",
+  "source_scope": "Project Gutenberg #64317; exact selected original-author text; verified lifetime work publication 1925; excludes anthology editor/art and other title components",
+  "quote_checks": [],
+  "boundary_interpretation": "Exact complete selected author edition: explicit first body after title/TOC or correct excluded third-party preface, complete exact ordered bodies, only verified heading/illustration furniture interstitial gaps, last body followed immediately by PG END. Historical containment limitation retained; independent full boundaries now checked.",
+  "reviewed_at": "2026-10-03T05:26:34.417019+00:00",
+  "canonical_mutations": false,
+  "production_observed": false
+}

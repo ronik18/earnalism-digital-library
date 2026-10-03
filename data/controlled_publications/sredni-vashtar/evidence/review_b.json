@@ -1,0 +1,57 @@
+{
+  "schema": "earnalism.independent.exact-package-review.v1",
+  "reviewer": "independent_reviewer_B",
+  "slug": "sredni-vashtar",
+  "reviewed_on": "2026-10-03",
+  "disposition": "PASS_UNACCEPTED_INACTIVE_PROPOSAL_BINDINGS",
+  "visual_source_receipt": {
+    "file": "/workspace/scratch/181ef0a25f05/new-acceptance-review-b-20261003/sredni-vashtar-new-cover-source-review-b.json",
+    "sha256": "4a6e7644c2599c2f7d3cac1bb17edacaced1ee2139d2889eb8aa8bd313c7232f",
+    "scope": "Exact graphical asset bytes unchanged. New paperwork correctly classifies owner legacy graphical art without claiming literal runtime fallback policy."
+  },
+  "proposal_sha256": {
+    "highlight_sync.json": "0b302f6d91f901adad699ed496663b1ebbb8d17917cd4bbdc340f75eb94ca728",
+    "cover_delivery_derivation.json": "f3deee99367ed73958ca7dfd1ea7969a230f23e018cd61c03b01672556acc1db",
+    "source_evidence.json": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
+    "publication_manifest.json": "3d4f804ba50156f72096c4dd5e0029b284b1201932088215e4ae875abadbb8b0",
+    "reader_manifest.json": "2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad",
+    "publication_authorization.json": "26122600b4e0adf60f0765ad1bcf6bbbda08b35133d77189cdf12956c3f20c12",
+    "approval_evidence.json": "432cbb03020ce0f562290edd50eec75bb6c27722262645518dc466f98be4b3a9",
+    "public_book.json": "0c5d75da39d5a57eb184f24b3676c8caf6ed1527c617d57058e547373bd8e893",
+    "rights_decision.json": "85dc94720a355b5741ce548a1e7639c768d1b985f1555e5b4d6a34037132ad73",
+    "checksum_manifest.json": "adac7c16e3c5481c891a4bb7bb487cafc7b77124eb7a0d5ca4d0da069e345648",
+    "cover_provenance.json": "f788789885abe29c15338d7fa74f5024c7f62f8def0c7c8aa786b49e9730385b",
+    "chapters/chapter-001.json": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5"
+  },
+  "proposed_rights_decision_raw_sha256": "85dc94720a355b5741ce548a1e7639c768d1b985f1555e5b4d6a34037132ad73",
+  "proposed_rights_decision_canonical_sha256": "b1482ac44de4d1e001999804dc4e23168649bd3d3c466e120eea676318db8fd1",
+  "checks": {
+    "12_component_bindings": "PASS",
+    "9_checksum_entries": "PASS",
+    "root_backend_byte_parity": "PASS",
+    "source_chapter_highlight_unchanged": "PASS",
+    "prior_root_backend_content_preimages": "20 files byte-exact PASS",
+    "delivery_dimensions": "800x1200 explicit PASS",
+    "metadata_synopsis": "Exact selected-source opening now truthfully says not another five years; old two-year metadata archived",
+    "public_reader_approval_audio": "False flags, empty media, no active release/positive audio observation propagated PASS",
+    "authorization_approval_cover_binding": "PASS",
+    "prospective_acceptance_state": "PENDING_REVIEW, blank accepted_by, conditionsfalse, publicationfalse; no automated acceptance created yet",
+    "production_claims": "No observed live/deployment/readback facts fabricated"
+  },
+  "known_metadata_correction_only": {
+    "cover_receipt_sha256": "bfae2b19d7f41d2f63ae783bb13d09864716561540009908d9b4489a29ed4bf4",
+    "binding_sha256": "f788789885abe29c15338d7fa74f5024c7f62f8def0c7c8aa786b49e9730385b",
+    "renderer_sha256": "c8303b10cd48a38e0d180d13eb1d02e204dac0952f41d36993c3a84791c962d5",
+    "assets_identical": true,
+    "new_art_or_paid_calls": false
+  },
+  "remaining_gates": [
+    "Other independent reviewer PASS",
+    "Root-authorized actual prospective acceptance with new exact component records and dates",
+    "Fresh acceptance package binding reviews; serialized integration/protected CI/deploy/canary/truthful canonical readback"
+  ],
+  "audio_authorized": false,
+  "acceptance_created": false,
+  "production_observed": false,
+  "canonical_mutations": false
+}

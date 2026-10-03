@@ -1,0 +1,108 @@
+{
+  "schema": "earnalism.cover-provenance.v1",
+  "slug": "book-5704b31005",
+  "status": "PROPOSED_PENDING_TWO_EXACT_REVIEWS_NOT_ACCEPTED",
+  "owner_declaration": {
+    "statement": "Owner states all front and back covers are designed by the owner.",
+    "path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+    "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "scope": "Actual owner-designed fact; current direct Ronik owner-held-copyright directive prospectively supplies acceptable owner-original provenance."
+  },
+  "prospective_owner_delegation": "Actual Oct3 direct owner declaration permits owner-created covers without external copyright clearance; exact quality/source/package and protected release gates remain.",
+  "current_direct_owner_declaration": {
+    "path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/ronik-owner-artwork-declaration-20261003.json",
+    "sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "original_creation_method": "UNKNOWN_NOT_INFERRED"
+  },
+  "edition_binding": {
+    "text_decision_id": "india-20261002-book-5704b31005-1895-cc-by-sa-text-reader",
+    "source_sha256": "57835bba9d270aa0c3f31ee280b2ae789f0528be1adfa29815a45826e23e466b",
+    "content_sha256": "c9e4ed3927535c11a5d1d5a4729f0c8a1371952a33a6e0e6d36514b3d249b089",
+    "chapter_count": 1
+  },
+  "assets": {
+    "front": {
+      "original_file": "covers/front.png",
+      "original_sha256": "a914d173de6f5cd9486fd91a7b69188d156ac7623ebc9f8f89173acd1c48d104",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275451/earnalism/covers/front/book-5704b31005_front_1600x2400.png",
+      "prepared_file": "covers/front-prepared.png",
+      "prepared_sha256": "c58421cc10daab55ce40478452acbd0c8c0977761753a6d01c63db2b67b56b21",
+      "delivery_file": "covers/front-delivery.webp",
+      "delivery_sha256": "8f64cc7c2a33820dfbfe55a635f70a8a0fd19959c71e3290bdeeadd45c2531a5",
+      "delivery_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-8f64cc7c.webp",
+      "delivery_bytes": 23994,
+      "delivery_dimensions": [
+        800,
+        1200
+      ],
+      "production_observed": false
+    },
+    "back": {
+      "original_file": "covers/back.png",
+      "original_sha256": "a99c6c0e27712090637651204cfb0aa5809442ddbc3b5e99da35828a34c82a08",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275453/earnalism/covers/back/book-5704b31005_back_1600x2400.png",
+      "prepared_file": "covers/back-prepared.png",
+      "prepared_sha256": "f470d039657c0f6068ce708f2e1380ccdba297132434ac0c5c1434c488456e7e",
+      "delivery_file": "covers/back-delivery.webp",
+      "delivery_sha256": "4e0a187bd92e75d5b4fb97a670516bacc6183862672090f03ed5dce9547c5709",
+      "delivery_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-back-4e0a187b.webp",
+      "delivery_bytes": 33830,
+      "delivery_dimensions": [
+        800,
+        1200
+      ],
+      "production_observed": false
+    }
+  },
+  "derivative_lineage": {
+    "recovery_receipt_sha256": "54696906eb7682377289f430c37c5f272af5cc475704b6fa65a58cbc680fbde1",
+    "cover_preparation_sha256": "94be6810f3bb0c9fbee839bb767f48eb571a650788605887327fc85673f21e08",
+    "renderer_sha256": "5719b06dca0a667eae87452d332a9f3c7be99b622678bfdfc2b4b171cb8de12c",
+    "method": "ONE combined precise-mask repair of false LIVE badge, coin-occluded title/author and clipped back copy/source furniture, replacing copy with entire actual first source paragraph; licensed repository Noto + RAQM. Original artwork remains pixel-identical outside masks. Original creation method UNKNOWN; owner provenance held under actual direct directive.",
+    "original_illustration_outside_masks_pixel_identity": true,
+    "one_bounded_combined_remediation_attempt": 1,
+    "metadata_binding": {
+      "title": "বিচারক",
+      "author": "রবীন্দ্রনাথ ঠাকুর"
+    },
+    "font_licenses": [
+      {
+        "path": "frontend/src/assets/fonts/noto-serif-bengali-600.ttf",
+        "sha256": "001257778d27c2763978b2361c6999d7d1b736f943abc2bdeb4fa1a3e79b2d38",
+        "embedded_copyright_and_license_url": [
+          {
+            "name_id": 0,
+            "value": "Copyright 2025 The Noto Project Authors (https://github.com/notofonts/bengali)"
+          },
+          {
+            "name_id": 14,
+            "value": "https://openfontlicense.org"
+          }
+        ],
+        "required_codepoint_and_raqm_checks": "PASS",
+        "new_font_method_claim": "Exact repository font files only; no inferred third-party generation method."
+      },
+      {
+        "path": "frontend/src/assets/fonts/noto-sans-bengali-500.ttf",
+        "sha256": "1a886eb72d67c7e5de47db26891b8cdbc5619f2442c656450f14eee6329f10c9",
+        "embedded_copyright_and_license_url": [
+          {
+            "name_id": 0,
+            "value": "Copyright 2025 The Noto Project Authors (https://github.com/notofonts/bengali)"
+          },
+          {
+            "name_id": 14,
+            "value": "https://openfontlicense.org"
+          }
+        ],
+        "required_codepoint_and_raqm_checks": "PASS",
+        "new_font_method_claim": "Exact repository font files only; no inferred third-party generation method."
+      }
+    ]
+  },
+  "independent_reviews": [],
+  "commercial_use_authorized": false,
+  "audio_authorized": false,
+  "runtime_release_authorized": false,
+  "production_observed": false
+}

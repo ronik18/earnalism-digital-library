@@ -7,14 +7,14 @@
   "category_slug": "literary-fiction",
   "short_description": "Elizabeth Bennet navigates love, class, and family pressure in Regency England.",
   "description": "This public-domain edition of Austen's 1813 novel is prepared for structured digital reading on Earnalism.",
-  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780293034/earnalism/covers/front/cover_e54439f8-2bfa-4d96-a4d1-bc7397e76f44.png",
-  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780293034/earnalism/covers/front/cover_e54439f8-2bfa-4d96-a4d1-bc7397e76f44.png",
-  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780293034/earnalism/covers/front/cover_e54439f8-2bfa-4d96-a4d1-bc7397e76f44.png",
-  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780293034/earnalism/covers/front/cover_e54439f8-2bfa-4d96-a4d1-bc7397e76f44.png",
-  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780293039/earnalism/covers/back/back_cover_e54439f8-2bfa-4d96-a4d1-bc7397e76f44.png",
-  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780293039/earnalism/covers/back/back_cover_e54439f8-2bfa-4d96-a4d1-bc7397e76f44.png",
-  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780293039/earnalism/covers/back/back_cover_e54439f8-2bfa-4d96-a4d1-bc7397e76f44.png",
-  "cover_status": "CLOUDINARY_ASSIGNED",
+  "cover_url": "https://theearnalism.com/assets/books/pride-and-prejudice/pride-and-prejudice-front-480db270.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/pride-and-prejudice/pride-and-prejudice-front-480db270.webp",
+  "coverImage": "https://theearnalism.com/assets/books/pride-and-prejudice/pride-and-prejudice-front-480db270.webp",
+  "cover_image": "https://theearnalism.com/assets/books/pride-and-prejudice/pride-and-prejudice-front-480db270.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/pride-and-prejudice/pride-and-prejudice-back-fbb0d3c3.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/pride-and-prejudice/pride-and-prejudice-back-fbb0d3c3.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/pride-and-prejudice/pride-and-prejudice-back-fbb0d3c3.webp",
+  "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "535 min",
   "formats": [
@@ -895,14 +895,14 @@
   "source_hash": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
   "content_hash": "4b68459abff92d885d2d493ad052e8cdba6308ebf78f24508c6410cce683c276",
   "provenance_hash": "49f4ef0c8b50de3e8bf1430456a677414420b40c7153b4b7b1b8d4bd7c6d34bb",
-  "rights_basis": "Author died in 1817. Work published in 1813, well before 1928. Public domain in the U.S. under pre-1928 publication rule and in most jurisdictions under life plus 70 years.",
+  "rights_basis": "Exact India text/edition rights are preserved from the archived predecessor and unchanged source/chapter/license records. Ronik Basak directly provided the owner-held copyright and publication provenance for the exact owner-created cover components; two independent passing source/art preparations bind the reviewed derivatives and deliveries. Prospective automated acceptance supersedes earlier procedural cover deferral for these components only. No human approval, other source/edition rights, unknown original construction method, audio grant or production observation inferred.",
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
   "approved_to_publish": true,
   "publication_status": "LIVE_APPROVED",
   "readerStatus": "reader_ready",
-  "publicationStatus": "live",
+  "publicationStatus": "published",
   "isPublic": true,
   "isLive": true,
   "showInPublicLibrary": true,
@@ -921,5 +921,23 @@
   "audiobook": {},
   "audiobook_assets_updated_at": "",
   "created_at": "2026-07-03T20:07:48Z",
-  "updated_at": "2026-07-03T20:07:48Z"
+  "updated_at": "2026-07-03T20:07:48Z",
+  "cover_category": "LEGACY_OWNER_DESIGNED_GRAPHICAL_COVER_DELIVERY_DERIVATIVE",
+  "cover_dimensions": {
+    "front": [
+      600,
+      900
+    ],
+    "back": [
+      800,
+      1200
+    ]
+  },
+  "audiobook_use_approved": false,
+  "cover_provenance_sha256": "d3ef6d3ddf9794c337a80e120396cb144d2bbe09b54481a8549e20abfaa1f2bd",
+  "publication_authorization_sha256": "26bd265aa451dd7411e0717f9c811dd28f57d96fddb4196bd75eb7cafe944cf0",
+  "reader_enabled": true,
+  "preview_enabled": true,
+  "release_gate_status": "READY_BEHIND_SERIALIZED_GLOBAL_RELEASE_GATE",
+  "production_observed": false
 }

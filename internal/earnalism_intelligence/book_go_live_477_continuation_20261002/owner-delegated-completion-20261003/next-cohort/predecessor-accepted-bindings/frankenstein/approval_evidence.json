@@ -1,0 +1,66 @@
+{
+  "slug": "frankenstein",
+  "approved_to_publish": true,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_OWNER_PROVIDED_COVER_PUBLICATION_ACCEPTANCE",
+  "audio_public_release": "NOT_AUTHORIZED",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "5b136cdd64bc1f85351dcb38c3ada57f382d247ca83ddc606b4b3ee440f276b4",
+  "source_hash": "7810cd483cffcf2cc8a1d8f0d5807931e69d4f48cd14149b8c76f88af82fead3",
+  "content_hash": "c83bc9742f100459a5bd329a9f048cb14e6356c7e43e2a423e71becc9ddc2b85",
+  "provenance_hash": "801a0d6f3dad09bb4a7d3b179eac4673f3f7ec3c05a8c63fc928fa1aa30e7a26",
+  "verified_at": "2026-10-01T21:19:39.153654+00:00",
+  "qa_scope": "Two independent exact complete-source/preserved-artwork preparations; final accepted binding review is an external serialized release requirement.",
+  "independent_reviews": {
+    "review_a": {
+      "file": "evidence/review_a.json",
+      "sha256": "dc1045c0af38dad4e41574dbb587cea6734d665ac3cdde5b2e71745808078c83"
+    },
+    "review_b": {
+      "file": "evidence/review_b.json",
+      "sha256": "cb669626513fb343c14b268928ca8499cd01d521d5cad9469464935ec400d871"
+    },
+    "source_review_b": {
+      "file": "evidence/source_review_b.json",
+      "sha256": "c4d561c45a88e2ab53dcdf26ed1036882fcb040681c41b3d49fda75bdc50e999"
+    }
+  },
+  "binding_review_status": "FINAL_EXACT_PACKAGE_REVIEWS_REQUIRED_AS_EXTERNAL_SERIALIZED_RELEASE_GATE",
+  "cover_front_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+  "cover_back_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+  "audio_enabled": false,
+  "audiobook_use_approved": false,
+  "manual_listening_approval": false,
+  "cover_provenance_sha256": "4ea3e76b15282fe28797f073f31f665b5a26a751197982491c4150f10aab6f6b",
+  "actual_prospective_acceptance": {
+    "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+    "accepted_at": "2026-10-03T05:34:11.386246+00:00",
+    "evidence": {
+      "review_a": {
+        "file": "evidence/review_a.json",
+        "sha256": "dc1045c0af38dad4e41574dbb587cea6734d665ac3cdde5b2e71745808078c83"
+      },
+      "review_b": {
+        "file": "evidence/review_b.json",
+        "sha256": "cb669626513fb343c14b268928ca8499cd01d521d5cad9469464935ec400d871"
+      },
+      "source_review_b": {
+        "file": "evidence/source_review_b.json",
+        "sha256": "c4d561c45a88e2ab53dcdf26ed1036882fcb040681c41b3d49fda75bdc50e999"
+      }
+    },
+    "owner_declaration_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "production_observed": false,
+    "canonical_version_observed": false,
+    "global_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK"
+  }
+}

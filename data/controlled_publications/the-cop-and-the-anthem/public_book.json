@@ -7,14 +7,14 @@
   "category_slug": "literary-fiction",
   "short_description": "A homeless man tries repeatedly to get arrested to spend winter in jail — and fails every time until it is too late.",
   "description": "Soapy tries everything to get arrested — disorderly conduct, theft, harassment — and fails each time. Then a church anthem moves him to reform. Then a policeman arrests him. O. Henry's most perfectly constructed irony.",
-  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275534/earnalism/covers/front/the-cop-and-the-anthem_front_1600x2400.png",
-  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275534/earnalism/covers/front/the-cop-and-the-anthem_front_1600x2400.png",
-  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275534/earnalism/covers/front/the-cop-and-the-anthem_front_1600x2400.png",
-  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275534/earnalism/covers/front/the-cop-and-the-anthem_front_1600x2400.png",
-  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275537/earnalism/covers/back/the-cop-and-the-anthem_back_1600x2400.png",
-  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275537/earnalism/covers/back/the-cop-and-the-anthem_back_1600x2400.png",
-  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275537/earnalism/covers/back/the-cop-and-the-anthem_back_1600x2400.png",
-  "cover_status": "CLOUDINARY_ASSIGNED",
+  "cover_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+  "coverImage": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+  "cover_image": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-inactive.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-inactive.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-inactive.webp",
+  "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "10 min",
   "formats": [
@@ -56,14 +56,14 @@
   "source_hash": "6bb719852f2f0eb33db25613124d2d3c522dd3b879c187667ab31072bb2fb48d",
   "content_hash": "77a6d1c7ff6162cc7aad47b950666c6bb1dedf0beb55a08f3f476e27e57bd3ab",
   "provenance_hash": "e56b326703e2719cda7eb81b9dc04edbd23eed61ce89cbece41db9338549565c",
-  "rights_basis": "O. Henry died 1910; first published 1904. Public domain in India and the U.S.",
+  "rights_basis": "Existing exact accepted India text source/edition clearance is preserved in the archived predecessor and unchanged source/chapter records. Actual prospective acceptance additionally covers these exact owner-designed preserved-artwork derivatives, proven licensed deterministic typography and reviewed deliveries after two independent passing source/provenance/pixel/package reviews under the owner delegation. The predecessor non-cover deferral is prospectively superseded for these exact components only. Audio remains excluded; no rights, human signature, other edition or production observation inferred. Final release remains behind serialized protected normal gates.",
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
   "approved_to_publish": true,
   "publication_status": "LIVE_APPROVED",
   "readerStatus": "reader_ready",
-  "publicationStatus": "live",
+  "publicationStatus": "published",
   "isPublic": true,
   "isLive": true,
   "showInPublicLibrary": true,
@@ -85,13 +85,19 @@
   "updated_at": "2026-07-03T20:07:48Z",
   "cover_dimensions": {
     "front": [
-      1600,
-      2400
+      800,
+      1200
     ],
     "back": [
-      1600,
-      2400
+      800,
+      1200
     ]
   },
-  "cover_semantic_match_score": 9.8
+  "cover_category": "LEGACY_OWNER_DESIGNED_GRAPHICAL_DERIVATIVE",
+  "publication_authorization_sha256": "74ee384faafe45c1ecbd02144877e3ac9488ed5a34f511d517058ce8397b68c0",
+  "cover_provenance_sha256": "87bd73a79634bfc9393175fdcbff9935e5b948399b169a676ec76477679c2ca4",
+  "reader_enabled": true,
+  "preview_enabled": true,
+  "release_gate_status": "READY_BEHIND_SERIALIZED_GLOBAL_RELEASE_GATE",
+  "production_observed": false
 }

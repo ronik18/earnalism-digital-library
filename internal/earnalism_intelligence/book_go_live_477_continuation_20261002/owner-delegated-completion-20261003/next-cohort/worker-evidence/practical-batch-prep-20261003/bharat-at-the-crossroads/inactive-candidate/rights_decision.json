@@ -1,0 +1,44 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-bharat-at-the-crossroads-reader-cover-inactive-proposal",
+  "edition_id": "bharat-at-the-crossroads",
+  "operator_id": "reo-enterprise",
+  "status": "PROPOSED",
+  "components": {
+    "public_book": "b9692c348f3e9d2323c27b6616010c17ca55473daabad92da4ade1da6fc2eb42",
+    "reader_manifest": "7a73f6ebbaafec41301aa231c8f4d057d39892e6d2ffb3017941914809e47668",
+    "source_evidence": "52c92e6c6325c608bceec71928da428ac67be2b9d17c2c01ffc93c311fdd8e36",
+    "approval_evidence": "701b2d1d0c779b57fe5a23e4610d23ec9a3586b5959848db3e5b8936144bfa75",
+    "checksum_manifest": "b0b595485b4a32cb53a300576e87e0c0672b31f896e4335713fb1d8ae7937915",
+    "publication_manifest": "b2b1865bb24bc5d781506a712d26e897bb00759e1019183e970fdfc3154de556",
+    "cover_provenance": "9d44371e25509308c9d08466e1cf8c07c6f2d8dcfd3e0ce63b273f12bcada205",
+    "cover_delivery_derivation": "8aba3337c8140ddcb424fea5bc3b196199c555888e9c4f455c9b605e5b3cd0ed",
+    "cover_front_asset": "674c1aee2b6c1a7b25a5b28cd7e4737787153b8f0f4d8e6c8f7ee83a92a28c05",
+    "cover_back_asset": "2e7564a64bb215397374a734e66e023010c22cdead23d3cb812ded6a54bc7665",
+    "cover_front_delivery": "5d5445f1d88d0ba092dbc363621eaedfcea8a9356fb22481a9c59fe455830d4d",
+    "cover_back_delivery": "cb46a1b7acbdce0d585fc98d19554e69bba4525410b9f678cfd38fbf21aa420f"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T05:04:16.164575+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Unaccepted exact inactive proposal. Reuse prior accepted IN noncover text facts without inferred original methods, rights, human approval or production observation. Full selected-work proof plus one deterministic original-art title/author/copy repair awaits two independent reviewers and serialized owner-delegated controller acceptance.",
+  "evidence_sha256": [
+    "43d6f299ebff85e3947b2b8c9d15ab51d75c57bf49035c5e0c7ac67664b370be",
+    "69c840addcfe7cf86306f2fa27aa9325ae38c28575974562c99eb948263a062f",
+    "7993c9107f05db0061077075359daaf940f67d93cdeac0638b8b9e74858c79b6",
+    "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+    "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7"
+  ],
+  "accepted_by": "NOT_ACCEPTED; preparation worker makes no cover/publication acceptance decision.",
+  "conditions_satisfied": false
+}

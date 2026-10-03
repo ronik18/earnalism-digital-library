@@ -1,0 +1,20 @@
+{
+  "slug": "lokrahasya",
+  "approved_to_publish": false,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "qa_scope": "Exact existing edition-bound text identity/source completeness only; no audio or production observations.",
+  "approval_scope": "PROPOSED_EXACT_IN_TEXT_AND_COVER_BINDING_PENDING_TWO_REVIEWS",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "audiobook_use_approved": false,
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "verified_at": "2026-10-03T04:56:37.110955+00:00",
+  "source_hash": "2c536fb46b7a52f42f63c702effcd971d97059c56be4a6b5d7df642b4a8cddc1",
+  "content_hash": "a7ff73c827d016dc6faafca1f3151c0ebf565187c1ff8b6a924c461cce129e20",
+  "publication_authorization_sha256": "763adc4b8a12144e57ea6305ee2ae8676889b4db8e2432852f4af6069a0234ac",
+  "cover_provenance_sha256": "06ad952983fe9731345d973a537c3220ed38964db07a945444da517b613a7f3b",
+  "independent_reviews": []
+}

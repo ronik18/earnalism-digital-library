@@ -1,0 +1,126 @@
+{
+  "schema": "earnalism.cover-provenance.v1",
+  "slug": "lokrahasya",
+  "status": "ACCEPTED_EXACT_OWNER_PROVIDED_COMPONENTS_UNDER_DIRECT_OWNER_DECLARATION",
+  "owner_declaration": {
+    "statement": "Owner states all front and back covers are designed by the owner.",
+    "path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+    "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "scope": "Original design declaration only; no generation method or additional author identity inferred."
+  },
+  "prospective_owner_delegation": "User Oct3 explicit evidence-based cover/publication acceptance superseding prior procedural cover deferral in existing issue477 campaign; fresh evidence reviews remain required.",
+  "edition_binding": {
+    "text_decision_id": "india-20261002-lokrahasya-1939-cc-by-sa-text-reader",
+    "source_sha256": "2c536fb46b7a52f42f63c702effcd971d97059c56be4a6b5d7df642b4a8cddc1",
+    "content_sha256": "a7ff73c827d016dc6faafca1f3151c0ebf565187c1ff8b6a924c461cce129e20",
+    "chapter_count": 16
+  },
+  "assets": {
+    "front": {
+      "original_file": "covers/front-original.jpg",
+      "original_sha256": "cac3711a7984c8eb066e048e1b7917c2d2931a5916ac0643e6dab555fefd1406",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483123/earnalism/covers/front/cover_7450115f-db43-49ae-af14-feea82311d1f.jpg",
+      "prepared_file": "covers/front-prepared.png",
+      "prepared_sha256": "c2b46b8bde19d262acf0afdb016851bebf40b40caf1b4ef7aadc5133d29dcff9",
+      "delivery_file": "covers/front-delivery.webp",
+      "delivery_sha256": "ed95a2efcbc009bc6a4b7d44d7d5f88b9b555be43be933628fc08ebecf23d0be",
+      "delivery_url": "https://theearnalism.com/assets/books/lokrahasya/lokrahasya-front-ed95a2ef.webp",
+      "delivery_bytes": 56266,
+      "delivery_dimensions": [
+        450,
+        675
+      ],
+      "production_observed": false
+    },
+    "back": {
+      "original_file": "covers/back-original.jpg",
+      "original_sha256": "64fddc39b201883c0fd3fd109724389f4efb51e4a031b32594eac2d406a604cc",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483129/earnalism/covers/back/back_cover_7450115f-db43-49ae-af14-feea82311d1f.jpg",
+      "prepared_file": "covers/back-prepared.png",
+      "prepared_sha256": "9b46fa258412838b64f48c5342424f9c3a60784995139cedb71f738514f36f72",
+      "delivery_file": "covers/back-delivery.webp",
+      "delivery_sha256": "c62c63ed14ebf54dbf15542840ecc0066a8821ce3f20d54a10484f305ffe30ff",
+      "delivery_url": "https://theearnalism.com/assets/books/lokrahasya/lokrahasya-back-c62c63ed.webp",
+      "delivery_bytes": 46200,
+      "delivery_dimensions": [
+        450,
+        675
+      ],
+      "production_observed": false
+    }
+  },
+  "derivative_lineage": {
+    "recovery_receipt_sha256": "a7763385fb5b8ba404471ee7bb9c87432e05f5389d7ac24fea37d63907381593",
+    "cover_preparation_sha256": "0249f1c686a32ac452c9d84421d956221af66e70abc16cbff0f0e5a9063a8b30",
+    "renderer_sha256": "2a138ef5c1bba0e252d4337f0960875dfea7d7cc7cd6995410b76a3c32ab522a",
+    "method": "One bounded title/author typography overlay on each front using repository Noto fonts and RAQM, combined with back copy-zone overlay replaces unbound decorative quotation and old summary with exact existing metadata only; illustrations outside documented zones remain byte-equivalent RGB. No new art or prose, no inferred generation method.",
+    "original_illustration_outside_masks_pixel_identity": true,
+    "one_bounded_combined_remediation_attempt": 1,
+    "metadata_binding": {
+      "title": "লোকরহস্য",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "short_description": "সমাজের নানা অসঙ্গতি নিয়ে বঙ্কিমচন্দ্রের রসময় ও তীক্ষ্ণ ব্যঙ্গরচনার সংকলন।",
+      "about_author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায় (১৮৩৮–১৮৯৪) আধুনিক বাংলা সাহিত্যের জনক।"
+    },
+    "font_licenses": [
+      {
+        "path": "frontend/src/assets/fonts/noto-serif-bengali-600.ttf",
+        "sha256": "001257778d27c2763978b2361c6999d7d1b736f943abc2bdeb4fa1a3e79b2d38",
+        "embedded_copyright_and_license_url": [
+          {
+            "name_id": 0,
+            "value": "Copyright 2025 The Noto Project Authors (https://github.com/notofonts/bengali)"
+          },
+          {
+            "name_id": 14,
+            "value": "https://openfontlicense.org"
+          }
+        ],
+        "required_codepoint_and_raqm_checks": "PASS",
+        "new_font_method_claim": "Exact repository font files only; no inferred third-party generation method."
+      },
+      {
+        "path": "frontend/src/assets/fonts/noto-sans-bengali-500.ttf",
+        "sha256": "1a886eb72d67c7e5de47db26891b8cdbc5619f2442c656450f14eee6329f10c9",
+        "embedded_copyright_and_license_url": [
+          {
+            "name_id": 0,
+            "value": "Copyright 2025 The Noto Project Authors (https://github.com/notofonts/bengali)"
+          },
+          {
+            "name_id": 14,
+            "value": "https://openfontlicense.org"
+          }
+        ],
+        "required_codepoint_and_raqm_checks": "PASS",
+        "new_font_method_claim": "Exact repository font files only; no inferred third-party generation method."
+      }
+    ]
+  },
+  "independent_reviews": {
+    "review_a": {
+      "file": "evidence/review_a.json",
+      "sha256": "833c60d7852d3818a325d79469e9239da9bf2ec261f197c813aeb7986b9ab595"
+    },
+    "review_b": {
+      "file": "evidence/review_b.json",
+      "sha256": "681cdc4c5511d271cb7921893ea9009919dae686f138a001643d934981dd20d3"
+    }
+  },
+  "commercial_use_authorized": true,
+  "audio_authorized": false,
+  "runtime_release_authorized": false,
+  "production_observed": false,
+  "accepted_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+  "accepted_at": "2026-10-03T05:42:49.399949+00:00",
+  "original_creator": "Ronik Basak, as named by the actual direct owner declaration",
+  "owner_held_copyright_basis": {
+    "file": "owner_artwork_declaration.json",
+    "sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "scope": "Exact Ronik Basak owner-created front/back artwork only; no text rights or human review signature inferred."
+  },
+  "cover_display_approved": true,
+  "visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+  "publication_activation_authorized": false,
+  "acceptance_scope": "Exact owner-provided artwork and reviewed preserved-art derivatives/deliveries, India commercial text Reader cover display. Unknown original construction methods remain unknown; the owner decision supersedes external procedural artwork clearance. Text, source, visual quality and release gates remain independent."
+}

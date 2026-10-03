@@ -1,0 +1,46 @@
+{
+  "schema": "earnalism.complete-selected-work-validation.v1",
+  "slug": "the-principles-of-scientific-management",
+  "source_sha256": "1f504a9abe674ee616f13bf1db66ec25cbb1be0ff5fd9bfe70ab8593aa08a3b2",
+  "source_hash_exact": true,
+  "chapter_count": 4,
+  "method": "NFC + whitespace only. Every canonical chapter matches exact source in order; every interstitial gap classified exhaustively as source heading preserved in Reader metadata or known signature scan-furniture; source prefix manually inspected as source boilerplate/production credits/title page/TOC only; tail exactly begins PG END. No omitted narrative prose in selected full work. First-party Bharat entire supplied manuscript byte-identical to canonical, with empty prefix/tail.",
+  "whole_selected_work": "PASS_PENDING_INDEPENDENT_REVIEW",
+  "matched_chapters": [
+    {
+      "id": "chapter-001",
+      "start": 1014,
+      "length": 4718,
+      "content_sha256": "d32f0bdd8af72e44a868496b9b366d89d354ea1a6fbf3338e2945fd2844a3a4b",
+      "source_gap_before": "The Project Gutenberg eBook of The Principles of Scientific Management This eBook is for the use of anyone anywhere in the United States and most other parts of the world at no cost and with almost no restrictions whatsoever. You may copy it, give it away or re-use it under the terms of the Project Gutenberg License included with this eBook or online at www.gutenberg.org. If you are not located in the United States, you will have to check the laws of the country where you are located before using this eBook. Title: The Principles of Scientific Management Author: Frederick Winslow Taylor Release date: September 1, 2004 [eBook #6435] Most recently updated: November 4, 2011 Language: English Other information and formats: www.gutenberg.org/ebooks/6435 Credits: Produced by Charles E. Nichols *** START OF THE PROJECT GUTENBERG EBOOK THE PRINCIPLES OF SCIENTIFIC MANAGEMENT *** Produced by Charles E. Nichols The Principles of Scientific Management by FREDERICK WINSLOW TAYLOR, M.E., Sc.D. 1911 INTRODUCTION "
+    },
+    {
+      "id": "chapter-002",
+      "start": 5781,
+      "length": 30517,
+      "content_sha256": "d3bce9820aacf3f0c3a82d2a40931e82095f705f26d4312cb0836141496f63ae",
+      "source_gap_before": " CHAPTER I FUNDAMENTALS OF SCIENTIFIC MANAGEMENT "
+    },
+    {
+      "id": "chapter-003",
+      "start": 36350,
+      "length": 649,
+      "content_sha256": "d3dc6737ae6dc38a609951e5642ccb70160e08b0ebe71beb82569b3ce62b5a0b",
+      "source_gap_before": " CHAPTER II THE PRINCIPLES OF SCIENTIFIC MANAGEMENT "
+    },
+    {
+      "id": "chapter-004",
+      "start": 37039,
+      "length": 170726,
+      "content_sha256": "ce03794ec55aecc0783b58cb64c4f2e54548bdb89ea538afc221bc9ed428ee1f",
+      "source_gap_before": " THE FINEST TYPE OF ORDINARY MANAGEMENT "
+    }
+  ],
+  "prefix_classification": "TITLE_PAGE_TOC_PRODUCTION_CREDITS_PG_BOILERPLATE_ONLY",
+  "tail_classification": "PG_END_LICENSE_AND_TRAILER_ONLY",
+  "tail_sha256": "5e7aa1b0eb003b9d0b001b60b751bf99804b27bfef41352c4a586a0d469fe838",
+  "unclassified_narrative_gaps": [],
+  "selected_scope": "Complete selected electronic work, not other physical editions",
+  "source_or_chapter_changed": false,
+  "production_observed": false
+}

@@ -1,0 +1,102 @@
+{
+  "schema": "earnalism.complete-selected-work-validation.v1",
+  "slug": "acres-of-diamonds",
+  "source_sha256": "a0b8613f5a9c0ee604b53d6aa68388084bdefbf24e1f5e9749aafe2c8448efa3",
+  "source_hash_exact": true,
+  "chapter_count": 12,
+  "method": "NFC + whitespace only. Every canonical chapter matches exact source in order; every interstitial gap classified exhaustively as source heading preserved in Reader metadata or known signature scan-furniture; source prefix manually inspected as source boilerplate/production credits/title page/TOC only; tail exactly begins PG END. No omitted narrative prose in selected full work. First-party Bharat entire supplied manuscript byte-identical to canonical, with empty prefix/tail.",
+  "whole_selected_work": "PASS_PENDING_INDEPENDENT_REVIEW",
+  "matched_chapters": [
+    {
+      "id": "chapter-001",
+      "start": 1537,
+      "length": 1524,
+      "content_sha256": "3390bb9544142dc503a522d21ad959fa4c44d6123e20b7abceafe49ab0b6aebb",
+      "source_gap_before": "The Project Gutenberg eBook of Acres of Diamonds: Our Every-day Opportunities This eBook is for the use of anyone anywhere in the United States and most other parts of the world at no cost and with almost no restrictions whatsoever. You may copy it, give it away or re-use it under the terms of the Project Gutenberg License included with this eBook or online at www.gutenberg.org. If you are not located in the United States, you will have to check the laws of the country where you are located before using this eBook. Title: Acres of Diamonds: Our Every-day Opportunities Author: Russell H. Conwell Contributor: Robert Shackleton Release date: June 29, 2008 [eBook #368] Most recently updated: November 3, 2016 Language: English Other information and formats: www.gutenberg.org/ebooks/368 Credits: Produced by Charles Keller and David Widger *** START OF THE PROJECT GUTENBERG EBOOK ACRES OF DIAMONDS: OUR EVERY-DAY OPPORTUNITIES *** Produced by Charles Keller ACRES OF DIAMONDS By Russell H. Conwell Founder Of Temple University Philadelphia _His Life And Achievement By Robert Shackleton_ With an Autobiographical Note ACRES OF DIAMONDS CONTENTS ACRES OF DIAMONDS HIS LIFE AND ACHIEVEMENTS I. THE STORY OF THE SWORD II. THE BEGINNING AT OLD LEXINGTON III. STORY OF THE FIFTY-SEVEN CENTS IV. HIS POWER AS ORATOR AND PREACHER V. GIFT FOR INSPIRING OTHERS VI. MILLIONS OF HEARERS VII. HOW A UNIVERSITY WAS FOUNDED VIII. HIS SPLENDID EFFICIENCY IX. THE STORY OF ``ACRES OF DIAMONDS’’ FIFTY YEARS ON THE LECTURE PLATFORM AN APPRECIATION "
+    },
+    {
+      "id": "chapter-002",
+      "start": 3092,
+      "length": 81048,
+      "content_sha256": "4d904ef71f685a7071e6325a2d78521d76a24f125dc55e87edd1d580e6af7738",
+      "source_gap_before": " {signature} ACRES OF DIAMONDS "
+    },
+    {
+      "id": "chapter-003",
+      "start": 84167,
+      "length": 16666,
+      "content_sha256": "22df1fd016a83573a7600658cad5f7168b481243eee255a7b5d3ac5b541ba169",
+      "source_gap_before": " I. THE STORY OF THE SWORD "
+    },
+    {
+      "id": "chapter-004",
+      "start": 100869,
+      "length": 15726,
+      "content_sha256": "06430ae071e3f22559fcecb0f349c23c7f93adafc2cdc45f2d820ebe82eacd38",
+      "source_gap_before": " II. THE BEGINNING AT OLD LEXINGTON "
+    },
+    {
+      "id": "chapter-005",
+      "start": 116632,
+      "length": 8129,
+      "content_sha256": "8d141f8ed86374561b693a3b65081be4090f8e6687e7f7d76e46765bf0ec04ac",
+      "source_gap_before": " III. STORY OF THE FIFTY-SEVEN CENTS "
+    },
+    {
+      "id": "chapter-006",
+      "start": 124799,
+      "length": 15195,
+      "content_sha256": "ac6d6deef745e02db2184368f1f6f0953d2680c5b11beefc90676f4ae7565a14",
+      "source_gap_before": " IV. HIS POWER AS ORATOR AND PREACHER "
+    },
+    {
+      "id": "chapter-007",
+      "start": 140024,
+      "length": 15591,
+      "content_sha256": "0bc43fb80cf74dbf37082e3a0acbf20193c7b7e4bbbb4760093c887bd441e897",
+      "source_gap_before": " V. GIFT FOR INSPIRING OTHERS "
+    },
+    {
+      "id": "chapter-008",
+      "start": 155640,
+      "length": 19482,
+      "content_sha256": "d872d5bbf2207f06c5f2107f93d6f3c849c73788d4a8715e52cc826dccd7f830",
+      "source_gap_before": " VI. MILLIONS OF HEARERS "
+    },
+    {
+      "id": "chapter-009",
+      "start": 175157,
+      "length": 20972,
+      "content_sha256": "aecb700e176be275ac49a75f5cfe5fcaca38d77310dfa19ea9c6ef659023bfc5",
+      "source_gap_before": " VII. HOW A UNIVERSITY WAS FOUNDED "
+    },
+    {
+      "id": "chapter-010",
+      "start": 196160,
+      "length": 15640,
+      "content_sha256": "6c71713ca787e4e013627f0128d7c45f6dc8faf28cc5cff7b91defaca006e43d",
+      "source_gap_before": " VIII. HIS SPLENDID EFFICIENCY "
+    },
+    {
+      "id": "chapter-011",
+      "start": 211836,
+      "length": 14156,
+      "content_sha256": "560c691411ac158c4e02f6b7851548fcdad3256fb42d3dfc7fd5b8bfc83a31aa",
+      "source_gap_before": " IX. THE STORY OF ACRES OF DIAMONDS "
+    },
+    {
+      "id": "chapter-012",
+      "start": 226051,
+      "length": 12167,
+      "content_sha256": "eeabcea35e427b6cfb2ced2c22071fac72610b02035db420aa91695de9c12e41",
+      "source_gap_before": " FIFTY YEARS ON THE LECTURE PLATFORM By Russell H. Conwell "
+    }
+  ],
+  "prefix_classification": "TITLE_PAGE_TOC_PRODUCTION_CREDITS_PG_BOILERPLATE_ONLY",
+  "tail_classification": "PG_END_LICENSE_AND_TRAILER_ONLY",
+  "tail_sha256": "c660a919914af66816510c67a574ad42a3b5f5bef8abe75fad2888fa5e706d30",
+  "unclassified_narrative_gaps": [],
+  "selected_scope": "Complete selected electronic work, not other physical editions",
+  "source_or_chapter_changed": false,
+  "production_observed": false
+}

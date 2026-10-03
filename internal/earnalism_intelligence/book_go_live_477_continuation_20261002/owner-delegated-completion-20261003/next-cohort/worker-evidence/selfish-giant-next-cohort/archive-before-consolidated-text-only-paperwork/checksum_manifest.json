@@ -1,0 +1,66 @@
+{
+  "slug": "the-selfish-giant",
+  "generated_at": "2026-10-03T04:20:29.339226+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "c325df28d2a57c94b9124e95f241f9992d5ac821452c0dd592b35f03f6ac7e3e"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "12c1db2943a0b57aea333ed1870472ea8332d457093d4255185385a7a157e3b1"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "becaa05505a87f54f017f6ef2d80a921196ed281993a22a72bd2b1c3f4dd536c"
+    },
+    {
+      "file": "covers/back-delivery.webp",
+      "sha256": "14b007092896bd2d0e4396ba0ecb1e430650a7aa772f855a347a6269daa75e60"
+    },
+    {
+      "file": "covers/back-layout-repair.png",
+      "sha256": "6337be1964dfa48aedd7d35233cfdb84f422dd311545b265b9c259444f8795f0"
+    },
+    {
+      "file": "covers/back-original.png",
+      "sha256": "6903c7610ac6141b0f4d8d025e7e9fe9f347e2922996368ef7dd28fe8c18b511"
+    },
+    {
+      "file": "covers/front-delivery.webp",
+      "sha256": "777a773d9cebbf236f9bfb79d52d35ca7206c59fc38eb04d85a84abc480d98cd"
+    },
+    {
+      "file": "covers/front-layout-repair.png",
+      "sha256": "e01b95dc8d321678df5c9fe5e395728187ea03984cc69c59ae34471603fb7dc4"
+    },
+    {
+      "file": "covers/front-original.png",
+      "sha256": "f10e1353932821ab22a0d13b68a40394f06eb1c9a97b04e5e126897dfbb3fcc2"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "5bb55dc95aade157eedc8cb2e4255015af7426b38dc43692a3ae8d317a3e30e0"
+    },
+    {
+      "file": "production_audio_evidence.json",
+      "sha256": "5e23b03ab04c4d318d78fbd6bb8becafe284407fb6ecd7c61998d6a0c180cc42"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "ee2954132cfc8a9f8f1926eb6a36159011f0d9a6b60a41c5878b9de51c8c4330"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "16514ed5af14d72f8eddfbd6d5896ad4f0cc28181b4f8e21b351a065dd49fa0c"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "d5ce7da734364efdd9a2bd6eace1ee2df66bcfa0dcf7ea4e99d49502b330fc9c"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d"
+    }
+  ]
+}

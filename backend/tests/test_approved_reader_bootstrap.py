@@ -24,8 +24,29 @@ NEW_RELEASE_SLUGS = (
     "the-art-of-money-getting",
     "bn-035",
     "alices-adventures-in-wonderland",
+    'dsires-baby',
+    'sredni-vashtar',
+    'the-cop-and-the-anthem',
+    'the-open-window',
+    'the-selfish-giant',
+    'the-science-of-getting-rich',
+    'bn-066',
+    'lokrahasya',
+    'mrinalini',
+    'frankenstein',
+    'pride-and-prejudice',
+    'the-great-gatsby',
+    'the-secret-garden',
+    'the-time-machine',
+    'acres-of-diamonds',
+    'my-life-and-work',
+    'the-principles-of-scientific-management',
+    'the-wonderful-wizard-of-oz',
+    'book-5704b31005',
 )
 RELEASE_SLUGS = (SLUG, *NEW_RELEASE_SLUGS)
+# Independently bound exact 3200-character-policy page counts; no policy change.
+NEXT_COHORT_PAGE_COUNTS = {'dsires-baby': 4, 'sredni-vashtar': 4, 'the-cop-and-the-anthem': 5, 'the-open-window': 3, 'the-selfish-giant': 3, 'the-science-of-getting-rich': 45, 'bn-066': 87, 'lokrahasya': 54, 'mrinalini': 87, 'frankenstein': 144, 'pride-and-prejudice': 258, 'the-great-gatsby': 92, 'the-secret-garden': 146, 'the-time-machine': 70, 'acres-of-diamonds': 79, 'my-life-and-work': 174, 'the-principles-of-scientific-management': 78, 'the-wonderful-wizard-of-oz': 77, 'book-5704b31005': 5}
 ACTOR = "system:owner-authorized-reader-bootstrap-v1"
 PLAN_PATH = Path(server.__file__).parent / "data" / "approved_reader_bootstrap.json"
 
@@ -83,7 +104,7 @@ def setup(monkeypatch, slug=SLUG):
 def test_persisted_plan_exactly_matches_approved_scope_and_registered_decisions():
     plan = json.loads(PLAN_PATH.read_text())
     titles = plan["titles"]
-    assert len(titles) == 33
+    assert len(titles) == 52
     assert len({entry["slug"] for entry in titles}) == len(titles)
     assert {entry["slug"] for entry in titles} == set(server.CONTROLLED_LIVE_BOOK_SLUGS)
     accepted, revoked = server.load_production_registry()
@@ -116,7 +137,9 @@ def test_exact_approved_source_initializes_once_and_real_manifest_is_readable(mo
     first, manifest, previews, retained, second = asyncio.run(run())
     assert first[0]["status"] == "INITIALIZED"
     assert manifest["book_slug"] == slug
-    if slug == "the-student":
+    if slug in NEXT_COHORT_PAGE_COUNTS:
+        assert manifest["total_pages"] == NEXT_COHORT_PAGE_COUNTS[slug]
+    elif slug == "the-student":
         assert manifest["total_pages"] == 3  # Complete short story under the existing segmentation policy.
     else:
         assert manifest["total_pages"] > 3
@@ -170,7 +193,7 @@ def test_missing_authority_or_integrity_cannot_create_pages_or_pointer(monkeypat
     elif hold == "incomplete-source":
         server._reader_book_access_doc.return_value = None
     else:
-        entry["slug"] = "frankenstein"
+        entry["slug"] = "great-expectations"  # Retained exact footer-conflict hold; never released.
     result = asyncio.run(server._initialize_authorized_reader_release())
     assert result[0]["status"].startswith("HELD")
     assert not database.reader_content_segments.rows

@@ -1,0 +1,26 @@
+{
+  "schema": "earnalism.cover-delivery-derivation.v1",
+  "slug": "sredni-vashtar",
+  "state": "INACTIVE_PENDING_TWO_VISUAL_REVIEWS",
+  "method": "Single deterministic800x1200LANCZOSWebPquality72method6 from one bounded new original-derived layoutpair; no paid or imagegen calls",
+  "assets": {
+    "front": {
+      "source_sha256": "d6e93dc6a19f8901d69c66aadeaf630088a6235305f0f3799476153a08d3beae",
+      "path": "/workspace/scratch/181ef0a25f05/sredni-preparation-20261003/delivery-front.webp",
+      "sha256": "d946f65fa5d2c843b7d572a3374435c5fe52a3308cf620395e49fb36e0b6cb55",
+      "bytes": 20932,
+      "width": 800,
+      "height": 1200,
+      "url": "/assets/books/sredni-vashtar/front-d946f65f.webp"
+    },
+    "back": {
+      "source_sha256": "24ca0f1813af6cf4d989a2393fbd3671e4b2426c620bf65249a4693a494650c3",
+      "path": "/workspace/scratch/181ef0a25f05/sredni-preparation-20261003/delivery-back.webp",
+      "sha256": "c532935242fc0da1ab7a4526752dc1b1392a2f0cf17e3616d25cff644ee82351",
+      "bytes": 65832,
+      "width": 800,
+      "height": 1200,
+      "url": "/assets/books/sredni-vashtar/back-c5329352.webp"
+    }
+  }
+}

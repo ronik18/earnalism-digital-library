@@ -1,0 +1,46 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-the-science-of-getting-rich-proposed-reader-cover-display",
+  "edition_id": "the-science-of-getting-rich",
+  "operator_id": "reo-enterprise",
+  "status": "PENDING_REVIEW",
+  "components": {
+    "public_book": "481cec1d5841afa7c92a714867f406f734f345fb7b47ff3a5a7a98e9b373799d",
+    "reader_manifest": "a42883b4eb214ae086998672472b0f86c9709e550da35c87789f95564cdefdb7",
+    "source_evidence": "6324de50de9db456175bcd2cbecec794641fa8bdd322d2de2b49eaacc713a117",
+    "approval_evidence": "26722c153497866933400de4a8968c0760187f24fe348233a2e1cd8b700d7b95",
+    "checksum_manifest": "10a497aae2af2719e20a6fe3abcac8d27cdd673045340cb2c3a0b71fffdec567",
+    "publication_manifest": "5b6c86b79fa780e0a0936a7e1aa33acabc1bcf6db9590ce4d39b4c8df5af4596",
+    "cover_provenance": "9b6765a0a4af10b15cba3ad2fc315f754d3ea8ddaf9dea60e3ee2ff495d6731f",
+    "cover_delivery_derivation": "3f1272ff582220e60a68f13412fc665a35c6e4885bf29006894bdfffd45f36fc",
+    "cover_front_original_asset": "9fa719df44b5348b2dd694674fb7e4ba38438dd1e652ca70559081d67e88da15",
+    "cover_front_delivery_asset": "5ee48b1d245c70b1b8495f9a6b98636cc798d2bea96ff54aa4c3d6fa27becb28",
+    "cover_back_original_asset": "49cf4eb533e11cc92d253496e2945d700468b2a2e42b7aabf4c7d8dd3b590f09",
+    "cover_back_delivery_asset": "bda88117bdb0d7208f51afa3cab6dce74875f83943ebf7c2a74409a6a29477c4"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:35:50.622637+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1911, original publication 1910; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record. This isolated proposed new cover/component binding is NOT ACCEPTED; no authority, human approval, production fact or new artwork inferred. Prior exact text acceptance is preserved in preimages.",
+  "evidence_sha256": [
+    "cbb0f10031b0061839efa60f9fa11600bf283711c85843d0a49d45516e393052",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "2aaee1427a4611db85d2365a96ec11ec103f7438c956d97f5231124791e0657d",
+    "adc3fb17f24801597561e992d858e124c8d9b4c6e3bf7593d713e7a71d252744",
+    "55a8e552b9f74640c7bccc1d05db9d5197ec9dd3af558aceb4f9d3ea73d4949b",
+    "9b6765a0a4af10b15cba3ad2fc315f754d3ea8ddaf9dea60e3ee2ff495d6731f",
+    "3f1272ff582220e60a68f13412fc665a35c6e4885bf29006894bdfffd45f36fc"
+  ],
+  "accepted_by": "",
+  "conditions_satisfied": false
+}

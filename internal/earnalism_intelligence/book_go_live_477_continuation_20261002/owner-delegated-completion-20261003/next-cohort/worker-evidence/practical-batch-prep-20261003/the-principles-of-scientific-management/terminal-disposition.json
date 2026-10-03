@@ -1,0 +1,13 @@
+{
+  "slug": "the-principles-of-scientific-management",
+  "status": "INACTIVE_UNACCEPTED_TWO_INDEPENDENT_REVIEWS_REQUIRED",
+  "reason": "Initial 800x1200 delivery budget failed; one authorized delivery-only 600x900 derivation from byte-identical repaired PNG resolved budget. No second art remediation.",
+  "prior_observation": "first-delivery-budget-observation.json",
+  "prior_observation_sha256": "bb23abfc2f87835d4f4f51688dfa3034d9fcd471232616d6a05bb657d01b6ec0",
+  "typography_copy_repairs": 1,
+  "delivery_only_refinements": 1,
+  "original_repaired_front_png_exactly_reused": true,
+  "paid_calls": 0,
+  "publication_accepted": false,
+  "production_mutations": false
+}

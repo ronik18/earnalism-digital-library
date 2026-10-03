@@ -1,0 +1,45 @@
+{
+  "slug": "sredni-vashtar",
+  "state": "UNACCEPTED_INACTIVE_PACKAGE_REVIEW_ONLY",
+  "decision_file_sha256": "85dc94720a355b5741ce548a1e7639c768d1b985f1555e5b4d6a34037132ad73",
+  "decision_canonical_sha256": "b1482ac44de4d1e001999804dc4e23168649bd3d3c466e120eea676318db8fd1",
+  "controlled_checksums": 9,
+  "controlled_checksums_pass": true,
+  "source_evidence_byte_exact_preserved": true,
+  "chapters_byte_exact_preserved": true,
+  "root_backend_byte_identity": true,
+  "active_audio_claims_or_urls": [],
+  "audio_removed_from_effective_metadata": {
+    "public_book": [
+      "audio_asset_slug",
+      "audio_enabled",
+      "audiobook",
+      "audiobook_active_release",
+      "audiobook_assets",
+      "audiobook_assets_updated_at",
+      "audiobook_enabled",
+      "audiobook_legacy_release_descriptor_sha256",
+      "audiobook_manuscript_sha256",
+      "audiobook_model",
+      "audiobook_package_release_evidence",
+      "audiobook_packages",
+      "audiobook_provider",
+      "audiobook_release_descriptor_sha256",
+      "audiobook_style_profile",
+      "audiobook_voice",
+      "generate_audiobook"
+    ],
+    "reader_manifest": [
+      "audio_enabled",
+      "audiobook_active_release",
+      "audiobook_enabled",
+      "audiobook_legacy_release_descriptor_sha256",
+      "audiobook_manuscript_sha256",
+      "audiobook_package_release_evidence",
+      "audiobook_packages",
+      "audiobook_release_descriptor_sha256"
+    ]
+  },
+  "historical_preimages_preserved": true,
+  "publication_registry_allowlist_or_production_mutation": false
+}

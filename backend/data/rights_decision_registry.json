@@ -1,6 +1,6 @@
 {
   "schema_version": "earnalism.rights-decision-registry.v1",
-  "registry_id": "india-thirty-three-title-commercial-entitlement-reader-20261003",
+  "registry_id": "india-52-title-commercial-entitlement-reader-20261003",
   "accepted_records": {
     "india-20260922-a-ghost-story-reader-release": "caa2538805f8388e3216affae04aa6e3a941541395296d7bab17ed34fd725107",
     "india-20260922-the-tell-tale-heart-reader-release": "39010bea33d4b43790f98af1758fdeadc20625d4ab8df01e247bb143788bec39",
@@ -37,7 +37,26 @@
     "india-20261003-the-student-reader-cover-display-reviewed": "aa5f14c6d0ea1aa49f83c81127bbc6bf8f900314827dc5e6151669c86bfa2f24",
     "india-20261003-the-art-of-money-getting-reader-cover-display-reviewed": "09a110bbb1ba6983743cd2e7566726e753c85b2cdd56715de3a6ca83dbf13dc7",
     "india-20261003-bn-035-1922-text-reader-exact-cover": "6d197c694a86768a3ffdc74d8f65e6833375519f6b79cdd296bc307119ae17c7",
-    "india-20261003-alices-adventures-in-wonderland-reader-cover-display-reviewed": "cc0a571b73f1ae4b4e19cfeb62c1b88b152fb2145a8f6c943d51156387fad5ae"
+    "india-20261003-alices-adventures-in-wonderland-reader-cover-display-reviewed": "cc0a571b73f1ae4b4e19cfeb62c1b88b152fb2145a8f6c943d51156387fad5ae",
+    "india-20261003-dsires-baby-exact-reader-cover-prospective-accepted": "57db9bcdde0fe46ae9c0acc3d09785bc8a75195f2cded12e6c1aceca796b3ecf",
+    "india-20261003-sredni-vashtar-exact-reader-cover-prospective-accepted": "fd7320d44bc2f41134e5475ad93e5c4873c6bd739afe9e2a845858e24be9acb6",
+    "india-20261003-the-cop-and-the-anthem-exact-reader-cover-prospective-accepted": "b49d3490005727588f63161d9fd10e7a9eec82f04c33274c1712273e3656bc55",
+    "india-20261003-the-open-window-exact-reader-cover-prospective-accepted": "c50c87abb79a36605fcda119cde846baeee8089d24921685277709dbaee0b0d5",
+    "india-20261003-the-selfish-giant-exact-reader-cover-prospective-accepted": "80bdf11720255bb247bd55afdff73c09ea21f1cc4a013862667ae66a5409c550",
+    "india-20261003-the-science-of-getting-rich-exact-reader-cover-prospective-accepted": "e8ede6f82279947511c93ecff9f6828e6fadb027bb3bea21f9b85da8fc6f8567",
+    "india-20261003-bn-066-exact-reader-cover-prospective-accepted": "f36de6cdbee86a1c80fc0fcc8c5e17eef7cdf2aec458992e36ae2f2ac035e6f1",
+    "india-20261003-lokrahasya-exact-reader-cover-prospective-accepted": "49c5894d1e746ed53711643a68c98f54eabc939cbf88307a5556fccfd9b79a36",
+    "india-20261003-mrinalini-exact-reader-cover-prospective-accepted": "6a0aa9812889f4989bbf004debc20e2dfca800c15a97abbb990f514469c79cbf",
+    "india-20261003-frankenstein-exact-reader-cover-prospective-accepted": "0bfe3c7f5c78620216cb4f65e05eedf7c9faf52a521edccdf272c014b7c05bb3",
+    "india-20261003-pride-and-prejudice-exact-reader-cover-prospective-accepted": "a437c17426c3bd6567c3050be8f550c5be46a4554d5e7e94bc0715dafb13b328",
+    "india-20261003-the-great-gatsby-exact-reader-cover-prospective-accepted": "f17b90358e98262ca18747e81d40ea0cc4d75f4b7074c35131f299127e76df34",
+    "india-20261003-the-secret-garden-exact-reader-cover-prospective-accepted": "60cf63f5b0176ad3bf06c791851aa90be74be827feb1fa6fd145ff1a56badb65",
+    "india-20261003-the-time-machine-exact-reader-cover-prospective-accepted": "f142d82b591c9f91c656d03b904133db2b8ee46f5c504bd949e3204117bbd27e",
+    "india-20261003-acres-of-diamonds-exact-reader-cover-prospective-accepted": "f40a580d70199d348903af65598fb8e522845bcd66d7a6842374ba33ece2ffda",
+    "india-20261003-my-life-and-work-exact-reader-cover-prospective-accepted": "49002844e6106f70325af06cc1d5bbf2452018a4fa1bbe2aab63f3b1f4814080",
+    "india-20261003-the-principles-of-scientific-management-exact-reader-cover-prospective-accepted": "172c65e11230dfe6d05537e6a550cece29f312733f3dd8fc05689f617e4dc6bc",
+    "india-20261003-the-wonderful-wizard-of-oz-exact-reader-cover-prospective-accepted": "36b0f7498f3b93168db1b7b30fe9864041f0e303cb74ce211f377701907696e1",
+    "india-20261003-book-5704b31005-exact-reader-cover-prospective-accepted": "c469a1b1109688361c09eac0dd9996bd0abccea687213f5d90e83601652ac84e"
   },
   "historical_records": {
     "superseded_runtime_bindings": {
@@ -366,7 +385,197 @@
       "decision_id": "india-20261003-alices-adventures-in-wonderland-reader-cover-display-reviewed",
       "production_readback": "NOT_RUN",
       "authority": "owner prospective acceptance instruction 2026-10-03; two independent exact evidence reviews; normal protected release gates pending"
+    },
+    "controlled-dsires-baby": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "decision_id": "india-20261003-dsires-baby-exact-reader-cover-prospective-accepted",
+      "production_readback": "NOT_RUN_FOR_NEW_COHORT",
+      "authority": "Actual prospective automated owner-delegated acceptance; two independent exact accepted-package reviews; normal protected release gates remain required. No production observation inferred."
+    },
+    "controlled-sredni-vashtar": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "decision_id": "india-20261003-sredni-vashtar-exact-reader-cover-prospective-accepted",
+      "production_readback": "NOT_RUN_FOR_NEW_COHORT",
+      "authority": "Actual prospective automated owner-delegated acceptance; two independent exact accepted-package reviews; normal protected release gates remain required. No production observation inferred."
+    },
+    "controlled-the-cop-and-the-anthem": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "decision_id": "india-20261003-the-cop-and-the-anthem-exact-reader-cover-prospective-accepted",
+      "production_readback": "NOT_RUN_FOR_NEW_COHORT",
+      "authority": "Actual prospective automated owner-delegated acceptance; two independent exact accepted-package reviews; normal protected release gates remain required. No production observation inferred."
+    },
+    "controlled-the-open-window": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "decision_id": "india-20261003-the-open-window-exact-reader-cover-prospective-accepted",
+      "production_readback": "NOT_RUN_FOR_NEW_COHORT",
+      "authority": "Actual prospective automated owner-delegated acceptance; two independent exact accepted-package reviews; normal protected release gates remain required. No production observation inferred."
+    },
+    "controlled-the-selfish-giant": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "decision_id": "india-20261003-the-selfish-giant-exact-reader-cover-prospective-accepted",
+      "production_readback": "NOT_RUN_FOR_NEW_COHORT",
+      "authority": "Actual prospective automated owner-delegated acceptance; two independent exact accepted-package reviews; normal protected release gates remain required. No production observation inferred."
+    },
+    "controlled-the-science-of-getting-rich": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "decision_id": "india-20261003-the-science-of-getting-rich-exact-reader-cover-prospective-accepted",
+      "production_readback": "NOT_RUN_FOR_NEW_COHORT",
+      "authority": "Actual prospective automated owner-delegated acceptance; two independent exact accepted-package reviews; normal protected release gates remain required. No production observation inferred."
+    },
+    "controlled-bn-066": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "decision_id": "india-20261003-bn-066-exact-reader-cover-prospective-accepted",
+      "production_readback": "NOT_RUN_FOR_NEW_COHORT",
+      "authority": "Actual prospective automated owner-delegated acceptance; two independent exact accepted-package reviews; normal protected release gates remain required. No production observation inferred."
+    },
+    "controlled-lokrahasya": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "decision_id": "india-20261003-lokrahasya-exact-reader-cover-prospective-accepted",
+      "production_readback": "NOT_RUN_FOR_NEW_COHORT",
+      "authority": "Actual prospective automated owner-delegated acceptance; two independent exact accepted-package reviews; normal protected release gates remain required. No production observation inferred."
+    },
+    "controlled-mrinalini": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "decision_id": "india-20261003-mrinalini-exact-reader-cover-prospective-accepted",
+      "production_readback": "NOT_RUN_FOR_NEW_COHORT",
+      "authority": "Actual prospective automated owner-delegated acceptance; two independent exact accepted-package reviews; normal protected release gates remain required. No production observation inferred."
+    },
+    "controlled-frankenstein": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "decision_id": "india-20261003-frankenstein-exact-reader-cover-prospective-accepted",
+      "production_readback": "NOT_RUN_FOR_NEW_COHORT",
+      "authority": "Actual prospective automated owner-delegated acceptance; two independent exact accepted-package reviews; normal protected release gates remain required. No production observation inferred."
+    },
+    "controlled-pride-and-prejudice": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "decision_id": "india-20261003-pride-and-prejudice-exact-reader-cover-prospective-accepted",
+      "production_readback": "NOT_RUN_FOR_NEW_COHORT",
+      "authority": "Actual prospective automated owner-delegated acceptance; two independent exact accepted-package reviews; normal protected release gates remain required. No production observation inferred."
+    },
+    "controlled-the-great-gatsby": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "decision_id": "india-20261003-the-great-gatsby-exact-reader-cover-prospective-accepted",
+      "production_readback": "NOT_RUN_FOR_NEW_COHORT",
+      "authority": "Actual prospective automated owner-delegated acceptance; two independent exact accepted-package reviews; normal protected release gates remain required. No production observation inferred."
+    },
+    "controlled-the-secret-garden": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "decision_id": "india-20261003-the-secret-garden-exact-reader-cover-prospective-accepted",
+      "production_readback": "NOT_RUN_FOR_NEW_COHORT",
+      "authority": "Actual prospective automated owner-delegated acceptance; two independent exact accepted-package reviews; normal protected release gates remain required. No production observation inferred."
+    },
+    "controlled-the-time-machine": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "decision_id": "india-20261003-the-time-machine-exact-reader-cover-prospective-accepted",
+      "production_readback": "NOT_RUN_FOR_NEW_COHORT",
+      "authority": "Actual prospective automated owner-delegated acceptance; two independent exact accepted-package reviews; normal protected release gates remain required. No production observation inferred."
+    },
+    "controlled-acres-of-diamonds": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "decision_id": "india-20261003-acres-of-diamonds-exact-reader-cover-prospective-accepted",
+      "production_readback": "NOT_RUN_FOR_NEW_COHORT",
+      "authority": "Actual prospective automated owner-delegated acceptance; two independent exact accepted-package reviews; normal protected release gates remain required. No production observation inferred."
+    },
+    "controlled-my-life-and-work": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "decision_id": "india-20261003-my-life-and-work-exact-reader-cover-prospective-accepted",
+      "production_readback": "NOT_RUN_FOR_NEW_COHORT",
+      "authority": "Actual prospective automated owner-delegated acceptance; two independent exact accepted-package reviews; normal protected release gates remain required. No production observation inferred."
+    },
+    "controlled-the-principles-of-scientific-management": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "decision_id": "india-20261003-the-principles-of-scientific-management-exact-reader-cover-prospective-accepted",
+      "production_readback": "NOT_RUN_FOR_NEW_COHORT",
+      "authority": "Actual prospective automated owner-delegated acceptance; two independent exact accepted-package reviews; normal protected release gates remain required. No production observation inferred."
+    },
+    "controlled-the-wonderful-wizard-of-oz": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "decision_id": "india-20261003-the-wonderful-wizard-of-oz-exact-reader-cover-prospective-accepted",
+      "production_readback": "NOT_RUN_FOR_NEW_COHORT",
+      "authority": "Actual prospective automated owner-delegated acceptance; two independent exact accepted-package reviews; normal protected release gates remain required. No production observation inferred."
+    },
+    "controlled-book-5704b31005": {
+      "status": "PREVIEW_RELEASED_ENTITLEMENT_REQUIRED_FROM_PAGE_4",
+      "countries": [
+        "IN"
+      ],
+      "access_mode": "COMMERCIAL_ENTITLEMENT",
+      "decision_id": "india-20261003-book-5704b31005-exact-reader-cover-prospective-accepted",
+      "production_readback": "NOT_RUN_FOR_NEW_COHORT",
+      "authority": "Actual prospective automated owner-delegated acceptance; two independent exact accepted-package reviews; normal protected release gates remain required. No production observation inferred."
     }
   },
-  "non_activation_note": "Thirty-three exact India text editions are configured as a release candidate; four Oct3 additions remain pending protected checks/deployment/canary. Production observations and canonical versions are not inferred. Audio disabled; existing versions preserved."
+  "non_activation_note": "52 exact India text editions configured; 19 prospective additions remain behind protected exact-head normal CI/merge/deploy/canary/readback. Prior 33 deployed under documented narrow observation waiver. No production canonical versions inferred; audio disabled and existing versions preserved."
 }

@@ -1,0 +1,98 @@
+{
+  "id": "controlled-the-cop-and-the-anthem",
+  "slug": "the-cop-and-the-anthem",
+  "title": "The Cop and the Anthem",
+  "subtitle": "",
+  "author": "O. Henry",
+  "category_slug": "literary-fiction",
+  "short_description": "A homeless man tries repeatedly to get arrested to spend winter in jail — and fails every time until it is too late.",
+  "description": "Soapy tries everything to get arrested — disorderly conduct, theft, harassment — and fails each time. Then a church anthem moves him to reform. Then a policeman arrests him. O. Henry's most perfectly constructed irony.",
+  "cover_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+  "coverImage": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+  "cover_image": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-inactive.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-inactive.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-inactive.webp",
+  "cover_status": "INACTIVE_UNACCEPTED_REPAIR_PREPARED",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "10 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "O. Henry (1862–1910) was an American short story writer celebrated for his wit, wordplay, and surprise endings.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Cop and the Anthem",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 2306,
+      "reading_minutes": 10,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    }
+  ],
+  "source_hash": "6bb719852f2f0eb33db25613124d2d3c522dd3b879c187667ab31072bb2fb48d",
+  "content_hash": "77a6d1c7ff6162cc7aad47b950666c6bb1dedf0beb55a08f3f476e27e57bd3ab",
+  "provenance_hash": "e56b326703e2719cda7eb81b9dc04edbd23eed61ce89cbece41db9338549565c",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1910, verified lifetime collection publication 1906 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "READY_BEHIND_SERIALIZED_GLOBAL_RELEASE_GATE",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "draft",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": false,
+  "showInHomepage": false,
+  "allowPublicReading": false,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_provider": "",
+  "audiobook_voice": "",
+  "audio_asset_slug": "",
+  "audiobook_assets": {},
+  "audiobook": {},
+  "audiobook_assets_updated_at": "",
+  "created_at": "2026-07-03T20:07:48Z",
+  "updated_at": "2026-07-03T20:07:48Z",
+  "cover_dimensions": {
+    "front": [
+      800,
+      1200
+    ],
+    "back": [
+      800,
+      1200
+    ]
+  },
+  "cover_category": "LEGACY_OWNER_DESIGNED_GRAPHICAL_DERIVATIVE",
+  "publication_authorization_sha256": "655803b93e82c1316b575b84e8318db27f4111e293d6537b924991525d90aaf6"
+}

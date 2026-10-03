@@ -1,0 +1,40 @@
+from pathlib import Path
+import json,hashlib,unicodedata,io,ast
+from PIL import Image,ImageDraw,ImageFont,ImageOps,ImageChops
+P=Path('/workspace/scratch/181ef0a25f05');R=Path('/tmp/earnalism-main-approved-integration');W=P/'practical-batch-prep-20261003';O=P/'new-acceptance-review-a';h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();norm=lambda t:' '.join(unicodedata.normalize('NFC',t).split())
+module=ast.parse((W/'prepare_batch.py').read_text());cfg=ast.literal_eval(next(x for x in module.body if isinstance(x,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='CONFIG' for t in x.targets)).value);fn=[x for x in module.body if isinstance(x,ast.FunctionDef) and x.name in ['font','center','panel','lines']];ns={'ImageFont':ImageFont,'FONT':Path('/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf')};exec(compile(ast.Module(body=fn,type_ignores=[]),'private-render-functions','exec'),ns)
+for s in cfg:
+ base=W/s;d=base/'inactive-candidate';v=json.loads((base/'preparation-validation.json').read_text());prov=json.loads((d/'cover_provenance.json').read_text());dec=json.loads((d/'rights_decision.json').read_text());cs=json.loads((d/'checksum_manifest.json').read_text())['files'];book=json.loads((d/'public_book.json').read_text());pre=base/'preimages/root';proof=json.loads((base/'source-proof.json').read_text());source=base/'recovered/source.txt';assert h(source)==proof['source_sha256'];txt=norm(source.read_text());cursor=0;matched=[]
+ chs=sorted((d/'chapters').glob('*.json'));assert len(chs)==proof['chapter_count']
+ for ch,oldmatch in zip(chs,proof['matched_chapters']):
+  chd=json.loads(ch.read_text());body=norm(chd['content']);pos=txt.find(body,cursor);assert pos>=0;gap=txt[cursor:pos];assert pos==oldmatch['start'] and len(body)==oldmatch['length'] and gap==oldmatch['source_gap_before'];assert h(ch)==h(pre/'chapters'/ch.name);matched.append({'id':chd['id'],'source_gap_before':gap,'start':pos,'length':len(body)});cursor=pos+len(body)
+ tail=txt[cursor:];assert hashlib.sha256(tail.encode()).hexdigest()==proof['tail_sha256'];assert not tail.strip() or tail.lstrip().startswith('*** END OF THE PROJECT GUTENBERG');assert h(d/'source_evidence.json')==h(pre/'source_evidence.json') and h(d/'highlight_sync.json')==h(pre/'highlight_sync.json');assert all(h(d/x['file'])==x['sha256'] for x in cs)
+ resolved={k:d/(k+'.json') for k in dec['components']};resolved.update(cover_front_asset=d/'covers/front.png',cover_back_asset=d/'covers/back.png',cover_front_delivery=base/v['delivery_assets'][0]['delivery_file'],cover_back_delivery=base/v['delivery_assets'][1]['delivery_file']);assert all(h(resolved[k])==x for k,x in dec['components'].items());assert dec['status']=='PROPOSED' and not dec['conditions_satisfied'];assert h(R/prov['owner_declaration']['path'])==prov['owner_declaration']['sha256'];assets=[];c=cfg[s]
+ for a,tp in zip(v['delivery_assets'],prov['derivative_lineage']['typography_overlay_proof']):
+  side=a['kind'];orig=Image.open(base/prov['original_assets_preserved'][side]['file']).convert('RGBA');prepared=Image.open(d/a['source_file']).convert('RGBA');assert h(base/prov['original_assets_preserved'][side]['file'])==prov['original_assets_preserved'][side]['sha256'];assert h(ns['FONT'])==tp['font_file_sha256'] and h(W/'DejaVu-font-license.txt')==tp['font_license_sha256'];m=Image.new('L',orig.size,0)
+  for box in tp['precise_masks']:ImageDraw.Draw(m).rectangle(box,fill=255)
+  diff=ImageChops.difference(orig,prepared).convert('RGB');outside=ImageChops.multiply(diff,Image.merge('RGB',(ImageChops.invert(m),)*3)).getbbox() is None;assert outside
+  im=orig.copy();draw=ImageDraw.Draw(im)
+  if side=='front':
+   box=c['front_title'];ns['panel'](draw,box,c)
+   for i,t in enumerate(c['title']):ns['center'](draw,box,c['front_y']+i*c['front_step'],t,c['front_font'],c['fg'])
+   if c['front_author']:
+    box=c['front_author'];ns['panel'](draw,box,c);ns['center'](draw,box,box[1]+17,book['author'],c['front_author_font'],c['fg'])
+   else:ns['center'](draw,c['front_title'],365,book['author'],c['front_author_font'],c['fg'])
+   for box in c.get('additional_front_masks',[]):draw.rectangle(box,fill=c['bg'])
+  else:
+   if c.get('back_title_author'):
+    box=c['back_title_author'];ns['panel'](draw,box,c)
+    for i,t in enumerate(c['title']):ns['center'](draw,box,c['back_title_y']+i*85,t,c['back_font'],c['fg'])
+    ns['center'](draw,box,c['back_author_y'],book['author'],c['back_author_font'],c['fg'])
+    for i,t in enumerate(ns['lines'](draw,book['short_description'],29,box[2]-box[0]-70)):ns['center'](draw,box,885+i*47,t,29,c['fg'])
+   else:
+    box=c['back_title'];ns['panel'](draw,box,c)
+    for i,t in enumerate(c['title']):ns['center'](draw,box,c['back_title_y']+i*(45 if s=='the-principles-of-scientific-management' else 135 if s=='acres-of-diamonds' else 85),t,c['back_font'],c['fg'])
+    box=c['back_author'];ns['panel'](draw,box,c);ns['center'](draw,box,c['back_author_y'],book['author'],c['back_author_font'],c['fg'])
+   for box in c.get('additional_back_masks',[]):draw.rectangle(box,fill=c['bg'])
+  buf=io.BytesIO();im.save(buf,'PNG',optimize=False,compress_level=9);assert hashlib.sha256(buf.getvalue()).hexdigest()==a['source_sha256'];sz=tuple(a['delivery_dimensions']);fitted=ImageOps.contain(im.convert('RGB'),sz,Image.Resampling.LANCZOS);canvas=Image.new('RGB',sz,c['bg'][:3]);canvas.paste(fitted,((sz[0]-fitted.width)//2,(sz[1]-fitted.height)//2));buf=io.BytesIO();canvas.save(buf,'WEBP',quality=64,method=6);assert hashlib.sha256(buf.getvalue()).hexdigest()==a['delivery_sha256'];assert h(base/a['delivery_file'])==a['delivery_sha256'];assets.append(dict(a,original_sha256=prov['original_assets_preserved'][side]['sha256'],outside_mask_RGB_exact=True,png_recipe_exact=True,webp_recipe_exact=True,budget_pass=a['delivery_bytes']<=(80000 if side=='front' else 180000)))
+ row={'slug':s,'status':'PASS_SOURCE_ART_PREPARATION_PENDING_ROOT_ACCEPTANCE' if s!='bharat-at-the-crossroads' else 'TERMINAL_VISUAL_HOLD_DROP_ACTIVE_PLAN','reviewer':'independent-reviewer-A','source_proof_actual_reproduction':{'raw_sha256':h(source),'complete_ordered_bodies':matched,'tail':tail[:150],'source_scope':proof['selected_scope'],'classification':proof['prefix_classification'],'all_gaps_reproduced':True},'assets':assets,'fresh_actual_png_webp_visual_review':'PASS_LEGIBLE_THEMATIC_GRAPHICS_AND_CREDITS' if s!='bharat-at-the-crossroads' else 'HOLD_CLIPPED_FRONT_SUBTITLE_ORIGINAL_LOWER_HALF_REMAINS_UNDER_ONCE_REPAIRED_TITLE_PANEL','prior_IN_text_basis_preserved':json.loads((pre/'rights_decision.json').read_text())['basis'],'checkchains_verified':True,'font_owner_provenance_exact':True,'publication_accepted':False,'production_observed':False,'canonical_mutations':False,'rights_decision_raw_sha256':h(d/'rights_decision.json'),'inventory':{str(f.relative_to(d)):h(f) for f in d.rglob('*') if f.is_file()},'next_gate':'Fresh actual prospective root acceptance and independent accepted binding review; global serialized release gate afterPR510 normalCI/merge/deploy/canary/readback.'}
+ if s=='bharat-at-the-crossroads':row['terminal_reason']='New title mask[72,50,982,485] cuts through retained original subtitle; actual PNG/WebP line visibly partial. Sole art remedy exhausted. Preserve complete owner manuscript/art/version/prior rights facts; no second art repair.';row['audio_paperwork_also_unapproved']='Effective reader.audiobook URL and approval.manual_listening_approval remain historical positives; cannot pass runtime binding; archive and neutralize only if ever separately re-cleared.'
+ if s=='my-life-and-work':row['aesthetic_limitations']='Several plain opaque removal rectangles remain visible around retained thematic portrait/car; precise explained trademark/unsupported quote removal, overall graphical cover and legibility preserved. No contrary portrait-origin fact inferred from visual similarity.'
+ out=O/(s+'-practical-preparation-review-a-v1.json');assert not out.exists();out.write_text(json.dumps(row,ensure_ascii=False,indent=2)+'\n');print(s,h(out),flush=True)

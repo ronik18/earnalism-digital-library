@@ -1,0 +1,155 @@
+{
+  "schema": "earnalism.proposed-exact-cover-binding.v1",
+  "slug": "the-wonderful-wizard-of-oz",
+  "status": "ACCEPTED_EXACT_OWNER_PROVIDED_COMPONENTS_UNDER_DIRECT_OWNER_DECLARATION",
+  "owner_authority": "Issue #477 owner directive5949652699 and actual direct owner-created-cover provenance update on2026-10-03; no human approval inferred",
+  "existing_text_decision": {
+    "decision_id": "india-20261002-the-wonderful-wizard-of-oz-pg55-noncover-text",
+    "sha256": "d5ebad999f3bdc6df673fef639cdaaa73b83884eb36b6962425a318da5f2d93e",
+    "components": {
+      "public_book": "2df5b76950fd3c72456607a7e8942cdf71aeab5bc4f70c040296637f60753452",
+      "reader_manifest": "496a0323acfc6d68dbc5bb5b434c1adef33e18cf3260372585494ccb6fee26af",
+      "source_evidence": "7ec444ed90caa41fb950757933ee7399ef94fceab855bdd8c3e52a6806358ec5",
+      "approval_evidence": "310686fe16930425d0de93fd297565f860bbd6adb797494feacc6a365bb92c21",
+      "checksum_manifest": "a57da251aa38a18cdcd7e451df10a6cf0cdbbbbfcd03255032c6538afcaf4bd7",
+      "publication_manifest": "83c36491be6b2d7f33e214c9163b86c19358ff572c79294da7baa0364db16e3c"
+    },
+    "source_sha256": "969bffab7740d4d8a0bac332d78bd0152ad4a40a2efc52f06c74a9bb6120be75",
+    "content_sha256": "4b174cd456358387fe1bbd65667a783ae52d7b4f0475f1c570a80132c847b18e",
+    "chapter_count": 25
+  },
+  "owner_design_declaration": {
+    "path": "owner_artwork_declaration.json",
+    "sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "statement": "Actual direct instruction identifies Ronik Basak-created front/back covers as owner-provided artwork with owner-held copyright and acceptable publication provenance; exact recovered persisted pair only.",
+    "human_approval_inferred": false
+  },
+  "original_front": {
+    "kind": "front",
+    "path": "/workspace/scratch/181ef0a25f05/wizard-preparation-20261003/original-front.png",
+    "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291629/earnalism/covers/front/cover_f3e2e134-a431-49b3-a751-1762831a0b20.png",
+    "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291629/earnalism/covers/front/cover_f3e2e134-a431-49b3-a751-1762831a0b20.png",
+    "http_status": 200,
+    "sha256": "80fbd30875f8b715fb580732f9eef2d46bc7ddc74d50cd41d5276dbfd60ec32a",
+    "bytes": 3725148,
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGB",
+    "request_count": 1,
+    "redirects_allowed": false,
+    "retrieved_at": "2026-10-03T05:42:42.807438+00:00",
+    "content_type": "image/png"
+  },
+  "original_back": {
+    "kind": "back",
+    "path": "/workspace/scratch/181ef0a25f05/wizard-preparation-20261003/original-back.png",
+    "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291632/earnalism/covers/back/back_cover_f3e2e134-a431-49b3-a751-1762831a0b20.png",
+    "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291632/earnalism/covers/back/back_cover_f3e2e134-a431-49b3-a751-1762831a0b20.png",
+    "http_status": 200,
+    "sha256": "29204906556020adbbdb10a89b7fd9b26f08703f6327a0de63cdb0d50b8821fc",
+    "bytes": 3489547,
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGB",
+    "request_count": 1,
+    "redirects_allowed": false,
+    "retrieved_at": "2026-10-03T05:42:51.263730+00:00",
+    "content_type": "image/png"
+  },
+  "delivery": {
+    "front": {
+      "source_sha256": "80fbd30875f8b715fb580732f9eef2d46bc7ddc74d50cd41d5276dbfd60ec32a",
+      "path": "/workspace/scratch/181ef0a25f05/wizard-preparation-20261003/delivery/front-delivery.webp",
+      "sha256": "33ecb0dbd64dd974cbcc0a36ea6efacde0b4a5b3eb9123b7f1c1f97b1b0154b6",
+      "bytes": 72988,
+      "width": 500,
+      "height": 750,
+      "url": "/assets/books/the-wonderful-wizard-of-oz/front-33ecb0db.webp"
+    },
+    "back": {
+      "source_sha256": "29204906556020adbbdb10a89b7fd9b26f08703f6327a0de63cdb0d50b8821fc",
+      "path": "/workspace/scratch/181ef0a25f05/wizard-preparation-20261003/delivery/back-delivery.webp",
+      "sha256": "02d62ca44ac984c5a078ab2298d5fdc513861b7876374043d3ffa3b812ced107",
+      "bytes": 67348,
+      "width": 500,
+      "height": 750,
+      "url": "/assets/books/the-wonderful-wizard-of-oz/back-02d62ca4.webp"
+    }
+  },
+  "artwork_category": "RECOVERED_OWNER_PROVIDED_ORIGINAL_GRAPHICS_WITH_FULL_FRAME_WEBP_DELIVERY",
+  "art_or_copy_changes": false,
+  "creation_method": "UNKNOWN_NOT_INFERRED_OWNER_DELEGATION_SUPERSEDES_PROCEDURAL_CONSTRUCTION_DEFERRAL",
+  "art_repairs": 0,
+  "paid_calls": 0,
+  "evidence_sha256": {
+    "original_cover_receipt": "6253d6df5544a0226495a8a73b6c6a00f96e5037037db7656dd1a8326de36d2f",
+    "delivery_receipt": "379ede32b7d337a7b22a0db950e30ac52f972e717d3b75da1143d1e3c3aafc05",
+    "delivery_renderer": "ff3cf668b08e534adaefd57998208efa3422efcdf01aa9d25a8aabcc0d662a59",
+    "owner_artwork_declaration": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "preimage_inventory": "4f570611cb51d024ba9b29b7b5aef7ca2c7a64f2ffd48a41cf630e458f70ad19",
+    "reused_complete_source_boundary_proof": "b477cd253c51a2ce5ccffd622dfbc5dc7e5cd5b084a53467e7deebb04fd5296e",
+    "whole_work_verification_inventory": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e"
+  },
+  "scope": {
+    "territories": [
+      "IN"
+    ],
+    "uses": [
+      "catalog_metadata",
+      "cover_display",
+      "reader_preview",
+      "reader_delivery",
+      "reading_pass_session",
+      "reading_pass_renewal"
+    ],
+    "publication_approved": true,
+    "production_activation": false,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "audio_urls": [],
+    "listen_exposure": false,
+    "checkout": false,
+    "payments": false
+  },
+  "preservation": {
+    "source_text_license_chapters_versions_unchanged": true,
+    "all_root_backend_content_preimages_archived": true,
+    "older_audio_claims_not_propagated": true
+  },
+  "source_proof_reuse": {
+    "retained_historical_whole_narrative_boundary_evidence": true,
+    "ordered25_current_content_hashes_rechecked": "PASS",
+    "aggregate_content_sha256": "4b174cd456358387fe1bbd65667a783ae52d7b4f0475f1c570a80132c847b18e",
+    "new_source_requests": 0,
+    "reader_scope": "L.FrankBaum1900originalEnglishauthorIntroduction+24chapters; originalsourceillustrationsnotimported",
+    "runtime_observed": false,
+    "production_observed": false
+  },
+  "runtime_or_production_observed": false,
+  "accepted_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+  "accepted_at": "2026-10-03T05:57:24.767676+00:00",
+  "original_creator": "Ronik Basak, as named by the actual direct owner declaration",
+  "owner_held_copyright_basis": {
+    "file": "owner_artwork_declaration.json",
+    "sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "scope": "Exact Ronik Basak owner-created front/back artwork only; no text rights or human review signature inferred."
+  },
+  "commercial_use_authorized": true,
+  "cover_display_approved": true,
+  "visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+  "independent_reviews": {
+    "review_a": {
+      "file": "evidence/review_a.json",
+      "sha256": "a034ba1b836c80898ec9a4ccbf5268c09839bd7d9c6b47169507657b74bd7878"
+    },
+    "review_b": {
+      "file": "evidence/review_b.json",
+      "sha256": "7a7306dd7ddd6dd0fc680ca49045b75f83f76592af015ea99d67530892fa804d"
+    }
+  },
+  "production_observed": false,
+  "runtime_release_authorized": false,
+  "audio_authorized": false,
+  "publication_activation_authorized": false,
+  "acceptance_scope": "Exact owner-provided artwork and reviewed preserved-art derivatives/deliveries, India commercial text Reader cover display. Unknown original construction methods remain unknown; the owner decision supersedes external procedural artwork clearance. Text, source, visual quality and release gates remain independent."
+}

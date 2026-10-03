@@ -1,0 +1,54 @@
+{
+  "slug": "sredni-vashtar",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "source_hash": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
+  "content_hash": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+  "provenance_hash": "8d472e6cdc272f1b341c183654a57eab65f521f9a26ed0bb3b30ee93a7354468",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "approved_to_publish": true,
+  "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_COVER_PUBLICATION_ACCEPTANCE",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "audiobook_use_approved": false,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "publication_authorization_sha256": "1a84d6e201eda4f3c1055f835f541b103ec1264e8bb5236bdbed46b6d2b22705",
+  "cover_provenance_sha256": "09e2a3d459645edd4d8deb67c1669a661f64209ec7eae96d2caf3ba2af6d463b",
+  "production_observed": false,
+  "runtime_observed": false,
+  "historical_metadata_preserved_only_in_preimages": true,
+  "actual_prospective_acceptance": {
+    "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+    "accepted_at": "2026-10-03T04:59:53.954767+00:00",
+    "evidence": {
+      "review_a": {
+        "file": "evidence/review_a.json",
+        "sha256": "cbb2b42bd8aa85419549eaf838e9884069889482ae7bd8fd5d5280e34ab55f59"
+      },
+      "review_b": {
+        "file": "evidence/review_b.json",
+        "sha256": "91c752175d2b576a1b43269645b72511a23eadd5d6200df0c65a1ee1d3794c0a"
+      }
+    },
+    "production_observed": false,
+    "canonical_version_observed": false,
+    "global_gate": "SERIAL_INTEGRATION_AFTER_PR510_AND_NORMAL_PROTECTED_CI_MERGE_DEPLOY_CANARY"
+  },
+  "independent_reviews": {
+    "review_a": {
+      "file": "evidence/review_a.json",
+      "sha256": "cbb2b42bd8aa85419549eaf838e9884069889482ae7bd8fd5d5280e34ab55f59"
+    },
+    "review_b": {
+      "file": "evidence/review_b.json",
+      "sha256": "91c752175d2b576a1b43269645b72511a23eadd5d6200df0c65a1ee1d3794c0a"
+    }
+  },
+  "qa_scope": "Two independent passing exact preparation reviews: complete edition-bound source, preserved owner artwork derivative lineage, licensed typography, exact delivery and package integrity. Audio and production observations excluded.",
+  "cover_front_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+  "cover_back_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+  "binding_review_status": "PENDING_TWO_FRESH_ACCEPTED_PACKAGE_REVIEWS"
+}

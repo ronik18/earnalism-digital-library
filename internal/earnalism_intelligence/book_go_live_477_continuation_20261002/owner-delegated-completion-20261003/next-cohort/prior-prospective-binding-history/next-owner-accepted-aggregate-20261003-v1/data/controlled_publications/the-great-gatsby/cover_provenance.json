@@ -1,0 +1,399 @@
+{
+  "schema": "earnalism.cover-provenance.v1",
+  "slug": "the-great-gatsby",
+  "historical_prepared_exact_component_evidence": {
+    "schema": "earnalism.classics-inactive-preparation.v1",
+    "slug": "the-great-gatsby",
+    "status": "INACTIVE_UNACCEPTED",
+    "prepared_at": "2026-10-03T04:56:10.390672+00:00",
+    "category": "LEGACY_OWNER_DESIGNED_GRAPHICAL_COVER_DELIVERY_DERIVATIVE",
+    "owner_design_fact": {
+      "source": "/workspace/scratch/006ea59bb0f7/book-go-live-477/controller-corrections.json",
+      "sha256": "24e8f7f409db65ab0c4b5f3bf1a1d10072f3c6634d765ba2abfb118740a569b6",
+      "statement": "Owner states all front and back covers are designed by the owner.",
+      "scope": "COVER_DESIGN_ONLY_NOT_TEXT_RIGHTS_OR_RUNTIME_RELEASE"
+    },
+    "original_generation_method": "NOT_INFERRED",
+    "title_author_gate": {
+      "required_unconditionally": true,
+      "stored_title": "The Great Gatsby",
+      "stored_author": "F. Scott Fitzgerald",
+      "licensed_deterministic_typography_overlay": true,
+      "font_file": "frontend/public/assets/fonts/eb-garamond-400.ttf",
+      "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+      "independent_exact_review_required": true,
+      "font_license_file": "frontend/public/assets/fonts/EB-GARAMOND-OFL.txt",
+      "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7"
+    },
+    "source_binding": {
+      "existing_text_decision_id": "india-20261002-the-great-gatsby-pg64317-noncover-text",
+      "source_sha256": "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35",
+      "content_sha256": "8cdf90ce5cf418a4d40e7e822c734f52c2392c648e19537cd097b38a53050e34",
+      "chapter_count": 10,
+      "all_content_hashes_match_exact_boundary_receipt": true,
+      "boundary_receipt_path": "internal/legal/catalogue_clearance_20261002/english/current_whole_work_boundary_verification.json",
+      "boundary_receipt_file_sha256": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e",
+      "existing_selected_narrative_complete_boundary_evidence_reused": true,
+      "no_new_source_fetch": true,
+      "containment_alone_not_treated_as_complete": true
+    },
+    "boundary_receipt": {
+      "slug": "the-great-gatsby",
+      "verified_at": "2026-10-02T03:42:24.662170+00:00",
+      "selected_edition_scope": "Project Gutenberg #64317; exact selected original-author text; verified lifetime work publication 1925; excludes anthology editor/art and other title components",
+      "raw_source_sha256": "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35",
+      "reader_aggregate_sha256": "8cdf90ce5cf418a4d40e7e822c734f52c2392c648e19537cd097b38a53050e34",
+      "chapter_count": 10,
+      "ordered_chapter_hashes": {
+        "chapter-000": "8e042f367cf8d6d00cff551155f51835958d370ffc18dc1d32b034fb2134afb0",
+        "chapter-001": "e18f148e1a4c37a974853160cbcde26b38bb540990f026ea2c3b6598b48fb991",
+        "chapter-002": "c88bbfd8975bfda97c07dae3d8464bcffa0775ee598af3d31cb0813cde4df32f",
+        "chapter-003": "b6830f0fe1e12a07b0afd008fe6096618e4edca6583106610c3db895f8c9d424",
+        "chapter-004": "f14a9c319d9cd6585be3aff2ee3bc8fb596b415309c0fdb9bd1f1cbe09d8bda3",
+        "chapter-005": "7ff88b9272c934215b40f480ec2479be280d4a7f0cf910864f3791f21f42591a",
+        "chapter-006": "5460677bf721f9da48c9cb1ef22f4077ae5fd937619820de8b6659dfba00ca4c",
+        "chapter-007": "1232638642e738d518e4fe06e365cf3b9fdbc4e263abc4ab39a628878ae5cfb3",
+        "chapter-008": "da9e62381cb1d73f6659f43f4b89209534f995f2748fba1e985ccbb123fc5e87",
+        "chapter-009": "ffc56f967c7b9e2e9b619aaf8ce8b005f446be9b0cf48bfd53d2d1ef39efebe6"
+      },
+      "source_boundary_before_first": "The Project Gutenberg eBook of The Great Gatsby This eBook is for the use of anyone anywhere in the United States and most other parts of the world at no cost and with almost no restrictions whatsoever. You may copy it, give it away or re-use it under the terms of the Project Gutenberg License included with this eBook or online at www.gutenberg.org. If you are not located in the United States, you will have to check the laws of the country where you are located before using this eBook. Title: The Great Gatsby Author: F. Scott Fitzgerald Release date: January 17, 2021 [eBook #64317] Most recently updated: January 26, 2025 Language: English Other information and formats: www.gutenberg.org/ebooks/64317 Credits: Produced by Alex Cabal for the Standard Ebooks project, based on a transcription produced for Project Gutenberg Australia. *** START OF THE PROJECT GUTENBERG EBOOK THE GREAT GATSBY *** The Great Gatsby by F. Scott Fitzgerald Table of Contents I II III IV V VI VII VIII IX ",
+      "first_body_anchor": "Once again to Zelda\n\nThen wear the gold hat, if that will move her; If you can bounce high, bounce for her too, Till she cry “Lover, gold-hatted, high-bouncing lover, I must have you!”\n\nThomas Parke d",
+      "last_body_anchor": "tic future that year by year recedes before us. It eluded us then, but that’s no matter—tomorrow we will run faster, stretch out our arms further … And one fine morning—\n\nSo we beat on, boats against the current, borne back ceaselessly into the past.",
+      "source_boundary_after_last": " *** END OF THE PROJECT GUTENBERG EBOOK THE GREAT GATSBY *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in these works, so the Foundation (and you!) can copy and distribute it in the United States without permission and without paying copyright royalties. Special rules, set forth in the General Terms of Use part of this license, apply to copying and distributing Project Gutenberg™ electronic works to protect the PROJECT GUTENBERG™ concept and trademark. Project Gutenberg is a registered trademark, and may not be used if you charge for an eBook, except by following the terms of the trademark license, including paying royalties for use of the Project Gutenberg trademark. If you do not charge anything for copies of this eBook, complying with the trademark license is very easy. You may use this eBook for nearly any purpose such as creation of derivative works, reports, performances and research. Project Gutenberg eBooks may be modified and printed and given away—you may do practically ANYTHING in the United States with eBooks ",
+      "internal_gaps": [
+        {
+          "between": [
+            "chapter-000",
+            "chapter-001"
+          ],
+          "text": " I ",
+          "sha256": "98c7cff0808ebceffaa18dadae1ffe42964cd864a62d8186db9af43f50c2a960",
+          "length": 3
+        },
+        {
+          "between": [
+            "chapter-001",
+            "chapter-002"
+          ],
+          "text": " II ",
+          "sha256": "dddfde8d6f6f160fa2a99b3106229c17558f7df46ed2ee42cffd532d433b8887",
+          "length": 4
+        },
+        {
+          "between": [
+            "chapter-002",
+            "chapter-003"
+          ],
+          "text": " III ",
+          "sha256": "4f093d6759379db161a135eea473da45119f1755202f559a1cdb73743e3e560d",
+          "length": 5
+        },
+        {
+          "between": [
+            "chapter-003",
+            "chapter-004"
+          ],
+          "text": " IV ",
+          "sha256": "8d28af3936fcb602d9cec8a16c44b99e57437a7ff0411161ff74508b47083161",
+          "length": 4
+        },
+        {
+          "between": [
+            "chapter-004",
+            "chapter-005"
+          ],
+          "text": " V ",
+          "sha256": "2af061053de6f7799400cf973900d94049a28a7585b401589f7e06a3d6d0c7ca",
+          "length": 3
+        },
+        {
+          "between": [
+            "chapter-005",
+            "chapter-006"
+          ],
+          "text": " VI ",
+          "sha256": "9db23cf6ba23d2771f8265878bcc882f0387ae4804d95b0c4f116571c8745109",
+          "length": 4
+        },
+        {
+          "between": [
+            "chapter-006",
+            "chapter-007"
+          ],
+          "text": " VII ",
+          "sha256": "0c2ae458142d03bbc3528186b59c55f5b00b8aa7053a3783712fc056551e5f91",
+          "length": 5
+        },
+        {
+          "between": [
+            "chapter-007",
+            "chapter-008"
+          ],
+          "text": " VIII ",
+          "sha256": "9d1046ee41562268ecc84a57a454a48344b3f61ceea13d3440e3b0ff491eba3d",
+          "length": 6
+        },
+        {
+          "between": [
+            "chapter-008",
+            "chapter-009"
+          ],
+          "text": " IX ",
+          "sha256": "19911cdeea312b4c2dee08aba8bbf206401172370a24d2f28c764e84a540bcb4",
+          "length": 4
+        }
+      ],
+      "whole_narrative_coverage_review": {
+        "source_byte_receipt": {
+          "requested_url": "https://www.gutenberg.org/ebooks/64317.txt.utf-8",
+          "resolved_url": "https://www.gutenberg.org/cache/epub/64317/pg64317.txt",
+          "http_status": 200,
+          "accessed_at": "2026-10-01T21:05:32.100709+00:00",
+          "response_sha256": "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35"
+        },
+        "whole_narrative_coverage": "PASS",
+        "chapter_count": 9,
+        "chapter_comparison": {
+          "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+          "status": "ALL_CHAPTERS_MATCH_SOURCE",
+          "matched_chapters": [
+            {
+              "chapter_id": "chapter-001",
+              "offset": 1202,
+              "length": 32882
+            },
+            {
+              "chapter_id": "chapter-002",
+              "offset": 34088,
+              "length": 23494
+            },
+            {
+              "chapter_id": "chapter-003",
+              "offset": 57587,
+              "length": 32420
+            },
+            {
+              "chapter_id": "chapter-004",
+              "offset": 90011,
+              "length": 30451
+            },
+            {
+              "chapter_id": "chapter-005",
+              "offset": 120465,
+              "length": 23413
+            },
+            {
+              "chapter_id": "chapter-006",
+              "offset": 143882,
+              "length": 22699
+            },
+            {
+              "chapter_id": "chapter-007",
+              "offset": 166586,
+              "length": 48843
+            },
+            {
+              "chapter_id": "chapter-008",
+              "offset": 215435,
+              "length": 25383
+            },
+            {
+              "chapter_id": "chapter-009",
+              "offset": 240822,
+              "length": 28315
+            }
+          ],
+          "nonmatching_chapters": [],
+          "complete_edition_proven": false,
+          "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+        },
+        "lifetime_publication_evidence": {
+          "creator_death_year": 1940,
+          "selected_edition_publication_year": 1925,
+          "original_first_publication_year": null,
+          "primary_receipt": {
+            "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Fitzgerald%2C%20F.%20Scott%20%28Francis%20Scott%29%2C%201896-1940",
+            "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Fitzgerald%2C%20F.%20Scott%20%28Francis%20Scott%29%2C%201896-1940",
+            "http_status": 200,
+            "accessed_at": "2026-10-01T21:50:13.648756+00:00",
+            "response_sha256": "e20846217b755026e9ea6021ee600c35ac15a39d3d51577afba3e25580ccf554"
+          },
+          "bibliographic_excerpt": "Gatsby (1925) (Gutenberg text) Fitzgerald, F. Scott (Francis Scott), 1896-1940: The Great Gatsby (first edition; New York: C. Scribner's Sons, 1925) page images at HathiTrust multiple formats at archive.org Fitzgerald, F. Scott (Francis Scott), 1896-1940: Tales of the Jazz Age (1922) (Gutenberg text",
+          "basis": "Verified work publication during creator lifetime; selected publication year is not claimed as first publication.",
+          "scope": "Complete selected original-author narrative and verified same-author prefatory matter; anthology editors, art and separately attributed epigraph/dedication excluded unless specifically verified."
+        },
+        "author_death_evidence": 1940,
+        "translator": "NONE_SELECTED",
+        "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+        "illustrations": "NONE_IMPORTED",
+        "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+        "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+        "audio": "NOT_AUTHORIZED",
+        "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+      },
+      "containment_alone_complete": false
+    },
+    "cover_quote_checks": [],
+    "assets": [
+      {
+        "kind": "front",
+        "source_file": "covers/original-front.png",
+        "source_sha256": "8d98a278f5e09cdbfcb03c064424c6c0f221c3fc230be24e7b502affb915bb2a",
+        "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779565318/earnalism/covers/front/cover_82440320-0910-4dfe-97de-540153139e00.png",
+        "source_bytes": 2521135,
+        "source_dimensions": [
+          1024,
+          1536
+        ],
+        "licensed_deterministic_overlay": {
+          "file": "covers/the-great-gatsby-front-deterministic.png",
+          "sha256": "708f7cc8e5c21cc1cc535edcc5d000a9d7531f226bebb138e57e2c8633efd624",
+          "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+          "text_title": "The Great Gatsby",
+          "text_author": "F. Scott Fitzgerald",
+          "mask_rectangle": [
+            45,
+            45,
+            979,
+            450
+          ],
+          "pixels_outside_mask_exactly_preserved": true,
+          "attempt": 1
+        },
+        "file": "covers/the-great-gatsby-front-8d98a278.webp",
+        "sha256": "b3513c4e345b4aa6156f61e6d6a3a69ba3a034f79b6dc3c75773a941cbb516d1",
+        "bytes": 32594,
+        "dimensions": [
+          600,
+          900
+        ],
+        "url": "https://theearnalism.com/assets/books/the-great-gatsby/the-great-gatsby-front-8d98a278.webp",
+        "recipe": {
+          "format": "WEBP",
+          "mode": "RGB",
+          "resize": [
+            600,
+            900
+          ],
+          "quality": 40,
+          "method": 6,
+          "resampling": "LANCZOS",
+          "pillow_version": "12.3.0"
+        },
+        "parameter_calibration": [
+          {
+            "dimensions": [
+              600,
+              900
+            ],
+            "quality": 40,
+            "bytes": 32594
+          }
+        ],
+        "review_status": "TWO_INDEPENDENT_NEW_EXACT_VISUAL_DELIVERY_REVIEWS_REQUIRED",
+        "production_observed": false
+      },
+      {
+        "kind": "back",
+        "source_file": "covers/original-back.png",
+        "source_sha256": "b2696f4c8247fdc0bbb25a277e73a6eee757e0fa7e9083d176e0a98a7744c402",
+        "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779565331/earnalism/covers/back/back_cover_82440320-0910-4dfe-97de-540153139e00.png",
+        "source_bytes": 1994760,
+        "source_dimensions": [
+          1024,
+          1536
+        ],
+        "licensed_deterministic_overlay": {
+          "file": "covers/the-great-gatsby-back-deterministic.png",
+          "sha256": "8569231e38db5c1e81765f1d9935d236fd5cd72b222c62d6c9ba72a7be998e6b",
+          "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+          "text_title": "The Great Gatsby",
+          "text_author": "F. Scott Fitzgerald",
+          "mask_rectangle": [
+            55,
+            1260,
+            969,
+            1460
+          ],
+          "pixels_outside_mask_exactly_preserved": true,
+          "attempt": 1
+        },
+        "file": "covers/the-great-gatsby-back-b2696f4c.webp",
+        "sha256": "a5a02d9abc0e867bc65527dd57dcdd7679843589f90191cc09302d9d871be32b",
+        "bytes": 40428,
+        "dimensions": [
+          800,
+          1200
+        ],
+        "url": "https://theearnalism.com/assets/books/the-great-gatsby/the-great-gatsby-back-b2696f4c.webp",
+        "recipe": {
+          "format": "WEBP",
+          "mode": "RGB",
+          "resize": [
+            800,
+            1200
+          ],
+          "quality": 60,
+          "method": 6,
+          "resampling": "LANCZOS",
+          "pillow_version": "12.3.0"
+        },
+        "parameter_calibration": [
+          {
+            "dimensions": [
+              800,
+              1200
+            ],
+            "quality": 60,
+            "bytes": 40428
+          }
+        ],
+        "review_status": "TWO_INDEPENDENT_NEW_EXACT_VISUAL_DELIVERY_REVIEWS_REQUIRED",
+        "production_observed": false
+      }
+    ],
+    "cover_typography_remediation_attempts": 1,
+    "cover_copy_repair_attempts": 0,
+    "delivery_preparation_attempts": 1,
+    "no_new_artwork_or_generation": true,
+    "source_license_and_versions_preserved": true,
+    "archived_historical_duplicate_approval_files": [],
+    "publication_accepted": false,
+    "cover_display_accepted": false,
+    "audio_authorized": false,
+    "production_observed": false,
+    "runtime_fallback_conformance_claimed": false
+  },
+  "cover_preparation_sha256": "dd8d44529394792c643779044e055bfc158b090c5cc2012a7ea4d3021174b20a",
+  "status": "ACCEPTED_EXACT_OWNER_PROVIDED_COMPONENTS_UNDER_DIRECT_OWNER_DECLARATION",
+  "accepted_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+  "accepted_at": "2026-10-03T05:34:11.386246+00:00",
+  "original_creator": "Ronik Basak, as named by the actual direct owner declaration",
+  "owner_held_copyright_basis": {
+    "file": "owner_artwork_declaration.json",
+    "sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "scope": "Exact Ronik Basak owner-created front/back artwork only; no text rights or human review signature inferred."
+  },
+  "commercial_use_authorized": true,
+  "cover_display_approved": true,
+  "visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+  "independent_reviews": {
+    "review_a": {
+      "file": "evidence/review_a.json",
+      "sha256": "5156952c739749bc0d45c2da3f66e595bba7b4855fc5851a909c7f45be5fe0a9"
+    },
+    "review_b": {
+      "file": "evidence/review_b.json",
+      "sha256": "01f582df43f942e52ea04de108f9eaca6b3218dd0cb83ff6623f0b2711654d0d"
+    },
+    "source_review_b": {
+      "file": "evidence/source_review_b.json",
+      "sha256": "3ba83ca584badcf990145195607e4db99d3f112fca18a8111355f2e71dc32a26"
+    }
+  },
+  "production_observed": false,
+  "runtime_release_authorized": false,
+  "audio_authorized": false,
+  "publication_activation_authorized": false,
+  "acceptance_scope": "Exact owner-provided artwork and reviewed preserved-art derivatives/deliveries, India commercial text Reader cover display. Unknown original construction methods remain unknown; the owner decision supersedes external procedural artwork clearance. Text, source, visual quality and release gates remain independent."
+}

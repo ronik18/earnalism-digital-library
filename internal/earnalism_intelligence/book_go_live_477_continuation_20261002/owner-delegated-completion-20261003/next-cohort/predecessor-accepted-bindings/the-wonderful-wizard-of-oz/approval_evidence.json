@@ -1,0 +1,56 @@
+{
+  "slug": "the-wonderful-wizard-of-oz",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "source_hash": "969bffab7740d4d8a0bac332d78bd0152ad4a40a2efc52f06c74a9bb6120be75",
+  "content_hash": "4b174cd456358387fe1bbd65667a783ae52d7b4f0475f1c570a80132c847b18e",
+  "provenance_hash": "6efb24dec4a20c5a0bd3aa7b7411cb80ed158b480c20e460f859928630548a2d",
+  "verified_at": "2026-10-01T21:38:19.977641+00:00",
+  "approved_to_publish": true,
+  "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_OWNER_PROVIDED_COVER_PUBLICATION_ACCEPTANCE",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "audiobook_use_approved": false,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "publication_authorization_sha256": "b3bfaea84f37def911f71c7122fda4464f8711541bf5dce39e0e4da8b3256b64",
+  "cover_provenance_sha256": "007d1c031b4effb6b765d048945383d3996e3be4a9fa4c8ddc9298787be7c23f",
+  "production_observed": false,
+  "runtime_observed": false,
+  "historical_metadata_preserved_only_in_preimages": true,
+  "qa_scope": "Two independent exact complete-source/preserved-artwork preparations; final accepted binding review is an external serialized release requirement.",
+  "independent_reviews": {
+    "review_a": {
+      "file": "evidence/review_a.json",
+      "sha256": "a034ba1b836c80898ec9a4ccbf5268c09839bd7d9c6b47169507657b74bd7878"
+    },
+    "review_b": {
+      "file": "evidence/review_b.json",
+      "sha256": "7a7306dd7ddd6dd0fc680ca49045b75f83f76592af015ea99d67530892fa804d"
+    }
+  },
+  "binding_review_status": "FINAL_EXACT_PACKAGE_REVIEWS_REQUIRED_AS_EXTERNAL_SERIALIZED_RELEASE_GATE",
+  "cover_front_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+  "cover_back_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+  "manual_listening_approval": false,
+  "actual_prospective_acceptance": {
+    "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+    "accepted_at": "2026-10-03T05:57:24.767676+00:00",
+    "evidence": {
+      "review_a": {
+        "file": "evidence/review_a.json",
+        "sha256": "a034ba1b836c80898ec9a4ccbf5268c09839bd7d9c6b47169507657b74bd7878"
+      },
+      "review_b": {
+        "file": "evidence/review_b.json",
+        "sha256": "7a7306dd7ddd6dd0fc680ca49045b75f83f76592af015ea99d67530892fa804d"
+      }
+    },
+    "owner_declaration_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "production_observed": false,
+    "canonical_version_observed": false,
+    "global_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK"
+  }
+}

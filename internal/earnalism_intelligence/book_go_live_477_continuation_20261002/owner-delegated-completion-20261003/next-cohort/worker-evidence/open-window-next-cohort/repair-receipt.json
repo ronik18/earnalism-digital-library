@@ -1,0 +1,95 @@
+{
+  "schema": "earnalism.open-window-bounded-cover-repair.v1",
+  "slug": "the-open-window",
+  "original_defects": [
+    "False LIVE CONTROLLED RELEASE badge",
+    "Decorative gold circles obscure front title and author",
+    "Back excerpt truncated mid-sentence and intersected by decorations"
+  ],
+  "method": "One bounded deterministic local mask/typeset repair of existing recovered owner artwork; exact existing title/author and complete unchanged source excerpt only. No new art, generated copy or paid calls.",
+  "source_public_book_sha256": "e070046962fc200c50032cf5c6aafbf5f94b356683e9bee28a518746f3476753",
+  "chapter_file_sha256": "bc12b5dbae5cae481b59d11eb9fc43a7c875f4cf2b37d52107bce93957375a00",
+  "chapter_content_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "source_excerpt": "“My aunt will be down presently, Mr. Nuttel,” said a very self-possessed young lady of fifteen; “in the meantime you must try and put up with me.” Framton Nuttel endeavoured to say the correct something which should duly flatter the niece of the moment without unduly discounting the aunt that was to come. Privately he doubted more than ever whether these formal visits on a succession of total strangers would do much towards helping the nerve cure which he was supposed to be undergoing.",
+  "source_excerpt_method": "Whitespace-normalized exact opening through complete existing final sentence; no lexical/punctuation substitutions",
+  "font": {
+    "path": "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
+    "sha256": "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab"
+  },
+  "renderer_sha256": "c2e4829aff72b1f8c133d53479b491287f050ff560c991f67f1826b2135cb61c",
+  "assets": {
+    "front": {
+      "original_sha256": "351653d69bebc7567f868007370fb65b72eadbd41f7cbb2ee276e6024d0a1bb1",
+      "layout_png": {
+        "path": "/workspace/scratch/181ef0a25f05/open-window-next-cohort/front-layout-repair.png",
+        "sha256": "22a9981529ca3c46a81fae68c056b43d2253595f436110767c153eb9344589bd",
+        "bytes": 104935,
+        "dimensions": [
+          1600,
+          2400
+        ]
+      },
+      "delivery": {
+        "path": "/workspace/scratch/181ef0a25f05/open-window-next-cohort/front-delivery.webp",
+        "sha256": "fd16c96883897722c2da7c49e2012dd9e5a3771bf2f99d11b89a29add60a8960",
+        "bytes": 34778,
+        "dimensions": [
+          800,
+          1200
+        ],
+        "recipe": "RGB; Lanczos downsample800x1200; WebPquality90method6"
+      },
+      "repair_zones": [
+        [
+          210,
+          710,
+          1390,
+          1290
+        ],
+        [
+          180,
+          1830,
+          1420,
+          2140
+        ]
+      ],
+      "budget_bytes": 80000
+    },
+    "back": {
+      "original_sha256": "19717b3bb51630712f2f8cad58859361c9015ab726f3335b196c2b5924660a0d",
+      "layout_png": {
+        "path": "/workspace/scratch/181ef0a25f05/open-window-next-cohort/back-layout-repair.png",
+        "sha256": "5865b811a2feb412655fa56f6b2a9f6e6fbbd39881423bf14c77e1844a827829",
+        "bytes": 201173,
+        "dimensions": [
+          1600,
+          2400
+        ]
+      },
+      "delivery": {
+        "path": "/workspace/scratch/181ef0a25f05/open-window-next-cohort/back-delivery.webp",
+        "sha256": "6c87ea0a562e727b5527711f6f279bf9b95cad6a0817d15e36f783fd87016e76",
+        "bytes": 79852,
+        "dimensions": [
+          800,
+          1200
+        ],
+        "recipe": "RGB; Lanczos downsample800x1200; WebPquality90method6"
+      },
+      "repair_zones": [
+        [
+          95,
+          70,
+          1505,
+          2160
+        ]
+      ],
+      "budget_bytes": 180000
+    }
+  },
+  "paid_generation_calls": 0,
+  "network_requests_by_renderer": 0,
+  "repository_mutations": 0,
+  "approval_or_activation_claim": false,
+  "remaining_gate": "TWO_INDEPENDENT_EXACT_REPAIR_DELIVERY_AND_PACKAGE_REVIEWS_THEN_ACTUAL_COMPONENT_ACCEPTANCE"
+}

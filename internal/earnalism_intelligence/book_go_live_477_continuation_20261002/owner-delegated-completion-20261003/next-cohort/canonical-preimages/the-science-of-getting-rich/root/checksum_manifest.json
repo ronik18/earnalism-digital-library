@@ -1,0 +1,102 @@
+{
+  "slug": "the-science-of-getting-rich",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "dc189350ec5a8fd4acf2d25cafce1bf9884f35b4caca40090e497af1b0aba20f"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "ed9d306a0bf198120c65aabd95f1011c69972dfe855e7eff4ef0bdab02903efa"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "ab639f30648a642710f927b65c6066094fb01b8aa0f20bcecc4b1520caaccb56"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "d2d4be96ac1636a3c3cf256302262c8ec52cbf99d2ff77f53cd3949c0b84ceea"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "c21f9eb9a075126da8a44c27218241b2e3c231d07c159c8dcc674fd61ea76c87"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "bdf40302374fe13649ff56bd155d91048f7994a71ab83c2ae9f5f405ba5e212b"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "03f09952d5111d0faa1dc5cd2b32e18e3b343c45f635cb993d6497cf2de581c6"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "6ec6c0887b7a428302af800c9485443e5345c463465474b8651348c66ac0686d"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "7c4b25048dbe4d06ae8bcced7a5ef6a8b9ef9302bcba4a621af16450db2c020f"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "227b7a5ca87383d711d9c0441ab26d9dba67538261a9fc0372abbf413d0a2ca8"
+    },
+    {
+      "file": "chapters/chapter-010.json",
+      "sha256": "9fd16a6fa0d207110cd8345f150b9575c8e6aeca07c442e8861f1b19ff01a5bc"
+    },
+    {
+      "file": "chapters/chapter-011.json",
+      "sha256": "e59038a7eb3e104d3c4b68ba3e96704aad025e988f86b09e092d3f6f447f20f2"
+    },
+    {
+      "file": "chapters/chapter-012.json",
+      "sha256": "a0e4eac4315a6ec73f378f6896c46509af3f77e1ee35e3151ead86c732b2089a"
+    },
+    {
+      "file": "chapters/chapter-013.json",
+      "sha256": "0887e80584d2dcc41f5915d848c8e1426bf9e4efdb6e7b17f5b9576b0aa7332e"
+    },
+    {
+      "file": "chapters/chapter-014.json",
+      "sha256": "052669e99e081d17e9e5e7d8cba5097a1c35d74692253246906f1cbfb987abe7"
+    },
+    {
+      "file": "chapters/chapter-015.json",
+      "sha256": "8ef3ecb1e363fc95adc4f9832604fdb23313c2fc1db568e232ac48f863531588"
+    },
+    {
+      "file": "chapters/chapter-016.json",
+      "sha256": "466c8da81c1f9c4539d55315f4b035b86adcb80a2bc119666b60fcce0c0e9b3c"
+    },
+    {
+      "file": "chapters/chapter-017.json",
+      "sha256": "696a398abd98a5ecd187d6d5e157f76c3c5636e307983593d405c5526cd4d1a3"
+    },
+    {
+      "file": "chapters/chapter-018.json",
+      "sha256": "e8930930e2e78ee34d8c7b57e2f00c035cecade2cd8aa61880df20cf9f0cbc14"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "0ec7bf5934ded3c72ba3bf13df6d8e6e698d3c3287f64c3a7050d3e2e47ab997"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "491fad4ec6873c7b6c3853a212291884b1764e99da6e23adddf2f61e3a377f9a"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "cbb0f10031b0061839efa60f9fa11600bf283711c85843d0a49d45516e393052"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "6c6c0d47217642a5f67dff1fc23afcac146468d1017d48f59a2bef2bf90cbdce"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "6324de50de9db456175bcd2cbecec794641fa8bdd322d2de2b49eaacc713a117"
+    }
+  ]
+}

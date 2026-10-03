@@ -1,0 +1,1104 @@
+{
+  "schema": "earnalism.classics-inactive-preparation.v1",
+  "slug": "great-expectations",
+  "status": "INACTIVE_UNACCEPTED",
+  "prepared_at": "2026-10-03T04:56:16.816099+00:00",
+  "category": "LEGACY_OWNER_DESIGNED_GRAPHICAL_COVER_DELIVERY_DERIVATIVE",
+  "owner_design_fact": {
+    "source": "/workspace/scratch/006ea59bb0f7/book-go-live-477/controller-corrections.json",
+    "sha256": "24e8f7f409db65ab0c4b5f3bf1a1d10072f3c6634d765ba2abfb118740a569b6",
+    "statement": "Owner states all front and back covers are designed by the owner.",
+    "scope": "COVER_DESIGN_ONLY_NOT_TEXT_RIGHTS_OR_RUNTIME_RELEASE"
+  },
+  "original_generation_method": "NOT_INFERRED",
+  "title_author_gate": {
+    "required_unconditionally": true,
+    "stored_title": "Great Expectations",
+    "stored_author": "Charles Dickens",
+    "licensed_deterministic_typography_overlay": true,
+    "font_file": "frontend/public/assets/fonts/eb-garamond-400.ttf",
+    "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+    "independent_exact_review_required": true,
+    "font_license_file": "frontend/public/assets/fonts/EB-GARAMOND-OFL.txt",
+    "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7"
+  },
+  "source_binding": {
+    "existing_text_decision_id": "india-20261002-great-expectations-pg1400-noncover-text",
+    "source_sha256": "9a637118af8e953e9764ec603d9b0a032883384d465acac2e27966a80cf1c6f8",
+    "content_sha256": "2a8d0a202ea5c45af789296120a0fba52ffc09d7d7b536ebd9219521d508d40e",
+    "chapter_count": 59,
+    "all_content_hashes_match_exact_boundary_receipt": true,
+    "boundary_receipt_path": "internal/legal/catalogue_clearance_20261002/english/current_whole_work_boundary_verification.json",
+    "boundary_receipt_file_sha256": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e",
+    "existing_selected_narrative_complete_boundary_evidence_reused": true,
+    "no_new_source_fetch": true,
+    "containment_alone_not_treated_as_complete": true
+  },
+  "boundary_receipt": {
+    "slug": "great-expectations",
+    "verified_at": "2026-10-02T03:42:22.837157+00:00",
+    "selected_edition_scope": "Project Gutenberg #1400; Great Expectations exact canonical source, underlying lifetime publication 1861; complete selected author text, no translation or independently authored artwork/editorial material imported",
+    "raw_source_sha256": "9a637118af8e953e9764ec603d9b0a032883384d465acac2e27966a80cf1c6f8",
+    "reader_aggregate_sha256": "2a8d0a202ea5c45af789296120a0fba52ffc09d7d7b536ebd9219521d508d40e",
+    "chapter_count": 59,
+    "ordered_chapter_hashes": {
+      "chapter-001": "cb9ecc2e18eaecee82017b5d8256470011f88a2889de7b1f87578c540100ce23",
+      "chapter-002": "bc8d59f01b5fe40c34fd84e829d428aa97c8792852a5afd02cde6c72c580c02e",
+      "chapter-003": "dc246146f8b477d17b518da54136ba2c0902dfb3f814ea26daa24d1aaade7d1f",
+      "chapter-004": "bf85bddf9a58b5e0d99273c48703a6be553b7ec8b77e827f0527072eaf0849d0",
+      "chapter-005": "c63a47b5cc4d3629537332af8d8c5fbee0ca79d63c6733178990e0075ed9f2e0",
+      "chapter-006": "47e8ca6f49d3caccb5dbb81d481cd174604f0f1f7e22a09178568a99f402a820",
+      "chapter-007": "5f5ccad0830bf441218ecc8d9b6567f75bb1296f501e1fad5a1f2b798aff57c5",
+      "chapter-008": "e1d07596cda974a45b4076874ca8730583b5a79f117215d1d26d4cd3184c78d7",
+      "chapter-009": "8054f6f2833b57320a0a66fba8fbf665cc444ab88431ecad8ff5ee3035921bb6",
+      "chapter-010": "27f847bc8d59ba5a2685a878f1896fe7bed2d4f1b38627e4f00a1089acdc47fe",
+      "chapter-011": "20897a418e70f2a0619134c0a0f206dccbe8c1250d217ffdb40bb15e730fae4a",
+      "chapter-012": "323edb42f2552064fa850f31fe1adedd6555231fa0ff46da9d35b2dc3f363355",
+      "chapter-013": "ad4036da98041b344f9787f4e17f21f5172abc39a711e06221c835fb080a2841",
+      "chapter-014": "9a23e3dcc88ae6969205a0f9642dd2967793bea9470764c0e16c3fa86696c864",
+      "chapter-015": "61f45b5b6ebb2280de9c103cb30459d6f77b99be6deb6fae2c435296844ce511",
+      "chapter-016": "84c714911b0985784d39c5998702a147532905add81620b250d7c98931933537",
+      "chapter-017": "c90fee5d15691ee91eca2328112702a3fd24bfc6b39b8e484a7a6536600540f8",
+      "chapter-018": "42345e6429175f2641b04608b477bc1488c38310a9643e25d3d888b0f38fa7b9",
+      "chapter-019": "e25d73fbaba2b101510022487c8eeed6f2b827b3bef57ea3368a3fa6a21643f9",
+      "chapter-020": "0f1c213fdcc33dad85ab9c5488903753b6403986b5d87bf0059aeaea32b00d81",
+      "chapter-021": "19d2fd4f9987a3ce815b7464be4fc944d192f7155bd2af50db418e94fdae0758",
+      "chapter-022": "d289851e9d53831efe85ca6c381a2eed05a0780ff1502d7f13ae644a4fde81fa",
+      "chapter-023": "e4cfdfb4a3d4deebc3acaed559a496d14b43b19bec327506c04da995b1b10c3a",
+      "chapter-024": "09416c6b65cea664b72f8f2573895a0e72b2d35e2361fb903aa466e47478475d",
+      "chapter-025": "20c7c4d5f3d3e9ae959580c207f949b1333665ae4eeab95dbc07145ac8f3d549",
+      "chapter-026": "187aa95fdd4b5b01b6c6d7c7ccd0f73f69f73c65051096d5feb8967ca2272c64",
+      "chapter-027": "b6a6db0de0822492fba9687a6ca4d5da3505d756084dcc03300312c622b0eba2",
+      "chapter-028": "465fdd29b8a461be191d7f7b3814392c17eeded5fb8e4582b87078c7eb7c43f0",
+      "chapter-029": "034cce8fda9f89e0706750df27a7312c61c73a885498bbe727b79d177908ca80",
+      "chapter-030": "3efc27da160f19eb4f0d98b24dfded5b5243ca088d773e28ea59d70c8ab90ea2",
+      "chapter-031": "2f0e9677297fbaefb8fcbdca43dc7f7bdb62d2eb7edd8824ed26e1f54d40e1ab",
+      "chapter-032": "31ffea10d5ccb71164d6984869a11e51bc7573dd7d92d79fa0a1af9dfcd60f02",
+      "chapter-033": "7f0e8c6680766a1e524dcf28998c4b1e5ecd774b84486ff1ea3e71c180911cbb",
+      "chapter-034": "243e6b3cdc98505c66ac2b8914aaf6780b1d4eaef28414663dce0b280f8f9c42",
+      "chapter-035": "a3e356739476dc5de810750f67be021a66586407d55ae3b80faf04fb120ea7b1",
+      "chapter-036": "905c444a70119ec5957db75f0e7177823c4af34c62a4f666d55a302b16758b51",
+      "chapter-037": "fbaf58878beec7653c8cf10869c0af86bb142053c284e608a21efa1fedecc8ce",
+      "chapter-038": "dc641bdd5a7e0a93848ce498440e5c6bd44b33179ad84aaf078efb33e6c3ed3d",
+      "chapter-039": "c13651c4241a5ff17dbd6b937e568f5f1a8e250fcd4a84b419f1d5ca385e0ad0",
+      "chapter-040": "5463a148c89c5efaff5efa3fdfecffb629e8724647645f2cb704bbca17dac474",
+      "chapter-041": "facb4302df52b6941c38eb72c1f448f1ec8147b2411307b534ad748d066cceff",
+      "chapter-042": "439ed4a61f445f0dba9f97a1f7588a25185528085b5042bdab4658a899bf9d91",
+      "chapter-043": "f6ea5a1190d3e9400e97047f12ac45517535416d4c0a3070318690402be0fc39",
+      "chapter-044": "e7f995e1582ba3e9a096bbe1dc5b2fa1c9ff861d39d315ffb7de52a455a297c2",
+      "chapter-045": "4984bc3491a7dbfdd242800f1e581de545ab210f03a0d161a1c02d3b48152f7b",
+      "chapter-046": "55578780a5c8760746aab0589d0292ca1dc13ad482a9198d192ae653c11dca04",
+      "chapter-047": "6c9a3e8352df209eac4cdcd8c0cb65a2fde7c348b507435edb925953f2508b90",
+      "chapter-048": "8ec429376199463d877661e8cabac0cb25ba26f68465b7fda72e25ceaec02e50",
+      "chapter-049": "bcd677372c9b042910a7e6e78d5d2045ab7ab84ab1ffc2a175ea42587da240d9",
+      "chapter-050": "0db923e093cfae8bdc4d27e52af4f02b5fa35d90658be3d50a4bf998b0958312",
+      "chapter-051": "e23914c91b2de6e2c1ba710ceebf5177398549e4afa35dce88698a83225fa2b1",
+      "chapter-052": "536405d874ba35a1fd248451bef93ee26444e4400672487d43207eaf6bdc519f",
+      "chapter-053": "52680ac326e6889ebd3d6193527e7b88769fdb484afb266232e947f80fbb3ba1",
+      "chapter-054": "a885b117a4765b66e6dec1b106c76dd9c4b3be511d91bbee08144dfa5fa8943e",
+      "chapter-055": "fd795e518994c35335dc62783dfaf847d2eee4fa0d08e9a379fae0e9c4718df9",
+      "chapter-056": "d5c547756fb663491f18dddca37a7478409a982d0bf3f86d3f5203ebe9ce9117",
+      "chapter-057": "4eaa5e8b2b38030ac6c07bcbd4dc6051ba2b8a3d96dbd067ab96f24fa574e5d4",
+      "chapter-058": "c76d3832f734c0e67f3b9f2630eb1882e5f1c01fb7491f44e02a8732b9d235d8",
+      "chapter-059": "3f0776b6de28751a4d3ba291dc19edc73298587f65996e640bb2a88a0baf513e"
+    },
+    "source_boundary_before_first": "ymous Volunteer and David Widger *** START OF THE PROJECT GUTENBERG EBOOK GREAT EXPECTATIONS *** [Illustration] Great Expectations [1867 Edition] by Charles Dickens Contents Chapter I. Chapter II. Chapter III. Chapter IV. Chapter V. Chapter VI. Chapter VII. Chapter VIII. Chapter IX. Chapter X. Chapter XI. Chapter XII. Chapter XIII. Chapter XIV. Chapter XV. Chapter XVI. Chapter XVII. Chapter XVIII. Chapter XIX. Chapter XX. Chapter XXI. Chapter XXII. Chapter XXIII. Chapter XXIV. Chapter XXV. Chapter XXVI. Chapter XXVII. Chapter XXVIII. Chapter XXIX. Chapter XXX. Chapter XXXI. Chapter XXXII. Chapter XXXIII. Chapter XXXIV. Chapter XXXV. Chapter XXXVI. Chapter XXXVII. Chapter XXXVIII. Chapter XXXIX. Chapter XL. Chapter XLI. Chapter XLII. Chapter XLIII. Chapter XLIV. Chapter XLV. Chapter XLVI. Chapter XLVII. Chapter XLVIII. Chapter XLIX. Chapter L. Chapter LI. Chapter LII. Chapter LIII. Chapter LIV. Chapter LV. Chapter LVI. Chapter LVII. Chapter LVIII. Chapter LIX. [Illustration] Chapter I. ",
+    "first_body_anchor": "My father’s family name being Pirrip, and my Christian name Philip, my infant tongue could make of both names nothing longer or more explicit than Pip. So, I called myself Pip, and came to be called P",
+    "last_body_anchor": "nt out of the ruined place; and, as the morning mists had risen long ago when I first left the forge, so the evening mists were rising now, and in all the broad expanse of tranquil light they showed to me, I saw no shadow of another parting from her.",
+    "source_boundary_after_last": " *** END OF THE PROJECT GUTENBERG EBOOK GREAT EXPECTATIONS *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in these works, so the Foundation (and you!) can copy and distribute it in the United States without permission and without paying copyright royalties. Special rules, set forth in the General Terms of Use part of this license, apply to copying and distributing Project Gutenberg™ electronic works to protect the PROJECT GUTENBERG™ concept and trademark. Project Gutenberg is a registered trademark, and may not be used if you charge for an eBook, except by following the terms of the trademark license, including paying royalties for use of the Project Gutenberg trademark. If you do not charge anything for copies of this eBook, complying with the trademark license is very easy. You may use this eBook for nearly any purpose such as creation of derivative works, reports, performances and research. Project Gutenberg eBooks may be modified and printed and given away—you may do practically ANYTHING in the United States with eBook",
+    "internal_gaps": [
+      {
+        "between": [
+          "chapter-001",
+          "chapter-002"
+        ],
+        "text": " Chapter II. ",
+        "sha256": "c5a6e5d4ca1935740552cb3594a46ba417db48c767fb6b0970ecbc315334ebc2",
+        "length": 13
+      },
+      {
+        "between": [
+          "chapter-002",
+          "chapter-003"
+        ],
+        "text": " Chapter III. ",
+        "sha256": "5ed5feb1b99ad9e025e3ace9463edd3e37d5ba695dedf4552933f231ef81f4cb",
+        "length": 14
+      },
+      {
+        "between": [
+          "chapter-003",
+          "chapter-004"
+        ],
+        "text": " Chapter IV. ",
+        "sha256": "c6a376bb07698062a6f9e903d2c80bd500e576ac52579d0809438686e4051e12",
+        "length": 13
+      },
+      {
+        "between": [
+          "chapter-004",
+          "chapter-005"
+        ],
+        "text": " Chapter V. ",
+        "sha256": "15d250197d967ae3d3288bfd678aabbff1da8118f5e213e43f60957a07a3bb96",
+        "length": 12
+      },
+      {
+        "between": [
+          "chapter-005",
+          "chapter-006"
+        ],
+        "text": " Chapter VI. ",
+        "sha256": "4774b1a3396de9b74f7396c6589e021040a5192baa54658a9a6de26f8f376243",
+        "length": 13
+      },
+      {
+        "between": [
+          "chapter-006",
+          "chapter-007"
+        ],
+        "text": " Chapter VII. ",
+        "sha256": "059ffd3336a3f95501bd2ac239c37f6445b7628f3403c0cc638411bad1a0c546",
+        "length": 14
+      },
+      {
+        "between": [
+          "chapter-007",
+          "chapter-008"
+        ],
+        "text": " Chapter VIII. ",
+        "sha256": "2b2c0aa393681c8308c20de43449b9a4a2223ac71ead3b8d3bd65a5e25647599",
+        "length": 15
+      },
+      {
+        "between": [
+          "chapter-008",
+          "chapter-009"
+        ],
+        "text": " Chapter IX. ",
+        "sha256": "c1dd0e5984fd6633c67a839f10657a9d34923862be03a743cee1e5ebbf6ecd2a",
+        "length": 13
+      },
+      {
+        "between": [
+          "chapter-009",
+          "chapter-010"
+        ],
+        "text": " Chapter X. ",
+        "sha256": "5334dc9d87fbd1eb42d028c48e4d8c00733dd74267b6c8969509b7bf600e6b32",
+        "length": 12
+      },
+      {
+        "between": [
+          "chapter-010",
+          "chapter-011"
+        ],
+        "text": " Chapter XI. ",
+        "sha256": "34fe9683e48eb4515e572a0a4fffd0f88c34194eec60c722a04ada871b7cfe88",
+        "length": 13
+      },
+      {
+        "between": [
+          "chapter-011",
+          "chapter-012"
+        ],
+        "text": " Chapter XII. ",
+        "sha256": "b45fcd5084b81310fa764ebd547ff363c8e19daf1f0d3bb20c2fb59f2a874ee9",
+        "length": 14
+      },
+      {
+        "between": [
+          "chapter-012",
+          "chapter-013"
+        ],
+        "text": " Chapter XIII. ",
+        "sha256": "903d8be3a422960a77d05cb509b0513d5fe50645e7c8e67447de112b19bd36b9",
+        "length": 15
+      },
+      {
+        "between": [
+          "chapter-013",
+          "chapter-014"
+        ],
+        "text": " Chapter XIV. ",
+        "sha256": "a73c17a0742dcb939169de5c4f99443f14fee8a7a6f6463a338b33881a715f81",
+        "length": 14
+      },
+      {
+        "between": [
+          "chapter-014",
+          "chapter-015"
+        ],
+        "text": " Chapter XV. ",
+        "sha256": "7bb7e1025fd9ce64b6f7a6b21f78f5a1ce37f2f66f9ccea232aaf9c181cc37db",
+        "length": 13
+      },
+      {
+        "between": [
+          "chapter-015",
+          "chapter-016"
+        ],
+        "text": " Chapter XVI. ",
+        "sha256": "d8b6224a456c8686333f0c467c4081836ca4d831e94f50b4ef3135b75ca32ba6",
+        "length": 14
+      },
+      {
+        "between": [
+          "chapter-016",
+          "chapter-017"
+        ],
+        "text": " Chapter XVII. ",
+        "sha256": "a60c2268a9adb123a5f6e2efba45b88630687087bc25231779722ef4272e618e",
+        "length": 15
+      },
+      {
+        "between": [
+          "chapter-017",
+          "chapter-018"
+        ],
+        "text": " Chapter XVIII. ",
+        "sha256": "14c902574cab1af57e14fda4d893c29851e7940e7359a28608f9d3e413c6687f",
+        "length": 16
+      },
+      {
+        "between": [
+          "chapter-018",
+          "chapter-019"
+        ],
+        "text": " Chapter XIX. ",
+        "sha256": "f0025cc4a24c5062ff6935f11a374b73b39344ace6acd46852881cc4b5f0a787",
+        "length": 14
+      },
+      {
+        "between": [
+          "chapter-019",
+          "chapter-020"
+        ],
+        "text": " Chapter XX. ",
+        "sha256": "6eecc3284a1f86792a9ea09762ee1a4f38f2057a00d047083e0a4406186bf133",
+        "length": 13
+      },
+      {
+        "between": [
+          "chapter-020",
+          "chapter-021"
+        ],
+        "text": " Chapter XXI. ",
+        "sha256": "eefe3488accfe6ae9c89e7c3c1cfed421bc38927005db18e5cd8eea6cc09ef9f",
+        "length": 14
+      },
+      {
+        "between": [
+          "chapter-021",
+          "chapter-022"
+        ],
+        "text": " Chapter XXII. ",
+        "sha256": "11f2a9f8f73b2a268105b0def2cdb9a6bec68f301165d3fc3b46eaa0a6bf1913",
+        "length": 15
+      },
+      {
+        "between": [
+          "chapter-022",
+          "chapter-023"
+        ],
+        "text": " Chapter XXIII. ",
+        "sha256": "01a0189363ca454bcd357df0bdf94e07b36e74aa6ce2288070b992ad2d13c99d",
+        "length": 16
+      },
+      {
+        "between": [
+          "chapter-023",
+          "chapter-024"
+        ],
+        "text": " Chapter XXIV. ",
+        "sha256": "462243ec4347c4c97b9b897b7a5b8a1c5a704072f42d93a119676f858b70c8bc",
+        "length": 15
+      },
+      {
+        "between": [
+          "chapter-024",
+          "chapter-025"
+        ],
+        "text": " Chapter XXV. ",
+        "sha256": "0b1d1f01a89f07dddab77d4b5f81058f9f9d76728d77b588c17ad4d359a23911",
+        "length": 14
+      },
+      {
+        "between": [
+          "chapter-025",
+          "chapter-026"
+        ],
+        "text": " Chapter XXVI. ",
+        "sha256": "389d700b12fc1e7fbf9f2203cf42b9a5ce2eda2bdabe05ae3e607533b442bc4a",
+        "length": 15
+      },
+      {
+        "between": [
+          "chapter-026",
+          "chapter-027"
+        ],
+        "text": " Chapter XXVII. ",
+        "sha256": "8cd7d64f50e1224564a1386ff18b602b3d69d8943487bd6560badf9ab9dbadf5",
+        "length": 16
+      },
+      {
+        "between": [
+          "chapter-027",
+          "chapter-028"
+        ],
+        "text": " Chapter XXVIII. ",
+        "sha256": "c27c59d212454cf22dc5e3367ec899b7bfa6c36f540622f3ebbafe4aa89d329c",
+        "length": 17
+      },
+      {
+        "between": [
+          "chapter-028",
+          "chapter-029"
+        ],
+        "text": " Chapter XXIX. ",
+        "sha256": "b5476b974889f9c4017258c60420490a773c22949e1718b8ad064af773ba6a91",
+        "length": 15
+      },
+      {
+        "between": [
+          "chapter-029",
+          "chapter-030"
+        ],
+        "text": " Chapter XXX. ",
+        "sha256": "4eb6f4134c66561e08080c821d942c1a36445f7cfbd1848d9cd9baee9c37eb9a",
+        "length": 14
+      },
+      {
+        "between": [
+          "chapter-030",
+          "chapter-031"
+        ],
+        "text": " Chapter XXXI. ",
+        "sha256": "8a0fdd4b44599489bee4dc2bb73370dcd5d50b6b7b8f3c72e34633cdc5929692",
+        "length": 15
+      },
+      {
+        "between": [
+          "chapter-031",
+          "chapter-032"
+        ],
+        "text": " Chapter XXXII. ",
+        "sha256": "47cb9333eb890e4c81193def9f10ea1684d83a539006b92dec40d49f70e08a13",
+        "length": 16
+      },
+      {
+        "between": [
+          "chapter-032",
+          "chapter-033"
+        ],
+        "text": " Chapter XXXIII. ",
+        "sha256": "1fc9870d8df60d161c67d7a366c11432e000d3d5673fee13e997f9f6475163e2",
+        "length": 17
+      },
+      {
+        "between": [
+          "chapter-033",
+          "chapter-034"
+        ],
+        "text": " Chapter XXXIV. ",
+        "sha256": "d935e3e354d7ab8e29e1900500bb9b89a4d73b5261865b01c47760b8ae0092a7",
+        "length": 16
+      },
+      {
+        "between": [
+          "chapter-034",
+          "chapter-035"
+        ],
+        "text": " Chapter XXXV. ",
+        "sha256": "fe5feda3ed078e067eed9a7b223a6123d54baf363f72a49d21ad3ce9d9e39ac2",
+        "length": 15
+      },
+      {
+        "between": [
+          "chapter-035",
+          "chapter-036"
+        ],
+        "text": " Chapter XXXVI. ",
+        "sha256": "8351da536c97e9e6f1ade093170cc766e4efa133160a19e56244a57f1c4f135e",
+        "length": 16
+      },
+      {
+        "between": [
+          "chapter-036",
+          "chapter-037"
+        ],
+        "text": " Chapter XXXVII. ",
+        "sha256": "85b9b2e37605df49858ba8407990f2e1166f1d3dc2eaf86051b9544887925b7b",
+        "length": 17
+      },
+      {
+        "between": [
+          "chapter-037",
+          "chapter-038"
+        ],
+        "text": " Chapter XXXVIII. ",
+        "sha256": "8a9ffce3c59f0eaf6b420030445d9729bd8079091207c588dafc77a5d783f323",
+        "length": 18
+      },
+      {
+        "between": [
+          "chapter-038",
+          "chapter-039"
+        ],
+        "text": " Chapter XXXIX. ",
+        "sha256": "6418964d6f1ff863b7a2235b941d80967fa894883276803b2e31e228c74c2a86",
+        "length": 16
+      },
+      {
+        "between": [
+          "chapter-039",
+          "chapter-040"
+        ],
+        "text": " Chapter XL. ",
+        "sha256": "139ef16e8a59d8285a5679be0598f4bec5b113321cce0aaf5f42e9335b3aacc5",
+        "length": 13
+      },
+      {
+        "between": [
+          "chapter-040",
+          "chapter-041"
+        ],
+        "text": " Chapter XLI. ",
+        "sha256": "dcaac0a176cae6cf0c4a4d24b62e8c3f379aaf25bc79601a7a057b0b11f7c216",
+        "length": 14
+      },
+      {
+        "between": [
+          "chapter-041",
+          "chapter-042"
+        ],
+        "text": " Chapter XLII. ",
+        "sha256": "4ff0c782279f6de0cac8a1836e840504c4f73c0c85cc798291433778e1f5a9fe",
+        "length": 15
+      },
+      {
+        "between": [
+          "chapter-042",
+          "chapter-043"
+        ],
+        "text": " Chapter XLIII. ",
+        "sha256": "248e7928caeb3eb166b2207de5df2f2f9fa7b421037e80b3a603cd162799cb76",
+        "length": 16
+      },
+      {
+        "between": [
+          "chapter-043",
+          "chapter-044"
+        ],
+        "text": " Chapter XLIV. ",
+        "sha256": "eb49e33117c9c9c7ca1b1118a0900be5cf70caafdd8b2618de6182bd49711408",
+        "length": 15
+      },
+      {
+        "between": [
+          "chapter-044",
+          "chapter-045"
+        ],
+        "text": " Chapter XLV. ",
+        "sha256": "099c36101870e3def3dc8b2541686226601a1fcc798bf411479c1da91c722a47",
+        "length": 14
+      },
+      {
+        "between": [
+          "chapter-045",
+          "chapter-046"
+        ],
+        "text": " Chapter XLVI. ",
+        "sha256": "fad4a33827827065dcad1feb0c62c742dca7d4e6d194d02f08ae4ecec96aac8b",
+        "length": 15
+      },
+      {
+        "between": [
+          "chapter-046",
+          "chapter-047"
+        ],
+        "text": " Chapter XLVII. ",
+        "sha256": "6413f304859ecf3b73abaa2e1eebc51d67f9fb75ae43b1d04b7b87e38b3fc674",
+        "length": 16
+      },
+      {
+        "between": [
+          "chapter-047",
+          "chapter-048"
+        ],
+        "text": " Chapter XLVIII. ",
+        "sha256": "f7145090927f1f1efd36e6017fc841c988f9407f56efc9f8ffc31bcf943626e7",
+        "length": 17
+      },
+      {
+        "between": [
+          "chapter-048",
+          "chapter-049"
+        ],
+        "text": " Chapter XLIX. ",
+        "sha256": "4cda2b468c30028df190c452205fc6133ba0f34344c00a378f2736a8c4f9f39b",
+        "length": 15
+      },
+      {
+        "between": [
+          "chapter-049",
+          "chapter-050"
+        ],
+        "text": " Chapter L. ",
+        "sha256": "dff9b6cef2c1682e6f9c0aa1a3cdbef758296b96a02978f817fe7c8138761e73",
+        "length": 12
+      },
+      {
+        "between": [
+          "chapter-050",
+          "chapter-051"
+        ],
+        "text": " Chapter LI. ",
+        "sha256": "026c2d2d556e94dbf83deabca5881855d57ef45b113a3003fd2f5d8c83830b44",
+        "length": 13
+      },
+      {
+        "between": [
+          "chapter-051",
+          "chapter-052"
+        ],
+        "text": " Chapter LII. ",
+        "sha256": "abdce1c6bada0c34b2926b2f86de7fbd18a4f65eec9d5e51072ca4a63b7051ae",
+        "length": 14
+      },
+      {
+        "between": [
+          "chapter-052",
+          "chapter-053"
+        ],
+        "text": " Chapter LIII. ",
+        "sha256": "3d6a42f7a2d7ec2eda66f6224011a0ac13357b7846b2e3aa6f7e29871897cb70",
+        "length": 15
+      },
+      {
+        "between": [
+          "chapter-053",
+          "chapter-054"
+        ],
+        "text": " Chapter LIV. ",
+        "sha256": "1799875b68210d62726015125b067debfdb243df201353e591bc63d5674297ff",
+        "length": 14
+      },
+      {
+        "between": [
+          "chapter-054",
+          "chapter-055"
+        ],
+        "text": " Chapter LV. ",
+        "sha256": "ccab193d3a25c5c6fb3e0e93316326e5b502a5af889f846fb25b3430bf0e8518",
+        "length": 13
+      },
+      {
+        "between": [
+          "chapter-055",
+          "chapter-056"
+        ],
+        "text": " Chapter LVI. ",
+        "sha256": "8a24d78239ecc9d3757961829c99579653007ed4b6d38637afc724cf400b89fb",
+        "length": 14
+      },
+      {
+        "between": [
+          "chapter-056",
+          "chapter-057"
+        ],
+        "text": " Chapter LVII. ",
+        "sha256": "9c63a3d1520bd86b0eb8c39bf427f7cc3d41925af796d1a716a5c2ab2a5af39f",
+        "length": 15
+      },
+      {
+        "between": [
+          "chapter-057",
+          "chapter-058"
+        ],
+        "text": " Chapter LVIII. ",
+        "sha256": "4a318adade6fc41e6c453b63aaeae44d716f99a5fde08f8576731712b44dc54a",
+        "length": 16
+      },
+      {
+        "between": [
+          "chapter-058",
+          "chapter-059"
+        ],
+        "text": " Chapter LIX. ",
+        "sha256": "81df9d0c949d06ee59b2077d3137baad8592903de0517215dcba7cdfb61c9b0a",
+        "length": 14
+      }
+    ],
+    "whole_narrative_coverage_review": {
+      "source_byte_receipt": {
+        "requested_url": "https://www.gutenberg.org/ebooks/1400.txt.utf-8",
+        "resolved_url": "https://www.gutenberg.org/cache/epub/1400/pg1400.txt",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:04:17.504473+00:00",
+        "response_sha256": "9a637118af8e953e9764ec603d9b0a032883384d465acac2e27966a80cf1c6f8"
+      },
+      "whole_narrative_coverage": "PASS",
+      "chapter_count": 59,
+      "chapter_comparison": {
+        "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+        "status": "ALL_CHAPTERS_MATCH_SOURCE",
+        "matched_chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "offset": 1720,
+            "length": 9557
+          },
+          {
+            "chapter_id": "chapter-002",
+            "offset": 11290,
+            "length": 18189
+          },
+          {
+            "chapter_id": "chapter-003",
+            "offset": 29493,
+            "length": 10092
+          },
+          {
+            "chapter_id": "chapter-004",
+            "offset": 39598,
+            "length": 18521
+          },
+          {
+            "chapter_id": "chapter-005",
+            "offset": 58131,
+            "length": 22314
+          },
+          {
+            "chapter_id": "chapter-006",
+            "offset": 80458,
+            "length": 4103
+          },
+          {
+            "chapter_id": "chapter-007",
+            "offset": 84575,
+            "length": 21273
+          },
+          {
+            "chapter_id": "chapter-008",
+            "offset": 105863,
+            "length": 25044
+          },
+          {
+            "chapter_id": "chapter-009",
+            "offset": 130920,
+            "length": 14172
+          },
+          {
+            "chapter_id": "chapter-010",
+            "offset": 145104,
+            "length": 13501
+          },
+          {
+            "chapter_id": "chapter-011",
+            "offset": 158618,
+            "length": 28536
+          },
+          {
+            "chapter_id": "chapter-012",
+            "offset": 187168,
+            "length": 12084
+          },
+          {
+            "chapter_id": "chapter-013",
+            "offset": 199267,
+            "length": 15459
+          },
+          {
+            "chapter_id": "chapter-014",
+            "offset": 214740,
+            "length": 4286
+          },
+          {
+            "chapter_id": "chapter-015",
+            "offset": 219039,
+            "length": 22900
+          },
+          {
+            "chapter_id": "chapter-016",
+            "offset": 241953,
+            "length": 10507
+          },
+          {
+            "chapter_id": "chapter-017",
+            "offset": 252475,
+            "length": 17632
+          },
+          {
+            "chapter_id": "chapter-018",
+            "offset": 270123,
+            "length": 27062
+          },
+          {
+            "chapter_id": "chapter-019",
+            "offset": 297199,
+            "length": 30463
+          },
+          {
+            "chapter_id": "chapter-020",
+            "offset": 327675,
+            "length": 16912
+          },
+          {
+            "chapter_id": "chapter-021",
+            "offset": 344601,
+            "length": 9426
+          },
+          {
+            "chapter_id": "chapter-022",
+            "offset": 354042,
+            "length": 26840
+          },
+          {
+            "chapter_id": "chapter-023",
+            "offset": 380898,
+            "length": 17613
+          },
+          {
+            "chapter_id": "chapter-024",
+            "offset": 398526,
+            "length": 12531
+          },
+          {
+            "chapter_id": "chapter-025",
+            "offset": 411071,
+            "length": 15801
+          },
+          {
+            "chapter_id": "chapter-026",
+            "offset": 426887,
+            "length": 15263
+          },
+          {
+            "chapter_id": "chapter-027",
+            "offset": 442166,
+            "length": 16174
+          },
+          {
+            "chapter_id": "chapter-028",
+            "offset": 458357,
+            "length": 13125
+          },
+          {
+            "chapter_id": "chapter-029",
+            "offset": 471497,
+            "length": 26013
+          },
+          {
+            "chapter_id": "chapter-030",
+            "offset": 497524,
+            "length": 18184
+          },
+          {
+            "chapter_id": "chapter-031",
+            "offset": 515723,
+            "length": 11862
+          },
+          {
+            "chapter_id": "chapter-032",
+            "offset": 527601,
+            "length": 12040
+          },
+          {
+            "chapter_id": "chapter-033",
+            "offset": 539658,
+            "length": 14426
+          },
+          {
+            "chapter_id": "chapter-034",
+            "offset": 554100,
+            "length": 12856
+          },
+          {
+            "chapter_id": "chapter-035",
+            "offset": 566971,
+            "length": 16233
+          },
+          {
+            "chapter_id": "chapter-036",
+            "offset": 583220,
+            "length": 13685
+          },
+          {
+            "chapter_id": "chapter-037",
+            "offset": 596922,
+            "length": 15441
+          },
+          {
+            "chapter_id": "chapter-038",
+            "offset": 612381,
+            "length": 26329
+          },
+          {
+            "chapter_id": "chapter-039",
+            "offset": 638726,
+            "length": 25072
+          },
+          {
+            "chapter_id": "chapter-040",
+            "offset": 663811,
+            "length": 27545
+          },
+          {
+            "chapter_id": "chapter-041",
+            "offset": 691370,
+            "length": 11439
+          },
+          {
+            "chapter_id": "chapter-042",
+            "offset": 702824,
+            "length": 15291
+          },
+          {
+            "chapter_id": "chapter-043",
+            "offset": 718131,
+            "length": 10408
+          },
+          {
+            "chapter_id": "chapter-044",
+            "offset": 728554,
+            "length": 15146
+          },
+          {
+            "chapter_id": "chapter-045",
+            "offset": 743714,
+            "length": 15873
+          },
+          {
+            "chapter_id": "chapter-046",
+            "offset": 759602,
+            "length": 16193
+          },
+          {
+            "chapter_id": "chapter-047",
+            "offset": 775811,
+            "length": 13671
+          },
+          {
+            "chapter_id": "chapter-048",
+            "offset": 789499,
+            "length": 14516
+          },
+          {
+            "chapter_id": "chapter-049",
+            "offset": 804030,
+            "length": 18707
+          },
+          {
+            "chapter_id": "chapter-050",
+            "offset": 822749,
+            "length": 7970
+          },
+          {
+            "chapter_id": "chapter-051",
+            "offset": 830732,
+            "length": 16176
+          },
+          {
+            "chapter_id": "chapter-052",
+            "offset": 846922,
+            "length": 10934
+          },
+          {
+            "chapter_id": "chapter-053",
+            "offset": 857871,
+            "length": 27164
+          },
+          {
+            "chapter_id": "chapter-054",
+            "offset": 885049,
+            "length": 30108
+          },
+          {
+            "chapter_id": "chapter-055",
+            "offset": 915170,
+            "length": 15332
+          },
+          {
+            "chapter_id": "chapter-056",
+            "offset": 930516,
+            "length": 11587
+          },
+          {
+            "chapter_id": "chapter-057",
+            "offset": 942118,
+            "length": 25279
+          },
+          {
+            "chapter_id": "chapter-058",
+            "offset": 967413,
+            "length": 16143
+          },
+          {
+            "chapter_id": "chapter-059",
+            "offset": 983570,
+            "length": 7605
+          }
+        ],
+        "nonmatching_chapters": [],
+        "complete_edition_proven": false,
+        "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+      },
+      "lifetime_publication_evidence": {
+        "creator": "Dickens, Charles, 1812-1870",
+        "creator_death_year": 1870,
+        "selected_collection_publication_year": 1861,
+        "original_story_first_publication_year": null,
+        "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+        "bibliographic_receipt": {
+          "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Dickens%2C%20Charles%2C%201812-1870",
+          "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Dickens%2C%20Charles%2C%201812-1870",
+          "http_status": 200,
+          "accessed_at": "2026-10-01T21:45:04.691197+00:00",
+          "response_sha256": "890a6305863908832b5583c1862df9e5624a206cd48ace3f6050e9f5fc8d1154"
+        },
+        "bibliographic_excerpt": "Great Expectations (3 volumes; London: Chapman and Hall, 1861) Volume I: multiple formats at archive.org Volume II: multiple formats at archive.org Volume III: multiple formats at archive.org all volumes: page images at HathiTrust Dickens, Charles, 1",
+        "scope": "Named creator complete selected literary text including available author prefatory/end matter; publisher/source furniture and illustrations excluded."
+      },
+      "author_death_evidence": 1870,
+      "translator": "NONE_SELECTED",
+      "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+      "illustrations": "NONE_IMPORTED",
+      "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+      "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+      "audio": "NOT_AUTHORIZED",
+      "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+    },
+    "containment_alone_complete": false
+  },
+  "cover_quote_checks": [],
+  "assets": [
+    {
+      "kind": "front",
+      "source_file": "covers/original-front.png",
+      "source_sha256": "faeb4440529f863bee85f04342db1da56bdfa209c0e642b9b6ff9d552df8013a",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780292673/earnalism/covers/front/cover_ff32fe6a-9f1a-402b-935d-c5dff918b8a0.png",
+      "source_bytes": 3164717,
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "licensed_deterministic_overlay": {
+        "file": "covers/great-expectations-front-deterministic.png",
+        "sha256": "6504db35a3eb099e169d1584203cf5895c04e5e1b00f3623f3144e8f9f6b1198",
+        "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+        "text_title": "Great Expectations",
+        "text_author": "Charles Dickens",
+        "mask_rectangle": [
+          45,
+          45,
+          979,
+          580
+        ],
+        "pixels_outside_mask_exactly_preserved": true,
+        "attempt": 1
+      },
+      "file": "covers/great-expectations-front-faeb4440.webp",
+      "sha256": "4640b6fbd02d4fa2c0978e17c7837c35805fa8157c4e83a6040bef2b576c173c",
+      "bytes": 30860,
+      "dimensions": [
+        600,
+        900
+      ],
+      "url": "https://theearnalism.com/assets/books/great-expectations/great-expectations-front-faeb4440.webp",
+      "recipe": {
+        "format": "WEBP",
+        "mode": "RGB",
+        "resize": [
+          600,
+          900
+        ],
+        "quality": 40,
+        "method": 6,
+        "resampling": "LANCZOS",
+        "pillow_version": "12.3.0"
+      },
+      "parameter_calibration": [
+        {
+          "dimensions": [
+            600,
+            900
+          ],
+          "quality": 40,
+          "bytes": 30860
+        }
+      ],
+      "review_status": "TWO_INDEPENDENT_NEW_EXACT_VISUAL_DELIVERY_REVIEWS_REQUIRED",
+      "production_observed": false
+    },
+    {
+      "kind": "back",
+      "source_file": "covers/original-back.png",
+      "source_sha256": "6bc57298528f3b0addbab1e8f0cdc1bd570358fd1d472d508ea430e11397da4a",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780292677/earnalism/covers/back/back_cover_ff32fe6a-9f1a-402b-935d-c5dff918b8a0.png",
+      "source_bytes": 3302955,
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "licensed_deterministic_overlay": {
+        "file": "covers/great-expectations-back-deterministic.png",
+        "sha256": "3ff84c07956b425f3562d284918075ba2084935078b5234f9139c375735d5c1d",
+        "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+        "text_title": "Great Expectations",
+        "text_author": "Charles Dickens",
+        "mask_rectangle": [
+          55,
+          1260,
+          969,
+          1460
+        ],
+        "pixels_outside_mask_exactly_preserved": true,
+        "attempt": 1
+      },
+      "file": "covers/great-expectations-back-6bc57298.webp",
+      "sha256": "c469f4868f13b13f8d23c0d36b22628dd5571269a7046fdaa83b2d409d9eccd8",
+      "bytes": 114714,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "url": "https://theearnalism.com/assets/books/great-expectations/great-expectations-back-6bc57298.webp",
+      "recipe": {
+        "format": "WEBP",
+        "mode": "RGB",
+        "resize": [
+          800,
+          1200
+        ],
+        "quality": 60,
+        "method": 6,
+        "resampling": "LANCZOS",
+        "pillow_version": "12.3.0"
+      },
+      "parameter_calibration": [
+        {
+          "dimensions": [
+            800,
+            1200
+          ],
+          "quality": 60,
+          "bytes": 114714
+        }
+      ],
+      "review_status": "TWO_INDEPENDENT_NEW_EXACT_VISUAL_DELIVERY_REVIEWS_REQUIRED",
+      "production_observed": false
+    }
+  ],
+  "cover_typography_remediation_attempts": 1,
+  "cover_copy_repair_attempts": 0,
+  "delivery_preparation_attempts": 1,
+  "no_new_artwork_or_generation": true,
+  "source_license_and_versions_preserved": true,
+  "archived_historical_duplicate_approval_files": [],
+  "publication_accepted": false,
+  "cover_display_accepted": false,
+  "audio_authorized": false,
+  "production_observed": false,
+  "runtime_fallback_conformance_claimed": false
+}

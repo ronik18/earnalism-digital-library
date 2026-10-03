@@ -1,0 +1,510 @@
+{
+  "slug": "mrinalini",
+  "reviewer": "independent-reviewer-A",
+  "status": "PASS_PREPARATION_UNDER_NEW_ACTUAL_OWNER_BASIS",
+  "actual_new_owner_basis_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+  "old_procedural_hold_receipt_preserved_sha256": "7e2c87384e788ffb1b32b150d37df75c95cfa4b538f37c23969d61f1c0b7ada2",
+  "superseded_hold_scope": "Owner explicitly supersedes only original backauthor construction-lineage requirement for exact owner artwork. Original lettering method remainsUNKNOWN; no deterministic/humanapproval invention.",
+  "complete_leaf_body_join": [
+    {
+      "id": "chapter-001",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/প্রথম পরিচ্ছেদ",
+      "exact_body_sha256": "ae39ccf3089476e6ca7841274e2e94c6f54099a9f518fa4e18401c4ce34fab48",
+      "excluded_headings": [
+        "মৃণালিনী।",
+        "প্রথম খণ্ড।",
+        "প্রথম পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-002",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/দ্বিতীয় পরিচ্ছেদ",
+      "exact_body_sha256": "e2f1a7729f28e7e219b2cdb9899cfc93088e7e6d3222d9642f6c3bb1877fc472",
+      "excluded_headings": [
+        "দ্বিতীয় পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-003",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/তৃতীয় পরিচ্ছেদ",
+      "exact_body_sha256": "bf554b48ca754bdb27a4d87ceec15626a6f8d94c72f854b1754ec01f7591ea04",
+      "excluded_headings": [
+        "তৃতীয় পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-004",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/চতুর্থ পরিচ্ছেদ",
+      "exact_body_sha256": "2584c6dae5ba2662b624925336565ded90c499628b465d4df13fdde3278d8778",
+      "excluded_headings": [
+        "চতুর্থ পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-005",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/পঞ্চম পরিচ্ছেদ",
+      "exact_body_sha256": "ae8986893015b607d53c4922d41d424a31db6365d985966d58804da77f188c50",
+      "excluded_headings": [
+        "পঞ্চম পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-006",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/ষষ্ঠ পরিচ্ছেদ",
+      "exact_body_sha256": "bff1f632ed61b332e5446a0a8c414531faf48d87ecca9ff5b38f46c8989b5ccc",
+      "excluded_headings": [
+        "ষষ্ঠ পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-007",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/সপ্তম পরিচ্ছেদ",
+      "exact_body_sha256": "5b2a37eab8799d1edc46080687efaffad8885e78e3d9e548c261730cd1aff980",
+      "excluded_headings": [
+        "সপ্তম পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-008",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/অষ্টম পরিচ্ছেদ",
+      "exact_body_sha256": "b91d92ef491b57453b6d6c2ba8e8298f4760255c8372dc20081823ce60a241ae",
+      "excluded_headings": [
+        "অষ্টম পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-009",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/প্রথম পরিচ্ছেদ",
+      "exact_body_sha256": "772ed3c3b0c9009a2c03ac55228a84292178629f58c7da41748b5b7da1c05b5e",
+      "excluded_headings": [
+        "দ্বিতীয় খণ্ড।",
+        "প্রথম পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-010",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/দ্বিতীয় পরিচ্ছেদ",
+      "exact_body_sha256": "52fac808abb9b1cf3f6a2b4ccacb9af208a5812e29a960e37b8dda1a19e22a67",
+      "excluded_headings": [
+        "দ্বিতীয় পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-011",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/তৃতীয় পরিচ্ছেদ",
+      "exact_body_sha256": "edcdc0ebf1e2aa2e18c2a2cbca009bc681d82a60027f6a0e060077f88ba39cba",
+      "excluded_headings": [
+        "তৃতীয় পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-012",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/চতুর্থ পরিচ্ছেদ",
+      "exact_body_sha256": "cd605bcef13d65f39572175d6086ab7ae99f4a33e95d753da55b215ad3b3a979",
+      "excluded_headings": [
+        "চতুর্থ পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-013",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/পঞ্চম পরিচ্ছেদ",
+      "exact_body_sha256": "6d1493e06355316373c0e073de788ba8bb5ebce8c92e4aa2bf36e3b9a2232a11",
+      "excluded_headings": [
+        "পঞ্চম পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-014",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/ষষ্ঠ পরিচ্ছেদ",
+      "exact_body_sha256": "df2484feedaf538a2aca9e750dc529b7007494fd1ed0c1481a2f8a335e3931d6",
+      "excluded_headings": [
+        "ষষ্ঠ পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-015",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/সপ্তম পরিচ্ছেদ",
+      "exact_body_sha256": "8f14695ee3615a1ac2ba5b5f32e36d747fea4867558b879bc1a4b59482d56554",
+      "excluded_headings": [
+        "সপ্তম পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-016",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/অষ্টম পরিচ্ছেদ",
+      "exact_body_sha256": "59aa6570b02b59e7270eef5ec89d05f051a7aaf45e2b393606cf107f1cf3ed62",
+      "excluded_headings": [
+        "অষ্টম পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-017",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/নবম পরিচ্ছেদ",
+      "exact_body_sha256": "05adf6b55d79b23b8c3a86a28ff982d0cc6419ca7edb207471049bc7a4d2a4c0",
+      "excluded_headings": [
+        "নবম পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-018",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/দশম পরিচ্ছেদ",
+      "exact_body_sha256": "df388d8ac8607a6a3fd0bc771f38db96b86a0c05b9e90910fe02765e2199c7b8",
+      "excluded_headings": [
+        "দশম পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-019",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/একাদশ পরিচ্ছেদ",
+      "exact_body_sha256": "08053ff3573a8e75a61b648a5f0f2c559c379c8a90d452240d26e1c9595e7457",
+      "excluded_headings": [
+        "একাদশ পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-020",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/দ্বাদশ পরিচ্ছেদ",
+      "exact_body_sha256": "89832addf5cb0f008a6b1e5b3f9172f2330e764e80770b15bc4e51e288b616a8",
+      "excluded_headings": [
+        "দ্বাদশ পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-021",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/প্রথম পরিচ্ছেদ",
+      "exact_body_sha256": "b020277b645b0d045abb7cb348598326a280a56fc667ed1da2fd50a1e19d6d45",
+      "excluded_headings": [
+        "তৃতীয় খণ্ড।",
+        "প্রথম পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-022",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/দ্বিতীয় পরিচ্ছেদ",
+      "exact_body_sha256": "b1337e08c62282bdb22d073f42c34ef0a0414ea2a23dfb07956b511dd1d4da6a",
+      "excluded_headings": [
+        "দ্বিতীয় পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-023",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/তৃতীয় পরিচ্ছেদ",
+      "exact_body_sha256": "3c390c7f13ad48f4410e184202bf1f77b88a03009a2836741a6797bba2567786",
+      "excluded_headings": [
+        "তৃতীয় পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-024",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/চতুর্থ পরিচ্ছেদ",
+      "exact_body_sha256": "41390beb4f37da727d20836f591f3840b21508d38ce469c6422d9255288ad664",
+      "excluded_headings": [
+        "চতুর্থ পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-025",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/পঞ্চম পরিচ্ছেদ",
+      "exact_body_sha256": "acf54097a490763b6f1d85bebcd10808acdd3d2645e7a7706040cbc883f0718f",
+      "excluded_headings": [
+        "পঞ্চম পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-026",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/ষষ্ঠ পরিচ্ছেদ",
+      "exact_body_sha256": "d2ec28a6d83b00051bdcd5912ff92aac29e2bcee53c4c3f95a63e0a9b1020864",
+      "excluded_headings": [
+        "ষষ্ঠ পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-027",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/সপ্তম পরিচ্ছেদ",
+      "exact_body_sha256": "a4629e2baaf66fdf0d81e6b2e04d9ca58a3f9102e032ced962d7bcad54f05717",
+      "excluded_headings": [
+        "সপ্তম পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-028",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/অষ্টম পরিচ্ছেদ",
+      "exact_body_sha256": "5c2addc5d82aa2405080a582aa409ae77711902bd6df39e5116cc50c285af8f4",
+      "excluded_headings": [
+        "অষ্টম পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-029",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/নবম পরিচ্ছেদ",
+      "exact_body_sha256": "d446c46212151b1063a9355e42f7945f0dabb5c5d2cc2378834a89724a02c7bd",
+      "excluded_headings": [
+        "নবম পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-030",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/দশম পরিচ্ছেদ",
+      "exact_body_sha256": "1806709a62f5ef90c742a0b17fcd0b41b2e44a00fc2515291f3add8abd663263",
+      "excluded_headings": [
+        "দশম পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-031",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/প্রথম পরিচ্ছেদ",
+      "exact_body_sha256": "b3798fdfcec3aa45f02e739115cb98b20593c9700ef5aa18969468fddf82714a",
+      "excluded_headings": [
+        "চতুর্থ খণ্ড।",
+        "প্রথম পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-032",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/দ্বিতীয় পরিচ্ছেদ",
+      "exact_body_sha256": "4fc9757478afa7dcf795142bc1cf812d69f737dc1d9d8e1943a8a9b55dd7812e",
+      "excluded_headings": [
+        "দ্বিতীয় পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-033",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/তৃতীয় পরিচ্ছেদ",
+      "exact_body_sha256": "ef1e78b164ef1fa498e3a81699a01bed1246ca16acbfc0cb4fc12b08c5294ba5",
+      "excluded_headings": [
+        "তৃতীয় পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-034",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/চতুর্থ পরিচ্ছেদ",
+      "exact_body_sha256": "655c8c8f58d08fb1d63b64a28d634eb6917061836fed1689fc76dce8defe3357",
+      "excluded_headings": [
+        "চতুর্থ পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-035",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/পঞ্চম পরিচ্ছেদ",
+      "exact_body_sha256": "73965490cb7c6effcf679da204350abb85443e903f91ff1556ef987199748766",
+      "excluded_headings": [
+        "পঞ্চম পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-036",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/ষষ্ঠ পরিচ্ছেদ",
+      "exact_body_sha256": "a50352dc36e56e9a7df8b18806139ed3ea2871314f60f4cd1b38fb1d206134a9",
+      "excluded_headings": [
+        "ষষ্ঠ পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-037",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/সপ্তম পরিচ্ছেদ",
+      "exact_body_sha256": "3270e42339b7b2b444abeeada7320a7043ca73c6a61abb811c3008dd79887fc9",
+      "excluded_headings": [
+        "সপ্তম পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-038",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/অষ্টম পরিচ্ছেদ",
+      "exact_body_sha256": "87a86bff2900a663ddf9a4bb1f757318e7dbdca21e200085ed091ebe79d2a52f",
+      "excluded_headings": [
+        "অষ্টম পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-039",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/নবম পরিচ্ছেদ",
+      "exact_body_sha256": "1d4f1a638ec876989fa0825179dfb3d0571520332a91bb627160429512d7e27c",
+      "excluded_headings": [
+        "নবম পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-040",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/দশম পরিচ্ছেদ",
+      "exact_body_sha256": "b8efa493bcad250f637b97ac206d3e560821b761e9034f0d18f3ded0f18c5e10",
+      "excluded_headings": [
+        "দশম পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-041",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/একাদশ পরিচ্ছেদ",
+      "exact_body_sha256": "dfa6bd81f06431453b8cc6a993330e0feec530e32e0ea009653ede59f497a4f9",
+      "excluded_headings": [
+        "একাদশ পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-042",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/দ্বাদশ পরিচ্ছেদ",
+      "exact_body_sha256": "3eed6021c502da6fda9e9ef680481fca05b25df79200b717532ceb13ae974334",
+      "excluded_headings": [
+        "দ্বাদশ পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-043",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/ত্রয়োদশ পরিচ্ছেদ",
+      "exact_body_sha256": "527138c3a8538e02de4b51597fd579932280c228f9aa29ae66e73212bc2a36f8",
+      "excluded_headings": [
+        "ত্রয়োদশ পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-044",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/চতুর্দ্দশ পরিচ্ছেদ",
+      "exact_body_sha256": "25a4932b039bdf3c64a1cc043e7782d1a2a1fde3ee6c4d13b7ec9573c57db4bb",
+      "excluded_headings": [
+        "চতুর্দ্দশ পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-045",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/পঞ্চদশ পরিচ্ছেদ",
+      "exact_body_sha256": "f95e13d36af6d2b8b47ffc546c9cf2332a17826b35d4b5c2054251000501830a",
+      "excluded_headings": [
+        "পঞ্চদশ পরিচ্ছেদ।"
+      ]
+    },
+    {
+      "id": "chapter-046",
+      "matched_leaf": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/পরিশিষ্ট",
+      "exact_body_sha256": "1936fd788bee4966192355b14685751aee6b712b81f09ad831e64db1e4735abd",
+      "excluded_headings": [
+        "পরিশিষ্ট।"
+      ]
+    }
+  ],
+  "source_leaf_comparison_sha256": "d0977454db66b5a3bceeb2a0bdd9bfa8d2c1ccff014811153141ab124d12e70f",
+  "correct_narrative_order_proven": true,
+  "source_order_evidence_sha256": "8732ab1085ff2ccbcc12e570bb4dcd0b242b85a96290d7e15b83185acddbcf4f",
+  "fonts": [
+    {
+      "sha256": "001257778d27c2763978b2361c6999d7d1b736f943abc2bdeb4fa1a3e79b2d38",
+      "license": [
+        {
+          "name_id": 0,
+          "value": "Copyright 2025 The Noto Project Authors (https://github.com/notofonts/bengali)"
+        },
+        {
+          "name_id": 14,
+          "value": "https://openfontlicense.org"
+        }
+      ],
+      "required_glyphs_present": true
+    },
+    {
+      "sha256": "1a886eb72d67c7e5de47db26891b8cdbc5619f2442c656450f14eee6329f10c9",
+      "license": [
+        {
+          "name_id": 0,
+          "value": "Copyright 2025 The Noto Project Authors (https://github.com/notofonts/bengali)"
+        },
+        {
+          "name_id": 14,
+          "value": "https://openfontlicense.org"
+        }
+      ],
+      "required_glyphs_present": true
+    }
+  ],
+  "raqm_available": true,
+  "assets": [
+    {
+      "side": "front",
+      "original_sha256": "a9aae2f4a6a0179e9d2398d0cd66b2933e28e208eaf6d34b00be436d4de77ae7",
+      "new_png_sha256": "460af8701800b9275c39f668515d496f1af65c5955986be3ad43ec59a3ed8557",
+      "delivery_sha256": "77b2a78d8c42e25e54ca6715a5c6eb92c0e90e79c50d6f93f1a16af3f11e99a4",
+      "outside_masks_RGB_exact": true,
+      "delivery_recipe_exact": true,
+      "delivery_budget_PASS": true,
+      "fresh_visual_reused": "Allfour exact PNG/WebP previously inspected in this same reviewer turn; readable typography/copy retained, no clipping conflict."
+    },
+    {
+      "side": "back",
+      "original_sha256": "613a77912b59f9a94df525066773a1d618c1a023ad0813efc585f695032139f8",
+      "new_png_sha256": "f23a9251ee054148e05b5b076831c8b02d9b078bf4b3dc59d5d2ae538e67e1cc",
+      "delivery_sha256": "6de2383961fe8d47a97982da8c29f57a41dde2b0bdcaef6bd38f07d17a0355ee",
+      "outside_masks_RGB_exact": true,
+      "delivery_recipe_exact": true,
+      "delivery_budget_PASS": true,
+      "fresh_visual_reused": "Allfour exact PNG/WebP previously inspected in this same reviewer turn; readable typography/copy retained, no clipping conflict."
+    }
+  ],
+  "checkchains_verified": true,
+  "audio_false": true,
+  "actual_acceptance": false,
+  "production_observed": false,
+  "canonical_mutations": false,
+  "package_inventory": {
+    "license_notice.json": "5daf71034572bf90bf766d4c93d2632d518986f0cc96cd916f987ac0fe3ca3c9",
+    "highlight_sync.json": "d8bc45186c3d1b361ad66d3c0b210383405a91c6f9125fcab08c779a0c87579e",
+    "source_evidence.json": "d361d2a57e36d6cf70c84f1b5803a99306467116f44e200cfc16659e0145e94f",
+    "publication_manifest.json": "5dbf9bc1179e5c34962385605cfedb18b237afc494f984bf964c9553014715a8",
+    "reader_manifest.json": "b2510b44fa9ec57a7a7cc48be2482787ee4fe6cba0021ddd8a6cff71ef5275f7",
+    "publication_authorization.json": "fc2ce906bc89965081337b965ef3cbee4af6d288362f55d1d4c3cb7513571c73",
+    "approval_evidence.json": "9546dfd4b534e169157a43f2d7e4fc76640acd6287b942501d3cfe71ffe10d73",
+    "public_book.json": "20eaa83ebb9d5c09b0a79cd7c736134e232bb72d2d433c129b61dbf65a781c74",
+    "rights_decision.json": "d74bc7e2090e260dbec1e80e76d2d76f303a357073f3e9e05e2758fad7380756",
+    "checksum_manifest.json": "410592eb2ca396ce31e9576e0d66b4d18014bcc7b17855d1dd24bb5657bc04de",
+    "cover_provenance.json": "f0e0a6f1a6bf35d51674245b8d5af205d1b0a4c637059d4a4481c19c2fbf4c68",
+    "covers/back-delivery.webp": "6de2383961fe8d47a97982da8c29f57a41dde2b0bdcaef6bd38f07d17a0355ee",
+    "covers/front-delivery.webp": "77b2a78d8c42e25e54ca6715a5c6eb92c0e90e79c50d6f93f1a16af3f11e99a4",
+    "covers/back-original.jpg": "613a77912b59f9a94df525066773a1d618c1a023ad0813efc585f695032139f8",
+    "covers/back-prepared.png": "f23a9251ee054148e05b5b076831c8b02d9b078bf4b3dc59d5d2ae538e67e1cc",
+    "covers/front-prepared.png": "460af8701800b9275c39f668515d496f1af65c5955986be3ad43ec59a3ed8557",
+    "covers/front-original.jpg": "a9aae2f4a6a0179e9d2398d0cd66b2933e28e208eaf6d34b00be436d4de77ae7",
+    "chapters/chapter-031.json": "4e7ba92de02b289edd0d46a2d1bd1a1a4e04e7feea1cf1986240332e3bd8b003",
+    "chapters/chapter-035.json": "63dfa56410610337d014cdcbd15a789369dff2915c4da9f894ed49917f7ac0ef",
+    "chapters/chapter-017.json": "e3a363a41cffe6451c9626c74f8b2bd63b13763d671bb9982607f60cccb5cf72",
+    "chapters/chapter-023.json": "c133d91152483422f6ad3ff898cc438b16bdd32d3c77712206f6353c9879d850",
+    "chapters/chapter-045.json": "5443ad7a705e7d1f8c0a89617ff26202644f48f8d404ea7ac483d161428689c2",
+    "chapters/chapter-026.json": "30b72650b2ffb9bb4ed6e2b06748052cf51f897d44a23e3e7607c91ae2e97c25",
+    "chapters/chapter-022.json": "d9915c6d8cf7faca3dc299a97787851df731ee3896ba5281daab5ce2022dab96",
+    "chapters/chapter-036.json": "ad6b2321245c3d83ba7ef41c80f3e93d1f7e099f09eba696134c7d1fb67954b6",
+    "chapters/chapter-013.json": "68aad274a3843de03c936d1ff7b3cff4ab0188de6470876e28109b08d7a81220",
+    "chapters/chapter-038.json": "e4b6a11a6622a54864ed7323533474c20ddfa1246fbdcece33c2802d352fa845",
+    "chapters/chapter-010.json": "7a8e7600b03ef42044f4ba3b9d3d238618a8ec0c6f37e9312a5737bb9644f952",
+    "chapters/chapter-014.json": "31fb8d3e021f4dc02ac17aa04f89dd83c246ce975a152780c2bcc71d9a0239d4",
+    "chapters/chapter-044.json": "f21eee949f571212b24abbb795385734313354bf945d641a8dd8a61238c68bf6",
+    "chapters/chapter-009.json": "69580495958eb88767f7b5ba4c2014b72e1732224f2cafee200c4be4782dfcd5",
+    "chapters/chapter-040.json": "96e586200967807b40059275c150b1b21236bbba1a0056bd5c6a5c61aebdd331",
+    "chapters/chapter-016.json": "cb04cfc9abe5ee2b199681d0542fd499fa559b89f61a6377c16b6f0a513ec068",
+    "chapters/chapter-024.json": "712c31d6d29e4111afa4f5dd7d30c5949cd71cd57d44c45eb03a05642d345b33",
+    "chapters/chapter-029.json": "bdbc786b1b10a20e47f66c5a81061dcc423a7ae75db58066ecb41896cf845da4",
+    "chapters/chapter-032.json": "8e9dab1922b3c6fe587237cc988fb9326d35517dde71ab4ac01fd9f447455a3c",
+    "chapters/chapter-002.json": "f8cb557225caf2ce72c61703bd8d4095279f75061127262649d16ef4ffb5de3f",
+    "chapters/chapter-041.json": "13ae7550cd6a951b48ea7b9b96b3e4eed4dd1af27e2d6de51c57097d7c17c62b",
+    "chapters/chapter-037.json": "d2374d2da74251efaa2ac5b1e1fcc51292027d131deeec1f402dd15124315a7e",
+    "chapters/chapter-043.json": "c8dc82fae8ad7f630d25daa9bad3075c1ed2869494be23bd1cb78416ba7ffb70",
+    "chapters/chapter-033.json": "4c0251629370a6347d24c38dd1d2c84ed7b30fadc4033d83e8b53ccae2af7c0f",
+    "chapters/chapter-018.json": "992738567b6c5ea18ed4a8aa682721314216b04f88189cb9a2a57ef465727e15",
+    "chapters/chapter-039.json": "7ad5441eb8439feecd97ef5d6968c34dcb521ea40a5c5d6185afee4d8931d204",
+    "chapters/chapter-046.json": "b82d6c43dbb0533e22a50c4d74e657c6acff53ff33b017730b43453fdd62d2ec",
+    "chapters/chapter-030.json": "36dfcef025be890a8721c08ec9bdccf0ba13781bb529a4269ce2e7bd9fb65a9e",
+    "chapters/chapter-008.json": "8972ef019fd52914d7afa14c9c796ddaca5c3962f3cfa5d64e6983c01ad1dfd5",
+    "chapters/chapter-011.json": "fe2dd5c2ebf2002e1b9df8d0e6f80bf5ef3bedd23c80316eac2f3f58d8c000a1",
+    "chapters/chapter-020.json": "d01e73e4fb71319cd15c27fcea3d78d6beb6dc92f2718992a7b3902bd35c4167",
+    "chapters/chapter-025.json": "c7167ef43e869b1a8532999ffd1fc4c309884b23b63e4bd698ac0cbfa74751af",
+    "chapters/chapter-004.json": "8d6361210b47146a525c6a27ace8089e843a3c9cc2d5ef664a03917c1ab81fd3",
+    "chapters/chapter-019.json": "7212731b04fc82a5cec913b23987bc8ff83e06c35de9c68cfdd94e43b019f61c",
+    "chapters/chapter-021.json": "1d670878e0fdf17d2ce8de234af10572bd8a57b96dc81455bc9fbb24bd2f6a8a",
+    "chapters/chapter-042.json": "b1e4c8251782867c772c88765317792f32009ccf3c6a0ffae4f4fadd7600308a",
+    "chapters/chapter-027.json": "6772fed3b81b71de0967429befb21dffca8ff0f397a7ac131fd1d4728615f752",
+    "chapters/chapter-015.json": "a212be3e16c146f0f14f0f27d2d049591cd46692af7408794e28475e797b2174",
+    "chapters/chapter-034.json": "0266aa07e5bd4f311ed8126d363b7a51732a75f7776428e8a80ebfa534845454",
+    "chapters/chapter-006.json": "dd53ab972179af1e55ba124fa5550982a08efcdab5c3010bfa5bf513716fab5c",
+    "chapters/chapter-005.json": "61e7e111b4bf2855d99925fc22de0ab430eb6c59ec05e818890c13e74443a157",
+    "chapters/chapter-012.json": "4bbcaa5961de436f8b828d2f8c18a4f6a2f9f2b6ea3d5a487f804fcd1f05fcc6",
+    "chapters/chapter-003.json": "a88703c2534d2f4f1132584cc6a1568e7bddca6d42ba4dd53b6fd344f807f27c",
+    "chapters/chapter-007.json": "a698a85b29d5b706ef0e86c8652daaceb2989221b7eeaef38e25d6ccf43f6d6e",
+    "chapters/chapter-028.json": "f8175d60a298b31076f523398361e942f59c79362bb9c1836601e4d9d6dde503",
+    "chapters/chapter-001.json": "8be09dd930e4fb58cef1b49346d66ad1814924d6f31d2bd1f76df45951ee26c7"
+  },
+  "next_action": "Root actual prospective accepted-stage metadata/bindings plus fresh reviews; for Lokrahasya/bn066 first source-page-backed Reader order overlay or exact terminal exclusion."
+}

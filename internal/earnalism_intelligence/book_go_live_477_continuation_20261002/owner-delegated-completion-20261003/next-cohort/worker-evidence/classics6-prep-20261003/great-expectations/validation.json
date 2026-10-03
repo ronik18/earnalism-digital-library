@@ -1,0 +1,203 @@
+{
+  "slug": "great-expectations",
+  "status": "INACTIVE_UNACCEPTED_COMPLETE_SOURCE_AND_ART_READY_FOR_TWO_REVIEWS",
+  "checksums_pass": 72,
+  "source_reader_sync_chapters_byte_unchanged": true,
+  "assets": [
+    {
+      "kind": "front",
+      "source_file": "covers/original-front.png",
+      "source_sha256": "faeb4440529f863bee85f04342db1da56bdfa209c0e642b9b6ff9d552df8013a",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780292673/earnalism/covers/front/cover_ff32fe6a-9f1a-402b-935d-c5dff918b8a0.png",
+      "source_bytes": 3164717,
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "licensed_deterministic_overlay": {
+        "file": "covers/great-expectations-front-deterministic.png",
+        "sha256": "6504db35a3eb099e169d1584203cf5895c04e5e1b00f3623f3144e8f9f6b1198",
+        "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+        "text_title": "Great Expectations",
+        "text_author": "Charles Dickens",
+        "mask_rectangle": [
+          45,
+          45,
+          979,
+          580
+        ],
+        "pixels_outside_mask_exactly_preserved": true,
+        "attempt": 1
+      },
+      "file": "covers/great-expectations-front-faeb4440.webp",
+      "sha256": "4640b6fbd02d4fa2c0978e17c7837c35805fa8157c4e83a6040bef2b576c173c",
+      "bytes": 30860,
+      "dimensions": [
+        600,
+        900
+      ],
+      "url": "https://theearnalism.com/assets/books/great-expectations/great-expectations-front-faeb4440.webp",
+      "recipe": {
+        "format": "WEBP",
+        "mode": "RGB",
+        "resize": [
+          600,
+          900
+        ],
+        "quality": 40,
+        "method": 6,
+        "resampling": "LANCZOS",
+        "pillow_version": "12.3.0"
+      },
+      "parameter_calibration": [
+        {
+          "dimensions": [
+            600,
+            900
+          ],
+          "quality": 40,
+          "bytes": 30860
+        }
+      ],
+      "review_status": "TWO_INDEPENDENT_NEW_EXACT_VISUAL_DELIVERY_REVIEWS_REQUIRED",
+      "production_observed": false
+    },
+    {
+      "kind": "back",
+      "source_file": "covers/original-back.png",
+      "source_sha256": "6bc57298528f3b0addbab1e8f0cdc1bd570358fd1d472d508ea430e11397da4a",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780292677/earnalism/covers/back/back_cover_ff32fe6a-9f1a-402b-935d-c5dff918b8a0.png",
+      "source_bytes": 3302955,
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "licensed_deterministic_overlay": {
+        "file": "covers/great-expectations-back-deterministic.png",
+        "sha256": "3ff84c07956b425f3562d284918075ba2084935078b5234f9139c375735d5c1d",
+        "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+        "text_title": "Great Expectations",
+        "text_author": "Charles Dickens",
+        "mask_rectangle": [
+          55,
+          1260,
+          969,
+          1460
+        ],
+        "pixels_outside_mask_exactly_preserved": true,
+        "attempt": 1
+      },
+      "file": "covers/great-expectations-back-6bc57298.webp",
+      "sha256": "c469f4868f13b13f8d23c0d36b22628dd5571269a7046fdaa83b2d409d9eccd8",
+      "bytes": 114714,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "url": "https://theearnalism.com/assets/books/great-expectations/great-expectations-back-6bc57298.webp",
+      "recipe": {
+        "format": "WEBP",
+        "mode": "RGB",
+        "resize": [
+          800,
+          1200
+        ],
+        "quality": 60,
+        "method": 6,
+        "resampling": "LANCZOS",
+        "pillow_version": "12.3.0"
+      },
+      "parameter_calibration": [
+        {
+          "dimensions": [
+            800,
+            1200
+          ],
+          "quality": 60,
+          "bytes": 114714
+        }
+      ],
+      "review_status": "TWO_INDEPENDENT_NEW_EXACT_VISUAL_DELIVERY_REVIEWS_REQUIRED",
+      "production_observed": false
+    }
+  ],
+  "archived_historical_positive_audio_and_duplicate_claims": true,
+  "all_candidate_files": {
+    "approval_evidence.json": "9c2a0e063274827293b8e78177e89cca643f8f4a4d3be883126b2294f46aba03",
+    "chapters/chapter-001.json": "1a488e2911e427ce25227419c4a293ced8c5b475f88129898edbde7536ff190a",
+    "chapters/chapter-002.json": "d939b2e3ce246c7ed29cec3ef0c5ca5c9c50ab3253c6a545c6e7f623d7c44dd1",
+    "chapters/chapter-003.json": "fccb19a31ac7e64e06ddbd75e2e933f6508f57f7746a899161e7fbd7251d97be",
+    "chapters/chapter-004.json": "34e1f322b7ce396d6d66be6a8a8234b266b38feb22fc6831b51fa869980ec869",
+    "chapters/chapter-005.json": "230af0d0943478cd6d9b767110ba84c60de2b7cd9a40251bcad61b14f3d0accd",
+    "chapters/chapter-006.json": "b50a647c2431fcedc37906c4fefa60cf9941bb0eeae2bb8c2e5eff287b36a742",
+    "chapters/chapter-007.json": "f15982b83c706b4a565551a9aa4838a11062ac493f5b213c96354e0caef35301",
+    "chapters/chapter-008.json": "264c064f685524627290fe0f27faae278dd3739e866f360341a5dd65217cd3a1",
+    "chapters/chapter-009.json": "b193b4d636bd7fb04ae26f01da1d63840ecbb98a2e573aca55bc4fa94179bb0a",
+    "chapters/chapter-010.json": "4ccdb8defd9d7ba8db67744f5aa2b13eed580382a6150f946d354de5cc6663e3",
+    "chapters/chapter-011.json": "f039bc1bd1b94064bcdbaf271c44edcb4a9222147ece507be466e1b981435ed9",
+    "chapters/chapter-012.json": "9ad092095acf170bebdc86dff9a8f0ffd510a11dd42d39adcb08bfdb2010ad12",
+    "chapters/chapter-013.json": "cf5813eb02864d9b41097c64d8a2dc896cc0795c2f47a56e84f18a8e1035f774",
+    "chapters/chapter-014.json": "162437762c0c4a2cd141662c283dcdf2050ddca5a8e92749688d86f05ed69828",
+    "chapters/chapter-015.json": "97ff0690c97f17c49b964f7623a060254a2398ad805880bf6da83fe9fc67f1e5",
+    "chapters/chapter-016.json": "bc8f50fb074993bb27ea6e47176eda85879a2d16e5787e48eb95c644de38e5ae",
+    "chapters/chapter-017.json": "e1fa124b9f3ed54a9242e284603ab50403028a9e4737f0a240c4698bf1dc84ef",
+    "chapters/chapter-018.json": "eee9756f18e5e97ed55f24add48108ad0cc8670479aa8cde6e6ee6e0117fe797",
+    "chapters/chapter-019.json": "bf6700b6b5bab3cb63bcd4ae77d590434133b0137946f7c8f2851b106532e8c8",
+    "chapters/chapter-020.json": "546a9d5800dcb47593ef903e3086e4a4db6791cefb9351938fa398091cfee911",
+    "chapters/chapter-021.json": "ce886672a88ae112b04e66c7ca5bcbc738adce7c208bedada330be129da4b67f",
+    "chapters/chapter-022.json": "5cb2a8e81bd7f8c12dc239352436faff41ff03550524019e358111d0bb15c48c",
+    "chapters/chapter-023.json": "b86bcb9511702e1948b5e31d885bc814f62032bfa17cec6554b6da6b7bab7fea",
+    "chapters/chapter-024.json": "ca0045ea2a5efe36e3cf95d2f9d4aa04c9f8940c16224953ec2fc5ce3c0e67ee",
+    "chapters/chapter-025.json": "26c96357fb000d92a8de19ee3392a9aff4070da472e0c726eca8f8009f856b00",
+    "chapters/chapter-026.json": "1246efa6448330d08adfd4261bf6ab2166b7daa5c140df948679a7b779151509",
+    "chapters/chapter-027.json": "d2687dee527c7a94a9916702bcf6799723986a9c40badfea57ab97fa8cdc485c",
+    "chapters/chapter-028.json": "dca1076235f5165188fe339bc751c85ebbe8ba20fe159a77bcbd20954775bd56",
+    "chapters/chapter-029.json": "77b13b348e594f00edaf0ce3568c30829dd42d27c7318cdc8e23567465bb67c2",
+    "chapters/chapter-030.json": "e688d2d1ad1a433cb5fd089be5aaf07b53b47c791ad84a7998fc2a1ef2589ec0",
+    "chapters/chapter-031.json": "5226ba037d5c573e4cd94501b770b3f0164877726918195d712100388979c446",
+    "chapters/chapter-032.json": "3e725f918239c4b44c81ed688627f5c1918f4d1f008e1887d027932004f82571",
+    "chapters/chapter-033.json": "b2abd0bccaa9723b85c2c8cfc99b191f15ff4ff3a62e0779dca7847e28fb274d",
+    "chapters/chapter-034.json": "678d63c287864d2c93125769cab99600bc55cbdc16487b49ddf2807211609447",
+    "chapters/chapter-035.json": "9c9cbf5398cdd1faa0691105ffaf73cdc706c7837b10ab107a24361ea78e8c5f",
+    "chapters/chapter-036.json": "6e38ee4ef2face13582ce97f3203f97434f5edc67517e6744f6e7e1c564dd9ce",
+    "chapters/chapter-037.json": "94c37ecfaaa8876e5cf8f5eb51e2cdb74df5c5704e4823d3a101d0ae9ecaa770",
+    "chapters/chapter-038.json": "bee2f2970997919fc76d3d80b1b4ecf051e60adc60d309591babee51b288351f",
+    "chapters/chapter-039.json": "8bfd7dc78ef7d80fe13b9e19508411180ddb4f914a6412f4fbb2e6442665dde6",
+    "chapters/chapter-040.json": "3d25e8251bdbd75391b349f62c93737899e1949bc6c2f5f7d6ade11e21668d73",
+    "chapters/chapter-041.json": "293cafad782b2c6ed46a59fcf518d9cc3e3a7fcc693424b1783759fe3635a934",
+    "chapters/chapter-042.json": "80a24b259b9de29908896ec5566be023617802cd4cce528962ed4d56459ca4aa",
+    "chapters/chapter-043.json": "e19e41e52fd6fb316e6a687d57c33635258a04f09736c4df2509fa9edb5ff9f4",
+    "chapters/chapter-044.json": "ea51b1c9da83caae456b099a46721152309f279bdd6c70ba1458917e8b0aabb1",
+    "chapters/chapter-045.json": "ff2e9dcda90cb4063d47898a066f8e97110a47642744a2e9cabd068cb06b874b",
+    "chapters/chapter-046.json": "8d1c08a201328a8e508df7484b94e55a7e311e1b62b8aca1004d38162c53924c",
+    "chapters/chapter-047.json": "e164ff50b9b9c297d1c163f1c67efab2a924cbf4388784b51c8c106202ce6ec0",
+    "chapters/chapter-048.json": "907b3bba264daabaf54d21cda04e30c7d857ad6473aa85c673a9e8e46e6fab98",
+    "chapters/chapter-049.json": "33a452326233eb31928f31a21a2b46ed2e70c738ffda54499b161c9dead925e6",
+    "chapters/chapter-050.json": "50926e5ce7dcd79ddba4ac715f242c90e22574e765146579e1550382c7047056",
+    "chapters/chapter-051.json": "bcd195ff40d50a0293947ca3cb5cde4f053f30abf432497443f43b903b351e25",
+    "chapters/chapter-052.json": "8f008924ea55e2c40b8da59cc45813db9dfee066a9c4805f249b2a1ef753db34",
+    "chapters/chapter-053.json": "e5228f7c63bacb4853a6712f1628d1ce79c8235c12e0a84c6469ff9cece808b0",
+    "chapters/chapter-054.json": "35c83b3277bcee3c18e4e7dd65d04cf03618a833907bf7425ed6af125be14a38",
+    "chapters/chapter-055.json": "85d664f286e9aab0103b2a4e81bf6e91c16d2920aa054922e53eda29c521fe98",
+    "chapters/chapter-056.json": "7e69934c8ec2a3015a2526a298d298ad1afa227eeb7792d248c48c80eb69b290",
+    "chapters/chapter-057.json": "149fe2bb31642bbc9209d887b4b09c16181a23052aee3ae10683057ab105bc4e",
+    "chapters/chapter-058.json": "651f5ae4958c62c1492037f2a4730e339d4338317f2d21ad6430c02f67be663f",
+    "chapters/chapter-059.json": "4a8f6fbbff0bfd76e4a78d88168845c0835d27a2a6418d13f4df2f7891db3887",
+    "checksum_manifest.json": "fb6d47ee6c53a7c98a5871c569f006a028e8dc254cf82fd6bec41252cc65ffbe",
+    "cover_preparation.json": "7c1ef6bc557fdbfd22681a476744e9d18617cf8703de744a8db5a4d98def96fa",
+    "covers/great-expectations-back-6bc57298.webp": "c469f4868f13b13f8d23c0d36b22628dd5571269a7046fdaa83b2d409d9eccd8",
+    "covers/great-expectations-back-deterministic.png": "3ff84c07956b425f3562d284918075ba2084935078b5234f9139c375735d5c1d",
+    "covers/great-expectations-front-deterministic.png": "6504db35a3eb099e169d1584203cf5895c04e5e1b00f3623f3144e8f9f6b1198",
+    "covers/great-expectations-front-faeb4440.webp": "4640b6fbd02d4fa2c0978e17c7837c35805fa8157c4e83a6040bef2b576c173c",
+    "covers/original-back.png": "6bc57298528f3b0addbab1e8f0cdc1bd570358fd1d472d508ea430e11397da4a",
+    "covers/original-front.png": "faeb4440529f863bee85f04342db1da56bdfa209c0e642b9b6ff9d552df8013a",
+    "highlight_sync.json": "fb5e2dfe15cd05dafa761ed923a5cbe5de8b935ca9800a624b4e85abcd84b30c",
+    "public_book.json": "78ef788f3288f792cc602568bb68d17ec7ac4872287cf606773fc1e46a2d3704",
+    "publication_authorization.json": "f3a08942daf84063d47ccd1ec4287b42842111d7eb522a474e99560de6fc6e67",
+    "publication_manifest.json": "d426afffacf054744af54708771c842547fbd1a4d206ca6124a47dcedc8ff90f",
+    "reader_manifest.json": "bfc15ce642b90bfefe9d8ac2372f4f806a273de585108f3f54ed26059c99eded",
+    "rights_decision.json": "50a6c979d208ccd64683a5f70de5b40eda3b0fd52614361566945cb7485903e6",
+    "source_evidence.json": "b83145cb7c02a291078baaee3c9b90adcc322bade481d588b4ccdfbf2076abbe"
+  },
+  "font_license_file_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7"
+}

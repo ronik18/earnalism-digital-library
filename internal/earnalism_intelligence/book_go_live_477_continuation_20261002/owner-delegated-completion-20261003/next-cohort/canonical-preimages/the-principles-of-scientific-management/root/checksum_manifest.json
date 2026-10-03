@@ -1,0 +1,46 @@
+{
+  "slug": "the-principles-of-scientific-management",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "810c7d5c17b71c69c3370d7a0c1181d08a696d3e2ebd125fc1cdb16fbb28bd45"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "54a34be7806d09e5d94918947214e4d2d58f78367fdab1efd9da8489522c2a35"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "5d5831cc3266c2a972290056cfeb8e3d598c09412b0bf35027687a704a56e994"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "0eb52d90eeea32e4aa583cc95ece5cb8350901a3f955274244aa916cf88b001c"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "33cd142e22486d545f9302026058eb1bac8d14efb80b25ac1cd0b241553197fb"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "a41defc9882bca4759e902093932f56cbf628eb9f0e3e5860b9295d26a9c6ae0"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "93b4217905842a3d4b8f0532844b4f6b588fd1a8f480c9503f8671a1e3eca92c"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "a836e5339f4f15b0aa61cccd35d2da8edfb25cd0250b1d45d41f57a2c150af60"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "87a47f53b9dbcbae66a09bee4bcc5769f4b5f584ef9bdfc4ab31b65959c3318f"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "e6b091fd0aebe2517dd1e2b6c8e8ef14d5ea6d6540daa66c33e0ba27a9ef2380"
+    }
+  ]
+}

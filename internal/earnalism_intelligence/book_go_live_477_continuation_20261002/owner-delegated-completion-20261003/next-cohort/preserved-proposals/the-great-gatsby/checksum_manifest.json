@@ -1,0 +1,102 @@
+{
+  "slug": "the-great-gatsby",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "2c35fa26bafcc9047701bca66935b825d1da369b841da7ee6ed78a2bb80ba2d0"
+    },
+    {
+      "file": "chapters/chapter-000.json",
+      "sha256": "77bf8a76e425bc7cbb0ed33c641f547841dd2849271b2f64f6df49e7a9b64861"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "45c3e0373c1fd8b3c5b32d48d4d8d735441424ee71bbe7f103423533fc6aae63"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "8993d610624add69ab150a59c169c4b9b757d3810aec9df8674c8a751280d412"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "36705f15c9ca6b6cd841485b43456aa9c38ecc67f6a4816054f7b3bfed68ed3b"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "03ae2d9e7327e2be41ca8d263e179e341061fb9669f43ba00dbc7676e31f9d69"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "dee00928b0dd556bdbf80ccfcd307904cd909b4bf5c0cd15db4d8f7b947c1e68"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "89873a952e81402c246bab28438d3578e49d0e7f41b6483c84785695157721a3"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "dd8448b1ed252dffbdeca627d55d084ecf319efb699b4393e022514817ead2a0"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "bc19ec61f61517ae46b7626e5d97fffe46e1e47f943388ec9faec79d562856ef"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "d475a9724ba4cb46caa499825ee3a1c53d409c42a02f2ab4d77a687be67e62b9"
+    },
+    {
+      "file": "cover_preparation.json",
+      "sha256": "d7a4dd3bee23aa3e9d57bdbb2d8bb9d0601e5e42499086a4900857218aa5a4b2"
+    },
+    {
+      "file": "covers/original-back.png",
+      "sha256": "b2696f4c8247fdc0bbb25a277e73a6eee757e0fa7e9083d176e0a98a7744c402"
+    },
+    {
+      "file": "covers/original-front.png",
+      "sha256": "8d98a278f5e09cdbfcb03c064424c6c0f221c3fc230be24e7b502affb915bb2a"
+    },
+    {
+      "file": "covers/the-great-gatsby-back-b2696f4c.webp",
+      "sha256": "a5a02d9abc0e867bc65527dd57dcdd7679843589f90191cc09302d9d871be32b"
+    },
+    {
+      "file": "covers/the-great-gatsby-back-deterministic.png",
+      "sha256": "8569231e38db5c1e81765f1d9935d236fd5cd72b222c62d6c9ba72a7be998e6b"
+    },
+    {
+      "file": "covers/the-great-gatsby-front-8d98a278.webp",
+      "sha256": "b3513c4e345b4aa6156f61e6d6a3a69ba3a034f79b6dc3c75773a941cbb516d1"
+    },
+    {
+      "file": "covers/the-great-gatsby-front-deterministic.png",
+      "sha256": "708f7cc8e5c21cc1cc535edcc5d000a9d7531f226bebb138e57e2c8633efd624"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "05e57751ae1960050039ca565b5b395638c93478414a0ad757d744f249737888"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "88251a2ea7135b912d64120060bb0d55a7e1574e7cf3ad7217f61f0141d38b75"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "cd77f8d09b751b788ea3701163b5baa9e2aa34bee71eeb4a76aa141eb590dfe0"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "f544166427c91bb2b8546484bf0c811761345f2ec8f1c73c00afad88411fcb4c"
+    },
+    {
+      "file": "reader_repair_evidence.json",
+      "sha256": "898dc429914c003e998d703fbcaa3d739647420f2f596836da0dc3ed9bc6b499"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "93a1e5eab7ce62def0ef60ba3a2ae6e56ed964c688c1f2a827f3e88664a30874"
+    }
+  ]
+}

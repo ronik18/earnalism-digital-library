@@ -1,0 +1,46 @@
+{
+  "schema": "earnalism.independent.changed-proposal-binding-review.v1",
+  "reviewer": "independent_reviewer_B",
+  "reviewed_on": "2026-10-03",
+  "slug": "dsires-baby",
+  "disposition": "PASS_UNACCEPTED_INACTIVE_PROPOSAL_BINDINGS",
+  "unchanged_visual_source_review": {
+    "path": "/workspace/scratch/181ef0a25f05/new-acceptance-review-b-20261003/dsires-baby-next-review-b.json",
+    "sha256": "836980032780423cd7992ae05776abe11592de80f0ee34f3360764d266d6ec6e",
+    "new_review_not_replayed": "Actual PNG/WebP and source hashes byte-identical; only metadata correction rechecked."
+  },
+  "proposed_decision_raw_sha256": "89ec348616ec53dc4f2aba524ae907ae0969f6dea45d3259c834a588b4857877",
+  "proposed_decision_canonical_sha256": "7190b8d3fa4006c238bd749fe9b7ab4397009d86886747682f304d3e92758914",
+  "components": 12,
+  "checksums": 12,
+  "all_component_checksum_hashes": "PASS",
+  "historical_duplicate_positive_audio_approval": "Removed only from effective packet and checksums; prior17c9e18d original byte preserved in preimages and precleanup candidate archive.",
+  "source_chapter_highlight_unchanged": "PASS",
+  "effective_current_audio": "False flags/empty media only; no positive audio observation/approval propagated",
+  "package_inventory": {
+    "highlight_sync.json": "11b60f5ca19e9fabb00a130253b197b9d842de217c0c66b6b9999f5160b093e2",
+    "cover_delivery_derivation.json": "feb006057f91cd260d56db1c3c455eca58bce40ae3192cd94a5a798425c9fb6a",
+    "source_evidence.json": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb",
+    "source_integrity_validation.json": "52683b6ef48451afe01c74f56481119e5b40663e1e27a141436108953d302444",
+    "publication_manifest.json": "b5c58131dab8207930f3243e2fbb548a84321a1fd7b99882fd17c67d624d056c",
+    "reader_manifest.json": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee",
+    "publication_authorization.json": "8ae351a362c2abc4f2e88a14ea52d3afc266574ea21022b080eeda855f372bf9",
+    "approval_evidence.json": "380d6e79a99cff02e69010626a46f9260237d78e826548d0a8f6dbb351b17bf4",
+    "public_book.json": "28d9b30dd139f065438b822a53c5f5a522f128b759421ebf68442ae376991a6e",
+    "rights_decision.json": "89ec348616ec53dc4f2aba524ae907ae0969f6dea45d3259c834a588b4857877",
+    "checksum_manifest.json": "346623c242afa8285fa76f3c96e4a7771e090a59a83a6fb2de96294f2ff82971",
+    "cover_provenance.json": "8a9d332bc7cbd6bfb54e111eafcf3be83817d166405a96ffb3c116d4e149bdd3",
+    "covers/back.png": "5a845c98786371fc1e671585701cf513c1142fbb5119337aff3d0a02497cff00",
+    "covers/front.png": "c965ecd734bdb2d7966946f2cb3be4af131832266c31a3900f8e8d9375c667d1",
+    "chapters/chapter-001.json": "4c5f2ef8b4ba48d637ac19f0317c4dcb713d70577e49f6f51ae17999579b019b"
+  },
+  "validation_sha256": "e00e17ba9d473e38d7bc0cf21e0416612e717597cb5b944d1e6ceccc3ae4db3f",
+  "publication_accepted": false,
+  "cover_accepted": false,
+  "production_observed": false,
+  "remaining_gates": [
+    "Other independent review PASS and root actual prospective acceptance",
+    "Fresh accepted package review and serialized protected release/deployment/canary/truthful readback"
+  ],
+  "canonical_mutations": false
+}

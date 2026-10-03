@@ -1,0 +1,70 @@
+{
+  "slug": "book-5704b31005",
+  "generated_at": "2026-10-03T05:45:35.963016+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "439cba2b2a0eb7acce8eddebe3bb1e78a0d250949812e140ab4249aa55cc4b76"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "e0325632daa997c635a64d46073efbf6d8fda511635e9b4ababfa3bab79dfd5c"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "11b9a5b36b710e84941171ad69d3975ae9230e17af120a8af53d59ad1609aa59"
+    },
+    {
+      "file": "covers/back-delivery.webp",
+      "sha256": "4e0a187bd92e75d5b4fb97a670516bacc6183862672090f03ed5dce9547c5709"
+    },
+    {
+      "file": "covers/back-prepared.png",
+      "sha256": "f470d039657c0f6068ce708f2e1380ccdba297132434ac0c5c1434c488456e7e"
+    },
+    {
+      "file": "covers/back.png",
+      "sha256": "a99c6c0e27712090637651204cfb0aa5809442ddbc3b5e99da35828a34c82a08"
+    },
+    {
+      "file": "covers/front-delivery.webp",
+      "sha256": "8f64cc7c2a33820dfbfe55a635f70a8a0fd19959c71e3290bdeeadd45c2531a5"
+    },
+    {
+      "file": "covers/front-prepared.png",
+      "sha256": "c58421cc10daab55ce40478452acbd0c8c0977761753a6d01c63db2b67b56b21"
+    },
+    {
+      "file": "covers/front.png",
+      "sha256": "a914d173de6f5cd9486fd91a7b69188d156ac7623ebc9f8f89173acd1c48d104"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "e58d907c1d0fa2ae194a04c11b6d9eef3f35f188f6d22fd7eb4cc1fac84465bd"
+    },
+    {
+      "file": "license_notice.json",
+      "sha256": "1fc9cf8fae864434f95bc34656a96672c55d852f3dfdad4a1f386a1a1cc4e01c"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "1e06b7ce1b81bc98b3677fc5e5999aa41862fbbd5a736d5755543b85ba660819"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "270311f5a1b29fd49ed2c5e2b50bfff7004439b537d91dd8e2de678e69615467"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "6c7daced7a35b9f20ba2f8828e5636d7c644e6ceb272f1707871adafb5a2b759"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "f7d3ac1cbe169532038b008d48c0313290cedca638d23c7696d75d3a0c072f3b"
+    },
+    {
+      "file": "source_integrity_validation.json",
+      "sha256": "89eac8e38ab78c63ae74dc799b89c6fe6fef9aa5755e55c645c94a1dd7ea11f6"
+    }
+  ]
+}

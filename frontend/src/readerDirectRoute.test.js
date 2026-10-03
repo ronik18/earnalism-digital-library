@@ -53,44 +53,26 @@ describe("approved Reader direct-route contract", () => {
     });
   });
 
-  test("held Selfish Giant Reader and Listener routes retain the shared public shell", () => {
-    const layoutStart = app.indexOf("<Route element={<Layout />}");
-    const standaloneStart = app.indexOf("{/* Standalone full-screen routes", layoutStart);
-    expect(layoutStart).toBeGreaterThanOrEqual(0);
-    expect(standaloneStart).toBeGreaterThan(layoutStart);
-    const publicRoutes = app.slice(layoutStart, standaloneStart);
-    [
-      '<Route path="/reader/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />',
-      '<Route path="/listener/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />',
-    ].forEach((route) => expect(publicRoutes).toContain(route));
-  });
-
-  test("serves the held historical Selfish Giant Reader URL without entering the Reader", () => {
-    expect(app).toContain('<Route path="/reader/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />');
-    const rewrites = vercel.rewrites || [];
-    const genericNotFound = rewrites.findIndex((rule) => rule.source === "/reader/:slug" && rule.destination === "/api/not-found");
-    ["/reader/the-selfish-giant", "/reader/the-selfish-giant/"].forEach((source) => {
-      const index = rewrites.findIndex((rule) => rule.source === source && rule.destination === "/index.html");
-      expect(index).toBeGreaterThanOrEqual(0);
-      expect(index).toBeLessThan(genericNotFound);
-    });
-  });
-
-  test("serves the held historical Selfish Giant Listener URL without entering the player", () => {
-    expect(app).toContain('<Route path="/listener/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />');
-    const rewrites = vercel.rewrites || [];
-    const genericNotFound = rewrites.findIndex((rule) => rule.source === "/listener/:slug" && rule.destination === "/api/not-found");
-    ["/listener/the-selfish-giant", "/listener/the-selfish-giant/"].forEach((source) => {
-      const index = rewrites.findIndex((rule) => rule.source === source && rule.destination === "/index.html");
-      expect(index).toBeGreaterThanOrEqual(0);
-      expect(index).toBeLessThan(genericNotFound);
-    });
-  });
-
-  test("keeps cross-browser review on a live populated detail while checking Selfish Giant as held", () => {
+  test("keeps cross-browser review on a live populated detail while checking Indira as held", () => {
     const crossBrowserReview = read("../scripts/verify_exact_primary_cross_browser.mjs");
     expect(crossBrowserReview).toContain('publicReaderExposureEnabled ? "a-white-heron" : "dracula"');
-    expect(crossBrowserReview).toContain('["book-detail-held-desktop", "/book/the-selfish-giant"');
-    expect(crossBrowserReview).toContain('"held-book": ["[data-testid=unavailable-title-page]"]');
+    expect(crossBrowserReview).toContain('["book-detail-held-desktop", "/book/bn-060"');
+    expect(crossBrowserReview).toContain('"held-book": ["[data-testid=book-not-found]"]');
   });
+  test("released Selfish Giant uses ordinary Reader and disabled Listener routes", () => {
+    ["book", "reader", "listener"].forEach((kind) => {
+      expect(app).not.toContain(`<Route path="/${kind}/the-selfish-giant"`);
+    });
+    expect(app).toContain('<Route path="/reader/:slug" element={<ReaderV2 />} />');
+    expect(app).toContain('<Route path="/listener/:slug" element={<ListenerV2 />} />');
+    ["reader", "listener"].forEach((kind) => {
+      const generic = vercel.rewrites.findIndex((rule) => rule.source === `/${kind}/:slug` && rule.destination === "/api/not-found");
+      [`/${kind}/the-selfish-giant`, `/${kind}/the-selfish-giant/`].forEach((source) => {
+        const index = vercel.rewrites.findIndex((rule) => rule.source === source && rule.destination === `/${kind}/the-selfish-giant/index.html`);
+        expect(index).toBeGreaterThanOrEqual(0);
+        expect(index).toBeLessThan(generic);
+      });
+    });
+  });
+
 });

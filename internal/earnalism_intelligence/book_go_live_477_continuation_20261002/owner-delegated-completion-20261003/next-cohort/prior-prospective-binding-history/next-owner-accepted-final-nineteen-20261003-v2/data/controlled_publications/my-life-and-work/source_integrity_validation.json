@@ -1,0 +1,158 @@
+{
+  "schema": "earnalism.complete-selected-work-validation.v1",
+  "slug": "my-life-and-work",
+  "source_sha256": "f01c925ba4a15ccc6a5aa706418cf94149ddd7d8f390c65d132b8675435b00cf",
+  "source_hash_exact": true,
+  "chapter_count": 20,
+  "method": "NFC + whitespace only. Every canonical chapter matches exact source in order; every interstitial gap classified exhaustively as source heading preserved in Reader metadata or known signature scan-furniture; source prefix manually inspected as source boilerplate/production credits/title page/TOC only; tail exactly begins PG END. No omitted narrative prose in selected full work. First-party Bharat entire supplied manuscript byte-identical to canonical, with empty prefix/tail.",
+  "whole_selected_work": "PASS_PENDING_INDEPENDENT_REVIEW",
+  "matched_chapters": [
+    {
+      "id": "chapter-001",
+      "start": 1619,
+      "length": 36376,
+      "content_sha256": "35d0e0af2b20f272b5126b827abd30e3dfd2e0fcd5b9e76210a418f942a3adff",
+      "source_gap_before": "The Project Gutenberg eBook of My Life and Work This eBook is for the use of anyone anywhere in the United States and most other parts of the world at no cost and with almost no restrictions whatsoever. You may copy it, give it away or re-use it under the terms of the Project Gutenberg License included with this eBook or online at www.gutenberg.org. If you are not located in the United States, you will have to check the laws of the country where you are located before using this eBook. Title: My Life and Work Author: Henry Ford Samuel Crowther Release date: January 1, 2005 [eBook #7213] Most recently updated: December 30, 2020 Language: English Other information and formats: www.gutenberg.org/ebooks/7213 Credits: Produced by Marvin Hodges, Tom Allen, Tonya Allen, Eric Eldred, Charles Franks, and the DP Team *** START OF THE PROJECT GUTENBERG EBOOK MY LIFE AND WORK *** Produced by Marvin Hodges, Tom Allen, Tonya Allen, Eric Eldred, Charles Franks, and the DP Team MY LIFE AND WORK By Henry Ford In Collaboration With Samuel Crowther CONTENTS INTRODUCTION--WHAT IS THE IDEA? I. THE BEGINNING II. WHAT I LEARNED ABOUT BUSINESS III. STARTING THE REAL BUSINESS IV. THE SECRET OF MANUFACTURING AND SERVING V. GETTING INTO PRODUCTION VI. MACHINES AND MEN VII. THE TERROR OF THE MACHINE. VIII. WAGES IX. WHY NOT ALWAYS HAVE GOOD BUSINESS? X. HOW CHEAPLY CAN THINGS BE MADE? XI. MONEY AND GOODS XII. MONEY--MASTER OR SERVANT? XIII. WHY BE POOR? XIV. THE TRACTOR AND POWER FARMING XV. WHY CHARITY? XVI. THE RAILROADS XVII. THINGS IN GENERAL XVIII. DEMOCRACY AND INDUSTRY XIX. WHAT WE MAY EXPECT. INDEX INTRODUCTION "
+    },
+    {
+      "id": "chapter-002",
+      "start": 38032,
+      "length": 21485,
+      "content_sha256": "3875b63b6bd7eca5e7f210acf850df6165107467e799db960baa3364352144ee",
+      "source_gap_before": " CHAPTER I THE BEGINNING OF BUSINESS "
+    },
+    {
+      "id": "chapter-003",
+      "start": 59559,
+      "length": 25988,
+      "content_sha256": "f1e341a75ac012884a468e3843aeef357a7d724c748a7c3f9a7206a2678f13fb",
+      "source_gap_before": " CHAPTER II WHAT I LEARNED ABOUT BUSINESS "
+    },
+    {
+      "id": "chapter-004",
+      "start": 85587,
+      "length": 31304,
+      "content_sha256": "778605fcc6b89e0e269b55261c8576875c6fd55b9ce0f8de81731c6368853725",
+      "source_gap_before": " CHAPTER III STARTING THE REAL BUSINESS "
+    },
+    {
+      "id": "chapter-005",
+      "start": 116943,
+      "length": 23519,
+      "content_sha256": "a3711a9b617569348e43e0389de82f084dc20b45152e9ff14609e40375da6e1b",
+      "source_gap_before": " CHAPTER IV THE SECRET OF MANUFACTURING AND SERVING "
+    },
+    {
+      "id": "chapter-006",
+      "start": 140497,
+      "length": 25095,
+      "content_sha256": "ca435d0cf473d7fb60ffcc0369a3087e25f84f844a68a916e6f272102dba516b",
+      "source_gap_before": " CHAPTER V GETTING INTO PRODUCTION "
+    },
+    {
+      "id": "chapter-007",
+      "start": 165621,
+      "length": 22120,
+      "content_sha256": "4c1f3c5d3bf6e9a01a47243f46d3ff75d354f6341f9705e797095af43fc5c8e2",
+      "source_gap_before": " CHAPTER VI MACHINES AND MEN "
+    },
+    {
+      "id": "chapter-008",
+      "start": 187780,
+      "length": 23920,
+      "content_sha256": "235acbc290db006ca7895d772993f31f476165e9f8526111b4ec4b94a02a5a50",
+      "source_gap_before": " CHAPTER VII THE TERROR OF THE MACHINE "
+    },
+    {
+      "id": "chapter-009",
+      "start": 211720,
+      "length": 27654,
+      "content_sha256": "2ae9063bb584d140fc1b0c93f06925a32d229101be3c7585b13ed184da762a79",
+      "source_gap_before": " CHAPTER VIII WAGES "
+    },
+    {
+      "id": "chapter-010",
+      "start": 239421,
+      "length": 18000,
+      "content_sha256": "c0478e248b52e7bdb83d02d95b260e05ffe8713f7560d6a0ff9231897e0ebba5",
+      "source_gap_before": " CHAPTER IX WHY NOT ALWAYS HAVE GOOD BUSINESS? "
+    },
+    {
+      "id": "chapter-011",
+      "start": 257464,
+      "length": 27133,
+      "content_sha256": "89e917a3df0e6a8460ec5ee1c10229d367b814a3a9ebe35f561db04f15a0f0a6",
+      "source_gap_before": " CHAPTER X HOW CHEAPLY CAN THINGS BE MADE? "
+    },
+    {
+      "id": "chapter-012",
+      "start": 284625,
+      "length": 23340,
+      "content_sha256": "919c9301c74a4bc85d7e441e433147fa9c30a4285492399ce0cf46c6f14b8306",
+      "source_gap_before": " CHAPTER XI MONEY AND GOODS "
+    },
+    {
+      "id": "chapter-013",
+      "start": 308004,
+      "length": 26283,
+      "content_sha256": "2b2f4ab1f0c4b4bf21933c8a0c92b4d0451604fc870adf272dfab327c42000ff",
+      "source_gap_before": " CHAPTER XII MONEY--MASTER OR SERVANT? "
+    },
+    {
+      "id": "chapter-014",
+      "start": 334314,
+      "length": 19993,
+      "content_sha256": "29db71aa2d312829f209f3abd81df4a84cebcee47eaa148abfb50fcde1851011",
+      "source_gap_before": " CHAPTER XIII WHY BE POOR? "
+    },
+    {
+      "id": "chapter-015",
+      "start": 354350,
+      "length": 19758,
+      "content_sha256": "03217495e52aef1b622629a41dcc0ead6fbae125f30efeb40128ce314c930aa7",
+      "source_gap_before": " CHAPTER XIV THE TRACTOR AND POWER FARMING "
+    },
+    {
+      "id": "chapter-016",
+      "start": 374133,
+      "length": 29166,
+      "content_sha256": "a39968a9dfb2afbbe5216d559840656ab847469a505da9fd06f5ec69c3b98550",
+      "source_gap_before": " CHAPTER XV WHY CHARITY? "
+    },
+    {
+      "id": "chapter-017",
+      "start": 403326,
+      "length": 21740,
+      "content_sha256": "ac1c4cb0ea7c9e7aefcc7301ed1a3d3fe415253ce35e3fa67d764ebea56ecfc2",
+      "source_gap_before": " CHAPTER XVI THE RAILROADS "
+    },
+    {
+      "id": "chapter-018",
+      "start": 425098,
+      "length": 33919,
+      "content_sha256": "aafa4292d9cbdb23ca2ce35912d4676cbccf52dcd22ac5079ed00aac383c24e2",
+      "source_gap_before": " CHAPTER XVII THINGS IN GENERAL "
+    },
+    {
+      "id": "chapter-019",
+      "start": 459055,
+      "length": 24688,
+      "content_sha256": "071bc9b4d8c50a692a0542c4ccf5f91b434b07c9c0c8046fa51cb74ceef52f42",
+      "source_gap_before": " CHAPTER XVIII DEMOCRACY AND INDUSTRY "
+    },
+    {
+      "id": "chapter-020",
+      "start": 483775,
+      "length": 36141,
+      "content_sha256": "346cce753523cc3d025903d1a229cf836456a32c0264c1bb8612820f6259b315",
+      "source_gap_before": " CHAPTER XIX WHAT WE MAY EXPECT "
+    }
+  ],
+  "prefix_classification": "TITLE_PAGE_TOC_PRODUCTION_CREDITS_PG_BOILERPLATE_ONLY",
+  "tail_classification": "PG_END_LICENSE_AND_TRAILER_ONLY",
+  "tail_sha256": "fe3cd9b205c4b2153924950aa613928962e08701d677a3629545fbf13aa2d059",
+  "unclassified_narrative_gaps": [],
+  "selected_scope": "Complete selected electronic work, not other physical editions",
+  "source_or_chapter_changed": false,
+  "production_observed": false
+}

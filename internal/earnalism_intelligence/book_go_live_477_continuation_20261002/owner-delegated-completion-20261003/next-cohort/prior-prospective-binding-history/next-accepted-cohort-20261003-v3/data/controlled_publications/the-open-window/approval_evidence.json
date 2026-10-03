@@ -1,0 +1,41 @@
+{
+  "slug": "the-open-window",
+  "approved_to_publish": true,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "PROPOSED_OWNER_DELEGATED_EXACT_IN_TEXT_AND_COVER_BINDING_PENDING_TWO_REVIEWS",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "audiobook_use_approved": false,
+  "audiobook_use_approval_source": "",
+  "audiobook_use_approved_at": "",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "verified_at": "2026-10-03T04:11:36.072734+00:00",
+  "publication_authorization_sha256": "df456ad28112be7b2fa149c5eb972a343141adcc5610e791508816c92d0a3a1f",
+  "cover_provenance_sha256": "8ae040e44439430f9d818429423a1be89208e493b79c4e4ac1e581ad1cd3fba2",
+  "independent_reviews": [],
+  "source_hash": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+  "content_hash": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "binding_review_status": "PENDING_TWO_FRESH_EXACT_PACKAGE_REVIEWS",
+  "qa_scope": "Existing independently evidenced noncover text identity/complete work only; no audio or production observation.",
+  "audio_enabled": false,
+  "actual_prospective_acceptance": {
+    "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+    "accepted_at": "2026-10-03T04:59:53.954767+00:00",
+    "evidence": {
+      "review_a": {
+        "file": "evidence/review_a.json",
+        "sha256": "545e4f764da46785a577943e3abe0f48c09660f4c1e84b7fa6709221c168daa0"
+      },
+      "review_b": {
+        "file": "evidence/review_b.json",
+        "sha256": "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff"
+      }
+    },
+    "production_observed": false,
+    "canonical_version_observed": false,
+    "global_gate": "SERIAL_INTEGRATION_AFTER_PR510_AND_NORMAL_PROTECTED_CI_MERGE_DEPLOY_CANARY"
+  }
+}

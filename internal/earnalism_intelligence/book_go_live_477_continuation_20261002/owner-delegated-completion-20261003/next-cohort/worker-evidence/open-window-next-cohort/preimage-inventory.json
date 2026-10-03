@@ -1,0 +1,22 @@
+{
+  "root": {
+    "approval_evidence.json": "2c481aaa8cdc8553a1c7af82c18c3eadac4862057ea0b0d787328637a7e032fa",
+    "chapters/chapter-001.json": "bc12b5dbae5cae481b59d11eb9fc43a7c875f4cf2b37d52107bce93957375a00",
+    "checksum_manifest.json": "9c5597326d38bd8f04e9c1eaf7a827896ef612813c3ac4fcaecca8e50b44acc8",
+    "highlight_sync.json": "b2742d2516aa71aa23f79d33dba6ff5c27c5036c6b581197b6c55f991e97215e",
+    "public_book.json": "e070046962fc200c50032cf5c6aafbf5f94b356683e9bee28a518746f3476753",
+    "publication_authorization.json": "483606fbed9f701455072911ef1cf25ddc9e7380d73ec0b81257e38cb303a00d",
+    "publication_manifest.json": "ff6e3b419395ad3cd24307ff1d30677f83427947633ed13c2049ce914aeae627",
+    "reader_manifest.json": "578b4307d3c68ec69fac91bcb795f1c55677ca8a3532aafe5b2472b204e27142",
+    "rights_decision.json": "5daf64a8f4710bec1f8b9a0d10d8a8e012f948c048625e14471b30573c0d4125",
+    "source_evidence.json": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d"
+  },
+  "backend": {
+    "approval_evidence.json": "d2bef9bea76efe3efbfe01aeeea762ee83f7ec2bf82de388b62c2650143a80db",
+    "chapters/chapter-001.json": "d61b486956b8787cc7d40bce6678109cc557949b7af53b91b8f8a04a4595831c",
+    "checksum_manifest.json": "1079c971ad237a009459a6a4f143df1f1dd44e01cd27ce7e5831eeafef66c990",
+    "public_book.json": "8cc8c7fcfd2590e0d85ec3228af6cf4d4508ab59b357069884000ff915887b8e",
+    "reader_manifest.json": "578b4307d3c68ec69fac91bcb795f1c55677ca8a3532aafe5b2472b204e27142",
+    "source_evidence.json": "09779a6b5c80eccdea6783118cbc43c6a58bedb319353ff8b68fb43c3fdaf0d6"
+  }
+}

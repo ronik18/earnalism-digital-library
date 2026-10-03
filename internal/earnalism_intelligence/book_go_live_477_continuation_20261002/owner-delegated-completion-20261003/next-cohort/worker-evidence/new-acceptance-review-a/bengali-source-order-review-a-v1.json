@@ -1,0 +1,785 @@
+[
+  {
+    "slug": "lokrahasya",
+    "source_comparison_path": "/tmp/earnalism-main-approved-integration/internal/legal/catalogue_clearance_20261002/bengali/lokrahasya-multichapter-source-comparison.json",
+    "canonical_order_matches_source_scan_order": false,
+    "current_sequence": [
+      {
+        "id": "chapter-001",
+        "title": "লোকরহস্য (১৯৩৯)/বাবু",
+        "first_scan_page": 34,
+        "wikitext": "<pages index=\"লোকরহস্য-বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=34 to=36 header=1/>"
+      },
+      {
+        "id": "chapter-002",
+        "title": "লোকরহস্য (১৯৩৯)/গর্দ্দভ",
+        "first_scan_page": 37,
+        "wikitext": "<pages index=\"লোকরহস্য-বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=37 to=38 header=1/>"
+      },
+      {
+        "id": "chapter-003",
+        "title": "লোকরহস্য (১৯৩৯)/বাঙ্গালা সাহিত্যের আদর",
+        "first_scan_page": 97,
+        "wikitext": "<pages index=\"লোকরহস্য-বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=97 to=101 header=1/>"
+      },
+      {
+        "id": "chapter-004",
+        "title": "লোকরহস্য (১৯৩৯)/সুবর্ণগোলক",
+        "first_scan_page": 56,
+        "wikitext": "<pages index=\"লোকরহস্য-বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=56 to=63 header=1/>"
+      },
+      {
+        "id": "chapter-005",
+        "title": "লোকরহস্য (১৯৩৯)/গ্রাম্য কথা",
+        "first_scan_page": 89,
+        "wikitext": "<pages index=\"লোকরহস্য-বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=89 to=96 header=1/>"
+      },
+      {
+        "id": "chapter-006",
+        "title": "লোকরহস্য (১৯৩৯)/ব্যাঘ্রাচার্য্য বৃহল্লাঙ্গুল",
+        "first_scan_page": 16,
+        "wikitext": "<pages index=\"লোকরহস্য-বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=16 to=30 header=1/>"
+      },
+      {
+        "id": "chapter-007",
+        "title": "লোকরহস্য (১৯৩৯)/দাম্পত্য দণ্ডবিধির আইন",
+        "first_scan_page": 39,
+        "wikitext": "<pages index=\"লোকরহস্য-বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=39 to=50 header=1/>"
+      },
+      {
+        "id": "chapter-008",
+        "title": "লোকরহস্য (১৯৩৯)/ইংরাজস্তোত্র",
+        "first_scan_page": 31,
+        "wikitext": "<pages index=\"লোকরহস্য-বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=31 to=33 header=1/>"
+      },
+      {
+        "id": "chapter-009",
+        "title": "লোকরহস্য (১৯৩৯)/রামায়ণের সমালোচন",
+        "first_scan_page": 64,
+        "wikitext": "<pages index=\"লোকরহস্য-বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=64 to=66 header=1/>"
+      },
+      {
+        "id": "chapter-010",
+        "title": "লোকরহস্য (১৯৩৯)/বর্ষ সমালোচন",
+        "first_scan_page": 67,
+        "wikitext": "<pages index=\"লোকরহস্য-বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=67 to=70 header=1/>"
+      },
+      {
+        "id": "chapter-011",
+        "title": "লোকরহস্য (১৯৩৯)/বসন্ত এবং বিরহ",
+        "first_scan_page": 51,
+        "wikitext": "<pages index=\"লোকরহস্য-বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=51 to=55 header=1/>"
+      },
+      {
+        "id": "chapter-012",
+        "title": "লোকরহস্য (১৯৩৯)/কোন “স্পেশিয়ালের” পত্র",
+        "first_scan_page": 71,
+        "wikitext": "<pages index=\"লোকরহস্য-বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=71 to=75 header=1/>"
+      },
+      {
+        "id": "chapter-013",
+        "title": "লোকরহস্য (১৯৩৯)/হনুমদ্বাবুসংবাদ",
+        "first_scan_page": 83,
+        "wikitext": "<pages index=\"লোকরহস্য-বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=83 to=88 header=1/>"
+      },
+      {
+        "id": "chapter-014",
+        "title": "লোকরহস্য (১৯৩৯)/NEW YEAR’S DAY",
+        "first_scan_page": 102,
+        "wikitext": "<pages index=\"লোকরহস্য-বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=102 to=105 header=1/>"
+      },
+      {
+        "id": "chapter-015",
+        "title": "লোকরহস্য (১৯৩৯)/BRANSONISM",
+        "first_scan_page": 76,
+        "wikitext": "<pages index=\"লোকরহস্য-বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=76 to=82 header=1/>"
+      },
+      {
+        "id": "chapter-016",
+        "title": "লোকরহস্য (১৯৩৯)/পাঠভেদ",
+        "first_scan_page": 106,
+        "wikitext": "<pages index=\"লোকরহস্য-বঙ্কিমচন্দ্র চট্টোপাধ্যায়.djvu\" from=106 to=109 header=1/>"
+      }
+    ],
+    "source_page_order_ids": [
+      "chapter-006",
+      "chapter-008",
+      "chapter-001",
+      "chapter-002",
+      "chapter-007",
+      "chapter-011",
+      "chapter-004",
+      "chapter-009",
+      "chapter-010",
+      "chapter-012",
+      "chapter-015",
+      "chapter-013",
+      "chapter-005",
+      "chapter-003",
+      "chapter-014",
+      "chapter-016"
+    ]
+  },
+  {
+    "slug": "mrinalini",
+    "source_comparison_path": "/tmp/earnalism-main-approved-integration/internal/legal/catalogue_clearance_20261002/bengali/mrinalini-multichapter-source-comparison.json",
+    "canonical_order_matches_source_scan_order": true,
+    "current_sequence": [
+      {
+        "id": "chapter-001",
+        "title": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/প্রথম পরিচ্ছেদ",
+        "first_scan_page": 4,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=4 to=10 header=1/>"
+      },
+      {
+        "id": "chapter-002",
+        "title": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/দ্বিতীয় পরিচ্ছেদ",
+        "first_scan_page": 11,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=11 to=16 tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-003",
+        "title": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/তৃতীয় পরিচ্ছেদ",
+        "first_scan_page": 16,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=16 to=24 fromsection=B tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-004",
+        "title": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/চতুর্থ পরিচ্ছেদ",
+        "first_scan_page": 24,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=24 to=30 fromsection=B header=1/>"
+      },
+      {
+        "id": "chapter-005",
+        "title": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/পঞ্চম পরিচ্ছেদ",
+        "first_scan_page": 31,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=31 to=37 tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-006",
+        "title": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/ষষ্ঠ পরিচ্ছেদ",
+        "first_scan_page": 37,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=37 to=45 fromsection=B header=1/>"
+      },
+      {
+        "id": "chapter-007",
+        "title": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/সপ্তম পরিচ্ছেদ",
+        "first_scan_page": 46,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=46 to=50 header=1/>"
+      },
+      {
+        "id": "chapter-008",
+        "title": "মৃণালিনী (১৮৭৪)/প্রথম খণ্ড/অষ্টম পরিচ্ছেদ",
+        "first_scan_page": 51,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=51 to=54 header=1/>"
+      },
+      {
+        "id": "chapter-009",
+        "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/প্রথম পরিচ্ছেদ",
+        "first_scan_page": 55,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=55 to=59 header=1/>"
+      },
+      {
+        "id": "chapter-010",
+        "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/দ্বিতীয় পরিচ্ছেদ",
+        "first_scan_page": 60,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=60 to=64 tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-011",
+        "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/তৃতীয় পরিচ্ছেদ",
+        "first_scan_page": 64,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=64 to=68 fromsection=B tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-012",
+        "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/চতুর্থ পরিচ্ছেদ",
+        "first_scan_page": 68,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=68 to=71 fromsection=B tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-013",
+        "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/পঞ্চম পরিচ্ছেদ",
+        "first_scan_page": 71,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=71 to=75 fromsection=B header=1/>"
+      },
+      {
+        "id": "chapter-014",
+        "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/ষষ্ঠ পরিচ্ছেদ",
+        "first_scan_page": 76,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=76 to=82 header=1/>"
+      },
+      {
+        "id": "chapter-015",
+        "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/সপ্তম পরিচ্ছেদ",
+        "first_scan_page": 83,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=83 to=86 header=1/>"
+      },
+      {
+        "id": "chapter-016",
+        "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/অষ্টম পরিচ্ছেদ",
+        "first_scan_page": 87,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=87 to=88 header=1/>"
+      },
+      {
+        "id": "chapter-017",
+        "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/নবম পরিচ্ছেদ",
+        "first_scan_page": 89,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=89 to=93 tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-018",
+        "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/দশম পরিচ্ছেদ",
+        "first_scan_page": 93,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=93 to=95 fromsection=B tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-019",
+        "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/একাদশ পরিচ্ছেদ",
+        "first_scan_page": 95,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=95 to=97 fromsection=B tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-020",
+        "title": "মৃণালিনী (১৮৭৪)/দ্বিতীয় খণ্ড/দ্বাদশ পরিচ্ছেদ",
+        "first_scan_page": 97,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=97 to=100 fromsection=B header=1/>"
+      },
+      {
+        "id": "chapter-021",
+        "title": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/প্রথম পরিচ্ছেদ",
+        "first_scan_page": 101,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=101 to=104 header=1/>"
+      },
+      {
+        "id": "chapter-022",
+        "title": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/দ্বিতীয় পরিচ্ছেদ",
+        "first_scan_page": 105,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=105 to=107 tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-023",
+        "title": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/তৃতীয় পরিচ্ছেদ",
+        "first_scan_page": 107,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=107 to=110 fromsection=B header=1/>"
+      },
+      {
+        "id": "chapter-024",
+        "title": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/চতুর্থ পরিচ্ছেদ",
+        "first_scan_page": 111,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=111 to=114 tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-025",
+        "title": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/পঞ্চম পরিচ্ছেদ",
+        "first_scan_page": 114,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=114 to=117 fromsection=B header=1/>"
+      },
+      {
+        "id": "chapter-026",
+        "title": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/ষষ্ঠ পরিচ্ছেদ",
+        "first_scan_page": 118,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=118 to=124 tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-027",
+        "title": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/সপ্তম পরিচ্ছেদ",
+        "first_scan_page": 124,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=124 to=126 fromsection=B header=1/>"
+      },
+      {
+        "id": "chapter-028",
+        "title": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/অষ্টম পরিচ্ছেদ",
+        "first_scan_page": 127,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=127 to=133 tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-029",
+        "title": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/নবম পরিচ্ছেদ",
+        "first_scan_page": 133,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=133 to=138 fromsection=B header=1/>"
+      },
+      {
+        "id": "chapter-030",
+        "title": "মৃণালিনী (১৮৭৪)/তৃতীয় খণ্ড/দশম পরিচ্ছেদ",
+        "first_scan_page": 139,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=139 to=143 header=1/>"
+      },
+      {
+        "id": "chapter-031",
+        "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/প্রথম পরিচ্ছেদ",
+        "first_scan_page": 144,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=144 to=146 tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-032",
+        "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/দ্বিতীয় পরিচ্ছেদ",
+        "first_scan_page": 146,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=146 to=148 fromsection=B header=1/>"
+      },
+      {
+        "id": "chapter-033",
+        "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/তৃতীয় পরিচ্ছেদ",
+        "first_scan_page": 149,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=149 to=154 tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-034",
+        "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/চতুর্থ পরিচ্ছেদ",
+        "first_scan_page": 154,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=154 to=157 fromsection=B header=1/>"
+      },
+      {
+        "id": "chapter-035",
+        "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/পঞ্চম পরিচ্ছেদ",
+        "first_scan_page": 158,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=158 to=161 tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-036",
+        "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/ষষ্ঠ পরিচ্ছেদ",
+        "first_scan_page": 161,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=161 to=162 fromsection=B header=1/>"
+      },
+      {
+        "id": "chapter-037",
+        "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/সপ্তম পরিচ্ছেদ",
+        "first_scan_page": 163,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=163 to=168 header=1/>"
+      },
+      {
+        "id": "chapter-038",
+        "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/অষ্টম পরিচ্ছেদ",
+        "first_scan_page": 169,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=169 to=171 header=1/>"
+      },
+      {
+        "id": "chapter-039",
+        "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/নবম পরিচ্ছেদ",
+        "first_scan_page": 172,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=172 to=173 header=1/>"
+      },
+      {
+        "id": "chapter-040",
+        "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/দশম পরিচ্ছেদ",
+        "first_scan_page": 174,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=174 to=177 tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-041",
+        "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/একাদশ পরিচ্ছেদ",
+        "first_scan_page": 177,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=177 to=181 fromsection=B header=1/>"
+      },
+      {
+        "id": "chapter-042",
+        "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/দ্বাদশ পরিচ্ছেদ",
+        "first_scan_page": 182,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=182 to=185 tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-043",
+        "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/ত্রয়োদশ পরিচ্ছেদ",
+        "first_scan_page": 185,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=185 to=187 fromsection=B tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-044",
+        "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/চতুর্দ্দশ পরিচ্ছেদ",
+        "first_scan_page": 187,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=187 to=191 fromsection=B tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-045",
+        "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/পঞ্চদশ পরিচ্ছেদ",
+        "first_scan_page": 191,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=191 to=195 fromsection=B header=1/>"
+      },
+      {
+        "id": "chapter-046",
+        "title": "মৃণালিনী (১৮৭৪)/চতুর্থ খণ্ড/পরিশিষ্ট",
+        "first_scan_page": 196,
+        "wikitext": "<pages index=\"মৃণালিনী - বঙ্কিমচন্দ্র চট্টোপাধ্যায়.pdf\" from=196 to=198 header=1/>"
+      }
+    ],
+    "source_page_order_ids": [
+      "chapter-001",
+      "chapter-002",
+      "chapter-003",
+      "chapter-004",
+      "chapter-005",
+      "chapter-006",
+      "chapter-007",
+      "chapter-008",
+      "chapter-009",
+      "chapter-010",
+      "chapter-011",
+      "chapter-012",
+      "chapter-013",
+      "chapter-014",
+      "chapter-015",
+      "chapter-016",
+      "chapter-017",
+      "chapter-018",
+      "chapter-019",
+      "chapter-020",
+      "chapter-021",
+      "chapter-022",
+      "chapter-023",
+      "chapter-024",
+      "chapter-025",
+      "chapter-026",
+      "chapter-027",
+      "chapter-028",
+      "chapter-029",
+      "chapter-030",
+      "chapter-031",
+      "chapter-032",
+      "chapter-033",
+      "chapter-034",
+      "chapter-035",
+      "chapter-036",
+      "chapter-037",
+      "chapter-038",
+      "chapter-039",
+      "chapter-040",
+      "chapter-041",
+      "chapter-042",
+      "chapter-043",
+      "chapter-044",
+      "chapter-045",
+      "chapter-046"
+    ]
+  },
+  {
+    "slug": "bn-066",
+    "source_comparison_path": "/tmp/earnalism-main-approved-integration/internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+    "canonical_order_matches_source_scan_order": false,
+    "current_sequence": [
+      {
+        "id": "chapter-001",
+        "title": "আনন্দমঠ (১৮৮৩)/উপক্রমণিকা",
+        "first_scan_page": 11,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"11\" to=\"12\" header=1 />"
+      },
+      {
+        "id": "chapter-002",
+        "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/প্রথম পরিচ্ছেদ",
+        "first_scan_page": 112,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"112\" to=\"116\" tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-003",
+        "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/দ্বিতীয় পরিচ্ছেদ",
+        "first_scan_page": 116,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=116 fromsection= B to=120 tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-004",
+        "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/তৃতীয় পরিচ্ছেদ",
+        "first_scan_page": 120,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=120 fromsection= B to=123 tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-005",
+        "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/চতুর্থ পরিচ্ছেদ",
+        "first_scan_page": 123,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=123 fromsection= B to=131 tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-006",
+        "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/পঞ্চম পরিচ্ছেদ",
+        "first_scan_page": 131,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=131 fromsection= B to=135 tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-007",
+        "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/ষষ্ঠ পরিচ্ছেদ",
+        "first_scan_page": 135,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=135 fromsection= B to=136 header=1 />"
+      },
+      {
+        "id": "chapter-008",
+        "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/সপ্তম পরিচ্ছেদ",
+        "first_scan_page": 137,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=137 to=140 tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-009",
+        "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/অষ্টম পরিচ্ছেদ",
+        "first_scan_page": 140,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=140 fromsection= B to=142 tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-010",
+        "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/নবম পরিচ্ছেদ",
+        "first_scan_page": 142,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=142 fromsection= B to=146 tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-011",
+        "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/দশম পরিচ্ছেদ",
+        "first_scan_page": 146,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=146 fromsection= B to=150 tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-012",
+        "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/একাদশ পরিচ্ছেদ",
+        "first_scan_page": 150,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=150 fromsection= B to=155 tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-013",
+        "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/দ্বাদশ পরিচ্ছেদ",
+        "first_scan_page": 155,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=155 fromsection= B to=160 tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-014",
+        "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/ত্রয়োদশ পরিচ্ছেদ",
+        "first_scan_page": 160,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=160 fromsection= B to=164 tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-015",
+        "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/চতুর্দ্দশ পরিচ্ছেদ",
+        "first_scan_page": 164,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=164 fromsection= B to=166 tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-016",
+        "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/পঞ্চদশ পরিচ্ছেদ",
+        "first_scan_page": 166,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=166 fromsection= B to=169 header=1 />"
+      },
+      {
+        "id": "chapter-017",
+        "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/ষোড়শ পরিচ্ছেদ",
+        "first_scan_page": 170,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=170 to=172 tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-018",
+        "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/সপ্তদশ পরিচ্ছেদ",
+        "first_scan_page": 172,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=172 fromsection=B to=176 tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-019",
+        "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/অষ্টাদশ পরিচ্ছেদ",
+        "first_scan_page": 176,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=176 fromsection=B to=182 tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-020",
+        "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/ঊনবিংশ পরিচ্ছেদ",
+        "first_scan_page": 182,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=182 fromsection=B to=187 tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-021",
+        "title": "আনন্দমঠ (১৮৮৩)/দ্বিতীয় খণ্ড/বিংশ পরিচ্ছেদ",
+        "first_scan_page": 187,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=187 fromsection=B to=190 header=1 />"
+      },
+      {
+        "id": "chapter-022",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/প্রথম পরিচ্ছেদ",
+        "first_scan_page": 13,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"13\" to=\"18\" tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-023",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/দ্বিতীয় পরিচ্ছেদ",
+        "first_scan_page": 18,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"18\" fromsection=B to=\"19\" tosection= A header=1/>"
+      },
+      {
+        "id": "chapter-024",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/তৃতীয় পরিচ্ছেদ",
+        "first_scan_page": 19,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"19\" fromsection=B to=\"21\" header=1/>"
+      },
+      {
+        "id": "chapter-025",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/চতুর্থ পরিচ্ছেদ",
+        "first_scan_page": 22,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"22\" to=\"24\" tosection= A header=1/>"
+      },
+      {
+        "id": "chapter-026",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/পঞ্চম পরিচ্ছেদ",
+        "first_scan_page": 24,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"24\" fromsection=B to=\"26\" header=1/>"
+      },
+      {
+        "id": "chapter-027",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/ষষ্ঠ পরিচ্ছেদ",
+        "first_scan_page": 27,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"27\" to=\"28\" header=1 />"
+      },
+      {
+        "id": "chapter-028",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/সপ্তম পরিচ্ছেদ",
+        "first_scan_page": 29,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"29\" to=\"31\" header=1 />"
+      },
+      {
+        "id": "chapter-029",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/অষ্টম পরিচ্ছেদ",
+        "first_scan_page": 32,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"32\" to=\"35\" header=1/>"
+      },
+      {
+        "id": "chapter-030",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/নবম পরিচ্ছেদ",
+        "first_scan_page": 36,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"36\" to=\"37\" tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-031",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/দশম পরিচ্ছেদ",
+        "first_scan_page": 37,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"37\" fromsection=B to=\"43\" tosection= A header=1/>"
+      },
+      {
+        "id": "chapter-032",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/একাদশ পরিচ্ছেদ",
+        "first_scan_page": 43,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"43\" fromsection=B to=\"48\" tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-033",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/দ্বাদশ পরিচ্ছেদ",
+        "first_scan_page": 48,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"48\" fromsection=B to=\"59\" tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-034",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/ত্রয়োদশ পরিচ্ছেদ",
+        "first_scan_page": 59,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"59\" fromsection=B to=\"62\" tosection=A header=1/>"
+      },
+      {
+        "id": "chapter-035",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/চতুর্দ্দশ পরিচ্ছেদ",
+        "first_scan_page": 62,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"62\" fromsection=B to=\"64\" tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-036",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/পঞ্চদশ পরিচ্ছেদ",
+        "first_scan_page": 64,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"64\" fromsection=B to=\"73\" tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-037",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/ষোড়শ পরিচ্ছেদ",
+        "first_scan_page": 73,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"73\" fromsection=B to=\"76\" tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-038",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/সপ্তদশ পরিচ্ছেদ",
+        "first_scan_page": 76,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"76\" fromsection=B to=\"78\" header=1 />"
+      },
+      {
+        "id": "chapter-039",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/অষ্টাদশ পরিচ্ছেদ",
+        "first_scan_page": 79,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"79\" to=\"81\" tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-040",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/ঊনবিংশ পরিচ্ছেদ",
+        "first_scan_page": 81,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"81\" fromsection= B to=\"85\" tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-041",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/বিংশ পরিচ্ছেদ",
+        "first_scan_page": 85,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"85\" fromsection= B to=\"89\" tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-042",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/একবিংশ পরিচ্ছেদ",
+        "first_scan_page": 89,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"89\" fromsection= B to=\"92\" tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-043",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/চতুর্ব্বিংশ পরিচ্ছেদ",
+        "first_scan_page": 96,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"96\" fromsection= B to=\"102\" tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-044",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/ত্রয়োবিংশ পরিচ্ছেদ",
+        "first_scan_page": 95,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"95\" fromsection= B to=\"96\" tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-045",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/দ্বাবিংশ পরিচ্ছেদ",
+        "first_scan_page": 92,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"92\" fromsection= B to=\"95\" tosection=A header=1 />"
+      },
+      {
+        "id": "chapter-046",
+        "title": "আনন্দমঠ (১৮৮৩)/প্রথম খণ্ড/পঞ্চবিংশ পরিচ্ছেদ",
+        "first_scan_page": 102,
+        "wikitext": "<pages index=\"আনন্দমঠ (দ্বিতীয় সংস্করণ, ১৮৮৩).djvu\" from=\"102\" fromsection= B to=\"111\" header=1 />"
+      }
+    ],
+    "source_page_order_ids": [
+      "chapter-001",
+      "chapter-022",
+      "chapter-023",
+      "chapter-024",
+      "chapter-025",
+      "chapter-026",
+      "chapter-027",
+      "chapter-028",
+      "chapter-029",
+      "chapter-030",
+      "chapter-031",
+      "chapter-032",
+      "chapter-033",
+      "chapter-034",
+      "chapter-035",
+      "chapter-036",
+      "chapter-037",
+      "chapter-038",
+      "chapter-039",
+      "chapter-040",
+      "chapter-041",
+      "chapter-042",
+      "chapter-045",
+      "chapter-044",
+      "chapter-043",
+      "chapter-046",
+      "chapter-002",
+      "chapter-003",
+      "chapter-004",
+      "chapter-005",
+      "chapter-006",
+      "chapter-007",
+      "chapter-008",
+      "chapter-009",
+      "chapter-010",
+      "chapter-011",
+      "chapter-012",
+      "chapter-013",
+      "chapter-014",
+      "chapter-015",
+      "chapter-016",
+      "chapter-017",
+      "chapter-018",
+      "chapter-019",
+      "chapter-020",
+      "chapter-021"
+    ]
+  }
+]

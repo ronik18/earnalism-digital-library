@@ -1,0 +1,217 @@
+{
+  "reviewer": "Independent Codex reviewer B",
+  "slug": "frankenstein",
+  "disposition": "PASS_COMPLETE_EXACT_SELECTED_AUTHOR_BODY",
+  "primary_source_path": "/workspace/scratch/181ef0a25f05/new-acceptance-review-a/classics-primary-recovery-v1/frankenstein-official-source.txt",
+  "primary_source_sha256": "7810cd483cffcf2cc8a1d8f0d5807931e69d4f48cd14149b8c76f88af82fead3",
+  "primary_source_recovery_receipt_sha256": "d64d2de6102ed30de089c31a258caf1bd26e0773cab5a82d9461fed17e5d8c8d",
+  "source_downloads_by_B": 0,
+  "no_chapter_or_source_mutation": true,
+  "all_ordered_chapter_matches": [
+    {
+      "id": "chapter-001",
+      "offset": 1370,
+      "length": 6824,
+      "content_sha256": "418633c5bc4533e399904ec022a4e8b329817f90678de2c8ed538c789d282e0f"
+    },
+    {
+      "id": "chapter-002",
+      "offset": 8232,
+      "length": 7308,
+      "content_sha256": "6c7b6434ea1ebee157d358b234348474906c56a9e2a66879ef913da582f745a2"
+    },
+    {
+      "id": "chapter-003",
+      "offset": 15578,
+      "length": 1660,
+      "content_sha256": "fdb8b2539acbd036a7ce233d77dc0a798ea8ba6aa4245fadf922471d6103c9c7"
+    },
+    {
+      "id": "chapter-004",
+      "offset": 17276,
+      "length": 15100,
+      "content_sha256": "20470bee18666a207895a0e8b2addba06d8b7ee8b357f7c6d285d157a3b29f8e"
+    },
+    {
+      "id": "chapter-005",
+      "offset": 32387,
+      "length": 10132,
+      "content_sha256": "f3b95ae089c300e0c18fb3cbe7f1c5b89f83af7563b11b16b4e308ed5e44444f"
+    },
+    {
+      "id": "chapter-006",
+      "offset": 42530,
+      "length": 12679,
+      "content_sha256": "deb274c4fd552ad6707d90b99088b5c1ce7dfa29cdab1834f1ba8b0767280e52"
+    },
+    {
+      "id": "chapter-007",
+      "offset": 55220,
+      "length": 15238,
+      "content_sha256": "7f7d0051ad343b1bcb75d39bfa43c79f9f92fb2bc0b69dfa3539acbcd32babf3"
+    },
+    {
+      "id": "chapter-008",
+      "offset": 70469,
+      "length": 14403,
+      "content_sha256": "2cbca3ab7cad32bb135d35aedba0fe1327c0c8799c2411c0f037c7750223c1ee"
+    },
+    {
+      "id": "chapter-009",
+      "offset": 84883,
+      "length": 12940,
+      "content_sha256": "50aabede305f09ae8c24d6c9d55a5d837513a315b55fd9ff7ab1a8e1b97780e3"
+    },
+    {
+      "id": "chapter-010",
+      "offset": 97834,
+      "length": 15474,
+      "content_sha256": "ab511fd7b2a6c87e4e72b23c1e67014d31ab3ce10273f0c143a39db2c2a06725"
+    },
+    {
+      "id": "chapter-011",
+      "offset": 113319,
+      "length": 19787,
+      "content_sha256": "136d932b63a4e7d2af297c623fdad7c942a345d40913bba18c6c8324b9f88695"
+    },
+    {
+      "id": "chapter-012",
+      "offset": 133117,
+      "length": 17226,
+      "content_sha256": "8ccedab0685d643c935a12c1b5dde1cc200a54c693e1d3d68a186d1a189e865c"
+    },
+    {
+      "id": "chapter-013",
+      "offset": 150354,
+      "length": 12413,
+      "content_sha256": "cd5a9df3f84f8133b6e17d035d283516a9f747789c0494bf50a2ce2d417b28f8"
+    },
+    {
+      "id": "chapter-014",
+      "offset": 162779,
+      "length": 12940,
+      "content_sha256": "d58c8b15bab90316a6e95c2857fa07a3f4516ff769e6f7ea9e59eec32655c913"
+    },
+    {
+      "id": "chapter-015",
+      "offset": 175731,
+      "length": 15892,
+      "content_sha256": "b8dbd7fea59cfb285b249eaf8014323cd82c0f86c2622ababe7cf4b0a5bfdfed"
+    },
+    {
+      "id": "chapter-016",
+      "offset": 191635,
+      "length": 11952,
+      "content_sha256": "8c060cd82d865a8adc9369f3dcaee76cee8301f8899d3fc397fb023336cff0cd"
+    },
+    {
+      "id": "chapter-017",
+      "offset": 203599,
+      "length": 11545,
+      "content_sha256": "d1e059a34daad1d6374fa282d77f242f6377f28a6856d594ae98eff6500640b9"
+    },
+    {
+      "id": "chapter-018",
+      "offset": 215156,
+      "length": 10413,
+      "content_sha256": "49e1d94463d3b87a3710ee22b6aae549c2bdc54044cd2648ba444d684233e17f"
+    },
+    {
+      "id": "chapter-019",
+      "offset": 225581,
+      "length": 17082,
+      "content_sha256": "be47245fc2957d46fc63f3fd9726818364b16441d2b0548099abae2d8f550459"
+    },
+    {
+      "id": "chapter-020",
+      "offset": 242675,
+      "length": 17502,
+      "content_sha256": "26852b8e6e2921ba26ba738f41536543d15d8eab65a7115b3e1e3b225ebfb380"
+    },
+    {
+      "id": "chapter-021",
+      "offset": 260189,
+      "length": 10222,
+      "content_sha256": "22f3172a81700a8889ac8f8ba5e53840477c2728c62cea6e55ca01cb544ed05a"
+    },
+    {
+      "id": "chapter-022",
+      "offset": 270423,
+      "length": 16095,
+      "content_sha256": "2ebe0ca248afd8fcdcd89f37a22fca8f9a86a403a90b5e7f6bda973ae60eb04e"
+    },
+    {
+      "id": "chapter-023",
+      "offset": 286530,
+      "length": 14781,
+      "content_sha256": "884e455f8b89963ad3cbc14ab7ba54ae958dd0cae421104352c4183a76b11ab5"
+    },
+    {
+      "id": "chapter-024",
+      "offset": 301323,
+      "length": 18986,
+      "content_sha256": "29359272d1ed7f212be4ab2bd4a4d79b51d07f5ce3e1b562f8cb17e7035a6dcd"
+    },
+    {
+      "id": "chapter-025",
+      "offset": 320321,
+      "length": 20393,
+      "content_sha256": "b15cd81e3250dc81672d7be7bd57a4345b410d31d54952d9082654f8c94a8d5f"
+    },
+    {
+      "id": "chapter-026",
+      "offset": 340726,
+      "length": 18977,
+      "content_sha256": "3fab38cb4f28b5dae53df8e2f9e9f9b567b838211659d4b6f01e0ecae58733db"
+    },
+    {
+      "id": "chapter-027",
+      "offset": 359715,
+      "length": 13999,
+      "content_sha256": "9f8bc35360a0350f8cb25402b808693480744bbc955acfd01002bd7b380d69a1"
+    },
+    {
+      "id": "chapter-028",
+      "offset": 373726,
+      "length": 45540,
+      "content_sha256": "bb039592fcbdedc4b3b2bcc272f3f64f186addcaee21df97a21ee84a455f2a23"
+    }
+  ],
+  "prefix_after_PG_start": "*** START OF THE PROJECT GUTENBERG EBOOK FRANKENSTEIN; OR, THE MODERN PROMETHEUS *** Frankenstein; or, the Modern Prometheus by Mary Wollstonecraft (Godwin) Shelley CONTENTS Letter 1 Letter 2 Letter 3 Letter 4 Chapter 1 Chapter 2 Chapter 3 Chapter 4 Chapter 5 Chapter 6 Chapter 7 Chapter 8 Chapter 9 Chapter 10 Chapter 11 Chapter 12 Chapter 13 Chapter 14 Chapter 15 Chapter 16 Chapter 17 Chapter 18 Chapter 19 Chapter 20 Chapter 21 Chapter 22 Chapter 23 Chapter 24 Letter 1 ",
+  "internal_gaps": [
+    " Letter 2 _To Mrs. Saville, England._ ",
+    " Letter 3 _To Mrs. Saville, England._ ",
+    " Letter 4 _To Mrs. Saville, England._ ",
+    " Chapter 1 ",
+    " Chapter 2 ",
+    " Chapter 3 ",
+    " Chapter 4 ",
+    " Chapter 5 ",
+    " Chapter 6 ",
+    " Chapter 7 ",
+    " Chapter 8 ",
+    " Chapter 9 ",
+    " Chapter 10 ",
+    " Chapter 11 ",
+    " Chapter 12 ",
+    " Chapter 13 ",
+    " Chapter 14 ",
+    " Chapter 15 ",
+    " Chapter 16 ",
+    " Chapter 17 ",
+    " Chapter 18 ",
+    " Chapter 19 ",
+    " Chapter 20 ",
+    " Chapter 21 ",
+    " Chapter 22 ",
+    " Chapter 23 ",
+    " Chapter 24 "
+  ],
+  "ending_after_last": " *** END OF THE PROJECT GUTENBERG EBOOK FRANKENSTEIN; OR, THE MODERN PROMETHEUS *** Updated editions will replace the previous one—the old editions will be rena",
+  "source_scope": "Project Gutenberg #84 electronic narrative, four letters and24chapters; no substitution of #41445/#42324",
+  "quote_checks": [],
+  "boundary_interpretation": "Exact complete selected author edition: explicit first body after title/TOC or correct excluded third-party preface, complete exact ordered bodies, only verified heading/illustration furniture interstitial gaps, last body followed immediately by PG END. Historical containment limitation retained; independent full boundaries now checked.",
+  "reviewed_at": "2026-10-03T05:26:34.437334+00:00",
+  "canonical_mutations": false,
+  "production_observed": false
+}

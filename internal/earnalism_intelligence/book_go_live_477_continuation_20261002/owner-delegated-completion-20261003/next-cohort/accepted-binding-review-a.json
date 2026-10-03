@@ -1,0 +1,2061 @@
+{
+  "stage": "/workspace/scratch/181ef0a25f05/next-owner-accepted-final-nineteen-20261003-v3",
+  "acceptance_receipt_sha256": "31dd0c6b68d50afd5334a96c6ceb4bf3316577f8233645d4580a0c05e2ce9364",
+  "status": "PASS_EXACT_ACCEPTED_STAGE_READY_BEHIND_GLOBAL_GATE",
+  "reviewer": "independent-agent-A",
+  "reviewed_at": "2026-10-03T06:02:48.481594+00:00",
+  "owner_basis_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+  "gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK",
+  "worker_archive_receipt_sha256": "7d1f608b309a82bbf82b639c3db1d3239c0213f43309bcdbc4d5ce7a3750e080",
+  "prospective_live_flags_are_manifest_backed_release_candidate_selection_not_observed_production": true,
+  "canonical_mutations": 0,
+  "paid_calls": 0,
+  "new_source_requests": 0,
+  "repeated_source_or_visual_reviews": 0,
+  "actual_prior_pass_source_art_reused": true,
+  "production_observed": false,
+  "titles": [
+    {
+      "slug": "the-open-window",
+      "package_inventory": {
+        "highlight_sync.json": "b2742d2516aa71aa23f79d33dba6ff5c27c5036c6b581197b6c55f991e97215e",
+        "source_evidence.json": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d",
+        "publication_manifest.json": "605ed01af369f954d266661677ae89ded55bb74cd16e288b882169781b15b521",
+        "reader_manifest.json": "8f5a8d563c587a28d30e1e001447cdb5328bdcd49df4b61d8d7838401aac6151",
+        "publication_authorization.json": "75a78c71325b48b3f882711b21cacd98cec7a2856ecc8f95499ee6cb5d2e997e",
+        "approval_evidence.json": "2326191e9819b187611935044289a926b930efb2e8f8e328aae15c045778d085",
+        "public_book.json": "15e0b753e73e7fc56c3948ffd6e660ab4991ffed0e337c648b3ae3b973b19cf2",
+        "rights_decision.json": "77d09d3b2703f02f2a5b5f8b7e625050b6ba8ae04922787f99cddf754ca5deb2",
+        "checksum_manifest.json": "66fe7d2b6d1cabc1a638d51c7ecc98814090ca088ed6e4668219d239467cc88e",
+        "cover_provenance.json": "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e",
+        "covers/back-delivery.webp": "6c87ea0a562e727b5527711f6f279bf9b95cad6a0817d15e36f783fd87016e76",
+        "covers/front-delivery.webp": "fd16c96883897722c2da7c49e2012dd9e5a3771bf2f99d11b89a29add60a8960",
+        "covers/front-layout-repair.png": "22a9981529ca3c46a81fae68c056b43d2253595f436110767c153eb9344589bd",
+        "covers/front-original.png": "351653d69bebc7567f868007370fb65b72eadbd41f7cbb2ee276e6024d0a1bb1",
+        "covers/back-original.png": "19717b3bb51630712f2f8cad58859361c9015ab726f3335b196c2b5924660a0d",
+        "covers/back-layout-repair.png": "5865b811a2feb412655fa56f6b2a9f6e6fbbd39881423bf14c77e1844a827829",
+        "chapters/chapter-001.json": "bc12b5dbae5cae481b59d11eb9fc43a7c875f4cf2b37d52107bce93957375a00",
+        "evidence/review_b.json": "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff",
+        "evidence/review_a.json": "545e4f764da46785a577943e3abe0f48c09660f4c1e84b7fa6709221c168daa0"
+      },
+      "component_resolution": {
+        "source_evidence": "data/controlled_publications/the-open-window/source_evidence.json",
+        "publication_manifest": "data/controlled_publications/the-open-window/publication_manifest.json",
+        "reader_manifest": "data/controlled_publications/the-open-window/reader_manifest.json",
+        "approval_evidence": "data/controlled_publications/the-open-window/approval_evidence.json",
+        "public_book": "data/controlled_publications/the-open-window/public_book.json",
+        "checksum_manifest": "data/controlled_publications/the-open-window/checksum_manifest.json",
+        "cover_provenance": "data/controlled_publications/the-open-window/cover_provenance.json",
+        "publication_authorization": "data/controlled_publications/the-open-window/publication_authorization.json",
+        "acceptance_review_a": "data/controlled_publications/the-open-window/evidence/review_a.json",
+        "acceptance_review_b": "data/controlled_publications/the-open-window/evidence/review_b.json"
+      },
+      "canonical_record_sha256": "c50c87abb79a36605fcda119cde846baeee8089d24921685277709dbaee0b0d5",
+      "checksum_count": 16,
+      "source_chapter_license_sync_reader_and_art_unchanged": true,
+      "actual_accepted_at_and_actor_preserved": true,
+      "metadata_status_pointer_coherence": true,
+      "audio_disabled": true,
+      "production_observed": false,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "the-selfish-giant",
+      "package_inventory": {
+        "highlight_sync.json": "5bb55dc95aade157eedc8cb2e4255015af7426b38dc43692a3ae8d317a3e30e0",
+        "source_evidence.json": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d",
+        "publication_manifest.json": "dfe645e5168f415a44d305b484598f65555718b0b7c803e24f7cf082c899d8dc",
+        "reader_manifest.json": "d5ce7da734364efdd9a2bd6eace1ee2df66bcfa0dcf7ea4e99d49502b330fc9c",
+        "publication_authorization.json": "6a79a9d4828858df62f0239f911f9d6c6d154da87ad035aba481f91f23cae251",
+        "approval_evidence.json": "b1d859e0c2721a1fc9c0c0b2e9e47d9022360dcf7b10f25de32fa86cb57f1b48",
+        "public_book.json": "606bc3c47fd88faec4c4ef5c99d24baa24c0a2b39ffe260211bb832dead9c71f",
+        "rights_decision.json": "a68ba59941acbdce34dfe3ca98c49af81a2c430e33b65776d7225b0abdbd977e",
+        "checksum_manifest.json": "20dd93d5198c9e88bc8fd06433d8216eab6711033f7fa93d80e34c705715a65a",
+        "cover_provenance.json": "9da21ded8f41af473c472fc7800a081b7fbb5cf88fdfeac948353cbd1e8881c9",
+        "covers/back-delivery.webp": "14b007092896bd2d0e4396ba0ecb1e430650a7aa772f855a347a6269daa75e60",
+        "covers/front-delivery.webp": "777a773d9cebbf236f9bfb79d52d35ca7206c59fc38eb04d85a84abc480d98cd",
+        "covers/front-layout-repair.png": "e01b95dc8d321678df5c9fe5e395728187ea03984cc69c59ae34471603fb7dc4",
+        "covers/front-original.png": "f10e1353932821ab22a0d13b68a40394f06eb1c9a97b04e5e126897dfbb3fcc2",
+        "covers/back-original.png": "6903c7610ac6141b0f4d8d025e7e9fe9f347e2922996368ef7dd28fe8c18b511",
+        "covers/back-layout-repair.png": "6337be1964dfa48aedd7d35233cfdb84f422dd311545b265b9c259444f8795f0",
+        "chapters/chapter-001.json": "12c1db2943a0b57aea333ed1870472ea8332d457093d4255185385a7a157e3b1",
+        "evidence/review_b.json": "15fb24b5a76ab9dac2cbbcccf29b72cb1a0aabc6cd7cf8d9c4a9e11776ced68d",
+        "evidence/review_a.json": "d31da6ba7bc92b767391b180d85d2ab4e1aa163253b38a3cf18bd96de897fcb3"
+      },
+      "component_resolution": {
+        "source_evidence": "data/controlled_publications/the-selfish-giant/source_evidence.json",
+        "publication_manifest": "data/controlled_publications/the-selfish-giant/publication_manifest.json",
+        "reader_manifest": "data/controlled_publications/the-selfish-giant/reader_manifest.json",
+        "approval_evidence": "data/controlled_publications/the-selfish-giant/approval_evidence.json",
+        "public_book": "data/controlled_publications/the-selfish-giant/public_book.json",
+        "checksum_manifest": "data/controlled_publications/the-selfish-giant/checksum_manifest.json",
+        "cover_provenance": "data/controlled_publications/the-selfish-giant/cover_provenance.json",
+        "publication_authorization": "data/controlled_publications/the-selfish-giant/publication_authorization.json",
+        "acceptance_review_a": "data/controlled_publications/the-selfish-giant/evidence/review_a.json",
+        "acceptance_review_b": "data/controlled_publications/the-selfish-giant/evidence/review_b.json"
+      },
+      "canonical_record_sha256": "80bdf11720255bb247bd55afdff73c09ea21f1cc4a013862667ae66a5409c550",
+      "checksum_count": 16,
+      "source_chapter_license_sync_reader_and_art_unchanged": true,
+      "actual_accepted_at_and_actor_preserved": true,
+      "metadata_status_pointer_coherence": true,
+      "audio_disabled": true,
+      "production_observed": false,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "sredni-vashtar",
+      "package_inventory": {
+        "highlight_sync.json": "0b302f6d91f901adad699ed496663b1ebbb8d17917cd4bbdc340f75eb94ca728",
+        "cover_delivery_derivation.json": "b16506ca00a39b5e936b8828a912c0ec895d874450d40817717f0819c9bdadeb",
+        "source_evidence.json": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
+        "publication_manifest.json": "7b0f8f0f12d8573fd3be92c3df5b4e4c2768025c63292c4e3e31472e919a780d",
+        "reader_manifest.json": "2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad",
+        "publication_authorization.json": "a97af4cfe69c6c6faded9ca6d2093d6ff90297e2235252a85818db8880b50734",
+        "approval_evidence.json": "07fa6c729b5b6bb6a324225172abc3811c4f3acd4618bc824116fcaf51794bf0",
+        "public_book.json": "9aa8bec2eb84adb720bc08118faff53a7277ea659bcd44f02b974cc594b11d01",
+        "rights_decision.json": "068975e061bd083b5e3714f90b8952c6c54402c231984520f3c41c188ea06259",
+        "checksum_manifest.json": "d9730dd3b3158582fa109ba1f4b568eec4a23315d042173965687a7f5b194a87",
+        "cover_provenance.json": "2fcda3d9902d9139e3578437f97b7f3b0c2f19dd188e572d234dd6c9316e87b9",
+        "chapters/chapter-001.json": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5",
+        "evidence/review_b.json": "91c752175d2b576a1b43269645b72511a23eadd5d6200df0c65a1ee1d3794c0a",
+        "evidence/review_a.json": "cbb2b42bd8aa85419549eaf838e9884069889482ae7bd8fd5d5280e34ab55f59"
+      },
+      "component_resolution": {
+        "public_book": "data/controlled_publications/sredni-vashtar/public_book.json",
+        "reader_manifest": "data/controlled_publications/sredni-vashtar/reader_manifest.json",
+        "source_evidence": "data/controlled_publications/sredni-vashtar/source_evidence.json",
+        "approval_evidence": "data/controlled_publications/sredni-vashtar/approval_evidence.json",
+        "checksum_manifest": "data/controlled_publications/sredni-vashtar/checksum_manifest.json",
+        "publication_manifest": "data/controlled_publications/sredni-vashtar/publication_manifest.json",
+        "cover_provenance": "data/controlled_publications/sredni-vashtar/cover_provenance.json",
+        "cover_delivery_derivation": "data/controlled_publications/sredni-vashtar/cover_delivery_derivation.json",
+        "cover_front_original_asset": "/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/sredni-preparation-20261003/front-cover-current.png",
+        "cover_front_delivery_asset": "frontend/public/assets/books/sredni-vashtar/front-d946f65f.webp",
+        "cover_back_original_asset": "/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/sredni-preparation-20261003/back-cover-current.png",
+        "cover_back_delivery_asset": "frontend/public/assets/books/sredni-vashtar/back-c5329352.webp",
+        "publication_authorization": "data/controlled_publications/sredni-vashtar/publication_authorization.json",
+        "acceptance_review_a": "data/controlled_publications/sredni-vashtar/evidence/review_a.json",
+        "acceptance_review_b": "data/controlled_publications/sredni-vashtar/evidence/review_b.json"
+      },
+      "canonical_record_sha256": "fd7320d44bc2f41134e5475ad93e5c4873c6bd739afe9e2a845858e24be9acb6",
+      "checksum_count": 11,
+      "source_chapter_license_sync_reader_and_art_unchanged": true,
+      "actual_accepted_at_and_actor_preserved": true,
+      "metadata_status_pointer_coherence": true,
+      "audio_disabled": true,
+      "production_observed": false,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "package_inventory": {
+        "highlight_sync.json": "193728619d202fad6d4f71dbf895c35d68190b7ae6663a77d19d02d774efd113",
+        "source_evidence.json": "f40f277d758a03b9e05dd6ffa721b058766db6955ba4414d183a7f9bf45fb84f",
+        "publication_manifest.json": "cd93ea733f3107ef5ddf9f96ae092b732f8bc852263e55efeb7c4298395bc876",
+        "reader_manifest.json": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22",
+        "publication_authorization.json": "74ee384faafe45c1ecbd02144877e3ac9488ed5a34f511d517058ce8397b68c0",
+        "cover_preparation.json": "9cf2aaf4e5a08aa733a1874524df59170bfb96443b3b65dbe2ba1006dd72fe86",
+        "approval_evidence.json": "68c32c9a7a134010a36017f8ab058d56dfcda2eb6e739e38c45b1188e52f19bf",
+        "public_book.json": "8be18e15d16f64a3f55c0ba0d2cca1719aa6a53f5b1d6292a281417ac1b2e8de",
+        "rights_decision.json": "b7a24c46afe9179d4ec46247e68c4fe31da8dde7466e9762dc554c1b8f3fae51",
+        "checksum_manifest.json": "50f5f926b4992e69b22a2113d4913065aedbb6215fe7a2cc0732d3401b17259d",
+        "cover_provenance.json": "87bd73a79634bfc9393175fdcbff9935e5b948399b169a676ec76477679c2ca4",
+        "covers/the-cop-and-the-anthem-front-inactive.png": "af57195ca48c50d2c8bf0ac6b2c4366dd2328c4e52c93d50b23bd44dea2ef41f",
+        "covers/original-back.png": "0c9e1ec88066b222f5b2e715e8017c4fb7095e74f8f2b669ce5d1d97a77eb7d6",
+        "covers/the-cop-and-the-anthem-front-inactive.webp": "b2243f117df70253f59a995f7aba59c747da08d51187d94d79ff2e84e10f06de",
+        "covers/the-cop-and-the-anthem-back-inactive.webp": "5f6497fd5616e8913891f73d47aa6ff08b6c7db338cefd05f81b71332241dcde",
+        "covers/the-cop-and-the-anthem-back-inactive.png": "c0929e3af5ed29e6305d2867e0018ab4bdd7c6fa226fca6ff82ee94b45236a35",
+        "covers/original-front.png": "3232a6b9c657c5e0adaa6385c87ecd88b9544a0c264b0a28b9ee8d7e11ed12b7",
+        "chapters/chapter-001.json": "630e75350eefdcce93c1f0e403873a29fb1df4004f8c2dd2f450108bd4288cb8",
+        "evidence/review_b.json": "b4c6472a288af36d58459dea6619df7ffcab6fb64a2eadc22c366e9959e52097",
+        "evidence/review_a.json": "2eaf07760acf658f9c176461fe425ad4fa7c4fb372a26124968cd6cee43ee10a"
+      },
+      "component_resolution": {
+        "public_book": "data/controlled_publications/the-cop-and-the-anthem/public_book.json",
+        "reader_manifest": "data/controlled_publications/the-cop-and-the-anthem/reader_manifest.json",
+        "source_evidence": "data/controlled_publications/the-cop-and-the-anthem/source_evidence.json",
+        "approval_evidence": "data/controlled_publications/the-cop-and-the-anthem/approval_evidence.json",
+        "checksum_manifest": "data/controlled_publications/the-cop-and-the-anthem/checksum_manifest.json",
+        "publication_manifest": "data/controlled_publications/the-cop-and-the-anthem/publication_manifest.json",
+        "cover_preparation": "data/controlled_publications/the-cop-and-the-anthem/cover_preparation.json",
+        "publication_authorization": "data/controlled_publications/the-cop-and-the-anthem/publication_authorization.json",
+        "cover_provenance": "data/controlled_publications/the-cop-and-the-anthem/cover_provenance.json",
+        "acceptance_review_a": "data/controlled_publications/the-cop-and-the-anthem/evidence/review_a.json",
+        "acceptance_review_b": "data/controlled_publications/the-cop-and-the-anthem/evidence/review_b.json"
+      },
+      "canonical_record_sha256": "b49d3490005727588f63161d9fd10e7a9eec82f04c33274c1712273e3656bc55",
+      "checksum_count": 17,
+      "source_chapter_license_sync_reader_and_art_unchanged": true,
+      "actual_accepted_at_and_actor_preserved": true,
+      "metadata_status_pointer_coherence": true,
+      "audio_disabled": true,
+      "production_observed": false,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "dsires-baby",
+      "package_inventory": {
+        "highlight_sync.json": "11b60f5ca19e9fabb00a130253b197b9d842de217c0c66b6b9999f5160b093e2",
+        "cover_delivery_derivation.json": "098671e517091d2d1394c01a29db9acb356af3cc5d74322a5112b45f5d930b1b",
+        "source_evidence.json": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb",
+        "source_integrity_validation.json": "52683b6ef48451afe01c74f56481119e5b40663e1e27a141436108953d302444",
+        "publication_manifest.json": "100df17f825f41872c59cf669eb0de03b1790a04ac9a56768571571764fe562c",
+        "reader_manifest.json": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee",
+        "publication_authorization.json": "ae81a367e93bba8b660073fbd73899d5c7ca1bf29fd3f07d3ef8df15df017ffe",
+        "approval_evidence.json": "9d8108b6fea2d334cf1c639f9aa4556a22b9dce00cca90753c7bcb0e021a5ff0",
+        "public_book.json": "dfd96bccddc993606f7d113749ce7d95006861243d6aaa742e8e5d77b1e4fc3b",
+        "rights_decision.json": "bf7d09e8c5e9752034ab8f3309417af983b951e41eebe07e94625e497db6fe2f",
+        "checksum_manifest.json": "268ae09c380947eff16e85f3b3e71a00802906cd86ceee66e3665e51d3cfc283",
+        "cover_provenance.json": "d062d0f93c0509f535e8b32653a9731af276fb80e63523b915e5d9f977d96243",
+        "covers/back.png": "5a845c98786371fc1e671585701cf513c1142fbb5119337aff3d0a02497cff00",
+        "covers/front.png": "c965ecd734bdb2d7966946f2cb3be4af131832266c31a3900f8e8d9375c667d1",
+        "chapters/chapter-001.json": "4c5f2ef8b4ba48d637ac19f0317c4dcb713d70577e49f6f51ae17999579b019b",
+        "evidence/review_b.json": "1c712c31011ca2f17c9790823fd81e26a7c811c852197a34992483622db39bf4",
+        "evidence/review_a.json": "8d4eeb102ce88faf6eb6697393afb1b579ca29bb4e1083419e44b60295a8ef64"
+      },
+      "component_resolution": {
+        "public_book": "data/controlled_publications/dsires-baby/public_book.json",
+        "reader_manifest": "data/controlled_publications/dsires-baby/reader_manifest.json",
+        "source_evidence": "data/controlled_publications/dsires-baby/source_evidence.json",
+        "approval_evidence": "data/controlled_publications/dsires-baby/approval_evidence.json",
+        "checksum_manifest": "data/controlled_publications/dsires-baby/checksum_manifest.json",
+        "publication_manifest": "data/controlled_publications/dsires-baby/publication_manifest.json",
+        "cover_provenance": "data/controlled_publications/dsires-baby/cover_provenance.json",
+        "cover_delivery_derivation": "data/controlled_publications/dsires-baby/cover_delivery_derivation.json",
+        "cover_front_asset": "data/controlled_publications/dsires-baby/covers/front.png",
+        "cover_back_asset": "data/controlled_publications/dsires-baby/covers/back.png",
+        "cover_front_delivery": "frontend/public/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+        "cover_back_delivery": "frontend/public/assets/books/dsires-baby/dsires-baby-back-5a845c98-800.webp",
+        "publication_authorization": "data/controlled_publications/dsires-baby/publication_authorization.json",
+        "acceptance_review_a": "data/controlled_publications/dsires-baby/evidence/review_a.json",
+        "acceptance_review_b": "data/controlled_publications/dsires-baby/evidence/review_b.json"
+      },
+      "canonical_record_sha256": "57db9bcdde0fe46ae9c0acc3d09785bc8a75195f2cded12e6c1aceca796b3ecf",
+      "checksum_count": 14,
+      "source_chapter_license_sync_reader_and_art_unchanged": true,
+      "actual_accepted_at_and_actor_preserved": true,
+      "metadata_status_pointer_coherence": true,
+      "audio_disabled": true,
+      "production_observed": false,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "the-science-of-getting-rich",
+      "package_inventory": {
+        "highlight_sync.json": "0ec7bf5934ded3c72ba3bf13df6d8e6e698d3c3287f64c3a7050d3e2e47ab997",
+        "cover_delivery_derivation.json": "fb4f6f41f2da879099d46d6a1460d87c41dd9cae5d6c65dc838dcb8e4a99aaf5",
+        "source_evidence.json": "6324de50de9db456175bcd2cbecec794641fa8bdd322d2de2b49eaacc713a117",
+        "publication_manifest.json": "86ff9bb4db0b2989342888fcea4e31a31a7ccacf2b951f401e3f7b3c8b8b4358",
+        "reader_manifest.json": "a42883b4eb214ae086998672472b0f86c9709e550da35c87789f95564cdefdb7",
+        "publication_authorization.json": "952b20027bbc2c880867fc82ee9e6bfa62a3d5cf7407bb40704b11affecfe00c",
+        "approval_evidence.json": "c2e4dcccb24f4a77c383b9c27277e045437465d293186b78ea82eff3065f731a",
+        "public_book.json": "08b6e34e2fb16cbdd53a6860ac880663ab7908277a1397a89351cea3d5a7b027",
+        "rights_decision.json": "f64d4cca5215c9dc14d42457ea413cc527fa6fe1fec2ea360f4a35109f93d378",
+        "checksum_manifest.json": "326bb43051fae1626bef6e01829cbba020364f2877bd78ccff5152666c3c5c46",
+        "cover_provenance.json": "5736bdd96c74179bd9eeeee63fd0d09f7a410a23137c499e31130424a4944161",
+        "chapters/chapter-017.json": "696a398abd98a5ecd187d6d5e157f76c3c5636e307983593d405c5526cd4d1a3",
+        "chapters/chapter-013.json": "0887e80584d2dcc41f5915d848c8e1426bf9e4efdb6e7b17f5b9576b0aa7332e",
+        "chapters/chapter-010.json": "9fd16a6fa0d207110cd8345f150b9575c8e6aeca07c442e8861f1b19ff01a5bc",
+        "chapters/chapter-014.json": "052669e99e081d17e9e5e7d8cba5097a1c35d74692253246906f1cbfb987abe7",
+        "chapters/chapter-009.json": "227b7a5ca87383d711d9c0441ab26d9dba67538261a9fc0372abbf413d0a2ca8",
+        "chapters/chapter-016.json": "466c8da81c1f9c4539d55315f4b035b86adcb80a2bc119666b60fcce0c0e9b3c",
+        "chapters/chapter-002.json": "ab639f30648a642710f927b65c6066094fb01b8aa0f20bcecc4b1520caaccb56",
+        "chapters/chapter-018.json": "e8930930e2e78ee34d8c7b57e2f00c035cecade2cd8aa61880df20cf9f0cbc14",
+        "chapters/chapter-008.json": "7c4b25048dbe4d06ae8bcced7a5ef6a8b9ef9302bcba4a621af16450db2c020f",
+        "chapters/chapter-011.json": "e59038a7eb3e104d3c4b68ba3e96704aad025e988f86b09e092d3f6f447f20f2",
+        "chapters/chapter-004.json": "c21f9eb9a075126da8a44c27218241b2e3c231d07c159c8dcc674fd61ea76c87",
+        "chapters/chapter-015.json": "8ef3ecb1e363fc95adc4f9832604fdb23313c2fc1db568e232ac48f863531588",
+        "chapters/chapter-006.json": "03f09952d5111d0faa1dc5cd2b32e18e3b343c45f635cb993d6497cf2de581c6",
+        "chapters/chapter-005.json": "bdf40302374fe13649ff56bd155d91048f7994a71ab83c2ae9f5f405ba5e212b",
+        "chapters/chapter-012.json": "a0e4eac4315a6ec73f378f6896c46509af3f77e1ee35e3151ead86c732b2089a",
+        "chapters/chapter-003.json": "d2d4be96ac1636a3c3cf256302262c8ec52cbf99d2ff77f53cd3949c0b84ceea",
+        "chapters/chapter-007.json": "6ec6c0887b7a428302af800c9485443e5345c463465474b8651348c66ac0686d",
+        "chapters/chapter-001.json": "ed9d306a0bf198120c65aabd95f1011c69972dfe855e7eff4ef0bdab02903efa",
+        "evidence/review_b.json": "4817d7c5123f319dfb08bc552fd4548d24896bb23964f11bd12d719c941eb98a",
+        "evidence/review_a.json": "e17b3d56b4e6f0f6177965822910d19550debe93090c198d5a21e3fac5419400"
+      },
+      "component_resolution": {
+        "public_book": "data/controlled_publications/the-science-of-getting-rich/public_book.json",
+        "reader_manifest": "data/controlled_publications/the-science-of-getting-rich/reader_manifest.json",
+        "source_evidence": "data/controlled_publications/the-science-of-getting-rich/source_evidence.json",
+        "approval_evidence": "data/controlled_publications/the-science-of-getting-rich/approval_evidence.json",
+        "checksum_manifest": "data/controlled_publications/the-science-of-getting-rich/checksum_manifest.json",
+        "publication_manifest": "data/controlled_publications/the-science-of-getting-rich/publication_manifest.json",
+        "cover_provenance": "data/controlled_publications/the-science-of-getting-rich/cover_provenance.json",
+        "cover_delivery_derivation": "data/controlled_publications/the-science-of-getting-rich/cover_delivery_derivation.json",
+        "cover_front_original_asset": "/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/science-preparation-20261003/original-front.png",
+        "cover_front_delivery_asset": "frontend/public/assets/books/the-science-of-getting-rich/front-5ee48b1d.webp",
+        "cover_back_original_asset": "/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/science-preparation-20261003/original-back.png",
+        "cover_back_delivery_asset": "frontend/public/assets/books/the-science-of-getting-rich/back-bda88117.webp",
+        "publication_authorization": "data/controlled_publications/the-science-of-getting-rich/publication_authorization.json",
+        "acceptance_review_a": "data/controlled_publications/the-science-of-getting-rich/evidence/review_a.json",
+        "acceptance_review_b": "data/controlled_publications/the-science-of-getting-rich/evidence/review_b.json"
+      },
+      "canonical_record_sha256": "e8ede6f82279947511c93ecff9f6828e6fadb027bb3bea21f9b85da8fc6f8567",
+      "checksum_count": 28,
+      "source_chapter_license_sync_reader_and_art_unchanged": true,
+      "actual_accepted_at_and_actor_preserved": true,
+      "metadata_status_pointer_coherence": true,
+      "audio_disabled": true,
+      "production_observed": false,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "the-time-machine",
+      "package_inventory": {
+        "highlight_sync.json": "49f9d125f4a876a6e07a1c61e56607b84db13ef3bd9d2595ac8fc021cb52887d",
+        "source_evidence.json": "010c2fd7d0fa5ae1370f081876448c94a9bad177df7fe0b621b0f91c39af0cf5",
+        "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+        "publication_manifest.json": "5cd250333ce7f1cb970eb98fe024ea5c7bf99a0ff3a3ae63a185337d148d6044",
+        "reader_manifest.json": "1874f35f864ccffa65a9d7e38312c3f84df7fd8880120db0ac4ead237d1d913a",
+        "publication_authorization.json": "8894d7452aa94d17f9f561511fba91cc2ed5a18e4dee997ff2e5568b0fed1fab",
+        "cover_preparation.json": "3ab8dbef3293d9e97c344623653b6a9535d4ebd6f2337196e8552026e036a2fb",
+        "approval_evidence.json": "c529d93f7e97765917608238149c2768857b7720ac648132013123ac9a740b55",
+        "public_book.json": "6fe776140c65014131e2c684e05272a01a2dbf846ddc8bcf3fd961ec49ce391d",
+        "rights_decision.json": "55d1e3d3c84c3ec5596464d48d2e62f2044c0856915cded009d9d93f98ff2fcd",
+        "checksum_manifest.json": "5ffc7f9b3668e27b697d19225c6bf31424291af2da3c6c4d7574e8df271b68a7",
+        "cover_provenance.json": "0023ab9e6497aafa2266c54cf945e170348140d070bbcef3f55b482ca8346fe0",
+        "covers/the-time-machine-front-5eb21ec7.webp": "2b3e8c93c4ba497456bfd88c7233be9b15a1305397501022f807aa3574746d7a",
+        "covers/the-time-machine-back-982e280d.webp": "f14904314cecf4e887358e2a6dd16a512936fe5e42314b281e309f994a54a585",
+        "covers/original-back.png": "982e280d4e7a9c7859ac9f071fb20dac6f4fe7f382e1a724d96bea036af2f015",
+        "covers/the-time-machine-back-deterministic.png": "fcbda9911c8ed2437640b3dbf01a0ce6c20879c80d93eb9ef9f0268ba60e0f60",
+        "covers/the-time-machine-front-deterministic.png": "97ea6f6978a5bb4d2edcea13d426019fcb6b46a731fcabe34cb40666e49b5ac0",
+        "covers/original-front.png": "5eb21ec7c4e3aa4a75c1d3e51de7f78f172850b450d80cc06ca7ebe54f5f9997",
+        "chapters/chapter-017.json": "556c5d180a99eafaeae363ce34e04fa09d30fb96900de8ed69dee1f5c0f64f04",
+        "chapters/chapter-013.json": "d22476bd98c946ce4947c2e88893655eb74285abc0d68480a014d9271e816e5d",
+        "chapters/chapter-010.json": "a1405ca9e737a803891c8000448bd1c02cbb834f05cc85e8ed0d8594daf9942e",
+        "chapters/chapter-014.json": "16c807905844fb20e320a58dc2fb59f3fe1dc0e626ada5a428bc779f38c1b871",
+        "chapters/chapter-009.json": "2cc6a284e98a1b2125554ebb493f8ed7acb83c506c40502caad0dfbf238fc3a7",
+        "chapters/chapter-016.json": "9065f35c40f3494e41d57045c34168bd940245f076e07b9875b6af8a0859139e",
+        "chapters/chapter-002.json": "724f755fedc1f1561afeaf6d65a8d68d4f7cc44103552e28ba06c1b8f5d550d0",
+        "chapters/chapter-008.json": "84fcc02f2dcf70b049e5d274469848c4d92bd2fa5396b4fdc5b5a06854c14450",
+        "chapters/chapter-011.json": "340946cfedb8ab01062ca8fb8533722667929dc402d2afdc8965f91205d6009f",
+        "chapters/chapter-004.json": "0e690367577b44e7d92a2beb6222894ccb41fd424c9497db2a3faa012579c4c3",
+        "chapters/chapter-015.json": "827d1b25fda62266b3e3e11c0230daa7020daa34ecbae14dc7cedb4a44c14b49",
+        "chapters/chapter-006.json": "13cf9aad33dfa3f6dd07eebbce0c47018daae6c28ff3a1e5f366969cec18008a",
+        "chapters/chapter-005.json": "8e2effd2b09a9769a053a5b4c7a8083f09c85be111d077ab56e8a32e7a08c858",
+        "chapters/chapter-012.json": "d153389de53546d2f8b44c3f9e5b17978362bf40bac5ca2e9be696885bdc6957",
+        "chapters/chapter-003.json": "62208249328b765d8dc6cb53a875640c4208293c65e0b9b3ccb905104434ea18",
+        "chapters/chapter-007.json": "fb7e644639826d0a660e33c6be6b6fc02066c459e63c9d86390989f92c07ef1b",
+        "chapters/chapter-001.json": "5026ca0b8c4e8b2528a0d439430eb02dee85f578fc4ad47c6f5fb0207d8f0f1c",
+        "evidence/review_b.json": "fa6aaff9100965882e389a042a8e81845423737348bbd410831c6954fda2998b",
+        "evidence/source_review_b.json": "7e6e03cfd9ebfddb26f0f275b69adb8c4222055a6b466c89cedc7d3173fdda12",
+        "evidence/review_a.json": "69849aa5884020a53e87e902d3505d2624839e8dd37119d9b03d7df99948fe38"
+      },
+      "component_resolution": {
+        "public_book": "data/controlled_publications/the-time-machine/public_book.json",
+        "reader_manifest": "data/controlled_publications/the-time-machine/reader_manifest.json",
+        "source_evidence": "data/controlled_publications/the-time-machine/source_evidence.json",
+        "approval_evidence": "data/controlled_publications/the-time-machine/approval_evidence.json",
+        "checksum_manifest": "data/controlled_publications/the-time-machine/checksum_manifest.json",
+        "publication_manifest": "data/controlled_publications/the-time-machine/publication_manifest.json",
+        "cover_preparation": "data/controlled_publications/the-time-machine/cover_preparation.json",
+        "publication_authorization": "data/controlled_publications/the-time-machine/publication_authorization.json",
+        "cover_provenance": "data/controlled_publications/the-time-machine/cover_provenance.json",
+        "owner_artwork_declaration": "data/controlled_publications/the-time-machine/owner_artwork_declaration.json",
+        "acceptance_review_a": "data/controlled_publications/the-time-machine/evidence/review_a.json",
+        "acceptance_review_b": "data/controlled_publications/the-time-machine/evidence/review_b.json"
+      },
+      "canonical_record_sha256": "f142d82b591c9f91c656d03b904133db2b8ee46f5c504bd949e3204117bbd27e",
+      "checksum_count": 35,
+      "source_chapter_license_sync_reader_and_art_unchanged": true,
+      "actual_accepted_at_and_actor_preserved": true,
+      "metadata_status_pointer_coherence": true,
+      "audio_disabled": true,
+      "production_observed": false,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "the-great-gatsby",
+      "package_inventory": {
+        "highlight_sync.json": "05e57751ae1960050039ca565b5b395638c93478414a0ad757d744f249737888",
+        "source_evidence.json": "93a1e5eab7ce62def0ef60ba3a2ae6e56ed964c688c1f2a827f3e88664a30874",
+        "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+        "publication_manifest.json": "83bb9f65da7040d7f04981cef8862b52734b2ebda6f716dadf0b895d377de65d",
+        "reader_manifest.json": "f544166427c91bb2b8546484bf0c811761345f2ec8f1c73c00afad88411fcb4c",
+        "publication_authorization.json": "17ab4194b90ea56edc3afa54731976b6f73b0f3319384d5ae2b1256e0b56576c",
+        "cover_preparation.json": "dd8d44529394792c643779044e055bfc158b090c5cc2012a7ea4d3021174b20a",
+        "approval_evidence.json": "10601541979f351948e09e6cc19eab167801f719668e63acf6e2a26cd581c98b",
+        "reader_repair_evidence.json": "898dc429914c003e998d703fbcaa3d739647420f2f596836da0dc3ed9bc6b499",
+        "public_book.json": "b5cf9f4f12f643978fcba8788a783679920cf28b11774190983e2a6ae46a0442",
+        "rights_decision.json": "b8b1b7a8c99793096928b1b4a84cf36d9bee31dadf68d22e3578faecfd26e8e8",
+        "checksum_manifest.json": "965a478c94cd93d2e79f8168e934303b82549865e29323cb48f479ee8f9190ad",
+        "cover_provenance.json": "dc7172572198010c5008352aa772a8d5a51b2397d60c015feefde93abe2a38d4",
+        "covers/original-back.png": "b2696f4c8247fdc0bbb25a277e73a6eee757e0fa7e9083d176e0a98a7744c402",
+        "covers/the-great-gatsby-back-b2696f4c.webp": "a5a02d9abc0e867bc65527dd57dcdd7679843589f90191cc09302d9d871be32b",
+        "covers/the-great-gatsby-back-deterministic.png": "8569231e38db5c1e81765f1d9935d236fd5cd72b222c62d6c9ba72a7be998e6b",
+        "covers/the-great-gatsby-front-8d98a278.webp": "b3513c4e345b4aa6156f61e6d6a3a69ba3a034f79b6dc3c75773a941cbb516d1",
+        "covers/the-great-gatsby-front-deterministic.png": "708f7cc8e5c21cc1cc535edcc5d000a9d7531f226bebb138e57e2c8633efd624",
+        "covers/original-front.png": "8d98a278f5e09cdbfcb03c064424c6c0f221c3fc230be24e7b502affb915bb2a",
+        "chapters/chapter-000.json": "77bf8a76e425bc7cbb0ed33c641f547841dd2849271b2f64f6df49e7a9b64861",
+        "chapters/chapter-009.json": "d475a9724ba4cb46caa499825ee3a1c53d409c42a02f2ab4d77a687be67e62b9",
+        "chapters/chapter-002.json": "8993d610624add69ab150a59c169c4b9b757d3810aec9df8674c8a751280d412",
+        "chapters/chapter-008.json": "bc19ec61f61517ae46b7626e5d97fffe46e1e47f943388ec9faec79d562856ef",
+        "chapters/chapter-004.json": "03ae2d9e7327e2be41ca8d263e179e341061fb9669f43ba00dbc7676e31f9d69",
+        "chapters/chapter-006.json": "89873a952e81402c246bab28438d3578e49d0e7f41b6483c84785695157721a3",
+        "chapters/chapter-005.json": "dee00928b0dd556bdbf80ccfcd307904cd909b4bf5c0cd15db4d8f7b947c1e68",
+        "chapters/chapter-003.json": "36705f15c9ca6b6cd841485b43456aa9c38ecc67f6a4816054f7b3bfed68ed3b",
+        "chapters/chapter-007.json": "dd8448b1ed252dffbdeca627d55d084ecf319efb699b4393e022514817ead2a0",
+        "chapters/chapter-001.json": "45c3e0373c1fd8b3c5b32d48d4d8d735441424ee71bbe7f103423533fc6aae63",
+        "evidence/review_b.json": "01f582df43f942e52ea04de108f9eaca6b3218dd0cb83ff6623f0b2711654d0d",
+        "evidence/source_review_b.json": "3ba83ca584badcf990145195607e4db99d3f112fca18a8111355f2e71dc32a26",
+        "evidence/review_a.json": "5156952c739749bc0d45c2da3f66e595bba7b4855fc5851a909c7f45be5fe0a9"
+      },
+      "component_resolution": {
+        "public_book": "data/controlled_publications/the-great-gatsby/public_book.json",
+        "reader_manifest": "data/controlled_publications/the-great-gatsby/reader_manifest.json",
+        "source_evidence": "data/controlled_publications/the-great-gatsby/source_evidence.json",
+        "approval_evidence": "data/controlled_publications/the-great-gatsby/approval_evidence.json",
+        "checksum_manifest": "data/controlled_publications/the-great-gatsby/checksum_manifest.json",
+        "publication_manifest": "data/controlled_publications/the-great-gatsby/publication_manifest.json",
+        "cover_preparation": "data/controlled_publications/the-great-gatsby/cover_preparation.json",
+        "publication_authorization": "data/controlled_publications/the-great-gatsby/publication_authorization.json",
+        "cover_provenance": "data/controlled_publications/the-great-gatsby/cover_provenance.json",
+        "owner_artwork_declaration": "data/controlled_publications/the-great-gatsby/owner_artwork_declaration.json",
+        "acceptance_review_a": "data/controlled_publications/the-great-gatsby/evidence/review_a.json",
+        "acceptance_review_b": "data/controlled_publications/the-great-gatsby/evidence/review_b.json"
+      },
+      "canonical_record_sha256": "ea29d7d8e7429de05a105f1eefdf63aa1d11b0a432d13ac9fd6092ad30d9bb08",
+      "checksum_count": 29,
+      "source_chapter_license_sync_reader_and_art_unchanged": true,
+      "actual_accepted_at_and_actor_preserved": true,
+      "metadata_status_pointer_coherence": true,
+      "audio_disabled": true,
+      "production_observed": false,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "frankenstein",
+      "package_inventory": {
+        "highlight_sync.json": "437782ecfe58f530722ef84afa21f69c4148bfc5bddb3ed0a0d18dbf3c2b21b2",
+        "source_evidence.json": "dc06292e3e257f690c3017e88ded33d0b6baa8b778d1629f3074d1f76b5df449",
+        "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+        "publication_manifest.json": "71f76ce7d61c6e7d4f62ca911ff037c58cb70d8b71004838a55e7aa4b5276faf",
+        "reader_manifest.json": "2d7d0f01dcbc35eebc51a178b4eb72a9d766cfe5ec56d618113455ba72c16434",
+        "publication_authorization.json": "db8111ed539ce3ba313c3e4ed1edd97570ef1f12595642f7cd48397688f75940",
+        "cover_preparation.json": "25d32d4835f7be3f95f4dc564063ac7ee40629db265b8f75ea29c08e59eeaddd",
+        "approval_evidence.json": "cf103d560ddbdea56c2c8b9463877892f00e6d2b158eb205d56b7dc44e80c9f1",
+        "public_book.json": "48e1995fd2232b2965603dc875d88d437432860e03a8d27fe6dd208b0b52d48a",
+        "rights_decision.json": "f98ce9a1345d9c4de912cef5eaa2d488e463568a42f85f35c032fd5e844c1efd",
+        "checksum_manifest.json": "13bec0731000983af6466e232658a06e81b68db772f74d3273cd734bfb299d29",
+        "cover_provenance.json": "c85a9da1e083a2a3553e78afa9a6d820fb0534d995c83fb0bd0f6b49253a3d07",
+        "covers/frankenstein-front-deterministic.png": "cede2d7d3ec7f5153cb670737869abb5f35662c8be2a6bdfff8eb7489513dd2d",
+        "covers/frankenstein-front-a7a5d982.webp": "5b93fe195948e38c474fac00b8de901b3e744bd3e0705416f12df6a63054042b",
+        "covers/original-back.png": "367406570864a5cce196cedad3c5564f36c66c565a95afa370c8443bf38c63b6",
+        "covers/frankenstein-back-deterministic.png": "cd2987ce074fbe450a7ec28a033ca9a797fcf32afeeabf2eeefe336479963c72",
+        "covers/frankenstein-back-36740657.webp": "8b9e09b5c47493f0f2fc13587ce8b29e87456dfce081ef411054303c17024fb0",
+        "covers/original-front.png": "a7a5d9825545a40c1c440bccd20ee0fb2b3d262e8347ca8960705cdf66fc5339",
+        "chapters/chapter-017.json": "5ede90a1b9fccc792df2aafc76c77197d121ee51b534287013f2569f2f1afe46",
+        "chapters/chapter-023.json": "b771e49fb7b0aa8ca4353477198dee545127faeec34966c13b6c9ae158b9c5db",
+        "chapters/chapter-026.json": "025c7c053d1dc937c32f5c204296b2d6393fbb3aab4ed5d38347a55a545678a9",
+        "chapters/chapter-022.json": "bc96e04cc9ac05330c633aaeaaad3b417bf8676f2049e37eb535e85793fdc261",
+        "chapters/chapter-013.json": "6e5bd84d6570eeb8a6d84defa7aa6921f60b6032c634cdbf8850c6706279f50b",
+        "chapters/chapter-010.json": "495015ec56aebc1e1a510c8cd6467b77a8a78ff3fa92ef5b6db60747a0128124",
+        "chapters/chapter-014.json": "80b9c145ee803a98c17f1fed61c6339d3e2caef5f593ee8d73e8d4c78bd867fe",
+        "chapters/chapter-009.json": "b23858974dad52c8dd3506e8f31c289326cebf2dd4b54d6c01c74749e64b5be6",
+        "chapters/chapter-016.json": "36c703fd69f81671d0d72531657c4f66a8f1b49ed483456e6750e5aebe0d5e3a",
+        "chapters/chapter-024.json": "f81c1b6ed8376b4ec5052678484e336fb429eab3cc0d2a54a2c8d15e73c6d8e6",
+        "chapters/chapter-002.json": "7bf5b1efca3b6a2d475f18729a01bf9ebd99222d85fa2c00712c57db76b6f6f0",
+        "chapters/chapter-018.json": "316be76462c4dcd64c696a4a66a016c4d837703441d4c6ddce01f02cec08aa8d",
+        "chapters/chapter-008.json": "e93d92292fb9ad6342e6986be8ec402454554c5242d330ee2b7f56a60c4c33da",
+        "chapters/chapter-011.json": "5d9c795cc0effac5965b3ed38ab87184af74f303e23a5ace48d15fc446a8834c",
+        "chapters/chapter-020.json": "ddb072ed4508f8c4b0f93bdbd90c14d1f9f7db9c449c245815fa5a291b3b5587",
+        "chapters/chapter-025.json": "b5b4ad46ad4b97b480b564ac4d98fc4ced6b6e06964c877d9edb82aaf51dc2ec",
+        "chapters/chapter-004.json": "d954ab4476e8dbfc2e2d349a8fdc58be5d99a042c8af6e03443bafca25d43d67",
+        "chapters/chapter-019.json": "d11298e7f38b94ece91480a6a8e3a95bba6d99088161a12f081da5a705bfdbb8",
+        "chapters/chapter-021.json": "7bf1e387298ae40cd175f4a295a5924e76f6aab2629a241b82f4d1fbe0de5759",
+        "chapters/chapter-027.json": "dd9cf156bab9e3b76a8ed69ec85b848e3113bfe32857ab73abaeec2e203af68b",
+        "chapters/chapter-015.json": "3557e5922b44bd933703726ea3fec98858e938a4df8234b51e6a0fc4b39a27b5",
+        "chapters/chapter-006.json": "408137119865eaa4c45275e76c217524fe7ddc62ac6b96d42e22055220846afb",
+        "chapters/chapter-005.json": "4448c9b90306613455c8cf47737b1e06c3cb5678512769e2a420982cffd15e9f",
+        "chapters/chapter-012.json": "879749adc3a932876164e3690834d092bbf9a8f0f9dbfdf4745bd8b5fb5b48c1",
+        "chapters/chapter-003.json": "cbc5a87b8f28ef927b2d34024d6cf56d7a2bf9a15f17db478e2e4c6a8480abad",
+        "chapters/chapter-007.json": "ab195fa54d5dc159bdb0f733cf195eedebd55be2abed60bb7cf4f8a3db69c90f",
+        "chapters/chapter-028.json": "70b030cac2f3a8ab896a2ed7cb54d1d9802f4493d9e7827ed315b9cb9abc366a",
+        "chapters/chapter-001.json": "5a9c472421e82e5c16ffd95468e1b5cd9d574971447a9a0e32394f6fa144ce0c",
+        "evidence/review_b.json": "cb669626513fb343c14b268928ca8499cd01d521d5cad9469464935ec400d871",
+        "evidence/source_review_b.json": "c4d561c45a88e2ab53dcdf26ed1036882fcb040681c41b3d49fda75bdc50e999",
+        "evidence/review_a.json": "dc1045c0af38dad4e41574dbb587cea6734d665ac3cdde5b2e71745808078c83"
+      },
+      "component_resolution": {
+        "public_book": "data/controlled_publications/frankenstein/public_book.json",
+        "reader_manifest": "data/controlled_publications/frankenstein/reader_manifest.json",
+        "source_evidence": "data/controlled_publications/frankenstein/source_evidence.json",
+        "approval_evidence": "data/controlled_publications/frankenstein/approval_evidence.json",
+        "checksum_manifest": "data/controlled_publications/frankenstein/checksum_manifest.json",
+        "publication_manifest": "data/controlled_publications/frankenstein/publication_manifest.json",
+        "cover_preparation": "data/controlled_publications/frankenstein/cover_preparation.json",
+        "publication_authorization": "data/controlled_publications/frankenstein/publication_authorization.json",
+        "cover_provenance": "data/controlled_publications/frankenstein/cover_provenance.json",
+        "owner_artwork_declaration": "data/controlled_publications/frankenstein/owner_artwork_declaration.json",
+        "acceptance_review_a": "data/controlled_publications/frankenstein/evidence/review_a.json",
+        "acceptance_review_b": "data/controlled_publications/frankenstein/evidence/review_b.json"
+      },
+      "canonical_record_sha256": "0bfe3c7f5c78620216cb4f65e05eedf7c9faf52a521edccdf272c014b7c05bb3",
+      "checksum_count": 46,
+      "source_chapter_license_sync_reader_and_art_unchanged": true,
+      "actual_accepted_at_and_actor_preserved": true,
+      "metadata_status_pointer_coherence": true,
+      "audio_disabled": true,
+      "production_observed": false,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "the-secret-garden",
+      "package_inventory": {
+        "highlight_sync.json": "873b732ab6749c7dd08f15496a9266f2de5800bccdafc65945bb7e72f440d963",
+        "source_evidence.json": "d4fba2e016dc99ebbab2950c7f63186ec154e408da4d4acb09a82fa8ef959852",
+        "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+        "publication_manifest.json": "51822f2217effec1d0928911a13abf5ca22ce285721b0c78b228446c3d351d82",
+        "reader_manifest.json": "75d9899ba4ecf348e9bc75da118a4b0ac3aa9cb1e595e8598e3541f9154dff4f",
+        "publication_authorization.json": "26fec4c562c0c24f4c4be3d9e3b7df8c41defc32feb8a934980efe7b0167046d",
+        "cover_preparation.json": "6c1abdead95ea79fdfe72fd832ea2ccff7f5f82ba847628263bbac3b535c0140",
+        "approval_evidence.json": "d497c904e2ab22a1dede97671b4ff0de831ad375870bc284005f44aff8f555a4",
+        "public_book.json": "8b6207581e6589fdf1fb532be36ed6d5db3abc6b88da22c5bb67d5cda09f2a33",
+        "rights_decision.json": "ab9772757c1765f2edb35deffe723ce0de4c75c3d4051ffd440200b151f81079",
+        "checksum_manifest.json": "d9768949e87c672471c10265e4c59ab399314e22d7329fddcd59215979cc8200",
+        "cover_provenance.json": "5f14249b3307f606c2f00517c55fb18c232fa50dbee1fd888c5508dc76293977",
+        "covers/the-secret-garden-front-39799997.webp": "06a6366d1dace4db8c21ab716667d5650ac0a6143758ed08024af5b7d3aa0bc5",
+        "covers/original-back.png": "dedb7dcca9cef92470b93a54b9e46f92b68c48e901a7523bec7fe71bbc43f396",
+        "covers/the-secret-garden-back-dedb7dcc.webp": "be310c30275d7fc20d2f893032d9373fed1912146d4604c6e4b0fb7593820a27",
+        "covers/the-secret-garden-front-deterministic.png": "108a7bcd15bf6a4f7a622f262465b0bc54584c2f2a81cb768d22c68bb9fce8ff",
+        "covers/the-secret-garden-back-deterministic.png": "710466837e4bd8163105f79325cc844f095e7099de401d95b465da07b628bbf2",
+        "covers/original-front.png": "39799997d58307c85b83908d0f5121e9b67e496158ae8c77eef5402e6e20b577",
+        "chapters/chapter-017.json": "1f710dab7e1345810dc00ce734cbc6e274cf8071fd0d28494be29643d6b023dc",
+        "chapters/chapter-023.json": "ea2026c2590be6092f4efae2e6c25cd1f73ccf3d2296a240352c7acaac75f1e8",
+        "chapters/chapter-026.json": "7393d75dc511f932199b651bf168b76afe4ed236873ab4a6fe73db860cd7bf67",
+        "chapters/chapter-022.json": "24bd128009b25400f60e4fc99dd3854215836782f56fcb0a4fe43a18befc339f",
+        "chapters/chapter-013.json": "8a411c9b5015d1366da51d28ff7c614ed88894f87d2370a7736a26bbf4f28575",
+        "chapters/chapter-010.json": "496c1bc62b04c3e0124707084a41f88f6dbe790eb4d4da4ce9b3751d95de85ef",
+        "chapters/chapter-014.json": "b1c40669588e163f3b65e45984170e7b312e9dc0746cc2aaf4333d2820afffe4",
+        "chapters/chapter-009.json": "138b601bba02ce5eb4c1dbcf9ea37aaa7bd945524a006e47561e31d8276f1519",
+        "chapters/chapter-016.json": "866aa3646fde6348565eee97bb70d7f2e31310aec5f88b0b1f7498e208d63f93",
+        "chapters/chapter-024.json": "df1b1ca2935e40a6941ff2c4a438fa0755430a55e19f351c4fdf38fdb8413cde",
+        "chapters/chapter-002.json": "190fa7d43447be6b70918a09e483b324d1f9648bfdde1e67031a76ece3d0a590",
+        "chapters/chapter-018.json": "f520e12821a24fd0ab2a27eff33381d8a810a5292df9dd13484ad8f00a29d3a6",
+        "chapters/chapter-008.json": "0a3cee4ef1c6044318c351bb6546f1b687ba829cdd46572f145db4523f564349",
+        "chapters/chapter-011.json": "21d2470899a64725eddde1a994a6e172a89a1f9711b6843256f9db209da7da45",
+        "chapters/chapter-020.json": "f669f89aa8c8f31eb6de6ce7cdc5a66544a60d4c939892a0137b172d6143d657",
+        "chapters/chapter-025.json": "6d08bbca9aa723d62bf4ab8053208791c50332bab44eb0c633dd62fa6721711c",
+        "chapters/chapter-004.json": "4f453b856b158c08983f8a612e51dd1ffc54d2f353dee8dd9657b60b9a172b7d",
+        "chapters/chapter-019.json": "c5dc46261eaa745adf5a507bc6d41a3886f00f4e473b7c26d823bd3630d9b565",
+        "chapters/chapter-021.json": "4ef9b1fa984ec925e121bdc847655c64fa554a32e49bbb7cdbcacc3b0984f9fe",
+        "chapters/chapter-027.json": "62850c1568cba7dbf02f8bb29cb56bee6ccefe6335c5bf0099e6c603314f8ffe",
+        "chapters/chapter-015.json": "ecb72f77413b6a6622b1433eb2bbda5c41e8b23541a4327a76cccc21b112e284",
+        "chapters/chapter-006.json": "cc0301e02df6350519e4469a27b1d2ab5d63696dc772e0299eb66d9bc1777578",
+        "chapters/chapter-005.json": "8e7e9574ea980788ba1be2d224ac2a14101947ab7f05dcf54542a262050ddd1d",
+        "chapters/chapter-012.json": "1cc792f90aac0974337125ece99ebac8f66cae2719e0edd498a480bda86b7b6a",
+        "chapters/chapter-003.json": "92e02d764e8e323ff5a086ea3ec0cd81b83e7afc11a98fbde95d3b1047068498",
+        "chapters/chapter-007.json": "11bec6f67c7e2641d4fd56457f14d61d8907e923bed62c52ded887e8d1c80766",
+        "chapters/chapter-001.json": "7fb3849e44507f24ac5aa4e812280874910aaa780693a337995daf9572fc64cb",
+        "evidence/review_b.json": "fa8c2d43c53f2ebe4db5c2ab2e20ebc8addeb59f9725bbec1f1bb0b32c822a97",
+        "evidence/source_review_b.json": "e7160391d77b3e1f89dec5481949d5211d86420fb3dcd56c7129798a98bac0d7",
+        "evidence/review_a.json": "0f72494328632cf157a108de8568a0493a6af1c57fefecaa77583f3cc4627b5c"
+      },
+      "component_resolution": {
+        "public_book": "data/controlled_publications/the-secret-garden/public_book.json",
+        "reader_manifest": "data/controlled_publications/the-secret-garden/reader_manifest.json",
+        "source_evidence": "data/controlled_publications/the-secret-garden/source_evidence.json",
+        "approval_evidence": "data/controlled_publications/the-secret-garden/approval_evidence.json",
+        "checksum_manifest": "data/controlled_publications/the-secret-garden/checksum_manifest.json",
+        "publication_manifest": "data/controlled_publications/the-secret-garden/publication_manifest.json",
+        "cover_preparation": "data/controlled_publications/the-secret-garden/cover_preparation.json",
+        "publication_authorization": "data/controlled_publications/the-secret-garden/publication_authorization.json",
+        "cover_provenance": "data/controlled_publications/the-secret-garden/cover_provenance.json",
+        "owner_artwork_declaration": "data/controlled_publications/the-secret-garden/owner_artwork_declaration.json",
+        "acceptance_review_a": "data/controlled_publications/the-secret-garden/evidence/review_a.json",
+        "acceptance_review_b": "data/controlled_publications/the-secret-garden/evidence/review_b.json"
+      },
+      "canonical_record_sha256": "60cf63f5b0176ad3bf06c791851aa90be74be827feb1fa6fd145ff1a56badb65",
+      "checksum_count": 45,
+      "source_chapter_license_sync_reader_and_art_unchanged": true,
+      "actual_accepted_at_and_actor_preserved": true,
+      "metadata_status_pointer_coherence": true,
+      "audio_disabled": true,
+      "production_observed": false,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "package_inventory": {
+        "highlight_sync.json": "e5962e7db300d035d45847a9e491e7f4c164df4e7ebf3a136a254f10b66e1f48",
+        "source_evidence.json": "9e4efacc3dbd251ea18aacd5805d781c1f64a450bea0225fae4ba6a394a97e99",
+        "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+        "publication_manifest.json": "69e9a6bfaf4d6c95b088f227ad7fd82556eb4bfc09c120b1c80844d4435caacc",
+        "reader_manifest.json": "81b6c23e716ea4d26fae26cc8e9e3e7e37637fd0c9fb1619dccb7a94d0ab7676",
+        "publication_authorization.json": "26bd265aa451dd7411e0717f9c811dd28f57d96fddb4196bd75eb7cafe944cf0",
+        "cover_preparation.json": "2dac14946bcae786712e98584308268b8a22eeee505e395c8a9ea72fa4e37ca4",
+        "approval_evidence.json": "9dc704ba64f8d4f07f1693c2d408d7a336146ea67cdfc37040e0ca072ae290d2",
+        "public_book.json": "a4334cbaee40e9afbbd092b6de2ac5dd2fa88f7484a68cf1daa0e75a03b11d13",
+        "rights_decision.json": "d9831bcd6746624e6fa42463385dcd08a443e482d0dd0d76894d72e4261bc7ff",
+        "checksum_manifest.json": "b322be759452b753bc21cce5e5f9c06a8970217f97090a3ba257c781d1b34910",
+        "cover_provenance.json": "d3ef6d3ddf9794c337a80e120396cb144d2bbe09b54481a8549e20abfaa1f2bd",
+        "covers/pride-and-prejudice-back-deterministic.png": "c174a363be117b7cf50c1a9abe16581ff444ec6b88bb3c93d2328e1217d8397a",
+        "covers/original-back.png": "fbb0d3c37fcaeec50ae49921b5bd9d46ab44189f7ebbd2a93f26c1f47798faa8",
+        "covers/pride-and-prejudice-front-480db270.webp": "93c11e8b029d4e283655542189c9f14424d6ba3bc489f7e60c64c465a6943d3d",
+        "covers/pride-and-prejudice-front-deterministic.png": "142fe5c0fa1b705c6486253df30838e5ba41c412fd02ca8ffe694c49a5873473",
+        "covers/pride-and-prejudice-back-fbb0d3c3.webp": "74158f60e81ffa0626fd6d1e6e13e3c7a49257ec91dae10dcc11e697bd6ea09b",
+        "covers/original-front.png": "480db270e262b166bdd91ffd5dc1df03c2bd63d79e632634a1dc0c419be1dfc9",
+        "chapters/chapter-031.json": "7fc4736c4e2b3d96e78a9839197f9418b07a57c920ebd099730d010e93722c7f",
+        "chapters/chapter-060.json": "a6d8c9860dee6ac60aba823dffcb5e755ff733ded62d9a0b01c7f9cfdf9bdd4a",
+        "chapters/chapter-053.json": "866001ec84f8b17622ae17cb7c923382f3b958750272cada4a75d103386623b1",
+        "chapters/chapter-061.json": "3484102d8413c5b933eb297bedd058fc4bc35270884701363eb458ec0dfb6fc0",
+        "chapters/chapter-050.json": "3d86d2e25441ad01964c125fa08e1733329364a0f3659c193f7e7bf6fbc861ae",
+        "chapters/chapter-035.json": "7f6eea64094fb77f9f8a421607f852847719c1fe2b866287f07097446fd23471",
+        "chapters/chapter-052.json": "13111c10009e009ee4c2fc9915b9bf93ab866881927520af5af15a164114a899",
+        "chapters/chapter-017.json": "cf18ecc01535eff690e29a91aa1eb5143be2bd686651a93cbbc629ba81622dac",
+        "chapters/chapter-056.json": "20eb300ac754ac774893120244970dd45cc780bdd3eddf139b0298ffd13d2868",
+        "chapters/chapter-023.json": "4cbb5421af0e4341d72b1312a53803e565ff3c6af23d6b86612e6746c56e65b3",
+        "chapters/chapter-057.json": "f93b2c8bbce6ffa4a9b3e9df75046ba572b9e62e666e88d5e4adf0e7486c480f",
+        "chapters/chapter-045.json": "6ea2409440ce09076146573efa2602708a49b67debde22324fd87adbcbb5acb2",
+        "chapters/chapter-026.json": "05eb1f7fbf14b96d99a5f283501daf5fa86c182aceb4bc7f504ea93f9443f412",
+        "chapters/chapter-022.json": "e0990e2f164c442f022529bd207ec0ff0167850ac12d038e61b247fa73603768",
+        "chapters/chapter-036.json": "abf843f85ca7be2f9504409047b449aa9200f1b0320d6e9f5a7305bb27ffd4e0",
+        "chapters/chapter-048.json": "9959f90b908a738452745ac1b8e2c86e8e0753deeb1d93348e1e41916d52e6f9",
+        "chapters/chapter-013.json": "e3bcc1db844549888b6fdac9fc2a8e4419b832412abae554072844aba6d21b80",
+        "chapters/chapter-038.json": "b9b37975a11275596107f75943703f1a107805c12992145f6ae92f4fd373a82b",
+        "chapters/chapter-010.json": "59c9858fad5f21dc969118eded762a7d3e854c4ea088ef584fba94aee7c21920",
+        "chapters/chapter-014.json": "25c12f3de58ddcf58e2ad59e919e14bb12f27c5166413bbe01405bf4e3db970a",
+        "chapters/chapter-055.json": "ace816e22a78177fe2db984f38622cccbedcd553d2182c2bcfeb8456bba7b2c1",
+        "chapters/chapter-044.json": "b643ea4de6acca3cd5b81982ef4222cf822ab3c6ccc539bd3d3a4ad995b75c6d",
+        "chapters/chapter-009.json": "742e0565390fc955530234853a9ce93c2aee3d83d04803518622a7cb5b16ab9c",
+        "chapters/chapter-040.json": "16f0ee11c2427f5b9699f1ee83e5211d8edc0d01fd5eda2db0fa148a23846997",
+        "chapters/chapter-016.json": "3207f62d4bd0f4e99f1a1d3d74550ba840a03b4a091b020a196caed0df312761",
+        "chapters/chapter-024.json": "d667115da6cf4495d3d55ce3dca42d34d0d9fbf6ca76d6a7ac933127a2d85618",
+        "chapters/chapter-059.json": "bd97b78791bb73bf6f8ac8283d9dad2303e8ccda04a1d3eba5a80bbc235d886a",
+        "chapters/chapter-029.json": "d5b758408b6404ac2edd239bdfc81fc371e3faad37b390a7c64798da5f730e52",
+        "chapters/chapter-032.json": "b6102c139cc1de15e330a52c0ea713efff280dc13968e46d883aff9df6b6af5f",
+        "chapters/chapter-002.json": "3e8fa217df1dd528cb7817de66aa6e4a79b6255a7ab55c4f64e0d716d2d32537",
+        "chapters/chapter-058.json": "24b58fab59192dae63087504f72dd3990dbea89056dfa96c4b096695429ee3cd",
+        "chapters/chapter-041.json": "cc3a310d5219bc8ffc9f6563036a5bd63710b1d655378dc0fa8fc87dd30e0eb1",
+        "chapters/chapter-051.json": "ad6009dbae006c57b01f1798c9de5991896a8cab213ebedec1b9fb1ed4aee253",
+        "chapters/chapter-037.json": "d7f0685482384268aed5da02f028aef3a3f28d885c44f2bfd847968c8d5a17a5",
+        "chapters/chapter-043.json": "38439eb4b05523c35e02312841a2ba88ca2fa4c8048eec0227f46ee66524738d",
+        "chapters/chapter-033.json": "4bb3f2f3b7d88ecd28acfd42b3493159b06bc58be169c8bbd4835a6272aeaa22",
+        "chapters/chapter-018.json": "6cc79667754f1c3b2bb3b4d266967293db1ef4b25c304c222ef2f575ed0d1f9d",
+        "chapters/chapter-054.json": "344f998919742fa611938f037e60d5c61d5864b98d78a1bd847575b875dd5fca",
+        "chapters/chapter-039.json": "c3995366501526356a40364fd8e8c541411dadbd4a9a4bd299704700b4032aa2",
+        "chapters/chapter-046.json": "6cad7c79b864c758c6bcb2748c66a43e0f50a16f88feacd0a67a267682f68000",
+        "chapters/chapter-030.json": "2f93038e2236a4bad86a25d51b651d20ac7fc86456ed072d16810df2d5426959",
+        "chapters/chapter-008.json": "296735853b7cec8f5374d604cbe004fc78b144ff3a3742d8d86c15e676ae4486",
+        "chapters/chapter-011.json": "decf6d2816dda51934cbfb0428ba71e96730d930f9ba1c2c950488cf52116b51",
+        "chapters/chapter-020.json": "45abb31ba619fb4d3afb1afe1c01c680c43caedee43dd3ece46aa693f37a3e83",
+        "chapters/chapter-025.json": "f09e08a64f8cea5ecf53066031bc99a9bed3dc4da1de2b4fa5459890f68df336",
+        "chapters/chapter-004.json": "0c96918a6aea17c5f82b1b8fb97bb57809589649d037df2a702a818e88144d6b",
+        "chapters/chapter-019.json": "754951be54782955bea2b1ffa3c6b8561971b5c1977881df0fbde9f0b2ab9e0d",
+        "chapters/chapter-021.json": "35670234bc566a7ba57f3072dc09e1348d1d3413dcc14ceed199fd63e3dde878",
+        "chapters/chapter-042.json": "26e0b2a40cf5156aef615629a83c26a426d0fa53822c1a56c6480dfc93776a9e",
+        "chapters/chapter-027.json": "250b70243389acf39dde2235fc65efeb6da496390cddfef6435891e1925d6bf9",
+        "chapters/chapter-015.json": "ee94891bf9502958d5bf50c67482d498782a6f9df7b045f5fb5e35786a7d6c05",
+        "chapters/chapter-034.json": "69feb4f4fc1861ca25faf564935fcf23eacb5daa6b3b7c9db549fbd093e3abb8",
+        "chapters/chapter-006.json": "54864f64cc7453d5b2ba6f0b9d82196075d6e7466b934d28e46f421541bcfcdc",
+        "chapters/chapter-005.json": "74aab355575c8d553a584da5dab8fd9f97667062ee28460d894e21b2d3084334",
+        "chapters/chapter-012.json": "aea009270fe8fb7ac2971bf97dcbeadac39e0df601c141f4dc7f84d6dd2a51a4",
+        "chapters/chapter-003.json": "56c73ea57e7a41eaa7ac35ee8e8f062698401e28c35c32d33441d7f17e4bceed",
+        "chapters/chapter-049.json": "11ed7a5274deff8529e6ff181a731ca39a299a76d6a2cc7496e3aa42042f31d5",
+        "chapters/chapter-007.json": "2c7bc582e74d3ff40ef056071b6020e9d95799c3194da30396a0d923909767f7",
+        "chapters/chapter-028.json": "2c94f20475b7ce89d422141a5011cdf480f9098f5b5c8da8cc2de04379fef25f",
+        "chapters/chapter-047.json": "b9f29cd5bf154a6e2ff3f77142195cfd03502b43ac71b519e32953a85f30196a",
+        "chapters/chapter-001.json": "c90e791fb319c39265c1449867e45481e27234bceea064b2a5928f8587924d90",
+        "evidence/review_b.json": "7a4240e762350e02429e64fc14796d5ce7c4b34b808d2045cf788d5e726e66b2",
+        "evidence/source_review_b.json": "78e104ef3a355c89f945241da2b3b02906f40f62c53ec91d2b431b5d6602300a",
+        "evidence/review_a.json": "db1362ae9a048b971fbbb19850c7b6b45b62865c4c6dbc1d02d2c805c9a21cf1"
+      },
+      "component_resolution": {
+        "public_book": "data/controlled_publications/pride-and-prejudice/public_book.json",
+        "reader_manifest": "data/controlled_publications/pride-and-prejudice/reader_manifest.json",
+        "source_evidence": "data/controlled_publications/pride-and-prejudice/source_evidence.json",
+        "approval_evidence": "data/controlled_publications/pride-and-prejudice/approval_evidence.json",
+        "checksum_manifest": "data/controlled_publications/pride-and-prejudice/checksum_manifest.json",
+        "publication_manifest": "data/controlled_publications/pride-and-prejudice/publication_manifest.json",
+        "cover_preparation": "data/controlled_publications/pride-and-prejudice/cover_preparation.json",
+        "publication_authorization": "data/controlled_publications/pride-and-prejudice/publication_authorization.json",
+        "cover_provenance": "data/controlled_publications/pride-and-prejudice/cover_provenance.json",
+        "owner_artwork_declaration": "data/controlled_publications/pride-and-prejudice/owner_artwork_declaration.json",
+        "acceptance_review_a": "data/controlled_publications/pride-and-prejudice/evidence/review_a.json",
+        "acceptance_review_b": "data/controlled_publications/pride-and-prejudice/evidence/review_b.json"
+      },
+      "canonical_record_sha256": "a437c17426c3bd6567c3050be8f550c5be46a4554d5e7e94bc0715dafb13b328",
+      "checksum_count": 79,
+      "source_chapter_license_sync_reader_and_art_unchanged": true,
+      "actual_accepted_at_and_actor_preserved": true,
+      "metadata_status_pointer_coherence": true,
+      "audio_disabled": true,
+      "production_observed": false,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "package_inventory": {
+        "highlight_sync.json": "a41defc9882bca4759e902093932f56cbf628eb9f0e3e5860b9295d26a9c6ae0",
+        "cover_delivery_derivation.json": "921208068b1d0ff492c1d2cb2e63ec52a7aea9276ffeea4f4e711e15b3533eb4",
+        "source_evidence.json": "e6b091fd0aebe2517dd1e2b6c8e8ef14d5ea6d6540daa66c33e0ba27a9ef2380",
+        "source_integrity_validation.json": "1783ac19971b24959ba3c9334a80a473ec2afc37d75f8ea793b84445eb7d9ad9",
+        "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+        "publication_manifest.json": "343091217a6558c325e0277fc3440028b65dcd521458d5e0cacbf7ecdfb92a57",
+        "reader_manifest.json": "87a47f53b9dbcbae66a09bee4bcc5769f4b5f584ef9bdfc4ab31b65959c3318f",
+        "publication_authorization.json": "66a3290c87fe25290a190b358834b27d975e4264d4737ba8666c06685e3c2519",
+        "approval_evidence.json": "1fcab2b332970b6dc90953ae3cd9dfbcf780e09a90d39bc25fa89afc1e01a87a",
+        "public_book.json": "b597e851bbcd8182b369610d4a39209b31e2793f894eb32dcd2bec5c76c943c5",
+        "rights_decision.json": "519366a6def9a5d455a21da8e5af2364ab933a85ced8baa320341a6a32e15226",
+        "checksum_manifest.json": "654e151dcc7717b6c0b2d24343a9cc8ea458b9262d6ccf29a6a1b9dfa0a035bb",
+        "cover_provenance.json": "49d8b48f570268f07aaff9cf2d99f0fc7de9e41abd61057c938e85bc825d9ed1",
+        "covers/back.png": "a544cc2b26c584891032db2fd9ea447f33b4a72ab1e7801a5de853f3463aa5b9",
+        "covers/front.png": "67895aecbc4c29e45658819f7b76316a3caecf5d9cca79c4592c03c5d90d581b",
+        "chapters/chapter-002.json": "5d5831cc3266c2a972290056cfeb8e3d598c09412b0bf35027687a704a56e994",
+        "chapters/chapter-004.json": "33cd142e22486d545f9302026058eb1bac8d14efb80b25ac1cd0b241553197fb",
+        "chapters/chapter-003.json": "0eb52d90eeea32e4aa583cc95ece5cb8350901a3f955274244aa916cf88b001c",
+        "chapters/chapter-001.json": "54a34be7806d09e5d94918947214e4d2d58f78367fdab1efd9da8489522c2a35",
+        "evidence/review_b.json": "de3794f854eaa4ff7cd0ffbdeb9b37fcd70fd989e1ead6973042eedc19b8c646",
+        "evidence/review_a.json": "3043b739322e3d4ffabd729cd834b936188018517075ffcf34ab73f85ca54c81"
+      },
+      "component_resolution": {
+        "public_book": "data/controlled_publications/the-principles-of-scientific-management/public_book.json",
+        "reader_manifest": "data/controlled_publications/the-principles-of-scientific-management/reader_manifest.json",
+        "source_evidence": "data/controlled_publications/the-principles-of-scientific-management/source_evidence.json",
+        "approval_evidence": "data/controlled_publications/the-principles-of-scientific-management/approval_evidence.json",
+        "checksum_manifest": "data/controlled_publications/the-principles-of-scientific-management/checksum_manifest.json",
+        "publication_manifest": "data/controlled_publications/the-principles-of-scientific-management/publication_manifest.json",
+        "cover_provenance": "data/controlled_publications/the-principles-of-scientific-management/cover_provenance.json",
+        "cover_delivery_derivation": "data/controlled_publications/the-principles-of-scientific-management/cover_delivery_derivation.json",
+        "cover_front_asset": "data/controlled_publications/the-principles-of-scientific-management/covers/front.png",
+        "cover_back_asset": "data/controlled_publications/the-principles-of-scientific-management/covers/back.png",
+        "cover_front_delivery": "frontend/public/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-front-67895aec-600.webp",
+        "cover_back_delivery": "frontend/public/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-back-a544cc2b-600.webp",
+        "publication_authorization": "data/controlled_publications/the-principles-of-scientific-management/publication_authorization.json",
+        "owner_artwork_declaration": "data/controlled_publications/the-principles-of-scientific-management/owner_artwork_declaration.json",
+        "acceptance_review_a": "data/controlled_publications/the-principles-of-scientific-management/evidence/review_a.json",
+        "acceptance_review_b": "data/controlled_publications/the-principles-of-scientific-management/evidence/review_b.json"
+      },
+      "canonical_record_sha256": "172c65e11230dfe6d05537e6a550cece29f312733f3dd8fc05689f617e4dc6bc",
+      "checksum_count": 18,
+      "source_chapter_license_sync_reader_and_art_unchanged": true,
+      "actual_accepted_at_and_actor_preserved": true,
+      "metadata_status_pointer_coherence": true,
+      "audio_disabled": true,
+      "production_observed": false,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "acres-of-diamonds",
+      "package_inventory": {
+        "highlight_sync.json": "84ef6e4ed91b15636601d99de2953f9e7c9e90b235f80f028e172de98c0af5a1",
+        "cover_delivery_derivation.json": "1898e644f95edf860b1458baae27b7e48f9dee6fd68d7efb55baf0f7786e35a1",
+        "source_evidence.json": "9371f2af833cbd9683e138e121b7c6ae77f17a18de6dd46cb4507a301a6eb29e",
+        "source_integrity_validation.json": "0e6526eec3c4a1a71d35e75c07401b7e6b7d9cba96e9847732afad064ada3889",
+        "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+        "publication_manifest.json": "4a387f6269b980cd1be0bc8df2ea21683ff2093355ea3a7fd4ebb65ee4e16ee3",
+        "reader_manifest.json": "c083501e4fd683fe9490a8d5b113ef524b57b3aecacc98fbf73caf44e3066d0c",
+        "publication_authorization.json": "66e245fdbe892f702c88d7a0a34e494226c5163858021e0d286b1eca1f3823b8",
+        "approval_evidence.json": "e633d61f06584df3bb25548ee5a250ee53d416e40f392900968c4baa233561d7",
+        "public_book.json": "987fd6d6d7629ce10ee749f28d0087791690711fed0f6e7f6be1893acc9421dc",
+        "rights_decision.json": "abc46de93644bb5031c300721f468c5448050f1ec407e78a9fff297647468f10",
+        "checksum_manifest.json": "60b7360ab4dcb487b562e417d72e3dfb2347b08f3d42adef1d1791e084b37bbf",
+        "cover_provenance.json": "6f096f621756b895cf18637a97388f2382e43b5232a81aa7b3577f77491c3880",
+        "covers/back.png": "b3fb289b101e3a09596321f9f12994b41149d0b8fb4cb855e83429fe393d51dd",
+        "covers/front.png": "cdffd02edb00ddb0af8d55ad5ba6eeffef7d8be9683123fc3193b88e98a7e235",
+        "chapters/chapter-010.json": "f58d55a6b4412d3464df32c757c071c2a8ba1580960eb272811ae63752a22936",
+        "chapters/chapter-009.json": "c371578a7856ed07cb46142906dfc2019eab39181df2ff527f07bd98cb50997a",
+        "chapters/chapter-002.json": "b8d33891dd45ccae231df2691f8146a403f32b29d29898312c4b96a483e67998",
+        "chapters/chapter-008.json": "5925112cf9b78e62123b3cfbd3530d4e36d6ad0ddc46996abca890cae1ee0e09",
+        "chapters/chapter-011.json": "676f458520daa1cdff4362776a126f736a6e83555165e761923dd6de2038b1c4",
+        "chapters/chapter-004.json": "c2a0e8927cfc582810ee0c792d187d5d6fa7b6848657701c8b206897974e75de",
+        "chapters/chapter-006.json": "ae6ba36b24060d5be435c9e6ce034b2ac8e79d1a9b95f27bbec51867440cd9c2",
+        "chapters/chapter-005.json": "fc3b8598acf22016d218b7ab68576211c9fce6432abc1aef9cc575b241e52ff5",
+        "chapters/chapter-012.json": "93eef852fff04fbf965b7acc2e5f2eea2db6f43c426bacc2f887abf60607ff6b",
+        "chapters/chapter-003.json": "782852fb98ddde22452d57db05ab27d987015f326585df5ee58ede7b78c506f9",
+        "chapters/chapter-007.json": "c88e50d47fb2165b8c44c62bacd4ebf27052021cb8225dcbf7f84ae61046c61f",
+        "chapters/chapter-001.json": "11778e545fbe6bd748b1de53d919c61046895d52f28fcd2f19d0019c8050bfb5",
+        "evidence/review_b.json": "283ab0e868d9ec67a1efba2fc9aae9e61a1958e7dfd45f39b72f2e6ac2e3901f",
+        "evidence/review_a.json": "848765bd2edfd3f28e3fe0c479321f0d41ea058dd894d31000bb3116c3b5b407"
+      },
+      "component_resolution": {
+        "public_book": "data/controlled_publications/acres-of-diamonds/public_book.json",
+        "reader_manifest": "data/controlled_publications/acres-of-diamonds/reader_manifest.json",
+        "source_evidence": "data/controlled_publications/acres-of-diamonds/source_evidence.json",
+        "approval_evidence": "data/controlled_publications/acres-of-diamonds/approval_evidence.json",
+        "checksum_manifest": "data/controlled_publications/acres-of-diamonds/checksum_manifest.json",
+        "publication_manifest": "data/controlled_publications/acres-of-diamonds/publication_manifest.json",
+        "cover_provenance": "data/controlled_publications/acres-of-diamonds/cover_provenance.json",
+        "cover_delivery_derivation": "data/controlled_publications/acres-of-diamonds/cover_delivery_derivation.json",
+        "cover_front_asset": "data/controlled_publications/acres-of-diamonds/covers/front.png",
+        "cover_back_asset": "data/controlled_publications/acres-of-diamonds/covers/back.png",
+        "cover_front_delivery": "frontend/public/assets/books/acres-of-diamonds/acres-of-diamonds-front-cdffd02e-600.webp",
+        "cover_back_delivery": "frontend/public/assets/books/acres-of-diamonds/acres-of-diamonds-back-b3fb289b-600.webp",
+        "publication_authorization": "data/controlled_publications/acres-of-diamonds/publication_authorization.json",
+        "owner_artwork_declaration": "data/controlled_publications/acres-of-diamonds/owner_artwork_declaration.json",
+        "acceptance_review_a": "data/controlled_publications/acres-of-diamonds/evidence/review_a.json",
+        "acceptance_review_b": "data/controlled_publications/acres-of-diamonds/evidence/review_b.json"
+      },
+      "canonical_record_sha256": "f40a580d70199d348903af65598fb8e522845bcd66d7a6842374ba33ece2ffda",
+      "checksum_count": 26,
+      "source_chapter_license_sync_reader_and_art_unchanged": true,
+      "actual_accepted_at_and_actor_preserved": true,
+      "metadata_status_pointer_coherence": true,
+      "audio_disabled": true,
+      "production_observed": false,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "my-life-and-work",
+      "package_inventory": {
+        "highlight_sync.json": "0c00b96caba8dc3931d1fde1b5e1d99db1d556d6fd32c3b9ee2229581f044df1",
+        "cover_delivery_derivation.json": "9120e00b719dee33e5632bafc3ee45618651d29678b1c9bf727cb743eebb7b5d",
+        "source_evidence.json": "1d5f331b74b4ac24ba559209d4d1c8ca3543a1cdc274a71bdf14bb2022b7d4b7",
+        "source_integrity_validation.json": "0f0466f58d725b09da33078d8bf45820b36ce227b7d61edb8b8174deeb320d21",
+        "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+        "publication_manifest.json": "f7c153db47c7fd8748404513543039c2c11be57fca450222d1a9a03a38e6c0ab",
+        "reader_manifest.json": "8abb80566e377a38ba0730ffb69c7dc0fbb53358c6e0908492d968fea1313acd",
+        "publication_authorization.json": "9f5221e29758bae95d5277703473eaaca051dcb8157329f30b064dacafbcc31d",
+        "approval_evidence.json": "8d79f0b11d57f1f1dd94c51dab56e798a5b7d0ab9a3931f0753bfaa09950b21b",
+        "public_book.json": "e209527d1c661af856e4f0dc77999d4f506de1f9978955ca5043cd0acd492db3",
+        "rights_decision.json": "224f4cbb86394e84b4d7c4d53dbd25a503feb5872869d655e3a75e5f7d650b79",
+        "checksum_manifest.json": "89ad5d770a0983a972983ea17545918050d24017284ac774170691ccf42738dc",
+        "cover_provenance.json": "4c722f37cbc6a909d7cf30d97cca4f1b63d59229ce2611bb6dbefc26c81cdb9b",
+        "covers/back.png": "b129bccafbfca007d95e86eeb101a577d5be3cdb8ebaf8260f75a1285a65b31c",
+        "covers/front.png": "9f2a6f069a8f7d96c9d0228f69b556394a88da983ee172f88cb9eb7e0e494833",
+        "chapters/chapter-017.json": "8e86755da861e8b63428d07c9c89cadac0cc1faa1fae8a556e382e47d5291520",
+        "chapters/chapter-013.json": "c6958b12d5a05c5a16d583c7cedb711332082cb301515d8764e723eb3779eeeb",
+        "chapters/chapter-010.json": "7bfafc6543c4f2b223a12fea17ec9b6b2adb2ad4911389558fac507e48c667ff",
+        "chapters/chapter-014.json": "577223275ed615986a01bf1dca3b00c43e9b884d15c28bf4c90c4b1115413306",
+        "chapters/chapter-009.json": "31d1b189cba155edb823d35c704da7c9cbddb61a0464db63076ef1546acc3b08",
+        "chapters/chapter-016.json": "60323efd9eeac141add8c298559ed2e8e5b5170edf0d71ceb0e18109139f9492",
+        "chapters/chapter-002.json": "8b72fc6c406e6f85617fc6510cf9901687f7ec8a29c31458eb4041343c52dbb9",
+        "chapters/chapter-018.json": "d08c7b315162fec656902a52cacf7b3a715f4a716599fd0dbf5b86abcae02b15",
+        "chapters/chapter-008.json": "a8554a972843d7dda9a130338b04982954f9217eca1a8fc8619d361244c69f62",
+        "chapters/chapter-011.json": "50c59436710c793a6a24f43890bcf468c07fef0c865c8a73fcb90c2bb8e56baa",
+        "chapters/chapter-020.json": "33054f381b3a4db6d073a772d3063a3726d36c563324a2bc3ab49597608fef45",
+        "chapters/chapter-004.json": "addf0c8c3a53aaefca28fd842e3edce34f9b5ec31d70b3ace8ca497265eecdc5",
+        "chapters/chapter-019.json": "a221a5c58ea45a8c10403d9de0468905a4e730a776c99feccc4a986118488767",
+        "chapters/chapter-015.json": "68167475e315ca2c8ed4baa8cc4ae38c389cc9d4bf8f7894d8cd11f18db1792a",
+        "chapters/chapter-006.json": "22e94686955d2e993c369f1f243efb2051296f8fdc4829fa66231639a906d22b",
+        "chapters/chapter-005.json": "fc2755a3981edceabe3a96eb5edd409e0812645789bedda273fc708d0995b52d",
+        "chapters/chapter-012.json": "9a14e14586551adef57a436f693a4466983743ebd812089068752a36f5118281",
+        "chapters/chapter-003.json": "d3f764bf16404802e65ca2609c1a2830108c596549c1439b1bc83f60de81d08c",
+        "chapters/chapter-007.json": "860fbd8a0d58ab6a35a26ec04e8ce3b3a05098e94ae68984196140f1a85dc2f7",
+        "chapters/chapter-001.json": "e0d36cc9e7e34e5d13ad820c22050242b522a44fd071929a18ff65c4cfb97fd2",
+        "evidence/review_b.json": "af458f9aa5b771de14ccb98ce746cfe00dd57b045c44b065aae7dffc7015a6fb",
+        "evidence/review_a.json": "ff240fbf4572faa32eab4a11d24552591af32907de74186272fa9769426c8014"
+      },
+      "component_resolution": {
+        "public_book": "data/controlled_publications/my-life-and-work/public_book.json",
+        "reader_manifest": "data/controlled_publications/my-life-and-work/reader_manifest.json",
+        "source_evidence": "data/controlled_publications/my-life-and-work/source_evidence.json",
+        "approval_evidence": "data/controlled_publications/my-life-and-work/approval_evidence.json",
+        "checksum_manifest": "data/controlled_publications/my-life-and-work/checksum_manifest.json",
+        "publication_manifest": "data/controlled_publications/my-life-and-work/publication_manifest.json",
+        "cover_provenance": "data/controlled_publications/my-life-and-work/cover_provenance.json",
+        "cover_delivery_derivation": "data/controlled_publications/my-life-and-work/cover_delivery_derivation.json",
+        "cover_front_asset": "data/controlled_publications/my-life-and-work/covers/front.png",
+        "cover_back_asset": "data/controlled_publications/my-life-and-work/covers/back.png",
+        "cover_front_delivery": "frontend/public/assets/books/my-life-and-work/my-life-and-work-front-9f2a6f06-800.webp",
+        "cover_back_delivery": "frontend/public/assets/books/my-life-and-work/my-life-and-work-back-b129bcca-800.webp",
+        "publication_authorization": "data/controlled_publications/my-life-and-work/publication_authorization.json",
+        "owner_artwork_declaration": "data/controlled_publications/my-life-and-work/owner_artwork_declaration.json",
+        "acceptance_review_a": "data/controlled_publications/my-life-and-work/evidence/review_a.json",
+        "acceptance_review_b": "data/controlled_publications/my-life-and-work/evidence/review_b.json"
+      },
+      "canonical_record_sha256": "49002844e6106f70325af06cc1d5bbf2452018a4fa1bbe2aab63f3b1f4814080",
+      "checksum_count": 34,
+      "source_chapter_license_sync_reader_and_art_unchanged": true,
+      "actual_accepted_at_and_actor_preserved": true,
+      "metadata_status_pointer_coherence": true,
+      "audio_disabled": true,
+      "production_observed": false,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "mrinalini",
+      "package_inventory": {
+        "license_notice.json": "5daf71034572bf90bf766d4c93d2632d518986f0cc96cd916f987ac0fe3ca3c9",
+        "highlight_sync.json": "d8bc45186c3d1b361ad66d3c0b210383405a91c6f9125fcab08c779a0c87579e",
+        "source_evidence.json": "d361d2a57e36d6cf70c84f1b5803a99306467116f44e200cfc16659e0145e94f",
+        "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+        "publication_manifest.json": "5d927fa9d767e29a3bdecfa9a74799219a641041ea072e6f7c1c8f843f5d02e3",
+        "reader_manifest.json": "b2510b44fa9ec57a7a7cc48be2482787ee4fe6cba0021ddd8a6cff71ef5275f7",
+        "publication_authorization.json": "9be72f83c284fe4f3389dffe126ab111e94a2fe66fcd93b3aa40a573bebf817b",
+        "approval_evidence.json": "32cced5e5e2302042612c12407bd441c503e1e0c84d2d11bd9ccef45eec327e2",
+        "public_book.json": "ba2a8cd8eb5b4153096786ba0eaeb924f14db581986dddd5a6941404eb2e57d8",
+        "rights_decision.json": "89d0c287c816414e9ed36f17f899c3ca2c111f0e06df68fa773ad8aac17c3724",
+        "checksum_manifest.json": "21892e2c9699307b3ac87b064ba4b519629a01b95ac78a7f38266342aed900b8",
+        "cover_provenance.json": "dba148e5b06e7509a825a180c2d71049139e5e1f53e19c40d6bf67129144a82e",
+        "covers/back-delivery.webp": "6de2383961fe8d47a97982da8c29f57a41dde2b0bdcaef6bd38f07d17a0355ee",
+        "covers/front-delivery.webp": "77b2a78d8c42e25e54ca6715a5c6eb92c0e90e79c50d6f93f1a16af3f11e99a4",
+        "covers/back-original.jpg": "613a77912b59f9a94df525066773a1d618c1a023ad0813efc585f695032139f8",
+        "covers/back-prepared.png": "f23a9251ee054148e05b5b076831c8b02d9b078bf4b3dc59d5d2ae538e67e1cc",
+        "covers/front-prepared.png": "460af8701800b9275c39f668515d496f1af65c5955986be3ad43ec59a3ed8557",
+        "covers/front-original.jpg": "a9aae2f4a6a0179e9d2398d0cd66b2933e28e208eaf6d34b00be436d4de77ae7",
+        "chapters/chapter-031.json": "4e7ba92de02b289edd0d46a2d1bd1a1a4e04e7feea1cf1986240332e3bd8b003",
+        "chapters/chapter-035.json": "63dfa56410610337d014cdcbd15a789369dff2915c4da9f894ed49917f7ac0ef",
+        "chapters/chapter-017.json": "e3a363a41cffe6451c9626c74f8b2bd63b13763d671bb9982607f60cccb5cf72",
+        "chapters/chapter-023.json": "c133d91152483422f6ad3ff898cc438b16bdd32d3c77712206f6353c9879d850",
+        "chapters/chapter-045.json": "5443ad7a705e7d1f8c0a89617ff26202644f48f8d404ea7ac483d161428689c2",
+        "chapters/chapter-026.json": "30b72650b2ffb9bb4ed6e2b06748052cf51f897d44a23e3e7607c91ae2e97c25",
+        "chapters/chapter-022.json": "d9915c6d8cf7faca3dc299a97787851df731ee3896ba5281daab5ce2022dab96",
+        "chapters/chapter-036.json": "ad6b2321245c3d83ba7ef41c80f3e93d1f7e099f09eba696134c7d1fb67954b6",
+        "chapters/chapter-013.json": "68aad274a3843de03c936d1ff7b3cff4ab0188de6470876e28109b08d7a81220",
+        "chapters/chapter-038.json": "e4b6a11a6622a54864ed7323533474c20ddfa1246fbdcece33c2802d352fa845",
+        "chapters/chapter-010.json": "7a8e7600b03ef42044f4ba3b9d3d238618a8ec0c6f37e9312a5737bb9644f952",
+        "chapters/chapter-014.json": "31fb8d3e021f4dc02ac17aa04f89dd83c246ce975a152780c2bcc71d9a0239d4",
+        "chapters/chapter-044.json": "f21eee949f571212b24abbb795385734313354bf945d641a8dd8a61238c68bf6",
+        "chapters/chapter-009.json": "69580495958eb88767f7b5ba4c2014b72e1732224f2cafee200c4be4782dfcd5",
+        "chapters/chapter-040.json": "96e586200967807b40059275c150b1b21236bbba1a0056bd5c6a5c61aebdd331",
+        "chapters/chapter-016.json": "cb04cfc9abe5ee2b199681d0542fd499fa559b89f61a6377c16b6f0a513ec068",
+        "chapters/chapter-024.json": "712c31d6d29e4111afa4f5dd7d30c5949cd71cd57d44c45eb03a05642d345b33",
+        "chapters/chapter-029.json": "bdbc786b1b10a20e47f66c5a81061dcc423a7ae75db58066ecb41896cf845da4",
+        "chapters/chapter-032.json": "8e9dab1922b3c6fe587237cc988fb9326d35517dde71ab4ac01fd9f447455a3c",
+        "chapters/chapter-002.json": "f8cb557225caf2ce72c61703bd8d4095279f75061127262649d16ef4ffb5de3f",
+        "chapters/chapter-041.json": "13ae7550cd6a951b48ea7b9b96b3e4eed4dd1af27e2d6de51c57097d7c17c62b",
+        "chapters/chapter-037.json": "d2374d2da74251efaa2ac5b1e1fcc51292027d131deeec1f402dd15124315a7e",
+        "chapters/chapter-043.json": "c8dc82fae8ad7f630d25daa9bad3075c1ed2869494be23bd1cb78416ba7ffb70",
+        "chapters/chapter-033.json": "4c0251629370a6347d24c38dd1d2c84ed7b30fadc4033d83e8b53ccae2af7c0f",
+        "chapters/chapter-018.json": "992738567b6c5ea18ed4a8aa682721314216b04f88189cb9a2a57ef465727e15",
+        "chapters/chapter-039.json": "7ad5441eb8439feecd97ef5d6968c34dcb521ea40a5c5d6185afee4d8931d204",
+        "chapters/chapter-046.json": "b82d6c43dbb0533e22a50c4d74e657c6acff53ff33b017730b43453fdd62d2ec",
+        "chapters/chapter-030.json": "36dfcef025be890a8721c08ec9bdccf0ba13781bb529a4269ce2e7bd9fb65a9e",
+        "chapters/chapter-008.json": "8972ef019fd52914d7afa14c9c796ddaca5c3962f3cfa5d64e6983c01ad1dfd5",
+        "chapters/chapter-011.json": "fe2dd5c2ebf2002e1b9df8d0e6f80bf5ef3bedd23c80316eac2f3f58d8c000a1",
+        "chapters/chapter-020.json": "d01e73e4fb71319cd15c27fcea3d78d6beb6dc92f2718992a7b3902bd35c4167",
+        "chapters/chapter-025.json": "c7167ef43e869b1a8532999ffd1fc4c309884b23b63e4bd698ac0cbfa74751af",
+        "chapters/chapter-004.json": "8d6361210b47146a525c6a27ace8089e843a3c9cc2d5ef664a03917c1ab81fd3",
+        "chapters/chapter-019.json": "7212731b04fc82a5cec913b23987bc8ff83e06c35de9c68cfdd94e43b019f61c",
+        "chapters/chapter-021.json": "1d670878e0fdf17d2ce8de234af10572bd8a57b96dc81455bc9fbb24bd2f6a8a",
+        "chapters/chapter-042.json": "b1e4c8251782867c772c88765317792f32009ccf3c6a0ffae4f4fadd7600308a",
+        "chapters/chapter-027.json": "6772fed3b81b71de0967429befb21dffca8ff0f397a7ac131fd1d4728615f752",
+        "chapters/chapter-015.json": "a212be3e16c146f0f14f0f27d2d049591cd46692af7408794e28475e797b2174",
+        "chapters/chapter-034.json": "0266aa07e5bd4f311ed8126d363b7a51732a75f7776428e8a80ebfa534845454",
+        "chapters/chapter-006.json": "dd53ab972179af1e55ba124fa5550982a08efcdab5c3010bfa5bf513716fab5c",
+        "chapters/chapter-005.json": "61e7e111b4bf2855d99925fc22de0ab430eb6c59ec05e818890c13e74443a157",
+        "chapters/chapter-012.json": "4bbcaa5961de436f8b828d2f8c18a4f6a2f9f2b6ea3d5a487f804fcd1f05fcc6",
+        "chapters/chapter-003.json": "a88703c2534d2f4f1132584cc6a1568e7bddca6d42ba4dd53b6fd344f807f27c",
+        "chapters/chapter-007.json": "a698a85b29d5b706ef0e86c8652daaceb2989221b7eeaef38e25d6ccf43f6d6e",
+        "chapters/chapter-028.json": "f8175d60a298b31076f523398361e942f59c79362bb9c1836601e4d9d6dde503",
+        "chapters/chapter-001.json": "8be09dd930e4fb58cef1b49346d66ad1814924d6f31d2bd1f76df45951ee26c7",
+        "evidence/review_b.json": "94df4b60e209ec40391b62b5c80e6c59c400c48e4becfac7373049d932c8a3c3",
+        "evidence/review_a.json": "27dee411682d6fbc614aef59db747286949ac2961fcdb50f5cc466b395d15bec"
+      },
+      "component_resolution": {
+        "source_evidence": "data/controlled_publications/mrinalini/source_evidence.json",
+        "publication_manifest": "data/controlled_publications/mrinalini/publication_manifest.json",
+        "reader_manifest": "data/controlled_publications/mrinalini/reader_manifest.json",
+        "approval_evidence": "data/controlled_publications/mrinalini/approval_evidence.json",
+        "public_book": "data/controlled_publications/mrinalini/public_book.json",
+        "checksum_manifest": "data/controlled_publications/mrinalini/checksum_manifest.json",
+        "cover_provenance": "data/controlled_publications/mrinalini/cover_provenance.json",
+        "publication_authorization": "data/controlled_publications/mrinalini/publication_authorization.json",
+        "owner_artwork_declaration": "data/controlled_publications/mrinalini/owner_artwork_declaration.json",
+        "acceptance_review_a": "data/controlled_publications/mrinalini/evidence/review_a.json",
+        "acceptance_review_b": "data/controlled_publications/mrinalini/evidence/review_b.json"
+      },
+      "canonical_record_sha256": "6a0aa9812889f4989bbf004debc20e2dfca800c15a97abbb990f514469c79cbf",
+      "checksum_count": 63,
+      "source_chapter_license_sync_reader_and_art_unchanged": true,
+      "actual_accepted_at_and_actor_preserved": true,
+      "metadata_status_pointer_coherence": true,
+      "audio_disabled": true,
+      "production_observed": false,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "bn-066",
+      "package_inventory": {
+        "license_notice.json": "e02ba4317441ff3b89a869ee69e048c7993f65c700d823abe72919aa293c1aaf",
+        "highlight_sync.json": "8bcbc5f01b49af5ba3dbb0c37c8672ec026bc72280c4c6edc5c4056170441602",
+        "source_evidence.json": "227c479e011f38150820a341bed084e5c184cda97bc12c034d7093ce660ab0e8",
+        "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+        "publication_manifest.json": "98e2168fdb7d2d27a5571f9f7cda3049ac6b57a9d1137de57cf44bc736c72425",
+        "reader_manifest.json": "cf08811a9edf32051c6929e8eb5b29abd6a36df4232c50049e630575f43114d7",
+        "publication_authorization.json": "191d8ecb99e4d63c86aa9ce519f03d3e2158fa93f9dcadf158b34a7f6bbaed14",
+        "approval_evidence.json": "972e263c2fb525d6b6a5ff01bb182828c73898f3320c2a4440babb0f740cf268",
+        "public_book.json": "a599115f1b7daad13726223e24d4fb3a629dabcb56f922c7a9bc6f79ef71464e",
+        "rights_decision.json": "37065f3de6e33d9d5798c0d11876a84b6ecfc73b1520df13e7f36ec96c5f7146",
+        "checksum_manifest.json": "eb974b20bbba4682484e90042ba5b94577ba8171bda43439783f778142fe13bf",
+        "cover_provenance.json": "e01015d9d6d0656bd405bdd2bac12bc6bb7fcb34cb5257d87237b0df965fe990",
+        "covers/back-delivery.webp": "aa31dbe34c7e4e89b9a1bba4e6aa00c0d4e0cd9832bf1dd58179385181416dd3",
+        "covers/front-delivery.webp": "3a9f74e8c01e9832259dc0d6afa9e5b120235feab79fa1bf27029654679cc1dd",
+        "covers/front-original.png": "80df6089ecc48a52aa5872e54dcb49dabb284927c4d3419f0e0af4388a4669db",
+        "covers/back-original.png": "4ce56c183557761ee78cc1e12737a7366034aa19fd397c844ba27fd71ed3c6cd",
+        "covers/back-prepared.png": "3d37668bbaddb757636b6bbd1cb7dccedd750bd208ca2e6027e8b1f23e9e1dcc",
+        "covers/front-prepared.png": "38b4f0042aa68c3a9784a2319b81f3a60e4d294ac2371a08e5d413746b8e5438",
+        "chapters/chapter-031.json": "6706ceeff6932c50e3bac5b540e502d6bd105dd5e198a6716a2b8f5b2fa06a0c",
+        "chapters/chapter-035.json": "817f4ab044db067bab914784e822c674c7495393de33a0fa6dcd655272b10de9",
+        "chapters/chapter-017.json": "b2e0c78e07d917619d71075ff04a48f37ce59e69b333824aaf004020aca67f5f",
+        "chapters/chapter-023.json": "09ab0455686512c96b32e7edc250f5ac9408032ef7b878317fb705677f506bac",
+        "chapters/chapter-045.json": "64774b16e7c873b5fce7fdcf6030c9520c9619f3f9617a2b6ecfb0d73fd1cbea",
+        "chapters/chapter-026.json": "2d5fb7370a83b4f5b1a40e76c7afbe8c3e371e3d2f36c4bf362104b98d4f6529",
+        "chapters/chapter-022.json": "9686024534d39a49c86c4e02d63d8b67be02805601fbfb8b90f3ae427e56bd18",
+        "chapters/chapter-036.json": "64b017e316161e66f55edc249d6b567d86cc878abf5333bdbb06f4a419ae1cb3",
+        "chapters/chapter-013.json": "86a08ee3a14f4a69055dfe6809c78736076648779a71c1e2e450a0cd4df36d33",
+        "chapters/chapter-038.json": "efbdff776a13eafe1b5fb72169f4202d9848f37ee9c7c494a0e5952fe24c0c4e",
+        "chapters/chapter-010.json": "4027edf614030305d02f92b0776c32a2055cc0cf45dedfd3e3134d83d12377ab",
+        "chapters/chapter-014.json": "584e3157eafa8f25f7fb2dbe159892334433cbcee721597342fbf9ee7932cb2f",
+        "chapters/chapter-044.json": "2da3b4e9162a30a96c1873ca1bf948c3a49c62274b0f83b34b9032df56e21290",
+        "chapters/chapter-009.json": "8463263f0a2a9097bf0b690ef386227c1554e76b32716f6fb083818813db76bc",
+        "chapters/chapter-040.json": "dd75659e0d562126155e459b1f32cf5a880bd1a66e9b0c9a793688cef1945a46",
+        "chapters/chapter-016.json": "6dcd66273402756b41ea361a174c48386357406e5f85c4a3218070552a04257a",
+        "chapters/chapter-024.json": "ca6950c5027197ba0c28973cb04e8a758292372148c6e511fa35eba6e6657157",
+        "chapters/chapter-029.json": "ff8edf8e8a93e570e8255979e0561b4033269c44fdd57bd36914caad08e8f3f5",
+        "chapters/chapter-032.json": "a57dd8661bdbad706fced744c72bc52b52d26570f8f20b27c5738200dd8c2c59",
+        "chapters/chapter-002.json": "d0ca5b18a9cf784e8696057172d829c010d7a0e7ee9319957a2c46d64b248fb6",
+        "chapters/chapter-041.json": "ae9283fd56d203ed729df63bec000e05ae2b600695eda65cca03fc21c2c9aee0",
+        "chapters/chapter-037.json": "7c5229b758a3361e495170d0aa531c2d81560fe16b26455018253aff023f13ad",
+        "chapters/chapter-043.json": "d3639c347b534318de031ded97c7575ba56cd5a255b0b734afb756169a0e329d",
+        "chapters/chapter-033.json": "577747a1283bface951719eefc42a8e4a4f48c2bfecc49bdd1bfc31bc14c1907",
+        "chapters/chapter-018.json": "2fd61515dda4a8d6faa9ec59bf31eb5ac25fd73183b704fe5a6b02f00d9293b2",
+        "chapters/chapter-039.json": "abf42f27c0ff5b5a140908de137addf5dae2dafed7a990e10c321af3e50f4ef0",
+        "chapters/chapter-046.json": "c27e75b4622a518426029493b7b6c3a80ba408e0fa50041427940bdb68a560b8",
+        "chapters/chapter-030.json": "84a8067712ba70a32d5a3b1d297a5e95f7f9171e53b5b230f2d537e39cf6af76",
+        "chapters/chapter-008.json": "07b94e0105edf1d4075e96aa3dea076085d606f6927ae3fde3becc575041c9df",
+        "chapters/chapter-011.json": "e824f88e6475feeddb50c46e1da63ab29c52181f4118f49e986e37cfe0e92303",
+        "chapters/chapter-020.json": "b17e1d5bc6ac9bf039e5a730f7c7eaadd0a3e70b8ed8147e6e2da1682dfce417",
+        "chapters/chapter-025.json": "a013fe9934a5913899e71ba1b666ec1573c0090a7a6cdcc7ba0959559ea0448a",
+        "chapters/chapter-004.json": "4ea16b4e26b2dfc1e4d2c7810206207af0a385335c258d36a6e071691281f06a",
+        "chapters/chapter-019.json": "4824983cf491591fb783ba9be967fb4d8d6df969bcb5ea249a8bf668537b5338",
+        "chapters/chapter-021.json": "2736ec36d48565351cff69dc9d70331de211d38125538adbc3ce3b3c4c733ec5",
+        "chapters/chapter-042.json": "adf93bcfdca0a1bc50c7b3d78aec8b85bdf7c602d2297f30ec7efefddd21f6ac",
+        "chapters/chapter-027.json": "7fa5dcd8cbed1f8dbcd15e7bc3939a998414f35edcaed65fe6a2563c951586b9",
+        "chapters/chapter-015.json": "6c55dba9e481d7c3ff582f0f7f66ab67f40235dbf4e5a6ad94fa91f694943375",
+        "chapters/chapter-034.json": "1ce485bdc9ef22ea638baccf07c6ea7142dbc1739f14bc2363f9bb9948a48f79",
+        "chapters/chapter-006.json": "cd4db0c6096a7f37d12f748ae569316f704c806e957817dd4b68c1b7a4d2893d",
+        "chapters/chapter-005.json": "53dc985d24b00616bcf3e11d7429fdc2ef461a19270418dcf27a408a4b394b84",
+        "chapters/chapter-012.json": "ea9113e011cb06df0836e29c82a2aaebb0a00c5558caf8093ace0ddfedbda97e",
+        "chapters/chapter-003.json": "53d1296c1e2e7eb597b0cb922b161a0ec91489962c7abbcc3a9797d226cf4d74",
+        "chapters/chapter-007.json": "1d5ef53de68e74d13d61a25fe126ea7486060ca402e8fad0f86577e08030a12a",
+        "chapters/chapter-028.json": "9c29f02c5e0c1dbc8137514fa890e2480d968acdbf4dbfbc8bd9fe166ddf05a8",
+        "chapters/chapter-001.json": "371c67bc4b578ee9aa4c83a25a510e3ba378ddede8eba6b3d81725d248f29ce5",
+        "evidence/review_b.json": "bf11f1e1e5f87d56f8456c46ad397cddeff8de411742cffb579bd8e433aa821b",
+        "evidence/review_a.json": "483b265cd1414035ccb47fa8d1a8bc9fd3f4be86cfa3276468426c2f32c97fcc"
+      },
+      "component_resolution": {
+        "source_evidence": "data/controlled_publications/bn-066/source_evidence.json",
+        "publication_manifest": "data/controlled_publications/bn-066/publication_manifest.json",
+        "reader_manifest": "data/controlled_publications/bn-066/reader_manifest.json",
+        "approval_evidence": "data/controlled_publications/bn-066/approval_evidence.json",
+        "public_book": "data/controlled_publications/bn-066/public_book.json",
+        "checksum_manifest": "data/controlled_publications/bn-066/checksum_manifest.json",
+        "cover_provenance": "data/controlled_publications/bn-066/cover_provenance.json",
+        "publication_authorization": "data/controlled_publications/bn-066/publication_authorization.json",
+        "owner_artwork_declaration": "data/controlled_publications/bn-066/owner_artwork_declaration.json",
+        "acceptance_review_a": "data/controlled_publications/bn-066/evidence/review_a.json",
+        "acceptance_review_b": "data/controlled_publications/bn-066/evidence/review_b.json"
+      },
+      "canonical_record_sha256": "f36de6cdbee86a1c80fc0fcc8c5e17eef7cdf2aec458992e36ae2f2ac035e6f1",
+      "checksum_count": 63,
+      "source_chapter_license_sync_reader_and_art_unchanged": true,
+      "actual_accepted_at_and_actor_preserved": true,
+      "metadata_status_pointer_coherence": true,
+      "audio_disabled": true,
+      "production_observed": false,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "lokrahasya",
+      "package_inventory": {
+        "license_notice.json": "0155b666d272aad67b5f6a32674846670bd82894ff1761c86775e6b3ca7bfedb",
+        "highlight_sync.json": "20a25ad5ac8fab0c2c3f1240e603d7cd95175c9127dc368bfeac5beed67a1d52",
+        "source_evidence.json": "b91f203f5374ba789227c46411bf5d4c2a3721cd27c4ed5e58dcedffaa33fa7e",
+        "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+        "publication_manifest.json": "be507cfdacefef2e0eef10381874e8f983a50696a18199f676e848746fe8b341",
+        "reader_manifest.json": "cd0d23d355b04e8a076dbc348a1364c3640fe7a149d8b7b2e78690c0ee22261c",
+        "publication_authorization.json": "1d63c4e32e3e024337157eb456bad241b8a81c927f2eb033b672d7b6beb40d2c",
+        "approval_evidence.json": "2411ed39c264b77141deed4fb3ed9e09eb94106480d9d080864639460dd63288",
+        "reader_order_remedy.json": "0cd76b413db937d25362d9b105beb5c22fa1340bc27d15dda1b11adb492b3b50",
+        "public_book.json": "2d0fc4953e75fb9cbe2b4006657056b9448e181e0d60cb45756238804846a921",
+        "rights_decision.json": "776fa4dfe4c0b165b085e488cbc420c83d38367051845de58d2016a5cc33bce9",
+        "checksum_manifest.json": "dff83c0ebc05d8b9b5a4301c40834f65e09106e0ceb38f83de598aa9afcc6211",
+        "cover_provenance.json": "0b44aebce3c9c3a83054a707679945f58818ff1522cd8ae15f7e0201d79c0e79",
+        "covers/back-delivery.webp": "c62c63ed14ebf54dbf15542840ecc0066a8821ce3f20d54a10484f305ffe30ff",
+        "covers/front-delivery.webp": "ed95a2efcbc009bc6a4b7d44d7d5f88b9b555be43be933628fc08ebecf23d0be",
+        "covers/back-original.jpg": "64fddc39b201883c0fd3fd109724389f4efb51e4a031b32594eac2d406a604cc",
+        "covers/back-prepared.png": "9b46fa258412838b64f48c5342424f9c3a60784995139cedb71f738514f36f72",
+        "covers/front-prepared.png": "c2b46b8bde19d262acf0afdb016851bebf40b40caf1b4ef7aadc5133d29dcff9",
+        "covers/front-original.jpg": "cac3711a7984c8eb066e048e1b7917c2d2931a5916ac0643e6dab555fefd1406",
+        "chapters/chapter-013.json": "9bc01c8791a339e8be54d092b4377cee2d92ea4eea60ba97ae35a0d7ea6516eb",
+        "chapters/chapter-010.json": "ad4e91cbe5dd742dd75bfa1a3729f0497e89aa8a9ef68c90f6304d855c07dc9a",
+        "chapters/chapter-014.json": "ee8e54f72b4d1438f2ed922ed284152e9dd5e82bee74a74fdabeca32ce3c1c58",
+        "chapters/chapter-009.json": "a05c1f7d4f1acf9cc97a18f5bd00c49fd55826b98a1384f2493fb8e9b42a789a",
+        "chapters/chapter-016.json": "bf7493bddb664419acabd0980c7f12deb419fec02d7955e11983af24e26bc493",
+        "chapters/chapter-002.json": "fd0d6a64811d53a98df08aa9a82f897bd4e96addf540b85352016358ac9d748d",
+        "chapters/chapter-008.json": "cc971d2c43503447df343626c200bfd351a75322f844d11915e60931b457649b",
+        "chapters/chapter-011.json": "3aa5c1b19562312c6232890f375310f5f3b9bba2343ef4b20f686f361aa2d65f",
+        "chapters/chapter-004.json": "088f5a32e6ce7df289ab98de0158d2c7951e11762eddf9055dbbf3ab508cafc2",
+        "chapters/chapter-015.json": "0fa5ffce2f7919bcbdb49df663bb70759ce5e522d6d3841f1eea0982aaa00b69",
+        "chapters/chapter-006.json": "8d4f042fcc81401826acce3031e4eef23f5fcc998131ce4198eb96ba9ea6c683",
+        "chapters/chapter-005.json": "ef595cd39e4128649b398a9ca7fbd3de81055cafae595c4d63180a4da247ff2d",
+        "chapters/chapter-012.json": "6529ab1fa851b53fb3b487bf4ea86558b20c09e96b1f3ae2888759bb41e503b4",
+        "chapters/chapter-003.json": "d18695e195e2da874d57f88063eaab80904247e0dd463ebb4a20c52abc879708",
+        "chapters/chapter-007.json": "fc212958600399b79fd0aca34dce0e767c70c96ab1de05b8ce967e435a7b8535",
+        "chapters/chapter-001.json": "c576e275dec51a4ae403f95fc1c94bdd0b23bf09879133472bf080ecec9cbda5",
+        "evidence/review_b.json": "681cdc4c5511d271cb7921893ea9009919dae686f138a001643d934981dd20d3",
+        "evidence/review_a.json": "833c60d7852d3818a325d79469e9239da9bf2ec261f197c813aeb7986b9ab595"
+      },
+      "component_resolution": {
+        "source_evidence": "data/controlled_publications/lokrahasya/source_evidence.json",
+        "publication_manifest": "data/controlled_publications/lokrahasya/publication_manifest.json",
+        "reader_manifest": "data/controlled_publications/lokrahasya/reader_manifest.json",
+        "approval_evidence": "data/controlled_publications/lokrahasya/approval_evidence.json",
+        "public_book": "data/controlled_publications/lokrahasya/public_book.json",
+        "checksum_manifest": "data/controlled_publications/lokrahasya/checksum_manifest.json",
+        "cover_provenance": "data/controlled_publications/lokrahasya/cover_provenance.json",
+        "reader_order_remedy": "data/controlled_publications/lokrahasya/reader_order_remedy.json",
+        "publication_authorization": "data/controlled_publications/lokrahasya/publication_authorization.json",
+        "owner_artwork_declaration": "data/controlled_publications/lokrahasya/owner_artwork_declaration.json",
+        "acceptance_review_a": "data/controlled_publications/lokrahasya/evidence/review_a.json",
+        "acceptance_review_b": "data/controlled_publications/lokrahasya/evidence/review_b.json"
+      },
+      "canonical_record_sha256": "49c5894d1e746ed53711643a68c98f54eabc939cbf88307a5556fccfd9b79a36",
+      "checksum_count": 34,
+      "source_chapter_license_sync_reader_and_art_unchanged": true,
+      "actual_accepted_at_and_actor_preserved": true,
+      "metadata_status_pointer_coherence": true,
+      "audio_disabled": true,
+      "production_observed": false,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "book-5704b31005",
+      "package_inventory": {
+        "license_notice.json": "1fc9cf8fae864434f95bc34656a96672c55d852f3dfdad4a1f386a1a1cc4e01c",
+        "highlight_sync.json": "e58d907c1d0fa2ae194a04c11b6d9eef3f35f188f6d22fd7eb4cc1fac84465bd",
+        "source_evidence.json": "f7d3ac1cbe169532038b008d48c0313290cedca638d23c7696d75d3a0c072f3b",
+        "source_integrity_validation.json": "89eac8e38ab78c63ae74dc799b89c6fe6fef9aa5755e55c645c94a1dd7ea11f6",
+        "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+        "publication_manifest.json": "c8455db5baa2055ad7b5e29ce7f3f0a9c6802eb4e72bd664858d3b9853c65b04",
+        "reader_manifest.json": "6c7daced7a35b9f20ba2f8828e5636d7c644e6ceb272f1707871adafb5a2b759",
+        "publication_authorization.json": "baf85fb9c258e5f2a925d4358a91e34c0c6bd04ebc3db4e9f4586f9e18783aa2",
+        "approval_evidence.json": "5d466fb5df86d019b2b13087e1fc93fbd28440bd175e825578b571ed1e347c28",
+        "public_book.json": "4d2e8f87fef27929dd27328a16226b2ccee8b96f974f7d4dd3be3b5d049cdf87",
+        "rights_decision.json": "4bb60220f1b11794ef7634a135a69587523149c0c40c377ecc77e6e60033dba2",
+        "checksum_manifest.json": "e12ab04021ac3991ae3f802d3810a0ebb7edf6b82a2bbb80caf68736accab743",
+        "cover_provenance.json": "0097846c9e39ae9eb4c4185a03d1da48c398773868e06537ed6f5aa03c7fa319",
+        "covers/back-delivery.webp": "4e0a187bd92e75d5b4fb97a670516bacc6183862672090f03ed5dce9547c5709",
+        "covers/front-delivery.webp": "8f64cc7c2a33820dfbfe55a635f70a8a0fd19959c71e3290bdeeadd45c2531a5",
+        "covers/back.png": "a99c6c0e27712090637651204cfb0aa5809442ddbc3b5e99da35828a34c82a08",
+        "covers/back-prepared.png": "f470d039657c0f6068ce708f2e1380ccdba297132434ac0c5c1434c488456e7e",
+        "covers/front-prepared.png": "c58421cc10daab55ce40478452acbd0c8c0977761753a6d01c63db2b67b56b21",
+        "covers/front.png": "a914d173de6f5cd9486fd91a7b69188d156ac7623ebc9f8f89173acd1c48d104",
+        "chapters/chapter-001.json": "e0325632daa997c635a64d46073efbf6d8fda511635e9b4ababfa3bab79dfd5c",
+        "evidence/review_b.json": "c7d0ea841e42cfa6cde1888ee06c0c87fb550beeee74efb78ccff67ea8675686",
+        "evidence/review_a.json": "bf3615602cb27a7ff7a97da6849951abeb3469015c2e1da0bb0f8a8a715c8efd"
+      },
+      "component_resolution": {
+        "source_evidence": "data/controlled_publications/book-5704b31005/source_evidence.json",
+        "source_integrity_validation": "data/controlled_publications/book-5704b31005/source_integrity_validation.json",
+        "publication_manifest": "data/controlled_publications/book-5704b31005/publication_manifest.json",
+        "reader_manifest": "data/controlled_publications/book-5704b31005/reader_manifest.json",
+        "approval_evidence": "data/controlled_publications/book-5704b31005/approval_evidence.json",
+        "public_book": "data/controlled_publications/book-5704b31005/public_book.json",
+        "checksum_manifest": "data/controlled_publications/book-5704b31005/checksum_manifest.json",
+        "cover_provenance": "data/controlled_publications/book-5704b31005/cover_provenance.json",
+        "publication_authorization": "data/controlled_publications/book-5704b31005/publication_authorization.json",
+        "owner_artwork_declaration": "data/controlled_publications/book-5704b31005/owner_artwork_declaration.json",
+        "acceptance_review_a": "data/controlled_publications/book-5704b31005/evidence/review_a.json",
+        "acceptance_review_b": "data/controlled_publications/book-5704b31005/evidence/review_b.json"
+      },
+      "canonical_record_sha256": "c469a1b1109688361c09eac0dd9996bd0abccea687213f5d90e83601652ac84e",
+      "checksum_count": 19,
+      "source_chapter_license_sync_reader_and_art_unchanged": true,
+      "actual_accepted_at_and_actor_preserved": true,
+      "metadata_status_pointer_coherence": true,
+      "audio_disabled": true,
+      "production_observed": false,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "the-wonderful-wizard-of-oz",
+      "package_inventory": {
+        "highlight_sync.json": "32c5e5256e2584ee9acda5cc8a83ecd7dbccd7ba23a224339c0b9b34c5a753d2",
+        "cover_delivery_derivation.json": "379ede32b7d337a7b22a0db950e30ac52f972e717d3b75da1143d1e3c3aafc05",
+        "source_evidence.json": "7ec444ed90caa41fb950757933ee7399ef94fceab855bdd8c3e52a6806358ec5",
+        "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+        "publication_manifest.json": "ee7860e56d3f5cb340da13e1c1c43af4485eccca54e8cf753ebc4c8725407e77",
+        "reader_manifest.json": "2323b65af075000645cd7ac0f3f841f4583ac1407ddefd849a1cbc7b06795d71",
+        "publication_authorization.json": "b5c012ebc6df6bcae9cab5a7208b6fdf6fd17342227816aaa83b73a5df6ef30f",
+        "approval_evidence.json": "1c594a572466bbff09edf6bdb022261abeb45a5eab7e7033bad83f184a455a89",
+        "public_book.json": "44181e3acd1d738c6fda24b0f0755fbc86e819bde9a142373ff44bbb4d7f01f6",
+        "rights_decision.json": "e1c8875754fcf46330cb5f14c915b3183ba6f4afd430c9bf306131db496ef08f",
+        "checksum_manifest.json": "1752a83cf4ebd25f70b0bd4a67d5123e31646f8414c6a43833b5b13f21b68fa0",
+        "cover_provenance.json": "82807f7a09520abbfe64e1e9ce7d570a1735587b871b12e9024a309e22779f7c",
+        "covers/original-back.png": "29204906556020adbbdb10a89b7fd9b26f08703f6327a0de63cdb0d50b8821fc",
+        "covers/original-front.png": "80fbd30875f8b715fb580732f9eef2d46bc7ddc74d50cd41d5276dbfd60ec32a",
+        "chapters/chapter-000.json": "118662968ffae09a39b945b4e23611134f002de106fc175769bcc6b0d3f23171",
+        "chapters/chapter-017.json": "4765b4825ee8014b8d6dcd96d2bd31174087f11e3f52ed19fbe830d63963af60",
+        "chapters/chapter-023.json": "bf4ed5e7ebf8b5402a9d58545161150f084443e3f5b95234445dde15dfb3acec",
+        "chapters/chapter-022.json": "bc298db53227232ae528e897fc85091c706904bd1d4cfdbb32127f089496d5dd",
+        "chapters/chapter-013.json": "a33c3e949883bab750a4a3fed0b1d7a8ccb466b741b11d49f656ecae48632eff",
+        "chapters/chapter-010.json": "e405c6479f80643ffae80cb112237daba55b94308d0e2489a8196e991f91db82",
+        "chapters/chapter-014.json": "71a15fe2fc31371944909ddb9c70caef653f4bc6262ab488bbb4c7a793138574",
+        "chapters/chapter-009.json": "ccd55e81a04d06cf466ac4efed76bb3c41f20df66fe5a7a28b37bd0f3f1b489f",
+        "chapters/chapter-016.json": "ef577dfed5d075f8f90c31f1bb82a24957be8718b9718cfdb28f7fd8df376554",
+        "chapters/chapter-024.json": "64c9fab6b003c799f01caadbb2b4a1278149c092467b0f65a1647d35cf382386",
+        "chapters/chapter-002.json": "8c32e4ea4ce72dca82dafc112f750adeadaa8371715022e01ce15f2209c828ca",
+        "chapters/chapter-018.json": "665d674b8eb7dcf30ebee5f00c38877b12e9f874f0d708371a82803d7743a605",
+        "chapters/chapter-008.json": "e82cab6532aec3f5cbc81525475862a79efb7477da2be5a4fa5702df7fa72ffc",
+        "chapters/chapter-011.json": "1548a87a716c760b5bf4ac9334e185ac3b9692e099dbcc892a5241dfcd53e076",
+        "chapters/chapter-020.json": "06ded42ac082874263b58c4c80c0bd0be859c2506b762035f8dff7bbe3480954",
+        "chapters/chapter-004.json": "b2abb71a6657d4996d40a5153fd6fc9da28645cf213b7905aca12ef368da5104",
+        "chapters/chapter-019.json": "89627bd9ec55bd369f6805538ea2d1dbe8073f6c7c4776199776ef332f62d7d8",
+        "chapters/chapter-021.json": "06d09334a48d348344d7f21da5ada91c6f949903cfbec602e80c7fe55e7d8f84",
+        "chapters/chapter-015.json": "c0c5044d71a15d20ef413473916b6d263ce4bc07fc8d9ad9c309a7ba41d2c9d9",
+        "chapters/chapter-006.json": "7f544ecf190fc44e24bf9da2ae9c1ca721f061cd4e84600beb25c911b586ca10",
+        "chapters/chapter-005.json": "0671e6fb23eb9bee17bea9ec34f735227af6907fc09821014116cd78fe4dc103",
+        "chapters/chapter-012.json": "19a281cd8265ea71bad736152d21a3c9ceb3ad4631d6c314391caa016cbdcb52",
+        "chapters/chapter-003.json": "7a5162887dd0f1d7caedb9c389c09af052cb7662aa9bf88cfc1a833b3ff681bd",
+        "chapters/chapter-007.json": "059ce4904d10f05ba6174dd9de4121239844e98dbf6e9f71bd905291bc6cf369",
+        "chapters/chapter-001.json": "47eba6c96f51a6bcb2bde839312a2a487dfd7cbbefb64d9fd8f26f9e09b8a2a3",
+        "evidence/current_whole_work_boundary_verification.json": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e",
+        "evidence/review_b.json": "7a7306dd7ddd6dd0fc680ca49045b75f83f76592af015ea99d67530892fa804d",
+        "evidence/original-cover-receipt.json": "6253d6df5544a0226495a8a73b6c6a00f96e5037037db7656dd1a8326de36d2f",
+        "evidence/render_delivery.py": "ff3cf668b08e534adaefd57998208efa3422efcdf01aa9d25a8aabcc0d662a59",
+        "evidence/delivery-receipt.json": "c815944d45b1664634b3680544680b6da3c36de93a0a966fd7454d0c99177e73",
+        "evidence/preimage-inventory.json": "4f570611cb51d024ba9b29b7b5aef7ca2c7a64f2ffd48a41cf630e458f70ad19",
+        "evidence/review_a.json": "a034ba1b836c80898ec9a4ccbf5268c09839bd7d9c6b47169507657b74bd7878",
+        "evidence/wizard-whole-work-proof-reuse.json": "b477cd253c51a2ce5ccffd622dfbc5dc7e5cd5b084a53467e7deebb04fd5296e"
+      },
+      "component_resolution": {
+        "public_book": "data/controlled_publications/the-wonderful-wizard-of-oz/public_book.json",
+        "reader_manifest": "data/controlled_publications/the-wonderful-wizard-of-oz/reader_manifest.json",
+        "source_evidence": "data/controlled_publications/the-wonderful-wizard-of-oz/source_evidence.json",
+        "approval_evidence": "data/controlled_publications/the-wonderful-wizard-of-oz/approval_evidence.json",
+        "checksum_manifest": "data/controlled_publications/the-wonderful-wizard-of-oz/checksum_manifest.json",
+        "publication_manifest": "data/controlled_publications/the-wonderful-wizard-of-oz/publication_manifest.json",
+        "cover_provenance": "data/controlled_publications/the-wonderful-wizard-of-oz/cover_provenance.json",
+        "cover_delivery_derivation": "data/controlled_publications/the-wonderful-wizard-of-oz/cover_delivery_derivation.json",
+        "cover_front_original_asset": "/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/wizard-preparation-20261003/original-front.png",
+        "cover_front_delivery_asset": "frontend/public/assets/books/the-wonderful-wizard-of-oz/front-33ecb0db.webp",
+        "cover_back_original_asset": "/tmp/earnalism-main-approved-integration/internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/wizard-preparation-20261003/original-back.png",
+        "cover_back_delivery_asset": "frontend/public/assets/books/the-wonderful-wizard-of-oz/back-02d62ca4.webp",
+        "owner_artwork_declaration": "data/controlled_publications/the-wonderful-wizard-of-oz/owner_artwork_declaration.json",
+        "publication_authorization": "data/controlled_publications/the-wonderful-wizard-of-oz/publication_authorization.json",
+        "acceptance_review_a": "data/controlled_publications/the-wonderful-wizard-of-oz/evidence/review_a.json",
+        "acceptance_review_b": "data/controlled_publications/the-wonderful-wizard-of-oz/evidence/review_b.json"
+      },
+      "canonical_record_sha256": "36b0f7498f3b93168db1b7b30fe9864041f0e303cb74ce211f377701907696e1",
+      "checksum_count": 44,
+      "source_chapter_license_sync_reader_and_art_unchanged": true,
+      "actual_accepted_at_and_actor_preserved": true,
+      "metadata_status_pointer_coherence": true,
+      "audio_disabled": true,
+      "production_observed": false,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    }
+  ]
+}

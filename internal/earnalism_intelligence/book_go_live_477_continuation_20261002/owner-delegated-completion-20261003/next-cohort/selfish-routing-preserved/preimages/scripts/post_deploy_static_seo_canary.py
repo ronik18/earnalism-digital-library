@@ -1,0 +1,439 @@
+#!/usr/bin/env python3
+"""Fail-closed, semantic raw-HTML canary for deployed static SEO snapshots."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import re
+import sys
+import unicodedata
+from datetime import datetime, timezone
+from html import unescape
+from html.parser import HTMLParser
+from pathlib import Path
+from urllib.error import HTTPError, URLError
+from urllib.parse import urljoin, urlsplit, urlunsplit
+from urllib.request import Request, urlopen
+
+
+ROOT = Path(__file__).resolve().parents[1]
+OUTPUT_DIR = ROOT / "output" / "launch"
+DEFAULT_BASE_URL = "https://theearnalism.com"
+CANONICAL_SITE_URL = "https://theearnalism.com"
+ACCESS_COPY = "The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch."
+FORBIDDEN_COPY = (
+    "Chapter 1 free", "First chapter free", "Chapter 1 is on us", "Preview chapter unlocked",
+    "First 3 minutes free", "First 180 seconds free", "Free audiobook preview",
+    "Free listening sample", "Listen free",
+)
+GENERIC_HOME_MARKER = "a library made for lingering"
+RAW_MEDIA_URL = re.compile(r"https?://[^\"'\s<>]+\.(?:mp3|m4a|aac|wav)(?:[?\"'\s<>]|$)", re.I)
+
+ROUTES = {
+    "/book/a-ghost-story": {"kind": "book", "canonical": "/book/a-ghost-story", "robots": "index,follow", "title": "A Ghost Story"},
+    "/book/the-tell-tale-heart": {"kind": "book", "canonical": "/book/the-tell-tale-heart", "robots": "index,follow", "title": "The Tell-Tale Heart"},
+    "/book/radharani": {"kind": "book", "canonical": "/book/radharani", "robots": "index,follow", "title": "রাধারাণী"},
+    "/book/a-white-heron": {"kind": "book", "canonical": "/book/a-white-heron", "robots": "index,follow", "title": "A White Heron"},
+    "/book/the-gift-of-the-magi": {"kind": "book", "canonical": "/book/the-gift-of-the-magi", "robots": "index,follow", "title": "The Gift of the Magi"},
+    "/book/the-canterville-ghost": {"kind": "book", "canonical": "/book/the-canterville-ghost", "robots": "index,follow", "title": "The Canterville Ghost"},
+    "/book/the-adventures-of-sherlock-holmes": {"kind": "book", "canonical": "/book/the-adventures-of-sherlock-holmes", "robots": "index,follow", "title": "The Adventures of Sherlock Holmes"},
+    "/library": {"kind": "library", "canonical": "/library", "robots": "index,follow"},
+    "/pricing": {"kind": "pricing", "canonical": "/pricing", "robots": "noindex,follow"},
+    "/reader/a-ghost-story": {"kind": "reader", "canonical": "/book/a-ghost-story", "robots": "noindex,follow", "title": "A Ghost Story"},
+    "/reader/the-tell-tale-heart": {"kind": "reader", "canonical": "/book/the-tell-tale-heart", "robots": "noindex,follow", "title": "The Tell-Tale Heart"},
+    "/reader/radharani": {"kind": "reader", "canonical": "/book/radharani", "robots": "noindex,follow", "title": "রাধারাণী"},
+    "/reader/a-white-heron": {"kind": "reader", "canonical": "/book/a-white-heron", "robots": "noindex,follow", "title": "A White Heron"},
+    "/reader/the-gift-of-the-magi": {"kind": "reader", "canonical": "/book/the-gift-of-the-magi", "robots": "noindex,follow", "title": "The Gift of the Magi"},
+    "/reader/the-canterville-ghost": {"kind": "reader", "canonical": "/book/the-canterville-ghost", "robots": "noindex,follow", "title": "The Canterville Ghost"},
+    "/reader/the-adventures-of-sherlock-holmes": {"kind": "reader", "canonical": "/book/the-adventures-of-sherlock-holmes", "robots": "noindex,follow", "title": "The Adventures of Sherlock Holmes"},
+    "/book/dracula": {"kind": "book", "canonical": "/book/dracula", "robots": "index,follow", "title": "Dracula"},
+    "/reader/dracula": {"kind": "reader", "canonical": "/book/dracula", "robots": "noindex,follow", "title": "Dracula"},
+    "/listener/dracula": {"kind": "disabled_listener", "canonical": "/book/dracula", "robots": "noindex,follow", "title": "Dracula"},
+    "/listener/book-edfcf810c5": {"kind": "disabled_listener", "canonical": "/book/book-edfcf810c5", "robots": "noindex,follow", "title": "ক্ষুধিত পাষাণ"},
+    "/book/the-selfish-giant": {"kind": "historical_unavailable", "canonical": "/book/the-selfish-giant", "robots": "noindex,nofollow", "title": "The Selfish Giant"},
+    "/reader/the-selfish-giant": {"kind": "historical_unavailable", "canonical": "/book/the-selfish-giant", "robots": "noindex,nofollow", "title": "The Selfish Giant"},
+    "/listener/the-selfish-giant": {"kind": "historical_unavailable", "canonical": "/book/the-selfish-giant", "robots": "noindex,nofollow", "title": "The Selfish Giant"},
+    "/book/yugalanguriya": {"kind": "held"},
+    "/reader/yugalanguriya": {"kind": "held"},
+    "/my-library": {"kind": "private_library", "canonical": "/my-library", "robots": "noindex,nofollow"},
+}
+
+# Extend the original route assertions with each exact approved metadata
+# contract entry, including Agentic and the reviewed near-ready batch. This
+# reads only a checked-in public projection and never authorizes a title.
+_PUBLIC_CONTRACT = json.loads((ROOT / "frontend/static-seo/controlled-publication-public.json").read_text(encoding="utf-8"))
+for _book in _PUBLIC_CONTRACT["publications"]:
+    _slug, _title = _book["slug"], _book["title"]
+    ROUTES.setdefault(f"/book/{_slug}", {"kind": "book", "canonical": f"/book/{_slug}", "robots": "index,follow", "title": _title})
+    ROUTES.setdefault(f"/reader/{_slug}", {"kind": "reader", "canonical": f"/book/{_slug}", "robots": "noindex,follow", "title": _title})
+
+# Navigation availability and protected content authorization are distinct
+# contracts. Keep the denial assertion scoped to this exact protected Reader
+# manifest; never treat 451 or 503 as generally acceptable canary responses.
+PROTECTED_API_CHECKS = {
+    "/api/reader/book/dracula/manifest": {
+        "expected_status": 200,
+        "expected_code": "",
+        "expected_slug": "dracula",
+    },
+    "/api/reader/book/book-edfcf810c5/manifest": {
+        "expected_status": 200,
+        "expected_code": "",
+        "expected_slug": "book-edfcf810c5",
+    },
+    "/api/reader/book/muchiram-gurer-jibanchorit/manifest": {
+        "expected_status": 200,
+        "expected_code": "",
+        "expected_slug": "muchiram-gurer-jibanchorit",
+    },
+    "/api/reader/book/bn-059/manifest": {
+        "expected_status": 200,
+        "expected_code": "",
+        "expected_slug": "bn-059",
+    },
+    "/api/reader/book/the-call-of-the-wild/manifest": {
+        "expected_status": 200,
+        "expected_code": "",
+        "expected_slug": "the-call-of-the-wild",
+    },
+    "/api/reading-pass/books/the-adventures-of-sherlock-holmes/manifest": {
+        "expected_status": 503,
+        "expected_code": "SEGMENTS_NOT_READY",
+    },
+    "/api/reading-pass/books/the-canterville-ghost/manifest": {
+        "expected_status": 503,
+        "expected_code": "SEGMENTS_NOT_READY",
+    },
+    "/api/reading-pass/books/dracula/manifest": {
+        "expected_status": 200, "expected_code": "", "kind": "canonical_manifest",
+        "expected_slug": "dracula", "expected_chapters": 28,
+        "expected_chapter_ids": [f"chapter-{index:03d}" for index in range(28)],
+    },
+    "/api/reading-pass/books/book-edfcf810c5/manifest": {
+        "expected_status": 200, "expected_code": "", "kind": "canonical_manifest",
+        "expected_slug": "book-edfcf810c5", "expected_chapters": 1,
+        "expected_chapter_ids": ["chapter-001"],
+    },
+    "/api/reading-pass/books/muchiram-gurer-jibanchorit/manifest": {
+        "expected_status": 200, "expected_code": "", "kind": "canonical_manifest",
+        "expected_slug": "muchiram-gurer-jibanchorit", "expected_chapters": 14,
+        "expected_chapter_ids": [f"chapter-{index:03d}" for index in range(1, 15)],
+    },
+    "/api/reading-pass/books/bn-059/manifest": {
+        "expected_status": 200, "expected_code": "", "kind": "canonical_manifest",
+        "expected_slug": "bn-059", "expected_chapters": 13,
+        "expected_chapter_ids": [
+            "chapter-011", "chapter-008", "chapter-004", "chapter-003", "chapter-010",
+            "chapter-012", "chapter-013", "chapter-001", "chapter-009", "chapter-006",
+            "chapter-002", "chapter-007", "chapter-005",
+        ],
+    },
+    "/api/reading-pass/books/the-call-of-the-wild/manifest": {
+        "expected_status": 200, "expected_code": "", "kind": "canonical_manifest",
+        "expected_slug": "the-call-of-the-wild", "expected_chapters": 7,
+        "expected_chapter_ids": [f"chapter-{index:03d}" for index in range(1, 8)],
+    },
+}
+
+
+def normalize(value: str) -> str:
+    value = unicodedata.normalize("NFKC", unescape(value or ""))
+    value = value.replace("’", "'").replace("‘", "'").replace("“", '"').replace("”", '"')
+    return re.sub(r"\s+", " ", value).strip().casefold()
+
+
+def canonical_url(url: str) -> str:
+    parsed = urlsplit(url)
+    return urlunsplit((parsed.scheme, parsed.netloc, parsed.path.rstrip("/") or "/", "", ""))
+
+
+class HtmlFacts(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.title: list[str] = []
+        self.h1: list[str] = []
+        self.text: list[str] = []
+        self.links: list[tuple[str, str]] = []
+        self.canonical = ""
+        self.description = ""
+        self.robots = ""
+        self._in_title = False
+        self._h1_depth = 0
+        self._link_href = ""
+        self._link_text: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        attributes = {key.casefold(): value or "" for key, value in attrs}
+        if tag == "title":
+            self._in_title = True
+        elif tag == "h1":
+            self._h1_depth += 1
+        elif tag == "meta":
+            name = attributes.get("name", "").casefold()
+            if name == "description":
+                self.description = attributes.get("content", "")
+            elif name == "robots":
+                self.robots = attributes.get("content", "")
+        elif tag == "link" and "canonical" in attributes.get("rel", "").casefold().split():
+            self.canonical = attributes.get("href", "")
+        elif tag == "a":
+            self._link_href = attributes.get("href", "")
+            self._link_text = []
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag == "title":
+            self._in_title = False
+        elif tag == "h1" and self._h1_depth:
+            self._h1_depth -= 1
+        elif tag == "a" and self._link_href:
+            self.links.append((self._link_href, " ".join(self._link_text)))
+            self._link_href, self._link_text = "", []
+
+    def handle_data(self, data: str) -> None:
+        self.text.append(data)
+        if self._in_title:
+            self.title.append(data)
+        if self._h1_depth:
+            self.h1.append(data)
+        if self._link_href:
+            self._link_text.append(data)
+
+
+def facts_for(html: str) -> HtmlFacts:
+    facts = HtmlFacts()
+    facts.feed(html)
+    facts.close()
+    return facts
+
+
+def has_access_contract(text: str) -> bool:
+    return normalize(ACCESS_COPY) in text
+
+
+def has_pricing_continuation(facts: HtmlFacts) -> bool:
+    return any(urlsplit(href).path == "/pricing" and "reading pass" in normalize(label) for href, label in facts.links)
+
+
+def fetch_raw_html(base_url: str, route: str, timeout: int) -> tuple[int, dict[str, str], str, str]:
+    url = urljoin(base_url.rstrip("/") + "/", route.lstrip("/"))
+    request = Request(url, headers={"User-Agent": "EarnalismStaticSeoCanary/2.0"})
+    try:
+        with urlopen(request, timeout=timeout) as response:
+            return response.status, dict(response.headers.items()), response.read().decode("utf-8", errors="replace"), response.url
+    except HTTPError as error:
+        return error.code, dict(error.headers.items()), error.read().decode("utf-8", errors="replace"), error.url
+    except URLError as error:
+        return 0, {}, "", f"{url} ({error})"
+
+
+def fetch_protected_api(base_url: str, route: str, timeout: int) -> tuple[int, object, str]:
+    url = urljoin(base_url.rstrip("/") + "/", route.lstrip("/"))
+    request = Request(url, headers={"Accept": "application/json", "User-Agent": "EarnalismStaticSeoCanary/2.0"})
+    try:
+        with urlopen(request, timeout=timeout) as response:
+            status, body, response_url = response.status, response.read().decode("utf-8", errors="replace"), response.url
+    except HTTPError as error:
+        status, body, response_url = error.code, error.read().decode("utf-8", errors="replace"), error.url
+    except URLError as error:
+        return 0, None, url
+    try:
+        payload = json.loads(body)
+    except (TypeError, json.JSONDecodeError):
+        payload = None
+    return status, payload, response_url
+
+
+def inspect_protected_api(route: str, policy: dict[str, object], status: int, payload: object, url: str) -> dict[str, object]:
+    failures: list[str] = []
+    detail = payload.get("detail") if isinstance(payload, dict) else None
+    code = detail.get("code") if isinstance(detail, dict) else None
+    # The production edge denies an overseas request before contacting the
+    # backend. Validate that exact denial without claiming an India readback.
+    country = detail.get("country") if isinstance(detail, dict) else None
+    overseas_denial = (
+        route in PROTECTED_API_CHECKS
+        and policy == PROTECTED_API_CHECKS[route]
+        and status == 451
+        and code == "RELEASE_TERRITORY_DENIED"
+        and isinstance(country, str)
+        and country in {"US", "GB", "CA", "AU", "DE", "AE", "BD", "SG", "SA"}
+        and detail.get("allowed_countries") == ["IN"]
+    )
+    expected_status = int(policy["expected_status"])
+    expected_code = str(policy["expected_code"])
+    if not overseas_denial and status != expected_status:
+        failures.append(f"expected HTTP {expected_status}, got {status}")
+    if urlsplit(url).path.rstrip("/") != route.rstrip("/"):
+        failures.append(f"protected request redirected to unexpected path: {urlsplit(url).path}")
+    if not overseas_denial and expected_status == 200 and policy.get("kind") == "canonical_manifest":
+        if not isinstance(payload, dict) or payload.get("book_slug") != policy.get("expected_slug"):
+            failures.append("canonical manifest must identify the exact released edition")
+        for field in ("version", "segmentation_version"):
+            if not isinstance(payload, dict) or not isinstance(payload.get(field), str) or not payload[field].strip():
+                failures.append(f"canonical manifest must expose the observed {field}")
+        pages = payload.get("total_pages") if isinstance(payload, dict) else None
+        if type(pages) is not int or pages <= 3 or pages < policy["expected_chapters"] or type(payload.get("public_preview_pages")) is not int or payload.get("public_preview_pages") != 3:
+            failures.append("canonical manifest must retain the three-page preview boundary and complete page count")
+        chapters = payload.get("chapters") if isinstance(payload, dict) else None
+        if (not isinstance(chapters, list) or len(chapters) != policy.get("expected_chapters")
+            or [chapter.get("chapter_id") if isinstance(chapter, dict) else None for chapter in chapters] != policy.get("expected_chapter_ids")):
+            failures.append("canonical manifest must preserve the exact edition chapter count")
+    elif not overseas_denial and expected_status == 200:
+        if not isinstance(payload, dict) or payload.get("slug") != policy.get("expected_slug"):
+            failures.append("reader manifest must identify the exact released edition")
+        access = payload.get("access") if isinstance(payload, dict) else None
+        if not isinstance(access, dict) or access.get("authenticated") is not False or access.get("can_read_paid") is not False:
+            failures.append("guest manifest must not grant authenticated or paid access")
+        if isinstance(payload, dict) and (payload.get("audio_enabled") is True or payload.get("audiobook_enabled") is True):
+            failures.append("reader manifest must not enable unapproved audio")
+    elif not overseas_denial and code != expected_code:
+        failures.append(f"expected error code {expected_code}, got {code or 'missing'}")
+    return {
+        "route": route,
+        "url": url,
+        "status_code": status,
+        "error_code": code,
+        "observed_country": country,
+        "india_backend_contract": "NOT_RUN_FROM_NON_IN" if overseas_denial else "CHECKED",
+        "observed_canonical_version": payload.get("version") if not failures and not overseas_denial and policy.get("kind") == "canonical_manifest" and isinstance(payload, dict) else None,
+        "failures": failures,
+        "result": "PASS" if not failures else "FAIL",
+    }
+
+
+def inspect_route(route: str, policy: dict[str, str], status: int, headers: dict[str, str], html: str, url: str) -> dict[str, object]:
+    facts = facts_for(html)
+    text, title, description, h1 = normalize(" ".join(facts.text)), normalize(" ".join(facts.title)), normalize(facts.description), normalize(" ".join(facts.h1))
+    failures: list[str] = []
+    if policy["kind"] == "historical_unavailable":
+        expected_title = normalize(policy["title"])
+        if status != 200:
+            failures.append(f"historical unavailable route must be 200, got {status}")
+        if expected_title not in title or "unavailable" not in title or "earnalism" not in title:
+            failures.append("missing historical unavailable title metadata")
+        if expected_title + " is not currently available" not in h1:
+            failures.append("missing historical unavailable title heading")
+        if expected_title + " is not currently available" not in description:
+            failures.append("missing historical unavailable description")
+        if canonical_url(facts.canonical) != canonical_url(urljoin(CANONICAL_SITE_URL, policy["canonical"])):
+            failures.append("wrong historical title canonical URL")
+        if normalize(facts.robots).replace(" ", "") != "noindex,nofollow":
+            failures.append("historical unavailable route must be noindex,nofollow")
+        if "not part of the current public release" not in text or "no book text, reader session, or audio is available" not in text:
+            failures.append("missing truthful historical unavailable access copy")
+        if has_access_contract(text) or "read the 3-page preview" in text or "reader-ready edition" in text or GENERIC_HOME_MARKER in text:
+            failures.append("historical unavailable route exposes released-edition or Home copy")
+        allowed = {"/library", "/contact?interest=" + policy["canonical"].rsplit("/", 1)[1]}
+        if any(href not in allowed for href, _ in facts.links):
+            failures.append("historical unavailable route exposes a non-recovery link")
+        if RAW_MEDIA_URL.search(html) or re.search(r'<(?:audio|video|iframe|button)\b|"@type"\s*:\s*"(?:Book|Audiobook)"', html, re.I):
+            failures.append("historical unavailable route exposes title content or access controls")
+        return {"route": route, "url": url, "status_code": status, "failures": failures, "result": "PASS" if not failures else "FAIL"}
+    if policy["kind"] == "held":
+        if status != 404:
+            failures.append(f"held route must be 404, got {status}")
+        if "read the complete edition free" in text or has_access_contract(text):
+            failures.append("held route exposes released-book access copy")
+        return {"route": route, "url": url, "status_code": status, "failures": failures, "result": "PASS" if not failures else "FAIL"}
+    expected_canonical = canonical_url(urljoin(CANONICAL_SITE_URL, policy["canonical"]))
+    if status != 200:
+        failures.append(f"expected status 200, got {status}")
+    if not title or "earnalism" not in title:
+        failures.append("missing route-specific Earnalism title")
+    if not description:
+        failures.append("missing route-specific description")
+    if canonical_url(facts.canonical) != expected_canonical:
+        failures.append(f"wrong canonical URL: expected {expected_canonical}, got {facts.canonical or 'missing'}")
+    if normalize(facts.robots) != normalize(policy["robots"]):
+        failures.append(f"wrong robots directive: expected {policy['robots']}, got {facts.robots or 'missing'}")
+    if GENERIC_HOME_MARKER in text:
+        failures.append("generic Home fallback is present")
+    if policy["kind"] in {"book", "reader", "library"} and not has_access_contract(text):
+        failures.append("missing approved free-reading contract")
+    if "listening requires an active reading pass" in text or has_pricing_continuation(facts):
+        failures.append("stale paid-access continuation is present")
+    for phrase in FORBIDDEN_COPY:
+        if normalize(phrase) in text:
+            failures.append(f"forbidden phrase present: {phrase}")
+    if RAW_MEDIA_URL.search(html):
+        failures.append("raw provider or storage audio URL is present")
+
+    if policy["kind"] == "book":
+        expected_title = normalize(policy["title"])
+        if expected_title not in title or expected_title not in h1:
+            failures.append("missing released-book route identity")
+        if expected_title not in description or not has_access_contract(description):
+            failures.append("missing route-specific preview-access description")
+        if "read the 3-page preview" not in text:
+            failures.append("missing approved three-page preview CTA")
+        if not re.search(r'"isAccessibleForFree"\s*:\s*false', html, re.I):
+            failures.append("Book structured data must mark full access unavailable")
+        if any("listen" in normalize(label) for _, label in facts.links):
+            failures.append("book exposes an active Listen CTA")
+    elif policy["kind"] == "disabled_listener":
+        if normalize(policy["title"]) not in title or normalize(policy["title"]) not in h1:
+            failures.append("disabled listener must identify the exact title")
+        if normalize("Listening is not available for " + policy["title"] + " in the current release.") not in text:
+            failures.append("disabled listener must explain unapproved audio availability")
+        if any(href != policy["canonical"] for href, _ in facts.links):
+            failures.append("disabled listener exposes a non-book recovery link")
+        if re.search(r'<(?:audio|video|iframe|button)\b|"@type"\s*:\s*"(?:Book|Audiobook)"', html, re.I):
+            failures.append("disabled listener exposes media or playback controls")
+    elif policy["kind"] == "pricing":
+        if "reading pass" not in title and "pricing" not in title:
+            failures.append("missing route-specific Pricing or Reading Pass identity")
+        if "paid checkout are unavailable" not in description:
+            failures.append("missing disabled-checkout description")
+    elif policy["kind"] == "library" and "library" not in title:
+        failures.append("missing Library route identity")
+    elif policy["kind"] == "reader" and normalize(policy["title"]) not in title:
+        failures.append("missing Reader route identity")
+    elif policy["kind"] == "private_library":
+        if title != "my library | the earnalism" or "my library" not in h1:
+            failures.append("missing private My Library route identity")
+        if "your earnalism library is private" not in description:
+            failures.append("missing private My Library description")
+        if "private" not in headers.get("Cache-Control", "").lower() or "no-store" not in headers.get("Cache-Control", "").lower():
+            failures.append("missing private, no-store cache policy")
+        if re.search(r"\b(?:balance|transaction|device|saved editions|@[a-z0-9.-]+\.[a-z]{2,})\b", text, re.I):
+            failures.append("private My Library snapshot exposes account data")
+
+    return {"route": route, "url": url, "status_code": status, "cache_control": headers.get("Cache-Control", ""), "title": " ".join(facts.title).strip(), "description": facts.description, "canonical": facts.canonical, "robots": facts.robots, "failures": failures, "result": "PASS" if not failures else "FAIL"}
+
+
+def run(base_url: str, timeout: int) -> dict[str, object]:
+    routes = [inspect_route(route, policy, *fetch_raw_html(base_url, route, timeout)) for route, policy in ROUTES.items()]
+    protected_apis = [
+        inspect_protected_api(route, policy, *fetch_protected_api(base_url, route, timeout))
+        for route, policy in PROTECTED_API_CHECKS.items()
+    ]
+    checks = [*routes, *protected_apis]
+    return {"generated_at": datetime.now(timezone.utc).isoformat(), "base_url": base_url, "contract": ACCESS_COPY, "result": "PASS" if all(row["result"] == "PASS" for row in checks) else "FAIL", "routes": routes, "protected_apis": protected_apis}
+
+
+def write_report(report: dict[str, object]) -> None:
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    (OUTPUT_DIR / "post_deploy_static_seo_canary.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    rows = ["# Static SEO Raw HTML Canary", "", f"Result: `{report['result']}`", ""]
+    for row in report["routes"]:
+        rows.append(f"- `{row['route']}`: `{row['result']}`; status={row['status_code']}; failures={'; '.join(row['failures']) or 'none'}")
+    rows.extend(["", "## Protected API contracts", ""])
+    for row in report.get("protected_apis", []):
+        rows.append(f"- `{row['route']}`: `{row['result']}`; status={row['status_code']}; code={row['error_code'] or 'missing'}; India backend={row['india_backend_contract']}; failures={'; '.join(row['failures']) or 'none'}")
+    (OUTPUT_DIR / "post_deploy_static_seo_canary.md").write_text("\n".join(rows) + "\n", encoding="utf-8")
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Validate deployed raw HTML snapshot contract.")
+    parser.add_argument("--base-url", default=DEFAULT_BASE_URL)
+    parser.add_argument("--timeout", type=int, default=15)
+    args = parser.parse_args()
+    report = run(args.base_url, args.timeout)
+    write_report(report)
+    print(f"Static SEO raw HTML canary: result={report['result']}")
+    return 0 if report["result"] == "PASS" else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

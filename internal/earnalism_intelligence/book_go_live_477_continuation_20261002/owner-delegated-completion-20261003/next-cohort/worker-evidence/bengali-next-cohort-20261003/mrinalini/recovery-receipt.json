@@ -1,0 +1,35 @@
+{
+  "slug": "mrinalini",
+  "retrieved_at": "2026-10-03T04:48:49.365741+00:00",
+  "requests": [
+    {
+      "kind": "front",
+      "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/mrinalini/front-original.jpg",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483135/earnalism/covers/front/cover_89e10113-f181-4484-a021-eff76348710d.jpg",
+      "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483135/earnalism/covers/front/cover_89e10113-f181-4484-a021-eff76348710d.jpg",
+      "http_status": 200,
+      "sha256": "a9aae2f4a6a0179e9d2398d0cd66b2933e28e208eaf6d34b00be436d4de77ae7",
+      "bytes": 334870,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "get_count": 1
+    },
+    {
+      "kind": "back",
+      "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/mrinalini/back-original.jpg",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483143/earnalism/covers/back/back_cover_89e10113-f181-4484-a021-eff76348710d.jpg",
+      "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483143/earnalism/covers/back/back_cover_89e10113-f181-4484-a021-eff76348710d.jpg",
+      "http_status": 200,
+      "sha256": "613a77912b59f9a94df525066773a1d618c1a023ad0813efc585f695032139f8",
+      "bytes": 360809,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "get_count": 1
+    }
+  ],
+  "status": "RECOVERED_EXACT_ACTUAL_BYTES_NOT_ASSUMED_HISTORICAL_HASH_MATCH"
+}

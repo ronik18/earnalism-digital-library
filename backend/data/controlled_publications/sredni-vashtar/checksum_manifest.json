@@ -1,58 +1,50 @@
 {
+  "slug": "sredni-vashtar",
+  "generated_at": "2026-10-03T04:59:53.954767+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "7d02c5428a1b63f6639424b87271ebffb00675e24df2ea36c124afa2f46c494a"
+      "sha256": "07fa6c729b5b6bb6a324225172abc3811c4f3acd4618bc824116fcaf51794bf0"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "1479bad3f14cc9c48bf4c415d49f848933ba65436fe2b5b1efda0156be8d1260"
+      "sha256": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "0b302f6d91f901adad699ed496663b1ebbb8d17917cd4bbdc340f75eb94ca728"
     },
     {
       "file": "public_book.json",
-      "sha256": "31ca9d07e3fa8e594daf8e1ce1af839226fb526a3bb07a51bc5962d8bc899c92"
+      "sha256": "9aa8bec2eb84adb720bc08118faff53a7277ea659bcd44f02b974cc594b11d01"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "a97af4cfe69c6c6faded9ca6d2093d6ff90297e2235252a85818db8880b50734"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "2ccf2bae7a65d944946f1cf4ca5a5f8b4011408638d67cc95e7f8bf6eca3ab54"
+      "sha256": "2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad"
     },
     {
       "file": "source_evidence.json",
-      "sha256": "16f999e4b2708921fcc5f912f9d2c9b350ab66490d1e67d8ac546b851a79fc61"
-    }
-  ],
-  "generated_at": "2026-07-30T10:56:55Z",
-  "slug": "sredni-vashtar",
-  "uploaded_artifacts": [
-    {
-      "artifact": "mp3",
-      "sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
-      "size_bytes": 10190637,
-      "url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_mp3_2b328a80b906.mp3"
+      "sha256": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f"
     },
     {
-      "artifact": "timestamps",
-      "sha256": "5eb7a6bddcdf62ebd16ce46c62c5553d40fd1475a657cc8f67ea4a0a818c388f",
-      "size_bytes": 141750,
-      "url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_timestamps_5eb7a6bddcdf.json"
+      "file": "cover_provenance.json",
+      "sha256": "2fcda3d9902d9139e3578437f97b7f3b0c2f19dd188e572d234dd6c9316e87b9"
     },
     {
-      "artifact": "vtt",
-      "sha256": "700aa4ae0590f33403935a855c5a79c90bef22d7db75ffe294e26c92dc9c415d",
-      "size_bytes": 73163,
-      "url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_vtt_700aa4ae0590.vtt"
+      "file": "cover_delivery_derivation.json",
+      "sha256": "b16506ca00a39b5e936b8828a912c0ec895d874450d40817717f0819c9bdadeb"
     },
     {
-      "artifact": "chapters",
-      "sha256": "ab141aae86e2360a38c97f14ad2ebf84066c740e799dd8ad23f83392ff10882a",
-      "size_bytes": 188,
-      "url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_chapters_ab141aae86e2.json"
+      "file": "evidence/review_a.json",
+      "sha256": "cbb2b42bd8aa85419549eaf838e9884069889482ae7bd8fd5d5280e34ab55f59"
     },
     {
-      "artifact": "meta",
-      "sha256": "419d4bd104fedbe61d367c28e58c52ba428ecf84ef213c5fc4ec8a29f8b2eed0",
-      "size_bytes": 551,
-      "url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_meta_419d4bd104fe.json"
+      "file": "evidence/review_b.json",
+      "sha256": "91c752175d2b576a1b43269645b72511a23eadd5d6200df0c65a1ee1d3794c0a"
     }
   ]
 }

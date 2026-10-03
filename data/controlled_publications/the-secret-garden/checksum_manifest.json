@@ -4,7 +4,7 @@
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "0006bd359f2a5e74597420a326bcb86ad51620465c4731fbbcff5894a2066609"
+      "sha256": "d497c904e2ab22a1dede97671b4ff0de831ad375870bc284005f44aff8f555a4"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -115,16 +115,44 @@
       "sha256": "62850c1568cba7dbf02f8bb29cb56bee6ccefe6335c5bf0099e6c603314f8ffe"
     },
     {
+      "file": "cover_preparation.json",
+      "sha256": "6c1abdead95ea79fdfe72fd832ea2ccff7f5f82ba847628263bbac3b535c0140"
+    },
+    {
+      "file": "covers/original-back.png",
+      "sha256": "dedb7dcca9cef92470b93a54b9e46f92b68c48e901a7523bec7fe71bbc43f396"
+    },
+    {
+      "file": "covers/original-front.png",
+      "sha256": "39799997d58307c85b83908d0f5121e9b67e496158ae8c77eef5402e6e20b577"
+    },
+    {
+      "file": "covers/the-secret-garden-back-dedb7dcc.webp",
+      "sha256": "be310c30275d7fc20d2f893032d9373fed1912146d4604c6e4b0fb7593820a27"
+    },
+    {
+      "file": "covers/the-secret-garden-back-deterministic.png",
+      "sha256": "710466837e4bd8163105f79325cc844f095e7099de401d95b465da07b628bbf2"
+    },
+    {
+      "file": "covers/the-secret-garden-front-39799997.webp",
+      "sha256": "06a6366d1dace4db8c21ab716667d5650ac0a6143758ed08024af5b7d3aa0bc5"
+    },
+    {
+      "file": "covers/the-secret-garden-front-deterministic.png",
+      "sha256": "108a7bcd15bf6a4f7a622f262465b0bc54584c2f2a81cb768d22c68bb9fce8ff"
+    },
+    {
       "file": "highlight_sync.json",
       "sha256": "873b732ab6749c7dd08f15496a9266f2de5800bccdafc65945bb7e72f440d963"
     },
     {
       "file": "public_book.json",
-      "sha256": "815583e9b0cf39b2516ac77d03e70fba2e5a19f520e2fca2773becc6c65c956a"
+      "sha256": "8b6207581e6589fdf1fb532be36ed6d5db3abc6b88da22c5bb67d5cda09f2a33"
     },
     {
       "file": "publication_authorization.json",
-      "sha256": "6e5e82c969e1b912ececc75733b0ab49402f6271378fe8ec88ca0aec38f72ca8"
+      "sha256": "26fec4c562c0c24f4c4be3d9e3b7df8c41defc32feb8a934980efe7b0167046d"
     },
     {
       "file": "reader_manifest.json",
@@ -133,6 +161,26 @@
     {
       "file": "source_evidence.json",
       "sha256": "d4fba2e016dc99ebbab2950c7f63186ec154e408da4d4acb09a82fa8ef959852"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "5f14249b3307f606c2f00517c55fb18c232fa50dbee1fd888c5508dc76293977"
+    },
+    {
+      "file": "owner_artwork_declaration.json",
+      "sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264"
+    },
+    {
+      "file": "evidence/review_a.json",
+      "sha256": "0f72494328632cf157a108de8568a0493a6af1c57fefecaa77583f3cc4627b5c"
+    },
+    {
+      "file": "evidence/review_b.json",
+      "sha256": "fa8c2d43c53f2ebe4db5c2ab2e20ebc8addeb59f9725bbec1f1bb0b32c822a97"
+    },
+    {
+      "file": "evidence/source_review_b.json",
+      "sha256": "e7160391d77b3e1f89dec5481949d5211d86420fb3dcd56c7129798a98bac0d7"
     }
   ]
 }

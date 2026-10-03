@@ -1,0 +1,29 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "the-cop-and-the-anthem",
+  "edition": "Project Gutenberg #2776; The Cop and the Anthem selected complete O. Henry story/cycle from four million; verified lifetime collection edition 1906; no translation/editorial/art imported",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_ONLY_NON_COVER_COMPONENTS",
+  "source_sha256": "6bb719852f2f0eb33db25613124d2d3c522dd3b879c187667ab31072bb2fb48d",
+  "content_sha256": "77a6d1c7ff6162cc7aad47b950666c6bb1dedf0beb55a08f3f476e27e57bd3ab",
+  "chapter_sha256": {
+    "chapter-001": "77a6d1c7ff6162cc7aad47b950666c6bb1dedf0beb55a08f3f476e27e57bd3ab"
+  },
+  "cover_provenance_sha256": null,
+  "cover_status": "DEFERRED_BY_OWNER_REQUEST_NO_COVER_DISPLAY_AUTHORIZED",
+  "authorized_by": "Automated executor under owner explicit autonomous clearance delegation; not a fabricated human or legal signature.",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Cover clearance/binding, trusted production registry acceptance, canonical controlled-live allowlist, actual runtime Reader readiness and protected gates must separately pass.",
+  "not_authorized": [
+    "cover_display",
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation"
+  ]
+}

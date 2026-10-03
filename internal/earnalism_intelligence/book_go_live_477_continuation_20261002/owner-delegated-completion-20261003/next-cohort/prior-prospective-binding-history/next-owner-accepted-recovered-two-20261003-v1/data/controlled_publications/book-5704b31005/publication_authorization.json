@@ -1,0 +1,31 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "book-5704b31005",
+  "edition": "Galpa-Dashak original1302/1895 sole-author Rabindranath Tagore edition",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_CATALOG_METADATA_AND_EXACT_COVER_DISPLAY",
+  "source_sha256": "57835bba9d270aa0c3f31ee280b2ae789f0528be1adfa29815a45826e23e466b",
+  "content_sha256": "c9e4ed3927535c11a5d1d5a4729f0c8a1371952a33a6e0e6d36514b3d249b089",
+  "chapter_sha256": {
+    "chapter-001": "c9e4ed3927535c11a5d1d5a4729f0c8a1371952a33a6e0e6d36514b3d249b089"
+  },
+  "rights_decision_id": "india-20261003-book-5704b31005-exact-reader-cover-prospective-accepted",
+  "license_notice_sha256": "1fc9cf8fae864434f95bc34656a96672c55d852f3dfdad4a1f386a1a1cc4e01c",
+  "cover_provenance_status": "PROPOSED_NOT_ACCEPTED",
+  "authorized_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+  "verified_at": "2026-10-03T05:56:54.375811+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Two passing exact source/art preparations and actual prospective owner-delegated acceptance. Final accepted bindings, serialized selection, protected normal checks, merge, deployment/canary and truthful readback remain required.",
+  "cover_provenance_sha256": "2a77a664e4b1b8d22c8299581575460442a502246076113cde5b3874550e3566",
+  "cover_status": "EXACT_OWNER_PROVIDED_REVIEWED_ARTWORK_ACCEPTED_PRODUCTION_UNOBSERVED",
+  "not_authorized": [
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation bypass"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "reviewer": "independent_reviewer_B",
+  "slug": "the-science-of-getting-rich",
+  "scope": "Exact newly reviewed overlay PNG to WebP reproduction only; current overlaydelivery recipe independently verified in private Bscratch.",
+  "recipe": {
+    "image_mode": "RGB",
+    "dimensions": [
+      600,
+      900
+    ],
+    "resampling": "PIL.Image.Resampling.LANCZOS",
+    "format": "WEBP",
+    "quality": 64,
+    "method": 6
+  },
+  "asset_results": {
+    "front": {
+      "input_overlay_png_sha256": "7f2e8e9fd3f6d0359b8d94cfc2198101abd64b4b78a95d035932d68bff4f2bf2",
+      "independent_delivery_sha256": "5ee48b1d245c70b1b8495f9a6b98636cc798d2bea96ff54aa4c3d6fa27becb28",
+      "matches_frozen_current_delivery": true
+    },
+    "back": {
+      "input_overlay_png_sha256": "83190790c57974d6dad6128dc87d5a3018e8d7fd06f41f623505320e974a1791",
+      "independent_delivery_sha256": "bda88117bdb0d7208f51afa3cab6dce74875f83943ebf7c2a74409a6a29477c4",
+      "matches_frozen_current_delivery": true
+    }
+  },
+  "old_resize_renderer": "Historical original-only be3301ca script excluded as current recipe proof.",
+  "shared_asset_mutations": false,
+  "production_observed": false
+}

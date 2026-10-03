@@ -51,9 +51,9 @@ ROUTES = {
     "/reader/dracula": {"kind": "reader", "canonical": "/book/dracula", "robots": "noindex,follow", "title": "Dracula"},
     "/listener/dracula": {"kind": "disabled_listener", "canonical": "/book/dracula", "robots": "noindex,follow", "title": "Dracula"},
     "/listener/book-edfcf810c5": {"kind": "disabled_listener", "canonical": "/book/book-edfcf810c5", "robots": "noindex,follow", "title": "ক্ষুধিত পাষাণ"},
-    "/book/the-selfish-giant": {"kind": "historical_unavailable", "canonical": "/book/the-selfish-giant", "robots": "noindex,nofollow", "title": "The Selfish Giant"},
-    "/reader/the-selfish-giant": {"kind": "historical_unavailable", "canonical": "/book/the-selfish-giant", "robots": "noindex,nofollow", "title": "The Selfish Giant"},
-    "/listener/the-selfish-giant": {"kind": "historical_unavailable", "canonical": "/book/the-selfish-giant", "robots": "noindex,nofollow", "title": "The Selfish Giant"},
+    "/book/the-selfish-giant": {"kind": "book", "canonical": "/book/the-selfish-giant", "robots": "index,follow", "title": "The Selfish Giant", "audio_disabled": True},
+    "/reader/the-selfish-giant": {"kind": "reader", "canonical": "/book/the-selfish-giant", "robots": "noindex,follow", "title": "The Selfish Giant", "audio_disabled": True},
+    "/listener/the-selfish-giant": {"kind": "disabled_listener", "canonical": "/book/the-selfish-giant", "robots": "noindex,follow", "title": "The Selfish Giant", "audio_disabled": True},
     "/book/yugalanguriya": {"kind": "held"},
     "/reader/yugalanguriya": {"kind": "held"},
     "/my-library": {"kind": "private_library", "canonical": "/my-library", "robots": "noindex,nofollow"},
@@ -72,6 +72,14 @@ for _book in _PUBLIC_CONTRACT["publications"]:
 # contracts. Keep the denial assertion scoped to this exact protected Reader
 # manifest; never treat 451 or 503 as generally acceptable canary responses.
 PROTECTED_API_CHECKS = {
+    "/api/reader/book/the-selfish-giant/manifest": {
+        "expected_status": 200, "expected_code": "", "expected_slug": "the-selfish-giant",
+    },
+    "/api/reading-pass/books/the-selfish-giant/manifest": {
+        "expected_status": 200, "expected_code": "", "kind": "canonical_manifest",
+        "expected_slug": "the-selfish-giant", "expected_chapters": 1,
+        "expected_chapter_ids": ["chapter-001"],
+    },
     "/api/reader/book/dracula/manifest": {
         "expected_status": 200,
         "expected_code": "",
@@ -358,6 +366,8 @@ def inspect_route(route: str, policy: dict[str, str], status: int, headers: dict
             failures.append(f"forbidden phrase present: {phrase}")
     if RAW_MEDIA_URL.search(html):
         failures.append("raw provider or storage audio URL is present")
+    if policy.get("audio_disabled") and re.search(r'<(?:audio|video|iframe)\b|"@type"\s*:\s*"Audiobook"', html, re.I):
+        failures.append("text-only release exposes media or audiobook structured data")
 
     if policy["kind"] == "book":
         expected_title = normalize(policy["title"])

@@ -1,0 +1,22 @@
+{
+  "slug": "great-expectations",
+  "approved_to_publish": false,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_PENDING_ASSET_MAPPING",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "source_hash": "9a637118af8e953e9764ec603d9b0a032883384d465acac2e27966a80cf1c6f8",
+  "content_hash": "2a8d0a202ea5c45af789296120a0fba52ffc09d7d7b536ebd9219521d508d40e",
+  "provenance_hash": "22b81381151f92e17f93814e0b0cd22dd6ca374eac7462e7a9354ac6cf509ca8",
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "1f28f158d416d86cdb0e61ade4a0a2a85c0239fbcbe48362a8d15c495b2e42a3",
+  "verified_at": "2026-10-01T21:49:40.745164+00:00"
+}

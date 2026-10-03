@@ -1,0 +1,67 @@
+{
+  "slug": "acres-of-diamonds",
+  "approved_to_publish": true,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_OWNER_PROVIDED_COVER_PUBLICATION_ACCEPTANCE",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "source_hash": "a0b8613f5a9c0ee604b53d6aa68388084bdefbf24e1f5e9749aafe2c8448efa3",
+  "content_hash": "412d4000427790f40832d29be6bd49985d288ff4a9d48c2d5d866a50c62e27b0",
+  "provenance_hash": "dbb3f2fd3c82555ff9a2881b2834dad2c1150af0aac389edb6d98a6537d15614",
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "66e245fdbe892f702c88d7a0a34e494226c5163858021e0d286b1eca1f3823b8",
+  "verified_at": "2026-10-03T05:10:03.145513+00:00",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "audio_status": "NOT_REQUESTED",
+  "audiobook_release_gate": "NOT_REQUESTED",
+  "audio_qa_status": "NOT_RUN",
+  "sync_tier": "NONE",
+  "audiobook_use_approved": false,
+  "audiobook_use_approval_source": "",
+  "audiobook_use_approved_at": "",
+  "cover_provenance_sha256": "6f096f621756b895cf18637a97388f2382e43b5232a81aa7b3577f77491c3880",
+  "cover_delivery_derivation_sha256": "c4d1f20645a78e67308834ec22b53710b1844506685ab9459990ae603b9b4048",
+  "source_integrity_validation_sha256": "0e6526eec3c4a1a71d35e75c07401b7e6b7d9cba96e9847732afad064ada3889",
+  "cover_front_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+  "cover_back_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+  "production_observed": false,
+  "qa_scope": "Two independent exact complete-source/preserved-artwork preparations; final accepted binding review is an external serialized release requirement.",
+  "independent_reviews": {
+    "review_a": {
+      "file": "evidence/review_a.json",
+      "sha256": "848765bd2edfd3f28e3fe0c479321f0d41ea058dd894d31000bb3116c3b5b407"
+    },
+    "review_b": {
+      "file": "evidence/review_b.json",
+      "sha256": "283ab0e868d9ec67a1efba2fc9aae9e61a1958e7dfd45f39b72f2e6ac2e3901f"
+    }
+  },
+  "binding_review_status": "FINAL_EXACT_PACKAGE_REVIEWS_REQUIRED_AS_EXTERNAL_SERIALIZED_RELEASE_GATE",
+  "manual_listening_approval": false,
+  "actual_prospective_acceptance": {
+    "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+    "accepted_at": "2026-10-03T05:34:11.386246+00:00",
+    "evidence": {
+      "review_a": {
+        "file": "evidence/review_a.json",
+        "sha256": "848765bd2edfd3f28e3fe0c479321f0d41ea058dd894d31000bb3116c3b5b407"
+      },
+      "review_b": {
+        "file": "evidence/review_b.json",
+        "sha256": "283ab0e868d9ec67a1efba2fc9aae9e61a1958e7dfd45f39b72f2e6ac2e3901f"
+      }
+    },
+    "owner_declaration_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "production_observed": false,
+    "canonical_version_observed": false,
+    "global_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "schema": "earnalism.cover-provenance.v1",
+  "slug": "my-life-and-work",
+  "status": "PROPOSED_COMPONENT_EVIDENCE_NOT_ACCEPTED_TWO_REVIEWS_REQUIRED",
+  "recorded_at": "2026-10-03T05:04:16.164575+00:00",
+  "original_creator": "Repository/product owner; no other identity inferred",
+  "original_method": "UNKNOWN_NOT_INFERRED",
+  "owner_declaration": {
+    "statement": "Owner states all front and back covers are designed by the owner.",
+    "path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+    "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "scope": "COVER_DESIGN_ONLY"
+  },
+  "original_assets_preserved": {
+    "front": {
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950242/earnalism/covers/front/cover_1fab21bf-16e8-4829-a8d7-6703692ec54b.png",
+      "file": "recovered/front.png",
+      "sha256": "bb4f0e532e60397e9204d176cc27a4ef75b17a17b6853765c29025be5fc134fd",
+      "bytes": 2950948,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "method": "One successful GET per persisted original URL; no prior original-byte checksum or creation-method fact inferred."
+    },
+    "back": {
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950251/earnalism/covers/back/back_cover_1fab21bf-16e8-4829-a8d7-6703692ec54b.png",
+      "file": "recovered/back.png",
+      "sha256": "17645d6c7d49fd8999a6e63a7e5a480409b94eb18b4c906fe8c480f875bb5f68",
+      "bytes": 2606773,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "method": "One successful GET per persisted original URL; no prior original-byte checksum or creation-method fact inferred."
+    }
+  },
+  "derivative_lineage": {
+    "method": "One bounded deterministic typography/copy repair of retained original art; no model/provider/image generation or new artwork.",
+    "typography_overlay_proof": [
+      {
+        "side": "front",
+        "exact_title": "My Life and Work",
+        "exact_author": "Henry Ford and Samuel Crowther",
+        "font_file_sha256": "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab",
+        "font_license_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+        "method": "Actual local deterministic Pillow + licensed DejaVuSerif title and author overlay executed unconditionally; no original glyph/creation method inferred.",
+        "precise_masks": [
+          [
+            80,
+            50,
+            944,
+            458
+          ],
+          [
+            45,
+            460,
+            188,
+            536
+          ],
+          [
+            708,
+            468,
+            1009,
+            610
+          ],
+          [
+            567,
+            950,
+            633,
+            996
+          ],
+          [
+            31,
+            1209,
+            267,
+            1412
+          ]
+        ],
+        "changed_pixels": 459226,
+        "changed_pixels_outside_masks": 0
+      },
+      {
+        "side": "back",
+        "exact_title": "My Life and Work",
+        "exact_author": "Henry Ford and Samuel Crowther",
+        "font_file_sha256": "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab",
+        "font_license_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+        "method": "Actual local deterministic Pillow + licensed DejaVuSerif title and author overlay executed unconditionally; no original glyph/creation method inferred.",
+        "precise_masks": [
+          [
+            150,
+            343,
+            873,
+            547
+          ],
+          [
+            185,
+            1180,
+            851,
+            1257
+          ]
+        ],
+        "changed_pixels": 200405,
+        "changed_pixels_outside_masks": 0
+      }
+    ],
+    "issues_handled": [
+      "Identified Ford wordmarks and two unsupported attributed quote/signature claims removed within precise masks.",
+      "No third-party portrait/photo origin, exact original creation method, or trademark licence invented. First-party owner-design declaration is the original-art evidence; reviewers must hold if a substantial contrary component remains."
+    ],
+    "font_license_path": "practical-batch-prep-20261003/DejaVu-font-license.txt",
+    "commercial_font_permission": "Actual local Bitstream Vera licence grants use/publish/distribute; only raster output, no font software binary distributed."
+  },
+  "commercial_use_authorized": false,
+  "cover_display_approved": false,
+  "audio_authorized": false,
+  "publication_activation_authorized": false,
+  "runtime_release_authorized": false,
+  "scope": "Evidence-only exact proposal. Owner declaration and exact original-art bytes do not establish unsupported third-party origin/permissions; independent reviewers must hold any specifically evidenced component dispute.",
+  "independent_reviews": "PENDING_TWO_EXACT_SOURCE_ART_COMPLIANCE_PACKAGE_REVIEWS"
+}

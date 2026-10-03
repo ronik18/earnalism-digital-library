@@ -1,0 +1,29 @@
+{
+  "reviewer": "independent_reviewer_B",
+  "reviewed_on": "2026-10-03",
+  "slug": "the-science-of-getting-rich",
+  "state": "ORIGINAL_PROPOSAL_HOLD_PENDING_FIRST_DETERMINISTIC_OVERLAY_REPAIR",
+  "scope": "Current original-owner-art plus resized delivery only; source complete PASS remains independent.",
+  "original_front_sha256": "9fa719df44b5348b2dd694674fb7e4ba38438dd1e652ca70559081d67e88da15",
+  "original_back_sha256": "49cf4eb533e11cc92d253496e2945d700468b2a2e42b7aabf4c7d8dd3b590f09",
+  "original_delivery_front_sha256": "a4c48d8fb10c382fa9337185bcbdba42c677c9d6e1cae7aa6c66f25306454d9c",
+  "original_delivery_back_sha256": "2679cedd18d25db4d97f38962cc17671714c72e37e16235fe257956e692adb49",
+  "visual_legibility_copy_theme_footer": "PASS actual front/backPNG+WebPviews",
+  "original_creation_method": "UNKNOWN; no AI/human rendering method inferred from pixels",
+  "exact_hold": "Active cover_acceptance_policy hard rule title_author_text_must_be_deterministic_overlay. Original embedded title/author has no proven deterministic overlay lineage; resize-only delivery cannot supply it. No exception or AI-generation allegation inferred.",
+  "bounded_action": "First deterministic title-author opaque-panel layout overlay repair preserving unchanged owner art outside masks; no new art or paid generation. Fresh exact new visuals/delivery/bindings required.",
+  "packet_identity_audit": {
+    "original_proposed_raw_decision_sha256": "88beee9d84c7e84dab960b6be544ef99e252903f1643b83e7c1b764eab70ed6c",
+    "original_proposed_canonical_decision_sha256": "bb747569a78f27d28f742f5a51c46721a5d3159c547e5aea90e02d35e4ecd15c",
+    "12components": "PASS",
+    "26checksums": "PASS",
+    "72preimages": "PASS",
+    "root_backend_parity": "PASS",
+    "18chapters_source_highlight_byte_unchanged": "PASS",
+    "inactive_audio_false": "PASS"
+  },
+  "complete_source_review_sha256": "f593081a42d6ba7bc428c805f5c55ffd435059d3d6edf615dedf6346c5ce80a2",
+  "publication_or_cover_acceptance_created": false,
+  "production_observed": false,
+  "canonical_mutations": false
+}

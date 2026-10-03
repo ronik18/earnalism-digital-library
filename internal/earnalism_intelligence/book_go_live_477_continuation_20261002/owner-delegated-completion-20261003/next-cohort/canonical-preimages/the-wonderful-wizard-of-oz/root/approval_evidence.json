@@ -1,0 +1,22 @@
+{
+  "slug": "the-wonderful-wizard-of-oz",
+  "approved_to_publish": false,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "d76fb6ab3fcd74692ed0d9909ddfdd992fa66c41d543aea1e1758543a421b5bd",
+  "source_hash": "969bffab7740d4d8a0bac332d78bd0152ad4a40a2efc52f06c74a9bb6120be75",
+  "content_hash": "4b174cd456358387fe1bbd65667a783ae52d7b4f0475f1c570a80132c847b18e",
+  "provenance_hash": "6efb24dec4a20c5a0bd3aa7b7411cb80ed158b480c20e460f859928630548a2d",
+  "verified_at": "2026-10-01T21:38:19.977641+00:00"
+}

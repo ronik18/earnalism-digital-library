@@ -1,0 +1,39 @@
+{
+  "slug": "the-wonderful-wizard-of-oz",
+  "source": "Exact persisted historical backend public_book URL pair; no provider, generation or fresh artwork rights research",
+  "assets": {
+    "front": {
+      "kind": "front",
+      "path": "/workspace/scratch/181ef0a25f05/wizard-preparation-20261003/original-front.png",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291629/earnalism/covers/front/cover_f3e2e134-a431-49b3-a751-1762831a0b20.png",
+      "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291629/earnalism/covers/front/cover_f3e2e134-a431-49b3-a751-1762831a0b20.png",
+      "http_status": 200,
+      "sha256": "80fbd30875f8b715fb580732f9eef2d46bc7ddc74d50cd41d5276dbfd60ec32a",
+      "bytes": 3725148,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGB",
+      "request_count": 1,
+      "redirects_allowed": false,
+      "retrieved_at": "2026-10-03T05:42:42.807438+00:00",
+      "content_type": "image/png"
+    },
+    "back": {
+      "kind": "back",
+      "path": "/workspace/scratch/181ef0a25f05/wizard-preparation-20261003/original-back.png",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291632/earnalism/covers/back/back_cover_f3e2e134-a431-49b3-a751-1762831a0b20.png",
+      "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291632/earnalism/covers/back/back_cover_f3e2e134-a431-49b3-a751-1762831a0b20.png",
+      "http_status": 200,
+      "sha256": "29204906556020adbbdb10a89b7fd9b26f08703f6327a0de63cdb0d50b8821fc",
+      "bytes": 3489547,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGB",
+      "request_count": 1,
+      "redirects_allowed": false,
+      "retrieved_at": "2026-10-03T05:42:51.263730+00:00",
+      "content_type": "image/png"
+    }
+  },
+  "network_requests": 2
+}

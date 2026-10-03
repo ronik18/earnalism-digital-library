@@ -1,0 +1,18 @@
+{
+  "slug": "frankenstein",
+  "requested_url": "https://www.gutenberg.org/cache/epub/84/pg84.txt",
+  "expected_sha256": "7810cd483cffcf2cc8a1d8f0d5807931e69d4f48cd14149b8c76f88af82fead3",
+  "attempt": 1,
+  "accessed_at": "2026-10-03T05:21:44.450600+00:00",
+  "resolved_url": "https://www.gutenberg.org/cache/epub/84/pg84.txt",
+  "http_status": 200,
+  "response_headers": {
+    "last-modified": "Thu, 01 Oct 2026 07:51:14 GMT",
+    "content-length": "448885",
+    "content-type": "text/plain; charset=utf-8"
+  },
+  "actual_sha256": "7810cd483cffcf2cc8a1d8f0d5807931e69d4f48cd14149b8c76f88af82fead3",
+  "bytes": 448885,
+  "expected_hash_pass": true,
+  "local_path": "/workspace/scratch/181ef0a25f05/new-acceptance-review-a/classics-primary-recovery-v1/frankenstein-official-source.txt"
+}

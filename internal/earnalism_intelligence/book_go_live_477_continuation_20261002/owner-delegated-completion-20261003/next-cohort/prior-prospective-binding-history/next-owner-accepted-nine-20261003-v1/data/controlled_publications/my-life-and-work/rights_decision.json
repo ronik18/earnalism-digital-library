@@ -1,0 +1,53 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-my-life-and-work-exact-reader-cover-prospective-accepted",
+  "edition_id": "my-life-and-work",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "127ef60e80ecd42ed36270a04d90c91ecc7c7344f26767c990bd9093ac54f2b6",
+    "reader_manifest": "8abb80566e377a38ba0730ffb69c7dc0fbb53358c6e0908492d968fea1313acd",
+    "source_evidence": "1d5f331b74b4ac24ba559209d4d1c8ca3543a1cdc274a71bdf14bb2022b7d4b7",
+    "approval_evidence": "eec01f4e574d80b43c4db449bcb6822d4253d8a32a146034815c27a9dcf37742",
+    "checksum_manifest": "c121976f11fcb9ffab0729b59d10db576f2e4e92238aa10b6fd630406df5c848",
+    "publication_manifest": "6521fd71f124b8a9ef0e882dbd0aa3db5b98d571a7566ca75f2b159b0d3856b4",
+    "cover_provenance": "4c722f37cbc6a909d7cf30d97cca4f1b63d59229ce2611bb6dbefc26c81cdb9b",
+    "cover_delivery_derivation": "fe7ad968f0449f59a18bc4d8334ad3d3146fc13fecd66abaa15fb874088168b6",
+    "cover_front_asset": "9f2a6f069a8f7d96c9d0228f69b556394a88da983ee172f88cb9eb7e0e494833",
+    "cover_back_asset": "b129bccafbfca007d95e86eeb101a577d5be3cdb8ebaf8260f75a1285a65b31c",
+    "cover_front_delivery": "b46df58db552e1d5adc85c4fde859105c2863811404e594f079561409db4c9f3",
+    "cover_back_delivery": "c1c1f36904563fe329ec02549acd3171aaa8f6f970a444ae5672443ec6fc218c",
+    "publication_authorization": "9f5221e29758bae95d5277703473eaaca051dcb8157329f30b064dacafbcc31d",
+    "owner_artwork_declaration": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "acceptance_review_a": "ff240fbf4572faa32eab4a11d24552591af32907de74186272fa9769426c8014",
+    "acceptance_review_b": "af458f9aa5b771de14ccb98ce746cfe00dd57b045c44b065aae7dffc7015a6fb"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T05:34:11.386246+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Exact India text/edition rights are preserved from the archived predecessor and unchanged source/chapter/license records. Ronik Basak directly provided the owner-held copyright and publication provenance for the exact owner-created cover components; two independent passing source/art preparations bind the reviewed derivatives and deliveries. Prospective automated acceptance supersedes earlier procedural cover deferral for these components only. No human approval, other source/edition rights, unknown original construction method, audio grant or production observation inferred.",
+  "evidence_sha256": [
+    "779dfe499ca31d64aa4ddb2459efec18f16954bc335c7ab5ce770a191570fdce",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "a388a671e0b83a3dac9b697160f216cfce3eaf3c851dc1b7924cdf63ba36ba85",
+    "f01c925ba4a15ccc6a5aa706418cf94149ddd7d8f390c65d132b8675435b00cf",
+    "8309a5246622002f4fceef9f19e8e26218f0a06320cf53197a91296e0ee21c86",
+    "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "9f5221e29758bae95d5277703473eaaca051dcb8157329f30b064dacafbcc31d",
+    "4c722f37cbc6a909d7cf30d97cca4f1b63d59229ce2611bb6dbefc26c81cdb9b",
+    "ff240fbf4572faa32eab4a11d24552591af32907de74186272fa9769426c8014",
+    "af458f9aa5b771de14ccb98ce746cfe00dd57b045c44b065aae7dffc7015a6fb"
+  ],
+  "accepted_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+  "conditions_satisfied": true
+}

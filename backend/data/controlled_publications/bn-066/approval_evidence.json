@@ -1,28 +1,52 @@
 {
   "slug": "bn-066",
-  "approved_to_publish": false,
+  "approved_to_publish": true,
   "rights_tier": "A",
-  "verification_status": "pending",
+  "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "sprint1_evidence_reconciliation_hold",
-  "audiobook_use_approved": true,
-  "audiobook_use_approval_source": "OWNER_AUTHORIZATION_ALL_SPRINT1_AUDIOBOOKS_GO_LIVE_AFTER_GATE_PASS_2026-07-28",
-  "audiobook_use_approved_at": "2026-07-28T10:10:00Z",
-  "audio_public_release": "PUBLIC_AUDIO_RELEASE_BLOCKED_QA_REQUIRED",
+  "qa_scope": "Two independent exact complete-source/preserved-artwork preparations; final accepted binding review is an external serialized release requirement.",
+  "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_OWNER_PROVIDED_COVER_PUBLICATION_ACCEPTANCE",
   "allowCheckout": false,
   "allowPayment": false,
   "audiobook_enabled": false,
-  "historical_admin_import_claim": {
-    "approved_to_publish": true,
-    "rights_tier": "A",
-    "verification_status": "approved",
-    "qa_status": "QA_PASSED",
-    "approval_scope": "historical_admin_import_reconstruction",
-    "verified_at": null
+  "audiobook_use_approved": false,
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "verified_at": "2026-10-03T04:56:37.110955+00:00",
+  "source_hash": "77503ec5daf5f8d9d567d7ecf6543abbfd727658818391cc1c20d54d5627cbff",
+  "content_hash": "a6336c132fdb256bb963c8c5f1443707990203987266689077495a87c8a75543",
+  "publication_authorization_sha256": "191d8ecb99e4d63c86aa9ce519f03d3e2158fa93f9dcadf158b34a7f6bbaed14",
+  "cover_provenance_sha256": "e01015d9d6d0656bd405bdd2bac12bc6bb7fcb34cb5257d87237b0df965fe990",
+  "independent_reviews": {
+    "review_a": {
+      "file": "evidence/review_a.json",
+      "sha256": "483b265cd1414035ccb47fa8d1a8bc9fd3f4be86cfa3276468426c2f32c97fcc"
+    },
+    "review_b": {
+      "file": "evidence/review_b.json",
+      "sha256": "bf11f1e1e5f87d56f8456c46ad397cddeff8de411742cffb579bd8e433aa821b"
+    }
   },
-  "hold_reason": "Title-level source/text and/or license/asset evidence is incomplete; see data/title_rights_evidence/bengali-bankim-cohort-1.json. This is a fail-closed package state, not a new rights acceptance decision.",
-  "audio_qa_status": "",
-  "endpoint_url": "",
-  "provider": "",
-  "version": ""
+  "binding_review_status": "FINAL_EXACT_PACKAGE_REVIEWS_REQUIRED_AS_EXTERNAL_SERIALIZED_RELEASE_GATE",
+  "cover_front_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+  "cover_back_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+  "audio_enabled": false,
+  "manual_listening_approval": false,
+  "actual_prospective_acceptance": {
+    "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+    "accepted_at": "2026-10-03T05:42:49.399949+00:00",
+    "evidence": {
+      "review_a": {
+        "file": "evidence/review_a.json",
+        "sha256": "483b265cd1414035ccb47fa8d1a8bc9fd3f4be86cfa3276468426c2f32c97fcc"
+      },
+      "review_b": {
+        "file": "evidence/review_b.json",
+        "sha256": "bf11f1e1e5f87d56f8456c46ad397cddeff8de411742cffb579bd8e433aa821b"
+      }
+    },
+    "owner_declaration_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "production_observed": false,
+    "canonical_version_observed": false,
+    "global_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK"
+  }
 }

@@ -1,0 +1,199 @@
+{
+  "schema": "earnalism.distinct-practical-title-preparation.v1",
+  "slug": "the-principles-of-scientific-management",
+  "status": "INACTIVE_UNACCEPTED_TWO_INDEPENDENT_REVIEWS_REQUIRED",
+  "recorded_at": "2026-10-03T05:10:03.145513+00:00",
+  "source_proof_sha256": "1783ac19971b24959ba3c9334a80a473ec2afc37d75f8ea793b84445eb7d9ad9",
+  "source_originals_chapters_sync_decisions_preserved": true,
+  "exact_prior_IN_text_basis": true,
+  "one_get_per_original_cover": true,
+  "one_bounded_typography_copy_attempt": true,
+  "deterministic_typography_overlay_actual_execution_proven": true,
+  "original_typography_creation_method_inferred": false,
+  "font_license_actual_bytes_preserved": true,
+  "cover_dimensions_actual": [
+    600,
+    900
+  ],
+  "delivery_budgets": "PASS_FRONT_80000_BACK_180000",
+  "all_active_JSON_audio_and_observation_claim_scan": "PASS_NO_POSITIVE_CLAIMS",
+  "historical_duplicates_archive_only": [],
+  "original_assets": {
+    "front": {
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950275/earnalism/covers/front/cover_279d4a41-b545-4371-80c9-4dc4e816f934.png",
+      "file": "recovered/front.png",
+      "sha256": "95e0d15b63239cbac65cb8911656608b0a5532063751c1f9f9c0b1ef8ba81c77",
+      "bytes": 3315747,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "method": "One successful GET per persisted original URL; no prior original-byte checksum or creation-method fact inferred."
+    },
+    "back": {
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950283/earnalism/covers/back/back_cover_279d4a41-b545-4371-80c9-4dc4e816f934.png",
+      "file": "recovered/back.png",
+      "sha256": "e24a4592a4f0616b3b2fce31a6f960cded1f9a97cc852340ed8b1e648e454427",
+      "bytes": 2862540,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "method": "One successful GET per persisted original URL; no prior original-byte checksum or creation-method fact inferred."
+    }
+  },
+  "delivery_assets": [
+    {
+      "kind": "front",
+      "source_file": "covers/front.png",
+      "source_sha256": "67895aecbc4c29e45658819f7b76316a3caecf5d9cca79c4592c03c5d90d581b",
+      "source_bytes": 2351699,
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "delivery_file": "frontend/public/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-front-67895aec-600.webp",
+      "delivery_sha256": "b53d8f06691749b6c82fe003513163330698b53ba4f5d02721d15d7f17a68644",
+      "delivery_bytes": 64336,
+      "delivery_dimensions": [
+        600,
+        900
+      ],
+      "url": "https://theearnalism.com/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-front-67895aec-600.webp",
+      "recipe": {
+        "format": "WEBP",
+        "mode": "RGB",
+        "quality": 64,
+        "method": 6,
+        "resampling": "LANCZOS",
+        "resize": "aspect-preserving contain 600x900",
+        "content_dimensions": [
+          600,
+          900
+        ],
+        "padding_xy": [
+          0,
+          0
+        ],
+        "pillow_version": "12.3.0"
+      },
+      "production_observed": false
+    },
+    {
+      "kind": "back",
+      "source_file": "covers/back.png",
+      "source_sha256": "a544cc2b26c584891032db2fd9ea447f33b4a72ab1e7801a5de853f3463aa5b9",
+      "source_bytes": 2636583,
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "delivery_file": "frontend/public/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-back-a544cc2b-600.webp",
+      "delivery_sha256": "ed604d4e425551bba8863ccbc93c919d77ed42122a4d5c15bb217f604432348a",
+      "delivery_bytes": 52330,
+      "delivery_dimensions": [
+        600,
+        900
+      ],
+      "url": "https://theearnalism.com/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-back-a544cc2b-600.webp",
+      "recipe": {
+        "format": "WEBP",
+        "mode": "RGB",
+        "quality": 64,
+        "method": 6,
+        "resampling": "LANCZOS",
+        "resize": "aspect-preserving contain 600x900",
+        "content_dimensions": [
+          600,
+          900
+        ],
+        "padding_xy": [
+          0,
+          0
+        ],
+        "pillow_version": "12.3.0"
+      },
+      "production_observed": false
+    }
+  ],
+  "proposed_decision_record_sha256": "838a6c05282f77fd15d418ff6af0448d8a165129fed169e61c8afbfc2255d4af",
+  "candidate_inventory": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "5f654536e1a4b6d954ae7433d7ee3041522935b941cf6a651598068e28c50c00"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "54a34be7806d09e5d94918947214e4d2d58f78367fdab1efd9da8489522c2a35"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "5d5831cc3266c2a972290056cfeb8e3d598c09412b0bf35027687a704a56e994"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "0eb52d90eeea32e4aa583cc95ece5cb8350901a3f955274244aa916cf88b001c"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "33cd142e22486d545f9302026058eb1bac8d14efb80b25ac1cd0b241553197fb"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "a0baaad9d0aef490765fc4df7c1c32dfd6e20da616df808cb263c59d9358d06d"
+    },
+    {
+      "file": "cover_delivery_derivation.json",
+      "sha256": "9b6609b625a2c7a15224c337d763ce93eb8c48356e299dd5ddf4bfac24be287b"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "f2234723ac9e70422a49051d8a0346a4d99cc1a031cf4baca0b1d09dd901af41"
+    },
+    {
+      "file": "covers/back.png",
+      "sha256": "a544cc2b26c584891032db2fd9ea447f33b4a72ab1e7801a5de853f3463aa5b9"
+    },
+    {
+      "file": "covers/front.png",
+      "sha256": "67895aecbc4c29e45658819f7b76316a3caecf5d9cca79c4592c03c5d90d581b"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "a41defc9882bca4759e902093932f56cbf628eb9f0e3e5860b9295d26a9c6ae0"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "0fd1577d7b69dd894bf23a2bee8bb33c114e2bf375569668b334e31c4887fdc2"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "3f67c27b5b426f3debadaef12c263d04521980901edf7426d071fc111285cbca"
+    },
+    {
+      "file": "publication_manifest.json",
+      "sha256": "b8f6532b363216fb0269992c1f6dc8139d68e32a0ea122bc212329b8852cbf22"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "87a47f53b9dbcbae66a09bee4bcc5769f4b5f584ef9bdfc4ab31b65959c3318f"
+    },
+    {
+      "file": "rights_decision.json",
+      "sha256": "ff37d736b4db88ba1721ab78bf11cafd707bf46419ac589f8e081a880cdbb09f"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "e6b091fd0aebe2517dd1e2b6c8e8ef14d5ea6d6540daa66c33e0ba27a9ef2380"
+    },
+    {
+      "file": "source_integrity_validation.json",
+      "sha256": "1783ac19971b24959ba3c9334a80a473ec2afc37d75f8ea793b84445eb7d9ad9"
+    }
+  ],
+  "publication_accepted": false,
+  "cover_accepted": false,
+  "paid_generation_calls": 0,
+  "registry_allowlist_shared_source_production_mutations": false,
+  "next_action": "Two independent fresh exact PNG/WebP/source/provenance/font-policy/package reviews. Substantial unresolved dispute after this attempt means terminal active-plan exclusion; no repeated art/source work."
+}

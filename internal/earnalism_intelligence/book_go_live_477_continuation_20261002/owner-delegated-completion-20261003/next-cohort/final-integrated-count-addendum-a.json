@@ -1,0 +1,27 @@
+{
+  "schema": "earnalism.final-review-factual-count-addendum.v1",
+  "reviewer": "independent-agent-A",
+  "recorded_at": "2026-10-03T06:25:10.791144+00:00",
+  "original_receipt_path": "/workspace/scratch/181ef0a25f05/new-acceptance-review-a/next19-final-integrated-tree-review-a-v1.json",
+  "original_receipt_sha256": "d2fc5fd8e4a1e8fe00a38b928e7a76d59b42b6d98bad73eeb5868dc7ea0136b9",
+  "reviewed_core_tree": "e68aee5302c817525b178bd419ede862888da54e",
+  "core_verdict": "PASS_UNCHANGED",
+  "count_method": "Path.glob exact filenames; no source/art re-review",
+  "counts": {
+    "backend/data/controlled_publications": {
+      "reader_manifest_json": 102,
+      "publication_manifest_json": 52,
+      "chapter_json": 826
+    },
+    "data/controlled_publications": {
+      "reader_manifest_json": 162,
+      "publication_manifest_json": 157,
+      "chapter_json": 1034
+    }
+  },
+  "selected_active_allowlist": 52,
+  "clarification": "Original fields active_backend_manifests=52 and root_historical_inclusive_manifests=157 counted publication_manifest.json specifically, not all retained reader_manifest.json packages. Backend all retained Reader packages102; root all retained Reader packages162. Active allowlist52, backend canonical chapter files826, root chapter files1034. No release gate or passing binding changes. Original receipt preserved unchanged.",
+  "canonical_mutations": 0,
+  "new_GETs": 0,
+  "paid_calls": 0
+}

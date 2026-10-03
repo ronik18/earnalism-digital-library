@@ -1,0 +1,103 @@
+{
+  "package_inventory": {
+    "highlight_sync.json": "32c5e5256e2584ee9acda5cc8a83ecd7dbccd7ba23a224339c0b9b34c5a753d2",
+    "cover_delivery_derivation.json": "c815944d45b1664634b3680544680b6da3c36de93a0a966fd7454d0c99177e73",
+    "source_evidence.json": "7ec444ed90caa41fb950757933ee7399ef94fceab855bdd8c3e52a6806358ec5",
+    "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "publication_manifest.json": "d0cb9fb0882363748b17bc16c2e701d3a8d77d15693bfa955b3b7f10875459bb",
+    "reader_manifest.json": "2323b65af075000645cd7ac0f3f841f4583ac1407ddefd849a1cbc7b06795d71",
+    "publication_authorization.json": "e44c8492be29bec52b92b36c2634fed5a6bd74feefeb04c1908ad25c74f1cf4f",
+    "approval_evidence.json": "062f8f43299a2adea910b6ece3b202527978e464992acefbe811d9df877498eb",
+    "public_book.json": "cb40f95dd344ca07bf9ae2ddbe611f8acb1fb284bedc9dab1678402d04ba615b",
+    "rights_decision.json": "2f3f4d19c6920fa90f9523833e4faa180f9b9a7bb1aa25e0d4214eb20abdf035",
+    "checksum_manifest.json": "a487ccb0753145074a83e502162b4e4b40d8d2d1ce7aeefd5d46d5d148e2b9e7",
+    "cover_provenance.json": "6270d6ca21fb06c3b9b18438674ade59ffc750ad73bf4f4c71324bf02521e2e4",
+    "covers/original-back.png": "29204906556020adbbdb10a89b7fd9b26f08703f6327a0de63cdb0d50b8821fc",
+    "covers/original-front.png": "80fbd30875f8b715fb580732f9eef2d46bc7ddc74d50cd41d5276dbfd60ec32a",
+    "chapters/chapter-000.json": "118662968ffae09a39b945b4e23611134f002de106fc175769bcc6b0d3f23171",
+    "chapters/chapter-017.json": "4765b4825ee8014b8d6dcd96d2bd31174087f11e3f52ed19fbe830d63963af60",
+    "chapters/chapter-023.json": "bf4ed5e7ebf8b5402a9d58545161150f084443e3f5b95234445dde15dfb3acec",
+    "chapters/chapter-022.json": "bc298db53227232ae528e897fc85091c706904bd1d4cfdbb32127f089496d5dd",
+    "chapters/chapter-013.json": "a33c3e949883bab750a4a3fed0b1d7a8ccb466b741b11d49f656ecae48632eff",
+    "chapters/chapter-010.json": "e405c6479f80643ffae80cb112237daba55b94308d0e2489a8196e991f91db82",
+    "chapters/chapter-014.json": "71a15fe2fc31371944909ddb9c70caef653f4bc6262ab488bbb4c7a793138574",
+    "chapters/chapter-009.json": "ccd55e81a04d06cf466ac4efed76bb3c41f20df66fe5a7a28b37bd0f3f1b489f",
+    "chapters/chapter-016.json": "ef577dfed5d075f8f90c31f1bb82a24957be8718b9718cfdb28f7fd8df376554",
+    "chapters/chapter-024.json": "64c9fab6b003c799f01caadbb2b4a1278149c092467b0f65a1647d35cf382386",
+    "chapters/chapter-002.json": "8c32e4ea4ce72dca82dafc112f750adeadaa8371715022e01ce15f2209c828ca",
+    "chapters/chapter-018.json": "665d674b8eb7dcf30ebee5f00c38877b12e9f874f0d708371a82803d7743a605",
+    "chapters/chapter-008.json": "e82cab6532aec3f5cbc81525475862a79efb7477da2be5a4fa5702df7fa72ffc",
+    "chapters/chapter-011.json": "1548a87a716c760b5bf4ac9334e185ac3b9692e099dbcc892a5241dfcd53e076",
+    "chapters/chapter-020.json": "06ded42ac082874263b58c4c80c0bd0be859c2506b762035f8dff7bbe3480954",
+    "chapters/chapter-004.json": "b2abb71a6657d4996d40a5153fd6fc9da28645cf213b7905aca12ef368da5104",
+    "chapters/chapter-019.json": "89627bd9ec55bd369f6805538ea2d1dbe8073f6c7c4776199776ef332f62d7d8",
+    "chapters/chapter-021.json": "06d09334a48d348344d7f21da5ada91c6f949903cfbec602e80c7fe55e7d8f84",
+    "chapters/chapter-015.json": "c0c5044d71a15d20ef413473916b6d263ce4bc07fc8d9ad9c309a7ba41d2c9d9",
+    "chapters/chapter-006.json": "7f544ecf190fc44e24bf9da2ae9c1ca721f061cd4e84600beb25c911b586ca10",
+    "chapters/chapter-005.json": "0671e6fb23eb9bee17bea9ec34f735227af6907fc09821014116cd78fe4dc103",
+    "chapters/chapter-012.json": "19a281cd8265ea71bad736152d21a3c9ceb3ad4631d6c314391caa016cbdcb52",
+    "chapters/chapter-003.json": "7a5162887dd0f1d7caedb9c389c09af052cb7662aa9bf88cfc1a833b3ff681bd",
+    "chapters/chapter-007.json": "059ce4904d10f05ba6174dd9de4121239844e98dbf6e9f71bd905291bc6cf369",
+    "chapters/chapter-001.json": "47eba6c96f51a6bcb2bde839312a2a487dfd7cbbefb64d9fd8f26f9e09b8a2a3",
+    "evidence/current_whole_work_boundary_verification.json": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e",
+    "evidence/original-cover-receipt.json": "6253d6df5544a0226495a8a73b6c6a00f96e5037037db7656dd1a8326de36d2f",
+    "evidence/render_delivery.py": "ff3cf668b08e534adaefd57998208efa3422efcdf01aa9d25a8aabcc0d662a59",
+    "evidence/delivery-receipt.json": "c815944d45b1664634b3680544680b6da3c36de93a0a966fd7454d0c99177e73",
+    "evidence/preimage-inventory.json": "4f570611cb51d024ba9b29b7b5aef7ca2c7a64f2ffd48a41cf630e458f70ad19",
+    "evidence/wizard-whole-work-proof-reuse.json": "b477cd253c51a2ce5ccffd622dfbc5dc7e5cd5b084a53467e7deebb04fd5296e"
+  },
+  "decision_sha256": "2f3f4d19c6920fa90f9523833e4faa180f9b9a7bb1aa25e0d4214eb20abdf035",
+  "component_count": 13,
+  "checksums_verified": 42,
+  "source_chapters_license_sync_unchanged": true,
+  "inactive_unaccepted_audio_neutral": true,
+  "manifest_schema": "PASS",
+  "delivery": [
+    {
+      "path": "/workspace/scratch/181ef0a25f05/wizard-preparation-20261003/proposed-package/frontend/public/assets/books/the-wonderful-wizard-of-oz/front-33ecb0db.webp",
+      "sha256": "33ecb0dbd64dd974cbcc0a36ea6efacde0b4a5b3eb9123b7f1c1f97b1b0154b6",
+      "bytes": 72988,
+      "dimensions": [
+        500,
+        750
+      ]
+    },
+    {
+      "path": "/workspace/scratch/181ef0a25f05/wizard-preparation-20261003/proposed-package/frontend/public/assets/books/the-wonderful-wizard-of-oz/back-02d62ca4.webp",
+      "sha256": "02d62ca44ac984c5a078ab2298d5fdc513861b7876374043d3ffa3b812ced107",
+      "bytes": 67348,
+      "dimensions": [
+        500,
+        750
+      ]
+    }
+  ],
+  "slug": "the-wonderful-wizard-of-oz",
+  "status": "PASS_PREPARATION_ONLY",
+  "source_review": {
+    "scope": "Project Gutenberg #55 Baum1900 English narrative; authorIntroduction and24chapters; noillustrations imported",
+    "raw_source_sha256": "969bffab7740d4d8a0bac332d78bd0152ad4a40a2efc52f06c74a9bb6120be75",
+    "proof_inventory_sha256": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e",
+    "chapter_body_hashes_and_aggregate": "PASS_25_EXACT",
+    "source_boundary_and_24_heading_only_gaps": "REUSED_EXACT_PERSISTED_COMPLETE_SCOPE_PROOF",
+    "historical_containment_limitation_preserved": true,
+    "physical_book_dedication_and_illustrations": "EXCLUDED_SELECTED_SCOPE",
+    "source_gets": 0
+  },
+  "visual_review": {
+    "actual_original_png_and_delivery_webp_inspected": true,
+    "title_author_fullframe_footer": "PASS",
+    "back": "Illustrative scene/map without attributed synopsis or quotation",
+    "derivative_recipe_reproduced_byte_exact": "PASS_FULLFRAME_LANCZOS_500X750_Q45_METHOD6",
+    "art_repairs": 0
+  },
+  "owner_basis_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+  "original_creation_method": "UNKNOWN_NOT_INFERRED",
+  "acceptance_or_production_claim": false,
+  "reviewer": "independent-agent-A",
+  "reviewed_at": "2026-10-03T05:56:12.869099+00:00",
+  "next_gate": "SECOND_INDEPENDENT_PASS_THEN_ACTUAL_PROSPECTIVE_ACCEPTANCE_SERIALIZED_INTEGRATION_CI_DEPLOYMENT_CANARY_READBACK",
+  "new_network_requests": 0,
+  "paid_calls": 0,
+  "canonical_mutations": 0
+}

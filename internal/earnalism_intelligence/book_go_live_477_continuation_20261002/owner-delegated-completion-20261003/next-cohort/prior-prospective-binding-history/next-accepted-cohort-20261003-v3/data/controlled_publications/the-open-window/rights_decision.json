@@ -1,0 +1,46 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-the-open-window-exact-reader-cover-prospective-accepted",
+  "edition_id": "the-open-window",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "source_evidence": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d",
+    "publication_manifest": "e5f88f21c873e29f8f7c0374a93aba031da34c3bc8344d4c2ef40e087b310672",
+    "reader_manifest": "8f5a8d563c587a28d30e1e001447cdb5328bdcd49df4b61d8d7838401aac6151",
+    "approval_evidence": "f191c0631631964cc5b883cfd63201932c4fcbc7383c1249e9b40b75d0698c05",
+    "public_book": "472928c898ffca0711e110b8daf7ff2dfc47ebfc222f8a721589ad5b02ef7b5f",
+    "checksum_manifest": "780bb1ef61c888f217afa334bfa991243eed3d4d1432bdd7fef8ac2561a13163",
+    "cover_provenance": "8ae040e44439430f9d818429423a1be89208e493b79c4e4ac1e581ad1cd3fba2",
+    "publication_authorization": "df456ad28112be7b2fa149c5eb972a343141adcc5610e791508816c92d0a3a1f",
+    "acceptance_review_a": "545e4f764da46785a577943e3abe0f48c09660f4c1e84b7fa6709221c168daa0",
+    "acceptance_review_b": "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T04:59:53.954767+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Existing exact accepted India text source/edition clearance is preserved in the archived predecessor and unchanged source/chapter records. Actual prospective acceptance additionally covers these exact owner-designed preserved-artwork derivatives, proven licensed deterministic typography and reviewed deliveries after two independent passing source/provenance/pixel/package reviews under the owner delegation. The predecessor non-cover deferral is prospectively superseded for these exact components only. Audio remains excluded; no rights, human signature, other edition or production observation inferred. Final release remains behind serialized protected normal gates.",
+  "evidence_sha256": [
+    "483606fbed9f701455072911ef1cf25ddc9e7380d73ec0b81257e38cb303a00d",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+    "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+    "df456ad28112be7b2fa149c5eb972a343141adcc5610e791508816c92d0a3a1f",
+    "8ae040e44439430f9d818429423a1be89208e493b79c4e4ac1e581ad1cd3fba2",
+    "545e4f764da46785a577943e3abe0f48c09660f4c1e84b7fa6709221c168daa0",
+    "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff"
+  ],
+  "accepted_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+  "conditions_satisfied": true
+}

@@ -1,0 +1,200 @@
+import { lazy, Suspense, useEffect } from "react";
+import { BrowserRouter, Routes, Route, useLocation, Navigate, useParams } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
+import { AuthProvider } from "./context/AuthContext";
+import { SettingsProvider } from "./context/SettingsContext";
+import { trackPageAnalyticsView } from "./lib/funnelAnalytics";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import { AppToaster } from "./components/AppToaster";
+import "./design-system/sitewide-option-b.css";
+
+const pageImports = {
+  Library: () => import("./pages/Library"),
+  BookDetail: () => import("./pages/BookDetail"),
+  Journal: () => import("./pages/Journal"),
+  JournalArticle: () => import("./pages/JournalArticle"),
+  AboutLegacy: () => import("./pages/About"),
+  Contact: () => import("./pages/Contact"),
+  Privacy: () => import("./pages/LegalPages").then((module) => ({ default: module.Privacy })),
+  Terms: () => import("./pages/LegalPages").then((module) => ({ default: module.Terms })),
+  Copyright: () => import("./pages/LegalPages").then((module) => ({ default: module.CopyrightNotice })),
+  Login: () => import("./pages/Login"),
+  Signup: () => import("./pages/Signup"),
+  Account: () => import("./pages/Account"),
+  MyLibrary: () => import("./pages/MyLibrary"),
+  Pricing: () => import("./pages/Pricing"),
+  ReaderLegacy: () => import("./pages/Reader"),
+  ReaderV2: () => import("./experiences-v2/reader/ReaderExperienceV2Route"),
+  ListenerV2: () => import("./experiences-v2/listener/ListenerExperienceV2Route"),
+  MicroStoryLanding: () => import("./pages/MicroStoryLanding"),
+  SecureReaderHarness: () => import("./pages/SecureReaderHarness"),
+  AdminLogin: () => import("./pages/AdminLogin"),
+  Admin: () => import("./pages/Admin"),
+  NotFound: () => import("./pages/NotFound"),
+  UnavailableTitle: () => import("./pages/UnavailableTitle"),
+  GoogleAuthBoundary: () => import("./components/GoogleAuthBoundary"),
+};
+
+const Library = lazy(pageImports.Library);
+const BookDetail = lazy(pageImports.BookDetail);
+const Journal = lazy(pageImports.Journal);
+const JournalArticle = lazy(pageImports.JournalArticle);
+const AboutLegacy = lazy(pageImports.AboutLegacy);
+const Contact = lazy(pageImports.Contact);
+const Privacy = lazy(pageImports.Privacy);
+const Terms = lazy(pageImports.Terms);
+const CopyrightNotice = lazy(pageImports.Copyright);
+const Login = lazy(pageImports.Login);
+const Signup = lazy(pageImports.Signup);
+const Account = lazy(pageImports.Account);
+const MyLibrary = lazy(pageImports.MyLibrary);
+const Pricing = lazy(pageImports.Pricing);
+const ReaderLegacy = lazy(pageImports.ReaderLegacy);
+const ReaderV2 = lazy(pageImports.ReaderV2);
+const ListenerV2 = lazy(pageImports.ListenerV2);
+const MicroStoryLanding = lazy(pageImports.MicroStoryLanding);
+const SecureReaderHarness = lazy(pageImports.SecureReaderHarness);
+const AdminLogin = lazy(pageImports.AdminLogin);
+const Admin = lazy(pageImports.Admin);
+const NotFound = lazy(pageImports.NotFound);
+const UnavailableTitle = lazy(pageImports.UnavailableTitle);
+const GoogleAuthBoundary = lazy(pageImports.GoogleAuthBoundary);
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo({ top: 0, behavior: "instant" }); }, [pathname]);
+  return null;
+}
+
+function RouteAnalytics() {
+  const location = useLocation();
+  useEffect(() => {
+    if (location.pathname.startsWith("/admin") || location.pathname === "/secure-reader-test") return;
+    trackPageAnalyticsView("page_view", location.key, location.pathname);
+    const eventByPath = {
+      "/": "homepage_view",
+      "/library": "library_view",
+      "/pricing": "pricing_view",
+    };
+    const event = eventByPath[location.pathname];
+    if (event) trackPageAnalyticsView(event, location.key, location.pathname);
+  }, [location.key, location.pathname]);
+  return null;
+}
+
+function sanitizeWebAnalyticsEvent(event) {
+  try {
+    const url = new URL(event.url, window.location.origin);
+    if (url.pathname === "/secure-reader-test" || url.pathname === "/admin" || url.pathname.startsWith("/admin/")) return null;
+    return { ...event, url: `${url.origin}${url.pathname}` };
+  } catch {
+    return null;
+  }
+}
+
+
+function PageFallback() {
+  return (
+    <div className="min-h-screen bg-[var(--beige-canvas)]" role="status" aria-live="polite" aria-busy="true">
+      <span className="sr-only">Loading The Earnalism reading room.</span>
+    </div>
+  );
+}
+
+function LegacyListenerRedirect() {
+  const { slug = "" } = useParams();
+  return <Navigate to={`/reader-legacy/${encodeURIComponent(slug)}?listen=1`} replace />;
+}
+
+function useHighIntentRoutePrefetch() {
+  useEffect(() => {
+    const prefetch = () => {
+      [
+        pageImports.Library,
+        pageImports.BookDetail,
+        pageImports.ReaderV2,
+        pageImports.Pricing,
+        pageImports.Login,
+      ].forEach((load) => load().catch(() => {}));
+    };
+    const id = window.setTimeout(prefetch, 5600);
+    return () => window.clearTimeout(id);
+  }, []);
+}
+
+export function AppProviders({ children }) {
+  return (
+    <AuthProvider>
+      <SettingsProvider>{children}</SettingsProvider>
+    </AuthProvider>
+  );
+}
+
+export function AppRouterContent() {
+  useHighIntentRoutePrefetch();
+  const analyticsHost = window.location.hostname;
+  const hostedForAnalytics = analyticsHost === "theearnalism.com"
+    || analyticsHost === "www.theearnalism.com"
+    || analyticsHost.endsWith(".vercel.app");
+
+  return (
+    <>
+      <ScrollToTop />
+      <RouteAnalytics />
+      {hostedForAnalytics && <Analytics mode="production" beforeSend={sanitizeWebAnalyticsEvent} />}
+      <Suspense fallback={<PageFallback />}>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/library" element={<Library />} />
+            <Route path="/book/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />
+            <Route path="/book/:slug" element={<BookDetail />} />
+            {/* Held historical Reader/Listener routes retain the shared public shell while staying fail-closed. */}
+            <Route path="/reader/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />
+            <Route path="/listener/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />
+            <Route path="/journal" element={<Journal />} />
+            <Route path="/journal/:slug" element={<JournalArticle />} />
+            <Route path="/about-legacy" element={<AboutLegacy />} />
+            <Route path="/about" element={<AboutLegacy />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/copyright" element={<CopyrightNotice />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/micro-story" element={<MicroStoryLanding />} />
+            <Route path="/secure-reader-test" element={<SecureReaderHarness />} />
+            <Route path="/login" element={<GoogleAuthBoundary><Login /></GoogleAuthBoundary>} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/my-library" element={<MyLibrary />} />
+            {/* Legacy redirects */}
+            <Route path="/signin" element={<Navigate to="/login" replace />} />
+            <Route path="/publishing" element={<Navigate to="/library" replace />} />
+            <Route path="/publishing/*" element={<Navigate to="/library" replace />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+          {/* Standalone full-screen routes (no public header/footer) */}
+          <Route path="/reader/:slug" element={<ReaderV2 />} />
+          <Route path="/reader-legacy/:slug" element={<ReaderLegacy />} />
+          <Route path="/listener/:slug" element={<ListenerV2 />} />
+          <Route path="/listener-legacy/:slug" element={<LegacyListenerRedirect />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/launch-monitor" element={<Admin initialTab="launch-monitor" />} />
+        </Routes>
+      </Suspense>
+      <AppToaster position="bottom-right" />
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <AppProviders>
+      <BrowserRouter>
+        <AppRouterContent />
+      </BrowserRouter>
+    </AppProviders>
+  );
+}

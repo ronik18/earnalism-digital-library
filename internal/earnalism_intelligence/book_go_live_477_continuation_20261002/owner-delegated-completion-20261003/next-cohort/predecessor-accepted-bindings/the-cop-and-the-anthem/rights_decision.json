@@ -1,0 +1,47 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-the-cop-and-the-anthem-exact-reader-cover-prospective-accepted",
+  "edition_id": "the-cop-and-the-anthem",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "3ee069c26c1ccf2db501c4d29d812d3b2c68014de6395feb78c519fabc0a5156",
+    "reader_manifest": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22",
+    "source_evidence": "f40f277d758a03b9e05dd6ffa721b058766db6955ba4414d183a7f9bf45fb84f",
+    "approval_evidence": "1a908e769829ac15410d7d564be6665cccf7ea080eeb33a25288a6cc7cca758c",
+    "checksum_manifest": "e14827e3a995f220f3f64ad20d880e901845ffaa3a208753e12a8fe223ded235",
+    "publication_manifest": "6b715f05151d76ab4d1e48bb30e1d08e08d6947ef87486ff583c8ed5cc53d9d4",
+    "cover_preparation": "7892ff61dd3be4adea5e41338e5289d673114e53ca1ba4759ea10db20459523d",
+    "publication_authorization": "380b4383c013f13bc04b2516d773843e90219b9b9e2aafabe3b6d0a9f9a81ae2",
+    "cover_provenance": "e92e306a06fcc0ed682938a5cc50a1168b7671f00f6559a8ab692baa8e067fb4",
+    "acceptance_review_a": "2eaf07760acf658f9c176461fe425ad4fa7c4fb372a26124968cd6cee43ee10a",
+    "acceptance_review_b": "b4c6472a288af36d58459dea6619df7ffcab6fb64a2eadc22c366e9959e52097"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T04:59:53.954767+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Existing exact accepted India text source/edition clearance is preserved in the archived predecessor and unchanged source/chapter records. Actual prospective acceptance additionally covers these exact owner-designed preserved-artwork derivatives, proven licensed deterministic typography and reviewed deliveries after two independent passing source/provenance/pixel/package reviews under the owner delegation. The predecessor non-cover deferral is prospectively superseded for these exact components only. Audio remains excluded; no rights, human signature, other edition or production observation inferred. Final release remains behind serialized protected normal gates.",
+  "evidence_sha256": [
+    "cca048017c5646c43e5d90b54b48a71990a30dd46520dfdf70d8d6e8d1267aed",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "6bb719852f2f0eb33db25613124d2d3c522dd3b879c187667ab31072bb2fb48d",
+    "77a6d1c7ff6162cc7aad47b950666c6bb1dedf0beb55a08f3f476e27e57bd3ab",
+    "2eaf07760acf658f9c176461fe425ad4fa7c4fb372a26124968cd6cee43ee10a",
+    "b4c6472a288af36d58459dea6619df7ffcab6fb64a2eadc22c366e9959e52097",
+    "380b4383c013f13bc04b2516d773843e90219b9b9e2aafabe3b6d0a9f9a81ae2",
+    "e92e306a06fcc0ed682938a5cc50a1168b7671f00f6559a8ab692baa8e067fb4"
+  ],
+  "accepted_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+  "conditions_satisfied": true
+}

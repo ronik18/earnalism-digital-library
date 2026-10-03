@@ -1,0 +1,47 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-the-wonderful-wizard-of-oz-proposed-reader-cover-display",
+  "edition_id": "the-wonderful-wizard-of-oz",
+  "operator_id": "reo-enterprise",
+  "status": "PENDING_REVIEW",
+  "components": {
+    "public_book": "cb40f95dd344ca07bf9ae2ddbe611f8acb1fb284bedc9dab1678402d04ba615b",
+    "reader_manifest": "2323b65af075000645cd7ac0f3f841f4583ac1407ddefd849a1cbc7b06795d71",
+    "source_evidence": "7ec444ed90caa41fb950757933ee7399ef94fceab855bdd8c3e52a6806358ec5",
+    "approval_evidence": "062f8f43299a2adea910b6ece3b202527978e464992acefbe811d9df877498eb",
+    "checksum_manifest": "a487ccb0753145074a83e502162b4e4b40d8d2d1ce7aeefd5d46d5d148e2b9e7",
+    "publication_manifest": "d0cb9fb0882363748b17bc16c2e701d3a8d77d15693bfa955b3b7f10875459bb",
+    "cover_provenance": "6270d6ca21fb06c3b9b18438674ade59ffc750ad73bf4f4c71324bf02521e2e4",
+    "cover_delivery_derivation": "c815944d45b1664634b3680544680b6da3c36de93a0a966fd7454d0c99177e73",
+    "cover_front_original_asset": "80fbd30875f8b715fb580732f9eef2d46bc7ddc74d50cd41d5276dbfd60ec32a",
+    "cover_front_delivery_asset": "33ecb0dbd64dd974cbcc0a36ea6efacde0b4a5b3eb9123b7f1c1f97b1b0154b6",
+    "cover_back_original_asset": "29204906556020adbbdb10a89b7fd9b26f08703f6327a0de63cdb0d50b8821fc",
+    "cover_back_delivery_asset": "02d62ca44ac984c5a078ab2298d5fdc513861b7876374043d3ffa3b812ced107",
+    "owner_artwork_declaration": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:38:19.977641+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1919, original publication 1900; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record. This isolated proposed new cover/component binding is NOT ACCEPTED; no authority, human approval, production fact or new artwork inferred. Prior exact text acceptance is preserved in preimages.",
+  "evidence_sha256": [
+    "d76fb6ab3fcd74692ed0d9909ddfdd992fa66c41d543aea1e1758543a421b5bd",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "dab2f9701c8250b658facf41edeb4433f135f9a545ad9b20e5cdadc878e61e7a",
+    "969bffab7740d4d8a0bac332d78bd0152ad4a40a2efc52f06c74a9bb6120be75",
+    "4b174cd456358387fe1bbd65667a783ae52d7b4f0475f1c570a80132c847b18e",
+    "6270d6ca21fb06c3b9b18438674ade59ffc750ad73bf4f4c71324bf02521e2e4",
+    "c815944d45b1664634b3680544680b6da3c36de93a0a966fd7454d0c99177e73"
+  ],
+  "accepted_by": "",
+  "conditions_satisfied": false
+}

@@ -1,0 +1,56 @@
+{
+  "schema": "earnalism.cover-provenance.v1",
+  "slug": "the-open-window",
+  "status": "PROPOSED_EXACT_COMPONENT_BINDING_PENDING_TWO_INDEPENDENT_REVIEWS",
+  "original_creator": "Repository/product owner; no additional identity inferred",
+  "owner_declaration": {
+    "statement": "Owner states all front and back covers are designed by the owner.",
+    "path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+    "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "scope": "Cover design only; not text rights or runtime release"
+  },
+  "owner_delegation": "Existing issue477 comment5949652699 and explicit prospective Oct3 owner instruction superseding procedural cover deferral. This proposal does not record acceptance before fresh passing reviews.",
+  "source_sha256": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+  "content_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "assets": {
+    "front": {
+      "original_file": "covers/front-original.png",
+      "original_sha256": "351653d69bebc7567f868007370fb65b72eadbd41f7cbb2ee276e6024d0a1bb1",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png",
+      "repair_file": "covers/front-layout-repair.png",
+      "repair_sha256": "22a9981529ca3c46a81fae68c056b43d2253595f436110767c153eb9344589bd",
+      "delivery_file": "covers/front-delivery.webp",
+      "delivery_sha256": "fd16c96883897722c2da7c49e2012dd9e5a3771bf2f99d11b89a29add60a8960",
+      "delivery_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-fd16c968.webp",
+      "delivery_bytes": 34778,
+      "production_observed": false
+    },
+    "back": {
+      "original_file": "covers/back-original.png",
+      "original_sha256": "19717b3bb51630712f2f8cad58859361c9015ab726f3335b196c2b5924660a0d",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267861/earnalism/covers/back/the-open-window_back_1600x2400.png",
+      "repair_file": "covers/back-layout-repair.png",
+      "repair_sha256": "5865b811a2feb412655fa56f6b2a9f6e6fbbd39881423bf14c77e1844a827829",
+      "delivery_file": "covers/back-delivery.webp",
+      "delivery_sha256": "6c87ea0a562e727b5527711f6f279bf9b95cad6a0817d15e36f783fd87016e76",
+      "delivery_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-back-6c87ea0a.webp",
+      "delivery_bytes": 79852,
+      "production_observed": false
+    }
+  },
+  "derivative_lineage": {
+    "recovery_receipt_sha256": "62215e8bd8dbc1c370ff68f22b46f6da443af5019807d8c02717c57eaebb826d",
+    "repair_receipt_sha256": "c5eae00277b28b3eea51ceb92ffd64332be5fef0463414d8f39b3d196eae1529",
+    "renderer_sha256": "c2e4829aff72b1f8c133d53479b491287f050ff560c991f67f1826b2135cb61c",
+    "method": "One bounded deterministic local mask/typeset repair of existing recovered owner artwork; exact existing title/author and complete unchanged source excerpt only. No new art, generated copy or paid calls.",
+    "source_excerpt": "“My aunt will be down presently, Mr. Nuttel,” said a very self-possessed young lady of fifteen; “in the meantime you must try and put up with me.” Framton Nuttel endeavoured to say the correct something which should duly flatter the niece of the moment without unduly discounting the aunt that was to come. Privately he doubted more than ever whether these formal visits on a succession of total strangers would do much towards helping the nerve cure which he was supposed to be undergoing.",
+    "no_lexical_changes": true,
+    "new_art": false,
+    "one_bounded_remediation_attempt": 1
+  },
+  "visual_review_status": "PENDING_TWO_INDEPENDENT_EXACT_DELIVERY_REPAIR_REVIEWS",
+  "commercial_use_authorized": false,
+  "audio_authorized": false,
+  "runtime_release_authorized": false,
+  "production_observed": false
+}

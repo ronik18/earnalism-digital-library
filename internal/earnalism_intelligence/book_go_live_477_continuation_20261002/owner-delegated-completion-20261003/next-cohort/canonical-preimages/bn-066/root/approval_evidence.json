@@ -1,0 +1,29 @@
+{
+  "slug": "bn-066",
+  "approved_to_publish": true,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "OWNER_DELEGATED_AUTOMATED_IN_EDITION_BOUND_TEXT_READER_ONLY_COVER_DEFERRED",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_BLOCKED_QA_REQUIRED",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "rights_tier": "A",
+    "verification_status": "approved",
+    "qa_status": "QA_PASSED",
+    "approval_scope": "historical_admin_import_reconstruction",
+    "verified_at": null
+  },
+  "hold_reason": "Title-level source/text and/or license/asset evidence is incomplete; see data/title_rights_evidence/bengali-bankim-cohort-1.json. This is a fail-closed package state, not a new rights acceptance decision.",
+  "audio_qa_status": "",
+  "endpoint_url": "",
+  "provider": "",
+  "version": "",
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "source_hash": "77503ec5daf5f8d9d567d7ecf6543abbfd727658818391cc1c20d54d5627cbff",
+  "content_hash": "a6336c132fdb256bb963c8c5f1443707990203987266689077495a87c8a75543",
+  "publication_authorization_sha256": "d071dc021cf1af40b416c731e5c1074069e2b81a0a1f8810fa688bcba3ffb17c"
+}

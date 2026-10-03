@@ -1,0 +1,30 @@
+{
+  "slug": "dsires-baby",
+  "approved_to_publish": false,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "INACTIVE_SOURCE_BOUND_COVER_PROPOSAL_PENDING_TWO_REVIEWERS",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "8ae351a362c2abc4f2e88a14ea52d3afc266574ea21022b080eeda855f372bf9",
+  "source_hash": "31d4577d255806b92c6296419adddd5ca460bdb788743878a09ded1e19f4161a",
+  "content_hash": "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98",
+  "provenance_hash": "2ee318e47560589e69de19367a82467978af0cf4defd57691c9fb9276bbe5069",
+  "verified_at": "2026-10-03T04:36:24.088428+00:00",
+  "cover_provenance_sha256": "8a9d332bc7cbd6bfb54e111eafcf3be83817d166405a96ffb3c116d4e149bdd3",
+  "cover_delivery_derivation_sha256": "feb006057f91cd260d56db1c3c455eca58bce40ae3192cd94a5a798425c9fb6a",
+  "source_integrity_validation_sha256": "52683b6ef48451afe01c74f56481119e5b40663e1e27a141436108953d302444",
+  "cover_front_qa_status": "PENDING",
+  "cover_back_qa_status": "PENDING",
+  "audio_enabled": false,
+  "audiobook_use_approved": false,
+  "production_observed": false
+}

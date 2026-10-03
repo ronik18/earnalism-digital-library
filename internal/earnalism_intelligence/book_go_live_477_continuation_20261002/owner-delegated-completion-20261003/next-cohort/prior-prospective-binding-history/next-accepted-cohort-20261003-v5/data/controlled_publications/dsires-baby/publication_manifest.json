@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "dsires-baby",
+  "title": "Désirée's Baby",
+  "generated_at": "2026-10-03T04:59:53.954767+00:00",
+  "content": {
+    "source_hash": "31d4577d255806b92c6296419adddd5ca460bdb788743878a09ded1e19f4161a",
+    "content_hash": "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98",
+    "provenance_hash": "2ee318e47560589e69de19367a82467978af0cf4defd57691c9fb9276bbe5069",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "c8c40eb0d139386340ac9d0e41c2297490af398d7fe4d06e6db3ee1ce0c57bbb",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Désirée's Baby",
+        "word_count": 2178,
+        "sha256": "4c5f2ef8b4ba48d637ac19f0317c4dcb713d70577e49f6f51ae17999579b019b"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "6d42cff7df041f4a8ca73aab975db7bbd4428b7dc548c3bbc384860b273d3606",
+    "reader_manifest": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee",
+    "source_evidence": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb",
+    "approval_evidence": "f44588abe2524c06341d1a85488f30065a661bf16a268a409fa68464be045cab"
+  },
+  "manifest_sha256": "7d82885d8852f72cc4522d4dc797d553afda27fca9ce20f6ebe452d3f4de8476"
+}

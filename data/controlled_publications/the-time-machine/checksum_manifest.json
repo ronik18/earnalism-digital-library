@@ -4,7 +4,7 @@
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "46616e21e94de57e61f5ef13efcbc5361626bb77e649e9381736daed29a15905"
+      "sha256": "c529d93f7e97765917608238149c2768857b7720ac648132013123ac9a740b55"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -75,16 +75,44 @@
       "sha256": "556c5d180a99eafaeae363ce34e04fa09d30fb96900de8ed69dee1f5c0f64f04"
     },
     {
+      "file": "cover_preparation.json",
+      "sha256": "3ab8dbef3293d9e97c344623653b6a9535d4ebd6f2337196e8552026e036a2fb"
+    },
+    {
+      "file": "covers/original-back.png",
+      "sha256": "982e280d4e7a9c7859ac9f071fb20dac6f4fe7f382e1a724d96bea036af2f015"
+    },
+    {
+      "file": "covers/original-front.png",
+      "sha256": "5eb21ec7c4e3aa4a75c1d3e51de7f78f172850b450d80cc06ca7ebe54f5f9997"
+    },
+    {
+      "file": "covers/the-time-machine-back-982e280d.webp",
+      "sha256": "f14904314cecf4e887358e2a6dd16a512936fe5e42314b281e309f994a54a585"
+    },
+    {
+      "file": "covers/the-time-machine-back-deterministic.png",
+      "sha256": "fcbda9911c8ed2437640b3dbf01a0ce6c20879c80d93eb9ef9f0268ba60e0f60"
+    },
+    {
+      "file": "covers/the-time-machine-front-5eb21ec7.webp",
+      "sha256": "2b3e8c93c4ba497456bfd88c7233be9b15a1305397501022f807aa3574746d7a"
+    },
+    {
+      "file": "covers/the-time-machine-front-deterministic.png",
+      "sha256": "97ea6f6978a5bb4d2edcea13d426019fcb6b46a731fcabe34cb40666e49b5ac0"
+    },
+    {
       "file": "highlight_sync.json",
       "sha256": "49f9d125f4a876a6e07a1c61e56607b84db13ef3bd9d2595ac8fc021cb52887d"
     },
     {
       "file": "public_book.json",
-      "sha256": "546cb6c3b6cb45721004e8fc49d224caa6fafe63bce5f2de2d86f25c8683dd22"
+      "sha256": "6fe776140c65014131e2c684e05272a01a2dbf846ddc8bcf3fd961ec49ce391d"
     },
     {
       "file": "publication_authorization.json",
-      "sha256": "399587f82d95987bcc4dd010783a62e5e01f5e5bbad6a3c336b4fdac46e24538"
+      "sha256": "8894d7452aa94d17f9f561511fba91cc2ed5a18e4dee997ff2e5568b0fed1fab"
     },
     {
       "file": "reader_manifest.json",
@@ -93,6 +121,26 @@
     {
       "file": "source_evidence.json",
       "sha256": "010c2fd7d0fa5ae1370f081876448c94a9bad177df7fe0b621b0f91c39af0cf5"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "0023ab9e6497aafa2266c54cf945e170348140d070bbcef3f55b482ca8346fe0"
+    },
+    {
+      "file": "owner_artwork_declaration.json",
+      "sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264"
+    },
+    {
+      "file": "evidence/review_a.json",
+      "sha256": "69849aa5884020a53e87e902d3505d2624839e8dd37119d9b03d7df99948fe38"
+    },
+    {
+      "file": "evidence/review_b.json",
+      "sha256": "fa6aaff9100965882e389a042a8e81845423737348bbd410831c6954fda2998b"
+    },
+    {
+      "file": "evidence/source_review_b.json",
+      "sha256": "7e6e03cfd9ebfddb26f0f275b69adb8c4222055a6b466c89cedc7d3173fdda12"
     }
   ]
 }

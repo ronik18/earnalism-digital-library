@@ -1,0 +1,155 @@
+{
+  "slug": "the-open-window",
+  "scope": "FINAL_CONSOLIDATED_UNACCEPTED_TEXT_ONLY_PAPERWORK_CORRECTION",
+  "changed_fields": {
+    "public_book": {
+      "cover_dimensions": {
+        "before": {
+          "back": [
+            1600,
+            2400
+          ],
+          "front": [
+            1600,
+            2400
+          ]
+        },
+        "after": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      }
+    },
+    "approval_evidence": {
+      "removed_fields": [
+        "anonymous_origin_access",
+        "approved_at",
+        "asr_manuscript_score",
+        "audio_qa_status",
+        "audio_sha256",
+        "auto_estimated_sync",
+        "book_detail_disclosure_visible",
+        "browser_audio_control_visible",
+        "browser_audio_start_latency_ms",
+        "browser_console_errors",
+        "browser_gate_status",
+        "browser_playback_advanced",
+        "candidate_fingerprint",
+        "endpoint_accept_ranges",
+        "endpoint_content_range",
+        "endpoint_content_type",
+        "endpoint_http_status",
+        "endpoint_url",
+        "first_words_match",
+        "historical_admin_import_claim",
+        "historical_text_approval_preserved",
+        "last_words_match",
+        "listening_qa_fatal_flags",
+        "listening_qa_minimum_confidence",
+        "listening_qa_minimum_score",
+        "listening_qa_overall_score",
+        "listening_qa_sample_count",
+        "measured_paragraph_sync_score",
+        "metadata_approval_status",
+        "narration_disclosure",
+        "no_missing_duplicated_reordered_content",
+        "owner_risk_acceptance_sha256",
+        "production_deployments",
+        "production_proof_path",
+        "provenance_hash",
+        "provider",
+        "public_word_level_sync_claim_allowed",
+        "publication_traceability_hashes",
+        "quality_claim",
+        "quality_policy_sha256",
+        "reader_disclosure_visible",
+        "release_blockers",
+        "source_coverage",
+        "source_sha256",
+        "storage_backend",
+        "sync_tier",
+        "upload_status",
+        "uploaded_artifact_sha256",
+        "version"
+      ],
+      "changed_fields": {
+        "approval_scope": {
+          "before": "PROPOSED_OWNER_DELEGATED_EXACT_COMPONENT_BINDING_PENDING_REVIEWS",
+          "after": "PROPOSED_OWNER_DELEGATED_EXACT_IN_TEXT_AND_COVER_BINDING_PENDING_TWO_REVIEWS"
+        },
+        "binding_review_status": {
+          "before": null,
+          "after": "PENDING_TWO_FRESH_EXACT_PACKAGE_REVIEWS"
+        },
+        "qa_scope": {
+          "before": null,
+          "after": "Existing independently evidenced noncover text identity/complete work only; no audio or production observation."
+        }
+      }
+    }
+  },
+  "removed_current_components_archived": [],
+  "changed_files": {
+    "approval_evidence.json": {
+      "before": "41c4d825f95622efc33759a657020b0db81ff1cb0999a9fafef1b3ad44de6baf",
+      "after": "287ff7059f7d8e04407a3ba056726dcc4e45fe773ca989c89b1566bf7ff09824"
+    },
+    "checksum_manifest.json": {
+      "before": "10c6d5a0253be19a1936334da5542811147ff6fb7f1aba31d8e6bf4041d845c3",
+      "after": "57c366126d4ef9ccd7bdf069322fca6308ca5199163091e88b52597135854e3d"
+    },
+    "public_book.json": {
+      "before": "566fab524a604e92da0482ea9bff2ba2dc56cd3ddfe5275a09f09d544c70c303",
+      "after": "f4efd58d8a5b3ffbaa1c5e01c8f3a927204fabd259d8e0ebbbcc3001715804b9"
+    },
+    "publication_manifest.json": {
+      "before": "fee58c670422d9099408da47ebf400d8997eb09806789818b3433c5b825401dd",
+      "after": "cb4f5d9a85feacf7cbc08135af74830eac4ab034c1234a04a1d489b0cec91228"
+    },
+    "rights_decision.json": {
+      "before": "e480b51f610ef7cbdcfdcb74c75ca64e7d6aaeb5580020a09c1a7c0202e7bfc3",
+      "after": "5384877de68660e868e804f46c6f8f0d7c4e2c9e4ee08fa4d3d63fc7a273504d"
+    }
+  },
+  "no_active_audio_positive_observations_or_urls_in_effective_public_reader_approval_manifest": true,
+  "source_chapter_license_sync_original_repair_delivery_bytes_unchanged": true,
+  "cover_delivery_dimensions_derived_from_actual_bytes": {
+    "front": [
+      800,
+      1200
+    ],
+    "back": [
+      800,
+      1200
+    ]
+  },
+  "actual_acceptance_created": false,
+  "new_package_files_sha256": {
+    "highlight_sync.json": "b2742d2516aa71aa23f79d33dba6ff5c27c5036c6b581197b6c55f991e97215e",
+    "source_evidence.json": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d",
+    "publication_manifest.json": "cb4f5d9a85feacf7cbc08135af74830eac4ab034c1234a04a1d489b0cec91228",
+    "reader_manifest.json": "8f5a8d563c587a28d30e1e001447cdb5328bdcd49df4b61d8d7838401aac6151",
+    "publication_authorization.json": "b721690f38aedead88b16e6d989557c84571da8a9e4ec02cc549071a5ddbdc3e",
+    "approval_evidence.json": "287ff7059f7d8e04407a3ba056726dcc4e45fe773ca989c89b1566bf7ff09824",
+    "public_book.json": "f4efd58d8a5b3ffbaa1c5e01c8f3a927204fabd259d8e0ebbbcc3001715804b9",
+    "rights_decision.json": "5384877de68660e868e804f46c6f8f0d7c4e2c9e4ee08fa4d3d63fc7a273504d",
+    "checksum_manifest.json": "57c366126d4ef9ccd7bdf069322fca6308ca5199163091e88b52597135854e3d",
+    "cover_provenance.json": "9540748697d562d47c872ee30a8bf8a88dcd7f87ce1883b8e6d0233c012f2fad",
+    "covers/back-delivery.webp": "6c87ea0a562e727b5527711f6f279bf9b95cad6a0817d15e36f783fd87016e76",
+    "covers/front-delivery.webp": "fd16c96883897722c2da7c49e2012dd9e5a3771bf2f99d11b89a29add60a8960",
+    "covers/front-layout-repair.png": "22a9981529ca3c46a81fae68c056b43d2253595f436110767c153eb9344589bd",
+    "covers/front-original.png": "351653d69bebc7567f868007370fb65b72eadbd41f7cbb2ee276e6024d0a1bb1",
+    "covers/back-original.png": "19717b3bb51630712f2f8cad58859361c9015ab726f3335b196c2b5924660a0d",
+    "covers/back-layout-repair.png": "5865b811a2feb412655fa56f6b2a9f6e6fbbd39881423bf14c77e1844a827829",
+    "chapters/chapter-001.json": "bc12b5dbae5cae481b59d11eb9fc43a7c875f4cf2b37d52107bce93957375a00"
+  },
+  "package_inventory_canonical_sha256": "d6b3fe134148a7fc01cacd88b753824684aa52000b548b5271d875a8d68878d9",
+  "decision_raw_sha256": "5384877de68660e868e804f46c6f8f0d7c4e2c9e4ee08fa4d3d63fc7a273504d",
+  "decision_canonical_sha256": "77604dce40397fba9224f2ee62ef64d3ffab48f4c73dfa920381864cf1ea89a1"
+}

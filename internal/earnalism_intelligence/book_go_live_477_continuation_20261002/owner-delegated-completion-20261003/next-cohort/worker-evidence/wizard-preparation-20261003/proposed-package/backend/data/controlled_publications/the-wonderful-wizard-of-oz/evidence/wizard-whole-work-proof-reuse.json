@@ -1,0 +1,426 @@
+{
+  "scope": "UNCHANGED_EXACT_SOURCE_BOUNDARY_AND_25_CHAPTER_PROOF_REUSE_NO_SOURCE_REQUEST",
+  "proof_artifact_sha256": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e",
+  "title_proof": {
+    "slug": "the-wonderful-wizard-of-oz",
+    "verified_at": "2026-10-02T03:42:25.653505+00:00",
+    "selected_edition_scope": "Project Gutenberg #55 Baum1900 English narrative; authorIntroduction and24chapters; noillustrations imported",
+    "raw_source_sha256": "969bffab7740d4d8a0bac332d78bd0152ad4a40a2efc52f06c74a9bb6120be75",
+    "reader_aggregate_sha256": "4b174cd456358387fe1bbd65667a783ae52d7b4f0475f1c570a80132c847b18e",
+    "chapter_count": 25,
+    "ordered_chapter_hashes": {
+      "chapter-000": "4ee081287a4c325cee637bfe8e20b68826d485b5819af4fe77963c991cf9b684",
+      "chapter-001": "6b2ea04eb2b5feb63d6b63a2c67707607d2295825b3e1820f5132d3c1533ae08",
+      "chapter-002": "67fe62a17606b88d40a54c43b8a5369e94c7daab9929369138fc62c377820c59",
+      "chapter-003": "b6ff8d5fd832cc286bbfbaf5ce1c0dfe122339c014871491818765223d4f6d18",
+      "chapter-004": "de3d562b9fae84e13875079c3fc98bc464e3d1c67a2e4e7c6f2c394b7f32d82b",
+      "chapter-005": "9cd55cf52f18ad44471dcdfcfc1b2cb8182bb7d5135fcc1f157416a16aaadb6b",
+      "chapter-006": "096721ba2084335c0ce9fa04c5601d1e0dec29df5c13de98471be74b33502afe",
+      "chapter-007": "87811cfcd53ec87813e3bf94fe58fbff17eae5e0e042aa7ff63c989e594cefdd",
+      "chapter-008": "403beb9177e20c15ef43916f675aa8819c196de573f7215bdd8f6e68a70ab851",
+      "chapter-009": "937b6e58f195152e70208ea591a9223895975c2fa6712f221c25b64e1f0f49b0",
+      "chapter-010": "b3ce471d2ebd869955ae30d3fb23f7d8fb1a94246a4f035f751eab3a9560d3ab",
+      "chapter-011": "8a15173e3f2cbf4d7c5935764d6e1e23a421ef71fe7140f8198db2fbcebad2d3",
+      "chapter-012": "70e1b7c08f7bd7738f2c03ace1dc7024e3eeaae33ee78ab1a1deda74985a07cd",
+      "chapter-013": "a2001a0bab24668bd6007ddbffba93a54fb3e53071e21f863e85307477089ca6",
+      "chapter-014": "c85247d45ded916cbc9e04718a081d99ac2aade35246ddcf37dea4dea2e35516",
+      "chapter-015": "2586ade1195a4ca70029a0314fd3036ad19ec682d49f71bb7b92515500174318",
+      "chapter-016": "faa3c6bceade03582a56cab024b19be20380343f752ed5349b23467b0658691d",
+      "chapter-017": "c12602a79c60dce6dd9b3159e7f5de153f0660a48e022cf3b5e423b9b4b63d9f",
+      "chapter-018": "32284038a5d48ad7a85929a1378a17aa1ec020f39653f84d9bb38eb2d692df13",
+      "chapter-019": "390ae6cbec463ae5b1d9692dc6e7327eec29cb7a51d86b4d5c60324e10e96f79",
+      "chapter-020": "fd8c7de4f03b2b40f83c2fd60b1ec3c0e71f26e11bbabf1e1caccca872d55019",
+      "chapter-021": "56cea2c9b1f6919ebb6ec1b383cb29185f27abcb17363211b7749a142a85849f",
+      "chapter-022": "4bbee98a22b11a98393a12757085d4d62bc3c812a305a4de0c1062aaddd3f62a",
+      "chapter-023": "7b619e3046238df157e1263254df2f528841808b3399f737e4272d4c05b3124c",
+      "chapter-024": "7bc57e0cc9ae0e4ecc9fedd4f922f9a1df0ea7435d9b177a4fe8d8a2e8ae7a78"
+    },
+    "source_boundary_before_first": "& comrade My Wife L.F.B. Contents Introduction Chapter I. The Cyclone Chapter II. The Council with the Munchkins Chapter III. How Dorothy Saved the Scarecrow Chapter IV. The Road Through the Forest Chapter V. The Rescue of the Tin Woodman Chapter VI. The Cowardly Lion Chapter VII. The Journey to the Great Oz Chapter VIII. The Deadly Poppy Field Chapter IX. The Queen of the Field Mice Chapter X. The Guardian of the Gates Chapter XI. The Emerald City of Oz Chapter XII. The Search for the Wicked Witch Chapter XIII. The Rescue Chapter XIV. The Winged Monkeys Chapter XV. The Discovery of Oz, the Terrible Chapter XVI. The Magic Art of the Great Humbug Chapter XVII. How the Balloon Was Launched Chapter XVIII. Away to the South Chapter XIX. Attacked by the Fighting Trees Chapter XX. The Dainty China Country Chapter XXI. The Lion Becomes the King of Beasts Chapter XXII. The Country of the Quadlings Chapter XXIII. Glinda The Good Witch Grants Dorothy’s Wish Chapter XXIV. Home Again Introduction ",
+    "first_body_anchor": "Folklore, legends, myths and fairy tales have followed childhood through the ages, for every healthy youngster has a wholesome and instinctive love for stories fantastic, marvelous and manifestly unre",
+    "last_body_anchor": "ild!” she cried, folding the little girl in her arms and\n\ncovering her face with kisses. “Where in the world did you come from?”\n\n“From the Land of Oz,” said Dorothy gravely. “And here is Toto, too.\n\nAnd oh, Aunt Em! I’m so glad to be at home again!”",
+    "source_boundary_after_last": " *** END OF THE PROJECT GUTENBERG EBOOK THE WONDERFUL WIZARD OF OZ *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in these works, so the Foundation (and you!) can copy and distribute it in the United States without permission and without paying copyright royalties. Special rules, set forth in the General Terms of Use part of this license, apply to copying and distributing Project Gutenberg™ electronic works to protect the PROJECT GUTENBERG™ concept and trademark. Project Gutenberg is a registered trademark, and may not be used if you charge for an eBook, except by following the terms of the trademark license, including paying royalties for use of the Project Gutenberg trademark. If you do not charge anything for copies of this eBook, complying with the trademark license is very easy. You may use this eBook for nearly any purpose such as creation of derivative works, reports, performances and research. Project Gutenberg eBooks may be modified and printed and given away—you may do practically ANYTHING in the United States wi",
+    "internal_gaps": [
+      {
+        "between": [
+          "chapter-000",
+          "chapter-001"
+        ],
+        "text": " The Wonderful Wizard of Oz Chapter I The Cyclone ",
+        "sha256": "093074dbbba7903329f9c52594cba0a5cdbc6db0be0fdcf6b06c627d89a0d322",
+        "length": 50
+      },
+      {
+        "between": [
+          "chapter-001",
+          "chapter-002"
+        ],
+        "text": " Chapter II ",
+        "sha256": "2d43795f9525aab6ca86a4de20674d1736290f7522dda3c0ded65d1bff582851",
+        "length": 12
+      },
+      {
+        "between": [
+          "chapter-002",
+          "chapter-003"
+        ],
+        "text": " Chapter III How Dorothy Saved the Scarecrow ",
+        "sha256": "bf9f31928238f020077c6551d788938188e89d5dc226ca54e8dc0f3f17f751bd",
+        "length": 45
+      },
+      {
+        "between": [
+          "chapter-003",
+          "chapter-004"
+        ],
+        "text": " Chapter IV The Road Through the Forest ",
+        "sha256": "8383a78b2c8b0fe8d88eaff85898b084aa17ece0506e4ebe6bd36b818492f1d7",
+        "length": 40
+      },
+      {
+        "between": [
+          "chapter-004",
+          "chapter-005"
+        ],
+        "text": " Chapter V ",
+        "sha256": "61de7255bd15f890978ef06e50f5bb78867c574fdc06762556aa28c9ebea657c",
+        "length": 11
+      },
+      {
+        "between": [
+          "chapter-005",
+          "chapter-006"
+        ],
+        "text": " Chapter VI The Cowardly Lion ",
+        "sha256": "c1e49639fc46911cdce43d65bc04b9a7a1216db7f3b9aded08dc772d05bb29a1",
+        "length": 30
+      },
+      {
+        "between": [
+          "chapter-006",
+          "chapter-007"
+        ],
+        "text": " Chapter VII ",
+        "sha256": "4852ca813a9ebb46a15217b42d8828092be0ac7d96dcc294d3b35627c11f29e7",
+        "length": 13
+      },
+      {
+        "between": [
+          "chapter-007",
+          "chapter-008"
+        ],
+        "text": " Chapter VIII The Deadly Poppy Field ",
+        "sha256": "4715219119375eb9daec3aa4cad19154c346ee7f9b6b713e313ede769185cb03",
+        "length": 37
+      },
+      {
+        "between": [
+          "chapter-008",
+          "chapter-009"
+        ],
+        "text": " Chapter IX ",
+        "sha256": "6c53d692dbe4700ded880fd64380dca27a83994fecae0fc979b6022066019d7e",
+        "length": 12
+      },
+      {
+        "between": [
+          "chapter-009",
+          "chapter-010"
+        ],
+        "text": " Chapter X ",
+        "sha256": "1593f7dd495ae1a39a60dbe2c994145e5894c683f6a457515034e56d9d038d14",
+        "length": 11
+      },
+      {
+        "between": [
+          "chapter-010",
+          "chapter-011"
+        ],
+        "text": " Chapter XI The Wonderful City of Oz ",
+        "sha256": "52447bfa8e0eb137914cf67b1a401c8f90d198cdea885e59cad3074301796d96",
+        "length": 37
+      },
+      {
+        "between": [
+          "chapter-011",
+          "chapter-012"
+        ],
+        "text": " Chapter XII ",
+        "sha256": "1d8dd6c616ff6f8ef9511b49ef55a71bd4cfed324f597bd44080ebda2396eb45",
+        "length": 13
+      },
+      {
+        "between": [
+          "chapter-012",
+          "chapter-013"
+        ],
+        "text": " Chapter XIII The Rescue ",
+        "sha256": "ca4f95f75a39ba340634e6d1f6bd489501f536f90713ef648ed4e56cce5a7d36",
+        "length": 25
+      },
+      {
+        "between": [
+          "chapter-013",
+          "chapter-014"
+        ],
+        "text": " Chapter XIV The Winged Monkeys ",
+        "sha256": "6acf2ca1795444dc18256fdab374f8371932cff29dc9c62e81beb2d3c1751e48",
+        "length": 32
+      },
+      {
+        "between": [
+          "chapter-014",
+          "chapter-015"
+        ],
+        "text": " Chapter XV ",
+        "sha256": "0feb14434cb2cbc8ea4c93fb754fdd8a79ff4baab2cefbf9758b62edb1dea9a8",
+        "length": 12
+      },
+      {
+        "between": [
+          "chapter-015",
+          "chapter-016"
+        ],
+        "text": " Chapter XVI ",
+        "sha256": "e119d775800551c2e4d76d00c134a36d5f8d9aa410d06e14eeb4f42a97864eed",
+        "length": 13
+      },
+      {
+        "between": [
+          "chapter-016",
+          "chapter-017"
+        ],
+        "text": " Chapter XVII How the Balloon Was Launched ",
+        "sha256": "5ca301e22237213d8f88757110fa51202ff0219a39f67b4263aad4ca43aa7efa",
+        "length": 43
+      },
+      {
+        "between": [
+          "chapter-017",
+          "chapter-018"
+        ],
+        "text": " Chapter XVIII ",
+        "sha256": "b22abc637455574939431ccf5de3b28b69ada40326b4113564f82003878b7465",
+        "length": 15
+      },
+      {
+        "between": [
+          "chapter-018",
+          "chapter-019"
+        ],
+        "text": " Chapter XIX ",
+        "sha256": "f4c36e9ee5d33962ad41b1e83abe662ca77cffb9996979704daeea9f9497020f",
+        "length": 13
+      },
+      {
+        "between": [
+          "chapter-019",
+          "chapter-020"
+        ],
+        "text": " Chapter XX The Dainty China Country ",
+        "sha256": "b8337f0c6c5497b4423594e53066e278ce12efe7797273e460a92ff3ee629399",
+        "length": 37
+      },
+      {
+        "between": [
+          "chapter-020",
+          "chapter-021"
+        ],
+        "text": " Chapter XXI ",
+        "sha256": "f49d131a465794550cc57d404cb10b5c35c085bfc50967bfd83350d1f5f75d3e",
+        "length": 13
+      },
+      {
+        "between": [
+          "chapter-021",
+          "chapter-022"
+        ],
+        "text": " Chapter XXII ",
+        "sha256": "36374e40cc99230304ff9dad6e1e5248e9a65581c26b92d8234ca1edc482e962",
+        "length": 14
+      },
+      {
+        "between": [
+          "chapter-022",
+          "chapter-023"
+        ],
+        "text": " Chapter XXIII Glinda The Good Witch Grants Dorothy’s Wish ",
+        "sha256": "83a4dcb30e194c7f05e3a01c63f5663c630fa3978dcf686c86ecb121a64779ee",
+        "length": 59
+      },
+      {
+        "between": [
+          "chapter-023",
+          "chapter-024"
+        ],
+        "text": " Chapter XXIV Home Again ",
+        "sha256": "4d0e0966c1653a5dfb66cb6d5761eb730e1cf891f0c75b48752ea208a985cdb4",
+        "length": 25
+      }
+    ],
+    "whole_narrative_coverage_review": {
+      "source_byte_receipt": {
+        "requested_url": "https://www.gutenberg.org/ebooks/55.txt.utf-8",
+        "resolved_url": "https://www.gutenberg.org/cache/epub/55/pg55.txt",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:03:36.135494+00:00",
+        "response_sha256": "969bffab7740d4d8a0bac332d78bd0152ad4a40a2efc52f06c74a9bb6120be75"
+      },
+      "whole_narrative_coverage": "PASS",
+      "chapter_count": 25,
+      "chapter_comparison": {
+        "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+        "status": "ALL_CHAPTERS_MATCH_SOURCE",
+        "matched_chapters": [
+          {
+            "chapter_id": "chapter-000",
+            "offset": 1890,
+            "length": 1147
+          },
+          {
+            "chapter_id": "chapter-001",
+            "offset": 3087,
+            "length": 5939
+          },
+          {
+            "chapter_id": "chapter-002",
+            "offset": 9038,
+            "length": 10545
+          },
+          {
+            "chapter_id": "chapter-003",
+            "offset": 19628,
+            "length": 10202
+          },
+          {
+            "chapter_id": "chapter-004",
+            "offset": 29870,
+            "length": 7407
+          },
+          {
+            "chapter_id": "chapter-005",
+            "offset": 37288,
+            "length": 10332
+          },
+          {
+            "chapter_id": "chapter-006",
+            "offset": 47650,
+            "length": 7754
+          },
+          {
+            "chapter_id": "chapter-007",
+            "offset": 55417,
+            "length": 9391
+          },
+          {
+            "chapter_id": "chapter-008",
+            "offset": 64845,
+            "length": 9981
+          },
+          {
+            "chapter_id": "chapter-009",
+            "offset": 74838,
+            "length": 7230
+          },
+          {
+            "chapter_id": "chapter-010",
+            "offset": 82079,
+            "length": 10057
+          },
+          {
+            "chapter_id": "chapter-011",
+            "offset": 92173,
+            "length": 18593
+          },
+          {
+            "chapter_id": "chapter-012",
+            "offset": 110779,
+            "length": 18915
+          },
+          {
+            "chapter_id": "chapter-013",
+            "offset": 129719,
+            "length": 6276
+          },
+          {
+            "chapter_id": "chapter-014",
+            "offset": 136027,
+            "length": 9858
+          },
+          {
+            "chapter_id": "chapter-015",
+            "offset": 145897,
+            "length": 14312
+          },
+          {
+            "chapter_id": "chapter-016",
+            "offset": 160222,
+            "length": 4847
+          },
+          {
+            "chapter_id": "chapter-017",
+            "offset": 165112,
+            "length": 5828
+          },
+          {
+            "chapter_id": "chapter-018",
+            "offset": 170955,
+            "length": 6126
+          },
+          {
+            "chapter_id": "chapter-019",
+            "offset": 177094,
+            "length": 5327
+          },
+          {
+            "chapter_id": "chapter-020",
+            "offset": 182458,
+            "length": 8085
+          },
+          {
+            "chapter_id": "chapter-021",
+            "offset": 190556,
+            "length": 4715
+          },
+          {
+            "chapter_id": "chapter-022",
+            "offset": 195285,
+            "length": 5022
+          },
+          {
+            "chapter_id": "chapter-023",
+            "offset": 200366,
+            "length": 6549
+          },
+          {
+            "chapter_id": "chapter-024",
+            "offset": 206940,
+            "length": 377
+          }
+        ],
+        "nonmatching_chapters": [],
+        "complete_edition_proven": false,
+        "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+      },
+      "first_publication_evidence": {
+        "url": "https://www.loc.gov/item/03032405/",
+        "original_publication_year": 1900,
+        "verified_at": "2026-10-01T21:37:20.182007+00:00",
+        "verification_method": "Actual web tool Library of Congress primary item retrieval; directJSON HTTP403; nofullresponsebytehashclaimed",
+        "excerpt": "Chicago ; New York : Geo. M. Hill Co., 1900.",
+        "excerpt_sha256": "66423b95649ca377fb8d902fe2ee5d23b722670ffc2860df5373b5cc3be7cba1",
+        "scope": "Baum original narrative andauthorIntroduction; noDenslowart imported"
+      },
+      "author_death_evidence": [
+        "Baum, L. Frank (Lyman Frank), 1856-1919"
+      ],
+      "translator": "NONE_SELECTED",
+      "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+      "illustrations": "NONE_IMPORTED",
+      "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+      "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+      "audio": "NOT_AUTHORIZED",
+      "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+    },
+    "containment_alone_complete": false
+  }
+}

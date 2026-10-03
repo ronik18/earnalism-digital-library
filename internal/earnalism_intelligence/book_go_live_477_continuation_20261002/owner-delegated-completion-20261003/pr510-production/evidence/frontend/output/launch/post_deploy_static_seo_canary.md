@@ -1,0 +1,95 @@
+# Static SEO Raw HTML Canary
+
+Result: `PASS`
+
+- `/book/a-ghost-story`: `PASS`; status=200; failures=none
+- `/book/the-tell-tale-heart`: `PASS`; status=200; failures=none
+- `/book/radharani`: `PASS`; status=200; failures=none
+- `/book/a-white-heron`: `PASS`; status=200; failures=none
+- `/book/the-gift-of-the-magi`: `PASS`; status=200; failures=none
+- `/book/the-canterville-ghost`: `PASS`; status=200; failures=none
+- `/book/the-adventures-of-sherlock-holmes`: `PASS`; status=200; failures=none
+- `/library`: `PASS`; status=200; failures=none
+- `/pricing`: `PASS`; status=200; failures=none
+- `/reader/a-ghost-story`: `PASS`; status=200; failures=none
+- `/reader/the-tell-tale-heart`: `PASS`; status=200; failures=none
+- `/reader/radharani`: `PASS`; status=200; failures=none
+- `/reader/a-white-heron`: `PASS`; status=200; failures=none
+- `/reader/the-gift-of-the-magi`: `PASS`; status=200; failures=none
+- `/reader/the-canterville-ghost`: `PASS`; status=200; failures=none
+- `/reader/the-adventures-of-sherlock-holmes`: `PASS`; status=200; failures=none
+- `/book/dracula`: `PASS`; status=200; failures=none
+- `/reader/dracula`: `PASS`; status=200; failures=none
+- `/listener/dracula`: `PASS`; status=200; failures=none
+- `/listener/book-edfcf810c5`: `PASS`; status=200; failures=none
+- `/book/the-selfish-giant`: `PASS`; status=200; failures=none
+- `/reader/the-selfish-giant`: `PASS`; status=200; failures=none
+- `/listener/the-selfish-giant`: `PASS`; status=200; failures=none
+- `/book/yugalanguriya`: `PASS`; status=404; failures=none
+- `/reader/yugalanguriya`: `PASS`; status=404; failures=none
+- `/my-library`: `PASS`; status=200; failures=none
+- `/book/a-horseman-in-the-sky`: `PASS`; status=200; failures=none
+- `/reader/a-horseman-in-the-sky`: `PASS`; status=200; failures=none
+- `/book/a-mystery-of-heroism`: `PASS`; status=200; failures=none
+- `/reader/a-mystery-of-heroism`: `PASS`; status=200; failures=none
+- `/book/a-scandal-in-bohemia`: `PASS`; status=200; failures=none
+- `/reader/a-scandal-in-bohemia`: `PASS`; status=200; failures=none
+- `/book/agentic-ai-with-python`: `PASS`; status=200; failures=none
+- `/reader/agentic-ai-with-python`: `PASS`; status=200; failures=none
+- `/book/alices-adventures-in-wonderland`: `PASS`; status=200; failures=none
+- `/reader/alices-adventures-in-wonderland`: `PASS`; status=200; failures=none
+- `/book/an-occurrence-at-owl-creek-bridge`: `PASS`; status=200; failures=none
+- `/reader/an-occurrence-at-owl-creek-bridge`: `PASS`; status=200; failures=none
+- `/book/bn-035`: `PASS`; status=200; failures=none
+- `/reader/bn-035`: `PASS`; status=200; failures=none
+- `/book/bn-059`: `PASS`; status=200; failures=none
+- `/reader/bn-059`: `PASS`; status=200; failures=none
+- `/book/book-edfcf810c5`: `PASS`; status=200; failures=none
+- `/reader/book-edfcf810c5`: `PASS`; status=200; failures=none
+- `/book/jekyll-and-hyde`: `PASS`; status=200; failures=none
+- `/reader/jekyll-and-hyde`: `PASS`; status=200; failures=none
+- `/book/love-of-life`: `PASS`; status=200; failures=none
+- `/reader/love-of-life`: `PASS`; status=200; failures=none
+- `/book/muchiram-gurer-jibanchorit`: `PASS`; status=200; failures=none
+- `/reader/muchiram-gurer-jibanchorit`: `PASS`; status=200; failures=none
+- `/book/picture-of-dorian-gray`: `PASS`; status=200; failures=none
+- `/reader/picture-of-dorian-gray`: `PASS`; status=200; failures=none
+- `/book/the-art-of-money-getting`: `PASS`; status=200; failures=none
+- `/reader/the-art-of-money-getting`: `PASS`; status=200; failures=none
+- `/book/the-bishop`: `PASS`; status=200; failures=none
+- `/reader/the-bishop`: `PASS`; status=200; failures=none
+- `/book/the-call-of-the-wild`: `PASS`; status=200; failures=none
+- `/reader/the-call-of-the-wild`: `PASS`; status=200; failures=none
+- `/book/the-enchanted-april`: `PASS`; status=200; failures=none
+- `/reader/the-enchanted-april`: `PASS`; status=200; failures=none
+- `/book/the-fall-of-the-house-of-usher`: `PASS`; status=200; failures=none
+- `/reader/the-fall-of-the-house-of-usher`: `PASS`; status=200; failures=none
+- `/book/the-happy-prince`: `PASS`; status=200; failures=none
+- `/reader/the-happy-prince`: `PASS`; status=200; failures=none
+- `/book/the-lady-with-the-dog`: `PASS`; status=200; failures=none
+- `/reader/the-lady-with-the-dog`: `PASS`; status=200; failures=none
+- `/book/the-man-who-would-be-king`: `PASS`; status=200; failures=none
+- `/reader/the-man-who-would-be-king`: `PASS`; status=200; failures=none
+- `/book/the-open-boat`: `PASS`; status=200; failures=none
+- `/reader/the-open-boat`: `PASS`; status=200; failures=none
+- `/book/the-pit-and-the-pendulum`: `PASS`; status=200; failures=none
+- `/reader/the-pit-and-the-pendulum`: `PASS`; status=200; failures=none
+- `/book/the-stolen-white-elephant`: `PASS`; status=200; failures=none
+- `/reader/the-stolen-white-elephant`: `PASS`; status=200; failures=none
+- `/book/the-student`: `PASS`; status=200; failures=none
+- `/reader/the-student`: `PASS`; status=200; failures=none
+
+## Protected API contracts
+
+- `/api/reader/book/dracula/manifest`: `PASS`; status=451; code=RELEASE_TERRITORY_DENIED; India backend=NOT_RUN_FROM_NON_IN; failures=none
+- `/api/reader/book/book-edfcf810c5/manifest`: `PASS`; status=451; code=RELEASE_TERRITORY_DENIED; India backend=NOT_RUN_FROM_NON_IN; failures=none
+- `/api/reader/book/muchiram-gurer-jibanchorit/manifest`: `PASS`; status=451; code=RELEASE_TERRITORY_DENIED; India backend=NOT_RUN_FROM_NON_IN; failures=none
+- `/api/reader/book/bn-059/manifest`: `PASS`; status=451; code=RELEASE_TERRITORY_DENIED; India backend=NOT_RUN_FROM_NON_IN; failures=none
+- `/api/reader/book/the-call-of-the-wild/manifest`: `PASS`; status=451; code=RELEASE_TERRITORY_DENIED; India backend=NOT_RUN_FROM_NON_IN; failures=none
+- `/api/reading-pass/books/the-adventures-of-sherlock-holmes/manifest`: `PASS`; status=451; code=RELEASE_TERRITORY_DENIED; India backend=NOT_RUN_FROM_NON_IN; failures=none
+- `/api/reading-pass/books/the-canterville-ghost/manifest`: `PASS`; status=451; code=RELEASE_TERRITORY_DENIED; India backend=NOT_RUN_FROM_NON_IN; failures=none
+- `/api/reading-pass/books/dracula/manifest`: `PASS`; status=451; code=RELEASE_TERRITORY_DENIED; India backend=NOT_RUN_FROM_NON_IN; failures=none
+- `/api/reading-pass/books/book-edfcf810c5/manifest`: `PASS`; status=451; code=RELEASE_TERRITORY_DENIED; India backend=NOT_RUN_FROM_NON_IN; failures=none
+- `/api/reading-pass/books/muchiram-gurer-jibanchorit/manifest`: `PASS`; status=451; code=RELEASE_TERRITORY_DENIED; India backend=NOT_RUN_FROM_NON_IN; failures=none
+- `/api/reading-pass/books/bn-059/manifest`: `PASS`; status=451; code=RELEASE_TERRITORY_DENIED; India backend=NOT_RUN_FROM_NON_IN; failures=none
+- `/api/reading-pass/books/the-call-of-the-wild/manifest`: `PASS`; status=451; code=RELEASE_TERRITORY_DENIED; India backend=NOT_RUN_FROM_NON_IN; failures=none

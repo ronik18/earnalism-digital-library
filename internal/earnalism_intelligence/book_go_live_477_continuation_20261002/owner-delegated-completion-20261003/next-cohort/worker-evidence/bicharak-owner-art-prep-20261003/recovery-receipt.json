@@ -1,0 +1,35 @@
+{
+  "schema": "earnalism.exact-original-cover-recovery.v1",
+  "slug": "book-5704b31005",
+  "original_gets": 2,
+  "status": "RECOVERED_EXACT_PERSISTED_OWNER_ART_URL_PAIR",
+  "requests": [
+    {
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275451/earnalism/covers/front/book-5704b31005_front_1600x2400.png",
+      "retrieved_at": "2026-10-03T05:42:05.549075+00:00",
+      "method": "GET",
+      "attempt": 1,
+      "http_status": 200,
+      "content_type": "image/png",
+      "content_length": "181935",
+      "actual_bytes": 181935,
+      "sha256": "a914d173de6f5cd9486fd91a7b69188d156ac7623ebc9f8f89173acd1c48d104",
+      "final_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275451/earnalism/covers/front/book-5704b31005_front_1600x2400.png",
+      "etag": "\"950e6ba6462733a7b56f3fb1a128bb29\""
+    },
+    {
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275453/earnalism/covers/back/book-5704b31005_back_1600x2400.png",
+      "retrieved_at": "2026-10-03T05:42:16.344357+00:00",
+      "method": "GET",
+      "attempt": 1,
+      "http_status": 200,
+      "content_type": "image/png",
+      "content_length": "412643",
+      "actual_bytes": 412643,
+      "sha256": "a99c6c0e27712090637651204cfb0aa5809442ddbc3b5e99da35828a34c82a08",
+      "final_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275453/earnalism/covers/back/book-5704b31005_back_1600x2400.png",
+      "etag": "\"f1d9d10801ef6f19112793a9607be099\""
+    }
+  ],
+  "paid_generation": 0
+}

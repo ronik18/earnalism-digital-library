@@ -4,7 +4,7 @@
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "8e598a926cb96af13684a3985d1143cf9ac5fb0a973eec11746a211462769d1c"
+      "sha256": "9dc704ba64f8d4f07f1693c2d408d7a336146ea67cdfc37040e0ca072ae290d2"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -251,16 +251,44 @@
       "sha256": "3484102d8413c5b933eb297bedd058fc4bc35270884701363eb458ec0dfb6fc0"
     },
     {
+      "file": "cover_preparation.json",
+      "sha256": "2dac14946bcae786712e98584308268b8a22eeee505e395c8a9ea72fa4e37ca4"
+    },
+    {
+      "file": "covers/original-back.png",
+      "sha256": "fbb0d3c37fcaeec50ae49921b5bd9d46ab44189f7ebbd2a93f26c1f47798faa8"
+    },
+    {
+      "file": "covers/original-front.png",
+      "sha256": "480db270e262b166bdd91ffd5dc1df03c2bd63d79e632634a1dc0c419be1dfc9"
+    },
+    {
+      "file": "covers/pride-and-prejudice-back-deterministic.png",
+      "sha256": "c174a363be117b7cf50c1a9abe16581ff444ec6b88bb3c93d2328e1217d8397a"
+    },
+    {
+      "file": "covers/pride-and-prejudice-back-fbb0d3c3.webp",
+      "sha256": "74158f60e81ffa0626fd6d1e6e13e3c7a49257ec91dae10dcc11e697bd6ea09b"
+    },
+    {
+      "file": "covers/pride-and-prejudice-front-480db270.webp",
+      "sha256": "93c11e8b029d4e283655542189c9f14424d6ba3bc489f7e60c64c465a6943d3d"
+    },
+    {
+      "file": "covers/pride-and-prejudice-front-deterministic.png",
+      "sha256": "142fe5c0fa1b705c6486253df30838e5ba41c412fd02ca8ffe694c49a5873473"
+    },
+    {
       "file": "highlight_sync.json",
       "sha256": "e5962e7db300d035d45847a9e491e7f4c164df4e7ebf3a136a254f10b66e1f48"
     },
     {
       "file": "public_book.json",
-      "sha256": "c9c7472c67232de4c9eba6b94428b107b4c00b6156552c2122bfa6a0bfb6cd7e"
+      "sha256": "a4334cbaee40e9afbbd092b6de2ac5dd2fa88f7484a68cf1daa0e75a03b11d13"
     },
     {
       "file": "publication_authorization.json",
-      "sha256": "ec35a5aed3936f495dc8cc0408fa54a6cf27c3c96003f74a85a58b594c5671b7"
+      "sha256": "26bd265aa451dd7411e0717f9c811dd28f57d96fddb4196bd75eb7cafe944cf0"
     },
     {
       "file": "reader_manifest.json",
@@ -269,6 +297,26 @@
     {
       "file": "source_evidence.json",
       "sha256": "9e4efacc3dbd251ea18aacd5805d781c1f64a450bea0225fae4ba6a394a97e99"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "d3ef6d3ddf9794c337a80e120396cb144d2bbe09b54481a8549e20abfaa1f2bd"
+    },
+    {
+      "file": "owner_artwork_declaration.json",
+      "sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264"
+    },
+    {
+      "file": "evidence/review_a.json",
+      "sha256": "db1362ae9a048b971fbbb19850c7b6b45b62865c4c6dbc1d02d2c805c9a21cf1"
+    },
+    {
+      "file": "evidence/review_b.json",
+      "sha256": "7a4240e762350e02429e64fc14796d5ce7c4b34b808d2045cf788d5e726e66b2"
+    },
+    {
+      "file": "evidence/source_review_b.json",
+      "sha256": "78e104ef3a355c89f945241da2b3b02906f40f62c53ec91d2b431b5d6602300a"
     }
   ]
 }

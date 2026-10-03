@@ -1,0 +1,62 @@
+{
+  "schema": "earnalism.bengali-distinct-next-cohort.v1",
+  "titles": [
+    {
+      "slug": "lokrahasya",
+      "status": "FROZEN_UNACCEPTED_PROPOSAL_TWO_FRESH_REVIEWS_REQUIRED",
+      "proposal_path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/lokrahasya/proposal/data/controlled_publications/lokrahasya",
+      "source_validation_sha256": "1ee56a41c661d2aeee38500bad0d40e23a5c2173da311cf494b3ab7a9cbcf83f",
+      "cover_preparation_sha256": "0249f1c686a32ac452c9d84421d956221af66e70abc16cbff0f0e5a9063a8b30",
+      "preimage_inventory_sha256": "5644ff0e8e352445d4bafa7562e94eca4f25ce07609ecdbb49cfa5cacfd24b48",
+      "package_inventory_canonical_sha256": "e3e0963dac9774c1e212aa3e50cf743c6a46161a81c67f754857c9643e3a4599",
+      "decision_raw_sha256": "b616f8ecad7444ade68ea58d04ed7bb2e525d59961ffcce9d2200ae5ab5bb0a6",
+      "decision_canonical_sha256": "b114b1e6022918e393a41ab5f9f81287cdc84115c008597d3f027490bfa751bf",
+      "removed_archived_components": [],
+      "source_chapter_license_sync_bytes_unchanged": true,
+      "effective_audio_disabled_claims_clean": true,
+      "actual_acceptance_created": false,
+      "canonical_or_production_mutation": false,
+      "next_action": "Two fresh independent exact typography/copy/delivery/package reviews; PASS permits prospective acceptance paperwork, substantial HOLD causes terminal exclusion without further repair."
+    },
+    {
+      "slug": "mrinalini",
+      "status": "FROZEN_UNACCEPTED_PROPOSAL_TWO_FRESH_REVIEWS_REQUIRED",
+      "proposal_path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/mrinalini/proposal/data/controlled_publications/mrinalini",
+      "source_validation_sha256": "2dbb55966f08bab638594fb9bee89d1fa72a5069ae180492c1f48ddbd704e037",
+      "cover_preparation_sha256": "69c10bfb2fe6adce40ebe0e1e10c46c1845cf91a1b78fdd6b7a6dbf9732e8ee3",
+      "preimage_inventory_sha256": "9a2f62aecefab46efb5c2533beec2c81f460973c9649fc733d839b4124c54722",
+      "package_inventory_canonical_sha256": "0e5d32ec3bf9efe764fa5f5df77d9e7f59f0dcce60670f6d1d13b6c508f76685",
+      "decision_raw_sha256": "d74bc7e2090e260dbec1e80e76d2d76f303a357073f3e9e05e2758fad7380756",
+      "decision_canonical_sha256": "a6acc01a6a6c1fcd86aee884f5079eea5d870fbce2995ef4495a0155c60cb74b",
+      "removed_archived_components": [],
+      "source_chapter_license_sync_bytes_unchanged": true,
+      "effective_audio_disabled_claims_clean": true,
+      "actual_acceptance_created": false,
+      "canonical_or_production_mutation": false,
+      "next_action": "Two fresh independent exact typography/copy/delivery/package reviews; PASS permits prospective acceptance paperwork, substantial HOLD causes terminal exclusion without further repair."
+    },
+    {
+      "slug": "bn-066",
+      "status": "FROZEN_UNACCEPTED_PROPOSAL_TWO_FRESH_REVIEWS_REQUIRED",
+      "proposal_path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/bn-066/proposal/data/controlled_publications/bn-066",
+      "source_validation_sha256": "7961d869b23159c00f0ae5a2b7b3163a2d0bf24fb0afb836a78f4bfd349f175e",
+      "cover_preparation_sha256": "e8aeda9aff937df0b3e32be3a163d28e0d09462bba7b22736fb4d120ddf3691f",
+      "preimage_inventory_sha256": "70eefe3a8409a53c913acac2453cd3cd1d1b783869d8bad130a54e63fc7eab7f",
+      "package_inventory_canonical_sha256": "dfb2704de9c6972b36f6140a0a748664ac42ef4b18de94358070933eff0ecd68",
+      "decision_raw_sha256": "06373a03a40df9fede9ccd5da62d2c7785032476f5cbe4390d310298a0676478",
+      "decision_canonical_sha256": "534dab073758625c00bdd86399409db297da42c8063bb016966d4adb9414b928",
+      "removed_archived_components": [],
+      "source_chapter_license_sync_bytes_unchanged": true,
+      "effective_audio_disabled_claims_clean": true,
+      "actual_acceptance_created": false,
+      "canonical_or_production_mutation": false,
+      "next_action": "Two fresh independent exact typography/copy/delivery/package reviews; PASS permits prospective acceptance paperwork, substantial HOLD causes terminal exclusion without further repair."
+    }
+  ],
+  "source_reinvestigations": 0,
+  "original_gets": 6,
+  "paid_generation_calls": 0,
+  "new_external_tasks": 0,
+  "canonical_mutations": 0,
+  "actual_acceptance_or_release_created": false
+}

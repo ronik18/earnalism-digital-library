@@ -1,0 +1,199 @@
+{
+  "recorded_at": "2026-10-03T05:24:01.821573+00:00",
+  "main": "0fee65668f94284d180065d0fe8b38face924498",
+  "production_mutation_performed": false,
+  "rows": [
+    {
+      "path": "/listener/the-student",
+      "status": 200,
+      "body": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/><meta name=\"theme-color\" content=\"#4A1C27\"/><meta name=\"color-scheme\" content=\"light\"/><meta name=\"application-name\" content=\"Earnalism\"/><meta name=\"author\" content=\"The Earnalism\"/><meta name=\"format-detection\" content=\"telephone=no\"/><link rel=\"dns-prefetch\" href=\"//res.cloudinary.com\"/><link rel=\"dns-prefetch\" href=\"//api.theearnalism.com\"/><link rel=\"preconnect\" href=\"https://res.cloudinary.com\"/><link rel=\"preconnect\" href=\"https://api.theearnalism.com\"/><link rel=\"preload\" as=\"image\" href=\"/assets/hero/premium-library-reference-exact-1440.avif?v=20260808-perf1\" imagesrcset=\"/assets/hero/premium-library-reference-exact-1024.avif?v=20260808-perf1 1024w, /assets/hero/premium-library-reference-exact-1440.avif?v=20260808-perf1 1440w, /assets/hero/premium-library-reference-exact.avif?v=20260808-perf1 2180w\" imagesizes=\"100vw\" type=\"image/avif\" media=\"(min-width: 1024px)\" fetchpriority=\"high\"/><link rel=\"preload\" as=\"image\" href=\"/assets/hero/premium-library-mobile-cinematic-v2.webp?v=20260815-mobile-luxe1\" type=\"image/webp\" media=\"(max-width: 1023px)\" fetchpriority=\"high\"/><link rel=\"icon\" type=\"image/png\" sizes=\"64x64\" href=\"/favicon.png?v=20260810-focused\"/><link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"/assets/brand/earnalism-app-icon-192.png?v=20260810-focused\"/><link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon.png?v=20260810-focused\"/><link rel=\"manifest\" href=\"/site.webmanifest\"/><script>window.addEventListener(\"error\",function(e){e.error instanceof DOMException&&\"DataCloneError\"===e.error.name&&e.message&&e.message.includes(\"PerformanceServerTiming\")&&(e.stopImmediatePropagation(),e.preventDefault())},!0)</script><script defer=\"defer\" src=\"/static/js/main.65de0834.js\"></script><link href=\"/static/css/main.9f8282b6.css\" rel=\"stylesheet\"><!-- earnalism-static-seo:start -->\n<title>Listen to The Student | The Earnalism</title>\n<meta name=\"description\" content=\"Listening is not available for The Student in the current release.\" />\n<meta name=\"robots\" content=\"noindex,follow\" />\n<link rel=\"canonical\" href=\"https://theearnalism.com/book/the-student\" />\n<meta property=\"og:locale\" content=\"en_US\" />\n<meta property=\"og:site_name\" content=\"The Earnalism Digital Library\" />\n<meta property=\"og:type\" content=\"website\" />\n<meta property=\"og:title\" content=\"Listen to The Student | The Earnalism\" />\n<meta property=\"og:description\" content=\"Listening is not available for The Student in the current release.\" />\n<meta property=\"og:url\" content=\"https://theearnalism.com/book/the-student\" />\n<meta property=\"og:image\" content=\"https://theearnalism.com/assets/brand/earnalism-brand-lockup.png\" />\n<meta property=\"og:image:alt\" content=\"Listen to The Student | The Earnalism\" />\n<meta name=\"twitter:card\" content=\"summary_large_image\" />\n<meta name=\"twitter:title\" content=\"Listen to The Student | The Earnalism\" />\n<meta name=\"twitter:description\" content=\"Listening is not available for The Student in the current release.\" />\n<meta name=\"twitter:image\" content=\"https://theearnalism.com/assets/brand/earnalism-brand-lockup.png\" />\n<meta name=\"twitter:image:alt\" content=\"Listen to The Student | The Earnalism\" />\n<!-- earnalism-static-seo:end -->\n</head><body><noscript><main class=\"static-seo-snapshot\" data-static-seo-snapshot=\"true\" style=\"font-family:Georgia,serif;max-width:820px;margin:56px auto;padding:0 22px;line-height:1.75;color:#2c1810\"><img src=\"https://theearnalism.com/assets/brand/earnalism-brand-lockup.png\" width=\"640\" height=\"192\" alt=\"The Earnalism\" style=\"display:block;width:220px;height:auto;margin:0 0 2rem\"><p style=\"text-transform:uppercase;letter-spacing:.18em;color:#9a7440;font-size:.72rem\">Listening</p><h1 style=\"font-size:clamp(2.4rem,6vw,4.5rem);line-height:1.05;color:#4a1c27;margin:.2em 0\">The Student</h1><p style=\"font-size:1.12rem;color:#5f5350\">Listening is not available for The Student in the current release.</p><ul><li>Public audio preview: 0 seconds.</li><li>The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch.</li></ul><nav aria-label=\"Page links\"><a href=\"/book/the-student\">Book details</a></nav></main></noscript><div id=\"root\"><main class=\"static-seo-snapshot\" data-static-seo-snapshot=\"true\" style=\"font-family:Georgia,serif;max-width:820px;margin:56px auto;padding:0 22px;line-height:1.75;color:#2c1810\"><img src=\"https://theearnalism.com/assets/brand/earnalism-brand-lockup.png\" width=\"640\" height=\"192\" alt=\"The Earnalism\" style=\"display:block;width:220px;height:auto;margin:0 0 2rem\"><p style=\"text-transform:uppercase;letter-spacing:.18em;color:#9a7440;font-size:.72rem\">Listening</p><h1 style=\"font-size:clamp(2.4rem,6vw,4.5rem);line-height:1.05;color:#4a1c27;margin:.2em 0\">The Student</h1><p style=\"font-size:1.12rem;color:#5f5350\">Listening is not available for The Student in the current release.</p><ul><li>Public audio preview: 0 seconds.</li><li>The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch.</li></ul><nav aria-label=\"Page links\"><a href=\"/book/the-student\">Book details</a></nav></main></div></body></html>",
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "X-Vercel-Cache": "MISS"
+      },
+      "observed_canonical_version": null,
+      "audio_or_media_control_present": false,
+      "unavailable_copy_present": true
+    },
+    {
+      "path": "/listener/the-art-of-money-getting",
+      "status": 200,
+      "body": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/><meta name=\"theme-color\" content=\"#4A1C27\"/><meta name=\"color-scheme\" content=\"light\"/><meta name=\"application-name\" content=\"Earnalism\"/><meta name=\"author\" content=\"The Earnalism\"/><meta name=\"format-detection\" content=\"telephone=no\"/><link rel=\"dns-prefetch\" href=\"//res.cloudinary.com\"/><link rel=\"dns-prefetch\" href=\"//api.theearnalism.com\"/><link rel=\"preconnect\" href=\"https://res.cloudinary.com\"/><link rel=\"preconnect\" href=\"https://api.theearnalism.com\"/><link rel=\"preload\" as=\"image\" href=\"/assets/hero/premium-library-reference-exact-1440.avif?v=20260808-perf1\" imagesrcset=\"/assets/hero/premium-library-reference-exact-1024.avif?v=20260808-perf1 1024w, /assets/hero/premium-library-reference-exact-1440.avif?v=20260808-perf1 1440w, /assets/hero/premium-library-reference-exact.avif?v=20260808-perf1 2180w\" imagesizes=\"100vw\" type=\"image/avif\" media=\"(min-width: 1024px)\" fetchpriority=\"high\"/><link rel=\"preload\" as=\"image\" href=\"/assets/hero/premium-library-mobile-cinematic-v2.webp?v=20260815-mobile-luxe1\" type=\"image/webp\" media=\"(max-width: 1023px)\" fetchpriority=\"high\"/><link rel=\"icon\" type=\"image/png\" sizes=\"64x64\" href=\"/favicon.png?v=20260810-focused\"/><link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"/assets/brand/earnalism-app-icon-192.png?v=20260810-focused\"/><link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon.png?v=20260810-focused\"/><link rel=\"manifest\" href=\"/site.webmanifest\"/><script>window.addEventListener(\"error\",function(e){e.error instanceof DOMException&&\"DataCloneError\"===e.error.name&&e.message&&e.message.includes(\"PerformanceServerTiming\")&&(e.stopImmediatePropagation(),e.preventDefault())},!0)</script><script defer=\"defer\" src=\"/static/js/main.65de0834.js\"></script><link href=\"/static/css/main.9f8282b6.css\" rel=\"stylesheet\"><!-- earnalism-static-seo:start -->\n<title>Listen to The Art of Money Getting | The Earnalism</title>\n<meta name=\"description\" content=\"Listening is not available for The Art of Money Getting in the current release.\" />\n<meta name=\"robots\" content=\"noindex,follow\" />\n<link rel=\"canonical\" href=\"https://theearnalism.com/book/the-art-of-money-getting\" />\n<meta property=\"og:locale\" content=\"en_US\" />\n<meta property=\"og:site_name\" content=\"The Earnalism Digital Library\" />\n<meta property=\"og:type\" content=\"website\" />\n<meta property=\"og:title\" content=\"Listen to The Art of Money Getting | The Earnalism\" />\n<meta property=\"og:description\" content=\"Listening is not available for The Art of Money Getting in the current release.\" />\n<meta property=\"og:url\" content=\"https://theearnalism.com/book/the-art-of-money-getting\" />\n<meta property=\"og:image\" content=\"https://theearnalism.com/assets/brand/earnalism-brand-lockup.png\" />\n<meta property=\"og:image:alt\" content=\"Listen to The Art of Money Getting | The Earnalism\" />\n<meta name=\"twitter:card\" content=\"summary_large_image\" />\n<meta name=\"twitter:title\" content=\"Listen to The Art of Money Getting | The Earnalism\" />\n<meta name=\"twitter:description\" content=\"Listening is not available for The Art of Money Getting in the current release.\" />\n<meta name=\"twitter:image\" content=\"https://theearnalism.com/assets/brand/earnalism-brand-lockup.png\" />\n<meta name=\"twitter:image:alt\" content=\"Listen to The Art of Money Getting | The Earnalism\" />\n<!-- earnalism-static-seo:end -->\n</head><body><noscript><main class=\"static-seo-snapshot\" data-static-seo-snapshot=\"true\" style=\"font-family:Georgia,serif;max-width:820px;margin:56px auto;padding:0 22px;line-height:1.75;color:#2c1810\"><img src=\"https://theearnalism.com/assets/brand/earnalism-brand-lockup.png\" width=\"640\" height=\"192\" alt=\"The Earnalism\" style=\"display:block;width:220px;height:auto;margin:0 0 2rem\"><p style=\"text-transform:uppercase;letter-spacing:.18em;color:#9a7440;font-size:.72rem\">Listening</p><h1 style=\"font-size:clamp(2.4rem,6vw,4.5rem);line-height:1.05;color:#4a1c27;margin:.2em 0\">The Art of Money Getting</h1><p style=\"font-size:1.12rem;color:#5f5350\">Listening is not available for The Art of Money Getting in the current release.</p><ul><li>Public audio preview: 0 seconds.</li><li>The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch.</li></ul><nav aria-label=\"Page links\"><a href=\"/book/the-art-of-money-getting\">Book details</a></nav></main></noscript><div id=\"root\"><main class=\"static-seo-snapshot\" data-static-seo-snapshot=\"true\" style=\"font-family:Georgia,serif;max-width:820px;margin:56px auto;padding:0 22px;line-height:1.75;color:#2c1810\"><img src=\"https://theearnalism.com/assets/brand/earnalism-brand-lockup.png\" width=\"640\" height=\"192\" alt=\"The Earnalism\" style=\"display:block;width:220px;height:auto;margin:0 0 2rem\"><p style=\"text-transform:uppercase;letter-spacing:.18em;color:#9a7440;font-size:.72rem\">Listening</p><h1 style=\"font-size:clamp(2.4rem,6vw,4.5rem);line-height:1.05;color:#4a1c27;margin:.2em 0\">The Art of Money Getting</h1><p style=\"font-size:1.12rem;color:#5f5350\">Listening is not available for The Art of Money Getting in the current release.</p><ul><li>Public audio preview: 0 seconds.</li><li>The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch.</li></ul><nav aria-label=\"Page links\"><a href=\"/book/the-art-of-money-getting\">Book details</a></nav></main></div></body></html>",
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "X-Vercel-Cache": "MISS"
+      },
+      "observed_canonical_version": null,
+      "audio_or_media_control_present": false,
+      "unavailable_copy_present": true
+    },
+    {
+      "path": "/listener/bn-035",
+      "status": 200,
+      "body": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/><meta name=\"theme-color\" content=\"#4A1C27\"/><meta name=\"color-scheme\" content=\"light\"/><meta name=\"application-name\" content=\"Earnalism\"/><meta name=\"author\" content=\"The Earnalism\"/><meta name=\"format-detection\" content=\"telephone=no\"/><link rel=\"dns-prefetch\" href=\"//res.cloudinary.com\"/><link rel=\"dns-prefetch\" href=\"//api.theearnalism.com\"/><link rel=\"preconnect\" href=\"https://res.cloudinary.com\"/><link rel=\"preconnect\" href=\"https://api.theearnalism.com\"/><link rel=\"preload\" as=\"image\" href=\"/assets/hero/premium-library-reference-exact-1440.avif?v=20260808-perf1\" imagesrcset=\"/assets/hero/premium-library-reference-exact-1024.avif?v=20260808-perf1 1024w, /assets/hero/premium-library-reference-exact-1440.avif?v=20260808-perf1 1440w, /assets/hero/premium-library-reference-exact.avif?v=20260808-perf1 2180w\" imagesizes=\"100vw\" type=\"image/avif\" media=\"(min-width: 1024px)\" fetchpriority=\"high\"/><link rel=\"preload\" as=\"image\" href=\"/assets/hero/premium-library-mobile-cinematic-v2.webp?v=20260815-mobile-luxe1\" type=\"image/webp\" media=\"(max-width: 1023px)\" fetchpriority=\"high\"/><link rel=\"icon\" type=\"image/png\" sizes=\"64x64\" href=\"/favicon.png?v=20260810-focused\"/><link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"/assets/brand/earnalism-app-icon-192.png?v=20260810-focused\"/><link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon.png?v=20260810-focused\"/><link rel=\"manifest\" href=\"/site.webmanifest\"/><script>window.addEventListener(\"error\",function(e){e.error instanceof DOMException&&\"DataCloneError\"===e.error.name&&e.message&&e.message.includes(\"PerformanceServerTiming\")&&(e.stopImmediatePropagation(),e.preventDefault())},!0)</script><script defer=\"defer\" src=\"/static/js/main.65de0834.js\"></script><link href=\"/static/css/main.9f8282b6.css\" rel=\"stylesheet\"><!-- earnalism-static-seo:start -->\n<title>Listen to বড়দিদি | The Earnalism</title>\n<meta name=\"description\" content=\"Listening is not available for বড়দিদি in the current release.\" />\n<meta name=\"robots\" content=\"noindex,follow\" />\n<link rel=\"canonical\" href=\"https://theearnalism.com/book/bn-035\" />\n<meta property=\"og:locale\" content=\"en_US\" />\n<meta property=\"og:site_name\" content=\"The Earnalism Digital Library\" />\n<meta property=\"og:type\" content=\"website\" />\n<meta property=\"og:title\" content=\"Listen to বড়দিদি | The Earnalism\" />\n<meta property=\"og:description\" content=\"Listening is not available for বড়দিদি in the current release.\" />\n<meta property=\"og:url\" content=\"https://theearnalism.com/book/bn-035\" />\n<meta property=\"og:image\" content=\"https://theearnalism.com/assets/brand/earnalism-brand-lockup.png\" />\n<meta property=\"og:image:alt\" content=\"Listen to বড়দিদি | The Earnalism\" />\n<meta name=\"twitter:card\" content=\"summary_large_image\" />\n<meta name=\"twitter:title\" content=\"Listen to বড়দিদি | The Earnalism\" />\n<meta name=\"twitter:description\" content=\"Listening is not available for বড়দিদি in the current release.\" />\n<meta name=\"twitter:image\" content=\"https://theearnalism.com/assets/brand/earnalism-brand-lockup.png\" />\n<meta name=\"twitter:image:alt\" content=\"Listen to বড়দিদি | The Earnalism\" />\n<!-- earnalism-static-seo:end -->\n</head><body><noscript><main class=\"static-seo-snapshot\" data-static-seo-snapshot=\"true\" style=\"font-family:Georgia,serif;max-width:820px;margin:56px auto;padding:0 22px;line-height:1.75;color:#2c1810\"><img src=\"https://theearnalism.com/assets/brand/earnalism-brand-lockup.png\" width=\"640\" height=\"192\" alt=\"The Earnalism\" style=\"display:block;width:220px;height:auto;margin:0 0 2rem\"><p style=\"text-transform:uppercase;letter-spacing:.18em;color:#9a7440;font-size:.72rem\">Listening</p><h1 style=\"font-size:clamp(2.4rem,6vw,4.5rem);line-height:1.05;color:#4a1c27;margin:.2em 0\">বড়দিদি</h1><p style=\"font-size:1.12rem;color:#5f5350\">Listening is not available for বড়দিদি in the current release.</p><ul><li>Public audio preview: 0 seconds.</li><li>The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch.</li></ul><nav aria-label=\"Page links\"><a href=\"/book/bn-035\">Book details</a></nav></main></noscript><div id=\"root\"><main class=\"static-seo-snapshot\" data-static-seo-snapshot=\"true\" style=\"font-family:Georgia,serif;max-width:820px;margin:56px auto;padding:0 22px;line-height:1.75;color:#2c1810\"><img src=\"https://theearnalism.com/assets/brand/earnalism-brand-lockup.png\" width=\"640\" height=\"192\" alt=\"The Earnalism\" style=\"display:block;width:220px;height:auto;margin:0 0 2rem\"><p style=\"text-transform:uppercase;letter-spacing:.18em;color:#9a7440;font-size:.72rem\">Listening</p><h1 style=\"font-size:clamp(2.4rem,6vw,4.5rem);line-height:1.05;color:#4a1c27;margin:.2em 0\">বড়দিদি</h1><p style=\"font-size:1.12rem;color:#5f5350\">Listening is not available for বড়দিদি in the current release.</p><ul><li>Public audio preview: 0 seconds.</li><li>The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch.</li></ul><nav aria-label=\"Page links\"><a href=\"/book/bn-035\">Book details</a></nav></main></div></body></html>",
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "X-Vercel-Cache": "MISS"
+      },
+      "observed_canonical_version": null,
+      "audio_or_media_control_present": false,
+      "unavailable_copy_present": true
+    },
+    {
+      "path": "/listener/alices-adventures-in-wonderland",
+      "status": 200,
+      "body": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/><meta name=\"theme-color\" content=\"#4A1C27\"/><meta name=\"color-scheme\" content=\"light\"/><meta name=\"application-name\" content=\"Earnalism\"/><meta name=\"author\" content=\"The Earnalism\"/><meta name=\"format-detection\" content=\"telephone=no\"/><link rel=\"dns-prefetch\" href=\"//res.cloudinary.com\"/><link rel=\"dns-prefetch\" href=\"//api.theearnalism.com\"/><link rel=\"preconnect\" href=\"https://res.cloudinary.com\"/><link rel=\"preconnect\" href=\"https://api.theearnalism.com\"/><link rel=\"preload\" as=\"image\" href=\"/assets/hero/premium-library-reference-exact-1440.avif?v=20260808-perf1\" imagesrcset=\"/assets/hero/premium-library-reference-exact-1024.avif?v=20260808-perf1 1024w, /assets/hero/premium-library-reference-exact-1440.avif?v=20260808-perf1 1440w, /assets/hero/premium-library-reference-exact.avif?v=20260808-perf1 2180w\" imagesizes=\"100vw\" type=\"image/avif\" media=\"(min-width: 1024px)\" fetchpriority=\"high\"/><link rel=\"preload\" as=\"image\" href=\"/assets/hero/premium-library-mobile-cinematic-v2.webp?v=20260815-mobile-luxe1\" type=\"image/webp\" media=\"(max-width: 1023px)\" fetchpriority=\"high\"/><link rel=\"icon\" type=\"image/png\" sizes=\"64x64\" href=\"/favicon.png?v=20260810-focused\"/><link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"/assets/brand/earnalism-app-icon-192.png?v=20260810-focused\"/><link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon.png?v=20260810-focused\"/><link rel=\"manifest\" href=\"/site.webmanifest\"/><script>window.addEventListener(\"error\",function(e){e.error instanceof DOMException&&\"DataCloneError\"===e.error.name&&e.message&&e.message.includes(\"PerformanceServerTiming\")&&(e.stopImmediatePropagation(),e.preventDefault())},!0)</script><script defer=\"defer\" src=\"/static/js/main.65de0834.js\"></script><link href=\"/static/css/main.9f8282b6.css\" rel=\"stylesheet\"><!-- earnalism-static-seo:start -->\n<title>Listen to Alice&#39;s Adventures in Wonderland | The Earnalism</title>\n<meta name=\"description\" content=\"Listening is not available for Alice&#39;s Adventures in Wonderland in the current release.\" />\n<meta name=\"robots\" content=\"noindex,follow\" />\n<link rel=\"canonical\" href=\"https://theearnalism.com/book/alices-adventures-in-wonderland\" />\n<meta property=\"og:locale\" content=\"en_US\" />\n<meta property=\"og:site_name\" content=\"The Earnalism Digital Library\" />\n<meta property=\"og:type\" content=\"website\" />\n<meta property=\"og:title\" content=\"Listen to Alice&#39;s Adventures in Wonderland | The Earnalism\" />\n<meta property=\"og:description\" content=\"Listening is not available for Alice&#39;s Adventures in Wonderland in the current release.\" />\n<meta property=\"og:url\" content=\"https://theearnalism.com/book/alices-adventures-in-wonderland\" />\n<meta property=\"og:image\" content=\"https://theearnalism.com/assets/brand/earnalism-brand-lockup.png\" />\n<meta property=\"og:image:alt\" content=\"Listen to Alice&#39;s Adventures in Wonderland | The Earnalism\" />\n<meta name=\"twitter:card\" content=\"summary_large_image\" />\n<meta name=\"twitter:title\" content=\"Listen to Alice&#39;s Adventures in Wonderland | The Earnalism\" />\n<meta name=\"twitter:description\" content=\"Listening is not available for Alice&#39;s Adventures in Wonderland in the current release.\" />\n<meta name=\"twitter:image\" content=\"https://theearnalism.com/assets/brand/earnalism-brand-lockup.png\" />\n<meta name=\"twitter:image:alt\" content=\"Listen to Alice&#39;s Adventures in Wonderland | The Earnalism\" />\n<!-- earnalism-static-seo:end -->\n</head><body><noscript><main class=\"static-seo-snapshot\" data-static-seo-snapshot=\"true\" style=\"font-family:Georgia,serif;max-width:820px;margin:56px auto;padding:0 22px;line-height:1.75;color:#2c1810\"><img src=\"https://theearnalism.com/assets/brand/earnalism-brand-lockup.png\" width=\"640\" height=\"192\" alt=\"The Earnalism\" style=\"display:block;width:220px;height:auto;margin:0 0 2rem\"><p style=\"text-transform:uppercase;letter-spacing:.18em;color:#9a7440;font-size:.72rem\">Listening</p><h1 style=\"font-size:clamp(2.4rem,6vw,4.5rem);line-height:1.05;color:#4a1c27;margin:.2em 0\">Alice&#39;s Adventures in Wonderland</h1><p style=\"font-size:1.12rem;color:#5f5350\">Listening is not available for Alice&#39;s Adventures in Wonderland in the current release.</p><ul><li>Public audio preview: 0 seconds.</li><li>The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch.</li></ul><nav aria-label=\"Page links\"><a href=\"/book/alices-adventures-in-wonderland\">Book details</a></nav></main></noscript><div id=\"root\"><main class=\"static-seo-snapshot\" data-static-seo-snapshot=\"true\" style=\"font-family:Georgia,serif;max-width:820px;margin:56px auto;padding:0 22px;line-height:1.75;color:#2c1810\"><img src=\"https://theearnalism.com/assets/brand/earnalism-brand-lockup.png\" width=\"640\" height=\"192\" alt=\"The Earnalism\" style=\"display:block;width:220px;height:auto;margin:0 0 2rem\"><p style=\"text-transform:uppercase;letter-spacing:.18em;color:#9a7440;font-size:.72rem\">Listening</p><h1 style=\"font-size:clamp(2.4rem,6vw,4.5rem);line-height:1.05;color:#4a1c27;margin:.2em 0\">Alice&#39;s Adventures in Wonderland</h1><p style=\"font-size:1.12rem;color:#5f5350\">Listening is not available for Alice&#39;s Adventures in Wonderland in the current release.</p><ul><li>Public audio preview: 0 seconds.</li><li>The first 3 canonical pages are available as a free preview. A Reading Pass is required from page 4; paid checkout and audiobooks are unavailable in this launch.</li></ul><nav aria-label=\"Page links\"><a href=\"/book/alices-adventures-in-wonderland\">Book details</a></nav></main></div></body></html>",
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "X-Vercel-Cache": "MISS"
+      },
+      "observed_canonical_version": null,
+      "audio_or_media_control_present": false,
+      "unavailable_copy_present": true
+    },
+    {
+      "path": "/api/reader/book/the-student/manifest",
+      "status": 451,
+      "body": "{\"detail\":{\"code\":\"RELEASE_TERRITORY_DENIED\",\"message\":\"This Reader release is available in India only.\",\"country\":\"US\",\"allowed_countries\":[\"IN\"]}}",
+      "headers": {
+        "Cache-Control": "no-store",
+        "X-Vercel-Cache": "MISS"
+      },
+      "observed_canonical_version": null,
+      "detail": {
+        "code": "RELEASE_TERRITORY_DENIED",
+        "message": "This Reader release is available in India only.",
+        "country": "US",
+        "allowed_countries": [
+          "IN"
+        ]
+      }
+    },
+    {
+      "path": "/api/reading-pass/books/the-student/manifest",
+      "status": 451,
+      "body": "{\"detail\":{\"code\":\"RELEASE_TERRITORY_DENIED\",\"message\":\"This Reader release is available in India only.\",\"country\":\"US\",\"allowed_countries\":[\"IN\"]}}",
+      "headers": {
+        "Cache-Control": "no-store",
+        "X-Vercel-Cache": "MISS"
+      },
+      "observed_canonical_version": null,
+      "detail": {
+        "code": "RELEASE_TERRITORY_DENIED",
+        "message": "This Reader release is available in India only.",
+        "country": "US",
+        "allowed_countries": [
+          "IN"
+        ]
+      }
+    },
+    {
+      "path": "/api/reader/book/the-art-of-money-getting/manifest",
+      "status": 451,
+      "body": "{\"detail\":{\"code\":\"RELEASE_TERRITORY_DENIED\",\"message\":\"This Reader release is available in India only.\",\"country\":\"US\",\"allowed_countries\":[\"IN\"]}}",
+      "headers": {
+        "Cache-Control": "no-store",
+        "X-Vercel-Cache": "MISS"
+      },
+      "observed_canonical_version": null,
+      "detail": {
+        "code": "RELEASE_TERRITORY_DENIED",
+        "message": "This Reader release is available in India only.",
+        "country": "US",
+        "allowed_countries": [
+          "IN"
+        ]
+      }
+    },
+    {
+      "path": "/api/reading-pass/books/the-art-of-money-getting/manifest",
+      "status": 451,
+      "body": "{\"detail\":{\"code\":\"RELEASE_TERRITORY_DENIED\",\"message\":\"This Reader release is available in India only.\",\"country\":\"US\",\"allowed_countries\":[\"IN\"]}}",
+      "headers": {
+        "Cache-Control": "no-store",
+        "X-Vercel-Cache": "MISS"
+      },
+      "observed_canonical_version": null,
+      "detail": {
+        "code": "RELEASE_TERRITORY_DENIED",
+        "message": "This Reader release is available in India only.",
+        "country": "US",
+        "allowed_countries": [
+          "IN"
+        ]
+      }
+    },
+    {
+      "path": "/api/reader/book/bn-035/manifest",
+      "status": 451,
+      "body": "{\"detail\":{\"code\":\"RELEASE_TERRITORY_DENIED\",\"message\":\"This Reader release is available in India only.\",\"country\":\"US\",\"allowed_countries\":[\"IN\"]}}",
+      "headers": {
+        "Cache-Control": "no-store",
+        "X-Vercel-Cache": "MISS"
+      },
+      "observed_canonical_version": null,
+      "detail": {
+        "code": "RELEASE_TERRITORY_DENIED",
+        "message": "This Reader release is available in India only.",
+        "country": "US",
+        "allowed_countries": [
+          "IN"
+        ]
+      }
+    },
+    {
+      "path": "/api/reading-pass/books/bn-035/manifest",
+      "status": 451,
+      "body": "{\"detail\":{\"code\":\"RELEASE_TERRITORY_DENIED\",\"message\":\"This Reader release is available in India only.\",\"country\":\"US\",\"allowed_countries\":[\"IN\"]}}",
+      "headers": {
+        "Cache-Control": "no-store",
+        "X-Vercel-Cache": "MISS"
+      },
+      "observed_canonical_version": null,
+      "detail": {
+        "code": "RELEASE_TERRITORY_DENIED",
+        "message": "This Reader release is available in India only.",
+        "country": "US",
+        "allowed_countries": [
+          "IN"
+        ]
+      }
+    },
+    {
+      "path": "/api/reader/book/alices-adventures-in-wonderland/manifest",
+      "status": 451,
+      "body": "{\"detail\":{\"code\":\"RELEASE_TERRITORY_DENIED\",\"message\":\"This Reader release is available in India only.\",\"country\":\"US\",\"allowed_countries\":[\"IN\"]}}",
+      "headers": {
+        "Cache-Control": "no-store",
+        "X-Vercel-Cache": "MISS"
+      },
+      "observed_canonical_version": null,
+      "detail": {
+        "code": "RELEASE_TERRITORY_DENIED",
+        "message": "This Reader release is available in India only.",
+        "country": "US",
+        "allowed_countries": [
+          "IN"
+        ]
+      }
+    },
+    {
+      "path": "/api/reading-pass/books/alices-adventures-in-wonderland/manifest",
+      "status": 451,
+      "body": "{\"detail\":{\"code\":\"RELEASE_TERRITORY_DENIED\",\"message\":\"This Reader release is available in India only.\",\"country\":\"US\",\"allowed_countries\":[\"IN\"]}}",
+      "headers": {
+        "Cache-Control": "no-store",
+        "X-Vercel-Cache": "MISS"
+      },
+      "observed_canonical_version": null,
+      "detail": {
+        "code": "RELEASE_TERRITORY_DENIED",
+        "message": "This Reader release is available in India only.",
+        "country": "US",
+        "allowed_countries": [
+          "IN"
+        ]
+      }
+    }
+  ]
+}

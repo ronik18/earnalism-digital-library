@@ -1,0 +1,38 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "proposal-20261003-the-secret-garden-exact-cover-delivery",
+  "edition_id": "the-secret-garden",
+  "operator_id": "reo-enterprise",
+  "status": "PROPOSED",
+  "components": {
+    "public_book": "04e173ef43aa236ea34966cea549c4cad73bbec8c25c9d7757d0afb43f36fb58",
+    "reader_manifest": "75d9899ba4ecf348e9bc75da118a4b0ac3aa9cb1e595e8598e3541f9154dff4f",
+    "source_evidence": "d4fba2e016dc99ebbab2950c7f63186ec154e408da4d4acb09a82fa8ef959852",
+    "approval_evidence": "8a1e817c58cd97ab437575a480c0b6cb601bd52a37e4b08f7ad96c7f44e3fb1a",
+    "checksum_manifest": "6040094e024c763cf6cfcfda2241c7d22ce548c18353a1dc7ba6bd99f03f703c",
+    "publication_manifest": "595572207c81590ec7e5ae42910aabd7135ae01de6b35917df9e3374e17f48be",
+    "cover_preparation": "e3847d23c1309e057d40f6373aa6cbaa581985953ffcaea094f0b8dac6a4266b"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:49:40.745164+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1924, verified lifetime collection publication 1911 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "6e5e82c969e1b912ececc75733b0ab49402f6271378fe8ec88ca0aec38f72ca8",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ddff4d02c636c57500215604f778bd3b8b9883d5ca9d5de89dc1480b29fa52c3",
+    "6b0bb5fbd0c4e873d2d22028da9d753cf3977d5f70ac58221556b28060badbf5",
+    "027d79093c1a71f7824fb7e21ecfaea67e5f46eb47f2e6c5358a44a34382404a"
+  ],
+  "accepted_by": "UNACCEPTED isolated preparation; root actual delegated acceptance required.",
+  "conditions_satisfied": false
+}

@@ -7,14 +7,14 @@
   "category_slug": "literary-fiction",
   "short_description": "A Louisiana plantation wife is cast out when her baby shows signs of Black ancestry — but the truth points elsewhere.",
   "description": "Désirée is abandoned by her husband Armand when their baby's appearance suggests African ancestry — but the letter he burns reveals the truth is the reverse. Chopin's most shattering story of racial prejudice and its ironic destruction of the bigot.",
-  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275510/earnalism/covers/front/dsires-baby_front_1600x2400.png",
-  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275510/earnalism/covers/front/dsires-baby_front_1600x2400.png",
-  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275510/earnalism/covers/front/dsires-baby_front_1600x2400.png",
-  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275510/earnalism/covers/front/dsires-baby_front_1600x2400.png",
-  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275514/earnalism/covers/back/dsires-baby_back_1600x2400.png",
-  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275514/earnalism/covers/back/dsires-baby_back_1600x2400.png",
-  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275514/earnalism/covers/back/dsires-baby_back_1600x2400.png",
-  "cover_status": "CLOUDINARY_ASSIGNED",
+  "cover_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+  "coverImage": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+  "cover_image": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-back-5a845c98-800.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-back-5a845c98-800.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-back-5a845c98-800.webp",
+  "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "9 min",
   "formats": [
@@ -56,14 +56,14 @@
   "source_hash": "31d4577d255806b92c6296419adddd5ca460bdb788743878a09ded1e19f4161a",
   "content_hash": "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98",
   "provenance_hash": "2ee318e47560589e69de19367a82467978af0cf4defd57691c9fb9276bbe5069",
-  "rights_basis": "Kate Chopin died 1904; first published 1893. Public domain in India and the U.S.",
+  "rights_basis": "Existing exact accepted India text source/edition clearance is preserved in the archived predecessor and unchanged source/chapter records. Actual prospective acceptance additionally covers these exact owner-designed preserved-artwork derivatives, proven licensed deterministic typography and reviewed deliveries after two independent passing source/provenance/pixel/package reviews under the owner delegation. The predecessor non-cover deferral is prospectively superseded for these exact components only. Audio remains excluded; no rights, human signature, other edition or production observation inferred. Final release remains behind serialized protected normal gates.",
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
   "approved_to_publish": true,
   "publication_status": "LIVE_APPROVED",
   "readerStatus": "reader_ready",
-  "publicationStatus": "live",
+  "publicationStatus": "published",
   "isPublic": true,
   "isLive": true,
   "showInPublicLibrary": true,
@@ -75,23 +75,28 @@
   "audio_enabled": false,
   "audiobook_enabled": false,
   "generate_audiobook": false,
-  "audiobook_provider": "",
-  "audiobook_voice": "",
-  "audio_asset_slug": "",
   "audiobook_assets": {},
   "audiobook": {},
-  "audiobook_assets_updated_at": "",
   "created_at": "2026-07-03T20:07:48Z",
   "updated_at": "2026-07-03T20:07:48Z",
   "cover_dimensions": {
     "front": [
-      1600,
-      2400
+      800,
+      1200
     ],
     "back": [
-      1600,
-      2400
+      800,
+      1200
     ]
   },
-  "cover_semantic_match_score": 9.8
+  "cover_semantic_match_score": 9.8,
+  "audio_status": "NOT_REQUESTED",
+  "audio_url": "",
+  "sync_tier": "NONE",
+  "publication_authorization_sha256": "ae81a367e93bba8b660073fbd73899d5c7ca1bf29fd3f07d3ef8df15df017ffe",
+  "cover_provenance_sha256": "d062d0f93c0509f535e8b32653a9731af276fb80e63523b915e5d9f977d96243",
+  "reader_enabled": true,
+  "preview_enabled": true,
+  "release_gate_status": "READY_BEHIND_SERIALIZED_GLOBAL_RELEASE_GATE",
+  "production_observed": false
 }

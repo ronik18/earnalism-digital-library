@@ -1,18 +1,30 @@
 {
   "slug": "dsires-baby",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-10-03T04:59:53.954767+00:00",
   "files": [
     {
-      "file": "approval_evidence 2.json",
-      "sha256": "17c9e18d5f6a978c33ce1fecdbff48c621da93dd255acc7e8a363486643b629c"
-    },
-    {
       "file": "approval_evidence.json",
-      "sha256": "af14f48def2add9e702bebba52421441c6088e27b92e8b642cfd1831aa3f1b14"
+      "sha256": "9d8108b6fea2d334cf1c639f9aa4556a22b9dce00cca90753c7bcb0e021a5ff0"
     },
     {
       "file": "chapters/chapter-001.json",
       "sha256": "4c5f2ef8b4ba48d637ac19f0317c4dcb713d70577e49f6f51ae17999579b019b"
+    },
+    {
+      "file": "cover_delivery_derivation.json",
+      "sha256": "098671e517091d2d1394c01a29db9acb356af3cc5d74322a5112b45f5d930b1b"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "d062d0f93c0509f535e8b32653a9731af276fb80e63523b915e5d9f977d96243"
+    },
+    {
+      "file": "covers/back.png",
+      "sha256": "5a845c98786371fc1e671585701cf513c1142fbb5119337aff3d0a02497cff00"
+    },
+    {
+      "file": "covers/front.png",
+      "sha256": "c965ecd734bdb2d7966946f2cb3be4af131832266c31a3900f8e8d9375c667d1"
     },
     {
       "file": "highlight_sync.json",
@@ -20,11 +32,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "9e6623222de051bbd76fa4aee9d90f8634c3f4a28ea16fae80bc22a7aae0d728"
+      "sha256": "dfd96bccddc993606f7d113749ce7d95006861243d6aaa742e8e5d77b1e4fc3b"
     },
     {
       "file": "publication_authorization.json",
-      "sha256": "3d530252d7452a2ddc892f5d0406f60db23d0cbfa207c71265d01b095f6c77f0"
+      "sha256": "ae81a367e93bba8b660073fbd73899d5c7ca1bf29fd3f07d3ef8df15df017ffe"
     },
     {
       "file": "reader_manifest.json",
@@ -33,6 +45,18 @@
     {
       "file": "source_evidence.json",
       "sha256": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb"
+    },
+    {
+      "file": "source_integrity_validation.json",
+      "sha256": "52683b6ef48451afe01c74f56481119e5b40663e1e27a141436108953d302444"
+    },
+    {
+      "file": "evidence/review_a.json",
+      "sha256": "8d4eeb102ce88faf6eb6697393afb1b579ca29bb4e1083419e44b60295a8ef64"
+    },
+    {
+      "file": "evidence/review_b.json",
+      "sha256": "1c712c31011ca2f17c9790823fd81e26a7c811c852197a34992483622db39bf4"
     }
   ]
 }

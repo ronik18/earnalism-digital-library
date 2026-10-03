@@ -1,0 +1,30 @@
+{
+  "slug": "the-great-gatsby",
+  "approved_to_publish": false,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "INACTIVE_UNACCEPTED_EXACT_PREPARATION",
+  "reader_package_fingerprint": "efc7c7af7b439119480f0d8d9780b46b63eaeb0650d3a8fb0eb6910f9b9f29c4",
+  "cover_gate": "BLOCKED_LOCAL_PROVENANCE_MISSING",
+  "audio_public_release": "NOT_AUTHORIZED",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "reader_approval": "NOT_REQUESTED_COVER_BLOCKED",
+  "cover_gate_passed": false,
+  "release_blockers": [
+    "exact_slug_graphical_cover_not_proven"
+  ],
+  "audio_enabled": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": false,
+    "verification_status": "reader_repair_verified",
+    "approval_scope": "fresh_checksum_bound_reader_approval_required"
+  },
+  "publication_authorization_sha256": "cd77f8d09b751b788ea3701163b5baa9e2aa34bee71eeb4a76aa141eb590dfe0",
+  "source_hash": "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35",
+  "content_hash": "8cdf90ce5cf418a4d40e7e822c734f52c2392c648e19537cd097b38a53050e34",
+  "provenance_hash": "90df34dc504b7e22287b7044b27d48b80f7773e13aa70b403c7829ce7cf33426",
+  "verified_at": "2026-10-01T21:52:27.631967+00:00"
+}

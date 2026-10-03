@@ -1,0 +1,129 @@
+{
+  "slug": "the-great-gatsby",
+  "source_url": "https://www.gutenberg.org/cache/epub/64317/pg64317.txt",
+  "source_name": "Project Gutenberg",
+  "source_license": "Underlying work public domain in India; source furniture internal only.",
+  "source_hash": "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35",
+  "content_hash": "4f6579e08ebba7b91e4a92bf134f29c0a79b7c5575125351a20684c4ff8688ec",
+  "provenance_hash": "bfd4a08c6d91bec76bbdb15e9edc73b1b2e7f6a582a87a5f79b6e4c37e9068ab",
+  "rights_basis": "F. Scott Fitzgerald died in 1940. Under Section 22 of the Copyright Act, 1957 (India), copyright in a literary work subsists until sixty years from the beginning of the calendar year following the author's death; the term therefore expired in India at the end of 2000 and the work entered the public domain there on 1 January 2001. Territory: IN.",
+  "downloaded_at": "2026-05-25T20:09:51.426847+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true,
+  "author_name": "F. Scott Fitzgerald",
+  "author_death_year": 1940,
+  "original_publication_year": 1925,
+  "rights_tier": "A",
+  "verification_status": "reader_repair_verified",
+  "publication_region": "IN",
+  "verified_at": "2026-08-16T14:30:00Z",
+  "qa_status": "READER_REPAIR_PASSED_COVER_BLOCKED",
+  "source_hash_domain": "exact_download_bytes",
+  "content_hash_domain": "chapter_text_utf8_joined_by_double_lf",
+  "provenance_hash_domain": "source_url_lf_source_name_lf_license_class_lf_content_hash",
+  "official_download_sha256": "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35",
+  "reader_package_fingerprint": "efc7c7af7b439119480f0d8d9780b46b63eaeb0650d3a8fb0eb6910f9b9f29c4",
+  "reader_paragraph_repair": {
+    "status": "PASS",
+    "repaired_at": "2026-08-16T13:35:00Z",
+    "chapter_count": 9,
+    "word_count": 48402,
+    "semantic_blocks": 1635,
+    "narrative_words_order_unchanged": true,
+    "root_backend_byte_parity": true,
+    "legacy_estimated_sync_invalidated": true,
+    "audio_enabled": false,
+    "chapters": [
+      {
+        "chapter": 1,
+        "title": "I",
+        "word_count": 5941,
+        "semantic_blocks": 154,
+        "sanitized_sha256": "e18f148e1a4c37a974853160cbcde26b38bb540990f026ea2c3b6598b48fb991",
+        "first_words": "In my younger and more vulnerable years my father gave me some",
+        "last_words": "he had vanished, and I was alone again in the unquiet darkness."
+      },
+      {
+        "chapter": 2,
+        "title": "II",
+        "word_count": 4292,
+        "semantic_blocks": 137,
+        "sanitized_sha256": "c88bbfd8975bfda97c07dae3d8464bcffa0775ee598af3d31cb0813cde4df32f",
+        "first_words": "About halfway between West Egg and New York the motor road hastily",
+        "last_words": "staring at the morning Tribune, and waiting for the four o’clock train."
+      },
+      {
+        "chapter": 3,
+        "title": "III",
+        "word_count": 5766,
+        "semantic_blocks": 172,
+        "sanitized_sha256": "b6830f0fe1e12a07b0afd008fe6096618e4edca6583106610c3db895f8c9d424",
+        "first_words": "There was music from my neighbour’s house through the summer nights. In",
+        "last_words": "am one of the few honest people that I have ever known."
+      },
+      {
+        "chapter": 4,
+        "title": "IV",
+        "word_count": 5475,
+        "semantic_blocks": 174,
+        "sanitized_sha256": "f14a9c319d9cd6585be3aff2ee3bc8fb596b415309c0fdb9bd1f1cbe09d8bda3",
+        "first_words": "On Sunday morning while church bells rang in the villages alongshore, the",
+        "last_words": "so I drew her up again closer, this time to my face."
+      },
+      {
+        "chapter": 5,
+        "title": "V",
+        "word_count": 4251,
+        "semantic_blocks": 154,
+        "sanitized_sha256": "7ff88b9272c934215b40f480ec2479be280d4a7f0cf910864f3791f21f42591a",
+        "first_words": "When I came home to West Egg that night I was afraid",
+        "last_words": "and down the marble steps into the rain, leaving them there together."
+      },
+      {
+        "chapter": 6,
+        "title": "VI",
+        "word_count": 4056,
+        "semantic_blocks": 136,
+        "sanitized_sha256": "5460677bf721f9da48c9cb1ef22f4077ae5fd937619820de8b6659dfba00ca4c",
+        "first_words": "About this time an ambitious young reporter from New York arrived one",
+        "last_words": "made no sound, and what I had almost remembered was uncommunicable forever."
+      },
+      {
+        "chapter": 7,
+        "title": "VII",
+        "word_count": 8806,
+        "semantic_blocks": 419,
+        "sanitized_sha256": "1232638642e738d518e4fe06e365cf3b9fdbc4e263abc4ab39a628878ae5cfb3",
+        "first_words": "It was when curiosity about Gatsby was at its highest that the",
+        "last_words": "walked away and left him standing there in the moonlight—watching over nothing."
+      },
+      {
+        "chapter": 8,
+        "title": "VIII",
+        "word_count": 4562,
+        "semantic_blocks": 120,
+        "sanitized_sha256": "da9e62381cb1d73f6659f43f4b89209534f995f2748fba1e985ccbb123fc5e87",
+        "first_words": "I couldn’t sleep all night; a foghorn was groaning incessantly on the",
+        "last_words": "a little way off in the grass, and the holocaust was complete."
+      },
+      {
+        "chapter": 9,
+        "title": "IX",
+        "word_count": 5253,
+        "semantic_blocks": 169,
+        "sanitized_sha256": "70839ee41eee306a8b7a34a24b7a4cd389da9c4f557d4334284c8cf207d60b7f",
+        "first_words": "After two years I remember the rest of that day, and that",
+        "last_words": "beat on, boats against the current, borne back ceaselessly into the past."
+      }
+    ]
+  },
+  "cover_gate": {
+    "status": "BLOCKED_LOCAL_PROVENANCE_MISSING",
+    "inherited_urls_retained": true,
+    "release_gate_satisfied": false
+  },
+  "source_download_url": "https://www.gutenberg.org/cache/epub/64317/pg64317.txt",
+  "rights_statute": "Copyright Act, 1957 (India), Section 22",
+  "rights_statute_url": "https://www.indiacode.nic.in/show-data?actid=AC_CEN_9_30_00006_195714_1517807321712&orderno=23&sectionId=14525&sectionno=22",
+  "raw_source_archive": "content/books/the-great-gatsby/raw/pg64317.txt"
+}

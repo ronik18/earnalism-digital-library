@@ -1,0 +1,107 @@
+{
+  "schema": "earnalism.independent.exact-cover-source-proposal-review.v1",
+  "reviewer": "independent_reviewer_B",
+  "reviewed_on": "2026-10-03",
+  "slug": "the-cop-and-the-anthem",
+  "disposition": "PASS_VISUAL_DELIVERY_PROVENANCE_COMPLETE_TEXT_AND_UNACCEPTED_PROPOSAL_BINDINGS",
+  "assets": {
+    "front": {
+      "original": {
+        "file": "/workspace/scratch/181ef0a25f05/cop-anthem-prep-20261003/candidate-inactive-unaccepted/covers/original-front.png",
+        "sha256": "3232a6b9c657c5e0adaa6385c87ecd88b9544a0c264b0a28b9ee8d7e11ed12b7",
+        "bytes": 196546
+      },
+      "png": {
+        "file": "/workspace/scratch/181ef0a25f05/cop-anthem-prep-20261003/candidate-inactive-unaccepted/covers/the-cop-and-the-anthem-front-inactive.png",
+        "sha256": "af57195ca48c50d2c8bf0ac6b2c4366dd2328c4e52c93d50b23bd44dea2ef41f",
+        "bytes": 125375
+      },
+      "webp": {
+        "file": "/workspace/scratch/181ef0a25f05/cop-anthem-prep-20261003/candidate-inactive-unaccepted/covers/the-cop-and-the-anthem-front-inactive.webp",
+        "sha256": "b2243f117df70253f59a995f7aba59c747da08d51187d94d79ff2e84e10f06de",
+        "bytes": 24996
+      }
+    },
+    "back": {
+      "original": {
+        "file": "/workspace/scratch/181ef0a25f05/cop-anthem-prep-20261003/candidate-inactive-unaccepted/covers/original-back.png",
+        "sha256": "0c9e1ec88066b222f5b2e715e8017c4fb7095e74f8f2b669ce5d1d97a77eb7d6",
+        "bytes": 406376
+      },
+      "png": {
+        "file": "/workspace/scratch/181ef0a25f05/cop-anthem-prep-20261003/candidate-inactive-unaccepted/covers/the-cop-and-the-anthem-back-inactive.png",
+        "sha256": "c0929e3af5ed29e6305d2867e0018ab4bdd7c6fa226fca6ff82ee94b45236a35",
+        "bytes": 195809
+      },
+      "webp": {
+        "file": "/workspace/scratch/181ef0a25f05/cop-anthem-prep-20261003/candidate-inactive-unaccepted/covers/the-cop-and-the-anthem-back-inactive.webp",
+        "sha256": "5f6497fd5616e8913891f73d47aa6ff08b6c7db338cefd05f81b71332241dcde",
+        "bytes": 37340
+      }
+    }
+  },
+  "actual_visual_inspection": {
+    "method": "All four actual new front/back PNG and compressed WebP images inspected via view_image",
+    "title_author": "PASS legible exact title/author; Desire accents correctly rendered",
+    "source_excerpt": "PASS complete exact source paragraphs; no clipped phrase or new synopsis fact",
+    "footer": "PASS entire Earnalism identity footer visible",
+    "release_truth": "PASS no LIVE label, no observed production assertion",
+    "graphical_legacy_art": "PASS preserved original gold circle/line graphic outside deterministic masks; generic aesthetic limitation disclosed, no plain typography-only substitute",
+    "delivery": "PASS WebPs fully decode800x1200, both per-title front<80000/back<180000"
+  },
+  "lineage": {
+    "sha256_verified": true,
+    "original_png_to_new_png_rgb_unchanged_outside_masks": "PASS",
+    "one_bounded_layout_repair": true,
+    "new_art": false,
+    "paid_generation": false,
+    "owner_evidence": {
+      "path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+      "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+      "recorded_statement": "Owner states all front and back covers are designed by the owner."
+    },
+    "source_classification": "OWNER_DESIGNED_LEGACY_GRAPHICAL_DERIVATIVE",
+    "literal_runtime_fallback_policy_conformance_claimed": false,
+    "rights_from_CDN_inferred": false
+  },
+  "source_review": {
+    "disposition": "PASS_REUSE_UNCHANGED_COMPLETE_SELECTED_STORY",
+    "whole_boundary_artifact": "internal/legal/catalogue_clearance_20261002/english/current_whole_work_boundary_verification.json",
+    "whole_boundary_sha256": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e",
+    "source_sha256": "6bb719852f2f0eb33db25613124d2d3c522dd3b879c187667ab31072bb2fb48d",
+    "chapter_content_sha256": "77a6d1c7ff6162cc7aad47b950666c6bb1dedf0beb55a08f3f476e27e57bd3ab",
+    "whole_selected_narrative": "PASS",
+    "boundary_before_first": " breathed. I was glad to be in a city so great, so complex and diversified. Leisurely and with something of an air I strolled along with my heart expanding at the thought that I was a citizen of great Gotham, a sharer in its magnificence and pleasures, a partaker in its glory and prestige. I turned to cross the street. I heard something buzz like a bee, and then I took a long, pleasant ride with Santos-Dumont. When I opened my eyes I remembered a smell of gasoline, and I said aloud: “Hasn’t it passed yet?” A hospital nurse laid a hand that was not particularly soft upon my brow that was not at all fevered. A young doctor came along, grinned, and handed me a morning newspaper. “Want to see how it happened?” he asked cheerily. I read the article. Its headlines began where I heard the buzzing leave off the night before. It closed with these lines: “—Bellevue Hospital, where it was said that his injuries were not serious. He appeared to be a typical Man About Town.” THE COP AND THE ANTHEM ",
+    "boundary_after_last": " AN ADJUSTMENT OF NATURE In an art exhibition the other day I saw a painting that had been sold for $5,000. The painter was a young scrub out of the West named Kraft, who had a favourite food and a pet theory. His pabulum was an unquenchable belief in the Unerring Artistic Adjustment of Nature. His theory was fixed around corned-beef hash with poached egg. There was a story behind the picture, so I went home and let it drip out of a fountain-pen. The idea of Kraft—but that is not the beginning of the story. Three years ago Kraft, Bill Judkins (a poet), and I took our meals at Cypher’s, on Eighth Avenue. I say “took.” When we had money, Cypher got it “off of” us, as he expressed it. We had no credit; we went in, called for food and ate it. We paid or we did not pay. We had confidence in Cypher’s sullenness and smouldering ferocity. Deep down in his sunless soul he was either a prince, a fool or an artist. He sat at a worm-eaten desk, covered with files of waiters’ checks so old that I was sure the bottomest one was for clams that Hendrik Hudson had eaten and paid for. Cypher had the power, in common with Napoleon III. and the goggle-eyed perch, of throwing a film over his eyes, rend",
+    "internal_gaps": [],
+    "source_chapter_highlight_exact_prior_root": true,
+    "anthology_completeness_asserted": false,
+    "source_refetched_by_reviewer": false,
+    "desire_archived_whole_source_independent_header_to_header_equality": "NOT_APPLICABLE_ALREADY_VERIFIED_PERSISTED_BOUNDARY"
+  },
+  "preservation": {
+    "root_backend_preimages": 17,
+    "byte_identity_vs_current_canonical": "PASS",
+    "license_source_versions_prior_decisions_artwork": "PRESERVED"
+  },
+  "current_package": {
+    "decision_sha256": "243df8f368fd69b7833ca16676f8921d1653ef97bb89caec390882ca70c3bd81",
+    "components": 7,
+    "checksums": "PASS",
+    "component_hashes": "PASS",
+    "manifest_artifact_bindings": "PASS",
+    "actual_delivery_dimensions": "PASS800x1200",
+    "rights_basis": "Exact preserved prior IN text basis; no extra rights facts asserted",
+    "publication_acceptance": "PROPOSEDconditionsfalse, current public/reader draftinactive",
+    "effective_audio_metadata": "PASSfalse flags/empty media",
+    "cover_preparation_sha256": "7892ff61dd3be4adea5e41338e5289d673114e53ca1ba4759ea10db20459523d",
+    "publication_authorization_covers": "Explicitly not yet authorized; actual new cover acceptance and cover_display use required on root acceptance."
+  },
+  "remaining_gates": [
+    "Two independent real reviews; root actual prospective acceptance and new exact package bindings",
+    "Fresh accepted package two reviews; serialized registry/allowlist protected CI/deploy/canary/truthful readback"
+  ],
+  "acceptance_created": false,
+  "production_observed": false,
+  "canonical_mutations": false
+}

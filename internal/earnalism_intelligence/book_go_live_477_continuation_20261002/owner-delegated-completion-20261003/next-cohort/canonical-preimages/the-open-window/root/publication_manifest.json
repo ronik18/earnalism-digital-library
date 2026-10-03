@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-open-window",
+  "title": "The Open Window",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+    "content_hash": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+    "provenance_hash": "f0bf9362162e221f0aee69804a444f30366ea2d2c776a078e8d3226ba36d13e7",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "0c19e73f4f34bacf0e3771b34b09737866f741bdf0bdbb458a04e43ff6d27d05",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Open Window",
+        "word_count": 1219,
+        "sha256": "bc12b5dbae5cae481b59d11eb9fc43a7c875f4cf2b37d52107bce93957375a00"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d"
+  },
+  "reader_release": {
+    "status": "READY_FOR_APPROVAL",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "e070046962fc200c50032cf5c6aafbf5f94b356683e9bee28a518746f3476753",
+    "reader_manifest": "578b4307d3c68ec69fac91bcb795f1c55677ca8a3532aafe5b2472b204e27142",
+    "source_evidence": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d",
+    "approval_evidence": "2c481aaa8cdc8553a1c7af82c18c3eadac4862057ea0b0d787328637a7e032fa"
+  },
+  "manifest_sha256": "fef4618105657c0dcdfd56cbf441fdbef9c0d68d551fbc5c09d7c1f11f8f7b31"
+}

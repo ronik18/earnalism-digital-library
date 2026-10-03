@@ -1,0 +1,158 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "lokrahasya",
+  "title": "লোকরহস্য",
+  "generated_at": "2026-10-03T05:42:49.399949+00:00",
+  "content": {
+    "source_hash": "2c536fb46b7a52f42f63c702effcd971d97059c56be4a6b5d7df642b4a8cddc1",
+    "content_hash": "a7ff73c827d016dc6faafca1f3151c0ebf565187c1ff8b6a924c461cce129e20",
+    "provenance_hash": "df3b6e5a4f7028f73bdf0e473af7743f3f7b794ac95f21781780d3e491674b4e",
+    "sanitized": true,
+    "chapter_count": 16,
+    "chapter_index_sha256": "379e2a650ffcd12ca9c0cef27ba9f3efa9a538987dec490428e6decd98e86234",
+    "chapters": [
+      {
+        "id": "chapter-006",
+        "order": 1,
+        "title": "ব্যাঘ্রাচার্য্য বৃহল্লাঙ্গুল",
+        "word_count": 3968,
+        "sha256": "8d4f042fcc81401826acce3031e4eef23f5fcc998131ce4198eb96ba9ea6c683"
+      },
+      {
+        "id": "chapter-008",
+        "order": 2,
+        "title": "ইংরাজস্তোত্র",
+        "word_count": 725,
+        "sha256": "cc971d2c43503447df343626c200bfd351a75322f844d11915e60931b457649b"
+      },
+      {
+        "id": "chapter-001",
+        "order": 3,
+        "title": "বাবু",
+        "word_count": 721,
+        "sha256": "c576e275dec51a4ae403f95fc1c94bdd0b23bf09879133472bf080ecec9cbda5"
+      },
+      {
+        "id": "chapter-002",
+        "order": 4,
+        "title": "গর্দ্দভ",
+        "word_count": 507,
+        "sha256": "fd0d6a64811d53a98df08aa9a82f897bd4e96addf540b85352016358ac9d748d"
+      },
+      {
+        "id": "chapter-007",
+        "order": 5,
+        "title": "দাম্পত্য দণ্ডবিধির আইন",
+        "word_count": 2336,
+        "sha256": "fc212958600399b79fd0aca34dce0e767c70c96ab1de05b8ce967e435a7b8535"
+      },
+      {
+        "id": "chapter-011",
+        "order": 6,
+        "title": "বসন্ত এবং বিরহ",
+        "word_count": 1111,
+        "sha256": "3aa5c1b19562312c6232890f375310f5f3b9bba2343ef4b20f686f361aa2d65f"
+      },
+      {
+        "id": "chapter-004",
+        "order": 7,
+        "title": "সুবর্ণগোলক",
+        "word_count": 1924,
+        "sha256": "088f5a32e6ce7df289ab98de0158d2c7951e11762eddf9055dbbf3ab508cafc2"
+      },
+      {
+        "id": "chapter-009",
+        "order": 8,
+        "title": "রামায়ণের সমালোচন",
+        "word_count": 647,
+        "sha256": "a05c1f7d4f1acf9cc97a18f5bd00c49fd55826b98a1384f2493fb8e9b42a789a"
+      },
+      {
+        "id": "chapter-010",
+        "order": 9,
+        "title": "বর্ষ সমালোচন",
+        "word_count": 1027,
+        "sha256": "ad4e91cbe5dd742dd75bfa1a3729f0497e89aa8a9ef68c90f6304d855c07dc9a"
+      },
+      {
+        "id": "chapter-012",
+        "order": 10,
+        "title": "কোন “স্পেশিয়ালের” পত্র",
+        "word_count": 1135,
+        "sha256": "6529ab1fa851b53fb3b487bf4ea86558b20c09e96b1f3ae2888759bb41e503b4"
+      },
+      {
+        "id": "chapter-015",
+        "order": 11,
+        "title": "BRANSONISM",
+        "word_count": 1597,
+        "sha256": "0fa5ffce2f7919bcbdb49df663bb70759ce5e522d6d3841f1eea0982aaa00b69"
+      },
+      {
+        "id": "chapter-013",
+        "order": 12,
+        "title": "হনুমদ্বাবুসংবাদ",
+        "word_count": 1239,
+        "sha256": "9bc01c8791a339e8be54d092b4377cee2d92ea4eea60ba97ae35a0d7ea6516eb"
+      },
+      {
+        "id": "chapter-005",
+        "order": 13,
+        "title": "গ্রাম্য কথা",
+        "word_count": 1715,
+        "sha256": "ef595cd39e4128649b398a9ca7fbd3de81055cafae595c4d63180a4da247ff2d"
+      },
+      {
+        "id": "chapter-003",
+        "order": 14,
+        "title": "বাঙ্গালা সাহিত্যের আদর",
+        "word_count": 1014,
+        "sha256": "d18695e195e2da874d57f88063eaab80904247e0dd463ebb4a20c52abc879708"
+      },
+      {
+        "id": "chapter-014",
+        "order": 15,
+        "title": "NEW YEAR’S DAY",
+        "word_count": 652,
+        "sha256": "ee8e54f72b4d1438f2ed922ed284152e9dd5e82bee74a74fdabeca32ce3c1c58"
+      },
+      {
+        "id": "chapter-016",
+        "order": 16,
+        "title": "পাঠভেদ",
+        "word_count": 973,
+        "sha256": "bf7493bddb664419acabd0980c7f12deb419fec02d7955e11983af24e26bc493"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "b91f203f5374ba789227c46411bf5d4c2a3721cd27c4ed5e58dcedffaa33fa7e"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/lokrahasya/lokrahasya-front-ed95a2ef.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "9e89f59d05f3992b17899db201037962a9bb38ca20058d5e6069b312793d5a52",
+    "reader_manifest": "cd0d23d355b04e8a076dbc348a1364c3640fe7a149d8b7b2e78690c0ee22261c",
+    "source_evidence": "b91f203f5374ba789227c46411bf5d4c2a3721cd27c4ed5e58dcedffaa33fa7e",
+    "approval_evidence": "2411ed39c264b77141deed4fb3ed9e09eb94106480d9d080864639460dd63288"
+  },
+  "manifest_sha256": "3fc0b81d36dccc79df17fecd2cfed94479af68096ac2618f881e36a7df1ec516"
+}

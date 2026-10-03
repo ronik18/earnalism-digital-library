@@ -1,0 +1,23 @@
+{
+  "slug": "the-science-of-getting-rich",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "source_hash": "adc3fb17f24801597561e992d858e124c8d9b4c6e3bf7593d713e7a71d252744",
+  "content_hash": "55a8e552b9f74640c7bccc1d05db9d5197ec9dd3af558aceb4f9d3ea73d4949b",
+  "provenance_hash": "2097ecf8e327a71b78cb7f061799a9cd8e02f94a30ff18cfab56d911487e0195",
+  "verified_at": "2026-10-01T21:35:50.622637+00:00",
+  "approved_to_publish": false,
+  "approval_scope": "UNACCEPTED_OWNER_DELEGATED_PROSPECTIVE_EXACT_COMPONENT_REVIEW_CANDIDATE",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "audiobook_use_approved": false,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "publication_authorization_sha256": "b5e2c7055d3acc2eba932c42133be19d6ab1be11ab6445a651a4cbbfb8727d25",
+  "cover_provenance_sha256": "d99987eddf382bd71f9cbd8890efe849c834d35a7a40b796e782dfcb9370c7b5",
+  "production_observed": false,
+  "runtime_observed": false,
+  "historical_metadata_preserved_only_in_preimages": true
+}

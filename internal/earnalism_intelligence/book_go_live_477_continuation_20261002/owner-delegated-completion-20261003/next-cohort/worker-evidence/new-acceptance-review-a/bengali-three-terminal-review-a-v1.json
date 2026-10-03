@@ -1,0 +1,311 @@
+{
+  "reviewer": "independent-reviewer-A",
+  "status": "TERMINAL_HOLD_DROP_ACTIVE_PLAN",
+  "canonical_mutations": false,
+  "reason": "Inherited back author-name lettering outside sole remediation mask lacks proven deterministic typography lineage; owner design declaration does not establish creation method. Required title_author_as_deterministic_overlay remains unmet. One art remediation exhausted; no second repair or investigation. Original art and text records remain preserved.",
+  "titles": [
+    {
+      "slug": "lokrahasya",
+      "cover_preparation_sha256": "0249f1c686a32ac452c9d84421d956221af66e70abc16cbff0f0e5a9063a8b30",
+      "source_validation_sha256": "1ee56a41c661d2aeee38500bad0d40e23a5c2173da311cf494b3ab7a9cbcf83f",
+      "observed_pixels": "All four exact prepared PNG/WebP images inspected; back author-name line remains outside deterministic copy panel; graphical/art legibility otherwise satisfactory",
+      "assets": {
+        "front": {
+          "original": {
+            "kind": "front",
+            "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/lokrahasya/front-original.jpg",
+            "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483123/earnalism/covers/front/cover_7450115f-db43-49ae-af14-feea82311d1f.jpg",
+            "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483123/earnalism/covers/front/cover_7450115f-db43-49ae-af14-feea82311d1f.jpg",
+            "http_status": 200,
+            "sha256": "cac3711a7984c8eb066e048e1b7917c2d2931a5916ac0643e6dab555fefd1406",
+            "bytes": 301442,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "get_count": 1
+          },
+          "prepared_png": {
+            "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/lokrahasya/front-prepared.png",
+            "sha256": "c2b46b8bde19d262acf0afdb016851bebf40b40caf1b4ef7aadc5133d29dcff9",
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "bytes": 2128500
+          },
+          "delivery": {
+            "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/lokrahasya/front-delivery.webp",
+            "sha256": "ed95a2efcbc009bc6a4b7d44d7d5f88b9b555be43be933628fc08ebecf23d0be",
+            "dimensions": [
+              450,
+              675
+            ],
+            "bytes": 56266,
+            "budget": 80000,
+            "recipe": "RGB; Lanczos450x675; WebPquality82method6"
+          },
+          "repair_zones": [
+            [
+              80,
+              55,
+              945,
+              355
+            ]
+          ],
+          "outside_repair_zones_exact_rgb_identity": true,
+          "licensed_deterministic_front_title_author_overlay": true
+        },
+        "back": {
+          "original": {
+            "kind": "back",
+            "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/lokrahasya/back-original.jpg",
+            "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483129/earnalism/covers/back/back_cover_7450115f-db43-49ae-af14-feea82311d1f.jpg",
+            "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483129/earnalism/covers/back/back_cover_7450115f-db43-49ae-af14-feea82311d1f.jpg",
+            "http_status": 200,
+            "sha256": "64fddc39b201883c0fd3fd109724389f4efb51e4a031b32594eac2d406a604cc",
+            "bytes": 279280,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "get_count": 1
+          },
+          "prepared_png": {
+            "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/lokrahasya/back-prepared.png",
+            "sha256": "9b46fa258412838b64f48c5342424f9c3a60784995139cedb71f738514f36f72",
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "bytes": 1628994
+          },
+          "delivery": {
+            "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/lokrahasya/back-delivery.webp",
+            "sha256": "c62c63ed14ebf54dbf15542840ecc0066a8821ce3f20d54a10484f305ffe30ff",
+            "dimensions": [
+              450,
+              675
+            ],
+            "bytes": 46200,
+            "budget": 180000,
+            "recipe": "RGB; Lanczos450x675; WebPquality82method6"
+          },
+          "repair_zones": [
+            [
+              155,
+              320,
+              905,
+              1000
+            ]
+          ],
+          "outside_repair_zones_exact_rgb_identity": true,
+          "licensed_deterministic_front_title_author_overlay": false
+        }
+      },
+      "effective_disposition": "DROPPED_FROM_ACTIVE_PLAN_POLICY_EVIDENCE_GAP"
+    },
+    {
+      "slug": "mrinalini",
+      "cover_preparation_sha256": "69c10bfb2fe6adce40ebe0e1e10c46c1845cf91a1b78fdd6b7a6dbf9732e8ee3",
+      "source_validation_sha256": "2dbb55966f08bab638594fb9bee89d1fa72a5069ae180492c1f48ddbd704e037",
+      "observed_pixels": "All four exact prepared PNG/WebP images inspected; back author-name line remains outside deterministic copy panel; graphical/art legibility otherwise satisfactory",
+      "assets": {
+        "front": {
+          "original": {
+            "kind": "front",
+            "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/mrinalini/front-original.jpg",
+            "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483135/earnalism/covers/front/cover_89e10113-f181-4484-a021-eff76348710d.jpg",
+            "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483135/earnalism/covers/front/cover_89e10113-f181-4484-a021-eff76348710d.jpg",
+            "http_status": 200,
+            "sha256": "a9aae2f4a6a0179e9d2398d0cd66b2933e28e208eaf6d34b00be436d4de77ae7",
+            "bytes": 334870,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "get_count": 1
+          },
+          "prepared_png": {
+            "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/mrinalini/front-prepared.png",
+            "sha256": "460af8701800b9275c39f668515d496f1af65c5955986be3ad43ec59a3ed8557",
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "bytes": 2194982
+          },
+          "delivery": {
+            "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/mrinalini/front-delivery.webp",
+            "sha256": "77b2a78d8c42e25e54ca6715a5c6eb92c0e90e79c50d6f93f1a16af3f11e99a4",
+            "dimensions": [
+              450,
+              675
+            ],
+            "bytes": 62400,
+            "budget": 80000,
+            "recipe": "RGB; Lanczos450x675; WebPquality82method6"
+          },
+          "repair_zones": [
+            [
+              65,
+              35,
+              959,
+              410
+            ]
+          ],
+          "outside_repair_zones_exact_rgb_identity": true,
+          "licensed_deterministic_front_title_author_overlay": true
+        },
+        "back": {
+          "original": {
+            "kind": "back",
+            "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/mrinalini/back-original.jpg",
+            "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483143/earnalism/covers/back/back_cover_89e10113-f181-4484-a021-eff76348710d.jpg",
+            "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483143/earnalism/covers/back/back_cover_89e10113-f181-4484-a021-eff76348710d.jpg",
+            "http_status": 200,
+            "sha256": "613a77912b59f9a94df525066773a1d618c1a023ad0813efc585f695032139f8",
+            "bytes": 360809,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "get_count": 1
+          },
+          "prepared_png": {
+            "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/mrinalini/back-prepared.png",
+            "sha256": "f23a9251ee054148e05b5b076831c8b02d9b078bf4b3dc59d5d2ae538e67e1cc",
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "bytes": 1479385
+          },
+          "delivery": {
+            "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/mrinalini/back-delivery.webp",
+            "sha256": "6de2383961fe8d47a97982da8c29f57a41dde2b0bdcaef6bd38f07d17a0355ee",
+            "dimensions": [
+              450,
+              675
+            ],
+            "bytes": 41938,
+            "budget": 180000,
+            "recipe": "RGB; Lanczos450x675; WebPquality82method6"
+          },
+          "repair_zones": [
+            [
+              135,
+              280,
+              895,
+              900
+            ]
+          ],
+          "outside_repair_zones_exact_rgb_identity": true,
+          "licensed_deterministic_front_title_author_overlay": false
+        }
+      },
+      "effective_disposition": "DROPPED_FROM_ACTIVE_PLAN_POLICY_EVIDENCE_GAP"
+    },
+    {
+      "slug": "bn-066",
+      "cover_preparation_sha256": "e8aeda9aff937df0b3e32be3a163d28e0d09462bba7b22736fb4d120ddf3691f",
+      "source_validation_sha256": "7961d869b23159c00f0ae5a2b7b3163a2d0bf24fb0afb836a78f4bfd349f175e",
+      "observed_pixels": "All four exact prepared PNG/WebP images inspected; back author-name line remains outside deterministic copy panel; graphical/art legibility otherwise satisfactory",
+      "assets": {
+        "front": {
+          "original": {
+            "kind": "front",
+            "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/bn-066/front-original.png",
+            "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593362/earnalism/covers/front/cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
+            "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593362/earnalism/covers/front/cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
+            "http_status": 200,
+            "sha256": "80df6089ecc48a52aa5872e54dcb49dabb284927c4d3419f0e0af4388a4669db",
+            "bytes": 3038678,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "get_count": 1
+          },
+          "prepared_png": {
+            "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/bn-066/front-prepared.png",
+            "sha256": "38b4f0042aa68c3a9784a2319b81f3a60e4d294ac2371a08e5d413746b8e5438",
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "bytes": 2424939
+          },
+          "delivery": {
+            "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/bn-066/front-delivery.webp",
+            "sha256": "3a9f74e8c01e9832259dc0d6afa9e5b120235feab79fa1bf27029654679cc1dd",
+            "dimensions": [
+              450,
+              675
+            ],
+            "bytes": 57098,
+            "budget": 80000,
+            "recipe": "RGB; Lanczos450x675; WebPquality82method6"
+          },
+          "repair_zones": [
+            [
+              100,
+              40,
+              924,
+              375
+            ]
+          ],
+          "outside_repair_zones_exact_rgb_identity": true,
+          "licensed_deterministic_front_title_author_overlay": true
+        },
+        "back": {
+          "original": {
+            "kind": "back",
+            "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/bn-066/back-original.png",
+            "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593370/earnalism/covers/back/back_cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
+            "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593370/earnalism/covers/back/back_cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
+            "http_status": 200,
+            "sha256": "4ce56c183557761ee78cc1e12737a7366034aa19fd397c844ba27fd71ed3c6cd",
+            "bytes": 2754432,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "get_count": 1
+          },
+          "prepared_png": {
+            "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/bn-066/back-prepared.png",
+            "sha256": "3d37668bbaddb757636b6bbd1cb7dccedd750bd208ca2e6027e8b1f23e9e1dcc",
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "bytes": 1956202
+          },
+          "delivery": {
+            "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/bn-066/back-delivery.webp",
+            "sha256": "aa31dbe34c7e4e89b9a1bba4e6aa00c0d4e0cd9832bf1dd58179385181416dd3",
+            "dimensions": [
+              450,
+              675
+            ],
+            "bytes": 45348,
+            "budget": 180000,
+            "recipe": "RGB; Lanczos450x675; WebPquality82method6"
+          },
+          "repair_zones": [
+            [
+              160,
+              130,
+              885,
+              720
+            ]
+          ],
+          "outside_repair_zones_exact_rgb_identity": true,
+          "licensed_deterministic_front_title_author_overlay": false
+        }
+      },
+      "effective_disposition": "DROPPED_FROM_ACTIVE_PLAN_POLICY_EVIDENCE_GAP"
+    }
+  ]
+}

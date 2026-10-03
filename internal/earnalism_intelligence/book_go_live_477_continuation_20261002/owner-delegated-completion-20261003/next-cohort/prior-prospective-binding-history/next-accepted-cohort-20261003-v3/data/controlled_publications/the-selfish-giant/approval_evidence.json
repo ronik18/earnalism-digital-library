@@ -1,0 +1,41 @@
+{
+  "slug": "the-selfish-giant",
+  "approved_to_publish": true,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "PROPOSED_OWNER_DELEGATED_EXACT_IN_TEXT_AND_COVER_BINDING_PENDING_TWO_REVIEWS",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "audiobook_use_approved": false,
+  "audiobook_use_approval_source": "",
+  "audiobook_use_approved_at": "",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "verified_at": "2026-10-03T04:20:29.339226+00:00",
+  "publication_authorization_sha256": "95ec21f54e7a44429ecce31d479b4d9c4df1b2c143d87010d7d5146768d6aff0",
+  "cover_provenance_sha256": "d2a718d4bbe5dd2e9cf4b58a4f470ff2a188c84a5420f0f2cd92315d67f5c1f3",
+  "independent_reviews": [],
+  "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+  "content_hash": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+  "binding_review_status": "PENDING_TWO_FRESH_EXACT_PACKAGE_REVIEWS",
+  "qa_scope": "Existing independently evidenced noncover text identity/complete work only; no audio or production observation.",
+  "audio_enabled": false,
+  "actual_prospective_acceptance": {
+    "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+    "accepted_at": "2026-10-03T04:59:53.954767+00:00",
+    "evidence": {
+      "review_a": {
+        "file": "evidence/review_a.json",
+        "sha256": "d31da6ba7bc92b767391b180d85d2ab4e1aa163253b38a3cf18bd96de897fcb3"
+      },
+      "review_b": {
+        "file": "evidence/review_b.json",
+        "sha256": "15fb24b5a76ab9dac2cbbcccf29b72cb1a0aabc6cd7cf8d9c4a9e11776ced68d"
+      }
+    },
+    "production_observed": false,
+    "canonical_version_observed": false,
+    "global_gate": "SERIAL_INTEGRATION_AFTER_PR510_AND_NORMAL_PROTECTED_CI_MERGE_DEPLOY_CANARY"
+  }
+}

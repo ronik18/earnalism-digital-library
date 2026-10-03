@@ -1,0 +1,102 @@
+{
+  "schema": "earnalism.independent.exact-cover-and-source-review.v1",
+  "reviewer": "independent_reviewer_B",
+  "reviewed_on": "2026-10-03",
+  "slug": "the-selfish-giant",
+  "disposition": "PASS_VISUAL_DELIVERY_PROVENANCE_AND_EXISTING_COMPLETE_TEXT",
+  "scope": "Independent actual new PNG/WebP visual review and derivative/source provenance review only; no acceptance, canonical package mutation, production observation or release.",
+  "assets": {
+    "front": {
+      "original": {
+        "file": "/workspace/scratch/181ef0a25f05/selfish-giant-next-cohort/front-original.png",
+        "sha256": "f10e1353932821ab22a0d13b68a40394f06eb1c9a97b04e5e126897dfbb3fcc2",
+        "bytes": 191923
+      },
+      "layout": {
+        "file": "/workspace/scratch/181ef0a25f05/selfish-giant-next-cohort/front-layout-repair.png",
+        "sha256": "e01b95dc8d321678df5c9fe5e395728187ea03984cc69c59ae34471603fb7dc4",
+        "bytes": 107141
+      },
+      "delivery": {
+        "file": "/workspace/scratch/181ef0a25f05/selfish-giant-next-cohort/front-delivery.webp",
+        "sha256": "777a773d9cebbf236f9bfb79d52d35ca7206c59fc38eb04d85a84abc480d98cd",
+        "bytes": 35612
+      }
+    },
+    "back": {
+      "original": {
+        "file": "/workspace/scratch/181ef0a25f05/selfish-giant-next-cohort/back-original.png",
+        "sha256": "6903c7610ac6141b0f4d8d025e7e9fe9f347e2922996368ef7dd28fe8c18b511",
+        "bytes": 385082
+      },
+      "layout": {
+        "file": "/workspace/scratch/181ef0a25f05/selfish-giant-next-cohort/back-layout-repair.png",
+        "sha256": "6337be1964dfa48aedd7d35233cfdb84f422dd311545b265b9c259444f8795f0",
+        "bytes": 210720
+      },
+      "delivery": {
+        "file": "/workspace/scratch/181ef0a25f05/selfish-giant-next-cohort/back-delivery.webp",
+        "sha256": "14b007092896bd2d0e4396ba0ecb1e430650a7aa772f855a347a6269daa75e60",
+        "bytes": 85306
+      }
+    }
+  },
+  "evidence_files": {
+    "recovery-receipt.json": "1b686b43e642886871953468ba6de8d967429c3c7bb37807926acce1667a9bec",
+    "repair-receipt.json": "6a5ea1bc1fdb8ac4b8bfc1440f63ee5323cd51e17098cac6238e2a872c03cd28",
+    "render.py": "eea97252cea63b1cc50ff2e24408adb164511996edbfe71d4206c67b2b22d25a",
+    "pixel-preservation.json": "ecf1cd8545613c41180d8a8555156ed651be90a7bed481ac52dfd417226c13ec"
+  },
+  "actual_visual_inspection": {
+    "method": "Actual decoded front/back delivery WebPs inspected with view_image; source layout PNGs decoded and derivative lineage verified.",
+    "title_author": "PASS legible deterministic overlays without decoration crossing lettering",
+    "copy": "PASS exact complete selected-source opening excerpt, readable and no midword cutoff",
+    "status_badge": "PASS permanent edition label does not claim LIVE or observed release",
+    "footer": "PASS intact Earnalism identity and complete footer, no clipped text",
+    "graphical_art": "PASS existing owner graphical circle/line artwork retained outside masks; not typography-only",
+    "delivery": "PASS fully decoded 800x1200 WebPs with fronts below80000 and backs below180000 bytes"
+  },
+  "derivative_lineage": {
+    "original_bytes_exact_verified": "PASS",
+    "rgb_pixels_outside_recorded_masks_unchanged": "PASS",
+    "paid_generation": 0,
+    "new_art": false,
+    "owner_declaration": {
+      "path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+      "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+      "recorded_statement": "Owner states all front and back covers are designed by the owner."
+    },
+    "category_for_prospective_acceptance": "approved_legacy_graphical_cover_with_deterministic_overlay",
+    "policy_sha256": "db09fc34a416d99c2ad3283ba320e6198cc42007f6fb19c8f78468466a714f32",
+    "fallback_literal_compliance_claim": false,
+    "generic_motif_disposition": "Existing generic collection motif is disclosed; no unlicensed art, false synopsis or title interference remains in these exact derivative bytes. No story-specific art or human acceptance invented."
+  },
+  "existing_text_review": {
+    "disposition": "PASS_REUSE_UNCHANGED_COMPLETE_SELECTED_STORY",
+    "artifact": "internal/legal/catalogue_clearance_20261002/english/current_whole_work_boundary_verification.json",
+    "artifact_sha256": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e",
+    "raw_source_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+    "reader_aggregate_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+    "ordered_chapter_hashes": {
+      "chapter-001": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5"
+    },
+    "complete_selected_narrative": "PASS",
+    "boundary_before_first": "wels, and everybody knows that jewels cost far more than flowers.” “Well, upon my word, you are very ungrateful,” said the Student angrily; and he threw the rose into the street, where it fell into the gutter, and a cart-wheel went over it. “Ungrateful!” said the girl. “I tell you what, you are very rude; and, after all, who are you? Only a Student. Why, I don’t believe you have even got silver buckles to your shoes as the Chamberlain’s nephew has”; and she got up from her chair and went into the house. “What a silly thing Love is,” said the Student as he walked away. “It is not half as useful as Logic, for it does not prove anything, and it is always telling one of things that are not going to happen, and making one believe things that are not true. In fact, it is quite unpractical, and, as in this age to be practical is everything, I shall go back to Philosophy and study Metaphysics.” So he returned to his room and pulled out a great dusty book, and began to read. The Selfish Giant. ",
+    "boundary_after_last": " The Devoted Friend. ONE morning the old Water-rat put his head out of his hole. He had bright beady eyes and stiff grey whiskers and his tail was like a long bit of black india-rubber. The little ducks were swimming about in the pond, looking just like a lot of yellow canaries, and their mother, who was pure white with real red legs, was trying to teach them how to stand on their heads in the water. “You will never be in the best society unless you can stand on your heads,” she kept saying to them; and every now and then she showed them how it was done. But the little ducks paid no attention to her. They were so young that they did not know what an advantage it is to be in society at all. “What disobedient children!” cried the old Water-rat; “they really deserve to be drowned.” “Nothing of the kind,” answered the Duck, “every one must make a beginning, and parents cannot be too patient.” “Ah! I know nothing about the feelings of parents,” said the Water-rat; “I am not a family man. In fact, I have never been married, and I never intend to be. Love is all very well in its way, but friendship is much higher. Indeed, I know of nothing in the world that is either nobler or rarer than ",
+    "internal_gaps": [],
+    "anthology_complete_claim": false,
+    "historical_containment_limitation_preserved": true,
+    "illustrations_translation_editorial_imported": false,
+    "fresh_source_fetch": false
+  },
+  "unresolved_current_package_paperwork": [
+    "No prospective component acceptance yet; require two actual independent new receipts and new exact package binding review.",
+    "Correct final delivered cover_dimensions to800x1200; preserve1600x2400 original/layout metadata separately.",
+    "Remove current active audio metadata; preserve historical audio evidence in archives and keep false flags/empty exposure."
+  ],
+  "production_observed": false,
+  "audio_authorized": false,
+  "acceptance_created": false,
+  "registry_allowlist_mutated": false,
+  "next_action": "After other independent PASS and root authorization, create actual prospective acceptance using existing rights evidence and rebind exact corrected package; integration remains serialized."
+}

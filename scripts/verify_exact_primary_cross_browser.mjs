@@ -42,19 +42,20 @@ const states = [
   ["mobile-navigation-768", "/", 768, 1024, "navigation"], ["mobile-navigation-landscape", "/", 844, 390, "navigation"], ["mobile-navigation-1024", "/", 1024, 768, "navigation"], ["mobile-navigation-1279", "/", 1279, 800, "navigation"],
   ["book-detail-desktop", populatedBookRoute, 1440, 1000, "book"],
   ["book-detail-mobile", populatedBookRoute, 390, 844, "book"],
-  ["book-detail-held-desktop", "/book/the-selfish-giant", 1440, 1000, "held-book"], ["book-detail-held-mobile", "/book/the-selfish-giant", 390, 844, "held-book"],
+  ["book-detail-held-desktop", "/book/bn-060", 1440, 1000, "held-book"], ["book-detail-held-mobile", "/book/bn-060", 390, 844, "held-book"],
   ["reader-desktop", readerFixtureRoute, 1440, 1000, "reader"],
   ["reader-mobile", readerFixtureRoute, 390, 844, "reader"], ["listener-desktop", "/listener/a-ghost-story?visual-fixture=1", 1440, 1000, "listener"],
   ["listener-mobile", "/listener/a-ghost-story?visual-fixture=1", 390, 844, "listener"], ["about-mobile", "/about", 390, 844, "about"],
   ["my-library-mobile", "/my-library", 390, 844, "my-library"], ["profile-mobile", "/account?visual-fixture=1", 390, 844, "profile"],
 ].map(([id, route, width, height, family]) => ({ id, route, viewport: { width, height }, family }));
-const requiredFor = (family) => ({ home: ["header"], library: ["[data-testid=library-reference-surface]"], filter: [".reference-library-drawer[role=dialog]"], commerce: [publicPaidCommerceEnabled ? "[data-testid=pricing-reference-surface]" : "[data-testid=paid-commerce-disabled]"], navigation: ["header"], book: [publicReaderExposureEnabled ? ".book-detail-page" : "[data-testid=unavailable-title-page]"], "held-book": ["[data-testid=unavailable-title-page]"], reader: ["#reader-v2-title"], listener: ["#listener-v2-title"], about: ["#about-page-title"], "my-library": ["[data-testid=my-library-mobile]"], profile: ["[data-testid=account-visual-fixture]"], }[family] || ["main"]);
+const requiredFor = (family) => ({ home: ["header"], library: ["[data-testid=library-reference-surface]"], filter: [".reference-library-drawer[role=dialog]"], commerce: [publicPaidCommerceEnabled ? "[data-testid=pricing-reference-surface]" : "[data-testid=paid-commerce-disabled]"], navigation: ["header"], book: [publicReaderExposureEnabled ? ".book-detail-page" : "[data-testid=unavailable-title-page]"], "held-book": ["[data-testid=book-not-found]"], reader: ["#reader-v2-title"], listener: ["#listener-v2-title"], about: ["#about-page-title"], "my-library": ["[data-testid=my-library-mobile]"], profile: ["[data-testid=account-visual-fixture]"], }[family] || ["main"]);
 const sha = (value) => crypto.createHash("sha256").update(value).digest("hex");
 const json = (route, body) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(body) });
 
 async function installLocalResponses(page) {
   await page.route("**/api/**", async (route) => {
     const pathname = new URL(route.request().url()).pathname;
+    if (pathname.endsWith("/books/bn-060")) return route.fulfill({ status: 404, contentType: "application/json", body: JSON.stringify({ detail: "Edition is held outside this release." }) });
     if (pathname.endsWith("/books")) return json(route, books);
     if (pathname.includes("/books/")) return json(route, books.find((book) => pathname.endsWith(`/${book.slug}`)) || {});
     if (pathname.includes("payments/") && (pathname.endsWith("/offers") || pathname.endsWith("/packs"))) return json(route, { packs, config: { mode: "owner-review-fixture", recurring_enabled: false } });
@@ -92,6 +93,11 @@ async function verify(state, context) {
   });
   for (const selector of requiredFor(state.family).filter((selector) => !selector.includes("mobile-menu") && !selector.includes("reference-library-drawer"))) {
     await page.locator(selector).first().waitFor({ state: "attached", timeout: 10_000 });
+  }
+  if (state.family === "held-book") {
+    if (await page.locator("[data-testid=read-preview], [data-testid=start-reading], [data-testid=book-listen-approved], audio, video, iframe").count()) {
+      throw new Error("Held edition exposed protected-content or media controls.");
+    }
   }
   if (state.family === "filter") { await page.locator(".reference-filter-trigger").click(); await page.locator(".reference-library-drawer[role=dialog]").waitFor({ state: "visible", timeout: 10_000 }); }
   let navigation = null;

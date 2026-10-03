@@ -1,0 +1,103 @@
+{
+  "schema": "earnalism.independent.exact-cover-and-source-review.v1",
+  "reviewer": "independent_reviewer_B",
+  "reviewed_on": "2026-10-03",
+  "slug": "the-open-window",
+  "disposition": "PASS_VISUAL_DELIVERY_PROVENANCE_AND_EXISTING_COMPLETE_TEXT",
+  "scope": "Independent actual new PNG/WebP visual review and derivative/source provenance review only; no acceptance, canonical package mutation, production observation or release.",
+  "assets": {
+    "front": {
+      "original": {
+        "file": "/workspace/scratch/181ef0a25f05/open-window-next-cohort/front-original.png",
+        "sha256": "351653d69bebc7567f868007370fb65b72eadbd41f7cbb2ee276e6024d0a1bb1",
+        "bytes": 190507
+      },
+      "layout": {
+        "file": "/workspace/scratch/181ef0a25f05/open-window-next-cohort/front-layout-repair.png",
+        "sha256": "22a9981529ca3c46a81fae68c056b43d2253595f436110767c153eb9344589bd",
+        "bytes": 104935
+      },
+      "delivery": {
+        "file": "/workspace/scratch/181ef0a25f05/open-window-next-cohort/front-delivery.webp",
+        "sha256": "fd16c96883897722c2da7c49e2012dd9e5a3771bf2f99d11b89a29add60a8960",
+        "bytes": 34778
+      }
+    },
+    "back": {
+      "original": {
+        "file": "/workspace/scratch/181ef0a25f05/open-window-next-cohort/back-original.png",
+        "sha256": "19717b3bb51630712f2f8cad58859361c9015ab726f3335b196c2b5924660a0d",
+        "bytes": 391491
+      },
+      "layout": {
+        "file": "/workspace/scratch/181ef0a25f05/open-window-next-cohort/back-layout-repair.png",
+        "sha256": "5865b811a2feb412655fa56f6b2a9f6e6fbbd39881423bf14c77e1844a827829",
+        "bytes": 201173
+      },
+      "delivery": {
+        "file": "/workspace/scratch/181ef0a25f05/open-window-next-cohort/back-delivery.webp",
+        "sha256": "6c87ea0a562e727b5527711f6f279bf9b95cad6a0817d15e36f783fd87016e76",
+        "bytes": 79852
+      }
+    }
+  },
+  "evidence_files": {
+    "recovery-receipt.json": "62215e8bd8dbc1c370ff68f22b46f6da443af5019807d8c02717c57eaebb826d",
+    "repair-receipt.json": "c5eae00277b28b3eea51ceb92ffd64332be5fef0463414d8f39b3d196eae1529",
+    "render.py": "c2e4829aff72b1f8c133d53479b491287f050ff560c991f67f1826b2135cb61c",
+    "pixel-preservation.json": "4a9d01dba9b670551a017f6c4bff2facbe072bdb425920969149bf0858ee9872"
+  },
+  "actual_visual_inspection": {
+    "method": "Actual decoded front/back delivery WebPs inspected with view_image; source layout PNGs decoded and derivative lineage verified.",
+    "title_author": "PASS legible deterministic overlays without decoration crossing lettering",
+    "copy": "PASS exact complete selected-source opening excerpt, readable and no midword cutoff",
+    "status_badge": "PASS permanent edition label does not claim LIVE or observed release",
+    "footer": "PASS intact Earnalism identity and complete footer, no clipped text",
+    "graphical_art": "PASS existing owner graphical circle/line artwork retained outside masks; not typography-only",
+    "delivery": "PASS fully decoded 800x1200 WebPs with fronts below80000 and backs below180000 bytes"
+  },
+  "derivative_lineage": {
+    "original_bytes_exact_verified": "PASS",
+    "rgb_pixels_outside_recorded_masks_unchanged": "PASS",
+    "paid_generation": 0,
+    "new_art": false,
+    "owner_declaration": {
+      "path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+      "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+      "recorded_statement": "Owner states all front and back covers are designed by the owner."
+    },
+    "category_for_prospective_acceptance": "approved_legacy_graphical_cover_with_deterministic_overlay",
+    "policy_sha256": "db09fc34a416d99c2ad3283ba320e6198cc42007f6fb19c8f78468466a714f32",
+    "fallback_literal_compliance_claim": false,
+    "generic_motif_disposition": "Existing generic collection motif is disclosed; no unlicensed art, false synopsis or title interference remains in these exact derivative bytes. No story-specific art or human acceptance invented."
+  },
+  "existing_text_review": {
+    "disposition": "PASS_REUSE_UNCHANGED_COMPLETE_SELECTED_STORY",
+    "artifact": "internal/legal/catalogue_clearance_20261002/english/current_whole_work_boundary_verification.json",
+    "artifact_sha256": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e",
+    "raw_source_sha256": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+    "reader_aggregate_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+    "ordered_chapter_hashes": {
+      "chapter-001": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be"
+    },
+    "complete_selected_narrative": "PASS",
+    "boundary_before_first": "and carried it into the morning-room. There was a door near the writing-table leading to a back stairway; Jane vanished through it with such lightning rapidity that the butler doubted whether she had seen him come in. Half an hour later Clovis was driving her and her hastily-packed luggage to the station. “Mother will be awfully vexed when she comes back from her ride and finds you have gone,” he observed to the departing guest, “but I’ll make up some story about an urgent wire having called you away. It wouldn’t do to alarm her unnecessarily about Sturridge.” Jane sniffed slightly at Clovis’ ideas of unnecessary alarm, and was almost rude to the young man who came round with thoughtful inquiries as to luncheon-baskets. The miracle lost some of its usefulness from the fact that Dora wrote the same day postponing the date of her visit, but, at any rate, Clovis holds the record as the only human being who ever hustled Jane Martlet out of the time-table of her migrations. THE OPEN WINDOW ",
+    "boundary_after_last": " THE TREASURE SHIP The great galleon lay in semi-retirement under the sand and weed and water of the northern bay where the fortune of war and weather had long ago ensconced it. Three and a quarter centuries had passed since the day when it had taken the high seas as an important unit of a fighting squadron—precisely which squadron the learned were not agreed. The galleon had brought nothing into the world, but it had, according to tradition and report, taken much out of it. But how much? There again the learned were in disagreement. Some were as generous in their estimate as an income-tax assessor, others applied a species of higher criticism to the submerged treasure chests, and debased their contents to the currency of goblin gold. Of the former school was Lulu, Duchess of Dulverton. The Duchess was not only a believer in the existence of a sunken treasure of alluring proportions; she also believed that she knew of a method by which the said treasure might be precisely located and cheaply disembedded. An aunt on her mother’s side of the family had been Maid of Honour at the Court of Monaco, and had taken a respectful interest in the deep-sea researches in which the Throne of tha",
+    "internal_gaps": [],
+    "anthology_complete_claim": false,
+    "historical_containment_limitation_preserved": true,
+    "illustrations_translation_editorial_imported": false,
+    "fresh_source_fetch": false
+  },
+  "unresolved_current_package_paperwork": [
+    "No prospective component acceptance yet; require two actual independent new receipts and new exact package binding review.",
+    "Correct final delivered cover_dimensions to800x1200; preserve1600x2400 original/layout metadata separately.",
+    "Remove current active audio metadata; preserve historical audio evidence in archives and keep false flags/empty exposure.",
+    "Use actual preserved IN decision basis instead of inherited unsupported first-publication1911/U.S. rights assertion."
+  ],
+  "production_observed": false,
+  "audio_authorized": false,
+  "acceptance_created": false,
+  "registry_allowlist_mutated": false,
+  "next_action": "After other independent PASS and root authorization, create actual prospective acceptance using existing rights evidence and rebind exact corrected package; integration remains serialized."
+}

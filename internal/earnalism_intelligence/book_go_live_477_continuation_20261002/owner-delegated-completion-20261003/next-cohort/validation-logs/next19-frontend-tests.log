@@ -1,0 +1,208 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> frontend@0.1.0 test
+> craco test --watchAll=false --runInBand
+
+PASS src/lib/readingPassTransport.test.js (23.3 s)
+PASS src/experiences-v2/reader/ReaderExperienceV2Route.lifecycle.test.jsx
+PASS src/experiences-v2/reader/ReaderExperienceV2.render.test.jsx
+PASS src/pages/Admin.publicationInspection.test.jsx
+PASS src/authAccountLifecycle.test.jsx
+PASS src/experiences-v2/__tests__/rla-v2.contract.test.js
+PASS src/experiences-v2/__tests__/listener-protected-package-route.test.jsx
+PASS src/experiences-v2/__tests__/listener-zero-free-audio.test.jsx
+PASS src/components/ShelfTwoSlideshow.test.jsx
+PASS src/authRefreshLifecycle.test.jsx
+PASS src/components/JournalDiscussion.test.jsx
+PASS src/pages/Home.newsletter.test.jsx
+PASS src/staticSeoContract.test.js
+PASS src/components/Header.render.test.jsx
+PASS src/components/Header.router.test.jsx
+PASS src/components/CuratedShelfCollage.test.jsx
+PASS src/components/HomepageListeningRoom.test.jsx
+PASS src/components/AudioPlayer.releaseTruth.test.js
+PASS src/lib/chapterIndex.test.js
+PASS src/components/SecureReader.license.test.jsx
+PASS src/components/ReaderAudiobookPanel.test.js
+PASS src/pages/UnavailableTitle.test.jsx
+PASS src/lib/homeSurfaces.test.js
+PASS src/components/ShareButtons.test.jsx
+PASS src/lib/heroCarousel.test.js
+PASS src/lib/bookDetailPresentation.test.js
+PASS src/lib/funnelAnalytics.test.js
+PASS src/experiences-v2/reader/ReaderExperienceV2Route.content.test.js
+PASS src/config/socialLinks.test.js
+PASS src/components/ReadingPass/ReadingPass.test.js
+PASS src/experiences-v2/reader/readerLayout.test.js
+PASS src/bookDetailDirectRoute.test.js
+PASS src/statusPageHandlers.test.js
+PASS src/components/PremiumHero.test.js
+PASS src/lib/controlledLaunch.canonicalAuthority.test.js
+PASS src/lib/readerContent.test.js
+PASS src/lib/homeCuration.test.js
+PASS src/lib/api.test.js
+PASS src/lib/publicCtaAccuracy.test.js
+PASS src/pages/Reader.releaseTruth.test.js
+PASS src/components/LicensedTextNotice.test.jsx
+  ● Console
+
+    console.error
+      `ReactDOMTestUtils.act` is deprecated in favor of `React.act`. Import `act` from `react` instead of `react-dom/test-utils`. See https://react.dev/warnings/react-dom-test-utils for more info.
+
+       9 | test('CC0 contributions do not acquire a false ShareAlike requirement',()=>{
+      10 |  const text_license={...common,license:'CC0-1.0',license_url:'https://creativecommons.org/publicdomain/zero/1.0/',source_url:'https://standardebooks.org/ebooks/test',contributors_url:'https://github.com/standardebooks/test'};
+    > 11 |  act(()=>root.render(<LicensedTextNotice book={{slug:'test',text_license}}/>));
+         |     ^
+      12 |  expect(container.textContent).toContain('CC0 1.0');expect(container.textContent).not.toContain('same licence');expect(container.textContent).not.toContain('CC BY-SA');
+      13 | });
+      14 | test('CC BY-SA preserves the actual ShareAlike notice',()=>{
+
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react-dom/cjs/react-dom-test-utils.development.js:19:17)
+      at Object.<anonymous> (src/components/LicensedTextNotice.test.jsx:11:5)
+
+    console.error
+      The current testing environment is not configured to support act(...)
+
+       9 | test('CC0 contributions do not acquire a false ShareAlike requirement',()=>{
+      10 |  const text_license={...common,license:'CC0-1.0',license_url:'https://creativecommons.org/publicdomain/zero/1.0/',source_url:'https://standardebooks.org/ebooks/test',contributors_url:'https://github.com/standardebooks/test'};
+    > 11 |  act(()=>root.render(<LicensedTextNotice book={{slug:'test',text_license}}/>));
+         |               ^
+      12 |  expect(container.textContent).toContain('CC0 1.0');expect(container.textContent).not.toContain('same licence');expect(container.textContent).not.toContain('CC BY-SA');
+      13 | });
+      14 | test('CC BY-SA preserves the actual ShareAlike notice',()=>{
+
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom-client.development.js:16329:17)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:18755:7)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:16409:11)
+      at updateContainerImpl (node_modules/react-dom/cjs/react-dom-client.development.js:23509:9)
+      at ReactDOMRoot.render (node_modules/react-dom/cjs/react-dom-client.development.js:27893:9)
+      at src/components/LicensedTextNotice.test.jsx:11:15
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:814:22)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react-dom/cjs/react-dom-test-utils.development.js:22:20)
+      at Object.<anonymous> (src/components/LicensedTextNotice.test.jsx:11:5)
+
+    console.error
+      The current testing environment is not configured to support act(...)
+
+       6 | let container, root;
+       7 | beforeEach(()=>{container=document.createElement('div');document.body.appendChild(container);root=createRoot(container);});
+    >  8 | afterEach(()=>{act(()=>root.unmount());container.remove();});
+         |                             ^
+       9 | test('CC0 contributions do not acquire a false ShareAlike requirement',()=>{
+      10 |  const text_license={...common,license:'CC0-1.0',license_url:'https://creativecommons.org/publicdomain/zero/1.0/',source_url:'https://standardebooks.org/ebooks/test',contributors_url:'https://github.com/standardebooks/test'};
+      11 |  act(()=>root.render(<LicensedTextNotice book={{slug:'test',text_license}}/>));
+
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom-client.development.js:16329:17)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:18755:7)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:16409:11)
+      at updateContainerImpl (node_modules/react-dom/cjs/react-dom-client.development.js:23509:9)
+      at ReactDOMRoot.unmount (node_modules/react-dom/cjs/react-dom-client.development.js:27910:11)
+      at src/components/LicensedTextNotice.test.jsx:8:29
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:814:22)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react-dom/cjs/react-dom-test-utils.development.js:22:20)
+      at Object.<anonymous> (src/components/LicensedTextNotice.test.jsx:8:19)
+
+    console.error
+      The current testing environment is not configured to support act(...)
+
+      14 | test('CC BY-SA preserves the actual ShareAlike notice',()=>{
+      15 |  const text_license={...common,license:'CC-BY-SA-4.0',license_url:'https://creativecommons.org/licenses/by-sa/4.0/',source_url:'https://bn.wikisource.org/wiki/Test',contributors_url:'https://bn.wikisource.org/w/index.php?action=history'};
+    > 16 |  act(()=>root.render(<LicensedTextNotice book={{slug:'test',text_license}}/>));
+         |               ^
+      17 |  expect(container.textContent).toContain('same licence');expect(container.textContent).toContain('CC BY-SA 4.0');
+      18 | });
+      19 |
+
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom-client.development.js:16329:17)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:18755:7)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:16409:11)
+      at updateContainerImpl (node_modules/react-dom/cjs/react-dom-client.development.js:23509:9)
+      at ReactDOMRoot.render (node_modules/react-dom/cjs/react-dom-client.development.js:27893:9)
+      at src/components/LicensedTextNotice.test.jsx:16:15
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:814:22)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react-dom/cjs/react-dom-test-utils.development.js:22:20)
+      at Object.<anonymous> (src/components/LicensedTextNotice.test.jsx:16:5)
+
+    console.error
+      The current testing environment is not configured to support act(...)
+
+       6 | let container, root;
+       7 | beforeEach(()=>{container=document.createElement('div');document.body.appendChild(container);root=createRoot(container);});
+    >  8 | afterEach(()=>{act(()=>root.unmount());container.remove();});
+         |                             ^
+       9 | test('CC0 contributions do not acquire a false ShareAlike requirement',()=>{
+      10 |  const text_license={...common,license:'CC0-1.0',license_url:'https://creativecommons.org/publicdomain/zero/1.0/',source_url:'https://standardebooks.org/ebooks/test',contributors_url:'https://github.com/standardebooks/test'};
+      11 |  act(()=>root.render(<LicensedTextNotice book={{slug:'test',text_license}}/>));
+
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom-client.development.js:16329:17)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:18755:7)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:16409:11)
+      at updateContainerImpl (node_modules/react-dom/cjs/react-dom-client.development.js:23509:9)
+      at ReactDOMRoot.unmount (node_modules/react-dom/cjs/react-dom-client.development.js:27910:11)
+      at src/components/LicensedTextNotice.test.jsx:8:29
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:814:22)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react-dom/cjs/react-dom-test-utils.development.js:22:20)
+      at Object.<anonymous> (src/components/LicensedTextNotice.test.jsx:8:19)
+
+PASS src/components/Admin/PublishingWorkflowPanel.test.js
+PASS src/lib/readingPassAuthRecovery.test.js
+PASS src/lib/audioPackageManifest.test.js
+PASS src/readerDirectRoute.test.js
+PASS src/lib/libraryCatalog.test.js
+PASS src/pages/Home.test.jsx
+PASS src/components/ReferencePublicPages.test.jsx
+PASS src/lib/audiobookPlayback.test.js
+PASS src/lib/aGhostStoryCoverAssignment.test.js
+PASS src/config/publicNavigation.test.js
+PASS src/lib/audioReleaseSafety.test.js
+PASS src/pages/Library.test.jsx
+PASS src/productTruthContract.test.js
+PASS src/components/PremiumListeningRail.test.js
+PASS src/lib/darkPremiumPublicSystem.test.js
+PASS src/experiences-v2/reader/readerPageCache.test.js
+PASS src/components/Header.navigation.test.js
+PASS src/editorialSupportRouteContract.test.js
+PASS src/lib/controlledLaunch.previewParity.test.js
+PASS src/lib/readerManifestAccess.test.js
+PASS src/authAccountTextRules.test.js
+PASS src/pages/Reader.mobileUx.test.js
+PASS src/analyticsInstrumentation.test.js
+PASS src/lib/audioTimestampSchema.test.js
+PASS src/lib/readerSettings.test.js
+PASS src/lib/images.test.js
+PASS src/lib/homeShelfGeometry.test.js
+PASS src/myLibraryDirectRoute.test.js
+PASS src/legalDirectRoutes.test.js
+PASS src/components/Footer.test.js
+PASS src/performanceSprint.test.js
+PASS src/lib/bookDetailCoverFrame.test.js
+PASS src/lib/marketingLandingTruth.test.js
+PASS src/lib/textLicense.test.js
+PASS src/lib/readerSwipe.test.js
+PASS src/lib/readerNotebook.test.js
+PASS src/experiences-v2/__tests__/reader-route-fail-closed.test.js
+PASS src/components/Admin/CoverManager.test.js
+PASS src/components/FooterWordmark.test.js
+PASS src/components/BrandHeaderLogo.test.js
+PASS src/lib/funnelOffers.test.js
+PASS src/pages/Pricing.test.jsx
+PASS src/journalOptionB.test.js
+PASS src/design-system/sitewide-option-b.test.js
+PASS src/lib/bookCoverResolver.test.js
+PASS src/lib/accountPresentation.test.js
+PASS src/lib/readingPassOffers.test.js
+PASS src/lib/homepageAudioGate.test.js
+PASS src/pages/MyLibrary.shell.test.jsx
+PASS src/pages/Reader.previewParity.test.js
+PASS src/lib/readerNavigation.test.js
+PASS src/components/Admin/PublicationInspection.test.js
+PASS src/lib/socialSharing.test.js
+PASS src/lib/serviceWorkerAudioSafety.test.js
+PASS src/lib/staticAudioRouteSafety.test.js
+PASS src/lib/homeShelfRunway.test.js
+
+Test Suites: 97 passed, 97 total
+Tests:       607 passed, 607 total
+Snapshots:   0 total
+Time:        29.598 s, estimated 31 s
+Ran all test suites.

@@ -1,0 +1,20 @@
+{
+  "id": "chapter-000",
+  "bookSlug": "the-great-gatsby",
+  "order": 1,
+  "title": "Dedication and Epigraph",
+  "language": "en",
+  "content": "Once again to Zelda\n\nThen wear the gold hat, if that will move her; If you can bounce high, bounce for her too, Till she cry “Lover, gold-hatted, high-bouncing lover, I must have you!”\n\nThomas Parke d’Invilliers",
+  "content_hash": "8e042f367cf8d6d00cff551155f51835958d370ffc18dc1d32b034fb2134afb0",
+  "sourceSha256": "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35",
+  "sanitizedSha256": "8e042f367cf8d6d00cff551155f51835958d370ffc18dc1d32b034fb2134afb0",
+  "word_count": 37,
+  "reading_minutes": 1,
+  "is_preview": true,
+  "has_images": false,
+  "image_count": 0,
+  "processing_status": "ready",
+  "processing_warnings": [],
+  "uploaded_at": "2026-07-03T20:07:48Z",
+  "updated_at": "2026-10-02T03:25:38.460120+00:00"
+}

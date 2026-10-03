@@ -1,0 +1,1833 @@
+[
+  {
+    "slug": "the-time-machine",
+    "status": "PASS_COMPLETE_SELECTED_SOURCE",
+    "actual_primary_sha256": "2892e919000e17c83e1dac51b30f4675db50536b644d7579fe8a89bb399a9bdc",
+    "ordered_entire_chapter_bodies": [
+      {
+        "id": "chapter-001",
+        "offset": 1188,
+        "length": 9752
+      },
+      {
+        "id": "chapter-002",
+        "offset": 10957,
+        "length": 7489
+      },
+      {
+        "id": "chapter-003",
+        "offset": 18479,
+        "length": 11049
+      },
+      {
+        "id": "chapter-004",
+        "offset": 29549,
+        "length": 11625
+      },
+      {
+        "id": "chapter-005",
+        "offset": 41196,
+        "length": 9289
+      },
+      {
+        "id": "chapter-006",
+        "offset": 50512,
+        "length": 12532
+      },
+      {
+        "id": "chapter-007",
+        "offset": 63065,
+        "length": 12459
+      },
+      {
+        "id": "chapter-008",
+        "offset": 75543,
+        "length": 23325
+      },
+      {
+        "id": "chapter-009",
+        "offset": 98886,
+        "length": 11766
+      },
+      {
+        "id": "chapter-010",
+        "offset": 110672,
+        "length": 13725
+      },
+      {
+        "id": "chapter-011",
+        "offset": 124432,
+        "length": 13642
+      },
+      {
+        "id": "chapter-012",
+        "offset": 138096,
+        "length": 13938
+      },
+      {
+        "id": "chapter-013",
+        "offset": 152070,
+        "length": 5907
+      },
+      {
+        "id": "chapter-014",
+        "offset": 158002,
+        "length": 10373
+      },
+      {
+        "id": "chapter-015",
+        "offset": 168408,
+        "length": 2627
+      },
+      {
+        "id": "chapter-016",
+        "offset": 171057,
+        "length": 7410
+      },
+      {
+        "id": "chapter-017",
+        "offset": 178477,
+        "length": 1528
+      }
+    ],
+    "internal_gaps": [
+      "II. The Machine",
+      "III. The Time Traveller Returns",
+      "IV. Time Travelling",
+      "V. In the Golden Age",
+      "VI. The Sunset of Mankind",
+      "VII. A Sudden Shock",
+      "VIII. Explanation",
+      "IX. The Morlocks",
+      "X. When Night Came",
+      "XI. The Palace of Green Porcelain",
+      "XII. In the Darkness",
+      "XIII. The Trap of the White Sphinx",
+      "XIV. The Further Vision",
+      "XV. The Time Traveller’s Return",
+      "XVI. After the Story",
+      "Epilogue"
+    ],
+    "prefix": "The Project Gutenberg eBook of The Time Machine This eBook is for the use of anyone anywhere in the United States and most other parts of the world at no cost and with almost no restrictions whatsoever. You may copy it, give it away or re-use it under the terms of the Project Gutenberg License included with this eBook or online at www.gutenberg.org. If you are not located in the United States, you will have to check the laws of the country where you are located before using this eBook. Title: The Time Machine Author: H. G. Wells Release date: October 2, 2004 [eBook #35] Most recently updated: June 16, 2026 Language: English Other information and formats: www.gutenberg.org/ebooks/35 *** START OF THE PROJECT GUTENBERG EBOOK THE TIME MACHINE *** The Time Machine An Invention by H. G. Wells CONTENTS I Introduction II The Machine III The Time Traveller Returns IV Time Travelling V In the Golden Age VI The Sunset of Mankind VII A Sudden Shock VIII Explanation IX The Morlocks X When Night Came XI The Palace of Green Porcelain XII In the Darkness XIII The Trap of the White Sphinx XIV The Further Vision XV The Time Traveller’s Return XVI After the Story Epilogue I. Introduction",
+    "suffix": "*** END OF THE PROJECT GUTENBERG EBOOK THE TIME MACHINE *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in these works, so the Foundation (and you!) can copy and distribute it in the United States without permission and without paying copyright royalties. Special rules, set forth in the General Terms of Use part of this license, apply to copying and distributing Project Gutenberg™ electronic works to protect the PROJECT GUTENBERG™ concept and trademark. Project Gutenberg is a registered trademark, and may not be used if you charge for an eBook, except by following the terms of the trademark license, including paying royalties for use of the Project Gutenberg trademark. If you do not charge anything for copies of this eBook, complying with the trademark license is very easy. You may use this eBook for nearly any purpose such as creation of derivative works, reports, performances and research. Project Gutenberg eBooks may be modified and printed and given away—you may do practically ANYTHING in the United States with eBooks not protected by U.S. copyright law. Redistribution is subject to the trademark license, especially c",
+    "boundary_receipt_exact_reproduced": true,
+    "scope": "Project Gutenberg #35; The Time Machine exact canonical source, underlying lifetime publication 1895; complete selected author text, no translation or independently authored artwork/editorial material imported",
+    "historical_containment_alone_false_preserved": true,
+    "excluded_illustration_caption_blocks": [],
+    "new_GET_count": 1
+  },
+  {
+    "slug": "frankenstein",
+    "status": "PASS_COMPLETE_SELECTED_SOURCE",
+    "actual_primary_sha256": "7810cd483cffcf2cc8a1d8f0d5807931e69d4f48cd14149b8c76f88af82fead3",
+    "ordered_entire_chapter_bodies": [
+      {
+        "id": "chapter-001",
+        "offset": 1370,
+        "length": 6824
+      },
+      {
+        "id": "chapter-002",
+        "offset": 8232,
+        "length": 7308
+      },
+      {
+        "id": "chapter-003",
+        "offset": 15578,
+        "length": 1660
+      },
+      {
+        "id": "chapter-004",
+        "offset": 17276,
+        "length": 15100
+      },
+      {
+        "id": "chapter-005",
+        "offset": 32387,
+        "length": 10132
+      },
+      {
+        "id": "chapter-006",
+        "offset": 42530,
+        "length": 12679
+      },
+      {
+        "id": "chapter-007",
+        "offset": 55220,
+        "length": 15238
+      },
+      {
+        "id": "chapter-008",
+        "offset": 70469,
+        "length": 14403
+      },
+      {
+        "id": "chapter-009",
+        "offset": 84883,
+        "length": 12940
+      },
+      {
+        "id": "chapter-010",
+        "offset": 97834,
+        "length": 15474
+      },
+      {
+        "id": "chapter-011",
+        "offset": 113319,
+        "length": 19787
+      },
+      {
+        "id": "chapter-012",
+        "offset": 133117,
+        "length": 17226
+      },
+      {
+        "id": "chapter-013",
+        "offset": 150354,
+        "length": 12413
+      },
+      {
+        "id": "chapter-014",
+        "offset": 162779,
+        "length": 12940
+      },
+      {
+        "id": "chapter-015",
+        "offset": 175731,
+        "length": 15892
+      },
+      {
+        "id": "chapter-016",
+        "offset": 191635,
+        "length": 11952
+      },
+      {
+        "id": "chapter-017",
+        "offset": 203599,
+        "length": 11545
+      },
+      {
+        "id": "chapter-018",
+        "offset": 215156,
+        "length": 10413
+      },
+      {
+        "id": "chapter-019",
+        "offset": 225581,
+        "length": 17082
+      },
+      {
+        "id": "chapter-020",
+        "offset": 242675,
+        "length": 17502
+      },
+      {
+        "id": "chapter-021",
+        "offset": 260189,
+        "length": 10222
+      },
+      {
+        "id": "chapter-022",
+        "offset": 270423,
+        "length": 16095
+      },
+      {
+        "id": "chapter-023",
+        "offset": 286530,
+        "length": 14781
+      },
+      {
+        "id": "chapter-024",
+        "offset": 301323,
+        "length": 18986
+      },
+      {
+        "id": "chapter-025",
+        "offset": 320321,
+        "length": 20393
+      },
+      {
+        "id": "chapter-026",
+        "offset": 340726,
+        "length": 18977
+      },
+      {
+        "id": "chapter-027",
+        "offset": 359715,
+        "length": 13999
+      },
+      {
+        "id": "chapter-028",
+        "offset": 373726,
+        "length": 45540
+      }
+    ],
+    "internal_gaps": [
+      "Letter 2 _To Mrs. Saville, England._",
+      "Letter 3 _To Mrs. Saville, England._",
+      "Letter 4 _To Mrs. Saville, England._",
+      "Chapter 1",
+      "Chapter 2",
+      "Chapter 3",
+      "Chapter 4",
+      "Chapter 5",
+      "Chapter 6",
+      "Chapter 7",
+      "Chapter 8",
+      "Chapter 9",
+      "Chapter 10",
+      "Chapter 11",
+      "Chapter 12",
+      "Chapter 13",
+      "Chapter 14",
+      "Chapter 15",
+      "Chapter 16",
+      "Chapter 17",
+      "Chapter 18",
+      "Chapter 19",
+      "Chapter 20",
+      "Chapter 21",
+      "Chapter 22",
+      "Chapter 23",
+      "Chapter 24"
+    ],
+    "prefix": "The Project Gutenberg eBook of Frankenstein; or, the modern prometheus This eBook is for the use of anyone anywhere in the United States and most other parts of the world at no cost and with almost no restrictions whatsoever. You may copy it, give it away or re-use it under the terms of the Project Gutenberg License included with this eBook or online at www.gutenberg.org. If you are not located in the United States, you will have to check the laws of the country where you are located before using this eBook. Title: Frankenstein; or, the modern prometheus Author: Mary Wollstonecraft Shelley Release date: October 1, 1993 [eBook #84] Most recently updated: February 10, 2026 Language: English Other information and formats: www.gutenberg.org/ebooks/84 Credits: Judith Boss, Christy Phillips, Lynn Hanninen and David Meltzer. HTML version by Al Haines. Further corrections by Menno de Leeuw. *** START OF THE PROJECT GUTENBERG EBOOK FRANKENSTEIN; OR, THE MODERN PROMETHEUS *** Frankenstein; or, the Modern Prometheus by Mary Wollstonecraft (Godwin) Shelley CONTENTS Letter 1 Letter 2 Letter 3 Letter 4 Chapter 1 Chapter 2 Chapter 3 Chapter 4 Chapter 5 Chapter 6 Chapter 7 Chapter 8 Chapter 9 Chapter 10 Chapter 11 Chapter 12 Chapter 13 Chapter 14 Chapter 15 Chapter 16 Chapter 17 Chapter 18 Chapter 19 Chapter 20 Chapter 21 Chapter 22 Chapter 23 Chapter 24 Letter 1",
+    "suffix": "*** END OF THE PROJECT GUTENBERG EBOOK FRANKENSTEIN; OR, THE MODERN PROMETHEUS *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in these works, so the Foundation (and you!) can copy and distribute it in the United States without permission and without paying copyright royalties. Special rules, set forth in the General Terms of Use part of this license, apply to copying and distributing Project Gutenberg™ electronic works to protect the PROJECT GUTENBERG™ concept and trademark. Project Gutenberg is a registered trademark, and may not be used if you charge for an eBook, except by following the terms of the trademark license, including paying royalties for use of the Project Gutenberg trademark. If you do not charge anything for copies of this eBook, complying with the trademark license is very easy. You may use this eBook for nearly any purpose such as creation of derivative works, reports, performances and research. Project Gutenberg eBooks may be modified and printed and given away—you may do practically ANYTHING in the United States with eBooks not protected by U.S. copyright law. Redistribution is subject to the trademar",
+    "boundary_receipt_exact_reproduced": true,
+    "scope": "Project Gutenberg #84 electronic narrative, four letters and24chapters; no substitution of #41445/#42324",
+    "historical_containment_alone_false_preserved": true,
+    "excluded_illustration_caption_blocks": [],
+    "new_GET_count": 1
+  },
+  {
+    "slug": "the-secret-garden",
+    "status": "PASS_COMPLETE_SELECTED_SOURCE",
+    "actual_primary_sha256": "6b0bb5fbd0c4e873d2d22028da9d753cf3977d5f70ac58221556b28060badbf5",
+    "ordered_entire_chapter_bodies": [
+      {
+        "id": "chapter-001",
+        "offset": 1745,
+        "length": 10033
+      },
+      {
+        "id": "chapter-002",
+        "offset": 11820,
+        "length": 14352
+      },
+      {
+        "id": "chapter-003",
+        "offset": 26202,
+        "length": 7748
+      },
+      {
+        "id": "chapter-004",
+        "offset": 33970,
+        "length": 28073
+      },
+      {
+        "id": "chapter-005",
+        "offset": 62078,
+        "length": 11501
+      },
+      {
+        "id": "chapter-006",
+        "offset": 73630,
+        "length": 11913
+      },
+      {
+        "id": "chapter-007",
+        "offset": 85579,
+        "length": 10573
+      },
+      {
+        "id": "chapter-008",
+        "offset": 96196,
+        "length": 14098
+      },
+      {
+        "id": "chapter-009",
+        "offset": 110348,
+        "length": 16439
+      },
+      {
+        "id": "chapter-010",
+        "offset": 126806,
+        "length": 19626
+      },
+      {
+        "id": "chapter-011",
+        "offset": 146475,
+        "length": 12934
+      },
+      {
+        "id": "chapter-012",
+        "offset": 159454,
+        "length": 13431
+      },
+      {
+        "id": "chapter-013",
+        "offset": 172913,
+        "length": 21406
+      },
+      {
+        "id": "chapter-014",
+        "offset": 194347,
+        "length": 19193
+      },
+      {
+        "id": "chapter-015",
+        "offset": 213567,
+        "length": 20475
+      },
+      {
+        "id": "chapter-016",
+        "offset": 234077,
+        "length": 12260
+      },
+      {
+        "id": "chapter-017",
+        "offset": 246362,
+        "length": 12000
+      },
+      {
+        "id": "chapter-018",
+        "offset": 258406,
+        "length": 11487
+      },
+      {
+        "id": "chapter-019",
+        "offset": 269922,
+        "length": 18626
+      },
+      {
+        "id": "chapter-020",
+        "offset": 288603,
+        "length": 13712
+      },
+      {
+        "id": "chapter-021",
+        "offset": 302346,
+        "length": 17603
+      },
+      {
+        "id": "chapter-022",
+        "offset": 319987,
+        "length": 8510
+      },
+      {
+        "id": "chapter-023",
+        "offset": 328519,
+        "length": 21258
+      },
+      {
+        "id": "chapter-024",
+        "offset": 349809,
+        "length": 21172
+      },
+      {
+        "id": "chapter-025",
+        "offset": 371007,
+        "length": 12537
+      },
+      {
+        "id": "chapter-026",
+        "offset": 383574,
+        "length": 16202
+      },
+      {
+        "id": "chapter-027",
+        "offset": 399806,
+        "length": 27243
+      }
+    ],
+    "internal_gaps": [
+      "CHAPTER II. MISTRESS MARY QUITE CONTRARY",
+      "CHAPTER III. ACROSS THE MOOR",
+      "CHAPTER IV. MARTHA",
+      "CHAPTER V THE CRY IN THE CORRIDOR",
+      "CHAPTER VI. “THERE WAS SOMEONE CRYING—THERE WAS!”",
+      "CHAPTER VII. THE KEY TO THE GARDEN",
+      "CHAPTER VIII. THE ROBIN WHO SHOWED THE WAY",
+      "CHAPTER IX. THE STRANGEST HOUSE ANYONE EVER LIVED IN",
+      "CHAPTER X. DICKON",
+      "CHAPTER XI. THE NEST OF THE MISSEL THRUSH",
+      "CHAPTER XII. “MIGHT I HAVE A BIT OF EARTH?”",
+      "CHAPTER XIII. “I AM COLIN”",
+      "CHAPTER XIV. A YOUNG RAJAH",
+      "CHAPTER XV. NEST BUILDING",
+      "CHAPTER XVI. “I WON’T!” SAID MARY",
+      "CHAPTER XVII. A TANTRUM",
+      "CHAPTER XVIII. “THA’ MUNNOT WASTE NO TIME”",
+      "CHAPTER XIX. “IT HAS COME!”",
+      "CHAPTER XX. “I SHALL LIVE FOREVER—AND EVER—AND EVER!”",
+      "CHAPTER XXI. BEN WEATHERSTAFF",
+      "CHAPTER XXII. WHEN THE SUN WENT DOWN",
+      "CHAPTER XXIII. MAGIC",
+      "CHAPTER XXIV. “LET THEM LAUGH”",
+      "CHAPTER XXV. THE CURTAIN",
+      "CHAPTER XXVI. “IT’S MOTHER!”",
+      "CHAPTER XXVII. IN THE GARDEN"
+    ],
+    "prefix": "The Project Gutenberg eBook of The Secret Garden This eBook is for the use of anyone anywhere in the United States and most other parts of the world at no cost and with almost no restrictions whatsoever. You may copy it, give it away or re-use it under the terms of the Project Gutenberg License included with this eBook or online at www.gutenberg.org. If you are not located in the United States, you will have to check the laws of the country where you are located before using this eBook. Title: The Secret Garden Author: Frances Hodgson Burnett Release date: March 1, 1994 [eBook #113] Most recently updated: October 29, 2024 Language: English Other information and formats: www.gutenberg.org/ebooks/113 *** START OF THE PROJECT GUTENBERG EBOOK THE SECRET GARDEN *** THE SECRET GARDEN by Frances Hodgson Burnett _Author of “The Shuttle,” “The Making of a Marchioness,” “The Methods of Lady Walderhurst,” “The Lass o’ Lowries,” “Through One Administration,” “Little Lord Fauntleroy,” “A Lady of Quality,” etc._ Contents I. THERE IS NO ONE LEFT II. MISTRESS MARY QUITE CONTRARY III. ACROSS THE MOOR IV. MARTHA V. THE CRY IN THE CORRIDOR VI. “THERE WAS SOMEONE CRYING—THERE WAS!” VII. THE KEY TO THE GARDEN VIII. THE ROBIN WHO SHOWED THE WAY IX. THE STRANGEST HOUSE ANYONE EVER LIVED IN X. DICKON XI. THE NEST OF THE MISSEL THRUSH XII. “MIGHT I HAVE A BIT OF EARTH?” XIII. “I AM COLIN” XIV. A YOUNG RAJAH XV. NEST BUILDING XVI. “I WON’T!” SAID MARY XVII. A TANTRUM XVIII. “THA’ MUNNOT WASTE NO TIME” XIX. “IT HAS COME!” XX. “I SHALL LIVE FOREVER—AND EVER—AND EVER!” XXI. BEN WEATHERSTAFF XXII. WHEN THE SUN WENT DOWN XXIII. MAGIC XXIV. “LET THEM LAUGH” XXV. THE CURTAIN XXVI. “IT’S MOTHER!” XXVII. IN THE GARDEN CHAPTER I. THERE IS NO ONE LEFT",
+    "suffix": "*** END OF THE PROJECT GUTENBERG EBOOK THE SECRET GARDEN *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in these works, so the Foundation (and you!) can copy and distribute it in the United States without permission and without paying copyright royalties. Special rules, set forth in the General Terms of Use part of this license, apply to copying and distributing Project Gutenberg™ electronic works to protect the PROJECT GUTENBERG™ concept and trademark. Project Gutenberg is a registered trademark, and may not be used if you charge for an eBook, except by following the terms of the trademark license, including paying royalties for use of the Project Gutenberg trademark. If you do not charge anything for copies of this eBook, complying with the trademark license is very easy. You may use this eBook for nearly any purpose such as creation of derivative works, reports, performances and research. Project Gutenberg eBooks may be modified and printed and given away—you may do practically ANYTHING in the United States with eBooks not protected by U.S. copyright law. Redistribution is subject to the trademark license, especially ",
+    "boundary_receipt_exact_reproduced": true,
+    "scope": "Project Gutenberg #113; The Secret Garden exact canonical source, underlying lifetime publication 1911; complete selected author text, no translation or independently authored artwork/editorial material imported",
+    "historical_containment_alone_false_preserved": true,
+    "excluded_illustration_caption_blocks": [],
+    "new_GET_count": 1
+  },
+  {
+    "slug": "pride-and-prejudice",
+    "status": "PASS_COMPLETE_SELECTED_SOURCE",
+    "actual_primary_sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+    "ordered_entire_chapter_bodies": [
+      {
+        "id": "chapter-001",
+        "offset": 29347,
+        "length": 4454
+      },
+      {
+        "id": "chapter-002",
+        "offset": 33814,
+        "length": 4281
+      },
+      {
+        "id": "chapter-003",
+        "offset": 38109,
+        "length": 9544
+      },
+      {
+        "id": "chapter-004",
+        "offset": 47666,
+        "length": 5919
+      },
+      {
+        "id": "chapter-005",
+        "offset": 53597,
+        "length": 5250
+      },
+      {
+        "id": "chapter-006",
+        "offset": 58860,
+        "length": 12975
+      },
+      {
+        "id": "chapter-007",
+        "offset": 71849,
+        "length": 11146
+      },
+      {
+        "id": "chapter-008",
+        "offset": 83010,
+        "length": 10950
+      },
+      {
+        "id": "chapter-009",
+        "offset": 93973,
+        "length": 9733
+      },
+      {
+        "id": "chapter-010",
+        "offset": 103718,
+        "length": 12436
+      },
+      {
+        "id": "chapter-011",
+        "offset": 116167,
+        "length": 8916
+      },
+      {
+        "id": "chapter-012",
+        "offset": 125097,
+        "length": 3924
+      },
+      {
+        "id": "chapter-013",
+        "offset": 129035,
+        "length": 9277
+      },
+      {
+        "id": "chapter-014",
+        "offset": 138325,
+        "length": 6428
+      },
+      {
+        "id": "chapter-015",
+        "offset": 144766,
+        "length": 9780
+      },
+      {
+        "id": "chapter-016",
+        "offset": 154560,
+        "length": 19020
+      },
+      {
+        "id": "chapter-017",
+        "offset": 173595,
+        "length": 7264
+      },
+      {
+        "id": "chapter-018",
+        "offset": 180875,
+        "length": 29113
+      },
+      {
+        "id": "chapter-019",
+        "offset": 210002,
+        "length": 10650
+      },
+      {
+        "id": "chapter-020",
+        "offset": 220665,
+        "length": 9154
+      },
+      {
+        "id": "chapter-021",
+        "offset": 229833,
+        "length": 11267
+      },
+      {
+        "id": "chapter-022",
+        "offset": 241115,
+        "length": 9988
+      },
+      {
+        "id": "chapter-023",
+        "offset": 251119,
+        "length": 9299
+      },
+      {
+        "id": "chapter-024",
+        "offset": 260433,
+        "length": 10803
+      },
+      {
+        "id": "chapter-025",
+        "offset": 271250,
+        "length": 8583
+      },
+      {
+        "id": "chapter-026",
+        "offset": 279848,
+        "length": 12748
+      },
+      {
+        "id": "chapter-027",
+        "offset": 292612,
+        "length": 7203
+      },
+      {
+        "id": "chapter-028",
+        "offset": 299832,
+        "length": 8215
+      },
+      {
+        "id": "chapter-029",
+        "offset": 308062,
+        "length": 13647
+      },
+      {
+        "id": "chapter-030",
+        "offset": 321723,
+        "length": 7051
+      },
+      {
+        "id": "chapter-031",
+        "offset": 328789,
+        "length": 8721
+      },
+      {
+        "id": "chapter-032",
+        "offset": 337526,
+        "length": 8441
+      },
+      {
+        "id": "chapter-033",
+        "offset": 345984,
+        "length": 10348
+      },
+      {
+        "id": "chapter-034",
+        "offset": 356348,
+        "length": 11982
+      },
+      {
+        "id": "chapter-035",
+        "offset": 368345,
+        "length": 16977
+      },
+      {
+        "id": "chapter-036",
+        "offset": 385338,
+        "length": 11782
+      },
+      {
+        "id": "chapter-037",
+        "offset": 397137,
+        "length": 7765
+      },
+      {
+        "id": "chapter-038",
+        "offset": 404920,
+        "length": 5937
+      },
+      {
+        "id": "chapter-039",
+        "offset": 410873,
+        "length": 8769
+      },
+      {
+        "id": "chapter-040",
+        "offset": 419655,
+        "length": 9171
+      },
+      {
+        "id": "chapter-041",
+        "offset": 428840,
+        "length": 12983
+      },
+      {
+        "id": "chapter-042",
+        "offset": 441838,
+        "length": 10618
+      },
+      {
+        "id": "chapter-043",
+        "offset": 452472,
+        "length": 27444
+      },
+      {
+        "id": "chapter-044",
+        "offset": 479931,
+        "length": 13357
+      },
+      {
+        "id": "chapter-045",
+        "offset": 493302,
+        "length": 10084
+      },
+      {
+        "id": "chapter-046",
+        "offset": 503401,
+        "length": 16910
+      },
+      {
+        "id": "chapter-047",
+        "offset": 520327,
+        "length": 22287
+      },
+      {
+        "id": "chapter-048",
+        "offset": 542631,
+        "length": 12542
+      },
+      {
+        "id": "chapter-049",
+        "offset": 555188,
+        "length": 12208
+      },
+      {
+        "id": "chapter-050",
+        "offset": 567408,
+        "length": 12467
+      },
+      {
+        "id": "chapter-051",
+        "offset": 579888,
+        "length": 11203
+      },
+      {
+        "id": "chapter-052",
+        "offset": 591105,
+        "length": 16537
+      },
+      {
+        "id": "chapter-053",
+        "offset": 607657,
+        "length": 16049
+      },
+      {
+        "id": "chapter-054",
+        "offset": 623720,
+        "length": 8808
+      },
+      {
+        "id": "chapter-055",
+        "offset": 632541,
+        "length": 12945
+      },
+      {
+        "id": "chapter-056",
+        "offset": 645500,
+        "length": 15295
+      },
+      {
+        "id": "chapter-057",
+        "offset": 660810,
+        "length": 9394
+      },
+      {
+        "id": "chapter-058",
+        "offset": 670220,
+        "length": 13632
+      },
+      {
+        "id": "chapter-059",
+        "offset": 683866,
+        "length": 13517
+      },
+      {
+        "id": "chapter-060",
+        "offset": 697396,
+        "length": 8686
+      },
+      {
+        "id": "chapter-061",
+        "offset": 706096,
+        "length": 7152
+      }
+    ],
+    "internal_gaps": [
+      "CHAPTER II.",
+      "CHAPTER III.",
+      "CHAPTER IV.",
+      "CHAPTER V.",
+      "CHAPTER VI.",
+      "CHAPTER VII.",
+      "CHAPTER VIII.",
+      "CHAPTER IX.",
+      "CHAPTER X.",
+      "CHAPTER XI.",
+      "CHAPTER XII.",
+      "CHAPTER XIII",
+      "CHAPTER XIV",
+      "CHAPTER XV.",
+      "CHAPTER XVI.",
+      "CHAPTER XVII.",
+      "CHAPTER XVIII.",
+      "CHAPTER XIX.",
+      "CHAPTER XX.",
+      "CHAPTER XXI.",
+      "CHAPTER XXII.",
+      "CHAPTER XXIII.",
+      "CHAPTER XXIV.",
+      "CHAPTER XXV.",
+      "CHAPTER XXVI.",
+      "CHAPTER XXVII.",
+      "CHAPTER XXVIII.",
+      "CHAPTER XXIX.",
+      "CHAPTER XXX.",
+      "CHAPTER XXXI.",
+      "CHAPTER XXXII.",
+      "CHAPTER XXXIII.",
+      "CHAPTER XXXIV.",
+      "CHAPTER XXXV.",
+      "CHAPTER XXXVI.",
+      "CHAPTER XXXVII.",
+      "CHAPTER XXXVIII.",
+      "CHAPTER XXXIX.",
+      "CHAPTER XL.",
+      "CHAPTER XLI.",
+      "CHAPTER XLII.",
+      "CHAPTER XLIII.",
+      "CHAPTER XLIV.",
+      "CHAPTER XLV.",
+      "Chapter XLVI.",
+      "CHAPTER XLVII.",
+      "CHAPTER XLVIII.",
+      "CHAPTER XLIX.",
+      "CHAPTER L.",
+      "CHAPTER LI.",
+      "CHAPTER LII.",
+      "CHAPTER LIII.",
+      "CHAPTER LIV.",
+      "CHAPTER LV.",
+      "CHAPTER LVI.",
+      "CHAPTER LVII.",
+      "CHAPTER LVIII.",
+      "CHAPTER LIX.",
+      "CHAPTER LX.",
+      "CHAPTER LXI."
+    ],
+    "prefix": "Whenever she spoke in a low voice” 166 Heading to Chapter XXIV. 168 Heading to Chapter XXV. 175 “Offended two or three young ladies” 177 “Will you come and see me?” 181 “On the stairs” 189 “At the door” 194 “In conversation with the ladies” 198 “Lady Catherine,” said she, “you have given me a treasure” 200 Heading to Chapter XXX. 209 “He never failed to inform them” 211 “The gentlemen accompanied him” 213 Heading to Chapter XXXI. 215 Heading to Chapter XXXII. 221 “Accompanied by their aunt” 225 “On looking up” 228 Heading to Chapter XXXIV. 235 “Hearing herself called” 243 Heading to Chapter XXXVI. 253 “Meeting accidentally in town” 256 “His parting obeisance” 261 “Dawson” 263 “The elevation of his feelings” 267 “They had forgotten to leave any message” 270 “How nicely we are crammed in!” 272 Heading to Chapter XL. 278 “I am determined never to speak of it again” 283 “When Colonel Miller’s regiment went away” 285 “Tenderly flirting” 290 The arrival of the Gardiners 294 “Conjecturing as to the date” 301 Heading to Chapter XLIV. 318 “To make herself agreeable to all” 321 “Engaged by the river” 327 Heading to Chapter XLVI. 334 “I have not an instant to lose” 339 “The first pleasing earnest of their welcome” 345 The Post 359 “To whom I have related the affair” 363 Heading to Chapter XLIX. 368 “But perhaps you would like to read it” 370 “The spiteful old ladies” 377 “With an affectionate smile” 385 “I am sure she did not listen” 393 “Mr. Darcy with him” 404 “Jane happened to look round” 415 “Mrs. Long and her nieces” 420 “Lizzy, my dear, I want to speak to you” 422 Heading to Chapter LVI. 431 “After a short survey” 434 “But now it comes out” 442 “The efforts of his aunt” 448 “Unable to utter a syllable” 457 “The obsequious civility” 466 Heading to Chapter LXI. 472 The End 476",
+    "suffix": "*** END OF THE PROJECT GUTENBERG EBOOK PRIDE AND PREJUDICE *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in these works, so the Foundation (and you!) can copy and distribute it in the United States without permission and without paying copyright royalties. Special rules, set forth in the General Terms of Use part of this license, apply to copying and distributing Project Gutenberg™ electronic works to protect the PROJECT GUTENBERG™ concept and trademark. Project Gutenberg is a registered trademark, and may not be used if you charge for an eBook, except by following the terms of the trademark license, including paying royalties for use of the Project Gutenberg trademark. If you do not charge anything for copies of this eBook, complying with the trademark license is very easy. You may use this eBook for nearly any purpose such as creation of derivative works, reports, performances and research. Project Gutenberg eBooks may be modified and printed and given away—you may do practically ANYTHING in the United States with eBooks not protected by U.S. copyright law. Redistribution is subject to the trademark license, especiall",
+    "boundary_receipt_exact_reproduced": true,
+    "scope": "Project Gutenberg #1342, 1894 Austen narrative text-only; Saintsbury preface and Thomson illustrations excluded",
+    "historical_containment_alone_false_preserved": true,
+    "excluded_illustration_caption_blocks": [
+      {
+        "offset": 1029,
+        "length": 274,
+        "sha256": "0b40e19a6f5ffdb4ec45d0d81050fc148cc0bafe2da855bb679708759d22150a",
+        "text": "[Illustration:\r\n\r\n                             GEORGE ALLEN\r\n                               PUBLISHER\r\n\r\n                        156 CHARING CROSS ROAD\r\n                                LONDON\r\n\r\n                             RUSKIN HOUSE\r\n                                   ]"
+      },
+      {
+        "offset": 1335,
+        "length": 112,
+        "sha256": "c2070f8f02b85ba69aa59ce702a8c1266214c4cda1bbd70247a401655ae9c045",
+        "text": "[Illustration:\r\n\r\n               _Reading Jane’s Letters._      _Chap 34._\r\n                                   ]"
+      },
+      {
+        "offset": 1909,
+        "length": 20,
+        "sha256": "4fd6fe1fde240c19286ba80a73ab604be29fe5b60ec800e09c2a3f58b44e11b5",
+        "text": "[Illustration: 1894]"
+      },
+      {
+        "offset": 2277,
+        "length": 347,
+        "sha256": "b385ea2f88686ca5982beeda6624afea28ee3471b9a2f403577f98059f8b90c9",
+        "text": "[Illustration:\r\n\r\n                          _To J. Comyns Carr\r\n                      in acknowledgment of all I\r\n                       owe to his friendship and\r\n                    advice, these illustrations are\r\n                         gratefully inscribed_\r\n\r\n                            _Hugh Thomson_\r\n                                   ]"
+      },
+      {
+        "offset": 2646,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 28097,
+        "length": 38,
+        "sha256": "7418b0f6ccd349d4ace7e0a642ba790e466c6055bbbae0cce7bc04b8546412e4",
+        "text": "[Illustration: List of Illustrations.]"
+      },
+      {
+        "offset": 35899,
+        "length": 57,
+        "sha256": "560da5b32920af91eff81421e641ead51a824cd1613808728d286c91ce540bcc",
+        "text": "[Illustration: ·PRIDE AND PREJUDICE·\r\n\r\n\r\n\r\n\r\nChapter I.]"
+      },
+      {
+        "offset": 36770,
+        "length": 89,
+        "sha256": "a624142461a46819c7117d49bb5d0c9e78c734eaa8d2b0b90d88e5e35cdd10b4",
+        "text": "[Illustration:\r\n\r\n“He came down to see the place”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 40656,
+        "length": 78,
+        "sha256": "c067a28d0d25d2276d149ed63111da0a260be967d3ce230e328632968f58f398",
+        "text": "[Illustration: M^{r.} & M^{rs.} Bennet\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 40744,
+        "length": 91,
+        "sha256": "8e24ac1c309803ac2dd92f587ed6bb2a8a6cc8791075222a02dfa723c168d851",
+        "text": "[Illustration:\r\n\r\n“I hope Mr. Bingley will like it”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 40862,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 45292,
+        "length": 33,
+        "sha256": "84339fe5b5d2f0c5f2f607dcba896893242c07c47c003d7470dd41ae2744754f",
+        "text": "[Illustration: “I’m the tallest”]"
+      },
+      {
+        "offset": 45335,
+        "length": 49,
+        "sha256": "4464a0c4f05540fc032578a1bf71d1eeb41dec0b96a357d2fea3bfb4b9209e85",
+        "text": "[Illustration:\r\n\r\n     “He rode a black horse”\r\n]"
+      },
+      {
+        "offset": 45412,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 47530,
+        "length": 87,
+        "sha256": "ba0dc06c30d27263b8c624329ba399d63b36eb1294f0f15b988112e973983ccc",
+        "text": "[Illustration:\r\n\r\n     “When the Party entered”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 51377,
+        "length": 76,
+        "sha256": "4db8bb80f852113900bd1a139cea79128806988b0176270ff0510b6d259a5ad7",
+        "text": "[Illustration:\r\n\r\n“She is tolerable”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 55339,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 55380,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 61449,
+        "length": 51,
+        "sha256": "0f7945a0725a4feee8f4d57500cadd1879abbc84d5789b6e1c423129e9c853aa",
+        "text": "[Illustration: [_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 61526,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 64392,
+        "length": 86,
+        "sha256": "9aa055391d97693c98130e423ea298a27e008da4092e411388ad7f34f1e18b1a",
+        "text": "[Illustration: “Without once opening his lips”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 67016,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 67040,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 67081,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 73588,
+        "length": 80,
+        "sha256": "688101d1c4963d52c2603ef3af1e25b732d66339b0ab8bff05c4c67d28693a58",
+        "text": "[Illustration: “The entreaties of several” [_Copyright 1894 by George\r\nAllen._]]"
+      },
+      {
+        "offset": 80482,
+        "length": 87,
+        "sha256": "4a707af771f23723640a403caadedc3639aa79a1d5448fb680a19421db0cf05c",
+        "text": "[Illustration:\r\n\r\n     “A note for Miss Bennet”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 80597,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 86061,
+        "length": 36,
+        "sha256": "e26e41eed4accf20153618ad3ff897200b3c5383db4a59ec5879d2ffbdbf5d13",
+        "text": "[Illustration: Cheerful prognostics]"
+      },
+      {
+        "offset": 92154,
+        "length": 42,
+        "sha256": "c406906a4663dd64c2ecf103d1c4595e69e263dd7d69d29cae9eb701e9c68007",
+        "text": "[Illustration:\r\n\r\n“The Apothecary came”\r\n]"
+      },
+      {
+        "offset": 92206,
+        "length": 40,
+        "sha256": "1077b2ce7e32b2f501eb4f3d8c570a17fc6950dada3f4b9906f869fb7b75ff95",
+        "text": "[Illustration:\r\n\r\n“covering a screen”\r\n]"
+      },
+      {
+        "offset": 92275,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 103552,
+        "length": 98,
+        "sha256": "d253fbf6843d1b8f648cb7a378185b621d719710b59f02605e74fb353985baf3",
+        "text": "[Illustration:\r\n\r\nM^{rs} Bennet and her two youngest girls\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 103677,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 113663,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 113703,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 124882,
+        "length": 91,
+        "sha256": "c0ac26356e7ab8ddc8f7fed9eb7c5aad96bbe1a3c78563d8026968d31e73fb66",
+        "text": "[Illustration:\r\n\r\n     “No, no; stay where you are”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 126599,
+        "length": 83,
+        "sha256": "b87ef6637490e542b3e8afc75f7e7d4035962f8f3abf0e1fa86d223e74a74068",
+        "text": "[Illustration:\r\n\r\n     “Piling up the fire”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 126709,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 135865,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 135907,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 139928,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 139970,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 149656,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 149697,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 154493,
+        "length": 75,
+        "sha256": "c48980634672d50a79e39a829d15ec823c84cb48db3b20e862f473219d9ccffa",
+        "text": "[Illustration:\r\n\r\n“Protested\r\nthat he never read novels”      H.T Feb 94\r\n]"
+      },
+      {
+        "offset": 156364,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 156405,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 166382,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 166424,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 168885,
+        "length": 89,
+        "sha256": "49bf4c63a4f574bd4d06d9f9fd2a30f971d3550940d4f63cb2b840a65138eb26",
+        "text": "[Illustration:\r\n\r\n“The officers of the ----shire”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 185982,
+        "length": 68,
+        "sha256": "c9dc1ff8e15194e96f6860bb80ff668daa27e3cff32945c4299c72c368b63024",
+        "text": "[Illustration:\r\n\r\n     “delighted to see their dear friend again”\r\n]"
+      },
+      {
+        "offset": 186079,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 193510,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 193554,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 201115,
+        "length": 106,
+        "sha256": "e0c25cbdccb5b8315b6c9e2b1be57522516c8588b2c19368ab385ca7432087be",
+        "text": "[Illustration:\r\n\r\n“Such very superior dancing is not\r\noften seen.”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 223407,
+        "length": 71,
+        "sha256": "26275827b9d63e0410a0f436267d4be808d355c817288774b81113887da4d5c2",
+        "text": "[Illustration:\r\n\r\n     “to assure you in the most animated language”\r\n]"
+      },
+      {
+        "offset": 223506,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 234389,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 234430,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 239980,
+        "length": 59,
+        "sha256": "2990d326bbdd48949dcc7df63727e7bd4bed5edc180ae4af2f60f3bd6fd7481b",
+        "text": "[Illustration:\r\n\r\n     “they entered the breakfast room”\r\n]"
+      },
+      {
+        "offset": 243886,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 243928,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 246112,
+        "length": 78,
+        "sha256": "2d5ccd002e3ee5ed7fd380cd85e503da333e2203105980b12e4a8e3f094a0b2c",
+        "text": "[Illustration: “Walked back with them”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 255532,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 255575,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 258426,
+        "length": 91,
+        "sha256": "9d3074ce3def98549ae7198d458426bbf335d638f9f989ecb9e6457baa67ca2d",
+        "text": "[Illustration:\r\n\r\n     “So much love and eloquence”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 265874,
+        "length": 104,
+        "sha256": "fc12e3ec7249343dd8cf7fcda49ebb681b37f6ce04b68e0bd2bef267d37840cb",
+        "text": "[Illustration:\r\n\r\n     “Protested he must be entirely mistaken.”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 266008,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 273749,
+        "length": 63,
+        "sha256": "daab65f78cd53d4f890568c6d60fd86ee097dfac63e372fe983f1651a083b8cd",
+        "text": "[Illustration:\r\n\r\n     “_Whenever she spoke in a low voice_”\r\n]"
+      },
+      {
+        "offset": 275593,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 275636,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 286694,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 286736,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 290073,
+        "length": 99,
+        "sha256": "e1e20b4aa6601004fe140a22a40e62744f95dfa2c109845caae6193a47b1db4f",
+        "text": "[Illustration:\r\n\r\n     “Offended two or three young ladies”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 295622,
+        "length": 53,
+        "sha256": "f2068ec515da0f826162ae7e8b92de39326f30fe7a46d5ed407c3882ef41dd72",
+        "text": "[Illustration:\r\n\r\n     “Will you come and see me?”\r\n]"
+      },
+      {
+        "offset": 295704,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 308935,
+        "length": 41,
+        "sha256": "028bb37c67b562cadff5122a3b580fadbb5edef1d779323b906a47b780866e0f",
+        "text": "[Illustration:\r\n\r\n     “On the Stairs”\r\n]"
+      },
+      {
+        "offset": 309006,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 316393,
+        "length": 39,
+        "sha256": "1a4c423d86094f294a65d9960ae9bfaf391c5d261268fa2b6fbdf70991b86423",
+        "text": "[Illustration:\r\n\r\n     “At the door”\r\n]"
+      },
+      {
+        "offset": 316463,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 323015,
+        "length": 94,
+        "sha256": "485743026d7d49e795d2011010a3670c096a1bfb84dbbc8071fa6b891aceb5d3",
+        "text": "[Illustration:\r\n\r\n     “In Conversation with the ladies”\r\n\r\n[Copyright 1894 by George Allen.]]"
+      },
+      {
+        "offset": 324968,
+        "length": 120,
+        "sha256": "35ea4955fb0fadcb95fb19833d0c7172e13d6c9bfa8425205c0a4d0853e57a24",
+        "text": "[Illustration:\r\n\r\n     ‘Lady Catherine, said she, you have given me a treasure.’\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 325117,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 339091,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 339133,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 342055,
+        "length": 58,
+        "sha256": "5a4144d2c1aaf760cbcb0bfec3d0b7078646d0086c541151a9dd9fc403a5a1ac",
+        "text": "[Illustration:\r\n\r\n     “he never failed to inform them”\r\n]"
+      },
+      {
+        "offset": 344090,
+        "length": 90,
+        "sha256": "7d59ab1b077258271cb2acdf00c45727557d3da04e8a62cc8044546cc1ce98f9",
+        "text": "[Illustration:\r\n\r\n“The gentlemen accompanied him.”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 346497,
+        "length": 32,
+        "sha256": "3696f48dbc8c38c9a1122c2e542b700068a738f441937fe59e2ff39b0b0f6b66",
+        "text": "[Illustration:\r\n\r\n“At Church”\r\n]"
+      },
+      {
+        "offset": 346558,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 355500,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 355544,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 360901,
+        "length": 82,
+        "sha256": "7023ef150aa4782e134aa83121a5383a42f61cd33e26b771f68b745a7e811bba",
+        "text": "[Illustration: “Accompanied by their aunt”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 364293,
+        "length": 31,
+        "sha256": "8eaa78126497db1fe1f67d4e6b75a08dde4bc1707328b9dc39d3827d3dba1040",
+        "text": "[Illustration: “On looking up”]"
+      },
+      {
+        "offset": 364355,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 374977,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 375021,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 387275,
+        "length": 45,
+        "sha256": "f1ec645ca4e0b7d1236e04ea55b0ef0c6ba10f75eb853476f178c8642d45b804",
+        "text": "[Illustration:\r\n\r\n“Hearing herself called”\r\n]"
+      },
+      {
+        "offset": 387349,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 404609,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 404653,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 408866,
+        "length": 93,
+        "sha256": "a4bc14a1d1aeb73ab38e889d5618eea1d4b16589b1de4e6bf01a54f45c3e777c",
+        "text": "[Illustration:\r\n\r\n     “Meeting accidentally in Town”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 416760,
+        "length": 44,
+        "sha256": "5a4a430c1edc576b3e03b04caad5dcffd1320e6d3526fc68767367295d0cb94b",
+        "text": "[Illustration:\r\n\r\n“His parting obeisance”\r\n]"
+      },
+      {
+        "offset": 416835,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 419331,
+        "length": 66,
+        "sha256": "b104181555c8283625dbcd9a8401beb146c524b46a2f97fe2643c9af8f933428",
+        "text": "[Illustration:\r\n\r\n“Dawson”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 424857,
+        "length": 53,
+        "sha256": "9a5f9b8299252c496de555e7fe9c42fde480566bf374c022d906bc280967a103",
+        "text": "[Illustration:\r\n\r\n“The elevation of his feelings.”\r\n]"
+      },
+      {
+        "offset": 424942,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 429237,
+        "length": 62,
+        "sha256": "adec44e45c614fbbb89b9a55a832cb9ce2064cff8862bc4f5da69a8cdc010e61",
+        "text": "[Illustration:\r\n\r\n“They had forgotten to leave any message”\r\n]"
+      },
+      {
+        "offset": 431096,
+        "length": 56,
+        "sha256": "63f366e62243d7aa1f96fad7af5bd65e78ae313175f4d1bac0e14196fea6be55",
+        "text": "[Illustration:\r\n\r\n     “How nicely we are crammed in”\r\n]"
+      },
+      {
+        "offset": 431182,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 440162,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 440203,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 448073,
+        "length": 70,
+        "sha256": "47b5ff2e2cd9b9a29a8c9b67407ad84606d1a4342e2d2cca4776f8c37dd54f61",
+        "text": "[Illustration:\r\n\r\n     “I am determined never to speak of it again”\r\n]"
+      },
+      {
+        "offset": 449690,
+        "length": 100,
+        "sha256": "62a74a29ec55a71a6dfc934b64ac4f43ac011286c551796a6632aaa05a1957bc",
+        "text": "[Illustration:\r\n\r\n“When Colonel Miller’s regiment went away”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 449818,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 457525,
+        "length": 77,
+        "sha256": "5f60b384e3aceeedc96376014aa12c95aeb78709ffdc2092e9165668cad3263e",
+        "text": "[Illustration:\r\n\r\n“Tenderly flirting”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 463189,
+        "length": 50,
+        "sha256": "34823380efe91f42045455afe439f058a341aeea56bb17a838bddbd0fd38fb9e",
+        "text": "[Illustration:\r\n\r\nThe arrival of the\r\nGardiners\r\n]"
+      },
+      {
+        "offset": 463268,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 474107,
+        "length": 55,
+        "sha256": "605f8bb892cabd664aa44a027b2073b9415781a390b8124eada5691ea31e9e39",
+        "text": "[Illustration:\r\n\r\n     “Conjecturing as to the date”\r\n]"
+      },
+      {
+        "offset": 474192,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 502245,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 502288,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 506739,
+        "length": 97,
+        "sha256": "91dda2757a428a8108c9f72e53fbf9508be82493e92b350d1d3ac14f8f55f099",
+        "text": "[Illustration:\r\n\r\n     “To make herself agreeable to all”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 516004,
+        "length": 48,
+        "sha256": "a9dbb6d17e012a85c973d4d9d9cf1ef939d15cc0829db9990543badd593a9937",
+        "text": "[Illustration:\r\n\r\n     “Engaged by the river”\r\n]"
+      },
+      {
+        "offset": 516080,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 526381,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 526424,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 534809,
+        "length": 57,
+        "sha256": "a306604d65d38da609d74b3eb00d32fe1d3f97f02526cf5dd2959882808e013d",
+        "text": "[Illustration:\r\n\r\n     “I have not an instant to lose”\r\n]"
+      },
+      {
+        "offset": 543739,
+        "length": 71,
+        "sha256": "1d63ee3d048dc99dedb0419ad3c6e482b6aaf30b895dc60e23c0afdb9499a69d",
+        "text": "[Illustration:\r\n\r\n     “The first pleasing earnest of their welcome”\r\n]"
+      },
+      {
+        "offset": 543840,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 566742,
+        "length": 34,
+        "sha256": "f6625424220021839a63aade99ae545daffee694ddee6a766c5eb1076e28b571",
+        "text": "[Illustration:\r\n\r\n     The Post\r\n]"
+      },
+      {
+        "offset": 566807,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 572907,
+        "length": 98,
+        "sha256": "b231d98342e55f6bfb509d1279f5053814481327796a751a89956d5e97fa3252",
+        "text": "[Illustration:\r\n\r\n“To whom I have related the affair”\r\n\r\n     [_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 579908,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 579951,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 582416,
+        "length": 102,
+        "sha256": "5ca6bc3d7d5aae57a5e9879d168eb6b8e67b17f4afcf8425c02253d53c88108e",
+        "text": "[Illustration:\r\n\r\n“But perhaps you would like to read it”\r\n\r\n     [_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 592778,
+        "length": 83,
+        "sha256": "3d35a765e2c0b40c35beef3c231a3410aa174e226617ddd574741b08e21cd9df",
+        "text": "[Illustration:\r\n\r\n“The spiteful old ladies”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 592887,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 605617,
+        "length": 86,
+        "sha256": "f4e50093e631192da246a9ceffc4b2c2077252c57052288aceeb4caa0edf624d",
+        "text": "[Illustration:\r\n\r\n“With an affectionate smile”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 605730,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 617218,
+        "length": 52,
+        "sha256": "29db24b1c5ddc056f4ed0db3bdb4013c6ee125f39d987409c80608b27bfcc4dd",
+        "text": "[Illustration:\r\n\r\n“I am sure she did not listen.”\r\n]"
+      },
+      {
+        "offset": 617298,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 634951,
+        "length": 42,
+        "sha256": "689bc2e40199c38e05601db6e61ccae572f673931a1e84908e0e17ddddd04fff",
+        "text": "[Illustration:\r\n\r\n“Mr. Darcy with him.”\r\n]"
+      },
+      {
+        "offset": 635022,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 651470,
+        "length": 55,
+        "sha256": "ea693b72722b44f09332d19d4c0baf43f225d67b40ed3a0d8ed93bf8d30b1330",
+        "text": "[Illustration:\r\n\r\n     “Jane happened to look round”\r\n]"
+      },
+      {
+        "offset": 651553,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 659097,
+        "length": 56,
+        "sha256": "8d87b65d6562baea8f2741711fcc62ff3a4e3b898ee2ba542e9cac3fdbab5600",
+        "text": "[Illustration:\r\n\r\n     “M^{rs}. Long and her nieces.”\r\n]"
+      },
+      {
+        "offset": 660660,
+        "length": 67,
+        "sha256": "97073df8e332f61fbf80db6c464652b14f5804e9f43f9b06a127102d9a55ad52",
+        "text": "[Illustration:\r\n\r\n     “Lizzy, my dear, I want to speak to you.”\r\n]"
+      },
+      {
+        "offset": 660754,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 674047,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 674089,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 678141,
+        "length": 80,
+        "sha256": "d9ef3ea0e1ccc8a1e93c9169eb16890fe06f763476f31b394f2cd0c00e231a53",
+        "text": "[Illustration:\r\n\r\n“After a short survey”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 689896,
+        "length": 48,
+        "sha256": "440bce81fae8d45a5cf58154113fa1f8ed2dd511a7f629b32522c76c47425495",
+        "text": "[Illustration:\r\n\r\n     “But now it comes out”\r\n]"
+      },
+      {
+        "offset": 689973,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 699577,
+        "length": 83,
+        "sha256": "adb7836e8a65112f14c6e43aecebe5956c878451ab28cb4cb12b053c6b2b0c26",
+        "text": "[Illustration:\r\n\r\n“The efforts of his aunt”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 699690,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 713656,
+        "length": 91,
+        "sha256": "c29aebea01aa0ece98448181bbd3124d0e766ed7968a055f6eb702d2106e0738",
+        "text": "[Illustration:\r\n\r\n     “Unable to utter a syllable”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 713775,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 727631,
+        "length": 84,
+        "sha256": "5b824de5b8ec1b5ef8972f0952800d0f5e99de81756f8dc09a0755a5de818192",
+        "text": "[Illustration:\r\n\r\n“The obsequious civility.”\r\n\r\n[_Copyright 1894 by George Allen._]]"
+      },
+      {
+        "offset": 727742,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 736675,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 736717,
+        "length": 14,
+        "sha256": "a7d04715f7b106d0798812fbf3e6f78563c35d0e503460e8ad87770a7742cba1",
+        "text": "[Illustration]"
+      },
+      {
+        "offset": 744016,
+        "length": 132,
+        "sha256": "1c79573f66f3f43efa6ed799f44af39592306db3afad68cfed4e08c626e717d2",
+        "text": "[Illustration:\r\n\r\n                                  THE\r\n                                  END\r\n                                   ]"
+      }
+    ],
+    "new_GET_count": 1
+  }
+]

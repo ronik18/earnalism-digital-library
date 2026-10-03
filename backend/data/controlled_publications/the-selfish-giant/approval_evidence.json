@@ -4,65 +4,49 @@
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "batch2_checksum_bound_audio_release_reconciliation",
-  "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+  "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_COVER_PUBLICATION_ACCEPTANCE",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true,
-  "audio_qa_status": "QA_PASSED",
-  "candidate_fingerprint": "92a24c3442fe5ad637e72be523f52baded74d0390a256e3b5d5865bdb3f3d96e",
-  "audio_sha256": "824944d0c068b4f4f45cb750e018918b2af55c5e043cd29417ce2a756e9a4c67",
-  "source_sha256": "0ec24ecbd6d5d594e74131b529b4e3d3ece31ae9f4130210f3c120c9db1ea62d",
-  "audio_size_bytes": 7673229,
-  "duration_seconds": 639.34,
-  "provider": "kokoro",
-  "model": "hexgrad/Kokoro-82M",
-  "voice": "bm_george",
-  "asr_manuscript_score": 0.9994641900339346,
-  "source_coverage": 0.9976275207591934,
-  "first_span_score": 1.0,
-  "last_span_score": 0.9960159362549801,
-  "no_missing_duplicated_reordered_content": true,
-  "listening_qa_overall_score": 9.5,
-  "listening_qa_minimum_score": 9.0,
-  "listening_qa_confidence": 0.93,
-  "listening_qa_sample_count": 6,
-  "listening_qa_sample_set_sha256": "fc29c22eda6b074d002fac051c6ae36c1673b113f315bb9ed8f167cd6c8c8812",
-  "listening_qa_fatal_flags": [],
-  "sync_tier": "AUDIO_ONLY_NO_SYNC",
-  "auto_estimated_sync": false,
-  "technical_audio_qa": {
-    "codec": "mp3",
-    "sample_rate_hz": 24000,
-    "channels": 1,
-    "full_decode_passed": true,
-    "clipping_detected": false,
-    "long_silence_detected": false
+  "audiobook_enabled": false,
+  "audiobook_use_approved": false,
+  "audiobook_use_approval_source": "",
+  "audiobook_use_approved_at": "",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "verified_at": "2026-10-03T04:20:29.339226+00:00",
+  "publication_authorization_sha256": "6a79a9d4828858df62f0239f911f9d6c6d154da87ad035aba481f91f23cae251",
+  "cover_provenance_sha256": "9da21ded8f41af473c472fc7800a081b7fbb5cf88fdfeac948353cbd1e8881c9",
+  "independent_reviews": {
+    "review_a": {
+      "file": "evidence/review_a.json",
+      "sha256": "d31da6ba7bc92b767391b180d85d2ab4e1aa163253b38a3cf18bd96de897fcb3"
+    },
+    "review_b": {
+      "file": "evidence/review_b.json",
+      "sha256": "15fb24b5a76ab9dac2cbbcccf29b72cb1a0aabc6cd7cf8d9c4a9e11776ced68d"
+    }
   },
-  "accessibility_residual_risk": {
-    "decision": "OWNER_ACCEPTED_RESIDUAL_RISK",
-    "voiceover_status": "NOT_TESTED",
-    "talkback_status": "NOT_TESTED",
-    "other_release_gates_waived": false,
-    "confidence": 0.93,
-    "exception_sha256": "e32a5178f155eccbc006adc0b2321d82f1d63d8272fdf8479444b95a19cfa136"
+  "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+  "content_hash": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+  "binding_review_status": "FINAL_EXACT_PACKAGE_REVIEWS_REQUIRED_AS_EXTERNAL_SERIALIZED_RELEASE_GATE",
+  "qa_scope": "Two independent passing exact preparation reviews: complete edition-bound source, preserved owner artwork derivative lineage, licensed typography, exact delivery and package integrity. Audio and production observations excluded.",
+  "audio_enabled": false,
+  "actual_prospective_acceptance": {
+    "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+    "accepted_at": "2026-10-03T04:59:53.954767+00:00",
+    "evidence": {
+      "review_a": {
+        "file": "evidence/review_a.json",
+        "sha256": "d31da6ba7bc92b767391b180d85d2ab4e1aa163253b38a3cf18bd96de897fcb3"
+      },
+      "review_b": {
+        "file": "evidence/review_b.json",
+        "sha256": "15fb24b5a76ab9dac2cbbcccf29b72cb1a0aabc6cd7cf8d9c4a9e11776ced68d"
+      }
+    },
+    "production_observed": false,
+    "canonical_version_observed": false,
+    "global_gate": "SERIAL_INTEGRATION_AFTER_PR510_AND_NORMAL_PROTECTED_CI_MERGE_DEPLOY_CANARY"
   },
-  "private_evidence_sha256": {
-    "reader_preview_approval": "238548524f8f84699b44841a2439c0b994269bf7cd9767899205a93986fc9ea1",
-    "audio_samples_approval": "93d26f41807f93bcfd81cd1c453325d0a5231e5a32973ad52b3acdeea5b44663",
-    "accessibility_residual_risk_exception": "ce2f3cc53f77ce112af12bd72392a33062c505449a79580487f025f522ce97a0",
-    "full_audio_derived_qa": "8f771ab326cd96d16e6d6ac39a205be4d481ee0b44b153bd517843fa8cae7458",
-    "technical_audio_qa": "97c4f59f5483d6e95f2ed93cd0d92a0305d1138ec009c10374bd67dc3fc4f8eb",
-    "ready_for_go_live": "2c977ee96cefe238623d44d9b80db7996d3e088045a24a631474da4ec70900c0"
-  },
-  "upload_status": "UPLOADED_CHECKSUM_VERIFIED",
-  "storage_backend": "b2_s3_private_proxy",
-  "endpoint_url": "/api/reader/book/the-selfish-giant/audiobook",
-  "endpoint_http_status": 206,
-  "endpoint_content_type": "audio/mpeg",
-  "endpoint_accept_ranges": "bytes",
-  "browser_gate_status": "PASS",
-  "browser_playback_advanced": true,
-  "release_blockers": [],
-  "reconciled_at": "2026-08-16T06:45:34Z"
+  "cover_front_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+  "cover_back_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS"
 }

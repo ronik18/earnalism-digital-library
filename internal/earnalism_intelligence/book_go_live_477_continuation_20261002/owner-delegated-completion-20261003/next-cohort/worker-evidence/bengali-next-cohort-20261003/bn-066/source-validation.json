@@ -1,0 +1,37 @@
+{
+  "slug": "bn-066",
+  "existing_text_decision_id": "india-20261002-bn-066-1883-cc-by-sa-text-reader",
+  "existing_components_pass": 6,
+  "existing_checksums_pass": 53,
+  "chapter_count": 46,
+  "ordered_chapter_content_hashes_pass": true,
+  "canonical_reader_aggregate_sha256": "a6336c132fdb256bb963c8c5f1443707990203987266689077495a87c8a75543",
+  "license_notice_sha256": "e02ba4317441ff3b89a869ee69e048c7993f65c700d823abe72919aa293c1aaf",
+  "existing_primary_author_source_edition_records": [
+    {
+      "path": "internal/legal/bengali_text_preparation_20261002/author_fact_receipts.json",
+      "sha256": "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+      "status": "PASS"
+    },
+    {
+      "path": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-multichapter-source-comparison.json",
+      "sha256": "01ac5d08b252da92a339e44f96e3664ea78a02c986e3f9eb2ecdf246cb7cbf75",
+      "status": "PASS"
+    },
+    {
+      "path": "internal/legal/catalogue_clearance_20261002/bengali/bn-066-primary-imprint-pages.json",
+      "sha256": "92c373d5136b1a43d34576321f302623699ea96927e930310d1e8fc90c5f37be",
+      "status": "PASS"
+    },
+    {
+      "path": "data/title_rights_evidence/bengali-bankim-cohort-1.json",
+      "sha256": "6aa201278a3420414ab1c348bd24b19ff4cf1b539595e142dd64696152c5eccf",
+      "status": "PASS"
+    }
+  ],
+  "basis": "Exact Anandamath second edition1290/1883, Bankim Chandra Chattopadhyay; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1894; India Section22 literary term expired end1954. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
+  "source_chapters_versions_unchanged": true,
+  "backend_preimage_present": true,
+  "new_source_investigation": false,
+  "acceptance_or_release_created": false
+}

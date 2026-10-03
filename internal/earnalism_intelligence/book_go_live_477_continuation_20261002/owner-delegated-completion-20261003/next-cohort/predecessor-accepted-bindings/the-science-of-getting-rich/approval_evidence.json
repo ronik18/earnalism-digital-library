@@ -1,0 +1,54 @@
+{
+  "slug": "the-science-of-getting-rich",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "source_hash": "adc3fb17f24801597561e992d858e124c8d9b4c6e3bf7593d713e7a71d252744",
+  "content_hash": "55a8e552b9f74640c7bccc1d05db9d5197ec9dd3af558aceb4f9d3ea73d4949b",
+  "provenance_hash": "2097ecf8e327a71b78cb7f061799a9cd8e02f94a30ff18cfab56d911487e0195",
+  "verified_at": "2026-10-01T21:35:50.622637+00:00",
+  "approved_to_publish": true,
+  "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_COVER_PUBLICATION_ACCEPTANCE",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "audiobook_use_approved": false,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "publication_authorization_sha256": "e769162a30fe0ad7a670567b5a7c5716c1ed170811915555729287043e6846c6",
+  "cover_provenance_sha256": "31ef4bdfaa98196db0fcb629ab9b689b6f0570cefb90725fd77184360adf0c97",
+  "production_observed": false,
+  "runtime_observed": false,
+  "historical_metadata_preserved_only_in_preimages": true,
+  "actual_prospective_acceptance": {
+    "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+    "accepted_at": "2026-10-03T04:59:53.954767+00:00",
+    "evidence": {
+      "review_a": {
+        "file": "evidence/review_a.json",
+        "sha256": "e17b3d56b4e6f0f6177965822910d19550debe93090c198d5a21e3fac5419400"
+      },
+      "review_b": {
+        "file": "evidence/review_b.json",
+        "sha256": "4817d7c5123f319dfb08bc552fd4548d24896bb23964f11bd12d719c941eb98a"
+      }
+    },
+    "production_observed": false,
+    "canonical_version_observed": false,
+    "global_gate": "SERIAL_INTEGRATION_AFTER_PR510_AND_NORMAL_PROTECTED_CI_MERGE_DEPLOY_CANARY"
+  },
+  "independent_reviews": {
+    "review_a": {
+      "file": "evidence/review_a.json",
+      "sha256": "e17b3d56b4e6f0f6177965822910d19550debe93090c198d5a21e3fac5419400"
+    },
+    "review_b": {
+      "file": "evidence/review_b.json",
+      "sha256": "4817d7c5123f319dfb08bc552fd4548d24896bb23964f11bd12d719c941eb98a"
+    }
+  },
+  "qa_scope": "Two independent passing exact preparation reviews: complete edition-bound source, preserved owner artwork derivative lineage, licensed typography, exact delivery and package integrity. Audio and production observations excluded.",
+  "cover_front_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+  "cover_back_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+  "binding_review_status": "FINAL_EXACT_PACKAGE_REVIEWS_REQUIRED_AS_EXTERNAL_SERIALIZED_RELEASE_GATE"
+}

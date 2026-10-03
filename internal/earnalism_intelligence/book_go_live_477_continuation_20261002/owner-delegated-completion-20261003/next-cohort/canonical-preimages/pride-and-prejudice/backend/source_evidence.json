@@ -1,0 +1,13 @@
+{
+  "slug": "pride-and-prejudice",
+  "source_url": "https://www.gutenberg.org/ebooks/1342",
+  "source_name": "Project Gutenberg",
+  "source_license": "Public domain. Project Gutenberg transcription is freely redistributable for any use including commercial.",
+  "source_hash": "fcf234e0476cc6af8b3f604399bf3d7c4b72931bdf2af276ab4cc78caf938d5c",
+  "content_hash": "bdf431c50329d7f3fd9d0fe5ac4026050fe2f76cdc553d392ca223f2c54c5568",
+  "provenance_hash": "d6a4a3e80cef639d4650f95d8322db7edfdf9200a52e401de2b5290cdcfe2184",
+  "rights_basis": "Author died in 1817. Work published in 1813, well before 1928. Public domain in the U.S. under pre-1928 publication rule and in most jurisdictions under life plus 70 years.",
+  "downloaded_at": "2026-05-25T20:09:42.983775+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

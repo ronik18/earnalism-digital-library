@@ -1,0 +1,13 @@
+{
+  "schema": "earnalism.gatsby-existing-verification-paperwork-remediation.v1",
+  "actual_corrected_at": "2026-10-03T06:11:29.343487+00:00",
+  "actor": "Sole automated integration controller under actual owner delegation; no human approval inferred.",
+  "trigger": "Actual controlled Reader validation rejected stale public verification_status reader_repair_verified; existing exact automated approval_evidence already approved.",
+  "actual_change": "public_book.verification_status normalized to approved, matching actual accepted evidence; only public/manifest/checksum/decision hash bindings and candidate registry/bootstrap pointers changed.",
+  "old_canonical_record_sha256": "ea29d7d8e7429de05a105f1eefdf63aa1d11b0a432d13ac9fd6092ad30d9bb08",
+  "new_canonical_record_sha256": "f17b90358e98262ca18747e81d40ea0cc4d75f4b7074c35131f299127e76df34",
+  "source_reader_chapters_artwork_authorization_approval_evidence": "BYTE_UNCHANGED",
+  "bounded_attempt": 1,
+  "production_observed": false,
+  "next_gate": "Two independent exact integrated-tree reviewers inspect this metadata binding delta; protected normal checks unchanged."
+}

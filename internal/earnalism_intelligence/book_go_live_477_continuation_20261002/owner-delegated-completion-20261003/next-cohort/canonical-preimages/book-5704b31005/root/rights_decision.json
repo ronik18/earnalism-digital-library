@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-book-5704b31005-1895-cc-by-sa-text-reader",
+  "edition_id": "book-5704b31005",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "73d297eb09b65551a68803f08d904da7cc3954d3c741f0d1bf93fa773bb718aa",
+    "reader_manifest": "30a6f7d1ad377e9418e87c83720e57e549861a0b0868776d237f8ae831450d91",
+    "source_evidence": "f7d3ac1cbe169532038b008d48c0313290cedca638d23c7696d75d3a0c072f3b",
+    "approval_evidence": "d2b774922bd708847bc7bcb801488662bfe5ee82c9d68aa573d7cb21c72224dc",
+    "checksum_manifest": "b0a7d68f4b9896e513159389c23c9541d9375cb014fcaf95515e3d2cfa0b0ffe",
+    "publication_manifest": "fbe532bd48bdef5b6eb052b8c599185e879603034929726d9a0d3110508f1ac2"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-02T03:10:37.024181+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Exact Galpa-Dashak original1302/1895 sole-author Rabindranath Tagore edition; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1941; India Section22 literary term expired end2001. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
+  "evidence_sha256": [
+    "4a101e1fe9a73ea196fbf82b7fda9b44ef84e7da7ecc484ac9a10e96dd4e22f4",
+    "f9569f74c51b89b6116867d0dac02049d4647573ae057de9e23b99aa22be9db3",
+    "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "1fc9cf8fae864434f95bc34656a96672c55d852f3dfdad4a1f386a1a1cc4e01c",
+    "8492830be5d4cec1996381e2d94cf25353bd75f92a843524b26d535356c74218",
+    "0bb4e780b9f0c237534d451a33f96bcf0d87073fa93162762604af6e97761d36"
+  ],
+  "accepted_by": "Automated executor under explicit product-owner autonomous evidence-backed text-clearance delegation; not a human legal reviewer or signature.",
+  "conditions_satisfied": true
+}

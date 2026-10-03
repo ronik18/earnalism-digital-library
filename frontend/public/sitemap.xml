@@ -68,6 +68,12 @@
   </url>
   <url>
     <loc>https://theearnalism.com/library?category=business</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://theearnalism.com/library?category=children-classics</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
@@ -86,13 +92,19 @@
   </url>
   <url>
     <loc>https://theearnalism.com/library?category=history-strategy</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://theearnalism.com/library?category=literary-fiction</loc>
     <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://theearnalism.com/library?category=science-fiction</loc>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -139,6 +151,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://theearnalism.com/book/acres-of-diamonds</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://theearnalism.com/book/agentic-ai-with-python</loc>
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -169,6 +187,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://theearnalism.com/book/bn-066</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theearnalism.com/book/book-5704b31005</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://theearnalism.com/book/book-edfcf810c5</loc>
     <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -181,8 +211,26 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://theearnalism.com/book/dsires-baby</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theearnalism.com/book/frankenstein</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://theearnalism.com/book/jekyll-and-hyde</loc>
     <lastmod>2026-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theearnalism.com/book/lokrahasya</loc>
+    <lastmod>2026-10-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -193,7 +241,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://theearnalism.com/book/mrinalini</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://theearnalism.com/book/muchiram-gurer-jibanchorit</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theearnalism.com/book/my-life-and-work</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -205,8 +265,20 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://theearnalism.com/book/pride-and-prejudice</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://theearnalism.com/book/radharani</loc>
     <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theearnalism.com/book/sredni-vashtar</loc>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -241,6 +313,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://theearnalism.com/book/the-cop-and-the-anthem</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://theearnalism.com/book/the-enchanted-april</loc>
     <lastmod>2026-10-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -255,6 +333,12 @@
   <url>
     <loc>https://theearnalism.com/book/the-gift-of-the-magi</loc>
     <lastmod>2026-07-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theearnalism.com/book/the-great-gatsby</loc>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -283,8 +367,38 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://theearnalism.com/book/the-open-window</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://theearnalism.com/book/the-pit-and-the-pendulum</loc>
     <lastmod>2026-08-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theearnalism.com/book/the-principles-of-scientific-management</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theearnalism.com/book/the-science-of-getting-rich</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theearnalism.com/book/the-secret-garden</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theearnalism.com/book/the-selfish-giant</loc>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -303,6 +417,18 @@
   <url>
     <loc>https://theearnalism.com/book/the-tell-tale-heart</loc>
     <lastmod>2026-07-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theearnalism.com/book/the-time-machine</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theearnalism.com/book/the-wonderful-wizard-of-oz</loc>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

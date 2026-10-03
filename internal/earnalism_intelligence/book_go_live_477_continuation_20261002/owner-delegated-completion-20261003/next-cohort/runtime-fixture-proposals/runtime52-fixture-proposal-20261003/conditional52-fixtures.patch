@@ -1,0 +1,368 @@
+--- a/scripts/test_pr362_library_query_journey.mjs
++++ b/scripts/test_pr362_library_query_journey.mjs
+@@ -20,7 +20,7 @@
+   { slug: "agentic-ai-with-python", title: "Agentic AI With Python", author: "Ronik Basak", short_description: "Owner-authored English text reader", language: "en", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/agentic-ai-with-python", reader_url: "/reader/agentic-ai-with-python", preview_enabled: true, preview_url: "/reader/agentic-ai-with-python", chapters: [{ id: "chapter-001", is_preview: true }], audio_enabled: false, audiobook_enabled: false },
+   { slug: "devdas", title: "দেবদাস / Devdas", author: "Sarat Chandra Chattopadhyay", short_description: "Bengali edition", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/devdas", reader_url: "/reader/devdas", preview_enabled: true, preview_url: "/reader/devdas", chapters: [{ id: "devdas-page-1", is_preview: true }] },
+   { slug: "pather-panchali", title: "পথের পাঁচালী / Pather Panchali", author: "Bibhutibhushan Bandyopadhyay", short_description: "Bengali edition", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/pather-panchali", reader_url: "/reader/pather-panchali", preview_enabled: true, preview_url: "/reader/pather-panchali", chapters: [{ id: "pather-page-1", is_preview: true }] },
+-  { slug: "frankenstein", title: "Batch-listed Bengali draft", author: "Fixture Editor", short_description: "Bengali edition", language: "bn", publication_status: "DRAFT", reader_enabled: false, preview_enabled: false, chapters: [] },
++  { slug: "synthetic-held-bengali-draft", title: "Synthetic held Bengali draft", author: "Fixture Editor", short_description: "Bengali edition", language: "bn", publication_status: "DRAFT", reader_enabled: false, preview_enabled: false, chapters: [] },
+   { slug: "reader-disabled-edition", title: "Reader-disabled Bengali edition", author: "Fixture Editor", short_description: "Bengali edition", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: false, preview_enabled: false, chapters: [] },
+   { slug: "book-edfcf810c5", title: "ক্ষুধিত পাষাণ", author: "Rabindranath Tagore", short_description: "Canonical Bengali publication", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/book-edfcf810c5", reader_url: "/reader/book-edfcf810c5", preview_enabled: true, preview_url: "/reader/book-edfcf810c5", chapters: [{ id: "chapter-001", is_preview: true }] },
+   { slug: "book-d19e96859f", title: "Live Bengali edition without a preview", author: "Fixture Editor", short_description: "Bengali edition", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/book-d19e96859f", reader_url: "/reader/book-d19e96859f", preview_enabled: false, preview_url: "", chapters: [{ id: "chapter-001", is_preview: false }] },
+@@ -30,18 +30,18 @@
+ ];
+ // Add the exact reviewed near-ready release fixtures from the safe public
+ // metadata contract. Keep the independent held/malformed/audio fixtures above.
+-const nearReadySlugs = ["a-horseman-in-the-sky", "a-mystery-of-heroism", "a-scandal-in-bohemia", "jekyll-and-hyde", "love-of-life", "the-bishop", "the-fall-of-the-house-of-usher", "the-lady-with-the-dog", "the-man-who-would-be-king", "the-open-boat", "the-pit-and-the-pendulum", "the-stolen-white-elephant", "an-occurrence-at-owl-creek-bridge", "the-enchanted-april", "the-happy-prince", "picture-of-dorian-gray", "dracula", "muchiram-gurer-jibanchorit", "bn-059", "the-call-of-the-wild", "the-student", "the-art-of-money-getting", "bn-035", "alices-adventures-in-wonderland"];
++const nearReadySlugs = ["a-horseman-in-the-sky", "a-mystery-of-heroism", "a-scandal-in-bohemia", "jekyll-and-hyde", "love-of-life", "the-bishop", "the-fall-of-the-house-of-usher", "the-lady-with-the-dog", "the-man-who-would-be-king", "the-open-boat", "the-pit-and-the-pendulum", "the-stolen-white-elephant", "an-occurrence-at-owl-creek-bridge", "the-enchanted-april", "the-happy-prince", "picture-of-dorian-gray", "dracula", "muchiram-gurer-jibanchorit", "bn-059", "the-call-of-the-wild", "the-student", "the-art-of-money-getting", "bn-035", "alices-adventures-in-wonderland", "dsires-baby", "sredni-vashtar", "the-cop-and-the-anthem", "the-open-window", "the-selfish-giant", "the-science-of-getting-rich", "bn-066", "lokrahasya", "mrinalini", "frankenstein", "pride-and-prejudice", "the-great-gatsby", "the-secret-garden", "the-time-machine", "acres-of-diamonds", "my-life-and-work", "the-principles-of-scientific-management", "the-wonderful-wizard-of-oz", "book-5704b31005"];
+ const publicContract = JSON.parse(readFileSync(new URL("../frontend/static-seo/controlled-publication-public.json", import.meta.url), "utf8"));
+ for (const slug of nearReadySlugs) {
+   const source = publicContract.publications.find((row) => row.slug === slug);
+   assert.ok(source, `Reviewed release ${slug} must have a public metadata contract`);
+   assert.equal(books.some((row) => row.slug === slug), false, `Duplicate fixture ${slug}`);
+-  books.push({ ...source, language: ["muchiram-gurer-jibanchorit", "bn-059", "bn-035"].includes(slug) ? "bn" : "en", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: `/book/${slug}`, reader_url: `/reader/${slug}`, preview_enabled: true, preview_url: `/reader/${slug}`, chapters: [{ id: "chapter-001", is_preview: true }] });
++  books.push({ ...source, language: ["muchiram-gurer-jibanchorit", "bn-059", "bn-035", "bn-066", "lokrahasya", "mrinalini", "book-5704b31005"].includes(slug) ? "bn" : "en", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: `/book/${slug}`, reader_url: `/reader/${slug}`, preview_enabled: true, preview_url: `/reader/${slug}`, chapters: [{ id: "chapter-001", is_preview: true }] });
+ }
+ const expectedHeaderUrl = "?language=bn&availability=reader-ready";
+-const apiEligibleSlugs = ["radharani", "book-edfcf810c5", "muchiram-gurer-jibanchorit", "bn-059", "bn-035"];
++const apiEligibleSlugs = ["radharani", "book-edfcf810c5", "muchiram-gurer-jibanchorit", "bn-059", "bn-035", "bn-066", "lokrahasya", "mrinalini", "book-5704b31005"];
+ const fallbackEligibleSlugs = [];
+-const ineligibleSlugs = ["frankenstein", "reader-disabled-edition", "kshudhita-pashan"];
++const ineligibleSlugs = ["synthetic-held-bengali-draft", "reader-disabled-edition", "kshudhita-pashan"];
+ const readerApprovedWithoutPreviewSlugs = ["book-d19e96859f", "book-f5d593e1f4"];
+ const approvedAudioWithoutRuntimeSlug = "approved-audio-without-runtime";
+ const canonicalBengaliKshudhitaSlug = "book-edfcf810c5";
+@@ -150,11 +150,12 @@
+   await page.goto(`${baseUrl.replace(/\/$/, "")}/library?listening=hidden`, { waitUntil: "domcontentloaded" });
+   await referenceSurface(page).waitFor();
+   // Preserve the existing ten-edition shelf. Traverse its real controls before
+-  // asserting the complete, independently reviewed 33-edition release scope.
++  // asserting the complete, independently reviewed 52-edition release scope.
+   const fixtureOrder = books.filter((book) => releasedSlugs.includes(book.slug)).map((book) => book.slug);
+-  assert.equal(fixtureOrder.length, 33, "The current release fixture must contain exactly 33 approved editions");
++  assert.equal(fixtureOrder.length, 52, "The current release fixture must contain exactly 52 approved editions");
++  assert.equal(new Set(fixtureOrder).size, 52, "Canonical editions must occur once in the release fixture");
+   await assertDisplayedSlugs(page, fixtureOrder.slice(0, 10));
+-  for (const [nextCount, shownCount] of [[10, 20], [10, 30], [3, 33]]) {
++  for (const [nextCount, shownCount] of [[10, 20], [10, 30], [10, 40], [10, 50], [2, 52]]) {
+     const previousCount = shownCount - nextCount;
+     const more = referenceSurface(page).getByRole("button", { name: `Show ${nextCount} more editions in Live now`, exact: true });
+     await more.click();
+--- a/regression/modules/15-reader-content-quality.test.js
++++ b/regression/modules/15-reader-content-quality.test.js
+@@ -61,6 +61,46 @@
+   "the-art-of-money-getting",
+   "bn-035",
+   "alices-adventures-in-wonderland",
++  "dsires-baby",
++  "sredni-vashtar",
++  "the-cop-and-the-anthem",
++  "the-open-window",
++  "the-selfish-giant",
++  "the-science-of-getting-rich",
++  "bn-066",
++  "lokrahasya",
++  "mrinalini",
++  "frankenstein",
++  "pride-and-prejudice",
++  "the-great-gatsby",
++  "the-secret-garden",
++  "the-time-machine",
++  "acres-of-diamonds",
++  "my-life-and-work",
++  "the-principles-of-scientific-management",
++  "the-wonderful-wizard-of-oz",
++  "book-5704b31005"
++];
++const PROSPECTIVE_READER_RELEASE_SLUGS = [
++  "dsires-baby",
++  "sredni-vashtar",
++  "the-cop-and-the-anthem",
++  "the-open-window",
++  "the-selfish-giant",
++  "the-science-of-getting-rich",
++  "bn-066",
++  "lokrahasya",
++  "mrinalini",
++  "frankenstein",
++  "pride-and-prejudice",
++  "the-great-gatsby",
++  "the-secret-garden",
++  "the-time-machine",
++  "acres-of-diamonds",
++  "my-life-and-work",
++  "the-principles-of-scientific-management",
++  "the-wonderful-wizard-of-oz",
++  "book-5704b31005"
+ ];
+ const BOILERPLATE_RE = /Project Gutenberg|Gutenberg-tm|START OF THE PROJECT|END OF THE PROJECT|Wikisource|Category:|Creative Commons|Download as|Edit this page/i;
+ const AUDIO_FIELDS = ["audio_enabled", "audiobook_enabled", "generate_audiobook"];
+@@ -140,12 +180,14 @@
+     expect(launch.live_approved_slugs).toEqual(CURRENT_RELEASED_SLUGS);
+     expect(new Set(launch.live_approved_slugs).size).toBe(launch.live_approved_slugs.length);
+     for (const slug of BATCH_SLUGS) {
+-      if (["jekyll-and-hyde", "picture-of-dorian-gray"].includes(slug)) {
++      if (["jekyll-and-hyde", "picture-of-dorian-gray", "frankenstein"].includes(slug)) {
+         expect(launch.live_approved_slugs).toContain(slug);
+         const folder = `data/controlled_publications/${slug}`;
+         const exactDecision = readJson(`${folder}/rights_decision.json`);
+         const publicBytes = fs.readFileSync(path.join(ROOT, folder, "public_book.json"));
+-        expect(exactDecision.decision_id).toBe(`india-20261001-${slug}-owner-text-reader`);
++        expect(exactDecision.decision_id).toBe(slug === "frankenstein"
++          ? `india-20261003-${slug}-exact-reader-cover-prospective-accepted`
++          : `india-20261001-${slug}-owner-text-reader`);
+         expect(exactDecision.components.public_book).toBe(require("node:crypto").createHash("sha256").update(publicBytes).digest("hex"));
+         expect(exactDecision.territories).toEqual(["IN"]);
+         expect(readJson(`${folder}/publication_manifest.json`).reader_release.exposed).toBe(true);
+@@ -235,6 +277,27 @@
+     }
+   });
+ 
++  test("new exact India Reader packages are separately accepted without rewriting historical batch or audio reports", () => {
++    expect(CURRENT_RELEASED_SLUGS).toHaveLength(52);
++    expect(new Set(CURRENT_RELEASED_SLUGS).size).toBe(52);
++    for (const slug of PROSPECTIVE_READER_RELEASE_SLUGS) {
++      const folder = `data/controlled_publications/${slug}`;
++      const decision = readJson(`${folder}/rights_decision.json`);
++      const publication = readJson(`${folder}/publication_manifest.json`);
++      const publicBook = readJson(`${folder}/public_book.json`);
++      expect(decision.decision_id).toBe(`india-20261003-${slug}-exact-reader-cover-prospective-accepted`);
++      expect(decision.territories).toEqual(["IN"]);
++      expect(decision.components.public_book).toBe(require("node:crypto").createHash("sha256")
++        .update(fs.readFileSync(path.join(ROOT, folder, "public_book.json"))).digest("hex"));
++      expect(launch.live_approved_slugs).toContain(slug);
++      expect(publication.reader_release.exposed).toBe(true);
++      expect(publication.audio_release.exposed).toBe(false);
++      expect(publicBook.publication_status).toBe("LIVE_APPROVED");
++      for (const field of AUDIO_FIELDS) expect(publicBook[field]).toBe(false);
++      expect(launch.audio_enabled_slugs).not.toContain(slug);
++    }
++  });
++
+   test("reader-facing text is sanitized and free of source boilerplate", () => {
+     for (const slug of BATCH_SLUGS) {
+       const text = allReaderText(slug);
+--- a/scripts/test_generate_copyright_rights_review_package.py
++++ b/scripts/test_generate_copyright_rights_review_package.py
+@@ -24,6 +24,9 @@
+ SURFACE = "314c040f16aaf12931b1b340ae1d222bb87037e6291f1e3752173b98365326d0"
+ 
+ 
++CURRENT_RELEASED_SLUGS = {'the-gift-of-the-magi', 'a-scandal-in-bohemia', 'the-time-machine', 'a-horseman-in-the-sky', 'a-white-heron', 'the-student', 'the-tell-tale-heart', 'frankenstein', 'dsires-baby', 'jekyll-and-hyde', 'the-adventures-of-sherlock-holmes', 'the-secret-garden', 'book-5704b31005', 'muchiram-gurer-jibanchorit', 'the-science-of-getting-rich', 'bn-035', 'sredni-vashtar', 'an-occurrence-at-owl-creek-bridge', 'the-lady-with-the-dog', 'pride-and-prejudice', 'dracula', 'the-selfish-giant', 'the-art-of-money-getting', 'the-fall-of-the-house-of-usher', 'the-wonderful-wizard-of-oz', 'the-stolen-white-elephant', 'the-canterville-ghost', 'the-man-who-would-be-king', 'the-happy-prince', 'my-life-and-work', 'the-open-boat', 'the-pit-and-the-pendulum', 'a-mystery-of-heroism', 'bn-066', 'mrinalini', 'radharani', 'acres-of-diamonds', 'the-bishop', 'bn-059', 'the-enchanted-april', 'a-ghost-story', 'the-great-gatsby', 'the-cop-and-the-anthem', 'the-open-window', 'love-of-life', 'agentic-ai-with-python', 'lokrahasya', 'picture-of-dorian-gray', 'the-call-of-the-wild', 'alices-adventures-in-wonderland', 'the-principles-of-scientific-management', 'book-edfcf810c5'}
++PROSPECTIVE_READER_RELEASE_SLUGS = ('dsires-baby', 'sredni-vashtar', 'the-cop-and-the-anthem', 'the-open-window', 'the-selfish-giant', 'the-science-of-getting-rich', 'bn-066', 'lokrahasya', 'mrinalini', 'frankenstein', 'pride-and-prejudice', 'the-great-gatsby', 'the-secret-garden', 'the-time-machine', 'acres-of-diamonds', 'my-life-and-work', 'the-principles-of-scientific-management', 'the-wonderful-wizard-of-oz', 'book-5704b31005')
++
+ class CopyrightRightsReviewPackageTests(unittest.TestCase):
+     def build(self, output: Path) -> dict:
+         result = subprocess.run(
+@@ -47,9 +50,24 @@
+         self.assertEqual(package["inventory_summary"]["rights_accepted_unexposed_count"], 0)
+         self.assertEqual(package["conclusion"], "INDIA_RELEASE_EVIDENCE_COMPLETE_FOR_CONTROLLED_ALLOWLIST")
+         accepted = {title["slug"] for title in package["titles"] if title["title_release_status"] == "ACCEPTED_FOR_CONTROLLED_RELEASE"}
+-        self.assertEqual(accepted, {"a-ghost-story", "the-tell-tale-heart", "radharani", "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost", "the-adventures-of-sherlock-holmes", "agentic-ai-with-python", "a-horseman-in-the-sky", "a-mystery-of-heroism", "a-scandal-in-bohemia", "jekyll-and-hyde", "love-of-life", "the-bishop", "the-fall-of-the-house-of-usher", "the-lady-with-the-dog", "the-man-who-would-be-king", "the-open-boat", "the-pit-and-the-pendulum", "the-stolen-white-elephant", "an-occurrence-at-owl-creek-bridge", "the-enchanted-april", "the-happy-prince", "picture-of-dorian-gray", "dracula", "book-edfcf810c5", "muchiram-gurer-jibanchorit", "bn-059", "the-call-of-the-wild", "the-student", "the-art-of-money-getting", "bn-035", "alices-adventures-in-wonderland"})
++        self.assertEqual(accepted, CURRENT_RELEASED_SLUGS)
++        self.assertEqual(len(accepted), 52)
+         rights_accepted_unexposed = {title["slug"] for title in package["titles"] if title["title_release_status"] == "RIGHTS_ACCEPTED_UNEXPOSED"}
+         self.assertEqual(rights_accepted_unexposed, set())
++
++    def test_new_prospective_packages_bind_exact_registered_reader_only_decisions(self) -> None:
++        registry = MODULE.read_json(MODULE.REGISTRY)
++        for slug in PROSPECTIVE_READER_RELEASE_SLUGS:
++            with self.subTest(slug=slug):
++                directory = MODULE.controlled_package_dir(slug)
++                decision = MODULE.read_json(directory / "rights_decision.json")
++                publication = MODULE.read_json(directory / "publication_manifest.json")
++                self.assertEqual(decision["decision_id"], f"india-20261003-{slug}-exact-reader-cover-prospective-accepted")
++                self.assertEqual(decision["territories"], ["IN"])
++                self.assertTrue(MODULE.accepted_controlled_release(slug, directory, ["IN"], registry))
++                self.assertFalse(MODULE.accepted_controlled_release(slug, directory, ["US"], registry))
++                self.assertTrue(publication["reader_release"]["exposed"])
++                self.assertFalse(publication["audio_release"]["exposed"])
+ 
+     def test_component_schema_and_pilot_scope_are_fail_closed(self) -> None:
+         with tempfile.TemporaryDirectory() as temporary:
+--- a/scripts/test_seamless_brand_error_experience_batch.mjs
++++ b/scripts/test_seamless_brand_error_experience_batch.mjs
+@@ -1,10 +1,67 @@
+ #!/usr/bin/env node
+ import assert from "node:assert/strict";
+ import fs from "node:fs";
++import crypto from "node:crypto";
++import os from "node:os";
+ import path from "node:path";
+ import { loadStateManifest, selectStateRecords } from "./lib/seamless_brand_state_manifest.mjs";
++import { stateOutputDirectory, validateCaptureSummary } from "./lib/seamless_brand_one_state_capture.mjs";
+ 
+ const root = process.cwd();
++const expectedReleasedSlugs = [
++  "a-ghost-story",
++  "the-tell-tale-heart",
++  "radharani",
++  "a-white-heron",
++  "the-gift-of-the-magi",
++  "the-canterville-ghost",
++  "the-adventures-of-sherlock-holmes",
++  "agentic-ai-with-python",
++  "a-horseman-in-the-sky",
++  "a-mystery-of-heroism",
++  "a-scandal-in-bohemia",
++  "jekyll-and-hyde",
++  "love-of-life",
++  "the-bishop",
++  "the-fall-of-the-house-of-usher",
++  "the-lady-with-the-dog",
++  "the-man-who-would-be-king",
++  "the-open-boat",
++  "the-pit-and-the-pendulum",
++  "the-stolen-white-elephant",
++  "an-occurrence-at-owl-creek-bridge",
++  "the-enchanted-april",
++  "the-happy-prince",
++  "picture-of-dorian-gray",
++  "dracula",
++  "book-edfcf810c5",
++  "muchiram-gurer-jibanchorit",
++  "bn-059",
++  "the-call-of-the-wild",
++  "the-student",
++  "the-art-of-money-getting",
++  "bn-035",
++  "alices-adventures-in-wonderland",
++  "dsires-baby",
++  "sredni-vashtar",
++  "the-cop-and-the-anthem",
++  "the-open-window",
++  "the-selfish-giant",
++  "the-science-of-getting-rich",
++  "bn-066",
++  "lokrahasya",
++  "mrinalini",
++  "frankenstein",
++  "pride-and-prejudice",
++  "the-great-gatsby",
++  "the-secret-garden",
++  "the-time-machine",
++  "acres-of-diamonds",
++  "my-life-and-work",
++  "the-principles-of-scientific-management",
++  "the-wonderful-wizard-of-oz",
++  "book-5704b31005"
++];
+ const manifest = loadStateManifest(path.join(root, "docs/design-system/seamless-brand-state-manifest.json"));
+ const ids = ["error-404-desktop", "error-404-mobile", "tombstone-410-desktop", "tombstone-410-mobile", "secondary-book-desktop", "secondary-book-mobile", "reader-desktop", "listener-unavailable-desktop", "disabled-listener-dracula-desktop"];
+ const selected = selectStateRecords(manifest, ids); let cases = 0;
+@@ -14,49 +71,76 @@
+ test("reverse-order filter executes in manifest order", () => assert.deepEqual(selectStateRecords(manifest, [...ids].reverse()).map((s) => s.id), ids));
+ test("404 route is not a real route", () => assert.equal(manifest.states.filter((s) => s.route === "/__seamless-brand-review-not-found-344__").length, 2));
+ test("selected 410 route exists in tombstone authority", () => assert.match(fs.readFileSync(path.join(root, "scripts/serve_frontend_build.js"), "utf8"), /patterned-wrap-dress/));
+-test("static SEO contract exposes only the thirty-three accepted India text releases", () => {
++test("static SEO contract exposes only the fifty-two accepted India text releases", () => {
+   const contract = JSON.parse(fs.readFileSync(path.join(root, "frontend/static-seo/controlled-publication-public.json"), "utf8"));
+   assert.equal(contract.public_release_held, false);
+   assert.deepEqual(
+     contract.publications.map((publication) => publication.slug).sort(),
+-    [
+-      "a-ghost-story",
+-      "book-edfcf810c5",
+-      "dracula",
+-      "a-white-heron",
+-      "agentic-ai-with-python",
+-      "radharani",
+-      "the-adventures-of-sherlock-holmes",
+-      "the-canterville-ghost",
+-      "the-gift-of-the-magi",
+-      "the-tell-tale-heart",
+-      "a-horseman-in-the-sky",
+-      "a-mystery-of-heroism",
+-      "a-scandal-in-bohemia",
+-      "jekyll-and-hyde",
+-      "love-of-life",
+-      "the-bishop",
+-      "the-fall-of-the-house-of-usher",
+-      "the-lady-with-the-dog",
+-      "the-man-who-would-be-king",
+-      "the-open-boat",
+-      "the-pit-and-the-pendulum",
+-      "the-stolen-white-elephant",
+-      "an-occurrence-at-owl-creek-bridge",
+-      "the-enchanted-april",
+-      "the-happy-prince",
+-      "picture-of-dorian-gray",
+-      "muchiram-gurer-jibanchorit",
+-      "bn-059",
+-      "the-call-of-the-wild",
+-      "the-student",
+-      "the-art-of-money-getting",
+-      "bn-035",
+-      "alices-adventures-in-wonderland",
+-    ].sort(),
++    [...expectedReleasedSlugs].sort(),
+   );
+ });
+-for (const name of ["Reader desktop metadata contract", "truthful Listener unavailable desktop safety contract", "disabled-audio Listener safety contract", "404 desktop/mobile branding contract", "410 desktop/mobile branding contract", "live Bengali Book Detail desktop/mobile branding contract"]) test(name, () => assert.ok(true));
+-for (const name of ["generic Home fallback causes failure", "wrong 404/410 contract causes failure", "protected Reader content causes failure", "Listener media URL causes failure", "Dracula audio controls cause failure", "production mutation causes failure", "missing state output causes failure", "unstable state causes failure"]) test(name, () => assert.throws(() => assert.equal(false, true)));
+-test("valid nine-state summary passes", () => assert.equal(selected.length, 9));
++// These are static fixture contracts and explicit local fault injections.
++// Historical capture reports remain evidence for their original exact heads;
++// this test does not claim a fresh browser or production observation.
++test("Reader and disabled Listener manifest fixtures retain their exact routes", () => {
++  for (const [id, route, fixture] of [
++    ["reader-desktop", "/reader/a-ghost-story", "reader-visual-safe"],
++    ["listener-unavailable-desktop", "/listener/a-ghost-story", "listener-non-playable"],
++    ["disabled-listener-dracula-desktop", "/listener/dracula", "listener-disabled-safe"],
++  ]) {
++    const state = selected.find((item) => item.id === id);
++    assert.equal(state.route, route);
++    assert.equal(state.fixture, fixture);
++  }
++});
++test("current release projection keeps audio disabled for every released title", () => {
++  const launch = JSON.parse(fs.readFileSync(path.join(root, "data/controlled_launch.json"), "utf8"));
++  assert.equal(launch.public_audio_exposure_enabled, false);
++  assert.deepEqual(launch.audio_enabled_slugs, []);
++  assert.deepEqual(launch.live_approved_slugs, expectedReleasedSlugs);
++  for (const slug of expectedReleasedSlugs) {
++    const publication = JSON.parse(fs.readFileSync(path.join(root, "data/controlled_publications", slug, "publication_manifest.json"), "utf8"));
++    assert.equal(publication.reader_release.exposed, true, slug);
++    assert.equal(publication.audio_release.exposed, false, slug);
++  }
++});
++const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "error-experience-summary-unit-"));
++function syntheticSummary(name) {
++  const output = path.join(temporary, name);
++  for (const state of selected) {
++    const directory = stateOutputDirectory(output, state.id);
++    fs.mkdirSync(directory, { recursive: true });
++    // Explicit synthetic nonvisual bytes: only the storage/hash validator is tested.
++    const bytes = Buffer.from(`synthetic capture storage ${state.id}`);
++    fs.writeFileSync(path.join(directory, "viewport.png"), bytes);
++    fs.writeFileSync(path.join(directory, "metadata.json"), JSON.stringify({
++      state_id: state.id, stable: true, screenshot_paths: { viewport: "viewport.png" },
++      screenshot_sha256: { viewport: crypto.createHash("sha256").update(bytes).digest("hex") },
++    }));
++  }
++  return { output, summary: { requested_state_ids: ids, captured_state_ids: ids,
++    missing_state_ids: [], unexpected_state_ids: [], duplicate_state_ids: [],
++    stable_state_count: 9, unstable_state_count: 0 } };
++}
++try {
++  test("synthetic nine-state storage passes the shared summary validator", () => {
++    const { output, summary } = syntheticSummary("valid");
++    assert.equal(validateCaptureSummary(summary, output, 9).length, 9);
++  });
++  test("missing state metadata fails the shared summary validator", () => {
++    const { output, summary } = syntheticSummary("missing");
++    fs.rmSync(path.join(stateOutputDirectory(output, ids[8]), "metadata.json"));
++    assert.throws(() => validateCaptureSummary(summary, output, 9), /metadata is missing/);
++  });
++  test("unstable state fails the shared summary validator", () => {
++    const { output, summary } = syntheticSummary("unstable");
++    summary.stable_state_count = 8; summary.unstable_state_count = 1;
++    assert.throws(() => validateCaptureSummary(summary, output, 9), /unstable/);
++  });
++  test("tampered capture bytes fail the shared summary validator", () => {
++    const { output, summary } = syntheticSummary("tampered");
++    fs.appendFileSync(path.join(stateOutputDirectory(output, ids[0]), "viewport.png"), "tampered");
++    assert.throws(() => validateCaptureSummary(summary, output, 9), /SHA mismatch/);
++  });
++} finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+ console.log(JSON.stringify({ result: "PASS", testCaseCount: cases }));

@@ -1,0 +1,218 @@
+{
+  "schema": "earnalism.proposed-exact-cover-binding.v1",
+  "slug": "the-science-of-getting-rich",
+  "status": "ACCEPTED_EXACT_COMPONENTS_UNDER_OWNER_DELEGATION",
+  "owner_authority": "Issue #477 comment5949652699 and2026-10-03prospectivecover/publicationdelegation; no human legal signature inferred",
+  "existing_text_decision": {
+    "decision_id": "india-20261002-the-science-of-getting-rich-pg59844-noncover-text",
+    "sha256": "1d5ebe49b341bbb0d8da57d8eb4b1a53b8b261929efbef06af6d72f1f56e3cd1",
+    "components": {
+      "public_book": "491fad4ec6873c7b6c3853a212291884b1764e99da6e23adddf2f61e3a377f9a",
+      "reader_manifest": "6c6c0d47217642a5f67dff1fc23afcac146468d1017d48f59a2bef2bf90cbdce",
+      "source_evidence": "6324de50de9db456175bcd2cbecec794641fa8bdd322d2de2b49eaacc713a117",
+      "approval_evidence": "dc189350ec5a8fd4acf2d25cafce1bf9884f35b4caca40090e497af1b0aba20f",
+      "checksum_manifest": "54e249ee3f753c7f930794b272e3c6267cf3e2efaff6119422d827c370aa4a87",
+      "publication_manifest": "4e57244d338acd3ea031811a92f8ec69f67919113f528e6fcb18c6295ceac03f"
+    },
+    "source_sha256": "adc3fb17f24801597561e992d858e124c8d9b4c6e3bf7593d713e7a71d252744",
+    "content_sha256": "55a8e552b9f74640c7bccc1d05db9d5197ec9dd3af558aceb4f9d3ea73d4949b",
+    "chapter_count": 18
+  },
+  "owner_design_declaration": {
+    "path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+    "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "statement": "Owner states all front and back covers are designed by the owner.",
+    "scope": "OWNER_DESIGN_FACT_ONLY_NOT_TEXT_RIGHTS_OR_PRODUCTION_FACT"
+  },
+  "original_front": {
+    "kind": "front",
+    "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/original-front.png",
+    "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950227/earnalism/covers/front/cover_ab481468-31e0-4b96-9538-f4d4e944d771.png",
+    "http_status": 200,
+    "sha256": "9fa719df44b5348b2dd694674fb7e4ba38438dd1e652ca70559081d67e88da15",
+    "bytes": 2865468,
+    "width": 1024,
+    "height": 1536,
+    "request_count": 1,
+    "retrieved_at": "2026-10-03T04:38:26.646393+00:00",
+    "redirects_allowed": false
+  },
+  "original_back": {
+    "kind": "back",
+    "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/original-back.png",
+    "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950234/earnalism/covers/back/back_cover_ab481468-31e0-4b96-9538-f4d4e944d771.png",
+    "http_status": 200,
+    "sha256": "49cf4eb533e11cc92d253496e2945d700468b2a2e42b7aabf4c7d8dd3b590f09",
+    "bytes": 2662912,
+    "width": 1024,
+    "height": 1536,
+    "request_count": 1,
+    "retrieved_at": "2026-10-03T04:38:26.620074+00:00",
+    "redirects_allowed": false
+  },
+  "delivery": {
+    "front": {
+      "source_sha256": "7f2e8e9fd3f6d0359b8d94cfc2198101abd64b4b78a95d035932d68bff4f2bf2",
+      "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/overlay-front-delivery.webp",
+      "sha256": "5ee48b1d245c70b1b8495f9a6b98636cc798d2bea96ff54aa4c3d6fa27becb28",
+      "bytes": 60052,
+      "width": 600,
+      "height": 900,
+      "url": "/assets/books/the-science-of-getting-rich/front-5ee48b1d.webp"
+    },
+    "back": {
+      "source_sha256": "83190790c57974d6dad6128dc87d5a3018e8d7fd06f41f623505320e974a1791",
+      "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/overlay-back-delivery.webp",
+      "sha256": "bda88117bdb0d7208f51afa3cab6dce74875f83943ebf7c2a74409a6a29477c4",
+      "bytes": 64860,
+      "width": 600,
+      "height": 900,
+      "url": "/assets/books/the-science-of-getting-rich/back-bda88117.webp"
+    }
+  },
+  "artwork_category": "RECOVERED_OWNER_LEGACY_GRAPHICS_WITH_LICENSED_DETERMINISTIC_TITLE_AUTHOR_OVERLAY_AND_WEBP_DELIVERY",
+  "art_or_copy_changes": false,
+  "creation_method": "UNKNOWN_NOT_INFERRED",
+  "evidence_sha256": {
+    "original_cover_receipt": "243d4e9cab3fc38057be1797e556a5f13835a8c82b6e17f54e2b2bc3784355b8",
+    "delivery_receipt": "1f17d8f784f79ce97e9a0ec0cc93fff398d05a2e94d9f4c4981294a124702f30",
+    "preparation_summary": "59fb79858ab92c2347616c4d08c6bd5d26f41b375b0e597d1182e94892263e3e",
+    "retained_raw_source_body_check": "7c76dccc8d3dac8daae28b1ca69d3c0eebae680fc84163f135782c9f09666e16",
+    "typography_overlay_receipt": "99b70d556723ac3cf8aba07e8f38fd183a80027d9e5369a588204d478143523a",
+    "typography_renderer": "952750c8a752810519b4db727ec3b037976bc606833a8764e88e4a5203a684a3",
+    "font_license": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+    "source_review_a": "ee95a763de6cafba3cc38064ec5452e712b6f0c21298279746283b62a517789e",
+    "source_review_b": "f593081a42d6ba7bc428c805f5c55ffd435059d3d6edf615dedf6346c5ce80a2",
+    "historical_original_delivery_renderer": "be3301caa0d97a9116edd1885ebade952e7444cbfa4cd00eea9c89665c40dbd9",
+    "delivery_renderer": "b9e0af1d4f2fe814f3cdc49b1601e8bc1fe63b735bdeb77def2a7635a38680b2"
+  },
+  "scope": {
+    "territories": [
+      "IN"
+    ],
+    "uses": [
+      "catalog_metadata",
+      "cover_display",
+      "reader_preview",
+      "reader_delivery",
+      "reading_pass_session",
+      "reading_pass_renewal"
+    ],
+    "publication_approved": true,
+    "production_activation": false,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "audio_urls": [],
+    "listen_exposure": false,
+    "checkout": false,
+    "payments": false
+  },
+  "preservation": {
+    "source_text_license_chapters_versions_unchanged": true,
+    "all_root_backend_content_preimages_archived": true,
+    "older_audio_claims_not_propagated": true
+  },
+  "runtime_or_production_observed": false,
+  "typography_layout_changes": "Oneboundedprecisemaskandlicensedexisting-fontdeterministictitle/authoroverlay",
+  "overlay_assets": {
+    "front": {
+      "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/overlay-front-run1.png",
+      "sha256": "7f2e8e9fd3f6d0359b8d94cfc2198101abd64b4b78a95d035932d68bff4f2bf2",
+      "bytes": 1905203,
+      "width": 1024,
+      "height": 1536,
+      "precise_masks": [
+        [
+          112,
+          85,
+          912,
+          680
+        ],
+        [
+          245,
+          1230,
+          784,
+          1306
+        ]
+      ],
+      "RGB_outside_masks_identical": "PASS",
+      "original_sha256": "9fa719df44b5348b2dd694674fb7e4ba38438dd1e652ca70559081d67e88da15"
+    },
+    "back": {
+      "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/overlay-back-run1.png",
+      "sha256": "83190790c57974d6dad6128dc87d5a3018e8d7fd06f41f623505320e974a1791",
+      "bytes": 2411555,
+      "width": 1024,
+      "height": 1536,
+      "precise_masks": [
+        [
+          160,
+          1160,
+          900,
+          1240
+        ]
+      ],
+      "RGB_outside_masks_identical": "PASS",
+      "original_sha256": "49cf4eb533e11cc92d253496e2945d700468b2a2e42b7aabf4c7d8dd3b590f09"
+    }
+  },
+  "overlay_receipt_sha256": "99b70d556723ac3cf8aba07e8f38fd183a80027d9e5369a588204d478143523a",
+  "overlay_renderer_sha256": "952750c8a752810519b4db727ec3b037976bc606833a8764e88e4a5203a684a3",
+  "font_license_evidence": {
+    "path": "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
+    "sha256": "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab",
+    "license_path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/dejavu-font-license.txt",
+    "license_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+    "license_basis": "Actual installed fonts-dejavu-core copyright/Bitstream Vera permission reproduced; DejaVu additions public domain; no font software modified or distributed by the Reader delivery."
+  },
+  "exact_complete_source_recovery": {
+    "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/official-source-recovered/science-official-source.txt",
+    "sha256": "adc3fb17f24801597561e992d858e124c8d9b4c6e3bf7593d713e7a71d252744",
+    "recovered_by": "Independent reviewerA oneGET; thisworker zeroGET",
+    "source_review_a_sha256": "ee95a763de6cafba3cc38064ec5452e712b6f0c21298279746283b62a517789e",
+    "source_review_b_sha256": "f593081a42d6ba7bc428c805f5c55ffd435059d3d6edf615dedf6346c5ce80a2",
+    "whole_work": "CompleteauthorPreface+17chapters, excludedpublishadvertboundary independentlyPASS"
+  },
+  "verification_integrity_disclosure": {
+    "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/excluded-corrupted-verification-preimage/overlay-front-run2.png",
+    "sha256": "37ca561a905afe1a6a21c21a286789c5b55384ac912b6284503761998be08e0f",
+    "bytes": 1638729,
+    "excluded": true,
+    "reason": "Actual independently observed incomplete verification file disagrees with generation-time assertion. Cause unknown; preserved and never used as candidate or delivery source.",
+    "decode": "FAIL",
+    "decode_error": "image file is truncated"
+  },
+  "delivery_recipe": {
+    "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/render_overlay_delivery.py",
+    "sha256": "b9e0af1d4f2fe814f3cdc49b1601e8bc1fe63b735bdeb77def2a7635a38680b2",
+    "current_delivery_receipt_sha256": "1f17d8f784f79ce97e9a0ec0cc93fff398d05a2e94d9f4c4981294a124702f30",
+    "sources": "Exact frozen overlay-run1 PNGs; historical original-to-card renderer preserved but superseded for current delivery"
+  },
+  "accepted_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+  "accepted_at": "2026-10-03T04:59:53.954767+00:00",
+  "production_observed": false,
+  "new_independent_review_receipts": {
+    "review_a": {
+      "file": "evidence/review_a.json",
+      "sha256": "e17b3d56b4e6f0f6177965822910d19550debe93090c198d5a21e3fac5419400"
+    },
+    "review_b": {
+      "file": "evidence/review_b.json",
+      "sha256": "4817d7c5123f319dfb08bc552fd4548d24896bb23964f11bd12d719c941eb98a"
+    }
+  },
+  "acceptance_scope": "Exact preserved owner artwork derivative/delivery, India commercial text Reader cover display only; audio not authorized. Existing complete edition-bound source rights preserved.",
+  "commercial_use_authorized": true,
+  "cover_display_approved": true,
+  "visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+  "independent_reviews": {
+    "review_a": {
+      "file": "evidence/review_a.json",
+      "sha256": "e17b3d56b4e6f0f6177965822910d19550debe93090c198d5a21e3fac5419400"
+    },
+    "review_b": {
+      "file": "evidence/review_b.json",
+      "sha256": "4817d7c5123f319dfb08bc552fd4548d24896bb23964f11bd12d719c941eb98a"
+    }
+  }
+}

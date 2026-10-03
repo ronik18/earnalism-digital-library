@@ -61,7 +61,7 @@ def runtime_verdict(action: str, record: dict | None, registry: dict[str, str] |
     return evaluate_runtime_path(action, **arguments)
 
 
-def test_real_registry_retains_historical_records_and_binds_current_thirty_three_title_release():
+def test_real_registry_retains_historical_records_and_binds_current_fifty_two_title_release():
     registry, revoked = load_production_registry()
     payload = json.loads(PRODUCTION_REGISTRY_PATH.read_text(encoding="utf-8"))
 
@@ -102,6 +102,25 @@ def test_real_registry_retains_historical_records_and_binds_current_thirty_three
         "india-20261003-the-art-of-money-getting-reader-cover-display-reviewed",
         "india-20261003-bn-035-1922-text-reader-exact-cover",
         "india-20261003-alices-adventures-in-wonderland-reader-cover-display-reviewed",
+        'india-20261003-dsires-baby-exact-reader-cover-prospective-accepted',
+        'india-20261003-sredni-vashtar-exact-reader-cover-prospective-accepted',
+        'india-20261003-the-cop-and-the-anthem-exact-reader-cover-prospective-accepted',
+        'india-20261003-the-open-window-exact-reader-cover-prospective-accepted',
+        'india-20261003-the-selfish-giant-exact-reader-cover-prospective-accepted',
+        'india-20261003-the-science-of-getting-rich-exact-reader-cover-prospective-accepted',
+        'india-20261003-bn-066-exact-reader-cover-prospective-accepted',
+        'india-20261003-lokrahasya-exact-reader-cover-prospective-accepted',
+        'india-20261003-mrinalini-exact-reader-cover-prospective-accepted',
+        'india-20261003-frankenstein-exact-reader-cover-prospective-accepted',
+        'india-20261003-pride-and-prejudice-exact-reader-cover-prospective-accepted',
+        'india-20261003-the-great-gatsby-exact-reader-cover-prospective-accepted',
+        'india-20261003-the-secret-garden-exact-reader-cover-prospective-accepted',
+        'india-20261003-the-time-machine-exact-reader-cover-prospective-accepted',
+        'india-20261003-acres-of-diamonds-exact-reader-cover-prospective-accepted',
+        'india-20261003-my-life-and-work-exact-reader-cover-prospective-accepted',
+        'india-20261003-the-principles-of-scientific-management-exact-reader-cover-prospective-accepted',
+        'india-20261003-the-wonderful-wizard-of-oz-exact-reader-cover-prospective-accepted',
+        'india-20261003-book-5704b31005-exact-reader-cover-prospective-accepted',
     }
     current_runtime_release_slugs = (
         "a-ghost-story",
@@ -137,6 +156,25 @@ def test_real_registry_retains_historical_records_and_binds_current_thirty_three
         "the-art-of-money-getting",
         "bn-035",
         "alices-adventures-in-wonderland",
+        'dsires-baby',
+        'sredni-vashtar',
+        'the-cop-and-the-anthem',
+        'the-open-window',
+        'the-selfish-giant',
+        'the-science-of-getting-rich',
+        'bn-066',
+        'lokrahasya',
+        'mrinalini',
+        'frankenstein',
+        'pride-and-prejudice',
+        'the-great-gatsby',
+        'the-secret-garden',
+        'the-time-machine',
+        'acres-of-diamonds',
+        'my-life-and-work',
+        'the-principles-of-scientific-management',
+        'the-wonderful-wizard-of-oz',
+        'book-5704b31005',
     )
     for slug in current_runtime_release_slugs:
         decision = json.loads(

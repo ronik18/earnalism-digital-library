@@ -1,0 +1,411 @@
+{
+  "schema": "earnalism.prospective-owner-provided-next-cohort.v1",
+  "actual_acceptance_at": "2026-10-03T05:34:11.386246+00:00",
+  "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+  "base_main": "0fee65668f94284d180065d0fe8b38face924498",
+  "owner_declaration_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+  "canonical_mutations": 0,
+  "production_observed": false,
+  "audio_exposed": false,
+  "global_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK",
+  "cohort": [
+    {
+      "slug": "the-time-machine",
+      "decision_id": "india-20261003-the-time-machine-exact-reader-cover-prospective-accepted",
+      "canonical_record_sha256": "f7f078156e5d711b1ca37589b4b33f4c1e46e43906a360329820aba18d0c53f2",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/the-time-machine/the-time-machine-front-5eb21ec7.webp",
+          "sha256": "2b3e8c93c4ba497456bfd88c7233be9b15a1305397501022f807aa3574746d7a",
+          "bytes": 66758,
+          "dimensions": [
+            600,
+            900
+          ],
+          "url": "https://theearnalism.com/assets/books/the-time-machine/the-time-machine-front-5eb21ec7.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/the-time-machine/the-time-machine-back-982e280d.webp",
+          "sha256": "f14904314cecf4e887358e2a6dd16a512936fe5e42314b281e309f994a54a585",
+          "bytes": 43386,
+          "dimensions": [
+            800,
+            1200
+          ],
+          "url": "https://theearnalism.com/assets/books/the-time-machine/the-time-machine-back-982e280d.webp"
+        }
+      },
+      "reviews": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "69849aa5884020a53e87e902d3505d2624839e8dd37119d9b03d7df99948fe38"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "fa6aaff9100965882e389a042a8e81845423737348bbd410831c6954fda2998b"
+        },
+        "source_review_b": {
+          "file": "evidence/source_review_b.json",
+          "sha256": "7e6e03cfd9ebfddb26f0f275b69adb8c4222055a6b466c89cedc7d3173fdda12"
+        }
+      },
+      "publication_authorization_sha256": "a4981a11cedcd8858b10d0b13af7b554f6d6214e257011b0d05411632be2a3b3",
+      "prior_text_rights_basis_preserved": "Lifetime-published single-author English literary narrative; verified author death 1946, verified lifetime collection publication 1895 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+      "disposition": "READY_BEHIND_NAMED_GLOBAL_GATE",
+      "source_and_chapters": "BYTE_IDENTICAL_TO_REVIEWED_PROPOSAL",
+      "production_observed": false
+    },
+    {
+      "slug": "the-great-gatsby",
+      "decision_id": "india-20261003-the-great-gatsby-exact-reader-cover-prospective-accepted",
+      "canonical_record_sha256": "257ed5156be39001cd0a3d6af795df981cb22ae2b980a526a9af4f3a5ad9fd61",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/the-great-gatsby/the-great-gatsby-front-8d98a278.webp",
+          "sha256": "b3513c4e345b4aa6156f61e6d6a3a69ba3a034f79b6dc3c75773a941cbb516d1",
+          "bytes": 32594,
+          "dimensions": [
+            600,
+            900
+          ],
+          "url": "https://theearnalism.com/assets/books/the-great-gatsby/the-great-gatsby-front-8d98a278.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/the-great-gatsby/the-great-gatsby-back-b2696f4c.webp",
+          "sha256": "a5a02d9abc0e867bc65527dd57dcdd7679843589f90191cc09302d9d871be32b",
+          "bytes": 40428,
+          "dimensions": [
+            800,
+            1200
+          ],
+          "url": "https://theearnalism.com/assets/books/the-great-gatsby/the-great-gatsby-back-b2696f4c.webp"
+        }
+      },
+      "reviews": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "5156952c739749bc0d45c2da3f66e595bba7b4855fc5851a909c7f45be5fe0a9"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "01f582df43f942e52ea04de108f9eaca6b3218dd0cb83ff6623f0b2711654d0d"
+        },
+        "source_review_b": {
+          "file": "evidence/source_review_b.json",
+          "sha256": "3ba83ca584badcf990145195607e4db99d3f112fca18a8111355f2e71dc32a26"
+        }
+      },
+      "publication_authorization_sha256": "dda50b8fe9eb9433eb3d2ffbb4f8ad6058ed53986840185bfdb2a5a4b8b68302",
+      "prior_text_rights_basis_preserved": "Lifetime-published single-author English literary narrative; verified author death 1940, verified lifetime collection publication 1925 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+      "disposition": "READY_BEHIND_NAMED_GLOBAL_GATE",
+      "source_and_chapters": "BYTE_IDENTICAL_TO_REVIEWED_PROPOSAL",
+      "production_observed": false
+    },
+    {
+      "slug": "frankenstein",
+      "decision_id": "india-20261003-frankenstein-exact-reader-cover-prospective-accepted",
+      "canonical_record_sha256": "3efdcf9b9139c13bbc959b72e375de8761699573c10cd61e1b69492211fd2d6f",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/frankenstein/frankenstein-front-a7a5d982.webp",
+          "sha256": "5b93fe195948e38c474fac00b8de901b3e744bd3e0705416f12df6a63054042b",
+          "bytes": 25864,
+          "dimensions": [
+            600,
+            900
+          ],
+          "url": "https://theearnalism.com/assets/books/frankenstein/frankenstein-front-a7a5d982.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/frankenstein/frankenstein-back-36740657.webp",
+          "sha256": "8b9e09b5c47493f0f2fc13587ce8b29e87456dfce081ef411054303c17024fb0",
+          "bytes": 43036,
+          "dimensions": [
+            800,
+            1200
+          ],
+          "url": "https://theearnalism.com/assets/books/frankenstein/frankenstein-back-36740657.webp"
+        }
+      },
+      "reviews": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "dc1045c0af38dad4e41574dbb587cea6734d665ac3cdde5b2e71745808078c83"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "cb669626513fb343c14b268928ca8499cd01d521d5cad9469464935ec400d871"
+        },
+        "source_review_b": {
+          "file": "evidence/source_review_b.json",
+          "sha256": "c4d561c45a88e2ab53dcdf26ed1036882fcb040681c41b3d49fda75bdc50e999"
+        }
+      },
+      "publication_authorization_sha256": "5b136cdd64bc1f85351dcb38c3ada57f382d247ca83ddc606b4b3ee440f276b4",
+      "prior_text_rights_basis_preserved": "Lifetime-published single-author English literary narrative; verified author death 1851, original publication 1818; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+      "disposition": "READY_BEHIND_NAMED_GLOBAL_GATE",
+      "source_and_chapters": "BYTE_IDENTICAL_TO_REVIEWED_PROPOSAL",
+      "production_observed": false
+    },
+    {
+      "slug": "the-secret-garden",
+      "decision_id": "india-20261003-the-secret-garden-exact-reader-cover-prospective-accepted",
+      "canonical_record_sha256": "6f1a5205d77e70433855d7abd5698b0f9004edf194ccbac8dade0d22f824cf09",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/the-secret-garden/the-secret-garden-front-39799997.webp",
+          "sha256": "06a6366d1dace4db8c21ab716667d5650ac0a6143758ed08024af5b7d3aa0bc5",
+          "bytes": 53790,
+          "dimensions": [
+            600,
+            900
+          ],
+          "url": "https://theearnalism.com/assets/books/the-secret-garden/the-secret-garden-front-39799997.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/the-secret-garden/the-secret-garden-back-dedb7dcc.webp",
+          "sha256": "be310c30275d7fc20d2f893032d9373fed1912146d4604c6e4b0fb7593820a27",
+          "bytes": 144890,
+          "dimensions": [
+            800,
+            1200
+          ],
+          "url": "https://theearnalism.com/assets/books/the-secret-garden/the-secret-garden-back-dedb7dcc.webp"
+        }
+      },
+      "reviews": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "0f72494328632cf157a108de8568a0493a6af1c57fefecaa77583f3cc4627b5c"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "fa8c2d43c53f2ebe4db5c2ab2e20ebc8addeb59f9725bbec1f1bb0b32c822a97"
+        },
+        "source_review_b": {
+          "file": "evidence/source_review_b.json",
+          "sha256": "e7160391d77b3e1f89dec5481949d5211d86420fb3dcd56c7129798a98bac0d7"
+        }
+      },
+      "publication_authorization_sha256": "e436bc94da380ca43691eab8c5ec793a65fb643502cdd5819a95c9047998c8e7",
+      "prior_text_rights_basis_preserved": "Lifetime-published single-author English literary narrative; verified author death 1924, verified lifetime collection publication 1911 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+      "disposition": "READY_BEHIND_NAMED_GLOBAL_GATE",
+      "source_and_chapters": "BYTE_IDENTICAL_TO_REVIEWED_PROPOSAL",
+      "production_observed": false
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "decision_id": "india-20261003-pride-and-prejudice-exact-reader-cover-prospective-accepted",
+      "canonical_record_sha256": "b2f21aab0e31e1490ab254c64fb73190518fdb1d4982871e885052469d72bb46",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/pride-and-prejudice/pride-and-prejudice-front-480db270.webp",
+          "sha256": "93c11e8b029d4e283655542189c9f14424d6ba3bc489f7e60c64c465a6943d3d",
+          "bytes": 38766,
+          "dimensions": [
+            600,
+            900
+          ],
+          "url": "https://theearnalism.com/assets/books/pride-and-prejudice/pride-and-prejudice-front-480db270.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/pride-and-prejudice/pride-and-prejudice-back-fbb0d3c3.webp",
+          "sha256": "74158f60e81ffa0626fd6d1e6e13e3c7a49257ec91dae10dcc11e697bd6ea09b",
+          "bytes": 117762,
+          "dimensions": [
+            800,
+            1200
+          ],
+          "url": "https://theearnalism.com/assets/books/pride-and-prejudice/pride-and-prejudice-back-fbb0d3c3.webp"
+        }
+      },
+      "reviews": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "db1362ae9a048b971fbbb19850c7b6b45b62865c4c6dbc1d02d2c805c9a21cf1"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "7a4240e762350e02429e64fc14796d5ce7c4b34b808d2045cf788d5e726e66b2"
+        },
+        "source_review_b": {
+          "file": "evidence/source_review_b.json",
+          "sha256": "78e104ef3a355c89f945241da2b3b02906f40f62c53ec91d2b431b5d6602300a"
+        }
+      },
+      "publication_authorization_sha256": "285ec5d2973e98db67db04d555c781520d47f54658aa8dbea3da65021ab359e7",
+      "prior_text_rights_basis_preserved": "Lifetime-published single-author English literary narrative; verified author death 1817, original publication 1813; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+      "disposition": "READY_BEHIND_NAMED_GLOBAL_GATE",
+      "source_and_chapters": "BYTE_IDENTICAL_TO_REVIEWED_PROPOSAL",
+      "production_observed": false
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "decision_id": "india-20261003-the-principles-of-scientific-management-exact-reader-cover-prospective-accepted",
+      "canonical_record_sha256": "748e21349d1d32315ef0c2292c041c68e9dc8f6d25c8c5845e4688f63190a970",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-front-67895aec-600.webp",
+          "sha256": "b53d8f06691749b6c82fe003513163330698b53ba4f5d02721d15d7f17a68644",
+          "bytes": 64336,
+          "dimensions": [
+            600,
+            900
+          ],
+          "url": "https://theearnalism.com/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-front-67895aec-600.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-back-a544cc2b-600.webp",
+          "sha256": "ed604d4e425551bba8863ccbc93c919d77ed42122a4d5c15bb217f604432348a",
+          "bytes": 52330,
+          "dimensions": [
+            600,
+            900
+          ],
+          "url": "https://theearnalism.com/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-back-a544cc2b-600.webp"
+        }
+      },
+      "reviews": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "3043b739322e3d4ffabd729cd834b936188018517075ffcf34ab73f85ca54c81"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "de3794f854eaa4ff7cd0ffbdeb9b37fcd70fd989e1ead6973042eedc19b8c646"
+        }
+      },
+      "publication_authorization_sha256": "66a3290c87fe25290a190b358834b27d975e4264d4737ba8666c06685e3c2519",
+      "prior_text_rights_basis_preserved": "Unaccepted exact inactive proposal. Reuse prior accepted IN noncover text facts without inferred original methods, rights, human approval or production observation. Full selected-work proof plus one deterministic original-art title/author/copy repair awaits two independent reviewers and serialized owner-delegated controller acceptance.",
+      "disposition": "READY_BEHIND_NAMED_GLOBAL_GATE",
+      "source_and_chapters": "BYTE_IDENTICAL_TO_REVIEWED_PROPOSAL",
+      "production_observed": false
+    },
+    {
+      "slug": "acres-of-diamonds",
+      "decision_id": "india-20261003-acres-of-diamonds-exact-reader-cover-prospective-accepted",
+      "canonical_record_sha256": "1c2269ebb740f4dbf110741a11182f0d8e02f967bd9095f9eb165b601eeedf78",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/acres-of-diamonds/acres-of-diamonds-front-cdffd02e-600.webp",
+          "sha256": "ea5a75bc67aced9aed13683776a3a21ff75173b3cd41cecdef7e4081b6732467",
+          "bytes": 66054,
+          "dimensions": [
+            600,
+            900
+          ],
+          "url": "https://theearnalism.com/assets/books/acres-of-diamonds/acres-of-diamonds-front-cdffd02e-600.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/acres-of-diamonds/acres-of-diamonds-back-b3fb289b-600.webp",
+          "sha256": "ce68313111e4b164e3383ffe3a52afe99417c76a6b489e31e29ed0210de3141e",
+          "bytes": 64826,
+          "dimensions": [
+            600,
+            900
+          ],
+          "url": "https://theearnalism.com/assets/books/acres-of-diamonds/acres-of-diamonds-back-b3fb289b-600.webp"
+        }
+      },
+      "reviews": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "848765bd2edfd3f28e3fe0c479321f0d41ea058dd894d31000bb3116c3b5b407"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "283ab0e868d9ec67a1efba2fc9aae9e61a1958e7dfd45f39b72f2e6ac2e3901f"
+        }
+      },
+      "publication_authorization_sha256": "66e245fdbe892f702c88d7a0a34e494226c5163858021e0d286b1eca1f3823b8",
+      "prior_text_rights_basis_preserved": "Unaccepted exact inactive proposal. Reuse prior accepted IN noncover text facts without inferred original methods, rights, human approval or production observation. Full selected-work proof plus one deterministic original-art title/author/copy repair awaits two independent reviewers and serialized owner-delegated controller acceptance.",
+      "disposition": "READY_BEHIND_NAMED_GLOBAL_GATE",
+      "source_and_chapters": "BYTE_IDENTICAL_TO_REVIEWED_PROPOSAL",
+      "production_observed": false
+    },
+    {
+      "slug": "my-life-and-work",
+      "decision_id": "india-20261003-my-life-and-work-exact-reader-cover-prospective-accepted",
+      "canonical_record_sha256": "379331770cb33f6944bf9036c2b1a490618b66eee8a833a4c0b8cd42d3659f76",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/my-life-and-work/my-life-and-work-front-9f2a6f06-800.webp",
+          "sha256": "b46df58db552e1d5adc85c4fde859105c2863811404e594f079561409db4c9f3",
+          "bytes": 77986,
+          "dimensions": [
+            800,
+            1200
+          ],
+          "url": "https://theearnalism.com/assets/books/my-life-and-work/my-life-and-work-front-9f2a6f06-800.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/my-life-and-work/my-life-and-work-back-b129bcca-800.webp",
+          "sha256": "c1c1f36904563fe329ec02549acd3171aaa8f6f970a444ae5672443ec6fc218c",
+          "bytes": 91012,
+          "dimensions": [
+            800,
+            1200
+          ],
+          "url": "https://theearnalism.com/assets/books/my-life-and-work/my-life-and-work-back-b129bcca-800.webp"
+        }
+      },
+      "reviews": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "ff240fbf4572faa32eab4a11d24552591af32907de74186272fa9769426c8014"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "af458f9aa5b771de14ccb98ce746cfe00dd57b045c44b065aae7dffc7015a6fb"
+        }
+      },
+      "publication_authorization_sha256": "9f5221e29758bae95d5277703473eaaca051dcb8157329f30b064dacafbcc31d",
+      "prior_text_rights_basis_preserved": "Unaccepted exact inactive proposal. Reuse prior accepted IN noncover text facts without inferred original methods, rights, human approval or production observation. Full selected-work proof plus one deterministic original-art title/author/copy repair awaits two independent reviewers and serialized owner-delegated controller acceptance.",
+      "disposition": "READY_BEHIND_NAMED_GLOBAL_GATE",
+      "source_and_chapters": "BYTE_IDENTICAL_TO_REVIEWED_PROPOSAL",
+      "production_observed": false
+    },
+    {
+      "slug": "mrinalini",
+      "decision_id": "india-20261003-mrinalini-exact-reader-cover-prospective-accepted",
+      "canonical_record_sha256": "f000091aa6043c515219ca9c24e9da77d6a0f5528991e8341917b7a1e5960cd0",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/mrinalini/mrinalini-front-77b2a78d.webp",
+          "sha256": "77b2a78d8c42e25e54ca6715a5c6eb92c0e90e79c50d6f93f1a16af3f11e99a4",
+          "bytes": 62400,
+          "dimensions": [
+            450,
+            675
+          ],
+          "url": "https://theearnalism.com/assets/books/mrinalini/mrinalini-front-77b2a78d.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/mrinalini/mrinalini-back-6de23839.webp",
+          "sha256": "6de2383961fe8d47a97982da8c29f57a41dde2b0bdcaef6bd38f07d17a0355ee",
+          "bytes": 41938,
+          "dimensions": [
+            450,
+            675
+          ],
+          "url": "https://theearnalism.com/assets/books/mrinalini/mrinalini-back-6de23839.webp"
+        }
+      },
+      "reviews": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "27dee411682d6fbc614aef59db747286949ac2961fcdb50f5cc466b395d15bec"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "94df4b60e209ec40391b62b5c80e6c59c400c48e4becfac7373049d932c8a3c3"
+        }
+      },
+      "publication_authorization_sha256": "9be72f83c284fe4f3389dffe126ab111e94a2fe66fcd93b3aa40a573bebf817b",
+      "prior_text_rights_basis_preserved": "Exact Mrinalini third1874 author edition, Bankim Chandra Chattopadhyay; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1894; India Section22 literary term expired end1954. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held. Proposed exact owner cover mask/typeset derivatives; fresh2 passing independent reviews and actual automated acceptance remain required.",
+      "disposition": "READY_BEHIND_NAMED_GLOBAL_GATE",
+      "source_and_chapters": "BYTE_IDENTICAL_TO_REVIEWED_PROPOSAL",
+      "production_observed": false
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "slug": "dsires-baby",
+  "generated_at": "2026-07-12T07:04:07Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "12313bde425c85b16bd8deaf9bb2bf9a0e7d360e50407a6f5edb07ced87bbc8b"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "a4412efd87b9759c4be1301687c4edbea0ab444baa648e1acd144aad4835560e"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "76d9488d74961f283821d169d2a8b21b1b64a729c8a00d07304d472bbf935e34"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "8ad158a3e3e3c363ef7cf26bd48aeae1e622e5c001fb14f7a23c938528158346"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "48e203f5b81fc27d1ee3f5d80c485434f383fa5f622839c0128d3a443d15ed2e"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "the-selfish-giant",
+  "edition": "Project Gutenberg #902 selected Wilde Selfish Giant narrative, 1910 impression; illustrations excluded",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_ONLY_NON_COVER_COMPONENTS",
+  "source_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+  "content_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+  "chapter_sha256": {
+    "chapter-001": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5"
+  },
+  "cover_provenance_sha256": null,
+  "cover_status": "DEFERRED_BY_OWNER_REQUEST_NO_COVER_DISPLAY_AUTHORIZED",
+  "authorized_by": "Automated executor under owner explicit autonomous clearance delegation; not a fabricated human or legal signature.",
+  "verified_at": "2026-10-01T21:34:27.335291+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Cover clearance/binding, trusted production registry acceptance, canonical controlled-live allowlist, actual runtime Reader readiness and protected gates must separately pass.",
+  "not_authorized": [
+    "cover_display",
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation"
+  ]
+}

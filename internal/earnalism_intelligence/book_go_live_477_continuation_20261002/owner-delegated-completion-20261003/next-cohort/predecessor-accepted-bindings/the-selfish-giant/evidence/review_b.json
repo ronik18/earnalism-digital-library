@@ -1,0 +1,57 @@
+{
+  "schema": "earnalism.independent.exact-package-review.v1",
+  "reviewer": "independent_reviewer_B",
+  "slug": "the-selfish-giant",
+  "reviewed_on": "2026-10-03",
+  "disposition": "PASS_UNACCEPTED_INACTIVE_PROPOSAL_BINDINGS",
+  "visual_source_receipt": {
+    "file": "/workspace/scratch/181ef0a25f05/new-acceptance-review-b-20261003/the-selfish-giant-new-cover-source-review-b.json",
+    "sha256": "57a472c8dd0e35f4135e5b7fe6124ee92dd3e92d44d6454091f8182620aec24b",
+    "scope": "Exact new asset byte identities unchanged; initial paperwork gaps resolved in this frozen binding review."
+  },
+  "proposal_sha256": {
+    "highlight_sync.json": "5bb55dc95aade157eedc8cb2e4255015af7426b38dc43692a3ae8d317a3e30e0",
+    "source_evidence.json": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d",
+    "publication_manifest.json": "4859d307ff78fb524fbd0a0972c0677a4e2fdb74a45c44c671943b12b72f02d7",
+    "reader_manifest.json": "d5ce7da734364efdd9a2bd6eace1ee2df66bcfa0dcf7ea4e99d49502b330fc9c",
+    "publication_authorization.json": "16514ed5af14d72f8eddfbd6d5896ad4f0cc28181b4f8e21b351a065dd49fa0c",
+    "approval_evidence.json": "51256c44750faff02579f480159bfb4d30d9dfb4061e5906a82e6135b64cd54e",
+    "public_book.json": "b65b1f188367dcac54cf1ba6edd416e4a3906ea0b8adce6bed445b5ba5845cf9",
+    "rights_decision.json": "711f0bede0a761b9927ae78c71f38711511b590d74843a29346856e79170030f",
+    "checksum_manifest.json": "bc18d25803c3f5371eb244d8da4262b5f6d0ac6d2c61aff0a632aeda1da3aff8",
+    "cover_provenance.json": "becaa05505a87f54f017f6ef2d80a921196ed281993a22a72bd2b1c3f4dd536c",
+    "covers/back-delivery.webp": "14b007092896bd2d0e4396ba0ecb1e430650a7aa772f855a347a6269daa75e60",
+    "covers/front-delivery.webp": "777a773d9cebbf236f9bfb79d52d35ca7206c59fc38eb04d85a84abc480d98cd",
+    "covers/front-layout-repair.png": "e01b95dc8d321678df5c9fe5e395728187ea03984cc69c59ae34471603fb7dc4",
+    "covers/front-original.png": "f10e1353932821ab22a0d13b68a40394f06eb1c9a97b04e5e126897dfbb3fcc2",
+    "covers/back-original.png": "6903c7610ac6141b0f4d8d025e7e9fe9f347e2922996368ef7dd28fe8c18b511",
+    "covers/back-layout-repair.png": "6337be1964dfa48aedd7d35233cfdb84f422dd311545b265b9c259444f8795f0",
+    "chapters/chapter-001.json": "12c1db2943a0b57aea333ed1870472ea8332d457093d4255185385a7a157e3b1"
+  },
+  "proposed_rights_decision_raw_sha256": "711f0bede0a761b9927ae78c71f38711511b590d74843a29346856e79170030f",
+  "proposed_rights_decision_canonical_sha256": "a90a3dba5b3ac316c2b285a2fd844b1c72a1a3931b8b7566f2d82afc0d3f6e02",
+  "checks": {
+    "7_component_bindings": "PASS",
+    "14_checksum_entries": "PASS",
+    "publication_manifest_artifact_bindings": "PASS",
+    "authorization_approval_cover_binding": "PASS",
+    "source_chapter_highlight_unchanged": "PASS",
+    "prior_root_backend_preimages": "byte exact PASS; historical positive audio production evidence preserved only archived",
+    "delivered_dimensions": "800x1200 explicit PASS",
+    "rights_basis": "Exact prior IN decision basis reused; no original story date guessed/no extra territorial rights asserted",
+    "audio": "Effective public/reader/approval false flags and empty media; historical production_audio_evidence absent from current candidate PASS",
+    "prospective_acceptance_state": "PROPOSED, conditionsfalse; no automated acceptance created yet",
+    "production_facts": "No current live/canary/readback claimed"
+  },
+  "correction_receipt_sha256": "f8ceba8ad39db40b45b264a79ecc1b8f71473e43717500ddee48d164e6a51a90",
+  "validation_sha256": "6a0ede1fb7916ad9767cef074e232e503a205f73e2c0f9922bd54c330507aef4",
+  "remaining_gates": [
+    "Other independent reviewer PASS",
+    "Root-authorized actual prospective acceptance with new exact component records/dates",
+    "Fresh accepted package binding review; serialized integration/protected CI/deploy/canary/truthful canonical readback"
+  ],
+  "acceptance_created": false,
+  "production_observed": false,
+  "audio_authorized": false,
+  "canonical_mutations": false
+}

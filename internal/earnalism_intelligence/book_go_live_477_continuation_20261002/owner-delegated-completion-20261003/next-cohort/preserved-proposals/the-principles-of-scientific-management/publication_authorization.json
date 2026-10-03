@@ -1,0 +1,32 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "the-principles-of-scientific-management",
+  "edition": "Project Gutenberg #6435 Taylor 1911 monograph; Introduction and ChaptersI-II including FinestType subsection",
+  "territories": [
+    "IN"
+  ],
+  "scope": "INACTIVE_TEXT_AND_EXACT_COVER_PROPOSAL_PENDING_REVIEW_NOT_AUTHORIZED",
+  "source_sha256": "1f504a9abe674ee616f13bf1db66ec25cbb1be0ff5fd9bfe70ab8593aa08a3b2",
+  "content_sha256": "288b62bc7442e85367b7ca05290f466dee7a0314d7f0ab3d3252cc39618850df",
+  "chapter_sha256": {
+    "chapter-001": "d32f0bdd8af72e44a868496b9b366d89d354ea1a6fbf3338e2945fd2844a3a4b",
+    "chapter-002": "d3bce9820aacf3f0c3a82d2a40931e82095f705f26d4312cb0836141496f63ae",
+    "chapter-003": "d3dc6737ae6dc38a609951e5642ccb70160e08b0ebe71beb82569b3ce62b5a0b",
+    "chapter-004": "ce03794ec55aecc0783b58cb64c4f2e54548bdb89ea538afc221bc9ed428ee1f"
+  },
+  "cover_provenance_sha256": "f2234723ac9e70422a49051d8a0346a4d99cc1a031cf4baca0b1d09dd901af41",
+  "cover_status": "PENDING_TWO_INDEPENDENT_COVER_PACKAGE_REVIEWS",
+  "authorized_by": "NOT_ACCEPTED. Root serialized controller may record genuine acceptance only after exact independent reviews pass.",
+  "verified_at": "2026-10-03T05:10:03.145513+00:00",
+  "publication_authorized": false,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Existing raw noncover accepted text record retained in preimages. Exact proposal is inactive and requires two independent reviews then truthful prospective owner-delegated acceptance before any registry/allowlist/protected release.",
+  "not_authorized": [
+    "cover_display",
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation"
+  ]
+}

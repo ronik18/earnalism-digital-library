@@ -1,10 +1,10 @@
 {
   "slug": "sredni-vashtar",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-10-03T04:59:53.954767+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "d2eec4f08fcd81f7156fc122a1c9fb20dd96ef0cde660c69801b03bfd9a000d3"
+      "sha256": "07fa6c729b5b6bb6a324225172abc3811c4f3acd4618bc824116fcaf51794bf0"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -16,19 +16,35 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "c027b799066b584a244c9025086df028d7a9ef65c5d7e812735b27e64420c59f"
+      "sha256": "9aa8bec2eb84adb720bc08118faff53a7277ea659bcd44f02b974cc594b11d01"
     },
     {
       "file": "publication_authorization.json",
-      "sha256": "20bb6b3ae3075433c2ed8396f101642442b34b51d51ce5c195074b222435712a"
+      "sha256": "a97af4cfe69c6c6faded9ca6d2093d6ff90297e2235252a85818db8880b50734"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "2ccf2bae7a65d944946f1cf4ca5a5f8b4011408638d67cc95e7f8bf6eca3ab54"
+      "sha256": "2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad"
     },
     {
       "file": "source_evidence.json",
       "sha256": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "2fcda3d9902d9139e3578437f97b7f3b0c2f19dd188e572d234dd6c9316e87b9"
+    },
+    {
+      "file": "cover_delivery_derivation.json",
+      "sha256": "b16506ca00a39b5e936b8828a912c0ec895d874450d40817717f0819c9bdadeb"
+    },
+    {
+      "file": "evidence/review_a.json",
+      "sha256": "cbb2b42bd8aa85419549eaf838e9884069889482ae7bd8fd5d5280e34ab55f59"
+    },
+    {
+      "file": "evidence/review_b.json",
+      "sha256": "91c752175d2b576a1b43269645b72511a23eadd5d6200df0c65a1ee1d3794c0a"
     }
   ]
 }

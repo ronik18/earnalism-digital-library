@@ -1,0 +1,30 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "the-selfish-giant",
+  "edition": "Project Gutenberg #902 selected Wilde Selfish Giant narrative, 1910 impression; illustrations excluded",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_CATALOG_METADATA_AND_EXACT_COVER_DISPLAY",
+  "source_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+  "content_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+  "chapter_sha256": {
+    "chapter-001": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5"
+  },
+  "cover_provenance_sha256": "d2a718d4bbe5dd2e9cf4b58a4f470ff2a188c84a5420f0f2cd92315d67f5c1f3",
+  "cover_status": "EXACT_REVIEWED_OWNER_COMPONENTS_ACCEPTED_PRODUCTION_UNOBSERVED",
+  "authorized_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+  "verified_at": "2026-10-03T04:59:53.954767+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Actual prospective component/publication acceptance after two independent passing exact preparations. Final accepted bindings, serialized registry/allowlist, protected CI/normal merge/deployment/canary/truthful readback remain required.",
+  "not_authorized": [
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation bypass"
+  ],
+  "rights_decision_id": "india-20261003-the-selfish-giant-exact-reader-cover-prospective-accepted",
+  "existing_text_scope_preserved": "TEXT_READER_ONLY_NON_COVER_COMPONENTS"
+}

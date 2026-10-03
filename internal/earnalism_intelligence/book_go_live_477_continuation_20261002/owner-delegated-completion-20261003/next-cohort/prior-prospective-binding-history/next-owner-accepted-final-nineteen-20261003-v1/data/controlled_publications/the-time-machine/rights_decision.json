@@ -1,0 +1,50 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-the-time-machine-exact-reader-cover-prospective-accepted",
+  "edition_id": "the-time-machine",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "6b4a395159efeb7b3d86e35b04b6105f21a1113722604d6319d01270db3bca41",
+    "reader_manifest": "1874f35f864ccffa65a9d7e38312c3f84df7fd8880120db0ac4ead237d1d913a",
+    "source_evidence": "010c2fd7d0fa5ae1370f081876448c94a9bad177df7fe0b621b0f91c39af0cf5",
+    "approval_evidence": "c529d93f7e97765917608238149c2768857b7720ac648132013123ac9a740b55",
+    "checksum_manifest": "42611cc03dab2993b3da87da89aa6cbc7c576c71540feb03e74ed51eed5963b8",
+    "publication_manifest": "d4dac31f0eed98eed872fbb7d138743c989ff00c4e9c27544fd4fbbd377d4b19",
+    "cover_preparation": "3ab8dbef3293d9e97c344623653b6a9535d4ebd6f2337196e8552026e036a2fb",
+    "publication_authorization": "8894d7452aa94d17f9f561511fba91cc2ed5a18e4dee997ff2e5568b0fed1fab",
+    "cover_provenance": "0023ab9e6497aafa2266c54cf945e170348140d070bbcef3f55b482ca8346fe0",
+    "owner_artwork_declaration": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "acceptance_review_a": "69849aa5884020a53e87e902d3505d2624839e8dd37119d9b03d7df99948fe38",
+    "acceptance_review_b": "fa6aaff9100965882e389a042a8e81845423737348bbd410831c6954fda2998b"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T05:34:11.386246+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Exact India text/edition rights are preserved from the archived predecessor and unchanged source/chapter/license records. Ronik Basak directly provided the owner-held copyright and publication provenance for the exact owner-created cover components; two independent passing source/art preparations bind the reviewed derivatives and deliveries. Prospective automated acceptance supersedes earlier procedural cover deferral for these components only. No human approval, other source/edition rights, unknown original construction method, audio grant or production observation inferred.",
+  "evidence_sha256": [
+    "399587f82d95987bcc4dd010783a62e5e01f5e5bbad6a3c336b4fdac46e24538",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ddff4d02c636c57500215604f778bd3b8b9883d5ca9d5de89dc1480b29fa52c3",
+    "2892e919000e17c83e1dac51b30f4675db50536b644d7579fe8a89bb399a9bdc",
+    "b9e67357d69352f3e18b2ceb03d55609ffe59dfa48277ff9aff76dc2fa63d488",
+    "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "8894d7452aa94d17f9f561511fba91cc2ed5a18e4dee997ff2e5568b0fed1fab",
+    "0023ab9e6497aafa2266c54cf945e170348140d070bbcef3f55b482ca8346fe0",
+    "69849aa5884020a53e87e902d3505d2624839e8dd37119d9b03d7df99948fe38",
+    "fa6aaff9100965882e389a042a8e81845423737348bbd410831c6954fda2998b",
+    "7e6e03cfd9ebfddb26f0f275b69adb8c4222055a6b466c89cedc7d3173fdda12"
+  ],
+  "accepted_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+  "conditions_satisfied": true
+}

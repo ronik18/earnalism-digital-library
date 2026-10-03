@@ -1,0 +1,373 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "mrinalini",
+  "title": "মৃণালিনী",
+  "generated_at": "2026-10-03T04:56:37.110955+00:00",
+  "content": {
+    "source_hash": "9e04c5d5b16bbd623edac1de47cd0e61f561a820cd6d7200b23450117558ee80",
+    "content_hash": "390c5936e44b799952e1e84917bca07aea7183f96880e91a6b3fc74ec7fa3560",
+    "provenance_hash": "b05500820083927f8dba4600248b5e553d88ef9383d5e730e202903c31cf7de0",
+    "sanitized": true,
+    "chapter_count": 46,
+    "chapter_index_sha256": "283f387a691d2f3b34b3144913e48cd3f2e828eba7ef870cd832fede3909a60f",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Chapter 1. প্রথম খণ্ড / প্রথম পরিচ্ছেদ",
+        "word_count": 1168,
+        "sha256": "8be09dd930e4fb58cef1b49346d66ad1814924d6f31d2bd1f76df45951ee26c7"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "Chapter 2. প্রথম খণ্ড / দ্বিতীয় পরিচ্ছেদ",
+        "word_count": 830,
+        "sha256": "f8cb557225caf2ce72c61703bd8d4095279f75061127262649d16ef4ffb5de3f"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "Chapter 3. প্রথম খণ্ড / তৃতীয় পরিচ্ছেদ",
+        "word_count": 1365,
+        "sha256": "a88703c2534d2f4f1132584cc6a1568e7bddca6d42ba4dd53b6fd344f807f27c"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "Chapter 4. প্রথম খণ্ড / চতুর্থ পরিচ্ছেদ",
+        "word_count": 1101,
+        "sha256": "8d6361210b47146a525c6a27ace8089e843a3c9cc2d5ef664a03917c1ab81fd3"
+      },
+      {
+        "id": "chapter-005",
+        "order": 5,
+        "title": "Chapter 5. প্রথম খণ্ড / পঞ্চম পরিচ্ছেদ",
+        "word_count": 958,
+        "sha256": "61e7e111b4bf2855d99925fc22de0ab430eb6c59ec05e818890c13e74443a157"
+      },
+      {
+        "id": "chapter-006",
+        "order": 6,
+        "title": "Chapter 6. প্রথম খণ্ড / ষষ্ঠ পরিচ্ছেদ",
+        "word_count": 1196,
+        "sha256": "dd53ab972179af1e55ba124fa5550982a08efcdab5c3010bfa5bf513716fab5c"
+      },
+      {
+        "id": "chapter-007",
+        "order": 7,
+        "title": "Chapter 7. প্রথম খণ্ড / সপ্তম পরিচ্ছেদ",
+        "word_count": 763,
+        "sha256": "a698a85b29d5b706ef0e86c8652daaceb2989221b7eeaef38e25d6ccf43f6d6e"
+      },
+      {
+        "id": "chapter-008",
+        "order": 8,
+        "title": "Chapter 8. প্রথম খণ্ড / অষ্টম পরিচ্ছেদ",
+        "word_count": 577,
+        "sha256": "8972ef019fd52914d7afa14c9c796ddaca5c3962f3cfa5d64e6983c01ad1dfd5"
+      },
+      {
+        "id": "chapter-009",
+        "order": 9,
+        "title": "Chapter 9. দ্বিতীয় খণ্ড / প্রথম পরিচ্ছেদ",
+        "word_count": 743,
+        "sha256": "69580495958eb88767f7b5ba4c2014b72e1732224f2cafee200c4be4782dfcd5"
+      },
+      {
+        "id": "chapter-010",
+        "order": 10,
+        "title": "Chapter 10. দ্বিতীয় খণ্ড / দ্বিতীয় পরিচ্ছেদ",
+        "word_count": 626,
+        "sha256": "7a8e7600b03ef42044f4ba3b9d3d238618a8ec0c6f37e9312a5737bb9644f952"
+      },
+      {
+        "id": "chapter-011",
+        "order": 11,
+        "title": "Chapter 11. দ্বিতীয় খণ্ড / তৃতীয় পরিচ্ছেদ",
+        "word_count": 669,
+        "sha256": "fe2dd5c2ebf2002e1b9df8d0e6f80bf5ef3bedd23c80316eac2f3f58d8c000a1"
+      },
+      {
+        "id": "chapter-012",
+        "order": 12,
+        "title": "Chapter 12. দ্বিতীয় খণ্ড / চতুর্থ পরিচ্ছেদ",
+        "word_count": 433,
+        "sha256": "4bbcaa5961de436f8b828d2f8c18a4f6a2f9f2b6ea3d5a487f804fcd1f05fcc6"
+      },
+      {
+        "id": "chapter-013",
+        "order": 13,
+        "title": "Chapter 13. দ্বিতীয় খণ্ড / পঞ্চম পরিচ্ছেদ",
+        "word_count": 759,
+        "sha256": "68aad274a3843de03c936d1ff7b3cff4ab0188de6470876e28109b08d7a81220"
+      },
+      {
+        "id": "chapter-014",
+        "order": 14,
+        "title": "Chapter 14. দ্বিতীয় খণ্ড / ষষ্ঠ পরিচ্ছেদ",
+        "word_count": 1140,
+        "sha256": "31fb8d3e021f4dc02ac17aa04f89dd83c246ce975a152780c2bcc71d9a0239d4"
+      },
+      {
+        "id": "chapter-015",
+        "order": 15,
+        "title": "Chapter 15. দ্বিতীয় খণ্ড / সপ্তম পরিচ্ছেদ",
+        "word_count": 578,
+        "sha256": "a212be3e16c146f0f14f0f27d2d049591cd46692af7408794e28475e797b2174"
+      },
+      {
+        "id": "chapter-016",
+        "order": 16,
+        "title": "Chapter 16. দ্বিতীয় খণ্ড / অষ্টম পরিচ্ছেদ",
+        "word_count": 331,
+        "sha256": "cb04cfc9abe5ee2b199681d0542fd499fa559b89f61a6377c16b6f0a513ec068"
+      },
+      {
+        "id": "chapter-017",
+        "order": 17,
+        "title": "Chapter 17. দ্বিতীয় খণ্ড / নবম পরিচ্ছেদ",
+        "word_count": 720,
+        "sha256": "e3a363a41cffe6451c9626c74f8b2bd63b13763d671bb9982607f60cccb5cf72"
+      },
+      {
+        "id": "chapter-018",
+        "order": 18,
+        "title": "Chapter 18. দ্বিতীয় খণ্ড / দশম পরিচ্ছেদ",
+        "word_count": 302,
+        "sha256": "992738567b6c5ea18ed4a8aa682721314216b04f88189cb9a2a57ef465727e15"
+      },
+      {
+        "id": "chapter-019",
+        "order": 19,
+        "title": "Chapter 19. দ্বিতীয় খণ্ড / একাদশ পরিচ্ছেদ",
+        "word_count": 223,
+        "sha256": "7212731b04fc82a5cec913b23987bc8ff83e06c35de9c68cfdd94e43b019f61c"
+      },
+      {
+        "id": "chapter-020",
+        "order": 20,
+        "title": "Chapter 20. দ্বিতীয় খণ্ড / দ্বাদশ পরিচ্ছেদ",
+        "word_count": 497,
+        "sha256": "d01e73e4fb71319cd15c27fcea3d78d6beb6dc92f2718992a7b3902bd35c4167"
+      },
+      {
+        "id": "chapter-021",
+        "order": 21,
+        "title": "Chapter 21. তৃতীয় খণ্ড / প্রথম পরিচ্ছেদ",
+        "word_count": 557,
+        "sha256": "1d670878e0fdf17d2ce8de234af10572bd8a57b96dc81455bc9fbb24bd2f6a8a"
+      },
+      {
+        "id": "chapter-022",
+        "order": 22,
+        "title": "Chapter 22. তৃতীয় খণ্ড / দ্বিতীয় পরিচ্ছেদ",
+        "word_count": 306,
+        "sha256": "d9915c6d8cf7faca3dc299a97787851df731ee3896ba5281daab5ce2022dab96"
+      },
+      {
+        "id": "chapter-023",
+        "order": 23,
+        "title": "Chapter 23. তৃতীয় খণ্ড / তৃতীয় পরিচ্ছেদ",
+        "word_count": 581,
+        "sha256": "c133d91152483422f6ad3ff898cc438b16bdd32d3c77712206f6353c9879d850"
+      },
+      {
+        "id": "chapter-024",
+        "order": 24,
+        "title": "Chapter 24. তৃতীয় খণ্ড / চতুর্থ পরিচ্ছেদ",
+        "word_count": 467,
+        "sha256": "712c31d6d29e4111afa4f5dd7d30c5949cd71cd57d44c45eb03a05642d345b33"
+      },
+      {
+        "id": "chapter-025",
+        "order": 25,
+        "title": "Chapter 25. তৃতীয় খণ্ড / পঞ্চম পরিচ্ছেদ",
+        "word_count": 463,
+        "sha256": "c7167ef43e869b1a8532999ffd1fc4c309884b23b63e4bd698ac0cbfa74751af"
+      },
+      {
+        "id": "chapter-026",
+        "order": 26,
+        "title": "Chapter 26. তৃতীয় খণ্ড / ষষ্ঠ পরিচ্ছেদ",
+        "word_count": 1085,
+        "sha256": "30b72650b2ffb9bb4ed6e2b06748052cf51f897d44a23e3e7607c91ae2e97c25"
+      },
+      {
+        "id": "chapter-027",
+        "order": 27,
+        "title": "Chapter 27. তৃতীয় খণ্ড / সপ্তম পরিচ্ছেদ",
+        "word_count": 347,
+        "sha256": "6772fed3b81b71de0967429befb21dffca8ff0f397a7ac131fd1d4728615f752"
+      },
+      {
+        "id": "chapter-028",
+        "order": 28,
+        "title": "Chapter 28. তৃতীয় খণ্ড / অষ্টম পরিচ্ছেদ",
+        "word_count": 999,
+        "sha256": "f8175d60a298b31076f523398361e942f59c79362bb9c1836601e4d9d6dde503"
+      },
+      {
+        "id": "chapter-029",
+        "order": 29,
+        "title": "Chapter 29. তৃতীয় খণ্ড / নবম পরিচ্ছেদ",
+        "word_count": 1071,
+        "sha256": "bdbc786b1b10a20e47f66c5a81061dcc423a7ae75db58066ecb41896cf845da4"
+      },
+      {
+        "id": "chapter-030",
+        "order": 30,
+        "title": "Chapter 30. তৃতীয় খণ্ড / দশম পরিচ্ছেদ",
+        "word_count": 675,
+        "sha256": "36dfcef025be890a8721c08ec9bdccf0ba13781bb529a4269ce2e7bd9fb65a9e"
+      },
+      {
+        "id": "chapter-031",
+        "order": 31,
+        "title": "Chapter 31. চতুর্থ খণ্ড / প্রথম পরিচ্ছেদ",
+        "word_count": 383,
+        "sha256": "4e7ba92de02b289edd0d46a2d1bd1a1a4e04e7feea1cf1986240332e3bd8b003"
+      },
+      {
+        "id": "chapter-032",
+        "order": 32,
+        "title": "Chapter 32. চতুর্থ খণ্ড / দ্বিতীয় পরিচ্ছেদ",
+        "word_count": 389,
+        "sha256": "8e9dab1922b3c6fe587237cc988fb9326d35517dde71ab4ac01fd9f447455a3c"
+      },
+      {
+        "id": "chapter-033",
+        "order": 33,
+        "title": "Chapter 33. চতুর্থ খণ্ড / তৃতীয় পরিচ্ছেদ",
+        "word_count": 915,
+        "sha256": "4c0251629370a6347d24c38dd1d2c84ed7b30fadc4033d83e8b53ccae2af7c0f"
+      },
+      {
+        "id": "chapter-034",
+        "order": 34,
+        "title": "Chapter 34. চতুর্থ খণ্ড / চতুর্থ পরিচ্ছেদ",
+        "word_count": 544,
+        "sha256": "0266aa07e5bd4f311ed8126d363b7a51732a75f7776428e8a80ebfa534845454"
+      },
+      {
+        "id": "chapter-035",
+        "order": 35,
+        "title": "Chapter 35. চতুর্থ খণ্ড / পঞ্চম পরিচ্ছেদ",
+        "word_count": 578,
+        "sha256": "63dfa56410610337d014cdcbd15a789369dff2915c4da9f894ed49917f7ac0ef"
+      },
+      {
+        "id": "chapter-036",
+        "order": 36,
+        "title": "Chapter 36. চতুর্থ খণ্ড / ষষ্ঠ পরিচ্ছেদ",
+        "word_count": 180,
+        "sha256": "ad6b2321245c3d83ba7ef41c80f3e93d1f7e099f09eba696134c7d1fb67954b6"
+      },
+      {
+        "id": "chapter-037",
+        "order": 37,
+        "title": "Chapter 37. চতুর্থ খণ্ড / সপ্তম পরিচ্ছেদ",
+        "word_count": 976,
+        "sha256": "d2374d2da74251efaa2ac5b1e1fcc51292027d131deeec1f402dd15124315a7e"
+      },
+      {
+        "id": "chapter-038",
+        "order": 38,
+        "title": "Chapter 38. চতুর্থ খণ্ড / অষ্টম পরিচ্ছেদ",
+        "word_count": 429,
+        "sha256": "e4b6a11a6622a54864ed7323533474c20ddfa1246fbdcece33c2802d352fa845"
+      },
+      {
+        "id": "chapter-039",
+        "order": 39,
+        "title": "Chapter 39. চতুর্থ খণ্ড / নবম পরিচ্ছেদ",
+        "word_count": 277,
+        "sha256": "7ad5441eb8439feecd97ef5d6968c34dcb521ea40a5c5d6185afee4d8931d204"
+      },
+      {
+        "id": "chapter-040",
+        "order": 40,
+        "title": "Chapter 40. চতুর্থ খণ্ড / দশম পরিচ্ছেদ",
+        "word_count": 567,
+        "sha256": "96e586200967807b40059275c150b1b21236bbba1a0056bd5c6a5c61aebdd331"
+      },
+      {
+        "id": "chapter-041",
+        "order": 41,
+        "title": "Chapter 41. চতুর্থ খণ্ড / একাদশ পরিচ্ছেদ",
+        "word_count": 767,
+        "sha256": "13ae7550cd6a951b48ea7b9b96b3e4eed4dd1af27e2d6de51c57097d7c17c62b"
+      },
+      {
+        "id": "chapter-042",
+        "order": 42,
+        "title": "Chapter 42. চতুর্থ খণ্ড / দ্বাদশ পরিচ্ছেদ",
+        "word_count": 540,
+        "sha256": "b1e4c8251782867c772c88765317792f32009ccf3c6a0ffae4f4fadd7600308a"
+      },
+      {
+        "id": "chapter-043",
+        "order": 43,
+        "title": "Chapter 43. চতুর্থ খণ্ড / ত্রয়োদশ পরিচ্ছেদ",
+        "word_count": 339,
+        "sha256": "c8dc82fae8ad7f630d25daa9bad3075c1ed2869494be23bd1cb78416ba7ffb70"
+      },
+      {
+        "id": "chapter-044",
+        "order": 44,
+        "title": "Chapter 44. চতুর্থ খণ্ড / চতুর্দ্দশ পরিচ্ছেদ",
+        "word_count": 656,
+        "sha256": "f21eee949f571212b24abbb795385734313354bf945d641a8dd8a61238c68bf6"
+      },
+      {
+        "id": "chapter-045",
+        "order": 45,
+        "title": "Chapter 45. চতুর্থ খণ্ড / পঞ্চদশ পরিচ্ছেদ",
+        "word_count": 764,
+        "sha256": "5443ad7a705e7d1f8c0a89617ff26202644f48f8d404ea7ac483d161428689c2"
+      },
+      {
+        "id": "chapter-046",
+        "order": 46,
+        "title": "Chapter 46. চতুর্থ খণ্ড / পরিশিষ্ট",
+        "word_count": 395,
+        "sha256": "b82d6c43dbb0533e22a50c4d74e657c6acff53ff33b017730b43453fdd62d2ec"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "global",
+    "evidence_sha256": "d361d2a57e36d6cf70c84f1b5803a99306467116f44e200cfc16659e0145e94f"
+  },
+  "reader_release": {
+    "status": "READY_FOR_APPROVAL",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/mrinalini/mrinalini-front-77b2a78d.webp",
+    "blockers": [
+      "TWO_EXACT_COMPONENT_REVIEWS_AND_ACTUAL_PROSPECTIVE_ACCEPTANCE_REQUIRED"
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "license_notice": "5daf71034572bf90bf766d4c93d2632d518986f0cc96cd916f987ac0fe3ca3c9",
+    "source_evidence": "d361d2a57e36d6cf70c84f1b5803a99306467116f44e200cfc16659e0145e94f",
+    "reader_manifest": "b2510b44fa9ec57a7a7cc48be2482787ee4fe6cba0021ddd8a6cff71ef5275f7",
+    "publication_authorization": "fc2ce906bc89965081337b965ef3cbee4af6d288362f55d1d4c3cb7513571c73",
+    "approval_evidence": "9546dfd4b534e169157a43f2d7e4fc76640acd6287b942501d3cfe71ffe10d73",
+    "public_book": "20eaa83ebb9d5c09b0a79cd7c736134e232bb72d2d433c129b61dbf65a781c74",
+    "cover_provenance": "f0e0a6f1a6bf35d51674245b8d5af205d1b0a4c637059d4a4481c19c2fbf4c68"
+  },
+  "manifest_sha256": "6d9612b634972b6844154d49f044d4b08bea7fd4a37b91202b8427052952fdc6"
+}

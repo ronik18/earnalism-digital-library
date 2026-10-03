@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "sredni-vashtar",
+  "title": "Sredni Vashtar",
+  "generated_at": "2026-10-03T04:59:53.954767+00:00",
+  "content": {
+    "source_hash": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
+    "content_hash": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+    "provenance_hash": "8d472e6cdc272f1b341c183654a57eab65f521f9a26ed0bb3b30ee93a7354468",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "51c62b78889787d8f6e93517b6fa6db9330b0a786b2b0a61e533b4b323e45999",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Sredni Vashtar",
+        "word_count": 1787,
+        "sha256": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "0c969ac1e6e10fe522a86e819bce7187ac057dcf8d0dfd875cee73835c03255b",
+    "reader_manifest": "2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad",
+    "source_evidence": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
+    "approval_evidence": "13fc600ab1ec409f09c038785258a631cbb192873033c6de340d202ceb0ebfd2"
+  },
+  "manifest_sha256": "16bfa9f53ee8091b51099c22e9aeaa9a0368e91624bdee35b9e7f55fff0e8842"
+}

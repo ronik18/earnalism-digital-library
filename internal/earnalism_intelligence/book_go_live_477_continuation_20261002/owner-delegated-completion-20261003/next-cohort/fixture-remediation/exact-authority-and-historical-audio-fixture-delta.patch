@@ -1,0 +1,29 @@
+--- a/backend/tests/test_controlled_launch_parity.py
++++ b/backend/tests/test_controlled_launch_parity.py
+@@ -246,6 +246,13 @@
+             or (slug == "agentic-ai-with-python" and record["accepted_by"].startswith("Ronik Basak, direct owner release instruction;"))
+             or (slug in NEAR_READY_20261001_SLUGS and record["accepted_by"].startswith("Codex under Ronik Basak direct autonomous safe near-ready release instruction."))
+             or (
++                slug in REVIEWED_20261003_SLUGS
++                and record["accepted_by"].startswith((
++                    "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03;",
++                    "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03;",
++                ))
++            )
++            or (
+                 slug in REVIEWED_CAMPAIGN_SLUGS
+                 and record["accepted_by"].startswith((
+                     "Automated serialized integration controller under the product owner directive in issue #477 comment 5949652699",
+--- a/backend/tests/test_batch2_guarded_publications.py
++++ b/backend/tests/test_batch2_guarded_publications.py
+@@ -113,7 +113,9 @@
+     assert evidence["production_audio"]["content_type"] == "audio/mpeg"
+     assert evidence["browser"]["playback_advanced"] is True
+     publication = catalog_truth.read_json_file(HISTORICAL_SELFISH_GIANT / "publication_manifest.json")
+-    assert publication["audio_release"]["discovery_exposed"] is False
++    assert publication["audio_release"] == {
++        "status": "IN_PROGRESS", "exposed": False, "required_for_reader_release": False,
++    }
+ 
+ 
+ @pytest.mark.parametrize("slug", HISTORICAL_AUDIO_SLUGS)

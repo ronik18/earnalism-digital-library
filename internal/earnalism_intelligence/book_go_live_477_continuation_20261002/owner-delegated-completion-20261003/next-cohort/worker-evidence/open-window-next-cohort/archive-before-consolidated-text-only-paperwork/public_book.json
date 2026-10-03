@@ -1,0 +1,95 @@
+{
+  "about_author": "Saki (H.H. Munro, 1870–1916) was a British author of darkly comic and macabre short stories.",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "allowPublicReading": false,
+  "approved_to_publish": true,
+  "author": "Saki",
+  "backCoverImage": "https://theearnalism.com/assets/books/the-open-window/the-open-window-back-6c87ea0a.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-back-6c87ea0a.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-back-6c87ea0a.webp",
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "category_slug": "literary-fiction",
+  "chapters": [
+    {
+      "has_images": false,
+      "id": "chapter-001",
+      "image_count": 0,
+      "is_preview": true,
+      "language_hint": "en",
+      "order": 1,
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "reading_minutes": 6,
+      "title": "The Open Window",
+      "updated_at": "2026-07-03T20:07:49Z",
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "word_count": 1219
+    }
+  ],
+  "content_hash": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "coverImage": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-fd16c968.webp",
+  "cover_dimensions": {
+    "back": [
+      1600,
+      2400
+    ],
+    "front": [
+      1600,
+      2400
+    ]
+  },
+  "cover_image": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-fd16c968.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-fd16c968.webp",
+  "cover_semantic_match_score": 9.8,
+  "cover_status": "PENDING_EXACT_COMPONENT_REVIEW",
+  "cover_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-fd16c968.webp",
+  "created_at": "2026-07-03T20:07:49Z",
+  "description": "Vera, a composed teenager, spins an elaborate ghost story about her aunt's dead husband and brothers walking in through an open window — and when they actually appear, drives a nervous man fleeing into the countryside. Three paragraphs of pure, cruel genius.",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "5 min",
+  "formats": [
+    "Ebook"
+  ],
+  "id": "controlled-the-open-window",
+  "isLive": false,
+  "isPublic": false,
+  "is_published": false,
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "provenance_hash": "f0bf9362162e221f0aee69804a444f30366ea2d2c776a078e8d3226ba36d13e7",
+  "publicationStatus": "ready",
+  "publication_status": "READY_FOR_ACTIVATION_GLOBAL_GATE",
+  "qa_status": "QA_PASSED",
+  "readerStatus": "reader_ready",
+  "rights_basis": "Saki died 1916; first published 1911. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "short_description": "A self-possessed fifteen-year-old girl tells a nervous visitor a ghost story — and it works perfectly.",
+  "showInHomepage": false,
+  "showInPublicLibrary": false,
+  "slug": "the-open-window",
+  "source_hash": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+  "subtitle": "",
+  "title": "The Open Window",
+  "updated_at": "2026-07-19T10:15:00Z",
+  "verification_status": "approved",
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_assets": {},
+  "audiobook": {},
+  "publication_authorization_sha256": "b721690f38aedead88b16e6d989557c84571da8a9e4ec02cc549071a5ddbdc3e",
+  "cover_provenance_sha256": "9540748697d562d47c872ee30a8bf8a88dcd7f87ce1883b8e6d0233c012f2fad"
+}

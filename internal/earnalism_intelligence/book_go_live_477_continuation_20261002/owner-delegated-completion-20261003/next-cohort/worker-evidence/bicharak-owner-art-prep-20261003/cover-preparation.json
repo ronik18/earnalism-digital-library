@@ -1,0 +1,142 @@
+{
+  "schema": "earnalism.bicharak-owner-cover-bounded-copy-preparation.v1",
+  "slug": "book-5704b31005",
+  "metadata_binding": {
+    "title": "বিচারক",
+    "author": "রবীন্দ্রনাথ ঠাকুর"
+  },
+  "first_complete_source_paragraph": "অনেক অবস্থান্তরের পর অবশেষে গতযৌবনা ক্ষীরোদা যে পুরুষের আশ্রয় প্রাপ্ত হইয়াছিল, সেও যখন তাহাকে জীর্ণ বস্ত্রের ন্যায় পরিত্যাগ করিয়া গেল, তখন অন্নমুষ্টির জন্য দ্বিতীয় আশ্রয় অন্বেষণের চেষ্টা করিতে তাহার অত্যন্ত ধিক্কার বোধ হইল।",
+  "excerpt_source_snapshot_sha256": "f9569f74c51b89b6116867d0dac02049d4647573ae057de9e23b99aa22be9db3",
+  "method": "ONE combined precise-mask repair of false LIVE badge, coin-occluded title/author and clipped back copy/source furniture, replacing copy with entire actual first source paragraph; licensed repository Noto + RAQM. Original artwork remains pixel-identical outside masks. Original creation method UNKNOWN; owner provenance held under actual direct directive.",
+  "one_bounded_remediation_attempt": 1,
+  "fonts": [
+    {
+      "path": "frontend/src/assets/fonts/noto-serif-bengali-600.ttf",
+      "sha256": "001257778d27c2763978b2361c6999d7d1b736f943abc2bdeb4fa1a3e79b2d38",
+      "embedded_copyright_license": [
+        {
+          "name_id": 0,
+          "value": "Copyright 2025 The Noto Project Authors (https://github.com/notofonts/bengali)"
+        },
+        {
+          "name_id": 14,
+          "value": "https://openfontlicense.org"
+        }
+      ],
+      "required_codepoints_pass": true
+    },
+    {
+      "path": "frontend/src/assets/fonts/noto-sans-bengali-500.ttf",
+      "sha256": "1a886eb72d67c7e5de47db26891b8cdbc5619f2442c656450f14eee6329f10c9",
+      "embedded_copyright_license": [
+        {
+          "name_id": 0,
+          "value": "Copyright 2025 The Noto Project Authors (https://github.com/notofonts/bengali)"
+        },
+        {
+          "name_id": 14,
+          "value": "https://openfontlicense.org"
+        }
+      ],
+      "required_codepoints_pass": true
+    }
+  ],
+  "raqm_shaping_pass": true,
+  "assets": {
+    "front": {
+      "original": {
+        "path": "/workspace/scratch/181ef0a25f05/bicharak-owner-art-prep-20261003/recovered/front.png",
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275451/earnalism/covers/front/book-5704b31005_front_1600x2400.png",
+        "sha256": "a914d173de6f5cd9486fd91a7b69188d156ac7623ebc9f8f89173acd1c48d104",
+        "bytes": 181935,
+        "dimensions": [
+          1600,
+          2400
+        ],
+        "http_receipt_sha256": "e42e974980f92a81a6c19e40ffd8c21a49331861da85a4b8afc0c662c7260bec"
+      },
+      "prepared_png": {
+        "path": "/workspace/scratch/181ef0a25f05/bicharak-owner-art-prep-20261003/front-prepared.png",
+        "sha256": "c58421cc10daab55ce40478452acbd0c8c0977761753a6d01c63db2b67b56b21",
+        "dimensions": [
+          1600,
+          2400
+        ],
+        "bytes": 114305
+      },
+      "delivery": {
+        "path": "/workspace/scratch/181ef0a25f05/bicharak-owner-art-prep-20261003/front-delivery.webp",
+        "sha256": "8f64cc7c2a33820dfbfe55a635f70a8a0fd19959c71e3290bdeeadd45c2531a5",
+        "dimensions": [
+          800,
+          1200
+        ],
+        "bytes": 23994,
+        "budget": 80000,
+        "recipe": "RGB; Lanczos800x1200; WebPquality72method6"
+      },
+      "repair_zones": [
+        [
+          470,
+          750,
+          1130,
+          1100
+        ],
+        [
+          225,
+          1880,
+          1375,
+          2050
+        ]
+      ],
+      "outside_repair_zones_exact_rgb_identity": true,
+      "body_excerpt": null
+    },
+    "back": {
+      "original": {
+        "path": "/workspace/scratch/181ef0a25f05/bicharak-owner-art-prep-20261003/recovered/back.png",
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275453/earnalism/covers/back/book-5704b31005_back_1600x2400.png",
+        "sha256": "a99c6c0e27712090637651204cfb0aa5809442ddbc3b5e99da35828a34c82a08",
+        "bytes": 412643,
+        "dimensions": [
+          1600,
+          2400
+        ],
+        "http_receipt_sha256": "960881808cc4e43e9f9ace06755fde97ed7bd548926a51dae4f28ccdcae90d3e"
+      },
+      "prepared_png": {
+        "path": "/workspace/scratch/181ef0a25f05/bicharak-owner-art-prep-20261003/back-prepared.png",
+        "sha256": "f470d039657c0f6068ce708f2e1380ccdba297132434ac0c5c1434c488456e7e",
+        "dimensions": [
+          1600,
+          2400
+        ],
+        "bytes": 203595
+      },
+      "delivery": {
+        "path": "/workspace/scratch/181ef0a25f05/bicharak-owner-art-prep-20261003/back-delivery.webp",
+        "sha256": "4e0a187bd92e75d5b4fb97a670516bacc6183862672090f03ed5dce9547c5709",
+        "dimensions": [
+          800,
+          1200
+        ],
+        "bytes": 33830,
+        "budget": 180000,
+        "recipe": "RGB; Lanczos800x1200; WebPquality72method6"
+      },
+      "repair_zones": [
+        [
+          240,
+          410,
+          1380,
+          1585
+        ]
+      ],
+      "outside_repair_zones_exact_rgb_identity": true,
+      "body_excerpt": "অনেক অবস্থান্তরের পর অবশেষে গতযৌবনা ক্ষীরোদা যে পুরুষের আশ্রয় প্রাপ্ত হইয়াছিল, সেও যখন তাহাকে জীর্ণ বস্ত্রের ন্যায় পরিত্যাগ করিয়া গেল, তখন অন্নমুষ্টির জন্য দ্বিতীয় আশ্রয় অন্বেষণের চেষ্টা করিতে তাহার অত্যন্ত ধিক্কার বোধ হইল।"
+    }
+  },
+  "renderer_sha256": "5719b06dca0a667eae87452d332a9f3c7be99b622678bfdfc2b4b171cb8de12c",
+  "paid_generation_calls": 0,
+  "approval_or_activation_claim": false
+}

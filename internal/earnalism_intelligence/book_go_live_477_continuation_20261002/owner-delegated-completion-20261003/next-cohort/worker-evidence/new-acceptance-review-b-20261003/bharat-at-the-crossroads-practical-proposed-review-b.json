@@ -1,0 +1,81 @@
+{
+  "slug": "bharat-at-the-crossroads",
+  "reviewer": "Independent Codex reviewer B",
+  "inventory": {
+    "approval_evidence.json": "701b2d1d0c779b57fe5a23e4610d23ec9a3586b5959848db3e5b8936144bfa75",
+    "chapters/chapter-001.json": "fdfa8aee8c648f05ff1165e03d42c44c46324ad1e531e2c29790a6c02c700f02",
+    "checksum_manifest.json": "b0b595485b4a32cb53a300576e87e0c0672b31f896e4335713fb1d8ae7937915",
+    "cover_delivery_derivation.json": "8aba3337c8140ddcb424fea5bc3b196199c555888e9c4f455c9b605e5b3cd0ed",
+    "cover_provenance.json": "9d44371e25509308c9d08466e1cf8c07c6f2d8dcfd3e0ce63b273f12bcada205",
+    "covers/back.png": "2e7564a64bb215397374a734e66e023010c22cdead23d3cb812ded6a54bc7665",
+    "covers/front.png": "674c1aee2b6c1a7b25a5b28cd7e4737787153b8f0f4d8e6c8f7ee83a92a28c05",
+    "highlight_sync.json": "800de1dc55c5fa17b5d3810f91650935f235bc65891f2f85acf4731e0c5fa0ab",
+    "public_book.json": "b9692c348f3e9d2323c27b6616010c17ca55473daabad92da4ade1da6fc2eb42",
+    "publication_authorization.json": "ef67bcf8019f04b2c78b5315d758aa42df3dd438297c884a9056d5d08a26b421",
+    "publication_manifest.json": "b2b1865bb24bc5d781506a712d26e897bb00759e1019183e970fdfc3154de556",
+    "reader_manifest.json": "7a73f6ebbaafec41301aa231c8f4d057d39892e6d2ffb3017941914809e47668",
+    "rights_decision.json": "e70916c8ff0c7b55c94325851450fdad70318cc22d9ebf3951083fec8fb11f9a",
+    "source_evidence.json": "52c92e6c6325c608bceec71928da428ac67be2b9d17c2c01ffc93c311fdd8e36",
+    "source_integrity_validation.json": "01c2fb4ab9c360ced67e4b7a899d06995e7553ad8696fc5b9f1926b201b821ee"
+  },
+  "checksums": 12,
+  "components": 12,
+  "source_unchanged": [
+    "source_evidence.json",
+    "highlight_sync.json",
+    "chapters/chapter-001.json"
+  ],
+  "audio_claims": [
+    [
+      "reader_manifest.json.audiobook.url",
+      "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks-prod-v2-236e72b043e2/earnalism/audiobooks/en/bharat-at-the-crossroads/bharat-at-the-crossroads-bm-george-v1.mp3"
+    ],
+    [
+      "reader_manifest.json.audiobook.assets.mp3",
+      "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks-prod-v2-236e72b043e2/earnalism/audiobooks/en/bharat-at-the-crossroads/bharat-at-the-crossroads-bm-george-v1.mp3"
+    ],
+    [
+      "approval_evidence.json.manual_listening_approval",
+      true
+    ]
+  ],
+  "source_whole_work_complete": "PASS_ENTIRE_PROVIDED_MANUSCRIPT",
+  "source_sha256": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+  "source_proof_sha256": "01c2fb4ab9c360ced67e4b7a899d06995e7553ad8696fc5b9f1926b201b821ee",
+  "chapter_count": 1,
+  "source_gaps_after_first": [],
+  "source_prefix_excerpt": "",
+  "source_tail_excerpt": "",
+  "rights_basis_exact_prior": "First-party original manuscript permission under the actual owner autonomous text-clearance delegation; no public-domain/death/publication-expiry claim. Exact original source/content hash reproduced; cover display and audio uses excluded, no production registry or release activation.",
+  "art_hashes": [
+    {
+      "side": "front",
+      "original": "2a517ab7b0f1c4d05b44c037fcb6063903b59f03632e2829699dee57dfacfcb0",
+      "overlay": "674c1aee2b6c1a7b25a5b28cd7e4737787153b8f0f4d8e6c8f7ee83a92a28c05",
+      "delivery": "5d5445f1d88d0ba092dbc363621eaedfcea8a9356fb22481a9c59fe455830d4d",
+      "delivery_bytes": 77492,
+      "outside_precise_masks_exact": true
+    },
+    {
+      "side": "back",
+      "original": "ffd089b16f31ad5145ae98e5c712667b921d71d00901a4a168fb8c2811acf3c7",
+      "overlay": "2e7564a64bb215397374a734e66e023010c22cdead23d3cb812ded6a54bc7665",
+      "delivery": "cb46a1b7acbdce0d585fc98d19554e69bba4525410b9f678cfd38fbf21aa420f",
+      "delivery_bytes": 56054,
+      "outside_precise_masks_exact": true
+    }
+  ],
+  "visual_delivery": "TERMINAL_HOLD_CLIPPED_SUBTITLE",
+  "binding_disposition": "HOLD_EFFECTIVE_AUDIO_URL_AND_LISTENING_APPROVAL_REQUIRE_ARCHIVE_AND_NORMALIZATION",
+  "substantive_blocker": "Title overlay clips original subtitle in front PNG and delivered WebP; first bounded repair exhausted. Exclude active sprint, preserve all original and proposal/source/decision versions.",
+  "prospective_acceptance_by_root_still_required": true,
+  "canonical_mutations": false,
+  "production_observed": false,
+  "no_new_GET_or_asset_render": true,
+  "reviewed_at": "2026-10-03T05:25:11.834860+00:00",
+  "actual_font_bytes_verified": {
+    "path": "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
+    "sha256": "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab"
+  },
+  "font_license": "Exact Bitstream Vera/DejaVu commercial raster licence bytes independently read and hashed; no redistributed font binary or inferred original type creation."
+}

@@ -1,0 +1,14 @@
+{
+  "slug": "the-science-of-getting-rich",
+  "approved_to_publish": false,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "READY_FOR_APPROVAL",
+  "approval_scope": "historical_admin_import_reconstruction_superseded",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "historical_approval_superseded": true,
+  "reader_public_release": "READER_APPROVAL_REQUIRED"
+}

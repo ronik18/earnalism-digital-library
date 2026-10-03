@@ -1,0 +1,18 @@
+{
+  "slug": "the-time-machine",
+  "requested_url": "https://www.gutenberg.org/cache/epub/35/pg35.txt",
+  "expected_sha256": "2892e919000e17c83e1dac51b30f4675db50536b644d7579fe8a89bb399a9bdc",
+  "attempt": 1,
+  "accessed_at": "2026-10-03T05:21:27.351284+00:00",
+  "resolved_url": "https://www.gutenberg.org/cache/epub/35/pg35.txt",
+  "http_status": 200,
+  "response_headers": {
+    "last-modified": "Thu, 01 Oct 2026 07:41:17 GMT",
+    "content-length": "204384",
+    "content-type": "text/plain; charset=utf-8"
+  },
+  "actual_sha256": "2892e919000e17c83e1dac51b30f4675db50536b644d7579fe8a89bb399a9bdc",
+  "bytes": 204384,
+  "expected_hash_pass": true,
+  "local_path": "/workspace/scratch/181ef0a25f05/new-acceptance-review-a/classics-primary-recovery-v1/the-time-machine-official-source.txt"
+}

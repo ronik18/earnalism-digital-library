@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-selfish-giant",
+  "title": "The Selfish Giant",
+  "generated_at": "2026-10-03T04:59:53.954767+00:00",
+  "content": {
+    "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+    "content_hash": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+    "provenance_hash": "1e08883215a0343a9dd6f8c53242fd4af41d62450aa24e424712188e8d79af16",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "df819243768475866804306135ce3f50b793fdc8e66012d6e8c8fb0db1e02db0",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Selfish Giant",
+        "word_count": 1652,
+        "sha256": "12c1db2943a0b57aea333ed1870472ea8332d457093d4255185385a7a157e3b1"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "4dc3571cb789c86d95831b13bf4368112840b09ac14779774280864931c218ab",
+    "reader_manifest": "d5ce7da734364efdd9a2bd6eace1ee2df66bcfa0dcf7ea4e99d49502b330fc9c",
+    "source_evidence": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d",
+    "approval_evidence": "1f7e2a15ef74e5f21cb781b90e841fa7a4bde656fe9676fa53ab24959105de1e"
+  },
+  "manifest_sha256": "f575360768c5433d4045992e64484c8c572d446247f7754c87e6cf9b432fa928"
+}

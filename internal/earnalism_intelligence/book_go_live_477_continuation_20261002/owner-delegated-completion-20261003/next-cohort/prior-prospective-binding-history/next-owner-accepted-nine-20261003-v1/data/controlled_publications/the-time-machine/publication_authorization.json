@@ -1,0 +1,45 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "the-time-machine",
+  "edition": "Project Gutenberg #35; The Time Machine exact canonical source, underlying lifetime publication 1895; complete selected author text, no translation or independently authored artwork/editorial material imported",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_CATALOG_METADATA_AND_EXACT_COVER_DISPLAY",
+  "source_sha256": "2892e919000e17c83e1dac51b30f4675db50536b644d7579fe8a89bb399a9bdc",
+  "content_sha256": "b9e67357d69352f3e18b2ceb03d55609ffe59dfa48277ff9aff76dc2fa63d488",
+  "chapter_sha256": {
+    "chapter-001": "ff1fa7efcb35d79e41b83f66ff52d18736e3af4d00b52def6588a9faf78ed47d",
+    "chapter-002": "2113d8ad7b3091c44659f4a67560f14adcba33028ddf8bd7df344363deb61ca8",
+    "chapter-003": "06708012234cd4056469952cb250c8b5cab49f6759656c5304e8dc2821e0b479",
+    "chapter-004": "40d5a68212994d78f866f8b1ddc9266d1b9aad57f596c5dda5becac9cd2ccdba",
+    "chapter-005": "88a3a5ebae5d264535ff7fa49c6707d234d66a737b22703ee2fd74682edc7a87",
+    "chapter-006": "8d1ffca02a1cf9fd602ee6f563b3db38e8e743816700ed9fe8c0aa5b5888cba4",
+    "chapter-007": "45aca23365620eed577a80558486c8902d5161f8e54f5072fe1299bb8c6461a2",
+    "chapter-008": "12e394d0a46743b0ef2a024c53809a9e5128220d572a48ab3320ebd23d642c86",
+    "chapter-009": "9ee82556ec8b270d28af137bb778bf269ef32233e4ac57ab5db5bd9519b77ea1",
+    "chapter-010": "1aa14457387c8c72b9fba2a2b56a43fa639b195edcd2e531f837c3da211dfe19",
+    "chapter-011": "32a1cd21290ec3f121808cda82401d9a1cb10434dbc307e553df849ff8cb90b8",
+    "chapter-012": "e4e0daa54b6e57949ea5750924fce318b38bb41867f0216c13b385148052839c",
+    "chapter-013": "69fe0c7dfb3fcb54646c88a6ed43ec178622a79958c691ae748637d4c3aef520",
+    "chapter-014": "4c6beb9bf62d2ed7670c5ed43c614b2156eecfe01be11d9782505ca212cdd97f",
+    "chapter-015": "3a68c98a2f07704b6ee6b012a0ff7dda81b534c93e9cec82017ff27ae5fa44a7",
+    "chapter-016": "5cb2fa2a0bf3b72f336a6c5d31c05879479a1fa936926eca1ab7d2c78be3a555",
+    "chapter-017": "ef675e8a4077b5e93c07f9e71102cf66ff51711a28be1ab22fef05bc1f78782b"
+  },
+  "cover_provenance_sha256": "59ff749778fa245635ca725f1fbc47d3a4571deccc69fb6fe957d5d4aeaa0005",
+  "cover_status": "EXACT_OWNER_PROVIDED_REVIEWED_ARTWORK_ACCEPTED_PRODUCTION_UNOBSERVED",
+  "authorized_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+  "verified_at": "2026-10-03T05:34:11.386246+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Two passing exact source/art preparations and actual prospective owner-delegated acceptance. Final accepted bindings, serialized selection, protected normal checks, merge, deployment/canary and truthful readback remain required.",
+  "not_authorized": [
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation bypass"
+  ],
+  "rights_decision_id": "india-20261003-the-time-machine-exact-reader-cover-prospective-accepted"
+}

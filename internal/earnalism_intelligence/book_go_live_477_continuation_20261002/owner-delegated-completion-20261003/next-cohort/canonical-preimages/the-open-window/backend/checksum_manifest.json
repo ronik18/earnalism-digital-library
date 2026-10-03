@@ -1,0 +1,58 @@
+{
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "d2bef9bea76efe3efbfe01aeeea762ee83f7ec2bf82de388b62c2650143a80db"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "d61b486956b8787cc7d40bce6678109cc557949b7af53b91b8f8a04a4595831c"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "8cc8c7fcfd2590e0d85ec3228af6cf4d4508ab59b357069884000ff915887b8e"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "578b4307d3c68ec69fac91bcb795f1c55677ca8a3532aafe5b2472b204e27142"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "09779a6b5c80eccdea6783118cbc43c6a58bedb319353ff8b68fb43c3fdaf0d6"
+    }
+  ],
+  "generated_at": "2026-07-30T04:22:17Z",
+  "slug": "the-open-window",
+  "uploaded_artifacts": [
+    {
+      "artifact": "mp3",
+      "sha256": "b23e6720a2434c5a90d2437abf630cf68b6cb4cd7305a827a0d88fe5e586d438",
+      "size_bytes": 6283053,
+      "url": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_mp3_b23e6720a243.mp3"
+    },
+    {
+      "artifact": "timestamps",
+      "sha256": "a3716705ce518cad513106a4bad9b48630310fed1df8a505e9615afc7ced606b",
+      "size_bytes": 39499,
+      "url": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_timestamps_a3716705ce51.json"
+    },
+    {
+      "artifact": "vtt",
+      "sha256": "3302e9a0685fbfcdf7431897776e60d037ba4f6046bae4e94adf463d493e5777",
+      "size_bytes": 8024,
+      "url": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_vtt_3302e9a0685f.vtt"
+    },
+    {
+      "artifact": "chapters",
+      "sha256": "e2a8ccb9e26ce52c9a665ffa2bad6b92a1bf70db46a5a71d1098ed680b599d9f",
+      "size_bytes": 253,
+      "url": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_chapters_e2a8ccb9e26c.json"
+    },
+    {
+      "artifact": "meta",
+      "sha256": "cf7500d033a2d15a022c8a3837450252e3e404ccbbe3ff282c87c4f9322366e7",
+      "size_bytes": 1352,
+      "url": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_meta_cf7500d033a2.json"
+    }
+  ]
+}

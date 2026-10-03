@@ -1,0 +1,166 @@
+{
+  "slug": "the-secret-garden",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "8a1e817c58cd97ab437575a480c0b6cb601bd52a37e4b08f7ad96c7f44e3fb1a"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "7fb3849e44507f24ac5aa4e812280874910aaa780693a337995daf9572fc64cb"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "190fa7d43447be6b70918a09e483b324d1f9648bfdde1e67031a76ece3d0a590"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "92e02d764e8e323ff5a086ea3ec0cd81b83e7afc11a98fbde95d3b1047068498"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "4f453b856b158c08983f8a612e51dd1ffc54d2f353dee8dd9657b60b9a172b7d"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "8e7e9574ea980788ba1be2d224ac2a14101947ab7f05dcf54542a262050ddd1d"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "cc0301e02df6350519e4469a27b1d2ab5d63696dc772e0299eb66d9bc1777578"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "11bec6f67c7e2641d4fd56457f14d61d8907e923bed62c52ded887e8d1c80766"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "0a3cee4ef1c6044318c351bb6546f1b687ba829cdd46572f145db4523f564349"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "138b601bba02ce5eb4c1dbcf9ea37aaa7bd945524a006e47561e31d8276f1519"
+    },
+    {
+      "file": "chapters/chapter-010.json",
+      "sha256": "496c1bc62b04c3e0124707084a41f88f6dbe790eb4d4da4ce9b3751d95de85ef"
+    },
+    {
+      "file": "chapters/chapter-011.json",
+      "sha256": "21d2470899a64725eddde1a994a6e172a89a1f9711b6843256f9db209da7da45"
+    },
+    {
+      "file": "chapters/chapter-012.json",
+      "sha256": "1cc792f90aac0974337125ece99ebac8f66cae2719e0edd498a480bda86b7b6a"
+    },
+    {
+      "file": "chapters/chapter-013.json",
+      "sha256": "8a411c9b5015d1366da51d28ff7c614ed88894f87d2370a7736a26bbf4f28575"
+    },
+    {
+      "file": "chapters/chapter-014.json",
+      "sha256": "b1c40669588e163f3b65e45984170e7b312e9dc0746cc2aaf4333d2820afffe4"
+    },
+    {
+      "file": "chapters/chapter-015.json",
+      "sha256": "ecb72f77413b6a6622b1433eb2bbda5c41e8b23541a4327a76cccc21b112e284"
+    },
+    {
+      "file": "chapters/chapter-016.json",
+      "sha256": "866aa3646fde6348565eee97bb70d7f2e31310aec5f88b0b1f7498e208d63f93"
+    },
+    {
+      "file": "chapters/chapter-017.json",
+      "sha256": "1f710dab7e1345810dc00ce734cbc6e274cf8071fd0d28494be29643d6b023dc"
+    },
+    {
+      "file": "chapters/chapter-018.json",
+      "sha256": "f520e12821a24fd0ab2a27eff33381d8a810a5292df9dd13484ad8f00a29d3a6"
+    },
+    {
+      "file": "chapters/chapter-019.json",
+      "sha256": "c5dc46261eaa745adf5a507bc6d41a3886f00f4e473b7c26d823bd3630d9b565"
+    },
+    {
+      "file": "chapters/chapter-020.json",
+      "sha256": "f669f89aa8c8f31eb6de6ce7cdc5a66544a60d4c939892a0137b172d6143d657"
+    },
+    {
+      "file": "chapters/chapter-021.json",
+      "sha256": "4ef9b1fa984ec925e121bdc847655c64fa554a32e49bbb7cdbcacc3b0984f9fe"
+    },
+    {
+      "file": "chapters/chapter-022.json",
+      "sha256": "24bd128009b25400f60e4fc99dd3854215836782f56fcb0a4fe43a18befc339f"
+    },
+    {
+      "file": "chapters/chapter-023.json",
+      "sha256": "ea2026c2590be6092f4efae2e6c25cd1f73ccf3d2296a240352c7acaac75f1e8"
+    },
+    {
+      "file": "chapters/chapter-024.json",
+      "sha256": "df1b1ca2935e40a6941ff2c4a438fa0755430a55e19f351c4fdf38fdb8413cde"
+    },
+    {
+      "file": "chapters/chapter-025.json",
+      "sha256": "6d08bbca9aa723d62bf4ab8053208791c50332bab44eb0c633dd62fa6721711c"
+    },
+    {
+      "file": "chapters/chapter-026.json",
+      "sha256": "7393d75dc511f932199b651bf168b76afe4ed236873ab4a6fe73db860cd7bf67"
+    },
+    {
+      "file": "chapters/chapter-027.json",
+      "sha256": "62850c1568cba7dbf02f8bb29cb56bee6ccefe6335c5bf0099e6c603314f8ffe"
+    },
+    {
+      "file": "cover_preparation.json",
+      "sha256": "e3847d23c1309e057d40f6373aa6cbaa581985953ffcaea094f0b8dac6a4266b"
+    },
+    {
+      "file": "covers/original-back.png",
+      "sha256": "dedb7dcca9cef92470b93a54b9e46f92b68c48e901a7523bec7fe71bbc43f396"
+    },
+    {
+      "file": "covers/original-front.png",
+      "sha256": "39799997d58307c85b83908d0f5121e9b67e496158ae8c77eef5402e6e20b577"
+    },
+    {
+      "file": "covers/the-secret-garden-back-dedb7dcc.webp",
+      "sha256": "be310c30275d7fc20d2f893032d9373fed1912146d4604c6e4b0fb7593820a27"
+    },
+    {
+      "file": "covers/the-secret-garden-back-deterministic.png",
+      "sha256": "710466837e4bd8163105f79325cc844f095e7099de401d95b465da07b628bbf2"
+    },
+    {
+      "file": "covers/the-secret-garden-front-39799997.webp",
+      "sha256": "06a6366d1dace4db8c21ab716667d5650ac0a6143758ed08024af5b7d3aa0bc5"
+    },
+    {
+      "file": "covers/the-secret-garden-front-deterministic.png",
+      "sha256": "108a7bcd15bf6a4f7a622f262465b0bc54584c2f2a81cb768d22c68bb9fce8ff"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "873b732ab6749c7dd08f15496a9266f2de5800bccdafc65945bb7e72f440d963"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "04e173ef43aa236ea34966cea549c4cad73bbec8c25c9d7757d0afb43f36fb58"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "4afc6cf280803d9afe193224eae2bb1bcabdad44226a0c8a33b4a52ecaf59ed5"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "75d9899ba4ecf348e9bc75da118a4b0ac3aa9cb1e595e8598e3541f9154dff4f"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "d4fba2e016dc99ebbab2950c7f63186ec154e408da4d4acb09a82fa8ef959852"
+    }
+  ]
+}
