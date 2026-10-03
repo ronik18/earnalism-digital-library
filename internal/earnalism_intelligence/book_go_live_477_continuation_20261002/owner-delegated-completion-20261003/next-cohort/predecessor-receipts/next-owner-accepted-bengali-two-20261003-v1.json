@@ -1,0 +1,97 @@
+{
+  "schema": "earnalism.prospective-owner-provided-next-cohort.v1",
+  "actual_acceptance_at": "2026-10-03T05:42:49.399949+00:00",
+  "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+  "base_main": "0fee65668f94284d180065d0fe8b38face924498",
+  "owner_declaration_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+  "canonical_mutations": 0,
+  "production_observed": false,
+  "audio_exposed": false,
+  "global_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK",
+  "cohort": [
+    {
+      "slug": "bn-066",
+      "decision_id": "india-20261003-bn-066-exact-reader-cover-prospective-accepted",
+      "canonical_record_sha256": "4cd4c5198b8bb767186c6eb7d9485116fd56e7802b1715434dd8d391c3877930",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/bn-066/bn-066-front-3a9f74e8.webp",
+          "sha256": "3a9f74e8c01e9832259dc0d6afa9e5b120235feab79fa1bf27029654679cc1dd",
+          "bytes": 57098,
+          "dimensions": [
+            450,
+            675
+          ],
+          "url": "https://theearnalism.com/assets/books/bn-066/bn-066-front-3a9f74e8.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/bn-066/bn-066-back-aa31dbe3.webp",
+          "sha256": "aa31dbe34c7e4e89b9a1bba4e6aa00c0d4e0cd9832bf1dd58179385181416dd3",
+          "bytes": 45348,
+          "dimensions": [
+            450,
+            675
+          ],
+          "url": "https://theearnalism.com/assets/books/bn-066/bn-066-back-aa31dbe3.webp"
+        }
+      },
+      "reviews": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "483b265cd1414035ccb47fa8d1a8bc9fd3f4be86cfa3276468426c2f32c97fcc"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "bf11f1e1e5f87d56f8456c46ad397cddeff8de411742cffb579bd8e433aa821b"
+        }
+      },
+      "publication_authorization_sha256": "191d8ecb99e4d63c86aa9ce519f03d3e2158fa93f9dcadf158b34a7f6bbaed14",
+      "prior_text_rights_basis_preserved": "Exact Anandamath second edition1290/1883, Bankim Chandra Chattopadhyay; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1894; India Section22 literary term expired end1954. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held. Proposed exact owner cover mask/typeset derivatives; fresh2 passing independent reviews and actual automated acceptance remain required.",
+      "disposition": "READY_BEHIND_NAMED_GLOBAL_GATE",
+      "source_and_chapters": "BYTE_IDENTICAL_TO_REVIEWED_PROPOSAL",
+      "production_observed": false
+    },
+    {
+      "slug": "lokrahasya",
+      "decision_id": "india-20261003-lokrahasya-exact-reader-cover-prospective-accepted",
+      "canonical_record_sha256": "46e81550ee8e9f3afd2ee1c9a147348e12988d73c4011b86e6a94eea1688cc5a",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/lokrahasya/lokrahasya-front-ed95a2ef.webp",
+          "sha256": "ed95a2efcbc009bc6a4b7d44d7d5f88b9b555be43be933628fc08ebecf23d0be",
+          "bytes": 56266,
+          "dimensions": [
+            450,
+            675
+          ],
+          "url": "https://theearnalism.com/assets/books/lokrahasya/lokrahasya-front-ed95a2ef.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/lokrahasya/lokrahasya-back-c62c63ed.webp",
+          "sha256": "c62c63ed14ebf54dbf15542840ecc0066a8821ce3f20d54a10484f305ffe30ff",
+          "bytes": 46200,
+          "dimensions": [
+            450,
+            675
+          ],
+          "url": "https://theearnalism.com/assets/books/lokrahasya/lokrahasya-back-c62c63ed.webp"
+        }
+      },
+      "reviews": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "833c60d7852d3818a325d79469e9239da9bf2ec261f197c813aeb7986b9ab595"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "681cdc4c5511d271cb7921893ea9009919dae686f138a001643d934981dd20d3"
+        }
+      },
+      "publication_authorization_sha256": "1d63c4e32e3e024337157eb456bad241b8a81c927f2eb033b672d7b6beb40d2c",
+      "prior_text_rights_basis_preserved": "Exact Lokrahasya1939 centenary edition edited Brajendra Nath Bandyopadhyay and Sajanikanta Das; separately authored foreword excluded; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1962; India Section22 literary term expired end2022. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held. Proposed exact owner cover mask/typeset derivatives; fresh2 passing independent reviews and actual automated acceptance remain required.",
+      "disposition": "READY_BEHIND_NAMED_GLOBAL_GATE",
+      "source_and_chapters": "BYTE_IDENTICAL_TO_REVIEWED_PROPOSAL",
+      "production_observed": false
+    }
+  ]
+}

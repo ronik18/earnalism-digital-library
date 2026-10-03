@@ -1,0 +1,1014 @@
+{
+  "reviewer": "Independent Codex reviewer B",
+  "reviewed_at": "2026-10-03T06:22:14.905491+00:00",
+  "git_tree": "e68aee5302c817525b178bd419ede862888da54e",
+  "source_main": "0fee65668f94284d180065d0fe8b38face924498",
+  "staged_path_count": 4777,
+  "disposition": "PASS_EXACT_INTEGRATED_52_TITLE_RELEASE_CANDIDATE_NOT_DEPLOYED",
+  "reused_accepted_stage_review_sha256": "95c3aade0e618daaf2ced00ad48639db35173755a17c43069a817ee763b0c116",
+  "old33_packages_assets_content_and_bootstrap_registry_bindings_byte_preserved": true,
+  "new19_integrated_bindings": [
+    {
+      "slug": "acres-of-diamonds",
+      "canonical_record_sha256": "f40a580d70199d348903af65598fb8e522845bcd66d7a6842374ba33ece2ffda",
+      "accepted_stage_v3_delta_files": [],
+      "native_candidate_registry_gates": {
+        "IN:True:reader_preview": true,
+        "IN:True:reading_pass_session": true,
+        "IN:True:audio_download": false,
+        "IN:True:cover_display": true,
+        "IN:True:catalog_metadata": true,
+        "IN:True:audio_stream": false,
+        "IN:True:reading_pass_renewal": true,
+        "IN:True:reader_delivery": true,
+        "US:True:reader_preview": false,
+        "US:True:reading_pass_session": false,
+        "US:True:audio_download": false,
+        "US:True:cover_display": false,
+        "US:True:catalog_metadata": false,
+        "US:True:audio_stream": false,
+        "US:True:reading_pass_renewal": false,
+        "US:True:reader_delivery": false,
+        "IN:False:reader_preview": false,
+        "IN:False:reading_pass_session": false,
+        "IN:False:audio_download": false,
+        "IN:False:cover_display": false,
+        "IN:False:catalog_metadata": false,
+        "IN:False:audio_stream": false,
+        "IN:False:reading_pass_renewal": false,
+        "IN:False:reader_delivery": false
+      }
+    },
+    {
+      "slug": "bn-066",
+      "canonical_record_sha256": "f36de6cdbee86a1c80fc0fcc8c5e17eef7cdf2aec458992e36ae2f2ac035e6f1",
+      "accepted_stage_v3_delta_files": [],
+      "native_candidate_registry_gates": {
+        "IN:True:reader_preview": true,
+        "IN:True:reading_pass_session": true,
+        "IN:True:audio_download": false,
+        "IN:True:cover_display": true,
+        "IN:True:catalog_metadata": true,
+        "IN:True:audio_stream": false,
+        "IN:True:reading_pass_renewal": true,
+        "IN:True:reader_delivery": true,
+        "US:True:reader_preview": false,
+        "US:True:reading_pass_session": false,
+        "US:True:audio_download": false,
+        "US:True:cover_display": false,
+        "US:True:catalog_metadata": false,
+        "US:True:audio_stream": false,
+        "US:True:reading_pass_renewal": false,
+        "US:True:reader_delivery": false,
+        "IN:False:reader_preview": false,
+        "IN:False:reading_pass_session": false,
+        "IN:False:audio_download": false,
+        "IN:False:cover_display": false,
+        "IN:False:catalog_metadata": false,
+        "IN:False:audio_stream": false,
+        "IN:False:reading_pass_renewal": false,
+        "IN:False:reader_delivery": false
+      }
+    },
+    {
+      "slug": "book-5704b31005",
+      "canonical_record_sha256": "c469a1b1109688361c09eac0dd9996bd0abccea687213f5d90e83601652ac84e",
+      "accepted_stage_v3_delta_files": [],
+      "native_candidate_registry_gates": {
+        "IN:True:reader_preview": true,
+        "IN:True:reading_pass_session": true,
+        "IN:True:audio_download": false,
+        "IN:True:cover_display": true,
+        "IN:True:catalog_metadata": true,
+        "IN:True:audio_stream": false,
+        "IN:True:reading_pass_renewal": true,
+        "IN:True:reader_delivery": true,
+        "US:True:reader_preview": false,
+        "US:True:reading_pass_session": false,
+        "US:True:audio_download": false,
+        "US:True:cover_display": false,
+        "US:True:catalog_metadata": false,
+        "US:True:audio_stream": false,
+        "US:True:reading_pass_renewal": false,
+        "US:True:reader_delivery": false,
+        "IN:False:reader_preview": false,
+        "IN:False:reading_pass_session": false,
+        "IN:False:audio_download": false,
+        "IN:False:cover_display": false,
+        "IN:False:catalog_metadata": false,
+        "IN:False:audio_stream": false,
+        "IN:False:reading_pass_renewal": false,
+        "IN:False:reader_delivery": false
+      }
+    },
+    {
+      "slug": "dsires-baby",
+      "canonical_record_sha256": "57db9bcdde0fe46ae9c0acc3d09785bc8a75195f2cded12e6c1aceca796b3ecf",
+      "accepted_stage_v3_delta_files": [],
+      "native_candidate_registry_gates": {
+        "IN:True:reader_preview": true,
+        "IN:True:reading_pass_session": true,
+        "IN:True:audio_download": false,
+        "IN:True:cover_display": true,
+        "IN:True:catalog_metadata": true,
+        "IN:True:audio_stream": false,
+        "IN:True:reading_pass_renewal": true,
+        "IN:True:reader_delivery": true,
+        "US:True:reader_preview": false,
+        "US:True:reading_pass_session": false,
+        "US:True:audio_download": false,
+        "US:True:cover_display": false,
+        "US:True:catalog_metadata": false,
+        "US:True:audio_stream": false,
+        "US:True:reading_pass_renewal": false,
+        "US:True:reader_delivery": false,
+        "IN:False:reader_preview": false,
+        "IN:False:reading_pass_session": false,
+        "IN:False:audio_download": false,
+        "IN:False:cover_display": false,
+        "IN:False:catalog_metadata": false,
+        "IN:False:audio_stream": false,
+        "IN:False:reading_pass_renewal": false,
+        "IN:False:reader_delivery": false
+      }
+    },
+    {
+      "slug": "frankenstein",
+      "canonical_record_sha256": "0bfe3c7f5c78620216cb4f65e05eedf7c9faf52a521edccdf272c014b7c05bb3",
+      "accepted_stage_v3_delta_files": [],
+      "native_candidate_registry_gates": {
+        "IN:True:reader_preview": true,
+        "IN:True:reading_pass_session": true,
+        "IN:True:audio_download": false,
+        "IN:True:cover_display": true,
+        "IN:True:catalog_metadata": true,
+        "IN:True:audio_stream": false,
+        "IN:True:reading_pass_renewal": true,
+        "IN:True:reader_delivery": true,
+        "US:True:reader_preview": false,
+        "US:True:reading_pass_session": false,
+        "US:True:audio_download": false,
+        "US:True:cover_display": false,
+        "US:True:catalog_metadata": false,
+        "US:True:audio_stream": false,
+        "US:True:reading_pass_renewal": false,
+        "US:True:reader_delivery": false,
+        "IN:False:reader_preview": false,
+        "IN:False:reading_pass_session": false,
+        "IN:False:audio_download": false,
+        "IN:False:cover_display": false,
+        "IN:False:catalog_metadata": false,
+        "IN:False:audio_stream": false,
+        "IN:False:reading_pass_renewal": false,
+        "IN:False:reader_delivery": false
+      }
+    },
+    {
+      "slug": "lokrahasya",
+      "canonical_record_sha256": "49c5894d1e746ed53711643a68c98f54eabc939cbf88307a5556fccfd9b79a36",
+      "accepted_stage_v3_delta_files": [],
+      "native_candidate_registry_gates": {
+        "IN:True:reader_preview": true,
+        "IN:True:reading_pass_session": true,
+        "IN:True:audio_download": false,
+        "IN:True:cover_display": true,
+        "IN:True:catalog_metadata": true,
+        "IN:True:audio_stream": false,
+        "IN:True:reading_pass_renewal": true,
+        "IN:True:reader_delivery": true,
+        "US:True:reader_preview": false,
+        "US:True:reading_pass_session": false,
+        "US:True:audio_download": false,
+        "US:True:cover_display": false,
+        "US:True:catalog_metadata": false,
+        "US:True:audio_stream": false,
+        "US:True:reading_pass_renewal": false,
+        "US:True:reader_delivery": false,
+        "IN:False:reader_preview": false,
+        "IN:False:reading_pass_session": false,
+        "IN:False:audio_download": false,
+        "IN:False:cover_display": false,
+        "IN:False:catalog_metadata": false,
+        "IN:False:audio_stream": false,
+        "IN:False:reading_pass_renewal": false,
+        "IN:False:reader_delivery": false
+      }
+    },
+    {
+      "slug": "mrinalini",
+      "canonical_record_sha256": "6a0aa9812889f4989bbf004debc20e2dfca800c15a97abbb990f514469c79cbf",
+      "accepted_stage_v3_delta_files": [],
+      "native_candidate_registry_gates": {
+        "IN:True:reader_preview": true,
+        "IN:True:reading_pass_session": true,
+        "IN:True:audio_download": false,
+        "IN:True:cover_display": true,
+        "IN:True:catalog_metadata": true,
+        "IN:True:audio_stream": false,
+        "IN:True:reading_pass_renewal": true,
+        "IN:True:reader_delivery": true,
+        "US:True:reader_preview": false,
+        "US:True:reading_pass_session": false,
+        "US:True:audio_download": false,
+        "US:True:cover_display": false,
+        "US:True:catalog_metadata": false,
+        "US:True:audio_stream": false,
+        "US:True:reading_pass_renewal": false,
+        "US:True:reader_delivery": false,
+        "IN:False:reader_preview": false,
+        "IN:False:reading_pass_session": false,
+        "IN:False:audio_download": false,
+        "IN:False:cover_display": false,
+        "IN:False:catalog_metadata": false,
+        "IN:False:audio_stream": false,
+        "IN:False:reading_pass_renewal": false,
+        "IN:False:reader_delivery": false
+      }
+    },
+    {
+      "slug": "my-life-and-work",
+      "canonical_record_sha256": "49002844e6106f70325af06cc1d5bbf2452018a4fa1bbe2aab63f3b1f4814080",
+      "accepted_stage_v3_delta_files": [],
+      "native_candidate_registry_gates": {
+        "IN:True:reader_preview": true,
+        "IN:True:reading_pass_session": true,
+        "IN:True:audio_download": false,
+        "IN:True:cover_display": true,
+        "IN:True:catalog_metadata": true,
+        "IN:True:audio_stream": false,
+        "IN:True:reading_pass_renewal": true,
+        "IN:True:reader_delivery": true,
+        "US:True:reader_preview": false,
+        "US:True:reading_pass_session": false,
+        "US:True:audio_download": false,
+        "US:True:cover_display": false,
+        "US:True:catalog_metadata": false,
+        "US:True:audio_stream": false,
+        "US:True:reading_pass_renewal": false,
+        "US:True:reader_delivery": false,
+        "IN:False:reader_preview": false,
+        "IN:False:reading_pass_session": false,
+        "IN:False:audio_download": false,
+        "IN:False:cover_display": false,
+        "IN:False:catalog_metadata": false,
+        "IN:False:audio_stream": false,
+        "IN:False:reading_pass_renewal": false,
+        "IN:False:reader_delivery": false
+      }
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "canonical_record_sha256": "a437c17426c3bd6567c3050be8f550c5be46a4554d5e7e94bc0715dafb13b328",
+      "accepted_stage_v3_delta_files": [],
+      "native_candidate_registry_gates": {
+        "IN:True:reader_preview": true,
+        "IN:True:reading_pass_session": true,
+        "IN:True:audio_download": false,
+        "IN:True:cover_display": true,
+        "IN:True:catalog_metadata": true,
+        "IN:True:audio_stream": false,
+        "IN:True:reading_pass_renewal": true,
+        "IN:True:reader_delivery": true,
+        "US:True:reader_preview": false,
+        "US:True:reading_pass_session": false,
+        "US:True:audio_download": false,
+        "US:True:cover_display": false,
+        "US:True:catalog_metadata": false,
+        "US:True:audio_stream": false,
+        "US:True:reading_pass_renewal": false,
+        "US:True:reader_delivery": false,
+        "IN:False:reader_preview": false,
+        "IN:False:reading_pass_session": false,
+        "IN:False:audio_download": false,
+        "IN:False:cover_display": false,
+        "IN:False:catalog_metadata": false,
+        "IN:False:audio_stream": false,
+        "IN:False:reading_pass_renewal": false,
+        "IN:False:reader_delivery": false
+      }
+    },
+    {
+      "slug": "sredni-vashtar",
+      "canonical_record_sha256": "fd7320d44bc2f41134e5475ad93e5c4873c6bd739afe9e2a845858e24be9acb6",
+      "accepted_stage_v3_delta_files": [],
+      "native_candidate_registry_gates": {
+        "IN:True:reader_preview": true,
+        "IN:True:reading_pass_session": true,
+        "IN:True:audio_download": false,
+        "IN:True:cover_display": true,
+        "IN:True:catalog_metadata": true,
+        "IN:True:audio_stream": false,
+        "IN:True:reading_pass_renewal": true,
+        "IN:True:reader_delivery": true,
+        "US:True:reader_preview": false,
+        "US:True:reading_pass_session": false,
+        "US:True:audio_download": false,
+        "US:True:cover_display": false,
+        "US:True:catalog_metadata": false,
+        "US:True:audio_stream": false,
+        "US:True:reading_pass_renewal": false,
+        "US:True:reader_delivery": false,
+        "IN:False:reader_preview": false,
+        "IN:False:reading_pass_session": false,
+        "IN:False:audio_download": false,
+        "IN:False:cover_display": false,
+        "IN:False:catalog_metadata": false,
+        "IN:False:audio_stream": false,
+        "IN:False:reading_pass_renewal": false,
+        "IN:False:reader_delivery": false
+      }
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "canonical_record_sha256": "b49d3490005727588f63161d9fd10e7a9eec82f04c33274c1712273e3656bc55",
+      "accepted_stage_v3_delta_files": [],
+      "native_candidate_registry_gates": {
+        "IN:True:reader_preview": true,
+        "IN:True:reading_pass_session": true,
+        "IN:True:audio_download": false,
+        "IN:True:cover_display": true,
+        "IN:True:catalog_metadata": true,
+        "IN:True:audio_stream": false,
+        "IN:True:reading_pass_renewal": true,
+        "IN:True:reader_delivery": true,
+        "US:True:reader_preview": false,
+        "US:True:reading_pass_session": false,
+        "US:True:audio_download": false,
+        "US:True:cover_display": false,
+        "US:True:catalog_metadata": false,
+        "US:True:audio_stream": false,
+        "US:True:reading_pass_renewal": false,
+        "US:True:reader_delivery": false,
+        "IN:False:reader_preview": false,
+        "IN:False:reading_pass_session": false,
+        "IN:False:audio_download": false,
+        "IN:False:cover_display": false,
+        "IN:False:catalog_metadata": false,
+        "IN:False:audio_stream": false,
+        "IN:False:reading_pass_renewal": false,
+        "IN:False:reader_delivery": false
+      }
+    },
+    {
+      "slug": "the-great-gatsby",
+      "canonical_record_sha256": "f17b90358e98262ca18747e81d40ea0cc4d75f4b7074c35131f299127e76df34",
+      "accepted_stage_v3_delta_files": [
+        "publication_manifest.json",
+        "public_book.json",
+        "rights_decision.json",
+        "checksum_manifest.json"
+      ],
+      "native_candidate_registry_gates": {
+        "IN:True:reader_preview": true,
+        "IN:True:reading_pass_session": true,
+        "IN:True:audio_download": false,
+        "IN:True:cover_display": true,
+        "IN:True:catalog_metadata": true,
+        "IN:True:audio_stream": false,
+        "IN:True:reading_pass_renewal": true,
+        "IN:True:reader_delivery": true,
+        "US:True:reader_preview": false,
+        "US:True:reading_pass_session": false,
+        "US:True:audio_download": false,
+        "US:True:cover_display": false,
+        "US:True:catalog_metadata": false,
+        "US:True:audio_stream": false,
+        "US:True:reading_pass_renewal": false,
+        "US:True:reader_delivery": false,
+        "IN:False:reader_preview": false,
+        "IN:False:reading_pass_session": false,
+        "IN:False:audio_download": false,
+        "IN:False:cover_display": false,
+        "IN:False:catalog_metadata": false,
+        "IN:False:audio_stream": false,
+        "IN:False:reading_pass_renewal": false,
+        "IN:False:reader_delivery": false
+      }
+    },
+    {
+      "slug": "the-open-window",
+      "canonical_record_sha256": "c50c87abb79a36605fcda119cde846baeee8089d24921685277709dbaee0b0d5",
+      "accepted_stage_v3_delta_files": [],
+      "native_candidate_registry_gates": {
+        "IN:True:reader_preview": true,
+        "IN:True:reading_pass_session": true,
+        "IN:True:audio_download": false,
+        "IN:True:cover_display": true,
+        "IN:True:catalog_metadata": true,
+        "IN:True:audio_stream": false,
+        "IN:True:reading_pass_renewal": true,
+        "IN:True:reader_delivery": true,
+        "US:True:reader_preview": false,
+        "US:True:reading_pass_session": false,
+        "US:True:audio_download": false,
+        "US:True:cover_display": false,
+        "US:True:catalog_metadata": false,
+        "US:True:audio_stream": false,
+        "US:True:reading_pass_renewal": false,
+        "US:True:reader_delivery": false,
+        "IN:False:reader_preview": false,
+        "IN:False:reading_pass_session": false,
+        "IN:False:audio_download": false,
+        "IN:False:cover_display": false,
+        "IN:False:catalog_metadata": false,
+        "IN:False:audio_stream": false,
+        "IN:False:reading_pass_renewal": false,
+        "IN:False:reader_delivery": false
+      }
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "canonical_record_sha256": "172c65e11230dfe6d05537e6a550cece29f312733f3dd8fc05689f617e4dc6bc",
+      "accepted_stage_v3_delta_files": [],
+      "native_candidate_registry_gates": {
+        "IN:True:reader_preview": true,
+        "IN:True:reading_pass_session": true,
+        "IN:True:audio_download": false,
+        "IN:True:cover_display": true,
+        "IN:True:catalog_metadata": true,
+        "IN:True:audio_stream": false,
+        "IN:True:reading_pass_renewal": true,
+        "IN:True:reader_delivery": true,
+        "US:True:reader_preview": false,
+        "US:True:reading_pass_session": false,
+        "US:True:audio_download": false,
+        "US:True:cover_display": false,
+        "US:True:catalog_metadata": false,
+        "US:True:audio_stream": false,
+        "US:True:reading_pass_renewal": false,
+        "US:True:reader_delivery": false,
+        "IN:False:reader_preview": false,
+        "IN:False:reading_pass_session": false,
+        "IN:False:audio_download": false,
+        "IN:False:cover_display": false,
+        "IN:False:catalog_metadata": false,
+        "IN:False:audio_stream": false,
+        "IN:False:reading_pass_renewal": false,
+        "IN:False:reader_delivery": false
+      }
+    },
+    {
+      "slug": "the-science-of-getting-rich",
+      "canonical_record_sha256": "e8ede6f82279947511c93ecff9f6828e6fadb027bb3bea21f9b85da8fc6f8567",
+      "accepted_stage_v3_delta_files": [],
+      "native_candidate_registry_gates": {
+        "IN:True:reader_preview": true,
+        "IN:True:reading_pass_session": true,
+        "IN:True:audio_download": false,
+        "IN:True:cover_display": true,
+        "IN:True:catalog_metadata": true,
+        "IN:True:audio_stream": false,
+        "IN:True:reading_pass_renewal": true,
+        "IN:True:reader_delivery": true,
+        "US:True:reader_preview": false,
+        "US:True:reading_pass_session": false,
+        "US:True:audio_download": false,
+        "US:True:cover_display": false,
+        "US:True:catalog_metadata": false,
+        "US:True:audio_stream": false,
+        "US:True:reading_pass_renewal": false,
+        "US:True:reader_delivery": false,
+        "IN:False:reader_preview": false,
+        "IN:False:reading_pass_session": false,
+        "IN:False:audio_download": false,
+        "IN:False:cover_display": false,
+        "IN:False:catalog_metadata": false,
+        "IN:False:audio_stream": false,
+        "IN:False:reading_pass_renewal": false,
+        "IN:False:reader_delivery": false
+      }
+    },
+    {
+      "slug": "the-secret-garden",
+      "canonical_record_sha256": "60cf63f5b0176ad3bf06c791851aa90be74be827feb1fa6fd145ff1a56badb65",
+      "accepted_stage_v3_delta_files": [],
+      "native_candidate_registry_gates": {
+        "IN:True:reader_preview": true,
+        "IN:True:reading_pass_session": true,
+        "IN:True:audio_download": false,
+        "IN:True:cover_display": true,
+        "IN:True:catalog_metadata": true,
+        "IN:True:audio_stream": false,
+        "IN:True:reading_pass_renewal": true,
+        "IN:True:reader_delivery": true,
+        "US:True:reader_preview": false,
+        "US:True:reading_pass_session": false,
+        "US:True:audio_download": false,
+        "US:True:cover_display": false,
+        "US:True:catalog_metadata": false,
+        "US:True:audio_stream": false,
+        "US:True:reading_pass_renewal": false,
+        "US:True:reader_delivery": false,
+        "IN:False:reader_preview": false,
+        "IN:False:reading_pass_session": false,
+        "IN:False:audio_download": false,
+        "IN:False:cover_display": false,
+        "IN:False:catalog_metadata": false,
+        "IN:False:audio_stream": false,
+        "IN:False:reading_pass_renewal": false,
+        "IN:False:reader_delivery": false
+      }
+    },
+    {
+      "slug": "the-selfish-giant",
+      "canonical_record_sha256": "80bdf11720255bb247bd55afdff73c09ea21f1cc4a013862667ae66a5409c550",
+      "accepted_stage_v3_delta_files": [],
+      "native_candidate_registry_gates": {
+        "IN:True:reader_preview": true,
+        "IN:True:reading_pass_session": true,
+        "IN:True:audio_download": false,
+        "IN:True:cover_display": true,
+        "IN:True:catalog_metadata": true,
+        "IN:True:audio_stream": false,
+        "IN:True:reading_pass_renewal": true,
+        "IN:True:reader_delivery": true,
+        "US:True:reader_preview": false,
+        "US:True:reading_pass_session": false,
+        "US:True:audio_download": false,
+        "US:True:cover_display": false,
+        "US:True:catalog_metadata": false,
+        "US:True:audio_stream": false,
+        "US:True:reading_pass_renewal": false,
+        "US:True:reader_delivery": false,
+        "IN:False:reader_preview": false,
+        "IN:False:reading_pass_session": false,
+        "IN:False:audio_download": false,
+        "IN:False:cover_display": false,
+        "IN:False:catalog_metadata": false,
+        "IN:False:audio_stream": false,
+        "IN:False:reading_pass_renewal": false,
+        "IN:False:reader_delivery": false
+      }
+    },
+    {
+      "slug": "the-time-machine",
+      "canonical_record_sha256": "f142d82b591c9f91c656d03b904133db2b8ee46f5c504bd949e3204117bbd27e",
+      "accepted_stage_v3_delta_files": [],
+      "native_candidate_registry_gates": {
+        "IN:True:reader_preview": true,
+        "IN:True:reading_pass_session": true,
+        "IN:True:audio_download": false,
+        "IN:True:cover_display": true,
+        "IN:True:catalog_metadata": true,
+        "IN:True:audio_stream": false,
+        "IN:True:reading_pass_renewal": true,
+        "IN:True:reader_delivery": true,
+        "US:True:reader_preview": false,
+        "US:True:reading_pass_session": false,
+        "US:True:audio_download": false,
+        "US:True:cover_display": false,
+        "US:True:catalog_metadata": false,
+        "US:True:audio_stream": false,
+        "US:True:reading_pass_renewal": false,
+        "US:True:reader_delivery": false,
+        "IN:False:reader_preview": false,
+        "IN:False:reading_pass_session": false,
+        "IN:False:audio_download": false,
+        "IN:False:cover_display": false,
+        "IN:False:catalog_metadata": false,
+        "IN:False:audio_stream": false,
+        "IN:False:reading_pass_renewal": false,
+        "IN:False:reader_delivery": false
+      }
+    },
+    {
+      "slug": "the-wonderful-wizard-of-oz",
+      "canonical_record_sha256": "36b0f7498f3b93168db1b7b30fe9864041f0e303cb74ce211f377701907696e1",
+      "accepted_stage_v3_delta_files": [],
+      "native_candidate_registry_gates": {
+        "IN:True:reader_preview": true,
+        "IN:True:reading_pass_session": true,
+        "IN:True:audio_download": false,
+        "IN:True:cover_display": true,
+        "IN:True:catalog_metadata": true,
+        "IN:True:audio_stream": false,
+        "IN:True:reading_pass_renewal": true,
+        "IN:True:reader_delivery": true,
+        "US:True:reader_preview": false,
+        "US:True:reading_pass_session": false,
+        "US:True:audio_download": false,
+        "US:True:cover_display": false,
+        "US:True:catalog_metadata": false,
+        "US:True:audio_stream": false,
+        "US:True:reading_pass_renewal": false,
+        "US:True:reader_delivery": false,
+        "IN:False:reader_preview": false,
+        "IN:False:reading_pass_session": false,
+        "IN:False:audio_download": false,
+        "IN:False:cover_display": false,
+        "IN:False:catalog_metadata": false,
+        "IN:False:audio_stream": false,
+        "IN:False:reading_pass_renewal": false,
+        "IN:False:reader_delivery": false
+      }
+    }
+  ],
+  "runtime52": [
+    {
+      "slug": "a-ghost-story",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "a-horseman-in-the-sky",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "a-mystery-of-heroism",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "a-scandal-in-bohemia",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "a-white-heron",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "acres-of-diamonds",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 12
+    },
+    {
+      "slug": "agentic-ai-with-python",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 14
+    },
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 12
+    },
+    {
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "bn-035",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 10
+    },
+    {
+      "slug": "bn-059",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 13
+    },
+    {
+      "slug": "bn-066",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 46
+    },
+    {
+      "slug": "book-5704b31005",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "dracula",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 28
+    },
+    {
+      "slug": "dsires-baby",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "frankenstein",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 28
+    },
+    {
+      "slug": "jekyll-and-hyde",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 10
+    },
+    {
+      "slug": "lokrahasya",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 16
+    },
+    {
+      "slug": "love-of-life",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "mrinalini",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 46
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 14
+    },
+    {
+      "slug": "my-life-and-work",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 20
+    },
+    {
+      "slug": "picture-of-dorian-gray",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 21
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 61
+    },
+    {
+      "slug": "radharani",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 8
+    },
+    {
+      "slug": "sredni-vashtar",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "the-adventures-of-sherlock-holmes",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 12
+    },
+    {
+      "slug": "the-art-of-money-getting",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "the-bishop",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 7
+    },
+    {
+      "slug": "the-canterville-ghost",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 7
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "the-enchanted-april",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 22
+    },
+    {
+      "slug": "the-fall-of-the-house-of-usher",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "the-great-gatsby",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 10
+    },
+    {
+      "slug": "the-happy-prince",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "the-lady-with-the-dog",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "the-man-who-would-be-king",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "the-open-boat",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "the-open-window",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "the-pit-and-the-pendulum",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 4
+    },
+    {
+      "slug": "the-science-of-getting-rich",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 18
+    },
+    {
+      "slug": "the-secret-garden",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 27
+    },
+    {
+      "slug": "the-selfish-giant",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "the-stolen-white-elephant",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "the-student",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 1
+    },
+    {
+      "slug": "the-time-machine",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 17
+    },
+    {
+      "slug": "the-wonderful-wizard-of-oz",
+      "reader_issues": [],
+      "reader": true,
+      "audio": false,
+      "chapters": 25
+    }
+  ],
+  "registry_accepted_count": 55,
+  "bootstrap_count": 52,
+  "reader_manifest_count": 102,
+  "reader_chapter_count": 826,
+  "only_Gatsby_stage_delta": "verification_status approved matches existing actual automated approval; four dependent files rebound, no source Reader artwork authorization approval changes",
+  "workflow_change": "Exactly two current-source hash literals; no check/deployment configuration semantics changed",
+  "historical_audio_exact_HEAD_preimage_preserved_test_only": true,
+  "negative_security_fixture_review": "Oct3 authorizer prefixes limited to exact cohort; country-spoof/tamper/revocation/missing-allowlist tests retained. Historical audio preserved and denied; held Gitanjali retained; terminal bn060/Great Expectations retained negative routes. Source/page identities explicitly pinned, no deriving expectations from tested candidate.",
+  "restricted_runtime_payment_wallet_entitlement_secret_customer_deployment_database_sources_unchanged": true,
+  "canonical_mutations_by_B": false,
+  "no_source_fetch_render_or_repeat_visual_review": true,
+  "production_observed_for_new19": false,
+  "global_gate": "Existing protected normal exact-head checks, sole integration PR, merge main, deployment/canary and truthful canonical-version readback remain required",
+  "local_test_results": {
+    "backend_current": {
+      "passed": 486,
+      "failed": 0
+    },
+    "frontend_full": {
+      "suites": 97,
+      "tests": 607,
+      "failed": 0
+    },
+    "rights_semantic_static": {
+      "tests": 33,
+      "result": "PASS"
+    },
+    "workflow_source_provenance": {
+      "cases": 46,
+      "result": "PASS"
+    },
+    "focused_static_regression": {
+      "tests": 71,
+      "result": "PASS"
+    },
+    "static_snapshots": {
+      "count": 172,
+      "assertions": 3647,
+      "failed": 0
+    }
+  },
+  "local_test_evidence_attribution": "Existing root-run results reviewed; B independently ran read-only native52 Reader and registered-rights checks above, not repeated full suites."
+}

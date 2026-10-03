@@ -1,0 +1,79 @@
+{
+  "schema": "earnalism.cover-provenance.v1",
+  "slug": "dsires-baby",
+  "status": "PROPOSED_COMPONENT_EVIDENCE_REVIEW_PENDING_NOT_ACCEPTED",
+  "recorded_at": "2026-10-03T04:36:24.088428+00:00",
+  "original_creator": "Repository/product owner; no further identity inferred",
+  "owner_declaration": {
+    "statement": "Owner states all front and back covers are designed by the owner.",
+    "path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+    "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "scope": "COVER_DESIGN_ONLY"
+  },
+  "original_assets_preserved": {
+    "front": {
+      "file": "recovered/front.png",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275510/earnalism/covers/front/dsires-baby_front_1600x2400.png",
+      "sha256": "7c30a3bdab00204933779a30caba9a049cd76fd7400e83323c96f20051b9106c",
+      "bytes": 191430,
+      "dimensions": [
+        1600,
+        2400
+      ],
+      "method": "One successful GET of existing persisted URL; no prior cover-byte checksum available, no historical acceptance transferred.",
+      "changed_pixel_count": 1051705,
+      "changed_pixels_outside_masks": 0,
+      "bounded_masks": [
+        [
+          210,
+          700,
+          1390,
+          1265
+        ],
+        [
+          180,
+          1830,
+          1420,
+          2140
+        ]
+      ]
+    },
+    "back": {
+      "file": "recovered/back.png",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275514/earnalism/covers/back/dsires-baby_back_1600x2400.png",
+      "sha256": "1cfc152cef9d59cd7434966ec0a0fbd482b28f09e317846827bc09a8c29a442a",
+      "bytes": 387869,
+      "dimensions": [
+        1600,
+        2400
+      ],
+      "method": "One successful GET of existing persisted URL; no prior cover-byte checksum available, no historical acceptance transferred.",
+      "changed_pixel_count": 2948021,
+      "changed_pixels_outside_masks": 0,
+      "bounded_masks": [
+        [
+          95,
+          70,
+          1505,
+          2160
+        ]
+      ]
+    }
+  },
+  "derivative_lineage": {
+    "method": "One bounded deterministic local mask/typesetting repair; removes false LIVE label, repairs missing accented title glyphs, separates coin ornaments from text, replaces clipped excerpt with complete exact first two source paragraphs. No new artwork or paid generation.",
+    "source_excerpt": "As the day was pleasant, Madame Valmondé drove over to L’Abri to see Désirée and the baby. It made her laugh to think of Désirée with a baby. Why, it seemed but yesterday that Désirée was little more than a baby herself; when Monsieur in riding through the gateway of Valmondé had found her lying asleep in the shadow of the big stone pillar.",
+    "font_sha256": "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab",
+    "font_license_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+    "source_front_sha256": "c965ecd734bdb2d7966946f2cb3be4af131832266c31a3900f8e8d9375c667d1",
+    "source_back_sha256": "5a845c98786371fc1e671585701cf513c1142fbb5119337aff3d0a02497cff00",
+    "script_path": "desire-prep-20261003/prepare.py"
+  },
+  "commercial_use_authorized": false,
+  "cover_display_approved": false,
+  "publication_activation_authorized": false,
+  "audio_authorized": false,
+  "runtime_release_authorized": false,
+  "third_party_component_claim": "No third-party artwork/license claim added. No rights inferred from CDN URLs. Existing first-party declaration is retained evidence for independent review. DejaVu glyph rendering uses actual Bitstream Vera license permission; no font software binary distributed.",
+  "independent_reviews": "PENDING_TWO_AUTOMATED_SOURCE_ART_AND_PACKAGE_REVIEWS"
+}

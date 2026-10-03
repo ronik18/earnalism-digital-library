@@ -20,7 +20,7 @@ const books = [
   { slug: "agentic-ai-with-python", title: "Agentic AI With Python", author: "Ronik Basak", short_description: "Owner-authored English text reader", language: "en", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/agentic-ai-with-python", reader_url: "/reader/agentic-ai-with-python", preview_enabled: true, preview_url: "/reader/agentic-ai-with-python", chapters: [{ id: "chapter-001", is_preview: true }], audio_enabled: false, audiobook_enabled: false },
   { slug: "devdas", title: "দেবদাস / Devdas", author: "Sarat Chandra Chattopadhyay", short_description: "Bengali edition", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/devdas", reader_url: "/reader/devdas", preview_enabled: true, preview_url: "/reader/devdas", chapters: [{ id: "devdas-page-1", is_preview: true }] },
   { slug: "pather-panchali", title: "পথের পাঁচালী / Pather Panchali", author: "Bibhutibhushan Bandyopadhyay", short_description: "Bengali edition", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/pather-panchali", reader_url: "/reader/pather-panchali", preview_enabled: true, preview_url: "/reader/pather-panchali", chapters: [{ id: "pather-page-1", is_preview: true }] },
-  { slug: "frankenstein", title: "Batch-listed Bengali draft", author: "Fixture Editor", short_description: "Bengali edition", language: "bn", publication_status: "DRAFT", reader_enabled: false, preview_enabled: false, chapters: [] },
+  { slug: "synthetic-held-bengali-draft", title: "Synthetic held Bengali draft", author: "Fixture Editor", short_description: "Bengali edition", language: "bn", publication_status: "DRAFT", reader_enabled: false, preview_enabled: false, chapters: [] },
   { slug: "reader-disabled-edition", title: "Reader-disabled Bengali edition", author: "Fixture Editor", short_description: "Bengali edition", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: false, preview_enabled: false, chapters: [] },
   { slug: "book-edfcf810c5", title: "ক্ষুধিত পাষাণ", author: "Rabindranath Tagore", short_description: "Canonical Bengali publication", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/book-edfcf810c5", reader_url: "/reader/book-edfcf810c5", preview_enabled: true, preview_url: "/reader/book-edfcf810c5", chapters: [{ id: "chapter-001", is_preview: true }] },
   { slug: "book-d19e96859f", title: "Live Bengali edition without a preview", author: "Fixture Editor", short_description: "Bengali edition", language: "bn", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: "/book/book-d19e96859f", reader_url: "/reader/book-d19e96859f", preview_enabled: false, preview_url: "", chapters: [{ id: "chapter-001", is_preview: false }] },
@@ -30,18 +30,18 @@ const books = [
 ];
 // Add the exact reviewed near-ready release fixtures from the safe public
 // metadata contract. Keep the independent held/malformed/audio fixtures above.
-const nearReadySlugs = ["a-horseman-in-the-sky", "a-mystery-of-heroism", "a-scandal-in-bohemia", "jekyll-and-hyde", "love-of-life", "the-bishop", "the-fall-of-the-house-of-usher", "the-lady-with-the-dog", "the-man-who-would-be-king", "the-open-boat", "the-pit-and-the-pendulum", "the-stolen-white-elephant", "an-occurrence-at-owl-creek-bridge", "the-enchanted-april", "the-happy-prince", "picture-of-dorian-gray", "dracula", "muchiram-gurer-jibanchorit", "bn-059", "the-call-of-the-wild", "the-student", "the-art-of-money-getting", "bn-035", "alices-adventures-in-wonderland"];
+const nearReadySlugs = ["a-horseman-in-the-sky", "a-mystery-of-heroism", "a-scandal-in-bohemia", "jekyll-and-hyde", "love-of-life", "the-bishop", "the-fall-of-the-house-of-usher", "the-lady-with-the-dog", "the-man-who-would-be-king", "the-open-boat", "the-pit-and-the-pendulum", "the-stolen-white-elephant", "an-occurrence-at-owl-creek-bridge", "the-enchanted-april", "the-happy-prince", "picture-of-dorian-gray", "dracula", "muchiram-gurer-jibanchorit", "bn-059", "the-call-of-the-wild", "the-student", "the-art-of-money-getting", "bn-035", "alices-adventures-in-wonderland", "dsires-baby", "sredni-vashtar", "the-cop-and-the-anthem", "the-open-window", "the-selfish-giant", "the-science-of-getting-rich", "bn-066", "lokrahasya", "mrinalini", "frankenstein", "pride-and-prejudice", "the-great-gatsby", "the-secret-garden", "the-time-machine", "acres-of-diamonds", "my-life-and-work", "the-principles-of-scientific-management", "the-wonderful-wizard-of-oz", "book-5704b31005"];
 const publicContract = JSON.parse(readFileSync(new URL("../frontend/static-seo/controlled-publication-public.json", import.meta.url), "utf8"));
 for (const slug of nearReadySlugs) {
   const source = publicContract.publications.find((row) => row.slug === slug);
   assert.ok(source, `Reviewed release ${slug} must have a public metadata contract`);
   assert.equal(books.some((row) => row.slug === slug), false, `Duplicate fixture ${slug}`);
-  books.push({ ...source, language: ["muchiram-gurer-jibanchorit", "bn-059", "bn-035"].includes(slug) ? "bn" : "en", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: `/book/${slug}`, reader_url: `/reader/${slug}`, preview_enabled: true, preview_url: `/reader/${slug}`, chapters: [{ id: "chapter-001", is_preview: true }] });
+  books.push({ ...source, language: ["muchiram-gurer-jibanchorit", "bn-059", "bn-035", "bn-066", "lokrahasya", "mrinalini", "book-5704b31005"].includes(slug) ? "bn" : "en", publication_status: "LIVE_APPROVED", reader_enabled: true, public_route: `/book/${slug}`, reader_url: `/reader/${slug}`, preview_enabled: true, preview_url: `/reader/${slug}`, chapters: [{ id: "chapter-001", is_preview: true }] });
 }
 const expectedHeaderUrl = "?language=bn&availability=reader-ready";
-const apiEligibleSlugs = ["radharani", "book-edfcf810c5", "muchiram-gurer-jibanchorit", "bn-059", "bn-035"];
+const apiEligibleSlugs = ["radharani", "book-edfcf810c5", "muchiram-gurer-jibanchorit", "bn-059", "bn-035", "bn-066", "lokrahasya", "mrinalini", "book-5704b31005"];
 const fallbackEligibleSlugs = [];
-const ineligibleSlugs = ["frankenstein", "reader-disabled-edition", "kshudhita-pashan"];
+const ineligibleSlugs = ["synthetic-held-bengali-draft", "reader-disabled-edition", "kshudhita-pashan"];
 const readerApprovedWithoutPreviewSlugs = ["book-d19e96859f", "book-f5d593e1f4"];
 const approvedAudioWithoutRuntimeSlug = "approved-audio-without-runtime";
 const canonicalBengaliKshudhitaSlug = "book-edfcf810c5";
@@ -150,11 +150,12 @@ async function assertCurrentControlledLaunchResults(page, name) {
   await page.goto(`${baseUrl.replace(/\/$/, "")}/library?listening=hidden`, { waitUntil: "domcontentloaded" });
   await referenceSurface(page).waitFor();
   // Preserve the existing ten-edition shelf. Traverse its real controls before
-  // asserting the complete, independently reviewed 33-edition release scope.
+  // asserting the complete, independently reviewed 52-edition release scope.
   const fixtureOrder = books.filter((book) => releasedSlugs.includes(book.slug)).map((book) => book.slug);
-  assert.equal(fixtureOrder.length, 33, "The current release fixture must contain exactly 33 approved editions");
+  assert.equal(fixtureOrder.length, 52, "The current release fixture must contain exactly 52 approved editions");
+  assert.equal(new Set(fixtureOrder).size, 52, "Canonical editions must occur once in the release fixture");
   await assertDisplayedSlugs(page, fixtureOrder.slice(0, 10));
-  for (const [nextCount, shownCount] of [[10, 20], [10, 30], [3, 33]]) {
+  for (const [nextCount, shownCount] of [[10, 20], [10, 30], [10, 40], [10, 50], [2, 52]]) {
     const previousCount = shownCount - nextCount;
     const more = referenceSurface(page).getByRole("button", { name: `Show ${nextCount} more editions in Live now`, exact: true });
     await more.click();

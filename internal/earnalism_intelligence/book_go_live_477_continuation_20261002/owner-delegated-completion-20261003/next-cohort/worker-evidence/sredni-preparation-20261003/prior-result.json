@@ -1,0 +1,490 @@
+{
+  "schema": "earnalism.book-go-live-worker-result.v1",
+  "campaign_issue": 477,
+  "owner_directive_comment_id": 5949652699,
+  "worker_id": "worker-2",
+  "dedup_key": "477:e491708bbdb1f5783c087e306ed4a8c4f691c0ed:sredni-vashtar",
+  "slug": "sredni-vashtar",
+  "title": "Sredni Vashtar",
+  "source_root": "/tmp/earnalism-main-approved-integration",
+  "source_head": "e491708bbdb1f5783c087e306ed4a8c4f691c0ed",
+  "observed_at": "2026-10-02T10:52:50.301583+00:00",
+  "status": "HELD_EXTERNAL_BLOCKER",
+  "title_specific_ready": false,
+  "production_activation": false,
+  "current_preparation_state": {
+    "rights": {
+      "status": "APPROVED",
+      "tier": "A",
+      "publication_region": "india",
+      "evidence_sha256": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f"
+    },
+    "reader_release": {
+      "status": "READY_FOR_APPROVAL",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
+      "blockers": []
+    },
+    "audio_release": {
+      "status": "IN_PROGRESS",
+      "exposed": false,
+      "required_for_reader_release": false
+    },
+    "approved_to_publish_evidence": false
+  },
+  "checks": {
+    "immutable_head_matches_assignment": true,
+    "canonical_clean": true,
+    "manifest_schema": {
+      "passed": true,
+      "issues": []
+    },
+    "manifest_integrity": {
+      "passed": true,
+      "declared": "8da1395cffb08e0eba4e6fb2f36a544a7d2cb0aa61c27c47a13a283bdd264d8c",
+      "actual": "8da1395cffb08e0eba4e6fb2f36a544a7d2cb0aa61c27c47a13a283bdd264d8c"
+    },
+    "manifest_rebuild": {
+      "passed": true,
+      "status": "READY_FOR_APPROVAL",
+      "blockers": [],
+      "limitation": "Preparation builder checks cover URL presence only; READY_FOR_APPROVAL is not cover license/provenance approval or runtime authority."
+    },
+    "checksum_bundle": {
+      "passed": true,
+      "files": [
+        {
+          "file": "approval_evidence.json",
+          "expected": "d2eec4f08fcd81f7156fc122a1c9fb20dd96ef0cde660c69801b03bfd9a000d3",
+          "actual": "d2eec4f08fcd81f7156fc122a1c9fb20dd96ef0cde660c69801b03bfd9a000d3",
+          "passed": true
+        },
+        {
+          "file": "chapters/chapter-001.json",
+          "expected": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5",
+          "actual": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5",
+          "passed": true
+        },
+        {
+          "file": "highlight_sync.json",
+          "expected": "0b302f6d91f901adad699ed496663b1ebbb8d17917cd4bbdc340f75eb94ca728",
+          "actual": "0b302f6d91f901adad699ed496663b1ebbb8d17917cd4bbdc340f75eb94ca728",
+          "passed": true
+        },
+        {
+          "file": "public_book.json",
+          "expected": "c027b799066b584a244c9025086df028d7a9ef65c5d7e812735b27e64420c59f",
+          "actual": "c027b799066b584a244c9025086df028d7a9ef65c5d7e812735b27e64420c59f",
+          "passed": true
+        },
+        {
+          "file": "publication_authorization.json",
+          "expected": "20bb6b3ae3075433c2ed8396f101642442b34b51d51ce5c195074b222435712a",
+          "actual": "20bb6b3ae3075433c2ed8396f101642442b34b51d51ce5c195074b222435712a",
+          "passed": true
+        },
+        {
+          "file": "reader_manifest.json",
+          "expected": "2ccf2bae7a65d944946f1cf4ca5a5f8b4011408638d67cc95e7f8bf6eca3ab54",
+          "actual": "2ccf2bae7a65d944946f1cf4ca5a5f8b4011408638d67cc95e7f8bf6eca3ab54",
+          "passed": true
+        },
+        {
+          "file": "source_evidence.json",
+          "expected": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
+          "actual": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
+          "passed": true
+        }
+      ]
+    },
+    "accepted_component_bindings": {
+      "passed": true,
+      "components": {
+        "public_book": "c027b799066b584a244c9025086df028d7a9ef65c5d7e812735b27e64420c59f",
+        "reader_manifest": "2ccf2bae7a65d944946f1cf4ca5a5f8b4011408638d67cc95e7f8bf6eca3ab54",
+        "source_evidence": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
+        "approval_evidence": "d2eec4f08fcd81f7156fc122a1c9fb20dd96ef0cde660c69801b03bfd9a000d3",
+        "checksum_manifest": "4683582293ceeb62d713a91bd4f69bbe0e8922da67fe6d3c764a060d1bd6da45",
+        "publication_manifest": "1f1845f14b3c3dbbf3a123c9d1ed9e66263072ae1485165c289ad64a19365db2"
+      }
+    },
+    "canonical_chapter_checks": [
+      {
+        "id": "chapter-001",
+        "json_sha256": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5",
+        "content_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+        "declared_content_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+        "identity_pass": true,
+        "empty": false,
+        "unsafe_markup": false,
+        "replacement_character": false,
+        "source_boilerplate": false
+      }
+    ],
+    "canonical_aggregate": {
+      "passed": true,
+      "actual": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06"
+    },
+    "existing_source_and_complete_work_evidence": {
+      "reused_without_network_research": true,
+      "source_sha256": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
+      "matrix_status": "NON_COVER_TEXT_READY_COVER_DEFERRED_RUNTIME_HOLD",
+      "noncover_gaps": [],
+      "whole_narrative_coverage": "PASS",
+      "immutable_identity_current": true,
+      "bound_content_matches_current": true,
+      "chapter_count": 1
+    },
+    "local_noncover_decision_uses": {
+      "catalog_metadata": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_preview": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_delivery": {
+        "passed": true,
+        "reasons": []
+      },
+      "reading_pass_session": {
+        "passed": true,
+        "reasons": []
+      },
+      "reading_pass_renewal": {
+        "passed": true,
+        "reasons": []
+      },
+      "cover_display": {
+        "passed": false,
+        "reasons": [
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "audio_stream": {
+        "passed": false,
+        "reasons": [
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "audio_download": {
+        "passed": false,
+        "reasons": [
+          "USE_NOT_AUTHORIZED"
+        ]
+      }
+    },
+    "shipped_runtime_registry_uses": {
+      "reader_preview": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "reader_delivery": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "cover_display": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      }
+    },
+    "decision_registered_in_shipped_production_registry": false,
+    "controlled_live_allowlist_contains_title": false,
+    "reader_page_plan": {
+      "passed": true,
+      "manifest": {
+        "total_pages": 4,
+        "public_preview_pages": 3,
+        "version": "93a651174f9942b1c9fba18c",
+        "chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "chapter_title": "Sredni Vashtar",
+            "chapter_order": 1,
+            "first_page_index": 1,
+            "last_page_index": 4
+          }
+        ]
+      },
+      "pages": [
+        {
+          "page_index": 1,
+          "chapter_id": "chapter-001",
+          "content_sha256": "2d248971b014934b934875bff79eea65679d4c4e082ee8f678e9a423281605c9",
+          "is_public_preview": true
+        },
+        {
+          "page_index": 2,
+          "chapter_id": "chapter-001",
+          "content_sha256": "2b79bd7ab510cb5be0b9bca0cc8f50e8c7c1c42bd0967f509a0a4ea15663dc22",
+          "is_public_preview": true
+        },
+        {
+          "page_index": 3,
+          "chapter_id": "chapter-001",
+          "content_sha256": "76d3616216c77af6256119c948e6ffb764ded70019b773f1cbba3cd6c3e2656a",
+          "is_public_preview": true
+        },
+        {
+          "page_index": 4,
+          "chapter_id": "chapter-001",
+          "content_sha256": "97d14cc5c09f7ea1ec99997c6ac7bfe285322a569da7344f83ed35364c3a178b",
+          "is_public_preview": false
+        }
+      ],
+      "state": "INACTIVE_LOCAL_PLAN_NOT_PROMOTED",
+      "runtime_readback": "NOT_RUN_TITLE_COVER_HOLD",
+      "fresh_browser_visual_qa": "NOT_RUN_TITLE_COVER_HOLD",
+      "limitation": "Deterministic structural/page checks are not a fresh browser comparison or customer-ready declaration."
+    },
+    "cover_evidence": {
+      "passed": false,
+      "authorship_evidence_status": "RECORDED_GLOBAL_OWNER_DESIGN_STATEMENT_APPLIES",
+      "ownership_reconfirmation_required": false,
+      "signature_or_psd_required": false,
+      "third_party_dispute_asserted": false,
+      "declaration_path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+      "declaration_sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+      "front_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
+      "back_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275477/earnalism/covers/back/sredni-vashtar_back_1600x2400.png",
+      "current_get_receipt_path": "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-2/cover_http_receipts.json",
+      "request_count_total": 2,
+      "current_exact_asset_receipts": [
+        {
+          "side": "front",
+          "requested_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
+          "method": "GET",
+          "request_count": 1,
+          "redirects_allowed": false,
+          "retrieved_at": "2026-10-02T10:49:42.257264+00:00",
+          "http_status": 200,
+          "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
+          "content_type": "image/png",
+          "byte_count": 185325,
+          "response_sha256": "28acd2dadefe6b665f06c992fa86543814245a825a1a8c6e225263fc240829ac",
+          "dimensions": [
+            1600,
+            2400
+          ],
+          "format": "PNG",
+          "artifact_path": "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-2/front-cover-current.png",
+          "image_header_valid": true
+        },
+        {
+          "side": "back",
+          "requested_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275477/earnalism/covers/back/sredni-vashtar_back_1600x2400.png",
+          "method": "GET",
+          "request_count": 1,
+          "redirects_allowed": false,
+          "retrieved_at": "2026-10-02T10:49:53.523637+00:00",
+          "http_status": 200,
+          "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275477/earnalism/covers/back/sredni-vashtar_back_1600x2400.png",
+          "content_type": "image/png",
+          "byte_count": 378809,
+          "response_sha256": "e74da10d4d84a8752ee9ed630ebc560635a0f0247ea65e7dd36e27eff782b01c",
+          "dimensions": [
+            1600,
+            2400
+          ],
+          "format": "PNG",
+          "artifact_path": "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-2/back-cover-current.png",
+          "image_header_valid": true
+        }
+      ],
+      "pixel_qa_path": "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-2/cover_review.json",
+      "pixel_qa_status": "FAIL_OBSERVABLE_COVER_QA",
+      "canonical_cover_provenance_record_exists": false,
+      "canonical_cover_approval_record_exists": false,
+      "canonical_cover_provenance_sha256": null,
+      "old_generation_report_placeholder_entries": [
+        {
+          "slug": "sredni-vashtar",
+          "front": true,
+          "kind": "visual_placeholder",
+          "reason": "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif."
+        }
+      ],
+      "binding_state": "CURRENT_BYTES_HASHED_OUTSIDE_CANONICAL_QA_FAILED_NOT_ACCEPTED",
+      "production_observations": "NOT_RUN"
+    }
+  },
+  "canonical_package_hashes": {
+    "data/controlled_publications/sredni-vashtar/approval_evidence.json": "d2eec4f08fcd81f7156fc122a1c9fb20dd96ef0cde660c69801b03bfd9a000d3",
+    "data/controlled_publications/sredni-vashtar/chapters/chapter-001.json": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5",
+    "data/controlled_publications/sredni-vashtar/checksum_manifest.json": "4683582293ceeb62d713a91bd4f69bbe0e8922da67fe6d3c764a060d1bd6da45",
+    "data/controlled_publications/sredni-vashtar/highlight_sync.json": "0b302f6d91f901adad699ed496663b1ebbb8d17917cd4bbdc340f75eb94ca728",
+    "data/controlled_publications/sredni-vashtar/public_book.json": "c027b799066b584a244c9025086df028d7a9ef65c5d7e812735b27e64420c59f",
+    "data/controlled_publications/sredni-vashtar/publication_authorization.json": "20bb6b3ae3075433c2ed8396f101642442b34b51d51ce5c195074b222435712a",
+    "data/controlled_publications/sredni-vashtar/publication_manifest.json": "1f1845f14b3c3dbbf3a123c9d1ed9e66263072ae1485165c289ad64a19365db2",
+    "data/controlled_publications/sredni-vashtar/reader_manifest.json": "2ccf2bae7a65d944946f1cf4ca5a5f8b4011408638d67cc95e7f8bf6eca3ab54",
+    "data/controlled_publications/sredni-vashtar/rights_decision.json": "8c48bd15b23e352d5f195ab007a60c993b1fe72dd067f65874484c71942bb428",
+    "data/controlled_publications/sredni-vashtar/source_evidence.json": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f"
+  },
+  "evidence_hashes": {
+    "AGENTS.md": "7cc69029c0afc5b0212ac62b67b0eb2e21ecfee9ac29dce2ecca0899dff72d49",
+    "internal/earnalism_intelligence/EARNALISM_OPERATING_DOCTRINE.md": "d8ab17665c1bd3137d3354b19aa05eaf3aa7341fb88d0a663ecbc2eda92908cb",
+    "internal/earnalism_intelligence/release_decision_policy.md": "7e879f0eae26ba246af6025e8f2494d9afa0e198f54ac8bd96c2e1ecdbbe7fa6",
+    "internal/earnalism_intelligence/cover_acceptance_policy.json": "db09fc34a416d99c2ad3283ba320e6198cc42007f6fb19c8f78468466a714f32",
+    "internal/earnalism_intelligence/full_catalogue_completion_state.json": "dcf2c2b6d88b3a4f2e476a524b4999cc1ff698a724f66d7aa7cd6f2718852d52",
+    "internal/earnalism_intelligence/catalogue_clearance_20261002_state.json": "9f7eb208b6b66e1b22d33145f0cd3de985a1de4f989f2f0f32651f1c0ab34504",
+    "internal/legal/catalogue_clearance_20261002/README.md": "9e920b6489af57b36878b37fa1aef3446db22da4ea7da7096d9b7c08528e0ba0",
+    "internal/legal/catalogue_clearance_20261002/english/README.md": "ff04b254dd0690f81f166855c090fe86763e608e04882712039d54e9b16d0b60",
+    "internal/legal/catalogue_clearance_20261002/english/matrix.json": "949dcbb489cca03b3a894213059c87cf2d67924739580e62e4bcca0fdc8fe15f",
+    "internal/legal/catalogue_clearance_20261002/english/current_whole_work_boundary_verification.json": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e",
+    "internal/legal/catalogue_clearance_20261002/inactive-reader-segment-plans.json": "81dfc6323d8ee6507d51422fab384bbb80ea477d173431294072f0717217a9db",
+    "backend/data/graphical_cover_generation_report.json": "8570544fb5d6cb765086a429cd0f1966e7565a3551fa0c2c8f5d84bf152fa69b",
+    "backend/data/rights_decision_registry.json": "5a577e35a01b546ebae2ae94d2d72850fcfdcfb94810d0acf8a8d66728209607",
+    "data/controlled_launch.json": "6fe5391a83a85a391b61905ff13aab6d934003b556740b12a091fdb9d2db1d22",
+    "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55"
+  },
+  "backend_mirror_comparison": [
+    {
+      "file": "approval_evidence.json",
+      "canonical_sha256": "d2eec4f08fcd81f7156fc122a1c9fb20dd96ef0cde660c69801b03bfd9a000d3",
+      "backend_exists": true,
+      "backend_sha256": "7d02c5428a1b63f6639424b87271ebffb00675e24df2ea36c124afa2f46c494a",
+      "identical": false
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "canonical_sha256": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5",
+      "backend_exists": true,
+      "backend_sha256": "1479bad3f14cc9c48bf4c415d49f848933ba65436fe2b5b1efda0156be8d1260",
+      "identical": false
+    },
+    {
+      "file": "checksum_manifest.json",
+      "canonical_sha256": "4683582293ceeb62d713a91bd4f69bbe0e8922da67fe6d3c764a060d1bd6da45",
+      "backend_exists": true,
+      "backend_sha256": "acf5dbbc942cbffdf4645e06113989dc4a89179ff1791420a954332b2bfcc5c0",
+      "identical": false
+    },
+    {
+      "file": "highlight_sync.json",
+      "canonical_sha256": "0b302f6d91f901adad699ed496663b1ebbb8d17917cd4bbdc340f75eb94ca728",
+      "backend_exists": false,
+      "backend_sha256": null,
+      "identical": false
+    },
+    {
+      "file": "public_book.json",
+      "canonical_sha256": "c027b799066b584a244c9025086df028d7a9ef65c5d7e812735b27e64420c59f",
+      "backend_exists": true,
+      "backend_sha256": "31ca9d07e3fa8e594daf8e1ce1af839226fb526a3bb07a51bc5962d8bc899c92",
+      "identical": false
+    },
+    {
+      "file": "publication_authorization.json",
+      "canonical_sha256": "20bb6b3ae3075433c2ed8396f101642442b34b51d51ce5c195074b222435712a",
+      "backend_exists": false,
+      "backend_sha256": null,
+      "identical": false
+    },
+    {
+      "file": "publication_manifest.json",
+      "canonical_sha256": "1f1845f14b3c3dbbf3a123c9d1ed9e66263072ae1485165c289ad64a19365db2",
+      "backend_exists": false,
+      "backend_sha256": null,
+      "identical": false
+    },
+    {
+      "file": "reader_manifest.json",
+      "canonical_sha256": "2ccf2bae7a65d944946f1cf4ca5a5f8b4011408638d67cc95e7f8bf6eca3ab54",
+      "backend_exists": true,
+      "backend_sha256": "2ccf2bae7a65d944946f1cf4ca5a5f8b4011408638d67cc95e7f8bf6eca3ab54",
+      "identical": true
+    },
+    {
+      "file": "rights_decision.json",
+      "canonical_sha256": "8c48bd15b23e352d5f195ab007a60c993b1fe72dd067f65874484c71942bb428",
+      "backend_exists": false,
+      "backend_sha256": null,
+      "identical": false
+    },
+    {
+      "file": "source_evidence.json",
+      "canonical_sha256": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
+      "backend_exists": true,
+      "backend_sha256": "16f999e4b2708921fcc5f912f9d2c9b350ab66490d1e67d8ac546b851a79fc61",
+      "identical": false
+    }
+  ],
+  "external_blockers": [
+    {
+      "code": "COVER_QA_FALSE_RELEASE_LABEL_AND_GENERIC_GRAPHICAL_TEMPLATE",
+      "detail": "Actual current front PNG visibly carries LIVE CONTROLLED RELEASE while title remains held; generic repeated gold circle chains and lines do not establish a story-specific graphical cover. This is a pixel/quality hold, not a challenge to the recorded owner authorship.",
+      "front_sha256": "28acd2dadefe6b665f06c992fa86543814245a825a1a8c6e225263fc240829ac",
+      "evidence_path": "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-2/cover_review.json"
+    },
+    {
+      "code": "BACK_COVER_LEGIBILITY_AND_TRUNCATED_EXCERPT",
+      "detail": "Actual current back PNG uses pale text over gold shapes/lines with inconsistent contrast; excerpt visibly terminates mid-word at \"disagreeable an\".",
+      "back_sha256": "e74da10d4d84a8752ee9ed630ebc560635a0f0247ea65e7dd36e27eff782b01c",
+      "evidence_path": "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-2/cover_review.json"
+    },
+    {
+      "code": "ACCEPTED_EDITION_COVER_BYTE_BINDING_NOT_CREATED_QA_FAILED",
+      "detail": "Downloaded exact owner-designed byte hashes/dimensions are retained outside canonical, but current canonical authorization still has null cover_provenance_sha256 and excludes cover display. No full-scope proposal was prepared because the actual QA failed. No repeat owner declaration/signature/PSD is required.",
+      "evidence_path": "data/controlled_publications/sredni-vashtar/publication_authorization.json"
+    }
+  ],
+  "global_activation_gates_pending": [
+    "Current local accepted non-cover record is absent from shipped production registry.",
+    "Canonical controlled live allowlist excludes this title.",
+    "Backend package has historical identities; source-only preparation has not been promoted.",
+    "Trusted production Reader manifest/version readback and fresh mock-matching browser QA are not yet executed."
+  ],
+  "historical_metadata_notes": {
+    "package_local_live_flags": {
+      "approved_to_publish": true,
+      "isLive": true,
+      "isPublic": true,
+      "is_published": true,
+      "publication_status": "LIVE_APPROVED"
+    },
+    "package_local_audio_flags": {
+      "audio_enabled": true,
+      "audiobook_enabled": true,
+      "generate_audiobook": true
+    },
+    "stale_public_rights_basis": "Saki died 1916; first published 1911. Public domain in India and the U.S.",
+    "authoritative_current_scope": "IN-only non-cover text; publication_upper_bound_year=1912; original_publication_year=null; audio and cover display excluded.",
+    "handling": "Historical internal flags were preserved; they do not override current authority or authorize exposure."
+  },
+  "changes": {
+    "canonical_changes": false,
+    "shared_registry_changes": false,
+    "runtime_changes": false,
+    "production_changes": false,
+    "paid_calls": 0,
+    "new_tasks": 0,
+    "proposed_patch": null,
+    "cover_evidence_downloads": 2,
+    "cover_replacements": false,
+    "full_scope_proposal": null
+  },
+  "next_exact_action": "Keep this title held in existing campaign #477. In the authorized cover-remediation lane, remove permanent release-status wording, use a clear Sredni Vashtar narrative motif, and render a legible complete back-cover synopsis with sufficient contrast. After genuinely changed covers pass QA, bind exact byte hashes/dimensions plus the already-recorded owner-designed declaration in an explicitly unaccepted edition/full-scope proposal for independent review. Do not repeat owner-authorship/signature/PSD requests or completed source/package checks; no production action is authorized by this receipt.",
+  "revision": 2,
+  "supersession": {
+    "initial_result_path": "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-2/result-initial-superseded.json",
+    "initial_result_sha256": "337f52e7e0a99b20a8c68952f708083e0929d70903ab2dc8755b8b49b17befff",
+    "reason": "Global recorded owner cover-design declaration applies. The initial demand for fresh authorship/licensing evidence is withdrawn. Current exact image GET/pixel QA supplies the remaining observable blocker and byte identities.",
+    "initial_noncover_text_checksum_page_checks": "REUSED_NOT_REPEATED"
+  },
+  "worker_artifact_hashes": {
+    "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-2/cover_http_receipts.json": "a9e142b01850d4f9d1227657882e7479ceb108f341bf2db3c6ad5d4c7cd6ae51",
+    "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-2/cover_review.json": "a8c56359ba9217cb626c48bb3e914b4398ad41cdabc92802a4b7c7fec4e9f704",
+    "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-2/front-cover-current.png": "28acd2dadefe6b665f06c992fa86543814245a825a1a8c6e225263fc240829ac",
+    "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-2/back-cover-current.png": "e74da10d4d84a8752ee9ed630ebc560635a0f0247ea65e7dd36e27eff782b01c"
+  },
+  "production_observations": "NOT_RUN"
+}

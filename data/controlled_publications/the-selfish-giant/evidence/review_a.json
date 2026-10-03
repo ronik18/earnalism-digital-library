@@ -1,0 +1,280 @@
+{
+  "schema": "earnalism.independent-next-cohort-review.v1",
+  "reviewer": "A",
+  "slug": "the-selfish-giant",
+  "disposition": "PASS_EXACT_UNACCEPTED_PREPARATION_VISUAL_LINEAGE_SOURCE_AND_PACKAGE_BINDING",
+  "review_date": "2026-10-03",
+  "authority": "Prospective Oct3 owner delegation; this reviewer does not accept, register or activate anything.",
+  "package_stage": "UNACCEPTED_PROPOSAL",
+  "components_checked": [
+    {
+      "component": "source_evidence",
+      "sha256": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d"
+    },
+    {
+      "component": "publication_manifest",
+      "sha256": "aadc5957bb616737de46f002a2a41f10837b490a48d17f3d19c98a744d5c84fd"
+    },
+    {
+      "component": "reader_manifest",
+      "sha256": "d5ce7da734364efdd9a2bd6eace1ee2df66bcfa0dcf7ea4e99d49502b330fc9c"
+    },
+    {
+      "component": "approval_evidence",
+      "sha256": "51256c44750faff02579f480159bfb4d30d9dfb4061e5906a82e6135b64cd54e"
+    },
+    {
+      "component": "public_book",
+      "sha256": "489c476014ecb49ff12e1b3cec24bd1c0c9b8ea312f2bdb4bf5f717d8e0481bf"
+    },
+    {
+      "component": "checksum_manifest",
+      "sha256": "f945a9df3f842effb801f8661ddd9a0b4e6c4c3de37cfce5cb97c002f2b44df2"
+    },
+    {
+      "component": "cover_provenance",
+      "sha256": "becaa05505a87f54f017f6ef2d80a921196ed281993a22a72bd2b1c3f4dd536c"
+    }
+  ],
+  "checksums_checked": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "51256c44750faff02579f480159bfb4d30d9dfb4061e5906a82e6135b64cd54e"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "12c1db2943a0b57aea333ed1870472ea8332d457093d4255185385a7a157e3b1"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "becaa05505a87f54f017f6ef2d80a921196ed281993a22a72bd2b1c3f4dd536c"
+    },
+    {
+      "file": "covers/back-delivery.webp",
+      "sha256": "14b007092896bd2d0e4396ba0ecb1e430650a7aa772f855a347a6269daa75e60"
+    },
+    {
+      "file": "covers/back-layout-repair.png",
+      "sha256": "6337be1964dfa48aedd7d35233cfdb84f422dd311545b265b9c259444f8795f0"
+    },
+    {
+      "file": "covers/back-original.png",
+      "sha256": "6903c7610ac6141b0f4d8d025e7e9fe9f347e2922996368ef7dd28fe8c18b511"
+    },
+    {
+      "file": "covers/front-delivery.webp",
+      "sha256": "777a773d9cebbf236f9bfb79d52d35ca7206c59fc38eb04d85a84abc480d98cd"
+    },
+    {
+      "file": "covers/front-layout-repair.png",
+      "sha256": "e01b95dc8d321678df5c9fe5e395728187ea03984cc69c59ae34471603fb7dc4"
+    },
+    {
+      "file": "covers/front-original.png",
+      "sha256": "f10e1353932821ab22a0d13b68a40394f06eb1c9a97b04e5e126897dfbb3fcc2"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "5bb55dc95aade157eedc8cb2e4255015af7426b38dc43692a3ae8d317a3e30e0"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "489c476014ecb49ff12e1b3cec24bd1c0c9b8ea312f2bdb4bf5f717d8e0481bf"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "16514ed5af14d72f8eddfbd6d5896ad4f0cc28181b4f8e21b351a065dd49fa0c"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "d5ce7da734364efdd9a2bd6eace1ee2df66bcfa0dcf7ea4e99d49502b330fc9c"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d"
+    }
+  ],
+  "source_and_complete_selected_narrative": {
+    "status": "PASS_REUSED_IMMUTABLE_BOUNDARY_EVIDENCE",
+    "boundary_artifact": "internal/legal/catalogue_clearance_20261002/english/current_whole_work_boundary_verification.json",
+    "boundary_artifact_sha256": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e",
+    "source_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+    "content_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+    "first_last_anchors_match_current_chapter": true,
+    "internal_gaps": [],
+    "source_evidence_chapter_and_highlight_byte_unchanged": true,
+    "new_source_fetches": 0,
+    "containment_alone_is_not_completeness": true,
+    "coverage_scope": "Project Gutenberg #902 selected Wilde Selfish Giant narrative, 1910 impression; illustrations excluded"
+  },
+  "assets": {
+    "front": {
+      "original_sha256": "f10e1353932821ab22a0d13b68a40394f06eb1c9a97b04e5e126897dfbb3fcc2",
+      "repaired_png_sha256": "e01b95dc8d321678df5c9fe5e395728187ea03984cc69c59ae34471603fb7dc4",
+      "delivery_sha256": "777a773d9cebbf236f9bfb79d52d35ca7206c59fc38eb04d85a84abc480d98cd",
+      "delivery_bytes": 35612,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "outside_mask_rgb_pixels_unchanged": true,
+      "actual_png_and_webp_visual_inspection": "PASS_LEGIBLE_COMPLETE_COPY_TITLE_AUTHOR_FOOTER_NO_FALSE_LIVE_BADGE"
+    },
+    "back": {
+      "original_sha256": "6903c7610ac6141b0f4d8d025e7e9fe9f347e2922996368ef7dd28fe8c18b511",
+      "repaired_png_sha256": "6337be1964dfa48aedd7d35233cfdb84f422dd311545b265b9c259444f8795f0",
+      "delivery_sha256": "14b007092896bd2d0e4396ba0ecb1e430650a7aa772f855a347a6269daa75e60",
+      "delivery_bytes": 85306,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "outside_mask_rgb_pixels_unchanged": true,
+      "actual_png_and_webp_visual_inspection": "PASS_LEGIBLE_COMPLETE_COPY_TITLE_AUTHOR_FOOTER_NO_FALSE_LIVE_BADGE"
+    }
+  },
+  "copy": "Exact whitespace-normalized complete existing opening copy; no invented narrative fact.",
+  "provenance": {
+    "owner_declaration_path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+    "owner_declaration_sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "actual_category": "Existing owner-designed legacy graphical artwork with bounded deterministic text overlay and disclosed derivative lineage. This is not a runtime graphical fallback image.",
+    "rights_not_inferred_from_visual_review": true
+  },
+  "policy": {
+    "path": "internal/earnalism_intelligence/cover_acceptance_policy.json",
+    "sha256": "db09fc34a416d99c2ad3283ba320e6198cc42007f6fb19c8f78468466a714f32",
+    "graphical_not_typography_only": true,
+    "deterministic_title_author_overlay": true,
+    "generic_theme_aesthetic_limitation": "Generic gold ornament lacks a story-specific motif; prior Sredni criticism preserved. As owner legacy graphical derivative this aesthetic limitation does not independently create a missing-rights finding.",
+    "required_paperwork_delta": "NONE: actual owner legacy graphical derivative is reviewed; literal runtime fallback conformance is not claimed. Exact accepted bindings still require fresh serialized review.",
+    "build_performance_runtime_gates": "Remain pending exact integration and normal checks; no Lighthouse regression observed or claimed."
+  },
+  "preservation_preimages_verified_against_main": [
+    {
+      "area": "root",
+      "file": "approval_evidence.json",
+      "sha256": "612a84ee34975b41a8f4a06459938c117dfa2d1cd69435050062555052a9c553"
+    },
+    {
+      "area": "root",
+      "file": "chapters/chapter-001.json",
+      "sha256": "12c1db2943a0b57aea333ed1870472ea8332d457093d4255185385a7a157e3b1"
+    },
+    {
+      "area": "root",
+      "file": "checksum_manifest.json",
+      "sha256": "b510d7442db01e36fad1aabd2664150a48f71fd43d6dc08bb433af533332aaed"
+    },
+    {
+      "area": "root",
+      "file": "highlight_sync.json",
+      "sha256": "5bb55dc95aade157eedc8cb2e4255015af7426b38dc43692a3ae8d317a3e30e0"
+    },
+    {
+      "area": "root",
+      "file": "production_audio_evidence.json",
+      "sha256": "5e23b03ab04c4d318d78fbd6bb8becafe284407fb6ecd7c61998d6a0c180cc42"
+    },
+    {
+      "area": "root",
+      "file": "public_book.json",
+      "sha256": "280107213b6dc993f98d7915f353e36b73b3bb70494f70e7bec5bc44d1a77d7e"
+    },
+    {
+      "area": "root",
+      "file": "publication_authorization.json",
+      "sha256": "ea7a7a575a8825e29c65008817b4865ba6b498f380393fe79719fa34b9e73e83"
+    },
+    {
+      "area": "root",
+      "file": "publication_manifest.json",
+      "sha256": "39d068792b74572e6ff7af81070d44c80eb7f5bfe92cd4411212f4369dd6bd23"
+    },
+    {
+      "area": "root",
+      "file": "reader_manifest.json",
+      "sha256": "0f7603ff4f6723bfddad1a540800f9ddc9f1499ac85604bf077d0f56eb659259"
+    },
+    {
+      "area": "root",
+      "file": "rights_decision.json",
+      "sha256": "ca8926a59ce49fab5c702900356523d957f52bb4a1c51f6a0ee7d9d4006e5778"
+    },
+    {
+      "area": "root",
+      "file": "source_evidence.json",
+      "sha256": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d"
+    },
+    {
+      "area": "backend",
+      "file": "approval_evidence.json",
+      "sha256": "6685cd9a36ebf4a130a445837d594198416c97ed6bcb6f2e565b46270eaa7edb"
+    },
+    {
+      "area": "backend",
+      "file": "chapters/chapter-001.json",
+      "sha256": "c4d06e692633441ba05e0c2bfa7ee1e476c02045df9bb884d0f3ca6810cc753d"
+    },
+    {
+      "area": "backend",
+      "file": "checksum_manifest.json",
+      "sha256": "001902278f02612dae9dc8d3a1dd9e38cd414e35704e0a623f9f650ee8cbed60"
+    },
+    {
+      "area": "backend",
+      "file": "highlight_sync.json",
+      "sha256": "5bb55dc95aade157eedc8cb2e4255015af7426b38dc43692a3ae8d317a3e30e0"
+    },
+    {
+      "area": "backend",
+      "file": "production_audio_evidence.json",
+      "sha256": "5e23b03ab04c4d318d78fbd6bb8becafe284407fb6ecd7c61998d6a0c180cc42"
+    },
+    {
+      "area": "backend",
+      "file": "public_book.json",
+      "sha256": "796c11191413e8b66e606a3846a491f8ab0763855783a118a1d8840270a18ea0"
+    },
+    {
+      "area": "backend",
+      "file": "publication_manifest.json",
+      "sha256": "8a671204c115c5e84ba11fe9aa81053e2da629a8c9bf839e66b1c0dc5f37ad6a"
+    },
+    {
+      "area": "backend",
+      "file": "reader_manifest.json",
+      "sha256": "aedb9cb50bf14839e2bf32a3c6d267ea24b0ff220fe8334069298f4a96bf6eae"
+    },
+    {
+      "area": "backend",
+      "file": "source_evidence.json",
+      "sha256": "489eb8ea5d0db8e8c55b2586fc8fdfb29b8cfb7c487a814f785187aacef689f4"
+    }
+  ],
+  "package_inventory_sha256": "2482bca27e4240b5ddd03dc05dd72bd1552633ffe11ae67f9f82a858923b06bb",
+  "package_inventory": {
+    "approval_evidence.json": "51256c44750faff02579f480159bfb4d30d9dfb4061e5906a82e6135b64cd54e",
+    "chapters/chapter-001.json": "12c1db2943a0b57aea333ed1870472ea8332d457093d4255185385a7a157e3b1",
+    "checksum_manifest.json": "f945a9df3f842effb801f8661ddd9a0b4e6c4c3de37cfce5cb97c002f2b44df2",
+    "cover_provenance.json": "becaa05505a87f54f017f6ef2d80a921196ed281993a22a72bd2b1c3f4dd536c",
+    "covers/back-delivery.webp": "14b007092896bd2d0e4396ba0ecb1e430650a7aa772f855a347a6269daa75e60",
+    "covers/back-layout-repair.png": "6337be1964dfa48aedd7d35233cfdb84f422dd311545b265b9c259444f8795f0",
+    "covers/back-original.png": "6903c7610ac6141b0f4d8d025e7e9fe9f347e2922996368ef7dd28fe8c18b511",
+    "covers/front-delivery.webp": "777a773d9cebbf236f9bfb79d52d35ca7206c59fc38eb04d85a84abc480d98cd",
+    "covers/front-layout-repair.png": "e01b95dc8d321678df5c9fe5e395728187ea03984cc69c59ae34471603fb7dc4",
+    "covers/front-original.png": "f10e1353932821ab22a0d13b68a40394f06eb1c9a97b04e5e126897dfbb3fcc2",
+    "highlight_sync.json": "5bb55dc95aade157eedc8cb2e4255015af7426b38dc43692a3ae8d317a3e30e0",
+    "public_book.json": "489c476014ecb49ff12e1b3cec24bd1c0c9b8ea312f2bdb4bf5f717d8e0481bf",
+    "publication_authorization.json": "16514ed5af14d72f8eddfbd6d5896ad4f0cc28181b4f8e21b351a065dd49fa0c",
+    "publication_manifest.json": "aadc5957bb616737de46f002a2a41f10837b490a48d17f3d19c98a744d5c84fd",
+    "reader_manifest.json": "d5ce7da734364efdd9a2bd6eace1ee2df66bcfa0dcf7ea4e99d49502b330fc9c",
+    "rights_decision.json": "56eb190c25918766c6145974dff5a8e21c2ef392d0df067e5ccba01415a3a486",
+    "source_evidence.json": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d"
+  },
+  "audio": "DISABLED_NO_NEW_AUDIO_AUTHORIZATION; historical audio materials preserved as preimages.",
+  "production_observed": false,
+  "registry_allowlist_release_mutations": false,
+  "next_action": "After both independent preparation PASS, root may create actual prospective automated acceptance and rebind all changed components. Fresh exact accepted-package/integrated-tree review then protected checks, deployment/canary and truthful readback are required before release.",
+  "rights_decision_raw_sha256": "56eb190c25918766c6145974dff5a8e21c2ef392d0df067e5ccba01415a3a486",
+  "audio_correction_sha256": "f8ceba8ad39db40b45b264a79ecc1b8f71473e43717500ddee48d164e6a51a90"
+}

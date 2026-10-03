@@ -220,10 +220,80 @@ def test_catalog_wide_reader_indexes_are_complete_and_deterministic():
             "chapters": [{"id": f"chapter-{index:03d}", "order": index}
                          for index in range(1, chapter_count + 1)],
         })
+    # Source-complete next-cohort overlays are bound to independently reviewed
+    # exact manifests. Preserve the historical fixture and never derive expected
+    # identities, counts, or hashes from the runtime candidates being tested.
+    next_cohort_overlays = {
+        'acres-of-diamonds': [{'id': 'chapter-001', 'order': 1}, {'id': 'chapter-002', 'order': 2}, {'id': 'chapter-003', 'order': 3}, {'id': 'chapter-004', 'order': 4}, {'id': 'chapter-005', 'order': 5}, {'id': 'chapter-006', 'order': 6}, {'id': 'chapter-007', 'order': 7}, {'id': 'chapter-008', 'order': 8}, {'id': 'chapter-009', 'order': 9}, {'id': 'chapter-010', 'order': 10}, {'id': 'chapter-011', 'order': 11}, {'id': 'chapter-012', 'order': 12}],
+        'my-life-and-work': [{'id': 'chapter-001', 'order': 1}, {'id': 'chapter-002', 'order': 2}, {'id': 'chapter-003', 'order': 3}, {'id': 'chapter-004', 'order': 4}, {'id': 'chapter-005', 'order': 5}, {'id': 'chapter-006', 'order': 6}, {'id': 'chapter-007', 'order': 7}, {'id': 'chapter-008', 'order': 8}, {'id': 'chapter-009', 'order': 9}, {'id': 'chapter-010', 'order': 10}, {'id': 'chapter-011', 'order': 11}, {'id': 'chapter-012', 'order': 12}, {'id': 'chapter-013', 'order': 13}, {'id': 'chapter-014', 'order': 14}, {'id': 'chapter-015', 'order': 15}, {'id': 'chapter-016', 'order': 16}, {'id': 'chapter-017', 'order': 17}, {'id': 'chapter-018', 'order': 18}, {'id': 'chapter-019', 'order': 19}, {'id': 'chapter-020', 'order': 20}],
+        'the-principles-of-scientific-management': [{'id': 'chapter-001', 'order': 1}, {'id': 'chapter-002', 'order': 2}, {'id': 'chapter-003', 'order': 3}, {'id': 'chapter-004', 'order': 4}],
+        'the-great-gatsby': [{'id': 'chapter-000', 'order': 1}, {'id': 'chapter-001', 'order': 2}, {'id': 'chapter-002', 'order': 3}, {'id': 'chapter-003', 'order': 4}, {'id': 'chapter-004', 'order': 5}, {'id': 'chapter-005', 'order': 6}, {'id': 'chapter-006', 'order': 7}, {'id': 'chapter-007', 'order': 8}, {'id': 'chapter-008', 'order': 9}, {'id': 'chapter-009', 'order': 10}],
+        'the-time-machine': [{'id': 'chapter-001', 'order': 1}, {'id': 'chapter-002', 'order': 2}, {'id': 'chapter-003', 'order': 3}, {'id': 'chapter-004', 'order': 4}, {'id': 'chapter-005', 'order': 5}, {'id': 'chapter-006', 'order': 6}, {'id': 'chapter-007', 'order': 7}, {'id': 'chapter-008', 'order': 8}, {'id': 'chapter-009', 'order': 9}, {'id': 'chapter-010', 'order': 10}, {'id': 'chapter-011', 'order': 11}, {'id': 'chapter-012', 'order': 12}, {'id': 'chapter-013', 'order': 13}, {'id': 'chapter-014', 'order': 14}, {'id': 'chapter-015', 'order': 15}, {'id': 'chapter-016', 'order': 16}, {'id': 'chapter-017', 'order': 17}],
+        'bn-066': [{'id': 'chapter-001', 'order': 1}, {'id': 'chapter-022', 'order': 2}, {'id': 'chapter-023', 'order': 3}, {'id': 'chapter-024', 'order': 4}, {'id': 'chapter-025', 'order': 5}, {'id': 'chapter-026', 'order': 6}, {'id': 'chapter-027', 'order': 7}, {'id': 'chapter-028', 'order': 8}, {'id': 'chapter-029', 'order': 9}, {'id': 'chapter-030', 'order': 10}, {'id': 'chapter-031', 'order': 11}, {'id': 'chapter-032', 'order': 12}, {'id': 'chapter-033', 'order': 13}, {'id': 'chapter-034', 'order': 14}, {'id': 'chapter-035', 'order': 15}, {'id': 'chapter-036', 'order': 16}, {'id': 'chapter-037', 'order': 17}, {'id': 'chapter-038', 'order': 18}, {'id': 'chapter-039', 'order': 19}, {'id': 'chapter-040', 'order': 20}, {'id': 'chapter-041', 'order': 21}, {'id': 'chapter-042', 'order': 22}, {'id': 'chapter-045', 'order': 23}, {'id': 'chapter-044', 'order': 24}, {'id': 'chapter-043', 'order': 25}, {'id': 'chapter-046', 'order': 26}, {'id': 'chapter-002', 'order': 27}, {'id': 'chapter-003', 'order': 28}, {'id': 'chapter-004', 'order': 29}, {'id': 'chapter-005', 'order': 30}, {'id': 'chapter-006', 'order': 31}, {'id': 'chapter-007', 'order': 32}, {'id': 'chapter-008', 'order': 33}, {'id': 'chapter-009', 'order': 34}, {'id': 'chapter-010', 'order': 35}, {'id': 'chapter-011', 'order': 36}, {'id': 'chapter-012', 'order': 37}, {'id': 'chapter-013', 'order': 38}, {'id': 'chapter-014', 'order': 39}, {'id': 'chapter-015', 'order': 40}, {'id': 'chapter-016', 'order': 41}, {'id': 'chapter-017', 'order': 42}, {'id': 'chapter-018', 'order': 43}, {'id': 'chapter-019', 'order': 44}, {'id': 'chapter-020', 'order': 45}, {'id': 'chapter-021', 'order': 46}],
+        'lokrahasya': [{'id': 'chapter-006', 'order': 1}, {'id': 'chapter-008', 'order': 2}, {'id': 'chapter-001', 'order': 3}, {'id': 'chapter-002', 'order': 4}, {'id': 'chapter-007', 'order': 5}, {'id': 'chapter-011', 'order': 6}, {'id': 'chapter-004', 'order': 7}, {'id': 'chapter-009', 'order': 8}, {'id': 'chapter-010', 'order': 9}, {'id': 'chapter-012', 'order': 10}, {'id': 'chapter-015', 'order': 11}, {'id': 'chapter-013', 'order': 12}, {'id': 'chapter-005', 'order': 13}, {'id': 'chapter-003', 'order': 14}, {'id': 'chapter-014', 'order': 15}, {'id': 'chapter-016', 'order': 16}],
+        'the-wonderful-wizard-of-oz': [{'id': 'chapter-000', 'order': 1}, {'id': 'chapter-001', 'order': 2}, {'id': 'chapter-002', 'order': 3}, {'id': 'chapter-003', 'order': 4}, {'id': 'chapter-004', 'order': 5}, {'id': 'chapter-005', 'order': 6}, {'id': 'chapter-006', 'order': 7}, {'id': 'chapter-007', 'order': 8}, {'id': 'chapter-008', 'order': 9}, {'id': 'chapter-009', 'order': 10}, {'id': 'chapter-010', 'order': 11}, {'id': 'chapter-011', 'order': 12}, {'id': 'chapter-012', 'order': 13}, {'id': 'chapter-013', 'order': 14}, {'id': 'chapter-014', 'order': 15}, {'id': 'chapter-015', 'order': 16}, {'id': 'chapter-016', 'order': 17}, {'id': 'chapter-017', 'order': 18}, {'id': 'chapter-018', 'order': 19}, {'id': 'chapter-019', 'order': 20}, {'id': 'chapter-020', 'order': 21}, {'id': 'chapter-021', 'order': 22}, {'id': 'chapter-022', 'order': 23}, {'id': 'chapter-023', 'order': 24}, {'id': 'chapter-024', 'order': 25}],
+    }
+    next_cohort_manifest_sha256 = {
+        'dsires-baby': '83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee',
+        'sredni-vashtar': '2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad',
+        'the-cop-and-the-anthem': 'a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22',
+        'the-open-window': '8f5a8d563c587a28d30e1e001447cdb5328bdcd49df4b61d8d7838401aac6151',
+        'the-selfish-giant': 'd5ce7da734364efdd9a2bd6eace1ee2df66bcfa0dcf7ea4e99d49502b330fc9c',
+        'the-science-of-getting-rich': 'a42883b4eb214ae086998672472b0f86c9709e550da35c87789f95564cdefdb7',
+        'bn-066': 'cf08811a9edf32051c6929e8eb5b29abd6a36df4232c50049e630575f43114d7',
+        'lokrahasya': 'cd0d23d355b04e8a076dbc348a1364c3640fe7a149d8b7b2e78690c0ee22261c',
+        'mrinalini': 'b2510b44fa9ec57a7a7cc48be2482787ee4fe6cba0021ddd8a6cff71ef5275f7',
+        'frankenstein': '2d7d0f01dcbc35eebc51a178b4eb72a9d766cfe5ec56d618113455ba72c16434',
+        'pride-and-prejudice': '81b6c23e716ea4d26fae26cc8e9e3e7e37637fd0c9fb1619dccb7a94d0ab7676',
+        'the-great-gatsby': 'f544166427c91bb2b8546484bf0c811761345f2ec8f1c73c00afad88411fcb4c',
+        'the-secret-garden': '75d9899ba4ecf348e9bc75da118a4b0ac3aa9cb1e595e8598e3541f9154dff4f',
+        'the-time-machine': '1874f35f864ccffa65a9d7e38312c3f84df7fd8880120db0ac4ead237d1d913a',
+        'acres-of-diamonds': 'c083501e4fd683fe9490a8d5b113ef524b57b3aecacc98fbf73caf44e3066d0c',
+        'my-life-and-work': '8abb80566e377a38ba0730ffb69c7dc0fbb53358c6e0908492d968fea1313acd',
+        'the-principles-of-scientific-management': '87a47f53b9dbcbae66a09bee4bcc5769f4b5f584ef9bdfc4ab31b65959c3318f',
+        'the-wonderful-wizard-of-oz': '2323b65af075000645cd7ac0f3f841f4583ac1407ddefd849a1cbc7b06795d71',
+        'book-5704b31005': '6c7daced7a35b9f20ba2f8828e5636d7c644e6ceb272f1707871adafb5a2b759',
+    }
+    for package_key, manifest_sha256 in next_cohort_manifest_sha256.items():
+        assert hashlib.sha256((CONTROLLED_ROOT / package_key / "reader_manifest.json").read_bytes()).hexdigest() == manifest_sha256, package_key
+    next_cohort_source_evidence_sha256 = {
+        'dsires-baby': 'cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb',
+        'sredni-vashtar': 'ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f',
+        'the-cop-and-the-anthem': 'f40f277d758a03b9e05dd6ffa721b058766db6955ba4414d183a7f9bf45fb84f',
+        'the-open-window': 'bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d',
+        'the-selfish-giant': '48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d',
+        'the-science-of-getting-rich': '6324de50de9db456175bcd2cbecec794641fa8bdd322d2de2b49eaacc713a117',
+        'bn-066': '227c479e011f38150820a341bed084e5c184cda97bc12c034d7093ce660ab0e8',
+        'lokrahasya': 'b91f203f5374ba789227c46411bf5d4c2a3721cd27c4ed5e58dcedffaa33fa7e',
+        'mrinalini': 'd361d2a57e36d6cf70c84f1b5803a99306467116f44e200cfc16659e0145e94f',
+        'frankenstein': 'dc06292e3e257f690c3017e88ded33d0b6baa8b778d1629f3074d1f76b5df449',
+        'pride-and-prejudice': '9e4efacc3dbd251ea18aacd5805d781c1f64a450bea0225fae4ba6a394a97e99',
+        'the-great-gatsby': '93a1e5eab7ce62def0ef60ba3a2ae6e56ed964c688c1f2a827f3e88664a30874',
+        'the-secret-garden': 'd4fba2e016dc99ebbab2950c7f63186ec154e408da4d4acb09a82fa8ef959852',
+        'the-time-machine': '010c2fd7d0fa5ae1370f081876448c94a9bad177df7fe0b621b0f91c39af0cf5',
+        'acres-of-diamonds': '9371f2af833cbd9683e138e121b7c6ae77f17a18de6dd46cb4507a301a6eb29e',
+        'my-life-and-work': '1d5f331b74b4ac24ba559209d4d1c8ca3543a1cdc274a71bdf14bb2022b7d4b7',
+        'the-principles-of-scientific-management': 'e6b091fd0aebe2517dd1e2b6c8e8ef14d5ea6d6540daa66c33e0ba27a9ef2380',
+        'the-wonderful-wizard-of-oz': '7ec444ed90caa41fb950757933ee7399ef94fceab855bdd8c3e52a6806358ec5',
+        'book-5704b31005': 'f7d3ac1cbe169532038b008d48c0313290cedca638d23c7696d75d3a0c072f3b',
+    }
+    for package_key, source_sha256 in next_cohort_source_evidence_sha256.items():
+        assert hashlib.sha256((CONTROLLED_ROOT / package_key / "source_evidence.json").read_bytes()).hexdigest() == source_sha256, package_key
+    for package_key, expected_chapters in next_cohort_overlays.items():
+        expected_package = {
+            "package_key": package_key, "manifest_slug": package_key,
+            "chapter_count": len(expected_chapters), "chapters": expected_chapters,
+        }
+        current_inventory["packages"] = [
+            package for package in current_inventory["packages"]
+            if package["package_key"] != package_key
+        ] + [expected_package]
     current_inventory["expected_manifest_count"] = len(current_inventory["packages"])
     current_inventory["expected_chapter_count"] = sum(
         package["chapter_count"] for package in current_inventory["packages"]
     )
+    assert current_inventory["expected_manifest_count"] == 102
+    assert current_inventory["expected_chapter_count"] == 826
     actual = {
         path.parent.name: json.loads(path.read_text(encoding="utf-8"))
         for path in manifests

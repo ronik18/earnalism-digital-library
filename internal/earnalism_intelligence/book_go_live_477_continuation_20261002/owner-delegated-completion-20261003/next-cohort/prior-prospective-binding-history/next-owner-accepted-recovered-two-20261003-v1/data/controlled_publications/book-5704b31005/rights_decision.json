@@ -1,0 +1,50 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-book-5704b31005-exact-reader-cover-prospective-accepted",
+  "edition_id": "book-5704b31005",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "source_evidence": "f7d3ac1cbe169532038b008d48c0313290cedca638d23c7696d75d3a0c072f3b",
+    "source_integrity_validation": "89eac8e38ab78c63ae74dc799b89c6fe6fef9aa5755e55c645c94a1dd7ea11f6",
+    "publication_manifest": "c4ed4d0b8c367a0819a9cb81d7fdefad2c04ad84ab9c58bfb245b204a13295a5",
+    "reader_manifest": "6c7daced7a35b9f20ba2f8828e5636d7c644e6ceb272f1707871adafb5a2b759",
+    "approval_evidence": "65ac2f1bb5c12727e35acd3a973c52a86dcab5b98d51a316243b8a500fe854fd",
+    "public_book": "90de626c6f7046a73f0e6133652f452df0d8dc346c889111ea56d26a674cce95",
+    "checksum_manifest": "ac382008de59fe11e4033938709b05ed718c0c645734580df6bb7635570531b8",
+    "cover_provenance": "2a77a664e4b1b8d22c8299581575460442a502246076113cde5b3874550e3566",
+    "publication_authorization": "343cadddb610df22be1ebb347ffa82963da4d4b023085f1f15335932b4a3ae6e",
+    "owner_artwork_declaration": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "acceptance_review_a": "bf3615602cb27a7ff7a97da6849951abeb3469015c2e1da0bb0f8a8a715c8efd",
+    "acceptance_review_b": "c7d0ea841e42cfa6cde1888ee06c0c87fb550beeee74efb78ccff67ea8675686"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T05:56:54.375811+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Exact India text/edition rights are preserved from the archived predecessor and unchanged source/chapter/license records. Ronik Basak directly provided the owner-held copyright and publication provenance for the exact owner-created cover components; two independent passing source/art preparations bind the reviewed derivatives and deliveries. Prospective automated acceptance supersedes earlier procedural cover deferral for these components only. No human approval, other source/edition rights, unknown original construction method, audio grant or production observation inferred.",
+  "evidence_sha256": [
+    "4a101e1fe9a73ea196fbf82b7fda9b44ef84e7da7ecc484ac9a10e96dd4e22f4",
+    "f9569f74c51b89b6116867d0dac02049d4647573ae057de9e23b99aa22be9db3",
+    "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "1fc9cf8fae864434f95bc34656a96672c55d852f3dfdad4a1f386a1a1cc4e01c",
+    "8492830be5d4cec1996381e2d94cf25353bd75f92a843524b26d535356c74218",
+    "0bb4e780b9f0c237534d451a33f96bcf0d87073fa93162762604af6e97761d36",
+    "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "343cadddb610df22be1ebb347ffa82963da4d4b023085f1f15335932b4a3ae6e",
+    "2a77a664e4b1b8d22c8299581575460442a502246076113cde5b3874550e3566",
+    "bf3615602cb27a7ff7a97da6849951abeb3469015c2e1da0bb0f8a8a715c8efd",
+    "c7d0ea841e42cfa6cde1888ee06c0c87fb550beeee74efb78ccff67ea8675686"
+  ],
+  "accepted_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+  "conditions_satisfied": true
+}

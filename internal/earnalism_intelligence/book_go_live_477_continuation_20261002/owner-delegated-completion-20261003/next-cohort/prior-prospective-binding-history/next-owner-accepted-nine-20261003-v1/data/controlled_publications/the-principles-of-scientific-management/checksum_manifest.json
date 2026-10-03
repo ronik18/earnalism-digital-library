@@ -1,0 +1,78 @@
+{
+  "slug": "the-principles-of-scientific-management",
+  "generated_at": "2026-10-03T05:10:03.145513+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "111437c311cc4133fef200be29c3ab0ac28489aed9d7dd673e3191ab4f100389"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "54a34be7806d09e5d94918947214e4d2d58f78367fdab1efd9da8489522c2a35"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "5d5831cc3266c2a972290056cfeb8e3d598c09412b0bf35027687a704a56e994"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "0eb52d90eeea32e4aa583cc95ece5cb8350901a3f955274244aa916cf88b001c"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "33cd142e22486d545f9302026058eb1bac8d14efb80b25ac1cd0b241553197fb"
+    },
+    {
+      "file": "cover_delivery_derivation.json",
+      "sha256": "9b6609b625a2c7a15224c337d763ce93eb8c48356e299dd5ddf4bfac24be287b"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "49d8b48f570268f07aaff9cf2d99f0fc7de9e41abd61057c938e85bc825d9ed1"
+    },
+    {
+      "file": "covers/back.png",
+      "sha256": "a544cc2b26c584891032db2fd9ea447f33b4a72ab1e7801a5de853f3463aa5b9"
+    },
+    {
+      "file": "covers/front.png",
+      "sha256": "67895aecbc4c29e45658819f7b76316a3caecf5d9cca79c4592c03c5d90d581b"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "a41defc9882bca4759e902093932f56cbf628eb9f0e3e5860b9295d26a9c6ae0"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "78ed5b20d046916148faadfd1ddebae98964338c6a3a830b7434bf68654b7be1"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "66a3290c87fe25290a190b358834b27d975e4264d4737ba8666c06685e3c2519"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "87a47f53b9dbcbae66a09bee4bcc5769f4b5f584ef9bdfc4ab31b65959c3318f"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "e6b091fd0aebe2517dd1e2b6c8e8ef14d5ea6d6540daa66c33e0ba27a9ef2380"
+    },
+    {
+      "file": "source_integrity_validation.json",
+      "sha256": "1783ac19971b24959ba3c9334a80a473ec2afc37d75f8ea793b84445eb7d9ad9"
+    },
+    {
+      "file": "owner_artwork_declaration.json",
+      "sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264"
+    },
+    {
+      "file": "evidence/review_a.json",
+      "sha256": "3043b739322e3d4ffabd729cd834b936188018517075ffcf34ab73f85ca54c81"
+    },
+    {
+      "file": "evidence/review_b.json",
+      "sha256": "de3794f854eaa4ff7cd0ffbdeb9b37fcd70fd989e1ead6973042eedc19b8c646"
+    }
+  ]
+}

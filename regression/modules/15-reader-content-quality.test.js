@@ -61,6 +61,46 @@ const CURRENT_RELEASED_SLUGS = [
   "the-art-of-money-getting",
   "bn-035",
   "alices-adventures-in-wonderland",
+  "dsires-baby",
+  "sredni-vashtar",
+  "the-cop-and-the-anthem",
+  "the-open-window",
+  "the-selfish-giant",
+  "the-science-of-getting-rich",
+  "bn-066",
+  "lokrahasya",
+  "mrinalini",
+  "frankenstein",
+  "pride-and-prejudice",
+  "the-great-gatsby",
+  "the-secret-garden",
+  "the-time-machine",
+  "acres-of-diamonds",
+  "my-life-and-work",
+  "the-principles-of-scientific-management",
+  "the-wonderful-wizard-of-oz",
+  "book-5704b31005"
+];
+const PROSPECTIVE_READER_RELEASE_SLUGS = [
+  "dsires-baby",
+  "sredni-vashtar",
+  "the-cop-and-the-anthem",
+  "the-open-window",
+  "the-selfish-giant",
+  "the-science-of-getting-rich",
+  "bn-066",
+  "lokrahasya",
+  "mrinalini",
+  "frankenstein",
+  "pride-and-prejudice",
+  "the-great-gatsby",
+  "the-secret-garden",
+  "the-time-machine",
+  "acres-of-diamonds",
+  "my-life-and-work",
+  "the-principles-of-scientific-management",
+  "the-wonderful-wizard-of-oz",
+  "book-5704b31005"
 ];
 const BOILERPLATE_RE = /Project Gutenberg|Gutenberg-tm|START OF THE PROJECT|END OF THE PROJECT|Wikisource|Category:|Creative Commons|Download as|Edit this page/i;
 const AUDIO_FIELDS = ["audio_enabled", "audiobook_enabled", "generate_audiobook"];
@@ -140,12 +180,14 @@ describe("Reader content quality batch 1", () => {
     expect(launch.live_approved_slugs).toEqual(CURRENT_RELEASED_SLUGS);
     expect(new Set(launch.live_approved_slugs).size).toBe(launch.live_approved_slugs.length);
     for (const slug of BATCH_SLUGS) {
-      if (["jekyll-and-hyde", "picture-of-dorian-gray"].includes(slug)) {
+      if (["jekyll-and-hyde", "picture-of-dorian-gray", "frankenstein"].includes(slug)) {
         expect(launch.live_approved_slugs).toContain(slug);
         const folder = `data/controlled_publications/${slug}`;
         const exactDecision = readJson(`${folder}/rights_decision.json`);
         const publicBytes = fs.readFileSync(path.join(ROOT, folder, "public_book.json"));
-        expect(exactDecision.decision_id).toBe(`india-20261001-${slug}-owner-text-reader`);
+        expect(exactDecision.decision_id).toBe(slug === "frankenstein"
+          ? `india-20261003-${slug}-exact-reader-cover-prospective-accepted`
+          : `india-20261001-${slug}-owner-text-reader`);
         expect(exactDecision.components.public_book).toBe(require("node:crypto").createHash("sha256").update(publicBytes).digest("hex"));
         expect(exactDecision.territories).toEqual(["IN"]);
         expect(readJson(`${folder}/publication_manifest.json`).reader_release.exposed).toBe(true);
@@ -207,7 +249,13 @@ describe("Reader content quality batch 1", () => {
         const liveStatus = book === publicBook
           ? book.publication_status === "LIVE_APPROVED"
           : book.publicationStatus === "live";
-        expect(["live", "draft"]).toContain(book.publicationStatus);
+        if (book === publicBook && slug === "frankenstein") {
+          // The new exact accepted publication is declared published; retain
+          // the independent historical content-book/report states below.
+          expect(book.publicationStatus).toBe("published");
+        } else {
+          expect(["live", "draft"]).toContain(book.publicationStatus);
+        }
         if (book === publicBook) {
           expect(book.publication_status).toBe("LIVE_APPROVED");
           expect(book.isPublic).toBe(liveStatus);
@@ -232,6 +280,27 @@ describe("Reader content quality batch 1", () => {
       }
       for (const field of AUDIO_FIELDS) expect(publicBook[field]).toBe(false);
       expect(publicBook.publication_status).toBe("LIVE_APPROVED");
+    }
+  });
+
+  test("new exact India Reader packages are separately accepted without rewriting historical batch or audio reports", () => {
+    expect(CURRENT_RELEASED_SLUGS).toHaveLength(52);
+    expect(new Set(CURRENT_RELEASED_SLUGS).size).toBe(52);
+    for (const slug of PROSPECTIVE_READER_RELEASE_SLUGS) {
+      const folder = `data/controlled_publications/${slug}`;
+      const decision = readJson(`${folder}/rights_decision.json`);
+      const publication = readJson(`${folder}/publication_manifest.json`);
+      const publicBook = readJson(`${folder}/public_book.json`);
+      expect(decision.decision_id).toBe(`india-20261003-${slug}-exact-reader-cover-prospective-accepted`);
+      expect(decision.territories).toEqual(["IN"]);
+      expect(decision.components.public_book).toBe(require("node:crypto").createHash("sha256")
+        .update(fs.readFileSync(path.join(ROOT, folder, "public_book.json"))).digest("hex"));
+      expect(launch.live_approved_slugs).toContain(slug);
+      expect(publication.reader_release.exposed).toBe(true);
+      expect(publication.audio_release.exposed).toBe(false);
+      expect(publicBook.publication_status).toBe("LIVE_APPROVED");
+      for (const field of AUDIO_FIELDS) expect(publicBook[field]).toBe(false);
+      expect(launch.audio_enabled_slugs).not.toContain(slug);
     }
   });
 

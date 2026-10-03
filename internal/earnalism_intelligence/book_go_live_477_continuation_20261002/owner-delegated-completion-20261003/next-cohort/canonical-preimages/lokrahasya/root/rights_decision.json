@@ -1,0 +1,38 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-lokrahasya-1939-cc-by-sa-text-reader",
+  "edition_id": "lokrahasya",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "897b180613ed491b6b13d9a58d5655e81e46dce598bad5d26e187daadcc8820d",
+    "reader_manifest": "1a4616087ad7711c8a9b9e1a08e9fb007bf9b1cdab4a781fc2a65154446cb346",
+    "source_evidence": "e051f8dd0a10613c832152c2c5ca550de54b82e9f8c5b38cb89990de3f27939c",
+    "approval_evidence": "235f2dd13f1db92f618a30f7433fc1b942347c364432e64157f57083e2096ecb",
+    "checksum_manifest": "59a1de7606415665b8c59c94a9a211a7ae2304e355b7578e00736fed939b34e4",
+    "publication_manifest": "9457c99b1536d4bdd6464f7c10f1d2b0411c708933069bf4acadcb0ce853ee03"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-02T03:10:37.024181+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Exact Lokrahasya1939 centenary edition edited Brajendra Nath Bandyopadhyay and Sajanikanta Das; separately authored foreword excluded; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1962; India Section22 literary term expired end2022. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
+  "evidence_sha256": [
+    "625b30c0db9515408f88dc471eb8cdcac457c81c8dbe16fc23f332a553c89983",
+    "31b4a09724bc5adc938662556bec2b17a2e1654ea14d1a35501a87648d9b6bb0",
+    "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "23f7d1fa20062a5e03a64016228256d62c6d2fbedeee016f22ac293a4e7b65dc",
+    "dea445c190a4bf483f1a761fdad427becbae87fdbe4abc0e6bafb868a89d83ea",
+    "4f4a62c163fe662c298635e5e3397883fc609a0cab1635b614a25abd466d16c3",
+    "bc9081e1ab567b27eed76ee08ffa1b75630948125a1755771988133e7347380b"
+  ],
+  "accepted_by": "Automated executor under explicit product-owner autonomous evidence-backed text-clearance delegation; not a human legal reviewer or signature.",
+  "conditions_satisfied": true
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "earnalism.pr511-two-fixture-independent-review.v1",
+  "reviewer": "independent-agent-A",
+  "status": "PASS_TEST_ONLY_DELTA",
+  "reviewed_at": "2026-10-03T07:11:31.919013+00:00",
+  "patch_sha256": "467984904bff78b9a697219bf8d421e2b879ee8f0f4ec046bd4ef9e876566105",
+  "proposed_file_hashes": {
+    "backend/tests/test_rights_engine.py": "4feaca2bc2361253001b4ace31ba04c8563ac91072fc980711db1158a29aa95c",
+    "backend/tests/test_backend_catalog_truth.py": "afebc41d677462552bf549344da52aa51f28681a844703e065fce2f79f20ad85"
+  },
+  "independent_literal52_exact_selection": "PASS_NOT_DERIVED_IN_TEST",
+  "held_negative_controls": "Yugalanguriya/bn060/MostDangerousGame/GreatExpectations/Bharat/kshudhita plus excluded Gitanjali retained",
+  "Dracula28_preface27chapters": "MATCHES_CURRENT_EXACT_ACCEPTED_READER",
+  "negative_dracula_approval_history_sha256": "530e4680a54206e656d9a517aee66ecd2002cc31465ef50e2003718ddcdd078a",
+  "negative_dracula_fixture": "Temporary current-source packet with actual prior false approval fact; checksum-clean local overlay; no canonical/human/production claim",
+  "missing_license_negative_fixture": "Distinct synthetic slug validfrontcover ensures actual rights rejection remains target, no canonical Pride override",
+  "sitemap_scope": "Exact52 bookpaths, noReaderpaths",
+  "source_asset_mutation_and_audio_denials": "RETAINED",
+  "worker_reported_tests": "78PASS_TWO_COMPLETE_MODULES; NOT_RERUN_UNCHANGED_BY_REVIEWER",
+  "runtime_package_source_art_registry_changes": 0,
+  "new_network_requests": 0,
+  "paid_calls": 0
+}

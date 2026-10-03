@@ -1,0 +1,140 @@
+{
+  "reviewer": "Independent Codex reviewer B",
+  "slug": "the-time-machine",
+  "disposition": "PASS_COMPLETE_EXACT_SELECTED_AUTHOR_BODY",
+  "primary_source_path": "/workspace/scratch/181ef0a25f05/new-acceptance-review-a/classics-primary-recovery-v1/the-time-machine-official-source.txt",
+  "primary_source_sha256": "2892e919000e17c83e1dac51b30f4675db50536b644d7579fe8a89bb399a9bdc",
+  "primary_source_recovery_receipt_sha256": "7e796614355816b28a34676ee888c82f7010666258d2b6b915530691e613d297",
+  "source_downloads_by_B": 0,
+  "no_chapter_or_source_mutation": true,
+  "all_ordered_chapter_matches": [
+    {
+      "id": "chapter-001",
+      "offset": 1188,
+      "length": 9752,
+      "content_sha256": "ff1fa7efcb35d79e41b83f66ff52d18736e3af4d00b52def6588a9faf78ed47d"
+    },
+    {
+      "id": "chapter-002",
+      "offset": 10957,
+      "length": 7489,
+      "content_sha256": "2113d8ad7b3091c44659f4a67560f14adcba33028ddf8bd7df344363deb61ca8"
+    },
+    {
+      "id": "chapter-003",
+      "offset": 18479,
+      "length": 11049,
+      "content_sha256": "06708012234cd4056469952cb250c8b5cab49f6759656c5304e8dc2821e0b479"
+    },
+    {
+      "id": "chapter-004",
+      "offset": 29549,
+      "length": 11625,
+      "content_sha256": "40d5a68212994d78f866f8b1ddc9266d1b9aad57f596c5dda5becac9cd2ccdba"
+    },
+    {
+      "id": "chapter-005",
+      "offset": 41196,
+      "length": 9289,
+      "content_sha256": "88a3a5ebae5d264535ff7fa49c6707d234d66a737b22703ee2fd74682edc7a87"
+    },
+    {
+      "id": "chapter-006",
+      "offset": 50512,
+      "length": 12532,
+      "content_sha256": "8d1ffca02a1cf9fd602ee6f563b3db38e8e743816700ed9fe8c0aa5b5888cba4"
+    },
+    {
+      "id": "chapter-007",
+      "offset": 63065,
+      "length": 12459,
+      "content_sha256": "45aca23365620eed577a80558486c8902d5161f8e54f5072fe1299bb8c6461a2"
+    },
+    {
+      "id": "chapter-008",
+      "offset": 75543,
+      "length": 23325,
+      "content_sha256": "12e394d0a46743b0ef2a024c53809a9e5128220d572a48ab3320ebd23d642c86"
+    },
+    {
+      "id": "chapter-009",
+      "offset": 98886,
+      "length": 11766,
+      "content_sha256": "9ee82556ec8b270d28af137bb778bf269ef32233e4ac57ab5db5bd9519b77ea1"
+    },
+    {
+      "id": "chapter-010",
+      "offset": 110672,
+      "length": 13725,
+      "content_sha256": "1aa14457387c8c72b9fba2a2b56a43fa639b195edcd2e531f837c3da211dfe19"
+    },
+    {
+      "id": "chapter-011",
+      "offset": 124432,
+      "length": 13642,
+      "content_sha256": "32a1cd21290ec3f121808cda82401d9a1cb10434dbc307e553df849ff8cb90b8"
+    },
+    {
+      "id": "chapter-012",
+      "offset": 138096,
+      "length": 13938,
+      "content_sha256": "e4e0daa54b6e57949ea5750924fce318b38bb41867f0216c13b385148052839c"
+    },
+    {
+      "id": "chapter-013",
+      "offset": 152070,
+      "length": 5907,
+      "content_sha256": "69fe0c7dfb3fcb54646c88a6ed43ec178622a79958c691ae748637d4c3aef520"
+    },
+    {
+      "id": "chapter-014",
+      "offset": 158002,
+      "length": 10373,
+      "content_sha256": "4c6beb9bf62d2ed7670c5ed43c614b2156eecfe01be11d9782505ca212cdd97f"
+    },
+    {
+      "id": "chapter-015",
+      "offset": 168408,
+      "length": 2627,
+      "content_sha256": "3a68c98a2f07704b6ee6b012a0ff7dda81b534c93e9cec82017ff27ae5fa44a7"
+    },
+    {
+      "id": "chapter-016",
+      "offset": 171057,
+      "length": 7410,
+      "content_sha256": "5cb2fa2a0bf3b72f336a6c5d31c05879479a1fa936926eca1ab7d2c78be3a555"
+    },
+    {
+      "id": "chapter-017",
+      "offset": 178477,
+      "length": 1528,
+      "content_sha256": "ef675e8a4077b5e93c07f9e71102cf66ff51711a28be1ab22fef05bc1f78782b"
+    }
+  ],
+  "prefix_after_PG_start": "*** START OF THE PROJECT GUTENBERG EBOOK THE TIME MACHINE *** The Time Machine An Invention by H. G. Wells CONTENTS I Introduction II The Machine III The Time Traveller Returns IV Time Travelling V In the Golden Age VI The Sunset of Mankind VII A Sudden Shock VIII Explanation IX The Morlocks X When Night Came XI The Palace of Green Porcelain XII In the Darkness XIII The Trap of the White Sphinx XIV The Further Vision XV The Time Traveller’s Return XVI After the Story Epilogue I. Introduction ",
+  "internal_gaps": [
+    " II. The Machine ",
+    " III. The Time Traveller Returns ",
+    " IV. Time Travelling ",
+    " V. In the Golden Age ",
+    " VI. The Sunset of Mankind ",
+    " VII. A Sudden Shock ",
+    " VIII. Explanation ",
+    " IX. The Morlocks ",
+    " X. When Night Came ",
+    " XI. The Palace of Green Porcelain ",
+    " XII. In the Darkness ",
+    " XIII. The Trap of the White Sphinx ",
+    " XIV. The Further Vision ",
+    " XV. The Time Traveller’s Return ",
+    " XVI. After the Story ",
+    " Epilogue "
+  ],
+  "ending_after_last": " *** END OF THE PROJECT GUTENBERG EBOOK THE TIME MACHINE *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works",
+  "source_scope": "Project Gutenberg #35; The Time Machine exact canonical source, underlying lifetime publication 1895; complete selected author text, no translation or independently authored artwork/editorial material imported",
+  "quote_checks": [],
+  "boundary_interpretation": "Exact complete selected author edition: explicit first body after title/TOC or correct excluded third-party preface, complete exact ordered bodies, only verified heading/illustration furniture interstitial gaps, last body followed immediately by PG END. Historical containment limitation retained; independent full boundaries now checked.",
+  "reviewed_at": "2026-10-03T05:26:34.393292+00:00",
+  "canonical_mutations": false,
+  "production_observed": false
+}

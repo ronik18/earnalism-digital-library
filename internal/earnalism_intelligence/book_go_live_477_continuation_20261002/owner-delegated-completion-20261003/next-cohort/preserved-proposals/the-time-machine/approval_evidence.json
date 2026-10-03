@@ -1,0 +1,22 @@
+{
+  "slug": "the-time-machine",
+  "approved_to_publish": false,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "INACTIVE_UNACCEPTED_EXACT_PREPARATION",
+  "audio_public_release": "NOT_AUTHORIZED",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "source_hash": "2892e919000e17c83e1dac51b30f4675db50536b644d7579fe8a89bb399a9bdc",
+  "content_hash": "b9e67357d69352f3e18b2ceb03d55609ffe59dfa48277ff9aff76dc2fa63d488",
+  "provenance_hash": "be25fc11babef7b88a7aba9016d7f2e3eec275ca424830cc22388ca8e1ad0e0c",
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "5a6a8ac37bb0260d08397f3e445a546d613e84b7eaef40f00b91d84673b96146",
+  "verified_at": "2026-10-01T21:49:40.745164+00:00"
+}

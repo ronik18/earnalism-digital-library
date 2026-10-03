@@ -1,0 +1,170 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-time-machine",
+  "title": "The Time Machine",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "2892e919000e17c83e1dac51b30f4675db50536b644d7579fe8a89bb399a9bdc",
+    "content_hash": "b9e67357d69352f3e18b2ceb03d55609ffe59dfa48277ff9aff76dc2fa63d488",
+    "provenance_hash": "be25fc11babef7b88a7aba9016d7f2e3eec275ca424830cc22388ca8e1ad0e0c",
+    "sanitized": true,
+    "chapter_count": 17,
+    "chapter_index_sha256": "01ba906bd6179ce8d78e7492d7b081c77eda6c0bd71990fc8162b92baae01ca2",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "I. Introduction",
+        "word_count": 1680,
+        "sha256": "5026ca0b8c4e8b2528a0d439430eb02dee85f578fc4ad47c6f5fb0207d8f0f1c"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "II. The Machine",
+        "word_count": 1335,
+        "sha256": "724f755fedc1f1561afeaf6d65a8d68d4f7cc44103552e28ba06c1b8f5d550d0"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "III. The Time Traveller Returns",
+        "word_count": 1983,
+        "sha256": "62208249328b765d8dc6cb53a875640c4208293c65e0b9b3ccb905104434ea18"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "IV. Time Travelling",
+        "word_count": 2086,
+        "sha256": "0e690367577b44e7d92a2beb6222894ccb41fd424c9497db2a3faa012579c4c3"
+      },
+      {
+        "id": "chapter-005",
+        "order": 5,
+        "title": "V. In the Golden Age",
+        "word_count": 1653,
+        "sha256": "8e2effd2b09a9769a053a5b4c7a8083f09c85be111d077ab56e8a32e7a08c858"
+      },
+      {
+        "id": "chapter-006",
+        "order": 6,
+        "title": "VI. The Sunset of Mankind",
+        "word_count": 2183,
+        "sha256": "13cf9aad33dfa3f6dd07eebbce0c47018daae6c28ff3a1e5f366969cec18008a"
+      },
+      {
+        "id": "chapter-007",
+        "order": 7,
+        "title": "VII. A Sudden Shock",
+        "word_count": 2321,
+        "sha256": "fb7e644639826d0a660e33c6be6b6fc02066c459e63c9d86390989f92c07ef1b"
+      },
+      {
+        "id": "chapter-008",
+        "order": 8,
+        "title": "VIII. Explanation",
+        "word_count": 4181,
+        "sha256": "84fcc02f2dcf70b049e5d274469848c4d92bd2fa5396b4fdc5b5a06854c14450"
+      },
+      {
+        "id": "chapter-009",
+        "order": 9,
+        "title": "IX. The Morlocks",
+        "word_count": 2154,
+        "sha256": "2cc6a284e98a1b2125554ebb493f8ed7acb83c506c40502caad0dfbf238fc3a7"
+      },
+      {
+        "id": "chapter-010",
+        "order": 10,
+        "title": "X. When Night Came",
+        "word_count": 2519,
+        "sha256": "a1405ca9e737a803891c8000448bd1c02cbb834f05cc85e8ed0d8594daf9942e"
+      },
+      {
+        "id": "chapter-011",
+        "order": 11,
+        "title": "XI. The Palace of Green Porcelain",
+        "word_count": 2465,
+        "sha256": "340946cfedb8ab01062ca8fb8533722667929dc402d2afdc8965f91205d6009f"
+      },
+      {
+        "id": "chapter-012",
+        "order": 12,
+        "title": "XII. In the Darkness",
+        "word_count": 2638,
+        "sha256": "d153389de53546d2f8b44c3f9e5b17978362bf40bac5ca2e9be696885bdc6957"
+      },
+      {
+        "id": "chapter-013",
+        "order": 13,
+        "title": "XIII. The Trap of the White Sphinx",
+        "word_count": 1066,
+        "sha256": "d22476bd98c946ce4947c2e88893655eb74285abc0d68480a014d9271e816e5d"
+      },
+      {
+        "id": "chapter-014",
+        "order": 14,
+        "title": "XIV. The Further Vision",
+        "word_count": 1900,
+        "sha256": "16c807905844fb20e320a58dc2fb59f3fe1dc0e626ada5a428bc779f38c1b871"
+      },
+      {
+        "id": "chapter-015",
+        "order": 15,
+        "title": "XV. The Time Traveller’s Return",
+        "word_count": 480,
+        "sha256": "827d1b25fda62266b3e3e11c0230daa7020daa34ecbae14dc7cedb4a44c14b49"
+      },
+      {
+        "id": "chapter-016",
+        "order": 16,
+        "title": "XVI. After the Story",
+        "word_count": 1389,
+        "sha256": "9065f35c40f3494e41d57045c34168bd940245f076e07b9875b6af8a0859139e"
+      },
+      {
+        "id": "chapter-017",
+        "order": 17,
+        "title": "Epilogue",
+        "word_count": 277,
+        "sha256": "556c5d180a99eafaeae363ce34e04fa09d30fb96900de8ed69dee1f5c0f64f04"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "010c2fd7d0fa5ae1370f081876448c94a9bad177df7fe0b621b0f91c39af0cf5"
+  },
+  "reader_release": {
+    "status": "INACTIVE_UNACCEPTED_PREPARATION",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/the-time-machine/the-time-machine-front-5eb21ec7.webp",
+    "blockers": [
+      "TWO_INDEPENDENT_NEW_EXACT_REVIEWS_AND_SERIALIZED_ROOT_ACCEPTANCE_REQUIRED"
+    ]
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "21a2766ec58756efc68a438455aeacbe259174f9cbf63a71f0152a0635f169a4",
+    "reader_manifest": "1874f35f864ccffa65a9d7e38312c3f84df7fd8880120db0ac4ead237d1d913a",
+    "source_evidence": "010c2fd7d0fa5ae1370f081876448c94a9bad177df7fe0b621b0f91c39af0cf5",
+    "approval_evidence": "525ca18721bff177acdecc57adc394a5a1f1a2ea25055f5fa1a2215ae8f80197",
+    "publication_authorization": "5a6a8ac37bb0260d08397f3e445a546d613e84b7eaef40f00b91d84673b96146",
+    "checksum_manifest": "2417c0dffb6d75d410d2a5598ae10e5303feb79d93bb05f24c97f5e06d5cec3a",
+    "cover_preparation": "3fe9780bc1564a183eb535e3e73fda63d88c37871a0b3eaedd5108ec7778202d"
+  },
+  "manifest_sha256": "d57b6ec6dad3d3404da2f8e4dc5687c2b077767b609b7b2478faaa38b16d40e9"
+}

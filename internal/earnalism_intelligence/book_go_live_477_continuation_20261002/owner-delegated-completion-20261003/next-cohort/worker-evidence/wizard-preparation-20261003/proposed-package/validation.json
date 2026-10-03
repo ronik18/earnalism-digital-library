@@ -1,0 +1,36 @@
+{
+  "slug": "the-wonderful-wizard-of-oz",
+  "state": "UNACCEPTED_INACTIVE_PACKAGE_REVIEW_ONLY",
+  "decision_file_sha256": "2f3f4d19c6920fa90f9523833e4faa180f9b9a7bb1aa25e0d4214eb20abdf035",
+  "decision_canonical_sha256": "ad1e6dd44a8079eaf0b243578645474de4c17058a82846ec3820895a23126572",
+  "controlled_checksums": 42,
+  "controlled_checksums_pass": true,
+  "source_evidence_byte_exact_preserved": true,
+  "chapters_byte_exact_preserved": true,
+  "root_backend_byte_identity": true,
+  "active_audio_claims_or_urls": [],
+  "audio_removed_from_effective_metadata": {
+    "public_book": [
+      "audio_enabled",
+      "audiobook_enabled",
+      "generate_audiobook",
+      "audiobook_provider",
+      "audiobook_voice",
+      "audio_asset_slug"
+    ],
+    "reader_manifest": [
+      "audio_enabled",
+      "audiobook_enabled"
+    ]
+  },
+  "historical_preimages_preserved": true,
+  "publication_registry_allowlist_or_production_mutation": false,
+  "decision_components": 13,
+  "owner_artwork_declaration_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+  "originals_archived_exact": true,
+  "source_requests": 0,
+  "original_cover_requests": 2,
+  "art_repairs": 0,
+  "paid_calls": 0,
+  "all_source_license_highlight_and_chapters_unchanged": true
+}

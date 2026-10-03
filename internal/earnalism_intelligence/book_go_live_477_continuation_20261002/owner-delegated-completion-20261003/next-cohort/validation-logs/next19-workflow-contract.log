@@ -1,0 +1,47 @@
+PASS 1: keeps the dedicated workflow identity
+PASS 2: supports pull-request and manual exact-head resolution
+PASS 3: requires GitHub's canonical lowercase open state for manual PR resolution
+PASS 4: checks out the resolved PR head
+PASS 5: records event and checkout provenance
+PASS 6: uses a head-scoped concurrency group
+PASS 7: runs all three pinned Playwright browsers
+PASS 8: runs browser tooling gates before capture
+PASS 9: uses explicit isolated production and review fixture builds
+PASS 10: keeps visual fixture mode out of job-global environment
+PASS 11: serves the review fixture build for browser gates and final capture
+PASS 12: probes production absence and review fixture query gating
+PASS 13: keeps the auth private fixture assertion mandatory
+PASS 14: audits deployment isolation and labels the review build as non-deployed
+PASS 15: makes final publication depend on fixture build probes
+PASS 16: runs the focused WebKit Article stability preflight before browser populations
+PASS 17: uses the checked-in Article stability runner with explicit Bash
+PASS 18: includes the Article stability runner and its test in workflow path filters
+PASS 19: retains sanitized per-run Article failures before diagnostic upload
+PASS 20: binds both production-hash authorities to checked-in production source
+PASS 21: uses explicit production-hash authority for real full-Chromium validation
+PASS 22: checks the captured production hash before real matrix validation
+PASS 23: rejects invalid workflow production-hash authority
+PASS 24: keeps synthetic hash authority out of real workflow validation
+PASS 25: runs final evidence generation only after real matrix validation
+PASS 26: shell-parses every Bash-compatible workflow run block
+PASS 27: records a heredoc audit without invalid indented delimiters
+PASS 28: records the complete Article stability result in exact-head evidence inputs
+PASS 29: runs final evidence and package validators
+PASS 30: runs the historic and current Library-baseline validators before browser evidence
+PASS 31: runs the isolated Header-to-Library journey in the browser gate
+PASS 32: restores the known generated sitemap before the clean-tree assertion
+PASS 33: generates the exact-head package
+PASS 34: uses a named machine-readable package-test report
+PASS 35: uses a portable Python executable for package QA
+PASS 36: preflights Poppler and uses file-based PDF text extraction
+PASS 37: requires held-title and populated live Book Detail owner-review PDF headings
+PASS 38: writes a structured final package-QA result
+PASS 39: fails package QA when the local HTML server never becomes reachable
+PASS 40: preserves final QA evidence in the uploaded envelope and independently verifies it
+PASS 41: gates final upload on successful validation
+PASS 42: uses full-head final artifact naming
+PASS 43: uses a fresh verification job and artifact download
+PASS 44: records distinct artifact digests
+PASS 45: keeps deployment and merge absent
+PASS 46: keeps diagnostic artifact name distinct
+{"result":"PASS","testCaseCount":46,"workflowPath":"/tmp/earnalism-main-approved-integration/.github/workflows/seamless-brand-owner-review.yml","shellAuditPath":"/tmp/pr344-final-publication-heredoc-audit.json"}

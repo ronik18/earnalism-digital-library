@@ -1,0 +1,105 @@
+{
+  "schema": "earnalism.cover-provenance.v1",
+  "slug": "bharat-at-the-crossroads",
+  "status": "PROPOSED_COMPONENT_EVIDENCE_NOT_ACCEPTED_TWO_REVIEWS_REQUIRED",
+  "recorded_at": "2026-10-03T05:04:16.164575+00:00",
+  "original_creator": "Repository/product owner; no other identity inferred",
+  "original_method": "UNKNOWN_NOT_INFERRED",
+  "owner_declaration": {
+    "statement": "Owner states all front and back covers are designed by the owner.",
+    "path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+    "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "scope": "COVER_DESIGN_ONLY"
+  },
+  "original_assets_preserved": {
+    "front": {
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+      "file": "recovered/front.png",
+      "sha256": "2a517ab7b0f1c4d05b44c037fcb6063903b59f03632e2829699dee57dfacfcb0",
+      "bytes": 2391609,
+      "dimensions": [
+        1054,
+        1492
+      ],
+      "method": "One successful GET per persisted original URL; no prior original-byte checksum or creation-method fact inferred."
+    },
+    "back": {
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+      "file": "recovered/back.png",
+      "sha256": "ffd089b16f31ad5145ae98e5c712667b921d71d00901a4a168fb8c2811acf3c7",
+      "bytes": 2261810,
+      "dimensions": [
+        1054,
+        1492
+      ],
+      "method": "One successful GET per persisted original URL; no prior original-byte checksum or creation-method fact inferred."
+    }
+  },
+  "derivative_lineage": {
+    "method": "One bounded deterministic typography/copy repair of retained original art; no model/provider/image generation or new artwork.",
+    "typography_overlay_proof": [
+      {
+        "side": "front",
+        "exact_title": "Bharat at the Crossroads",
+        "exact_author": "Ronik Basak",
+        "font_file_sha256": "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab",
+        "font_license_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+        "method": "Actual local deterministic Pillow + licensed DejaVuSerif title and author overlay executed unconditionally; no original glyph/creation method inferred.",
+        "precise_masks": [
+          [
+            72,
+            50,
+            982,
+            485
+          ],
+          [
+            160,
+            1360,
+            898,
+            1460
+          ]
+        ],
+        "changed_pixels": 471824,
+        "changed_pixels_outside_masks": 0
+      },
+      {
+        "side": "back",
+        "exact_title": "Bharat at the Crossroads",
+        "exact_author": "Ronik Basak",
+        "font_file_sha256": "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab",
+        "font_license_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+        "method": "Actual local deterministic Pillow + licensed DejaVuSerif title and author overlay executed unconditionally; no original glyph/creation method inferred.",
+        "precise_masks": [
+          [
+            125,
+            520,
+            930,
+            1095
+          ],
+          [
+            424,
+            1300,
+            990,
+            1485
+          ]
+        ],
+        "changed_pixels": 569637,
+        "changed_pixels_outside_masks": 0
+      }
+    ],
+    "issues_handled": [
+      "Unverified named endorsements removed; no human endorsement or approval fact invented.",
+      "Unverified ISBN/barcode and related publication furniture removed.",
+      "Original front source method unknown; first-party owner declaration retained, no typography-origin inference."
+    ],
+    "font_license_path": "practical-batch-prep-20261003/DejaVu-font-license.txt",
+    "commercial_font_permission": "Actual local Bitstream Vera licence grants use/publish/distribute; only raster output, no font software binary distributed."
+  },
+  "commercial_use_authorized": false,
+  "cover_display_approved": false,
+  "audio_authorized": false,
+  "publication_activation_authorized": false,
+  "runtime_release_authorized": false,
+  "scope": "Evidence-only exact proposal. Owner declaration and exact original-art bytes do not establish unsupported third-party origin/permissions; independent reviewers must hold any specifically evidenced component dispute.",
+  "independent_reviews": "PENDING_TWO_EXACT_SOURCE_ART_COMPLIANCE_PACKAGE_REVIEWS"
+}

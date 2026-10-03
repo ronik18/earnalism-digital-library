@@ -1,0 +1,64 @@
+{
+  "slug": "the-selfish-giant",
+  "correction_scope": "ONE_PAPERWORK_CORRECTION_REMOVE_HISTORICAL_ACTIVE_AUDIO_METADATA_AND_POSITIVE_FORMAT_CLAIMS",
+  "changed_fields": {
+    "public_book": {
+      "formats": {
+        "from": [
+          "Ebook",
+          "Audiobook"
+        ],
+        "to": [
+          "Ebook"
+        ]
+      },
+      "candidate_fingerprint": "REMOVED_HISTORICAL_AUDIO_CANDIDATE_POINTER"
+    },
+    "reader_manifest": {}
+  },
+  "changed_files": {
+    "checksum_manifest.json": {
+      "before": "24e742171e72908a7c6035c9cdc192c621928726344059e79a3a84f9ed94dbe8",
+      "after": "5b8d45fbdcf259d6f70d3ebcaa42ed0ad792f2b7a661ee7fb8618b43606b18cc"
+    },
+    "public_book.json": {
+      "before": "b883eb1c4bdccc5740989fffdcbc62e31aecd2cd108dfc17728014eca1f6a49e",
+      "after": "ee2954132cfc8a9f8f1926eb6a36159011f0d9a6b60a41c5878b9de51c8c4330"
+    },
+    "publication_manifest.json": {
+      "before": "f8df355aa4ca5b451b803fc4bdf740a820e050840b864a1454c101e70220a03d",
+      "after": "096005c4595e2f29226a7bc5632ea3421a2f89260a2172b8a3a0a5ec593672b8"
+    },
+    "rights_decision.json": {
+      "before": "73661d3d32b3a712479c0d5eabc249926544e01dbb3b058c6ea9b8b0f17bbba5",
+      "after": "7f904d475cc3bdad5644b8dd9a2cc92d1432021dfe15ed80a3143ade15066cd6"
+    }
+  },
+  "source_chapter_license_sync_cover_art_bytes_unchanged": true,
+  "actual_acceptance_created": false,
+  "prior_source_and_backend_preimages_preserved": true,
+  "prior_proposal_public_reader_copies_preserved": true,
+  "new_decision_raw_sha256": "7f904d475cc3bdad5644b8dd9a2cc92d1432021dfe15ed80a3143ade15066cd6",
+  "new_decision_canonical_sha256": "4de3e7030f5f41736433d4dbe94ca4ac8ff7e5fff470f27cb9f2b3ffe77d30d4",
+  "new_package_files_sha256": {
+    "highlight_sync.json": "5bb55dc95aade157eedc8cb2e4255015af7426b38dc43692a3ae8d317a3e30e0",
+    "production_audio_evidence.json": "5e23b03ab04c4d318d78fbd6bb8becafe284407fb6ecd7c61998d6a0c180cc42",
+    "source_evidence.json": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d",
+    "publication_manifest.json": "096005c4595e2f29226a7bc5632ea3421a2f89260a2172b8a3a0a5ec593672b8",
+    "reader_manifest.json": "d5ce7da734364efdd9a2bd6eace1ee2df66bcfa0dcf7ea4e99d49502b330fc9c",
+    "publication_authorization.json": "16514ed5af14d72f8eddfbd6d5896ad4f0cc28181b4f8e21b351a065dd49fa0c",
+    "approval_evidence.json": "c325df28d2a57c94b9124e95f241f9992d5ac821452c0dd592b35f03f6ac7e3e",
+    "public_book.json": "ee2954132cfc8a9f8f1926eb6a36159011f0d9a6b60a41c5878b9de51c8c4330",
+    "rights_decision.json": "7f904d475cc3bdad5644b8dd9a2cc92d1432021dfe15ed80a3143ade15066cd6",
+    "checksum_manifest.json": "5b8d45fbdcf259d6f70d3ebcaa42ed0ad792f2b7a661ee7fb8618b43606b18cc",
+    "cover_provenance.json": "becaa05505a87f54f017f6ef2d80a921196ed281993a22a72bd2b1c3f4dd536c",
+    "covers/back-delivery.webp": "14b007092896bd2d0e4396ba0ecb1e430650a7aa772f855a347a6269daa75e60",
+    "covers/front-delivery.webp": "777a773d9cebbf236f9bfb79d52d35ca7206c59fc38eb04d85a84abc480d98cd",
+    "covers/front-layout-repair.png": "e01b95dc8d321678df5c9fe5e395728187ea03984cc69c59ae34471603fb7dc4",
+    "covers/front-original.png": "f10e1353932821ab22a0d13b68a40394f06eb1c9a97b04e5e126897dfbb3fcc2",
+    "covers/back-original.png": "6903c7610ac6141b0f4d8d025e7e9fe9f347e2922996368ef7dd28fe8c18b511",
+    "covers/back-layout-repair.png": "6337be1964dfa48aedd7d35233cfdb84f422dd311545b265b9c259444f8795f0",
+    "chapters/chapter-001.json": "12c1db2943a0b57aea333ed1870472ea8332d457093d4255185385a7a157e3b1"
+  },
+  "new_package_inventory_canonical_sha256": "3d70f8a8b71cd53ddecf50f98beaf76c916203b148a7d235f35a71d37ccbce04"
+}

@@ -1,0 +1,155 @@
+{
+  "schema": "earnalism.one-bounded-deterministic-typography-repair.v1",
+  "slug": "the-science-of-getting-rich",
+  "state": "INACTIVE_UNACCEPTED_PENDING_TWO_NEW_EXACT_REVIEWS",
+  "reason": "Original legacy title/author creation method unknown; source art retained, title and author replaced with provably deterministic existing licensed-font overlays. One art-preserving repair only.",
+  "bounded_attempt": 1,
+  "originals": {
+    "front": {
+      "kind": "front",
+      "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/original-front.png",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950227/earnalism/covers/front/cover_ab481468-31e0-4b96-9538-f4d4e944d771.png",
+      "http_status": 200,
+      "sha256": "9fa719df44b5348b2dd694674fb7e4ba38438dd1e652ca70559081d67e88da15",
+      "bytes": 2865468,
+      "width": 1024,
+      "height": 1536,
+      "request_count": 1,
+      "retrieved_at": "2026-10-03T04:38:26.646393+00:00",
+      "redirects_allowed": false
+    },
+    "back": {
+      "kind": "back",
+      "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/original-back.png",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950234/earnalism/covers/back/back_cover_ab481468-31e0-4b96-9538-f4d4e944d771.png",
+      "http_status": 200,
+      "sha256": "49cf4eb533e11cc92d253496e2945d700468b2a2e42b7aabf4c7d8dd3b590f09",
+      "bytes": 2662912,
+      "width": 1024,
+      "height": 1536,
+      "request_count": 1,
+      "retrieved_at": "2026-10-03T04:38:26.620074+00:00",
+      "redirects_allowed": false
+    }
+  },
+  "overlays": {
+    "front": {
+      "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/overlay-front-run1.png",
+      "sha256": "7f2e8e9fd3f6d0359b8d94cfc2198101abd64b4b78a95d035932d68bff4f2bf2",
+      "bytes": 1905203,
+      "width": 1024,
+      "height": 1536,
+      "precise_masks": [
+        [
+          112,
+          85,
+          912,
+          680
+        ],
+        [
+          245,
+          1230,
+          784,
+          1306
+        ]
+      ],
+      "RGB_outside_masks_identical": "PASS",
+      "original_sha256": "9fa719df44b5348b2dd694674fb7e4ba38438dd1e652ca70559081d67e88da15"
+    },
+    "back": {
+      "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/overlay-back-run1.png",
+      "sha256": "83190790c57974d6dad6128dc87d5a3018e8d7fd06f41f623505320e974a1791",
+      "bytes": 2411555,
+      "width": 1024,
+      "height": 1536,
+      "precise_masks": [
+        [
+          160,
+          1160,
+          900,
+          1240
+        ]
+      ],
+      "RGB_outside_masks_identical": "PASS",
+      "original_sha256": "49cf4eb533e11cc92d253496e2945d700468b2a2e42b7aabf4c7d8dd3b590f09"
+    }
+  },
+  "double_render_identity": "PASS_FROZEN_RUN1_VERSUS_SEPARATE_VERIFICATION",
+  "font": {
+    "path": "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
+    "sha256": "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab",
+    "license_path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/dejavu-font-license.txt",
+    "license_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+    "license_basis": "Actual installed fonts-dejavu-core copyright/Bitstream Vera permission reproduced; DejaVu additions public domain; no font software modified or distributed by the Reader delivery."
+  },
+  "deterministic_copy": {
+    "title": "The Science of Getting Rich",
+    "title_rendered_lines": [
+      "The Science",
+      "of Getting",
+      "Rich"
+    ],
+    "author": "W. D. Wattles"
+  },
+  "back_body_and_footer_original_pixels_unchanged": true,
+  "front_art_footer_outside_title_author_masks_unchanged": true,
+  "source_chapters_reader_versions_unchanged": true,
+  "original_creation_method": "UNKNOWN_NOT_INFERRED",
+  "new_art": false,
+  "paid_or_image_generation_calls": 0,
+  "new_network_requests": 0,
+  "acceptance_or_activation": false,
+  "verification_assets": {
+    "front": {
+      "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/overlay-front-frozen-verification.png",
+      "sha256": "7f2e8e9fd3f6d0359b8d94cfc2198101abd64b4b78a95d035932d68bff4f2bf2",
+      "bytes": 1905203,
+      "width": 1024,
+      "height": 1536,
+      "precise_masks": [
+        [
+          112,
+          85,
+          912,
+          680
+        ],
+        [
+          245,
+          1230,
+          784,
+          1306
+        ]
+      ],
+      "RGB_outside_masks_identical": "PASS",
+      "original_sha256": "9fa719df44b5348b2dd694674fb7e4ba38438dd1e652ca70559081d67e88da15"
+    },
+    "back": {
+      "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/overlay-back-frozen-verification.png",
+      "sha256": "83190790c57974d6dad6128dc87d5a3018e8d7fd06f41f623505320e974a1791",
+      "bytes": 2411555,
+      "width": 1024,
+      "height": 1536,
+      "precise_masks": [
+        [
+          160,
+          1160,
+          900,
+          1240
+        ]
+      ],
+      "RGB_outside_masks_identical": "PASS",
+      "original_sha256": "49cf4eb533e11cc92d253496e2945d700468b2a2e42b7aabf4c7d8dd3b590f09"
+    }
+  },
+  "excluded_verification_artifact": {
+    "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/excluded-corrupted-verification-preimage/overlay-front-run2.png",
+    "sha256": "37ca561a905afe1a6a21c21a286789c5b55384ac912b6284503761998be08e0f",
+    "bytes": 1638729,
+    "excluded": true,
+    "reason": "Actual independently observed incomplete verification file disagrees with generation-time assertion. Cause unknown; preserved and never used as candidate or delivery source.",
+    "decode": "FAIL",
+    "decode_error": "image file is truncated"
+  },
+  "earlier_generation_receipt_preserved_at": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/excluded-corrupted-verification-preimage/typography-overlay-receipt.json",
+  "earlier_generation_receipt_sha256": "7893233fb04fa40e24d7e6536d2f598b050923f98f217862bfce925505739c35"
+}

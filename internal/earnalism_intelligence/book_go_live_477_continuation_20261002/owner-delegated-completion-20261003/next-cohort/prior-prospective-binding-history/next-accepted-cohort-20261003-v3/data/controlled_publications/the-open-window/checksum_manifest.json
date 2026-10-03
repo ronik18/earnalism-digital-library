@@ -1,0 +1,70 @@
+{
+  "slug": "the-open-window",
+  "generated_at": "2026-10-03T04:59:53.954767+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "f191c0631631964cc5b883cfd63201932c4fcbc7383c1249e9b40b75d0698c05"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "bc12b5dbae5cae481b59d11eb9fc43a7c875f4cf2b37d52107bce93957375a00"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "8ae040e44439430f9d818429423a1be89208e493b79c4e4ac1e581ad1cd3fba2"
+    },
+    {
+      "file": "covers/back-delivery.webp",
+      "sha256": "6c87ea0a562e727b5527711f6f279bf9b95cad6a0817d15e36f783fd87016e76"
+    },
+    {
+      "file": "covers/back-layout-repair.png",
+      "sha256": "5865b811a2feb412655fa56f6b2a9f6e6fbbd39881423bf14c77e1844a827829"
+    },
+    {
+      "file": "covers/back-original.png",
+      "sha256": "19717b3bb51630712f2f8cad58859361c9015ab726f3335b196c2b5924660a0d"
+    },
+    {
+      "file": "covers/front-delivery.webp",
+      "sha256": "fd16c96883897722c2da7c49e2012dd9e5a3771bf2f99d11b89a29add60a8960"
+    },
+    {
+      "file": "covers/front-layout-repair.png",
+      "sha256": "22a9981529ca3c46a81fae68c056b43d2253595f436110767c153eb9344589bd"
+    },
+    {
+      "file": "covers/front-original.png",
+      "sha256": "351653d69bebc7567f868007370fb65b72eadbd41f7cbb2ee276e6024d0a1bb1"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "b2742d2516aa71aa23f79d33dba6ff5c27c5036c6b581197b6c55f991e97215e"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "472928c898ffca0711e110b8daf7ff2dfc47ebfc222f8a721589ad5b02ef7b5f"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "df456ad28112be7b2fa149c5eb972a343141adcc5610e791508816c92d0a3a1f"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "8f5a8d563c587a28d30e1e001447cdb5328bdcd49df4b61d8d7838401aac6151"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d"
+    },
+    {
+      "file": "evidence/review_a.json",
+      "sha256": "545e4f764da46785a577943e3abe0f48c09660f4c1e84b7fa6709221c168daa0"
+    },
+    {
+      "file": "evidence/review_b.json",
+      "sha256": "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff"
+    }
+  ]
+}

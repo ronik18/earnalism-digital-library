@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-selfish-giant",
+  "title": "The Selfish Giant",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "content": {
+    "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+    "content_hash": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+    "provenance_hash": "1e08883215a0343a9dd6f8c53242fd4af41d62450aa24e424712188e8d79af16",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "df819243768475866804306135ce3f50b793fdc8e66012d6e8c8fb0db1e02db0",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "The Selfish Giant",
+        "word_count": 1652,
+        "sha256": "12c1db2943a0b57aea333ed1870472ea8332d457093d4255185385a7a157e3b1"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d"
+  },
+  "reader_release": {
+    "status": "READY_FOR_APPROVAL",
+    "exposed": false,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267898/earnalism/covers/front/the-selfish-giant_front_1600x2400.png",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "IN_PROGRESS",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "280107213b6dc993f98d7915f353e36b73b3bb70494f70e7bec5bc44d1a77d7e",
+    "reader_manifest": "0f7603ff4f6723bfddad1a540800f9ddc9f1499ac85604bf077d0f56eb659259",
+    "source_evidence": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d",
+    "approval_evidence": "612a84ee34975b41a8f4a06459938c117dfa2d1cd69435050062555052a9c553"
+  },
+  "manifest_sha256": "9d3552d44a57f42b8530a02c3f3014554689efb88087dcc40d6fb3bb277c4381"
+}

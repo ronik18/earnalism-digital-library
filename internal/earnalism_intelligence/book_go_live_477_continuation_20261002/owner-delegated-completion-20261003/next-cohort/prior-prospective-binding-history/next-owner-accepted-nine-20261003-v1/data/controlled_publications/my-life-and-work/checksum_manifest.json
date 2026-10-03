@@ -1,0 +1,142 @@
+{
+  "slug": "my-life-and-work",
+  "generated_at": "2026-10-03T05:04:16.164575+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "eec01f4e574d80b43c4db449bcb6822d4253d8a32a146034815c27a9dcf37742"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "e0d36cc9e7e34e5d13ad820c22050242b522a44fd071929a18ff65c4cfb97fd2"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "8b72fc6c406e6f85617fc6510cf9901687f7ec8a29c31458eb4041343c52dbb9"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "d3f764bf16404802e65ca2609c1a2830108c596549c1439b1bc83f60de81d08c"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "addf0c8c3a53aaefca28fd842e3edce34f9b5ec31d70b3ace8ca497265eecdc5"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "fc2755a3981edceabe3a96eb5edd409e0812645789bedda273fc708d0995b52d"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "22e94686955d2e993c369f1f243efb2051296f8fdc4829fa66231639a906d22b"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "860fbd8a0d58ab6a35a26ec04e8ce3b3a05098e94ae68984196140f1a85dc2f7"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "a8554a972843d7dda9a130338b04982954f9217eca1a8fc8619d361244c69f62"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "31d1b189cba155edb823d35c704da7c9cbddb61a0464db63076ef1546acc3b08"
+    },
+    {
+      "file": "chapters/chapter-010.json",
+      "sha256": "7bfafc6543c4f2b223a12fea17ec9b6b2adb2ad4911389558fac507e48c667ff"
+    },
+    {
+      "file": "chapters/chapter-011.json",
+      "sha256": "50c59436710c793a6a24f43890bcf468c07fef0c865c8a73fcb90c2bb8e56baa"
+    },
+    {
+      "file": "chapters/chapter-012.json",
+      "sha256": "9a14e14586551adef57a436f693a4466983743ebd812089068752a36f5118281"
+    },
+    {
+      "file": "chapters/chapter-013.json",
+      "sha256": "c6958b12d5a05c5a16d583c7cedb711332082cb301515d8764e723eb3779eeeb"
+    },
+    {
+      "file": "chapters/chapter-014.json",
+      "sha256": "577223275ed615986a01bf1dca3b00c43e9b884d15c28bf4c90c4b1115413306"
+    },
+    {
+      "file": "chapters/chapter-015.json",
+      "sha256": "68167475e315ca2c8ed4baa8cc4ae38c389cc9d4bf8f7894d8cd11f18db1792a"
+    },
+    {
+      "file": "chapters/chapter-016.json",
+      "sha256": "60323efd9eeac141add8c298559ed2e8e5b5170edf0d71ceb0e18109139f9492"
+    },
+    {
+      "file": "chapters/chapter-017.json",
+      "sha256": "8e86755da861e8b63428d07c9c89cadac0cc1faa1fae8a556e382e47d5291520"
+    },
+    {
+      "file": "chapters/chapter-018.json",
+      "sha256": "d08c7b315162fec656902a52cacf7b3a715f4a716599fd0dbf5b86abcae02b15"
+    },
+    {
+      "file": "chapters/chapter-019.json",
+      "sha256": "a221a5c58ea45a8c10403d9de0468905a4e730a776c99feccc4a986118488767"
+    },
+    {
+      "file": "chapters/chapter-020.json",
+      "sha256": "33054f381b3a4db6d073a772d3063a3726d36c563324a2bc3ab49597608fef45"
+    },
+    {
+      "file": "cover_delivery_derivation.json",
+      "sha256": "fe7ad968f0449f59a18bc4d8334ad3d3146fc13fecd66abaa15fb874088168b6"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "4c722f37cbc6a909d7cf30d97cca4f1b63d59229ce2611bb6dbefc26c81cdb9b"
+    },
+    {
+      "file": "covers/back.png",
+      "sha256": "b129bccafbfca007d95e86eeb101a577d5be3cdb8ebaf8260f75a1285a65b31c"
+    },
+    {
+      "file": "covers/front.png",
+      "sha256": "9f2a6f069a8f7d96c9d0228f69b556394a88da983ee172f88cb9eb7e0e494833"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "0c00b96caba8dc3931d1fde1b5e1d99db1d556d6fd32c3b9ee2229581f044df1"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "127ef60e80ecd42ed36270a04d90c91ecc7c7344f26767c990bd9093ac54f2b6"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "9f5221e29758bae95d5277703473eaaca051dcb8157329f30b064dacafbcc31d"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "8abb80566e377a38ba0730ffb69c7dc0fbb53358c6e0908492d968fea1313acd"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "1d5f331b74b4ac24ba559209d4d1c8ca3543a1cdc274a71bdf14bb2022b7d4b7"
+    },
+    {
+      "file": "source_integrity_validation.json",
+      "sha256": "0f0466f58d725b09da33078d8bf45820b36ce227b7d61edb8b8174deeb320d21"
+    },
+    {
+      "file": "owner_artwork_declaration.json",
+      "sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264"
+    },
+    {
+      "file": "evidence/review_a.json",
+      "sha256": "ff240fbf4572faa32eab4a11d24552591af32907de74186272fa9769426c8014"
+    },
+    {
+      "file": "evidence/review_b.json",
+      "sha256": "af458f9aa5b771de14ccb98ce746cfe00dd57b045c44b065aae7dffc7015a6fb"
+    }
+  ]
+}

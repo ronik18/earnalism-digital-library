@@ -1,0 +1,38 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "the-great-gatsby",
+  "edition": "Project Gutenberg #64317; exact selected original-author text; verified lifetime work publication 1925; excludes anthology editor/art and other title components",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_ONLY_NON_COVER_COMPONENTS",
+  "source_sha256": "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35",
+  "content_sha256": "8cdf90ce5cf418a4d40e7e822c734f52c2392c648e19537cd097b38a53050e34",
+  "chapter_sha256": {
+    "chapter-000": "8e042f367cf8d6d00cff551155f51835958d370ffc18dc1d32b034fb2134afb0",
+    "chapter-001": "e18f148e1a4c37a974853160cbcde26b38bb540990f026ea2c3b6598b48fb991",
+    "chapter-002": "c88bbfd8975bfda97c07dae3d8464bcffa0775ee598af3d31cb0813cde4df32f",
+    "chapter-003": "b6830f0fe1e12a07b0afd008fe6096618e4edca6583106610c3db895f8c9d424",
+    "chapter-004": "f14a9c319d9cd6585be3aff2ee3bc8fb596b415309c0fdb9bd1f1cbe09d8bda3",
+    "chapter-005": "7ff88b9272c934215b40f480ec2479be280d4a7f0cf910864f3791f21f42591a",
+    "chapter-006": "5460677bf721f9da48c9cb1ef22f4077ae5fd937619820de8b6659dfba00ca4c",
+    "chapter-007": "1232638642e738d518e4fe06e365cf3b9fdbc4e263abc4ab39a628878ae5cfb3",
+    "chapter-008": "da9e62381cb1d73f6659f43f4b89209534f995f2748fba1e985ccbb123fc5e87",
+    "chapter-009": "ffc56f967c7b9e2e9b619aaf8ce8b005f446be9b0cf48bfd53d2d1ef39efebe6"
+  },
+  "cover_provenance_sha256": null,
+  "cover_status": "UNACCEPTED_EXACT_DELIVERY_PREPARATION",
+  "authorized_by": "Automated executor under owner explicit autonomous clearance delegation; not a fabricated human or legal signature.",
+  "verified_at": "2026-10-02T03:25:59.945714+00:00",
+  "publication_authorized": false,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Cover clearance/binding, trusted production registry acceptance, canonical controlled-live allowlist, actual runtime Reader readiness and protected gates must separately pass.",
+  "not_authorized": [
+    "cover_display",
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation"
+  ]
+}

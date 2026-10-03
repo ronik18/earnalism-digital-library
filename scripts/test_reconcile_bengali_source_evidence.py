@@ -1,5 +1,6 @@
 import unittest
 from scripts.reconcile_bengali_source_evidence import paragraphs, difference, fold
+from scripts.catalogue_clearance_release_bindings import historical_noncover_binding, assert_current_reviewed_release, exact_record_component_hashes
 
 class BengaliSourceReconciliationTests(unittest.TestCase):
     def test_inline_spacing_is_retained(self):
@@ -101,17 +102,27 @@ class FinalClearanceBindingsTests(unittest.TestCase):
         self.assertEqual(report['count'],16)
         for row in report['titles']:
             package=root/'data/controlled_publications'/row['slug']
+            historical, historical_auth=historical_noncover_binding(root,row['slug'])
+            self.assertEqual(historical['status'],'ACCEPTED')
+            self.assertEqual(historical['territories'],['IN'])
+            self.assertNotIn('cover_display',historical['uses'])
+            self.assertNotIn('audio_stream',historical['uses'])
+            self.assertFalse(historical_auth['audio_authorized'])
+            self.assertFalse(historical_auth['production_activation_authorized_by_this_file'])
+            self.assertEqual(historical_auth['scope'],'TEXT_READER_ONLY')
             decision=json.loads((package/'rights_decision.json').read_text())
             self.assertEqual(decision['status'],'ACCEPTED')
             self.assertEqual(decision['territories'],['IN'])
             self.assertNotIn('audio_delivery',decision['uses'])
-            self.assertNotIn('cover_display',decision['uses'])
-            for name,value in decision['components'].items():
-                self.assertEqual(value,hashlib.sha256((package/(name+'.json')).read_bytes()).hexdigest())
+            if 'cover_display' in decision['uses']:
+                assert_current_reviewed_release(root,row['slug'])
+            else:
+                self.assertFalse(json.loads((package/'publication_manifest.json').read_text())['reader_release']['exposed'])
+            self.assertEqual(exact_record_component_hashes(root,row['slug'],decision,package),decision['components'])
             auth=json.loads((package/'publication_authorization.json').read_text())
             self.assertFalse(auth['audio_authorized'])
             self.assertFalse(auth['production_activation_authorized_by_this_file'])
-            self.assertEqual(auth['scope'],'TEXT_READER_ONLY')
+            self.assertEqual(auth['scope'],'TEXT_READER_CATALOG_METADATA_AND_EXACT_COVER_DISPLAY' if 'cover_display' in decision['uses'] else 'TEXT_READER_ONLY')
             notice=json.loads((package/'license_notice.json').read_text())
             chapters=sorted([json.loads(f.read_text())for f in (package/'chapters').glob('*.json')],key=lambda c:c['order'])
             self.assertEqual(notice['chapter_sha256'],[hashlib.sha256(c['content'].encode()).hexdigest()for c in chapters])

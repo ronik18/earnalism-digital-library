@@ -1,0 +1,20 @@
+{
+  "slug": "mrinalini",
+  "approved_to_publish": false,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "qa_scope": "Exact existing edition-bound text identity/source completeness only; no audio or production observations.",
+  "approval_scope": "PROPOSED_EXACT_IN_TEXT_AND_COVER_BINDING_PENDING_TWO_REVIEWS",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "audiobook_use_approved": false,
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "verified_at": "2026-10-03T04:56:37.110955+00:00",
+  "source_hash": "9e04c5d5b16bbd623edac1de47cd0e61f561a820cd6d7200b23450117558ee80",
+  "content_hash": "390c5936e44b799952e1e84917bca07aea7183f96880e91a6b3fc74ec7fa3560",
+  "publication_authorization_sha256": "fc2ce906bc89965081337b965ef3cbee4af6d288362f55d1d4c3cb7513571c73",
+  "cover_provenance_sha256": "f0e0a6f1a6bf35d51674245b8d5af205d1b0a4c637059d4a4481c19c2fbf4c68",
+  "independent_reviews": []
+}

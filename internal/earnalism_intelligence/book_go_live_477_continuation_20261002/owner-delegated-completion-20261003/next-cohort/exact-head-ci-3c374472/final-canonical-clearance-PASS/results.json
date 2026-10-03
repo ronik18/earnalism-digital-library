@@ -1,0 +1,76 @@
+[
+  {
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "scripts.test_reconcile_bengali_source_evidence",
+      "scripts.test_reconcile_english_source_evidence",
+      "scripts.test_prepare_inactive_reader_segment_plans",
+      "-v"
+    ],
+    "exit_code": 0,
+    "log": "command-0.log",
+    "sha256": "a1d1640b96e534b9016c8eaa32200ade9e94e1ad7f86816b8e8704886e85ad7d"
+  },
+  {
+    "command": [
+      "python3",
+      "-m",
+      "pytest",
+      "backend/tests/test_licensed_text.py",
+      "backend/tests/test_publication_manifest.py",
+      "backend/tests/test_rights_engine.py",
+      "-q"
+    ],
+    "exit_code": 0,
+    "log": "command-1.log",
+    "sha256": "6ff7c856f7869f03d5495411ae3666d2ed654efa65ede67e831155c7cd976c2b"
+  },
+  {
+    "command": [
+      "python3",
+      "-m",
+      "pytest",
+      "backend/tests/test_rights_decision_gate.py",
+      "backend/tests/test_backend_catalog_truth.py",
+      "backend/tests/test_api_public_catalog_projection.py",
+      "backend/tests/test_catalog_exclusion_parity.py",
+      "backend/tests/test_reader_segment_promotion_safeguards.py",
+      "-q"
+    ],
+    "exit_code": 0,
+    "log": "command-2.log",
+    "sha256": "c1a38461f744119bda4f20c0b001a8d6b05c072fb84a44e52144815b6b524750"
+  },
+  {
+    "command": [
+      "python3",
+      "scripts/verify_catalogue_clearance_batch.py"
+    ],
+    "exit_code": 0,
+    "log": "command-3.log",
+    "sha256": "f47874b995b969e4b68bc7aca85e0043bfdc428112604daccaa679d0815205e1"
+  },
+  {
+    "command": [
+      "python3",
+      "scripts/prepare_inactive_reader_segment_plans.py",
+      "--output",
+      "/workspace/scratch/181ef0a25f05/next19-clearance-final-canonical/inactive-reader-segment-plans.json"
+    ],
+    "exit_code": 0,
+    "log": "command-4.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "log": "command-5.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

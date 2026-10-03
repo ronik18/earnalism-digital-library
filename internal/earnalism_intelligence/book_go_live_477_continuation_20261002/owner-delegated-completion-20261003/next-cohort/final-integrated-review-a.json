@@ -1,0 +1,1312 @@
+{
+  "schema": "earnalism.independent-final-integrated-tree-review.v1",
+  "reviewer": "independent-agent-A",
+  "reviewed_at": "2026-10-03T06:23:07.361429+00:00",
+  "status": "PASS_EXACT_TREE_RELEASE_CANDIDATE",
+  "git_tree": "e68aee5302c817525b178bd419ede862888da54e",
+  "base_main": "0fee65668f94284d180065d0fe8b38face924498",
+  "staged_paths": 4777,
+  "configured": 52,
+  "existing_released_preserved": 33,
+  "new_selected": 19,
+  "accepted_registry_records": 55,
+  "bootstrap_titles": 52,
+  "active_backend_manifests": 52,
+  "active_backend_chapters": 826,
+  "root_historical_inclusive_manifests": 157,
+  "root_historical_inclusive_chapters": 1034,
+  "old33_runtime_artifacts_and_versions": "BYTE_UNCHANGED",
+  "legacy_root_vs_backend_divergence": "Three previously released historical root decisions remain distinct from active backend accepted bindings; no mutation",
+  "legacy_checksum_self_entries": "Existing historical self-referential checksum entries preserved; all new19 entries strictly exact",
+  "new19_source_art_and_acceptance_reviews": "REUSED_EXACT_PASS_NO_REPEAT",
+  "source_fingerprint": "e8a1e15b8ea194a4169ad471da0567a36bda99d5da268b80bd7a3b4d87def25c",
+  "workflow_delta": "ONLY_TWO_EXISTING_SOURCE_HASH_CONSTANTS;GATES_UNCHANGED",
+  "restricted_runtime_and_deployment_paths": "UNCHANGED",
+  "actual52_reader_validation": "PASS_NO_AUDIO",
+  "new19_production_observed": false,
+  "canonical_versions": null,
+  "validation_report_sha256": "e7543bab7b8bd19bdc23e039db108760958c19b3713f4b7c339c1ac8e923dba9",
+  "remaining_gate": "PROTECTED_NORMAL_EXACT_HEAD_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_CANONICAL_READBACK",
+  "canonical_mutations_by_reviewer": 0,
+  "new_GETs": 0,
+  "paid_calls": 0,
+  "titles": [
+    {
+      "slug": "dsires-baby",
+      "record_sha256": "57db9bcdde0fe46ae9c0acc3d09785bc8a75195f2cded12e6c1aceca796b3ecf",
+      "integrated_delta_from_accepted_v3": [],
+      "components": {
+        "public_book": "backend/data/controlled_publications/dsires-baby/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/dsires-baby/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/dsires-baby/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/dsires-baby/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/dsires-baby/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/dsires-baby/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/dsires-baby/cover_provenance.json",
+        "cover_delivery_derivation": "backend/data/controlled_publications/dsires-baby/cover_delivery_derivation.json",
+        "cover_front_asset": "backend/data/controlled_publications/dsires-baby/covers/front.png",
+        "cover_back_asset": "backend/data/controlled_publications/dsires-baby/covers/back.png",
+        "cover_front_delivery": "frontend/public/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+        "cover_back_delivery": "frontend/public/assets/books/dsires-baby/dsires-baby-back-5a845c98-800.webp",
+        "publication_authorization": "backend/data/controlled_publications/dsires-baby/publication_authorization.json",
+        "acceptance_review_a": "backend/data/controlled_publications/dsires-baby/evidence/review_a.json",
+        "acceptance_review_b": "backend/data/controlled_publications/dsires-baby/evidence/review_b.json"
+      },
+      "checksums": 14,
+      "active_reader_status": "PASS",
+      "audio_disabled": true,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "sredni-vashtar",
+      "record_sha256": "fd7320d44bc2f41134e5475ad93e5c4873c6bd739afe9e2a845858e24be9acb6",
+      "integrated_delta_from_accepted_v3": [],
+      "components": {
+        "public_book": "backend/data/controlled_publications/sredni-vashtar/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/sredni-vashtar/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/sredni-vashtar/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/sredni-vashtar/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/sredni-vashtar/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/sredni-vashtar/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/sredni-vashtar/cover_provenance.json",
+        "cover_delivery_derivation": "backend/data/controlled_publications/sredni-vashtar/cover_delivery_derivation.json",
+        "cover_front_original_asset": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/sredni-preparation-20261003/front-cover-current.png",
+        "cover_front_delivery_asset": "frontend/public/assets/books/sredni-vashtar/front-d946f65f.webp",
+        "cover_back_original_asset": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/sredni-preparation-20261003/back-cover-current.png",
+        "cover_back_delivery_asset": "frontend/public/assets/books/sredni-vashtar/back-c5329352.webp",
+        "publication_authorization": "backend/data/controlled_publications/sredni-vashtar/publication_authorization.json",
+        "acceptance_review_a": "backend/data/controlled_publications/sredni-vashtar/evidence/review_a.json",
+        "acceptance_review_b": "backend/data/controlled_publications/sredni-vashtar/evidence/review_b.json"
+      },
+      "checksums": 11,
+      "active_reader_status": "PASS",
+      "audio_disabled": true,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "record_sha256": "b49d3490005727588f63161d9fd10e7a9eec82f04c33274c1712273e3656bc55",
+      "integrated_delta_from_accepted_v3": [],
+      "components": {
+        "public_book": "backend/data/controlled_publications/the-cop-and-the-anthem/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-cop-and-the-anthem/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-cop-and-the-anthem/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-cop-and-the-anthem/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-cop-and-the-anthem/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-cop-and-the-anthem/publication_manifest.json",
+        "cover_preparation": "backend/data/controlled_publications/the-cop-and-the-anthem/cover_preparation.json",
+        "publication_authorization": "backend/data/controlled_publications/the-cop-and-the-anthem/publication_authorization.json",
+        "cover_provenance": "backend/data/controlled_publications/the-cop-and-the-anthem/cover_provenance.json",
+        "acceptance_review_a": "backend/data/controlled_publications/the-cop-and-the-anthem/evidence/review_a.json",
+        "acceptance_review_b": "backend/data/controlled_publications/the-cop-and-the-anthem/evidence/review_b.json"
+      },
+      "checksums": 17,
+      "active_reader_status": "PASS",
+      "audio_disabled": true,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "the-open-window",
+      "record_sha256": "c50c87abb79a36605fcda119cde846baeee8089d24921685277709dbaee0b0d5",
+      "integrated_delta_from_accepted_v3": [],
+      "components": {
+        "source_evidence": "backend/data/controlled_publications/the-open-window/source_evidence.json",
+        "publication_manifest": "backend/data/controlled_publications/the-open-window/publication_manifest.json",
+        "reader_manifest": "backend/data/controlled_publications/the-open-window/reader_manifest.json",
+        "approval_evidence": "backend/data/controlled_publications/the-open-window/approval_evidence.json",
+        "public_book": "backend/data/controlled_publications/the-open-window/public_book.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-open-window/checksum_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-open-window/cover_provenance.json",
+        "publication_authorization": "backend/data/controlled_publications/the-open-window/publication_authorization.json",
+        "acceptance_review_a": "backend/data/controlled_publications/the-open-window/evidence/review_a.json",
+        "acceptance_review_b": "backend/data/controlled_publications/the-open-window/evidence/review_b.json"
+      },
+      "checksums": 16,
+      "active_reader_status": "PASS",
+      "audio_disabled": true,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "the-selfish-giant",
+      "record_sha256": "80bdf11720255bb247bd55afdff73c09ea21f1cc4a013862667ae66a5409c550",
+      "integrated_delta_from_accepted_v3": [],
+      "components": {
+        "source_evidence": "backend/data/controlled_publications/the-selfish-giant/source_evidence.json",
+        "publication_manifest": "backend/data/controlled_publications/the-selfish-giant/publication_manifest.json",
+        "reader_manifest": "backend/data/controlled_publications/the-selfish-giant/reader_manifest.json",
+        "approval_evidence": "backend/data/controlled_publications/the-selfish-giant/approval_evidence.json",
+        "public_book": "backend/data/controlled_publications/the-selfish-giant/public_book.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-selfish-giant/checksum_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-selfish-giant/cover_provenance.json",
+        "publication_authorization": "backend/data/controlled_publications/the-selfish-giant/publication_authorization.json",
+        "acceptance_review_a": "backend/data/controlled_publications/the-selfish-giant/evidence/review_a.json",
+        "acceptance_review_b": "backend/data/controlled_publications/the-selfish-giant/evidence/review_b.json"
+      },
+      "checksums": 16,
+      "active_reader_status": "PASS",
+      "audio_disabled": true,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "the-science-of-getting-rich",
+      "record_sha256": "e8ede6f82279947511c93ecff9f6828e6fadb027bb3bea21f9b85da8fc6f8567",
+      "integrated_delta_from_accepted_v3": [],
+      "components": {
+        "public_book": "backend/data/controlled_publications/the-science-of-getting-rich/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-science-of-getting-rich/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-science-of-getting-rich/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-science-of-getting-rich/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-science-of-getting-rich/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-science-of-getting-rich/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-science-of-getting-rich/cover_provenance.json",
+        "cover_delivery_derivation": "backend/data/controlled_publications/the-science-of-getting-rich/cover_delivery_derivation.json",
+        "cover_front_original_asset": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/science-preparation-20261003/original-front.png",
+        "cover_front_delivery_asset": "frontend/public/assets/books/the-science-of-getting-rich/front-5ee48b1d.webp",
+        "cover_back_original_asset": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/science-preparation-20261003/original-back.png",
+        "cover_back_delivery_asset": "frontend/public/assets/books/the-science-of-getting-rich/back-bda88117.webp",
+        "publication_authorization": "backend/data/controlled_publications/the-science-of-getting-rich/publication_authorization.json",
+        "acceptance_review_a": "backend/data/controlled_publications/the-science-of-getting-rich/evidence/review_a.json",
+        "acceptance_review_b": "backend/data/controlled_publications/the-science-of-getting-rich/evidence/review_b.json"
+      },
+      "checksums": 28,
+      "active_reader_status": "PASS",
+      "audio_disabled": true,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "bn-066",
+      "record_sha256": "f36de6cdbee86a1c80fc0fcc8c5e17eef7cdf2aec458992e36ae2f2ac035e6f1",
+      "integrated_delta_from_accepted_v3": [],
+      "components": {
+        "source_evidence": "backend/data/controlled_publications/bn-066/source_evidence.json",
+        "publication_manifest": "backend/data/controlled_publications/bn-066/publication_manifest.json",
+        "reader_manifest": "backend/data/controlled_publications/bn-066/reader_manifest.json",
+        "approval_evidence": "backend/data/controlled_publications/bn-066/approval_evidence.json",
+        "public_book": "backend/data/controlled_publications/bn-066/public_book.json",
+        "checksum_manifest": "backend/data/controlled_publications/bn-066/checksum_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/bn-066/cover_provenance.json",
+        "publication_authorization": "backend/data/controlled_publications/bn-066/publication_authorization.json",
+        "owner_artwork_declaration": "backend/data/controlled_publications/bn-066/owner_artwork_declaration.json",
+        "acceptance_review_a": "backend/data/controlled_publications/bn-066/evidence/review_a.json",
+        "acceptance_review_b": "backend/data/controlled_publications/bn-066/evidence/review_b.json"
+      },
+      "checksums": 63,
+      "active_reader_status": "PASS",
+      "audio_disabled": true,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "lokrahasya",
+      "record_sha256": "49c5894d1e746ed53711643a68c98f54eabc939cbf88307a5556fccfd9b79a36",
+      "integrated_delta_from_accepted_v3": [],
+      "components": {
+        "source_evidence": "backend/data/controlled_publications/lokrahasya/source_evidence.json",
+        "publication_manifest": "backend/data/controlled_publications/lokrahasya/publication_manifest.json",
+        "reader_manifest": "backend/data/controlled_publications/lokrahasya/reader_manifest.json",
+        "approval_evidence": "backend/data/controlled_publications/lokrahasya/approval_evidence.json",
+        "public_book": "backend/data/controlled_publications/lokrahasya/public_book.json",
+        "checksum_manifest": "backend/data/controlled_publications/lokrahasya/checksum_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/lokrahasya/cover_provenance.json",
+        "reader_order_remedy": "backend/data/controlled_publications/lokrahasya/reader_order_remedy.json",
+        "publication_authorization": "backend/data/controlled_publications/lokrahasya/publication_authorization.json",
+        "owner_artwork_declaration": "backend/data/controlled_publications/lokrahasya/owner_artwork_declaration.json",
+        "acceptance_review_a": "backend/data/controlled_publications/lokrahasya/evidence/review_a.json",
+        "acceptance_review_b": "backend/data/controlled_publications/lokrahasya/evidence/review_b.json"
+      },
+      "checksums": 34,
+      "active_reader_status": "PASS",
+      "audio_disabled": true,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "mrinalini",
+      "record_sha256": "6a0aa9812889f4989bbf004debc20e2dfca800c15a97abbb990f514469c79cbf",
+      "integrated_delta_from_accepted_v3": [],
+      "components": {
+        "source_evidence": "backend/data/controlled_publications/mrinalini/source_evidence.json",
+        "publication_manifest": "backend/data/controlled_publications/mrinalini/publication_manifest.json",
+        "reader_manifest": "backend/data/controlled_publications/mrinalini/reader_manifest.json",
+        "approval_evidence": "backend/data/controlled_publications/mrinalini/approval_evidence.json",
+        "public_book": "backend/data/controlled_publications/mrinalini/public_book.json",
+        "checksum_manifest": "backend/data/controlled_publications/mrinalini/checksum_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/mrinalini/cover_provenance.json",
+        "publication_authorization": "backend/data/controlled_publications/mrinalini/publication_authorization.json",
+        "owner_artwork_declaration": "backend/data/controlled_publications/mrinalini/owner_artwork_declaration.json",
+        "acceptance_review_a": "backend/data/controlled_publications/mrinalini/evidence/review_a.json",
+        "acceptance_review_b": "backend/data/controlled_publications/mrinalini/evidence/review_b.json"
+      },
+      "checksums": 63,
+      "active_reader_status": "PASS",
+      "audio_disabled": true,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "frankenstein",
+      "record_sha256": "0bfe3c7f5c78620216cb4f65e05eedf7c9faf52a521edccdf272c014b7c05bb3",
+      "integrated_delta_from_accepted_v3": [],
+      "components": {
+        "public_book": "backend/data/controlled_publications/frankenstein/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/frankenstein/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/frankenstein/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/frankenstein/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/frankenstein/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/frankenstein/publication_manifest.json",
+        "cover_preparation": "backend/data/controlled_publications/frankenstein/cover_preparation.json",
+        "publication_authorization": "backend/data/controlled_publications/frankenstein/publication_authorization.json",
+        "cover_provenance": "backend/data/controlled_publications/frankenstein/cover_provenance.json",
+        "owner_artwork_declaration": "backend/data/controlled_publications/frankenstein/owner_artwork_declaration.json",
+        "acceptance_review_a": "backend/data/controlled_publications/frankenstein/evidence/review_a.json",
+        "acceptance_review_b": "backend/data/controlled_publications/frankenstein/evidence/review_b.json"
+      },
+      "checksums": 46,
+      "active_reader_status": "PASS",
+      "audio_disabled": true,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "record_sha256": "a437c17426c3bd6567c3050be8f550c5be46a4554d5e7e94bc0715dafb13b328",
+      "integrated_delta_from_accepted_v3": [],
+      "components": {
+        "public_book": "backend/data/controlled_publications/pride-and-prejudice/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/pride-and-prejudice/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/pride-and-prejudice/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/pride-and-prejudice/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/pride-and-prejudice/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/pride-and-prejudice/publication_manifest.json",
+        "cover_preparation": "backend/data/controlled_publications/pride-and-prejudice/cover_preparation.json",
+        "publication_authorization": "backend/data/controlled_publications/pride-and-prejudice/publication_authorization.json",
+        "cover_provenance": "backend/data/controlled_publications/pride-and-prejudice/cover_provenance.json",
+        "owner_artwork_declaration": "backend/data/controlled_publications/pride-and-prejudice/owner_artwork_declaration.json",
+        "acceptance_review_a": "backend/data/controlled_publications/pride-and-prejudice/evidence/review_a.json",
+        "acceptance_review_b": "backend/data/controlled_publications/pride-and-prejudice/evidence/review_b.json"
+      },
+      "checksums": 79,
+      "active_reader_status": "PASS",
+      "audio_disabled": true,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "the-great-gatsby",
+      "record_sha256": "f17b90358e98262ca18747e81d40ea0cc4d75f4b7074c35131f299127e76df34",
+      "integrated_delta_from_accepted_v3": [
+        "publication_manifest.json",
+        "public_book.json",
+        "rights_decision.json",
+        "checksum_manifest.json"
+      ],
+      "components": {
+        "public_book": "backend/data/controlled_publications/the-great-gatsby/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-great-gatsby/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-great-gatsby/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-great-gatsby/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-great-gatsby/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-great-gatsby/publication_manifest.json",
+        "cover_preparation": "backend/data/controlled_publications/the-great-gatsby/cover_preparation.json",
+        "publication_authorization": "backend/data/controlled_publications/the-great-gatsby/publication_authorization.json",
+        "cover_provenance": "backend/data/controlled_publications/the-great-gatsby/cover_provenance.json",
+        "owner_artwork_declaration": "backend/data/controlled_publications/the-great-gatsby/owner_artwork_declaration.json",
+        "acceptance_review_a": "backend/data/controlled_publications/the-great-gatsby/evidence/review_a.json",
+        "acceptance_review_b": "backend/data/controlled_publications/the-great-gatsby/evidence/review_b.json"
+      },
+      "checksums": 29,
+      "active_reader_status": "PASS",
+      "audio_disabled": true,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "the-secret-garden",
+      "record_sha256": "60cf63f5b0176ad3bf06c791851aa90be74be827feb1fa6fd145ff1a56badb65",
+      "integrated_delta_from_accepted_v3": [],
+      "components": {
+        "public_book": "backend/data/controlled_publications/the-secret-garden/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-secret-garden/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-secret-garden/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-secret-garden/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-secret-garden/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-secret-garden/publication_manifest.json",
+        "cover_preparation": "backend/data/controlled_publications/the-secret-garden/cover_preparation.json",
+        "publication_authorization": "backend/data/controlled_publications/the-secret-garden/publication_authorization.json",
+        "cover_provenance": "backend/data/controlled_publications/the-secret-garden/cover_provenance.json",
+        "owner_artwork_declaration": "backend/data/controlled_publications/the-secret-garden/owner_artwork_declaration.json",
+        "acceptance_review_a": "backend/data/controlled_publications/the-secret-garden/evidence/review_a.json",
+        "acceptance_review_b": "backend/data/controlled_publications/the-secret-garden/evidence/review_b.json"
+      },
+      "checksums": 45,
+      "active_reader_status": "PASS",
+      "audio_disabled": true,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "the-time-machine",
+      "record_sha256": "f142d82b591c9f91c656d03b904133db2b8ee46f5c504bd949e3204117bbd27e",
+      "integrated_delta_from_accepted_v3": [],
+      "components": {
+        "public_book": "backend/data/controlled_publications/the-time-machine/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-time-machine/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-time-machine/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-time-machine/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-time-machine/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-time-machine/publication_manifest.json",
+        "cover_preparation": "backend/data/controlled_publications/the-time-machine/cover_preparation.json",
+        "publication_authorization": "backend/data/controlled_publications/the-time-machine/publication_authorization.json",
+        "cover_provenance": "backend/data/controlled_publications/the-time-machine/cover_provenance.json",
+        "owner_artwork_declaration": "backend/data/controlled_publications/the-time-machine/owner_artwork_declaration.json",
+        "acceptance_review_a": "backend/data/controlled_publications/the-time-machine/evidence/review_a.json",
+        "acceptance_review_b": "backend/data/controlled_publications/the-time-machine/evidence/review_b.json"
+      },
+      "checksums": 35,
+      "active_reader_status": "PASS",
+      "audio_disabled": true,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "acres-of-diamonds",
+      "record_sha256": "f40a580d70199d348903af65598fb8e522845bcd66d7a6842374ba33ece2ffda",
+      "integrated_delta_from_accepted_v3": [],
+      "components": {
+        "public_book": "backend/data/controlled_publications/acres-of-diamonds/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/acres-of-diamonds/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/acres-of-diamonds/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/acres-of-diamonds/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/acres-of-diamonds/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/acres-of-diamonds/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/acres-of-diamonds/cover_provenance.json",
+        "cover_delivery_derivation": "backend/data/controlled_publications/acres-of-diamonds/cover_delivery_derivation.json",
+        "cover_front_asset": "backend/data/controlled_publications/acres-of-diamonds/covers/front.png",
+        "cover_back_asset": "backend/data/controlled_publications/acres-of-diamonds/covers/back.png",
+        "cover_front_delivery": "frontend/public/assets/books/acres-of-diamonds/acres-of-diamonds-front-cdffd02e-600.webp",
+        "cover_back_delivery": "frontend/public/assets/books/acres-of-diamonds/acres-of-diamonds-back-b3fb289b-600.webp",
+        "publication_authorization": "backend/data/controlled_publications/acres-of-diamonds/publication_authorization.json",
+        "owner_artwork_declaration": "backend/data/controlled_publications/acres-of-diamonds/owner_artwork_declaration.json",
+        "acceptance_review_a": "backend/data/controlled_publications/acres-of-diamonds/evidence/review_a.json",
+        "acceptance_review_b": "backend/data/controlled_publications/acres-of-diamonds/evidence/review_b.json"
+      },
+      "checksums": 26,
+      "active_reader_status": "PASS",
+      "audio_disabled": true,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "my-life-and-work",
+      "record_sha256": "49002844e6106f70325af06cc1d5bbf2452018a4fa1bbe2aab63f3b1f4814080",
+      "integrated_delta_from_accepted_v3": [],
+      "components": {
+        "public_book": "backend/data/controlled_publications/my-life-and-work/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/my-life-and-work/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/my-life-and-work/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/my-life-and-work/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/my-life-and-work/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/my-life-and-work/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/my-life-and-work/cover_provenance.json",
+        "cover_delivery_derivation": "backend/data/controlled_publications/my-life-and-work/cover_delivery_derivation.json",
+        "cover_front_asset": "backend/data/controlled_publications/my-life-and-work/covers/front.png",
+        "cover_back_asset": "backend/data/controlled_publications/my-life-and-work/covers/back.png",
+        "cover_front_delivery": "frontend/public/assets/books/my-life-and-work/my-life-and-work-front-9f2a6f06-800.webp",
+        "cover_back_delivery": "frontend/public/assets/books/my-life-and-work/my-life-and-work-back-b129bcca-800.webp",
+        "publication_authorization": "backend/data/controlled_publications/my-life-and-work/publication_authorization.json",
+        "owner_artwork_declaration": "backend/data/controlled_publications/my-life-and-work/owner_artwork_declaration.json",
+        "acceptance_review_a": "backend/data/controlled_publications/my-life-and-work/evidence/review_a.json",
+        "acceptance_review_b": "backend/data/controlled_publications/my-life-and-work/evidence/review_b.json"
+      },
+      "checksums": 34,
+      "active_reader_status": "PASS",
+      "audio_disabled": true,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "record_sha256": "172c65e11230dfe6d05537e6a550cece29f312733f3dd8fc05689f617e4dc6bc",
+      "integrated_delta_from_accepted_v3": [],
+      "components": {
+        "public_book": "backend/data/controlled_publications/the-principles-of-scientific-management/public_book.json",
+        "reader_manifest": "backend/data/controlled_publications/the-principles-of-scientific-management/reader_manifest.json",
+        "source_evidence": "backend/data/controlled_publications/the-principles-of-scientific-management/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-principles-of-scientific-management/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-principles-of-scientific-management/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-principles-of-scientific-management/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-principles-of-scientific-management/cover_provenance.json",
+        "cover_delivery_derivation": "backend/data/controlled_publications/the-principles-of-scientific-management/cover_delivery_derivation.json",
+        "cover_front_asset": "backend/data/controlled_publications/the-principles-of-scientific-management/covers/front.png",
+        "cover_back_asset": "backend/data/controlled_publications/the-principles-of-scientific-management/covers/back.png",
+        "cover_front_delivery": "frontend/public/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-front-67895aec-600.webp",
+        "cover_back_delivery": "frontend/public/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-back-a544cc2b-600.webp",
+        "publication_authorization": "backend/data/controlled_publications/the-principles-of-scientific-management/publication_authorization.json",
+        "owner_artwork_declaration": "backend/data/controlled_publications/the-principles-of-scientific-management/owner_artwork_declaration.json",
+        "acceptance_review_a": "backend/data/controlled_publications/the-principles-of-scientific-management/evidence/review_a.json",
+        "acceptance_review_b": "backend/data/controlled_publications/the-principles-of-scientific-management/evidence/review_b.json"
+      },
+      "checksums": 18,
+      "active_reader_status": "PASS",
+      "audio_disabled": true,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "the-wonderful-wizard-of-oz",
+      "record_sha256": "36b0f7498f3b93168db1b7b30fe9864041f0e303cb74ce211f377701907696e1",
+      "integrated_delta_from_accepted_v3": [],
+      "components": {
+        "public_book": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/public_book.json",
+        "reader_manifest": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/wizard-preparation-20261003/proposed-package/backend/data/controlled_publications/the-wonderful-wizard-of-oz/reader_manifest.json",
+        "source_evidence": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/wizard-preparation-20261003/proposed-package/backend/data/controlled_publications/the-wonderful-wizard-of-oz/source_evidence.json",
+        "approval_evidence": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/approval_evidence.json",
+        "checksum_manifest": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/checksum_manifest.json",
+        "publication_manifest": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/publication_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/cover_provenance.json",
+        "cover_delivery_derivation": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/cover_delivery_derivation.json",
+        "cover_front_original_asset": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/wizard-preparation-20261003/original-front.png",
+        "cover_front_delivery_asset": "frontend/public/assets/books/the-wonderful-wizard-of-oz/front-33ecb0db.webp",
+        "cover_back_original_asset": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/wizard-preparation-20261003/original-back.png",
+        "cover_back_delivery_asset": "frontend/public/assets/books/the-wonderful-wizard-of-oz/back-02d62ca4.webp",
+        "owner_artwork_declaration": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/owner_artwork_declaration.json",
+        "publication_authorization": "backend/data/controlled_publications/the-wonderful-wizard-of-oz/publication_authorization.json",
+        "acceptance_review_a": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/new-acceptance-review-a/wizard-preparation-review-a-v1.json",
+        "acceptance_review_b": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/new-acceptance-review-b-20261003/wizard-new-preparation-review-b.json"
+      },
+      "checksums": 44,
+      "active_reader_status": "PASS",
+      "audio_disabled": true,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "book-5704b31005",
+      "record_sha256": "c469a1b1109688361c09eac0dd9996bd0abccea687213f5d90e83601652ac84e",
+      "integrated_delta_from_accepted_v3": [],
+      "components": {
+        "source_evidence": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/bicharak-owner-art-prep-20261003/preimages/root/source_evidence.json",
+        "source_integrity_validation": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/bicharak-owner-art-prep-20261003/proposal/data/controlled_publications/book-5704b31005/source_integrity_validation.json",
+        "publication_manifest": "backend/data/controlled_publications/book-5704b31005/publication_manifest.json",
+        "reader_manifest": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/bicharak-owner-art-prep-20261003/proposal/data/controlled_publications/book-5704b31005/reader_manifest.json",
+        "approval_evidence": "backend/data/controlled_publications/book-5704b31005/approval_evidence.json",
+        "public_book": "backend/data/controlled_publications/book-5704b31005/public_book.json",
+        "checksum_manifest": "backend/data/controlled_publications/book-5704b31005/checksum_manifest.json",
+        "cover_provenance": "backend/data/controlled_publications/book-5704b31005/cover_provenance.json",
+        "publication_authorization": "backend/data/controlled_publications/book-5704b31005/publication_authorization.json",
+        "owner_artwork_declaration": "backend/data/controlled_publications/book-5704b31005/owner_artwork_declaration.json",
+        "acceptance_review_a": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/new-acceptance-review-a/bicharak-preparation-review-a-v1.json",
+        "acceptance_review_b": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/worker-evidence/new-acceptance-review-b-20261003/bicharak-new-preparation-review-b.json"
+      },
+      "checksums": 19,
+      "active_reader_status": "PASS",
+      "audio_disabled": true,
+      "gates": {
+        "IN/True/catalog_metadata": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/cover_display": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_preview": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reader_delivery": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_session": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/reading_pass_renewal": {
+          "passed": true,
+          "reasons": []
+        },
+        "IN/True/audio_stream": {
+          "passed": false,
+          "reasons": [
+            "USE_NOT_AUTHORIZED"
+          ]
+        },
+        "US/True/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_NOT_AUTHORIZED"
+          ]
+        },
+        "IN/False/reader_delivery": {
+          "passed": false,
+          "reasons": [
+            "TERRITORY_UNTRUSTED_OR_UNSUPPORTED"
+          ]
+        }
+      }
+    }
+  ]
+}

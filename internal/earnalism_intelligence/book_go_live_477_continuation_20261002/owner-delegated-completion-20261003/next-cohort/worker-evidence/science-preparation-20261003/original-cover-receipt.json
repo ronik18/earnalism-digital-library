@@ -1,0 +1,35 @@
+{
+  "schema": "earnalism.bounded-current-cover-get.v1",
+  "slug": "the-science-of-getting-rich",
+  "network_requests": 2,
+  "assets": {
+    "front": {
+      "kind": "front",
+      "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/original-front.png",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950227/earnalism/covers/front/cover_ab481468-31e0-4b96-9538-f4d4e944d771.png",
+      "http_status": 200,
+      "sha256": "9fa719df44b5348b2dd694674fb7e4ba38438dd1e652ca70559081d67e88da15",
+      "bytes": 2865468,
+      "width": 1024,
+      "height": 1536,
+      "request_count": 1,
+      "retrieved_at": "2026-10-03T04:38:26.646393+00:00",
+      "redirects_allowed": false
+    },
+    "back": {
+      "kind": "back",
+      "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/original-back.png",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950234/earnalism/covers/back/back_cover_ab481468-31e0-4b96-9538-f4d4e944d771.png",
+      "http_status": 200,
+      "sha256": "49cf4eb533e11cc92d253496e2945d700468b2a2e42b7aabf4c7d8dd3b590f09",
+      "bytes": 2662912,
+      "width": 1024,
+      "height": 1536,
+      "request_count": 1,
+      "retrieved_at": "2026-10-03T04:38:26.620074+00:00",
+      "redirects_allowed": false
+    }
+  },
+  "paid_calls": 0,
+  "no_release_claim": true
+}

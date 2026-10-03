@@ -1,0 +1,26 @@
+{
+  "schema": "earnalism.cover-delivery-derivation.v1",
+  "slug": "the-science-of-getting-rich",
+  "state": "INACTIVE_UNACCEPTED_PENDING_TWO_NEW_EXACT_OVERLAY_DELIVERY_REVIEWS",
+  "method": "One bounded deterministic licensed-font typography mask-overlay, originalsourceart/copyunchangedoutsideprecisemasks;600x900LANCZOSWebPquality64method6",
+  "assets": {
+    "front": {
+      "source_sha256": "7f2e8e9fd3f6d0359b8d94cfc2198101abd64b4b78a95d035932d68bff4f2bf2",
+      "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/overlay-front-delivery.webp",
+      "sha256": "5ee48b1d245c70b1b8495f9a6b98636cc798d2bea96ff54aa4c3d6fa27becb28",
+      "bytes": 60052,
+      "width": 600,
+      "height": 900,
+      "url": "/assets/books/the-science-of-getting-rich/front-5ee48b1d.webp"
+    },
+    "back": {
+      "source_sha256": "83190790c57974d6dad6128dc87d5a3018e8d7fd06f41f623505320e974a1791",
+      "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/overlay-back-delivery.webp",
+      "sha256": "bda88117bdb0d7208f51afa3cab6dce74875f83943ebf7c2a74409a6a29477c4",
+      "bytes": 64860,
+      "width": 600,
+      "height": 900,
+      "url": "/assets/books/the-science-of-getting-rich/back-bda88117.webp"
+    }
+  }
+}

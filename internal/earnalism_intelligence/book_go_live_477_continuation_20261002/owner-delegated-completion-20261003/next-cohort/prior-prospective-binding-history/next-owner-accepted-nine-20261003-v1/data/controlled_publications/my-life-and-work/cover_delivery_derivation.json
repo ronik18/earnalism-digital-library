@@ -1,0 +1,81 @@
+{
+  "schema": "earnalism.exact-cover-delivery-derivation.v1",
+  "slug": "my-life-and-work",
+  "assets": [
+    {
+      "kind": "front",
+      "source_file": "covers/front.png",
+      "source_sha256": "9f2a6f069a8f7d96c9d0228f69b556394a88da983ee172f88cb9eb7e0e494833",
+      "source_bytes": 2200611,
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "delivery_file": "frontend/public/assets/books/my-life-and-work/my-life-and-work-front-9f2a6f06-800.webp",
+      "delivery_sha256": "b46df58db552e1d5adc85c4fde859105c2863811404e594f079561409db4c9f3",
+      "delivery_bytes": 77986,
+      "delivery_dimensions": [
+        800,
+        1200
+      ],
+      "url": "https://theearnalism.com/assets/books/my-life-and-work/my-life-and-work-front-9f2a6f06-800.webp",
+      "recipe": {
+        "format": "WEBP",
+        "mode": "RGB",
+        "quality": 64,
+        "method": 6,
+        "resampling": "LANCZOS",
+        "resize": "aspect-preserving contain 800x1200",
+        "content_dimensions": [
+          800,
+          1200
+        ],
+        "padding_xy": [
+          0,
+          0
+        ],
+        "pillow_version": "12.3.0"
+      },
+      "production_observed": false
+    },
+    {
+      "kind": "back",
+      "source_file": "covers/back.png",
+      "source_sha256": "b129bccafbfca007d95e86eeb101a577d5be3cdb8ebaf8260f75a1285a65b31c",
+      "source_bytes": 2429706,
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "delivery_file": "frontend/public/assets/books/my-life-and-work/my-life-and-work-back-b129bcca-800.webp",
+      "delivery_sha256": "c1c1f36904563fe329ec02549acd3171aaa8f6f970a444ae5672443ec6fc218c",
+      "delivery_bytes": 91012,
+      "delivery_dimensions": [
+        800,
+        1200
+      ],
+      "url": "https://theearnalism.com/assets/books/my-life-and-work/my-life-and-work-back-b129bcca-800.webp",
+      "recipe": {
+        "format": "WEBP",
+        "mode": "RGB",
+        "quality": 64,
+        "method": 6,
+        "resampling": "LANCZOS",
+        "resize": "aspect-preserving contain 800x1200",
+        "content_dimensions": [
+          800,
+          1200
+        ],
+        "padding_xy": [
+          0,
+          0
+        ],
+        "pillow_version": "12.3.0"
+      },
+      "production_observed": false
+    }
+  ],
+  "review_status": "PENDING_TWO_FRESH_EXACT_PNG_WEBP_VISUAL_CHECKS",
+  "production_observed": false,
+  "runtime_observed": false
+}

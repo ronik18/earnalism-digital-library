@@ -1,0 +1,1052 @@
+﻿2026-10-03T06:41:27.5936506Z Current runner version: '2.337.0'
+2026-10-03T06:41:27.5962732Z ##[group]Runner Image Provisioner
+2026-10-03T06:41:27.5963746Z Hosted Compute Agent
+2026-10-03T06:41:27.5964364Z Version: 20260901.588
+2026-10-03T06:41:27.5965117Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+2026-10-03T06:41:27.5965872Z Build Date: 2026-09-01T19:56:44Z
+2026-10-03T06:41:27.5966564Z Worker ID: {19b82f87-974d-4a0f-b1c6-da47a7dce789}
+2026-10-03T06:41:27.5967396Z Azure Region: westcentralus
+2026-10-03T06:41:27.5968029Z ##[endgroup]
+2026-10-03T06:41:27.5969948Z ##[group]Operating System
+2026-10-03T06:41:27.5970623Z Ubuntu
+2026-10-03T06:41:27.5971189Z 24.04.5
+2026-10-03T06:41:27.5971794Z LTS
+2026-10-03T06:41:27.5972326Z ##[endgroup]
+2026-10-03T06:41:27.5972962Z ##[group]Runner Image
+2026-10-03T06:41:27.5973601Z Image: ubuntu-24.04
+2026-10-03T06:41:27.5974192Z Version: 20260927.320.1
+2026-10-03T06:41:27.5975537Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260927.320/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-03T06:41:27.5977252Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260927.320
+2026-10-03T06:41:27.5978273Z ##[endgroup]
+2026-10-03T06:41:27.5979733Z ##[group]GITHUB_TOKEN Permissions
+2026-10-03T06:41:27.5981667Z Contents: read
+2026-10-03T06:41:27.5982306Z Metadata: read
+2026-10-03T06:41:27.5983036Z ##[endgroup]
+2026-10-03T06:41:27.5985199Z Secret source: Actions
+2026-10-03T06:41:27.5986269Z Cache mode: write
+2026-10-03T06:41:27.5986978Z Prepare workflow directory
+2026-10-03T06:41:27.6322075Z Prepare all required actions
+2026-10-03T06:41:27.6369638Z Getting action download info
+2026-10-03T06:41:27.9603597Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+2026-10-03T06:41:28.5356754Z Download action repository 'actions/setup-python@v6' (SHA:ece7cb06caefa5fff74198d8649806c4678c61a1)
+2026-10-03T06:41:29.1196234Z Complete job name: held-edition-evidence
+2026-10-03T06:41:29.2000045Z ##[group]Run actions/checkout@v6
+2026-10-03T06:41:29.2001112Z with:
+2026-10-03T06:41:29.2001593Z   fetch-depth: 0
+2026-10-03T06:41:29.2002152Z   repository: ronik18/earnalism-digital-library
+2026-10-03T06:41:29.2006730Z   token: ***
+2026-10-03T06:41:29.2007233Z   ssh-strict: true
+2026-10-03T06:41:29.2007728Z   ssh-user: git
+2026-10-03T06:41:29.2008217Z   persist-credentials: true
+2026-10-03T06:41:29.2008757Z   clean: true
+2026-10-03T06:41:29.2009435Z   sparse-checkout-cone-mode: true
+2026-10-03T06:41:29.2010006Z   fetch-tags: false
+2026-10-03T06:41:29.2010503Z   show-progress: true
+2026-10-03T06:41:29.2010991Z   lfs: false
+2026-10-03T06:41:29.2011460Z   submodules: false
+2026-10-03T06:41:29.2011982Z   set-safe-directory: true
+2026-10-03T06:41:29.2012535Z   allow-unsafe-pr-checkout: false
+2026-10-03T06:41:29.2013313Z ##[endgroup]
+2026-10-03T06:41:29.3071207Z Syncing repository: ronik18/earnalism-digital-library
+2026-10-03T06:41:29.3074179Z ##[group]Getting Git version info
+2026-10-03T06:41:29.3075352Z Working directory is '/home/runner/work/earnalism-digital-library/earnalism-digital-library'
+2026-10-03T06:41:29.3076835Z [command]/usr/bin/git version
+2026-10-03T06:41:29.3792014Z git version 2.55.0
+2026-10-03T06:41:29.3817377Z ##[endgroup]
+2026-10-03T06:41:29.3835312Z Temporarily overriding HOME='/home/runner/work/_temp/7620e080-0616-4c58-9fb1-e927544b0047' before making global git config changes
+2026-10-03T06:41:29.3837851Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-03T06:41:29.3842367Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/earnalism-digital-library/earnalism-digital-library
+2026-10-03T06:41:29.3981051Z Deleting the contents of '/home/runner/work/earnalism-digital-library/earnalism-digital-library'
+2026-10-03T06:41:29.3987631Z ##[group]Determining repository object format
+2026-10-03T06:41:29.3990299Z ##[endgroup]
+2026-10-03T06:41:29.3991725Z ##[group]Initializing the repository
+2026-10-03T06:41:29.3996735Z [command]/usr/bin/git init /home/runner/work/earnalism-digital-library/earnalism-digital-library
+2026-10-03T06:41:29.4880187Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-03T06:41:29.4882493Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-03T06:41:29.4884364Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-03T06:41:29.4885816Z hint: call:
+2026-10-03T06:41:29.4886966Z hint:
+2026-10-03T06:41:29.4888033Z hint: 	git config --global init.defaultBranch <name>
+2026-10-03T06:41:29.4889383Z hint:
+2026-10-03T06:41:29.4890461Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-03T06:41:29.4892191Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-03T06:41:29.4893636Z hint:
+2026-10-03T06:41:29.4894432Z hint: 	git branch -m <name>
+2026-10-03T06:41:29.4895302Z hint:
+2026-10-03T06:41:29.4896503Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-03T06:41:29.4899053Z Initialized empty Git repository in /home/runner/work/earnalism-digital-library/earnalism-digital-library/.git/
+2026-10-03T06:41:29.4902643Z [command]/usr/bin/git remote add origin https://github.com/ronik18/earnalism-digital-library
+2026-10-03T06:41:29.5234566Z ##[endgroup]
+2026-10-03T06:41:29.5235955Z ##[group]Disabling automatic garbage collection
+2026-10-03T06:41:29.5238509Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-03T06:41:29.5275796Z ##[endgroup]
+2026-10-03T06:41:29.5277204Z ##[group]Setting up auth
+2026-10-03T06:41:29.5278309Z Removing SSH command configuration
+2026-10-03T06:41:29.5284156Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-03T06:41:29.5323032Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-03T06:41:29.6413708Z Removing HTTP extra header
+2026-10-03T06:41:29.6420915Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-03T06:41:29.6463533Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-03T06:41:29.6713664Z Removing includeIf entries pointing to credentials config files
+2026-10-03T06:41:29.6721623Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-03T06:41:29.6763268Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-03T06:41:29.7015306Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-ffbbfddd-a40d-48c5-83a4-1de491d79c2b.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-03T06:41:29.7059776Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/earnalism-digital-library/earnalism-digital-library/.git.path /home/runner/work/_temp/git-credentials-ffbbfddd-a40d-48c5-83a4-1de491d79c2b.config
+2026-10-03T06:41:29.7098613Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/earnalism-digital-library/earnalism-digital-library/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-ffbbfddd-a40d-48c5-83a4-1de491d79c2b.config
+2026-10-03T06:41:29.7216729Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-ffbbfddd-a40d-48c5-83a4-1de491d79c2b.config
+2026-10-03T06:41:29.7262830Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-ffbbfddd-a40d-48c5-83a4-1de491d79c2b.config
+2026-10-03T06:41:29.7296131Z ##[endgroup]
+2026-10-03T06:41:29.7297505Z ##[group]Fetching the repository
+2026-10-03T06:41:29.7306510Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/* +790f493fedf1bc54cfb8758907147156b7a662e8:refs/remotes/pull/511/merge
+2026-10-03T06:41:58.6173036Z From https://github.com/ronik18/earnalism-digital-library
+2026-10-03T06:41:58.6174374Z  * [new branch]        codex/a-ghost-story-alternate-provider   -> origin/codex/a-ghost-story-alternate-provider
+2026-10-03T06:41:58.6175686Z  * [new branch]        codex/a-ghost-story-cover-assignment     -> origin/codex/a-ghost-story-cover-assignment
+2026-10-03T06:41:58.6176563Z  * [new branch]        codex/a-ghost-story-manifest-cache-v7    -> origin/codex/a-ghost-story-manifest-cache-v7
+2026-10-03T06:41:58.6177325Z  * [new branch]        codex/a-ghost-story-middle-repair        -> origin/codex/a-ghost-story-middle-repair
+2026-10-03T06:41:58.6178065Z  * [new branch]        codex/a-ghost-story-package-v2-prep      -> origin/codex/a-ghost-story-package-v2-prep
+2026-10-03T06:41:58.6179166Z  * [new branch]        codex/a-ghost-story-production-evidence  -> origin/codex/a-ghost-story-production-evidence
+2026-10-03T06:41:58.6179928Z  * [new branch]        codex/admin-cover-upload                 -> origin/codex/admin-cover-upload
+2026-10-03T06:41:58.6181047Z  * [new branch]        codex/admin-launch-monitor-auth-canary   -> origin/codex/admin-launch-monitor-auth-canary
+2026-10-03T06:41:58.6182543Z  * [new branch]        codex/audiobook-legal-accessibility-compliance-gate -> origin/codex/audiobook-legal-accessibility-compliance-gate
+2026-10-03T06:41:58.6183911Z  * [new branch]        codex/audiobook-narration-qa-rubric      -> origin/codex/audiobook-narration-qa-rubric
+2026-10-03T06:41:58.6185146Z  * [new branch]        codex/audiobook-package-v2-approved-rollout -> origin/codex/audiobook-package-v2-approved-rollout
+2026-10-03T06:41:58.6186509Z  * [new branch]        codex/audiobook-package-v2-cache-v13     -> origin/codex/audiobook-package-v2-cache-v13
+2026-10-03T06:41:58.6188199Z  * [new branch]        codex/audiobook-provenance-pipeline      -> origin/codex/audiobook-provenance-pipeline
+2026-10-03T06:41:58.6190091Z  * [new branch]        codex/audiobook-regeneration-governance  -> origin/codex/audiobook-regeneration-governance
+2026-10-03T06:41:58.6191405Z  * [new branch]        codex/automation-contract-fix            -> origin/codex/automation-contract-fix
+2026-10-03T06:41:58.6192506Z  * [new branch]        codex/automation-reconcile               -> origin/codex/automation-reconcile
+2026-10-03T06:41:58.6193518Z  * [new branch]        codex/autonomy-bridge                    -> origin/codex/autonomy-bridge
+2026-10-03T06:41:58.6194534Z  * [new branch]        codex/autonomy-bridge-execution          -> origin/codex/autonomy-bridge-execution
+2026-10-03T06:41:58.6195581Z  * [new branch]        codex/b2-live-audio-cleanup              -> origin/codex/b2-live-audio-cleanup
+2026-10-03T06:41:58.6196804Z  * [new branch]        codex/backend-catalog-truth-gate         -> origin/codex/backend-catalog-truth-gate
+2026-10-03T06:41:58.6198038Z  * [new branch]        codex/bankim-indira-evidence-20260924    -> origin/codex/bankim-indira-evidence-20260924
+2026-10-03T06:41:58.6199678Z  * [new branch]        codex/bengali-approved-audio-locked-reader-panel -> origin/codex/bengali-approved-audio-locked-reader-panel
+2026-10-03T06:41:58.6201066Z  * [new branch]        codex/bengali-audiobook-model-bakeoff    -> origin/codex/bengali-audiobook-model-bakeoff
+2026-10-03T06:41:58.6202460Z  * [new branch]        codex/bengali-audiobook-store-candidates -> origin/codex/bengali-audiobook-store-candidates
+2026-10-03T06:41:58.6204008Z  * [new branch]        codex/bengali-endpoint-materialization-book-2b9853ec52 -> origin/codex/bengali-endpoint-materialization-book-2b9853ec52
+2026-10-03T06:41:58.6205506Z  * [new branch]        codex/bengali-post-live-stabilization    -> origin/codex/bengali-post-live-stabilization
+2026-10-03T06:41:58.6207018Z  * [new branch]        codex/book-factory-audiobook-generation  -> origin/codex/book-factory-audiobook-generation
+2026-10-03T06:41:58.6208321Z  * [new branch]        codex/book2b-approved-audio-access-repair -> origin/codex/book2b-approved-audio-access-repair
+2026-10-03T06:41:58.6209776Z  * [new branch]        codex/book2b-audio-runtime-truth         -> origin/codex/book2b-audio-runtime-truth
+2026-10-03T06:41:58.6210614Z  * [new branch]        codex/book2b-mlx-asr-migration-evidence  -> origin/codex/book2b-mlx-asr-migration-evidence
+2026-10-03T06:41:58.6211373Z  * [new branch]        codex/bridge-codex-result-repair         -> origin/codex/bridge-codex-result-repair
+2026-10-03T06:41:58.6212122Z  * [new branch]        codex/cache-media-architecture-baseline  -> origin/codex/cache-media-architecture-baseline
+2026-10-03T06:41:58.6212878Z  * [new branch]        codex/callback-integrity-repair          -> origin/codex/callback-integrity-repair
+2026-10-03T06:41:58.6213663Z  * [new branch]        codex/canonical-reader-runtime-truth     -> origin/codex/canonical-reader-runtime-truth
+2026-10-03T06:41:58.6214556Z  * [new branch]        codex/catalogue-compliance-autonomy-20260930 -> origin/codex/catalogue-compliance-autonomy-20260930
+2026-10-03T06:41:58.6215442Z  * [new branch]        codex/clean-source-only-merge-20260706T191326Z -> origin/codex/clean-source-only-merge-20260706T191326Z
+2026-10-03T06:41:58.6216380Z  * [new branch]        codex/cloudinary-three-part-fastpath     -> origin/codex/cloudinary-three-part-fastpath
+2026-10-03T06:41:58.6217580Z  * [new branch]        codex/codex-implementation-path          -> origin/codex/codex-implementation-path
+2026-10-03T06:41:58.6218697Z  * [new branch]        codex/codex-sandbox-repair               -> origin/codex/codex-sandbox-repair
+2026-10-03T06:41:58.6219859Z  * [new branch]        codex/controlled-bilingual-book-release-batch-1 -> origin/codex/controlled-bilingual-book-release-batch-1
+2026-10-03T06:41:58.6220727Z  * [new branch]        codex/controlled-launch-go-live-43       -> origin/codex/controlled-launch-go-live-43
+2026-10-03T06:41:58.6221672Z  * [new branch]        codex/cors-cache-headers-hotfix          -> origin/codex/cors-cache-headers-hotfix
+2026-10-03T06:41:58.6222451Z  * [new branch]        codex/d19-indic-parler-private-pilot     -> origin/codex/d19-indic-parler-private-pilot
+2026-10-03T06:41:58.6223232Z  * [new branch]        codex/daily-growth-audit-cta-safety      -> origin/codex/daily-growth-audit-cta-safety
+2026-10-03T06:41:58.6224104Z  * [new branch]        codex/dracula-controlled-publication-candidate -> origin/codex/dracula-controlled-publication-candidate
+2026-10-03T06:41:58.6225001Z  * [new branch]        codex/dracula-first-controlled-launch-ux -> origin/codex/dracula-first-controlled-launch-ux
+2026-10-03T06:41:58.6225804Z  * [new branch]        codex/dracula-internal-player-test       -> origin/codex/dracula-internal-player-test
+2026-10-03T06:41:58.6226589Z  * [new branch]        codex/dracula-premium-conversion-ux      -> origin/codex/dracula-premium-conversion-ux
+2026-10-03T06:41:58.6227375Z  * [new branch]        codex/dracula-pricing-ux-hardening       -> origin/codex/dracula-pricing-ux-hardening
+2026-10-03T06:41:58.6228154Z  * [new branch]        codex/dracula-publishing-edition         -> origin/codex/dracula-publishing-edition
+2026-10-03T06:41:58.6229153Z  * [new branch]        codex/dracula-reading-launch-deploy-ready -> origin/codex/dracula-reading-launch-deploy-ready
+2026-10-03T06:41:58.6230173Z  * [new branch]        codex/dracula-seo-prerender-visibility   -> origin/codex/dracula-seo-prerender-visibility
+2026-10-03T06:41:58.6231063Z  * [new branch]        codex/dracula-source-parity-reconciled-20260730 -> origin/codex/dracula-source-parity-reconciled-20260730
+2026-10-03T06:41:58.6232117Z  * [new branch]        codex/dracula-static-seo-canary-contract-20261001 -> origin/codex/dracula-static-seo-canary-contract-20261001
+2026-10-03T06:41:58.6233079Z  * [new branch]        codex/earnalism-logo-reveal-video        -> origin/codex/earnalism-logo-reveal-video
+2026-10-03T06:41:58.6233836Z  * [new branch]        codex/editorial-hero-coverflow           -> origin/codex/editorial-hero-coverflow
+2026-10-03T06:41:58.6234660Z  * [new branch]        codex/elevenlabs-full-chapter-internal-audio -> origin/codex/elevenlabs-full-chapter-internal-audio
+2026-10-03T06:41:58.6236069Z  * [new branch]        codex/elevenlabs-internal-sample-prep-import -> origin/codex/elevenlabs-internal-sample-prep-import
+2026-10-03T06:41:58.6236979Z  * [new branch]        codex/elevenlabs-provider-evidence-review -> origin/codex/elevenlabs-provider-evidence-review
+2026-10-03T06:41:58.6237815Z  * [new branch]        codex/english-audiobook-model-bakeoff    -> origin/codex/english-audiobook-model-bakeoff
+2026-10-03T06:41:58.6238668Z  * [new branch]        codex/english-book-onboarding-orchestrator -> origin/codex/english-book-onboarding-orchestrator
+2026-10-03T06:41:58.6239835Z  * [new branch]        codex/english-onboarding-audiobook-sync-stage -> origin/codex/english-onboarding-audiobook-sync-stage
+2026-10-03T06:41:58.6240884Z  * [new branch]        codex/enhancements-20260816-235936       -> origin/codex/enhancements-20260816-235936
+2026-10-03T06:41:58.6241608Z  * [new branch]        codex/eod-go-live-decision               -> origin/codex/eod-go-live-decision
+2026-10-03T06:41:58.6242572Z  * [new branch]        codex/fast-internal-dracula-audiobook    -> origin/codex/fast-internal-dracula-audiobook
+2026-10-03T06:41:58.6243435Z  * [new branch]        codex/final-landing-visual-acceptance-report -> origin/codex/final-landing-visual-acceptance-report
+2026-10-03T06:41:58.6244368Z  * [new branch]        codex/first-batch-rights-evidence-scorecard -> origin/codex/first-batch-rights-evidence-scorecard
+2026-10-03T06:41:58.6245657Z  * [new branch]        codex/fix-worker-env-duplicate           -> origin/codex/fix-worker-env-duplicate
+2026-10-03T06:41:58.6246888Z  * [new branch]        codex/frontend-install-consistency       -> origin/codex/frontend-install-consistency
+2026-10-03T06:41:58.6248571Z  * [new branch]        codex/full-chapter-elevenlabs-workflow   -> origin/codex/full-chapter-elevenlabs-workflow
+2026-10-03T06:41:58.6250336Z  * [new branch]        codex/ghost-package-v2-full-evidence-20260730 -> origin/codex/ghost-package-v2-full-evidence-20260730
+2026-10-03T06:41:58.6251839Z  * [new branch]        codex/ghost-package-v2-promote-100-20260730 -> origin/codex/ghost-package-v2-promote-100-20260730
+2026-10-03T06:41:58.6253196Z  * [new branch]        codex/ghost-package-v2-stage-0-20260730  -> origin/codex/ghost-package-v2-stage-0-20260730
+2026-10-03T06:41:58.6254549Z  * [new branch]        codex/github-dispatch-diagnostics        -> origin/codex/github-dispatch-diagnostics
+2026-10-03T06:41:58.6255856Z  * [new branch]        codex/golden-hour-hero-provenance        -> origin/codex/golden-hour-hero-provenance
+2026-10-03T06:41:58.6257126Z  * [new branch]        codex/google-full-asr-checkpoint-cache   -> origin/codex/google-full-asr-checkpoint-cache
+2026-10-03T06:41:58.6258495Z  * [new branch]        codex/google-full-listening-lock-20260730 -> origin/codex/google-full-listening-lock-20260730
+2026-10-03T06:41:58.6260041Z  * [new branch]        codex/header-contrast-scroll-fix         -> origin/codex/header-contrast-scroll-fix
+2026-10-03T06:41:58.6261206Z  * [new branch]        codex/header-menu-font-size              -> origin/codex/header-menu-font-size
+2026-10-03T06:41:58.6262377Z  * [new branch]        codex/hero-devdas-plaque-repair          -> origin/codex/hero-devdas-plaque-repair
+2026-10-03T06:41:58.6263588Z  * [new branch]        codex/hero-device-containment            -> origin/codex/hero-device-containment
+2026-10-03T06:41:58.6264896Z  * [new branch]        codex/hero-dracula-book-rendering-polish -> origin/codex/hero-dracula-book-rendering-polish
+2026-10-03T06:41:58.6265706Z  * [new branch]        codex/hero-reader-screen-and-header      -> origin/codex/hero-reader-screen-and-header
+2026-10-03T06:41:58.6266475Z  * [new branch]        codex/hero-reading-pass-layering         -> origin/codex/hero-reading-pass-layering
+2026-10-03T06:41:58.6267206Z  * [new branch]        codex/hero-reference-carousel            -> origin/codex/hero-reference-carousel
+2026-10-03T06:41:58.6268158Z  * [new branch]        codex/home-curated-shelf-collage         -> origin/codex/home-curated-shelf-collage
+2026-10-03T06:41:58.6269062Z  * [new branch]        codex/home-hero-collage-hotfix           -> origin/codex/home-hero-collage-hotfix
+2026-10-03T06:41:58.6269902Z  * [new branch]        codex/home-shelf-typography-hotfix       -> origin/codex/home-shelf-typography-hotfix
+2026-10-03T06:41:58.6270601Z  * [new branch]        codex/home-shelf-v4-main                 -> origin/codex/home-shelf-v4-main
+2026-10-03T06:41:58.6271320Z  * [new branch]        codex/homepage-discovery-refinement      -> origin/codex/homepage-discovery-refinement
+2026-10-03T06:41:58.6272045Z  * [new branch]        codex/homepage-final-polish              -> origin/codex/homepage-final-polish
+2026-10-03T06:41:58.6272757Z  * [new branch]        codex/homepage-hero-reference-fix        -> origin/codex/homepage-hero-reference-fix
+2026-10-03T06:41:58.6274014Z  * [new branch]        codex/homepage-option-b-beige-refinement -> origin/codex/homepage-option-b-beige-refinement
+2026-10-03T06:41:58.6275390Z  * [new branch]        codex/homepage-optionb-production-correction -> origin/codex/homepage-optionb-production-correction
+2026-10-03T06:41:58.6276270Z  * [new branch]        codex/hotfix-user-login-password-safety  -> origin/codex/hotfix-user-login-password-safety
+2026-10-03T06:41:58.6277093Z  * [new branch]        codex/internal-audiobook-sync-pipeline   -> origin/codex/internal-audiobook-sync-pipeline
+2026-10-03T06:41:58.6277936Z  * [new branch]        codex/jekyll-charon-full-20260730        -> origin/codex/jekyll-charon-full-20260730
+2026-10-03T06:41:58.6278699Z  * [new branch]        codex/jekyll-chunk36-bounded-repair      -> origin/codex/jekyll-chunk36-bounded-repair
+2026-10-03T06:41:58.6279734Z  * [new branch]        codex/jekyll-hydes-asr-equivalence-20260730 -> origin/codex/jekyll-hydes-asr-equivalence-20260730
+2026-10-03T06:41:58.6280753Z  * [new branch]        codex/jekyll-mlx-objective-diagnostic    -> origin/codex/jekyll-mlx-objective-diagnostic
+2026-10-03T06:41:58.6281541Z  * [new branch]        codex/jekyll-original-cover-20260730     -> origin/codex/jekyll-original-cover-20260730
+2026-10-03T06:41:58.6282291Z  * [new branch]        codex/jekyll-public-cover-truth          -> origin/codex/jekyll-public-cover-truth
+2026-10-03T06:41:58.6283130Z  * [new branch]        codex/kokoro-af-heart-owner-legal-review-packet -> origin/codex/kokoro-af-heart-owner-legal-review-packet
+2026-10-03T06:41:58.6284023Z  * [new branch]        codex/kokoro-internal-eval-evidence-review -> origin/codex/kokoro-internal-eval-evidence-review
+2026-10-03T06:41:58.6285170Z  * [new branch]        codex/kokoro-selected-voice-rights-packet -> origin/codex/kokoro-selected-voice-rights-packet
+2026-10-03T06:41:58.6286023Z  * [new branch]        codex/kshudhita-pashan-bengali-gothic    -> origin/codex/kshudhita-pashan-bengali-gothic
+2026-10-03T06:41:58.6286794Z  * [new branch]        codex/lane2-catalogue-evidence           -> origin/codex/lane2-catalogue-evidence
+2026-10-03T06:41:58.6287919Z  * [new branch]        codex/lane2-deploy-path-repair           -> origin/codex/lane2-deploy-path-repair
+2026-10-03T06:41:58.6289326Z  * [new branch]        codex/lane2-first-activation-batch       -> origin/codex/lane2-first-activation-batch
+2026-10-03T06:41:58.6290540Z  * [new branch]        codex/lane2-wizard-private               -> origin/codex/lane2-wizard-private
+2026-10-03T06:41:58.6291681Z  * [new branch]        codex/library-reader-polish              -> origin/codex/library-reader-polish
+2026-10-03T06:41:58.6292777Z  * [new branch]        codex/library-redesign                   -> origin/codex/library-redesign
+2026-10-03T06:41:58.6293818Z  * [new branch]        codex/listening-ribbon                   -> origin/codex/listening-ribbon
+2026-10-03T06:41:58.6294912Z  * [new branch]        codex/listening-room-homepage            -> origin/codex/listening-room-homepage
+2026-10-03T06:41:58.6296227Z  * [new branch]        codex/luxury-homepage-reading-room       -> origin/codex/luxury-homepage-reading-room
+2026-10-03T06:41:58.6297728Z  * [new branch]        codex/main-approved-integration          -> origin/codex/main-approved-integration
+2026-10-03T06:41:58.6299103Z  * [new branch]        codex/merge-stack-readiness-audit        -> origin/codex/merge-stack-readiness-audit
+2026-10-03T06:41:58.6300373Z  * [new branch]        codex/new-enhancements-20260817-000549   -> origin/codex/new-enhancements-20260817-000549
+2026-10-03T06:41:58.6301607Z  * [new branch]        codex/next-source-bound-audio            -> origin/codex/next-source-bound-audio
+2026-10-03T06:41:58.6302848Z  * [new branch]        codex/nonvisual-accessibility-journey    -> origin/codex/nonvisual-accessibility-journey
+2026-10-03T06:41:58.6304150Z  * [new branch]        codex/onboarding-release-truth-guard     -> origin/codex/onboarding-release-truth-guard
+2026-10-03T06:41:58.6305580Z  * [new branch]        codex/open-window-audio-pilot            -> origin/codex/open-window-audio-pilot
+2026-10-03T06:41:58.6380507Z  * [new branch]        codex/open-window-package-v2-canary-5    -> origin/codex/open-window-package-v2-canary-5
+2026-10-03T06:41:58.6381510Z  * [new branch]        codex/optionb-pixel-fidelity             -> origin/codex/optionb-pixel-fidelity
+2026-10-03T06:41:58.6382383Z  * [new branch]        codex/p1-postmerge-ci-first-failure-repair -> origin/codex/p1-postmerge-ci-first-failure-repair
+2026-10-03T06:41:58.6383438Z  * [new branch]        codex/p1-uat-detached-provenance-dynamic-counts -> origin/codex/p1-uat-detached-provenance-dynamic-counts
+2026-10-03T06:41:58.6384343Z  * [new branch]        codex/p1-uat-report-preservation         -> origin/codex/p1-uat-report-preservation
+2026-10-03T06:41:58.6385117Z  * [new branch]        codex/p1-uat-sitemap-isolation           -> origin/codex/p1-uat-sitemap-isolation
+2026-10-03T06:41:58.6386297Z  * [new branch]        codex/package-v2-current-main-20260731   -> origin/codex/package-v2-current-main-20260731
+2026-10-03T06:41:58.6387131Z  * [new branch]        codex/package-v2-qa-candidate-builder    -> origin/codex/package-v2-qa-candidate-builder
+2026-10-03T06:41:58.6387992Z  * [new branch]        codex/package-v2-sredni-migration-20260730 -> origin/codex/package-v2-sredni-migration-20260730
+2026-10-03T06:41:58.6388792Z  * [new branch]        codex/parallel-prelaunch-governor        -> origin/codex/parallel-prelaunch-governor
+2026-10-03T06:41:58.6389863Z  * [new branch]        codex/path-aware-production-deploy       -> origin/codex/path-aware-production-deploy
+2026-10-03T06:41:58.6390651Z  * [new branch]        codex/payment-revenue-confidence-gate    -> origin/codex/payment-revenue-confidence-gate
+2026-10-03T06:41:58.6391452Z  * [new branch]        codex/phase10-observability-guardrails   -> origin/codex/phase10-observability-guardrails
+2026-10-03T06:41:58.6392215Z  * [new branch]        codex/phase11-first-product-batch        -> origin/codex/phase11-first-product-batch
+2026-10-03T06:41:58.6392964Z  * [new branch]        codex/phase12-release-hardening          -> origin/codex/phase12-release-hardening
+2026-10-03T06:41:58.6393675Z  * [new branch]        codex/phase13-launch-readiness           -> origin/codex/phase13-launch-readiness
+2026-10-03T06:41:58.6394421Z  * [new branch]        codex/phase13c-launch-blocker-closure    -> origin/codex/phase13c-launch-blocker-closure
+2026-10-03T06:41:58.6395249Z  * [new branch]        codex/phase14-line-by-line-launch-hardening -> origin/codex/phase14-line-by-line-launch-hardening
+2026-10-03T06:41:58.6396083Z  * [new branch]        codex/phase2-rights-verification-engine  -> origin/codex/phase2-rights-verification-engine
+2026-10-03T06:41:58.6396824Z  * [new branch]        codex/phase3-demand-scoring              -> origin/codex/phase3-demand-scoring
+2026-10-03T06:41:58.6397511Z  * [new branch]        codex/phase4-source-ingestion            -> origin/codex/phase4-source-ingestion
+2026-10-03T06:41:58.6398280Z  * [new branch]        codex/phase5-edition-generator           -> origin/codex/phase5-edition-generator
+2026-10-03T06:41:58.6399671Z  * [new branch]        codex/phase6-visual-design-engine        -> origin/codex/phase6-visual-design-engine
+2026-10-03T06:41:58.6400461Z  * [new branch]        codex/phase7-audiobook-voice-pipeline    -> origin/codex/phase7-audiobook-voice-pipeline
+2026-10-03T06:41:58.6401264Z  * [new branch]        codex/phase8-admin-publishing-workflow   -> origin/codex/phase8-admin-publishing-workflow
+2026-10-03T06:41:58.6402061Z  * [new branch]        codex/phase9-daily-growth-automation     -> origin/codex/phase9-daily-growth-automation
+2026-10-03T06:41:58.6402846Z  * [new branch]        codex/post-production-release-canary     -> origin/codex/post-production-release-canary
+2026-10-03T06:41:58.6403587Z  * [new branch]        codex/pr409-runtime-inspector            -> origin/codex/pr409-runtime-inspector
+2026-10-03T06:41:58.6404281Z  * [new branch]        codex/pr410-inspector-timeouts           -> origin/codex/pr410-inspector-timeouts
+2026-10-03T06:41:58.6405063Z  * [new branch]        codex/pr469-postmerge-functional-recovery -> origin/codex/pr469-postmerge-functional-recovery
+2026-10-03T06:41:58.6405857Z  * [new branch]        codex/premium-footer-social-links        -> origin/codex/premium-footer-social-links
+2026-10-03T06:41:58.6406610Z  * [new branch]        codex/premium-hero-deploy-evidence       -> origin/codex/premium-hero-deploy-evidence
+2026-10-03T06:41:58.6407350Z  * [new branch]        codex/premium-hero-dracula-polish        -> origin/codex/premium-hero-dracula-polish
+2026-10-03T06:41:58.6408151Z  * [new branch]        codex/premium-landing-visual-luxury-pass -> origin/codex/premium-landing-visual-luxury-pass
+2026-10-03T06:41:58.6409138Z  * [new branch]        codex/premium-site-tour-video-package    -> origin/codex/premium-site-tour-video-package
+2026-10-03T06:41:58.6409892Z  * [new branch]        codex/premium-social-brand-kit           -> origin/codex/premium-social-brand-kit
+2026-10-03T06:41:58.6410793Z  * [new branch]        codex/product-truth-ledger-launch-state  -> origin/codex/product-truth-ledger-launch-state
+2026-10-03T06:41:58.6411693Z  * [new branch]        codex/production-link-action-integrity-20260930 -> origin/codex/production-link-action-integrity-20260930
+2026-10-03T06:41:58.6412524Z  * [new branch]        codex/production-monitoring-funnel       -> origin/codex/production-monitoring-funnel
+2026-10-03T06:41:58.6413293Z  * [new branch]        codex/public-catalog-governance-phase1b  -> origin/codex/public-catalog-governance-phase1b
+2026-10-03T06:41:58.6414038Z  * [new branch]        codex/public-content-cleanup             -> origin/codex/public-content-cleanup
+2026-10-03T06:41:58.6414838Z  * [new branch]        codex/publication-safety-controlled-allowlist -> origin/codex/publication-safety-controlled-allowlist
+2026-10-03T06:41:58.6415617Z  * [new branch]        codex/publish-books-live                 -> origin/codex/publish-books-live
+2026-10-03T06:41:58.6416330Z  * [new branch]        codex/railway-backend-cost-controls      -> origin/codex/railway-backend-cost-controls
+2026-10-03T06:41:58.6417077Z  * [new branch]        codex/railway-postdeploy-ordering        -> origin/codex/railway-postdeploy-ordering
+2026-10-03T06:41:58.6417796Z  * [new branch]        codex/razorpay-webhook-repair            -> origin/codex/razorpay-webhook-repair
+2026-10-03T06:41:58.6418502Z  * [new branch]        codex/reader-benchmark-extraction        -> origin/codex/reader-benchmark-extraction
+2026-10-03T06:41:58.6419445Z  * [new branch]        codex/reader-catalog-cache-v1            -> origin/codex/reader-catalog-cache-v1
+2026-10-03T06:41:58.6420199Z  * [new branch]        codex/reader-listener-beige-experience   -> origin/codex/reader-listener-beige-experience
+2026-10-03T06:41:58.6420965Z  * [new branch]        codex/reader-one-click-playback-v2       -> origin/codex/reader-one-click-playback-v2
+2026-10-03T06:41:58.6421708Z  * [new branch]        codex/reader-perspectives-microcopy      -> origin/codex/reader-perspectives-microcopy
+2026-10-03T06:41:58.6422459Z  * [new branch]        codex/reader-perspectives-repair2        -> origin/codex/reader-perspectives-repair2
+2026-10-03T06:41:58.6423329Z  * [new branch]        codex/reader-premium-optimizations       -> origin/codex/reader-premium-optimizations
+2026-10-03T06:41:58.6424100Z  * [new branch]        codex/reader-premium-optimizations-main  -> origin/codex/reader-premium-optimizations-main
+2026-10-03T06:41:58.6424867Z  * [new branch]        codex/reading-circle-latest              -> origin/codex/reading-circle-latest
+2026-10-03T06:41:58.6425634Z  * [new branch]        codex/reading-circle-redesign            -> origin/codex/reading-circle-redesign
+2026-10-03T06:41:58.6426340Z  * [new branch]        codex/reading-only-launch-prep           -> origin/codex/reading-only-launch-prep
+2026-10-03T06:41:58.6427136Z  * [new branch]        codex/reading-only-production-deploy-runbook -> origin/codex/reading-only-production-deploy-runbook
+2026-10-03T06:41:58.6427910Z  * [new branch]        codex/real-codex-executor                -> origin/codex/real-codex-executor
+2026-10-03T06:41:58.6428587Z  * [new branch]        codex/real-user-ux-video-audit           -> origin/codex/real-user-ux-video-audit
+2026-10-03T06:41:58.6429557Z  * [new branch]        codex/record-production-canary-live-verified -> origin/codex/record-production-canary-live-verified
+2026-10-03T06:41:58.6430391Z  * [new branch]        codex/reference-accurate-dynamic-hero    -> origin/codex/reference-accurate-dynamic-hero
+2026-10-03T06:41:58.6431171Z  * [new branch]        codex/reference-hero-evidence-closeout   -> origin/codex/reference-hero-evidence-closeout
+2026-10-03T06:41:58.6431962Z  * [new branch]        codex/repo-cleanup-modularization-audit  -> origin/codex/repo-cleanup-modularization-audit
+2026-10-03T06:41:58.6432696Z  * [new branch]        codex/repository-deep-clean              -> origin/codex/repository-deep-clean
+2026-10-03T06:41:58.6433708Z  * [new branch]        codex/restore-dracula-production-api-availability -> origin/codex/restore-dracula-production-api-availability
+2026-10-03T06:41:58.6434570Z  * [new branch]        codex/revert-pr-14-stabilization         -> origin/codex/revert-pr-14-stabilization
+2026-10-03T06:41:58.6435271Z  * [new branch]        codex/shelf2-claimable-ten               -> origin/codex/shelf2-claimable-ten
+2026-10-03T06:41:58.6435965Z  * [new branch]        codex/signed-user-journey-recorder       -> origin/codex/signed-user-journey-recorder
+2026-10-03T06:41:58.6436727Z  * [new branch]        codex/sitewide-option-b-design-system    -> origin/codex/sitewide-option-b-design-system
+2026-10-03T06:41:58.6437480Z  * [new branch]        codex/source-only-clean-integration      -> origin/codex/source-only-clean-integration
+2026-10-03T06:41:58.6438213Z  * [new branch]        codex/sprint1-acceleration-evidence      -> origin/codex/sprint1-acceleration-evidence
+2026-10-03T06:41:58.6439102Z  * [new branch]        codex/sprint1-audio-release-truth        -> origin/codex/sprint1-audio-release-truth
+2026-10-03T06:41:58.6439853Z  * [new branch]        codex/sprint1-autonomous-go-live-v3      -> origin/codex/sprint1-autonomous-go-live-v3
+2026-10-03T06:41:58.6440562Z  * [new branch]        codex/sprint1-autonomous-v2              -> origin/codex/sprint1-autonomous-v2
+2026-10-03T06:41:58.6441258Z  * [new branch]        codex/sprint1-bengali-go-live-pilot      -> origin/codex/sprint1-bengali-go-live-pilot
+2026-10-03T06:41:58.6441979Z  * [new branch]        codex/sprint1-bengali-go-live-wave2      -> origin/codex/sprint1-bengali-go-live-wave2
+2026-10-03T06:41:58.6442688Z  * [new branch]        codex/sprint1-cost-reconciliation        -> origin/codex/sprint1-cost-reconciliation
+2026-10-03T06:41:58.6443438Z  * [new branch]        codex/sprint1-hero-carousel-refinement   -> origin/codex/sprint1-hero-carousel-refinement
+2026-10-03T06:41:58.6444189Z  * [new branch]        codex/sprint1-monkeys-paw-pilot          -> origin/codex/sprint1-monkeys-paw-pilot
+2026-10-03T06:41:58.6444904Z  * [new branch]        codex/sprint1-next-kokoro-pilot          -> origin/codex/sprint1-next-kokoro-pilot
+2026-10-03T06:41:58.6445783Z  * [new branch]        codex/sprint1-next-two-fastpath-runner   -> origin/codex/sprint1-next-two-fastpath-runner
+2026-10-03T06:41:58.6446544Z  * [new branch]        codex/sprint1-paid-execution             -> origin/codex/sprint1-paid-execution
+2026-10-03T06:41:58.6447282Z  * [new branch]        codex/sprint1-parallel-publication       -> origin/codex/sprint1-parallel-publication
+2026-10-03T06:41:58.6448062Z  * [new branch]        codex/sprint1-reader-six-live-allowlist  -> origin/codex/sprint1-reader-six-live-allowlist
+2026-10-03T06:41:58.6448813Z  * [new branch]        codex/sprint1-runtime-gate-truth         -> origin/codex/sprint1-runtime-gate-truth
+2026-10-03T06:41:58.6449732Z  * [new branch]        codex/sprint1-stage2-publication         -> origin/codex/sprint1-stage2-publication
+2026-10-03T06:41:58.6450454Z  * [new branch]        codex/sprint1-stage2f-book-d19           -> origin/codex/sprint1-stage2f-book-d19
+2026-10-03T06:41:58.6451230Z  * [new branch]        codex/sredni-package-v2-canary-25-20260730 -> origin/codex/sredni-package-v2-canary-25-20260730
+2026-10-03T06:41:58.6452053Z  * [new branch]        codex/sredni-package-v2-canary-5-20260730 -> origin/codex/sredni-package-v2-canary-5-20260730
+2026-10-03T06:41:58.6452880Z  * [new branch]        codex/sredni-package-v2-promote-100-20260730 -> origin/codex/sredni-package-v2-promote-100-20260730
+2026-10-03T06:41:58.6453643Z  * [new branch]        codex/stage2g-d19-fail-closed            -> origin/codex/stage2g-d19-fail-closed
+2026-10-03T06:41:58.6454311Z  * [new branch]        codex/stage2h-dsires-baby                -> origin/codex/stage2h-dsires-baby
+2026-10-03T06:41:58.6455024Z  * [new branch]        codex/static-seo-deployment-followup     -> origin/codex/static-seo-deployment-followup
+2026-10-03T06:41:58.6455812Z  * [new branch]        codex/static-seo-main-regression-followup -> origin/codex/static-seo-main-regression-followup
+2026-10-03T06:41:58.6456731Z  * [new branch]        codex/static-seo-snapshot-correction     -> origin/codex/static-seo-snapshot-correction
+2026-10-03T06:41:58.6457491Z  * [new branch]        codex/static-seo-snapshots-dracula       -> origin/codex/static-seo-snapshots-dracula
+2026-10-03T06:41:58.6458266Z  * [new branch]        codex/storage-preflight-retention-floor  -> origin/codex/storage-preflight-retention-floor
+2026-10-03T06:41:58.6459249Z  * [new branch]        codex/the-open-window-google-audition    -> origin/codex/the-open-window-google-audition
+2026-10-03T06:41:58.6459981Z  * [new branch]        codex/the-open-window-stage2e            -> origin/codex/the-open-window-stage2e
+2026-10-03T06:41:58.6460647Z  * [new branch]        codex/track-a-bootstrap                  -> origin/codex/track-a-bootstrap
+2026-10-03T06:41:58.6461341Z  * [new branch]        codex/tts-model-evidence-backfill        -> origin/codex/tts-model-evidence-backfill
+2026-10-03T06:41:58.6462119Z  * [new branch]        codex/tts-model-license-review-stage     -> origin/codex/tts-model-license-review-stage
+2026-10-03T06:41:58.6462938Z  * [new branch]        codex/tts-voice-rights-internal-eval-packet -> origin/codex/tts-voice-rights-internal-eval-packet
+2026-10-03T06:41:58.6463749Z  * [new branch]        codex/uniform-site-header-typography     -> origin/codex/uniform-site-header-typography
+2026-10-03T06:41:58.6464506Z  * [new branch]        codex/versioned-reader-preview-cache     -> origin/codex/versioned-reader-preview-cache
+2026-10-03T06:41:58.6465328Z  * [new branch]        feature/editorial-shelf-runway-v3        -> origin/feature/editorial-shelf-runway-v3
+2026-10-03T06:41:58.6466169Z  * [new branch]        feature/home-premium-repair-v5           -> origin/feature/home-premium-repair-v5
+2026-10-03T06:41:58.6466939Z  * [new branch]        feature/home-shelf-v4-audiobook-discovery -> origin/feature/home-shelf-v4-audiobook-discovery
+2026-10-03T06:41:58.6467781Z  * [new branch]        feature/listening-rail-editorial-shelves-v4 -> origin/feature/listening-rail-editorial-shelves-v4
+2026-10-03T06:41:58.6468624Z  * [new branch]        feature/premium-curated-shelf-collage-v2 -> origin/feature/premium-curated-shelf-collage-v2
+2026-10-03T06:41:58.6469776Z  * [new branch]        feature/premium-dynamic-sprint1-hero     -> origin/feature/premium-dynamic-sprint1-hero
+2026-10-03T06:41:58.6470619Z  * [new branch]        fix/catalogue-campaign-bounded-worker-20261001 -> origin/fix/catalogue-campaign-bounded-worker-20261001
+2026-10-03T06:41:58.6471603Z  * [new branch]        fix/catalogue-campaign-fresh-runner-regression-20261001 -> origin/fix/catalogue-campaign-fresh-runner-regression-20261001
+2026-10-03T06:41:58.6472709Z  * [new branch]        fix/catalogue-campaign-prestart-regression-services-20261001 -> origin/fix/catalogue-campaign-prestart-regression-services-20261001
+2026-10-03T06:41:58.6473690Z  * [new branch]        hotfix/a-ghost-story-public-audio-gate   -> origin/hotfix/a-ghost-story-public-audio-gate
+2026-10-03T06:41:58.6474474Z  * [new branch]        hotfix/bengali-slideshow-visibility      -> origin/hotfix/bengali-slideshow-visibility
+2026-10-03T06:41:58.6475210Z  * [new branch]        hotfix/bn-066-hide-public-audio          -> origin/hotfix/bn-066-hide-public-audio
+2026-10-03T06:41:58.6476022Z  * [new branch]        hotfix/sprint1-remove-stale-direct-audio-source -> origin/hotfix/sprint1-remove-stale-direct-audio-source
+2026-10-03T06:41:58.6476848Z  * [new branch]        luxury-ux-upgrade                        -> origin/luxury-ux-upgrade
+2026-10-03T06:41:58.6477505Z  * [new branch]        luxury-ux-upgrade-2                      -> origin/luxury-ux-upgrade-2
+2026-10-03T06:41:58.6478167Z  * [new branch]        main                                     -> origin/main
+2026-10-03T06:41:58.6478684Z  * [new branch]        polish-ui                                -> origin/polish-ui
+2026-10-03T06:41:58.6479384Z  * [new branch]        production-deploy                        -> origin/production-deploy
+2026-10-03T06:41:58.6480240Z  * [new branch]        release/sredni-vashtar-reuse-audiobook   -> origin/release/sredni-vashtar-reuse-audiobook
+2026-10-03T06:41:58.6480975Z  * [new branch]        schema-simplification                    -> origin/schema-simplification
+2026-10-03T06:41:58.6481560Z  * [new ref]           790f493fedf1bc54cfb8758907147156b7a662e8 -> pull/511/merge
+2026-10-03T06:41:58.6483002Z ##[endgroup]
+2026-10-03T06:41:58.6483441Z ##[group]Determining the checkout info
+2026-10-03T06:41:58.6483920Z ##[endgroup]
+2026-10-03T06:41:58.6484222Z [command]/usr/bin/git sparse-checkout disable
+2026-10-03T06:41:58.6485114Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-03T06:41:58.6486070Z ##[group]Checking out the ref
+2026-10-03T06:41:58.6486505Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/511/merge
+2026-10-03T06:41:59.6682988Z Updating files:  13% (2041/15139)
+2026-10-03T06:41:59.7826603Z Updating files:  14% (2120/15139)
+2026-10-03T06:41:59.7971704Z Updating files:  15% (2271/15139)
+2026-10-03T06:41:59.8182050Z Updating files:  16% (2423/15139)
+2026-10-03T06:41:59.8342890Z Updating files:  17% (2574/15139)
+2026-10-03T06:41:59.8558748Z Updating files:  18% (2726/15139)
+2026-10-03T06:41:59.8730256Z Updating files:  19% (2877/15139)
+2026-10-03T06:41:59.8958265Z Updating files:  20% (3028/15139)
+2026-10-03T06:41:59.9147370Z Updating files:  21% (3180/15139)
+2026-10-03T06:41:59.9345595Z Updating files:  22% (3331/15139)
+2026-10-03T06:41:59.9557874Z Updating files:  23% (3482/15139)
+2026-10-03T06:41:59.9780042Z Updating files:  24% (3634/15139)
+2026-10-03T06:41:59.9935653Z Updating files:  25% (3785/15139)
+2026-10-03T06:42:00.0204979Z Updating files:  26% (3937/15139)
+2026-10-03T06:42:00.1224126Z Updating files:  27% (4088/15139)
+2026-10-03T06:42:00.1778242Z Updating files:  28% (4239/15139)
+2026-10-03T06:42:00.2419663Z Updating files:  29% (4391/15139)
+2026-10-03T06:42:00.2637938Z Updating files:  30% (4542/15139)
+2026-10-03T06:42:00.2838540Z Updating files:  31% (4694/15139)
+2026-10-03T06:42:00.4435512Z Updating files:  32% (4845/15139)
+2026-10-03T06:42:00.4549250Z Updating files:  33% (4996/15139)
+2026-10-03T06:42:00.5073452Z Updating files:  34% (5148/15139)
+2026-10-03T06:42:00.5966947Z Updating files:  35% (5299/15139)
+2026-10-03T06:42:00.6610463Z Updating files:  36% (5451/15139)
+2026-10-03T06:42:00.6867906Z Updating files:  36% (5595/15139)
+2026-10-03T06:42:00.7542365Z Updating files:  37% (5602/15139)
+2026-10-03T06:42:00.8482455Z Updating files:  38% (5753/15139)
+2026-10-03T06:42:00.8704813Z Updating files:  39% (5905/15139)
+2026-10-03T06:42:00.9222418Z Updating files:  40% (6056/15139)
+2026-10-03T06:42:00.9641740Z Updating files:  41% (6207/15139)
+2026-10-03T06:42:01.0502048Z Updating files:  42% (6359/15139)
+2026-10-03T06:42:01.1665858Z Updating files:  43% (6510/15139)
+2026-10-03T06:42:01.2260483Z Updating files:  44% (6662/15139)
+2026-10-03T06:42:01.2906784Z Updating files:  45% (6813/15139)
+2026-10-03T06:42:01.3272776Z Updating files:  46% (6964/15139)
+2026-10-03T06:42:01.3601587Z Updating files:  47% (7116/15139)
+2026-10-03T06:42:01.3705246Z Updating files:  48% (7267/15139)
+2026-10-03T06:42:01.8426845Z Updating files:  49% (7419/15139)
+2026-10-03T06:42:01.8499929Z Updating files:  49% (7545/15139)
+2026-10-03T06:42:01.8853066Z Updating files:  50% (7570/15139)
+2026-10-03T06:42:01.9069997Z Updating files:  51% (7721/15139)
+2026-10-03T06:42:01.9222781Z Updating files:  52% (7873/15139)
+2026-10-03T06:42:01.9453636Z Updating files:  53% (8024/15139)
+2026-10-03T06:42:01.9611366Z Updating files:  54% (8176/15139)
+2026-10-03T06:42:01.9741951Z Updating files:  55% (8327/15139)
+2026-10-03T06:42:02.0144058Z Updating files:  56% (8478/15139)
+2026-10-03T06:42:02.0254918Z Updating files:  57% (8630/15139)
+2026-10-03T06:42:02.0366547Z Updating files:  58% (8781/15139)
+2026-10-03T06:42:02.0544540Z Updating files:  59% (8933/15139)
+2026-10-03T06:42:02.1582593Z Updating files:  60% (9084/15139)
+2026-10-03T06:42:02.1675911Z Updating files:  61% (9235/15139)
+2026-10-03T06:42:02.1776246Z Updating files:  62% (9387/15139)
+2026-10-03T06:42:02.1968510Z Updating files:  63% (9538/15139)
+2026-10-03T06:42:02.2145191Z Updating files:  64% (9689/15139)
+2026-10-03T06:42:02.3106784Z Updating files:  65% (9841/15139)
+2026-10-03T06:42:02.3262432Z Updating files:  66% (9992/15139)
+2026-10-03T06:42:02.4391000Z Updating files:  67% (10144/15139)
+2026-10-03T06:42:02.4852341Z Updating files:  68% (10295/15139)
+2026-10-03T06:42:02.5309966Z Updating files:  69% (10446/15139)
+2026-10-03T06:42:02.5748513Z Updating files:  70% (10598/15139)
+2026-10-03T06:42:02.6318341Z Updating files:  71% (10749/15139)
+2026-10-03T06:42:02.6543542Z Updating files:  72% (10901/15139)
+2026-10-03T06:42:02.7660177Z Updating files:  72% (10954/15139)
+2026-10-03T06:42:02.8393573Z Updating files:  73% (11052/15139)
+2026-10-03T06:42:02.9601700Z Updating files:  74% (11203/15139)
+2026-10-03T06:42:03.0848659Z Updating files:  75% (11355/15139)
+2026-10-03T06:42:03.2170310Z Updating files:  76% (11506/15139)
+2026-10-03T06:42:03.3244601Z Updating files:  77% (11658/15139)
+2026-10-03T06:42:03.4553274Z Updating files:  78% (11809/15139)
+2026-10-03T06:42:03.5963674Z Updating files:  79% (11960/15139)
+2026-10-03T06:42:03.6518679Z Updating files:  80% (12112/15139)
+2026-10-03T06:42:03.7091793Z Updating files:  80% (12153/15139)
+2026-10-03T06:42:03.7167856Z Updating files:  81% (12263/15139)
+2026-10-03T06:42:03.7242185Z Updating files:  82% (12414/15139)
+2026-10-03T06:42:03.7315197Z Updating files:  83% (12566/15139)
+2026-10-03T06:42:03.7381300Z Updating files:  84% (12717/15139)
+2026-10-03T06:42:03.7451607Z Updating files:  85% (12869/15139)
+2026-10-03T06:42:03.7796196Z Updating files:  86% (13020/15139)
+2026-10-03T06:42:03.8539032Z Updating files:  87% (13171/15139)
+2026-10-03T06:42:04.0166908Z Updating files:  88% (13323/15139)
+2026-10-03T06:42:04.0786754Z Updating files:  89% (13474/15139)
+2026-10-03T06:42:04.1058598Z Updating files:  90% (13626/15139)
+2026-10-03T06:42:04.1199477Z Updating files:  91% (13777/15139)
+2026-10-03T06:42:04.2305084Z Updating files:  92% (13928/15139)
+2026-10-03T06:42:04.2940066Z Updating files:  93% (14080/15139)
+2026-10-03T06:42:04.3233423Z Updating files:  94% (14231/15139)
+2026-10-03T06:42:04.3611818Z Updating files:  95% (14383/15139)
+2026-10-03T06:42:04.3725114Z Updating files:  96% (14534/15139)
+2026-10-03T06:42:04.3910748Z Updating files:  97% (14685/15139)
+2026-10-03T06:42:04.4041047Z Updating files:  98% (14837/15139)
+2026-10-03T06:42:04.4199981Z Updating files:  99% (14988/15139)
+2026-10-03T06:42:04.4200388Z Updating files: 100% (15139/15139)
+2026-10-03T06:42:04.4200776Z Updating files: 100% (15139/15139), done.
+2026-10-03T06:42:04.4391273Z Note: switching to 'refs/remotes/pull/511/merge'.
+2026-10-03T06:42:04.4391642Z 
+2026-10-03T06:42:04.4391871Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-03T06:42:04.4392491Z changes and commit them, and you can discard any commits you make in this
+2026-10-03T06:42:04.4393214Z state without impacting any branches by switching back to a branch.
+2026-10-03T06:42:04.4393644Z 
+2026-10-03T06:42:04.4393952Z If you want to create a new branch to retain commits you create, you may
+2026-10-03T06:42:04.4394640Z do so (now or later) by using -c with the switch command. Example:
+2026-10-03T06:42:04.4395028Z 
+2026-10-03T06:42:04.4395200Z   git switch -c <new-branch-name>
+2026-10-03T06:42:04.4395462Z 
+2026-10-03T06:42:04.4395627Z Or undo this operation with:
+2026-10-03T06:42:04.4395862Z 
+2026-10-03T06:42:04.4395980Z   git switch -
+2026-10-03T06:42:04.4396157Z 
+2026-10-03T06:42:04.4396492Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-03T06:42:04.4396970Z 
+2026-10-03T06:42:04.4397498Z HEAD is now at 790f493f Merge 3c374472b07c86d28c15f0bdd6adde8e887a808c into 0fee65668f94284d180065d0fe8b38face924498
+2026-10-03T06:42:04.4496663Z ##[endgroup]
+2026-10-03T06:42:04.4547925Z [command]/usr/bin/git log -1 --format=%H
+2026-10-03T06:42:04.4580021Z 790f493fedf1bc54cfb8758907147156b7a662e8
+2026-10-03T06:42:04.4846483Z ##[group]Run actions/setup-python@v6
+2026-10-03T06:42:04.4846772Z with:
+2026-10-03T06:42:04.4846982Z   python-version: 3.11
+2026-10-03T06:42:04.4847233Z   check-latest: false
+2026-10-03T06:42:04.4850194Z   token: ***
+2026-10-03T06:42:04.4850419Z   update-environment: true
+2026-10-03T06:42:04.4850678Z   allow-prereleases: false
+2026-10-03T06:42:04.4850916Z   freethreaded: false
+2026-10-03T06:42:04.4851137Z ##[endgroup]
+2026-10-03T06:42:04.6176350Z ##[group]Installed versions
+2026-10-03T06:42:04.6682925Z Successfully set up CPython (3.11.16)
+2026-10-03T06:42:04.6683763Z ##[endgroup]
+2026-10-03T06:42:04.6843902Z ##[group]Run python -m pip install -r backend/requirements-runtime.txt
+2026-10-03T06:42:04.6844483Z [36;1mpython -m pip install -r backend/requirements-runtime.txt[0m
+2026-10-03T06:42:04.6844921Z [36;1mpython -m pip install beautifulsoup4 pytest[0m
+2026-10-03T06:42:04.7240310Z shell: /usr/bin/bash -e {0}
+2026-10-03T06:42:04.7240622Z env:
+2026-10-03T06:42:04.7240932Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-03T06:42:04.7241409Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib/pkgconfig
+2026-10-03T06:42:04.7241877Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-03T06:42:04.7242277Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-03T06:42:04.7242656Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-03T06:42:04.7243030Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib
+2026-10-03T06:42:04.7243353Z ##[endgroup]
+2026-10-03T06:42:07.6742457Z Collecting aiohappyeyeballs==2.6.1 (from -r backend/requirements-runtime.txt (line 1))
+2026-10-03T06:42:07.7677127Z   Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl.metadata (5.9 kB)
+2026-10-03T06:42:08.2816147Z Collecting aiohttp==3.13.5 (from -r backend/requirements-runtime.txt (line 2))
+2026-10-03T06:42:08.3019703Z   Downloading aiohttp-3.13.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.1 kB)
+2026-10-03T06:42:08.3332171Z Collecting aiosignal==1.4.0 (from -r backend/requirements-runtime.txt (line 3))
+2026-10-03T06:42:08.3526576Z   Downloading aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
+2026-10-03T06:42:08.3795226Z Collecting annotated-doc==0.0.4 (from -r backend/requirements-runtime.txt (line 4))
+2026-10-03T06:42:08.3987060Z   Downloading annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
+2026-10-03T06:42:08.4256113Z Collecting annotated-types==0.7.0 (from -r backend/requirements-runtime.txt (line 5))
+2026-10-03T06:42:08.4451225Z   Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+2026-10-03T06:42:08.4793455Z Collecting anyio==4.12.1 (from -r backend/requirements-runtime.txt (line 6))
+2026-10-03T06:42:08.4985105Z   Downloading anyio-4.12.1-py3-none-any.whl.metadata (4.3 kB)
+2026-10-03T06:42:08.5262386Z Collecting attrs==26.1.0 (from -r backend/requirements-runtime.txt (line 7))
+2026-10-03T06:42:08.5456835Z   Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+2026-10-03T06:42:08.5930560Z Collecting bcrypt==4.1.3 (from -r backend/requirements-runtime.txt (line 8))
+2026-10-03T06:42:08.6134410Z   Downloading bcrypt-4.1.3-cp39-abi3-manylinux_2_28_x86_64.whl.metadata (9.5 kB)
+2026-10-03T06:42:08.7882176Z Collecting boto3==1.42.86 (from -r backend/requirements-runtime.txt (line 9))
+2026-10-03T06:42:08.8136740Z   Downloading boto3-1.42.86-py3-none-any.whl.metadata (6.7 kB)
+2026-10-03T06:42:09.0313910Z Collecting botocore==1.42.86 (from -r backend/requirements-runtime.txt (line 10))
+2026-10-03T06:42:09.0513796Z   Downloading botocore-1.42.86-py3-none-any.whl.metadata (5.9 kB)
+2026-10-03T06:42:09.0820562Z Collecting certifi==2026.2.25 (from -r backend/requirements-runtime.txt (line 11))
+2026-10-03T06:42:09.1022282Z   Downloading certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
+2026-10-03T06:42:09.2024336Z Collecting cffi==2.0.0 (from -r backend/requirements-runtime.txt (line 12))
+2026-10-03T06:42:09.2218131Z   Downloading cffi-2.0.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+2026-10-03T06:42:09.3680337Z Collecting charset-normalizer==3.4.7 (from -r backend/requirements-runtime.txt (line 13))
+2026-10-03T06:42:09.3875351Z   Downloading charset_normalizer-3.4.7-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+2026-10-03T06:42:09.4268718Z Collecting click==8.3.3 (from -r backend/requirements-runtime.txt (line 14))
+2026-10-03T06:42:09.4465907Z   Downloading click-8.3.3-py3-none-any.whl.metadata (2.6 kB)
+2026-10-03T06:42:09.6079495Z Collecting cryptography==46.0.7 (from -r backend/requirements-runtime.txt (line 15))
+2026-10-03T06:42:09.6275533Z   Downloading cryptography-46.0.7-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (5.7 kB)
+2026-10-03T06:42:09.6580644Z Collecting distro==1.9.0 (from -r backend/requirements-runtime.txt (line 16))
+2026-10-03T06:42:09.6777154Z   Downloading distro-1.9.0-py3-none-any.whl.metadata (6.8 kB)
+2026-10-03T06:42:09.8371403Z Collecting dnspython==2.7.0 (from -r backend/requirements-runtime.txt (line 17))
+2026-10-03T06:42:09.8574139Z   Downloading dnspython-2.7.0-py3-none-any.whl.metadata (5.8 kB)
+2026-10-03T06:42:10.0389862Z Collecting ecdsa==0.19.2 (from -r backend/requirements-runtime.txt (line 18))
+2026-10-03T06:42:10.0585620Z   Downloading ecdsa-0.19.2-py2.py3-none-any.whl.metadata (29 kB)
+2026-10-03T06:42:10.2897112Z Collecting email-validator==2.3.0 (from -r backend/requirements-runtime.txt (line 19))
+2026-10-03T06:42:10.3087338Z   Downloading email_validator-2.3.0-py3-none-any.whl.metadata (26 kB)
+2026-10-03T06:42:10.6548116Z Collecting fastapi==0.110.1 (from -r backend/requirements-runtime.txt (line 20))
+2026-10-03T06:42:10.6752987Z   Downloading fastapi-0.110.1-py3-none-any.whl.metadata (24 kB)
+2026-10-03T06:42:10.7425106Z Collecting fastuuid==0.14.0 (from -r backend/requirements-runtime.txt (line 21))
+2026-10-03T06:42:10.7628798Z   Downloading fastuuid-0.14.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.1 kB)
+2026-10-03T06:42:10.8950189Z Collecting filelock==3.19.1 (from -r backend/requirements-runtime.txt (line 22))
+2026-10-03T06:42:10.9144880Z   Downloading filelock-3.19.1-py3-none-any.whl.metadata (2.1 kB)
+2026-10-03T06:42:11.2682788Z Collecting frozenlist==1.8.0 (from -r backend/requirements-runtime.txt (line 23))
+2026-10-03T06:42:11.2876039Z   Downloading frozenlist-1.8.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (20 kB)
+2026-10-03T06:42:11.7389720Z Collecting fsspec==2025.10.0 (from -r backend/requirements-runtime.txt (line 24))
+2026-10-03T06:42:11.7582717Z   Downloading fsspec-2025.10.0-py3-none-any.whl.metadata (10 kB)
+2026-10-03T06:42:12.0344380Z Collecting google-ai-generativelanguage==0.6.15 (from -r backend/requirements-runtime.txt (line 25))
+2026-10-03T06:42:12.0537540Z   Downloading google_ai_generativelanguage-0.6.15-py3-none-any.whl.metadata (5.7 kB)
+2026-10-03T06:42:12.0909115Z Collecting google-api-core==2.30.2 (from -r backend/requirements-runtime.txt (line 26))
+2026-10-03T06:42:12.1100841Z   Downloading google_api_core-2.30.2-py3-none-any.whl.metadata (3.1 kB)
+2026-10-03T06:42:12.1585555Z Collecting google-api-python-client==2.194.0 (from -r backend/requirements-runtime.txt (line 27))
+2026-10-03T06:42:12.1783647Z   Downloading google_api_python_client-2.194.0-py3-none-any.whl.metadata (7.0 kB)
+2026-10-03T06:42:12.2607291Z Collecting google-auth==2.49.2 (from -r backend/requirements-runtime.txt (line 28))
+2026-10-03T06:42:12.2809899Z   Downloading google_auth-2.49.2-py3-none-any.whl.metadata (6.2 kB)
+2026-10-03T06:42:12.3093653Z Collecting google-auth-httplib2==0.3.1 (from -r backend/requirements-runtime.txt (line 29))
+2026-10-03T06:42:12.3286573Z   Downloading google_auth_httplib2-0.3.1-py3-none-any.whl.metadata (3.0 kB)
+2026-10-03T06:42:12.3617758Z Collecting google-genai==1.47.0 (from -r backend/requirements-runtime.txt (line 30))
+2026-10-03T06:42:12.3824433Z   Downloading google_genai-1.47.0-py3-none-any.whl.metadata (46 kB)
+2026-10-03T06:42:12.4157395Z Collecting google-generativeai==0.8.6 (from -r backend/requirements-runtime.txt (line 31))
+2026-10-03T06:42:12.4354791Z   Downloading google_generativeai-0.8.6-py3-none-any.whl.metadata (3.9 kB)
+2026-10-03T06:42:12.4660278Z Collecting googleapis-common-protos==1.74.0 (from -r backend/requirements-runtime.txt (line 32))
+2026-10-03T06:42:12.4855866Z   Downloading googleapis_common_protos-1.74.0-py3-none-any.whl.metadata (9.2 kB)
+2026-10-03T06:42:12.9678541Z Collecting grpcio==1.80.0 (from -r backend/requirements-runtime.txt (line 33))
+2026-10-03T06:42:12.9887132Z   Downloading grpcio-1.80.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.8 kB)
+2026-10-03T06:42:13.0264693Z Collecting grpcio-status==1.71.2 (from -r backend/requirements-runtime.txt (line 34))
+2026-10-03T06:42:13.0459247Z   Downloading grpcio_status-1.71.2-py3-none-any.whl.metadata (1.1 kB)
+2026-10-03T06:42:13.0714503Z Collecting h11==0.16.0 (from -r backend/requirements-runtime.txt (line 35))
+2026-10-03T06:42:13.0906987Z   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+2026-10-03T06:42:13.1399606Z Collecting hf-xet==1.4.3 (from -r backend/requirements-runtime.txt (line 36))
+2026-10-03T06:42:13.1609375Z   Downloading hf_xet-1.4.3-cp37-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (4.9 kB)
+2026-10-03T06:42:13.1903671Z Collecting httpcore==1.0.9 (from -r backend/requirements-runtime.txt (line 37))
+2026-10-03T06:42:13.2097449Z   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+2026-10-03T06:42:13.2396462Z Collecting httplib2==0.31.2 (from -r backend/requirements-runtime.txt (line 38))
+2026-10-03T06:42:13.2630101Z   Downloading httplib2-0.31.2-py3-none-any.whl.metadata (2.2 kB)
+2026-10-03T06:42:13.2930221Z Collecting httpx==0.28.1 (from -r backend/requirements-runtime.txt (line 39))
+2026-10-03T06:42:13.3131667Z   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+2026-10-03T06:42:13.3616375Z Collecting huggingface_hub==1.8.0 (from -r backend/requirements-runtime.txt (line 40))
+2026-10-03T06:42:13.3819096Z   Downloading huggingface_hub-1.8.0-py3-none-any.whl.metadata (13 kB)
+2026-10-03T06:42:13.4177185Z Collecting idna==3.11 (from -r backend/requirements-runtime.txt (line 41))
+2026-10-03T06:42:13.4370741Z   Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+2026-10-03T06:42:13.4715754Z Collecting importlib_metadata==8.7.1 (from -r backend/requirements-runtime.txt (line 42))
+2026-10-03T06:42:13.4910948Z   Downloading importlib_metadata-8.7.1-py3-none-any.whl.metadata (4.7 kB)
+2026-10-03T06:42:13.5184572Z Collecting iniconfig==2.1.0 (from -r backend/requirements-runtime.txt (line 43))
+2026-10-03T06:42:13.5376271Z   Downloading iniconfig-2.1.0-py3-none-any.whl.metadata (2.7 kB)
+2026-10-03T06:42:13.5656024Z Collecting Jinja2==3.1.6 (from -r backend/requirements-runtime.txt (line 44))
+2026-10-03T06:42:13.5849178Z   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+2026-10-03T06:42:13.6742584Z Collecting jiter==0.13.0 (from -r backend/requirements-runtime.txt (line 45))
+2026-10-03T06:42:13.6942925Z   Downloading jiter-0.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.2 kB)
+2026-10-03T06:42:13.7201398Z Collecting jmespath==1.1.0 (from -r backend/requirements-runtime.txt (line 46))
+2026-10-03T06:42:13.7392958Z   Downloading jmespath-1.1.0-py3-none-any.whl.metadata (7.6 kB)
+2026-10-03T06:42:13.8232167Z Collecting jq==1.11.0 (from -r backend/requirements-runtime.txt (line 47))
+2026-10-03T06:42:13.8432762Z   Downloading jq-1.11.0-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (7.0 kB)
+2026-10-03T06:42:13.9267524Z Collecting jsonschema==4.25.1 (from -r backend/requirements-runtime.txt (line 48))
+2026-10-03T06:42:13.9462982Z   Downloading jsonschema-4.25.1-py3-none-any.whl.metadata (7.6 kB)
+2026-10-03T06:42:13.9744947Z Collecting jsonschema-specifications==2025.9.1 (from -r backend/requirements-runtime.txt (line 49))
+2026-10-03T06:42:13.9938418Z   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+2026-10-03T06:42:14.0555529Z Collecting judoscale==1.11.0 (from judoscale[asgi]==1.11.0->-r backend/requirements-runtime.txt (line 50))
+2026-10-03T06:42:14.0762298Z   Downloading judoscale-1.11.0-py3-none-any.whl.metadata (18 kB)
+2026-10-03T06:42:14.2032507Z Collecting librt==0.8.1 (from -r backend/requirements-runtime.txt (line 51))
+2026-10-03T06:42:14.2236058Z   Downloading librt-0.8.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (1.3 kB)
+2026-10-03T06:42:14.2516488Z Collecting markdown-it-py==3.0.0 (from -r backend/requirements-runtime.txt (line 52))
+2026-10-03T06:42:14.2710683Z   Downloading markdown_it_py-3.0.0-py3-none-any.whl.metadata (6.9 kB)
+2026-10-03T06:42:14.3344148Z Collecting MarkupSafe==3.0.3 (from -r backend/requirements-runtime.txt (line 53))
+2026-10-03T06:42:14.3543791Z   Downloading markupsafe-3.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+2026-10-03T06:42:14.3797721Z Collecting mccabe==0.7.0 (from -r backend/requirements-runtime.txt (line 54))
+2026-10-03T06:42:14.3993191Z   Downloading mccabe-0.7.0-py2.py3-none-any.whl.metadata (5.0 kB)
+2026-10-03T06:42:14.4245955Z Collecting mdurl==0.1.2 (from -r backend/requirements-runtime.txt (line 55))
+2026-10-03T06:42:14.4437674Z   Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+2026-10-03T06:42:14.4727705Z Collecting motor==3.3.1 (from -r backend/requirements-runtime.txt (line 56))
+2026-10-03T06:42:14.4940252Z   Downloading motor-3.3.1-py3-none-any.whl.metadata (20 kB)
+2026-10-03T06:42:14.7270063Z Collecting multidict==6.7.1 (from -r backend/requirements-runtime.txt (line 57))
+2026-10-03T06:42:14.7469564Z   Downloading multidict-6.7.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.3 kB)
+2026-10-03T06:42:14.7724422Z Collecting mypy_extensions==1.1.0 (from -r backend/requirements-runtime.txt (line 58))
+2026-10-03T06:42:14.7917088Z   Downloading mypy_extensions-1.1.0-py3-none-any.whl.metadata (1.1 kB)
+2026-10-03T06:42:15.0348790Z Collecting numpy==2.0.2 (from -r backend/requirements-runtime.txt (line 59))
+2026-10-03T06:42:15.0558102Z   Downloading numpy-2.0.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (60 kB)
+2026-10-03T06:42:15.0964897Z Collecting oauthlib==3.3.1 (from -r backend/requirements-runtime.txt (line 60))
+2026-10-03T06:42:15.1158062Z   Downloading oauthlib-3.3.1-py3-none-any.whl.metadata (7.9 kB)
+2026-10-03T06:42:15.1685662Z Collecting openai==1.99.9 (from -r backend/requirements-runtime.txt (line 61))
+2026-10-03T06:42:15.1919929Z   Downloading openai-1.99.9-py3-none-any.whl.metadata (29 kB)
+2026-10-03T06:42:15.2221538Z Collecting packaging==26.0 (from -r backend/requirements-runtime.txt (line 62))
+2026-10-03T06:42:15.2415256Z   Downloading packaging-26.0-py3-none-any.whl.metadata (3.3 kB)
+2026-10-03T06:42:15.3548643Z Collecting pandas==2.3.3 (from -r backend/requirements-runtime.txt (line 63))
+2026-10-03T06:42:15.3743324Z   Downloading pandas-2.3.3-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (91 kB)
+2026-10-03T06:42:15.4270353Z Collecting passlib==1.7.4 (from -r backend/requirements-runtime.txt (line 64))
+2026-10-03T06:42:15.4463041Z   Downloading passlib-1.7.4-py2.py3-none-any.whl.metadata (1.7 kB)
+2026-10-03T06:42:15.4724939Z Collecting pathspec==1.0.4 (from -r backend/requirements-runtime.txt (line 65))
+2026-10-03T06:42:15.4916003Z   Downloading pathspec-1.0.4-py3-none-any.whl.metadata (13 kB)
+2026-10-03T06:42:15.7103188Z Collecting Pillow==10.3.0 (from -r backend/requirements-runtime.txt (line 66))
+2026-10-03T06:42:15.7306044Z   Downloading pillow-10.3.0-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (9.2 kB)
+2026-10-03T06:42:15.7628068Z Collecting platformdirs==4.4.0 (from -r backend/requirements-runtime.txt (line 67))
+2026-10-03T06:42:15.7833074Z   Downloading platformdirs-4.4.0-py3-none-any.whl.metadata (12 kB)
+2026-10-03T06:42:15.8099173Z Collecting pluggy==1.6.0 (from -r backend/requirements-runtime.txt (line 68))
+2026-10-03T06:42:15.8293186Z   Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+2026-10-03T06:42:15.9049801Z Collecting propcache==0.4.1 (from -r backend/requirements-runtime.txt (line 69))
+2026-10-03T06:42:15.9258534Z   Downloading propcache-0.4.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (13 kB)
+2026-10-03T06:42:15.9564212Z Collecting proto-plus==1.27.2 (from -r backend/requirements-runtime.txt (line 70))
+2026-10-03T06:42:15.9760808Z   Downloading proto_plus-1.27.2-py3-none-any.whl.metadata (2.2 kB)
+2026-10-03T06:42:16.1132198Z Collecting protobuf==5.29.6 (from -r backend/requirements-runtime.txt (line 71))
+2026-10-03T06:42:16.1326179Z   Downloading protobuf-5.29.6-cp38-abi3-manylinux2014_x86_64.whl.metadata (592 bytes)
+2026-10-03T06:42:16.1674139Z Collecting pyasn1==0.6.3 (from -r backend/requirements-runtime.txt (line 72))
+2026-10-03T06:42:16.1877857Z   Downloading pyasn1-0.6.3-py3-none-any.whl.metadata (8.4 kB)
+2026-10-03T06:42:16.2199955Z Collecting pyasn1_modules==0.4.2 (from -r backend/requirements-runtime.txt (line 73))
+2026-10-03T06:42:16.2396464Z   Downloading pyasn1_modules-0.4.2-py3-none-any.whl.metadata (3.5 kB)
+2026-10-03T06:42:16.2664624Z Collecting pycodestyle==2.14.0 (from -r backend/requirements-runtime.txt (line 74))
+2026-10-03T06:42:16.2860583Z   Downloading pycodestyle-2.14.0-py2.py3-none-any.whl.metadata (4.5 kB)
+2026-10-03T06:42:16.3122257Z Collecting pycparser==2.23 (from -r backend/requirements-runtime.txt (line 75))
+2026-10-03T06:42:16.3317027Z   Downloading pycparser-2.23-py3-none-any.whl.metadata (993 bytes)
+2026-10-03T06:42:16.4372139Z Collecting pydantic==2.12.5 (from -r backend/requirements-runtime.txt (line 76))
+2026-10-03T06:42:16.4573225Z   Downloading pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+2026-10-03T06:42:17.1990953Z Collecting pydantic_core==2.41.5 (from -r backend/requirements-runtime.txt (line 77))
+2026-10-03T06:42:17.2202468Z   Downloading pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+2026-10-03T06:42:17.2494759Z Collecting pyflakes==3.4.0 (from -r backend/requirements-runtime.txt (line 78))
+2026-10-03T06:42:17.2692672Z   Downloading pyflakes-3.4.0-py2.py3-none-any.whl.metadata (3.5 kB)
+2026-10-03T06:42:17.3005253Z Collecting Pygments==2.20.0 (from -r backend/requirements-runtime.txt (line 79))
+2026-10-03T06:42:17.3200001Z   Downloading pygments-2.20.0-py3-none-any.whl.metadata (2.5 kB)
+2026-10-03T06:42:17.3497388Z Collecting PyJWT==2.12.1 (from -r backend/requirements-runtime.txt (line 80))
+2026-10-03T06:42:17.3702317Z   Downloading pyjwt-2.12.1-py3-none-any.whl.metadata (4.1 kB)
+2026-10-03T06:42:17.6246213Z Collecting pymongo==4.5.0 (from -r backend/requirements-runtime.txt (line 81))
+2026-10-03T06:42:17.6445053Z   Downloading pymongo-4.5.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (22 kB)
+2026-10-03T06:42:17.6819280Z Collecting pyparsing==3.3.2 (from -r backend/requirements-runtime.txt (line 82))
+2026-10-03T06:42:17.7009608Z   Downloading pyparsing-3.3.2-py3-none-any.whl.metadata (5.8 kB)
+2026-10-03T06:42:17.7270683Z Collecting python-dateutil==2.9.0.post0 (from -r backend/requirements-runtime.txt (line 83))
+2026-10-03T06:42:17.7464893Z   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+2026-10-03T06:42:17.7745717Z Collecting python-dotenv==1.2.1 (from -r backend/requirements-runtime.txt (line 84))
+2026-10-03T06:42:17.7937126Z   Downloading python_dotenv-1.2.1-py3-none-any.whl.metadata (25 kB)
+2026-10-03T06:42:17.8221190Z Collecting python-jose==3.5.0 (from -r backend/requirements-runtime.txt (line 85))
+2026-10-03T06:42:17.8412155Z   Downloading python_jose-3.5.0-py2.py3-none-any.whl.metadata (5.5 kB)
+2026-10-03T06:42:17.8687263Z Collecting python-multipart==0.0.9 (from -r backend/requirements-runtime.txt (line 86))
+2026-10-03T06:42:17.8893838Z   Downloading python_multipart-0.0.9-py3-none-any.whl.metadata (2.5 kB)
+2026-10-03T06:42:17.9183523Z Collecting pytokens==0.4.1 (from -r backend/requirements-runtime.txt (line 87))
+2026-10-03T06:42:17.9380540Z   Downloading pytokens-0.4.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (3.8 kB)
+2026-10-03T06:42:17.9851070Z Collecting PyYAML==6.0.3 (from -r backend/requirements-runtime.txt (line 88))
+2026-10-03T06:42:18.0045614Z   Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+2026-10-03T06:42:18.0306371Z Collecting razorpay==2.0.1 (from -r backend/requirements-runtime.txt (line 89))
+2026-10-03T06:42:18.0511919Z   Downloading razorpay-2.0.1-py3-none-any.whl.metadata (3.9 kB)
+2026-10-03T06:42:18.0841893Z Collecting referencing==0.36.2 (from -r backend/requirements-runtime.txt (line 90))
+2026-10-03T06:42:18.1035621Z   Downloading referencing-0.36.2-py3-none-any.whl.metadata (2.8 kB)
+2026-10-03T06:42:18.5504888Z Collecting regex==2026.1.15 (from -r backend/requirements-runtime.txt (line 91))
+2026-10-03T06:42:18.5715209Z   Downloading regex-2026.1.15-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+2026-10-03T06:42:18.6084141Z Collecting redis==5.0.8 (from -r backend/requirements-runtime.txt (line 92))
+2026-10-03T06:42:18.6293892Z   Downloading redis-5.0.8-py3-none-any.whl.metadata (9.2 kB)
+2026-10-03T06:42:18.6626252Z Collecting requests==2.32.5 (from -r backend/requirements-runtime.txt (line 93))
+2026-10-03T06:42:18.6817601Z   Downloading requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+2026-10-03T06:42:18.7083026Z Collecting requests-oauthlib==2.0.0 (from -r backend/requirements-runtime.txt (line 94))
+2026-10-03T06:42:18.7280521Z   Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl.metadata (11 kB)
+2026-10-03T06:42:18.7664316Z Collecting rich==14.3.3 (from -r backend/requirements-runtime.txt (line 95))
+2026-10-03T06:42:18.7865826Z   Downloading rich-14.3.3-py3-none-any.whl.metadata (18 kB)
+2026-10-03T06:42:19.0200289Z Collecting rpds-py==0.27.1 (from -r backend/requirements-runtime.txt (line 96))
+2026-10-03T06:42:19.0408035Z   Downloading rpds_py-0.27.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.2 kB)
+2026-10-03T06:42:19.0688681Z Collecting rsa==4.9.1 (from -r backend/requirements-runtime.txt (line 97))
+2026-10-03T06:42:19.0887081Z   Downloading rsa-4.9.1-py3-none-any.whl.metadata (5.6 kB)
+2026-10-03T06:42:19.1195088Z Collecting s3transfer==0.16.0 (from -r backend/requirements-runtime.txt (line 98))
+2026-10-03T06:42:19.1395627Z   Downloading s3transfer-0.16.0-py3-none-any.whl.metadata (1.7 kB)
+2026-10-03T06:42:19.1679291Z Collecting s5cmd==0.2.0 (from -r backend/requirements-runtime.txt (line 99))
+2026-10-03T06:42:19.1903641Z   Downloading s5cmd-0.2.0-py3-none-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.7 kB)
+2026-10-03T06:42:19.2184917Z Collecting shellingham==1.5.4 (from -r backend/requirements-runtime.txt (line 100))
+2026-10-03T06:42:19.2379189Z   Downloading shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+2026-10-03T06:42:19.2649274Z Collecting six==1.17.0 (from -r backend/requirements-runtime.txt (line 101))
+2026-10-03T06:42:19.2843256Z   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+2026-10-03T06:42:19.3102101Z Collecting sniffio==1.3.1 (from -r backend/requirements-runtime.txt (line 102))
+2026-10-03T06:42:19.3298574Z   Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+2026-10-03T06:42:19.3655785Z Collecting starlette==0.37.2 (from -r backend/requirements-runtime.txt (line 103))
+2026-10-03T06:42:19.3848418Z   Downloading starlette-0.37.2-py3-none-any.whl.metadata (5.9 kB)
+2026-10-03T06:42:19.4507087Z Collecting stripe==15.0.1 (from -r backend/requirements-runtime.txt (line 104))
+2026-10-03T06:42:19.4710764Z   Downloading stripe-15.0.1-py3-none-any.whl.metadata (18 kB)
+2026-10-03T06:42:19.5000636Z Collecting tenacity==9.1.2 (from -r backend/requirements-runtime.txt (line 105))
+2026-10-03T06:42:19.5191227Z   Downloading tenacity-9.1.2-py3-none-any.whl.metadata (1.2 kB)
+2026-10-03T06:42:19.5690466Z Collecting tiktoken==0.12.0 (from -r backend/requirements-runtime.txt (line 106))
+2026-10-03T06:42:19.5897407Z   Downloading tiktoken-0.12.0-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (6.7 kB)
+2026-10-03T06:42:19.7238135Z Collecting tokenizers==0.22.2 (from -r backend/requirements-runtime.txt (line 107))
+2026-10-03T06:42:19.7433043Z   Downloading tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+2026-10-03T06:42:19.7799934Z Collecting tqdm==4.67.3 (from -r backend/requirements-runtime.txt (line 108))
+2026-10-03T06:42:19.8033473Z   Downloading tqdm-4.67.3-py3-none-any.whl.metadata (57 kB)
+2026-10-03T06:42:19.8614623Z Collecting typing-inspection==0.4.2 (from -r backend/requirements-runtime.txt (line 109))
+2026-10-03T06:42:19.8806437Z   Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+2026-10-03T06:42:19.9090462Z Collecting typing_extensions==4.15.0 (from -r backend/requirements-runtime.txt (line 110))
+2026-10-03T06:42:19.9282681Z   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+2026-10-03T06:42:19.9554463Z Collecting tzdata==2026.1 (from -r backend/requirements-runtime.txt (line 111))
+2026-10-03T06:42:19.9752521Z   Downloading tzdata-2026.1-py2.py3-none-any.whl.metadata (1.4 kB)
+2026-10-03T06:42:20.0011966Z Collecting uritemplate==4.2.0 (from -r backend/requirements-runtime.txt (line 112))
+2026-10-03T06:42:20.0204343Z   Downloading uritemplate-4.2.0-py3-none-any.whl.metadata (2.6 kB)
+2026-10-03T06:42:20.1584395Z Collecting urllib3==2.6.3 (from -r backend/requirements-runtime.txt (line 113))
+2026-10-03T06:42:20.1783642Z   Downloading urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+2026-10-03T06:42:20.2143485Z Collecting uvicorn==0.25.0 (from -r backend/requirements-runtime.txt (line 114))
+2026-10-03T06:42:20.2347332Z   Downloading uvicorn-0.25.0-py3-none-any.whl.metadata (6.4 kB)
+2026-10-03T06:42:20.3166515Z Collecting watchfiles==1.1.1 (from -r backend/requirements-runtime.txt (line 115))
+2026-10-03T06:42:20.3375620Z   Downloading watchfiles-1.1.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+2026-10-03T06:42:20.4468030Z Collecting websockets==15.0.1 (from -r backend/requirements-runtime.txt (line 116))
+2026-10-03T06:42:20.4664807Z   Downloading websockets-15.0.1-cp311-cp311-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.8 kB)
+2026-10-03T06:42:20.6954428Z Collecting yarl==1.22.0 (from -r backend/requirements-runtime.txt (line 117))
+2026-10-03T06:42:20.7160067Z   Downloading yarl-1.22.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (75 kB)
+2026-10-03T06:42:20.7518682Z Collecting zipp==3.23.0 (from -r backend/requirements-runtime.txt (line 118))
+2026-10-03T06:42:20.7714182Z   Downloading zipp-3.23.0-py3-none-any.whl.metadata (3.6 kB)
+2026-10-03T06:42:20.8018034Z Collecting mammoth==1.7.1 (from -r backend/requirements-runtime.txt (line 121))
+2026-10-03T06:42:20.8217449Z   Downloading mammoth-1.7.1-py2.py3-none-any.whl.metadata (23 kB)
+2026-10-03T06:42:20.8544704Z Collecting markdown==3.6 (from -r backend/requirements-runtime.txt (line 122))
+2026-10-03T06:42:20.8746612Z   Downloading Markdown-3.6-py3-none-any.whl.metadata (7.0 kB)
+2026-10-03T06:42:20.9053722Z Collecting bleach==6.1.0 (from -r backend/requirements-runtime.txt (line 123))
+2026-10-03T06:42:20.9266610Z   Downloading bleach-6.1.0-py3-none-any.whl.metadata (30 kB)
+2026-10-03T06:42:20.9573624Z Collecting cloudinary==1.40.0 (from -r backend/requirements-runtime.txt (line 124))
+2026-10-03T06:42:20.9771849Z   Downloading cloudinary-1.40.0.tar.gz (177 kB)
+2026-10-03T06:42:21.0163352Z   Installing build dependencies: started
+2026-10-03T06:42:22.4467018Z   Installing build dependencies: finished with status 'done'
+2026-10-03T06:42:22.4472712Z   Getting requirements to build wheel: started
+2026-10-03T06:42:22.9757279Z   Getting requirements to build wheel: finished with status 'done'
+2026-10-03T06:42:22.9766678Z   Preparing metadata (pyproject.toml): started
+2026-10-03T06:42:23.1571323Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-10-03T06:42:23.1825640Z Collecting aiofiles==23.2.1 (from -r backend/requirements-runtime.txt (line 125))
+2026-10-03T06:42:23.2019914Z   Downloading aiofiles-23.2.1-py3-none-any.whl.metadata (9.7 kB)
+2026-10-03T06:42:23.2290745Z Collecting google-auth-oauthlib==1.2.0 (from -r backend/requirements-runtime.txt (line 126))
+2026-10-03T06:42:23.2491282Z   Downloading google_auth_oauthlib-1.2.0-py2.py3-none-any.whl.metadata (2.7 kB)
+2026-10-03T06:42:23.4053162Z Collecting typer (from huggingface_hub==1.8.0->-r backend/requirements-runtime.txt (line 40))
+2026-10-03T06:42:23.4245595Z   Downloading typer-0.27.2-py3-none-any.whl.metadata (16 kB)
+2026-10-03T06:42:23.5023829Z Collecting pytz>=2020.1 (from pandas==2.3.3->-r backend/requirements-runtime.txt (line 63))
+2026-10-03T06:42:23.5216865Z   Downloading pytz-2026.4-py2.py3-none-any.whl.metadata (22 kB)
+2026-10-03T06:42:23.5984635Z Collecting cobble<0.2,>=0.1.3 (from mammoth==1.7.1->-r backend/requirements-runtime.txt (line 121))
+2026-10-03T06:42:23.6174428Z   Downloading cobble-0.1.4-py3-none-any.whl.metadata (2.7 kB)
+2026-10-03T06:42:23.6462169Z Collecting webencodings (from bleach==6.1.0->-r backend/requirements-runtime.txt (line 123))
+2026-10-03T06:42:23.6659642Z   Downloading webencodings-0.6.1-py3-none-any.whl.metadata (3.4 kB)
+2026-10-03T06:42:23.7073692Z Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl (15 kB)
+2026-10-03T06:42:23.7322833Z Downloading aiohttp-3.13.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.8 MB)
+2026-10-03T06:42:23.7941020Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 27.7 MB/s  0:00:00
+2026-10-03T06:42:23.8135319Z Downloading multidict-6.7.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (246 kB)
+2026-10-03T06:42:23.8355732Z Downloading yarl-1.22.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (365 kB)
+2026-10-03T06:42:23.8586977Z Downloading aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+2026-10-03T06:42:23.8795628Z Downloading annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+2026-10-03T06:42:23.9006993Z Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+2026-10-03T06:42:23.9214527Z Downloading anyio-4.12.1-py3-none-any.whl (113 kB)
+2026-10-03T06:42:23.9425564Z Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+2026-10-03T06:42:23.9659303Z Downloading bcrypt-4.1.3-cp39-abi3-manylinux_2_28_x86_64.whl (283 kB)
+2026-10-03T06:42:23.9888672Z Downloading boto3-1.42.86-py3-none-any.whl (140 kB)
+2026-10-03T06:42:24.0120740Z Downloading botocore-1.42.86-py3-none-any.whl (14.9 MB)
+2026-10-03T06:42:24.1180037Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.9/14.9 MB 141.2 MB/s  0:00:00
+2026-10-03T06:42:24.1375291Z Downloading jmespath-1.1.0-py3-none-any.whl (20 kB)
+2026-10-03T06:42:24.1584466Z Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+2026-10-03T06:42:24.1799355Z Downloading s3transfer-0.16.0-py3-none-any.whl (86 kB)
+2026-10-03T06:42:24.2008117Z Downloading urllib3-2.6.3-py3-none-any.whl (131 kB)
+2026-10-03T06:42:24.2222979Z Downloading certifi-2026.2.25-py3-none-any.whl (153 kB)
+2026-10-03T06:42:24.2453790Z Downloading cffi-2.0.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (215 kB)
+2026-10-03T06:42:24.2684444Z Downloading charset_normalizer-3.4.7-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (214 kB)
+2026-10-03T06:42:24.2905024Z Downloading click-8.3.3-py3-none-any.whl (110 kB)
+2026-10-03T06:42:24.3117582Z Downloading cryptography-46.0.7-cp311-abi3-manylinux_2_34_x86_64.whl (4.5 MB)
+2026-10-03T06:42:24.3260026Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 368.3 MB/s  0:00:00
+2026-10-03T06:42:24.3455529Z Downloading distro-1.9.0-py3-none-any.whl (20 kB)
+2026-10-03T06:42:24.3668109Z Downloading dnspython-2.7.0-py3-none-any.whl (313 kB)
+2026-10-03T06:42:24.3888505Z Downloading ecdsa-0.19.2-py2.py3-none-any.whl (150 kB)
+2026-10-03T06:42:24.4122570Z Downloading email_validator-2.3.0-py3-none-any.whl (35 kB)
+2026-10-03T06:42:24.4346720Z Downloading fastapi-0.110.1-py3-none-any.whl (91 kB)
+2026-10-03T06:42:24.4559347Z Downloading pydantic-2.12.5-py3-none-any.whl (463 kB)
+2026-10-03T06:42:24.4786310Z Downloading starlette-0.37.2-py3-none-any.whl (71 kB)
+2026-10-03T06:42:24.4999373Z Downloading fastuuid-0.14.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (279 kB)
+2026-10-03T06:42:24.5216792Z Downloading filelock-3.19.1-py3-none-any.whl (15 kB)
+2026-10-03T06:42:24.5431192Z Downloading frozenlist-1.8.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (231 kB)
+2026-10-03T06:42:24.5654041Z Downloading fsspec-2025.10.0-py3-none-any.whl (200 kB)
+2026-10-03T06:42:24.5866616Z Downloading google_ai_generativelanguage-0.6.15-py3-none-any.whl (1.3 MB)
+2026-10-03T06:42:24.5931304Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 258.9 MB/s  0:00:00
+2026-10-03T06:42:24.6135905Z Downloading google_api_core-2.30.2-py3-none-any.whl (173 kB)
+2026-10-03T06:42:24.6346274Z Downloading google_auth-2.49.2-py3-none-any.whl (240 kB)
+2026-10-03T06:42:24.6562359Z Downloading googleapis_common_protos-1.74.0-py3-none-any.whl (300 kB)
+2026-10-03T06:42:24.6776414Z Downloading proto_plus-1.27.2-py3-none-any.whl (50 kB)
+2026-10-03T06:42:24.6985600Z Downloading protobuf-5.29.6-cp38-abi3-manylinux2014_x86_64.whl (320 kB)
+2026-10-03T06:42:24.7199528Z Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+2026-10-03T06:42:24.7406680Z Downloading idna-3.11-py3-none-any.whl (71 kB)
+2026-10-03T06:42:24.7621772Z Downloading google_api_python_client-2.194.0-py3-none-any.whl (15.0 MB)
+2026-10-03T06:42:24.8180693Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 15.0/15.0 MB 276.1 MB/s  0:00:00
+2026-10-03T06:42:24.8374745Z Downloading google_auth_httplib2-0.3.1-py3-none-any.whl (9.5 kB)
+2026-10-03T06:42:24.8582864Z Downloading httplib2-0.31.2-py3-none-any.whl (91 kB)
+2026-10-03T06:42:24.8792397Z Downloading pyparsing-3.3.2-py3-none-any.whl (122 kB)
+2026-10-03T06:42:24.9003337Z Downloading uritemplate-4.2.0-py3-none-any.whl (11 kB)
+2026-10-03T06:42:24.9236334Z Downloading google_genai-1.47.0-py3-none-any.whl (241 kB)
+2026-10-03T06:42:24.9450608Z Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+2026-10-03T06:42:24.9664362Z Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+2026-10-03T06:42:24.9874461Z Downloading tenacity-9.1.2-py3-none-any.whl (28 kB)
+2026-10-03T06:42:25.0091805Z Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+2026-10-03T06:42:25.0305160Z Downloading websockets-15.0.1-cp311-cp311-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (182 kB)
+2026-10-03T06:42:25.0521189Z Downloading google_generativeai-0.8.6-py3-none-any.whl (155 kB)
+2026-10-03T06:42:25.0764078Z Downloading grpcio-1.80.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (6.8 MB)
+2026-10-03T06:42:25.1045968Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.8/6.8 MB 255.0 MB/s  0:00:00
+2026-10-03T06:42:25.1241011Z Downloading grpcio_status-1.71.2-py3-none-any.whl (14 kB)
+2026-10-03T06:42:25.1453179Z Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+2026-10-03T06:42:25.1673618Z Downloading hf_xet-1.4.3-cp37-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.2 MB)
+2026-10-03T06:42:25.1823660Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.2/4.2 MB 320.2 MB/s  0:00:00
+2026-10-03T06:42:25.2028042Z Downloading huggingface_hub-1.8.0-py3-none-any.whl (625 kB)
+2026-10-03T06:42:25.2081326Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 625.2/625.2 kB 131.3 MB/s  0:00:00
+2026-10-03T06:42:25.2274777Z Downloading importlib_metadata-8.7.1-py3-none-any.whl (27 kB)
+2026-10-03T06:42:25.2491410Z Downloading iniconfig-2.1.0-py3-none-any.whl (6.0 kB)
+2026-10-03T06:42:25.2704036Z Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+2026-10-03T06:42:25.2928186Z Downloading jiter-0.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (362 kB)
+2026-10-03T06:42:25.3159185Z Downloading jq-1.11.0-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (772 kB)
+2026-10-03T06:42:25.3211386Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 772.5/772.5 kB 164.4 MB/s  0:00:00
+2026-10-03T06:42:25.3404723Z Downloading jsonschema-4.25.1-py3-none-any.whl (90 kB)
+2026-10-03T06:42:25.3616229Z Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+2026-10-03T06:42:25.3852719Z Downloading judoscale-1.11.0-py3-none-any.whl (26 kB)
+2026-10-03T06:42:25.4074555Z Downloading librt-0.8.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (218 kB)
+2026-10-03T06:42:25.4293575Z Downloading markdown_it_py-3.0.0-py3-none-any.whl (87 kB)
+2026-10-03T06:42:25.4510953Z Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+2026-10-03T06:42:25.4722324Z Downloading markupsafe-3.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+2026-10-03T06:42:25.4937879Z Downloading mccabe-0.7.0-py2.py3-none-any.whl (7.3 kB)
+2026-10-03T06:42:25.5170376Z Downloading motor-3.3.1-py3-none-any.whl (70 kB)
+2026-10-03T06:42:25.5392771Z Downloading pymongo-4.5.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (675 kB)
+2026-10-03T06:42:25.5451370Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 675.1/675.1 kB 140.2 MB/s  0:00:00
+2026-10-03T06:42:25.5642385Z Downloading mypy_extensions-1.1.0-py3-none-any.whl (5.0 kB)
+2026-10-03T06:42:25.5862916Z Downloading numpy-2.0.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (19.5 MB)
+2026-10-03T06:42:25.6693871Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 19.5/19.5 MB 246.0 MB/s  0:00:00
+2026-10-03T06:42:25.6886755Z Downloading oauthlib-3.3.1-py3-none-any.whl (160 kB)
+2026-10-03T06:42:25.7117196Z Downloading openai-1.99.9-py3-none-any.whl (786 kB)
+2026-10-03T06:42:25.7166687Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 786.8/786.8 kB 174.8 MB/s  0:00:00
+2026-10-03T06:42:25.7359339Z Downloading packaging-26.0-py3-none-any.whl (74 kB)
+2026-10-03T06:42:25.7573693Z Downloading pandas-2.3.3-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.8 MB)
+2026-10-03T06:42:25.8031803Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.8/12.8 MB 290.0 MB/s  0:00:00
+2026-10-03T06:42:25.8227124Z Downloading passlib-1.7.4-py2.py3-none-any.whl (525 kB)
+2026-10-03T06:42:25.8278523Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 525.6/525.6 kB 90.0 MB/s  0:00:00
+2026-10-03T06:42:25.8474596Z Downloading pathspec-1.0.4-py3-none-any.whl (55 kB)
+2026-10-03T06:42:25.8691813Z Downloading pillow-10.3.0-cp311-cp311-manylinux_2_28_x86_64.whl (4.5 MB)
+2026-10-03T06:42:25.8854556Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 298.2 MB/s  0:00:00
+2026-10-03T06:42:25.9047539Z Downloading platformdirs-4.4.0-py3-none-any.whl (18 kB)
+2026-10-03T06:42:25.9270108Z Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+2026-10-03T06:42:25.9483600Z Downloading propcache-0.4.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (210 kB)
+2026-10-03T06:42:25.9698251Z Downloading pyasn1-0.6.3-py3-none-any.whl (83 kB)
+2026-10-03T06:42:25.9911416Z Downloading pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
+2026-10-03T06:42:26.0126428Z Downloading pycodestyle-2.14.0-py2.py3-none-any.whl (31 kB)
+2026-10-03T06:42:26.0336952Z Downloading pycparser-2.23-py3-none-any.whl (118 kB)
+2026-10-03T06:42:26.0552959Z Downloading pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+2026-10-03T06:42:26.0645000Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 258.1 MB/s  0:00:00
+2026-10-03T06:42:26.0839053Z Downloading pyflakes-3.4.0-py2.py3-none-any.whl (63 kB)
+2026-10-03T06:42:26.1054015Z Downloading pygments-2.20.0-py3-none-any.whl (1.2 MB)
+2026-10-03T06:42:26.1114066Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 254.8 MB/s  0:00:00
+2026-10-03T06:42:26.1303769Z Downloading pyjwt-2.12.1-py3-none-any.whl (29 kB)
+2026-10-03T06:42:26.1518124Z Downloading python_dotenv-1.2.1-py3-none-any.whl (21 kB)
+2026-10-03T06:42:26.1732564Z Downloading python_jose-3.5.0-py2.py3-none-any.whl (34 kB)
+2026-10-03T06:42:26.1941526Z Downloading rsa-4.9.1-py3-none-any.whl (34 kB)
+2026-10-03T06:42:26.2152277Z Downloading python_multipart-0.0.9-py3-none-any.whl (22 kB)
+2026-10-03T06:42:26.2358673Z Downloading pytokens-0.4.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (260 kB)
+2026-10-03T06:42:26.2585529Z Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (806 kB)
+2026-10-03T06:42:26.2643278Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 806.6/806.6 kB 169.7 MB/s  0:00:00
+2026-10-03T06:42:26.2841026Z Downloading razorpay-2.0.1-py3-none-any.whl (176 kB)
+2026-10-03T06:42:26.3051001Z Downloading referencing-0.36.2-py3-none-any.whl (26 kB)
+2026-10-03T06:42:26.3277658Z Downloading regex-2026.1.15-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (800 kB)
+2026-10-03T06:42:26.3341882Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 800.5/800.5 kB 178.4 MB/s  0:00:00
+2026-10-03T06:42:26.3547947Z Downloading redis-5.0.8-py3-none-any.whl (255 kB)
+2026-10-03T06:42:26.3765367Z Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+2026-10-03T06:42:26.3973173Z Downloading rich-14.3.3-py3-none-any.whl (310 kB)
+2026-10-03T06:42:26.4196214Z Downloading rpds_py-0.27.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (384 kB)
+2026-10-03T06:42:26.4428576Z Downloading s5cmd-0.2.0-py3-none-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.7 MB)
+2026-10-03T06:42:26.4638353Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 237.6 MB/s  0:00:00
+2026-10-03T06:42:26.4830895Z Downloading shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+2026-10-03T06:42:26.5036391Z Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+2026-10-03T06:42:26.5243534Z Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+2026-10-03T06:42:26.5479638Z Downloading stripe-15.0.1-py3-none-any.whl (2.1 MB)
+2026-10-03T06:42:26.5594824Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 234.7 MB/s  0:00:00
+2026-10-03T06:42:26.5781415Z Downloading tiktoken-0.12.0-cp311-cp311-manylinux_2_28_x86_64.whl (1.2 MB)
+2026-10-03T06:42:26.5837112Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 248.9 MB/s  0:00:00
+2026-10-03T06:42:26.6031786Z Downloading tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.3 MB)
+2026-10-03T06:42:26.6134593Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.3/3.3 MB 364.8 MB/s  0:00:00
+2026-10-03T06:42:26.6328417Z Downloading tqdm-4.67.3-py3-none-any.whl (78 kB)
+2026-10-03T06:42:26.6544586Z Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+2026-10-03T06:42:26.6757521Z Downloading tzdata-2026.1-py2.py3-none-any.whl (348 kB)
+2026-10-03T06:42:26.6987088Z Downloading uvicorn-0.25.0-py3-none-any.whl (60 kB)
+2026-10-03T06:42:26.7211534Z Downloading watchfiles-1.1.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (456 kB)
+2026-10-03T06:42:26.7434325Z Downloading zipp-3.23.0-py3-none-any.whl (10 kB)
+2026-10-03T06:42:26.7654460Z Downloading mammoth-1.7.1-py2.py3-none-any.whl (51 kB)
+2026-10-03T06:42:26.7895787Z Downloading Markdown-3.6-py3-none-any.whl (105 kB)
+2026-10-03T06:42:26.8137086Z Downloading bleach-6.1.0-py3-none-any.whl (162 kB)
+2026-10-03T06:42:26.8366101Z Downloading aiofiles-23.2.1-py3-none-any.whl (15 kB)
+2026-10-03T06:42:26.8575652Z Downloading google_auth_oauthlib-1.2.0-py2.py3-none-any.whl (24 kB)
+2026-10-03T06:42:26.8784111Z Downloading cobble-0.1.4-py3-none-any.whl (4.0 kB)
+2026-10-03T06:42:26.8994685Z Downloading pytz-2026.4-py2.py3-none-any.whl (506 kB)
+2026-10-03T06:42:26.9224191Z Downloading typer-0.27.2-py3-none-any.whl (123 kB)
+2026-10-03T06:42:26.9435666Z Downloading webencodings-0.6.1-py3-none-any.whl (8.7 kB)
+2026-10-03T06:42:27.3413062Z Building wheels for collected packages: cloudinary
+2026-10-03T06:42:27.3421433Z   Building wheel for cloudinary (pyproject.toml): started
+2026-10-03T06:42:27.5850582Z   Building wheel for cloudinary (pyproject.toml): finished with status 'done'
+2026-10-03T06:42:27.5857836Z   Created wheel for cloudinary: filename=cloudinary-1.40.0-py3-none-any.whl size=139657 sha256=146ff9bd45be489d0358fdef930f16d25d49a220b31ea7e491a21d2a70816d8a
+2026-10-03T06:42:27.5859590Z   Stored in directory: /home/runner/.cache/pip/wheels/f0/f1/93/d8e71830ef7695f347e97f56a3b3a9a4330de1d768aa4b85f1
+2026-10-03T06:42:27.5880189Z Successfully built cloudinary
+2026-10-03T06:42:27.8026571Z Installing collected packages: pytz, passlib, zipp, websockets, webencodings, urllib3, uritemplate, tzdata, typing_extensions, tqdm, tenacity, sniffio, six, shellingham, s5cmd, rpds-py, regex, redis, PyYAML, pytokens, python-multipart, python-dotenv, pyparsing, PyJWT, Pygments, pyflakes, pycparser, pycodestyle, pyasn1, protobuf, propcache, pluggy, platformdirs, Pillow, pathspec, packaging, oauthlib, numpy, mypy_extensions, multidict, mdurl, mccabe, MarkupSafe, markdown, librt, jq, jmespath, jiter, iniconfig, idna, hf-xet, h11, fsspec, frozenlist, filelock, fastuuid, dnspython, distro, cobble, click, charset-normalizer, certifi, bcrypt, attrs, annotated-types, annotated-doc, aiohappyeyeballs, aiofiles, yarl, uvicorn, typing-inspection, rsa, requests, referencing, python-dateutil, pymongo, pydantic_core, pyasn1_modules, proto-plus, markdown-it-py, mammoth, Jinja2, importlib_metadata, httplib2, httpcore, grpcio, googleapis-common-protos, email-validator, ecdsa, cloudinary, cffi, bleach, anyio, aiosignal, watchfiles, tiktoken, stripe, starlette, rich, requests-oauthlib, razorpay, python-jose, pydantic, pandas, motor, judoscale, jsonschema-specifications, httpx, grpcio-status, cryptography, botocore, aiohttp, typer, s3transfer, openai, jsonschema, google-auth, fastapi, huggingface_hub, google-genai, google-auth-oauthlib, google-auth-httplib2, google-api-core, boto3, tokenizers, google-api-python-client, google-ai-generativelanguage, google-generativeai
+2026-10-03T06:42:44.6905681Z 
+2026-10-03T06:42:44.6958102Z Successfully installed Jinja2-3.1.6 MarkupSafe-3.0.3 Pillow-10.3.0 PyJWT-2.12.1 PyYAML-6.0.3 Pygments-2.20.0 aiofiles-23.2.1 aiohappyeyeballs-2.6.1 aiohttp-3.13.5 aiosignal-1.4.0 annotated-doc-0.0.4 annotated-types-0.7.0 anyio-4.12.1 attrs-26.1.0 bcrypt-4.1.3 bleach-6.1.0 boto3-1.42.86 botocore-1.42.86 certifi-2026.2.25 cffi-2.0.0 charset-normalizer-3.4.7 click-8.3.3 cloudinary-1.40.0 cobble-0.1.4 cryptography-46.0.7 distro-1.9.0 dnspython-2.7.0 ecdsa-0.19.2 email-validator-2.3.0 fastapi-0.110.1 fastuuid-0.14.0 filelock-3.19.1 frozenlist-1.8.0 fsspec-2025.10.0 google-ai-generativelanguage-0.6.15 google-api-core-2.30.2 google-api-python-client-2.194.0 google-auth-2.49.2 google-auth-httplib2-0.3.1 google-auth-oauthlib-1.2.0 google-genai-1.47.0 google-generativeai-0.8.6 googleapis-common-protos-1.74.0 grpcio-1.80.0 grpcio-status-1.71.2 h11-0.16.0 hf-xet-1.4.3 httpcore-1.0.9 httplib2-0.31.2 httpx-0.28.1 huggingface_hub-1.8.0 idna-3.11 importlib_metadata-8.7.1 iniconfig-2.1.0 jiter-0.13.0 jmespath-1.1.0 jq-1.11.0 jsonschema-4.25.1 jsonschema-specifications-2025.9.1 judoscale-1.11.0 librt-0.8.1 mammoth-1.7.1 markdown-3.6 markdown-it-py-3.0.0 mccabe-0.7.0 mdurl-0.1.2 motor-3.3.1 multidict-6.7.1 mypy_extensions-1.1.0 numpy-2.0.2 oauthlib-3.3.1 openai-1.99.9 packaging-26.0 pandas-2.3.3 passlib-1.7.4 pathspec-1.0.4 platformdirs-4.4.0 pluggy-1.6.0 propcache-0.4.1 proto-plus-1.27.2 protobuf-5.29.6 pyasn1-0.6.3 pyasn1_modules-0.4.2 pycodestyle-2.14.0 pycparser-2.23 pydantic-2.12.5 pydantic_core-2.41.5 pyflakes-3.4.0 pymongo-4.5.0 pyparsing-3.3.2 python-dateutil-2.9.0.post0 python-dotenv-1.2.1 python-jose-3.5.0 python-multipart-0.0.9 pytokens-0.4.1 pytz-2026.4 razorpay-2.0.1 redis-5.0.8 referencing-0.36.2 regex-2026.1.15 requests-2.32.5 requests-oauthlib-2.0.0 rich-14.3.3 rpds-py-0.27.1 rsa-4.9.1 s3transfer-0.16.0 s5cmd-0.2.0 shellingham-1.5.4 six-1.17.0 sniffio-1.3.1 starlette-0.37.2 stripe-15.0.1 tenacity-9.1.2 tiktoken-0.12.0 tokenizers-0.22.2 tqdm-4.67.3 typer-0.27.2 typing-inspection-0.4.2 typing_extensions-4.15.0 tzdata-2026.1 uritemplate-4.2.0 urllib3-2.6.3 uvicorn-0.25.0 watchfiles-1.1.1 webencodings-0.6.1 websockets-15.0.1 yarl-1.22.0 zipp-3.23.0
+2026-10-03T06:42:46.2398825Z Collecting beautifulsoup4
+2026-10-03T06:42:46.3370798Z   Downloading beautifulsoup4-4.15.0-py3-none-any.whl.metadata (3.8 kB)
+2026-10-03T06:42:46.3966448Z Collecting pytest
+2026-10-03T06:42:46.4158754Z   Downloading pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+2026-10-03T06:42:46.4500119Z Collecting soupsieve>=1.6.1 (from beautifulsoup4)
+2026-10-03T06:42:46.4694215Z   Downloading soupsieve-2.10-py3-none-any.whl.metadata (4.4 kB)
+2026-10-03T06:42:46.4731813Z Requirement already satisfied: typing-extensions>=4.0.0 in /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages (from beautifulsoup4) (4.15.0)
+2026-10-03T06:42:46.4740519Z Requirement already satisfied: iniconfig>=1.0.1 in /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages (from pytest) (2.1.0)
+2026-10-03T06:42:46.4744358Z Requirement already satisfied: packaging>=22 in /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages (from pytest) (26.0)
+2026-10-03T06:42:46.4748368Z Requirement already satisfied: pluggy<2,>=1.5 in /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages (from pytest) (1.6.0)
+2026-10-03T06:42:46.4752133Z Requirement already satisfied: pygments>=2.7.2 in /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages (from pytest) (2.20.0)
+2026-10-03T06:42:46.4972089Z Downloading beautifulsoup4-4.15.0-py3-none-any.whl (109 kB)
+2026-10-03T06:42:46.5461704Z Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+2026-10-03T06:42:46.6036535Z Downloading soupsieve-2.10-py3-none-any.whl (38 kB)
+2026-10-03T06:42:46.7207788Z Installing collected packages: soupsieve, pytest, beautifulsoup4
+2026-10-03T06:42:47.0313820Z 
+2026-10-03T06:42:47.0354865Z Successfully installed beautifulsoup4-4.15.0 pytest-9.1.1 soupsieve-2.10
+2026-10-03T06:42:47.0984856Z ##[group]Run python -m unittest scripts.test_reconcile_bengali_source_evidence scripts.test_reconcile_english_source_evidence scripts.test_prepare_inactive_reader_segment_plans -v
+2026-10-03T06:42:47.0986096Z [36;1mpython -m unittest scripts.test_reconcile_bengali_source_evidence scripts.test_reconcile_english_source_evidence scripts.test_prepare_inactive_reader_segment_plans -v[0m
+2026-10-03T06:42:47.0987162Z [36;1mpython -m pytest backend/tests/test_licensed_text.py backend/tests/test_publication_manifest.py backend/tests/test_rights_engine.py -q[0m
+2026-10-03T06:42:47.0988507Z [36;1mpython -m pytest backend/tests/test_rights_decision_gate.py backend/tests/test_backend_catalog_truth.py backend/tests/test_api_public_catalog_projection.py backend/tests/test_catalog_exclusion_parity.py backend/tests/test_reader_segment_promotion_safeguards.py -q[0m
+2026-10-03T06:42:47.0989885Z [36;1mpython scripts/verify_catalogue_clearance_batch.py[0m
+2026-10-03T06:42:47.0990510Z [36;1mpython scripts/prepare_inactive_reader_segment_plans.py --output /tmp/inactive-reader-segment-plans.json[0m
+2026-10-03T06:42:47.0991032Z [36;1mgit diff --check[0m
+2026-10-03T06:42:47.1060167Z shell: /usr/bin/bash -e {0}
+2026-10-03T06:42:47.1060424Z env:
+2026-10-03T06:42:47.1060697Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-03T06:42:47.1061148Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib/pkgconfig
+2026-10-03T06:42:47.1061572Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-03T06:42:47.1061972Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-03T06:42:47.1062365Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-03T06:42:47.1062748Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib
+2026-10-03T06:42:47.1063075Z ##[endgroup]
+2026-10-03T06:42:48.2119535Z test_chapter_order_repairs_preserve_literary_hashes (scripts.test_reconcile_bengali_source_evidence.AppliedSourceRepairIntegrityTests.test_chapter_order_repairs_preserve_literary_hashes) ... ok
+2026-10-03T06:42:48.2121788Z test_no_ambiguous_khata_first_publication_year_is_certified (scripts.test_reconcile_bengali_source_evidence.AppliedSourceRepairIntegrityTests.test_no_ambiguous_khata_first_publication_year_is_certified) ... ok
+2026-10-03T06:42:48.2193006Z test_direct_transcluded_literary_nodes_are_not_dropped (scripts.test_reconcile_bengali_source_evidence.BengaliSourceReconciliationTests.test_direct_transcluded_literary_nodes_are_not_dropped) ... ok
+2026-10-03T06:42:48.2242069Z test_inline_spacing_is_retained (scripts.test_reconcile_bengali_source_evidence.BengaliSourceReconciliationTests.test_inline_spacing_is_retained) ... ok
+2026-10-03T06:42:48.2244016Z test_missing_paragraph_is_not_matching (scripts.test_reconcile_bengali_source_evidence.BengaliSourceReconciliationTests.test_missing_paragraph_is_not_matching) ... ok
+2026-10-03T06:42:48.2246117Z test_punctuation_difference_not_normalized_away (scripts.test_reconcile_bengali_source_evidence.BengaliSourceReconciliationTests.test_punctuation_difference_not_normalized_away) ... ok
+2026-10-03T06:42:48.2252843Z test_source_furniture_removed_and_recorded (scripts.test_reconcile_bengali_source_evidence.BengaliSourceReconciliationTests.test_source_furniture_removed_and_recorded) ... ok
+2026-10-03T06:42:48.2254873Z test_unchanged_text_passes_formatting_only (scripts.test_reconcile_bengali_source_evidence.BengaliSourceReconciliationTests.test_unchanged_text_passes_formatting_only) ... ok
+2026-10-03T06:42:48.2269639Z test_local_text_decisions_bind_current_bytes_without_audio_or_activation (scripts.test_reconcile_bengali_source_evidence.FinalClearanceBindingsTests.test_local_text_decisions_bind_current_bytes_without_audio_or_activation) ... FAIL
+2026-10-03T06:42:48.2287398Z test_original_replacements_preserve_auditable_old_identity (scripts.test_reconcile_bengali_source_evidence.FinalClearanceBindingsTests.test_original_replacements_preserve_auditable_old_identity) ... ok
+2026-10-03T06:42:48.2297017Z test_literary_table_text_is_not_discarded (scripts.test_reconcile_bengali_source_evidence.FullRenderedNotesTests.test_literary_table_text_is_not_discarded) ... ok
+2026-10-03T06:42:48.2303591Z test_literary_text_after_transclusion_is_not_discarded (scripts.test_reconcile_bengali_source_evidence.FullRenderedNotesTests.test_literary_text_after_transclusion_is_not_discarded) ... ok
+2026-10-03T06:42:48.2310920Z test_original_footnotes_outside_transclusion_are_preserved (scripts.test_reconcile_bengali_source_evidence.FullRenderedNotesTests.test_original_footnotes_outside_transclusion_are_preserved) ... ok
+2026-10-03T06:42:48.2587281Z test_fourteen_source_chapters_and_original_preview_are_bound (scripts.test_reconcile_bengali_source_evidence.MuchiramCompletenessTest.test_fourteen_source_chapters_and_original_preview_are_bound) ... ok
+2026-10-03T06:42:48.2589925Z test_chapter_order_is_strict (scripts.test_reconcile_english_source_evidence.EvidenceTests.test_chapter_order_is_strict) ... ok
+2026-10-03T06:42:48.2600706Z test_containment_is_not_full_edition (scripts.test_reconcile_english_source_evidence.EvidenceTests.test_containment_is_not_full_edition) ... ok
+2026-10-03T06:42:48.2602469Z test_copyrighted_wyllie_translation_stays_held (scripts.test_reconcile_english_source_evidence.EvidenceTests.test_copyrighted_wyllie_translation_stays_held) ... ok
+2026-10-03T06:42:48.2604194Z test_dracula_restored_preface_order (scripts.test_reconcile_english_source_evidence.EvidenceTests.test_dracula_restored_preface_order) ... ok
+2026-10-03T06:42:48.2605688Z test_empty_is_not_verified (scripts.test_reconcile_english_source_evidence.EvidenceTests.test_empty_is_not_verified) ... ok
+2026-10-03T06:42:48.2607636Z test_first_party_permission_does_not_reuse_historical_audio_approval (scripts.test_reconcile_english_source_evidence.EvidenceTests.test_first_party_permission_does_not_reuse_historical_audio_approval) ... ok
+2026-10-03T06:42:48.2610063Z test_frankenstein_repaired_phrase_is_in_body_not_heading (scripts.test_reconcile_english_source_evidence.EvidenceTests.test_frankenstein_repaired_phrase_is_in_body_not_heading) ... ok
+2026-10-03T06:42:48.2612174Z test_hungry_stones_is_selected_translator_not_whole_anthology (scripts.test_reconcile_english_source_evidence.EvidenceTests.test_hungry_stones_is_selected_translator_not_whole_anthology) ... ok
+2026-10-03T06:42:48.2614058Z test_id_only_trusted_source_host (scripts.test_reconcile_english_source_evidence.EvidenceTests.test_id_only_trusted_source_host) ... ok
+2026-10-03T06:42:48.2615888Z test_licensed_transcription_has_hash_bound_public_notice (scripts.test_reconcile_english_source_evidence.EvidenceTests.test_licensed_transcription_has_hash_bound_public_notice) ... ok
+2026-10-03T06:42:48.3963537Z test_live_titles_excluded_and_alias_preserved (scripts.test_reconcile_english_source_evidence.EvidenceTests.test_live_titles_excluded_and_alias_preserved) ... ok
+2026-10-03T06:42:48.3968705Z test_milverton_whole_story_includes_opening_narrative_and_card (scripts.test_reconcile_english_source_evidence.EvidenceTests.test_milverton_whole_story_includes_opening_narrative_and_card) ... ok
+2026-10-03T06:42:48.3988154Z test_missing_chapters_restored_without_hiding_narrative (scripts.test_reconcile_english_source_evidence.EvidenceTests.test_missing_chapters_restored_without_hiding_narrative) ... FAIL
+2026-10-03T06:42:48.3990394Z test_nested_illustration_caption_exclusion (scripts.test_reconcile_english_source_evidence.EvidenceTests.test_nested_illustration_caption_exclusion) ... ok
+2026-10-03T06:42:48.3997424Z test_noncover_rights_do_not_authorize_audio_cover_or_runtime_activation (scripts.test_reconcile_english_source_evidence.EvidenceTests.test_noncover_rights_do_not_authorize_audio_cover_or_runtime_activation) ... FAIL
+2026-10-03T06:42:48.4002268Z test_pride_extractor_rejects_incomplete_or_wrong_edition (scripts.test_reconcile_english_source_evidence.EvidenceTests.test_pride_extractor_rejects_incomplete_or_wrong_edition) ... ok
+2026-10-03T06:42:48.4005605Z test_pride_migration_has_complete_61_chapter_reader (scripts.test_reconcile_english_source_evidence.EvidenceTests.test_pride_migration_has_complete_61_chapter_reader) ... ok
+2026-10-03T06:42:48.4007406Z test_punctuation_change_is_not_normalized_away (scripts.test_reconcile_english_source_evidence.EvidenceTests.test_punctuation_change_is_not_normalized_away) ... ok
+2026-10-03T06:42:48.4009232Z test_whitespace_only_normalization (scripts.test_reconcile_english_source_evidence.EvidenceTests.test_whitespace_only_normalization) ... ok
+2026-10-03T06:42:48.4035657Z test_changed_chapter_rejected_before_pagination (scripts.test_prepare_inactive_reader_segment_plans.InactivePlanTests.test_changed_chapter_rejected_before_pagination) ... ok
+2026-10-03T06:42:48.4052055Z test_exposed_package_rejected (scripts.test_prepare_inactive_reader_segment_plans.InactivePlanTests.test_exposed_package_rejected) ... ok
+2026-10-03T06:42:48.4081556Z test_hash_only_and_no_source_mutation (scripts.test_prepare_inactive_reader_segment_plans.InactivePlanTests.test_hash_only_and_no_source_mutation) ... ok
+2026-10-03T06:42:48.4099551Z test_invalid_local_record_rejected (scripts.test_prepare_inactive_reader_segment_plans.InactivePlanTests.test_invalid_local_record_rejected) ... ok
+2026-10-03T06:42:48.4114610Z test_live_title_is_not_prepared (scripts.test_prepare_inactive_reader_segment_plans.InactivePlanTests.test_live_title_is_not_prepared) ... ok
+2026-10-03T06:42:48.4115517Z 
+2026-10-03T06:42:48.4115711Z ======================================================================
+2026-10-03T06:42:48.4117201Z FAIL: test_local_text_decisions_bind_current_bytes_without_audio_or_activation (scripts.test_reconcile_bengali_source_evidence.FinalClearanceBindingsTests.test_local_text_decisions_bind_current_bytes_without_audio_or_activation)
+2026-10-03T06:42:48.4119090Z ----------------------------------------------------------------------
+2026-10-03T06:42:48.4119645Z Traceback (most recent call last):
+2026-10-03T06:42:48.4127198Z   File "/home/runner/work/earnalism-digital-library/earnalism-digital-library/scripts/test_reconcile_bengali_source_evidence.py", line 108, in test_local_text_decisions_bind_current_bytes_without_audio_or_activation
+2026-10-03T06:42:48.4128690Z     self.assertNotIn('cover_display',decision['uses'])
+2026-10-03T06:42:48.4130026Z AssertionError: 'cover_display' unexpectedly found in ['catalog_metadata', 'cover_display', 'reader_preview', 'reader_delivery', 'reading_pass_session', 'reading_pass_renewal']
+2026-10-03T06:42:48.4130959Z 
+2026-10-03T06:42:48.4131129Z ======================================================================
+2026-10-03T06:42:48.4132319Z FAIL: test_missing_chapters_restored_without_hiding_narrative (scripts.test_reconcile_english_source_evidence.EvidenceTests.test_missing_chapters_restored_without_hiding_narrative)
+2026-10-03T06:42:48.4133533Z ----------------------------------------------------------------------
+2026-10-03T06:42:48.4134023Z Traceback (most recent call last):
+2026-10-03T06:42:48.4135362Z   File "/home/runner/work/earnalism-digital-library/earnalism-digital-library/scripts/test_reconcile_english_source_evidence.py", line 73, in test_missing_chapters_restored_without_hiding_narrative
+2026-10-03T06:42:48.4136815Z     self.assertFalse(m.load(package/'publication_manifest.json')['reader_release']['exposed'])
+2026-10-03T06:42:48.4137471Z AssertionError: True is not false
+2026-10-03T06:42:48.4137700Z 
+2026-10-03T06:42:48.4137873Z ======================================================================
+2026-10-03T06:42:48.4139279Z FAIL: test_noncover_rights_do_not_authorize_audio_cover_or_runtime_activation (scripts.test_reconcile_english_source_evidence.EvidenceTests.test_noncover_rights_do_not_authorize_audio_cover_or_runtime_activation)
+2026-10-03T06:42:48.4140835Z ----------------------------------------------------------------------
+2026-10-03T06:42:48.4141313Z Traceback (most recent call last):
+2026-10-03T06:42:48.4142949Z   File "/home/runner/work/earnalism-digital-library/earnalism-digital-library/scripts/test_reconcile_english_source_evidence.py", line 49, in test_noncover_rights_do_not_authorize_audio_cover_or_runtime_activation
+2026-10-03T06:42:48.4144417Z     self.assertNotIn('cover_display',record['uses']);self.assertNotIn('audio_stream',record['uses'])
+2026-10-03T06:42:48.4145073Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-03T06:42:48.4146092Z AssertionError: 'cover_display' unexpectedly found in ['catalog_metadata', 'cover_display', 'reader_preview', 'reader_delivery', 'reading_pass_session', 'reading_pass_renewal']
+2026-10-03T06:42:48.4146974Z 
+2026-10-03T06:42:48.4147181Z ----------------------------------------------------------------------
+2026-10-03T06:42:48.4147656Z Ran 38 tests in 0.332s
+2026-10-03T06:42:48.4147848Z 
+2026-10-03T06:42:48.4147978Z FAILED (failures=3)
+2026-10-03T06:42:48.4399684Z ##[error]Process completed with exit code 1.
+2026-10-03T06:42:48.4603224Z Post job cleanup.
+2026-10-03T06:42:48.5488222Z [command]/usr/bin/git version
+2026-10-03T06:42:48.5533089Z git version 2.55.0
+2026-10-03T06:42:48.5572951Z Temporarily overriding HOME='/home/runner/work/_temp/63e28eb2-9d56-40c2-a0ec-3cdf431c7873' before making global git config changes
+2026-10-03T06:42:48.5574327Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-03T06:42:48.5579378Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/earnalism-digital-library/earnalism-digital-library
+2026-10-03T06:42:48.5623675Z Removing SSH command configuration
+2026-10-03T06:42:48.5624145Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-03T06:42:48.5674636Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-03T06:42:48.5958039Z Removing HTTP extra header
+2026-10-03T06:42:48.5964539Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-03T06:42:48.6010042Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-03T06:42:48.6313796Z Removing includeIf entries pointing to credentials config files
+2026-10-03T06:42:48.6339622Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-03T06:42:48.6385783Z includeif.gitdir:/home/runner/work/earnalism-digital-library/earnalism-digital-library/.git.path
+2026-10-03T06:42:48.6400263Z includeif.gitdir:/home/runner/work/earnalism-digital-library/earnalism-digital-library/.git/worktrees/*.path
+2026-10-03T06:42:48.6430060Z includeif.gitdir:/github/workspace/.git.path
+2026-10-03T06:42:48.6434416Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-03T06:42:48.6490238Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/earnalism-digital-library/earnalism-digital-library/.git.path
+2026-10-03T06:42:48.6519792Z /home/runner/work/_temp/git-credentials-ffbbfddd-a40d-48c5-83a4-1de491d79c2b.config
+2026-10-03T06:42:48.6522505Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/earnalism-digital-library/earnalism-digital-library/.git.path /home/runner/work/_temp/git-credentials-ffbbfddd-a40d-48c5-83a4-1de491d79c2b.config
+2026-10-03T06:42:48.6525261Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/earnalism-digital-library/earnalism-digital-library/.git/worktrees/*.path
+2026-10-03T06:42:48.6526660Z /home/runner/work/_temp/git-credentials-ffbbfddd-a40d-48c5-83a4-1de491d79c2b.config
+2026-10-03T06:42:48.6545320Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/earnalism-digital-library/earnalism-digital-library/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-ffbbfddd-a40d-48c5-83a4-1de491d79c2b.config
+2026-10-03T06:42:48.6590588Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-03T06:42:48.6630202Z /github/runner_temp/git-credentials-ffbbfddd-a40d-48c5-83a4-1de491d79c2b.config
+2026-10-03T06:42:48.6633842Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-ffbbfddd-a40d-48c5-83a4-1de491d79c2b.config
+2026-10-03T06:42:48.6678571Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-03T06:42:48.6709396Z /github/runner_temp/git-credentials-ffbbfddd-a40d-48c5-83a4-1de491d79c2b.config
+2026-10-03T06:42:48.6721045Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-ffbbfddd-a40d-48c5-83a4-1de491d79c2b.config
+2026-10-03T06:42:48.6775440Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-03T06:42:48.7060485Z Removing credentials config '/home/runner/work/_temp/git-credentials-ffbbfddd-a40d-48c5-83a4-1de491d79c2b.config'
+2026-10-03T06:42:48.7222640Z Cleaning up orphan processes
+

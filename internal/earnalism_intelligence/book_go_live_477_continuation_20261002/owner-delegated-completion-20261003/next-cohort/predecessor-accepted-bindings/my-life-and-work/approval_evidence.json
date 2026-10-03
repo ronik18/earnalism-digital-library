@@ -1,0 +1,67 @@
+{
+  "slug": "my-life-and-work",
+  "approved_to_publish": true,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_OWNER_PROVIDED_COVER_PUBLICATION_ACCEPTANCE",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "source_hash": "f01c925ba4a15ccc6a5aa706418cf94149ddd7d8f390c65d132b8675435b00cf",
+  "content_hash": "8309a5246622002f4fceef9f19e8e26218f0a06320cf53197a91296e0ee21c86",
+  "provenance_hash": "5262402600885bc8f37e8972883a373a3d4f7fd966f8321c9ba5b0cdd6b36af3",
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "9f5221e29758bae95d5277703473eaaca051dcb8157329f30b064dacafbcc31d",
+  "verified_at": "2026-10-03T05:04:16.164575+00:00",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "audio_status": "NOT_REQUESTED",
+  "audiobook_release_gate": "NOT_REQUESTED",
+  "audio_qa_status": "NOT_RUN",
+  "sync_tier": "NONE",
+  "audiobook_use_approved": false,
+  "audiobook_use_approval_source": "",
+  "audiobook_use_approved_at": "",
+  "cover_provenance_sha256": "4c722f37cbc6a909d7cf30d97cca4f1b63d59229ce2611bb6dbefc26c81cdb9b",
+  "cover_delivery_derivation_sha256": "fe7ad968f0449f59a18bc4d8334ad3d3146fc13fecd66abaa15fb874088168b6",
+  "source_integrity_validation_sha256": "0f0466f58d725b09da33078d8bf45820b36ce227b7d61edb8b8174deeb320d21",
+  "cover_front_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+  "cover_back_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+  "production_observed": false,
+  "qa_scope": "Two independent exact complete-source/preserved-artwork preparations; final accepted binding review is an external serialized release requirement.",
+  "independent_reviews": {
+    "review_a": {
+      "file": "evidence/review_a.json",
+      "sha256": "ff240fbf4572faa32eab4a11d24552591af32907de74186272fa9769426c8014"
+    },
+    "review_b": {
+      "file": "evidence/review_b.json",
+      "sha256": "af458f9aa5b771de14ccb98ce746cfe00dd57b045c44b065aae7dffc7015a6fb"
+    }
+  },
+  "binding_review_status": "FINAL_EXACT_PACKAGE_REVIEWS_REQUIRED_AS_EXTERNAL_SERIALIZED_RELEASE_GATE",
+  "manual_listening_approval": false,
+  "actual_prospective_acceptance": {
+    "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+    "accepted_at": "2026-10-03T05:34:11.386246+00:00",
+    "evidence": {
+      "review_a": {
+        "file": "evidence/review_a.json",
+        "sha256": "ff240fbf4572faa32eab4a11d24552591af32907de74186272fa9769426c8014"
+      },
+      "review_b": {
+        "file": "evidence/review_b.json",
+        "sha256": "af458f9aa5b771de14ccb98ce746cfe00dd57b045c44b065aae7dffc7015a6fb"
+      }
+    },
+    "owner_declaration_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "production_observed": false,
+    "canonical_version_observed": false,
+    "global_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-the-great-gatsby-exact-reader-cover-prospective-accepted",
+  "edition_id": "the-great-gatsby",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "6dd77171eda79e594f010fe833edb76c1e0a7d94440dc7a520b6fe18e9972843",
+    "reader_manifest": "f544166427c91bb2b8546484bf0c811761345f2ec8f1c73c00afad88411fcb4c",
+    "source_evidence": "93a1e5eab7ce62def0ef60ba3a2ae6e56ed964c688c1f2a827f3e88664a30874",
+    "approval_evidence": "d2e02209b93227c55507f0533b2f7b3e3495fadecb04a631e237fe0a10bcd238",
+    "checksum_manifest": "9108743511f668e71aeb7c96492a0da6886c1d85ddccdfa5359f0dc269691c3f",
+    "publication_manifest": "a931facb3caec807f9cecffea059670a48561014dc9743cdae3c2b9b7d39422f",
+    "cover_preparation": "d7a4dd3bee23aa3e9d57bdbb2d8bb9d0601e5e42499086a4900857218aa5a4b2",
+    "publication_authorization": "dda50b8fe9eb9433eb3d2ffbb4f8ad6058ed53986840185bfdb2a5a4b8b68302",
+    "cover_provenance": "289d8038dbceb37355088e9ada7744793bebf9e6ddd1a437fc9df89225e6b7c9",
+    "owner_artwork_declaration": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "acceptance_review_a": "5156952c739749bc0d45c2da3f66e595bba7b4855fc5851a909c7f45be5fe0a9",
+    "acceptance_review_b": "01f582df43f942e52ea04de108f9eaca6b3218dd0cb83ff6623f0b2711654d0d"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T05:34:11.386246+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Exact India text/edition rights are preserved from the archived predecessor and unchanged source/chapter/license records. Ronik Basak directly provided the owner-held copyright and publication provenance for the exact owner-created cover components; two independent passing source/art preparations bind the reviewed derivatives and deliveries. Prospective automated acceptance supersedes earlier procedural cover deferral for these components only. No human approval, other source/edition rights, unknown original construction method, audio grant or production observation inferred.",
+  "evidence_sha256": [
+    "640cd2b42298283a760ee823e25ccecea8f301940e38e7adc4633386f267a3e8",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "4a96f50ad7df460f80f1b69ca814b7514d7f178d24e0079cd6fd8a04e5faba24",
+    "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35",
+    "4f6579e08ebba7b91e4a92bf134f29c0a79b7c5575125351a20684c4ff8688ec",
+    "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "dda50b8fe9eb9433eb3d2ffbb4f8ad6058ed53986840185bfdb2a5a4b8b68302",
+    "289d8038dbceb37355088e9ada7744793bebf9e6ddd1a437fc9df89225e6b7c9",
+    "5156952c739749bc0d45c2da3f66e595bba7b4855fc5851a909c7f45be5fe0a9",
+    "01f582df43f942e52ea04de108f9eaca6b3218dd0cb83ff6623f0b2711654d0d",
+    "3ba83ca584badcf990145195607e4db99d3f112fca18a8111355f2e71dc32a26"
+  ],
+  "accepted_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+  "conditions_satisfied": true
+}

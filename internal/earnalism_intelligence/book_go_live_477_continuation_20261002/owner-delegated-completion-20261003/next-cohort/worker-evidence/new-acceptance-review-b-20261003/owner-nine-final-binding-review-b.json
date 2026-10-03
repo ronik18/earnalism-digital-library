@@ -1,0 +1,691 @@
+{
+  "reviewer": "independent_reviewer_B",
+  "stage": "next-owner-accepted-nine-20261003-v1",
+  "acceptance_receipt_sha256": "1b50a8d53e91ea38226bcf90627b611b8222abe525cf664f8847cb006ed08feb",
+  "global_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK",
+  "production_observed": false,
+  "canonical_mutations_by_B": false,
+  "inventory": [
+    {
+      "slug": "the-time-machine",
+      "rights_decision_raw_sha256": "2ff832d651ab6d9e307e138ce880cad79534e52b73b5d32c06176f6a5a7fd794",
+      "rights_decision_canonical_sha256": "f7f078156e5d711b1ca37589b4b33f4c1e46e43906a360329820aba18d0c53f2",
+      "components": {
+        "public_book": "23841cc6571e63bda37644b85bb1e885469aba750e634e2f4bf43206d8efc588",
+        "reader_manifest": "1874f35f864ccffa65a9d7e38312c3f84df7fd8880120db0ac4ead237d1d913a",
+        "source_evidence": "010c2fd7d0fa5ae1370f081876448c94a9bad177df7fe0b621b0f91c39af0cf5",
+        "approval_evidence": "a74c44ea8f819f36d381059f53a665c39b37a101001c5e1e9c87b86c59df4544",
+        "checksum_manifest": "a62333d2123b6c8b34ec8bcfa99a69bc8dbb35818eecafd466ba461505d5a5f6",
+        "publication_manifest": "a51bccfd200bd7f40348d85f16a91b7ee1e4e51222a4417787d38eb89196d2c5",
+        "cover_preparation": "3fe9780bc1564a183eb535e3e73fda63d88c37871a0b3eaedd5108ec7778202d",
+        "publication_authorization": "a4981a11cedcd8858b10d0b13af7b554f6d6214e257011b0d05411632be2a3b3",
+        "cover_provenance": "59ff749778fa245635ca725f1fbc47d3a4571deccc69fb6fe957d5d4aeaa0005",
+        "owner_artwork_declaration": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+        "acceptance_review_a": "69849aa5884020a53e87e902d3505d2624839e8dd37119d9b03d7df99948fe38",
+        "acceptance_review_b": "fa6aaff9100965882e389a042a8e81845423737348bbd410831c6954fda2998b"
+      },
+      "checksum_count": 35,
+      "chapter_count": 17,
+      "all_hash_integrity_checks_pass": true,
+      "failed_checks": [],
+      "isolated_candidate_evaluator": {
+        "catalog_metadata": true,
+        "cover_display": true,
+        "reader_preview": true,
+        "reader_delivery": true,
+        "reading_pass_session": true,
+        "reading_pass_renewal": true,
+        "audio_stream": false,
+        "audio_download": false
+      },
+      "current_delegation_actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+      "acceptance_at": "2026-10-03T05:34:11.386246+00:00",
+      "acceptance_matches_receipt": true,
+      "metadata_semantics": {
+        "cover": {
+          "status": "ACCEPTED_EXACT_OWNER_PROVIDED_COMPONENTS_UNDER_DIRECT_OWNER_DECLARATION",
+          "commercial_use_authorized": true,
+          "cover_display_approved": true,
+          "visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "69849aa5884020a53e87e902d3505d2624839e8dd37119d9b03d7df99948fe38"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "fa6aaff9100965882e389a042a8e81845423737348bbd410831c6954fda2998b"
+            },
+            "source_review_b": {
+              "file": "evidence/source_review_b.json",
+              "sha256": "7e6e03cfd9ebfddb26f0f275b69adb8c4222055a6b466c89cedc7d3173fdda12"
+            }
+          }
+        },
+        "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_OWNER_PROVIDED_COVER_PUBLICATION_ACCEPTANCE"
+      }
+    },
+    {
+      "slug": "the-great-gatsby",
+      "rights_decision_raw_sha256": "76e1ccb1a1690cb62fb6d53ceef682051f3344c7d28829092a889971eebb0cc2",
+      "rights_decision_canonical_sha256": "257ed5156be39001cd0a3d6af795df981cb22ae2b980a526a9af4f3a5ad9fd61",
+      "components": {
+        "public_book": "6dd77171eda79e594f010fe833edb76c1e0a7d94440dc7a520b6fe18e9972843",
+        "reader_manifest": "f544166427c91bb2b8546484bf0c811761345f2ec8f1c73c00afad88411fcb4c",
+        "source_evidence": "93a1e5eab7ce62def0ef60ba3a2ae6e56ed964c688c1f2a827f3e88664a30874",
+        "approval_evidence": "d2e02209b93227c55507f0533b2f7b3e3495fadecb04a631e237fe0a10bcd238",
+        "checksum_manifest": "9108743511f668e71aeb7c96492a0da6886c1d85ddccdfa5359f0dc269691c3f",
+        "publication_manifest": "a931facb3caec807f9cecffea059670a48561014dc9743cdae3c2b9b7d39422f",
+        "cover_preparation": "d7a4dd3bee23aa3e9d57bdbb2d8bb9d0601e5e42499086a4900857218aa5a4b2",
+        "publication_authorization": "dda50b8fe9eb9433eb3d2ffbb4f8ad6058ed53986840185bfdb2a5a4b8b68302",
+        "cover_provenance": "289d8038dbceb37355088e9ada7744793bebf9e6ddd1a437fc9df89225e6b7c9",
+        "owner_artwork_declaration": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+        "acceptance_review_a": "5156952c739749bc0d45c2da3f66e595bba7b4855fc5851a909c7f45be5fe0a9",
+        "acceptance_review_b": "01f582df43f942e52ea04de108f9eaca6b3218dd0cb83ff6623f0b2711654d0d"
+      },
+      "checksum_count": 29,
+      "chapter_count": 10,
+      "all_hash_integrity_checks_pass": true,
+      "failed_checks": [],
+      "isolated_candidate_evaluator": {
+        "catalog_metadata": true,
+        "cover_display": true,
+        "reader_preview": true,
+        "reader_delivery": true,
+        "reading_pass_session": true,
+        "reading_pass_renewal": true,
+        "audio_stream": false,
+        "audio_download": false
+      },
+      "current_delegation_actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+      "acceptance_at": "2026-10-03T05:34:11.386246+00:00",
+      "acceptance_matches_receipt": true,
+      "metadata_semantics": {
+        "cover": {
+          "status": "ACCEPTED_EXACT_OWNER_PROVIDED_COMPONENTS_UNDER_DIRECT_OWNER_DECLARATION",
+          "commercial_use_authorized": true,
+          "cover_display_approved": true,
+          "visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "5156952c739749bc0d45c2da3f66e595bba7b4855fc5851a909c7f45be5fe0a9"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "01f582df43f942e52ea04de108f9eaca6b3218dd0cb83ff6623f0b2711654d0d"
+            },
+            "source_review_b": {
+              "file": "evidence/source_review_b.json",
+              "sha256": "3ba83ca584badcf990145195607e4db99d3f112fca18a8111355f2e71dc32a26"
+            }
+          }
+        },
+        "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_OWNER_PROVIDED_COVER_PUBLICATION_ACCEPTANCE"
+      }
+    },
+    {
+      "slug": "frankenstein",
+      "rights_decision_raw_sha256": "29c918769a338bbb258af191b24c6e91ebe949c4088100b8b854b67b0e2e26bf",
+      "rights_decision_canonical_sha256": "3efdcf9b9139c13bbc959b72e375de8761699573c10cd61e1b69492211fd2d6f",
+      "components": {
+        "public_book": "c27158531809289e2f259770340ac00486f197b2e3c9b24cb470bc38fb36f05d",
+        "reader_manifest": "2d7d0f01dcbc35eebc51a178b4eb72a9d766cfe5ec56d618113455ba72c16434",
+        "source_evidence": "dc06292e3e257f690c3017e88ded33d0b6baa8b778d1629f3074d1f76b5df449",
+        "approval_evidence": "71999e10731c868d8867afb56180bad0d7ae98288abf26a8f953a47a3cf8ec9a",
+        "checksum_manifest": "18004c5aca48a87d174b77db4285674007c3ee4e3c5ef67b27c3f6e29765e639",
+        "publication_manifest": "bac878f6a8905b9697c6ae05976317d473a23f6cee7b08701e17fabda1a488b0",
+        "cover_preparation": "fbce9843573995403912a7b9f2e5f560c3a498a88d90cea2c011519776255bda",
+        "publication_authorization": "5b136cdd64bc1f85351dcb38c3ada57f382d247ca83ddc606b4b3ee440f276b4",
+        "cover_provenance": "4ea3e76b15282fe28797f073f31f665b5a26a751197982491c4150f10aab6f6b",
+        "owner_artwork_declaration": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+        "acceptance_review_a": "dc1045c0af38dad4e41574dbb587cea6734d665ac3cdde5b2e71745808078c83",
+        "acceptance_review_b": "cb669626513fb343c14b268928ca8499cd01d521d5cad9469464935ec400d871"
+      },
+      "checksum_count": 46,
+      "chapter_count": 28,
+      "all_hash_integrity_checks_pass": true,
+      "failed_checks": [],
+      "isolated_candidate_evaluator": {
+        "catalog_metadata": true,
+        "cover_display": true,
+        "reader_preview": true,
+        "reader_delivery": true,
+        "reading_pass_session": true,
+        "reading_pass_renewal": true,
+        "audio_stream": false,
+        "audio_download": false
+      },
+      "current_delegation_actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+      "acceptance_at": "2026-10-03T05:34:11.386246+00:00",
+      "acceptance_matches_receipt": true,
+      "metadata_semantics": {
+        "cover": {
+          "status": "ACCEPTED_EXACT_OWNER_PROVIDED_COMPONENTS_UNDER_DIRECT_OWNER_DECLARATION",
+          "commercial_use_authorized": true,
+          "cover_display_approved": true,
+          "visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "dc1045c0af38dad4e41574dbb587cea6734d665ac3cdde5b2e71745808078c83"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "cb669626513fb343c14b268928ca8499cd01d521d5cad9469464935ec400d871"
+            },
+            "source_review_b": {
+              "file": "evidence/source_review_b.json",
+              "sha256": "c4d561c45a88e2ab53dcdf26ed1036882fcb040681c41b3d49fda75bdc50e999"
+            }
+          }
+        },
+        "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_OWNER_PROVIDED_COVER_PUBLICATION_ACCEPTANCE"
+      }
+    },
+    {
+      "slug": "the-secret-garden",
+      "rights_decision_raw_sha256": "4b3dba1ba1eff5192fb4e0da2e3d4d720ed9700321b3d304b79f629ab9393423",
+      "rights_decision_canonical_sha256": "6f1a5205d77e70433855d7abd5698b0f9004edf194ccbac8dade0d22f824cf09",
+      "components": {
+        "public_book": "5bcb8c0a7409a5965b6954d69c613d9336ee19c48ac9ce5289dcec73e278dda7",
+        "reader_manifest": "75d9899ba4ecf348e9bc75da118a4b0ac3aa9cb1e595e8598e3541f9154dff4f",
+        "source_evidence": "d4fba2e016dc99ebbab2950c7f63186ec154e408da4d4acb09a82fa8ef959852",
+        "approval_evidence": "a8dccdcdb22c6ebdb2e671881f6950e034d64ee9ba476141f14cd13194749d2e",
+        "checksum_manifest": "eec41617536999239460727958aacff4f70f5b7487224350b6b90be2276c10c0",
+        "publication_manifest": "66dfd0af8e3b08c999fcb0eb0460c96474539b07a14576789706ecdba8375acd",
+        "cover_preparation": "0a923e322729a2f04d2672f327e6884fa2972b75c360c13340c7873981225d9c",
+        "publication_authorization": "e436bc94da380ca43691eab8c5ec793a65fb643502cdd5819a95c9047998c8e7",
+        "cover_provenance": "3f0ecaecad4e1d5e2cc98c3ae0ef48db48940083f59ece966ee216601058e002",
+        "owner_artwork_declaration": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+        "acceptance_review_a": "0f72494328632cf157a108de8568a0493a6af1c57fefecaa77583f3cc4627b5c",
+        "acceptance_review_b": "fa8c2d43c53f2ebe4db5c2ab2e20ebc8addeb59f9725bbec1f1bb0b32c822a97"
+      },
+      "checksum_count": 45,
+      "chapter_count": 27,
+      "all_hash_integrity_checks_pass": true,
+      "failed_checks": [],
+      "isolated_candidate_evaluator": {
+        "catalog_metadata": true,
+        "cover_display": true,
+        "reader_preview": true,
+        "reader_delivery": true,
+        "reading_pass_session": true,
+        "reading_pass_renewal": true,
+        "audio_stream": false,
+        "audio_download": false
+      },
+      "current_delegation_actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+      "acceptance_at": "2026-10-03T05:34:11.386246+00:00",
+      "acceptance_matches_receipt": true,
+      "metadata_semantics": {
+        "cover": {
+          "status": "ACCEPTED_EXACT_OWNER_PROVIDED_COMPONENTS_UNDER_DIRECT_OWNER_DECLARATION",
+          "commercial_use_authorized": true,
+          "cover_display_approved": true,
+          "visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "0f72494328632cf157a108de8568a0493a6af1c57fefecaa77583f3cc4627b5c"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "fa8c2d43c53f2ebe4db5c2ab2e20ebc8addeb59f9725bbec1f1bb0b32c822a97"
+            },
+            "source_review_b": {
+              "file": "evidence/source_review_b.json",
+              "sha256": "e7160391d77b3e1f89dec5481949d5211d86420fb3dcd56c7129798a98bac0d7"
+            }
+          }
+        },
+        "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_OWNER_PROVIDED_COVER_PUBLICATION_ACCEPTANCE"
+      }
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "rights_decision_raw_sha256": "d4841d7ae2ecf5a1817ad11f351775fcdd1a8322809a180b329199186df06056",
+      "rights_decision_canonical_sha256": "b2f21aab0e31e1490ab254c64fb73190518fdb1d4982871e885052469d72bb46",
+      "components": {
+        "public_book": "6891a261a5d574afa8025cfd11210f13d65aaa977f51e542863024974ada666e",
+        "reader_manifest": "81b6c23e716ea4d26fae26cc8e9e3e7e37637fd0c9fb1619dccb7a94d0ab7676",
+        "source_evidence": "9e4efacc3dbd251ea18aacd5805d781c1f64a450bea0225fae4ba6a394a97e99",
+        "approval_evidence": "d3535a043d75766c4fbbce244552ffd7950851fc66851e4066a7825d3cb0851a",
+        "checksum_manifest": "6e80fbe365edf8b39815cc505faf5d1d529b359e226c7464e08fe9ed7219dac9",
+        "publication_manifest": "2bc30dc31ba85b40c0bfd0158ff7896fe61cf96cb10b62c8df732e6da326945d",
+        "cover_preparation": "ab76a242c7b245e7f16b8e807b0ac80447a669aa21c840bcfb188a4b22dea06f",
+        "publication_authorization": "285ec5d2973e98db67db04d555c781520d47f54658aa8dbea3da65021ab359e7",
+        "cover_provenance": "0c6a019c51890de13c632dc16ae54628ce14a9a7bac7dd14d6ccb3df9312dca6",
+        "owner_artwork_declaration": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+        "acceptance_review_a": "db1362ae9a048b971fbbb19850c7b6b45b62865c4c6dbc1d02d2c805c9a21cf1",
+        "acceptance_review_b": "7a4240e762350e02429e64fc14796d5ce7c4b34b808d2045cf788d5e726e66b2"
+      },
+      "checksum_count": 79,
+      "chapter_count": 61,
+      "all_hash_integrity_checks_pass": true,
+      "failed_checks": [],
+      "isolated_candidate_evaluator": {
+        "catalog_metadata": true,
+        "cover_display": true,
+        "reader_preview": true,
+        "reader_delivery": true,
+        "reading_pass_session": true,
+        "reading_pass_renewal": true,
+        "audio_stream": false,
+        "audio_download": false
+      },
+      "current_delegation_actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+      "acceptance_at": "2026-10-03T05:34:11.386246+00:00",
+      "acceptance_matches_receipt": true,
+      "metadata_semantics": {
+        "cover": {
+          "status": "ACCEPTED_EXACT_OWNER_PROVIDED_COMPONENTS_UNDER_DIRECT_OWNER_DECLARATION",
+          "commercial_use_authorized": true,
+          "cover_display_approved": true,
+          "visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "db1362ae9a048b971fbbb19850c7b6b45b62865c4c6dbc1d02d2c805c9a21cf1"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "7a4240e762350e02429e64fc14796d5ce7c4b34b808d2045cf788d5e726e66b2"
+            },
+            "source_review_b": {
+              "file": "evidence/source_review_b.json",
+              "sha256": "78e104ef3a355c89f945241da2b3b02906f40f62c53ec91d2b431b5d6602300a"
+            }
+          }
+        },
+        "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_OWNER_PROVIDED_COVER_PUBLICATION_ACCEPTANCE"
+      }
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "rights_decision_raw_sha256": "94e616f711b17e2e544b5e7a9fc2af733ec3f5914b71e7ee9f5a1e41bc0859c1",
+      "rights_decision_canonical_sha256": "748e21349d1d32315ef0c2292c041c68e9dc8f6d25c8c5845e4688f63190a970",
+      "components": {
+        "public_book": "78ed5b20d046916148faadfd1ddebae98964338c6a3a830b7434bf68654b7be1",
+        "reader_manifest": "87a47f53b9dbcbae66a09bee4bcc5769f4b5f584ef9bdfc4ab31b65959c3318f",
+        "source_evidence": "e6b091fd0aebe2517dd1e2b6c8e8ef14d5ea6d6540daa66c33e0ba27a9ef2380",
+        "approval_evidence": "111437c311cc4133fef200be29c3ab0ac28489aed9d7dd673e3191ab4f100389",
+        "checksum_manifest": "571b8ee06a113404b23f2921993690aefce20b5be576df4955c8818937a5b336",
+        "publication_manifest": "7963765b3d1b746708d9327fb556d7773e9cf5a7e795b376ec335a6857f09486",
+        "cover_provenance": "49d8b48f570268f07aaff9cf2d99f0fc7de9e41abd61057c938e85bc825d9ed1",
+        "cover_delivery_derivation": "9b6609b625a2c7a15224c337d763ce93eb8c48356e299dd5ddf4bfac24be287b",
+        "cover_front_asset": "67895aecbc4c29e45658819f7b76316a3caecf5d9cca79c4592c03c5d90d581b",
+        "cover_back_asset": "a544cc2b26c584891032db2fd9ea447f33b4a72ab1e7801a5de853f3463aa5b9",
+        "cover_front_delivery": "b53d8f06691749b6c82fe003513163330698b53ba4f5d02721d15d7f17a68644",
+        "cover_back_delivery": "ed604d4e425551bba8863ccbc93c919d77ed42122a4d5c15bb217f604432348a",
+        "publication_authorization": "66a3290c87fe25290a190b358834b27d975e4264d4737ba8666c06685e3c2519",
+        "owner_artwork_declaration": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+        "acceptance_review_a": "3043b739322e3d4ffabd729cd834b936188018517075ffcf34ab73f85ca54c81",
+        "acceptance_review_b": "de3794f854eaa4ff7cd0ffbdeb9b37fcd70fd989e1ead6973042eedc19b8c646"
+      },
+      "checksum_count": 18,
+      "chapter_count": 4,
+      "all_hash_integrity_checks_pass": true,
+      "failed_checks": [],
+      "isolated_candidate_evaluator": {
+        "catalog_metadata": true,
+        "cover_display": true,
+        "reader_preview": true,
+        "reader_delivery": true,
+        "reading_pass_session": true,
+        "reading_pass_renewal": true,
+        "audio_stream": false,
+        "audio_download": false
+      },
+      "current_delegation_actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+      "acceptance_at": "2026-10-03T05:34:11.386246+00:00",
+      "acceptance_matches_receipt": true,
+      "metadata_semantics": {
+        "cover": {
+          "status": "ACCEPTED_EXACT_OWNER_PROVIDED_COMPONENTS_UNDER_DIRECT_OWNER_DECLARATION",
+          "commercial_use_authorized": true,
+          "cover_display_approved": true,
+          "scope": "Evidence-only exact proposal. Owner declaration and exact original-art bytes do not establish unsupported third-party origin/permissions; independent reviewers must hold any specifically evidenced component dispute.",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "3043b739322e3d4ffabd729cd834b936188018517075ffcf34ab73f85ca54c81"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "de3794f854eaa4ff7cd0ffbdeb9b37fcd70fd989e1ead6973042eedc19b8c646"
+            }
+          },
+          "visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS"
+        },
+        "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_OWNER_PROVIDED_COVER_PUBLICATION_ACCEPTANCE"
+      }
+    },
+    {
+      "slug": "acres-of-diamonds",
+      "rights_decision_raw_sha256": "087f1f92ed14ef3dc8cd021cd4648bf8679bdde9063258b7c2f8bd60c874d2ac",
+      "rights_decision_canonical_sha256": "1c2269ebb740f4dbf110741a11182f0d8e02f967bd9095f9eb165b601eeedf78",
+      "components": {
+        "public_book": "ed2df0ab7cca128007b7988522929a54ada796095ea8d8569f72277ba1f0efea",
+        "reader_manifest": "c083501e4fd683fe9490a8d5b113ef524b57b3aecacc98fbf73caf44e3066d0c",
+        "source_evidence": "9371f2af833cbd9683e138e121b7c6ae77f17a18de6dd46cb4507a301a6eb29e",
+        "approval_evidence": "821ea2a232bdb9033e8f069c92dcee6802ad469785adc263949346a5e735ca85",
+        "checksum_manifest": "0dc0872bbac2ff7aa291dd0c7e4fdddcaa2f55667de7329e596204c7bafc4a11",
+        "publication_manifest": "205d3b66d74c9bed50b607e446ca72b32ef99a39dccfb30fff76ba72e6772a3d",
+        "cover_provenance": "6f096f621756b895cf18637a97388f2382e43b5232a81aa7b3577f77491c3880",
+        "cover_delivery_derivation": "c4d1f20645a78e67308834ec22b53710b1844506685ab9459990ae603b9b4048",
+        "cover_front_asset": "cdffd02edb00ddb0af8d55ad5ba6eeffef7d8be9683123fc3193b88e98a7e235",
+        "cover_back_asset": "b3fb289b101e3a09596321f9f12994b41149d0b8fb4cb855e83429fe393d51dd",
+        "cover_front_delivery": "ea5a75bc67aced9aed13683776a3a21ff75173b3cd41cecdef7e4081b6732467",
+        "cover_back_delivery": "ce68313111e4b164e3383ffe3a52afe99417c76a6b489e31e29ed0210de3141e",
+        "publication_authorization": "66e245fdbe892f702c88d7a0a34e494226c5163858021e0d286b1eca1f3823b8",
+        "owner_artwork_declaration": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+        "acceptance_review_a": "848765bd2edfd3f28e3fe0c479321f0d41ea058dd894d31000bb3116c3b5b407",
+        "acceptance_review_b": "283ab0e868d9ec67a1efba2fc9aae9e61a1958e7dfd45f39b72f2e6ac2e3901f"
+      },
+      "checksum_count": 26,
+      "chapter_count": 12,
+      "all_hash_integrity_checks_pass": true,
+      "failed_checks": [],
+      "isolated_candidate_evaluator": {
+        "catalog_metadata": true,
+        "cover_display": true,
+        "reader_preview": true,
+        "reader_delivery": true,
+        "reading_pass_session": true,
+        "reading_pass_renewal": true,
+        "audio_stream": false,
+        "audio_download": false
+      },
+      "current_delegation_actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+      "acceptance_at": "2026-10-03T05:34:11.386246+00:00",
+      "acceptance_matches_receipt": true,
+      "metadata_semantics": {
+        "cover": {
+          "status": "ACCEPTED_EXACT_OWNER_PROVIDED_COMPONENTS_UNDER_DIRECT_OWNER_DECLARATION",
+          "commercial_use_authorized": true,
+          "cover_display_approved": true,
+          "scope": "Evidence-only exact proposal. Owner declaration and exact original-art bytes do not establish unsupported third-party origin/permissions; independent reviewers must hold any specifically evidenced component dispute.",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "848765bd2edfd3f28e3fe0c479321f0d41ea058dd894d31000bb3116c3b5b407"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "283ab0e868d9ec67a1efba2fc9aae9e61a1958e7dfd45f39b72f2e6ac2e3901f"
+            }
+          },
+          "visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS"
+        },
+        "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_OWNER_PROVIDED_COVER_PUBLICATION_ACCEPTANCE"
+      }
+    },
+    {
+      "slug": "my-life-and-work",
+      "rights_decision_raw_sha256": "a69fd470d3c50dd5582df45f7982e0098242475902f6d73b5f928df7cdb1d658",
+      "rights_decision_canonical_sha256": "379331770cb33f6944bf9036c2b1a490618b66eee8a833a4c0b8cd42d3659f76",
+      "components": {
+        "public_book": "127ef60e80ecd42ed36270a04d90c91ecc7c7344f26767c990bd9093ac54f2b6",
+        "reader_manifest": "8abb80566e377a38ba0730ffb69c7dc0fbb53358c6e0908492d968fea1313acd",
+        "source_evidence": "1d5f331b74b4ac24ba559209d4d1c8ca3543a1cdc274a71bdf14bb2022b7d4b7",
+        "approval_evidence": "eec01f4e574d80b43c4db449bcb6822d4253d8a32a146034815c27a9dcf37742",
+        "checksum_manifest": "c121976f11fcb9ffab0729b59d10db576f2e4e92238aa10b6fd630406df5c848",
+        "publication_manifest": "6521fd71f124b8a9ef0e882dbd0aa3db5b98d571a7566ca75f2b159b0d3856b4",
+        "cover_provenance": "4c722f37cbc6a909d7cf30d97cca4f1b63d59229ce2611bb6dbefc26c81cdb9b",
+        "cover_delivery_derivation": "fe7ad968f0449f59a18bc4d8334ad3d3146fc13fecd66abaa15fb874088168b6",
+        "cover_front_asset": "9f2a6f069a8f7d96c9d0228f69b556394a88da983ee172f88cb9eb7e0e494833",
+        "cover_back_asset": "b129bccafbfca007d95e86eeb101a577d5be3cdb8ebaf8260f75a1285a65b31c",
+        "cover_front_delivery": "b46df58db552e1d5adc85c4fde859105c2863811404e594f079561409db4c9f3",
+        "cover_back_delivery": "c1c1f36904563fe329ec02549acd3171aaa8f6f970a444ae5672443ec6fc218c",
+        "publication_authorization": "9f5221e29758bae95d5277703473eaaca051dcb8157329f30b064dacafbcc31d",
+        "owner_artwork_declaration": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+        "acceptance_review_a": "ff240fbf4572faa32eab4a11d24552591af32907de74186272fa9769426c8014",
+        "acceptance_review_b": "af458f9aa5b771de14ccb98ce746cfe00dd57b045c44b065aae7dffc7015a6fb"
+      },
+      "checksum_count": 34,
+      "chapter_count": 20,
+      "all_hash_integrity_checks_pass": true,
+      "failed_checks": [],
+      "isolated_candidate_evaluator": {
+        "catalog_metadata": true,
+        "cover_display": true,
+        "reader_preview": true,
+        "reader_delivery": true,
+        "reading_pass_session": true,
+        "reading_pass_renewal": true,
+        "audio_stream": false,
+        "audio_download": false
+      },
+      "current_delegation_actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+      "acceptance_at": "2026-10-03T05:34:11.386246+00:00",
+      "acceptance_matches_receipt": true,
+      "metadata_semantics": {
+        "cover": {
+          "status": "ACCEPTED_EXACT_OWNER_PROVIDED_COMPONENTS_UNDER_DIRECT_OWNER_DECLARATION",
+          "commercial_use_authorized": true,
+          "cover_display_approved": true,
+          "scope": "Evidence-only exact proposal. Owner declaration and exact original-art bytes do not establish unsupported third-party origin/permissions; independent reviewers must hold any specifically evidenced component dispute.",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "ff240fbf4572faa32eab4a11d24552591af32907de74186272fa9769426c8014"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "af458f9aa5b771de14ccb98ce746cfe00dd57b045c44b065aae7dffc7015a6fb"
+            }
+          },
+          "visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS"
+        },
+        "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_OWNER_PROVIDED_COVER_PUBLICATION_ACCEPTANCE"
+      }
+    },
+    {
+      "slug": "mrinalini",
+      "rights_decision_raw_sha256": "e61735e05dacac54077709afc2706ce2b4924ff05c63a1a5edf27f6a558eb8a2",
+      "rights_decision_canonical_sha256": "f000091aa6043c515219ca9c24e9da77d6a0f5528991e8341917b7a1e5960cd0",
+      "components": {
+        "source_evidence": "d361d2a57e36d6cf70c84f1b5803a99306467116f44e200cfc16659e0145e94f",
+        "publication_manifest": "5568884ee2c3fbf9581cbd4d3672e65fdebbad0b6ded279d4fda584ff73c1e68",
+        "reader_manifest": "b2510b44fa9ec57a7a7cc48be2482787ee4fe6cba0021ddd8a6cff71ef5275f7",
+        "approval_evidence": "32cced5e5e2302042612c12407bd441c503e1e0c84d2d11bd9ccef45eec327e2",
+        "public_book": "9a3c3255f99d7806a61dd0f47c59a328976b7cfffcd02b4651d8f416f2868457",
+        "checksum_manifest": "1885b22a37049442cdf8e22b8203dfebc5f87c5439b77dd07472ac982a667c18",
+        "cover_provenance": "dba148e5b06e7509a825a180c2d71049139e5e1f53e19c40d6bf67129144a82e",
+        "publication_authorization": "9be72f83c284fe4f3389dffe126ab111e94a2fe66fcd93b3aa40a573bebf817b",
+        "owner_artwork_declaration": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+        "acceptance_review_a": "27dee411682d6fbc614aef59db747286949ac2961fcdb50f5cc466b395d15bec",
+        "acceptance_review_b": "94df4b60e209ec40391b62b5c80e6c59c400c48e4becfac7373049d932c8a3c3"
+      },
+      "checksum_count": 63,
+      "chapter_count": 46,
+      "all_hash_integrity_checks_pass": true,
+      "failed_checks": [],
+      "isolated_candidate_evaluator": {
+        "catalog_metadata": true,
+        "cover_display": true,
+        "reader_preview": true,
+        "reader_delivery": true,
+        "reading_pass_session": true,
+        "reading_pass_renewal": true,
+        "audio_stream": false,
+        "audio_download": false
+      },
+      "current_delegation_actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+      "acceptance_at": "2026-10-03T05:34:11.386246+00:00",
+      "acceptance_matches_receipt": true,
+      "metadata_semantics": {
+        "cover": {
+          "status": "ACCEPTED_EXACT_OWNER_PROVIDED_COMPONENTS_UNDER_DIRECT_OWNER_DECLARATION",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "27dee411682d6fbc614aef59db747286949ac2961fcdb50f5cc466b395d15bec"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "94df4b60e209ec40391b62b5c80e6c59c400c48e4becfac7373049d932c8a3c3"
+            }
+          },
+          "commercial_use_authorized": true,
+          "cover_display_approved": true,
+          "visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS"
+        },
+        "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_OWNER_PROVIDED_COVER_PUBLICATION_ACCEPTANCE"
+      }
+    }
+  ],
+  "disposition": "PASS_EXACT_NINE_PROSPECTIVE_ACCEPTED_BINDINGS_NOT_RELEASED",
+  "reviewed_at": "2026-10-03T05:38:39.806623+00:00",
+  "semantic_checks": [
+    {
+      "slug": "the-time-machine",
+      "accepted_basis_coherent": true,
+      "six_IN_text_uses": [
+        "catalog_metadata",
+        "cover_display",
+        "reader_delivery",
+        "reader_preview",
+        "reading_pass_renewal",
+        "reading_pass_session"
+      ],
+      "positive_effective_audio_claims": 0,
+      "owner_directive_exact_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+      "cover_actor_actual": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+      "source_and_visual_reviews_exact_hashes_reused": true
+    },
+    {
+      "slug": "the-great-gatsby",
+      "accepted_basis_coherent": true,
+      "six_IN_text_uses": [
+        "catalog_metadata",
+        "cover_display",
+        "reader_delivery",
+        "reader_preview",
+        "reading_pass_renewal",
+        "reading_pass_session"
+      ],
+      "positive_effective_audio_claims": 0,
+      "owner_directive_exact_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+      "cover_actor_actual": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+      "source_and_visual_reviews_exact_hashes_reused": true
+    },
+    {
+      "slug": "frankenstein",
+      "accepted_basis_coherent": true,
+      "six_IN_text_uses": [
+        "catalog_metadata",
+        "cover_display",
+        "reader_delivery",
+        "reader_preview",
+        "reading_pass_renewal",
+        "reading_pass_session"
+      ],
+      "positive_effective_audio_claims": 0,
+      "owner_directive_exact_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+      "cover_actor_actual": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+      "source_and_visual_reviews_exact_hashes_reused": true
+    },
+    {
+      "slug": "the-secret-garden",
+      "accepted_basis_coherent": true,
+      "six_IN_text_uses": [
+        "catalog_metadata",
+        "cover_display",
+        "reader_delivery",
+        "reader_preview",
+        "reading_pass_renewal",
+        "reading_pass_session"
+      ],
+      "positive_effective_audio_claims": 0,
+      "owner_directive_exact_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+      "cover_actor_actual": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+      "source_and_visual_reviews_exact_hashes_reused": true
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "accepted_basis_coherent": true,
+      "six_IN_text_uses": [
+        "catalog_metadata",
+        "cover_display",
+        "reader_delivery",
+        "reader_preview",
+        "reading_pass_renewal",
+        "reading_pass_session"
+      ],
+      "positive_effective_audio_claims": 0,
+      "owner_directive_exact_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+      "cover_actor_actual": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+      "source_and_visual_reviews_exact_hashes_reused": true
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "accepted_basis_coherent": true,
+      "six_IN_text_uses": [
+        "catalog_metadata",
+        "cover_display",
+        "reader_delivery",
+        "reader_preview",
+        "reading_pass_renewal",
+        "reading_pass_session"
+      ],
+      "positive_effective_audio_claims": 0,
+      "owner_directive_exact_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+      "cover_actor_actual": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+      "source_and_visual_reviews_exact_hashes_reused": true
+    },
+    {
+      "slug": "acres-of-diamonds",
+      "accepted_basis_coherent": true,
+      "six_IN_text_uses": [
+        "catalog_metadata",
+        "cover_display",
+        "reader_delivery",
+        "reader_preview",
+        "reading_pass_renewal",
+        "reading_pass_session"
+      ],
+      "positive_effective_audio_claims": 0,
+      "owner_directive_exact_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+      "cover_actor_actual": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+      "source_and_visual_reviews_exact_hashes_reused": true
+    },
+    {
+      "slug": "my-life-and-work",
+      "accepted_basis_coherent": true,
+      "six_IN_text_uses": [
+        "catalog_metadata",
+        "cover_display",
+        "reader_delivery",
+        "reader_preview",
+        "reading_pass_renewal",
+        "reading_pass_session"
+      ],
+      "positive_effective_audio_claims": 0,
+      "owner_directive_exact_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+      "cover_actor_actual": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+      "source_and_visual_reviews_exact_hashes_reused": true
+    },
+    {
+      "slug": "mrinalini",
+      "accepted_basis_coherent": true,
+      "six_IN_text_uses": [
+        "catalog_metadata",
+        "cover_display",
+        "reader_delivery",
+        "reader_preview",
+        "reading_pass_renewal",
+        "reading_pass_session"
+      ],
+      "positive_effective_audio_claims": 0,
+      "owner_directive_exact_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+      "cover_actor_actual": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+      "source_and_visual_reviews_exact_hashes_reused": true
+    }
+  ],
+  "mrinalini_ascending_pinned_scan_order_review_sha256": "cc3337995b9228183224fe037f343bb701caff43c58beec40057d30362ea2bc7",
+  "known_paperwork_corrections": "Pride effective audiobook_use_approved is now false, exact old approval preserved. SecretGarden source line capital A vs cover sentence a comparison is expressly disclosed, not a whitespace-only assertion.",
+  "no_source_art_visual_GET_or_render_repetition": true,
+  "named_release_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK"
+}

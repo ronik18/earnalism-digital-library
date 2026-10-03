@@ -1,0 +1,81 @@
+{
+  "schema": "earnalism.exact-cover-delivery-derivation.v1",
+  "slug": "acres-of-diamonds",
+  "assets": [
+    {
+      "kind": "front",
+      "source_file": "covers/front.png",
+      "source_sha256": "cdffd02edb00ddb0af8d55ad5ba6eeffef7d8be9683123fc3193b88e98a7e235",
+      "source_bytes": 2336578,
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "delivery_file": "frontend/public/assets/books/acres-of-diamonds/acres-of-diamonds-front-cdffd02e-600.webp",
+      "delivery_sha256": "ea5a75bc67aced9aed13683776a3a21ff75173b3cd41cecdef7e4081b6732467",
+      "delivery_bytes": 66054,
+      "delivery_dimensions": [
+        600,
+        900
+      ],
+      "url": "https://theearnalism.com/assets/books/acres-of-diamonds/acres-of-diamonds-front-cdffd02e-600.webp",
+      "recipe": {
+        "format": "WEBP",
+        "mode": "RGB",
+        "quality": 64,
+        "method": 6,
+        "resampling": "LANCZOS",
+        "resize": "aspect-preserving contain 600x900",
+        "content_dimensions": [
+          600,
+          900
+        ],
+        "padding_xy": [
+          0,
+          0
+        ],
+        "pillow_version": "12.3.0"
+      },
+      "production_observed": false
+    },
+    {
+      "kind": "back",
+      "source_file": "covers/back.png",
+      "source_sha256": "b3fb289b101e3a09596321f9f12994b41149d0b8fb4cb855e83429fe393d51dd",
+      "source_bytes": 2371901,
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "delivery_file": "frontend/public/assets/books/acres-of-diamonds/acres-of-diamonds-back-b3fb289b-600.webp",
+      "delivery_sha256": "ce68313111e4b164e3383ffe3a52afe99417c76a6b489e31e29ed0210de3141e",
+      "delivery_bytes": 64826,
+      "delivery_dimensions": [
+        600,
+        900
+      ],
+      "url": "https://theearnalism.com/assets/books/acres-of-diamonds/acres-of-diamonds-back-b3fb289b-600.webp",
+      "recipe": {
+        "format": "WEBP",
+        "mode": "RGB",
+        "quality": 64,
+        "method": 6,
+        "resampling": "LANCZOS",
+        "resize": "aspect-preserving contain 600x900",
+        "content_dimensions": [
+          600,
+          900
+        ],
+        "padding_xy": [
+          0,
+          0
+        ],
+        "pillow_version": "12.3.0"
+      },
+      "production_observed": false
+    }
+  ],
+  "review_status": "PENDING_TWO_FRESH_EXACT_PNG_WEBP_VISUAL_CHECKS",
+  "production_observed": false,
+  "runtime_observed": false
+}

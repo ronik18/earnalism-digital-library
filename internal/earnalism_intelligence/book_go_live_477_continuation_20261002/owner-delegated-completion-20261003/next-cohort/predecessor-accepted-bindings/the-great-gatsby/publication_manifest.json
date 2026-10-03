@@ -1,0 +1,116 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-great-gatsby",
+  "title": "The Great Gatsby",
+  "generated_at": "2026-10-03T05:34:11.386246+00:00",
+  "content": {
+    "source_hash": "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35",
+    "content_hash": "8cdf90ce5cf418a4d40e7e822c734f52c2392c648e19537cd097b38a53050e34",
+    "provenance_hash": "90df34dc504b7e22287b7044b27d48b80f7773e13aa70b403c7829ce7cf33426",
+    "sanitized": true,
+    "chapter_count": 10,
+    "chapter_index_sha256": "0bfa6055377200ad83d05e9a6025e8b4a339fc2c7ccfce54df260858aa719d67",
+    "chapters": [
+      {
+        "id": "chapter-000",
+        "order": 1,
+        "title": "Dedication and Epigraph",
+        "word_count": 37,
+        "sha256": "77bf8a76e425bc7cbb0ed33c641f547841dd2849271b2f64f6df49e7a9b64861"
+      },
+      {
+        "id": "chapter-001",
+        "order": 2,
+        "title": "I",
+        "word_count": 5943,
+        "sha256": "45c3e0373c1fd8b3c5b32d48d4d8d735441424ee71bbe7f103423533fc6aae63"
+      },
+      {
+        "id": "chapter-002",
+        "order": 3,
+        "title": "II",
+        "word_count": 4293,
+        "sha256": "8993d610624add69ab150a59c169c4b9b757d3810aec9df8674c8a751280d412"
+      },
+      {
+        "id": "chapter-003",
+        "order": 4,
+        "title": "III",
+        "word_count": 5769,
+        "sha256": "36705f15c9ca6b6cd841485b43456aa9c38ecc67f6a4816054f7b3bfed68ed3b"
+      },
+      {
+        "id": "chapter-004",
+        "order": 5,
+        "title": "IV",
+        "word_count": 5477,
+        "sha256": "03ae2d9e7327e2be41ca8d263e179e341061fb9669f43ba00dbc7676e31f9d69"
+      },
+      {
+        "id": "chapter-005",
+        "order": 6,
+        "title": "V",
+        "word_count": 4256,
+        "sha256": "dee00928b0dd556bdbf80ccfcd307904cd909b4bf5c0cd15db4d8f7b947c1e68"
+      },
+      {
+        "id": "chapter-006",
+        "order": 7,
+        "title": "VI",
+        "word_count": 4057,
+        "sha256": "89873a952e81402c246bab28438d3578e49d0e7f41b6483c84785695157721a3"
+      },
+      {
+        "id": "chapter-007",
+        "order": 8,
+        "title": "VII",
+        "word_count": 8811,
+        "sha256": "dd8448b1ed252dffbdeca627d55d084ecf319efb699b4393e022514817ead2a0"
+      },
+      {
+        "id": "chapter-008",
+        "order": 9,
+        "title": "VIII",
+        "word_count": 4564,
+        "sha256": "bc19ec61f61517ae46b7626e5d97fffe46e1e47f943388ec9faec79d562856ef"
+      },
+      {
+        "id": "chapter-009",
+        "order": 10,
+        "title": "IX",
+        "word_count": 5255,
+        "sha256": "d475a9724ba4cb46caa499825ee3a1c53d409c42a02f2ab4d77a687be67e62b9"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "93a1e5eab7ce62def0ef60ba3a2ae6e56ed964c688c1f2a827f3e88664a30874"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/the-great-gatsby/the-great-gatsby-front-8d98a278.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "6dd77171eda79e594f010fe833edb76c1e0a7d94440dc7a520b6fe18e9972843",
+    "reader_manifest": "f544166427c91bb2b8546484bf0c811761345f2ec8f1c73c00afad88411fcb4c",
+    "source_evidence": "93a1e5eab7ce62def0ef60ba3a2ae6e56ed964c688c1f2a827f3e88664a30874",
+    "approval_evidence": "d2e02209b93227c55507f0533b2f7b3e3495fadecb04a631e237fe0a10bcd238"
+  },
+  "manifest_sha256": "c9155002d02ddea3e807dc8fc04f8f1416c348f7f86f54bc86d1a56fe3cf7255"
+}

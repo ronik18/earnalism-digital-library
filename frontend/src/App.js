@@ -58,7 +58,6 @@ const SecureReaderHarness = lazy(pageImports.SecureReaderHarness);
 const AdminLogin = lazy(pageImports.AdminLogin);
 const Admin = lazy(pageImports.Admin);
 const NotFound = lazy(pageImports.NotFound);
-const UnavailableTitle = lazy(pageImports.UnavailableTitle);
 const GoogleAuthBoundary = lazy(pageImports.GoogleAuthBoundary);
 
 function ScrollToTop() {
@@ -148,11 +147,7 @@ export function AppRouterContent() {
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/library" element={<Library />} />
-            <Route path="/book/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />
             <Route path="/book/:slug" element={<BookDetail />} />
-            {/* Held historical Reader/Listener routes retain the shared public shell while staying fail-closed. */}
-            <Route path="/reader/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />
-            <Route path="/listener/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />
             <Route path="/journal" element={<Journal />} />
             <Route path="/journal/:slug" element={<JournalArticle />} />
             <Route path="/about-legacy" element={<AboutLegacy />} />

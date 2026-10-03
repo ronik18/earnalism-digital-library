@@ -1,0 +1,66 @@
+{
+  "slug": "the-great-gatsby",
+  "generated_at": "2026-08-16T14:30:00Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "ecc44aaa3e95a0449f97f0ba39f1bd349d69ab4a90da8585296a3ca682460cbd"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "2705a5ed44d84620d719b5a1e2585bbec8114e5a8933b340a5fcf43538d7543c"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "dbf49e3d2422dda121b6faaf76c995f3d40798795fbbec28b10e9d3b050618a0"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "8ca61a4e395f910d0f5c5298b42758e2bb41b359af74573e57d610ab3f3ed81d"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "fc4639fc1a2191f13e945817ed2280440d4caff4411cb546a5a8d9665e6dd318"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "36c5c00da5af92a4975567c56236aa527e0046a873acc99d9b46af069ce67427"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "307f1d24f12522902b0bf7552313daf21b496361a86f2bfc806ce2b9b8dd2f24"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "6590968adea1aed365517dd192414e1a09906589f39369628287f3ee7da35308"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "8e907745215441bde9ea2f24a6c377586fe9b3459cc82d5c13b01d84a83ae86d"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "9641e892fcb1bfefd53e20b4919747b1c6b0b2d4065fdc0877707fcaef077dbf"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "05e57751ae1960050039ca565b5b395638c93478414a0ad757d744f249737888"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "b6503b1ff504c2b781675a20b32a2811d0005e38fe0d3c4d81e60953671f834a"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "66ace521d8850547175804562bfddf4f097aefe310ef2f0c50aed16bf50d69b6"
+    },
+    {
+      "file": "reader_repair_evidence.json",
+      "sha256": "898dc429914c003e998d703fbcaa3d739647420f2f596836da0dc3ed9bc6b499"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "334604b641e0693604ad5956de935acd8208bf1b4ee7112bcdbd07aa2569f3f3"
+    }
+  ]
+}

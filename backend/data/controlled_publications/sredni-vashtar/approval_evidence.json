@@ -1,73 +1,54 @@
 {
   "slug": "sredni-vashtar",
-  "approved_to_publish": true,
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "sprint1_local_release_packet_all_gates_passed",
-  "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+  "source_hash": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
+  "content_hash": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+  "provenance_hash": "8d472e6cdc272f1b341c183654a57eab65f521f9a26ed0bb3b30ee93a7354468",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "approved_to_publish": true,
+  "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_COVER_PUBLICATION_ACCEPTANCE",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "audiobook_use_approved": false,
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true,
-  "audio_qa_status": "QA_PASSED",
-  "asr_manuscript_score": 9.8426,
-  "source_coverage": 0.985651,
-  "source_coverage_method": "audio_derived_asr_matching_characters_over_canonical_source_characters",
-  "first_words_match": true,
-  "last_words_match": true,
-  "no_missing_duplicated_reordered_content": true,
-  "listening_qa_minimum_score": 9.4,
-  "listening_qa_minimum_confidence": 0.95,
-  "listening_qa_sample_count": 6,
-  "listening_qa_fatal_flags": [],
-  "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
-  "auto_estimated_sync": false,
-  "measured_section_boundary_score": 1.0,
-  "measured_section_boundary_method": "equal_opcode_anchored_internal_boundaries",
-  "approved_legacy_sidecar_normalization": {
-    "schema_version": "approved_legacy_sidecar_normalization.v1",
-    "mode": "measured_word_to_canonical_source_sections",
-    "output_granularity": "section",
-    "source_chapter_files": [
-      "chapters/chapter-001.json"
-    ],
-    "source_section_count": 158,
-    "measured_word_count": 1789,
-    "minimum_monotonic_alignment_ratio": 0.97,
-    "minimum_boundary_retention_ratio": 0.98,
-    "input_sha256": {
-      "timestamps": "5eb7a6bddcdf62ebd16ce46c62c5553d40fd1475a657cc8f67ea4a0a818c388f",
-      "vtt": "700aa4ae0590f33403935a855c5a79c90bef22d7db75ffe294e26c92dc9c415d"
+  "publication_authorization_sha256": "a97af4cfe69c6c6faded9ca6d2093d6ff90297e2235252a85818db8880b50734",
+  "cover_provenance_sha256": "2fcda3d9902d9139e3578437f97b7f3b0c2f19dd188e572d234dd6c9316e87b9",
+  "production_observed": false,
+  "runtime_observed": false,
+  "historical_metadata_preserved_only_in_preimages": true,
+  "actual_prospective_acceptance": {
+    "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+    "accepted_at": "2026-10-03T04:59:53.954767+00:00",
+    "evidence": {
+      "review_a": {
+        "file": "evidence/review_a.json",
+        "sha256": "cbb2b42bd8aa85419549eaf838e9884069889482ae7bd8fd5d5280e34ab55f59"
+      },
+      "review_b": {
+        "file": "evidence/review_b.json",
+        "sha256": "91c752175d2b576a1b43269645b72511a23eadd5d6200df0c65a1ee1d3794c0a"
+      }
     },
-    "release_evidence_path": "internal/earnalism_intelligence/audiobook_package_v2_sredni_vashtar_normalization_evidence.json",
-    "release_evidence_sha256": "f28626aa1e7a37659abf3177827733296b0342e2a927e61c9a24b1992fc39287"
+    "production_observed": false,
+    "canonical_version_observed": false,
+    "global_gate": "SERIAL_INTEGRATION_AFTER_PR510_AND_NORMAL_PROTECTED_CI_MERGE_DEPLOY_CANARY"
   },
-  "audio_sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
-  "source_sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
-  "publication_traceability_hashes": {
-    "source_hash": "089628df1446736886ddae93252fc070854ec17606ade714a70ba77b55e6ea02",
-    "content_hash": "adaad32e67a022024f647efcfd8b02639eab6716a526e6045e85d8d648fc529c",
-    "provenance_hash": "87eec37fc864c1d5b323d47468e1ed2547510c408ff97b400185fd13834a6c51"
+  "independent_reviews": {
+    "review_a": {
+      "file": "evidence/review_a.json",
+      "sha256": "cbb2b42bd8aa85419549eaf838e9884069889482ae7bd8fd5d5280e34ab55f59"
+    },
+    "review_b": {
+      "file": "evidence/review_b.json",
+      "sha256": "91c752175d2b576a1b43269645b72511a23eadd5d6200df0c65a1ee1d3794c0a"
+    }
   },
-  "uploaded_artifact_sha256": {
-    "mp3": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
-    "timestamps": "5eb7a6bddcdf62ebd16ce46c62c5553d40fd1475a657cc8f67ea4a0a818c388f",
-    "vtt": "700aa4ae0590f33403935a855c5a79c90bef22d7db75ffe294e26c92dc9c415d",
-    "chapters": "ab141aae86e2360a38c97f14ad2ebf84066c740e799dd8ad23f83392ff10882a",
-    "meta": "419d4bd104fedbe61d367c28e58c52ba428ecf84ef213c5fc4ec8a29f8b2eed0"
-  },
-  "upload_status": "UPLOADED_CHECKSUM_VERIFIED",
-  "storage_backend": "b2_s3",
-  "endpoint_url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_mp3_2b328a80b906.mp3",
-  "endpoint_http_status": 206,
-  "metadata_approval_status": "PASS",
-  "browser_gate_status": "PASS",
-  "quality_claim": "MEASURED_RELEASE_MINIMUM_PASS_NO_10_OF_10_CLAIM",
-  "release_packet_input_sha256": {
-    "qa_evidence": "c5cf73dd8d3d867a678bc3a2f8358016893c45a548850048ded6624356741b66",
-    "upload_manifest": "5b999f5be905ade64debd65fb4a9c892c41bb3d59b8698e4ba38d804d4438fe5",
-    "endpoint_proof": "20edbe05236ab8f87ca8a5563148ed9a86a98f92399c85d2c5d1db008e6b6771"
-  },
-  "release_blockers": [],
-  "approved_at": "2026-07-14T09:33:44Z"
+  "qa_scope": "Two independent passing exact preparation reviews: complete edition-bound source, preserved owner artwork derivative lineage, licensed typography, exact delivery and package integrity. Audio and production observations excluded.",
+  "cover_front_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+  "cover_back_qa_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+  "binding_review_status": "FINAL_EXACT_PACKAGE_REVIEWS_REQUIRED_AS_EXTERNAL_SERIALIZED_RELEASE_GATE"
 }

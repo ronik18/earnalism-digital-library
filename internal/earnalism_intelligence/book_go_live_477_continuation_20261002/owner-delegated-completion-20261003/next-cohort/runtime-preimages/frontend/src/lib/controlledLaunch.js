@@ -1,0 +1,306 @@
+export const LIVE_APPROVED_SLUG = "dracula";
+// This is the client-side counterpart to data/controlled_launch.json.  It
+// keeps bundled fallbacks and stale browser caches from advertising a Reader
+// or Listener while the public release is held pending exact rights decisions.
+export const PUBLIC_READER_EXPOSURE_ENABLED = true;
+// This mirrors the explicit server-side controlled-launch allowlist. It is a
+// second fail-closed boundary for cached or malformed catalogue responses; it
+// must never be expanded by a historical manifest or presentation-only flag.
+export const PUBLIC_READER_RELEASED_SLUGS = Object.freeze([
+  "a-ghost-story",
+  "the-tell-tale-heart",
+  "radharani",
+  "a-white-heron",
+  "the-gift-of-the-magi",
+  "the-canterville-ghost",
+  "the-adventures-of-sherlock-holmes",
+  "agentic-ai-with-python",
+  "a-horseman-in-the-sky",
+  "a-mystery-of-heroism",
+  "a-scandal-in-bohemia",
+  "jekyll-and-hyde",
+  "love-of-life",
+  "the-bishop",
+  "the-fall-of-the-house-of-usher",
+  "the-lady-with-the-dog",
+  "the-man-who-would-be-king",
+  "the-open-boat",
+  "the-pit-and-the-pendulum",
+  "the-stolen-white-elephant",
+  "an-occurrence-at-owl-creek-bridge",
+  "the-enchanted-april",
+  "the-happy-prince",
+  "picture-of-dorian-gray",
+  "dracula",
+  "book-edfcf810c5",
+  "muchiram-gurer-jibanchorit",
+  "bn-059",
+  "the-call-of-the-wild",
+  "the-student",
+  "the-art-of-money-getting",
+  "bn-035",
+  "alices-adventures-in-wonderland",
+]);
+// The India text launch does not offer paid Reading Passes until the live
+// Razorpay, consumer-remedy, and accounting surface has been independently
+// qualified.  This is a release control, not a client-only presentation hint.
+export const PUBLIC_PAID_COMMERCE_ENABLED = true;
+export const PUBLIC_AUDIO_EXPOSURE_ENABLED = false;
+export const KSHUDHITA_PASHAN_SLUG = "kshudhita-pashan";
+// Pipeline candidates are never matched to publications by title, cover, or
+// transliteration. This explicit, reviewed identity map only suppresses the
+// pipeline shell when its canonical public edition is already present.
+export const PIPELINE_CANONICAL_PUBLICATION_SLUGS = Object.freeze({
+  [KSHUDHITA_PASHAN_SLUG]: "book-edfcf810c5",
+});
+export const DRACULA_SOURCE_NOTE = "Project Gutenberg eBook #345";
+export const DRACULA_RIGHTS_NOTE = "Approved classic reading release";
+export const DRACULA_CHAPTER_COUNT = 27;
+export const DRACULA_COVER_IMAGE = "/assets/books/dracula/dracula-front-cover.webp";
+export const DRACULA_BACK_COVER_IMAGE = "/assets/books/dracula/dracula-back-cover.webp";
+export const KSHUDHITA_PASHAN_FRONT_COVER_IMAGE = "/assets/books/kshudhita-pashan/kshudhita-pashan-front.webp";
+export const KSHUDHITA_PASHAN_BACK_COVER_IMAGE = "/assets/books/kshudhita-pashan/kshudhita-pashan-back.webp";
+export const SULTANAS_DREAM_FRONT_COVER_IMAGE = "/assets/books/sultanas-dream/front-cover.svg";
+export { normalizeChapterDisplayTitle } from './chapterIndex';
+
+export const DRACULA_FALLBACK_BOOK = {
+  slug: LIVE_APPROVED_SLUG,
+  publication_status: "LIVE_APPROVED",
+  title: "Dracula",
+  subtitle: "A controlled Earnalism core reading release",
+  author: "Bram Stoker",
+  category_slug: "gothic-fiction",
+  short_description:
+    "Begin Bram Stoker's gothic classic in a quiet digital reading room. Read the first 3 pages free. Public audiobooks are unavailable in this launch.",
+  description:
+    "Dracula is an approved classic reading release with 27 chapters and a rights-safe source trail. Audio availability remains evidence-gated and hidden unless release approval is proven.",
+  estimated_reading_time: "14 min",
+  cover_image_url: DRACULA_COVER_IMAGE,
+  thumbnail_url: DRACULA_COVER_IMAGE,
+  back_cover_image_url: DRACULA_BACK_COVER_IMAGE,
+  back_cover_thumbnail_url: DRACULA_BACK_COVER_IMAGE,
+  dominant_color: "#4A1C27",
+  back_cover_dominant_color: "#2A1721",
+  chapters: Array.from({ length: DRACULA_CHAPTER_COUNT }, (_, index) => ({
+    id: `dracula-chapter-${index + 1}`,
+    title: index === 0 ? "Chapter 1" : `Chapter ${index + 1}`,
+    order: index,
+    is_preview: index === 0,
+  })),
+  reader_enabled: true,
+  public_route: `/book/${LIVE_APPROVED_SLUG}`,
+  preview_enabled: true,
+  reader_url: `/reader/${LIVE_APPROVED_SLUG}`,
+  preview_url: `/reader/${LIVE_APPROVED_SLUG}`,
+  audiobook_enabled: false,
+  generate_audiobook: false,
+  audiobook_assets: {},
+};
+
+export const PIPELINE_BOOKS = [
+  {
+    slug: KSHUDHITA_PASHAN_SLUG,
+    title: "ক্ষুধিত পাষাণ",
+    displayTitle: "Kshudhita Pashan",
+    titleNative: "ক্ষুধিত পাষাণ",
+    title_en: "The Hungry Stones",
+    author: "Rabindranath Tagore",
+    category_slug: "bengali-gothic",
+    statusLabel: "Rights-safe preparation",
+    short_description:
+      "A Bengali Gothic candidate in rights-safe preparation. It is not public reading inventory yet.",
+    pipeline_stage: "PIPELINE_ONLY",
+    rights_tier: "A",
+    verification_status: "candidate_review",
+    audio_preview_status: "AUDIO_PREVIEW_BLOCKED_UNTIL_PROVIDER_QA",
+    audiobook_enabled: false,
+    cover_status: "OWNER_PROVIDED_LOCAL_COVER_READY",
+    cover_image_url: "/assets/books/kshudhita-pashan/front-cover.webp",
+    thumbnail_url: "/assets/books/kshudhita-pashan/front-cover.webp",
+    back_cover_image_url: KSHUDHITA_PASHAN_BACK_COVER_IMAGE,
+    back_cover_thumbnail_url: KSHUDHITA_PASHAN_BACK_COVER_IMAGE,
+    dominant_color: "#111820",
+  },
+  {
+    slug: "frankenstein",
+    title: "Frankenstein",
+    author: "Mary Wollstonecraft Shelley",
+    category_slug: "gothic-fiction",
+    statusLabel: "Rights-safe preparation",
+    short_description: "A future Gothic shelf candidate. Cover evidence remains pending, so this card stays in preparation.",
+    pipeline_stage: "PIPELINE_ONLY",
+    cover_status: "DESIGNED_PLACEHOLDER_READY",
+    cover_image_url: "/assets/books/frankenstein/front-cover.webp",
+    thumbnail_url: "/assets/books/frankenstein/front-cover.webp",
+    dominant_color: "#111820",
+  },
+  {
+    slug: "sherlock-holmes",
+    title: "Sherlock Holmes",
+    author: "Arthur Conan Doyle",
+    category_slug: "classic-literature",
+    statusLabel: "Rights-safe preparation",
+    short_description: "A reasoning and classic-detective candidate awaiting rights-safe production evidence.",
+    pipeline_stage: "PIPELINE_ONLY",
+    cover_status: "DESIGNED_PLACEHOLDER_READY",
+    cover_image_url: "/assets/books/sherlock-holmes/front-cover.webp",
+    thumbnail_url: "/assets/books/sherlock-holmes/front-cover.webp",
+    dominant_color: "#11140F",
+  },
+  {
+    slug: "sultanas-dream",
+    title: "Sultana's Dream",
+    author: "Rokeya Sakhawat Hossain",
+    category_slug: "science-fiction",
+    statusLabel: "Rights-safe preparation",
+    short_description: "A science-fiction classic candidate held until source, rights, and QA gates are complete.",
+    pipeline_stage: "PIPELINE_ONLY",
+    cover_status: "EDITORIAL_COVER_READY",
+    cover_image_url: SULTANAS_DREAM_FRONT_COVER_IMAGE,
+    thumbnail_url: SULTANAS_DREAM_FRONT_COVER_IMAGE,
+    dominant_color: "#283E31",
+  },
+  {
+    slug: "calculus-made-easy",
+    title: "Calculus Made Easy",
+    author: "Silvanus P. Thompson",
+    category_slug: "study-material",
+    statusLabel: "Visual guide candidate",
+    short_description: "A study-material candidate for future guided reading, not a live paid reading product.",
+    pipeline_stage: "PIPELINE_ONLY",
+    cover_status: "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  },
+];
+
+export const KSHUDHITA_PASHAN_PIPELINE = {
+  slug: KSHUDHITA_PASHAN_SLUG,
+  titleBn: "ক্ষুধিত পাষাণ",
+  titleEn: "The Hungry Stones",
+  author: "Rabindranath Tagore",
+  headline: "Kshudhita Pashan",
+  subcopy: "A Bengali Gothic classic moving through editorial preparation.",
+  statusLabel: "Pipeline only: source, rights, CC BY-SA compliance, text QA, and audio provider QA are still gated.",
+  frontCoverImage: KSHUDHITA_PASHAN_FRONT_COVER_IMAGE,
+  backCoverImage: KSHUDHITA_PASHAN_BACK_COVER_IMAGE,
+  coverStatus: "OWNER_PROVIDED_COVER_READY",
+};
+
+export const DRACULA_CTA_EVENTS = {
+  homepagePrimary: "hero_read_chapter_free_click",
+  bookView: "dracula_book_page_view",
+  previewStart: "start_dracula_click",
+  startReading: "start_dracula_click",
+  readingPass: "pricing_page_view",
+  readerStart: "reader_opened",
+  chapterOneComplete: "continue_reading_click",
+  notifyMe: "",
+};
+
+function normalizedSlug(book = {}) {
+  return String(book?.slug || book?.id || "").trim().toLowerCase();
+}
+
+function normalizedRightsTier(book = {}) {
+  return String(book?.publication_workflow?.rights?.tier || "").trim().toUpperCase();
+}
+
+function normalizedVerificationStatus(book = {}) {
+  return String(book?.publication_workflow?.rights?.verification_status || "").trim().toLowerCase();
+}
+
+function publicationStatus(book = {}) {
+  return String(book?.publication_status || book?.launch_status || book?.publicationStatus || "").trim().toUpperCase();
+}
+
+function canonicalReaderRoute(slug) {
+  return `/reader/${encodeURIComponent(slug)}`;
+}
+
+function canonicalBookRoute(slug) {
+  return `/book/${encodeURIComponent(slug)}`;
+}
+
+export function isLiveApprovedBook(book = {}) {
+  if (!PUBLIC_READER_EXPOSURE_ENABLED) return false;
+  const slug = normalizedSlug(book);
+  if (!slug || !PUBLIC_READER_RELEASED_SLUGS.includes(slug)) return false;
+  const tier = normalizedRightsTier(book);
+  const status = normalizedVerificationStatus(book);
+  if (tier && tier !== "A") return false;
+  if (status && !["approved", "published_core_reading_only"].includes(status)) return false;
+  // The backend public projection has already applied the controlled
+  // publication manifest, rights, QA, and approval checks.  The client must
+  // consume that projection rather than keep a second title allowlist.
+  return publicationStatus(book) === "LIVE_APPROVED"
+    && book?.reader_enabled === true
+    && String(book?.public_route || "").trim() === canonicalBookRoute(slug)
+    && String(book?.reader_url || "").trim() === canonicalReaderRoute(slug);
+}
+
+export function isPipelineCandidate(book = {}) {
+  const slug = normalizedSlug(book);
+  if (!slug) return false;
+  if (isLiveApprovedBook(book)) return false;
+  if (normalizedRightsTier(book) === "C") return false;
+  return PIPELINE_BOOKS.some((candidate) => candidate.slug === slug)
+    || String(book?.pipeline_stage || "").toUpperCase().includes("PIPELINE")
+    || ["PIPELINE_CANDIDATE", "COMING_SOON_PIPELINE"].includes(publicationStatus(book));
+}
+
+export function canShowStartReading(book = {}) {
+  return isLiveApprovedBook(book);
+}
+
+export function canShowPreview(book = {}) {
+  if (!isLiveApprovedBook(book)) return false;
+  const hasExplicitPreview = Array.isArray(book?.chapters)
+    && book.chapters.some((chapter) => chapter?.id && chapter?.is_preview === true);
+  const previewUrl = String(book?.preview_url || "").trim();
+  return hasExplicitPreview
+    && book?.preview_enabled === true
+    && previewUrl === canonicalReaderRoute(normalizedSlug(book));
+}
+
+export function canShowReadingPass(book = {}) {
+  return PUBLIC_PAID_COMMERCE_ENABLED
+    && isLiveApprovedBook(book);
+}
+
+export function canShowAudioCTA(book = {}) {
+  if (!PUBLIC_AUDIO_EXPOSURE_ENABLED) return false;
+  if (!isLiveApprovedBook(book)) return false;
+  if (!book?.audiobook_enabled || book?.generate_audiobook) return false;
+  const releaseGate = String(book?.audiobook_release_gate || book?.audiobook?.release_gate || "").trim().toUpperCase();
+  const qaStatus = String(book?.audio_qa_status || book?.audiobook?.qa_status || "").trim().toUpperCase();
+  return releaseGate === "APPROVED" && qaStatus === "QA_PASSED";
+}
+
+export function bookLaunchStatus(book = {}) {
+  if (isLiveApprovedBook(book)) return "LIVE_APPROVED";
+  if (normalizedRightsTier(book) === "C") return "QUARANTINED";
+  if (normalizedRightsTier(book) === "B") return "REGION_GATED_PIPELINE";
+  return "COMING_SOON_PIPELINE";
+}
+
+export function mergeDraculaBook(book) {
+  if (!book || book.slug !== LIVE_APPROVED_SLUG) return DRACULA_FALLBACK_BOOK;
+  return {
+    ...DRACULA_FALLBACK_BOOK,
+    ...book,
+    // The current API edition owns exact cover aliases; historical display assets must not replace them.
+    chapters: Array.isArray(book.chapters) && book.chapters.length > 0
+      ? book.chapters
+      : DRACULA_FALLBACK_BOOK.chapters,
+    audiobook_enabled: false,
+    generate_audiobook: false,
+    audiobook_assets: {},
+  };
+}
+
+export function readingPassUrl(source = "dracula_launch") {
+  return `/pricing?source=${source}&book=${LIVE_APPROVED_SLUG}`;
+}
+
+export function notifyUrl(slug = "dracula") {
+  return `/contact?interest=${encodeURIComponent(slug)}`;
+}

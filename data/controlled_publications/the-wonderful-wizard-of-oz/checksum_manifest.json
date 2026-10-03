@@ -4,7 +4,7 @@
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "310686fe16930425d0de93fd297565f860bbd6adb797494feacc6a365bb92c21"
+      "sha256": "1c594a572466bbff09edf6bdb022261abeb45a5eab7e7033bad83f184a455a89"
     },
     {
       "file": "chapters/chapter-000.json",
@@ -112,19 +112,71 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "2df5b76950fd3c72456607a7e8942cdf71aeab5bc4f70c040296637f60753452"
+      "sha256": "44181e3acd1d738c6fda24b0f0755fbc86e819bde9a142373ff44bbb4d7f01f6"
     },
     {
       "file": "publication_authorization.json",
-      "sha256": "d76fb6ab3fcd74692ed0d9909ddfdd992fa66c41d543aea1e1758543a421b5bd"
+      "sha256": "b5c012ebc6df6bcae9cab5a7208b6fdf6fd17342227816aaa83b73a5df6ef30f"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "496a0323acfc6d68dbc5bb5b434c1adef33e18cf3260372585494ccb6fee26af"
+      "sha256": "2323b65af075000645cd7ac0f3f841f4583ac1407ddefd849a1cbc7b06795d71"
     },
     {
       "file": "source_evidence.json",
       "sha256": "7ec444ed90caa41fb950757933ee7399ef94fceab855bdd8c3e52a6806358ec5"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "82807f7a09520abbfe64e1e9ce7d570a1735587b871b12e9024a309e22779f7c"
+    },
+    {
+      "file": "cover_delivery_derivation.json",
+      "sha256": "379ede32b7d337a7b22a0db950e30ac52f972e717d3b75da1143d1e3c3aafc05"
+    },
+    {
+      "file": "owner_artwork_declaration.json",
+      "sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264"
+    },
+    {
+      "file": "evidence/current_whole_work_boundary_verification.json",
+      "sha256": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e"
+    },
+    {
+      "file": "evidence/original-cover-receipt.json",
+      "sha256": "6253d6df5544a0226495a8a73b6c6a00f96e5037037db7656dd1a8326de36d2f"
+    },
+    {
+      "file": "evidence/render_delivery.py",
+      "sha256": "ff3cf668b08e534adaefd57998208efa3422efcdf01aa9d25a8aabcc0d662a59"
+    },
+    {
+      "file": "evidence/delivery-receipt.json",
+      "sha256": "c815944d45b1664634b3680544680b6da3c36de93a0a966fd7454d0c99177e73"
+    },
+    {
+      "file": "evidence/preimage-inventory.json",
+      "sha256": "4f570611cb51d024ba9b29b7b5aef7ca2c7a64f2ffd48a41cf630e458f70ad19"
+    },
+    {
+      "file": "evidence/wizard-whole-work-proof-reuse.json",
+      "sha256": "b477cd253c51a2ce5ccffd622dfbc5dc7e5cd5b084a53467e7deebb04fd5296e"
+    },
+    {
+      "file": "covers/original-back.png",
+      "sha256": "29204906556020adbbdb10a89b7fd9b26f08703f6327a0de63cdb0d50b8821fc"
+    },
+    {
+      "file": "covers/original-front.png",
+      "sha256": "80fbd30875f8b715fb580732f9eef2d46bc7ddc74d50cd41d5276dbfd60ec32a"
+    },
+    {
+      "file": "evidence/review_a.json",
+      "sha256": "a034ba1b836c80898ec9a4ccbf5268c09839bd7d9c6b47169507657b74bd7878"
+    },
+    {
+      "file": "evidence/review_b.json",
+      "sha256": "7a7306dd7ddd6dd0fc680ca49045b75f83f76592af015ea99d67530892fa804d"
     }
   ]
 }

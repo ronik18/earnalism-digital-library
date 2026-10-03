@@ -1,0 +1,107 @@
+test_chapter_order_repairs_preserve_literary_hashes (scripts.test_reconcile_bengali_source_evidence.AppliedSourceRepairIntegrityTests.test_chapter_order_repairs_preserve_literary_hashes) ... ok
+test_no_ambiguous_khata_first_publication_year_is_certified (scripts.test_reconcile_bengali_source_evidence.AppliedSourceRepairIntegrityTests.test_no_ambiguous_khata_first_publication_year_is_certified) ... ok
+test_direct_transcluded_literary_nodes_are_not_dropped (scripts.test_reconcile_bengali_source_evidence.BengaliSourceReconciliationTests.test_direct_transcluded_literary_nodes_are_not_dropped) ... ERROR
+test_inline_spacing_is_retained (scripts.test_reconcile_bengali_source_evidence.BengaliSourceReconciliationTests.test_inline_spacing_is_retained) ... ERROR
+test_missing_paragraph_is_not_matching (scripts.test_reconcile_bengali_source_evidence.BengaliSourceReconciliationTests.test_missing_paragraph_is_not_matching) ... ok
+test_punctuation_difference_not_normalized_away (scripts.test_reconcile_bengali_source_evidence.BengaliSourceReconciliationTests.test_punctuation_difference_not_normalized_away) ... ok
+test_source_furniture_removed_and_recorded (scripts.test_reconcile_bengali_source_evidence.BengaliSourceReconciliationTests.test_source_furniture_removed_and_recorded) ... ERROR
+test_unchanged_text_passes_formatting_only (scripts.test_reconcile_bengali_source_evidence.BengaliSourceReconciliationTests.test_unchanged_text_passes_formatting_only) ... ok
+test_local_text_decisions_bind_current_bytes_without_audio_or_activation (scripts.test_reconcile_bengali_source_evidence.FinalClearanceBindingsTests.test_local_text_decisions_bind_current_bytes_without_audio_or_activation) ... ok
+test_original_replacements_preserve_auditable_old_identity (scripts.test_reconcile_bengali_source_evidence.FinalClearanceBindingsTests.test_original_replacements_preserve_auditable_old_identity) ... ok
+test_literary_table_text_is_not_discarded (scripts.test_reconcile_bengali_source_evidence.FullRenderedNotesTests.test_literary_table_text_is_not_discarded) ... ERROR
+test_literary_text_after_transclusion_is_not_discarded (scripts.test_reconcile_bengali_source_evidence.FullRenderedNotesTests.test_literary_text_after_transclusion_is_not_discarded) ... ERROR
+test_original_footnotes_outside_transclusion_are_preserved (scripts.test_reconcile_bengali_source_evidence.FullRenderedNotesTests.test_original_footnotes_outside_transclusion_are_preserved) ... ERROR
+test_fourteen_source_chapters_and_original_preview_are_bound (scripts.test_reconcile_bengali_source_evidence.MuchiramCompletenessTest.test_fourteen_source_chapters_and_original_preview_are_bound) ... ok
+test_reconcile_english_source_evidence (unittest.loader._FailedTest.test_reconcile_english_source_evidence) ... ERROR
+test_changed_chapter_rejected_before_pagination (scripts.test_prepare_inactive_reader_segment_plans.InactivePlanTests.test_changed_chapter_rejected_before_pagination) ... ok
+test_exposed_package_rejected (scripts.test_prepare_inactive_reader_segment_plans.InactivePlanTests.test_exposed_package_rejected) ... ok
+test_hash_only_and_no_source_mutation (scripts.test_prepare_inactive_reader_segment_plans.InactivePlanTests.test_hash_only_and_no_source_mutation) ... ok
+test_invalid_local_record_rejected (scripts.test_prepare_inactive_reader_segment_plans.InactivePlanTests.test_invalid_local_record_rejected) ... ok
+test_live_title_is_not_prepared (scripts.test_prepare_inactive_reader_segment_plans.InactivePlanTests.test_live_title_is_not_prepared) ... ok
+
+======================================================================
+ERROR: test_direct_transcluded_literary_nodes_are_not_dropped (scripts.test_reconcile_bengali_source_evidence.BengaliSourceReconciliationTests.test_direct_transcluded_literary_nodes_are_not_dropped)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/181ef0a25f05/pr511-held-evidence-remediation-20261003/check/scripts/test_reconcile_bengali_source_evidence.py", line 11, in test_direct_transcluded_literary_nodes_are_not_dropped
+    actual,_=paragraphs(html,'Title')
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/181ef0a25f05/pr511-held-evidence-remediation-20261003/check/scripts/reconcile_bengali_source_evidence.py", line 32, in paragraphs
+    from bs4 import BeautifulSoup
+ModuleNotFoundError: No module named 'bs4'
+
+======================================================================
+ERROR: test_inline_spacing_is_retained (scripts.test_reconcile_bengali_source_evidence.BengaliSourceReconciliationTests.test_inline_spacing_is_retained)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/181ef0a25f05/pr511-held-evidence-remediation-20261003/check/scripts/test_reconcile_bengali_source_evidence.py", line 7, in test_inline_spacing_is_retained
+    p,_=paragraphs('<div class="prp-pages-output"><p>আমি <i>আজ</i> যাব।</p></div>','গল্প')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/181ef0a25f05/pr511-held-evidence-remediation-20261003/check/scripts/reconcile_bengali_source_evidence.py", line 32, in paragraphs
+    from bs4 import BeautifulSoup
+ModuleNotFoundError: No module named 'bs4'
+
+======================================================================
+ERROR: test_source_furniture_removed_and_recorded (scripts.test_reconcile_bengali_source_evidence.BengaliSourceReconciliationTests.test_source_furniture_removed_and_recorded)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/181ef0a25f05/pr511-held-evidence-remediation-20261003/check/scripts/test_reconcile_bengali_source_evidence.py", line 15, in test_source_furniture_removed_and_recorded
+    p,f=paragraphs('<div class="prp-pages-output"><p>গল্প</p><p>আসল কথা।</p><p>১৩২১</p></div>','বই/গল্প')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/181ef0a25f05/pr511-held-evidence-remediation-20261003/check/scripts/reconcile_bengali_source_evidence.py", line 32, in paragraphs
+    from bs4 import BeautifulSoup
+ModuleNotFoundError: No module named 'bs4'
+
+======================================================================
+ERROR: test_literary_table_text_is_not_discarded (scripts.test_reconcile_bengali_source_evidence.FullRenderedNotesTests.test_literary_table_text_is_not_discarded)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/181ef0a25f05/pr511-held-evidence-remediation-20261003/check/scripts/test_reconcile_bengali_source_evidence.py", line 87, in test_literary_table_text_is_not_discarded
+    body, _ = paragraphs('<div class="prp-pages-output"><p>Prose</p><table><tr><td>Poem line one</td><td>Poem line two</td></tr></table></div>', 'Title')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/181ef0a25f05/pr511-held-evidence-remediation-20261003/check/scripts/reconcile_bengali_source_evidence.py", line 32, in paragraphs
+    from bs4 import BeautifulSoup
+ModuleNotFoundError: No module named 'bs4'
+
+======================================================================
+ERROR: test_literary_text_after_transclusion_is_not_discarded (scripts.test_reconcile_bengali_source_evidence.FullRenderedNotesTests.test_literary_text_after_transclusion_is_not_discarded)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/181ef0a25f05/pr511-held-evidence-remediation-20261003/check/scripts/test_reconcile_bengali_source_evidence.py", line 83, in test_literary_text_after_transclusion_is_not_discarded
+    body, _ = paragraphs('<div class="mw-parser-output"><div class="prp-pages-output"><p>First page</p></div><p>Final printed page</p></div>', 'Title')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/181ef0a25f05/pr511-held-evidence-remediation-20261003/check/scripts/reconcile_bengali_source_evidence.py", line 32, in paragraphs
+    from bs4 import BeautifulSoup
+ModuleNotFoundError: No module named 'bs4'
+
+======================================================================
+ERROR: test_original_footnotes_outside_transclusion_are_preserved (scripts.test_reconcile_bengali_source_evidence.FullRenderedNotesTests.test_original_footnotes_outside_transclusion_are_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/181ef0a25f05/pr511-held-evidence-remediation-20261003/check/scripts/test_reconcile_bengali_source_evidence.py", line 92, in test_original_footnotes_outside_transclusion_are_preserved
+    body, furniture = paragraphs('<div class="mw-parser-output"><div class="prp-pages-output"><p>Original prose</p></div><ol class="references"><li><span class="reference-text">Original author note</span></li></ol></div>', 'Title')
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/181ef0a25f05/pr511-held-evidence-remediation-20261003/check/scripts/reconcile_bengali_source_evidence.py", line 32, in paragraphs
+    from bs4 import BeautifulSoup
+ModuleNotFoundError: No module named 'bs4'
+
+======================================================================
+ERROR: test_reconcile_english_source_evidence (unittest.loader._FailedTest.test_reconcile_english_source_evidence)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_reconcile_english_source_evidence
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/181ef0a25f05/pr511-held-evidence-remediation-20261003/check/scripts/test_reconcile_english_source_evidence.py", line 6, in <module>
+    spec=importlib.util.spec_from_file_location('reconcile_english',P);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/181ef0a25f05/pr511-held-evidence-remediation-20261003/check/scripts/reconcile_english_source_evidence.py", line 6, in <module>
+    from bs4 import BeautifulSoup
+ModuleNotFoundError: No module named 'bs4'
+
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.299s
+
+FAILED (errors=7)

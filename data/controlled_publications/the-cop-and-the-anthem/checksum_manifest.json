@@ -1,18 +1,42 @@
 {
   "slug": "the-cop-and-the-anthem",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-10-03T04:59:53.954767+00:00",
   "files": [
     {
-      "file": "approval_evidence 2.json",
-      "sha256": "aac19a817365dfebaa22742bd82020167c4b55d42b53ca2fa6d3e47fce49fa95"
-    },
-    {
       "file": "approval_evidence.json",
-      "sha256": "c7a2c6424ec79ec8dd32c5e6d4739cd00751afcdcad6d1c0c3eae2c2acae9bdc"
+      "sha256": "68c32c9a7a134010a36017f8ab058d56dfcda2eb6e739e38c45b1188e52f19bf"
     },
     {
       "file": "chapters/chapter-001.json",
       "sha256": "630e75350eefdcce93c1f0e403873a29fb1df4004f8c2dd2f450108bd4288cb8"
+    },
+    {
+      "file": "cover_preparation.json",
+      "sha256": "9cf2aaf4e5a08aa733a1874524df59170bfb96443b3b65dbe2ba1006dd72fe86"
+    },
+    {
+      "file": "covers/original-back.png",
+      "sha256": "0c9e1ec88066b222f5b2e715e8017c4fb7095e74f8f2b669ce5d1d97a77eb7d6"
+    },
+    {
+      "file": "covers/original-front.png",
+      "sha256": "3232a6b9c657c5e0adaa6385c87ecd88b9544a0c264b0a28b9ee8d7e11ed12b7"
+    },
+    {
+      "file": "covers/the-cop-and-the-anthem-back-inactive.png",
+      "sha256": "c0929e3af5ed29e6305d2867e0018ab4bdd7c6fa226fca6ff82ee94b45236a35"
+    },
+    {
+      "file": "covers/the-cop-and-the-anthem-back-inactive.webp",
+      "sha256": "5f6497fd5616e8913891f73d47aa6ff08b6c7db338cefd05f81b71332241dcde"
+    },
+    {
+      "file": "covers/the-cop-and-the-anthem-front-inactive.png",
+      "sha256": "af57195ca48c50d2c8bf0ac6b2c4366dd2328c4e52c93d50b23bd44dea2ef41f"
+    },
+    {
+      "file": "covers/the-cop-and-the-anthem-front-inactive.webp",
+      "sha256": "b2243f117df70253f59a995f7aba59c747da08d51187d94d79ff2e84e10f06de"
     },
     {
       "file": "highlight_sync.json",
@@ -20,11 +44,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "9fc77a70e214a11a0450399f49c2624afeb1285ce7cb7732eb05cbb2bf7a7dd5"
+      "sha256": "8be18e15d16f64a3f55c0ba0d2cca1719aa6a53f5b1d6292a281417ac1b2e8de"
     },
     {
       "file": "publication_authorization.json",
-      "sha256": "cca048017c5646c43e5d90b54b48a71990a30dd46520dfdf70d8d6e8d1267aed"
+      "sha256": "74ee384faafe45c1ecbd02144877e3ac9488ed5a34f511d517058ce8397b68c0"
     },
     {
       "file": "reader_manifest.json",
@@ -33,6 +57,18 @@
     {
       "file": "source_evidence.json",
       "sha256": "f40f277d758a03b9e05dd6ffa721b058766db6955ba4414d183a7f9bf45fb84f"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "87bd73a79634bfc9393175fdcbff9935e5b948399b169a676ec76477679c2ca4"
+    },
+    {
+      "file": "evidence/review_a.json",
+      "sha256": "2eaf07760acf658f9c176461fe425ad4fa7c4fb372a26124968cd6cee43ee10a"
+    },
+    {
+      "file": "evidence/review_b.json",
+      "sha256": "b4c6472a288af36d58459dea6619df7ffcab6fb64a2eadc22c366e9959e52097"
     }
   ]
 }

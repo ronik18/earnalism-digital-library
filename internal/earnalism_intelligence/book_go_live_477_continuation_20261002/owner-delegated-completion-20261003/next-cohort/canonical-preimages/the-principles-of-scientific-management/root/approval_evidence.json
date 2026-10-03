@@ -1,0 +1,22 @@
+{
+  "slug": "the-principles-of-scientific-management",
+  "approved_to_publish": false,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_PENDING_ASSET_MAPPING",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "a836e5339f4f15b0aa61cccd35d2da8edfb25cd0250b1d45d41f57a2c150af60",
+  "source_hash": "1f504a9abe674ee616f13bf1db66ec25cbb1be0ff5fd9bfe70ab8593aa08a3b2",
+  "content_hash": "288b62bc7442e85367b7ca05290f466dee7a0314d7f0ab3d3252cc39618850df",
+  "provenance_hash": "b6e46635dcd809120020e0324737c74996924b29a83ee411ce7171935c1d2948",
+  "verified_at": "2026-10-01T21:35:50.622637+00:00"
+}

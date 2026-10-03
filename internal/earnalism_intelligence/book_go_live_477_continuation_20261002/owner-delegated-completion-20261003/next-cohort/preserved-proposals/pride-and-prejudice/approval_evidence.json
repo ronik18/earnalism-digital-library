@@ -1,0 +1,25 @@
+{
+  "slug": "pride-and-prejudice",
+  "approved_to_publish": false,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "INACTIVE_UNACCEPTED_EXACT_PREPARATION",
+  "audiobook_use_approved": true,
+  "audiobook_use_approval_source": "",
+  "audiobook_use_approved_at": "",
+  "audio_public_release": "NOT_AUTHORIZED",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "571332fa6db2915a4a5aa880bd756c520721f6a7f4b02da60961f7d3fe1d78b3",
+  "source_hash": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+  "content_hash": "4b68459abff92d885d2d493ad052e8cdba6308ebf78f24508c6410cce683c276",
+  "provenance_hash": "49f4ef0c8b50de3e8bf1430456a677414420b40c7153b4b7b1b8d4bd7c6d34bb",
+  "verified_at": "2026-10-01T21:19:39.153654+00:00"
+}

@@ -1,0 +1,94 @@
+{
+  "id": "controlled-bharat-at-the-crossroads",
+  "slug": "bharat-at-the-crossroads",
+  "title": "Bharat at the Crossroads",
+  "subtitle": "",
+  "author": "Ronik Basak",
+  "category_slug": "business",
+  "short_description": "An original work by Ronik Basak, presented as a carefully prepared digital reading edition.",
+  "description": "An original work by Ronik Basak.",
+  "cover_url": "https://theearnalism.com/assets/books/bharat-at-the-crossroads/bharat-at-the-crossroads-front-674c1aee-800.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/bharat-at-the-crossroads/bharat-at-the-crossroads-front-674c1aee-800.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/bharat-at-the-crossroads/bharat-at-the-crossroads-back-2e7564a6-800.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/bharat-at-the-crossroads/bharat-at-the-crossroads-back-2e7564a6-800.webp",
+  "estimated_reading_time": "153 min",
+  "formats": [
+    "Ebook",
+    "Audiobook"
+  ],
+  "benefits": [
+    "Read a clean, structured digital edition.",
+    "Listen to the approved audio edition in the reader."
+  ],
+  "who_for": [
+    "Readers of contemporary nonfiction",
+    "Readers who prefer long-form listening"
+  ],
+  "learnings": [
+    "Follow the book's arguments and narrative structure."
+  ],
+  "about_author": "Ronik Basak is the author of Bharat at the Crossroads.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "Bharat at the Crossroads",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 34761,
+      "reading_minutes": 322,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-08-08T00:00:00Z",
+      "updated_at": "2026-08-08T00:00:00Z"
+    }
+  ],
+  "source_hash": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+  "content_hash": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+  "provenance_hash": "41300c1e70b2b43c0f17602acba1de96a1b3f5350e8dffd46c470ecdc9330343",
+  "rights_basis": "First-party original manuscript permission under the actual owner autonomous text-clearance delegation; no public-domain/death/publication-expiry claim. Exact original source/content hash reproduced; cover display and audio uses excluded, no production registry or release activation.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": false,
+  "publication_status": "READY_FOR_APPROVAL",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "draft",
+  "isPublic": false,
+  "isLive": false,
+  "showInPublicLibrary": false,
+  "showInHomepage": false,
+  "allowPublicReading": false,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": false,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_assets": {},
+  "audiobook": {},
+  "sync_tier": "NONE",
+  "highlight_sync_enabled": false,
+  "created_at": "2026-08-08T00:00:00Z",
+  "updated_at": "2026-08-08T00:00:00Z",
+  "coverImage": "https://theearnalism.com/assets/books/bharat-at-the-crossroads/bharat-at-the-crossroads-front-674c1aee-800.webp",
+  "cover_image": "https://theearnalism.com/assets/books/bharat-at-the-crossroads/bharat-at-the-crossroads-front-674c1aee-800.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/bharat-at-the-crossroads/bharat-at-the-crossroads-back-2e7564a6-800.webp",
+  "audio_status": "NOT_REQUESTED",
+  "audiobook_release_gate": "NOT_REQUESTED",
+  "audio_qa_status": "NOT_RUN",
+  "audio_url": "",
+  "cover_status": "EXACT_ORIGINAL_ART_DETERMINISTIC_TYPOGRAPHY_PROPOSAL_PENDING_REVIEW",
+  "cover_dimensions": {
+    "front": [
+      800,
+      1200
+    ],
+    "back": [
+      800,
+      1200
+    ]
+  }
+}

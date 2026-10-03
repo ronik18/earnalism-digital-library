@@ -1,0 +1,35 @@
+{
+  "slug": "bn-066",
+  "retrieved_at": "2026-10-03T04:48:49.366446+00:00",
+  "requests": [
+    {
+      "kind": "front",
+      "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/bn-066/front-original.png",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593362/earnalism/covers/front/cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
+      "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593362/earnalism/covers/front/cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
+      "http_status": 200,
+      "sha256": "80df6089ecc48a52aa5872e54dcb49dabb284927c4d3419f0e0af4388a4669db",
+      "bytes": 3038678,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "get_count": 1
+    },
+    {
+      "kind": "back",
+      "path": "/workspace/scratch/181ef0a25f05/bengali-next-cohort-20261003/bn-066/back-original.png",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593370/earnalism/covers/back/back_cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
+      "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780593370/earnalism/covers/back/back_cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
+      "http_status": 200,
+      "sha256": "4ce56c183557761ee78cc1e12737a7366034aa19fd397c844ba27fd71ed3c6cd",
+      "bytes": 2754432,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "get_count": 1
+    }
+  ],
+  "status": "RECOVERED_EXACT_ACTUAL_BYTES_NOT_ASSUMED_HISTORICAL_HASH_MATCH"
+}

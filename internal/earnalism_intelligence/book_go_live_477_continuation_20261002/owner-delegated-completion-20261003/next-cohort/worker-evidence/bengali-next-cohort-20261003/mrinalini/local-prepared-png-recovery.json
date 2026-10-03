@@ -1,0 +1,13 @@
+{
+  "slug": "mrinalini",
+  "issue": "Local prepared PNG became truncated before package freezing; no altered pixels/artwork accepted.",
+  "truncated_unaccepted_artifact": {
+    "file": "front-prepared-truncated-unaccepted.png",
+    "sha256": "fa0aaea16de28f4ea3202e412c9d52f5218becb2a37df78a02e1e2f519464b48"
+  },
+  "recovery": "Reproduce the identical recorded deterministic overlay from exact original+font+metadata into separate verification file; exact expected prepared SHA recovered.",
+  "recovered_expected_prepared_sha256": "460af8701800b9275c39f668515d496f1af65c5955986be3ad43ec59a3ed8557",
+  "current_prepared_sha256": "460af8701800b9275c39f668515d496f1af65c5955986be3ad43ec59a3ed8557",
+  "original_and_delivery_hashes_unchanged": true,
+  "new_artwork_remediation_attempt": false
+}

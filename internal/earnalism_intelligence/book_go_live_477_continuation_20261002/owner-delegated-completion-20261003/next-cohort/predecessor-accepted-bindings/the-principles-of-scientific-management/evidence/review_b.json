@@ -1,0 +1,78 @@
+{
+  "slug": "the-principles-of-scientific-management",
+  "reviewer": "Independent Codex reviewer B",
+  "inventory": {
+    "approval_evidence.json": "5f654536e1a4b6d954ae7433d7ee3041522935b941cf6a651598068e28c50c00",
+    "chapters/chapter-001.json": "54a34be7806d09e5d94918947214e4d2d58f78367fdab1efd9da8489522c2a35",
+    "chapters/chapter-002.json": "5d5831cc3266c2a972290056cfeb8e3d598c09412b0bf35027687a704a56e994",
+    "chapters/chapter-003.json": "0eb52d90eeea32e4aa583cc95ece5cb8350901a3f955274244aa916cf88b001c",
+    "chapters/chapter-004.json": "33cd142e22486d545f9302026058eb1bac8d14efb80b25ac1cd0b241553197fb",
+    "checksum_manifest.json": "a0baaad9d0aef490765fc4df7c1c32dfd6e20da616df808cb263c59d9358d06d",
+    "cover_delivery_derivation.json": "9b6609b625a2c7a15224c337d763ce93eb8c48356e299dd5ddf4bfac24be287b",
+    "cover_provenance.json": "f2234723ac9e70422a49051d8a0346a4d99cc1a031cf4baca0b1d09dd901af41",
+    "covers/back.png": "a544cc2b26c584891032db2fd9ea447f33b4a72ab1e7801a5de853f3463aa5b9",
+    "covers/front.png": "67895aecbc4c29e45658819f7b76316a3caecf5d9cca79c4592c03c5d90d581b",
+    "highlight_sync.json": "a41defc9882bca4759e902093932f56cbf628eb9f0e3e5860b9295d26a9c6ae0",
+    "public_book.json": "0fd1577d7b69dd894bf23a2bee8bb33c114e2bf375569668b334e31c4887fdc2",
+    "publication_authorization.json": "3f67c27b5b426f3debadaef12c263d04521980901edf7426d071fc111285cbca",
+    "publication_manifest.json": "b8f6532b363216fb0269992c1f6dc8139d68e32a0ea122bc212329b8852cbf22",
+    "reader_manifest.json": "87a47f53b9dbcbae66a09bee4bcc5769f4b5f584ef9bdfc4ab31b65959c3318f",
+    "rights_decision.json": "ff37d736b4db88ba1721ab78bf11cafd707bf46419ac589f8e081a880cdbb09f",
+    "source_evidence.json": "e6b091fd0aebe2517dd1e2b6c8e8ef14d5ea6d6540daa66c33e0ba27a9ef2380",
+    "source_integrity_validation.json": "1783ac19971b24959ba3c9334a80a473ec2afc37d75f8ea793b84445eb7d9ad9"
+  },
+  "checksums": 15,
+  "components": 12,
+  "source_unchanged": [
+    "source_evidence.json",
+    "highlight_sync.json",
+    "chapters/chapter-002.json",
+    "chapters/chapter-004.json",
+    "chapters/chapter-003.json",
+    "chapters/chapter-001.json"
+  ],
+  "audio_claims": [],
+  "source_whole_work_complete": "PASS_ORDERED_COMPLETE_PREFACE_INTRODUCTION_NARRATIVE_APPRECIATION_BODY_AND_ALL_GAPS",
+  "source_sha256": "1f504a9abe674ee616f13bf1db66ec25cbb1be0ff5fd9bfe70ab8593aa08a3b2",
+  "source_proof_sha256": "1783ac19971b24959ba3c9334a80a473ec2afc37d75f8ea793b84445eb7d9ad9",
+  "chapter_count": 4,
+  "source_gaps_after_first": [
+    " CHAPTER I FUNDAMENTALS OF SCIENTIFIC MANAGEMENT ",
+    " CHAPTER II THE PRINCIPLES OF SCIENTIFIC MANAGEMENT ",
+    " THE FINEST TYPE OF ORDINARY MANAGEMENT "
+  ],
+  "source_prefix_excerpt": "hor: Frederick Winslow Taylor Release date: September 1, 2004 [eBook #6435] Most recently updated: November 4, 2011 Language: English Other information and formats: www.gutenberg.org/ebooks/6435 Credits: Produced by Charles E. Nichols *** START OF THE PROJECT GUTENBERG EBOOK THE PRINCIPLES OF SCIENTIFIC MANAGEMENT *** Produced by Charles E. Nichols The Principles of Scientific Management by FREDERICK WINSLOW TAYLOR, M.E., Sc.D. 1911 INTRODUCTION ",
+  "source_tail_excerpt": " *** END OF THE PROJECT GUTENBERG EBOOK THE PRINCIPLES OF SCIENTIFIC MANAGEMENT *** Updated editions",
+  "rights_basis_exact_prior": "Lifetime-published single-author English literary narrative; verified author death 1915, original publication 1911; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "art_hashes": [
+    {
+      "side": "front",
+      "original": "95e0d15b63239cbac65cb8911656608b0a5532063751c1f9f9c0b1ef8ba81c77",
+      "overlay": "67895aecbc4c29e45658819f7b76316a3caecf5d9cca79c4592c03c5d90d581b",
+      "delivery": "b53d8f06691749b6c82fe003513163330698b53ba4f5d02721d15d7f17a68644",
+      "delivery_bytes": 64336,
+      "outside_precise_masks_exact": true
+    },
+    {
+      "side": "back",
+      "original": "e24a4592a4f0616b3b2fce31a6f960cded1f9a97cc852340ed8b1e648e454427",
+      "overlay": "a544cc2b26c584891032db2fd9ea447f33b4a72ab1e7801a5de853f3463aa5b9",
+      "delivery": "ed604d4e425551bba8863ccbc93c919d77ed42122a4d5c15bb217f604432348a",
+      "delivery_bytes": 52330,
+      "outside_precise_masks_exact": true
+    }
+  ],
+  "visual_delivery": "PASS",
+  "binding_disposition": "PASS_UNACCEPTED_PROPOSAL",
+  "substantive_blocker": null,
+  "prospective_acceptance_by_root_still_required": true,
+  "canonical_mutations": false,
+  "production_observed": false,
+  "no_new_GET_or_asset_render": true,
+  "reviewed_at": "2026-10-03T05:25:12.126871+00:00",
+  "actual_font_bytes_verified": {
+    "path": "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
+    "sha256": "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab"
+  },
+  "font_license": "Exact Bitstream Vera/DejaVu commercial raster licence bytes independently read and hashed; no redistributed font binary or inferred original type creation."
+}

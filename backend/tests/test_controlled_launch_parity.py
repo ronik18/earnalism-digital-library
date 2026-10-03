@@ -51,6 +51,25 @@ INDIA_TEXT_RELEASE_SLUGS = {
     "the-art-of-money-getting",
     "bn-035",
     "alices-adventures-in-wonderland",
+    'dsires-baby',
+    'sredni-vashtar',
+    'the-cop-and-the-anthem',
+    'the-open-window',
+    'the-selfish-giant',
+    'the-science-of-getting-rich',
+    'bn-066',
+    'lokrahasya',
+    'mrinalini',
+    'frankenstein',
+    'pride-and-prejudice',
+    'the-great-gatsby',
+    'the-secret-garden',
+    'the-time-machine',
+    'acres-of-diamonds',
+    'my-life-and-work',
+    'the-principles-of-scientific-management',
+    'the-wonderful-wizard-of-oz',
+    'book-5704b31005',
 }
 
 
@@ -65,6 +84,29 @@ REVIEWED_20261002_SLUGS = {
     "bn-035",
     "alices-adventures-in-wonderland",
 }
+
+REVIEWED_20261003_SLUGS = {
+    'dsires-baby',
+    'sredni-vashtar',
+    'the-cop-and-the-anthem',
+    'the-open-window',
+    'the-selfish-giant',
+    'the-science-of-getting-rich',
+    'bn-066',
+    'lokrahasya',
+    'mrinalini',
+    'frankenstein',
+    'pride-and-prejudice',
+    'the-great-gatsby',
+    'the-secret-garden',
+    'the-time-machine',
+    'acres-of-diamonds',
+    'my-life-and-work',
+    'the-principles-of-scientific-management',
+    'the-wonderful-wizard-of-oz',
+    'book-5704b31005',
+}
+REVIEWED_CAMPAIGN_SLUGS = REVIEWED_20261002_SLUGS | REVIEWED_20261003_SLUGS
 
 NEAR_READY_20261001_SLUGS = {
     "a-horseman-in-the-sky",
@@ -128,7 +170,7 @@ def test_owner_exclusion_tombstone_is_mirrored_exactly():
     }
 
 
-def test_backend_controlled_launch_opens_only_the_thirty_three_approved_india_text_titles_and_no_audio():
+def test_backend_controlled_launch_opens_only_the_fifty_two_approved_india_text_titles_and_no_audio():
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     backend_audio = set(backend_launch["audio_enabled_slugs"])
 
@@ -157,7 +199,7 @@ def test_india_commercial_text_release_is_mirrored_and_audio_remains_disabled():
         assert launch["audio_enabled_slugs"] == []
 
 
-def test_thirty_three_title_release_uses_commercial_mode_and_keeps_checkout_audio_disabled():
+def test_fifty_two_title_release_uses_commercial_mode_and_keeps_checkout_audio_disabled():
     root_launch = load_json(ROOT_CONTROLLED_LAUNCH)
     backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     expected_modes = {slug: "COMMERCIAL_ENTITLEMENT" for slug in INDIA_TEXT_RELEASE_SLUGS}
@@ -171,7 +213,7 @@ def test_thirty_three_title_release_uses_commercial_mode_and_keeps_checkout_audi
         assert launch["public_audio_exposure_enabled"] is False
 
 
-def test_thirty_three_title_release_has_hash_bound_reading_pass_rights_and_published_reader_manifests():
+def test_fifty_two_title_release_has_hash_bound_reading_pass_rights_and_published_reader_manifests():
     launch = load_json(BACKEND_CONTROLLED_LAUNCH)
     registry, revoked = load_production_registry()
     commercial_slugs = tuple(sorted(INDIA_TEXT_RELEASE_SLUGS))
@@ -204,7 +246,14 @@ def test_thirty_three_title_release_has_hash_bound_reading_pass_rights_and_publi
             or (slug == "agentic-ai-with-python" and record["accepted_by"].startswith("Ronik Basak, direct owner release instruction;"))
             or (slug in NEAR_READY_20261001_SLUGS and record["accepted_by"].startswith("Codex under Ronik Basak direct autonomous safe near-ready release instruction."))
             or (
-                slug in REVIEWED_20261002_SLUGS
+                slug in REVIEWED_20261003_SLUGS
+                and record["accepted_by"].startswith((
+                    "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03;",
+                    "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03;",
+                ))
+            )
+            or (
+                slug in REVIEWED_CAMPAIGN_SLUGS
                 and record["accepted_by"].startswith((
                     "Automated serialized integration controller under the product owner directive in issue #477 comment 5949652699",
                     "Automated isolated acceptance-preparation worker under the product-owner directive in issue #477 comment 5949652699",
@@ -212,7 +261,7 @@ def test_thirty_three_title_release_has_hash_bound_reading_pass_rights_and_publi
                 ))
             )
         )
-        if slug in {"the-adventures-of-sherlock-holmes", "agentic-ai-with-python"} | NEAR_READY_20261001_SLUGS | REVIEWED_20261002_SLUGS:
+        if slug in {"the-adventures-of-sherlock-holmes", "agentic-ai-with-python"} | NEAR_READY_20261001_SLUGS | REVIEWED_CAMPAIGN_SLUGS:
             assert record["territories"] == ["IN"]
             assert set(record["uses"]) == {
                 "catalog_metadata", "cover_display", "reader_preview", "reader_delivery",
@@ -273,7 +322,7 @@ def test_a_ghost_story_is_a_known_live_runtime_audit_control():
 
 def test_reviewed_cohort_denies_country_spoof_audio_tamper_and_revocation():
     registry, revoked = load_production_registry()
-    for slug in REVIEWED_20261002_SLUGS:
+    for slug in REVIEWED_CAMPAIGN_SLUGS:
         package = active_runtime_package(slug)
         record = load_json(package / "rights_decision.json")
         components = {

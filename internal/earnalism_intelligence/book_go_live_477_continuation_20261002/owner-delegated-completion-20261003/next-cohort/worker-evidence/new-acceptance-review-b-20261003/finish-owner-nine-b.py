@@ -1,0 +1,18 @@
+import pathlib,json,hashlib,datetime
+B=pathlib.Path('/workspace/scratch/181ef0a25f05');s=B/'next-owner-accepted-nine-20261003-v1';O=B/'new-acceptance-review-b-20261003';h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();a=json.loads((O/'owner-nine-stage-audit-b.json').read_text());r=json.loads((s/'acceptance-receipt.json').read_text());assert len(a['inventory'])==9;expected={'catalog_metadata','cover_display','reader_preview','reader_delivery','reading_pass_session','reading_pass_renewal'};checks=[]
+for x in a['inventory']:
+ assert x['all_hash_integrity_checks_pass'];assert all(v for k,v in x['isolated_candidate_evaluator'].items()if not k.startswith('audio'));assert all(not v for k,v in x['isolated_candidate_evaluator'].items()if k.startswith('audio'));p=s/'data/controlled_publications'/x['slug'];load=lambda n:json.loads((p/n).read_text());d=load('rights_decision.json');pub=load('public_book.json');ap=load('approval_evidence.json');cover=load('cover_provenance.json');auth=load('publication_authorization.json');man=load('publication_manifest.json');dec=load('owner_artwork_declaration.json');assert h(p/'owner_artwork_declaration.json')=='0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264';assert set(d['uses'])==expected;assert d['status']=='ACCEPTED'and d['conditions_satisfied']==True;assert pub['rights_basis']==d['basis'];assert cover['original_creator']=='Ronik Basak, as named by the actual direct owner declaration';assert cover['commercial_use_authorized']and cover['cover_display_approved'];assert cover['accepted_by']==d['accepted_by'];assert cover['accepted_at']==r['actual_acceptance_at'];assert cover['production_observed']==False;assert auth['publication_authorized'];assert auth['audio_authorized']==False
+ claims=[]
+ def scan(j,k=''):
+  if isinstance(j,dict):
+   for name,v in j.items():scan(v,k+'.'+name)
+  elif isinstance(j,list):
+   for i,v in enumerate(j):scan(v,k+f'[{i}]')
+  elif ('audio'in k.lower()or'listen'in k.lower())and(j is True or isinstance(j,str)and j.startswith('http')):claims.append([k,j])
+ for n in ['public_book.json','reader_manifest.json','approval_evidence.json','publication_authorization.json','publication_manifest.json']:scan(load(n),n)
+ assert not claims,(x['slug'],claims)
+ for n,z in r['cohort'][a['inventory'].index(x)]['reviews'].items():assert h(p/z['file'])==z['sha256']
+ if x['slug']=='the-secret-garden': print('gardenquote',load('cover_preparation.json')['cover_quote_checks'])
+ if x['slug']=='mrinalini':assert h(p/'license_notice.json')==h(s/'preserved-proposals/mrinalini/license_notice.json')
+ checks.append({'slug':x['slug'],'accepted_basis_coherent':True,'six_IN_text_uses':sorted(expected),'positive_effective_audio_claims':0,'owner_directive_exact_sha256':h(p/'owner_artwork_declaration.json'),'cover_actor_actual':cover['accepted_by'],'source_and_visual_reviews_exact_hashes_reused':True})
+a.update({'disposition':'PASS_EXACT_NINE_PROSPECTIVE_ACCEPTED_BINDINGS_NOT_RELEASED','reviewed_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'semantic_checks':checks,'mrinalini_ascending_pinned_scan_order_review_sha256':h(O/'mrinalini-existing-source-order-review-b.json'),'known_paperwork_corrections':'Pride effective audiobook_use_approved is now false, exact old approval preserved. SecretGarden source line capital A vs cover sentence a comparison is expressly disclosed, not a whitespace-only assertion.','no_source_art_visual_GET_or_render_repetition':True,'named_release_gate':r['global_gate']});p=O/'owner-nine-final-binding-review-b.json';p.write_text(json.dumps(a,ensure_ascii=False,indent=2)+'\n');print('PASS',h(p),'components',sum(len(x['components'])for x in a['inventory']),'checksums',sum(x['checksum_count']for x in a['inventory']))

@@ -1,0 +1,40 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "lokrahasya",
+  "edition": "Lokrahasya1939 centenary edition edited Brajendra Nath Bandyopadhyay and Sajanikanta Das; separately authored foreword excluded",
+  "territories": [
+    "IN"
+  ],
+  "scope": "PROPOSED_EXACT_IN_TEXT_READER_CATALOG_AND_COVER_DISPLAY",
+  "source_sha256": "2c536fb46b7a52f42f63c702effcd971d97059c56be4a6b5d7df642b4a8cddc1",
+  "content_sha256": "c6ed32e15a45ecdf03b2a20ffbea427d89a4c5992f930b00358f563019522943",
+  "chapter_sha256": {
+    "chapter-001": "729a0ec8c88e8cb5de85698b032b40886a6ac47f0bb08b6b980682744377c1ef",
+    "chapter-002": "619ab8c5384adbfa816179f9d8a0776bb13d1f08c555a25215813235cd4e46f7",
+    "chapter-003": "39dd197a1ccf93e36781c6ed5dc374b4f97514222fadf665e8f02e564189e4be",
+    "chapter-004": "07373c51e0df6d2e5222d038c99b56f696c50b11c6667b17a3cea1c6d940476c",
+    "chapter-005": "e908dc63447c4191d6edfee2787858a8fc052758e7226b00d40aed06770b1c90",
+    "chapter-006": "3ad29d39908abc6655d06f7e3bc0fedec9a4702f7ae3de30fba496a29410f95f",
+    "chapter-007": "32c76d54e0cf04f36984a029b6e0a17dbfcc27db6dd69acf9a888be8e05db422",
+    "chapter-008": "5628f612b22513c49148b53b7dc52aa26b1e2c67f29bba0585af989cbe233e5d",
+    "chapter-009": "deb0cd9746bb517cc7a206302b7331bfdbe255474b76738920672db59755013e",
+    "chapter-010": "d70f464f1994a2227b944d59df831eca9b2ee5c4161b66d624c26613ab487f3d",
+    "chapter-011": "93be984a04423686dd6ed15f0721120048c3bef211b0c95a1bf33696f469a76c",
+    "chapter-012": "c46a3bb7a8bcdb19f215410bbfce96e779d756dc9406a817fec932b824f478c9",
+    "chapter-013": "0c3c9292ecaf155a50c70d36adbe07fcd1073ba169bf54efd6ff63eae925edab",
+    "chapter-014": "ae245e65f7679a7423fd11e437661cbfdf3d7ace87c5cab4d40c6e20a8d0ba28",
+    "chapter-015": "80bacae9079c0f1c73a888b665c28760ebc6d8e5b969d24f54b26400aa7afd3e",
+    "chapter-016": "8a596d46b799d3896bc9b5b55b50fbdccd52baf575aafaa21f9f5ad2278344a8"
+  },
+  "rights_decision_id": "india-20261003-lokrahasya-exact-edition-text-cover-proposal",
+  "license_notice_sha256": "4f4a62c163fe662c298635e5e3397883fc609a0cab1635b614a25abd466d16c3",
+  "cover_provenance_status": "PROPOSED_NOT_ACCEPTED",
+  "authorized_by": "Automated isolated proposal preparation under Oct3 prospective owner delegation; not yet accepted, no human/legal signature inferred.",
+  "verified_at": "2026-10-03T04:56:37.110955+00:00",
+  "publication_authorized": false,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Fresh independent pixel/delivery/copy/package reviews twice, actual prospective component acceptance, serialized protected release/deployment/canary/readback gates remain required.",
+  "cover_provenance_sha256": "af96b45c07ae48dea21498f6005a524135d72628fef33d1e7ded37201096675d",
+  "cover_status": "PENDING_TWO_EXACT_COMPONENT_REVIEWS"
+}

@@ -1,0 +1,92 @@
+{
+  "slug": "the-open-window",
+  "scope": "FINAL_CONSOLIDATED_UNACCEPTED_TEXT_ONLY_PAPERWORK_CORRECTION",
+  "changed_fields": {
+    "public_book": {
+      "cover_dimensions": {
+        "before": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        },
+        "after": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      },
+      "rights_basis": {
+        "before": "Saki died 1916; first published 1911. Public domain in India and the U.S.",
+        "after": "Lifetime-published single-author English literary narrative; verified author death 1916, verified lifetime collection publication 1914 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record."
+      }
+    },
+    "approval_evidence": {
+      "removed_fields": [],
+      "changed_fields": {}
+    }
+  },
+  "removed_current_components_archived": [],
+  "changed_files": {
+    "checksum_manifest.json": {
+      "before": "57c366126d4ef9ccd7bdf069322fca6308ca5199163091e88b52597135854e3d",
+      "after": "6a3349c1068fd4fa76c7fbfff7b8f0c14b8bfc03ce78dc07fba57c3702aa1336"
+    },
+    "public_book.json": {
+      "before": "f4efd58d8a5b3ffbaa1c5e01c8f3a927204fabd259d8e0ebbbcc3001715804b9",
+      "after": "780205125e1930087b8033936bb4b73414ed451212ad9fd4c8939cb4a85b4d64"
+    },
+    "publication_manifest.json": {
+      "before": "cb4f5d9a85feacf7cbc08135af74830eac4ab034c1234a04a1d489b0cec91228",
+      "after": "c2be01516de1009c0b2f85d0323f1abb532ffc85660005ca3afb002bc83486ee"
+    },
+    "rights_decision.json": {
+      "before": "5384877de68660e868e804f46c6f8f0d7c4e2c9e4ee08fa4d3d63fc7a273504d",
+      "after": "cd315fa565962854718503497590a5e6933561470a2f00eebf8e1a001b48f112"
+    }
+  },
+  "no_active_audio_positive_observations_or_urls_in_effective_public_reader_approval_manifest": true,
+  "source_chapter_license_sync_original_repair_delivery_bytes_unchanged": true,
+  "cover_delivery_dimensions_derived_from_actual_bytes": {
+    "front": [
+      800,
+      1200
+    ],
+    "back": [
+      800,
+      1200
+    ]
+  },
+  "actual_acceptance_created": false,
+  "new_package_files_sha256": {
+    "highlight_sync.json": "b2742d2516aa71aa23f79d33dba6ff5c27c5036c6b581197b6c55f991e97215e",
+    "source_evidence.json": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d",
+    "publication_manifest.json": "c2be01516de1009c0b2f85d0323f1abb532ffc85660005ca3afb002bc83486ee",
+    "reader_manifest.json": "8f5a8d563c587a28d30e1e001447cdb5328bdcd49df4b61d8d7838401aac6151",
+    "publication_authorization.json": "b721690f38aedead88b16e6d989557c84571da8a9e4ec02cc549071a5ddbdc3e",
+    "approval_evidence.json": "287ff7059f7d8e04407a3ba056726dcc4e45fe773ca989c89b1566bf7ff09824",
+    "public_book.json": "780205125e1930087b8033936bb4b73414ed451212ad9fd4c8939cb4a85b4d64",
+    "rights_decision.json": "cd315fa565962854718503497590a5e6933561470a2f00eebf8e1a001b48f112",
+    "checksum_manifest.json": "6a3349c1068fd4fa76c7fbfff7b8f0c14b8bfc03ce78dc07fba57c3702aa1336",
+    "cover_provenance.json": "9540748697d562d47c872ee30a8bf8a88dcd7f87ce1883b8e6d0233c012f2fad",
+    "covers/back-delivery.webp": "6c87ea0a562e727b5527711f6f279bf9b95cad6a0817d15e36f783fd87016e76",
+    "covers/front-delivery.webp": "fd16c96883897722c2da7c49e2012dd9e5a3771bf2f99d11b89a29add60a8960",
+    "covers/front-layout-repair.png": "22a9981529ca3c46a81fae68c056b43d2253595f436110767c153eb9344589bd",
+    "covers/front-original.png": "351653d69bebc7567f868007370fb65b72eadbd41f7cbb2ee276e6024d0a1bb1",
+    "covers/back-original.png": "19717b3bb51630712f2f8cad58859361c9015ab726f3335b196c2b5924660a0d",
+    "covers/back-layout-repair.png": "5865b811a2feb412655fa56f6b2a9f6e6fbbd39881423bf14c77e1844a827829",
+    "chapters/chapter-001.json": "bc12b5dbae5cae481b59d11eb9fc43a7c875f4cf2b37d52107bce93957375a00"
+  },
+  "package_inventory_canonical_sha256": "f407876e85aff31668b5353e8204086b9b8eb0cee61dc2a62110501c0ee04dca",
+  "decision_raw_sha256": "cd315fa565962854718503497590a5e6933561470a2f00eebf8e1a001b48f112",
+  "decision_canonical_sha256": "3e6f3be3fe77ebfe09bd5913fbd4e16368d252d3e755dc4bccdf3606864027f7"
+}

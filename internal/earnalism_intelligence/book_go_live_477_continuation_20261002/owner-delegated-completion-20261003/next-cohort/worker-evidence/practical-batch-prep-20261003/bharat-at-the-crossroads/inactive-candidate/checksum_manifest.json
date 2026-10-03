@@ -1,0 +1,54 @@
+{
+  "slug": "bharat-at-the-crossroads",
+  "generated_at": "2026-10-03T05:04:16.164575+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "701b2d1d0c779b57fe5a23e4610d23ec9a3586b5959848db3e5b8936144bfa75"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "fdfa8aee8c648f05ff1165e03d42c44c46324ad1e531e2c29790a6c02c700f02"
+    },
+    {
+      "file": "cover_delivery_derivation.json",
+      "sha256": "8aba3337c8140ddcb424fea5bc3b196199c555888e9c4f455c9b605e5b3cd0ed"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "9d44371e25509308c9d08466e1cf8c07c6f2d8dcfd3e0ce63b273f12bcada205"
+    },
+    {
+      "file": "covers/back.png",
+      "sha256": "2e7564a64bb215397374a734e66e023010c22cdead23d3cb812ded6a54bc7665"
+    },
+    {
+      "file": "covers/front.png",
+      "sha256": "674c1aee2b6c1a7b25a5b28cd7e4737787153b8f0f4d8e6c8f7ee83a92a28c05"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "800de1dc55c5fa17b5d3810f91650935f235bc65891f2f85acf4731e0c5fa0ab"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "b9692c348f3e9d2323c27b6616010c17ca55473daabad92da4ade1da6fc2eb42"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "ef67bcf8019f04b2c78b5315d758aa42df3dd438297c884a9056d5d08a26b421"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "7a73f6ebbaafec41301aa231c8f4d057d39892e6d2ffb3017941914809e47668"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "52c92e6c6325c608bceec71928da428ac67be2b9d17c2c01ffc93c311fdd8e36"
+    },
+    {
+      "file": "source_integrity_validation.json",
+      "sha256": "01c2fb4ab9c360ced67e4b7a899d06995e7553ad8696fc5b9f1926b201b821ee"
+    }
+  ]
+}

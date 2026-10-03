@@ -1,0 +1,30 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "the-selfish-giant",
+  "edition": "Project Gutenberg #902 selected Wilde Selfish Giant narrative, 1910 impression; illustrations excluded",
+  "territories": [
+    "IN"
+  ],
+  "scope": "PROPOSED_TEXT_READER_CATALOG_METADATA_AND_EXACT_COVER_DISPLAY",
+  "source_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+  "content_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+  "chapter_sha256": {
+    "chapter-001": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5"
+  },
+  "cover_provenance_sha256": "becaa05505a87f54f017f6ef2d80a921196ed281993a22a72bd2b1c3f4dd536c",
+  "cover_status": "PENDING_TWO_INDEPENDENT_REVIEWS",
+  "authorized_by": "Automated isolated proposal preparation under prospective owner delegation; acceptance pending exact passing reviews.",
+  "verified_at": "2026-10-03T04:20:29.339226+00:00",
+  "publication_authorized": false,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Proposal only, not a new effective acceptance. Two fresh independent repair/delivery/package reviews, actual prospective automated component acceptance and serialized protected release gates required.",
+  "not_authorized": [
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation"
+  ],
+  "rights_decision_id": "india-20261003-the-selfish-giant-pg902-exact-text-cover",
+  "existing_text_scope_preserved": "TEXT_READER_ONLY_NON_COVER_COMPONENTS"
+}

@@ -1,0 +1,1574 @@
+{
+  "schema": "earnalism.final19-runtime-engineering-bindings.v2",
+  "canonical_head": "0fee65668f94284d180065d0fe8b38face924498",
+  "final_accepted_stage": "/workspace/scratch/181ef0a25f05/next-owner-accepted-final-nineteen-20261003-v2",
+  "ordered_new_slugs": [
+    "dsires-baby",
+    "sredni-vashtar",
+    "the-cop-and-the-anthem",
+    "the-open-window",
+    "the-selfish-giant",
+    "the-science-of-getting-rich",
+    "bn-066",
+    "lokrahasya",
+    "mrinalini",
+    "frankenstein",
+    "pride-and-prejudice",
+    "the-great-gatsby",
+    "the-secret-garden",
+    "the-time-machine",
+    "acres-of-diamonds",
+    "my-life-and-work",
+    "the-principles-of-scientific-management",
+    "the-wonderful-wizard-of-oz",
+    "book-5704b31005"
+  ],
+  "release_count": 52,
+  "production_registry_records": 55,
+  "runtime_package_count": 102,
+  "runtime_chapter_count": 826,
+  "new_backend_mirrors": [
+    "acres-of-diamonds",
+    "my-life-and-work",
+    "the-principles-of-scientific-management"
+  ],
+  "frozen_fixture_sha256": "9a1f1edbbbd6d6ea758bb16ca649c3e1ece3ebd2d337f325c04b3bac96d0846f",
+  "rows": [
+    {
+      "slug": "dsires-baby",
+      "chapter_count": 1,
+      "ordered_chapter_identity": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "reader_manifest_sha256": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee",
+      "source_evidence_sha256": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb",
+      "pages": 4,
+      "decision_id": "india-20261003-dsires-baby-exact-reader-cover-prospective-accepted"
+    },
+    {
+      "slug": "sredni-vashtar",
+      "chapter_count": 1,
+      "ordered_chapter_identity": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "reader_manifest_sha256": "2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad",
+      "source_evidence_sha256": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
+      "pages": 4,
+      "decision_id": "india-20261003-sredni-vashtar-exact-reader-cover-prospective-accepted"
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "chapter_count": 1,
+      "ordered_chapter_identity": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "reader_manifest_sha256": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22",
+      "source_evidence_sha256": "f40f277d758a03b9e05dd6ffa721b058766db6955ba4414d183a7f9bf45fb84f",
+      "pages": 5,
+      "decision_id": "india-20261003-the-cop-and-the-anthem-exact-reader-cover-prospective-accepted"
+    },
+    {
+      "slug": "the-open-window",
+      "chapter_count": 1,
+      "ordered_chapter_identity": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "reader_manifest_sha256": "8f5a8d563c587a28d30e1e001447cdb5328bdcd49df4b61d8d7838401aac6151",
+      "source_evidence_sha256": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d",
+      "pages": 3,
+      "decision_id": "india-20261003-the-open-window-exact-reader-cover-prospective-accepted"
+    },
+    {
+      "slug": "the-selfish-giant",
+      "chapter_count": 1,
+      "ordered_chapter_identity": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "reader_manifest_sha256": "d5ce7da734364efdd9a2bd6eace1ee2df66bcfa0dcf7ea4e99d49502b330fc9c",
+      "source_evidence_sha256": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d",
+      "pages": 3,
+      "decision_id": "india-20261003-the-selfish-giant-exact-reader-cover-prospective-accepted"
+    },
+    {
+      "slug": "the-science-of-getting-rich",
+      "chapter_count": 18,
+      "ordered_chapter_identity": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        },
+        {
+          "id": "chapter-017",
+          "order": 17
+        },
+        {
+          "id": "chapter-018",
+          "order": 18
+        }
+      ],
+      "reader_manifest_sha256": "a42883b4eb214ae086998672472b0f86c9709e550da35c87789f95564cdefdb7",
+      "source_evidence_sha256": "6324de50de9db456175bcd2cbecec794641fa8bdd322d2de2b49eaacc713a117",
+      "pages": 45,
+      "decision_id": "india-20261003-the-science-of-getting-rich-exact-reader-cover-prospective-accepted"
+    },
+    {
+      "slug": "bn-066",
+      "chapter_count": 46,
+      "ordered_chapter_identity": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-022",
+          "order": 2
+        },
+        {
+          "id": "chapter-023",
+          "order": 3
+        },
+        {
+          "id": "chapter-024",
+          "order": 4
+        },
+        {
+          "id": "chapter-025",
+          "order": 5
+        },
+        {
+          "id": "chapter-026",
+          "order": 6
+        },
+        {
+          "id": "chapter-027",
+          "order": 7
+        },
+        {
+          "id": "chapter-028",
+          "order": 8
+        },
+        {
+          "id": "chapter-029",
+          "order": 9
+        },
+        {
+          "id": "chapter-030",
+          "order": 10
+        },
+        {
+          "id": "chapter-031",
+          "order": 11
+        },
+        {
+          "id": "chapter-032",
+          "order": 12
+        },
+        {
+          "id": "chapter-033",
+          "order": 13
+        },
+        {
+          "id": "chapter-034",
+          "order": 14
+        },
+        {
+          "id": "chapter-035",
+          "order": 15
+        },
+        {
+          "id": "chapter-036",
+          "order": 16
+        },
+        {
+          "id": "chapter-037",
+          "order": 17
+        },
+        {
+          "id": "chapter-038",
+          "order": 18
+        },
+        {
+          "id": "chapter-039",
+          "order": 19
+        },
+        {
+          "id": "chapter-040",
+          "order": 20
+        },
+        {
+          "id": "chapter-041",
+          "order": 21
+        },
+        {
+          "id": "chapter-042",
+          "order": 22
+        },
+        {
+          "id": "chapter-045",
+          "order": 23
+        },
+        {
+          "id": "chapter-044",
+          "order": 24
+        },
+        {
+          "id": "chapter-043",
+          "order": 25
+        },
+        {
+          "id": "chapter-046",
+          "order": 26
+        },
+        {
+          "id": "chapter-002",
+          "order": 27
+        },
+        {
+          "id": "chapter-003",
+          "order": 28
+        },
+        {
+          "id": "chapter-004",
+          "order": 29
+        },
+        {
+          "id": "chapter-005",
+          "order": 30
+        },
+        {
+          "id": "chapter-006",
+          "order": 31
+        },
+        {
+          "id": "chapter-007",
+          "order": 32
+        },
+        {
+          "id": "chapter-008",
+          "order": 33
+        },
+        {
+          "id": "chapter-009",
+          "order": 34
+        },
+        {
+          "id": "chapter-010",
+          "order": 35
+        },
+        {
+          "id": "chapter-011",
+          "order": 36
+        },
+        {
+          "id": "chapter-012",
+          "order": 37
+        },
+        {
+          "id": "chapter-013",
+          "order": 38
+        },
+        {
+          "id": "chapter-014",
+          "order": 39
+        },
+        {
+          "id": "chapter-015",
+          "order": 40
+        },
+        {
+          "id": "chapter-016",
+          "order": 41
+        },
+        {
+          "id": "chapter-017",
+          "order": 42
+        },
+        {
+          "id": "chapter-018",
+          "order": 43
+        },
+        {
+          "id": "chapter-019",
+          "order": 44
+        },
+        {
+          "id": "chapter-020",
+          "order": 45
+        },
+        {
+          "id": "chapter-021",
+          "order": 46
+        }
+      ],
+      "reader_manifest_sha256": "cf08811a9edf32051c6929e8eb5b29abd6a36df4232c50049e630575f43114d7",
+      "source_evidence_sha256": "227c479e011f38150820a341bed084e5c184cda97bc12c034d7093ce660ab0e8",
+      "pages": 87,
+      "decision_id": "india-20261003-bn-066-exact-reader-cover-prospective-accepted"
+    },
+    {
+      "slug": "lokrahasya",
+      "chapter_count": 16,
+      "ordered_chapter_identity": [
+        {
+          "id": "chapter-006",
+          "order": 1
+        },
+        {
+          "id": "chapter-008",
+          "order": 2
+        },
+        {
+          "id": "chapter-001",
+          "order": 3
+        },
+        {
+          "id": "chapter-002",
+          "order": 4
+        },
+        {
+          "id": "chapter-007",
+          "order": 5
+        },
+        {
+          "id": "chapter-011",
+          "order": 6
+        },
+        {
+          "id": "chapter-004",
+          "order": 7
+        },
+        {
+          "id": "chapter-009",
+          "order": 8
+        },
+        {
+          "id": "chapter-010",
+          "order": 9
+        },
+        {
+          "id": "chapter-012",
+          "order": 10
+        },
+        {
+          "id": "chapter-015",
+          "order": 11
+        },
+        {
+          "id": "chapter-013",
+          "order": 12
+        },
+        {
+          "id": "chapter-005",
+          "order": 13
+        },
+        {
+          "id": "chapter-003",
+          "order": 14
+        },
+        {
+          "id": "chapter-014",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        }
+      ],
+      "reader_manifest_sha256": "cd0d23d355b04e8a076dbc348a1364c3640fe7a149d8b7b2e78690c0ee22261c",
+      "source_evidence_sha256": "b91f203f5374ba789227c46411bf5d4c2a3721cd27c4ed5e58dcedffaa33fa7e",
+      "pages": 54,
+      "decision_id": "india-20261003-lokrahasya-exact-reader-cover-prospective-accepted"
+    },
+    {
+      "slug": "mrinalini",
+      "chapter_count": 46,
+      "ordered_chapter_identity": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        },
+        {
+          "id": "chapter-017",
+          "order": 17
+        },
+        {
+          "id": "chapter-018",
+          "order": 18
+        },
+        {
+          "id": "chapter-019",
+          "order": 19
+        },
+        {
+          "id": "chapter-020",
+          "order": 20
+        },
+        {
+          "id": "chapter-021",
+          "order": 21
+        },
+        {
+          "id": "chapter-022",
+          "order": 22
+        },
+        {
+          "id": "chapter-023",
+          "order": 23
+        },
+        {
+          "id": "chapter-024",
+          "order": 24
+        },
+        {
+          "id": "chapter-025",
+          "order": 25
+        },
+        {
+          "id": "chapter-026",
+          "order": 26
+        },
+        {
+          "id": "chapter-027",
+          "order": 27
+        },
+        {
+          "id": "chapter-028",
+          "order": 28
+        },
+        {
+          "id": "chapter-029",
+          "order": 29
+        },
+        {
+          "id": "chapter-030",
+          "order": 30
+        },
+        {
+          "id": "chapter-031",
+          "order": 31
+        },
+        {
+          "id": "chapter-032",
+          "order": 32
+        },
+        {
+          "id": "chapter-033",
+          "order": 33
+        },
+        {
+          "id": "chapter-034",
+          "order": 34
+        },
+        {
+          "id": "chapter-035",
+          "order": 35
+        },
+        {
+          "id": "chapter-036",
+          "order": 36
+        },
+        {
+          "id": "chapter-037",
+          "order": 37
+        },
+        {
+          "id": "chapter-038",
+          "order": 38
+        },
+        {
+          "id": "chapter-039",
+          "order": 39
+        },
+        {
+          "id": "chapter-040",
+          "order": 40
+        },
+        {
+          "id": "chapter-041",
+          "order": 41
+        },
+        {
+          "id": "chapter-042",
+          "order": 42
+        },
+        {
+          "id": "chapter-043",
+          "order": 43
+        },
+        {
+          "id": "chapter-044",
+          "order": 44
+        },
+        {
+          "id": "chapter-045",
+          "order": 45
+        },
+        {
+          "id": "chapter-046",
+          "order": 46
+        }
+      ],
+      "reader_manifest_sha256": "b2510b44fa9ec57a7a7cc48be2482787ee4fe6cba0021ddd8a6cff71ef5275f7",
+      "source_evidence_sha256": "d361d2a57e36d6cf70c84f1b5803a99306467116f44e200cfc16659e0145e94f",
+      "pages": 87,
+      "decision_id": "india-20261003-mrinalini-exact-reader-cover-prospective-accepted"
+    },
+    {
+      "slug": "frankenstein",
+      "chapter_count": 28,
+      "ordered_chapter_identity": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        },
+        {
+          "id": "chapter-017",
+          "order": 17
+        },
+        {
+          "id": "chapter-018",
+          "order": 18
+        },
+        {
+          "id": "chapter-019",
+          "order": 19
+        },
+        {
+          "id": "chapter-020",
+          "order": 20
+        },
+        {
+          "id": "chapter-021",
+          "order": 21
+        },
+        {
+          "id": "chapter-022",
+          "order": 22
+        },
+        {
+          "id": "chapter-023",
+          "order": 23
+        },
+        {
+          "id": "chapter-024",
+          "order": 24
+        },
+        {
+          "id": "chapter-025",
+          "order": 25
+        },
+        {
+          "id": "chapter-026",
+          "order": 26
+        },
+        {
+          "id": "chapter-027",
+          "order": 27
+        },
+        {
+          "id": "chapter-028",
+          "order": 28
+        }
+      ],
+      "reader_manifest_sha256": "2d7d0f01dcbc35eebc51a178b4eb72a9d766cfe5ec56d618113455ba72c16434",
+      "source_evidence_sha256": "dc06292e3e257f690c3017e88ded33d0b6baa8b778d1629f3074d1f76b5df449",
+      "pages": 144,
+      "decision_id": "india-20261003-frankenstein-exact-reader-cover-prospective-accepted"
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "chapter_count": 61,
+      "ordered_chapter_identity": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        },
+        {
+          "id": "chapter-017",
+          "order": 17
+        },
+        {
+          "id": "chapter-018",
+          "order": 18
+        },
+        {
+          "id": "chapter-019",
+          "order": 19
+        },
+        {
+          "id": "chapter-020",
+          "order": 20
+        },
+        {
+          "id": "chapter-021",
+          "order": 21
+        },
+        {
+          "id": "chapter-022",
+          "order": 22
+        },
+        {
+          "id": "chapter-023",
+          "order": 23
+        },
+        {
+          "id": "chapter-024",
+          "order": 24
+        },
+        {
+          "id": "chapter-025",
+          "order": 25
+        },
+        {
+          "id": "chapter-026",
+          "order": 26
+        },
+        {
+          "id": "chapter-027",
+          "order": 27
+        },
+        {
+          "id": "chapter-028",
+          "order": 28
+        },
+        {
+          "id": "chapter-029",
+          "order": 29
+        },
+        {
+          "id": "chapter-030",
+          "order": 30
+        },
+        {
+          "id": "chapter-031",
+          "order": 31
+        },
+        {
+          "id": "chapter-032",
+          "order": 32
+        },
+        {
+          "id": "chapter-033",
+          "order": 33
+        },
+        {
+          "id": "chapter-034",
+          "order": 34
+        },
+        {
+          "id": "chapter-035",
+          "order": 35
+        },
+        {
+          "id": "chapter-036",
+          "order": 36
+        },
+        {
+          "id": "chapter-037",
+          "order": 37
+        },
+        {
+          "id": "chapter-038",
+          "order": 38
+        },
+        {
+          "id": "chapter-039",
+          "order": 39
+        },
+        {
+          "id": "chapter-040",
+          "order": 40
+        },
+        {
+          "id": "chapter-041",
+          "order": 41
+        },
+        {
+          "id": "chapter-042",
+          "order": 42
+        },
+        {
+          "id": "chapter-043",
+          "order": 43
+        },
+        {
+          "id": "chapter-044",
+          "order": 44
+        },
+        {
+          "id": "chapter-045",
+          "order": 45
+        },
+        {
+          "id": "chapter-046",
+          "order": 46
+        },
+        {
+          "id": "chapter-047",
+          "order": 47
+        },
+        {
+          "id": "chapter-048",
+          "order": 48
+        },
+        {
+          "id": "chapter-049",
+          "order": 49
+        },
+        {
+          "id": "chapter-050",
+          "order": 50
+        },
+        {
+          "id": "chapter-051",
+          "order": 51
+        },
+        {
+          "id": "chapter-052",
+          "order": 52
+        },
+        {
+          "id": "chapter-053",
+          "order": 53
+        },
+        {
+          "id": "chapter-054",
+          "order": 54
+        },
+        {
+          "id": "chapter-055",
+          "order": 55
+        },
+        {
+          "id": "chapter-056",
+          "order": 56
+        },
+        {
+          "id": "chapter-057",
+          "order": 57
+        },
+        {
+          "id": "chapter-058",
+          "order": 58
+        },
+        {
+          "id": "chapter-059",
+          "order": 59
+        },
+        {
+          "id": "chapter-060",
+          "order": 60
+        },
+        {
+          "id": "chapter-061",
+          "order": 61
+        }
+      ],
+      "reader_manifest_sha256": "81b6c23e716ea4d26fae26cc8e9e3e7e37637fd0c9fb1619dccb7a94d0ab7676",
+      "source_evidence_sha256": "9e4efacc3dbd251ea18aacd5805d781c1f64a450bea0225fae4ba6a394a97e99",
+      "pages": 258,
+      "decision_id": "india-20261003-pride-and-prejudice-exact-reader-cover-prospective-accepted"
+    },
+    {
+      "slug": "the-great-gatsby",
+      "chapter_count": 10,
+      "ordered_chapter_identity": [
+        {
+          "id": "chapter-000",
+          "order": 1
+        },
+        {
+          "id": "chapter-001",
+          "order": 2
+        },
+        {
+          "id": "chapter-002",
+          "order": 3
+        },
+        {
+          "id": "chapter-003",
+          "order": 4
+        },
+        {
+          "id": "chapter-004",
+          "order": 5
+        },
+        {
+          "id": "chapter-005",
+          "order": 6
+        },
+        {
+          "id": "chapter-006",
+          "order": 7
+        },
+        {
+          "id": "chapter-007",
+          "order": 8
+        },
+        {
+          "id": "chapter-008",
+          "order": 9
+        },
+        {
+          "id": "chapter-009",
+          "order": 10
+        }
+      ],
+      "reader_manifest_sha256": "f544166427c91bb2b8546484bf0c811761345f2ec8f1c73c00afad88411fcb4c",
+      "source_evidence_sha256": "93a1e5eab7ce62def0ef60ba3a2ae6e56ed964c688c1f2a827f3e88664a30874",
+      "pages": 92,
+      "decision_id": "india-20261003-the-great-gatsby-exact-reader-cover-prospective-accepted"
+    },
+    {
+      "slug": "the-secret-garden",
+      "chapter_count": 27,
+      "ordered_chapter_identity": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        },
+        {
+          "id": "chapter-017",
+          "order": 17
+        },
+        {
+          "id": "chapter-018",
+          "order": 18
+        },
+        {
+          "id": "chapter-019",
+          "order": 19
+        },
+        {
+          "id": "chapter-020",
+          "order": 20
+        },
+        {
+          "id": "chapter-021",
+          "order": 21
+        },
+        {
+          "id": "chapter-022",
+          "order": 22
+        },
+        {
+          "id": "chapter-023",
+          "order": 23
+        },
+        {
+          "id": "chapter-024",
+          "order": 24
+        },
+        {
+          "id": "chapter-025",
+          "order": 25
+        },
+        {
+          "id": "chapter-026",
+          "order": 26
+        },
+        {
+          "id": "chapter-027",
+          "order": 27
+        }
+      ],
+      "reader_manifest_sha256": "75d9899ba4ecf348e9bc75da118a4b0ac3aa9cb1e595e8598e3541f9154dff4f",
+      "source_evidence_sha256": "d4fba2e016dc99ebbab2950c7f63186ec154e408da4d4acb09a82fa8ef959852",
+      "pages": 146,
+      "decision_id": "india-20261003-the-secret-garden-exact-reader-cover-prospective-accepted"
+    },
+    {
+      "slug": "the-time-machine",
+      "chapter_count": 17,
+      "ordered_chapter_identity": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        },
+        {
+          "id": "chapter-017",
+          "order": 17
+        }
+      ],
+      "reader_manifest_sha256": "1874f35f864ccffa65a9d7e38312c3f84df7fd8880120db0ac4ead237d1d913a",
+      "source_evidence_sha256": "010c2fd7d0fa5ae1370f081876448c94a9bad177df7fe0b621b0f91c39af0cf5",
+      "pages": 70,
+      "decision_id": "india-20261003-the-time-machine-exact-reader-cover-prospective-accepted"
+    },
+    {
+      "slug": "acres-of-diamonds",
+      "chapter_count": 12,
+      "ordered_chapter_identity": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        }
+      ],
+      "reader_manifest_sha256": "c083501e4fd683fe9490a8d5b113ef524b57b3aecacc98fbf73caf44e3066d0c",
+      "source_evidence_sha256": "9371f2af833cbd9683e138e121b7c6ae77f17a18de6dd46cb4507a301a6eb29e",
+      "pages": 79,
+      "decision_id": "india-20261003-acres-of-diamonds-exact-reader-cover-prospective-accepted"
+    },
+    {
+      "slug": "my-life-and-work",
+      "chapter_count": 20,
+      "ordered_chapter_identity": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        },
+        {
+          "id": "chapter-005",
+          "order": 5
+        },
+        {
+          "id": "chapter-006",
+          "order": 6
+        },
+        {
+          "id": "chapter-007",
+          "order": 7
+        },
+        {
+          "id": "chapter-008",
+          "order": 8
+        },
+        {
+          "id": "chapter-009",
+          "order": 9
+        },
+        {
+          "id": "chapter-010",
+          "order": 10
+        },
+        {
+          "id": "chapter-011",
+          "order": 11
+        },
+        {
+          "id": "chapter-012",
+          "order": 12
+        },
+        {
+          "id": "chapter-013",
+          "order": 13
+        },
+        {
+          "id": "chapter-014",
+          "order": 14
+        },
+        {
+          "id": "chapter-015",
+          "order": 15
+        },
+        {
+          "id": "chapter-016",
+          "order": 16
+        },
+        {
+          "id": "chapter-017",
+          "order": 17
+        },
+        {
+          "id": "chapter-018",
+          "order": 18
+        },
+        {
+          "id": "chapter-019",
+          "order": 19
+        },
+        {
+          "id": "chapter-020",
+          "order": 20
+        }
+      ],
+      "reader_manifest_sha256": "8abb80566e377a38ba0730ffb69c7dc0fbb53358c6e0908492d968fea1313acd",
+      "source_evidence_sha256": "1d5f331b74b4ac24ba559209d4d1c8ca3543a1cdc274a71bdf14bb2022b7d4b7",
+      "pages": 174,
+      "decision_id": "india-20261003-my-life-and-work-exact-reader-cover-prospective-accepted"
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "chapter_count": 4,
+      "ordered_chapter_identity": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        },
+        {
+          "id": "chapter-002",
+          "order": 2
+        },
+        {
+          "id": "chapter-003",
+          "order": 3
+        },
+        {
+          "id": "chapter-004",
+          "order": 4
+        }
+      ],
+      "reader_manifest_sha256": "87a47f53b9dbcbae66a09bee4bcc5769f4b5f584ef9bdfc4ab31b65959c3318f",
+      "source_evidence_sha256": "e6b091fd0aebe2517dd1e2b6c8e8ef14d5ea6d6540daa66c33e0ba27a9ef2380",
+      "pages": 78,
+      "decision_id": "india-20261003-the-principles-of-scientific-management-exact-reader-cover-prospective-accepted"
+    },
+    {
+      "slug": "the-wonderful-wizard-of-oz",
+      "chapter_count": 25,
+      "ordered_chapter_identity": [
+        {
+          "id": "chapter-000",
+          "order": 1
+        },
+        {
+          "id": "chapter-001",
+          "order": 2
+        },
+        {
+          "id": "chapter-002",
+          "order": 3
+        },
+        {
+          "id": "chapter-003",
+          "order": 4
+        },
+        {
+          "id": "chapter-004",
+          "order": 5
+        },
+        {
+          "id": "chapter-005",
+          "order": 6
+        },
+        {
+          "id": "chapter-006",
+          "order": 7
+        },
+        {
+          "id": "chapter-007",
+          "order": 8
+        },
+        {
+          "id": "chapter-008",
+          "order": 9
+        },
+        {
+          "id": "chapter-009",
+          "order": 10
+        },
+        {
+          "id": "chapter-010",
+          "order": 11
+        },
+        {
+          "id": "chapter-011",
+          "order": 12
+        },
+        {
+          "id": "chapter-012",
+          "order": 13
+        },
+        {
+          "id": "chapter-013",
+          "order": 14
+        },
+        {
+          "id": "chapter-014",
+          "order": 15
+        },
+        {
+          "id": "chapter-015",
+          "order": 16
+        },
+        {
+          "id": "chapter-016",
+          "order": 17
+        },
+        {
+          "id": "chapter-017",
+          "order": 18
+        },
+        {
+          "id": "chapter-018",
+          "order": 19
+        },
+        {
+          "id": "chapter-019",
+          "order": 20
+        },
+        {
+          "id": "chapter-020",
+          "order": 21
+        },
+        {
+          "id": "chapter-021",
+          "order": 22
+        },
+        {
+          "id": "chapter-022",
+          "order": 23
+        },
+        {
+          "id": "chapter-023",
+          "order": 24
+        },
+        {
+          "id": "chapter-024",
+          "order": 25
+        }
+      ],
+      "reader_manifest_sha256": "2323b65af075000645cd7ac0f3f841f4583ac1407ddefd849a1cbc7b06795d71",
+      "source_evidence_sha256": "7ec444ed90caa41fb950757933ee7399ef94fceab855bdd8c3e52a6806358ec5",
+      "pages": 77,
+      "decision_id": "india-20261003-the-wonderful-wizard-of-oz-exact-reader-cover-prospective-accepted"
+    },
+    {
+      "slug": "book-5704b31005",
+      "chapter_count": 1,
+      "ordered_chapter_identity": [
+        {
+          "id": "chapter-001",
+          "order": 1
+        }
+      ],
+      "reader_manifest_sha256": "6c7daced7a35b9f20ba2f8828e5636d7c644e6ceb272f1707871adafb5a2b759",
+      "source_evidence_sha256": "f7d3ac1cbe169532038b008d48c0313290cedca638d23c7696d75d3a0c072f3b",
+      "pages": 5,
+      "decision_id": "india-20261003-book-5704b31005-exact-reader-cover-prospective-accepted"
+    }
+  ],
+  "historical_fixture_unchanged": true,
+  "no_rights_or_runtime_mutation_by_child": true
+}

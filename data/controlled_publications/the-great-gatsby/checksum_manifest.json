@@ -4,7 +4,7 @@
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "c6101124ec129bd44da115a841cf9051e38f4d06c000d8c9ecda2ebaf69e73df"
+      "sha256": "10601541979f351948e09e6cc19eab167801f719668e63acf6e2a26cd581c98b"
     },
     {
       "file": "chapters/chapter-000.json",
@@ -47,16 +47,44 @@
       "sha256": "d475a9724ba4cb46caa499825ee3a1c53d409c42a02f2ab4d77a687be67e62b9"
     },
     {
+      "file": "cover_preparation.json",
+      "sha256": "dd8d44529394792c643779044e055bfc158b090c5cc2012a7ea4d3021174b20a"
+    },
+    {
+      "file": "covers/original-back.png",
+      "sha256": "b2696f4c8247fdc0bbb25a277e73a6eee757e0fa7e9083d176e0a98a7744c402"
+    },
+    {
+      "file": "covers/original-front.png",
+      "sha256": "8d98a278f5e09cdbfcb03c064424c6c0f221c3fc230be24e7b502affb915bb2a"
+    },
+    {
+      "file": "covers/the-great-gatsby-back-b2696f4c.webp",
+      "sha256": "a5a02d9abc0e867bc65527dd57dcdd7679843589f90191cc09302d9d871be32b"
+    },
+    {
+      "file": "covers/the-great-gatsby-back-deterministic.png",
+      "sha256": "8569231e38db5c1e81765f1d9935d236fd5cd72b222c62d6c9ba72a7be998e6b"
+    },
+    {
+      "file": "covers/the-great-gatsby-front-8d98a278.webp",
+      "sha256": "b3513c4e345b4aa6156f61e6d6a3a69ba3a034f79b6dc3c75773a941cbb516d1"
+    },
+    {
+      "file": "covers/the-great-gatsby-front-deterministic.png",
+      "sha256": "708f7cc8e5c21cc1cc535edcc5d000a9d7531f226bebb138e57e2c8633efd624"
+    },
+    {
       "file": "highlight_sync.json",
       "sha256": "05e57751ae1960050039ca565b5b395638c93478414a0ad757d744f249737888"
     },
     {
       "file": "public_book.json",
-      "sha256": "5fbbad6448aba0525184df8c422ffb60c4ba54d979d1167d0bffb0da262c2bbd"
+      "sha256": "52eef0e917e56bcb821784c64d5fa364f86d270965a4bdd64ae8f7eb2551748a"
     },
     {
       "file": "publication_authorization.json",
-      "sha256": "b6f95ba5c2fe97e9d2ad63cc50121a496fabef5ea535be0eb5fd6767c70e6e74"
+      "sha256": "17ab4194b90ea56edc3afa54731976b6f73b0f3319384d5ae2b1256e0b56576c"
     },
     {
       "file": "reader_manifest.json",
@@ -69,6 +97,26 @@
     {
       "file": "source_evidence.json",
       "sha256": "93a1e5eab7ce62def0ef60ba3a2ae6e56ed964c688c1f2a827f3e88664a30874"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "dc7172572198010c5008352aa772a8d5a51b2397d60c015feefde93abe2a38d4"
+    },
+    {
+      "file": "owner_artwork_declaration.json",
+      "sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264"
+    },
+    {
+      "file": "evidence/review_a.json",
+      "sha256": "5156952c739749bc0d45c2da3f66e595bba7b4855fc5851a909c7f45be5fe0a9"
+    },
+    {
+      "file": "evidence/review_b.json",
+      "sha256": "01f582df43f942e52ea04de108f9eaca6b3218dd0cb83ff6623f0b2711654d0d"
+    },
+    {
+      "file": "evidence/source_review_b.json",
+      "sha256": "3ba83ca584badcf990145195607e4db99d3f112fca18a8111355f2e71dc32a26"
     }
   ]
 }

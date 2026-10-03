@@ -1,0 +1,69 @@
+{
+  "schema": "earnalism.cover-provenance.v1",
+  "slug": "the-selfish-giant",
+  "status": "ACCEPTED_EXACT_COMPONENTS_UNDER_OWNER_DELEGATION",
+  "original_creator": "Repository/product owner; no additional identity inferred",
+  "owner_declaration": {
+    "statement": "Owner states all front and back covers are designed by the owner.",
+    "path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+    "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "scope": "Cover design only; not text rights or runtime release"
+  },
+  "owner_delegation": "Existing issue477 comment5949652699 and explicit prospective Oct3 owner instruction superseding procedural cover deferral. This proposal does not record acceptance before fresh passing reviews.",
+  "source_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+  "content_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+  "assets": {
+    "front": {
+      "original_file": "covers/front-original.png",
+      "original_sha256": "f10e1353932821ab22a0d13b68a40394f06eb1c9a97b04e5e126897dfbb3fcc2",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267898/earnalism/covers/front/the-selfish-giant_front_1600x2400.png",
+      "repair_file": "covers/front-layout-repair.png",
+      "repair_sha256": "e01b95dc8d321678df5c9fe5e395728187ea03984cc69c59ae34471603fb7dc4",
+      "delivery_file": "covers/front-delivery.webp",
+      "delivery_sha256": "777a773d9cebbf236f9bfb79d52d35ca7206c59fc38eb04d85a84abc480d98cd",
+      "delivery_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
+      "delivery_bytes": 35612,
+      "production_observed": false
+    },
+    "back": {
+      "original_file": "covers/back-original.png",
+      "original_sha256": "6903c7610ac6141b0f4d8d025e7e9fe9f347e2922996368ef7dd28fe8c18b511",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267899/earnalism/covers/back/the-selfish-giant_back_1600x2400.png",
+      "repair_file": "covers/back-layout-repair.png",
+      "repair_sha256": "6337be1964dfa48aedd7d35233cfdb84f422dd311545b265b9c259444f8795f0",
+      "delivery_file": "covers/back-delivery.webp",
+      "delivery_sha256": "14b007092896bd2d0e4396ba0ecb1e430650a7aa772f855a347a6269daa75e60",
+      "delivery_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-14b00709.webp",
+      "delivery_bytes": 85306,
+      "production_observed": false
+    }
+  },
+  "derivative_lineage": {
+    "recovery_receipt_sha256": "1b686b43e642886871953468ba6de8d967429c3c7bb37807926acce1667a9bec",
+    "repair_receipt_sha256": "6a5ea1bc1fdb8ac4b8bfc1440f63ee5323cd51e17098cac6238e2a872c03cd28",
+    "renderer_sha256": "eea97252cea63b1cc50ff2e24408adb164511996edbfe71d4206c67b2b22d25a",
+    "method": "One bounded deterministic local mask/typeset repair of existing recovered owner artwork; exact existing title/author and complete unchanged source excerpt only. No new art, generated copy or paid calls.",
+    "source_excerpt": "EVERY afternoon, as they were coming from school, the children used to go and play in the Giant’s garden. It was a large lovely garden, with soft green grass. Here and there over the grass stood beautiful flowers like stars, and there were twelve peach-trees that in the spring-time broke out into delicate blossoms of pink and pearl, and in the autumn bore rich fruit. The birds sat on the trees and sang so sweetly that the children used to stop their games in order to listen to them. “How happy we are here!” they cried to each other.",
+    "no_lexical_changes": true,
+    "new_art": false,
+    "one_bounded_remediation_attempt": 1
+  },
+  "visual_review_status": "PENDING_TWO_INDEPENDENT_EXACT_DELIVERY_REPAIR_REVIEWS",
+  "commercial_use_authorized": false,
+  "audio_authorized": false,
+  "runtime_release_authorized": false,
+  "production_observed": false,
+  "accepted_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+  "accepted_at": "2026-10-03T04:59:53.954767+00:00",
+  "new_independent_review_receipts": {
+    "review_a": {
+      "file": "evidence/review_a.json",
+      "sha256": "d31da6ba7bc92b767391b180d85d2ab4e1aa163253b38a3cf18bd96de897fcb3"
+    },
+    "review_b": {
+      "file": "evidence/review_b.json",
+      "sha256": "15fb24b5a76ab9dac2cbbcccf29b72cb1a0aabc6cd7cf8d9c4a9e11776ced68d"
+    }
+  },
+  "acceptance_scope": "Exact preserved owner artwork derivative/delivery, India commercial text Reader cover display only; audio not authorized. Existing complete edition-bound source rights preserved."
+}

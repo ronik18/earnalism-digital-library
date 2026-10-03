@@ -1,0 +1,11 @@
+{
+  "slug": "the-great-gatsby",
+  "status": "INVALIDATED_STALE_ESTIMATED_SYNC",
+  "generatedAt": "2026-08-16T14:30:00Z",
+  "source": "great_gatsby_reader_repair",
+  "chapters": [],
+  "totalDurationMs": 0,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "note": "Legacy pipeline_gate3 timing was estimated and is not admissible. Future audio requires measured synchronization bound to approved audio bytes."
+}

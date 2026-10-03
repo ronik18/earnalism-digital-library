@@ -1,0 +1,758 @@
+[
+  {
+    "slug": "the-time-machine",
+    "status": "INACTIVE_UNACCEPTED_COMPLETE_SOURCE_AND_ART_READY_FOR_TWO_REVIEWS",
+    "checksums_pass": 30,
+    "source_reader_sync_chapters_byte_unchanged": true,
+    "assets": [
+      {
+        "kind": "front",
+        "source_file": "covers/original-front.png",
+        "source_sha256": "5eb21ec7c4e3aa4a75c1d3e51de7f78f172850b450d80cc06ca7ebe54f5f9997",
+        "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566866/earnalism/covers/front/cover_d4cb4472-7e0a-4bad-ab89-05f7d7ace821.png",
+        "source_bytes": 3526546,
+        "source_dimensions": [
+          1024,
+          1536
+        ],
+        "licensed_deterministic_overlay": {
+          "file": "covers/the-time-machine-front-deterministic.png",
+          "sha256": "97ea6f6978a5bb4d2edcea13d426019fcb6b46a731fcabe34cb40666e49b5ac0",
+          "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+          "text_title": "The Time Machine",
+          "text_author": "H. G. Wells",
+          "mask_rectangle": [
+            45,
+            45,
+            979,
+            420
+          ],
+          "pixels_outside_mask_exactly_preserved": true,
+          "attempt": 1
+        },
+        "file": "covers/the-time-machine-front-5eb21ec7.webp",
+        "sha256": "2b3e8c93c4ba497456bfd88c7233be9b15a1305397501022f807aa3574746d7a",
+        "bytes": 66758,
+        "dimensions": [
+          600,
+          900
+        ],
+        "url": "https://theearnalism.com/assets/books/the-time-machine/the-time-machine-front-5eb21ec7.webp",
+        "recipe": {
+          "format": "WEBP",
+          "mode": "RGB",
+          "resize": [
+            600,
+            900
+          ],
+          "quality": 40,
+          "method": 6,
+          "resampling": "LANCZOS",
+          "pillow_version": "12.3.0"
+        },
+        "parameter_calibration": [
+          {
+            "dimensions": [
+              600,
+              900
+            ],
+            "quality": 40,
+            "bytes": 66758
+          }
+        ],
+        "review_status": "TWO_INDEPENDENT_NEW_EXACT_VISUAL_DELIVERY_REVIEWS_REQUIRED",
+        "production_observed": false
+      },
+      {
+        "kind": "back",
+        "source_file": "covers/original-back.png",
+        "source_sha256": "982e280d4e7a9c7859ac9f071fb20dac6f4fe7f382e1a724d96bea036af2f015",
+        "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566887/earnalism/covers/back/back_cover_d4cb4472-7e0a-4bad-ab89-05f7d7ace821.png",
+        "source_bytes": 2481452,
+        "source_dimensions": [
+          1024,
+          1536
+        ],
+        "licensed_deterministic_overlay": {
+          "file": "covers/the-time-machine-back-deterministic.png",
+          "sha256": "fcbda9911c8ed2437640b3dbf01a0ce6c20879c80d93eb9ef9f0268ba60e0f60",
+          "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+          "text_title": "The Time Machine",
+          "text_author": "H. G. Wells",
+          "mask_rectangle": [
+            55,
+            1260,
+            969,
+            1460
+          ],
+          "pixels_outside_mask_exactly_preserved": true,
+          "attempt": 1
+        },
+        "file": "covers/the-time-machine-back-982e280d.webp",
+        "sha256": "f14904314cecf4e887358e2a6dd16a512936fe5e42314b281e309f994a54a585",
+        "bytes": 43386,
+        "dimensions": [
+          800,
+          1200
+        ],
+        "url": "https://theearnalism.com/assets/books/the-time-machine/the-time-machine-back-982e280d.webp",
+        "recipe": {
+          "format": "WEBP",
+          "mode": "RGB",
+          "resize": [
+            800,
+            1200
+          ],
+          "quality": 60,
+          "method": 6,
+          "resampling": "LANCZOS",
+          "pillow_version": "12.3.0"
+        },
+        "parameter_calibration": [
+          {
+            "dimensions": [
+              800,
+              1200
+            ],
+            "quality": 60,
+            "bytes": 43386
+          }
+        ],
+        "review_status": "TWO_INDEPENDENT_NEW_EXACT_VISUAL_DELIVERY_REVIEWS_REQUIRED",
+        "production_observed": false
+      }
+    ],
+    "archived_historical_positive_audio_and_duplicate_claims": true,
+    "all_component_bindings_final_pass": true
+  },
+  {
+    "slug": "the-great-gatsby",
+    "status": "INACTIVE_UNACCEPTED_COMPLETE_SOURCE_AND_ART_READY_FOR_TWO_REVIEWS",
+    "checksums_pass": 24,
+    "source_reader_sync_chapters_byte_unchanged": true,
+    "assets": [
+      {
+        "kind": "front",
+        "source_file": "covers/original-front.png",
+        "source_sha256": "8d98a278f5e09cdbfcb03c064424c6c0f221c3fc230be24e7b502affb915bb2a",
+        "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779565318/earnalism/covers/front/cover_82440320-0910-4dfe-97de-540153139e00.png",
+        "source_bytes": 2521135,
+        "source_dimensions": [
+          1024,
+          1536
+        ],
+        "licensed_deterministic_overlay": {
+          "file": "covers/the-great-gatsby-front-deterministic.png",
+          "sha256": "708f7cc8e5c21cc1cc535edcc5d000a9d7531f226bebb138e57e2c8633efd624",
+          "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+          "text_title": "The Great Gatsby",
+          "text_author": "F. Scott Fitzgerald",
+          "mask_rectangle": [
+            45,
+            45,
+            979,
+            450
+          ],
+          "pixels_outside_mask_exactly_preserved": true,
+          "attempt": 1
+        },
+        "file": "covers/the-great-gatsby-front-8d98a278.webp",
+        "sha256": "b3513c4e345b4aa6156f61e6d6a3a69ba3a034f79b6dc3c75773a941cbb516d1",
+        "bytes": 32594,
+        "dimensions": [
+          600,
+          900
+        ],
+        "url": "https://theearnalism.com/assets/books/the-great-gatsby/the-great-gatsby-front-8d98a278.webp",
+        "recipe": {
+          "format": "WEBP",
+          "mode": "RGB",
+          "resize": [
+            600,
+            900
+          ],
+          "quality": 40,
+          "method": 6,
+          "resampling": "LANCZOS",
+          "pillow_version": "12.3.0"
+        },
+        "parameter_calibration": [
+          {
+            "dimensions": [
+              600,
+              900
+            ],
+            "quality": 40,
+            "bytes": 32594
+          }
+        ],
+        "review_status": "TWO_INDEPENDENT_NEW_EXACT_VISUAL_DELIVERY_REVIEWS_REQUIRED",
+        "production_observed": false
+      },
+      {
+        "kind": "back",
+        "source_file": "covers/original-back.png",
+        "source_sha256": "b2696f4c8247fdc0bbb25a277e73a6eee757e0fa7e9083d176e0a98a7744c402",
+        "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779565331/earnalism/covers/back/back_cover_82440320-0910-4dfe-97de-540153139e00.png",
+        "source_bytes": 1994760,
+        "source_dimensions": [
+          1024,
+          1536
+        ],
+        "licensed_deterministic_overlay": {
+          "file": "covers/the-great-gatsby-back-deterministic.png",
+          "sha256": "8569231e38db5c1e81765f1d9935d236fd5cd72b222c62d6c9ba72a7be998e6b",
+          "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+          "text_title": "The Great Gatsby",
+          "text_author": "F. Scott Fitzgerald",
+          "mask_rectangle": [
+            55,
+            1260,
+            969,
+            1460
+          ],
+          "pixels_outside_mask_exactly_preserved": true,
+          "attempt": 1
+        },
+        "file": "covers/the-great-gatsby-back-b2696f4c.webp",
+        "sha256": "a5a02d9abc0e867bc65527dd57dcdd7679843589f90191cc09302d9d871be32b",
+        "bytes": 40428,
+        "dimensions": [
+          800,
+          1200
+        ],
+        "url": "https://theearnalism.com/assets/books/the-great-gatsby/the-great-gatsby-back-b2696f4c.webp",
+        "recipe": {
+          "format": "WEBP",
+          "mode": "RGB",
+          "resize": [
+            800,
+            1200
+          ],
+          "quality": 60,
+          "method": 6,
+          "resampling": "LANCZOS",
+          "pillow_version": "12.3.0"
+        },
+        "parameter_calibration": [
+          {
+            "dimensions": [
+              800,
+              1200
+            ],
+            "quality": 60,
+            "bytes": 40428
+          }
+        ],
+        "review_status": "TWO_INDEPENDENT_NEW_EXACT_VISUAL_DELIVERY_REVIEWS_REQUIRED",
+        "production_observed": false
+      }
+    ],
+    "archived_historical_positive_audio_and_duplicate_claims": true,
+    "all_component_bindings_final_pass": true
+  },
+  {
+    "slug": "frankenstein",
+    "status": "INACTIVE_UNACCEPTED_COMPLETE_SOURCE_AND_ART_READY_FOR_TWO_REVIEWS",
+    "checksums_pass": 41,
+    "source_reader_sync_chapters_byte_unchanged": true,
+    "assets": [
+      {
+        "kind": "front",
+        "source_file": "covers/original-front.png",
+        "source_sha256": "a7a5d9825545a40c1c440bccd20ee0fb2b3d262e8347ca8960705cdf66fc5339",
+        "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566127/earnalism/covers/front/cover_3f8a6bb7-258b-4473-b14e-c68d2df58b29.png",
+        "source_bytes": 2796541,
+        "source_dimensions": [
+          1024,
+          1536
+        ],
+        "licensed_deterministic_overlay": {
+          "file": "covers/frankenstein-front-deterministic.png",
+          "sha256": "cede2d7d3ec7f5153cb670737869abb5f35662c8be2a6bdfff8eb7489513dd2d",
+          "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+          "text_title": "Frankenstein",
+          "text_author": "Mary Wollstonecraft Shelley",
+          "mask_rectangle": [
+            45,
+            45,
+            979,
+            420
+          ],
+          "pixels_outside_mask_exactly_preserved": true,
+          "attempt": 1
+        },
+        "file": "covers/frankenstein-front-a7a5d982.webp",
+        "sha256": "5b93fe195948e38c474fac00b8de901b3e744bd3e0705416f12df6a63054042b",
+        "bytes": 25864,
+        "dimensions": [
+          600,
+          900
+        ],
+        "url": "https://theearnalism.com/assets/books/frankenstein/frankenstein-front-a7a5d982.webp",
+        "recipe": {
+          "format": "WEBP",
+          "mode": "RGB",
+          "resize": [
+            600,
+            900
+          ],
+          "quality": 40,
+          "method": 6,
+          "resampling": "LANCZOS",
+          "pillow_version": "12.3.0"
+        },
+        "parameter_calibration": [
+          {
+            "dimensions": [
+              600,
+              900
+            ],
+            "quality": 40,
+            "bytes": 25864
+          }
+        ],
+        "review_status": "TWO_INDEPENDENT_NEW_EXACT_VISUAL_DELIVERY_REVIEWS_REQUIRED",
+        "production_observed": false
+      },
+      {
+        "kind": "back",
+        "source_file": "covers/original-back.png",
+        "source_sha256": "367406570864a5cce196cedad3c5564f36c66c565a95afa370c8443bf38c63b6",
+        "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566151/earnalism/covers/back/back_cover_3f8a6bb7-258b-4473-b14e-c68d2df58b29.png",
+        "source_bytes": 2303465,
+        "source_dimensions": [
+          1024,
+          1536
+        ],
+        "licensed_deterministic_overlay": {
+          "file": "covers/frankenstein-back-deterministic.png",
+          "sha256": "cd2987ce074fbe450a7ec28a033ca9a797fcf32afeeabf2eeefe336479963c72",
+          "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+          "text_title": "Frankenstein",
+          "text_author": "Mary Wollstonecraft Shelley",
+          "mask_rectangle": [
+            55,
+            1260,
+            969,
+            1460
+          ],
+          "pixels_outside_mask_exactly_preserved": true,
+          "attempt": 1
+        },
+        "file": "covers/frankenstein-back-36740657.webp",
+        "sha256": "8b9e09b5c47493f0f2fc13587ce8b29e87456dfce081ef411054303c17024fb0",
+        "bytes": 43036,
+        "dimensions": [
+          800,
+          1200
+        ],
+        "url": "https://theearnalism.com/assets/books/frankenstein/frankenstein-back-36740657.webp",
+        "recipe": {
+          "format": "WEBP",
+          "mode": "RGB",
+          "resize": [
+            800,
+            1200
+          ],
+          "quality": 60,
+          "method": 6,
+          "resampling": "LANCZOS",
+          "pillow_version": "12.3.0"
+        },
+        "parameter_calibration": [
+          {
+            "dimensions": [
+              800,
+              1200
+            ],
+            "quality": 60,
+            "bytes": 43036
+          }
+        ],
+        "review_status": "TWO_INDEPENDENT_NEW_EXACT_VISUAL_DELIVERY_REVIEWS_REQUIRED",
+        "production_observed": false
+      }
+    ],
+    "archived_historical_positive_audio_and_duplicate_claims": true,
+    "all_component_bindings_final_pass": true
+  },
+  {
+    "slug": "the-secret-garden",
+    "status": "INACTIVE_UNACCEPTED_COMPLETE_SOURCE_AND_ART_READY_FOR_TWO_REVIEWS",
+    "checksums_pass": 40,
+    "source_reader_sync_chapters_byte_unchanged": true,
+    "assets": [
+      {
+        "kind": "front",
+        "source_file": "covers/original-front.png",
+        "source_sha256": "39799997d58307c85b83908d0f5121e9b67e496158ae8c77eef5402e6e20b577",
+        "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779947920/earnalism/covers/front/cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c.png",
+        "source_bytes": 3516819,
+        "source_dimensions": [
+          1024,
+          1536
+        ],
+        "licensed_deterministic_overlay": {
+          "file": "covers/the-secret-garden-front-deterministic.png",
+          "sha256": "108a7bcd15bf6a4f7a622f262465b0bc54584c2f2a81cb768d22c68bb9fce8ff",
+          "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+          "text_title": "The Secret Garden",
+          "text_author": "Frances Hodgson Burnett",
+          "mask_rectangle": [
+            45,
+            45,
+            979,
+            560
+          ],
+          "pixels_outside_mask_exactly_preserved": true,
+          "attempt": 1
+        },
+        "file": "covers/the-secret-garden-front-39799997.webp",
+        "sha256": "06a6366d1dace4db8c21ab716667d5650ac0a6143758ed08024af5b7d3aa0bc5",
+        "bytes": 53790,
+        "dimensions": [
+          600,
+          900
+        ],
+        "url": "https://theearnalism.com/assets/books/the-secret-garden/the-secret-garden-front-39799997.webp",
+        "recipe": {
+          "format": "WEBP",
+          "mode": "RGB",
+          "resize": [
+            600,
+            900
+          ],
+          "quality": 40,
+          "method": 6,
+          "resampling": "LANCZOS",
+          "pillow_version": "12.3.0"
+        },
+        "parameter_calibration": [
+          {
+            "dimensions": [
+              600,
+              900
+            ],
+            "quality": 40,
+            "bytes": 53790
+          }
+        ],
+        "review_status": "TWO_INDEPENDENT_NEW_EXACT_VISUAL_DELIVERY_REVIEWS_REQUIRED",
+        "production_observed": false
+      },
+      {
+        "kind": "back",
+        "source_file": "covers/original-back.png",
+        "source_sha256": "dedb7dcca9cef92470b93a54b9e46f92b68c48e901a7523bec7fe71bbc43f396",
+        "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779947939/earnalism/covers/back/back_cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c.png",
+        "source_bytes": 3382301,
+        "source_dimensions": [
+          1024,
+          1536
+        ],
+        "licensed_deterministic_overlay": {
+          "file": "covers/the-secret-garden-back-deterministic.png",
+          "sha256": "710466837e4bd8163105f79325cc844f095e7099de401d95b465da07b628bbf2",
+          "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+          "text_title": "The Secret Garden",
+          "text_author": "Frances Hodgson Burnett",
+          "mask_rectangle": [
+            55,
+            1260,
+            969,
+            1460
+          ],
+          "pixels_outside_mask_exactly_preserved": true,
+          "attempt": 1
+        },
+        "file": "covers/the-secret-garden-back-dedb7dcc.webp",
+        "sha256": "be310c30275d7fc20d2f893032d9373fed1912146d4604c6e4b0fb7593820a27",
+        "bytes": 144890,
+        "dimensions": [
+          800,
+          1200
+        ],
+        "url": "https://theearnalism.com/assets/books/the-secret-garden/the-secret-garden-back-dedb7dcc.webp",
+        "recipe": {
+          "format": "WEBP",
+          "mode": "RGB",
+          "resize": [
+            800,
+            1200
+          ],
+          "quality": 60,
+          "method": 6,
+          "resampling": "LANCZOS",
+          "pillow_version": "12.3.0"
+        },
+        "parameter_calibration": [
+          {
+            "dimensions": [
+              800,
+              1200
+            ],
+            "quality": 60,
+            "bytes": 144890
+          }
+        ],
+        "review_status": "TWO_INDEPENDENT_NEW_EXACT_VISUAL_DELIVERY_REVIEWS_REQUIRED",
+        "production_observed": false
+      }
+    ],
+    "archived_historical_positive_audio_and_duplicate_claims": true,
+    "all_component_bindings_final_pass": true
+  },
+  {
+    "slug": "pride-and-prejudice",
+    "status": "INACTIVE_UNACCEPTED_COMPLETE_SOURCE_AND_ART_READY_FOR_TWO_REVIEWS",
+    "checksums_pass": 74,
+    "source_reader_sync_chapters_byte_unchanged": true,
+    "assets": [
+      {
+        "kind": "front",
+        "source_file": "covers/original-front.png",
+        "source_sha256": "480db270e262b166bdd91ffd5dc1df03c2bd63d79e632634a1dc0c419be1dfc9",
+        "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780293034/earnalism/covers/front/cover_e54439f8-2bfa-4d96-a4d1-bc7397e76f44.png",
+        "source_bytes": 3014363,
+        "source_dimensions": [
+          1024,
+          1536
+        ],
+        "licensed_deterministic_overlay": {
+          "file": "covers/pride-and-prejudice-front-deterministic.png",
+          "sha256": "142fe5c0fa1b705c6486253df30838e5ba41c412fd02ca8ffe694c49a5873473",
+          "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+          "text_title": "Pride and Prejudice",
+          "text_author": "Jane Austen",
+          "mask_rectangle": [
+            45,
+            45,
+            979,
+            540
+          ],
+          "pixels_outside_mask_exactly_preserved": true,
+          "attempt": 1
+        },
+        "file": "covers/pride-and-prejudice-front-480db270.webp",
+        "sha256": "93c11e8b029d4e283655542189c9f14424d6ba3bc489f7e60c64c465a6943d3d",
+        "bytes": 38766,
+        "dimensions": [
+          600,
+          900
+        ],
+        "url": "https://theearnalism.com/assets/books/pride-and-prejudice/pride-and-prejudice-front-480db270.webp",
+        "recipe": {
+          "format": "WEBP",
+          "mode": "RGB",
+          "resize": [
+            600,
+            900
+          ],
+          "quality": 40,
+          "method": 6,
+          "resampling": "LANCZOS",
+          "pillow_version": "12.3.0"
+        },
+        "parameter_calibration": [
+          {
+            "dimensions": [
+              600,
+              900
+            ],
+            "quality": 40,
+            "bytes": 38766
+          }
+        ],
+        "review_status": "TWO_INDEPENDENT_NEW_EXACT_VISUAL_DELIVERY_REVIEWS_REQUIRED",
+        "production_observed": false
+      },
+      {
+        "kind": "back",
+        "source_file": "covers/original-back.png",
+        "source_sha256": "fbb0d3c37fcaeec50ae49921b5bd9d46ab44189f7ebbd2a93f26c1f47798faa8",
+        "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780293039/earnalism/covers/back/back_cover_e54439f8-2bfa-4d96-a4d1-bc7397e76f44.png",
+        "source_bytes": 3170484,
+        "source_dimensions": [
+          1024,
+          1536
+        ],
+        "licensed_deterministic_overlay": {
+          "file": "covers/pride-and-prejudice-back-deterministic.png",
+          "sha256": "c174a363be117b7cf50c1a9abe16581ff444ec6b88bb3c93d2328e1217d8397a",
+          "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+          "text_title": "Pride and Prejudice",
+          "text_author": "Jane Austen",
+          "mask_rectangle": [
+            55,
+            1260,
+            969,
+            1460
+          ],
+          "pixels_outside_mask_exactly_preserved": true,
+          "attempt": 1
+        },
+        "file": "covers/pride-and-prejudice-back-fbb0d3c3.webp",
+        "sha256": "74158f60e81ffa0626fd6d1e6e13e3c7a49257ec91dae10dcc11e697bd6ea09b",
+        "bytes": 117762,
+        "dimensions": [
+          800,
+          1200
+        ],
+        "url": "https://theearnalism.com/assets/books/pride-and-prejudice/pride-and-prejudice-back-fbb0d3c3.webp",
+        "recipe": {
+          "format": "WEBP",
+          "mode": "RGB",
+          "resize": [
+            800,
+            1200
+          ],
+          "quality": 60,
+          "method": 6,
+          "resampling": "LANCZOS",
+          "pillow_version": "12.3.0"
+        },
+        "parameter_calibration": [
+          {
+            "dimensions": [
+              800,
+              1200
+            ],
+            "quality": 60,
+            "bytes": 117762
+          }
+        ],
+        "review_status": "TWO_INDEPENDENT_NEW_EXACT_VISUAL_DELIVERY_REVIEWS_REQUIRED",
+        "production_observed": false
+      }
+    ],
+    "archived_historical_positive_audio_and_duplicate_claims": true,
+    "all_component_bindings_final_pass": true
+  },
+  {
+    "slug": "great-expectations",
+    "status": "INACTIVE_UNACCEPTED_COMPLETE_SOURCE_AND_ART_READY_FOR_TWO_REVIEWS",
+    "checksums_pass": 72,
+    "source_reader_sync_chapters_byte_unchanged": true,
+    "assets": [
+      {
+        "kind": "front",
+        "source_file": "covers/original-front.png",
+        "source_sha256": "faeb4440529f863bee85f04342db1da56bdfa209c0e642b9b6ff9d552df8013a",
+        "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780292673/earnalism/covers/front/cover_ff32fe6a-9f1a-402b-935d-c5dff918b8a0.png",
+        "source_bytes": 3164717,
+        "source_dimensions": [
+          1024,
+          1536
+        ],
+        "licensed_deterministic_overlay": {
+          "file": "covers/great-expectations-front-deterministic.png",
+          "sha256": "6504db35a3eb099e169d1584203cf5895c04e5e1b00f3623f3144e8f9f6b1198",
+          "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+          "text_title": "Great Expectations",
+          "text_author": "Charles Dickens",
+          "mask_rectangle": [
+            45,
+            45,
+            979,
+            580
+          ],
+          "pixels_outside_mask_exactly_preserved": true,
+          "attempt": 1
+        },
+        "file": "covers/great-expectations-front-faeb4440.webp",
+        "sha256": "4640b6fbd02d4fa2c0978e17c7837c35805fa8157c4e83a6040bef2b576c173c",
+        "bytes": 30860,
+        "dimensions": [
+          600,
+          900
+        ],
+        "url": "https://theearnalism.com/assets/books/great-expectations/great-expectations-front-faeb4440.webp",
+        "recipe": {
+          "format": "WEBP",
+          "mode": "RGB",
+          "resize": [
+            600,
+            900
+          ],
+          "quality": 40,
+          "method": 6,
+          "resampling": "LANCZOS",
+          "pillow_version": "12.3.0"
+        },
+        "parameter_calibration": [
+          {
+            "dimensions": [
+              600,
+              900
+            ],
+            "quality": 40,
+            "bytes": 30860
+          }
+        ],
+        "review_status": "TWO_INDEPENDENT_NEW_EXACT_VISUAL_DELIVERY_REVIEWS_REQUIRED",
+        "production_observed": false
+      },
+      {
+        "kind": "back",
+        "source_file": "covers/original-back.png",
+        "source_sha256": "6bc57298528f3b0addbab1e8f0cdc1bd570358fd1d472d508ea430e11397da4a",
+        "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780292677/earnalism/covers/back/back_cover_ff32fe6a-9f1a-402b-935d-c5dff918b8a0.png",
+        "source_bytes": 3302955,
+        "source_dimensions": [
+          1024,
+          1536
+        ],
+        "licensed_deterministic_overlay": {
+          "file": "covers/great-expectations-back-deterministic.png",
+          "sha256": "3ff84c07956b425f3562d284918075ba2084935078b5234f9139c375735d5c1d",
+          "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+          "text_title": "Great Expectations",
+          "text_author": "Charles Dickens",
+          "mask_rectangle": [
+            55,
+            1260,
+            969,
+            1460
+          ],
+          "pixels_outside_mask_exactly_preserved": true,
+          "attempt": 1
+        },
+        "file": "covers/great-expectations-back-6bc57298.webp",
+        "sha256": "c469f4868f13b13f8d23c0d36b22628dd5571269a7046fdaa83b2d409d9eccd8",
+        "bytes": 114714,
+        "dimensions": [
+          800,
+          1200
+        ],
+        "url": "https://theearnalism.com/assets/books/great-expectations/great-expectations-back-6bc57298.webp",
+        "recipe": {
+          "format": "WEBP",
+          "mode": "RGB",
+          "resize": [
+            800,
+            1200
+          ],
+          "quality": 60,
+          "method": 6,
+          "resampling": "LANCZOS",
+          "pillow_version": "12.3.0"
+        },
+        "parameter_calibration": [
+          {
+            "dimensions": [
+              800,
+              1200
+            ],
+            "quality": 60,
+            "bytes": 114714
+          }
+        ],
+        "review_status": "TWO_INDEPENDENT_NEW_EXACT_VISUAL_DELIVERY_REVIEWS_REQUIRED",
+        "production_observed": false
+      }
+    ],
+    "archived_historical_positive_audio_and_duplicate_claims": true,
+    "all_component_bindings_final_pass": true
+  }
+]

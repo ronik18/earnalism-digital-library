@@ -1,0 +1,182 @@
+{
+  "schema": "earnalism.independent-complete-source-review.v1",
+  "reviewer": "A",
+  "slug": "the-science-of-getting-rich",
+  "disposition": "PASS_COMPLETE_AUTHOR_PREFACE_AND_ALL_17_CHAPTERS",
+  "source_file": "science-official-source.txt",
+  "source_sha256": "adc3fb17f24801597561e992d858e124c8d9b4c6e3bf7593d713e7a71d252744",
+  "source_receipt_sha256": "5680b5e66c2a93fa340be2a0a8702f312fb07eda83f7b2e947e0abc873319eb6",
+  "official_source_identity_matches_historical_receipt": true,
+  "chapter_count": 18,
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "PREFACE",
+      "content_sha256": "0339c89621a322cdad8e50e0fbd7a9508f6a8bc48a16045f2f24a45e0b0c9a58",
+      "start": 2129,
+      "length": 2584,
+      "gap_before": "TITLEPAGE_AND_TOC_THEN_EXACT_PREFACE_HEADING",
+      "full_body_match": true
+    },
+    {
+      "id": "chapter-002",
+      "title": "CHAPTER I. THE RIGHT TO BE RICH",
+      "content_sha256": "1fc3a23022b7b949f62c31e5ac332e3fb3c0ba6626f4bac2d0b459d2c41c63c6",
+      "start": 4747,
+      "length": 5100,
+      "gap_before": "CHAPTER I. THE RIGHT TO BE RICH.",
+      "full_body_match": true
+    },
+    {
+      "id": "chapter-003",
+      "title": "CHAPTER II. THERE IS A SCIENCE OF GETTING RICH",
+      "content_sha256": "cc2926c1d62647a483ec0612a42466a1f766b817232bc67adfce76246b5105eb",
+      "start": 9896,
+      "length": 6186,
+      "gap_before": "CHAPTER II. THERE IS A SCIENCE OF GETTING RICH.",
+      "full_body_match": true
+    },
+    {
+      "id": "chapter-004",
+      "title": "CHAPTER III. IS OPPORTUNITY MONOPOLIZED?",
+      "content_sha256": "0ad051b4408531e1b5c34c9e30849823a2517befcd97055e171bd2db74b8bf41",
+      "start": 16124,
+      "length": 6802,
+      "gap_before": "CHAPTER III. IS OPPORTUNITY MONOPOLIZED?",
+      "full_body_match": true
+    },
+    {
+      "id": "chapter-005",
+      "title": "CHAPTER IV. THE FIRST PRINCIPLE IN THE SCIENCE OF GETTING RICH",
+      "content_sha256": "6ef3c5f491dc18ec4c74bb1799685af77616d32294d850d1ccd69cbf97bce06c",
+      "start": 22991,
+      "length": 9088,
+      "gap_before": "CHAPTER IV. THE FIRST PRINCIPLE IN THE SCIENCE OF GETTING RICH.",
+      "full_body_match": true
+    },
+    {
+      "id": "chapter-006",
+      "title": "CHAPTER V. INCREASING LIFE",
+      "content_sha256": "448e1a3a5d0814f8b96d50eaf16cdbd7bbd61734b9ca01fc29b63aa1bef0961e",
+      "start": 32108,
+      "length": 9305,
+      "gap_before": "CHAPTER V. INCREASING LIFE.",
+      "full_body_match": true
+    },
+    {
+      "id": "chapter-007",
+      "title": "CHAPTER VI. HOW RICHES COME TO YOU",
+      "content_sha256": "d29cfdf64909a1165961d097ec12c949e938d03a6cb36ea25ce6cf792497301c",
+      "start": 41450,
+      "length": 8432,
+      "gap_before": "CHAPTER VI. HOW RICHES COME TO YOU.",
+      "full_body_match": true
+    },
+    {
+      "id": "chapter-008",
+      "title": "CHAPTER VII. GRATITUDE",
+      "content_sha256": "3a0116b5aea3a26032d361f7ea34a9d6ed1750366a829559132e9433b9c9b116",
+      "start": 49907,
+      "length": 6185,
+      "gap_before": "CHAPTER VII. GRATITUDE.",
+      "full_body_match": true
+    },
+    {
+      "id": "chapter-009",
+      "title": "CHAPTER VIII. THINKING IN THE CERTAIN WAY",
+      "content_sha256": "7e3e692873c0c584fa47f724e9b44d24469b3727ac6062f9c46ca919559258e5",
+      "start": 56136,
+      "length": 7241,
+      "gap_before": "CHAPTER VIII. THINKING IN THE CERTAIN WAY.",
+      "full_body_match": true
+    },
+    {
+      "id": "chapter-010",
+      "title": "CHAPTER IX. HOW TO USE THE WILL",
+      "content_sha256": "6ea8523874594a6b027e1fd0db4d897a101e31bde7eb15bb16ed34a8735c40f4",
+      "start": 63411,
+      "length": 7572,
+      "gap_before": "CHAPTER IX. HOW TO USE THE WILL.",
+      "full_body_match": true
+    },
+    {
+      "id": "chapter-011",
+      "title": "CHAPTER X. FURTHER USE OF THE WILL",
+      "content_sha256": "8ea8dc98fb9a125b3cf4fae404e76ffbb812ee056db367847ba486283ddf4aaf",
+      "start": 71020,
+      "length": 8450,
+      "gap_before": "CHAPTER X. FURTHER USE OF THE WILL.",
+      "full_body_match": true
+    },
+    {
+      "id": "chapter-012",
+      "title": "CHAPTER XI. ACTING IN THE CERTAIN WAY",
+      "content_sha256": "a9e067da0eaad981cb8d3468ea0cb2efac4bcb2b03ef0d0fefef172d5d87c7b0",
+      "start": 79510,
+      "length": 8680,
+      "gap_before": "CHAPTER XI. ACTING IN THE CERTAIN WAY.",
+      "full_body_match": true
+    },
+    {
+      "id": "chapter-013",
+      "title": "CHAPTER XII. EFFICIENT ACTION",
+      "content_sha256": "446132c59ee07f2941010430ace7f77fb965c87754e1a52f6af26ff2d8e9be3c",
+      "start": 88222,
+      "length": 7174,
+      "gap_before": "CHAPTER XII. EFFICIENT ACTION.",
+      "full_body_match": true
+    },
+    {
+      "id": "chapter-014",
+      "title": "CHAPTER XIII. GETTING INTO THE RIGHT BUSINESS",
+      "content_sha256": "d0c6fb51d59a2f969011edd5ad650e717afab32552e7cbb1728e397f5c9e38f4",
+      "start": 95444,
+      "length": 6454,
+      "gap_before": "CHAPTER XIII. GETTING INTO THE RIGHT BUSINESS.",
+      "full_body_match": true
+    },
+    {
+      "id": "chapter-015",
+      "title": "CHAPTER XIV. THE IMPRESSION OF INCREASE",
+      "content_sha256": "634fc59399f4999ca3330608b56828af1ac84e30b02b624b1e9255f5268d2680",
+      "start": 101940,
+      "length": 6448,
+      "gap_before": "CHAPTER XIV. THE IMPRESSION OF INCREASE.",
+      "full_body_match": true
+    },
+    {
+      "id": "chapter-016",
+      "title": "CHAPTER XV. THE ADVANCING MAN",
+      "content_sha256": "09abacbf0a35100e2b033dd5680c38e3acc94832d55ba6ba4c450200091bb091",
+      "start": 108420,
+      "length": 6659,
+      "gap_before": "CHAPTER XV. THE ADVANCING MAN.",
+      "full_body_match": true
+    },
+    {
+      "id": "chapter-017",
+      "title": "CHAPTER XVI. SOME CAUTIONS, AND CONCLUDING OBSERVATIONS",
+      "content_sha256": "cbe6d3806cbbe424fbccd3a7a4eece1e2224e88f5d81b7f6d05aa7c38b0d7922",
+      "start": 115137,
+      "length": 7507,
+      "gap_before": "CHAPTER XVI. SOME CAUTIONS, AND CONCLUDING OBSERVATIONS.",
+      "full_body_match": true
+    },
+    {
+      "id": "chapter-018",
+      "title": "CHAPTER XVII. SUMMARY OF THE SCIENCE OF GETTING RICH",
+      "content_sha256": "3871c5dffea3c043c738c62a5d55f26ec6b9ada974de505966f27a64d54548bb",
+      "start": 122699,
+      "length": 2871,
+      "gap_before": "CHAPTER XVII. SUMMARY OF THE SCIENCE OF GETTING RICH.",
+      "full_body_match": true
+    }
+  ],
+  "complete_scope": "Entire author Preface and all17chapters, every internal gap only exact chapter heading. Following publisher Further Aids advertising excluded under existing accepted scope.",
+  "method": "NFC plus whitespace only; all18 exact whole bodies in order and every separating source byte segment independently assessed. No punctuation or lexical normalization.",
+  "retained_raw_source_sha256": "4de04867ec7814f6e7053582eaf50ad3c6817256d06141a5cee93c64f499557b",
+  "retained_raw_not_official_byte_identity": true,
+  "source_or_chapters_modified": false,
+  "new_source_requests": 1,
+  "production_observed": false
+}

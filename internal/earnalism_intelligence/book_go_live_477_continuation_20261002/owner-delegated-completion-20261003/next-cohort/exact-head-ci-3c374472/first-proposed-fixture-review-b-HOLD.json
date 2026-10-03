@@ -1,0 +1,26 @@
+{
+  "reviewer": "Independent Codex reviewer B",
+  "reviewed_at": "2026-10-03T06:58:48.205959+00:00",
+  "patch_sha256": "cf4be041dedb7fc7e499f35301a768a6e6f24ec31ff54c506d3917a1d3342cb6",
+  "disposition": "HOLD_NARROW_COMPONENT_PATH_RESOLUTION_ERROR",
+  "historical_snapshot": {
+    "source_commit": "ace5e9f87494b82c05abe74a351e07c25447b629",
+    "titles": 102,
+    "record_authorization_raw_git_blob_equalities": 204,
+    "sha256": "eceeb64aaf4453100a71c1ca2e9ac27080de4b780370c2cc1af112a923b87e98",
+    "result": "PASS"
+  },
+  "current_authority_snapshot": {
+    "reviewed_commit": "3c374472b07c86d28c15f0bdd6adde8e887a808c",
+    "authority_files": 5,
+    "exact_selected_titles": 52,
+    "sha256": "f4ab54fc49ceea1b742e2fb26842dcb6a9b5ea28a7289b6d799daf0f200dc1a0",
+    "result": "PASS"
+  },
+  "specific_blocker": "assert_current_reviewed_release and two modified reconciliation test component loops assume every component package/name.json; actual new accepted records include original/prepared/delivery image bytes and evidence/review_a,b.json. Resolve actual persisted hash-bound bytes without skipping full component checks; otherwise valid current acceptance raises FileNotFoundError.",
+  "negative_tests": "Deferred until valid baseline component resolution permits meaningful positive-control and fault-injection checks.",
+  "preserved_invariants": "Actual registered acceptance, revocation, INsix uses, US/untrusted/audio denial, complete source and chapter hashes, untouched exclusion/current gate/runtime policy. Historical local noncover authority remains distinct.",
+  "canonical_mutations": false,
+  "source_art_reviews_repeated": false,
+  "production_observations": false
+}

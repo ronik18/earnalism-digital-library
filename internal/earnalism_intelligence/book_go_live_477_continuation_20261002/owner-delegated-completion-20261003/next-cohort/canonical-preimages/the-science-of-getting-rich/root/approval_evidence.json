@@ -1,0 +1,24 @@
+{
+  "slug": "the-science-of-getting-rich",
+  "approved_to_publish": false,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "OWNER_DELEGATED_NON_COVER_TEXT_CLEARANCE_ONLY_RUNTIME_HOLD",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "historical_approval_superseded": true,
+  "reader_public_release": "READER_APPROVAL_REQUIRED",
+  "historical_admin_import_claim": {
+    "approved_to_publish": false,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction_superseded"
+  },
+  "publication_authorization_sha256": "cbb0f10031b0061839efa60f9fa11600bf283711c85843d0a49d45516e393052",
+  "source_hash": "adc3fb17f24801597561e992d858e124c8d9b4c6e3bf7593d713e7a71d252744",
+  "content_hash": "55a8e552b9f74640c7bccc1d05db9d5197ec9dd3af558aceb4f9d3ea73d4949b",
+  "provenance_hash": "2097ecf8e327a71b78cb7f061799a9cd8e02f94a30ff18cfab56d911487e0195",
+  "verified_at": "2026-10-01T21:35:50.622637+00:00"
+}

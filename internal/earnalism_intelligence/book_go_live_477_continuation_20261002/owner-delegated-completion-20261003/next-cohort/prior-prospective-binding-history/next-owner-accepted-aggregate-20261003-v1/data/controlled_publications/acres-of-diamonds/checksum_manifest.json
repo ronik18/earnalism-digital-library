@@ -1,0 +1,110 @@
+{
+  "slug": "acres-of-diamonds",
+  "generated_at": "2026-10-03T05:10:03.145513+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "e633d61f06584df3bb25548ee5a250ee53d416e40f392900968c4baa233561d7"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "11778e545fbe6bd748b1de53d919c61046895d52f28fcd2f19d0019c8050bfb5"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "b8d33891dd45ccae231df2691f8146a403f32b29d29898312c4b96a483e67998"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "782852fb98ddde22452d57db05ab27d987015f326585df5ee58ede7b78c506f9"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "c2a0e8927cfc582810ee0c792d187d5d6fa7b6848657701c8b206897974e75de"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "fc3b8598acf22016d218b7ab68576211c9fce6432abc1aef9cc575b241e52ff5"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "ae6ba36b24060d5be435c9e6ce034b2ac8e79d1a9b95f27bbec51867440cd9c2"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "c88e50d47fb2165b8c44c62bacd4ebf27052021cb8225dcbf7f84ae61046c61f"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "5925112cf9b78e62123b3cfbd3530d4e36d6ad0ddc46996abca890cae1ee0e09"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "c371578a7856ed07cb46142906dfc2019eab39181df2ff527f07bd98cb50997a"
+    },
+    {
+      "file": "chapters/chapter-010.json",
+      "sha256": "f58d55a6b4412d3464df32c757c071c2a8ba1580960eb272811ae63752a22936"
+    },
+    {
+      "file": "chapters/chapter-011.json",
+      "sha256": "676f458520daa1cdff4362776a126f736a6e83555165e761923dd6de2038b1c4"
+    },
+    {
+      "file": "chapters/chapter-012.json",
+      "sha256": "93eef852fff04fbf965b7acc2e5f2eea2db6f43c426bacc2f887abf60607ff6b"
+    },
+    {
+      "file": "cover_delivery_derivation.json",
+      "sha256": "1898e644f95edf860b1458baae27b7e48f9dee6fd68d7efb55baf0f7786e35a1"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "6f096f621756b895cf18637a97388f2382e43b5232a81aa7b3577f77491c3880"
+    },
+    {
+      "file": "covers/back.png",
+      "sha256": "b3fb289b101e3a09596321f9f12994b41149d0b8fb4cb855e83429fe393d51dd"
+    },
+    {
+      "file": "covers/front.png",
+      "sha256": "cdffd02edb00ddb0af8d55ad5ba6eeffef7d8be9683123fc3193b88e98a7e235"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "84ef6e4ed91b15636601d99de2953f9e7c9e90b235f80f028e172de98c0af5a1"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "b42e842b5de026c36590e9575916e79fd39e690fdf2493f1bbb425df4279e3ef"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "66e245fdbe892f702c88d7a0a34e494226c5163858021e0d286b1eca1f3823b8"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "c083501e4fd683fe9490a8d5b113ef524b57b3aecacc98fbf73caf44e3066d0c"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "9371f2af833cbd9683e138e121b7c6ae77f17a18de6dd46cb4507a301a6eb29e"
+    },
+    {
+      "file": "source_integrity_validation.json",
+      "sha256": "0e6526eec3c4a1a71d35e75c07401b7e6b7d9cba96e9847732afad064ada3889"
+    },
+    {
+      "file": "owner_artwork_declaration.json",
+      "sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264"
+    },
+    {
+      "file": "evidence/review_a.json",
+      "sha256": "848765bd2edfd3f28e3fe0c479321f0d41ea058dd894d31000bb3116c3b5b407"
+    },
+    {
+      "file": "evidence/review_b.json",
+      "sha256": "283ab0e868d9ec67a1efba2fc9aae9e61a1958e7dfd45f39b72f2e6ac2e3901f"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "schema": "earnalism.independent-candidate-binding-delta.v1",
+  "reviewer": "A",
+  "slug": "the-science-of-getting-rich",
+  "disposition": "PASS_FINAL_UNACCEPTED_EXACT_DELIVERY_RECIPE_AND_PACKAGE_BINDINGS",
+  "prior_actual_review_path": "/workspace/scratch/181ef0a25f05/new-acceptance-review-a/science-candidate-review-a-v1.json",
+  "prior_actual_review_sha256": "583d3d964e3b8dd166df2baa723267d038d826b4ee7f44f412a9cd06e6fb946e",
+  "unchanged_actual_source_visual_font_mask_and_preservation_findings_reused": true,
+  "delivery_renderer_actual_sha256": "b9e0af1d4f2fe814f3cdc49b1601e8bc1fe63b735bdeb77def2a7635a38680b2",
+  "independent_execution_destination": "/workspace/scratch/181ef0a25f05/new-acceptance-review-a/science-overlay-delivery-verification-v2",
+  "independent_derivation_outputs": {
+    "front": "5ee48b1d245c70b1b8495f9a6b98636cc798d2bea96ff54aa4c3d6fa27becb28",
+    "back": "bda88117bdb0d7208f51afa3cab6dce74875f83943ebf7c2a74409a6a29477c4"
+  },
+  "corrected_delivery_receipt_sha256": "3f1272ff582220e60a68f13412fc665a35c6e4885bf29006894bdfffd45f36fc",
+  "corrected_binding_sha256": "9b6765a0a4af10b15cba3ad2fc315f754d3ea8ddaf9dea60e3ee2ff495d6731f",
+  "corrected_rights_decision_sha256": "79e7b1e4c14eb3f38f89ea366cdd544116589b79490ef72608f5f010c3156638",
+  "components": {
+    "public_book": "481cec1d5841afa7c92a714867f406f734f345fb7b47ff3a5a7a98e9b373799d",
+    "reader_manifest": "a42883b4eb214ae086998672472b0f86c9709e550da35c87789f95564cdefdb7",
+    "source_evidence": "6324de50de9db456175bcd2cbecec794641fa8bdd322d2de2b49eaacc713a117",
+    "approval_evidence": "26722c153497866933400de4a8968c0760187f24fe348233a2e1cd8b700d7b95",
+    "checksum_manifest": "10a497aae2af2719e20a6fe3abcac8d27cdd673045340cb2c3a0b71fffdec567",
+    "publication_manifest": "5b6c86b79fa780e0a0936a7e1aa33acabc1bcf6db9590ce4d39b4c8df5af4596",
+    "cover_provenance": "9b6765a0a4af10b15cba3ad2fc315f754d3ea8ddaf9dea60e3ee2ff495d6731f",
+    "cover_delivery_derivation": "3f1272ff582220e60a68f13412fc665a35c6e4885bf29006894bdfffd45f36fc",
+    "cover_front_original_asset": "9fa719df44b5348b2dd694674fb7e4ba38438dd1e652ca70559081d67e88da15",
+    "cover_front_delivery_asset": "5ee48b1d245c70b1b8495f9a6b98636cc798d2bea96ff54aa4c3d6fa27becb28",
+    "cover_back_original_asset": "49cf4eb533e11cc92d253496e2945d700468b2a2e42b7aabf4c7d8dd3b590f09",
+    "cover_back_delivery_asset": "bda88117bdb0d7208f51afa3cab6dce74875f83943ebf7c2a74409a6a29477c4"
+  },
+  "checksum_count": 26,
+  "changed_package_files": {
+    "approval_evidence.json": {
+      "before": "2d53c92d83ef05349d550650f271a216c54be3c667596b2b788d266998f1fb8d",
+      "after": "26722c153497866933400de4a8968c0760187f24fe348233a2e1cd8b700d7b95"
+    },
+    "checksum_manifest.json": {
+      "before": "1543e46ede27fa8e6f35e2d002939d8213ba7ea9085215f2b7540cada37fda3d",
+      "after": "10a497aae2af2719e20a6fe3abcac8d27cdd673045340cb2c3a0b71fffdec567"
+    },
+    "cover_delivery_derivation.json": {
+      "before": "f1461997dc783ee540a5b9ea7bf779182ea0700db1f0a0daebfc739904a37767",
+      "after": "3f1272ff582220e60a68f13412fc665a35c6e4885bf29006894bdfffd45f36fc"
+    },
+    "cover_provenance.json": {
+      "before": "d3cdb56dbee7843b567bbdb72e0a3704e6ace8246c3e991efa45014e2ae3f750",
+      "after": "9b6765a0a4af10b15cba3ad2fc315f754d3ea8ddaf9dea60e3ee2ff495d6731f"
+    },
+    "publication_authorization.json": {
+      "before": "72033a936e2cbd749e9f6237bfc6111c8822fa4d790be77590e29f2c59f1c397",
+      "after": "0064cb053d3a9f7092e1eb3d02528384f5099a40ef859a6e6e1548a02fb78345"
+    },
+    "publication_manifest.json": {
+      "before": "ef05079b5ecd62a8bf195cd1a86c13500df0f6cdefd6ed7aed9c0a1b1c36670f",
+      "after": "5b6c86b79fa780e0a0936a7e1aa33acabc1bcf6db9590ce4d39b4c8df5af4596"
+    },
+    "rights_decision.json": {
+      "before": "b82e6a6bfc900abde1015064a3a231db7694c68fff182d8d1834999caa1edc22",
+      "after": "79e7b1e4c14eb3f38f89ea366cdd544116589b79490ef72608f5f010c3156638"
+    }
+  },
+  "root_backend_byte_equality": true,
+  "historical_renderer_labelled_not_current": true,
+  "current_source_input": "Frozen deterministic typography-overlay PNGs; no original-art card renderer incorrectly claimed.",
+  "paid_generation_new_source_fetches_and_artwork_changes": 0,
+  "production_observed": false,
+  "acceptance_or_registry_mutation_by_reviewer": false,
+  "next_action": "Root alone may create actual prospective acceptance after both independent final PASS; fresh exact accepted integration bindings and protected release/deployment/readback gates remain."
+}

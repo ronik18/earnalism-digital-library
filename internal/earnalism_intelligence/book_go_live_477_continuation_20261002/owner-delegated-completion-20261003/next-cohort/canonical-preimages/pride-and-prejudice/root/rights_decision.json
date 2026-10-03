@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-pride-and-prejudice-pg1342-noncover-text",
+  "edition_id": "pride-and-prejudice",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "c9c7472c67232de4c9eba6b94428b107b4c00b6156552c2122bfa6a0bfb6cd7e",
+    "reader_manifest": "81b6c23e716ea4d26fae26cc8e9e3e7e37637fd0c9fb1619dccb7a94d0ab7676",
+    "source_evidence": "9e4efacc3dbd251ea18aacd5805d781c1f64a450bea0225fae4ba6a394a97e99",
+    "approval_evidence": "8e598a926cb96af13684a3985d1143cf9ac5fb0a973eec11746a211462769d1c",
+    "checksum_manifest": "30ae8fbcdd611de9b8a93e295713970add3b3fbd281c5df9d5a470d4fd146a37",
+    "publication_manifest": "96452297fd2db13b70a3ba31a5b4a1d827d354ddd64a771b830e56c828c74f2b"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:19:39.153654+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1817, original publication 1813; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "ec35a5aed3936f495dc8cc0408fa54a6cf27c3c96003f74a85a58b594c5671b7",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "a8c4b8b3a116e154c2ac028f048d81b06f0068ddbee5008827bf50693bcd12d9",
+    "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+    "4b68459abff92d885d2d493ad052e8cdba6308ebf78f24508c6410cce683c276"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

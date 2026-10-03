@@ -1,0 +1,38 @@
+{
+  "schema": "earnalism.isolated-runtime-patch-validation.v1",
+  "direct_actual_pure_assertion_cases": 17,
+  "cases": [
+    "test_dracula_titles_have_one_normalized_structural_label",
+    "test_unsubtitled_and_non_english_units_remain_meaningful",
+    "test_dracula_index_is_uniform_and_publisher_catalog_is_not_reader_content",
+    "test_catalog_wide_reader_indexes_are_complete_and_deterministic",
+    "inventory_mutation:None",
+    "inventory_mutation:missing_package",
+    "inventory_mutation:missing_zero_chapter_alias",
+    "inventory_mutation:unexpected_package",
+    "inventory_mutation:same_count_substitution",
+    "inventory_mutation:wrong_manifest_slug",
+    "inventory_mutation:wrong_count",
+    "inventory_mutation:renamed_chapter",
+    "inventory_mutation:duplicate_chapter",
+    "inventory_mutation:reordered_chapters",
+    "inventory_mutation:changed_order",
+    "test_checksum_bound_approved_audio_is_a_separate_exposed_lane",
+    "test_server_owned_audio_manifest_fails_closed_for_cross_title_endpoint"
+  ],
+  "runtime_manifests": 102,
+  "runtime_chapters": 826,
+  "frozen_fixture_byte_exact": true,
+  "all_seven_test_files_ast_parse": "PASS",
+  "git_apply_check": "PASS",
+  "full_pytest_server_runtime": "PARENT_NORMAL_CHECKS_REQUIRED_AFTER_SERIALIZED_INTEGRATION",
+  "canonical_writes": false,
+  "patch_sha256": "e5e638c05063cdb32fc640671ffb2e1b0baf774ef8b04bee9f3a716dc0001ad3",
+  "actual_pytest_pure_cases": {
+    "passed": 17,
+    "deselected": 11,
+    "seconds": 0.1,
+    "scope": "isolated exact inventory/dracula/fail-closed drift matrix plus preserved historical audio lane/cross-title-denial"
+  },
+  "dependencies": "existing scratch backend-test-deps and test-deps"
+}

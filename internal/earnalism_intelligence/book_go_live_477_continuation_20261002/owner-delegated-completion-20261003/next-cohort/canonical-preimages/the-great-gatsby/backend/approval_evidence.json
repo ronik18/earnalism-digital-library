@@ -1,0 +1,20 @@
+{
+  "slug": "the-great-gatsby",
+  "approved_to_publish": false,
+  "rights_tier": "A",
+  "verification_status": "reader_repair_verified",
+  "qa_status": "READER_REPAIR_PASSED_COVER_BLOCKED",
+  "approval_scope": "fresh_checksum_bound_reader_approval_required",
+  "reader_package_fingerprint": "efc7c7af7b439119480f0d8d9780b46b63eaeb0650d3a8fb0eb6910f9b9f29c4",
+  "cover_gate": "BLOCKED_LOCAL_PROVENANCE_MISSING",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "reader_approval": "NOT_REQUESTED_COVER_BLOCKED",
+  "cover_gate_passed": false,
+  "release_blockers": [
+    "exact_slug_graphical_cover_not_proven"
+  ],
+  "audio_enabled": false
+}

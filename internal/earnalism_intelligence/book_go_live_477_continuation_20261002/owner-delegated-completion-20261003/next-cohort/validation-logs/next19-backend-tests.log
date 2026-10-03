@@ -1,0 +1,665 @@
+.....................................F.................................. [ 14%]
+........................................................................ [ 29%]
+......FFFFF............................................................. [ 44%]
+........................................................................ [ 59%]
+.......FFFFF.......................................................F.... [ 74%]
+.............F.......................................................... [ 89%]
+....................F........................F...FF.F                    [100%]
+=================================== FAILURES ===================================
+_ test_exact_approved_source_initializes_once_and_real_manifest_is_readable[the-great-gatsby] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c762094c0>
+slug = 'the-great-gatsby'
+
+    @pytest.mark.parametrize("slug", RELEASE_SLUGS)
+    def test_exact_approved_source_initializes_once_and_real_manifest_is_readable(monkeypatch, slug):
+>       database, _plan = setup(monkeypatch, slug)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend/tests/test_approved_reader_bootstrap.py:121: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c762094c0>
+slug = 'the-great-gatsby'
+
+    def setup(monkeypatch, slug=SLUG):
+        plan = json.loads(PLAN_PATH.read_text())
+        plan["titles"] = [row for row in plan["titles"] if row["slug"] == slug]
+        assert len(plan["titles"]) == 1
+        record, _components = server._release_rights_artifact(slug)
+        assert record and record.get("decision_id")
+        assert plan["titles"][0]["decision_id"] == record["decision_id"]
+        assert plan["titles"][0]["record_sha256"] == server.record_sha256(record)
+        original_read = server.read_json_file
+        monkeypatch.setattr(server, "read_json_file", lambda path: copy.deepcopy(plan) if Path(path) == PLAN_PATH else original_read(path))
+        monkeypatch.setattr(server, "READING_PASS_V2_ENABLED", True)
+        monkeypatch.setattr(server, "ENVIRONMENT", "production")
+        database = Database()
+        monkeypatch.setattr(server, "db", database)
+        monkeypatch.setattr(server, "client", Client())
+        book = server._controlled_artifact_doc(slug, include_content=True)
+>       assert book and book["chapters"]
+E       assert (None)
+
+backend/tests/test_approved_reader_bootstrap.py:97: AssertionError
+_ test_existing_versions_and_revocation_history_remain_unchanged[the-great-gatsby-active] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72e3d0a0>
+existing = 'active', slug = 'the-great-gatsby'
+
+    @pytest.mark.parametrize("existing", ["active", "pointer", "revoked", "archived", "operator-prepared"])
+    @pytest.mark.parametrize("slug", RELEASE_SLUGS)
+    def test_existing_versions_and_revocation_history_remain_unchanged(monkeypatch, existing, slug):
+>       database, _plan = setup(monkeypatch, slug)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend/tests/test_approved_reader_bootstrap.py:168: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72e3d0a0>
+slug = 'the-great-gatsby'
+
+    def setup(monkeypatch, slug=SLUG):
+        plan = json.loads(PLAN_PATH.read_text())
+        plan["titles"] = [row for row in plan["titles"] if row["slug"] == slug]
+        assert len(plan["titles"]) == 1
+        record, _components = server._release_rights_artifact(slug)
+        assert record and record.get("decision_id")
+        assert plan["titles"][0]["decision_id"] == record["decision_id"]
+        assert plan["titles"][0]["record_sha256"] == server.record_sha256(record)
+        original_read = server.read_json_file
+        monkeypatch.setattr(server, "read_json_file", lambda path: copy.deepcopy(plan) if Path(path) == PLAN_PATH else original_read(path))
+        monkeypatch.setattr(server, "READING_PASS_V2_ENABLED", True)
+        monkeypatch.setattr(server, "ENVIRONMENT", "production")
+        database = Database()
+        monkeypatch.setattr(server, "db", database)
+        monkeypatch.setattr(server, "client", Client())
+        book = server._controlled_artifact_doc(slug, include_content=True)
+>       assert book and book["chapters"]
+E       assert (None)
+
+backend/tests/test_approved_reader_bootstrap.py:97: AssertionError
+_ test_existing_versions_and_revocation_history_remain_unchanged[the-great-gatsby-pointer] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72eed670>
+existing = 'pointer', slug = 'the-great-gatsby'
+
+    @pytest.mark.parametrize("existing", ["active", "pointer", "revoked", "archived", "operator-prepared"])
+    @pytest.mark.parametrize("slug", RELEASE_SLUGS)
+    def test_existing_versions_and_revocation_history_remain_unchanged(monkeypatch, existing, slug):
+>       database, _plan = setup(monkeypatch, slug)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend/tests/test_approved_reader_bootstrap.py:168: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72eed670>
+slug = 'the-great-gatsby'
+
+    def setup(monkeypatch, slug=SLUG):
+        plan = json.loads(PLAN_PATH.read_text())
+        plan["titles"] = [row for row in plan["titles"] if row["slug"] == slug]
+        assert len(plan["titles"]) == 1
+        record, _components = server._release_rights_artifact(slug)
+        assert record and record.get("decision_id")
+        assert plan["titles"][0]["decision_id"] == record["decision_id"]
+        assert plan["titles"][0]["record_sha256"] == server.record_sha256(record)
+        original_read = server.read_json_file
+        monkeypatch.setattr(server, "read_json_file", lambda path: copy.deepcopy(plan) if Path(path) == PLAN_PATH else original_read(path))
+        monkeypatch.setattr(server, "READING_PASS_V2_ENABLED", True)
+        monkeypatch.setattr(server, "ENVIRONMENT", "production")
+        database = Database()
+        monkeypatch.setattr(server, "db", database)
+        monkeypatch.setattr(server, "client", Client())
+        book = server._controlled_artifact_doc(slug, include_content=True)
+>       assert book and book["chapters"]
+E       assert (None)
+
+backend/tests/test_approved_reader_bootstrap.py:97: AssertionError
+_ test_existing_versions_and_revocation_history_remain_unchanged[the-great-gatsby-revoked] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72eece00>
+existing = 'revoked', slug = 'the-great-gatsby'
+
+    @pytest.mark.parametrize("existing", ["active", "pointer", "revoked", "archived", "operator-prepared"])
+    @pytest.mark.parametrize("slug", RELEASE_SLUGS)
+    def test_existing_versions_and_revocation_history_remain_unchanged(monkeypatch, existing, slug):
+>       database, _plan = setup(monkeypatch, slug)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend/tests/test_approved_reader_bootstrap.py:168: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72eece00>
+slug = 'the-great-gatsby'
+
+    def setup(monkeypatch, slug=SLUG):
+        plan = json.loads(PLAN_PATH.read_text())
+        plan["titles"] = [row for row in plan["titles"] if row["slug"] == slug]
+        assert len(plan["titles"]) == 1
+        record, _components = server._release_rights_artifact(slug)
+        assert record and record.get("decision_id")
+        assert plan["titles"][0]["decision_id"] == record["decision_id"]
+        assert plan["titles"][0]["record_sha256"] == server.record_sha256(record)
+        original_read = server.read_json_file
+        monkeypatch.setattr(server, "read_json_file", lambda path: copy.deepcopy(plan) if Path(path) == PLAN_PATH else original_read(path))
+        monkeypatch.setattr(server, "READING_PASS_V2_ENABLED", True)
+        monkeypatch.setattr(server, "ENVIRONMENT", "production")
+        database = Database()
+        monkeypatch.setattr(server, "db", database)
+        monkeypatch.setattr(server, "client", Client())
+        book = server._controlled_artifact_doc(slug, include_content=True)
+>       assert book and book["chapters"]
+E       assert (None)
+
+backend/tests/test_approved_reader_bootstrap.py:97: AssertionError
+_ test_existing_versions_and_revocation_history_remain_unchanged[the-great-gatsby-archived] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72e3ea50>
+existing = 'archived', slug = 'the-great-gatsby'
+
+    @pytest.mark.parametrize("existing", ["active", "pointer", "revoked", "archived", "operator-prepared"])
+    @pytest.mark.parametrize("slug", RELEASE_SLUGS)
+    def test_existing_versions_and_revocation_history_remain_unchanged(monkeypatch, existing, slug):
+>       database, _plan = setup(monkeypatch, slug)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend/tests/test_approved_reader_bootstrap.py:168: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72e3ea50>
+slug = 'the-great-gatsby'
+
+    def setup(monkeypatch, slug=SLUG):
+        plan = json.loads(PLAN_PATH.read_text())
+        plan["titles"] = [row for row in plan["titles"] if row["slug"] == slug]
+        assert len(plan["titles"]) == 1
+        record, _components = server._release_rights_artifact(slug)
+        assert record and record.get("decision_id")
+        assert plan["titles"][0]["decision_id"] == record["decision_id"]
+        assert plan["titles"][0]["record_sha256"] == server.record_sha256(record)
+        original_read = server.read_json_file
+        monkeypatch.setattr(server, "read_json_file", lambda path: copy.deepcopy(plan) if Path(path) == PLAN_PATH else original_read(path))
+        monkeypatch.setattr(server, "READING_PASS_V2_ENABLED", True)
+        monkeypatch.setattr(server, "ENVIRONMENT", "production")
+        database = Database()
+        monkeypatch.setattr(server, "db", database)
+        monkeypatch.setattr(server, "client", Client())
+        book = server._controlled_artifact_doc(slug, include_content=True)
+>       assert book and book["chapters"]
+E       assert (None)
+
+backend/tests/test_approved_reader_bootstrap.py:97: AssertionError
+_ test_existing_versions_and_revocation_history_remain_unchanged[the-great-gatsby-operator-prepared] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72e3d310>
+existing = 'operator-prepared', slug = 'the-great-gatsby'
+
+    @pytest.mark.parametrize("existing", ["active", "pointer", "revoked", "archived", "operator-prepared"])
+    @pytest.mark.parametrize("slug", RELEASE_SLUGS)
+    def test_existing_versions_and_revocation_history_remain_unchanged(monkeypatch, existing, slug):
+>       database, _plan = setup(monkeypatch, slug)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend/tests/test_approved_reader_bootstrap.py:168: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72e3d310>
+slug = 'the-great-gatsby'
+
+    def setup(monkeypatch, slug=SLUG):
+        plan = json.loads(PLAN_PATH.read_text())
+        plan["titles"] = [row for row in plan["titles"] if row["slug"] == slug]
+        assert len(plan["titles"]) == 1
+        record, _components = server._release_rights_artifact(slug)
+        assert record and record.get("decision_id")
+        assert plan["titles"][0]["decision_id"] == record["decision_id"]
+        assert plan["titles"][0]["record_sha256"] == server.record_sha256(record)
+        original_read = server.read_json_file
+        monkeypatch.setattr(server, "read_json_file", lambda path: copy.deepcopy(plan) if Path(path) == PLAN_PATH else original_read(path))
+        monkeypatch.setattr(server, "READING_PASS_V2_ENABLED", True)
+        monkeypatch.setattr(server, "ENVIRONMENT", "production")
+        database = Database()
+        monkeypatch.setattr(server, "db", database)
+        monkeypatch.setattr(server, "client", Client())
+        book = server._controlled_artifact_doc(slug, include_content=True)
+>       assert book and book["chapters"]
+E       assert (None)
+
+backend/tests/test_approved_reader_bootstrap.py:97: AssertionError
+_ test_missing_authority_or_integrity_cannot_create_pages_or_pointer[the-great-gatsby-changed-decision] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72dcd520>
+hold = 'changed-decision', slug = 'the-great-gatsby'
+
+    @pytest.mark.parametrize("hold", ["changed-decision", "revoked-decision", "conflicting-index", "incomplete-source", "unreleased-title"])
+    @pytest.mark.parametrize("slug", RELEASE_SLUGS)
+    def test_missing_authority_or_integrity_cannot_create_pages_or_pointer(monkeypatch, hold, slug):
+>       database, plan = setup(monkeypatch, slug)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend/tests/test_approved_reader_bootstrap.py:183: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72dcd520>
+slug = 'the-great-gatsby'
+
+    def setup(monkeypatch, slug=SLUG):
+        plan = json.loads(PLAN_PATH.read_text())
+        plan["titles"] = [row for row in plan["titles"] if row["slug"] == slug]
+        assert len(plan["titles"]) == 1
+        record, _components = server._release_rights_artifact(slug)
+        assert record and record.get("decision_id")
+        assert plan["titles"][0]["decision_id"] == record["decision_id"]
+        assert plan["titles"][0]["record_sha256"] == server.record_sha256(record)
+        original_read = server.read_json_file
+        monkeypatch.setattr(server, "read_json_file", lambda path: copy.deepcopy(plan) if Path(path) == PLAN_PATH else original_read(path))
+        monkeypatch.setattr(server, "READING_PASS_V2_ENABLED", True)
+        monkeypatch.setattr(server, "ENVIRONMENT", "production")
+        database = Database()
+        monkeypatch.setattr(server, "db", database)
+        monkeypatch.setattr(server, "client", Client())
+        book = server._controlled_artifact_doc(slug, include_content=True)
+>       assert book and book["chapters"]
+E       assert (None)
+
+backend/tests/test_approved_reader_bootstrap.py:97: AssertionError
+_ test_missing_authority_or_integrity_cannot_create_pages_or_pointer[the-great-gatsby-revoked-decision] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72dcdfa0>
+hold = 'revoked-decision', slug = 'the-great-gatsby'
+
+    @pytest.mark.parametrize("hold", ["changed-decision", "revoked-decision", "conflicting-index", "incomplete-source", "unreleased-title"])
+    @pytest.mark.parametrize("slug", RELEASE_SLUGS)
+    def test_missing_authority_or_integrity_cannot_create_pages_or_pointer(monkeypatch, hold, slug):
+>       database, plan = setup(monkeypatch, slug)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend/tests/test_approved_reader_bootstrap.py:183: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72dcdfa0>
+slug = 'the-great-gatsby'
+
+    def setup(monkeypatch, slug=SLUG):
+        plan = json.loads(PLAN_PATH.read_text())
+        plan["titles"] = [row for row in plan["titles"] if row["slug"] == slug]
+        assert len(plan["titles"]) == 1
+        record, _components = server._release_rights_artifact(slug)
+        assert record and record.get("decision_id")
+        assert plan["titles"][0]["decision_id"] == record["decision_id"]
+        assert plan["titles"][0]["record_sha256"] == server.record_sha256(record)
+        original_read = server.read_json_file
+        monkeypatch.setattr(server, "read_json_file", lambda path: copy.deepcopy(plan) if Path(path) == PLAN_PATH else original_read(path))
+        monkeypatch.setattr(server, "READING_PASS_V2_ENABLED", True)
+        monkeypatch.setattr(server, "ENVIRONMENT", "production")
+        database = Database()
+        monkeypatch.setattr(server, "db", database)
+        monkeypatch.setattr(server, "client", Client())
+        book = server._controlled_artifact_doc(slug, include_content=True)
+>       assert book and book["chapters"]
+E       assert (None)
+
+backend/tests/test_approved_reader_bootstrap.py:97: AssertionError
+_ test_missing_authority_or_integrity_cannot_create_pages_or_pointer[the-great-gatsby-conflicting-index] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72e93f20>
+hold = 'conflicting-index', slug = 'the-great-gatsby'
+
+    @pytest.mark.parametrize("hold", ["changed-decision", "revoked-decision", "conflicting-index", "incomplete-source", "unreleased-title"])
+    @pytest.mark.parametrize("slug", RELEASE_SLUGS)
+    def test_missing_authority_or_integrity_cannot_create_pages_or_pointer(monkeypatch, hold, slug):
+>       database, plan = setup(monkeypatch, slug)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend/tests/test_approved_reader_bootstrap.py:183: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72e93f20>
+slug = 'the-great-gatsby'
+
+    def setup(monkeypatch, slug=SLUG):
+        plan = json.loads(PLAN_PATH.read_text())
+        plan["titles"] = [row for row in plan["titles"] if row["slug"] == slug]
+        assert len(plan["titles"]) == 1
+        record, _components = server._release_rights_artifact(slug)
+        assert record and record.get("decision_id")
+        assert plan["titles"][0]["decision_id"] == record["decision_id"]
+        assert plan["titles"][0]["record_sha256"] == server.record_sha256(record)
+        original_read = server.read_json_file
+        monkeypatch.setattr(server, "read_json_file", lambda path: copy.deepcopy(plan) if Path(path) == PLAN_PATH else original_read(path))
+        monkeypatch.setattr(server, "READING_PASS_V2_ENABLED", True)
+        monkeypatch.setattr(server, "ENVIRONMENT", "production")
+        database = Database()
+        monkeypatch.setattr(server, "db", database)
+        monkeypatch.setattr(server, "client", Client())
+        book = server._controlled_artifact_doc(slug, include_content=True)
+>       assert book and book["chapters"]
+E       assert (None)
+
+backend/tests/test_approved_reader_bootstrap.py:97: AssertionError
+_ test_missing_authority_or_integrity_cannot_create_pages_or_pointer[the-great-gatsby-incomplete-source] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72e92420>
+hold = 'incomplete-source', slug = 'the-great-gatsby'
+
+    @pytest.mark.parametrize("hold", ["changed-decision", "revoked-decision", "conflicting-index", "incomplete-source", "unreleased-title"])
+    @pytest.mark.parametrize("slug", RELEASE_SLUGS)
+    def test_missing_authority_or_integrity_cannot_create_pages_or_pointer(monkeypatch, hold, slug):
+>       database, plan = setup(monkeypatch, slug)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend/tests/test_approved_reader_bootstrap.py:183: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72e92420>
+slug = 'the-great-gatsby'
+
+    def setup(monkeypatch, slug=SLUG):
+        plan = json.loads(PLAN_PATH.read_text())
+        plan["titles"] = [row for row in plan["titles"] if row["slug"] == slug]
+        assert len(plan["titles"]) == 1
+        record, _components = server._release_rights_artifact(slug)
+        assert record and record.get("decision_id")
+        assert plan["titles"][0]["decision_id"] == record["decision_id"]
+        assert plan["titles"][0]["record_sha256"] == server.record_sha256(record)
+        original_read = server.read_json_file
+        monkeypatch.setattr(server, "read_json_file", lambda path: copy.deepcopy(plan) if Path(path) == PLAN_PATH else original_read(path))
+        monkeypatch.setattr(server, "READING_PASS_V2_ENABLED", True)
+        monkeypatch.setattr(server, "ENVIRONMENT", "production")
+        database = Database()
+        monkeypatch.setattr(server, "db", database)
+        monkeypatch.setattr(server, "client", Client())
+        book = server._controlled_artifact_doc(slug, include_content=True)
+>       assert book and book["chapters"]
+E       assert (None)
+
+backend/tests/test_approved_reader_bootstrap.py:97: AssertionError
+_ test_missing_authority_or_integrity_cannot_create_pages_or_pointer[the-great-gatsby-unreleased-title] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72e92240>
+hold = 'unreleased-title', slug = 'the-great-gatsby'
+
+    @pytest.mark.parametrize("hold", ["changed-decision", "revoked-decision", "conflicting-index", "incomplete-source", "unreleased-title"])
+    @pytest.mark.parametrize("slug", RELEASE_SLUGS)
+    def test_missing_authority_or_integrity_cannot_create_pages_or_pointer(monkeypatch, hold, slug):
+>       database, plan = setup(monkeypatch, slug)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend/tests/test_approved_reader_bootstrap.py:183: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72e92240>
+slug = 'the-great-gatsby'
+
+    def setup(monkeypatch, slug=SLUG):
+        plan = json.loads(PLAN_PATH.read_text())
+        plan["titles"] = [row for row in plan["titles"] if row["slug"] == slug]
+        assert len(plan["titles"]) == 1
+        record, _components = server._release_rights_artifact(slug)
+        assert record and record.get("decision_id")
+        assert plan["titles"][0]["decision_id"] == record["decision_id"]
+        assert plan["titles"][0]["record_sha256"] == server.record_sha256(record)
+        original_read = server.read_json_file
+        monkeypatch.setattr(server, "read_json_file", lambda path: copy.deepcopy(plan) if Path(path) == PLAN_PATH else original_read(path))
+        monkeypatch.setattr(server, "READING_PASS_V2_ENABLED", True)
+        monkeypatch.setattr(server, "ENVIRONMENT", "production")
+        database = Database()
+        monkeypatch.setattr(server, "db", database)
+        monkeypatch.setattr(server, "client", Client())
+        book = server._controlled_artifact_doc(slug, include_content=True)
+>       assert book and book["chapters"]
+E       assert (None)
+
+backend/tests/test_approved_reader_bootstrap.py:97: AssertionError
+_ test_omitted_plan_entry_does_not_initialize_an_absent_candidate[the-great-gatsby] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72ea12e0>
+slug = 'the-great-gatsby'
+
+    @pytest.mark.parametrize("slug", NEW_RELEASE_SLUGS)
+    def test_omitted_plan_entry_does_not_initialize_an_absent_candidate(monkeypatch, slug):
+>       database, plan = setup(monkeypatch, slug)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend/tests/test_approved_reader_bootstrap.py:206: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72ea12e0>
+slug = 'the-great-gatsby'
+
+    def setup(monkeypatch, slug=SLUG):
+        plan = json.loads(PLAN_PATH.read_text())
+        plan["titles"] = [row for row in plan["titles"] if row["slug"] == slug]
+        assert len(plan["titles"]) == 1
+        record, _components = server._release_rights_artifact(slug)
+        assert record and record.get("decision_id")
+        assert plan["titles"][0]["decision_id"] == record["decision_id"]
+        assert plan["titles"][0]["record_sha256"] == server.record_sha256(record)
+        original_read = server.read_json_file
+        monkeypatch.setattr(server, "read_json_file", lambda path: copy.deepcopy(plan) if Path(path) == PLAN_PATH else original_read(path))
+        monkeypatch.setattr(server, "READING_PASS_V2_ENABLED", True)
+        monkeypatch.setattr(server, "ENVIRONMENT", "production")
+        database = Database()
+        monkeypatch.setattr(server, "db", database)
+        monkeypatch.setattr(server, "client", Client())
+        book = server._controlled_artifact_doc(slug, include_content=True)
+>       assert book and book["chapters"]
+E       assert (None)
+
+backend/tests/test_approved_reader_bootstrap.py:97: AssertionError
+_ test_fifty_two_title_release_has_hash_bound_reading_pass_rights_and_published_reader_manifests _
+
+    def test_fifty_two_title_release_has_hash_bound_reading_pass_rights_and_published_reader_manifests():
+        launch = load_json(BACKEND_CONTROLLED_LAUNCH)
+        registry, revoked = load_production_registry()
+        commercial_slugs = tuple(sorted(INDIA_TEXT_RELEASE_SLUGS))
+        now = datetime.now(timezone.utc)
+    
+        for slug in commercial_slugs:
+            assert slug in launch["live_approved_slugs"]
+            package = active_runtime_package(slug)
+            manifest = load_json(package / "publication_manifest.json")
+            assert manifest["reader_release"]["status"] == "APPROVED"
+            assert manifest["reader_release"]["exposed"] is True
+            record = load_json(package / "rights_decision.json")
+            components = {
+                name.removesuffix(".json"): hashlib.sha256((package / name).read_bytes()).hexdigest()
+                for name in (
+                    "public_book.json",
+                    "reader_manifest.json",
+                    "source_evidence.json",
+                    "approval_evidence.json",
+                    "checksum_manifest.json",
+                    "publication_manifest.json",
+                )
+            }
+            assert registry[record["decision_id"]]
+>           assert (
+                record["accepted_by"].startswith("REO ENTERPRISE under the direct owner-provided India commercial go-live mandate")
+                or record["accepted_by"].startswith("REO ENTERPRISE proprietor under the direct user-provided")
+                or record["accepted_by"].startswith("REO ENTERPRISE proprietor under the direct PR #414 go-live mandate")
+                or (slug == "the-adventures-of-sherlock-holmes" and "identity was not provided" in record["accepted_by"])
+                or (slug == "agentic-ai-with-python" and record["accepted_by"].startswith("Ronik Basak, direct owner release instruction;"))
+                or (slug in NEAR_READY_20261001_SLUGS and record["accepted_by"].startswith("Codex under Ronik Basak direct autonomous safe near-ready release instruction."))
+                or (
+                    slug in REVIEWED_CAMPAIGN_SLUGS
+                    and record["accepted_by"].startswith((
+                        "Automated serialized integration controller under the product owner directive in issue #477 comment 5949652699",
+                        "Automated isolated acceptance-preparation worker under the product-owner directive in issue #477 comment 5949652699",
+                        "Automated isolated acceptance-preparation worker under the product owner directive in issue #477 comment 5949652699",
+                    ))
+                )
+            )
+E           AssertionError: assert (False or False or False or ('acres-of-diamonds' == 'the-adventur...erlock-holmes'
+E            +  where False = <built-in method startswith of str object at 0x7f4c73286ef0>('REO ENTERPRISE under the direct owner-provided India commercial go-live mandate')
+E            +    where <built-in method startswith of str object at 0x7f4c73286ef0> = 'Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.'.startswith
+E            +  and   False = <built-in method startswith of str object at 0x7f4c73286ef0>('REO ENTERPRISE proprietor under the direct user-provided')
+E            +    where <built-in method startswith of str object at 0x7f4c73286ef0> = 'Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.'.startswith
+E            +  and   False = <built-in method startswith of str object at 0x7f4c73286ef0>('REO ENTERPRISE proprietor under the direct PR #414 go-live mandate')
+E            +    where <built-in method startswith of str object at 0x7f4c73286ef0> = 'Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.'.startswith))
+E             
+E             - the-adventures-of-sherlock-holmes
+E             + acres-of-diamonds) or ('acres-of-diamonds' == 'agentic-ai-with-python'
+E             
+E             - agentic-ai-with-python
+E             + acres-of-diamonds) or ('acres-of-diamonds' in {'a-horseman-in-the-sky', 'a-mystery-of-heroism', 'a-scandal-in-bohemia', 'an-occurrence-at-owl-creek-bridge', 'jekyll-and-hyde', 'love-of-life', ...}) or ('acres-of-diamonds' in {'acres-of-diamonds', 'alices-adventures-in-wonderland', 'bn-035', 'bn-059', 'bn-066', 'book-5704b31005', ...} and False
+E            +  and   False = <built-in method startswith of str object at 0x7f4c73286ef0>(('Automated serialized integration controller under the product owner directive in issue #477 comment 5949652699', 'Au... 'Automated isolated acceptance-preparation worker under the product owner directive in issue #477 comment 5949652699'))
+E            +    where <built-in method startswith of str object at 0x7f4c73286ef0> = 'Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.'.startswith
+
+backend/tests/test_controlled_launch_parity.py:241: AssertionError
+__ test_selfish_giant_historical_audio_observation_preimage_is_preserved_only __
+
+    def test_selfish_giant_historical_audio_observation_preimage_is_preserved_only():
+        # Historical observations remain exact evidence, not fresh production facts.
+        inventory = json.loads((ROOT / "backend/tests/fixtures/legacy-selfish-giant-20261003.inventory.json").read_text())
+        assert inventory["purpose"] == "TEST_ONLY_EXACT_HISTORICAL_PREIMAGE_NOT_PRODUCTION_AUTHORIZATION_OR_RELEASE"
+        for row in inventory["files"]:
+            assert catalog_truth.file_sha256(HISTORICAL_SELFISH_GIANT / row["file"]) == row["sha256"]
+        public = catalog_truth.read_json_file(HISTORICAL_SELFISH_GIANT / "public_book.json")
+        assert public["audio_enabled"] is True and public["audiobook_enabled"] is True
+        assert public["audiobook_release_mode"] == "SERVER_OWNED_CONVEYOR"
+        approval = catalog_truth.read_json_file(HISTORICAL_SELFISH_GIANT / "approval_evidence.json")
+        evidence = catalog_truth.read_json_file(HISTORICAL_SELFISH_GIANT / "production_audio_evidence.json")
+        assert approval["candidate_fingerprint"] == evidence["candidate_fingerprint"]
+        assert approval["audio_sha256"] == evidence["audio_sha256"]
+        assert approval["release_blockers"] == []
+        assert evidence["production_audio"]["range_status"] == 206
+        assert evidence["production_audio"]["content_type"] == "audio/mpeg"
+        assert evidence["browser"]["playback_advanced"] is True
+        publication = catalog_truth.read_json_file(HISTORICAL_SELFISH_GIANT / "publication_manifest.json")
+>       assert publication["audio_release"]["discovery_exposed"] is False
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'discovery_exposed'
+
+backend/tests/test_batch2_guarded_publications.py:116: KeyError
+_ test_audiobook_release_uses_validated_controlled_reader_truth_for_legacy_shell _
+
+    def test_audiobook_release_uses_validated_controlled_reader_truth_for_legacy_shell():
+        canonical = catalog_truth.load_controlled_artifact_book(
+            "gitanjali",
+            include_content=False,
+        )
+>       assert canonical is not None
+E       assert None is not None
+
+backend/tests/test_public_catalog_controlled_cover_truth.py:198: AssertionError
+__ test_public_catalog_cache_namespace_is_rotated_without_changing_audio_gate __
+
+    def test_public_catalog_cache_namespace_is_rotated_without_changing_audio_gate():
+        cache_key = server._public_cache_key("book_detail", slug=SLUG)
+    
+>       assert '"catalog_truth": "controlled-covers-v1"' in cache_key
+E       assert '"catalog_truth": "controlled-covers-v1"' in 'book_detail:{"catalog_truth": "release-containment-v1", "slug": "jekyll-and-hyde", "truth_gate": "audio-contract-v16"}'
+
+backend/tests/test_public_catalog_controlled_cover_truth.py:307: AssertionError
+____ test_reader_catalog_cache_namespaces_rotate_with_public_catalog_truth _____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72e3c920>
+
+    def test_reader_catalog_cache_namespaces_rotate_with_public_catalog_truth(monkeypatch):
+        seen = []
+    
+        async def capture_cache_key(namespace, key):
+            seen.append((namespace, key))
+            return {"cached": True}
+    
+        async def fixed_generation():
+            return 37
+    
+        monkeypatch.setattr(server, "_redis_cache_get", capture_cache_key)
+        monkeypatch.setattr(server, "_reader_content_cache_generation_value", fixed_generation)
+    
+        assert asyncio.run(server._reader_book_access_doc(SLUG)) == {"cached": True}
+        assert asyncio.run(server._reader_book_manifest_doc(SLUG)) == {"cached": True}
+    
+>       assert seen == [
+            (
+                "reader-content",
+                "book-access:audio-contract-v16:controlled-covers-v1:37:public:jekyll-and-hyde",
+            ),
+            (
+                "reader-manifest",
+                "book-manifest:audio-contract-v16:controlled-covers-v1:chapter-index.v1:37:public:jekyll-and-hyde",
+            ),
+        ]
+E       AssertionError: assert [('reader-con...ll-and-hyde')] == [('reader-con...ll-and-hyde')]
+E         
+E         At index 0 diff: ('reader-content', 'book-access:audio-contract-v16:release-containment-v1:37:public:jekyll-and-hyde') != ('reader-content', 'book-access:audio-contract-v16:controlled-covers-v1:37:public:jekyll-and-hyde')
+E         Use -v to get more diff
+
+backend/tests/test_public_catalog_controlled_cover_truth.py:327: AssertionError
+________ test_reader_manifest_ignores_pre_catalog_truth_namespace_entry ________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4c72e3cf80>
+
+    def test_reader_manifest_ignores_pre_catalog_truth_namespace_entry(monkeypatch):
+        canonical = catalog_truth.load_controlled_artifact_book(
+            GIFT_SLUG,
+            include_content=True,
+        )
+        assert canonical is not None
+        monkeypatch.setattr(server, "db", SimpleNamespace(books=SameSlugBooks({})))
+        stale_key = "book-manifest:audio-contract-v13:562:public:the-gift-of-the-magi"
+        stale_manifest = {
+            "book": {
+                "slug": GIFT_SLUG,
+                "title": "Stale cached title",
+                "cover_url": "https://example.com/stale-front.jpg",
+                "back_cover_url": "https://example.com/stale-back.jpg",
+            }
+        }
+        seen = []
+    
+        async def seeded_cache(namespace, key):
+            seen.append((namespace, key))
+            return stale_manifest if key == stale_key else None
+    
+        async def fixed_generation():
+            return 562
+    
+        monkeypatch.setattr(server, "_redis_cache_get", seeded_cache)
+        monkeypatch.setattr(server, "_redis_cache_set", no_cache_write)
+        monkeypatch.setattr(server, "_reader_content_cache_generation_value", fixed_generation)
+    
+        manifest = asyncio.run(server._reader_book_manifest_doc(GIFT_SLUG))
+    
+        assert manifest is not None
+>       assert seen == [
+            (
+                "reader-manifest",
+                "book-manifest:audio-contract-v16:controlled-covers-v1:chapter-index.v1:562:public:the-gift-of-the-magi",
+            )
+        ]
+E       AssertionError: assert [('reader-man...of-the-magi')] == [('reader-man...of-the-magi')]
+E         
+E         At index 0 diff: ('reader-manifest', 'book-manifest:audio-contract-v16:release-containment-v1:chapter-index.v1:562:public:the-gift-of-the-magi') != ('reader-manifest', 'book-manifest:audio-contract-v16:controlled-covers-v1:chapter-index.v1:562:public:the-gift-of-the-magi')
+E         Use -v to get more diff
+
+backend/tests/test_public_catalog_controlled_cover_truth.py:398: AssertionError
+=============================== warnings summary ===============================
+../../workspace/scratch/181ef0a25f05/backend-test-deps/motor/core.py:154
+  /workspace/scratch/181ef0a25f05/backend-test-deps/motor/core.py:154: DeprecationWarning: There is no current event loop
+    self._io_loop = self._framework.get_event_loop()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED backend/tests/test_approved_reader_bootstrap.py::test_exact_approved_source_initializes_once_and_real_manifest_is_readable[the-great-gatsby]
+FAILED backend/tests/test_approved_reader_bootstrap.py::test_existing_versions_and_revocation_history_remain_unchanged[the-great-gatsby-active]
+FAILED backend/tests/test_approved_reader_bootstrap.py::test_existing_versions_and_revocation_history_remain_unchanged[the-great-gatsby-pointer]
+FAILED backend/tests/test_approved_reader_bootstrap.py::test_existing_versions_and_revocation_history_remain_unchanged[the-great-gatsby-revoked]
+FAILED backend/tests/test_approved_reader_bootstrap.py::test_existing_versions_and_revocation_history_remain_unchanged[the-great-gatsby-archived]
+FAILED backend/tests/test_approved_reader_bootstrap.py::test_existing_versions_and_revocation_history_remain_unchanged[the-great-gatsby-operator-prepared]
+FAILED backend/tests/test_approved_reader_bootstrap.py::test_missing_authority_or_integrity_cannot_create_pages_or_pointer[the-great-gatsby-changed-decision]
+FAILED backend/tests/test_approved_reader_bootstrap.py::test_missing_authority_or_integrity_cannot_create_pages_or_pointer[the-great-gatsby-revoked-decision]
+FAILED backend/tests/test_approved_reader_bootstrap.py::test_missing_authority_or_integrity_cannot_create_pages_or_pointer[the-great-gatsby-conflicting-index]
+FAILED backend/tests/test_approved_reader_bootstrap.py::test_missing_authority_or_integrity_cannot_create_pages_or_pointer[the-great-gatsby-incomplete-source]
+FAILED backend/tests/test_approved_reader_bootstrap.py::test_missing_authority_or_integrity_cannot_create_pages_or_pointer[the-great-gatsby-unreleased-title]
+FAILED backend/tests/test_approved_reader_bootstrap.py::test_omitted_plan_entry_does_not_initialize_an_absent_candidate[the-great-gatsby]
+FAILED backend/tests/test_controlled_launch_parity.py::test_fifty_two_title_release_has_hash_bound_reading_pass_rights_and_published_reader_manifests
+FAILED backend/tests/test_batch2_guarded_publications.py::test_selfish_giant_historical_audio_observation_preimage_is_preserved_only
+FAILED backend/tests/test_public_catalog_controlled_cover_truth.py::test_audiobook_release_uses_validated_controlled_reader_truth_for_legacy_shell
+FAILED backend/tests/test_public_catalog_controlled_cover_truth.py::test_public_catalog_cache_namespace_is_rotated_without_changing_audio_gate
+FAILED backend/tests/test_public_catalog_controlled_cover_truth.py::test_reader_catalog_cache_namespaces_rotate_with_public_catalog_truth
+FAILED backend/tests/test_public_catalog_controlled_cover_truth.py::test_reader_manifest_ignores_pre_catalog_truth_namespace_entry
+18 failed, 467 passed, 1 warning in 4.01s

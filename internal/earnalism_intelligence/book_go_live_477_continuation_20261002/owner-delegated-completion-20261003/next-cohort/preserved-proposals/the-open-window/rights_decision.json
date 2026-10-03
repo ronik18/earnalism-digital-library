@@ -1,0 +1,39 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-the-open-window-pg269-exact-text-cover",
+  "edition_id": "the-open-window",
+  "operator_id": "reo-enterprise",
+  "status": "PROPOSED",
+  "components": {
+    "source_evidence": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d",
+    "publication_manifest": "c2be01516de1009c0b2f85d0323f1abb532ffc85660005ca3afb002bc83486ee",
+    "reader_manifest": "8f5a8d563c587a28d30e1e001447cdb5328bdcd49df4b61d8d7838401aac6151",
+    "approval_evidence": "287ff7059f7d8e04407a3ba056726dcc4e45fe773ca989c89b1566bf7ff09824",
+    "public_book": "780205125e1930087b8033936bb4b73414ed451212ad9fd4c8939cb4a85b4d64",
+    "checksum_manifest": "6a3349c1068fd4fa76c7fbfff7b8f0c14b8bfc03ce78dc07fba57c3702aa1336",
+    "cover_provenance": "9540748697d562d47c872ee30a8bf8a88dcd7f87ce1883b8e6d0233c012f2fad"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "cover_display",
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T04:11:36.072734+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1916, verified lifetime collection publication 1914 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record. Proposed exact existing owner-art bounded repair; prospective cover acceptance pending fresh2 independent reviews. Prior text decision preserved.",
+  "evidence_sha256": [
+    "483606fbed9f701455072911ef1cf25ddc9e7380d73ec0b81257e38cb303a00d",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+    "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be"
+  ],
+  "accepted_by": "NOT_ACCEPTED: isolated automated proposal-preparation worker; no human/legal signature or production observation.",
+  "conditions_satisfied": false
+}

@@ -1,0 +1,22 @@
+{
+  "schema": "earnalism.concurrent-integration-reconciliation-addendum.v1",
+  "recorded_at": "2026-10-03T07:21:53.034547+00:00",
+  "actual_parent": "cee95a15f46f3995fb953da0ee29aa4e2f085794",
+  "additional_incoming_commit": "cee95a15f46f3995fb953da0ee29aa4e2f085794",
+  "changed_paths_from_original": [
+    "backend/tests/test_rights_engine.py",
+    "scripts/test_reconcile_bengali_source_evidence.py",
+    "scripts/test_reconcile_english_source_evidence.py"
+  ],
+  "resolution": "Preserve all five concurrent fixture commits as ancestors. Reviewed strict v3 plus reviewed backend fixture correction covers the same missing-license synthetic-case intent and the eight stale catalogue cases. Final executable bytes are identical to the 208-test passing tree; history-only evidence added.",
+  "unrelated_open_pr": {
+    "number": 512,
+    "head": "9640331aee2d5bbf32f0fbbf634eb5920a4a0e2c",
+    "branch": "codex/p0-01-admin-authz-hardening",
+    "scope": "Independent security work, not a duplicate Book GO-LIVE integration PR. Remains outside campaign scope; no security/secret/auth production mutation authorized or performed here."
+  },
+  "sole_book_integration_pr": 511,
+  "all_new_publication_source_art_registry_allowlist_version_policy_bytes_unchanged": true,
+  "no_parallel_integration_pr_created": true,
+  "next_action": "Normal fast-forward with latest exact parent; existing protected checks only."
+}

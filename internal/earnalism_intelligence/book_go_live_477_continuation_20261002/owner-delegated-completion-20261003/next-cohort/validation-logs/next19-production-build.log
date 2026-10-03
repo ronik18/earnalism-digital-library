@@ -1,0 +1,79 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> frontend@0.1.0 prebuild
+> node scripts/generate-seo-assets.mjs
+
+[seo] Wrote 74 sitemap URLs from 10 categories, 52 books, and 2 journal posts.
+
+> frontend@0.1.0 build
+> GENERATE_SOURCEMAP=false craco build
+
+(node:39) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Creating an optimized production build...
+Compiled successfully.
+
+File sizes after gzip:
+
+  155.03 kB (+114 B)  build/static/js/main.bd906d23.js
+  146.58 kB           build/static/js/549.c96a9d8d.chunk.js
+  55.93 kB            build/static/css/main.9f8282b6.css
+  44.79 kB            build/static/js/710.6b86a614.chunk.js
+  32.46 kB            build/static/js/553.2d78045c.chunk.js
+  17.32 kB            build/static/js/242.26533c17.chunk.js
+  9.6 kB              build/static/js/188.08a06ba0.chunk.js
+  7.95 kB             build/static/css/611.f0324bb5.chunk.css
+  7.73 kB             build/static/js/230.694436bc.chunk.js
+  7.31 kB             build/static/js/857.1244924e.chunk.js
+  5.96 kB             build/static/css/242.b0aeff8a.chunk.css
+  5.25 kB             build/static/js/737.2855c8fb.chunk.js
+  4.99 kB             build/static/js/959.c0b31d5e.chunk.js
+  4.97 kB             build/static/js/739.028e66f7.chunk.js
+  4.75 kB             build/static/js/940.d9514696.chunk.js
+  4.49 kB             build/static/css/423.cd762fa8.chunk.css
+  4.49 kB             build/static/js/413.d22b0463.chunk.js
+  4.27 kB             build/static/css/230.51844552.chunk.css
+  3.73 kB             build/static/js/335.73ab97e4.chunk.js
+  3.33 kB             build/static/js/640.7c832a6f.chunk.js
+  3.12 kB             build/static/js/205.5cd9c936.chunk.js
+  2.97 kB             build/static/js/241.93eb2454.chunk.js
+  2.84 kB             build/static/css/710.afa01c15.chunk.css
+  2.83 kB             build/static/css/821.d081e438.chunk.css
+  2.76 kB             build/static/js/730.717bb812.chunk.js
+  2.59 kB             build/static/js/681.7d636952.chunk.js
+  2.15 kB             build/static/css/413.96bc71f7.chunk.css
+  2.15 kB             build/static/css/681.96bc71f7.chunk.css
+  2.15 kB             build/static/css/857.96bc71f7.chunk.css
+  1.95 kB             build/static/js/821.3a75456e.chunk.js
+  1.86 kB             build/static/css/335.39c6399c.chunk.css
+  1.86 kB             build/static/css/737.39c6399c.chunk.css
+  1.75 kB             build/static/js/548.0c59a989.chunk.js
+  1.63 kB             build/static/css/188.045a7b45.chunk.css
+  1.56 kB             build/static/js/910.9aa9cde6.chunk.js
+  1.56 kB             build/static/js/869.85355d3a.chunk.js
+  1.4 kB              build/static/css/241.20976fef.chunk.css
+  1.33 kB             build/static/js/925.ac850ea6.chunk.js
+  988 B               build/static/js/309.451cc86c.chunk.js
+  915 B               build/static/js/228.4002bb0c.chunk.js
+  302 B               build/static/css/205.4d9c958a.chunk.css
+  302 B               build/static/css/940.4d9c958a.chunk.css
+
+The project was built assuming it is hosted at /.
+You can control this with the homepage field in your package.json.
+
+The build folder is ready to be deployed.
+You may serve it with a static server:
+
+  npm install -g serve
+  serve -s build
+
+Find out more about deployment here:
+
+  https://cra.link/deployment
+
+
+> frontend@0.1.0 postbuild
+> node scripts/generate-static-seo-snapshots.mjs && node scripts/verify-static-seo-snapshots.mjs
+
+[static-seo] Wrote 172 static snapshots and a deterministic route manifest.
+Static SEO snapshot verifier: inspected=172 expected=172 assertions=3647 failed=0

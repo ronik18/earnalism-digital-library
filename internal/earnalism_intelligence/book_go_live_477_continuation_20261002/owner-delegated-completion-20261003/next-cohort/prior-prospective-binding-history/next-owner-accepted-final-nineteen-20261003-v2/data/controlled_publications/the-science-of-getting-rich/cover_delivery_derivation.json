@@ -1,0 +1,51 @@
+{
+  "schema": "earnalism.cover-delivery-derivation.v1",
+  "slug": "the-science-of-getting-rich",
+  "state": "ACCEPTED_EXACT_DELIVERY_INDIA_TEXT_READER_ONLY",
+  "method": "One bounded deterministic licensed-font typography mask-overlay, originalsourceart/copyunchangedoutsideprecisemasks;600x900LANCZOSWebPquality64method6",
+  "assets": {
+    "front": {
+      "source_sha256": "7f2e8e9fd3f6d0359b8d94cfc2198101abd64b4b78a95d035932d68bff4f2bf2",
+      "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/overlay-front-delivery.webp",
+      "sha256": "5ee48b1d245c70b1b8495f9a6b98636cc798d2bea96ff54aa4c3d6fa27becb28",
+      "bytes": 60052,
+      "width": 600,
+      "height": 900,
+      "url": "/assets/books/the-science-of-getting-rich/front-5ee48b1d.webp"
+    },
+    "back": {
+      "source_sha256": "83190790c57974d6dad6128dc87d5a3018e8d7fd06f41f623505320e974a1791",
+      "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/overlay-back-delivery.webp",
+      "sha256": "bda88117bdb0d7208f51afa3cab6dce74875f83943ebf7c2a74409a6a29477c4",
+      "bytes": 64860,
+      "width": 600,
+      "height": 900,
+      "url": "/assets/books/the-science-of-getting-rich/back-bda88117.webp"
+    }
+  },
+  "renderer": {
+    "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/render_overlay_delivery.py",
+    "sha256": "b9e0af1d4f2fe814f3cdc49b1601e8bc1fe63b735bdeb77def2a7635a38680b2",
+    "source_kind": "EXACT_NEW_DETERMINISTIC_OVERLAY_PNG",
+    "operation": "RGB;LANCZOS600x900;WEBPquality64method6",
+    "verification_exact_hashes": "PASS",
+    "historical_original_delivery_renderer_not_current": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/render_delivery.py"
+  },
+  "review_status": "PASS_TWO_INDEPENDENT_EXACT_PNG_WEBP_PREPARATION_REVIEWS",
+  "actual_acceptance": {
+    "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+    "accepted_at": "2026-10-03T04:59:53.954767+00:00",
+    "independent_reviews": {
+      "review_a": {
+        "file": "evidence/review_a.json",
+        "sha256": "e17b3d56b4e6f0f6177965822910d19550debe93090c198d5a21e3fac5419400"
+      },
+      "review_b": {
+        "file": "evidence/review_b.json",
+        "sha256": "4817d7c5123f319dfb08bc552fd4548d24896bb23964f11bd12d719c941eb98a"
+      }
+    },
+    "production_observed": false,
+    "final_binding_review_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "earnalism.exact-whole-selected-work-source-validation.v1",
+  "slug": "book-5704b31005",
+  "status": "PASS_ENTIRE_SELECTED_WORK_NOT_CONTAINMENT",
+  "chapter_count": 1,
+  "source_snapshot": "internal/legal/catalogue_clearance_20261002/bengali/book-5704b31005-final-source-comparison.json",
+  "source_snapshot_sha256": "f9569f74c51b89b6116867d0dac02049d4647573ae057de9e23b99aa22be9db3",
+  "rendered_source_sha256": "57835bba9d270aa0c3f31ee280b2ae789f0528be1adfa29815a45826e23e466b",
+  "current_source_evidence_sha256": "f7d3ac1cbe169532038b008d48c0313290cedca638d23c7696d75d3a0c072f3b",
+  "chapter_file_sha256": "e0325632daa997c635a64d46073efbf6d8fda511635e9b4ababfa3bab79dfd5c",
+  "complete_current_content_sha256": "c9e4ed3927535c11a5d1d5a4729f0c8a1371952a33a6e0e6d36514b3d249b089",
+  "full_source_paragraph_count": 40,
+  "reader_equals_all_captured_source_paragraphs": true,
+  "normalization": "NFC/BOM/zero-width-space and whitespace only, no letters or punctuation changed",
+  "current_accepted_IN_decision_id": "india-20261002-book-5704b31005-1895-cc-by-sa-text-reader",
+  "current_accepted_decision_sha256": "8cfbc2842d815d5ea8a99cae1484f01f9623687439b7ca73f979dc3b7e6e7d0b",
+  "existing_primary_original1895_identity_and_CC_BY_SA_license_preserved": true,
+  "new_source_gets": 0,
+  "new_rights_investigations": 0,
+  "production_observed": false
+}

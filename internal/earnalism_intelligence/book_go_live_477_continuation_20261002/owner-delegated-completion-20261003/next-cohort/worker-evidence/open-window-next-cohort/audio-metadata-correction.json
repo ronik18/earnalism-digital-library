@@ -1,0 +1,73 @@
+{
+  "slug": "the-open-window",
+  "correction_scope": "ONE_PAPERWORK_CORRECTION_REMOVE_HISTORICAL_ACTIVE_AUDIO_METADATA_AND_POSITIVE_FORMAT_CLAIMS",
+  "changed_fields": {
+    "public_book": {
+      "formats": {
+        "from": [
+          "Ebook",
+          "Audiobook"
+        ],
+        "to": [
+          "Ebook"
+        ]
+      }
+    },
+    "reader_manifest": {
+      "audiobook_active_release": "REMOVED_ACTIVE_DESCRIPTOR_PACKAGE_OR_MEDIA_METADATA",
+      "audiobook_legacy_release_descriptor_sha256": "REMOVED_ACTIVE_DESCRIPTOR_PACKAGE_OR_MEDIA_METADATA",
+      "audiobook_manuscript_sha256": "REMOVED_ACTIVE_DESCRIPTOR_PACKAGE_OR_MEDIA_METADATA",
+      "audiobook_package_release_evidence": "REMOVED_ACTIVE_DESCRIPTOR_PACKAGE_OR_MEDIA_METADATA",
+      "audiobook_packages": "REMOVED_ACTIVE_DESCRIPTOR_PACKAGE_OR_MEDIA_METADATA",
+      "audiobook_release_descriptor_sha256": "REMOVED_ACTIVE_DESCRIPTOR_PACKAGE_OR_MEDIA_METADATA"
+    }
+  },
+  "changed_files": {
+    "checksum_manifest.json": {
+      "before": "b015938df6dd991c5dc8cc52a44df0e2471e10554e593cba935c4d8b8e7a2595",
+      "after": "10c6d5a0253be19a1936334da5542811147ff6fb7f1aba31d8e6bf4041d845c3"
+    },
+    "public_book.json": {
+      "before": "b7e8b267591a6908b8ebe50dea50fd4dcb9d1372dec00a3748d98ef982462113",
+      "after": "566fab524a604e92da0482ea9bff2ba2dc56cd3ddfe5275a09f09d544c70c303"
+    },
+    "publication_manifest.json": {
+      "before": "4b1ba35b81152f0e97a1c7d873a4b96eff96b3aa31afa261dbfa2d6860fb0949",
+      "after": "fee58c670422d9099408da47ebf400d8997eb09806789818b3433c5b825401dd"
+    },
+    "reader_manifest.json": {
+      "before": "b817dd100cc0b7ab14f77feec25dbda82d6502a39505a4783e73457755a72559",
+      "after": "8f5a8d563c587a28d30e1e001447cdb5328bdcd49df4b61d8d7838401aac6151"
+    },
+    "rights_decision.json": {
+      "before": "ee73048d0ffb88c14dd1ae8cdda19264fe1f156ebeaa2b1f8ab76059520e4117",
+      "after": "e480b51f610ef7cbdcfdcb74c75ca64e7d6aaeb5580020a09c1a7c0202e7bfc3"
+    }
+  },
+  "source_chapter_license_sync_cover_art_bytes_unchanged": true,
+  "actual_acceptance_created": false,
+  "prior_source_and_backend_preimages_preserved": true,
+  "prior_proposal_public_reader_copies_preserved": true,
+  "new_decision_raw_sha256": "e480b51f610ef7cbdcfdcb74c75ca64e7d6aaeb5580020a09c1a7c0202e7bfc3",
+  "new_decision_canonical_sha256": "5fd22f4d91ad15be822bb2c7d3a2f9a88db83bdde4023bb2abbaf369d91bf0e7",
+  "new_package_files_sha256": {
+    "highlight_sync.json": "b2742d2516aa71aa23f79d33dba6ff5c27c5036c6b581197b6c55f991e97215e",
+    "source_evidence.json": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d",
+    "publication_manifest.json": "fee58c670422d9099408da47ebf400d8997eb09806789818b3433c5b825401dd",
+    "reader_manifest.json": "8f5a8d563c587a28d30e1e001447cdb5328bdcd49df4b61d8d7838401aac6151",
+    "publication_authorization.json": "b721690f38aedead88b16e6d989557c84571da8a9e4ec02cc549071a5ddbdc3e",
+    "approval_evidence.json": "41c4d825f95622efc33759a657020b0db81ff1cb0999a9fafef1b3ad44de6baf",
+    "public_book.json": "566fab524a604e92da0482ea9bff2ba2dc56cd3ddfe5275a09f09d544c70c303",
+    "rights_decision.json": "e480b51f610ef7cbdcfdcb74c75ca64e7d6aaeb5580020a09c1a7c0202e7bfc3",
+    "checksum_manifest.json": "10c6d5a0253be19a1936334da5542811147ff6fb7f1aba31d8e6bf4041d845c3",
+    "cover_provenance.json": "9540748697d562d47c872ee30a8bf8a88dcd7f87ce1883b8e6d0233c012f2fad",
+    "covers/back-delivery.webp": "6c87ea0a562e727b5527711f6f279bf9b95cad6a0817d15e36f783fd87016e76",
+    "covers/front-delivery.webp": "fd16c96883897722c2da7c49e2012dd9e5a3771bf2f99d11b89a29add60a8960",
+    "covers/front-layout-repair.png": "22a9981529ca3c46a81fae68c056b43d2253595f436110767c153eb9344589bd",
+    "covers/front-original.png": "351653d69bebc7567f868007370fb65b72eadbd41f7cbb2ee276e6024d0a1bb1",
+    "covers/back-original.png": "19717b3bb51630712f2f8cad58859361c9015ab726f3335b196c2b5924660a0d",
+    "covers/back-layout-repair.png": "5865b811a2feb412655fa56f6b2a9f6e6fbbd39881423bf14c77e1844a827829",
+    "chapters/chapter-001.json": "bc12b5dbae5cae481b59d11eb9fc43a7c875f4cf2b37d52107bce93957375a00"
+  },
+  "new_package_inventory_canonical_sha256": "44099119fdc41f4e369c8af6d04ebceb4a3a1550695e2efc18b6ff407c3acb69"
+}

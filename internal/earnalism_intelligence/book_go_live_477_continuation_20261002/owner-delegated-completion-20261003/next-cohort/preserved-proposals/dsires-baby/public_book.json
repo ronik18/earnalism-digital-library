@@ -1,0 +1,96 @@
+{
+  "id": "controlled-dsires-baby",
+  "slug": "dsires-baby",
+  "title": "Désirée's Baby",
+  "subtitle": "",
+  "author": "Kate Chopin",
+  "category_slug": "literary-fiction",
+  "short_description": "A Louisiana plantation wife is cast out when her baby shows signs of Black ancestry — but the truth points elsewhere.",
+  "description": "Désirée is abandoned by her husband Armand when their baby's appearance suggests African ancestry — but the letter he burns reveals the truth is the reverse. Chopin's most shattering story of racial prejudice and its ironic destruction of the bigot.",
+  "cover_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+  "coverImage": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+  "cover_image": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-back-5a845c98-800.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-back-5a845c98-800.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-back-5a845c98-800.webp",
+  "cover_status": "INACTIVE_EXACT_OWNER_ART_REPAIR_PENDING_REVIEW",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "9 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Kate Chopin (1850–1904) was an American author whose pioneering fiction explored female consciousness, desire, and race in the American South.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "Désirée's Baby",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 2178,
+      "reading_minutes": 10,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    }
+  ],
+  "source_hash": "31d4577d255806b92c6296419adddd5ca460bdb788743878a09ded1e19f4161a",
+  "content_hash": "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98",
+  "provenance_hash": "2ee318e47560589e69de19367a82467978af0cf4defd57691c9fb9276bbe5069",
+  "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1904, verified lifetime collection publication 1894 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": false,
+  "publication_status": "READY_FOR_APPROVAL",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "draft",
+  "isPublic": false,
+  "isLive": false,
+  "showInPublicLibrary": false,
+  "showInHomepage": false,
+  "allowPublicReading": false,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": false,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_assets": {},
+  "audiobook": {},
+  "created_at": "2026-07-03T20:07:48Z",
+  "updated_at": "2026-07-03T20:07:48Z",
+  "cover_dimensions": {
+    "front": [
+      800,
+      1200
+    ],
+    "back": [
+      800,
+      1200
+    ]
+  },
+  "cover_semantic_match_score": 9.8,
+  "audio_status": "NOT_REQUESTED",
+  "audio_url": "",
+  "sync_tier": "NONE"
+}

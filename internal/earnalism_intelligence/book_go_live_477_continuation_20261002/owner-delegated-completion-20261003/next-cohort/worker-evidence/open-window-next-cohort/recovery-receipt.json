@@ -1,0 +1,32 @@
+{
+  "slug": "the-open-window",
+  "retrieved_at": "2026-10-03T04:07:34.202685+00:00",
+  "requests": [
+    {
+      "kind": "front",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png",
+      "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png",
+      "http_status": 200,
+      "sha256": "351653d69bebc7567f868007370fb65b72eadbd41f7cbb2ee276e6024d0a1bb1",
+      "bytes": 190507,
+      "dimensions": [
+        1600,
+        2400
+      ],
+      "get_count": 1
+    },
+    {
+      "kind": "back",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267861/earnalism/covers/back/the-open-window_back_1600x2400.png",
+      "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267861/earnalism/covers/back/the-open-window_back_1600x2400.png",
+      "http_status": 200,
+      "sha256": "19717b3bb51630712f2f8cad58859361c9015ab726f3335b196c2b5924660a0d",
+      "bytes": 391491,
+      "dimensions": [
+        1600,
+        2400
+      ],
+      "get_count": 1
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "schema": "earnalism.actual-production-source-fingerprint-binding.v1",
+  "previous_sha256": "012c838d3208ee169d7d61505ca347bc99ad177ee12d3b7545472a6b409d4090",
+  "current_sha256": "e8a1e15b8ea194a4169ad471da0567a36bda99d5da268b80bd7a3b4d87def25c",
+  "source_file_count": 399,
+  "scope": "Two existing exact frontend source-fingerprint constants only. No check bypass, deployment configuration, routing, environment, workflow semantics or visual approval changed."
+}

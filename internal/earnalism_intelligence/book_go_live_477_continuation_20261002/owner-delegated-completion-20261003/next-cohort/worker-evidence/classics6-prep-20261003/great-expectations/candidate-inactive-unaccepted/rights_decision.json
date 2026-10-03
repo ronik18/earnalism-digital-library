@@ -1,0 +1,38 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "proposal-20261003-great-expectations-exact-cover-delivery",
+  "edition_id": "great-expectations",
+  "operator_id": "reo-enterprise",
+  "status": "PROPOSED",
+  "components": {
+    "public_book": "78ef788f3288f792cc602568bb68d17ec7ac4872287cf606773fc1e46a2d3704",
+    "reader_manifest": "bfc15ce642b90bfefe9d8ac2372f4f806a273de585108f3f54ed26059c99eded",
+    "source_evidence": "b83145cb7c02a291078baaee3c9b90adcc322bade481d588b4ccdfbf2076abbe",
+    "approval_evidence": "9c2a0e063274827293b8e78177e89cca643f8f4a4d3be883126b2294f46aba03",
+    "checksum_manifest": "fb6d47ee6c53a7c98a5871c569f006a028e8dc254cf82fd6bec41252cc65ffbe",
+    "publication_manifest": "d426afffacf054744af54708771c842547fbd1a4d206ca6124a47dcedc8ff90f",
+    "cover_preparation": "7c1ef6bc557fdbfd22681a476744e9d18617cf8703de744a8db5a4d98def96fa"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:49:40.745164+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1870, verified lifetime collection publication 1861 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "1f28f158d416d86cdb0e61ade4a0a2a85c0239fbcbe48362a8d15c495b2e42a3",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ddff4d02c636c57500215604f778bd3b8b9883d5ca9d5de89dc1480b29fa52c3",
+    "9a637118af8e953e9764ec603d9b0a032883384d465acac2e27966a80cf1c6f8",
+    "2a8d0a202ea5c45af789296120a0fba52ffc09d7d7b536ebd9219521d508d40e"
+  ],
+  "accepted_by": "UNACCEPTED isolated preparation; root actual delegated acceptance required.",
+  "conditions_satisfied": false
+}

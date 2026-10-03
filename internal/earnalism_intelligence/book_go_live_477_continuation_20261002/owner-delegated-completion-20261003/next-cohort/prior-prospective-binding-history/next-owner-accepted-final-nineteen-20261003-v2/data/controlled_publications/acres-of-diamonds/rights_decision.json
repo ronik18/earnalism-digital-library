@@ -1,0 +1,53 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-acres-of-diamonds-exact-reader-cover-prospective-accepted",
+  "edition_id": "acres-of-diamonds",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "b42e842b5de026c36590e9575916e79fd39e690fdf2493f1bbb425df4279e3ef",
+    "reader_manifest": "c083501e4fd683fe9490a8d5b113ef524b57b3aecacc98fbf73caf44e3066d0c",
+    "source_evidence": "9371f2af833cbd9683e138e121b7c6ae77f17a18de6dd46cb4507a301a6eb29e",
+    "approval_evidence": "e633d61f06584df3bb25548ee5a250ee53d416e40f392900968c4baa233561d7",
+    "checksum_manifest": "7f3105a9ac7bfb96d50e827811c58f9294bf014ac52fcc0fb356ebc22fe93580",
+    "publication_manifest": "a82f32d911ade2e5cefd316bcafa86730b6989273c721ef07945148594e13155",
+    "cover_provenance": "6f096f621756b895cf18637a97388f2382e43b5232a81aa7b3577f77491c3880",
+    "cover_delivery_derivation": "1898e644f95edf860b1458baae27b7e48f9dee6fd68d7efb55baf0f7786e35a1",
+    "cover_front_asset": "cdffd02edb00ddb0af8d55ad5ba6eeffef7d8be9683123fc3193b88e98a7e235",
+    "cover_back_asset": "b3fb289b101e3a09596321f9f12994b41149d0b8fb4cb855e83429fe393d51dd",
+    "cover_front_delivery": "ea5a75bc67aced9aed13683776a3a21ff75173b3cd41cecdef7e4081b6732467",
+    "cover_back_delivery": "ce68313111e4b164e3383ffe3a52afe99417c76a6b489e31e29ed0210de3141e",
+    "publication_authorization": "66e245fdbe892f702c88d7a0a34e494226c5163858021e0d286b1eca1f3823b8",
+    "owner_artwork_declaration": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "acceptance_review_a": "848765bd2edfd3f28e3fe0c479321f0d41ea058dd894d31000bb3116c3b5b407",
+    "acceptance_review_b": "283ab0e868d9ec67a1efba2fc9aae9e61a1958e7dfd45f39b72f2e6ac2e3901f"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T05:34:11.386246+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Exact India text/edition rights are preserved from the archived predecessor and unchanged source/chapter/license records. Ronik Basak directly provided the owner-held copyright and publication provenance for the exact owner-created cover components; two independent passing source/art preparations bind the reviewed derivatives and deliveries. Prospective automated acceptance supersedes earlier procedural cover deferral for these components only. No human approval, other source/edition rights, unknown original construction method, audio grant or production observation inferred.",
+  "evidence_sha256": [
+    "2cbcf33315b37eceec14c90fa449ccf5ebe3de227731bd8df92d49e404208e32",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "c987f22e9111b0c21c5526f282cf501a6959d6e1e83b99276e3256509ad80e14",
+    "a0b8613f5a9c0ee604b53d6aa68388084bdefbf24e1f5e9749aafe2c8448efa3",
+    "412d4000427790f40832d29be6bd49985d288ff4a9d48c2d5d866a50c62e27b0",
+    "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "66e245fdbe892f702c88d7a0a34e494226c5163858021e0d286b1eca1f3823b8",
+    "6f096f621756b895cf18637a97388f2382e43b5232a81aa7b3577f77491c3880",
+    "848765bd2edfd3f28e3fe0c479321f0d41ea058dd894d31000bb3116c3b5b407",
+    "283ab0e868d9ec67a1efba2fc9aae9e61a1958e7dfd45f39b72f2e6ac2e3901f"
+  ],
+  "accepted_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+  "conditions_satisfied": true
+}

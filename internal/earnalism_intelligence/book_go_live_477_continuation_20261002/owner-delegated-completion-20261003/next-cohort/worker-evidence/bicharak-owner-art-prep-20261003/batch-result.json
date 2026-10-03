@@ -1,0 +1,33 @@
+{
+  "schema": "earnalism.bengali-distinct-next-cohort.v1",
+  "titles": [
+    {
+      "slug": "book-5704b31005",
+      "status": "FROZEN_UNACCEPTED_PROPOSAL_TWO_FRESH_REVIEWS_REQUIRED",
+      "proposal_path": "/workspace/scratch/181ef0a25f05/bicharak-owner-art-prep-20261003/proposal/data/controlled_publications/book-5704b31005",
+      "source_validation_sha256": "89eac8e38ab78c63ae74dc799b89c6fe6fef9aa5755e55c645c94a1dd7ea11f6",
+      "cover_preparation_sha256": "94be6810f3bb0c9fbee839bb767f48eb571a650788605887327fc85673f21e08",
+      "preimage_inventory_sha256": "611a5f016db4f397189412e0667246fe5ac0653e1ab104c249f5e625f8b3cef6",
+      "package_inventory_canonical_sha256": "1a949adf6f49f3886bc690e4987fd2cf198373419a932eb3aa0ab261ace7f725",
+      "decision_raw_sha256": "f47ba8892381ca6201ee11c6b4ac2371cd0417b5c31f6c502a269a78b60b1a6a",
+      "decision_canonical_sha256": "307459ebf24b761f7c82d029ea697911f8914d51734a59172bef45f0579885b1",
+      "removed_archived_components": [
+        {
+          "file": "approval_evidence 2.json",
+          "sha256": "bd7b06c58b8eb1efa01ec1d051f60d79463205c51027615a924603eba0980bd5"
+        }
+      ],
+      "source_chapter_license_sync_bytes_unchanged": true,
+      "effective_audio_disabled_claims_clean": true,
+      "actual_acceptance_created": false,
+      "canonical_or_production_mutation": false,
+      "next_action": "Two fresh independent exact typography/copy/delivery/package reviews; PASS permits prospective acceptance paperwork, substantial HOLD causes terminal exclusion without further repair."
+    }
+  ],
+  "source_reinvestigations": 0,
+  "original_gets": 2,
+  "paid_generation_calls": 0,
+  "new_external_tasks": 0,
+  "canonical_mutations": 0,
+  "actual_acceptance_or_release_created": false
+}

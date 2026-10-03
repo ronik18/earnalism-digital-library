@@ -1,0 +1,410 @@
+--- a/frontend/src/App.js
++++ b/frontend/src/App.js
+@@ -58,7 +58,6 @@
+ const AdminLogin = lazy(pageImports.AdminLogin);
+ const Admin = lazy(pageImports.Admin);
+ const NotFound = lazy(pageImports.NotFound);
+-const UnavailableTitle = lazy(pageImports.UnavailableTitle);
+ const GoogleAuthBoundary = lazy(pageImports.GoogleAuthBoundary);
+ 
+ function ScrollToTop() {
+@@ -148,11 +147,7 @@
+           <Route element={<Layout />}>
+             <Route path="/" element={<Home />} />
+             <Route path="/library" element={<Library />} />
+-            <Route path="/book/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />
+             <Route path="/book/:slug" element={<BookDetail />} />
+-            {/* Held historical Reader/Listener routes retain the shared public shell while staying fail-closed. */}
+-            <Route path="/reader/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />
+-            <Route path="/listener/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />
+             <Route path="/journal" element={<Journal />} />
+             <Route path="/journal/:slug" element={<JournalArticle />} />
+             <Route path="/about-legacy" element={<AboutLegacy />} />
+--- a/frontend/scripts/unavailable-title-routes.mjs
++++ b/frontend/scripts/unavailable-title-routes.mjs
+@@ -1,6 +1,5 @@
+-// PR #476 intentionally retains these safe historical recovery pages.
++// Historical unavailable evidence remains archived; current releases use ordinary routes.
+ export const unavailableTitles = [
+-  { slug: "the-selfish-giant", title: "The Selfish Giant" },
+ ];
+ export const unavailableCopy = "This title is not part of the current public release. Its reading and listening experiences are unavailable.";
+ export const unavailableAccessCopy = "No book text, reader session, or audio is available from this page.";
+--- a/frontend/src/readerDirectRoute.test.js
++++ b/frontend/src/readerDirectRoute.test.js
+@@ -53,44 +53,26 @@
+     });
+   });
+ 
+-  test("held Selfish Giant Reader and Listener routes retain the shared public shell", () => {
+-    const layoutStart = app.indexOf("<Route element={<Layout />}");
+-    const standaloneStart = app.indexOf("{/* Standalone full-screen routes", layoutStart);
+-    expect(layoutStart).toBeGreaterThanOrEqual(0);
+-    expect(standaloneStart).toBeGreaterThan(layoutStart);
+-    const publicRoutes = app.slice(layoutStart, standaloneStart);
+-    [
+-      '<Route path="/reader/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />',
+-      '<Route path="/listener/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />',
+-    ].forEach((route) => expect(publicRoutes).toContain(route));
++  test("keeps cross-browser review on a live populated detail while checking Indira as held", () => {
++    const crossBrowserReview = read("../scripts/verify_exact_primary_cross_browser.mjs");
++    expect(crossBrowserReview).toContain('publicReaderExposureEnabled ? "a-white-heron" : "dracula"');
++    expect(crossBrowserReview).toContain('["book-detail-held-desktop", "/book/bn-060"');
++    expect(crossBrowserReview).toContain('"held-book": ["[data-testid=book-not-found]"]');
+   });
+-
+-  test("serves the held historical Selfish Giant Reader URL without entering the Reader", () => {
+-    expect(app).toContain('<Route path="/reader/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />');
+-    const rewrites = vercel.rewrites || [];
+-    const genericNotFound = rewrites.findIndex((rule) => rule.source === "/reader/:slug" && rule.destination === "/api/not-found");
+-    ["/reader/the-selfish-giant", "/reader/the-selfish-giant/"].forEach((source) => {
+-      const index = rewrites.findIndex((rule) => rule.source === source && rule.destination === "/index.html");
+-      expect(index).toBeGreaterThanOrEqual(0);
+-      expect(index).toBeLessThan(genericNotFound);
++  test("released Selfish Giant uses ordinary Reader and disabled Listener routes", () => {
++    ["book", "reader", "listener"].forEach((kind) => {
++      expect(app).not.toContain(`<Route path="/${kind}/the-selfish-giant"`);
++    });
++    expect(app).toContain('<Route path="/reader/:slug" element={<ReaderV2 />} />');
++    expect(app).toContain('<Route path="/listener/:slug" element={<ListenerV2 />} />');
++    ["reader", "listener"].forEach((kind) => {
++      const generic = vercel.rewrites.findIndex((rule) => rule.source === `/${kind}/:slug` && rule.destination === "/api/not-found");
++      [`/${kind}/the-selfish-giant`, `/${kind}/the-selfish-giant/`].forEach((source) => {
++        const index = vercel.rewrites.findIndex((rule) => rule.source === source && rule.destination === `/${kind}/the-selfish-giant/index.html`);
++        expect(index).toBeGreaterThanOrEqual(0);
++        expect(index).toBeLessThan(generic);
++      });
+     });
+   });
+ 
+-  test("serves the held historical Selfish Giant Listener URL without entering the player", () => {
+-    expect(app).toContain('<Route path="/listener/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />');
+-    const rewrites = vercel.rewrites || [];
+-    const genericNotFound = rewrites.findIndex((rule) => rule.source === "/listener/:slug" && rule.destination === "/api/not-found");
+-    ["/listener/the-selfish-giant", "/listener/the-selfish-giant/"].forEach((source) => {
+-      const index = rewrites.findIndex((rule) => rule.source === source && rule.destination === "/index.html");
+-      expect(index).toBeGreaterThanOrEqual(0);
+-      expect(index).toBeLessThan(genericNotFound);
+-    });
+-  });
+-
+-  test("keeps cross-browser review on a live populated detail while checking Selfish Giant as held", () => {
+-    const crossBrowserReview = read("../scripts/verify_exact_primary_cross_browser.mjs");
+-    expect(crossBrowserReview).toContain('publicReaderExposureEnabled ? "a-white-heron" : "dracula"');
+-    expect(crossBrowserReview).toContain('["book-detail-held-desktop", "/book/the-selfish-giant"');
+-    expect(crossBrowserReview).toContain('"held-book": ["[data-testid=unavailable-title-page]"]');
+-  });
+ });
+--- a/frontend/src/bookDetailDirectRoute.test.js
++++ b/frontend/src/bookDetailDirectRoute.test.js
+@@ -49,16 +49,16 @@
+     });
+   });
+ 
+-  test("serves the historical Selfish Giant URL through the safe unavailable route", () => {
++  test("released Selfish Giant uses the ordinary API-gated Book Detail route", () => {
+     ["book", "reader", "listener"].forEach((kind) => {
+-      expect(app).toContain(`<Route path="/${kind}/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />`);
++      expect(app).not.toContain(`<Route path="/${kind}/the-selfish-giant"`);
+     });
+-    const rewrites = vercel.rewrites || [];
+-    const genericNotFound = rewrites.findIndex((rule) => rule.source === "/book/:slug" && rule.destination === "/api/not-found");
++    expect(app).toContain('<Route path="/book/:slug" element={<BookDetail />} />');
++    const generic = vercel.rewrites.findIndex((rule) => rule.source === "/book/:slug" && rule.destination === "/api/not-found");
+     ["/book/the-selfish-giant", "/book/the-selfish-giant/"].forEach((source) => {
+-      const index = rewrites.findIndex((rule) => rule.source === source && rule.destination === "/index.html");
++      const index = vercel.rewrites.findIndex((rule) => rule.source === source && rule.destination === "/book/the-selfish-giant/index.html");
+       expect(index).toBeGreaterThanOrEqual(0);
+-      expect(index).toBeLessThan(genericNotFound);
++      expect(index).toBeLessThan(generic);
+     });
+   });
+ 
+--- a/frontend/src/pages/UnavailableTitle.test.jsx
++++ b/frontend/src/pages/UnavailableTitle.test.jsx
+@@ -41,9 +41,9 @@
+     global.fetch = jest.fn(() => { throw new Error("unavailable page must not fetch title data"); });
+ 
+     try {
+-      act(() => root.render(<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />));
+-      expect(container.querySelector("h1").textContent).toBe("The Selfish Giant is not currently available.");
+-      expect(container.querySelector('[data-testid="unavailable-title-contact-link"]').getAttribute("href")).toBe("/contact?interest=the-selfish-giant");
++      act(() => root.render(<UnavailableTitle title="ইন্দিরা" slug="bn-060" />));
++      expect(container.querySelector("h1").textContent).toBe("ইন্দিরা is not currently available.");
++      expect(container.querySelector('[data-testid="unavailable-title-contact-link"]').getAttribute("href")).toBe("/contact?interest=bn-060");
+       expect(global.fetch).not.toHaveBeenCalled();
+     } finally {
+       global.fetch = originalFetch;
+--- a/scripts/verify_exact_primary_cross_browser.mjs
++++ b/scripts/verify_exact_primary_cross_browser.mjs
+@@ -42,19 +42,20 @@
+   ["mobile-navigation-768", "/", 768, 1024, "navigation"], ["mobile-navigation-landscape", "/", 844, 390, "navigation"], ["mobile-navigation-1024", "/", 1024, 768, "navigation"], ["mobile-navigation-1279", "/", 1279, 800, "navigation"],
+   ["book-detail-desktop", populatedBookRoute, 1440, 1000, "book"],
+   ["book-detail-mobile", populatedBookRoute, 390, 844, "book"],
+-  ["book-detail-held-desktop", "/book/the-selfish-giant", 1440, 1000, "held-book"], ["book-detail-held-mobile", "/book/the-selfish-giant", 390, 844, "held-book"],
++  ["book-detail-held-desktop", "/book/bn-060", 1440, 1000, "held-book"], ["book-detail-held-mobile", "/book/bn-060", 390, 844, "held-book"],
+   ["reader-desktop", readerFixtureRoute, 1440, 1000, "reader"],
+   ["reader-mobile", readerFixtureRoute, 390, 844, "reader"], ["listener-desktop", "/listener/a-ghost-story?visual-fixture=1", 1440, 1000, "listener"],
+   ["listener-mobile", "/listener/a-ghost-story?visual-fixture=1", 390, 844, "listener"], ["about-mobile", "/about", 390, 844, "about"],
+   ["my-library-mobile", "/my-library", 390, 844, "my-library"], ["profile-mobile", "/account?visual-fixture=1", 390, 844, "profile"],
+ ].map(([id, route, width, height, family]) => ({ id, route, viewport: { width, height }, family }));
+-const requiredFor = (family) => ({ home: ["header"], library: ["[data-testid=library-reference-surface]"], filter: [".reference-library-drawer[role=dialog]"], commerce: [publicPaidCommerceEnabled ? "[data-testid=pricing-reference-surface]" : "[data-testid=paid-commerce-disabled]"], navigation: ["header"], book: [publicReaderExposureEnabled ? ".book-detail-page" : "[data-testid=unavailable-title-page]"], "held-book": ["[data-testid=unavailable-title-page]"], reader: ["#reader-v2-title"], listener: ["#listener-v2-title"], about: ["#about-page-title"], "my-library": ["[data-testid=my-library-mobile]"], profile: ["[data-testid=account-visual-fixture]"], }[family] || ["main"]);
++const requiredFor = (family) => ({ home: ["header"], library: ["[data-testid=library-reference-surface]"], filter: [".reference-library-drawer[role=dialog]"], commerce: [publicPaidCommerceEnabled ? "[data-testid=pricing-reference-surface]" : "[data-testid=paid-commerce-disabled]"], navigation: ["header"], book: [publicReaderExposureEnabled ? ".book-detail-page" : "[data-testid=unavailable-title-page]"], "held-book": ["[data-testid=book-not-found]"], reader: ["#reader-v2-title"], listener: ["#listener-v2-title"], about: ["#about-page-title"], "my-library": ["[data-testid=my-library-mobile]"], profile: ["[data-testid=account-visual-fixture]"], }[family] || ["main"]);
+ const sha = (value) => crypto.createHash("sha256").update(value).digest("hex");
+ const json = (route, body) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(body) });
+ 
+ async function installLocalResponses(page) {
+   await page.route("**/api/**", async (route) => {
+     const pathname = new URL(route.request().url()).pathname;
++    if (pathname.endsWith("/books/bn-060")) return route.fulfill({ status: 404, contentType: "application/json", body: JSON.stringify({ detail: "Edition is held outside this release." }) });
+     if (pathname.endsWith("/books")) return json(route, books);
+     if (pathname.includes("/books/")) return json(route, books.find((book) => pathname.endsWith(`/${book.slug}`)) || {});
+     if (pathname.includes("payments/") && (pathname.endsWith("/offers") || pathname.endsWith("/packs"))) return json(route, { packs, config: { mode: "owner-review-fixture", recurring_enabled: false } });
+@@ -92,6 +93,11 @@
+   });
+   for (const selector of requiredFor(state.family).filter((selector) => !selector.includes("mobile-menu") && !selector.includes("reference-library-drawer"))) {
+     await page.locator(selector).first().waitFor({ state: "attached", timeout: 10_000 });
++  }
++  if (state.family === "held-book") {
++    if (await page.locator("[data-testid=read-preview], [data-testid=start-reading], [data-testid=book-listen-approved], audio, video, iframe").count()) {
++      throw new Error("Held edition exposed protected-content or media controls.");
++    }
+   }
+   if (state.family === "filter") { await page.locator(".reference-filter-trigger").click(); await page.locator(".reference-library-drawer[role=dialog]").waitFor({ state: "visible", timeout: 10_000 }); }
+   let navigation = null;
+--- a/regression/modules/14-ux-conversion-static.test.js
++++ b/regression/modules/14-ux-conversion-static.test.js
+@@ -1771,19 +1771,32 @@
+     expect(bookHtml).not.toContain("Preview every book before you pay");
+   });
+ 
+-  test("built held Selfish Giant snapshots preserve unavailable access when build output exists", () => {
+-    for (const [slug, title] of [["the-selfish-giant", "The Selfish Giant"]]) {
+-      for (const kind of ["book", "reader", "listener"]) {
+-        const html = readOptional(`frontend/build/${kind}/${slug}/index.html`);
+-        if (!html) {
+-          expect(staticSnapshotGenerator).toContain("unavailablePages(safe.unavailableRoutes)");
+-          continue;
+-        }
+-        expect(html).toContain(`<title>${title} unavailable | The Earnalism</title>`);
+-        expect(metaContent(html, "name", "robots")).toBe("noindex,nofollow");
+-        expect(canonicalHref(html)).toBe(`https://theearnalism.com/book/${slug}`);
+-        expect(html).toContain("No book text, reader session, or audio is available from this page.");
+-        expect(html).not.toMatch(/reader-ready edition|Read the 3-page preview|"@type"\s*:\s*"(?:Book|Audiobook)"|<(?:audio|video|iframe|button)\b/i);
++  test("retired Selfish Giant unavailable overrides cannot shadow the current release", () => {
++    const heldRoutes = readOptional("frontend/scripts/unavailable-title-routes.mjs");
++    expect(heldRoutes).not.toContain('slug: "the-selfish-giant"');
++    expect(heldRoutes).toContain("Historical unavailable routes must be reconciled before activating their title release.");
++  });
++
++  test("built released Selfish Giant snapshots enforce Reader access and disabled audio", () => {
++    const slug = "the-selfish-giant";
++    for (const kind of ["book", "reader", "listener"]) {
++      const html = readOptional(`frontend/build/${kind}/${slug}/index.html`);
++      if (!html) {
++        expect(staticSnapshotGenerator).toContain("publicationPages(safe.books)");
++        continue;
++      }
++      expect(canonicalHref(html)).toBe(`https://theearnalism.com/book/${slug}`);
++      expect(html).not.toContain("The Selfish Giant unavailable | The Earnalism");
++      expect(html).not.toContain("No book text, reader session, or audio is available from this page.");
++      expect(html).not.toMatch(/<(?:audio|video|iframe)\b|"@type"\s*:\s*"Audiobook"/i);
++      if (kind === "book") {
++        expect(metaContent(html, "name", "robots")).toBe("index,follow");
++        expect(html).toContain("The Selfish Giant by Oscar Wilde");
++        expect(html).toContain("Read the 3-page preview");
++        expect(html).toContain('"@type":"Book"');
++      } else {
++        expect(metaContent(html, "name", "robots")).toBe("noindex,follow");
++        expect(html).toContain(kind === "reader" ? "Read The Selfish Giant" : "Listening is not available for The Selfish Giant in the current release.");
+       }
+     }
+   });
+--- a/scripts/post_deploy_static_seo_canary.py
++++ b/scripts/post_deploy_static_seo_canary.py
+@@ -51,9 +51,9 @@
+     "/reader/dracula": {"kind": "reader", "canonical": "/book/dracula", "robots": "noindex,follow", "title": "Dracula"},
+     "/listener/dracula": {"kind": "disabled_listener", "canonical": "/book/dracula", "robots": "noindex,follow", "title": "Dracula"},
+     "/listener/book-edfcf810c5": {"kind": "disabled_listener", "canonical": "/book/book-edfcf810c5", "robots": "noindex,follow", "title": "ক্ষুধিত পাষাণ"},
+-    "/book/the-selfish-giant": {"kind": "historical_unavailable", "canonical": "/book/the-selfish-giant", "robots": "noindex,nofollow", "title": "The Selfish Giant"},
+-    "/reader/the-selfish-giant": {"kind": "historical_unavailable", "canonical": "/book/the-selfish-giant", "robots": "noindex,nofollow", "title": "The Selfish Giant"},
+-    "/listener/the-selfish-giant": {"kind": "historical_unavailable", "canonical": "/book/the-selfish-giant", "robots": "noindex,nofollow", "title": "The Selfish Giant"},
++    "/book/the-selfish-giant": {"kind": "book", "canonical": "/book/the-selfish-giant", "robots": "index,follow", "title": "The Selfish Giant", "audio_disabled": True},
++    "/reader/the-selfish-giant": {"kind": "reader", "canonical": "/book/the-selfish-giant", "robots": "noindex,follow", "title": "The Selfish Giant", "audio_disabled": True},
++    "/listener/the-selfish-giant": {"kind": "disabled_listener", "canonical": "/book/the-selfish-giant", "robots": "noindex,follow", "title": "The Selfish Giant", "audio_disabled": True},
+     "/book/yugalanguriya": {"kind": "held"},
+     "/reader/yugalanguriya": {"kind": "held"},
+     "/my-library": {"kind": "private_library", "canonical": "/my-library", "robots": "noindex,nofollow"},
+@@ -72,6 +72,14 @@
+ # contracts. Keep the denial assertion scoped to this exact protected Reader
+ # manifest; never treat 451 or 503 as generally acceptable canary responses.
+ PROTECTED_API_CHECKS = {
++    "/api/reader/book/the-selfish-giant/manifest": {
++        "expected_status": 200, "expected_code": "", "expected_slug": "the-selfish-giant",
++    },
++    "/api/reading-pass/books/the-selfish-giant/manifest": {
++        "expected_status": 200, "expected_code": "", "kind": "canonical_manifest",
++        "expected_slug": "the-selfish-giant", "expected_chapters": 1,
++        "expected_chapter_ids": ["chapter-001"],
++    },
+     "/api/reader/book/dracula/manifest": {
+         "expected_status": 200,
+         "expected_code": "",
+@@ -358,6 +366,8 @@
+             failures.append(f"forbidden phrase present: {phrase}")
+     if RAW_MEDIA_URL.search(html):
+         failures.append("raw provider or storage audio URL is present")
++    if policy.get("audio_disabled") and re.search(r'<(?:audio|video|iframe)\b|"@type"\s*:\s*"Audiobook"', html, re.I):
++        failures.append("text-only release exposes media or audiobook structured data")
+ 
+     if policy["kind"] == "book":
+         expected_title = normalize(policy["title"])
+--- a/scripts/test_post_deploy_static_seo_canary.py
++++ b/scripts/test_post_deploy_static_seo_canary.py
+@@ -80,17 +80,38 @@
+         self.assertEqual(self.inspect("/book/yugalanguriya", "", status=404)["result"], "PASS")
+         self.assertEqual(self.inspect("/reader/yugalanguriya", "", status=200)["result"], "FAIL")
+ 
+-    def unavailable_html(self, *, body="", links="", slug="the-selfish-giant", title="The Selfish Giant"):
++    def inspect_unavailable_fixture(self, route, html, status=200):
++        policy = {"kind": "historical_unavailable", "canonical": "/book/bn-060", "robots": "noindex,nofollow", "title": "ইন্দিরা"}
++        return MODULE.inspect_route(route, policy, status, {}, html, "https://theearnalism.com" + route)
++
++    def unavailable_html(self, *, body="", links="", slug="bn-060", title="ইন্দিরা"):
+         return page(title=f"{title} unavailable | The Earnalism", description=f"{title} is not currently available as a public Earnalism release.", h1=f"{title} is not currently available.", canonical=f"https://theearnalism.com/book/{slug}", robots="noindex,nofollow", body="This title is not part of the current public release. No book text, reader session, or audio is available from this page. " + body, links=links)
+ 
+     def test_approved_historical_recovery_page_passes_without_releasing_a_title(self):
+-        html = self.unavailable_html(links="<a href='/library'>Browse Library</a><a href='/contact?interest=the-selfish-giant'>Ask about title</a>")
++        html = self.unavailable_html(links="<a href='/library'>Browse Library</a><a href='/contact?interest=bn-060'>Ask about title</a>")
+         for kind in ("book", "reader", "listener"):
+-            self.assertEqual(self.inspect(f"/{kind}/the-selfish-giant", html)["result"], "PASS")
++            self.assertEqual(self.inspect_unavailable_fixture(f"/{kind}/bn-060", html)["result"], "PASS")
+         audio = page(title="Listen to Dracula | The Earnalism", description="Listening is not available for Dracula in the current release.", h1="Dracula", canonical="https://theearnalism.com/book/dracula", robots="noindex,follow", body="Listening is not available for Dracula in the current release. " + ACCESS, links="<a href='/book/dracula'>Book details</a>")
+         self.assertEqual(self.inspect("/listener/dracula", audio)["result"], "PASS")
+         for extra in ("<audio src='/sample.mp3'></audio>", "<button>Play</button>", '<script type="application/ld+json">{"@type":"Audiobook"}</script>'):
+             self.assertEqual(self.inspect("/listener/dracula", audio.replace("</main>", extra + "</main>"))["result"], "FAIL")
++
++    def test_selfish_giant_released_routes_reject_stale_hold_or_audio(self):
++        slug, title = "the-selfish-giant", "The Selfish Giant"
++        book = page(title=title + " | The Earnalism", description=title + " reader edition. " + ACCESS, h1=title, canonical=f"https://theearnalism.com/book/{slug}", body=ACCESS, links=f"<a href='/reader/{slug}'>Read the 3-page preview</a>" + '<script type="application/ld+json">{"@type":"Book","isAccessibleForFree":false}</script>')
++        reader = page(title="Read " + title + " | The Earnalism Reader", description=ACCESS, h1="Read " + title, canonical=f"https://theearnalism.com/book/{slug}", robots="noindex,follow", body=ACCESS)
++        audio_copy = "Listening is not available for The Selfish Giant in the current release."
++        listener = page(title="Listen to " + title + " | The Earnalism", description=audio_copy, h1=title, canonical=f"https://theearnalism.com/book/{slug}", robots="noindex,follow", body=audio_copy + " " + ACCESS)
++        for kind, html in [("book", book), ("reader", reader), ("listener", listener)]:
++            route = f"/{kind}/{slug}"
++            self.assertEqual(self.inspect(route, html)["result"], "PASS")
++            self.assertEqual(self.inspect(route, self.unavailable_html(slug=slug, title=title))["result"], "FAIL")
++            self.assertEqual(self.inspect(route, html.replace("</main>", "<audio src='/sample.mp3'></audio></main>"))["result"], "FAIL")
++        route = f"/api/reader/book/{slug}/manifest"
++        payload = {"slug": slug, "audio_enabled": False, "audiobook_enabled": False, "access": {"authenticated": False, "can_read_paid": False}}
++        self.assertEqual(MODULE.inspect_protected_api(route, MODULE.PROTECTED_API_CHECKS[route], 200, payload, "https://theearnalism.com" + route)["result"], "PASS")
++        for changed in [{**payload, "slug": "another-title"}, {**payload, "audio_enabled": True}, {**payload, "access": {"authenticated": False, "can_read_paid": True}}]:
++            self.assertEqual(MODULE.inspect_protected_api(route, MODULE.PROTECTED_API_CHECKS[route], 200, changed, "https://theearnalism.com" + route)["result"], "FAIL")
+ 
+     def test_dracula_released_reader_and_book_keep_audio_disabled(self):
+         book = page(title="Dracula | The Earnalism", description="Dracula reader edition. " + ACCESS, h1="Dracula", canonical="https://theearnalism.com/book/dracula", body=ACCESS, links="<a href='/reader/dracula'>Read the 3-page preview</a>" + '<script type="application/ld+json">{"@type":"Book","isAccessibleForFree":false}</script>')
+@@ -144,28 +165,23 @@
+             self.assertEqual(result["result"], "PASS")
+ 
+     def test_overall_canary_fails_if_one_scoped_api_contract_fails(self):
+-        with patch.object(MODULE, "fetch_raw_html", return_value=(200, {}, "", "https://theearnalism.com/")), patch.object(
+-            MODULE, "inspect_route", return_value={"result": "PASS"}
+-        ), patch.object(MODULE, "fetch_protected_api", side_effect=[
+-            (200, {"slug": "dracula", "access": {"authenticated": False, "can_read_paid": False}}, "https://theearnalism.com/api/reader/book/dracula/manifest"),
+-            (200, {"slug": "book-edfcf810c5", "access": {"authenticated": False, "can_read_paid": False}}, "https://theearnalism.com/api/reader/book/book-edfcf810c5/manifest"),
+-            (200, {"slug": "muchiram-gurer-jibanchorit", "access": {"authenticated": False, "can_read_paid": False}}, "https://theearnalism.com/api/reader/book/muchiram-gurer-jibanchorit/manifest"),
+-            (200, {"slug": "bn-059", "access": {"authenticated": False, "can_read_paid": False}}, "https://theearnalism.com/api/reader/book/bn-059/manifest"),
+-            (200, {"slug": "the-call-of-the-wild", "access": {"authenticated": False, "can_read_paid": False}}, "https://theearnalism.com/api/reader/book/the-call-of-the-wild/manifest"),
+-            (503, {"detail": {"code": "SEGMENTS_NOT_READY"}}, "https://theearnalism.com/api/reading-pass/books/the-adventures-of-sherlock-holmes/manifest"),
+-            (200, {"detail": {"code": "SEGMENTS_NOT_READY"}}, "https://theearnalism.com/api/reading-pass/books/the-canterville-ghost/manifest"),
+-            (200, {"book_slug": "dracula", "version": "retained-version", "segmentation_version": "retained-segmentation", "total_pages": 276, "public_preview_pages": 3, "chapters": [{"chapter_id": f"chapter-{index:03d}"} for index in range(28)]}, "https://theearnalism.com/api/reading-pass/books/dracula/manifest"),
+-            (200, {"book_slug": "book-edfcf810c5", "version": "retained-version", "segmentation_version": "retained-segmentation", "total_pages": 9, "public_preview_pages": 3, "chapters": [{"chapter_id": "chapter-001"}]}, "https://theearnalism.com/api/reading-pass/books/book-edfcf810c5/manifest"),
+-            (200, {"book_slug": "muchiram-gurer-jibanchorit", "version": "retained-version", "segmentation_version": "retained-segmentation", "total_pages": 14, "public_preview_pages": 3, "chapters": [{"chapter_id": f"chapter-{index:03d}"} for index in range(1, 15)]}, "https://theearnalism.com/api/reading-pass/books/muchiram-gurer-jibanchorit/manifest"),
+-            (200, {"book_slug": "bn-059", "version": "retained-version", "segmentation_version": "retained-segmentation", "total_pages": 13, "public_preview_pages": 3, "chapters": [{"chapter_id": chapter_id} for chapter_id in MODULE.PROTECTED_API_CHECKS["/api/reading-pass/books/bn-059/manifest"]["expected_chapter_ids"]]}, "https://theearnalism.com/api/reading-pass/books/bn-059/manifest"),
+-            (200, {"book_slug": "the-call-of-the-wild", "version": "retained-version", "segmentation_version": "retained-segmentation", "total_pages": 7, "public_preview_pages": 3, "chapters": [{"chapter_id": f"chapter-{index:03d}"} for index in range(1, 8)]}, "https://theearnalism.com/api/reading-pass/books/the-call-of-the-wild/manifest"),
+-        ]):
++        failed_route = "/api/reading-pass/books/the-canterville-ghost/manifest"
++        def fixture_api(_base, route, _timeout):
++            policy = MODULE.PROTECTED_API_CHECKS[route]
++            status = policy["expected_status"]
++            payload = {"detail": {"code": policy["expected_code"]}}
++            if policy.get("kind") == "canonical_manifest":
++                payload = {"book_slug": policy["expected_slug"], "version": "explicit-test-fixture-version", "segmentation_version": "explicit-test-fixture-segmentation", "total_pages": max(9, policy["expected_chapters"]), "public_preview_pages": 3, "chapters": [{"chapter_id": chapter_id} for chapter_id in policy["expected_chapter_ids"]]}
++            elif status == 200:
++                payload = {"slug": policy["expected_slug"], "audio_enabled": False, "audiobook_enabled": False, "access": {"authenticated": False, "can_read_paid": False}}
++            if route == failed_route:
++                status = 200
++            return status, payload, "https://theearnalism.com" + route
++        with patch.object(MODULE, "fetch_raw_html", return_value=(200, {}, "", "https://theearnalism.com/")), patch.object(MODULE, "inspect_route", return_value={"result": "PASS"}), patch.object(MODULE, "fetch_protected_api", side_effect=fixture_api):
+             report = MODULE.run("https://theearnalism.com", 1)
+         self.assertEqual(report["result"], "FAIL")
+-        self.assertEqual(
+-            [row["result"] for row in report["protected_apis"]],
+-            ["PASS", "PASS", "PASS", "PASS", "PASS", "PASS", "FAIL", "PASS", "PASS", "PASS", "PASS", "PASS"],
+-        )
++        self.assertEqual(len(report["protected_apis"]), len(MODULE.PROTECTED_API_CHECKS))
++        self.assertEqual([row["route"] for row in report["protected_apis"] if row["result"] == "FAIL"], [failed_route])
+ 
+     def test_exact_canonical_manifests_require_actual_version_pages_and_chapters(self):
+         for slug, count, total_pages in [
+@@ -224,19 +240,19 @@
+ 
+     def test_historical_home_fallback_and_released_access_copy_are_rejected(self):
+         html = page(title="Earnalism | Classics", description=ACCESS, h1="A library made for lingering", canonical="https://theearnalism.com/", body=ACCESS)
+-        self.assertEqual(self.inspect("/book/the-selfish-giant", html)["result"], "FAIL")
+-        self.assertEqual(self.inspect("/reader/the-selfish-giant", self.unavailable_html(body=ACCESS))["result"], "FAIL")
++        self.assertEqual(self.inspect_unavailable_fixture("/book/bn-060", html)["result"], "FAIL")
++        self.assertEqual(self.inspect_unavailable_fixture("/reader/bn-060", self.unavailable_html(body=ACCESS))["result"], "FAIL")
+ 
+     def test_historical_controls_media_schema_and_non_recovery_links_are_rejected(self):
+-        unsafe = ["<button>Read</button>", "<audio src='https://media.example/audio.mp3'></audio>", '<script type="application/ld+json">{"@type":"Book","isAccessibleForFree":true}</script>', "<a href='/reader/the-selfish-giant'>Open Reader</a>"]
++        unsafe = ["<button>Read</button>", "<audio src='https://media.example/audio.mp3'></audio>", '<script type="application/ld+json">{"@type":"Book","isAccessibleForFree":true}</script>', "<a href='/reader/bn-060'>Open Reader</a>"]
+         for content in unsafe:
+             with self.subTest(content=content):
+-                self.assertEqual(self.inspect("/book/the-selfish-giant", self.unavailable_html(body=content))["result"], "FAIL")
++                self.assertEqual(self.inspect_unavailable_fixture("/book/bn-060", self.unavailable_html(body=content))["result"], "FAIL")
+ 
+     def test_historical_routes_require_exact_identity_and_noindex(self):
+         html = self.unavailable_html()
+-        for unsafe in [html.replace("noindex,nofollow", "index,follow"), html.replace("https://theearnalism.com/book/the-selfish-giant", "https://theearnalism.com/"), html.replace("The Selfish Giant", "Another title")]:
+-            self.assertEqual(self.inspect("/book/the-selfish-giant", unsafe)["result"], "FAIL")
++        for unsafe in [html.replace("noindex,nofollow", "index,follow"), html.replace("https://theearnalism.com/book/bn-060", "https://theearnalism.com/"), html.replace("ইন্দিরা", "Another title")]:
++            self.assertEqual(self.inspect_unavailable_fixture("/book/bn-060", unsafe)["result"], "FAIL")
+ 
+ 
+ class HistoricalUnavailableSnapshotTests(unittest.TestCase):
+@@ -250,6 +266,8 @@
+             target = self.root / relative
+             target.parent.mkdir(parents=True, exist_ok=True)
+             shutil.copyfile(source_root / relative, target)
++        fixture = self.root / "frontend/scripts/unavailable-title-routes.mjs"
++        fixture.write_text(fixture.read_text().replace("export const unavailableTitles = [\n];", 'export const unavailableTitles = [\n  { slug: "bn-060", title: "ইন্দিরা" },\n];'))
+         self.generate()
+ 
+     def generate(self):
+@@ -276,7 +294,8 @@
+         for entry in held:
+             route = entry["route"]
+             html = (self.root / "frontend/build" / route.lstrip("/") / "index.html").read_text()
+-            report = MODULE.inspect_route(route, MODULE.ROUTES[route], 200, {}, html, "https://theearnalism.com" + route)
++            policy = {"kind": "historical_unavailable", "canonical": "/book/bn-060", "robots": "noindex,nofollow", "title": "ইন্দিরা"}
++            report = MODULE.inspect_route(route, policy, 200, {}, html, "https://theearnalism.com" + route)
+             self.assertEqual(report["result"], "PASS", report)
+ 
+     def test_first_matching_rewrite_uses_the_snapshot_and_preserves_old_app_rules(self):
+@@ -293,12 +312,12 @@
+             self.assertIn({"source": "/" + kind + "/:slug", "destination": "/api/not-found"}, config["rewrites"])
+ 
+     def test_snapshot_tampering_cannot_pass_the_build_or_production_canary(self):
+-        target = self.root / "frontend/build/book/the-selfish-giant/index.html"
++        target = self.root / "frontend/build/book/bn-060/index.html"
+         original = target.read_text()
+-        for html in [original.replace('name="robots" content="noindex,nofollow"', 'name="robots" content="index,follow"'), original.replace("</main>", '<a href="/reader/the-selfish-giant">Read the 3-page preview</a></main>')]:
++        for html in [original.replace('name="robots" content="noindex,nofollow"', 'name="robots" content="index,follow"'), original.replace("</main>", '<a href="/reader/bn-060">Read the 3-page preview</a></main>')]:
+             target.write_text(html)
+             self.assertNotEqual(self.verify().returncode, 0)
+-            self.assertEqual(MODULE.inspect_route("/book/the-selfish-giant", MODULE.ROUTES["/book/the-selfish-giant"], 200, {}, html, "https://theearnalism.com/book/the-selfish-giant")["result"], "FAIL")
++            self.assertEqual(MODULE.inspect_route("/book/bn-060", {"kind": "historical_unavailable", "canonical": "/book/bn-060", "robots": "noindex,nofollow", "title": "ইন্দিরা"}, 200, {}, html, "https://theearnalism.com/book/bn-060")["result"], "FAIL")
+ 
+ 
+ if __name__ == "__main__":

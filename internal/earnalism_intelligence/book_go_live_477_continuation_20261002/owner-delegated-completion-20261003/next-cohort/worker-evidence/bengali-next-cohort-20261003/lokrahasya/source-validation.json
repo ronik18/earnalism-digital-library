@@ -1,0 +1,37 @@
+{
+  "slug": "lokrahasya",
+  "existing_text_decision_id": "india-20261002-lokrahasya-1939-cc-by-sa-text-reader",
+  "existing_components_pass": 6,
+  "existing_checksums_pass": 23,
+  "chapter_count": 16,
+  "ordered_chapter_content_hashes_pass": true,
+  "canonical_reader_aggregate_sha256": "c6ed32e15a45ecdf03b2a20ffbea427d89a4c5992f930b00358f563019522943",
+  "license_notice_sha256": "4f4a62c163fe662c298635e5e3397883fc609a0cab1635b614a25abd466d16c3",
+  "existing_primary_author_source_edition_records": [
+    {
+      "path": "internal/legal/bengali_text_preparation_20261002/author_fact_receipts.json",
+      "sha256": "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+      "status": "PASS"
+    },
+    {
+      "path": "internal/legal/catalogue_clearance_20261002/bengali/lokrahasya-multichapter-source-comparison.json",
+      "sha256": "31b4a09724bc5adc938662556bec2b17a2e1654ea14d1a35501a87648d9b6bb0",
+      "status": "PASS"
+    },
+    {
+      "path": "internal/legal/catalogue_clearance_20261002/bengali/lokrahasya-primary-imprint-pages.json",
+      "sha256": "625b30c0db9515408f88dc471eb8cdcac457c81c8dbe16fc23f332a553c89983",
+      "status": "PASS"
+    },
+    {
+      "path": "data/title_rights_evidence/bengali-bankim-cohort-1.json",
+      "sha256": "6aa201278a3420414ab1c348bd24b19ff4cf1b539595e142dd64696152c5eccf",
+      "status": "PASS"
+    }
+  ],
+  "basis": "Exact Lokrahasya1939 centenary edition edited Brajendra Nath Bandyopadhyay and Sajanikanta Das; separately authored foreword excluded; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1962; India Section22 literary term expired end2022. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
+  "source_chapters_versions_unchanged": true,
+  "backend_preimage_present": true,
+  "new_source_investigation": false,
+  "acceptance_or_release_created": false
+}

@@ -1,5 +1,6 @@
 import importlib.util
 import unittest
+from scripts.catalogue_clearance_release_bindings import historical_noncover_binding, assert_current_reviewed_release, exact_record_component_hashes
 from pathlib import Path
 P=Path(__file__).with_name('reconcile_english_source_evidence.py')
 spec=importlib.util.spec_from_file_location('reconcile_english',P);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
@@ -44,14 +45,22 @@ class EvidenceTests(unittest.TestCase):
   for clearance in m.load(m.DEFAULT/'noncover_text_clearances.json')['clearances']:
    slug=clearance['slug']
    package=m.ROOT/'data/controlled_publications'/slug
+   historical,historical_authority=historical_noncover_binding(m.ROOT,slug)
+   preserved=m.load(m.ROOT/'internal/legal/catalogue_clearance_20261002/historical_noncover_bindings.v1.json')['titles'][slug]
+   self.assertEqual(preserved['rights_decision_sha256'],clearance['rights_decision_sha256'])
+   self.assertEqual(preserved['publication_authorization_historical_report_sha256'],clearance['publication_authorization_sha256'])
+   self.assertEqual(historical['status'],'ACCEPTED');self.assertEqual(historical['territories'],['IN'])
+   self.assertNotIn('cover_display',historical['uses']);self.assertNotIn('audio_stream',historical['uses'])
+   self.assertFalse(historical_authority['production_activation_authorized_by_this_file']);self.assertFalse(historical_authority['audio_authorized'])
    record=m.load(package/'rights_decision.json');authority=m.load(package/'publication_authorization.json')
    self.assertEqual(record['status'],'ACCEPTED');self.assertEqual(record['territories'],['IN'])
-   self.assertNotIn('cover_display',record['uses']);self.assertNotIn('audio_stream',record['uses'])
+   self.assertNotIn('audio_stream',record['uses'])
+   if 'cover_display' in record['uses']:assert_current_reviewed_release(m.ROOT,slug)
+   else:self.assertFalse(m.load(package/'publication_manifest.json')['reader_release']['exposed'])
    self.assertFalse(authority['production_activation_authorized_by_this_file'])
    self.assertFalse(authority['audio_authorized'])
-   self.assertFalse(m.load(package/'publication_manifest.json')['reader_release']['exposed'])
    self.assertNotIn('rights_decision.json',[x['file'] for x in m.load(package/'checksum_manifest.json')['files']])
-   for name,digest in record['components'].items():self.assertEqual(digest,m.sha((package/(name+'.json')).read_bytes()))
+   self.assertEqual(exact_record_component_hashes(m.ROOT,slug,record,package),record['components'])
    ordered=m.load(package/'reader_manifest.json')['chapters']
    chapters=[m.load(package/'chapters'/(x['id']+'.json')) for x in ordered]
    self.assertEqual(authority['content_sha256'],m.sha('\n\n'.join(x['content'] for x in chapters).encode()))
@@ -70,7 +79,8 @@ class EvidenceTests(unittest.TestCase):
    self.assertGreater(len(restored['content']),10000)
    source=m.load(package/'source_evidence.json')
    self.assertEqual(source['official_electronic_source_verification']['comparison']['status'],'ALL_CHAPTERS_MATCH_SOURCE')
-   self.assertFalse(m.load(package/'publication_manifest.json')['reader_release']['exposed'])
+   if slug == 'the-principles-of-scientific-management':assert_current_reviewed_release(m.ROOT,slug)
+   else:self.assertFalse(m.load(package/'publication_manifest.json')['reader_release']['exposed'])
  def test_licensed_transcription_has_hash_bound_public_notice(self):
   p=m.ROOT/'data/controlled_publications/the-most-dangerous-game'
   notice=m.load(p/'license_notice.json');book=m.load(p/'public_book.json');chapter=m.load(p/'chapters/chapter-001.json')

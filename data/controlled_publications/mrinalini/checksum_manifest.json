@@ -1,10 +1,10 @@
 {
   "slug": "mrinalini",
-  "generated_at": "2026-10-02T03:11:07.553066+00:00",
+  "generated_at": "2026-10-03T04:56:37.110955+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "fefa18b1eb51647f948716249c159428baecb63885e9a2d559f928aba2260e72"
+      "sha256": "32cced5e5e2302042612c12407bd441c503e1e0c84d2d11bd9ccef45eec327e2"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -191,6 +191,34 @@
       "sha256": "b82d6c43dbb0533e22a50c4d74e657c6acff53ff33b017730b43453fdd62d2ec"
     },
     {
+      "file": "cover_provenance.json",
+      "sha256": "dba148e5b06e7509a825a180c2d71049139e5e1f53e19c40d6bf67129144a82e"
+    },
+    {
+      "file": "covers/back-delivery.webp",
+      "sha256": "6de2383961fe8d47a97982da8c29f57a41dde2b0bdcaef6bd38f07d17a0355ee"
+    },
+    {
+      "file": "covers/back-original.jpg",
+      "sha256": "613a77912b59f9a94df525066773a1d618c1a023ad0813efc585f695032139f8"
+    },
+    {
+      "file": "covers/back-prepared.png",
+      "sha256": "f23a9251ee054148e05b5b076831c8b02d9b078bf4b3dc59d5d2ae538e67e1cc"
+    },
+    {
+      "file": "covers/front-delivery.webp",
+      "sha256": "77b2a78d8c42e25e54ca6715a5c6eb92c0e90e79c50d6f93f1a16af3f11e99a4"
+    },
+    {
+      "file": "covers/front-original.jpg",
+      "sha256": "a9aae2f4a6a0179e9d2398d0cd66b2933e28e208eaf6d34b00be436d4de77ae7"
+    },
+    {
+      "file": "covers/front-prepared.png",
+      "sha256": "460af8701800b9275c39f668515d496f1af65c5955986be3ad43ec59a3ed8557"
+    },
+    {
       "file": "highlight_sync.json",
       "sha256": "d8bc45186c3d1b361ad66d3c0b210383405a91c6f9125fcab08c779a0c87579e"
     },
@@ -200,19 +228,31 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "3f9895115cba6effd21b3ca7f3ac8b0139d6cd4f539eb8fa095c83a94edd8374"
+      "sha256": "ba2a8cd8eb5b4153096786ba0eaeb924f14db581986dddd5a6941404eb2e57d8"
     },
     {
       "file": "publication_authorization.json",
-      "sha256": "4d5dc6ee1a1c61f04f6b2c706a3cb9dc2d3b0e09a6f670a029708f28bc731e48"
+      "sha256": "9be72f83c284fe4f3389dffe126ab111e94a2fe66fcd93b3aa40a573bebf817b"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "8a9a8219266814455b8d1f811493e913e8007524f642a5bb7302026aaa57144e"
+      "sha256": "b2510b44fa9ec57a7a7cc48be2482787ee4fe6cba0021ddd8a6cff71ef5275f7"
     },
     {
       "file": "source_evidence.json",
       "sha256": "d361d2a57e36d6cf70c84f1b5803a99306467116f44e200cfc16659e0145e94f"
+    },
+    {
+      "file": "owner_artwork_declaration.json",
+      "sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264"
+    },
+    {
+      "file": "evidence/review_a.json",
+      "sha256": "27dee411682d6fbc614aef59db747286949ac2961fcdb50f5cc466b395d15bec"
+    },
+    {
+      "file": "evidence/review_b.json",
+      "sha256": "94df4b60e209ec40391b62b5c80e6c59c400c48e4becfac7373049d932c8a3c3"
     }
   ]
 }

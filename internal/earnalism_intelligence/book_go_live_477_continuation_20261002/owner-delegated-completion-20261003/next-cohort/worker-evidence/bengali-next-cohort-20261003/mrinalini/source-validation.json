@@ -1,0 +1,37 @@
+{
+  "slug": "mrinalini",
+  "existing_text_decision_id": "india-20261002-mrinalini-1874-cc-by-sa-text-reader",
+  "existing_components_pass": 6,
+  "existing_checksums_pass": 53,
+  "chapter_count": 46,
+  "ordered_chapter_content_hashes_pass": true,
+  "canonical_reader_aggregate_sha256": "390c5936e44b799952e1e84917bca07aea7183f96880e91a6b3fc74ec7fa3560",
+  "license_notice_sha256": "5daf71034572bf90bf766d4c93d2632d518986f0cc96cd916f987ac0fe3ca3c9",
+  "existing_primary_author_source_edition_records": [
+    {
+      "path": "internal/legal/bengali_text_preparation_20261002/author_fact_receipts.json",
+      "sha256": "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+      "status": "PASS"
+    },
+    {
+      "path": "internal/legal/catalogue_clearance_20261002/bengali/mrinalini-multichapter-source-comparison.json",
+      "sha256": "d0977454db66b5a3bceeb2a0bdd9bfa8d2c1ccff014811153141ab124d12e70f",
+      "status": "PASS"
+    },
+    {
+      "path": "internal/legal/catalogue_clearance_20261002/bengali/mrinalini-primary-imprint-pages.json",
+      "sha256": "17c3499fdd190453e3ba8bb291ccee825e8cf5e3a811bdf69a181d64f3a8a86d",
+      "status": "PASS"
+    },
+    {
+      "path": "data/title_rights_evidence/bengali-bankim-cohort-1.json",
+      "sha256": "6aa201278a3420414ab1c348bd24b19ff4cf1b539595e142dd64696152c5eccf",
+      "status": "PASS"
+    }
+  ],
+  "basis": "Exact Mrinalini third1874 author edition, Bankim Chandra Chattopadhyay; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1894; India Section22 literary term expired end1954. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
+  "source_chapters_versions_unchanged": true,
+  "backend_preimage_present": true,
+  "new_source_investigation": false,
+  "acceptance_or_release_created": false
+}

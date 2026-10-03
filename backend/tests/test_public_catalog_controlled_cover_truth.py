@@ -190,12 +190,10 @@ def test_controlled_merge_fails_closed_when_the_canonical_artifact_disables_audi
     assert merged["audiobook_assets"] == {}
 
 
-def test_audiobook_release_uses_validated_controlled_reader_truth_for_legacy_shell():
-    canonical = catalog_truth.load_controlled_artifact_book(
-        "gitanjali",
-        include_content=False,
-    )
-    assert canonical is not None
+def test_audiobook_release_keeps_gitanjali_held_without_promoting_its_legacy_shell():
+    assert catalog_truth.load_controlled_artifact_book(
+        "gitanjali", include_content=False,
+    ) is None
     legacy_shell = {
         "slug": "gitanjali",
         "title": "Gitanjali",
@@ -206,16 +204,41 @@ def test_audiobook_release_uses_validated_controlled_reader_truth_for_legacy_she
 
     resolved = server._audiobook_release_reader_truth(legacy_shell, "gitanjali")
 
+    assert resolved is legacy_shell
+    assert resolved["is_published"] is False
+    assert resolved["audiobook_enabled"] is False
+    assert resolved.get("approved_to_publish", False) is False
+    assert resolved.get("publication_status") != "LIVE_APPROVED"
+    assert resolved["chapters"] == [{"title": "Legacy shell chapter"}]
+
+
+def test_audiobook_release_uses_validated_controlled_reader_truth_for_live_legacy_shell():
+    canonical = canonical_jekyll()
+    legacy_shell = {
+        "slug": SLUG,
+        "title": "Stale legacy shell title",
+        "is_published": False,
+        "audiobook_enabled": False,
+        "chapters": [{"title": "Legacy shell chapter"}],
+    }
+
+    resolved = server._audiobook_release_reader_truth(legacy_shell, SLUG)
+
     assert resolved["is_published"] is True
     assert resolved["approved_to_publish"] is True
     assert resolved["publication_status"] == "LIVE_APPROVED"
     assert resolved["qa_status"] == "QA_PASSED"
-    assert resolved["cover_image_url"]
-    assert len(resolved["chapters"]) == 104
+    assert resolved["title"] == canonical["title"]
+    assert resolved["cover_image_url"] == canonical["cover_image_url"]
+    assert resolved["chapters"] == canonical["chapters"]
+    assert len(resolved["chapters"]) == 10
     assert resolved["audiobook_manuscript_sha256"] == ""
     assert resolved["audio_enabled"] is False
     assert resolved["audiobook_enabled"] is False
-    assert server.rights_publish_blockers(resolved) == []
+    # This public projection does not expose private legacy publish-form rights
+    # fields. Resolution must preserve the canonical form's blocker truth,
+    # rather than inventing those fields to satisfy the legacy validator.
+    assert server.rights_publish_blockers(resolved) == server.rights_publish_blockers(canonical)
 
 
 def test_audiobook_release_falls_back_to_database_when_no_controlled_artifact(monkeypatch):
@@ -304,7 +327,7 @@ def test_controlled_reader_manifest_cannot_reenable_an_audio_disabled_artifact(m
 def test_public_catalog_cache_namespace_is_rotated_without_changing_audio_gate():
     cache_key = server._public_cache_key("book_detail", slug=SLUG)
 
-    assert '"catalog_truth": "controlled-covers-v1"' in cache_key
+    assert '"catalog_truth": "release-containment-v1"' in cache_key
     assert '"truth_gate": "audio-contract-v16"' in cache_key
 
 
@@ -327,11 +350,11 @@ def test_reader_catalog_cache_namespaces_rotate_with_public_catalog_truth(monkey
     assert seen == [
         (
             "reader-content",
-            "book-access:audio-contract-v16:controlled-covers-v1:37:public:jekyll-and-hyde",
+            "book-access:audio-contract-v16:release-containment-v1:37:public:jekyll-and-hyde",
         ),
         (
             "reader-manifest",
-            "book-manifest:audio-contract-v16:controlled-covers-v1:chapter-index.v1:37:public:jekyll-and-hyde",
+            "book-manifest:audio-contract-v16:release-containment-v1:chapter-index.v1:37:public:jekyll-and-hyde",
         ),
     ]
 
@@ -370,7 +393,7 @@ def test_reader_manifest_ignores_pre_catalog_truth_namespace_entry(monkeypatch):
     )
     assert canonical is not None
     monkeypatch.setattr(server, "db", SimpleNamespace(books=SameSlugBooks({})))
-    stale_key = "book-manifest:audio-contract-v13:562:public:the-gift-of-the-magi"
+    stale_key = "book-manifest:audio-contract-v16:controlled-covers-v1:chapter-index.v1:562:public:the-gift-of-the-magi"
     stale_manifest = {
         "book": {
             "slug": GIFT_SLUG,
@@ -398,7 +421,7 @@ def test_reader_manifest_ignores_pre_catalog_truth_namespace_entry(monkeypatch):
     assert seen == [
         (
             "reader-manifest",
-            "book-manifest:audio-contract-v16:controlled-covers-v1:chapter-index.v1:562:public:the-gift-of-the-magi",
+            "book-manifest:audio-contract-v16:release-containment-v1:chapter-index.v1:562:public:the-gift-of-the-magi",
         )
     ]
     assert seen[0][1] != stale_key

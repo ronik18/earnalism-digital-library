@@ -1,6 +1,5 @@
-// PR #476 intentionally retains these safe historical recovery pages.
+// Historical unavailable evidence remains archived; current releases use ordinary routes.
 export const unavailableTitles = [
-  { slug: "the-selfish-giant", title: "The Selfish Giant" },
 ];
 export const unavailableCopy = "This title is not part of the current public release. Its reading and listening experiences are unavailable.";
 export const unavailableAccessCopy = "No book text, reader session, or audio is available from this page.";

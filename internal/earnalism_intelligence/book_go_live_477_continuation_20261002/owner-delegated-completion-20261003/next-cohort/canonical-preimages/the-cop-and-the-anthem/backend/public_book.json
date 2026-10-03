@@ -1,0 +1,97 @@
+{
+  "id": "controlled-the-cop-and-the-anthem",
+  "slug": "the-cop-and-the-anthem",
+  "title": "The Cop and the Anthem",
+  "subtitle": "",
+  "author": "O. Henry",
+  "category_slug": "literary-fiction",
+  "short_description": "A homeless man tries repeatedly to get arrested to spend winter in jail — and fails every time until it is too late.",
+  "description": "Soapy tries everything to get arrested — disorderly conduct, theft, harassment — and fails each time. Then a church anthem moves him to reform. Then a policeman arrests him. O. Henry's most perfectly constructed irony.",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275534/earnalism/covers/front/the-cop-and-the-anthem_front_1600x2400.png",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275534/earnalism/covers/front/the-cop-and-the-anthem_front_1600x2400.png",
+  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275534/earnalism/covers/front/the-cop-and-the-anthem_front_1600x2400.png",
+  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275534/earnalism/covers/front/the-cop-and-the-anthem_front_1600x2400.png",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275537/earnalism/covers/back/the-cop-and-the-anthem_back_1600x2400.png",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275537/earnalism/covers/back/the-cop-and-the-anthem_back_1600x2400.png",
+  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275537/earnalism/covers/back/the-cop-and-the-anthem_back_1600x2400.png",
+  "cover_status": "CLOUDINARY_ASSIGNED",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "10 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "O. Henry (1862–1910) was an American short story writer celebrated for his wit, wordplay, and surprise endings.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Cop and the Anthem",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 2306,
+      "reading_minutes": 10,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    }
+  ],
+  "source_hash": "e1e65254ba428e929553edaef131babdf3a2cba3ee18acf61d0c2cd81fa2e45b",
+  "content_hash": "356045c3e1b95de8512621cc5d37d18fd1af247ab68e90c8b5f085734292e153",
+  "provenance_hash": "543d7bc7fba576c2729b91b4ff9ac21c0ffc39f51789ef9b5f453b95a42e0e64",
+  "rights_basis": "O. Henry died 1910; first published 1904. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_provider": "",
+  "audiobook_voice": "",
+  "audio_asset_slug": "",
+  "audiobook_assets": {},
+  "audiobook": {},
+  "audiobook_assets_updated_at": "",
+  "created_at": "2026-07-03T20:07:48Z",
+  "updated_at": "2026-07-03T20:07:48Z",
+  "cover_dimensions": {
+    "front": [
+      1600,
+      2400
+    ],
+    "back": [
+      1600,
+      2400
+    ]
+  },
+  "cover_semantic_match_score": 9.8
+}

@@ -1,0 +1,14 @@
+{
+  "schema": "earnalism.selected-work-integrity-validation.v1",
+  "slug": "dsires-baby",
+  "verified_at": "2026-10-03T04:36:24.088428+00:00",
+  "source_sha256": "31d4577d255806b92c6296419adddd5ca460bdb788743878a09ded1e19f4161a",
+  "content_sha256": "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98",
+  "chapter_count": 1,
+  "whole_selected_work": "PASS",
+  "method": "Full selected story between its source heading and following A RESPECTABLE WOMAN equals entire canonical chapter under NFC+whitespace only. Exact punctuation/lexical content preserved.",
+  "first_text": "As the day was pleasant, Madame Valmondé drove over to L’Abri to see Désirée and the baby. It made her laugh to think of Désirée with a baby. Why, it seemed but yesterday that Dési",
+  "last_text": "k the good God for having so arranged our lives that our dear Armand will never know that his mother, who adores him, belongs to the race that is cursed with the brand of slavery.”",
+  "source_or_chapter_changed": false,
+  "production_observed": false
+}

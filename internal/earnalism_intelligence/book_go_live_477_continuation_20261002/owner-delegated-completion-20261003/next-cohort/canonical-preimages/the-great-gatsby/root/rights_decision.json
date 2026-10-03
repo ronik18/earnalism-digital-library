@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-great-gatsby-pg64317-noncover-text",
+  "edition_id": "the-great-gatsby",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "5fbbad6448aba0525184df8c422ffb60c4ba54d979d1167d0bffb0da262c2bbd",
+    "reader_manifest": "f544166427c91bb2b8546484bf0c811761345f2ec8f1c73c00afad88411fcb4c",
+    "source_evidence": "93a1e5eab7ce62def0ef60ba3a2ae6e56ed964c688c1f2a827f3e88664a30874",
+    "approval_evidence": "c6101124ec129bd44da115a841cf9051e38f4d06c000d8c9ecda2ebaf69e73df",
+    "checksum_manifest": "dde9647a3a1b5e40747c69a44ade3b2aec0f0f76674232fb3222dc0b336555ca",
+    "publication_manifest": "9789d844eb83a5ce0855ccae123187b44e0e9acb19befe895a450786b41b2254"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:52:27.631967+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1940, verified lifetime collection publication 1925 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "640cd2b42298283a760ee823e25ccecea8f301940e38e7adc4633386f267a3e8",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "4a96f50ad7df460f80f1b69ca814b7514d7f178d24e0079cd6fd8a04e5faba24",
+    "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35",
+    "4f6579e08ebba7b91e4a92bf134f29c0a79b7c5575125351a20684c4ff8688ec"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

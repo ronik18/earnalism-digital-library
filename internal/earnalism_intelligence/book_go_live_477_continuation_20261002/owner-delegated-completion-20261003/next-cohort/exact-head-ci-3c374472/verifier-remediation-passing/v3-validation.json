@@ -1,0 +1,93 @@
+{
+  "patch": "/workspace/scratch/181ef0a25f05/pr511-held-evidence-remediation-20261003/pr511-historical-and-current-release-evidence-v3.patch",
+  "patch_sha256": "e1af7620c984f729979eb2531ac15d8e915719863949635030bced186e7bde9d",
+  "complete_current_52_positive": "PASS_ACTUAL_CORE_COMPONENTS_TYPED_PERSISTED_ADDITIONAL_ASSETS_CHAPTER_BODIES_ORDERS_AND_SCOPE",
+  "old33_released_bindings": "EXACT_UNCHANGED_PRIOR_RELEASE_FACTS_PRESERVED",
+  "new19_and_prior_noncover_extra_asset_components": "ALL_ACTUAL_PERSISTED_BYTES_VERIFIED",
+  "legacy_unchanged_remote_only_components": "NO_NEW_FETCH_OBSERVATION_OR_REAPPROVAL_CLAIM",
+  "canonical_writes": false,
+  "exact_workflow_results": [
+    {
+      "command": "python -m unittest scripts.test_reconcile_bengali_source_evidence scripts.test_reconcile_english_source_evidence scripts.test_prepare_inactive_reader_segment_plans -v",
+      "result": "PASS",
+      "tests": 38,
+      "seconds": 1.227,
+      "log": "unittest-bs4.log"
+    },
+    {
+      "command": "python -m pytest backend/tests/test_licensed_text.py backend/tests/test_publication_manifest.py backend/tests/test_rights_engine.py -q",
+      "result": "KNOWN_STALE_BACKEND_FIXTURE_FAILURE_DELEGATED_ALICE",
+      "passed": 59,
+      "failed": 1,
+      "log": "pytest-publication.log"
+    },
+    {
+      "command": "python -m pytest backend/tests/test_rights_decision_gate.py backend/tests/test_backend_catalog_truth.py backend/tests/test_api_public_catalog_projection.py backend/tests/test_catalog_exclusion_parity.py backend/tests/test_reader_segment_promotion_safeguards.py -q",
+      "result": "KNOWN_STALE_BACKEND_FIXTURE_FAILURES_DELEGATED_ALICE",
+      "passed": 103,
+      "failed": 7,
+      "log": "pytest-rights.log"
+    },
+    {
+      "command": "python scripts/verify_catalogue_clearance_batch.py",
+      "result": "PASS",
+      "changed_packages": 133,
+      "issues": [],
+      "reader_exposed": true,
+      "audio_exposed": false,
+      "log": "verifier.log"
+    },
+    {
+      "command": "python scripts/prepare_inactive_reader_segment_plans.py --output <isolated scratch output>",
+      "result": "PASS",
+      "log": "inactive-plans.log"
+    },
+    {
+      "command": "git apply --check <frozen v3 patch>",
+      "result": "PASS"
+    }
+  ],
+  "all_logs": [
+    {
+      "file": "bs4-install.log",
+      "sha256": "d8eb41f4d777e869a3f8dfc14b2176d0c191fbbae3075b9ba6fb256854c8cab3",
+      "bytes": 1043
+    },
+    {
+      "file": "inactive-plans.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "pytest-publication.log",
+      "sha256": "aba6da4088c353203f4e841ee8ebb47c07a9203ceecccd7f78f7bfbdc8c0d8ae",
+      "bytes": 2341
+    },
+    {
+      "file": "pytest-rights.log",
+      "sha256": "23a96b196e29910457c22a561e39e7bded5a6b0200ff655099c798fe804d3a41",
+      "bytes": 10198
+    },
+    {
+      "file": "unittest-bs4.log",
+      "sha256": "6fb3713292f0eb9ac5a9871b8d86004bb57453ff415b8160112884b5496dcd2c",
+      "bytes": 6677
+    },
+    {
+      "file": "unittest.log",
+      "sha256": "c6e67ba1270f04827aa7629693b724d2dadecce875ac04a52090105fe2e3b5cd",
+      "bytes": 11254
+    },
+    {
+      "file": "verifier.log",
+      "sha256": "f47874b995b969e4b68bc7aca85e0043bfdc428112604daccaa679d0815205e1",
+      "bytes": 5212
+    }
+  ],
+  "independent_review_a": {
+    "status": "PASS",
+    "cases": 13,
+    "receipt_sha256": "551d1ab9e668b76b6032e22ef78c71b758ff5a13ab3d6dbbc4525d7bd8523ccd"
+  },
+  "independent_review_b": "PENDING"
+}

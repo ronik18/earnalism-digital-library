@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-science-of-getting-rich-pg59844-noncover-text",
+  "edition_id": "the-science-of-getting-rich",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "491fad4ec6873c7b6c3853a212291884b1764e99da6e23adddf2f61e3a377f9a",
+    "reader_manifest": "6c6c0d47217642a5f67dff1fc23afcac146468d1017d48f59a2bef2bf90cbdce",
+    "source_evidence": "6324de50de9db456175bcd2cbecec794641fa8bdd322d2de2b49eaacc713a117",
+    "approval_evidence": "dc189350ec5a8fd4acf2d25cafce1bf9884f35b4caca40090e497af1b0aba20f",
+    "checksum_manifest": "54e249ee3f753c7f930794b272e3c6267cf3e2efaff6119422d827c370aa4a87",
+    "publication_manifest": "4e57244d338acd3ea031811a92f8ec69f67919113f528e6fcb18c6295ceac03f"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:35:50.622637+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1911, original publication 1910; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "cbb0f10031b0061839efa60f9fa11600bf283711c85843d0a49d45516e393052",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "2aaee1427a4611db85d2365a96ec11ec103f7438c956d97f5231124791e0657d",
+    "adc3fb17f24801597561e992d858e124c8d9b4c6e3bf7593d713e7a71d252744",
+    "55a8e552b9f74640c7bccc1d05db9d5197ec9dd3af558aceb4f9d3ea73d4949b"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-lokrahasya-exact-edition-text-cover-proposal-source-order-v2",
+  "edition_id": "lokrahasya",
+  "operator_id": "reo-enterprise",
+  "status": "PROPOSED",
+  "components": {
+    "source_evidence": "b91f203f5374ba789227c46411bf5d4c2a3721cd27c4ed5e58dcedffaa33fa7e",
+    "publication_manifest": "34856088a8ece9a326fb1109e4392585014b38b31690fd17fc6e1e2e071ace3a",
+    "reader_manifest": "cd0d23d355b04e8a076dbc348a1364c3640fe7a149d8b7b2e78690c0ee22261c",
+    "approval_evidence": "e98b139b625cd2681c928bd83b77101f5f850715cc71d2d018cc5cdb684106ef",
+    "public_book": "f6a791fce3cbd0dc5d5b62ce728706862d283187507b5a0ef77c405559bd8ccc",
+    "checksum_manifest": "7c78481d922a6a26d622057354568435a0125665fcd1b1887c2e14e943489d02",
+    "cover_provenance": "06ad952983fe9731345d973a537c3220ed38964db07a945444da517b613a7f3b",
+    "reader_order_remedy": "0cd76b413db937d25362d9b105beb5c22fa1340bc27d15dda1b11adb492b3b50"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "cover_display",
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T05:37:29.874988+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Exact Lokrahasya1939 centenary edition edited Brajendra Nath Bandyopadhyay and Sajanikanta Das; separately authored foreword excluded; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1962; India Section22 literary term expired end2022. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held. Proposed exact owner cover mask/typeset derivatives; fresh2 passing independent reviews and actual automated acceptance remain required.",
+  "evidence_sha256": [
+    "625b30c0db9515408f88dc471eb8cdcac457c81c8dbe16fc23f332a553c89983",
+    "31b4a09724bc5adc938662556bec2b17a2e1654ea14d1a35501a87648d9b6bb0",
+    "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "23f7d1fa20062a5e03a64016228256d62c6d2fbedeee016f22ac293a4e7b65dc",
+    "dea445c190a4bf483f1a761fdad427becbae87fdbe4abc0e6bafb868a89d83ea",
+    "4f4a62c163fe662c298635e5e3397883fc609a0cab1635b614a25abd466d16c3",
+    "bc9081e1ab567b27eed76ee08ffa1b75630948125a1755771988133e7347380b",
+    "0cd76b413db937d25362d9b105beb5c22fa1340bc27d15dda1b11adb492b3b50"
+  ],
+  "accepted_by": "NOT_ACCEPTED: automated isolated proposal worker under prospective owner authority; no human/legal signature or production observations.",
+  "conditions_satisfied": false
+}

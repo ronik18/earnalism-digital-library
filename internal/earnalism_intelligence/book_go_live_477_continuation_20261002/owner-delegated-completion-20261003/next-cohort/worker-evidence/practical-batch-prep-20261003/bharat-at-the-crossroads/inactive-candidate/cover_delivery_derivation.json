@@ -1,0 +1,81 @@
+{
+  "schema": "earnalism.exact-cover-delivery-derivation.v1",
+  "slug": "bharat-at-the-crossroads",
+  "assets": [
+    {
+      "kind": "front",
+      "source_file": "covers/front.png",
+      "source_sha256": "674c1aee2b6c1a7b25a5b28cd7e4737787153b8f0f4d8e6c8f7ee83a92a28c05",
+      "source_bytes": 1978135,
+      "source_dimensions": [
+        1054,
+        1492
+      ],
+      "delivery_file": "frontend/public/assets/books/bharat-at-the-crossroads/bharat-at-the-crossroads-front-674c1aee-800.webp",
+      "delivery_sha256": "5d5445f1d88d0ba092dbc363621eaedfcea8a9356fb22481a9c59fe455830d4d",
+      "delivery_bytes": 77492,
+      "delivery_dimensions": [
+        800,
+        1200
+      ],
+      "url": "https://theearnalism.com/assets/books/bharat-at-the-crossroads/bharat-at-the-crossroads-front-674c1aee-800.webp",
+      "recipe": {
+        "format": "WEBP",
+        "mode": "RGB",
+        "quality": 64,
+        "method": 6,
+        "resampling": "LANCZOS",
+        "resize": "aspect-preserving contain 800x1200",
+        "content_dimensions": [
+          800,
+          1132
+        ],
+        "padding_xy": [
+          0,
+          34
+        ],
+        "pillow_version": "12.3.0"
+      },
+      "production_observed": false
+    },
+    {
+      "kind": "back",
+      "source_file": "covers/back.png",
+      "source_sha256": "2e7564a64bb215397374a734e66e023010c22cdead23d3cb812ded6a54bc7665",
+      "source_bytes": 1623151,
+      "source_dimensions": [
+        1054,
+        1492
+      ],
+      "delivery_file": "frontend/public/assets/books/bharat-at-the-crossroads/bharat-at-the-crossroads-back-2e7564a6-800.webp",
+      "delivery_sha256": "cb46a1b7acbdce0d585fc98d19554e69bba4525410b9f678cfd38fbf21aa420f",
+      "delivery_bytes": 56054,
+      "delivery_dimensions": [
+        800,
+        1200
+      ],
+      "url": "https://theearnalism.com/assets/books/bharat-at-the-crossroads/bharat-at-the-crossroads-back-2e7564a6-800.webp",
+      "recipe": {
+        "format": "WEBP",
+        "mode": "RGB",
+        "quality": 64,
+        "method": 6,
+        "resampling": "LANCZOS",
+        "resize": "aspect-preserving contain 800x1200",
+        "content_dimensions": [
+          800,
+          1132
+        ],
+        "padding_xy": [
+          0,
+          34
+        ],
+        "pillow_version": "12.3.0"
+      },
+      "production_observed": false
+    }
+  ],
+  "review_status": "PENDING_TWO_FRESH_EXACT_PNG_WEBP_VISUAL_CHECKS",
+  "production_observed": false,
+  "runtime_observed": false
+}

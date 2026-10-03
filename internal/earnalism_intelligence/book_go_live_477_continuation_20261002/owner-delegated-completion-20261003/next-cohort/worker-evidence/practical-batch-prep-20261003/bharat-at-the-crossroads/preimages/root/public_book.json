@@ -1,0 +1,91 @@
+{
+  "id": "controlled-bharat-at-the-crossroads",
+  "slug": "bharat-at-the-crossroads",
+  "title": "Bharat at the Crossroads",
+  "subtitle": "",
+  "author": "Ronik Basak",
+  "category_slug": "business",
+  "short_description": "An original work by Ronik Basak, presented as a carefully prepared digital reading edition.",
+  "description": "An original work by Ronik Basak.",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+  "estimated_reading_time": "153 min",
+  "formats": [
+    "Ebook",
+    "Audiobook"
+  ],
+  "benefits": [
+    "Read a clean, structured digital edition.",
+    "Listen to the approved audio edition in the reader."
+  ],
+  "who_for": [
+    "Readers of contemporary nonfiction",
+    "Readers who prefer long-form listening"
+  ],
+  "learnings": [
+    "Follow the book's arguments and narrative structure."
+  ],
+  "about_author": "Ronik Basak is the author of Bharat at the Crossroads.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "Bharat at the Crossroads",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 34761,
+      "reading_minutes": 322,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-08-08T00:00:00Z",
+      "updated_at": "2026-08-08T00:00:00Z"
+    }
+  ],
+  "source_hash": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+  "content_hash": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+  "provenance_hash": "41300c1e70b2b43c0f17602acba1de96a1b3f5350e8dffd46c470ecdc9330343",
+  "rights_basis": "Original work authored by Ronik Basak; copyright reserved to Reo Enterprise.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "kokoro",
+  "audiobook_voice": "bm_george",
+  "audio_asset_slug": "bharat-at-the-crossroads-bm-george-v1",
+  "audiobook_assets": {
+    "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks-prod-v2-236e72b043e2/earnalism/audiobooks/en/bharat-at-the-crossroads/bharat-at-the-crossroads-bm-george-v1.mp3"
+  },
+  "audiobook": {
+    "url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks-prod-v2-236e72b043e2/earnalism/audiobooks/en/bharat-at-the-crossroads/bharat-at-the-crossroads-bm-george-v1.mp3",
+    "provider": "kokoro",
+    "size": 147636213,
+    "duration_ms": 19309325,
+    "assets": {
+      "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks-prod-v2-236e72b043e2/earnalism/audiobooks/en/bharat-at-the-crossroads/bharat-at-the-crossroads-bm-george-v1.mp3"
+    },
+    "updated_at": "2026-08-08T00:00:00Z"
+  },
+  "audiobook_assets_updated_at": "2026-08-08T00:00:00Z",
+  "sync_tier": "AUDIO_ONLY_NO_SYNC",
+  "highlight_sync_enabled": false,
+  "created_at": "2026-08-08T00:00:00Z",
+  "updated_at": "2026-08-08T00:00:00Z"
+}

@@ -1,0 +1,56 @@
+{
+  "reviewer": "Independent Codex reviewer B",
+  "reviewed_at": "2026-10-03T05:41:40.524396+00:00",
+  "stage": "/workspace/scratch/181ef0a25f05/next-owner-accepted-nine-20261003-v1",
+  "disposition": "HOLD_EFFECTIVE_METADATA_COHERENCE_REQUIRES_ONE_TARGETED_CORRECTION",
+  "preserved_previous_hash_and_isolated_gate_review": {
+    "path": "/workspace/scratch/181ef0a25f05/new-acceptance-review-b-20261003/owner-nine-final-binding-review-b.json",
+    "sha256": "dba052b16a4bada2418614f00d307221e68553a2c27cb8521009743df862b453",
+    "intact_findings": "119 exact components/375checksums, actual ownerbasis/INtext rights gate/audio disabled/body-art preservation PASS; superseded as final all-coherence acceptance authority"
+  },
+  "new_findings": [
+    {
+      "slug": "the-time-machine",
+      "public_cover_status": "UNACCEPTED_EXACT_OWNER_GRAPHICAL_DELIVERY_PREPARED"
+    },
+    {
+      "slug": "the-great-gatsby",
+      "public_cover_status": "UNACCEPTED_EXACT_OWNER_GRAPHICAL_DELIVERY_PREPARED"
+    },
+    {
+      "slug": "frankenstein",
+      "public_cover_status": "UNACCEPTED_EXACT_OWNER_GRAPHICAL_DELIVERY_PREPARED"
+    },
+    {
+      "slug": "the-secret-garden",
+      "public_cover_status": "UNACCEPTED_EXACT_OWNER_GRAPHICAL_DELIVERY_PREPARED"
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "public_cover_status": "UNACCEPTED_EXACT_OWNER_GRAPHICAL_DELIVERY_PREPARED"
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "public_cover_status": "EXACT_ORIGINAL_ART_DETERMINISTIC_TYPOGRAPHY_PROPOSAL_PENDING_REVIEW",
+      "delivery_review_status": "PENDING_TWO_FRESH_EXACT_PNG_WEBP_VISUAL_CHECKS"
+    },
+    {
+      "slug": "acres-of-diamonds",
+      "public_cover_status": "EXACT_ORIGINAL_ART_DETERMINISTIC_TYPOGRAPHY_PROPOSAL_PENDING_REVIEW",
+      "delivery_review_status": "PENDING_TWO_FRESH_EXACT_PNG_WEBP_VISUAL_CHECKS"
+    },
+    {
+      "slug": "my-life-and-work",
+      "public_cover_status": "EXACT_ORIGINAL_ART_DETERMINISTIC_TYPOGRAPHY_PROPOSAL_PENDING_REVIEW",
+      "delivery_review_status": "PENDING_TWO_FRESH_EXACT_PNG_WEBP_VISUAL_CHECKS"
+    },
+    {
+      "slug": "mrinalini",
+      "public_cover_status": "PENDING_EXACT_COMPONENT_REVIEWS"
+    }
+  ],
+  "reason": "Current public cover_status retains UNACCEPTED or procedural old declaration wording despite actual accepted owner components. Three practical delivery_review_status retains pending preparation reviews although actual2reviews are present. Historical statuses should remain in preimages; effective accepted metadata needs truthful scope/status normalization. No source/art changes or review repeat required.",
+  "correction_scope": "Public cover status and practical current delivery-review status plus all dependent hashes/records only; fresh final delta binding review, no inferred generation method/human/production facts.",
+  "production_observed": false,
+  "canonical_mutations": false
+}

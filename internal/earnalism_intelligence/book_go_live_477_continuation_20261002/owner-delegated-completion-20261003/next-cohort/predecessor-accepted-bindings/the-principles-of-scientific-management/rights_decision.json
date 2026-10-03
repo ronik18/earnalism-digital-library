@@ -1,0 +1,53 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-the-principles-of-scientific-management-exact-reader-cover-prospective-accepted",
+  "edition_id": "the-principles-of-scientific-management",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "78ed5b20d046916148faadfd1ddebae98964338c6a3a830b7434bf68654b7be1",
+    "reader_manifest": "87a47f53b9dbcbae66a09bee4bcc5769f4b5f584ef9bdfc4ab31b65959c3318f",
+    "source_evidence": "e6b091fd0aebe2517dd1e2b6c8e8ef14d5ea6d6540daa66c33e0ba27a9ef2380",
+    "approval_evidence": "111437c311cc4133fef200be29c3ab0ac28489aed9d7dd673e3191ab4f100389",
+    "checksum_manifest": "571b8ee06a113404b23f2921993690aefce20b5be576df4955c8818937a5b336",
+    "publication_manifest": "7963765b3d1b746708d9327fb556d7773e9cf5a7e795b376ec335a6857f09486",
+    "cover_provenance": "49d8b48f570268f07aaff9cf2d99f0fc7de9e41abd61057c938e85bc825d9ed1",
+    "cover_delivery_derivation": "9b6609b625a2c7a15224c337d763ce93eb8c48356e299dd5ddf4bfac24be287b",
+    "cover_front_asset": "67895aecbc4c29e45658819f7b76316a3caecf5d9cca79c4592c03c5d90d581b",
+    "cover_back_asset": "a544cc2b26c584891032db2fd9ea447f33b4a72ab1e7801a5de853f3463aa5b9",
+    "cover_front_delivery": "b53d8f06691749b6c82fe003513163330698b53ba4f5d02721d15d7f17a68644",
+    "cover_back_delivery": "ed604d4e425551bba8863ccbc93c919d77ed42122a4d5c15bb217f604432348a",
+    "publication_authorization": "66a3290c87fe25290a190b358834b27d975e4264d4737ba8666c06685e3c2519",
+    "owner_artwork_declaration": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "acceptance_review_a": "3043b739322e3d4ffabd729cd834b936188018517075ffcf34ab73f85ca54c81",
+    "acceptance_review_b": "de3794f854eaa4ff7cd0ffbdeb9b37fcd70fd989e1ead6973042eedc19b8c646"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T05:34:11.386246+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Exact India text/edition rights are preserved from the archived predecessor and unchanged source/chapter/license records. Ronik Basak directly provided the owner-held copyright and publication provenance for the exact owner-created cover components; two independent passing source/art preparations bind the reviewed derivatives and deliveries. Prospective automated acceptance supersedes earlier procedural cover deferral for these components only. No human approval, other source/edition rights, unknown original construction method, audio grant or production observation inferred.",
+  "evidence_sha256": [
+    "a836e5339f4f15b0aa61cccd35d2da8edfb25cd0250b1d45d41f57a2c150af60",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "2aaee1427a4611db85d2365a96ec11ec103f7438c956d97f5231124791e0657d",
+    "1f504a9abe674ee616f13bf1db66ec25cbb1be0ff5fd9bfe70ab8593aa08a3b2",
+    "288b62bc7442e85367b7ca05290f466dee7a0314d7f0ab3d3252cc39618850df",
+    "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "66a3290c87fe25290a190b358834b27d975e4264d4737ba8666c06685e3c2519",
+    "49d8b48f570268f07aaff9cf2d99f0fc7de9e41abd61057c938e85bc825d9ed1",
+    "3043b739322e3d4ffabd729cd834b936188018517075ffcf34ab73f85ca54c81",
+    "de3794f854eaa4ff7cd0ffbdeb9b37fcd70fd989e1ead6973042eedc19b8c646"
+  ],
+  "accepted_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+  "conditions_satisfied": true
+}

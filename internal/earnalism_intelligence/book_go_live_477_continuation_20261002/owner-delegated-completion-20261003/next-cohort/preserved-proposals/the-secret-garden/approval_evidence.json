@@ -1,0 +1,22 @@
+{
+  "slug": "the-secret-garden",
+  "approved_to_publish": false,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "INACTIVE_UNACCEPTED_EXACT_PREPARATION",
+  "audio_public_release": "NOT_AUTHORIZED",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "4afc6cf280803d9afe193224eae2bb1bcabdad44226a0c8a33b4a52ecaf59ed5",
+  "source_hash": "6b0bb5fbd0c4e873d2d22028da9d753cf3977d5f70ac58221556b28060badbf5",
+  "content_hash": "027d79093c1a71f7824fb7e21ecfaea67e5f46eb47f2e6c5358a44a34382404a",
+  "provenance_hash": "b2d4bcc9e3e66ca0a445dea3a7aaf91e89b6327a262096a1233b7e65aef747ee",
+  "verified_at": "2026-10-01T21:49:40.745164+00:00"
+}

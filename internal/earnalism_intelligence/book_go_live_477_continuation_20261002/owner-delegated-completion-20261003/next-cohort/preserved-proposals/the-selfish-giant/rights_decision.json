@@ -1,0 +1,39 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-the-selfish-giant-pg902-exact-text-cover",
+  "edition_id": "the-selfish-giant",
+  "operator_id": "reo-enterprise",
+  "status": "PROPOSED",
+  "components": {
+    "source_evidence": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d",
+    "publication_manifest": "4859d307ff78fb524fbd0a0972c0677a4e2fdb74a45c44c671943b12b72f02d7",
+    "reader_manifest": "d5ce7da734364efdd9a2bd6eace1ee2df66bcfa0dcf7ea4e99d49502b330fc9c",
+    "approval_evidence": "51256c44750faff02579f480159bfb4d30d9dfb4061e5906a82e6135b64cd54e",
+    "public_book": "b65b1f188367dcac54cf1ba6edd416e4a3906ea0b8adce6bed445b5ba5845cf9",
+    "checksum_manifest": "bc18d25803c3f5371eb244d8da4262b5f6d0ac6d2c61aff0a632aeda1da3aff8",
+    "cover_provenance": "becaa05505a87f54f017f6ef2d80a921196ed281993a22a72bd2b1c3f4dd536c"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "cover_display",
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T04:20:29.339226+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1900, original publication 1888; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record. Proposed exact existing owner-art bounded repair; prospective cover acceptance pending fresh2 independent reviews. Prior text decision preserved.",
+  "evidence_sha256": [
+    "ea7a7a575a8825e29c65008817b4865ba6b498f380393fe79719fa34b9e73e83",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "9c3ad2f058cfabcc8df405127e0ed9db895b07bc81221fdd48d6681bc7d9999e",
+    "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+    "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5"
+  ],
+  "accepted_by": "NOT_ACCEPTED: isolated automated proposal-preparation worker; no human/legal signature or production observation.",
+  "conditions_satisfied": false
+}

@@ -1,10 +1,10 @@
 {
   "slug": "bn-066",
-  "generated_at": "2026-10-02T03:11:07.553066+00:00",
+  "generated_at": "2026-10-03T04:56:37.110955+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "074fd1b957a82f99c2a878efeee36aef228a858409813fa0ecd40ceaddba9c3d"
+      "sha256": "972e263c2fb525d6b6a5ff01bb182828c73898f3320c2a4440babb0f740cf268"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -191,6 +191,34 @@
       "sha256": "c27e75b4622a518426029493b7b6c3a80ba408e0fa50041427940bdb68a560b8"
     },
     {
+      "file": "cover_provenance.json",
+      "sha256": "e01015d9d6d0656bd405bdd2bac12bc6bb7fcb34cb5257d87237b0df965fe990"
+    },
+    {
+      "file": "covers/back-delivery.webp",
+      "sha256": "aa31dbe34c7e4e89b9a1bba4e6aa00c0d4e0cd9832bf1dd58179385181416dd3"
+    },
+    {
+      "file": "covers/back-original.png",
+      "sha256": "4ce56c183557761ee78cc1e12737a7366034aa19fd397c844ba27fd71ed3c6cd"
+    },
+    {
+      "file": "covers/back-prepared.png",
+      "sha256": "3d37668bbaddb757636b6bbd1cb7dccedd750bd208ca2e6027e8b1f23e9e1dcc"
+    },
+    {
+      "file": "covers/front-delivery.webp",
+      "sha256": "3a9f74e8c01e9832259dc0d6afa9e5b120235feab79fa1bf27029654679cc1dd"
+    },
+    {
+      "file": "covers/front-original.png",
+      "sha256": "80df6089ecc48a52aa5872e54dcb49dabb284927c4d3419f0e0af4388a4669db"
+    },
+    {
+      "file": "covers/front-prepared.png",
+      "sha256": "38b4f0042aa68c3a9784a2319b81f3a60e4d294ac2371a08e5d413746b8e5438"
+    },
+    {
       "file": "highlight_sync.json",
       "sha256": "8bcbc5f01b49af5ba3dbb0c37c8672ec026bc72280c4c6edc5c4056170441602"
     },
@@ -200,19 +228,31 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "b006347dd0530cb1135f223883970738ad6419ff8ac630c68469973a90fb2df5"
+      "sha256": "a599115f1b7daad13726223e24d4fb3a629dabcb56f922c7a9bc6f79ef71464e"
     },
     {
       "file": "publication_authorization.json",
-      "sha256": "d071dc021cf1af40b416c731e5c1074069e2b81a0a1f8810fa688bcba3ffb17c"
+      "sha256": "191d8ecb99e4d63c86aa9ce519f03d3e2158fa93f9dcadf158b34a7f6bbaed14"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "5cfb120000f1d0afe0fb6b618f408b0e23fb8e046dd209182b349a41581a589e"
+      "sha256": "cf08811a9edf32051c6929e8eb5b29abd6a36df4232c50049e630575f43114d7"
     },
     {
       "file": "source_evidence.json",
       "sha256": "227c479e011f38150820a341bed084e5c184cda97bc12c034d7093ce660ab0e8"
+    },
+    {
+      "file": "owner_artwork_declaration.json",
+      "sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264"
+    },
+    {
+      "file": "evidence/review_a.json",
+      "sha256": "483b265cd1414035ccb47fa8d1a8bc9fd3f4be86cfa3276468426c2f32c97fcc"
+    },
+    {
+      "file": "evidence/review_b.json",
+      "sha256": "bf11f1e1e5f87d56f8456c46ad397cddeff8de411742cffb579bd8e433aa821b"
     }
   ]
 }

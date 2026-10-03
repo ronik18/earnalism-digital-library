@@ -1,0 +1,453 @@
+{
+  "reviewer": "independent_reviewer_B",
+  "stage": "next-accepted-cohort-20261003-v5",
+  "acceptance_receipt_sha256": "4075631fd5aa0a388ed4f093fcd5af1ad2120f1e962d652f96f5552e138b5240",
+  "global_gate": "SERIAL_INTEGRATION_AFTER_PR510_AND_NORMAL_PROTECTED_CI_MERGE_DEPLOY_CANARY",
+  "production_observed": false,
+  "canonical_mutations_by_B": false,
+  "inventory": [
+    {
+      "slug": "the-open-window",
+      "rights_decision_raw_sha256": "d990de17cf1c05fd6dcd91c45759621d6025e7a914ffa532e7392dce54a10e5c",
+      "rights_decision_canonical_sha256": "9bdd1355cac8513409b39ff1296c9831a3aede2730000a52f94b104a590f5d5c",
+      "components": {
+        "source_evidence": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d",
+        "publication_manifest": "b62f8f14e6756e418a993e6b2fa4facecd7e02dd3af7aedbf94b27419f4ac893",
+        "reader_manifest": "8f5a8d563c587a28d30e1e001447cdb5328bdcd49df4b61d8d7838401aac6151",
+        "approval_evidence": "2326191e9819b187611935044289a926b930efb2e8f8e328aae15c045778d085",
+        "public_book": "c5b32e842cd5d5a38cf9948df5f51fcfbc64f8bd4c8107525b60848153330cd3",
+        "checksum_manifest": "a37b4e1ed061f4a0cae66b68a2890008d17ad9613f9208eb0835b7b9ac8612e7",
+        "cover_provenance": "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e",
+        "publication_authorization": "75a78c71325b48b3f882711b21cacd98cec7a2856ecc8f95499ee6cb5d2e997e",
+        "acceptance_review_a": "545e4f764da46785a577943e3abe0f48c09660f4c1e84b7fa6709221c168daa0",
+        "acceptance_review_b": "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff"
+      },
+      "checksum_count": 16,
+      "chapter_count": 1,
+      "all_hash_integrity_checks_pass": true,
+      "failed_checks": [],
+      "isolated_candidate_evaluator": {
+        "catalog_metadata": true,
+        "cover_display": true,
+        "reader_preview": true,
+        "reader_delivery": true,
+        "reading_pass_session": true,
+        "reading_pass_renewal": true,
+        "audio_stream": false,
+        "audio_download": false
+      },
+      "current_delegation_actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+      "acceptance_at": "2026-10-03T04:59:53.954767+00:00",
+      "acceptance_matches_receipt": true,
+      "metadata_semantics": {
+        "cover": {
+          "status": "ACCEPTED_EXACT_COMPONENTS_UNDER_OWNER_DELEGATION",
+          "visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+          "commercial_use_authorized": true,
+          "cover_display_approved": true,
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "545e4f764da46785a577943e3abe0f48c09660f4c1e84b7fa6709221c168daa0"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff"
+            }
+          }
+        },
+        "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_COVER_PUBLICATION_ACCEPTANCE"
+      }
+    },
+    {
+      "slug": "the-selfish-giant",
+      "rights_decision_raw_sha256": "394d9609f5a2a701df66d108044186cb764770cfca450c2e4942ac62fb3dc0d5",
+      "rights_decision_canonical_sha256": "2769a8c5231f6906886ac6711be5cfcc9d57f6726c0993b2290d26935c7ef3da",
+      "components": {
+        "source_evidence": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d",
+        "publication_manifest": "38b16ec7e99fb20dde3ec31e518199405161b2f2abe839b002146c0ba6ab609a",
+        "reader_manifest": "d5ce7da734364efdd9a2bd6eace1ee2df66bcfa0dcf7ea4e99d49502b330fc9c",
+        "approval_evidence": "b1d859e0c2721a1fc9c0c0b2e9e47d9022360dcf7b10f25de32fa86cb57f1b48",
+        "public_book": "c8b8f548aac96f9cde261ef9911b701f54e20ee308e38036ab59379849f1c410",
+        "checksum_manifest": "9b944af6349142b8d21af2ae4a467dd477b941a047e9b4acf2840f4fa9ee18d3",
+        "cover_provenance": "9da21ded8f41af473c472fc7800a081b7fbb5cf88fdfeac948353cbd1e8881c9",
+        "publication_authorization": "6a79a9d4828858df62f0239f911f9d6c6d154da87ad035aba481f91f23cae251",
+        "acceptance_review_a": "d31da6ba7bc92b767391b180d85d2ab4e1aa163253b38a3cf18bd96de897fcb3",
+        "acceptance_review_b": "15fb24b5a76ab9dac2cbbcccf29b72cb1a0aabc6cd7cf8d9c4a9e11776ced68d"
+      },
+      "checksum_count": 16,
+      "chapter_count": 1,
+      "all_hash_integrity_checks_pass": true,
+      "failed_checks": [],
+      "isolated_candidate_evaluator": {
+        "catalog_metadata": true,
+        "cover_display": true,
+        "reader_preview": true,
+        "reader_delivery": true,
+        "reading_pass_session": true,
+        "reading_pass_renewal": true,
+        "audio_stream": false,
+        "audio_download": false
+      },
+      "current_delegation_actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+      "acceptance_at": "2026-10-03T04:59:53.954767+00:00",
+      "acceptance_matches_receipt": true,
+      "metadata_semantics": {
+        "cover": {
+          "status": "ACCEPTED_EXACT_COMPONENTS_UNDER_OWNER_DELEGATION",
+          "visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+          "commercial_use_authorized": true,
+          "cover_display_approved": true,
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "d31da6ba7bc92b767391b180d85d2ab4e1aa163253b38a3cf18bd96de897fcb3"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "15fb24b5a76ab9dac2cbbcccf29b72cb1a0aabc6cd7cf8d9c4a9e11776ced68d"
+            }
+          }
+        },
+        "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_COVER_PUBLICATION_ACCEPTANCE"
+      }
+    },
+    {
+      "slug": "sredni-vashtar",
+      "rights_decision_raw_sha256": "854a795cdc24a1a87347cf0dd2c9663b9cbd52361f0d72af774ad48d446d96d5",
+      "rights_decision_canonical_sha256": "6326488f38ca8a6de4993aea3c0e8b23a063a92cc82165af8383f958ebd7fc3c",
+      "components": {
+        "public_book": "57eb3f39025d406684a4075cf0f17765d4d85c937737370bdd8dd41662474dde",
+        "reader_manifest": "2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad",
+        "source_evidence": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
+        "approval_evidence": "9613ee7610d27402c6f4095b143f4ce6e07459243faa98ca82fc9586ee7980fb",
+        "checksum_manifest": "8a8e0d13abdd4a19cb9a9ed94132b7ad633ee86ae55856d4e7241f6e262c3a7e",
+        "publication_manifest": "54b1aa2e9789b15e4a5d703a33fa346dd2814f72c15f3c6360bd9442eb2205af",
+        "cover_provenance": "09e2a3d459645edd4d8deb67c1669a661f64209ec7eae96d2caf3ba2af6d463b",
+        "cover_delivery_derivation": "f3deee99367ed73958ca7dfd1ea7969a230f23e018cd61c03b01672556acc1db",
+        "cover_front_original_asset": "28acd2dadefe6b665f06c992fa86543814245a825a1a8c6e225263fc240829ac",
+        "cover_front_delivery_asset": "d946f65fa5d2c843b7d572a3374435c5fe52a3308cf620395e49fb36e0b6cb55",
+        "cover_back_original_asset": "e74da10d4d84a8752ee9ed630ebc560635a0f0247ea65e7dd36e27eff782b01c",
+        "cover_back_delivery_asset": "c532935242fc0da1ab7a4526752dc1b1392a2f0cf17e3616d25cff644ee82351",
+        "publication_authorization": "1a84d6e201eda4f3c1055f835f541b103ec1264e8bb5236bdbed46b6d2b22705",
+        "acceptance_review_a": "cbb2b42bd8aa85419549eaf838e9884069889482ae7bd8fd5d5280e34ab55f59",
+        "acceptance_review_b": "91c752175d2b576a1b43269645b72511a23eadd5d6200df0c65a1ee1d3794c0a"
+      },
+      "checksum_count": 11,
+      "chapter_count": 1,
+      "all_hash_integrity_checks_pass": true,
+      "failed_checks": [],
+      "isolated_candidate_evaluator": {
+        "catalog_metadata": true,
+        "cover_display": true,
+        "reader_preview": true,
+        "reader_delivery": true,
+        "reading_pass_session": true,
+        "reading_pass_renewal": true,
+        "audio_stream": false,
+        "audio_download": false
+      },
+      "current_delegation_actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+      "acceptance_at": "2026-10-03T04:59:53.954767+00:00",
+      "acceptance_matches_receipt": true,
+      "metadata_semantics": {
+        "cover": {
+          "status": "ACCEPTED_EXACT_COMPONENTS_UNDER_OWNER_DELEGATION",
+          "scope": {
+            "territories": [
+              "IN"
+            ],
+            "uses": [
+              "catalog_metadata",
+              "cover_display",
+              "reader_preview",
+              "reader_delivery",
+              "reading_pass_session",
+              "reading_pass_renewal"
+            ],
+            "publication_approved": true,
+            "production_activation": false,
+            "audio_enabled": false,
+            "audiobook_enabled": false,
+            "audio_urls": [],
+            "listen_exposure": false,
+            "checkout": false,
+            "payments": false
+          },
+          "commercial_use_authorized": true,
+          "cover_display_approved": true,
+          "visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "cbb2b42bd8aa85419549eaf838e9884069889482ae7bd8fd5d5280e34ab55f59"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "91c752175d2b576a1b43269645b72511a23eadd5d6200df0c65a1ee1d3794c0a"
+            }
+          }
+        },
+        "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_COVER_PUBLICATION_ACCEPTANCE"
+      }
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "rights_decision_raw_sha256": "14abf805eb97402dd6a3f7eae96a2587946508ffe083f70a548edc13133efee8",
+      "rights_decision_canonical_sha256": "93b5c918de05ce8397cd1b75a91292c28e9abf3de71f265fd52d1768fc878600",
+      "components": {
+        "public_book": "3ee069c26c1ccf2db501c4d29d812d3b2c68014de6395feb78c519fabc0a5156",
+        "reader_manifest": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22",
+        "source_evidence": "f40f277d758a03b9e05dd6ffa721b058766db6955ba4414d183a7f9bf45fb84f",
+        "approval_evidence": "1a908e769829ac15410d7d564be6665cccf7ea080eeb33a25288a6cc7cca758c",
+        "checksum_manifest": "e14827e3a995f220f3f64ad20d880e901845ffaa3a208753e12a8fe223ded235",
+        "publication_manifest": "6b715f05151d76ab4d1e48bb30e1d08e08d6947ef87486ff583c8ed5cc53d9d4",
+        "cover_preparation": "7892ff61dd3be4adea5e41338e5289d673114e53ca1ba4759ea10db20459523d",
+        "publication_authorization": "380b4383c013f13bc04b2516d773843e90219b9b9e2aafabe3b6d0a9f9a81ae2",
+        "cover_provenance": "e92e306a06fcc0ed682938a5cc50a1168b7671f00f6559a8ab692baa8e067fb4",
+        "acceptance_review_a": "2eaf07760acf658f9c176461fe425ad4fa7c4fb372a26124968cd6cee43ee10a",
+        "acceptance_review_b": "b4c6472a288af36d58459dea6619df7ffcab6fb64a2eadc22c366e9959e52097"
+      },
+      "checksum_count": 17,
+      "chapter_count": 1,
+      "all_hash_integrity_checks_pass": true,
+      "failed_checks": [],
+      "isolated_candidate_evaluator": {
+        "catalog_metadata": true,
+        "cover_display": true,
+        "reader_preview": true,
+        "reader_delivery": true,
+        "reading_pass_session": true,
+        "reading_pass_renewal": true,
+        "audio_stream": false,
+        "audio_download": false
+      },
+      "current_delegation_actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+      "acceptance_at": "2026-10-03T04:59:53.954767+00:00",
+      "acceptance_matches_receipt": true,
+      "metadata_semantics": {
+        "cover": {
+          "status": "ACCEPTED_EXACT_COMPONENTS_UNDER_OWNER_DELEGATION",
+          "commercial_use_authorized": true,
+          "cover_display_approved": true,
+          "visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "2eaf07760acf658f9c176461fe425ad4fa7c4fb372a26124968cd6cee43ee10a"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "b4c6472a288af36d58459dea6619df7ffcab6fb64a2eadc22c366e9959e52097"
+            }
+          }
+        },
+        "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_COVER_PUBLICATION_ACCEPTANCE"
+      }
+    },
+    {
+      "slug": "dsires-baby",
+      "rights_decision_raw_sha256": "0fcf7f86fe5399a613291d859434884c317a3a9a2974100477baf024b21f33d7",
+      "rights_decision_canonical_sha256": "15fbca711880ed1ea3a981263af658b2668bf0409bf192659bf6f6bbd2653afe",
+      "components": {
+        "public_book": "6d42cff7df041f4a8ca73aab975db7bbd4428b7dc548c3bbc384860b273d3606",
+        "reader_manifest": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee",
+        "source_evidence": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb",
+        "approval_evidence": "f44588abe2524c06341d1a85488f30065a661bf16a268a409fa68464be045cab",
+        "checksum_manifest": "99bfdec10d756a479535846834c1bb37ebf7edc3dc297fa01cdd01def4de972f",
+        "publication_manifest": "fb1cb084f5c570dc24743522fd23cbcab7a8afb04d4c7fed177091c43c3a2de8",
+        "cover_provenance": "d062d0f93c0509f535e8b32653a9731af276fb80e63523b915e5d9f977d96243",
+        "cover_delivery_derivation": "feb006057f91cd260d56db1c3c455eca58bce40ae3192cd94a5a798425c9fb6a",
+        "cover_front_asset": "c965ecd734bdb2d7966946f2cb3be4af131832266c31a3900f8e8d9375c667d1",
+        "cover_back_asset": "5a845c98786371fc1e671585701cf513c1142fbb5119337aff3d0a02497cff00",
+        "cover_front_delivery": "6a8cd3859df2febf9a54e4900cb8fd7ab6eb78ca0ab1e4f2c0e5cb7d0b9d8cbe",
+        "cover_back_delivery": "8a8630c4d1c52d9bc451ee90bdfc90ef653be29a9446d983732bde5e1ca00a65",
+        "publication_authorization": "ae81a367e93bba8b660073fbd73899d5c7ca1bf29fd3f07d3ef8df15df017ffe",
+        "acceptance_review_a": "8d4eeb102ce88faf6eb6697393afb1b579ca29bb4e1083419e44b60295a8ef64",
+        "acceptance_review_b": "1c712c31011ca2f17c9790823fd81e26a7c811c852197a34992483622db39bf4"
+      },
+      "checksum_count": 14,
+      "chapter_count": 1,
+      "all_hash_integrity_checks_pass": true,
+      "failed_checks": [],
+      "isolated_candidate_evaluator": {
+        "catalog_metadata": true,
+        "cover_display": true,
+        "reader_preview": true,
+        "reader_delivery": true,
+        "reading_pass_session": true,
+        "reading_pass_renewal": true,
+        "audio_stream": false,
+        "audio_download": false
+      },
+      "current_delegation_actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+      "acceptance_at": "2026-10-03T04:59:53.954767+00:00",
+      "acceptance_matches_receipt": true,
+      "metadata_semantics": {
+        "cover": {
+          "status": "ACCEPTED_EXACT_COMPONENTS_UNDER_OWNER_DELEGATION",
+          "commercial_use_authorized": true,
+          "cover_display_approved": true,
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "8d4eeb102ce88faf6eb6697393afb1b579ca29bb4e1083419e44b60295a8ef64"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "1c712c31011ca2f17c9790823fd81e26a7c811c852197a34992483622db39bf4"
+            }
+          },
+          "visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS"
+        },
+        "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_COVER_PUBLICATION_ACCEPTANCE"
+      }
+    },
+    {
+      "slug": "the-science-of-getting-rich",
+      "rights_decision_raw_sha256": "e08377b4f18f5abe7321a7ff5c386dd4da33c82f06f81240e9ba5ab1e7940253",
+      "rights_decision_canonical_sha256": "f040a5d3e6cda0a43c7aa42d07ac406e14f9088a600f3f84f0d7de1a88dcbde3",
+      "components": {
+        "public_book": "6097c3b1628637132e7bbf1eae1bb83ae0d80d4c77cdad419e781ba7bb7b1892",
+        "reader_manifest": "a42883b4eb214ae086998672472b0f86c9709e550da35c87789f95564cdefdb7",
+        "source_evidence": "6324de50de9db456175bcd2cbecec794641fa8bdd322d2de2b49eaacc713a117",
+        "approval_evidence": "96d8f9f42174b5a8cb8878723b7105564831a6a587911c0b93ca3175460e2185",
+        "checksum_manifest": "1254aa1bd5090946d2357ee0a7cc7fb78a338343a295ed8e95faee1d3fa95140",
+        "publication_manifest": "caa841d3a7a2be0bf320620fa138745f5eac13ed015e92b1d210c4b39803767f",
+        "cover_provenance": "31ef4bdfaa98196db0fcb629ab9b689b6f0570cefb90725fd77184360adf0c97",
+        "cover_delivery_derivation": "3f1272ff582220e60a68f13412fc665a35c6e4885bf29006894bdfffd45f36fc",
+        "cover_front_original_asset": "9fa719df44b5348b2dd694674fb7e4ba38438dd1e652ca70559081d67e88da15",
+        "cover_front_delivery_asset": "5ee48b1d245c70b1b8495f9a6b98636cc798d2bea96ff54aa4c3d6fa27becb28",
+        "cover_back_original_asset": "49cf4eb533e11cc92d253496e2945d700468b2a2e42b7aabf4c7d8dd3b590f09",
+        "cover_back_delivery_asset": "bda88117bdb0d7208f51afa3cab6dce74875f83943ebf7c2a74409a6a29477c4",
+        "publication_authorization": "e769162a30fe0ad7a670567b5a7c5716c1ed170811915555729287043e6846c6",
+        "acceptance_review_a": "e17b3d56b4e6f0f6177965822910d19550debe93090c198d5a21e3fac5419400",
+        "acceptance_review_b": "4817d7c5123f319dfb08bc552fd4548d24896bb23964f11bd12d719c941eb98a"
+      },
+      "checksum_count": 28,
+      "chapter_count": 18,
+      "all_hash_integrity_checks_pass": true,
+      "failed_checks": [],
+      "isolated_candidate_evaluator": {
+        "catalog_metadata": true,
+        "cover_display": true,
+        "reader_preview": true,
+        "reader_delivery": true,
+        "reading_pass_session": true,
+        "reading_pass_renewal": true,
+        "audio_stream": false,
+        "audio_download": false
+      },
+      "current_delegation_actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+      "acceptance_at": "2026-10-03T04:59:53.954767+00:00",
+      "acceptance_matches_receipt": true,
+      "metadata_semantics": {
+        "cover": {
+          "status": "ACCEPTED_EXACT_COMPONENTS_UNDER_OWNER_DELEGATION",
+          "scope": {
+            "territories": [
+              "IN"
+            ],
+            "uses": [
+              "catalog_metadata",
+              "cover_display",
+              "reader_preview",
+              "reader_delivery",
+              "reading_pass_session",
+              "reading_pass_renewal"
+            ],
+            "publication_approved": true,
+            "production_activation": false,
+            "audio_enabled": false,
+            "audiobook_enabled": false,
+            "audio_urls": [],
+            "listen_exposure": false,
+            "checkout": false,
+            "payments": false
+          },
+          "commercial_use_authorized": true,
+          "cover_display_approved": true,
+          "visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "e17b3d56b4e6f0f6177965822910d19550debe93090c198d5a21e3fac5419400"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "4817d7c5123f319dfb08bc552fd4548d24896bb23964f11bd12d719c941eb98a"
+            }
+          }
+        },
+        "approval_scope": "ACTUAL_OWNER_DELEGATED_EXACT_INDIA_TEXT_READER_AND_COVER_PUBLICATION_ACCEPTANCE"
+      }
+    }
+  ],
+  "disposition": "PASS_ACCEPTED_BINDING_STAGE_NOT_RELEASED",
+  "prior_v4_review_sha256": "b012262aaaaa6acf4721334409c4176bc7ca54b54afb4bfdc6c35370539efbbc",
+  "v4_to_v5_changed_files": [
+    "acceptance-receipt.json",
+    "data/controlled_publications/dsires-baby/publication_manifest.json",
+    "data/controlled_publications/dsires-baby/approval_evidence.json",
+    "data/controlled_publications/dsires-baby/public_book.json",
+    "data/controlled_publications/dsires-baby/rights_decision.json",
+    "data/controlled_publications/dsires-baby/checksum_manifest.json",
+    "data/controlled_publications/sredni-vashtar/publication_manifest.json",
+    "data/controlled_publications/sredni-vashtar/approval_evidence.json",
+    "data/controlled_publications/sredni-vashtar/public_book.json",
+    "data/controlled_publications/sredni-vashtar/rights_decision.json",
+    "data/controlled_publications/sredni-vashtar/checksum_manifest.json",
+    "data/controlled_publications/the-cop-and-the-anthem/publication_manifest.json",
+    "data/controlled_publications/the-cop-and-the-anthem/approval_evidence.json",
+    "data/controlled_publications/the-cop-and-the-anthem/public_book.json",
+    "data/controlled_publications/the-cop-and-the-anthem/rights_decision.json",
+    "data/controlled_publications/the-cop-and-the-anthem/checksum_manifest.json",
+    "data/controlled_publications/the-selfish-giant/publication_manifest.json",
+    "data/controlled_publications/the-selfish-giant/approval_evidence.json",
+    "data/controlled_publications/the-selfish-giant/public_book.json",
+    "data/controlled_publications/the-selfish-giant/rights_decision.json",
+    "data/controlled_publications/the-selfish-giant/checksum_manifest.json",
+    "data/controlled_publications/the-open-window/publication_manifest.json",
+    "data/controlled_publications/the-open-window/approval_evidence.json",
+    "data/controlled_publications/the-open-window/public_book.json",
+    "data/controlled_publications/the-open-window/rights_decision.json",
+    "data/controlled_publications/the-open-window/checksum_manifest.json",
+    "data/controlled_publications/the-science-of-getting-rich/publication_manifest.json",
+    "data/controlled_publications/the-science-of-getting-rich/approval_evidence.json",
+    "data/controlled_publications/the-science-of-getting-rich/public_book.json",
+    "data/controlled_publications/the-science-of-getting-rich/rights_decision.json",
+    "data/controlled_publications/the-science-of-getting-rich/checksum_manifest.json",
+    "backend/data/controlled_publications/dsires-baby/publication_manifest.json",
+    "backend/data/controlled_publications/dsires-baby/approval_evidence.json",
+    "backend/data/controlled_publications/dsires-baby/public_book.json",
+    "backend/data/controlled_publications/dsires-baby/rights_decision.json",
+    "backend/data/controlled_publications/dsires-baby/checksum_manifest.json",
+    "backend/data/controlled_publications/sredni-vashtar/publication_manifest.json",
+    "backend/data/controlled_publications/sredni-vashtar/approval_evidence.json",
+    "backend/data/controlled_publications/sredni-vashtar/public_book.json",
+    "backend/data/controlled_publications/sredni-vashtar/rights_decision.json",
+    "backend/data/controlled_publications/sredni-vashtar/checksum_manifest.json",
+    "backend/data/controlled_publications/the-cop-and-the-anthem/publication_manifest.json",
+    "backend/data/controlled_publications/the-cop-and-the-anthem/approval_evidence.json",
+    "backend/data/controlled_publications/the-cop-and-the-anthem/public_book.json",
+    "backend/data/controlled_publications/the-cop-and-the-anthem/rights_decision.json",
+    "backend/data/controlled_publications/the-cop-and-the-anthem/checksum_manifest.json",
+    "backend/data/controlled_publications/the-selfish-giant/publication_manifest.json",
+    "backend/data/controlled_publications/the-selfish-giant/approval_evidence.json",
+    "backend/data/controlled_publications/the-selfish-giant/public_book.json",
+    "backend/data/controlled_publications/the-selfish-giant/rights_decision.json",
+    "backend/data/controlled_publications/the-selfish-giant/checksum_manifest.json",
+    "backend/data/controlled_publications/the-open-window/publication_manifest.json",
+    "backend/data/controlled_publications/the-open-window/approval_evidence.json",
+    "backend/data/controlled_publications/the-open-window/public_book.json",
+    "backend/data/controlled_publications/the-open-window/rights_decision.json",
+    "backend/data/controlled_publications/the-open-window/checksum_manifest.json",
+    "backend/data/controlled_publications/the-science-of-getting-rich/publication_manifest.json",
+    "backend/data/controlled_publications/the-science-of-getting-rich/approval_evidence.json",
+    "backend/data/controlled_publications/the-science-of-getting-rich/public_book.json",
+    "backend/data/controlled_publications/the-science-of-getting-rich/rights_decision.json",
+    "backend/data/controlled_publications/the-science-of-getting-rich/checksum_manifest.json"
+  ],
+  "delta": "Metadata-only new actual accepted IN basis correct; bound records/checksums/auth/publication/mirrors coherent; source/art/prep-review evidence unchanged. External fresh accepted-binding review is a required release gate, not claimed complete prematurely.",
+  "reviewed_at": "2026-10-03T05:20:48.865195+00:00"
+}

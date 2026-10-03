@@ -1,0 +1,23 @@
+{
+  "slug": "the-wonderful-wizard-of-oz",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "source_hash": "969bffab7740d4d8a0bac332d78bd0152ad4a40a2efc52f06c74a9bb6120be75",
+  "content_hash": "4b174cd456358387fe1bbd65667a783ae52d7b4f0475f1c570a80132c847b18e",
+  "provenance_hash": "6efb24dec4a20c5a0bd3aa7b7411cb80ed158b480c20e460f859928630548a2d",
+  "verified_at": "2026-10-01T21:38:19.977641+00:00",
+  "approved_to_publish": false,
+  "approval_scope": "UNACCEPTED_OWNER_DELEGATED_PROSPECTIVE_EXACT_COMPONENT_REVIEW_CANDIDATE",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "audiobook_use_approved": false,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "publication_authorization_sha256": "e44c8492be29bec52b92b36c2634fed5a6bd74feefeb04c1908ad25c74f1cf4f",
+  "cover_provenance_sha256": "6270d6ca21fb06c3b9b18438674ade59ffc750ad73bf4f4c71324bf02521e2e4",
+  "production_observed": false,
+  "runtime_observed": false,
+  "historical_metadata_preserved_only_in_preimages": true
+}

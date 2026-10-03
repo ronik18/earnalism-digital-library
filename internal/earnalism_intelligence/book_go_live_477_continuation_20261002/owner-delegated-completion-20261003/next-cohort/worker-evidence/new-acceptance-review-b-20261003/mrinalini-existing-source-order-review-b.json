@@ -1,0 +1,254 @@
+{
+  "reviewer": "Independent Codex reviewer B",
+  "reviewed_at": "2026-10-03T05:37:10.055490+00:00",
+  "slug": "mrinalini",
+  "disposition": "PASS_EXISTING_SOURCE_PAGE_ORDER_NO_REMEDIATION_REQUIRED",
+  "exact_proposal_path": "/workspace/scratch/181ef0a25f05/next-owner-accepted-nine-20261003-v1/data/controlled_publications/mrinalini",
+  "primary_pinned_transclusion_proof": {
+    "path": "/tmp/earnalism-main-approved-integration/internal/legal/catalogue_clearance_20261002/bengali/mrinalini-multichapter-source-comparison.json",
+    "sha256": "d0977454db66b5a3bceeb2a0bdd9bfa8d2c1ccff014811153141ab124d12e70f"
+  },
+  "reader_manifest_sha256": "b2510b44fa9ec57a7a7cc48be2482787ee4fe6cba0021ddd8a6cff71ef5275f7",
+  "metadata_hashes": {
+    "public_book.json": "9a3c3255f99d7806a61dd0f47c59a328976b7cfffcd02b4651d8f416f2868457",
+    "publication_manifest.json": "5568884ee2c3fbf9581cbd4d3672e65fdebbad0b6ded279d4fda584ff73c1e68"
+  },
+  "ordered_ids_and_source_pages": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "first_scan_page": 4
+    },
+    {
+      "id": "chapter-002",
+      "order": 2,
+      "first_scan_page": 11
+    },
+    {
+      "id": "chapter-003",
+      "order": 3,
+      "first_scan_page": 16
+    },
+    {
+      "id": "chapter-004",
+      "order": 4,
+      "first_scan_page": 24
+    },
+    {
+      "id": "chapter-005",
+      "order": 5,
+      "first_scan_page": 31
+    },
+    {
+      "id": "chapter-006",
+      "order": 6,
+      "first_scan_page": 37
+    },
+    {
+      "id": "chapter-007",
+      "order": 7,
+      "first_scan_page": 46
+    },
+    {
+      "id": "chapter-008",
+      "order": 8,
+      "first_scan_page": 51
+    },
+    {
+      "id": "chapter-009",
+      "order": 9,
+      "first_scan_page": 55
+    },
+    {
+      "id": "chapter-010",
+      "order": 10,
+      "first_scan_page": 60
+    },
+    {
+      "id": "chapter-011",
+      "order": 11,
+      "first_scan_page": 64
+    },
+    {
+      "id": "chapter-012",
+      "order": 12,
+      "first_scan_page": 68
+    },
+    {
+      "id": "chapter-013",
+      "order": 13,
+      "first_scan_page": 71
+    },
+    {
+      "id": "chapter-014",
+      "order": 14,
+      "first_scan_page": 76
+    },
+    {
+      "id": "chapter-015",
+      "order": 15,
+      "first_scan_page": 83
+    },
+    {
+      "id": "chapter-016",
+      "order": 16,
+      "first_scan_page": 87
+    },
+    {
+      "id": "chapter-017",
+      "order": 17,
+      "first_scan_page": 89
+    },
+    {
+      "id": "chapter-018",
+      "order": 18,
+      "first_scan_page": 93
+    },
+    {
+      "id": "chapter-019",
+      "order": 19,
+      "first_scan_page": 95
+    },
+    {
+      "id": "chapter-020",
+      "order": 20,
+      "first_scan_page": 97
+    },
+    {
+      "id": "chapter-021",
+      "order": 21,
+      "first_scan_page": 101
+    },
+    {
+      "id": "chapter-022",
+      "order": 22,
+      "first_scan_page": 105
+    },
+    {
+      "id": "chapter-023",
+      "order": 23,
+      "first_scan_page": 107
+    },
+    {
+      "id": "chapter-024",
+      "order": 24,
+      "first_scan_page": 111
+    },
+    {
+      "id": "chapter-025",
+      "order": 25,
+      "first_scan_page": 114
+    },
+    {
+      "id": "chapter-026",
+      "order": 26,
+      "first_scan_page": 118
+    },
+    {
+      "id": "chapter-027",
+      "order": 27,
+      "first_scan_page": 124
+    },
+    {
+      "id": "chapter-028",
+      "order": 28,
+      "first_scan_page": 127
+    },
+    {
+      "id": "chapter-029",
+      "order": 29,
+      "first_scan_page": 133
+    },
+    {
+      "id": "chapter-030",
+      "order": 30,
+      "first_scan_page": 139
+    },
+    {
+      "id": "chapter-031",
+      "order": 31,
+      "first_scan_page": 144
+    },
+    {
+      "id": "chapter-032",
+      "order": 32,
+      "first_scan_page": 146
+    },
+    {
+      "id": "chapter-033",
+      "order": 33,
+      "first_scan_page": 149
+    },
+    {
+      "id": "chapter-034",
+      "order": 34,
+      "first_scan_page": 154
+    },
+    {
+      "id": "chapter-035",
+      "order": 35,
+      "first_scan_page": 158
+    },
+    {
+      "id": "chapter-036",
+      "order": 36,
+      "first_scan_page": 161
+    },
+    {
+      "id": "chapter-037",
+      "order": 37,
+      "first_scan_page": 163
+    },
+    {
+      "id": "chapter-038",
+      "order": 38,
+      "first_scan_page": 169
+    },
+    {
+      "id": "chapter-039",
+      "order": 39,
+      "first_scan_page": 172
+    },
+    {
+      "id": "chapter-040",
+      "order": 40,
+      "first_scan_page": 174
+    },
+    {
+      "id": "chapter-041",
+      "order": 41,
+      "first_scan_page": 177
+    },
+    {
+      "id": "chapter-042",
+      "order": 42,
+      "first_scan_page": 182
+    },
+    {
+      "id": "chapter-043",
+      "order": 43,
+      "first_scan_page": 185
+    },
+    {
+      "id": "chapter-044",
+      "order": 44,
+      "first_scan_page": 187
+    },
+    {
+      "id": "chapter-045",
+      "order": 45,
+      "first_scan_page": 191
+    },
+    {
+      "id": "chapter-046",
+      "order": 46,
+      "first_scan_page": 196
+    }
+  ],
+  "source_scan_pages_ascending": true,
+  "Reader_public_manifest_sequences_identical": true,
+  "body_art_or_source_review_repeated": false,
+  "source_downloads_or_renders": 0,
+  "canonical_mutations": false,
+  "production_observed": false
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "earnalism.bounded-current-cover-get.v1",
+  "slug": "sredni-vashtar",
+  "source_head": "e491708bbdb1f5783c087e306ed4a8c4f691c0ed",
+  "receipts": [
+    {
+      "side": "front",
+      "requested_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
+      "method": "GET",
+      "request_count": 1,
+      "redirects_allowed": false,
+      "retrieved_at": "2026-10-02T10:49:42.257264+00:00",
+      "http_status": 200,
+      "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
+      "content_type": "image/png",
+      "byte_count": 185325,
+      "response_sha256": "28acd2dadefe6b665f06c992fa86543814245a825a1a8c6e225263fc240829ac",
+      "dimensions": [
+        1600,
+        2400
+      ],
+      "format": "PNG",
+      "artifact_path": "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-2/front-cover-current.png",
+      "image_header_valid": true
+    },
+    {
+      "side": "back",
+      "requested_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275477/earnalism/covers/back/sredni-vashtar_back_1600x2400.png",
+      "method": "GET",
+      "request_count": 1,
+      "redirects_allowed": false,
+      "retrieved_at": "2026-10-02T10:49:53.523637+00:00",
+      "http_status": 200,
+      "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275477/earnalism/covers/back/sredni-vashtar_back_1600x2400.png",
+      "content_type": "image/png",
+      "byte_count": 378809,
+      "response_sha256": "e74da10d4d84a8752ee9ed630ebc560635a0f0247ea65e7dd36e27eff782b01c",
+      "dimensions": [
+        1600,
+        2400
+      ],
+      "format": "PNG",
+      "artifact_path": "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-2/back-cover-current.png",
+      "image_header_valid": true
+    }
+  ]
+}

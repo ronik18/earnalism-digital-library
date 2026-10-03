@@ -1,0 +1,82 @@
+{
+  "slug": "book-5704b31005",
+  "generated_at": "2026-10-03T05:45:35.963016+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "5d466fb5df86d019b2b13087e1fc93fbd28440bd175e825578b571ed1e347c28"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "e0325632daa997c635a64d46073efbf6d8fda511635e9b4ababfa3bab79dfd5c"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "0097846c9e39ae9eb4c4185a03d1da48c398773868e06537ed6f5aa03c7fa319"
+    },
+    {
+      "file": "covers/back-delivery.webp",
+      "sha256": "4e0a187bd92e75d5b4fb97a670516bacc6183862672090f03ed5dce9547c5709"
+    },
+    {
+      "file": "covers/back-prepared.png",
+      "sha256": "f470d039657c0f6068ce708f2e1380ccdba297132434ac0c5c1434c488456e7e"
+    },
+    {
+      "file": "covers/back.png",
+      "sha256": "a99c6c0e27712090637651204cfb0aa5809442ddbc3b5e99da35828a34c82a08"
+    },
+    {
+      "file": "covers/front-delivery.webp",
+      "sha256": "8f64cc7c2a33820dfbfe55a635f70a8a0fd19959c71e3290bdeeadd45c2531a5"
+    },
+    {
+      "file": "covers/front-prepared.png",
+      "sha256": "c58421cc10daab55ce40478452acbd0c8c0977761753a6d01c63db2b67b56b21"
+    },
+    {
+      "file": "covers/front.png",
+      "sha256": "a914d173de6f5cd9486fd91a7b69188d156ac7623ebc9f8f89173acd1c48d104"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "e58d907c1d0fa2ae194a04c11b6d9eef3f35f188f6d22fd7eb4cc1fac84465bd"
+    },
+    {
+      "file": "license_notice.json",
+      "sha256": "1fc9cf8fae864434f95bc34656a96672c55d852f3dfdad4a1f386a1a1cc4e01c"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "353e54ea0d024222b94971c82bb195d244737aa84a1372797da197fb35f4ddf2"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "baf85fb9c258e5f2a925d4358a91e34c0c6bd04ebc3db4e9f4586f9e18783aa2"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "6c7daced7a35b9f20ba2f8828e5636d7c644e6ceb272f1707871adafb5a2b759"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "f7d3ac1cbe169532038b008d48c0313290cedca638d23c7696d75d3a0c072f3b"
+    },
+    {
+      "file": "source_integrity_validation.json",
+      "sha256": "89eac8e38ab78c63ae74dc799b89c6fe6fef9aa5755e55c645c94a1dd7ea11f6"
+    },
+    {
+      "file": "owner_artwork_declaration.json",
+      "sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264"
+    },
+    {
+      "file": "evidence/review_a.json",
+      "sha256": "bf3615602cb27a7ff7a97da6849951abeb3469015c2e1da0bb0f8a8a715c8efd"
+    },
+    {
+      "file": "evidence/review_b.json",
+      "sha256": "c7d0ea841e42cfa6cde1888ee06c0c87fb550beeee74efb78ccff67ea8675686"
+    }
+  ]
+}

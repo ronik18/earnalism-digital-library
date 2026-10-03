@@ -7,19 +7,18 @@
   "category_slug": "young-readers",
   "short_description": "A giant forbids children from his garden and is punished with eternal winter — until one small boy changes everything.",
   "description": "The Giant drives children from his garden — and spring refuses to come. One morning a small boy appears who can reach the lowest branch only because the Giant lifts him. When the Giant dies in old age, the boy's wounds reveal who he truly was.",
-  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267898/earnalism/covers/front/the-selfish-giant_front_1600x2400.png",
-  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267898/earnalism/covers/front/the-selfish-giant_front_1600x2400.png",
-  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267898/earnalism/covers/front/the-selfish-giant_front_1600x2400.png",
-  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267898/earnalism/covers/front/the-selfish-giant_front_1600x2400.png",
-  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267899/earnalism/covers/back/the-selfish-giant_back_1600x2400.png",
-  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267899/earnalism/covers/back/the-selfish-giant_back_1600x2400.png",
-  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267899/earnalism/covers/back/the-selfish-giant_back_1600x2400.png",
-  "cover_status": "CLOUDINARY_ASSIGNED",
+  "cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
+  "coverImage": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
+  "cover_image": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-14b00709.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-14b00709.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-14b00709.webp",
+  "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "7 min",
   "formats": [
-    "Ebook",
-    "Audiobook"
+    "Ebook"
   ],
   "benefits": [
     "Read a legally cleared digital text.",
@@ -45,7 +44,7 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 1678,
+      "word_count": 1652,
       "reading_minutes": 7,
       "language_hint": "en",
       "processing_status": "ready",
@@ -54,11 +53,10 @@
       "updated_at": "2026-07-03T20:07:49Z"
     }
   ],
-  "source_hash": "041b7a7d28b42f553ae23277588cee366952c83c2b9108c401a3fa4dd90e76b9",
-  "content_hash": "58578923656c4e97b29509721be5a4e4a26e7d9240e464eebb8a0841576fe9f8",
-  "audiobook_manuscript_sha256": "0ec24ecbd6d5d594e74131b529b4e3d3ece31ae9f4130210f3c120c9db1ea62d",
-  "provenance_hash": "d426354bb000f4b72606e782483eb2882f5510e7e12087388d667120d1ba8053",
-  "rights_basis": "Oscar Wilde died 1900; first published 1888. Public domain in India and the U.S.",
+  "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+  "content_hash": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+  "provenance_hash": "1e08883215a0343a9dd6f8c53242fd4af41d62450aa24e424712188e8d79af16",
+  "rights_basis": "Existing exact accepted India text source/edition clearance is preserved in the archived predecessor and unchanged source/chapter records. Actual prospective acceptance additionally covers these exact owner-designed preserved-artwork derivatives, proven licensed deterministic typography and reviewed deliveries after two independent passing source/provenance/pixel/package reviews under the owner delegation. The predecessor non-cover deferral is prospectively superseded for these exact components only. Audio remains excluded; no rights, human signature, other edition or production observation inferred. Final release remains behind serialized protected normal gates.",
   "rights_metadata": {
     "work_title": "The Selfish Giant",
     "work_slug": "the-selfish-giant",
@@ -78,9 +76,9 @@
     "rights_tier": "A",
     "verification_status": "approved",
     "blocked_reason": "",
-    "publication_region": "in",
+    "publication_region": "IN",
     "verified_at": "2026-07-03T20:07:49Z",
-    "rights_basis": "Oscar Wilde died 1900; first published 1888. Public domain in India and the U.S."
+    "rights_basis": "Lifetime-published single-author English literary narrative; verified author death 1900, original publication 1888; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record."
   },
   "rights_tier": "A",
   "verification_status": "approved",
@@ -88,7 +86,7 @@
   "approved_to_publish": true,
   "publication_status": "LIVE_APPROVED",
   "readerStatus": "reader_ready",
-  "publicationStatus": "live",
+  "publicationStatus": "published",
   "isPublic": true,
   "isLive": true,
   "showInPublicLibrary": true,
@@ -97,30 +95,28 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
-  "audiobook_provider": "kokoro",
-  "audiobook_voice": "bm_george",
-  "audio_asset_slug": "the-selfish-giant",
   "created_at": "2026-07-03T20:07:49Z",
   "updated_at": "2026-08-16T06:45:34Z",
   "cover_dimensions": {
     "front": [
-      1600,
-      2400
+      800,
+      1200
     ],
     "back": [
-      1600,
-      2400
+      800,
+      1200
     ]
   },
   "cover_semantic_match_score": 9.8,
-  "audiobook_assets_updated_at": "2026-08-16T06:45:34Z",
-  "audio_status": "AVAILABLE",
-  "audiobook_release_gate": "APPROVED",
-  "audio_qa_status": "QA_PASSED",
-  "audiobook_release_mode": "SERVER_OWNED_CONVEYOR",
-  "audio_sha256": "824944d0c068b4f4f45cb750e018918b2af55c5e043cd29417ce2a756e9a4c67",
-  "candidate_fingerprint": "92a24c3442fe5ad637e72be523f52baded74d0390a256e3b5d5865bdb3f3d96e"
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_assets": {},
+  "audiobook": {},
+  "publication_authorization_sha256": "6a79a9d4828858df62f0239f911f9d6c6d154da87ad035aba481f91f23cae251",
+  "cover_provenance_sha256": "9da21ded8f41af473c472fc7800a081b7fbb5cf88fdfeac948353cbd1e8881c9",
+  "reader_enabled": true,
+  "preview_enabled": true,
+  "release_gate_status": "READY_BEHIND_SERIALIZED_GLOBAL_RELEASE_GATE",
+  "production_observed": false
 }

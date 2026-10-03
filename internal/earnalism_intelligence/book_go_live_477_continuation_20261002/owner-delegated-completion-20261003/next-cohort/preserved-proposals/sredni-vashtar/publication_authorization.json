@@ -1,0 +1,28 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "sredni-vashtar",
+  "edition": "Project Gutenberg #3688; Sredni Vashtar selected complete Saki story/cycle from chronicles of Clovis; verified lifetime collection edition 1912; no translation/editorial/art imported",
+  "territories": [
+    "IN"
+  ],
+  "scope": "PROPOSED_EXACT_IN_TEXT_READER_COVER_DISPLAY_PENDING_REVIEW",
+  "source_sha256": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
+  "content_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+  "chapter_sha256": {
+    "chapter-001": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06"
+  },
+  "cover_provenance_sha256": "f788789885abe29c15338d7fa74f5024c7f62f8def0c7c8aa786b49e9730385b",
+  "cover_status": "UNACCEPTED_PENDING_TWO_INDEPENDENT_NEW_REVIEWS",
+  "authorized_by": "Automated executor under owner explicit autonomous clearance delegation; not a fabricated human or legal signature.",
+  "verified_at": "2026-10-01T21:48:17.188009+00:00",
+  "publication_authorized": false,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Unaccepted isolated candidate only. Two independent cover/delivery/package reviews, truthful new owner-delegated component acceptance and serialized normal protected release gates remain required.",
+  "not_authorized": [
+    "audio_stream",
+    "audio_download",
+    "production activation",
+    "other editions"
+  ]
+}

@@ -80,17 +80,38 @@ class StaticSeoCanaryTests(unittest.TestCase):
         self.assertEqual(self.inspect("/book/yugalanguriya", "", status=404)["result"], "PASS")
         self.assertEqual(self.inspect("/reader/yugalanguriya", "", status=200)["result"], "FAIL")
 
-    def unavailable_html(self, *, body="", links="", slug="the-selfish-giant", title="The Selfish Giant"):
+    def inspect_unavailable_fixture(self, route, html, status=200):
+        policy = {"kind": "historical_unavailable", "canonical": "/book/bn-060", "robots": "noindex,nofollow", "title": "ইন্দিরা"}
+        return MODULE.inspect_route(route, policy, status, {}, html, "https://theearnalism.com" + route)
+
+    def unavailable_html(self, *, body="", links="", slug="bn-060", title="ইন্দিরা"):
         return page(title=f"{title} unavailable | The Earnalism", description=f"{title} is not currently available as a public Earnalism release.", h1=f"{title} is not currently available.", canonical=f"https://theearnalism.com/book/{slug}", robots="noindex,nofollow", body="This title is not part of the current public release. No book text, reader session, or audio is available from this page. " + body, links=links)
 
     def test_approved_historical_recovery_page_passes_without_releasing_a_title(self):
-        html = self.unavailable_html(links="<a href='/library'>Browse Library</a><a href='/contact?interest=the-selfish-giant'>Ask about title</a>")
+        html = self.unavailable_html(links="<a href='/library'>Browse Library</a><a href='/contact?interest=bn-060'>Ask about title</a>")
         for kind in ("book", "reader", "listener"):
-            self.assertEqual(self.inspect(f"/{kind}/the-selfish-giant", html)["result"], "PASS")
+            self.assertEqual(self.inspect_unavailable_fixture(f"/{kind}/bn-060", html)["result"], "PASS")
         audio = page(title="Listen to Dracula | The Earnalism", description="Listening is not available for Dracula in the current release.", h1="Dracula", canonical="https://theearnalism.com/book/dracula", robots="noindex,follow", body="Listening is not available for Dracula in the current release. " + ACCESS, links="<a href='/book/dracula'>Book details</a>")
         self.assertEqual(self.inspect("/listener/dracula", audio)["result"], "PASS")
         for extra in ("<audio src='/sample.mp3'></audio>", "<button>Play</button>", '<script type="application/ld+json">{"@type":"Audiobook"}</script>'):
             self.assertEqual(self.inspect("/listener/dracula", audio.replace("</main>", extra + "</main>"))["result"], "FAIL")
+
+    def test_selfish_giant_released_routes_reject_stale_hold_or_audio(self):
+        slug, title = "the-selfish-giant", "The Selfish Giant"
+        book = page(title=title + " | The Earnalism", description=title + " reader edition. " + ACCESS, h1=title, canonical=f"https://theearnalism.com/book/{slug}", body=ACCESS, links=f"<a href='/reader/{slug}'>Read the 3-page preview</a>" + '<script type="application/ld+json">{"@type":"Book","isAccessibleForFree":false}</script>')
+        reader = page(title="Read " + title + " | The Earnalism Reader", description=ACCESS, h1="Read " + title, canonical=f"https://theearnalism.com/book/{slug}", robots="noindex,follow", body=ACCESS)
+        audio_copy = "Listening is not available for The Selfish Giant in the current release."
+        listener = page(title="Listen to " + title + " | The Earnalism", description=audio_copy, h1=title, canonical=f"https://theearnalism.com/book/{slug}", robots="noindex,follow", body=audio_copy + " " + ACCESS)
+        for kind, html in [("book", book), ("reader", reader), ("listener", listener)]:
+            route = f"/{kind}/{slug}"
+            self.assertEqual(self.inspect(route, html)["result"], "PASS")
+            self.assertEqual(self.inspect(route, self.unavailable_html(slug=slug, title=title))["result"], "FAIL")
+            self.assertEqual(self.inspect(route, html.replace("</main>", "<audio src='/sample.mp3'></audio></main>"))["result"], "FAIL")
+        route = f"/api/reader/book/{slug}/manifest"
+        payload = {"slug": slug, "audio_enabled": False, "audiobook_enabled": False, "access": {"authenticated": False, "can_read_paid": False}}
+        self.assertEqual(MODULE.inspect_protected_api(route, MODULE.PROTECTED_API_CHECKS[route], 200, payload, "https://theearnalism.com" + route)["result"], "PASS")
+        for changed in [{**payload, "slug": "another-title"}, {**payload, "audio_enabled": True}, {**payload, "access": {"authenticated": False, "can_read_paid": True}}]:
+            self.assertEqual(MODULE.inspect_protected_api(route, MODULE.PROTECTED_API_CHECKS[route], 200, changed, "https://theearnalism.com" + route)["result"], "FAIL")
 
     def test_dracula_released_reader_and_book_keep_audio_disabled(self):
         book = page(title="Dracula | The Earnalism", description="Dracula reader edition. " + ACCESS, h1="Dracula", canonical="https://theearnalism.com/book/dracula", body=ACCESS, links="<a href='/reader/dracula'>Read the 3-page preview</a>" + '<script type="application/ld+json">{"@type":"Book","isAccessibleForFree":false}</script>')
@@ -144,28 +165,23 @@ class StaticSeoCanaryTests(unittest.TestCase):
             self.assertEqual(result["result"], "PASS")
 
     def test_overall_canary_fails_if_one_scoped_api_contract_fails(self):
-        with patch.object(MODULE, "fetch_raw_html", return_value=(200, {}, "", "https://theearnalism.com/")), patch.object(
-            MODULE, "inspect_route", return_value={"result": "PASS"}
-        ), patch.object(MODULE, "fetch_protected_api", side_effect=[
-            (200, {"slug": "dracula", "access": {"authenticated": False, "can_read_paid": False}}, "https://theearnalism.com/api/reader/book/dracula/manifest"),
-            (200, {"slug": "book-edfcf810c5", "access": {"authenticated": False, "can_read_paid": False}}, "https://theearnalism.com/api/reader/book/book-edfcf810c5/manifest"),
-            (200, {"slug": "muchiram-gurer-jibanchorit", "access": {"authenticated": False, "can_read_paid": False}}, "https://theearnalism.com/api/reader/book/muchiram-gurer-jibanchorit/manifest"),
-            (200, {"slug": "bn-059", "access": {"authenticated": False, "can_read_paid": False}}, "https://theearnalism.com/api/reader/book/bn-059/manifest"),
-            (200, {"slug": "the-call-of-the-wild", "access": {"authenticated": False, "can_read_paid": False}}, "https://theearnalism.com/api/reader/book/the-call-of-the-wild/manifest"),
-            (503, {"detail": {"code": "SEGMENTS_NOT_READY"}}, "https://theearnalism.com/api/reading-pass/books/the-adventures-of-sherlock-holmes/manifest"),
-            (200, {"detail": {"code": "SEGMENTS_NOT_READY"}}, "https://theearnalism.com/api/reading-pass/books/the-canterville-ghost/manifest"),
-            (200, {"book_slug": "dracula", "version": "retained-version", "segmentation_version": "retained-segmentation", "total_pages": 276, "public_preview_pages": 3, "chapters": [{"chapter_id": f"chapter-{index:03d}"} for index in range(28)]}, "https://theearnalism.com/api/reading-pass/books/dracula/manifest"),
-            (200, {"book_slug": "book-edfcf810c5", "version": "retained-version", "segmentation_version": "retained-segmentation", "total_pages": 9, "public_preview_pages": 3, "chapters": [{"chapter_id": "chapter-001"}]}, "https://theearnalism.com/api/reading-pass/books/book-edfcf810c5/manifest"),
-            (200, {"book_slug": "muchiram-gurer-jibanchorit", "version": "retained-version", "segmentation_version": "retained-segmentation", "total_pages": 14, "public_preview_pages": 3, "chapters": [{"chapter_id": f"chapter-{index:03d}"} for index in range(1, 15)]}, "https://theearnalism.com/api/reading-pass/books/muchiram-gurer-jibanchorit/manifest"),
-            (200, {"book_slug": "bn-059", "version": "retained-version", "segmentation_version": "retained-segmentation", "total_pages": 13, "public_preview_pages": 3, "chapters": [{"chapter_id": chapter_id} for chapter_id in MODULE.PROTECTED_API_CHECKS["/api/reading-pass/books/bn-059/manifest"]["expected_chapter_ids"]]}, "https://theearnalism.com/api/reading-pass/books/bn-059/manifest"),
-            (200, {"book_slug": "the-call-of-the-wild", "version": "retained-version", "segmentation_version": "retained-segmentation", "total_pages": 7, "public_preview_pages": 3, "chapters": [{"chapter_id": f"chapter-{index:03d}"} for index in range(1, 8)]}, "https://theearnalism.com/api/reading-pass/books/the-call-of-the-wild/manifest"),
-        ]):
+        failed_route = "/api/reading-pass/books/the-canterville-ghost/manifest"
+        def fixture_api(_base, route, _timeout):
+            policy = MODULE.PROTECTED_API_CHECKS[route]
+            status = policy["expected_status"]
+            payload = {"detail": {"code": policy["expected_code"]}}
+            if policy.get("kind") == "canonical_manifest":
+                payload = {"book_slug": policy["expected_slug"], "version": "explicit-test-fixture-version", "segmentation_version": "explicit-test-fixture-segmentation", "total_pages": max(9, policy["expected_chapters"]), "public_preview_pages": 3, "chapters": [{"chapter_id": chapter_id} for chapter_id in policy["expected_chapter_ids"]]}
+            elif status == 200:
+                payload = {"slug": policy["expected_slug"], "audio_enabled": False, "audiobook_enabled": False, "access": {"authenticated": False, "can_read_paid": False}}
+            if route == failed_route:
+                status = 200
+            return status, payload, "https://theearnalism.com" + route
+        with patch.object(MODULE, "fetch_raw_html", return_value=(200, {}, "", "https://theearnalism.com/")), patch.object(MODULE, "inspect_route", return_value={"result": "PASS"}), patch.object(MODULE, "fetch_protected_api", side_effect=fixture_api):
             report = MODULE.run("https://theearnalism.com", 1)
         self.assertEqual(report["result"], "FAIL")
-        self.assertEqual(
-            [row["result"] for row in report["protected_apis"]],
-            ["PASS", "PASS", "PASS", "PASS", "PASS", "PASS", "FAIL", "PASS", "PASS", "PASS", "PASS", "PASS"],
-        )
+        self.assertEqual(len(report["protected_apis"]), len(MODULE.PROTECTED_API_CHECKS))
+        self.assertEqual([row["route"] for row in report["protected_apis"] if row["result"] == "FAIL"], [failed_route])
 
     def test_exact_canonical_manifests_require_actual_version_pages_and_chapters(self):
         for slug, count, total_pages in [
@@ -224,19 +240,19 @@ class StaticSeoCanaryTests(unittest.TestCase):
 
     def test_historical_home_fallback_and_released_access_copy_are_rejected(self):
         html = page(title="Earnalism | Classics", description=ACCESS, h1="A library made for lingering", canonical="https://theearnalism.com/", body=ACCESS)
-        self.assertEqual(self.inspect("/book/the-selfish-giant", html)["result"], "FAIL")
-        self.assertEqual(self.inspect("/reader/the-selfish-giant", self.unavailable_html(body=ACCESS))["result"], "FAIL")
+        self.assertEqual(self.inspect_unavailable_fixture("/book/bn-060", html)["result"], "FAIL")
+        self.assertEqual(self.inspect_unavailable_fixture("/reader/bn-060", self.unavailable_html(body=ACCESS))["result"], "FAIL")
 
     def test_historical_controls_media_schema_and_non_recovery_links_are_rejected(self):
-        unsafe = ["<button>Read</button>", "<audio src='https://media.example/audio.mp3'></audio>", '<script type="application/ld+json">{"@type":"Book","isAccessibleForFree":true}</script>', "<a href='/reader/the-selfish-giant'>Open Reader</a>"]
+        unsafe = ["<button>Read</button>", "<audio src='https://media.example/audio.mp3'></audio>", '<script type="application/ld+json">{"@type":"Book","isAccessibleForFree":true}</script>', "<a href='/reader/bn-060'>Open Reader</a>"]
         for content in unsafe:
             with self.subTest(content=content):
-                self.assertEqual(self.inspect("/book/the-selfish-giant", self.unavailable_html(body=content))["result"], "FAIL")
+                self.assertEqual(self.inspect_unavailable_fixture("/book/bn-060", self.unavailable_html(body=content))["result"], "FAIL")
 
     def test_historical_routes_require_exact_identity_and_noindex(self):
         html = self.unavailable_html()
-        for unsafe in [html.replace("noindex,nofollow", "index,follow"), html.replace("https://theearnalism.com/book/the-selfish-giant", "https://theearnalism.com/"), html.replace("The Selfish Giant", "Another title")]:
-            self.assertEqual(self.inspect("/book/the-selfish-giant", unsafe)["result"], "FAIL")
+        for unsafe in [html.replace("noindex,nofollow", "index,follow"), html.replace("https://theearnalism.com/book/bn-060", "https://theearnalism.com/"), html.replace("ইন্দিরা", "Another title")]:
+            self.assertEqual(self.inspect_unavailable_fixture("/book/bn-060", unsafe)["result"], "FAIL")
 
 
 class HistoricalUnavailableSnapshotTests(unittest.TestCase):
@@ -250,6 +266,8 @@ class HistoricalUnavailableSnapshotTests(unittest.TestCase):
             target = self.root / relative
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(source_root / relative, target)
+        fixture = self.root / "frontend/scripts/unavailable-title-routes.mjs"
+        fixture.write_text(fixture.read_text().replace("export const unavailableTitles = [\n];", 'export const unavailableTitles = [\n  { slug: "bn-060", title: "ইন্দিরা" },\n];'))
         self.generate()
 
     def generate(self):
@@ -276,7 +294,8 @@ class HistoricalUnavailableSnapshotTests(unittest.TestCase):
         for entry in held:
             route = entry["route"]
             html = (self.root / "frontend/build" / route.lstrip("/") / "index.html").read_text()
-            report = MODULE.inspect_route(route, MODULE.ROUTES[route], 200, {}, html, "https://theearnalism.com" + route)
+            policy = {"kind": "historical_unavailable", "canonical": "/book/bn-060", "robots": "noindex,nofollow", "title": "ইন্দিরা"}
+            report = MODULE.inspect_route(route, policy, 200, {}, html, "https://theearnalism.com" + route)
             self.assertEqual(report["result"], "PASS", report)
 
     def test_first_matching_rewrite_uses_the_snapshot_and_preserves_old_app_rules(self):
@@ -293,12 +312,12 @@ class HistoricalUnavailableSnapshotTests(unittest.TestCase):
             self.assertIn({"source": "/" + kind + "/:slug", "destination": "/api/not-found"}, config["rewrites"])
 
     def test_snapshot_tampering_cannot_pass_the_build_or_production_canary(self):
-        target = self.root / "frontend/build/book/the-selfish-giant/index.html"
+        target = self.root / "frontend/build/book/bn-060/index.html"
         original = target.read_text()
-        for html in [original.replace('name="robots" content="noindex,nofollow"', 'name="robots" content="index,follow"'), original.replace("</main>", '<a href="/reader/the-selfish-giant">Read the 3-page preview</a></main>')]:
+        for html in [original.replace('name="robots" content="noindex,nofollow"', 'name="robots" content="index,follow"'), original.replace("</main>", '<a href="/reader/bn-060">Read the 3-page preview</a></main>')]:
             target.write_text(html)
             self.assertNotEqual(self.verify().returncode, 0)
-            self.assertEqual(MODULE.inspect_route("/book/the-selfish-giant", MODULE.ROUTES["/book/the-selfish-giant"], 200, {}, html, "https://theearnalism.com/book/the-selfish-giant")["result"], "FAIL")
+            self.assertEqual(MODULE.inspect_route("/book/bn-060", {"kind": "historical_unavailable", "canonical": "/book/bn-060", "robots": "noindex,nofollow", "title": "ইন্দিরা"}, 200, {}, html, "https://theearnalism.com/book/bn-060")["result"], "FAIL")
 
 
 if __name__ == "__main__":

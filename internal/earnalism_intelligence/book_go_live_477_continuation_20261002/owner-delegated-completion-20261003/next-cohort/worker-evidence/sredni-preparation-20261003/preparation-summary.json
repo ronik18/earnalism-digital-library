@@ -1,0 +1,213 @@
+{
+  "slug": "sredni-vashtar",
+  "status": "ONE_NEW_BOUNDED_LAYOUT_AND_DELIVERY_PAIR_PENDING_REVIEW_NOT_ACCEPTED",
+  "source_text_rights_reused_without_research": "india-20261002-sredni-vashtar-pg3688-noncover-text",
+  "content_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+  "prior_original_cover_QA": "FAIL_OBSERVABLE_COVER_QA_REUSED_NOT_RERUN",
+  "current_originals_recovered_from_prior_worker_exact_hashes": true,
+  "new_network_requests": 0,
+  "paid_generation_calls": 0,
+  "unchanged_reviews_repeated": 0,
+  "bounded_new_repairs": 1,
+  "shared_git_registry_allowlist_mutations": false,
+  "source_controlled_checksum_validation": [
+    {
+      "file": "approval_evidence.json",
+      "pass": true
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "pass": true
+    },
+    {
+      "file": "highlight_sync.json",
+      "pass": true
+    },
+    {
+      "file": "public_book.json",
+      "pass": true
+    },
+    {
+      "file": "publication_authorization.json",
+      "pass": true
+    },
+    {
+      "file": "reader_manifest.json",
+      "pass": true
+    },
+    {
+      "file": "source_evidence.json",
+      "pass": true
+    }
+  ],
+  "source_prior_decision_binding_validation": [
+    {
+      "component": "public_book",
+      "pass": true
+    },
+    {
+      "component": "reader_manifest",
+      "pass": true
+    },
+    {
+      "component": "source_evidence",
+      "pass": true
+    },
+    {
+      "component": "approval_evidence",
+      "pass": true
+    },
+    {
+      "component": "checksum_manifest",
+      "pass": true
+    },
+    {
+      "component": "publication_manifest",
+      "pass": true
+    }
+  ],
+  "preimages": {
+    "root-preimage": [
+      {
+        "file": "approval_evidence.json",
+        "sha256": "d2eec4f08fcd81f7156fc122a1c9fb20dd96ef0cde660c69801b03bfd9a000d3",
+        "bytes": 4207
+      },
+      {
+        "file": "chapters/chapter-001.json",
+        "sha256": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5",
+        "bytes": 11365
+      },
+      {
+        "file": "checksum_manifest.json",
+        "sha256": "4683582293ceeb62d713a91bd4f69bbe0e8922da67fe6d3c764a060d1bd6da45",
+        "bytes": 1052
+      },
+      {
+        "file": "highlight_sync.json",
+        "sha256": "0b302f6d91f901adad699ed496663b1ebbb8d17917cd4bbdc340f75eb94ca728",
+        "bytes": 191446
+      },
+      {
+        "file": "public_book.json",
+        "sha256": "c027b799066b584a244c9025086df028d7a9ef65c5d7e812735b27e64420c59f",
+        "bytes": 16540
+      },
+      {
+        "file": "publication_authorization.json",
+        "sha256": "20bb6b3ae3075433c2ed8396f101642442b34b51d51ce5c195074b222435712a",
+        "bytes": 1442
+      },
+      {
+        "file": "publication_manifest.json",
+        "sha256": "1f1845f14b3c3dbbf3a123c9d1ed9e66263072ae1485165c289ad64a19365db2",
+        "bytes": 2006
+      },
+      {
+        "file": "reader_manifest.json",
+        "sha256": "2ccf2bae7a65d944946f1cf4ca5a5f8b4011408638d67cc95e7f8bf6eca3ab54",
+        "bytes": 10302
+      },
+      {
+        "file": "rights_decision.json",
+        "sha256": "8c48bd15b23e352d5f195ab007a60c993b1fe72dd067f65874484c71942bb428",
+        "bytes": 2104
+      },
+      {
+        "file": "source_evidence.json",
+        "sha256": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
+        "bytes": 10511
+      }
+    ],
+    "backend-preimage": [
+      {
+        "file": "approval_evidence.json",
+        "sha256": "7d02c5428a1b63f6639424b87271ebffb00675e24df2ea36c124afa2f46c494a",
+        "bytes": 3590
+      },
+      {
+        "file": "chapters/chapter-001.json",
+        "sha256": "1479bad3f14cc9c48bf4c415d49f848933ba65436fe2b5b1efda0156be8d1260",
+        "bytes": 11365
+      },
+      {
+        "file": "checksum_manifest.json",
+        "sha256": "acf5dbbc942cbffdf4645e06113989dc4a89179ff1791420a954332b2bfcc5c0",
+        "bytes": 2302
+      },
+      {
+        "file": "public_book.json",
+        "sha256": "31ca9d07e3fa8e594daf8e1ce1af839226fb526a3bb07a51bc5962d8bc899c92",
+        "bytes": 16540
+      },
+      {
+        "file": "reader_manifest.json",
+        "sha256": "2ccf2bae7a65d944946f1cf4ca5a5f8b4011408638d67cc95e7f8bf6eca3ab54",
+        "bytes": 10302
+      },
+      {
+        "file": "source_evidence.json",
+        "sha256": "16f999e4b2708921fcc5f912f9d2c9b350ab66490d1e67d8ac546b851a79fc61",
+        "bytes": 717
+      }
+    ],
+    "content-preimage": [
+      {
+        "file": "book.json",
+        "sha256": "1aebf0653790a26d9324a5967ad442998ba4b66ec1e1e0028219e57989147517",
+        "bytes": 1045
+      },
+      {
+        "file": "chapters/001-sredni-vashtar.json",
+        "sha256": "eb4c2e519b9306e72ae9a9b3c483df988377ee932b67253fc312f5cafaedf8a1",
+        "bytes": 11156
+      },
+      {
+        "file": "raw/source.txt",
+        "sha256": "c67e54c5c139c8a4cd5ba59921df63cd30dea00c189d169f1900368a3116165f",
+        "bytes": 10237
+      },
+      {
+        "file": "source-rights.md",
+        "sha256": "4812bf99a68fd7e5e8ed28f19c6dfcefca8cb56015d317cc3bb430856f079b4d",
+        "bytes": 763
+      }
+    ]
+  },
+  "candidate_receipt_sha256": "bfae2b19d7f41d2f63ae783bb13d09864716561540009908d9b4489a29ed4bf4",
+  "delivery_receipt_sha256": "f3deee99367ed73958ca7dfd1ea7969a230f23e018cd61c03b01672556acc1db",
+  "render_recipe_sha256": "c8303b10cd48a38e0d180d13eb1d02e204dac0952f41d36993c3a84791c962d5",
+  "candidate_hashes": {
+    "front": "d6e93dc6a19f8901d69c66aadeaf630088a6235305f0f3799476153a08d3beae",
+    "back": "24ca0f1813af6cf4d989a2393fbd3671e4b2426c620bf65249a4693a494650c3"
+  },
+  "delivery": {
+    "front": {
+      "source_sha256": "d6e93dc6a19f8901d69c66aadeaf630088a6235305f0f3799476153a08d3beae",
+      "path": "/workspace/scratch/181ef0a25f05/sredni-preparation-20261003/delivery-front.webp",
+      "sha256": "d946f65fa5d2c843b7d572a3374435c5fe52a3308cf620395e49fb36e0b6cb55",
+      "bytes": 20932,
+      "width": 800,
+      "height": 1200,
+      "url": "/assets/books/sredni-vashtar/front-d946f65f.webp"
+    },
+    "back": {
+      "source_sha256": "24ca0f1813af6cf4d989a2393fbd3671e4b2426c620bf65249a4693a494650c3",
+      "path": "/workspace/scratch/181ef0a25f05/sredni-preparation-20261003/delivery-back.webp",
+      "sha256": "c532935242fc0da1ab7a4526752dc1b1392a2f0cf17e3616d25cff644ee82351",
+      "bytes": 65832,
+      "width": 800,
+      "height": 1200,
+      "url": "/assets/books/sredni-vashtar/back-c5329352.webp"
+    }
+  },
+  "remaining_gates": [
+    "Two independent new cover+deliveryvisual reviews of recovered owner-legacy graphical derivative category; generic-theme aesthetic limitation disclosed",
+    "Two exact package reviews of prospective binding with INtextonly/audiofalse",
+    "Correct public description inaccurate two-year prognosis from canonical source, preserving old metadata",
+    "Preserve six-file historical backendpreimage before mirroring currentedition",
+    "Serialize registry/allowlist/protected CI/deploy/canary/truthfulreadback"
+  ],
+  "drop_rule": "If a substantive cover quality conflict survives independent new review, keep records and drop from active plan; do not repeat this repair.",
+  "artwork_category": "RECOVERED_OWNER_DESIGNED_LEGACY_GRAPHICAL_COMPONENT_WITH_LAYOUT_AND_TEXT_OVERLAY_DERIVATIVE"
+}

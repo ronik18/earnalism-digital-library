@@ -1,0 +1,28 @@
+[
+  {
+    "kind": "cover_url",
+    "persisted_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275534/earnalism/covers/front/the-cop-and-the-anthem_front_1600x2400.png",
+    "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275534/earnalism/covers/front/the-cop-and-the-anthem_front_1600x2400.png",
+    "status": 200,
+    "file": "original-front.png",
+    "sha256": "3232a6b9c657c5e0adaa6385c87ecd88b9544a0c264b0a28b9ee8d7e11ed12b7",
+    "bytes": 196546,
+    "dimensions": [
+      1600,
+      2400
+    ]
+  },
+  {
+    "kind": "back_cover_url",
+    "persisted_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275537/earnalism/covers/back/the-cop-and-the-anthem_back_1600x2400.png",
+    "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275537/earnalism/covers/back/the-cop-and-the-anthem_back_1600x2400.png",
+    "status": 200,
+    "file": "original-back.png",
+    "sha256": "0c9e1ec88066b222f5b2e715e8017c4fb7095e74f8f2b669ce5d1d97a77eb7d6",
+    "bytes": 406376,
+    "dimensions": [
+      1600,
+      2400
+    ]
+  }
+]

@@ -1,0 +1,123 @@
+{
+  "slug": "the-open-window",
+  "status": "PROPOSAL_IDENTITY_PASS_PENDING_FRESH_TWO_INDEPENDENT_REVIEWS",
+  "original_components_pass": 6,
+  "original_checksums_pass": 7,
+  "chapter_count": 1,
+  "chapter_content_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "existing_source_fullwork_evidence": {
+    "artifact": "internal/legal/catalogue_clearance_20261002/english/current_whole_work_boundary_verification.json",
+    "artifact_sha256": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e",
+    "slug": "the-open-window",
+    "immutable_identity_current": true,
+    "coverage_review": {
+      "source_byte_receipt": {
+        "requested_url": "https://www.gutenberg.org/ebooks/269.txt.utf-8",
+        "resolved_url": "https://www.gutenberg.org/cache/epub/269/pg269.txt",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:03:50.335414+00:00",
+        "response_sha256": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587"
+      },
+      "whole_narrative_coverage": "PASS",
+      "chapter_count": 1,
+      "chapter_comparison": {
+        "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+        "status": "ALL_CHAPTERS_MATCH_SOURCE",
+        "matched_chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "offset": 55114,
+            "length": 6810
+          }
+        ],
+        "nonmatching_chapters": [],
+        "complete_edition_proven": false,
+        "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+      },
+      "lifetime_publication_evidence": {
+        "creator": "Saki, 1870-1916",
+        "creator_death_year": 1916,
+        "selected_collection_publication_year": 1914,
+        "original_story_first_publication_year": null,
+        "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+        "bibliographic_receipt": {
+          "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Saki%2C%201870-1916",
+          "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Saki%2C%201870-1916",
+          "http_status": 200,
+          "accessed_at": "2026-10-01T21:44:03.644528+00:00",
+          "response_sha256": "8868eab96ea90377916366f71f0aadece4c74c87fa9ebf065e8cd66d4229fe00"
+        },
+        "bibliographic_excerpt": "Beasts and super-beasts (John Lane;, 1914) (page images at HathiTrust) Saki, 1870-1916: Beasts and super-beasts (Viking press, 1929) (page images at HathiTrust) Saki, 1870-1916: Beasts and super-beasts. (John Lane, 1930) (page images at HathiTrust) S",
+        "scope": "Named author selected story text only; other collection stories, separately authored editorial matter and all illustrations excluded."
+      },
+      "author_death_evidence": 1916,
+      "translator": "NONE_SELECTED",
+      "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+      "illustrations": "NONE_IMPORTED",
+      "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+      "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+      "audio": "NOT_AUTHORIZED",
+      "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+    },
+    "containment_alone_is_not_completeness": true
+  },
+  "source_unchanged": true,
+  "chapter_unchanged": true,
+  "audio_historical_claims_archived_not_exposed": true,
+  "assets": {
+    "front": {
+      "original_file": "covers/front-original.png",
+      "original_sha256": "351653d69bebc7567f868007370fb65b72eadbd41f7cbb2ee276e6024d0a1bb1",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png",
+      "repair_file": "covers/front-layout-repair.png",
+      "repair_sha256": "22a9981529ca3c46a81fae68c056b43d2253595f436110767c153eb9344589bd",
+      "delivery_file": "covers/front-delivery.webp",
+      "delivery_sha256": "fd16c96883897722c2da7c49e2012dd9e5a3771bf2f99d11b89a29add60a8960",
+      "delivery_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-fd16c968.webp",
+      "delivery_bytes": 34778,
+      "production_observed": false
+    },
+    "back": {
+      "original_file": "covers/back-original.png",
+      "original_sha256": "19717b3bb51630712f2f8cad58859361c9015ab726f3335b196c2b5924660a0d",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267861/earnalism/covers/back/the-open-window_back_1600x2400.png",
+      "repair_file": "covers/back-layout-repair.png",
+      "repair_sha256": "5865b811a2feb412655fa56f6b2a9f6e6fbbd39881423bf14c77e1844a827829",
+      "delivery_file": "covers/back-delivery.webp",
+      "delivery_sha256": "6c87ea0a562e727b5527711f6f279bf9b95cad6a0817d15e36f783fd87016e76",
+      "delivery_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-back-6c87ea0a.webp",
+      "delivery_bytes": 79852,
+      "production_observed": false
+    }
+  },
+  "proposed_components": {
+    "source_evidence": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d",
+    "publication_manifest": "c2be01516de1009c0b2f85d0323f1abb532ffc85660005ca3afb002bc83486ee",
+    "reader_manifest": "8f5a8d563c587a28d30e1e001447cdb5328bdcd49df4b61d8d7838401aac6151",
+    "approval_evidence": "287ff7059f7d8e04407a3ba056726dcc4e45fe773ca989c89b1566bf7ff09824",
+    "public_book": "780205125e1930087b8033936bb4b73414ed451212ad9fd4c8939cb4a85b4d64",
+    "checksum_manifest": "6a3349c1068fd4fa76c7fbfff7b8f0c14b8bfc03ce78dc07fba57c3702aa1336",
+    "cover_provenance": "9540748697d562d47c872ee30a8bf8a88dcd7f87ce1883b8e6d0233c012f2fad"
+  },
+  "rights_decision_raw_sha256": "cd315fa565962854718503497590a5e6933561470a2f00eebf8e1a001b48f112",
+  "rights_decision_canonical_sha256": "3e6f3be3fe77ebfe09bd5913fbd4e16368d252d3e755dc4bccdf3606864027f7",
+  "actual_acceptance_created": false,
+  "registry_allowlist_production_mutations": false,
+  "backend_preimage_present": true,
+  "next_action": "Two fresh independent exact repair/WebP/copy/package reviews. If PASS, create actual prospective acceptance and update dependent hashes before new binding validation; if HOLD, terminal exclusion since one bounded repair exhausted.",
+  "audio_metadata_correction_sha256": "05c1a392c5b13855f54e0fef0949936ec3eb6a93348050b89432a0d1ff9a008c",
+  "proposed_public_reader_active_audio_claims": "NONE_FALSE_FLAGS_EMPTY_MEDIA_ONLY",
+  "proposed_package_inventory_canonical_sha256": "f407876e85aff31668b5353e8204086b9b8eb0cee61dc2a62110501c0ee04dca",
+  "consolidated_final_paperwork_sha256": "adc950dfe8cb49cabd5690bf74fdfd6fd5783206384a89a7cadf1bdb8a8dbe66",
+  "active_approval_audio_observations": "NONE_ARCHIVE_ONLY",
+  "cover_delivery_dimensions": {
+    "front": [
+      800,
+      1200
+    ],
+    "back": [
+      800,
+      1200
+    ]
+  }
+}

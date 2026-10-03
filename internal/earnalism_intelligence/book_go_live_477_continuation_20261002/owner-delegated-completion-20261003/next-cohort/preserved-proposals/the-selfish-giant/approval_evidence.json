@@ -1,0 +1,23 @@
+{
+  "slug": "the-selfish-giant",
+  "approved_to_publish": false,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "PROPOSED_OWNER_DELEGATED_EXACT_IN_TEXT_AND_COVER_BINDING_PENDING_TWO_REVIEWS",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "audiobook_use_approved": false,
+  "audiobook_use_approval_source": "",
+  "audiobook_use_approved_at": "",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "verified_at": "2026-10-03T04:20:29.339226+00:00",
+  "publication_authorization_sha256": "16514ed5af14d72f8eddfbd6d5896ad4f0cc28181b4f8e21b351a065dd49fa0c",
+  "cover_provenance_sha256": "becaa05505a87f54f017f6ef2d80a921196ed281993a22a72bd2b1c3f4dd536c",
+  "independent_reviews": [],
+  "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+  "content_hash": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+  "binding_review_status": "PENDING_TWO_FRESH_EXACT_PACKAGE_REVIEWS",
+  "qa_scope": "Existing independently evidenced noncover text identity/complete work only; no audio or production observation."
+}

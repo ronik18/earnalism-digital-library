@@ -1,0 +1,42 @@
+{
+  "slug": "sredni-vashtar",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "432cbb03020ce0f562290edd50eec75bb6c27722262645518dc466f98be4b3a9"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "0b302f6d91f901adad699ed496663b1ebbb8d17917cd4bbdc340f75eb94ca728"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "0c5d75da39d5a57eb184f24b3676c8caf6ed1527c617d57058e547373bd8e893"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "26122600b4e0adf60f0765ad1bcf6bbbda08b35133d77189cdf12956c3f20c12"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "f788789885abe29c15338d7fa74f5024c7f62f8def0c7c8aa786b49e9730385b"
+    },
+    {
+      "file": "cover_delivery_derivation.json",
+      "sha256": "f3deee99367ed73958ca7dfd1ea7969a230f23e018cd61c03b01672556acc1db"
+    }
+  ]
+}

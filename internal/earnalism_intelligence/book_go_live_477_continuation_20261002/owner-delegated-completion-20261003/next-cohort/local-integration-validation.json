@@ -1,0 +1,43 @@
+{
+  "schema": "earnalism.next19-local-integrated-validation.v1",
+  "recorded_at": "2026-10-03T06:17:16.390864+00:00",
+  "source_main": "0fee65668f94284d180065d0fe8b38face924498",
+  "configured_count": 52,
+  "new_cohort": 19,
+  "tests": {
+    "backend_current": {
+      "passed": 486,
+      "failed": 0
+    },
+    "frontend_full": {
+      "suites": 97,
+      "tests": 607,
+      "failed": 0
+    },
+    "rights_semantic_static": {
+      "tests": 33,
+      "result": "PASS"
+    },
+    "workflow_source_provenance": {
+      "cases": 46,
+      "result": "PASS"
+    },
+    "focused_static_regression": {
+      "tests": 71,
+      "result": "PASS"
+    },
+    "static_snapshots": {
+      "count": 172,
+      "assertions": 3647,
+      "failed": 0
+    }
+  },
+  "genuine_remediation": "One Gatsby stale public verification flag normalized to actual approved automated acceptance and rebound; current authority/historical audio/cache/Frankenstein fixture expectations reconciled without runtime-policy or source/art changes. Initial failures preserved.",
+  "all52_active_reader_validation": "PASS",
+  "audio_exposed": false,
+  "new_production_observed": false,
+  "production_canonical_versions": null,
+  "deployment_configuration_byte_unchanged": true,
+  "two_ci_frontend_source_fingerprint_constants": "Current exact source binding only; workflow checks/deploy/gates unchanged.",
+  "next_action": "Two independent exact integrated-tree reviews; existing protected normal exact-head CI/merge/deploy/canary/truthful readback."
+}

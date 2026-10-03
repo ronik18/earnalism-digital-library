@@ -1,0 +1,68 @@
+{
+  "slug": "the-cop-and-the-anthem",
+  "verified_at": "2026-10-02T03:42:24.398865+00:00",
+  "selected_edition_scope": "Project Gutenberg #2776; The Cop and the Anthem selected complete O. Henry story/cycle from four million; verified lifetime collection edition 1906; no translation/editorial/art imported",
+  "raw_source_sha256": "6bb719852f2f0eb33db25613124d2d3c522dd3b879c187667ab31072bb2fb48d",
+  "reader_aggregate_sha256": "77a6d1c7ff6162cc7aad47b950666c6bb1dedf0beb55a08f3f476e27e57bd3ab",
+  "chapter_count": 1,
+  "ordered_chapter_hashes": {
+    "chapter-001": "77a6d1c7ff6162cc7aad47b950666c6bb1dedf0beb55a08f3f476e27e57bd3ab"
+  },
+  "source_boundary_before_first": " breathed. I was glad to be in a city so great, so complex and diversified. Leisurely and with something of an air I strolled along with my heart expanding at the thought that I was a citizen of great Gotham, a sharer in its magnificence and pleasures, a partaker in its glory and prestige. I turned to cross the street. I heard something buzz like a bee, and then I took a long, pleasant ride with Santos-Dumont. When I opened my eyes I remembered a smell of gasoline, and I said aloud: “Hasn’t it passed yet?” A hospital nurse laid a hand that was not particularly soft upon my brow that was not at all fevered. A young doctor came along, grinned, and handed me a morning newspaper. “Want to see how it happened?” he asked cheerily. I read the article. Its headlines began where I heard the buzzing leave off the night before. It closed with these lines: “—Bellevue Hospital, where it was said that his injuries were not serious. He appeared to be a typical Man About Town.” THE COP AND THE ANTHEM ",
+  "first_body_anchor": "On his bench in Madison Square Soapy moved uneasily. When wild geese\n\nhonk high of nights, and when women without sealskin coats grow kind to\n\ntheir husbands, and when Soapy moves uneasily on his benc",
+  "last_body_anchor": "ickly around into the\n\nbroad face of a policeman.\n\n“What are you doin’ here?” asked the officer.\n\n“Nothin’,” said Soapy.\n\n“Then come along,” said the policeman.\n\n“Three months on the Island,” said the Magistrate in the Police Court\n\nthe next morning.",
+  "source_boundary_after_last": " AN ADJUSTMENT OF NATURE In an art exhibition the other day I saw a painting that had been sold for $5,000. The painter was a young scrub out of the West named Kraft, who had a favourite food and a pet theory. His pabulum was an unquenchable belief in the Unerring Artistic Adjustment of Nature. His theory was fixed around corned-beef hash with poached egg. There was a story behind the picture, so I went home and let it drip out of a fountain-pen. The idea of Kraft—but that is not the beginning of the story. Three years ago Kraft, Bill Judkins (a poet), and I took our meals at Cypher’s, on Eighth Avenue. I say “took.” When we had money, Cypher got it “off of” us, as he expressed it. We had no credit; we went in, called for food and ate it. We paid or we did not pay. We had confidence in Cypher’s sullenness and smouldering ferocity. Deep down in his sunless soul he was either a prince, a fool or an artist. He sat at a worm-eaten desk, covered with files of waiters’ checks so old that I was sure the bottomest one was for clams that Hendrik Hudson had eaten and paid for. Cypher had the power, in common with Napoleon III. and the goggle-eyed perch, of throwing a film over his eyes, rend",
+  "internal_gaps": [],
+  "whole_narrative_coverage_review": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/2776.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/2776/pg2776.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:04:38.547712+00:00",
+      "response_sha256": "6bb719852f2f0eb33db25613124d2d3c522dd3b879c187667ab31072bb2fb48d"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 1,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 98142,
+          "length": 13019
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator": "Henry, O., 1862-1910",
+      "creator_death_year": 1910,
+      "selected_collection_publication_year": 1906,
+      "original_story_first_publication_year": null,
+      "basis": "Verified collection publication strictly before creator death establishes lifetime publication. Collection year is NOT asserted to be original story first-publication year.",
+      "bibliographic_receipt": {
+        "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Henry%2C%20O.%2C%201862-1910",
+        "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Henry%2C%20O.%2C%201862-1910",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:43:57.605869+00:00",
+        "response_sha256": "cce6208396d154308bcb396a5d0a93d8dbaa3c3b987591ab79af2c6a91a136eb"
+      },
+      "bibliographic_excerpt": "four million. (Doubleday, Page & company, 1920) (page images at HathiTrust) Henry, O., 1862-1910: The four million (Burt, 1906) (page images at HathiTrust) Henry, O., 1862-1910: The four million (Doubleday, Page & company, 1924) (page images at Hathi",
+      "scope": "Named author selected story text only; other collection stories, separately authored editorial matter and all illustrations excluded."
+    },
+    "author_death_evidence": 1910,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "containment_alone_complete": false,
+  "source_receipt_file_sha256": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e",
+  "existing_boundary_reuse_no_new_fetch": true
+}

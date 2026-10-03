@@ -1,0 +1,187 @@
+{
+  "schema": "earnalism.distinct-practical-title-preparation.v1",
+  "slug": "bharat-at-the-crossroads",
+  "status": "INACTIVE_UNACCEPTED_TWO_INDEPENDENT_REVIEWS_REQUIRED",
+  "recorded_at": "2026-10-03T05:04:16.164575+00:00",
+  "source_proof_sha256": "01c2fb4ab9c360ced67e4b7a899d06995e7553ad8696fc5b9f1926b201b821ee",
+  "source_originals_chapters_sync_decisions_preserved": true,
+  "exact_prior_IN_text_basis": true,
+  "one_get_per_original_cover": true,
+  "one_bounded_typography_copy_attempt": true,
+  "deterministic_typography_overlay_actual_execution_proven": true,
+  "original_typography_creation_method_inferred": false,
+  "font_license_actual_bytes_preserved": true,
+  "cover_dimensions_actual": [
+    800,
+    1200
+  ],
+  "delivery_budgets": "PASS_FRONT_80000_BACK_180000",
+  "all_active_JSON_audio_and_observation_claim_scan": "PASS_NO_POSITIVE_CLAIMS",
+  "historical_duplicates_archive_only": [],
+  "original_assets": {
+    "front": {
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+      "file": "recovered/front.png",
+      "sha256": "2a517ab7b0f1c4d05b44c037fcb6063903b59f03632e2829699dee57dfacfcb0",
+      "bytes": 2391609,
+      "dimensions": [
+        1054,
+        1492
+      ],
+      "method": "One successful GET per persisted original URL; no prior original-byte checksum or creation-method fact inferred."
+    },
+    "back": {
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+      "file": "recovered/back.png",
+      "sha256": "ffd089b16f31ad5145ae98e5c712667b921d71d00901a4a168fb8c2811acf3c7",
+      "bytes": 2261810,
+      "dimensions": [
+        1054,
+        1492
+      ],
+      "method": "One successful GET per persisted original URL; no prior original-byte checksum or creation-method fact inferred."
+    }
+  },
+  "delivery_assets": [
+    {
+      "kind": "front",
+      "source_file": "covers/front.png",
+      "source_sha256": "674c1aee2b6c1a7b25a5b28cd7e4737787153b8f0f4d8e6c8f7ee83a92a28c05",
+      "source_bytes": 1978135,
+      "source_dimensions": [
+        1054,
+        1492
+      ],
+      "delivery_file": "frontend/public/assets/books/bharat-at-the-crossroads/bharat-at-the-crossroads-front-674c1aee-800.webp",
+      "delivery_sha256": "5d5445f1d88d0ba092dbc363621eaedfcea8a9356fb22481a9c59fe455830d4d",
+      "delivery_bytes": 77492,
+      "delivery_dimensions": [
+        800,
+        1200
+      ],
+      "url": "https://theearnalism.com/assets/books/bharat-at-the-crossroads/bharat-at-the-crossroads-front-674c1aee-800.webp",
+      "recipe": {
+        "format": "WEBP",
+        "mode": "RGB",
+        "quality": 64,
+        "method": 6,
+        "resampling": "LANCZOS",
+        "resize": "aspect-preserving contain 800x1200",
+        "content_dimensions": [
+          800,
+          1132
+        ],
+        "padding_xy": [
+          0,
+          34
+        ],
+        "pillow_version": "12.3.0"
+      },
+      "production_observed": false
+    },
+    {
+      "kind": "back",
+      "source_file": "covers/back.png",
+      "source_sha256": "2e7564a64bb215397374a734e66e023010c22cdead23d3cb812ded6a54bc7665",
+      "source_bytes": 1623151,
+      "source_dimensions": [
+        1054,
+        1492
+      ],
+      "delivery_file": "frontend/public/assets/books/bharat-at-the-crossroads/bharat-at-the-crossroads-back-2e7564a6-800.webp",
+      "delivery_sha256": "cb46a1b7acbdce0d585fc98d19554e69bba4525410b9f678cfd38fbf21aa420f",
+      "delivery_bytes": 56054,
+      "delivery_dimensions": [
+        800,
+        1200
+      ],
+      "url": "https://theearnalism.com/assets/books/bharat-at-the-crossroads/bharat-at-the-crossroads-back-2e7564a6-800.webp",
+      "recipe": {
+        "format": "WEBP",
+        "mode": "RGB",
+        "quality": 64,
+        "method": 6,
+        "resampling": "LANCZOS",
+        "resize": "aspect-preserving contain 800x1200",
+        "content_dimensions": [
+          800,
+          1132
+        ],
+        "padding_xy": [
+          0,
+          34
+        ],
+        "pillow_version": "12.3.0"
+      },
+      "production_observed": false
+    }
+  ],
+  "proposed_decision_record_sha256": "4b9706fb36b0f08ab6216282e1e3aead6a98d93037f206539a48e1c2d9914d07",
+  "candidate_inventory": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "701b2d1d0c779b57fe5a23e4610d23ec9a3586b5959848db3e5b8936144bfa75"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "fdfa8aee8c648f05ff1165e03d42c44c46324ad1e531e2c29790a6c02c700f02"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "b0b595485b4a32cb53a300576e87e0c0672b31f896e4335713fb1d8ae7937915"
+    },
+    {
+      "file": "cover_delivery_derivation.json",
+      "sha256": "8aba3337c8140ddcb424fea5bc3b196199c555888e9c4f455c9b605e5b3cd0ed"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "9d44371e25509308c9d08466e1cf8c07c6f2d8dcfd3e0ce63b273f12bcada205"
+    },
+    {
+      "file": "covers/back.png",
+      "sha256": "2e7564a64bb215397374a734e66e023010c22cdead23d3cb812ded6a54bc7665"
+    },
+    {
+      "file": "covers/front.png",
+      "sha256": "674c1aee2b6c1a7b25a5b28cd7e4737787153b8f0f4d8e6c8f7ee83a92a28c05"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "800de1dc55c5fa17b5d3810f91650935f235bc65891f2f85acf4731e0c5fa0ab"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "b9692c348f3e9d2323c27b6616010c17ca55473daabad92da4ade1da6fc2eb42"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "ef67bcf8019f04b2c78b5315d758aa42df3dd438297c884a9056d5d08a26b421"
+    },
+    {
+      "file": "publication_manifest.json",
+      "sha256": "b2b1865bb24bc5d781506a712d26e897bb00759e1019183e970fdfc3154de556"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "7a73f6ebbaafec41301aa231c8f4d057d39892e6d2ffb3017941914809e47668"
+    },
+    {
+      "file": "rights_decision.json",
+      "sha256": "e70916c8ff0c7b55c94325851450fdad70318cc22d9ebf3951083fec8fb11f9a"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "52c92e6c6325c608bceec71928da428ac67be2b9d17c2c01ffc93c311fdd8e36"
+    },
+    {
+      "file": "source_integrity_validation.json",
+      "sha256": "01c2fb4ab9c360ced67e4b7a899d06995e7553ad8696fc5b9f1926b201b821ee"
+    }
+  ],
+  "publication_accepted": false,
+  "cover_accepted": false,
+  "paid_generation_calls": 0,
+  "registry_allowlist_shared_source_production_mutations": false,
+  "next_action": "Two independent fresh exact PNG/WebP/source/provenance/font-policy/package reviews. Substantial unresolved dispute after this attempt means terminal active-plan exclusion; no repeated art/source work."
+}

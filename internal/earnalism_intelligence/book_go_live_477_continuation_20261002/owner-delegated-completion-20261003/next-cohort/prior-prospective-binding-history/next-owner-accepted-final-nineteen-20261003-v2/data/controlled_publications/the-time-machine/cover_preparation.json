@@ -1,0 +1,494 @@
+{
+  "schema": "earnalism.classics-inactive-preparation.v1",
+  "slug": "the-time-machine",
+  "status": "ACCEPTED_EXACT_COMPONENT_PREPARATION_INDIA_TEXT_READER_ONLY",
+  "prepared_at": "2026-10-03T04:56:07.340765+00:00",
+  "category": "LEGACY_OWNER_DESIGNED_GRAPHICAL_COVER_DELIVERY_DERIVATIVE",
+  "owner_design_fact": {
+    "source": "/workspace/scratch/006ea59bb0f7/book-go-live-477/controller-corrections.json",
+    "sha256": "24e8f7f409db65ab0c4b5f3bf1a1d10072f3c6634d765ba2abfb118740a569b6",
+    "statement": "Owner states all front and back covers are designed by the owner.",
+    "scope": "COVER_DESIGN_ONLY_NOT_TEXT_RIGHTS_OR_RUNTIME_RELEASE"
+  },
+  "original_generation_method": "NOT_INFERRED",
+  "title_author_gate": {
+    "required_unconditionally": true,
+    "stored_title": "The Time Machine",
+    "stored_author": "H. G. Wells",
+    "licensed_deterministic_typography_overlay": true,
+    "font_file": "frontend/public/assets/fonts/eb-garamond-400.ttf",
+    "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+    "independent_exact_review_required": true,
+    "font_license_file": "frontend/public/assets/fonts/EB-GARAMOND-OFL.txt",
+    "font_license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7"
+  },
+  "source_binding": {
+    "existing_text_decision_id": "india-20261002-the-time-machine-pg35-noncover-text",
+    "source_sha256": "2892e919000e17c83e1dac51b30f4675db50536b644d7579fe8a89bb399a9bdc",
+    "content_sha256": "b9e67357d69352f3e18b2ceb03d55609ffe59dfa48277ff9aff76dc2fa63d488",
+    "chapter_count": 17,
+    "all_content_hashes_match_exact_boundary_receipt": true,
+    "boundary_receipt_path": "internal/legal/catalogue_clearance_20261002/english/current_whole_work_boundary_verification.json",
+    "boundary_receipt_file_sha256": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e",
+    "existing_selected_narrative_complete_boundary_evidence_reused": true,
+    "no_new_source_fetch": true,
+    "containment_alone_not_treated_as_complete": true
+  },
+  "boundary_receipt": {
+    "slug": "the-time-machine",
+    "verified_at": "2026-10-02T03:42:25.499530+00:00",
+    "selected_edition_scope": "Project Gutenberg #35; The Time Machine exact canonical source, underlying lifetime publication 1895; complete selected author text, no translation or independently authored artwork/editorial material imported",
+    "raw_source_sha256": "2892e919000e17c83e1dac51b30f4675db50536b644d7579fe8a89bb399a9bdc",
+    "reader_aggregate_sha256": "b9e67357d69352f3e18b2ceb03d55609ffe59dfa48277ff9aff76dc2fa63d488",
+    "chapter_count": 17,
+    "ordered_chapter_hashes": {
+      "chapter-001": "ff1fa7efcb35d79e41b83f66ff52d18736e3af4d00b52def6588a9faf78ed47d",
+      "chapter-002": "2113d8ad7b3091c44659f4a67560f14adcba33028ddf8bd7df344363deb61ca8",
+      "chapter-003": "06708012234cd4056469952cb250c8b5cab49f6759656c5304e8dc2821e0b479",
+      "chapter-004": "40d5a68212994d78f866f8b1ddc9266d1b9aad57f596c5dda5becac9cd2ccdba",
+      "chapter-005": "88a3a5ebae5d264535ff7fa49c6707d234d66a737b22703ee2fd74682edc7a87",
+      "chapter-006": "8d1ffca02a1cf9fd602ee6f563b3db38e8e743816700ed9fe8c0aa5b5888cba4",
+      "chapter-007": "45aca23365620eed577a80558486c8902d5161f8e54f5072fe1299bb8c6461a2",
+      "chapter-008": "12e394d0a46743b0ef2a024c53809a9e5128220d572a48ab3320ebd23d642c86",
+      "chapter-009": "9ee82556ec8b270d28af137bb778bf269ef32233e4ac57ab5db5bd9519b77ea1",
+      "chapter-010": "1aa14457387c8c72b9fba2a2b56a43fa639b195edcd2e531f837c3da211dfe19",
+      "chapter-011": "32a1cd21290ec3f121808cda82401d9a1cb10434dbc307e553df849ff8cb90b8",
+      "chapter-012": "e4e0daa54b6e57949ea5750924fce318b38bb41867f0216c13b385148052839c",
+      "chapter-013": "69fe0c7dfb3fcb54646c88a6ed43ec178622a79958c691ae748637d4c3aef520",
+      "chapter-014": "4c6beb9bf62d2ed7670c5ed43c614b2156eecfe01be11d9782505ca212cdd97f",
+      "chapter-015": "3a68c98a2f07704b6ee6b012a0ff7dda81b534c93e9cec82017ff27ae5fa44a7",
+      "chapter-016": "5cb2fa2a0bf3b72f336a6c5d31c05879479a1fa936926eca1ab7d2c78be3a555",
+      "chapter-017": "ef675e8a4077b5e93c07f9e71102cf66ff51711a28be1ab22fef05bc1f78782b"
+    },
+    "source_boundary_before_first": "ns whatsoever. You may copy it, give it away or re-use it under the terms of the Project Gutenberg License included with this eBook or online at www.gutenberg.org. If you are not located in the United States, you will have to check the laws of the country where you are located before using this eBook. Title: The Time Machine Author: H. G. Wells Release date: October 2, 2004 [eBook #35] Most recently updated: June 16, 2026 Language: English Other information and formats: www.gutenberg.org/ebooks/35 *** START OF THE PROJECT GUTENBERG EBOOK THE TIME MACHINE *** The Time Machine An Invention by H. G. Wells CONTENTS I Introduction II The Machine III The Time Traveller Returns IV Time Travelling V In the Golden Age VI The Sunset of Mankind VII A Sudden Shock VIII Explanation IX The Morlocks X When Night Came XI The Palace of Green Porcelain XII In the Darkness XIII The Trap of the White Sphinx XIV The Further Vision XV The Time Traveller’s Return XVI After the Story Epilogue I. Introduction ",
+    "first_body_anchor": "The Time Traveller (for so it will be convenient to speak of him) was expounding a recondite matter to us. His grey eyes shone and twinkled, and his usually pale face was flushed and animated. The fir",
+    "last_body_anchor": "emory of his story. And I have by me, for my comfort, two strange white flowers—shrivelled now, and brown and flat and brittle—to witness that even when mind and strength had gone, gratitude and a mutual tenderness still lived on in the heart of man.",
+    "source_boundary_after_last": " *** END OF THE PROJECT GUTENBERG EBOOK THE TIME MACHINE *** Updated editions will replace the previous one—the old editions will be renamed. Creating the works from print editions not protected by U.S. copyright law means that no one owns a United States copyright in these works, so the Foundation (and you!) can copy and distribute it in the United States without permission and without paying copyright royalties. Special rules, set forth in the General Terms of Use part of this license, apply to copying and distributing Project Gutenberg™ electronic works to protect the PROJECT GUTENBERG™ concept and trademark. Project Gutenberg is a registered trademark, and may not be used if you charge for an eBook, except by following the terms of the trademark license, including paying royalties for use of the Project Gutenberg trademark. If you do not charge anything for copies of this eBook, complying with the trademark license is very easy. You may use this eBook for nearly any purpose such as creation of derivative works, reports, performances and research. Project Gutenberg eBooks may be modified and printed and given away—you may do practically ANYTHING in the United States with eBooks ",
+    "internal_gaps": [
+      {
+        "between": [
+          "chapter-001",
+          "chapter-002"
+        ],
+        "text": " II. The Machine ",
+        "sha256": "82967e3372f89145afea4384ac272f8a6d334dac34ebf2f7b342fba4f2094ea1",
+        "length": 17
+      },
+      {
+        "between": [
+          "chapter-002",
+          "chapter-003"
+        ],
+        "text": " III. The Time Traveller Returns ",
+        "sha256": "4af2bbf8b333bbbd372c308df4e7c1b8a699fa9eae1af53f5181987b83b40c37",
+        "length": 33
+      },
+      {
+        "between": [
+          "chapter-003",
+          "chapter-004"
+        ],
+        "text": " IV. Time Travelling ",
+        "sha256": "dadcc24ce7952ea535c25d6c8fce6ea1fb3b976aaeb64e15cbf8aa51ea77a979",
+        "length": 21
+      },
+      {
+        "between": [
+          "chapter-004",
+          "chapter-005"
+        ],
+        "text": " V. In the Golden Age ",
+        "sha256": "b1bb33b73efb4213877d125fa1dd2764a17e76a04de7a8ce6169fbedda57f7dc",
+        "length": 22
+      },
+      {
+        "between": [
+          "chapter-005",
+          "chapter-006"
+        ],
+        "text": " VI. The Sunset of Mankind ",
+        "sha256": "c63164022929534e49cffe5284cc02cd210e6823b3d1221a7ffc41a627a79a09",
+        "length": 27
+      },
+      {
+        "between": [
+          "chapter-006",
+          "chapter-007"
+        ],
+        "text": " VII. A Sudden Shock ",
+        "sha256": "ad418a704516d4719b491b583018bdae15bccbe1500c257a25f0308eb9e94097",
+        "length": 21
+      },
+      {
+        "between": [
+          "chapter-007",
+          "chapter-008"
+        ],
+        "text": " VIII. Explanation ",
+        "sha256": "8d76df9142a9497b40faa93d4699b252df4247f5d80e387fab2454f885445079",
+        "length": 19
+      },
+      {
+        "between": [
+          "chapter-008",
+          "chapter-009"
+        ],
+        "text": " IX. The Morlocks ",
+        "sha256": "119253bd6207d839bfbcf0da02c05b3521461c567b3dfd0560ba0d01b64ebf68",
+        "length": 18
+      },
+      {
+        "between": [
+          "chapter-009",
+          "chapter-010"
+        ],
+        "text": " X. When Night Came ",
+        "sha256": "d33eb17d84dc576423fa7754f006cb2fa5198e2e5839feb0ed4d8d499434ac5c",
+        "length": 20
+      },
+      {
+        "between": [
+          "chapter-010",
+          "chapter-011"
+        ],
+        "text": " XI. The Palace of Green Porcelain ",
+        "sha256": "100e0c7d8a89430b6284866ac832070cfc2eb73dbf0140e53cd41ffec924bd2e",
+        "length": 35
+      },
+      {
+        "between": [
+          "chapter-011",
+          "chapter-012"
+        ],
+        "text": " XII. In the Darkness ",
+        "sha256": "5298a6759db4a0109737f907647dc395a56e81c3b71d18f9bbc5661b79819bd1",
+        "length": 22
+      },
+      {
+        "between": [
+          "chapter-012",
+          "chapter-013"
+        ],
+        "text": " XIII. The Trap of the White Sphinx ",
+        "sha256": "de79943a66ae5247d4fbc3c0aaff3bf6b3a0768484efd3e8c8d2ebf7e0d70c05",
+        "length": 36
+      },
+      {
+        "between": [
+          "chapter-013",
+          "chapter-014"
+        ],
+        "text": " XIV. The Further Vision ",
+        "sha256": "5ed727dc1e40182796ec7ba5b3988034736863c9d44f76a17ec18524e093a1db",
+        "length": 25
+      },
+      {
+        "between": [
+          "chapter-014",
+          "chapter-015"
+        ],
+        "text": " XV. The Time Traveller’s Return ",
+        "sha256": "2ce704b8c58a7167a30a0089a1a1567e1315e40b3176b9eeff1498144d9b831e",
+        "length": 33
+      },
+      {
+        "between": [
+          "chapter-015",
+          "chapter-016"
+        ],
+        "text": " XVI. After the Story ",
+        "sha256": "778a825502ecfad949b3d968a226ca8dd41d706f9f16d156535b1f26b8e72699",
+        "length": 22
+      },
+      {
+        "between": [
+          "chapter-016",
+          "chapter-017"
+        ],
+        "text": " Epilogue ",
+        "sha256": "ae53d779bfa8acb1ba7588e519b31f086fe8be8d9de7d81a944f992e433d0e4f",
+        "length": 10
+      }
+    ],
+    "whole_narrative_coverage_review": {
+      "source_byte_receipt": {
+        "requested_url": "https://www.gutenberg.org/ebooks/35.txt.utf-8",
+        "resolved_url": "https://www.gutenberg.org/cache/epub/35/pg35.txt",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:03:29.749784+00:00",
+        "response_sha256": "2892e919000e17c83e1dac51b30f4675db50536b644d7579fe8a89bb399a9bdc"
+      },
+      "whole_narrative_coverage": "PASS",
+      "chapter_count": 17,
+      "chapter_comparison": {
+        "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+        "status": "ALL_CHAPTERS_MATCH_SOURCE",
+        "matched_chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "offset": 1188,
+            "length": 9752
+          },
+          {
+            "chapter_id": "chapter-002",
+            "offset": 10957,
+            "length": 7489
+          },
+          {
+            "chapter_id": "chapter-003",
+            "offset": 18479,
+            "length": 11049
+          },
+          {
+            "chapter_id": "chapter-004",
+            "offset": 29549,
+            "length": 11625
+          },
+          {
+            "chapter_id": "chapter-005",
+            "offset": 41196,
+            "length": 9289
+          },
+          {
+            "chapter_id": "chapter-006",
+            "offset": 50512,
+            "length": 12532
+          },
+          {
+            "chapter_id": "chapter-007",
+            "offset": 63065,
+            "length": 12459
+          },
+          {
+            "chapter_id": "chapter-008",
+            "offset": 75543,
+            "length": 23325
+          },
+          {
+            "chapter_id": "chapter-009",
+            "offset": 98886,
+            "length": 11766
+          },
+          {
+            "chapter_id": "chapter-010",
+            "offset": 110672,
+            "length": 13725
+          },
+          {
+            "chapter_id": "chapter-011",
+            "offset": 124432,
+            "length": 13642
+          },
+          {
+            "chapter_id": "chapter-012",
+            "offset": 138096,
+            "length": 13938
+          },
+          {
+            "chapter_id": "chapter-013",
+            "offset": 152070,
+            "length": 5907
+          },
+          {
+            "chapter_id": "chapter-014",
+            "offset": 158002,
+            "length": 10373
+          },
+          {
+            "chapter_id": "chapter-015",
+            "offset": 168408,
+            "length": 2627
+          },
+          {
+            "chapter_id": "chapter-016",
+            "offset": 171057,
+            "length": 7410
+          },
+          {
+            "chapter_id": "chapter-017",
+            "offset": 178477,
+            "length": 1528
+          }
+        ],
+        "nonmatching_chapters": [],
+        "complete_edition_proven": false,
+        "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+      },
+      "lifetime_publication_evidence": {
+        "creator": "Wells, H. G. (Herbert George), 1866-1946",
+        "creator_death_year": 1946,
+        "selected_collection_publication_year": 1895,
+        "original_story_first_publication_year": null,
+        "basis": "Verified named work/collection publication strictly before creator death establishes lifetime publication; no original first-publication-date inference.",
+        "bibliographic_receipt": {
+          "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Wells%2C%20H.%20G.%20%28Herbert%20George%29%2C%201866-1946",
+          "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Wells%2C%20H.%20G.%20%28Herbert%20George%29%2C%201866-1946",
+          "http_status": 200,
+          "accessed_at": "2026-10-01T21:44:08.525863+00:00",
+          "response_sha256": "c1e19c068adee3d02b19a299a7958e0fd262a8076521c1f36ba967df6add6119"
+        },
+        "bibliographic_excerpt": "Time Machine (based on an 1898 edition) Gutenberg text HTML at Bartleby Wells, H. G. (Herbert George), 1866-1946: The Time Machine: An Invention (London: W. Heinemann, 1895) (page images at HathiTrust) Wells, H. G. (Herbert George), 1866-1946: The Ti",
+        "scope": "Named creator complete selected literary text including available author prefatory/end matter; publisher/source furniture and illustrations excluded."
+      },
+      "author_death_evidence": 1946,
+      "translator": "NONE_SELECTED",
+      "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+      "illustrations": "NONE_IMPORTED",
+      "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+      "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+      "audio": "NOT_AUTHORIZED",
+      "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+    },
+    "containment_alone_complete": false
+  },
+  "cover_quote_checks": [],
+  "assets": [
+    {
+      "kind": "front",
+      "source_file": "covers/original-front.png",
+      "source_sha256": "5eb21ec7c4e3aa4a75c1d3e51de7f78f172850b450d80cc06ca7ebe54f5f9997",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566866/earnalism/covers/front/cover_d4cb4472-7e0a-4bad-ab89-05f7d7ace821.png",
+      "source_bytes": 3526546,
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "licensed_deterministic_overlay": {
+        "file": "covers/the-time-machine-front-deterministic.png",
+        "sha256": "97ea6f6978a5bb4d2edcea13d426019fcb6b46a731fcabe34cb40666e49b5ac0",
+        "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+        "text_title": "The Time Machine",
+        "text_author": "H. G. Wells",
+        "mask_rectangle": [
+          45,
+          45,
+          979,
+          420
+        ],
+        "pixels_outside_mask_exactly_preserved": true,
+        "attempt": 1
+      },
+      "file": "covers/the-time-machine-front-5eb21ec7.webp",
+      "sha256": "2b3e8c93c4ba497456bfd88c7233be9b15a1305397501022f807aa3574746d7a",
+      "bytes": 66758,
+      "dimensions": [
+        600,
+        900
+      ],
+      "url": "https://theearnalism.com/assets/books/the-time-machine/the-time-machine-front-5eb21ec7.webp",
+      "recipe": {
+        "format": "WEBP",
+        "mode": "RGB",
+        "resize": [
+          600,
+          900
+        ],
+        "quality": 40,
+        "method": 6,
+        "resampling": "LANCZOS",
+        "pillow_version": "12.3.0"
+      },
+      "parameter_calibration": [
+        {
+          "dimensions": [
+            600,
+            900
+          ],
+          "quality": 40,
+          "bytes": 66758
+        }
+      ],
+      "review_status": "TWO_INDEPENDENT_NEW_EXACT_VISUAL_DELIVERY_REVIEWS_REQUIRED",
+      "production_observed": false
+    },
+    {
+      "kind": "back",
+      "source_file": "covers/original-back.png",
+      "source_sha256": "982e280d4e7a9c7859ac9f071fb20dac6f4fe7f382e1a724d96bea036af2f015",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566887/earnalism/covers/back/back_cover_d4cb4472-7e0a-4bad-ab89-05f7d7ace821.png",
+      "source_bytes": 2481452,
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "licensed_deterministic_overlay": {
+        "file": "covers/the-time-machine-back-deterministic.png",
+        "sha256": "fcbda9911c8ed2437640b3dbf01a0ce6c20879c80d93eb9ef9f0268ba60e0f60",
+        "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+        "text_title": "The Time Machine",
+        "text_author": "H. G. Wells",
+        "mask_rectangle": [
+          55,
+          1260,
+          969,
+          1460
+        ],
+        "pixels_outside_mask_exactly_preserved": true,
+        "attempt": 1
+      },
+      "file": "covers/the-time-machine-back-982e280d.webp",
+      "sha256": "f14904314cecf4e887358e2a6dd16a512936fe5e42314b281e309f994a54a585",
+      "bytes": 43386,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "url": "https://theearnalism.com/assets/books/the-time-machine/the-time-machine-back-982e280d.webp",
+      "recipe": {
+        "format": "WEBP",
+        "mode": "RGB",
+        "resize": [
+          800,
+          1200
+        ],
+        "quality": 60,
+        "method": 6,
+        "resampling": "LANCZOS",
+        "pillow_version": "12.3.0"
+      },
+      "parameter_calibration": [
+        {
+          "dimensions": [
+            800,
+            1200
+          ],
+          "quality": 60,
+          "bytes": 43386
+        }
+      ],
+      "review_status": "TWO_INDEPENDENT_NEW_EXACT_VISUAL_DELIVERY_REVIEWS_REQUIRED",
+      "production_observed": false
+    }
+  ],
+  "cover_typography_remediation_attempts": 1,
+  "cover_copy_repair_attempts": 0,
+  "delivery_preparation_attempts": 1,
+  "no_new_artwork_or_generation": true,
+  "source_license_and_versions_preserved": true,
+  "archived_historical_duplicate_approval_files": [],
+  "publication_accepted": true,
+  "cover_display_accepted": true,
+  "audio_authorized": false,
+  "production_observed": false,
+  "runtime_fallback_conformance_claimed": false,
+  "actual_acceptance": {
+    "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+    "accepted_at": "2026-10-03T05:34:11.386246+00:00",
+    "independent_reviews": {
+      "review_a": {
+        "file": "evidence/review_a.json",
+        "sha256": "69849aa5884020a53e87e902d3505d2624839e8dd37119d9b03d7df99948fe38"
+      },
+      "review_b": {
+        "file": "evidence/review_b.json",
+        "sha256": "fa6aaff9100965882e389a042a8e81845423737348bbd410831c6954fda2998b"
+      },
+      "source_review_b": {
+        "file": "evidence/source_review_b.json",
+        "sha256": "7e6e03cfd9ebfddb26f0f275b69adb8c4222055a6b466c89cedc7d3173fdda12"
+      }
+    },
+    "production_observed": false,
+    "final_binding_review_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK"
+  }
+}

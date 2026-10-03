@@ -1,0 +1,53 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "book-5704b31005",
+  "title": "বিচারক",
+  "generated_at": "2026-10-03T05:56:54.375811+00:00",
+  "content": {
+    "source_hash": "57835bba9d270aa0c3f31ee280b2ae789f0528be1adfa29815a45826e23e466b",
+    "content_hash": "c9e4ed3927535c11a5d1d5a4729f0c8a1371952a33a6e0e6d36514b3d249b089",
+    "provenance_hash": "e9cff373d3c3941dba5847b5004e2359b0041827d2117e41c7acb345b76e7bc1",
+    "sanitized": true,
+    "chapter_count": 1,
+    "chapter_index_sha256": "a601910dd71d4b09df362a0dcf6df46b530e20b9191cbf54b756010ee69917d9",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "বিচারক",
+        "word_count": 1989,
+        "sha256": "e0325632daa997c635a64d46073efbf6d8fda511635e9b4ababfa3bab79dfd5c"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "f7d3ac1cbe169532038b008d48c0313290cedca638d23c7696d75d3a0c072f3b"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-8f64cc7c.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "90de626c6f7046a73f0e6133652f452df0d8dc346c889111ea56d26a674cce95",
+    "reader_manifest": "6c7daced7a35b9f20ba2f8828e5636d7c644e6ceb272f1707871adafb5a2b759",
+    "source_evidence": "f7d3ac1cbe169532038b008d48c0313290cedca638d23c7696d75d3a0c072f3b",
+    "approval_evidence": "65ac2f1bb5c12727e35acd3a973c52a86dcab5b98d51a316243b8a500fe854fd"
+  },
+  "manifest_sha256": "98e52f9722861e57ed3ba215643eb7c11b3eb63ad218bba21ed4b916cfd58eba"
+}

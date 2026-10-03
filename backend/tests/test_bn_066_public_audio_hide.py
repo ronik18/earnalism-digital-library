@@ -60,24 +60,24 @@ async def ignore_cached_manifest(*_args, **_kwargs):
     return None
 
 
-def test_bn_066_remains_held_and_unavailable_to_reader():
+def test_bn_066_exact_accepted_text_is_available_and_audio_remains_disabled():
     status = catalog_truth.controlled_artifact_status("bn-066")
     artifact = catalog_truth.load_controlled_artifact_book("bn-066", include_content=True)
+    assert status["available"] is True
+    assert status["self_contained_for_truth_gate"] is True
+    assert artifact is not None and len(artifact["chapters"]) == 46
+    assert catalog_truth.can_expose_reader(artifact) is True
+    assert catalog_truth.can_expose_audio(artifact) is False
+    assert server._reader_manifest_audio(artifact, "bn-066")["enabled"] is False
 
-    assert status["available"] is False
-    assert any("not in the controlled live allowlist" in issue for issue in status["issues"])
-    assert status["self_contained_for_truth_gate"] is False
-    assert artifact is None
 
-
-def test_bn_066_reader_manifest_denies_held_title(monkeypatch):
-    monkeypatch.setattr(server, "db", SimpleNamespace(books=EmptyBooks()))
+def test_bn_066_reader_manifest_denies_when_release_allowlist_is_missing(monkeypatch):
+    # A stale database claim cannot bypass the independently tested allowlist.
+    monkeypatch.setattr(server, "_is_controlled_public_slug", lambda _slug: False)
+    monkeypatch.setattr(server, "db", SimpleNamespace(books=LegacyAudioBooks()))
     monkeypatch.setattr(server, "_redis_cache_get", no_cached_manifest)
     monkeypatch.setattr(server, "_redis_cache_set", ignore_cached_manifest)
-
-    manifest = asyncio.run(server._reader_book_manifest_doc("bn-066"))
-
-    assert manifest is None
+    assert asyncio.run(server._reader_book_manifest_doc("bn-066")) is None
 
 
 def test_owner_excluded_bengali_title_is_not_reader_or_audio_exposed():
@@ -139,7 +139,7 @@ def test_bn_066_legacy_audio_endpoint_fails_closed(monkeypatch):
     assert exc_info.value.status_code == 404
 
 
-def test_a_ghost_story_release_does_not_change_bn_066_fail_closed_policy():
+def test_a_ghost_story_and_bn_066_text_release_do_not_admit_audio():
     artifact = catalog_truth.load_controlled_artifact_book("a-ghost-story")
 
     assert artifact is not None
@@ -148,18 +148,17 @@ def test_a_ghost_story_release_does_not_change_bn_066_fail_closed_policy():
     assert server._reader_manifest_audio(artifact, "a-ghost-story")["enabled"] is False
 
     bn_066 = catalog_truth.load_controlled_artifact_book("bn-066")
-    assert bn_066 is None
+    assert bn_066 is not None
+    assert catalog_truth.can_expose_reader(bn_066) is True
+    assert catalog_truth.can_expose_audio(bn_066) is False
+    assert server._reader_manifest_audio(bn_066, "bn-066")["enabled"] is False
 
 
 @pytest.mark.parametrize(
     "slug",
     [
-        "alices-adventures-in-wonderland",
         "bn-027",
-        "lokrahasya",
-        "mrinalini",
         "nishkriti",
-        "the-wonderful-wizard-of-oz",
     ],
 )
 def test_historical_reconstruction_titles_remain_outside_reader_allowlist(slug):
@@ -167,3 +166,18 @@ def test_historical_reconstruction_titles_remain_outside_reader_allowlist(slug):
 
     assert slug not in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
     assert artifact is None
+
+
+@pytest.mark.parametrize("slug, count", [
+    ("alices-adventures-in-wonderland", 12), ("lokrahasya", 16),
+    ("mrinalini", 46), ("the-wonderful-wizard-of-oz", 25),
+])
+def test_exact_reconstruction_text_releases_keep_audio_disabled(slug, count):
+    artifact = catalog_truth.load_controlled_artifact_book(slug, include_content=True)
+    assert slug in catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS
+    assert artifact is not None and len(artifact["chapters"]) == count
+    assert catalog_truth.can_expose_reader(artifact) is True
+    assert catalog_truth.can_expose_audio(artifact) is False
+    audio = server._reader_manifest_audio(artifact, slug)
+    assert audio["enabled"] is False
+    assert audio.get("url") in (None, "")

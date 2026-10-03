@@ -1,0 +1,32 @@
+{
+  "slug": "the-selfish-giant",
+  "retrieved_at": "2026-10-03T04:19:36.502135+00:00",
+  "requests": [
+    {
+      "kind": "front",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267898/earnalism/covers/front/the-selfish-giant_front_1600x2400.png",
+      "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267898/earnalism/covers/front/the-selfish-giant_front_1600x2400.png",
+      "http_status": 200,
+      "sha256": "f10e1353932821ab22a0d13b68a40394f06eb1c9a97b04e5e126897dfbb3fcc2",
+      "bytes": 191923,
+      "dimensions": [
+        1600,
+        2400
+      ],
+      "get_count": 1
+    },
+    {
+      "kind": "back",
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267899/earnalism/covers/back/the-selfish-giant_back_1600x2400.png",
+      "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267899/earnalism/covers/back/the-selfish-giant_back_1600x2400.png",
+      "http_status": 200,
+      "sha256": "6903c7610ac6141b0f4d8d025e7e9fe9f347e2922996368ef7dd28fe8c18b511",
+      "bytes": 385082,
+      "dimensions": [
+        1600,
+        2400
+      ],
+      "get_count": 1
+    }
+  ]
+}

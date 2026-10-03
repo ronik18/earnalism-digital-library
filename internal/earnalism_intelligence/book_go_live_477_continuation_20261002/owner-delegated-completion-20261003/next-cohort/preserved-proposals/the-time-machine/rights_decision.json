@@ -1,0 +1,38 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "proposal-20261003-the-time-machine-exact-cover-delivery",
+  "edition_id": "the-time-machine",
+  "operator_id": "reo-enterprise",
+  "status": "PROPOSED",
+  "components": {
+    "public_book": "21a2766ec58756efc68a438455aeacbe259174f9cbf63a71f0152a0635f169a4",
+    "reader_manifest": "1874f35f864ccffa65a9d7e38312c3f84df7fd8880120db0ac4ead237d1d913a",
+    "source_evidence": "010c2fd7d0fa5ae1370f081876448c94a9bad177df7fe0b621b0f91c39af0cf5",
+    "approval_evidence": "525ca18721bff177acdecc57adc394a5a1f1a2ea25055f5fa1a2215ae8f80197",
+    "checksum_manifest": "2417c0dffb6d75d410d2a5598ae10e5303feb79d93bb05f24c97f5e06d5cec3a",
+    "publication_manifest": "5e1fcda1e55d05f1813f86e26e4e87a5cc12b70b48d9210205a02caffb28d729",
+    "cover_preparation": "3fe9780bc1564a183eb535e3e73fda63d88c37871a0b3eaedd5108ec7778202d"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:49:40.745164+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1946, verified lifetime collection publication 1895 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "399587f82d95987bcc4dd010783a62e5e01f5e5bbad6a3c336b4fdac46e24538",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ddff4d02c636c57500215604f778bd3b8b9883d5ca9d5de89dc1480b29fa52c3",
+    "2892e919000e17c83e1dac51b30f4675db50536b644d7579fe8a89bb399a9bdc",
+    "b9e67357d69352f3e18b2ceb03d55609ffe59dfa48277ff9aff76dc2fa63d488"
+  ],
+  "accepted_by": "UNACCEPTED isolated preparation; root actual delegated acceptance required.",
+  "conditions_satisfied": false
+}

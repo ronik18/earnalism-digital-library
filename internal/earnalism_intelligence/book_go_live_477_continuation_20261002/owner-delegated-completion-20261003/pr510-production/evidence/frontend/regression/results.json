@@ -1,0 +1,25 @@
+{
+  "regressionRunId": "canary-1791004818561",
+  "mode": "canary",
+  "generatedAt": "2026-10-03T05:20:18.561Z",
+  "modules": [
+    {
+      "moduleName": "Post-deploy Canary",
+      "totalChecks": 4,
+      "passedChecks": 4,
+      "failedChecks": 0,
+      "skippedChecks": 0,
+      "score": 100,
+      "mandatory": true,
+      "failures": [],
+      "artifacts": []
+    }
+  ],
+  "pass": true,
+  "mandatoryFailures": [],
+  "summary": {
+    "totalModules": 1,
+    "passedModules": 1,
+    "failedMandatoryModules": 0
+  }
+}

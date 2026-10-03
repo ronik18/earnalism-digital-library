@@ -1,0 +1,28 @@
+{
+  "slug": "the-science-of-getting-rich",
+  "state": "UNACCEPTED_INACTIVE_PACKAGE_REVIEW_ONLY",
+  "decision_file_sha256": "2ff5f37e8f6e90d7a232b9f478a5f0d2086e6f1e2ff15d5d6fd4b343d2aafa9f",
+  "decision_canonical_sha256": "551a94e6aa0b5b79286607ef8fd6c7390822e3b79491776aa4d424d7cc562781",
+  "controlled_checksums": 26,
+  "controlled_checksums_pass": true,
+  "source_evidence_byte_exact_preserved": true,
+  "chapters_byte_exact_preserved": true,
+  "root_backend_byte_identity": true,
+  "active_audio_claims_or_urls": [],
+  "audio_removed_from_effective_metadata": {
+    "public_book": [
+      "audio_enabled",
+      "audiobook_enabled",
+      "generate_audiobook",
+      "audiobook_provider",
+      "audiobook_voice",
+      "audio_asset_slug"
+    ],
+    "reader_manifest": [
+      "audio_enabled",
+      "audiobook_enabled"
+    ]
+  },
+  "historical_preimages_preserved": true,
+  "publication_registry_allowlist_or_production_mutation": false
+}

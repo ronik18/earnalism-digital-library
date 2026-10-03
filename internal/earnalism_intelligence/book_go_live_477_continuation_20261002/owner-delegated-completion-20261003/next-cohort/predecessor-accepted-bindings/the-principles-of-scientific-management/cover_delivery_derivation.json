@@ -1,0 +1,81 @@
+{
+  "schema": "earnalism.exact-cover-delivery-derivation.v1",
+  "slug": "the-principles-of-scientific-management",
+  "assets": [
+    {
+      "kind": "front",
+      "source_file": "covers/front.png",
+      "source_sha256": "67895aecbc4c29e45658819f7b76316a3caecf5d9cca79c4592c03c5d90d581b",
+      "source_bytes": 2351699,
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "delivery_file": "frontend/public/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-front-67895aec-600.webp",
+      "delivery_sha256": "b53d8f06691749b6c82fe003513163330698b53ba4f5d02721d15d7f17a68644",
+      "delivery_bytes": 64336,
+      "delivery_dimensions": [
+        600,
+        900
+      ],
+      "url": "https://theearnalism.com/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-front-67895aec-600.webp",
+      "recipe": {
+        "format": "WEBP",
+        "mode": "RGB",
+        "quality": 64,
+        "method": 6,
+        "resampling": "LANCZOS",
+        "resize": "aspect-preserving contain 600x900",
+        "content_dimensions": [
+          600,
+          900
+        ],
+        "padding_xy": [
+          0,
+          0
+        ],
+        "pillow_version": "12.3.0"
+      },
+      "production_observed": false
+    },
+    {
+      "kind": "back",
+      "source_file": "covers/back.png",
+      "source_sha256": "a544cc2b26c584891032db2fd9ea447f33b4a72ab1e7801a5de853f3463aa5b9",
+      "source_bytes": 2636583,
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "delivery_file": "frontend/public/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-back-a544cc2b-600.webp",
+      "delivery_sha256": "ed604d4e425551bba8863ccbc93c919d77ed42122a4d5c15bb217f604432348a",
+      "delivery_bytes": 52330,
+      "delivery_dimensions": [
+        600,
+        900
+      ],
+      "url": "https://theearnalism.com/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-back-a544cc2b-600.webp",
+      "recipe": {
+        "format": "WEBP",
+        "mode": "RGB",
+        "quality": 64,
+        "method": 6,
+        "resampling": "LANCZOS",
+        "resize": "aspect-preserving contain 600x900",
+        "content_dimensions": [
+          600,
+          900
+        ],
+        "padding_xy": [
+          0,
+          0
+        ],
+        "pillow_version": "12.3.0"
+      },
+      "production_observed": false
+    }
+  ],
+  "review_status": "PENDING_TWO_FRESH_EXACT_PNG_WEBP_VISUAL_CHECKS",
+  "production_observed": false,
+  "runtime_observed": false
+}

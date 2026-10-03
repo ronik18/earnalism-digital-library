@@ -1,0 +1,41 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-book-5704b31005-exact-edition-text-cover-proposal",
+  "edition_id": "book-5704b31005",
+  "operator_id": "reo-enterprise",
+  "status": "PROPOSED",
+  "components": {
+    "source_evidence": "f7d3ac1cbe169532038b008d48c0313290cedca638d23c7696d75d3a0c072f3b",
+    "source_integrity_validation": "89eac8e38ab78c63ae74dc799b89c6fe6fef9aa5755e55c645c94a1dd7ea11f6",
+    "publication_manifest": "6cc82e3f6c64d168ad93c4e679ea3bab821a97955ebe5225a95f6c13d75f8285",
+    "reader_manifest": "6c7daced7a35b9f20ba2f8828e5636d7c644e6ceb272f1707871adafb5a2b759",
+    "approval_evidence": "439cba2b2a0eb7acce8eddebe3bb1e78a0d250949812e140ab4249aa55cc4b76",
+    "public_book": "1e06b7ce1b81bc98b3677fc5e5999aa41862fbbd5a736d5755543b85ba660819",
+    "checksum_manifest": "aafb1d0ae21a18c85b2807d6f84c96c3d8c4c6b63be58ba7de102735688b809f",
+    "cover_provenance": "11b9a5b36b710e84941171ad69d3975ae9230e17af120a8af53d59ad1609aa59"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "cover_display",
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T05:45:35.963016+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Exact Galpa-Dashak original1302/1895 sole-author Rabindranath Tagore edition; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1941; India Section22 literary term expired end2001. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held. Proposed exact owner cover mask/typeset derivatives; fresh2 passing independent reviews and actual automated acceptance remain required.",
+  "evidence_sha256": [
+    "4a101e1fe9a73ea196fbf82b7fda9b44ef84e7da7ecc484ac9a10e96dd4e22f4",
+    "f9569f74c51b89b6116867d0dac02049d4647573ae057de9e23b99aa22be9db3",
+    "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "1fc9cf8fae864434f95bc34656a96672c55d852f3dfdad4a1f386a1a1cc4e01c",
+    "8492830be5d4cec1996381e2d94cf25353bd75f92a843524b26d535356c74218",
+    "0bb4e780b9f0c237534d451a33f96bcf0d87073fa93162762604af6e97761d36"
+  ],
+  "accepted_by": "NOT_ACCEPTED: automated isolated proposal worker under prospective owner authority; no human/legal signature or production observations.",
+  "conditions_satisfied": false
+}

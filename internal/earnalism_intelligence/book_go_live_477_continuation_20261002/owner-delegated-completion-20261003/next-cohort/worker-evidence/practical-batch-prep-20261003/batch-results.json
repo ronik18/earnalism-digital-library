@@ -1,0 +1,944 @@
+{
+  "schema": "earnalism.practical-batch-frozen-results.v1",
+  "recorded_at": "2026-10-03T05:14:30.749182+00:00",
+  "status": "FOUR_DISTINCT_INACTIVE_UNACCEPTED_PACKETS_TWO_REVIEWS_REQUIRED",
+  "shared_mutations": false,
+  "titles": [
+    {
+      "slug": "bharat-at-the-crossroads",
+      "status": "INACTIVE_UNACCEPTED_TWO_INDEPENDENT_REVIEWS_REQUIRED",
+      "candidate": "/workspace/scratch/181ef0a25f05/practical-batch-prep-20261003/bharat-at-the-crossroads/inactive-candidate",
+      "validation_file": "/workspace/scratch/181ef0a25f05/practical-batch-prep-20261003/bharat-at-the-crossroads/preparation-validation.json",
+      "validation_sha256": "aefbec04119d4e11ba59ff860f076182e1132f1d9dd68e338b49d2096fea2d4f",
+      "checksums_verified": 12,
+      "files": 15,
+      "cover_dimensions": [
+        800,
+        1200
+      ],
+      "delivery_budgets": "PASS_FRONT_80000_BACK_180000",
+      "validation": {
+        "schema": "earnalism.distinct-practical-title-preparation.v1",
+        "slug": "bharat-at-the-crossroads",
+        "status": "INACTIVE_UNACCEPTED_TWO_INDEPENDENT_REVIEWS_REQUIRED",
+        "recorded_at": "2026-10-03T05:04:16.164575+00:00",
+        "source_proof_sha256": "01c2fb4ab9c360ced67e4b7a899d06995e7553ad8696fc5b9f1926b201b821ee",
+        "source_originals_chapters_sync_decisions_preserved": true,
+        "exact_prior_IN_text_basis": true,
+        "one_get_per_original_cover": true,
+        "one_bounded_typography_copy_attempt": true,
+        "deterministic_typography_overlay_actual_execution_proven": true,
+        "original_typography_creation_method_inferred": false,
+        "font_license_actual_bytes_preserved": true,
+        "cover_dimensions_actual": [
+          800,
+          1200
+        ],
+        "delivery_budgets": "PASS_FRONT_80000_BACK_180000",
+        "all_active_JSON_audio_and_observation_claim_scan": "PASS_NO_POSITIVE_CLAIMS",
+        "historical_duplicates_archive_only": [],
+        "original_assets": {
+          "front": {
+            "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+            "file": "recovered/front.png",
+            "sha256": "2a517ab7b0f1c4d05b44c037fcb6063903b59f03632e2829699dee57dfacfcb0",
+            "bytes": 2391609,
+            "dimensions": [
+              1054,
+              1492
+            ],
+            "method": "One successful GET per persisted original URL; no prior original-byte checksum or creation-method fact inferred."
+          },
+          "back": {
+            "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+            "file": "recovered/back.png",
+            "sha256": "ffd089b16f31ad5145ae98e5c712667b921d71d00901a4a168fb8c2811acf3c7",
+            "bytes": 2261810,
+            "dimensions": [
+              1054,
+              1492
+            ],
+            "method": "One successful GET per persisted original URL; no prior original-byte checksum or creation-method fact inferred."
+          }
+        },
+        "delivery_assets": [
+          {
+            "kind": "front",
+            "source_file": "covers/front.png",
+            "source_sha256": "674c1aee2b6c1a7b25a5b28cd7e4737787153b8f0f4d8e6c8f7ee83a92a28c05",
+            "source_bytes": 1978135,
+            "source_dimensions": [
+              1054,
+              1492
+            ],
+            "delivery_file": "frontend/public/assets/books/bharat-at-the-crossroads/bharat-at-the-crossroads-front-674c1aee-800.webp",
+            "delivery_sha256": "5d5445f1d88d0ba092dbc363621eaedfcea8a9356fb22481a9c59fe455830d4d",
+            "delivery_bytes": 77492,
+            "delivery_dimensions": [
+              800,
+              1200
+            ],
+            "url": "https://theearnalism.com/assets/books/bharat-at-the-crossroads/bharat-at-the-crossroads-front-674c1aee-800.webp",
+            "recipe": {
+              "format": "WEBP",
+              "mode": "RGB",
+              "quality": 64,
+              "method": 6,
+              "resampling": "LANCZOS",
+              "resize": "aspect-preserving contain 800x1200",
+              "content_dimensions": [
+                800,
+                1132
+              ],
+              "padding_xy": [
+                0,
+                34
+              ],
+              "pillow_version": "12.3.0"
+            },
+            "production_observed": false
+          },
+          {
+            "kind": "back",
+            "source_file": "covers/back.png",
+            "source_sha256": "2e7564a64bb215397374a734e66e023010c22cdead23d3cb812ded6a54bc7665",
+            "source_bytes": 1623151,
+            "source_dimensions": [
+              1054,
+              1492
+            ],
+            "delivery_file": "frontend/public/assets/books/bharat-at-the-crossroads/bharat-at-the-crossroads-back-2e7564a6-800.webp",
+            "delivery_sha256": "cb46a1b7acbdce0d585fc98d19554e69bba4525410b9f678cfd38fbf21aa420f",
+            "delivery_bytes": 56054,
+            "delivery_dimensions": [
+              800,
+              1200
+            ],
+            "url": "https://theearnalism.com/assets/books/bharat-at-the-crossroads/bharat-at-the-crossroads-back-2e7564a6-800.webp",
+            "recipe": {
+              "format": "WEBP",
+              "mode": "RGB",
+              "quality": 64,
+              "method": 6,
+              "resampling": "LANCZOS",
+              "resize": "aspect-preserving contain 800x1200",
+              "content_dimensions": [
+                800,
+                1132
+              ],
+              "padding_xy": [
+                0,
+                34
+              ],
+              "pillow_version": "12.3.0"
+            },
+            "production_observed": false
+          }
+        ],
+        "proposed_decision_record_sha256": "4b9706fb36b0f08ab6216282e1e3aead6a98d93037f206539a48e1c2d9914d07",
+        "candidate_inventory": [
+          {
+            "file": "approval_evidence.json",
+            "sha256": "701b2d1d0c779b57fe5a23e4610d23ec9a3586b5959848db3e5b8936144bfa75"
+          },
+          {
+            "file": "chapters/chapter-001.json",
+            "sha256": "fdfa8aee8c648f05ff1165e03d42c44c46324ad1e531e2c29790a6c02c700f02"
+          },
+          {
+            "file": "checksum_manifest.json",
+            "sha256": "b0b595485b4a32cb53a300576e87e0c0672b31f896e4335713fb1d8ae7937915"
+          },
+          {
+            "file": "cover_delivery_derivation.json",
+            "sha256": "8aba3337c8140ddcb424fea5bc3b196199c555888e9c4f455c9b605e5b3cd0ed"
+          },
+          {
+            "file": "cover_provenance.json",
+            "sha256": "9d44371e25509308c9d08466e1cf8c07c6f2d8dcfd3e0ce63b273f12bcada205"
+          },
+          {
+            "file": "covers/back.png",
+            "sha256": "2e7564a64bb215397374a734e66e023010c22cdead23d3cb812ded6a54bc7665"
+          },
+          {
+            "file": "covers/front.png",
+            "sha256": "674c1aee2b6c1a7b25a5b28cd7e4737787153b8f0f4d8e6c8f7ee83a92a28c05"
+          },
+          {
+            "file": "highlight_sync.json",
+            "sha256": "800de1dc55c5fa17b5d3810f91650935f235bc65891f2f85acf4731e0c5fa0ab"
+          },
+          {
+            "file": "public_book.json",
+            "sha256": "b9692c348f3e9d2323c27b6616010c17ca55473daabad92da4ade1da6fc2eb42"
+          },
+          {
+            "file": "publication_authorization.json",
+            "sha256": "ef67bcf8019f04b2c78b5315d758aa42df3dd438297c884a9056d5d08a26b421"
+          },
+          {
+            "file": "publication_manifest.json",
+            "sha256": "b2b1865bb24bc5d781506a712d26e897bb00759e1019183e970fdfc3154de556"
+          },
+          {
+            "file": "reader_manifest.json",
+            "sha256": "7a73f6ebbaafec41301aa231c8f4d057d39892e6d2ffb3017941914809e47668"
+          },
+          {
+            "file": "rights_decision.json",
+            "sha256": "e70916c8ff0c7b55c94325851450fdad70318cc22d9ebf3951083fec8fb11f9a"
+          },
+          {
+            "file": "source_evidence.json",
+            "sha256": "52c92e6c6325c608bceec71928da428ac67be2b9d17c2c01ffc93c311fdd8e36"
+          },
+          {
+            "file": "source_integrity_validation.json",
+            "sha256": "01c2fb4ab9c360ced67e4b7a899d06995e7553ad8696fc5b9f1926b201b821ee"
+          }
+        ],
+        "publication_accepted": false,
+        "cover_accepted": false,
+        "paid_generation_calls": 0,
+        "registry_allowlist_shared_source_production_mutations": false,
+        "next_action": "Two independent fresh exact PNG/WebP/source/provenance/font-policy/package reviews. Substantial unresolved dispute after this attempt means terminal active-plan exclusion; no repeated art/source work."
+      }
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "status": "INACTIVE_UNACCEPTED_TWO_INDEPENDENT_REVIEWS_REQUIRED",
+      "candidate": "/workspace/scratch/181ef0a25f05/practical-batch-prep-20261003/the-principles-of-scientific-management/inactive-candidate",
+      "validation_file": "/workspace/scratch/181ef0a25f05/practical-batch-prep-20261003/the-principles-of-scientific-management/preparation-validation.json",
+      "validation_sha256": "f5f9034b40ec922efecfbe4cfe76b8bc07544dbee58fe77db6cce48d82163b07",
+      "checksums_verified": 15,
+      "files": 18,
+      "cover_dimensions": [
+        600,
+        900
+      ],
+      "delivery_budgets": "PASS_FRONT_80000_BACK_180000",
+      "validation": {
+        "schema": "earnalism.distinct-practical-title-preparation.v1",
+        "slug": "the-principles-of-scientific-management",
+        "status": "INACTIVE_UNACCEPTED_TWO_INDEPENDENT_REVIEWS_REQUIRED",
+        "recorded_at": "2026-10-03T05:10:03.145513+00:00",
+        "source_proof_sha256": "1783ac19971b24959ba3c9334a80a473ec2afc37d75f8ea793b84445eb7d9ad9",
+        "source_originals_chapters_sync_decisions_preserved": true,
+        "exact_prior_IN_text_basis": true,
+        "one_get_per_original_cover": true,
+        "one_bounded_typography_copy_attempt": true,
+        "deterministic_typography_overlay_actual_execution_proven": true,
+        "original_typography_creation_method_inferred": false,
+        "font_license_actual_bytes_preserved": true,
+        "cover_dimensions_actual": [
+          600,
+          900
+        ],
+        "delivery_budgets": "PASS_FRONT_80000_BACK_180000",
+        "all_active_JSON_audio_and_observation_claim_scan": "PASS_NO_POSITIVE_CLAIMS",
+        "historical_duplicates_archive_only": [],
+        "original_assets": {
+          "front": {
+            "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950275/earnalism/covers/front/cover_279d4a41-b545-4371-80c9-4dc4e816f934.png",
+            "file": "recovered/front.png",
+            "sha256": "95e0d15b63239cbac65cb8911656608b0a5532063751c1f9f9c0b1ef8ba81c77",
+            "bytes": 3315747,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "method": "One successful GET per persisted original URL; no prior original-byte checksum or creation-method fact inferred."
+          },
+          "back": {
+            "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950283/earnalism/covers/back/back_cover_279d4a41-b545-4371-80c9-4dc4e816f934.png",
+            "file": "recovered/back.png",
+            "sha256": "e24a4592a4f0616b3b2fce31a6f960cded1f9a97cc852340ed8b1e648e454427",
+            "bytes": 2862540,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "method": "One successful GET per persisted original URL; no prior original-byte checksum or creation-method fact inferred."
+          }
+        },
+        "delivery_assets": [
+          {
+            "kind": "front",
+            "source_file": "covers/front.png",
+            "source_sha256": "67895aecbc4c29e45658819f7b76316a3caecf5d9cca79c4592c03c5d90d581b",
+            "source_bytes": 2351699,
+            "source_dimensions": [
+              1024,
+              1536
+            ],
+            "delivery_file": "frontend/public/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-front-67895aec-600.webp",
+            "delivery_sha256": "b53d8f06691749b6c82fe003513163330698b53ba4f5d02721d15d7f17a68644",
+            "delivery_bytes": 64336,
+            "delivery_dimensions": [
+              600,
+              900
+            ],
+            "url": "https://theearnalism.com/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-front-67895aec-600.webp",
+            "recipe": {
+              "format": "WEBP",
+              "mode": "RGB",
+              "quality": 64,
+              "method": 6,
+              "resampling": "LANCZOS",
+              "resize": "aspect-preserving contain 600x900",
+              "content_dimensions": [
+                600,
+                900
+              ],
+              "padding_xy": [
+                0,
+                0
+              ],
+              "pillow_version": "12.3.0"
+            },
+            "production_observed": false
+          },
+          {
+            "kind": "back",
+            "source_file": "covers/back.png",
+            "source_sha256": "a544cc2b26c584891032db2fd9ea447f33b4a72ab1e7801a5de853f3463aa5b9",
+            "source_bytes": 2636583,
+            "source_dimensions": [
+              1024,
+              1536
+            ],
+            "delivery_file": "frontend/public/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-back-a544cc2b-600.webp",
+            "delivery_sha256": "ed604d4e425551bba8863ccbc93c919d77ed42122a4d5c15bb217f604432348a",
+            "delivery_bytes": 52330,
+            "delivery_dimensions": [
+              600,
+              900
+            ],
+            "url": "https://theearnalism.com/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-back-a544cc2b-600.webp",
+            "recipe": {
+              "format": "WEBP",
+              "mode": "RGB",
+              "quality": 64,
+              "method": 6,
+              "resampling": "LANCZOS",
+              "resize": "aspect-preserving contain 600x900",
+              "content_dimensions": [
+                600,
+                900
+              ],
+              "padding_xy": [
+                0,
+                0
+              ],
+              "pillow_version": "12.3.0"
+            },
+            "production_observed": false
+          }
+        ],
+        "proposed_decision_record_sha256": "838a6c05282f77fd15d418ff6af0448d8a165129fed169e61c8afbfc2255d4af",
+        "candidate_inventory": [
+          {
+            "file": "approval_evidence.json",
+            "sha256": "5f654536e1a4b6d954ae7433d7ee3041522935b941cf6a651598068e28c50c00"
+          },
+          {
+            "file": "chapters/chapter-001.json",
+            "sha256": "54a34be7806d09e5d94918947214e4d2d58f78367fdab1efd9da8489522c2a35"
+          },
+          {
+            "file": "chapters/chapter-002.json",
+            "sha256": "5d5831cc3266c2a972290056cfeb8e3d598c09412b0bf35027687a704a56e994"
+          },
+          {
+            "file": "chapters/chapter-003.json",
+            "sha256": "0eb52d90eeea32e4aa583cc95ece5cb8350901a3f955274244aa916cf88b001c"
+          },
+          {
+            "file": "chapters/chapter-004.json",
+            "sha256": "33cd142e22486d545f9302026058eb1bac8d14efb80b25ac1cd0b241553197fb"
+          },
+          {
+            "file": "checksum_manifest.json",
+            "sha256": "a0baaad9d0aef490765fc4df7c1c32dfd6e20da616df808cb263c59d9358d06d"
+          },
+          {
+            "file": "cover_delivery_derivation.json",
+            "sha256": "9b6609b625a2c7a15224c337d763ce93eb8c48356e299dd5ddf4bfac24be287b"
+          },
+          {
+            "file": "cover_provenance.json",
+            "sha256": "f2234723ac9e70422a49051d8a0346a4d99cc1a031cf4baca0b1d09dd901af41"
+          },
+          {
+            "file": "covers/back.png",
+            "sha256": "a544cc2b26c584891032db2fd9ea447f33b4a72ab1e7801a5de853f3463aa5b9"
+          },
+          {
+            "file": "covers/front.png",
+            "sha256": "67895aecbc4c29e45658819f7b76316a3caecf5d9cca79c4592c03c5d90d581b"
+          },
+          {
+            "file": "highlight_sync.json",
+            "sha256": "a41defc9882bca4759e902093932f56cbf628eb9f0e3e5860b9295d26a9c6ae0"
+          },
+          {
+            "file": "public_book.json",
+            "sha256": "0fd1577d7b69dd894bf23a2bee8bb33c114e2bf375569668b334e31c4887fdc2"
+          },
+          {
+            "file": "publication_authorization.json",
+            "sha256": "3f67c27b5b426f3debadaef12c263d04521980901edf7426d071fc111285cbca"
+          },
+          {
+            "file": "publication_manifest.json",
+            "sha256": "b8f6532b363216fb0269992c1f6dc8139d68e32a0ea122bc212329b8852cbf22"
+          },
+          {
+            "file": "reader_manifest.json",
+            "sha256": "87a47f53b9dbcbae66a09bee4bcc5769f4b5f584ef9bdfc4ab31b65959c3318f"
+          },
+          {
+            "file": "rights_decision.json",
+            "sha256": "ff37d736b4db88ba1721ab78bf11cafd707bf46419ac589f8e081a880cdbb09f"
+          },
+          {
+            "file": "source_evidence.json",
+            "sha256": "e6b091fd0aebe2517dd1e2b6c8e8ef14d5ea6d6540daa66c33e0ba27a9ef2380"
+          },
+          {
+            "file": "source_integrity_validation.json",
+            "sha256": "1783ac19971b24959ba3c9334a80a473ec2afc37d75f8ea793b84445eb7d9ad9"
+          }
+        ],
+        "publication_accepted": false,
+        "cover_accepted": false,
+        "paid_generation_calls": 0,
+        "registry_allowlist_shared_source_production_mutations": false,
+        "next_action": "Two independent fresh exact PNG/WebP/source/provenance/font-policy/package reviews. Substantial unresolved dispute after this attempt means terminal active-plan exclusion; no repeated art/source work."
+      }
+    },
+    {
+      "slug": "acres-of-diamonds",
+      "status": "INACTIVE_UNACCEPTED_TWO_INDEPENDENT_REVIEWS_REQUIRED",
+      "candidate": "/workspace/scratch/181ef0a25f05/practical-batch-prep-20261003/acres-of-diamonds/inactive-candidate",
+      "validation_file": "/workspace/scratch/181ef0a25f05/practical-batch-prep-20261003/acres-of-diamonds/preparation-validation.json",
+      "validation_sha256": "5830dd126ff043b0aa00f53c85f331e84248cabd6a82af1f45a8d33f2e0e95da",
+      "checksums_verified": 23,
+      "files": 26,
+      "cover_dimensions": [
+        600,
+        900
+      ],
+      "delivery_budgets": "PASS_FRONT_80000_BACK_180000",
+      "validation": {
+        "schema": "earnalism.distinct-practical-title-preparation.v1",
+        "slug": "acres-of-diamonds",
+        "status": "INACTIVE_UNACCEPTED_TWO_INDEPENDENT_REVIEWS_REQUIRED",
+        "recorded_at": "2026-10-03T05:10:03.145513+00:00",
+        "source_proof_sha256": "0e6526eec3c4a1a71d35e75c07401b7e6b7d9cba96e9847732afad064ada3889",
+        "source_originals_chapters_sync_decisions_preserved": true,
+        "exact_prior_IN_text_basis": true,
+        "one_get_per_original_cover": true,
+        "one_bounded_typography_copy_attempt": true,
+        "deterministic_typography_overlay_actual_execution_proven": true,
+        "original_typography_creation_method_inferred": false,
+        "font_license_actual_bytes_preserved": true,
+        "cover_dimensions_actual": [
+          600,
+          900
+        ],
+        "delivery_budgets": "PASS_FRONT_80000_BACK_180000",
+        "all_active_JSON_audio_and_observation_claim_scan": "PASS_NO_POSITIVE_CLAIMS",
+        "historical_duplicates_archive_only": [],
+        "original_assets": {
+          "front": {
+            "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950259/earnalism/covers/front/cover_fe1c453a-e7aa-41cd-b5ba-b49904757430.png",
+            "file": "recovered/front.png",
+            "sha256": "eb4d1b5c8331bb3f82bd50833f37f24021f9dd8383a0798a1ba1509a95381477",
+            "bytes": 3074152,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "method": "One successful GET per persisted original URL; no prior original-byte checksum or creation-method fact inferred."
+          },
+          "back": {
+            "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950267/earnalism/covers/back/back_cover_fe1c453a-e7aa-41cd-b5ba-b49904757430.png",
+            "file": "recovered/back.png",
+            "sha256": "464ef4533044b0233f1c7bce4289fff3ecf3b40e9dd14aa7401f4d1ed61ac6a5",
+            "bytes": 2916836,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "method": "One successful GET per persisted original URL; no prior original-byte checksum or creation-method fact inferred."
+          }
+        },
+        "delivery_assets": [
+          {
+            "kind": "front",
+            "source_file": "covers/front.png",
+            "source_sha256": "cdffd02edb00ddb0af8d55ad5ba6eeffef7d8be9683123fc3193b88e98a7e235",
+            "source_bytes": 2336578,
+            "source_dimensions": [
+              1024,
+              1536
+            ],
+            "delivery_file": "frontend/public/assets/books/acres-of-diamonds/acres-of-diamonds-front-cdffd02e-600.webp",
+            "delivery_sha256": "ea5a75bc67aced9aed13683776a3a21ff75173b3cd41cecdef7e4081b6732467",
+            "delivery_bytes": 66054,
+            "delivery_dimensions": [
+              600,
+              900
+            ],
+            "url": "https://theearnalism.com/assets/books/acres-of-diamonds/acres-of-diamonds-front-cdffd02e-600.webp",
+            "recipe": {
+              "format": "WEBP",
+              "mode": "RGB",
+              "quality": 64,
+              "method": 6,
+              "resampling": "LANCZOS",
+              "resize": "aspect-preserving contain 600x900",
+              "content_dimensions": [
+                600,
+                900
+              ],
+              "padding_xy": [
+                0,
+                0
+              ],
+              "pillow_version": "12.3.0"
+            },
+            "production_observed": false
+          },
+          {
+            "kind": "back",
+            "source_file": "covers/back.png",
+            "source_sha256": "b3fb289b101e3a09596321f9f12994b41149d0b8fb4cb855e83429fe393d51dd",
+            "source_bytes": 2371901,
+            "source_dimensions": [
+              1024,
+              1536
+            ],
+            "delivery_file": "frontend/public/assets/books/acres-of-diamonds/acres-of-diamonds-back-b3fb289b-600.webp",
+            "delivery_sha256": "ce68313111e4b164e3383ffe3a52afe99417c76a6b489e31e29ed0210de3141e",
+            "delivery_bytes": 64826,
+            "delivery_dimensions": [
+              600,
+              900
+            ],
+            "url": "https://theearnalism.com/assets/books/acres-of-diamonds/acres-of-diamonds-back-b3fb289b-600.webp",
+            "recipe": {
+              "format": "WEBP",
+              "mode": "RGB",
+              "quality": 64,
+              "method": 6,
+              "resampling": "LANCZOS",
+              "resize": "aspect-preserving contain 600x900",
+              "content_dimensions": [
+                600,
+                900
+              ],
+              "padding_xy": [
+                0,
+                0
+              ],
+              "pillow_version": "12.3.0"
+            },
+            "production_observed": false
+          }
+        ],
+        "proposed_decision_record_sha256": "04cadb634585a163429a2eeff531ae5365200f5747cdd64562cdf926979af73e",
+        "candidate_inventory": [
+          {
+            "file": "approval_evidence.json",
+            "sha256": "08f88672f96d5a0bceaac91af3a5712348aef2b9c417c7b899908678cb22e4a8"
+          },
+          {
+            "file": "chapters/chapter-001.json",
+            "sha256": "11778e545fbe6bd748b1de53d919c61046895d52f28fcd2f19d0019c8050bfb5"
+          },
+          {
+            "file": "chapters/chapter-002.json",
+            "sha256": "b8d33891dd45ccae231df2691f8146a403f32b29d29898312c4b96a483e67998"
+          },
+          {
+            "file": "chapters/chapter-003.json",
+            "sha256": "782852fb98ddde22452d57db05ab27d987015f326585df5ee58ede7b78c506f9"
+          },
+          {
+            "file": "chapters/chapter-004.json",
+            "sha256": "c2a0e8927cfc582810ee0c792d187d5d6fa7b6848657701c8b206897974e75de"
+          },
+          {
+            "file": "chapters/chapter-005.json",
+            "sha256": "fc3b8598acf22016d218b7ab68576211c9fce6432abc1aef9cc575b241e52ff5"
+          },
+          {
+            "file": "chapters/chapter-006.json",
+            "sha256": "ae6ba36b24060d5be435c9e6ce034b2ac8e79d1a9b95f27bbec51867440cd9c2"
+          },
+          {
+            "file": "chapters/chapter-007.json",
+            "sha256": "c88e50d47fb2165b8c44c62bacd4ebf27052021cb8225dcbf7f84ae61046c61f"
+          },
+          {
+            "file": "chapters/chapter-008.json",
+            "sha256": "5925112cf9b78e62123b3cfbd3530d4e36d6ad0ddc46996abca890cae1ee0e09"
+          },
+          {
+            "file": "chapters/chapter-009.json",
+            "sha256": "c371578a7856ed07cb46142906dfc2019eab39181df2ff527f07bd98cb50997a"
+          },
+          {
+            "file": "chapters/chapter-010.json",
+            "sha256": "f58d55a6b4412d3464df32c757c071c2a8ba1580960eb272811ae63752a22936"
+          },
+          {
+            "file": "chapters/chapter-011.json",
+            "sha256": "676f458520daa1cdff4362776a126f736a6e83555165e761923dd6de2038b1c4"
+          },
+          {
+            "file": "chapters/chapter-012.json",
+            "sha256": "93eef852fff04fbf965b7acc2e5f2eea2db6f43c426bacc2f887abf60607ff6b"
+          },
+          {
+            "file": "checksum_manifest.json",
+            "sha256": "bf52223def530197e64d2436973d36ff6bee5ed03e2bcf694b5479f176b2286b"
+          },
+          {
+            "file": "cover_delivery_derivation.json",
+            "sha256": "c4d1f20645a78e67308834ec22b53710b1844506685ab9459990ae603b9b4048"
+          },
+          {
+            "file": "cover_provenance.json",
+            "sha256": "38bb5eef35ed61292c54c03a04f3a3e5f81bb6e06947e6ec31f02c219dbfbf66"
+          },
+          {
+            "file": "covers/back.png",
+            "sha256": "b3fb289b101e3a09596321f9f12994b41149d0b8fb4cb855e83429fe393d51dd"
+          },
+          {
+            "file": "covers/front.png",
+            "sha256": "cdffd02edb00ddb0af8d55ad5ba6eeffef7d8be9683123fc3193b88e98a7e235"
+          },
+          {
+            "file": "highlight_sync.json",
+            "sha256": "84ef6e4ed91b15636601d99de2953f9e7c9e90b235f80f028e172de98c0af5a1"
+          },
+          {
+            "file": "public_book.json",
+            "sha256": "bae951ed589690eeb2b77980467cfc7f21f293393ad68d641115333570e35b2f"
+          },
+          {
+            "file": "publication_authorization.json",
+            "sha256": "7ded9d9bc689f28025fc5a7fe107a6336e0a4bf5c89d7e33287179e89929f63b"
+          },
+          {
+            "file": "publication_manifest.json",
+            "sha256": "a970b425e3332c2f877d1e3042dfc309b913af20a7635220b78caf8072e1db34"
+          },
+          {
+            "file": "reader_manifest.json",
+            "sha256": "c083501e4fd683fe9490a8d5b113ef524b57b3aecacc98fbf73caf44e3066d0c"
+          },
+          {
+            "file": "rights_decision.json",
+            "sha256": "98b0fed91fa68e11297c9a289a2d198bf1cfb1ca036900f683dabcd9fe543d19"
+          },
+          {
+            "file": "source_evidence.json",
+            "sha256": "9371f2af833cbd9683e138e121b7c6ae77f17a18de6dd46cb4507a301a6eb29e"
+          },
+          {
+            "file": "source_integrity_validation.json",
+            "sha256": "0e6526eec3c4a1a71d35e75c07401b7e6b7d9cba96e9847732afad064ada3889"
+          }
+        ],
+        "publication_accepted": false,
+        "cover_accepted": false,
+        "paid_generation_calls": 0,
+        "registry_allowlist_shared_source_production_mutations": false,
+        "next_action": "Two independent fresh exact PNG/WebP/source/provenance/font-policy/package reviews. Substantial unresolved dispute after this attempt means terminal active-plan exclusion; no repeated art/source work."
+      }
+    },
+    {
+      "slug": "my-life-and-work",
+      "status": "INACTIVE_UNACCEPTED_TWO_INDEPENDENT_REVIEWS_REQUIRED",
+      "candidate": "/workspace/scratch/181ef0a25f05/practical-batch-prep-20261003/my-life-and-work/inactive-candidate",
+      "validation_file": "/workspace/scratch/181ef0a25f05/practical-batch-prep-20261003/my-life-and-work/preparation-validation.json",
+      "validation_sha256": "a9e5968a7967584c4a75f9e40ece49292ea29ede3128c835e3ee153e56df61db",
+      "checksums_verified": 31,
+      "files": 34,
+      "cover_dimensions": [
+        800,
+        1200
+      ],
+      "delivery_budgets": "PASS_FRONT_80000_BACK_180000",
+      "validation": {
+        "schema": "earnalism.distinct-practical-title-preparation.v1",
+        "slug": "my-life-and-work",
+        "status": "INACTIVE_UNACCEPTED_TWO_INDEPENDENT_REVIEWS_REQUIRED",
+        "recorded_at": "2026-10-03T05:04:16.164575+00:00",
+        "source_proof_sha256": "0f0466f58d725b09da33078d8bf45820b36ce227b7d61edb8b8174deeb320d21",
+        "source_originals_chapters_sync_decisions_preserved": true,
+        "exact_prior_IN_text_basis": true,
+        "one_get_per_original_cover": true,
+        "one_bounded_typography_copy_attempt": true,
+        "deterministic_typography_overlay_actual_execution_proven": true,
+        "original_typography_creation_method_inferred": false,
+        "font_license_actual_bytes_preserved": true,
+        "cover_dimensions_actual": [
+          800,
+          1200
+        ],
+        "delivery_budgets": "PASS_FRONT_80000_BACK_180000",
+        "all_active_JSON_audio_and_observation_claim_scan": "PASS_NO_POSITIVE_CLAIMS",
+        "historical_duplicates_archive_only": [],
+        "original_assets": {
+          "front": {
+            "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950242/earnalism/covers/front/cover_1fab21bf-16e8-4829-a8d7-6703692ec54b.png",
+            "file": "recovered/front.png",
+            "sha256": "bb4f0e532e60397e9204d176cc27a4ef75b17a17b6853765c29025be5fc134fd",
+            "bytes": 2950948,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "method": "One successful GET per persisted original URL; no prior original-byte checksum or creation-method fact inferred."
+          },
+          "back": {
+            "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950251/earnalism/covers/back/back_cover_1fab21bf-16e8-4829-a8d7-6703692ec54b.png",
+            "file": "recovered/back.png",
+            "sha256": "17645d6c7d49fd8999a6e63a7e5a480409b94eb18b4c906fe8c480f875bb5f68",
+            "bytes": 2606773,
+            "dimensions": [
+              1024,
+              1536
+            ],
+            "method": "One successful GET per persisted original URL; no prior original-byte checksum or creation-method fact inferred."
+          }
+        },
+        "delivery_assets": [
+          {
+            "kind": "front",
+            "source_file": "covers/front.png",
+            "source_sha256": "9f2a6f069a8f7d96c9d0228f69b556394a88da983ee172f88cb9eb7e0e494833",
+            "source_bytes": 2200611,
+            "source_dimensions": [
+              1024,
+              1536
+            ],
+            "delivery_file": "frontend/public/assets/books/my-life-and-work/my-life-and-work-front-9f2a6f06-800.webp",
+            "delivery_sha256": "b46df58db552e1d5adc85c4fde859105c2863811404e594f079561409db4c9f3",
+            "delivery_bytes": 77986,
+            "delivery_dimensions": [
+              800,
+              1200
+            ],
+            "url": "https://theearnalism.com/assets/books/my-life-and-work/my-life-and-work-front-9f2a6f06-800.webp",
+            "recipe": {
+              "format": "WEBP",
+              "mode": "RGB",
+              "quality": 64,
+              "method": 6,
+              "resampling": "LANCZOS",
+              "resize": "aspect-preserving contain 800x1200",
+              "content_dimensions": [
+                800,
+                1200
+              ],
+              "padding_xy": [
+                0,
+                0
+              ],
+              "pillow_version": "12.3.0"
+            },
+            "production_observed": false
+          },
+          {
+            "kind": "back",
+            "source_file": "covers/back.png",
+            "source_sha256": "b129bccafbfca007d95e86eeb101a577d5be3cdb8ebaf8260f75a1285a65b31c",
+            "source_bytes": 2429706,
+            "source_dimensions": [
+              1024,
+              1536
+            ],
+            "delivery_file": "frontend/public/assets/books/my-life-and-work/my-life-and-work-back-b129bcca-800.webp",
+            "delivery_sha256": "c1c1f36904563fe329ec02549acd3171aaa8f6f970a444ae5672443ec6fc218c",
+            "delivery_bytes": 91012,
+            "delivery_dimensions": [
+              800,
+              1200
+            ],
+            "url": "https://theearnalism.com/assets/books/my-life-and-work/my-life-and-work-back-b129bcca-800.webp",
+            "recipe": {
+              "format": "WEBP",
+              "mode": "RGB",
+              "quality": 64,
+              "method": 6,
+              "resampling": "LANCZOS",
+              "resize": "aspect-preserving contain 800x1200",
+              "content_dimensions": [
+                800,
+                1200
+              ],
+              "padding_xy": [
+                0,
+                0
+              ],
+              "pillow_version": "12.3.0"
+            },
+            "production_observed": false
+          }
+        ],
+        "proposed_decision_record_sha256": "32f741f9c321e291f6574a689cfaf6f021dde46b3d692e0234bdaa2b3ed2ec29",
+        "candidate_inventory": [
+          {
+            "file": "approval_evidence.json",
+            "sha256": "6329b3bc842afbec0d6edd06476096af4ce2bb070703d765deed8ee4501b1cf2"
+          },
+          {
+            "file": "chapters/chapter-001.json",
+            "sha256": "e0d36cc9e7e34e5d13ad820c22050242b522a44fd071929a18ff65c4cfb97fd2"
+          },
+          {
+            "file": "chapters/chapter-002.json",
+            "sha256": "8b72fc6c406e6f85617fc6510cf9901687f7ec8a29c31458eb4041343c52dbb9"
+          },
+          {
+            "file": "chapters/chapter-003.json",
+            "sha256": "d3f764bf16404802e65ca2609c1a2830108c596549c1439b1bc83f60de81d08c"
+          },
+          {
+            "file": "chapters/chapter-004.json",
+            "sha256": "addf0c8c3a53aaefca28fd842e3edce34f9b5ec31d70b3ace8ca497265eecdc5"
+          },
+          {
+            "file": "chapters/chapter-005.json",
+            "sha256": "fc2755a3981edceabe3a96eb5edd409e0812645789bedda273fc708d0995b52d"
+          },
+          {
+            "file": "chapters/chapter-006.json",
+            "sha256": "22e94686955d2e993c369f1f243efb2051296f8fdc4829fa66231639a906d22b"
+          },
+          {
+            "file": "chapters/chapter-007.json",
+            "sha256": "860fbd8a0d58ab6a35a26ec04e8ce3b3a05098e94ae68984196140f1a85dc2f7"
+          },
+          {
+            "file": "chapters/chapter-008.json",
+            "sha256": "a8554a972843d7dda9a130338b04982954f9217eca1a8fc8619d361244c69f62"
+          },
+          {
+            "file": "chapters/chapter-009.json",
+            "sha256": "31d1b189cba155edb823d35c704da7c9cbddb61a0464db63076ef1546acc3b08"
+          },
+          {
+            "file": "chapters/chapter-010.json",
+            "sha256": "7bfafc6543c4f2b223a12fea17ec9b6b2adb2ad4911389558fac507e48c667ff"
+          },
+          {
+            "file": "chapters/chapter-011.json",
+            "sha256": "50c59436710c793a6a24f43890bcf468c07fef0c865c8a73fcb90c2bb8e56baa"
+          },
+          {
+            "file": "chapters/chapter-012.json",
+            "sha256": "9a14e14586551adef57a436f693a4466983743ebd812089068752a36f5118281"
+          },
+          {
+            "file": "chapters/chapter-013.json",
+            "sha256": "c6958b12d5a05c5a16d583c7cedb711332082cb301515d8764e723eb3779eeeb"
+          },
+          {
+            "file": "chapters/chapter-014.json",
+            "sha256": "577223275ed615986a01bf1dca3b00c43e9b884d15c28bf4c90c4b1115413306"
+          },
+          {
+            "file": "chapters/chapter-015.json",
+            "sha256": "68167475e315ca2c8ed4baa8cc4ae38c389cc9d4bf8f7894d8cd11f18db1792a"
+          },
+          {
+            "file": "chapters/chapter-016.json",
+            "sha256": "60323efd9eeac141add8c298559ed2e8e5b5170edf0d71ceb0e18109139f9492"
+          },
+          {
+            "file": "chapters/chapter-017.json",
+            "sha256": "8e86755da861e8b63428d07c9c89cadac0cc1faa1fae8a556e382e47d5291520"
+          },
+          {
+            "file": "chapters/chapter-018.json",
+            "sha256": "d08c7b315162fec656902a52cacf7b3a715f4a716599fd0dbf5b86abcae02b15"
+          },
+          {
+            "file": "chapters/chapter-019.json",
+            "sha256": "a221a5c58ea45a8c10403d9de0468905a4e730a776c99feccc4a986118488767"
+          },
+          {
+            "file": "chapters/chapter-020.json",
+            "sha256": "33054f381b3a4db6d073a772d3063a3726d36c563324a2bc3ab49597608fef45"
+          },
+          {
+            "file": "checksum_manifest.json",
+            "sha256": "c4ddd2b5554632933d776768dc7512e7ef422c3f38a9452ff265b57d08d9c744"
+          },
+          {
+            "file": "cover_delivery_derivation.json",
+            "sha256": "fe7ad968f0449f59a18bc4d8334ad3d3146fc13fecd66abaa15fb874088168b6"
+          },
+          {
+            "file": "cover_provenance.json",
+            "sha256": "0916b0e68f1ec051733edbfcb28a129585e77472035314f53a005cb730dd2471"
+          },
+          {
+            "file": "covers/back.png",
+            "sha256": "b129bccafbfca007d95e86eeb101a577d5be3cdb8ebaf8260f75a1285a65b31c"
+          },
+          {
+            "file": "covers/front.png",
+            "sha256": "9f2a6f069a8f7d96c9d0228f69b556394a88da983ee172f88cb9eb7e0e494833"
+          },
+          {
+            "file": "highlight_sync.json",
+            "sha256": "0c00b96caba8dc3931d1fde1b5e1d99db1d556d6fd32c3b9ee2229581f044df1"
+          },
+          {
+            "file": "public_book.json",
+            "sha256": "006d2410f2bf153b10e9bad08d2c30b79ce4d7996e6b198ad41cac1d9551e26d"
+          },
+          {
+            "file": "publication_authorization.json",
+            "sha256": "f08e34f55652d9a37054d28940430be85158b9004ad2641457d63802209a9750"
+          },
+          {
+            "file": "publication_manifest.json",
+            "sha256": "a083ae5afabb65a020660fd84c2c039f82c70280c50181c707cf8644fa328507"
+          },
+          {
+            "file": "reader_manifest.json",
+            "sha256": "8abb80566e377a38ba0730ffb69c7dc0fbb53358c6e0908492d968fea1313acd"
+          },
+          {
+            "file": "rights_decision.json",
+            "sha256": "84019dca99135181cbbe7dd044a0c78a6abab85722faf738dd459de52b77d839"
+          },
+          {
+            "file": "source_evidence.json",
+            "sha256": "1d5f331b74b4ac24ba559209d4d1c8ca3543a1cdc274a71bdf14bb2022b7d4b7"
+          },
+          {
+            "file": "source_integrity_validation.json",
+            "sha256": "0f0466f58d725b09da33078d8bf45820b36ce227b7d61edb8b8174deeb320d21"
+          }
+        ],
+        "publication_accepted": false,
+        "cover_accepted": false,
+        "paid_generation_calls": 0,
+        "registry_allowlist_shared_source_production_mutations": false,
+        "next_action": "Two independent fresh exact PNG/WebP/source/provenance/font-policy/package reviews. Substantial unresolved dispute after this attempt means terminal active-plan exclusion; no repeated art/source work."
+      }
+    }
+  ]
+}

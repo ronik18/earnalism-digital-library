@@ -1,0 +1,62 @@
+{
+  "schema": "earnalism.book-go-live-477-production-reconciliation.v1",
+  "recorded_at": "2026-10-03T05:26:26.791932+00:00",
+  "pr": "https://github.com/ronik18/earnalism-digital-library/pull/510",
+  "reviewed_head": "915f96572afd0aadeeff415c2e392563adb30024",
+  "reviewed_tree": "be727e23ecc6055c01ae8035a12340a5e29e9367",
+  "merge_commit": "0fee65668f94284d180065d0fe8b38face924498",
+  "protected_exact_head_checks": "ALL_PASS_NORMAL_MERGE_NO_BYPASS",
+  "frontend": {
+    "workflow_run": 37099010708,
+    "regression_job": 111134682704,
+    "deployment_job": 111135606016,
+    "production_canary_job": 111135982741,
+    "all_three_jobs": "SUCCESS",
+    "artifact_id": 11265592911,
+    "artifact_sha256": "6e1ecc0fc39e91f4effc26e10a62a983a9564bd2bcd835c37eb044e482e0626b",
+    "new_book_and_reader_routes": "ALL_EIGHT_HTTP_200_PASS",
+    "new_listener_routes": "ALL_FOUR_HTTP_200_TRUTHFULLY_DISABLED_NO_MEDIA"
+  },
+  "backend": {
+    "railway_deployment_id": "55910a2a-9242-42fb-811c-d467df904627",
+    "status": "SUCCESS",
+    "commit": "0fee65668f94284d180065d0fe8b38face924498",
+    "native_canary_workflow_run": 37099578151,
+    "native_canary_job": 111136315421,
+    "native_canary_status": "SUCCESS",
+    "artifact_id": 11265677752,
+    "artifact_sha256": "2dffbf84a07e6e65d8ae654fa84e38bbd4591cccff0dc4b7f114bfe9bb746d89"
+  },
+  "release_scope": {
+    "territory": "IN",
+    "commercial_text_reader": true,
+    "audio_exposed": false,
+    "new_titles": [
+      "the-student",
+      "the-art-of-money-getting",
+      "bn-035",
+      "alices-adventures-in-wonderland"
+    ],
+    "current_total": 33,
+    "english": 28,
+    "bengali": 5
+  },
+  "production_observation": {
+    "controller_country": "US",
+    "reader_and_reading_pass_result": "ALL_EIGHT_HTTP_451_RELEASE_TERRITORY_DENIED",
+    "allowed_countries": [
+      "IN"
+    ],
+    "observed_canonical_versions": {
+      "the-student": null,
+      "the-art-of-money-getting": null,
+      "bn-035": null,
+      "alices-adventures-in-wonderland": null
+    },
+    "india_backend_contract": "NOT_RUN_FROM_NON_IN",
+    "manual_production_observation_waiver": "APPLIED_CONDITIONALLY_AFTER_EXACT_COMPLETE_INTEGRITY_CLEAN_SOURCE_AND_CLEAN_ACTIVE_READER_VALIDATION",
+    "inferred_production_facts": false,
+    "readback_sha256": "c9a31e00f8a42abbc822072e7679617369c5a1ea187c99425691b67b605b2266"
+  },
+  "next_exact_action": "Serialize independently passing next cohort through the sole integration branch and one normal protected PR; exclude one-attempt-exhausted cover/source disputes, preserving their complete evidence."
+}

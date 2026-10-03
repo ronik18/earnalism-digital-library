@@ -1,0 +1,103 @@
+{
+  "schema": "earnalism.cover-provenance.v1",
+  "slug": "acres-of-diamonds",
+  "status": "PROPOSED_COMPONENT_EVIDENCE_NOT_ACCEPTED_TWO_REVIEWS_REQUIRED",
+  "recorded_at": "2026-10-03T05:10:03.145513+00:00",
+  "original_creator": "Repository/product owner; no other identity inferred",
+  "original_method": "UNKNOWN_NOT_INFERRED",
+  "owner_declaration": {
+    "statement": "Owner states all front and back covers are designed by the owner.",
+    "path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+    "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "scope": "COVER_DESIGN_ONLY"
+  },
+  "original_assets_preserved": {
+    "front": {
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950259/earnalism/covers/front/cover_fe1c453a-e7aa-41cd-b5ba-b49904757430.png",
+      "file": "recovered/front.png",
+      "sha256": "eb4d1b5c8331bb3f82bd50833f37f24021f9dd8383a0798a1ba1509a95381477",
+      "bytes": 3074152,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "method": "One successful GET per persisted original URL; no prior original-byte checksum or creation-method fact inferred."
+    },
+    "back": {
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950267/earnalism/covers/back/back_cover_fe1c453a-e7aa-41cd-b5ba-b49904757430.png",
+      "file": "recovered/back.png",
+      "sha256": "464ef4533044b0233f1c7bce4289fff3ecf3b40e9dd14aa7401f4d1ed61ac6a5",
+      "bytes": 2916836,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "method": "One successful GET per persisted original URL; no prior original-byte checksum or creation-method fact inferred."
+    }
+  },
+  "derivative_lineage": {
+    "method": "One bounded deterministic typography/copy repair of retained original art; no model/provider/image generation or new artwork.",
+    "typography_overlay_proof": [
+      {
+        "side": "front",
+        "exact_title": "Acres of Diamonds",
+        "exact_author": "Russell H. Conwell",
+        "font_file_sha256": "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab",
+        "font_license_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+        "method": "Actual local deterministic Pillow + licensed DejaVuSerif title and author overlay executed unconditionally; no original glyph/creation method inferred.",
+        "precise_masks": [
+          [
+            60,
+            55,
+            964,
+            510
+          ],
+          [
+            85,
+            1314,
+            936,
+            1432
+          ]
+        ],
+        "changed_pixels": 514065,
+        "changed_pixels_outside_masks": 0
+      },
+      {
+        "side": "back",
+        "exact_title": "Acres of Diamonds",
+        "exact_author": "Russell H. Conwell",
+        "font_file_sha256": "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab",
+        "font_license_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+        "method": "Actual local deterministic Pillow + licensed DejaVuSerif title and author overlay executed unconditionally; no original glyph/creation method inferred.",
+        "precise_masks": [
+          [
+            90,
+            65,
+            934,
+            485
+          ],
+          [
+            217,
+            908,
+            808,
+            994
+          ]
+        ],
+        "changed_pixels": 407249,
+        "changed_pixels_outside_masks": 0
+      }
+    ],
+    "issues_handled": [
+      "Original lecture/biography/appreciation text creators retain prior separately accepted evidence; no new creator or licence inferred."
+    ],
+    "font_license_path": "practical-batch-prep-20261003/DejaVu-font-license.txt",
+    "commercial_font_permission": "Actual local Bitstream Vera licence grants use/publish/distribute; only raster output, no font software binary distributed."
+  },
+  "commercial_use_authorized": false,
+  "cover_display_approved": false,
+  "audio_authorized": false,
+  "publication_activation_authorized": false,
+  "runtime_release_authorized": false,
+  "scope": "Evidence-only exact proposal. Owner declaration and exact original-art bytes do not establish unsupported third-party origin/permissions; independent reviewers must hold any specifically evidenced component dispute.",
+  "independent_reviews": "PENDING_TWO_EXACT_SOURCE_ART_COMPLIANCE_PACKAGE_REVIEWS"
+}

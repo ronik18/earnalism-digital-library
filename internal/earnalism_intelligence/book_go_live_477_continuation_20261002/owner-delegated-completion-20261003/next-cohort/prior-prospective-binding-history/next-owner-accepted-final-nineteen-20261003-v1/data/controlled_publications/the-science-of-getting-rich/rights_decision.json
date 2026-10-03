@@ -1,0 +1,53 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-the-science-of-getting-rich-exact-reader-cover-prospective-accepted",
+  "edition_id": "the-science-of-getting-rich",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "9a8f77b421c43d6561777f6439473e1fbe0f9c64326eafadec44c850ade8a6a5",
+    "reader_manifest": "a42883b4eb214ae086998672472b0f86c9709e550da35c87789f95564cdefdb7",
+    "source_evidence": "6324de50de9db456175bcd2cbecec794641fa8bdd322d2de2b49eaacc713a117",
+    "approval_evidence": "e4dc68e57fc3f4a9ad0985dcfff82af6caa1e931a0530a364979d7f540ca0a5a",
+    "checksum_manifest": "774c8461191826a0d660bf9fe7935f8256f1092e15aaf87700c8613d84a8c794",
+    "publication_manifest": "24748daf00b919d692aa67846287e6bc14461ada336b0aa6680399924474ce05",
+    "cover_provenance": "6dcedea45f8dfa6affee6d81e72329187e39209e5c0fb3eeaaf1b71b472b6925",
+    "cover_delivery_derivation": "1f17d8f784f79ce97e9a0ec0cc93fff398d05a2e94d9f4c4981294a124702f30",
+    "cover_front_original_asset": "9fa719df44b5348b2dd694674fb7e4ba38438dd1e652ca70559081d67e88da15",
+    "cover_front_delivery_asset": "5ee48b1d245c70b1b8495f9a6b98636cc798d2bea96ff54aa4c3d6fa27becb28",
+    "cover_back_original_asset": "49cf4eb533e11cc92d253496e2945d700468b2a2e42b7aabf4c7d8dd3b590f09",
+    "cover_back_delivery_asset": "bda88117bdb0d7208f51afa3cab6dce74875f83943ebf7c2a74409a6a29477c4",
+    "publication_authorization": "98b30aef486909c6464e7adf4bfecf898f67bccf7dacbf98f4d4edf9ed9ee696",
+    "acceptance_review_a": "e17b3d56b4e6f0f6177965822910d19550debe93090c198d5a21e3fac5419400",
+    "acceptance_review_b": "4817d7c5123f319dfb08bc552fd4548d24896bb23964f11bd12d719c941eb98a"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T04:59:53.954767+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Existing exact accepted India text source/edition clearance is preserved in the archived predecessor and unchanged source/chapter records. Actual prospective acceptance additionally covers these exact owner-designed preserved-artwork derivatives, proven licensed deterministic typography and reviewed deliveries after two independent passing source/provenance/pixel/package reviews under the owner delegation. The predecessor non-cover deferral is prospectively superseded for these exact components only. Audio remains excluded; no rights, human signature, other edition or production observation inferred. Final release remains behind serialized protected normal gates.",
+  "evidence_sha256": [
+    "cbb0f10031b0061839efa60f9fa11600bf283711c85843d0a49d45516e393052",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "2aaee1427a4611db85d2365a96ec11ec103f7438c956d97f5231124791e0657d",
+    "adc3fb17f24801597561e992d858e124c8d9b4c6e3bf7593d713e7a71d252744",
+    "55a8e552b9f74640c7bccc1d05db9d5197ec9dd3af558aceb4f9d3ea73d4949b",
+    "9b6765a0a4af10b15cba3ad2fc315f754d3ea8ddaf9dea60e3ee2ff495d6731f",
+    "1f17d8f784f79ce97e9a0ec0cc93fff398d05a2e94d9f4c4981294a124702f30",
+    "e17b3d56b4e6f0f6177965822910d19550debe93090c198d5a21e3fac5419400",
+    "4817d7c5123f319dfb08bc552fd4548d24896bb23964f11bd12d719c941eb98a",
+    "98b30aef486909c6464e7adf4bfecf898f67bccf7dacbf98f4d4edf9ed9ee696",
+    "6dcedea45f8dfa6affee6d81e72329187e39209e5c0fb3eeaaf1b71b472b6925"
+  ],
+  "accepted_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+  "conditions_satisfied": true
+}

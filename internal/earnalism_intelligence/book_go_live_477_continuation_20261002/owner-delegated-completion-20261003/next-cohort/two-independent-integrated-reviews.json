@@ -1,0 +1,20 @@
+{
+  "schema": "earnalism.two-independent-next19-tree-reviews.v1",
+  "reviewed_integration_tree": "e68aee5302c817525b178bd419ede862888da54e",
+  "reviews": [
+    {
+      "path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/final-integrated-review-a.json",
+      "sha256": "d2fc5fd8e4a1e8fe00a38b928e7a76d59b42b6d98bad73eeb5868dc7ea0136b9",
+      "reviewed_tree": "e68aee5302c817525b178bd419ede862888da54e",
+      "result": "PASS"
+    },
+    {
+      "path": "internal/earnalism_intelligence/book_go_live_477_continuation_20261002/owner-delegated-completion-20261003/next-cohort/final-integrated-review-b.json",
+      "sha256": "25ae00c7fd5e60e860baa67bebe9c826044ad194283cd1efe327d211bb6376f5",
+      "reviewed_tree": "e68aee5302c817525b178bd419ede862888da54e",
+      "result": "PASS"
+    }
+  ],
+  "scope": "Two independent actual automated reviews. Final commit additionally preserves these review receipts and this envelope; all reviewed runtime/source/art/fixture/config bytes remain unchanged. No human approval or production observation inferred.",
+  "next_action": "Existing protected normal exact-head CI, normal merge, exact-main deploy/canary and truthful canonical-version readback."
+}

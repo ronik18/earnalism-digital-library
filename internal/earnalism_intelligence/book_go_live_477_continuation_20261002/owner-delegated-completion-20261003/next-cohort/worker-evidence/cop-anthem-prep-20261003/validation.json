@@ -1,0 +1,86 @@
+{
+  "slug": "the-cop-and-the-anthem",
+  "status": "INACTIVE_UNACCEPTED_SOURCE_READY_REVIEW_PENDING",
+  "prior6components_and_checksums_pass": true,
+  "unchanged_source_reader_sync_chapter_files": true,
+  "checksums_pass": 14,
+  "assets": [
+    {
+      "kind": "front",
+      "original_sha256": "3232a6b9c657c5e0adaa6385c87ecd88b9544a0c264b0a28b9ee8d7e11ed12b7",
+      "png_sha256": "af57195ca48c50d2c8bf0ac6b2c4366dd2328c4e52c93d50b23bd44dea2ef41f",
+      "png_bytes": 125375,
+      "png_dimensions": [
+        1600,
+        2400
+      ],
+      "webp_sha256": "b2243f117df70253f59a995f7aba59c747da08d51187d94d79ff2e84e10f06de",
+      "webp_bytes": 24996,
+      "webp_dimensions": [
+        800,
+        1200
+      ],
+      "png_file": "covers/the-cop-and-the-anthem-front-inactive.png",
+      "webp_file": "covers/the-cop-and-the-anthem-front-inactive.webp",
+      "delivery_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+      "review_status": "TWO_INDEPENDENT_EXACT_VISUAL_SOURCE_REVIEWS_REQUIRED"
+    },
+    {
+      "kind": "back",
+      "original_sha256": "0c9e1ec88066b222f5b2e715e8017c4fb7095e74f8f2b669ce5d1d97a77eb7d6",
+      "png_sha256": "c0929e3af5ed29e6305d2867e0018ab4bdd7c6fa226fca6ff82ee94b45236a35",
+      "png_bytes": 195809,
+      "png_dimensions": [
+        1600,
+        2400
+      ],
+      "webp_sha256": "5f6497fd5616e8913891f73d47aa6ff08b6c7db338cefd05f81b71332241dcde",
+      "webp_bytes": 37340,
+      "webp_dimensions": [
+        800,
+        1200
+      ],
+      "png_file": "covers/the-cop-and-the-anthem-back-inactive.png",
+      "webp_file": "covers/the-cop-and-the-anthem-back-inactive.webp",
+      "delivery_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-back-inactive.webp",
+      "review_status": "TWO_INDEPENDENT_EXACT_VISUAL_SOURCE_REVIEWS_REQUIRED"
+    }
+  ],
+  "paid_generation": false,
+  "cover_repair_attempts": 1,
+  "source_fetches": 0,
+  "cover_fetches": 2,
+  "root_repository_mutations": false,
+  "all_candidate_files": {
+    "approval_evidence.json": "fb8aa9ad5743b2938cc9731ebb1fb23eb6cd86aba2ba62f19d339d3fdaf0dfc6",
+    "chapters/chapter-001.json": "630e75350eefdcce93c1f0e403873a29fb1df4004f8c2dd2f450108bd4288cb8",
+    "checksum_manifest.json": "706dee76962bc35b85b30032f21f48398c7b1e880323ef32816ba35eeb6e99f5",
+    "cover_preparation.json": "7892ff61dd3be4adea5e41338e5289d673114e53ca1ba4759ea10db20459523d",
+    "covers/original-back.png": "0c9e1ec88066b222f5b2e715e8017c4fb7095e74f8f2b669ce5d1d97a77eb7d6",
+    "covers/original-front.png": "3232a6b9c657c5e0adaa6385c87ecd88b9544a0c264b0a28b9ee8d7e11ed12b7",
+    "covers/the-cop-and-the-anthem-back-inactive.png": "c0929e3af5ed29e6305d2867e0018ab4bdd7c6fa226fca6ff82ee94b45236a35",
+    "covers/the-cop-and-the-anthem-back-inactive.webp": "5f6497fd5616e8913891f73d47aa6ff08b6c7db338cefd05f81b71332241dcde",
+    "covers/the-cop-and-the-anthem-front-inactive.png": "af57195ca48c50d2c8bf0ac6b2c4366dd2328c4e52c93d50b23bd44dea2ef41f",
+    "covers/the-cop-and-the-anthem-front-inactive.webp": "b2243f117df70253f59a995f7aba59c747da08d51187d94d79ff2e84e10f06de",
+    "highlight_sync.json": "193728619d202fad6d4f71dbf895c35d68190b7ae6663a77d19d02d774efd113",
+    "public_book.json": "c1ca0a3e6167f4cc75acab2ea9e021d038cbe4871eb806723112e9bad7808781",
+    "publication_authorization.json": "2111e7149717ad8ce2bbb29b6968e4ad54d5d4117acf64f34f3aba5107369972",
+    "publication_manifest.json": "d4ceab85717d94014910a04ce3ac17b3daa32fc6ad4251692887f3fbe4f9edae",
+    "reader_manifest.json": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22",
+    "rights_decision.json": "243df8f368fd69b7833ca16676f8921d1653ef97bb89caec390882ca70c3bd81",
+    "source_evidence.json": "f40f277d758a03b9e05dd6ffa721b058766db6955ba4414d183a7f9bf45fb84f"
+  },
+  "historical_duplicate_admin_audio_claim_archived_in_preimages_only": true,
+  "final_cover_dimensions": {
+    "front": [
+      800,
+      1200
+    ],
+    "back": [
+      800,
+      1200
+    ]
+  },
+  "category": "LEGACY_OWNER_DESIGNED_GRAPHICAL_DERIVATIVE",
+  "runtime_fallback_claimed": false
+}

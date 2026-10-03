@@ -3,7 +3,7 @@
   "schema_version": 1,
   "slug": "the-selfish-giant",
   "title": "The Selfish Giant",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-10-03T04:59:53.954767+00:00",
   "content": {
     "source_hash": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
     "content_hash": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
@@ -28,14 +28,14 @@
     "evidence_sha256": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d"
   },
   "reader_release": {
-    "status": "READY_FOR_APPROVAL",
-    "exposed": false,
+    "status": "APPROVED",
+    "exposed": true,
     "qa_status": "QA_PASSED",
-    "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267898/earnalism/covers/front/the-selfish-giant_front_1600x2400.png",
+    "cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
     "blockers": []
   },
   "audio_release": {
-    "status": "IN_PROGRESS",
+    "status": "NOT_REQUESTED",
     "exposed": false,
     "required_for_reader_release": false
   },
@@ -44,10 +44,10 @@
     "required_for_reader_release": false
   },
   "artifacts": {
-    "public_book": "280107213b6dc993f98d7915f353e36b73b3bb70494f70e7bec5bc44d1a77d7e",
-    "reader_manifest": "0f7603ff4f6723bfddad1a540800f9ddc9f1499ac85604bf077d0f56eb659259",
+    "public_book": "606bc3c47fd88faec4c4ef5c99d24baa24c0a2b39ffe260211bb832dead9c71f",
+    "reader_manifest": "d5ce7da734364efdd9a2bd6eace1ee2df66bcfa0dcf7ea4e99d49502b330fc9c",
     "source_evidence": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d",
-    "approval_evidence": "612a84ee34975b41a8f4a06459938c117dfa2d1cd69435050062555052a9c553"
+    "approval_evidence": "b1d859e0c2721a1fc9c0c0b2e9e47d9022360dcf7b10f25de32fa86cb57f1b48"
   },
-  "manifest_sha256": "9d3552d44a57f42b8530a02c3f3014554689efb88087dcc40d6fb3bb277c4381"
+  "manifest_sha256": "055c6ea951fa3a743336ad707849ebce06c7eb832afcbb408f0beec2492975ef"
 }

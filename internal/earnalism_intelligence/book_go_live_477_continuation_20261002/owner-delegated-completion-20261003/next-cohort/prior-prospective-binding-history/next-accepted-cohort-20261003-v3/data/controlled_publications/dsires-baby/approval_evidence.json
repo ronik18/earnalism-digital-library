@@ -1,0 +1,47 @@
+{
+  "slug": "dsires-baby",
+  "approved_to_publish": true,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "INACTIVE_SOURCE_BOUND_COVER_PROPOSAL_PENDING_TWO_REVIEWERS",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "historical_admin_import_reconstruction"
+  },
+  "publication_authorization_sha256": "27c6630eab60364ad581a27438d3438b3afb26926090df2684e9a9e2ac7a3fad",
+  "source_hash": "31d4577d255806b92c6296419adddd5ca460bdb788743878a09ded1e19f4161a",
+  "content_hash": "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98",
+  "provenance_hash": "2ee318e47560589e69de19367a82467978af0cf4defd57691c9fb9276bbe5069",
+  "verified_at": "2026-10-03T04:36:24.088428+00:00",
+  "cover_provenance_sha256": "db0c2086dd4c2139c89540e355d44b8a27547afff6b3685cc6a24650113a55ac",
+  "cover_delivery_derivation_sha256": "feb006057f91cd260d56db1c3c455eca58bce40ae3192cd94a5a798425c9fb6a",
+  "source_integrity_validation_sha256": "52683b6ef48451afe01c74f56481119e5b40663e1e27a141436108953d302444",
+  "cover_front_qa_status": "PENDING",
+  "cover_back_qa_status": "PENDING",
+  "audio_enabled": false,
+  "audiobook_use_approved": false,
+  "production_observed": false,
+  "actual_prospective_acceptance": {
+    "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+    "accepted_at": "2026-10-03T04:59:53.954767+00:00",
+    "evidence": {
+      "review_a": {
+        "file": "evidence/review_a.json",
+        "sha256": "8d4eeb102ce88faf6eb6697393afb1b579ca29bb4e1083419e44b60295a8ef64"
+      },
+      "review_b": {
+        "file": "evidence/review_b.json",
+        "sha256": "1c712c31011ca2f17c9790823fd81e26a7c811c852197a34992483622db39bf4"
+      }
+    },
+    "production_observed": false,
+    "canonical_version_observed": false,
+    "global_gate": "SERIAL_INTEGRATION_AFTER_PR510_AND_NORMAL_PROTECTED_CI_MERGE_DEPLOY_CANARY"
+  }
+}

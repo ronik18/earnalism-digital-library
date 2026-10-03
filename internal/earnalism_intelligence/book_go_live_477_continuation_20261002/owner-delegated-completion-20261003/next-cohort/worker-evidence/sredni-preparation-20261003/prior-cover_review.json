@@ -1,0 +1,93 @@
+{
+  "schema": "earnalism.bound-current-cover-qa.v1",
+  "slug": "sredni-vashtar",
+  "campaign_issue": 477,
+  "source_head": "e491708bbdb1f5783c087e306ed4a8c4f691c0ed",
+  "reviewed_at": "2026-10-02T10:52:50.301583+00:00",
+  "status": "FAIL_OBSERVABLE_COVER_QA",
+  "owner_design_evidence": {
+    "path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+    "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "recorded_statement": "Owner states all front and back covers are designed by the owner.",
+    "application": "GLOBAL_OWNER_DECLARATION_APPLIES_CONFIRMED_BY_PARENT_AND_INDEPENDENT_REVIEWERS",
+    "authorship_reconfirmation_required": false,
+    "signature_or_psd_required": false,
+    "outside_rights_dispute_asserted": false
+  },
+  "actual_images": [
+    {
+      "side": "front",
+      "requested_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
+      "method": "GET",
+      "request_count": 1,
+      "redirects_allowed": false,
+      "retrieved_at": "2026-10-02T10:49:42.257264+00:00",
+      "http_status": 200,
+      "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
+      "content_type": "image/png",
+      "byte_count": 185325,
+      "response_sha256": "28acd2dadefe6b665f06c992fa86543814245a825a1a8c6e225263fc240829ac",
+      "dimensions": [
+        1600,
+        2400
+      ],
+      "format": "PNG",
+      "artifact_path": "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-2/front-cover-current.png",
+      "image_header_valid": true
+    },
+    {
+      "side": "back",
+      "requested_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275477/earnalism/covers/back/sredni-vashtar_back_1600x2400.png",
+      "method": "GET",
+      "request_count": 1,
+      "redirects_allowed": false,
+      "retrieved_at": "2026-10-02T10:49:53.523637+00:00",
+      "http_status": 200,
+      "resolved_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275477/earnalism/covers/back/sredni-vashtar_back_1600x2400.png",
+      "content_type": "image/png",
+      "byte_count": 378809,
+      "response_sha256": "e74da10d4d84a8752ee9ed630ebc560635a0f0247ea65e7dd36e27eff782b01c",
+      "dimensions": [
+        1600,
+        2400
+      ],
+      "format": "PNG",
+      "artifact_path": "/workspace/scratch/006ea59bb0f7/book-go-live-477/workers/worker-2/back-cover-current.png",
+      "image_header_valid": true
+    }
+  ],
+  "pixel_inspection": "Both downloaded current PNGs were decoded and visually inspected with view_image; no image editing or regeneration.",
+  "front": {
+    "title_author_legibility": "Title and author can be read at inspection size, but strokes and gold circles pass behind them.",
+    "release_label": "LIVE CONTROLLED RELEASE",
+    "release_label_truth": "FAIL: current exact title is held and absent from current live authority; status text is inappropriate on a permanent cover.",
+    "content_theme": "FAIL: generic burgundy template, repeated gold circle chains and horizontal lines; no clear ferret/secret shrine/garden/toast narrative motif.",
+    "observable_defects": [
+      "False/inapplicable LIVE CONTROLLED RELEASE badge.",
+      "Repeated generic gold-circle chains dominate artwork without a clear story-specific motif.",
+      "Gold shapes and horizontal strokes visually interfere with title lettering."
+    ]
+  },
+  "back": {
+    "title_author_legibility": "Readable at full inspection size, with background interference.",
+    "body_legibility": "FAIL: pale text crosses large gold shapes and thin gold lines, producing low local contrast and visible interference.",
+    "text_completeness": "FAIL: opening excerpt terminates visibly mid-word at \"disagreeable an\" instead of a complete synopsis/excerpt.",
+    "content_theme": "FAIL: repeats generic front template shapes and lines.",
+    "observable_defects": [
+      "Excerpt text crosses gold circles/lines, losing consistent contrast.",
+      "Excerpt ends mid-word (\"disagreeable an\").",
+      "No clear content-specific graphical theme."
+    ]
+  },
+  "canonical_binding": {
+    "cover_provenance_json_exists_in_current_canonical_package": false,
+    "cover_approval_evidence_json_exists_in_current_canonical_package": false,
+    "current_publication_authorization_cover_provenance_sha256": null,
+    "hold": "Downloaded exact bytes are now identified outside canonical, but QA has failed; no accepted cover display binding or full-scope proposal may be created from them."
+  },
+  "no_production_observations": "NOT_RUN",
+  "no_paid_calls": true,
+  "no_replacements": true,
+  "no_activation": true,
+  "full_scope_proposal": "NOT_PREPARED_COVER_QA_FAILED"
+}

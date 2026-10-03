@@ -1,0 +1,37 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-the-selfish-giant-pg902-noncover-text",
+  "edition_id": "the-selfish-giant",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "280107213b6dc993f98d7915f353e36b73b3bb70494f70e7bec5bc44d1a77d7e",
+    "reader_manifest": "0f7603ff4f6723bfddad1a540800f9ddc9f1499ac85604bf077d0f56eb659259",
+    "source_evidence": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d",
+    "approval_evidence": "612a84ee34975b41a8f4a06459938c117dfa2d1cd69435050062555052a9c553",
+    "checksum_manifest": "b510d7442db01e36fad1aabd2664150a48f71fd43d6dc08bb433af533332aaed",
+    "publication_manifest": "39d068792b74572e6ff7af81070d44c80eb7f5bfe92cd4411212f4369dd6bd23"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:34:27.335291+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1900, original publication 1888; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "ea7a7a575a8825e29c65008817b4865ba6b498f380393fe79719fa34b9e73e83",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "9c3ad2f058cfabcc8df405127e0ed9db895b07bc81221fdd48d6681bc7d9999e",
+    "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+    "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5"
+  ],
+  "accepted_by": "Automated executor acting under the owner explicit autonomous text-clearance delegation; no human/legal reviewer identity invented.",
+  "conditions_satisfied": true
+}

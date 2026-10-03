@@ -1,90 +1,146 @@
 {
   "slug": "the-time-machine",
-  "generated_at": "2026-07-12T07:04:07Z",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "25a44ca7f7beb7b06bbf2fbd75fa9983ce843ea5a19267790e248a8399fbe521"
-    },
-    {
-      "file": "checksum_manifest.json",
-      "sha256": "f44e860be451c72466a9c5d212caddd8630924b4a88493b26ac56554404a46f5"
-    },
-    {
-      "file": "public_book.json",
-      "sha256": "7897989ddd3e062ad5c2e43c6c3e15d609d7fd168121e890d7b6593cc804ed8b"
-    },
-    {
-      "file": "reader_manifest.json",
-      "sha256": "6060790337140fea316ae120bbeedf6c736324ba1e4dcda8ba0f78baeca0338d"
-    },
-    {
-      "file": "source_evidence.json",
-      "sha256": "d8fa9acc8be24d685e8687d6febc6efa595ef7cb92020224539eb204cb9000e7"
+      "sha256": "c529d93f7e97765917608238149c2768857b7720ac648132013123ac9a740b55"
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "ec54e8d6abfbea5fa18a96a06cb68777151021fad0fb2511e084b68143bd7693"
+      "sha256": "5026ca0b8c4e8b2528a0d439430eb02dee85f578fc4ad47c6f5fb0207d8f0f1c"
     },
     {
       "file": "chapters/chapter-002.json",
-      "sha256": "0d9b215765f1cf9bdba709a7d0475ff82b17082eb9cda61f444c507912ae2302"
+      "sha256": "724f755fedc1f1561afeaf6d65a8d68d4f7cc44103552e28ba06c1b8f5d550d0"
     },
     {
       "file": "chapters/chapter-003.json",
-      "sha256": "04fa6dbc3212e88f51b68643085bf11d53d81933f282332fe1eef681a3be1c35"
+      "sha256": "62208249328b765d8dc6cb53a875640c4208293c65e0b9b3ccb905104434ea18"
     },
     {
       "file": "chapters/chapter-004.json",
-      "sha256": "06ac862eda572faa1bc221d4322d740cb113cd17834c39f6ea2f871edf06964c"
+      "sha256": "0e690367577b44e7d92a2beb6222894ccb41fd424c9497db2a3faa012579c4c3"
     },
     {
       "file": "chapters/chapter-005.json",
-      "sha256": "cd148470d070a8ba9daaa288172a89114e9b48f79f27edb350dabac152cb4cab"
+      "sha256": "8e2effd2b09a9769a053a5b4c7a8083f09c85be111d077ab56e8a32e7a08c858"
     },
     {
       "file": "chapters/chapter-006.json",
-      "sha256": "09d45f9fab05ca1812124884442b5bcbbdd9ca143b46a36bb508310c87ad43cb"
+      "sha256": "13cf9aad33dfa3f6dd07eebbce0c47018daae6c28ff3a1e5f366969cec18008a"
     },
     {
       "file": "chapters/chapter-007.json",
-      "sha256": "66bfc61f35303cae0828ff6053b04bc62655db0fd684976bcc72ed6af99f22da"
+      "sha256": "fb7e644639826d0a660e33c6be6b6fc02066c459e63c9d86390989f92c07ef1b"
     },
     {
       "file": "chapters/chapter-008.json",
-      "sha256": "cfe407cc5aa1d561ed463b4f589402670a72e8197a4f3b75d22cc3cb37de51cb"
+      "sha256": "84fcc02f2dcf70b049e5d274469848c4d92bd2fa5396b4fdc5b5a06854c14450"
     },
     {
       "file": "chapters/chapter-009.json",
-      "sha256": "3bcd1ef377cd0a89d21699e9356512a16a8d90740fb6e28fceedc3b5d37e2b2d"
+      "sha256": "2cc6a284e98a1b2125554ebb493f8ed7acb83c506c40502caad0dfbf238fc3a7"
     },
     {
       "file": "chapters/chapter-010.json",
-      "sha256": "5b7c4ff6d5544687d93d2176ac20f022713abba439bfe607c196a5daa747bd80"
+      "sha256": "a1405ca9e737a803891c8000448bd1c02cbb834f05cc85e8ed0d8594daf9942e"
     },
     {
       "file": "chapters/chapter-011.json",
-      "sha256": "b6c05d934d24bf78cd9a1f34a87df9bb6d13a9f7f57e615dbec965474cd95d4c"
+      "sha256": "340946cfedb8ab01062ca8fb8533722667929dc402d2afdc8965f91205d6009f"
     },
     {
       "file": "chapters/chapter-012.json",
-      "sha256": "4b00dc32f80a32858246ec194f1b45308e7d9e3778892f938948d2a185423a63"
+      "sha256": "d153389de53546d2f8b44c3f9e5b17978362bf40bac5ca2e9be696885bdc6957"
     },
     {
       "file": "chapters/chapter-013.json",
-      "sha256": "345db188fa16280e3115b2553cbed94b70252bff025a6b76b997c7a2ea272431"
+      "sha256": "d22476bd98c946ce4947c2e88893655eb74285abc0d68480a014d9271e816e5d"
     },
     {
       "file": "chapters/chapter-014.json",
-      "sha256": "b9bf851c3546350b62c1c799d76b22e8fca38177180cafb921669a6fa49667c8"
+      "sha256": "16c807905844fb20e320a58dc2fb59f3fe1dc0e626ada5a428bc779f38c1b871"
     },
     {
       "file": "chapters/chapter-015.json",
-      "sha256": "007c974179ab0abb7e79e4918f1b28828908ad2ddf86138c811792bb77e8d6f7"
+      "sha256": "827d1b25fda62266b3e3e11c0230daa7020daa34ecbae14dc7cedb4a44c14b49"
     },
     {
       "file": "chapters/chapter-016.json",
-      "sha256": "06d51ab9b8ad4f5837c2e4b15b66695e8683c5974c3d6337728a32006fedbf06"
+      "sha256": "9065f35c40f3494e41d57045c34168bd940245f076e07b9875b6af8a0859139e"
+    },
+    {
+      "file": "chapters/chapter-017.json",
+      "sha256": "556c5d180a99eafaeae363ce34e04fa09d30fb96900de8ed69dee1f5c0f64f04"
+    },
+    {
+      "file": "cover_preparation.json",
+      "sha256": "3ab8dbef3293d9e97c344623653b6a9535d4ebd6f2337196e8552026e036a2fb"
+    },
+    {
+      "file": "covers/original-back.png",
+      "sha256": "982e280d4e7a9c7859ac9f071fb20dac6f4fe7f382e1a724d96bea036af2f015"
+    },
+    {
+      "file": "covers/original-front.png",
+      "sha256": "5eb21ec7c4e3aa4a75c1d3e51de7f78f172850b450d80cc06ca7ebe54f5f9997"
+    },
+    {
+      "file": "covers/the-time-machine-back-982e280d.webp",
+      "sha256": "f14904314cecf4e887358e2a6dd16a512936fe5e42314b281e309f994a54a585"
+    },
+    {
+      "file": "covers/the-time-machine-back-deterministic.png",
+      "sha256": "fcbda9911c8ed2437640b3dbf01a0ce6c20879c80d93eb9ef9f0268ba60e0f60"
+    },
+    {
+      "file": "covers/the-time-machine-front-5eb21ec7.webp",
+      "sha256": "2b3e8c93c4ba497456bfd88c7233be9b15a1305397501022f807aa3574746d7a"
+    },
+    {
+      "file": "covers/the-time-machine-front-deterministic.png",
+      "sha256": "97ea6f6978a5bb4d2edcea13d426019fcb6b46a731fcabe34cb40666e49b5ac0"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "49f9d125f4a876a6e07a1c61e56607b84db13ef3bd9d2595ac8fc021cb52887d"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "6fe776140c65014131e2c684e05272a01a2dbf846ddc8bcf3fd961ec49ce391d"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "8894d7452aa94d17f9f561511fba91cc2ed5a18e4dee997ff2e5568b0fed1fab"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "1874f35f864ccffa65a9d7e38312c3f84df7fd8880120db0ac4ead237d1d913a"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "010c2fd7d0fa5ae1370f081876448c94a9bad177df7fe0b621b0f91c39af0cf5"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "0023ab9e6497aafa2266c54cf945e170348140d070bbcef3f55b482ca8346fe0"
+    },
+    {
+      "file": "owner_artwork_declaration.json",
+      "sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264"
+    },
+    {
+      "file": "evidence/review_a.json",
+      "sha256": "69849aa5884020a53e87e902d3505d2624839e8dd37119d9b03d7df99948fe38"
+    },
+    {
+      "file": "evidence/review_b.json",
+      "sha256": "fa6aaff9100965882e389a042a8e81845423737348bbd410831c6954fda2998b"
+    },
+    {
+      "file": "evidence/source_review_b.json",
+      "sha256": "7e6e03cfd9ebfddb26f0f275b69adb8c4222055a6b466c89cedc7d3173fdda12"
     }
   ]
 }

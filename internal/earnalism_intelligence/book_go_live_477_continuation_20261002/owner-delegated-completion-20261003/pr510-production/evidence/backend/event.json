@@ -1,0 +1,17 @@
+{
+  "deployment_id": "6823603057",
+  "deployment_sha": "0fee65668f94284d180065d0fe8b38face924498",
+  "deployment_ref": "0fee65668f94284d180065d0fe8b38face924498",
+  "environment": "earnalism / production",
+  "task": "deploy",
+  "creator": "railway-app[bot]",
+  "status_id": "19204555820",
+  "state": "success",
+  "target_url": "https://railway.com/project/a8533934-35c4-463e-9f43-577a9ac391ee?environmentId=580b250c-80ee-48ad-bfbe-fa4e31a6b378",
+  "log_url": "https://railway.com/project/a8533934-35c4-463e-9f43-577a9ac391ee?environmentId=580b250c-80ee-48ad-bfbe-fa4e31a6b378",
+  "environment_url": "https://railway.com/project/a8533934-35c4-463e-9f43-577a9ac391ee?environmentId=580b250c-80ee-48ad-bfbe-fa4e31a6b378",
+  "description": "",
+  "sender": "railway-app[bot]",
+  "checked_out_sha": "0fee65668f94284d180065d0fe8b38face924498",
+  "reachable_from_main": true
+}

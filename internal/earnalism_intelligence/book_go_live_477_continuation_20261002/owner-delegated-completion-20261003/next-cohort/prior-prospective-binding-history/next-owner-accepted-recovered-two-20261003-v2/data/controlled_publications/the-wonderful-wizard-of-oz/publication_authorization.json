@@ -1,0 +1,53 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "the-wonderful-wizard-of-oz",
+  "edition": "Project Gutenberg #55 Baum1900 English narrative; authorIntroduction and24chapters; noillustrations imported",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_CATALOG_METADATA_AND_EXACT_COVER_DISPLAY",
+  "source_sha256": "969bffab7740d4d8a0bac332d78bd0152ad4a40a2efc52f06c74a9bb6120be75",
+  "content_sha256": "4b174cd456358387fe1bbd65667a783ae52d7b4f0475f1c570a80132c847b18e",
+  "chapter_sha256": {
+    "chapter-000": "4ee081287a4c325cee637bfe8e20b68826d485b5819af4fe77963c991cf9b684",
+    "chapter-001": "6b2ea04eb2b5feb63d6b63a2c67707607d2295825b3e1820f5132d3c1533ae08",
+    "chapter-002": "67fe62a17606b88d40a54c43b8a5369e94c7daab9929369138fc62c377820c59",
+    "chapter-003": "b6ff8d5fd832cc286bbfbaf5ce1c0dfe122339c014871491818765223d4f6d18",
+    "chapter-004": "de3d562b9fae84e13875079c3fc98bc464e3d1c67a2e4e7c6f2c394b7f32d82b",
+    "chapter-005": "9cd55cf52f18ad44471dcdfcfc1b2cb8182bb7d5135fcc1f157416a16aaadb6b",
+    "chapter-006": "096721ba2084335c0ce9fa04c5601d1e0dec29df5c13de98471be74b33502afe",
+    "chapter-007": "87811cfcd53ec87813e3bf94fe58fbff17eae5e0e042aa7ff63c989e594cefdd",
+    "chapter-008": "403beb9177e20c15ef43916f675aa8819c196de573f7215bdd8f6e68a70ab851",
+    "chapter-009": "937b6e58f195152e70208ea591a9223895975c2fa6712f221c25b64e1f0f49b0",
+    "chapter-010": "b3ce471d2ebd869955ae30d3fb23f7d8fb1a94246a4f035f751eab3a9560d3ab",
+    "chapter-011": "8a15173e3f2cbf4d7c5935764d6e1e23a421ef71fe7140f8198db2fbcebad2d3",
+    "chapter-012": "70e1b7c08f7bd7738f2c03ace1dc7024e3eeaae33ee78ab1a1deda74985a07cd",
+    "chapter-013": "a2001a0bab24668bd6007ddbffba93a54fb3e53071e21f863e85307477089ca6",
+    "chapter-014": "c85247d45ded916cbc9e04718a081d99ac2aade35246ddcf37dea4dea2e35516",
+    "chapter-015": "2586ade1195a4ca70029a0314fd3036ad19ec682d49f71bb7b92515500174318",
+    "chapter-016": "faa3c6bceade03582a56cab024b19be20380343f752ed5349b23467b0658691d",
+    "chapter-017": "c12602a79c60dce6dd9b3159e7f5de153f0660a48e022cf3b5e423b9b4b63d9f",
+    "chapter-018": "32284038a5d48ad7a85929a1378a17aa1ec020f39653f84d9bb38eb2d692df13",
+    "chapter-019": "390ae6cbec463ae5b1d9692dc6e7327eec29cb7a51d86b4d5c60324e10e96f79",
+    "chapter-020": "fd8c7de4f03b2b40f83c2fd60b1ec3c0e71f26e11bbabf1e1caccca872d55019",
+    "chapter-021": "56cea2c9b1f6919ebb6ec1b383cb29185f27abcb17363211b7749a142a85849f",
+    "chapter-022": "4bbee98a22b11a98393a12757085d4d62bc3c812a305a4de0c1062aaddd3f62a",
+    "chapter-023": "7b619e3046238df157e1263254df2f528841808b3399f737e4272d4c05b3124c",
+    "chapter-024": "7bc57e0cc9ae0e4ecc9fedd4f922f9a1df0ea7435d9b177a4fe8d8a2e8ae7a78"
+  },
+  "cover_provenance_sha256": "007d1c031b4effb6b765d048945383d3996e3be4a9fa4c8ddc9298787be7c23f",
+  "cover_status": "EXACT_OWNER_PROVIDED_REVIEWED_ARTWORK_ACCEPTED_PRODUCTION_UNOBSERVED",
+  "authorized_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+  "verified_at": "2026-10-03T05:57:24.767676+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Two passing exact source/art preparations and actual prospective owner-delegated acceptance. Final accepted bindings, serialized selection, protected normal checks, merge, deployment/canary and truthful readback remain required.",
+  "not_authorized": [
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation bypass"
+  ],
+  "rights_decision_id": "india-20261003-the-wonderful-wizard-of-oz-exact-reader-cover-prospective-accepted"
+}

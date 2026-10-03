@@ -49,16 +49,16 @@ describe("approved Book Detail direct-route contract", () => {
     });
   });
 
-  test("serves the historical Selfish Giant URL through the safe unavailable route", () => {
+  test("released Selfish Giant uses the ordinary API-gated Book Detail route", () => {
     ["book", "reader", "listener"].forEach((kind) => {
-      expect(app).toContain(`<Route path="/${kind}/the-selfish-giant" element={<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />} />`);
+      expect(app).not.toContain(`<Route path="/${kind}/the-selfish-giant"`);
     });
-    const rewrites = vercel.rewrites || [];
-    const genericNotFound = rewrites.findIndex((rule) => rule.source === "/book/:slug" && rule.destination === "/api/not-found");
+    expect(app).toContain('<Route path="/book/:slug" element={<BookDetail />} />');
+    const generic = vercel.rewrites.findIndex((rule) => rule.source === "/book/:slug" && rule.destination === "/api/not-found");
     ["/book/the-selfish-giant", "/book/the-selfish-giant/"].forEach((source) => {
-      const index = rewrites.findIndex((rule) => rule.source === source && rule.destination === "/index.html");
+      const index = vercel.rewrites.findIndex((rule) => rule.source === source && rule.destination === "/book/the-selfish-giant/index.html");
       expect(index).toBeGreaterThanOrEqual(0);
-      expect(index).toBeLessThan(genericNotFound);
+      expect(index).toBeLessThan(generic);
     });
   });
 

@@ -1,0 +1,18 @@
+{
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_provider": "",
+  "audiobook_voice": "",
+  "audio_asset_slug": "",
+  "audiobook_assets": {},
+  "audiobook": {},
+  "audiobook_assets_updated_at": "",
+  "audiobook_package": {},
+  "audio_url": "",
+  "audiobook_release_gate": "",
+  "audio_qa_status": "",
+  "audiobook_release_mode": "",
+  "audiobook_manuscript_sha256": "",
+  "audiobook_release_conveyor": {}
+}

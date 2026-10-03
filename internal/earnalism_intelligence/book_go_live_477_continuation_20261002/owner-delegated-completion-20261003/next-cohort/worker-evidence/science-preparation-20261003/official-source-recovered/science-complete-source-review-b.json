@@ -1,0 +1,162 @@
+{
+  "reviewer": "independent_reviewer_B",
+  "scope": "Complete author Preface plus17 chapters from exact official PG59844 source; complete equal author bodies, not mere containment. Titlepage,TOC,portrait,publisheradvertisements,transcriber notes and Gutenberglicense are outside selected author text.",
+  "official_source_sha256": "adc3fb17f24801597561e992d858e124c8d9b4c6e3bf7593d713e7a71d252744",
+  "official_source_receipt_sha256": "5680b5e66c2a93fa340be2a0a8702f312fb07eda83f7b2e947e0abc873319eb6",
+  "retained_raw_source_sha256": "4de04867ec7814f6e7053582eaf50ad3c6817256d06141a5cee93c64f499557b",
+  "retained_raw_is_official_receipt_bytes": false,
+  "method": "Each complete author body bounded by exact heading and next heading; finalbody ends before decorative delimiter and separately headed publisher advert FURTHERAIDS. NFC+whitespaceonly, no lexical/punctuation substitutions.",
+  "body_count": 18,
+  "all_complete_bodies_equal": true,
+  "body_reviews": [
+    {
+      "chapter_id": "chapter-001",
+      "title": "PREFACE",
+      "source_body_start": 2888,
+      "source_body_end": 5485,
+      "exact_nfc_whitespace_only_equality": true,
+      "content_sha256": "0339c89621a322cdad8e50e0fbd7a9508f6a8bc48a16045f2f24a45e0b0c9a58"
+    },
+    {
+      "chapter_id": "chapter-002",
+      "title": "CHAPTER I. THE RIGHT TO BE RICH",
+      "source_body_start": 5519,
+      "source_body_end": 10639,
+      "exact_nfc_whitespace_only_equality": true,
+      "content_sha256": "1fc3a23022b7b949f62c31e5ac332e3fb3c0ba6626f4bac2d0b459d2c41c63c6"
+    },
+    {
+      "chapter_id": "chapter-003",
+      "title": "CHAPTER II. THERE IS A SCIENCE OF GETTING RICH",
+      "source_body_start": 10688,
+      "source_body_end": 16902,
+      "exact_nfc_whitespace_only_equality": true,
+      "content_sha256": "cc2926c1d62647a483ec0612a42466a1f766b817232bc67adfce76246b5105eb"
+    },
+    {
+      "chapter_id": "chapter-004",
+      "title": "CHAPTER III. IS OPPORTUNITY MONOPOLIZED?",
+      "source_body_start": 16944,
+      "source_body_end": 23769,
+      "exact_nfc_whitespace_only_equality": true,
+      "content_sha256": "0ad051b4408531e1b5c34c9e30849823a2517befcd97055e171bd2db74b8bf41"
+    },
+    {
+      "chapter_id": "chapter-005",
+      "title": "CHAPTER IV. THE FIRST PRINCIPLE IN THE SCIENCE OF GETTING RICH",
+      "source_body_start": 23834,
+      "source_body_end": 32962,
+      "exact_nfc_whitespace_only_equality": true,
+      "content_sha256": "6ef3c5f491dc18ec4c74bb1799685af77616d32294d850d1ccd69cbf97bce06c"
+    },
+    {
+      "chapter_id": "chapter-006",
+      "title": "CHAPTER V. INCREASING LIFE",
+      "source_body_start": 32991,
+      "source_body_end": 42342,
+      "exact_nfc_whitespace_only_equality": true,
+      "content_sha256": "448e1a3a5d0814f8b96d50eaf16cdbd7bbd61734b9ca01fc29b63aa1bef0961e"
+    },
+    {
+      "chapter_id": "chapter-007",
+      "title": "CHAPTER VI. HOW RICHES COME TO YOU",
+      "source_body_start": 42379,
+      "source_body_end": 50844,
+      "exact_nfc_whitespace_only_equality": true,
+      "content_sha256": "d29cfdf64909a1165961d097ec12c949e938d03a6cb36ea25ce6cf792497301c"
+    },
+    {
+      "chapter_id": "chapter-008",
+      "title": "CHAPTER VII. GRATITUDE",
+      "source_body_start": 50869,
+      "source_body_end": 57087,
+      "exact_nfc_whitespace_only_equality": true,
+      "content_sha256": "3a0116b5aea3a26032d361f7ea34a9d6ed1750366a829559132e9433b9c9b116"
+    },
+    {
+      "chapter_id": "chapter-009",
+      "title": "CHAPTER VIII. THINKING IN THE CERTAIN WAY",
+      "source_body_start": 57131,
+      "source_body_end": 64405,
+      "exact_nfc_whitespace_only_equality": true,
+      "content_sha256": "7e3e692873c0c584fa47f724e9b44d24469b3727ac6062f9c46ca919559258e5"
+    },
+    {
+      "chapter_id": "chapter-010",
+      "title": "CHAPTER IX. HOW TO USE THE WILL",
+      "source_body_start": 64439,
+      "source_body_end": 72056,
+      "exact_nfc_whitespace_only_equality": true,
+      "content_sha256": "6ea8523874594a6b027e1fd0db4d897a101e31bde7eb15bb16ed34a8735c40f4"
+    },
+    {
+      "chapter_id": "chapter-011",
+      "title": "CHAPTER X. FURTHER USE OF THE WILL",
+      "source_body_start": 72093,
+      "source_body_end": 80588,
+      "exact_nfc_whitespace_only_equality": true,
+      "content_sha256": "8ea8dc98fb9a125b3cf4fae404e76ffbb812ee056db367847ba486283ddf4aaf"
+    },
+    {
+      "chapter_id": "chapter-012",
+      "title": "CHAPTER XI. ACTING IN THE CERTAIN WAY",
+      "source_body_start": 80628,
+      "source_body_end": 89353,
+      "exact_nfc_whitespace_only_equality": true,
+      "content_sha256": "a9e067da0eaad981cb8d3468ea0cb2efac4bcb2b03ef0d0fefef172d5d87c7b0"
+    },
+    {
+      "chapter_id": "chapter-013",
+      "title": "CHAPTER XII. EFFICIENT ACTION",
+      "source_body_start": 89385,
+      "source_body_end": 96601,
+      "exact_nfc_whitespace_only_equality": true,
+      "content_sha256": "446132c59ee07f2941010430ace7f77fb965c87754e1a52f6af26ff2d8e9be3c"
+    },
+    {
+      "chapter_id": "chapter-014",
+      "title": "CHAPTER XIII. GETTING INTO THE RIGHT BUSINESS",
+      "source_body_start": 96649,
+      "source_body_end": 103134,
+      "exact_nfc_whitespace_only_equality": true,
+      "content_sha256": "d0c6fb51d59a2f969011edd5ad650e717afab32552e7cbb1728e397f5c9e38f4"
+    },
+    {
+      "chapter_id": "chapter-015",
+      "title": "CHAPTER XIV. THE IMPRESSION OF INCREASE",
+      "source_body_start": 103176,
+      "source_body_end": 109658,
+      "exact_nfc_whitespace_only_equality": true,
+      "content_sha256": "634fc59399f4999ca3330608b56828af1ac84e30b02b624b1e9255f5268d2680"
+    },
+    {
+      "chapter_id": "chapter-016",
+      "title": "CHAPTER XV. THE ADVANCING MAN",
+      "source_body_start": 109690,
+      "source_body_end": 116378,
+      "exact_nfc_whitespace_only_equality": true,
+      "content_sha256": "09abacbf0a35100e2b033dd5680c38e3acc94832d55ba6ba4c450200091bb091"
+    },
+    {
+      "chapter_id": "chapter-017",
+      "title": "CHAPTER XVI. SOME CAUTIONS, AND CONCLUDING OBSERVATIONS",
+      "source_body_start": 116436,
+      "source_body_end": 123979,
+      "exact_nfc_whitespace_only_equality": true,
+      "content_sha256": "cbe6d3806cbbe424fbccd3a7a4eece1e2224e88f5d81b7f6d05aa7c38b0d7922"
+    },
+    {
+      "chapter_id": "chapter-018",
+      "title": "CHAPTER XVII. SUMMARY OF THE SCIENCE OF GETTING RICH",
+      "source_body_start": 124034,
+      "source_body_end": 126915,
+      "exact_nfc_whitespace_only_equality": true,
+      "content_sha256": "3871c5dffea3c043c738c62a5d55f26ec6b9ada974de505966f27a64d54548bb"
+    }
+  ],
+  "final_author_text_end": "ly get rich; and the riches they receive will be in exact\nproportion to the definiteness of their vision, the fixity of their\npurpose, the steadiness of their faith, and the depth of their\ngratitude.\n",
+  "next_excluded_boundary": "\n       *       *       *       *       *\n\nFURTHER AIDS TOWARD GETTING RICH RIGHT\n\nTHE NAUTILUS is published monthly for the express purpose of making\nMen and Women Who Can Do What They Will To Do. It abounds in practical\nideas and in the bright insp",
+  "source_or_chapters_modified": false,
+  "network_requests_by_B": 0,
+  "production_observed": false
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "earnalism.complete-selected-work-validation.v1",
+  "slug": "bharat-at-the-crossroads",
+  "source_sha256": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+  "source_hash_exact": true,
+  "chapter_count": 1,
+  "method": "NFC + whitespace only. Every canonical chapter matches exact source in order; every interstitial gap classified exhaustively as source heading preserved in Reader metadata or known signature scan-furniture; source prefix manually inspected as source boilerplate/production credits/title page/TOC only; tail exactly begins PG END. No omitted narrative prose in selected full work. First-party Bharat entire supplied manuscript byte-identical to canonical, with empty prefix/tail.",
+  "whole_selected_work": "PASS_PENDING_INDEPENDENT_REVIEW",
+  "matched_chapters": [
+    {
+      "id": "chapter-001",
+      "start": 0,
+      "length": 234414,
+      "content_sha256": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+      "source_gap_before": ""
+    }
+  ],
+  "prefix_classification": "NONE_COMPLETE_PROVIDED_FIRST_PARTY_MANUSCRIPT",
+  "tail_classification": "NONE_COMPLETE_PROVIDED_FIRST_PARTY_MANUSCRIPT",
+  "tail_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "unclassified_narrative_gaps": [],
+  "selected_scope": "Entire exact owner-provided canonical manuscript; no external printed-edition completeness inferred",
+  "source_or_chapter_changed": false,
+  "production_observed": false
+}

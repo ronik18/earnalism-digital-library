@@ -1,0 +1,101 @@
+{
+  "id": "controlled-book-5704b31005",
+  "slug": "book-5704b31005",
+  "title": "বিচারক",
+  "subtitle": "",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "category_slug": "literary-fiction",
+  "short_description": "বিচারকের আসনে বসা মানুষটিই যখন বিচার্য হয়ে পড়েন, তখন ন্যায়বিচারের স্বরূপ উন্মোচিত হয়।",
+  "description": "A judge who prides himself on impartiality finds himself the subject of a moral reckoning — Tagore's meditation on the gap between institutional justice and human truth.",
+  "cover_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-8f64cc7c.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-8f64cc7c.webp",
+  "coverImage": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-8f64cc7c.webp",
+  "cover_image": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-8f64cc7c.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-back-4e0a187b.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-back-4e0a187b.webp",
+  "backCoverImage": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-back-4e0a187b.webp",
+  "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+  "dominant_color": "#24362E",
+  "estimated_reading_time": "8 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "রবীন্দ্রনাথ ঠাকুর (১৮৬১–১৯৪১) বাংলা সাহিত্যের শ্রেষ্ঠ কবি ও ছোটগল্পকার।",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "বিচারক",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 1989,
+      "reading_minutes": 9,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
+    }
+  ],
+  "source_hash": "57835bba9d270aa0c3f31ee280b2ae789f0528be1adfa29815a45826e23e466b",
+  "content_hash": "c9e4ed3927535c11a5d1d5a4729f0c8a1371952a33a6e0e6d36514b3d249b089",
+  "provenance_hash": "e9cff373d3c3941dba5847b5004e2359b0041827d2117e41c7acb345b76e7bc1",
+  "rights_basis": "Exact India text/edition rights are preserved from the archived predecessor and unchanged source/chapter/license records. Ronik Basak directly provided the owner-held copyright and publication provenance for the exact owner-created cover components; two independent passing source/art preparations bind the reviewed derivatives and deliveries. Prospective automated acceptance supersedes earlier procedural cover deferral for these components only. No human approval, other source/edition rights, unknown original construction method, audio grant or production observation inferred.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "READY_BEHIND_SERIALIZED_GLOBAL_RELEASE_GATE",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "draft",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": false,
+  "showInHomepage": false,
+  "allowPublicReading": false,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "created_at": "2026-07-03T20:07:46Z",
+  "updated_at": "2026-07-03T20:07:46Z",
+  "license_notice_sha256": "1fc9cf8fae864434f95bc34656a96672c55d852f3dfdad4a1f386a1a1cc4e01c",
+  "historical_import_hashes": {
+    "source_hash": "79651c9122ab96a7dd31b5213fbf6158213d69eb1c8a800fe30bf5f91bc3f277",
+    "content_hash": "8055f5c411a3091c17cb0bdddff8c4d426db8acb81332b311712e4c0c9e1dc23"
+  },
+  "publication_authorization_sha256": "baf85fb9c258e5f2a925d4358a91e34c0c6bd04ebc3db4e9f4586f9e18783aa2",
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "cover_dimensions": {
+    "front": [
+      800,
+      1200
+    ],
+    "back": [
+      800,
+      1200
+    ]
+  },
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_assets": {},
+  "audiobook": {},
+  "cover_provenance_sha256": "0097846c9e39ae9eb4c4185a03d1da48c398773868e06537ed6f5aa03c7fa319",
+  "audiobook_use_approved": false
+}

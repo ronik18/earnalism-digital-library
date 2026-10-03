@@ -2,7 +2,7 @@
   "schema_version": "earnalism.static-seo-public.v2",
   "public_release_held": false,
   "generated_from": {
-    "data/controlled_launch.json": "b82133072b1dc862ad98a0b1bd90c627fd3f685ace31b4843f5d278047281a87",
+    "data/controlled_launch.json": "46f60d8aac9f385cece56de6676d25ce4dbb4f7f380d298cfca7520022d4dae8",
     "data/controlled_publications/a-ghost-story/public_book.json": "993dbc5804da73144872935f9d43d2471afa200ac688e9b690fcf7f3e44a9338",
     "data/controlled_publications/a-ghost-story/reader_manifest.json": "043416f20760f32bd6ce0f401025bfa9230e7e9c76f8fc6a86b1b0b143b302c1",
     "data/controlled_publications/a-ghost-story/source_evidence.json": "bcf7c7a067c5c80b2f81be2cd1929f9cbcc581bd2547c0f2f318e5dc5eab7f4b",
@@ -28,6 +28,11 @@
     "data/controlled_publications/a-white-heron/source_evidence.json": "cc6ea800461b30fe2def5b9d29e9ebb42c3521c3de0af015b18296206f96d819",
     "data/controlled_publications/a-white-heron/approval_evidence.json": "3fe378342ee79044bdeb6f9582f0aa9269c2f24e07a96bc59fb46825320ffa50",
     "data/controlled_publications/a-white-heron/publication_manifest.json": "3465e865aa51a62c580d257f79595f2e0f9b36c75991e005fdaad2c5327ae6de",
+    "data/controlled_publications/acres-of-diamonds/public_book.json": "987fd6d6d7629ce10ee749f28d0087791690711fed0f6e7f6be1893acc9421dc",
+    "data/controlled_publications/acres-of-diamonds/reader_manifest.json": "c083501e4fd683fe9490a8d5b113ef524b57b3aecacc98fbf73caf44e3066d0c",
+    "data/controlled_publications/acres-of-diamonds/source_evidence.json": "9371f2af833cbd9683e138e121b7c6ae77f17a18de6dd46cb4507a301a6eb29e",
+    "data/controlled_publications/acres-of-diamonds/approval_evidence.json": "e633d61f06584df3bb25548ee5a250ee53d416e40f392900968c4baa233561d7",
+    "data/controlled_publications/acres-of-diamonds/publication_manifest.json": "4a387f6269b980cd1be0bc8df2ea21683ff2093355ea3a7fd4ebb65ee4e16ee3",
     "data/controlled_publications/agentic-ai-with-python/public_book.json": "1fc2712208ce7cd27247741e808391f13d511f8d11f3bedcc8ea38b516514625",
     "data/controlled_publications/agentic-ai-with-python/reader_manifest.json": "705ce53074d1d9259bc1f38b7ba999351b269d48bff630fde669c4b1133674b7",
     "data/controlled_publications/agentic-ai-with-python/source_evidence.json": "c21bb049f395d0a88c6912136974140341db4b6ecd631395aad36609ded48386",
@@ -53,6 +58,16 @@
     "data/controlled_publications/bn-059/source_evidence.json": "1ae73ff80e4a9ded7b57617b2ce5a92c689b0e70f6f98f55cb3302fbfb00f082",
     "data/controlled_publications/bn-059/approval_evidence.json": "53b2701896df370f3b6d6c3f037ebf8fabfb22a16e90e592f7e796ff331cc8e1",
     "data/controlled_publications/bn-059/publication_manifest.json": "a600e96aef36f5c38402e38cf87d47059a87b508f45eb4e4719a74d82c977954",
+    "data/controlled_publications/bn-066/public_book.json": "a599115f1b7daad13726223e24d4fb3a629dabcb56f922c7a9bc6f79ef71464e",
+    "data/controlled_publications/bn-066/reader_manifest.json": "cf08811a9edf32051c6929e8eb5b29abd6a36df4232c50049e630575f43114d7",
+    "data/controlled_publications/bn-066/source_evidence.json": "227c479e011f38150820a341bed084e5c184cda97bc12c034d7093ce660ab0e8",
+    "data/controlled_publications/bn-066/approval_evidence.json": "972e263c2fb525d6b6a5ff01bb182828c73898f3320c2a4440babb0f740cf268",
+    "data/controlled_publications/bn-066/publication_manifest.json": "98e2168fdb7d2d27a5571f9f7cda3049ac6b57a9d1137de57cf44bc736c72425",
+    "data/controlled_publications/book-5704b31005/public_book.json": "4d2e8f87fef27929dd27328a16226b2ccee8b96f974f7d4dd3be3b5d049cdf87",
+    "data/controlled_publications/book-5704b31005/reader_manifest.json": "6c7daced7a35b9f20ba2f8828e5636d7c644e6ceb272f1707871adafb5a2b759",
+    "data/controlled_publications/book-5704b31005/source_evidence.json": "f7d3ac1cbe169532038b008d48c0313290cedca638d23c7696d75d3a0c072f3b",
+    "data/controlled_publications/book-5704b31005/approval_evidence.json": "5d466fb5df86d019b2b13087e1fc93fbd28440bd175e825578b571ed1e347c28",
+    "data/controlled_publications/book-5704b31005/publication_manifest.json": "c8455db5baa2055ad7b5e29ce7f3f0a9c6802eb4e72bd664858d3b9853c65b04",
     "data/controlled_publications/book-edfcf810c5/public_book.json": "d0bb4ec1fd8cf065fb26b5cef0d382490305a6b6ddd2568e6218f864430ac986",
     "data/controlled_publications/book-edfcf810c5/reader_manifest.json": "78e25b2d1a5ef845b2b4ed6f390857ee10ddc0d210e8ed1078e87569a85805bd",
     "data/controlled_publications/book-edfcf810c5/source_evidence.json": "b2a8e0a62cd8abc25e88127adf58c22495c6c8687f43c0090ad495db67539fed",
@@ -63,31 +78,66 @@
     "data/controlled_publications/dracula/source_evidence.json": "6322c3822db62956da4b1fac653e74bbbf02f79f39554bc236199605764f0cd9",
     "data/controlled_publications/dracula/approval_evidence.json": "25222b31c0b2557ac0d613352b03bd835ce9dac0931bd5c14d411198a0bcd32f",
     "data/controlled_publications/dracula/publication_manifest.json": "177b323ece13835666ee06ad9c262eccb57d71fde885667930c7ff0c24bd210e",
+    "data/controlled_publications/dsires-baby/public_book.json": "dfd96bccddc993606f7d113749ce7d95006861243d6aaa742e8e5d77b1e4fc3b",
+    "data/controlled_publications/dsires-baby/reader_manifest.json": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee",
+    "data/controlled_publications/dsires-baby/source_evidence.json": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb",
+    "data/controlled_publications/dsires-baby/approval_evidence.json": "9d8108b6fea2d334cf1c639f9aa4556a22b9dce00cca90753c7bcb0e021a5ff0",
+    "data/controlled_publications/dsires-baby/publication_manifest.json": "100df17f825f41872c59cf669eb0de03b1790a04ac9a56768571571764fe562c",
+    "data/controlled_publications/frankenstein/public_book.json": "48e1995fd2232b2965603dc875d88d437432860e03a8d27fe6dd208b0b52d48a",
+    "data/controlled_publications/frankenstein/reader_manifest.json": "2d7d0f01dcbc35eebc51a178b4eb72a9d766cfe5ec56d618113455ba72c16434",
+    "data/controlled_publications/frankenstein/source_evidence.json": "dc06292e3e257f690c3017e88ded33d0b6baa8b778d1629f3074d1f76b5df449",
+    "data/controlled_publications/frankenstein/approval_evidence.json": "cf103d560ddbdea56c2c8b9463877892f00e6d2b158eb205d56b7dc44e80c9f1",
+    "data/controlled_publications/frankenstein/publication_manifest.json": "71f76ce7d61c6e7d4f62ca911ff037c58cb70d8b71004838a55e7aa4b5276faf",
     "data/controlled_publications/jekyll-and-hyde/public_book.json": "01c3a333da4712bc8041e8eb16338e5d37dd581dcf9f2ab2a92b56321f42f91a",
     "data/controlled_publications/jekyll-and-hyde/reader_manifest.json": "c3fff66ff02d37c3fa727c1c2f17a36ace48c1f1368ff3cb5ee69eebcec2a032",
     "data/controlled_publications/jekyll-and-hyde/source_evidence.json": "88d44198ddc62c022897e594901d7f06fd9c4f93a286b29b4b304e46724df644",
     "data/controlled_publications/jekyll-and-hyde/approval_evidence.json": "d17ded6fd9f29b76e4c3598b2118dd6d912728c8710435a6c85e4bbcfb401359",
     "data/controlled_publications/jekyll-and-hyde/publication_manifest.json": "b9094001fb435084d41e8845ba17fdb476e8305b78bc664b6fffb708965c3849",
+    "data/controlled_publications/lokrahasya/public_book.json": "2d0fc4953e75fb9cbe2b4006657056b9448e181e0d60cb45756238804846a921",
+    "data/controlled_publications/lokrahasya/reader_manifest.json": "cd0d23d355b04e8a076dbc348a1364c3640fe7a149d8b7b2e78690c0ee22261c",
+    "data/controlled_publications/lokrahasya/source_evidence.json": "b91f203f5374ba789227c46411bf5d4c2a3721cd27c4ed5e58dcedffaa33fa7e",
+    "data/controlled_publications/lokrahasya/approval_evidence.json": "2411ed39c264b77141deed4fb3ed9e09eb94106480d9d080864639460dd63288",
+    "data/controlled_publications/lokrahasya/publication_manifest.json": "be507cfdacefef2e0eef10381874e8f983a50696a18199f676e848746fe8b341",
     "data/controlled_publications/love-of-life/public_book.json": "42e9dbf3520d002a283b9e914b0b2bd53512770d734c45aca59d104c17af9ae0",
     "data/controlled_publications/love-of-life/reader_manifest.json": "8c455a99667a07a8402d409efc76ea9f7a2fcf603bba6f6409dd749b699b1c57",
     "data/controlled_publications/love-of-life/source_evidence.json": "2d0fa5ed6528d05841da0e262170b789178070fb6160efbbdca8ec2bd8914124",
     "data/controlled_publications/love-of-life/approval_evidence.json": "b36aada3baa735af83d16d451861db2f4f653f09054c71cf889e617b4c3443a5",
     "data/controlled_publications/love-of-life/publication_manifest.json": "6107d1629ca295c1e3f785716c48a84c1fcbb3586ad65a5558d3f86679d0df6e",
+    "data/controlled_publications/mrinalini/public_book.json": "ba2a8cd8eb5b4153096786ba0eaeb924f14db581986dddd5a6941404eb2e57d8",
+    "data/controlled_publications/mrinalini/reader_manifest.json": "b2510b44fa9ec57a7a7cc48be2482787ee4fe6cba0021ddd8a6cff71ef5275f7",
+    "data/controlled_publications/mrinalini/source_evidence.json": "d361d2a57e36d6cf70c84f1b5803a99306467116f44e200cfc16659e0145e94f",
+    "data/controlled_publications/mrinalini/approval_evidence.json": "32cced5e5e2302042612c12407bd441c503e1e0c84d2d11bd9ccef45eec327e2",
+    "data/controlled_publications/mrinalini/publication_manifest.json": "5d927fa9d767e29a3bdecfa9a74799219a641041ea072e6f7c1c8f843f5d02e3",
     "data/controlled_publications/muchiram-gurer-jibanchorit/public_book.json": "8822aea5c2f3ace8ed78dc8f276ae2aac5579ea152b2b51918706aef3e0d57f3",
     "data/controlled_publications/muchiram-gurer-jibanchorit/reader_manifest.json": "ef7c6d21000b4f9d7fd56fc8bbb4768016682ee70466bc87e4f20d1ff6a4cd20",
     "data/controlled_publications/muchiram-gurer-jibanchorit/source_evidence.json": "019f7fe8556e516fef78e6cb4ffc4f9e072ec70b8459f525a9d41dc5ce4e4950",
     "data/controlled_publications/muchiram-gurer-jibanchorit/approval_evidence.json": "c75f39bd45521e71bf9d478d161cfae273165bc40c7b71ab118181771de71c72",
     "data/controlled_publications/muchiram-gurer-jibanchorit/publication_manifest.json": "c5951af809000af1577916f49609d50e24560bbe18c12c2848af689bee327da2",
+    "data/controlled_publications/my-life-and-work/public_book.json": "e209527d1c661af856e4f0dc77999d4f506de1f9978955ca5043cd0acd492db3",
+    "data/controlled_publications/my-life-and-work/reader_manifest.json": "8abb80566e377a38ba0730ffb69c7dc0fbb53358c6e0908492d968fea1313acd",
+    "data/controlled_publications/my-life-and-work/source_evidence.json": "1d5f331b74b4ac24ba559209d4d1c8ca3543a1cdc274a71bdf14bb2022b7d4b7",
+    "data/controlled_publications/my-life-and-work/approval_evidence.json": "8d79f0b11d57f1f1dd94c51dab56e798a5b7d0ab9a3931f0753bfaa09950b21b",
+    "data/controlled_publications/my-life-and-work/publication_manifest.json": "f7c153db47c7fd8748404513543039c2c11be57fca450222d1a9a03a38e6c0ab",
     "data/controlled_publications/picture-of-dorian-gray/public_book.json": "73406a82723f6a990f1d55ccab838270a15ad4c24cd44d93f4da5a6f495228ee",
     "data/controlled_publications/picture-of-dorian-gray/reader_manifest.json": "6a7653d407d43a0e8e51b1831e3f622c914bd3700f77ba104a6bbdbc85b83d09",
     "data/controlled_publications/picture-of-dorian-gray/source_evidence.json": "4a89b5e09914efd550ae2d058d60e96aad90c42d79a6f301093ddfd9c7666faf",
     "data/controlled_publications/picture-of-dorian-gray/approval_evidence.json": "009e924803328f964e55e44e04e40d9ebe04edb8f17affe91ad1b5582c7513f5",
     "data/controlled_publications/picture-of-dorian-gray/publication_manifest.json": "8a615d35a63a7138e2cd11b7db02d9842fbdd047483850fdec66f6aec5619d97",
+    "data/controlled_publications/pride-and-prejudice/public_book.json": "a4334cbaee40e9afbbd092b6de2ac5dd2fa88f7484a68cf1daa0e75a03b11d13",
+    "data/controlled_publications/pride-and-prejudice/reader_manifest.json": "81b6c23e716ea4d26fae26cc8e9e3e7e37637fd0c9fb1619dccb7a94d0ab7676",
+    "data/controlled_publications/pride-and-prejudice/source_evidence.json": "9e4efacc3dbd251ea18aacd5805d781c1f64a450bea0225fae4ba6a394a97e99",
+    "data/controlled_publications/pride-and-prejudice/approval_evidence.json": "9dc704ba64f8d4f07f1693c2d408d7a336146ea67cdfc37040e0ca072ae290d2",
+    "data/controlled_publications/pride-and-prejudice/publication_manifest.json": "69e9a6bfaf4d6c95b088f227ad7fd82556eb4bfc09c120b1c80844d4435caacc",
     "data/controlled_publications/radharani/public_book.json": "3a12e9da36cba5c24b9ae3af6e002aff81e8676d998ec2f35468796acebec585",
     "data/controlled_publications/radharani/reader_manifest.json": "44d18a1e78aaa49d81bb23d32d92c5f3573793ec3453bd54ec02efee9a64f555",
     "data/controlled_publications/radharani/source_evidence.json": "702fa94b5aebbdb50431a7c4dfc56ed900c3d3f84cee7067e129fec07a720f95",
     "data/controlled_publications/radharani/approval_evidence.json": "dcdb1ba95e43f19099bec038c27f2a9e5abc40baa38bae9f1b1923ced14bffcc",
     "data/controlled_publications/radharani/publication_manifest.json": "056ed378cdedd02e003fec00ee22c92cd22a755659983e4eab26bd13b5d35ef8",
+    "data/controlled_publications/sredni-vashtar/public_book.json": "9aa8bec2eb84adb720bc08118faff53a7277ea659bcd44f02b974cc594b11d01",
+    "data/controlled_publications/sredni-vashtar/reader_manifest.json": "2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad",
+    "data/controlled_publications/sredni-vashtar/source_evidence.json": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
+    "data/controlled_publications/sredni-vashtar/approval_evidence.json": "07fa6c729b5b6bb6a324225172abc3811c4f3acd4618bc824116fcaf51794bf0",
+    "data/controlled_publications/sredni-vashtar/publication_manifest.json": "7b0f8f0f12d8573fd3be92c3df5b4e4c2768025c63292c4e3e31472e919a780d",
     "data/controlled_publications/the-adventures-of-sherlock-holmes/public_book.json": "2ea560df8a7adc3fdd54100589fd96e81660f0f2a12d8d64632a72e2cbe16163",
     "data/controlled_publications/the-adventures-of-sherlock-holmes/reader_manifest.json": "72df26f5a988406ad2be0dca1a6b45825a652dca75e5aeaafdf189bf9f16ba1d",
     "data/controlled_publications/the-adventures-of-sherlock-holmes/source_evidence.json": "a2d6c8c617d5d21238767685e7f430536d02459d579ffe37e09a9145066599b5",
@@ -113,6 +163,11 @@
     "data/controlled_publications/the-canterville-ghost/source_evidence.json": "94fe16603a0ee2ce43bdb4e3a8695673e32e4cbeae6c49676dc083416b70b5fb",
     "data/controlled_publications/the-canterville-ghost/approval_evidence.json": "0cca34bf90e6dc798191ea57c9bc4d9e539230477b842c6af520115cbc7fd580",
     "data/controlled_publications/the-canterville-ghost/publication_manifest.json": "f501fb2835bad4f5ee117b3b580b09b6ff763d8db18738b618f8a0c33e007c2a",
+    "data/controlled_publications/the-cop-and-the-anthem/public_book.json": "8be18e15d16f64a3f55c0ba0d2cca1719aa6a53f5b1d6292a281417ac1b2e8de",
+    "data/controlled_publications/the-cop-and-the-anthem/reader_manifest.json": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22",
+    "data/controlled_publications/the-cop-and-the-anthem/source_evidence.json": "f40f277d758a03b9e05dd6ffa721b058766db6955ba4414d183a7f9bf45fb84f",
+    "data/controlled_publications/the-cop-and-the-anthem/approval_evidence.json": "68c32c9a7a134010a36017f8ab058d56dfcda2eb6e739e38c45b1188e52f19bf",
+    "data/controlled_publications/the-cop-and-the-anthem/publication_manifest.json": "cd93ea733f3107ef5ddf9f96ae092b732f8bc852263e55efeb7c4298395bc876",
     "data/controlled_publications/the-enchanted-april/public_book.json": "3ca6322edc59469b1550e93ea9b706ae56e68f2314f2a136bf196a73f06d7f28",
     "data/controlled_publications/the-enchanted-april/reader_manifest.json": "8971cebfd2ff004ea3321c2f7b67ccd300fc11508f36e8ed23eb1174efc7bcc2",
     "data/controlled_publications/the-enchanted-april/source_evidence.json": "85f0311dfb8e5262fc813fcf48e4c56f4677f6a75d949a6c9f3ff0fd19b9a80f",
@@ -128,6 +183,11 @@
     "data/controlled_publications/the-gift-of-the-magi/source_evidence.json": "b6f7994b76f0a968d7394f6b346ace096cefa32bbe734792332b2995b636d4a3",
     "data/controlled_publications/the-gift-of-the-magi/approval_evidence.json": "aa03e25260930245f1c66f3ab1afc8ffbd336ff9763b974a804b3ba4b9c25954",
     "data/controlled_publications/the-gift-of-the-magi/publication_manifest.json": "62d336265746f1e47879a0e13c64ca725b83c463b5ac2dd06213f0358d2a8a24",
+    "data/controlled_publications/the-great-gatsby/public_book.json": "52eef0e917e56bcb821784c64d5fa364f86d270965a4bdd64ae8f7eb2551748a",
+    "data/controlled_publications/the-great-gatsby/reader_manifest.json": "f544166427c91bb2b8546484bf0c811761345f2ec8f1c73c00afad88411fcb4c",
+    "data/controlled_publications/the-great-gatsby/source_evidence.json": "93a1e5eab7ce62def0ef60ba3a2ae6e56ed964c688c1f2a827f3e88664a30874",
+    "data/controlled_publications/the-great-gatsby/approval_evidence.json": "10601541979f351948e09e6cc19eab167801f719668e63acf6e2a26cd581c98b",
+    "data/controlled_publications/the-great-gatsby/publication_manifest.json": "010506ba4edaf1e1b26d656710a898f98a4ad9869243c074a726084bd8e3e54b",
     "data/controlled_publications/the-happy-prince/public_book.json": "3dc9a6887ff1ac2bc39329fa48190b657391a145c303d251f48a61414431f3af",
     "data/controlled_publications/the-happy-prince/reader_manifest.json": "b0a6af3fa57d2ee2b1399a50552523918ab705c1f1a7bb5f6703f457008d657a",
     "data/controlled_publications/the-happy-prince/source_evidence.json": "aebe2a1d7a459a2c2444a0b4ae3ca4b82088bdb21387af6cf20c3e0d36c9bcfe",
@@ -148,11 +208,36 @@
     "data/controlled_publications/the-open-boat/source_evidence.json": "362e86b588c8cd4b2f9e1f11aa49834aa66733c7b2260d526938d62d5b68e859",
     "data/controlled_publications/the-open-boat/approval_evidence.json": "8f6dc1da359bef3f9f9f863924def97e8cc46ebfc6bd014410199452baaa9959",
     "data/controlled_publications/the-open-boat/publication_manifest.json": "26c68b1900a65b58afd2fb8172dd9eb3122dcf3b46bbcbec8a43d8b0bef5e715",
+    "data/controlled_publications/the-open-window/public_book.json": "15e0b753e73e7fc56c3948ffd6e660ab4991ffed0e337c648b3ae3b973b19cf2",
+    "data/controlled_publications/the-open-window/reader_manifest.json": "8f5a8d563c587a28d30e1e001447cdb5328bdcd49df4b61d8d7838401aac6151",
+    "data/controlled_publications/the-open-window/source_evidence.json": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d",
+    "data/controlled_publications/the-open-window/approval_evidence.json": "2326191e9819b187611935044289a926b930efb2e8f8e328aae15c045778d085",
+    "data/controlled_publications/the-open-window/publication_manifest.json": "605ed01af369f954d266661677ae89ded55bb74cd16e288b882169781b15b521",
     "data/controlled_publications/the-pit-and-the-pendulum/public_book.json": "53b92408acac07619bebff1a17b4fcafc7d7392e96ef78fc58fedccec70b87cf",
     "data/controlled_publications/the-pit-and-the-pendulum/reader_manifest.json": "75184bafdc2e13f06824e1a3070fdfe5afc5bac478fb5142fa54393f07e32eed",
     "data/controlled_publications/the-pit-and-the-pendulum/source_evidence.json": "1a64c6709c98a917f7c338a28023ef2df49bad1e896f090cf50286be878eb4e0",
     "data/controlled_publications/the-pit-and-the-pendulum/approval_evidence.json": "df56dfb86da0313455048aee89368af237670dd186400c2d1ded3621a296f6e6",
     "data/controlled_publications/the-pit-and-the-pendulum/publication_manifest.json": "7a71dedfe7704aa099d448ba23fc9246e8afad93b8eced53e65f282f0e5b57f3",
+    "data/controlled_publications/the-principles-of-scientific-management/public_book.json": "b597e851bbcd8182b369610d4a39209b31e2793f894eb32dcd2bec5c76c943c5",
+    "data/controlled_publications/the-principles-of-scientific-management/reader_manifest.json": "87a47f53b9dbcbae66a09bee4bcc5769f4b5f584ef9bdfc4ab31b65959c3318f",
+    "data/controlled_publications/the-principles-of-scientific-management/source_evidence.json": "e6b091fd0aebe2517dd1e2b6c8e8ef14d5ea6d6540daa66c33e0ba27a9ef2380",
+    "data/controlled_publications/the-principles-of-scientific-management/approval_evidence.json": "1fcab2b332970b6dc90953ae3cd9dfbcf780e09a90d39bc25fa89afc1e01a87a",
+    "data/controlled_publications/the-principles-of-scientific-management/publication_manifest.json": "343091217a6558c325e0277fc3440028b65dcd521458d5e0cacbf7ecdfb92a57",
+    "data/controlled_publications/the-science-of-getting-rich/public_book.json": "08b6e34e2fb16cbdd53a6860ac880663ab7908277a1397a89351cea3d5a7b027",
+    "data/controlled_publications/the-science-of-getting-rich/reader_manifest.json": "a42883b4eb214ae086998672472b0f86c9709e550da35c87789f95564cdefdb7",
+    "data/controlled_publications/the-science-of-getting-rich/source_evidence.json": "6324de50de9db456175bcd2cbecec794641fa8bdd322d2de2b49eaacc713a117",
+    "data/controlled_publications/the-science-of-getting-rich/approval_evidence.json": "c2e4dcccb24f4a77c383b9c27277e045437465d293186b78ea82eff3065f731a",
+    "data/controlled_publications/the-science-of-getting-rich/publication_manifest.json": "86ff9bb4db0b2989342888fcea4e31a31a7ccacf2b951f401e3f7b3c8b8b4358",
+    "data/controlled_publications/the-secret-garden/public_book.json": "8b6207581e6589fdf1fb532be36ed6d5db3abc6b88da22c5bb67d5cda09f2a33",
+    "data/controlled_publications/the-secret-garden/reader_manifest.json": "75d9899ba4ecf348e9bc75da118a4b0ac3aa9cb1e595e8598e3541f9154dff4f",
+    "data/controlled_publications/the-secret-garden/source_evidence.json": "d4fba2e016dc99ebbab2950c7f63186ec154e408da4d4acb09a82fa8ef959852",
+    "data/controlled_publications/the-secret-garden/approval_evidence.json": "d497c904e2ab22a1dede97671b4ff0de831ad375870bc284005f44aff8f555a4",
+    "data/controlled_publications/the-secret-garden/publication_manifest.json": "51822f2217effec1d0928911a13abf5ca22ce285721b0c78b228446c3d351d82",
+    "data/controlled_publications/the-selfish-giant/public_book.json": "606bc3c47fd88faec4c4ef5c99d24baa24c0a2b39ffe260211bb832dead9c71f",
+    "data/controlled_publications/the-selfish-giant/reader_manifest.json": "d5ce7da734364efdd9a2bd6eace1ee2df66bcfa0dcf7ea4e99d49502b330fc9c",
+    "data/controlled_publications/the-selfish-giant/source_evidence.json": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d",
+    "data/controlled_publications/the-selfish-giant/approval_evidence.json": "b1d859e0c2721a1fc9c0c0b2e9e47d9022360dcf7b10f25de32fa86cb57f1b48",
+    "data/controlled_publications/the-selfish-giant/publication_manifest.json": "dfe645e5168f415a44d305b484598f65555718b0b7c803e24f7cf082c899d8dc",
     "data/controlled_publications/the-stolen-white-elephant/public_book.json": "5a746dd018904240d7d325c25f71df70925c5361b1e7d21033358e127ade5214",
     "data/controlled_publications/the-stolen-white-elephant/reader_manifest.json": "dfaf46f1970dda6041c0f161a415cce1be4427402b1156ff2de5e3ec5fa8ad8c",
     "data/controlled_publications/the-stolen-white-elephant/source_evidence.json": "3604c82d994c47602b76c49a0a1e8b028b704646eadb813481791a28d70dc4b6",
@@ -167,7 +252,17 @@
     "data/controlled_publications/the-tell-tale-heart/reader_manifest.json": "f50a47eb83a43e1dc763a8bf7310e4d7cfff7f828c8e8cb2b66b2c58d0e9357f",
     "data/controlled_publications/the-tell-tale-heart/source_evidence.json": "32c5f6aff23758db159fd3ecf5c13bf9201a6a689948d3a9fdf03fcadf09100f",
     "data/controlled_publications/the-tell-tale-heart/approval_evidence.json": "de8d315ed722045999ba6117be591daf639165510f16d4668036e60b418dba4a",
-    "data/controlled_publications/the-tell-tale-heart/publication_manifest.json": "00c04f1b70a324bca3d0fa56f43025f2975e5523612303c6313ffc535d9e4726"
+    "data/controlled_publications/the-tell-tale-heart/publication_manifest.json": "00c04f1b70a324bca3d0fa56f43025f2975e5523612303c6313ffc535d9e4726",
+    "data/controlled_publications/the-time-machine/public_book.json": "6fe776140c65014131e2c684e05272a01a2dbf846ddc8bcf3fd961ec49ce391d",
+    "data/controlled_publications/the-time-machine/reader_manifest.json": "1874f35f864ccffa65a9d7e38312c3f84df7fd8880120db0ac4ead237d1d913a",
+    "data/controlled_publications/the-time-machine/source_evidence.json": "010c2fd7d0fa5ae1370f081876448c94a9bad177df7fe0b621b0f91c39af0cf5",
+    "data/controlled_publications/the-time-machine/approval_evidence.json": "c529d93f7e97765917608238149c2768857b7720ac648132013123ac9a740b55",
+    "data/controlled_publications/the-time-machine/publication_manifest.json": "5cd250333ce7f1cb970eb98fe024ea5c7bf99a0ff3a3ae63a185337d148d6044",
+    "data/controlled_publications/the-wonderful-wizard-of-oz/public_book.json": "44181e3acd1d738c6fda24b0f0755fbc86e819bde9a142373ff44bbb4d7f01f6",
+    "data/controlled_publications/the-wonderful-wizard-of-oz/reader_manifest.json": "2323b65af075000645cd7ac0f3f841f4583ac1407ddefd849a1cbc7b06795d71",
+    "data/controlled_publications/the-wonderful-wizard-of-oz/source_evidence.json": "7ec444ed90caa41fb950757933ee7399ef94fceab855bdd8c3e52a6806358ec5",
+    "data/controlled_publications/the-wonderful-wizard-of-oz/approval_evidence.json": "1c594a572466bbff09edf6bdb022261abeb45a5eab7e7033bad83f184a455a89",
+    "data/controlled_publications/the-wonderful-wizard-of-oz/publication_manifest.json": "ee7860e56d3f5cb340da13e1c1c43af4485eccca54e8cf753ebc4c8725407e77"
   },
   "publications": [
     {
@@ -256,6 +351,23 @@
       }
     },
     {
+      "slug": "acres-of-diamonds",
+      "title": "Acres of Diamonds",
+      "author": "Russell H. Conwell",
+      "cover_url": "https://theearnalism.com/assets/books/acres-of-diamonds/acres-of-diamonds-front-cdffd02e-600.webp",
+      "chapter_count": 12,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/acres-of-diamonds",
+        "reader": "/reader/acres-of-diamonds",
+        "listener": "/listener/acres-of-diamonds"
+      }
+    },
+    {
       "slug": "agentic-ai-with-python",
       "title": "Agentic AI With Python",
       "author": "Ronik Basak",
@@ -341,6 +453,40 @@
       }
     },
     {
+      "slug": "bn-066",
+      "title": "আনন্দমঠ",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "cover_url": "https://theearnalism.com/assets/books/bn-066/bn-066-front-3a9f74e8.webp",
+      "chapter_count": 46,
+      "source_display_name": "Bengali Wikisource",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/bn-066",
+        "reader": "/reader/bn-066",
+        "listener": "/listener/bn-066"
+      }
+    },
+    {
+      "slug": "book-5704b31005",
+      "title": "বিচারক",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "cover_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-8f64cc7c.webp",
+      "chapter_count": 1,
+      "source_display_name": "Bengali Wikisource",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/book-5704b31005",
+        "reader": "/reader/book-5704b31005",
+        "listener": "/listener/book-5704b31005"
+      }
+    },
+    {
       "slug": "book-edfcf810c5",
       "title": "ক্ষুধিত পাষাণ",
       "author": "রবীন্দ্রনাথ ঠাকুর",
@@ -375,6 +521,40 @@
       }
     },
     {
+      "slug": "dsires-baby",
+      "title": "Désirée's Baby",
+      "author": "Kate Chopin",
+      "cover_url": "https://theearnalism.com/assets/books/dsires-baby/dsires-baby-front-c965ecd7-800.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/dsires-baby",
+        "reader": "/reader/dsires-baby",
+        "listener": "/listener/dsires-baby"
+      }
+    },
+    {
+      "slug": "frankenstein",
+      "title": "Frankenstein",
+      "author": "Mary Wollstonecraft Shelley",
+      "cover_url": "https://theearnalism.com/assets/books/frankenstein/frankenstein-front-a7a5d982.webp",
+      "chapter_count": 28,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/frankenstein",
+        "reader": "/reader/frankenstein",
+        "listener": "/listener/frankenstein"
+      }
+    },
+    {
       "slug": "jekyll-and-hyde",
       "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
       "author": "Robert Louis Stevenson",
@@ -389,6 +569,23 @@
         "book": "/book/jekyll-and-hyde",
         "reader": "/reader/jekyll-and-hyde",
         "listener": "/listener/jekyll-and-hyde"
+      }
+    },
+    {
+      "slug": "lokrahasya",
+      "title": "লোকরহস্য",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "cover_url": "https://theearnalism.com/assets/books/lokrahasya/lokrahasya-front-ed95a2ef.webp",
+      "chapter_count": 16,
+      "source_display_name": "Bengali Wikisource",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/lokrahasya",
+        "reader": "/reader/lokrahasya",
+        "listener": "/listener/lokrahasya"
       }
     },
     {
@@ -409,6 +606,23 @@
       }
     },
     {
+      "slug": "mrinalini",
+      "title": "মৃণালিনী",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "cover_url": "https://theearnalism.com/assets/books/mrinalini/mrinalini-front-77b2a78d.webp",
+      "chapter_count": 46,
+      "source_display_name": "Bengali Wikisource",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/mrinalini",
+        "reader": "/reader/mrinalini",
+        "listener": "/listener/mrinalini"
+      }
+    },
+    {
       "slug": "muchiram-gurer-jibanchorit",
       "title": "মুচিরাম গুড়ের জীবনচরিত",
       "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
@@ -423,6 +637,23 @@
         "book": "/book/muchiram-gurer-jibanchorit",
         "reader": "/reader/muchiram-gurer-jibanchorit",
         "listener": "/listener/muchiram-gurer-jibanchorit"
+      }
+    },
+    {
+      "slug": "my-life-and-work",
+      "title": "My Life and Work",
+      "author": "Henry Ford and Samuel Crowther",
+      "cover_url": "https://theearnalism.com/assets/books/my-life-and-work/my-life-and-work-front-9f2a6f06-800.webp",
+      "chapter_count": 20,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/my-life-and-work",
+        "reader": "/reader/my-life-and-work",
+        "listener": "/listener/my-life-and-work"
       }
     },
     {
@@ -443,6 +674,23 @@
       }
     },
     {
+      "slug": "pride-and-prejudice",
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "cover_url": "https://theearnalism.com/assets/books/pride-and-prejudice/pride-and-prejudice-front-480db270.webp",
+      "chapter_count": 61,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/pride-and-prejudice",
+        "reader": "/reader/pride-and-prejudice",
+        "listener": "/listener/pride-and-prejudice"
+      }
+    },
+    {
       "slug": "radharani",
       "title": "রাধারাণী",
       "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
@@ -457,6 +705,23 @@
         "book": "/book/radharani",
         "reader": "/reader/radharani",
         "listener": "/listener/radharani"
+      }
+    },
+    {
+      "slug": "sredni-vashtar",
+      "title": "Sredni Vashtar",
+      "author": "Saki",
+      "cover_url": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/sredni-vashtar",
+        "reader": "/reader/sredni-vashtar",
+        "listener": "/listener/sredni-vashtar"
       }
     },
     {
@@ -545,6 +810,23 @@
       }
     },
     {
+      "slug": "the-cop-and-the-anthem",
+      "title": "The Cop and the Anthem",
+      "author": "O. Henry",
+      "cover_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-cop-and-the-anthem",
+        "reader": "/reader/the-cop-and-the-anthem",
+        "listener": "/listener/the-cop-and-the-anthem"
+      }
+    },
+    {
       "slug": "the-enchanted-april",
       "title": "The Enchanted April",
       "author": "Elizabeth von Arnim",
@@ -593,6 +875,23 @@
         "book": "/book/the-gift-of-the-magi",
         "reader": "/reader/the-gift-of-the-magi",
         "listener": "/listener/the-gift-of-the-magi"
+      }
+    },
+    {
+      "slug": "the-great-gatsby",
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "cover_url": "https://theearnalism.com/assets/books/the-great-gatsby/the-great-gatsby-front-8d98a278.webp",
+      "chapter_count": 10,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-great-gatsby",
+        "reader": "/reader/the-great-gatsby",
+        "listener": "/listener/the-great-gatsby"
       }
     },
     {
@@ -664,6 +963,23 @@
       }
     },
     {
+      "slug": "the-open-window",
+      "title": "The Open Window",
+      "author": "Saki",
+      "cover_url": "https://theearnalism.com/assets/books/the-open-window/the-open-window-front-fd16c968.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-open-window",
+        "reader": "/reader/the-open-window",
+        "listener": "/listener/the-open-window"
+      }
+    },
+    {
       "slug": "the-pit-and-the-pendulum",
       "title": "The Pit and the Pendulum",
       "author": "Edgar Allan Poe",
@@ -678,6 +994,74 @@
         "book": "/book/the-pit-and-the-pendulum",
         "reader": "/reader/the-pit-and-the-pendulum",
         "listener": "/listener/the-pit-and-the-pendulum"
+      }
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "title": "The Principles of Scientific Management",
+      "author": "Frederick Winslow Taylor",
+      "cover_url": "https://theearnalism.com/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-front-67895aec-600.webp",
+      "chapter_count": 4,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-principles-of-scientific-management",
+        "reader": "/reader/the-principles-of-scientific-management",
+        "listener": "/listener/the-principles-of-scientific-management"
+      }
+    },
+    {
+      "slug": "the-science-of-getting-rich",
+      "title": "The Science of Getting Rich",
+      "author": "W. D. Wattles",
+      "cover_url": "https://theearnalism.com/assets/books/the-science-of-getting-rich/front-5ee48b1d.webp",
+      "chapter_count": 18,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-science-of-getting-rich",
+        "reader": "/reader/the-science-of-getting-rich",
+        "listener": "/listener/the-science-of-getting-rich"
+      }
+    },
+    {
+      "slug": "the-secret-garden",
+      "title": "The Secret Garden",
+      "author": "Frances Hodgson Burnett",
+      "cover_url": "https://theearnalism.com/assets/books/the-secret-garden/the-secret-garden-front-39799997.webp",
+      "chapter_count": 27,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-secret-garden",
+        "reader": "/reader/the-secret-garden",
+        "listener": "/listener/the-secret-garden"
+      }
+    },
+    {
+      "slug": "the-selfish-giant",
+      "title": "The Selfish Giant",
+      "author": "Oscar Wilde",
+      "cover_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
+      "chapter_count": 1,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-selfish-giant",
+        "reader": "/reader/the-selfish-giant",
+        "listener": "/listener/the-selfish-giant"
       }
     },
     {
@@ -729,6 +1113,40 @@
         "book": "/book/the-tell-tale-heart",
         "reader": "/reader/the-tell-tale-heart",
         "listener": "/listener/the-tell-tale-heart"
+      }
+    },
+    {
+      "slug": "the-time-machine",
+      "title": "The Time Machine",
+      "author": "H. G. Wells",
+      "cover_url": "https://theearnalism.com/assets/books/the-time-machine/the-time-machine-front-5eb21ec7.webp",
+      "chapter_count": 17,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-time-machine",
+        "reader": "/reader/the-time-machine",
+        "listener": "/listener/the-time-machine"
+      }
+    },
+    {
+      "slug": "the-wonderful-wizard-of-oz",
+      "title": "The Wonderful Wizard of Oz",
+      "author": "L. Frank Baum",
+      "cover_url": "/assets/books/the-wonderful-wizard-of-oz/front-33ecb0db.webp",
+      "chapter_count": 25,
+      "source_display_name": "Rights-cleared edition",
+      "approved_rights_display_state": "approved_tier_a",
+      "text_preview_limit_canonical_pages": 3,
+      "audio_public_preview_seconds": 0,
+      "audio_availability_state": "disabled",
+      "canonical_routes": {
+        "book": "/book/the-wonderful-wizard-of-oz",
+        "reader": "/reader/the-wonderful-wizard-of-oz",
+        "listener": "/listener/the-wonderful-wizard-of-oz"
       }
     }
   ]

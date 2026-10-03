@@ -1,0 +1,74 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "the-principles-of-scientific-management",
+  "title": "The Principles of Scientific Management",
+  "generated_at": "2026-10-03T05:34:11.386246+00:00",
+  "content": {
+    "source_hash": "1f504a9abe674ee616f13bf1db66ec25cbb1be0ff5fd9bfe70ab8593aa08a3b2",
+    "content_hash": "288b62bc7442e85367b7ca05290f466dee7a0314d7f0ab3d3252cc39618850df",
+    "provenance_hash": "b6e46635dcd809120020e0324737c74996924b29a83ee411ce7171935c1d2948",
+    "sanitized": true,
+    "chapter_count": 4,
+    "chapter_index_sha256": "79d14b9bd9ea3d713d430b9d33c3a5e3f25c6a8d63fb769ab4693d1c6a43d65e",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "INTRODUCTION",
+        "word_count": 795,
+        "sha256": "54a34be7806d09e5d94918947214e4d2d58f78367fdab1efd9da8489522c2a35"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "CHAPTER I. FUNDAMENTALS OF SCIENTIFIC MANAGEMENT",
+        "word_count": 5370,
+        "sha256": "5d5831cc3266c2a972290056cfeb8e3d598c09412b0bf35027687a704a56e994"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "CHAPTER II. THE PRINCIPLES OF SCIENTIFIC MANAGEMENT",
+        "word_count": 109,
+        "sha256": "0eb52d90eeea32e4aa583cc95ece5cb8350901a3f955274244aa916cf88b001c"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "THE FINEST TYPE OF ORDINARY MANAGEMENT",
+        "word_count": 30188,
+        "sha256": "33cd142e22486d545f9302026058eb1bac8d14efb80b25ac1cd0b241553197fb"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "e6b091fd0aebe2517dd1e2b6c8e8ef14d5ea6d6540daa66c33e0ba27a9ef2380"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/the-principles-of-scientific-management/the-principles-of-scientific-management-front-67895aec-600.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "729544dd291bf9fe1b95bc2cd697cedcf67025dcbe2a8489688e6036c0a5e6c5",
+    "reader_manifest": "87a47f53b9dbcbae66a09bee4bcc5769f4b5f584ef9bdfc4ab31b65959c3318f",
+    "source_evidence": "e6b091fd0aebe2517dd1e2b6c8e8ef14d5ea6d6540daa66c33e0ba27a9ef2380",
+    "approval_evidence": "1fcab2b332970b6dc90953ae3cd9dfbcf780e09a90d39bc25fa89afc1e01a87a"
+  },
+  "manifest_sha256": "4bcd08e6f52e1e7d60804cad69e2dfdb6b9a6fc92407b2f4fdf697d5a9c50062"
+}

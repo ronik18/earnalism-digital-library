@@ -1,0 +1,50 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-the-secret-garden-exact-reader-cover-prospective-accepted",
+  "edition_id": "the-secret-garden",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "37837f8c9f460187e07f34b41fd582d732de060cd9b5773faedfc9f3c432235c",
+    "reader_manifest": "75d9899ba4ecf348e9bc75da118a4b0ac3aa9cb1e595e8598e3541f9154dff4f",
+    "source_evidence": "d4fba2e016dc99ebbab2950c7f63186ec154e408da4d4acb09a82fa8ef959852",
+    "approval_evidence": "d497c904e2ab22a1dede97671b4ff0de831ad375870bc284005f44aff8f555a4",
+    "checksum_manifest": "bedbdc0d68ef6287b4bcddd2743e4d56f409dbed54e3e929e1a91270401a35e5",
+    "publication_manifest": "1f1e60c33f777fba0d70911c1941a88b5a24d5488abce23f53dd5b06eeb0cb47",
+    "cover_preparation": "6c1abdead95ea79fdfe72fd832ea2ccff7f5f82ba847628263bbac3b535c0140",
+    "publication_authorization": "26fec4c562c0c24f4c4be3d9e3b7df8c41defc32feb8a934980efe7b0167046d",
+    "cover_provenance": "5f14249b3307f606c2f00517c55fb18c232fa50dbee1fd888c5508dc76293977",
+    "owner_artwork_declaration": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "acceptance_review_a": "0f72494328632cf157a108de8568a0493a6af1c57fefecaa77583f3cc4627b5c",
+    "acceptance_review_b": "fa8c2d43c53f2ebe4db5c2ab2e20ebc8addeb59f9725bbec1f1bb0b32c822a97"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T05:34:11.386246+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Exact India text/edition rights are preserved from the archived predecessor and unchanged source/chapter/license records. Ronik Basak directly provided the owner-held copyright and publication provenance for the exact owner-created cover components; two independent passing source/art preparations bind the reviewed derivatives and deliveries. Prospective automated acceptance supersedes earlier procedural cover deferral for these components only. No human approval, other source/edition rights, unknown original construction method, audio grant or production observation inferred.",
+  "evidence_sha256": [
+    "6e5e82c969e1b912ececc75733b0ab49402f6271378fe8ec88ca0aec38f72ca8",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ddff4d02c636c57500215604f778bd3b8b9883d5ca9d5de89dc1480b29fa52c3",
+    "6b0bb5fbd0c4e873d2d22028da9d753cf3977d5f70ac58221556b28060badbf5",
+    "027d79093c1a71f7824fb7e21ecfaea67e5f46eb47f2e6c5358a44a34382404a",
+    "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "26fec4c562c0c24f4c4be3d9e3b7df8c41defc32feb8a934980efe7b0167046d",
+    "5f14249b3307f606c2f00517c55fb18c232fa50dbee1fd888c5508dc76293977",
+    "0f72494328632cf157a108de8568a0493a6af1c57fefecaa77583f3cc4627b5c",
+    "fa8c2d43c53f2ebe4db5c2ab2e20ebc8addeb59f9725bbec1f1bb0b32c822a97",
+    "e7160391d77b3e1f89dec5481949d5211d86420fb3dcd56c7129798a98bac0d7"
+  ],
+  "accepted_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+  "conditions_satisfied": true
+}

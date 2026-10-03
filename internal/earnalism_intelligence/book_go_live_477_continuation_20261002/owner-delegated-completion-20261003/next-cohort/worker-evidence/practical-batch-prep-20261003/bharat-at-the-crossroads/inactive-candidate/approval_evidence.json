@@ -1,0 +1,51 @@
+{
+  "slug": "bharat-at-the-crossroads",
+  "approved_to_publish": false,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "INACTIVE_SOURCE_BOUND_EXACT_OWNER_ART_TYPOGRAPHY_PROPOSAL_PENDING_TWO_REVIEWERS",
+  "manual_listening_approval": true,
+  "manual_listening_approval_basis": "Explicit owner approval in conversation",
+  "listening_qa_fatal_flags": [],
+  "source_sha256": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+  "uploaded_artifact_sha256": {
+    "mp3": "d0684239667b35fb0806d80216c9fdb7e9e6b55b313129cb22e9546e23434084"
+  },
+  "uploaded_artifact_size_bytes": {
+    "mp3": 147636213
+  },
+  "upload_status": "UPLOADED_CHECKSUM_VERIFIED",
+  "storage_backend": "b2_s3",
+  "metadata_approval_status": "PASS",
+  "browser_gate_status": "PENDING_REVERIFY",
+  "release_blockers": [],
+  "allowCheckout": false,
+  "allowPayment": false,
+  "historical_admin_import_claim": {
+    "approved_to_publish": true,
+    "verification_status": "approved",
+    "approval_scope": "explicit_owner_approved_audio_only_release"
+  },
+  "publication_authorization_sha256": "ef67bcf8019f04b2c78b5315d758aa42df3dd438297c884a9056d5d08a26b421",
+  "source_hash": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+  "content_hash": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+  "provenance_hash": "41300c1e70b2b43c0f17602acba1de96a1b3f5350e8dffd46c470ecdc9330343",
+  "verified_at": "2026-10-03T05:04:16.164575+00:00",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "audio_status": "NOT_REQUESTED",
+  "audiobook_release_gate": "NOT_REQUESTED",
+  "audio_qa_status": "NOT_RUN",
+  "sync_tier": "NONE",
+  "audiobook_use_approved": false,
+  "audiobook_use_approval_source": "",
+  "audiobook_use_approved_at": "",
+  "cover_provenance_sha256": "9d44371e25509308c9d08466e1cf8c07c6f2d8dcfd3e0ce63b273f12bcada205",
+  "cover_delivery_derivation_sha256": "8aba3337c8140ddcb424fea5bc3b196199c555888e9c4f455c9b605e5b3cd0ed",
+  "source_integrity_validation_sha256": "01c2fb4ab9c360ced67e4b7a899d06995e7553ad8696fc5b9f1926b201b821ee",
+  "cover_front_qa_status": "PENDING",
+  "cover_back_qa_status": "PENDING",
+  "production_observed": false
+}

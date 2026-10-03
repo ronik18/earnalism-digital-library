@@ -1,0 +1,331 @@
+const fs = require("fs");
+const path = require("path");
+const publicAudioTruth = require("../../internal/audiobook_lab/release_gate/claimable_go_live_tranche.json");
+
+const ROOT = path.resolve(__dirname, "../..");
+const BATCH_SLUGS = [
+  "frankenstein",
+  "jekyll-and-hyde",
+  "carmilla",
+  "hound-of-the-baskervilles",
+  "picture-of-dorian-gray",
+  "woman-in-white",
+  "hungry-stones",
+  "devdas",
+  "pather-panchali",
+  "eyesore-chokher-bali",
+];
+const BENGALI_SLUGS = new Set(["devdas", "pather-panchali"]);
+const HISTORICAL_AUDIO_HOLD_SLUGS = [
+  "alices-adventures-in-wonderland",
+  "bn-027",
+  "lokrahasya",
+  "mrinalini",
+  "nishkriti",
+  "the-wonderful-wizard-of-oz",
+  "bn-059",
+];
+const APPROVED_PUBLIC_AUDIO_SLUGS = publicAudioTruth.approved_public_audio_slugs || [];
+const PRIVATE_QA_AUDIO_HOLD = "bn-066";
+const CURRENT_RELEASED_SLUGS = [
+  "a-ghost-story",
+  "the-tell-tale-heart",
+  "radharani",
+  "a-white-heron",
+  "the-gift-of-the-magi",
+  "the-canterville-ghost",
+  "the-adventures-of-sherlock-holmes",
+  "agentic-ai-with-python",
+  "a-horseman-in-the-sky",
+  "a-mystery-of-heroism",
+  "a-scandal-in-bohemia",
+  "jekyll-and-hyde",
+  "love-of-life",
+  "the-bishop",
+  "the-fall-of-the-house-of-usher",
+  "the-lady-with-the-dog",
+  "the-man-who-would-be-king",
+  "the-open-boat",
+  "the-pit-and-the-pendulum",
+  "the-stolen-white-elephant",
+  "an-occurrence-at-owl-creek-bridge",
+  "the-enchanted-april",
+  "the-happy-prince",
+  "picture-of-dorian-gray",
+  "dracula",
+  "book-edfcf810c5",
+  "muchiram-gurer-jibanchorit",
+  "bn-059",
+  "the-call-of-the-wild",
+  "the-student",
+  "the-art-of-money-getting",
+  "bn-035",
+  "alices-adventures-in-wonderland",
+  "dsires-baby",
+  "sredni-vashtar",
+  "the-cop-and-the-anthem",
+  "the-open-window",
+  "the-selfish-giant",
+  "the-science-of-getting-rich",
+  "bn-066",
+  "lokrahasya",
+  "mrinalini",
+  "frankenstein",
+  "pride-and-prejudice",
+  "the-great-gatsby",
+  "the-secret-garden",
+  "the-time-machine",
+  "acres-of-diamonds",
+  "my-life-and-work",
+  "the-principles-of-scientific-management",
+  "the-wonderful-wizard-of-oz",
+  "book-5704b31005"
+];
+const PROSPECTIVE_READER_RELEASE_SLUGS = [
+  "dsires-baby",
+  "sredni-vashtar",
+  "the-cop-and-the-anthem",
+  "the-open-window",
+  "the-selfish-giant",
+  "the-science-of-getting-rich",
+  "bn-066",
+  "lokrahasya",
+  "mrinalini",
+  "frankenstein",
+  "pride-and-prejudice",
+  "the-great-gatsby",
+  "the-secret-garden",
+  "the-time-machine",
+  "acres-of-diamonds",
+  "my-life-and-work",
+  "the-principles-of-scientific-management",
+  "the-wonderful-wizard-of-oz",
+  "book-5704b31005"
+];
+const BOILERPLATE_RE = /Project Gutenberg|Gutenberg-tm|START OF THE PROJECT|END OF THE PROJECT|Wikisource|Category:|Creative Commons|Download as|Edit this page/i;
+const AUDIO_FIELDS = ["audio_enabled", "audiobook_enabled", "generate_audiobook"];
+const PENDING_FRESH_READER_APPROVAL_SLUGS = new Set(["picture-of-dorian-gray"]);
+
+function readJson(relativePath) {
+  return JSON.parse(fs.readFileSync(path.join(ROOT, relativePath), "utf8"));
+}
+
+function read(relativePath) {
+  return fs.readFileSync(path.join(ROOT, relativePath), "utf8");
+}
+
+function chapterFiles(slug) {
+  const dir = path.join(ROOT, "content", "books", slug, "chapters");
+  return fs.readdirSync(dir).filter((name) => name.endsWith(".json")).sort();
+}
+
+function allReaderText(slug) {
+  return chapterFiles(slug)
+    .map((name) => readJson(path.join("content", "books", slug, "chapters", name)).content || "")
+    .join("\n");
+}
+
+describe("Reader content quality batch 1", () => {
+  const manifest = readJson("book_import_manifest.batch-1.json");
+  const quality = readJson("content/books/reader-content-quality-report.json");
+  const promotion = readJson("content/books/batch-1-promotion-report.json");
+  const launch = readJson("data/controlled_launch.json");
+
+  test("manifest configures the controlled bilingual batch only", () => {
+    expect(manifest.books.map((book) => book.slug)).toEqual(BATCH_SLUGS);
+    for (const book of manifest.books) {
+      expect(book.intendedStatus).toBe("auto_promote_if_all_gates_pass");
+      expect(book.legalReviewRequired).toBe(true);
+      expect(book.allowAutoLiveAfterValidation).toBe(true);
+    }
+    const hungry = manifest.books.find((book) => book.slug === "hungry-stones");
+    expect(hungry.extractionMode).toBe("extract_single_story");
+    expect(hungry.storyTitle).toBe("The Hungry Stones");
+    const eyesore = manifest.books.find((book) => book.slug === "eyesore-chokher-bali");
+    expect(eyesore.sourceUrl).toBe("https://en.wikisource.org/wiki/Eyesore");
+    expect(eyesore.language).toBe("en");
+    expect(eyesore.originalLanguage).toBe("bn");
+  });
+
+  test("every configured book has source rights, raw source, chapters, and 100 quality score", () => {
+    expect(quality.totalBooksConfigured).toBe(BATCH_SLUGS.length);
+    expect(quality.passingBooks.length + quality.heldBooks.length).toBe(BATCH_SLUGS.length);
+    expect(new Set([...quality.passingBooks, ...quality.heldBooks])).toEqual(new Set(BATCH_SLUGS));
+    for (const slug of BATCH_SLUGS) {
+      const bookDir = path.join(ROOT, "content", "books", slug);
+      expect(fs.existsSync(path.join(bookDir, "source-rights.md"))).toBe(true);
+      expect(fs.readdirSync(path.join(bookDir, "raw")).length).toBeGreaterThan(0);
+      expect(chapterFiles(slug).length).toBeGreaterThan(0);
+      const result = quality.books.find((item) => item.slug === slug);
+      expect(result).toBeTruthy();
+      if (quality.passingBooks.includes(slug)) {
+        expect(result.status).toBe("PASS_100");
+        expect(result.score).toBe(100);
+        expect(result.blockers).toEqual([]);
+      } else {
+        expect(quality.heldBooks).toContain(slug);
+        expect(result.status).toBeTruthy();
+        expect(result.blockers.length).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  test("batch reader release truth preserves approved reader-only titles and audio holds", () => {
+    if (launch.public_reader_exposure_enabled !== true) {
+      expect(launch.public_audio_exposure_enabled).toBe(false);
+      expect(launch.live_approved_slugs).toEqual([]);
+      expect(launch.audio_enabled_slugs).toEqual([]);
+      return;
+    }
+    expect(launch.live_approved_slugs).toEqual(CURRENT_RELEASED_SLUGS);
+    expect(new Set(launch.live_approved_slugs).size).toBe(launch.live_approved_slugs.length);
+    for (const slug of BATCH_SLUGS) {
+      if (["jekyll-and-hyde", "picture-of-dorian-gray", "frankenstein"].includes(slug)) {
+        expect(launch.live_approved_slugs).toContain(slug);
+        const folder = `data/controlled_publications/${slug}`;
+        const exactDecision = readJson(`${folder}/rights_decision.json`);
+        const publicBytes = fs.readFileSync(path.join(ROOT, folder, "public_book.json"));
+        expect(exactDecision.decision_id).toBe(slug === "frankenstein"
+          ? `india-20261003-${slug}-exact-reader-cover-prospective-accepted`
+          : `india-20261001-${slug}-owner-text-reader`);
+        expect(exactDecision.components.public_book).toBe(require("node:crypto").createHash("sha256").update(publicBytes).digest("hex"));
+        expect(exactDecision.territories).toEqual(["IN"]);
+        expect(readJson(`${folder}/publication_manifest.json`).reader_release.exposed).toBe(true);
+        expect(readJson(`${folder}/publication_manifest.json`).audio_release.exposed).toBe(false);
+      } else {
+        expect(launch.live_approved_slugs).not.toContain(slug);
+      }
+    }
+    expect(launch.audio_enabled_slugs).toEqual([]);
+    for (const slug of HISTORICAL_AUDIO_HOLD_SLUGS) {
+      expect(launch.audio_enabled_slugs).not.toContain(slug);
+    }
+    expect(launch.audio_enabled_slugs).not.toContain(PRIVATE_QA_AUDIO_HOLD);
+    expect(new Set(launch.audio_enabled_slugs).size).toBe(launch.audio_enabled_slugs.length);
+    for (const slug of launch.audio_enabled_slugs) expect(launch.live_approved_slugs).toContain(slug);
+    for (const slug of BATCH_SLUGS) expect(launch.audio_enabled_slugs).not.toContain(slug);
+    for (const slug of BATCH_SLUGS) {
+      const contentBook = readJson(`content/books/${slug}/book.json`);
+      const publicBook = readJson(`data/controlled_publications/${slug}/public_book.json`);
+      const decision = promotion.books.find((item) => item.slug === slug);
+      if (PENDING_FRESH_READER_APPROVAL_SLUGS.has(slug)) {
+        expect(decision.decision).toBe("REPAIRED_READER_PENDING_FRESH_APPROVAL");
+        expect(decision.blockers).toEqual(["FRESH_CHECKSUM_BOUND_READER_APPROVAL_REQUIRED"]);
+        expect(promotion.heldSlugs).toContain(slug);
+        expect(promotion.promotedLiveSlugs).not.toContain(slug);
+        expect(promotion.approvedReleaseAllowlist).not.toContain(slug);
+        // The historical draft and promotion report remain preserved. The
+        // selected repaired public edition now has a separately accepted exact
+        // release; never rewrite its historical draft to make this test pass.
+        for (const book of [contentBook]) {
+          expect(book.readerStatus).toBe("reader_approval_required");
+          expect(book.publicationStatus).toBe("draft");
+          expect(book.isPublic).toBe(false);
+          expect(book.isLive).toBe(false);
+          expect(book.showInPublicLibrary).toBe(false);
+          expect(book.showInHomepage).toBe(false);
+          expect(book.allowPublicReading).toBe(false);
+          expect(book.allowCheckout).toBe(false);
+          expect(book.allowPayment).toBe(false);
+          expect(book.is_published).toBe(false);
+        }
+        expect(publicBook.publication_status).toBe("LIVE_APPROVED");
+        expect(publicBook.qa_status).toBe("QA_PASSED");
+        expect(publicBook.approved_to_publish).toBe(true);
+        expect(publicBook.isPublic).toBe(true);
+        expect(publicBook.isLive).toBe(true);
+        expect(publicBook.readerStatus).toBe("reader_ready");
+        expect(publicBook.chapters).toHaveLength(21);
+        const freshReceipt = readJson("data/controlled_publications/picture-of-dorian-gray/reader_release_approval.json");
+        expect(freshReceipt.publication_readback_verified).toBe(false);
+        expect(freshReceipt.audio_authorized).toBe(false);
+        expect(freshReceipt.territory).toBe("IN");
+        for (const field of AUDIO_FIELDS) expect(publicBook[field]).toBe(false);
+        continue;
+      }
+      expect(decision.decision).toBe("PROMOTED_LIVE_READER_ONLY");
+      for (const book of [contentBook, publicBook]) {
+        expect(["reader_ready", "ready_for_editorial_review"]).toContain(book.readerStatus);
+        const liveStatus = book === publicBook
+          ? book.publication_status === "LIVE_APPROVED"
+          : book.publicationStatus === "live";
+        expect(["live", "draft"]).toContain(book.publicationStatus);
+        if (book === publicBook) {
+          expect(book.publication_status).toBe("LIVE_APPROVED");
+          expect(book.isPublic).toBe(liveStatus);
+          expect(book.isLive).toBe(liveStatus);
+          expect(book.showInPublicLibrary).toBe(true);
+        } else {
+          expect(book.isPublic).toBe(liveStatus);
+          expect(book.isLive).toBe(liveStatus);
+        }
+        if (slug !== "frankenstein") {
+          expect(book.showInPublicLibrary).toBe(true);
+        }
+          expect(book.showInHomepage).toBe(false);
+          if (book === publicBook || slug !== "frankenstein") {
+            expect(book.allowPublicReading).toBe(true);
+          }
+          expect(book.allowCheckout).toBe(false);
+          expect(book.allowPayment).toBe(false);
+          if (book === publicBook || slug !== "frankenstein") {
+            expect(book.is_published).toBe(true);
+          }
+      }
+      for (const field of AUDIO_FIELDS) expect(publicBook[field]).toBe(false);
+      expect(publicBook.publication_status).toBe("LIVE_APPROVED");
+    }
+  });
+
+  test("new exact India Reader packages are separately accepted without rewriting historical batch or audio reports", () => {
+    expect(CURRENT_RELEASED_SLUGS).toHaveLength(52);
+    expect(new Set(CURRENT_RELEASED_SLUGS).size).toBe(52);
+    for (const slug of PROSPECTIVE_READER_RELEASE_SLUGS) {
+      const folder = `data/controlled_publications/${slug}`;
+      const decision = readJson(`${folder}/rights_decision.json`);
+      const publication = readJson(`${folder}/publication_manifest.json`);
+      const publicBook = readJson(`${folder}/public_book.json`);
+      expect(decision.decision_id).toBe(`india-20261003-${slug}-exact-reader-cover-prospective-accepted`);
+      expect(decision.territories).toEqual(["IN"]);
+      expect(decision.components.public_book).toBe(require("node:crypto").createHash("sha256")
+        .update(fs.readFileSync(path.join(ROOT, folder, "public_book.json"))).digest("hex"));
+      expect(launch.live_approved_slugs).toContain(slug);
+      expect(publication.reader_release.exposed).toBe(true);
+      expect(publication.audio_release.exposed).toBe(false);
+      expect(publicBook.publication_status).toBe("LIVE_APPROVED");
+      for (const field of AUDIO_FIELDS) expect(publicBook[field]).toBe(false);
+      expect(launch.audio_enabled_slugs).not.toContain(slug);
+    }
+  });
+
+  test("reader-facing text is sanitized and free of source boilerplate", () => {
+    for (const slug of BATCH_SLUGS) {
+      const text = allReaderText(slug);
+      expect(text).not.toMatch(BOILERPLATE_RE);
+      expect(text).not.toContain("�");
+      expect(text).not.toMatch(/Ã|Â|â€™|â€œ|â€\u009d|â€”/);
+    }
+  });
+
+  test("Bengali books remain NFC UTF-8 Bengali text without mojibake", () => {
+    for (const slug of BENGALI_SLUGS) {
+      const text = allReaderText(slug);
+      expect(text).toBe(text.normalize("NFC"));
+      const bengaliChars = (text.match(/[\u0980-\u09FF]/g) || []).length;
+      const latinChars = (text.match(/[A-Za-z]/g) || []).length;
+      expect(bengaliChars).toBeGreaterThan(500);
+      expect(bengaliChars).toBeGreaterThan(latinChars * 5);
+      expect(text).not.toContain("□");
+    }
+  });
+
+  test("The Hungry Stones import contains only the approved single story", () => {
+    expect(chapterFiles("hungry-stones")).toHaveLength(1);
+    const book = readJson("content/books/hungry-stones/book.json");
+    expect(book.title).toBe("The Hungry Stones");
+    expect(book.displayTitle).toBe("Kshudhita Pashan / The Hungry Stones");
+    const text = allReaderText("hungry-stones");
+    expect(text).toMatch(/Barich|Susta|marble palace/i);
+    expect(text).not.toMatch(/(?:^|\n)(THE VICTORY|The Victory|ONCE THERE WAS A KING|Once There Was a King|THE DEVOTEE|The Devotee|VISION|Vision|THE CABULIWALLAH|The Cabuliwallah)(?:\n|$)/);
+  });
+});

@@ -1,0 +1,98 @@
+{
+  "about_author": "Saki (H.H. Munro, 1870–1916) was a British author of darkly comic and macabre short stories, killed in action in World War I.",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "allowPublicReading": false,
+  "approved_to_publish": true,
+  "author": "Saki",
+  "backCoverImage": "https://theearnalism.com/assets/books/sredni-vashtar/back-c5329352.webp",
+  "back_cover_image_url": "https://theearnalism.com/assets/books/sredni-vashtar/back-c5329352.webp",
+  "back_cover_url": "https://theearnalism.com/assets/books/sredni-vashtar/back-c5329352.webp",
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "category_slug": "gothic-fiction",
+  "chapters": [
+    {
+      "has_images": false,
+      "id": "chapter-001",
+      "image_count": 0,
+      "is_preview": true,
+      "language_hint": "en",
+      "order": 1,
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "reading_minutes": 8,
+      "title": "Sredni Vashtar",
+      "updated_at": "2026-07-03T20:07:48Z",
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "word_count": 1787
+    }
+  ],
+  "content_hash": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+  "coverImage": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp",
+  "cover_dimensions": {
+    "front": [
+      800,
+      1200
+    ],
+    "back": [
+      800,
+      1200
+    ]
+  },
+  "cover_image": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp",
+  "cover_image_url": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp",
+  "cover_semantic_match_score": 9.8,
+  "cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+  "cover_url": "https://theearnalism.com/assets/books/sredni-vashtar/front-d946f65f.webp",
+  "created_at": "2026-07-03T20:07:48Z",
+  "description": "Conradin was ten years old, and the doctor had pronounced his professional opinion that the boy would not live another five years. The doctor was silky and effete, and counted for little, but his opinion was endorsed by Mrs. de Ropp, who counted for nearly everything. Mrs. De Ropp was Conradin's cousin and guardian, and in his eyes she represented those three-fifths of the world that are necessary and disagreeable and real; the other two-fifths, in perpetual antagonism to the foregoing, were summed up in himself and his imagination. One of these days Conradin supposed he would succumb to the mastering pressure of wearisome necessary things--such as illnesses and coddling restrictions and drawn-out dullness. Without his imagination, which was rampant under the spur of loneliness, he would have succumbed long ago.",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "8 min",
+  "formats": [
+    "Ebook"
+  ],
+  "id": "controlled-sredni-vashtar",
+  "isLive": true,
+  "isPublic": true,
+  "is_published": true,
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "provenance_hash": "8d472e6cdc272f1b341c183654a57eab65f521f9a26ed0bb3b30ee93a7354468",
+  "publicationStatus": "draft",
+  "publication_status": "READY_BEHIND_SERIALIZED_GLOBAL_RELEASE_GATE",
+  "qa_status": "QA_PASSED",
+  "readerStatus": "reader_ready",
+  "rights_basis": "Existing exact accepted India text source/edition clearance is preserved in the archived predecessor and unchanged source/chapter records. Actual prospective acceptance additionally covers these exact owner-designed preserved-artwork derivatives, proven licensed deterministic typography and reviewed deliveries after two independent passing source/provenance/pixel/package reviews under the owner delegation. The predecessor non-cover deferral is prospectively superseded for these exact components only. Audio remains excluded; no rights, human signature, other edition or production observation inferred. Final release remains behind serialized protected normal gates.",
+  "rights_tier": "A",
+  "short_description": "A sickly boy worships a ferret as a god — and prays for it to destroy his cruel guardian.",
+  "showInHomepage": false,
+  "showInPublicLibrary": false,
+  "slug": "sredni-vashtar",
+  "source_hash": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
+  "subtitle": "",
+  "title": "Sredni Vashtar",
+  "updated_at": "2026-07-14T09:33:44Z",
+  "verification_status": "approved",
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook": {},
+  "audiobook_assets": {},
+  "audiobook_active_release": {
+    "status": "DISABLED_TEXT_READER_ONLY"
+  },
+  "publication_authorization_sha256": "a97af4cfe69c6c6faded9ca6d2093d6ff90297e2235252a85818db8880b50734",
+  "cover_provenance_sha256": "2fcda3d9902d9139e3578437f97b7f3b0c2f19dd188e572d234dd6c9316e87b9"
+}

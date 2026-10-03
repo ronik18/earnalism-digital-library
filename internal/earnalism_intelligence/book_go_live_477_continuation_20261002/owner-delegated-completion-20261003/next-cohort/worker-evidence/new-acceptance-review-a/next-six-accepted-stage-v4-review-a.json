@@ -1,0 +1,632 @@
+{
+  "schema": "earnalism.independent-accepted-stage-review.v1",
+  "reviewer": "A",
+  "stage": "next-accepted-cohort-20261003-v4",
+  "disposition": "PASS_ALL6_EXACT_ACCEPTED_RELEASE_CANDIDATE_BINDINGS",
+  "acceptance_receipt_sha256": "e3bd9decb9d401e62ace91a0a83e9136318b2fc12eed24bfd58142ca767b442e",
+  "authority": "Explicit prospective owner delegation; actual automated actor/time recorded, prior decisions retained, no human signature inferred.",
+  "cohort": [
+    {
+      "slug": "the-open-window",
+      "disposition": "PASS_ACCEPTED_RELEASE_CANDIDATE_READY_BEHIND_NAMED_GLOBAL_GATE",
+      "decision_raw_sha256": "4761167f713aad2bd0dc7b24cc77e96454bece0fb2ed62229015bcb85a41fb11",
+      "decision_canonical_sha256": "2540d80bbbb1ef066eaebdb1896bd87d4f3e94a8bafa1fe082508b37acb9b946",
+      "component_count": 10,
+      "checksum_count": 16,
+      "package_inventory": {
+        "approval_evidence.json": "9569c69e8dfbd683f94b540673f5d0920566389978508de9c6b70137ac1693a1",
+        "chapters/chapter-001.json": "bc12b5dbae5cae481b59d11eb9fc43a7c875f4cf2b37d52107bce93957375a00",
+        "checksum_manifest.json": "f62050cce756752320f62201fbd56e61b6d921422e9e4fd8b1dc0e76c9e23c1a",
+        "cover_provenance.json": "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e",
+        "covers/back-delivery.webp": "6c87ea0a562e727b5527711f6f279bf9b95cad6a0817d15e36f783fd87016e76",
+        "covers/back-layout-repair.png": "5865b811a2feb412655fa56f6b2a9f6e6fbbd39881423bf14c77e1844a827829",
+        "covers/back-original.png": "19717b3bb51630712f2f8cad58859361c9015ab726f3335b196c2b5924660a0d",
+        "covers/front-delivery.webp": "fd16c96883897722c2da7c49e2012dd9e5a3771bf2f99d11b89a29add60a8960",
+        "covers/front-layout-repair.png": "22a9981529ca3c46a81fae68c056b43d2253595f436110767c153eb9344589bd",
+        "covers/front-original.png": "351653d69bebc7567f868007370fb65b72eadbd41f7cbb2ee276e6024d0a1bb1",
+        "evidence/review_a.json": "545e4f764da46785a577943e3abe0f48c09660f4c1e84b7fa6709221c168daa0",
+        "evidence/review_b.json": "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff",
+        "highlight_sync.json": "b2742d2516aa71aa23f79d33dba6ff5c27c5036c6b581197b6c55f991e97215e",
+        "public_book.json": "fbddd9f1ab9bd94037e1692f491b9eabd6366d7c1e9517b0cd2da20d63ffe236",
+        "publication_authorization.json": "75a78c71325b48b3f882711b21cacd98cec7a2856ecc8f95499ee6cb5d2e997e",
+        "publication_manifest.json": "6b733e512518f3c26232d170b15a9a41b0209245cf5f11ce8b81fa94e96ddfec",
+        "reader_manifest.json": "8f5a8d563c587a28d30e1e001447cdb5328bdcd49df4b61d8d7838401aac6151",
+        "rights_decision.json": "4761167f713aad2bd0dc7b24cc77e96454bece0fb2ed62229015bcb85a41fb11",
+        "source_evidence.json": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d"
+      },
+      "source_chapter_reader_sync_unchanged": true,
+      "root_backend_identity": true,
+      "actual_acceptance_actor_date_scope_coherent": true,
+      "reused_original_review_hashes": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "545e4f764da46785a577943e3abe0f48c09660f4c1e84b7fa6709221c168daa0"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "250ec3cf493217e2f3da307984a8c44ffce02861d98f237ac10cb07647d141ff"
+        }
+      },
+      "candidate_scoped_strict_gate": "ALL6_IN_USES_PASS_AUDIO_US_UNTRUSTED_DENIED; isolated hypothetical trust inventory only, canonical registry untouched",
+      "global_gate": "SERIAL_INTEGRATION_AFTER_PR510_AND_NORMAL_PROTECTED_CI_MERGE_DEPLOY_CANARY",
+      "production_observed": false
+    },
+    {
+      "slug": "the-selfish-giant",
+      "disposition": "PASS_ACCEPTED_RELEASE_CANDIDATE_READY_BEHIND_NAMED_GLOBAL_GATE",
+      "decision_raw_sha256": "d07db6fa2a24aaf3ecaf3de28f79f72a29532d3605a853175de7a9d6fb26b200",
+      "decision_canonical_sha256": "e93f0254b8a00faabac7e0a232116cf134c4fa7d6691c38577d908ffc6af13d2",
+      "component_count": 10,
+      "checksum_count": 16,
+      "package_inventory": {
+        "approval_evidence.json": "d5f4e4df2bcd7ed73e55c7473e75c4fed10114199721b223589f5100e7dfad30",
+        "chapters/chapter-001.json": "12c1db2943a0b57aea333ed1870472ea8332d457093d4255185385a7a157e3b1",
+        "checksum_manifest.json": "830cb5ec7fe052f931a4a50659786c8a82797595ba189d2daffb68d06511b117",
+        "cover_provenance.json": "9da21ded8f41af473c472fc7800a081b7fbb5cf88fdfeac948353cbd1e8881c9",
+        "covers/back-delivery.webp": "14b007092896bd2d0e4396ba0ecb1e430650a7aa772f855a347a6269daa75e60",
+        "covers/back-layout-repair.png": "6337be1964dfa48aedd7d35233cfdb84f422dd311545b265b9c259444f8795f0",
+        "covers/back-original.png": "6903c7610ac6141b0f4d8d025e7e9fe9f347e2922996368ef7dd28fe8c18b511",
+        "covers/front-delivery.webp": "777a773d9cebbf236f9bfb79d52d35ca7206c59fc38eb04d85a84abc480d98cd",
+        "covers/front-layout-repair.png": "e01b95dc8d321678df5c9fe5e395728187ea03984cc69c59ae34471603fb7dc4",
+        "covers/front-original.png": "f10e1353932821ab22a0d13b68a40394f06eb1c9a97b04e5e126897dfbb3fcc2",
+        "evidence/review_a.json": "d31da6ba7bc92b767391b180d85d2ab4e1aa163253b38a3cf18bd96de897fcb3",
+        "evidence/review_b.json": "15fb24b5a76ab9dac2cbbcccf29b72cb1a0aabc6cd7cf8d9c4a9e11776ced68d",
+        "highlight_sync.json": "5bb55dc95aade157eedc8cb2e4255015af7426b38dc43692a3ae8d317a3e30e0",
+        "public_book.json": "30eeb1e5bf221965c68c601e173704bb6af98fc305a9e8f3a155e518be9be054",
+        "publication_authorization.json": "6a79a9d4828858df62f0239f911f9d6c6d154da87ad035aba481f91f23cae251",
+        "publication_manifest.json": "6b7c6a28dd7b219599bd771fef55535f99b55788e5337c8f542d2a4281011b93",
+        "reader_manifest.json": "d5ce7da734364efdd9a2bd6eace1ee2df66bcfa0dcf7ea4e99d49502b330fc9c",
+        "rights_decision.json": "d07db6fa2a24aaf3ecaf3de28f79f72a29532d3605a853175de7a9d6fb26b200",
+        "source_evidence.json": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d"
+      },
+      "source_chapter_reader_sync_unchanged": true,
+      "root_backend_identity": true,
+      "actual_acceptance_actor_date_scope_coherent": true,
+      "reused_original_review_hashes": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "d31da6ba7bc92b767391b180d85d2ab4e1aa163253b38a3cf18bd96de897fcb3"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "15fb24b5a76ab9dac2cbbcccf29b72cb1a0aabc6cd7cf8d9c4a9e11776ced68d"
+        }
+      },
+      "candidate_scoped_strict_gate": "ALL6_IN_USES_PASS_AUDIO_US_UNTRUSTED_DENIED; isolated hypothetical trust inventory only, canonical registry untouched",
+      "global_gate": "SERIAL_INTEGRATION_AFTER_PR510_AND_NORMAL_PROTECTED_CI_MERGE_DEPLOY_CANARY",
+      "production_observed": false
+    },
+    {
+      "slug": "sredni-vashtar",
+      "disposition": "PASS_ACCEPTED_RELEASE_CANDIDATE_READY_BEHIND_NAMED_GLOBAL_GATE",
+      "decision_raw_sha256": "fe5c4ea77b9fbdc99bf2b73dd64922b545e98bddb08ad0d87ebd957a89ee3210",
+      "decision_canonical_sha256": "08bed3c8e636096640250b4aeaf5c73a40bef96872839a8a678f1b49216ae822",
+      "component_count": 15,
+      "checksum_count": 11,
+      "package_inventory": {
+        "approval_evidence.json": "13fc600ab1ec409f09c038785258a631cbb192873033c6de340d202ceb0ebfd2",
+        "chapters/chapter-001.json": "4a6e85fcc4b944ba2736d1db2093b632aba2b3566564898c1e876bd6fdb6c5e5",
+        "checksum_manifest.json": "c85c94540ffce45f8acc990ae28934cf3566051cdd2f9ae2c09ed1f47f1ddfe9",
+        "cover_delivery_derivation.json": "f3deee99367ed73958ca7dfd1ea7969a230f23e018cd61c03b01672556acc1db",
+        "cover_provenance.json": "09e2a3d459645edd4d8deb67c1669a661f64209ec7eae96d2caf3ba2af6d463b",
+        "evidence/review_a.json": "cbb2b42bd8aa85419549eaf838e9884069889482ae7bd8fd5d5280e34ab55f59",
+        "evidence/review_b.json": "91c752175d2b576a1b43269645b72511a23eadd5d6200df0c65a1ee1d3794c0a",
+        "highlight_sync.json": "0b302f6d91f901adad699ed496663b1ebbb8d17917cd4bbdc340f75eb94ca728",
+        "public_book.json": "0c969ac1e6e10fe522a86e819bce7187ac057dcf8d0dfd875cee73835c03255b",
+        "publication_authorization.json": "1a84d6e201eda4f3c1055f835f541b103ec1264e8bb5236bdbed46b6d2b22705",
+        "publication_manifest.json": "846a5a23b8c4fc1963b5f2cefadfe6e413bd511e8d8952cfa4724369fa9eb58e",
+        "reader_manifest.json": "2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad",
+        "rights_decision.json": "fe5c4ea77b9fbdc99bf2b73dd64922b545e98bddb08ad0d87ebd957a89ee3210",
+        "source_evidence.json": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f"
+      },
+      "source_chapter_reader_sync_unchanged": true,
+      "root_backend_identity": true,
+      "actual_acceptance_actor_date_scope_coherent": true,
+      "reused_original_review_hashes": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "cbb2b42bd8aa85419549eaf838e9884069889482ae7bd8fd5d5280e34ab55f59"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "91c752175d2b576a1b43269645b72511a23eadd5d6200df0c65a1ee1d3794c0a"
+        }
+      },
+      "candidate_scoped_strict_gate": "ALL6_IN_USES_PASS_AUDIO_US_UNTRUSTED_DENIED; isolated hypothetical trust inventory only, canonical registry untouched",
+      "global_gate": "SERIAL_INTEGRATION_AFTER_PR510_AND_NORMAL_PROTECTED_CI_MERGE_DEPLOY_CANARY",
+      "production_observed": false
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "disposition": "PASS_ACCEPTED_RELEASE_CANDIDATE_READY_BEHIND_NAMED_GLOBAL_GATE",
+      "decision_raw_sha256": "9d6691f7fe7e0af7dae1efe3c9dde677e8a5928e65d33f48cc7167ba9f89588e",
+      "decision_canonical_sha256": "5644c08acfb9143646455c632346909c11d459ec2160c0ae4ef3ac5be9893d94",
+      "component_count": 11,
+      "checksum_count": 17,
+      "package_inventory": {
+        "approval_evidence.json": "f73b9519560125c072d0db31014b1e53b384abbb92c8e677cb19e927bfab5adb",
+        "chapters/chapter-001.json": "630e75350eefdcce93c1f0e403873a29fb1df4004f8c2dd2f450108bd4288cb8",
+        "checksum_manifest.json": "e0b49c082067d4283315b5d9a11e9ca813c3eff59194fcda867fce39ea2b40f2",
+        "cover_preparation.json": "7892ff61dd3be4adea5e41338e5289d673114e53ca1ba4759ea10db20459523d",
+        "cover_provenance.json": "e92e306a06fcc0ed682938a5cc50a1168b7671f00f6559a8ab692baa8e067fb4",
+        "covers/original-back.png": "0c9e1ec88066b222f5b2e715e8017c4fb7095e74f8f2b669ce5d1d97a77eb7d6",
+        "covers/original-front.png": "3232a6b9c657c5e0adaa6385c87ecd88b9544a0c264b0a28b9ee8d7e11ed12b7",
+        "covers/the-cop-and-the-anthem-back-inactive.png": "c0929e3af5ed29e6305d2867e0018ab4bdd7c6fa226fca6ff82ee94b45236a35",
+        "covers/the-cop-and-the-anthem-back-inactive.webp": "5f6497fd5616e8913891f73d47aa6ff08b6c7db338cefd05f81b71332241dcde",
+        "covers/the-cop-and-the-anthem-front-inactive.png": "af57195ca48c50d2c8bf0ac6b2c4366dd2328c4e52c93d50b23bd44dea2ef41f",
+        "covers/the-cop-and-the-anthem-front-inactive.webp": "b2243f117df70253f59a995f7aba59c747da08d51187d94d79ff2e84e10f06de",
+        "evidence/review_a.json": "2eaf07760acf658f9c176461fe425ad4fa7c4fb372a26124968cd6cee43ee10a",
+        "evidence/review_b.json": "b4c6472a288af36d58459dea6619df7ffcab6fb64a2eadc22c366e9959e52097",
+        "highlight_sync.json": "193728619d202fad6d4f71dbf895c35d68190b7ae6663a77d19d02d774efd113",
+        "public_book.json": "68d9a495efde927a12d59a56b9513ad03349d5085d4a3825a4d537c20fd0d31b",
+        "publication_authorization.json": "380b4383c013f13bc04b2516d773843e90219b9b9e2aafabe3b6d0a9f9a81ae2",
+        "publication_manifest.json": "524b4382cc317ef7679cf920a88da44084f9adf954dc1a58213d8773bbf92d22",
+        "reader_manifest.json": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22",
+        "rights_decision.json": "9d6691f7fe7e0af7dae1efe3c9dde677e8a5928e65d33f48cc7167ba9f89588e",
+        "source_evidence.json": "f40f277d758a03b9e05dd6ffa721b058766db6955ba4414d183a7f9bf45fb84f"
+      },
+      "source_chapter_reader_sync_unchanged": true,
+      "root_backend_identity": true,
+      "actual_acceptance_actor_date_scope_coherent": true,
+      "reused_original_review_hashes": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "2eaf07760acf658f9c176461fe425ad4fa7c4fb372a26124968cd6cee43ee10a"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "b4c6472a288af36d58459dea6619df7ffcab6fb64a2eadc22c366e9959e52097"
+        }
+      },
+      "candidate_scoped_strict_gate": "ALL6_IN_USES_PASS_AUDIO_US_UNTRUSTED_DENIED; isolated hypothetical trust inventory only, canonical registry untouched",
+      "global_gate": "SERIAL_INTEGRATION_AFTER_PR510_AND_NORMAL_PROTECTED_CI_MERGE_DEPLOY_CANARY",
+      "production_observed": false
+    },
+    {
+      "slug": "dsires-baby",
+      "disposition": "PASS_ACCEPTED_RELEASE_CANDIDATE_READY_BEHIND_NAMED_GLOBAL_GATE",
+      "decision_raw_sha256": "7622fc32c27ea1df9c382a6dc069c9b04b58483edc820c1a9e83babcabd10aeb",
+      "decision_canonical_sha256": "10a6cb28a3535778a44d18f9971bf98f50769e0b3ee0a3d05c61b1867fbc101e",
+      "component_count": 15,
+      "checksum_count": 14,
+      "package_inventory": {
+        "approval_evidence.json": "a5b7595a38a6c7c801ddbf95950dec11a2621c6625850d8da5aa5ea50ac197af",
+        "chapters/chapter-001.json": "4c5f2ef8b4ba48d637ac19f0317c4dcb713d70577e49f6f51ae17999579b019b",
+        "checksum_manifest.json": "0ea56c13bafdce9b90042c2eb57c9c01a5d7b045405d059f7a1d220973907f3a",
+        "cover_delivery_derivation.json": "feb006057f91cd260d56db1c3c455eca58bce40ae3192cd94a5a798425c9fb6a",
+        "cover_provenance.json": "d062d0f93c0509f535e8b32653a9731af276fb80e63523b915e5d9f977d96243",
+        "covers/back.png": "5a845c98786371fc1e671585701cf513c1142fbb5119337aff3d0a02497cff00",
+        "covers/front.png": "c965ecd734bdb2d7966946f2cb3be4af131832266c31a3900f8e8d9375c667d1",
+        "evidence/review_a.json": "8d4eeb102ce88faf6eb6697393afb1b579ca29bb4e1083419e44b60295a8ef64",
+        "evidence/review_b.json": "1c712c31011ca2f17c9790823fd81e26a7c811c852197a34992483622db39bf4",
+        "highlight_sync.json": "11b60f5ca19e9fabb00a130253b197b9d842de217c0c66b6b9999f5160b093e2",
+        "public_book.json": "d88e4ac85cd7cd4a5a0e74d14b694ad68cd92bda6ae16e3e241b3794020bd60a",
+        "publication_authorization.json": "ae81a367e93bba8b660073fbd73899d5c7ca1bf29fd3f07d3ef8df15df017ffe",
+        "publication_manifest.json": "fada5cdfba56839ca5877b46b70c4ece2c7725c89e8c14bbfe4a17b85e5e7852",
+        "reader_manifest.json": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee",
+        "rights_decision.json": "7622fc32c27ea1df9c382a6dc069c9b04b58483edc820c1a9e83babcabd10aeb",
+        "source_evidence.json": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb",
+        "source_integrity_validation.json": "52683b6ef48451afe01c74f56481119e5b40663e1e27a141436108953d302444"
+      },
+      "source_chapter_reader_sync_unchanged": true,
+      "root_backend_identity": true,
+      "actual_acceptance_actor_date_scope_coherent": true,
+      "reused_original_review_hashes": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "8d4eeb102ce88faf6eb6697393afb1b579ca29bb4e1083419e44b60295a8ef64"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "1c712c31011ca2f17c9790823fd81e26a7c811c852197a34992483622db39bf4"
+        }
+      },
+      "candidate_scoped_strict_gate": "ALL6_IN_USES_PASS_AUDIO_US_UNTRUSTED_DENIED; isolated hypothetical trust inventory only, canonical registry untouched",
+      "global_gate": "SERIAL_INTEGRATION_AFTER_PR510_AND_NORMAL_PROTECTED_CI_MERGE_DEPLOY_CANARY",
+      "production_observed": false
+    },
+    {
+      "slug": "the-science-of-getting-rich",
+      "disposition": "PASS_ACCEPTED_RELEASE_CANDIDATE_READY_BEHIND_NAMED_GLOBAL_GATE",
+      "decision_raw_sha256": "63a58f2cc1b044c6b9dafd53e9e12609f4f0792a0690960d18bed700e96a9d06",
+      "decision_canonical_sha256": "97d7b86a4fcf4b5ea13e4ebeb15a3414e74880c182516bbec5c2a782d1397fe1",
+      "component_count": 15,
+      "checksum_count": 28,
+      "package_inventory": {
+        "approval_evidence.json": "fd2da10d017913f3c286953b394ff34f88501ef5284bce08dd15d9fa77913244",
+        "chapters/chapter-001.json": "ed9d306a0bf198120c65aabd95f1011c69972dfe855e7eff4ef0bdab02903efa",
+        "chapters/chapter-002.json": "ab639f30648a642710f927b65c6066094fb01b8aa0f20bcecc4b1520caaccb56",
+        "chapters/chapter-003.json": "d2d4be96ac1636a3c3cf256302262c8ec52cbf99d2ff77f53cd3949c0b84ceea",
+        "chapters/chapter-004.json": "c21f9eb9a075126da8a44c27218241b2e3c231d07c159c8dcc674fd61ea76c87",
+        "chapters/chapter-005.json": "bdf40302374fe13649ff56bd155d91048f7994a71ab83c2ae9f5f405ba5e212b",
+        "chapters/chapter-006.json": "03f09952d5111d0faa1dc5cd2b32e18e3b343c45f635cb993d6497cf2de581c6",
+        "chapters/chapter-007.json": "6ec6c0887b7a428302af800c9485443e5345c463465474b8651348c66ac0686d",
+        "chapters/chapter-008.json": "7c4b25048dbe4d06ae8bcced7a5ef6a8b9ef9302bcba4a621af16450db2c020f",
+        "chapters/chapter-009.json": "227b7a5ca87383d711d9c0441ab26d9dba67538261a9fc0372abbf413d0a2ca8",
+        "chapters/chapter-010.json": "9fd16a6fa0d207110cd8345f150b9575c8e6aeca07c442e8861f1b19ff01a5bc",
+        "chapters/chapter-011.json": "e59038a7eb3e104d3c4b68ba3e96704aad025e988f86b09e092d3f6f447f20f2",
+        "chapters/chapter-012.json": "a0e4eac4315a6ec73f378f6896c46509af3f77e1ee35e3151ead86c732b2089a",
+        "chapters/chapter-013.json": "0887e80584d2dcc41f5915d848c8e1426bf9e4efdb6e7b17f5b9576b0aa7332e",
+        "chapters/chapter-014.json": "052669e99e081d17e9e5e7d8cba5097a1c35d74692253246906f1cbfb987abe7",
+        "chapters/chapter-015.json": "8ef3ecb1e363fc95adc4f9832604fdb23313c2fc1db568e232ac48f863531588",
+        "chapters/chapter-016.json": "466c8da81c1f9c4539d55315f4b035b86adcb80a2bc119666b60fcce0c0e9b3c",
+        "chapters/chapter-017.json": "696a398abd98a5ecd187d6d5e157f76c3c5636e307983593d405c5526cd4d1a3",
+        "chapters/chapter-018.json": "e8930930e2e78ee34d8c7b57e2f00c035cecade2cd8aa61880df20cf9f0cbc14",
+        "checksum_manifest.json": "285f00a6a99c136a4395974303569e05474c9aeb9eff3d9e3c18d37029799e86",
+        "cover_delivery_derivation.json": "3f1272ff582220e60a68f13412fc665a35c6e4885bf29006894bdfffd45f36fc",
+        "cover_provenance.json": "31ef4bdfaa98196db0fcb629ab9b689b6f0570cefb90725fd77184360adf0c97",
+        "evidence/review_a.json": "e17b3d56b4e6f0f6177965822910d19550debe93090c198d5a21e3fac5419400",
+        "evidence/review_b.json": "4817d7c5123f319dfb08bc552fd4548d24896bb23964f11bd12d719c941eb98a",
+        "highlight_sync.json": "0ec7bf5934ded3c72ba3bf13df6d8e6e698d3c3287f64c3a7050d3e2e47ab997",
+        "public_book.json": "91cb6f64255e72cccb4a4afa341588ea8b1cdc846facb6a03e50ccc57c708c79",
+        "publication_authorization.json": "e769162a30fe0ad7a670567b5a7c5716c1ed170811915555729287043e6846c6",
+        "publication_manifest.json": "a50dc98a2c96ca3a1d98228da6b37d090dd0ad22acfc9c3b4811d1a77a6ce68a",
+        "reader_manifest.json": "a42883b4eb214ae086998672472b0f86c9709e550da35c87789f95564cdefdb7",
+        "rights_decision.json": "63a58f2cc1b044c6b9dafd53e9e12609f4f0792a0690960d18bed700e96a9d06",
+        "source_evidence.json": "6324de50de9db456175bcd2cbecec794641fa8bdd322d2de2b49eaacc713a117"
+      },
+      "source_chapter_reader_sync_unchanged": true,
+      "root_backend_identity": true,
+      "actual_acceptance_actor_date_scope_coherent": true,
+      "reused_original_review_hashes": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "e17b3d56b4e6f0f6177965822910d19550debe93090c198d5a21e3fac5419400"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "4817d7c5123f319dfb08bc552fd4548d24896bb23964f11bd12d719c941eb98a"
+        }
+      },
+      "candidate_scoped_strict_gate": "ALL6_IN_USES_PASS_AUDIO_US_UNTRUSTED_DENIED; isolated hypothetical trust inventory only, canonical registry untouched",
+      "global_gate": "SERIAL_INTEGRATION_AFTER_PR510_AND_NORMAL_PROTECTED_CI_MERGE_DEPLOY_CANARY",
+      "production_observed": false
+    }
+  ],
+  "v3_preserved_and_metadata_only_delta": {
+    "acceptance-receipt.json": {
+      "before": "948eb5f32fb4e969c8ace5267039922eb3a98ebb98a6229971d9cd60b3afb3b2",
+      "after": "e3bd9decb9d401e62ace91a0a83e9136318b2fc12eed24bfd58142ca767b442e"
+    },
+    "data/controlled_publications/dsires-baby/publication_manifest.json": {
+      "before": "20ce43c7042861cdb86d58e799a9fd7a098ac01ba6816ab737fcb2608454fd03",
+      "after": "fada5cdfba56839ca5877b46b70c4ece2c7725c89e8c14bbfe4a17b85e5e7852"
+    },
+    "data/controlled_publications/dsires-baby/publication_authorization.json": {
+      "before": "27c6630eab60364ad581a27438d3438b3afb26926090df2684e9a9e2ac7a3fad",
+      "after": "ae81a367e93bba8b660073fbd73899d5c7ca1bf29fd3f07d3ef8df15df017ffe"
+    },
+    "data/controlled_publications/dsires-baby/approval_evidence.json": {
+      "before": "2892f0b840893bc79c4ba6026a527b9b2bd5a02f2cf5c1314ac5a95de102bdf8",
+      "after": "a5b7595a38a6c7c801ddbf95950dec11a2621c6625850d8da5aa5ea50ac197af"
+    },
+    "data/controlled_publications/dsires-baby/public_book.json": {
+      "before": "37a881b69b0f644f3265cd986c80633b5dd7911d8fcd6fc6b05b156041dbe39f",
+      "after": "d88e4ac85cd7cd4a5a0e74d14b694ad68cd92bda6ae16e3e241b3794020bd60a"
+    },
+    "data/controlled_publications/dsires-baby/rights_decision.json": {
+      "before": "63f7f9e02d1a4eda43a1d44272cb8ef18313f2744bb945a4295b133338ffdb78",
+      "after": "7622fc32c27ea1df9c382a6dc069c9b04b58483edc820c1a9e83babcabd10aeb"
+    },
+    "data/controlled_publications/dsires-baby/checksum_manifest.json": {
+      "before": "f622c6b16a0f32957ed87c4cf2efb408d39db9b1c870dc81d378a103233b123a",
+      "after": "0ea56c13bafdce9b90042c2eb57c9c01a5d7b045405d059f7a1d220973907f3a"
+    },
+    "data/controlled_publications/dsires-baby/cover_provenance.json": {
+      "before": "db0c2086dd4c2139c89540e355d44b8a27547afff6b3685cc6a24650113a55ac",
+      "after": "d062d0f93c0509f535e8b32653a9731af276fb80e63523b915e5d9f977d96243"
+    },
+    "data/controlled_publications/sredni-vashtar/publication_manifest.json": {
+      "before": "b3717e2d866dce15bb693b353d2a6647a600c8eefd4d5d52641018aa7ea976e1",
+      "after": "846a5a23b8c4fc1963b5f2cefadfe6e413bd511e8d8952cfa4724369fa9eb58e"
+    },
+    "data/controlled_publications/sredni-vashtar/publication_authorization.json": {
+      "before": "796e9f73e70fb58a6080480119c5996653e850ecef898b1209e7a457a3cf9df0",
+      "after": "1a84d6e201eda4f3c1055f835f541b103ec1264e8bb5236bdbed46b6d2b22705"
+    },
+    "data/controlled_publications/sredni-vashtar/approval_evidence.json": {
+      "before": "f137fa7cadc0c899f3467a20579f40627a885423260fcede793c983a31a77e03",
+      "after": "13fc600ab1ec409f09c038785258a631cbb192873033c6de340d202ceb0ebfd2"
+    },
+    "data/controlled_publications/sredni-vashtar/public_book.json": {
+      "before": "5dbdae63f6b0a3006cf68194db20e57efc11e66b71fba013cc5c3de65cbfb46c",
+      "after": "0c969ac1e6e10fe522a86e819bce7187ac057dcf8d0dfd875cee73835c03255b"
+    },
+    "data/controlled_publications/sredni-vashtar/rights_decision.json": {
+      "before": "235960241ebf0c28fcb50842f5d153b67a56d65652a6b59057510f56c8ee395e",
+      "after": "fe5c4ea77b9fbdc99bf2b73dd64922b545e98bddb08ad0d87ebd957a89ee3210"
+    },
+    "data/controlled_publications/sredni-vashtar/checksum_manifest.json": {
+      "before": "c412c71d4dc02c8d94af015032a76f9d92b421b0599fbe2dbd8bbe0da691b516",
+      "after": "c85c94540ffce45f8acc990ae28934cf3566051cdd2f9ae2c09ed1f47f1ddfe9"
+    },
+    "data/controlled_publications/sredni-vashtar/cover_provenance.json": {
+      "before": "45ed9ccb3d7ef17612e8b6bfe166701846fd2a94daf85db7de047e29a0db4ef3",
+      "after": "09e2a3d459645edd4d8deb67c1669a661f64209ec7eae96d2caf3ba2af6d463b"
+    },
+    "data/controlled_publications/the-cop-and-the-anthem/publication_manifest.json": {
+      "before": "eb946cd1af9e5f200e9fe871a1bac95582fb6a228e27e92717e65a5d92d409ac",
+      "after": "524b4382cc317ef7679cf920a88da44084f9adf954dc1a58213d8773bbf92d22"
+    },
+    "data/controlled_publications/the-cop-and-the-anthem/publication_authorization.json": {
+      "before": "655803b93e82c1316b575b84e8318db27f4111e293d6537b924991525d90aaf6",
+      "after": "380b4383c013f13bc04b2516d773843e90219b9b9e2aafabe3b6d0a9f9a81ae2"
+    },
+    "data/controlled_publications/the-cop-and-the-anthem/approval_evidence.json": {
+      "before": "ad47b7b6be8e9a06ebec9c140bae18df1bb761ebbd0c1236271f2c1fbbf0ac0e",
+      "after": "f73b9519560125c072d0db31014b1e53b384abbb92c8e677cb19e927bfab5adb"
+    },
+    "data/controlled_publications/the-cop-and-the-anthem/public_book.json": {
+      "before": "1359a7dac5ab7d3f976a9a2d6b09d26ef62aa6a70122bbac43fe7234b91dc2ec",
+      "after": "68d9a495efde927a12d59a56b9513ad03349d5085d4a3825a4d537c20fd0d31b"
+    },
+    "data/controlled_publications/the-cop-and-the-anthem/rights_decision.json": {
+      "before": "0181ed628465aade614cc0ba27fb5d6d73cc3c62f340c21eb2beb1bec8f0c9de",
+      "after": "9d6691f7fe7e0af7dae1efe3c9dde677e8a5928e65d33f48cc7167ba9f89588e"
+    },
+    "data/controlled_publications/the-cop-and-the-anthem/checksum_manifest.json": {
+      "before": "785662814f1166eb05a43e33eb8c85c1417ae9e5df1a49787c51994d1218fe41",
+      "after": "e0b49c082067d4283315b5d9a11e9ca813c3eff59194fcda867fce39ea2b40f2"
+    },
+    "data/controlled_publications/the-cop-and-the-anthem/cover_provenance.json": {
+      "before": "039ac86be99a8ac88b1ccb4fe8b1e43a85707a6c23cbd9525ba6f3423289be09",
+      "after": "e92e306a06fcc0ed682938a5cc50a1168b7671f00f6559a8ab692baa8e067fb4"
+    },
+    "data/controlled_publications/the-selfish-giant/publication_manifest.json": {
+      "before": "39e0818a5954775cddcfccface9944835c6b091c844784b9c4d41b721b978dff",
+      "after": "6b7c6a28dd7b219599bd771fef55535f99b55788e5337c8f542d2a4281011b93"
+    },
+    "data/controlled_publications/the-selfish-giant/publication_authorization.json": {
+      "before": "95ec21f54e7a44429ecce31d479b4d9c4df1b2c143d87010d7d5146768d6aff0",
+      "after": "6a79a9d4828858df62f0239f911f9d6c6d154da87ad035aba481f91f23cae251"
+    },
+    "data/controlled_publications/the-selfish-giant/approval_evidence.json": {
+      "before": "1f7e2a15ef74e5f21cb781b90e841fa7a4bde656fe9676fa53ab24959105de1e",
+      "after": "d5f4e4df2bcd7ed73e55c7473e75c4fed10114199721b223589f5100e7dfad30"
+    },
+    "data/controlled_publications/the-selfish-giant/public_book.json": {
+      "before": "4dc3571cb789c86d95831b13bf4368112840b09ac14779774280864931c218ab",
+      "after": "30eeb1e5bf221965c68c601e173704bb6af98fc305a9e8f3a155e518be9be054"
+    },
+    "data/controlled_publications/the-selfish-giant/rights_decision.json": {
+      "before": "0b71c367d486f194379b9acb422e262435f544c0985a72963625479a96bd35a0",
+      "after": "d07db6fa2a24aaf3ecaf3de28f79f72a29532d3605a853175de7a9d6fb26b200"
+    },
+    "data/controlled_publications/the-selfish-giant/checksum_manifest.json": {
+      "before": "feb3084bb401c3962b5968443b040f7ae3b15c706db9008c6c170a0cdaa9db1d",
+      "after": "830cb5ec7fe052f931a4a50659786c8a82797595ba189d2daffb68d06511b117"
+    },
+    "data/controlled_publications/the-selfish-giant/cover_provenance.json": {
+      "before": "d2a718d4bbe5dd2e9cf4b58a4f470ff2a188c84a5420f0f2cd92315d67f5c1f3",
+      "after": "9da21ded8f41af473c472fc7800a081b7fbb5cf88fdfeac948353cbd1e8881c9"
+    },
+    "data/controlled_publications/the-open-window/publication_manifest.json": {
+      "before": "e5f88f21c873e29f8f7c0374a93aba031da34c3bc8344d4c2ef40e087b310672",
+      "after": "6b733e512518f3c26232d170b15a9a41b0209245cf5f11ce8b81fa94e96ddfec"
+    },
+    "data/controlled_publications/the-open-window/publication_authorization.json": {
+      "before": "df456ad28112be7b2fa149c5eb972a343141adcc5610e791508816c92d0a3a1f",
+      "after": "75a78c71325b48b3f882711b21cacd98cec7a2856ecc8f95499ee6cb5d2e997e"
+    },
+    "data/controlled_publications/the-open-window/approval_evidence.json": {
+      "before": "f191c0631631964cc5b883cfd63201932c4fcbc7383c1249e9b40b75d0698c05",
+      "after": "9569c69e8dfbd683f94b540673f5d0920566389978508de9c6b70137ac1693a1"
+    },
+    "data/controlled_publications/the-open-window/public_book.json": {
+      "before": "472928c898ffca0711e110b8daf7ff2dfc47ebfc222f8a721589ad5b02ef7b5f",
+      "after": "fbddd9f1ab9bd94037e1692f491b9eabd6366d7c1e9517b0cd2da20d63ffe236"
+    },
+    "data/controlled_publications/the-open-window/rights_decision.json": {
+      "before": "fc2477b7a548e7a59c08be61661c4a1eb27c1effd26077b3b83035e60c4f6d99",
+      "after": "4761167f713aad2bd0dc7b24cc77e96454bece0fb2ed62229015bcb85a41fb11"
+    },
+    "data/controlled_publications/the-open-window/checksum_manifest.json": {
+      "before": "780bb1ef61c888f217afa334bfa991243eed3d4d1432bdd7fef8ac2561a13163",
+      "after": "f62050cce756752320f62201fbd56e61b6d921422e9e4fd8b1dc0e76c9e23c1a"
+    },
+    "data/controlled_publications/the-open-window/cover_provenance.json": {
+      "before": "8ae040e44439430f9d818429423a1be89208e493b79c4e4ac1e581ad1cd3fba2",
+      "after": "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e"
+    },
+    "data/controlled_publications/the-science-of-getting-rich/publication_manifest.json": {
+      "before": "00c2bf80559f72445ed21341b63d16d1fa14c0984218fc1688659216d94f8707",
+      "after": "a50dc98a2c96ca3a1d98228da6b37d090dd0ad22acfc9c3b4811d1a77a6ce68a"
+    },
+    "data/controlled_publications/the-science-of-getting-rich/publication_authorization.json": {
+      "before": "3a8df73182cbdaf4c7bf805f6b83a5454b0d5afb31c6d51e480bd93b64d175f3",
+      "after": "e769162a30fe0ad7a670567b5a7c5716c1ed170811915555729287043e6846c6"
+    },
+    "data/controlled_publications/the-science-of-getting-rich/approval_evidence.json": {
+      "before": "3ceab91240c71f1df1c04c1617a15c4a7e6b94e5417d0f8440514b501fef9566",
+      "after": "fd2da10d017913f3c286953b394ff34f88501ef5284bce08dd15d9fa77913244"
+    },
+    "data/controlled_publications/the-science-of-getting-rich/public_book.json": {
+      "before": "7797869cba7238aa06dfd0e4516d2aa1deb283d86404c8172c95cc90b50d5b56",
+      "after": "91cb6f64255e72cccb4a4afa341588ea8b1cdc846facb6a03e50ccc57c708c79"
+    },
+    "data/controlled_publications/the-science-of-getting-rich/rights_decision.json": {
+      "before": "023733ced6fed894fa35e7e3609edd139361f4df13e915d306a7da7e82cd7be2",
+      "after": "63a58f2cc1b044c6b9dafd53e9e12609f4f0792a0690960d18bed700e96a9d06"
+    },
+    "data/controlled_publications/the-science-of-getting-rich/checksum_manifest.json": {
+      "before": "72c45a967865eefd5ebbac95826e58674d8e5be5d2f1927ce291b26bdd2a8f8e",
+      "after": "285f00a6a99c136a4395974303569e05474c9aeb9eff3d9e3c18d37029799e86"
+    },
+    "data/controlled_publications/the-science-of-getting-rich/cover_provenance.json": {
+      "before": "62c9ba264c3131862b62d5c0ec76d38e45d44b2e8b8e570009ac7027b4a9fb9a",
+      "after": "31ef4bdfaa98196db0fcb629ab9b689b6f0570cefb90725fd77184360adf0c97"
+    },
+    "backend/data/controlled_publications/dsires-baby/publication_manifest.json": {
+      "before": "20ce43c7042861cdb86d58e799a9fd7a098ac01ba6816ab737fcb2608454fd03",
+      "after": "fada5cdfba56839ca5877b46b70c4ece2c7725c89e8c14bbfe4a17b85e5e7852"
+    },
+    "backend/data/controlled_publications/dsires-baby/publication_authorization.json": {
+      "before": "27c6630eab60364ad581a27438d3438b3afb26926090df2684e9a9e2ac7a3fad",
+      "after": "ae81a367e93bba8b660073fbd73899d5c7ca1bf29fd3f07d3ef8df15df017ffe"
+    },
+    "backend/data/controlled_publications/dsires-baby/approval_evidence.json": {
+      "before": "2892f0b840893bc79c4ba6026a527b9b2bd5a02f2cf5c1314ac5a95de102bdf8",
+      "after": "a5b7595a38a6c7c801ddbf95950dec11a2621c6625850d8da5aa5ea50ac197af"
+    },
+    "backend/data/controlled_publications/dsires-baby/public_book.json": {
+      "before": "37a881b69b0f644f3265cd986c80633b5dd7911d8fcd6fc6b05b156041dbe39f",
+      "after": "d88e4ac85cd7cd4a5a0e74d14b694ad68cd92bda6ae16e3e241b3794020bd60a"
+    },
+    "backend/data/controlled_publications/dsires-baby/rights_decision.json": {
+      "before": "63f7f9e02d1a4eda43a1d44272cb8ef18313f2744bb945a4295b133338ffdb78",
+      "after": "7622fc32c27ea1df9c382a6dc069c9b04b58483edc820c1a9e83babcabd10aeb"
+    },
+    "backend/data/controlled_publications/dsires-baby/checksum_manifest.json": {
+      "before": "f622c6b16a0f32957ed87c4cf2efb408d39db9b1c870dc81d378a103233b123a",
+      "after": "0ea56c13bafdce9b90042c2eb57c9c01a5d7b045405d059f7a1d220973907f3a"
+    },
+    "backend/data/controlled_publications/dsires-baby/cover_provenance.json": {
+      "before": "db0c2086dd4c2139c89540e355d44b8a27547afff6b3685cc6a24650113a55ac",
+      "after": "d062d0f93c0509f535e8b32653a9731af276fb80e63523b915e5d9f977d96243"
+    },
+    "backend/data/controlled_publications/sredni-vashtar/publication_manifest.json": {
+      "before": "b3717e2d866dce15bb693b353d2a6647a600c8eefd4d5d52641018aa7ea976e1",
+      "after": "846a5a23b8c4fc1963b5f2cefadfe6e413bd511e8d8952cfa4724369fa9eb58e"
+    },
+    "backend/data/controlled_publications/sredni-vashtar/publication_authorization.json": {
+      "before": "796e9f73e70fb58a6080480119c5996653e850ecef898b1209e7a457a3cf9df0",
+      "after": "1a84d6e201eda4f3c1055f835f541b103ec1264e8bb5236bdbed46b6d2b22705"
+    },
+    "backend/data/controlled_publications/sredni-vashtar/approval_evidence.json": {
+      "before": "f137fa7cadc0c899f3467a20579f40627a885423260fcede793c983a31a77e03",
+      "after": "13fc600ab1ec409f09c038785258a631cbb192873033c6de340d202ceb0ebfd2"
+    },
+    "backend/data/controlled_publications/sredni-vashtar/public_book.json": {
+      "before": "5dbdae63f6b0a3006cf68194db20e57efc11e66b71fba013cc5c3de65cbfb46c",
+      "after": "0c969ac1e6e10fe522a86e819bce7187ac057dcf8d0dfd875cee73835c03255b"
+    },
+    "backend/data/controlled_publications/sredni-vashtar/rights_decision.json": {
+      "before": "235960241ebf0c28fcb50842f5d153b67a56d65652a6b59057510f56c8ee395e",
+      "after": "fe5c4ea77b9fbdc99bf2b73dd64922b545e98bddb08ad0d87ebd957a89ee3210"
+    },
+    "backend/data/controlled_publications/sredni-vashtar/checksum_manifest.json": {
+      "before": "c412c71d4dc02c8d94af015032a76f9d92b421b0599fbe2dbd8bbe0da691b516",
+      "after": "c85c94540ffce45f8acc990ae28934cf3566051cdd2f9ae2c09ed1f47f1ddfe9"
+    },
+    "backend/data/controlled_publications/sredni-vashtar/cover_provenance.json": {
+      "before": "45ed9ccb3d7ef17612e8b6bfe166701846fd2a94daf85db7de047e29a0db4ef3",
+      "after": "09e2a3d459645edd4d8deb67c1669a661f64209ec7eae96d2caf3ba2af6d463b"
+    },
+    "backend/data/controlled_publications/the-cop-and-the-anthem/publication_manifest.json": {
+      "before": "eb946cd1af9e5f200e9fe871a1bac95582fb6a228e27e92717e65a5d92d409ac",
+      "after": "524b4382cc317ef7679cf920a88da44084f9adf954dc1a58213d8773bbf92d22"
+    },
+    "backend/data/controlled_publications/the-cop-and-the-anthem/publication_authorization.json": {
+      "before": "655803b93e82c1316b575b84e8318db27f4111e293d6537b924991525d90aaf6",
+      "after": "380b4383c013f13bc04b2516d773843e90219b9b9e2aafabe3b6d0a9f9a81ae2"
+    },
+    "backend/data/controlled_publications/the-cop-and-the-anthem/approval_evidence.json": {
+      "before": "ad47b7b6be8e9a06ebec9c140bae18df1bb761ebbd0c1236271f2c1fbbf0ac0e",
+      "after": "f73b9519560125c072d0db31014b1e53b384abbb92c8e677cb19e927bfab5adb"
+    },
+    "backend/data/controlled_publications/the-cop-and-the-anthem/public_book.json": {
+      "before": "1359a7dac5ab7d3f976a9a2d6b09d26ef62aa6a70122bbac43fe7234b91dc2ec",
+      "after": "68d9a495efde927a12d59a56b9513ad03349d5085d4a3825a4d537c20fd0d31b"
+    },
+    "backend/data/controlled_publications/the-cop-and-the-anthem/rights_decision.json": {
+      "before": "0181ed628465aade614cc0ba27fb5d6d73cc3c62f340c21eb2beb1bec8f0c9de",
+      "after": "9d6691f7fe7e0af7dae1efe3c9dde677e8a5928e65d33f48cc7167ba9f89588e"
+    },
+    "backend/data/controlled_publications/the-cop-and-the-anthem/checksum_manifest.json": {
+      "before": "785662814f1166eb05a43e33eb8c85c1417ae9e5df1a49787c51994d1218fe41",
+      "after": "e0b49c082067d4283315b5d9a11e9ca813c3eff59194fcda867fce39ea2b40f2"
+    },
+    "backend/data/controlled_publications/the-cop-and-the-anthem/cover_provenance.json": {
+      "before": "039ac86be99a8ac88b1ccb4fe8b1e43a85707a6c23cbd9525ba6f3423289be09",
+      "after": "e92e306a06fcc0ed682938a5cc50a1168b7671f00f6559a8ab692baa8e067fb4"
+    },
+    "backend/data/controlled_publications/the-selfish-giant/publication_manifest.json": {
+      "before": "39e0818a5954775cddcfccface9944835c6b091c844784b9c4d41b721b978dff",
+      "after": "6b7c6a28dd7b219599bd771fef55535f99b55788e5337c8f542d2a4281011b93"
+    },
+    "backend/data/controlled_publications/the-selfish-giant/publication_authorization.json": {
+      "before": "95ec21f54e7a44429ecce31d479b4d9c4df1b2c143d87010d7d5146768d6aff0",
+      "after": "6a79a9d4828858df62f0239f911f9d6c6d154da87ad035aba481f91f23cae251"
+    },
+    "backend/data/controlled_publications/the-selfish-giant/approval_evidence.json": {
+      "before": "1f7e2a15ef74e5f21cb781b90e841fa7a4bde656fe9676fa53ab24959105de1e",
+      "after": "d5f4e4df2bcd7ed73e55c7473e75c4fed10114199721b223589f5100e7dfad30"
+    },
+    "backend/data/controlled_publications/the-selfish-giant/public_book.json": {
+      "before": "4dc3571cb789c86d95831b13bf4368112840b09ac14779774280864931c218ab",
+      "after": "30eeb1e5bf221965c68c601e173704bb6af98fc305a9e8f3a155e518be9be054"
+    },
+    "backend/data/controlled_publications/the-selfish-giant/rights_decision.json": {
+      "before": "0b71c367d486f194379b9acb422e262435f544c0985a72963625479a96bd35a0",
+      "after": "d07db6fa2a24aaf3ecaf3de28f79f72a29532d3605a853175de7a9d6fb26b200"
+    },
+    "backend/data/controlled_publications/the-selfish-giant/checksum_manifest.json": {
+      "before": "feb3084bb401c3962b5968443b040f7ae3b15c706db9008c6c170a0cdaa9db1d",
+      "after": "830cb5ec7fe052f931a4a50659786c8a82797595ba189d2daffb68d06511b117"
+    },
+    "backend/data/controlled_publications/the-selfish-giant/cover_provenance.json": {
+      "before": "d2a718d4bbe5dd2e9cf4b58a4f470ff2a188c84a5420f0f2cd92315d67f5c1f3",
+      "after": "9da21ded8f41af473c472fc7800a081b7fbb5cf88fdfeac948353cbd1e8881c9"
+    },
+    "backend/data/controlled_publications/the-open-window/publication_manifest.json": {
+      "before": "e5f88f21c873e29f8f7c0374a93aba031da34c3bc8344d4c2ef40e087b310672",
+      "after": "6b733e512518f3c26232d170b15a9a41b0209245cf5f11ce8b81fa94e96ddfec"
+    },
+    "backend/data/controlled_publications/the-open-window/publication_authorization.json": {
+      "before": "df456ad28112be7b2fa149c5eb972a343141adcc5610e791508816c92d0a3a1f",
+      "after": "75a78c71325b48b3f882711b21cacd98cec7a2856ecc8f95499ee6cb5d2e997e"
+    },
+    "backend/data/controlled_publications/the-open-window/approval_evidence.json": {
+      "before": "f191c0631631964cc5b883cfd63201932c4fcbc7383c1249e9b40b75d0698c05",
+      "after": "9569c69e8dfbd683f94b540673f5d0920566389978508de9c6b70137ac1693a1"
+    },
+    "backend/data/controlled_publications/the-open-window/public_book.json": {
+      "before": "472928c898ffca0711e110b8daf7ff2dfc47ebfc222f8a721589ad5b02ef7b5f",
+      "after": "fbddd9f1ab9bd94037e1692f491b9eabd6366d7c1e9517b0cd2da20d63ffe236"
+    },
+    "backend/data/controlled_publications/the-open-window/rights_decision.json": {
+      "before": "fc2477b7a548e7a59c08be61661c4a1eb27c1effd26077b3b83035e60c4f6d99",
+      "after": "4761167f713aad2bd0dc7b24cc77e96454bece0fb2ed62229015bcb85a41fb11"
+    },
+    "backend/data/controlled_publications/the-open-window/checksum_manifest.json": {
+      "before": "780bb1ef61c888f217afa334bfa991243eed3d4d1432bdd7fef8ac2561a13163",
+      "after": "f62050cce756752320f62201fbd56e61b6d921422e9e4fd8b1dc0e76c9e23c1a"
+    },
+    "backend/data/controlled_publications/the-open-window/cover_provenance.json": {
+      "before": "8ae040e44439430f9d818429423a1be89208e493b79c4e4ac1e581ad1cd3fba2",
+      "after": "a9113d51aeb04529a09f496e8d458b65e71512e884b3d8087239b4d6d5d9919e"
+    },
+    "backend/data/controlled_publications/the-science-of-getting-rich/publication_manifest.json": {
+      "before": "00c2bf80559f72445ed21341b63d16d1fa14c0984218fc1688659216d94f8707",
+      "after": "a50dc98a2c96ca3a1d98228da6b37d090dd0ad22acfc9c3b4811d1a77a6ce68a"
+    },
+    "backend/data/controlled_publications/the-science-of-getting-rich/publication_authorization.json": {
+      "before": "3a8df73182cbdaf4c7bf805f6b83a5454b0d5afb31c6d51e480bd93b64d175f3",
+      "after": "e769162a30fe0ad7a670567b5a7c5716c1ed170811915555729287043e6846c6"
+    },
+    "backend/data/controlled_publications/the-science-of-getting-rich/approval_evidence.json": {
+      "before": "3ceab91240c71f1df1c04c1617a15c4a7e6b94e5417d0f8440514b501fef9566",
+      "after": "fd2da10d017913f3c286953b394ff34f88501ef5284bce08dd15d9fa77913244"
+    },
+    "backend/data/controlled_publications/the-science-of-getting-rich/public_book.json": {
+      "before": "7797869cba7238aa06dfd0e4516d2aa1deb283d86404c8172c95cc90b50d5b56",
+      "after": "91cb6f64255e72cccb4a4afa341588ea8b1cdc846facb6a03e50ccc57c708c79"
+    },
+    "backend/data/controlled_publications/the-science-of-getting-rich/rights_decision.json": {
+      "before": "023733ced6fed894fa35e7e3609edd139361f4df13e915d306a7da7e82cd7be2",
+      "after": "63a58f2cc1b044c6b9dafd53e9e12609f4f0792a0690960d18bed700e96a9d06"
+    },
+    "backend/data/controlled_publications/the-science-of-getting-rich/checksum_manifest.json": {
+      "before": "72c45a967865eefd5ebbac95826e58674d8e5be5d2f1927ce291b26bdd2a8f8e",
+      "after": "285f00a6a99c136a4395974303569e05474c9aeb9eff3d9e3c18d37029799e86"
+    },
+    "backend/data/controlled_publications/the-science-of-getting-rich/cover_provenance.json": {
+      "before": "62c9ba264c3131862b62d5c0ec76d38e45d44b2e8b8e570009ac7027b4a9fb9a",
+      "after": "31ef4bdfaa98196db0fcb629ab9b689b6f0570cefb90725fd77184360adf0c97"
+    }
+  },
+  "bundle_inventory_sha256": "1d3ffb8c37b6ca3ea751d45a1a3b3b59139ff5c4b2e1fa5d3efbf8c27fbdd087",
+  "canonical_branch_registry_allowlist_mutations": false,
+  "production_or_canonical_version_observed": false,
+  "next_action": "After current PR510 protected release/deploy/readback reconcile, serialize these exact6 through sole integration branch; runtime/registry mutations still gated. No new title source or visual review repeated."
+}

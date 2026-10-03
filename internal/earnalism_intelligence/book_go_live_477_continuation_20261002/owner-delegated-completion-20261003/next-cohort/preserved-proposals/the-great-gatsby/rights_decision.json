@@ -1,0 +1,38 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "proposal-20261003-the-great-gatsby-exact-cover-delivery",
+  "edition_id": "the-great-gatsby",
+  "operator_id": "reo-enterprise",
+  "status": "PROPOSED",
+  "components": {
+    "public_book": "88251a2ea7135b912d64120060bb0d55a7e1574e7cf3ad7217f61f0141d38b75",
+    "reader_manifest": "f544166427c91bb2b8546484bf0c811761345f2ec8f1c73c00afad88411fcb4c",
+    "source_evidence": "93a1e5eab7ce62def0ef60ba3a2ae6e56ed964c688c1f2a827f3e88664a30874",
+    "approval_evidence": "2c35fa26bafcc9047701bca66935b825d1da369b841da7ee6ed78a2bb80ba2d0",
+    "checksum_manifest": "8daed0a3e3ad97f3f98b139a403f305c85caeac3ca44278811a07dc96ff9010e",
+    "publication_manifest": "f9f2cbab00e07096ac5c6ccf95d2eed95a899ac2cb21240d85aaec7e100c68ae",
+    "cover_preparation": "d7a4dd3bee23aa3e9d57bdbb2d8bb9d0601e5e42499086a4900857218aa5a4b2"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:52:27.631967+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1940, verified lifetime collection publication 1925 (not claimed as original story first date); India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "640cd2b42298283a760ee823e25ccecea8f301940e38e7adc4633386f267a3e8",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "4a96f50ad7df460f80f1b69ca814b7514d7f178d24e0079cd6fd8a04e5faba24",
+    "ce760ec377accd352b41bb8f64504a72d7aa18ab3afb42ded2b56cecacf29e35",
+    "4f6579e08ebba7b91e4a92bf134f29c0a79b7c5575125351a20684c4ff8688ec"
+  ],
+  "accepted_by": "UNACCEPTED isolated preparation; root actual delegated acceptance required.",
+  "conditions_satisfied": false
+}

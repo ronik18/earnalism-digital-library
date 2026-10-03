@@ -1,0 +1,44 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-dsires-baby-reader-cover-inactive-proposal",
+  "edition_id": "dsires-baby",
+  "operator_id": "reo-enterprise",
+  "status": "PROPOSED",
+  "components": {
+    "public_book": "28d9b30dd139f065438b822a53c5f5a522f128b759421ebf68442ae376991a6e",
+    "reader_manifest": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee",
+    "source_evidence": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb",
+    "approval_evidence": "380d6e79a99cff02e69010626a46f9260237d78e826548d0a8f6dbb351b17bf4",
+    "checksum_manifest": "346623c242afa8285fa76f3c96e4a7771e090a59a83a6fb2de96294f2ff82971",
+    "publication_manifest": "b5c58131dab8207930f3243e2fbb548a84321a1fd7b99882fd17c67d624d056c",
+    "cover_provenance": "8a9d332bc7cbd6bfb54e111eafcf3be83817d166405a96ffb3c116d4e149bdd3",
+    "cover_delivery_derivation": "feb006057f91cd260d56db1c3c455eca58bce40ae3192cd94a5a798425c9fb6a",
+    "cover_front_asset": "c965ecd734bdb2d7966946f2cb3be4af131832266c31a3900f8e8d9375c667d1",
+    "cover_back_asset": "5a845c98786371fc1e671585701cf513c1142fbb5119337aff3d0a02497cff00",
+    "cover_front_delivery": "6a8cd3859df2febf9a54e4900cb8fd7ab6eb78ca0ab1e4f2c0e5cb7d0b9d8cbe",
+    "cover_back_delivery": "8a8630c4d1c52d9bc451ee90bdfc90ef653be29a9446d983732bde5e1ca00a65"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T04:36:24.088428+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Unaccepted inactive proposal reusing exact prior India noncover text evidence; new original recovered owner-art, bounded derivative and delivery evidence await two independent reviews and serialized acceptance. No source/edition/license/content change, no human approval or production observation claimed.",
+  "evidence_sha256": [
+    "3d530252d7452a2ddc892f5d0406f60db23d0cbfa207c71265d01b095f6c77f0",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "31d4577d255806b92c6296419adddd5ca460bdb788743878a09ded1e19f4161a",
+    "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98"
+  ],
+  "accepted_by": "NOT_ACCEPTED; no acceptance decision made by this preparation worker.",
+  "conditions_satisfied": false
+}

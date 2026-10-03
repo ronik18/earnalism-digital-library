@@ -1,0 +1,18 @@
+{
+  "id": "chapter-000",
+  "bookSlug": "the-wonderful-wizard-of-oz",
+  "order": 1,
+  "title": "Introduction",
+  "language": "en",
+  "content": "Folklore, legends, myths and fairy tales have followed childhood through the ages, for every healthy youngster has a wholesome and instinctive love for stories fantastic, marvelous and manifestly unreal. The winged fairies of Grimm and Andersen have brought more happiness to childish hearts than all other human creations.\n\nYet the old time fairy tale, having served for generations, may now be classed as “historical” in the children’s library; for the time has come for a series of newer “wonder tales” in which the stereotyped genie, dwarf and fairy are eliminated, together with all the horrible and blood-curdling incidents devised by their authors to point a fearsome moral to each tale. Modern education includes morality; therefore the modern child seeks only entertainment in its wonder tales and gladly dispenses with all disagreeable incident.\n\nHaving this thought in mind, the story of “The Wonderful Wizard of Oz” was written solely to please children of today. It aspires to being a modernized fairy tale, in which the wonderment and joy are retained and the heartaches and nightmares are left out.\n\nL. Frank Baum Chicago, April, 1900.",
+  "content_hash": "4ee081287a4c325cee637bfe8e20b68826d485b5819af4fe77963c991cf9b684",
+  "sanitizedSha256": "4ee081287a4c325cee637bfe8e20b68826d485b5819af4fe77963c991cf9b684",
+  "sourceSha256": "969bffab7740d4d8a0bac332d78bd0152ad4a40a2efc52f06c74a9bb6120be75",
+  "word_count": 183,
+  "reading_minutes": 1,
+  "is_preview": true,
+  "has_images": false,
+  "image_count": 0,
+  "processing_status": "ready",
+  "processing_warnings": []
+}

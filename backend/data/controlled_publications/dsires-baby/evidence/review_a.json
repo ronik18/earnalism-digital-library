@@ -1,0 +1,185 @@
+{
+  "schema": "earnalism.independent-candidate-review.v1",
+  "reviewer": "A",
+  "slug": "dsires-baby",
+  "disposition": "PASS_EXACT_UNACCEPTED_PREPARATION",
+  "review_date": "2026-10-03",
+  "rights_decision_raw_sha256": "89ec348616ec53dc4f2aba524ae907ae0969f6dea45d3259c834a588b4857877",
+  "components": {
+    "public_book": "28d9b30dd139f065438b822a53c5f5a522f128b759421ebf68442ae376991a6e",
+    "reader_manifest": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee",
+    "source_evidence": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb",
+    "approval_evidence": "380d6e79a99cff02e69010626a46f9260237d78e826548d0a8f6dbb351b17bf4",
+    "checksum_manifest": "346623c242afa8285fa76f3c96e4a7771e090a59a83a6fb2de96294f2ff82971",
+    "publication_manifest": "b5c58131dab8207930f3243e2fbb548a84321a1fd7b99882fd17c67d624d056c",
+    "cover_provenance": "8a9d332bc7cbd6bfb54e111eafcf3be83817d166405a96ffb3c116d4e149bdd3",
+    "cover_delivery_derivation": "feb006057f91cd260d56db1c3c455eca58bce40ae3192cd94a5a798425c9fb6a",
+    "cover_front_asset": "c965ecd734bdb2d7966946f2cb3be4af131832266c31a3900f8e8d9375c667d1",
+    "cover_back_asset": "5a845c98786371fc1e671585701cf513c1142fbb5119337aff3d0a02497cff00",
+    "cover_front_delivery": "6a8cd3859df2febf9a54e4900cb8fd7ab6eb78ca0ab1e4f2c0e5cb7d0b9d8cbe",
+    "cover_back_delivery": "8a8630c4d1c52d9bc451ee90bdfc90ef653be29a9446d983732bde5e1ca00a65"
+  },
+  "verified_checksum_count": 12,
+  "assets": {
+    "front": {
+      "original_sha256": "7c30a3bdab00204933779a30caba9a049cd76fd7400e83323c96f20051b9106c",
+      "repair_png_sha256": "c965ecd734bdb2d7966946f2cb3be4af131832266c31a3900f8e8d9375c667d1",
+      "delivery_sha256": "6a8cd3859df2febf9a54e4900cb8fd7ab6eb78ca0ab1e4f2c0e5cb7d0b9d8cbe",
+      "delivery_bytes": 21064,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "outside_inclusive_masks_RGB_pixel_identity": "PASS",
+      "actual_png_webp_visual": "PASS_LEGIBLE_TITLE_AUTHOR_ACCENTS_COMPLETE_COPY_FOOTER_NO_FALSE_LIVE_BADGE"
+    },
+    "back": {
+      "original_sha256": "1cfc152cef9d59cd7434966ec0a0fbd482b28f09e317846827bc09a8c29a442a",
+      "repair_png_sha256": "5a845c98786371fc1e671585701cf513c1142fbb5119337aff3d0a02497cff00",
+      "delivery_sha256": "8a8630c4d1c52d9bc451ee90bdfc90ef653be29a9446d983732bde5e1ca00a65",
+      "delivery_bytes": 37294,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "outside_inclusive_masks_RGB_pixel_identity": "PASS",
+      "actual_png_webp_visual": "PASS_LEGIBLE_TITLE_AUTHOR_ACCENTS_COMPLETE_COPY_FOOTER_NO_FALSE_LIVE_BADGE"
+    }
+  },
+  "complete_source": {
+    "boundary_artifact_sha256": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e",
+    "source_sha256": "31d4577d255806b92c6296419adddd5ca460bdb788743878a09ded1e19f4161a",
+    "content_sha256": "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98",
+    "persisted_first_last_boundaries_and_empty_gaps_rebound": true,
+    "scope": "Project Gutenberg #160; D\u00e9sir\u00e9e's Baby selected complete Kate Chopin story/cycle from Bayou folk; verified lifetime collection edition 1894; no translation/editorial/art imported",
+    "new_fetches_by_reviewer": 0,
+    "containment_alone_not_claimed_complete": true,
+    "full_recovered_source_selected_story_equals_entire_chapter": "PASS_NFC_WHITESPACE_ONLY"
+  },
+  "source_chapter_sync_byte_unchanged": true,
+  "exact_prior_IN_rights_basis_preserved": true,
+  "owner_legacy_graphical_category": "Existing recovered owner art with bounded deterministic text overlays, no runtime fallback-policy conformance claim; generic ornament aesthetic limitation disclosed.",
+  "fresh_visual": "PASS_ACTUAL_PNG_AND_WEBP_INSPECTION",
+  "copy": "Exact complete opening source paragraphs, whitespace normalization only.",
+  "preimages_against_main": [
+    {
+      "area": "root",
+      "file": "approval_evidence 2.json",
+      "sha256": "17c9e18d5f6a978c33ce1fecdbff48c621da93dd255acc7e8a363486643b629c"
+    },
+    {
+      "area": "root",
+      "file": "highlight_sync.json",
+      "sha256": "11b60f5ca19e9fabb00a130253b197b9d842de217c0c66b6b9999f5160b093e2"
+    },
+    {
+      "area": "root",
+      "file": "source_evidence.json",
+      "sha256": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb"
+    },
+    {
+      "area": "root",
+      "file": "publication_manifest.json",
+      "sha256": "564e1ff7f55a4af46e0760be8a69cbfa260409e93aa117f1939891941076ca0b"
+    },
+    {
+      "area": "root",
+      "file": "reader_manifest.json",
+      "sha256": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee"
+    },
+    {
+      "area": "root",
+      "file": "publication_authorization.json",
+      "sha256": "3d530252d7452a2ddc892f5d0406f60db23d0cbfa207c71265d01b095f6c77f0"
+    },
+    {
+      "area": "root",
+      "file": "approval_evidence.json",
+      "sha256": "af14f48def2add9e702bebba52421441c6088e27b92e8b642cfd1831aa3f1b14"
+    },
+    {
+      "area": "root",
+      "file": "public_book.json",
+      "sha256": "9e6623222de051bbd76fa4aee9d90f8634c3f4a28ea16fae80bc22a7aae0d728"
+    },
+    {
+      "area": "root",
+      "file": "rights_decision.json",
+      "sha256": "3365659c115a4661a910f9374c2635031b5559c071200ca2eb9a55e5b173bdac"
+    },
+    {
+      "area": "root",
+      "file": "checksum_manifest.json",
+      "sha256": "4463efa485f349f3f778e2e7dce10af53e55f477bca1e4168a13cd6ac025a053"
+    },
+    {
+      "area": "root",
+      "file": "chapters/chapter-001.json",
+      "sha256": "4c5f2ef8b4ba48d637ac19f0317c4dcb713d70577e49f6f51ae17999579b019b"
+    },
+    {
+      "area": "backend",
+      "file": "source_evidence.json",
+      "sha256": "8ad158a3e3e3c363ef7cf26bd48aeae1e622e5c001fb14f7a23c938528158346"
+    },
+    {
+      "area": "backend",
+      "file": "reader_manifest.json",
+      "sha256": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee"
+    },
+    {
+      "area": "backend",
+      "file": "approval_evidence.json",
+      "sha256": "12313bde425c85b16bd8deaf9bb2bf9a0e7d360e50407a6f5edb07ced87bbc8b"
+    },
+    {
+      "area": "backend",
+      "file": "public_book.json",
+      "sha256": "76d9488d74961f283821d169d2a8b21b1b64a729c8a00d07304d472bbf935e34"
+    },
+    {
+      "area": "backend",
+      "file": "checksum_manifest.json",
+      "sha256": "a475d08ab6ad49c4657be7e73f737ef40c4cf8f2504bce31f3c7ae3b1cc59196"
+    },
+    {
+      "area": "backend",
+      "file": "chapters/chapter-001.json",
+      "sha256": "48e203f5b81fc27d1ee3f5d80c485434f383fa5f622839c0128d3a443d15ed2e"
+    }
+  ],
+  "defects": [],
+  "package_inventory": {
+    "approval_evidence.json": "380d6e79a99cff02e69010626a46f9260237d78e826548d0a8f6dbb351b17bf4",
+    "chapters/chapter-001.json": "4c5f2ef8b4ba48d637ac19f0317c4dcb713d70577e49f6f51ae17999579b019b",
+    "checksum_manifest.json": "346623c242afa8285fa76f3c96e4a7771e090a59a83a6fb2de96294f2ff82971",
+    "cover_delivery_derivation.json": "feb006057f91cd260d56db1c3c455eca58bce40ae3192cd94a5a798425c9fb6a",
+    "cover_provenance.json": "8a9d332bc7cbd6bfb54e111eafcf3be83817d166405a96ffb3c116d4e149bdd3",
+    "covers/back.png": "5a845c98786371fc1e671585701cf513c1142fbb5119337aff3d0a02497cff00",
+    "covers/front.png": "c965ecd734bdb2d7966946f2cb3be4af131832266c31a3900f8e8d9375c667d1",
+    "highlight_sync.json": "11b60f5ca19e9fabb00a130253b197b9d842de217c0c66b6b9999f5160b093e2",
+    "public_book.json": "28d9b30dd139f065438b822a53c5f5a522f128b759421ebf68442ae376991a6e",
+    "publication_authorization.json": "8ae351a362c2abc4f2e88a14ea52d3afc266574ea21022b080eeda855f372bf9",
+    "publication_manifest.json": "b5c58131dab8207930f3243e2fbb548a84321a1fd7b99882fd17c67d624d056c",
+    "reader_manifest.json": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee",
+    "rights_decision.json": "89ec348616ec53dc4f2aba524ae907ae0969f6dea45d3259c834a588b4857877",
+    "source_evidence.json": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb",
+    "source_integrity_validation.json": "52683b6ef48451afe01c74f56481119e5b40663e1e27a141436108953d302444"
+  },
+  "package_inventory_sha256": "001e55ca1ad4a99e7b01e647785be2bc2c532de752a25b847a0b7b03427b0444",
+  "acceptance_or_activation_created": false,
+  "production_observed": false,
+  "next_action": "Paperwork exclusion/rebind of duplicate historical approval if present; then root actual prospective acceptance only after both independent PASS, fresh accepted binding review and protected release gates.",
+  "owner_design_fact": {
+    "actual_file": "/tmp/earnalism-main-approved-integration/internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+    "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "statement_reproduced": true,
+    "scope": "DESIGN_ONLY_NOT_TEXT_RIGHTS_OR_HUMAN_APPROVAL"
+  },
+  "font_lineage": {
+    "font_sha256": "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab",
+    "license_path": "/workspace/scratch/181ef0a25f05/desire-prep-20261003/DejaVu-font-license.txt",
+    "license_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+    "license_review": "Actual existing font license permits use; no new font binary is distributed in these cover packets."
+  }
+}

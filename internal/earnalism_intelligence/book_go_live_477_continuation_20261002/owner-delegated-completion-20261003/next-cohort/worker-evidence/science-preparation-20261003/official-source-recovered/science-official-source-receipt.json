@@ -1,0 +1,11 @@
+{
+  "requested_url": "https://www.gutenberg.org/cache/epub/59844/pg59844.txt",
+  "resolved_url": "https://www.gutenberg.org/cache/epub/59844/pg59844.txt",
+  "http_status": 200,
+  "accessed_at": "2026-10-03T04:44:37.139066+00:00",
+  "response_sha256": "adc3fb17f24801597561e992d858e124c8d9b4c6e3bf7593d713e7a71d252744",
+  "bytes": 151195,
+  "expected_historical_sha256": "adc3fb17f24801597561e992d858e124c8d9b4c6e3bf7593d713e7a71d252744",
+  "new_requests": 1,
+  "scope": "READ_ONLY_EXACT_SOURCE_RECOVERY_NO_ACCEPTANCE_OR_OBSERVATION"
+}

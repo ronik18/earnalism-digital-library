@@ -1,0 +1,167 @@
+{
+  "schema": "earnalism.proposed-exact-cover-binding.v1",
+  "slug": "sredni-vashtar",
+  "status": "ACCEPTED_EXACT_COMPONENTS_UNDER_OWNER_DELEGATION",
+  "owner_authority": "Issue #477 owner directive comment5949652699 plus2026-10-03 prospective cover/publication delegation; no human legal signature inferred",
+  "existing_text_decision": {
+    "decision_id": "india-20261002-sredni-vashtar-pg3688-noncover-text",
+    "sha256": "8c48bd15b23e352d5f195ab007a60c993b1fe72dd067f65874484c71942bb428",
+    "components": {
+      "public_book": "c027b799066b584a244c9025086df028d7a9ef65c5d7e812735b27e64420c59f",
+      "reader_manifest": "2ccf2bae7a65d944946f1cf4ca5a5f8b4011408638d67cc95e7f8bf6eca3ab54",
+      "source_evidence": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
+      "approval_evidence": "d2eec4f08fcd81f7156fc122a1c9fb20dd96ef0cde660c69801b03bfd9a000d3",
+      "checksum_manifest": "4683582293ceeb62d713a91bd4f69bbe0e8922da67fe6d3c764a060d1bd6da45",
+      "publication_manifest": "1f1845f14b3c3dbbf3a123c9d1ed9e66263072ae1485165c289ad64a19365db2"
+    },
+    "content_sha256": "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+    "source_sha256": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a"
+  },
+  "owner_design_declaration": {
+    "path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+    "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "statement": "Owner states all front and back covers are designed by the owner."
+  },
+  "original_front": {
+    "path": "/workspace/scratch/181ef0a25f05/sredni-preparation-20261003/front-cover-current.png",
+    "sha256": "28acd2dadefe6b665f06c992fa86543814245a825a1a8c6e225263fc240829ac",
+    "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
+    "bytes": 185325,
+    "width": 1600,
+    "height": 2400
+  },
+  "original_back": {
+    "path": "/workspace/scratch/181ef0a25f05/sredni-preparation-20261003/back-cover-current.png",
+    "sha256": "e74da10d4d84a8752ee9ed630ebc560635a0f0247ea65e7dd36e27eff782b01c",
+    "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275477/earnalism/covers/back/sredni-vashtar_back_1600x2400.png",
+    "bytes": 378809,
+    "width": 1600,
+    "height": 2400
+  },
+  "new_layout_front": {
+    "path": "/workspace/scratch/181ef0a25f05/sredni-preparation-20261003/candidate-front-run1.png",
+    "sha256": "d6e93dc6a19f8901d69c66aadeaf630088a6235305f0f3799476153a08d3beae",
+    "bytes": 113823,
+    "width": 1600,
+    "height": 2400,
+    "changed_region_rectangles": [
+      [
+        215,
+        705,
+        1385,
+        1265
+      ],
+      [
+        180,
+        1830,
+        1420,
+        2140
+      ]
+    ],
+    "unchanged_pixels_outside_masks": "PASS"
+  },
+  "new_layout_back": {
+    "path": "/workspace/scratch/181ef0a25f05/sredni-preparation-20261003/candidate-back-run1.png",
+    "sha256": "24ca0f1813af6cf4d989a2393fbd3671e4b2426c620bf65249a4693a494650c3",
+    "bytes": 268201,
+    "width": 1600,
+    "height": 2400,
+    "changed_region_rectangles": [
+      [
+        95,
+        70,
+        1505,
+        2160
+      ]
+    ],
+    "unchanged_pixels_outside_masks": "PASS"
+  },
+  "delivery": {
+    "front": {
+      "source_sha256": "d6e93dc6a19f8901d69c66aadeaf630088a6235305f0f3799476153a08d3beae",
+      "path": "/workspace/scratch/181ef0a25f05/sredni-preparation-20261003/delivery-front.webp",
+      "sha256": "d946f65fa5d2c843b7d572a3374435c5fe52a3308cf620395e49fb36e0b6cb55",
+      "bytes": 20932,
+      "width": 800,
+      "height": 1200,
+      "url": "/assets/books/sredni-vashtar/front-d946f65f.webp"
+    },
+    "back": {
+      "source_sha256": "24ca0f1813af6cf4d989a2393fbd3671e4b2426c620bf65249a4693a494650c3",
+      "path": "/workspace/scratch/181ef0a25f05/sredni-preparation-20261003/delivery-back.webp",
+      "sha256": "c532935242fc0da1ab7a4526752dc1b1392a2f0cf17e3616d25cff644ee82351",
+      "bytes": 65832,
+      "width": 800,
+      "height": 1200,
+      "url": "/assets/books/sredni-vashtar/back-c5329352.webp"
+    }
+  },
+  "evidence_sha256": {
+    "candidate_cover_receipt": "bfae2b19d7f41d2f63ae783bb13d09864716561540009908d9b4489a29ed4bf4",
+    "delivery_receipt": "ad729b952e12560756a63f93c0441ab57e57aa594aa01f38a64a9ae11c502709",
+    "renderer": "c8303b10cd48a38e0d180d13eb1d02e204dac0952f41d36993c3a84791c962d5",
+    "prior_http_receipts": "a9e142b01850d4f9d1227657882e7479ceb108f341bf2db3c6ad5d4c7cd6ae51",
+    "prior_cover_QA": "a8c56359ba9217cb626c48bb3e914b4398ad41cdabc92802a4b7c7fec4e9f704",
+    "preparation_summary": "952592df44c9a155661e4fa61eff57dec9d5819da5f1e45cb7574495f908ece0"
+  },
+  "scope": {
+    "territories": [
+      "IN"
+    ],
+    "uses": [
+      "catalog_metadata",
+      "cover_display",
+      "reader_preview",
+      "reader_delivery",
+      "reading_pass_session",
+      "reading_pass_renewal"
+    ],
+    "publication_approved": true,
+    "production_activation": false,
+    "audio_enabled": false,
+    "audiobook_enabled": false,
+    "audio_urls": [],
+    "listen_exposure": false,
+    "checkout": false,
+    "payments": false
+  },
+  "proposed_public_metadata_correction": {
+    "description": "Conradin was ten years old, and the doctor had pronounced his professional opinion that the boy would not live another five years. The doctor was silky and effete, and counted for little, but his opinion was endorsed by Mrs. de Ropp, who counted for nearly everything. Mrs. De Ropp was Conradin's cousin and guardian, and in his eyes she represented those three-fifths of the world that are necessary and disagreeable and real; the other two-fifths, in perpetual antagonism to the foregoing, were summed up in himself and his imagination. One of these days Conradin supposed he would succumb to the mastering pressure of wearisome necessary things--such as illnesses and coddling restrictions and drawn-out dullness. Without his imagination, which was rampant under the spur of loneliness, he would have succumbed long ago.",
+    "reason": "Replace incorrect existing two-year synopsis prognosis with complete exact selected-source opening paragraph normalized only for whitespace; prior metadata preserved byte exact."
+  },
+  "preservation": {
+    "source_text_license_chapters_versions_unchanged": true,
+    "all_root_backend_content_preimages_archived": true,
+    "audio_positive_preimage_not_propagated": true
+  },
+  "artwork_category": "RECOVERED_OWNER_DESIGNED_LEGACY_GRAPHICAL_COMPONENT_WITH_LAYOUT_AND_TEXT_OVERLAY_DERIVATIVE",
+  "accepted_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+  "accepted_at": "2026-10-03T04:59:53.954767+00:00",
+  "production_observed": false,
+  "new_independent_review_receipts": {
+    "review_a": {
+      "file": "evidence/review_a.json",
+      "sha256": "cbb2b42bd8aa85419549eaf838e9884069889482ae7bd8fd5d5280e34ab55f59"
+    },
+    "review_b": {
+      "file": "evidence/review_b.json",
+      "sha256": "91c752175d2b576a1b43269645b72511a23eadd5d6200df0c65a1ee1d3794c0a"
+    }
+  },
+  "acceptance_scope": "Exact preserved owner artwork derivative/delivery, India commercial text Reader cover display only; audio not authorized. Existing complete edition-bound source rights preserved.",
+  "commercial_use_authorized": true,
+  "cover_display_approved": true,
+  "visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+  "independent_reviews": {
+    "review_a": {
+      "file": "evidence/review_a.json",
+      "sha256": "cbb2b42bd8aa85419549eaf838e9884069889482ae7bd8fd5d5280e34ab55f59"
+    },
+    "review_b": {
+      "file": "evidence/review_b.json",
+      "sha256": "91c752175d2b576a1b43269645b72511a23eadd5d6200df0c65a1ee1d3794c0a"
+    }
+  },
+  "historical_preparation_review_issue": "Recovered owner-designed legacy graphics retain generic aesthetic limitation. New exact derivative fixes false status, occlusion and copy truncation with deterministic overlays; no new artwork and no runtime graphical-fallback policy conformance is claimed. Independent review required; substantial surviving conflict means drop from active plan.",
+  "reviewed_aesthetic_disclosure": "Preserved generic ornament artwork is disclosed in the two passing exact preparation reviews. No runtime-fallback, new-art or original typography-method claim is inferred."
+}

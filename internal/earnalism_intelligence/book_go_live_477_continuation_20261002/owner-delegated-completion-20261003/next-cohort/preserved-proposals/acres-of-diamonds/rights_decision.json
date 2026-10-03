@@ -1,0 +1,44 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-acres-of-diamonds-reader-cover-inactive-proposal",
+  "edition_id": "acres-of-diamonds",
+  "operator_id": "reo-enterprise",
+  "status": "PROPOSED",
+  "components": {
+    "public_book": "bae951ed589690eeb2b77980467cfc7f21f293393ad68d641115333570e35b2f",
+    "reader_manifest": "c083501e4fd683fe9490a8d5b113ef524b57b3aecacc98fbf73caf44e3066d0c",
+    "source_evidence": "9371f2af833cbd9683e138e121b7c6ae77f17a18de6dd46cb4507a301a6eb29e",
+    "approval_evidence": "08f88672f96d5a0bceaac91af3a5712348aef2b9c417c7b899908678cb22e4a8",
+    "checksum_manifest": "bf52223def530197e64d2436973d36ff6bee5ed03e2bcf694b5479f176b2286b",
+    "publication_manifest": "a970b425e3332c2f877d1e3042dfc309b913af20a7635220b78caf8072e1db34",
+    "cover_provenance": "38bb5eef35ed61292c54c03a04f3a3e5f81bb6e06947e6ec31f02c219dbfbf66",
+    "cover_delivery_derivation": "c4d1f20645a78e67308834ec22b53710b1844506685ab9459990ae603b9b4048",
+    "cover_front_asset": "cdffd02edb00ddb0af8d55ad5ba6eeffef7d8be9683123fc3193b88e98a7e235",
+    "cover_back_asset": "b3fb289b101e3a09596321f9f12994b41149d0b8fb4cb855e83429fe393d51dd",
+    "cover_front_delivery": "ea5a75bc67aced9aed13683776a3a21ff75173b3cd41cecdef7e4081b6732467",
+    "cover_back_delivery": "ce68313111e4b164e3383ffe3a52afe99417c76a6b489e31e29ed0210de3141e"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T05:10:03.145513+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Unaccepted exact inactive proposal. Reuse prior accepted IN noncover text facts without inferred original methods, rights, human approval or production observation. Full selected-work proof plus one deterministic original-art title/author/copy repair awaits two independent reviewers and serialized owner-delegated controller acceptance.",
+  "evidence_sha256": [
+    "2cbcf33315b37eceec14c90fa449ccf5ebe3de227731bd8df92d49e404208e32",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "c987f22e9111b0c21c5526f282cf501a6959d6e1e83b99276e3256509ad80e14",
+    "a0b8613f5a9c0ee604b53d6aa68388084bdefbf24e1f5e9749aafe2c8448efa3",
+    "412d4000427790f40832d29be6bd49985d288ff4a9d48c2d5d866a50c62e27b0"
+  ],
+  "accepted_by": "NOT_ACCEPTED; preparation worker makes no cover/publication acceptance decision.",
+  "conditions_satisfied": false
+}

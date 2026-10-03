@@ -1,0 +1,40 @@
+{
+  "source_root": "/tmp/earnalism-main-approved-integration",
+  "changed_files": [
+    "frontend/src/App.js",
+    "frontend/scripts/unavailable-title-routes.mjs",
+    "frontend/src/readerDirectRoute.test.js",
+    "frontend/src/bookDetailDirectRoute.test.js",
+    "frontend/src/pages/UnavailableTitle.test.jsx",
+    "scripts/verify_exact_primary_cross_browser.mjs",
+    "regression/modules/14-ux-conversion-static.test.js",
+    "scripts/post_deploy_static_seo_canary.py",
+    "scripts/test_post_deploy_static_seo_canary.py"
+  ],
+  "base_sha256": {
+    "frontend/src/App.js": "82aa0ee02cf26aed30b299f5a929b61b4f8bd3b706374ef7c293a44ceea01641",
+    "frontend/scripts/unavailable-title-routes.mjs": "6b170d2003f88fec5ded2e3a7ab3e22ed7b0111123c471e792510e261179d268",
+    "frontend/src/readerDirectRoute.test.js": "c4c017d748a0a34bc80b188ebc7e7ff2546096eebb99c34f0ad0bc5b7b246151",
+    "frontend/src/bookDetailDirectRoute.test.js": "a684334cc6b1a79c47e22214ce83ebf470e04e4280da2fd505dc8454ae743fb8",
+    "frontend/src/pages/UnavailableTitle.test.jsx": "3893b93394c177cb10955bef9ea23beb6cf43a9c7dbf9573f4d46671c0604f97",
+    "scripts/verify_exact_primary_cross_browser.mjs": "f5f6df138c6b813030ebc341eb13a2ffa055a5686d73b5d81dca5ecc34e43efb",
+    "regression/modules/14-ux-conversion-static.test.js": "6ab2f4248d69d55333adccb50c0a59614a79f82e8744e5213a6c09c0310640c1",
+    "scripts/post_deploy_static_seo_canary.py": "30f1d3d5a32ce041e7b42d5fcab9d9b314545f794d7d5d42b13fb7145ac8d5cd",
+    "scripts/test_post_deploy_static_seo_canary.py": "11350c084cdc98a5e4cbbbd1d6e0d2979dab3da8584320befad74082467ff8b1"
+  },
+  "proposed_sha256": {
+    "frontend/src/App.js": "de7b7fa5636bffb9f354c3200bd25b7a21d4ca70ebe5b2bf5704e26118f7f469",
+    "frontend/scripts/unavailable-title-routes.mjs": "afbaf67772c2403fa3a1d73b62ac48fa2b62f540b55ff54a49fb9fe8363da55f",
+    "frontend/src/readerDirectRoute.test.js": "b689081a84a52e0b8be3c83a887e957927b3c8af1b5c3c87c555f1a49fc764a1",
+    "frontend/src/bookDetailDirectRoute.test.js": "1a857ee22825fdb856caeeaa8eff81c84763b0793237fb09f0bca899324e57ff",
+    "frontend/src/pages/UnavailableTitle.test.jsx": "71e3a19882a4f31953ff25697b1daf07e523447fd149eb752f382c55a2f619c2",
+    "scripts/verify_exact_primary_cross_browser.mjs": "f63851377f2e29e42410523eaf65e0a1b1b5b21990e0e89e5e06e9e02ce3a939",
+    "regression/modules/14-ux-conversion-static.test.js": "c0f48aa5f8a01d5c23aa5d7971b2aef2538814f4ebe11ebfe0bfc597cbf113f0",
+    "scripts/post_deploy_static_seo_canary.py": "7b6e9f418c0f993eede08d553e202a9e548d4a17eca65581a9438942b449143c",
+    "scripts/test_post_deploy_static_seo_canary.py": "5c43054213a1c915d6956795483c5def027c5676732b0a7776b5a505e9950dae"
+  },
+  "patch_sha256": "42f66f5bc490383d4540910c6585eeed8388729d2c207cca74dd89a5b68af1ad",
+  "historical_audio_source_and_campaign_evidence_edited": false,
+  "deployment_config_edited": false,
+  "canonical_repo_edited": false
+}

@@ -1,0 +1,83 @@
+{
+  "schema": "earnalism.independent.exact-final-proposal-binding-review.v1",
+  "reviewer": "independent_reviewer_B",
+  "reviewed_on": "2026-10-03",
+  "slug": "the-science-of-getting-rich",
+  "disposition": "PASS_UNACCEPTED_INACTIVE_CORRECTED_OVERLAY_PROPOSAL",
+  "reviews_reused": {
+    "science-complete-source-review-b.json": {
+      "file": "/workspace/scratch/181ef0a25f05/new-acceptance-review-b-20261003/science-complete-source-review-b.json",
+      "sha256": "f593081a42d6ba7bc428c805f5c55ffd435059d3d6edf615dedf6346c5ce80a2"
+    },
+    "science-new-overlay-review-b.json": {
+      "file": "/workspace/scratch/181ef0a25f05/new-acceptance-review-b-20261003/science-new-overlay-review-b.json",
+      "sha256": "2c2bdbffeb87eb06321cbe9e07129d062b3fd8773cb8550ea9fe43c4569e3dc4"
+    },
+    "science-overlay-delivery-proof-b.json": {
+      "file": "/workspace/scratch/181ef0a25f05/new-acceptance-review-b-20261003/science-overlay-delivery-proof-b.json",
+      "sha256": "3b0084946ae4391ee6923aff4a8a4ebe65db4e875a1e788de351fce852379cda"
+    }
+  },
+  "final_proposed_rights_raw_sha256": "79e7b1e4c14eb3f38f89ea366cdd544116589b79490ef72608f5f010c3156638",
+  "final_proposed_rights_canonical_sha256": "40eaf7107b328f8df59814cbd683371e3faec2c31233cda8d49cae16009a0a7f",
+  "package_files_sha256": {
+    "highlight_sync.json": "0ec7bf5934ded3c72ba3bf13df6d8e6e698d3c3287f64c3a7050d3e2e47ab997",
+    "cover_delivery_derivation.json": "3f1272ff582220e60a68f13412fc665a35c6e4885bf29006894bdfffd45f36fc",
+    "source_evidence.json": "6324de50de9db456175bcd2cbecec794641fa8bdd322d2de2b49eaacc713a117",
+    "publication_manifest.json": "5b6c86b79fa780e0a0936a7e1aa33acabc1bcf6db9590ce4d39b4c8df5af4596",
+    "reader_manifest.json": "a42883b4eb214ae086998672472b0f86c9709e550da35c87789f95564cdefdb7",
+    "publication_authorization.json": "0064cb053d3a9f7092e1eb3d02528384f5099a40ef859a6e6e1548a02fb78345",
+    "approval_evidence.json": "26722c153497866933400de4a8968c0760187f24fe348233a2e1cd8b700d7b95",
+    "public_book.json": "481cec1d5841afa7c92a714867f406f734f345fb7b47ff3a5a7a98e9b373799d",
+    "rights_decision.json": "79e7b1e4c14eb3f38f89ea366cdd544116589b79490ef72608f5f010c3156638",
+    "checksum_manifest.json": "10a497aae2af2719e20a6fe3abcac8d27cdd673045340cb2c3a0b71fffdec567",
+    "cover_provenance.json": "9b6765a0a4af10b15cba3ad2fc315f754d3ea8ddaf9dea60e3ee2ff495d6731f",
+    "chapters/chapter-017.json": "696a398abd98a5ecd187d6d5e157f76c3c5636e307983593d405c5526cd4d1a3",
+    "chapters/chapter-013.json": "0887e80584d2dcc41f5915d848c8e1426bf9e4efdb6e7b17f5b9576b0aa7332e",
+    "chapters/chapter-010.json": "9fd16a6fa0d207110cd8345f150b9575c8e6aeca07c442e8861f1b19ff01a5bc",
+    "chapters/chapter-014.json": "052669e99e081d17e9e5e7d8cba5097a1c35d74692253246906f1cbfb987abe7",
+    "chapters/chapter-009.json": "227b7a5ca87383d711d9c0441ab26d9dba67538261a9fc0372abbf413d0a2ca8",
+    "chapters/chapter-016.json": "466c8da81c1f9c4539d55315f4b035b86adcb80a2bc119666b60fcce0c0e9b3c",
+    "chapters/chapter-002.json": "ab639f30648a642710f927b65c6066094fb01b8aa0f20bcecc4b1520caaccb56",
+    "chapters/chapter-018.json": "e8930930e2e78ee34d8c7b57e2f00c035cecade2cd8aa61880df20cf9f0cbc14",
+    "chapters/chapter-008.json": "7c4b25048dbe4d06ae8bcced7a5ef6a8b9ef9302bcba4a621af16450db2c020f",
+    "chapters/chapter-011.json": "e59038a7eb3e104d3c4b68ba3e96704aad025e988f86b09e092d3f6f447f20f2",
+    "chapters/chapter-004.json": "c21f9eb9a075126da8a44c27218241b2e3c231d07c159c8dcc674fd61ea76c87",
+    "chapters/chapter-015.json": "8ef3ecb1e363fc95adc4f9832604fdb23313c2fc1db568e232ac48f863531588",
+    "chapters/chapter-006.json": "03f09952d5111d0faa1dc5cd2b32e18e3b343c45f635cb993d6497cf2de581c6",
+    "chapters/chapter-005.json": "bdf40302374fe13649ff56bd155d91048f7994a71ab83c2ae9f5f405ba5e212b",
+    "chapters/chapter-012.json": "a0e4eac4315a6ec73f378f6896c46509af3f77e1ee35e3151ead86c732b2089a",
+    "chapters/chapter-003.json": "d2d4be96ac1636a3c3cf256302262c8ec52cbf99d2ff77f53cd3949c0b84ceea",
+    "chapters/chapter-007.json": "6ec6c0887b7a428302af800c9485443e5345c463465474b8651348c66ac0686d",
+    "chapters/chapter-001.json": "ed9d306a0bf198120c65aabd95f1011c69972dfe855e7eff4ef0bdab02903efa"
+  },
+  "checks": {
+    "12components": "PASS",
+    "26checksums": "PASS",
+    "root_backend_byte_parity": "PASS",
+    "18chapters_source_highlight_preserved": "PASS",
+    "72root_backend_content_preimages": "PASS",
+    "complete_author_text": "Exact officialadc3fb17 Preface+17wholechapter bodies independently equal; fullbody evidence now available and frozen; raw4de04867 preserved and never relabelled official",
+    "proven_deterministic_title_author_overlay": "PASS; exact licensedfont/renderer/independent private reproduction",
+    "new_delivery_executable_binding": "PASS b9e0af1d correctly consumes7f2e8e9f/83190790 and expects5ee48b1d/bda88117; independently reproduced exactWebPs",
+    "old_recipe": "be3301ca remains explicitly historical original-only renderer; no current lineage claim",
+    "corrupted_historical_front_run2": "Excluded and archived; independent current run1 private verification fully decodes and matches; unknowncause unaltered",
+    "delivery_dimensions_budget": "600x900 bothunder80KB PASS",
+    "effective_audio_status": "Falseflags/empty exposure/no oldactiveaudio metadata PASS",
+    "rights_basis": "Exact prior accepted INtext basis; no new human/legal approval inferred",
+    "candidate_state": "PENDING_REVIEW conditionsfalse publicationfalse; actual prospective acceptance not yet created"
+  },
+  "typography_receipt_sha256": "99b70d556723ac3cf8aba07e8f38fd183a80027d9e5369a588204d478143523a",
+  "current_delivery_receipt_sha256": "3f1272ff582220e60a68f13412fc665a35c6e4885bf29006894bdfffd45f36fc",
+  "current_overlay_delivery_script_sha256": "b9e0af1d4f2fe814f3cdc49b1601e8bc1fe63b735bdeb77def2a7635a38680b2",
+  "validation_sha256": "7f4f773701c0da740a42e360568ef04a6f81580b6e0cfc9287a233c5ad96b46f",
+  "remaining_gates": [
+    "Other independent reviewer PASS and root actual prospective cover/publication acceptance",
+    "Fresh exact accepted-package reviews",
+    "Serialized integration/protectedCI/deployment/canary/truthful readback"
+  ],
+  "production_observed": false,
+  "acceptance_created": false,
+  "audio_authorized": false,
+  "canonical_mutations": false
+}

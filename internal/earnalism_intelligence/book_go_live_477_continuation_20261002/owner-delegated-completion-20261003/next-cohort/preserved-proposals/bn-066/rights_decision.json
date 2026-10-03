@@ -1,0 +1,39 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-bn-066-exact-edition-text-cover-proposal",
+  "edition_id": "bn-066",
+  "operator_id": "reo-enterprise",
+  "status": "PROPOSED",
+  "components": {
+    "source_evidence": "227c479e011f38150820a341bed084e5c184cda97bc12c034d7093ce660ab0e8",
+    "publication_manifest": "2496313f0e8379454cf07f0e10874c0cc2aae52ba9e104e5ffe35028365fdd92",
+    "reader_manifest": "cf08811a9edf32051c6929e8eb5b29abd6a36df4232c50049e630575f43114d7",
+    "approval_evidence": "34d6d47a4db03431688aed09788d9923f3acc146629ce7036f422e31a002a703",
+    "public_book": "6123dde546bc7e8c647eb98d766f18514f3009d9db72d3021213ccbed72019df",
+    "checksum_manifest": "55fb1055b9051f9d81cb9f96c680f8c3aa6bd0b987ea728f7182aee1f831731e",
+    "cover_provenance": "9d145c32195f6ae61cbe7ed4069dc972aa33c1b9606f25ae7dce0572fa4ae728"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "cover_display",
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T04:56:37.110955+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Exact Anandamath second edition1290/1883, Bankim Chandra Chattopadhyay; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1894; India Section22 literary term expired end1954. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held. Proposed exact owner cover mask/typeset derivatives; fresh2 passing independent reviews and actual automated acceptance remain required.",
+  "evidence_sha256": [
+    "92c373d5136b1a43d34576321f302623699ea96927e930310d1e8fc90c5f37be",
+    "01ac5d08b252da92a339e44f96e3664ea78a02c986e3f9eb2ecdf246cb7cbf75",
+    "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "e02ba4317441ff3b89a869ee69e048c7993f65c700d823abe72919aa293c1aaf",
+    "d071dc021cf1af40b416c731e5c1074069e2b81a0a1f8810fa688bcba3ffb17c"
+  ],
+  "accepted_by": "NOT_ACCEPTED: automated isolated proposal worker under prospective owner authority; no human/legal signature or production observations.",
+  "conditions_satisfied": false
+}

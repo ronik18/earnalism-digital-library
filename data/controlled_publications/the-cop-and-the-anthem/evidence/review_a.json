@@ -1,0 +1,181 @@
+{
+  "schema": "earnalism.independent-candidate-review.v1",
+  "reviewer": "A",
+  "slug": "the-cop-and-the-anthem",
+  "disposition": "PASS_EXACT_UNACCEPTED_PREPARATION",
+  "review_date": "2026-10-03",
+  "rights_decision_raw_sha256": "243df8f368fd69b7833ca16676f8921d1653ef97bb89caec390882ca70c3bd81",
+  "components": {
+    "public_book": "c1ca0a3e6167f4cc75acab2ea9e021d038cbe4871eb806723112e9bad7808781",
+    "reader_manifest": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22",
+    "source_evidence": "f40f277d758a03b9e05dd6ffa721b058766db6955ba4414d183a7f9bf45fb84f",
+    "approval_evidence": "fb8aa9ad5743b2938cc9731ebb1fb23eb6cd86aba2ba62f19d339d3fdaf0dfc6",
+    "checksum_manifest": "706dee76962bc35b85b30032f21f48398c7b1e880323ef32816ba35eeb6e99f5",
+    "publication_manifest": "d4ceab85717d94014910a04ce3ac17b3daa32fc6ad4251692887f3fbe4f9edae",
+    "cover_preparation": "7892ff61dd3be4adea5e41338e5289d673114e53ca1ba4759ea10db20459523d"
+  },
+  "verified_checksum_count": 14,
+  "assets": {
+    "front": {
+      "original_sha256": "3232a6b9c657c5e0adaa6385c87ecd88b9544a0c264b0a28b9ee8d7e11ed12b7",
+      "repair_png_sha256": "af57195ca48c50d2c8bf0ac6b2c4366dd2328c4e52c93d50b23bd44dea2ef41f",
+      "delivery_sha256": "b2243f117df70253f59a995f7aba59c747da08d51187d94d79ff2e84e10f06de",
+      "delivery_bytes": 24996,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "outside_inclusive_masks_RGB_pixel_identity": "PASS",
+      "actual_png_webp_visual": "PASS_LEGIBLE_TITLE_AUTHOR_ACCENTS_COMPLETE_COPY_FOOTER_NO_FALSE_LIVE_BADGE"
+    },
+    "back": {
+      "original_sha256": "0c9e1ec88066b222f5b2e715e8017c4fb7095e74f8f2b669ce5d1d97a77eb7d6",
+      "repair_png_sha256": "c0929e3af5ed29e6305d2867e0018ab4bdd7c6fa226fca6ff82ee94b45236a35",
+      "delivery_sha256": "5f6497fd5616e8913891f73d47aa6ff08b6c7db338cefd05f81b71332241dcde",
+      "delivery_bytes": 37340,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "outside_inclusive_masks_RGB_pixel_identity": "PASS",
+      "actual_png_webp_visual": "PASS_LEGIBLE_TITLE_AUTHOR_ACCENTS_COMPLETE_COPY_FOOTER_NO_FALSE_LIVE_BADGE"
+    }
+  },
+  "complete_source": {
+    "boundary_artifact_sha256": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e",
+    "source_sha256": "6bb719852f2f0eb33db25613124d2d3c522dd3b879c187667ab31072bb2fb48d",
+    "content_sha256": "77a6d1c7ff6162cc7aad47b950666c6bb1dedf0beb55a08f3f476e27e57bd3ab",
+    "persisted_first_last_boundaries_and_empty_gaps_rebound": true,
+    "scope": "Project Gutenberg #2776; The Cop and the Anthem selected complete O. Henry story/cycle from four million; verified lifetime collection edition 1906; no translation/editorial/art imported",
+    "new_fetches_by_reviewer": 0,
+    "containment_alone_not_claimed_complete": true
+  },
+  "source_chapter_sync_byte_unchanged": true,
+  "exact_prior_IN_rights_basis_preserved": true,
+  "owner_legacy_graphical_category": "Existing recovered owner art with bounded deterministic text overlays, no runtime fallback-policy conformance claim; generic ornament aesthetic limitation disclosed.",
+  "fresh_visual": "PASS_ACTUAL_PNG_AND_WEBP_INSPECTION",
+  "copy": "Exact complete opening source paragraphs, whitespace normalization only.",
+  "preimages_against_main": [
+    {
+      "area": "root",
+      "file": "approval_evidence 2.json",
+      "sha256": "aac19a817365dfebaa22742bd82020167c4b55d42b53ca2fa6d3e47fce49fa95"
+    },
+    {
+      "area": "root",
+      "file": "highlight_sync.json",
+      "sha256": "193728619d202fad6d4f71dbf895c35d68190b7ae6663a77d19d02d774efd113"
+    },
+    {
+      "area": "root",
+      "file": "source_evidence.json",
+      "sha256": "f40f277d758a03b9e05dd6ffa721b058766db6955ba4414d183a7f9bf45fb84f"
+    },
+    {
+      "area": "root",
+      "file": "publication_manifest.json",
+      "sha256": "4ebb444194571b1fc413b2213c9f7ba4bba1b8e6cd323152757a23fea953df1e"
+    },
+    {
+      "area": "root",
+      "file": "reader_manifest.json",
+      "sha256": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22"
+    },
+    {
+      "area": "root",
+      "file": "publication_authorization.json",
+      "sha256": "cca048017c5646c43e5d90b54b48a71990a30dd46520dfdf70d8d6e8d1267aed"
+    },
+    {
+      "area": "root",
+      "file": "approval_evidence.json",
+      "sha256": "c7a2c6424ec79ec8dd32c5e6d4739cd00751afcdcad6d1c0c3eae2c2acae9bdc"
+    },
+    {
+      "area": "root",
+      "file": "public_book.json",
+      "sha256": "9fc77a70e214a11a0450399f49c2624afeb1285ce7cb7732eb05cbb2bf7a7dd5"
+    },
+    {
+      "area": "root",
+      "file": "rights_decision.json",
+      "sha256": "2008b506bf6640b9719e8c47d5a4e8720702a67688d77e25e506e376498f683c"
+    },
+    {
+      "area": "root",
+      "file": "checksum_manifest.json",
+      "sha256": "f6cfd905a900549dd3b6065a02cfde1c1556c357004f033b19fa9d94de254f7b"
+    },
+    {
+      "area": "root",
+      "file": "chapters/chapter-001.json",
+      "sha256": "630e75350eefdcce93c1f0e403873a29fb1df4004f8c2dd2f450108bd4288cb8"
+    },
+    {
+      "area": "backend",
+      "file": "source_evidence.json",
+      "sha256": "6e89943557cd5e0b840586198fa824048ac0f0cfe2b015be5ddb99e12917fecc"
+    },
+    {
+      "area": "backend",
+      "file": "reader_manifest.json",
+      "sha256": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22"
+    },
+    {
+      "area": "backend",
+      "file": "approval_evidence.json",
+      "sha256": "eba8dc9670d4b046092be624c851a9216c6a682ffab482a7dcf85e9cde3ea713"
+    },
+    {
+      "area": "backend",
+      "file": "public_book.json",
+      "sha256": "8579571f875d23ed1083e99a7a6338aa208baa61af82bb97fedad4a1d43e258f"
+    },
+    {
+      "area": "backend",
+      "file": "checksum_manifest.json",
+      "sha256": "abfec56801eb7dce5c323044a976afa203c333ed3ac936bcdc9a0577e03d3e28"
+    },
+    {
+      "area": "backend",
+      "file": "chapters/chapter-001.json",
+      "sha256": "5efa2347d8668dc8a3d1419cd5c253e70dee82c390e6038d5b59704e5fe857aa"
+    }
+  ],
+  "defects": [],
+  "package_inventory": {
+    "approval_evidence.json": "fb8aa9ad5743b2938cc9731ebb1fb23eb6cd86aba2ba62f19d339d3fdaf0dfc6",
+    "chapters/chapter-001.json": "630e75350eefdcce93c1f0e403873a29fb1df4004f8c2dd2f450108bd4288cb8",
+    "checksum_manifest.json": "706dee76962bc35b85b30032f21f48398c7b1e880323ef32816ba35eeb6e99f5",
+    "cover_preparation.json": "7892ff61dd3be4adea5e41338e5289d673114e53ca1ba4759ea10db20459523d",
+    "covers/original-back.png": "0c9e1ec88066b222f5b2e715e8017c4fb7095e74f8f2b669ce5d1d97a77eb7d6",
+    "covers/original-front.png": "3232a6b9c657c5e0adaa6385c87ecd88b9544a0c264b0a28b9ee8d7e11ed12b7",
+    "covers/the-cop-and-the-anthem-back-inactive.png": "c0929e3af5ed29e6305d2867e0018ab4bdd7c6fa226fca6ff82ee94b45236a35",
+    "covers/the-cop-and-the-anthem-back-inactive.webp": "5f6497fd5616e8913891f73d47aa6ff08b6c7db338cefd05f81b71332241dcde",
+    "covers/the-cop-and-the-anthem-front-inactive.png": "af57195ca48c50d2c8bf0ac6b2c4366dd2328c4e52c93d50b23bd44dea2ef41f",
+    "covers/the-cop-and-the-anthem-front-inactive.webp": "b2243f117df70253f59a995f7aba59c747da08d51187d94d79ff2e84e10f06de",
+    "highlight_sync.json": "193728619d202fad6d4f71dbf895c35d68190b7ae6663a77d19d02d774efd113",
+    "public_book.json": "c1ca0a3e6167f4cc75acab2ea9e021d038cbe4871eb806723112e9bad7808781",
+    "publication_authorization.json": "2111e7149717ad8ce2bbb29b6968e4ad54d5d4117acf64f34f3aba5107369972",
+    "publication_manifest.json": "d4ceab85717d94014910a04ce3ac17b3daa32fc6ad4251692887f3fbe4f9edae",
+    "reader_manifest.json": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22",
+    "rights_decision.json": "243df8f368fd69b7833ca16676f8921d1653ef97bb89caec390882ca70c3bd81",
+    "source_evidence.json": "f40f277d758a03b9e05dd6ffa721b058766db6955ba4414d183a7f9bf45fb84f"
+  },
+  "package_inventory_sha256": "fe79431dc92ee8bd7304982ed2bd8b3397fa788273af7e1679fe08087e1679c1",
+  "acceptance_or_activation_created": false,
+  "production_observed": false,
+  "next_action": "Paperwork exclusion/rebind of duplicate historical approval if present; then root actual prospective acceptance only after both independent PASS, fresh accepted binding review and protected release gates.",
+  "owner_design_fact": {
+    "actual_file": "/workspace/scratch/006ea59bb0f7/book-go-live-477/controller-corrections.json",
+    "sha256": "24e8f7f409db65ab0c4b5f3bf1a1d10072f3c6634d765ba2abfb118740a569b6",
+    "statement_reproduced": true,
+    "scope": "DESIGN_ONLY_NOT_TEXT_RIGHTS_OR_HUMAN_APPROVAL"
+  },
+  "font_lineage": {
+    "font_sha256": "ef9512f92f6d579e5dc75af59a5a4b1b8b47d2eda89e00b954d44520e5369027",
+    "license_path": "/tmp/earnalism-main-approved-integration/frontend/public/assets/fonts/EB-GARAMOND-OFL.txt",
+    "license_sha256": "0985066662eb755ed3683ae5482a81a9195b49ce3f7e165cc2388b3dbece7dd7",
+    "license_review": "Actual existing font license permits use; no new font binary is distributed in these cover packets."
+  }
+}

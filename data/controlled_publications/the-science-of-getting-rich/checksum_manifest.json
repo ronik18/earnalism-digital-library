@@ -1,10 +1,10 @@
 {
   "slug": "the-science-of-getting-rich",
-  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "generated_at": "2026-10-03T04:59:53.954767+00:00",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "dc189350ec5a8fd4acf2d25cafce1bf9884f35b4caca40090e497af1b0aba20f"
+      "sha256": "c2e4dcccb24f4a77c383b9c27277e045437465d293186b78ea82eff3065f731a"
     },
     {
       "file": "chapters/chapter-001.json",
@@ -84,19 +84,35 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "491fad4ec6873c7b6c3853a212291884b1764e99da6e23adddf2f61e3a377f9a"
+      "sha256": "08b6e34e2fb16cbdd53a6860ac880663ab7908277a1397a89351cea3d5a7b027"
     },
     {
       "file": "publication_authorization.json",
-      "sha256": "cbb0f10031b0061839efa60f9fa11600bf283711c85843d0a49d45516e393052"
+      "sha256": "952b20027bbc2c880867fc82ee9e6bfa62a3d5cf7407bb40704b11affecfe00c"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "6c6c0d47217642a5f67dff1fc23afcac146468d1017d48f59a2bef2bf90cbdce"
+      "sha256": "a42883b4eb214ae086998672472b0f86c9709e550da35c87789f95564cdefdb7"
     },
     {
       "file": "source_evidence.json",
       "sha256": "6324de50de9db456175bcd2cbecec794641fa8bdd322d2de2b49eaacc713a117"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "5736bdd96c74179bd9eeeee63fd0d09f7a410a23137c499e31130424a4944161"
+    },
+    {
+      "file": "cover_delivery_derivation.json",
+      "sha256": "fb4f6f41f2da879099d46d6a1460d87c41dd9cae5d6c65dc838dcb8e4a99aaf5"
+    },
+    {
+      "file": "evidence/review_a.json",
+      "sha256": "e17b3d56b4e6f0f6177965822910d19550debe93090c198d5a21e3fac5419400"
+    },
+    {
+      "file": "evidence/review_b.json",
+      "sha256": "4817d7c5123f319dfb08bc552fd4548d24896bb23964f11bd12d719c941eb98a"
     }
   ]
 }

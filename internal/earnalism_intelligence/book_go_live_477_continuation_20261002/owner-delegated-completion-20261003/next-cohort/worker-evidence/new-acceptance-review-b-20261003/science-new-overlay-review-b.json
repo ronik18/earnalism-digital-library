@@ -1,0 +1,86 @@
+{
+  "schema": "earnalism.independent.exact-typography-repair-review.v1",
+  "reviewer": "independent_reviewer_B",
+  "slug": "the-science-of-getting-rich",
+  "reviewed_on": "2026-10-03",
+  "disposition": "PASS_NEW_EXACT_OVERLAY_DELIVERY_VISUAL_PROVENANCE_AND_COMPLETE_SOURCE",
+  "assets": {
+    "front": {
+      "original": {
+        "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/original-front.png",
+        "sha256": "9fa719df44b5348b2dd694674fb7e4ba38438dd1e652ca70559081d67e88da15",
+        "bytes": 2865468
+      },
+      "overlay_png": {
+        "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/overlay-front-run1.png",
+        "sha256": "7f2e8e9fd3f6d0359b8d94cfc2198101abd64b4b78a95d035932d68bff4f2bf2",
+        "bytes": 1905203
+      },
+      "delivery_webp": {
+        "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/overlay-front-delivery.webp",
+        "sha256": "5ee48b1d245c70b1b8495f9a6b98636cc798d2bea96ff54aa4c3d6fa27becb28",
+        "bytes": 60052
+      },
+      "B_private_verification": {
+        "path": "/workspace/scratch/181ef0a25f05/new-acceptance-review-b-20261003/science-independent-render/overlay-front-verification.png",
+        "sha256": "7f2e8e9fd3f6d0359b8d94cfc2198101abd64b4b78a95d035932d68bff4f2bf2",
+        "bytes": 1905203
+      }
+    },
+    "back": {
+      "original": {
+        "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/original-back.png",
+        "sha256": "49cf4eb533e11cc92d253496e2945d700468b2a2e42b7aabf4c7d8dd3b590f09",
+        "bytes": 2662912
+      },
+      "overlay_png": {
+        "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/overlay-back-run1.png",
+        "sha256": "83190790c57974d6dad6128dc87d5a3018e8d7fd06f41f623505320e974a1791",
+        "bytes": 2411555
+      },
+      "delivery_webp": {
+        "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/overlay-back-delivery.webp",
+        "sha256": "bda88117bdb0d7208f51afa3cab6dce74875f83943ebf7c2a74409a6a29477c4",
+        "bytes": 64860
+      },
+      "B_private_verification": {
+        "path": "/workspace/scratch/181ef0a25f05/new-acceptance-review-b-20261003/science-independent-render/overlay-back-verification.png",
+        "sha256": "83190790c57974d6dad6128dc87d5a3018e8d7fd06f41f623505320e974a1791",
+        "bytes": 2411555
+      }
+    }
+  },
+  "actual_visual_inspection": "All four frozen new run1PNG and compressedWebP images inspected via view_image. Title/author fully legible and exact, ornament no longer interferes with text; original source-themed sunrise/city artwork retained; backcopy and Earnalismfooter complete; no LIVE/audio/rights stamp.",
+  "deterministic_overlay_proof": {
+    "renderer_sha256": "952750c8a752810519b4db727ec3b037976bc606833a8764e88e4a5203a684a3",
+    "method": "Independent private copy of both exact originals; load renderer with __name__ excluding main; redirect BASE to isolated Bscratch; render verification only. Both resulting PNG hashes equal frozenrun1. Shared run1/run2/receipts untouched.",
+    "verification_byte_identity": "PASS_BOTH",
+    "RGB_outside_declared_masks_unchanged": "PASS independently checked by renderer assertion and original exact hashes",
+    "font_sha256": "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab",
+    "font_license_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+    "legacy_original_creation_method": "UNKNOWN_NOT_INFERRED",
+    "new_text_creation_method": "PROVEN_DETERMINISTIC_LICENSED_FONT_OVERLAY",
+    "one_bounded_art_preserving_repair": true,
+    "new_art": false,
+    "paid_generation": false,
+    "new_network_by_B": 0
+  },
+  "corrupt_previous_verification_file": "Prepworker disclosed historical old front-run2 became truncated after original generator identity assertion. That old file is excluded from review and cannot support current byte identity; B separately reproduced exact frozenrun1 privately. Preserve corrupted evidence and report actual correction.",
+  "delivery": "Both fully decode600x900; front60052bytes<80000,back64860bytes<180000; lettering readable at delivered size.",
+  "complete_source_review": {
+    "path": "/workspace/scratch/181ef0a25f05/new-acceptance-review-b-20261003/science-complete-source-review-b.json",
+    "sha256": "f593081a42d6ba7bc428c805f5c55ffd435059d3d6edf615dedf6346c5ce80a2",
+    "source_sha256": "adc3fb17f24801597561e992d858e124c8d9b4c6e3bf7593d713e7a71d252744",
+    "entire_author_preface_plus17chapters_equal": "PASS_REUSE_BYTE_UNCHANGED"
+  },
+  "prior_hold_superseded": {
+    "path": "/workspace/scratch/181ef0a25f05/new-acceptance-review-b-20261003/science-original-cover-policy-hold-b.json",
+    "sha256": "fd4487f4c09bb75649caaa9207d2974accc25082017e155427e63e1563b0548f",
+    "reason": "Actual new independent deterministic title-author overlay proof resolves exact prior missing evidence."
+  },
+  "full_new_proposal_bindings": "Pending new corrected frozen packet audit; this fresh visual/provenance PASS is not publication/component acceptance.",
+  "acceptance_created": false,
+  "production_observed": false,
+  "audio_authorized": false,
+  "canonical_mutations": false
+}

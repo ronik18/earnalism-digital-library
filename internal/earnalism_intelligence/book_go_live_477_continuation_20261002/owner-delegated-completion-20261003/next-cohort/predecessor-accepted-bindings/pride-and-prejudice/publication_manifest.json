@@ -1,0 +1,473 @@
+{
+  "schema_name": "earnalism-publication-manifest",
+  "schema_version": 1,
+  "slug": "pride-and-prejudice",
+  "title": "Pride and Prejudice",
+  "generated_at": "2026-10-03T05:34:11.386246+00:00",
+  "content": {
+    "source_hash": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+    "content_hash": "4b68459abff92d885d2d493ad052e8cdba6308ebf78f24508c6410cce683c276",
+    "provenance_hash": "49f4ef0c8b50de3e8bf1430456a677414420b40c7153b4b7b1b8d4bd7c6d34bb",
+    "sanitized": true,
+    "chapter_count": 61,
+    "chapter_index_sha256": "7c2fe3ce643cacee3832f00112661ff4456501aaa51815f84efae5b398b1d5d5",
+    "chapters": [
+      {
+        "id": "chapter-001",
+        "order": 1,
+        "title": "Chapter 1",
+        "word_count": 847,
+        "sha256": "c90e791fb319c39265c1449867e45481e27234bceea064b2a5928f8587924d90"
+      },
+      {
+        "id": "chapter-002",
+        "order": 2,
+        "title": "Chapter 2",
+        "word_count": 797,
+        "sha256": "3e8fa217df1dd528cb7817de66aa6e4a79b6255a7ab55c4f64e0d716d2d32537"
+      },
+      {
+        "id": "chapter-003",
+        "order": 3,
+        "title": "Chapter 3",
+        "word_count": 1698,
+        "sha256": "56c73ea57e7a41eaa7ac35ee8e8f062698401e28c35c32d33441d7f17e4bceed"
+      },
+      {
+        "id": "chapter-004",
+        "order": 4,
+        "title": "Chapter 4",
+        "word_count": 1060,
+        "sha256": "0c96918a6aea17c5f82b1b8fb97bb57809589649d037df2a702a818e88144d6b"
+      },
+      {
+        "id": "chapter-005",
+        "order": 5,
+        "title": "Chapter 5",
+        "word_count": 952,
+        "sha256": "74aab355575c8d553a584da5dab8fd9f97667062ee28460d894e21b2d3084334"
+      },
+      {
+        "id": "chapter-006",
+        "order": 6,
+        "title": "Chapter 6",
+        "word_count": 2340,
+        "sha256": "54864f64cc7453d5b2ba6f0b9d82196075d6e7466b934d28e46f421541bcfcdc"
+      },
+      {
+        "id": "chapter-007",
+        "order": 7,
+        "title": "Chapter 7",
+        "word_count": 1990,
+        "sha256": "2c7bc582e74d3ff40ef056071b6020e9d95799c3194da30396a0d923909767f7"
+      },
+      {
+        "id": "chapter-008",
+        "order": 8,
+        "title": "Chapter 8",
+        "word_count": 1925,
+        "sha256": "296735853b7cec8f5374d604cbe004fc78b144ff3a3742d8d86c15e676ae4486"
+      },
+      {
+        "id": "chapter-009",
+        "order": 9,
+        "title": "Chapter 9",
+        "word_count": 1727,
+        "sha256": "742e0565390fc955530234853a9ce93c2aee3d83d04803518622a7cb5b16ab9c"
+      },
+      {
+        "id": "chapter-010",
+        "order": 10,
+        "title": "Chapter 10",
+        "word_count": 2206,
+        "sha256": "59c9858fad5f21dc969118eded762a7d3e854c4ea088ef584fba94aee7c21920"
+      },
+      {
+        "id": "chapter-011",
+        "order": 11,
+        "title": "Chapter 11",
+        "word_count": 1595,
+        "sha256": "decf6d2816dda51934cbfb0428ba71e96730d930f9ba1c2c950488cf52116b51"
+      },
+      {
+        "id": "chapter-012",
+        "order": 12,
+        "title": "Chapter 12",
+        "word_count": 673,
+        "sha256": "aea009270fe8fb7ac2971bf97dcbeadac39e0df601c141f4dc7f84d6dd2a51a4"
+      },
+      {
+        "id": "chapter-013",
+        "order": 13,
+        "title": "Chapter 13",
+        "word_count": 1690,
+        "sha256": "e3bcc1db844549888b6fdac9fc2a8e4419b832412abae554072844aba6d21b80"
+      },
+      {
+        "id": "chapter-014",
+        "order": 14,
+        "title": "Chapter 14",
+        "word_count": 1115,
+        "sha256": "25c12f3de58ddcf58e2ad59e919e14bb12f27c5166413bbe01405bf4e3db970a"
+      },
+      {
+        "id": "chapter-015",
+        "order": 15,
+        "title": "Chapter 15",
+        "word_count": 1688,
+        "sha256": "ee94891bf9502958d5bf50c67482d498782a6f9df7b045f5fb5e35786a7d6c05"
+      },
+      {
+        "id": "chapter-016",
+        "order": 16,
+        "title": "Chapter 16",
+        "word_count": 3360,
+        "sha256": "3207f62d4bd0f4e99f1a1d3d74550ba840a03b4a091b020a196caed0df312761"
+      },
+      {
+        "id": "chapter-017",
+        "order": 17,
+        "title": "Chapter 17",
+        "word_count": 1274,
+        "sha256": "cf18ecc01535eff690e29a91aa1eb5143be2bd686651a93cbbc629ba81622dac"
+      },
+      {
+        "id": "chapter-018",
+        "order": 18,
+        "title": "Chapter 18",
+        "word_count": 5167,
+        "sha256": "6cc79667754f1c3b2bb3b4d266967293db1ef4b25c304c222ef2f575ed0d1f9d"
+      },
+      {
+        "id": "chapter-019",
+        "order": 19,
+        "title": "Chapter 19",
+        "word_count": 1909,
+        "sha256": "754951be54782955bea2b1ffa3c6b8561971b5c1977881df0fbde9f0b2ab9e0d"
+      },
+      {
+        "id": "chapter-020",
+        "order": 20,
+        "title": "Chapter 20",
+        "word_count": 1643,
+        "sha256": "45abb31ba619fb4d3afb1afe1c01c680c43caedee43dd3ece46aa693f37a3e83"
+      },
+      {
+        "id": "chapter-021",
+        "order": 21,
+        "title": "Chapter 21",
+        "word_count": 1998,
+        "sha256": "35670234bc566a7ba57f3072dc09e1348d1d3413dcc14ceed199fd63e3dde878"
+      },
+      {
+        "id": "chapter-022",
+        "order": 22,
+        "title": "Chapter 22",
+        "word_count": 1730,
+        "sha256": "e0990e2f164c442f022529bd207ec0ff0167850ac12d038e61b247fa73603768"
+      },
+      {
+        "id": "chapter-023",
+        "order": 23,
+        "title": "Chapter 23",
+        "word_count": 1609,
+        "sha256": "4cbb5421af0e4341d72b1312a53803e565ff3c6af23d6b86612e6746c56e65b3"
+      },
+      {
+        "id": "chapter-024",
+        "order": 24,
+        "title": "Chapter 24",
+        "word_count": 1926,
+        "sha256": "d667115da6cf4495d3d55ce3dca42d34d0d9fbf6ca76d6a7ac933127a2d85618"
+      },
+      {
+        "id": "chapter-025",
+        "order": 25,
+        "title": "Chapter 25",
+        "word_count": 1514,
+        "sha256": "f09e08a64f8cea5ecf53066031bc99a9bed3dc4da1de2b4fa5459890f68df336"
+      },
+      {
+        "id": "chapter-026",
+        "order": 26,
+        "title": "Chapter 26",
+        "word_count": 2328,
+        "sha256": "05eb1f7fbf14b96d99a5f283501daf5fa86c182aceb4bc7f504ea93f9443f412"
+      },
+      {
+        "id": "chapter-027",
+        "order": 27,
+        "title": "Chapter 27",
+        "word_count": 1254,
+        "sha256": "250b70243389acf39dde2235fc65efeb6da496390cddfef6435891e1925d6bf9"
+      },
+      {
+        "id": "chapter-028",
+        "order": 28,
+        "title": "Chapter 28",
+        "word_count": 1448,
+        "sha256": "2c94f20475b7ce89d422141a5011cdf480f9098f5b5c8da8cc2de04379fef25f"
+      },
+      {
+        "id": "chapter-029",
+        "order": 29,
+        "title": "Chapter 29",
+        "word_count": 2380,
+        "sha256": "d5b758408b6404ac2edd239bdfc81fc371e3faad37b390a7c64798da5f730e52"
+      },
+      {
+        "id": "chapter-030",
+        "order": 30,
+        "title": "Chapter 30",
+        "word_count": 1229,
+        "sha256": "2f93038e2236a4bad86a25d51b651d20ac7fc86456ed072d16810df2d5426959"
+      },
+      {
+        "id": "chapter-031",
+        "order": 31,
+        "title": "Chapter 31",
+        "word_count": 1552,
+        "sha256": "7fc4736c4e2b3d96e78a9839197f9418b07a57c920ebd099730d010e93722c7f"
+      },
+      {
+        "id": "chapter-032",
+        "order": 32,
+        "title": "Chapter 32",
+        "word_count": 1492,
+        "sha256": "b6102c139cc1de15e330a52c0ea713efff280dc13968e46d883aff9df6b6af5f"
+      },
+      {
+        "id": "chapter-033",
+        "order": 33,
+        "title": "Chapter 33",
+        "word_count": 1854,
+        "sha256": "4bb3f2f3b7d88ecd28acfd42b3493159b06bc58be169c8bbd4835a6272aeaa22"
+      },
+      {
+        "id": "chapter-034",
+        "order": 34,
+        "title": "Chapter 34",
+        "word_count": 2097,
+        "sha256": "69feb4f4fc1861ca25faf564935fcf23eacb5daa6b3b7c9db549fbd093e3abb8"
+      },
+      {
+        "id": "chapter-035",
+        "order": 35,
+        "title": "Chapter 35",
+        "word_count": 2993,
+        "sha256": "7f6eea64094fb77f9f8a421607f852847719c1fe2b866287f07097446fd23471"
+      },
+      {
+        "id": "chapter-036",
+        "order": 36,
+        "title": "Chapter 36",
+        "word_count": 1997,
+        "sha256": "abf843f85ca7be2f9504409047b449aa9200f1b0320d6e9f5a7305bb27ffd4e0"
+      },
+      {
+        "id": "chapter-037",
+        "order": 37,
+        "title": "Chapter 37",
+        "word_count": 1368,
+        "sha256": "d7f0685482384268aed5da02f028aef3a3f28d885c44f2bfd847968c8d5a17a5"
+      },
+      {
+        "id": "chapter-038",
+        "order": 38,
+        "title": "Chapter 38",
+        "word_count": 1037,
+        "sha256": "b9b37975a11275596107f75943703f1a107805c12992145f6ae92f4fd373a82b"
+      },
+      {
+        "id": "chapter-039",
+        "order": 39,
+        "title": "Chapter 39",
+        "word_count": 1628,
+        "sha256": "c3995366501526356a40364fd8e8c541411dadbd4a9a4bd299704700b4032aa2"
+      },
+      {
+        "id": "chapter-040",
+        "order": 40,
+        "title": "Chapter 40",
+        "word_count": 1676,
+        "sha256": "16f0ee11c2427f5b9699f1ee83e5211d8edc0d01fd5eda2db0fa148a23846997"
+      },
+      {
+        "id": "chapter-041",
+        "order": 41,
+        "title": "Chapter 41",
+        "word_count": 2263,
+        "sha256": "cc3a310d5219bc8ffc9f6563036a5bd63710b1d655378dc0fa8fc87dd30e0eb1"
+      },
+      {
+        "id": "chapter-042",
+        "order": 42,
+        "title": "Chapter 42",
+        "word_count": 1823,
+        "sha256": "26e0b2a40cf5156aef615629a83c26a426d0fa53822c1a56c6480dfc93776a9e"
+      },
+      {
+        "id": "chapter-043",
+        "order": 43,
+        "title": "Chapter 43",
+        "word_count": 4844,
+        "sha256": "38439eb4b05523c35e02312841a2ba88ca2fa4c8048eec0227f46ee66524738d"
+      },
+      {
+        "id": "chapter-044",
+        "order": 44,
+        "title": "Chapter 44",
+        "word_count": 2332,
+        "sha256": "b643ea4de6acca3cd5b81982ef4222cf822ab3c6ccc539bd3d3a4ad995b75c6d"
+      },
+      {
+        "id": "chapter-045",
+        "order": 45,
+        "title": "Chapter 45",
+        "word_count": 1728,
+        "sha256": "6ea2409440ce09076146573efa2602708a49b67debde22324fd87adbcbb5acb2"
+      },
+      {
+        "id": "chapter-046",
+        "order": 46,
+        "title": "Chapter 46",
+        "word_count": 3009,
+        "sha256": "6cad7c79b864c758c6bcb2748c66a43e0f50a16f88feacd0a67a267682f68000"
+      },
+      {
+        "id": "chapter-047",
+        "order": 47,
+        "title": "Chapter 47",
+        "word_count": 4077,
+        "sha256": "b9f29cd5bf154a6e2ff3f77142195cfd03502b43ac71b519e32953a85f30196a"
+      },
+      {
+        "id": "chapter-048",
+        "order": 48,
+        "title": "Chapter 48",
+        "word_count": 2252,
+        "sha256": "9959f90b908a738452745ac1b8e2c86e8e0753deeb1d93348e1e41916d52e6f9"
+      },
+      {
+        "id": "chapter-049",
+        "order": 49,
+        "title": "Chapter 49",
+        "word_count": 2240,
+        "sha256": "11ed7a5274deff8529e6ff181a731ca39a299a76d6a2cc7496e3aa42042f31d5"
+      },
+      {
+        "id": "chapter-050",
+        "order": 50,
+        "title": "Chapter 50",
+        "word_count": 2198,
+        "sha256": "3d86d2e25441ad01964c125fa08e1733329364a0f3659c193f7e7bf6fbc861ae"
+      },
+      {
+        "id": "chapter-051",
+        "order": 51,
+        "title": "Chapter 51",
+        "word_count": 2068,
+        "sha256": "ad6009dbae006c57b01f1798c9de5991896a8cab213ebedec1b9fb1ed4aee253"
+      },
+      {
+        "id": "chapter-052",
+        "order": 52,
+        "title": "Chapter 52",
+        "word_count": 3027,
+        "sha256": "13111c10009e009ee4c2fc9915b9bf93ab866881927520af5af15a164114a899"
+      },
+      {
+        "id": "chapter-053",
+        "order": 53,
+        "title": "Chapter 53",
+        "word_count": 2933,
+        "sha256": "866001ec84f8b17622ae17cb7c923382f3b958750272cada4a75d103386623b1"
+      },
+      {
+        "id": "chapter-054",
+        "order": 54,
+        "title": "Chapter 54",
+        "word_count": 1592,
+        "sha256": "344f998919742fa611938f037e60d5c61d5864b98d78a1bd847575b875dd5fca"
+      },
+      {
+        "id": "chapter-055",
+        "order": 55,
+        "title": "Chapter 55",
+        "word_count": 2324,
+        "sha256": "ace816e22a78177fe2db984f38622cccbedcd553d2182c2bcfeb8456bba7b2c1"
+      },
+      {
+        "id": "chapter-056",
+        "order": 56,
+        "title": "Chapter 56",
+        "word_count": 2722,
+        "sha256": "20eb300ac754ac774893120244970dd45cc780bdd3eddf139b0298ffd13d2868"
+      },
+      {
+        "id": "chapter-057",
+        "order": 57,
+        "title": "Chapter 57",
+        "word_count": 1650,
+        "sha256": "f93b2c8bbce6ffa4a9b3e9df75046ba572b9e62e666e88d5e4adf0e7486c480f"
+      },
+      {
+        "id": "chapter-058",
+        "order": 58,
+        "title": "Chapter 58",
+        "word_count": 2431,
+        "sha256": "24b58fab59192dae63087504f72dd3990dbea89056dfa96c4b096695429ee3cd"
+      },
+      {
+        "id": "chapter-059",
+        "order": 59,
+        "title": "Chapter 59",
+        "word_count": 2468,
+        "sha256": "bd97b78791bb73bf6f8ac8283d9dad2303e8ccda04a1d3eba5a80bbc235d886a"
+      },
+      {
+        "id": "chapter-060",
+        "order": 60,
+        "title": "Chapter 60",
+        "word_count": 1586,
+        "sha256": "a6d8c9860dee6ac60aba823dffcb5e755ff733ded62d9a0b01c7f9cfdf9bdd4a"
+      },
+      {
+        "id": "chapter-061",
+        "order": 61,
+        "title": "Chapter 61",
+        "word_count": 1248,
+        "sha256": "3484102d8413c5b933eb297bedd058fc4bc35270884701363eb458ec0dfb6fc0"
+      }
+    ]
+  },
+  "rights": {
+    "status": "APPROVED",
+    "tier": "A",
+    "publication_region": "india",
+    "evidence_sha256": "9e4efacc3dbd251ea18aacd5805d781c1f64a450bea0225fae4ba6a394a97e99"
+  },
+  "reader_release": {
+    "status": "APPROVED",
+    "exposed": true,
+    "qa_status": "QA_PASSED",
+    "cover_url": "https://theearnalism.com/assets/books/pride-and-prejudice/pride-and-prejudice-front-480db270.webp",
+    "blockers": []
+  },
+  "audio_release": {
+    "status": "NOT_REQUESTED",
+    "exposed": false,
+    "required_for_reader_release": false
+  },
+  "commerce_release": {
+    "status": "NOT_REQUESTED",
+    "required_for_reader_release": false
+  },
+  "artifacts": {
+    "public_book": "6891a261a5d574afa8025cfd11210f13d65aaa977f51e542863024974ada666e",
+    "reader_manifest": "81b6c23e716ea4d26fae26cc8e9e3e7e37637fd0c9fb1619dccb7a94d0ab7676",
+    "source_evidence": "9e4efacc3dbd251ea18aacd5805d781c1f64a450bea0225fae4ba6a394a97e99",
+    "approval_evidence": "d3535a043d75766c4fbbce244552ffd7950851fc66851e4066a7825d3cb0851a"
+  },
+  "manifest_sha256": "c8131d6cc8420c3e796c463637d5d10a0da344381078ba96192b221ef2eb76c0"
+}

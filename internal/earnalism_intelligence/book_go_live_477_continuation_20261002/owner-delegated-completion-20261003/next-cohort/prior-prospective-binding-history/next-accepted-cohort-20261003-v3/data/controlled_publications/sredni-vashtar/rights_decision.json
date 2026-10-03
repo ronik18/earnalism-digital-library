@@ -1,0 +1,53 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-sredni-vashtar-exact-reader-cover-prospective-accepted",
+  "edition_id": "sredni-vashtar",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "5dbdae63f6b0a3006cf68194db20e57efc11e66b71fba013cc5c3de65cbfb46c",
+    "reader_manifest": "2c534a7cd97535a665942c1684181bf367394016bd12f83673405c123f2c73ad",
+    "source_evidence": "ee935954b41c2a5415222b6529137ec05cfbfa90d9beb9233e3fb62f1e891a9f",
+    "approval_evidence": "f137fa7cadc0c899f3467a20579f40627a885423260fcede793c983a31a77e03",
+    "checksum_manifest": "c412c71d4dc02c8d94af015032a76f9d92b421b0599fbe2dbd8bbe0da691b516",
+    "publication_manifest": "b3717e2d866dce15bb693b353d2a6647a600c8eefd4d5d52641018aa7ea976e1",
+    "cover_provenance": "45ed9ccb3d7ef17612e8b6bfe166701846fd2a94daf85db7de047e29a0db4ef3",
+    "cover_delivery_derivation": "f3deee99367ed73958ca7dfd1ea7969a230f23e018cd61c03b01672556acc1db",
+    "cover_front_original_asset": "28acd2dadefe6b665f06c992fa86543814245a825a1a8c6e225263fc240829ac",
+    "cover_front_delivery_asset": "d946f65fa5d2c843b7d572a3374435c5fe52a3308cf620395e49fb36e0b6cb55",
+    "cover_back_original_asset": "e74da10d4d84a8752ee9ed630ebc560635a0f0247ea65e7dd36e27eff782b01c",
+    "cover_back_delivery_asset": "c532935242fc0da1ab7a4526752dc1b1392a2f0cf17e3616d25cff644ee82351",
+    "publication_authorization": "796e9f73e70fb58a6080480119c5996653e850ecef898b1209e7a457a3cf9df0",
+    "acceptance_review_a": "cbb2b42bd8aa85419549eaf838e9884069889482ae7bd8fd5d5280e34ab55f59",
+    "acceptance_review_b": "91c752175d2b576a1b43269645b72511a23eadd5d6200df0c65a1ee1d3794c0a"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T04:59:53.954767+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Existing exact accepted India text source/edition clearance is preserved in the archived predecessor and unchanged source/chapter records. Actual prospective acceptance additionally covers these exact owner-designed preserved-artwork derivatives, proven licensed deterministic typography and reviewed deliveries after two independent passing source/provenance/pixel/package reviews under the owner delegation. The predecessor non-cover deferral is prospectively superseded for these exact components only. Audio remains excluded; no rights, human signature, other edition or production observation inferred. Final release remains behind serialized protected normal gates.",
+  "evidence_sha256": [
+    "20bb6b3ae3075433c2ed8396f101642442b34b51d51ce5c195074b222435712a",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "ca9aeb0b91357b89d8b73a0334c44500bd1ba1a768506ae1ecf87ea9129f0153",
+    "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a",
+    "f363729ab6b36e07f8b99f33ffd9405b5596a5d74f01c350ad2ddfaa84c0fc06",
+    "f788789885abe29c15338d7fa74f5024c7f62f8def0c7c8aa786b49e9730385b",
+    "f3deee99367ed73958ca7dfd1ea7969a230f23e018cd61c03b01672556acc1db",
+    "796e9f73e70fb58a6080480119c5996653e850ecef898b1209e7a457a3cf9df0",
+    "45ed9ccb3d7ef17612e8b6bfe166701846fd2a94daf85db7de047e29a0db4ef3",
+    "cbb2b42bd8aa85419549eaf838e9884069889482ae7bd8fd5d5280e34ab55f59",
+    "91c752175d2b576a1b43269645b72511a23eadd5d6200df0c65a1ee1d3794c0a"
+  ],
+  "accepted_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+  "conditions_satisfied": true
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": "earnalism.edition-text-publication-authorization.v1",
+  "slug": "the-open-window",
+  "edition": "Project Gutenberg #269; The Open Window selected complete Saki story/cycle from Beasts and super-beasts; verified lifetime collection edition 1914; no translation/editorial/art imported",
+  "territories": [
+    "IN"
+  ],
+  "scope": "TEXT_READER_CATALOG_METADATA_AND_EXACT_COVER_DISPLAY",
+  "source_sha256": "058d0cda5a3c8449cbce06e0698048251881be4c6fc8d06fd0bc3a1bb8ec8587",
+  "content_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "chapter_sha256": {
+    "chapter-001": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be"
+  },
+  "cover_provenance_sha256": "8ae040e44439430f9d818429423a1be89208e493b79c4e4ac1e581ad1cd3fba2",
+  "cover_status": "EXACT_REVIEWED_OWNER_COMPONENTS_ACCEPTED_PRODUCTION_UNOBSERVED",
+  "authorized_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+  "verified_at": "2026-10-03T04:59:53.954767+00:00",
+  "publication_authorized": true,
+  "audio_authorized": false,
+  "production_activation_authorized_by_this_file": false,
+  "release_condition": "Actual prospective component/publication acceptance after two independent passing exact preparations. Final accepted bindings, serialized registry/allowlist, protected CI/normal merge/deployment/canary/truthful readback remain required.",
+  "not_authorized": [
+    "audio_stream",
+    "audio_download",
+    "other editions",
+    "production activation bypass"
+  ],
+  "rights_decision_id": "india-20261003-the-open-window-exact-reader-cover-prospective-accepted",
+  "existing_text_scope_preserved": "TEXT_READER_ONLY_NON_COVER_COMPONENTS"
+}

@@ -1,0 +1,176 @@
+{
+  "schema": "earnalism.approved-reader-bootstrap.v1",
+  "owner_authorization": "Please ensure to spend time and credit judiciously. I want all the books present in B2 storage or earnalism-digital-library repo which are close to become legally compliant and reader ready with some small work/fix/enhancements, please get all of them ready and live in production fast.",
+  "source_reviewed_head": "8dc8b26471f40c07cb4d4e921f831ec06964cf7f",
+  "purpose": "Initialize only absent canonical Reader versions for exact already accepted India text editions. Preserve all active pointers, revocations, archives and operator-prepared candidates.",
+  "bootstrap_only": true,
+  "territory": "IN",
+  "target_characters": 3200,
+  "titles": [
+    {
+      "slug": "a-ghost-story",
+      "decision_id": "india-20260925-a-ghost-story-commercial-reader-release",
+      "record_sha256": "26c538b1a5ae4f6807a4ddfafa7b54e4f44ad4a927777ffa6662dfcd5ccd821c"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "decision_id": "india-20260925-the-tell-tale-heart-commercial-reader-release",
+      "record_sha256": "370cd4896655d25629bd791a0046844992166169aadc6e4c8061d22106b199cb"
+    },
+    {
+      "slug": "radharani",
+      "decision_id": "india-20260925-radharani-commercial-reader-release",
+      "record_sha256": "9be847de52927f16dba1a5d40d0c85be07d69bc47c974cd9791daeca532f2a4d"
+    },
+    {
+      "slug": "a-white-heron",
+      "decision_id": "india-20260925-a-white-heron-commercial-reader-release",
+      "record_sha256": "756bb230f18b4c7226f88a376d1c8a8e53c240ec1864e8f290be70afcf66c388"
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "decision_id": "india-20260925-the-gift-of-the-magi-commercial-reader-release",
+      "record_sha256": "6d4b4acbe88350b9c81ea55002306bc72cf5178daaacfd87269833557c012773"
+    },
+    {
+      "slug": "the-canterville-ghost",
+      "decision_id": "india-20260925-the-canterville-ghost-commercial-reader-release",
+      "record_sha256": "704fa0e1a6373356c3f6fa3210050eadd54b37fb584006782e1d16fa42661c15"
+    },
+    {
+      "slug": "the-adventures-of-sherlock-holmes",
+      "decision_id": "india-20260929-the-adventures-of-sherlock-holmes-pg1661-text-reader",
+      "record_sha256": "6698711d408c59160d65605bb156c38eaf183affbdc3695b92ced8f0627e09c6"
+    },
+    {
+      "slug": "agentic-ai-with-python",
+      "decision_id": "india-20261001-agentic-ai-with-python-owner-text-reader",
+      "record_sha256": "5660b0da970e88056cf9507f15c016dad9a4819aae1ab177054eb47c861d7586"
+    },
+    {
+      "slug": "a-horseman-in-the-sky",
+      "decision_id": "india-20261001-a-horseman-in-the-sky-owner-text-reader",
+      "record_sha256": "9fcd24a72a93074f1488effff0735816665278f738e7ed8c5ea407da83ee82fc"
+    },
+    {
+      "slug": "a-mystery-of-heroism",
+      "decision_id": "india-20261001-a-mystery-of-heroism-owner-text-reader",
+      "record_sha256": "b2e87475d5d43916203113c034b95385aa5cf56bf2b711dab828ac5e9b247962"
+    },
+    {
+      "slug": "a-scandal-in-bohemia",
+      "decision_id": "india-20261001-a-scandal-in-bohemia-owner-text-reader",
+      "record_sha256": "a8d4fc969212f3393fc967dd70dbfe9a20a475a63ce8722359679c17867a4b67"
+    },
+    {
+      "slug": "jekyll-and-hyde",
+      "decision_id": "india-20261001-jekyll-and-hyde-owner-text-reader",
+      "record_sha256": "615775871637dd2926613ee9f725a5369d3fad48d0559737bc4ca2277c22a7e7"
+    },
+    {
+      "slug": "love-of-life",
+      "decision_id": "india-20261001-love-of-life-owner-text-reader",
+      "record_sha256": "5ff211d6964ad58f041a816695edad2c6837edc8e6b380d89d7edc231882babb"
+    },
+    {
+      "slug": "the-bishop",
+      "decision_id": "india-20261001-the-bishop-owner-text-reader",
+      "record_sha256": "fd9407913bd8cf8b349134172bd3c15eb53953ede834c63810bf5e990d5dd04b"
+    },
+    {
+      "slug": "the-fall-of-the-house-of-usher",
+      "decision_id": "india-20261001-the-fall-of-the-house-of-usher-owner-text-reader",
+      "record_sha256": "acf957244f4f64b69f366a9dea5d1cd33ff34b251cff623ffd67485d063df168"
+    },
+    {
+      "slug": "the-lady-with-the-dog",
+      "decision_id": "india-20261001-the-lady-with-the-dog-owner-text-reader",
+      "record_sha256": "9035df1f0e2b329d3b285e2a88f63475c14513918a2a5676f118caa4333fab39"
+    },
+    {
+      "slug": "the-man-who-would-be-king",
+      "decision_id": "india-20261001-the-man-who-would-be-king-owner-text-reader",
+      "record_sha256": "cef379e655853f99a9fecd1c8bc9714994ee7c3a759a0e10814112fd228709e1"
+    },
+    {
+      "slug": "the-open-boat",
+      "decision_id": "india-20261001-the-open-boat-owner-text-reader",
+      "record_sha256": "982c1dd5729e56e4a1ee1924e35a8d242d446d2c21b4b24e895244641805236d"
+    },
+    {
+      "slug": "the-pit-and-the-pendulum",
+      "decision_id": "india-20261001-the-pit-and-the-pendulum-owner-text-reader",
+      "record_sha256": "41acd0e415a3dcfa777f82f90eb1dd82308b31284dca3bd05a562e251df950a8"
+    },
+    {
+      "slug": "the-stolen-white-elephant",
+      "decision_id": "india-20261001-the-stolen-white-elephant-owner-text-reader",
+      "record_sha256": "43863c2c2eef398891567a83d5be54f21e6ca62107a35d04e1ef564d9a13e74a"
+    },
+    {
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "decision_id": "india-20261001-an-occurrence-at-owl-creek-bridge-owner-text-reader",
+      "record_sha256": "f26f41c92b72e611579aee274c43ef1f819cd751c3a33f6e3ae76a50584f1eff"
+    },
+    {
+      "slug": "the-enchanted-april",
+      "decision_id": "india-20261001-the-enchanted-april-owner-text-reader",
+      "record_sha256": "2645e5780f76a50d9ca2c44b2291ee43b30ad6fc3cbbd49016eeeead939a96be"
+    },
+    {
+      "slug": "the-happy-prince",
+      "decision_id": "india-20261001-the-happy-prince-owner-text-reader",
+      "record_sha256": "ff4782f0f595d7de909826644520c86820efde69930651461b0920881e8c5a45"
+    },
+    {
+      "slug": "picture-of-dorian-gray",
+      "decision_id": "india-20261001-picture-of-dorian-gray-owner-text-reader",
+      "record_sha256": "2e8196a937af24c52f66ade1e0352b734d639124dc783c48aa3c82a102c799ea"
+    },
+    {
+      "slug": "dracula",
+      "decision_id": "india-20261002-dracula-reader-cover-display-reviewed",
+      "record_sha256": "7978495dce52efc499d82bce531291299cd9a34625a0ffb5bd578afa60ea618f"
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "decision_id": "india-20261002-book-edfcf810c5-reader-cover-display-reviewed",
+      "record_sha256": "6de4a0e68e50aa11e1ae57850cac61699bbe2e1b810502e8f52ba280d51a8a0b"
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "decision_id": "india-20261002-muchiram-gurer-jibanchorit-reader-cover-display-reviewed",
+      "record_sha256": "4bf969237f4b5506cf944d7b8f30202f1208acd3cc30d08d4e38cab24ae6e4e6"
+    },
+    {
+      "slug": "bn-059",
+      "decision_id": "india-20261002-bn-059-reader-cover-display-reviewed",
+      "record_sha256": "df21f16960c872106574fc3e63f905a6eec0e280cda11dcfd23bb48cb9cb6c5b"
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "decision_id": "india-20261002-the-call-of-the-wild-reader-cover-display-reviewed",
+      "record_sha256": "a278a6fe107423bf2f96c6c61e04f2dc08f16f646a840408f5622fcde0035171"
+    },
+    {
+      "slug": "the-student",
+      "decision_id": "india-20261003-the-student-reader-cover-display-reviewed",
+      "record_sha256": "aa5f14c6d0ea1aa49f83c81127bbc6bf8f900314827dc5e6151669c86bfa2f24"
+    },
+    {
+      "slug": "the-art-of-money-getting",
+      "decision_id": "india-20261003-the-art-of-money-getting-reader-cover-display-reviewed",
+      "record_sha256": "09a110bbb1ba6983743cd2e7566726e753c85b2cdd56715de3a6ca83dbf13dc7"
+    },
+    {
+      "slug": "bn-035",
+      "decision_id": "india-20261003-bn-035-1922-text-reader-exact-cover",
+      "record_sha256": "6d197c694a86768a3ffdc74d8f65e6833375519f6b79cdd296bc307119ae17c7"
+    },
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "decision_id": "india-20261003-alices-adventures-in-wonderland-reader-cover-display-reviewed",
+      "record_sha256": "cc0a571b73f1ae4b4e19cfeb62c1b88b152fb2145a8f6c943d51156387fad5ae"
+    }
+  ]
+}

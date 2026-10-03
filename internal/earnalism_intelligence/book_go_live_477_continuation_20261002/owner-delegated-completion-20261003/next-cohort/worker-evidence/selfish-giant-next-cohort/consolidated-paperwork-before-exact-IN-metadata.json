@@ -1,0 +1,155 @@
+{
+  "slug": "the-selfish-giant",
+  "scope": "FINAL_CONSOLIDATED_UNACCEPTED_TEXT_ONLY_PAPERWORK_CORRECTION",
+  "changed_fields": {
+    "public_book": {
+      "cover_dimensions": {
+        "before": {
+          "front": [
+            1600,
+            2400
+          ],
+          "back": [
+            1600,
+            2400
+          ]
+        },
+        "after": {
+          "front": [
+            800,
+            1200
+          ],
+          "back": [
+            800,
+            1200
+          ]
+        }
+      }
+    },
+    "approval_evidence": {
+      "removed_fields": [
+        "accessibility_residual_risk",
+        "asr_manuscript_score",
+        "audio_qa_status",
+        "audio_sha256",
+        "audio_size_bytes",
+        "auto_estimated_sync",
+        "browser_gate_status",
+        "browser_playback_advanced",
+        "candidate_fingerprint",
+        "duration_seconds",
+        "endpoint_accept_ranges",
+        "endpoint_content_type",
+        "endpoint_http_status",
+        "endpoint_url",
+        "first_span_score",
+        "historical_admin_import_claim",
+        "historical_text_approval_preserved",
+        "last_span_score",
+        "listening_qa_confidence",
+        "listening_qa_fatal_flags",
+        "listening_qa_minimum_score",
+        "listening_qa_overall_score",
+        "listening_qa_sample_count",
+        "listening_qa_sample_set_sha256",
+        "model",
+        "no_missing_duplicated_reordered_content",
+        "private_evidence_sha256",
+        "provenance_hash",
+        "provider",
+        "reconciled_at",
+        "release_blockers",
+        "source_coverage",
+        "source_sha256",
+        "storage_backend",
+        "sync_tier",
+        "technical_audio_qa",
+        "upload_status",
+        "version",
+        "voice"
+      ],
+      "changed_fields": {
+        "approval_scope": {
+          "before": "PROPOSED_OWNER_DELEGATED_EXACT_COMPONENT_BINDING_PENDING_REVIEWS",
+          "after": "PROPOSED_OWNER_DELEGATED_EXACT_IN_TEXT_AND_COVER_BINDING_PENDING_TWO_REVIEWS"
+        },
+        "binding_review_status": {
+          "before": null,
+          "after": "PENDING_TWO_FRESH_EXACT_PACKAGE_REVIEWS"
+        },
+        "qa_scope": {
+          "before": null,
+          "after": "Existing independently evidenced noncover text identity/complete work only; no audio or production observation."
+        }
+      }
+    }
+  },
+  "removed_current_components_archived": [
+    {
+      "file": "production_audio_evidence.json",
+      "sha256": "5e23b03ab04c4d318d78fbd6bb8becafe284407fb6ecd7c61998d6a0c180cc42",
+      "archive_path": "/workspace/scratch/181ef0a25f05/selfish-giant-next-cohort/archive-before-consolidated-text-only-paperwork/production_audio_evidence.json"
+    }
+  ],
+  "changed_files": {
+    "approval_evidence.json": {
+      "before": "c325df28d2a57c94b9124e95f241f9992d5ac821452c0dd592b35f03f6ac7e3e",
+      "after": "51256c44750faff02579f480159bfb4d30d9dfb4061e5906a82e6135b64cd54e"
+    },
+    "checksum_manifest.json": {
+      "before": "5b8d45fbdcf259d6f70d3ebcaa42ed0ad792f2b7a661ee7fb8618b43606b18cc",
+      "after": "f945a9df3f842effb801f8661ddd9a0b4e6c4c3de37cfce5cb97c002f2b44df2"
+    },
+    "production_audio_evidence.json": {
+      "before": "5e23b03ab04c4d318d78fbd6bb8becafe284407fb6ecd7c61998d6a0c180cc42",
+      "after": null
+    },
+    "public_book.json": {
+      "before": "ee2954132cfc8a9f8f1926eb6a36159011f0d9a6b60a41c5878b9de51c8c4330",
+      "after": "489c476014ecb49ff12e1b3cec24bd1c0c9b8ea312f2bdb4bf5f717d8e0481bf"
+    },
+    "publication_manifest.json": {
+      "before": "096005c4595e2f29226a7bc5632ea3421a2f89260a2172b8a3a0a5ec593672b8",
+      "after": "aadc5957bb616737de46f002a2a41f10837b490a48d17f3d19c98a744d5c84fd"
+    },
+    "rights_decision.json": {
+      "before": "7f904d475cc3bdad5644b8dd9a2cc92d1432021dfe15ed80a3143ade15066cd6",
+      "after": "56eb190c25918766c6145974dff5a8e21c2ef392d0df067e5ccba01415a3a486"
+    }
+  },
+  "no_active_audio_positive_observations_or_urls_in_effective_public_reader_approval_manifest": true,
+  "source_chapter_license_sync_original_repair_delivery_bytes_unchanged": true,
+  "cover_delivery_dimensions_derived_from_actual_bytes": {
+    "front": [
+      800,
+      1200
+    ],
+    "back": [
+      800,
+      1200
+    ]
+  },
+  "actual_acceptance_created": false,
+  "new_package_files_sha256": {
+    "highlight_sync.json": "5bb55dc95aade157eedc8cb2e4255015af7426b38dc43692a3ae8d317a3e30e0",
+    "source_evidence.json": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d",
+    "publication_manifest.json": "aadc5957bb616737de46f002a2a41f10837b490a48d17f3d19c98a744d5c84fd",
+    "reader_manifest.json": "d5ce7da734364efdd9a2bd6eace1ee2df66bcfa0dcf7ea4e99d49502b330fc9c",
+    "publication_authorization.json": "16514ed5af14d72f8eddfbd6d5896ad4f0cc28181b4f8e21b351a065dd49fa0c",
+    "approval_evidence.json": "51256c44750faff02579f480159bfb4d30d9dfb4061e5906a82e6135b64cd54e",
+    "public_book.json": "489c476014ecb49ff12e1b3cec24bd1c0c9b8ea312f2bdb4bf5f717d8e0481bf",
+    "rights_decision.json": "56eb190c25918766c6145974dff5a8e21c2ef392d0df067e5ccba01415a3a486",
+    "checksum_manifest.json": "f945a9df3f842effb801f8661ddd9a0b4e6c4c3de37cfce5cb97c002f2b44df2",
+    "cover_provenance.json": "becaa05505a87f54f017f6ef2d80a921196ed281993a22a72bd2b1c3f4dd536c",
+    "covers/back-delivery.webp": "14b007092896bd2d0e4396ba0ecb1e430650a7aa772f855a347a6269daa75e60",
+    "covers/front-delivery.webp": "777a773d9cebbf236f9bfb79d52d35ca7206c59fc38eb04d85a84abc480d98cd",
+    "covers/front-layout-repair.png": "e01b95dc8d321678df5c9fe5e395728187ea03984cc69c59ae34471603fb7dc4",
+    "covers/front-original.png": "f10e1353932821ab22a0d13b68a40394f06eb1c9a97b04e5e126897dfbb3fcc2",
+    "covers/back-original.png": "6903c7610ac6141b0f4d8d025e7e9fe9f347e2922996368ef7dd28fe8c18b511",
+    "covers/back-layout-repair.png": "6337be1964dfa48aedd7d35233cfdb84f422dd311545b265b9c259444f8795f0",
+    "chapters/chapter-001.json": "12c1db2943a0b57aea333ed1870472ea8332d457093d4255185385a7a157e3b1"
+  },
+  "package_inventory_canonical_sha256": "2482bca27e4240b5ddd03dc05dd72bd1552633ffe11ae67f9f82a858923b06bb",
+  "decision_raw_sha256": "56eb190c25918766c6145974dff5a8e21c2ef392d0df067e5ccba01415a3a486",
+  "decision_canonical_sha256": "6e3ac113dedc5eb8743ab0adc407bd2bb59ceed99c6d71361957c46c15f93784"
+}

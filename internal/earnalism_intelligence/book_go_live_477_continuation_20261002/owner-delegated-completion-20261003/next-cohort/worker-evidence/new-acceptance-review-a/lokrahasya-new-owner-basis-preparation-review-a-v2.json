@@ -1,0 +1,203 @@
+{
+  "slug": "lokrahasya",
+  "reviewer": "independent-reviewer-A",
+  "status": "HOLD_ONLY_EXACT_READER_SOURCE_ORDER_REPAIR",
+  "actual_new_owner_basis_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+  "old_procedural_hold_receipt_preserved_sha256": "7e2c87384e788ffb1b32b150d37df75c95cfa4b538f37c23969d61f1c0b7ada2",
+  "superseded_hold_scope": "Owner explicitly supersedes only original backauthor construction-lineage requirement for exact owner artwork. Original lettering method remainsUNKNOWN; no deterministic/humanapproval invention.",
+  "complete_leaf_body_join": [
+    {
+      "id": "chapter-001",
+      "matched_leaf": "লোকরহস্য (১৯৩৯)/বাবু",
+      "exact_body_sha256": "729a0ec8c88e8cb5de85698b032b40886a6ac47f0bb08b6b980682744377c1ef",
+      "excluded_headings": []
+    },
+    {
+      "id": "chapter-002",
+      "matched_leaf": "লোকরহস্য (১৯৩৯)/গর্দ্দভ",
+      "exact_body_sha256": "619ab8c5384adbfa816179f9d8a0776bb13d1f08c555a25215813235cd4e46f7",
+      "excluded_headings": []
+    },
+    {
+      "id": "chapter-003",
+      "matched_leaf": "লোকরহস্য (১৯৩৯)/বাঙ্গালা সাহিত্যের আদর",
+      "exact_body_sha256": "39dd197a1ccf93e36781c6ed5dc374b4f97514222fadf665e8f02e564189e4be",
+      "excluded_headings": []
+    },
+    {
+      "id": "chapter-004",
+      "matched_leaf": "লোকরহস্য (১৯৩৯)/সুবর্ণগোলক",
+      "exact_body_sha256": "07373c51e0df6d2e5222d038c99b56f696c50b11c6667b17a3cea1c6d940476c",
+      "excluded_headings": []
+    },
+    {
+      "id": "chapter-005",
+      "matched_leaf": "লোকরহস্য (১৯৩৯)/গ্রাম্য কথা",
+      "exact_body_sha256": "e908dc63447c4191d6edfee2787858a8fc052758e7226b00d40aed06770b1c90",
+      "excluded_headings": []
+    },
+    {
+      "id": "chapter-006",
+      "matched_leaf": "লোকরহস্য (১৯৩৯)/ব্যাঘ্রাচার্য্য বৃহল্লাঙ্গুল",
+      "exact_body_sha256": "3ad29d39908abc6655d06f7e3bc0fedec9a4702f7ae3de30fba496a29410f95f",
+      "excluded_headings": []
+    },
+    {
+      "id": "chapter-007",
+      "matched_leaf": "লোকরহস্য (১৯৩৯)/দাম্পত্য দণ্ডবিধির আইন",
+      "exact_body_sha256": "32c76d54e0cf04f36984a029b6e0a17dbfcc27db6dd69acf9a888be8e05db422",
+      "excluded_headings": []
+    },
+    {
+      "id": "chapter-008",
+      "matched_leaf": "লোকরহস্য (১৯৩৯)/ইংরাজস্তোত্র",
+      "exact_body_sha256": "5628f612b22513c49148b53b7dc52aa26b1e2c67f29bba0585af989cbe233e5d",
+      "excluded_headings": []
+    },
+    {
+      "id": "chapter-009",
+      "matched_leaf": "লোকরহস্য (১৯৩৯)/রামায়ণের সমালোচন",
+      "exact_body_sha256": "deb0cd9746bb517cc7a206302b7331bfdbe255474b76738920672db59755013e",
+      "excluded_headings": []
+    },
+    {
+      "id": "chapter-010",
+      "matched_leaf": "লোকরহস্য (১৯৩৯)/বর্ষ সমালোচন",
+      "exact_body_sha256": "d70f464f1994a2227b944d59df831eca9b2ee5c4161b66d624c26613ab487f3d",
+      "excluded_headings": []
+    },
+    {
+      "id": "chapter-011",
+      "matched_leaf": "লোকরহস্য (১৯৩৯)/বসন্ত এবং বিরহ",
+      "exact_body_sha256": "93be984a04423686dd6ed15f0721120048c3bef211b0c95a1bf33696f469a76c",
+      "excluded_headings": []
+    },
+    {
+      "id": "chapter-012",
+      "matched_leaf": "লোকরহস্য (১৯৩৯)/কোন “স্পেশিয়ালের” পত্র",
+      "exact_body_sha256": "c46a3bb7a8bcdb19f215410bbfce96e779d756dc9406a817fec932b824f478c9",
+      "excluded_headings": []
+    },
+    {
+      "id": "chapter-013",
+      "matched_leaf": "লোকরহস্য (১৯৩৯)/হনুমদ্বাবুসংবাদ",
+      "exact_body_sha256": "0c3c9292ecaf155a50c70d36adbe07fcd1073ba169bf54efd6ff63eae925edab",
+      "excluded_headings": []
+    },
+    {
+      "id": "chapter-014",
+      "matched_leaf": "লোকরহস্য (১৯৩৯)/NEW YEAR’S DAY",
+      "exact_body_sha256": "ae245e65f7679a7423fd11e437661cbfdf3d7ace87c5cab4d40c6e20a8d0ba28",
+      "excluded_headings": []
+    },
+    {
+      "id": "chapter-015",
+      "matched_leaf": "লোকরহস্য (১৯৩৯)/BRANSONISM",
+      "exact_body_sha256": "80bacae9079c0f1c73a888b665c28760ebc6d8e5b969d24f54b26400aa7afd3e",
+      "excluded_headings": []
+    },
+    {
+      "id": "chapter-016",
+      "matched_leaf": "লোকরহস্য (১৯৩৯)/পাঠভেদ",
+      "exact_body_sha256": "8a596d46b799d3896bc9b5b55b50fbdccd52baf575aafaa21f9f5ad2278344a8",
+      "excluded_headings": []
+    }
+  ],
+  "source_leaf_comparison_sha256": "31b4a09724bc5adc938662556bec2b17a2e1654ea14d1a35501a87648d9b6bb0",
+  "correct_narrative_order_proven": false,
+  "source_order_evidence_sha256": "8732ab1085ff2ccbcc12e570bb4dcd0b242b85a96290d7e15b83185acddbcf4f",
+  "fonts": [
+    {
+      "sha256": "001257778d27c2763978b2361c6999d7d1b736f943abc2bdeb4fa1a3e79b2d38",
+      "license": [
+        {
+          "name_id": 0,
+          "value": "Copyright 2025 The Noto Project Authors (https://github.com/notofonts/bengali)"
+        },
+        {
+          "name_id": 14,
+          "value": "https://openfontlicense.org"
+        }
+      ],
+      "required_glyphs_present": true
+    },
+    {
+      "sha256": "1a886eb72d67c7e5de47db26891b8cdbc5619f2442c656450f14eee6329f10c9",
+      "license": [
+        {
+          "name_id": 0,
+          "value": "Copyright 2025 The Noto Project Authors (https://github.com/notofonts/bengali)"
+        },
+        {
+          "name_id": 14,
+          "value": "https://openfontlicense.org"
+        }
+      ],
+      "required_glyphs_present": true
+    }
+  ],
+  "raqm_available": true,
+  "assets": [
+    {
+      "side": "front",
+      "original_sha256": "cac3711a7984c8eb066e048e1b7917c2d2931a5916ac0643e6dab555fefd1406",
+      "new_png_sha256": "c2b46b8bde19d262acf0afdb016851bebf40b40caf1b4ef7aadc5133d29dcff9",
+      "delivery_sha256": "ed95a2efcbc009bc6a4b7d44d7d5f88b9b555be43be933628fc08ebecf23d0be",
+      "outside_masks_RGB_exact": true,
+      "delivery_recipe_exact": true,
+      "delivery_budget_PASS": true,
+      "fresh_visual_reused": "Allfour exact PNG/WebP previously inspected in this same reviewer turn; readable typography/copy retained, no clipping conflict."
+    },
+    {
+      "side": "back",
+      "original_sha256": "64fddc39b201883c0fd3fd109724389f4efb51e4a031b32594eac2d406a604cc",
+      "new_png_sha256": "9b46fa258412838b64f48c5342424f9c3a60784995139cedb71f738514f36f72",
+      "delivery_sha256": "c62c63ed14ebf54dbf15542840ecc0066a8821ce3f20d54a10484f305ffe30ff",
+      "outside_masks_RGB_exact": true,
+      "delivery_recipe_exact": true,
+      "delivery_budget_PASS": true,
+      "fresh_visual_reused": "Allfour exact PNG/WebP previously inspected in this same reviewer turn; readable typography/copy retained, no clipping conflict."
+    }
+  ],
+  "checkchains_verified": true,
+  "audio_false": true,
+  "actual_acceptance": false,
+  "production_observed": false,
+  "canonical_mutations": false,
+  "package_inventory": {
+    "license_notice.json": "4f4a62c163fe662c298635e5e3397883fc609a0cab1635b614a25abd466d16c3",
+    "highlight_sync.json": "20a25ad5ac8fab0c2c3f1240e603d7cd95175c9127dc368bfeac5beed67a1d52",
+    "source_evidence.json": "e051f8dd0a10613c832152c2c5ca550de54b82e9f8c5b38cb89990de3f27939c",
+    "publication_manifest.json": "4dd628317aa0fa6cb8d0d1a0f4540d49d162323300e013a181334194f8f3ce70",
+    "reader_manifest.json": "04323875e85a1eeebcd2eebff3c9e6a7a2251d8f7caae0d4d77995ecf520f28c",
+    "publication_authorization.json": "54db53d9aded99d64ed2279ef8f5989dba92b13a04b862a104d2600e394e7076",
+    "approval_evidence.json": "42fdb047e00d9430b3ca02abe50503ed8fe88da3b99f158771e52cc85e3e7883",
+    "public_book.json": "20b1476e1ee33a2b88414a82d183fa0f190025fc48f147e1217ff51e892a5572",
+    "rights_decision.json": "b616f8ecad7444ade68ea58d04ed7bb2e525d59961ffcce9d2200ae5ab5bb0a6",
+    "checksum_manifest.json": "f8b6ccddd79c8dd5886bb6cd75fe2ba586c66c2585d59555a9160124b1c1b9e9",
+    "cover_provenance.json": "af96b45c07ae48dea21498f6005a524135d72628fef33d1e7ded37201096675d",
+    "covers/back-delivery.webp": "c62c63ed14ebf54dbf15542840ecc0066a8821ce3f20d54a10484f305ffe30ff",
+    "covers/front-delivery.webp": "ed95a2efcbc009bc6a4b7d44d7d5f88b9b555be43be933628fc08ebecf23d0be",
+    "covers/back-original.jpg": "64fddc39b201883c0fd3fd109724389f4efb51e4a031b32594eac2d406a604cc",
+    "covers/back-prepared.png": "9b46fa258412838b64f48c5342424f9c3a60784995139cedb71f738514f36f72",
+    "covers/front-prepared.png": "c2b46b8bde19d262acf0afdb016851bebf40b40caf1b4ef7aadc5133d29dcff9",
+    "covers/front-original.jpg": "cac3711a7984c8eb066e048e1b7917c2d2931a5916ac0643e6dab555fefd1406",
+    "chapters/chapter-013.json": "24ec5f30bb117298dd34fdbf74a2f5a26f2bc3eaf641ee64e8c750b32ea3556a",
+    "chapters/chapter-010.json": "24dff5389aa5b8433362c21e375c4e0a66174096abc77f60f2561e9070d894c6",
+    "chapters/chapter-014.json": "470fdad2eb7dfa3470ff97d819c456527d82ddc4780771e3213d7cb3bb3c702d",
+    "chapters/chapter-009.json": "d80a5529c97c13596f001b40e2ab3555725a4316cb9faac391233c27c7b6223b",
+    "chapters/chapter-016.json": "830243efdffe85719d05d8374c66cd0ee025ecfebde308688aaa83c62153b8b2",
+    "chapters/chapter-002.json": "29e6ee2adef60d4d5d5c9fac33bf4f4c4f69262e18262451a7c06e37d06b50d9",
+    "chapters/chapter-008.json": "ec15807560d638e5d992a7baaaca8e209e4a738f8928008df3d3ab038b1352be",
+    "chapters/chapter-011.json": "49fec98cf9c5b07a874ec3a76142bd91d5272ed758058287e8fdffce6c5ee986",
+    "chapters/chapter-004.json": "0f0c88f8dba49cffd17aa0c4c213d397500efb4edac982e1e92ad6a4c968be4a",
+    "chapters/chapter-015.json": "59d669d641d161b540fa90cf5ece9f25369e460e3e81816cb46971edcbba7520",
+    "chapters/chapter-006.json": "9f01d9376c96e5b57728a35881c086e1573750d47aa1aa2c6c53d54cfd19fb7a",
+    "chapters/chapter-005.json": "5819895a4947f60d85fca4a163425ae9d9708c703359188a5d49796d91b82cbc",
+    "chapters/chapter-012.json": "84ffdab3761b40189ccac05fc7e3bac163a1721cf557d16467cb28a8ca3aec3a",
+    "chapters/chapter-003.json": "57b54865d64a0960ef4affd4ef8c94e9153f32cf126379bfd5459e234025ff30",
+    "chapters/chapter-007.json": "f95ebd00c4fa1802e2159ded6b5acd42b46b3be8962b4caa1134819ac5a63755",
+    "chapters/chapter-001.json": "a1305b337b3ccdea3fe8e4397bcb3d158bc94e5f740fa213df7b3377f66033fc"
+  },
+  "next_action": "Root actual prospective accepted-stage metadata/bindings plus fresh reviews; for Lokrahasya/bn066 first source-page-backed Reader order overlay or exact terminal exclusion."
+}

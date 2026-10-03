@@ -1,0 +1,50 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-pride-and-prejudice-exact-reader-cover-prospective-accepted",
+  "edition_id": "pride-and-prejudice",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "6891a261a5d574afa8025cfd11210f13d65aaa977f51e542863024974ada666e",
+    "reader_manifest": "81b6c23e716ea4d26fae26cc8e9e3e7e37637fd0c9fb1619dccb7a94d0ab7676",
+    "source_evidence": "9e4efacc3dbd251ea18aacd5805d781c1f64a450bea0225fae4ba6a394a97e99",
+    "approval_evidence": "d3535a043d75766c4fbbce244552ffd7950851fc66851e4066a7825d3cb0851a",
+    "checksum_manifest": "6e80fbe365edf8b39815cc505faf5d1d529b359e226c7464e08fe9ed7219dac9",
+    "publication_manifest": "2bc30dc31ba85b40c0bfd0158ff7896fe61cf96cb10b62c8df732e6da326945d",
+    "cover_preparation": "ab76a242c7b245e7f16b8e807b0ac80447a669aa21c840bcfb188a4b22dea06f",
+    "publication_authorization": "285ec5d2973e98db67db04d555c781520d47f54658aa8dbea3da65021ab359e7",
+    "cover_provenance": "0c6a019c51890de13c632dc16ae54628ce14a9a7bac7dd14d6ccb3df9312dca6",
+    "owner_artwork_declaration": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "acceptance_review_a": "db1362ae9a048b971fbbb19850c7b6b45b62865c4c6dbc1d02d2c805c9a21cf1",
+    "acceptance_review_b": "7a4240e762350e02429e64fc14796d5ce7c4b34b808d2045cf788d5e726e66b2"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T05:34:11.386246+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Exact India text/edition rights are preserved from the archived predecessor and unchanged source/chapter/license records. Ronik Basak directly provided the owner-held copyright and publication provenance for the exact owner-created cover components; two independent passing source/art preparations bind the reviewed derivatives and deliveries. Prospective automated acceptance supersedes earlier procedural cover deferral for these components only. No human approval, other source/edition rights, unknown original construction method, audio grant or production observation inferred.",
+  "evidence_sha256": [
+    "ec35a5aed3936f495dc8cc0408fa54a6cf27c3c96003f74a85a58b594c5671b7",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "a8c4b8b3a116e154c2ac028f048d81b06f0068ddbee5008827bf50693bcd12d9",
+    "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+    "4b68459abff92d885d2d493ad052e8cdba6308ebf78f24508c6410cce683c276",
+    "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "285ec5d2973e98db67db04d555c781520d47f54658aa8dbea3da65021ab359e7",
+    "0c6a019c51890de13c632dc16ae54628ce14a9a7bac7dd14d6ccb3df9312dca6",
+    "db1362ae9a048b971fbbb19850c7b6b45b62865c4c6dbc1d02d2c805c9a21cf1",
+    "7a4240e762350e02429e64fc14796d5ce7c4b34b808d2045cf788d5e726e66b2",
+    "78e104ef3a355c89f945241da2b3b02906f40f62c53ec91d2b431b5d6602300a"
+  ],
+  "accepted_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+  "conditions_satisfied": true
+}

@@ -1,0 +1,103 @@
+{
+  "schema": "earnalism.cover-provenance.v1",
+  "slug": "the-principles-of-scientific-management",
+  "status": "PROPOSED_COMPONENT_EVIDENCE_NOT_ACCEPTED_TWO_REVIEWS_REQUIRED",
+  "recorded_at": "2026-10-03T05:10:03.145513+00:00",
+  "original_creator": "Repository/product owner; no other identity inferred",
+  "original_method": "UNKNOWN_NOT_INFERRED",
+  "owner_declaration": {
+    "statement": "Owner states all front and back covers are designed by the owner.",
+    "path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+    "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "scope": "COVER_DESIGN_ONLY"
+  },
+  "original_assets_preserved": {
+    "front": {
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950275/earnalism/covers/front/cover_279d4a41-b545-4371-80c9-4dc4e816f934.png",
+      "file": "recovered/front.png",
+      "sha256": "95e0d15b63239cbac65cb8911656608b0a5532063751c1f9f9c0b1ef8ba81c77",
+      "bytes": 3315747,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "method": "One successful GET per persisted original URL; no prior original-byte checksum or creation-method fact inferred."
+    },
+    "back": {
+      "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950283/earnalism/covers/back/back_cover_279d4a41-b545-4371-80c9-4dc4e816f934.png",
+      "file": "recovered/back.png",
+      "sha256": "e24a4592a4f0616b3b2fce31a6f960cded1f9a97cc852340ed8b1e648e454427",
+      "bytes": 2862540,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "method": "One successful GET per persisted original URL; no prior original-byte checksum or creation-method fact inferred."
+    }
+  },
+  "derivative_lineage": {
+    "method": "One bounded deterministic typography/copy repair of retained original art; no model/provider/image generation or new artwork.",
+    "typography_overlay_proof": [
+      {
+        "side": "front",
+        "exact_title": "The Principles of Scientific Management",
+        "exact_author": "Frederick Winslow Taylor",
+        "font_file_sha256": "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab",
+        "font_license_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+        "method": "Actual local deterministic Pillow + licensed DejaVuSerif title and author overlay executed unconditionally; no original glyph/creation method inferred.",
+        "precise_masks": [
+          [
+            80,
+            80,
+            944,
+            580
+          ],
+          [
+            120,
+            1290,
+            911,
+            1412
+          ]
+        ],
+        "changed_pixels": 530738,
+        "changed_pixels_outside_masks": 0
+      },
+      {
+        "side": "back",
+        "exact_title": "The Principles of Scientific Management",
+        "exact_author": "Frederick Winslow Taylor",
+        "font_file_sha256": "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab",
+        "font_license_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+        "method": "Actual local deterministic Pillow + licensed DejaVuSerif title and author overlay executed unconditionally; no original glyph/creation method inferred.",
+        "precise_masks": [
+          [
+            225,
+            237,
+            837,
+            395
+          ],
+          [
+            135,
+            1254,
+            893,
+            1350
+          ]
+        ],
+        "changed_pixels": 171021,
+        "changed_pixels_outside_masks": 0
+      }
+    ],
+    "issues_handled": [
+      "Existing unquoted explanatory artwork copy retained; no new attributed quotation or creation-method fact asserted."
+    ],
+    "font_license_path": "practical-batch-prep-20261003/DejaVu-font-license.txt",
+    "commercial_font_permission": "Actual local Bitstream Vera licence grants use/publish/distribute; only raster output, no font software binary distributed."
+  },
+  "commercial_use_authorized": false,
+  "cover_display_approved": false,
+  "audio_authorized": false,
+  "publication_activation_authorized": false,
+  "runtime_release_authorized": false,
+  "scope": "Evidence-only exact proposal. Owner declaration and exact original-art bytes do not establish unsupported third-party origin/permissions; independent reviewers must hold any specifically evidenced component dispute.",
+  "independent_reviews": "PENDING_TWO_EXACT_SOURCE_ART_COMPLIANCE_PACKAGE_REVIEWS"
+}

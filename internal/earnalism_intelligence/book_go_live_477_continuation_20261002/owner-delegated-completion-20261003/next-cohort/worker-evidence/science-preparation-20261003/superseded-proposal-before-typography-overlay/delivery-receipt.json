@@ -1,0 +1,46 @@
+{
+  "schema": "earnalism.cover-delivery-derivation.v1",
+  "slug": "the-science-of-getting-rich",
+  "state": "INACTIVE_PENDING_TWO_INDEPENDENT_NEW_REVIEWS",
+  "method": "Original owner-designed legacy PNG preserved; deterministic600x900LANCZOSWebPquality64method6 card delivery; existing800x1200featurederivatives preserved separately; no art or copy repair",
+  "assets": {
+    "front": {
+      "source_sha256": "9fa719df44b5348b2dd694674fb7e4ba38438dd1e652ca70559081d67e88da15",
+      "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/delivery-front-card.webp",
+      "sha256": "a4c48d8fb10c382fa9337185bcbdba42c677c9d6e1cae7aa6c66f25306454d9c",
+      "bytes": 74468,
+      "width": 600,
+      "height": 900,
+      "url": "/assets/books/the-science-of-getting-rich/front-a4c48d8f.webp"
+    },
+    "back": {
+      "source_sha256": "49cf4eb533e11cc92d253496e2945d700468b2a2e42b7aabf4c7d8dd3b590f09",
+      "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/delivery-back-card.webp",
+      "sha256": "2679cedd18d25db4d97f38962cc17671714c72e37e16235fe257956e692adb49",
+      "bytes": 65688,
+      "width": 600,
+      "height": 900,
+      "url": "/assets/books/the-science-of-getting-rich/back-2679cedd.webp"
+    }
+  },
+  "preserved_feature_derivatives": {
+    "front": {
+      "source_sha256": "9fa719df44b5348b2dd694674fb7e4ba38438dd1e652ca70559081d67e88da15",
+      "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/delivery-front.webp",
+      "sha256": "4fed9b7814c00b5dd6106d1a7ad58fe17249b17b111505d1b95eb0db1f63de99",
+      "bytes": 135204,
+      "width": 800,
+      "height": 1200,
+      "url": "/assets/books/the-science-of-getting-rich/front-4fed9b78.webp"
+    },
+    "back": {
+      "source_sha256": "49cf4eb533e11cc92d253496e2945d700468b2a2e42b7aabf4c7d8dd3b590f09",
+      "path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/delivery-back.webp",
+      "sha256": "ca593d7e8a56f06206d667ef6402bae8ecc8d97cf49875ffec23b3c27f37b1d7",
+      "bytes": 113054,
+      "width": 800,
+      "height": 1200,
+      "url": "/assets/books/the-science-of-getting-rich/back-ca593d7e.webp"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "slug": "book-5704b31005",
+  "approved_to_publish": false,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "qa_scope": "Exact existing edition-bound text identity/source completeness only; no audio or production observations.",
+  "approval_scope": "PROPOSED_EXACT_IN_TEXT_AND_COVER_BINDING_PENDING_TWO_REVIEWS",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false,
+  "audiobook_use_approved": false,
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "verified_at": "2026-10-03T05:45:35.963016+00:00",
+  "source_hash": "57835bba9d270aa0c3f31ee280b2ae789f0528be1adfa29815a45826e23e466b",
+  "content_hash": "c9e4ed3927535c11a5d1d5a4729f0c8a1371952a33a6e0e6d36514b3d249b089",
+  "publication_authorization_sha256": "270311f5a1b29fd49ed2c5e2b50bfff7004439b537d91dd8e2de678e69615467",
+  "cover_provenance_sha256": "11b9a5b36b710e84941171ad69d3975ae9230e17af120a8af53d59ad1609aa59",
+  "independent_reviews": []
+}

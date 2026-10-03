@@ -1,0 +1,8 @@
+PASS regression/modules/15-reader-content-quality.test.js
+PASS regression/modules/14-ux-conversion-static.test.js
+
+Test Suites: 2 passed, 2 total
+Tests:       71 passed, 71 total
+Snapshots:   0 total
+Time:        0.562 s, estimated 1 s
+Ran all test suites.

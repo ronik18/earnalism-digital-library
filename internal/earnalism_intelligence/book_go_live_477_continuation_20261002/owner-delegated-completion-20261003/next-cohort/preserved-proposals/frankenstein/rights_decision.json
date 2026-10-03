@@ -1,0 +1,38 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "proposal-20261003-frankenstein-exact-cover-delivery",
+  "edition_id": "frankenstein",
+  "operator_id": "reo-enterprise",
+  "status": "PROPOSED",
+  "components": {
+    "public_book": "0f29eac6b765900baf40b89846ab8e98d4f6838d8bc8d005a32cce607635424e",
+    "reader_manifest": "2d7d0f01dcbc35eebc51a178b4eb72a9d766cfe5ec56d618113455ba72c16434",
+    "source_evidence": "dc06292e3e257f690c3017e88ded33d0b6baa8b778d1629f3074d1f76b5df449",
+    "approval_evidence": "f25acf9d9ddaf213942cf96d704100b2aee4634d2cf2183ba7d7976eefb00a73",
+    "checksum_manifest": "d3434801ca79da1f5da372023bbf8beed9c29aae6fe17cea8fd3a165e1286266",
+    "publication_manifest": "b460a67a9776976796564ef84bbaa11ee7d8145a425d0763210131efd425e373",
+    "cover_preparation": "fbce9843573995403912a7b9f2e5f560c3a498a88d90cea2c011519776255bda"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-01T21:19:39.153654+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Lifetime-published single-author English literary narrative; verified author death 1851, original publication 1818; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record.",
+  "evidence_sha256": [
+    "2903ac9efd4035e1e993767c53539c463a0fde420188dce1273d20b3c5d01657",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "a8c4b8b3a116e154c2ac028f048d81b06f0068ddbee5008827bf50693bcd12d9",
+    "7810cd483cffcf2cc8a1d8f0d5807931e69d4f48cd14149b8c76f88af82fead3",
+    "53b45539400716c4cca3295c9bffef1f744179cc7e4a56cd5e4f983b1c4f53ef"
+  ],
+  "accepted_by": "UNACCEPTED isolated preparation; root actual delegated acceptance required.",
+  "conditions_satisfied": false
+}

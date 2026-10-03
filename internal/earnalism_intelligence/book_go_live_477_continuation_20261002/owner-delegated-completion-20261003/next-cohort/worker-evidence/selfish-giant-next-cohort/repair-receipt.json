@@ -1,0 +1,95 @@
+{
+  "schema": "earnalism.selfish-giant-bounded-cover-repair.v1",
+  "slug": "the-selfish-giant",
+  "original_defects": [
+    "False LIVE CONTROLLED RELEASE badge",
+    "Decorative gold circles obscure front title and author",
+    "Back excerpt truncated mid-sentence and intersected by decorations"
+  ],
+  "method": "One bounded deterministic local mask/typeset repair of existing recovered owner artwork; exact existing title/author and complete unchanged source excerpt only. No new art, generated copy or paid calls.",
+  "source_public_book_sha256": "280107213b6dc993f98d7915f353e36b73b3bb70494f70e7bec5bc44d1a77d7e",
+  "chapter_file_sha256": "12c1db2943a0b57aea333ed1870472ea8332d457093d4255185385a7a157e3b1",
+  "chapter_content_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+  "source_excerpt": "EVERY afternoon, as they were coming from school, the children used to go and play in the Giant’s garden. It was a large lovely garden, with soft green grass. Here and there over the grass stood beautiful flowers like stars, and there were twelve peach-trees that in the spring-time broke out into delicate blossoms of pink and pearl, and in the autumn bore rich fruit. The birds sat on the trees and sang so sweetly that the children used to stop their games in order to listen to them. “How happy we are here!” they cried to each other.",
+  "source_excerpt_method": "Whitespace-normalized exact opening through complete existing final sentence; no lexical/punctuation substitutions",
+  "font": {
+    "path": "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
+    "sha256": "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab"
+  },
+  "renderer_sha256": "eea97252cea63b1cc50ff2e24408adb164511996edbfe71d4206c67b2b22d25a",
+  "assets": {
+    "front": {
+      "original_sha256": "f10e1353932821ab22a0d13b68a40394f06eb1c9a97b04e5e126897dfbb3fcc2",
+      "layout_png": {
+        "path": "/workspace/scratch/181ef0a25f05/selfish-giant-next-cohort/front-layout-repair.png",
+        "sha256": "e01b95dc8d321678df5c9fe5e395728187ea03984cc69c59ae34471603fb7dc4",
+        "bytes": 107141,
+        "dimensions": [
+          1600,
+          2400
+        ]
+      },
+      "delivery": {
+        "path": "/workspace/scratch/181ef0a25f05/selfish-giant-next-cohort/front-delivery.webp",
+        "sha256": "777a773d9cebbf236f9bfb79d52d35ca7206c59fc38eb04d85a84abc480d98cd",
+        "bytes": 35612,
+        "dimensions": [
+          800,
+          1200
+        ],
+        "recipe": "RGB; Lanczos downsample800x1200; WebPquality90method6"
+      },
+      "repair_zones": [
+        [
+          210,
+          710,
+          1390,
+          1290
+        ],
+        [
+          180,
+          1830,
+          1420,
+          2140
+        ]
+      ],
+      "budget_bytes": 80000
+    },
+    "back": {
+      "original_sha256": "6903c7610ac6141b0f4d8d025e7e9fe9f347e2922996368ef7dd28fe8c18b511",
+      "layout_png": {
+        "path": "/workspace/scratch/181ef0a25f05/selfish-giant-next-cohort/back-layout-repair.png",
+        "sha256": "6337be1964dfa48aedd7d35233cfdb84f422dd311545b265b9c259444f8795f0",
+        "bytes": 210720,
+        "dimensions": [
+          1600,
+          2400
+        ]
+      },
+      "delivery": {
+        "path": "/workspace/scratch/181ef0a25f05/selfish-giant-next-cohort/back-delivery.webp",
+        "sha256": "14b007092896bd2d0e4396ba0ecb1e430650a7aa772f855a347a6269daa75e60",
+        "bytes": 85306,
+        "dimensions": [
+          800,
+          1200
+        ],
+        "recipe": "RGB; Lanczos downsample800x1200; WebPquality90method6"
+      },
+      "repair_zones": [
+        [
+          95,
+          70,
+          1505,
+          2160
+        ]
+      ],
+      "budget_bytes": 180000
+    }
+  },
+  "paid_generation_calls": 0,
+  "network_requests_by_renderer": 0,
+  "repository_mutations": 0,
+  "approval_or_activation_claim": false,
+  "remaining_gate": "TWO_INDEPENDENT_EXACT_REPAIR_DELIVERY_AND_PACKAGE_REVIEWS_THEN_ACTUAL_COMPONENT_ACCEPTANCE"
+}

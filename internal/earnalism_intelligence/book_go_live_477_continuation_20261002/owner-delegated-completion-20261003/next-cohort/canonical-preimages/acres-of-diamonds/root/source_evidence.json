@@ -1,0 +1,427 @@
+{
+  "slug": "acres-of-diamonds",
+  "source_url": "https://www.gutenberg.org/ebooks/368",
+  "source_name": "Project Gutenberg #368; complete Conwell/Shackleton book, with original JohnWanamaker appreciation;1915originalscan signature independently identified; no illustrations",
+  "source_license": "Public domain; commercial use allowed in the United States.",
+  "source_hash": "a0b8613f5a9c0ee604b53d6aa68388084bdefbf24e1f5e9749aafe2c8448efa3",
+  "content_hash": "412d4000427790f40832d29be6bd49985d288ff4a9d48c2d5d866a50c62e27b0",
+  "provenance_hash": "dbb3f2fd3c82555ff9a2881b2834dad2c1150af0aac389edb6d98a6537d15614",
+  "rights_basis": "All three named text creators verified separately; book publication1915 precedes every death; latest Conwell1925 plus60 ends1985. Source signature placeholder omitted as scan-furniture; genuine original author signature used only as creator evidence, never publication authorization.",
+  "downloaded_at": "2026-06-08T20:17:58.132847+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true,
+  "official_electronic_source_verification": {
+    "electronic_edition_id": "Project Gutenberg #368",
+    "metadata_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/368",
+      "resolved_url": "https://www.gutenberg.org/ebooks/368",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:51.502277+00:00",
+      "response_sha256": "a0b896e7c3f830e86d816a6cd6e7861d17895a8a0a49899b2d78d4d1d7813a88"
+    },
+    "text_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/368.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/368/pg368.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:56.894794+00:00",
+      "response_sha256": "a0b8613f5a9c0ee604b53d6aa68388084bdefbf24e1f5e9749aafe2c8448efa3"
+    },
+    "bibliographic_metadata": {
+      "Author": [
+        "Conwell, Russell H., 1843-1925"
+      ],
+      "Contributor": [
+        "Shackleton, Robert, 1860-1923"
+      ],
+      "Title": [
+        "Acres of Diamonds: Our Every-day Opportunities"
+      ],
+      "Contents": [
+        "An appreciation -- Acres of diamonds -- His life and achievements -- Fifty years on the lecture platform."
+      ],
+      "Credits": [
+        "Produced by Charles Keller and David Widger"
+      ],
+      "Reading Level": [
+        "Reading ease score: 73.9 (7th grade). Fairly easy to read."
+      ],
+      "Language": [
+        "English"
+      ],
+      "LoC Class": [
+        "BJ: Philosophy, Psychology, Religion: Ethics, Social usages, Etiquette, Religion"
+      ],
+      "Subject": [
+        "Success",
+        "Temple University",
+        "Conwell, Russell H., 1843-1925"
+      ],
+      "Category": [
+        "Text"
+      ],
+      "eBook-No.": [
+        "368"
+      ],
+      "Release Date": [
+        "Jun 29, 2008"
+      ],
+      "Last Update": [
+        "Feb 26, 2021"
+      ],
+      "Copyright": [
+        "Public domain in the USA."
+      ],
+      "Downloads": [
+        "2389 downloads in the last 30 days."
+      ]
+    },
+    "comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1537,
+          "length": 1536
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 3092,
+          "length": 81048
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 84167,
+          "length": 16666
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 100869,
+          "length": 15726
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 116632,
+          "length": 8129
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 124799,
+          "length": 15195
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 140024,
+          "length": 15591
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 155640,
+          "length": 19482
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 175157,
+          "length": 20972
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 196160,
+          "length": 15640
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 211836,
+          "length": 14156
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 226051,
+          "length": 12167
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "legacy_source_sha256": "7d76b89150b79dc7511527704c2c07387913f3ea1904523b72c60e6742744c39",
+    "legacy_content_sha256": "81cee3802b924fe4e2c5d504f4b8256455bb60a14c31055f50816a8bbbc2ab37",
+    "legacy_source_bytes_reproduced": false,
+    "checked_at": "2026-10-01T21:08:26.578512+00:00",
+    "publication_authorized": false,
+    "scope": "ACTUAL_SOURCE_AND_CANONICAL_CHAPTER_TEXT_CHECK; not full edition, cover, territorial rights or publication authorization",
+    "license_policy_receipt": "internal/legal/catalogue_clearance_20261002/english/publication_fact_receipts.json"
+  },
+  "author_death_year": 1925,
+  "author_fact_evidence": {
+    "metadata_receipt_sha256": "a0b896e7c3f830e86d816a6cd6e7861d17895a8a0a49899b2d78d4d1d7813a88",
+    "url": "https://www.gutenberg.org/ebooks/368",
+    "author_catalog_strings": [
+      "Conwell, Russell H., 1843-1925"
+    ],
+    "verified_at": "2026-10-01T21:08:26.578512+00:00",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_TRANSLATOR_EDITOR_OR_EDITION_CLEARANCE"
+  },
+  "canonical_reader_identity": {
+    "chapter_count": 12,
+    "ordered_chapter_sha256": [
+      {
+        "id": "chapter-001",
+        "sha256": "102e72efbb536893d71361c6b6b2518a26330036b666d5496ff9e05e5b5f4ffd"
+      },
+      {
+        "id": "chapter-002",
+        "sha256": "4d904ef71f685a7071e6325a2d78521d76a24f125dc55e87edd1d580e6af7738"
+      },
+      {
+        "id": "chapter-003",
+        "sha256": "22df1fd016a83573a7600658cad5f7168b481243eee255a7b5d3ac5b541ba169"
+      },
+      {
+        "id": "chapter-004",
+        "sha256": "06430ae071e3f22559fcecb0f349c23c7f93adafc2cdc45f2d820ebe82eacd38"
+      },
+      {
+        "id": "chapter-005",
+        "sha256": "8d141f8ed86374561b693a3b65081be4090f8e6687e7f7d76e46765bf0ec04ac"
+      },
+      {
+        "id": "chapter-006",
+        "sha256": "ac6d6deef745e02db2184368f1f6f0953d2680c5b11beefc90676f4ae7565a14"
+      },
+      {
+        "id": "chapter-007",
+        "sha256": "0bc43fb80cf74dbf37082e3a0acbf20193c7b7e4bbbb4760093c887bd441e897"
+      },
+      {
+        "id": "chapter-008",
+        "sha256": "d872d5bbf2207f06c5f2107f93d6f3c849c73788d4a8715e52cc826dccd7f830"
+      },
+      {
+        "id": "chapter-009",
+        "sha256": "aecb700e176be275ac49a75f5cfe5fcaca38d77310dfa19ea9c6ef659023bfc5"
+      },
+      {
+        "id": "chapter-010",
+        "sha256": "6c71713ca787e4e013627f0128d7c45f6dc8faf28cc5cff7b91defaca006e43d"
+      },
+      {
+        "id": "chapter-011",
+        "sha256": "560c691411ac158c4e02f6b7851548fcdad3256fb42d3dfc7fd5b8bfc83a31aa"
+      },
+      {
+        "id": "chapter-012",
+        "sha256": "eeabcea35e427b6cfb2ced2c22071fac72610b02035db420aa91695de9c12e41"
+      }
+    ],
+    "content_sha256": "d00bd4ec56f246f94f23e6418f26da4aebdfc6b6b0eec302843387806b869dbf"
+  },
+  "source_identity_history": [
+    {
+      "identity": {
+        "source_hash": "7d76b89150b79dc7511527704c2c07387913f3ea1904523b72c60e6742744c39",
+        "content_hash": "81cee3802b924fe4e2c5d504f4b8256455bb60a14c31055f50816a8bbbc2ab37",
+        "provenance_hash": "b2c2559b19431922e4c7eb02f43a34e5f8a91927b3b6486f88791292aec0924e"
+      },
+      "superseded_at": "2026-10-01T21:41:35.457721+00:00",
+      "reason": "Same exact electronic ID full chapter body reconciled from uniquely matching first/last18word anchors; no approvals transferred"
+    },
+    {
+      "identity": {
+        "source_hash": "a0b8613f5a9c0ee604b53d6aa68388084bdefbf24e1f5e9749aafe2c8448efa3",
+        "content_hash": "d00bd4ec56f246f94f23e6418f26da4aebdfc6b6b0eec302843387806b869dbf",
+        "provenance_hash": "2a97d21244ed639c7014021c8d359bff8448c459815204e6962142be9ea14dc3",
+        "source_url": "https://www.gutenberg.org/ebooks/368",
+        "source_name": "Project Gutenberg"
+      },
+      "superseded_at": "2026-10-02T01:07:27.058549+00:00",
+      "reason": "Actual verified same-Gutenberg-ID chapter corpus/source receipt replaces unreproducible historical import aggregates; no historical approval transferred."
+    }
+  ],
+  "anchor_bounded_text_restoration": {
+    "verified_at": "2026-10-01T21:41:35.457721+00:00",
+    "chapters": [
+      {
+        "chapter_id": "chapter-008",
+        "old_sha256": "47c2ad26c950b61e4ec7cfa58d2e2c4e58d047801515522b754608027f1cb31d",
+        "new_sha256": "d872d5bbf2207f06c5f2107f93d6f3c849c73788d4a8715e52cc826dccd7f830",
+        "source_start": 156116,
+        "source_end": 176081,
+        "first_18_words_exact_unique": true,
+        "last_18_words_exact_unique": true
+      },
+      {
+        "chapter_id": "chapter-009",
+        "old_sha256": "bc7c718fdc892198c4d1e6a6e77dbd39a52e15a0279e1a6391b1e18e2c1a64ef",
+        "new_sha256": "aecb700e176be275ac49a75f5cfe5fcaca38d77310dfa19ea9c6ef659023bfc5",
+        "source_start": 176121,
+        "source_end": 197152,
+        "first_18_words_exact_unique": true,
+        "last_18_words_exact_unique": true
+      }
+    ],
+    "publication_authorized": false
+  },
+  "selected_edition_publication_year": 1915,
+  "publication_region": "India",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "verified_at": "2026-10-02T01:07:27.058549+00:00",
+  "source_type": "gutenberg",
+  "commercial_use_allowed": true,
+  "text_clearance_status": "NON_COVER_OBJECTIVE_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_component_clearance": {
+    "source_byte_receipt": {
+      "requested_url": "https://www.gutenberg.org/ebooks/368.txt.utf-8",
+      "resolved_url": "https://www.gutenberg.org/cache/epub/368/pg368.txt",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:02:56.894794+00:00",
+      "response_sha256": "a0b8613f5a9c0ee604b53d6aa68388084bdefbf24e1f5e9749aafe2c8448efa3"
+    },
+    "whole_narrative_coverage": "PASS",
+    "chapter_count": 12,
+    "chapter_comparison": {
+      "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+      "status": "ALL_CHAPTERS_MATCH_SOURCE",
+      "matched_chapters": [
+        {
+          "chapter_id": "chapter-001",
+          "offset": 1537,
+          "length": 1524
+        },
+        {
+          "chapter_id": "chapter-002",
+          "offset": 3092,
+          "length": 81048
+        },
+        {
+          "chapter_id": "chapter-003",
+          "offset": 84167,
+          "length": 16666
+        },
+        {
+          "chapter_id": "chapter-004",
+          "offset": 100869,
+          "length": 15726
+        },
+        {
+          "chapter_id": "chapter-005",
+          "offset": 116632,
+          "length": 8129
+        },
+        {
+          "chapter_id": "chapter-006",
+          "offset": 124799,
+          "length": 15195
+        },
+        {
+          "chapter_id": "chapter-007",
+          "offset": 140024,
+          "length": 15591
+        },
+        {
+          "chapter_id": "chapter-008",
+          "offset": 155640,
+          "length": 19482
+        },
+        {
+          "chapter_id": "chapter-009",
+          "offset": 175157,
+          "length": 20972
+        },
+        {
+          "chapter_id": "chapter-010",
+          "offset": 196160,
+          "length": 15640
+        },
+        {
+          "chapter_id": "chapter-011",
+          "offset": 211836,
+          "length": 14156
+        },
+        {
+          "chapter_id": "chapter-012",
+          "offset": 226051,
+          "length": 12167
+        }
+      ],
+      "nonmatching_chapters": [],
+      "complete_edition_proven": false,
+      "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+    },
+    "lifetime_publication_evidence": {
+      "creator_death_year": 1925,
+      "selected_edition_publication_year": 1915,
+      "source_scan_receipt": {
+        "requested_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Acres_of_diamonds_%28IA_acresofdiamonds01conw%29.pdf",
+        "resolved_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Acres_of_diamonds_%28IA_acresofdiamonds01conw%29.pdf",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:56:01.852434+00:00",
+        "response_sha256": "51403651c27c5d174c9a0cc938c61875866f8ddc8aca84be8964627d9dc7ab07"
+      },
+      "title_page": "Actual scanned PDFpage10: Harper&Brotherscopyright1915; PublishedOctober1915",
+      "appreciation_signature": "Actual scanned PDFpage16: His yoke fellow / JohnWanamaker; visually read now, not inferred from omitted metadata",
+      "signature_render_sha256": "373477f5360172977dea4928e55fee994db3306993e7ce50ec63ecf44d5780d0",
+      "creators": [
+        {
+          "name": "Russell H.Conwell",
+          "death_year": 1925,
+          "receipt": {
+            "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Conwell%2C%20Russell%20H.%2C%201843-1925",
+            "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Conwell%2C%20Russell%20H.%2C%201843-1925",
+            "http_status": 200,
+            "accessed_at": "2026-10-01T21:50:15.801770+00:00",
+            "response_sha256": "f22e619c10a76aaf042a3883b8e054ac53e9c1dd54db986aa0a8a8f45d47ad65"
+          }
+        },
+        {
+          "name": "Robert Shackleton",
+          "death_year": 1923,
+          "receipt": {
+            "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Shackleton%2C%20Robert%2C%201860-1923",
+            "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Shackleton%2C%20Robert%2C%201860-1923",
+            "http_status": 200,
+            "accessed_at": "2026-10-01T21:50:17.297533+00:00",
+            "response_sha256": "5c12611454e140714574aab899820466564ac130966852eacb1e3b7028284c7f"
+          }
+        },
+        {
+          "name": "John Wanamaker",
+          "death_year": 1922,
+          "receipt": {
+            "requested_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Wanamaker%2C%20John%2C%201838-1922",
+            "resolved_url": "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Wanamaker%2C%20John%2C%201838-1922",
+            "http_status": 200,
+            "accessed_at": "2026-10-01T21:58:53.641239+00:00",
+            "response_sha256": "ccc264fa114ee9f555b11bdae23326ed597921d38ebf099cace623277653593d"
+          }
+        }
+      ],
+      "basis": "All three named text creators verified separately; book publication1915 precedes every death; latest Conwell1925 plus60 ends1985. Source signature placeholder omitted as scan-furniture; genuine original author signature used only as creator evidence, never publication authorization."
+    },
+    "author_death_evidence": 1925,
+    "translator": "NONE_SELECTED",
+    "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+    "illustrations": "NONE_IMPORTED",
+    "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+    "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+    "audio": "NOT_AUTHORIZED",
+    "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+  },
+  "original_publication_year": null,
+  "publication_upper_bound_year": 1915,
+  "publication_upper_bound_evidence": {
+    "source_sha256": "a0b8613f5a9c0ee604b53d6aa68388084bdefbf24e1f5e9749aafe2c8448efa3",
+    "content_sha256": "412d4000427790f40832d29be6bd49985d288ff4a9d48c2d5d866a50c62e27b0",
+    "year": 1915,
+    "receipt": {
+      "requested_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Acres_of_diamonds_%28IA_acresofdiamonds01conw%29.pdf",
+      "resolved_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Acres_of_diamonds_%28IA_acresofdiamonds01conw%29.pdf",
+      "http_status": 200,
+      "accessed_at": "2026-10-01T21:56:01.852434+00:00",
+      "response_sha256": "51403651c27c5d174c9a0cc938c61875866f8ddc8aca84be8964627d9dc7ab07"
+    },
+    "basis": "All three named text creators verified separately; book publication1915 precedes every death; latest Conwell1925 plus60 ends1985. Source signature placeholder omitted as scan-furniture; genuine original author signature used only as creator evidence, never publication authorization.",
+    "scope": "VERIFIED_SELECTED_TEXT_PUBLICATION_UPPER_BOUND_NOT_FIRST_DATE"
+  }
+}

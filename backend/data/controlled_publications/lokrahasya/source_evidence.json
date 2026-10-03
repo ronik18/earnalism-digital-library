@@ -3,11 +3,86 @@
   "source_url": "https://bn.wikisource.org/wiki/%E0%A6%B2%E0%A7%8B%E0%A6%95%E0%A6%B0%E0%A6%B9%E0%A6%B8%E0%A7%8D%E0%A6%AF_(%E0%A7%A7%E0%A7%AF%E0%A7%A9%E0%A7%AF)",
   "source_name": "Bengali Wikisource",
   "source_license": "Underlying Bengali literary text is public domain in India and the U.S.; Bengali Wikisource transcription/source layer is reused under CC BY-SA terms.",
-  "source_hash": "260381cc03347b40db669d4de39b44e36807010b662b4ca9e02e0c5ae4100711",
-  "content_hash": "c9a08ae531d9158f05f71f07f343f165d3258519fcf180316fb6ef93c2055a77",
+  "source_hash": "2c536fb46b7a52f42f63c702effcd971d97059c56be4a6b5d7df642b4a8cddc1",
+  "content_hash": "a7ff73c827d016dc6faafca1f3151c0ebf565187c1ff8b6a924c461cce129e20",
   "provenance_hash": "df3b6e5a4f7028f73bdf0e473af7743f3f7b794ac95f21781780d3e491674b4e",
-  "rights_basis": "Author died 1894. Original publication 1874. Public domain in India and the U.S.; source evidence kept internal/admin-only.",
+  "rights_basis": "Exact Lokrahasya1939 centenary edition edited Brajendra Nath Bandyopadhyay and Sajanikanta Das; separately authored foreword excluded; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1962; India Section22 literary term expired end2022. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
   "downloaded_at": "2026-06-03T08:51:47.842258+00:00",
-  "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "source_format": "SHA-bound multi-chapter rendering receipt, with per-chapter actual rendered HTML SHA/revisions",
+  "reader_facing_boilerplate_removed": true,
+  "author_death_year": 1894,
+  "author_fact_evidence": {
+    "record": "internal/legal/bengali_text_preparation_20261002/author_fact_receipts.json",
+    "record_sha256": "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "author_id": "bankim-chandra",
+    "authority_url": "https://museumsofindia.gov.in/repository/record/vmh_kol-R2824-17621",
+    "authority_response_sha256": "7f092de94596c2bb0bf82f22abd0bed0be2fe94040c1b1426d4b88604d5cf677",
+    "scope": "AUTHOR_DEATH_FACT_ONLY_NOT_EDITION_OR_PUBLICATION_APPROVAL"
+  },
+  "original_publication_year": 1874,
+  "original_publication_fact_evidence": {
+    "record": "data/title_rights_evidence/bengali-bankim-cohort-1.json",
+    "record_sha256": "6aa201278a3420414ab1c348bd24b19ff4cf1b539595e142dd64696152c5eccf",
+    "slug": "lokrahasya",
+    "source_edition": "লোকরহস্য (১৯৩৯), বঙ্কিম-শতবার্ষিকী সংস্করণ; the edition states first printed in 1874 and names its two editors",
+    "scope": "EXISTING_REVIEWED_PUBLICATION_FACT_ONLY; SOURCE_COMPARISON_AND_LICENSE_OBLIGATIONS_REMAIN_TITLE_SPECIFIC"
+  },
+  "verification_status": "approved",
+  "text_clearance_status": "OWNER_DELEGATED_AUTOMATED_IN_TEXT_CLEARANCE_COMPLETE_COVER_DEFERRED",
+  "text_clearance_scope": "India text-reader preparation only; no publication or audio authorization.",
+  "canonical_reader_identity": {
+    "algorithm": "sha256 of ordered chapter content joined with two LF characters; chapter file hashes independently bound by publication manifest",
+    "reader_content_sha256": "a7ff73c827d016dc6faafca1f3151c0ebf565187c1ff8b6a924c461cce129e20",
+    "chapter_count": 16,
+    "chapter_content_sha256": {
+      "chapter-006": "3ad29d39908abc6655d06f7e3bc0fedec9a4702f7ae3de30fba496a29410f95f",
+      "chapter-008": "5628f612b22513c49148b53b7dc52aa26b1e2c67f29bba0585af989cbe233e5d",
+      "chapter-001": "729a0ec8c88e8cb5de85698b032b40886a6ac47f0bb08b6b980682744377c1ef",
+      "chapter-002": "619ab8c5384adbfa816179f9d8a0776bb13d1f08c555a25215813235cd4e46f7",
+      "chapter-007": "32c76d54e0cf04f36984a029b6e0a17dbfcc27db6dd69acf9a888be8e05db422",
+      "chapter-011": "93be984a04423686dd6ed15f0721120048c3bef211b0c95a1bf33696f469a76c",
+      "chapter-004": "07373c51e0df6d2e5222d038c99b56f696c50b11c6667b17a3cea1c6d940476c",
+      "chapter-009": "deb0cd9746bb517cc7a206302b7331bfdbe255474b76738920672db59755013e",
+      "chapter-010": "d70f464f1994a2227b944d59df831eca9b2ee5c4161b66d624c26613ab487f3d",
+      "chapter-012": "c46a3bb7a8bcdb19f215410bbfce96e779d756dc9406a817fec932b824f478c9",
+      "chapter-015": "80bacae9079c0f1c73a888b665c28760ebc6d8e5b969d24f54b26400aa7afd3e",
+      "chapter-013": "0c3c9292ecaf155a50c70d36adbe07fcd1073ba169bf54efd6ff63eae925edab",
+      "chapter-005": "e908dc63447c4191d6edfee2787858a8fc052758e7226b00d40aed06770b1c90",
+      "chapter-003": "39dd197a1ccf93e36781c6ed5dc374b4f97514222fadf665e8f02e564189e4be",
+      "chapter-014": "ae245e65f7679a7423fd11e437661cbfdf3d7ace87c5cab4d40c6e20a8d0ba28",
+      "chapter-016": "8a596d46b799d3896bc9b5b55b50fbdccd52baf575aafaa21f9f5ad2278344a8"
+    },
+    "declared_import_content_hash_status": "HISTORICAL_IMPORT_HASH_RETAINED; not assumed equal to rendered chapter aggregate",
+    "scope": "CURRENT_READER_BYTES_ONLY_NOT_SOURCE_EDITION_OR_PUBLICATION_AUTHORIZATION"
+  },
+  "full_rendered_multichapter_repair": {
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/multichapter-narrow-source-repairs.json",
+    "scope": "Same edition source paragraphs, with original notes/verse retained; no rights approval"
+  },
+  "historical_import_hashes": {
+    "source_hash": "260381cc03347b40db669d4de39b44e36807010b662b4ca9e02e0c5ae4100711",
+    "content_hash": "c9a08ae531d9158f05f71f07f343f165d3258519fcf180316fb6ef93c2055a77",
+    "source_url": "https://bn.wikisource.org/wiki/%E0%A6%B2%E0%A7%8B%E0%A6%95%E0%A6%B0%E0%A6%B9%E0%A6%B8%E0%A7%8D%E0%A6%AF_(%E0%A7%A7%E0%A7%AF%E0%A7%A9%E0%A7%AF)"
+  },
+  "edition_publication_year": 1939,
+  "verified_at": "2026-10-02T03:10:37.024181+00:00",
+  "source_snapshot_identity": {
+    "artifact": "internal/legal/catalogue_clearance_20261002/bengali/lokrahasya-multichapter-source-comparison.json",
+    "sha256": "31b4a09724bc5adc938662556bec2b17a2e1654ea14d1a35501a87648d9b6bb0",
+    "scope": "Actual captured original/source edition transclusions; parent revision alone does not freeze transcluded pages."
+  },
+  "edition_evidence": {
+    "edition": "Lokrahasya1939 centenary edition edited Brajendra Nath Bandyopadhyay and Sajanikanta Das; separately authored foreword excluded",
+    "primary_record": "internal/legal/catalogue_clearance_20261002/bengali/lokrahasya-primary-imprint-pages.json",
+    "record_sha256": "625b30c0db9515408f88dc471eb8cdcac457c81c8dbe16fc23f332a553c89983",
+    "scope": "Selected exact literary narrative and retained source notes only; no artwork, publisher matter, separately authored foreword or other edition authorized."
+  },
+  "reader_order_reconciliation": {
+    "record": "reader_order_remedy.json",
+    "record_sha256": "0cd76b413db937d25362d9b105beb5c22fa1340bc27d15dda1b11adb492b3b50",
+    "chapter_ids_preserved": true,
+    "literary_content_bytes_unchanged": true,
+    "source_page_order_review_sha256": "8732ab1085ff2ccbcc12e570bb4dcd0b242b85a96290d7e15b83185acddbcf4f",
+    "scope": "New proposed Reader metadata/version in exact persisted scanned-edition page order; old package preserved archive-only. No new rights/publication/cover acceptance."
+  }
 }

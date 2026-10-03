@@ -1,0 +1,36 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261002-mrinalini-1874-cc-by-sa-text-reader",
+  "edition_id": "mrinalini",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "3f9895115cba6effd21b3ca7f3ac8b0139d6cd4f539eb8fa095c83a94edd8374",
+    "reader_manifest": "8a9a8219266814455b8d1f811493e913e8007524f642a5bb7302026aaa57144e",
+    "source_evidence": "d361d2a57e36d6cf70c84f1b5803a99306467116f44e200cfc16659e0145e94f",
+    "approval_evidence": "fefa18b1eb51647f948716249c159428baecb63885e9a2d559f928aba2260e72",
+    "checksum_manifest": "649b2e000568f7a86ba15b9c25b1a9a4581fa99a6769d339b3ad43cd5516b380",
+    "publication_manifest": "1c76369db5b0e8aeeffc067f8d75cf7d8d3d669b1c687994ec009f4ffa33a648"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-02T03:10:37.024181+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Exact Mrinalini third1874 author edition, Bankim Chandra Chattopadhyay; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1894; India Section22 literary term expired end1954. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held.",
+  "evidence_sha256": [
+    "17c3499fdd190453e3ba8bb291ccee825e8cf5e3a811bdf69a181d64f3a8a86d",
+    "d0977454db66b5a3bceeb2a0bdd9bfa8d2c1ccff014811153141ab124d12e70f",
+    "7f8a6d5f9294481c3cc29b362739896f1e02d6d110b93a658313a94356b17660",
+    "5daf71034572bf90bf766d4c93d2632d518986f0cc96cd916f987ac0fe3ca3c9",
+    "4d5dc6ee1a1c61f04f6b2c706a3cb9dc2d3b0e09a6f670a029708f28bc731e48"
+  ],
+  "accepted_by": "Automated executor under explicit product-owner autonomous evidence-backed text-clearance delegation; not a human legal reviewer or signature.",
+  "conditions_satisfied": true
+}

@@ -41,9 +41,9 @@ describe("historical title release hold page", () => {
     global.fetch = jest.fn(() => { throw new Error("unavailable page must not fetch title data"); });
 
     try {
-      act(() => root.render(<UnavailableTitle title="The Selfish Giant" slug="the-selfish-giant" />));
-      expect(container.querySelector("h1").textContent).toBe("The Selfish Giant is not currently available.");
-      expect(container.querySelector('[data-testid="unavailable-title-contact-link"]').getAttribute("href")).toBe("/contact?interest=the-selfish-giant");
+      act(() => root.render(<UnavailableTitle title="ইন্দিরা" slug="bn-060" />));
+      expect(container.querySelector("h1").textContent).toBe("ইন্দিরা is not currently available.");
+      expect(container.querySelector('[data-testid="unavailable-title-contact-link"]').getAttribute("href")).toBe("/contact?interest=bn-060");
       expect(global.fetch).not.toHaveBeenCalled();
     } finally {
       global.fetch = originalFetch;

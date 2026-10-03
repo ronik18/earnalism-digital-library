@@ -1,0 +1,97 @@
+{
+  "schema": "earnalism.prospective-owner-provided-next-cohort.v1",
+  "actual_acceptance_at": "2026-10-03T05:57:24.767676+00:00",
+  "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+  "base_main": "0fee65668f94284d180065d0fe8b38face924498",
+  "owner_declaration_sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+  "canonical_mutations": 0,
+  "production_observed": false,
+  "audio_exposed": false,
+  "global_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK",
+  "cohort": [
+    {
+      "slug": "book-5704b31005",
+      "decision_id": "india-20261003-book-5704b31005-exact-reader-cover-prospective-accepted",
+      "canonical_record_sha256": "1ab665c0da53bc10ad5150f6b452742c76d0fa276f22ee73d9b82d381f4c7a34",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/book-5704b31005/book-5704b31005-front-8f64cc7c.webp",
+          "sha256": "8f64cc7c2a33820dfbfe55a635f70a8a0fd19959c71e3290bdeeadd45c2531a5",
+          "bytes": 23994,
+          "dimensions": [
+            800,
+            1200
+          ],
+          "url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-8f64cc7c.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/book-5704b31005/book-5704b31005-back-4e0a187b.webp",
+          "sha256": "4e0a187bd92e75d5b4fb97a670516bacc6183862672090f03ed5dce9547c5709",
+          "bytes": 33830,
+          "dimensions": [
+            800,
+            1200
+          ],
+          "url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-back-4e0a187b.webp"
+        }
+      },
+      "reviews": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "bf3615602cb27a7ff7a97da6849951abeb3469015c2e1da0bb0f8a8a715c8efd"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "c7d0ea841e42cfa6cde1888ee06c0c87fb550beeee74efb78ccff67ea8675686"
+        }
+      },
+      "publication_authorization_sha256": "baf85fb9c258e5f2a925d4358a91e34c0c6bd04ebc3db4e9f4586f9e18783aa2",
+      "prior_text_rights_basis_preserved": "Exact Galpa-Dashak original1302/1895 sole-author Rabindranath Tagore edition; primary printed identity and complete source text verified. Last relevant evidenced contributor death 1941; India Section22 literary term expired end2001. CC BY-SA4 transcription attribution/change/ShareAlike notice and delivered-text rights implemented. Owner-delegated automated evidence verification; no invented human/legal reviewer. Covers deferred; audio and other editions excluded; production registry/activation separately held. Proposed exact owner cover mask/typeset derivatives; fresh2 passing independent reviews and actual automated acceptance remain required.",
+      "disposition": "READY_BEHIND_NAMED_GLOBAL_GATE",
+      "source_and_chapters": "BYTE_IDENTICAL_TO_REVIEWED_PROPOSAL",
+      "production_observed": false
+    },
+    {
+      "slug": "the-wonderful-wizard-of-oz",
+      "decision_id": "india-20261003-the-wonderful-wizard-of-oz-exact-reader-cover-prospective-accepted",
+      "canonical_record_sha256": "ccb223d1b5ad10cc09dd982317c09cd9257b32880666b3e72bb0ce75db9e3a45",
+      "assets": {
+        "front": {
+          "path": "frontend/public/assets/books/the-wonderful-wizard-of-oz/front-33ecb0db.webp",
+          "sha256": "33ecb0dbd64dd974cbcc0a36ea6efacde0b4a5b3eb9123b7f1c1f97b1b0154b6",
+          "bytes": 72988,
+          "dimensions": [
+            500,
+            750
+          ],
+          "url": "/assets/books/the-wonderful-wizard-of-oz/front-33ecb0db.webp"
+        },
+        "back": {
+          "path": "frontend/public/assets/books/the-wonderful-wizard-of-oz/back-02d62ca4.webp",
+          "sha256": "02d62ca44ac984c5a078ab2298d5fdc513861b7876374043d3ffa3b812ced107",
+          "bytes": 67348,
+          "dimensions": [
+            500,
+            750
+          ],
+          "url": "/assets/books/the-wonderful-wizard-of-oz/back-02d62ca4.webp"
+        }
+      },
+      "reviews": {
+        "review_a": {
+          "file": "evidence/review_a.json",
+          "sha256": "a034ba1b836c80898ec9a4ccbf5268c09839bd7d9c6b47169507657b74bd7878"
+        },
+        "review_b": {
+          "file": "evidence/review_b.json",
+          "sha256": "7a7306dd7ddd6dd0fc680ca49045b75f83f76592af015ea99d67530892fa804d"
+        }
+      },
+      "publication_authorization_sha256": "b3bfaea84f37def911f71c7122fda4464f8711541bf5dce39e0e4da8b3256b64",
+      "prior_text_rights_basis_preserved": "Lifetime-published single-author English literary narrative; verified author death 1919, original publication 1900; India Copyright Act Section22 life+60 term elapsed. Exact electronic source/chapter scope verified, no translation, independently authored preface/art or Gutenberg trademark/license imported into Reader. Cover and audio uses excluded; no production activation by this record. This isolated proposed new cover/component binding is NOT ACCEPTED; no authority, human approval, production fact or new artwork inferred. Prior exact text acceptance is preserved in preimages.",
+      "disposition": "READY_BEHIND_NAMED_GLOBAL_GATE",
+      "source_and_chapters": "BYTE_IDENTICAL_TO_REVIEWED_PROPOSAL",
+      "production_observed": false
+    }
+  ]
+}

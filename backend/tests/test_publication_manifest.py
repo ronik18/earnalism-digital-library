@@ -28,6 +28,7 @@ SHERLOCK = ROOT / "data" / "controlled_publications" / "the-adventures-of-sherlo
 BISHOP = ROOT / "data" / "controlled_publications" / "the-bishop"
 GIFT_OF_THE_MAGI = ROOT / "data" / "controlled_publications" / "the-gift-of-the-magi"
 CANTERVILLE_GHOST = ROOT / "data" / "controlled_publications" / "the-canterville-ghost"
+HISTORICAL_SELFISH_GIANT = ROOT / "backend" / "tests" / "fixtures" / "legacy-selfish-giant-20261003"
 
 
 def test_sherlock_pilot_is_reader_ready_without_audio_or_commerce():
@@ -136,11 +137,12 @@ def test_canterville_ghost_is_published_for_preview_and_waits_for_checkout_activ
 
 
 def test_checksum_bound_approved_audio_is_a_separate_exposed_lane(tmp_path):
-    # Explicit test-local approval; the actual canonical title remains held.
+    # Explicit test-local approval of an exact historical fixture only.
+    # Canonical Selfish Giant is now approved for text; audio remains disabled.
     import shutil
     from scripts.publication_manifest_conveyor import _checksum_entries
     fixture = tmp_path / "the-selfish-giant"
-    shutil.copytree(ROOT / "data" / "controlled_publications" / "the-selfish-giant", fixture)
+    shutil.copytree(HISTORICAL_SELFISH_GIANT, fixture)
     approval_path = fixture / "approval_evidence.json"
     approval = json.loads(approval_path.read_text())
     approval["approved_to_publish"] = True
@@ -174,7 +176,7 @@ def test_checksum_bound_approved_audio_is_a_separate_exposed_lane(tmp_path):
 
 def test_server_owned_audio_manifest_fails_closed_for_cross_title_endpoint():
     manifest = build_manifest(
-        ROOT / "data" / "controlled_publications" / "the-selfish-giant",
+        HISTORICAL_SELFISH_GIANT,
         publish_approved=True,
         generated_at="2026-08-16T06:45:34Z",
     )

@@ -1,0 +1,7 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> frontend@0.1.0 postbuild
+> node scripts/generate-static-seo-snapshots.mjs && node scripts/verify-static-seo-snapshots.mjs
+
+[static-seo] Wrote 172 static snapshots and a deterministic route manifest.
+Static SEO snapshot verifier: inspected=172 expected=172 assertions=3647 failed=0

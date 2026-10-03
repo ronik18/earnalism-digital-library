@@ -1,0 +1,55 @@
+{
+  "schema_version": "earnalism.rights-decision.v1",
+  "decision_id": "india-20261003-the-wonderful-wizard-of-oz-exact-reader-cover-prospective-accepted",
+  "edition_id": "the-wonderful-wizard-of-oz",
+  "operator_id": "reo-enterprise",
+  "status": "ACCEPTED",
+  "components": {
+    "public_book": "81d8ceb66a75bf171ef71489794a819e49dc606783f0f1398c70da51904348e7",
+    "reader_manifest": "2323b65af075000645cd7ac0f3f841f4583ac1407ddefd849a1cbc7b06795d71",
+    "source_evidence": "7ec444ed90caa41fb950757933ee7399ef94fceab855bdd8c3e52a6806358ec5",
+    "approval_evidence": "1c594a572466bbff09edf6bdb022261abeb45a5eab7e7033bad83f184a455a89",
+    "checksum_manifest": "e3c629629d5dd9e2359aa8be8166719d14dc85b6b254aa5b626845561d7dd33f",
+    "publication_manifest": "77a69a4ff1f40a40f1ff70ad1fd55e02f3716a4aaa6c01b4f5cf05dc1575ca8d",
+    "cover_provenance": "82807f7a09520abbfe64e1e9ce7d570a1735587b871b12e9024a309e22779f7c",
+    "cover_delivery_derivation": "379ede32b7d337a7b22a0db950e30ac52f972e717d3b75da1143d1e3c3aafc05",
+    "cover_front_original_asset": "80fbd30875f8b715fb580732f9eef2d46bc7ddc74d50cd41d5276dbfd60ec32a",
+    "cover_front_delivery_asset": "33ecb0dbd64dd974cbcc0a36ea6efacde0b4a5b3eb9123b7f1c1f97b1b0154b6",
+    "cover_back_original_asset": "29204906556020adbbdb10a89b7fd9b26f08703f6327a0de63cdb0d50b8821fc",
+    "cover_back_delivery_asset": "02d62ca44ac984c5a078ab2298d5fdc513861b7876374043d3ffa3b812ced107",
+    "owner_artwork_declaration": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "publication_authorization": "b5c012ebc6df6bcae9cab5a7208b6fdf6fd17342227816aaa83b73a5df6ef30f",
+    "acceptance_review_a": "a034ba1b836c80898ec9a4ccbf5268c09839bd7d9c6b47169507657b74bd7878",
+    "acceptance_review_b": "7a7306dd7ddd6dd0fc680ca49045b75f83f76592af015ea99d67530892fa804d"
+  },
+  "territories": [
+    "IN"
+  ],
+  "uses": [
+    "catalog_metadata",
+    "cover_display",
+    "reader_preview",
+    "reader_delivery",
+    "reading_pass_session",
+    "reading_pass_renewal"
+  ],
+  "valid_from": "2026-10-03T05:57:24.767676+00:00",
+  "valid_until": "2036-10-02T00:00:00+00:00",
+  "basis": "Exact India text/edition rights are preserved from the archived predecessor and unchanged source/chapter/license records. Ronik Basak directly provided the owner-held copyright and publication provenance for the exact owner-created cover components; two independent passing source/art preparations bind the reviewed derivatives and deliveries. Prospective automated acceptance supersedes earlier procedural cover deferral for these components only. No human approval, other source/edition rights, unknown original construction method, audio grant or production observation inferred.",
+  "evidence_sha256": [
+    "d76fb6ab3fcd74692ed0d9909ddfdd992fa66c41d543aea1e1758543a421b5bd",
+    "32e25734d37116a97a39e76d89613d326f4e9bcb41caee5154f28a7b80144170",
+    "dab2f9701c8250b658facf41edeb4433f135f9a545ad9b20e5cdadc878e61e7a",
+    "969bffab7740d4d8a0bac332d78bd0152ad4a40a2efc52f06c74a9bb6120be75",
+    "4b174cd456358387fe1bbd65667a783ae52d7b4f0475f1c570a80132c847b18e",
+    "6270d6ca21fb06c3b9b18438674ade59ffc750ad73bf4f4c71324bf02521e2e4",
+    "379ede32b7d337a7b22a0db950e30ac52f972e717d3b75da1143d1e3c3aafc05",
+    "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "b5c012ebc6df6bcae9cab5a7208b6fdf6fd17342227816aaa83b73a5df6ef30f",
+    "82807f7a09520abbfe64e1e9ce7d570a1735587b871b12e9024a309e22779f7c",
+    "a034ba1b836c80898ec9a4ccbf5268c09839bd7d9c6b47169507657b74bd7878",
+    "7a7306dd7ddd6dd0fc680ca49045b75f83f76592af015ea99d67530892fa804d"
+  ],
+  "accepted_by": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+  "conditions_satisfied": true
+}

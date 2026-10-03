@@ -1,0 +1,409 @@
+{
+  "reviewer": "Independent Codex reviewer B",
+  "stage": "/workspace/scratch/181ef0a25f05/next-owner-accepted-aggregate-20261003-v1",
+  "receipt_sha256": "01f21a3ab25cf85763538e6d675578b35efe4818ff4331fdfd6da8074bf78bca",
+  "disposition": "PARTIAL_STATUS_COHERENCE_PASS_OVERALL_HOLD_PENDING_PARENT_REBIND",
+  "reason": "Root identified Science nestedcurrent delivery_recipe.current_delivery_receipt_sha256 stale; no final closure PASS issued. Wait final19freeze then exact metadata delta audit.",
+  "current_status_checks": [
+    {
+      "slug": "the-open-window",
+      "public_cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+      "cover_status": "ACCEPTED_EXACT_COMPONENTS_UNDER_OWNER_DELEGATION",
+      "cover_visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+      "accepted_at_preserved": true,
+      "public_basis_matches_accepted_decision": true
+    },
+    {
+      "slug": "the-selfish-giant",
+      "public_cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+      "cover_status": "ACCEPTED_EXACT_COMPONENTS_UNDER_OWNER_DELEGATION",
+      "cover_visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+      "accepted_at_preserved": true,
+      "public_basis_matches_accepted_decision": true
+    },
+    {
+      "slug": "sredni-vashtar",
+      "public_cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+      "cover_status": "ACCEPTED_EXACT_COMPONENTS_UNDER_OWNER_DELEGATION",
+      "cover_visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+      "accepted_at_preserved": true,
+      "public_basis_matches_accepted_decision": true,
+      "cover_delivery_derivation.json": {
+        "review_status": "PASS_TWO_INDEPENDENT_EXACT_PNG_WEBP_PREPARATION_REVIEWS",
+        "actual_acceptance": {
+          "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+          "accepted_at": "2026-10-03T04:59:53.954767+00:00",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "cbb2b42bd8aa85419549eaf838e9884069889482ae7bd8fd5d5280e34ab55f59"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "91c752175d2b576a1b43269645b72511a23eadd5d6200df0c65a1ee1d3794c0a"
+            }
+          },
+          "production_observed": false,
+          "final_binding_review_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK"
+        }
+      }
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "public_cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+      "cover_status": "ACCEPTED_EXACT_COMPONENTS_UNDER_OWNER_DELEGATION",
+      "cover_visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+      "accepted_at_preserved": true,
+      "public_basis_matches_accepted_decision": true,
+      "cover_preparation.json": {
+        "status": "ACCEPTED_EXACT_COMPONENT_PREPARATION_INDIA_TEXT_READER_ONLY",
+        "cover_display_accepted": true,
+        "publication_accepted": true,
+        "actual_acceptance": {
+          "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+          "accepted_at": "2026-10-03T04:59:53.954767+00:00",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "2eaf07760acf658f9c176461fe425ad4fa7c4fb372a26124968cd6cee43ee10a"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "b4c6472a288af36d58459dea6619df7ffcab6fb64a2eadc22c366e9959e52097"
+            }
+          },
+          "production_observed": false,
+          "final_binding_review_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK"
+        }
+      }
+    },
+    {
+      "slug": "dsires-baby",
+      "public_cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+      "cover_status": "ACCEPTED_EXACT_COMPONENTS_UNDER_OWNER_DELEGATION",
+      "cover_visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+      "accepted_at_preserved": true,
+      "public_basis_matches_accepted_decision": true,
+      "cover_delivery_derivation.json": {
+        "review_status": "PASS_TWO_INDEPENDENT_EXACT_PNG_WEBP_PREPARATION_REVIEWS",
+        "actual_acceptance": {
+          "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+          "accepted_at": "2026-10-03T04:59:53.954767+00:00",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "8d4eeb102ce88faf6eb6697393afb1b579ca29bb4e1083419e44b60295a8ef64"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "1c712c31011ca2f17c9790823fd81e26a7c811c852197a34992483622db39bf4"
+            }
+          },
+          "production_observed": false,
+          "final_binding_review_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK"
+        }
+      }
+    },
+    {
+      "slug": "the-science-of-getting-rich",
+      "public_cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+      "cover_status": "ACCEPTED_EXACT_COMPONENTS_UNDER_OWNER_DELEGATION",
+      "cover_visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+      "accepted_at_preserved": true,
+      "public_basis_matches_accepted_decision": true,
+      "cover_delivery_derivation.json": {
+        "review_status": "PASS_TWO_INDEPENDENT_EXACT_PNG_WEBP_PREPARATION_REVIEWS",
+        "actual_acceptance": {
+          "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699 and the explicit prospective owner acceptance instruction 2026-10-03; no human signature inferred.",
+          "accepted_at": "2026-10-03T04:59:53.954767+00:00",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "e17b3d56b4e6f0f6177965822910d19550debe93090c198d5a21e3fac5419400"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "4817d7c5123f319dfb08bc552fd4548d24896bb23964f11bd12d719c941eb98a"
+            }
+          },
+          "production_observed": false,
+          "final_binding_review_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK"
+        }
+      }
+    },
+    {
+      "slug": "the-time-machine",
+      "public_cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+      "cover_status": "ACCEPTED_EXACT_OWNER_PROVIDED_COMPONENTS_UNDER_DIRECT_OWNER_DECLARATION",
+      "cover_visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+      "accepted_at_preserved": true,
+      "public_basis_matches_accepted_decision": true,
+      "cover_preparation.json": {
+        "status": "ACCEPTED_EXACT_COMPONENT_PREPARATION_INDIA_TEXT_READER_ONLY",
+        "publication_accepted": true,
+        "cover_display_accepted": true,
+        "actual_acceptance": {
+          "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+          "accepted_at": "2026-10-03T05:34:11.386246+00:00",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "69849aa5884020a53e87e902d3505d2624839e8dd37119d9b03d7df99948fe38"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "fa6aaff9100965882e389a042a8e81845423737348bbd410831c6954fda2998b"
+            },
+            "source_review_b": {
+              "file": "evidence/source_review_b.json",
+              "sha256": "7e6e03cfd9ebfddb26f0f275b69adb8c4222055a6b466c89cedc7d3173fdda12"
+            }
+          },
+          "production_observed": false,
+          "final_binding_review_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK"
+        }
+      }
+    },
+    {
+      "slug": "the-great-gatsby",
+      "public_cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+      "cover_status": "ACCEPTED_EXACT_OWNER_PROVIDED_COMPONENTS_UNDER_DIRECT_OWNER_DECLARATION",
+      "cover_visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+      "accepted_at_preserved": true,
+      "public_basis_matches_accepted_decision": true,
+      "cover_preparation.json": {
+        "status": "ACCEPTED_EXACT_COMPONENT_PREPARATION_INDIA_TEXT_READER_ONLY",
+        "publication_accepted": true,
+        "cover_display_accepted": true,
+        "actual_acceptance": {
+          "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+          "accepted_at": "2026-10-03T05:34:11.386246+00:00",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "5156952c739749bc0d45c2da3f66e595bba7b4855fc5851a909c7f45be5fe0a9"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "01f582df43f942e52ea04de108f9eaca6b3218dd0cb83ff6623f0b2711654d0d"
+            },
+            "source_review_b": {
+              "file": "evidence/source_review_b.json",
+              "sha256": "3ba83ca584badcf990145195607e4db99d3f112fca18a8111355f2e71dc32a26"
+            }
+          },
+          "production_observed": false,
+          "final_binding_review_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK"
+        }
+      }
+    },
+    {
+      "slug": "frankenstein",
+      "public_cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+      "cover_status": "ACCEPTED_EXACT_OWNER_PROVIDED_COMPONENTS_UNDER_DIRECT_OWNER_DECLARATION",
+      "cover_visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+      "accepted_at_preserved": true,
+      "public_basis_matches_accepted_decision": true,
+      "cover_preparation.json": {
+        "status": "ACCEPTED_EXACT_COMPONENT_PREPARATION_INDIA_TEXT_READER_ONLY",
+        "publication_accepted": true,
+        "cover_display_accepted": true,
+        "actual_acceptance": {
+          "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+          "accepted_at": "2026-10-03T05:34:11.386246+00:00",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "dc1045c0af38dad4e41574dbb587cea6734d665ac3cdde5b2e71745808078c83"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "cb669626513fb343c14b268928ca8499cd01d521d5cad9469464935ec400d871"
+            },
+            "source_review_b": {
+              "file": "evidence/source_review_b.json",
+              "sha256": "c4d561c45a88e2ab53dcdf26ed1036882fcb040681c41b3d49fda75bdc50e999"
+            }
+          },
+          "production_observed": false,
+          "final_binding_review_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK"
+        }
+      }
+    },
+    {
+      "slug": "the-secret-garden",
+      "public_cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+      "cover_status": "ACCEPTED_EXACT_OWNER_PROVIDED_COMPONENTS_UNDER_DIRECT_OWNER_DECLARATION",
+      "cover_visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+      "accepted_at_preserved": true,
+      "public_basis_matches_accepted_decision": true,
+      "cover_preparation.json": {
+        "status": "ACCEPTED_EXACT_COMPONENT_PREPARATION_INDIA_TEXT_READER_ONLY",
+        "publication_accepted": true,
+        "cover_display_accepted": true,
+        "actual_acceptance": {
+          "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+          "accepted_at": "2026-10-03T05:34:11.386246+00:00",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "0f72494328632cf157a108de8568a0493a6af1c57fefecaa77583f3cc4627b5c"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "fa8c2d43c53f2ebe4db5c2ab2e20ebc8addeb59f9725bbec1f1bb0b32c822a97"
+            },
+            "source_review_b": {
+              "file": "evidence/source_review_b.json",
+              "sha256": "e7160391d77b3e1f89dec5481949d5211d86420fb3dcd56c7129798a98bac0d7"
+            }
+          },
+          "production_observed": false,
+          "final_binding_review_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK"
+        }
+      }
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "public_cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+      "cover_status": "ACCEPTED_EXACT_OWNER_PROVIDED_COMPONENTS_UNDER_DIRECT_OWNER_DECLARATION",
+      "cover_visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+      "accepted_at_preserved": true,
+      "public_basis_matches_accepted_decision": true,
+      "cover_preparation.json": {
+        "status": "ACCEPTED_EXACT_COMPONENT_PREPARATION_INDIA_TEXT_READER_ONLY",
+        "publication_accepted": true,
+        "cover_display_accepted": true,
+        "actual_acceptance": {
+          "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+          "accepted_at": "2026-10-03T05:34:11.386246+00:00",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "db1362ae9a048b971fbbb19850c7b6b45b62865c4c6dbc1d02d2c805c9a21cf1"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "7a4240e762350e02429e64fc14796d5ce7c4b34b808d2045cf788d5e726e66b2"
+            },
+            "source_review_b": {
+              "file": "evidence/source_review_b.json",
+              "sha256": "78e104ef3a355c89f945241da2b3b02906f40f62c53ec91d2b431b5d6602300a"
+            }
+          },
+          "production_observed": false,
+          "final_binding_review_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK"
+        }
+      }
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "public_cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+      "cover_status": "ACCEPTED_EXACT_OWNER_PROVIDED_COMPONENTS_UNDER_DIRECT_OWNER_DECLARATION",
+      "cover_visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+      "accepted_at_preserved": true,
+      "public_basis_matches_accepted_decision": true,
+      "cover_delivery_derivation.json": {
+        "review_status": "PASS_TWO_INDEPENDENT_EXACT_PNG_WEBP_PREPARATION_REVIEWS",
+        "actual_acceptance": {
+          "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+          "accepted_at": "2026-10-03T05:34:11.386246+00:00",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "3043b739322e3d4ffabd729cd834b936188018517075ffcf34ab73f85ca54c81"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "de3794f854eaa4ff7cd0ffbdeb9b37fcd70fd989e1ead6973042eedc19b8c646"
+            }
+          },
+          "production_observed": false,
+          "final_binding_review_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK"
+        }
+      }
+    },
+    {
+      "slug": "acres-of-diamonds",
+      "public_cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+      "cover_status": "ACCEPTED_EXACT_OWNER_PROVIDED_COMPONENTS_UNDER_DIRECT_OWNER_DECLARATION",
+      "cover_visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+      "accepted_at_preserved": true,
+      "public_basis_matches_accepted_decision": true,
+      "cover_delivery_derivation.json": {
+        "review_status": "PASS_TWO_INDEPENDENT_EXACT_PNG_WEBP_PREPARATION_REVIEWS",
+        "actual_acceptance": {
+          "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+          "accepted_at": "2026-10-03T05:34:11.386246+00:00",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "848765bd2edfd3f28e3fe0c479321f0d41ea058dd894d31000bb3116c3b5b407"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "283ab0e868d9ec67a1efba2fc9aae9e61a1958e7dfd45f39b72f2e6ac2e3901f"
+            }
+          },
+          "production_observed": false,
+          "final_binding_review_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK"
+        }
+      }
+    },
+    {
+      "slug": "my-life-and-work",
+      "public_cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+      "cover_status": "ACCEPTED_EXACT_OWNER_PROVIDED_COMPONENTS_UNDER_DIRECT_OWNER_DECLARATION",
+      "cover_visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+      "accepted_at_preserved": true,
+      "public_basis_matches_accepted_decision": true,
+      "cover_delivery_derivation.json": {
+        "review_status": "PASS_TWO_INDEPENDENT_EXACT_PNG_WEBP_PREPARATION_REVIEWS",
+        "actual_acceptance": {
+          "actor": "Automated serialized integration controller under issue #477 owner directive comment 5949652699, prospective owner acceptance delegation, and the direct Ronik Basak owner-artwork declaration 2026-10-03; no human signature inferred.",
+          "accepted_at": "2026-10-03T05:34:11.386246+00:00",
+          "independent_reviews": {
+            "review_a": {
+              "file": "evidence/review_a.json",
+              "sha256": "ff240fbf4572faa32eab4a11d24552591af32907de74186272fa9769426c8014"
+            },
+            "review_b": {
+              "file": "evidence/review_b.json",
+              "sha256": "af458f9aa5b771de14ccb98ce746cfe00dd57b045c44b065aae7dffc7015a6fb"
+            }
+          },
+          "production_observed": false,
+          "final_binding_review_gate": "SERIAL_INTEGRATION_TWO_EXACT_TREE_REVIEWS_PROTECTED_NORMAL_CI_MERGE_DEPLOY_CANARY_TRUTHFUL_READBACK"
+        }
+      }
+    },
+    {
+      "slug": "mrinalini",
+      "public_cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+      "cover_status": "ACCEPTED_EXACT_OWNER_PROVIDED_COMPONENTS_UNDER_DIRECT_OWNER_DECLARATION",
+      "cover_visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+      "accepted_at_preserved": true,
+      "public_basis_matches_accepted_decision": true
+    },
+    {
+      "slug": "bn-066",
+      "public_cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+      "cover_status": "ACCEPTED_EXACT_OWNER_PROVIDED_COMPONENTS_UNDER_DIRECT_OWNER_DECLARATION",
+      "cover_visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+      "accepted_at_preserved": true,
+      "public_basis_matches_accepted_decision": true
+    },
+    {
+      "slug": "lokrahasya",
+      "public_cover_status": "ACCEPTED_EXACT_OWNER_COMPONENTS_INDIA_TEXT_READER_ONLY",
+      "cover_status": "ACCEPTED_EXACT_OWNER_PROVIDED_COMPONENTS_UNDER_DIRECT_OWNER_DECLARATION",
+      "cover_visual_review_status": "PASS_TWO_INDEPENDENT_EXACT_PREPARATION_REVIEWS",
+      "accepted_at_preserved": true,
+      "public_basis_matches_accepted_decision": true
+    }
+  ],
+  "no_art_source_reviews_repeated": true,
+  "canonical_mutations": false,
+  "production_observed": false,
+  "reviewed_at": "2026-10-03T05:56:34.925674+00:00"
+}

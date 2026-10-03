@@ -1,0 +1,479 @@
+{
+  "schema": "earnalism.independent-candidate-review.v1",
+  "reviewer": "A",
+  "slug": "the-science-of-getting-rich",
+  "disposition": "PASS_EXACT_UNACCEPTED_COMPLETE_SOURCE_DETERMINISTIC_OVERLAY_AND_NEW_PACKAGE_BINDINGS",
+  "review_date": "2026-10-03",
+  "rights_decision_raw_sha256": "b82e6a6bfc900abde1015064a3a231db7694c68fff182d8d1834999caa1edc22",
+  "cover_binding_sha256": "d3cdb56dbee7843b567bbdb72e0a3704e6ace8246c3e991efa45014e2ae3f750",
+  "corrected_overlay_receipt_sha256": "99b70d556723ac3cf8aba07e8f38fd183a80027d9e5369a588204d478143523a",
+  "components": {
+    "public_book": "481cec1d5841afa7c92a714867f406f734f345fb7b47ff3a5a7a98e9b373799d",
+    "reader_manifest": "a42883b4eb214ae086998672472b0f86c9709e550da35c87789f95564cdefdb7",
+    "source_evidence": "6324de50de9db456175bcd2cbecec794641fa8bdd322d2de2b49eaacc713a117",
+    "approval_evidence": "2d53c92d83ef05349d550650f271a216c54be3c667596b2b788d266998f1fb8d",
+    "checksum_manifest": "1543e46ede27fa8e6f35e2d002939d8213ba7ea9085215f2b7540cada37fda3d",
+    "publication_manifest": "ef05079b5ecd62a8bf195cd1a86c13500df0f6cdefd6ed7aed9c0a1b1c36670f",
+    "cover_provenance": "d3cdb56dbee7843b567bbdb72e0a3704e6ace8246c3e991efa45014e2ae3f750",
+    "cover_delivery_derivation": "f1461997dc783ee540a5b9ea7bf779182ea0700db1f0a0daebfc739904a37767",
+    "cover_front_original_asset": "9fa719df44b5348b2dd694674fb7e4ba38438dd1e652ca70559081d67e88da15",
+    "cover_front_delivery_asset": "5ee48b1d245c70b1b8495f9a6b98636cc798d2bea96ff54aa4c3d6fa27becb28",
+    "cover_back_original_asset": "49cf4eb533e11cc92d253496e2945d700468b2a2e42b7aabf4c7d8dd3b590f09",
+    "cover_back_delivery_asset": "bda88117bdb0d7208f51afa3cab6dce74875f83943ebf7c2a74409a6a29477c4"
+  },
+  "checksum_count": 26,
+  "assets": {
+    "front": {
+      "original_sha256": "9fa719df44b5348b2dd694674fb7e4ba38438dd1e652ca70559081d67e88da15",
+      "deterministic_overlay_png_sha256": "7f2e8e9fd3f6d0359b8d94cfc2198101abd64b4b78a95d035932d68bff4f2bf2",
+      "verification_sha256": "7f2e8e9fd3f6d0359b8d94cfc2198101abd64b4b78a95d035932d68bff4f2bf2",
+      "verification_full_decode": true,
+      "outside_inclusive_mask_RGB_identity": true,
+      "delivery_sha256": "5ee48b1d245c70b1b8495f9a6b98636cc798d2bea96ff54aa4c3d6fa27becb28",
+      "delivery_bytes": 60052,
+      "delivery_dimensions": [
+        600,
+        900
+      ],
+      "actual_four_changed_PNG_WebP_visual_inspection": "PASS_FULL_TITLE_AUTHOR_CLEAR_COMPLETE_UNCHANGED_COPY_AND_FOOTER",
+      "no_new_art_or_copy": true
+    },
+    "back": {
+      "original_sha256": "49cf4eb533e11cc92d253496e2945d700468b2a2e42b7aabf4c7d8dd3b590f09",
+      "deterministic_overlay_png_sha256": "83190790c57974d6dad6128dc87d5a3018e8d7fd06f41f623505320e974a1791",
+      "verification_sha256": "83190790c57974d6dad6128dc87d5a3018e8d7fd06f41f623505320e974a1791",
+      "verification_full_decode": true,
+      "outside_inclusive_mask_RGB_identity": true,
+      "delivery_sha256": "bda88117bdb0d7208f51afa3cab6dce74875f83943ebf7c2a74409a6a29477c4",
+      "delivery_bytes": 64860,
+      "delivery_dimensions": [
+        600,
+        900
+      ],
+      "actual_four_changed_PNG_WebP_visual_inspection": "PASS_FULL_TITLE_AUTHOR_CLEAR_COMPLETE_UNCHANGED_COPY_AND_FOOTER",
+      "no_new_art_or_copy": true
+    }
+  },
+  "source_complete_review_path": "/workspace/scratch/181ef0a25f05/new-acceptance-review-a/science-complete-source-review-a.json",
+  "source_complete_review_sha256": "ee95a763de6cafba3cc38064ec5452e712b6f0c21298279746283b62a517789e",
+  "exact_official_source_sha256": "adc3fb17f24801597561e992d858e124c8d9b4c6e3bf7593d713e7a71d252744",
+  "complete_scope": "Author Preface plus17chapters; all18 whole body equality and17exact heading-only gaps, following publisher ads excluded. One official recovery GET, B uses same bytes.",
+  "source_chapters_highlight_versions_byte_exact_preserved": true,
+  "root_backend_all_files_identical": true,
+  "owner_design_fact": {
+    "path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+    "sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+    "statement": "Owner states all front and back covers are designed by the owner.",
+    "scope": "OWNER_DESIGN_FACT_ONLY_NOT_TEXT_RIGHTS_OR_PRODUCTION_FACT"
+  },
+  "font_actual_license_and_hash_verified": {
+    "path": "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
+    "sha256": "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab",
+    "license_path": "/workspace/scratch/181ef0a25f05/science-preparation-20261003/dejavu-font-license.txt",
+    "license_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+    "license_basis": "Actual installed fonts-dejavu-core copyright/Bitstream Vera permission reproduced; DejaVu additions public domain; no font software modified or distributed by the Reader delivery."
+  },
+  "artwork_category": "Recovered owner legacy graphical artwork plus one bounded new proven deterministic title/author overlay. Original creation method remains unknown; no AI creation or human acceptance inferred.",
+  "integrity_anomaly": "Earlier front run2 corruption explicitly excluded and preserved with prior receipts. Exact full fresh verification equals unchanged run1; no candidate artwork revision or repeat repair. Cause unknown.",
+  "policy_path": "internal/earnalism_intelligence/cover_acceptance_policy.json",
+  "policy_sha256": "db09fc34a416d99c2ad3283ba320e6198cc42007f6fb19c8f78468466a714f32",
+  "actual_runtime_fallback_conformance_claim": false,
+  "audio_positive_effective_claims_or_URLs": [],
+  "all_main_preimages": [
+    {
+      "area": "root",
+      "file": "approval_evidence.json",
+      "sha256": "dc189350ec5a8fd4acf2d25cafce1bf9884f35b4caca40090e497af1b0aba20f"
+    },
+    {
+      "area": "root",
+      "file": "chapters/chapter-001.json",
+      "sha256": "ed9d306a0bf198120c65aabd95f1011c69972dfe855e7eff4ef0bdab02903efa"
+    },
+    {
+      "area": "root",
+      "file": "chapters/chapter-002.json",
+      "sha256": "ab639f30648a642710f927b65c6066094fb01b8aa0f20bcecc4b1520caaccb56"
+    },
+    {
+      "area": "root",
+      "file": "chapters/chapter-003.json",
+      "sha256": "d2d4be96ac1636a3c3cf256302262c8ec52cbf99d2ff77f53cd3949c0b84ceea"
+    },
+    {
+      "area": "root",
+      "file": "chapters/chapter-004.json",
+      "sha256": "c21f9eb9a075126da8a44c27218241b2e3c231d07c159c8dcc674fd61ea76c87"
+    },
+    {
+      "area": "root",
+      "file": "chapters/chapter-005.json",
+      "sha256": "bdf40302374fe13649ff56bd155d91048f7994a71ab83c2ae9f5f405ba5e212b"
+    },
+    {
+      "area": "root",
+      "file": "chapters/chapter-006.json",
+      "sha256": "03f09952d5111d0faa1dc5cd2b32e18e3b343c45f635cb993d6497cf2de581c6"
+    },
+    {
+      "area": "root",
+      "file": "chapters/chapter-007.json",
+      "sha256": "6ec6c0887b7a428302af800c9485443e5345c463465474b8651348c66ac0686d"
+    },
+    {
+      "area": "root",
+      "file": "chapters/chapter-008.json",
+      "sha256": "7c4b25048dbe4d06ae8bcced7a5ef6a8b9ef9302bcba4a621af16450db2c020f"
+    },
+    {
+      "area": "root",
+      "file": "chapters/chapter-009.json",
+      "sha256": "227b7a5ca87383d711d9c0441ab26d9dba67538261a9fc0372abbf413d0a2ca8"
+    },
+    {
+      "area": "root",
+      "file": "chapters/chapter-010.json",
+      "sha256": "9fd16a6fa0d207110cd8345f150b9575c8e6aeca07c442e8861f1b19ff01a5bc"
+    },
+    {
+      "area": "root",
+      "file": "chapters/chapter-011.json",
+      "sha256": "e59038a7eb3e104d3c4b68ba3e96704aad025e988f86b09e092d3f6f447f20f2"
+    },
+    {
+      "area": "root",
+      "file": "chapters/chapter-012.json",
+      "sha256": "a0e4eac4315a6ec73f378f6896c46509af3f77e1ee35e3151ead86c732b2089a"
+    },
+    {
+      "area": "root",
+      "file": "chapters/chapter-013.json",
+      "sha256": "0887e80584d2dcc41f5915d848c8e1426bf9e4efdb6e7b17f5b9576b0aa7332e"
+    },
+    {
+      "area": "root",
+      "file": "chapters/chapter-014.json",
+      "sha256": "052669e99e081d17e9e5e7d8cba5097a1c35d74692253246906f1cbfb987abe7"
+    },
+    {
+      "area": "root",
+      "file": "chapters/chapter-015.json",
+      "sha256": "8ef3ecb1e363fc95adc4f9832604fdb23313c2fc1db568e232ac48f863531588"
+    },
+    {
+      "area": "root",
+      "file": "chapters/chapter-016.json",
+      "sha256": "466c8da81c1f9c4539d55315f4b035b86adcb80a2bc119666b60fcce0c0e9b3c"
+    },
+    {
+      "area": "root",
+      "file": "chapters/chapter-017.json",
+      "sha256": "696a398abd98a5ecd187d6d5e157f76c3c5636e307983593d405c5526cd4d1a3"
+    },
+    {
+      "area": "root",
+      "file": "chapters/chapter-018.json",
+      "sha256": "e8930930e2e78ee34d8c7b57e2f00c035cecade2cd8aa61880df20cf9f0cbc14"
+    },
+    {
+      "area": "root",
+      "file": "checksum_manifest.json",
+      "sha256": "54e249ee3f753c7f930794b272e3c6267cf3e2efaff6119422d827c370aa4a87"
+    },
+    {
+      "area": "root",
+      "file": "highlight_sync.json",
+      "sha256": "0ec7bf5934ded3c72ba3bf13df6d8e6e698d3c3287f64c3a7050d3e2e47ab997"
+    },
+    {
+      "area": "root",
+      "file": "public_book.json",
+      "sha256": "491fad4ec6873c7b6c3853a212291884b1764e99da6e23adddf2f61e3a377f9a"
+    },
+    {
+      "area": "root",
+      "file": "publication_authorization.json",
+      "sha256": "cbb0f10031b0061839efa60f9fa11600bf283711c85843d0a49d45516e393052"
+    },
+    {
+      "area": "root",
+      "file": "publication_manifest.json",
+      "sha256": "4e57244d338acd3ea031811a92f8ec69f67919113f528e6fcb18c6295ceac03f"
+    },
+    {
+      "area": "root",
+      "file": "reader_manifest.json",
+      "sha256": "6c6c0d47217642a5f67dff1fc23afcac146468d1017d48f59a2bef2bf90cbdce"
+    },
+    {
+      "area": "root",
+      "file": "rights_decision.json",
+      "sha256": "1d5ebe49b341bbb0d8da57d8eb4b1a53b8b261929efbef06af6d72f1f56e3cd1"
+    },
+    {
+      "area": "root",
+      "file": "source_evidence.json",
+      "sha256": "6324de50de9db456175bcd2cbecec794641fa8bdd322d2de2b49eaacc713a117"
+    },
+    {
+      "area": "backend",
+      "file": "approval_evidence.json",
+      "sha256": "8289c5179b52fc9e0f5050b83525b63c19a40312ab9eddf1c3085c53beab5d35"
+    },
+    {
+      "area": "backend",
+      "file": "chapters/chapter-001.json",
+      "sha256": "3f7c00bf891bfa61d86912600c8d6573c6e005de43846da7c450313b535f98f6"
+    },
+    {
+      "area": "backend",
+      "file": "chapters/chapter-002.json",
+      "sha256": "a465a6152b4d33a0fa8cbd48b6387fb0e87f9873b97271acde8ac16a7643768b"
+    },
+    {
+      "area": "backend",
+      "file": "chapters/chapter-003.json",
+      "sha256": "2d5b12a28ef31c80077157430de49bfd160249bed0ebe729b7a6b28ad3cdaa2d"
+    },
+    {
+      "area": "backend",
+      "file": "chapters/chapter-004.json",
+      "sha256": "c2ba0b896479d30bb7be8b996be92b47467fbc1c78249bd5b80cdf695e7cec48"
+    },
+    {
+      "area": "backend",
+      "file": "chapters/chapter-005.json",
+      "sha256": "e4350b486212e557708c1ecac1b265e3b048854427a5bec31d556e67b9733a9b"
+    },
+    {
+      "area": "backend",
+      "file": "chapters/chapter-006.json",
+      "sha256": "a6d51ae453a21fde90b828b5fe091741a382dc98b45fa5058ef63086b2c07d48"
+    },
+    {
+      "area": "backend",
+      "file": "chapters/chapter-007.json",
+      "sha256": "875e28cc8165d3875e635a764257babb86ab77cb0d4497b440d1b923c63dea10"
+    },
+    {
+      "area": "backend",
+      "file": "chapters/chapter-008.json",
+      "sha256": "bc26289e3b5da936dd21aa572d5b9f540d5706b4e41f6745b209076a8c1ba10d"
+    },
+    {
+      "area": "backend",
+      "file": "chapters/chapter-009.json",
+      "sha256": "7a56540dcbba367470bee7045881198db894b7d3ff90be8d69b3f73f4679c385"
+    },
+    {
+      "area": "backend",
+      "file": "chapters/chapter-010.json",
+      "sha256": "00edaccf118e044eb5bf7834f60e7c0c7048973b09231a626716cb38c0e1e3a0"
+    },
+    {
+      "area": "backend",
+      "file": "chapters/chapter-011.json",
+      "sha256": "43fec844cf358928f635255eddd7a90c7344d8d455ada79f15cc4ef5e6613d0d"
+    },
+    {
+      "area": "backend",
+      "file": "chapters/chapter-012.json",
+      "sha256": "46d1777389c601cd5717936813396af17ccb69e218288c434162f3c37a9dfa5a"
+    },
+    {
+      "area": "backend",
+      "file": "chapters/chapter-013.json",
+      "sha256": "786554916eb250abacd4280f3a47177f804909e14f3cef4f14aa603bb223d5fb"
+    },
+    {
+      "area": "backend",
+      "file": "chapters/chapter-014.json",
+      "sha256": "522e0c1a7e91817818ba8d8743771fce5e37ea23583e5c211d178e0160ebfb3c"
+    },
+    {
+      "area": "backend",
+      "file": "chapters/chapter-015.json",
+      "sha256": "668798449f06b7b3208458c935d078e0a96b2bd7293bcd941702c29ffc7ca303"
+    },
+    {
+      "area": "backend",
+      "file": "chapters/chapter-016.json",
+      "sha256": "3f293587a1d4ddc37a7a659cd31e25a45cb487e1df4bc8e4ab91bc197a1bd54f"
+    },
+    {
+      "area": "backend",
+      "file": "chapters/chapter-017.json",
+      "sha256": "adf7a1fe33efd593527ed1e14ca85165edb7c21f8a4af9c9512a2e1abc1b6f23"
+    },
+    {
+      "area": "backend",
+      "file": "chapters/chapter-018.json",
+      "sha256": "4e376be2ee51b073f4671daf0d39f0953e7b796ad83bee0df1549e90d2975f4d"
+    },
+    {
+      "area": "backend",
+      "file": "checksum_manifest.json",
+      "sha256": "fef677eade73c64461d826a64cf2943ddd0e9abca5a713dd6c7f38838a3b1ca4"
+    },
+    {
+      "area": "backend",
+      "file": "highlight_sync.json",
+      "sha256": "0ec7bf5934ded3c72ba3bf13df6d8e6e698d3c3287f64c3a7050d3e2e47ab997"
+    },
+    {
+      "area": "backend",
+      "file": "public_book.json",
+      "sha256": "4b9c406e5115924696a26ef1d8b536f1e6dc0c83f87651aa3c8ee5c9425ebd35"
+    },
+    {
+      "area": "backend",
+      "file": "reader_manifest.json",
+      "sha256": "6c6c0d47217642a5f67dff1fc23afcac146468d1017d48f59a2bef2bf90cbdce"
+    },
+    {
+      "area": "backend",
+      "file": "source_evidence.json",
+      "sha256": "a6c990bff8e66c589993479120eb09e918f70e473bf7208600fbbfa7d3b08e43"
+    },
+    {
+      "area": "content",
+      "file": "book.json",
+      "sha256": "5f73dff74e7e00051bf5da4419c0b0fcbb0bb7fdf468d03e6f15cfe2c5019bf2"
+    },
+    {
+      "area": "content",
+      "file": "chapters/001-preface.json",
+      "sha256": "3f56d54202d8d039c74479a3485b348a2f5da12e4ec5d913ff074c68c8aa9946"
+    },
+    {
+      "area": "content",
+      "file": "chapters/002-chapter-i-the-right-to-be-rich.json",
+      "sha256": "6701142b2c0f0b34d9abc4c0f75a0a058090d82b46257aa9ead8413889156e12"
+    },
+    {
+      "area": "content",
+      "file": "chapters/003-chapter-ii-there-is-a-science-of-getting-rich.json",
+      "sha256": "1d21b42d1c61273756267fc0389a6e9b6370c07a31bae22fc00a1dc4467d333e"
+    },
+    {
+      "area": "content",
+      "file": "chapters/004-chapter-iii-is-opportunity-monopolized.json",
+      "sha256": "06b6039e3ae230cfaac848056dca8772289903894905abfdfa96e1470a523b4e"
+    },
+    {
+      "area": "content",
+      "file": "chapters/005-chapter-iv-the-first-principle-in-the-science-of-getting-rich.json",
+      "sha256": "7f3b7f74a04bf245a19224bd069934f0eb6d57d638d659f14480a484a58ec3f3"
+    },
+    {
+      "area": "content",
+      "file": "chapters/006-chapter-v-increasing-life.json",
+      "sha256": "fcf600a433d6b6438dd83100880cc1173398c5bff8e404fecc7a32ced7145ddb"
+    },
+    {
+      "area": "content",
+      "file": "chapters/007-chapter-vi-how-riches-come-to-you.json",
+      "sha256": "2b834e6fc9f057c338903c06b8a2d49177be71401618186796b03c8872865505"
+    },
+    {
+      "area": "content",
+      "file": "chapters/008-chapter-vii-gratitude.json",
+      "sha256": "d58d62a48d07554cee4c021c2f892d06065e0a95d6a407981cfe640f9c0685b7"
+    },
+    {
+      "area": "content",
+      "file": "chapters/009-chapter-viii-thinking-in-the-certain-way.json",
+      "sha256": "a60028a06f2803d6d2f2410d62727c2bcec473396749170ec958a066e847af06"
+    },
+    {
+      "area": "content",
+      "file": "chapters/010-chapter-ix-how-to-use-the-will.json",
+      "sha256": "6a9c7ee99732d0e041d7aa0ef2aa7d68ff3d31cf6cef0c9564399e1eccbc7b39"
+    },
+    {
+      "area": "content",
+      "file": "chapters/011-chapter-x-further-use-of-the-will.json",
+      "sha256": "e7c854f55f8f9be6f449273e1fafb2db3b8d113d2aa6b914494dd6b79d58d886"
+    },
+    {
+      "area": "content",
+      "file": "chapters/012-chapter-xi-acting-in-the-certain-way.json",
+      "sha256": "7851a26ec598e6b8f6f0020c9c0b6d9f1aebcfad38ebbaae043d92342dfeeb7c"
+    },
+    {
+      "area": "content",
+      "file": "chapters/013-chapter-xii-efficient-action.json",
+      "sha256": "decb9de6f91aba82862896af8e8f424650bb9d352a2f777b03b9d1770261a903"
+    },
+    {
+      "area": "content",
+      "file": "chapters/014-chapter-xiii-getting-into-the-right-business.json",
+      "sha256": "62629df5c4280ffaf08cb872d3ca303e010e19c308ff4fae1a08a7945632faa8"
+    },
+    {
+      "area": "content",
+      "file": "chapters/015-chapter-xiv-the-impression-of-increase.json",
+      "sha256": "f79a6e5794d807be3b97391f5a8a17f2e2a64e5fe0631f73e71b5fcbb1ad69e6"
+    },
+    {
+      "area": "content",
+      "file": "chapters/016-chapter-xv-the-advancing-man.json",
+      "sha256": "3ae16ad5ee9bdf1bc5a214cd6f20a782f4321e17145dde609a2bfe2579b82e17"
+    },
+    {
+      "area": "content",
+      "file": "chapters/017-chapter-xvi-some-cautions-and-concluding-observations.json",
+      "sha256": "ee4536f38e76f0dc5c527f272ae7d1f114fcb61c8cb80eaf4ae9518a472ec719"
+    },
+    {
+      "area": "content",
+      "file": "chapters/018-chapter-xvii-summary-of-the-science-of-getting-rich.json",
+      "sha256": "f38efabbf68f9c6de3455e473f2be9930d4a51283cc8942ee9f01f375121f7ac"
+    },
+    {
+      "area": "content",
+      "file": "raw/source.txt",
+      "sha256": "4de04867ec7814f6e7053582eaf50ad3c6817256d06141a5cee93c64f499557b"
+    },
+    {
+      "area": "content",
+      "file": "source-rights.md",
+      "sha256": "3d99eb2514da02d73da1b903fcb4e272dc1155dd73802f512e7c3ac2db1ac558"
+    }
+  ],
+  "package_inventory": {
+    "approval_evidence.json": "2d53c92d83ef05349d550650f271a216c54be3c667596b2b788d266998f1fb8d",
+    "chapters/chapter-001.json": "ed9d306a0bf198120c65aabd95f1011c69972dfe855e7eff4ef0bdab02903efa",
+    "chapters/chapter-002.json": "ab639f30648a642710f927b65c6066094fb01b8aa0f20bcecc4b1520caaccb56",
+    "chapters/chapter-003.json": "d2d4be96ac1636a3c3cf256302262c8ec52cbf99d2ff77f53cd3949c0b84ceea",
+    "chapters/chapter-004.json": "c21f9eb9a075126da8a44c27218241b2e3c231d07c159c8dcc674fd61ea76c87",
+    "chapters/chapter-005.json": "bdf40302374fe13649ff56bd155d91048f7994a71ab83c2ae9f5f405ba5e212b",
+    "chapters/chapter-006.json": "03f09952d5111d0faa1dc5cd2b32e18e3b343c45f635cb993d6497cf2de581c6",
+    "chapters/chapter-007.json": "6ec6c0887b7a428302af800c9485443e5345c463465474b8651348c66ac0686d",
+    "chapters/chapter-008.json": "7c4b25048dbe4d06ae8bcced7a5ef6a8b9ef9302bcba4a621af16450db2c020f",
+    "chapters/chapter-009.json": "227b7a5ca87383d711d9c0441ab26d9dba67538261a9fc0372abbf413d0a2ca8",
+    "chapters/chapter-010.json": "9fd16a6fa0d207110cd8345f150b9575c8e6aeca07c442e8861f1b19ff01a5bc",
+    "chapters/chapter-011.json": "e59038a7eb3e104d3c4b68ba3e96704aad025e988f86b09e092d3f6f447f20f2",
+    "chapters/chapter-012.json": "a0e4eac4315a6ec73f378f6896c46509af3f77e1ee35e3151ead86c732b2089a",
+    "chapters/chapter-013.json": "0887e80584d2dcc41f5915d848c8e1426bf9e4efdb6e7b17f5b9576b0aa7332e",
+    "chapters/chapter-014.json": "052669e99e081d17e9e5e7d8cba5097a1c35d74692253246906f1cbfb987abe7",
+    "chapters/chapter-015.json": "8ef3ecb1e363fc95adc4f9832604fdb23313c2fc1db568e232ac48f863531588",
+    "chapters/chapter-016.json": "466c8da81c1f9c4539d55315f4b035b86adcb80a2bc119666b60fcce0c0e9b3c",
+    "chapters/chapter-017.json": "696a398abd98a5ecd187d6d5e157f76c3c5636e307983593d405c5526cd4d1a3",
+    "chapters/chapter-018.json": "e8930930e2e78ee34d8c7b57e2f00c035cecade2cd8aa61880df20cf9f0cbc14",
+    "checksum_manifest.json": "1543e46ede27fa8e6f35e2d002939d8213ba7ea9085215f2b7540cada37fda3d",
+    "cover_delivery_derivation.json": "f1461997dc783ee540a5b9ea7bf779182ea0700db1f0a0daebfc739904a37767",
+    "cover_provenance.json": "d3cdb56dbee7843b567bbdb72e0a3704e6ace8246c3e991efa45014e2ae3f750",
+    "highlight_sync.json": "0ec7bf5934ded3c72ba3bf13df6d8e6e698d3c3287f64c3a7050d3e2e47ab997",
+    "public_book.json": "481cec1d5841afa7c92a714867f406f734f345fb7b47ff3a5a7a98e9b373799d",
+    "publication_authorization.json": "72033a936e2cbd749e9f6237bfc6111c8822fa4d790be77590e29f2c59f1c397",
+    "publication_manifest.json": "ef05079b5ecd62a8bf195cd1a86c13500df0f6cdefd6ed7aed9c0a1b1c36670f",
+    "reader_manifest.json": "a42883b4eb214ae086998672472b0f86c9709e550da35c87789f95564cdefdb7",
+    "rights_decision.json": "b82e6a6bfc900abde1015064a3a231db7694c68fff182d8d1834999caa1edc22",
+    "source_evidence.json": "6324de50de9db456175bcd2cbecec794641fa8bdd322d2de2b49eaacc713a117"
+  },
+  "package_inventory_sha256": "982a00c6122b6fa1b5744167a0d1d57727ff57e042990eb6c33a8c71762feb69",
+  "production_observed": false,
+  "acceptance_or_registry_mutation_by_reviewer": false,
+  "next_action": "Root alone may make actual prospective automated acceptance after both independent PASS, rebind changed package/registry hashes and obtain fresh accepted integration review; protected CI/deployment/canary/truthful readback remain gates."
+}

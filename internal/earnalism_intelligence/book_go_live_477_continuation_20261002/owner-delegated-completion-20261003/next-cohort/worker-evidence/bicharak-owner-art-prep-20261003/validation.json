@@ -1,0 +1,49 @@
+{
+  "slug": "book-5704b31005",
+  "status": "FROZEN_UNACCEPTED_PROPOSAL_TWO_FRESH_REVIEWS_REQUIRED",
+  "proposal_path": "/workspace/scratch/181ef0a25f05/bicharak-owner-art-prep-20261003/proposal/data/controlled_publications/book-5704b31005",
+  "source_validation_sha256": "89eac8e38ab78c63ae74dc799b89c6fe6fef9aa5755e55c645c94a1dd7ea11f6",
+  "cover_preparation_sha256": "94be6810f3bb0c9fbee839bb767f48eb571a650788605887327fc85673f21e08",
+  "preimage_inventory_sha256": "611a5f016db4f397189412e0667246fe5ac0653e1ab104c249f5e625f8b3cef6",
+  "package_inventory": {
+    "license_notice.json": "1fc9cf8fae864434f95bc34656a96672c55d852f3dfdad4a1f386a1a1cc4e01c",
+    "highlight_sync.json": "e58d907c1d0fa2ae194a04c11b6d9eef3f35f188f6d22fd7eb4cc1fac84465bd",
+    "source_evidence.json": "f7d3ac1cbe169532038b008d48c0313290cedca638d23c7696d75d3a0c072f3b",
+    "source_integrity_validation.json": "89eac8e38ab78c63ae74dc799b89c6fe6fef9aa5755e55c645c94a1dd7ea11f6",
+    "publication_manifest.json": "6cc82e3f6c64d168ad93c4e679ea3bab821a97955ebe5225a95f6c13d75f8285",
+    "reader_manifest.json": "6c7daced7a35b9f20ba2f8828e5636d7c644e6ceb272f1707871adafb5a2b759",
+    "publication_authorization.json": "270311f5a1b29fd49ed2c5e2b50bfff7004439b537d91dd8e2de678e69615467",
+    "approval_evidence.json": "439cba2b2a0eb7acce8eddebe3bb1e78a0d250949812e140ab4249aa55cc4b76",
+    "public_book.json": "1e06b7ce1b81bc98b3677fc5e5999aa41862fbbd5a736d5755543b85ba660819",
+    "rights_decision.json": "f47ba8892381ca6201ee11c6b4ac2371cd0417b5c31f6c502a269a78b60b1a6a",
+    "checksum_manifest.json": "aafb1d0ae21a18c85b2807d6f84c96c3d8c4c6b63be58ba7de102735688b809f",
+    "cover_provenance.json": "11b9a5b36b710e84941171ad69d3975ae9230e17af120a8af53d59ad1609aa59",
+    "covers/back-delivery.webp": "4e0a187bd92e75d5b4fb97a670516bacc6183862672090f03ed5dce9547c5709",
+    "covers/front-delivery.webp": "8f64cc7c2a33820dfbfe55a635f70a8a0fd19959c71e3290bdeeadd45c2531a5",
+    "covers/back.png": "a99c6c0e27712090637651204cfb0aa5809442ddbc3b5e99da35828a34c82a08",
+    "covers/back-prepared.png": "f470d039657c0f6068ce708f2e1380ccdba297132434ac0c5c1434c488456e7e",
+    "covers/front-prepared.png": "c58421cc10daab55ce40478452acbd0c8c0977761753a6d01c63db2b67b56b21",
+    "covers/front.png": "a914d173de6f5cd9486fd91a7b69188d156ac7623ebc9f8f89173acd1c48d104",
+    "chapters/chapter-001.json": "e0325632daa997c635a64d46073efbf6d8fda511635e9b4ababfa3bab79dfd5c"
+  },
+  "package_inventory_canonical_sha256": "1a949adf6f49f3886bc690e4987fd2cf198373419a932eb3aa0ab261ace7f725",
+  "decision_raw_sha256": "f47ba8892381ca6201ee11c6b4ac2371cd0417b5c31f6c502a269a78b60b1a6a",
+  "decision_canonical_sha256": "307459ebf24b761f7c82d029ea697911f8914d51734a59172bef45f0579885b1",
+  "removed_archived_components": [
+    {
+      "file": "approval_evidence 2.json",
+      "sha256": "bd7b06c58b8eb1efa01ec1d051f60d79463205c51027615a924603eba0980bd5"
+    }
+  ],
+  "source_chapter_license_sync_bytes_unchanged": true,
+  "effective_audio_disabled_claims_clean": true,
+  "actual_acceptance_created": false,
+  "canonical_or_production_mutation": false,
+  "next_action": "Two fresh independent exact typography/copy/delivery/package reviews; PASS permits prospective acceptance paperwork, substantial HOLD causes terminal exclusion without further repair.",
+  "recursive_all_active_json_claim_scan": "PASS_NO_POSITIVE_AUDIO_EXPOSURE_OR_OBSERVATION_CLAIMS",
+  "checksums_verified": 16,
+  "dimensions_verified": [
+    800,
+    1200
+  ]
+}

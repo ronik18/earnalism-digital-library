@@ -1,0 +1,95 @@
+{
+  "slug": "the-time-machine",
+  "checks": {
+    "all_checksums": true,
+    "components": true,
+    "source_reader_highlight_unchanged": true,
+    "all_chapter_bytes_unchanged": true,
+    "all_chapter_content_hashes": true,
+    "font_and_license_exact": true,
+    "owner_fact_exact": true,
+    "inactive_unaccepted": true,
+    "recipe_source_sha": "b898c678a7a218351db3dcd08d163c86b658451f17c976b9e93f586300d76f9c"
+  },
+  "assets": [
+    {
+      "kind": "front",
+      "original_sha256": "5eb21ec7c4e3aa4a75c1d3e51de7f78f172850b450d80cc06ca7ebe54f5f9997",
+      "prepared_png_sha256": "97ea6f6978a5bb4d2edcea13d426019fcb6b46a731fcabe34cb40666e49b5ac0",
+      "delivery_sha256": "2b3e8c93c4ba497456bfd88c7233be9b15a1305397501022f807aa3574746d7a",
+      "png_recipe_exact": true,
+      "outside_mask_RGB_exact": true,
+      "webp_recipe_exact": true,
+      "dimensions": [
+        600,
+        900
+      ],
+      "bytes": 66758,
+      "budget_pass": true
+    },
+    {
+      "kind": "back",
+      "original_sha256": "982e280d4e7a9c7859ac9f071fb20dac6f4fe7f382e1a724d96bea036af2f015",
+      "prepared_png_sha256": "fcbda9911c8ed2437640b3dbf01a0ce6c20879c80d93eb9ef9f0268ba60e0f60",
+      "delivery_sha256": "f14904314cecf4e887358e2a6dd16a512936fe5e42314b281e309f994a54a585",
+      "png_recipe_exact": true,
+      "outside_mask_RGB_exact": true,
+      "webp_recipe_exact": true,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "bytes": 43386,
+      "budget_pass": true
+    }
+  ],
+  "rights_decision_raw_sha256": "adc5329befe7316c2dadffcda74a5a7d23bf9f75f3fbe3203037e2b33820e763",
+  "package_inventory": {
+    "approval_evidence.json": "525ca18721bff177acdecc57adc394a5a1f1a2ea25055f5fa1a2215ae8f80197",
+    "chapters/chapter-001.json": "5026ca0b8c4e8b2528a0d439430eb02dee85f578fc4ad47c6f5fb0207d8f0f1c",
+    "chapters/chapter-002.json": "724f755fedc1f1561afeaf6d65a8d68d4f7cc44103552e28ba06c1b8f5d550d0",
+    "chapters/chapter-003.json": "62208249328b765d8dc6cb53a875640c4208293c65e0b9b3ccb905104434ea18",
+    "chapters/chapter-004.json": "0e690367577b44e7d92a2beb6222894ccb41fd424c9497db2a3faa012579c4c3",
+    "chapters/chapter-005.json": "8e2effd2b09a9769a053a5b4c7a8083f09c85be111d077ab56e8a32e7a08c858",
+    "chapters/chapter-006.json": "13cf9aad33dfa3f6dd07eebbce0c47018daae6c28ff3a1e5f366969cec18008a",
+    "chapters/chapter-007.json": "fb7e644639826d0a660e33c6be6b6fc02066c459e63c9d86390989f92c07ef1b",
+    "chapters/chapter-008.json": "84fcc02f2dcf70b049e5d274469848c4d92bd2fa5396b4fdc5b5a06854c14450",
+    "chapters/chapter-009.json": "2cc6a284e98a1b2125554ebb493f8ed7acb83c506c40502caad0dfbf238fc3a7",
+    "chapters/chapter-010.json": "a1405ca9e737a803891c8000448bd1c02cbb834f05cc85e8ed0d8594daf9942e",
+    "chapters/chapter-011.json": "340946cfedb8ab01062ca8fb8533722667929dc402d2afdc8965f91205d6009f",
+    "chapters/chapter-012.json": "d153389de53546d2f8b44c3f9e5b17978362bf40bac5ca2e9be696885bdc6957",
+    "chapters/chapter-013.json": "d22476bd98c946ce4947c2e88893655eb74285abc0d68480a014d9271e816e5d",
+    "chapters/chapter-014.json": "16c807905844fb20e320a58dc2fb59f3fe1dc0e626ada5a428bc779f38c1b871",
+    "chapters/chapter-015.json": "827d1b25fda62266b3e3e11c0230daa7020daa34ecbae14dc7cedb4a44c14b49",
+    "chapters/chapter-016.json": "9065f35c40f3494e41d57045c34168bd940245f076e07b9875b6af8a0859139e",
+    "chapters/chapter-017.json": "556c5d180a99eafaeae363ce34e04fa09d30fb96900de8ed69dee1f5c0f64f04",
+    "checksum_manifest.json": "2417c0dffb6d75d410d2a5598ae10e5303feb79d93bb05f24c97f5e06d5cec3a",
+    "cover_preparation.json": "3fe9780bc1564a183eb535e3e73fda63d88c37871a0b3eaedd5108ec7778202d",
+    "covers/original-back.png": "982e280d4e7a9c7859ac9f071fb20dac6f4fe7f382e1a724d96bea036af2f015",
+    "covers/original-front.png": "5eb21ec7c4e3aa4a75c1d3e51de7f78f172850b450d80cc06ca7ebe54f5f9997",
+    "covers/the-time-machine-back-982e280d.webp": "f14904314cecf4e887358e2a6dd16a512936fe5e42314b281e309f994a54a585",
+    "covers/the-time-machine-back-deterministic.png": "fcbda9911c8ed2437640b3dbf01a0ce6c20879c80d93eb9ef9f0268ba60e0f60",
+    "covers/the-time-machine-front-5eb21ec7.webp": "2b3e8c93c4ba497456bfd88c7233be9b15a1305397501022f807aa3574746d7a",
+    "covers/the-time-machine-front-deterministic.png": "97ea6f6978a5bb4d2edcea13d426019fcb6b46a731fcabe34cb40666e49b5ac0",
+    "highlight_sync.json": "49f9d125f4a876a6e07a1c61e56607b84db13ef3bd9d2595ac8fc021cb52887d",
+    "public_book.json": "21a2766ec58756efc68a438455aeacbe259174f9cbf63a71f0152a0635f169a4",
+    "publication_authorization.json": "5a6a8ac37bb0260d08397f3e445a546d613e84b7eaef40f00b91d84673b96146",
+    "publication_manifest.json": "5e1fcda1e55d05f1813f86e26e4e87a5cc12b70b48d9210205a02caffb28d729",
+    "reader_manifest.json": "1874f35f864ccffa65a9d7e38312c3f84df7fd8880120db0ac4ead237d1d913a",
+    "rights_decision.json": "adc5329befe7316c2dadffcda74a5a7d23bf9f75f3fbe3203037e2b33820e763",
+    "source_evidence.json": "010c2fd7d0fa5ae1370f081876448c94a9bad177df7fe0b621b0f91c39af0cf5"
+  },
+  "fresh_actual_pixel_review": {
+    "PNG_front_back": "PASS",
+    "WebP_front_back": "PASS",
+    "method": "Inspected exact actual decoded images, title/author complete and legible, substantial thematic graphics retained, no runtime fallback policy claim or inferred original generation method."
+  },
+  "production_observed": false,
+  "acceptance_created": false,
+  "disposition": "PASS_SOURCE_ART_DERIVATIVE_PREPARATION_BINDING_PENDING_ROOT_ACTUAL_ACCEPTANCE",
+  "new_acceptance_and_release_gates": "Two exact independent reviews, actual prospective root acceptance, fresh accepted-package bindings, serialized integration afterPR510 normal protected CI/merge/deploy/canary and truthful readback.",
+  "complete_source_review_ref": {
+    "path": "/workspace/scratch/181ef0a25f05/new-acceptance-review-a/classics-complete-primary-source-review-a-v1.json",
+    "sha256": "7046c2c02c4e627906339fe8b5222ab2c1320f3dbcaa75fa08e2bf16ae2ee9d0"
+  }
+}

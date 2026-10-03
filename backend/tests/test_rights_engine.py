@@ -318,13 +318,20 @@ def test_admin_rights_report_endpoint_requires_admin_auth():
 
 def test_publishing_create_and_update_paths_call_publish_gate():
     server = server_module()
-    book = approved_book(rights_metadata={"source_license": ""})
+    # Keep this missing-license unit fixture distinct from the now accepted
+    # canonical Pride and Prejudice manifest, which owns its exact rights truth.
+    book = approved_book(
+        slug="synthetic-missing-license-publish-fixture",
+        cover_image_url="https://example.com/fixture-front.webp",
+        rights_metadata={"source_license": ""},
+    )
 
     with pytest.raises(server.HTTPException) as create_exc:
         server._assert_publishable(book)
 
     assert create_exc.value.status_code == 400
     assert "Rights verification" in str(create_exc.value.detail)
+    assert "Front cover is required" not in str(create_exc.value.detail)
 
 
 def test_runtime_source_and_asset_mutations_block_published_unsafe_books():

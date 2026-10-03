@@ -1,0 +1,15 @@
+{
+  "audiobook_manuscript_sha256": "0ec24ecbd6d5d594e74131b529b4e3d3ece31ae9f4130210f3c120c9db1ea62d",
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "kokoro",
+  "audiobook_voice": "bm_george",
+  "audio_asset_slug": "the-selfish-giant",
+  "audiobook_assets_updated_at": "2026-08-16T06:45:34Z",
+  "audio_status": "AVAILABLE",
+  "audiobook_release_gate": "APPROVED",
+  "audio_qa_status": "QA_PASSED",
+  "audiobook_release_mode": "SERVER_OWNED_CONVEYOR",
+  "audio_sha256": "824944d0c068b4f4f45cb750e018918b2af55c5e043cd29417ce2a756e9a4c67"
+}

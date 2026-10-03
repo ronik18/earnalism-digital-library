@@ -1,0 +1,38 @@
+{
+  "slug": "dsires-baby",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "files": [
+    {
+      "file": "approval_evidence 2.json",
+      "sha256": "17c9e18d5f6a978c33ce1fecdbff48c621da93dd255acc7e8a363486643b629c"
+    },
+    {
+      "file": "approval_evidence.json",
+      "sha256": "af14f48def2add9e702bebba52421441c6088e27b92e8b642cfd1831aa3f1b14"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "4c5f2ef8b4ba48d637ac19f0317c4dcb713d70577e49f6f51ae17999579b019b"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "11b60f5ca19e9fabb00a130253b197b9d842de217c0c66b6b9999f5160b093e2"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "9e6623222de051bbd76fa4aee9d90f8634c3f4a28ea16fae80bc22a7aae0d728"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "3d530252d7452a2ddc892f5d0406f60db23d0cbfa207c71265d01b095f6c77f0"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "83b0d5f8cc0bfbb540cb2bda14f5b974ebbf999c5c636a7f18bf6135a51737ee"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "cbd008f6d99350ba22ccd90ebb8e75d3ce71cd279d632a7a4ecf7c1a9b2bf6fb"
+    }
+  ]
+}

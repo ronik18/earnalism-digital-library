@@ -1,0 +1,57 @@
+{
+  "schema": "earnalism.independent.exact-package-review.v1",
+  "reviewer": "independent_reviewer_B",
+  "slug": "the-open-window",
+  "reviewed_on": "2026-10-03",
+  "disposition": "PASS_UNACCEPTED_INACTIVE_PROPOSAL_BINDINGS",
+  "visual_source_receipt": {
+    "file": "/workspace/scratch/181ef0a25f05/new-acceptance-review-b-20261003/the-open-window-new-cover-source-review-b.json",
+    "sha256": "d1f9ed26e97670c8c4c64409bb1cdf7402cb6180bbef216a1043bcd9caf4b79f",
+    "scope": "Exact new asset byte identities unchanged; initial paperwork gaps resolved in this frozen binding review."
+  },
+  "proposal_sha256": {
+    "highlight_sync.json": "b2742d2516aa71aa23f79d33dba6ff5c27c5036c6b581197b6c55f991e97215e",
+    "source_evidence.json": "bec621140c44c17f56aaa3599d60cb3293be54a8287cf52fcb2a58e10ec9880d",
+    "publication_manifest.json": "c2be01516de1009c0b2f85d0323f1abb532ffc85660005ca3afb002bc83486ee",
+    "reader_manifest.json": "8f5a8d563c587a28d30e1e001447cdb5328bdcd49df4b61d8d7838401aac6151",
+    "publication_authorization.json": "b721690f38aedead88b16e6d989557c84571da8a9e4ec02cc549071a5ddbdc3e",
+    "approval_evidence.json": "287ff7059f7d8e04407a3ba056726dcc4e45fe773ca989c89b1566bf7ff09824",
+    "public_book.json": "780205125e1930087b8033936bb4b73414ed451212ad9fd4c8939cb4a85b4d64",
+    "rights_decision.json": "cd315fa565962854718503497590a5e6933561470a2f00eebf8e1a001b48f112",
+    "checksum_manifest.json": "6a3349c1068fd4fa76c7fbfff7b8f0c14b8bfc03ce78dc07fba57c3702aa1336",
+    "cover_provenance.json": "9540748697d562d47c872ee30a8bf8a88dcd7f87ce1883b8e6d0233c012f2fad",
+    "covers/back-delivery.webp": "6c87ea0a562e727b5527711f6f279bf9b95cad6a0817d15e36f783fd87016e76",
+    "covers/front-delivery.webp": "fd16c96883897722c2da7c49e2012dd9e5a3771bf2f99d11b89a29add60a8960",
+    "covers/front-layout-repair.png": "22a9981529ca3c46a81fae68c056b43d2253595f436110767c153eb9344589bd",
+    "covers/front-original.png": "351653d69bebc7567f868007370fb65b72eadbd41f7cbb2ee276e6024d0a1bb1",
+    "covers/back-original.png": "19717b3bb51630712f2f8cad58859361c9015ab726f3335b196c2b5924660a0d",
+    "covers/back-layout-repair.png": "5865b811a2feb412655fa56f6b2a9f6e6fbbd39881423bf14c77e1844a827829",
+    "chapters/chapter-001.json": "bc12b5dbae5cae481b59d11eb9fc43a7c875f4cf2b37d52107bce93957375a00"
+  },
+  "proposed_rights_decision_raw_sha256": "cd315fa565962854718503497590a5e6933561470a2f00eebf8e1a001b48f112",
+  "proposed_rights_decision_canonical_sha256": "3e6f3be3fe77ebfe09bd5913fbd4e16368d252d3e755dc4bccdf3606864027f7",
+  "checks": {
+    "7_component_bindings": "PASS",
+    "14_checksum_entries": "PASS",
+    "publication_manifest_artifact_bindings": "PASS",
+    "authorization_approval_cover_binding": "PASS",
+    "source_chapter_highlight_unchanged": "PASS",
+    "prior_root_backend_preimages": "byte exact PASS; historical positive audio production evidence preserved only archived",
+    "delivered_dimensions": "800x1200 explicit PASS",
+    "rights_basis": "Exact prior IN decision basis reused; no original story date guessed/no extra territorial rights asserted",
+    "audio": "Effective public/reader/approval false flags and empty media; historical production_audio_evidence absent from current candidate PASS",
+    "prospective_acceptance_state": "PROPOSED, conditionsfalse; no automated acceptance created yet",
+    "production_facts": "No current live/canary/readback claimed"
+  },
+  "correction_receipt_sha256": "05c1a392c5b13855f54e0fef0949936ec3eb6a93348050b89432a0d1ff9a008c",
+  "validation_sha256": "e6b87d288185cd531fd932828b4befaed6aa0bdf73c1c2c5aefef2a90793e42c",
+  "remaining_gates": [
+    "Other independent reviewer PASS",
+    "Root-authorized actual prospective acceptance with new exact component records/dates",
+    "Fresh accepted package binding review; serialized integration/protected CI/deploy/canary/truthful canonical readback"
+  ],
+  "acceptance_created": false,
+  "production_observed": false,
+  "audio_authorized": false,
+  "canonical_mutations": false
+}

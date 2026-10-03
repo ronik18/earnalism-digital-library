@@ -1,0 +1,117 @@
+{
+  "slug": "the-selfish-giant",
+  "status": "PROPOSAL_IDENTITY_PASS_PENDING_FRESH_TWO_INDEPENDENT_REVIEWS",
+  "original_components_pass": 6,
+  "original_checksums_pass": 8,
+  "chapter_count": 1,
+  "chapter_content_sha256": "c55bef9dcd5883e156af940deb849c67a78a8fae7fc7a1e50ea814aa9ce866c5",
+  "existing_source_fullwork_evidence": {
+    "artifact": "internal/legal/catalogue_clearance_20261002/english/current_whole_work_boundary_verification.json",
+    "artifact_sha256": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e",
+    "slug": "the-selfish-giant",
+    "immutable_identity_current": true,
+    "coverage_review": {
+      "source_byte_receipt": {
+        "requested_url": "https://www.gutenberg.org/ebooks/902.txt.utf-8",
+        "resolved_url": "https://www.gutenberg.org/cache/epub/902/pg902.txt",
+        "http_status": 200,
+        "accessed_at": "2026-10-01T21:04:04.230290+00:00",
+        "response_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da"
+      },
+      "whole_narrative_coverage": "PASS",
+      "chapter_count": 1,
+      "chapter_comparison": {
+        "method": "NFC plus whitespace only; exact ordered whole chapter containment; no punctuation or lexical normalization",
+        "status": "ALL_CHAPTERS_MATCH_SOURCE",
+        "matched_chapters": [
+          {
+            "chapter_id": "chapter-001",
+            "offset": 31789,
+            "length": 8563
+          }
+        ],
+        "nonmatching_chapters": [],
+        "complete_edition_proven": false,
+        "limitation": "Containment proves represented chapter text, not omitted material or full edition completeness."
+      },
+      "first_publication_evidence": {
+        "source": "Project Gutenberg #902 exact source title page",
+        "response_sha256": "77ae1b3c7be77aea82b1f935e531e53f4df43db572cbc14af39d6cd0d5ba50da",
+        "verified_at": "2026-10-01T21:34:27.321920+00:00",
+        "excerpt": "_First Edition_         _May_ 1888",
+        "original_publication_year": 1888,
+        "scope": "Wilde selected Selfish Giant narrative only, 1910 seventh impression; Crane/Hood illustration labels/art excluded"
+      },
+      "author_death_evidence": [
+        "Wilde, Oscar, 1854-1900"
+      ],
+      "translator": "NONE_SELECTED",
+      "editorial_preface": "EXCLUDED_NOT_IN_SELECTED_STORY",
+      "illustrations": "NONE_IMPORTED",
+      "reader_boilerplate_and_trademark": "ABSENT_VERIFIED",
+      "cover": "DEFERRED_NO_COVER_DISPLAY_AUTHORIZATION",
+      "audio": "NOT_AUTHORIZED",
+      "scope": "TEXT_COMPONENTS_ONLY_NOT_RUNTIME_RELEASE"
+    },
+    "containment_alone_is_not_completeness": true
+  },
+  "source_unchanged": true,
+  "chapter_unchanged": true,
+  "audio_historical_claims_archived_not_exposed": true,
+  "assets": {
+    "front": {
+      "original_file": "covers/front-original.png",
+      "original_sha256": "f10e1353932821ab22a0d13b68a40394f06eb1c9a97b04e5e126897dfbb3fcc2",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267898/earnalism/covers/front/the-selfish-giant_front_1600x2400.png",
+      "repair_file": "covers/front-layout-repair.png",
+      "repair_sha256": "e01b95dc8d321678df5c9fe5e395728187ea03984cc69c59ae34471603fb7dc4",
+      "delivery_file": "covers/front-delivery.webp",
+      "delivery_sha256": "777a773d9cebbf236f9bfb79d52d35ca7206c59fc38eb04d85a84abc480d98cd",
+      "delivery_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-front-777a773d.webp",
+      "delivery_bytes": 35612,
+      "production_observed": false
+    },
+    "back": {
+      "original_file": "covers/back-original.png",
+      "original_sha256": "6903c7610ac6141b0f4d8d025e7e9fe9f347e2922996368ef7dd28fe8c18b511",
+      "original_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267899/earnalism/covers/back/the-selfish-giant_back_1600x2400.png",
+      "repair_file": "covers/back-layout-repair.png",
+      "repair_sha256": "6337be1964dfa48aedd7d35233cfdb84f422dd311545b265b9c259444f8795f0",
+      "delivery_file": "covers/back-delivery.webp",
+      "delivery_sha256": "14b007092896bd2d0e4396ba0ecb1e430650a7aa772f855a347a6269daa75e60",
+      "delivery_url": "https://theearnalism.com/assets/books/the-selfish-giant/the-selfish-giant-back-14b00709.webp",
+      "delivery_bytes": 85306,
+      "production_observed": false
+    }
+  },
+  "proposed_components": {
+    "source_evidence": "48732812096bd1158afd2bf90f9e1992796635c5917ab873d10da4e79f77d04d",
+    "publication_manifest": "4859d307ff78fb524fbd0a0972c0677a4e2fdb74a45c44c671943b12b72f02d7",
+    "reader_manifest": "d5ce7da734364efdd9a2bd6eace1ee2df66bcfa0dcf7ea4e99d49502b330fc9c",
+    "approval_evidence": "51256c44750faff02579f480159bfb4d30d9dfb4061e5906a82e6135b64cd54e",
+    "public_book": "b65b1f188367dcac54cf1ba6edd416e4a3906ea0b8adce6bed445b5ba5845cf9",
+    "checksum_manifest": "bc18d25803c3f5371eb244d8da4262b5f6d0ac6d2c61aff0a632aeda1da3aff8",
+    "cover_provenance": "becaa05505a87f54f017f6ef2d80a921196ed281993a22a72bd2b1c3f4dd536c"
+  },
+  "rights_decision_raw_sha256": "711f0bede0a761b9927ae78c71f38711511b590d74843a29346856e79170030f",
+  "rights_decision_canonical_sha256": "a90a3dba5b3ac316c2b285a2fd844b1c72a1a3931b8b7566f2d82afc0d3f6e02",
+  "actual_acceptance_created": false,
+  "registry_allowlist_production_mutations": false,
+  "backend_preimage_present": true,
+  "next_action": "Two fresh independent exact repair/WebP/copy/package reviews. If PASS, create actual prospective acceptance and update dependent hashes before new binding validation; if HOLD, terminal exclusion since one bounded repair exhausted.",
+  "audio_metadata_correction_sha256": "f8ceba8ad39db40b45b264a79ecc1b8f71473e43717500ddee48d164e6a51a90",
+  "proposed_public_reader_active_audio_claims": "NONE_FALSE_FLAGS_EMPTY_MEDIA_ONLY",
+  "proposed_package_inventory_canonical_sha256": "5a4fc58b562d4698f8a2e999e9f1ee42bbd56d1380c92e8941941b72a92ecd2f",
+  "consolidated_final_paperwork_sha256": "200f750db17e6ae9d2ec5687b8f8d0a4458803bfd687971124386c6b85aa9c10",
+  "active_approval_audio_observations": "NONE_ARCHIVE_ONLY",
+  "cover_delivery_dimensions": {
+    "front": [
+      800,
+      1200
+    ],
+    "back": [
+      800,
+      1200
+    ]
+  }
+}

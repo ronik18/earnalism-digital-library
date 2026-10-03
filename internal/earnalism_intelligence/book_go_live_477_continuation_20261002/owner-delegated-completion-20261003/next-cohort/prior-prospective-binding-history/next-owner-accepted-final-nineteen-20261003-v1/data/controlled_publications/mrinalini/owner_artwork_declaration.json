@@ -1,0 +1,22 @@
+{
+  "schema": "earnalism.direct-owner-provenance-update.v1",
+  "recorded_at": "2026-10-03T05:29:43.205668+00:00",
+  "source": "Direct user instruction in the existing issue #477 campaign conversation on 2026-10-03",
+  "owner_named_by_actual_instruction": "Ronik Basak",
+  "actual_directive": "For this campaign, treat front and back covers created by Ronik Basak as owner-provided artwork with owner-held copyright and acceptable publication provenance. Do not spend further time on external cover copyright or compliance clearance for those owner-created assets. Record the actual owner-provenance basis in the acceptance ledger; do not fabricate source facts or human approvals.",
+  "scope": "Exact owner-created artwork identified by persisted provenance and recovered byte hashes, this #477 campaign only. Text/source/transcription/license/chapter/package gates and truthful release gates remain independent.",
+  "campaign_application": "Accept the existing owner-provided artwork provenance prospectively. The retained readable back author lettering on Lokrahasya/Mrinalini/bn-066 has no proven original construction method; that remains UNKNOWN, while the earlier procedural construction-lineage hold is superseded for these exact owner-provided components. This does not assert that the lettering was deterministically constructed, that other artwork is owned by Ronik, or that a human signed a review.",
+  "existing_owner_design_fact_path": "internal/legal/bengali_text_preparation_20261002/evidence_matrix.json",
+  "existing_owner_design_fact_sha256": "b6fb3245ad4342089e3814be4df0da8b48f2bb00a69e7420d74fa8aebecf5e55",
+  "visual_quality_disputes_preserved": [
+    "great-expectations: clipped footer after sole repair",
+    "bharat-at-the-crossroads: clipped subtitle after sole repair",
+    "bn-060: specific back-cover fragments dispute",
+    "the-most-dangerous-game: specific cover-footer review conflict"
+  ],
+  "audio_authorized": false,
+  "production_observed": false,
+  "human_approval_inferred": false,
+  "paid_generation_calls": 0,
+  "prohibited_system_changes": 0
+}

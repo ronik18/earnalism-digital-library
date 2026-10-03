@@ -1,0 +1,103 @@
+{
+  "schema": "earnalism.isolated-runtime-patch.v1",
+  "files": [
+    "backend/tests/test_chapter_index.py",
+    "backend/tests/test_approved_reader_bootstrap.py",
+    "backend/tests/test_controlled_launch_parity.py",
+    "backend/tests/test_rights_decision_gate.py",
+    "backend/tests/test_bn_066_public_audio_hide.py",
+    "backend/tests/test_batch2_guarded_publications.py",
+    "backend/tests/test_publication_manifest.py"
+  ],
+  "historical_fixture_files": 11,
+  "historical_fixture_bytes": 211741,
+  "patch_sha256": "e5e638c05063cdb32fc640671ffb2e1b0baf774ef8b04bee9f3a716dc0001ad3",
+  "plan_sha256": "4cb02f56aac4794633d64b78b630eca1486df4868f55ba8e2932b7364814ba54",
+  "counts": {
+    "release": 52,
+    "registry": 55,
+    "manifests": 102,
+    "chapters": 826
+  },
+  "page_counts": {
+    "dsires-baby": 4,
+    "sredni-vashtar": 4,
+    "the-cop-and-the-anthem": 5,
+    "the-open-window": 3,
+    "the-selfish-giant": 3,
+    "the-science-of-getting-rich": 45,
+    "bn-066": 87,
+    "lokrahasya": 54,
+    "mrinalini": 87,
+    "frankenstein": 144,
+    "pride-and-prejudice": 258,
+    "the-great-gatsby": 92,
+    "the-secret-garden": 146,
+    "the-time-machine": 70,
+    "acres-of-diamonds": 79,
+    "my-life-and-work": 174,
+    "the-principles-of-scientific-management": 78,
+    "the-wonderful-wizard-of-oz": 77,
+    "book-5704b31005": 5
+  },
+  "baseline_files": [
+    {
+      "file": "backend/tests/test_chapter_index.py",
+      "sha256": "915eefbf45654ffa93b5fdc951796c0b4362715ae77936a59a51477d3220f3fe"
+    },
+    {
+      "file": "backend/tests/test_approved_reader_bootstrap.py",
+      "sha256": "eba4a36bbf2f1131f164b95531f245dcfea33052a007b80dd5e0380ce18363a7"
+    },
+    {
+      "file": "backend/tests/test_controlled_launch_parity.py",
+      "sha256": "80564ffecd03e54f210fc6c2512c7d1c5f52ce236e0fec22bcc63a10e06f87d1"
+    },
+    {
+      "file": "backend/tests/test_rights_decision_gate.py",
+      "sha256": "2d8f1fc97520059c7b8fb0c6d91351032da3d7af13e1a4efd5d8e932326be804"
+    },
+    {
+      "file": "backend/tests/test_bn_066_public_audio_hide.py",
+      "sha256": "eddf91010b4262cebb7508c6bf7e857b4e91d1b193e45161033ea2d7ef787873"
+    },
+    {
+      "file": "backend/tests/test_batch2_guarded_publications.py",
+      "sha256": "18bec99fcb97b6c0aa510c461166708ae105c26b4139dbc8f779322e8963f2e5"
+    },
+    {
+      "file": "backend/tests/test_publication_manifest.py",
+      "sha256": "913585646ee5c0ab21f355ad65a784ff66da98e6e6259fa8696c236e06d2e740"
+    }
+  ],
+  "proposed_files": [
+    {
+      "file": "backend/tests/test_chapter_index.py",
+      "sha256": "191300fada71be34aa1bef1f1cf8b39d96ad96fc8afd1ff1a9138543cdae78f2"
+    },
+    {
+      "file": "backend/tests/test_approved_reader_bootstrap.py",
+      "sha256": "75da3e6a520cb397573f8baa1d2efc8492ed2753a8b0c9ddd6e8a9d3ac635fa7"
+    },
+    {
+      "file": "backend/tests/test_controlled_launch_parity.py",
+      "sha256": "2ef06850c9bf08eecb0b4282ebd2c9b96eafe44bf3ec364ed8db4b0d30a9c0fa"
+    },
+    {
+      "file": "backend/tests/test_rights_decision_gate.py",
+      "sha256": "003cf453b05fd06d240006ce08fbc0c7a82da2c14e529cca38bd964477b938d2"
+    },
+    {
+      "file": "backend/tests/test_bn_066_public_audio_hide.py",
+      "sha256": "c83e6ca449f59e6913b30f6ffb176ad9319659f7fca2ed536684942a45cd2915"
+    },
+    {
+      "file": "backend/tests/test_batch2_guarded_publications.py",
+      "sha256": "ef7e28fc2641b7e9737233027eb1a3566d1701522e05e5c6ab2843556b29dcae"
+    },
+    {
+      "file": "backend/tests/test_publication_manifest.py",
+      "sha256": "24fc2cebf1cd1d008253cddf4a07599f8cffdf50da66a96cebedc787b65341c1"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "lokrahasya": {
+    "component_bindings_pass": 7,
+    "checksum_entries_pass": 30,
+    "publication_manifest_validation": "PASS",
+    "all_packaged_images_decode_verify": "PASS",
+    "effective_rights_status": "PROPOSED_NOT_ACCEPTED"
+  },
+  "mrinalini": {
+    "component_bindings_pass": 7,
+    "checksum_entries_pass": 60,
+    "publication_manifest_validation": "PASS",
+    "all_packaged_images_decode_verify": "PASS",
+    "effective_rights_status": "PROPOSED_NOT_ACCEPTED"
+  },
+  "bn-066": {
+    "component_bindings_pass": 7,
+    "checksum_entries_pass": 60,
+    "publication_manifest_validation": "PASS",
+    "all_packaged_images_decode_verify": "PASS",
+    "effective_rights_status": "PROPOSED_NOT_ACCEPTED"
+  }
+}

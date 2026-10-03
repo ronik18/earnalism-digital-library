@@ -1,0 +1,182 @@
+{
+  "slug": "the-wonderful-wizard-of-oz",
+  "generated_at": "2026-10-02T03:42:20.943020+00:00",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "e32c94465cc0f510f0dfeb4f1b935cbf9b786dd0f1ef17584b7a8667021e9e9a"
+    },
+    {
+      "file": "chapters/chapter-000.json",
+      "sha256": "118662968ffae09a39b945b4e23611134f002de106fc175769bcc6b0d3f23171"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "47eba6c96f51a6bcb2bde839312a2a487dfd7cbbefb64d9fd8f26f9e09b8a2a3"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "8c32e4ea4ce72dca82dafc112f750adeadaa8371715022e01ce15f2209c828ca"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "7a5162887dd0f1d7caedb9c389c09af052cb7662aa9bf88cfc1a833b3ff681bd"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "b2abb71a6657d4996d40a5153fd6fc9da28645cf213b7905aca12ef368da5104"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "0671e6fb23eb9bee17bea9ec34f735227af6907fc09821014116cd78fe4dc103"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "7f544ecf190fc44e24bf9da2ae9c1ca721f061cd4e84600beb25c911b586ca10"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "059ce4904d10f05ba6174dd9de4121239844e98dbf6e9f71bd905291bc6cf369"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "e82cab6532aec3f5cbc81525475862a79efb7477da2be5a4fa5702df7fa72ffc"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "ccd55e81a04d06cf466ac4efed76bb3c41f20df66fe5a7a28b37bd0f3f1b489f"
+    },
+    {
+      "file": "chapters/chapter-010.json",
+      "sha256": "e405c6479f80643ffae80cb112237daba55b94308d0e2489a8196e991f91db82"
+    },
+    {
+      "file": "chapters/chapter-011.json",
+      "sha256": "1548a87a716c760b5bf4ac9334e185ac3b9692e099dbcc892a5241dfcd53e076"
+    },
+    {
+      "file": "chapters/chapter-012.json",
+      "sha256": "19a281cd8265ea71bad736152d21a3c9ceb3ad4631d6c314391caa016cbdcb52"
+    },
+    {
+      "file": "chapters/chapter-013.json",
+      "sha256": "a33c3e949883bab750a4a3fed0b1d7a8ccb466b741b11d49f656ecae48632eff"
+    },
+    {
+      "file": "chapters/chapter-014.json",
+      "sha256": "71a15fe2fc31371944909ddb9c70caef653f4bc6262ab488bbb4c7a793138574"
+    },
+    {
+      "file": "chapters/chapter-015.json",
+      "sha256": "c0c5044d71a15d20ef413473916b6d263ce4bc07fc8d9ad9c309a7ba41d2c9d9"
+    },
+    {
+      "file": "chapters/chapter-016.json",
+      "sha256": "ef577dfed5d075f8f90c31f1bb82a24957be8718b9718cfdb28f7fd8df376554"
+    },
+    {
+      "file": "chapters/chapter-017.json",
+      "sha256": "4765b4825ee8014b8d6dcd96d2bd31174087f11e3f52ed19fbe830d63963af60"
+    },
+    {
+      "file": "chapters/chapter-018.json",
+      "sha256": "665d674b8eb7dcf30ebee5f00c38877b12e9f874f0d708371a82803d7743a605"
+    },
+    {
+      "file": "chapters/chapter-019.json",
+      "sha256": "89627bd9ec55bd369f6805538ea2d1dbe8073f6c7c4776199776ef332f62d7d8"
+    },
+    {
+      "file": "chapters/chapter-020.json",
+      "sha256": "06ded42ac082874263b58c4c80c0bd0be859c2506b762035f8dff7bbe3480954"
+    },
+    {
+      "file": "chapters/chapter-021.json",
+      "sha256": "06d09334a48d348344d7f21da5ada91c6f949903cfbec602e80c7fe55e7d8f84"
+    },
+    {
+      "file": "chapters/chapter-022.json",
+      "sha256": "bc298db53227232ae528e897fc85091c706904bd1d4cfdbb32127f089496d5dd"
+    },
+    {
+      "file": "chapters/chapter-023.json",
+      "sha256": "bf4ed5e7ebf8b5402a9d58545161150f084443e3f5b95234445dde15dfb3acec"
+    },
+    {
+      "file": "chapters/chapter-024.json",
+      "sha256": "64c9fab6b003c799f01caadbb2b4a1278149c092467b0f65a1647d35cf382386"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "32c5e5256e2584ee9acda5cc8a83ecd7dbccd7ba23a224339c0b9b34c5a753d2"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "140e564928b6bf92260cdab157bb6530505ec3e1dd32e30f8041fa1590ca31f2"
+    },
+    {
+      "file": "publication_authorization.json",
+      "sha256": "b3bfaea84f37def911f71c7122fda4464f8711541bf5dce39e0e4da8b3256b64"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "2323b65af075000645cd7ac0f3f841f4583ac1407ddefd849a1cbc7b06795d71"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "7ec444ed90caa41fb950757933ee7399ef94fceab855bdd8c3e52a6806358ec5"
+    },
+    {
+      "file": "cover_provenance.json",
+      "sha256": "007d1c031b4effb6b765d048945383d3996e3be4a9fa4c8ddc9298787be7c23f"
+    },
+    {
+      "file": "cover_delivery_derivation.json",
+      "sha256": "c815944d45b1664634b3680544680b6da3c36de93a0a966fd7454d0c99177e73"
+    },
+    {
+      "file": "owner_artwork_declaration.json",
+      "sha256": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264"
+    },
+    {
+      "file": "evidence/current_whole_work_boundary_verification.json",
+      "sha256": "6d5922046002670c8f26c47ae0d5ee6d1fc9c18481ef9e6750ca91496c35b90e"
+    },
+    {
+      "file": "evidence/original-cover-receipt.json",
+      "sha256": "6253d6df5544a0226495a8a73b6c6a00f96e5037037db7656dd1a8326de36d2f"
+    },
+    {
+      "file": "evidence/render_delivery.py",
+      "sha256": "ff3cf668b08e534adaefd57998208efa3422efcdf01aa9d25a8aabcc0d662a59"
+    },
+    {
+      "file": "evidence/delivery-receipt.json",
+      "sha256": "c815944d45b1664634b3680544680b6da3c36de93a0a966fd7454d0c99177e73"
+    },
+    {
+      "file": "evidence/preimage-inventory.json",
+      "sha256": "4f570611cb51d024ba9b29b7b5aef7ca2c7a64f2ffd48a41cf630e458f70ad19"
+    },
+    {
+      "file": "evidence/wizard-whole-work-proof-reuse.json",
+      "sha256": "b477cd253c51a2ce5ccffd622dfbc5dc7e5cd5b084a53467e7deebb04fd5296e"
+    },
+    {
+      "file": "covers/original-back.png",
+      "sha256": "29204906556020adbbdb10a89b7fd9b26f08703f6327a0de63cdb0d50b8821fc"
+    },
+    {
+      "file": "covers/original-front.png",
+      "sha256": "80fbd30875f8b715fb580732f9eef2d46bc7ddc74d50cd41d5276dbfd60ec32a"
+    },
+    {
+      "file": "evidence/review_a.json",
+      "sha256": "a034ba1b836c80898ec9a4ccbf5268c09839bd7d9c6b47169507657b74bd7878"
+    },
+    {
+      "file": "evidence/review_b.json",
+      "sha256": "7a7306dd7ddd6dd0fc680ca49045b75f83f76592af015ea99d67530892fa804d"
+    }
+  ]
+}
