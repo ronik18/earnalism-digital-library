@@ -151,29 +151,3 @@ class FinalClearanceBindingsTests(unittest.TestCase):
             self.assertNotIn('content',receipt)
 
 if __name__=='__main__': unittest.main()
-)
-            auth=json.loads((package/'publication_authorization.json').read_text())
-            self.assertFalse(auth['audio_authorized'])
-            self.assertFalse(auth['production_activation_authorized_by_this_file'])
-            self.assertIn('TEXT_READER',auth['scope'])
-            if is_live:
-                self.assertTrue(auth.get('publication_authorized'))
-            else:
-                self.assertEqual(auth['scope'],'TEXT_READER_ONLY')
-            notice=json.loads((package/'license_notice.json').read_text())
-            chapters=sorted([json.loads(f.read_text())for f in (package/'chapters').glob('*.json')],key=lambda c:c['order'])
-            self.assertEqual(notice['chapter_sha256'],[hashlib.sha256(c['content'].encode()).hexdigest()for c in chapters])
-
-    def test_original_replacements_preserve_auditable_old_identity(self):
-        import json, hashlib
-        from pathlib import Path
-        root=Path(__file__).resolve().parents[1]
-        for slug in ['book-95624627d5','book-5aedda79fe','book-a23625bf36']:
-            receipt=json.loads((root/f'internal/legal/catalogue_clearance_20261002/bengali/{slug}-original1894-edition-migration.json').read_text())
-            chapter=json.loads(next((root/'data/controlled_publications'/slug/'chapters').glob('*.json')).read_text())
-            self.assertEqual(receipt['new_chapter_sha256'],hashlib.sha256(chapter['content'].encode()).hexdigest())
-            self.assertNotEqual(receipt['chapter_sha256'],receipt['new_chapter_sha256'])
-            self.assertEqual(len(receipt['base_git_commit']),40)
-            self.assertNotIn('content',receipt)
-
-if __name__=='__main__': unittest.main()
