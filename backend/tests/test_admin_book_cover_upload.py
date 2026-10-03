@@ -22,6 +22,7 @@ from backend.config.book_cover import (
     canonical_cover_kind,
     content_addressed_cover_candidate_asset_id,
     validate_book_cover,
+    validate_raster_upload,
 )
 
 
@@ -71,6 +72,18 @@ def test_book_cover_validator_rejects_spoofed_small_and_landscape_files():
         validate_book_cover(image_bytes(size=(200, 300)), "image/png", 4 * 1024 * 1024)
     with pytest.raises(ValueError, match="portrait"):
         validate_book_cover(image_bytes(size=(1200, 800)), "image/png", 4 * 1024 * 1024)
+
+
+def test_generic_raster_validator_rejects_mismatched_mime_and_malformed_bytes():
+    with pytest.raises(ValueError, match="does not match"):
+        validate_raster_upload(image_bytes("PNG"), "image/jpeg", 4 * 1024 * 1024)
+    with pytest.raises(ValueError, match="readable raster"):
+        validate_raster_upload(b"not-an-image", "image/png", 4 * 1024 * 1024)
+
+
+def test_generic_raster_validator_enforces_pixel_limit():
+    with pytest.raises(ValueError, match="pixel safety"):
+        validate_raster_upload(image_bytes(size=(5000, 5000)), "image/png", 20 * 1024 * 1024)
 
 
 def test_private_cover_candidate_is_side_specific_and_cannot_double_as_public_book_data():

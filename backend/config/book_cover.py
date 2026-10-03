@@ -22,6 +22,35 @@ MAX_BOOK_COVER_ASPECT_RATIO = 0.9
 BOOK_COVER_KINDS = {"front", "back"}
 HEX_SHA256 = frozenset("0123456789abcdef")
 
+MAX_UPLOAD_DIMENSION = 8000
+MAX_UPLOAD_PIXELS = 20_000_000
+
+
+def validate_raster_upload(body: bytes, content_type: str, max_bytes: int) -> dict[str, Any]:
+    """Validate generic admin raster uploads before decoder/cloud storage use."""
+    declared_type = str(content_type or "").split(";", 1)[0].strip().lower()
+    if declared_type not in ALLOWED_BOOK_COVER_TYPES:
+        raise ValueError("Unsupported image type. Use JPG, PNG, or WebP.")
+    if not body:
+        raise ValueError("Image file is empty.")
+    if len(body) > max_bytes:
+        raise ValueError(f"Image must be under {max_bytes} bytes.")
+    try:
+        with Image.open(BytesIO(body)) as image:
+            image.verify()
+        with Image.open(BytesIO(body)) as image:
+            width, height = image.size
+            actual_format = image.format or ""
+    except (UnidentifiedImageError, OSError) as exc:
+        raise ValueError("Image file is not a readable raster image.") from exc
+    if actual_format != ALLOWED_BOOK_COVER_TYPES[declared_type]:
+        raise ValueError("Image content does not match its declared file type.")
+    if width <= 0 or height <= 0 or max(width, height) > MAX_UPLOAD_DIMENSION:
+        raise ValueError("Image dimensions are not supported.")
+    if width * height > MAX_UPLOAD_PIXELS:
+        raise ValueError("Image dimensions exceed the pixel safety limit.")
+    return {"width": width, "height": height, "format": actual_format, "bytes": len(body)}
+
 
 def canonical_cover_kind(value: str) -> str:
     kind = str(value or "").strip().lower()
