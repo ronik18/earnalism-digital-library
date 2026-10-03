@@ -1,0 +1,110 @@
+{
+  "schema": "earnalism.pr511-evidence-verifier-independent-review.v1",
+  "reviewer": "independent-agent-A",
+  "status": "PASS_FROZEN_V3_CODE_AND_NEGATIVE_CASES",
+  "reviewed_at": "2026-10-03T07:06:24.088627+00:00",
+  "patch_sha256": "e1af7620c984f729979eb2531ac15d8e915719863949635030bced186e7bde9d",
+  "proposed_file_hashes": {
+    "scripts/catalogue_clearance_release_bindings.py": "a19c82a3d7f94b90cb84aa753c6d776a2d859c053ebb1082197511c02fc8a13a",
+    "scripts/test_reconcile_english_source_evidence.py": "aa5394b6857aea1c2d5e6c5d2bf296ce7849148a1f7bc3cf5f0ca0a94b06894b",
+    "scripts/verify_catalogue_clearance_batch.py": "6b103219cb0a4de9707429a4053d16edef250c6fc91cb8577c292be5c18c9654",
+    "scripts/test_reconcile_bengali_source_evidence.py": "14c36dc59ed3cb2fefe902650f4c3dbbb11b3ba87085cd91559a342a570faaa6",
+    "internal/legal/catalogue_clearance_20261002/historical_noncover_bindings.v1.json": "eceeb64aaf4453100a71c1ca2e9ac27080de4b780370c2cc1af112a923b87e98",
+    "internal/legal/catalogue_clearance_20261002/reviewed_release_authority_20261003.v1.json": "1668d6d98dd8543bbe8b31b19187e0f1a6e3df60236630e17b11c4825cb7ecc0"
+  },
+  "historical_raw_git_files_verified": 204,
+  "historical_source_git_commit": "ace5e9f87494b82c05abe74a351e07c25447b629",
+  "authority_snapshot_git_commit": "3c374472b07c86d28c15f0bdd6adde8e887a808c",
+  "current_pinned_release_titles": 52,
+  "new19_strict_full_aggregate_and_components": true,
+  "old33_exceptions": "Only exact unchanged prePR5110fee records/metadata; actual file/body/checksum checks still enforced, historical approval audio flags do not authorize current audio. Prior remote identities not claimed as freshly observed.",
+  "exact_unchanged_old33_external_components": [
+    {
+      "slug": "jekyll-and-hyde",
+      "components": {
+        "cover_asset:front": "eefa51647e7dbe342ab55c7ba1df1f7a596794ed0edfd0d628f793b7f69a7dd8",
+        "cover_asset:back": "9ea5c9f6144169469fc5ed1c5f95ecc6f596bec13061e250d3273152f2ae9344"
+      },
+      "old_record_byte_identical": true
+    }
+  ],
+  "negative_and_positive_cases": [
+    {
+      "case": "positive_new19",
+      "result": "PASS_EXPECTED"
+    },
+    {
+      "case": "positive_old33_historical_approval",
+      "result": "PASS_EXPECTED"
+    },
+    {
+      "case": "positive_old33_distinct_source_aggregate",
+      "result": "PASS_EXPECTED"
+    },
+    {
+      "case": "new19_backend_body_mutation",
+      "result": "DENIED_EXPECTED",
+      "exception": "AssertionError",
+      "reason": "('the-open-window', 'Invalid active checksum bundle')"
+    },
+    {
+      "case": "new19_backend_content_hash_mutation",
+      "result": "DENIED_EXPECTED",
+      "exception": "AssertionError",
+      "reason": "('the-open-window', 'Invalid active checksum bundle')"
+    },
+    {
+      "case": "new19_backend_chapter_order_mutation",
+      "result": "DENIED_EXPECTED",
+      "exception": "AssertionError",
+      "reason": "('the-open-window', 'Invalid active checksum bundle')"
+    },
+    {
+      "case": "new19_missing_backend_chapter",
+      "result": "DENIED_EXPECTED",
+      "exception": "AssertionError",
+      "reason": "('the-open-window', 'Invalid active checksum bundle')"
+    },
+    {
+      "case": "new19_source_identity_mutation",
+      "result": "DENIED_EXPECTED",
+      "exception": "AssertionError",
+      "reason": "('the-open-window', 'Exact component mismatch')"
+    },
+    {
+      "case": "old33_body_mutation_cannot_grandfather",
+      "result": "DENIED_EXPECTED",
+      "exception": "AssertionError",
+      "reason": "('the-tell-tale-heart', 'Invalid active checksum bundle')"
+    },
+    {
+      "case": "revoked_real_registered_decision",
+      "result": "DENIED_EXPECTED",
+      "exception": "AssertionError",
+      "reason": ""
+    },
+    {
+      "case": "wrong_territory_cannot_enter_pinned_acceptance",
+      "result": "DENIED_EXPECTED",
+      "exception": "AssertionError",
+      "reason": ""
+    },
+    {
+      "case": "catalogue_exclusion_mutation",
+      "result": "DENIED_EXPECTED",
+      "exception": "AssertionError",
+      "reason": "('Unreviewed release authority change', 'data/catalog_exclusions.json')"
+    },
+    {
+      "case": "expired_decision_exact_record_pinned",
+      "result": "DENIED_EXPECTED",
+      "exception": "AssertionError",
+      "reason": "('the-open-window', 'reader_delivery', 'IN', True, ('DECISION_OUTSIDE_VALIDITY',))"
+    }
+  ],
+  "full_workflow": "PARENT_WORKER_RUNNING_NOT_CLAIMED_OBSERVED_BY_REVIEWER",
+  "source_or_art_review_repeats": 0,
+  "source_or_cover_gets": 0,
+  "canonical_mutations": 0,
+  "production_observed": false
+}

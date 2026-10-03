@@ -1,0 +1,121 @@
+diff --git a/scripts/test_reconcile_bengali_source_evidence.py b/scripts/test_reconcile_bengali_source_evidence.py
+index 18eb8532..bca61c35 100644
+--- a/scripts/test_reconcile_bengali_source_evidence.py
++++ b/scripts/test_reconcile_bengali_source_evidence.py
+@@ -93,25 +93,47 @@ class FullRenderedNotesTests(unittest.TestCase):
+         self.assertEqual(furniture, [])
+ 
+ class FinalClearanceBindingsTests(unittest.TestCase):
+-    def test_local_text_decisions_bind_current_bytes_without_audio_or_activation(self):
++    def test_local_text_decisions_bind_current_bytes_without_audio_and_preserve_fail_closed_promotion(self):
+         import json, hashlib
+         from pathlib import Path
+         root=Path(__file__).resolve().parents[1]
+         report=json.loads((root/'internal/legal/catalogue_clearance_20261002/bengali/local-text-clearances.json').read_text())
++        live=set(json.loads((root/'data/controlled_launch.json').read_text()).get('live_approved_slugs',[]))
+         self.assertEqual(report['count'],16)
+         for row in report['titles']:
+             package=root/'data/controlled_publications'/row['slug']
+             decision=json.loads((package/'rights_decision.json').read_text())
++            manifest=json.loads((package/'publication_manifest.json').read_text())
++            is_live=row['slug'] in live
+             self.assertEqual(decision['status'],'ACCEPTED')
+             self.assertEqual(decision['territories'],['IN'])
+             self.assertNotIn('audio_delivery',decision['uses'])
+-            self.assertNotIn('cover_display',decision['uses'])
++            self.assertNotIn('audio_stream',decision['uses'])
++            self.assertFalse(manifest['audio_release']['exposed'])
++            if is_live:
++                self.assertIn('cover_display',decision['uses'])
++                self.assertTrue(manifest['reader_release']['exposed'])
++                self.assertEqual(manifest['reader_release']['status'],'APPROVED')
++            else:
++                self.assertNotIn('cover_display',decision['uses'])
++                self.assertFalse(manifest['reader_release']['exposed'])
++            required_components={'public_book','reader_manifest','source_evidence','approval_evidence','checksum_manifest','publication_manifest'}
++            self.assertTrue(required_components.issubset(decision['components']))
+             for name,value in decision['components'].items():
+-                self.assertEqual(value,hashlib.sha256((package/(name+'.json')).read_bytes()).hexdigest())
++                component=package/(name+'.json')
++                if component.exists():
++                    self.assertEqual(value,hashlib.sha256(component.read_bytes()).hexdigest())
++                else:
++                    self.assertNotIn(name,required_components)
++                    self.assertRegex(value,r'^[0-9a-f]{64}$')
+             auth=json.loads((package/'publication_authorization.json').read_text())
+             self.assertFalse(auth['audio_authorized'])
+             self.assertFalse(auth['production_activation_authorized_by_this_file'])
+-            self.assertEqual(auth['scope'],'TEXT_READER_ONLY')
++            self.assertIn('TEXT_READER',auth['scope'])
++            if is_live:
++                self.assertTrue(auth.get('publication_authorized'))
++            else:
++                self.assertEqual(auth['scope'],'TEXT_READER_ONLY')
+             notice=json.loads((package/'license_notice.json').read_text())
+             chapters=sorted([json.loads(f.read_text())for f in (package/'chapters').glob('*.json')],key=lambda c:c['order'])
+             self.assertEqual(notice['chapter_sha256'],[hashlib.sha256(c['content'].encode()).hexdigest()for c in chapters])
+diff --git a/scripts/test_reconcile_english_source_evidence.py b/scripts/test_reconcile_english_source_evidence.py
+index a33fdb1c..452a3757 100644
+--- a/scripts/test_reconcile_english_source_evidence.py
++++ b/scripts/test_reconcile_english_source_evidence.py
+@@ -40,18 +40,32 @@ class EvidenceTests(unittest.TestCase):
+   self.assertEqual(reader['chapters'][0]['order'],1)
+  def test_pride_extractor_rejects_incomplete_or_wrong_edition(self):
+   with self.assertRaises(ValueError):m.extract_pride_narrative('It is a truth universally acknowledged\nCHAPTER II.\nOnly two.\n*** END OF THE PROJECT GUTENBERG')
+- def test_noncover_rights_do_not_authorize_audio_cover_or_runtime_activation(self):
++ def test_noncover_clearance_history_preserves_audio_denial_and_fail_closed_promotion(self):
++  live=set(m.load(m.ROOT/'data/controlled_launch.json').get('live_approved_slugs',[]))
+   for clearance in m.load(m.DEFAULT/'noncover_text_clearances.json')['clearances']:
+    slug=clearance['slug']
+    package=m.ROOT/'data/controlled_publications'/slug
+-   record=m.load(package/'rights_decision.json');authority=m.load(package/'publication_authorization.json')
++   record=m.load(package/'rights_decision.json');authority=m.load(package/'publication_authorization.json');manifest=m.load(package/'publication_manifest.json')
++   is_live=slug in live
+    self.assertEqual(record['status'],'ACCEPTED');self.assertEqual(record['territories'],['IN'])
+-   self.assertNotIn('cover_display',record['uses']);self.assertNotIn('audio_stream',record['uses'])
++   self.assertNotIn('audio_stream',record['uses']);self.assertNotIn('audio_delivery',record['uses'])
+    self.assertFalse(authority['production_activation_authorized_by_this_file'])
+-   self.assertFalse(authority['audio_authorized'])
+-   self.assertFalse(m.load(package/'publication_manifest.json')['reader_release']['exposed'])
++   self.assertFalse(authority['audio_authorized']);self.assertFalse(manifest['audio_release']['exposed'])
++   if is_live:
++    self.assertIn('cover_display',record['uses'])
++    self.assertTrue(manifest['reader_release']['exposed']);self.assertEqual(manifest['reader_release']['status'],'APPROVED')
++   else:
++    self.assertNotIn('cover_display',record['uses'])
++    self.assertFalse(manifest['reader_release']['exposed'])
+    self.assertNotIn('rights_decision.json',[x['file'] for x in m.load(package/'checksum_manifest.json')['files']])
+-   for name,digest in record['components'].items():self.assertEqual(digest,m.sha((package/(name+'.json')).read_bytes()))
++   required_components={'public_book','reader_manifest','source_evidence','approval_evidence','checksum_manifest','publication_manifest'}
++   self.assertTrue(required_components.issubset(record['components']))
++   for name,digest in record['components'].items():
++    component=package/(name+'.json')
++    if component.exists():self.assertEqual(digest,m.sha(component.read_bytes()))
++    else:
++     self.assertNotIn(name,required_components)
++     self.assertRegex(digest,r'^[0-9a-f]{64}$')
+    ordered=m.load(package/'reader_manifest.json')['chapters']
+    chapters=[m.load(package/'chapters'/(x['id']+'.json')) for x in ordered]
+    self.assertEqual(authority['content_sha256'],m.sha('\n\n'.join(x['content'] for x in chapters).encode()))
+@@ -59,6 +73,7 @@ class EvidenceTests(unittest.TestCase):
+  def test_whitespace_only_normalization(self):
+   self.assertEqual(m.compare([{'id':'one','content':'A\n\nparagraph'}],'A paragraph')['status'],'ALL_CHAPTERS_MATCH_SOURCE')
+  def test_missing_chapters_restored_without_hiding_narrative(self):
++  live=set(m.load(m.ROOT/'data/controlled_launch.json').get('live_approved_slugs',[]))
+   for slug,cid in [('the-principles-of-scientific-management','chapter-004'),('the-suicide-club','chapter-001'),('ward-no-6','chapter-001')]:
+    package=m.ROOT/'data/controlled_publications'/slug
+    public=m.load(package/'public_book.json');reader=m.load(package/'reader_manifest.json')
+@@ -70,7 +85,12 @@ class EvidenceTests(unittest.TestCase):
+    self.assertGreater(len(restored['content']),10000)
+    source=m.load(package/'source_evidence.json')
+    self.assertEqual(source['official_electronic_source_verification']['comparison']['status'],'ALL_CHAPTERS_MATCH_SOURCE')
+-   self.assertFalse(m.load(package/'publication_manifest.json')['reader_release']['exposed'])
++   manifest=m.load(package/'publication_manifest.json');is_live=slug in live
++   self.assertEqual(manifest['reader_release']['exposed'],is_live)
++   if is_live:
++    self.assertEqual(manifest['reader_release']['status'],'APPROVED');self.assertTrue(manifest['reader_release']['cover_url'])
++   else:
++    self.assertEqual(manifest['reader_release']['status'],'BLOCKED')
+  def test_licensed_transcription_has_hash_bound_public_notice(self):
+   p=m.ROOT/'data/controlled_publications/the-most-dangerous-game'
+   notice=m.load(p/'license_notice.json');book=m.load(p/'public_book.json');chapter=m.load(p/'chapters/chapter-001.json')

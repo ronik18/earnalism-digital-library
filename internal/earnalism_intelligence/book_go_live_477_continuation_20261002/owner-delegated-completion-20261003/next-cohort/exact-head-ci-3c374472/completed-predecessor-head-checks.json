@@ -1,0 +1,105 @@
+{
+  "head_sha": "3c374472b07c86d28c15f0bdd6adde8e887a808c",
+  "checks": [
+    {
+      "id": 111151941242,
+      "name": "verify-published-owner-review",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "3c374472b07c86d28c15f0bdd6adde8e887a808c",
+      "details_url": "https://github.com/ronik18/earnalism-digital-library/actions/runs/37103876142/job/111151941242",
+      "completed_at": "2026-10-03T07:05:09Z"
+    },
+    {
+      "id": 111149493297,
+      "name": "Vercel frontend production canary",
+      "status": "completed",
+      "conclusion": "skipped",
+      "head_sha": "3c374472b07c86d28c15f0bdd6adde8e887a808c",
+      "details_url": "https://github.com/ronik18/earnalism-digital-library/actions/runs/37103876129/job/111149493297",
+      "completed_at": "2026-10-03T06:47:48Z"
+    },
+    {
+      "id": 111149492900,
+      "name": "Vercel frontend deploy after pre-deploy pass",
+      "status": "completed",
+      "conclusion": "skipped",
+      "head_sha": "3c374472b07c86d28c15f0bdd6adde8e887a808c",
+      "details_url": "https://github.com/ronik18/earnalism-digital-library/actions/runs/37103876129/job/111149492900",
+      "completed_at": "2026-10-03T06:47:48Z"
+    },
+    {
+      "id": 111148551816,
+      "name": "seamless-brand-review",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "3c374472b07c86d28c15f0bdd6adde8e887a808c",
+      "details_url": "https://github.com/ronik18/earnalism-digital-library/actions/runs/37103876142/job/111148551816",
+      "completed_at": "2026-10-03T07:03:50Z"
+    },
+    {
+      "id": 111148538320,
+      "name": "resolve-pr-head",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "3c374472b07c86d28c15f0bdd6adde8e887a808c",
+      "details_url": "https://github.com/ronik18/earnalism-digital-library/actions/runs/37103876142/job/111148538320",
+      "completed_at": "2026-10-03T06:41:30Z"
+    },
+    {
+      "id": 111148538274,
+      "name": "regression gate",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "3c374472b07c86d28c15f0bdd6adde8e887a808c",
+      "details_url": "https://github.com/ronik18/earnalism-digital-library/actions/runs/37103876129/job/111148538274",
+      "completed_at": "2026-10-03T06:47:48Z"
+    },
+    {
+      "id": 111148538223,
+      "name": "reconcile",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "3c374472b07c86d28c15f0bdd6adde8e887a808c",
+      "details_url": "https://github.com/ronik18/earnalism-digital-library/actions/runs/37103876135/job/111148538223",
+      "completed_at": "2026-10-03T06:42:18Z"
+    },
+    {
+      "id": 111148538088,
+      "name": "Editorial/support owner-review artifact",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "3c374472b07c86d28c15f0bdd6adde8e887a808c",
+      "details_url": "https://github.com/ronik18/earnalism-digital-library/actions/runs/37103876130/job/111148538088",
+      "completed_at": "2026-10-03T06:45:20Z"
+    },
+    {
+      "id": 111148538027,
+      "name": "Post-merge recovery owner evidence",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "3c374472b07c86d28c15f0bdd6adde8e887a808c",
+      "details_url": "https://github.com/ronik18/earnalism-digital-library/actions/runs/37103876131/job/111148538027",
+      "completed_at": "2026-10-03T06:47:40Z"
+    },
+    {
+      "id": 111148537930,
+      "name": "evidence",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "3c374472b07c86d28c15f0bdd6adde8e887a808c",
+      "details_url": "https://github.com/ronik18/earnalism-digital-library/actions/runs/37103876133/job/111148537930",
+      "completed_at": "2026-10-03T06:44:57Z"
+    },
+    {
+      "id": 111148537887,
+      "name": "held-edition-evidence",
+      "status": "completed",
+      "conclusion": "failure",
+      "head_sha": "3c374472b07c86d28c15f0bdd6adde8e887a808c",
+      "details_url": "https://github.com/ronik18/earnalism-digital-library/actions/runs/37103876137/job/111148537887",
+      "completed_at": "2026-10-03T06:42:50Z"
+    }
+  ],
+  "scope": "Actual completed predecessor head checks. Held-edition-evidence failed; other checks passed/skipped. Not final amended-head release authority."
+}

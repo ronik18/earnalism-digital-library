@@ -1,0 +1,8 @@
+............................................................             [100%]
+=============================== warnings summary ===============================
+backend/tests/test_rights_engine.py::test_admin_rights_report_valid_filename_returns_csv
+  /workspace/scratch/181ef0a25f05/backend-test-deps/motor/core.py:154: DeprecationWarning: There is no current event loop
+    self._io_loop = self._framework.get_event_loop()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+60 passed, 1 warning in 0.73s

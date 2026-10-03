@@ -1,0 +1,190 @@
+.........................................................F....F.......F. [ 65%]
+FF....F...............F...............                                   [100%]
+=================================== FAILURES ===================================
+________ test_shared_controlled_launch_config_matches_backend_and_audit ________
+
+    def test_shared_controlled_launch_config_matches_backend_and_audit():
+        assert isinstance(catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS, tuple)
+        assert catalog_truth.PUBLIC_READER_EXPOSURE_ENABLED is True
+        assert catalog_truth.PUBLIC_AUDIO_EXPOSURE_ENABLED is False
+>       assert catalog_truth.CONTROLLED_LIVE_BOOK_SLUGS == (
+            "a-ghost-story", "the-tell-tale-heart", "radharani",
+            "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost",
+            "the-adventures-of-sherlock-holmes",
+            "agentic-ai-with-python",
+            "a-horseman-in-the-sky",
+            "a-mystery-of-heroism",
+            "a-scandal-in-bohemia",
+            "jekyll-and-hyde",
+            "love-of-life",
+            "the-bishop",
+            "the-fall-of-the-house-of-usher",
+            "the-lady-with-the-dog",
+            "the-man-who-would-be-king",
+            "the-open-boat",
+            "the-pit-and-the-pendulum",
+            "the-stolen-white-elephant",
+            "an-occurrence-at-owl-creek-bridge",
+            "the-enchanted-april",
+            "the-happy-prince",
+            "picture-of-dorian-gray",
+        )
+E       AssertionError: assert ('a-ghost-sto...e-ghost', ...) == ('a-ghost-sto...e-ghost', ...)
+E         
+E         Left contains 28 more items, first extra item: 'dracula'
+E         Use -v to get more diff
+
+backend/tests/test_backend_catalog_truth.py:111: AssertionError
+_______ test_backend_packaged_live_artifact_is_valid_for_railway_deploy ________
+
+    def test_backend_packaged_live_artifact_is_valid_for_railway_deploy():
+        artifact_dir = Path(__file__).resolve().parents[1] / "data" / "controlled_publications" / "dracula"
+        if not (artifact_dir / "public_book.json").exists():
+            artifact_dir = Path(__file__).resolve().parents[2] / "data" / "controlled_publications" / "dracula"
+    
+        status = catalog_truth.dracula_artifact_status(artifact_dir=artifact_dir)
+        if not status["available"]:
+            artifact_dir = Path(__file__).resolve().parents[2] / "data" / "controlled_publications" / "dracula"
+            status = catalog_truth.dracula_artifact_status(artifact_dir=artifact_dir)
+            assert status["available"] is True
+        artifact = catalog_truth.load_dracula_artifact_book(include_content=True, artifact_dir=artifact_dir)
+    
+        assert status["available"] is True
+        assert status["self_contained_for_truth_gate"] is True
+        assert status["fallback_requires_legacy_output_evidence"] is False
+        assert artifact is not None
+        assert catalog_truth.is_live_approved_book(artifact) is True
+>       assert len(artifact["chapters"]) == 27
+E       AssertionError: assert 28 == 27
+E        +  where 28 = len([{'id': 'chapter-000', 'order': 1, 'title': 'Preface', 'word_count': 77, ...}, {'id': 'chapter-001', 'order': 2, 'titl...}, {'id': 'chapter-005', 'order': 6, 'title': 'CHAPTER V. MINA MURRAY’S CORRESPONDENCE', 'is_preview': True, ...}, ...])
+
+backend/tests/test_backend_catalog_truth.py:249: AssertionError
+________ test_live_approved_mongo_query_preserves_rights_and_search_or _________
+
+    def test_live_approved_mongo_query_preserves_rights_and_search_or():
+        query = catalog_truth.live_approved_mongo_query(
+            {"$or": [{"title": {"$regex": "Dracula", "$options": "i"}}]}
+        )
+    
+        base_or = query["$and"][0]["$or"]
+        controlled_slugs = base_or[0]["$and"][0]["$or"][0]["slug"]["$in"]
+>       assert controlled_slugs == [
+            "a-ghost-story", "the-tell-tale-heart", "radharani",
+            "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost",
+            "the-adventures-of-sherlock-holmes",
+            "agentic-ai-with-python",
+            "a-horseman-in-the-sky",
+            "a-mystery-of-heroism",
+            "a-scandal-in-bohemia",
+            "jekyll-and-hyde",
+            "love-of-life",
+            "the-bishop",
+            "the-fall-of-the-house-of-usher",
+            "the-lady-with-the-dog",
+            "the-man-who-would-be-king",
+            "the-open-boat",
+            "the-pit-and-the-pendulum",
+            "the-stolen-white-elephant",
+            "an-occurrence-at-owl-creek-bridge",
+            "the-enchanted-april",
+            "the-happy-prince",
+            "picture-of-dorian-gray",
+        ]
+E       AssertionError: assert ['a-ghost-sto...e-ghost', ...] == ['a-ghost-sto...e-ghost', ...]
+E         
+E         Left contains 28 more items, first extra item: 'dracula'
+E         Use -v to get more diff
+
+backend/tests/test_backend_catalog_truth.py:342: AssertionError
+____________ test_server_controlled_public_query_uses_catalog_truth ____________
+
+    def test_server_controlled_public_query_uses_catalog_truth():
+        assert server._controlled_public_book_query() == catalog_truth.live_approved_mongo_query()
+>       assert server._is_controlled_public_slug("Dracula") is False
+E       AssertionError: assert True is False
+E        +  where True = <function _is_controlled_public_slug at 0x7f706ee9c2c0>('Dracula')
+E        +    where <function _is_controlled_public_slug at 0x7f706ee9c2c0> = server._is_controlled_public_slug
+
+backend/tests/test_backend_catalog_truth.py:393: AssertionError
+_ test_public_release_scope_denies_held_titles_and_never_reopens_historical_manifest_slugs _
+
+    def test_public_release_scope_denies_held_titles_and_never_reopens_historical_manifest_slugs():
+>       assert server._is_controlled_public_slug("dracula") is False
+E       AssertionError: assert True is False
+E        +  where True = <function _is_controlled_public_slug at 0x7f706ee9c2c0>('dracula')
+E        +    where <function _is_controlled_public_slug at 0x7f706ee9c2c0> = server._is_controlled_public_slug
+
+backend/tests/test_backend_catalog_truth.py:398: AssertionError
+______ test_sitemap_truth_lists_only_the_exact_controlled_reader_release _______
+
+    def test_sitemap_truth_lists_only_the_exact_controlled_reader_release():
+        sitemap = (catalog_truth.ROOT / "frontend" / "public" / "sitemap.xml").read_text(encoding="utf-8")
+    
+        for slug in (
+            "a-ghost-story", "the-tell-tale-heart", "radharani",
+            "a-white-heron", "the-gift-of-the-magi", "the-canterville-ghost",
+            "the-adventures-of-sherlock-holmes",
+            "agentic-ai-with-python",
+            "a-horseman-in-the-sky",
+            "a-mystery-of-heroism",
+            "a-scandal-in-bohemia",
+            "jekyll-and-hyde",
+            "love-of-life",
+            "the-bishop",
+            "the-fall-of-the-house-of-usher",
+            "the-lady-with-the-dog",
+            "the-man-who-would-be-king",
+            "the-open-boat",
+            "the-pit-and-the-pendulum",
+            "the-stolen-white-elephant",
+            "an-occurrence-at-owl-creek-bridge",
+            "the-enchanted-april",
+            "the-happy-prince",
+            "picture-of-dorian-gray",
+        ):
+            assert f"/book/{slug}" in sitemap
+        assert "/book/yugalanguriya" not in sitemap
+>       assert "/book/dracula" not in sitemap
+E       AssertionError: assert '/book/dracula' not in '<?xml versi...n</urlset>\n'
+E         
+E         '/book/dracula' is contained here:
+E           nalism.com/book/dracula</loc>
+E               <lastmod>2026-07-03</lastmod>
+E               <changefreq>weekly</changefreq>
+E               <priority>0.8</priority>
+E             </url>...
+E         
+E         ...Full output truncated (235 lines hidden), use '-vv' to show
+
+backend/tests/test_backend_catalog_truth.py:501: AssertionError
+____ test_held_dracula_preface_is_valid_structure_not_publication_authority ____
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-6/test_held_dracula_preface_is_v0')
+
+    def test_held_dracula_preface_is_valid_structure_not_publication_authority(tmp_path):
+        import shutil
+        source = catalog_truth.controlled_artifact_dir("dracula")
+        target = tmp_path / "dracula"
+        shutil.copytree(source, target)
+        issues = catalog_truth.dracula_artifact_validation_issues(str(target))
+        assert not any("chapter_count" in issue or "chapter sequence" in issue or "wrong order" in issue or "selected layout" in issue for issue in issues)
+>       assert any("approved_to_publish" in issue for issue in issues)
+E       assert False
+E        +  where False = any(<generator object test_held_dracula_preface_is_valid_structure_not_publication_authority.<locals>.<genexpr> at 0x7f707166c790>)
+
+backend/tests/test_backend_catalog_truth.py:866: AssertionError
+=============================== warnings summary ===============================
+../../backend-test-deps/motor/core.py:154
+  /workspace/scratch/181ef0a25f05/backend-test-deps/motor/core.py:154: DeprecationWarning: There is no current event loop
+    self._io_loop = self._framework.get_event_loop()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED backend/tests/test_backend_catalog_truth.py::test_shared_controlled_launch_config_matches_backend_and_audit
+FAILED backend/tests/test_backend_catalog_truth.py::test_backend_packaged_live_artifact_is_valid_for_railway_deploy
+FAILED backend/tests/test_backend_catalog_truth.py::test_live_approved_mongo_query_preserves_rights_and_search_or
+FAILED backend/tests/test_backend_catalog_truth.py::test_server_controlled_public_query_uses_catalog_truth
+FAILED backend/tests/test_backend_catalog_truth.py::test_public_release_scope_denies_held_titles_and_never_reopens_historical_manifest_slugs
+FAILED backend/tests/test_backend_catalog_truth.py::test_sitemap_truth_lists_only_the_exact_controlled_reader_release
+FAILED backend/tests/test_backend_catalog_truth.py::test_held_dracula_preface_is_valid_structure_not_publication_authority
+7 failed, 103 passed, 1 warning in 0.94s

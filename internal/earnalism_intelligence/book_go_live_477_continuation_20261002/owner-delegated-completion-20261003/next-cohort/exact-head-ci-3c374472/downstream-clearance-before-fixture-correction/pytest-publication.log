@@ -1,0 +1,28 @@
+..........................................F.................             [100%]
+=================================== FAILURES ===================================
+__________ test_publishing_create_and_update_paths_call_publish_gate ___________
+
+    def test_publishing_create_and_update_paths_call_publish_gate():
+        server = server_module()
+        book = approved_book(rights_metadata={"source_license": ""})
+    
+        with pytest.raises(server.HTTPException) as create_exc:
+            server._assert_publishable(book)
+    
+        assert create_exc.value.status_code == 400
+>       assert "Rights verification" in str(create_exc.value.detail)
+E       assert 'Rights verification' in "{'message': 'Book is not ready to publish.', 'issues': ['Front cover is required before publishing.']}"
+E        +  where "{'message': 'Book is not ready to publish.', 'issues': ['Front cover is required before publishing.']}" = str({'message': 'Book is not ready to publish.', 'issues': ['Front cover is required before publishing.']})
+E        +    where {'message': 'Book is not ready to publish.', 'issues': ['Front cover is required before publishing.']} = HTTPException(status_code=400, detail={'message': 'Book is not ready to publish.', 'issues': ['Front cover is required before publishing.']}).detail
+E        +      where HTTPException(status_code=400, detail={'message': 'Book is not ready to publish.', 'issues': ['Front cover is required before publishing.']}) = <ExceptionInfo HTTPException(status_code=400, detail={'message': 'Book is not ready to publish.', 'issues': ['Front cover is required before publishing.']}) tblen=2>.value
+
+backend/tests/test_rights_engine.py:327: AssertionError
+=============================== warnings summary ===============================
+backend/tests/test_rights_engine.py::test_admin_rights_report_valid_filename_returns_csv
+  /workspace/scratch/181ef0a25f05/backend-test-deps/motor/core.py:154: DeprecationWarning: There is no current event loop
+    self._io_loop = self._framework.get_event_loop()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED backend/tests/test_rights_engine.py::test_publishing_create_and_update_paths_call_publish_gate
+1 failed, 59 passed, 1 warning in 0.72s

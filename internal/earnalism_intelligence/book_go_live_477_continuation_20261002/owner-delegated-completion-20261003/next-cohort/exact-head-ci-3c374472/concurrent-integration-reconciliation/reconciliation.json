@@ -1,0 +1,26 @@
+{
+  "schema": "earnalism.exact-concurrent-integration-reconciliation.v1",
+  "recorded_at": "2026-10-03T07:18:50.684213+00:00",
+  "original_base": "3c374472b07c86d28c15f0bdd6adde8e887a808c",
+  "reconciled_parent": "69809164940d77213654b2b179737bc19d02d4df",
+  "incoming_commits": [
+    "4a5cdcae53326035f9e07d78782916df8ee146d6",
+    "4a6f392362973be7898b848a4379aaa88e65004c",
+    "e340b907b99c81e1fc9e53c135083e2eb1a256ab",
+    "69809164940d77213654b2b179737bc19d02d4df"
+  ],
+  "changed_paths": [
+    "scripts/test_reconcile_bengali_source_evidence.py",
+    "scripts/test_reconcile_english_source_evidence.py"
+  ],
+  "incoming_intent": "Update pre-acceptance fixture assertions for authorized current release selection; subsequent commits repair syntax.",
+  "resolution": "Preserve every incoming commit as an ancestor and exact incoming preimages. Current final fixture bytes use the independently reviewed passing strict historical/current-binding correction, retaining the actual original non-cover history, real production registry and typed exact component verification. Add separately reviewed downstream8 fixture corrections.",
+  "reviewed_pre_reconciliation_tree": "e70b5ae2000919e926965ffcbc0a436d5216d25e",
+  "all_source_art_publication_registry_allowlist_policy_version_bytes_unchanged": true,
+  "canonical_test_results_unchanged": "208_TESTS_AND_VERIFIER_PASS; final executable bytes identical to reviewed/tested integration. Only reconciliation history evidence added.",
+  "parallel_mutations_stopped_before_ref_update": true,
+  "github_progress_comment": 5965501403,
+  "human_authorship_or_approval_inferred": false,
+  "automatic_recurring_controller": "CONFIRMED_DISABLED_NO_NEW_RETRY_LOOP",
+  "next_action": "Normal fast-forward with this reconciled parent, exact amended-head protected checks and existingPR511 only."
+}

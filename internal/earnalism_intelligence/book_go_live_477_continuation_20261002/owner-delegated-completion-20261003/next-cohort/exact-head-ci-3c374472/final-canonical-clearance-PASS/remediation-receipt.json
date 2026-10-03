@@ -1,0 +1,42 @@
+{
+  "schema": "earnalism.pr511-exact-ci-fixture-remediation.v1",
+  "recorded_at": "2026-10-03T07:14:01.665598+00:00",
+  "predecessor_head": "3c374472b07c86d28c15f0bdd6adde8e887a808c",
+  "predecessor_tree": "3610149e767df4c79d9ff26a6cb38055f9fd8acf",
+  "original_failed_job": 111148537887,
+  "original_failure": "Three obsolete current-package noncover/inactive assertions. Downstream local execution revealed eight additional old catalogue/publishing fixtures.",
+  "scope": "Six evidence verifier/historical-binding fixture files plus two backend test files; publication/source/Reader/art/registry/allowlists/version/policy/deployment/payment/entitlement source remains byte unchanged.",
+  "patches": [
+    {
+      "sha256": "e1af7620c984f729979eb2531ac15d8e915719863949635030bced186e7bde9d",
+      "reviews": [
+        "final-verifier-review-a-PASS.json",
+        "final-verifier-review-b-PASS.json"
+      ]
+    },
+    {
+      "sha256": "467984904bff78b9a697219bf8d421e2b879ee8f0f4ec046bd4ef9e876566105",
+      "reviews": [
+        "final-backend-fixtures-review-a-PASS.json",
+        "final-backend-fixtures-review-b-PASS.json"
+      ]
+    }
+  ],
+  "canonical_local_validation": {
+    "script_tests": 38,
+    "publication_rights_tests": 60,
+    "registry_catalog_projection_tests": 110,
+    "total_tests": 208,
+    "verifier_changed_packages": 133,
+    "verifier_issues": [],
+    "inactive_plans": "PASS_HASH_ONLY_NO_RUNTIME_MUTATION",
+    "diff_check": "PASS",
+    "results_sha256": "f9a0faed72ef056f6f4f92349471468909d0a1dd3d56d75acaec7c4b7e3650f5"
+  },
+  "truthfulness": "204 historical record/auth files preserve exact Git bytes; inherited old33 facts remain pinned unchanged. New19 require actual complete typed component and source/chapter bindings; actual registered IN text uses pass and audio/US/untrusted uses deny. No human or production approval inferred.",
+  "all_new_publication_packages_unchanged": true,
+  "current_released": 33,
+  "new_ready_global_gate": 19,
+  "terminal_holds": 179,
+  "next_action": "Fast-forward sole existing integration branch, run exact amended-head protected checks, normal merge, exact-main deployment/canary and truthful readback."
+}

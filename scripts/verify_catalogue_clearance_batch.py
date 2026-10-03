@@ -11,6 +11,7 @@ from backend.publication_manifest import validate_manifest
 from backend.rights_decision_gate import evaluate_accepted_record, record_sha256
 from datetime import datetime, timezone
 from scripts.bengali_rights_package_validator import checksum_manifest_matches
+from scripts.catalogue_clearance_release_bindings import assert_reviewed_authority, assert_current_reviewed_release
 
 def verify(root=ROOT,base='8be3926fd9fc4526dec66d51b64d8ca72b2d0035'):
     issues=[];slugs=set()
@@ -20,19 +21,32 @@ def verify(root=ROOT,base='8be3926fd9fc4526dec66d51b64d8ca72b2d0035'):
         parts=Path(name).parts
         if len(parts)>=4:slugs.add(parts[2])
     launch=json.loads((root/'data/controlled_launch.json').read_text());live=set(launch['live_approved_slugs'])
-    for name in ('data/controlled_launch.json','data/catalog_exclusions.json','backend/data/rights_decision_registry.json'):
-        if subprocess.check_output(['git','show',f'{base}:{name}'],cwd=root)!=(root/name).read_bytes():issues.append(f'Unexpected release authority change: {name}')
+    baseline = None
+    try:
+        baseline = assert_reviewed_authority(root)
+        for slug in sorted(live):assert_current_reviewed_release(root, slug, baseline)
+    except (AssertionError, KeyError, ValueError, OSError) as error:
+        issues.append(f'Invalid reviewed release authority: {error}')
     statuses={}
     for slug in sorted(slugs):
         p=root/'data/controlled_publications'/slug
-        if slug in live:issues.append(f'Live package modified: {slug}')
+        if not p.is_dir():
+            # Exact archived Yugalanguriya remains outside every active surface.
+            if slug == 'yugalanguriya' and (root/'internal/archives/held_titles/yugalanguriya/ARCHIVE_STATUS.md').is_file() and slug not in live:
+                continue
+            issues.append(f'{slug}: missing canonical package');continue
         manifest=json.loads((p/'publication_manifest.json').read_text())
         issues.extend(f'{slug}: {v}' for v in validate_manifest(manifest))
         for name in ('public_book','reader_manifest','source_evidence','approval_evidence'):
             actual=hashlib.sha256((p/(name+'.json')).read_bytes()).hexdigest()
             if manifest.get('artifacts',{}).get(name)!=actual:issues.append(f'{slug}: stale publication artifact {name}')
         if not checksum_manifest_matches(p):issues.append(f'{slug}: invalid checksum bundle')
-        if manifest['reader_release']['exposed'] or manifest['audio_release']['exposed']:issues.append(f'{slug}: held preparation exposed a release')
+        if manifest['audio_release']['exposed']:issues.append(f'{slug}: audio exposure forbidden')
+        if manifest['reader_release']['exposed'] and slug not in live:issues.append(f'{slug}: held preparation exposed a release')
+        if slug in live:
+            if not baseline or slug not in baseline['titles']:issues.append(f'{slug}: unreviewed exposed title')
+            statuses[slug]=manifest['reader_release']['status']
+            continue
         for chapter in json.loads((p/'public_book.json').read_text())['chapters']:
             chapter_path=p/'chapters'/f"{chapter['id']}.json"
             if not chapter_path.is_file():
@@ -61,6 +75,6 @@ def verify(root=ROOT,base='8be3926fd9fc4526dec66d51b64d8ca72b2d0035'):
                     verdict=evaluate_accepted_record(record,edition_id=slug,operator_id='reo-enterprise',country='IN',country_trusted=True,use=use,required_components=components,accepted_records={record['decision_id']:record_sha256(record)},revoked_decision_ids=frozenset(),now=datetime.now(timezone.utc))
                     if verdict.passed!=should_pass:issues.append(f'{slug}: decision scope invalid for {use}: {verdict.reasons}')
         statuses[slug]=manifest['reader_release']['status']
-    return {'result':'FAIL' if issues else 'PASS','changed_packages':len(slugs),'statuses':statuses,'issues':issues,'reader_exposed':False,'audio_exposed':False,'release_authority_unchanged':not any('authority' in v for v in issues)}
+    return {'result':'FAIL' if issues else 'PASS','changed_packages':len(slugs),'statuses':statuses,'issues':issues,'reader_exposed':bool(live),'audio_exposed':bool(launch.get('audio_enabled_slugs')),'release_authority_matches_reviewed_bindings':baseline is not None and not any('authority' in v for v in issues)}
 if __name__=='__main__':
     report=verify();print(json.dumps(report,ensure_ascii=False,indent=2));raise SystemExit(bool(report['issues']))

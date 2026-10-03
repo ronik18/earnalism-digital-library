@@ -1,0 +1,35 @@
+{
+  "reviewer": "Independent Codex reviewer B",
+  "reviewed_at": "2026-10-03T07:11:47.107576+00:00",
+  "patch_sha256": "467984904bff78b9a697219bf8d421e2b879ee8f0f4ec046bd4ef9e876566105",
+  "disposition": "PASS_EXACT_TWO_DOWNSTREAM_FIXTURE_FILES_ONLY",
+  "files": [
+    "backend/tests/test_backend_catalog_truth.py",
+    "backend/tests/test_rights_engine.py"
+  ],
+  "reviewed_checks": {
+    "python_syntax_both_files": "PASS",
+    "base_files_match_current_unchanged_canonical_tests": "PASS",
+    "independent_literal_selected52_identities_match_accepted_release": "PASS",
+    "six_terminal_alias_held_controls_denied": "PASS",
+    "Dracula_preface_plus27_selected_chapter_identity": "PASS_EXPECTATION28_WITH_EXPLICIT_CHAPTER_IDS_PREFACE",
+    "historical_Dracula_negative_approval_git_raw_sha256": "530e4680a54206e656d9a517aee66ecd2002cc31465ef50e2003718ddcdd078a",
+    "historical_approval_value": "ACTUAL_FALSE_PRESERVED_IN_EXPLICIT_TEMPORARY_TEST_OVERLAY_NOT_CURRENT_ACCEPTANCE",
+    "negative_fixture_checksum_updated": "PASS_APPROVAL_ENTRY_HASH_UPDATED_AND_NO_CHECKSUM_MISMATCH_ASSERTED",
+    "negative_approval_and_sequence_checks": "RETAINS_EXPLICIT_APPROVED_TO_PUBLISH_BLOCKER_AND_DENIES_ARTIFACT_WITH_NO_SEQUENCE_ORDER_ERRORS",
+    "synthetic_missing_license": "NEW_NONCANONICAL_SLUG_WITH_VALID_COVER_REQUIRED400_RIGHTS_ERROR_AND_NO_COVER_MISSING_ERROR",
+    "exact_sitemap": "XML52_UNIQUE_CANONICAL_BOOK_PATHS_NO_READER_ROUTES",
+    "shared_query": "EXACT52_LITERAL_ALLOWLIST_SEARCH_RIGHTS_OR_STRUCTURE_RETAINED"
+  },
+  "worker_complete_modules_evidence": {
+    "validation_path": "/workspace/scratch/181ef0a25f05/rights-catalog-fixture-proposal-20261003/validation.json",
+    "validation_sha256": "106e013eb620783dccc4718c1ddbdb08b0c8d4f8e295b48170c54a7935a3c814",
+    "passed": 78,
+    "failed": 0,
+    "attribution": "Preparation worker ran both complete modules. B independently reviewed concrete delta, syntax, literal scope, base hashes and authentic historical raw fact; no duplicate full suites."
+  },
+  "source_art_runtime_rights_entitlement_deployment_changes": false,
+  "canonical_mutation_by_B": false,
+  "new_production_observation": false,
+  "remaining_gate": "Root sole application, exact amended integrated-tree review and protected normal head CI."
+}
