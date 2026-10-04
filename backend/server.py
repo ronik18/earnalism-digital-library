@@ -5613,13 +5613,13 @@ class CatalogueEvidenceResponseIn(BaseModel):
 
 @api.post("/admin/catalogue/evidence-responses")
 async def admin_ingest_catalogue_evidence(payload: CatalogueEvidenceResponseIn, admin=Depends(require_admin)):
-    editions = await db.books.find(
-        {"$or": [{"edition_id": payload.edition_id}, {"slug": payload.edition_id}, {"id": payload.edition_id}]},
-    ).limit(2).to_list(2)
-    if len(editions) != 1:
-        raise HTTPException(status_code=409, detail="UNKNOWN_OR_MISMATCHED_EDITION")
-    edition = editions[0]
     try:
+        editions = await db.books.find(
+            {"$or": [{"edition_id": payload.edition_id}, {"slug": payload.edition_id}, {"id": payload.edition_id}]},
+        ).limit(2).to_list(2)
+        if len(editions) != 1:
+            raise HTTPException(status_code=409, detail="UNKNOWN_OR_MISMATCHED_EDITION")
+        edition = editions[0]
         return await ingest_response(db=db, payload=payload.model_dump(exclude_none=True), edition=edition, actor=f"admin:{admin.get('email', '')}")
     except EvidenceResponseError as exc:
         status = 409 if exc.code in {"STALE_OR_MISMATCHED_PACKAGE_HASH", "UNKNOWN_OR_MISMATCHED_EDITION", "IDEMPOTENCY_CONFLICT", "CONFLICTING_DECISION", "INVALID_SUPERSESSION"} else 422

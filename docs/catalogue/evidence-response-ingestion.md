@@ -73,7 +73,7 @@ producer.
 - MongoDB 8.2.7 replica set at loopback 27282; Redis 8.10.1 at loopback 26582,
   isolated Redis database 9. Unique `response_ingestion_disposable_*` Mongo
   databases contain generated fixture books/admin only and are removed after tests.
-- 46 focused ingestion/catalogue-truth tests; 151 broader auth/rights/catalogue
+- 47 focused ingestion/catalogue-truth tests; 152 broader auth/rights/catalogue
   tests (overlapping selection, not additive totals).
 - 15 real Mongo/HTTP integration tests: three actual backend process restarts,
   eight concurrent identical submissions (one new result, seven replays), conflicting
@@ -81,7 +81,8 @@ producer.
   mutation after transactional read, invalid authority/scope concurrent arrival,
   one-edition requeue, injected mid-transition failure with full rollback,
   ambiguous identity, unauthenticated denial, Redis-independent persistence and
-  explicit conflict supersession.
+  explicit conflict supersession. A focused unit test also verifies storage
+  failure becomes a safe 503 before any canonical write.
 - 22 existing Mongo admission/promotion tests passed with canonical ENVIRONMENT=uat;
   an earlier invocation omitted this setting and correctly hit the production
   fail-closed entitlement gate. No application assertion was weakened.

@@ -116,3 +116,16 @@ def test_stale_caller_snapshot_does_not_authorize_revoked_authority():
             await ingest_response(db=db, payload=payload(), edition=edition(), actor='admin:x')
         assert not db.catalogue_evidence_decisions.rows
     asyncio.run(run())
+
+
+def test_intake_storage_failure_is_a_safe_503(monkeypatch):
+    from backend import server
+    from fastapi import HTTPException
+    from pymongo.errors import PyMongoError
+    class Books:
+        def find(self, *args, **kwargs): raise PyMongoError('fixture storage unavailable')
+    monkeypatch.setattr(server, 'db', type('UnavailableDB', (), {'books': Books()})())
+    with pytest.raises(HTTPException) as error:
+        asyncio.run(server.admin_ingest_catalogue_evidence(server.CatalogueEvidenceResponseIn(**payload()), {'email': 'fixture@example.com'}))
+    assert error.value.status_code == 503
+    assert error.value.detail == 'EVIDENCE_STORAGE_UNAVAILABLE'
