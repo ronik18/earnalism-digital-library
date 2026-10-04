@@ -11,6 +11,11 @@ import json
 import re
 from typing import Any, Mapping
 
+try:
+    from pymongo.errors import DuplicateKeyError
+except ImportError:  # pragma: no cover - exercised only in minimal validation environments
+    DuplicateKeyError = ()
+
 DECISIONS = frozenset({"APPROVED", "REJECTED", "NEEDS_MORE_INFORMATION"})
 HEX_SHA256 = re.compile(r"^[a-f0-9]{64}$")
 INDIA_TEXT_READER_ONLY = "INDIA_TEXT_READER_ONLY"
@@ -106,7 +111,16 @@ async def ingest_response(*, db: Any, payload: Mapping[str, Any], edition: Mappi
         if payload["supersedes_decision_id"] != (existing_decision or {}).get("decision_id"):
             raise EvidenceResponseError("INVALID_SUPERSESSION")
         await db.catalogue_evidence_decisions.update_one({"decision_id": payload["supersedes_decision_id"], "edition_id": record["edition_id"]}, {"$set": {"active": False, "superseded_at": record["received_at"]}})
-    await db.catalogue_evidence_decisions.insert_one(record)
+    try:
+        await db.catalogue_evidence_decisions.insert_one(record)
+    except DuplicateKeyError:
+        # A concurrent identical submission may pass the read-before-write
+        # check.  Let the unique idempotency index arbitrate, then return the
+        # same durable duplicate result instead of leaking a storage error.
+        existing = await db.catalogue_evidence_decisions.find_one({"idempotency_key": record["idempotency_key"]}, {"_id": 0})
+        if existing and existing.get("decision_digest") == record["decision_digest"]:
+            return {"decision_id": existing["decision_id"], "edition_id": existing["edition_id"], "decision": existing["decision"], "duplicate": True, "requeued": False}
+        raise EvidenceResponseError("IDEMPOTENCY_CONFLICT")
     audit = {"event": "CATALOGUE_EVIDENCE_DECISION_RECEIVED", "event_id": record["decision_id"], "edition_id": record["edition_id"], "decision": record["decision"], "actor": actor, "occurred_at": record["received_at"]}
     await db.catalogue_evidence_decision_audit.insert_one(audit)
     await db.catalogue_evidence_requeue.update_one({"edition_id": record["edition_id"], "decision_id": record["decision_id"]}, {"$setOnInsert": {"edition_id": record["edition_id"], "decision_id": record["decision_id"], "state": "QUEUED", "created_at": record["received_at"]}}, upsert=True)
