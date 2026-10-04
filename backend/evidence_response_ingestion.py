@@ -96,32 +96,89 @@ def validate_response(payload: Mapping[str, Any], edition: Mapping[str, Any], *,
     }
 
 
+def _audit(record: Mapping[str, Any], event: str, reason: str | None = None) -> dict[str, Any]:
+    """Reference-only operational audit; no evidence body or credentials."""
+    evidence = record.get("evidence") or {}
+    return {"event": event, "event_id": record["decision_id"],
+            "edition_id": record["edition_id"], "source_sha256": record["source_sha256"],
+            "package_sha256": record["package_sha256"], "authority_id": record["authority_id"],
+            "authorized_scope": record["authorized_scope"], "decision": record["decision"],
+            "evidence_reference": evidence.get("reference") or evidence.get("source"),
+            "idempotency_key": record["idempotency_key"], "actor": record["actor"],
+            "occurred_at": record["received_at"], "reason": reason}
+
+
+async def initialize_evidence_indexes(db):
+    await db.catalogue_evidence_decisions.create_index("decision_id", unique=True)
+    await db.catalogue_evidence_decisions.create_index("idempotency_key", unique=True)
+    await db.catalogue_evidence_decisions.create_index("edition_id", unique=True, partialFilterExpression={"active": True}, name="one_active_evidence_decision_per_edition")
+    await db.catalogue_evidence_decision_audit.create_index([("edition_id", 1), ("occurred_at", -1)])
+    await db.catalogue_evidence_requeue.create_index([("edition_id", 1), ("decision_id", 1)], unique=True)
+
+
 async def ingest_response(*, db: Any, payload: Mapping[str, Any], edition: Mapping[str, Any], actor: str) -> dict[str, Any]:
+    # Admission validation is repeated against the current server record inside
+    # the transaction. A caller's stale snapshot never grants authority.
     record = validate_response(payload, edition, actor=actor)
-    existing = await db.catalogue_evidence_decisions.find_one({"idempotency_key": record["idempotency_key"]}, {"_id": 0})
-    if existing:
-        if existing.get("decision_digest") != record["decision_digest"]:
-            raise EvidenceResponseError("IDEMPOTENCY_CONFLICT")
-        return {"decision_id": existing["decision_id"], "edition_id": existing["edition_id"], "decision": existing["decision"], "duplicate": True, "requeued": False}
-    existing_decision = await db.catalogue_evidence_decisions.find_one({"edition_id": record["edition_id"], "decision_id": {"$ne": record["decision_id"]}, "active": True}, {"_id": 0})
-    if existing_decision and existing_decision.get("decision_digest") != record["decision_digest"] and not payload.get("supersedes_decision_id"):
-        raise EvidenceResponseError("CONFLICTING_DECISION")
-    record["active"] = True
-    if payload.get("supersedes_decision_id"):
-        if payload["supersedes_decision_id"] != (existing_decision or {}).get("decision_id"):
-            raise EvidenceResponseError("INVALID_SUPERSESSION")
-        await db.catalogue_evidence_decisions.update_one({"decision_id": payload["supersedes_decision_id"], "edition_id": record["edition_id"]}, {"$set": {"active": False, "superseded_at": record["received_at"]}})
-    try:
-        await db.catalogue_evidence_decisions.insert_one(record)
-    except DuplicateKeyError:
-        # A concurrent identical submission may pass the read-before-write
-        # check.  Let the unique idempotency index arbitrate, then return the
-        # same durable duplicate result instead of leaking a storage error.
-        existing = await db.catalogue_evidence_decisions.find_one({"idempotency_key": record["idempotency_key"]}, {"_id": 0})
-        if existing and existing.get("decision_digest") == record["decision_digest"]:
-            return {"decision_id": existing["decision_id"], "edition_id": existing["edition_id"], "decision": existing["decision"], "duplicate": True, "requeued": False}
-        raise EvidenceResponseError("IDEMPOTENCY_CONFLICT")
-    audit = {"event": "CATALOGUE_EVIDENCE_DECISION_RECEIVED", "event_id": record["decision_id"], "edition_id": record["edition_id"], "decision": record["decision"], "actor": actor, "occurred_at": record["received_at"]}
-    await db.catalogue_evidence_decision_audit.insert_one(audit)
-    await db.catalogue_evidence_requeue.update_one({"edition_id": record["edition_id"], "decision_id": record["decision_id"]}, {"$setOnInsert": {"edition_id": record["edition_id"], "decision_id": record["decision_id"], "state": "QUEUED", "created_at": record["received_at"]}}, upsert=True)
-    return {"decision_id": record["decision_id"], "edition_id": record["edition_id"], "decision": record["decision"], "duplicate": False, "requeued": True}
+
+    async def commit(session):
+        selector = {"_id": edition["_id"]} if "_id" in edition else {"slug": record["edition_id"]}
+        current = await db.books.find_one(selector, session=session)
+        if current is None:
+            raise EvidenceResponseError("UNKNOWN_OR_MISMATCHED_EDITION")
+        fresh = validate_response(payload, current, actor=actor)
+        # Write fencing conflicts with concurrent package/authority mutation.
+        # with_transaction retries and revalidates the new current record.
+        await db.books.update_one({"_id": current["_id"]}, {"$inc": {"evidence_response_generation": 1}}, session=session)
+        existing = await db.catalogue_evidence_decisions.find_one({"idempotency_key": fresh["idempotency_key"]}, session=session)
+        error = None
+        if existing:
+            if existing.get("decision_digest") == fresh["decision_digest"]:
+                return {"decision_id": existing["decision_id"], "edition_id": existing["edition_id"], "decision": existing["decision"], "duplicate": True, "requeued": False}
+            error = "IDEMPOTENCY_CONFLICT"
+        same_id = await db.catalogue_evidence_decisions.find_one({"decision_id": fresh["decision_id"]}, session=session)
+        if same_id and not existing:
+            error = "CONFLICTING_DECISION"
+        prior = await db.catalogue_evidence_decisions.find_one({"edition_id": fresh["edition_id"], "active": True}, session=session)
+        supersedes = payload.get("supersedes_decision_id")
+        if supersedes and supersedes != (prior or {}).get("decision_id"):
+            error = "INVALID_SUPERSESSION"
+        if prior and not supersedes and not error:
+            error = "CONFLICTING_DECISION"
+        if error:
+            # A genuinely conflicting valid response freezes reassessment until
+            # an explicit bound supersession resolves it. This is never an
+            # activation job or a publication grant.
+            if prior:
+                await db.catalogue_evidence_decisions.update_one({"_id": prior["_id"]}, {"$set": {"conflict_pending": True}}, session=session)
+                await db.catalogue_evidence_requeue.update_many({"edition_id": fresh["edition_id"], "state": {"$in": ["QUEUED", "PROCESSING"]}}, {"$set": {"state": "HELD", "reason": error}}, session=session)
+            audit = _audit(fresh, "CATALOGUE_EVIDENCE_DECISION_CONFLICT", error)
+            await db.catalogue_evidence_decision_audit.update_one({"_id": "conflict:" + fresh["decision_digest"]}, {"$setOnInsert": audit}, upsert=True, session=session)
+            return {"error": error}
+        if prior:
+            await db.catalogue_evidence_decisions.update_one({"_id": prior["_id"]}, {"$set": {"active": False, "superseded_at": fresh["received_at"]}}, session=session)
+            await db.catalogue_evidence_requeue.update_many({"edition_id": fresh["edition_id"], "state": {"$in": ["QUEUED", "PROCESSING"]}}, {"$set": {"state": "HELD", "reason": "DECISION_SUPERSEDED"}}, session=session)
+        fresh.update(active=True, conflict_pending=False)
+        await db.catalogue_evidence_decisions.insert_one(fresh, session=session)
+        audit = _audit(fresh, "CATALOGUE_EVIDENCE_DECISION_RECEIVED")
+        await db.catalogue_evidence_decision_audit.update_one({"_id": "received:" + fresh["decision_id"]}, {"$setOnInsert": audit}, upsert=True, session=session)
+        queued = fresh["decision"] == "APPROVED"
+        await db.catalogue_evidence_requeue.update_one({"edition_id": fresh["edition_id"], "decision_id": fresh["decision_id"]}, {"$setOnInsert": {
+            "edition_id": fresh["edition_id"], "decision_id": fresh["decision_id"], "package_sha256": fresh["package_sha256"],
+            "source_sha256": fresh["source_sha256"], "state": "QUEUED" if queued else "HELD",
+            "reason": None if queued else fresh["decision"], "purpose": "EVIDENCE_REASSESSMENT_ONLY", "created_at": fresh["received_at"]}}, upsert=True, session=session)
+        return {"decision_id": fresh["decision_id"], "edition_id": fresh["edition_id"], "decision": fresh["decision"], "duplicate": False, "requeued": queued}
+
+    for attempt in range(3):
+        try:
+            async with await db.client.start_session() as session:
+                result = await session.with_transaction(commit)
+            if "error" in result:
+                raise EvidenceResponseError(result["error"])
+            return result
+        except DuplicateKeyError:
+            # Unique indexes are an additional safety boundary. A concurrent
+            # winner must be reread, never turned into an unhandled 500.
+            if attempt == 2:
+                raise EvidenceResponseError("CONFLICTING_DECISION")
+    raise EvidenceResponseError("CONFLICTING_DECISION")
