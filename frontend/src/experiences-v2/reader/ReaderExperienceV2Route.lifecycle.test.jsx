@@ -32,7 +32,7 @@ globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 const manifest = (slug = "test-book") => ({
   book: { slug, title: "The test edition", author: "Test author", language: "English" },
   access: { reading_pass: { enabled: true, total_pages: 7 }, wallet_seconds: 600 },
-  canonical_pages: { page_count: 7, pages: Array.from({ length: 7 }, (_, i) => ({ page_number: i + 1, chapter_id: "c1", content_hash: chunkHash(i + 1) })) },
+  canonical_pages: { page_count: 7, pages: Array.from({ length: 7 }, (_, i) => ({ page_number: i + 1, page_id: `fixture:${i + 1}`, chapter_id: "c1", content_hash: chunkHash(i + 1) })) },
   chapters: [{ id: "c1", title: "Chapter one" }],
 });
 const page = (n, slug = "test-book") => ({ book_slug: slug, page_index: n, chapter_id: "c1", chapter_title: "Chapter one", total_pages: 7, segmentation_version: "isolated-test-segments-v1", manifest_version: "isolated-test-manifest-v1", is_preview: n <= 3, content_sha256: chunkHash(n), content: `<p>Page ${n} manuscript.</p>` });

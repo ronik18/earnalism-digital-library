@@ -148,7 +148,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
   const visualTotal = pagination.pages.length;
   const bookMap = useAuthorizedBookMap({ model, pagination, visualIndex, viewportRef,
     typography: `${textSizeRem}:${lineHeight}:${fontFamily}:${fontWeight}` });
-  const pageIndicator = bookMap.complete ? `${bookMap.currentNumber || visualIndex + 1} of ${bookMap.total}`
+  const pageIndicator = bookMap.complete && model.visualPageScope !== "chapter" ? `${bookMap.currentNumber || visualIndex + 1} of ${bookMap.total}`
     : `${visualIndex + 1} of ${visualTotal || '…'} in this chapter`;
   const mapSelection = bookMap.options.find(option => option.chapterId === model.authorizedChapter?.plan.chapterId && option.start === fragment?.start)?.key || '';
   const onVisualAnchor = model.onVisualAnchor;

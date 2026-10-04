@@ -153,3 +153,38 @@ Multiple textless image pages share the same text offset. This would make source
 PR #517 currently occupies the focused slot. Premium opening remains a separate existing commit.
 Evidence directory: /Users/ronikbasak/Documents/Earnalism audits/2026-10-05-reader-book-map
 Next action: implement structural source anchors for textless visual pages, then repeat media-only sequential/history/resize reconstruction before integration.
+
+
+## Current-chapter-only directive reconciliation — 2026-10-05
+
+The supplied 1a028974 baseline was superseded by preserved commits 1c5042d0c and ea6955e65. Continue forward without rewriting history.
+
+Public route now supplies only the current authorized chapter plan. Removed the route background loader for other chapters; count/selector explicitly describe the current chapter. No whole-book total or adjacent-chapter acquisition is attempted.
+
+Production manifest contract: canonical page_number ascending, unique page_id, chapter_id, SHA-256 and publication revision. Preview scope is server-declared and bounded at <=3; fixtures exercise limit 2. Full access uses the existing publication-bound lease, checked before/after each acquisition/hash verification. Endpoint authority remains server-side. Sources use monotonic chapter offsets with transport offset/hash round trips. Backend provides semantic HTML chunks, not continuation metadata permitting heuristic heading or prose deletion; therefore assembler inserts no separators and strips no matching prose.
+
+Acquisition is bounded to three requests concurrently with a 32MiB assembly limit. The current authorized chapter completes before final page totals are exposed; existing opening state covers assembly/fonts/measurement, without artificial delays. No partial chapter with a falsely final page count is exposed.
+
+Added eight-chunk preview/full fixture and duplicate-ID rejection. Updated lifecycle fixture IDs to match actual production manifests after the stricter check exposed 37 fixture failures; no assertions were weakened.
+
+Actual Chromium sequential reconstruction at every viewport: 44,850 source characters == reconstructed characters, zero omission/duplication/reordering, only chapter-2 chunks14..27 acquired.
+
+| Viewport | client/scroll | Chapter pages |
+|---|---:|---:|
+| 1440x900 | 460/460 | 84 |
+| 1280x720 | 285/285 | 152 |
+| 1024x768 | 357/357 | 108 |
+| 768x1024 | 621/621 | 84 |
+| 390x844 | 286/286 | 196 |
+| 844x390 | 148/148 | 357 |
+| 1280x600 | 165/165 | 285 |
+
+Preview 6,201 characters reconstruct exactly; requests [1,2], outside-preview requests zero. Fixture revocation removes protected prose/map. Native100/125/150 proof from the preceding run remains applicable: CSS/pagination geometry unchanged in this follow-up; not rerun here.
+
+Validation: Reader10suites/131passed; frontend102suites/682passed; relevant backend360passed; production build PASS; SEO172snapshots/3647assertions; disposable regression143passed/0failed/4unchangedskips. Diff check PASS.
+
+Status: BLOCKED — PAGINATION INTEGRITY for the complete release branch: image-only multipage content still needs structural source anchors. Captioned media and tables retain their verified adapters and fail-closed guard. Current-chapter assembly is complete. PR517 occupies focused slot; no push/PR/merge/deployment.
+
+Next exact engineering action: implement structural media anchors with selector/history/annotation round trips on this branch, retaining the current-chapter-only runtime scope.
+
+Post-change navigation: chapter boundary, Back/Forward and refresh PASS. Measured desktop current chapter: first-readable534.7ms; final chapter map545.2ms; manifest0.4ms; fetch71ms; assembly1.1ms; pagination114.5ms. Table/figure fixture rerun: 4609characters exact, one image, desktop8pages and landscape22pages; no overflow.

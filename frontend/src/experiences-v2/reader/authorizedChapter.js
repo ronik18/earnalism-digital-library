@@ -6,6 +6,7 @@ export function chapterWindowPlan(manifest, pageIndex, protectedAccess) {
   const rows = manifest?.canonical_pages?.pages || [];
   const indexes = rows.map(row => Number(row.page_number || row.page_index));
   if (!rows.length || rows.length !== Number(manifest.canonical_pages.page_count) || new Set(indexes).size !== rows.length
+    || new Set(rows.map(row => row.page_id)).size !== rows.length || rows.some(row => !row.page_id)
     || indexes.some((index, n) => index !== n + 1)
     || rows.some(row => !/^[a-f0-9]{64}$/.test(row.content_hash || ''))) throw new Error('The chapter manifest is incomplete or out of order.');
   const current = rows[pageIndex - 1];

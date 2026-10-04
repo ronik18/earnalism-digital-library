@@ -2630,3 +2630,6 @@ Canonical server chunks are authorization boundaries, not responsive visual page
 
 ### Reader map follow-up 2026-10-05
 Whole-book numbering must remain provisional until every authorized chapter is measured. Textless image pages require structural anchors; text offsets alone are ambiguous. Reject unsupported media anchors before paint. Native zoom exposed duplicate footer controls; reserve geometry for primary controls and prose.
+
+### Current-chapter directive reconciliation
+A narrower owner directive supersedes book-wide background acquisition. Preserve verified assembler; route exposes one authorized chapter and explicit chapter-local counts. Production-issued chunk IDs belong in lifecycle fixtures.

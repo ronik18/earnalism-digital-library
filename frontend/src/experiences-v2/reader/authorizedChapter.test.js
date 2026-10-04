@@ -74,3 +74,22 @@ test('a widened preview policy cannot cause protected acquisition without a leas
   const value = manifest(); value.canonical_pages.preview_policy.public_limit = 10;
   expect(() => chapterWindowPlan(value, 1, false)).toThrow('preview policy');
 });
+
+
+test('eight-chunk chapter selects exactly the authorized preview and full windows', async () => {
+  const value = manifest(); value.canonical_pages.pages = value.canonical_pages.pages.slice(0, 8); value.canonical_pages.page_count = 8;
+  const get = jest.fn(async n => ({ ...chunk(n), total_pages: 8 }));
+  const acquire = plan => fetchChapterWindow({ plan, slug: 'approved-fixture', totalPages: 8, fetchChunk: get });
+  const preview = await acquire(chapterWindowPlan(value, 1, false));
+  expect(get.mock.calls.map(([n]) => n)).toEqual([1, 2]);
+  expect(preview.sources).toHaveLength(2);
+  get.mockClear();
+  const full = await acquire(chapterWindowPlan(value, 4, true));
+  expect(get.mock.calls.map(([n]) => n).sort((a,b) => a-b)).toEqual([1,2,3,4,5,6,7,8]);
+  expect(full.sources.every((source,index) => index === 0 || source.start === full.sources[index-1].end)).toBe(true);
+  expect(readerSourceText(full.html).length).toBe(full.textLength);
+});
+test('duplicate canonical chunk IDs are rejected before fetching', () => {
+  const value = manifest(); value.canonical_pages.pages[1].page_id = value.canonical_pages.pages[0].page_id;
+  expect(() => chapterWindowPlan(value,1,true)).toThrow();
+});
