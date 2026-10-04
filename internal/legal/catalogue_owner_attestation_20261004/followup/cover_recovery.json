@@ -1,0 +1,1099 @@
+{
+  "assessed_at": "2026-10-04T20:53:35.644583+00:00",
+  "scope": "Canonical and registered local worktree assets; not a claim of worldwide absence",
+  "production_mutated": false,
+  "records": [
+    {
+      "slug": "a-jury-of-her-peers",
+      "title": "A Jury of Her Peers",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "a-retrieved-reformation",
+      "title": "A Retrieved Reformation",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "a-wagner-matinee",
+      "title": "A Wagner Matinee",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "berenice",
+      "title": "Berenice",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "book-0986aeb7e3",
+      "title": "হৈমন্তী",
+      "classification": "OWNER_ASSET_AMBIGUOUS",
+      "candidates": [
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-0986aeb7e3_back.png",
+          "sha256": "15db10299f53ac11e1e7530b56341d82a62e3d7383d2a11e332fabffdfc8411c"
+        },
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-0986aeb7e3_front.png",
+          "sha256": "7d075a9fccdf8b0fd90919844f0e40de1bf366fef4d5216778fc6265a120e97f"
+        }
+      ],
+      "note": "Legacy generated_bengali_covers pair found in dirty regular checkout; not yet accepted exact owner artwork. Do not bind blindly."
+    },
+    {
+      "slug": "book-0fbdaa730e",
+      "title": "গুপ্তধন",
+      "classification": "OWNER_ASSET_AMBIGUOUS",
+      "candidates": [
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-0fbdaa730e_back.png",
+          "sha256": "08a43dc081cdc78d27f8533f06b4bcf88951c8a33a60c2b12f1e7b57ed17ca99"
+        },
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-0fbdaa730e_front.png",
+          "sha256": "dc2dd9ae8acc55d65cc39ea3e2954f42997370db87038fc8de2239c7a90b1b08"
+        }
+      ],
+      "note": "Legacy generated_bengali_covers pair found in dirty regular checkout; not yet accepted exact owner artwork. Do not bind blindly."
+    },
+    {
+      "slug": "book-5461971092",
+      "title": "মেঘ ও রৌদ্র",
+      "classification": "OWNER_ASSET_AMBIGUOUS",
+      "candidates": [
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-5461971092_back.png",
+          "sha256": "a4f99031612fef7c28ca83424d16f4bcf6d098249fac8bf678d39a5ecc6ab8bf"
+        },
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-5461971092_front.png",
+          "sha256": "a380767278ecc13e3e92bc07d5983b7e809cb0a85760c6a5a5a05fc613629bca"
+        }
+      ],
+      "note": "Legacy generated_bengali_covers pair found in dirty regular checkout; not yet accepted exact owner artwork. Do not bind blindly."
+    },
+    {
+      "slug": "book-5aedda79fe",
+      "title": "শাস্তি",
+      "classification": "OWNER_ASSET_AMBIGUOUS",
+      "candidates": [
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-5aedda79fe_front.png",
+          "sha256": "25aba9fb6b8f4c3e0f268744680201c819a9aaf68da82f914b551ef3c58c6726"
+        },
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-5aedda79fe_back.png",
+          "sha256": "229aee5feeb304dfdc04a107c1c99340e623edab7873dfae7c0ef6a8ada0df6b"
+        }
+      ],
+      "note": "Legacy generated_bengali_covers pair found in dirty regular checkout; not yet accepted exact owner artwork. Do not bind blindly."
+    },
+    {
+      "slug": "book-827fdc7aee",
+      "title": "রাসমণির ছেলে",
+      "classification": "OWNER_ASSET_AMBIGUOUS",
+      "candidates": [
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-827fdc7aee_back.png",
+          "sha256": "cf1baeccdec074a08d6e7bc473253985600b2df2e5f6ac61a867098806a8180d"
+        },
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-827fdc7aee_front.png",
+          "sha256": "1834547ea1698c06a96304dfc1059f20161f1c0334e78c9727bdd4bf035cc073"
+        }
+      ],
+      "note": "Legacy generated_bengali_covers pair found in dirty regular checkout; not yet accepted exact owner artwork. Do not bind blindly."
+    },
+    {
+      "slug": "book-88ded9b47c",
+      "title": "মানভঞ্জন",
+      "classification": "OWNER_ASSET_AMBIGUOUS",
+      "candidates": [
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-88ded9b47c_front.png",
+          "sha256": "b61e5c87ad050b593ff588cb19e8d07033861a890a8e5facab5fcf3b637ba367"
+        },
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-88ded9b47c_back.png",
+          "sha256": "de09771f9860bf041d48e6c087781dbca028b658c4f15236ebb1079e7d07534c"
+        }
+      ],
+      "note": "Legacy generated_bengali_covers pair found in dirty regular checkout; not yet accepted exact owner artwork. Do not bind blindly."
+    },
+    {
+      "slug": "book-95624627d5",
+      "title": "মধ্যবর্তিনী",
+      "classification": "OWNER_ASSET_AMBIGUOUS",
+      "candidates": [
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-95624627d5_front.png",
+          "sha256": "3c6e3497fabdfdc61e7dcb94a7c0e511e7a380ea54f6adc90a31feb19b7b0243"
+        },
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-95624627d5_back.png",
+          "sha256": "3cbd047a0e07c5edb9f370761a0e34bdb03e73f9221a5102e4fc3f9f53c69a49"
+        }
+      ],
+      "note": "Legacy generated_bengali_covers pair found in dirty regular checkout; not yet accepted exact owner artwork. Do not bind blindly."
+    },
+    {
+      "slug": "book-9a7f771921",
+      "title": "কর্মফল",
+      "classification": "OWNER_ASSET_AMBIGUOUS",
+      "candidates": [
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-9a7f771921_front.png",
+          "sha256": "383f4e4a639dfa29e8c016ffbbf8aaf75568694ff8fcddf2d63460ace1b8da19"
+        },
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-9a7f771921_back.png",
+          "sha256": "14f2da3502f4dd563904d8491880ec0706d4770bccf52ec24794374060b81c7f"
+        }
+      ],
+      "note": "Legacy generated_bengali_covers pair found in dirty regular checkout; not yet accepted exact owner artwork. Do not bind blindly."
+    },
+    {
+      "slug": "book-a23625bf36",
+      "title": "সমাপ্তি",
+      "classification": "OWNER_ASSET_AMBIGUOUS",
+      "candidates": [
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-a23625bf36_front.png",
+          "sha256": "8a54eaff01cddf85f6473442084648a4c0bcc43398296d8b55860dadaa2cefb6"
+        },
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-a23625bf36_back.png",
+          "sha256": "f83c9ebfab42853f19cf3bfdb2a9a4b4eb9fcabfbd84f6a765e2ce660d85bc8c"
+        }
+      ],
+      "note": "Legacy generated_bengali_covers pair found in dirty regular checkout; not yet accepted exact owner artwork. Do not bind blindly."
+    },
+    {
+      "slug": "book-a4a369483f",
+      "title": "সম্পত্তি সমর্পণ",
+      "classification": "OWNER_ASSET_AMBIGUOUS",
+      "candidates": [
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-a4a369483f_back.png",
+          "sha256": "3b7c32ae713e5c53f0c0c059b43b254d84d165e65bb4513d8dd8ccdd099c1d56"
+        },
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-a4a369483f_front.png",
+          "sha256": "a805531ba4a22114749da5c9f76f470b99b3bb4c1ed0fa854ad0900aeb75b2c0"
+        }
+      ],
+      "note": "Legacy generated_bengali_covers pair found in dirty regular checkout; not yet accepted exact owner artwork. Do not bind blindly."
+    },
+    {
+      "slug": "book-b9d47814a8",
+      "title": "নিশীথে",
+      "classification": "OWNER_ASSET_AMBIGUOUS",
+      "candidates": [
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-b9d47814a8_front.png",
+          "sha256": "ed1cd0a4c2f585e4ad1e07022906f67b8c19409f93c45a28c06e2f4091bf1a3f"
+        },
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-b9d47814a8_back.png",
+          "sha256": "60c8516475cbf3a5f73c7ec60a306268143fbff18a0249befe170cfcbe91f147"
+        }
+      ],
+      "note": "Legacy generated_bengali_covers pair found in dirty regular checkout; not yet accepted exact owner artwork. Do not bind blindly."
+    },
+    {
+      "slug": "book-bfc51280b3",
+      "title": "অতিথি",
+      "classification": "OWNER_ASSET_AMBIGUOUS",
+      "candidates": [
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-bfc51280b3_front.png",
+          "sha256": "fb6015021fa9918ddc3d1181afdd3727c8efde78448d7156b0a4b80396cd0843"
+        },
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-bfc51280b3_back.png",
+          "sha256": "95a5f4dcb1b9ff7274229cfbab418a65a6fee10f964dce49af8c15a411e46cc0"
+        }
+      ],
+      "note": "Legacy generated_bengali_covers pair found in dirty regular checkout; not yet accepted exact owner artwork. Do not bind blindly."
+    },
+    {
+      "slug": "book-c307a57868",
+      "title": "স্ত্রীর পত্র",
+      "classification": "OWNER_ASSET_AMBIGUOUS",
+      "candidates": [
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-c307a57868_front.png",
+          "sha256": "1acf0b0ad2bd2c7f33da8f739e8b4b08f4bfa148be9044b15942172dae77e01e"
+        },
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-c307a57868_back.png",
+          "sha256": "4b0d8327cc9b28eefe35612175905e085e69ed8ebedd706fd0d0d03e6cab3ac4"
+        }
+      ],
+      "note": "Legacy generated_bengali_covers pair found in dirty regular checkout; not yet accepted exact owner artwork. Do not bind blindly."
+    },
+    {
+      "slug": "book-c85323409f",
+      "title": "জীবিত ও মৃত",
+      "classification": "OWNER_ASSET_AMBIGUOUS",
+      "candidates": [
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-c85323409f_back.png",
+          "sha256": "9188af2096ce6f8ac129953eddbc50141f8e95fdef36abd5484136497a0bb63a"
+        },
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-c85323409f_front.png",
+          "sha256": "960bb535da98cae7cc1d2813168f534a73cc35e65d5f7addc0aaef0c25e57c86"
+        }
+      ],
+      "note": "Legacy generated_bengali_covers pair found in dirty regular checkout; not yet accepted exact owner artwork. Do not bind blindly."
+    },
+    {
+      "slug": "book-ef193ffc52",
+      "title": "দিদি",
+      "classification": "OWNER_ASSET_AMBIGUOUS",
+      "candidates": [
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-ef193ffc52_front.png",
+          "sha256": "c486c67a1a729ae6738666feed9657360a3f1036c9406ec1135be340c4c55ed4"
+        },
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/generated_bengali_covers/book-ef193ffc52_back.png",
+          "sha256": "b70c1f99f4374be9b8ac32426e319006d903c81d949389a929bb002dcb50e27f"
+        }
+      ],
+      "note": "Legacy generated_bengali_covers pair found in dirty regular checkout; not yet accepted exact owner artwork. Do not bind blindly."
+    },
+    {
+      "slug": "boule-de-suif",
+      "title": "Boule de Suif",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "carmilla",
+      "title": "Carmilla",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "devdas",
+      "title": "দেবদাস / Devdas",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "eyesore-chokher-bali",
+      "title": "Eyesore (Chokher Bali)",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "feathertop",
+      "title": "Feathertop",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "hound-of-the-baskervilles",
+      "title": "The Hound of the Baskervilles",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "hungry-stones",
+      "title": "Kshudhita Pashan / The Hungry Stones",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "jane-eyre",
+      "title": "Jane Eyre",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "markheim",
+      "title": "Markheim",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "pather-panchali",
+      "title": "পথের পাঁচালী / Pather Panchali",
+      "classification": "OWNER_ASSET_FOUND",
+      "candidates": [
+        {
+          "path": "backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/private/tmp/earnalism-catalogue-reconcile-20261004/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/private/tmp/earnalism-catalogue-reconcile-20261004/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/private/tmp/earnalism-catalogue-reconcile-20261004/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/private/tmp/earnalism-catalogue-reconcile-20261004/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/private/tmp/earnalism-catalogue-worker/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/private/tmp/earnalism-catalogue-worker/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/private/tmp/earnalism-catalogue-worker/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/private/tmp/earnalism-catalogue-worker/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/private/tmp/earnalism-google-signin-transition-fix/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/private/tmp/earnalism-google-signin-transition-fix/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/private/tmp/earnalism-google-signin-transition-fix/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/private/tmp/earnalism-google-signin-transition-fix/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/private/tmp/earnalism-main-approved-integration/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/private/tmp/earnalism-main-approved-integration/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/private/tmp/earnalism-main-approved-integration/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/private/tmp/earnalism-main-approved-integration/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/private/tmp/earnalism-reader-opening-premium-transition/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/private/tmp/earnalism-reader-opening-premium-transition/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/private/tmp/earnalism-reader-opening-premium-transition/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/private/tmp/earnalism-reader-opening-premium-transition/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/private/tmp/earnalism-reader-true-viewport-pagination/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/private/tmp/earnalism-reader-true-viewport-pagination/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/private/tmp/earnalism-reader-true-viewport-pagination/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/private/tmp/earnalism-reader-true-viewport-pagination/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/private/tmp/earnalism-reader-viewport/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/private/tmp/earnalism-reader-viewport/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/private/tmp/earnalism-reader-viewport/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/private/tmp/earnalism-reader-viewport/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/private/tmp/earnalism-response-ingestion/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/private/tmp/earnalism-response-ingestion/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/private/tmp/earnalism-response-ingestion/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/private/tmp/earnalism-response-ingestion/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/private/tmp/earnalism-ui-brand-commerce-polish/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/private/tmp/earnalism-ui-brand-commerce-polish/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/private/tmp/earnalism-ui-brand-commerce-polish/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/private/tmp/earnalism-ui-brand-commerce-polish/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/private/tmp/earnalism-ui-reader-header-commerce-polish/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/private/tmp/earnalism-ui-reader-header-commerce-polish/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/private/tmp/earnalism-ui-reader-header-commerce-polish/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/private/tmp/earnalism-ui-reader-header-commerce-polish/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/private/tmp/pr514-evidence-20261004-v2/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/private/tmp/pr514-evidence-20261004-v2/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/private/tmp/pr514-evidence-20261004-v2/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/private/tmp/pr514-evidence-20261004-v2/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/earnalism-audio-provenance/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/earnalism-audio-provenance/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/earnalism-audio-provenance/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/earnalism-audio-provenance/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/lane2-first-activation/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/lane2-first-activation/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/lane2-first-activation/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/lane2-first-activation/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/listening-room-homepage/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/listening-room-homepage/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/listening-room-homepage/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/listening-room-homepage/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/optionb-baseline/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/optionb-baseline/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/optionb-baseline/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/optionb-baseline/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/optionb-exact/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/optionb-exact/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/optionb-exact/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/optionb-exact/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/optionb-production/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/optionb-production/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/optionb-production/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/optionb-production/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/optionb-release-review/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/optionb-release-review/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/optionb-release-review/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/optionb-release-review/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/pr462-homepage-recovery/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/pr462-homepage-recovery/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/pr462-homepage-recovery/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/pr462-homepage-recovery/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/pr463-install-rebase/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/pr463-install-rebase/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/pr463-install-rebase/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/pr463-install-rebase/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/pr471-navigation/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/pr471-navigation/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/pr471-navigation/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/pr471-navigation/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/prod-link-action-integrity/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/prod-link-action-integrity/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/prod-link-action-integrity/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/prod-link-action-integrity/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/reader-benchmark-extraction/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/reader-benchmark-extraction/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/reader-benchmark-extraction/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/reader-benchmark-extraction/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/reader-benchmark-main/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/reader-benchmark-main/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/reader-benchmark-main/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/reader-benchmark-main/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/reader-listener-beige/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/reader-listener-beige/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/reader-listener-beige/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/reader-listener-beige/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/sitewide-link-audit/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/sitewide-link-audit/earnalism-digital-library/backend/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/sitewide-link-audit/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/back.png",
+          "sha256": "34b023704b713597239c088a96df03923ff7eb4b7d8226c294438d31774a6b5a"
+        },
+        {
+          "path": "/Users/ronikbasak/.codex/worktrees/sitewide-link-audit/earnalism-digital-library/data/controlled_publications/pather-panchali/covers/front.png",
+          "sha256": "022713dbc5a232f58595df559e47cdc01127cd0601efb64ca5f7048af86a5112"
+        }
+      ],
+      "note": "Canonical front/back source files present and checksum-bound; visually correct title/author; publication cover reference empty. Manuscript completeness hold remains."
+    },
+    {
+      "slug": "pauls-case",
+      "title": "Paul's Case",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "rappaccinis-daughter",
+      "title": "Rappaccini's Daughter",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "rikki-tikki-tavi",
+      "title": "Rikki-Tikki-Tavi",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "rip-van-winkle",
+      "title": "Rip Van Winkle",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-adventure-of-charles-augustus-milverton",
+      "title": "The Adventure of Charles Augustus Milverton",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-adventure-of-the-abbey-grange",
+      "title": "The Adventure of the Abbey Grange",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-adventure-of-the-beryl-coronet",
+      "title": "The Adventure of the Beryl Coronet",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-adventure-of-the-blue-carbuncle",
+      "title": "The Adventure of the Blue Carbuncle",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-adventure-of-the-copper-beeches",
+      "title": "The Adventure of the Copper Beeches",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-adventure-of-the-dancing-men",
+      "title": "The Adventure of the Dancing Men",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-adventure-of-the-empty-house",
+      "title": "The Adventure of the Empty House",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-adventure-of-the-engineers-thumb",
+      "title": "The Adventure of the Engineer's Thumb",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-adventure-of-the-final-problem",
+      "title": "The Adventure of the Final Problem",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-adventure-of-the-greek-interpreter",
+      "title": "The Adventure of the Greek Interpreter",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-adventure-of-the-noble-bachelor",
+      "title": "The Adventure of the Noble Bachelor",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-adventure-of-the-priory-school",
+      "title": "The Adventure of the Priory School",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-adventure-of-the-second-stain",
+      "title": "The Adventure of the Second Stain",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-adventure-of-the-solitary-cyclist",
+      "title": "The Adventure of the Solitary Cyclist",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-ambitious-guest",
+      "title": "The Ambitious Guest",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-bet",
+      "title": "The Bet",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+      "title": "The Celebrated Jumping Frog of Calaveras County",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-country-of-the-blind",
+      "title": "The Country of the Blind",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-darling",
+      "title": "The Darling",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-door-in-the-wall",
+      "title": "The Door in the Wall",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-five-orange-pips",
+      "title": "The Five Orange Pips",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-furnished-room",
+      "title": "The Furnished Room",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-imp-of-the-perverse",
+      "title": "The Imp of the Perverse",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-last-leaf",
+      "title": "The Last Leaf",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-legend-of-sleepy-hollow",
+      "title": "The Legend of Sleepy Hollow",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-lifted-veil",
+      "title": "The Lifted Veil",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-luck-of-roaring-camp",
+      "title": "The Luck of Roaring Camp",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-man-in-a-case",
+      "title": "The Man in a Case",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-man-with-the-twisted-lip",
+      "title": "The Man with the Twisted Lip",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-masque-of-the-red-death",
+      "title": "The Masque of the Red Death",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-ministers-black-veil",
+      "title": "The Minister's Black Veil",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-monkeys-paw",
+      "title": "The Monkey's Paw",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-murders-in-the-rue-morgue",
+      "title": "The Murders in the Rue Morgue",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-necklace",
+      "title": "The Necklace",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-outcasts-of-poker-flat",
+      "title": "The Outcasts of Poker Flat",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-purloined-letter",
+      "title": "The Purloined Letter",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-ransom-of-red-chief",
+      "title": "The Ransom of Red Chief",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-red-headed-league",
+      "title": "The Red-Headed League",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-speckled-band",
+      "title": "The Speckled Band",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-strange-case-of-dr-jekyll-and-mr-hyde",
+      "title": "The Strange Case of Dr Jekyll and Mr Hyde",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-suicide-club",
+      "title": "The Suicide Club",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-withered-arm",
+      "title": "The Withered Arm",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "the-yellow-wallpaper",
+      "title": "The Yellow Wallpaper",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "to-build-a-fire",
+      "title": "To Build a Fire",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "tobermory",
+      "title": "Tobermory",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "ward-no-6",
+      "title": "Ward No. 6",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "white-fang",
+      "title": "White Fang",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "woman-in-white",
+      "title": "The Woman in White",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    },
+    {
+      "slug": "young-goodman-brown",
+      "title": "Young Goodman Brown",
+      "classification": "OWNER_ASSET_NOT_FOUND",
+      "candidates": []
+    }
+  ]
+}

@@ -2615,3 +2615,6 @@ Do not infer confirmed404 or campaign exhaustion from missing explicit rewrites:
 
 ## Owner catalogue attestation — 2026-10-04T10:41:28.967535+00:00
 Owner artwork provenance removes a third-party artwork permission question, not file, edition, display or text-rights gates. Bharat fetched front subtitle is intact; historical URL aliases are not edition authority. Five Bengali candidates have display defects. No new title was activated. See internal/legal/catalogue_owner_attestation_20261004.
+
+## Catalogue local follow-up — 2026-10-04T20:55:06.984456+00:00
+Artwork ownership does not verify printed endorsements/ISBN allocation. Neither is mandatory in publication schema. Preserve the back privately; front-only text preparation is viable. Legacy Bharat audio flags require fresh text-only bindings. Missing-reference search found one canonical pair and 15 ambiguous pairs; five Bengali display defects are baked into source artwork. No activation or production verification inferred.

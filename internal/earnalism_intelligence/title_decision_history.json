@@ -11703,5 +11703,12 @@
     ],
     "historical_decisions_preserved": true,
     "publication_authority": false
+  },
+  "catalogue_local_followup_20261005": {
+    "recorded_at": "2026-10-04T20:55:06.984456+00:00",
+    "evidence": "internal/legal/catalogue_owner_attestation_20261004/followup",
+    "bharat_status": "BLOCKED — RUNTIME REGISTRATION",
+    "newly_release_ready": [],
+    "next_action": "Recheck #517; after focused slot frees, push evidence-only canonical branch and open scoped provenance PR. Validate Bharat exact changed package rights and HTTP registration/entitlement before any cohort."
   }
 }

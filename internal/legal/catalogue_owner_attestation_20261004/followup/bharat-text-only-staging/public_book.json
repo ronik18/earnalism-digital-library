@@ -1,0 +1,69 @@
+{
+  "id": "controlled-bharat-at-the-crossroads",
+  "slug": "bharat-at-the-crossroads",
+  "title": "Bharat at the Crossroads",
+  "subtitle": "The Prime Ministers, the Wars, and the Soul of a Nation",
+  "author": "Ronik Basak",
+  "category_slug": "business",
+  "short_description": "An original work by Ronik Basak, presented as a carefully prepared digital reading edition.",
+  "description": "An original work by Ronik Basak.",
+  "cover_url": "covers/front.png",
+  "cover_image_url": "covers/front.png",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "estimated_reading_time": "322 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a clean, structured digital edition."
+  ],
+  "who_for": [
+    "Readers of contemporary nonfiction"
+  ],
+  "learnings": [
+    "Follow the book's arguments and narrative structure."
+  ],
+  "about_author": "Ronik Basak is the author of Bharat at the Crossroads.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "Bharat at the Crossroads",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 34761,
+      "reading_minutes": 322,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-08-08T00:00:00Z",
+      "updated_at": "2026-08-08T00:00:00Z"
+    }
+  ],
+  "source_hash": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+  "content_hash": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7",
+  "provenance_hash": "41300c1e70b2b43c0f17602acba1de96a1b3f5350e8dffd46c470ecdc9330343",
+  "rights_basis": "Original work authored by Ronik Basak; copyright reserved to Reo Enterprise.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": false,
+  "publication_status": "DRAFT",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "draft",
+  "isPublic": false,
+  "isLive": false,
+  "showInPublicLibrary": false,
+  "showInHomepage": false,
+  "allowPublicReading": false,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": false,
+  "generate_audiobook": false,
+  "created_at": "2026-08-08T00:00:00Z",
+  "updated_at": "2026-08-08T00:00:00Z",
+  "audio_enabled": false,
+  "audiobook_enabled": false
+}
