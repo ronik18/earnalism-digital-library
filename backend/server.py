@@ -286,6 +286,10 @@ try:
     from rights_decision_gate import DecisionGateVerdict, evaluate_runtime_path, load_production_registry, record_sha256, should_deny_runtime_action
 except ImportError:  # pragma: no cover - supports package-style test imports
     from backend.rights_decision_gate import DecisionGateVerdict, evaluate_runtime_path, load_production_registry, record_sha256, should_deny_runtime_action
+try:
+    from evidence_response_ingestion import EvidenceResponseError, ingest_response
+except ImportError:  # pragma: no cover
+    from backend.evidence_response_ingestion import EvidenceResponseError, ingest_response
 
 try:
     from catalog_truth import (
@@ -5157,6 +5161,11 @@ async def initialize_database_indexes() -> None:
     await db.credit_log.create_index([("user_id", 1), ("timestamp", -1)])
     await db.credit_log.create_index([("upload_id", 1), ("timestamp", -1)])
     await db.admin_upload_audit.create_index([("admin_user_id", 1), ("created_at", -1)])
+    await db.catalogue_evidence_decisions.create_index("decision_id", unique=True)
+    await db.catalogue_evidence_decisions.create_index("idempotency_key", unique=True)
+    await db.catalogue_evidence_decisions.create_index([("edition_id", 1), ("active", 1)])
+    await db.catalogue_evidence_decision_audit.create_index([("edition_id", 1), ("occurred_at", -1)])
+    await db.catalogue_evidence_requeue.create_index([("edition_id", 1), ("decision_id", 1)], unique=True)
 
     await db.user_sessions.create_index("id", unique=True)
     await db.user_sessions.create_index([("user_id", 1), ("status", 1), ("created_at", -1)])
@@ -5590,6 +5599,34 @@ if os.environ.get("JUDOSCALE_URL", "").strip():
     app.add_middleware(FastAPIRequestQueueTimeMiddleware)
     logger.info("Judoscale FastAPI request queue middleware enabled.")
 api = APIRouter(prefix="/api")
+
+
+class CatalogueEvidenceResponseIn(BaseModel):
+    decision_id: str = Field(min_length=1, max_length=160)
+    idempotency_key: str = Field(min_length=1, max_length=160)
+    edition_id: str = Field(min_length=1, max_length=200)
+    source_sha256: str = Field(min_length=64, max_length=64)
+    package_sha256: str = Field(min_length=64, max_length=64)
+    authority_id: str = Field(min_length=1, max_length=200)
+    authorized_scope: str = Field(min_length=1, max_length=80)
+    decision: str = Field(min_length=1, max_length=40)
+    evidence: Dict[str, Any]
+    supersedes_decision_id: Optional[str] = Field(default=None, max_length=160)
+
+
+@api.post("/admin/catalogue/evidence-responses")
+async def admin_ingest_catalogue_evidence(payload: CatalogueEvidenceResponseIn, admin=Depends(require_admin)):
+    edition = await db.books.find_one(
+        {"$or": [{"edition_id": payload.edition_id}, {"slug": payload.edition_id}, {"id": payload.edition_id}]},
+        {"_id": 0},
+    )
+    if not edition:
+        raise HTTPException(status_code=409, detail="UNKNOWN_OR_MISMATCHED_EDITION")
+    try:
+        return await ingest_response(db=db, payload=payload.model_dump(exclude_none=True), edition=edition, actor=f"admin:{admin.get('email', '')}")
+    except EvidenceResponseError as exc:
+        status = 409 if exc.code in {"STALE_OR_MISMATCHED_PACKAGE_HASH", "UNKNOWN_OR_MISMATCHED_EDITION", "IDEMPOTENCY_CONFLICT", "CONFLICTING_DECISION", "INVALID_SUPERSESSION"} else 422
+        raise HTTPException(status_code=status, detail=exc.code)
 
 
 # Private ChatGPT/Codex task bridge.  The bridge is deliberately separate from
