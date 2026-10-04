@@ -56,8 +56,8 @@ describe("premium header navigation", () => {
     expect(styles).toContain("@media (min-width: 1280px)");
     expect(styles).toContain("--site-header-height: 6.5rem;");
     expect(styles).toContain("width: var(--header-lockup-width);");
-    expect(styles).toContain("--header-lockup-width: 18.75rem;");
-    expect(styles).toContain("--header-lockup-width: min(15rem, calc(100vw - 8.5rem));");
+    expect(styles).toContain("--header-lockup-width: 20rem;");
+    expect(styles).toContain("--header-lockup-width: min(16rem, calc(100vw - 8.5rem));");
     expect(styles).toContain("background: var(--brand-lockup-paper, #fff9ee);");
     expect(styles).toContain("font: 600 1rem/1.35 var(--font-ui, Outfit, sans-serif);");
     expect(styles).toContain("min-height: 52px;");

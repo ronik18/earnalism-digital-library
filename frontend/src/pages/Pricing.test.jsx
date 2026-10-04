@@ -28,3 +28,15 @@ describe("Commerce design contract", () => {
     expect(referenceSource).toContain('Try again');
   });
 });
+
+test("Commerce hero states NO auto-renewals as presentation copy", () => {
+  expect(referenceSource).toContain("<span>NO</span><strong>auto-renewals</strong>");
+  expect(referenceSource).not.toContain("<span>0</span><strong>auto-renewals</strong>");
+});
+
+test("all three partner cards use the same prominent coming-soon treatment", () => {
+  expect((referenceSource.match(/className="rp-coming-soon"/g) || []).length).toBe(3);
+  const styles = fs.readFileSync(path.join(process.cwd(), "src/styles/reading-passes.css"), "utf8");
+  expect(styles).toMatch(/\.rp-coming-soon\{[^}]*background:var\(--rp-wine/);
+  expect(styles).toMatch(/\.rp-coming-soon\{[^}]*font-weight:600/);
+});
