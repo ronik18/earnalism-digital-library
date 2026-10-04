@@ -30,13 +30,28 @@ export function sliceBlock(block, start, end) {
   return clone;
 }
 
+export function sliceTableRows(block, start, end) {
+  const rows = [...block.querySelectorAll('tr')];
+  const range = document.createRange();
+  if (start === 0) range.setStart(block, 0); else range.setStartBefore(rows[start]);
+  if (end === rows.length) range.setEnd(block, block.childNodes.length); else range.setEndBefore(rows[end]);
+  let contents = range.cloneContents();
+  let ancestor = range.commonAncestorContainer;
+  while (ancestor !== block) {
+    const envelope = ancestor.cloneNode(false);
+    envelope.append(contents); contents = envelope; ancestor = ancestor.parentNode;
+  }
+  const fragment = block.cloneNode(false); fragment.append(contents);
+  return fragment;
+}
+
 export function pageForAnchor(pages, offset) {
   return Math.max(0, pages.findIndex((page, index) => offset >= page.start
     && (offset < page.end || index === pages.length - 1)));
 }
 
 // A provided fit predicate is useful for invariant tests; production measures DOM.
-export function paginateRendered(source, measure, height, fits = () => measure.scrollHeight <= height + 1) {
+function* paginationSteps(source, measure, height, fits = () => measure.scrollHeight <= height + 1) {
   if (height < 24) throw new PaginationIntegrityError('The reading area cannot fit a readable line.');
   const pages = []; let offset = 0; let pageStart = 0;
   measure.replaceChildren(); measure.removeAttribute('data-continuation');
@@ -47,6 +62,7 @@ export function paginateRendered(source, measure, height, fits = () => measure.s
   };
   const blocks = [...source.childNodes];
   for (let index = 0; index < blocks.length; index++) {
+    yield;
     let block = blocks[index];
     if (block.nodeType === Node.TEXT_NODE) {
       const paragraph = document.createElement('p'); paragraph.textContent = block.textContent; block = paragraph;
@@ -67,9 +83,30 @@ export function paginateRendered(source, measure, height, fits = () => measure.s
     measure.append(whole);
     if (fits()) { offset += Math.max(1, block.textContent.length); continue; }
     whole.remove();
+    const table = block.matches('table') ? block : block.querySelector('table');
+    if (table && !block.querySelector('img,video,audio') && !table.querySelector('[rowspan]:not([rowspan="1"])')) {
+      const rows = [...block.querySelectorAll('tr')];
+      if (rows.length > 1) {
+        let start = 0;
+        while (start < rows.length) {
+          let low = start + 1; let high = rows.length; let best = start;
+          while (low <= high) {
+            const middle = Math.floor((low + high) / 2);
+            measure.replaceChildren(sliceTableRows(block, start, middle));
+            if (fits()) { best = middle; low = middle + 1; } else high = middle - 1;
+          }
+          if (best === start) throw new PaginationIntegrityError('An individual table row exceeds this layout.');
+          const fragment = sliceTableRows(block, start, best);
+          measure.replaceChildren(fragment); offset += fragment.textContent.length;
+          start = best;
+          if (start < rows.length) { finish(); yield; }
+        }
+        continue;
+      }
+    }
     // Preserve rich inline markup with DOM Ranges. Binary search word boundaries.
     const boundaries = textBoundaries(block.textContent);
-    if (boundaries.length < 2 || block.querySelector('img,svg,table,video,audio')) {
+    if (boundaries.length < 2 || (block.matches('img,svg,table,video,audio') || block.querySelector('img,svg,table,video,audio'))) {
       throw new PaginationIntegrityError('A structured block needs a supported pagination adapter.');
     }
     let startIndex = 0;
@@ -80,7 +117,7 @@ export function paginateRendered(source, measure, height, fits = () => measure.s
         measure.replaceChildren(sliceBlock(block, boundaries[startIndex], boundaries[middle]));
         if (fits()) { best = middle; low = middle + 1; } else high = middle - 1;
       }
-      if (best === startIndex) throw new PaginationIntegrityError('An indivisible word or structure exceeds this layout.');
+      if (best === startIndex) throw new PaginationIntegrityError(`An indivisible word or ${block.tagName.toLowerCase()} structure exceeds this layout.`);
       // Prefer a sentence boundary without sacrificing most of the page.
       const candidate = block.textContent.slice(boundaries[startIndex], boundaries[best]);
       const sentences = [...candidate.matchAll(/[.!?।]\s+/gu)];
@@ -108,7 +145,7 @@ export function paginateRendered(source, measure, height, fits = () => measure.s
       if (!fits()) throw new PaginationIntegrityError('Measured fragment exceeds its page.');
       offset += boundaries[best] - boundaries[startIndex];
       startIndex = best;
-      if (startIndex < boundaries.length - 1) finish();
+      if (startIndex < boundaries.length - 1) { finish(); yield; }
     }
   }
   finish();
@@ -117,4 +154,31 @@ export function paginateRendered(source, measure, height, fits = () => measure.s
     throw new PaginationIntegrityError('Pagination did not reconstruct the source exactly.');
   }
   return pages;
+}
+
+export function paginateRendered(source, measure, height, fits) {
+  const steps = paginationSteps(source, measure, height, fits);
+  let step = steps.next();
+  while (!step.done) step = steps.next();
+  return step.value;
+}
+
+// Fast layouts finish synchronously. Long layouts yield the main thread in
+// bounded slices; yielding is calculation work, never an animation delay.
+export function paginateRenderedResponsive(source, measure, height, options = {}) {
+  const steps = paginationSteps(source, measure, height, options.fits);
+  const clock = options.clock || (() => performance.now());
+  const schedule = options.schedule || (resume => setTimeout(resume, 0));
+  const advance = () => {
+    const started = clock();
+    while (true) {
+      if (options.cancelled?.()) throw new DOMException('Pagination superseded', 'AbortError');
+      const step = steps.next();
+      if (step.done) return step.value;
+      if (clock() - started >= 8) return new Promise((resolve, reject) => schedule(() => {
+        try { resolve(advance()); } catch (error) { reject(error); }
+      }));
+    }
+  };
+  return advance();
 }

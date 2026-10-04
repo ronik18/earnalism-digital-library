@@ -2620,3 +2620,10 @@ Do not infer confirmed404 or campaign exhaustion from missing explicit rewrites:
 
 ## 2026-10-04 — Reader measured pagination
 Canonical server chunks are authorization boundaries, not responsive visual pages. Preserve those gates while adding measured fragments. Hidden measurement DOM needs explicit font loading; invalidate cache after font load. A short-screen decorative drop cap can exceed the reading surface. Whole-book numbering and oversized structure adapters remain release holds; local tests are not proof of native zoom. See reader_pagination_review_20261004.md.
+
+## Reader pagination correction — 2026-10-04
+
+- Prose-only fixtures missed tables/code/blockquote spacing in the supplied Agentic AI With Python chapter. Complete-row table splitting and compressed short-screen spacing preserve text and font size.
+- Read fragment text, source offsets and geometry atomically during browser traversal; separate calls can straddle a React render and produce false integrity failures.
+- Yield long DOM pagination calculations in bounded slices; cancel superseded work before it clears or commits a newer shared measurement container. Use the canonical opening presentation only for genuine initial calculation.
+- Passing full-chapter local fixtures is not proof that the public authorized-chunk API supplies a single whole-chapter visual-page map. Preserve the release hold until that contract and native zoom acceptance are complete.

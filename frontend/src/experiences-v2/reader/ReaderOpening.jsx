@@ -2,16 +2,17 @@ import { useEffect, useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import "./reader-opening.css";
 
-export default function ReaderOpening({ book, failed = false, onRetry, onLibrary, onEscapeFocus, busy = false }) {
+export default function ReaderOpening({ book, failed = false, onRetry, onLibrary, onEscapeFocus, busy = false, embedded = false }) {
   const [slow, setSlow] = useState(false);
   useEffect(() => {
     if (failed) return undefined;
     const timer = setTimeout(() => setSlow(true), 2500);
     return () => clearTimeout(timer);
   }, [failed]);
+  const Container = embedded ? "section" : "main";
   const title = book?.public_title || book?.display_title || book?.title;
   const author = book?.author || book?.author_name;
-  return <main className={`experience-v2 reader-opening${failed ? " reader-opening--failed" : ""}`} data-testid="reader-opening">
+  return <Container className={`experience-v2 reader-opening${failed ? " reader-opening--failed" : ""}`} data-testid="reader-opening">
     <section className="reader-opening__composition" aria-label="Reader opening">
       <div className="reader-opening__book" aria-hidden="true">
         <div className="reader-opening__shadow" />
@@ -34,5 +35,5 @@ export default function ReaderOpening({ book, failed = false, onRetry, onLibrary
         <button className="reader-opening__back" onClick={onLibrary} onFocus={() => onEscapeFocus?.(true)} onBlur={() => onEscapeFocus?.(false)} type="button" disabled={busy}><ArrowLeft size={15} aria-hidden="true" />{busy ? "Closing reader…" : "Back to Library"}</button>
       </div>
     </section>
-  </main>;
+  </Container>;
 }

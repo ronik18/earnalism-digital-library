@@ -7,6 +7,7 @@ import ExperiencePanel from "../shared/ExperiencePanel";
 import ExperienceShell from "../shared/ExperienceShell";
 import "./reader-v2.css";
 import "./reader-pagination.css";
+import ReaderOpening from "./ReaderOpening";
 import useVisualPagination from "./useVisualPagination";
 import { pageForAnchor } from "./visualPagination";
 import "./reader-v2.mobile.css";
@@ -148,11 +149,15 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
     onVisualAnchor?.(offset);
   }, [onVisualAnchor]);
   const readingAnchor = { offset: fragment?.start || 0, revision: model.sourceRevision || '' };
+  const hasPaginated = useRef(false);
+  const openingHasFocus = useRef(false);
   const [failedLayout, setFailedLayout] = useState('');
   const layoutKey = `${pagination.signature}:${fragment?.start}`;
   const layoutError = failedLayout === layoutKey ? 'This page could not be fitted safely. Change the text setting or viewport to retry.' : pagination.error;
   useLayoutEffect(() => {
     if (pagination.pending || !fragment || !viewportRef.current) return;
+    hasPaginated.current = true;
+    if (openingHasFocus.current) { headingRef.current?.focus(); openingHasFocus.current = false; }
     if (viewportRef.current.scrollHeight > viewportRef.current.clientHeight + 1) {
       // Reject a mismatched rendered result before paint; never reveal clipped prose.
       viewportRef.current.setAttribute('data-pagination-overflow', 'true');
@@ -263,6 +268,7 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
         </div>
       </header>
       <div className="reader-v2__layout">
+        {pagination.pending && !hasPaginated.current && <div className="reader-v2__pagination-opening"><ReaderOpening embedded book={{ title: model.title, author: model.author }} onLibrary={() => onNavigate?.("library")} onEscapeFocus={focused => { openingHasFocus.current = focused; }} busy={busy} /></div>}
         <aside className="reader-v2__rail" aria-label="Reader controls">
           <div className="reader-v2__book"><h2>{model.title}</h2><span>{model.author}</span></div>
           {progress !== null && <div className="reader-v2__metric"><span>Reading Progress</span><strong>{progress}%</strong><i><b style={{ width: `${progress}%` }} /></i></div>}
@@ -300,12 +306,12 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
           </section>}
           <label className="reader-v2__page-selector">Go to page<select aria-label="Go to page" value={visualIndex} disabled={busy || pagination.pending} onChange={(event) => pagination.pages[Number(event.target.value)] && changeAnchor(pagination.pages[Number(event.target.value)].start)}>{pagination.pages.map((_, index) => <option key={index} value={index}>Page {index + 1}</option>)}</select></label>
           {model.pendingPage && <p className="reader-v2__page-loading" role="status">Opening page {model.pendingPage}…</p>}
-          <div ref={viewportRef} className="reader-v2__visual-viewport" data-layout-width={pagination.width} data-layout-height={pagination.height} data-pagination-ready={!pagination.pending && !layoutError} data-pagination-ms={pagination.durationMs} data-pagination-cached={pagination.cached} data-page-start={fragment?.start} data-page-end={fragment?.end} data-page-count={visualTotal}>
+          <div ref={viewportRef} className="reader-v2__visual-viewport" data-pagination-diagnostic={process.env.NODE_ENV === 'development' ? pagination.errorReason : undefined} data-layout-width={pagination.width} data-layout-height={pagination.height} data-pagination-ready={!pagination.pending && !layoutError} data-pagination-ms={pagination.durationMs} data-pagination-cached={pagination.cached} data-page-start={fragment?.start} data-page-end={fragment?.end} data-page-count={visualTotal}>
             <div ref={sourceRef} className="reader-v2__body reader-v2__pagination-source" aria-hidden="true" inert={true} style={{ fontSize: formatRem(textSizeRem), lineHeight, fontFamily, fontWeight }}>
               {model.content ?? (model.paragraphs || []).map((paragraph, index) => <p key={`${index}-${paragraph.slice(0, 16)}`}>{paragraph}</p>)}
             </div>
             <div ref={measureRef} className="reader-v2__body reader-v2__pagination-measure" aria-hidden="true" inert={true} />
-            {pagination.pending ? <p className="reader-v2__pagination-status" role="status">Preparing this page…</p> : layoutError ? <p role="alert">{layoutError}</p> :
+            {pagination.pending ? <p className="reader-v2__pagination-status" role={hasPaginated.current ? "status" : undefined} aria-hidden={!hasPaginated.current}>Preparing this page…</p> : layoutError ? <p role="alert">{layoutError}</p> :
               <div key={`${page}:${fragment?.start}`} className={`reader-v2__page-content reader-v2__page-content--${pageTurn.direction}`} data-testid="reader-page-content">
                 <div className="reader-v2__body" data-testid="reader-reading-text" data-continuation={fragment?.start > 0} style={{ fontSize: formatRem(textSizeRem), lineHeight, fontFamily, fontWeight }} dangerouslySetInnerHTML={{ __html: fragment?.html || '' }} />
               </div>}

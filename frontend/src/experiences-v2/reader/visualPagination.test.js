@@ -1,4 +1,4 @@
-import { paginateRendered, pageForAnchor, sliceBlock, textBoundaries } from './visualPagination';
+import { paginateRendered, paginateRenderedResponsive, pageForAnchor, sliceBlock, sliceTableRows, textBoundaries } from './visualPagination';
 function run(html, capacity = 40) {
   const source = document.createElement('div'); source.innerHTML = html;
   const measure = document.createElement('div');
@@ -51,4 +51,34 @@ test('small unusable height fails safely', () => {
 test('anchor at the final boundary resolves to the final page', () => {
   const { pages } = run('<p>' + 'A sentence. '.repeat(10) + '</p>', 30);
   expect(pageForAnchor(pages, pages.at(-1).end)).toBe(pages.length - 1);
+});
+
+test('an oversized top-level table is rejected rather than sliced into invalid markup', () => {
+  expect(() => run('<table><tbody><tr><td>Long table text requiring more space.</td></tr></tbody></table>', 10)).toThrow(/supported pagination adapter/);
+});
+
+test('multi-row tables paginate by complete measured rows with exact text order', () => {
+  const html = '<div><table><thead><tr><th>Heading</th><th>Meaning</th></tr></thead><tbody>' + Array.from({length:8}, (_, i) => `<tr><td>Row ${i}</td><td>Meaning ${i}</td></tr>`).join('') + '</tbody></table></div>';
+  const { source, pages } = run(html, 35);
+  expect(pages.length).toBeGreaterThan(1);
+  expect(pages.map(page => page.text).join('')).toBe(source.textContent);
+  expect(pages.every(page => page.text.length <= 35)).toBe(true);
+  expect(pages.every(page => page.html.includes('<table>'))).toBe(true);
+  expect(pages.map(page => page.text).join('').match(/Heading/g)).toHaveLength(1);
+});
+test('row range slicing preserves formatting whitespace between rows', () => {
+  const block = document.createElement('div'); block.innerHTML = '<table>\n<tbody>\n<tr><td>A</td></tr>\n<tr><td>B</td></tr>\n</tbody>\n</table>';
+  expect(sliceTableRows(block, 0, 1).textContent + sliceTableRows(block, 1, 2).textContent).toBe(block.textContent);
+});
+
+test('long calculations yield and preserve exactly the same pages', async () => {
+  const html = '<p>' + 'Original fixture sentence. '.repeat(30) + '</p>';
+  const expected = run(html, 40).pages;
+  const source = document.createElement('div'); source.innerHTML = html;
+  const measure = document.createElement('div'); let ticks = 0; let yields = 0;
+  const result = await paginateRenderedResponsive(source, measure, 100, { fits: () => measure.textContent.length <= 40, clock: () => ticks += 10, schedule: resume => { yields++; Promise.resolve().then(resume); } });
+  expect(yields).toBeGreaterThan(0); expect(result).toEqual(expected);
+});
+test('a superseded calculation stops before committing stale fragments', () => {
+  expect(() => paginateRenderedResponsive(document.createElement('div'), document.createElement('div'), 100, { cancelled: () => true })).toThrow(/superseded/);
 });
