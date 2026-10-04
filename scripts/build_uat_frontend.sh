@@ -50,7 +50,7 @@ done
 
 rm -rf "$FRONTEND_BUILD_DIR" "$UAT_SEO_ASSETS_DIR"
 SEO_ASSETS_OUTPUT_DIR="$UAT_SEO_ASSETS_DIR" node "$ROOT_DIR/frontend/scripts/generate-seo-assets.mjs"
-(cd "$ROOT_DIR/frontend" && GENERATE_SOURCEMAP=false ./node_modules/.bin/craco build)
+(cd "$ROOT_DIR/frontend" && REACT_APP_ENABLE_VISUAL_FIXTURES=1 REACT_APP_UAT_LOCAL=true GENERATE_SOURCEMAP=false ./node_modules/.bin/craco build)
 node "$ROOT_DIR/frontend/scripts/generate-static-seo-snapshots.mjs"
 node "$ROOT_DIR/frontend/scripts/verify-static-seo-snapshots.mjs"
 cp "$UAT_SEO_ASSETS_DIR/sitemap.xml" "$FRONTEND_BUILD_DIR/sitemap.xml"
