@@ -21,13 +21,15 @@ export default function Login() {
     description: "Sign in to your reading account at The Earnalism Digital Library.",
     robots: "noindex, nofollow",
   });
-  const { user, userLogin, refreshUser } = useAuth();
+  const { user, userLogin, userGoogleLogin, refreshUser } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
   const nav = useNavigate();
   const [params] = useSearchParams();
-  const next = params.get("next") || "/account";
+  const [googlePending, setGooglePending] = useState(false);
+  const googleCompleted = useRef(false);
+  const next = safeSignInDestination(params.get("next"), googlePending ? "/library" : "/account");
   const showedExpiryMessage = useRef(false);
 
   // ---------- Mobile OTP ----------
@@ -51,20 +53,22 @@ export default function Login() {
   }, [params]);
 
   const completeGoogle = async (credential) => {
+    if (googleCompleted.current) return;
+    googleCompleted.current = true;
+    setGooglePending(true);
     try {
-      const { data } = await axios.post(`${API}/auth/google`, { credential });
-      localStorage.setItem(USER_TOKEN_KEY, data.token);
-      await refreshUser();
+      await userGoogleLogin(credential);
       trackFunnelEvent("signin_completed", { source: "google" });
       toast.success("Welcome.");
-      nav("/library", { replace: true });
     } catch (err) {
-      toast.error(formatError(err.response?.data?.detail) || "Google sign-in failed");
+      googleCompleted.current = false;
+      setGooglePending(false);
+      toast.error(formatError(err.response?.data?.detail) || "Google sign-in failed. Please try again.");
     }
   };
 
-  if (user === null) return <div className="py-32 text-center text-charcoal-soft" role="status" aria-live="polite">Loading sign-in…</div>;
   if (user) return <Navigate to={next} replace />;
+  if (user === null || googlePending) return <div className="py-32 text-center text-charcoal-soft" role="status" aria-live="polite">{googlePending ? "Signing you in…" : "Loading sign-in…"}</div>;
 
   const submit = async (e) => {
     e.preventDefault();
@@ -74,7 +78,6 @@ export default function Login() {
       await userLogin(email, password);
       trackFunnelEvent("signin_completed", { source: "email_form" });
       toast.success("Welcome back.");
-      nav(next, { replace: true });
     } catch (err) {
       toast.error(formatError(err.response?.data?.detail) || "Sign-in failed");
     } finally { setBusy(false); }
@@ -285,7 +288,8 @@ function GoogleSignInButton({ onStart, onComplete }) {
       if (credential) return onComplete(credential);
       toast.error("Google sign-in failed");
     },
-    onError: () => toast.error("Google sign-in failed"),
+    onError: () => toast.error("Google sign-in failed. Please try again."),
+    onNonOAuthError: () => toast.error("Google sign-in was closed or could not open. Please try again."),
   });
 
   return (
@@ -311,4 +315,16 @@ function GoogleSignInButton({ onStart, onComplete }) {
       Continue with Google
     </button>
   );
+}
+
+export function safeSignInDestination(value, fallback = "/account") {
+  if (!value || !value.startsWith("/") || value.startsWith("//") || /[\\\x00-\x20]/.test(value)) return fallback;
+  try {
+    const decoded = decodeURIComponent(value);
+    if (decoded.startsWith("//") || /[\\\x00-\x20]/.test(decoded)) return fallback;
+    const url = new URL(value, "https://earnalism.invalid");
+    const decodedUrl = new URL(decoded, "https://earnalism.invalid");
+    if (url.origin !== "https://earnalism.invalid" || /^\/(login|signup|auth)(\/|$)/i.test(decodedUrl.pathname)) return fallback;
+    return url.pathname + url.search + url.hash;
+  } catch { return fallback; }
 }
