@@ -53,17 +53,34 @@ export function pageForAnchor(pages, offset) {
 // A provided fit predicate is useful for invariant tests; production measures DOM.
 function* paginationSteps(source, measure, height, fits = () => measure.scrollHeight <= height + 1) {
   if (height < 24) throw new PaginationIntegrityError('The reading area cannot fit a readable line.');
-  const pages = []; let offset = 0; let pageStart = 0;
+  const pages = []; let offset = 0; let pageStart = 0; let prefix = '';
   measure.replaceChildren(); measure.removeAttribute('data-continuation');
   const finish = () => {
     if (!measure.childNodes.length) return;
-    pages.push({ html: measure.innerHTML, text: measure.textContent, start: pageStart, end: offset });
+    // Formatting-only text nodes must not acquire paragraph margins or become
+    // blank visual pages. Preserve every character and its source offset.
+    if ([...measure.childNodes].every(node => node.nodeType === Node.TEXT_NODE && !node.textContent.trim())) {
+      const whitespace = measure.textContent;
+      if (pages.length) {
+        const previous = pages[pages.length - 1];
+        previous.html += whitespace; previous.text += whitespace; previous.end = offset;
+        pageStart = offset;
+      } else prefix += whitespace;
+      measure.replaceChildren();
+      return;
+    }
+    pages.push({ html: prefix + measure.innerHTML, text: prefix + measure.textContent, start: pageStart, end: offset });
+    prefix = '';
     measure.replaceChildren(); pageStart = offset; measure.setAttribute('data-continuation', 'true');
   };
   const blocks = [...source.childNodes];
   for (let index = 0; index < blocks.length; index++) {
     yield;
     let block = blocks[index];
+    if (block.nodeType === Node.TEXT_NODE && !block.textContent.trim()) {
+      measure.append(block.cloneNode(true)); offset += block.textContent.length;
+      continue;
+    }
     if (block.nodeType === Node.TEXT_NODE) {
       const paragraph = document.createElement('p'); paragraph.textContent = block.textContent; block = paragraph;
     }
@@ -71,7 +88,11 @@ function* paginationSteps(source, measure, height, fits = () => measure.scrollHe
     const whole = block.cloneNode(true);
     measure.append(whole);
     // Prefer headings with the next block if the pair fits on an empty page.
-    const next = blocks[index + 1];
+    let next = blocks[index + 1];
+    if (/^H[1-6]$/.test(block.tagName)) {
+      let followingIndex = index + 1;
+      while (next?.nodeType === Node.TEXT_NODE && !next.textContent.trim()) next = blocks[++followingIndex];
+    }
     if (/^H[1-6]$/.test(block.tagName) && next && measure.childNodes.length > 1) {
       const following = next.cloneNode(true); measure.append(following);
       const pairFits = fits(); following.remove();
@@ -149,7 +170,7 @@ function* paginationSteps(source, measure, height, fits = () => measure.scrollHe
     }
   }
   finish();
-  if (!pages.length) pages.push({ html: '', text: '', start: 0, end: 0 });
+  if (!pages.length) pages.push({ html: prefix, text: prefix, start: 0, end: offset });
   if (pages.map(page => page.text).join('') !== source.textContent) {
     throw new PaginationIntegrityError('Pagination did not reconstruct the source exactly.');
   }

@@ -82,3 +82,22 @@ test('long calculations yield and preserve exactly the same pages', async () => 
 test('a superseded calculation stops before committing stale fragments', () => {
   expect(() => paginateRenderedResponsive(document.createElement('div'), document.createElement('div'), 100, { cancelled: () => true })).toThrow(/superseded/);
 });
+
+
+test('formatting-only top-level whitespace never creates paragraph-shaped blank pages', () => {
+  const source = document.createElement('div');
+  source.innerHTML = '\n<h2>Heading</h2>\n<p>First body.</p>\n<p>Second body.</p>\n';
+  const measure = document.createElement('div');
+  const pages = paginateRendered(source, measure, 100, () => measure.querySelectorAll('p,h2').length <= 1);
+  expect(pages.map(page => page.text).join('')).toBe(source.textContent);
+  expect(pages.every(page => page.text.trim().length > 0)).toBe(true);
+  expect(pages[0].start).toBe(0);
+  expect(pages.at(-1).end).toBe(source.textContent.length);
+  expect(pages.every((page, index) => !index || page.start === pages[index - 1].end)).toBe(true);
+});
+test('whitespace-only sources preserve every character on one stable page', () => {
+  const { source, pages } = run(' \n ');
+  expect(pages).toHaveLength(1);
+  expect(pages[0].text).toBe(source.textContent);
+  expect(pages[0].end).toBe(source.textContent.length);
+});

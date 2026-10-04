@@ -56,3 +56,11 @@ Outside Git: /Users/ronikbasak/Documents/Earnalism audits/2026-10-04-reader-pagi
 
 ## Next exact action
 Continue this branch by adding the authorization-aware chapter visual-page map and oversized structured-block adapters; rerun integrity/browser/zoom acceptance before integration. Do not cherry-pick or release this partial pagination implementation.
+
+## Two-lane follow-up
+
+PR516 exact head940f88b82c3af46bf1744f2d476e7098156754c1 passed all nine non-deployment checks. Owner explicitly authorized merge plus automatic deployment after the workflow coupling was identified. GitHub merged=true, merged_at2026-10-04T09:27:23Z, merge/current origin-main c33faa0b52134d74a174e4cd1f424fccd87a0b56. Automatic main workflow37192206945 started; deployment success is not inferred. Its scope is header/Blog/logo/Coming Soon/no-auto-renewals, not Reader pagination.
+
+Formatting-only top-level whitespace now remains raw whitespace instead of becoming artificial paragraphs. Whitespace-only candidate pages join neighboring fragments without removing source characters. Heading lookahead skips formatting nodes. Two new invariant tests cover preserved offsets and whitespace-only sources. Final landscape traversal waits for the selected DOM visual index, then reads text/offset/geometry atomically:581 pages,40,822 characters, zero blank pages, exact reconstruction, all pages fit. An earlier unsynchronized traversal failed and remains retained.
+
+Pre-refresh validation: targeted6/93, full99/636, build/SEO172/3647, diff check pass. Full-chapter runtime map and native zoom acceptance remain unfinished. Native AX inventory became readable, but keyboard setup did not create a tab and native screenshot returned unavailable; this does not establish usable native zoom automation.
