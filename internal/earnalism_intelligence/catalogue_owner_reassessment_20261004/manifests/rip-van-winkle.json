@@ -1,0 +1,123 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "4168ff1092fa23555ad4932b73a3cf48fb9fd16ce0f52291f23561bb448a19bd",
+    "chapters/chapter-001.json": "111a1b6e69273cf876626624c38cb36ac27798df89bfb1c7a25f079fe755e98a",
+    "checksum_manifest.json": "f01682771bc9871ecd8c96c5dc9a0c0e5c644fb13e96e1137ea68bafc5f5ef74",
+    "highlight_sync.json": "ccdd498249077288ac56c0c9e0eca3a96d57e28916baeb9decf601ec87921cf7",
+    "public_book.json": "ed29cd99f0b9c6474984ca06eb9e802703523e19916498c9b0536b149bdeb4ca",
+    "publication_authorization.json": "39b1b1f431fcbd9ff255fcc6a075134c75f7d791246115a9581c073603e978f9",
+    "publication_manifest.json": "e7b77e1f11e5dac688e0cc2cb0cef10b1769be459882e21757dd33369d00c3d4",
+    "reader_manifest.json": "d7b2ec1e2256154939f2c549c7e014437069a1db446baef249a4ac464b0ff094",
+    "rights_decision.json": "2625ba439e7fcff12f56d7577eeadcba9dda6f18ee2ca26d1e91b442e801cb07",
+    "source_evidence.json": "bef16a7c5dbf06b20febd0fc4c8ee36a2dcc2ee0aac08220b10d8526f0ac33c7"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "2011555cdb66a9be1a30c4fa4a31ca08393c0492f3dc94b62b8d83f0853f13ef",
+      "file_sha256": "111a1b6e69273cf876626624c38cb36ac27798df89bfb1c7a25f079fe755e98a",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "4168ff1092fa23555ad4932b73a3cf48fb9fd16ce0f52291f23561bb448a19bd",
+    "chapters/chapter-001.json": "111a1b6e69273cf876626624c38cb36ac27798df89bfb1c7a25f079fe755e98a",
+    "checksum_manifest.json": "f01682771bc9871ecd8c96c5dc9a0c0e5c644fb13e96e1137ea68bafc5f5ef74",
+    "highlight_sync.json": "ccdd498249077288ac56c0c9e0eca3a96d57e28916baeb9decf601ec87921cf7",
+    "public_book.json": "ed29cd99f0b9c6474984ca06eb9e802703523e19916498c9b0536b149bdeb4ca",
+    "publication_authorization.json": "39b1b1f431fcbd9ff255fcc6a075134c75f7d791246115a9581c073603e978f9",
+    "publication_manifest.json": "e7b77e1f11e5dac688e0cc2cb0cef10b1769be459882e21757dd33369d00c3d4",
+    "reader_manifest.json": "d7b2ec1e2256154939f2c549c7e014437069a1db446baef249a4ac464b0ff094",
+    "rights_decision.json": "2625ba439e7fcff12f56d7577eeadcba9dda6f18ee2ca26d1e91b442e801cb07",
+    "source_evidence.json": "bef16a7c5dbf06b20febd0fc4c8ee36a2dcc2ee0aac08220b10d8526f0ac33c7"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "4168ff1092fa23555ad4932b73a3cf48fb9fd16ce0f52291f23561bb448a19bd",
+      "public_book": "ed29cd99f0b9c6474984ca06eb9e802703523e19916498c9b0536b149bdeb4ca",
+      "reader_manifest": "d7b2ec1e2256154939f2c549c7e014437069a1db446baef249a4ac464b0ff094",
+      "source_evidence": "bef16a7c5dbf06b20febd0fc4c8ee36a2dcc2ee0aac08220b10d8526f0ac33c7"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "423caac3a219281c8bb50ddd72a48a692847e16a5559f1d4b8d539f2d72efff8",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "111a1b6e69273cf876626624c38cb36ac27798df89bfb1c7a25f079fe755e98a",
+          "title": "Rip Van Winkle",
+          "word_count": 6773
+        }
+      ],
+      "content_hash": "2011555cdb66a9be1a30c4fa4a31ca08393c0492f3dc94b62b8d83f0853f13ef",
+      "provenance_hash": "3828640b72ac06bf1884fbd427e1185eb0a45542ac514dc10f59cbbb64aac314",
+      "sanitized": true,
+      "source_hash": "3085b99a7b6a9d5f527dfb97351c858a6f7fc97f2c654570f5defbbfb50e5042"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "6d6369cea54832064f0a3f951097120850680994d0e50549462bc376402c0cdb",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "bef16a7c5dbf06b20febd0fc4c8ee36a2dcc2ee0aac08220b10d8526f0ac33c7",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "rip-van-winkle",
+    "title": "Rip Van Winkle"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-rip-van-winkle-pg60976-noncover-text",
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

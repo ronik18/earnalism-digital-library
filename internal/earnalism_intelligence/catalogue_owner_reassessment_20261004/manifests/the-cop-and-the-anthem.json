@@ -1,0 +1,128 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "68c32c9a7a134010a36017f8ab058d56dfcda2eb6e739e38c45b1188e52f19bf",
+    "chapters/chapter-001.json": "630e75350eefdcce93c1f0e403873a29fb1df4004f8c2dd2f450108bd4288cb8",
+    "checksum_manifest.json": "50f5f926b4992e69b22a2113d4913065aedbb6215fe7a2cc0732d3401b17259d",
+    "cover_preparation.json": "9cf2aaf4e5a08aa733a1874524df59170bfb96443b3b65dbe2ba1006dd72fe86",
+    "cover_provenance.json": "87bd73a79634bfc9393175fdcbff9935e5b948399b169a676ec76477679c2ca4",
+    "covers/original-back.png": "0c9e1ec88066b222f5b2e715e8017c4fb7095e74f8f2b669ce5d1d97a77eb7d6",
+    "covers/original-front.png": "3232a6b9c657c5e0adaa6385c87ecd88b9544a0c264b0a28b9ee8d7e11ed12b7",
+    "covers/the-cop-and-the-anthem-back-inactive.png": "c0929e3af5ed29e6305d2867e0018ab4bdd7c6fa226fca6ff82ee94b45236a35",
+    "covers/the-cop-and-the-anthem-back-inactive.webp": "5f6497fd5616e8913891f73d47aa6ff08b6c7db338cefd05f81b71332241dcde",
+    "covers/the-cop-and-the-anthem-front-inactive.png": "af57195ca48c50d2c8bf0ac6b2c4366dd2328c4e52c93d50b23bd44dea2ef41f",
+    "covers/the-cop-and-the-anthem-front-inactive.webp": "b2243f117df70253f59a995f7aba59c747da08d51187d94d79ff2e84e10f06de",
+    "evidence/review_a.json": "2eaf07760acf658f9c176461fe425ad4fa7c4fb372a26124968cd6cee43ee10a",
+    "evidence/review_b.json": "b4c6472a288af36d58459dea6619df7ffcab6fb64a2eadc22c366e9959e52097",
+    "highlight_sync.json": "193728619d202fad6d4f71dbf895c35d68190b7ae6663a77d19d02d774efd113",
+    "public_book.json": "8be18e15d16f64a3f55c0ba0d2cca1719aa6a53f5b1d6292a281417ac1b2e8de",
+    "publication_authorization.json": "74ee384faafe45c1ecbd02144877e3ac9488ed5a34f511d517058ce8397b68c0",
+    "publication_manifest.json": "cd93ea733f3107ef5ddf9f96ae092b732f8bc852263e55efeb7c4298395bc876",
+    "reader_manifest.json": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22",
+    "rights_decision.json": "b7a24c46afe9179d4ec46247e68c4fe31da8dde7466e9762dc554c1b8f3fae51",
+    "source_evidence.json": "f40f277d758a03b9e05dd6ffa721b058766db6955ba4414d183a7f9bf45fb84f"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "77a6d1c7ff6162cc7aad47b950666c6bb1dedf0beb55a08f3f476e27e57bd3ab",
+      "file_sha256": "630e75350eefdcce93c1f0e403873a29fb1df4004f8c2dd2f450108bd4288cb8",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "68c32c9a7a134010a36017f8ab058d56dfcda2eb6e739e38c45b1188e52f19bf",
+    "chapters/chapter-001.json": "630e75350eefdcce93c1f0e403873a29fb1df4004f8c2dd2f450108bd4288cb8",
+    "checksum_manifest.json": "50f5f926b4992e69b22a2113d4913065aedbb6215fe7a2cc0732d3401b17259d",
+    "cover_preparation.json": "9cf2aaf4e5a08aa733a1874524df59170bfb96443b3b65dbe2ba1006dd72fe86",
+    "cover_provenance.json": "87bd73a79634bfc9393175fdcbff9935e5b948399b169a676ec76477679c2ca4",
+    "covers/original-back.png": "0c9e1ec88066b222f5b2e715e8017c4fb7095e74f8f2b669ce5d1d97a77eb7d6",
+    "covers/original-front.png": "3232a6b9c657c5e0adaa6385c87ecd88b9544a0c264b0a28b9ee8d7e11ed12b7",
+    "covers/the-cop-and-the-anthem-back-inactive.png": "c0929e3af5ed29e6305d2867e0018ab4bdd7c6fa226fca6ff82ee94b45236a35",
+    "covers/the-cop-and-the-anthem-back-inactive.webp": "5f6497fd5616e8913891f73d47aa6ff08b6c7db338cefd05f81b71332241dcde",
+    "covers/the-cop-and-the-anthem-front-inactive.png": "af57195ca48c50d2c8bf0ac6b2c4366dd2328c4e52c93d50b23bd44dea2ef41f",
+    "covers/the-cop-and-the-anthem-front-inactive.webp": "b2243f117df70253f59a995f7aba59c747da08d51187d94d79ff2e84e10f06de",
+    "evidence/review_a.json": "2eaf07760acf658f9c176461fe425ad4fa7c4fb372a26124968cd6cee43ee10a",
+    "evidence/review_b.json": "b4c6472a288af36d58459dea6619df7ffcab6fb64a2eadc22c366e9959e52097",
+    "highlight_sync.json": "193728619d202fad6d4f71dbf895c35d68190b7ae6663a77d19d02d774efd113",
+    "public_book.json": "8be18e15d16f64a3f55c0ba0d2cca1719aa6a53f5b1d6292a281417ac1b2e8de",
+    "publication_authorization.json": "74ee384faafe45c1ecbd02144877e3ac9488ed5a34f511d517058ce8397b68c0",
+    "publication_manifest.json": "cd93ea733f3107ef5ddf9f96ae092b732f8bc852263e55efeb7c4298395bc876",
+    "reader_manifest.json": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22",
+    "rights_decision.json": "b7a24c46afe9179d4ec46247e68c4fe31da8dde7466e9762dc554c1b8f3fae51",
+    "source_evidence.json": "f40f277d758a03b9e05dd6ffa721b058766db6955ba4414d183a7f9bf45fb84f"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "68c32c9a7a134010a36017f8ab058d56dfcda2eb6e739e38c45b1188e52f19bf",
+      "public_book": "8be18e15d16f64a3f55c0ba0d2cca1719aa6a53f5b1d6292a281417ac1b2e8de",
+      "reader_manifest": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22",
+      "source_evidence": "f40f277d758a03b9e05dd6ffa721b058766db6955ba4414d183a7f9bf45fb84f"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "4f7b23ce81f6afa6017d118a309f80d35c9dead539e0f2bdf69911fe60d24eaa",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "630e75350eefdcce93c1f0e403873a29fb1df4004f8c2dd2f450108bd4288cb8",
+          "title": "The Cop and the Anthem",
+          "word_count": 2306
+        }
+      ],
+      "content_hash": "77a6d1c7ff6162cc7aad47b950666c6bb1dedf0beb55a08f3f476e27e57bd3ab",
+      "provenance_hash": "e56b326703e2719cda7eb81b9dc04edbd23eed61ce89cbece41db9338549565c",
+      "sanitized": true,
+      "source_hash": "6bb719852f2f0eb33db25613124d2d3c522dd3b879c187667ab31072bb2fb48d"
+    },
+    "generated_at": "2026-10-03T04:59:53.954767+00:00",
+    "manifest_sha256": "1c9ec73a2076559536c3f1b54e4631d50b74c6bf12d9b05d51fdabd7271ec731",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/the-cop-and-the-anthem/the-cop-and-the-anthem-front-inactive.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "f40f277d758a03b9e05dd6ffa721b058766db6955ba4414d183a7f9bf45fb84f",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-cop-and-the-anthem",
+    "title": "The Cop and the Anthem"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261003-the-cop-and-the-anthem-exact-reader-cover-prospective-accepted",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

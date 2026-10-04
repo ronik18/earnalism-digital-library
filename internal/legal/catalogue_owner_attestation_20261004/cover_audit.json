@@ -1,0 +1,2507 @@
+{
+  "schema": "earnalism.private-catalogue-processing.v1",
+  "recorded_at": "2026-10-04T10:41:28.967535+00:00",
+  "publication_authority": false,
+  "owner_attestation": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+  "record_count": 87,
+  "category_counts": {
+    "COVER_FILE_MISSING": 82,
+    "COVER_DISPLAY_DEFECT": 5
+  },
+  "titles": [
+    {
+      "slug": "a-jury-of-her-peers",
+      "title": "A Jury of Her Peers",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "a-retrieved-reformation",
+      "title": "A Retrieved Reformation",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "a-wagner-matinee",
+      "title": "A Wagner Matinee",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "berenice",
+      "title": "Berenice",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "book-0986aeb7e3",
+      "title": "হৈমন্তী",
+      "language": "ben",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "book-0fbdaa730e",
+      "title": "গুপ্তধন",
+      "language": "ben",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "book-1090573dff",
+      "title": "ছুটি",
+      "language": "ben",
+      "category": "COVER_DISPLAY_DEFECT",
+      "local_candidates": [],
+      "inventory_candidates": {
+        "front_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273676/earnalism/covers/front/book-1090573dff_front_1600x2400.png",
+        "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273677/earnalism/covers/back/book-1090573dff_back_1600x2400.png"
+      },
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "display_issue": "Front candidate contains LIVE CONTROLLED RELEASE banner for an inactive edition; back text has malformed Bengali glyphs, low contrast over artwork, and/or clipped lines.",
+      "exact_candidate_files": [
+        {
+          "slug": "book-1090573dff",
+          "role": "front_cover_url",
+          "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273676/earnalism/covers/front/book-1090573dff_front_1600x2400.png",
+          "sha256": "730dd6c3fa8a852ab4f858cc91252dcbcc9833ca3f647c50e769d8e47bd68e26",
+          "dimensions": [
+            1600,
+            2400
+          ],
+          "format": "PNG",
+          "path": "internal/legal/catalogue_owner_attestation_20261004/assets/book-1090573dff/front_cover_url.png"
+        },
+        {
+          "slug": "book-1090573dff",
+          "role": "back_cover_url",
+          "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273677/earnalism/covers/back/book-1090573dff_back_1600x2400.png",
+          "sha256": "7639cb13ee6a356aad7879955093a97eb5042254fd741ff1dd3dd8715951f7c9",
+          "dimensions": [
+            1600,
+            2400
+          ],
+          "format": "PNG",
+          "path": "internal/legal/catalogue_owner_attestation_20261004/assets/book-1090573dff/back_cover_url.png"
+        }
+      ],
+      "next_action": "Supply authoritative corrected owner artwork/export. Preserve candidates and review exact replacement bytes; bind passing assets to prepared package and rerun all text/release gates."
+    },
+    {
+      "slug": "book-4968248842",
+      "title": "বলাই",
+      "language": "ben",
+      "category": "COVER_DISPLAY_DEFECT",
+      "local_candidates": [],
+      "inventory_candidates": {
+        "front_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267869/earnalism/covers/front/book-4968248842_front_1600x2400.png",
+        "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267870/earnalism/covers/back/book-4968248842_back_1600x2400.png"
+      },
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "display_issue": "Front candidate contains LIVE CONTROLLED RELEASE banner for an inactive edition; back text has malformed Bengali glyphs, low contrast over artwork, and/or clipped lines.",
+      "exact_candidate_files": [
+        {
+          "slug": "book-4968248842",
+          "role": "front_cover_url",
+          "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267869/earnalism/covers/front/book-4968248842_front_1600x2400.png",
+          "sha256": "d2c873c8612a5635186ae536a43d47bcfcc2d686b71a4e5e841466e4ec52bbb7",
+          "dimensions": [
+            1600,
+            2400
+          ],
+          "format": "PNG",
+          "path": "internal/legal/catalogue_owner_attestation_20261004/assets/book-4968248842/front_cover_url.png"
+        },
+        {
+          "slug": "book-4968248842",
+          "role": "back_cover_url",
+          "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267870/earnalism/covers/back/book-4968248842_back_1600x2400.png",
+          "sha256": "07bc201719096efe0ed9cb9f2004e7f5905a71506574a61a3666d5656ffd7138",
+          "dimensions": [
+            1600,
+            2400
+          ],
+          "format": "PNG",
+          "path": "internal/legal/catalogue_owner_attestation_20261004/assets/book-4968248842/back_cover_url.png"
+        }
+      ],
+      "next_action": "Supply authoritative corrected owner artwork/export. Preserve candidates and review exact replacement bytes; bind passing assets to prepared package and rerun all text/release gates."
+    },
+    {
+      "slug": "book-4b944e64fa",
+      "title": "একরাত্রি",
+      "language": "ben",
+      "category": "COVER_DISPLAY_DEFECT",
+      "local_candidates": [],
+      "inventory_candidates": {
+        "front_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275463/earnalism/covers/front/book-4b944e64fa_front_1600x2400.png",
+        "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275464/earnalism/covers/back/book-4b944e64fa_back_1600x2400.png"
+      },
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "display_issue": "Front candidate contains LIVE CONTROLLED RELEASE banner for an inactive edition; back text has malformed Bengali glyphs, low contrast over artwork, and/or clipped lines.",
+      "exact_candidate_files": [
+        {
+          "slug": "book-4b944e64fa",
+          "role": "front_cover_url",
+          "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275463/earnalism/covers/front/book-4b944e64fa_front_1600x2400.png",
+          "sha256": "6d66f92b0ca258d017dde34388064834548322fb5d811c50405776ba17598502",
+          "dimensions": [
+            1600,
+            2400
+          ],
+          "format": "PNG",
+          "path": "internal/legal/catalogue_owner_attestation_20261004/assets/book-4b944e64fa/front_cover_url.png"
+        },
+        {
+          "slug": "book-4b944e64fa",
+          "role": "back_cover_url",
+          "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275464/earnalism/covers/back/book-4b944e64fa_back_1600x2400.png",
+          "sha256": "eef7927146d9120fbde783c94eef3685252a8c6d827f0d993b0ce9f150fcfa62",
+          "dimensions": [
+            1600,
+            2400
+          ],
+          "format": "PNG",
+          "path": "internal/legal/catalogue_owner_attestation_20261004/assets/book-4b944e64fa/back_cover_url.png"
+        }
+      ],
+      "next_action": "Supply authoritative corrected owner artwork/export. Preserve candidates and review exact replacement bytes; bind passing assets to prepared package and rerun all text/release gates."
+    },
+    {
+      "slug": "book-5461971092",
+      "title": "মেঘ ও রৌদ্র",
+      "language": "ben",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "book-5aedda79fe",
+      "title": "শাস্তি",
+      "language": "ben",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "book-827fdc7aee",
+      "title": "রাসমণির ছেলে",
+      "language": "ben",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "book-88ded9b47c",
+      "title": "মানভঞ্জন",
+      "language": "ben",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "book-95624627d5",
+      "title": "মধ্যবর্তিনী",
+      "language": "ben",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "book-9a7f771921",
+      "title": "কর্মফল",
+      "language": "ben",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "book-a23625bf36",
+      "title": "সমাপ্তি",
+      "language": "ben",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "book-a4a369483f",
+      "title": "সম্পত্তি সমর্পণ",
+      "language": "ben",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "book-ac5a71075e",
+      "title": "পোস্টমাস্টার",
+      "language": "ben",
+      "category": "COVER_DISPLAY_DEFECT",
+      "local_candidates": [],
+      "inventory_candidates": {
+        "front_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273666/earnalism/covers/front/book-ac5a71075e_front_1600x2400.png",
+        "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273668/earnalism/covers/back/book-ac5a71075e_back_1600x2400.png"
+      },
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "display_issue": "Front candidate contains LIVE CONTROLLED RELEASE banner for an inactive edition; back text has malformed Bengali glyphs, low contrast over artwork, and/or clipped lines.",
+      "exact_candidate_files": [
+        {
+          "slug": "book-ac5a71075e",
+          "role": "front_cover_url",
+          "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273666/earnalism/covers/front/book-ac5a71075e_front_1600x2400.png",
+          "sha256": "8727ae40538ea3956b6c15178756977a96c76666c1415f4cce1d4eea84e3cc16",
+          "dimensions": [
+            1600,
+            2400
+          ],
+          "format": "PNG",
+          "path": "internal/legal/catalogue_owner_attestation_20261004/assets/book-ac5a71075e/front_cover_url.png"
+        },
+        {
+          "slug": "book-ac5a71075e",
+          "role": "back_cover_url",
+          "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783273668/earnalism/covers/back/book-ac5a71075e_back_1600x2400.png",
+          "sha256": "92db8580cc6945c305954823f5666e35e06c080561f2ae95b365bd427d044948",
+          "dimensions": [
+            1600,
+            2400
+          ],
+          "format": "PNG",
+          "path": "internal/legal/catalogue_owner_attestation_20261004/assets/book-ac5a71075e/back_cover_url.png"
+        }
+      ],
+      "next_action": "Supply authoritative corrected owner artwork/export. Preserve candidates and review exact replacement bytes; bind passing assets to prepared package and rerun all text/release gates."
+    },
+    {
+      "slug": "book-b9d47814a8",
+      "title": "নিশীথে",
+      "language": "ben",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "book-bfc51280b3",
+      "title": "অতিথি",
+      "language": "ben",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "book-c307a57868",
+      "title": "স্ত্রীর পত্র",
+      "language": "ben",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "book-c85323409f",
+      "title": "জীবিত ও মৃত",
+      "language": "ben",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "book-ef193ffc52",
+      "title": "দিদি",
+      "language": "ben",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "book-fbdf2991ab",
+      "title": "সুভা",
+      "language": "ben",
+      "category": "COVER_DISPLAY_DEFECT",
+      "local_candidates": [],
+      "inventory_candidates": {
+        "front_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267878/earnalism/covers/front/book-fbdf2991ab_front_1600x2400.png",
+        "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267879/earnalism/covers/back/book-fbdf2991ab_back_1600x2400.png"
+      },
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "display_issue": "Front candidate contains LIVE CONTROLLED RELEASE banner for an inactive edition; back text has malformed Bengali glyphs, low contrast over artwork, and/or clipped lines.",
+      "exact_candidate_files": [
+        {
+          "slug": "book-fbdf2991ab",
+          "role": "front_cover_url",
+          "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267878/earnalism/covers/front/book-fbdf2991ab_front_1600x2400.png",
+          "sha256": "0978a41410720180fe5631677a4204e0932f6dac7acb751c558d89797cb3cde4",
+          "dimensions": [
+            1600,
+            2400
+          ],
+          "format": "PNG",
+          "path": "internal/legal/catalogue_owner_attestation_20261004/assets/book-fbdf2991ab/front_cover_url.png"
+        },
+        {
+          "slug": "book-fbdf2991ab",
+          "role": "back_cover_url",
+          "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267879/earnalism/covers/back/book-fbdf2991ab_back_1600x2400.png",
+          "sha256": "15d85d0a80547967186319cda3beef576c113a1607208540615ee8704bd2a6c1",
+          "dimensions": [
+            1600,
+            2400
+          ],
+          "format": "PNG",
+          "path": "internal/legal/catalogue_owner_attestation_20261004/assets/book-fbdf2991ab/back_cover_url.png"
+        }
+      ],
+      "next_action": "Supply authoritative corrected owner artwork/export. Preserve candidates and review exact replacement bytes; bind passing assets to prepared package and rerun all text/release gates."
+    },
+    {
+      "slug": "boule-de-suif",
+      "title": "Boule de Suif",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "carmilla",
+      "title": "Carmilla",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "devdas",
+      "title": "দেবদাস / Devdas",
+      "language": "bn",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "eyesore-chokher-bali",
+      "title": "Eyesore (Chokher Bali)",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verified_at is required for approved rights metadata."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "feathertop",
+      "title": "Feathertop",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "hound-of-the-baskervilles",
+      "title": "The Hound of the Baskervilles",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "hungry-stones",
+      "title": "Kshudhita Pashan / The Hungry Stones",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "jane-eyre",
+      "title": "Jane Eyre",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "markheim",
+      "title": "Markheim",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "pather-panchali",
+      "title": "পথের পাঁচালী / Pather Panchali",
+      "language": "bn",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "pauls-case",
+      "title": "Paul's Case",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "rappaccinis-daughter",
+      "title": "Rappaccini's Daughter",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "rikki-tikki-tavi",
+      "title": "Rikki-Tikki-Tavi",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "rip-van-winkle",
+      "title": "Rip Van Winkle",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-adventure-of-charles-augustus-milverton",
+      "title": "The Adventure of Charles Augustus Milverton",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-adventure-of-the-abbey-grange",
+      "title": "The Adventure of the Abbey Grange",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-adventure-of-the-beryl-coronet",
+      "title": "The Adventure of the Beryl Coronet",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-adventure-of-the-blue-carbuncle",
+      "title": "The Adventure of the Blue Carbuncle",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-adventure-of-the-copper-beeches",
+      "title": "The Adventure of the Copper Beeches",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-adventure-of-the-dancing-men",
+      "title": "The Adventure of the Dancing Men",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-adventure-of-the-empty-house",
+      "title": "The Adventure of the Empty House",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-adventure-of-the-engineers-thumb",
+      "title": "The Adventure of the Engineer's Thumb",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-adventure-of-the-final-problem",
+      "title": "The Adventure of the Final Problem",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-adventure-of-the-greek-interpreter",
+      "title": "The Adventure of the Greek Interpreter",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-adventure-of-the-noble-bachelor",
+      "title": "The Adventure of the Noble Bachelor",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-adventure-of-the-priory-school",
+      "title": "The Adventure of the Priory School",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-adventure-of-the-second-stain",
+      "title": "The Adventure of the Second Stain",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-adventure-of-the-solitary-cyclist",
+      "title": "The Adventure of the Solitary Cyclist",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-ambitious-guest",
+      "title": "The Ambitious Guest",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-bet",
+      "title": "The Bet",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+      "title": "The Celebrated Jumping Frog of Calaveras County",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-country-of-the-blind",
+      "title": "The Country of the Blind",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-darling",
+      "title": "The Darling",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-door-in-the-wall",
+      "title": "The Door in the Wall",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-five-orange-pips",
+      "title": "The Five Orange Pips",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-furnished-room",
+      "title": "The Furnished Room",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-imp-of-the-perverse",
+      "title": "The Imp of the Perverse",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-last-leaf",
+      "title": "The Last Leaf",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-legend-of-sleepy-hollow",
+      "title": "The Legend of Sleepy Hollow",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-lifted-veil",
+      "title": "The Lifted Veil",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-luck-of-roaring-camp",
+      "title": "The Luck of Roaring Camp",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-man-in-a-case",
+      "title": "The Man in a Case",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-man-with-the-twisted-lip",
+      "title": "The Man with the Twisted Lip",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-masque-of-the-red-death",
+      "title": "The Masque of the Red Death",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-ministers-black-veil",
+      "title": "The Minister's Black Veil",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-monkeys-paw",
+      "title": "The Monkey's Paw",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-murders-in-the-rue-morgue",
+      "title": "The Murders in the Rue Morgue",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-necklace",
+      "title": "The Necklace",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-outcasts-of-poker-flat",
+      "title": "The Outcasts of Poker Flat",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-purloined-letter",
+      "title": "The Purloined Letter",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-ransom-of-red-chief",
+      "title": "The Ransom of Red Chief",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-red-headed-league",
+      "title": "The Red-Headed League",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-speckled-band",
+      "title": "The Speckled Band",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-strange-case-of-dr-jekyll-and-mr-hyde",
+      "title": "The Strange Case of Dr Jekyll and Mr Hyde",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "At least one chapter is required.",
+        "CHAPTER_IDS_MISSING_OR_DUPLICATED",
+        "Front cover is required.",
+        "Reader QA must pass.",
+        "Rights: author_death_year is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-suicide-club",
+      "title": "The Suicide Club",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-withered-arm",
+      "title": "The Withered Arm",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "the-yellow-wallpaper",
+      "title": "The Yellow Wallpaper",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "to-build-a-fire",
+      "title": "To Build a Fire",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "tobermory",
+      "title": "Tobermory",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "ward-no-6",
+      "title": "Ward No. 6",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "white-fang",
+      "title": "White Fang",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "woman-in-white",
+      "title": "The Woman in White",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    },
+    {
+      "slug": "young-goodman-brown",
+      "title": "Young Goodman Brown",
+      "language": "en",
+      "category": "COVER_FILE_MISSING",
+      "local_candidates": [],
+      "inventory_candidates": {},
+      "secondary_blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "owner_provenance": {
+        "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+        "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37",
+        "creator": "REO ENTERPRISE"
+      },
+      "external_artwork_permission_required": false,
+      "usable_exact_asset_search_scope": [
+        "prepared public_book",
+        "canonical launch inventory",
+        "frontend/public/assets/books exact slug"
+      ],
+      "automated_activation_authorized": false,
+      "next_action": "Supply exact owner-designed front/back asset or authoritative exact asset reference; then verify title/role/display and bind hashes."
+    }
+  ],
+  "titles_cleared_for_publication": []
+}

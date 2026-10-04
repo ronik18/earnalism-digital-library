@@ -1,0 +1,123 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "a7c8aafed671c590e8c346227731d90fb040727033d66f7d51a72fb65b640443",
+    "chapters/chapter-001.json": "83e9c55accab30628b4cb885aeb606e913e48a005d2e33251630a3102b4ff31d",
+    "checksum_manifest.json": "867f6b7f397d358bfe11a6f2f75b50efebc7359445c6311eeba19468816035ee",
+    "highlight_sync.json": "a207de77dedc64d8de3c08f181a2069a82d6e6c382f4174f02ff83313b972bec",
+    "public_book.json": "35e7f2b8650d71134abbd771b2fece206332c81af94bb9587a2c2dbb9193c9c7",
+    "publication_authorization.json": "96750a8e060836738d2fd26a43fb20fc5542461887f03dbf9fbbe84b8220b59a",
+    "publication_manifest.json": "35f7a7d6dc0007e2b4fe114e6fd595c3cf35eda9fac7ffb8713f4de13e41b4c9",
+    "reader_manifest.json": "b68287906770bc6db0b99930ab4473900ef42c31b051095a5ee5d9ab0a218569",
+    "rights_decision.json": "105b5520814cac4c62412a002417a11fdc9d68d1499d799330e5e5feb106aa64",
+    "source_evidence.json": "ee1cda919caaeb5e059292afa917706c55674b63cc9edbadc0c9988852086d7a"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "f6f792136e2e98f7b86af2ca679364332ac9b60639ec750298e4ea0ad003ff85",
+      "file_sha256": "83e9c55accab30628b4cb885aeb606e913e48a005d2e33251630a3102b4ff31d",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "a7c8aafed671c590e8c346227731d90fb040727033d66f7d51a72fb65b640443",
+    "chapters/chapter-001.json": "83e9c55accab30628b4cb885aeb606e913e48a005d2e33251630a3102b4ff31d",
+    "checksum_manifest.json": "867f6b7f397d358bfe11a6f2f75b50efebc7359445c6311eeba19468816035ee",
+    "highlight_sync.json": "a207de77dedc64d8de3c08f181a2069a82d6e6c382f4174f02ff83313b972bec",
+    "public_book.json": "35e7f2b8650d71134abbd771b2fece206332c81af94bb9587a2c2dbb9193c9c7",
+    "publication_authorization.json": "96750a8e060836738d2fd26a43fb20fc5542461887f03dbf9fbbe84b8220b59a",
+    "publication_manifest.json": "35f7a7d6dc0007e2b4fe114e6fd595c3cf35eda9fac7ffb8713f4de13e41b4c9",
+    "reader_manifest.json": "b68287906770bc6db0b99930ab4473900ef42c31b051095a5ee5d9ab0a218569",
+    "rights_decision.json": "105b5520814cac4c62412a002417a11fdc9d68d1499d799330e5e5feb106aa64",
+    "source_evidence.json": "ee1cda919caaeb5e059292afa917706c55674b63cc9edbadc0c9988852086d7a"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "a7c8aafed671c590e8c346227731d90fb040727033d66f7d51a72fb65b640443",
+      "public_book": "35e7f2b8650d71134abbd771b2fece206332c81af94bb9587a2c2dbb9193c9c7",
+      "reader_manifest": "b68287906770bc6db0b99930ab4473900ef42c31b051095a5ee5d9ab0a218569",
+      "source_evidence": "ee1cda919caaeb5e059292afa917706c55674b63cc9edbadc0c9988852086d7a"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "e867c07773e0502590efff2f0d60e0abfee0d9e9d03eff1251550f246eb1c997",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "83e9c55accab30628b4cb885aeb606e913e48a005d2e33251630a3102b4ff31d",
+          "title": "The Adventure of the Engineer's Thumb",
+          "word_count": 8328
+        }
+      ],
+      "content_hash": "f6f792136e2e98f7b86af2ca679364332ac9b60639ec750298e4ea0ad003ff85",
+      "provenance_hash": "e28ea78a2394d15d30acf5d5540784e2b5d329c909a9263c70f28209632ae4e8",
+      "sanitized": true,
+      "source_hash": "922e2a12ccb43a4c9544c260b2166c6ad2097aeb5957faeee113f173bb857cd0"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "9879753ec60a65676e5f745732f25be433d05e63cbf8d5ca75ab075897078903",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "ee1cda919caaeb5e059292afa917706c55674b63cc9edbadc0c9988852086d7a",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-adventure-of-the-engineers-thumb",
+    "title": "The Adventure of the Engineer's Thumb"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-the-adventure-of-the-engineers-thumb-pg1661-noncover-text",
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

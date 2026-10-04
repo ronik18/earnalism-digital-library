@@ -1,0 +1,110 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "397e92e48ebdf882998540c67e7f09a39bb59fc148d62b0817bfeee9dcb7ae34",
+    "chapters/chapter-001.json": "426b65889907daa4afa0d1c7a0a888a9b332c9188b72ec4eeefa3731166c5e3b",
+    "checksum_manifest.json": "bc0b789e822fe3ca5fc0813860e24e498ce44ac0481d064a94bc8d7fbf25d12d",
+    "cover_provenance.json": "aa55579e7bb3a8674021c24d4230debd9a2eb077507b0ffe7840ee44993467f3",
+    "highlight_sync.json": "3f687193b859723dbdd8e278c5086d34eb85c5c7060a7aea8a6cd9677221e4e8",
+    "public_book.json": "cb2393c098ba17ceae6ad8a9fdb9d4e0e78f4a9f67529f8ad1c3bcd2a363c6bb",
+    "publication_manifest.json": "2881932ca8285343a44fdd48b4637a326f156094bfe03fcecad8eb98294dccaf",
+    "reader_manifest.json": "791870c247a3b38ab2b35aaf32c148e76b42f1ccb4f954f1225a5c1e8b144ce5",
+    "reader_release_approval.json": "d6aae75c259146409557d9d2a8de528e40f88a23290ea3a317c27f2a4555556f",
+    "rights_decision.json": "95f924f4ad0f38e46d90b6556d8d40ae522ebd9c78dcdf3ff064311416005ca4",
+    "source_evidence.json": "3243e4e6f0b4cc47d72bd0b3b5b43f0724ef8af8875f6fa1cd74264218b32be1"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "516dd1e31637b06e0bbe6d17cda767fa753c35cb12a0e3ec9213af3a72abbf68",
+      "file_sha256": "426b65889907daa4afa0d1c7a0a888a9b332c9188b72ec4eeefa3731166c5e3b",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "397e92e48ebdf882998540c67e7f09a39bb59fc148d62b0817bfeee9dcb7ae34",
+    "chapters/chapter-001.json": "426b65889907daa4afa0d1c7a0a888a9b332c9188b72ec4eeefa3731166c5e3b",
+    "checksum_manifest.json": "bc0b789e822fe3ca5fc0813860e24e498ce44ac0481d064a94bc8d7fbf25d12d",
+    "cover_provenance.json": "aa55579e7bb3a8674021c24d4230debd9a2eb077507b0ffe7840ee44993467f3",
+    "highlight_sync.json": "3f687193b859723dbdd8e278c5086d34eb85c5c7060a7aea8a6cd9677221e4e8",
+    "public_book.json": "cb2393c098ba17ceae6ad8a9fdb9d4e0e78f4a9f67529f8ad1c3bcd2a363c6bb",
+    "publication_manifest.json": "2881932ca8285343a44fdd48b4637a326f156094bfe03fcecad8eb98294dccaf",
+    "reader_manifest.json": "791870c247a3b38ab2b35aaf32c148e76b42f1ccb4f954f1225a5c1e8b144ce5",
+    "reader_release_approval.json": "d6aae75c259146409557d9d2a8de528e40f88a23290ea3a317c27f2a4555556f",
+    "rights_decision.json": "95f924f4ad0f38e46d90b6556d8d40ae522ebd9c78dcdf3ff064311416005ca4",
+    "source_evidence.json": "3243e4e6f0b4cc47d72bd0b3b5b43f0724ef8af8875f6fa1cd74264218b32be1"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "397e92e48ebdf882998540c67e7f09a39bb59fc148d62b0817bfeee9dcb7ae34",
+      "public_book": "cb2393c098ba17ceae6ad8a9fdb9d4e0e78f4a9f67529f8ad1c3bcd2a363c6bb",
+      "reader_manifest": "791870c247a3b38ab2b35aaf32c148e76b42f1ccb4f954f1225a5c1e8b144ce5",
+      "source_evidence": "3243e4e6f0b4cc47d72bd0b3b5b43f0724ef8af8875f6fa1cd74264218b32be1"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "50c7de1ac0499c5635c95227ee6a35d7691abd958465b30f32d8a81695fd8d76",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "426b65889907daa4afa0d1c7a0a888a9b332c9188b72ec4eeefa3731166c5e3b",
+          "title": "An Occurrence at Owl Creek Bridge",
+          "word_count": 3764
+        }
+      ],
+      "content_hash": "0687ac64681f6c58ce748c89ecb8800b15be0591a2b6a75d512d985ac40134b7",
+      "provenance_hash": "7f8106f25b45e035360a6691d96e1412e8de72f5e1f95421c5bb431547d9cf30",
+      "sanitized": true,
+      "source_hash": "403d163c894a364aa545f11f0a1e491f8f017f217ecaa61d94f09000e57156d6"
+    },
+    "generated_at": "2026-10-01T05:38:07.922769+00:00",
+    "manifest_sha256": "9c707d9f40fceb312946e3a9e954941551e5a942c8c0149658dc7adea01c3684",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/an-occurrence-at-owl-creek-bridge/front-cover.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "3243e4e6f0b4cc47d72bd0b3b5b43f0724ef8af8875f6fa1cd74264218b32be1",
+      "publication_region": "in",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "an-occurrence-at-owl-creek-bridge",
+    "title": "An Occurrence at Owl Creek Bridge"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261001-an-occurrence-at-owl-creek-bridge-owner-text-reader",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

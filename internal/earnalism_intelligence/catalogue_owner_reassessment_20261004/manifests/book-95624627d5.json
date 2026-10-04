@@ -1,0 +1,120 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "cb5cbd7d5d00a3c8c63dc75ec47e51dcea5a08a7543ac891888a65d54a5b2ea3",
+    "chapters/chapter-001.json": "b3aefcbebb9e8b10a75e8e4312b0818dee7e51bea8d049f6ea0d559d91b36ad1",
+    "checksum_manifest.json": "45ebdc0222a37bee2f4f6711811e5ea668033e86076b47ecbc6454e87b7ee410",
+    "highlight_sync.json": "edb76414ecea82f1365b780cf1838e61ba5c519e095af5ef8bfe0deb36e6084b",
+    "public_book.json": "5a5a9117e9b1216f72fc428a7e9402d309e508d12f6d062653ffce3073609f40",
+    "reader_manifest.json": "8461324eab29f7b86104836bfd8e80b3db25bdd08ac8d5877a021b24a056156c",
+    "source_evidence.json": "44663c658e17d06d886c7a48ba02fd92eddccc996266fd7c0ccb617206294e08"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "15ae2ea405a14c49965d03b6a329419ecb7e71297a3007be8530673587a03b06",
+      "file_sha256": "3b0bffbddad6044c7deb3108f00f10404127c3ea1a9d2aa31991916b6b1d02e6",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "cb5cbd7d5d00a3c8c63dc75ec47e51dcea5a08a7543ac891888a65d54a5b2ea3",
+    "approval_evidence.json": "d1dc767587a4908d8a83e34c00972cea048d03ac271c914c3267c5c43bf5e200",
+    "chapters/chapter-001.json": "3b0bffbddad6044c7deb3108f00f10404127c3ea1a9d2aa31991916b6b1d02e6",
+    "checksum_manifest.json": "4ab37f5017c9105c82e98a37a7e22bb744feb6b010330d158eca2cea931a3064",
+    "highlight_sync.json": "edb76414ecea82f1365b780cf1838e61ba5c519e095af5ef8bfe0deb36e6084b",
+    "license_notice.json": "e503d85df42e2430e541d2e4ee3aa76c80bb160eb0668a14e5844840acc5cb30",
+    "public_book.json": "796dd7ee4f51e77ed132df7bdfe5f131b4e6baecb3d136f8d88665d0da363c79",
+    "publication_authorization.json": "aa2e03a3604dfa05a66204b1055b8c736152983a034c6efdd610711833bbefab",
+    "publication_manifest.json": "716aa214fea8b499e9d83b0237b4a8e4163555eb3d6be0d78cce44a22834e52c",
+    "reader_manifest.json": "6e571547a5c64e176095fbb078e29f9b51cda80f0783a2b961929ee609ddc044",
+    "rights_decision.json": "a45c080fca74fa49609876363cb2b58929a2583c10b15c3981db5988befffe87",
+    "source_evidence.json": "e7a5336e4fa07cd76f739b82c3df55580cade1d9af14fc2cbc1702896d92049f"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "d1dc767587a4908d8a83e34c00972cea048d03ac271c914c3267c5c43bf5e200",
+      "public_book": "796dd7ee4f51e77ed132df7bdfe5f131b4e6baecb3d136f8d88665d0da363c79",
+      "reader_manifest": "6e571547a5c64e176095fbb078e29f9b51cda80f0783a2b961929ee609ddc044",
+      "source_evidence": "e7a5336e4fa07cd76f739b82c3df55580cade1d9af14fc2cbc1702896d92049f"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "639dde35d95d358b4eb9eaea76042488324f6daa75042cef0c8448ea2c41d3c1",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "3b0bffbddad6044c7deb3108f00f10404127c3ea1a9d2aa31991916b6b1d02e6",
+          "title": "মধ্যবর্তিনী",
+          "word_count": 3575
+        }
+      ],
+      "content_hash": "15ae2ea405a14c49965d03b6a329419ecb7e71297a3007be8530673587a03b06",
+      "provenance_hash": "531807dbbf7b3dc9cc8fe1f91beb726ba5d86f8be99aef9d4ea2d2f4b42806a9",
+      "sanitized": true,
+      "source_hash": "04a23577d9da238ff5e156deacc7777f1c5f427515c39cbb045cef113c0e3736"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "6000021674d52ea78401478323abf7e6bb28699bbc7aeee9620af532ab782998",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "e7a5336e4fa07cd76f739b82c3df55580cade1d9af14fc2cbc1702896d92049f",
+      "publication_region": "global",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-95624627d5",
+    "title": "মধ্যবর্তিনী"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

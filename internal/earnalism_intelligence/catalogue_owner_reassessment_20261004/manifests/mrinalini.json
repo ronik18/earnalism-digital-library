@@ -1,0 +1,760 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "32cced5e5e2302042612c12407bd441c503e1e0c84d2d11bd9ccef45eec327e2",
+    "chapters/chapter-001.json": "8be09dd930e4fb58cef1b49346d66ad1814924d6f31d2bd1f76df45951ee26c7",
+    "chapters/chapter-002.json": "f8cb557225caf2ce72c61703bd8d4095279f75061127262649d16ef4ffb5de3f",
+    "chapters/chapter-003.json": "a88703c2534d2f4f1132584cc6a1568e7bddca6d42ba4dd53b6fd344f807f27c",
+    "chapters/chapter-004.json": "8d6361210b47146a525c6a27ace8089e843a3c9cc2d5ef664a03917c1ab81fd3",
+    "chapters/chapter-005.json": "61e7e111b4bf2855d99925fc22de0ab430eb6c59ec05e818890c13e74443a157",
+    "chapters/chapter-006.json": "dd53ab972179af1e55ba124fa5550982a08efcdab5c3010bfa5bf513716fab5c",
+    "chapters/chapter-007.json": "a698a85b29d5b706ef0e86c8652daaceb2989221b7eeaef38e25d6ccf43f6d6e",
+    "chapters/chapter-008.json": "8972ef019fd52914d7afa14c9c796ddaca5c3962f3cfa5d64e6983c01ad1dfd5",
+    "chapters/chapter-009.json": "69580495958eb88767f7b5ba4c2014b72e1732224f2cafee200c4be4782dfcd5",
+    "chapters/chapter-010.json": "7a8e7600b03ef42044f4ba3b9d3d238618a8ec0c6f37e9312a5737bb9644f952",
+    "chapters/chapter-011.json": "fe2dd5c2ebf2002e1b9df8d0e6f80bf5ef3bedd23c80316eac2f3f58d8c000a1",
+    "chapters/chapter-012.json": "4bbcaa5961de436f8b828d2f8c18a4f6a2f9f2b6ea3d5a487f804fcd1f05fcc6",
+    "chapters/chapter-013.json": "68aad274a3843de03c936d1ff7b3cff4ab0188de6470876e28109b08d7a81220",
+    "chapters/chapter-014.json": "31fb8d3e021f4dc02ac17aa04f89dd83c246ce975a152780c2bcc71d9a0239d4",
+    "chapters/chapter-015.json": "a212be3e16c146f0f14f0f27d2d049591cd46692af7408794e28475e797b2174",
+    "chapters/chapter-016.json": "cb04cfc9abe5ee2b199681d0542fd499fa559b89f61a6377c16b6f0a513ec068",
+    "chapters/chapter-017.json": "e3a363a41cffe6451c9626c74f8b2bd63b13763d671bb9982607f60cccb5cf72",
+    "chapters/chapter-018.json": "992738567b6c5ea18ed4a8aa682721314216b04f88189cb9a2a57ef465727e15",
+    "chapters/chapter-019.json": "7212731b04fc82a5cec913b23987bc8ff83e06c35de9c68cfdd94e43b019f61c",
+    "chapters/chapter-020.json": "d01e73e4fb71319cd15c27fcea3d78d6beb6dc92f2718992a7b3902bd35c4167",
+    "chapters/chapter-021.json": "1d670878e0fdf17d2ce8de234af10572bd8a57b96dc81455bc9fbb24bd2f6a8a",
+    "chapters/chapter-022.json": "d9915c6d8cf7faca3dc299a97787851df731ee3896ba5281daab5ce2022dab96",
+    "chapters/chapter-023.json": "c133d91152483422f6ad3ff898cc438b16bdd32d3c77712206f6353c9879d850",
+    "chapters/chapter-024.json": "712c31d6d29e4111afa4f5dd7d30c5949cd71cd57d44c45eb03a05642d345b33",
+    "chapters/chapter-025.json": "c7167ef43e869b1a8532999ffd1fc4c309884b23b63e4bd698ac0cbfa74751af",
+    "chapters/chapter-026.json": "30b72650b2ffb9bb4ed6e2b06748052cf51f897d44a23e3e7607c91ae2e97c25",
+    "chapters/chapter-027.json": "6772fed3b81b71de0967429befb21dffca8ff0f397a7ac131fd1d4728615f752",
+    "chapters/chapter-028.json": "f8175d60a298b31076f523398361e942f59c79362bb9c1836601e4d9d6dde503",
+    "chapters/chapter-029.json": "bdbc786b1b10a20e47f66c5a81061dcc423a7ae75db58066ecb41896cf845da4",
+    "chapters/chapter-030.json": "36dfcef025be890a8721c08ec9bdccf0ba13781bb529a4269ce2e7bd9fb65a9e",
+    "chapters/chapter-031.json": "4e7ba92de02b289edd0d46a2d1bd1a1a4e04e7feea1cf1986240332e3bd8b003",
+    "chapters/chapter-032.json": "8e9dab1922b3c6fe587237cc988fb9326d35517dde71ab4ac01fd9f447455a3c",
+    "chapters/chapter-033.json": "4c0251629370a6347d24c38dd1d2c84ed7b30fadc4033d83e8b53ccae2af7c0f",
+    "chapters/chapter-034.json": "0266aa07e5bd4f311ed8126d363b7a51732a75f7776428e8a80ebfa534845454",
+    "chapters/chapter-035.json": "63dfa56410610337d014cdcbd15a789369dff2915c4da9f894ed49917f7ac0ef",
+    "chapters/chapter-036.json": "ad6b2321245c3d83ba7ef41c80f3e93d1f7e099f09eba696134c7d1fb67954b6",
+    "chapters/chapter-037.json": "d2374d2da74251efaa2ac5b1e1fcc51292027d131deeec1f402dd15124315a7e",
+    "chapters/chapter-038.json": "e4b6a11a6622a54864ed7323533474c20ddfa1246fbdcece33c2802d352fa845",
+    "chapters/chapter-039.json": "7ad5441eb8439feecd97ef5d6968c34dcb521ea40a5c5d6185afee4d8931d204",
+    "chapters/chapter-040.json": "96e586200967807b40059275c150b1b21236bbba1a0056bd5c6a5c61aebdd331",
+    "chapters/chapter-041.json": "13ae7550cd6a951b48ea7b9b96b3e4eed4dd1af27e2d6de51c57097d7c17c62b",
+    "chapters/chapter-042.json": "b1e4c8251782867c772c88765317792f32009ccf3c6a0ffae4f4fadd7600308a",
+    "chapters/chapter-043.json": "c8dc82fae8ad7f630d25daa9bad3075c1ed2869494be23bd1cb78416ba7ffb70",
+    "chapters/chapter-044.json": "f21eee949f571212b24abbb795385734313354bf945d641a8dd8a61238c68bf6",
+    "chapters/chapter-045.json": "5443ad7a705e7d1f8c0a89617ff26202644f48f8d404ea7ac483d161428689c2",
+    "chapters/chapter-046.json": "b82d6c43dbb0533e22a50c4d74e657c6acff53ff33b017730b43453fdd62d2ec",
+    "checksum_manifest.json": "21892e2c9699307b3ac87b064ba4b519629a01b95ac78a7f38266342aed900b8",
+    "cover_provenance.json": "dba148e5b06e7509a825a180c2d71049139e5e1f53e19c40d6bf67129144a82e",
+    "covers/back-delivery.webp": "6de2383961fe8d47a97982da8c29f57a41dde2b0bdcaef6bd38f07d17a0355ee",
+    "covers/back-original.jpg": "613a77912b59f9a94df525066773a1d618c1a023ad0813efc585f695032139f8",
+    "covers/back-prepared.png": "f23a9251ee054148e05b5b076831c8b02d9b078bf4b3dc59d5d2ae538e67e1cc",
+    "covers/front-delivery.webp": "77b2a78d8c42e25e54ca6715a5c6eb92c0e90e79c50d6f93f1a16af3f11e99a4",
+    "covers/front-original.jpg": "a9aae2f4a6a0179e9d2398d0cd66b2933e28e208eaf6d34b00be436d4de77ae7",
+    "covers/front-prepared.png": "460af8701800b9275c39f668515d496f1af65c5955986be3ad43ec59a3ed8557",
+    "evidence/review_a.json": "27dee411682d6fbc614aef59db747286949ac2961fcdb50f5cc466b395d15bec",
+    "evidence/review_b.json": "94df4b60e209ec40391b62b5c80e6c59c400c48e4becfac7373049d932c8a3c3",
+    "highlight_sync.json": "d8bc45186c3d1b361ad66d3c0b210383405a91c6f9125fcab08c779a0c87579e",
+    "license_notice.json": "5daf71034572bf90bf766d4c93d2632d518986f0cc96cd916f987ac0fe3ca3c9",
+    "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "public_book.json": "ba2a8cd8eb5b4153096786ba0eaeb924f14db581986dddd5a6941404eb2e57d8",
+    "publication_authorization.json": "9be72f83c284fe4f3389dffe126ab111e94a2fe66fcd93b3aa40a573bebf817b",
+    "publication_manifest.json": "5d927fa9d767e29a3bdecfa9a74799219a641041ea072e6f7c1c8f843f5d02e3",
+    "reader_manifest.json": "b2510b44fa9ec57a7a7cc48be2482787ee4fe6cba0021ddd8a6cff71ef5275f7",
+    "rights_decision.json": "89d0c287c816414e9ed36f17f899c3ca2c111f0e06df68fa773ad8aac17c3724",
+    "source_evidence.json": "d361d2a57e36d6cf70c84f1b5803a99306467116f44e200cfc16659e0145e94f"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "ae39ccf3089476e6ca7841274e2e94c6f54099a9f518fa4e18401c4ce34fab48",
+      "file_sha256": "8be09dd930e4fb58cef1b49346d66ad1814924d6f31d2bd1f76df45951ee26c7",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "e2f1a7729f28e7e219b2cdb9899cfc93088e7e6d3222d9642f6c3bb1877fc472",
+      "file_sha256": "f8cb557225caf2ce72c61703bd8d4095279f75061127262649d16ef4ffb5de3f",
+      "id": "chapter-002"
+    },
+    {
+      "content_sha256": "bf554b48ca754bdb27a4d87ceec15626a6f8d94c72f854b1754ec01f7591ea04",
+      "file_sha256": "a88703c2534d2f4f1132584cc6a1568e7bddca6d42ba4dd53b6fd344f807f27c",
+      "id": "chapter-003"
+    },
+    {
+      "content_sha256": "2584c6dae5ba2662b624925336565ded90c499628b465d4df13fdde3278d8778",
+      "file_sha256": "8d6361210b47146a525c6a27ace8089e843a3c9cc2d5ef664a03917c1ab81fd3",
+      "id": "chapter-004"
+    },
+    {
+      "content_sha256": "ae8986893015b607d53c4922d41d424a31db6365d985966d58804da77f188c50",
+      "file_sha256": "61e7e111b4bf2855d99925fc22de0ab430eb6c59ec05e818890c13e74443a157",
+      "id": "chapter-005"
+    },
+    {
+      "content_sha256": "bff1f632ed61b332e5446a0a8c414531faf48d87ecca9ff5b38f46c8989b5ccc",
+      "file_sha256": "dd53ab972179af1e55ba124fa5550982a08efcdab5c3010bfa5bf513716fab5c",
+      "id": "chapter-006"
+    },
+    {
+      "content_sha256": "5b2a37eab8799d1edc46080687efaffad8885e78e3d9e548c261730cd1aff980",
+      "file_sha256": "a698a85b29d5b706ef0e86c8652daaceb2989221b7eeaef38e25d6ccf43f6d6e",
+      "id": "chapter-007"
+    },
+    {
+      "content_sha256": "b91d92ef491b57453b6d6c2ba8e8298f4760255c8372dc20081823ce60a241ae",
+      "file_sha256": "8972ef019fd52914d7afa14c9c796ddaca5c3962f3cfa5d64e6983c01ad1dfd5",
+      "id": "chapter-008"
+    },
+    {
+      "content_sha256": "772ed3c3b0c9009a2c03ac55228a84292178629f58c7da41748b5b7da1c05b5e",
+      "file_sha256": "69580495958eb88767f7b5ba4c2014b72e1732224f2cafee200c4be4782dfcd5",
+      "id": "chapter-009"
+    },
+    {
+      "content_sha256": "52fac808abb9b1cf3f6a2b4ccacb9af208a5812e29a960e37b8dda1a19e22a67",
+      "file_sha256": "7a8e7600b03ef42044f4ba3b9d3d238618a8ec0c6f37e9312a5737bb9644f952",
+      "id": "chapter-010"
+    },
+    {
+      "content_sha256": "edcdc0ebf1e2aa2e18c2a2cbca009bc681d82a60027f6a0e060077f88ba39cba",
+      "file_sha256": "fe2dd5c2ebf2002e1b9df8d0e6f80bf5ef3bedd23c80316eac2f3f58d8c000a1",
+      "id": "chapter-011"
+    },
+    {
+      "content_sha256": "cd605bcef13d65f39572175d6086ab7ae99f4a33e95d753da55b215ad3b3a979",
+      "file_sha256": "4bbcaa5961de436f8b828d2f8c18a4f6a2f9f2b6ea3d5a487f804fcd1f05fcc6",
+      "id": "chapter-012"
+    },
+    {
+      "content_sha256": "6d1493e06355316373c0e073de788ba8bb5ebce8c92e4aa2bf36e3b9a2232a11",
+      "file_sha256": "68aad274a3843de03c936d1ff7b3cff4ab0188de6470876e28109b08d7a81220",
+      "id": "chapter-013"
+    },
+    {
+      "content_sha256": "df2484feedaf538a2aca9e750dc529b7007494fd1ed0c1481a2f8a335e3931d6",
+      "file_sha256": "31fb8d3e021f4dc02ac17aa04f89dd83c246ce975a152780c2bcc71d9a0239d4",
+      "id": "chapter-014"
+    },
+    {
+      "content_sha256": "8f14695ee3615a1ac2ba5b5f32e36d747fea4867558b879bc1a4b59482d56554",
+      "file_sha256": "a212be3e16c146f0f14f0f27d2d049591cd46692af7408794e28475e797b2174",
+      "id": "chapter-015"
+    },
+    {
+      "content_sha256": "59aa6570b02b59e7270eef5ec89d05f051a7aaf45e2b393606cf107f1cf3ed62",
+      "file_sha256": "cb04cfc9abe5ee2b199681d0542fd499fa559b89f61a6377c16b6f0a513ec068",
+      "id": "chapter-016"
+    },
+    {
+      "content_sha256": "05adf6b55d79b23b8c3a86a28ff982d0cc6419ca7edb207471049bc7a4d2a4c0",
+      "file_sha256": "e3a363a41cffe6451c9626c74f8b2bd63b13763d671bb9982607f60cccb5cf72",
+      "id": "chapter-017"
+    },
+    {
+      "content_sha256": "df388d8ac8607a6a3fd0bc771f38db96b86a0c05b9e90910fe02765e2199c7b8",
+      "file_sha256": "992738567b6c5ea18ed4a8aa682721314216b04f88189cb9a2a57ef465727e15",
+      "id": "chapter-018"
+    },
+    {
+      "content_sha256": "08053ff3573a8e75a61b648a5f0f2c559c379c8a90d452240d26e1c9595e7457",
+      "file_sha256": "7212731b04fc82a5cec913b23987bc8ff83e06c35de9c68cfdd94e43b019f61c",
+      "id": "chapter-019"
+    },
+    {
+      "content_sha256": "89832addf5cb0f008a6b1e5b3f9172f2330e764e80770b15bc4e51e288b616a8",
+      "file_sha256": "d01e73e4fb71319cd15c27fcea3d78d6beb6dc92f2718992a7b3902bd35c4167",
+      "id": "chapter-020"
+    },
+    {
+      "content_sha256": "b020277b645b0d045abb7cb348598326a280a56fc667ed1da2fd50a1e19d6d45",
+      "file_sha256": "1d670878e0fdf17d2ce8de234af10572bd8a57b96dc81455bc9fbb24bd2f6a8a",
+      "id": "chapter-021"
+    },
+    {
+      "content_sha256": "b1337e08c62282bdb22d073f42c34ef0a0414ea2a23dfb07956b511dd1d4da6a",
+      "file_sha256": "d9915c6d8cf7faca3dc299a97787851df731ee3896ba5281daab5ce2022dab96",
+      "id": "chapter-022"
+    },
+    {
+      "content_sha256": "3c390c7f13ad48f4410e184202bf1f77b88a03009a2836741a6797bba2567786",
+      "file_sha256": "c133d91152483422f6ad3ff898cc438b16bdd32d3c77712206f6353c9879d850",
+      "id": "chapter-023"
+    },
+    {
+      "content_sha256": "41390beb4f37da727d20836f591f3840b21508d38ce469c6422d9255288ad664",
+      "file_sha256": "712c31d6d29e4111afa4f5dd7d30c5949cd71cd57d44c45eb03a05642d345b33",
+      "id": "chapter-024"
+    },
+    {
+      "content_sha256": "acf54097a490763b6f1d85bebcd10808acdd3d2645e7a7706040cbc883f0718f",
+      "file_sha256": "c7167ef43e869b1a8532999ffd1fc4c309884b23b63e4bd698ac0cbfa74751af",
+      "id": "chapter-025"
+    },
+    {
+      "content_sha256": "d2ec28a6d83b00051bdcd5912ff92aac29e2bcee53c4c3f95a63e0a9b1020864",
+      "file_sha256": "30b72650b2ffb9bb4ed6e2b06748052cf51f897d44a23e3e7607c91ae2e97c25",
+      "id": "chapter-026"
+    },
+    {
+      "content_sha256": "a4629e2baaf66fdf0d81e6b2e04d9ca58a3f9102e032ced962d7bcad54f05717",
+      "file_sha256": "6772fed3b81b71de0967429befb21dffca8ff0f397a7ac131fd1d4728615f752",
+      "id": "chapter-027"
+    },
+    {
+      "content_sha256": "5c2addc5d82aa2405080a582aa409ae77711902bd6df39e5116cc50c285af8f4",
+      "file_sha256": "f8175d60a298b31076f523398361e942f59c79362bb9c1836601e4d9d6dde503",
+      "id": "chapter-028"
+    },
+    {
+      "content_sha256": "d446c46212151b1063a9355e42f7945f0dabb5c5d2cc2378834a89724a02c7bd",
+      "file_sha256": "bdbc786b1b10a20e47f66c5a81061dcc423a7ae75db58066ecb41896cf845da4",
+      "id": "chapter-029"
+    },
+    {
+      "content_sha256": "1806709a62f5ef90c742a0b17fcd0b41b2e44a00fc2515291f3add8abd663263",
+      "file_sha256": "36dfcef025be890a8721c08ec9bdccf0ba13781bb529a4269ce2e7bd9fb65a9e",
+      "id": "chapter-030"
+    },
+    {
+      "content_sha256": "b3798fdfcec3aa45f02e739115cb98b20593c9700ef5aa18969468fddf82714a",
+      "file_sha256": "4e7ba92de02b289edd0d46a2d1bd1a1a4e04e7feea1cf1986240332e3bd8b003",
+      "id": "chapter-031"
+    },
+    {
+      "content_sha256": "4fc9757478afa7dcf795142bc1cf812d69f737dc1d9d8e1943a8a9b55dd7812e",
+      "file_sha256": "8e9dab1922b3c6fe587237cc988fb9326d35517dde71ab4ac01fd9f447455a3c",
+      "id": "chapter-032"
+    },
+    {
+      "content_sha256": "ef1e78b164ef1fa498e3a81699a01bed1246ca16acbfc0cb4fc12b08c5294ba5",
+      "file_sha256": "4c0251629370a6347d24c38dd1d2c84ed7b30fadc4033d83e8b53ccae2af7c0f",
+      "id": "chapter-033"
+    },
+    {
+      "content_sha256": "655c8c8f58d08fb1d63b64a28d634eb6917061836fed1689fc76dce8defe3357",
+      "file_sha256": "0266aa07e5bd4f311ed8126d363b7a51732a75f7776428e8a80ebfa534845454",
+      "id": "chapter-034"
+    },
+    {
+      "content_sha256": "73965490cb7c6effcf679da204350abb85443e903f91ff1556ef987199748766",
+      "file_sha256": "63dfa56410610337d014cdcbd15a789369dff2915c4da9f894ed49917f7ac0ef",
+      "id": "chapter-035"
+    },
+    {
+      "content_sha256": "a50352dc36e56e9a7df8b18806139ed3ea2871314f60f4cd1b38fb1d206134a9",
+      "file_sha256": "ad6b2321245c3d83ba7ef41c80f3e93d1f7e099f09eba696134c7d1fb67954b6",
+      "id": "chapter-036"
+    },
+    {
+      "content_sha256": "3270e42339b7b2b444abeeada7320a7043ca73c6a61abb811c3008dd79887fc9",
+      "file_sha256": "d2374d2da74251efaa2ac5b1e1fcc51292027d131deeec1f402dd15124315a7e",
+      "id": "chapter-037"
+    },
+    {
+      "content_sha256": "87a86bff2900a663ddf9a4bb1f757318e7dbdca21e200085ed091ebe79d2a52f",
+      "file_sha256": "e4b6a11a6622a54864ed7323533474c20ddfa1246fbdcece33c2802d352fa845",
+      "id": "chapter-038"
+    },
+    {
+      "content_sha256": "1d4f1a638ec876989fa0825179dfb3d0571520332a91bb627160429512d7e27c",
+      "file_sha256": "7ad5441eb8439feecd97ef5d6968c34dcb521ea40a5c5d6185afee4d8931d204",
+      "id": "chapter-039"
+    },
+    {
+      "content_sha256": "b8efa493bcad250f637b97ac206d3e560821b761e9034f0d18f3ded0f18c5e10",
+      "file_sha256": "96e586200967807b40059275c150b1b21236bbba1a0056bd5c6a5c61aebdd331",
+      "id": "chapter-040"
+    },
+    {
+      "content_sha256": "dfa6bd81f06431453b8cc6a993330e0feec530e32e0ea009653ede59f497a4f9",
+      "file_sha256": "13ae7550cd6a951b48ea7b9b96b3e4eed4dd1af27e2d6de51c57097d7c17c62b",
+      "id": "chapter-041"
+    },
+    {
+      "content_sha256": "3eed6021c502da6fda9e9ef680481fca05b25df79200b717532ceb13ae974334",
+      "file_sha256": "b1e4c8251782867c772c88765317792f32009ccf3c6a0ffae4f4fadd7600308a",
+      "id": "chapter-042"
+    },
+    {
+      "content_sha256": "527138c3a8538e02de4b51597fd579932280c228f9aa29ae66e73212bc2a36f8",
+      "file_sha256": "c8dc82fae8ad7f630d25daa9bad3075c1ed2869494be23bd1cb78416ba7ffb70",
+      "id": "chapter-043"
+    },
+    {
+      "content_sha256": "25a4932b039bdf3c64a1cc043e7782d1a2a1fde3ee6c4d13b7ec9573c57db4bb",
+      "file_sha256": "f21eee949f571212b24abbb795385734313354bf945d641a8dd8a61238c68bf6",
+      "id": "chapter-044"
+    },
+    {
+      "content_sha256": "f95e13d36af6d2b8b47ffc546c9cf2332a17826b35d4b5c2054251000501830a",
+      "file_sha256": "5443ad7a705e7d1f8c0a89617ff26202644f48f8d404ea7ac483d161428689c2",
+      "id": "chapter-045"
+    },
+    {
+      "content_sha256": "1936fd788bee4966192355b14685751aee6b712b81f09ad831e64db1e4735abd",
+      "file_sha256": "b82d6c43dbb0533e22a50c4d74e657c6acff53ff33b017730b43453fdd62d2ec",
+      "id": "chapter-046"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "32cced5e5e2302042612c12407bd441c503e1e0c84d2d11bd9ccef45eec327e2",
+    "chapters/chapter-001.json": "8be09dd930e4fb58cef1b49346d66ad1814924d6f31d2bd1f76df45951ee26c7",
+    "chapters/chapter-002.json": "f8cb557225caf2ce72c61703bd8d4095279f75061127262649d16ef4ffb5de3f",
+    "chapters/chapter-003.json": "a88703c2534d2f4f1132584cc6a1568e7bddca6d42ba4dd53b6fd344f807f27c",
+    "chapters/chapter-004.json": "8d6361210b47146a525c6a27ace8089e843a3c9cc2d5ef664a03917c1ab81fd3",
+    "chapters/chapter-005.json": "61e7e111b4bf2855d99925fc22de0ab430eb6c59ec05e818890c13e74443a157",
+    "chapters/chapter-006.json": "dd53ab972179af1e55ba124fa5550982a08efcdab5c3010bfa5bf513716fab5c",
+    "chapters/chapter-007.json": "a698a85b29d5b706ef0e86c8652daaceb2989221b7eeaef38e25d6ccf43f6d6e",
+    "chapters/chapter-008.json": "8972ef019fd52914d7afa14c9c796ddaca5c3962f3cfa5d64e6983c01ad1dfd5",
+    "chapters/chapter-009.json": "69580495958eb88767f7b5ba4c2014b72e1732224f2cafee200c4be4782dfcd5",
+    "chapters/chapter-010.json": "7a8e7600b03ef42044f4ba3b9d3d238618a8ec0c6f37e9312a5737bb9644f952",
+    "chapters/chapter-011.json": "fe2dd5c2ebf2002e1b9df8d0e6f80bf5ef3bedd23c80316eac2f3f58d8c000a1",
+    "chapters/chapter-012.json": "4bbcaa5961de436f8b828d2f8c18a4f6a2f9f2b6ea3d5a487f804fcd1f05fcc6",
+    "chapters/chapter-013.json": "68aad274a3843de03c936d1ff7b3cff4ab0188de6470876e28109b08d7a81220",
+    "chapters/chapter-014.json": "31fb8d3e021f4dc02ac17aa04f89dd83c246ce975a152780c2bcc71d9a0239d4",
+    "chapters/chapter-015.json": "a212be3e16c146f0f14f0f27d2d049591cd46692af7408794e28475e797b2174",
+    "chapters/chapter-016.json": "cb04cfc9abe5ee2b199681d0542fd499fa559b89f61a6377c16b6f0a513ec068",
+    "chapters/chapter-017.json": "e3a363a41cffe6451c9626c74f8b2bd63b13763d671bb9982607f60cccb5cf72",
+    "chapters/chapter-018.json": "992738567b6c5ea18ed4a8aa682721314216b04f88189cb9a2a57ef465727e15",
+    "chapters/chapter-019.json": "7212731b04fc82a5cec913b23987bc8ff83e06c35de9c68cfdd94e43b019f61c",
+    "chapters/chapter-020.json": "d01e73e4fb71319cd15c27fcea3d78d6beb6dc92f2718992a7b3902bd35c4167",
+    "chapters/chapter-021.json": "1d670878e0fdf17d2ce8de234af10572bd8a57b96dc81455bc9fbb24bd2f6a8a",
+    "chapters/chapter-022.json": "d9915c6d8cf7faca3dc299a97787851df731ee3896ba5281daab5ce2022dab96",
+    "chapters/chapter-023.json": "c133d91152483422f6ad3ff898cc438b16bdd32d3c77712206f6353c9879d850",
+    "chapters/chapter-024.json": "712c31d6d29e4111afa4f5dd7d30c5949cd71cd57d44c45eb03a05642d345b33",
+    "chapters/chapter-025.json": "c7167ef43e869b1a8532999ffd1fc4c309884b23b63e4bd698ac0cbfa74751af",
+    "chapters/chapter-026.json": "30b72650b2ffb9bb4ed6e2b06748052cf51f897d44a23e3e7607c91ae2e97c25",
+    "chapters/chapter-027.json": "6772fed3b81b71de0967429befb21dffca8ff0f397a7ac131fd1d4728615f752",
+    "chapters/chapter-028.json": "f8175d60a298b31076f523398361e942f59c79362bb9c1836601e4d9d6dde503",
+    "chapters/chapter-029.json": "bdbc786b1b10a20e47f66c5a81061dcc423a7ae75db58066ecb41896cf845da4",
+    "chapters/chapter-030.json": "36dfcef025be890a8721c08ec9bdccf0ba13781bb529a4269ce2e7bd9fb65a9e",
+    "chapters/chapter-031.json": "4e7ba92de02b289edd0d46a2d1bd1a1a4e04e7feea1cf1986240332e3bd8b003",
+    "chapters/chapter-032.json": "8e9dab1922b3c6fe587237cc988fb9326d35517dde71ab4ac01fd9f447455a3c",
+    "chapters/chapter-033.json": "4c0251629370a6347d24c38dd1d2c84ed7b30fadc4033d83e8b53ccae2af7c0f",
+    "chapters/chapter-034.json": "0266aa07e5bd4f311ed8126d363b7a51732a75f7776428e8a80ebfa534845454",
+    "chapters/chapter-035.json": "63dfa56410610337d014cdcbd15a789369dff2915c4da9f894ed49917f7ac0ef",
+    "chapters/chapter-036.json": "ad6b2321245c3d83ba7ef41c80f3e93d1f7e099f09eba696134c7d1fb67954b6",
+    "chapters/chapter-037.json": "d2374d2da74251efaa2ac5b1e1fcc51292027d131deeec1f402dd15124315a7e",
+    "chapters/chapter-038.json": "e4b6a11a6622a54864ed7323533474c20ddfa1246fbdcece33c2802d352fa845",
+    "chapters/chapter-039.json": "7ad5441eb8439feecd97ef5d6968c34dcb521ea40a5c5d6185afee4d8931d204",
+    "chapters/chapter-040.json": "96e586200967807b40059275c150b1b21236bbba1a0056bd5c6a5c61aebdd331",
+    "chapters/chapter-041.json": "13ae7550cd6a951b48ea7b9b96b3e4eed4dd1af27e2d6de51c57097d7c17c62b",
+    "chapters/chapter-042.json": "b1e4c8251782867c772c88765317792f32009ccf3c6a0ffae4f4fadd7600308a",
+    "chapters/chapter-043.json": "c8dc82fae8ad7f630d25daa9bad3075c1ed2869494be23bd1cb78416ba7ffb70",
+    "chapters/chapter-044.json": "f21eee949f571212b24abbb795385734313354bf945d641a8dd8a61238c68bf6",
+    "chapters/chapter-045.json": "5443ad7a705e7d1f8c0a89617ff26202644f48f8d404ea7ac483d161428689c2",
+    "chapters/chapter-046.json": "b82d6c43dbb0533e22a50c4d74e657c6acff53ff33b017730b43453fdd62d2ec",
+    "checksum_manifest.json": "21892e2c9699307b3ac87b064ba4b519629a01b95ac78a7f38266342aed900b8",
+    "cover_provenance.json": "dba148e5b06e7509a825a180c2d71049139e5e1f53e19c40d6bf67129144a82e",
+    "covers/back-delivery.webp": "6de2383961fe8d47a97982da8c29f57a41dde2b0bdcaef6bd38f07d17a0355ee",
+    "covers/back-original.jpg": "613a77912b59f9a94df525066773a1d618c1a023ad0813efc585f695032139f8",
+    "covers/back-prepared.png": "f23a9251ee054148e05b5b076831c8b02d9b078bf4b3dc59d5d2ae538e67e1cc",
+    "covers/front-delivery.webp": "77b2a78d8c42e25e54ca6715a5c6eb92c0e90e79c50d6f93f1a16af3f11e99a4",
+    "covers/front-original.jpg": "a9aae2f4a6a0179e9d2398d0cd66b2933e28e208eaf6d34b00be436d4de77ae7",
+    "covers/front-prepared.png": "460af8701800b9275c39f668515d496f1af65c5955986be3ad43ec59a3ed8557",
+    "evidence/review_a.json": "27dee411682d6fbc614aef59db747286949ac2961fcdb50f5cc466b395d15bec",
+    "evidence/review_b.json": "94df4b60e209ec40391b62b5c80e6c59c400c48e4becfac7373049d932c8a3c3",
+    "highlight_sync.json": "d8bc45186c3d1b361ad66d3c0b210383405a91c6f9125fcab08c779a0c87579e",
+    "license_notice.json": "5daf71034572bf90bf766d4c93d2632d518986f0cc96cd916f987ac0fe3ca3c9",
+    "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "public_book.json": "ba2a8cd8eb5b4153096786ba0eaeb924f14db581986dddd5a6941404eb2e57d8",
+    "publication_authorization.json": "9be72f83c284fe4f3389dffe126ab111e94a2fe66fcd93b3aa40a573bebf817b",
+    "publication_manifest.json": "5d927fa9d767e29a3bdecfa9a74799219a641041ea072e6f7c1c8f843f5d02e3",
+    "reader_manifest.json": "b2510b44fa9ec57a7a7cc48be2482787ee4fe6cba0021ddd8a6cff71ef5275f7",
+    "rights_decision.json": "89d0c287c816414e9ed36f17f899c3ca2c111f0e06df68fa773ad8aac17c3724",
+    "source_evidence.json": "d361d2a57e36d6cf70c84f1b5803a99306467116f44e200cfc16659e0145e94f"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "32cced5e5e2302042612c12407bd441c503e1e0c84d2d11bd9ccef45eec327e2",
+      "public_book": "ba2a8cd8eb5b4153096786ba0eaeb924f14db581986dddd5a6941404eb2e57d8",
+      "reader_manifest": "b2510b44fa9ec57a7a7cc48be2482787ee4fe6cba0021ddd8a6cff71ef5275f7",
+      "source_evidence": "d361d2a57e36d6cf70c84f1b5803a99306467116f44e200cfc16659e0145e94f"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 46,
+      "chapter_index_sha256": "283f387a691d2f3b34b3144913e48cd3f2e828eba7ef870cd832fede3909a60f",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "8be09dd930e4fb58cef1b49346d66ad1814924d6f31d2bd1f76df45951ee26c7",
+          "title": "Chapter 1. প্রথম খণ্ড / প্রথম পরিচ্ছেদ",
+          "word_count": 1168
+        },
+        {
+          "id": "chapter-002",
+          "order": 2,
+          "sha256": "f8cb557225caf2ce72c61703bd8d4095279f75061127262649d16ef4ffb5de3f",
+          "title": "Chapter 2. প্রথম খণ্ড / দ্বিতীয় পরিচ্ছেদ",
+          "word_count": 830
+        },
+        {
+          "id": "chapter-003",
+          "order": 3,
+          "sha256": "a88703c2534d2f4f1132584cc6a1568e7bddca6d42ba4dd53b6fd344f807f27c",
+          "title": "Chapter 3. প্রথম খণ্ড / তৃতীয় পরিচ্ছেদ",
+          "word_count": 1365
+        },
+        {
+          "id": "chapter-004",
+          "order": 4,
+          "sha256": "8d6361210b47146a525c6a27ace8089e843a3c9cc2d5ef664a03917c1ab81fd3",
+          "title": "Chapter 4. প্রথম খণ্ড / চতুর্থ পরিচ্ছেদ",
+          "word_count": 1101
+        },
+        {
+          "id": "chapter-005",
+          "order": 5,
+          "sha256": "61e7e111b4bf2855d99925fc22de0ab430eb6c59ec05e818890c13e74443a157",
+          "title": "Chapter 5. প্রথম খণ্ড / পঞ্চম পরিচ্ছেদ",
+          "word_count": 958
+        },
+        {
+          "id": "chapter-006",
+          "order": 6,
+          "sha256": "dd53ab972179af1e55ba124fa5550982a08efcdab5c3010bfa5bf513716fab5c",
+          "title": "Chapter 6. প্রথম খণ্ড / ষষ্ঠ পরিচ্ছেদ",
+          "word_count": 1196
+        },
+        {
+          "id": "chapter-007",
+          "order": 7,
+          "sha256": "a698a85b29d5b706ef0e86c8652daaceb2989221b7eeaef38e25d6ccf43f6d6e",
+          "title": "Chapter 7. প্রথম খণ্ড / সপ্তম পরিচ্ছেদ",
+          "word_count": 763
+        },
+        {
+          "id": "chapter-008",
+          "order": 8,
+          "sha256": "8972ef019fd52914d7afa14c9c796ddaca5c3962f3cfa5d64e6983c01ad1dfd5",
+          "title": "Chapter 8. প্রথম খণ্ড / অষ্টম পরিচ্ছেদ",
+          "word_count": 577
+        },
+        {
+          "id": "chapter-009",
+          "order": 9,
+          "sha256": "69580495958eb88767f7b5ba4c2014b72e1732224f2cafee200c4be4782dfcd5",
+          "title": "Chapter 9. দ্বিতীয় খণ্ড / প্রথম পরিচ্ছেদ",
+          "word_count": 743
+        },
+        {
+          "id": "chapter-010",
+          "order": 10,
+          "sha256": "7a8e7600b03ef42044f4ba3b9d3d238618a8ec0c6f37e9312a5737bb9644f952",
+          "title": "Chapter 10. দ্বিতীয় খণ্ড / দ্বিতীয় পরিচ্ছেদ",
+          "word_count": 626
+        },
+        {
+          "id": "chapter-011",
+          "order": 11,
+          "sha256": "fe2dd5c2ebf2002e1b9df8d0e6f80bf5ef3bedd23c80316eac2f3f58d8c000a1",
+          "title": "Chapter 11. দ্বিতীয় খণ্ড / তৃতীয় পরিচ্ছেদ",
+          "word_count": 669
+        },
+        {
+          "id": "chapter-012",
+          "order": 12,
+          "sha256": "4bbcaa5961de436f8b828d2f8c18a4f6a2f9f2b6ea3d5a487f804fcd1f05fcc6",
+          "title": "Chapter 12. দ্বিতীয় খণ্ড / চতুর্থ পরিচ্ছেদ",
+          "word_count": 433
+        },
+        {
+          "id": "chapter-013",
+          "order": 13,
+          "sha256": "68aad274a3843de03c936d1ff7b3cff4ab0188de6470876e28109b08d7a81220",
+          "title": "Chapter 13. দ্বিতীয় খণ্ড / পঞ্চম পরিচ্ছেদ",
+          "word_count": 759
+        },
+        {
+          "id": "chapter-014",
+          "order": 14,
+          "sha256": "31fb8d3e021f4dc02ac17aa04f89dd83c246ce975a152780c2bcc71d9a0239d4",
+          "title": "Chapter 14. দ্বিতীয় খণ্ড / ষষ্ঠ পরিচ্ছেদ",
+          "word_count": 1140
+        },
+        {
+          "id": "chapter-015",
+          "order": 15,
+          "sha256": "a212be3e16c146f0f14f0f27d2d049591cd46692af7408794e28475e797b2174",
+          "title": "Chapter 15. দ্বিতীয় খণ্ড / সপ্তম পরিচ্ছেদ",
+          "word_count": 578
+        },
+        {
+          "id": "chapter-016",
+          "order": 16,
+          "sha256": "cb04cfc9abe5ee2b199681d0542fd499fa559b89f61a6377c16b6f0a513ec068",
+          "title": "Chapter 16. দ্বিতীয় খণ্ড / অষ্টম পরিচ্ছেদ",
+          "word_count": 331
+        },
+        {
+          "id": "chapter-017",
+          "order": 17,
+          "sha256": "e3a363a41cffe6451c9626c74f8b2bd63b13763d671bb9982607f60cccb5cf72",
+          "title": "Chapter 17. দ্বিতীয় খণ্ড / নবম পরিচ্ছেদ",
+          "word_count": 720
+        },
+        {
+          "id": "chapter-018",
+          "order": 18,
+          "sha256": "992738567b6c5ea18ed4a8aa682721314216b04f88189cb9a2a57ef465727e15",
+          "title": "Chapter 18. দ্বিতীয় খণ্ড / দশম পরিচ্ছেদ",
+          "word_count": 302
+        },
+        {
+          "id": "chapter-019",
+          "order": 19,
+          "sha256": "7212731b04fc82a5cec913b23987bc8ff83e06c35de9c68cfdd94e43b019f61c",
+          "title": "Chapter 19. দ্বিতীয় খণ্ড / একাদশ পরিচ্ছেদ",
+          "word_count": 223
+        },
+        {
+          "id": "chapter-020",
+          "order": 20,
+          "sha256": "d01e73e4fb71319cd15c27fcea3d78d6beb6dc92f2718992a7b3902bd35c4167",
+          "title": "Chapter 20. দ্বিতীয় খণ্ড / দ্বাদশ পরিচ্ছেদ",
+          "word_count": 497
+        },
+        {
+          "id": "chapter-021",
+          "order": 21,
+          "sha256": "1d670878e0fdf17d2ce8de234af10572bd8a57b96dc81455bc9fbb24bd2f6a8a",
+          "title": "Chapter 21. তৃতীয় খণ্ড / প্রথম পরিচ্ছেদ",
+          "word_count": 557
+        },
+        {
+          "id": "chapter-022",
+          "order": 22,
+          "sha256": "d9915c6d8cf7faca3dc299a97787851df731ee3896ba5281daab5ce2022dab96",
+          "title": "Chapter 22. তৃতীয় খণ্ড / দ্বিতীয় পরিচ্ছেদ",
+          "word_count": 306
+        },
+        {
+          "id": "chapter-023",
+          "order": 23,
+          "sha256": "c133d91152483422f6ad3ff898cc438b16bdd32d3c77712206f6353c9879d850",
+          "title": "Chapter 23. তৃতীয় খণ্ড / তৃতীয় পরিচ্ছেদ",
+          "word_count": 581
+        },
+        {
+          "id": "chapter-024",
+          "order": 24,
+          "sha256": "712c31d6d29e4111afa4f5dd7d30c5949cd71cd57d44c45eb03a05642d345b33",
+          "title": "Chapter 24. তৃতীয় খণ্ড / চতুর্থ পরিচ্ছেদ",
+          "word_count": 467
+        },
+        {
+          "id": "chapter-025",
+          "order": 25,
+          "sha256": "c7167ef43e869b1a8532999ffd1fc4c309884b23b63e4bd698ac0cbfa74751af",
+          "title": "Chapter 25. তৃতীয় খণ্ড / পঞ্চম পরিচ্ছেদ",
+          "word_count": 463
+        },
+        {
+          "id": "chapter-026",
+          "order": 26,
+          "sha256": "30b72650b2ffb9bb4ed6e2b06748052cf51f897d44a23e3e7607c91ae2e97c25",
+          "title": "Chapter 26. তৃতীয় খণ্ড / ষষ্ঠ পরিচ্ছেদ",
+          "word_count": 1085
+        },
+        {
+          "id": "chapter-027",
+          "order": 27,
+          "sha256": "6772fed3b81b71de0967429befb21dffca8ff0f397a7ac131fd1d4728615f752",
+          "title": "Chapter 27. তৃতীয় খণ্ড / সপ্তম পরিচ্ছেদ",
+          "word_count": 347
+        },
+        {
+          "id": "chapter-028",
+          "order": 28,
+          "sha256": "f8175d60a298b31076f523398361e942f59c79362bb9c1836601e4d9d6dde503",
+          "title": "Chapter 28. তৃতীয় খণ্ড / অষ্টম পরিচ্ছেদ",
+          "word_count": 999
+        },
+        {
+          "id": "chapter-029",
+          "order": 29,
+          "sha256": "bdbc786b1b10a20e47f66c5a81061dcc423a7ae75db58066ecb41896cf845da4",
+          "title": "Chapter 29. তৃতীয় খণ্ড / নবম পরিচ্ছেদ",
+          "word_count": 1071
+        },
+        {
+          "id": "chapter-030",
+          "order": 30,
+          "sha256": "36dfcef025be890a8721c08ec9bdccf0ba13781bb529a4269ce2e7bd9fb65a9e",
+          "title": "Chapter 30. তৃতীয় খণ্ড / দশম পরিচ্ছেদ",
+          "word_count": 675
+        },
+        {
+          "id": "chapter-031",
+          "order": 31,
+          "sha256": "4e7ba92de02b289edd0d46a2d1bd1a1a4e04e7feea1cf1986240332e3bd8b003",
+          "title": "Chapter 31. চতুর্থ খণ্ড / প্রথম পরিচ্ছেদ",
+          "word_count": 383
+        },
+        {
+          "id": "chapter-032",
+          "order": 32,
+          "sha256": "8e9dab1922b3c6fe587237cc988fb9326d35517dde71ab4ac01fd9f447455a3c",
+          "title": "Chapter 32. চতুর্থ খণ্ড / দ্বিতীয় পরিচ্ছেদ",
+          "word_count": 389
+        },
+        {
+          "id": "chapter-033",
+          "order": 33,
+          "sha256": "4c0251629370a6347d24c38dd1d2c84ed7b30fadc4033d83e8b53ccae2af7c0f",
+          "title": "Chapter 33. চতুর্থ খণ্ড / তৃতীয় পরিচ্ছেদ",
+          "word_count": 915
+        },
+        {
+          "id": "chapter-034",
+          "order": 34,
+          "sha256": "0266aa07e5bd4f311ed8126d363b7a51732a75f7776428e8a80ebfa534845454",
+          "title": "Chapter 34. চতুর্থ খণ্ড / চতুর্থ পরিচ্ছেদ",
+          "word_count": 544
+        },
+        {
+          "id": "chapter-035",
+          "order": 35,
+          "sha256": "63dfa56410610337d014cdcbd15a789369dff2915c4da9f894ed49917f7ac0ef",
+          "title": "Chapter 35. চতুর্থ খণ্ড / পঞ্চম পরিচ্ছেদ",
+          "word_count": 578
+        },
+        {
+          "id": "chapter-036",
+          "order": 36,
+          "sha256": "ad6b2321245c3d83ba7ef41c80f3e93d1f7e099f09eba696134c7d1fb67954b6",
+          "title": "Chapter 36. চতুর্থ খণ্ড / ষষ্ঠ পরিচ্ছেদ",
+          "word_count": 180
+        },
+        {
+          "id": "chapter-037",
+          "order": 37,
+          "sha256": "d2374d2da74251efaa2ac5b1e1fcc51292027d131deeec1f402dd15124315a7e",
+          "title": "Chapter 37. চতুর্থ খণ্ড / সপ্তম পরিচ্ছেদ",
+          "word_count": 976
+        },
+        {
+          "id": "chapter-038",
+          "order": 38,
+          "sha256": "e4b6a11a6622a54864ed7323533474c20ddfa1246fbdcece33c2802d352fa845",
+          "title": "Chapter 38. চতুর্থ খণ্ড / অষ্টম পরিচ্ছেদ",
+          "word_count": 429
+        },
+        {
+          "id": "chapter-039",
+          "order": 39,
+          "sha256": "7ad5441eb8439feecd97ef5d6968c34dcb521ea40a5c5d6185afee4d8931d204",
+          "title": "Chapter 39. চতুর্থ খণ্ড / নবম পরিচ্ছেদ",
+          "word_count": 277
+        },
+        {
+          "id": "chapter-040",
+          "order": 40,
+          "sha256": "96e586200967807b40059275c150b1b21236bbba1a0056bd5c6a5c61aebdd331",
+          "title": "Chapter 40. চতুর্থ খণ্ড / দশম পরিচ্ছেদ",
+          "word_count": 567
+        },
+        {
+          "id": "chapter-041",
+          "order": 41,
+          "sha256": "13ae7550cd6a951b48ea7b9b96b3e4eed4dd1af27e2d6de51c57097d7c17c62b",
+          "title": "Chapter 41. চতুর্থ খণ্ড / একাদশ পরিচ্ছেদ",
+          "word_count": 767
+        },
+        {
+          "id": "chapter-042",
+          "order": 42,
+          "sha256": "b1e4c8251782867c772c88765317792f32009ccf3c6a0ffae4f4fadd7600308a",
+          "title": "Chapter 42. চতুর্থ খণ্ড / দ্বাদশ পরিচ্ছেদ",
+          "word_count": 540
+        },
+        {
+          "id": "chapter-043",
+          "order": 43,
+          "sha256": "c8dc82fae8ad7f630d25daa9bad3075c1ed2869494be23bd1cb78416ba7ffb70",
+          "title": "Chapter 43. চতুর্থ খণ্ড / ত্রয়োদশ পরিচ্ছেদ",
+          "word_count": 339
+        },
+        {
+          "id": "chapter-044",
+          "order": 44,
+          "sha256": "f21eee949f571212b24abbb795385734313354bf945d641a8dd8a61238c68bf6",
+          "title": "Chapter 44. চতুর্থ খণ্ড / চতুর্দ্দশ পরিচ্ছেদ",
+          "word_count": 656
+        },
+        {
+          "id": "chapter-045",
+          "order": 45,
+          "sha256": "5443ad7a705e7d1f8c0a89617ff26202644f48f8d404ea7ac483d161428689c2",
+          "title": "Chapter 45. চতুর্থ খণ্ড / পঞ্চদশ পরিচ্ছেদ",
+          "word_count": 764
+        },
+        {
+          "id": "chapter-046",
+          "order": 46,
+          "sha256": "b82d6c43dbb0533e22a50c4d74e657c6acff53ff33b017730b43453fdd62d2ec",
+          "title": "Chapter 46. চতুর্থ খণ্ড / পরিশিষ্ট",
+          "word_count": 395
+        }
+      ],
+      "content_hash": "390c5936e44b799952e1e84917bca07aea7183f96880e91a6b3fc74ec7fa3560",
+      "provenance_hash": "b05500820083927f8dba4600248b5e553d88ef9383d5e730e202903c31cf7de0",
+      "sanitized": true,
+      "source_hash": "9e04c5d5b16bbd623edac1de47cd0e61f561a820cd6d7200b23450117558ee80"
+    },
+    "generated_at": "2026-10-03T05:34:11.386246+00:00",
+    "manifest_sha256": "ad4bdfc462e3cd14c2473205bc40f63ac69734fffe77d998f3e70146f6d53230",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/mrinalini/mrinalini-front-77b2a78d.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "d361d2a57e36d6cf70c84f1b5803a99306467116f44e200cfc16659e0145e94f",
+      "publication_region": "global",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "mrinalini",
+    "title": "মৃণালিনী"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261003-mrinalini-exact-reader-cover-prospective-accepted",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

@@ -1,0 +1,120 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "4230a34bfbdd1268354466fb58adad76950d56d78c68a05838583b484ced3c5b",
+    "chapters/chapter-001.json": "dfbea2a841536c6a8198f82138241623a5dd5b4cd606227cdb7fc230f144cdba",
+    "checksum_manifest.json": "0b27e52a407fa4efd91295a125775379950107d8f9238393704e7c2b586a4db8",
+    "highlight_sync.json": "95bc306ff136d9f4171d11edb64ff1c63bd61b61bc7ea6001fd822182bf31589",
+    "public_book.json": "af33ff6d37409930a8d4884725f6cc43d7ff42b2932e333b592e954282e844cd",
+    "reader_manifest.json": "c845368e22db621b29e7c52b2f75b5dc2b27f5536136d83394dc60991c2cd39f",
+    "source_evidence.json": "4f3501574168a923b42b203f033556d8c3e0c0ef20d2fb8856bb3209f50d4d1b"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "f674d6c5f677e7aff20b734ad982bcf347d7fd0fdee13dfad55810f5d217a7e9",
+      "file_sha256": "184f7a8915d7450ef5a74e81bfcf8d112dcdd27410a276476fe87115cfe5b969",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "4230a34bfbdd1268354466fb58adad76950d56d78c68a05838583b484ced3c5b",
+    "approval_evidence.json": "4230a34bfbdd1268354466fb58adad76950d56d78c68a05838583b484ced3c5b",
+    "chapters/chapter-001.json": "184f7a8915d7450ef5a74e81bfcf8d112dcdd27410a276476fe87115cfe5b969",
+    "checksum_manifest.json": "93a4b6939cb3c48e0294a88671343d6dc9751f64c5819a4ce753e94b6681731c",
+    "highlight_sync.json": "95bc306ff136d9f4171d11edb64ff1c63bd61b61bc7ea6001fd822182bf31589",
+    "license_notice.json": "ccb20fa8af549b7795af80e2e99044164f921f2c1003c550af77dcf370a669e3",
+    "public_book.json": "43f8f513f770656dc93ac1a45fabf65f56c23196fb14bdfb041e97efba6fb41d",
+    "publication_manifest.json": "276e5c53d167d95a2e0e46a0426579c8ac855f1a1d6b01414df30ec34f4b373d",
+    "reader_manifest.json": "bd70712a155a7d498bbc4163795d6b7108008de4065b170296ae6525fc6a8cd2",
+    "source_evidence.json": "854078f80cb8139bb8dfc289f602b4049eb5cdcf43cd0bdbd62a8843049b363d"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "4230a34bfbdd1268354466fb58adad76950d56d78c68a05838583b484ced3c5b",
+      "public_book": "43f8f513f770656dc93ac1a45fabf65f56c23196fb14bdfb041e97efba6fb41d",
+      "reader_manifest": "bd70712a155a7d498bbc4163795d6b7108008de4065b170296ae6525fc6a8cd2",
+      "source_evidence": "854078f80cb8139bb8dfc289f602b4049eb5cdcf43cd0bdbd62a8843049b363d"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "26172457dfa7c488842319ede5fc7efe66f70af265d84183b12f5b65e380250c",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "184f7a8915d7450ef5a74e81bfcf8d112dcdd27410a276476fe87115cfe5b969",
+          "title": "কর্মফল",
+          "word_count": 9468
+        }
+      ],
+      "content_hash": "374e251418df4bbbde6b24fd9f42ebd845ecdf565870ac05cdd807a720884bde",
+      "provenance_hash": "fa83ecf75220478166c99b2041930f461b3e26ed7bb5b6926b8128dec5b45d68",
+      "sanitized": true,
+      "source_hash": "3f3c089d1d1e2d5101210bbee5e39208f311bb193b92d2c80a085675f64a96ea"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "6af46ad3c53a38d48d791dfa5481616cff21399eaa8371d1ed7159f14300c731",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "854078f80cb8139bb8dfc289f602b4049eb5cdcf43cd0bdbd62a8843049b363d",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-9a7f771921",
+    "title": "কর্মফল"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

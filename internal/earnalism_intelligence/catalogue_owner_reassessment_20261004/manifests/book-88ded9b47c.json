@@ -1,0 +1,120 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "7ee58470899eb7edcabcbcb9b8d8dd36860a2f735d90a280319f9ef137e5a027",
+    "chapters/chapter-001.json": "408c664493d97cea87cade6e3a0bafdb399a3ac6cd5104b8a7f0ef4404dc0448",
+    "checksum_manifest.json": "5c92a670c78f1081565b4a6776076f2ca83c2a12ef6006b7db4e83d6a4b807ee",
+    "highlight_sync.json": "a64f6505334731b5f033f0bfcf6506a48dc8089c1ed13cfe9c622e215c96b4d8",
+    "public_book.json": "b035cb8b4a0ac4a36466a7ce847e5f20964b592f08b85ea5e911f5ecf27743a2",
+    "reader_manifest.json": "2b46faebaca743856469db39c5b8741238fa689dd72ff3764609441fb4175800",
+    "source_evidence.json": "337c9cf9ed045702366a2a5572c07e3ca9e1bd2897df3ee3bfc9a85887630fad"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "1e68e249392f67ed03f4d451f533bb6b175f6f20d73020abc246afd82bf8ff93",
+      "file_sha256": "478f9f98d39397d525dbfc947b819c7a508e2f93b7f60aba2bf3e6464a33359a",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "7ee58470899eb7edcabcbcb9b8d8dd36860a2f735d90a280319f9ef137e5a027",
+    "approval_evidence.json": "ea4a5c88598eabc468c8acb2ff3ab34b255e4916923e5acdbb78e4dc658a0cec",
+    "chapters/chapter-001.json": "478f9f98d39397d525dbfc947b819c7a508e2f93b7f60aba2bf3e6464a33359a",
+    "checksum_manifest.json": "7fd032fb506473c7c626122cfd3aff288cd27eac372d370947d68443022c2ebc",
+    "highlight_sync.json": "a64f6505334731b5f033f0bfcf6506a48dc8089c1ed13cfe9c622e215c96b4d8",
+    "license_notice.json": "62d902a217eec736122790ea3b137b0b4f4b8fc1046d7e1cc9b8a0d31e8924df",
+    "public_book.json": "0cb06792d2743400f1c55bee1ae64ce2144f23755bbfba8afecf7b29dd1b2118",
+    "publication_authorization.json": "3df4b76319b0163a6c11d52a4704e4b062fb9e9b68f351d7acd705425d2c84bb",
+    "publication_manifest.json": "21f770279d9f856d55c31466d7aa6749b7abc8e71807be0b66215a42739f73e2",
+    "reader_manifest.json": "7fafbc1b4b3b922f55ab3adba3cf7f7b904b56981191837c465f3e55d25bb5cf",
+    "rights_decision.json": "085ebbba07a175d00e15b8c1e7a014a8afbf8db6577693982fe18aa8e35e3062",
+    "source_evidence.json": "7bc4d4d8d94c9e02cb589a5c8db6a98149bb9fe0284e4630f4ed807f8ab08355"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "ea4a5c88598eabc468c8acb2ff3ab34b255e4916923e5acdbb78e4dc658a0cec",
+      "public_book": "0cb06792d2743400f1c55bee1ae64ce2144f23755bbfba8afecf7b29dd1b2118",
+      "reader_manifest": "7fafbc1b4b3b922f55ab3adba3cf7f7b904b56981191837c465f3e55d25bb5cf",
+      "source_evidence": "7bc4d4d8d94c9e02cb589a5c8db6a98149bb9fe0284e4630f4ed807f8ab08355"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "143712c87d5523270da63569bda20968fcdf431f25ad8d1b869e945745aa9986",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "478f9f98d39397d525dbfc947b819c7a508e2f93b7f60aba2bf3e6464a33359a",
+          "title": "মানভঞ্জন",
+          "word_count": 2838
+        }
+      ],
+      "content_hash": "1e68e249392f67ed03f4d451f533bb6b175f6f20d73020abc246afd82bf8ff93",
+      "provenance_hash": "02079f8c7a3fcfe9713b44a7e0e706ba9588d426d9ba853112ecb2943de2f7a5",
+      "sanitized": true,
+      "source_hash": "cdae6110a68862a54c7a0155459d97158c254463eaee3169388ca9cea0b7737e"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "12cc01c5a38f7bf909a7c7e1e4b30acce3b56347660988dab36735e174e706d4",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "7bc4d4d8d94c9e02cb589a5c8db6a98149bb9fe0284e4630f4ed807f8ab08355",
+      "publication_region": "global",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-88ded9b47c",
+    "title": "মানভঞ্জন"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

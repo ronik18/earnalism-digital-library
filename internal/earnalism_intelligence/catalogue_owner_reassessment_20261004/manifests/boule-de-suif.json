@@ -1,0 +1,125 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "9cc911790c568d41a952a3e11ffcfe6018f054e1898578003c778f42e835d9b7",
+    "chapters/chapter-001.json": "76e8c9a29a04032a875cfffb4501c9a7dd9054a71cc52f7643971fc33f4c6663",
+    "checksum_manifest.json": "9f42048b054b1a520c3321cc181907e9c8eac129d9fe6429ddbc5545d98602ec",
+    "highlight_sync.json": "6734794508685a3e5a81cf385f0641fd91652a912abf27065e9d26f589777c95",
+    "license_notice.json": "05c1dafbc6f4160feab764badc309b8e3fe484e0f0c877bc3c68678dca4e85bd",
+    "public_book.json": "db8fb2830f1a80ca53412a290536144ebe7da7376f2ad1a68ea3345daaf4f318",
+    "publication_authorization.json": "20fb37565e905e459b84bafc9fadf4e781d71b31a52756ba47700568a7b5c2a8",
+    "publication_manifest.json": "ac8dc67b114605bbd2b9a6546cabb6f2de411dbf11a89991b78128d8c35d3650",
+    "reader_manifest.json": "7ceb1427724c7c40b9df103f8aa183c832b98d260f869d13aa374ee5cea25838",
+    "rights_decision.json": "7ff0ef521111f43d26f711fb90b78e3a07603a64731c9464e1f205532d3cf7aa",
+    "source_evidence.json": "225fe86c8b92193d630722356c2b1069f1415aa6360c750cb954191a70cbfa9f"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "fc3455677ff33b41f70012df7239691fb56b8bdd977ea187f524b0c2a863d079",
+      "file_sha256": "76e8c9a29a04032a875cfffb4501c9a7dd9054a71cc52f7643971fc33f4c6663",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "9cc911790c568d41a952a3e11ffcfe6018f054e1898578003c778f42e835d9b7",
+    "chapters/chapter-001.json": "76e8c9a29a04032a875cfffb4501c9a7dd9054a71cc52f7643971fc33f4c6663",
+    "checksum_manifest.json": "9f42048b054b1a520c3321cc181907e9c8eac129d9fe6429ddbc5545d98602ec",
+    "highlight_sync.json": "6734794508685a3e5a81cf385f0641fd91652a912abf27065e9d26f589777c95",
+    "license_notice.json": "05c1dafbc6f4160feab764badc309b8e3fe484e0f0c877bc3c68678dca4e85bd",
+    "public_book.json": "db8fb2830f1a80ca53412a290536144ebe7da7376f2ad1a68ea3345daaf4f318",
+    "publication_authorization.json": "20fb37565e905e459b84bafc9fadf4e781d71b31a52756ba47700568a7b5c2a8",
+    "publication_manifest.json": "ac8dc67b114605bbd2b9a6546cabb6f2de411dbf11a89991b78128d8c35d3650",
+    "reader_manifest.json": "7ceb1427724c7c40b9df103f8aa183c832b98d260f869d13aa374ee5cea25838",
+    "rights_decision.json": "7ff0ef521111f43d26f711fb90b78e3a07603a64731c9464e1f205532d3cf7aa",
+    "source_evidence.json": "225fe86c8b92193d630722356c2b1069f1415aa6360c750cb954191a70cbfa9f"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "9cc911790c568d41a952a3e11ffcfe6018f054e1898578003c778f42e835d9b7",
+      "public_book": "db8fb2830f1a80ca53412a290536144ebe7da7376f2ad1a68ea3345daaf4f318",
+      "reader_manifest": "7ceb1427724c7c40b9df103f8aa183c832b98d260f869d13aa374ee5cea25838",
+      "source_evidence": "225fe86c8b92193d630722356c2b1069f1415aa6360c750cb954191a70cbfa9f"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "2ba6195ef113ca3b3210711c5d41efba0ecc7510249dba92c869c03e8e3db4f8",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "76e8c9a29a04032a875cfffb4501c9a7dd9054a71cc52f7643971fc33f4c6663",
+          "title": "Boule de Suif",
+          "word_count": 14861
+        }
+      ],
+      "content_hash": "fc3455677ff33b41f70012df7239691fb56b8bdd977ea187f524b0c2a863d079",
+      "provenance_hash": "c6a35f6c4294cc3e83b99a01a86bd7a67fdc3fb280b0392d644056abbd5b10f9",
+      "sanitized": true,
+      "source_hash": "605a186f96870d1993b84199ed14709b833597c9eeac78d2d7fc69c2f454b554"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "d534bc717d8727c14edb28b18e914660a11f7749991cb879bfd7a864baef54e9",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "225fe86c8b92193d630722356c2b1069f1415aa6360c750cb954191a70cbfa9f",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "boule-de-suif",
+    "title": "Boule de Suif"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-boule-de-suif-boyd-standardebooks-noncover-text",
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

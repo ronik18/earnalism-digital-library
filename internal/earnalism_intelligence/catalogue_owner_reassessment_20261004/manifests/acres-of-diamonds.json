@@ -1,0 +1,278 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "e633d61f06584df3bb25548ee5a250ee53d416e40f392900968c4baa233561d7",
+    "chapters/chapter-001.json": "11778e545fbe6bd748b1de53d919c61046895d52f28fcd2f19d0019c8050bfb5",
+    "chapters/chapter-002.json": "b8d33891dd45ccae231df2691f8146a403f32b29d29898312c4b96a483e67998",
+    "chapters/chapter-003.json": "782852fb98ddde22452d57db05ab27d987015f326585df5ee58ede7b78c506f9",
+    "chapters/chapter-004.json": "c2a0e8927cfc582810ee0c792d187d5d6fa7b6848657701c8b206897974e75de",
+    "chapters/chapter-005.json": "fc3b8598acf22016d218b7ab68576211c9fce6432abc1aef9cc575b241e52ff5",
+    "chapters/chapter-006.json": "ae6ba36b24060d5be435c9e6ce034b2ac8e79d1a9b95f27bbec51867440cd9c2",
+    "chapters/chapter-007.json": "c88e50d47fb2165b8c44c62bacd4ebf27052021cb8225dcbf7f84ae61046c61f",
+    "chapters/chapter-008.json": "5925112cf9b78e62123b3cfbd3530d4e36d6ad0ddc46996abca890cae1ee0e09",
+    "chapters/chapter-009.json": "c371578a7856ed07cb46142906dfc2019eab39181df2ff527f07bd98cb50997a",
+    "chapters/chapter-010.json": "f58d55a6b4412d3464df32c757c071c2a8ba1580960eb272811ae63752a22936",
+    "chapters/chapter-011.json": "676f458520daa1cdff4362776a126f736a6e83555165e761923dd6de2038b1c4",
+    "chapters/chapter-012.json": "93eef852fff04fbf965b7acc2e5f2eea2db6f43c426bacc2f887abf60607ff6b",
+    "checksum_manifest.json": "60b7360ab4dcb487b562e417d72e3dfb2347b08f3d42adef1d1791e084b37bbf",
+    "cover_delivery_derivation.json": "1898e644f95edf860b1458baae27b7e48f9dee6fd68d7efb55baf0f7786e35a1",
+    "cover_provenance.json": "6f096f621756b895cf18637a97388f2382e43b5232a81aa7b3577f77491c3880",
+    "covers/back.png": "b3fb289b101e3a09596321f9f12994b41149d0b8fb4cb855e83429fe393d51dd",
+    "covers/front.png": "cdffd02edb00ddb0af8d55ad5ba6eeffef7d8be9683123fc3193b88e98a7e235",
+    "evidence/review_a.json": "848765bd2edfd3f28e3fe0c479321f0d41ea058dd894d31000bb3116c3b5b407",
+    "evidence/review_b.json": "283ab0e868d9ec67a1efba2fc9aae9e61a1958e7dfd45f39b72f2e6ac2e3901f",
+    "highlight_sync.json": "84ef6e4ed91b15636601d99de2953f9e7c9e90b235f80f028e172de98c0af5a1",
+    "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "public_book.json": "987fd6d6d7629ce10ee749f28d0087791690711fed0f6e7f6be1893acc9421dc",
+    "publication_authorization.json": "66e245fdbe892f702c88d7a0a34e494226c5163858021e0d286b1eca1f3823b8",
+    "publication_manifest.json": "4a387f6269b980cd1be0bc8df2ea21683ff2093355ea3a7fd4ebb65ee4e16ee3",
+    "reader_manifest.json": "c083501e4fd683fe9490a8d5b113ef524b57b3aecacc98fbf73caf44e3066d0c",
+    "rights_decision.json": "abc46de93644bb5031c300721f468c5448050f1ec407e78a9fff297647468f10",
+    "source_evidence.json": "9371f2af833cbd9683e138e121b7c6ae77f17a18de6dd46cb4507a301a6eb29e",
+    "source_integrity_validation.json": "0e6526eec3c4a1a71d35e75c07401b7e6b7d9cba96e9847732afad064ada3889"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "3390bb9544142dc503a522d21ad959fa4c44d6123e20b7abceafe49ab0b6aebb",
+      "file_sha256": "11778e545fbe6bd748b1de53d919c61046895d52f28fcd2f19d0019c8050bfb5",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "4d904ef71f685a7071e6325a2d78521d76a24f125dc55e87edd1d580e6af7738",
+      "file_sha256": "b8d33891dd45ccae231df2691f8146a403f32b29d29898312c4b96a483e67998",
+      "id": "chapter-002"
+    },
+    {
+      "content_sha256": "22df1fd016a83573a7600658cad5f7168b481243eee255a7b5d3ac5b541ba169",
+      "file_sha256": "782852fb98ddde22452d57db05ab27d987015f326585df5ee58ede7b78c506f9",
+      "id": "chapter-003"
+    },
+    {
+      "content_sha256": "06430ae071e3f22559fcecb0f349c23c7f93adafc2cdc45f2d820ebe82eacd38",
+      "file_sha256": "c2a0e8927cfc582810ee0c792d187d5d6fa7b6848657701c8b206897974e75de",
+      "id": "chapter-004"
+    },
+    {
+      "content_sha256": "8d141f8ed86374561b693a3b65081be4090f8e6687e7f7d76e46765bf0ec04ac",
+      "file_sha256": "fc3b8598acf22016d218b7ab68576211c9fce6432abc1aef9cc575b241e52ff5",
+      "id": "chapter-005"
+    },
+    {
+      "content_sha256": "ac6d6deef745e02db2184368f1f6f0953d2680c5b11beefc90676f4ae7565a14",
+      "file_sha256": "ae6ba36b24060d5be435c9e6ce034b2ac8e79d1a9b95f27bbec51867440cd9c2",
+      "id": "chapter-006"
+    },
+    {
+      "content_sha256": "0bc43fb80cf74dbf37082e3a0acbf20193c7b7e4bbbb4760093c887bd441e897",
+      "file_sha256": "c88e50d47fb2165b8c44c62bacd4ebf27052021cb8225dcbf7f84ae61046c61f",
+      "id": "chapter-007"
+    },
+    {
+      "content_sha256": "d872d5bbf2207f06c5f2107f93d6f3c849c73788d4a8715e52cc826dccd7f830",
+      "file_sha256": "5925112cf9b78e62123b3cfbd3530d4e36d6ad0ddc46996abca890cae1ee0e09",
+      "id": "chapter-008"
+    },
+    {
+      "content_sha256": "aecb700e176be275ac49a75f5cfe5fcaca38d77310dfa19ea9c6ef659023bfc5",
+      "file_sha256": "c371578a7856ed07cb46142906dfc2019eab39181df2ff527f07bd98cb50997a",
+      "id": "chapter-009"
+    },
+    {
+      "content_sha256": "6c71713ca787e4e013627f0128d7c45f6dc8faf28cc5cff7b91defaca006e43d",
+      "file_sha256": "f58d55a6b4412d3464df32c757c071c2a8ba1580960eb272811ae63752a22936",
+      "id": "chapter-010"
+    },
+    {
+      "content_sha256": "560c691411ac158c4e02f6b7851548fcdad3256fb42d3dfc7fd5b8bfc83a31aa",
+      "file_sha256": "676f458520daa1cdff4362776a126f736a6e83555165e761923dd6de2038b1c4",
+      "id": "chapter-011"
+    },
+    {
+      "content_sha256": "eeabcea35e427b6cfb2ced2c22071fac72610b02035db420aa91695de9c12e41",
+      "file_sha256": "93eef852fff04fbf965b7acc2e5f2eea2db6f43c426bacc2f887abf60607ff6b",
+      "id": "chapter-012"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "e633d61f06584df3bb25548ee5a250ee53d416e40f392900968c4baa233561d7",
+    "chapters/chapter-001.json": "11778e545fbe6bd748b1de53d919c61046895d52f28fcd2f19d0019c8050bfb5",
+    "chapters/chapter-002.json": "b8d33891dd45ccae231df2691f8146a403f32b29d29898312c4b96a483e67998",
+    "chapters/chapter-003.json": "782852fb98ddde22452d57db05ab27d987015f326585df5ee58ede7b78c506f9",
+    "chapters/chapter-004.json": "c2a0e8927cfc582810ee0c792d187d5d6fa7b6848657701c8b206897974e75de",
+    "chapters/chapter-005.json": "fc3b8598acf22016d218b7ab68576211c9fce6432abc1aef9cc575b241e52ff5",
+    "chapters/chapter-006.json": "ae6ba36b24060d5be435c9e6ce034b2ac8e79d1a9b95f27bbec51867440cd9c2",
+    "chapters/chapter-007.json": "c88e50d47fb2165b8c44c62bacd4ebf27052021cb8225dcbf7f84ae61046c61f",
+    "chapters/chapter-008.json": "5925112cf9b78e62123b3cfbd3530d4e36d6ad0ddc46996abca890cae1ee0e09",
+    "chapters/chapter-009.json": "c371578a7856ed07cb46142906dfc2019eab39181df2ff527f07bd98cb50997a",
+    "chapters/chapter-010.json": "f58d55a6b4412d3464df32c757c071c2a8ba1580960eb272811ae63752a22936",
+    "chapters/chapter-011.json": "676f458520daa1cdff4362776a126f736a6e83555165e761923dd6de2038b1c4",
+    "chapters/chapter-012.json": "93eef852fff04fbf965b7acc2e5f2eea2db6f43c426bacc2f887abf60607ff6b",
+    "checksum_manifest.json": "60b7360ab4dcb487b562e417d72e3dfb2347b08f3d42adef1d1791e084b37bbf",
+    "cover_delivery_derivation.json": "1898e644f95edf860b1458baae27b7e48f9dee6fd68d7efb55baf0f7786e35a1",
+    "cover_provenance.json": "6f096f621756b895cf18637a97388f2382e43b5232a81aa7b3577f77491c3880",
+    "covers/back.png": "b3fb289b101e3a09596321f9f12994b41149d0b8fb4cb855e83429fe393d51dd",
+    "covers/front.png": "cdffd02edb00ddb0af8d55ad5ba6eeffef7d8be9683123fc3193b88e98a7e235",
+    "evidence/review_a.json": "848765bd2edfd3f28e3fe0c479321f0d41ea058dd894d31000bb3116c3b5b407",
+    "evidence/review_b.json": "283ab0e868d9ec67a1efba2fc9aae9e61a1958e7dfd45f39b72f2e6ac2e3901f",
+    "highlight_sync.json": "84ef6e4ed91b15636601d99de2953f9e7c9e90b235f80f028e172de98c0af5a1",
+    "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "public_book.json": "987fd6d6d7629ce10ee749f28d0087791690711fed0f6e7f6be1893acc9421dc",
+    "publication_authorization.json": "66e245fdbe892f702c88d7a0a34e494226c5163858021e0d286b1eca1f3823b8",
+    "publication_manifest.json": "4a387f6269b980cd1be0bc8df2ea21683ff2093355ea3a7fd4ebb65ee4e16ee3",
+    "reader_manifest.json": "c083501e4fd683fe9490a8d5b113ef524b57b3aecacc98fbf73caf44e3066d0c",
+    "rights_decision.json": "abc46de93644bb5031c300721f468c5448050f1ec407e78a9fff297647468f10",
+    "source_evidence.json": "9371f2af833cbd9683e138e121b7c6ae77f17a18de6dd46cb4507a301a6eb29e",
+    "source_integrity_validation.json": "0e6526eec3c4a1a71d35e75c07401b7e6b7d9cba96e9847732afad064ada3889"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "e633d61f06584df3bb25548ee5a250ee53d416e40f392900968c4baa233561d7",
+      "public_book": "987fd6d6d7629ce10ee749f28d0087791690711fed0f6e7f6be1893acc9421dc",
+      "reader_manifest": "c083501e4fd683fe9490a8d5b113ef524b57b3aecacc98fbf73caf44e3066d0c",
+      "source_evidence": "9371f2af833cbd9683e138e121b7c6ae77f17a18de6dd46cb4507a301a6eb29e"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 12,
+      "chapter_index_sha256": "f69239fe4e3a317a79eb95444e16524a64a288131e27242d41fefdbb39cdd785",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "11778e545fbe6bd748b1de53d919c61046895d52f28fcd2f19d0019c8050bfb5",
+          "title": "AN APPRECIATION",
+          "word_count": 281
+        },
+        {
+          "id": "chapter-002",
+          "order": 2,
+          "sha256": "b8d33891dd45ccae231df2691f8146a403f32b29d29898312c4b96a483e67998",
+          "title": "ACRES OF DIAMONDS",
+          "word_count": 15688
+        },
+        {
+          "id": "chapter-003",
+          "order": 3,
+          "sha256": "782852fb98ddde22452d57db05ab27d987015f326585df5ee58ede7b78c506f9",
+          "title": "I. THE STORY OF THE SWORD",
+          "word_count": 3088
+        },
+        {
+          "id": "chapter-004",
+          "order": 4,
+          "sha256": "c2a0e8927cfc582810ee0c792d187d5d6fa7b6848657701c8b206897974e75de",
+          "title": "II. THE BEGINNING AT OLD LEXINGTON",
+          "word_count": 2907
+        },
+        {
+          "id": "chapter-005",
+          "order": 5,
+          "sha256": "fc3b8598acf22016d218b7ab68576211c9fce6432abc1aef9cc575b241e52ff5",
+          "title": "III. STORY OF THE FIFTY-SEVEN CENTS",
+          "word_count": 1518
+        },
+        {
+          "id": "chapter-006",
+          "order": 6,
+          "sha256": "ae6ba36b24060d5be435c9e6ce034b2ac8e79d1a9b95f27bbec51867440cd9c2",
+          "title": "IV. HIS POWER AS ORATOR AND PREACHER",
+          "word_count": 2779
+        },
+        {
+          "id": "chapter-007",
+          "order": 7,
+          "sha256": "c88e50d47fb2165b8c44c62bacd4ebf27052021cb8225dcbf7f84ae61046c61f",
+          "title": "V. GIFT FOR INSPIRING OTHERS",
+          "word_count": 2886
+        },
+        {
+          "id": "chapter-008",
+          "order": 8,
+          "sha256": "5925112cf9b78e62123b3cfbd3530d4e36d6ad0ddc46996abca890cae1ee0e09",
+          "title": "VI. MILLIONS OF HEARERS",
+          "word_count": 3529
+        },
+        {
+          "id": "chapter-009",
+          "order": 9,
+          "sha256": "c371578a7856ed07cb46142906dfc2019eab39181df2ff527f07bd98cb50997a",
+          "title": "VII. HOW A UNIVERSITY WAS FOUNDED",
+          "word_count": 3726
+        },
+        {
+          "id": "chapter-010",
+          "order": 10,
+          "sha256": "f58d55a6b4412d3464df32c757c071c2a8ba1580960eb272811ae63752a22936",
+          "title": "VIII. HIS SPLENDID EFFICIENCY",
+          "word_count": 2838
+        },
+        {
+          "id": "chapter-011",
+          "order": 11,
+          "sha256": "676f458520daa1cdff4362776a126f736a6e83555165e761923dd6de2038b1c4",
+          "title": "IX. THE STORY OF ACRES OF DIAMONDS",
+          "word_count": 2637
+        },
+        {
+          "id": "chapter-012",
+          "order": 12,
+          "sha256": "93eef852fff04fbf965b7acc2e5f2eea2db6f43c426bacc2f887abf60607ff6b",
+          "title": "FIFTY YEARS ON THE LECTURE PLATFORM",
+          "word_count": 2176
+        }
+      ],
+      "content_hash": "412d4000427790f40832d29be6bd49985d288ff4a9d48c2d5d866a50c62e27b0",
+      "provenance_hash": "dbb3f2fd3c82555ff9a2881b2834dad2c1150af0aac389edb6d98a6537d15614",
+      "sanitized": true,
+      "source_hash": "a0b8613f5a9c0ee604b53d6aa68388084bdefbf24e1f5e9749aafe2c8448efa3"
+    },
+    "generated_at": "2026-10-03T05:34:11.386246+00:00",
+    "manifest_sha256": "2e76fec96ef15f61dcb2ada1767b579a1d134b78509e0ab934681a2f330234e0",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/acres-of-diamonds/acres-of-diamonds-front-cdffd02e-600.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "9371f2af833cbd9683e138e121b7c6ae77f17a18de6dd46cb4507a301a6eb29e",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "acres-of-diamonds",
+    "title": "Acres of Diamonds"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261003-acres-of-diamonds-exact-reader-cover-prospective-accepted",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

@@ -1,0 +1,119 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "54d61527580f952fe743769551b280bf92b4fadde571bc64745de28eb6c5431a",
+    "chapters/chapter-001.json": "6c2a5feddaee36199eb8b23da5a4ea8fb3f97c35e924a7aac64459f41d494c52",
+    "checksum_manifest.json": "5f2cd3d0ae95f5d46ba4698724cb035b859ad8796ffde723328d0a542b208b9b",
+    "highlight_sync.json": "582da4e33ba239591dfe819365da38f1221cb2a1b98c4bf56da738d2bf1fb4d0",
+    "license_notice.json": "3321c6a9d1e4747de085c8981efd2ae9be203e37afae8296b83e5b2e58da275d",
+    "public_book.json": "9dbed29ebdada130e105a8735d537388a72826b97574cff9b7f3ed9b14e06cab",
+    "publication_manifest.json": "534910ca16f0f343e4ff40ae27e4950a3ef23d02556687ecbe779d0c2dfc391c",
+    "reader_manifest.json": "e8a8834232cb7290f1fa2689f4c5bcc57389d9e95ae8b5f6539185876cde7a29",
+    "source_evidence.json": "fa70bfd218b5963153c3446edde92e6c646d07bf534d46e6aad4b33c3cf84740"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "74ac1205e913eabe6ce1875724c0c9868a9fedb09cc3a18bd6b4c2e304bfbeb5",
+      "file_sha256": "6c2a5feddaee36199eb8b23da5a4ea8fb3f97c35e924a7aac64459f41d494c52",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "54d61527580f952fe743769551b280bf92b4fadde571bc64745de28eb6c5431a",
+    "chapters/chapter-001.json": "6c2a5feddaee36199eb8b23da5a4ea8fb3f97c35e924a7aac64459f41d494c52",
+    "checksum_manifest.json": "5f2cd3d0ae95f5d46ba4698724cb035b859ad8796ffde723328d0a542b208b9b",
+    "highlight_sync.json": "582da4e33ba239591dfe819365da38f1221cb2a1b98c4bf56da738d2bf1fb4d0",
+    "license_notice.json": "3321c6a9d1e4747de085c8981efd2ae9be203e37afae8296b83e5b2e58da275d",
+    "public_book.json": "9dbed29ebdada130e105a8735d537388a72826b97574cff9b7f3ed9b14e06cab",
+    "publication_manifest.json": "534910ca16f0f343e4ff40ae27e4950a3ef23d02556687ecbe779d0c2dfc391c",
+    "reader_manifest.json": "e8a8834232cb7290f1fa2689f4c5bcc57389d9e95ae8b5f6539185876cde7a29",
+    "source_evidence.json": "fa70bfd218b5963153c3446edde92e6c646d07bf534d46e6aad4b33c3cf84740"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "54d61527580f952fe743769551b280bf92b4fadde571bc64745de28eb6c5431a",
+      "public_book": "9dbed29ebdada130e105a8735d537388a72826b97574cff9b7f3ed9b14e06cab",
+      "reader_manifest": "e8a8834232cb7290f1fa2689f4c5bcc57389d9e95ae8b5f6539185876cde7a29",
+      "source_evidence": "fa70bfd218b5963153c3446edde92e6c646d07bf534d46e6aad4b33c3cf84740"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "408533e27f46da9986e5623155491fb51771b8c985cc8e9bec6542b4fc42b212",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "6c2a5feddaee36199eb8b23da5a4ea8fb3f97c35e924a7aac64459f41d494c52",
+          "title": "Full Text",
+          "word_count": 1300
+        }
+      ],
+      "content_hash": "e084b718398439b633fa93a3e175ad2d48289d32bdc7fb2dc1523a239ba84335",
+      "provenance_hash": "a615b2b2f9f7f9396277a860225099322937501a56d8020ad45678c6a595a15e",
+      "sanitized": true,
+      "source_hash": "cdbc256917a94c371850044ac4b03a7b5d8f5de55f55dda7f09914f8e879dda6"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "1f098b3ef17994108aeb5168dcd5ad9f000baf28544669622c42b8ebdbd90331",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783226974/earnalism/covers/front/book-2ddbed8293_front_1600x2400.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "fa70bfd218b5963153c3446edde92e6c646d07bf534d46e6aad4b33c3cf84740",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-2ddbed8293",
+    "title": "ব্যবধান"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

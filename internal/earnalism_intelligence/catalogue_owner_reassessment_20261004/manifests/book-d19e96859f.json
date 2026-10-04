@@ -1,0 +1,115 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "76453786385926e62d3168a96f301cdc88d8a3d5c48d896272e39c3684911a3d",
+    "chapters/chapter-001.json": "26d10f7e8eecae197da20254ff5b5be5ff1c083a55051c1e343259505550d845",
+    "checksum_manifest.json": "b7ea657f4bfd317cdb1fb0a6e1993f9e03e0b58d9954fc1fcb0b83b5efe5acb9",
+    "highlight_sync.json": "944da45536b917c220e2cce6fab3cbb9dac42002f2148ccd607535d8e8dc3b35",
+    "public_book.json": "1cce39252afbf783f60e960113fdc837d5a3a511b1b17a9c7f3c9af678f41af2",
+    "reader_manifest.json": "572b407f2559bb96af06a247f72d1333ba84531774265184e7ee62b18fa1d3fa",
+    "source_evidence.json": "e525d4771e06857f991b2ce7492d503ff5fe4059b17a96f83acd516c7882c3cc"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "013a0c4f7ac3e2e4fdbe80732c951c728d6d8e231e278a1ce856a66c87925c77",
+      "file_sha256": "0a71d45f03c68baac94c556637e0f5876d83bb03487d10b0efd49f1f2450b39f",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "2a9b643ed7fa6854951d522f1506b51626577ce24604193c3ed141d5aedae429",
+    "approval_evidence.json": "76453786385926e62d3168a96f301cdc88d8a3d5c48d896272e39c3684911a3d",
+    "chapters/chapter-001.json": "0a71d45f03c68baac94c556637e0f5876d83bb03487d10b0efd49f1f2450b39f",
+    "checksum_manifest.json": "2554a9b3cc43ca6b75f2a783523884605c4dd05f843ded19c9b022ec407d3fd2",
+    "highlight_sync.json": "944da45536b917c220e2cce6fab3cbb9dac42002f2148ccd607535d8e8dc3b35",
+    "license_notice.json": "bfbbe2fec6f94f18dce7dc6ff3b913135ebe2cb1247f249a092967fc01d48b16",
+    "public_book.json": "6c711d3ca97ce6f5aec5d5b420e374a88878f79cbc3669435f60650d931685e5",
+    "publication_manifest.json": "b551289727c9ea41f2e7acfcf2d22b498016b6e872c7e06794a1e5c7374f466a",
+    "reader_manifest.json": "b27c8a73c41ac411594c7fb708027b6cf45edfd39d277eb7d87172b5ce36ca26",
+    "source_evidence.json": "6c339bd998c2d6aa67c7004c42ab4adf5c6dd9e41147e245cd74448f4e99e88f"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "76453786385926e62d3168a96f301cdc88d8a3d5c48d896272e39c3684911a3d",
+      "public_book": "6c711d3ca97ce6f5aec5d5b420e374a88878f79cbc3669435f60650d931685e5",
+      "reader_manifest": "b27c8a73c41ac411594c7fb708027b6cf45edfd39d277eb7d87172b5ce36ca26",
+      "source_evidence": "6c339bd998c2d6aa67c7004c42ab4adf5c6dd9e41147e245cd74448f4e99e88f"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "1f5994834d7355e43ee8880885521e223fbd78cd10290c270eb7e92d248ae3ea",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "0a71d45f03c68baac94c556637e0f5876d83bb03487d10b0efd49f1f2450b39f",
+          "title": "Full Text",
+          "word_count": 997
+        }
+      ],
+      "content_hash": "021462a46f1c87fb984bd68c0d90ff022123dacc236e876ee97baee87ff065fa",
+      "provenance_hash": "a2c7815b2c7477def2684e3e374b5d1db23d18888e6f9769dd9efbdf6c8a0717",
+      "sanitized": true,
+      "source_hash": "3c184ef8918fee4686c3ac93e17c12d7108617099c70425948cdd7cbf36b68d5"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "261822ea35cf4e41566072eb82e1750d3fd1ad05ecf45faed6702ef51d9b0d92",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779342197/earnalism/covers/front/cover_ff96c6fb-bcad-4a11-aba2-f31f6fe69e41.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "6c339bd998c2d6aa67c7004c42ab4adf5c6dd9e41147e245cd74448f4e99e88f",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-d19e96859f",
+    "title": "গিন্নি"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

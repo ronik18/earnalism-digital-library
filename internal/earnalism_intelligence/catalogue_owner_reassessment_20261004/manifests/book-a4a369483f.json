@@ -1,0 +1,119 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "13dd9693ad218883be83729c2a1136cb2a038feabeb197e4be95f66c00e65dff",
+    "chapters/chapter-001.json": "9bbdcb9a6f199e525ace8a194b22756b6e3a1e689e144a8ab350ff1a8b76051b",
+    "checksum_manifest.json": "70c967494d5b9fdefa7fdad67df39e6dffde9450f6a3456ddbec85ffe5c0383c",
+    "highlight_sync.json": "98cc3d0b2789c5bedf272f0348f5678c171227b3edc44b21cefee5abe4e2432d",
+    "public_book.json": "7c84f18aa5ae0eb38eec4c063f1327cb88db39f15014cbbb89f0ca165229b3f8",
+    "reader_manifest.json": "1578227a554c2bac39353e8ede0914ae2166da3060eee83c484552acc1d901f1",
+    "source_evidence.json": "dd3f60f4cf98a16f62708f32ddeab417c24c0fb96fab03c7f849d25d9dcf7709"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "2791f6f8c912c34fdfa49276a0737dd3f9868a339e016ac6913ef155a32d5a5e",
+      "file_sha256": "aaf3d6f93fd7faf8909e1ab50ced53a7f9ff465639d94bd74f52a20b8768cbf4",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "13dd9693ad218883be83729c2a1136cb2a038feabeb197e4be95f66c00e65dff",
+    "chapters/chapter-001.json": "aaf3d6f93fd7faf8909e1ab50ced53a7f9ff465639d94bd74f52a20b8768cbf4",
+    "checksum_manifest.json": "68411f848e6002010fec3d6130a872bdc8c23877d148cc7e37dc88dda398e334",
+    "highlight_sync.json": "98cc3d0b2789c5bedf272f0348f5678c171227b3edc44b21cefee5abe4e2432d",
+    "license_notice.json": "2abf8e0042dc007c4da68f996aad57d4990f795a2f5bcc93f450aee40a2ef43e",
+    "public_book.json": "9ddc7b97b48cbfcbd1fedd1d1a03e91484d95abe3a67c303c0473feac3186052",
+    "publication_manifest.json": "a14166347445cf9e79c5290481884ad0a9b7fba7abad3baf1c9788a8fc6acc29",
+    "reader_manifest.json": "a9d4965477ea879501a07be1cd5ae226eb6e6029511a17b86cecc0819b81a3ac",
+    "source_evidence.json": "bdaa8b8dcc1731e9747a26bf979e08e465ec329dd49ef953d9c0e75d3bf7fbee"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "13dd9693ad218883be83729c2a1136cb2a038feabeb197e4be95f66c00e65dff",
+      "public_book": "9ddc7b97b48cbfcbd1fedd1d1a03e91484d95abe3a67c303c0473feac3186052",
+      "reader_manifest": "a9d4965477ea879501a07be1cd5ae226eb6e6029511a17b86cecc0819b81a3ac",
+      "source_evidence": "bdaa8b8dcc1731e9747a26bf979e08e465ec329dd49ef953d9c0e75d3bf7fbee"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "c66e9c10e71a7944a8f635d4704f04287ab9a0b5d633bb3dd4e3e0ce03e08402",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "aaf3d6f93fd7faf8909e1ab50ced53a7f9ff465639d94bd74f52a20b8768cbf4",
+          "title": "সম্পত্তি সমর্পণ",
+          "word_count": 2283
+        }
+      ],
+      "content_hash": "161ed4395559eb73370b8550089542e789ea906f1451a5315535eaef9173ddcd",
+      "provenance_hash": "eb1a8ac0ebb77ac93fa9102383440701d727b33f139ab36b320a57beed929467",
+      "sanitized": true,
+      "source_hash": "72f4422557a1cc965b07fde5fe64d27a2764ede21e3a13582b7b953745927efc"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "88b5ffa23702a8e8d8751e93c6f0ea6a97e18df727a405306594501b976c135d",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required.",
+        "Rights: original_publication_year is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "bdaa8b8dcc1731e9747a26bf979e08e465ec329dd49ef953d9c0e75d3bf7fbee",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-a4a369483f",
+    "title": "সম্পত্তি সমর্পণ"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

@@ -1,0 +1,119 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "8331d96cb874efae307edb87c6cf5bbaac8500316f9542e3ece99cf939ec2314",
+    "chapters/chapter-001.json": "12cc5306572184aef6faaac6d809b591659b31672ce70eeaf6cb1292de5c391a",
+    "checksum_manifest.json": "2f63cebf1d090da521752d2e24293b44430b6d31c291e67e3690ac392445d066",
+    "highlight_sync.json": "501b82a78639842255db1dd1e1133039a466fbdb0d28542b3060945ebf5866de",
+    "public_book.json": "8b9194363c90cc4cbf20d9e4e9b51d1974dccc19a86ec794ef80d48c7318820b",
+    "reader_manifest.json": "166fda075f9846a733e0cba75ea3184bed741bfc609d4f932044c9757b60c805",
+    "source_evidence.json": "6981129be89ede2062496a9e1838f638186886d10e87ee2ad08a64502cb388a4"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "386356e64157eb7fba8cb30c7728b47030be0d025794fd9b31a40e2a42e8d087",
+      "file_sha256": "e4862dcb02fba2b825fed92c4827b2b17a895f0e72477d0e9afb610e48a82f33",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "8331d96cb874efae307edb87c6cf5bbaac8500316f9542e3ece99cf939ec2314",
+    "approval_evidence.json": "78062654f968996741f2bfc9a9e04d8d752bcc4abe1e4236e76992906a51e030",
+    "chapters/chapter-001.json": "e4862dcb02fba2b825fed92c4827b2b17a895f0e72477d0e9afb610e48a82f33",
+    "checksum_manifest.json": "8be3aba32c1b3a28bfbfe3eefd1f1171c5a631691fc976254dbcb7139052d890",
+    "highlight_sync.json": "501b82a78639842255db1dd1e1133039a466fbdb0d28542b3060945ebf5866de",
+    "public_book.json": "b82e70003afef1b495f898f478d2b9dfe76cde8a4fb43bf6bf4ed681f9553670",
+    "publication_authorization.json": "fd6a5800a854a3712d86784e3babbe6101ad71e45637f9d21df3a0d0bb29a5b9",
+    "publication_manifest.json": "3ba701dad03993e21439d2d83616f6a1159f59cd89b0e0d7ea6518eb77e90587",
+    "reader_manifest.json": "7f0eeb65154f0874d3644b6102316b0fa790fe5b699796d71a04c6dde1f96c46",
+    "rights_decision.json": "a99b54c243bf2f4554b98a797be1e0581281912d6052335ffb410083d33bdbf7",
+    "source_evidence.json": "265033de82f6fbb6e75bcc885604086608b0c43353d905221bf904263ccde59d"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "78062654f968996741f2bfc9a9e04d8d752bcc4abe1e4236e76992906a51e030",
+      "public_book": "b82e70003afef1b495f898f478d2b9dfe76cde8a4fb43bf6bf4ed681f9553670",
+      "reader_manifest": "7f0eeb65154f0874d3644b6102316b0fa790fe5b699796d71a04c6dde1f96c46",
+      "source_evidence": "265033de82f6fbb6e75bcc885604086608b0c43353d905221bf904263ccde59d"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "b98ef5e85791068dc36d02f91a1d72a65678b9724ee760bbe9a829601785a92b",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "e4862dcb02fba2b825fed92c4827b2b17a895f0e72477d0e9afb610e48a82f33",
+          "title": "A Jury of Her Peers",
+          "word_count": 8079
+        }
+      ],
+      "content_hash": "386356e64157eb7fba8cb30c7728b47030be0d025794fd9b31a40e2a42e8d087",
+      "provenance_hash": "021f0de8b56b29ff222241daf69b4b76681ddfa367d02d777f3ebcbef022f0dc",
+      "sanitized": true,
+      "source_hash": "f011e7e8f943cee34701f2c807a35c34af76592307f213602470c9140461032f"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "d33ce5dd73795667b76f056b44bb9fb6fe5074dd3e45e339b85355f5549396dd",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "265033de82f6fbb6e75bcc885604086608b0c43353d905221bf904263ccde59d",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "a-jury-of-her-peers",
+    "title": "A Jury of Her Peers"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

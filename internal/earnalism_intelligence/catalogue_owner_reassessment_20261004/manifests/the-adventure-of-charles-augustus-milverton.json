@@ -1,0 +1,123 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "aa67e21c3cc0a46e56a1ee99d9f330e2147d11088487111d74fab77fa5dc2152",
+    "chapters/chapter-001.json": "dad84c8f45f5b4d6f98b376dd8f3842512db81d059efa874eb4754bc4aca270c",
+    "checksum_manifest.json": "dbcaca74009ad5d73bc8cdb7df4f8721e06026d016cc983fe4f4ba9c98c43d4f",
+    "highlight_sync.json": "bb28599957d7bb1695793bfe821ec17e953ea750228848a80fb61bcbd5ba1151",
+    "public_book.json": "e7ab82d28cad336a4ccf074193b13a7407ec81dd11ef36c548921939cc1a48c7",
+    "publication_authorization.json": "6663f1a654cc590af75792e428d55b27e060e421c6204c184b9a3a35788d83b9",
+    "publication_manifest.json": "15656505af387f7b892484787e8363295019302ab45eb7643e5fac6fe04a83b3",
+    "reader_manifest.json": "0beac03a946d457458357f76ad1f6fc10b3f852be696cbd8f2115a11d195ec21",
+    "rights_decision.json": "adef5cc48f26fef765b65f5a712f7697930b9289aeac145aec65b35357645fb3",
+    "source_evidence.json": "7580b5840d2c9cbe091045a8a53d88c08e2de2ce17e404bbdcadb198ebb940c7"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "4c3e8db14fb33f2af6ab065a2978766a4a1ab2ef57508fb67f72285e9457b1a5",
+      "file_sha256": "dad84c8f45f5b4d6f98b376dd8f3842512db81d059efa874eb4754bc4aca270c",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "aa67e21c3cc0a46e56a1ee99d9f330e2147d11088487111d74fab77fa5dc2152",
+    "chapters/chapter-001.json": "dad84c8f45f5b4d6f98b376dd8f3842512db81d059efa874eb4754bc4aca270c",
+    "checksum_manifest.json": "dbcaca74009ad5d73bc8cdb7df4f8721e06026d016cc983fe4f4ba9c98c43d4f",
+    "highlight_sync.json": "bb28599957d7bb1695793bfe821ec17e953ea750228848a80fb61bcbd5ba1151",
+    "public_book.json": "e7ab82d28cad336a4ccf074193b13a7407ec81dd11ef36c548921939cc1a48c7",
+    "publication_authorization.json": "6663f1a654cc590af75792e428d55b27e060e421c6204c184b9a3a35788d83b9",
+    "publication_manifest.json": "15656505af387f7b892484787e8363295019302ab45eb7643e5fac6fe04a83b3",
+    "reader_manifest.json": "0beac03a946d457458357f76ad1f6fc10b3f852be696cbd8f2115a11d195ec21",
+    "rights_decision.json": "adef5cc48f26fef765b65f5a712f7697930b9289aeac145aec65b35357645fb3",
+    "source_evidence.json": "7580b5840d2c9cbe091045a8a53d88c08e2de2ce17e404bbdcadb198ebb940c7"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "aa67e21c3cc0a46e56a1ee99d9f330e2147d11088487111d74fab77fa5dc2152",
+      "public_book": "e7ab82d28cad336a4ccf074193b13a7407ec81dd11ef36c548921939cc1a48c7",
+      "reader_manifest": "0beac03a946d457458357f76ad1f6fc10b3f852be696cbd8f2115a11d195ec21",
+      "source_evidence": "7580b5840d2c9cbe091045a8a53d88c08e2de2ce17e404bbdcadb198ebb940c7"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "3d3479919695f254f54d7138ddea05cf4cb330f3461da22ee471ea36c875b8bf",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "dad84c8f45f5b4d6f98b376dd8f3842512db81d059efa874eb4754bc4aca270c",
+          "title": "The Adventure of Charles Augustus Milverton",
+          "word_count": 6698
+        }
+      ],
+      "content_hash": "4c3e8db14fb33f2af6ab065a2978766a4a1ab2ef57508fb67f72285e9457b1a5",
+      "provenance_hash": "d4450fa9dd88e419191a951b0fc3b3d86332e0221814b6a27bbb9f9cdd305167",
+      "sanitized": true,
+      "source_hash": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "89662f4131eb2a8e9b66650164d643e898c48ecec72e9047a7245e017368f1e5",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "7580b5840d2c9cbe091045a8a53d88c08e2de2ce17e404bbdcadb198ebb940c7",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-adventure-of-charles-augustus-milverton",
+    "title": "The Adventure of Charles Augustus Milverton"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-the-adventure-of-charles-augustus-milverton-pg108-noncover-text",
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

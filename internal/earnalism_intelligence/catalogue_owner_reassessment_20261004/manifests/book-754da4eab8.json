@@ -1,0 +1,119 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "d880aa0b52a627ae329cc48fe3ced0b35171dd30e529fd42b95ec9a1c7c9f20d",
+    "chapters/chapter-001.json": "d7b0e2f6881f0b7f384f5d13b8185addb6e949360572cbaa05718f710a75f027",
+    "checksum_manifest.json": "9ad534114297679bebd97ebcd0e53fb02a6c774caa2064e97278ba5104920f01",
+    "highlight_sync.json": "65b9c33273bdee50d9d2e780c5d469aaf2ea63c16a3c360b4f83ffc3305e2c08",
+    "public_book.json": "7b75ade5a33168742a8456d378a36c9337cab9aa020b5fe2237f443f48babff1",
+    "reader_manifest.json": "9ae8ae89c75d17a1548d00ec5f41a5ca3c768ecbc432003c842b6db82760c468",
+    "source_evidence.json": "f272fc88e739990712c3584af67d0f459d7afd4da431ae01ef8e22fcfec69d38"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "3df32a2645f82e70db984a4fb39e39d3193a65146d89c2f40b791a64c9bedef9",
+      "file_sha256": "792ccaa6a088345f00a2f69bcd46da8749989dd35dfe05eff64662685e749e7c",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "d880aa0b52a627ae329cc48fe3ced0b35171dd30e529fd42b95ec9a1c7c9f20d",
+    "approval_evidence.json": "d880aa0b52a627ae329cc48fe3ced0b35171dd30e529fd42b95ec9a1c7c9f20d",
+    "chapters/chapter-001.json": "792ccaa6a088345f00a2f69bcd46da8749989dd35dfe05eff64662685e749e7c",
+    "checksum_manifest.json": "3522c920cfa7a47e3b9ecef6d831bd9db16d78b2712ed4ffc71e5886e990f9ee",
+    "go_live_evidence.json": "334a38b7a88cfd1bce36afd0d3b5f63072da93a5f11d4613a59a98225cfa09c6",
+    "highlight_sync.json": "65b9c33273bdee50d9d2e780c5d469aaf2ea63c16a3c360b4f83ffc3305e2c08",
+    "license_notice.json": "5f76af44b813d9de724bcf5a78b363ac187fdfd49ef15e198d6220d64b59fdab",
+    "public_book.json": "81324c5db7e7ef155cd32cbaa0d6b4ed59b6bb0a7cb7901e3aaac28f31d67495",
+    "publication_manifest.json": "f3ad653f572edf52dd0d7de5d3ad1c66cd38287f1fe1ded6baa411fbda2e8864",
+    "reader_manifest.json": "5d540c77fdb0e3fb7afbc730f9bc95dfa6c67d6d4d08707ddeaf0424930d14ad",
+    "source_evidence.json": "fc91b9c6733434623644cf96758caa5c4b6b068e5f505fc5a300d34d6b91a140"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "d880aa0b52a627ae329cc48fe3ced0b35171dd30e529fd42b95ec9a1c7c9f20d",
+      "public_book": "81324c5db7e7ef155cd32cbaa0d6b4ed59b6bb0a7cb7901e3aaac28f31d67495",
+      "reader_manifest": "5d540c77fdb0e3fb7afbc730f9bc95dfa6c67d6d4d08707ddeaf0424930d14ad",
+      "source_evidence": "fc91b9c6733434623644cf96758caa5c4b6b068e5f505fc5a300d34d6b91a140"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "5e7a27e4c89a7ac4e14c24e275dd37719663ec3f0bfb3b512b270c397ccc7b0c",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "792ccaa6a088345f00a2f69bcd46da8749989dd35dfe05eff64662685e749e7c",
+          "title": "Full Text",
+          "word_count": 1821
+        }
+      ],
+      "content_hash": "b728d67ba152884f2ba70358ebc683a57e0d5d982cf1c2893cc110fde8d9a224",
+      "provenance_hash": "4121d3fe360b2b4f9ccf1abc0367f97abecffb1cad4b19390072cdaa3e617fab",
+      "sanitized": true,
+      "source_hash": "e653edb7643d3ff6e459be5d8d07572bb172a4aaf88ad40c6e310241820e3974"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "7b29a1942451c4a8a6d74c890b2b53d518509d14f0a18250fa047e2b063b51a0",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779944796/earnalism/covers/front/cover_80f395d4-f8a5-49a2-b4b4-1b52f93dcc89.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "fc91b9c6733434623644cf96758caa5c4b6b068e5f505fc5a300d34d6b91a140",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-754da4eab8",
+    "title": "তারাপ্রসন্নের কীর্তি"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

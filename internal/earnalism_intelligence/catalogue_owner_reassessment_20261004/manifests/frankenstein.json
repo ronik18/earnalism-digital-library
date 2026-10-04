@@ -1,0 +1,510 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "cf103d560ddbdea56c2c8b9463877892f00e6d2b158eb205d56b7dc44e80c9f1",
+    "chapters/chapter-001.json": "5a9c472421e82e5c16ffd95468e1b5cd9d574971447a9a0e32394f6fa144ce0c",
+    "chapters/chapter-002.json": "7bf5b1efca3b6a2d475f18729a01bf9ebd99222d85fa2c00712c57db76b6f6f0",
+    "chapters/chapter-003.json": "cbc5a87b8f28ef927b2d34024d6cf56d7a2bf9a15f17db478e2e4c6a8480abad",
+    "chapters/chapter-004.json": "d954ab4476e8dbfc2e2d349a8fdc58be5d99a042c8af6e03443bafca25d43d67",
+    "chapters/chapter-005.json": "4448c9b90306613455c8cf47737b1e06c3cb5678512769e2a420982cffd15e9f",
+    "chapters/chapter-006.json": "408137119865eaa4c45275e76c217524fe7ddc62ac6b96d42e22055220846afb",
+    "chapters/chapter-007.json": "ab195fa54d5dc159bdb0f733cf195eedebd55be2abed60bb7cf4f8a3db69c90f",
+    "chapters/chapter-008.json": "e93d92292fb9ad6342e6986be8ec402454554c5242d330ee2b7f56a60c4c33da",
+    "chapters/chapter-009.json": "b23858974dad52c8dd3506e8f31c289326cebf2dd4b54d6c01c74749e64b5be6",
+    "chapters/chapter-010.json": "495015ec56aebc1e1a510c8cd6467b77a8a78ff3fa92ef5b6db60747a0128124",
+    "chapters/chapter-011.json": "5d9c795cc0effac5965b3ed38ab87184af74f303e23a5ace48d15fc446a8834c",
+    "chapters/chapter-012.json": "879749adc3a932876164e3690834d092bbf9a8f0f9dbfdf4745bd8b5fb5b48c1",
+    "chapters/chapter-013.json": "6e5bd84d6570eeb8a6d84defa7aa6921f60b6032c634cdbf8850c6706279f50b",
+    "chapters/chapter-014.json": "80b9c145ee803a98c17f1fed61c6339d3e2caef5f593ee8d73e8d4c78bd867fe",
+    "chapters/chapter-015.json": "3557e5922b44bd933703726ea3fec98858e938a4df8234b51e6a0fc4b39a27b5",
+    "chapters/chapter-016.json": "36c703fd69f81671d0d72531657c4f66a8f1b49ed483456e6750e5aebe0d5e3a",
+    "chapters/chapter-017.json": "5ede90a1b9fccc792df2aafc76c77197d121ee51b534287013f2569f2f1afe46",
+    "chapters/chapter-018.json": "316be76462c4dcd64c696a4a66a016c4d837703441d4c6ddce01f02cec08aa8d",
+    "chapters/chapter-019.json": "d11298e7f38b94ece91480a6a8e3a95bba6d99088161a12f081da5a705bfdbb8",
+    "chapters/chapter-020.json": "ddb072ed4508f8c4b0f93bdbd90c14d1f9f7db9c449c245815fa5a291b3b5587",
+    "chapters/chapter-021.json": "7bf1e387298ae40cd175f4a295a5924e76f6aab2629a241b82f4d1fbe0de5759",
+    "chapters/chapter-022.json": "bc96e04cc9ac05330c633aaeaaad3b417bf8676f2049e37eb535e85793fdc261",
+    "chapters/chapter-023.json": "b771e49fb7b0aa8ca4353477198dee545127faeec34966c13b6c9ae158b9c5db",
+    "chapters/chapter-024.json": "f81c1b6ed8376b4ec5052678484e336fb429eab3cc0d2a54a2c8d15e73c6d8e6",
+    "chapters/chapter-025.json": "b5b4ad46ad4b97b480b564ac4d98fc4ced6b6e06964c877d9edb82aaf51dc2ec",
+    "chapters/chapter-026.json": "025c7c053d1dc937c32f5c204296b2d6393fbb3aab4ed5d38347a55a545678a9",
+    "chapters/chapter-027.json": "dd9cf156bab9e3b76a8ed69ec85b848e3113bfe32857ab73abaeec2e203af68b",
+    "chapters/chapter-028.json": "70b030cac2f3a8ab896a2ed7cb54d1d9802f4493d9e7827ed315b9cb9abc366a",
+    "checksum_manifest.json": "13bec0731000983af6466e232658a06e81b68db772f74d3273cd734bfb299d29",
+    "cover_preparation.json": "25d32d4835f7be3f95f4dc564063ac7ee40629db265b8f75ea29c08e59eeaddd",
+    "cover_provenance.json": "c85a9da1e083a2a3553e78afa9a6d820fb0534d995c83fb0bd0f6b49253a3d07",
+    "covers/frankenstein-back-36740657.webp": "8b9e09b5c47493f0f2fc13587ce8b29e87456dfce081ef411054303c17024fb0",
+    "covers/frankenstein-back-deterministic.png": "cd2987ce074fbe450a7ec28a033ca9a797fcf32afeeabf2eeefe336479963c72",
+    "covers/frankenstein-front-a7a5d982.webp": "5b93fe195948e38c474fac00b8de901b3e744bd3e0705416f12df6a63054042b",
+    "covers/frankenstein-front-deterministic.png": "cede2d7d3ec7f5153cb670737869abb5f35662c8be2a6bdfff8eb7489513dd2d",
+    "covers/original-back.png": "367406570864a5cce196cedad3c5564f36c66c565a95afa370c8443bf38c63b6",
+    "covers/original-front.png": "a7a5d9825545a40c1c440bccd20ee0fb2b3d262e8347ca8960705cdf66fc5339",
+    "evidence/review_a.json": "dc1045c0af38dad4e41574dbb587cea6734d665ac3cdde5b2e71745808078c83",
+    "evidence/review_b.json": "cb669626513fb343c14b268928ca8499cd01d521d5cad9469464935ec400d871",
+    "evidence/source_review_b.json": "c4d561c45a88e2ab53dcdf26ed1036882fcb040681c41b3d49fda75bdc50e999",
+    "highlight_sync.json": "437782ecfe58f530722ef84afa21f69c4148bfc5bddb3ed0a0d18dbf3c2b21b2",
+    "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "public_book.json": "48e1995fd2232b2965603dc875d88d437432860e03a8d27fe6dd208b0b52d48a",
+    "publication_authorization.json": "db8111ed539ce3ba313c3e4ed1edd97570ef1f12595642f7cd48397688f75940",
+    "publication_manifest.json": "71f76ce7d61c6e7d4f62ca911ff037c58cb70d8b71004838a55e7aa4b5276faf",
+    "reader_manifest.json": "2d7d0f01dcbc35eebc51a178b4eb72a9d766cfe5ec56d618113455ba72c16434",
+    "rights_decision.json": "f98ce9a1345d9c4de912cef5eaa2d488e463568a42f85f35c032fd5e844c1efd",
+    "source_evidence.json": "dc06292e3e257f690c3017e88ded33d0b6baa8b778d1629f3074d1f76b5df449"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "418633c5bc4533e399904ec022a4e8b329817f90678de2c8ed538c789d282e0f",
+      "file_sha256": "5a9c472421e82e5c16ffd95468e1b5cd9d574971447a9a0e32394f6fa144ce0c",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "6c7b6434ea1ebee157d358b234348474906c56a9e2a66879ef913da582f745a2",
+      "file_sha256": "7bf5b1efca3b6a2d475f18729a01bf9ebd99222d85fa2c00712c57db76b6f6f0",
+      "id": "chapter-002"
+    },
+    {
+      "content_sha256": "fdb8b2539acbd036a7ce233d77dc0a798ea8ba6aa4245fadf922471d6103c9c7",
+      "file_sha256": "cbc5a87b8f28ef927b2d34024d6cf56d7a2bf9a15f17db478e2e4c6a8480abad",
+      "id": "chapter-003"
+    },
+    {
+      "content_sha256": "20470bee18666a207895a0e8b2addba06d8b7ee8b357f7c6d285d157a3b29f8e",
+      "file_sha256": "d954ab4476e8dbfc2e2d349a8fdc58be5d99a042c8af6e03443bafca25d43d67",
+      "id": "chapter-004"
+    },
+    {
+      "content_sha256": "f3b95ae089c300e0c18fb3cbe7f1c5b89f83af7563b11b16b4e308ed5e44444f",
+      "file_sha256": "4448c9b90306613455c8cf47737b1e06c3cb5678512769e2a420982cffd15e9f",
+      "id": "chapter-005"
+    },
+    {
+      "content_sha256": "deb274c4fd552ad6707d90b99088b5c1ce7dfa29cdab1834f1ba8b0767280e52",
+      "file_sha256": "408137119865eaa4c45275e76c217524fe7ddc62ac6b96d42e22055220846afb",
+      "id": "chapter-006"
+    },
+    {
+      "content_sha256": "7f7d0051ad343b1bcb75d39bfa43c79f9f92fb2bc0b69dfa3539acbcd32babf3",
+      "file_sha256": "ab195fa54d5dc159bdb0f733cf195eedebd55be2abed60bb7cf4f8a3db69c90f",
+      "id": "chapter-007"
+    },
+    {
+      "content_sha256": "2cbca3ab7cad32bb135d35aedba0fe1327c0c8799c2411c0f037c7750223c1ee",
+      "file_sha256": "e93d92292fb9ad6342e6986be8ec402454554c5242d330ee2b7f56a60c4c33da",
+      "id": "chapter-008"
+    },
+    {
+      "content_sha256": "50aabede305f09ae8c24d6c9d55a5d837513a315b55fd9ff7ab1a8e1b97780e3",
+      "file_sha256": "b23858974dad52c8dd3506e8f31c289326cebf2dd4b54d6c01c74749e64b5be6",
+      "id": "chapter-009"
+    },
+    {
+      "content_sha256": "ab511fd7b2a6c87e4e72b23c1e67014d31ab3ce10273f0c143a39db2c2a06725",
+      "file_sha256": "495015ec56aebc1e1a510c8cd6467b77a8a78ff3fa92ef5b6db60747a0128124",
+      "id": "chapter-010"
+    },
+    {
+      "content_sha256": "136d932b63a4e7d2af297c623fdad7c942a345d40913bba18c6c8324b9f88695",
+      "file_sha256": "5d9c795cc0effac5965b3ed38ab87184af74f303e23a5ace48d15fc446a8834c",
+      "id": "chapter-011"
+    },
+    {
+      "content_sha256": "8ccedab0685d643c935a12c1b5dde1cc200a54c693e1d3d68a186d1a189e865c",
+      "file_sha256": "879749adc3a932876164e3690834d092bbf9a8f0f9dbfdf4745bd8b5fb5b48c1",
+      "id": "chapter-012"
+    },
+    {
+      "content_sha256": "cd5a9df3f84f8133b6e17d035d283516a9f747789c0494bf50a2ce2d417b28f8",
+      "file_sha256": "6e5bd84d6570eeb8a6d84defa7aa6921f60b6032c634cdbf8850c6706279f50b",
+      "id": "chapter-013"
+    },
+    {
+      "content_sha256": "d58c8b15bab90316a6e95c2857fa07a3f4516ff769e6f7ea9e59eec32655c913",
+      "file_sha256": "80b9c145ee803a98c17f1fed61c6339d3e2caef5f593ee8d73e8d4c78bd867fe",
+      "id": "chapter-014"
+    },
+    {
+      "content_sha256": "b8dbd7fea59cfb285b249eaf8014323cd82c0f86c2622ababe7cf4b0a5bfdfed",
+      "file_sha256": "3557e5922b44bd933703726ea3fec98858e938a4df8234b51e6a0fc4b39a27b5",
+      "id": "chapter-015"
+    },
+    {
+      "content_sha256": "8c060cd82d865a8adc9369f3dcaee76cee8301f8899d3fc397fb023336cff0cd",
+      "file_sha256": "36c703fd69f81671d0d72531657c4f66a8f1b49ed483456e6750e5aebe0d5e3a",
+      "id": "chapter-016"
+    },
+    {
+      "content_sha256": "d1e059a34daad1d6374fa282d77f242f6377f28a6856d594ae98eff6500640b9",
+      "file_sha256": "5ede90a1b9fccc792df2aafc76c77197d121ee51b534287013f2569f2f1afe46",
+      "id": "chapter-017"
+    },
+    {
+      "content_sha256": "49e1d94463d3b87a3710ee22b6aae549c2bdc54044cd2648ba444d684233e17f",
+      "file_sha256": "316be76462c4dcd64c696a4a66a016c4d837703441d4c6ddce01f02cec08aa8d",
+      "id": "chapter-018"
+    },
+    {
+      "content_sha256": "be47245fc2957d46fc63f3fd9726818364b16441d2b0548099abae2d8f550459",
+      "file_sha256": "d11298e7f38b94ece91480a6a8e3a95bba6d99088161a12f081da5a705bfdbb8",
+      "id": "chapter-019"
+    },
+    {
+      "content_sha256": "26852b8e6e2921ba26ba738f41536543d15d8eab65a7115b3e1e3b225ebfb380",
+      "file_sha256": "ddb072ed4508f8c4b0f93bdbd90c14d1f9f7db9c449c245815fa5a291b3b5587",
+      "id": "chapter-020"
+    },
+    {
+      "content_sha256": "22f3172a81700a8889ac8f8ba5e53840477c2728c62cea6e55ca01cb544ed05a",
+      "file_sha256": "7bf1e387298ae40cd175f4a295a5924e76f6aab2629a241b82f4d1fbe0de5759",
+      "id": "chapter-021"
+    },
+    {
+      "content_sha256": "2ebe0ca248afd8fcdcd89f37a22fca8f9a86a403a90b5e7f6bda973ae60eb04e",
+      "file_sha256": "bc96e04cc9ac05330c633aaeaaad3b417bf8676f2049e37eb535e85793fdc261",
+      "id": "chapter-022"
+    },
+    {
+      "content_sha256": "884e455f8b89963ad3cbc14ab7ba54ae958dd0cae421104352c4183a76b11ab5",
+      "file_sha256": "b771e49fb7b0aa8ca4353477198dee545127faeec34966c13b6c9ae158b9c5db",
+      "id": "chapter-023"
+    },
+    {
+      "content_sha256": "29359272d1ed7f212be4ab2bd4a4d79b51d07f5ce3e1b562f8cb17e7035a6dcd",
+      "file_sha256": "f81c1b6ed8376b4ec5052678484e336fb429eab3cc0d2a54a2c8d15e73c6d8e6",
+      "id": "chapter-024"
+    },
+    {
+      "content_sha256": "b15cd81e3250dc81672d7be7bd57a4345b410d31d54952d9082654f8c94a8d5f",
+      "file_sha256": "b5b4ad46ad4b97b480b564ac4d98fc4ced6b6e06964c877d9edb82aaf51dc2ec",
+      "id": "chapter-025"
+    },
+    {
+      "content_sha256": "3fab38cb4f28b5dae53df8e2f9e9f9b567b838211659d4b6f01e0ecae58733db",
+      "file_sha256": "025c7c053d1dc937c32f5c204296b2d6393fbb3aab4ed5d38347a55a545678a9",
+      "id": "chapter-026"
+    },
+    {
+      "content_sha256": "9f8bc35360a0350f8cb25402b808693480744bbc955acfd01002bd7b380d69a1",
+      "file_sha256": "dd9cf156bab9e3b76a8ed69ec85b848e3113bfe32857ab73abaeec2e203af68b",
+      "id": "chapter-027"
+    },
+    {
+      "content_sha256": "bb039592fcbdedc4b3b2bcc272f3f64f186addcaee21df97a21ee84a455f2a23",
+      "file_sha256": "70b030cac2f3a8ab896a2ed7cb54d1d9802f4493d9e7827ed315b9cb9abc366a",
+      "id": "chapter-028"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "cf103d560ddbdea56c2c8b9463877892f00e6d2b158eb205d56b7dc44e80c9f1",
+    "chapters/chapter-001.json": "5a9c472421e82e5c16ffd95468e1b5cd9d574971447a9a0e32394f6fa144ce0c",
+    "chapters/chapter-002.json": "7bf5b1efca3b6a2d475f18729a01bf9ebd99222d85fa2c00712c57db76b6f6f0",
+    "chapters/chapter-003.json": "cbc5a87b8f28ef927b2d34024d6cf56d7a2bf9a15f17db478e2e4c6a8480abad",
+    "chapters/chapter-004.json": "d954ab4476e8dbfc2e2d349a8fdc58be5d99a042c8af6e03443bafca25d43d67",
+    "chapters/chapter-005.json": "4448c9b90306613455c8cf47737b1e06c3cb5678512769e2a420982cffd15e9f",
+    "chapters/chapter-006.json": "408137119865eaa4c45275e76c217524fe7ddc62ac6b96d42e22055220846afb",
+    "chapters/chapter-007.json": "ab195fa54d5dc159bdb0f733cf195eedebd55be2abed60bb7cf4f8a3db69c90f",
+    "chapters/chapter-008.json": "e93d92292fb9ad6342e6986be8ec402454554c5242d330ee2b7f56a60c4c33da",
+    "chapters/chapter-009.json": "b23858974dad52c8dd3506e8f31c289326cebf2dd4b54d6c01c74749e64b5be6",
+    "chapters/chapter-010.json": "495015ec56aebc1e1a510c8cd6467b77a8a78ff3fa92ef5b6db60747a0128124",
+    "chapters/chapter-011.json": "5d9c795cc0effac5965b3ed38ab87184af74f303e23a5ace48d15fc446a8834c",
+    "chapters/chapter-012.json": "879749adc3a932876164e3690834d092bbf9a8f0f9dbfdf4745bd8b5fb5b48c1",
+    "chapters/chapter-013.json": "6e5bd84d6570eeb8a6d84defa7aa6921f60b6032c634cdbf8850c6706279f50b",
+    "chapters/chapter-014.json": "80b9c145ee803a98c17f1fed61c6339d3e2caef5f593ee8d73e8d4c78bd867fe",
+    "chapters/chapter-015.json": "3557e5922b44bd933703726ea3fec98858e938a4df8234b51e6a0fc4b39a27b5",
+    "chapters/chapter-016.json": "36c703fd69f81671d0d72531657c4f66a8f1b49ed483456e6750e5aebe0d5e3a",
+    "chapters/chapter-017.json": "5ede90a1b9fccc792df2aafc76c77197d121ee51b534287013f2569f2f1afe46",
+    "chapters/chapter-018.json": "316be76462c4dcd64c696a4a66a016c4d837703441d4c6ddce01f02cec08aa8d",
+    "chapters/chapter-019.json": "d11298e7f38b94ece91480a6a8e3a95bba6d99088161a12f081da5a705bfdbb8",
+    "chapters/chapter-020.json": "ddb072ed4508f8c4b0f93bdbd90c14d1f9f7db9c449c245815fa5a291b3b5587",
+    "chapters/chapter-021.json": "7bf1e387298ae40cd175f4a295a5924e76f6aab2629a241b82f4d1fbe0de5759",
+    "chapters/chapter-022.json": "bc96e04cc9ac05330c633aaeaaad3b417bf8676f2049e37eb535e85793fdc261",
+    "chapters/chapter-023.json": "b771e49fb7b0aa8ca4353477198dee545127faeec34966c13b6c9ae158b9c5db",
+    "chapters/chapter-024.json": "f81c1b6ed8376b4ec5052678484e336fb429eab3cc0d2a54a2c8d15e73c6d8e6",
+    "chapters/chapter-025.json": "b5b4ad46ad4b97b480b564ac4d98fc4ced6b6e06964c877d9edb82aaf51dc2ec",
+    "chapters/chapter-026.json": "025c7c053d1dc937c32f5c204296b2d6393fbb3aab4ed5d38347a55a545678a9",
+    "chapters/chapter-027.json": "dd9cf156bab9e3b76a8ed69ec85b848e3113bfe32857ab73abaeec2e203af68b",
+    "chapters/chapter-028.json": "70b030cac2f3a8ab896a2ed7cb54d1d9802f4493d9e7827ed315b9cb9abc366a",
+    "checksum_manifest.json": "13bec0731000983af6466e232658a06e81b68db772f74d3273cd734bfb299d29",
+    "cover_preparation.json": "25d32d4835f7be3f95f4dc564063ac7ee40629db265b8f75ea29c08e59eeaddd",
+    "cover_provenance.json": "c85a9da1e083a2a3553e78afa9a6d820fb0534d995c83fb0bd0f6b49253a3d07",
+    "covers/frankenstein-back-36740657.webp": "8b9e09b5c47493f0f2fc13587ce8b29e87456dfce081ef411054303c17024fb0",
+    "covers/frankenstein-back-deterministic.png": "cd2987ce074fbe450a7ec28a033ca9a797fcf32afeeabf2eeefe336479963c72",
+    "covers/frankenstein-front-a7a5d982.webp": "5b93fe195948e38c474fac00b8de901b3e744bd3e0705416f12df6a63054042b",
+    "covers/frankenstein-front-deterministic.png": "cede2d7d3ec7f5153cb670737869abb5f35662c8be2a6bdfff8eb7489513dd2d",
+    "covers/original-back.png": "367406570864a5cce196cedad3c5564f36c66c565a95afa370c8443bf38c63b6",
+    "covers/original-front.png": "a7a5d9825545a40c1c440bccd20ee0fb2b3d262e8347ca8960705cdf66fc5339",
+    "evidence/review_a.json": "dc1045c0af38dad4e41574dbb587cea6734d665ac3cdde5b2e71745808078c83",
+    "evidence/review_b.json": "cb669626513fb343c14b268928ca8499cd01d521d5cad9469464935ec400d871",
+    "evidence/source_review_b.json": "c4d561c45a88e2ab53dcdf26ed1036882fcb040681c41b3d49fda75bdc50e999",
+    "highlight_sync.json": "437782ecfe58f530722ef84afa21f69c4148bfc5bddb3ed0a0d18dbf3c2b21b2",
+    "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "public_book.json": "48e1995fd2232b2965603dc875d88d437432860e03a8d27fe6dd208b0b52d48a",
+    "publication_authorization.json": "db8111ed539ce3ba313c3e4ed1edd97570ef1f12595642f7cd48397688f75940",
+    "publication_manifest.json": "71f76ce7d61c6e7d4f62ca911ff037c58cb70d8b71004838a55e7aa4b5276faf",
+    "reader_manifest.json": "2d7d0f01dcbc35eebc51a178b4eb72a9d766cfe5ec56d618113455ba72c16434",
+    "rights_decision.json": "f98ce9a1345d9c4de912cef5eaa2d488e463568a42f85f35c032fd5e844c1efd",
+    "source_evidence.json": "dc06292e3e257f690c3017e88ded33d0b6baa8b778d1629f3074d1f76b5df449"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "cf103d560ddbdea56c2c8b9463877892f00e6d2b158eb205d56b7dc44e80c9f1",
+      "public_book": "48e1995fd2232b2965603dc875d88d437432860e03a8d27fe6dd208b0b52d48a",
+      "reader_manifest": "2d7d0f01dcbc35eebc51a178b4eb72a9d766cfe5ec56d618113455ba72c16434",
+      "source_evidence": "dc06292e3e257f690c3017e88ded33d0b6baa8b778d1629f3074d1f76b5df449"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 28,
+      "chapter_index_sha256": "16737bddb873d79d7dff0351173bef8b9912f87e1d5ab7453a64e832aec67671",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "5a9c472421e82e5c16ffd95468e1b5cd9d574971447a9a0e32394f6fa144ce0c",
+          "title": "Letter 1. To Mrs. Saville, England",
+          "word_count": 1198
+        },
+        {
+          "id": "chapter-002",
+          "order": 2,
+          "sha256": "7bf5b1efca3b6a2d475f18729a01bf9ebd99222d85fa2c00712c57db76b6f6f0",
+          "title": "Letter 2. To Mrs. Saville, England",
+          "word_count": 1309
+        },
+        {
+          "id": "chapter-003",
+          "order": 3,
+          "sha256": "cbc5a87b8f28ef927b2d34024d6cf56d7a2bf9a15f17db478e2e4c6a8480abad",
+          "title": "Letter 3. To Mrs. Saville, England",
+          "word_count": 296
+        },
+        {
+          "id": "chapter-004",
+          "order": 4,
+          "sha256": "d954ab4476e8dbfc2e2d349a8fdc58be5d99a042c8af6e03443bafca25d43d67",
+          "title": "Letter 4. To Mrs. Saville, England",
+          "word_count": 2733
+        },
+        {
+          "id": "chapter-005",
+          "order": 5,
+          "sha256": "4448c9b90306613455c8cf47737b1e06c3cb5678512769e2a420982cffd15e9f",
+          "title": "Chapter 1",
+          "word_count": 1780
+        },
+        {
+          "id": "chapter-006",
+          "order": 6,
+          "sha256": "408137119865eaa4c45275e76c217524fe7ddc62ac6b96d42e22055220846afb",
+          "title": "Chapter 2",
+          "word_count": 2211
+        },
+        {
+          "id": "chapter-007",
+          "order": 7,
+          "sha256": "ab195fa54d5dc159bdb0f733cf195eedebd55be2abed60bb7cf4f8a3db69c90f",
+          "title": "Chapter 3",
+          "word_count": 2688
+        },
+        {
+          "id": "chapter-008",
+          "order": 8,
+          "sha256": "e93d92292fb9ad6342e6986be8ec402454554c5242d330ee2b7f56a60c4c33da",
+          "title": "Chapter 4",
+          "word_count": 2537
+        },
+        {
+          "id": "chapter-009",
+          "order": 9,
+          "sha256": "b23858974dad52c8dd3506e8f31c289326cebf2dd4b54d6c01c74749e64b5be6",
+          "title": "Chapter 5",
+          "word_count": 2359
+        },
+        {
+          "id": "chapter-010",
+          "order": 10,
+          "sha256": "495015ec56aebc1e1a510c8cd6467b77a8a78ff3fa92ef5b6db60747a0128124",
+          "title": "Chapter 6",
+          "word_count": 2728
+        },
+        {
+          "id": "chapter-011",
+          "order": 11,
+          "sha256": "5d9c795cc0effac5965b3ed38ab87184af74f303e23a5ace48d15fc446a8834c",
+          "title": "Chapter 7",
+          "word_count": 3566
+        },
+        {
+          "id": "chapter-012",
+          "order": 12,
+          "sha256": "879749adc3a932876164e3690834d092bbf9a8f0f9dbfdf4745bd8b5fb5b48c1",
+          "title": "Chapter 8",
+          "word_count": 3100
+        },
+        {
+          "id": "chapter-013",
+          "order": 13,
+          "sha256": "6e5bd84d6570eeb8a6d84defa7aa6921f60b6032c634cdbf8850c6706279f50b",
+          "title": "Chapter 9",
+          "word_count": 2222
+        },
+        {
+          "id": "chapter-014",
+          "order": 14,
+          "sha256": "80b9c145ee803a98c17f1fed61c6339d3e2caef5f593ee8d73e8d4c78bd867fe",
+          "title": "Chapter 10",
+          "word_count": 2361
+        },
+        {
+          "id": "chapter-015",
+          "order": 15,
+          "sha256": "3557e5922b44bd933703726ea3fec98858e938a4df8234b51e6a0fc4b39a27b5",
+          "title": "Chapter 11",
+          "word_count": 2905
+        },
+        {
+          "id": "chapter-016",
+          "order": 16,
+          "sha256": "36c703fd69f81671d0d72531657c4f66a8f1b49ed483456e6750e5aebe0d5e3a",
+          "title": "Chapter 12",
+          "word_count": 2076
+        },
+        {
+          "id": "chapter-017",
+          "order": 17,
+          "sha256": "5ede90a1b9fccc792df2aafc76c77197d121ee51b534287013f2569f2f1afe46",
+          "title": "Chapter 13",
+          "word_count": 2038
+        },
+        {
+          "id": "chapter-018",
+          "order": 18,
+          "sha256": "316be76462c4dcd64c696a4a66a016c4d837703441d4c6ddce01f02cec08aa8d",
+          "title": "Chapter 14",
+          "word_count": 1853
+        },
+        {
+          "id": "chapter-019",
+          "order": 19,
+          "sha256": "d11298e7f38b94ece91480a6a8e3a95bba6d99088161a12f081da5a705bfdbb8",
+          "title": "Chapter 15",
+          "word_count": 3017
+        },
+        {
+          "id": "chapter-020",
+          "order": 20,
+          "sha256": "ddb072ed4508f8c4b0f93bdbd90c14d1f9f7db9c449c245815fa5a291b3b5587",
+          "title": "Chapter 16",
+          "word_count": 3204
+        },
+        {
+          "id": "chapter-021",
+          "order": 21,
+          "sha256": "7bf1e387298ae40cd175f4a295a5924e76f6aab2629a241b82f4d1fbe0de5759",
+          "title": "Chapter 17",
+          "word_count": 1920
+        },
+        {
+          "id": "chapter-022",
+          "order": 22,
+          "sha256": "bc96e04cc9ac05330c633aaeaaad3b417bf8676f2049e37eb535e85793fdc261",
+          "title": "Chapter 18",
+          "word_count": 2853
+        },
+        {
+          "id": "chapter-023",
+          "order": 23,
+          "sha256": "b771e49fb7b0aa8ca4353477198dee545127faeec34966c13b6c9ae158b9c5db",
+          "title": "Chapter 19",
+          "word_count": 2615
+        },
+        {
+          "id": "chapter-024",
+          "order": 24,
+          "sha256": "f81c1b6ed8376b4ec5052678484e336fb429eab3cc0d2a54a2c8d15e73c6d8e6",
+          "title": "Chapter 20",
+          "word_count": 3525
+        },
+        {
+          "id": "chapter-025",
+          "order": 25,
+          "sha256": "b5b4ad46ad4b97b480b564ac4d98fc4ced6b6e06964c877d9edb82aaf51dc2ec",
+          "title": "Chapter 21",
+          "word_count": 3745
+        },
+        {
+          "id": "chapter-026",
+          "order": 26,
+          "sha256": "025c7c053d1dc937c32f5c204296b2d6393fbb3aab4ed5d38347a55a545678a9",
+          "title": "Chapter 22",
+          "word_count": 3424
+        },
+        {
+          "id": "chapter-027",
+          "order": 27,
+          "sha256": "dd9cf156bab9e3b76a8ed69ec85b848e3113bfe32857ab73abaeec2e203af68b",
+          "title": "Chapter 23",
+          "word_count": 2597
+        },
+        {
+          "id": "chapter-028",
+          "order": 28,
+          "sha256": "70b030cac2f3a8ab896a2ed7cb54d1d9802f4493d9e7827ed315b9cb9abc366a",
+          "title": "Chapter 24",
+          "word_count": 8251
+        }
+      ],
+      "content_hash": "c83bc9742f100459a5bd329a9f048cb14e6356c7e43e2a423e71becc9ddc2b85",
+      "provenance_hash": "801a0d6f3dad09bb4a7d3b179eac4673f3f7ec3c05a8c63fc928fa1aa30e7a26",
+      "sanitized": true,
+      "source_hash": "7810cd483cffcf2cc8a1d8f0d5807931e69d4f48cd14149b8c76f88af82fead3"
+    },
+    "generated_at": "2026-10-03T05:34:11.386246+00:00",
+    "manifest_sha256": "50f7cf8d0ab612a58b37d24b0adaa3750ec2cf2e48372cc3fca9e4fb551ff571",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/frankenstein/frankenstein-front-a7a5d982.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "dc06292e3e257f690c3017e88ded33d0b6baa8b778d1629f3074d1f76b5df449",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "frankenstein",
+    "title": "Frankenstein"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261003-frankenstein-exact-reader-cover-prospective-accepted",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

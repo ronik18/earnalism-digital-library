@@ -1,0 +1,110 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "9835063bdca72194e396b1459b75d573e98e7a6addc9141559118749a4c9ead5",
+    "chapters/chapter-001.json": "fceadfd7e05c26bfd2a467327219843b89369a50ff5b11d018e202ade45e0914",
+    "checksum_manifest.json": "9a90c1c75d9ca48b8384c3435c4b016a46ba99007305ee228ed6fced01161c1d",
+    "cover_provenance.json": "10466e0e5a4fe6965ed8559a586fe7f1a9f3808ccf21b430adad80277d8435bf",
+    "highlight_sync.json": "65550c498ea653e1f52329825101496ecb952eaee1fab64dac3f327d5d6187b2",
+    "public_book.json": "d829d633b8980dab442fc64d60ff008aaa5aad39f6f10850e1ef3c9f96c9aa1c",
+    "publication_manifest.json": "dc361d4ee0c48169f2b8b72323b35bba348a391da5056ca276354b2410971e17",
+    "reader_manifest.json": "5df6dd9b255ce9ad88e1dad00532528c0b4a6a990a81bde422c6640f98924e32",
+    "reader_release_approval.json": "426e4ddacb93facd8811a20d3b1e404812c491017462a6933572f56207f035c3",
+    "rights_decision.json": "ae70a0c45fb9568d811e91d11d6380c7337b1b262f552c41cc29c4ad3023b7ce",
+    "source_evidence.json": "b28baa8735f34c23f3236faea44061e0dd31609038ebd84dc01d9ae297718e09"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "6bb07930606cf29425f255fe36c7aca80ab53654da30c4c01831b01a11be6ccb",
+      "file_sha256": "fceadfd7e05c26bfd2a467327219843b89369a50ff5b11d018e202ade45e0914",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "9835063bdca72194e396b1459b75d573e98e7a6addc9141559118749a4c9ead5",
+    "chapters/chapter-001.json": "fceadfd7e05c26bfd2a467327219843b89369a50ff5b11d018e202ade45e0914",
+    "checksum_manifest.json": "9a90c1c75d9ca48b8384c3435c4b016a46ba99007305ee228ed6fced01161c1d",
+    "cover_provenance.json": "10466e0e5a4fe6965ed8559a586fe7f1a9f3808ccf21b430adad80277d8435bf",
+    "highlight_sync.json": "65550c498ea653e1f52329825101496ecb952eaee1fab64dac3f327d5d6187b2",
+    "public_book.json": "d829d633b8980dab442fc64d60ff008aaa5aad39f6f10850e1ef3c9f96c9aa1c",
+    "publication_manifest.json": "dc361d4ee0c48169f2b8b72323b35bba348a391da5056ca276354b2410971e17",
+    "reader_manifest.json": "5df6dd9b255ce9ad88e1dad00532528c0b4a6a990a81bde422c6640f98924e32",
+    "reader_release_approval.json": "426e4ddacb93facd8811a20d3b1e404812c491017462a6933572f56207f035c3",
+    "rights_decision.json": "ae70a0c45fb9568d811e91d11d6380c7337b1b262f552c41cc29c4ad3023b7ce",
+    "source_evidence.json": "b28baa8735f34c23f3236faea44061e0dd31609038ebd84dc01d9ae297718e09"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "9835063bdca72194e396b1459b75d573e98e7a6addc9141559118749a4c9ead5",
+      "public_book": "d829d633b8980dab442fc64d60ff008aaa5aad39f6f10850e1ef3c9f96c9aa1c",
+      "reader_manifest": "5df6dd9b255ce9ad88e1dad00532528c0b4a6a990a81bde422c6640f98924e32",
+      "source_evidence": "b28baa8735f34c23f3236faea44061e0dd31609038ebd84dc01d9ae297718e09"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "5936b82edc03f86fec35795e8c0f9c34a7c3e4019b0e637fbc4092af8fc2f774",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "fceadfd7e05c26bfd2a467327219843b89369a50ff5b11d018e202ade45e0914",
+          "title": "The Man Who Would Be King",
+          "word_count": 14303
+        }
+      ],
+      "content_hash": "28f4b454893a6d614cb729f94b3c7cbac26640a9d4f102d585051a8e9532e8e5",
+      "provenance_hash": "f4a3486f775a233fae6df4ae40dafec5bc5ce82e4ad8b1d64c75164c11b01827",
+      "sanitized": true,
+      "source_hash": "f793cabaf57da4c855c5fefa2783c2f21eaa0a14a9d0199f305b89afe57f75f8"
+    },
+    "generated_at": "2026-10-01T05:38:07.922769+00:00",
+    "manifest_sha256": "92539aad4f60efa05dea2b29d4dc403674cd4ce8d0301a5d84dff3b9593985bf",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/the-man-who-would-be-king/front-cover.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "b28baa8735f34c23f3236faea44061e0dd31609038ebd84dc01d9ae297718e09",
+      "publication_region": "in",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-man-who-would-be-king",
+    "title": "The Man Who Would Be King"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261001-the-man-who-would-be-king-owner-text-reader",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

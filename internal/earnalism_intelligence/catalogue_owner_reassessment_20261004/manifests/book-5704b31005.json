@@ -1,0 +1,132 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "5d466fb5df86d019b2b13087e1fc93fbd28440bd175e825578b571ed1e347c28",
+    "chapters/chapter-001.json": "e0325632daa997c635a64d46073efbf6d8fda511635e9b4ababfa3bab79dfd5c",
+    "checksum_manifest.json": "e12ab04021ac3991ae3f802d3810a0ebb7edf6b82a2bbb80caf68736accab743",
+    "cover_provenance.json": "0097846c9e39ae9eb4c4185a03d1da48c398773868e06537ed6f5aa03c7fa319",
+    "covers/back-delivery.webp": "4e0a187bd92e75d5b4fb97a670516bacc6183862672090f03ed5dce9547c5709",
+    "covers/back-prepared.png": "f470d039657c0f6068ce708f2e1380ccdba297132434ac0c5c1434c488456e7e",
+    "covers/back.png": "a99c6c0e27712090637651204cfb0aa5809442ddbc3b5e99da35828a34c82a08",
+    "covers/front-delivery.webp": "8f64cc7c2a33820dfbfe55a635f70a8a0fd19959c71e3290bdeeadd45c2531a5",
+    "covers/front-prepared.png": "c58421cc10daab55ce40478452acbd0c8c0977761753a6d01c63db2b67b56b21",
+    "covers/front.png": "a914d173de6f5cd9486fd91a7b69188d156ac7623ebc9f8f89173acd1c48d104",
+    "evidence/review_a.json": "bf3615602cb27a7ff7a97da6849951abeb3469015c2e1da0bb0f8a8a715c8efd",
+    "evidence/review_b.json": "c7d0ea841e42cfa6cde1888ee06c0c87fb550beeee74efb78ccff67ea8675686",
+    "highlight_sync.json": "e58d907c1d0fa2ae194a04c11b6d9eef3f35f188f6d22fd7eb4cc1fac84465bd",
+    "license_notice.json": "1fc9cf8fae864434f95bc34656a96672c55d852f3dfdad4a1f386a1a1cc4e01c",
+    "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "public_book.json": "4d2e8f87fef27929dd27328a16226b2ccee8b96f974f7d4dd3be3b5d049cdf87",
+    "publication_authorization.json": "baf85fb9c258e5f2a925d4358a91e34c0c6bd04ebc3db4e9f4586f9e18783aa2",
+    "publication_manifest.json": "c8455db5baa2055ad7b5e29ce7f3f0a9c6802eb4e72bd664858d3b9853c65b04",
+    "reader_manifest.json": "6c7daced7a35b9f20ba2f8828e5636d7c644e6ceb272f1707871adafb5a2b759",
+    "rights_decision.json": "4bb60220f1b11794ef7634a135a69587523149c0c40c377ecc77e6e60033dba2",
+    "source_evidence.json": "f7d3ac1cbe169532038b008d48c0313290cedca638d23c7696d75d3a0c072f3b",
+    "source_integrity_validation.json": "89eac8e38ab78c63ae74dc799b89c6fe6fef9aa5755e55c645c94a1dd7ea11f6"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "c9e4ed3927535c11a5d1d5a4729f0c8a1371952a33a6e0e6d36514b3d249b089",
+      "file_sha256": "e0325632daa997c635a64d46073efbf6d8fda511635e9b4ababfa3bab79dfd5c",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "5d466fb5df86d019b2b13087e1fc93fbd28440bd175e825578b571ed1e347c28",
+    "chapters/chapter-001.json": "e0325632daa997c635a64d46073efbf6d8fda511635e9b4ababfa3bab79dfd5c",
+    "checksum_manifest.json": "e12ab04021ac3991ae3f802d3810a0ebb7edf6b82a2bbb80caf68736accab743",
+    "cover_provenance.json": "0097846c9e39ae9eb4c4185a03d1da48c398773868e06537ed6f5aa03c7fa319",
+    "covers/back-delivery.webp": "4e0a187bd92e75d5b4fb97a670516bacc6183862672090f03ed5dce9547c5709",
+    "covers/back-prepared.png": "f470d039657c0f6068ce708f2e1380ccdba297132434ac0c5c1434c488456e7e",
+    "covers/back.png": "a99c6c0e27712090637651204cfb0aa5809442ddbc3b5e99da35828a34c82a08",
+    "covers/front-delivery.webp": "8f64cc7c2a33820dfbfe55a635f70a8a0fd19959c71e3290bdeeadd45c2531a5",
+    "covers/front-prepared.png": "c58421cc10daab55ce40478452acbd0c8c0977761753a6d01c63db2b67b56b21",
+    "covers/front.png": "a914d173de6f5cd9486fd91a7b69188d156ac7623ebc9f8f89173acd1c48d104",
+    "evidence/review_a.json": "bf3615602cb27a7ff7a97da6849951abeb3469015c2e1da0bb0f8a8a715c8efd",
+    "evidence/review_b.json": "c7d0ea841e42cfa6cde1888ee06c0c87fb550beeee74efb78ccff67ea8675686",
+    "highlight_sync.json": "e58d907c1d0fa2ae194a04c11b6d9eef3f35f188f6d22fd7eb4cc1fac84465bd",
+    "license_notice.json": "1fc9cf8fae864434f95bc34656a96672c55d852f3dfdad4a1f386a1a1cc4e01c",
+    "owner_artwork_declaration.json": "0881001b09b5b47649f14ff289aaa7f64e98004adc3d800f67d90fab703f9264",
+    "public_book.json": "4d2e8f87fef27929dd27328a16226b2ccee8b96f974f7d4dd3be3b5d049cdf87",
+    "publication_authorization.json": "baf85fb9c258e5f2a925d4358a91e34c0c6bd04ebc3db4e9f4586f9e18783aa2",
+    "publication_manifest.json": "c8455db5baa2055ad7b5e29ce7f3f0a9c6802eb4e72bd664858d3b9853c65b04",
+    "reader_manifest.json": "6c7daced7a35b9f20ba2f8828e5636d7c644e6ceb272f1707871adafb5a2b759",
+    "rights_decision.json": "4bb60220f1b11794ef7634a135a69587523149c0c40c377ecc77e6e60033dba2",
+    "source_evidence.json": "f7d3ac1cbe169532038b008d48c0313290cedca638d23c7696d75d3a0c072f3b",
+    "source_integrity_validation.json": "89eac8e38ab78c63ae74dc799b89c6fe6fef9aa5755e55c645c94a1dd7ea11f6"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "5d466fb5df86d019b2b13087e1fc93fbd28440bd175e825578b571ed1e347c28",
+      "public_book": "4d2e8f87fef27929dd27328a16226b2ccee8b96f974f7d4dd3be3b5d049cdf87",
+      "reader_manifest": "6c7daced7a35b9f20ba2f8828e5636d7c644e6ceb272f1707871adafb5a2b759",
+      "source_evidence": "f7d3ac1cbe169532038b008d48c0313290cedca638d23c7696d75d3a0c072f3b"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "a601910dd71d4b09df362a0dcf6df46b530e20b9191cbf54b756010ee69917d9",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "e0325632daa997c635a64d46073efbf6d8fda511635e9b4ababfa3bab79dfd5c",
+          "title": "বিচারক",
+          "word_count": 1989
+        }
+      ],
+      "content_hash": "c9e4ed3927535c11a5d1d5a4729f0c8a1371952a33a6e0e6d36514b3d249b089",
+      "provenance_hash": "e9cff373d3c3941dba5847b5004e2359b0041827d2117e41c7acb345b76e7bc1",
+      "sanitized": true,
+      "source_hash": "57835bba9d270aa0c3f31ee280b2ae789f0528be1adfa29815a45826e23e466b"
+    },
+    "generated_at": "2026-10-03T05:57:24.767676+00:00",
+    "manifest_sha256": "00bf94aebcc0b0a364228ec9127f9d2270805c832e24ff14457a09b5d4c2e70f",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/book-5704b31005/book-5704b31005-front-8f64cc7c.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "f7d3ac1cbe169532038b008d48c0313290cedca638d23c7696d75d3a0c072f3b",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "book-5704b31005",
+    "title": "বিচারক"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261003-book-5704b31005-exact-reader-cover-prospective-accepted",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

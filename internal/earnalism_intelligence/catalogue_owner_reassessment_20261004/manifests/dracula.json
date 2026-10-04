@@ -1,0 +1,498 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "25222b31c0b2557ac0d613352b03bd835ce9dac0931bd5c14d411198a0bcd32f",
+    "chapters/chapter-000.json": "0379e9cb8ef91acbdad8ad7dc134b38940ffd9fead72d634b44623bec20ed39c",
+    "chapters/chapter-001.json": "6b6bb1a8b8ace4256785baf236bbd781fffd774bc688faff9f91ec4d6ae1ab4d",
+    "chapters/chapter-002.json": "cfd84f5af8254adf7f1b1e3791f8c543ea23d5b497b6c66c036e2505d4623500",
+    "chapters/chapter-003.json": "5c0bfe5318af5a0e12cf483a648d94d067ce89939ae8d4c7282c626e90525033",
+    "chapters/chapter-004.json": "c45c2f952dc1245365a779be9c8dcfb159befb3badae8074a21442647d3327a6",
+    "chapters/chapter-005.json": "567c6fbc78e6ed853e68dfbfaa9f53e8202b60229fabb8a2ad4331c065684dba",
+    "chapters/chapter-006.json": "d566bd9bbf5ed220a5aff73c58c8cc4c6e3d5863bbae37e79abdc09c1ba67dc9",
+    "chapters/chapter-007.json": "40e9cf69690a37481ac5983dc3bd9c5785db2ae39d341b4b81cc4c4a5e1210f6",
+    "chapters/chapter-008.json": "4afa3e154a1c1c1d40ddf03b1d09de25bd280f7eff6fb44a19db88473a6d2908",
+    "chapters/chapter-009.json": "b5b89bf3e656d274b5f169762bbe60d54a9af8cf0bad88f325fcd3cf8c42a797",
+    "chapters/chapter-010.json": "4639093caf8fc2d2d9fa9a553786c758631a7b697fb2971f88bee5fd5687bdae",
+    "chapters/chapter-011.json": "01d544e051b5862fe86bc42dbf45092581f0d26fd24910aa9bca85bbd5deabe7",
+    "chapters/chapter-012.json": "336bbc45ce541b7fb33ad3a4140d588819e0061785b52881f2d3b39a93b9eeb7",
+    "chapters/chapter-013.json": "cf41a5d2062d28f09eeaec7b7627e014eaa83dbdc064a9ac6e698198898ecaca",
+    "chapters/chapter-014.json": "489bb4310435504befa3b40dcb18d0e18a4e2415e003cb353ebab7d55eaafc5c",
+    "chapters/chapter-015.json": "f39ac1f1ddf5508bce2164bcbee0e4e72554c8a7e5d32c2903bf007422a5fcb8",
+    "chapters/chapter-016.json": "a5161921707fae6d714fcab98990789ea1f776bf2d2b2e878ea49677ffa409c2",
+    "chapters/chapter-017.json": "2f03c971c7ea1e5a964c0da2b7b359623429c3f9f1607a0dc3677b5720215b82",
+    "chapters/chapter-018.json": "87f4d1de2f7e4a7b8fbf42ae22634eb9af76bb2c5ff79c95229ae7a1107a1d83",
+    "chapters/chapter-019.json": "cbb926021fc858db64b27e93710fea696dc6c8b5739a9f682a532a5250be02ac",
+    "chapters/chapter-020.json": "649b901979d5f1670fea4b0f6c6ebc0253d50cddefd15f51db65812717da9a4b",
+    "chapters/chapter-021.json": "47d6a5956008f8691ef693209f0e5d92d46eacc8e397cc56d922605a9a2e5d1f",
+    "chapters/chapter-022.json": "8b745a17a39efdf0dc921193b4956e9ada042f3d12fd7f13f5b72aec3d4fb82f",
+    "chapters/chapter-023.json": "73b58b6758cc947dc30c2ecee35a96befbdc190a24c58dbd66c311056f9b860f",
+    "chapters/chapter-024.json": "8b285e3267b83b4fcf0f5ae3094102338ba0444fc0ba7d44bede2c27e03e1904",
+    "chapters/chapter-025.json": "dc7bd93c1153f68d2dde9f3244bd4cd22bf98349b84bcb31ae10c9188348d020",
+    "chapters/chapter-026.json": "001559f7486f9e2a9424e76d0c6b79bd4aaa2b6818e4b887e31e1f2ffa01ceb4",
+    "chapters/chapter-027.json": "6019f4f2e7472398196bc0b93dccc73d2b748f2971f144eb7d67454e2a73da3f",
+    "checksum_manifest.json": "a2d515ed63e9ded91606bedf4302476f8ae7d78a4f18ccc5c84cadfc361afe31",
+    "cover_delivery_derivation.json": "06482a8cd6e4d31e73262f510d663ebeb078d0564cec13a4467de0b5f62df7c7",
+    "cover_provenance.json": "8424662cca0b1bda6e1810129c63127261c51886ae5cf608d21aa6a72a81a7ab",
+    "covers/back.png": "c35004ef7169e877889c5e6d9d75949d72c09b6102d0a2e0d2542d265993a5c1",
+    "covers/dracula-back-c35004ef.webp": "c2523a2fcf0723073489caecb73642ddddc4ff206cc26bbf52760ee590bc6076",
+    "covers/dracula-front-5596e419.webp": "ce4f87523c251cf413bebf50c088901a25415b30e92d67fd96aaed9297a33041",
+    "covers/front.png": "5596e41956c1317fa5f182c8ba61ac5be8f69a23489d132470bd82ebba425aff",
+    "highlight_sync.json": "0a2e1050867364dd156d8e144037a9469508939031fff8610776b89a1b393f9a",
+    "public_book.json": "dc0393eca8f912b9dfe556c9f4d2de78410aa23827f28b432d4de782588936ac",
+    "publication_authorization.json": "582b43208f0cddda7ff9828649e94b809be689394bcb49b06c966a80ca504507",
+    "publication_manifest.json": "177b323ece13835666ee06ad9c262eccb57d71fde885667930c7ff0c24bd210e",
+    "reader_manifest.json": "f51512441063fa5b19c8af4e6cb1130c9eda98897a242163416ec09fc321068d",
+    "rights_decision.json": "61e3508fe614c2d45f25ca25806258acca86b2b9940ed1c90fbfb370485dc8c1",
+    "source_evidence.json": "6322c3822db62956da4b1fac653e74bbbf02f79f39554bc236199605764f0cd9"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "bb3e6a9bc8229f003502f05024f8188accd6bacdaa555d55b6cdea33bd33053b",
+      "file_sha256": "0379e9cb8ef91acbdad8ad7dc134b38940ffd9fead72d634b44623bec20ed39c",
+      "id": "chapter-000"
+    },
+    {
+      "content_sha256": "ab02d7ae9c16f2caaf747dd6ce98a06216a6c47d31d47080392e67235dda889e",
+      "file_sha256": "6b6bb1a8b8ace4256785baf236bbd781fffd774bc688faff9f91ec4d6ae1ab4d",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "773f32177e1e4c00d25c8259bc46a4e9ce68d3a0cce351ab57bdde50bc3af987",
+      "file_sha256": "cfd84f5af8254adf7f1b1e3791f8c543ea23d5b497b6c66c036e2505d4623500",
+      "id": "chapter-002"
+    },
+    {
+      "content_sha256": "7e877461fa16de18c50193b754dbacc0d2fea11b12d8010a97671d3ca6baf986",
+      "file_sha256": "5c0bfe5318af5a0e12cf483a648d94d067ce89939ae8d4c7282c626e90525033",
+      "id": "chapter-003"
+    },
+    {
+      "content_sha256": "108c9c3b6a8c3ceb5f677d6c3338a369a005d25a605424dce53a633d9a77d4ac",
+      "file_sha256": "c45c2f952dc1245365a779be9c8dcfb159befb3badae8074a21442647d3327a6",
+      "id": "chapter-004"
+    },
+    {
+      "content_sha256": "31a91e56f56916734ee118e99a06e24c071e8effae0f62c4cf688afbc145cdeb",
+      "file_sha256": "567c6fbc78e6ed853e68dfbfaa9f53e8202b60229fabb8a2ad4331c065684dba",
+      "id": "chapter-005"
+    },
+    {
+      "content_sha256": "29c7706da3faf7efe7e00af461fe7f4a62e298dae6ed3251133d68883a96ffa0",
+      "file_sha256": "d566bd9bbf5ed220a5aff73c58c8cc4c6e3d5863bbae37e79abdc09c1ba67dc9",
+      "id": "chapter-006"
+    },
+    {
+      "content_sha256": "e4e5b3858ac61b0a43aeac384c42ee3f197dc84b76b8e55c34ee5c10e9c26c87",
+      "file_sha256": "40e9cf69690a37481ac5983dc3bd9c5785db2ae39d341b4b81cc4c4a5e1210f6",
+      "id": "chapter-007"
+    },
+    {
+      "content_sha256": "75674a553219f47a1a5837ccbc324be942270382db6b4669354e456ca4c02f60",
+      "file_sha256": "4afa3e154a1c1c1d40ddf03b1d09de25bd280f7eff6fb44a19db88473a6d2908",
+      "id": "chapter-008"
+    },
+    {
+      "content_sha256": "37ecd9bab83cdfc1221195d4d726ceb6bff2474aee065adbd14ff2fbfe26b4c9",
+      "file_sha256": "b5b89bf3e656d274b5f169762bbe60d54a9af8cf0bad88f325fcd3cf8c42a797",
+      "id": "chapter-009"
+    },
+    {
+      "content_sha256": "4a3d342ed47ad54e0c740ab8862171b79d69de3607ffc429656020e6bf7f207c",
+      "file_sha256": "4639093caf8fc2d2d9fa9a553786c758631a7b697fb2971f88bee5fd5687bdae",
+      "id": "chapter-010"
+    },
+    {
+      "content_sha256": "9d3f13e6bb18075b5ea2fffc09c18f54469981d679e7e9b7195b7dc3f79f83b2",
+      "file_sha256": "01d544e051b5862fe86bc42dbf45092581f0d26fd24910aa9bca85bbd5deabe7",
+      "id": "chapter-011"
+    },
+    {
+      "content_sha256": "4b94cc588ed5d5f3b8d0f1c265d2f079df3bd84beb476238aa5ef1f352eed53d",
+      "file_sha256": "336bbc45ce541b7fb33ad3a4140d588819e0061785b52881f2d3b39a93b9eeb7",
+      "id": "chapter-012"
+    },
+    {
+      "content_sha256": "a8914362562af6bc6f34ba77b699123a8b40c5d292ce235015f9399e5053af2b",
+      "file_sha256": "cf41a5d2062d28f09eeaec7b7627e014eaa83dbdc064a9ac6e698198898ecaca",
+      "id": "chapter-013"
+    },
+    {
+      "content_sha256": "eff8ccf9aff5f1a0cb43cd5242e903f510fbe365fd687457ff07bba175d73b82",
+      "file_sha256": "489bb4310435504befa3b40dcb18d0e18a4e2415e003cb353ebab7d55eaafc5c",
+      "id": "chapter-014"
+    },
+    {
+      "content_sha256": "92a0c94356235c54703ce273d6dbefdd6f2b6ba0381cd4cc0dd2c1e10404bff8",
+      "file_sha256": "f39ac1f1ddf5508bce2164bcbee0e4e72554c8a7e5d32c2903bf007422a5fcb8",
+      "id": "chapter-015"
+    },
+    {
+      "content_sha256": "a7ce46204f29eafe3d871032722ff09a51844dfbac605ea16f2fd921cb8842b1",
+      "file_sha256": "a5161921707fae6d714fcab98990789ea1f776bf2d2b2e878ea49677ffa409c2",
+      "id": "chapter-016"
+    },
+    {
+      "content_sha256": "85e94e021da444362bd0b2301e9337b97585f28170960f3efe3fedbe7d94f769",
+      "file_sha256": "2f03c971c7ea1e5a964c0da2b7b359623429c3f9f1607a0dc3677b5720215b82",
+      "id": "chapter-017"
+    },
+    {
+      "content_sha256": "fd5d78c67d0350c0db9d97d5717fd33c2a8e8fa2a3cd2f38e7ab2e17bcd877c4",
+      "file_sha256": "87f4d1de2f7e4a7b8fbf42ae22634eb9af76bb2c5ff79c95229ae7a1107a1d83",
+      "id": "chapter-018"
+    },
+    {
+      "content_sha256": "dd87078320081951e4dbeb257c59c55d3c38e78869c8ddedaef63bdb86459a07",
+      "file_sha256": "cbb926021fc858db64b27e93710fea696dc6c8b5739a9f682a532a5250be02ac",
+      "id": "chapter-019"
+    },
+    {
+      "content_sha256": "e8e2152c90150c5922ffd47dc75dcdfa0e113a753d6350bffd898b0b95d327a3",
+      "file_sha256": "649b901979d5f1670fea4b0f6c6ebc0253d50cddefd15f51db65812717da9a4b",
+      "id": "chapter-020"
+    },
+    {
+      "content_sha256": "183bdec00631cee304e04c4503de8ad255f78a678d304749a37aea5bdfb54067",
+      "file_sha256": "47d6a5956008f8691ef693209f0e5d92d46eacc8e397cc56d922605a9a2e5d1f",
+      "id": "chapter-021"
+    },
+    {
+      "content_sha256": "106fa15e68682484973de9fae8f48f4955ed03b5b5e2f9c22b65b335b82a1837",
+      "file_sha256": "8b745a17a39efdf0dc921193b4956e9ada042f3d12fd7f13f5b72aec3d4fb82f",
+      "id": "chapter-022"
+    },
+    {
+      "content_sha256": "185de6b4b3ba5f30562978f04b9250fafcfbb8c09307183735d7a8ec15b3c40e",
+      "file_sha256": "73b58b6758cc947dc30c2ecee35a96befbdc190a24c58dbd66c311056f9b860f",
+      "id": "chapter-023"
+    },
+    {
+      "content_sha256": "6612021df5eb3fa57697322f9505e2e905d2393f30b4888693b34d791532f411",
+      "file_sha256": "8b285e3267b83b4fcf0f5ae3094102338ba0444fc0ba7d44bede2c27e03e1904",
+      "id": "chapter-024"
+    },
+    {
+      "content_sha256": "e7bc93a3a6389d7def6f98590f70a69729a186af8af5ae11f8003f0096f24cb7",
+      "file_sha256": "dc7bd93c1153f68d2dde9f3244bd4cd22bf98349b84bcb31ae10c9188348d020",
+      "id": "chapter-025"
+    },
+    {
+      "content_sha256": "28f9318c658325c7a574ce41f57384b28a79fcd8832c3ad805f2ec3119b63e7e",
+      "file_sha256": "001559f7486f9e2a9424e76d0c6b79bd4aaa2b6818e4b887e31e1f2ffa01ceb4",
+      "id": "chapter-026"
+    },
+    {
+      "content_sha256": "d64d75988726daed802a7dbb4581f50afc170500a3ccaca703769596f9f929d6",
+      "file_sha256": "6019f4f2e7472398196bc0b93dccc73d2b748f2971f144eb7d67454e2a73da3f",
+      "id": "chapter-027"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "25222b31c0b2557ac0d613352b03bd835ce9dac0931bd5c14d411198a0bcd32f",
+    "chapters/chapter-000.json": "0379e9cb8ef91acbdad8ad7dc134b38940ffd9fead72d634b44623bec20ed39c",
+    "chapters/chapter-001.json": "6b6bb1a8b8ace4256785baf236bbd781fffd774bc688faff9f91ec4d6ae1ab4d",
+    "chapters/chapter-002.json": "cfd84f5af8254adf7f1b1e3791f8c543ea23d5b497b6c66c036e2505d4623500",
+    "chapters/chapter-003.json": "5c0bfe5318af5a0e12cf483a648d94d067ce89939ae8d4c7282c626e90525033",
+    "chapters/chapter-004.json": "c45c2f952dc1245365a779be9c8dcfb159befb3badae8074a21442647d3327a6",
+    "chapters/chapter-005.json": "567c6fbc78e6ed853e68dfbfaa9f53e8202b60229fabb8a2ad4331c065684dba",
+    "chapters/chapter-006.json": "d566bd9bbf5ed220a5aff73c58c8cc4c6e3d5863bbae37e79abdc09c1ba67dc9",
+    "chapters/chapter-007.json": "40e9cf69690a37481ac5983dc3bd9c5785db2ae39d341b4b81cc4c4a5e1210f6",
+    "chapters/chapter-008.json": "4afa3e154a1c1c1d40ddf03b1d09de25bd280f7eff6fb44a19db88473a6d2908",
+    "chapters/chapter-009.json": "b5b89bf3e656d274b5f169762bbe60d54a9af8cf0bad88f325fcd3cf8c42a797",
+    "chapters/chapter-010.json": "4639093caf8fc2d2d9fa9a553786c758631a7b697fb2971f88bee5fd5687bdae",
+    "chapters/chapter-011.json": "01d544e051b5862fe86bc42dbf45092581f0d26fd24910aa9bca85bbd5deabe7",
+    "chapters/chapter-012.json": "336bbc45ce541b7fb33ad3a4140d588819e0061785b52881f2d3b39a93b9eeb7",
+    "chapters/chapter-013.json": "cf41a5d2062d28f09eeaec7b7627e014eaa83dbdc064a9ac6e698198898ecaca",
+    "chapters/chapter-014.json": "489bb4310435504befa3b40dcb18d0e18a4e2415e003cb353ebab7d55eaafc5c",
+    "chapters/chapter-015.json": "f39ac1f1ddf5508bce2164bcbee0e4e72554c8a7e5d32c2903bf007422a5fcb8",
+    "chapters/chapter-016.json": "a5161921707fae6d714fcab98990789ea1f776bf2d2b2e878ea49677ffa409c2",
+    "chapters/chapter-017.json": "2f03c971c7ea1e5a964c0da2b7b359623429c3f9f1607a0dc3677b5720215b82",
+    "chapters/chapter-018.json": "87f4d1de2f7e4a7b8fbf42ae22634eb9af76bb2c5ff79c95229ae7a1107a1d83",
+    "chapters/chapter-019.json": "cbb926021fc858db64b27e93710fea696dc6c8b5739a9f682a532a5250be02ac",
+    "chapters/chapter-020.json": "649b901979d5f1670fea4b0f6c6ebc0253d50cddefd15f51db65812717da9a4b",
+    "chapters/chapter-021.json": "47d6a5956008f8691ef693209f0e5d92d46eacc8e397cc56d922605a9a2e5d1f",
+    "chapters/chapter-022.json": "8b745a17a39efdf0dc921193b4956e9ada042f3d12fd7f13f5b72aec3d4fb82f",
+    "chapters/chapter-023.json": "73b58b6758cc947dc30c2ecee35a96befbdc190a24c58dbd66c311056f9b860f",
+    "chapters/chapter-024.json": "8b285e3267b83b4fcf0f5ae3094102338ba0444fc0ba7d44bede2c27e03e1904",
+    "chapters/chapter-025.json": "dc7bd93c1153f68d2dde9f3244bd4cd22bf98349b84bcb31ae10c9188348d020",
+    "chapters/chapter-026.json": "001559f7486f9e2a9424e76d0c6b79bd4aaa2b6818e4b887e31e1f2ffa01ceb4",
+    "chapters/chapter-027.json": "6019f4f2e7472398196bc0b93dccc73d2b748f2971f144eb7d67454e2a73da3f",
+    "checksum_manifest.json": "a2d515ed63e9ded91606bedf4302476f8ae7d78a4f18ccc5c84cadfc361afe31",
+    "cover_delivery_derivation.json": "06482a8cd6e4d31e73262f510d663ebeb078d0564cec13a4467de0b5f62df7c7",
+    "cover_provenance.json": "8424662cca0b1bda6e1810129c63127261c51886ae5cf608d21aa6a72a81a7ab",
+    "covers/back.png": "c35004ef7169e877889c5e6d9d75949d72c09b6102d0a2e0d2542d265993a5c1",
+    "covers/dracula-back-c35004ef.webp": "c2523a2fcf0723073489caecb73642ddddc4ff206cc26bbf52760ee590bc6076",
+    "covers/dracula-front-5596e419.webp": "ce4f87523c251cf413bebf50c088901a25415b30e92d67fd96aaed9297a33041",
+    "covers/front.png": "5596e41956c1317fa5f182c8ba61ac5be8f69a23489d132470bd82ebba425aff",
+    "highlight_sync.json": "0a2e1050867364dd156d8e144037a9469508939031fff8610776b89a1b393f9a",
+    "public_book.json": "dc0393eca8f912b9dfe556c9f4d2de78410aa23827f28b432d4de782588936ac",
+    "publication_authorization.json": "582b43208f0cddda7ff9828649e94b809be689394bcb49b06c966a80ca504507",
+    "publication_manifest.json": "177b323ece13835666ee06ad9c262eccb57d71fde885667930c7ff0c24bd210e",
+    "reader_manifest.json": "f51512441063fa5b19c8af4e6cb1130c9eda98897a242163416ec09fc321068d",
+    "rights_decision.json": "61e3508fe614c2d45f25ca25806258acca86b2b9940ed1c90fbfb370485dc8c1",
+    "source_evidence.json": "6322c3822db62956da4b1fac653e74bbbf02f79f39554bc236199605764f0cd9"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "25222b31c0b2557ac0d613352b03bd835ce9dac0931bd5c14d411198a0bcd32f",
+      "public_book": "dc0393eca8f912b9dfe556c9f4d2de78410aa23827f28b432d4de782588936ac",
+      "reader_manifest": "f51512441063fa5b19c8af4e6cb1130c9eda98897a242163416ec09fc321068d",
+      "source_evidence": "6322c3822db62956da4b1fac653e74bbbf02f79f39554bc236199605764f0cd9"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 28,
+      "chapter_index_sha256": "e265aec599ccca0e0b277646ca94130088700030c5cb750b84f87ecfa23fe4cd",
+      "chapters": [
+        {
+          "id": "chapter-000",
+          "order": 1,
+          "sha256": "0379e9cb8ef91acbdad8ad7dc134b38940ffd9fead72d634b44623bec20ed39c",
+          "title": "Preface",
+          "word_count": 77
+        },
+        {
+          "id": "chapter-001",
+          "order": 2,
+          "sha256": "6b6bb1a8b8ace4256785baf236bbd781fffd774bc688faff9f91ec4d6ae1ab4d",
+          "title": "CHAPTER I. JONATHAN HARKER’S JOURNAL",
+          "word_count": 5745
+        },
+        {
+          "id": "chapter-002",
+          "order": 3,
+          "sha256": "cfd84f5af8254adf7f1b1e3791f8c543ea23d5b497b6c66c036e2505d4623500",
+          "title": "CHAPTER II. JONATHAN HARKER’S JOURNAL-- continued",
+          "word_count": 5521
+        },
+        {
+          "id": "chapter-003",
+          "order": 4,
+          "sha256": "5c0bfe5318af5a0e12cf483a648d94d067ce89939ae8d4c7282c626e90525033",
+          "title": "CHAPTER III. JONATHAN HARKER’S JOURNAL-- continued",
+          "word_count": 5740
+        },
+        {
+          "id": "chapter-004",
+          "order": 5,
+          "sha256": "c45c2f952dc1245365a779be9c8dcfb159befb3badae8074a21442647d3327a6",
+          "title": "CHAPTER IV. JONATHAN HARKER’S JOURNAL-- continued",
+          "word_count": 5874
+        },
+        {
+          "id": "chapter-005",
+          "order": 6,
+          "sha256": "567c6fbc78e6ed853e68dfbfaa9f53e8202b60229fabb8a2ad4331c065684dba",
+          "title": "CHAPTER V. MINA MURRAY’S CORRESPONDENCE",
+          "word_count": 3643
+        },
+        {
+          "id": "chapter-006",
+          "order": 7,
+          "sha256": "d566bd9bbf5ed220a5aff73c58c8cc4c6e3d5863bbae37e79abdc09c1ba67dc9",
+          "title": "CHAPTER VI. MINA MURRAY’S JOURNAL",
+          "word_count": 5790
+        },
+        {
+          "id": "chapter-007",
+          "order": 8,
+          "sha256": "40e9cf69690a37481ac5983dc3bd9c5785db2ae39d341b4b81cc4c4a5e1210f6",
+          "title": "CHAPTER VII. CUTTING FROM “THE DAILYGRAPH,” 8 AUGUST",
+          "word_count": 5620
+        },
+        {
+          "id": "chapter-008",
+          "order": 9,
+          "sha256": "4afa3e154a1c1c1d40ddf03b1d09de25bd280f7eff6fb44a19db88473a6d2908",
+          "title": "CHAPTER VIII. MINA MURRAY’S JOURNAL",
+          "word_count": 6369
+        },
+        {
+          "id": "chapter-009",
+          "order": 10,
+          "sha256": "b5b89bf3e656d274b5f169762bbe60d54a9af8cf0bad88f325fcd3cf8c42a797",
+          "title": "CHAPTER IX. MINA HARKER’S CORRESPONDENCE",
+          "word_count": 5994
+        },
+        {
+          "id": "chapter-010",
+          "order": 11,
+          "sha256": "4639093caf8fc2d2d9fa9a553786c758631a7b697fb2971f88bee5fd5687bdae",
+          "title": "CHAPTER X. DR. SEWARD’S DIARY",
+          "word_count": 6003
+        },
+        {
+          "id": "chapter-011",
+          "order": 12,
+          "sha256": "01d544e051b5862fe86bc42dbf45092581f0d26fd24910aa9bca85bbd5deabe7",
+          "title": "CHAPTER XI. LUCY WESTENRA’S DIARY",
+          "word_count": 5259
+        },
+        {
+          "id": "chapter-012",
+          "order": 13,
+          "sha256": "336bbc45ce541b7fb33ad3a4140d588819e0061785b52881f2d3b39a93b9eeb7",
+          "title": "CHAPTER XII. DR. SEWARD’S DIARY",
+          "word_count": 7377
+        },
+        {
+          "id": "chapter-013",
+          "order": 14,
+          "sha256": "cf41a5d2062d28f09eeaec7b7627e014eaa83dbdc064a9ac6e698198898ecaca",
+          "title": "CHAPTER XIII. DR. SEWARD’S DIARY",
+          "word_count": 6678
+        },
+        {
+          "id": "chapter-014",
+          "order": 15,
+          "sha256": "489bb4310435504befa3b40dcb18d0e18a4e2415e003cb353ebab7d55eaafc5c",
+          "title": "CHAPTER XIV. MINA HARKER’S JOURNAL",
+          "word_count": 6521
+        },
+        {
+          "id": "chapter-015",
+          "order": 16,
+          "sha256": "f39ac1f1ddf5508bce2164bcbee0e4e72554c8a7e5d32c2903bf007422a5fcb8",
+          "title": "CHAPTER XV. DR. SEWARD’S DIARY",
+          "word_count": 5871
+        },
+        {
+          "id": "chapter-016",
+          "order": 17,
+          "sha256": "a5161921707fae6d714fcab98990789ea1f776bf2d2b2e878ea49677ffa409c2",
+          "title": "CHAPTER XVI. DR. SEWARD’S DIARY-- continued",
+          "word_count": 4610
+        },
+        {
+          "id": "chapter-017",
+          "order": 18,
+          "sha256": "2f03c971c7ea1e5a964c0da2b7b359623429c3f9f1607a0dc3677b5720215b82",
+          "title": "CHAPTER XVII. DR. SEWARD’S DIARY-- continued",
+          "word_count": 5660
+        },
+        {
+          "id": "chapter-018",
+          "order": 19,
+          "sha256": "87f4d1de2f7e4a7b8fbf42ae22634eb9af76bb2c5ff79c95229ae7a1107a1d83",
+          "title": "CHAPTER XVIII. DR. SEWARD’S DIARY",
+          "word_count": 6999
+        },
+        {
+          "id": "chapter-019",
+          "order": 20,
+          "sha256": "cbb926021fc858db64b27e93710fea696dc6c8b5739a9f682a532a5250be02ac",
+          "title": "CHAPTER XIX. JONATHAN HARKER’S JOURNAL",
+          "word_count": 5730
+        },
+        {
+          "id": "chapter-020",
+          "order": 21,
+          "sha256": "649b901979d5f1670fea4b0f6c6ebc0253d50cddefd15f51db65812717da9a4b",
+          "title": "CHAPTER XX. JONATHAN HARKER’S JOURNAL",
+          "word_count": 6009
+        },
+        {
+          "id": "chapter-021",
+          "order": 22,
+          "sha256": "47d6a5956008f8691ef693209f0e5d92d46eacc8e397cc56d922605a9a2e5d1f",
+          "title": "CHAPTER XXI. DR. SEWARD’S DIARY",
+          "word_count": 6243
+        },
+        {
+          "id": "chapter-022",
+          "order": 23,
+          "sha256": "8b745a17a39efdf0dc921193b4956e9ada042f3d12fd7f13f5b72aec3d4fb82f",
+          "title": "CHAPTER XXII. JONATHAN HARKER’S JOURNAL",
+          "word_count": 5495
+        },
+        {
+          "id": "chapter-023",
+          "order": 24,
+          "sha256": "73b58b6758cc947dc30c2ecee35a96befbdc190a24c58dbd66c311056f9b860f",
+          "title": "CHAPTER XXIII. DR. SEWARD’S DIARY",
+          "word_count": 5725
+        },
+        {
+          "id": "chapter-024",
+          "order": 25,
+          "sha256": "8b285e3267b83b4fcf0f5ae3094102338ba0444fc0ba7d44bede2c27e03e1904",
+          "title": "CHAPTER XXIV. DR. SEWARD’S PHONOGRAPH DIARY, SPOKEN BY VAN HELSING",
+          "word_count": 6353
+        },
+        {
+          "id": "chapter-025",
+          "order": 26,
+          "sha256": "dc7bd93c1153f68d2dde9f3244bd4cd22bf98349b84bcb31ae10c9188348d020",
+          "title": "CHAPTER XXV. DR. SEWARD’S DIARY",
+          "word_count": 6323
+        },
+        {
+          "id": "chapter-026",
+          "order": 27,
+          "sha256": "001559f7486f9e2a9424e76d0c6b79bd4aaa2b6818e4b887e31e1f2ffa01ceb4",
+          "title": "CHAPTER XXVI. DR. SEWARD’S DIARY",
+          "word_count": 7222
+        },
+        {
+          "id": "chapter-027",
+          "order": 28,
+          "sha256": "6019f4f2e7472398196bc0b93dccc73d2b748f2971f144eb7d67454e2a73da3f",
+          "title": "CHAPTER XXVII. MINA HARKER’S JOURNAL",
+          "word_count": 7938
+        }
+      ],
+      "content_hash": "0ab0060ec9b89c62f3d33b57b08831aca532dc79aea59d9cd7f83cc0f2d1e1d0",
+      "provenance_hash": "caac3453e61b32e2f4fd44d5551589a91afedabb5a7710178f20b2a6ed85fa30",
+      "sanitized": true,
+      "source_hash": "96cd16eacdbfebae8fdda5591f66e0cc8ee76be18e0cd1aca02bc00615782d28"
+    },
+    "generated_at": "2026-10-02T13:00:00Z",
+    "manifest_sha256": "4ac3ece028c6a392dd8ce0463ce7fbcb4e84e9f393cb595c588996d81d09e228",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://theearnalism.com/assets/books/dracula/dracula-front-5596e419.webp",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "6322c3822db62956da4b1fac653e74bbbf02f79f39554bc236199605764f0cd9",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "dracula",
+    "title": "Dracula"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-dracula-reader-cover-display-reviewed",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

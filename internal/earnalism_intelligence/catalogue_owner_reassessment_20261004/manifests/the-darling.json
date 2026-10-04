@@ -1,0 +1,123 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "589a09f7205c778913599ff48d3ffdce6bd0a93034f1965a58165a9936032567",
+    "chapters/chapter-001.json": "4ae26971ea448c27776ba8f04749942cb3715ac3e65800b37742f82378fa1f95",
+    "checksum_manifest.json": "cdce14ee356c6569302af33dcb4da92cc9a98c8d6997114c0bac20604441be27",
+    "highlight_sync.json": "33ee0d3b4c4c7ca428274f680b5a64dc6e86078ada59cda9bc8b9df3d4e592d0",
+    "public_book.json": "ba59cf4a7d56d801e75d66d83318c9afb849ddda648ac6f1a5f18c4d2085ea8d",
+    "publication_authorization.json": "358eb14897e5dbb03a16f5b9340d0f20999c73f64e488cee633732a5f29c9e57",
+    "publication_manifest.json": "f85c9850a82a028fb43a4fc78b9174db82a97265a5d6fcfa12648fdb57e53450",
+    "reader_manifest.json": "5ef1849279defd80a922113d08680b7f4ddd98ff6a14bba48ffe73f20e789d3c",
+    "rights_decision.json": "8fee7fc48294a0119a8be8758a82928c04bcfdf332c078e6091b76bde23bf3b1",
+    "source_evidence.json": "9feeafead532941be169e2e309e082960a24e4ebc84b8f40d45e2433ff67e4cd"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "22944ec0e518269ee5676b6fca3c8d7a38f7a0f60083ac84a29b6d7e30714360",
+      "file_sha256": "4ae26971ea448c27776ba8f04749942cb3715ac3e65800b37742f82378fa1f95",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "589a09f7205c778913599ff48d3ffdce6bd0a93034f1965a58165a9936032567",
+    "chapters/chapter-001.json": "4ae26971ea448c27776ba8f04749942cb3715ac3e65800b37742f82378fa1f95",
+    "checksum_manifest.json": "cdce14ee356c6569302af33dcb4da92cc9a98c8d6997114c0bac20604441be27",
+    "highlight_sync.json": "33ee0d3b4c4c7ca428274f680b5a64dc6e86078ada59cda9bc8b9df3d4e592d0",
+    "public_book.json": "ba59cf4a7d56d801e75d66d83318c9afb849ddda648ac6f1a5f18c4d2085ea8d",
+    "publication_authorization.json": "358eb14897e5dbb03a16f5b9340d0f20999c73f64e488cee633732a5f29c9e57",
+    "publication_manifest.json": "f85c9850a82a028fb43a4fc78b9174db82a97265a5d6fcfa12648fdb57e53450",
+    "reader_manifest.json": "5ef1849279defd80a922113d08680b7f4ddd98ff6a14bba48ffe73f20e789d3c",
+    "rights_decision.json": "8fee7fc48294a0119a8be8758a82928c04bcfdf332c078e6091b76bde23bf3b1",
+    "source_evidence.json": "9feeafead532941be169e2e309e082960a24e4ebc84b8f40d45e2433ff67e4cd"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "589a09f7205c778913599ff48d3ffdce6bd0a93034f1965a58165a9936032567",
+      "public_book": "ba59cf4a7d56d801e75d66d83318c9afb849ddda648ac6f1a5f18c4d2085ea8d",
+      "reader_manifest": "5ef1849279defd80a922113d08680b7f4ddd98ff6a14bba48ffe73f20e789d3c",
+      "source_evidence": "9feeafead532941be169e2e309e082960a24e4ebc84b8f40d45e2433ff67e4cd"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "50f414a77089fcc9e838f35178708ea769c63179154969d166a008838e2b062b",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "4ae26971ea448c27776ba8f04749942cb3715ac3e65800b37742f82378fa1f95",
+          "title": "The Darling",
+          "word_count": 4931
+        }
+      ],
+      "content_hash": "22944ec0e518269ee5676b6fca3c8d7a38f7a0f60083ac84a29b6d7e30714360",
+      "provenance_hash": "cc7d495d3dc3ffd8072cb07cd18cae9bfcdbbd841a272ac696b4b1026e2af0f3",
+      "sanitized": true,
+      "source_hash": "518cdaabeea113109967b4c6ad0ed2f4cae23bc390bdcd4eac7a8a4519634f9b"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "11a7008fcbc4a7fd820b47581753445c1d303753ff63ec6bbd63c7fdf4053699",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "9feeafead532941be169e2e309e082960a24e4ebc84b8f40d45e2433ff67e4cd",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-darling",
+    "title": "The Darling"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-the-darling-pg13416-noncover-text",
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

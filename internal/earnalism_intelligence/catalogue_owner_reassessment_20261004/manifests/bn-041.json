@@ -1,0 +1,190 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "4410c7679adf6864efceaaa961c2d460744c6b52ff8ee09141dc2b979248be3d",
+    "chapters/chapter-001.json": "263c30d75b4fe7bebe9483d674b9822224604395692bb0d8b42ea15300f3fb45",
+    "chapters/chapter-002.json": "f35bf8e14fa4dc9aba66c49e04b21910cce504d4304e967f39e454f0d1343678",
+    "chapters/chapter-003.json": "041da159d23225f66c5d3736c83124463c87252957d54d7f62cc5898dcd04c08",
+    "chapters/chapter-004.json": "c4beee0dd87cd28382e869e27dd46c6ce936607c47e3e72373e433f1490996cb",
+    "chapters/chapter-005.json": "270a7b19c722d93b50e9d1f2071223be16ff86123f46b0b3bd19d85ad8e68ea0",
+    "chapters/chapter-006.json": "69397e9fe5dfee1a66970e92f5eb4a98516fb9a932ba35fad640437256bd01de",
+    "checksum_manifest.json": "c540b15888314a064cf13be553d91d523612d4bd048f4af64734db2ee24ec0f9",
+    "highlight_sync.json": "843629edcfbe4ce8fdb685174fa19f85b7a3689b37a244ca75d85c7d67f350b8",
+    "license_notice.json": "50a45273715ec3b49761e47ccb788ded0dced8b08c13626b30ec92b8d35f7dad",
+    "public_book.json": "dfc070c1507a8ffb6e2d318b29ae865e011c057651e7a631fc1f75e383ad96b3",
+    "publication_manifest.json": "b042c5365af699d1965dae60715c6b5c1981b644201143afde0b475a989855a2",
+    "reader_manifest.json": "88d4cdb1c9ffbcf11bd60317238eeb68149289a134d20ef2df34b300d832fbc6",
+    "source_evidence.json": "77c7b4100c4f730ede78ac64127ed31439efe87568bed5a229b99458be0e1a20"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "c3b0c1656462ef328113d0be71fa0d9af2ad7bb15c058f3a762e4b69cbd6cc81",
+      "file_sha256": "263c30d75b4fe7bebe9483d674b9822224604395692bb0d8b42ea15300f3fb45",
+      "id": "chapter-001"
+    },
+    {
+      "content_sha256": "ebddc8a7763868e3d7f1d4e8ab6a60862caf5b9b340f54a118825f29a080ea5b",
+      "file_sha256": "f35bf8e14fa4dc9aba66c49e04b21910cce504d4304e967f39e454f0d1343678",
+      "id": "chapter-002"
+    },
+    {
+      "content_sha256": "02223461713d91bd58a15031e22c8446c7f31b1ee5a8b3458a71107e9492fd8a",
+      "file_sha256": "041da159d23225f66c5d3736c83124463c87252957d54d7f62cc5898dcd04c08",
+      "id": "chapter-003"
+    },
+    {
+      "content_sha256": "3f8f99462d09c3ccb22650d7d1f578f786d5c7c6973962cd1caae22e02c0fcef",
+      "file_sha256": "c4beee0dd87cd28382e869e27dd46c6ce936607c47e3e72373e433f1490996cb",
+      "id": "chapter-004"
+    },
+    {
+      "content_sha256": "ebb8ae4a21642ac6dd318d1279e78b765a552bba820c041978b5661df3fcaa0a",
+      "file_sha256": "270a7b19c722d93b50e9d1f2071223be16ff86123f46b0b3bd19d85ad8e68ea0",
+      "id": "chapter-005"
+    },
+    {
+      "content_sha256": "06fd4bfed8b0dc59291e8d39526fccf299a601a8b3bdb039b3a7393c1403a381",
+      "file_sha256": "69397e9fe5dfee1a66970e92f5eb4a98516fb9a932ba35fad640437256bd01de",
+      "id": "chapter-006"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "4410c7679adf6864efceaaa961c2d460744c6b52ff8ee09141dc2b979248be3d",
+    "chapters/chapter-001.json": "263c30d75b4fe7bebe9483d674b9822224604395692bb0d8b42ea15300f3fb45",
+    "chapters/chapter-002.json": "f35bf8e14fa4dc9aba66c49e04b21910cce504d4304e967f39e454f0d1343678",
+    "chapters/chapter-003.json": "041da159d23225f66c5d3736c83124463c87252957d54d7f62cc5898dcd04c08",
+    "chapters/chapter-004.json": "c4beee0dd87cd28382e869e27dd46c6ce936607c47e3e72373e433f1490996cb",
+    "chapters/chapter-005.json": "270a7b19c722d93b50e9d1f2071223be16ff86123f46b0b3bd19d85ad8e68ea0",
+    "chapters/chapter-006.json": "69397e9fe5dfee1a66970e92f5eb4a98516fb9a932ba35fad640437256bd01de",
+    "checksum_manifest.json": "c540b15888314a064cf13be553d91d523612d4bd048f4af64734db2ee24ec0f9",
+    "highlight_sync.json": "843629edcfbe4ce8fdb685174fa19f85b7a3689b37a244ca75d85c7d67f350b8",
+    "license_notice.json": "50a45273715ec3b49761e47ccb788ded0dced8b08c13626b30ec92b8d35f7dad",
+    "public_book.json": "dfc070c1507a8ffb6e2d318b29ae865e011c057651e7a631fc1f75e383ad96b3",
+    "publication_manifest.json": "b042c5365af699d1965dae60715c6b5c1981b644201143afde0b475a989855a2",
+    "reader_manifest.json": "88d4cdb1c9ffbcf11bd60317238eeb68149289a134d20ef2df34b300d832fbc6",
+    "source_evidence.json": "77c7b4100c4f730ede78ac64127ed31439efe87568bed5a229b99458be0e1a20"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "4410c7679adf6864efceaaa961c2d460744c6b52ff8ee09141dc2b979248be3d",
+      "public_book": "dfc070c1507a8ffb6e2d318b29ae865e011c057651e7a631fc1f75e383ad96b3",
+      "reader_manifest": "88d4cdb1c9ffbcf11bd60317238eeb68149289a134d20ef2df34b300d832fbc6",
+      "source_evidence": "77c7b4100c4f730ede78ac64127ed31439efe87568bed5a229b99458be0e1a20"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 6,
+      "chapter_index_sha256": "f6f0938ff29a440af5fc9a1d43216e3a925416ee596c9fbf4a2b424114accc0a",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "263c30d75b4fe7bebe9483d674b9822224604395692bb0d8b42ea15300f3fb45",
+          "title": "Chapter 1. এক",
+          "word_count": 620
+        },
+        {
+          "id": "chapter-002",
+          "order": 2,
+          "sha256": "f35bf8e14fa4dc9aba66c49e04b21910cce504d4304e967f39e454f0d1343678",
+          "title": "Chapter 2. দুই",
+          "word_count": 386
+        },
+        {
+          "id": "chapter-003",
+          "order": 3,
+          "sha256": "041da159d23225f66c5d3736c83124463c87252957d54d7f62cc5898dcd04c08",
+          "title": "Chapter 3. তিন",
+          "word_count": 841
+        },
+        {
+          "id": "chapter-004",
+          "order": 4,
+          "sha256": "c4beee0dd87cd28382e869e27dd46c6ce936607c47e3e72373e433f1490996cb",
+          "title": "Chapter 4. চার",
+          "word_count": 437
+        },
+        {
+          "id": "chapter-005",
+          "order": 5,
+          "sha256": "270a7b19c722d93b50e9d1f2071223be16ff86123f46b0b3bd19d85ad8e68ea0",
+          "title": "Chapter 5. পাঁচ",
+          "word_count": 1608
+        },
+        {
+          "id": "chapter-006",
+          "order": 6,
+          "sha256": "69397e9fe5dfee1a66970e92f5eb4a98516fb9a932ba35fad640437256bd01de",
+          "title": "Chapter 6. ছয়",
+          "word_count": 1082
+        }
+      ],
+      "content_hash": "45f66af7c4420dc81e5fdb8f66337383b4d6e1ccc6ddc32aa17ac555d8e0ba88",
+      "provenance_hash": "df2e91922dcc4b741c41292472840b833f6ef0d9b3d8fea9ecc7d70e85bca31e",
+      "sanitized": true,
+      "source_hash": "c7639924d0638986453e3ab15aa949220b38a0ae1edc1619d44370d733e046d7"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "aed08f5bbe4bd7ff3e4861e704746341f0f2fb70f4e012054a2695096e760db0",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Rights: original_publication_year is required.",
+        "Rights: verification_status must be approved before publishing."
+      ],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783270649/earnalism/covers/front/bn-041_front_1600x2400.png",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "77c7b4100c4f730ede78ac64127ed31439efe87568bed5a229b99458be0e1a20",
+      "publication_region": "global",
+      "status": "QUARANTINE",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "bn-041",
+    "title": "আঁধারে আলো"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

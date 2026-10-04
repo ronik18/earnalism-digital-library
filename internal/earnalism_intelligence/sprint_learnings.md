@@ -2612,3 +2612,6 @@ Do not infer confirmed404 or campaign exhaustion from missing explicit rewrites:
 - 2026-10-02 #477: after full regression passes, browser journey fixtures must match exact approved26/Bengali scope while preserving independent held/audio cases. Evidence executive snapshot counts must derive from hash-bound actual report/manifest, never historical fixed142. Two source reviews and39tests pass; production unobserved.
 
 - 2026-10-02 #477: metadataReader200 is not canonicalReader readiness. Each exactnewapprovedtitle requires existing audited absent-pointer initialization plan or observed existingvalidversion. Extend exactplanbindings, test actualhandlers/allhistoryholds, strengthen observedversion canary; neverrewriteexistingpointer orinferproductionfrom isolated276/9page computations. Next3deliveryderivatives now two-reviewed/inactive.
+
+## Owner catalogue attestation — 2026-10-04T10:41:28.967535+00:00
+Owner artwork provenance removes a third-party artwork permission question, not file, edition, display or text-rights gates. Bharat fetched front subtitle is intact; historical URL aliases are not edition authority. Five Bengali candidates have display defects. No new title was activated. See internal/legal/catalogue_owner_attestation_20261004.

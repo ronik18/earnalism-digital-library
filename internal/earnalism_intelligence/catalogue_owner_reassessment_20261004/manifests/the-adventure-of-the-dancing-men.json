@@ -1,0 +1,123 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "a9be5c83b492e8c1bb4045c12803d9737b0938d442c2a7a51f45fcb22c5c7593",
+    "chapters/chapter-001.json": "5b7574b2e714da6389e3c62bdd4c008be8f74bf415260a390466da26c7c8a01c",
+    "checksum_manifest.json": "064a14d868d957d1538e4d0c94630aa5539f570522624110976e4b7786c7a146",
+    "highlight_sync.json": "3731e93cb3a78e8a49a52d08b10b96e970b0c67df12e21ab5dfda88989cb6bc9",
+    "public_book.json": "e99801513354fc1a7b694f7d88ba60d3ef59ea540fc946d093e448232613ce05",
+    "publication_authorization.json": "09c79821b9cc4a4d76609ad0b389b3d70450cc24d7ce31deb233d2474982a7df",
+    "publication_manifest.json": "e688095bba5dcea9cabc371468b27b20bf3121e52f7ea6dd131e5825098db0bb",
+    "reader_manifest.json": "6098017128f3731f6de658aca414ccfdfde59def471407c10816e6a2cbe37179",
+    "rights_decision.json": "5dbb30a77ceb425302880926ffdb6544ecf55e8298c4b1ac88eab9d5ee5e5f1e",
+    "source_evidence.json": "5d07c7970ebcf39c820ce96df969a1721b4c076ef1b9c860e597c432a4e71420"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "d07a8a9586d4ff3f724556ae02eb4075eb6a4da0d316295ab6db531d173a5dec",
+      "file_sha256": "5b7574b2e714da6389e3c62bdd4c008be8f74bf415260a390466da26c7c8a01c",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "a9be5c83b492e8c1bb4045c12803d9737b0938d442c2a7a51f45fcb22c5c7593",
+    "chapters/chapter-001.json": "5b7574b2e714da6389e3c62bdd4c008be8f74bf415260a390466da26c7c8a01c",
+    "checksum_manifest.json": "064a14d868d957d1538e4d0c94630aa5539f570522624110976e4b7786c7a146",
+    "highlight_sync.json": "3731e93cb3a78e8a49a52d08b10b96e970b0c67df12e21ab5dfda88989cb6bc9",
+    "public_book.json": "e99801513354fc1a7b694f7d88ba60d3ef59ea540fc946d093e448232613ce05",
+    "publication_authorization.json": "09c79821b9cc4a4d76609ad0b389b3d70450cc24d7ce31deb233d2474982a7df",
+    "publication_manifest.json": "e688095bba5dcea9cabc371468b27b20bf3121e52f7ea6dd131e5825098db0bb",
+    "reader_manifest.json": "6098017128f3731f6de658aca414ccfdfde59def471407c10816e6a2cbe37179",
+    "rights_decision.json": "5dbb30a77ceb425302880926ffdb6544ecf55e8298c4b1ac88eab9d5ee5e5f1e",
+    "source_evidence.json": "5d07c7970ebcf39c820ce96df969a1721b4c076ef1b9c860e597c432a4e71420"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "a9be5c83b492e8c1bb4045c12803d9737b0938d442c2a7a51f45fcb22c5c7593",
+      "public_book": "e99801513354fc1a7b694f7d88ba60d3ef59ea540fc946d093e448232613ce05",
+      "reader_manifest": "6098017128f3731f6de658aca414ccfdfde59def471407c10816e6a2cbe37179",
+      "source_evidence": "5d07c7970ebcf39c820ce96df969a1721b4c076ef1b9c860e597c432a4e71420"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "5103e371d07204387cb3bae928e71e2f1f5a7beca62e0f0909f42fd5bd573d8f",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "5b7574b2e714da6389e3c62bdd4c008be8f74bf415260a390466da26c7c8a01c",
+          "title": "The Adventure of the Dancing Men",
+          "word_count": 9716
+        }
+      ],
+      "content_hash": "d07a8a9586d4ff3f724556ae02eb4075eb6a4da0d316295ab6db531d173a5dec",
+      "provenance_hash": "0fcc5dead13ae8b13a44b92ed82bcaad02322ccc82d17ff8b4b2c6d449a4f806",
+      "sanitized": true,
+      "source_hash": "8c4de14b3a1952417eca4673fcb1b8aa8f946f8a4164f10ec761368af34d5e5a"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "0bd9e467596d6376579b1b0c24f22c9aad7cb1b98e1152e26a28d317ae0643ea",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "5d07c7970ebcf39c820ce96df969a1721b4c076ef1b9c860e597c432a4e71420",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-adventure-of-the-dancing-men",
+    "title": "The Adventure of the Dancing Men"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-the-adventure-of-the-dancing-men-pg108-noncover-text",
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

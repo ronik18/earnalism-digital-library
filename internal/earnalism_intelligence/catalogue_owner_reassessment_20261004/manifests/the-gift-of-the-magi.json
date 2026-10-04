@@ -1,0 +1,108 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "aa03e25260930245f1c66f3ab1afc8ffbd336ff9763b974a804b3ba4b9c25954",
+    "chapters/chapter-001.json": "05217284ea31cdaa6638e8404a394b80c230b2edf02ce9dfc392133c22e9c7ab",
+    "checksum_manifest.json": "a64af01129b9abef6bdd3a99785c4143d9535b2a66c338ff4d1980a8d708b73f",
+    "cover_approval_evidence.json": "5957504ea700c0f7ddc8a748bbaf2b3b9401881fbad35f0768a1dab810f7338e",
+    "public_book.json": "d4ef1b87c1f852fc0d2212471e1e2f2095b80dc09791e113912f8dbc61586dfc",
+    "publication_manifest.json": "62d336265746f1e47879a0e13c64ca725b83c463b5ac2dd06213f0358d2a8a24",
+    "reader_manifest.json": "6b0df1f29ed5d28cccf725d3a703a564e52b412a61f7e506fae21289e89dba2f",
+    "rights_decision.json": "79d2ab1c7767bc31529dfc9354b07572f361796bf89bd7e8f72e7f87d3888f17",
+    "source_evidence.json": "b6f7994b76f0a968d7394f6b346ace096cefa32bbe734792332b2995b636d4a3"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "be7f050f1affc65144172ae7157ad10ab8a8ee698e196623ff072fe410f4ec5e",
+      "file_sha256": "05217284ea31cdaa6638e8404a394b80c230b2edf02ce9dfc392133c22e9c7ab",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "2b45676023ad042e40acbd40e7d80d7482f1b04c5e6e185c18756154c46968cc",
+    "approval_evidence.json": "aa03e25260930245f1c66f3ab1afc8ffbd336ff9763b974a804b3ba4b9c25954",
+    "chapters/chapter-001.json": "05217284ea31cdaa6638e8404a394b80c230b2edf02ce9dfc392133c22e9c7ab",
+    "checksum_manifest.json": "dcf6164f01cbda522b44e834a36468d365ad31ddd8a6a942aad5b3be6eef3954",
+    "cover_approval_evidence.json": "5957504ea700c0f7ddc8a748bbaf2b3b9401881fbad35f0768a1dab810f7338e",
+    "highlight_sync.json": "ce2bc8d93a400318f11a09c1a0ce7bc63b6c8f94cf6e11cfcf0ddef172ea17b9",
+    "public_book.json": "d4ef1b87c1f852fc0d2212471e1e2f2095b80dc09791e113912f8dbc61586dfc",
+    "publication_manifest.json": "62d336265746f1e47879a0e13c64ca725b83c463b5ac2dd06213f0358d2a8a24",
+    "reader_manifest.json": "6b0df1f29ed5d28cccf725d3a703a564e52b412a61f7e506fae21289e89dba2f",
+    "rights_decision.json": "4f042f3ba57dde976195c47cbf8010265ba48a9b717d33b823b0669860c8125a",
+    "source_evidence.json": "b6f7994b76f0a968d7394f6b346ace096cefa32bbe734792332b2995b636d4a3"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "aa03e25260930245f1c66f3ab1afc8ffbd336ff9763b974a804b3ba4b9c25954",
+      "public_book": "d4ef1b87c1f852fc0d2212471e1e2f2095b80dc09791e113912f8dbc61586dfc",
+      "reader_manifest": "6b0df1f29ed5d28cccf725d3a703a564e52b412a61f7e506fae21289e89dba2f",
+      "source_evidence": "b6f7994b76f0a968d7394f6b346ace096cefa32bbe734792332b2995b636d4a3"
+    },
+    "audio_release": {
+      "exposed": false,
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "525d2f6ed5d27c1b725901d34efc44acaa9be5b264df5d45e2e0d2013ca72413",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "05217284ea31cdaa6638e8404a394b80c230b2edf02ce9dfc392133c22e9c7ab",
+          "title": "The Gift of the Magi",
+          "word_count": 2109
+        }
+      ],
+      "content_hash": "43f7c14de6be56f642476b78fd227fb0005d43909fc27e477646ec99b0900fcd",
+      "provenance_hash": "8067e36d911e2bf1f9a00a711a899f9df5879de2a84a1bc6623aa4895364ad15",
+      "sanitized": true,
+      "source_hash": "490b76d444db0d952f5286f60c4ec2834ab91731d47e42dc94a3639d9183d295"
+    },
+    "generated_at": "2026-09-25T00:00:00Z",
+    "manifest_sha256": "849052c8f796d4fd53e850ede42dff5e0b28d2f744a6af840e0aa64cd14b1021",
+    "reader_release": {
+      "blockers": [],
+      "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1785420596/earnalism/covers/front/cover_candidate_controlled-the-gift-of-the-magi-76e8a85ce0013802176ea0150f56af36121c1a60b9724e4fc8b9f8464515efbe.jpg",
+      "exposed": true,
+      "qa_status": "QA_PASSED",
+      "status": "APPROVED"
+    },
+    "rights": {
+      "evidence_sha256": "b6f7994b76f0a968d7394f6b346ace096cefa32bbe734792332b2995b636d4a3",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-gift-of-the-magi",
+    "title": "The Gift of the Magi"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20260925-the-gift-of-the-magi-commercial-reader-release",
+    "offline_india_text_scope_passed": true,
+    "production_request_verified": false,
+    "registry_bound": true,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_chapter": {
+        "passed": true,
+        "reasons": []
+      },
+      "reader_manifest": {
+        "passed": true,
+        "reasons": []
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

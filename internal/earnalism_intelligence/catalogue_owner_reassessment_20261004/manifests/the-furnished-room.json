@@ -1,0 +1,123 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "803d3d89fb84da2deef8f13c74c63e4f5a1ee942b483f4ca66a380740216e2ca",
+    "chapters/chapter-001.json": "2240e696fdaafb2432241597b87dd397d4240cbd5c6e8480bb6a56639eb5e730",
+    "checksum_manifest.json": "9ab1c22052d33e085745231b730938ddd1e46c98874dea8d57ad98f0ba49f2c8",
+    "highlight_sync.json": "907ae8423bbc6cca6918f9f8346b8b6f6f6f47fb170e12a2e0a1d626eca6f19a",
+    "public_book.json": "9372e6eb392bdf832270ca6dbb47cfe9227128b0738fb892a339722b32e6667d",
+    "publication_authorization.json": "a5903bcaec2860039fc9f9b6fca445ca87337584e9bba5ca1196185ebf5ac957",
+    "publication_manifest.json": "53e8b0e715671052bce3c0ea6cc5d46719bde77f94b4455c7a6eb9c965837f00",
+    "reader_manifest.json": "8b8fdef98d50d1511e2c4b636064c39a934c2872b44ddb9e89b2e4af9896dee1",
+    "rights_decision.json": "12c4cce6e2f2ac97269d3ae6aade99cb76c7057a69dc9eb793e762be5a66c517",
+    "source_evidence.json": "7c5dbe4f77cb2ccc194e5539eb5146c7c45135f974835ef7f1c72d7697f88444"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "0321583d3c06c815889a095d7fb18b751f4b3d35b6b79e17ad46c4a18d72a11e",
+      "file_sha256": "2240e696fdaafb2432241597b87dd397d4240cbd5c6e8480bb6a56639eb5e730",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "803d3d89fb84da2deef8f13c74c63e4f5a1ee942b483f4ca66a380740216e2ca",
+    "chapters/chapter-001.json": "2240e696fdaafb2432241597b87dd397d4240cbd5c6e8480bb6a56639eb5e730",
+    "checksum_manifest.json": "9ab1c22052d33e085745231b730938ddd1e46c98874dea8d57ad98f0ba49f2c8",
+    "highlight_sync.json": "907ae8423bbc6cca6918f9f8346b8b6f6f6f47fb170e12a2e0a1d626eca6f19a",
+    "public_book.json": "9372e6eb392bdf832270ca6dbb47cfe9227128b0738fb892a339722b32e6667d",
+    "publication_authorization.json": "a5903bcaec2860039fc9f9b6fca445ca87337584e9bba5ca1196185ebf5ac957",
+    "publication_manifest.json": "53e8b0e715671052bce3c0ea6cc5d46719bde77f94b4455c7a6eb9c965837f00",
+    "reader_manifest.json": "8b8fdef98d50d1511e2c4b636064c39a934c2872b44ddb9e89b2e4af9896dee1",
+    "rights_decision.json": "12c4cce6e2f2ac97269d3ae6aade99cb76c7057a69dc9eb793e762be5a66c517",
+    "source_evidence.json": "7c5dbe4f77cb2ccc194e5539eb5146c7c45135f974835ef7f1c72d7697f88444"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "803d3d89fb84da2deef8f13c74c63e4f5a1ee942b483f4ca66a380740216e2ca",
+      "public_book": "9372e6eb392bdf832270ca6dbb47cfe9227128b0738fb892a339722b32e6667d",
+      "reader_manifest": "8b8fdef98d50d1511e2c4b636064c39a934c2872b44ddb9e89b2e4af9896dee1",
+      "source_evidence": "7c5dbe4f77cb2ccc194e5539eb5146c7c45135f974835ef7f1c72d7697f88444"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "4e2110b4d7016ad948c5e449080b069787245c71ba67a6b6387ac14f986e4504",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "2240e696fdaafb2432241597b87dd397d4240cbd5c6e8480bb6a56639eb5e730",
+          "title": "The Furnished Room",
+          "word_count": 2490
+        }
+      ],
+      "content_hash": "0321583d3c06c815889a095d7fb18b751f4b3d35b6b79e17ad46c4a18d72a11e",
+      "provenance_hash": "8b0dfe28e43d81d5c0fa6158e6195bc68448f1ff0a9958baefb2e0b4cefdbafa",
+      "sanitized": true,
+      "source_hash": "6bb719852f2f0eb33db25613124d2d3c522dd3b879c187667ab31072bb2fb48d"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "d6b4c36582f41141b66e98e923afe8177c18baea0a0fe10f64abee6b69602f78",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "7c5dbe4f77cb2ccc194e5539eb5146c7c45135f974835ef7f1c72d7697f88444",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-furnished-room",
+    "title": "The Furnished Room"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-the-furnished-room-pg2776-noncover-text",
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

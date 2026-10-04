@@ -1,0 +1,123 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "ebe54be1e4a0f772217db6bc4a73ac64438e09edb52aebf289c6aa6f059b90d7",
+    "chapters/chapter-001.json": "896e6b53dc1f117800a83f8880e81efd08316a45d01a652742c3b8fc90e77fa2",
+    "checksum_manifest.json": "0939ef6da32c99487f893730019accd2b7861e6e72a22878c186759b41cbb40f",
+    "highlight_sync.json": "28b864b388db4f266a46147d93087f43f703d8b4528ce003678bb1b7a653b8c7",
+    "public_book.json": "0dd92e37fbfdfa8de30399cefe6a3ce26218835e6c05f321970ae0789c93399c",
+    "publication_authorization.json": "c181ba405dd630ba5daf91f2ce1aab70104b4589ea75302f33be9ae4e453879d",
+    "publication_manifest.json": "faf370067b9e4dd91be5708a6df99e78cac50762814a5ca3b6e121fc63dd8ddd",
+    "reader_manifest.json": "0e726b59feff51c9c14a7c44ee54bfbfdf914ccd8bfd23c9857c5b086476c11a",
+    "rights_decision.json": "73ab30296891d0a21bfef17069d458c699831020b9478e8f4999ea430a341f93",
+    "source_evidence.json": "3e9d0284925415a32fdb7cfc8bc7d8864f896aeee4f89233141f6cb2a1802651"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "ba7046e7f129168c08c7e5cd22062185183badee2cc894daf81c1ea405927934",
+      "file_sha256": "896e6b53dc1f117800a83f8880e81efd08316a45d01a652742c3b8fc90e77fa2",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence.json": "ebe54be1e4a0f772217db6bc4a73ac64438e09edb52aebf289c6aa6f059b90d7",
+    "chapters/chapter-001.json": "896e6b53dc1f117800a83f8880e81efd08316a45d01a652742c3b8fc90e77fa2",
+    "checksum_manifest.json": "0939ef6da32c99487f893730019accd2b7861e6e72a22878c186759b41cbb40f",
+    "highlight_sync.json": "28b864b388db4f266a46147d93087f43f703d8b4528ce003678bb1b7a653b8c7",
+    "public_book.json": "0dd92e37fbfdfa8de30399cefe6a3ce26218835e6c05f321970ae0789c93399c",
+    "publication_authorization.json": "c181ba405dd630ba5daf91f2ce1aab70104b4589ea75302f33be9ae4e453879d",
+    "publication_manifest.json": "faf370067b9e4dd91be5708a6df99e78cac50762814a5ca3b6e121fc63dd8ddd",
+    "reader_manifest.json": "0e726b59feff51c9c14a7c44ee54bfbfdf914ccd8bfd23c9857c5b086476c11a",
+    "rights_decision.json": "73ab30296891d0a21bfef17069d458c699831020b9478e8f4999ea430a341f93",
+    "source_evidence.json": "3e9d0284925415a32fdb7cfc8bc7d8864f896aeee4f89233141f6cb2a1802651"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "ebe54be1e4a0f772217db6bc4a73ac64438e09edb52aebf289c6aa6f059b90d7",
+      "public_book": "0dd92e37fbfdfa8de30399cefe6a3ce26218835e6c05f321970ae0789c93399c",
+      "reader_manifest": "0e726b59feff51c9c14a7c44ee54bfbfdf914ccd8bfd23c9857c5b086476c11a",
+      "source_evidence": "3e9d0284925415a32fdb7cfc8bc7d8864f896aeee4f89233141f6cb2a1802651"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "4f7fcd0104b68c20760a233834b555df13c009bc89657ef7530285b5c296788c",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "896e6b53dc1f117800a83f8880e81efd08316a45d01a652742c3b8fc90e77fa2",
+          "title": "The Celebrated Jumping Frog of Calaveras County",
+          "word_count": 2713
+        }
+      ],
+      "content_hash": "ba7046e7f129168c08c7e5cd22062185183badee2cc894daf81c1ea405927934",
+      "provenance_hash": "2e9d41b20babffe151d857da04292a7b7d871f9de9a9558fc866f4f92de37aae",
+      "sanitized": true,
+      "source_hash": "312ae97f2616ba41d9f6d4bfc87aa3218f3b867941194d139297099b423d512e"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "81dec7ae1c41aa4e8e4cd2601c657f673a013d4b5b4096602bf5b0f4664eb41b",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "DECISION_NOT_TRUSTED_OR_CHANGED",
+        "Front cover is required.",
+        "USE_NOT_AUTHORIZED"
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "3e9d0284925415a32fdb7cfc8bc7d8864f896aeee4f89233141f6cb2a1802651",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+    "title": "The Celebrated Jumping Frog of Calaveras County"
+  },
+  "rights_assessment": {
+    "decision_id": "india-20261002-the-celebrated-jumping-frog-of-calaveras-county-pg10947-noncover-text",
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED",
+          "USE_NOT_AUTHORIZED"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "DECISION_NOT_TRUSTED_OR_CHANGED"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

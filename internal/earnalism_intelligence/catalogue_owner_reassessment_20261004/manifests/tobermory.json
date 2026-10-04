@@ -1,0 +1,119 @@
+{
+  "active_files_sha256": {
+    "approval_evidence.json": "f786548cc90242e76f12ac16f5fa953befed0f93f788fcfa5001fbff2b6e5ae1",
+    "chapters/chapter-001.json": "b00117523393fc5ac87acca8e57e34c88cfd56a99282d4a668234867c771a0cf",
+    "checksum_manifest.json": "47d12d7fcf9495d9e19ec9aeff238654df940bb6f9950e46df8746fd5795c0b1",
+    "highlight_sync.json": "5cda10850eb97aa869714bb340e72760dfcd05cd8626acf449e08fc344c7294f",
+    "public_book.json": "b940af4b316505d236c4af567932d3afa8a2fe3f8b24744b23d4bd7c24f7afae",
+    "reader_manifest.json": "d93e440deb3c2c140845c4bde39f66b2ecd27ece7ab929572a413f90b1623d94",
+    "source_evidence.json": "dcf59588ae20ba6ec5d89616fbf5ecc111d3bfab5d7eaef6b94dc23aff1b9948"
+  },
+  "chapter_content_hashes": [
+    {
+      "content_sha256": "706a32b3527cc1bad6e20882b0b4ebc896491b53fa4bccefdfdb5d75c8ad56bf",
+      "file_sha256": "bc788cf3827988218b6274834380854257319b2a989ab149f46392fe2a32c6b4",
+      "id": "chapter-001"
+    }
+  ],
+  "input_files_sha256": {
+    "approval_evidence 2.json": "f786548cc90242e76f12ac16f5fa953befed0f93f788fcfa5001fbff2b6e5ae1",
+    "approval_evidence.json": "ab26b41c70fec5803e45b560917c2ba9e08c91a0632fc58f1d89f80f51898ef9",
+    "chapters/chapter-001.json": "bc788cf3827988218b6274834380854257319b2a989ab149f46392fe2a32c6b4",
+    "checksum_manifest.json": "bd99a122767073744be9361cd2386c0dc148c7aa5631b41347bc5bf847f82d9d",
+    "highlight_sync.json": "5cda10850eb97aa869714bb340e72760dfcd05cd8626acf449e08fc344c7294f",
+    "public_book.json": "fbbf8cdcc3af43b8e952c1514b705ceee06f607adb3f8eb195bbf967c44fc84f",
+    "publication_authorization.json": "29ca1c6386463b8b3051b5201080a86b9e055350c339360f18ac16e6c6c17474",
+    "publication_manifest.json": "485ebfd905dfede4a8b647d50a1593dc0840022ef0e8d7e81a7148b886864c24",
+    "reader_manifest.json": "d93e440deb3c2c140845c4bde39f66b2ecd27ece7ab929572a413f90b1623d94",
+    "rights_decision.json": "53bcf048ebcbe8ebea211531a33ee37797b538631062722b653c01b79d43a9b1",
+    "source_evidence.json": "10c393797321da3dab2bf35625f7eae932cef495c47e51afc3113b4b1e6544bd"
+  },
+  "publication_authority": false,
+  "publication_manifest": {
+    "artifacts": {
+      "approval_evidence": "ab26b41c70fec5803e45b560917c2ba9e08c91a0632fc58f1d89f80f51898ef9",
+      "public_book": "fbbf8cdcc3af43b8e952c1514b705ceee06f607adb3f8eb195bbf967c44fc84f",
+      "reader_manifest": "d93e440deb3c2c140845c4bde39f66b2ecd27ece7ab929572a413f90b1623d94",
+      "source_evidence": "10c393797321da3dab2bf35625f7eae932cef495c47e51afc3113b4b1e6544bd"
+    },
+    "audio_release": {
+      "audio_sha256": "",
+      "candidate_fingerprint": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "commerce_release": {
+      "required_for_reader_release": false,
+      "status": "NOT_REQUESTED"
+    },
+    "content": {
+      "chapter_count": 1,
+      "chapter_index_sha256": "282ee844813dc8a5dd4eb785d793274d1b787417b30e300a7eb89dff56d121de",
+      "chapters": [
+        {
+          "id": "chapter-001",
+          "order": 1,
+          "sha256": "bc788cf3827988218b6274834380854257319b2a989ab149f46392fe2a32c6b4",
+          "title": "Tobermory",
+          "word_count": 2723
+        }
+      ],
+      "content_hash": "706a32b3527cc1bad6e20882b0b4ebc896491b53fa4bccefdfdb5d75c8ad56bf",
+      "provenance_hash": "510245507677ab08247655832f626a91de571aebf3daa728e3b140333a319bbe",
+      "sanitized": true,
+      "source_hash": "fdcfd2a238a8667549492119a94715d0f64bacc46812252ea2b116deca1bf50a"
+    },
+    "generated_at": "2026-10-04T10:41:28.967535+00:00",
+    "manifest_sha256": "cda0e10fc3e85c637ba27babbd0bdd260a72b2c4b7a0dfe6b0be45aff1d0f112",
+    "reader_release": {
+      "blockers": [
+        "ACCEPTED_DECISION_MISSING",
+        "ACCEPTED_HASH_BOUND_TEXT_USE_DECISION_REQUIRED",
+        "Front cover is required."
+      ],
+      "cover_url": "",
+      "exposed": false,
+      "qa_status": "QA_PASSED",
+      "status": "BLOCKED"
+    },
+    "rights": {
+      "evidence_sha256": "10c393797321da3dab2bf35625f7eae932cef495c47e51afc3113b4b1e6544bd",
+      "publication_region": "india",
+      "status": "APPROVED",
+      "tier": "A"
+    },
+    "schema_name": "earnalism-publication-manifest",
+    "schema_version": 1,
+    "slug": "tobermory",
+    "title": "Tobermory"
+  },
+  "rights_assessment": {
+    "decision_id": null,
+    "offline_india_text_scope_passed": false,
+    "production_request_verified": false,
+    "registry_bound": false,
+    "runtime_actions": {
+      "catalog_cta": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_chapter": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      },
+      "reader_manifest": {
+        "passed": false,
+        "reasons": [
+          "ACCEPTED_DECISION_MISSING"
+        ]
+      }
+    }
+  },
+  "schema": "earnalism.private-catalogue-processing.v1"
+}

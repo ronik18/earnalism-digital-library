@@ -1,0 +1,66 @@
+{
+  "schema": "earnalism.exact-cover-provenance.v1",
+  "slug": "bharat-at-the-crossroads",
+  "edition_id": "bharat-at-the-crossroads",
+  "status": "HELD_LOCAL_COMPONENT_PREPARATION_ONLY",
+  "recorded_at": "2026-10-04T10:41:28.967535+00:00",
+  "owner_design_fact": {
+    "path": "internal/legal/catalogue_owner_attestation_20261004/owner_attestation.json",
+    "sha256": "ea4af7be2a209acd2ba1d72062260f2a7ece4f33ff1546a9e6eecd2187f4ab37"
+  },
+  "edition_binding": {
+    "package": "data/controlled_publications/bharat-at-the-crossroads",
+    "input_files_sha256": {
+      "approval_evidence.json": "f60fcd08294e604c01e078a9473272ac1c1fc6f6eab674517b205e463e6a3fe1",
+      "chapters/chapter-001.json": "fdfa8aee8c648f05ff1165e03d42c44c46324ad1e531e2c29790a6c02c700f02",
+      "checksum_manifest.json": "e4e52b57267d3dc2034809fa4b11239e46c4d6c9453f1ce50ed2cc8726719967",
+      "highlight_sync.json": "800de1dc55c5fa17b5d3810f91650935f235bc65891f2f85acf4731e0c5fa0ab",
+      "public_book.json": "d43368bb6648c531f45cfeaa3eb1a10629ecb79cfab2ed9cb40978e4fa8c60f2",
+      "publication_authorization.json": "43d6f299ebff85e3947b2b8c9d15ab51d75c57bf49035c5e0c7ac67664b370be",
+      "publication_manifest.json": "b46670c54290cf58722bf7451ad1f1f1cc7387106ef53d8ce0aceef0a90a9108",
+      "reader_manifest.json": "16cd445544a45504dccb84344290caaf2ee7db3146ee7127637ddd1cd6ff3db6",
+      "rights_decision.json": "376cd19977f3c577b912d469f8381e4a3e588381a9f040a38dfd21d5c7fb4867",
+      "source_evidence.json": "52c92e6c6325c608bceec71928da428ac67be2b9d17c2c01ffc93c311fdd8e36"
+    },
+    "chapter_hashes": [
+      {
+        "id": "chapter-001",
+        "file_sha256": "fdfa8aee8c648f05ff1165e03d42c44c46324ad1e531e2c29790a6c02c700f02",
+        "content_sha256": "0d68074696a632c0f23dfa2eb407d0ba0355997e7e855621ff10d5f97534b7d7"
+      }
+    ],
+    "package_issues": []
+  },
+  "original_assets_preserved": {
+    "front": {
+      "path": "internal/legal/catalogue_owner_attestation_20261004/assets/bharat-at-the-crossroads/front.png",
+      "sha256": "2a517ab7b0f1c4d05b44c037fcb6063903b59f03632e2829699dee57dfacfcb0",
+      "width": 1054,
+      "height": 1492,
+      "format": "PNG",
+      "edition_association": "Title and author visually inspected; historical URL alias collision recorded, not reused as authority"
+    },
+    "back": {
+      "path": "internal/legal/catalogue_owner_attestation_20261004/assets/bharat-at-the-crossroads/back.png",
+      "sha256": "ffd089b16f31ad5145ae98e5c712667b921d71d00901a4a168fb8c2811acf3c7",
+      "width": 1054,
+      "height": 1492,
+      "format": "PNG",
+      "edition_association": "Title and author visually inspected; historical URL alias collision recorded, not reused as authority"
+    }
+  },
+  "front_subtitle": "Fully visible in fetched original bytes; prior clipped-subtitle observation not reproduced in asset itself. Runtime object-fit/crop remains to be checked on staged bound asset.",
+  "display_review": "Original front/back viewed with view_image; front title/subtitle/author readable; back endorsement factual evidence not present in owner directive.",
+  "remaining_blockers": [
+    "BACK_COVER_ENDORSEMENT_AND_ISBN_FACTUAL_EVIDENCE_REQUIRED",
+    "COMPLETE_EDITION_SOURCE_COMPARISON_REQUIRED",
+    "EXACT_COVER_DISPLAY_GRANT_AND_RUNTIME_REGISTRATION_REQUIRED",
+    "TEXT_ONLY_PACKAGE_METADATA_RECONCILIATION_REQUIRED",
+    "INDIA_PREVIEW_READER_AND_ENTITLEMENT_CANARY_REQUIRED"
+  ],
+  "runtime_release_authorized": false,
+  "publication_activation_authorized": false,
+  "audio_authorized": false,
+  "locally_release_ready": false,
+  "operator": "Codex under owner factual attestation; no fabricated human approval"
+}
