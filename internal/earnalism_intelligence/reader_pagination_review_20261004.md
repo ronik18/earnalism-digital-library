@@ -64,3 +64,49 @@ PR516 exact head940f88b82c3af46bf1744f2d476e7098156754c1 passed all nine non-dep
 Formatting-only top-level whitespace now remains raw whitespace instead of becoming artificial paragraphs. Whitespace-only candidate pages join neighboring fragments without removing source characters. Heading lookahead skips formatting nodes. Two new invariant tests cover preserved offsets and whitespace-only sources. Final landscape traversal waits for the selected DOM visual index, then reads text/offset/geometry atomically:581 pages,40,822 characters, zero blank pages, exact reconstruction, all pages fit. An earlier unsynchronized traversal failed and remains retained.
 
 Pre-refresh validation: targeted6/93, full99/636, build/SEO172/3647, diff check pass. Full-chapter runtime map and native zoom acceptance remain unfinished. Native AX inventory became readable, but keyboard setup did not create a tab and native screenshot returned unavailable; this does not establish usable native zoom automation.
+
+
+## Authorization-aware chapter map follow-up (supersedes prior architecture hold)
+
+Status: BLOCKED — NATIVE ZOOM VERIFICATION. No push, PR, merge, deployment or production mutation. Fresh origin/main remains c33faa0b52134d74a174e4cd1f424fccd87a0b56; open PR list is empty. Canonical integration and dirty regular checkout are untouched. Owner expressly requested continuing this isolated Reader branch.
+
+### Actual backend contract and authorization
+The existing public manifest supplies ordered canonical_pages metadata with immutable page IDs, chapter IDs, SHA-256 and content revision; no protected text. Existing GET /api/reading-pass/books/:slug/pages/:index remains the ONLY content path. Preview is at most three transport units. Each protected unit independently requires current server-side lease, publication, territory and entitlement checks. There is no partial-window lease API in the current repository: any denied unit fails the entire selected window closed rather than filling a gap or inferring permission. No backend authorization or business rule changed.
+
+New authorizedChapter.js separates source chapter, authorized window and visual fragments. It validates contiguous canonical manifest ordering, duplicates, chapter/title, exact body SHA-256, publication and segmentation versions. Three bounded concurrent requests assemble only the selected authorized units in exact order, with cancellation and a 32MiB in-memory string budget. Canonical HTML segmentation preserves complete semantic blocks and repeats no transport furniture; concatenation inserts no separators and removes no source text heuristically. Network failures use existing recoverable Reader UI; no uncontrolled retry added.
+
+One chapter-window revision/offset domain drives visual selector, arrows and layout cache. Chunk-local hash-bound p/a/r URLs and notebook anchors map to absolute window offsets and back. Server progress remains canonical chunk based; precise intra-chunk position remains in URL/notebook, not newly added to backend resume storage. A protected fragment can straddle preview/protected units: billing activity now follows actual visible protected source intervals, not merely its starting chunk. Public-only fragments send inactive activity to existing server heartbeat. Pause, expiry, revocation, identity change, denied content and version mismatch remove/discard protected maps. Existing authorization still determines the enforcement point; the client grants nothing.
+
+### Final measured fixed-height proof
+Actual Chrome CSS viewport sizes; integer override rounding makes 1280 targets1281/1279. Existing native localhost zoom67% is NOT native100/125/150 verification. Required fonts and styles are loaded for this final table; no central overflow, no horizontal overflow, document height equals viewport height.
+
+| Actual CSS viewport | clientHeight | scrollHeight | Overflow | Visual pages | Pagination ms |
+|---|---:|---:|---|---:|---:|
+| 1440×900 | 472 | 472 | NO | 83 | 271.7 |
+| 1281×720 | 296 | 296 | NO | 156 | 554.5 |
+| 1024×768 | 393 | 393 | NO | 103 | 382.0 |
+| 768×1024 | 630 | 630 | NO | 83 | 335.2 |
+| 390×844 | 248 | 248 | NO | 257 | 772.9 |
+| 844×390 | 86 | 86 | NO | 635 | 2304.3 |
+| 1281×600 | 176 | 176 | NO | 282 | 993.3 |
+
+All maps above assemble13 authorized transport units. Stable footer copy/line height prevents transport p changes from altering usable prose height. Code wraps without dropping whitespace or horizontally clipping text. Short-height chrome reclaims spacing while retaining44px toolbar and selector targets; prose remains18px. Prior80px landscape surface becomes86px in the final loaded-font layout.635 visual pages and2.3s initial landscape pagination remain a known short-screen efficiency limitation. Algorithm yields in bounded slices, uses binary-search text splitting, memoized normalized source and a four-signature in-memory cache; cached return was observed. No production delay or giant unbounded fetch introduced.
+
+### Integrity and browser evidence
+Production-shaped owner-text fixture uses actual backend canonical_page_records segmentation: chapter1 has13 units and40,831 canonical rendered characters (canonical transport formatting differs from prior unsplit40,822-character fixture). Final synchronized635-page landscape traversal reconstructs40,831 exactly; every source range matches, every page fits, page count stable. Missing/duplicate/reordered=0. Earlier unsynchronized traversal failed because it read before React committed the selected page; artifact retained. Earlier font/layout run and original evidence retained, not used as final loaded-font assertions.
+
+Preview2 fixture: only requests[1,2],6,201 authorized characters, four visual pages, exact reconstruction; units3+ never fetched, final Next reaches established sign-in return p3. Automated fixture additionally covers a ten-unit chapter with only two allowed units. Browser lease revocation at existing heartbeat removed the protected sheet and all reading text. Final desktop Next reaches chapter2 at p14 with14 units; Back restores chapter1 source anchor. Desktop offset12014 → mobile interval11929..12107 → desktop12014..12517; URL unchanged, desktop cached=true.
+
+Final desktop startup: manifest0.3ms, acquisition wall44.9ms, aggregate parallel network85.5ms, SHA verification15.7ms, assembly3.4ms, pagination271.7ms, lease-start-to-reader-mounted410ms. Network sum is NOT wall time. These are local fixtures, not production latency. Final landscape initial algorithm2304.3ms. No paid/source acquisition or customer-data access.
+
+Browser logs include extension-style asynchronous response/message-channel errors. No proven Reader runtime exception; zero-console-errors is NOT claimed.
+
+### Validation and changed scope
+Focused7 suites/113 tests; full frontend100 suites/666 tests. Related backend reading-pass policy/text-admission/revocation24 passed. Production build compiled successfully; SEO172 snapshots/3647 assertions/zero failed. Disposable PR regression15 suites/143 passed/zero failed/4 unchanged skips; isolated native MongoDB replica set, Redis, backend and production-built frontend through scripts/start_local_uat.sh. All loopback; no production services used. No separate lint/typecheck script; build includes ESLint. Diff check passes.
+
+Implementation files: authorizedChapter.js plus tests; ReaderExperienceV2Route.jsx and lifecycle tests; ReaderExperienceV2.jsx; readerContent.js; reader-pagination.css. No backend/dependency/environment/rights/publication changes. Historical commits preserved.
+
+### Remaining acceptance and next exact action
+NATIVE ZOOM VERIFICATION BLOCKED BY TEST ENVIRONMENT. Native Chrome UI reported: The Mac is locked and automatic unlock could not unlock it. Minimum operator action: unlock the Mac, then rerun native100%,125%,150% zoom with actual source-anchor and height receipts. Do not substitute CSS transforms or viewport emulation. Indivisible oversized rows/media still fail visibly; no clipping/scroll fallback. Precise server-side intra-chunk resume remains unchanged. No release-readiness claim until native zoom acceptance passes.
+
+Durable final artifacts outside Git: chapter-window-height-proof-final.json, chapter-landscape-integrity-final.json, chapter-preview-integrity.json, chapter-startup-performance.json, chapter-desktop-final.png, chapter-mobile-final.png in /Users/ronikbasak/Documents/Earnalism audits/2026-10-04-reader-pagination/.

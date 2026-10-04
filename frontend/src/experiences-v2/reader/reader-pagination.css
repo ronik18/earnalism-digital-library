@@ -34,3 +34,20 @@
 .reader-v2__layout { position: relative; }
 .reader-v2__pagination-opening { position: absolute; inset: 0; z-index: 5; }
 .reader-v2__pagination-opening .reader-opening { min-height: 0; height: 100%; }
+/* Short screens reclaim spacing, not prose size or interactive hit targets. */
+@media (max-height: 500px) {
+  .reader-v2__page-frame .reader-v2__canvas { padding-block: 4px; }
+  .reader-v2__chapter { padding-bottom: 4px; }
+  .reader-v2__chapter h1 { margin-top: 0; }
+  .reader-v2__toolbar output { display: none; }
+  .reader-v2__chapter .reader-v2__toolbar .experience-icon-button { width: 44px; height: 44px; min-height: 44px; }
+  .reader-v2__page-selector { margin-block: 0; }
+  .reader-v2__page-selector select { min-height: 44px; }
+  .reader-v2__visual-viewport { margin-block: 4px; }
+  .reader-v2__continuation { padding-block: 2px; }
+}
+/* Preserve code whitespace while measuring every visible wrapped line. */
+.reader-v2__body pre { white-space: pre-wrap; overflow-wrap: anywhere; overflow: visible; max-width: 100%; }
+
+/* Transport index changes must not resize the chapter reading surface. */
+.reader-v2__continuation > span { display: block; line-height: 20px; min-height: 20px; }
