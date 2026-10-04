@@ -247,3 +247,24 @@ def test_unauthenticated_request_cannot_write(harness):
     response = httpx.post(harness.base + '/admin/catalogue/evidence-responses', json=payload(), timeout=5)
     assert response.status_code in (401, 403)
     assert harness.db.catalogue_evidence_decisions.count_documents({}) == 0
+
+
+def test_evidence_persistence_does_not_depend_on_redis_delivery(harness, monkeypatch):
+    # No Redis queue is produced: the transactional Mongo outbox is authoritative.
+    monkeypatch.setenv('RESPONSE_TEST_REDIS', 'redis://127.0.0.1:26583/9')
+    harness.restart()
+    assert harness.submit(payload()).status_code == 200
+    assert harness.db.catalogue_evidence_requeue.count_documents({}) == 1
+    assert harness.db.catalogue_evidence_decision_audit.count_documents({}) == 1
+
+
+def test_explicit_supersession_resolves_conflict_without_two_active_states(harness):
+    assert harness.submit(payload()).status_code == 200
+    conflict = payload(decision_id='conflict', idempotency_key='conflict-key', decision='REJECTED')
+    assert harness.submit(conflict).status_code == 409
+    replacement = payload(decision_id='replacement', idempotency_key='replacement-key', decision='NEEDS_MORE_INFORMATION', supersedes_decision_id='decision-1')
+    assert harness.submit(replacement).status_code == 200
+    assert harness.db.catalogue_evidence_decisions.count_documents({'active': True}) == 1
+    canonical = harness.db.catalogue_evidence_decisions.find_one({'active': True})
+    assert canonical['decision'] == 'NEEDS_MORE_INFORMATION' and not canonical['conflict_pending']
+    assert harness.db.catalogue_evidence_requeue.count_documents({'state': 'QUEUED'}) == 0
