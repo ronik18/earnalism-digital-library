@@ -53,8 +53,11 @@ test('anchor at the final boundary resolves to the final page', () => {
   expect(pageForAnchor(pages, pages.at(-1).end)).toBe(pages.length - 1);
 });
 
-test('an oversized top-level table is rejected rather than sliced into invalid markup', () => {
-  expect(() => run('<table><tbody><tr><td>Long table text requiring more space.</td></tr></tbody></table>', 10)).toThrow(/supported pagination adapter/);
+test('an oversized row uses an explicit sequential-cell alternative without losing text', () => {
+  const {source,pages} = run('<table><tbody><tr><td>Long table text requiring more space.</td></tr></tbody></table>', 10);
+  expect(pages.map(page => page.text).join('')).toBe(source.textContent);
+  expect(pages.every(page => page.html.includes('role="table"'))).toBe(true);
+  expect(pages.length).toBeGreaterThan(1);
 });
 
 test('multi-row tables paginate by complete measured rows with exact text order', () => {
@@ -100,4 +103,24 @@ test('whitespace-only sources preserve every character on one stable page', () =
   expect(pages).toHaveLength(1);
   expect(pages[0].text).toBe(source.textContent);
   expect(pages[0].end).toBe(source.textContent.length);
+});
+
+test('tall multi-row fallback keeps headers and nested rich cell text exactly once', () => {
+  const {source,pages} = run('<div><table><thead><tr><th>A</th><th>B</th></tr></thead><tbody><tr><td><em>' + 'Several complete words. '.repeat(10) + '</em></td><td>Ending</td></tr></tbody></table></div>',40);
+  expect(pages.map(page => page.text).join('')).toBe(source.textContent);
+  expect(pages.flatMap(page => [...page.text.matchAll(/Ending/g)])).toHaveLength(1);
+});
+
+test('paragraph-boundary ranges preserve whitespace without phantom empty lines', () => {
+  const quote = document.createElement('blockquote'); quote.innerHTML = '<p>First.</p>\n<p>Second paragraph.</p>';
+  const part = sliceBlock(quote, 6, quote.textContent.length);
+  expect(part.textContent).toBe(quote.textContent.slice(6));
+  expect([...part.querySelectorAll('p')].every(node => node.textContent.trim())).toBe(true);
+});
+
+
+test('multiple media-only pages fail closed rather than share an ambiguous source anchor', () => {
+  const source = document.createElement('div'); source.innerHTML = '<img alt="First owned fixture"><img alt="Second owned fixture">';
+  const measure = document.createElement('div');
+  expect(() => paginateRendered(source, measure, 100, () => measure.querySelectorAll('img').length <= 1)).toThrow(/structural source anchor/);
 });

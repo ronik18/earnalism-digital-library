@@ -26,6 +26,12 @@ export function sliceBlock(block, start, end) {
   range.setStart(...textPoint(block, start));
   range.setEnd(...textPoint(block, end));
   clone.append(range.cloneContents());
+  // A Range beginning at the end of a paragraph can clone an empty paragraph
+  // before the next actual word. It must not consume a phantom line. Unwrap
+  // formatting whitespace rather than deleting source characters.
+  for (const node of [...clone.querySelectorAll('p,h1,h2,h3,h4,h5,h6,pre,blockquote')].reverse()) {
+    if (!node.textContent.trim() && !node.querySelector('img,br,hr')) node.replaceWith(...node.childNodes);
+  }
   if (start) clone.setAttribute('data-reader-continuation', 'true');
   return clone;
 }
@@ -43,6 +49,43 @@ export function sliceTableRows(block, start, end) {
   }
   const fragment = block.cloneNode(false); fragment.append(contents);
   return fragment;
+}
+
+// An indivisible tall row has an explicit linear, accessible alternative.
+// Cell order and text are unchanged; columns are identified semantically.
+export function linearTable(block) {
+  const clone = block.cloneNode(true);
+  const table = clone.matches('table') ? clone : clone.querySelector('table');
+  const convert = node => {
+    if (node.nodeType !== Node.ELEMENT_NODE) return node.cloneNode(true);
+    const roles = { TABLE: 'table', THEAD: 'rowgroup', TBODY: 'rowgroup', TFOOT: 'rowgroup', TR: 'row', TH: 'columnheader', TD: 'cell', CAPTION: 'caption' };
+    if (!roles[node.tagName]) return node.cloneNode(true);
+    const value = document.createElement('div'); value.setAttribute('role', roles[node.tagName]);
+    if (node.tagName === 'TABLE') { value.className = 'reader-v2__linear-table'; value.setAttribute('aria-label', 'Table displayed as sequential cells to fit this page'); }
+    if (/^(TD|TH)$/.test(node.tagName)) value.setAttribute('aria-colindex', String([...node.parentNode.children].indexOf(node) + 1));
+    for (const child of node.childNodes) value.append(convert(child));
+    return value;
+  };
+  const alternative = convert(table);
+  if (table === clone) return alternative;
+  table.replaceWith(alternative); return clone;
+}
+
+function fittedMedia(block, measure, height, fits) {
+  const clone = block.cloneNode(true);
+  const images = [...(block.matches('img') ? [block] : block.querySelectorAll('img'))];
+  const copies = [...(clone.matches('img') ? [clone] : clone.querySelectorAll('img'))];
+  if (images.length !== 1 || !images[0].naturalWidth || !images[0].naturalHeight) return null;
+  const image = copies[0];
+  image.style.height = '0px'; image.style.width = '0px';
+  measure.replaceChildren(clone);
+  const available = Math.floor(height - measure.scrollHeight - 2);
+  if (available < 24) return null;
+  const scale = Math.min(1, measure.clientWidth / images[0].naturalWidth, available / images[0].naturalHeight);
+  image.style.width = `${Math.floor(images[0].naturalWidth * scale)}px`;
+  image.style.height = `${Math.floor(images[0].naturalHeight * scale)}px`;
+  image.style.maxHeight = 'none'; image.style.objectFit = 'contain';
+  return fits() ? clone : null;
 }
 
 export function pageForAnchor(pages, offset) {
@@ -98,16 +141,27 @@ function* paginationSteps(source, measure, height, fits = () => measure.scrollHe
       const pairFits = fits(); following.remove();
       if (!pairFits) { whole.remove(); finish(); measure.append(whole); }
     }
-    if (fits()) { offset += Math.max(1, block.textContent.length); continue; }
+    if (fits()) { offset += block.textContent.length; continue; }
     whole.remove();
     finish();
     measure.append(whole);
-    if (fits()) { offset += Math.max(1, block.textContent.length); continue; }
+    if (fits()) { offset += block.textContent.length; continue; }
     whole.remove();
+    if (block.matches('img,figure') || block.querySelector('img')) {
+      const media = fittedMedia(block, measure, height, fits);
+      if (media) { offset += block.textContent.length; continue; }
+      measure.replaceChildren();
+    }
     const table = block.matches('table') ? block : block.querySelector('table');
     if (table && !block.querySelector('img,video,audio') && !table.querySelector('[rowspan]:not([rowspan="1"])')) {
       const rows = [...block.querySelectorAll('tr')];
       if (rows.length > 1) {
+        const needsAlternative = rows.some((_, row) => {
+          measure.replaceChildren(sliceTableRows(block, row, row + 1));
+          return !fits();
+        });
+        measure.replaceChildren();
+        if (needsAlternative) { blocks[index] = linearTable(block); index--; continue; }
         let start = 0;
         while (start < rows.length) {
           let low = start + 1; let high = rows.length; let best = start;
@@ -125,6 +179,7 @@ function* paginationSteps(source, measure, height, fits = () => measure.scrollHe
         continue;
       }
     }
+    if (table) { measure.replaceChildren(); blocks[index] = linearTable(block); index--; continue; }
     // Preserve rich inline markup with DOM Ranges. Binary search word boundaries.
     const boundaries = textBoundaries(block.textContent);
     if (boundaries.length < 2 || (block.matches('img,svg,table,video,audio') || block.querySelector('img,svg,table,video,audio'))) {
@@ -138,7 +193,10 @@ function* paginationSteps(source, measure, height, fits = () => measure.scrollHe
         measure.replaceChildren(sliceBlock(block, boundaries[startIndex], boundaries[middle]));
         if (fits()) { best = middle; low = middle + 1; } else high = middle - 1;
       }
-      if (best === startIndex) throw new PaginationIntegrityError(`An indivisible word or ${block.tagName.toLowerCase()} structure exceeds this layout.`);
+      if (best === startIndex) {
+        measure.replaceChildren(sliceBlock(block, boundaries[startIndex], boundaries[startIndex + 1]));
+        throw new PaginationIntegrityError(`An indivisible word or ${block.tagName.toLowerCase()} structure exceeds this layout (${measure.scrollHeight}px for ${height}px; ${measure.querySelectorAll("br").length} breaks; ${measure.textContent.length} chars).`);
+      }
       // Prefer a sentence boundary without sacrificing most of the page.
       const candidate = block.textContent.slice(boundaries[startIndex], boundaries[best]);
       const sentences = [...candidate.matchAll(/[.!?।]\s+/gu)];
@@ -171,6 +229,11 @@ function* paginationSteps(source, measure, height, fits = () => measure.scrollHe
   }
   finish();
   if (!pages.length) pages.push({ html: prefix, text: prefix, start: 0, end: offset });
+  // Text offsets cannot distinguish several image-only pages. Reject this
+  // unsupported anchor model before paint rather than repeat or skip artwork.
+  if (pages.length > 1 && pages.some(page => page.start === page.end)) {
+    throw new PaginationIntegrityError('A media-only page requires a structural source anchor.');
+  }
   if (pages.map(page => page.text).join('') !== source.textContent) {
     throw new PaginationIntegrityError('Pagination did not reconstruct the source exactly.');
   }

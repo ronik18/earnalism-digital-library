@@ -110,3 +110,46 @@ Implementation files: authorizedChapter.js plus tests; ReaderExperienceV2Route.j
 NATIVE ZOOM VERIFICATION BLOCKED BY TEST ENVIRONMENT. Native Chrome UI reported: The Mac is locked and automatic unlock could not unlock it. Minimum operator action: unlock the Mac, then rerun native100%,125%,150% zoom with actual source-anchor and height receipts. Do not substitute CSS transforms or viewport emulation. Indivisible oversized rows/media still fail visibly; no clipping/scroll fallback. Precise server-side intra-chunk resume remains unchanged. No release-readiness claim until native zoom acceptance passes.
 
 Durable final artifacts outside Git: chapter-window-height-proof-final.json, chapter-landscape-integrity-final.json, chapter-preview-integrity.json, chapter-startup-performance.json, chapter-desktop-final.png, chapter-mobile-final.png in /Users/ronikbasak/Documents/Earnalism audits/2026-10-04-reader-pagination/.
+
+
+## 2026-10-05 authorization-aware whole-book follow-up
+
+Status: BLOCKED — PAGINATION INTEGRITY. No push, PR, merge, deployment or production mutation.
+
+- Current chapter measured first; subsequent authorized chapters measured sequentially. The map retains boundaries/source anchors only, not manuscript HTML. Final whole-book totals appear only after all authorized chapters are measured.
+- Authorization/layout scope changes abort acquisition and discard map/cache entries. Preview requests were exactly [1,2], outside-preview requests zero. Revoked fixture lease removed protected Reader content and the map.
+- Exact reconstruction: preview 6,201 characters; chapter 1 40,831; chapter 2 44,850. Missing/duplicated/reordered characters zero. Full authorized two-chapter fixture: 160 desktop pages.
+- Generated structured fixture: 4,609 characters reconstructed exactly at desktop and landscape, one displayed image, tall table cell converted to sequential semantic cells with headers once. Figure scales proportionally.
+- Native Chrome: 100% 296/296, 125% 162/162, 150% 124/124 clientHeight/scrollHeight. Source offset 59 remained within the visible fragment.
+- Short landscape removed redundant chapter/footer chrome and duplicate footer page-turn buttons, preserving primary 44px controls. Narrow short screens place arrows beside the sheet to reclaim bottom space.
+
+### Actual Chromium viewport proof
+
+| Viewport | clientHeight | scrollHeight | Book pages | Overflow |
+|---|---:|---:|---:|---|
+| 1440x900 | 460 | 460 | 160 | none |
+| 1280x720 | 285 | 285 | 292 | none |
+| 1024x768 | 357 | 357 | 207 | none |
+| 768x1024 | 621 | 621 | 161 | none |
+| 390x844 | 286 | 286 | 379 | none |
+| 844x390 | 148 | 148 | 679 | none |
+| 1280x600 | 165 | 165 | 539 | none |
+
+### Validation
+
+- Targeted Reader: 10 suites, 129 passed.
+- Full frontend: 102 suites, 680 passed.
+- Backend rendering/manifest/bootstrap: 360 passed.
+- Production build passed; static SEO 172 snapshots, 3,647 assertions, zero failures.
+- Disposable MongoDB/Redis/backend/production frontend PR regression: 143 passed, zero failures, four unchanged skips.
+- Diff check passed.
+- Browser selector, chapter boundary, first/last states and Back/Forward passed.
+- First readable page 551ms, eventual map 799ms in isolated fixture; no production timing claim.
+
+### Remaining integrity gate
+
+Multiple textless image pages share the same text offset. This would make source-offset navigation ambiguous. The paginator now rejects that case before paint and has a focused negative test. Structural media/block anchors must be implemented and round-trip tested through URL, history, selector, notes and bookmarks before this branch is release-ready. Captioned figures passed, but do not generalize that evidence to image-only books.
+
+PR #517 currently occupies the focused slot. Premium opening remains a separate existing commit.
+Evidence directory: /Users/ronikbasak/Documents/Earnalism audits/2026-10-05-reader-book-map
+Next action: implement structural source anchors for textless visual pages, then repeat media-only sequential/history/resize reconstruction before integration.

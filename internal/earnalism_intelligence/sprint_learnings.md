@@ -2627,3 +2627,6 @@ Canonical server chunks are authorization boundaries, not responsive visual page
 - Read fragment text, source offsets and geometry atomically during browser traversal; separate calls can straddle a React render and produce false integrity failures.
 - Yield long DOM pagination calculations in bounded slices; cancel superseded work before it clears or commits a newer shared measurement container. Use the canonical opening presentation only for genuine initial calculation.
 - Passing full-chapter local fixtures is not proof that the public authorized-chunk API supplies a single whole-chapter visual-page map. Preserve the release hold until that contract and native zoom acceptance are complete.
+
+### Reader map follow-up 2026-10-05
+Whole-book numbering must remain provisional until every authorized chapter is measured. Textless image pages require structural anchors; text offsets alone are ambiguous. Reject unsupported media anchors before paint. Native zoom exposed duplicate footer controls; reserve geometry for primary controls and prose.

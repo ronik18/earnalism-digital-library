@@ -12,6 +12,7 @@ import { useAuth } from "../../context/AuthContext";
 import ReaderExperienceV2, { READER_V2_FIXTURE } from "./ReaderExperienceV2";
 import ReaderOpening from "./ReaderOpening";
 import { clearReaderPageCache } from "./readerPageCache";
+import { authorizedBookPlans } from "./authorizedBookMap";
 import { chapterWindowPlan, fetchChapterWindow, chapterAnchor, transportAnchor } from "./authorizedChapter";
 
 const PREVIEW_PAGES = 3;
@@ -468,6 +469,20 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
 
   const windowAuthorized = chapterWindow && chapterWindow.plan.key === windowKey
     && (chapterWindow.accessContext === "preview" || (usable && chapterWindow.accessContext === `protected:${identity}:${sessionId}`));
+  const bookPlans = useMemo(() => {
+    if (!manifest || !enabled) return [];
+    try { return authorizedBookPlans(manifest, usable, chapterWindowPlan); }
+    catch { return []; }
+  }, [manifest, enabled, usable]);
+  const mapScope = `${slug}:${usable ? `protected:${identity}:${sessionId}` : 'preview'}:${manifest?.canonical_pages?.content_revision || ''}`;
+  const loadAuthorizedChapter = useCallback((plan, signal) => {
+    const requestLease = usable ? leaseRef.current : null;
+    const authorized = () => aliveRef.current && !signal.aborted && (!requestLease
+      ? plan.last <= previewLimit
+      : runningLease(leaseRef.current) && leaseRef.current.sessionId === requestLease.sessionId);
+    return fetchChapterWindow({ plan, slug, totalPages, signal, authorized,
+      fetchChunk: (index, requestSignal) => getReadingPassPage(slug, index, index > previewLimit ? leaseRef.current : null, { signal: requestSignal }) });
+  }, [usable, slug, totalPages, previewLimit]);
   const source = windowAuthorized ? chapterWindow.sources.find(item => item.page === canonicalPage) : null;
   const selectedPage = source?.value || null;
   const page = selectedPage;
@@ -520,6 +535,10 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
         protectedPageVisibleRef.current = Boolean(range && windowAuthorized && chapterWindow.accessContext !== 'preview'
           && chapterWindow.sources.some(item => item.page > previewLimit && range.end > item.start && range.start < item.end));
       },
+      authorizedBookPlans: bookPlans,
+      bookMapScope: mapScope,
+      authorizedChapter: windowAuthorized ? chapterWindow : null,
+      loadAuthorizedChapter,
       transportChunkCount: windowAuthorized ? chapterWindow.sources.length : 0,
       assemblyMetrics: windowAuthorized ? { manifestMs, fetchMs: chapterWindow.fetchMs, networkMs: chapterWindow.networkMs, verificationMs: chapterWindow.verificationMs, assemblyMs: chapterWindow.assemblyMs } : null,
       sourceRevision: windowAuthorized ? chapterWindow.revision : '',
@@ -568,7 +587,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       statusMessage: notice,
       metadata: { language: book.language || "", genre: book.genre || "", year: book.publication_year || book.year || "", source: book.rights_status || "" },
     };
-  }, [displayedBalance, canonicalPage, displayedPageNumber, error, freeReading, identity, manifest, notice, page, pageResult, selectedPage, slowPageLoading, slug, totalPages, user, search, setSearch, windowAuthorized, chapterWindow, signedIn, persistPosition, manifestMs, previewLimit]);
+  }, [displayedBalance, canonicalPage, displayedPageNumber, error, freeReading, identity, manifest, notice, page, pageResult, selectedPage, slowPageLoading, slug, totalPages, user, search, setSearch, windowAuthorized, chapterWindow, signedIn, persistPosition, manifestMs, previewLimit, bookPlans, mapScope, loadAuthorizedChapter]);
 
   const recovery = <>
     <button type="button" data-testid="reader-recovery-book" onClick={() => navigateAfterSettlement("back")} disabled={busy}>Return to book details</button>

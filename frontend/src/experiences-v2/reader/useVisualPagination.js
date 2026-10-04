@@ -1,10 +1,12 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import { paginateRenderedResponsive } from './visualPagination';
 
-export default function useVisualPagination({ sourceRef, viewportRef, measureRef, revision, typography }) {
+export default function useVisualPagination({ sourceRef, viewportRef, measureRef, revision, typography, authorizationScope }) {
   const [result, setResult] = useState({ pages: [], pending: true, error: '', signature: '' });
   const cache = useRef(new Map());
   const geometry = useRef('');
+  const cacheScope = useRef(authorizationScope);
+  if (cacheScope.current !== authorizationScope) { cache.current.clear(); cacheScope.current = authorizationScope; }
   useLayoutEffect(() => {
     let cancelled = false; let timer; let generation = 0;
     const viewport = viewportRef.current; const source = sourceRef.current; const measure = measureRef.current;

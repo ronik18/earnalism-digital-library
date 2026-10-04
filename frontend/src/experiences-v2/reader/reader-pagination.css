@@ -51,3 +51,42 @@
 
 /* Transport index changes must not resize the chapter reading surface. */
 .reader-v2__continuation > span { display: block; line-height: 20px; min-height: 20px; }
+
+/* Tall table rows retain cell order in a labelled linear presentation. */
+.reader-v2__linear-table { border-block: 1px solid var(--reader-border); overflow-wrap: anywhere; }
+.reader-v2__linear-table [role="row"] { border-bottom: 1px solid var(--reader-border); }
+.reader-v2__linear-table :is([role="cell"], [role="columnheader"]) { padding: .2em 0; }
+.reader-v2__linear-table [role="columnheader"] { font-weight: 700; }
+/* Keep one line of chapter context without taking prose space in landscape. */
+@media (max-height: 500px) {
+  .reader-v2__chapter h1 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 18px; }
+}
+
+/* Chapter context reserves the same two-line slot for every chapter. The full
+   heading remains accessible and is present in the paginated chapter itself. */
+.reader-v2__chapter h1 { line-height: 1.2; height: 2.4em; min-height: 2.4em; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+@media (max-height: 500px) {
+  .reader-v2__chapter h1 { display: block; height: 1.2em; min-height: 1.2em; -webkit-line-clamp: unset; }
+}
+
+/* In landscape, the chapter title remains in the reading content; reclaim
+   redundant chrome while retaining the selector and 44px controls. */
+@media (max-height: 500px) {
+  .reader-v2__chapter h1 { position: absolute; width: 1px; height: 1px; min-height: 0; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+
+/* The adjacent arrows are the single page-turn controls at every breakpoint. */
+.reader-v2__page-frame .reader-v2__continuation nav { display: none; }
+@media (max-height: 500px) {
+  .reader-v2__page-frame .reader-v2__canvas { padding-block: 0; }
+  .reader-v2__chapter { padding-bottom: 0; }
+  .reader-v2__visual-viewport { margin-block: 2px; }
+  .reader-v2__page-frame .reader-v2__continuation { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); }
+}
+@media (max-height: 500px) and (max-width: 767px) {
+  .reader-v2__page-frame { padding: 0 48px; }
+  .reader-v2__page-frame .reader-v2__page-arrow { top: 50%; bottom: auto; transform: translateY(-50%); }
+  .reader-v2__page-frame .reader-v2__page-arrow--previous { left: max(0px, env(safe-area-inset-left)); }
+  .reader-v2__page-frame .reader-v2__page-arrow--next { right: max(0px, env(safe-area-inset-right)); }
+  .reader-v2__page-frame .reader-v2__page-arrow:active:not(:disabled) { transform: translateY(-50%) scale(.94); }
+}
