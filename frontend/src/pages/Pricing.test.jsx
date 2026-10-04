@@ -28,3 +28,8 @@ describe("Commerce design contract", () => {
     expect(referenceSource).toContain('Try again');
   });
 });
+
+test("Commerce hero states NO auto-renewals as presentation copy", () => {
+  expect(referenceSource).toContain("<span>NO</span><strong>auto-renewals</strong>");
+  expect(referenceSource).not.toContain("<span>0</span><strong>auto-renewals</strong>");
+});

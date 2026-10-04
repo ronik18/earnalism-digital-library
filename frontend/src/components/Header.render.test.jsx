@@ -1,6 +1,8 @@
 import React, { act } from "react";
 import { createRoot } from "react-dom/client";
 
+let mockLocation = { pathname: "/", search: "", hash: "" };
+
 jest.mock("react-router-dom", () => {
   const React = require("react");
   const link = ({ to, children, end, className, ...props }) => React.createElement("a", {
@@ -11,7 +13,7 @@ jest.mock("react-router-dom", () => {
   return {
     Link: link,
     NavLink: ({ className, ...props }) => link({ ...props, className: typeof className === "function" ? className({ isActive: false }) : className }),
-    useLocation: () => ({ pathname: "/", search: "", hash: "" }),
+    useLocation: () => mockLocation,
     useNavigate: () => jest.fn(),
   };
 }, { virtual: true });
@@ -37,7 +39,15 @@ function renderHeader(Component = Header, props = {}) {
 }
 
 describe("owner-approved Header composition", () => {
-  afterEach(() => { document.body.innerHTML = ""; });
+  afterEach(() => { document.body.innerHTML = ""; mockLocation = { pathname: "/", search: "", hash: "" }; });
+
+  test.each(["/", "/library", "/book/a-ghost-story", "/reader/a-ghost-story", "/pricing", "/account", "/login", "/privacy"])("uses the identical primary header shell on %s", (pathname) => {
+    mockLocation = { pathname, search: "", hash: "" };
+    const { container, cleanup } = renderHeader();
+    expect(container.querySelector("header").className).toBe("sticky top-0 z-50 glass-header premium-site-header");
+    expect(container.querySelector('[data-brand-asset="earnalism-brand-lockup.png"]')).not.toBeNull();
+    cleanup();
+  });
 
   test("renders the official logo, canonical navigation, search, and a single Sign In action", () => {
     const { container, cleanup } = renderHeader();

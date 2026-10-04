@@ -44,7 +44,7 @@ export default function ReadingPassesSurface({ packs = [], config, busyId, offer
           <p>A Reading Pass, simply explained.</p>
           <div className="rp-fact-rings">
             <div><span>3</span><strong>free text pages</strong><small>where previews are available</small></div>
-            <div><span>0</span><strong>auto-renewals</strong><small>no recurring subscription</small></div>
+            <div><span>NO</span><strong>auto-renewals</strong><small>no recurring subscription</small></div>
             <div><span>You</span><strong>set the rhythm</strong><small>choose your reading time</small></div>
           </div>
           <div className="rp-promise-note"><BookOpen aria-hidden="true"/><p>Meet the story first.<br/><strong>Stay when it speaks to you.</strong></p></div>

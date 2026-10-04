@@ -366,7 +366,7 @@
 
 .premium-header-nav { gap: clamp(0.6rem, 1vw, 1rem) !important; }
 
-.premium-header-nav a,
+.premium-site-header .premium-header-nav a,
 .premium-site-header .reference-home-header-icon {
   position: relative;
   display: inline-flex;
@@ -586,7 +586,7 @@
 .premium-site-header .premium-header-nav--desktop .premium-header-search {
   display: flex;
   flex: 0 1 13.5rem;
-  min-width: 10.5rem;
+  min-width: 8rem;
   height: 2.5rem;
   align-items: center;
   gap: 0.5rem;
@@ -652,11 +652,18 @@
 
 /* The official asset has one header size per viewport, shared by public and immersive routes.
    Its intrinsic 10:3 ratio keeps all subtext intact; no route-specific scaling. */
-.premium-site-header { --header-lockup-width: 18.75rem; }
+.premium-site-header { --header-lockup-width: 20rem; }
 .premium-site-header .earnalism-brand-lockup--desktop-header { width: var(--header-lockup-width); max-width: none; flex-shrink: 0; }
 @media (min-width: 768px) and (max-width: 1279px) {
-  .premium-site-header { --header-lockup-width: 17.5rem; }
+  .premium-site-header { --header-lockup-width: 18rem; }
 }
 @media (max-width: 767px) {
-  .premium-site-header { --header-lockup-width: min(15rem, calc(100vw - 8.5rem)); }
+  .premium-site-header { --header-lockup-width: min(16rem, calc(100vw - 8.5rem)); }
+}
+
+/* Compact desktop keeps every navigation item; use the existing search icon
+   until there is room for the full search field beside the enlarged lockup. */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .premium-site-header .premium-header-nav--desktop .premium-header-search { display: none; }
+  .premium-site-header .premium-mobile-search { display: inline-flex; }
 }
