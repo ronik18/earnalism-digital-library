@@ -2617,3 +2617,6 @@ Do not infer confirmed404 or campaign exhaustion from missing explicit rewrites:
 - Canonical manifest and first-page readiness can drive a personalized CSS book opening without a second fetch or minimum duration. Retain protected denial and ordinary page-turn paths.
 - Measure first-page response separately from prefetch; prefetch overwrites otherwise corrupt startup timing. Local DOM handoff 15–29ms; gzip bundle delta2300 bytes.
 - Review/evidence: `reader_opening_review_20261004.md`. PR516 occupies release slot; no production observation or deployment inferred.
+
+## 2026-10-04 — Reader measured pagination
+Canonical server chunks are authorization boundaries, not responsive visual pages. Preserve those gates while adding measured fragments. Hidden measurement DOM needs explicit font loading; invalidate cache after font load. A short-screen decorative drop cap can exceed the reading surface. Whole-book numbering and oversized structure adapters remain release holds; local tests are not proof of native zoom. See reader_pagination_review_20261004.md.

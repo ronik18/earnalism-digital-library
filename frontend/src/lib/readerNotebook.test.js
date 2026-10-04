@@ -21,3 +21,12 @@ test("storage failure reports an unsaved notebook", () => {
   jest.spyOn(Storage.prototype, "setItem").mockImplementation(() => { throw new Error("blocked"); });
   expect(saveReaderNotebook("key", { notes: [], bookmarks: [1] })).toBe(false);
 });
+
+test('source-offset notes and bookmarks survive notebook serialization independently of visual page numbers', () => {
+  const key = readerNotebookKey('edition', 'reader');
+  const anchor = { offset: 1234, revision: 'sha256-test-edition' };
+  const notebook = { notes: [{ id: 'anchored', page: 3, anchor, text: 'Thought', createdAt: 'now' }], bookmarks: [3], bookmarkAnchors: [{ page: 3, anchor }] };
+  expect(saveReaderNotebook(key, notebook)).toBe(true);
+  expect(loadReaderNotebook(key)).toEqual(notebook);
+  expect(normalizeNotebook({ ...notebook, bookmarkAnchors: [{ page: 3, anchor: {offset:-1,revision:'bad'} }] }).bookmarkAnchors).toBeUndefined();
+});

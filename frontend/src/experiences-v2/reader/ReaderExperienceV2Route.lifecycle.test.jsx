@@ -60,6 +60,9 @@ beforeEach(() => {
   Object.defineProperty(document, "visibilityState", { configurable: true, value: "visible" });
   jest.spyOn(document, "hasFocus").mockReturnValue(true);
   jest.spyOn(window, "scrollTo").mockImplementation(() => {});
+  // JSDOM has no layout engine. Browser acceptance separately measures real dimensions.
+  jest.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(600);
+  jest.spyOn(HTMLElement.prototype, 'clientHeight', 'get').mockReturnValue(600);
   userApi.get.mockImplementation(async (url) => ({ data: manifest(url.includes("other-book") ? "other-book" : "test-book") }));
   pass.getReadingPassPage.mockImplementation(async (slug, n) => page(n, slug));
   pass.startReadingPassSession.mockImplementation(async () => response());

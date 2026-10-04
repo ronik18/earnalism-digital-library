@@ -403,13 +403,15 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     return () => { cancelled = true; window.clearTimeout(slowTimer); };
   }, [canonicalPage, pageSessionKey, manifest, enabled, validPage, expectedPage, expectedChapter, identity, persistPosition, retry, publishLease, settleLease, slug, totalPages, signedIn, visualFixture]);
 
-  const changePage = useCallback((nextPage) => {
+  const changePage = useCallback((nextPage, visualAnchor = 0, anchorRevision) => {
     const params = new URLSearchParams(search);
     params.set("p", String(nextPage));
+    if (visualAnchor) params.set("a", String(visualAnchor)); else params.delete("a");
+    if (anchorRevision) params.set("r", anchorRevision); else params.delete("r");
     setSearch(params, { replace: false });
   }, [search, setSearch]);
 
-  const authorizeAndContinue = useCallback(async (nextPage) => {
+  const authorizeAndContinue = useCallback(async (nextPage, visualAnchor = 0, anchorRevision) => {
     if (!Number.isInteger(nextPage) || nextPage < 1 || nextPage > totalPages || actionRef.current) return;
     if (nextPage > PREVIEW_PAGES && !user) {
       navigate(`/login?next=${encodeURIComponent(`/reader/${slug}?p=${nextPage}`)}`);
@@ -443,7 +445,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       if (!aliveRef.current || locationVersionRef.current.version !== intentVersion) return;
       setError("");
       if (nextPage === canonicalPage) setRetry((value) => value + 1);
-      else changePage(nextPage);
+      else changePage(nextPage, visualAnchor, anchorRevision);
     } catch (requestError) {
       if (aliveRef.current) setError(requestMessage(requestError, requestError.message || (freeReading ? "Free Reader access could not be verified." : "A current Reading Pass is required to continue.")));
     } finally {
@@ -555,6 +557,16 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     return {
       slug,
       notebookOwner: identity || "guest",
+      sourceRevision: page?.content_sha256 || page?.manifest_version || '',
+      visualAnchor: search.get('r') && search.get('r') !== (page?.content_sha256 || page?.manifest_version || '') ? 0 : search.get('a') === 'end' ? 'end' : Math.max(0, Number(search.get('a')) || 0),
+      onVisualAnchor: (offset) => {
+        const params = new URLSearchParams(search);
+        params.set('a', String(offset));
+        const revision = page?.content_sha256 || page?.manifest_version || '';
+        if (revision) params.set('r', revision);
+        else params.delete('r');
+        setSearch(params, { replace: false });
+      },
       title: book.public_title || book.display_title || book.title || "Book",
       author: book.author || book.author_name || "",
       language: /^(bn|bengali|বাংলা)/i.test(book.language || "") ? "bn" : /^(en|english)/i.test(book.language || "") ? "en" : undefined,
@@ -580,7 +592,7 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       statusMessage: notice,
       metadata: { language: book.language || "", genre: book.genre || "", year: book.publication_year || book.year || "", source: book.rights_status || "" },
     };
-  }, [displayedBalance, canonicalPage, displayedPageNumber, error, freeReading, identity, manifest, notice, page, pageResult, selectedPage, slowPageLoading, slug, totalPages, user]);
+  }, [displayedBalance, canonicalPage, displayedPageNumber, error, freeReading, identity, manifest, notice, page, pageResult, selectedPage, slowPageLoading, slug, totalPages, user, search, setSearch]);
 
   const recovery = <>
     <button type="button" data-testid="reader-recovery-book" onClick={() => navigateAfterSettlement("back")} disabled={busy}>Return to book details</button>

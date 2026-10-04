@@ -18,6 +18,9 @@ describe("ReaderExperienceV2 customer controls", () => {
   let root;
   beforeEach(() => {
     jest.spyOn(window, "scrollTo").mockImplementation(() => {});
+    // JSDOM has no layout engine. Browser acceptance separately measures real dimensions.
+    jest.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(600);
+    jest.spyOn(HTMLElement.prototype, 'clientHeight', 'get').mockReturnValue(600);
     localStorage.removeItem(READER_SETTINGS_STORAGE_KEY);
     localStorage.removeItem(readerNotebookKey(model.title));
     container = document.createElement("div");
@@ -171,14 +174,15 @@ describe("ReaderExperienceV2 customer controls", () => {
     expect(button("Previous page").disabled).toBe(true);
     click(button("Next page"));
     expect(onRequestPage).toHaveBeenLastCalledWith(2);
-    change(container.querySelector('select[aria-label="Go to page"]'), "3");
+    expect(container.querySelector('select[aria-label="Go to page"]').options.length).toBe(1);
+    click(button("Page 3"));
     expect(onRequestPage).toHaveBeenLastCalledWith(3);
     render({ model: { ...model, canonicalPage: 4 }, access: { authorized: true }, onRequestPage });
     expect(button("End of book").disabled).toBe(true);
     click(button("End of book"));
     expect(onRequestPage).toHaveBeenCalledTimes(2);
     click(button("Previous page"));
-    expect(onRequestPage).toHaveBeenLastCalledWith(3);
+    expect(onRequestPage).toHaveBeenLastCalledWith(3, "end");
     expect(container.textContent).toContain("You have reached the end of this book.");
   });
 

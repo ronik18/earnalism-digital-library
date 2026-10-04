@@ -1,0 +1,23 @@
+/* The sheet is fixed; only the side panels may scroll. */
+.reader-v2__page-frame .reader-v2__canvas { overflow-y: hidden; scrollbar-gutter: auto; display: flex; flex-direction: column; position: relative; padding-block: 16px; }
+.reader-v2__canvas > :not(.reader-v2__visual-viewport) { flex-shrink: 0; }
+.reader-v2__visual-viewport { position: relative; flex: 1 1 0; min-height: 0; overflow: hidden; margin-block: 12px; display: flow-root; }
+.reader-v2__visual-viewport .reader-v2__body { margin: 0; max-width: none; display: flow-root; }
+.reader-v2__pagination-source, .reader-v2__pagination-measure { position: fixed; left: -100000px; top: 0; visibility: hidden; pointer-events: none; width: 100%; height: auto; contain: layout style; }
+.reader-v2__visual-viewport .reader-v2__page-content { height: 100%; }
+.reader-v2__body img { max-height: var(--reader-visual-height, 100%); object-fit: contain; }
+.reader-v2__body[data-continuation="true"] > p:first-of-type::first-letter,
+.reader-v2__body p[data-reader-continuation="true"]::first-letter { float: none !important; padding: 0 !important; font-size: 1em !important; line-height: inherit !important; }
+.reader-v2__chapter { padding-bottom: 8px; }
+.reader-v2__chapter h1 { font-size: clamp(22px, 2.5vw, 34px); margin-top: 6px; }
+.reader-v2__page-selector { margin-block: 8px 0; }
+.reader-v2__continuation { padding: 6px 10px; }
+.reader-v2__continuation nav { display: none; }
+.reader-v2__settings { position: absolute; z-index: 4; inset: 8px 8px auto; max-height: calc(100% - 16px); overflow-y: auto; background: var(--reader-canvas); border: 1px solid var(--reader-border); }
+.reader-v2__context { min-height: 0; overflow-y: auto; }
+@media (max-height: 500px) { .reader-v2__page-frame .reader-v2__canvas { padding: 8px 18px; } .reader-v2__chapter h1 { font-size: 20px; line-height: 1.1; } .reader-v2__visual-viewport { margin-block: 6px; } .reader-v2__page-selector select { min-height: 32px; padding-block: 3px; } .reader-v2__chapter .reader-v2__toolbar .experience-icon-button { height: 32px; min-height: 32px; } .reader-v2__dateline { display: none; } }
+@media (max-width: 767px) { .reader-v2__page-frame .reader-v2__canvas { padding-inline: var(--reader-mobile-gutter); } .reader-v2__chapter h1 { max-width: none; font-size: 24px; } .reader-v2__continuation { position: static; margin: 0; padding: 6px; } }
+/* A decorative drop cap cannot consume an entire landscape reading surface. */
+@media (max-height: 500px) {
+  .reader-v2__body > p:first-of-type::first-letter { float: none !important; padding: 0 !important; font-size: 1em !important; line-height: inherit !important; }
+}
