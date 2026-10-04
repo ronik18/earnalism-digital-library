@@ -10,6 +10,7 @@ import {
 } from "../../lib/readingPassApi";
 import { useAuth } from "../../context/AuthContext";
 import ReaderExperienceV2, { READER_V2_FIXTURE } from "./ReaderExperienceV2";
+import ReaderOpening from "./ReaderOpening";
 import { readerRouteState } from "./readerRouteState";
 import { getOrFetchReaderPage, readerPageCacheKey, retainReaderPageWindow } from "./readerPageCache";
 
@@ -66,7 +67,10 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
   const visualFixtureVariant = process.env.REACT_APP_ENABLE_VISUAL_FIXTURES === "1" ? search.get("visual-fixture") : null;
   const visualFixture = visualFixtureVariant === "1" || visualFixtureVariant === "bn";
   const [manifest, setManifest] = useState(null);
+  const entryRef = useRef(null);
+  const openingFocusRef = useRef(false);
   const [loading, setLoading] = useState(true);
+  const [manifestFailureCode, setManifestFailureCode] = useState(null);
   const [pageResult, setPageResult] = useState(null);
   const [displayedPageResult, setDisplayedPageResult] = useState(null);
   const [slowPageLoading, setSlowPageLoading] = useState(false);
@@ -159,14 +163,15 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
     let cancelled = false;
     const controller = new AbortController();
     setLoading(true);
+    setManifestFailureCode(null);
     setError("");
     userApi.get(readerManifestPath(slug), { signal: controller.signal, timeout: 15000 })
       .then(({ data }) => {
         if (cancelled) return;
-        if (data?.book?.slug !== slug) throw new Error("This reader edition does not match the requested book.");
+        if (data?.book?.slug !== slug) throw Object.assign(new Error("This reader edition does not match the requested book."), { readerIntegrityFailure: true });
         setManifest(data);
       })
-      .catch(() => { if (!cancelled) setError("This reader edition is not available."); })
+      .catch((failure) => { if (!cancelled) { setError("This reader edition is not available."); setManifestFailureCode(failure?.readerIntegrityFailure ? 422 : failure?.response?.status || 0); } })
       .finally(() => { if (!cancelled) setLoading(false); });
     return () => { cancelled = true; controller.abort(); };
   }, [slug, visualFixture, manifestRetry]);
@@ -473,6 +478,12 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
   const retainedPageAuthorized = retainedPage && (retainedPage.number <= PREVIEW_PAGES
     || (usable && retainedPage.accessContext === `protected:${identity}:${sessionId}`));
   const page = selectedPage || (retainedPageAuthorized ? retainedPage.value : null);
+  useEffect(() => {
+    if (!page || !openingFocusRef.current) return;
+    openingFocusRef.current = false;
+    const heading = entryRef.current?.querySelector("h1");
+    if (heading) { heading.setAttribute("tabindex", "-1"); heading.focus({ preventScroll: true }); }
+  }, [page]);
   const displayedPageNumber = selectedPage ? canonicalPage : (retainedPageAuthorized ? retainedPage.number : canonicalPage);
   const pageAccessContext = canonicalPage > PREVIEW_PAGES
     ? `protected:${identity}:${sessionId}`
@@ -596,16 +607,17 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       if (navigationPath || destinations[target]) navigate(navigationPath || destinations[target]);
     }} />;
   }
-  const loadingExit = <button type="button" onClick={() => navigateAfterSettlement("library")} disabled={busy}>{busy ? "Closing reader…" : "Library"}</button>;
-  if (loading) return <RouteState title="Opening reader" message="Loading this edition.">{loadingExit}</RouteState>;
+  const opening = <ReaderOpening onEscapeFocus={(focused) => { openingFocusRef.current = focused; }} book={manifest?.book} onLibrary={() => navigateAfterSettlement("library")} busy={busy} />;
+  if (loading) return opening;
+  if (error && !page && (manifestFailureCode === 0 || manifestFailureCode >= 500 || pageResult?.statusCode >= 500)) return <ReaderOpening book={manifest?.book} failed onLibrary={() => navigateAfterSettlement("library")} onRetry={() => manifest ? setRetry((value) => value + 1) : setManifestRetry((value) => value + 1)} busy={busy} />;
   if (error && !page) return <RouteState title="Reading paused" message={error}>{recovery}</RouteState>;
   if (!enabled || !validPage) return <RouteState title="Page unavailable" message="This page is not available in this edition.">{recovery}</RouteState>;
   if (canonicalPage > PREVIEW_PAGES && !usable && !page) return <RouteState title={leaseStatus === "Paused" ? "Reading paused" : "Continue reading"} message={leaseStatus === "Paused" ? "Your reading session is paused while the reader is inactive." : freeReading ? "Sign in to continue reading this edition free." : "Use your Reading Pass to open this page."}>{recovery}</RouteState>;
-  if (!page) return <RouteState title="Opening page" message="Loading your selected page.">{loadingExit}</RouteState>;
-  return <ReaderExperienceV2 model={model} access={{ authorized: usable, busy }} onRequestPage={authorizeAndContinue} onNavigate={(target, navigationPath) => {
+  if (!page) return opening;
+  return <div ref={entryRef} className="reader-entry-ready"><ReaderExperienceV2 model={model} access={{ authorized: usable, busy }} onRequestPage={authorizeAndContinue} onNavigate={(target, navigationPath) => {
     if (target === "bookmark") {
       if (!user) { void navigateAfterSettlement("signin"); return; }
       void persistPosition(page).then(() => { if (aliveRef.current) setNotice("Your current page is saved."); }).catch(() => { if (aliveRef.current) setNotice("Your page could not be saved. Please try again."); });
     } else void navigateAfterSettlement(target, navigationPath);
-  }} />;
+  }} /></div>;
 }

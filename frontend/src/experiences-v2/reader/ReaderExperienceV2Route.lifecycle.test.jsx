@@ -188,7 +188,7 @@ test("three heartbeat renewals preserve the page and never refetch its content",
 test("a delayed page is loading rather than unavailable", async () => {
   const pending = deferred(); pass.getReadingPassPage.mockReturnValueOnce(pending.promise);
   await mount("/reader/test-book?p=1");
-  expect(text()).toContain("Opening page"); expect(text()).not.toMatch(/unavailable/i);
+  expect(text()).toContain("Opening your page"); expect(text()).not.toMatch(/unavailable/i);
   await act(async () => pending.resolve(page(1)));
   expect(text()).toContain("Page 1 manuscript.");
 });
@@ -277,7 +277,7 @@ test("a hanging manifest remains escapable and its request is cancelled on exit"
   await mount("/reader/test-book?p=1");
   expect(text()).toContain("Opening reader");
   const config = userApi.get.mock.calls[0][1];
-  await click("Library");
+  await click("Back to Library");
   expect(container.querySelector('[data-testid="location"]').textContent).toBe("/library");
   expect(config.signal.aborted).toBe(true);
   await act(async () => pending.resolve({ data: manifest() }));
@@ -462,4 +462,25 @@ test("a prolonged protected-page load is never renewed as active reading", async
   await openProtected(); await tick(10000);
   expect(pass.renewReadingPassLease).toHaveBeenCalledWith(expect.objectContaining({ active: false }));
   await act(async () => pending.resolve(page(4)));
+});
+test("opening is personalized, yields immediately to readiness and never returns on page turns", async () => {
+  const pending = deferred(); pass.getReadingPassPage.mockReturnValueOnce(pending.promise);
+  await mount("/reader/test-book?p=1");
+  expect(container.querySelector('[data-testid="reader-opening"]')).not.toBeNull();
+  expect(text()).toContain("The test edition"); expect(text()).toContain("by Test author");
+  await act(async () => pending.resolve(page(1)));
+  expect(container.querySelector('[data-testid="reader-opening"]')).toBeNull();
+  await click("Next page");
+  expect(container.querySelector('[data-testid="reader-opening"]')).toBeNull();
+  expect(text()).toContain("Page 2 manuscript.");
+});
+
+test("actual first-page transport failure offers retry without revealing diagnostics", async () => {
+  pass.getReadingPassPage.mockRejectedValueOnce({ response: { status: 503, data: { detail: "internal diagnostic" } } });
+  await mount("/reader/test-book?p=1");
+  expect(text()).toContain("We couldn’t open this page.");
+  expect(text()).not.toContain("internal diagnostic");
+  await click("Try again");
+  expect(text()).toContain("Page 1 manuscript.");
+  expect(container.querySelector('[data-testid="reader-opening"]')).toBeNull();
 });
