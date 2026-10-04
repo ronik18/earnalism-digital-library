@@ -287,3 +287,30 @@
   .reader-v2__context[data-notebook-open="true"] .reader-v2__artwork, .reader-v2__context[data-notebook-open="true"] .reader-v2__book-cover { display: none; }
   .reader-v2__notebook-close { display: grid; place-items: center; width: 44px; height: 44px; margin-left: auto; border: 0; background: transparent; color: var(--reader-maroon); }
 }
+
+/* Size the public reading surface after the masthead and action rows lay out. */
+.experience-v2.reader-v2 { height: 100dvh; min-height: 0; display: flex; flex-direction: column; overflow: hidden; }
+.reader-v2 > .experience-header, .reader-v2 > .reader-v2__mobile-topbar, .reader-v2 > .reader-v2__mobile-actions, .reader-v2 > .reader-v2__reader-navigation { flex-shrink: 0; }
+.reader-v2__layout { flex: 1; min-height: 0; overflow: hidden; }
+.reader-v2__rail { overflow-y: auto; }
+.reader-v2__page-frame { position: relative; min-width: 0; min-height: 0; height: 100%; padding-inline: 3rem; }
+.reader-v2__page-frame .reader-v2__canvas { height: 100%; min-height: 0; overflow-y: auto; overscroll-behavior-y: contain; scrollbar-gutter: stable; }
+.reader-v2__page-arrow { position: absolute; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid var(--ev2-line); border-radius: 50%; color: var(--ev2-gold); background: var(--ev2-surface); cursor: pointer; transition: background 180ms ease, opacity 180ms ease; }
+.reader-v2__page-arrow--previous { left: 0; }
+.reader-v2__page-arrow--next { right: 0; }
+.reader-v2__page-arrow:hover:not(:disabled) { background: color-mix(in srgb, var(--ev2-gold) 12%, var(--ev2-surface)); }
+.reader-v2__page-arrow:active:not(:disabled) { transform: translateY(-50%) scale(.94); }
+.reader-v2__page-arrow:disabled { opacity: .28; cursor: default; }
+.reader-v2__page-arrow:focus-visible { outline: 2px solid var(--ev2-gold); outline-offset: 2px; }
+.reader-v2__page-content { animation: readerPageForward 280ms ease both; }
+.reader-v2__page-content--previous { animation-name: readerPageReverse; }
+@keyframes readerPageForward { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes readerPageReverse { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: translateX(0); } }
+@media (max-width: 767px) {
+ .reader-v2__page-frame { padding: 0 0 48px; }
+ .reader-v2__page-arrow { top: auto; bottom: max(2px, env(safe-area-inset-bottom)); transform: none; }
+ .reader-v2__page-arrow--previous { left: max(12px, env(safe-area-inset-left)); }
+ .reader-v2__page-arrow--next { right: max(12px, env(safe-area-inset-right)); }
+ .reader-v2__page-arrow:active:not(:disabled) { transform: scale(.94); }
+}
+@media (prefers-reduced-motion: reduce) { .reader-v2__page-content { animation: none; } .reader-v2__page-arrow { transition: none; } }

@@ -38,6 +38,40 @@ describe("ReaderExperienceV2 customer controls", () => {
     select.dispatchEvent(new Event("change", { bubbles: true }));
   });
 
+  test("side arrows use canonical requests and preserve focus on page turns", () => {
+    const onRequestPage = jest.fn();
+    render({ model: { ...model, canonicalPage: 1 }, onRequestPage });
+    const previous = container.querySelector('.reader-v2__page-arrow--previous');
+    const next = container.querySelector('.reader-v2__page-arrow--next');
+    expect(previous.disabled).toBe(true);
+    next.focus();
+    click(next);
+    expect(onRequestPage).toHaveBeenCalledWith(2);
+    render({ model: { ...model, canonicalPage: 2 }, onRequestPage });
+    expect(document.activeElement).toBe(next);
+    expect(container.querySelector('[data-testid="reader-page-content"]').className).toContain('--next');
+    render({ model: { ...model, canonicalPage: 1 }, onRequestPage });
+    expect(container.querySelector('[data-testid="reader-page-content"]').className).toContain('--previous');
+  });
+
+  test("keyboard turns exclude editing and interactive controls", () => {
+    const onRequestPage = jest.fn();
+    render({ model: { ...model, canonicalPage: 1 }, onRequestPage });
+    for (const tag of ['input', 'textarea', 'select', 'button', 'a', 'audio', 'video']) {
+      const target = document.createElement(tag);
+      container.appendChild(target);
+      act(() => target.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true })));
+      target.remove();
+    }
+    const slider = document.createElement('div');
+    slider.setAttribute('role', 'slider'); container.appendChild(slider);
+    act(() => slider.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true })));
+    slider.remove();
+    expect(onRequestPage).not.toHaveBeenCalled();
+    act(() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true })));
+    expect(onRequestPage).toHaveBeenCalledWith(2);
+  });
+
   test("only a valid edition licence enables the delivered-text print marker", () => {
     render();
     expect(container.querySelector('[data-licensed-text="true"]')).toBeNull();

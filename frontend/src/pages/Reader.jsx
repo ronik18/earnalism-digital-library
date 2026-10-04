@@ -996,6 +996,7 @@ export default function Reader() {
   const [totalWords, setTotalWords] = useState(0);
   const [paginatedPages, setPaginatedPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
+  const [pageDirection, setPageDirection] = useState('next');
 
   const [readProgress, setReadProgress] = useState(0);
   const [contentBlurred, setContentBlurred] = useState(false);
@@ -3053,6 +3054,7 @@ export default function Reader() {
   const goPrev = useCallback(() => {
     stopTTS();
     if (hasPages && currentPage > 0) {
+      setPageDirection('previous');
       setCurrentPage((page) => Math.max(0, page - 1));
       scrollContainerRef.current?.scrollTo?.({ top: 0, behavior: 'smooth' });
       return;
@@ -3067,6 +3069,7 @@ export default function Reader() {
   const goNext = useCallback(() => {
     stopTTS();
     if (hasPages && currentPage < paginatedPages.length - 1) {
+      setPageDirection('next');
       setCurrentPage((page) => Math.min(paginatedPages.length - 1, page + 1));
       scrollContainerRef.current?.scrollTo?.({ top: 0, behavior: 'smooth' });
       return;
@@ -3082,9 +3085,27 @@ export default function Reader() {
     const nextPage = Math.min(Math.max(Number(index) || 0, 0), Math.max(paginatedPages.length - 1, 0));
     if (nextPage === currentPage) return;
     stopTTS();
+    setPageDirection(nextPage < currentPage ? 'previous' : 'next');
     setCurrentPage(nextPage);
     scrollContainerRef.current?.scrollTo?.({ top: 0, behavior: options.behavior || 'smooth' });
   }, [currentPage, paginatedPages.length, stopTTS]);
+
+  useEffect(() => {
+    const onPageNavigationKeyDown = (event) => {
+      if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+      const target = event.target;
+      if (target instanceof HTMLElement && (target.isContentEditable || target.closest('input, textarea, select, button, [role="slider"], [role="combobox"], [role="listbox"], [role="menu"], audio, video, [contenteditable="true"]'))) return;
+      if (event.key === 'ArrowLeft' && canPrev) {
+        event.preventDefault();
+        goPrev();
+      } else if (event.key === 'ArrowRight' && canNext) {
+        event.preventDefault();
+        goNext();
+      }
+    };
+    window.addEventListener('keydown', onPageNavigationKeyDown);
+    return () => window.removeEventListener('keydown', onPageNavigationKeyDown);
+  }, [canNext, canPrev, goNext, goPrev]);
 
   const resumeReadingPass = useCallback(async ({ transfer = false } = {}) => {
     try {
@@ -3601,8 +3622,16 @@ export default function Reader() {
       </header>
 
       <main key={chapter?.id || chapterId || bookId} className="reader-main">
-        <div className="reader-gutter reader-gutter--left" aria-hidden="true" />
-        <article key={`${activeChapterId || chapterId || chapter?.id || bookId}:${currentPage}`} className="reader-canvas page-enter">
+        <button
+          type="button"
+          className="reader-page-nav reader-page-nav--previous"
+          onClick={goPrev}
+          disabled={!canPrev}
+          aria-label="Previous page"
+        >
+          <ChevronLeft aria-hidden="true" size={22} strokeWidth={1.6} />
+        </button>
+        <article key={`${activeChapterId || chapterId || chapter?.id || bookId}:${currentPage}`} className={`reader-canvas page-enter page-enter--${pageDirection}`}>
           <section
             className={[
               'reader-page-shell',
@@ -3740,7 +3769,15 @@ export default function Reader() {
             />
           )}
         </article>
-        <div className="reader-gutter reader-gutter--right" aria-hidden="true" />
+        <button
+          type="button"
+          className="reader-page-nav reader-page-nav--next"
+          onClick={goNext}
+          disabled={!canNext}
+          aria-label="Next page"
+        >
+          <ChevronRight aria-hidden="true" size={22} strokeWidth={1.6} />
+        </button>
       </main>
 
       <footer className={`reader-bottom-bar ${toolbarVisible ? 'reader-bottom-bar--visible' : 'reader-bottom-bar--hidden'}`}>

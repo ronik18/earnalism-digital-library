@@ -80,7 +80,13 @@ async function verify(state, context) {
   await installLocalResponses(page);
   const errors = [];
   page.on("pageerror", (error) => errors.push(`pageerror:${error.message}`));
-  page.on("console", (message) => { if (message.type() === "error") errors.push(`console:${message.text()}`); });
+  page.on("console", (message) => {
+    // The held-book fixture intentionally returns a 404 for the unavailable
+    // edition. Chromium/WebKit surface that expected response as a console
+    // error; keep the browser-error gate strict for every other error.
+    const expectedHeld404 = state.family === "held-book" && /Failed to load resource.*404/i.test(message.text());
+    if (message.type() === "error" && !expectedHeld404) errors.push(`console:${message.text()}`);
+  });
   const response = await page.goto(`${baseUrl}${state.route}`, { waitUntil: "domcontentloaded", timeout: 90_000 });
   await page.evaluate(async () => {
     await Promise.race([Promise.all([
