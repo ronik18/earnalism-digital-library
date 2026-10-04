@@ -2,7 +2,7 @@
 
 ## Scope and dependency
 
-This local follow-up is based on PR #516 head `d20f59fa6eac264302de9ad15cb7df6f75f874d6`, which supplies the shared header polish and “NO auto-renewals” presentation correction. Integrate this follow-up only after that dependency is reconciled. It changes no Reader application, backend, catalogue, rights, payment, entitlement, audio, or deployment behavior. No production deployment or ingestion was performed.
+This acceptance follow-up extends PR #516 head `d20f59fa6eac264302de9ad15cb7df6f75f874d6`, which supplies the shared header polish and “NO auto-renewals” presentation correction. The owner requested inclusion in the same focused PR before merge. It changes no Reader application, backend, catalogue, rights, payment, entitlement, audio, or deployment behavior. No production deployment or ingestion was performed.
 
 ## Reader verification
 
@@ -42,4 +42,4 @@ Commerce cards were inspected at 1440×900 and 390×844. Screenshot-only suppres
 - No standalone lint/typecheck script is defined in the frontend package; the production build performs its existing checks.
 - Git whitespace/diff check: passed before commit.
 
-PR #516 still occupies the single focused-PR slot. Its seamless-brand workflow failed on the separate deterministic assertion “binds both production-hash authorities to checked-in production source”; this follow-up does not alter or bypass that gate. No follow-up PR was opened or pushed, and no merge or deployment was performed.
+The stale pinned production-surface hashes in both seamless-brand workflow jobs are refreshed to the exact checked-in source using the existing deterministic hash algorithm. The equality gate is preserved. This acceptance work updates PR #516; no second PR, merge, or deployment is permitted.

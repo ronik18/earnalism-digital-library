@@ -46,6 +46,15 @@ describe("owner-approved Header composition", () => {
     const { container, cleanup } = renderHeader();
     expect(container.querySelector("header").className).toBe("sticky top-0 z-50 glass-header premium-site-header");
     expect(container.querySelector('[data-brand-asset="earnalism-brand-lockup.png"]')).not.toBeNull();
+    const desktopBlog = container.querySelectorAll('.premium-header-nav--desktop [data-nav-key="journal"]');
+    expect(desktopBlog).toHaveLength(1);
+    expect(desktopBlog[0].textContent).toBe("Blog");
+    expect(desktopBlog[0].getAttribute("href")).toBe("/journal");
+    act(() => container.querySelector('[data-testid="mobile-menu-toggle"]').dispatchEvent(new MouseEvent("click", { bubbles: true })));
+    const mobileBlog = container.querySelectorAll('[data-testid="mobile-nav-blog"]');
+    expect(mobileBlog).toHaveLength(1);
+    expect(mobileBlog[0].textContent).toBe("Blog");
+    expect(mobileBlog[0].getAttribute("href")).toBe("/journal");
     cleanup();
   });
 
