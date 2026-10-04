@@ -51,11 +51,6 @@ export default function Header({ onNavigatePath } = {}) {
   const isAuthed = !!user && typeof user === "object";
   const accountHref = isAuthed ? "/account" : "/login";
   const accountLabel = isAuthed ? "Account" : "Sign In";
-  const usesDarkReferenceShell = loc.pathname === "/" || loc.pathname === "/pricing" || loc.pathname.startsWith("/book/");
-  const usesHomeOptionBShell = loc.pathname === "/";
-  const usesLibraryReferenceShell = loc.pathname === "/library";
-  const usesCommerceReferenceShell = loc.pathname === "/pricing";
-  const usesProfileMobileShell = loc.pathname === "/account";
   const navigationItems = PUBLIC_NAV_ITEMS;
 
   useEffect(() => {
@@ -108,7 +103,7 @@ export default function Header({ onNavigatePath } = {}) {
   }, [open, closeMenu]);
   return (
     <header
-      className={`sticky top-0 z-50 glass-header premium-site-header${usesDarkReferenceShell ? " premium-site-header--reference-public" : ""}${usesHomeOptionBShell ? " premium-site-header--reference-home" : ""}${usesLibraryReferenceShell ? " premium-site-header--reference-library" : ""}${usesCommerceReferenceShell ? " premium-site-header--reference-commerce" : ""}${usesProfileMobileShell ? " premium-site-header--reference-profile" : ""}`}
+      className="sticky top-0 z-50 glass-header premium-site-header"
       onClickCapture={(event) => {
         if (!onNavigatePath || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         const link = event.target.closest("a[href]");

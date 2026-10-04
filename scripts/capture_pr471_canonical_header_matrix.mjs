@@ -31,6 +31,7 @@ const routes = [
   { id: "journal-article", path: "/journal/how-reading-shapes-better-founders" },
   { id: "about", path: "/about" },
   { id: "contact", path: "/contact" },
+  { id: "account", path: "/account?visual-fixture=1" },
   { id: "login", path: "/login" },
   { id: "signup", path: "/signup" },
   { id: "privacy", path: "/privacy" },
@@ -41,8 +42,8 @@ const routes = [
   { id: "listener", path: "/listener/a-ghost-story?visual-fixture=1" },
 ];
 const viewports = [
-  { width: 1440, height: 1000 }, { width: 1280, height: 1000 }, { width: 1024, height: 900 },
-  { width: 768, height: 900 }, { width: 390, height: 844 }, { width: 360, height: 844 },
+  { width: 1440, height: 900 }, { width: 1280, height: 720 }, { width: 1024, height: 768 },
+  { width: 768, height: 1024 }, { width: 390, height: 844 }, { width: 844, height: 390 },
 ];
 const fullPageScreenshotWidths = new Set([1440, 1024, 390]);
 const book = {
@@ -106,7 +107,13 @@ try {
           const style = getComputedStyle(element);
           return style.display !== "none" && style.visibility !== "hidden" && element.getClientRects().length > 0;
         };
+        const firstControl = node.querySelector(window.innerWidth >= 1280 ? '.premium-header-nav--desktop > a' : '[data-testid="mobile-header-search"]');
         return {
+          logo_right: logo.getBoundingClientRect().right,
+          control_left: firstControl.getBoundingClientRect().left,
+          nav_font_weight: getComputedStyle(node.querySelector('.premium-header-nav--desktop > a')).fontWeight,
+          nav_font_family: getComputedStyle(node.querySelector('.premium-header-nav--desktop > a')).fontFamily,
+          background: getComputedStyle(node).backgroundColor,
           height: Math.round(rect.height),
           width: Math.round(rect.width),
           logo_asset: node.querySelector('[data-brand-asset="earnalism-brand-lockup.png"]')?.getAttribute("data-brand-asset") || "",
@@ -122,19 +129,27 @@ try {
           has_immersive_search: visible('[aria-label="Search library"]'),
         };
       });
+      assert.ok(headerInfo.logo_right <= headerInfo.control_left, `${routeInfo.id}: logo/control collision`);
+      if (routeInfo.id === "reading-pass") {
+        assert.equal(await page.locator('.rp-fact-rings > div:nth-child(2) > span').innerText(), "NO");
+        assert.equal(await page.locator('.rp-fact-rings > div:nth-child(2) > strong').innerText(), "auto-renewals");
+      }
+      assert.equal(headerInfo.nav_font_weight, "600", `${routeInfo.id}: shared navigation weight`);
+      assert.ok(headerInfo.nav_font_family.includes("Outfit"), `${routeInfo.id}: shared navigation font`);
+      assert.equal(headerInfo.background, "rgb(255, 249, 238)", `${routeInfo.id}: shared parchment background`);
       assert.equal(headerInfo.logo_asset, "earnalism-brand-lockup.png", `${routeInfo.id} ${viewport.width}: canonical brand asset`);
       assert.ok(new URL(headerInfo.logo_src).pathname.endsWith("/assets/brand/earnalism-brand-lockup.png"), `${routeInfo.id} ${viewport.width}: canonical asset is rendered`);
       assert.ok(headerInfo.logo_natural_width > 0, `${routeInfo.id} ${viewport.width}: logo loaded`);
       assert.ok(headerInfo.header_scroll_width <= headerInfo.header_client_width, `${routeInfo.id} ${viewport.width}: header overflow`);
       const expectedHeaderHeight = viewport.width >= 1280 ? 104 : viewport.width >= 768 ? 96 : 80;
       assert.ok(Math.abs(headerInfo.height - expectedHeaderHeight) <= 1, `${routeInfo.id} ${viewport.width}: header height ${headerInfo.height}px`);
-      const expectedWidth = viewport.width >= 1280 ? [300, 300] : viewport.width >= 768 ? [280, 280] : [Math.min(240, viewport.width - 136), Math.min(240, viewport.width - 136)];
+      const expectedWidth = viewport.width >= 1280 ? [320, 320] : viewport.width >= 768 ? [288, 288] : [Math.min(256, viewport.width - 136), Math.min(256, viewport.width - 136)];
       assert.ok(headerInfo.logo_width >= expectedWidth[0] && headerInfo.logo_width <= expectedWidth[1], `${routeInfo.id} ${viewport.width}: logo width ${headerInfo.logo_width}`);
       const expectedNavLabels = navLabels;
       if (viewport.width >= 1280) assert.deepEqual(headerInfo.public_nav_labels, expectedNavLabels, `${routeInfo.id}: desktop nav labels/order`);
       if (viewport.width >= 1280) assert.deepEqual(headerInfo.active_public_nav_labels, activeLabelByState[routeInfo.id] ? [activeLabelByState[routeInfo.id]] : [], `${routeInfo.id}: single route-aware active item`);
-      if (viewport.width >= 1280) assert.equal(headerInfo.has_search_field, true, `${routeInfo.id}: shared desktop search`);
-      if (viewport.width < 1280) assert.equal(headerInfo.has_mobile_search, true, `${routeInfo.id}: shared mobile search`);
+      if (viewport.width >= 1440) assert.equal(headerInfo.has_search_field, true, `${routeInfo.id}: shared desktop search`);
+      if (viewport.width < 1440) assert.equal(headerInfo.has_mobile_search, true, `${routeInfo.id}: shared mobile search`);
 
       let menuLabels = [...headerInfo.public_nav_labels];
       if (viewport.width < 1280) {
@@ -168,6 +183,7 @@ try {
       if (headerScreenshot) await header.screenshot({ path: path.join(output, headerScreenshot), animations: "disabled" });
       if (fullPageScreenshot) await page.screenshot({ path: path.join(output, fullPageScreenshot), fullPage: true, animations: "disabled" });
       captures.push({ route: routeInfo.path, state: routeInfo.id, viewport, screenshot: fullPageScreenshot, header_screenshot: headerScreenshot, header: headerInfo, page_width: pageWidth, page_errors: pageErrors, console_errors: consoleErrors, bad_responses: badResponses, request_failures: requestFailures, menu_labels: menuLabels.map((label) => label.trim()) });
+      fs.writeFileSync(path.join(output, "progress.json"), JSON.stringify(captures, null, 2));
       await context.close();
     }
   }
