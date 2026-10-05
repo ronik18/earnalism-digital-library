@@ -16,7 +16,7 @@ export function measuredChapterEntry(window, pages, sourceAnchor) {
   const boundaries = pages.map(page => {
     if (page.start !== end || page.end < page.start) throw new Error('Non-contiguous authorized visual map');
     end = page.end;
-    return { start: page.start, end: page.end, anchor: sourceAnchor(page.start) };
+    return { start: page.start, end: page.end, structures: page.structures, anchor: sourceAnchor(page.anchor ?? page.start) };
   });
   if (end !== window.textLength) throw new Error('Authorized visual map does not cover its source');
   return { key: window.plan.key, chapterId: window.plan.chapterId, boundaries };

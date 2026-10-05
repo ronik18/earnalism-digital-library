@@ -516,12 +516,17 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       chapterId: String(item.chapter_id || ""),
       label: `Page ${item.page_number || item.page_index || index + 1}`,
     }));
+    let visualAnchor = 0; let sourceAnchorError = '';
+    if (windowAuthorized) {
+      try { visualAnchor = search.get('a') === 'end' ? 'end' : chapterAnchor(chapterWindow, canonicalPage, search.get('a'), search.get('r')); }
+      catch { sourceAnchorError = 'This saved position does not belong to the currently authorized edition. Open the chapter again.'; }
+    }
     return {
       slug,
       notebookOwner: identity || "guest",
       onVisualPageVisibility: (range) => {
         protectedPageVisibleRef.current = Boolean(range && windowAuthorized && chapterWindow.accessContext !== 'preview'
-          && chapterWindow.sources.some(item => item.page > previewLimit && range.end > item.start && range.start < item.end));
+          && chapterWindow.sources.some(item => item.page > previewLimit && ((range.end > item.start && range.start < item.end) || range.media?.some(ordinal => ordinal >= item.mediaStart && ordinal < item.mediaEnd))));
       },
       authorizedBookPlans: bookPlans,
       bookMapScope: mapScope,
@@ -535,8 +540,8 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
       previousWindow: windowAuthorized ? chapterWindow.plan.previous : null,
       nextWindow: windowAuthorized ? chapterWindow.plan.next : null,
       sourceAnchorForOffset: (offset) => windowAuthorized ? transportAnchor(chapterWindow, offset) : { page: canonicalPage, offset, revision: '' },
-      offsetForSourceAnchor: (target, offset, revision) => windowAuthorized && chapterWindow.sources.some(item => item.page === target && (!revision || item.revision === revision)) ? chapterAnchor(chapterWindow, target, offset, revision) : null,
-      visualAnchor: windowAuthorized ? (search.get('a') === 'end' ? 'end' : chapterAnchor(chapterWindow, canonicalPage, search.get('a'), search.get('r'))) : 0,
+      offsetForSourceAnchor: (target, offset, revision) => windowAuthorized && chapterWindow.sources.some(item => item.page === target && (!revision || item.revision === revision || revision === chapterWindow.structuralRevision)) ? chapterAnchor(chapterWindow, target, offset, revision) : null,
+      visualAnchor, sourceAnchorError,
       onVisualAnchor: (offset) => {
         if (!windowAuthorized) return;
         const anchor = transportAnchor(chapterWindow, offset);

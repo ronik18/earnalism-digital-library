@@ -41,6 +41,22 @@ describe("ReaderExperienceV2 customer controls", () => {
     select.dispatchEvent(new Event("change", { bubbles: true }));
   });
 
+  test("image-only navigation, selector and bookmarks use structural anchors", async () => {
+    jest.spyOn(HTMLElement.prototype, 'scrollHeight', 'get').mockImplementation(function () { return this.classList.contains('reader-v2__pagination-measure') ? this.querySelectorAll('img').length * 400 : 0; });
+    await act(async () => root.render(<ReaderExperienceV2 model={{ ...model, slug: 'image-test', sourceRevision: 'images-v1', content: <><img src="/fixture-one.png" alt="First image" /><img src="/fixture-two.png" alt="Second image" /></> }} />));
+    const selector = container.querySelector('select[aria-label="Go to page"]');
+    expect(selector.options).toHaveLength(2);
+    click(container.querySelector('.reader-v2__page-arrow--next'));
+    expect(container.querySelector('[data-testid="reader-reading-text"] img').alt).toBe('Second image');
+    expect(container.querySelector('[data-testid="reader-page-content"]').className).toContain('--next');
+    click(container.querySelector('.reader-v2__toolbar button[aria-label="Bookmark this page"]'));
+    expect(JSON.parse(localStorage.getItem(readerNotebookKey('image-test'))).bookmarkAnchors[0].anchor.offset).toBe('media:1');
+    click(container.querySelector('.reader-v2__page-arrow--previous'));
+    expect(container.querySelector('[data-testid="reader-reading-text"] img').alt).toBe('First image');
+    change(selector, '1');
+    expect(container.querySelector('[data-testid="reader-reading-text"] img').alt).toBe('Second image');
+  });
+
   test("side arrows use canonical requests and preserve focus on page turns", () => {
     const onRequestPage = jest.fn();
     render({ model: { ...model, canonicalPage: 1 }, onRequestPage });

@@ -89,6 +89,8 @@ function fittedMedia(block, measure, height, fits) {
 }
 
 export function pageForAnchor(pages, offset) {
+  if (typeof offset === 'string' && /^media:\d+$/.test(offset)) return Math.max(0, pages.findIndex(page => page.media?.includes(Number(offset.split(':')[1]))));
+  if (typeof offset === 'string' && /^node:\d+$/.test(offset)) return Math.max(0, pages.findIndex(page => page.structures?.includes(offset)));
   return Math.max(0, pages.findIndex((page, index) => offset >= page.start
     && (offset < page.end || index === pages.length - 1)));
 }
@@ -112,11 +114,19 @@ function* paginationSteps(source, measure, height, fits = () => measure.scrollHe
       measure.replaceChildren();
       return;
     }
-    pages.push({ html: prefix + measure.innerHTML, text: prefix + measure.textContent, start: pageStart, end: offset });
+    const structures = [...measure.querySelectorAll('[data-reader-source-node]')].map(node => `node:${node.dataset.readerSourceNode}`);
+    const media = [...measure.querySelectorAll('[data-reader-source-media]')].map(node => Number(node.dataset.readerSourceMedia));
+    pages.push({ html: prefix + measure.innerHTML, text: prefix + measure.textContent, start: pageStart, end: offset, structures, media, anchor: !measure.textContent.trim() ? (media.length ? `media:${media[0]}` : structures[0]) : pageStart });
     prefix = '';
     measure.replaceChildren(); pageStart = offset; measure.setAttribute('data-continuation', 'true');
   };
-  const blocks = [...source.childNodes];
+  let mediaOrdinal = 0;
+  const blocks = [...source.childNodes].map(node => {
+    const clone = node.cloneNode(true);
+    const images = clone.nodeType === Node.ELEMENT_NODE ? [...(clone.matches('img') ? [clone] : clone.querySelectorAll('img'))] : [];
+    images.forEach(image => image.setAttribute('data-reader-source-media', String(mediaOrdinal++)));
+    return clone;
+  });
   for (let index = 0; index < blocks.length; index++) {
     yield;
     let block = blocks[index];
@@ -128,6 +138,8 @@ function* paginationSteps(source, measure, height, fits = () => measure.scrollHe
       const paragraph = document.createElement('p'); paragraph.textContent = block.textContent; block = paragraph;
     }
     if (block.nodeType !== Node.ELEMENT_NODE) continue;
+    block = block.cloneNode(true);
+    block.setAttribute('data-reader-source-node', String(index));
     const whole = block.cloneNode(true);
     measure.append(whole);
     // Prefer headings with the next block if the pair fits on an empty page.
@@ -230,9 +242,13 @@ function* paginationSteps(source, measure, height, fits = () => measure.scrollHe
   finish();
   if (!pages.length) pages.push({ html: prefix, text: prefix, start: 0, end: offset });
   // Text offsets cannot distinguish several image-only pages. Reject this
-  // unsupported anchor model before paint rather than repeat or skip artwork.
-  if (pages.length > 1 && pages.some(page => page.start === page.end)) {
+  // invalid structural map before paint rather than repeat or skip artwork.
+  if (pages.some(page => page.start === page.end && page.html && !page.structures?.length)) {
     throw new PaginationIntegrityError('A media-only page requires a structural source anchor.');
+  }
+  const reconstructedMedia = pages.flatMap(page => page.media || []);
+  if (reconstructedMedia.length !== mediaOrdinal || reconstructedMedia.some((ordinal, index) => ordinal !== index)) {
+    throw new PaginationIntegrityError('Pagination did not reconstruct source media exactly.');
   }
   if (pages.map(page => page.text).join('') !== source.textContent) {
     throw new PaginationIntegrityError('Pagination did not reconstruct the source exactly.');

@@ -5,7 +5,7 @@ export function readerNotebookKey(edition, owner = "guest") {
 }
 
 function normalizeAnchor(value) {
-  return Number.isInteger(value?.offset) && value.offset >= 0 && typeof value.revision === 'string'
+  return ((Number.isInteger(value?.offset) && value.offset >= 0) || (typeof value?.offset === 'string' && /^(node|media):\d+$/.test(value.offset))) && typeof value.revision === 'string'
     ? { offset: value.offset, revision: value.revision.slice(0, 256) } : null;
 }
 

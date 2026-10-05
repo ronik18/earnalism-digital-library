@@ -1,4 +1,4 @@
-import { readerSourceText } from './readerContent';
+import { readerSourceText, readerSourceMediaCount } from './readerContent';
 
 // Transport units remain server-authorized. This plan grants no access: every
 // selected unit must still pass the existing page endpoint with the current lease.
@@ -67,16 +67,20 @@ export async function fetchChapterWindow({ plan, slug, totalPages, fetchChunk, s
   const revision = chunks[0]?.manifest_version;
   const segmentation = chunks[0]?.segmentation_version;
   if (!revision || !segmentation || chunks.some(chunk => chunk.manifest_version !== revision || chunk.segmentation_version !== segmentation)) throw new Error('The chapter publication version changed.');
-  let offset = 0;
+  let offset = 0; let mediaOffset = 0;
   const sources = chunks.map(chunk => {
     // Count exactly the sanitized text rendered by ReaderContent, including
     // formatting whitespace. No heuristic seam stripping or inserted separators.
     const length = readerSourceText(chunk.content).length;
-    const source = { page: chunk.page_index, start: offset, end: offset + length, revision: chunk.content_sha256 || revision, value: chunk };
-    offset += length;
+    const mediaLength = readerSourceMediaCount(chunk.content);
+    const source = { mediaStart: mediaOffset, mediaEnd: mediaOffset + mediaLength, page: chunk.page_index, start: offset, end: offset + length, revision: chunk.content_sha256 || revision, value: chunk };
+    offset += length; mediaOffset += mediaLength;
     return source;
   });
-  return { html: chunks.map(chunk => chunk.content).join(''), sources, plan,
+  const digest = await globalThis.crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify([plan.key, revision, segmentation])));
+  check();
+  const structuralRevision = Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
+  return { structuralRevision, html: chunks.map(chunk => chunk.content).join(''), sources, plan,
     revision: JSON.stringify([revision, segmentation, sources.map(source => [source.page, source.revision])]),
     textLength: offset, networkMs, verificationMs, fetchMs: fetchedAt - started, assemblyMs: performance.now() - fetchedAt };
 }
@@ -84,10 +88,21 @@ export async function fetchChapterWindow({ plan, slug, totalPages, fetchChunk, s
 export function chapterAnchor(window, page, offset = 0, revision) {
   const source = window.sources.find(item => item.page === page);
   if (!source) throw new Error('The requested position is outside this authorized chapter window.');
+  if (typeof offset === 'string' && /^(node|media):\d+$/.test(offset)) {
+    if (revision !== window.structuralRevision || (offset.startsWith('media:') ? !(Number(offset.split(':')[1]) >= source.mediaStart && Number(offset.split(':')[1]) < source.mediaEnd) : page !== window.plan.first)) throw new Error('Structural anchor does not belong to this authorized chapter revision.');
+    return offset;
+  }
   if (revision && revision !== source.revision) return source.start;
+  if (source.start === source.end && source.mediaEnd > source.mediaStart && offset !== 'end') return `media:${source.mediaStart}`;
   return offset === 'end' ? source.end - 1 : source.start + Math.min(source.end - source.start, Math.max(0, Number(offset) || 0));
 }
 export function transportAnchor(window, offset) {
+  if (typeof offset === 'string' && /^(node|media):\d+$/.test(offset)) {
+    const media = offset.startsWith('media:') ? Number(offset.split(':')[1]) : null;
+    const source = media === null ? window.sources[0] : window.sources.find(item => media >= item.mediaStart && media < item.mediaEnd);
+    if (!source) throw new Error('Structural media position is outside this authorized chapter.');
+    return { page: source.page, offset, revision: window.structuralRevision };
+  }
   const source = window.sources.find(item => offset >= item.start && offset < item.end) || window.sources[window.sources.length - 1];
   return { page: source.page, offset: Math.max(0, offset - source.start), revision: source.revision };
 }

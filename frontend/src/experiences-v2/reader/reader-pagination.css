@@ -90,3 +90,9 @@
   .reader-v2__page-frame .reader-v2__page-arrow--next { right: max(0px, env(safe-area-inset-right)); }
   .reader-v2__page-frame .reader-v2__page-arrow:active:not(:disabled) { transform: translateY(-50%) scale(.94); }
 }
+/* Chapter-local labels must yield space to the fixed, accessible toolbar. */
+@media (min-width: 768px) {
+  .reader-v2__chapter { grid-template-columns: minmax(0, 1fr) auto; }
+  .reader-v2__chapter > span { min-width: 0; overflow-wrap: anywhere; }
+  .reader-v2__toolbar { min-width: max-content; }
+}

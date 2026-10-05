@@ -93,3 +93,24 @@ test('duplicate canonical chunk IDs are rejected before fetching', () => {
   const value = manifest(); value.canonical_pages.pages[1].page_id = value.canonical_pages.pages[0].page_id;
   expect(() => chapterWindowPlan(value,1,true)).toThrow();
 });
+
+test('structural anchors bind the exact authorized window revision', async () => {
+  const full = await fetch(chapterWindowPlan(manifest(), 1, true));
+  const preview = await fetch(chapterWindowPlan(manifest(), 1, false));
+  const anchor = transportAnchor(full, 'node:3');
+  expect(chapterAnchor(full, anchor.page, anchor.offset, anchor.revision)).toBe('node:3');
+  expect(() => chapterAnchor(preview, anchor.page, anchor.offset, anchor.revision)).toThrow(/Structural anchor/);
+  expect(() => chapterAnchor(full, 2, anchor.offset, anchor.revision)).toThrow(/Structural anchor/);
+  expect(() => chapterAnchor(full, anchor.page, anchor.offset, 'old')).toThrow(/Structural anchor/);
+});
+
+test('image source intervals remain distinct when text offsets are all zero', async () => {
+  const value = manifest();
+  const html = n => `<img src="/owned-${n}.png" alt="Owned fixture ${n}">`;
+  const digest = n => createHash('sha256').update(html(n)).digest('hex');
+  value.canonical_pages.pages.forEach((row, i) => { row.content_hash = digest(i + 1); });
+  const get = n => ({ ...chunk(n), content: html(n), content_sha256: digest(n) });
+  const window = await fetch(chapterWindowPlan(value, 1, true), get);
+  expect(window.textLength).toBe(0);
+  expect(window.sources.map(row => [row.mediaStart, row.mediaEnd])).toEqual(Array.from({ length: 10 }, (_, i) => [i, i + 1]));
+});

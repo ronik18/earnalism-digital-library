@@ -15,6 +15,10 @@ function readableFragment(html) {
   return template.content;
 }
 
+export function readerSourceMediaCount(html) {
+  return [...readableFragment(html).querySelectorAll('img')].filter(node => safeUrl(node.getAttribute('src') || '')).length;
+}
+
 export function readerSourceText(html) {
   const fragment = readableFragment(html);
   fragment.querySelectorAll('img').forEach(node => {

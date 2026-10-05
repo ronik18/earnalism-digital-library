@@ -119,8 +119,21 @@ test('paragraph-boundary ranges preserve whitespace without phantom empty lines'
 });
 
 
-test('multiple media-only pages fail closed rather than share an ambiguous source anchor', () => {
+test('multiple media-only pages have stable structural anchors', () => {
   const source = document.createElement('div'); source.innerHTML = '<img alt="First owned fixture"><img alt="Second owned fixture">';
   const measure = document.createElement('div');
-  expect(() => paginateRendered(source, measure, 100, () => measure.querySelectorAll('img').length <= 1)).toThrow(/structural source anchor/);
+  const pages = paginateRendered(source, measure, 100, () => measure.querySelectorAll('img').length <= 1);
+  expect(pages.map(page => page.anchor)).toEqual(['media:0', 'media:1']);
+  expect(pageForAnchor(pages, 'media:1')).toBe(1);
+  const wide = paginateRendered(source, measure, 100, () => true);
+  expect(pageForAnchor(wide, 'media:1')).toBe(0);
+  expect(pages.map(page => page.text).join('')).toBe(source.textContent);
+});
+
+test('formatting whitespace cannot turn an image-only page into a text anchor', () => {
+  const source = document.createElement('div'); source.innerHTML = '<img alt="One">\n<img alt="Two">\n';
+  const measure = document.createElement('div');
+  const pages = paginateRendered(source, measure, 100, () => measure.querySelectorAll('img').length <= 1);
+  expect(pages.map(page => page.anchor)).toEqual(['media:0', 'media:1']);
+  expect(pages.map(page => page.text).join('')).toBe(source.textContent);
 });
