@@ -1,0 +1,5399 @@
+{
+  "classification": "BENCHMARK INSTRUMENTATION RETENTION",
+  "base": "35d4326f9044c507ba2df92cd6688268f7943306",
+  "reader_head": "bf0160975c55f18499ae63b585aa78fe9a25a690",
+  "browser": "149.0.7827.55",
+  "fixture_sha256": "5600bec01ef47d6a05817dcb5e3a8459546010cd54e7791a56dc90c99493d500",
+  "scope": "Owned synthetic full Reader fixture; router controls use same React/router shell, not full production Home/Library components",
+  "arms": [
+    {
+      "arm": "idle",
+      "samples": [
+        {
+          "cycle": 0,
+          "heap": 3213252,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 1,
+          "heap": 3215452,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 2,
+          "heap": 3215452,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 3,
+          "heap": 3221872,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 4,
+          "heap": 3220568,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 5,
+          "heap": 3220568,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 6,
+          "heap": 3220568,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 7,
+          "heap": 3220568,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 8,
+          "heap": 3220700,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 9,
+          "heap": 3220780,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 10,
+          "heap": 3224848,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 11,
+          "heap": 3223708,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 12,
+          "heap": 3223708,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 13,
+          "heap": 3223708,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 14,
+          "heap": 3223708,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 15,
+          "heap": 3223708,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 16,
+          "heap": 3223708,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 17,
+          "heap": 3223708,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 18,
+          "heap": 3223708,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 19,
+          "heap": 3223708,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 20,
+          "heap": 3223708,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        }
+      ],
+      "post_warmup_slopes": {
+        "heap": 229.11428571428573,
+        "nodes": 0.0,
+        "jsEventListeners": 0.0
+      },
+      "windows": {
+        "1-5": {
+          "heap": 1534.8,
+          "nodes": 0.0,
+          "jsEventListeners": 0.0
+        },
+        "6-10": {
+          "heap": 877.2,
+          "nodes": 0.0,
+          "jsEventListeners": 0.0
+        },
+        "11-15": {
+          "heap": 0.0,
+          "nodes": 0.0,
+          "jsEventListeners": 0.0
+        },
+        "16-20": {
+          "heap": 0.0,
+          "nodes": 0.0,
+          "jsEventListeners": 0.0
+        }
+      }
+    },
+    {
+      "arm": "router-shell",
+      "samples": [
+        {
+          "cycle": 0,
+          "heap": 3214044,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 1,
+          "heap": 3270892,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 2,
+          "heap": 3337660,
+          "totalHeap": 3997696,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 3,
+          "heap": 3338544,
+          "totalHeap": 3997696,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 4,
+          "heap": 3341740,
+          "totalHeap": 3997696,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 5,
+          "heap": 3341740,
+          "totalHeap": 3997696,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 6,
+          "heap": 3342960,
+          "totalHeap": 3997696,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 7,
+          "heap": 3343052,
+          "totalHeap": 3997696,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 8,
+          "heap": 3351916,
+          "totalHeap": 3997696,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 9,
+          "heap": 3355064,
+          "totalHeap": 3997696,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 10,
+          "heap": 3355708,
+          "totalHeap": 3997696,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 11,
+          "heap": 3360148,
+          "totalHeap": 3997696,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 12,
+          "heap": 3360916,
+          "totalHeap": 3997696,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 13,
+          "heap": 3362284,
+          "totalHeap": 3997696,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 14,
+          "heap": 3363440,
+          "totalHeap": 4259840,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 15,
+          "heap": 3364640,
+          "totalHeap": 4259840,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 16,
+          "heap": 3364640,
+          "totalHeap": 4259840,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 17,
+          "heap": 3370404,
+          "totalHeap": 3997696,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 18,
+          "heap": 3372096,
+          "totalHeap": 3997696,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 19,
+          "heap": 3373396,
+          "totalHeap": 3997696,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 20,
+          "heap": 3381528,
+          "totalHeap": 4259840,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        }
+      ],
+      "post_warmup_slopes": {
+        "heap": 2330.7285714285713,
+        "nodes": 0.0,
+        "jsEventListeners": 0.0
+      },
+      "windows": {
+        "1-5": {
+          "heap": 14577.6,
+          "nodes": 0.0,
+          "jsEventListeners": 0.0
+        },
+        "6-10": {
+          "heap": 3750.8,
+          "nodes": 0.0,
+          "jsEventListeners": 0.0
+        },
+        "11-15": {
+          "heap": 1150.8,
+          "nodes": 0.0,
+          "jsEventListeners": 0.0
+        },
+        "16-20": {
+          "heap": 3676.8,
+          "nodes": 0.0,
+          "jsEventListeners": 0.0
+        }
+      }
+    },
+    {
+      "arm": "reader-shell",
+      "samples": [
+        {
+          "cycle": 0,
+          "heap": 3193388,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 1,
+          "heap": 3214676,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 2,
+          "heap": 3253672,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 3,
+          "heap": 3348776,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 4,
+          "heap": 3418200,
+          "totalHeap": 4259840,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 5,
+          "heap": 3435364,
+          "totalHeap": 4259840,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 6,
+          "heap": 3445040,
+          "totalHeap": 4259840,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 7,
+          "heap": 3464532,
+          "totalHeap": 4259840,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 8,
+          "heap": 3484600,
+          "totalHeap": 4259840,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 9,
+          "heap": 3494656,
+          "totalHeap": 4259840,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 10,
+          "heap": 3526708,
+          "totalHeap": 4259840,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 11,
+          "heap": 3530936,
+          "totalHeap": 4259840,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 12,
+          "heap": 3536128,
+          "totalHeap": 4259840,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 13,
+          "heap": 3538008,
+          "totalHeap": 4259840,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 14,
+          "heap": 3545100,
+          "totalHeap": 4259840,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 15,
+          "heap": 3547072,
+          "totalHeap": 4259840,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 16,
+          "heap": 3547072,
+          "totalHeap": 4259840,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 17,
+          "heap": 3547060,
+          "totalHeap": 4259840,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 18,
+          "heap": 3548020,
+          "totalHeap": 4259840,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 19,
+          "heap": 3553192,
+          "totalHeap": 4259840,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 20,
+          "heap": 3553192,
+          "totalHeap": 4259840,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        }
+      ],
+      "post_warmup_slopes": {
+        "heap": 6850.271428571428,
+        "nodes": 0.0,
+        "jsEventListeners": 0.0
+      },
+      "windows": {
+        "1-5": {
+          "heap": 60590.4,
+          "nodes": 0.0,
+          "jsEventListeners": 0.0
+        },
+        "6-10": {
+          "heap": 19346.0,
+          "nodes": 0.0,
+          "jsEventListeners": 0.0
+        },
+        "11-15": {
+          "heap": 4124.4,
+          "nodes": 0.0,
+          "jsEventListeners": 0.0
+        },
+        "16-20": {
+          "heap": 1837.2,
+          "nodes": 0.0,
+          "jsEventListeners": 0.0
+        }
+      }
+    },
+    {
+      "arm": "reader-handles",
+      "samples": [
+        {
+          "cycle": 0,
+          "heap": 3193388,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 1,
+          "heap": 4350532,
+          "totalHeap": 5111808,
+          "documents": 3,
+          "nodes": 545,
+          "jsEventListeners": 216,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 2,
+          "heap": 4534232,
+          "totalHeap": 5111808,
+          "documents": 3,
+          "nodes": 1058,
+          "jsEventListeners": 264,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 3,
+          "heap": 4613880,
+          "totalHeap": 5111808,
+          "documents": 3,
+          "nodes": 1571,
+          "jsEventListeners": 312,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 4,
+          "heap": 4720752,
+          "totalHeap": 5111808,
+          "documents": 3,
+          "nodes": 2084,
+          "jsEventListeners": 360,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 5,
+          "heap": 4819424,
+          "totalHeap": 5111808,
+          "documents": 3,
+          "nodes": 2597,
+          "jsEventListeners": 408,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 6,
+          "heap": 4875724,
+          "totalHeap": 5373952,
+          "documents": 3,
+          "nodes": 3110,
+          "jsEventListeners": 456,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 7,
+          "heap": 4965140,
+          "totalHeap": 5636096,
+          "documents": 3,
+          "nodes": 3623,
+          "jsEventListeners": 504,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 8,
+          "heap": 5083732,
+          "totalHeap": 5636096,
+          "documents": 3,
+          "nodes": 4136,
+          "jsEventListeners": 552,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 9,
+          "heap": 5141132,
+          "totalHeap": 5636096,
+          "documents": 3,
+          "nodes": 4649,
+          "jsEventListeners": 600,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 10,
+          "heap": 5194588,
+          "totalHeap": 5636096,
+          "documents": 3,
+          "nodes": 5162,
+          "jsEventListeners": 648,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 11,
+          "heap": 5251664,
+          "totalHeap": 5636096,
+          "documents": 3,
+          "nodes": 5675,
+          "jsEventListeners": 696,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 12,
+          "heap": 5322020,
+          "totalHeap": 5898240,
+          "documents": 3,
+          "nodes": 6188,
+          "jsEventListeners": 744,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 13,
+          "heap": 5375696,
+          "totalHeap": 5898240,
+          "documents": 3,
+          "nodes": 6701,
+          "jsEventListeners": 792,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 14,
+          "heap": 5430868,
+          "totalHeap": 5898240,
+          "documents": 3,
+          "nodes": 7214,
+          "jsEventListeners": 840,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 15,
+          "heap": 5489052,
+          "totalHeap": 6160384,
+          "documents": 3,
+          "nodes": 7727,
+          "jsEventListeners": 888,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 16,
+          "heap": 5540016,
+          "totalHeap": 6160384,
+          "documents": 3,
+          "nodes": 8240,
+          "jsEventListeners": 936,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 17,
+          "heap": 5588708,
+          "totalHeap": 6422528,
+          "documents": 3,
+          "nodes": 8753,
+          "jsEventListeners": 984,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 18,
+          "heap": 5653336,
+          "totalHeap": 6422528,
+          "documents": 3,
+          "nodes": 9266,
+          "jsEventListeners": 1032,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 19,
+          "heap": 5709492,
+          "totalHeap": 6422528,
+          "documents": 3,
+          "nodes": 9779,
+          "jsEventListeners": 1080,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 20,
+          "heap": 5766988,
+          "totalHeap": 6160384,
+          "documents": 3,
+          "nodes": 10292,
+          "jsEventListeners": 1128,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 21,
+          "heap": 4921716,
+          "totalHeap": 5373952,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 168,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          },
+          "handlesReleased": true
+        }
+      ],
+      "post_warmup_slopes": {
+        "heap": 60582.828571428574,
+        "nodes": 513.0,
+        "jsEventListeners": 48.0
+      },
+      "windows": {
+        "1-5": {
+          "heap": 112430.4,
+          "nodes": 513.0,
+          "jsEventListeners": 48.0
+        },
+        "6-10": {
+          "heap": 81372.0,
+          "nodes": 513.0,
+          "jsEventListeners": 48.0
+        },
+        "11-15": {
+          "heap": 58362.4,
+          "nodes": 513.0,
+          "jsEventListeners": 48.0
+        },
+        "16-20": {
+          "heap": 57472.8,
+          "nodes": 513.0,
+          "jsEventListeners": 48.0
+        }
+      }
+    },
+    {
+      "arm": "reader-nohandles",
+      "samples": [
+        {
+          "cycle": 0,
+          "heap": 3213268,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 1,
+          "heap": 3853508,
+          "totalHeap": 4521984,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 2,
+          "heap": 3987800,
+          "totalHeap": 4521984,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 3,
+          "heap": 4023552,
+          "totalHeap": 4521984,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 4,
+          "heap": 4095316,
+          "totalHeap": 4521984,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 5,
+          "heap": 4129736,
+          "totalHeap": 4521984,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 6,
+          "heap": 4144516,
+          "totalHeap": 4521984,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 7,
+          "heap": 4193532,
+          "totalHeap": 4784128,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 8,
+          "heap": 4271448,
+          "totalHeap": 4784128,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 9,
+          "heap": 4284920,
+          "totalHeap": 4784128,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 10,
+          "heap": 4297944,
+          "totalHeap": 4784128,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 11,
+          "heap": 4314444,
+          "totalHeap": 4784128,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 12,
+          "heap": 4330992,
+          "totalHeap": 4784128,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 13,
+          "heap": 4344588,
+          "totalHeap": 4784128,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 14,
+          "heap": 4356176,
+          "totalHeap": 4784128,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 15,
+          "heap": 4388540,
+          "totalHeap": 4784128,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 16,
+          "heap": 4400832,
+          "totalHeap": 4784128,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 17,
+          "heap": 4407972,
+          "totalHeap": 4784128,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 18,
+          "heap": 4430492,
+          "totalHeap": 4784128,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 19,
+          "heap": 4447052,
+          "totalHeap": 4784128,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 20,
+          "heap": 4463596,
+          "totalHeap": 5046272,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        }
+      ],
+      "post_warmup_slopes": {
+        "heap": 19729.1,
+        "nodes": 0.0,
+        "jsEventListeners": 0.0
+      },
+      "windows": {
+        "1-5": {
+          "heap": 65997.2,
+          "nodes": 0.0,
+          "jsEventListeners": 0.0
+        },
+        "6-10": {
+          "heap": 39824.4,
+          "nodes": 0.0,
+          "jsEventListeners": 0.0
+        },
+        "11-15": {
+          "heap": 17337.6,
+          "nodes": 0.0,
+          "jsEventListeners": 0.0
+        },
+        "16-20": {
+          "heap": 16460.8,
+          "nodes": 0.0,
+          "jsEventListeners": 0.0
+        }
+      }
+    },
+    {
+      "arm": "reader-handles-released",
+      "samples": [
+        {
+          "cycle": 0,
+          "heap": 3193388,
+          "totalHeap": 3735552,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 155,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {},
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0
+          }
+        },
+        {
+          "cycle": 1,
+          "heap": 4300952,
+          "totalHeap": 4849664,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 168,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 2,
+          "heap": 4437992,
+          "totalHeap": 4849664,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 168,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 3,
+          "heap": 4473592,
+          "totalHeap": 5111808,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 168,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 4,
+          "heap": 4536484,
+          "totalHeap": 5111808,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 168,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 5,
+          "heap": 4585036,
+          "totalHeap": 5111808,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 168,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 6,
+          "heap": 4597532,
+          "totalHeap": 5111808,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 168,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 7,
+          "heap": 4646992,
+          "totalHeap": 5373952,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 168,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 8,
+          "heap": 4724404,
+          "totalHeap": 5373952,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 168,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 9,
+          "heap": 4737868,
+          "totalHeap": 5373952,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 168,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 10,
+          "heap": 4750940,
+          "totalHeap": 5373952,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 168,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 11,
+          "heap": 4768020,
+          "totalHeap": 5373952,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 168,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 12,
+          "heap": 4797548,
+          "totalHeap": 5373952,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 168,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 13,
+          "heap": 4810944,
+          "totalHeap": 5373952,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 168,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 14,
+          "heap": 4825668,
+          "totalHeap": 5373952,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 168,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 15,
+          "heap": 4844040,
+          "totalHeap": 5373952,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 168,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 16,
+          "heap": 4853872,
+          "totalHeap": 5373952,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 168,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 17,
+          "heap": 4862164,
+          "totalHeap": 5636096,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 168,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 18,
+          "heap": 4886320,
+          "totalHeap": 5636096,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 168,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 19,
+          "heap": 4902856,
+          "totalHeap": 5636096,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 168,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        },
+        {
+          "cycle": 20,
+          "heap": 4919020,
+          "totalHeap": 5636096,
+          "documents": 3,
+          "nodes": 32,
+          "jsEventListeners": 168,
+          "attachedNodes": 14,
+          "mountedPages": 0,
+          "images": 0,
+          "timers": 0,
+          "rafs": 0,
+          "activeObservers": {
+            "MutationObserver": 1
+          },
+          "eventBalance": {
+            "window:test": 0,
+            "document:selectionchange": 1,
+            "window:popstate": 1,
+            "window:resize": 0,
+            "visualViewport:resize": 0,
+            "window:keydown": 0,
+            "window:__playwright_global_listeners_check__": 1,
+            "window:mousemove": 1,
+            "window:pointerdown": 1,
+            "window:pointerup": 1,
+            "window:touchstart": 1,
+            "window:touchend": 1,
+            "window:touchcancel": 1,
+            "window:mousedown": 1,
+            "window:mouseup": 1,
+            "window:click": 1,
+            "window:auxclick": 1,
+            "window:dblclick": 1,
+            "window:contextmenu": 1
+          }
+        }
+      ],
+      "post_warmup_slopes": {
+        "heap": 19933.285714285714,
+        "nodes": 0.0,
+        "jsEventListeners": 0.0
+      },
+      "windows": {
+        "1-5": {
+          "heap": 66666.0,
+          "nodes": 0.0,
+          "jsEventListeners": 0.0
+        },
+        "6-10": {
+          "heap": 39769.2,
+          "nodes": 0.0,
+          "jsEventListeners": 0.0
+        },
+        "11-15": {
+          "heap": 18016.0,
+          "nodes": 0.0,
+          "jsEventListeners": 0.0
+        },
+        "16-20": {
+          "heap": 17098.8,
+          "nodes": 0.0,
+          "jsEventListeners": 0.0
+        }
+      }
+    }
+  ],
+  "snapshots": [
+    {
+      "snapshot": "idle-0.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "idle-10.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "idle-15.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "idle-20.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "idle-5.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "reader-handles-0.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "reader-handles-10.heapsnapshot",
+      "detached_nodes": 2700,
+      "detached_families": [
+        [
+          "SVGPathElement",
+          330
+        ],
+        [
+          "<p>",
+          250
+        ],
+        [
+          "SVGSVGElement",
+          230
+        ],
+        [
+          "Text",
+          220
+        ],
+        [
+          "<button type=\"button\">",
+          130
+        ],
+        [
+          "<span>",
+          120
+        ],
+        [
+          "SVGCircleElement",
+          90
+        ],
+        [
+          "<li>",
+          80
+        ],
+        [
+          "<h2>",
+          40
+        ],
+        [
+          "<div>",
+          30
+        ]
+      ]
+    },
+    {
+      "snapshot": "reader-handles-15.heapsnapshot",
+      "detached_nodes": 4050,
+      "detached_families": [
+        [
+          "SVGPathElement",
+          495
+        ],
+        [
+          "<p>",
+          375
+        ],
+        [
+          "SVGSVGElement",
+          345
+        ],
+        [
+          "Text",
+          330
+        ],
+        [
+          "<button type=\"button\">",
+          195
+        ],
+        [
+          "<span>",
+          180
+        ],
+        [
+          "SVGCircleElement",
+          135
+        ],
+        [
+          "<li>",
+          120
+        ],
+        [
+          "<h2>",
+          60
+        ],
+        [
+          "<div>",
+          45
+        ]
+      ]
+    },
+    {
+      "snapshot": "reader-handles-20.heapsnapshot",
+      "detached_nodes": 5400,
+      "detached_families": [
+        [
+          "SVGPathElement",
+          660
+        ],
+        [
+          "<p>",
+          500
+        ],
+        [
+          "SVGSVGElement",
+          460
+        ],
+        [
+          "Text",
+          440
+        ],
+        [
+          "<button type=\"button\">",
+          260
+        ],
+        [
+          "<span>",
+          240
+        ],
+        [
+          "SVGCircleElement",
+          180
+        ],
+        [
+          "<li>",
+          160
+        ],
+        [
+          "<h2>",
+          80
+        ],
+        [
+          "<div>",
+          60
+        ]
+      ]
+    },
+    {
+      "snapshot": "reader-handles-21.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "reader-handles-5.heapsnapshot",
+      "detached_nodes": 1350,
+      "detached_families": [
+        [
+          "SVGPathElement",
+          165
+        ],
+        [
+          "<p>",
+          125
+        ],
+        [
+          "SVGSVGElement",
+          115
+        ],
+        [
+          "Text",
+          110
+        ],
+        [
+          "<button type=\"button\">",
+          65
+        ],
+        [
+          "<span>",
+          60
+        ],
+        [
+          "SVGCircleElement",
+          45
+        ],
+        [
+          "<li>",
+          40
+        ],
+        [
+          "<h2>",
+          20
+        ],
+        [
+          "<div>",
+          15
+        ]
+      ]
+    },
+    {
+      "snapshot": "reader-handles-released-0.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "reader-handles-released-10.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "reader-handles-released-15.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "reader-handles-released-20.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "reader-handles-released-5.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "reader-nohandles-0.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "reader-nohandles-10.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "reader-nohandles-15.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "reader-nohandles-20.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "reader-nohandles-5.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "reader-shell-0.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "reader-shell-10.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "reader-shell-15.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "reader-shell-20.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "reader-shell-5.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "router-shell-0.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "router-shell-10.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "router-shell-15.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "router-shell-20.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    },
+    {
+      "snapshot": "router-shell-5.heapsnapshot",
+      "detached_nodes": 0,
+      "detached_families": []
+    }
+  ],
+  "dominators": [
+    {
+      "snapshot": "reader-handles-5.heapsnapshot",
+      "global_handle_retained_bytes": 897980,
+      "reader_tree_count": 5
+    },
+    {
+      "snapshot": "reader-handles-20.heapsnapshot",
+      "global_handle_retained_bytes": 3396252,
+      "reader_tree_count": 11
+    },
+    {
+      "snapshot": "reader-handles-21.heapsnapshot",
+      "global_handle_retained_bytes": 95272,
+      "reader_tree_count": 0
+    },
+    {
+      "snapshot": "reader-nohandles-20.heapsnapshot",
+      "global_handle_retained_bytes": 94232,
+      "reader_tree_count": 0
+    }
+  ],
+  "limitations": [
+    "Router control is a thin fixture shell, not production Home/Library components.",
+    "API functions are mocked: no real network cancellation or authorization acceptance proof.",
+    "Only one chapter with three authorized preview transport chunks exercised.",
+    "Generated media figure fixture has layout overflow (460px clientHeight / 1472px scrollHeight); not a media-layout acceptance result.",
+    "Residual heap slope includes JIT and instrumentation metadata; no blanket leak-free claim.",
+    "Native Chrome raw CDP GC unavailable; matched runs use headless Chromium with HeapProfiler.collectGarbage."
+  ],
+  "original_discarded_handle_reproduction": {
+    "source_revision": "bf0160975c55f18499ae63b585aa78fe9a25a690",
+    "browser": "149.0.7827.55",
+    "fixture_sha256": "5600bec01ef47d6a05817dcb5e3a8459546010cd54e7791a56dc90c99493d500",
+    "scope": "Owned synthetic full Reader fixture; router controls use same React/router shell, not full production Home/Library components",
+    "rows": [
+      {
+        "arm": "reader-discarded-handles",
+        "samples": [
+          {
+            "cycle": 0,
+            "heap": 3193392,
+            "totalHeap": 3473408,
+            "documents": 3,
+            "nodes": 32,
+            "jsEventListeners": 155,
+            "attachedNodes": 14,
+            "mountedPages": 0,
+            "images": 0,
+            "timers": 0,
+            "rafs": 0,
+            "activeObservers": {},
+            "eventBalance": {
+              "window:test": 0,
+              "document:selectionchange": 1,
+              "window:popstate": 1,
+              "window:resize": 0,
+              "visualViewport:resize": 0,
+              "window:keydown": 0
+            }
+          },
+          {
+            "cycle": 1,
+            "heap": 4350468,
+            "totalHeap": 5111808,
+            "documents": 3,
+            "nodes": 545,
+            "jsEventListeners": 216,
+            "attachedNodes": 14,
+            "mountedPages": 0,
+            "images": 0,
+            "timers": 0,
+            "rafs": 0,
+            "activeObservers": {
+              "MutationObserver": 1
+            },
+            "eventBalance": {
+              "window:test": 0,
+              "document:selectionchange": 1,
+              "window:popstate": 1,
+              "window:resize": 0,
+              "visualViewport:resize": 0,
+              "window:keydown": 0,
+              "window:__playwright_global_listeners_check__": 1,
+              "window:mousemove": 1,
+              "window:pointerdown": 1,
+              "window:pointerup": 1,
+              "window:touchstart": 1,
+              "window:touchend": 1,
+              "window:touchcancel": 1,
+              "window:mousedown": 1,
+              "window:mouseup": 1,
+              "window:click": 1,
+              "window:auxclick": 1,
+              "window:dblclick": 1,
+              "window:contextmenu": 1
+            }
+          },
+          {
+            "cycle": 2,
+            "heap": 4530824,
+            "totalHeap": 5111808,
+            "documents": 3,
+            "nodes": 1058,
+            "jsEventListeners": 264,
+            "attachedNodes": 14,
+            "mountedPages": 0,
+            "images": 0,
+            "timers": 0,
+            "rafs": 0,
+            "activeObservers": {
+              "MutationObserver": 1
+            },
+            "eventBalance": {
+              "window:test": 0,
+              "document:selectionchange": 1,
+              "window:popstate": 1,
+              "window:resize": 0,
+              "visualViewport:resize": 0,
+              "window:keydown": 0,
+              "window:__playwright_global_listeners_check__": 1,
+              "window:mousemove": 1,
+              "window:pointerdown": 1,
+              "window:pointerup": 1,
+              "window:touchstart": 1,
+              "window:touchend": 1,
+              "window:touchcancel": 1,
+              "window:mousedown": 1,
+              "window:mouseup": 1,
+              "window:click": 1,
+              "window:auxclick": 1,
+              "window:dblclick": 1,
+              "window:contextmenu": 1
+            }
+          },
+          {
+            "cycle": 3,
+            "heap": 4610568,
+            "totalHeap": 5111808,
+            "documents": 3,
+            "nodes": 1571,
+            "jsEventListeners": 312,
+            "attachedNodes": 14,
+            "mountedPages": 0,
+            "images": 0,
+            "timers": 0,
+            "rafs": 0,
+            "activeObservers": {
+              "MutationObserver": 1
+            },
+            "eventBalance": {
+              "window:test": 0,
+              "document:selectionchange": 1,
+              "window:popstate": 1,
+              "window:resize": 0,
+              "visualViewport:resize": 0,
+              "window:keydown": 0,
+              "window:__playwright_global_listeners_check__": 1,
+              "window:mousemove": 1,
+              "window:pointerdown": 1,
+              "window:pointerup": 1,
+              "window:touchstart": 1,
+              "window:touchend": 1,
+              "window:touchcancel": 1,
+              "window:mousedown": 1,
+              "window:mouseup": 1,
+              "window:click": 1,
+              "window:auxclick": 1,
+              "window:dblclick": 1,
+              "window:contextmenu": 1
+            }
+          },
+          {
+            "cycle": 4,
+            "heap": 4713788,
+            "totalHeap": 5111808,
+            "documents": 3,
+            "nodes": 2084,
+            "jsEventListeners": 360,
+            "attachedNodes": 14,
+            "mountedPages": 0,
+            "images": 0,
+            "timers": 0,
+            "rafs": 0,
+            "activeObservers": {
+              "MutationObserver": 1
+            },
+            "eventBalance": {
+              "window:test": 0,
+              "document:selectionchange": 1,
+              "window:popstate": 1,
+              "window:resize": 0,
+              "visualViewport:resize": 0,
+              "window:keydown": 0,
+              "window:__playwright_global_listeners_check__": 1,
+              "window:mousemove": 1,
+              "window:pointerdown": 1,
+              "window:pointerup": 1,
+              "window:touchstart": 1,
+              "window:touchend": 1,
+              "window:touchcancel": 1,
+              "window:mousedown": 1,
+              "window:mouseup": 1,
+              "window:click": 1,
+              "window:auxclick": 1,
+              "window:dblclick": 1,
+              "window:contextmenu": 1
+            }
+          },
+          {
+            "cycle": 5,
+            "heap": 4808576,
+            "totalHeap": 5373952,
+            "documents": 3,
+            "nodes": 2597,
+            "jsEventListeners": 408,
+            "attachedNodes": 14,
+            "mountedPages": 0,
+            "images": 0,
+            "timers": 0,
+            "rafs": 0,
+            "activeObservers": {
+              "MutationObserver": 1
+            },
+            "eventBalance": {
+              "window:test": 0,
+              "document:selectionchange": 1,
+              "window:popstate": 1,
+              "window:resize": 0,
+              "visualViewport:resize": 0,
+              "window:keydown": 0,
+              "window:__playwright_global_listeners_check__": 1,
+              "window:mousemove": 1,
+              "window:pointerdown": 1,
+              "window:pointerup": 1,
+              "window:touchstart": 1,
+              "window:touchend": 1,
+              "window:touchcancel": 1,
+              "window:mousedown": 1,
+              "window:mouseup": 1,
+              "window:click": 1,
+              "window:auxclick": 1,
+              "window:dblclick": 1,
+              "window:contextmenu": 1
+            }
+          },
+          {
+            "cycle": 6,
+            "heap": 4861400,
+            "totalHeap": 5373952,
+            "documents": 3,
+            "nodes": 3110,
+            "jsEventListeners": 456,
+            "attachedNodes": 14,
+            "mountedPages": 0,
+            "images": 0,
+            "timers": 0,
+            "rafs": 0,
+            "activeObservers": {
+              "MutationObserver": 1
+            },
+            "eventBalance": {
+              "window:test": 0,
+              "document:selectionchange": 1,
+              "window:popstate": 1,
+              "window:resize": 0,
+              "visualViewport:resize": 0,
+              "window:keydown": 0,
+              "window:__playwright_global_listeners_check__": 1,
+              "window:mousemove": 1,
+              "window:pointerdown": 1,
+              "window:pointerup": 1,
+              "window:touchstart": 1,
+              "window:touchend": 1,
+              "window:touchcancel": 1,
+              "window:mousedown": 1,
+              "window:mouseup": 1,
+              "window:click": 1,
+              "window:auxclick": 1,
+              "window:dblclick": 1,
+              "window:contextmenu": 1
+            }
+          },
+          {
+            "cycle": 7,
+            "heap": 4950876,
+            "totalHeap": 5636096,
+            "documents": 3,
+            "nodes": 3623,
+            "jsEventListeners": 504,
+            "attachedNodes": 14,
+            "mountedPages": 0,
+            "images": 0,
+            "timers": 0,
+            "rafs": 0,
+            "activeObservers": {
+              "MutationObserver": 1
+            },
+            "eventBalance": {
+              "window:test": 0,
+              "document:selectionchange": 1,
+              "window:popstate": 1,
+              "window:resize": 0,
+              "visualViewport:resize": 0,
+              "window:keydown": 0,
+              "window:__playwright_global_listeners_check__": 1,
+              "window:mousemove": 1,
+              "window:pointerdown": 1,
+              "window:pointerup": 1,
+              "window:touchstart": 1,
+              "window:touchend": 1,
+              "window:touchcancel": 1,
+              "window:mousedown": 1,
+              "window:mouseup": 1,
+              "window:click": 1,
+              "window:auxclick": 1,
+              "window:dblclick": 1,
+              "window:contextmenu": 1
+            }
+          },
+          {
+            "cycle": 8,
+            "heap": 5069360,
+            "totalHeap": 5636096,
+            "documents": 3,
+            "nodes": 4136,
+            "jsEventListeners": 552,
+            "attachedNodes": 14,
+            "mountedPages": 0,
+            "images": 0,
+            "timers": 0,
+            "rafs": 0,
+            "activeObservers": {
+              "MutationObserver": 1
+            },
+            "eventBalance": {
+              "window:test": 0,
+              "document:selectionchange": 1,
+              "window:popstate": 1,
+              "window:resize": 0,
+              "visualViewport:resize": 0,
+              "window:keydown": 0,
+              "window:__playwright_global_listeners_check__": 1,
+              "window:mousemove": 1,
+              "window:pointerdown": 1,
+              "window:pointerup": 1,
+              "window:touchstart": 1,
+              "window:touchend": 1,
+              "window:touchcancel": 1,
+              "window:mousedown": 1,
+              "window:mouseup": 1,
+              "window:click": 1,
+              "window:auxclick": 1,
+              "window:dblclick": 1,
+              "window:contextmenu": 1
+            }
+          },
+          {
+            "cycle": 9,
+            "heap": 5123208,
+            "totalHeap": 5636096,
+            "documents": 3,
+            "nodes": 4649,
+            "jsEventListeners": 600,
+            "attachedNodes": 14,
+            "mountedPages": 0,
+            "images": 0,
+            "timers": 0,
+            "rafs": 0,
+            "activeObservers": {
+              "MutationObserver": 1
+            },
+            "eventBalance": {
+              "window:test": 0,
+              "document:selectionchange": 1,
+              "window:popstate": 1,
+              "window:resize": 0,
+              "visualViewport:resize": 0,
+              "window:keydown": 0,
+              "window:__playwright_global_listeners_check__": 1,
+              "window:mousemove": 1,
+              "window:pointerdown": 1,
+              "window:pointerup": 1,
+              "window:touchstart": 1,
+              "window:touchend": 1,
+              "window:touchcancel": 1,
+              "window:mousedown": 1,
+              "window:mouseup": 1,
+              "window:click": 1,
+              "window:auxclick": 1,
+              "window:dblclick": 1,
+              "window:contextmenu": 1
+            }
+          },
+          {
+            "cycle": 10,
+            "heap": 5180248,
+            "totalHeap": 5636096,
+            "documents": 3,
+            "nodes": 5162,
+            "jsEventListeners": 648,
+            "attachedNodes": 14,
+            "mountedPages": 0,
+            "images": 0,
+            "timers": 0,
+            "rafs": 0,
+            "activeObservers": {
+              "MutationObserver": 1
+            },
+            "eventBalance": {
+              "window:test": 0,
+              "document:selectionchange": 1,
+              "window:popstate": 1,
+              "window:resize": 0,
+              "visualViewport:resize": 0,
+              "window:keydown": 0,
+              "window:__playwright_global_listeners_check__": 1,
+              "window:mousemove": 1,
+              "window:pointerdown": 1,
+              "window:pointerup": 1,
+              "window:touchstart": 1,
+              "window:touchend": 1,
+              "window:touchcancel": 1,
+              "window:mousedown": 1,
+              "window:mouseup": 1,
+              "window:click": 1,
+              "window:auxclick": 1,
+              "window:dblclick": 1,
+              "window:contextmenu": 1
+            }
+          },
+          {
+            "cycle": 11,
+            "heap": 5237332,
+            "totalHeap": 5898240,
+            "documents": 3,
+            "nodes": 5675,
+            "jsEventListeners": 696,
+            "attachedNodes": 14,
+            "mountedPages": 0,
+            "images": 0,
+            "timers": 0,
+            "rafs": 0,
+            "activeObservers": {
+              "MutationObserver": 1
+            },
+            "eventBalance": {
+              "window:test": 0,
+              "document:selectionchange": 1,
+              "window:popstate": 1,
+              "window:resize": 0,
+              "visualViewport:resize": 0,
+              "window:keydown": 0,
+              "window:__playwright_global_listeners_check__": 1,
+              "window:mousemove": 1,
+              "window:pointerdown": 1,
+              "window:pointerup": 1,
+              "window:touchstart": 1,
+              "window:touchend": 1,
+              "window:touchcancel": 1,
+              "window:mousedown": 1,
+              "window:mouseup": 1,
+              "window:click": 1,
+              "window:auxclick": 1,
+              "window:dblclick": 1,
+              "window:contextmenu": 1
+            }
+          },
+          {
+            "cycle": 12,
+            "heap": 5307748,
+            "totalHeap": 5898240,
+            "documents": 3,
+            "nodes": 6188,
+            "jsEventListeners": 744,
+            "attachedNodes": 14,
+            "mountedPages": 0,
+            "images": 0,
+            "timers": 0,
+            "rafs": 0,
+            "activeObservers": {
+              "MutationObserver": 1
+            },
+            "eventBalance": {
+              "window:test": 0,
+              "document:selectionchange": 1,
+              "window:popstate": 1,
+              "window:resize": 0,
+              "visualViewport:resize": 0,
+              "window:keydown": 0,
+              "window:__playwright_global_listeners_check__": 1,
+              "window:mousemove": 1,
+              "window:pointerdown": 1,
+              "window:pointerup": 1,
+              "window:touchstart": 1,
+              "window:touchend": 1,
+              "window:touchcancel": 1,
+              "window:mousedown": 1,
+              "window:mouseup": 1,
+              "window:click": 1,
+              "window:auxclick": 1,
+              "window:dblclick": 1,
+              "window:contextmenu": 1
+            }
+          },
+          {
+            "cycle": 13,
+            "heap": 5361336,
+            "totalHeap": 5898240,
+            "documents": 3,
+            "nodes": 6701,
+            "jsEventListeners": 792,
+            "attachedNodes": 14,
+            "mountedPages": 0,
+            "images": 0,
+            "timers": 0,
+            "rafs": 0,
+            "activeObservers": {
+              "MutationObserver": 1
+            },
+            "eventBalance": {
+              "window:test": 0,
+              "document:selectionchange": 1,
+              "window:popstate": 1,
+              "window:resize": 0,
+              "visualViewport:resize": 0,
+              "window:keydown": 0,
+              "window:__playwright_global_listeners_check__": 1,
+              "window:mousemove": 1,
+              "window:pointerdown": 1,
+              "window:pointerup": 1,
+              "window:touchstart": 1,
+              "window:touchend": 1,
+              "window:touchcancel": 1,
+              "window:mousedown": 1,
+              "window:mouseup": 1,
+              "window:click": 1,
+              "window:auxclick": 1,
+              "window:dblclick": 1,
+              "window:contextmenu": 1
+            }
+          },
+          {
+            "cycle": 14,
+            "heap": 5416520,
+            "totalHeap": 5898240,
+            "documents": 3,
+            "nodes": 7214,
+            "jsEventListeners": 840,
+            "attachedNodes": 14,
+            "mountedPages": 0,
+            "images": 0,
+            "timers": 0,
+            "rafs": 0,
+            "activeObservers": {
+              "MutationObserver": 1
+            },
+            "eventBalance": {
+              "window:test": 0,
+              "document:selectionchange": 1,
+              "window:popstate": 1,
+              "window:resize": 0,
+              "visualViewport:resize": 0,
+              "window:keydown": 0,
+              "window:__playwright_global_listeners_check__": 1,
+              "window:mousemove": 1,
+              "window:pointerdown": 1,
+              "window:pointerup": 1,
+              "window:touchstart": 1,
+              "window:touchend": 1,
+              "window:touchcancel": 1,
+              "window:mousedown": 1,
+              "window:mouseup": 1,
+              "window:click": 1,
+              "window:auxclick": 1,
+              "window:dblclick": 1,
+              "window:contextmenu": 1
+            }
+          },
+          {
+            "cycle": 15,
+            "heap": 5474776,
+            "totalHeap": 6160384,
+            "documents": 3,
+            "nodes": 7727,
+            "jsEventListeners": 888,
+            "attachedNodes": 14,
+            "mountedPages": 0,
+            "images": 0,
+            "timers": 0,
+            "rafs": 0,
+            "activeObservers": {
+              "MutationObserver": 1
+            },
+            "eventBalance": {
+              "window:test": 0,
+              "document:selectionchange": 1,
+              "window:popstate": 1,
+              "window:resize": 0,
+              "visualViewport:resize": 0,
+              "window:keydown": 0,
+              "window:__playwright_global_listeners_check__": 1,
+              "window:mousemove": 1,
+              "window:pointerdown": 1,
+              "window:pointerup": 1,
+              "window:touchstart": 1,
+              "window:touchend": 1,
+              "window:touchcancel": 1,
+              "window:mousedown": 1,
+              "window:mouseup": 1,
+              "window:click": 1,
+              "window:auxclick": 1,
+              "window:dblclick": 1,
+              "window:contextmenu": 1
+            }
+          },
+          {
+            "cycle": 16,
+            "heap": 5525680,
+            "totalHeap": 6160384,
+            "documents": 3,
+            "nodes": 8240,
+            "jsEventListeners": 936,
+            "attachedNodes": 14,
+            "mountedPages": 0,
+            "images": 0,
+            "timers": 0,
+            "rafs": 0,
+            "activeObservers": {
+              "MutationObserver": 1
+            },
+            "eventBalance": {
+              "window:test": 0,
+              "document:selectionchange": 1,
+              "window:popstate": 1,
+              "window:resize": 0,
+              "visualViewport:resize": 0,
+              "window:keydown": 0,
+              "window:__playwright_global_listeners_check__": 1,
+              "window:mousemove": 1,
+              "window:pointerdown": 1,
+              "window:pointerup": 1,
+              "window:touchstart": 1,
+              "window:touchend": 1,
+              "window:touchcancel": 1,
+              "window:mousedown": 1,
+              "window:mouseup": 1,
+              "window:click": 1,
+              "window:auxclick": 1,
+              "window:dblclick": 1,
+              "window:contextmenu": 1
+            }
+          },
+          {
+            "cycle": 17,
+            "heap": 5574396,
+            "totalHeap": 6422528,
+            "documents": 3,
+            "nodes": 8753,
+            "jsEventListeners": 984,
+            "attachedNodes": 14,
+            "mountedPages": 0,
+            "images": 0,
+            "timers": 0,
+            "rafs": 0,
+            "activeObservers": {
+              "MutationObserver": 1
+            },
+            "eventBalance": {
+              "window:test": 0,
+              "document:selectionchange": 1,
+              "window:popstate": 1,
+              "window:resize": 0,
+              "visualViewport:resize": 0,
+              "window:keydown": 0,
+              "window:__playwright_global_listeners_check__": 1,
+              "window:mousemove": 1,
+              "window:pointerdown": 1,
+              "window:pointerup": 1,
+              "window:touchstart": 1,
+              "window:touchend": 1,
+              "window:touchcancel": 1,
+              "window:mousedown": 1,
+              "window:mouseup": 1,
+              "window:click": 1,
+              "window:auxclick": 1,
+              "window:dblclick": 1,
+              "window:contextmenu": 1
+            }
+          },
+          {
+            "cycle": 18,
+            "heap": 5639012,
+            "totalHeap": 6422528,
+            "documents": 3,
+            "nodes": 9266,
+            "jsEventListeners": 1032,
+            "attachedNodes": 14,
+            "mountedPages": 0,
+            "images": 0,
+            "timers": 0,
+            "rafs": 0,
+            "activeObservers": {
+              "MutationObserver": 1
+            },
+            "eventBalance": {
+              "window:test": 0,
+              "document:selectionchange": 1,
+              "window:popstate": 1,
+              "window:resize": 0,
+              "visualViewport:resize": 0,
+              "window:keydown": 0,
+              "window:__playwright_global_listeners_check__": 1,
+              "window:mousemove": 1,
+              "window:pointerdown": 1,
+              "window:pointerup": 1,
+              "window:touchstart": 1,
+              "window:touchend": 1,
+              "window:touchcancel": 1,
+              "window:mousedown": 1,
+              "window:mouseup": 1,
+              "window:click": 1,
+              "window:auxclick": 1,
+              "window:dblclick": 1,
+              "window:contextmenu": 1
+            }
+          },
+          {
+            "cycle": 19,
+            "heap": 5695248,
+            "totalHeap": 6422528,
+            "documents": 3,
+            "nodes": 9779,
+            "jsEventListeners": 1080,
+            "attachedNodes": 14,
+            "mountedPages": 0,
+            "images": 0,
+            "timers": 0,
+            "rafs": 0,
+            "activeObservers": {
+              "MutationObserver": 1
+            },
+            "eventBalance": {
+              "window:test": 0,
+              "document:selectionchange": 1,
+              "window:popstate": 1,
+              "window:resize": 0,
+              "visualViewport:resize": 0,
+              "window:keydown": 0,
+              "window:__playwright_global_listeners_check__": 1,
+              "window:mousemove": 1,
+              "window:pointerdown": 1,
+              "window:pointerup": 1,
+              "window:touchstart": 1,
+              "window:touchend": 1,
+              "window:touchcancel": 1,
+              "window:mousedown": 1,
+              "window:mouseup": 1,
+              "window:click": 1,
+              "window:auxclick": 1,
+              "window:dblclick": 1,
+              "window:contextmenu": 1
+            }
+          },
+          {
+            "cycle": 20,
+            "heap": 5752632,
+            "totalHeap": 6422528,
+            "documents": 3,
+            "nodes": 10292,
+            "jsEventListeners": 1128,
+            "attachedNodes": 14,
+            "mountedPages": 0,
+            "images": 0,
+            "timers": 0,
+            "rafs": 0,
+            "activeObservers": {
+              "MutationObserver": 1
+            },
+            "eventBalance": {
+              "window:test": 0,
+              "document:selectionchange": 1,
+              "window:popstate": 1,
+              "window:resize": 0,
+              "visualViewport:resize": 0,
+              "window:keydown": 0,
+              "window:__playwright_global_listeners_check__": 1,
+              "window:mousemove": 1,
+              "window:pointerdown": 1,
+              "window:pointerup": 1,
+              "window:touchstart": 1,
+              "window:touchend": 1,
+              "window:touchcancel": 1,
+              "window:mousedown": 1,
+              "window:mouseup": 1,
+              "window:click": 1,
+              "window:auxclick": 1,
+              "window:dblclick": 1,
+              "window:contextmenu": 1
+            }
+          }
+        ],
+        "errors": []
+      }
+    ]
+  },
+  "repagination_samples": {
+    "media": false,
+    "samples": [
+      {
+        "cycle": 0,
+        "heap": 3481804,
+        "documents": 3,
+        "nodes": 547,
+        "jsEventListeners": 210,
+        "mounted": 1,
+        "images": 1,
+        "pages": 24,
+        "client": 460,
+        "scroll": 460,
+        "activeObservers": {
+          "ResizeObserver": 2
+        },
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 2,
+          "visualViewport:resize": 2,
+          "window:keydown": 1
+        }
+      },
+      {
+        "cycle": 1,
+        "heap": 4224396,
+        "documents": 3,
+        "nodes": 721,
+        "jsEventListeners": 214,
+        "mounted": 1,
+        "images": 1,
+        "pages": 24,
+        "client": 460,
+        "scroll": 460,
+        "activeObservers": {
+          "ResizeObserver": 2
+        },
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 2,
+          "visualViewport:resize": 2,
+          "window:keydown": 1
+        }
+      },
+      {
+        "cycle": 2,
+        "heap": 4261276,
+        "documents": 3,
+        "nodes": 706,
+        "jsEventListeners": 212,
+        "mounted": 1,
+        "images": 1,
+        "pages": 24,
+        "client": 460,
+        "scroll": 460,
+        "activeObservers": {
+          "ResizeObserver": 2
+        },
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 2,
+          "visualViewport:resize": 2,
+          "window:keydown": 1
+        }
+      },
+      {
+        "cycle": 3,
+        "heap": 4304860,
+        "documents": 3,
+        "nodes": 706,
+        "jsEventListeners": 212,
+        "mounted": 1,
+        "images": 1,
+        "pages": 24,
+        "client": 460,
+        "scroll": 460,
+        "activeObservers": {
+          "ResizeObserver": 2
+        },
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 2,
+          "visualViewport:resize": 2,
+          "window:keydown": 1
+        }
+      },
+      {
+        "cycle": 4,
+        "heap": 4367160,
+        "documents": 3,
+        "nodes": 706,
+        "jsEventListeners": 212,
+        "mounted": 1,
+        "images": 1,
+        "pages": 24,
+        "client": 460,
+        "scroll": 460,
+        "activeObservers": {
+          "ResizeObserver": 2
+        },
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 2,
+          "visualViewport:resize": 2,
+          "window:keydown": 1
+        }
+      },
+      {
+        "cycle": 5,
+        "heap": 4398736,
+        "documents": 3,
+        "nodes": 706,
+        "jsEventListeners": 212,
+        "mounted": 1,
+        "images": 1,
+        "pages": 24,
+        "client": 460,
+        "scroll": 460,
+        "activeObservers": {
+          "ResizeObserver": 2
+        },
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 2,
+          "visualViewport:resize": 2,
+          "window:keydown": 1
+        }
+      },
+      {
+        "cycle": 6,
+        "heap": 4280980,
+        "documents": 3,
+        "nodes": 706,
+        "jsEventListeners": 212,
+        "mounted": 1,
+        "images": 1,
+        "pages": 24,
+        "client": 460,
+        "scroll": 460,
+        "activeObservers": {
+          "ResizeObserver": 2
+        },
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 2,
+          "visualViewport:resize": 2,
+          "window:keydown": 1
+        }
+      },
+      {
+        "cycle": 7,
+        "heap": 4304144,
+        "documents": 3,
+        "nodes": 706,
+        "jsEventListeners": 212,
+        "mounted": 1,
+        "images": 1,
+        "pages": 24,
+        "client": 460,
+        "scroll": 460,
+        "activeObservers": {
+          "ResizeObserver": 2
+        },
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 2,
+          "visualViewport:resize": 2,
+          "window:keydown": 1
+        }
+      },
+      {
+        "cycle": 8,
+        "heap": 4329992,
+        "documents": 3,
+        "nodes": 706,
+        "jsEventListeners": 212,
+        "mounted": 1,
+        "images": 1,
+        "pages": 24,
+        "client": 460,
+        "scroll": 460,
+        "activeObservers": {
+          "ResizeObserver": 2
+        },
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 2,
+          "visualViewport:resize": 2,
+          "window:keydown": 1
+        }
+      },
+      {
+        "cycle": 9,
+        "heap": 4344836,
+        "documents": 3,
+        "nodes": 706,
+        "jsEventListeners": 212,
+        "mounted": 1,
+        "images": 1,
+        "pages": 24,
+        "client": 460,
+        "scroll": 460,
+        "activeObservers": {
+          "ResizeObserver": 2
+        },
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 2,
+          "visualViewport:resize": 2,
+          "window:keydown": 1
+        }
+      },
+      {
+        "cycle": 10,
+        "heap": 4380300,
+        "documents": 3,
+        "nodes": 706,
+        "jsEventListeners": 212,
+        "mounted": 1,
+        "images": 1,
+        "pages": 24,
+        "client": 460,
+        "scroll": 460,
+        "activeObservers": {
+          "ResizeObserver": 2
+        },
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 2,
+          "visualViewport:resize": 2,
+          "window:keydown": 1
+        }
+      },
+      {
+        "cycle": 11,
+        "heap": 3911892,
+        "documents": 3,
+        "nodes": 32,
+        "jsEventListeners": 155,
+        "mounted": 0,
+        "images": 0,
+        "pages": null,
+        "activeObservers": {},
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 0,
+          "visualViewport:resize": 0,
+          "window:keydown": 0
+        },
+        "phase": "after_unmount"
+      }
+    ]
+  },
+  "figure_repagination_samples": {
+    "media": true,
+    "samples": [
+      {
+        "cycle": 0,
+        "heap": 3384872,
+        "documents": 5,
+        "nodes": 381,
+        "jsEventListeners": 216,
+        "mounted": 1,
+        "images": 7,
+        "pages": 1,
+        "client": 460,
+        "scroll": 1472,
+        "activeObservers": {
+          "ResizeObserver": 2
+        },
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 2,
+          "visualViewport:resize": 2,
+          "window:keydown": 1
+        }
+      },
+      {
+        "cycle": 1,
+        "heap": 3997300,
+        "documents": 6,
+        "nodes": 421,
+        "jsEventListeners": 220,
+        "mounted": 1,
+        "images": 7,
+        "pages": 1,
+        "client": 460,
+        "scroll": 1472,
+        "activeObservers": {
+          "ResizeObserver": 2
+        },
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 2,
+          "visualViewport:resize": 2,
+          "window:keydown": 1
+        }
+      },
+      {
+        "cycle": 2,
+        "heap": 4066876,
+        "documents": 5,
+        "nodes": 402,
+        "jsEventListeners": 218,
+        "mounted": 1,
+        "images": 7,
+        "pages": 1,
+        "client": 460,
+        "scroll": 1472,
+        "activeObservers": {
+          "ResizeObserver": 2
+        },
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 2,
+          "visualViewport:resize": 2,
+          "window:keydown": 1
+        }
+      },
+      {
+        "cycle": 3,
+        "heap": 4114796,
+        "documents": 5,
+        "nodes": 402,
+        "jsEventListeners": 218,
+        "mounted": 1,
+        "images": 7,
+        "pages": 1,
+        "client": 460,
+        "scroll": 1472,
+        "activeObservers": {
+          "ResizeObserver": 2
+        },
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 2,
+          "visualViewport:resize": 2,
+          "window:keydown": 1
+        }
+      },
+      {
+        "cycle": 4,
+        "heap": 4147292,
+        "documents": 5,
+        "nodes": 402,
+        "jsEventListeners": 218,
+        "mounted": 1,
+        "images": 7,
+        "pages": 1,
+        "client": 460,
+        "scroll": 1472,
+        "activeObservers": {
+          "ResizeObserver": 2
+        },
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 2,
+          "visualViewport:resize": 2,
+          "window:keydown": 1
+        }
+      },
+      {
+        "cycle": 5,
+        "heap": 4168140,
+        "documents": 5,
+        "nodes": 402,
+        "jsEventListeners": 218,
+        "mounted": 1,
+        "images": 7,
+        "pages": 1,
+        "client": 460,
+        "scroll": 1472,
+        "activeObservers": {
+          "ResizeObserver": 2
+        },
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 2,
+          "visualViewport:resize": 2,
+          "window:keydown": 1
+        }
+      },
+      {
+        "cycle": 6,
+        "heap": 4220936,
+        "documents": 5,
+        "nodes": 402,
+        "jsEventListeners": 218,
+        "mounted": 1,
+        "images": 7,
+        "pages": 1,
+        "client": 460,
+        "scroll": 1472,
+        "activeObservers": {
+          "ResizeObserver": 2
+        },
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 2,
+          "visualViewport:resize": 2,
+          "window:keydown": 1
+        }
+      },
+      {
+        "cycle": 7,
+        "heap": 4234624,
+        "documents": 5,
+        "nodes": 402,
+        "jsEventListeners": 218,
+        "mounted": 1,
+        "images": 7,
+        "pages": 1,
+        "client": 460,
+        "scroll": 1472,
+        "activeObservers": {
+          "ResizeObserver": 2
+        },
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 2,
+          "visualViewport:resize": 2,
+          "window:keydown": 1
+        }
+      },
+      {
+        "cycle": 8,
+        "heap": 4275020,
+        "documents": 5,
+        "nodes": 402,
+        "jsEventListeners": 218,
+        "mounted": 1,
+        "images": 7,
+        "pages": 1,
+        "client": 460,
+        "scroll": 1472,
+        "activeObservers": {
+          "ResizeObserver": 2
+        },
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 2,
+          "visualViewport:resize": 2,
+          "window:keydown": 1
+        }
+      },
+      {
+        "cycle": 9,
+        "heap": 4290644,
+        "documents": 5,
+        "nodes": 402,
+        "jsEventListeners": 218,
+        "mounted": 1,
+        "images": 7,
+        "pages": 1,
+        "client": 460,
+        "scroll": 1472,
+        "activeObservers": {
+          "ResizeObserver": 2
+        },
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 2,
+          "visualViewport:resize": 2,
+          "window:keydown": 1
+        }
+      },
+      {
+        "cycle": 10,
+        "heap": 4298752,
+        "documents": 5,
+        "nodes": 402,
+        "jsEventListeners": 218,
+        "mounted": 1,
+        "images": 7,
+        "pages": 1,
+        "client": 460,
+        "scroll": 1472,
+        "activeObservers": {
+          "ResizeObserver": 2
+        },
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 2,
+          "visualViewport:resize": 2,
+          "window:keydown": 1
+        }
+      },
+      {
+        "cycle": 11,
+        "heap": 4025036,
+        "documents": 3,
+        "nodes": 32,
+        "jsEventListeners": 155,
+        "mounted": 0,
+        "images": 0,
+        "pages": null,
+        "activeObservers": {},
+        "timers": 0,
+        "rafs": 0,
+        "eventBalance": {
+          "window:test": 0,
+          "document:selectionchange": 1,
+          "window:popstate": 1,
+          "window:resize": 0,
+          "visualViewport:resize": 0,
+          "window:keydown": 0
+        },
+        "phase": "after_unmount"
+      }
+    ]
+  },
+  "validation": {
+    "profiler_tests": {
+      "passed": 2
+    },
+    "reader_focused": {
+      "suites": 10,
+      "passed": 135
+    },
+    "reader_branch_frontend": {
+      "suites": 102,
+      "passed": 687
+    },
+    "performance_baseline_frontend": {
+      "suites": 99,
+      "passed": 624
+    },
+    "backend_gate_groups_passed": [
+      14,
+      54,
+      452,
+      1,
+      71,
+      15
+    ],
+    "backend_catalogue_existing_skips": 1,
+    "backend_catalogue_subtests": 55,
+    "local_unit_tests": 29,
+    "benchmark_runner": {
+      "passed": 3,
+      "subtests": 6
+    },
+    "release_proxy_node": 12,
+    "frontend_contracts": {
+      "suites": 8,
+      "passed": 50
+    },
+    "regression": {
+      "suites": 15,
+      "passed": 143,
+      "existing_skips": 4
+    },
+    "production_build": "PASS",
+    "static_seo": {
+      "snapshots": 172,
+      "assertions": 3647,
+      "failures": 0
+    },
+    "performance_budget": {
+      "status": "PASS",
+      "main_gzip_bytes": 155882,
+      "limit_bytes": 165000
+    },
+    "signed_journey_smoke": "PASS",
+    "diff_check": "PASS",
+    "canonical_gate_log": "/tmp/earnalism-memory-regression-complete.log"
+  }
+}
