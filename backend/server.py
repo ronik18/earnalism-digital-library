@@ -7346,7 +7346,6 @@ def _schedule_home_surface_warmup() -> None:
 
 
 # ---------- Public: Books ----------
-@api.get("/books")
 async def list_books(category: Optional[str] = None, q: Optional[str] = None):
     category_filter = None
     if category and category != "all":
@@ -7381,6 +7380,20 @@ async def list_books(category: Optional[str] = None, q: Optional[str] = None):
     result = _append_controlled_artifact_projections(result, category_filter=category_filter, q=q_norm)
     await _public_cache_set(cache_key, result)
     return result
+
+
+@api.get("/books", operation_id="list_books_api_books_get")
+async def list_books_response(category: Optional[str] = None, q: Optional[str] = None):
+    # The existing builder remains the sole rights/publication boundary. Its
+    # public projection is JSON-shaped; avoid FastAPI recursively walking every
+    # primitive a second time on each cache hit. Non-JSON leaves retain the
+    # standard FastAPI conversion (e.g. datetime), not an optimistic str fallback.
+    from fastapi.encoders import jsonable_encoder
+
+    result = await list_books(category=category, q=q)
+    body = _json.dumps(result, ensure_ascii=False, allow_nan=False,
+                       separators=(",", ":"), default=jsonable_encoder).encode("utf-8")
+    return Response(content=body, media_type="application/json; charset=utf-8")
 
 @api.get("/books/{slug}", response_model=PublicBookOut)
 async def get_book(slug: str):
