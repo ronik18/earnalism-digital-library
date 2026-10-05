@@ -102,9 +102,17 @@ def test_http_catalogue_keeps_gzip_and_authorization_cache_boundaries(monkeypatc
         async with httpx.AsyncClient(transport=httpx.ASGITransport(app=server.app), base_url='http://localhost') as client:
             anonymous = await client.get('/api/books', headers={'accept-encoding': 'gzip'})
             identified = await client.get('/api/books', headers={'authorization': 'Bearer synthetic-cache-boundary-fixture'})
+            summary = await client.get('/api/books?view=library-v1', headers={'accept-encoding': 'gzip'})
+            identified_summary = await client.get('/api/books?view=library-v1', headers={'authorization': 'Bearer synthetic-cache-boundary-fixture'})
         assert anonymous.status_code == identified.status_code == 200
         assert anonymous.json() == identified.json() == payload
         assert anonymous.headers['content-encoding'] == 'gzip'
         assert anonymous.headers['cache-control'].startswith('public')
         assert not identified.headers.get('cache-control', '').startswith('public')
+        from backend.catalogue_summary import library_summary
+        assert summary.status_code == identified_summary.status_code == 200
+        assert summary.json() == identified_summary.json() == library_summary(payload)
+        assert summary.headers['content-encoding'] == 'gzip'
+        assert summary.headers['cache-control'].startswith('public')
+        assert not identified_summary.headers.get('cache-control', '').startswith('public')
     run(exercise())
