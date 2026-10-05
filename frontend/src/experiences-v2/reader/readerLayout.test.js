@@ -19,6 +19,10 @@ describe('Reader reading measure and cover layout', () => {
     expect(desktopDeclaration('.reader-v2__body', 'margin')).toBe('24px 0');
     expect(desktopDeclaration('.reader-v2__body p', 'text-indent')).toBe('0');
   });
+  test('page arrival releases its transform after completion without changing prose geometry', () => {
+    expect(desktopDeclaration('.reader-v2__page-content', 'animation')).toBe('readerPageForward 280ms ease backwards');
+    expect(desktopDeclaration('.reader-v2__page-content--previous', 'animation-name')).toBe('readerPageReverse');
+  });
   test('the cover uses its own portrait aspect ratio rather than stretching to the full chapter height', () => {
     expect(desktopDeclaration('.reader-v2__book-cover', 'height')).toBe('auto');
     expect(desktopDeclaration('.reader-v2__book-cover', 'aspect-ratio')).toBe('2 / 3');
