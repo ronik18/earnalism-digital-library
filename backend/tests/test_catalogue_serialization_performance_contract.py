@@ -60,7 +60,32 @@ def test_catalogue_response_rejects_nonfinite_numbers(monkeypatch):
 def test_catalogue_openapi_keeps_operation_identity_and_filters():
     route = next(route for route in server.app.routes if getattr(route, 'path', '') == '/api/books')
     assert route.operation_id == 'list_books_api_books_get'
-    assert [parameter.name for parameter in route.dependant.query_params] == ['category', 'q']
+    assert [parameter.name for parameter in route.dependant.query_params] == ['category', 'q', 'view']
+
+
+def test_library_summary_preserves_release_and_preview_contract_without_mutation(monkeypatch):
+    from backend.catalogue_summary import library_summary, DETAIL_ONLY_FIELDS
+    payload = server._append_controlled_artifact_projections([])
+    before = json.dumps(jsonable_encoder(payload), ensure_ascii=False)
+    summary = library_summary(payload)
+    after = json.dumps(jsonable_encoder(summary), ensure_ascii=False)
+    assert len(after.encode()) < len(before.encode()) * .6
+    assert json.dumps(jsonable_encoder(payload), ensure_ascii=False) == before
+    for original, shelf in zip(payload, summary):
+        for key, value in original.items():
+            if key not in DETAIL_ONLY_FIELDS | {'chapters'}:
+                assert shelf[key] == value
+        assert [(c.get('id'), c.get('is_preview')) for c in original.get('chapters', [])] == [
+            (c.get('id'), c.get('is_preview')) for c in shelf.get('chapters', [])]
+    async def builder(**kwargs):
+        return payload
+    monkeypatch.setattr(server, 'list_books', builder)
+    assert json.loads(run(server.list_books_response(view='library-v1')).body) == jsonable_encoder(summary)
+    assert json.loads(run(server.list_books_response(view='full')).body) == jsonable_encoder(payload)
+    from fastapi import HTTPException
+    with pytest.raises(HTTPException) as error:
+        run(server.list_books_response(view='unrecognized'))
+    assert error.value.status_code == 422
 
 
 def test_http_catalogue_keeps_gzip_and_authorization_cache_boundaries(monkeypatch):

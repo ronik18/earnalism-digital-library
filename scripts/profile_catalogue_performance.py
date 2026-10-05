@@ -102,6 +102,7 @@ class Cache:
 
 
 async def main():
+    api_path = '/api/books' + ('?view=library-v1' if os.environ.get('PERF_CATALOGUE_VIEW') == 'library-v1' else '')
     if os.environ.get('PERF_CATALOGUE_STANDARD_RESPONSE') == '1':
         for route in server.app.routes:
             if getattr(route, 'path', None) == '/api/books':
@@ -148,7 +149,7 @@ async def main():
         transport = httpx.ASGITransport(app=server.app, client=('127.0.0.1', 48102))
         async with httpx.AsyncClient(transport=transport, base_url='http://localhost') as api:
             cold = {}; token = stages.set(cold)
-            response = await api.get('/api/books', headers={'Accept-Encoding': 'identity'})
+            response = await api.get(api_path, headers={'Accept-Encoding': 'identity'})
             stages.reset(token)
             assert response.status_code == 200
             data = response.json()
@@ -184,7 +185,7 @@ async def main():
                 rows = []
                 for _ in range(5):
                     metrics = {}; token = stages.set(metrics)
-                    result = await api.get('/api/books', headers={'Accept-Encoding': 'identity'})
+                    result = await api.get(api_path, headers={'Accept-Encoding': 'identity'})
                     stages.reset(token)
                     assert result.content == body
                     rows.append(metrics)
@@ -203,7 +204,7 @@ async def main():
                         async def cold_browse():
                             metrics = {}; token = stages.set(metrics); started = time.perf_counter()
                             try:
-                                result = await api.get('/api/books', headers={'Accept-Encoding': 'identity'})
+                                result = await api.get(api_path, headers={'Accept-Encoding': 'identity'})
                                 statuses.append(result.status_code)
                                 latencies.append((time.perf_counter() - started) * 1000)
                                 miss_metrics.append(metrics)
@@ -229,7 +230,7 @@ async def main():
                     async def browse():
                         metrics = {}; token = stages.set(metrics); start = time.perf_counter()
                         try:
-                            result = await api.get('/api/books', headers={'Accept-Encoding': 'identity'})
+                            result = await api.get(api_path, headers={'Accept-Encoding': 'identity'})
                             records.append({'elapsed_ms': (time.perf_counter() - start) * 1000,
                                             'status': result.status_code, 'stages': metrics})
                         finally:

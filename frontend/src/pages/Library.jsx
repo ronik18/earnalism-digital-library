@@ -106,7 +106,7 @@ export default function Library() {
     catalogueRequestIdRef.current = requestId;
     catalogueRequestInFlightRef.current = true;
     Promise.allSettled([
-      api.get("/books", { signal: controller.signal }),
+      api.get("/books", { signal: controller.signal, params: { view: "library-v1" } }),
       fetchHomeCuration(controller.signal),
     ]).then(([booksResult, curationResult]) => {
       if (controller.signal.aborted || catalogueRequestIdRef.current !== requestId) return;

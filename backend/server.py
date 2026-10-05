@@ -7398,14 +7398,19 @@ async def _build_public_books(category_filter, q):
 
 
 @api.get("/books", operation_id="list_books_api_books_get")
-async def list_books_response(category: Optional[str] = None, q: Optional[str] = None):
+async def list_books_response(category: Optional[str] = None, q: Optional[str] = None, view: Optional[str] = None):
     # The existing builder remains the sole rights/publication boundary. Its
     # public projection is JSON-shaped; avoid FastAPI recursively walking every
     # primitive a second time on each cache hit. Non-JSON leaves retain the
     # standard FastAPI conversion (e.g. datetime), not an optimistic str fallback.
     from fastapi.encoders import jsonable_encoder
 
+    if view not in {None, "full", "library-v1"}:
+        raise HTTPException(status_code=422, detail="Unsupported catalogue view")
     result = await list_books(category=category, q=q)
+    if view == "library-v1":
+        from backend.catalogue_summary import library_summary
+        result = library_summary(result)
     body = _json.dumps(result, ensure_ascii=False, allow_nan=False,
                        separators=(",", ":"), default=jsonable_encoder).encode("utf-8")
     return Response(content=body, media_type="application/json; charset=utf-8")
