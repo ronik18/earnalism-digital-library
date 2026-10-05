@@ -195,20 +195,29 @@ async def main():
                     blob = await raw_cache.get(storage_key)
                     report['cache'][mode].update(ttl_seconds=await raw_cache.ttl(storage_key),
                                                   stored_bytes=len(blob or b''))
-                    await server._public_cache_clear()
-                    miss_metrics = []
-                    async def cold_browse():
-                        metrics = {}; token = stages.set(metrics)
-                        try:
-                            result = await api.get('/api/books', headers={'Accept-Encoding': 'identity'})
-                            assert result.status_code == 200
-                            miss_metrics.append(metrics)
-                        finally:
-                            stages.reset(token)
-                    await asyncio.gather(*(cold_browse() for _ in range(8)))
-                    report['cache'][mode]['invalidation_burst'] = {
-                        'requests': 8, 'mongo_queries': sum(x.get('mongo_queries', 0) for x in miss_metrics),
-                        'rebuilds': sum('_append_controlled_artifact_projections' in x for x in miss_metrics)}
+                    bursts = []
+                    for concurrency in [2, 4, 8, 16, 32]:
+                        await server._public_cache_clear()
+                        cache.operations.clear()
+                        miss_metrics = []; latencies = []; statuses = []
+                        async def cold_browse():
+                            metrics = {}; token = stages.set(metrics); started = time.perf_counter()
+                            try:
+                                result = await api.get('/api/books', headers={'Accept-Encoding': 'identity'})
+                                statuses.append(result.status_code)
+                                latencies.append((time.perf_counter() - started) * 1000)
+                                miss_metrics.append(metrics)
+                            finally:
+                                stages.reset(token)
+                        started = time.perf_counter()
+                        await asyncio.gather(*(cold_browse() for _ in range(concurrency)))
+                        bursts.append({'requests': concurrency,
+                            'mongo_queries': sum(x.get('mongo_queries', 0) for x in miss_metrics),
+                            'rebuilds': sum('_append_controlled_artifact_projections' in x for x in miss_metrics),
+                            'operations': dict(cache.operations), **summary(latencies),
+                            'throughput_rps': concurrency / (time.perf_counter() - started),
+                            'errors': sum(status != 200 for status in statuses)})
+                    report['cache'][mode]['cold_bursts'] = bursts
                 for concurrency in [1, 2, 4, 8, 16, 24, 32, 40]:
                     records = []
                     delays = []

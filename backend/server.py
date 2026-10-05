@@ -7351,9 +7351,25 @@ async def list_books(category: Optional[str] = None, q: Optional[str] = None):
     if category and category != "all":
         category_filter = normalize_category_slug(category) or category
     cache_key = _public_cache_key("books", category=category_filter or "all", q=normalize_text(q).strip() if q else "")
+    if PUBLIC_CACHE_ENABLED and _redis_state_enabled():
+        from backend.catalogue_singleflight import cached_catalogue
+        return await cached_catalogue(
+            _redis_client, _redis_key("public-cache", "generation"),
+            lambda generation: _public_cache_storage_key(generation, cache_key),
+            lambda: _build_public_books(category_filter, q),
+            lambda value: _cache_payload_encode_for_redis("public-cache", value),
+            _cache_payload_decode, _ttl_with_jitter(PUBLIC_CACHE_TTL_SECONDS),
+        )
     cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
+    result = await _build_public_books(category_filter, q)
+    await _public_cache_set(cache_key, result)
+    return result
+
+
+async def _build_public_books(category_filter, q):
+    # All fill paths share the unchanged authoritative projection/gates.
     extra_query: dict = {}
     if category_filter:
         extra_query["category_slug"] = category_filter
@@ -7378,7 +7394,6 @@ async def list_books(category: Optional[str] = None, q: Optional[str] = None):
         if projected:
             result.append(projected)
     result = _append_controlled_artifact_projections(result, category_filter=category_filter, q=q_norm)
-    await _public_cache_set(cache_key, result)
     return result
 
 
