@@ -1,0 +1,114 @@
+{
+  "reader_head": "0a242584c438a0da8160ea502e421161b039d0fe",
+  "verified_at": "2026-10-05T17:51:03.583964+00:00",
+  "native_zoom": true,
+  "css_simulated_zoom": false,
+  "scope": "Owned media/text API fixture for layout timing only; genuine authorization evidence remains separate",
+  "media_samples": [
+    {
+      "zoom": 100,
+      "viewport": [
+        1230,
+        867
+      ],
+      "client": 443,
+      "scroll": 443,
+      "ms": 2.3
+    },
+    {
+      "zoom": 125,
+      "viewport": [
+        984,
+        693
+      ],
+      "client": 286,
+      "scroll": 286,
+      "ms": 1.4
+    },
+    {
+      "zoom": 150,
+      "viewport": [
+        820,
+        578
+      ],
+      "client": 174,
+      "scroll": 174,
+      "ms": 1.3
+    },
+    {
+      "zoom": 100,
+      "viewport": [
+        1230,
+        867
+      ],
+      "client": 443,
+      "scroll": 443,
+      "ms": 1.4
+    }
+  ],
+  "media_anchor": {
+    "chapter": "chapter-one",
+    "sourcePage": 2,
+    "offset": 0,
+    "revision": "191303e7488860ff0f63be30751a6d998b58665b306fcdc482e440f74d8d9457",
+    "selector": "Page 2",
+    "preserved": true
+  },
+  "text_samples": [
+    {
+      "zoom": 100,
+      "client": 443,
+      "scroll": 443,
+      "pages": 24,
+      "start": 5593,
+      "end": 6307,
+      "ms": 16
+    },
+    {
+      "zoom": 125,
+      "client": 286,
+      "scroll": 286,
+      "pages": 51,
+      "start": 5610,
+      "end": 6220,
+      "ms": 58.7
+    },
+    {
+      "zoom": 150,
+      "client": 174,
+      "scroll": 174,
+      "pages": 75,
+      "start": 5610,
+      "end": 5838,
+      "ms": 65.1
+    },
+    {
+      "zoom": 100,
+      "client": 443,
+      "scroll": 443,
+      "pages": 24,
+      "start": 5593,
+      "end": 6307,
+      "ms": 5.2
+    }
+  ],
+  "requested_text_anchor": {
+    "sourcePage": 2,
+    "offset": 100,
+    "absoluteChapterOffset": 5693,
+    "contained_all_pages": true
+  },
+  "native_navigation": "Prev/Next tested at150%; selector Page3\u2192Page2 tested afterroundtrip",
+  "initial_desktop_network": {
+    "request_count": 15,
+    "response_body_bytes": 56632,
+    "first_request_to_last_completed_ms": 249,
+    "manifest_requests": 2,
+    "protected_chunk_duplicates": 0,
+    "headers_bytes_included": false
+  },
+  "forced_layout_count": "NOT_MEASURED",
+  "remaining": "Exact-final-head cold/warm distribution qualification; forced-layout attribution; full-app startup/production CWV separate",
+  "classification": "READER PERFORMANCE FOLLOW-UP REQUIRED",
+  "production_mutation": false
+}

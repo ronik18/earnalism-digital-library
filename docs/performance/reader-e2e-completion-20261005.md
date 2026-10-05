@@ -35,3 +35,7 @@ Focused10 suites137; full frontend102 suites689; backend372; buildPASS; SEO172/3
 
 ## Replay
 Use scripts/profile_reader_completion.mjs with explicit PERF_READER_WORKTREE, ENVIRONMENT=uat, UAT_BASE_URL and UAT_API_BASE_URL pointing to repository-owned disposable backend. It checks PID/worktree/port before fixture writes. Browser outputs sanitized metrics; heap snapshots remain in-memory only. Do not run on production.
+
+## Fresh native zoom follow-up — 2026-10-05T17:51:03.583964+00:00
+
+Actual Chrome100→125→150→100 on Reader0a242584c passes media and text containment. Media client/scroll443/443,286/286,174/174,443/443; measuredpagination2.3/1.4/1.3/1.4ms. Text24/51/75/24pages,16/58.7/65.1/5.2ms; requestedchapterposition5693 remains in allranges. Native125/150 toolbar state confirmed; noCSSzoom. Owned syntheticAPI fixture is layout-only, not additional backendauthorization proof. Preview/fullsecurity remains genuine disposablebackend evidence above. Initialdesktop API burst15requests/56,632response-bodybytes/249ms; two manifestfetches, no duplicate protectedchunkfetch in initialburst. Forced-layoutcount remains NOT_MEASURED. No memorysoak repeated, no Readercodechange, no OAuthretry. Exact-final-head cold/warm distribution and full-app/fieldscope limitations remain explicit.
