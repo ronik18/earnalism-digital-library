@@ -37,10 +37,10 @@ try {
       return intercepted.fulfill({ status: 200, json: [] });
     });
     await page.addInitScript(() => {
-      window.__perf = { lcp: null, cls: 0, longTasks: [], interactions: [] };
+      window.__perf = { lcp: null, cls: 0, shifts: [], longTasks: [], interactions: [] };
       for (const [type, handler] of [
         ['largest-contentful-paint', e => { window.__perf.lcp = e.startTime; }],
-        ['layout-shift', e => { if (!e.hadRecentInput) window.__perf.cls += e.value; }],
+        ['layout-shift', e => { if (!e.hadRecentInput) { window.__perf.cls += e.value; window.__perf.shifts.push({time: e.startTime, value: e.value, sources: e.sources.map(s => ({node: s.node?.tagName, className: typeof s.node?.className === 'string' ? s.node.className : '', previous: s.previousRect, current: s.currentRect}))}); } }],
         ['longtask', e => window.__perf.longTasks.push(e.duration)],
         ['event', e => { if (e.interactionId) window.__perf.interactions.push(e.duration); }],
       ]) { try { new PerformanceObserver(l => l.getEntries().forEach(handler)).observe({ type, buffered: true, durationThreshold: 16 }); } catch {} }
@@ -53,6 +53,7 @@ try {
     const errors = []; page.on('pageerror', e => errors.push(e.message));
     await page.goto(base + route, { waitUntil: 'load' });
     await page.waitForTimeout(7000);
+    if (process.env.PERF_SCREENSHOTS === '1') await page.screenshot({ path: output.replace(/\.json$/, '') + '-' + results.length + '.png' });
     const data = await page.evaluate(() => {
       const n = performance.getEntriesByType('navigation')[0];
       const resources = performance.getEntriesByType('resource');
@@ -61,6 +62,9 @@ try {
         dom_content_loaded_ms: n.domContentLoadedEventEnd, load_ms: n.loadEventEnd,
         requests: resources.length, resource_bytes: sum(() => true), js_bytes: sum(e => /\.js($|\?)/.test(e.name)), css_bytes: sum(e => /\.css($|\?)/.test(e.name)),
         fonts: resources.filter(e => /\.(woff2?|ttf)($|\?)/.test(e.name)).length,
+        font_resources: resources.filter(e => /\.(woff2?|ttf)($|\?)/.test(e.name)).map(e => ({path: new URL(e.name).pathname, bytes: e.decodedBodySize, duration_ms: e.duration})),
+        font_faces: [...document.fonts].map(f => ({family: f.family, weight: f.weight, style: f.style, status: f.status})),
+        images: [...document.images].map(i => ({src: i.currentSrc ? new URL(i.currentSrc).pathname : '', natural_width: i.naturalWidth, natural_height: i.naturalHeight, rendered_width: i.getBoundingClientRect().width, rendered_height: i.getBoundingClientRect().height, bytes: resources.find(e => e.name === i.currentSrc)?.decodedBodySize ?? null, loading: i.loading, sizes: i.sizes, srcset: i.srcset})),
         decoded_image_memory_bytes: [...document.images].reduce((v, i) => v + i.naturalWidth * i.naturalHeight * 4, 0),
         dom_nodes: document.getElementsByTagName('*').length,
         overflow: document.documentElement.scrollWidth > innerWidth,
