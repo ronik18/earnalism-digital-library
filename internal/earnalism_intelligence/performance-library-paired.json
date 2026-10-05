@@ -1,0 +1,77 @@
+{
+  "pairs": [
+    {
+      "sample": 1,
+      "before": {
+        "script_ms": 123.31,
+        "lcp_ms": 544,
+        "js_bytes": 682502
+      },
+      "after": {
+        "script_ms": 88.631,
+        "lcp_ms": 484,
+        "js_bytes": 567492
+      }
+    },
+    {
+      "sample": 2,
+      "before": {
+        "script_ms": 107.99499999999999,
+        "lcp_ms": 496,
+        "js_bytes": 682502
+      },
+      "after": {
+        "script_ms": 108.33,
+        "lcp_ms": 500,
+        "js_bytes": 567492
+      }
+    },
+    {
+      "sample": 3,
+      "before": {
+        "script_ms": 101.85900000000001,
+        "lcp_ms": 484,
+        "js_bytes": 682502
+      },
+      "after": {
+        "script_ms": 94.567,
+        "lcp_ms": 480,
+        "js_bytes": 567492
+      }
+    },
+    {
+      "sample": 4,
+      "before": {
+        "script_ms": 95.458,
+        "lcp_ms": 476,
+        "js_bytes": 682502
+      },
+      "after": {
+        "script_ms": 112.06,
+        "lcp_ms": 520,
+        "js_bytes": 567492
+      }
+    },
+    {
+      "sample": 5,
+      "before": {
+        "script_ms": 93.926,
+        "lcp_ms": 492,
+        "js_bytes": 682502
+      },
+      "after": {
+        "script_ms": 111.369,
+        "lcp_ms": 488,
+        "js_bytes": 567492
+      }
+    }
+  ],
+  "summary": {
+    "script_before": 101.85900000000001,
+    "script_after": 108.33,
+    "lcp_before": 492,
+    "lcp_after": 488
+  },
+  "scope": "FIVE_INTERLEAVED_LOOPBACK_COLD_CONTEXT_PAIRS_EMPTY_API",
+  "production_field_metrics": false
+}

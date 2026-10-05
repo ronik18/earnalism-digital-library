@@ -1,0 +1,739 @@
+{
+  "revision": "c33faa0b52134d74a174e4cd1f424fccd87a0b56",
+  "captured_at": "2026-10-05T09:51:20.645Z",
+  "environment": "LOOPBACK_PRODUCTION_BUILD_EMPTY_API_ANONYMOUS",
+  "browser": "149.0.7827.55",
+  "samples_per_route": 1,
+  "production_requests": 0,
+  "limitations": [
+    "No authenticated Reader fixture or backend timing; empty API fixtures measure shell costs only.",
+    "Lab LCP/CLS are not field p75 CWV; no INP without interaction.",
+    "JS coverage ranges overlap and are diagnostic, not unique unused-byte totals."
+  ],
+  "routes": [
+    {
+      "route": "/",
+      "lcp": 228,
+      "cls": 0.03917668142227152,
+      "longTasks": [
+        52
+      ],
+      "interactions": [],
+      "ttfb_ms": 3,
+      "fcp_ms": 148,
+      "dom_content_loaded_ms": 85.1000000089407,
+      "load_ms": 204.70000000298023,
+      "requests": 34,
+      "resource_bytes": 5342992,
+      "js_bytes": 682502,
+      "css_bytes": 365338,
+      "fonts": 8,
+      "decoded_image_memory_bytes": 63034624,
+      "dom_nodes": 413,
+      "overflow": false,
+      "route_chunks": [
+        "/static/js/765.e7231d4a.chunk.js",
+        "/static/js/932.2ed2b74f.chunk.js",
+        "/static/js/947.258218fe.chunk.js",
+        "/static/js/950.6619fd80.chunk.js",
+        "/static/js/643.fe79c149.chunk.js"
+      ],
+      "script_ms": 88.44200000000001,
+      "layout_ms": 44.66,
+      "heap_bytes": 5026656,
+      "executed_js_bytes": 2180614,
+      "errors": [],
+      "trace": "/tmp/earnalism-performance-baseline-_.trace.json"
+    },
+    {
+      "route": "/library",
+      "lcp": 456,
+      "cls": 0.03943120180818116,
+      "longTasks": [],
+      "interactions": [],
+      "ttfb_ms": 0.29999999701976776,
+      "fcp_ms": 44,
+      "dom_content_loaded_ms": 54.8999999910593,
+      "load_ms": 56.79999999701977,
+      "requests": 33,
+      "resource_bytes": 7003626,
+      "js_bytes": 682502,
+      "css_bytes": 365338,
+      "fonts": 5,
+      "decoded_image_memory_bytes": 34524980,
+      "dom_nodes": 459,
+      "overflow": false,
+      "route_chunks": [
+        "/static/js/765.e7231d4a.chunk.js",
+        "/static/js/932.2ed2b74f.chunk.js",
+        "/static/js/947.258218fe.chunk.js",
+        "/static/js/950.6619fd80.chunk.js",
+        "/static/js/643.fe79c149.chunk.js"
+      ],
+      "script_ms": 86.333,
+      "layout_ms": 18.288,
+      "heap_bytes": 4886428,
+      "executed_js_bytes": 2253699,
+      "errors": [],
+      "trace": "/tmp/earnalism-performance-baseline-_library.trace.json"
+    },
+    {
+      "route": "/book/a-ghost-story",
+      "lcp": 436,
+      "cls": 0.09111951035236626,
+      "longTasks": [],
+      "interactions": [],
+      "ttfb_ms": 0.4000000059604645,
+      "fcp_ms": 56,
+      "dom_content_loaded_ms": 62,
+      "load_ms": 63.29999999701977,
+      "requests": 24,
+      "resource_bytes": 3777301,
+      "js_bytes": 682502,
+      "css_bytes": 365338,
+      "fonts": 4,
+      "decoded_image_memory_bytes": 8601600,
+      "dom_nodes": 181,
+      "overflow": false,
+      "route_chunks": [
+        "/static/js/932.2ed2b74f.chunk.js",
+        "/static/js/765.e7231d4a.chunk.js",
+        "/static/js/947.258218fe.chunk.js",
+        "/static/js/950.6619fd80.chunk.js",
+        "/static/js/643.fe79c149.chunk.js"
+      ],
+      "script_ms": 68.6,
+      "layout_ms": 15.056,
+      "heap_bytes": 4461140,
+      "executed_js_bytes": 2210248,
+      "errors": [],
+      "trace": "/tmp/earnalism-performance-baseline-_book_a-ghost-story.trace.json"
+    },
+    {
+      "route": "/reader/a-ghost-story",
+      "lcp": 388,
+      "cls": 0.04724479240344222,
+      "longTasks": [],
+      "interactions": [],
+      "ttfb_ms": 0.4000000059604645,
+      "fcp_ms": 52,
+      "dom_content_loaded_ms": 59.400000005960464,
+      "load_ms": 62.5,
+      "requests": 18,
+      "resource_bytes": 2340333,
+      "js_bytes": 682502,
+      "css_bytes": 365338,
+      "fonts": 3,
+      "decoded_image_memory_bytes": 0,
+      "dom_nodes": 57,
+      "overflow": false,
+      "route_chunks": [
+        "/static/js/947.258218fe.chunk.js",
+        "/static/js/765.e7231d4a.chunk.js",
+        "/static/js/932.2ed2b74f.chunk.js",
+        "/static/js/950.6619fd80.chunk.js",
+        "/static/js/643.fe79c149.chunk.js"
+      ],
+      "script_ms": 60.137,
+      "layout_ms": 11.103,
+      "heap_bytes": 3463804,
+      "executed_js_bytes": 2158853,
+      "errors": [],
+      "trace": "/tmp/earnalism-performance-baseline-_reader_a-ghost-story.trace.json"
+    },
+    {
+      "route": "/pricing",
+      "lcp": 444,
+      "cls": 0.03939274152172283,
+      "longTasks": [],
+      "interactions": [],
+      "ttfb_ms": 0.29999999701976776,
+      "fcp_ms": 56,
+      "dom_content_loaded_ms": 60,
+      "load_ms": 62.20000000298023,
+      "requests": 33,
+      "resource_bytes": 5020553,
+      "js_bytes": 682502,
+      "css_bytes": 365338,
+      "fonts": 5,
+      "decoded_image_memory_bytes": 9396616,
+      "dom_nodes": 479,
+      "overflow": false,
+      "route_chunks": [
+        "/static/js/950.6619fd80.chunk.js",
+        "/static/js/765.e7231d4a.chunk.js",
+        "/static/js/932.2ed2b74f.chunk.js",
+        "/static/js/947.258218fe.chunk.js",
+        "/static/js/643.fe79c149.chunk.js"
+      ],
+      "script_ms": 81.65400000000001,
+      "layout_ms": 20.649,
+      "heap_bytes": 5420416,
+      "executed_js_bytes": 2202432,
+      "errors": [],
+      "trace": "/tmp/earnalism-performance-baseline-_pricing.trace.json"
+    },
+    {
+      "route": "/login",
+      "lcp": 452,
+      "cls": 0.042547717971697104,
+      "longTasks": [],
+      "interactions": [],
+      "ttfb_ms": 0.5,
+      "fcp_ms": 116,
+      "dom_content_loaded_ms": 74.59999999403954,
+      "load_ms": 132.59999999403954,
+      "requests": 24,
+      "resource_bytes": 3981196,
+      "js_bytes": 685345,
+      "css_bytes": 365338,
+      "fonts": 5,
+      "decoded_image_memory_bytes": 22425600,
+      "dom_nodes": 219,
+      "overflow": false,
+      "route_chunks": [
+        "/static/js/7.7b043c28.chunk.js",
+        "/static/js/643.fe79c149.chunk.js",
+        "/static/js/765.e7231d4a.chunk.js",
+        "/static/js/932.2ed2b74f.chunk.js",
+        "/static/js/947.258218fe.chunk.js",
+        "/static/js/950.6619fd80.chunk.js"
+      ],
+      "script_ms": 84.805,
+      "layout_ms": 17.511,
+      "heap_bytes": 4340476,
+      "executed_js_bytes": 2186632,
+      "errors": [],
+      "trace": "/tmp/earnalism-performance-baseline-_login.trace.json"
+    },
+    {
+      "route": "/account",
+      "lcp": 432,
+      "cls": 0.16763212813598466,
+      "longTasks": [],
+      "interactions": [],
+      "ttfb_ms": 0.29999999701976776,
+      "fcp_ms": 84,
+      "dom_content_loaded_ms": 49.30000001192093,
+      "load_ms": 90.5,
+      "requests": 27,
+      "resource_bytes": 4666841,
+      "js_bytes": 712868,
+      "css_bytes": 373338,
+      "fonts": 5,
+      "decoded_image_memory_bytes": 22425600,
+      "dom_nodes": 220,
+      "overflow": false,
+      "route_chunks": [
+        "/static/js/699.82e98fdb.chunk.js",
+        "/static/js/7.7b043c28.chunk.js",
+        "/static/js/643.fe79c149.chunk.js",
+        "/static/js/765.e7231d4a.chunk.js",
+        "/static/js/932.2ed2b74f.chunk.js",
+        "/static/js/947.258218fe.chunk.js",
+        "/static/js/950.6619fd80.chunk.js"
+      ],
+      "script_ms": 72.422,
+      "layout_ms": 13.978000000000002,
+      "heap_bytes": 4360292,
+      "executed_js_bytes": 2250205,
+      "errors": [],
+      "trace": "/tmp/earnalism-performance-baseline-_account.trace.json"
+    },
+    {
+      "route": "/journal",
+      "lcp": 424,
+      "cls": 0.09890490883407278,
+      "longTasks": [],
+      "interactions": [],
+      "ttfb_ms": 0.3999999910593033,
+      "fcp_ms": 48,
+      "dom_content_loaded_ms": 57.79999999701977,
+      "load_ms": 60,
+      "requests": 30,
+      "resource_bytes": 5476854,
+      "js_bytes": 692805,
+      "css_bytes": 400604,
+      "fonts": 7,
+      "decoded_image_memory_bytes": 8601600,
+      "dom_nodes": 227,
+      "overflow": false,
+      "route_chunks": [
+        "/static/js/601.6e8b6133.chunk.js",
+        "/static/js/765.e7231d4a.chunk.js",
+        "/static/js/932.2ed2b74f.chunk.js",
+        "/static/js/947.258218fe.chunk.js",
+        "/static/js/950.6619fd80.chunk.js",
+        "/static/js/643.fe79c149.chunk.js"
+      ],
+      "script_ms": 66.064,
+      "layout_ms": 18.696,
+      "heap_bytes": 4501264,
+      "executed_js_bytes": 2205763,
+      "errors": [],
+      "trace": "/tmp/earnalism-performance-baseline-_journal.trace.json"
+    }
+  ],
+  "bundles": [
+    {
+      "file": "main.73afb2f7.js",
+      "raw": 551351,
+      "gzip": 155274,
+      "brotli": 130206
+    },
+    {
+      "file": "757.69354845.chunk.js",
+      "raw": 488341,
+      "gzip": 147201,
+      "brotli": 122765
+    },
+    {
+      "file": "191.8259d01f.chunk.js",
+      "raw": 154852,
+      "gzip": 45237,
+      "brotli": 35650
+    },
+    {
+      "file": "273.7cf4b815.chunk.js",
+      "raw": 138790,
+      "gzip": 32624,
+      "brotli": 26756
+    },
+    {
+      "file": "947.258218fe.chunk.js",
+      "raw": 58818,
+      "gzip": 18530,
+      "brotli": 16119
+    },
+    {
+      "file": "932.2ed2b74f.chunk.js",
+      "raw": 32335,
+      "gzip": 9601,
+      "brotli": 8374
+    },
+    {
+      "file": "699.82e98fdb.chunk.js",
+      "raw": 27523,
+      "gzip": 8063,
+      "brotli": 7024
+    },
+    {
+      "file": "848.7761ad1a.chunk.js",
+      "raw": 24034,
+      "gzip": 8022,
+      "brotli": 7093
+    },
+    {
+      "file": "793.030a129e.chunk.js",
+      "raw": 16905,
+      "gzip": 4985,
+      "brotli": 4437
+    },
+    {
+      "file": "171.35523cc4.chunk.js",
+      "raw": 15396,
+      "gzip": 5253,
+      "brotli": 4478
+    },
+    {
+      "file": "765.e7231d4a.chunk.js",
+      "raw": 15314,
+      "gzip": 4975,
+      "brotli": 4361
+    },
+    {
+      "file": "950.6619fd80.chunk.js",
+      "raw": 13523,
+      "gzip": 4759,
+      "brotli": 4120
+    },
+    {
+      "file": "643.fe79c149.chunk.js",
+      "raw": 11161,
+      "gzip": 4458,
+      "brotli": 3822
+    },
+    {
+      "file": "601.6e8b6133.chunk.js",
+      "raw": 10303,
+      "gzip": 3730,
+      "brotli": 3208
+    },
+    {
+      "file": "359.be8316c9.chunk.js",
+      "raw": 9225,
+      "gzip": 3120,
+      "brotli": 2468
+    },
+    {
+      "file": "755.ebc202a4.chunk.js",
+      "raw": 7678,
+      "gzip": 2981,
+      "brotli": 2591
+    },
+    {
+      "file": "54.a12886ed.chunk.js",
+      "raw": 7488,
+      "gzip": 3332,
+      "brotli": 2860
+    },
+    {
+      "file": "84.70b45330.chunk.js",
+      "raw": 7283,
+      "gzip": 2762,
+      "brotli": 2355
+    },
+    {
+      "file": "671.e66f2bc2.chunk.js",
+      "raw": 6767,
+      "gzip": 2581,
+      "brotli": 2196
+    },
+    {
+      "file": "13.e637c036.chunk.js",
+      "raw": 5121,
+      "gzip": 1955,
+      "brotli": 1691
+    },
+    {
+      "file": "260.e0f05d8a.chunk.js",
+      "raw": 4009,
+      "gzip": 1574,
+      "brotli": 1338
+    },
+    {
+      "file": "786.639231e0.chunk.js",
+      "raw": 3801,
+      "gzip": 1751,
+      "brotli": 1527
+    },
+    {
+      "file": "503.56252146.chunk.js",
+      "raw": 3657,
+      "gzip": 1555,
+      "brotli": 1284
+    },
+    {
+      "file": "7.7b043c28.chunk.js",
+      "raw": 2843,
+      "gzip": 1303,
+      "brotli": 1138
+    },
+    {
+      "file": "366.9401dc10.chunk.js",
+      "raw": 2066,
+      "gzip": 918,
+      "brotli": 772
+    },
+    {
+      "file": "271.55cebbaa.chunk.js",
+      "raw": 2037,
+      "gzip": 986,
+      "brotli": 832
+    }
+  ],
+  "backend": {
+    "scope": "DISPOSABLE_GENERATED_DATA_ASGI",
+    "mongo_plans": {
+      "before": {
+        "winning_plan": {
+          "isCached": false,
+          "stage": "SORT",
+          "sortPattern": {
+            "created_at": -1
+          },
+          "memLimit": 104857600,
+          "limitAmount": 500,
+          "type": "simple",
+          "inputStage": {
+            "stage": "COLLSCAN",
+            "filter": {
+              "is_published": {
+                "$eq": true
+              }
+            },
+            "direction": "forward"
+          }
+        },
+        "execution": {
+          "executionSuccess": true,
+          "nReturned": 500,
+          "executionTimeMillis": 0,
+          "totalKeysExamined": 0,
+          "totalDocsExamined": 1000,
+          "executionStages": {
+            "isCached": false,
+            "stage": "SORT",
+            "nReturned": 500,
+            "executionTimeMillisEstimate": 0,
+            "works": 1502,
+            "advanced": 500,
+            "needTime": 1001,
+            "needYield": 0,
+            "saveState": 0,
+            "restoreState": 0,
+            "isEOF": 1,
+            "sortPattern": {
+              "created_at": -1
+            },
+            "memLimit": 104857600,
+            "limitAmount": 500,
+            "type": "simple",
+            "totalDataSizeSorted": 65445,
+            "usedDisk": false,
+            "spills": 0,
+            "spilledRecords": 0,
+            "spilledBytes": 0,
+            "spilledDataStorageSize": 0,
+            "inputStage": {
+              "stage": "COLLSCAN",
+              "filter": {
+                "is_published": {
+                  "$eq": true
+                }
+              },
+              "nReturned": 500,
+              "executionTimeMillisEstimate": 0,
+              "works": 1001,
+              "advanced": 500,
+              "needTime": 500,
+              "needYield": 0,
+              "saveState": 0,
+              "restoreState": 0,
+              "isEOF": 1,
+              "direction": "forward",
+              "docsExamined": 1000
+            }
+          }
+        }
+      },
+      "existing_index": {
+        "winning_plan": {
+          "isCached": false,
+          "stage": "LIMIT",
+          "limitAmount": 500,
+          "inputStage": {
+            "stage": "FETCH",
+            "inputStage": {
+              "stage": "IXSCAN",
+              "keyPattern": {
+                "is_published": 1,
+                "created_at": -1
+              },
+              "indexName": "is_published_1_created_at_-1",
+              "isMultiKey": false,
+              "multiKeyPaths": {
+                "is_published": [],
+                "created_at": []
+              },
+              "isUnique": false,
+              "isSparse": false,
+              "isPartial": false,
+              "indexVersion": 2,
+              "direction": "forward",
+              "indexBounds": {
+                "is_published": [
+                  "[true, true]"
+                ],
+                "created_at": [
+                  "[MaxKey, MinKey]"
+                ]
+              }
+            }
+          }
+        },
+        "execution": {
+          "executionSuccess": true,
+          "nReturned": 500,
+          "executionTimeMillis": 1,
+          "totalKeysExamined": 500,
+          "totalDocsExamined": 500,
+          "executionStages": {
+            "isCached": false,
+            "stage": "LIMIT",
+            "nReturned": 500,
+            "executionTimeMillisEstimate": 0,
+            "works": 501,
+            "advanced": 500,
+            "needTime": 0,
+            "needYield": 0,
+            "saveState": 0,
+            "restoreState": 0,
+            "isEOF": 1,
+            "limitAmount": 500,
+            "inputStage": {
+              "stage": "FETCH",
+              "nReturned": 500,
+              "executionTimeMillisEstimate": 0,
+              "works": 500,
+              "advanced": 500,
+              "needTime": 0,
+              "needYield": 0,
+              "saveState": 0,
+              "restoreState": 0,
+              "isEOF": 0,
+              "docsExamined": 500,
+              "alreadyHasObj": 0,
+              "inputStage": {
+                "stage": "IXSCAN",
+                "nReturned": 500,
+                "executionTimeMillisEstimate": 0,
+                "works": 500,
+                "advanced": 500,
+                "needTime": 0,
+                "needYield": 0,
+                "saveState": 0,
+                "restoreState": 0,
+                "isEOF": 0,
+                "keyPattern": {
+                  "is_published": 1,
+                  "created_at": -1
+                },
+                "indexName": "is_published_1_created_at_-1",
+                "isMultiKey": false,
+                "multiKeyPaths": {
+                  "is_published": [],
+                  "created_at": []
+                },
+                "isUnique": false,
+                "isSparse": false,
+                "isPartial": false,
+                "indexVersion": 2,
+                "direction": "forward",
+                "indexBounds": {
+                  "is_published": [
+                    "[true, true]"
+                  ],
+                  "created_at": [
+                    "[MaxKey, MinKey]"
+                  ]
+                },
+                "keysExamined": 500,
+                "seeks": 1,
+                "dupsTested": 0,
+                "dupsDropped": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    "redis": {
+      "samples": 100,
+      "p50_ms": 0.10693750664358959,
+      "p95_ms": 0.13379201118368655,
+      "p99_ms": 0.1406250084983185,
+      "max_ms": 0.16366700583603233,
+      "ttl_seconds": 60,
+      "hit_count": 100,
+      "miss_count": 0,
+      "scope": "single generated fixture key; not application hit rate"
+    },
+    "endpoints": {
+      "/api/books": {
+        "samples": 30,
+        "p50_ms": 22.06706249853596,
+        "p95_ms": 25.04525000404101,
+        "p99_ms": 223.02658300031908,
+        "max_ms": 223.02658300031908,
+        "statuses": [
+          200
+        ],
+        "payload_bytes_max": 307769
+      },
+      "/api/payments/offers": {
+        "samples": 30,
+        "p50_ms": 1.2134170028730296,
+        "p95_ms": 1.481666011386551,
+        "p99_ms": 1.5463330055354163,
+        "max_ms": 1.5463330055354163,
+        "statuses": [
+          200
+        ],
+        "payload_bytes_max": 682
+      },
+      "/api/users/me": {
+        "samples": 30,
+        "p50_ms": 1.0982499952660874,
+        "p95_ms": 1.6367089992854744,
+        "p99_ms": 1.9443329947534949,
+        "max_ms": 1.9443329947534949,
+        "statuses": [
+          401
+        ],
+        "payload_bytes_max": 144
+      }
+    },
+    "load": {
+      "samples": 40,
+      "p50_ms": 874.9711039999966,
+      "p95_ms": 877.0019999938086,
+      "p99_ms": 877.1997500007274,
+      "max_ms": 877.1997500007274,
+      "concurrent_requests": 40,
+      "throughput_rps": 45.35837364109959,
+      "errors": 0,
+      "scope": "ASGI warm public catalogue; no TCP/production traffic"
+    },
+    "production_indexes_changed": 0,
+    "limitations": [
+      "Existing index tested on generated representative shape, not the complete production release query.",
+      "No backend stage instrumentation; DB/serialization breakdown unavailable.",
+      "No worker throughput or authenticated browser pagination claim."
+    ]
+  },
+  "reader": {
+    "schema": "earnalism.reader-benchmark.v1",
+    "status": "PASS",
+    "generated_at": "2026-10-05T09:51:26.198243+00:00",
+    "tested_revision": "c33faa0b52134d74a174e4cd1f424fccd87a0b56",
+    "scope": "ISOLATED_ASGI_REAL_MONGO",
+    "production_verification": "NOT_PERFORMED",
+    "browser_paint_verification": "NOT_PERFORMED",
+    "country_verification": "NOT_PERFORMED",
+    "fixture_title_count": 1,
+    "protected_page_response_count": 20,
+    "auth": "REAL_SIGNUP_BOUNDED_LOGIN_REFRESH_COOKIE_BOUND_SESSION_AND_LOGOUT",
+    "trusted_device_max_active_sessions": 5,
+    "negative_access_checks": [
+      "guest_page_4",
+      "login_limit_revoked_session",
+      "missing_lease",
+      "invalid_lease",
+      "missing_device_cookie",
+      "logged_out_session"
+    ],
+    "retained_fixture_versions_unchanged": true,
+    "fixture_wallet_debit_seconds": 0,
+    "fixture_authority_fence_delta": 1,
+    "page_response_timings": {
+      "samples": 20,
+      "median_ms": 4.649,
+      "p95_ms": 4.899,
+      "maximum_ms": 4.907,
+      "samples_ms": [
+        4.899,
+        4.707,
+        4.689,
+        4.907,
+        4.47,
+        4.798,
+        4.58,
+        4.594,
+        4.656,
+        4.641,
+        4.543,
+        4.679,
+        4.603,
+        4.531,
+        4.431,
+        4.812,
+        4.837,
+        4.505,
+        4.491,
+        4.886
+      ],
+      "interpretation": "Informational ASGI/database response timings; no browser paint or production latency/SLO claim."
+    }
+  }
+}

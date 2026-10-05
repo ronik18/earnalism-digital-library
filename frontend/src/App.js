@@ -7,6 +7,7 @@ import { trackPageAnalyticsView } from "./lib/funnelAnalytics";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import { AppToaster } from "./components/AppToaster";
+import { installRoutePrefetch } from "./lib/routePrefetch";
 import "./design-system/sitewide-option-b.css";
 
 const pageImports = {
@@ -108,17 +109,13 @@ function LegacyListenerRedirect() {
 
 function useHighIntentRoutePrefetch() {
   useEffect(() => {
-    const prefetch = () => {
-      [
-        pageImports.Library,
-        pageImports.BookDetail,
-        pageImports.ReaderV2,
-        pageImports.Pricing,
-        pageImports.Login,
-      ].forEach((load) => load().catch(() => {}));
-    };
-    const id = window.setTimeout(prefetch, 5600);
-    return () => window.clearTimeout(id);
+    return installRoutePrefetch({ document, window, loaders: {
+      "/library": pageImports.Library,
+      "/book": pageImports.BookDetail,
+      "/reader": pageImports.ReaderV2,
+      "/pricing": pageImports.Pricing,
+      "/login": pageImports.Login,
+    } });
   }, []);
 }
 

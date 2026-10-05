@@ -27,24 +27,9 @@
         <link rel="dns-prefetch" href="//api.theearnalism.com" />
         <link rel="preconnect" href="https://res.cloudinary.com" />
         <link rel="preconnect" href="https://api.theearnalism.com" />
-        <link
-          rel="preload"
-          as="image"
-          href="%PUBLIC_URL%/assets/hero/premium-library-reference-exact-1440.avif?v=20260808-perf1"
-          imagesrcset="%PUBLIC_URL%/assets/hero/premium-library-reference-exact-1024.avif?v=20260808-perf1 1024w, %PUBLIC_URL%/assets/hero/premium-library-reference-exact-1440.avif?v=20260808-perf1 1440w, %PUBLIC_URL%/assets/hero/premium-library-reference-exact.avif?v=20260808-perf1 2180w"
-          imagesizes="100vw"
-          type="image/avif"
-          media="(min-width: 1024px)"
-          fetchpriority="high"
-        />
-        <link
-          rel="preload"
-          as="image"
-          href="%PUBLIC_URL%/assets/hero/premium-library-mobile-cinematic-v2.webp?v=20260815-mobile-luxe1"
-          type="image/webp"
-          media="(max-width: 1023px)"
-          fetchpriority="high"
-        />
+        <!-- The current homepage discovers its high-priority hero in its own
+             markup. Global preloads of retired hero art waste bandwidth on
+             every route, including Reader and authentication pages. -->
         <link rel="canonical" href="https://theearnalism.com/" />
         <link rel="icon" type="image/png" sizes="64x64" href="%PUBLIC_URL%/favicon.png?v=20260810-focused" />
         <link rel="icon" type="image/png" sizes="192x192" href="%PUBLIC_URL%/assets/brand/earnalism-app-icon-192.png?v=20260810-focused" />
