@@ -62,3 +62,5 @@ Final Reader0a242584c:actualChrome100→125→150→100 passesmedia/textcontainm
 ## Reader final performance acceptance — 2026-10-05T18:22:44.960126+00:00
 
 Performance-lane ledger copy; immutable external preservation unchanged. Reader0a242584:90 exact-head loads and120turns; forced-layout measured; media sixviewports PASS. Coldportrait970ms tail not reproduced (max554.2ms). Settledprose portraitresize350/353 remains non-P0 follow-up, no source change authorized here. Expandednative mixedsource100/125 exact11152chars andmedia:0 PASS;150/return100 blocked by Mac lock. Unlock the Mac and leave Chrome open. No push/PR/merge/deploy. Fullapp/productionCWV remain separate unverified scopes.
+
+Reader performance scoped closeout: native zoom prior exact-head roundtrip PASS accepted; no Mac-unlock prerequisite for this lane. Distributions PASS; layout ACCEPTED; E2E FOLLOW_UP for settled350/353px horizontal geometry. Reverse resize completed. No product source changes or release actions.

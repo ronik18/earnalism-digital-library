@@ -471,7 +471,7 @@
       "goal": "Complete Redis stampede, worker contention, real Reader performance and memory soak, Account CLS, fresh validation",
       "branch": "codex/platform-performance-optimization",
       "head": "f5a693771e2b76bcaca1a867d58dfc3bc50874ef",
-      "current_status": "Exact-head90-load/120-turn performance and forced-layout qualification complete; media fits;3px settled prose resize overflow needs follow-up; fresh mixed-content native150/return100 blocked by lockedMac",
+      "current_status": "Exact-head performance distributions and layout accepted; native zoom PASS reused;3px settled horizontal prose resize fails geometry acceptance",
       "dependencies": [],
       "acceptance_gates": [
         "one cold rebuild",
@@ -481,11 +481,11 @@
         "Account CLS",
         "fresh regression"
       ],
-      "next_action": "Apply smallest authorized horizontal-animation fix in Reader lane; after Mac unlock finish only remaining native mixed-content steps",
+      "next_action": "Separate narrowly authorized retained-animation horizontal geometry fix; no paginator rebuild",
       "remote_pr": null,
       "deployment_required": true,
       "production_verification_required": true,
-      "final_state": "BLOCKED_HUMAN",
+      "final_state": "BLOCKED_POLICY",
       "remote_hold": "Focused PR slot occupied by parked #517",
       "local_validation": {
         "cache_tests_passed": 15,
@@ -669,17 +669,18 @@
             100,
             125
           ],
-          "remaining": [
-            150,
-            "100 return"
-          ],
+          "remaining": [],
           "source_chars": 11152,
           "structural_anchor": "media:0",
-          "artifact": "docs/performance/reader-final-performance-acceptance-20261005/native-zoom.json"
+          "artifact": "docs/performance/reader-final-performance-acceptance-20261005/native-zoom.json",
+          "required_gate": false
         },
-        "full_app_startup": "NOT_MEASURED"
+        "full_app_startup": "NOT_MEASURED",
+        "native_zoom_status": "PASS preserved exact-head native roundtrip",
+        "layout_cost": "ACCEPTED",
+        "distributions": "PASS",
+        "reverse_resize_artifact": "docs/performance/reader-final-performance-acceptance-20261005/reverse-resize-trace.json"
       },
-      "human_action": "Unlock the Mac and leave Chrome open.",
       "local_reader_acceptance": "READER PERFORMANCE FOLLOW-UP REQUIRED"
     }
   ],

@@ -78,14 +78,7 @@ Six cold-cache supported figure/caption layouts: exact captions81 chars reconstr
 
 ## Native zoom
 
-Prior exact-head100→125→150→100 text/media timing remains preserved in `reader-native-zoom-closeout-20261005.json`. Fresh expanded mixed prose/image-only/adjacent-page proof is separate:
-
-|Zoom|CSS viewport|Client/scroll W|Client/scroll H|Pages|Pagination ms|Exact chars|
-|---|---|---|---|---:|---:|---|
-|100|960×704|540/540|296/296|33|43.2|11152/11152|
-|125|768×563|358/358|116/116|81|58.4|11152/11152|
-
-All pages visited through real selector, one `media:0` occurrence and stable revision. Adjacent prose fits. Native toolbar125% confirmed; no CSS zoom. Chrome quit once, reopened normally. Mac locked before fresh150 and return100, so expanded roundtrip **BLOCKED_HUMAN — UNLOCK MAC AND LEAVE CHROME OPEN**. Prior native proof is not falsely relabeled this fresh expanded acceptance. Page snapshots wait300ms to measure after intentional280ms transitions; immediate transient transforms can temporarily enlarge numeric scrollWidth.
+**PASS — preserved exact-head real Chrome100→125→150→100 proof**, text and figure anchors preserved, no central overflow. Reader source unchanged; not rerun as instructed. Prior expanded mixed-content150/return100 is not an additional acceptance gate.
 
 ## Remaining layout follow-up
 
@@ -116,3 +109,38 @@ Harness tests5 passed; syntax and diff checks pass. Existing exact Reader valida
 REDIS=DONE; WORKER=DONE_FOR_TESTED_LOCAL_ENVELOPE; CLS=DONE_LOCALLY; MEDIA=DONE_LOCALLY; CANCELLATION=PASS; MULTI_CHAPTER=PASS; MEMORY=ACCEPTED_FOR_TESTED_PATH; READER_E2E=FOLLOW_UP (3px settled horizontal resize extent); NATIVE_ZOOM=BLOCKED_HUMAN (expanded150/return100); PRODUCTION_CWV=UNVERIFIED.
 
 Next exact local prompt: `Fix the retained finished-animation horizontal scroll extent after portrait resize without clipping text; preserve Reader0a242584 ancestry and pagination/security invariants. Then finish native mixed-content150→100 after Mac unlock. No push, PR, merge or deployment.`
+
+## Final scoped closeout
+
+Additional genuine-stack reverse-resize trace: `reverse-resize-trace.json`. No product code changed. All previously requested90 loads/120 turns reused on unchanged exact head; individual samples remain in genuine-stack.json.
+
+|Fresh targeted phase|Forced count|Forced ms|Longest layout|Script ms|Style ms|Layout ms|Paint ms|Longest task|Tasks >50ms|
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+|desktop-to-portrait|608|23.976|5.693|24.119|17.368|30.052|1.034|10.335|0|
+|portrait-to-landscape|838|30.758|4.727|29.007|21.4|35.893|0.777|9.605|0|
+|landscape-to-desktop|508|19.748|5.236|18.803|16.413|25.507|1.333|11.146|0|
+|text-size-change|516|24.682|4.612|15.771|12.376|24.957|0.8|22.335|0|
+
+Trace stack attribution is production-minified (`r`, `l`, `f`, React frames), not original-function mapped. Inclusive frame totals overlap. Read-only code attribution: `paginationSteps` fits predicate reads scrollHeight; `sliceBlock` performs bounded binary-search measurement; `useVisualPagination.measureLayout` coordinates cache/measurement. No severe pathology or measured interaction regression warrants a source optimization.
+
+**MANIFEST_DUPLICATE = EXPECTED.** `ReaderExperienceV2Route` keys ReaderSession by slug+identity. AuthProvider restoration changes guest to authenticated identity; effect cleanup aborts guest request and new authenticated session resolves its own manifest. No StrictMode in the production benchmark entry. Completed responses: one manifest; first aborted request's received bytes cannot be established from retained data. No redundant completed response or material critical-path cost demonstrated; no blocker and no optimization.
+
+READER_EXACT_HEAD_DISTRIBUTIONS = PASS
+READER_LAYOUT_COST = ACCEPTED
+READER_E2E = FOLLOW_UP (settled horizontal resize350/353px exceeds2px tolerance)
+REDIS_STAMPEDE = DONE
+WORKER_CONTENTION = DONE_FOR_TESTED_LOCAL_ENVELOPE
+ACCOUNT_CLS = DONE_LOCALLY
+BENCHMARK_HANDLE_RETENTION = RESOLVED
+READER_MEDIA = DONE_LOCALLY
+READER_AUTHORIZATION = PASS
+READER_CANCELLATION = PASS
+READER_MULTI_CHAPTER = PASS
+READER_MEMORY = ACCEPTED_FOR_TESTED_PATH
+READER_NATIVE_ZOOM = PASS
+PRODUCTION_CWV = NOT_VERIFIED; separate platform field verification
+FULL_APP_READER_STARTUP = NOT_MEASURED
+
+Fresh harness tests5/5. Full app validations retained, not rerun because no application source changed. No push/PR/merge/deployment.
+
+Next exact scoped instruction: Fix retained finished-page-animation horizontal overflow on Reader0a242584; preserve paginator, typography, source reconstruction and entitlement; validate settled desktop→portrait geometry then run source-change checks.

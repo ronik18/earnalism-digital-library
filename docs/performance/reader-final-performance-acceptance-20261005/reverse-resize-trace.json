@@ -1,0 +1,3286 @@
+{
+  "reader_head": "0a242584c438a0da8160ea502e421161b039d0fe",
+  "backend_head": "5f4e298d2c161dc38debfdb36e07982e742a0421",
+  "scope": "Targeted additional genuine-stack layout trace; not a replacement distribution",
+  "browser": "149.0.7827.55",
+  "layoutPhases": [
+    {
+      "phase": "desktop-to-portrait",
+      "cpu": {
+        "forcedLayoutMethod": "Layout with explicit script stack, or entirely nested in same-thread FunctionCall/EvaluateScript/RunMicrotasks; synchronous JS-attributed reflow, not every browser layout",
+        "forcedLayoutCount": 608,
+        "forcedLayoutMs": 23.976000000000052,
+        "layoutsWithExplicitStack": 608,
+        "layoutCount": 613,
+        "layoutMs": 30.052000000000092,
+        "longestLayoutMs": 5.693,
+        "styleMs": 17.36799999999997,
+        "paintMs": 1.034,
+        "longestMainTaskMs": 10.335,
+        "longMainTasks": [],
+        "gcEvents": [
+          {
+            "name": "V8.GC_HEAP_EXTERNAL_PROLOGUE",
+            "durationMs": 0.003
+          },
+          {
+            "name": "MinorGC",
+            "durationMs": 0.475
+          },
+          {
+            "name": "V8.GC_HEAP_PROLOGUE",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GCScavenger",
+            "durationMs": 0.454
+          },
+          {
+            "name": "V8.GC_SCAVENGER_COMPLETE_SWEEP_ARRAY_BUFFERS",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_TIME_TO_SAFEPOINT",
+            "durationMs": 0.04
+          },
+          {
+            "name": "V8.GC_BACKGROUND_SAFEPOINT",
+            "durationMs": 0.444
+          },
+          {
+            "name": "V8.GC_BACKGROUND_SAFEPOINT",
+            "durationMs": 0.43
+          },
+          {
+            "name": "V8.GC_SCAVENGER",
+            "durationMs": 0.399
+          },
+          {
+            "name": "V8.GC_HEAP_PROLOGUE_SAFEPOINT",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE",
+            "durationMs": 0.39
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_IDENTIFY",
+            "durationMs": 0.036
+          },
+          {
+            "name": "V8.GC_SCAVENGER_TRACED_HANDLES_COMPUTE_WEAKNESS_PARALLEL",
+            "durationMs": 0.017
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_TRACED_HANDLES_COMPUTE_WEAKNESS_PARALLEL",
+            "durationMs": 0.01
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_COLLECT_OLD_TO_NEW_PAGES",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_PARALLEL_PHASE",
+            "durationMs": 0.245
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_ROOTS",
+            "durationMs": 0.036
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.218
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.199
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.186
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_PROCESS",
+            "durationMs": 0.052
+          },
+          {
+            "name": "V8.GC_SCAVENGER_TRACED_HANDLES_RESET_PARALLEL",
+            "durationMs": 0.025
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_TRACED_HANDLES_RESET_PARALLEL",
+            "durationMs": 0.013
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_FINALIZE",
+            "durationMs": 0.023
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_RESTORE_AND_QUARANTINE_PINNED",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_SCAVENGER_FREE_REMEMBERED_SET",
+            "durationMs": 0.006
+          },
+          {
+            "name": "V8.GC_SCAVENGER_RESIZE_NEW_SPACE",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_HEAP_EPILOGUE_SAFEPOINT",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GC_HEAP_EPILOGUE",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GC_HEAP_EXTERNAL_EPILOGUE",
+            "durationMs": 0.003
+          },
+          {
+            "name": "V8.GCIncrementalMarkingStart",
+            "durationMs": 0.183
+          },
+          {
+            "name": "V8.GC_HEAP_ENSURE_SWEEPING_COMPLETED",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_TIME_TO_SAFEPOINT",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_START",
+            "durationMs": 0.148
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EXTERNAL_PROLOGUE",
+            "durationMs": 0.011
+          },
+          {
+            "name": "V8.GC_MC_MARK_EMBEDDER_PROLOGUE",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GC_MC_MARK_ROOTS",
+            "durationMs": 0.021
+          },
+          {
+            "name": "V8.GC_MC_MARK_EMBEDDER_PROLOGUE",
+            "durationMs": 0.061
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.136
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.132
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 1.316
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EXTERNAL_EPILOGUE",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.088
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.089
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.171
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.17
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.112
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.045
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.072
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 1.15
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.497
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 1.142
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 1.126
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.447
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 1.102
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.008
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.005
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.003
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.035
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.034
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.027
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.128
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.122
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.13
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.128
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.126
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.038
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.037
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.029
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.018
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.012
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.024
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.024
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.008
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.073
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.071
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.016
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.006
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.016
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.005
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.005
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.003
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.053
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.051
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.052
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.05
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.018
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.058
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.057
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.03
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.018
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.009
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.007
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.006
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.02
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.019
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.003
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.016
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.016
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.006
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.099
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.098
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.069
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.046
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.045
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.01
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.01
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.01
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.003
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.052
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.05
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.006
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.007
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.007
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.007
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.018
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.017
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.008
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.032
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.003
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.003
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.003
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.023
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.023
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.017
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.022
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.022
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.019
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.025
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.023
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.006
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.01
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.009
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.005
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.053
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.052
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.033
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.02
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.019
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.013
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.013
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.012
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.012
+          },
+          {
+            "name": "V8.GC_HEAP_EXTERNAL_PROLOGUE",
+            "durationMs": 0.006
+          },
+          {
+            "name": "MajorGC",
+            "durationMs": 1.701
+          },
+          {
+            "name": "V8.GCFinalizeMC",
+            "durationMs": 1.676
+          },
+          {
+            "name": "V8.GC_TIME_TO_SAFEPOINT",
+            "durationMs": 0.035
+          },
+          {
+            "name": "V8.GC_BACKGROUND_SAFEPOINT",
+            "durationMs": 1.62
+          },
+          {
+            "name": "V8.GC_MARK_COMPACTOR",
+            "durationMs": 1.578
+          },
+          {
+            "name": "V8.GC_MC_PROLOGUE",
+            "durationMs": 0.014
+          },
+          {
+            "name": "V8.GC_MC_MARK",
+            "durationMs": 0.129
+          },
+          {
+            "name": "V8.GC_MC_MARK_FINISH_INCREMENTAL",
+            "durationMs": 0.005
+          },
+          {
+            "name": "V8.GC_MC_MARK_ROOTS",
+            "durationMs": 0.018
+          },
+          {
+            "name": "V8.GC_MC_MARK_CLIENT_HEAPS",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_MARK_RETAIN_MAPS",
+            "durationMs": 0.003
+          },
+          {
+            "name": "V8.GC_MC_MARK_FULL_CLOSURE_PARALLEL",
+            "durationMs": 0.077
+          },
+          {
+            "name": "V8.GC_MC_MARK_WEAK_CLOSURE_EPHEMERON_MARKING",
+            "durationMs": 0.011
+          },
+          {
+            "name": "V8.GC_MC_MARK_EMBEDDER_TRACING",
+            "durationMs": 0.006
+          },
+          {
+            "name": "V8.GC_MC_MARK_WEAK_CLOSURE_EPHEMERON_MARKING",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.016
+          },
+          {
+            "name": "V8.GC_MC_MARK_ROOTS",
+            "durationMs": 0.003
+          },
+          {
+            "name": "V8.GC_CONSERVATIVE_STACK_SCANNING",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GC_MC_MARK_FULL_CLOSURE_SERIAL",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_MC_MARK_WEAK_CLOSURE_EPHEMERON_MARKING",
+            "durationMs": 0.003
+          },
+          {
+            "name": "V8.GC_MC_MARK_EMBEDDER_TRACING",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_CLEAR",
+            "durationMs": 0.294
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_JOIN_JOB",
+            "durationMs": 0.278
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_WEAK_COLLECTIONS",
+            "durationMs": 0.006
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_SWEEP_WASM_CODE_POINTER_TABLE",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_MAPS",
+            "durationMs": 0.021
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_WEAK_LISTS",
+            "durationMs": 0.013
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_FLUSHED_JS_FUNCTIONS",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_WEAK_GLOBAL_HANDLES",
+            "durationMs": 0.11
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_SWEEP_JS_DISPATCH_TABLE",
+            "durationMs": 0.033
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_JS_WEAK_REFERENCES",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_EXTERNAL_STRING_TABLE",
+            "durationMs": 0.094
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_STRING_TABLE",
+            "durationMs": 0.018
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_STRING_TABLE",
+            "durationMs": 0.019
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_STRING_TABLE",
+            "durationMs": 0.016
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_STRING_TABLE",
+            "durationMs": 0.017
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_STRING_TABLE",
+            "durationMs": 0.029
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_STRING_TABLE",
+            "durationMs": 0.018
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_STRING_TABLE",
+            "durationMs": 0.016
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_STRING_TABLE",
+            "durationMs": 0.017
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_SWEEP_EXTERNAL_POINTER_TABLE",
+            "durationMs": 0.081
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_FLUSHABLE_BYTECODE",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_SWEEP_CODE_POINTER_TABLE",
+            "durationMs": 0.016
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_SWEEP_TRUSTED_POINTER_TABLE",
+            "durationMs": 0.02
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_WEAK_REFERENCES_NON_TRIVIAL",
+            "durationMs": 0.017
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_WEAK_REFERENCES_TRUSTED",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_WEAK_REFERENCES_TRIVIAL",
+            "durationMs": 0.093
+          },
+          {
+            "name": "V8.GC_MC_SWEEP",
+            "durationMs": 0.01
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE",
+            "durationMs": 0.911
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_PROLOGUE",
+            "durationMs": 0.003
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_COPY",
+            "durationMs": 0.608
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_COPY_PARALLEL",
+            "durationMs": 0.466
+          },
+          {
+            "name": "V8.GC_MC_SWEEP",
+            "durationMs": 0.021
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_EVACUATE_COPY",
+            "durationMs": 0.55
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.053
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_EVACUATE_COPY",
+            "durationMs": 0.466
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.034
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_EVACUATE_COPY",
+            "durationMs": 0.451
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.059
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_EVACUATE_COPY",
+            "durationMs": 0.476
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.037
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.057
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.086
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.07
+          },
+          {
+            "name": "V8.GC_MC_SWEEP",
+            "durationMs": 0.073
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.071
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.094
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.087
+          },
+          {
+            "name": "V8.GC_MC_SWEEP",
+            "durationMs": 0.072
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.075
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.078
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS",
+            "durationMs": 0.294
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_TO_NEW_ROOTS",
+            "durationMs": 0.133
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_CLIENT_HEAPS",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_SLOTS_MAIN",
+            "durationMs": 0.086
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_PARALLEL",
+            "durationMs": 0.061
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_EVACUATE_UPDATE_POINTERS",
+            "durationMs": 0.033
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_EVACUATE_UPDATE_POINTERS",
+            "durationMs": 0.031
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_EVACUATE_UPDATE_POINTERS",
+            "durationMs": 0.029
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_EVACUATE_UPDATE_POINTERS",
+            "durationMs": 0.018
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_EVACUATE_UPDATE_POINTERS",
+            "durationMs": 0.037
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_EVACUATE_UPDATE_POINTERS",
+            "durationMs": 0.03
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_EVACUATE_UPDATE_POINTERS",
+            "durationMs": 0.012
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_WEAK",
+            "durationMs": 0.005
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_POINTER_TABLES",
+            "durationMs": 0.062
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_CLEAN_UP",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_EPILOGUE",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_MC_SWEEP",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_SWEEP_NEW_LO",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_REBALANCE",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_FINISH",
+            "durationMs": 0.012
+          },
+          {
+            "name": "V8.GC_MC_FINISH_SWEEP_ARRAY_BUFFERS",
+            "durationMs": 0.003
+          },
+          {
+            "name": "V8.GC_MC_SWEEP_START_JOBS",
+            "durationMs": 0.003
+          },
+          {
+            "name": "V8.GC_HEAP_EXTERNAL_WEAK_GLOBAL_HANDLES",
+            "durationMs": 0.033
+          },
+          {
+            "name": "V8.GC_BACKGROUND_FULL_ARRAY_BUFFER_SWEEP",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.048
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.054
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.07
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.062
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.047
+          },
+          {
+            "name": "V8.GC_HEAP_EMBEDDER_TRACING_EPILOGUE",
+            "durationMs": 0.043
+          },
+          {
+            "name": "V8.GC_HEAP_EPILOGUE_SAFEPOINT",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GC_HEAP_EPILOGUE",
+            "durationMs": 0.003
+          },
+          {
+            "name": "V8.GC_HEAP_EXTERNAL_EPILOGUE",
+            "durationMs": 0.015
+          },
+          {
+            "name": "V8.GCPhantomHandleProcessingCallback",
+            "durationMs": 0.012
+          },
+          {
+            "name": "V8.GC_HEAP_EXTERNAL_SECOND_PASS_CALLBACKS",
+            "durationMs": 0.01
+          }
+        ],
+        "layoutStackFunctions": [
+          {
+            "function": "(anonymous):2",
+            "count": 1822,
+            "durationMs": 71.4159999999997
+          },
+          {
+            "function": "r:2",
+            "count": 607,
+            "durationMs": 23.720000000000052
+          },
+          {
+            "function": "l:2",
+            "count": 607,
+            "durationMs": 23.720000000000052
+          },
+          {
+            "function": "f:2",
+            "count": 86,
+            "durationMs": 3.681
+          },
+          {
+            "function": "zs:2",
+            "count": 14,
+            "durationMs": 3.5840000000000014
+          },
+          {
+            "function": "Ys:2",
+            "count": 13,
+            "durationMs": 3.328000000000001
+          },
+          {
+            "function": "ms:2",
+            "count": 1,
+            "durationMs": 0.256
+          },
+          {
+            "function": "gc:2",
+            "count": 1,
+            "durationMs": 0.256
+          },
+          {
+            "function": "hc:2",
+            "count": 1,
+            "durationMs": 0.256
+          },
+          {
+            "function": "Qu:2",
+            "count": 1,
+            "durationMs": 0.256
+          },
+          {
+            "function": "Ku:2",
+            "count": 1,
+            "durationMs": 0.256
+          },
+          {
+            "function": "$c:2",
+            "count": 1,
+            "durationMs": 0.256
+          }
+        ],
+        "ScriptDuration": 0.024119,
+        "LayoutDuration": 0.031065000000000002,
+        "RecalcStyleDuration": 0.013595000000000003,
+        "TaskDuration": 0.08584199999999997
+      },
+      "observedMs": 365.66208299999926,
+      "before": {
+        "dataset": {
+          "paginationReady": "true",
+          "transportChunks": "10",
+          "manifestMs": "15.099999994039536",
+          "networkMs": "271.5999999344349",
+          "verificationMs": "0.8000000715255737",
+          "fetchMs": "100.40000000596046",
+          "assemblyMs": "1.800000011920929",
+          "chapterId": "chapter-001",
+          "sourcePage": "3",
+          "sourceOffset": "2785",
+          "bookMapComplete": "true",
+          "pageCount": "51",
+          "visualPageIndex": "10",
+          "layoutWidth": "595",
+          "layoutHeight": "460",
+          "paginationMs": "41",
+          "paginationCached": "false",
+          "pageStart": "6010",
+          "pageEnd": "6621",
+          "bookPageCount": "51"
+        },
+        "clientHeight": 460,
+        "scrollHeight": 460,
+        "overflow": false,
+        "mountedPages": 1,
+        "opening": false,
+        "sourceAnchor": {
+          "chapter": "chapter-001",
+          "page": "3",
+          "offset": "2785"
+        },
+        "textCharacters": 611
+      },
+      "dataset": {
+        "paginationReady": "true",
+        "transportChunks": "10",
+        "manifestMs": "15.099999994039536",
+        "networkMs": "271.5999999344349",
+        "verificationMs": "0.8000000715255737",
+        "fetchMs": "100.40000000596046",
+        "assemblyMs": "1.800000011920929",
+        "chapterId": "chapter-001",
+        "sourcePage": "4",
+        "sourceOffset": "0",
+        "bookMapComplete": "true",
+        "pageCount": "151",
+        "visualPageIndex": "32",
+        "layoutWidth": "350",
+        "layoutHeight": "286",
+        "paginationMs": "48.20000001788139",
+        "paginationCached": "false",
+        "pageStart": "6409",
+        "pageEnd": "6621",
+        "bookPageCount": "151"
+      },
+      "clientHeight": 286,
+      "scrollHeight": 286,
+      "overflow": false,
+      "mountedPages": 1,
+      "opening": false,
+      "sourceAnchor": {
+        "chapter": "chapter-001",
+        "page": "4",
+        "offset": "0"
+      },
+      "textCharacters": 212
+    },
+    {
+      "phase": "portrait-to-landscape",
+      "cpu": {
+        "forcedLayoutMethod": "Layout with explicit script stack, or entirely nested in same-thread FunctionCall/EvaluateScript/RunMicrotasks; synchronous JS-attributed reflow, not every browser layout",
+        "forcedLayoutCount": 838,
+        "forcedLayoutMs": 30.75800000000011,
+        "layoutsWithExplicitStack": 838,
+        "layoutCount": 844,
+        "layoutMs": 35.89300000000001,
+        "longestLayoutMs": 4.727,
+        "styleMs": 21.400000000000002,
+        "paintMs": 0.7770000000000001,
+        "longestMainTaskMs": 9.605,
+        "longMainTasks": [],
+        "gcEvents": [
+          {
+            "name": "V8.GC_HEAP_EXTERNAL_PROLOGUE",
+            "durationMs": 0.002
+          },
+          {
+            "name": "MinorGC",
+            "durationMs": 0.957
+          },
+          {
+            "name": "V8.GC_HEAP_PROLOGUE",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GCScavenger",
+            "durationMs": 0.934
+          },
+          {
+            "name": "V8.GC_HEAP_ENSURE_SWEEPING_COMPLETED",
+            "durationMs": 0.509
+          },
+          {
+            "name": "V8.GC_MC_COMPLETE_SWEEP_ARRAY_BUFFERS",
+            "durationMs": 0.006
+          },
+          {
+            "name": "V8.GC_MC_COMPLETE_SWEEPING",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GC_TIME_TO_SAFEPOINT",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_SCAVENGER",
+            "durationMs": 0.419
+          },
+          {
+            "name": "V8.GC_HEAP_PROLOGUE_SAFEPOINT",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE",
+            "durationMs": 0.412
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_IDENTIFY",
+            "durationMs": 0.065
+          },
+          {
+            "name": "V8.GC_SCAVENGER_TRACED_HANDLES_COMPUTE_WEAKNESS_PARALLEL",
+            "durationMs": 0.041
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_TRACED_HANDLES_COMPUTE_WEAKNESS_PARALLEL",
+            "durationMs": 0.031
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_TRACED_HANDLES_COMPUTE_WEAKNESS_PARALLEL",
+            "durationMs": 0.03
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_COLLECT_OLD_TO_NEW_PAGES",
+            "durationMs": 0.005
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_PARALLEL_PHASE",
+            "durationMs": 0.193
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_ROOTS",
+            "durationMs": 0.02
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.15
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.132
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_PARALLEL",
+            "durationMs": 0.103
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.11
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.092
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_PROCESS",
+            "durationMs": 0.094
+          },
+          {
+            "name": "V8.GC_SCAVENGER_TRACED_HANDLES_RESET_PARALLEL",
+            "durationMs": 0.062
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_TRACED_HANDLES_RESET_PARALLEL",
+            "durationMs": 0.046
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_TRACED_HANDLES_RESET_PARALLEL",
+            "durationMs": 0.043
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_FINALIZE",
+            "durationMs": 0.022
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_RESTORE_AND_QUARANTINE_PINNED",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_SCAVENGER_FREE_REMEMBERED_SET",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GC_SCAVENGER_RESIZE_NEW_SPACE",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_HEAP_EPILOGUE_SAFEPOINT",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GC_HEAP_EPILOGUE",
+            "durationMs": 0.003
+          },
+          {
+            "name": "V8.GC_HEAP_EXTERNAL_EPILOGUE",
+            "durationMs": 0.009
+          },
+          {
+            "name": "V8.GC_HEAP_EXTERNAL_PROLOGUE",
+            "durationMs": 0.001
+          },
+          {
+            "name": "MinorGC",
+            "durationMs": 0.586
+          },
+          {
+            "name": "V8.GCScavenger",
+            "durationMs": 0.565
+          },
+          {
+            "name": "V8.GC_SCAVENGER",
+            "durationMs": 0.561
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE",
+            "durationMs": 0.525
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_IDENTIFY",
+            "durationMs": 0.053
+          },
+          {
+            "name": "V8.GC_SCAVENGER_TRACED_HANDLES_COMPUTE_WEAKNESS_PARALLEL",
+            "durationMs": 0.026
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_TRACED_HANDLES_COMPUTE_WEAKNESS_PARALLEL",
+            "durationMs": 0.02
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_TRACED_HANDLES_COMPUTE_WEAKNESS_PARALLEL",
+            "durationMs": 0.019
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_COLLECT_OLD_TO_NEW_PAGES",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_PARALLEL_PHASE",
+            "durationMs": 0.304
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_ROOTS",
+            "durationMs": 0.043
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.276
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.214
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.212
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.172
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.216
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_PROCESS",
+            "durationMs": 0.094
+          },
+          {
+            "name": "V8.GC_SCAVENGER_TRACED_HANDLES_RESET_PARALLEL",
+            "durationMs": 0.038
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_TRACED_HANDLES_RESET_PARALLEL",
+            "durationMs": 0.032
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_TRACED_HANDLES_RESET_PARALLEL",
+            "durationMs": 0.032
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_FINALIZE",
+            "durationMs": 0.033
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_RESTORE_AND_QUARANTINE_PINNED",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_SCAVENGER_FREE_REMEMBERED_SET",
+            "durationMs": 0.008
+          },
+          {
+            "name": "V8.GC_SCAVENGER_RESIZE_NEW_SPACE",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_HEAP_EPILOGUE_SAFEPOINT",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_HEAP_EPILOGUE",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GC_HEAP_EXTERNAL_EPILOGUE",
+            "durationMs": 0.003
+          }
+        ],
+        "layoutStackFunctions": [
+          {
+            "function": "(anonymous):2",
+            "count": 2512,
+            "durationMs": 91.80999999999891
+          },
+          {
+            "function": "r:2",
+            "count": 837,
+            "durationMs": 30.52600000000011
+          },
+          {
+            "function": "l:2",
+            "count": 837,
+            "durationMs": 30.52600000000011
+          },
+          {
+            "function": "f:2",
+            "count": 93,
+            "durationMs": 3.720999999999996
+          },
+          {
+            "function": "zs:2",
+            "count": 14,
+            "durationMs": 3.248000000000001
+          },
+          {
+            "function": "Ys:2",
+            "count": 13,
+            "durationMs": 3.016000000000001
+          },
+          {
+            "function": "ms:2",
+            "count": 1,
+            "durationMs": 0.232
+          },
+          {
+            "function": "gc:2",
+            "count": 1,
+            "durationMs": 0.232
+          },
+          {
+            "function": "hc:2",
+            "count": 1,
+            "durationMs": 0.232
+          },
+          {
+            "function": "Qu:2",
+            "count": 1,
+            "durationMs": 0.232
+          },
+          {
+            "function": "Ku:2",
+            "count": 1,
+            "durationMs": 0.232
+          },
+          {
+            "function": "$c:2",
+            "count": 1,
+            "durationMs": 0.232
+          }
+        ],
+        "ScriptDuration": 0.029007000000000005,
+        "LayoutDuration": 0.03711299999999999,
+        "RecalcStyleDuration": 0.016607999999999998,
+        "TaskDuration": 0.098221
+      },
+      "observedMs": 426.29570799999965,
+      "before": {
+        "dataset": {
+          "paginationReady": "true",
+          "transportChunks": "10",
+          "manifestMs": "15.099999994039536",
+          "networkMs": "271.5999999344349",
+          "verificationMs": "0.8000000715255737",
+          "fetchMs": "100.40000000596046",
+          "assemblyMs": "1.800000011920929",
+          "chapterId": "chapter-001",
+          "sourcePage": "4",
+          "sourceOffset": "0",
+          "bookMapComplete": "true",
+          "pageCount": "151",
+          "visualPageIndex": "32",
+          "layoutWidth": "350",
+          "layoutHeight": "286",
+          "paginationMs": "48.20000001788139",
+          "paginationCached": "false",
+          "pageStart": "6409",
+          "pageEnd": "6621",
+          "bookPageCount": "151"
+        },
+        "clientHeight": 286,
+        "scrollHeight": 286,
+        "overflow": false,
+        "mountedPages": 1,
+        "opening": false,
+        "sourceAnchor": {
+          "chapter": "chapter-001",
+          "page": "4",
+          "offset": "0"
+        },
+        "textCharacters": 212
+      },
+      "dataset": {
+        "paginationReady": "true",
+        "transportChunks": "10",
+        "manifestMs": "15.099999994039536",
+        "networkMs": "271.5999999344349",
+        "verificationMs": "0.8000000715255737",
+        "fetchMs": "100.40000000596046",
+        "assemblyMs": "1.800000011920929",
+        "chapterId": "chapter-001",
+        "sourcePage": "4",
+        "sourceOffset": "0",
+        "bookMapComplete": "true",
+        "pageCount": "381",
+        "visualPageIndex": "77",
+        "layoutWidth": "438",
+        "layoutHeight": "148",
+        "paginationMs": "71.09999999403954",
+        "paginationCached": "false",
+        "pageStart": "6409",
+        "pageEnd": "6476",
+        "bookPageCount": "381"
+      },
+      "clientHeight": 148,
+      "scrollHeight": 148,
+      "overflow": false,
+      "mountedPages": 1,
+      "opening": false,
+      "sourceAnchor": {
+        "chapter": "chapter-001",
+        "page": "4",
+        "offset": "0"
+      },
+      "textCharacters": 67
+    },
+    {
+      "phase": "landscape-to-desktop",
+      "cpu": {
+        "forcedLayoutMethod": "Layout with explicit script stack, or entirely nested in same-thread FunctionCall/EvaluateScript/RunMicrotasks; synchronous JS-attributed reflow, not every browser layout",
+        "forcedLayoutCount": 508,
+        "forcedLayoutMs": 19.74800000000002,
+        "layoutsWithExplicitStack": 508,
+        "layoutCount": 513,
+        "layoutMs": 25.507000000000065,
+        "longestLayoutMs": 5.236,
+        "styleMs": 16.41300000000008,
+        "paintMs": 1.3330000000000004,
+        "longestMainTaskMs": 11.146,
+        "longMainTasks": [],
+        "gcEvents": [
+          {
+            "name": "V8.GC_HEAP_EXTERNAL_PROLOGUE",
+            "durationMs": 0.001
+          },
+          {
+            "name": "MinorGC",
+            "durationMs": 0.606
+          },
+          {
+            "name": "V8.GC_HEAP_PROLOGUE",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GCScavenger",
+            "durationMs": 0.583
+          },
+          {
+            "name": "V8.GC_TIME_TO_SAFEPOINT",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_SCAVENGER",
+            "durationMs": 0.577
+          },
+          {
+            "name": "V8.GC_HEAP_PROLOGUE_SAFEPOINT",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE",
+            "durationMs": 0.571
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_IDENTIFY",
+            "durationMs": 0.066
+          },
+          {
+            "name": "V8.GC_SCAVENGER_TRACED_HANDLES_COMPUTE_WEAKNESS_PARALLEL",
+            "durationMs": 0.043
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_TRACED_HANDLES_COMPUTE_WEAKNESS_PARALLEL",
+            "durationMs": 0.033
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_TRACED_HANDLES_COMPUTE_WEAKNESS_PARALLEL",
+            "durationMs": 0.032
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_COLLECT_OLD_TO_NEW_PAGES",
+            "durationMs": 0.006
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_PARALLEL_PHASE",
+            "durationMs": 0.305
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_ROOTS",
+            "durationMs": 0.062
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.245
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.132
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.118
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.061
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.136
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.041
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.15
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_PARALLEL",
+            "durationMs": 0.057
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.069
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.063
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.061
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_PROCESS",
+            "durationMs": 0.108
+          },
+          {
+            "name": "V8.GC_SCAVENGER_TRACED_HANDLES_RESET_PARALLEL",
+            "durationMs": 0.057
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_TRACED_HANDLES_RESET_PARALLEL",
+            "durationMs": 0.049
+          },
+          {
+            "name": "V8.GC_SCAVENGER_BACKGROUND_TRACED_HANDLES_RESET_PARALLEL",
+            "durationMs": 0.046
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_FINALIZE",
+            "durationMs": 0.039
+          },
+          {
+            "name": "V8.GC_SCAVENGER_SCAVENGE_RESTORE_AND_QUARANTINE_PINNED",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_SCAVENGER_FREE_REMEMBERED_SET",
+            "durationMs": 0.006
+          },
+          {
+            "name": "V8.GC_SCAVENGER_RESIZE_NEW_SPACE",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_HEAP_EPILOGUE_SAFEPOINT",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GC_HEAP_EPILOGUE",
+            "durationMs": 0.003
+          },
+          {
+            "name": "V8.GC_HEAP_EXTERNAL_EPILOGUE",
+            "durationMs": 0.002
+          }
+        ],
+        "layoutStackFunctions": [
+          {
+            "function": "(anonymous):2",
+            "count": 1522,
+            "durationMs": 58.59799999999943
+          },
+          {
+            "function": "r:2",
+            "count": 507,
+            "durationMs": 19.42500000000002
+          },
+          {
+            "function": "l:2",
+            "count": 507,
+            "durationMs": 19.42500000000002
+          },
+          {
+            "function": "zs:2",
+            "count": 14,
+            "durationMs": 4.522
+          },
+          {
+            "function": "Ys:2",
+            "count": 13,
+            "durationMs": 4.199
+          },
+          {
+            "function": "f:2",
+            "count": 89,
+            "durationMs": 3.7230000000000008
+          },
+          {
+            "function": "ms:2",
+            "count": 1,
+            "durationMs": 0.323
+          },
+          {
+            "function": "gc:2",
+            "count": 1,
+            "durationMs": 0.323
+          },
+          {
+            "function": "hc:2",
+            "count": 1,
+            "durationMs": 0.323
+          },
+          {
+            "function": "Qu:2",
+            "count": 1,
+            "durationMs": 0.323
+          },
+          {
+            "function": "Ku:2",
+            "count": 1,
+            "durationMs": 0.323
+          },
+          {
+            "function": "$c:2",
+            "count": 1,
+            "durationMs": 0.323
+          }
+        ],
+        "ScriptDuration": 0.018802999999999986,
+        "LayoutDuration": 0.026257000000000003,
+        "RecalcStyleDuration": 0.013397,
+        "TaskDuration": 0.07160700000000003
+      },
+      "observedMs": 330.78962499999943,
+      "before": {
+        "dataset": {
+          "paginationReady": "true",
+          "transportChunks": "10",
+          "manifestMs": "15.099999994039536",
+          "networkMs": "271.5999999344349",
+          "verificationMs": "0.8000000715255737",
+          "fetchMs": "100.40000000596046",
+          "assemblyMs": "1.800000011920929",
+          "chapterId": "chapter-001",
+          "sourcePage": "4",
+          "sourceOffset": "0",
+          "bookMapComplete": "true",
+          "pageCount": "381",
+          "visualPageIndex": "77",
+          "layoutWidth": "438",
+          "layoutHeight": "148",
+          "paginationMs": "71.09999999403954",
+          "paginationCached": "false",
+          "pageStart": "6409",
+          "pageEnd": "6476",
+          "bookPageCount": "381"
+        },
+        "clientHeight": 148,
+        "scrollHeight": 148,
+        "overflow": false,
+        "mountedPages": 1,
+        "opening": false,
+        "sourceAnchor": {
+          "chapter": "chapter-001",
+          "page": "4",
+          "offset": "0"
+        },
+        "textCharacters": 67
+      },
+      "dataset": {
+        "paginationReady": "true",
+        "transportChunks": "10",
+        "manifestMs": "15.099999994039536",
+        "networkMs": "271.5999999344349",
+        "verificationMs": "0.8000000715255737",
+        "fetchMs": "100.40000000596046",
+        "assemblyMs": "1.800000011920929",
+        "chapterId": "chapter-001",
+        "sourcePage": "3",
+        "sourceOffset": "2785",
+        "bookMapComplete": "true",
+        "pageCount": "51",
+        "visualPageIndex": "10",
+        "layoutWidth": "595",
+        "layoutHeight": "460",
+        "paginationMs": "39.29999998211861",
+        "paginationCached": "false",
+        "pageStart": "6010",
+        "pageEnd": "6621",
+        "bookPageCount": "51"
+      },
+      "clientHeight": 460,
+      "scrollHeight": 460,
+      "overflow": false,
+      "mountedPages": 1,
+      "opening": false,
+      "sourceAnchor": {
+        "chapter": "chapter-001",
+        "page": "3",
+        "offset": "2785"
+      },
+      "textCharacters": 611
+    },
+    {
+      "phase": "text-size-change",
+      "cpu": {
+        "forcedLayoutMethod": "Layout with explicit script stack, or entirely nested in same-thread FunctionCall/EvaluateScript/RunMicrotasks; synchronous JS-attributed reflow, not every browser layout",
+        "forcedLayoutCount": 516,
+        "forcedLayoutMs": 24.682000000000055,
+        "layoutsWithExplicitStack": 516,
+        "layoutCount": 518,
+        "layoutMs": 24.957000000000054,
+        "longestLayoutMs": 4.612,
+        "styleMs": 12.376000000000008,
+        "paintMs": 0.8,
+        "longestMainTaskMs": 22.335,
+        "longMainTasks": [],
+        "gcEvents": [
+          {
+            "name": "V8.GCIncrementalMarkingStart",
+            "durationMs": 0.152
+          },
+          {
+            "name": "V8.GC_HEAP_ENSURE_SWEEPING_COMPLETED",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_TIME_TO_SAFEPOINT",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_START",
+            "durationMs": 0.135
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EXTERNAL_PROLOGUE",
+            "durationMs": 0.013
+          },
+          {
+            "name": "V8.GC_MC_MARK_EMBEDDER_PROLOGUE",
+            "durationMs": 0.006
+          },
+          {
+            "name": "V8.GC_MC_MARK_ROOTS",
+            "durationMs": 0.022
+          },
+          {
+            "name": "V8.GC_MC_MARK_EMBEDDER_PROLOGUE",
+            "durationMs": 0.02
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.157
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EXTERNAL_EPILOGUE",
+            "durationMs": 0.007
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.143
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.133
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.131
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.072
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.072
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.904
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.023
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.848
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.814
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.007
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.005
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.82
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.076
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.767
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.075
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.811
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.783
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.078
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.078
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.074
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.003
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.161
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.161
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.029
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.005
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.091
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.091
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.087
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.017
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.017
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.014
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.15
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.148
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.055
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.02
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.02
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.016
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.041
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.041
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.037
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.003
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.124
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.124
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.038
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.023
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.022
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.02
+          },
+          {
+            "name": "V8.GCIncrementalMarking",
+            "durationMs": 0.008
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL",
+            "durationMs": 0.008
+          },
+          {
+            "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+            "durationMs": 0.005
+          },
+          {
+            "name": "V8.GC_HEAP_EXTERNAL_PROLOGUE",
+            "durationMs": 0.004
+          },
+          {
+            "name": "MajorGC",
+            "durationMs": 1.555
+          },
+          {
+            "name": "V8.GCFinalizeMC",
+            "durationMs": 1.535
+          },
+          {
+            "name": "V8.GC_TIME_TO_SAFEPOINT",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MARK_COMPACTOR",
+            "durationMs": 1.53
+          },
+          {
+            "name": "V8.GC_HEAP_PROLOGUE_SAFEPOINT",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_PROLOGUE",
+            "durationMs": 0.015
+          },
+          {
+            "name": "V8.GC_MC_MARK",
+            "durationMs": 0.178
+          },
+          {
+            "name": "V8.GC_MC_MARK_FINISH_INCREMENTAL",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GC_MC_MARK_ROOTS",
+            "durationMs": 0.012
+          },
+          {
+            "name": "V8.GC_MC_MARK_CLIENT_HEAPS",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_MARK_RETAIN_MAPS",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_MC_MARK_FULL_CLOSURE_PARALLEL",
+            "durationMs": 0.135
+          },
+          {
+            "name": "V8.GC_MC_MARK_WEAK_CLOSURE_EPHEMERON_MARKING",
+            "durationMs": 0.083
+          },
+          {
+            "name": "V8.GC_MC_MARK_EMBEDDER_TRACING",
+            "durationMs": 0.06
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.077
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.012
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_MARKING",
+            "durationMs": 0.013
+          },
+          {
+            "name": "V8.GC_MC_MARK_WEAK_CLOSURE_EPHEMERON_MARKING",
+            "durationMs": 0.028
+          },
+          {
+            "name": "V8.GC_MC_MARK_EMBEDDER_TRACING",
+            "durationMs": 0.021
+          },
+          {
+            "name": "V8.GC_MC_MARK_WEAK_CLOSURE_EPHEMERON_MARKING",
+            "durationMs": 0.005
+          },
+          {
+            "name": "V8.GC_MC_MARK_EMBEDDER_TRACING",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_MC_MARK_ROOTS",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GC_CONSERVATIVE_STACK_SCANNING",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_MARK_FULL_CLOSURE_SERIAL",
+            "durationMs": 0.006
+          },
+          {
+            "name": "V8.GC_MC_MARK_WEAK_CLOSURE_EPHEMERON_MARKING",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_MC_MARK_EMBEDDER_TRACING",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_MC_CLEAR",
+            "durationMs": 0.418
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_JOIN_JOB",
+            "durationMs": 0.403
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_WEAK_COLLECTIONS",
+            "durationMs": 0.006
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_SWEEP_WASM_CODE_POINTER_TABLE",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_MAPS",
+            "durationMs": 0.014
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_WEAK_LISTS",
+            "durationMs": 0.011
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_FLUSHED_JS_FUNCTIONS",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_SWEEP_JS_DISPATCH_TABLE",
+            "durationMs": 0.017
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_JS_WEAK_REFERENCES",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_WEAK_GLOBAL_HANDLES",
+            "durationMs": 0.085
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_EXTERNAL_STRING_TABLE",
+            "durationMs": 0.279
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_STRING_TABLE",
+            "durationMs": 0.024
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_STRING_TABLE",
+            "durationMs": 0.033
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_STRING_TABLE",
+            "durationMs": 0.017
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_STRING_TABLE",
+            "durationMs": 0.017
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_STRING_TABLE",
+            "durationMs": 0.021
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_STRING_TABLE",
+            "durationMs": 0.017
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_STRING_TABLE",
+            "durationMs": 0.014
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_STRING_TABLE",
+            "durationMs": 0.017
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_FLUSHABLE_BYTECODE",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_SWEEP_CODE_POINTER_TABLE",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_SWEEP_TRUSTED_POINTER_TABLE",
+            "durationMs": 0.013
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_WEAK_REFERENCES_NON_TRIVIAL",
+            "durationMs": 0.006
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_WEAK_REFERENCES_TRUSTED",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_WEAK_REFERENCES_TRIVIAL",
+            "durationMs": 0.062
+          },
+          {
+            "name": "V8.GC_MC_CLEAR_SWEEP_EXTERNAL_POINTER_TABLE",
+            "durationMs": 0.063
+          },
+          {
+            "name": "V8.GC_MC_SWEEP",
+            "durationMs": 0.01
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE",
+            "durationMs": 0.57
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_PROLOGUE",
+            "durationMs": 0.007
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_COPY",
+            "durationMs": 0.213
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_COPY_PARALLEL",
+            "durationMs": 0.18
+          },
+          {
+            "name": "V8.GC_MC_SWEEP",
+            "durationMs": 0.003
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_EVACUATE_COPY",
+            "durationMs": 0.138
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_EVACUATE_COPY",
+            "durationMs": 0.141
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_EVACUATE_COPY",
+            "durationMs": 0.108
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_EVACUATE_COPY",
+            "durationMs": 0.126
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.025
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.005
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.008
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.048
+          },
+          {
+            "name": "V8.GC_MC_SWEEP",
+            "durationMs": 0.031
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS",
+            "durationMs": 0.305
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_TO_NEW_ROOTS",
+            "durationMs": 0.129
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_CLIENT_HEAPS",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_SLOTS_MAIN",
+            "durationMs": 0.096
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_PARALLEL",
+            "durationMs": 0.044
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_EVACUATE_UPDATE_POINTERS",
+            "durationMs": 0.032
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_EVACUATE_UPDATE_POINTERS",
+            "durationMs": 0.028
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_EVACUATE_UPDATE_POINTERS",
+            "durationMs": 0.02
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_EVACUATE_UPDATE_POINTERS",
+            "durationMs": 0.017
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_EVACUATE_UPDATE_POINTERS",
+            "durationMs": 0.045
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_WEAK",
+            "durationMs": 0.003
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_POINTER_TABLES",
+            "durationMs": 0.07
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_CLEAN_UP",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_EPILOGUE",
+            "durationMs": 0.043
+          },
+          {
+            "name": "V8.GC_MC_SWEEP",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE",
+            "durationMs": 0.002
+          },
+          {
+            "name": "V8.GC_MC_EVACUATE_REBALANCE",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_MC_FINISH",
+            "durationMs": 0.012
+          },
+          {
+            "name": "V8.GC_MC_SWEEP_START_JOBS",
+            "durationMs": 0.008
+          },
+          {
+            "name": "V8.GC_MC_EPILOGUE",
+            "durationMs": 0.001
+          },
+          {
+            "name": "V8.GC_HEAP_EXTERNAL_WEAK_GLOBAL_HANDLES",
+            "durationMs": 0.132
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.285
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.224
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.228
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.198
+          },
+          {
+            "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+            "durationMs": 0.184
+          },
+          {
+            "name": "V8.GC_HEAP_EMBEDDER_TRACING_EPILOGUE",
+            "durationMs": 0.045
+          },
+          {
+            "name": "V8.GC_HEAP_EPILOGUE_SAFEPOINT",
+            "durationMs": 0.003
+          },
+          {
+            "name": "V8.GC_HEAP_EPILOGUE",
+            "durationMs": 0.004
+          },
+          {
+            "name": "V8.GC_HEAP_EXTERNAL_EPILOGUE",
+            "durationMs": 0.006
+          },
+          {
+            "name": "V8.GCPhantomHandleProcessingCallback",
+            "durationMs": 0.039
+          },
+          {
+            "name": "V8.GC_HEAP_EXTERNAL_SECOND_PASS_CALLBACKS",
+            "durationMs": 0.038
+          }
+        ],
+        "layoutStackFunctions": [
+          {
+            "function": "(anonymous):2",
+            "count": 1543,
+            "durationMs": 59.633999999999375
+          },
+          {
+            "function": "r:2",
+            "count": 514,
+            "durationMs": 19.782000000000032
+          },
+          {
+            "function": "l:2",
+            "count": 514,
+            "durationMs": 19.782000000000032
+          },
+          {
+            "function": "f:2",
+            "count": 90,
+            "durationMs": 8.267999999999999
+          },
+          {
+            "function": "zs:2",
+            "count": 14,
+            "durationMs": 4.031999999999999
+          },
+          {
+            "function": "Ys:2",
+            "count": 13,
+            "durationMs": 3.743999999999999
+          },
+          {
+            "function": "ms:2",
+            "count": 1,
+            "durationMs": 0.288
+          },
+          {
+            "function": "gc:2",
+            "count": 1,
+            "durationMs": 0.288
+          },
+          {
+            "function": "hc:2",
+            "count": 1,
+            "durationMs": 0.288
+          },
+          {
+            "function": "Qu:2",
+            "count": 1,
+            "durationMs": 0.288
+          },
+          {
+            "function": "Ku:2",
+            "count": 1,
+            "durationMs": 0.288
+          },
+          {
+            "function": "$c:2",
+            "count": 1,
+            "durationMs": 0.288
+          }
+        ],
+        "ScriptDuration": 0.015771000000000007,
+        "LayoutDuration": 0.025714000000000015,
+        "RecalcStyleDuration": 0.009110000000000007,
+        "TaskDuration": 0.07808000000000004
+      },
+      "observedMs": 392.36112499999945,
+      "before": {
+        "dataset": {
+          "paginationReady": "true",
+          "transportChunks": "10",
+          "manifestMs": "15.099999994039536",
+          "networkMs": "271.5999999344349",
+          "verificationMs": "0.8000000715255737",
+          "fetchMs": "100.40000000596046",
+          "assemblyMs": "1.800000011920929",
+          "chapterId": "chapter-001",
+          "sourcePage": "3",
+          "sourceOffset": "2785",
+          "bookMapComplete": "true",
+          "pageCount": "51",
+          "visualPageIndex": "10",
+          "layoutWidth": "595",
+          "layoutHeight": "460",
+          "paginationMs": "39.29999998211861",
+          "paginationCached": "false",
+          "pageStart": "6010",
+          "pageEnd": "6621",
+          "bookPageCount": "51"
+        },
+        "clientHeight": 460,
+        "scrollHeight": 460,
+        "overflow": false,
+        "mountedPages": 1,
+        "opening": false,
+        "sourceAnchor": {
+          "chapter": "chapter-001",
+          "page": "3",
+          "offset": "2785"
+        },
+        "textCharacters": 611
+      },
+      "dataset": {
+        "paginationReady": "true",
+        "transportChunks": "10",
+        "manifestMs": "15.099999994039536",
+        "networkMs": "271.5999999344349",
+        "verificationMs": "0.8000000715255737",
+        "fetchMs": "100.40000000596046",
+        "assemblyMs": "1.800000011920929",
+        "chapterId": "chapter-001",
+        "sourcePage": "4",
+        "sourceOffset": "0",
+        "bookMapComplete": "true",
+        "pageCount": "58",
+        "visualPageIndex": "12",
+        "layoutWidth": "595",
+        "layoutHeight": "460",
+        "paginationMs": "41.900000005960464",
+        "paginationCached": "false",
+        "pageStart": "6409",
+        "pageEnd": "6893",
+        "bookPageCount": "58"
+      },
+      "clientHeight": 460,
+      "scrollHeight": 460,
+      "overflow": false,
+      "mountedPages": 1,
+      "opening": false,
+      "sourceAnchor": {
+        "chapter": "chapter-001",
+        "page": "4",
+        "offset": "0"
+      },
+      "textCharacters": 484
+    }
+  ],
+  "initial": {
+    "forcedLayoutMethod": "Layout with explicit script stack, or entirely nested in same-thread FunctionCall/EvaluateScript/RunMicrotasks; synchronous JS-attributed reflow, not every browser layout",
+    "forcedLayoutCount": 510,
+    "forcedLayoutMs": 26.69000000000005,
+    "layoutsWithExplicitStack": 510,
+    "layoutCount": 541,
+    "layoutMs": 41.00999999999985,
+    "longestLayoutMs": 6.579,
+    "styleMs": 23.06299999999989,
+    "paintMs": 4.434999999999998,
+    "longestMainTaskMs": 28.769,
+    "longMainTasks": [],
+    "gcEvents": [
+      {
+        "name": "V8.GC_HEAP_EXTERNAL_PROLOGUE",
+        "durationMs": 0.004
+      },
+      {
+        "name": "MinorGC",
+        "durationMs": 0.592
+      },
+      {
+        "name": "V8.GC_HEAP_PROLOGUE",
+        "durationMs": 0.002
+      },
+      {
+        "name": "V8.GCScavenger",
+        "durationMs": 0.531
+      },
+      {
+        "name": "V8.GC_TIME_TO_SAFEPOINT",
+        "durationMs": 0.001
+      },
+      {
+        "name": "V8.GC_SCAVENGER",
+        "durationMs": 0.501
+      },
+      {
+        "name": "V8.GC_HEAP_PROLOGUE_SAFEPOINT",
+        "durationMs": 0.001
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE",
+        "durationMs": 0.494
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_IDENTIFY",
+        "durationMs": 0.016
+      },
+      {
+        "name": "V8.GC_SCAVENGER_TRACED_HANDLES_COMPUTE_WEAKNESS_PARALLEL",
+        "durationMs": 0.009
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_COLLECT_OLD_TO_NEW_PAGES",
+        "durationMs": 0.001
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_PARALLEL_PHASE",
+        "durationMs": 0.415
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_ROOTS",
+        "durationMs": 0.069
+      },
+      {
+        "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+        "durationMs": 0.386
+      },
+      {
+        "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+        "durationMs": 0.394
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_PROCESS",
+        "durationMs": 0.017
+      },
+      {
+        "name": "V8.GC_SCAVENGER_TRACED_HANDLES_RESET_PARALLEL",
+        "durationMs": 0.009
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_FINALIZE",
+        "durationMs": 0.019
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_RESTORE_AND_QUARANTINE_PINNED",
+        "durationMs": 0.001
+      },
+      {
+        "name": "V8.GC_SCAVENGER_FREE_REMEMBERED_SET",
+        "durationMs": 0.002
+      },
+      {
+        "name": "V8.GC_SCAVENGER_RESIZE_NEW_SPACE",
+        "durationMs": 0.001
+      },
+      {
+        "name": "V8.GC_HEAP_EPILOGUE_SAFEPOINT",
+        "durationMs": 0.001
+      },
+      {
+        "name": "V8.GC_HEAP_EPILOGUE",
+        "durationMs": 0.015
+      },
+      {
+        "name": "V8.GC_HEAP_EXTERNAL_EPILOGUE",
+        "durationMs": 0.006
+      },
+      {
+        "name": "V8.GC_HEAP_EXTERNAL_PROLOGUE",
+        "durationMs": 0.002
+      },
+      {
+        "name": "MinorGC",
+        "durationMs": 0.662
+      },
+      {
+        "name": "V8.GC_HEAP_PROLOGUE",
+        "durationMs": 0.001
+      },
+      {
+        "name": "V8.GCScavenger",
+        "durationMs": 0.642
+      },
+      {
+        "name": "V8.GC_TIME_TO_SAFEPOINT",
+        "durationMs": 0.029
+      },
+      {
+        "name": "V8.GC_BACKGROUND_SAFEPOINT",
+        "durationMs": 0.643
+      },
+      {
+        "name": "V8.GC_SCAVENGER",
+        "durationMs": 0.606
+      },
+      {
+        "name": "V8.GC_HEAP_PROLOGUE_SAFEPOINT",
+        "durationMs": 0.001
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE",
+        "durationMs": 0.597
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_IDENTIFY",
+        "durationMs": 0.023
+      },
+      {
+        "name": "V8.GC_SCAVENGER_TRACED_HANDLES_COMPUTE_WEAKNESS_PARALLEL",
+        "durationMs": 0.014
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_COLLECT_OLD_TO_NEW_PAGES",
+        "durationMs": 0.003
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_PARALLEL_PHASE",
+        "durationMs": 0.51
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_ROOTS",
+        "durationMs": 0.041
+      },
+      {
+        "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+        "durationMs": 0.393
+      },
+      {
+        "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+        "durationMs": 0.481
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_PROCESS",
+        "durationMs": 0.019
+      },
+      {
+        "name": "V8.GC_SCAVENGER_TRACED_HANDLES_RESET_PARALLEL",
+        "durationMs": 0.012
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_FINALIZE",
+        "durationMs": 0.012
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_RESTORE_AND_QUARANTINE_PINNED",
+        "durationMs": 0.001
+      },
+      {
+        "name": "V8.GC_SCAVENGER_FREE_REMEMBERED_SET",
+        "durationMs": 0.012
+      },
+      {
+        "name": "V8.GC_SCAVENGER_RESIZE_NEW_SPACE",
+        "durationMs": 0.001
+      },
+      {
+        "name": "V8.GC_HEAP_EPILOGUE_SAFEPOINT",
+        "durationMs": 0.002
+      },
+      {
+        "name": "V8.GC_HEAP_EPILOGUE",
+        "durationMs": 0.002
+      },
+      {
+        "name": "V8.GC_HEAP_EXTERNAL_EPILOGUE",
+        "durationMs": 0.004
+      },
+      {
+        "name": "V8.GC_HEAP_EXTERNAL_PROLOGUE",
+        "durationMs": 0.001
+      },
+      {
+        "name": "MinorGC",
+        "durationMs": 0.536
+      },
+      {
+        "name": "V8.GC_HEAP_PROLOGUE",
+        "durationMs": 0.002
+      },
+      {
+        "name": "V8.GCScavenger",
+        "durationMs": 0.517
+      },
+      {
+        "name": "V8.GC_TIME_TO_SAFEPOINT",
+        "durationMs": 0.001
+      },
+      {
+        "name": "V8.GC_SCAVENGER",
+        "durationMs": 0.513
+      },
+      {
+        "name": "V8.GC_HEAP_PROLOGUE_SAFEPOINT",
+        "durationMs": 0.001
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE",
+        "durationMs": 0.506
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_IDENTIFY",
+        "durationMs": 0.058
+      },
+      {
+        "name": "V8.GC_SCAVENGER_TRACED_HANDLES_COMPUTE_WEAKNESS_PARALLEL",
+        "durationMs": 0.033
+      },
+      {
+        "name": "V8.GC_SCAVENGER_BACKGROUND_TRACED_HANDLES_COMPUTE_WEAKNESS_PARALLEL",
+        "durationMs": 0.027
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_COLLECT_OLD_TO_NEW_PAGES",
+        "durationMs": 0.003
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_PARALLEL_PHASE",
+        "durationMs": 0.359
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_ROOTS",
+        "durationMs": 0.058
+      },
+      {
+        "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+        "durationMs": 0.278
+      },
+      {
+        "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+        "durationMs": 0.331
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_PARALLEL",
+        "durationMs": 0.245
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_PROCESS",
+        "durationMs": 0.037
+      },
+      {
+        "name": "V8.GC_SCAVENGER_TRACED_HANDLES_RESET_PARALLEL",
+        "durationMs": 0.026
+      },
+      {
+        "name": "V8.GC_SCAVENGER_BACKGROUND_TRACED_HANDLES_RESET_PARALLEL",
+        "durationMs": 0.019
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_FINALIZE",
+        "durationMs": 0.014
+      },
+      {
+        "name": "V8.GC_SCAVENGER_FREE_REMEMBERED_SET",
+        "durationMs": 0.006
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SWEEP_ARRAY_BUFFERS",
+        "durationMs": 0.004
+      },
+      {
+        "name": "V8.GC_SCAVENGER_RESIZE_NEW_SPACE",
+        "durationMs": 0.001
+      },
+      {
+        "name": "V8.GC_HEAP_EPILOGUE_SAFEPOINT",
+        "durationMs": 0.002
+      },
+      {
+        "name": "V8.GC_MINOR_MS_BACKGROUND_SWEEPING",
+        "durationMs": 0.001
+      },
+      {
+        "name": "V8.GC_BACKGROUND_YOUNG_ARRAY_BUFFER_SWEEP",
+        "durationMs": 0.003
+      },
+      {
+        "name": "V8.GC_HEAP_EPILOGUE",
+        "durationMs": 0.002
+      },
+      {
+        "name": "V8.GC_HEAP_EXTERNAL_EPILOGUE",
+        "durationMs": 0.002
+      },
+      {
+        "name": "V8.GC_HEAP_EXTERNAL_PROLOGUE",
+        "durationMs": 0.002
+      },
+      {
+        "name": "MinorGC",
+        "durationMs": 0.552
+      },
+      {
+        "name": "V8.GC_HEAP_PROLOGUE",
+        "durationMs": 0.002
+      },
+      {
+        "name": "V8.GCScavenger",
+        "durationMs": 0.53
+      },
+      {
+        "name": "V8.GC_SCAVENGER_COMPLETE_SWEEP_ARRAY_BUFFERS",
+        "durationMs": 0.007
+      },
+      {
+        "name": "V8.GC_TIME_TO_SAFEPOINT",
+        "durationMs": 0.009
+      },
+      {
+        "name": "V8.GC_BACKGROUND_SAFEPOINT",
+        "durationMs": 0.526
+      },
+      {
+        "name": "V8.GC_SCAVENGER",
+        "durationMs": 0.507
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE",
+        "durationMs": 0.5
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_IDENTIFY",
+        "durationMs": 0.067
+      },
+      {
+        "name": "V8.GC_SCAVENGER_TRACED_HANDLES_COMPUTE_WEAKNESS_PARALLEL",
+        "durationMs": 0.034
+      },
+      {
+        "name": "V8.GC_SCAVENGER_BACKGROUND_TRACED_HANDLES_COMPUTE_WEAKNESS_PARALLEL",
+        "durationMs": 0.027
+      },
+      {
+        "name": "V8.GC_SCAVENGER_BACKGROUND_TRACED_HANDLES_COMPUTE_WEAKNESS_PARALLEL",
+        "durationMs": 0.025
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_COLLECT_OLD_TO_NEW_PAGES",
+        "durationMs": 0.003
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_PARALLEL_PHASE",
+        "durationMs": 0.303
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_ROOTS",
+        "durationMs": 0.05
+      },
+      {
+        "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+        "durationMs": 0.273
+      },
+      {
+        "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+        "durationMs": 0.26
+      },
+      {
+        "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+        "durationMs": 0.252
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_PROCESS",
+        "durationMs": 0.079
+      },
+      {
+        "name": "V8.GC_SCAVENGER_TRACED_HANDLES_RESET_PARALLEL",
+        "durationMs": 0.044
+      },
+      {
+        "name": "V8.GC_SCAVENGER_BACKGROUND_TRACED_HANDLES_RESET_PARALLEL",
+        "durationMs": 0.035
+      },
+      {
+        "name": "V8.GC_SCAVENGER_BACKGROUND_TRACED_HANDLES_RESET_PARALLEL",
+        "durationMs": 0.031
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_FINALIZE",
+        "durationMs": 0.012
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SCAVENGE_RESTORE_AND_QUARANTINE_PINNED",
+        "durationMs": 0.001
+      },
+      {
+        "name": "V8.GC_SCAVENGER_FREE_REMEMBERED_SET",
+        "durationMs": 0.008
+      },
+      {
+        "name": "V8.GC_SCAVENGER_SWEEP_ARRAY_BUFFERS",
+        "durationMs": 0.002
+      },
+      {
+        "name": "V8.GC_MINOR_MS_BACKGROUND_SWEEPING",
+        "durationMs": 0.001
+      },
+      {
+        "name": "V8.GC_BACKGROUND_YOUNG_ARRAY_BUFFER_SWEEP",
+        "durationMs": 0.002
+      },
+      {
+        "name": "V8.GC_HEAP_EPILOGUE_SAFEPOINT",
+        "durationMs": 0.002
+      },
+      {
+        "name": "V8.GC_HEAP_EPILOGUE",
+        "durationMs": 0.002
+      },
+      {
+        "name": "V8.GC_HEAP_EXTERNAL_EPILOGUE",
+        "durationMs": 0.005
+      }
+    ],
+    "layoutStackFunctions": [
+      {
+        "function": "zs:2",
+        "count": 28,
+        "durationMs": 97.2579999999999
+      },
+      {
+        "function": "Ys:2",
+        "count": 26,
+        "durationMs": 90.31099999999991
+      },
+      {
+        "function": "(anonymous):2",
+        "count": 1524,
+        "durationMs": 65.92799999999922
+      },
+      {
+        "function": "r:2",
+        "count": 507,
+        "durationMs": 19.619000000000035
+      },
+      {
+        "function": "l:2",
+        "count": 507,
+        "durationMs": 19.619000000000035
+      },
+      {
+        "function": "f:2",
+        "count": 83,
+        "durationMs": 10.099999999999996
+      },
+      {
+        "function": "hc:2",
+        "count": 3,
+        "durationMs": 7.071
+      },
+      {
+        "function": "Qu:2",
+        "count": 3,
+        "durationMs": 7.071
+      },
+      {
+        "function": "Ku:2",
+        "count": 3,
+        "durationMs": 7.071
+      },
+      {
+        "function": "ms:2",
+        "count": 2,
+        "durationMs": 6.947
+      },
+      {
+        "function": "gc:2",
+        "count": 2,
+        "durationMs": 6.947
+      },
+      {
+        "function": "$c:2",
+        "count": 2,
+        "durationMs": 6.947
+      }
+    ],
+    "ScriptDuration": 0.080928,
+    "LayoutDuration": 0.041832,
+    "RecalcStyleDuration": 0.018364,
+    "TaskDuration": 0.246881
+  },
+  "errors": [],
+  "limits": [
+    "Production-minified stack symbols are retained; exact original-function mapping unavailable in this trace. Inclusive frame durations overlap and must not be summed.",
+    "Read-only source inspection identifies paginationSteps fitting predicate (scrollHeight), sliceBlock binary search and useVisualPagination measureLayout; this is code attribution, not source-mapped trace proof."
+  ]
+}
