@@ -137,3 +137,28 @@ test('formatting whitespace cannot turn an image-only page into a text anchor', 
   expect(pages.map(page => page.anchor)).toEqual(['media:0', 'media:1']);
   expect(pages.map(page => page.text).join('')).toBe(source.textContent);
 });
+
+
+test('undecoded measurement clones retain decoded source image geometry', () => {
+  const source = document.createElement('div');
+  source.innerHTML = '<figure><img alt="Owned tall figure"><figcaption>Caption one.</figcaption></figure><figure><img alt="Owned second figure"><figcaption>Caption two.</figcaption></figure>';
+  for (const image of source.querySelectorAll('img')) {
+    Object.defineProperties(image, { naturalWidth: {value: 320}, naturalHeight: {value: 640} });
+  }
+  const measure = document.createElement('div');
+  Object.defineProperty(measure, 'clientWidth', {value: 300});
+  Object.defineProperty(measure, 'scrollHeight', {get() {
+    return [...measure.querySelectorAll('img')].reduce((sum, image) => sum + (image.style.height ? parseFloat(image.style.height) : Number(image.getAttribute('height'))), 0) + measure.querySelectorAll('figcaption').length * 30;
+  }});
+  const pages = paginateRendered(source, measure, 200, () => measure.scrollHeight <= 200);
+  expect(pages).toHaveLength(2);
+  expect(pages.map(page => page.text).join('')).toBe(source.textContent);
+  expect(pages.flatMap(page => page.media)).toEqual([0, 1]);
+  for (const page of pages) {
+    measure.innerHTML = page.html;
+    const image = measure.querySelector('img');
+    expect(image.getAttribute('width')).toBe('320');
+    expect(image.getAttribute('height')).toBe('640');
+    expect(parseFloat(image.style.height) + 30).toBeLessThanOrEqual(200);
+  }
+});

@@ -57,6 +57,23 @@ describe("ReaderExperienceV2 customer controls", () => {
     expect(container.querySelector('[data-testid="reader-reading-text"] img').alt).toBe('Second image');
   });
 
+  test("captioned media selector distinguishes identical offsets in different source chunks", async () => {
+    jest.spyOn(HTMLElement.prototype, 'scrollHeight', 'get').mockImplementation(function () { return this.classList.contains('reader-v2__pagination-measure') ? this.querySelectorAll('figure').length * 400 : 0; });
+    const plan = { key: 'captioned-chapter', chapterId: 'captioned', chapterTitle: 'Captioned chapter' };
+    await act(async () => root.render(<ReaderExperienceV2 model={{ ...model,
+      sourceRevision: 'captions-v1', authorizedChapter: { plan, textLength: 2, sources: [{ page: 1, start: 0, end: 1, revision: 'captions-v1' }, { page: 2, start: 1, end: 2, revision: 'captions-v1' }] }, authorizedBookPlans: [plan],
+      sourceAnchorForOffset: offset => ({ page: offset + 1, offset: 0, revision: 'captions-v1' }),
+      content: <><figure><img src="/one.png" alt="First figure" /><figcaption>A</figcaption></figure><figure><img src="/two.png" alt="Second figure" /><figcaption>B</figcaption></figure></>,
+    }} />));
+    const selector = container.querySelector('select[aria-label="Go to page"]');
+    expect(selector.value).toBe('captioned-chapter:0');
+    click(container.querySelector('.reader-v2__page-arrow--next'));
+    expect(container.querySelector('[data-testid="reader-reading-text"] img').alt).toBe('Second figure');
+    expect(selector.value).toBe('captioned-chapter:1');
+    click(container.querySelector('.reader-v2__page-arrow--previous'));
+    expect(selector.value).toBe('captioned-chapter:0');
+  });
+
   test("side arrows use canonical requests and preserve focus on page turns", () => {
     const onRequestPage = jest.fn();
     render({ model: { ...model, canonicalPage: 1 }, onRequestPage });

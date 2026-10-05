@@ -150,13 +150,13 @@ export default function ReaderExperienceV2({ model = READER_V2_FIXTURE, access =
     typography: `${textSizeRem}:${lineHeight}:${fontFamily}:${fontWeight}` });
   const pageIndicator = bookMap.complete && model.visualPageScope !== "chapter" ? `${bookMap.currentNumber || visualIndex + 1} of ${bookMap.total}`
     : `${visualIndex + 1} of ${visualTotal || '…'} in this chapter`;
-  const mapSelection = bookMap.options.find(option => option.chapterId === model.authorizedChapter?.plan.chapterId && option.anchor.offset === model.sourceAnchorForOffset?.(fragment?.anchor ?? fragment?.start ?? 0)?.offset)?.key || '';
+  const sourceAnchor = model.sourceAnchorForOffset?.(fragment?.anchor ?? fragment?.start ?? 0);
+  const mapSelection = bookMap.options.find(option => option.chapterId === model.authorizedChapter?.plan.chapterId && option.anchor.page === sourceAnchor?.page && option.anchor.offset === sourceAnchor?.offset && option.anchor.revision === sourceAnchor?.revision)?.key || '';
   const onVisualAnchor = model.onVisualAnchor;
   const changeAnchor = useCallback((offset) => {
     setLocalAnchor(offset);
     onVisualAnchor?.(offset);
   }, [onVisualAnchor]);
-  const sourceAnchor = model.sourceAnchorForOffset?.(fragment?.anchor ?? fragment?.start ?? 0);
   const readingAnchor = sourceAnchor ? { offset: sourceAnchor.offset, revision: sourceAnchor.revision } : { offset: fragment?.anchor ?? fragment?.start ?? 0, revision: model.sourceRevision || '' };
   const anchorPage = sourceAnchor?.page || page;
   const windowFirst = model.windowFirst ?? navigationPage;

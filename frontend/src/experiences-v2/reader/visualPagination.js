@@ -75,15 +75,17 @@ function fittedMedia(block, measure, height, fits) {
   const clone = block.cloneNode(true);
   const images = [...(block.matches('img') ? [block] : block.querySelectorAll('img'))];
   const copies = [...(clone.matches('img') ? [clone] : clone.querySelectorAll('img'))];
-  if (images.length !== 1 || !images[0].naturalWidth || !images[0].naturalHeight) return null;
+  const intrinsicWidth = images[0]?.naturalWidth || Number(images[0]?.dataset.readerIntrinsicWidth);
+  const intrinsicHeight = images[0]?.naturalHeight || Number(images[0]?.dataset.readerIntrinsicHeight);
+  if (images.length !== 1 || !(intrinsicWidth > 0) || !(intrinsicHeight > 0)) return null;
   const image = copies[0];
   image.style.height = '0px'; image.style.width = '0px';
   measure.replaceChildren(clone);
   const available = Math.floor(height - measure.scrollHeight - 2);
   if (available < 24) return null;
-  const scale = Math.min(1, measure.clientWidth / images[0].naturalWidth, available / images[0].naturalHeight);
-  image.style.width = `${Math.floor(images[0].naturalWidth * scale)}px`;
-  image.style.height = `${Math.floor(images[0].naturalHeight * scale)}px`;
+  const scale = Math.min(1, measure.clientWidth / intrinsicWidth, available / intrinsicHeight);
+  image.style.width = `${Math.floor(intrinsicWidth * scale)}px`;
+  image.style.height = `${Math.floor(intrinsicHeight * scale)}px`;
   image.style.maxHeight = 'none'; image.style.objectFit = 'contain';
   return fits() ? clone : null;
 }
@@ -124,7 +126,20 @@ function* paginationSteps(source, measure, height, fits = () => measure.scrollHe
   const blocks = [...source.childNodes].map(node => {
     const clone = node.cloneNode(true);
     const images = clone.nodeType === Node.ELEMENT_NODE ? [...(clone.matches('img') ? [clone] : clone.querySelectorAll('img'))] : [];
-    images.forEach(image => image.setAttribute('data-reader-source-media', String(mediaOrdinal++)));
+    const originals = node.nodeType === Node.ELEMENT_NODE ? [...(node.matches('img') ? [node] : node.querySelectorAll('img'))] : [];
+    images.forEach((image, ordinal) => {
+      image.setAttribute('data-reader-source-media', String(mediaOrdinal++));
+      // Source images have decoded before pagination. A new clone may not have
+      // decoded yet (especially with a cold/disabled image cache). Reserve its
+      // intrinsic geometry before any synchronous height measurement.
+      const original = originals[ordinal];
+      if (original?.naturalWidth > 0 && original?.naturalHeight > 0) {
+        image.dataset.readerIntrinsicWidth = String(original.naturalWidth);
+        image.dataset.readerIntrinsicHeight = String(original.naturalHeight);
+        if (!image.hasAttribute('width')) image.setAttribute('width', String(original.naturalWidth));
+        if (!image.hasAttribute('height')) image.setAttribute('height', String(original.naturalHeight));
+      }
+    });
     return clone;
   });
   for (let index = 0; index < blocks.length; index++) {
