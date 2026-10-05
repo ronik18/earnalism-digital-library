@@ -1,0 +1,86 @@
+{
+  "reader_head": "0a242584c438a0da8160ea502e421161b039d0fe",
+  "scope": "Owned mixed prose + image-only API fixture; geometry, not real authorization proof",
+  "native_zoom": true,
+  "css_simulated_zoom": false,
+  "rows": [
+    {
+      "zoom": 100,
+      "viewport": [
+        960,
+        704
+      ],
+      "clientWidth": 540,
+      "scrollWidth": 540,
+      "clientHeight": 296,
+      "scrollHeight": 296,
+      "pages": 33,
+      "pagination_ms": 43.2,
+      "source_chars": 11152,
+      "reconstructed_chars": 11152,
+      "exact_source": true,
+      "media_anchor": "media:0",
+      "media_ordinal": 0,
+      "media_source_page": 2,
+      "media_revision": "34629997258712d4839c6c30e8049e5b7293f61fc8358fcf4d33d7c6892276ca",
+      "media_occurrences": 1,
+      "adjacent_prose": [
+        {
+          "page": 1,
+          "start": 5493,
+          "end": 5576
+        },
+        {
+          "page": 3,
+          "start": 5576,
+          "end": 6190
+        }
+      ],
+      "all_pages_settled_overflow": false
+    },
+    {
+      "zoom": 125,
+      "viewport": [
+        768,
+        563
+      ],
+      "clientWidth": 358,
+      "scrollWidth": 358,
+      "clientHeight": 116,
+      "scrollHeight": 116,
+      "pages": 81,
+      "pagination_ms": 58.4,
+      "source_chars": 11152,
+      "reconstructed_chars": 11152,
+      "exact_source": true,
+      "media_anchor": "media:0",
+      "media_ordinal": 0,
+      "media_source_page": 2,
+      "media_revision": "34629997258712d4839c6c30e8049e5b7293f61fc8358fcf4d33d7c6892276ca",
+      "media_occurrences": 1,
+      "adjacent_prose": [
+        {
+          "page": 1,
+          "start": 5442,
+          "end": 5576
+        },
+        {
+          "page": 3,
+          "start": 5576,
+          "end": 5730
+        }
+      ],
+      "all_pages_settled_overflow": false
+    }
+  ],
+  "interruption": "Native Chrome quit once; reopened; Mac subsequently locked before150% and return100%. No unlock attempted.",
+  "remaining": [
+    150,
+    "100 return"
+  ],
+  "human_action": "Unlock the Mac and leave Chrome open.",
+  "prior_exact_head_native_roundtrip": "docs/performance/reader-native-zoom-closeout-20261005.json",
+  "prior_proof_preserved_not_substituted_for_expanded_mixed_content_acceptance": true,
+  "geometry_settled_after_existing_transition_ms": 300,
+  "transient_transform_extent": "Earlier immediate page-turn read showed9\u201312px horizontal transformed extent; after280ms transition returned to baseline. This is reported separately from settled geometry."
+}

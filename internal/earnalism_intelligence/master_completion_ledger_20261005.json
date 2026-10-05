@@ -1,0 +1,732 @@
+{
+  "updated_at": "2026-10-05T18:22:44.960126+00:00",
+  "origin_main": "c33faa0b52134d74a174e4cd1f424fccd87a0b56",
+  "canonical": {
+    "head": "c33faa0b52134d74a174e4cd1f424fccd87a0b56",
+    "tracked_clean": true,
+    "ahead": 0,
+    "behind": 0,
+    "intentional_untracked": "requested master ledger and supporting evidence artifacts"
+  },
+  "preserved_refs": [
+    "codex/catalogue-owner-attestation-evidence",
+    "codex/preserved-catalogue-followup-20261005",
+    "codex/preserved-integration-20261005"
+  ],
+  "bundle": "/tmp/earnalism-preserved-evidence-20261005.bundle",
+  "deployment_authorized": false,
+  "configured_live": {
+    "total": 52,
+    "English": 43,
+    "Bengali": 9
+  },
+  "india_production_verified_live": null,
+  "hosting_access_error": "Vercel get_project403: re-authenticate to sales-8498s-projects",
+  "tasks": [
+    {
+      "id": "auth-517",
+      "workstream": "auth",
+      "goal": "Finish exact-head CI and real isolated Preview OAuth",
+      "branch": "codex/google-signin-transition-fix",
+      "head": "7e904dc53fa30369d194d80796fea349c0320118",
+      "current_status": "BLOCKED_HUMAN \u2014 GOOGLE CLOUD PROJECT ACCESS; parked by owner instruction, engineering checks green",
+      "dependencies": [],
+      "acceptance_gates": [
+        "protected CI",
+        "real Preview OAuth",
+        "merge authority"
+      ],
+      "next_action": "Resume only when connected Chrome can successfully open the existing OAuth client configuration for project 620834018736",
+      "remote_pr": 517,
+      "deployment_required": true,
+      "production_verification_required": true,
+      "final_state": "BLOCKED_HUMAN",
+      "checks": {
+        "reconcile": "SUCCESS",
+        "regression gate": "SUCCESS",
+        "evidence": "SUCCESS",
+        "resolve-pr-head": "SUCCESS",
+        "seamless-brand-review": "SUCCESS",
+        "verify-published-owner-review": "SUCCESS",
+        "Auth/account owner-review artifact": "SUCCESS",
+        "Post-merge recovery owner evidence": "SUCCESS",
+        "deploy": "SKIPPED",
+        "production canary": "SKIPPED"
+      },
+      "preview": {
+        "origin": "http://127.0.0.1:13051",
+        "exact_head": "7e904dc53fa30369d194d80796fea349c0320118",
+        "disposable_storage": true,
+        "actual_google_result": "400 origin_mismatch",
+        "real_oauth_acceptance": "NOT_PASSED",
+        "services": "Stopped gracefully after capturing actual Google origin error; restart after origin registration",
+        "verification_time_utc": "2026-10-05T11:23:25Z",
+        "success_matrix": "NOT_EXERCISED: Google rejected before callback",
+        "provider_failure_recovery": "Sign-in retry button enabled; no infinite loading",
+        "cloud_access_error": "You need additional access to the project: Project 620834018736",
+        "missing_permissions": [
+          "clientauthconfig.clients.get",
+          "clientauthconfig.clients.list",
+          "resourcemanager.projects.get"
+        ],
+        "merge_deployment_classification": "MERGE_REQUIRES_DEPLOY_APPROVAL",
+        "latest_cloud_recheck": {
+          "verified_at": "2026-10-05T12:33:17.131057+00:00",
+          "result": "ACCESS_DENIED_AFTER_USER_REPORTED_ACCOUNT_SWITCH_AND_RELOAD",
+          "project": "620834018736",
+          "client_verified": false,
+          "preview_origin_present": "NOT_VERIFIED",
+          "consent_mode": "NOT_VERIFIED",
+          "test_user_status": "NOT_VERIFIED",
+          "alternate_account_available": false,
+          "account_menu": "One signed-in account; Add account option only",
+          "new_client_created": false,
+          "configuration_changes": 0,
+          "real_oauth_cases": "ALL NOT_TESTED",
+          "handoff_tab": "1838729138",
+          "project_access": false
+        }
+      },
+      "merge_hold": "Real Preview OAuth required; auth merge triggers automatic frontend production deployment, which is not currently authorized.",
+      "repository_review_requirements": {
+        "reviews": 0,
+        "requested_reviewers": 0,
+        "branch_protection": "404 Branch not protected",
+        "applicable_rules": [],
+        "repo_policy": "AGENTS one focusedPR and passing checks remainmandatory; automated artifacts are not human approval"
+      },
+      "parked": true
+    },
+    {
+      "id": "canonical-alignment",
+      "workstream": "integration",
+      "goal": "Preserve evidence and restore canonical main alignment",
+      "branch": "codex/main-approved-integration",
+      "head": "c33faa0b52134d74a174e4cd1f424fccd87a0b56",
+      "current_status": "DONE",
+      "dependencies": [],
+      "acceptance_gates": [
+        "durable refs",
+        "verified bundle",
+        "clean 0/0"
+      ],
+      "next_action": "Maintain clean canonical base",
+      "remote_pr": null,
+      "deployment_required": false,
+      "production_verification_required": false,
+      "final_state": "DONE"
+    },
+    {
+      "id": "owner-evidence",
+      "workstream": "catalogue",
+      "goal": "Promote existing owner evidence without runtime mutation",
+      "branch": "codex/catalogue-owner-attestation-evidence",
+      "head": "61efad7e188a2209bcdadf26df0620543c1daabb",
+      "current_status": "READY_FOR_PR",
+      "dependencies": [
+        "auth-517"
+      ],
+      "acceptance_gates": [
+        "exact scope",
+        "no-deploy proof",
+        "protected CI"
+      ],
+      "next_action": "After517 frees slot, include c416615+61efad as196 unique internal-only files; recheck exact no-deploy proof before merge",
+      "remote_pr": null,
+      "deployment_required": false,
+      "production_verification_required": false,
+      "final_state": "READY_FOR_PR",
+      "scope_artifact": "internal/earnalism_intelligence/owner_evidence_scope_20261005.json",
+      "deployment_classification": "EVIDENCE_MERGE_NO_DEPLOY_PROVEN"
+    },
+    {
+      "id": "slug-reconciliation",
+      "workstream": "catalogue",
+      "goal": "Exact current slug sets after evidence merge",
+      "branch": null,
+      "head": null,
+      "current_status": "BLOCKED_POLICY",
+      "dependencies": [
+        "owner-evidence"
+      ],
+      "acceptance_gates": [
+        "counts equal unique slug lists",
+        "language parity"
+      ],
+      "next_action": "Generate reconciliation from merged canonical evidence",
+      "remote_pr": null,
+      "deployment_required": false,
+      "production_verification_required": false,
+      "final_state": "BLOCKED_POLICY"
+    },
+    {
+      "id": "bharat",
+      "workstream": "catalogue",
+      "goal": "Complete first-party India text-only local acceptance",
+      "branch": null,
+      "head": null,
+      "current_status": "LOCALLY_RELEASE_READY for disposable UAT; production release not authorized",
+      "dependencies": [
+        "owner-evidence"
+      ],
+      "acceptance_gates": [
+        "changed rights binding",
+        "local Reader/entitlement",
+        "front visual QA"
+      ],
+      "next_action": "First NEXT_COMPLIANT_GO_LIVE_COHORT candidate after canonical evidence and exact production package/delivery binding",
+      "remote_pr": null,
+      "deployment_required": true,
+      "production_verification_required": true,
+      "final_state": "READY_FOR_PR",
+      "acceptance": {
+        "backend_tests_passed": 69,
+        "manuscript_chars": 235000,
+        "component_hashes_matched": 8,
+        "package_issues": 0,
+        "manifest_issues": 0,
+        "payment_ledger_writes": 0,
+        "audio": "DENIED",
+        "back_display": "OMITTED",
+        "method": "native FakeDB+actual route/service handlers and six real Chromium component routes; not production/full Mongo HTTP acceptance",
+        "artifact": "/tmp/earnalism-bharat-gate-review-20261005/final-local-readiness.json"
+      }
+    },
+    {
+      "id": "reader-pagination",
+      "workstream": "reader",
+      "goal": "Finish structural anchors and native zoom acceptance",
+      "branch": "codex/reader-true-viewport-pagination",
+      "head": "0a242584c438a0da8160ea502e421161b039d0fe",
+      "current_status": "Local Reader correction validated; fresh native zoom gate passed",
+      "dependencies": [
+        "auth-517",
+        "owner-evidence"
+      ],
+      "acceptance_gates": [
+        "structural anchors",
+        "native zoom",
+        "full validation"
+      ],
+      "next_action": "After focused slot frees, refresh and run normal protected Reader PR workflow; no push/merge/deploy now",
+      "remote_pr": null,
+      "deployment_required": true,
+      "production_verification_required": true,
+      "final_state": "READY_FOR_PR",
+      "validation": {
+        "focused": "10 suites137passed",
+        "frontend": "102 suites689passed",
+        "build": "PASS",
+        "SEO": "172 snapshots3647assertions0failures",
+        "diff": "PASS",
+        "seven_viewports": "PASS",
+        "native_zoom": "100125150100 actual Chrome PASS; preview bookmark and full media anchors preserved",
+        "fresh_native150_text": "11186source/reconstructed chars66pages exact,0overflow",
+        "unauthorized_preview_requests": 0,
+        "post_revocation_reveals": 0,
+        "artifact": "/tmp/reader-structural-fixture/native-zoom-orchestrator-proof.json",
+        "regression": "143passed0failed4unchanged skips fresh final correction",
+        "backend": "372passed",
+        "native_zoom_fresh": "Final0a242584c actualChrome100125150100:media/textzerooverflow and sourceanchorcontained;timingsrecorded",
+        "media_six_viewports": "all clientHeight==scrollHeight; cold cache figure fixed; Page2 selector accurate"
+      },
+      "git": {
+        "clean": true,
+        "ahead": 11,
+        "behind": 0
+      },
+      "product_commit": "17cbe893a13c936dcfb9a2a79c080a2fe044b1ef"
+    },
+    {
+      "id": "reader-opening",
+      "workstream": "reader",
+      "goal": "Preserve and accept Book Awakening handoff",
+      "branch": "codex/reader-true-viewport-pagination",
+      "head": "ed59d4573cd4d0192ae2c876610102bee00b8bb1",
+      "current_status": "Book Awakening preserved in pagination ancestry; final fixture fast/slow/reduced-motion passed",
+      "dependencies": [
+        "reader-pagination"
+      ],
+      "acceptance_gates": [
+        "secure readiness",
+        "fast/slow/reduced-motion smoke"
+      ],
+      "next_action": "Include existing opening boundary in coherent pagination PR; no redesign",
+      "remote_pr": null,
+      "deployment_required": true,
+      "production_verification_required": true,
+      "final_state": "READY_FOR_PR",
+      "final_smoke": "Actual route0/300/1000/3000ms/reduced3s passed; no page-turn opening replay"
+    },
+    {
+      "id": "worker",
+      "workstream": "infrastructure",
+      "goal": "Reconcile durable fulfillment worker with merged #515",
+      "branch": "codex/continuous-catalogue-worker",
+      "head": "27cd849add22aa87511b14337794f07f0ca50681",
+      "current_status": "READY_FOR_PR",
+      "dependencies": [
+        "auth-517",
+        "owner-evidence",
+        "reader-pagination"
+      ],
+      "acceptance_gates": [
+        "165 focused tests",
+        "fresh regression",
+        "positive activation soak"
+      ],
+      "next_action": "Open worker PR only after higher priority lanes; all production switches remainOFF",
+      "remote_pr": null,
+      "deployment_required": true,
+      "production_verification_required": true,
+      "final_state": "READY_FOR_PR",
+      "validation": {
+        "backend_tests": 165,
+        "regression": "143passed0failed4unchanged skips",
+        "build": "PASS",
+        "SEO": "172/3647PASS",
+        "diff": "PASS",
+        "uat_seconds": 45.428,
+        "imports": 5,
+        "activated": 4,
+        "repaired": 1,
+        "held": 1,
+        "duplicates": 0,
+        "failures": 0,
+        "api_p95_sample_ms": 786.65,
+        "sustainable_throughput": "Not established by short fixture soak"
+      },
+      "git": {
+        "clean": true,
+        "ahead": 5,
+        "behind": 0
+      }
+    },
+    {
+      "id": "live-covers",
+      "workstream": "covers",
+      "goal": "Preserve verified graphical pairs for all52live editions",
+      "branch": null,
+      "head": null,
+      "current_status": "DONE",
+      "dependencies": [],
+      "acceptance_gates": [
+        "52 front +52 back",
+        "zero broken/fallback"
+      ],
+      "next_action": "No redesign queue",
+      "remote_pr": null,
+      "deployment_required": false,
+      "production_verification_required": false,
+      "final_state": "DONE"
+    },
+    {
+      "id": "inactive-covers",
+      "workstream": "covers",
+      "goal": "Recover exact inactive owner assets before Canva",
+      "branch": null,
+      "head": null,
+      "current_status": "BLOCKED_POLICY",
+      "dependencies": [
+        "slug-reconciliation"
+      ],
+      "acceptance_gates": [
+        "exact edition",
+        "owner bytes",
+        "display QA"
+      ],
+      "next_action": "Identify exact inactive deficient set; existing supplied live pairs unchanged",
+      "remote_pr": null,
+      "deployment_required": true,
+      "production_verification_required": true,
+      "final_state": "BLOCKED_POLICY"
+    },
+    {
+      "id": "response-ingestion",
+      "workstream": "infrastructure",
+      "goal": "Preserve merged #515 implementation",
+      "branch": null,
+      "head": "cdb654d51f94f782063cf79a27c4a93a6a2c0809",
+      "current_status": "DONE",
+      "dependencies": [],
+      "acceptance_gates": [
+        "merged proof"
+      ],
+      "next_action": "Verify runtime enablement only when approved evidence ready",
+      "remote_pr": 515,
+      "deployment_required": false,
+      "production_verification_required": false,
+      "final_state": "DONE"
+    },
+    {
+      "id": "india-readback",
+      "workstream": "production",
+      "goal": "Authenticated India Reader acceptance for52configured editions",
+      "branch": null,
+      "head": null,
+      "current_status": "BLOCKED_HUMAN",
+      "dependencies": [],
+      "acceptance_gates": [
+        "actual approved India authenticated readback"
+      ],
+      "next_action": "Provide approved read-only India production browser/session",
+      "remote_pr": null,
+      "deployment_required": false,
+      "production_verification_required": true,
+      "final_state": "BLOCKED_HUMAN"
+    },
+    {
+      "id": "token-hardening",
+      "workstream": "security",
+      "goal": "Separate session-storage security design",
+      "branch": null,
+      "head": null,
+      "current_status": "Separate security design and acceptance matrix completed; no token storage migration implemented",
+      "dependencies": [
+        "auth-517"
+      ],
+      "acceptance_gates": [
+        "inventory",
+        "CSRF/refresh/revocation/multi-tab design"
+      ],
+      "next_action": "After auth merge, queue a separate implementation security task",
+      "remote_pr": null,
+      "deployment_required": false,
+      "production_verification_required": false,
+      "final_state": "DONE",
+      "artifact": "internal/earnalism_intelligence/reader_access_token_storage_hardening_20261005.md"
+    },
+    {
+      "id": "analytics-closeout",
+      "workstream": "analytics",
+      "goal": "Verify Reader/CWV and privacy delivery",
+      "branch": null,
+      "head": null,
+      "current_status": "Existing delivery verified locally; privacy-signal gap found; production CWV remains unverified",
+      "dependencies": [],
+      "acceptance_gates": [
+        "Reader/CWV delivery",
+        "consent/DNT/GPC",
+        "read-only team access"
+      ],
+      "next_action": "Choose privacy-signal/consent policy for separate follow-up; restore read-only Vercel team scope for production delivery verification.",
+      "remote_pr": null,
+      "deployment_required": false,
+      "production_verification_required": false,
+      "final_state": "BLOCKED_HUMAN",
+      "local_evidence": {
+        "candidate_policy_tests_passed": 17,
+        "frontend_tests_passed": 12,
+        "backend_tests_passed": 15,
+        "anonymous_events": 21,
+        "authenticated_events": 28,
+        "delivery": "All HTTP 200 in disposable UAT",
+        "CWV": "TTFB/FCP/LCP/CLS delivered; INP/FID not exercised",
+        "DNT_GPC": "Signals true still delivered",
+        "policy": "Public copy does not promise DNT/GPC or opt-in enforcement; policy decision gap",
+        "candidate": "Unapplied; existing collection preserved by default",
+        "production": "NOT_VERIFIED"
+      }
+    },
+    {
+      "id": "header-commerce",
+      "workstream": "ui",
+      "goal": "Preserve merged #516 completed UI",
+      "branch": null,
+      "head": "c33faa0b52134d74a174e4cd1f424fccd87a0b56",
+      "current_status": "DONE",
+      "dependencies": [],
+      "acceptance_gates": [
+        "merged proof",
+        "previous accepted smoke"
+      ],
+      "next_action": "No redesign; deployment readback separately",
+      "remote_pr": 516,
+      "deployment_required": false,
+      "production_verification_required": false,
+      "final_state": "DONE"
+    },
+    {
+      "id": "real-supply-target75",
+      "workstream": "catalogue",
+      "goal": "Preserve dossiers and recompute exact supplied eligible acquisition set after evidence merge",
+      "branch": null,
+      "head": null,
+      "current_status": "Existing dossiers preserved; unchanged blocked records not retried",
+      "dependencies": [
+        "slug-reconciliation"
+      ],
+      "acceptance_gates": [
+        "approved provider/exactsource/package/rights/cover/release change"
+      ],
+      "next_action": "Recompute after canonical evidence merge; acquire exact missing approved manuscript/evidence rather than inflate drafts",
+      "remote_pr": null,
+      "deployment_required": false,
+      "production_verification_required": false,
+      "final_state": "BLOCKED_POLICY"
+    },
+    {
+      "id": "performance",
+      "workstream": "performance",
+      "goal": "Complete Redis stampede, worker contention, real Reader performance and memory soak, Account CLS, fresh validation",
+      "branch": "codex/platform-performance-optimization",
+      "head": "f5a693771e2b76bcaca1a867d58dfc3bc50874ef",
+      "current_status": "Exact-head90-load/120-turn performance and forced-layout qualification complete; media fits;3px settled prose resize overflow needs follow-up; fresh mixed-content native150/return100 blocked by lockedMac",
+      "dependencies": [],
+      "acceptance_gates": [
+        "one cold rebuild",
+        "worker contention",
+        "genuine backend browser Reader",
+        "five-cycle memory soak",
+        "Account CLS",
+        "fresh regression"
+      ],
+      "next_action": "Apply smallest authorized horizontal-animation fix in Reader lane; after Mac unlock finish only remaining native mixed-content steps",
+      "remote_pr": null,
+      "deployment_required": true,
+      "production_verification_required": true,
+      "final_state": "BLOCKED_HUMAN",
+      "remote_hold": "Focused PR slot occupied by parked #517",
+      "local_validation": {
+        "cache_tests_passed": 15,
+        "frontend_suites": 99,
+        "frontend_tests": 624,
+        "cold_bursts_requests": [
+          2,
+          4,
+          8,
+          16,
+          32
+        ],
+        "rebuilds_each": 1,
+        "errors": 0,
+        "artifact": "/tmp/earnalism-performance-cold-burst-resume.json",
+        "cold_bursts": [
+          {
+            "requests": 2,
+            "mongo_queries": 1,
+            "rebuilds": 1,
+            "operations": {
+              "get": 7,
+              "set": 2,
+              "eval": 2
+            },
+            "samples": 2,
+            "p50_ms": 137.23995800683042,
+            "p95_ms": 137.27858300262596,
+            "p99_ms": 137.27858300262596,
+            "max_ms": 137.27858300262596,
+            "throughput_rps": 14.542140736172984,
+            "errors": 0
+          },
+          {
+            "requests": 4,
+            "mongo_queries": 1,
+            "rebuilds": 1,
+            "operations": {
+              "get": 15,
+              "set": 4,
+              "eval": 2
+            },
+            "samples": 4,
+            "p50_ms": 116.68299999291776,
+            "p95_ms": 116.97699999785982,
+            "p99_ms": 116.97699999785982,
+            "max_ms": 116.97699999785982,
+            "throughput_rps": 34.03952352806705,
+            "errors": 0
+          },
+          {
+            "requests": 8,
+            "mongo_queries": 1,
+            "rebuilds": 1,
+            "operations": {
+              "get": 31,
+              "set": 8,
+              "eval": 2
+            },
+            "samples": 8,
+            "p50_ms": 135.64966650301358,
+            "p95_ms": 136.10008399700746,
+            "p99_ms": 136.10008399700746,
+            "max_ms": 136.10008399700746,
+            "throughput_rps": 58.43683312122929,
+            "errors": 0
+          },
+          {
+            "requests": 16,
+            "mongo_queries": 1,
+            "rebuilds": 1,
+            "operations": {
+              "get": 63,
+              "set": 16,
+              "eval": 2
+            },
+            "samples": 16,
+            "p50_ms": 171.86064549605362,
+            "p95_ms": 172.05987499619368,
+            "p99_ms": 172.05987499619368,
+            "max_ms": 172.05987499619368,
+            "throughput_rps": 91.93665277215565,
+            "errors": 0
+          },
+          {
+            "requests": 32,
+            "mongo_queries": 1,
+            "rebuilds": 1,
+            "operations": {
+              "get": 127,
+              "set": 32,
+              "eval": 2
+            },
+            "samples": 32,
+            "p50_ms": 230.26727049727924,
+            "p95_ms": 230.6035410001641,
+            "p99_ms": 230.62062500684988,
+            "max_ms": 230.62062500684988,
+            "throughput_rps": 136.44222630320996,
+            "errors": 0
+          }
+        ]
+      },
+      "remaining_local_gates": [
+        "Fix/classify retained finished-animation portrait horizontal350/353 without clipping (non-P0; source change excluded from this acceptance-only task)",
+        "Unlock the Mac and leave Chrome open: finish mixed-content native150\u2192100 and stable-text-anchor extendedroundtrip"
+      ],
+      "concurrent_work_preserved": [
+        "scripts/profile_reader_branch.mjs",
+        "docs/performance/performance-followup-20261005.md",
+        ".playwright-browsers",
+        ".venv-uat"
+      ],
+      "account_cls": {
+        "matched_before": 0.167839,
+        "matched_after": 0.043684,
+        "scope": "Existing matched anonymous local build evidence, not freshly rerun or production CWV"
+      },
+      "reader_memory": {
+        "classification": "BENCHMARK INSTRUMENTATION RETENTION",
+        "status": "ACCEPTED_FOR_TESTED_PATH",
+        "branch": "codex/reader-memory-retention-investigation",
+        "commit": "0c5f79b0d756be871d44a213a7061db3db13f8ab",
+        "worktree": "/tmp/earnalism-reader-memory-investigation",
+        "evidence": "docs/performance/reader-memory-retention-20261005.json",
+        "root_cause": "Undisposed Playwright ElementHandles retain detached Reader trees through DevTools Global handles",
+        "reader_application_changed": false,
+        "fresh_validation": {
+          "reader_focused": 135,
+          "reader_full": 687,
+          "performance_frontend": 624,
+          "regression_passed": 143,
+          "regression_failed": 0,
+          "regression_existing_skips": 4,
+          "build": "PASS",
+          "seo_assertions": 3647,
+          "budget": "PASS"
+        },
+        "remaining_limits": [
+          "Accepted for preserved genuine15cycle tested path only; residual18\u201319KiB/cycle not universal leak-freedom"
+        ]
+      },
+      "concurrent_worker_evidence": {
+        "commit": "91eda6a75",
+        "scope": "Separately completed local draft-adapter worker contention; no external source budget proof",
+        "reused_not_rerun": true
+      },
+      "reader_e2e": {
+        "artifact": "/tmp/earnalism-platform-performance/docs/performance/reader-e2e-completion-20261005.json",
+        "loads": 90,
+        "turns": 300,
+        "reader_cycles": 15,
+        "matched_control_cycles": 15,
+        "unauthorized_preview_requests": 0,
+        "stale_cancelled_responses_applied": 0,
+        "errors": 0,
+        "thin_route_shell": true,
+        "large_series_pre_selector_fix": true,
+        "final_source_stage_cache_media_validation": true,
+        "post_exit_cache_entries": 0,
+        "core_control_adjusted_heap_kib_per_cycle": 19.015909,
+        "cache_probe_adjusted_heap_kib_per_cycle": 18.152131,
+        "application_leak": "NOT_ESTABLISHED; benchmark ElementHandle retention confirmed",
+        "classification": "READER PERFORMANCE FOLLOW-UP REQUIRED",
+        "native_zoom_artifact": "/tmp/earnalism-platform-performance/docs/performance/reader-native-zoom-closeout-20261005.json",
+        "final_exact_head_artifact": "docs/performance/reader-final-performance-acceptance-20261005/genuine-stack.json",
+        "final_exact_head_loads": 90,
+        "final_exact_head_turns": 120,
+        "mobile_cold_tail": "MOBILE_COLD_TAIL_NOT_REPRODUCED",
+        "forced_layout_measured": true,
+        "horizontal_resize_followup": {
+          "client_width": 350,
+          "scroll_width": 353,
+          "tolerance": 2,
+          "animation": "finished",
+          "transform": "identity",
+          "product_source_changed": false
+        },
+        "native_zoom_expanded": {
+          "passed": [
+            100,
+            125
+          ],
+          "remaining": [
+            150,
+            "100 return"
+          ],
+          "source_chars": 11152,
+          "structural_anchor": "media:0",
+          "artifact": "docs/performance/reader-final-performance-acceptance-20261005/native-zoom.json"
+        },
+        "full_app_startup": "NOT_MEASURED"
+      },
+      "human_action": "Unlock the Mac and leave Chrome open.",
+      "local_reader_acceptance": "READER PERFORMANCE FOLLOW-UP REQUIRED"
+    }
+  ],
+  "production": {
+    "backend": {
+      "revision": "cdb654d51f94f782063cf79a27c4a93a6a2c0809",
+      "railway_deployment": "843bd942-de7a-4e45-8926-a3ef3ab69d33",
+      "state": "SUCCESS",
+      "source": "read-only Railway deployment metadata"
+    },
+    "frontend": {
+      "revision": "c33faa0b52134d74a174e4cd1f424fccd87a0b56",
+      "vercel_deployment": "dpl_48fYxemG4bvscu7eVFDCxv4GLzBP",
+      "state": "READY",
+      "domain": "theearnalism.com",
+      "source": "Actual signed-in Vercel Production Deployment dashboard: current domain, commitc33faa0/#516, Logs link exactdeploymentID",
+      "dashboard_url": "https://vercel.com/sales-8498s-projects/earnalism/48fYxemG4bvscu7eVFDCxv4GLzBP"
+    },
+    "new_deployments_performed": false
+  },
+  "next_compliant_go_live_cohort": [
+    "bharat-at-the-crossroads"
+  ],
+  "overall_classification": "CUMULATIVE GOALS IN PROGRESS \u2014 CRITICAL PR ACTIVE",
+  "status_counts": {
+    "BLOCKED_HUMAN": 4,
+    "BLOCKED_POLICY": 3,
+    "DONE": 5,
+    "READY_FOR_PR": 5
+  },
+  "preservation_ledger_ref": "codex/preserved-integration-20261005",
+  "preservation_bundle": "/tmp/earnalism-master-completion-20261005.bundle",
+  "remaining_local_delivery_branches": [
+    "codex/google-signin-transition-fix",
+    "codex/catalogue-owner-attestation-evidence",
+    "codex/preserved-catalogue-followup-20261005",
+    "codex/reader-true-viewport-pagination",
+    "codex/reader-opening-premium-transition",
+    "codex/continuous-catalogue-worker"
+  ],
+  "all_historical_worktrees_preserved": true,
+  "total_tasks": 17,
+  "ledger_copy_provenance": {
+    "lane": "performance acceptance only; integration/release authority unchanged",
+    "original_preserved_path": "/tmp/earnalism-canonical-evidence-handoff-20261005-Jd06Cf/internal/earnalism_intelligence/master_completion_ledger_20261005.json",
+    "original_sha256": "b64c45ba5e628fffb9cd13265fb560ba5b19c2f10a0575c777dfe91a800c1f71",
+    "original_preservation_copy_modified": false,
+    "canonical_worktree_modified": false
+  }
+}
