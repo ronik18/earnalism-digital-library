@@ -1,0 +1,559 @@
+{
+  "schema": "earnalism.performance-followup.v1",
+  "scope": "LOCAL_ONLY_NO_DEPLOYMENT",
+  "base_sha": "c33faa0b52134d74a174e4cd1f424fccd87a0b56",
+  "cold_bursts": [
+    {
+      "requests": 2,
+      "mongo_queries": 1,
+      "rebuilds": 1,
+      "operations": {
+        "get": 7,
+        "set": 2,
+        "eval": 2
+      },
+      "samples": 2,
+      "p50_ms": 109.69333350658417,
+      "p95_ms": 109.73000001104083,
+      "p99_ms": 109.73000001104083,
+      "max_ms": 109.73000001104083,
+      "throughput_rps": 18.1938853598883,
+      "errors": 0
+    },
+    {
+      "requests": 4,
+      "mongo_queries": 1,
+      "rebuilds": 1,
+      "operations": {
+        "get": 15,
+        "set": 4,
+        "eval": 2
+      },
+      "samples": 4,
+      "p50_ms": 116.6942915006075,
+      "p95_ms": 116.79966699739452,
+      "p99_ms": 116.79966699739452,
+      "max_ms": 116.79966699739452,
+      "throughput_rps": 34.150089644357315,
+      "errors": 0
+    },
+    {
+      "requests": 8,
+      "mongo_queries": 1,
+      "rebuilds": 1,
+      "operations": {
+        "get": 31,
+        "set": 8,
+        "eval": 2
+      },
+      "samples": 8,
+      "p50_ms": 124.91029149532551,
+      "p95_ms": 125.34408298961353,
+      "p99_ms": 125.34408298961353,
+      "max_ms": 125.34408298961353,
+      "throughput_rps": 63.63766798474755,
+      "errors": 0
+    },
+    {
+      "requests": 16,
+      "mongo_queries": 1,
+      "rebuilds": 1,
+      "operations": {
+        "get": 63,
+        "set": 16,
+        "eval": 2
+      },
+      "samples": 16,
+      "p50_ms": 154.05995849869214,
+      "p95_ms": 154.71441599947866,
+      "p99_ms": 154.71441599947866,
+      "max_ms": 154.71441599947866,
+      "throughput_rps": 102.76884444557648,
+      "errors": 0
+    },
+    {
+      "requests": 32,
+      "mongo_queries": 1,
+      "rebuilds": 1,
+      "operations": {
+        "get": 127,
+        "set": 32,
+        "eval": 2
+      },
+      "samples": 32,
+      "p50_ms": 216.09047899983125,
+      "p95_ms": 217.19745801237877,
+      "p99_ms": 217.24170800007414,
+      "max_ms": 217.24170800007414,
+      "throughput_rps": 145.9857344545033,
+      "errors": 0
+    }
+  ],
+  "payload": {
+    "full_bytes": 307769,
+    "full_gzip_bytes": 35167,
+    "summary_bytes": 149975,
+    "summary_gzip_bytes": 18603
+  },
+  "summary_concurrency": [
+    {
+      "cache": "redis",
+      "concurrency": 1,
+      "samples": 1,
+      "p50_ms": 4.453333996934816,
+      "p95_ms": 4.453333996934816,
+      "p99_ms": 4.453333996934816,
+      "max_ms": 4.453333996934816,
+      "rps": 216.4131172944597,
+      "process_cpu_ms": 4.217000000000137,
+      "peak_rss_bytes": 117768192,
+      "event_loop_delay_max_ms": 1.8554169877897948,
+      "errors": 0,
+      "stage_mean_ms": {
+        "redis_get": 0.37229199369903654,
+        "_cache_payload_decode": 1.1729999969247729
+      }
+    },
+    {
+      "cache": "redis",
+      "concurrency": 8,
+      "samples": 8,
+      "p50_ms": 24.81591650575865,
+      "p95_ms": 25.016708998009562,
+      "p99_ms": 25.016708998009562,
+      "max_ms": 25.016708998009562,
+      "rps": 312.4018617903921,
+      "process_cpu_ms": 25.341000000000058,
+      "peak_rss_bytes": 117768192,
+      "event_loop_delay_max_ms": 17.99187500041444,
+      "errors": 0,
+      "stage_mean_ms": {
+        "redis_get": 9.680786375611206,
+        "_cache_payload_decode": 0.8517236201441847
+      }
+    },
+    {
+      "cache": "redis",
+      "concurrency": 40,
+      "samples": 40,
+      "p50_ms": 147.1802289961488,
+      "p95_ms": 148.49412499461323,
+      "p99_ms": 148.71704200049862,
+      "max_ms": 148.71704200049862,
+      "rps": 263.6384138942121,
+      "process_cpu_ms": 151.43400000000008,
+      "peak_rss_bytes": 118161408,
+      "event_loop_delay_max_ms": 80.03700000012759,
+      "errors": 0,
+      "stage_mean_ms": {
+        "redis_get": 72.87131039993255,
+        "_cache_payload_decode": 0.8507332498993492
+      }
+    }
+  ],
+  "account_cls": {
+    "matched_before": 0.1678394632054291,
+    "after": 0.04368388025521905
+  },
+  "reader": {
+    "source_revision": "bf0160975c55f18499ae63b585aa78fe9a25a690",
+    "mode": "production",
+    "scope": "CURRENT_READER_SOURCE_WITH_EXPLICIT_OWNED_MOCK_API_NO_PRODUCTION_REQUESTS",
+    "rows": [
+      {
+        "width": 1440,
+        "height": 900,
+        "first_readable_ms": 394.5538750000005,
+        "initial": {
+          "dataset": {
+            "paginationReady": "true",
+            "transportChunks": "3",
+            "manifestMs": "0.800000011920929",
+            "networkMs": "0.5",
+            "verificationMs": "0.20000000298023224",
+            "fetchMs": "0.5",
+            "assemblyMs": "1.2999999970197678",
+            "chapterId": "chapter-one",
+            "sourcePage": "3",
+            "sourceOffset": "0",
+            "bookMapComplete": "true",
+            "pageCount": "24",
+            "visualPageIndex": "16",
+            "layoutWidth": "595",
+            "layoutHeight": "460",
+            "paginationMs": "5.4000000059604645",
+            "paginationCached": "false",
+            "pageStart": "11186",
+            "pageEnd": "11900",
+            "bookPageCount": "24"
+          },
+          "mounted_text_pages": 1,
+          "client_height": 460,
+          "scroll_height": 460,
+          "text_characters": 714,
+          "overflow": false
+        },
+        "resized": {
+          "dataset": {
+            "paginationReady": "true",
+            "transportChunks": "3",
+            "manifestMs": "0",
+            "networkMs": "0.19999998807907104",
+            "verificationMs": "0.09999999403953552",
+            "fetchMs": "0.19999998807907104",
+            "assemblyMs": "0.30000001192092896",
+            "chapterId": "chapter-one",
+            "sourcePage": "3",
+            "sourceOffset": "0",
+            "bookMapComplete": "true",
+            "pageCount": "51",
+            "visualPageIndex": "34",
+            "layoutWidth": "350",
+            "layoutHeight": "295",
+            "paginationMs": "38.599999994039536",
+            "paginationCached": "false",
+            "pageStart": "11186",
+            "pageEnd": "11203",
+            "bookPageCount": "51"
+          },
+          "mounted_text_pages": 1,
+          "client_height": 295,
+          "scroll_height": 295,
+          "text_characters": 17,
+          "overflow": false
+        },
+        "resize_ready": true,
+        "resize_diagnostic": null,
+        "resize_settle_ms": 273.7227500000008,
+        "turns": 200,
+        "input_to_second_frame_ms": {
+          "samples": 200,
+          "p50": 48.099999994039536,
+          "p95": 49.3999999910593,
+          "p99": 49.70000000298023,
+          "max": 50
+        },
+        "page_turn_driver_plus_two_frames_ms": {
+          "p50": 96.12774999999965,
+          "p95": 97.47466600000007,
+          "max": 98.20083299999897
+        },
+        "heap": [
+          {
+            "cycle": 1,
+            "phase": "after_reader_disposal",
+            "heap_bytes": 4534440,
+            "documents": 3,
+            "nodes": 32,
+            "jsEventListeners": 169
+          },
+          {
+            "cycle": 2,
+            "phase": "after_reader_disposal",
+            "heap_bytes": 4690192,
+            "documents": 3,
+            "nodes": 32,
+            "jsEventListeners": 169
+          },
+          {
+            "cycle": 3,
+            "phase": "after_reader_disposal",
+            "heap_bytes": 4802276,
+            "documents": 3,
+            "nodes": 32,
+            "jsEventListeners": 169
+          },
+          {
+            "cycle": 4,
+            "phase": "after_reader_disposal",
+            "heap_bytes": 4927032,
+            "documents": 3,
+            "nodes": 32,
+            "jsEventListeners": 169
+          },
+          {
+            "cycle": 5,
+            "phase": "after_reader_disposal",
+            "heap_bytes": 4983040,
+            "documents": 3,
+            "nodes": 32,
+            "jsEventListeners": 169
+          }
+        ],
+        "errors": []
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "first_readable_ms": 290.487000000001,
+        "initial": {
+          "dataset": {
+            "paginationReady": "true",
+            "transportChunks": "3",
+            "manifestMs": "0.30000001192092896",
+            "networkMs": "1.5999999940395355",
+            "verificationMs": "0.29999999701976776",
+            "fetchMs": "0.7999999970197678",
+            "assemblyMs": "0.5",
+            "chapterId": "chapter-one",
+            "sourcePage": "3",
+            "sourceOffset": "0",
+            "bookMapComplete": "true",
+            "pageCount": "51",
+            "visualPageIndex": "34",
+            "layoutWidth": "350",
+            "layoutHeight": "295",
+            "paginationMs": "35.3999999910593",
+            "paginationCached": "false",
+            "pageStart": "11186",
+            "pageEnd": "11203",
+            "bookPageCount": "51"
+          },
+          "mounted_text_pages": 1,
+          "client_height": 295,
+          "scroll_height": 295,
+          "text_characters": 17,
+          "overflow": false
+        },
+        "resized": {
+          "dataset": {
+            "paginationReady": "true",
+            "transportChunks": "3",
+            "manifestMs": "0.09999999403953552",
+            "networkMs": "0.19999998807907104",
+            "verificationMs": "0.20000000298023224",
+            "fetchMs": "0.20000000298023224",
+            "assemblyMs": "0.29999999701976776",
+            "chapterId": "chapter-one",
+            "sourcePage": "3",
+            "sourceOffset": "0",
+            "bookMapComplete": "true",
+            "pageCount": "24",
+            "visualPageIndex": "16",
+            "layoutWidth": "595",
+            "layoutHeight": "460",
+            "paginationMs": "4.700000002980232",
+            "paginationCached": "false",
+            "pageStart": "11186",
+            "pageEnd": "11900",
+            "bookPageCount": "24"
+          },
+          "mounted_text_pages": 1,
+          "client_height": 460,
+          "scroll_height": 460,
+          "text_characters": 714,
+          "overflow": false
+        },
+        "resize_ready": true,
+        "resize_diagnostic": null,
+        "resize_settle_ms": 270.65987500000483,
+        "turns": 200,
+        "input_to_second_frame_ms": {
+          "samples": 200,
+          "p50": 48.1000000089407,
+          "p95": 49.29999999701977,
+          "p99": 49.69999998807907,
+          "max": 49.80000001192093
+        },
+        "page_turn_driver_plus_two_frames_ms": {
+          "p50": 96.04654200000004,
+          "p95": 97.45495800000208,
+          "max": 101.41670800000065
+        },
+        "heap": [
+          {
+            "cycle": 1,
+            "phase": "after_reader_disposal",
+            "heap_bytes": 4574488,
+            "documents": 3,
+            "nodes": 32,
+            "jsEventListeners": 169
+          },
+          {
+            "cycle": 2,
+            "phase": "after_reader_disposal",
+            "heap_bytes": 4760396,
+            "documents": 3,
+            "nodes": 32,
+            "jsEventListeners": 169
+          },
+          {
+            "cycle": 3,
+            "phase": "after_reader_disposal",
+            "heap_bytes": 4847996,
+            "documents": 3,
+            "nodes": 32,
+            "jsEventListeners": 169
+          },
+          {
+            "cycle": 4,
+            "phase": "after_reader_disposal",
+            "heap_bytes": 4983004,
+            "documents": 3,
+            "nodes": 32,
+            "jsEventListeners": 169
+          },
+          {
+            "cycle": 5,
+            "phase": "after_reader_disposal",
+            "heap_bytes": 5096420,
+            "documents": 3,
+            "nodes": 32,
+            "jsEventListeners": 169
+          }
+        ],
+        "errors": []
+      },
+      {
+        "width": 844,
+        "height": 390,
+        "first_readable_ms": 289.72866700000304,
+        "initial": {
+          "dataset": {
+            "paginationReady": "true",
+            "transportChunks": "3",
+            "manifestMs": "0.29999999701976776",
+            "networkMs": "0.9999999850988388",
+            "verificationMs": "0",
+            "fetchMs": "0.3999999910593033",
+            "assemblyMs": "0.6000000089406967",
+            "chapterId": "chapter-one",
+            "sourcePage": "3",
+            "sourceOffset": "0",
+            "bookMapComplete": "true",
+            "pageCount": "99",
+            "visualPageIndex": "66",
+            "layoutWidth": "438",
+            "layoutHeight": "148",
+            "paginationMs": "51.599999994039536",
+            "paginationCached": "false",
+            "pageStart": "11186",
+            "pageEnd": "11203",
+            "bookPageCount": "99"
+          },
+          "mounted_text_pages": 1,
+          "client_height": 148,
+          "scroll_height": 148,
+          "text_characters": 17,
+          "overflow": false
+        },
+        "resized": {
+          "dataset": {
+            "paginationReady": "true",
+            "transportChunks": "3",
+            "manifestMs": "0.10000000894069672",
+            "networkMs": "0.3999999910593033",
+            "verificationMs": "0",
+            "fetchMs": "0.29999999701976776",
+            "assemblyMs": "0.29999999701976776",
+            "chapterId": "chapter-one",
+            "sourcePage": "3",
+            "sourceOffset": "0",
+            "bookMapComplete": "true",
+            "pageCount": "51",
+            "visualPageIndex": "34",
+            "layoutWidth": "350",
+            "layoutHeight": "295",
+            "paginationMs": "39.80000001192093",
+            "paginationCached": "false",
+            "pageStart": "11186",
+            "pageEnd": "11203",
+            "bookPageCount": "51"
+          },
+          "mounted_text_pages": 1,
+          "client_height": 295,
+          "scroll_height": 295,
+          "text_characters": 17,
+          "overflow": false
+        },
+        "resize_ready": true,
+        "resize_diagnostic": null,
+        "resize_settle_ms": 269.3211670000019,
+        "turns": 200,
+        "input_to_second_frame_ms": {
+          "samples": 200,
+          "p50": 48,
+          "p95": 49.20000000298023,
+          "p99": 49.599999994039536,
+          "max": 49.79999999701977
+        },
+        "page_turn_driver_plus_two_frames_ms": {
+          "p50": 95.70470799999748,
+          "p95": 97.44862500000454,
+          "max": 102.38062500000524
+        },
+        "heap": [
+          {
+            "cycle": 1,
+            "phase": "after_reader_disposal",
+            "heap_bytes": 4563728,
+            "documents": 3,
+            "nodes": 32,
+            "jsEventListeners": 169
+          },
+          {
+            "cycle": 2,
+            "phase": "after_reader_disposal",
+            "heap_bytes": 4752848,
+            "documents": 3,
+            "nodes": 32,
+            "jsEventListeners": 169
+          },
+          {
+            "cycle": 3,
+            "phase": "after_reader_disposal",
+            "heap_bytes": 4833540,
+            "documents": 3,
+            "nodes": 32,
+            "jsEventListeners": 169
+          },
+          {
+            "cycle": 4,
+            "phase": "after_reader_disposal",
+            "heap_bytes": 4897952,
+            "documents": 3,
+            "nodes": 32,
+            "jsEventListeners": 169
+          },
+          {
+            "cycle": 5,
+            "phase": "after_reader_disposal",
+            "heap_bytes": 5031884,
+            "documents": 3,
+            "nodes": 32,
+            "jsEventListeners": 169
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "limitations": [
+      "Mock auth/lease is not genuine server authorization; real Mongo API benchmark is separate.",
+      "Standalone build timings are diagnostic, not production deployment latency.",
+      "Input-to-second-frame is browser-event/DOM timing, not field INP or GPU presentation time.",
+      "Five 40-turn cycles include SPA disposal/reentry; chapter, notes, font changes and live timers still require a broader soak."
+    ]
+  },
+  "validation": {
+    "frontend": {
+      "suites": 99,
+      "passed": 624
+    },
+    "selected_backend": 128,
+    "redis_singleflight": 9,
+    "regression": {
+      "passed": 143,
+      "skipped": 4
+    },
+    "seo_assertions": 3647,
+    "main_gzip_bytes": 155886
+  },
+  "unfinished": [
+    "real backend-to-browser Reader",
+    "worker contention",
+    "production CWV correlation",
+    "real catalogue cover delivery",
+    "chapter/notes/font soak"
+  ],
+  "production_changed": false
+}

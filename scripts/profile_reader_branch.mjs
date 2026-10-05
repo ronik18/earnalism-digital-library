@@ -72,10 +72,10 @@ try {
   const readable=await consent.or(page.getByTestId('reader-reading-text')).first().waitFor({timeout:10000}).then(()=>true).catch(()=>false);
   if(!readable){rows.push({width,height,fixture_compatible:false,errors,diagnostic:(await page.locator('body').innerText()).slice(0,1000)});await context.close();continue;}
   if(await consent.count())await consent.click();
-  await page.waitForSelector('[data-testid="reader-reading-text"]',{timeout:30000});
+  await page.locator('[data-testid="reader-reading-text"]').waitFor({timeout:30000});
   const firstReadable=performance.now()-started;
   const pagination=await page.locator('[data-pagination-ready]').count();
-  if(pagination)await page.waitForSelector('[data-pagination-ready="true"]',{timeout:30000});
+  if(pagination)await page.locator('[data-pagination-ready="true"]').waitFor({timeout:30000});
   const sample=async()=>page.evaluate(()=>{const n=document.querySelector('.reader-v2__visual-viewport');const text=document.querySelector('[data-testid="reader-reading-text"]');return {dataset:n?{...n.dataset}:null,mounted_text_pages:document.querySelectorAll('[data-testid="reader-reading-text"]').length,client_height:n?.clientHeight,scroll_height:n?.scrollHeight,text_characters:text?.textContent.length,overflow:document.documentElement.scrollWidth>innerWidth};});
   const initial=await sample();const count=Number(initial.dataset?.pageCount||8);const turns=[];const heap=[];
   for(let cycle=0;cycle<5;cycle++) {
@@ -98,12 +98,12 @@ try {
    await page.evaluate(() => {history.pushState({}, '', '/reader/agentic-ai-with-python?p=3&full=1');dispatchEvent(new PopStateEvent('popstate'));});
    await consent.or(page.getByTestId('reader-reading-text')).first().waitFor();
    if(await consent.count())await consent.click();
-   await page.waitForSelector('[data-testid="reader-reading-text"]');
-   if(pagination)await page.waitForSelector('[data-pagination-ready="true"]');
+   await page.locator('[data-testid="reader-reading-text"]').waitFor();
+   if(pagination)await page.locator('[data-pagination-ready="true"]').waitFor();
   }
   const resize=performance.now();await page.setViewportSize({width:width===390?1440:390,height:width===390?900:844});
   let resizeReady=true;
-  await page.waitForTimeout(250);if(pagination)await page.waitForSelector('[data-pagination-ready="true"]',{timeout:10000}).catch(()=>{resizeReady=false;});
+  await page.waitForTimeout(250);if(pagination)await page.locator('[data-pagination-ready="true"]').waitFor({timeout:10000}).catch(()=>{resizeReady=false;});
   const resized=await sample();
   const ordered=turns.toSorted((a,b)=>a-b);
   const paints=await page.evaluate(()=>window.__readerTurnPaints);

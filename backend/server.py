@@ -7352,7 +7352,10 @@ async def list_books(category: Optional[str] = None, q: Optional[str] = None):
         category_filter = normalize_category_slug(category) or category
     cache_key = _public_cache_key("books", category=category_filter or "all", q=normalize_text(q).strip() if q else "")
     if PUBLIC_CACHE_ENABLED and _redis_state_enabled():
-        from backend.catalogue_singleflight import cached_catalogue
+        try:
+            from backend.catalogue_singleflight import cached_catalogue
+        except ImportError:  # backend-only Railway image
+            from catalogue_singleflight import cached_catalogue
         return await cached_catalogue(
             _redis_client, _redis_key("public-cache", "generation"),
             lambda generation: _public_cache_storage_key(generation, cache_key),
@@ -7409,7 +7412,10 @@ async def list_books_response(category: Optional[str] = None, q: Optional[str] =
         raise HTTPException(status_code=422, detail="Unsupported catalogue view")
     result = await list_books(category=category, q=q)
     if view == "library-v1":
-        from backend.catalogue_summary import library_summary
+        try:
+            from backend.catalogue_summary import library_summary
+        except ImportError:  # backend-only Railway image
+            from catalogue_summary import library_summary
         result = library_summary(result)
     body = _json.dumps(result, ensure_ascii=False, allow_nan=False,
                        separators=(",", ":"), default=jsonable_encoder).encode("utf-8")
