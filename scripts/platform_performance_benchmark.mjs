@@ -16,7 +16,9 @@ const server = http.createServer((req, res) => {
   const file = fs.existsSync(candidate) && fs.statSync(candidate).isFile() ? candidate : path.join(build, 'index.html');
   const types = { '.js': 'text/javascript', '.css': 'text/css', '.html': 'text/html', '.json': 'application/json', '.woff2': 'font/woff2', '.png': 'image/png', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml' };
   res.setHeader('Content-Type', types[path.extname(file)] || 'application/octet-stream');
-  res.end(fs.readFileSync(file));
+  const body = fs.readFileSync(file);
+  res.end(path.extname(file) === '.html' && process.env.PERF_ACCOUNT_RESERVATION_BASELINE === '1'
+    ? body.toString().replace('<head>', '<head><style>#main-content{min-height:0!important}</style>') : body);
 });
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 const base = `http://127.0.0.1:${server.address().port}`;
