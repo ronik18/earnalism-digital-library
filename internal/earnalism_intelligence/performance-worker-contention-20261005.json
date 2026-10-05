@@ -1,0 +1,1027 @@
+{
+  "scope": "DISPOSABLE_ASGI_AUTHORIZED_READER_REAL_WORKER_QUEUE_DRAFT_ADAPTER",
+  "worker_revision": "27cd849add22aa87511b14337794f07f0ca50681",
+  "rows": [
+    {
+      "mode": "OFF",
+      "repetition": 1,
+      "foreground": {
+        "/api/books?view=library-v1": {
+          "samples": 80,
+          "p50_ms": 20.961270995030645,
+          "p95_ms": 30.58908399543725,
+          "p99_ms": 52.176375000271946,
+          "max_ms": 52.176375000271946
+        },
+        "/api/books/a-ghost-story": {
+          "samples": 80,
+          "p50_ms": 20.766437497513834,
+          "p95_ms": 31.368166994070634,
+          "p99_ms": 51.97112500900403,
+          "max_ms": 51.97112500900403
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "samples": 80,
+          "p50_ms": 23.763541503285524,
+          "p95_ms": 35.7252910034731,
+          "p99_ms": 55.339999991701916,
+          "max_ms": 55.339999991701916
+        },
+        "/api/analytics/event": {
+          "samples": 80,
+          "p50_ms": 24.398020999797154,
+          "p95_ms": 55.05762500979472,
+          "p99_ms": 80.7287079951493,
+          "max_ms": 80.7287079951493
+        }
+      },
+      "errors": 0,
+      "requests": 320,
+      "route_statuses": {
+        "/api/books?view=library-v1": {
+          "200": 80
+        },
+        "/api/books/a-ghost-story": {
+          "200": 80
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "200": 80
+        },
+        "/api/analytics/event": {
+          "200": 80
+        }
+      },
+      "throughput_rps": 130.62315683585453,
+      "foreground_cpu_ms": 1132.2329999999997,
+      "foreground_peak_rss_bytes": 107249664,
+      "mongo_command_latency": {
+        "samples": 726,
+        "p50_ms": 0.25,
+        "p95_ms": 4.793,
+        "p99_ms": 6.596,
+        "max_ms": 47.916
+      },
+      "redis_command_latency": {
+        "samples": 648,
+        "p50_ms": 1.1886465072166175,
+        "p95_ms": 6.040499996743165,
+        "p99_ms": 6.550499994773418,
+        "max_ms": 36.45970899378881
+      },
+      "worker": {
+        "elapsed_s": 2.4648711670015473,
+        "completed": 0,
+        "jobs_per_s": 0.0,
+        "cycles": 127,
+        "cpu_ms": 56.865,
+        "peak_rss_bytes": 58572800,
+        "queue_depth": 0,
+        "queue_states": {},
+        "mongo_commands": 384,
+        "mongo_command_ms_total": 702.4760000000002,
+        "mongo_command_ms_max": 31.999,
+        "redis_operations": 0,
+        "external_source_requests": 0,
+        "activation": false
+      }
+    },
+    {
+      "mode": "ON_1",
+      "repetition": 1,
+      "foreground": {
+        "/api/books?view=library-v1": {
+          "samples": 80,
+          "p50_ms": 20.961937501851935,
+          "p95_ms": 46.42779100686312,
+          "p99_ms": 54.84924999473151,
+          "max_ms": 54.84924999473151
+        },
+        "/api/books/a-ghost-story": {
+          "samples": 80,
+          "p50_ms": 20.75704150047386,
+          "p95_ms": 46.210832995711826,
+          "p99_ms": 54.6267089957837,
+          "max_ms": 54.6267089957837
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "samples": 80,
+          "p50_ms": 23.72979150095489,
+          "p95_ms": 48.94020898791496,
+          "p99_ms": 58.396874999743886,
+          "max_ms": 58.396874999743886
+        },
+        "/api/analytics/event": {
+          "samples": 80,
+          "p50_ms": 24.652958498336375,
+          "p95_ms": 51.72662499535363,
+          "p99_ms": 58.12741699628532,
+          "max_ms": 58.12741699628532
+        }
+      },
+      "errors": 0,
+      "requests": 320,
+      "route_statuses": {
+        "/api/books?view=library-v1": {
+          "200": 80
+        },
+        "/api/books/a-ghost-story": {
+          "200": 80
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "200": 80
+        },
+        "/api/analytics/event": {
+          "200": 80
+        }
+      },
+      "throughput_rps": 131.24014192983006,
+      "foreground_cpu_ms": 1154.378,
+      "foreground_peak_rss_bytes": 107347968,
+      "mongo_command_latency": {
+        "samples": 722,
+        "p50_ms": 0.241,
+        "p95_ms": 4.894,
+        "p99_ms": 7.164,
+        "max_ms": 7.969
+      },
+      "redis_command_latency": {
+        "samples": 642,
+        "p50_ms": 1.1753124999813735,
+        "p95_ms": 6.101958002545871,
+        "p99_ms": 34.33712500554975,
+        "max_ms": 37.24679199513048
+      },
+      "worker": {
+        "elapsed_s": 2.4531356670049718,
+        "completed": 3,
+        "jobs_per_s": 1.222924618621967,
+        "cycles": 90,
+        "cpu_ms": 92.18200000000004,
+        "peak_rss_bytes": 59015168,
+        "queue_depth": 0,
+        "queue_states": {
+          "complete": 3
+        },
+        "mongo_commands": 585,
+        "mongo_command_ms_total": 1165.0449999999996,
+        "mongo_command_ms_max": 24.469,
+        "redis_operations": 0,
+        "external_source_requests": 0,
+        "activation": false
+      }
+    },
+    {
+      "mode": "CANARY",
+      "repetition": 1,
+      "foreground": {
+        "/api/books?view=library-v1": {
+          "samples": 80,
+          "p50_ms": 21.236249500361737,
+          "p95_ms": 26.057041992316954,
+          "p99_ms": 51.03404099645559,
+          "max_ms": 51.03404099645559
+        },
+        "/api/books/a-ghost-story": {
+          "samples": 80,
+          "p50_ms": 20.99335450475337,
+          "p95_ms": 25.443207996431738,
+          "p99_ms": 50.80479099706281,
+          "max_ms": 50.80479099706281
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "samples": 80,
+          "p50_ms": 24.112937499012332,
+          "p95_ms": 30.031500005861744,
+          "p99_ms": 54.19583299953956,
+          "max_ms": 54.19583299953956
+        },
+        "/api/analytics/event": {
+          "samples": 80,
+          "p50_ms": 24.710500008950476,
+          "p95_ms": 28.924999991431832,
+          "p99_ms": 53.71329199988395,
+          "max_ms": 53.71329199988395
+        }
+      },
+      "errors": 0,
+      "requests": 320,
+      "route_statuses": {
+        "/api/books?view=library-v1": {
+          "200": 80
+        },
+        "/api/books/a-ghost-story": {
+          "200": 80
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "200": 80
+        },
+        "/api/analytics/event": {
+          "200": 80
+        }
+      },
+      "throughput_rps": 133.58108215881632,
+      "foreground_cpu_ms": 1131.4919999999997,
+      "foreground_peak_rss_bytes": 108216320,
+      "mongo_command_latency": {
+        "samples": 722,
+        "p50_ms": 0.258,
+        "p95_ms": 4.625,
+        "p99_ms": 6.194,
+        "max_ms": 9.344
+      },
+      "redis_command_latency": {
+        "samples": 642,
+        "p50_ms": 1.1828130009234883,
+        "p95_ms": 6.137541990028694,
+        "p99_ms": 7.48800000292249,
+        "max_ms": 35.62383299868088
+      },
+      "worker": {
+        "elapsed_s": 2.4057074159936747,
+        "completed": 6,
+        "jobs_per_s": 2.494068879744342,
+        "cycles": 86,
+        "cpu_ms": 97.03699999999998,
+        "peak_rss_bytes": 58834944,
+        "queue_depth": 0,
+        "queue_states": {
+          "complete": 6
+        },
+        "mongo_commands": 588,
+        "mongo_command_ms_total": 1150.5200000000011,
+        "mongo_command_ms_max": 24.434,
+        "redis_operations": 0,
+        "external_source_requests": 0,
+        "activation": false
+      }
+    },
+    {
+      "mode": "SAFE_STRESS",
+      "repetition": 1,
+      "foreground": {
+        "/api/books?view=library-v1": {
+          "samples": 80,
+          "p50_ms": 21.13718800683273,
+          "p95_ms": 24.98987500439398,
+          "p99_ms": 55.15808300697245,
+          "max_ms": 55.15808300697245
+        },
+        "/api/books/a-ghost-story": {
+          "samples": 80,
+          "p50_ms": 20.92639600596158,
+          "p95_ms": 23.839457993744873,
+          "p99_ms": 54.90699999791104,
+          "max_ms": 54.90699999791104
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "samples": 80,
+          "p50_ms": 23.92593699914869,
+          "p95_ms": 28.098208000301383,
+          "p99_ms": 58.46758400730323,
+          "max_ms": 58.46758400730323
+        },
+        "/api/analytics/event": {
+          "samples": 80,
+          "p50_ms": 24.891520501114428,
+          "p95_ms": 54.70812499697786,
+          "p99_ms": 78.88637500582263,
+          "max_ms": 78.88637500582263
+        }
+      },
+      "errors": 0,
+      "requests": 320,
+      "route_statuses": {
+        "/api/books?view=library-v1": {
+          "200": 80
+        },
+        "/api/books/a-ghost-story": {
+          "200": 80
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "200": 80
+        },
+        "/api/analytics/event": {
+          "200": 80
+        }
+      },
+      "throughput_rps": 129.72504693548717,
+      "foreground_cpu_ms": 1135.414,
+      "foreground_peak_rss_bytes": 108216320,
+      "mongo_command_latency": {
+        "samples": 722,
+        "p50_ms": 0.25,
+        "p95_ms": 4.889,
+        "p99_ms": 6.975,
+        "max_ms": 59.526
+      },
+      "redis_command_latency": {
+        "samples": 642,
+        "p50_ms": 1.172146003227681,
+        "p95_ms": 6.240791000891477,
+        "p99_ms": 35.533665999537334,
+        "max_ms": 39.80916600266937
+      },
+      "worker": {
+        "elapsed_s": 2.4789774579985533,
+        "completed": 16,
+        "jobs_per_s": 6.454274099336864,
+        "cycles": 71,
+        "cpu_ms": 133.16700000000003,
+        "peak_rss_bytes": 59129856,
+        "queue_depth": 0,
+        "queue_states": {
+          "complete": 16
+        },
+        "mongo_commands": 796,
+        "mongo_command_ms_total": 1908.7629999999986,
+        "mongo_command_ms_max": 114.101,
+        "redis_operations": 0,
+        "external_source_requests": 0,
+        "activation": false
+      }
+    },
+    {
+      "mode": "SAFE_STRESS",
+      "repetition": 2,
+      "foreground": {
+        "/api/books?view=library-v1": {
+          "samples": 80,
+          "p50_ms": 21.172728993406054,
+          "p95_ms": 34.345416992437094,
+          "p99_ms": 52.78920799901243,
+          "max_ms": 52.78920799901243
+        },
+        "/api/books/a-ghost-story": {
+          "samples": 80,
+          "p50_ms": 20.948562501871493,
+          "p95_ms": 34.076042007654905,
+          "p99_ms": 52.524083002936095,
+          "max_ms": 52.524083002936095
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "samples": 80,
+          "p50_ms": 23.92591650277609,
+          "p95_ms": 37.382624999736436,
+          "p99_ms": 55.88299999362789,
+          "max_ms": 55.88299999362789
+        },
+        "/api/analytics/event": {
+          "samples": 80,
+          "p50_ms": 25.203312499797903,
+          "p95_ms": 52.344458003062755,
+          "p99_ms": 97.55545799271204,
+          "max_ms": 97.55545799271204
+        }
+      },
+      "errors": 0,
+      "requests": 320,
+      "route_statuses": {
+        "/api/books?view=library-v1": {
+          "200": 80
+        },
+        "/api/books/a-ghost-story": {
+          "200": 80
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "200": 80
+        },
+        "/api/analytics/event": {
+          "200": 80
+        }
+      },
+      "throughput_rps": 128.96321547507176,
+      "foreground_cpu_ms": 1134.8159999999998,
+      "foreground_peak_rss_bytes": 108298240,
+      "mongo_command_latency": {
+        "samples": 722,
+        "p50_ms": 0.257,
+        "p95_ms": 5.249,
+        "p99_ms": 6.939,
+        "max_ms": 64.715
+      },
+      "redis_command_latency": {
+        "samples": 642,
+        "p50_ms": 1.1908329906873405,
+        "p95_ms": 6.0967919998802245,
+        "p99_ms": 32.80454200285021,
+        "max_ms": 36.93366699735634
+      },
+      "worker": {
+        "elapsed_s": 2.4918366669880925,
+        "completed": 16,
+        "jobs_per_s": 6.420966595430734,
+        "cycles": 69,
+        "cpu_ms": 133.87199999999999,
+        "peak_rss_bytes": 59162624,
+        "queue_depth": 0,
+        "queue_states": {
+          "complete": 16
+        },
+        "mongo_commands": 778,
+        "mongo_command_ms_total": 1930.7510000000007,
+        "mongo_command_ms_max": 105.275,
+        "redis_operations": 0,
+        "external_source_requests": 0,
+        "activation": false
+      }
+    },
+    {
+      "mode": "CANARY",
+      "repetition": 2,
+      "foreground": {
+        "/api/books?view=library-v1": {
+          "samples": 80,
+          "p50_ms": 21.190416504396126,
+          "p95_ms": 45.136041007936,
+          "p99_ms": 51.706541009480134,
+          "max_ms": 51.706541009480134
+        },
+        "/api/books/a-ghost-story": {
+          "samples": 80,
+          "p50_ms": 20.9703125001397,
+          "p95_ms": 44.9324590008473,
+          "p99_ms": 51.51404099888168,
+          "max_ms": 51.51404099888168
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "samples": 80,
+          "p50_ms": 23.928833004902117,
+          "p95_ms": 47.76874999515712,
+          "p99_ms": 54.40591700607911,
+          "max_ms": 54.40591700607911
+        },
+        "/api/analytics/event": {
+          "samples": 80,
+          "p50_ms": 24.89870799763594,
+          "p95_ms": 52.54429100023117,
+          "p99_ms": 55.94770799507387,
+          "max_ms": 55.94770799507387
+        }
+      },
+      "errors": 0,
+      "requests": 320,
+      "route_statuses": {
+        "/api/books?view=library-v1": {
+          "200": 80
+        },
+        "/api/books/a-ghost-story": {
+          "200": 80
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "200": 80
+        },
+        "/api/analytics/event": {
+          "200": 80
+        }
+      },
+      "throughput_rps": 131.65171130178956,
+      "foreground_cpu_ms": 1154.1090000000008,
+      "foreground_peak_rss_bytes": 108347392,
+      "mongo_command_latency": {
+        "samples": 722,
+        "p50_ms": 0.252,
+        "p95_ms": 5.158,
+        "p99_ms": 6.632,
+        "max_ms": 10.849
+      },
+      "redis_command_latency": {
+        "samples": 642,
+        "p50_ms": 1.1780415079556406,
+        "p95_ms": 6.191958003910258,
+        "p99_ms": 33.47679199941922,
+        "max_ms": 36.27295800833963
+      },
+      "worker": {
+        "elapsed_s": 2.448986707997392,
+        "completed": 6,
+        "jobs_per_s": 2.4499928808949623,
+        "cycles": 81,
+        "cpu_ms": 91.18000000000004,
+        "peak_rss_bytes": 58802176,
+        "queue_depth": 0,
+        "queue_states": {
+          "complete": 6
+        },
+        "mongo_commands": 558,
+        "mongo_command_ms_total": 1265.411000000001,
+        "mongo_command_ms_max": 25.388,
+        "redis_operations": 0,
+        "external_source_requests": 0,
+        "activation": false
+      }
+    },
+    {
+      "mode": "ON_1",
+      "repetition": 2,
+      "foreground": {
+        "/api/books?view=library-v1": {
+          "samples": 80,
+          "p50_ms": 21.274583508784417,
+          "p95_ms": 25.562666007317603,
+          "p99_ms": 52.912375002051704,
+          "max_ms": 52.912375002051704
+        },
+        "/api/books/a-ghost-story": {
+          "samples": 80,
+          "p50_ms": 21.062479499960318,
+          "p95_ms": 24.203958993894048,
+          "p99_ms": 52.67670800094493,
+          "max_ms": 52.67670800094493
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "samples": 80,
+          "p50_ms": 23.9813545049401,
+          "p95_ms": 27.759249991504475,
+          "p99_ms": 55.88966600771528,
+          "max_ms": 55.88966600771528
+        },
+        "/api/analytics/event": {
+          "samples": 80,
+          "p50_ms": 25.053165991266724,
+          "p95_ms": 28.12904099118896,
+          "p99_ms": 57.197792004444636,
+          "max_ms": 57.197792004444636
+        }
+      },
+      "errors": 0,
+      "requests": 320,
+      "route_statuses": {
+        "/api/books?view=library-v1": {
+          "200": 80
+        },
+        "/api/books/a-ghost-story": {
+          "200": 80
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "200": 80
+        },
+        "/api/analytics/event": {
+          "200": 80
+        }
+      },
+      "throughput_rps": 132.37228073569997,
+      "foreground_cpu_ms": 1140.680999999999,
+      "foreground_peak_rss_bytes": 108347392,
+      "mongo_command_latency": {
+        "samples": 722,
+        "p50_ms": 0.253,
+        "p95_ms": 5.347,
+        "p99_ms": 6.651,
+        "max_ms": 10.39
+      },
+      "redis_command_latency": {
+        "samples": 642,
+        "p50_ms": 1.1879794983542524,
+        "p95_ms": 6.214041000930592,
+        "p99_ms": 7.2974170034285635,
+        "max_ms": 36.45020799012855
+      },
+      "worker": {
+        "elapsed_s": 2.4324273749953136,
+        "completed": 3,
+        "jobs_per_s": 1.2333358976465967,
+        "cycles": 90,
+        "cpu_ms": 92.76800000000001,
+        "peak_rss_bytes": 58933248,
+        "queue_depth": 0,
+        "queue_states": {
+          "complete": 3
+        },
+        "mongo_commands": 585,
+        "mongo_command_ms_total": 1133.4280000000012,
+        "mongo_command_ms_max": 23.991,
+        "redis_operations": 0,
+        "external_source_requests": 0,
+        "activation": false
+      }
+    },
+    {
+      "mode": "OFF",
+      "repetition": 2,
+      "foreground": {
+        "/api/books?view=library-v1": {
+          "samples": 80,
+          "p50_ms": 20.95864600414643,
+          "p95_ms": 26.115000000572763,
+          "p99_ms": 50.73433399957139,
+          "max_ms": 50.73433399957139
+        },
+        "/api/books/a-ghost-story": {
+          "samples": 80,
+          "p50_ms": 20.753354503540322,
+          "p95_ms": 24.773416997049935,
+          "p99_ms": 50.49845798930619,
+          "max_ms": 50.49845798930619
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "samples": 80,
+          "p50_ms": 23.693687493505422,
+          "p95_ms": 27.90112500952091,
+          "p99_ms": 54.04887499753386,
+          "max_ms": 54.04887499753386
+        },
+        "/api/analytics/event": {
+          "samples": 80,
+          "p50_ms": 26.074729503307026,
+          "p95_ms": 35.31579200353008,
+          "p99_ms": 54.25529199419543,
+          "max_ms": 54.25529199419543
+        }
+      },
+      "errors": 0,
+      "requests": 320,
+      "route_statuses": {
+        "/api/books?view=library-v1": {
+          "200": 80
+        },
+        "/api/books/a-ghost-story": {
+          "200": 80
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "200": 80
+        },
+        "/api/analytics/event": {
+          "200": 80
+        }
+      },
+      "throughput_rps": 130.34780070668631,
+      "foreground_cpu_ms": 1121.9519999999984,
+      "foreground_peak_rss_bytes": 108347392,
+      "mongo_command_latency": {
+        "samples": 724,
+        "p50_ms": 0.2555,
+        "p95_ms": 6.213,
+        "p99_ms": 11.943,
+        "max_ms": 15.984
+      },
+      "redis_command_latency": {
+        "samples": 644,
+        "p50_ms": 1.1587710032472387,
+        "p95_ms": 6.120167003246024,
+        "p99_ms": 27.92641600535717,
+        "max_ms": 35.26845799933653
+      },
+      "worker": {
+        "elapsed_s": 2.4688122080115136,
+        "completed": 0,
+        "jobs_per_s": 0.0,
+        "cycles": 123,
+        "cpu_ms": 56.58000000000002,
+        "peak_rss_bytes": 58540032,
+        "queue_depth": 0,
+        "queue_states": {},
+        "mongo_commands": 372,
+        "mongo_command_ms_total": 725.2140000000002,
+        "mongo_command_ms_max": 26.313,
+        "redis_operations": 0,
+        "external_source_requests": 0,
+        "activation": false
+      }
+    },
+    {
+      "mode": "OFF",
+      "repetition": 3,
+      "foreground": {
+        "/api/books?view=library-v1": {
+          "samples": 80,
+          "p50_ms": 21.01506249891827,
+          "p95_ms": 51.10725000849925,
+          "p99_ms": 53.44054099987261,
+          "max_ms": 53.44054099987261
+        },
+        "/api/books/a-ghost-story": {
+          "samples": 80,
+          "p50_ms": 20.815667005081195,
+          "p95_ms": 50.850083003751934,
+          "p99_ms": 53.206958997179754,
+          "max_ms": 53.206958997179754
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "samples": 80,
+          "p50_ms": 24.146666502929293,
+          "p95_ms": 54.23529200197663,
+          "p99_ms": 56.448292001732625,
+          "max_ms": 56.448292001732625
+        },
+        "/api/analytics/event": {
+          "samples": 80,
+          "p50_ms": 24.39674999914132,
+          "p95_ms": 54.12208300549537,
+          "p99_ms": 56.63066700799391,
+          "max_ms": 56.63066700799391
+        }
+      },
+      "errors": 0,
+      "requests": 320,
+      "route_statuses": {
+        "/api/books?view=library-v1": {
+          "200": 80
+        },
+        "/api/books/a-ghost-story": {
+          "200": 80
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "200": 80
+        },
+        "/api/analytics/event": {
+          "200": 80
+        }
+      },
+      "throughput_rps": 131.03344833456555,
+      "foreground_cpu_ms": 1172.015,
+      "foreground_peak_rss_bytes": 108396544,
+      "mongo_command_latency": {
+        "samples": 722,
+        "p50_ms": 0.249,
+        "p95_ms": 4.38,
+        "p99_ms": 6.942,
+        "max_ms": 7.793
+      },
+      "redis_command_latency": {
+        "samples": 642,
+        "p50_ms": 1.1993329972028732,
+        "p95_ms": 6.139708013506606,
+        "p99_ms": 37.075917003676295,
+        "max_ms": 38.37304199987557
+      },
+      "worker": {
+        "elapsed_s": 2.4625739170005545,
+        "completed": 0,
+        "jobs_per_s": 0.0,
+        "cycles": 128,
+        "cpu_ms": 61.863,
+        "peak_rss_bytes": 58556416,
+        "queue_depth": 0,
+        "queue_states": {},
+        "mongo_commands": 387,
+        "mongo_command_ms_total": 663.8850000000003,
+        "mongo_command_ms_max": 22.866,
+        "redis_operations": 0,
+        "external_source_requests": 0,
+        "activation": false
+      }
+    },
+    {
+      "mode": "ON_1",
+      "repetition": 3,
+      "foreground": {
+        "/api/books?view=library-v1": {
+          "samples": 80,
+          "p50_ms": 21.058812497358304,
+          "p95_ms": 25.95791699422989,
+          "p99_ms": 52.2010419954313,
+          "max_ms": 52.2010419954313
+        },
+        "/api/books/a-ghost-story": {
+          "samples": 80,
+          "p50_ms": 20.87254200159805,
+          "p95_ms": 24.57433300151024,
+          "p99_ms": 51.97466700337827,
+          "max_ms": 51.97466700337827
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "samples": 80,
+          "p50_ms": 23.987770502571948,
+          "p95_ms": 28.364791985950433,
+          "p99_ms": 55.487750010797754,
+          "max_ms": 55.487750010797754
+        },
+        "/api/analytics/event": {
+          "samples": 80,
+          "p50_ms": 24.778021004749462,
+          "p95_ms": 38.48441599984653,
+          "p99_ms": 55.01841699879151,
+          "max_ms": 55.01841699879151
+        }
+      },
+      "errors": 0,
+      "requests": 320,
+      "route_statuses": {
+        "/api/books?view=library-v1": {
+          "200": 80
+        },
+        "/api/books/a-ghost-story": {
+          "200": 80
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "200": 80
+        },
+        "/api/analytics/event": {
+          "200": 80
+        }
+      },
+      "throughput_rps": 132.64549046977842,
+      "foreground_cpu_ms": 1125.4590000000012,
+      "foreground_peak_rss_bytes": 108396544,
+      "mongo_command_latency": {
+        "samples": 722,
+        "p50_ms": 0.252,
+        "p95_ms": 5.047,
+        "p99_ms": 7.255,
+        "max_ms": 18.553
+      },
+      "redis_command_latency": {
+        "samples": 642,
+        "p50_ms": 1.1995414897683077,
+        "p95_ms": 6.1712080059805885,
+        "p99_ms": 26.07516599528026,
+        "max_ms": 36.488458994426765
+      },
+      "worker": {
+        "elapsed_s": 2.438700583006721,
+        "completed": 3,
+        "jobs_per_s": 1.2301633176719227,
+        "cycles": 89,
+        "cpu_ms": 91.01599999999999,
+        "peak_rss_bytes": 58966016,
+        "queue_depth": 0,
+        "queue_states": {
+          "complete": 3
+        },
+        "mongo_commands": 579,
+        "mongo_command_ms_total": 1192.369,
+        "mongo_command_ms_max": 34.312,
+        "redis_operations": 0,
+        "external_source_requests": 0,
+        "activation": false
+      }
+    },
+    {
+      "mode": "CANARY",
+      "repetition": 3,
+      "foreground": {
+        "/api/books?view=library-v1": {
+          "samples": 80,
+          "p50_ms": 21.098958000948187,
+          "p95_ms": 24.072291009360924,
+          "p99_ms": 53.94733299908694,
+          "max_ms": 53.94733299908694
+        },
+        "/api/books/a-ghost-story": {
+          "samples": 80,
+          "p50_ms": 20.90749999479158,
+          "p95_ms": 23.289958990062587,
+          "p99_ms": 53.69595799129456,
+          "max_ms": 53.69595799129456
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "samples": 80,
+          "p50_ms": 24.062354495981708,
+          "p95_ms": 26.287333996151574,
+          "p99_ms": 56.66537499928381,
+          "max_ms": 56.66537499928381
+        },
+        "/api/analytics/event": {
+          "samples": 80,
+          "p50_ms": 24.37399999325862,
+          "p95_ms": 29.32899999723304,
+          "p99_ms": 53.7600000097882,
+          "max_ms": 53.7600000097882
+        }
+      },
+      "errors": 0,
+      "requests": 320,
+      "route_statuses": {
+        "/api/books?view=library-v1": {
+          "200": 80
+        },
+        "/api/books/a-ghost-story": {
+          "200": 80
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "200": 80
+        },
+        "/api/analytics/event": {
+          "200": 80
+        }
+      },
+      "throughput_rps": 133.015290558613,
+      "foreground_cpu_ms": 1131.4930000000008,
+      "foreground_peak_rss_bytes": 108396544,
+      "mongo_command_latency": {
+        "samples": 722,
+        "p50_ms": 0.2475,
+        "p95_ms": 4.881,
+        "p99_ms": 7.661,
+        "max_ms": 10.739
+      },
+      "redis_command_latency": {
+        "samples": 642,
+        "p50_ms": 1.1874170013470575,
+        "p95_ms": 6.124457999248989,
+        "p99_ms": 7.180417000199668,
+        "max_ms": 33.99675000400748
+      },
+      "worker": {
+        "elapsed_s": 2.4222955409932183,
+        "completed": 6,
+        "jobs_per_s": 2.476989243657613,
+        "cycles": 84,
+        "cpu_ms": 94.29500000000002,
+        "peak_rss_bytes": 58867712,
+        "queue_depth": 0,
+        "queue_states": {
+          "complete": 6
+        },
+        "mongo_commands": 576,
+        "mongo_command_ms_total": 1186.6309999999996,
+        "mongo_command_ms_max": 27.563,
+        "redis_operations": 0,
+        "external_source_requests": 0,
+        "activation": false
+      }
+    },
+    {
+      "mode": "SAFE_STRESS",
+      "repetition": 3,
+      "foreground": {
+        "/api/books?view=library-v1": {
+          "samples": 80,
+          "p50_ms": 21.078750003653113,
+          "p95_ms": 25.95908301009331,
+          "p99_ms": 54.44675000035204,
+          "max_ms": 54.44675000035204
+        },
+        "/api/books/a-ghost-story": {
+          "samples": 80,
+          "p50_ms": 20.876958493317943,
+          "p95_ms": 24.682208997546695,
+          "p99_ms": 54.214249990764074,
+          "max_ms": 54.214249990764074
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "samples": 80,
+          "p50_ms": 23.889541502285283,
+          "p95_ms": 27.976833007414825,
+          "p99_ms": 57.16608400689438,
+          "max_ms": 57.16608400689438
+        },
+        "/api/analytics/event": {
+          "samples": 80,
+          "p50_ms": 24.482021006406285,
+          "p95_ms": 31.217750001815148,
+          "p99_ms": 58.31545799446758,
+          "max_ms": 58.31545799446758
+        }
+      },
+      "errors": 0,
+      "requests": 320,
+      "route_statuses": {
+        "/api/books?view=library-v1": {
+          "200": 80
+        },
+        "/api/books/a-ghost-story": {
+          "200": 80
+        },
+        "/api/reading-pass/books/worker-foreground-owned-fixture/pages/4": {
+          "200": 80
+        },
+        "/api/analytics/event": {
+          "200": 80
+        }
+      },
+      "throughput_rps": 131.42581985983628,
+      "foreground_cpu_ms": 1137.9400000000005,
+      "foreground_peak_rss_bytes": 108396544,
+      "mongo_command_latency": {
+        "samples": 722,
+        "p50_ms": 0.246,
+        "p95_ms": 4.875,
+        "p99_ms": 7.524,
+        "max_ms": 26.782
+      },
+      "redis_command_latency": {
+        "samples": 642,
+        "p50_ms": 1.1653959954855964,
+        "p95_ms": 6.0914159985259175,
+        "p99_ms": 7.353499997407198,
+        "max_ms": 37.71154100832064
+      },
+      "worker": {
+        "elapsed_s": 2.455351041004178,
+        "completed": 16,
+        "jobs_per_s": 6.5163798303383915,
+        "cycles": 70,
+        "cpu_ms": 133.57399999999998,
+        "peak_rss_bytes": 59179008,
+        "queue_depth": 0,
+        "queue_states": {
+          "complete": 16
+        },
+        "mongo_commands": 787,
+        "mongo_command_ms_total": 1860.172,
+        "mongo_command_ms_max": 104.884,
+        "redis_operations": 0,
+        "external_source_requests": 0,
+        "activation": false
+      }
+    }
+  ],
+  "limitations": [
+    "No external source fetch; 6/min source budget not exercised.",
+    "Draft fixture adapter is not production publication throughput.",
+    "DB/cache command timings are aggregate overlapping I/O, not exclusive request stage time.",
+    "Short local sample, not production SLO or saturation test."
+  ],
+  "production_changed": false
+}
