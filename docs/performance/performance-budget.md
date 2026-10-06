@@ -48,7 +48,7 @@ repository's disposable loopback Mongo replica set and Redis on port 27019.
 Backend command (local fixture signing values only):
 
 ```sh
-PYTHONPATH=. ENVIRONMENT=uat MONGODB_URL='mongodb://127.0.0.1:27018/?replicaSet=earnalism-uat-rs0' JWT_SECRET=local-performance-fixture-secret-not-production READING_PASS_TOKEN_SECRET=local-performance-fixture-lease-secret-not-production /tmp/earnalism-main-approved-integration/.venv-uat/bin/python scripts/platform_backend_benchmark.py
+PYTHONPATH=. ENVIRONMENT=uat MONGODB_URL='mongodb://127.0.0.1:27018/?replicaSet=earnalism-uat-rs0' JWT_SECRET=local-performance-fixture-secret-not-production READING_PASS_TOKEN_SECRET=local-performance-fixture-lease-secret-not-production python3 scripts/platform_backend_benchmark.py
 ```
 
 Continuation: lossless Latin WOFF2 build assets <=1000000bytes total (845252

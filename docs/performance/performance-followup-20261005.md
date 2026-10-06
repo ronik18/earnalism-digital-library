@@ -31,7 +31,7 @@ Tests compare every retained field and chapter preview identity without mutating
 
 ## Account
 
-Only the shared main container on `/account` reserves80vh, matching the existing auth-shell height. No authentication, redirects, provider initialization, cookies, requests or PR517 behavior changed. Same compiled build with reservation disabled gave CLS0.167839; enabled0.043684. Earlier separate run0.1623 is historical, not the matched control. Screenshot: `/tmp/earnalism-performance-account-reserved-0.png`.
+Only the shared main container on `/account` reserves80vh, matching the existing auth-shell height. No authentication, redirects, provider initialization, cookies, requests or PR517 behavior changed. Same compiled build with reservation disabled gave CLS0.167839; enabled0.043684. Earlier separate run0.1623 is historical, not the matched control. Reproduce using the included browser harness on separately built main and candidate routes; no private screenshot is required to review this claim.
 
 ## Fresh correctness
 
@@ -39,7 +39,7 @@ Complete frontend:99 suites/624 tests pass. Selected backend:128 tests pass. Red
 
 Fresh repository disposable gate: regression15 suites/143 tests pass,2 suites/4 tests existing skipped. Additional overlapping gates: backend14/54/452 tests; real-Mongo Reader1 test; catalogue71 tests+1 existing skip+55 subtests; proxy15 Python tests+12 Node tests; frontend contracts8 suites/50 tests; signed journey smoke PASS. Totals overlap and are not summed as unique coverage. Authenticated Reader response p95 observed4.917ms over20 requests; this is ASGI/Mongo, not browser paint.
 
-Production build and SEO172 snapshots/3647 assertions pass. Main gzip155886B within165000B; largest chunk budget170000B; retained Latin WOFF2 budget passes. Compilation, JS syntax and diff checks pass. Full gate logs: `/tmp/earnalism-performance-fresh-pr-gate.log` and the exact-tree follow-up log. No old broad regression is being substituted.
+Historical production build and SEO172 snapshots/3647 assertions passed. Main gzip155886B within165000B; largest chunk budget170000B; retained Latin WOFF2 budget passed. Compilation, JS syntax and diff checks passed. Reproduce with the documented build, budget and repository regression commands. Current exact-head qualification supersedes these historical totals; archived local logs are not review prerequisites.
 
 ## Still not established
 
