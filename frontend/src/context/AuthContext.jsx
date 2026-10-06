@@ -97,6 +97,37 @@ export function AuthProvider({ children }) {
     setUser(data.user);
     return data.user;
   }, []);
+  const googleAttemptRef = useRef(null);
+  const userGoogleLogin = useCallback((credential) => {
+    if (googleAttemptRef.current) return googleAttemptRef.current;
+    const generation = ++userAuthGenerationRef.current;
+    setUser(null);
+    const attempt = (async () => {
+      try {
+        const { data } = await userApi.post("/auth/google", { credential }, {
+          skipAuthRedirect: true, skipAuthRefresh: true, timeout: 15000,
+        });
+        if (!mountedRef.current || generation !== userAuthGenerationRef.current) {
+          throw new Error("A newer authentication request superseded this sign-in.");
+        }
+        if (typeof data?.token !== "string" || !data.token || !data.user?.id) {
+          throw new Error("Google sign-in returned an incomplete session.");
+        }
+        // The verified endpoint already returns the authoritative profile.
+        // Advancing the generation prevents an older bootstrap overwriting it.
+        localStorage.setItem(USER_TOKEN_KEY, data.token);
+        setUser(data.user);
+        return data.user;
+      } catch (error) {
+        if (mountedRef.current && generation === userAuthGenerationRef.current) setUser(false);
+        throw error;
+      } finally {
+        googleAttemptRef.current = null;
+      }
+    })();
+    googleAttemptRef.current = attempt;
+    return attempt;
+  }, []);
   const userLogout = useCallback(() => {
     ++userAuthGenerationRef.current;
     const token = localStorage.getItem(USER_TOKEN_KEY);
@@ -136,6 +167,24 @@ export function AuthProvider({ children }) {
       return null;
     }
   }, []);
+  useEffect(() => {
+    const restoreSession = (event) => {
+      if (!event.persisted) return;
+      const generation = ++userAuthGenerationRef.current;
+      if (!localStorage.getItem(USER_TOKEN_KEY)) {
+        setUser(false);
+        return;
+      }
+      // A back/forward-cache restore can revive an anonymous React tree even
+      // though a later document established a session. Verify before routing.
+      setUser(null);
+      refreshUser().then((profile) => {
+        if (mountedRef.current && generation === userAuthGenerationRef.current && !profile) setUser(false);
+      });
+    };
+    window.addEventListener("pageshow", restoreSession);
+    return () => window.removeEventListener("pageshow", restoreSession);
+  }, [refreshUser]);
   const setUserBalance = useCallback((balance, expectedIdentity) => {
     if (!Number.isSafeInteger(balance) || balance < 0 || !expectedIdentity) return;
     setUser((u) => {
@@ -152,9 +201,9 @@ export function AuthProvider({ children }) {
     // backwards-compatible aliases (Admin pages used `login`/`logout`)
     login: adminLogin, logout: adminLogout,
     adminLogin, adminLogout,
-    userSignup, userLogin, userLogout,
+    userSignup, userLogin, userGoogleLogin, userLogout,
     refreshUser, setUserBalance,
-  }), [admin, user, adminLogin, adminLogout, userSignup, userLogin, userLogout, refreshUser, setUserBalance]);
+  }), [admin, user, adminLogin, adminLogout, userSignup, userLogin, userGoogleLogin, userLogout, refreshUser, setUserBalance]);
 
   return (
     <AuthContext.Provider value={value}>
