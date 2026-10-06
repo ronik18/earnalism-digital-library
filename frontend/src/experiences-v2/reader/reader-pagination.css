@@ -7,6 +7,9 @@
 /* Fitting reads width and typography synchronously. The shared reduced-motion
    duration must not transition these invisible source/measurement surfaces. */
 .reader-v2__visual-viewport :is(.reader-v2__pagination-source, .reader-v2__pagination-measure) { transition: none !important; }
+/* Descendant media is resized synchronously too. Reduced-motion's global
+   nonzero duration must not make a fitted image measure at its old zero size. */
+.reader-v2__visual-viewport :is(.reader-v2__pagination-source, .reader-v2__pagination-measure) * { transition: none !important; }
 .reader-v2__visual-viewport .reader-v2__page-content { height: 100%; }
 .reader-v2__body img { max-height: var(--reader-visual-height, 100%); object-fit: contain; }
 .reader-v2__body[data-continuation="true"] > p:first-of-type::first-letter,
