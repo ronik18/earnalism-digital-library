@@ -417,6 +417,46 @@ test("visible inactivity pauses reading time at the configured threshold", async
   expect(pass.renewReadingPassLease).toHaveBeenCalledTimes(count);
 });
 
+test("authorized within-chapter navigation stays active across consecutive lease renders", async () => {
+  await openProtected();
+  await act(async () => {
+    document.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowRight", bubbles: true }));
+    navigate("/reader/test-book?p=5");
+  });
+  expect(text()).toContain("Page 5 manuscript.");
+  const fetched = pass.getReadingPassPage.mock.calls.length;
+  await tick(10000);
+  await act(async () => document.dispatchEvent(new MouseEvent("pointerdown", { bubbles: true })));
+  await tick(10000);
+  expect(pass.renewReadingPassLease.mock.calls.map(([request]) => request.active)).toEqual([true, true]);
+  expect(text()).not.toContain("Reading paused");
+  expect(pass.getReadingPassPage).toHaveBeenCalledTimes(fetched);
+});
+
+test.each(["pointerdown", "keydown", "scroll"])("%s resets real inactivity without extending its threshold", async (event) => {
+  const value = manifest();
+  value.access.reading_pass.text_inactivity_seconds = 120;
+  userApi.get.mockResolvedValue({ data: value });
+  await openProtected();
+  await act(async () => navigate("/reader/test-book?p=5"));
+  for (let i = 0; i < 10; i++) await tick(10000);
+  await act(async () => document.dispatchEvent(new Event(event, { bubbles: true })));
+  for (let i = 0; i < 11; i++) await tick(10000);
+  expect(pass.renewReadingPassLease.mock.calls.every(([request]) => request.active)).toBe(true);
+  await tick(10000);
+  expect(pass.renewReadingPassLease).toHaveBeenLastCalledWith(expect.objectContaining({ active: false }));
+  expect(text()).toContain("Reading paused");
+});
+
+test("loss of browser focus still pauses an authorized reused chapter", async () => {
+  await openProtected();
+  await act(async () => navigate("/reader/test-book?p=5"));
+  document.hasFocus.mockReturnValue(false);
+  await act(async () => window.dispatchEvent(new Event("blur")));
+  expect(pass.renewReadingPassLease).toHaveBeenLastCalledWith(expect.objectContaining({ active: false }));
+  expect(text()).toContain("Reading paused");
+});
+
 test("a lost heartbeat response retries the exact same idempotent request once", async () => {
   await openProtected();
   pass.renewReadingPassLease.mockRejectedValueOnce(new Error("Response lost"));

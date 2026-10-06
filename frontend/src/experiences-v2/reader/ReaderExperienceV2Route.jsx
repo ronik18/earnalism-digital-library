@@ -108,7 +108,6 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
   const lastActivityRef = useRef(Date.now());
   const displayedPageRef = useRef(false);
   const protectedPageVisibleRef = useRef(false);
-  displayedPageRef.current = Boolean(!error && pageResult?.number === canonicalPage && pageResult.status === "ready");
   const positionVersionRef = useRef(null);
   const positionQueueRef = useRef(Promise.resolve());
   const previewEventSentRef = useRef("");
@@ -475,8 +474,12 @@ function ReaderSession({ slug, user, identity, syncBalance }) {
   const selectedPage = source?.value || null;
   const page = selectedPage;
   const displayedPageNumber = canonicalPage;
+  // Transport completion describes the downloaded chapter, not its current
+  // source page. Within-chapter turns reuse that download across lease renders.
+  // Derive readiness from the current authorized selection on every render;
+  // a selectedPage-only effect can leave this ref false after an unrelated render.
+  displayedPageRef.current = Boolean(!error && selectedPage);
   useEffect(() => {
-    displayedPageRef.current = Boolean(selectedPage);
     if (!selectedPage || !openingFocusRef.current) return;
     openingFocusRef.current = false;
     const heading = entryRef.current?.querySelector("h1");
