@@ -127,6 +127,7 @@ jobs:
       - name: Run deterministic tooling gates
         run: |
           set -euo pipefail
+          node scripts/test_brand_capture_mismatch.mjs
           node scripts/test_seamless_brand_manifest_cli.mjs
           node scripts/test_seamless_brand_full_chromium_matrix.mjs
           node scripts/test_seamless_brand_cross_browser_shell_matrix.mjs
@@ -470,6 +471,7 @@ jobs:
         with:
           name: pr344-seamless-brand-final-diagnostic-${{ needs.resolve-pr-head.outputs.pr_head }}
           path: |
+            ${{ runner.temp }}/pr344-seamless-brand-final-${{ needs.resolve-pr-head.outputs.pr_head }}/**/brand-capture-state-mismatch.json
             ${{ runner.temp }}/server.log
             ${{ runner.temp }}/package-server.log
             ${{ runner.temp }}/frontend-production-contract-build.log

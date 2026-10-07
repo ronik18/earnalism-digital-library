@@ -20,6 +20,8 @@ import {
   captureMicroStoryCampaign,
 } from "./lib/micro_story_campaign_capture.mjs";
 
+import { assertCaptureFingerprintUnchanged } from "./lib/brand_capture_mismatch.mjs";
+
 const DEFAULT_MANIFEST = "docs/design-system/seamless-brand-state-manifest.json";
 const DEFAULT_ROUTE_INVENTORY = "docs/design-system/seamless-brand-route-inventory.json";
 const SUPPORTED_BROWSERS = new Set(["chromium", "firefox", "webkit"]);
@@ -354,7 +356,7 @@ async function primeWebKitTopOfDocumentRaster(page, browserName, capture, header
   return { result: "PASS", applicable: true, attempts };
 }
 
-async function captureRequestedScreenshots(page, stateDirectory, capture, label, header, lockup, requestedTypes = undefined, browserName = "chromium", trace = []) {
+async function captureRequestedScreenshots(page, stateDirectory, capture, label, header, lockup, requestedTypes = undefined, browserName = "chromium", trace = [], metadata = {}) {
   const files = {};
   const attemptDirectory = path.join(stateDirectory, "attempts", label);
   fs.mkdirSync(attemptDirectory, { recursive: true });
@@ -367,7 +369,7 @@ async function captureRequestedScreenshots(page, stateDirectory, capture, label,
     const after = await visualFingerprint(page);
     const unchanged = hashValue(before) === hashValue(after);
     trace.push({ label, name, before, after, unchanged });
-    if (!unchanged) throw new Error(`Screenshot capture changed visual state for ${name}.`);
+    if (!unchanged) assertCaptureFingerprintUnchanged({ before, after, metadata, screenshot: name, attempt: label, artifactPath: path.join(stateDirectory, "brand-capture-state-mismatch.json") });
   };
   try {
     if (capture.viewport && (!requestedTypes || requestedTypes.has("viewport"))) await write("viewport.png", async (target) => {
@@ -407,7 +409,7 @@ async function captureRequestedScreenshots(page, stateDirectory, capture, label,
   return files;
 }
 
-async function captureStableScreenshots(page, stateDirectory, capture, header, lockup, browserName, trace = []) {
+async function captureStableScreenshots(page, stateDirectory, capture, header, lockup, browserName, trace = [], metadata = {}) {
   const types = ["viewport", "full_page", "brand_close_up", "parent_surface_close_up"].filter((type) => capture[type]);
   const webkitTopOfDocument = browserName === "webkit" && await page.evaluate(() => Math.abs(window.scrollY) <= 1);
   let stable = false; const stabilityAttempts = []; let finalFiles = {};
@@ -418,12 +420,12 @@ async function captureStableScreenshots(page, stateDirectory, capture, header, l
       // different capture surface. Discard that bounded raster warm-up, then
       // retain the existing strict two-image hash comparison as the evidence.
       if (webkitTopOfDocument) {
-        await captureRequestedScreenshots(page, stateDirectory, capture, `attempt-${attempt}-${type}-warmup`, header, lockup, new Set([type]), browserName, trace);
+        await captureRequestedScreenshots(page, stateDirectory, capture, `attempt-${attempt}-${type}-warmup`, header, lockup, new Set([type]), browserName, trace, metadata);
         await page.waitForTimeout(500);
       }
-      Object.assign(first, await captureRequestedScreenshots(page, stateDirectory, capture, `attempt-${attempt}-${type}-first`, header, lockup, new Set([type]), browserName, trace));
+      Object.assign(first, await captureRequestedScreenshots(page, stateDirectory, capture, `attempt-${attempt}-${type}-first`, header, lockup, new Set([type]), browserName, trace, metadata));
       await page.waitForTimeout(500);
-      Object.assign(second, await captureRequestedScreenshots(page, stateDirectory, capture, `attempt-${attempt}-${type}-second`, header, lockup, new Set([type]), browserName, trace));
+      Object.assign(second, await captureRequestedScreenshots(page, stateDirectory, capture, `attempt-${attempt}-${type}-second`, header, lockup, new Set([type]), browserName, trace, metadata));
     }
     const matches = stableHashSet(first, second);
     stabilityAttempts.push({ attempt, stable: matches, first: Object.fromEntries(Object.entries(first).map(([name, file]) => [name, file.sha256])), second: Object.fromEntries(Object.entries(second).map(([name, file]) => [name, file.sha256])) });
@@ -460,6 +462,8 @@ async function runOneStateCapture(options) {
   const zoomFactor = state.zoom / 100;
   const effectiveViewport = { width: Math.max(1, Math.round(state.viewport.width / zoomFactor)), height: Math.max(1, Math.round(state.viewport.height / zoomFactor)) };
   const context = await browser.newContext({ viewport: effectiveViewport, deviceScaleFactor: zoomFactor, locale: "en-US", timezoneId: "UTC", colorScheme: "dark", serviceWorkers: "block" });
+  const captureContext = { stateId: state.id, route: state.route, variant: state.fixture, browser: options.browser, browserVersion: browser.version(), viewport: effectiveViewport, requestedViewport: state.viewport, zoom: state.zoom, deviceScaleFactor: zoomFactor, colorScheme: "dark", reducedMotion: "reduce", sourceHead: gitReference("rev-parse", "HEAD") };
+
   const page = await context.newPage();
   if (state.zoom > 100) page.__earnalismZoomCapture = { viewportClip: { x: 0, y: 0, width: state.viewport.width / zoomFactor, height: state.viewport.height / zoomFactor } };
   const consoleErrors = [];
@@ -494,7 +498,7 @@ async function runOneStateCapture(options) {
   if (await header.count() !== 1) throw new Error(`State ${state.id}: expected exactly one visible public header; received ${await header.count()}.`);
   const lockup = header.locator('[data-testid="earnalism-brand-lockup"]:visible');
   if (await lockup.count() !== 1) throw new Error(`State ${state.id}: expected exactly one visible canonical lockup; received ${await lockup.count()}.`);
-  const { stable, stabilityAttempts, finalFiles } = await captureStableScreenshots(page, stateDirectory, state.capture, header, lockup, options.browser);
+  const { stable, stabilityAttempts, finalFiles } = await captureStableScreenshots(page, stateDirectory, state.capture, header, lockup, options.browser, [], captureContext);
   const data = await page.evaluate((statusFixture) => {
     const visible = (node) => { if (!node) return false; const style = getComputedStyle(node); const rect = node.getBoundingClientRect(); return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0; };
     const headers = [...document.querySelectorAll('[data-testid="site-header"]')].filter(visible);
@@ -822,6 +826,7 @@ async function captureManifestState(browser, browserName, state, baseUrl, output
   const zoomFactor = state.zoom / 100;
   const effectiveViewport = { width: Math.max(1, Math.round(state.viewport.width / zoomFactor)), height: Math.max(1, Math.round(state.viewport.height / zoomFactor)) };
   const context = await browser.newContext({ viewport: effectiveViewport, deviceScaleFactor: zoomFactor, locale: "en-US", timezoneId: "UTC", colorScheme: "dark", serviceWorkers: "block" });
+  const captureContext = { stateId: state.id, route: state.route, variant: state.fixture, browser: browserName, browserVersion: browser.version(), viewport: effectiveViewport, requestedViewport: state.viewport, zoom: state.zoom, deviceScaleFactor: zoomFactor, colorScheme: "dark", reducedMotion: "reduce", sourceHead: gitReference("rev-parse", "HEAD") };
   const initialStorage = await context.storageState();
   const page = await context.newPage();
   if (state.zoom > 100) page.__earnalismZoomCapture = { viewportClip: { x: 0, y: 0, width: state.viewport.width / zoomFactor, height: state.viewport.height / zoomFactor } };
@@ -875,7 +880,7 @@ async function captureManifestState(browser, browserName, state, baseUrl, output
   try {
     visualQuiescence = await waitForVisualQuiescence(page, state, editorialFixtureRequests);
     rasterPriming = await primeWebKitTopOfDocumentRaster(page, browserName, state.capture, captureSurface, captureLockup);
-    ({ stable, stabilityAttempts, finalFiles } = await captureStableScreenshots(page, stateDirectory, state.capture, captureSurface, captureLockup, browserName, screenshotCaptureTrace));
+    ({ stable, stabilityAttempts, finalFiles } = await captureStableScreenshots(page, stateDirectory, state.capture, captureSurface, captureLockup, browserName, screenshotCaptureTrace, captureContext));
   } finally {
     await captureStabilization?.evaluate((node) => node.remove()).catch(() => {});
   }
