@@ -302,7 +302,9 @@
 .reader-v2__page-arrow:active:not(:disabled) { transform: translateY(-50%) scale(.94); }
 .reader-v2__page-arrow:disabled { opacity: .28; cursor: default; }
 .reader-v2__page-arrow:focus-visible { outline: 2px solid var(--ev2-gold); outline-offset: 2px; }
-.reader-v2__page-content { animation: readerPageForward 280ms ease both; }
+/* Release the transform after arrival: retained forwards fill can preserve stale
+   scrollable overflow when this page is repaginated at a narrower width. */
+.reader-v2__page-content { animation: readerPageForward 280ms ease backwards; }
 .reader-v2__page-content--previous { animation-name: readerPageReverse; }
 @keyframes readerPageForward { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes readerPageReverse { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: translateX(0); } }

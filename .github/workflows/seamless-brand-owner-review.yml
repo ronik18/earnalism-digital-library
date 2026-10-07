@@ -86,7 +86,7 @@ jobs:
       PR_NUMBER: ${{ needs.resolve-pr-head.outputs.pr_number }}
       WORKFLOW_EVENT_SHA: ${{ needs.resolve-pr-head.outputs.workflow_event_sha }}
       # Reproduced from the exact checked-in frontend production source by test_seamless_brand_final_publication_workflow.mjs; this binds current source and is not visual approval.
-      PRODUCTION_SURFACE_SHA: 3e33a962704978a0eb381ec015863f8a9470346c8c8c09db846eb42e3c68e970
+      PRODUCTION_SURFACE_SHA: 2d6cd2e28f8ecad39d07e9a5604d03d4d9c810245a9b041a7d5b44b0b47574b6
       CANONICAL_LOGO_SHA: 951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919
     steps:
       - name: Checkout exact pull-request head
@@ -127,6 +127,8 @@ jobs:
       - name: Run deterministic tooling gates
         run: |
           set -euo pipefail
+          node scripts/test_brand_reader_readiness.mjs
+          node scripts/test_brand_capture_mismatch.mjs
           node scripts/test_seamless_brand_manifest_cli.mjs
           node scripts/test_seamless_brand_full_chromium_matrix.mjs
           node scripts/test_seamless_brand_cross_browser_shell_matrix.mjs
@@ -470,6 +472,7 @@ jobs:
         with:
           name: pr344-seamless-brand-final-diagnostic-${{ needs.resolve-pr-head.outputs.pr_head }}
           path: |
+            ${{ runner.temp }}/pr344-seamless-brand-final-${{ needs.resolve-pr-head.outputs.pr_head }}/**/brand-capture-state-mismatch.json
             ${{ runner.temp }}/server.log
             ${{ runner.temp }}/package-server.log
             ${{ runner.temp }}/frontend-production-contract-build.log
@@ -499,7 +502,7 @@ jobs:
       GITHUB_ARTIFACT_URL: ${{ needs.seamless-brand-review.outputs.artifact_url }}
       GITHUB_ARTIFACT_DIGEST: ${{ needs.seamless-brand-review.outputs.artifact_digest }}
       # Must match the same exact source fingerprint as the capture job above.
-      PRODUCTION_SURFACE_SHA: 3e33a962704978a0eb381ec015863f8a9470346c8c8c09db846eb42e3c68e970
+      PRODUCTION_SURFACE_SHA: 2d6cd2e28f8ecad39d07e9a5604d03d4d9c810245a9b041a7d5b44b0b47574b6
       CANONICAL_LOGO_SHA: 951d21e89cbcab58e0f9aed60778a8966d920e2fba464d1cade7bc37fb3ee919
     steps:
       - uses: actions/checkout@v6

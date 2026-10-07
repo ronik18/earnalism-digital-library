@@ -21,3 +21,20 @@ test("storage failure reports an unsaved notebook", () => {
   jest.spyOn(Storage.prototype, "setItem").mockImplementation(() => { throw new Error("blocked"); });
   expect(saveReaderNotebook("key", { notes: [], bookmarks: [1] })).toBe(false);
 });
+
+test('source-offset notes and bookmarks survive notebook serialization independently of visual page numbers', () => {
+  const key = readerNotebookKey('edition', 'reader');
+  const anchor = { offset: 1234, revision: 'sha256-test-edition' };
+  const notebook = { notes: [{ id: 'anchored', page: 3, anchor, text: 'Thought', createdAt: 'now' }], bookmarks: [3], bookmarkAnchors: [{ page: 3, anchor }] };
+  expect(saveReaderNotebook(key, notebook)).toBe(true);
+  expect(loadReaderNotebook(key)).toEqual(notebook);
+  expect(normalizeNotebook({ ...notebook, bookmarkAnchors: [{ page: 3, anchor: {offset:-1,revision:'bad'} }] }).bookmarkAnchors).toBeUndefined();
+});
+
+test('image-only structural bookmarks and notes persist exact revision without fabricated text offsets', () => {
+  const key = readerNotebookKey('illustrated', 'reader-one');
+  const anchor = { offset: 'node:3', revision: 'exact-authorized-window' };
+  saveReaderNotebook(key, { bookmarks: [1], bookmarkAnchors: [{ page: 1, anchor }], notes: [{ id: 'image', page: 1, anchor, text: 'The illustration', createdAt: '2026-10-05' }] });
+  expect(loadReaderNotebook(key).bookmarkAnchors[0].anchor).toEqual(anchor);
+  expect(loadReaderNotebook(key).notes[0].anchor).toEqual(anchor);
+});
