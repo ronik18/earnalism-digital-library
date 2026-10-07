@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /** Isolated local visual regression: never requests a production API or mutates a reader session. */
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -16,7 +17,10 @@ const chapter = JSON.parse(fs.readFileSync(path.join(root, 'data/controlled_publ
 const publicBook = JSON.parse(fs.readFileSync(path.join(root, 'data/controlled_publications/a-ghost-story/public_book.json')));
 const content = chapter.content.split(/\n\s*\n/).slice(0, 5).map(value => `<p>${value.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</p>`).join('');
 const book = { ...publicBook, slug: 'a-ghost-story', title: 'A Ghost Story', author: 'Mark Twain', language: 'English', chapters: [{ id: 'chapter-001', title: 'A Ghost Story' }] };
-const manifest = { book, access: { reading_pass: { enabled: true, total_pages: 5 } }, canonical_pages: { page_count: 5, pages: Array.from({ length: 5 }, (_, index) => ({ page_number: index + 1, chapter_id: 'chapter-001' })) }, chapters: book.chapters };
+const sourceBlocks = content.match(/<p>[\s\S]*?<\/p>/g);
+const chunks = Array.from({ length: 5 }, (_, index) => sourceBlocks[index] || `<p>Owned fixture section ${index + 1}.</p>`);
+const hashes = chunks.map(value => createHash('sha256').update(value).digest('hex'));
+const manifest = { book, access: { reading_pass: { enabled: true, total_pages: 5 } }, canonical_pages: { page_count: 5, pages: Array.from({ length: 5 }, (_, index) => ({ page_number: index + 1, page_id: `fixture-${index + 1}`, content_hash: hashes[index], chapter_id: 'chapter-001' })) }, chapters: book.chapters };
 const pageData = { book_slug: 'a-ghost-story', page_index: 1, chapter_id: 'chapter-001', chapter_title: 'A Ghost Story', total_pages: 5, is_preview: true, content, segmentation_version: 'isolated-visual-v1', manifest_version: 'isolated-visual-v1' };
 const report = { head: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(), fixture_only: true, production_mutations: 0, root_cause: 'A separately centered 44rem prose block added a second indentation inside the wide 1fr reading canvas; the global cover height:100% stretched the cover to chapter height.', correction_pass: 'After first desktop/mobile screenshot review, reduced paragraph-block top spacing from 30px desktop / 26px mobile to the shared 24px rhythm; text, controls, authorization and engines unchanged.', cases: [] };
 const browser = await chromium.launch();
@@ -30,7 +34,8 @@ try {
       const request = route.request();
       if (request.method() !== 'GET') { unexpectedWrites.push(`${request.method()} ${new URL(request.url()).pathname}`); return route.abort(); }
       const url = request.url();
-      const data = url.includes('/manifest') ? manifest : url.includes('/pages/1') ? pageData : url.includes('/settings') ? {} : { books: [] };
+      const index = Number(url.match(/\/pages\/(\d+)/)?.[1]);
+      const data = url.includes('/manifest') ? manifest : index ? { ...pageData, page_index: index, is_preview: index <= 3, content: chunks[index - 1], content_sha256: hashes[index - 1] } : url.includes('/settings') ? {} : { books: [] };
       return route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(data) });
     });
     await page.goto(`${base}/reader/a-ghost-story`);
@@ -39,11 +44,11 @@ try {
     await page.waitForTimeout(250);
     const metrics = await page.evaluate(() => {
       const rect = selector => { const box = document.querySelector(selector).getBoundingClientRect(); return { x: box.x, width: box.width, height: box.height }; };
-      return { heading: rect('.reader-v2__chapter'), body: rect('.reader-v2__body'), canvas: rect('.reader-v2__canvas'), cover: rect('.reader-v2__book-cover'), overflow: document.documentElement.scrollWidth > innerWidth, body_margin: getComputedStyle(document.querySelector('.reader-v2__body')).marginTop };
+      return { heading: rect('.reader-v2__chapter'), body: rect('[data-testid="reader-reading-text"]'), canvas: rect('.reader-v2__canvas'), cover: rect('.reader-v2__book-cover'), overflow: document.documentElement.scrollWidth > innerWidth, body_margin: getComputedStyle(document.querySelector('[data-testid="reader-reading-text"]')).marginTop };
     });
     assert.equal(metrics.overflow, false, `${width}: horizontal overflow`);
     assert.ok(Math.abs(metrics.heading.x - metrics.body.x) < 1, `${width}: prose must share the heading inset`);
-    assert.equal(metrics.body_margin, '24px', `${width}: corrected block spacing`);
+    assert.equal(metrics.body_margin, '0px', `${width}: paginated prose uses its measured inset without an extra outer margin`);
     if (width >= 1280) { assert.ok(metrics.canvas.width <= 769, `${width}: unbounded center track`); assert.ok(metrics.cover.height < 400, `${width}: cover stretched to chapter height`); }
     assert.deepEqual(errors, [], `${width}: runtime error`);
     assert.deepEqual(unexpectedWrites, [], `${width}: unexpected API mutation`);
