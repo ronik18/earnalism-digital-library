@@ -113,3 +113,10 @@
   .experience-v2.reader-v2 { overflow-y: auto; }
   .reader-v2__layout { flex-shrink: 0; min-height: 32rem; overflow: visible; }
 }
+
+/* Page-count wrapping must not change the available prose height on a page
+   turn. Give the label its own full-width, two-line slot beside no controls. */
+@media (min-width: 768px) and (min-height: 501px) {
+  .reader-v2__chapter > span { grid-column: 1 / -1; grid-row: 2; min-block-size: 2lh; }
+  .reader-v2__toolbar { grid-column: 1 / -1; grid-row: 1; }
+}

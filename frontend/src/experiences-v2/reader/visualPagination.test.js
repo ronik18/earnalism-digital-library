@@ -47,6 +47,26 @@ test('a line-break seam preserves nested emphasis and exact source coordinates',
   expect(left.querySelector('em')).not.toBeNull(); expect(right.querySelector('em')).not.toBeNull();
   expect(right.querySelector('em').firstChild.nodeType).toBe(Node.TEXT_NODE);
 });
+test('adjacent list items without whitespace split at structural seams', () => {
+  const source = document.createElement('div');
+  source.innerHTML = '<ul>' + ['Quiet', 'reading room', 'another', 'world', 'opens', 'a doorway', 'for readers'].map(value => `<li><em>${value}</em></li>`).join('') + '</ul>';
+  const measure = document.createElement('div');
+  const pages = paginateRendered(source, measure, 131, () => measure.querySelectorAll('li').length <= 5);
+  expect(pages.length).toBeGreaterThan(1);
+  expect(pages.map(page => page.text).join('')).toBe(source.textContent);
+  const reconstructed = document.createElement('div'); reconstructed.innerHTML = pages.map(page => page.html).join('');
+  expect(reconstructed.querySelectorAll('li')).toHaveLength(7);
+  expect([...reconstructed.querySelectorAll('li')].every(item => item.textContent.length > 0 && item.querySelector('em'))).toBe(true);
+  expect(pages.every(page => { const fragment = document.createElement('div'); fragment.innerHTML = page.html; return fragment.querySelectorAll('li').length <= 5; })).toBe(true);
+  expect(pages.every((page, index) => !index || page.start === pages[index - 1].end)).toBe(true);
+});
+test('list seam ranges retain emphasis without phantom items or invented whitespace', () => {
+  const block = document.createElement('ul'); block.innerHTML = '<li><strong>First</strong></li><li><em>Second</em></li>';
+  const left = sliceBlock(block, 0, 5); const right = sliceBlock(block, 5, 11);
+  expect(left.textContent + right.textContent).toBe(block.textContent);
+  expect(left.querySelectorAll('li')).toHaveLength(1); expect(right.querySelectorAll('li')).toHaveLength(1);
+  expect(left.querySelector('strong')).not.toBeNull(); expect(right.querySelector('em')).not.toBeNull();
+});
 test('headings move with following content when feasible', () => {
   const { pages } = run('<p>Some earlier body text.</p><h2>A heading</h2><p>Next body.</p>', 35);
   expect(pages[0].text).toBe('Some earlier body text.'); expect(pages[1].text).toBe('A headingNext body.');
