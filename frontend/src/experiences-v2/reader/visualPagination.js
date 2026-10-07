@@ -10,6 +10,19 @@ export function textBoundaries(text) {
 }
 
 function textPoint(root, offset) {
+  // Explicit line breaks separate words even though they add no textContent
+  // characters. Keep a seam's break on the preceding fragment, not as a
+  // phantom leading line on its continuation.
+  const structure = document.createTreeWalker(root, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT);
+  let current; let position = 0; let breakPoint;
+  while ((current = structure.nextNode())) {
+    if (current.nodeType === Node.TEXT_NODE) position += current.length;
+    else if (current.tagName === 'BR' && position === offset && offset > 0) {
+      breakPoint = [current.parentNode, [...current.parentNode.childNodes].indexOf(current) + 1];
+    }
+    if (position > offset) break;
+  }
+  if (breakPoint) return breakPoint;
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
   let node; let consumed = 0; let last;
   while ((node = walker.nextNode())) {
@@ -20,12 +33,30 @@ function textPoint(root, offset) {
   return last ? [last, last.length] : [root, 0];
 }
 
+function blockTextBoundaries(block) {
+  const boundaries = textBoundaries(block.textContent);
+  const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT);
+  let node; let offset = 0;
+  while ((node = walker.nextNode())) {
+    if (node.nodeType === Node.TEXT_NODE) offset += node.length;
+    else if (node.tagName === 'BR') boundaries.push(offset);
+  }
+  return [...new Set(boundaries)].sort((a, b) => a - b);
+}
+
 export function sliceBlock(block, start, end) {
   const clone = block.cloneNode(false);
   const range = document.createRange();
   range.setStart(...textPoint(block, start));
   range.setEnd(...textPoint(block, end));
-  clone.append(range.cloneContents());
+  let contents = range.cloneContents();
+  let ancestor = range.commonAncestorContainer;
+  if (ancestor.nodeType === Node.TEXT_NODE) ancestor = ancestor.parentNode;
+  while (ancestor !== block) {
+    const envelope = ancestor.cloneNode(false);
+    envelope.append(contents); contents = envelope; ancestor = ancestor.parentNode;
+  }
+  clone.append(contents);
   // A Range beginning at the end of a paragraph can clone an empty paragraph
   // before the next actual word. It must not consume a phantom line. Unwrap
   // formatting whitespace rather than deleting source characters.
@@ -208,7 +239,7 @@ function* paginationSteps(source, measure, height, fits = () => measure.scrollHe
     }
     if (table) { measure.replaceChildren(); blocks[index] = linearTable(block); index--; continue; }
     // Preserve rich inline markup with DOM Ranges. Binary search word boundaries.
-    const boundaries = textBoundaries(block.textContent);
+    const boundaries = blockTextBoundaries(block);
     if (boundaries.length < 2 || (block.matches('img,svg,table,video,audio') || block.querySelector('img,svg,table,video,audio'))) {
       throw new PaginationIntegrityError('A structured block needs a supported pagination adapter.');
     }

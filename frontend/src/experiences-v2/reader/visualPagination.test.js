@@ -28,6 +28,25 @@ test('word boundaries preserve leading, trailing and repeated whitespace', () =>
 test('an indivisible oversized word fails explicitly instead of clipping', () => {
   expect(() => run('<p>indivisibleword</p>', 5)).toThrow(/indivisible/);
 });
+test('explicit line breaks split a filename paragraph without whitespace or source changes', () => {
+  const source = document.createElement('div');
+  source.innerHTML = '<p>chapter_01_code_explainer/<br>.env.example<br>.gitignore<br>requirements.txt<br>code_explainer.py<br>test_code_explainer.py<br>README.md</p>';
+  const measure = document.createElement('div');
+  const pages = paginateRendered(source, measure, 148, () => measure.querySelectorAll('br').length <= 3);
+  expect(pages.length).toBeGreaterThan(1);
+  expect(pages.map(page => page.text).join('')).toBe(source.textContent);
+  const reconstructed = document.createElement('div'); reconstructed.innerHTML = pages.map(page => page.html).join('');
+  expect(reconstructed.querySelectorAll('br')).toHaveLength(6);
+  expect(pages.every(page => !/^<p[^>]*><br/.test(page.html))).toBe(true);
+});
+test('a line-break seam preserves nested emphasis and exact source coordinates', () => {
+  const block = document.createElement('p'); block.innerHTML = '<em>first<br>second<br>third</em>';
+  const left = sliceBlock(block, 0, 5); const right = sliceBlock(block, 5, block.textContent.length);
+  expect(left.textContent + right.textContent).toBe(block.textContent);
+  expect(left.querySelectorAll('br').length + right.querySelectorAll('br').length).toBe(2);
+  expect(left.querySelector('em')).not.toBeNull(); expect(right.querySelector('em')).not.toBeNull();
+  expect(right.querySelector('em').firstChild.nodeType).toBe(Node.TEXT_NODE);
+});
 test('headings move with following content when feasible', () => {
   const { pages } = run('<p>Some earlier body text.</p><h2>A heading</h2><p>Next body.</p>', 35);
   expect(pages[0].text).toBe('Some earlier body text.'); expect(pages[1].text).toBe('A headingNext body.');
